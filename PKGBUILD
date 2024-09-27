@@ -2,103 +2,74 @@
 # Contributor: Sven-Hendrik Haase <svenstaro@gmail.com>
 # Contributor: hexchain <i@hexchain.org>
 
-# options
-: ${_build_tg_owt:=true}
-
-# basic info
 _pkgname="telegram-desktop"
 pkgname="$_pkgname-git"
-pkgver=5.1.8.r12.g60ca689
+pkgver=5.5.6.r4.g187c2dd
 pkgrel=1
 pkgdesc='Official Telegram Desktop client'
 url="https://github.com/telegramdesktop/tdesktop"
 license=('GPL-3.0-or-later')
 arch=('x86_64')
 
-# main package
-_main_package() {
-  depends+=(
-    #abseil-cpp
-    ffmpeg
-    glibmm-2.68
-    hunspell
-    jemalloc
-    kcoreaddons
-    libdispatch
-    libsigc++-3.0
-    libvpx
-    libxdamage
-    minizip
-    openal
-    openh264
-    opus
-    protobuf
-    qt6-base
-    qt6-declarative
-    qt6-svg
-    qt6-wayland
-    range-v3
-    rnnoise
-    tl-expected
-    xcb-util-keysyms
-    xxhash
+depends+=(
+  ada
+  ffmpeg
+  glibmm-2.68
+  hunspell
+  jemalloc
+  kcoreaddons
+  libdispatch
+  libsigc++-3.0
+  libvpx
+  libxdamage
+  minizip
+  openal
+  openh264
+  opus
+  protobuf
+  qt6-base
+  qt6-declarative
+  qt6-svg
+  qt6-wayland
+  range-v3
+  rnnoise
+  tl-expected
+  xcb-util-keysyms
+  xxhash
+)
+makedepends+=(
+  boost
+  cmake
+  extra-cmake-modules
+  fmt
+  git
+  glib2-devel
+  gobject-introspection
+  ninja
+)
+optdepends+=(
+  'webkit2gtk: embedded browser features'
+  'xdg-desktop-portal: desktop integration'
+)
 
-    ## implicit
-    #glib2
-    #hicolor-icon-theme
-    #libjpeg.so # libjpeg-turbo
-    #libpipewire
-    #libx11
-    #libxcb
-    #libxcomposite
-    #libxext
-    #libxfixes
-    #libxrandr
-    #libxtst
-    #lz4
-    #openssl
-    #wayland
-    #zlib
-  )
-  makedepends+=(
-    boost
-    cmake
-    extra-cmake-modules
-    fmt
-    git
-    glib2-devel
-    gobject-introspection
-    ninja
-  )
-  optdepends+=(
-    'webkit2gtk: embedded browser features'
-    'xdg-desktop-portal: desktop integration'
-  )
+provides=("$_pkgname=${pkgver%%.r*}")
+conflicts=("$_pkgname")
 
-  provides=("$_pkgname=${pkgver%%.r*}")
-  conflicts=("$_pkgname")
-
+_source_main() {
   _pkgsrc="$_pkgname"
   source+=("$_pkgsrc"::"git+$url.git")
   sha256sums+=('SKIP')
 
-  _source_telegram_desktop
-  _source_telegramdesktop_libtgvoip
+  _patch_commit='b1060b9deef05a3efaadf61d3e99dafa155710ea'
+  source+=("tg-5.5.5-fix_build_with_cppgir-${_patch_commit::7}.patch"::"https://gitlab.archlinux.org/archlinux/packaging/packages/telegram-desktop/-/raw/$_patch_commit/telegram-desktop-5_5_5-fix_build_with_cppgir.patch")
+  sha256sums+=('ee54bdf8fe67c8fadfffc794763fc62f4c6a15eb535c80ba7b1b74d6ec178882')
 
-  _source_desktop_app_cmake_helpers
-  _source_mnauw_cppgir
-
-  if [[ "${_build_tg_owt::1}" == "t" ]]; then
-    _source_tg_owt
-  else
-    makedepends+=(
-      'libtg_owt-git'
-    )
-  fi
-
+  _prepare_main() (
+    cd "$srcdir/$_pkgsrc/cmake/external/glib/cppgir"
+    apply-patch "$srcdir/tg-5.5.5-fix_build_with_cppgir-${_patch_commit::7}.patch"
+  )
 }
 
-# submodules
 _source_telegram_desktop() {
   source+=(
     'apple.swift-corelibs-libdispatch'::'git+https://github.com/apple/swift-corelibs-libdispatch.git'
@@ -172,7 +143,7 @@ _source_telegram_desktop() {
   )
 
   _prepare_telegram_desktop() (
-    cd "${srcdir:?}/$_pkgsrc"
+    cd "$srcdir/$_pkgsrc"
     local _submodules=(
       'apple.swift-corelibs-libdispatch'::'Telegram/ThirdParty/dispatch'
       'cyan4973.xxhash'::'Telegram/ThirdParty/xxHash'
@@ -221,7 +192,7 @@ _source_telegramdesktop_libtgvoip() {
   )
 
   _prepare_telegramdesktop_libtgvoip() (
-    cd "${srcdir:?}/$_pkgsrc"
+    cd "$srcdir/$_pkgsrc"
     cd "Telegram/ThirdParty/libtgvoip"
     local _submodules=(
       'desktop-app.cmake_helpers'::'cmake'
@@ -241,7 +212,7 @@ _source_desktop_app_cmake_helpers() {
   )
 
   _prepare_desktop_app_cmake_helpers() (
-    cd "${srcdir:?}/$_pkgsrc"
+    cd "$srcdir/$_pkgsrc"
     cd "cmake"
     local _submodules=(
       'mnauw.cppgir'::'external/glib/cppgir'
@@ -260,7 +231,7 @@ _source_mnauw_cppgir() {
   )
 
   _prepare_mnauw_cppgir() (
-    cd "${srcdir:?}/$_pkgsrc"
+    cd "$srcdir/$_pkgsrc"
     cd "cmake"
     cd "external/glib/cppgir"
     local _submodules=(
@@ -270,7 +241,6 @@ _source_mnauw_cppgir() {
   )
 }
 
-# tg_owt
 _source_tg_owt() {
   makedepends+=(
     pipewire
@@ -282,8 +252,14 @@ _source_tg_owt() {
   )
 
   _pkgsrc_tgowt="telegram-tg_owt"
-  source+=("$_pkgsrc_tgowt"::"git+https://github.com/desktop-app/tg_owt.git")
-  sha256sums+=('SKIP')
+  source+=(
+    "$_pkgsrc_tgowt"::"git+https://github.com/desktop-app/tg_owt.git"
+    libtg_owt_ffmpeg7.patch::https://patch-diff.githubusercontent.com/raw/desktop-app/tg_owt/pull/128.patch
+  )
+  sha256sums+=(
+    'SKIP'
+    'SKIP'
+  )
 
   # submodules - tg_owt
   source+=(
@@ -299,8 +275,8 @@ _source_tg_owt() {
     'SKIP'
   )
 
-  _prepare_desktop_app_tg_owt() (
-    cd "${srcdir:?}/$_pkgsrc_tgowt"
+  _prepare_tg_owt() (
+    cd "$srcdir/$_pkgsrc_tgowt"
     local _submodules=(
       'abseil.abseil-cpp'::'src/third_party/abseil-cpp'
       'chromiumsrc.libyuv'::'src/third_party/libyuv'
@@ -308,10 +284,20 @@ _source_tg_owt() {
       'google.crc32c'::'src/third_party/crc32c/src'
     )
     _submodule_update
+
+    apply-patch "../libtg_owt_ffmpeg7.patch"
   )
 }
 
-# common functions
+_source_main
+_source_telegram_desktop
+_source_telegramdesktop_libtgvoip
+
+_source_desktop_app_cmake_helpers
+_source_mnauw_cppgir
+
+_source_tg_owt
+
 prepare() {
   apply-patch() {
     printf '\nApplying patch %s\n' "$1"
@@ -327,15 +313,15 @@ prepare() {
     done
   }
 
-  if [[ "${_build_tg_owt::1}" == "t" ]]; then
-    _prepare_desktop_app_tg_owt
-  fi
+  _prepare_tg_owt
 
   _prepare_telegram_desktop
   _prepare_telegramdesktop_libtgvoip
 
   _prepare_desktop_app_cmake_helpers
   _prepare_mnauw_cppgir
+
+  _prepare_main
 }
 
 pkgver() {
@@ -393,15 +379,10 @@ _build_telegram() (
     -DTDESKTOP_API_ID=611335
     -DTDESKTOP_API_HASH=d524b414d21f4d37f08684c1df41ac9c
     -DDESKTOP_APP_USE_PACKAGED_FONTS=OFF
+    -Dtg_owt_DIR="$srcdir/build_tg_owt"
+    -DCMAKE_PREFIX_PATH="$srcdir/deps_crc32/usr"
     -Wno-dev
   )
-
-  if [[ "${_build_tg_owt::1}" == "t" ]]; then
-    _cmake_options+=(
-      -Dtg_owt_DIR="${srcdir:?}/build_tg_owt"
-      -DCMAKE_PREFIX_PATH="$srcdir/deps_crc32/usr"
-    )
-  fi
 
   cmake "${_cmake_options[@]}"
   cmake --build build
@@ -410,16 +391,10 @@ _build_telegram() (
 build() {
   export LDFLAGS+=" -Wl,--copy-dt-needed-entries"
 
-  if [[ "${_build_tg_owt::1}" == "t" ]]; then
-    _build_tg_owt
-  fi
-
+  _build_tg_owt
   _build_telegram
 }
 
 package() {
-  DESTDIR="${pkgdir:?}" cmake --install build
+  DESTDIR="$pkgdir" cmake --install build
 }
-
-# execute
-_main_package
