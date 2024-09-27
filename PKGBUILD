@@ -1,7 +1,7 @@
 # Maintainer: Kemel Zaidan <kemelzaidan@gmail.com>
 pkgname=netop
 pkgver=0.1.4
-pkgrel=1
+pkgrel=2
 depends=('libpcap' 'glibc' 'gcc-libs')
 makedepends=('rust' 'cargo' 'wget')
 arch=('x86_64')
@@ -12,7 +12,7 @@ license=('MIT')
 prepare() {
     cd $srcdir
     mkdir -p usr/share/licenses/netop
-    wget https://raw.githubusercontent.com/ZingerLittleBee/netop/main/LICENSE --directory-prefix usr/share/licenses/netop
+    wget https://raw.githubusercontent.com/ZingerLittleBee/netop/main/LICENSE --directory-prefix usr/share/licenses/$pkgname
 }
 
 build() {
@@ -21,6 +21,6 @@ build() {
 }
 
 package() {
-    install -D "$srcdir/bin/netop" "$pkgdir/usr/bin/netop"
+    install -Dm 755 "$srcdir/bin/netop" "$pkgdir/usr/bin/netop"
     install -D "$srcdir/usr/share/licenses/netop/LICENSE" "$pkgdir/usr/share/licenses/netop/LICENSE"
 }

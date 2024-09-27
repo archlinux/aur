@@ -1,0 +1,4 @@
+[netop]
+source = "git"
+git = "https://github.com/ZingerLittleBee/netop.git"
+prefix = "v"
