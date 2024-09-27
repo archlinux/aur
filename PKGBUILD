@@ -1,7 +1,7 @@
 # Maintainer: Mišo Barišić <me@misobarisic.com>
 # Maintainer: Navid Yaghoobi <navidys@fedoraproject.org>
 pkgname="podman-tui"
-pkgver=1.2.1
+pkgver=1.2.2
 pkgrel=1
 pkgdesc="Podman Terminal User Interface"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('APACHE')
 makedepends=('go>=1.21' 'btrfs-progs' 'make' 'gcc')
 conflicts=('podman-tui-git')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/containers/podman-tui/archive/v${pkgver}.tar.gz")
-sha256sums=("e97fb24ded58d5dccb71fd21221cc2cae25853797ca44e1710baeaf3d5d77b6f")
+sha256sums=("97243e025bf8a0ad4b7e87197cc4e608da0af8bb447b1ffd0e01bcb58273b619")
 build() {
   depends=('podman>=5')
 
