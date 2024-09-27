@@ -5,7 +5,7 @@
 _android_arch=x86-64
 
 pkgname=android-${_android_arch}-libxi
-pkgver=1.8.1
+pkgver=1.8.2
 pkgrel=1
 arch=('any')
 pkgdesc="X11 Input extension library (Android ${_android_arch})"
@@ -17,7 +17,7 @@ makedepends=("android-${_android_arch}-xorg-util-macros"
 license=('custom')
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("${url}/releases/individual/lib/libXi-${pkgver}.tar.xz"{,.sig})
-md5sums=('89ac74ad6829c08d5c8ae8f48d363b06'
+md5sums=('95a960c1692a83cc551979f7ffe28cf4'
          'SKIP')
 validpgpkeys=('3C2C43D9447D5938EF4551EBE23B7E70B467F0BF') # Peter Hutterer
 
@@ -37,6 +37,6 @@ package() {
 
     make DESTDIR="${pkgdir}" install
     rm -rf "$pkgdir/${ANDROID_PREFIX_SHARE}"
-    ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}"/${ANDROID_PREFIX_LIB}/*.so
-    ${ANDROID_STRIP} -g "$pkgdir"/${ANDROID_PREFIX_LIB}/*.a
+    ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.so
+    ${ANDROID_STRIP} -g "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.a
 }
