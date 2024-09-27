@@ -2,7 +2,7 @@
 # Contributor: Antony Ho <ntonyworkshop@gmail.com>
 
 pkgname=session-desktop
-pkgver=1.13.2
+pkgver=1.14.1
 pkgrel=1
 pkgdesc="Onion routing based messenger"
 arch=(x86_64)
@@ -10,22 +10,21 @@ url="https://getsession.org"
 license=('GPL-3.0-only')
 _electron=electron25
 depends=('bash' "${_electron}" 'gcc-libs' 'glibc' 'hicolor-icon-theme' 'python')
-makedepends=('cmake' 'git' 'libxcrypt-compat' 'nvm' 'python-setuptools' 'yarn')
+makedepends=('cmake' 'git' 'nvm' 'python-setuptools' 'yarn')
 source=("git+https://github.com/oxen-io/session-desktop.git#tag=v${pkgver}"
         "${pkgname}.desktop"
         "${pkgname}.sh")
-sha256sums=('1a46d1ef414eeb348636887bd4bae5ff9017df191447dffc61627777a5171e91'
+sha256sums=('e561c7d7541590fadd0089261b0707c05d20a86b292cfd9c2a544624a4d45edd'
             '267d772a94ba49b19e799e7ecee25c0077ded4dd9c853c073ec386a8ab6a7e5c'
             'a5279447d005060aa77536dcabe0ab66226f9cffa668dc0b6e07a2f1e52ab5ce')
 
 prepare() {
   sed "s/@ELECTRON@/${_electron}/" -i "${pkgname}.sh"
 
-  cd "${pkgname}"
   source /usr/share/nvm/init-nvm.sh
-  nvm install
-  nvm use
 
+  cd "${pkgname}"
+  nvm install
   yarn install
 }
 
