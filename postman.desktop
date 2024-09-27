@@ -2,7 +2,7 @@
 Name=Postman
 Comment=Build, test, and document your APIs faster
 Path=/opt/postman
-Exec=/opt/postman/Postman %U
+Exec=/usr/bin/postman
 Icon=postman
 Type=Application
 StartupNotify=true

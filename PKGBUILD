@@ -20,9 +20,9 @@ source_aarch64=(
 )
 depends=(electron28 bash libsecret glib2 glibc gcc-libs hicolor-icon-theme)
 sha256sums_x86_64=('d651c177d1235d95e8ba234fac9df2d92004fe1f9405888cf41ec759a223873c'
-                   'd87542ac18455ff341da7c5efd01db96a01f659b1bf546840aa4ac8bd085802d')
+                   'ce833b5fda87bc2f4a67cfe56844fd1da8bb77b8cac9f462519a04041c5043c7')
 sha256sums_aarch64=('ea35ac97b2b9566a7ffb0f0fbaee5956dfd918d5f82cff54a37819e75daa6c05'
-                    'd87542ac18455ff341da7c5efd01db96a01f659b1bf546840aa4ac8bd085802d')
+                    'ce833b5fda87bc2f4a67cfe56844fd1da8bb77b8cac9f462519a04041c5043c7')
 
 package() {
 	install -vdm755 "${pkgdir}/opt/"

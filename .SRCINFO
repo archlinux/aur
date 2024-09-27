@@ -19,10 +19,10 @@ pkgbase = postman-electron-bin
 	source_x86_64 = postman-11.10.0-linux-x64.tar.gz::https://dl.pstmn.io/download/version/11.10.0/linux64
 	source_x86_64 = postman.desktop
 	sha256sums_x86_64 = d651c177d1235d95e8ba234fac9df2d92004fe1f9405888cf41ec759a223873c
-	sha256sums_x86_64 = d87542ac18455ff341da7c5efd01db96a01f659b1bf546840aa4ac8bd085802d
+	sha256sums_x86_64 = ce833b5fda87bc2f4a67cfe56844fd1da8bb77b8cac9f462519a04041c5043c7
 	source_aarch64 = postman-11.10.0-linux-arm64.tar.gz::https://dl.pstmn.io/download/version/11.10.0/linux_arm64
 	source_aarch64 = postman.desktop
 	sha256sums_aarch64 = ea35ac97b2b9566a7ffb0f0fbaee5956dfd918d5f82cff54a37819e75daa6c05
-	sha256sums_aarch64 = d87542ac18455ff341da7c5efd01db96a01f659b1bf546840aa4ac8bd085802d
+	sha256sums_aarch64 = ce833b5fda87bc2f4a67cfe56844fd1da8bb77b8cac9f462519a04041c5043c7
 
 pkgname = postman-electron-bin
