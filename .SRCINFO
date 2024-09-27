@@ -1,7 +1,7 @@
 pkgbase = fontproof
 	pkgdesc = A font design testing class and CLI tool for SILE
 	pkgver = 2.2.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/sile-typesetter/fontproof
 	arch = any
 	license = MIT

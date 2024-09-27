@@ -2,7 +2,7 @@
 
 pkgname=fontproof
 pkgver=2.2.2
-pkgrel=2
+pkgrel=3
 _rockrel=1
 pkgdesc='A font design testing class and CLI tool for SILE'
 arch=(any)
@@ -19,10 +19,11 @@ sha256sums=('73dd9bae627c484e91d3101a2db8b2a89d46b098a51adac1877347d3b73821c9'
 validpgpkeys=('9F377DDB6D3153A48EB3EB1E63CC496475267693') # Caleb Maclennan <caleb@alerque.com> (@alerque)
 
 prepare() {
+	local _luaver=$(sile-lua -q -e 'print(SILE.lua_version); os.exit()')
+	local _luabin=$(sile-lua -q -e 'print(arg[-1]); os.exit()')
 	luarocks --local init
-	luarocks --local config --scope project lua_version 5.1
-	luarocks --local config --scope project lua_interpreter luajit
-	luarocks --local config --scope project variables.LUA "$(command -v luajit)"
+	luarocks config --scope project lua_version "$_luaver"
+	luarocks config --scope project variables.LUA "$_luabin"
 }
 
 package() {
