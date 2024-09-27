@@ -5,7 +5,7 @@ pkgrel=1
 epoch=1
 pkgdesc="A Bar/Panel for Hyprland with extensive customizability"
 arch=('x86_64')
-url="https://hyprpanel.com"
+url="https://hyprpanel.com/"
 license=('MIT')
 depends=(
   # official repository:
@@ -20,12 +20,13 @@ depends=(
   'brightnessctl'
   'swww'
   'gnome-bluetooth-3.0'
+  'libdbusmenu-gtk3'
   # aur:
   'grimblast-git'
   'gpu-screen-recorder-git'
   'hyprpicker'
   'matugen-bin'
-  'aylurs-gtk-shell-git'
+  'aylurs-gtk-shell'
 )
 makedepends=(
   'unzip'
