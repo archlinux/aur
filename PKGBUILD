@@ -1,7 +1,7 @@
 # Maintainer: Carl Smedstad <carsme@archlinux.org>
 
 pkgname=jnv
-pkgver=0.4.0
+pkgver=0.4.1
 pkgrel=1
 pkgdesc="Interactive JSON filter using jq"
 arch=(x86_64)
@@ -17,7 +17,7 @@ makedepends=(
 )
 options=(!lto)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('88462d1a8dbb2a362a594d09c75b52d5798124981c9924ae7cff704e213b24f4')
+sha256sums=('71bbd015f4594ef9723ea05a3325e2e8f8bf1f7d3c0309efa679826237ea8c9a')
 
 prepare() {
   cd $pkgname-$pkgver
