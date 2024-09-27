@@ -1,0 +1,12 @@
+pkgbase = lowfi
+	pkgdesc = An extremely simple lofi player.
+	pkgver = 1.0.0
+	pkgrel = 2
+	url = https://github.com/talwat/lowfi
+	arch = any
+	license = MIT
+	makedepends = cargo
+	source = lowfi-1.0.0.tar.gz::https://static.crates.io/crates/lowfi/lowfi-1.0.0.crate
+	sha512sums = 715ad16fbad72753a558767ef6fdc5a4fee6909c5ee05605be81e9e7dbb6050117ba1d6fb206f2d4d502c08bf18febe7fac6055943680603cb491930acfe818a
+
+pkgname = lowfi
