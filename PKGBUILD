@@ -5,15 +5,13 @@
 _binname="kubedb"
 _pkgname="${_binname}-cli"
 pkgname="${_pkgname}-bin"
-pkgver=0.47.0
+pkgver=0.48.0
 pkgrel=1
 pkgdesc="kubectl plugin for KubeDB"
 arch=('x86_64' 'aarch64' 'arm')
 url="https://${_binname}.com"
 _url="https://github.com/${_binname}/cli"
 license=('custom:AppsCode-Community-1.0.0')
-optdepends=('bash-completion: for shell auto-completion'
-            'zsh-completions: for shell auto-completion')
 provides=("${_pkgname}" "${_binname}")
 conflicts=("${_pkgname}" "${_binname}")
 _pkgsrc="${_pkgname}-${pkgver}"
@@ -24,9 +22,9 @@ source_aarch64=("${_pkgsrc}-aarch64.tar.gz::${_url}/releases/download/v${pkgver}
 source_arm=("${_pkgsrc}-arm.tar.gz::${_url}/releases/download/v${pkgver}/kubectl-dba-linux-arm.tar.gz")
 sha512sums=('249ab166610634cdb55dd1ee2ad1bfe46905af77e37a6fcd662285cf1784bc71d0981bcea476c06b3679116ed018f42bf8c2d3e01b7c9fd8fe7965efb659b15b'
             '3ccf552f646ca9716b660cec0da9f1bcabe3c88c55e992ce18f963341701f7ddbe131fd08b657e861572168482a74dded6c617f8deb4131f3b70669eeae45d93')
-sha512sums_x86_64=('2a9d784d495d21555fce2e6ff9596182129e7ec4118d58d032a5afbe6ca592c66e4ebeeda7c3792fa78dc7c44dfd960f596e13b861188662cf28964aab885bff')
-sha512sums_aarch64=('f8649bae6ac80ea6be76195e2c74b9a2ee45ae394387717b98b915bc0057f04d4ebd0b7ff896141b3a27925f31c79e02eb57d4e41b972beacdc2fa60d726f4e3')
-sha512sums_arm=('3398aa2d9df871575f33ae683579d2e8c7758e0129830e9164b241947407c9893c17a34bd0f4725b1b145219bedb8d16923fd3ed2d88cc22a971416b8a7f01c5')
+sha512sums_x86_64=('7cd4341e9f317acb3be8daa3b852aa7175dafaa83cf5b853342b7418e1fc6a67a890cf7d3ef9ea97146154679a35bc3a4fc94e2a2602e3c2fbe06b9985ef6868')
+sha512sums_aarch64=('b117b851fd51f8753585c7deeb8f2ba75f251282a233ae0cb19dac8119dee2f1c5bb608c5a673356e41a8df883eb78bad292f17ef1be6a8e07a9c9e0f2c32832')
+sha512sums_arm=('0e1427ea14a1d971cbde45540134ea1dae8f90ae0361d40f3a3256c69c22a8aedae93bbb2997aa26992a3580f82213513c8ec0f1e4a244150f70fb1223dffe79')
 
 case "${CARCH}" in
   x86_64)
@@ -51,7 +49,6 @@ prepare() {
 
 build() {
   cd "${srcdir}"
-
   for _sh in bash fish zsh powershell; do
     ./"kubectl-dba-linux-${_arch}" completion "${_sh}" > "completions/${_binname}.${_sh}"
   done
