@@ -12,7 +12,7 @@ pkgname='process-mem'
 pkgdesc='Display Memory Used by Process(es)'
 _gitname='process-mem'
 
-pkgver=0.9.1
+pkgver=0.9.2
 pkgrel=1
 url="https://github.com/gene-git/process-mem"
 
