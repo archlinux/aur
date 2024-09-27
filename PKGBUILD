@@ -1,10 +1,10 @@
 # Maintainer: Michael Rydén (zynex(at)zoik.se)
 # App: avbroot
-# Version: 3.6.0
+# Version: 3.7.0
 # Webpage: https://github.com/chenxiaolong/avbroot
 
 pkgname=avbroot
-pkgver=3.6.0
+pkgver=3.7.0
 pkgrel=1
 pkgdesc="Application for patching Android A/B-style OTA images for root access"
 arch=('x86_64')
@@ -12,7 +12,7 @@ url="https://github.com/chenxiaolong/avbroot"
 license=('GPL')
 
 source=("https://github.com/chenxiaolong/$pkgname/releases/download/v$pkgver/$pkgname-$pkgver-x86_64-unknown-linux-gnu.zip")
-md5sums=('e9622ce71aa98af72293910eb6fa834a')
+md5sums=('a5f4db83712937b0fea65634d95fabfe')
 
 package() {
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
