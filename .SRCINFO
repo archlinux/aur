@@ -1,0 +1,17 @@
+pkgbase = wicuvanity
+	pkgdesc = Generate wireguard vanity keys on your Nvidia GPU
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://git.sr.ht/~chrs/wicuvanity
+	arch = x86_64
+	license = MIT
+	makedepends = meson
+	makedepends = cxxopts
+	depends = cuda
+	source = wicuvanity-1.0.tar.gz::https://git.sr.ht/~chrs/wicuvanity/archive/1.0.tar.gz
+	source = wicuvanity-1.0.tar.gz.asc::https://git.sr.ht/~chrs/wicuvanity/archive/1.0.tar.gz.asc
+	validpgpkeys = 10F1CC925057D456798EBF9C1B3EB6FE2D338B4A
+	sha256sums = b3a09f0a6745ada75209df14c18a94ddae82d80e906ec8483b7bf0388b9ebdf3
+	sha256sums = SKIP
+
+pkgname = wicuvanity
