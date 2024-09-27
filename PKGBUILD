@@ -2,7 +2,7 @@
 # Maintainer: Laszlo Malina <laszlo@malina.hu>
 
 pkgname=keeper-password-manager
-pkgver=16.11.2
+pkgver=16.11.3
 pkgrel=1
 pkgdesc="Keeper is the world's #1 most downloaded password keeper and secure digital 
  vault for protecting and managing your passwords and other secret information."
@@ -12,7 +12,7 @@ license=('Custom')
 depends=('libsecret' 'nss' 'libxss' 'gtk3')
 source=("https://keepersecurity.com/desktop_electron/Linux/repo/deb/keeperpasswordmanager_${pkgver}_amd64.deb"
         'LICENSE')
-sha512sums=('c2b4e00b3317b1684a30b7c84197400242d9cd93e8d3d7eb4332d025d70a7ed76c530289ecc4327002649fd07b03959a8bd6e3daf4769a65f48bf233e857fe84'
+sha512sums=('ac57cd2aa5aff37bf6f5b6404b65d5939ef8ee4d4fdcb3399ca231410809264783a68671c31bea9e7b7aafb1e2345ef501c1125bee6d7af014c87926a4b4d157'
             'SKIP')
 
 package() { 
