@@ -1,7 +1,7 @@
 pkgbase = pokeget
 	pkgdesc = Display pokemon sprites in your terminal.
 	pkgver = 1.6.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/talwat/pokeget-rs
 	arch = any
 	license = MIT
