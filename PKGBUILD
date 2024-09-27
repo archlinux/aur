@@ -1,7 +1,7 @@
 # Maintainer: <agustinballesteros04@gmail.com>
 pkgname=kew-git
-pkgver=stable.musl.r2.g90f5f14
 pkgrel=1
+pkgver=v2.8.2.90f5f14
 pkgdesc="A command-line music player"
 arch=('x86_64')
 url="https://github.com/ravachol/kew"
@@ -16,7 +16,9 @@ source=("git+${url}")
 
 pkgver() {
     cd "$srcdir/kew"
-    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+    local tag=$(git tag | sort | tail -n1)
+    local commit_hash=$(git rev-parse --short HEAD)
+    echo "${tag}.${commit_hash}"
 }
 
 build() {
@@ -30,4 +32,3 @@ package() {
     install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"
     install -Dm644 "$srcdir/kew/docs/kew-manpage.mdoc" "$pkgdir/usr/share/man/man1/kew.1"
 }
-
