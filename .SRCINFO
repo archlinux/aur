@@ -1,6 +1,6 @@
 pkgbase = objdiff-bin
 	pkgdesc = A local diffing tool for decompilation projects
-	pkgver = 2.0.0
+	pkgver = 2.1.0
 	pkgrel = 1
 	url = https://github.com/encounter/objdiff
 	arch = x86_64
@@ -8,12 +8,12 @@ pkgbase = objdiff-bin
 	depends = fontconfig
 	provides = objdiff
 	conflicts = objdiff
-	source = objdiff-2.0.0::https://github.com/encounter/objdiff/releases/download/v2.0.0/objdiff-linux-x86_64
-	source = objdiff-cli-2.0.0::https://github.com/encounter/objdiff/releases/download/v2.0.0/objdiff-cli-linux-x86_64
+	source = objdiff-2.1.0::https://github.com/encounter/objdiff/releases/download/v2.1.0/objdiff-linux-x86_64
+	source = objdiff-cli-2.1.0::https://github.com/encounter/objdiff/releases/download/v2.1.0/objdiff-cli-linux-x86_64
 	source = LICENSE-APACHE
 	source = LICENSE-MIT
-	b2sums = 5ae866ce25abe0d5c00fc9e08a34a567b97f914d7680fa38eb5b81bb48a21706c26370cb08abed93ce28cce3c0b9690b020679a5b485697061f8bc3d3bebb9b6
-	b2sums = 8b7eb416fc4b9ac22562a8c773d23804e25a4e12db3834420c1678a1d20b70b7ec959cd40bd1adbab1fc687dddf8a302ad2e7b6798472e222597dd0659162651
+	b2sums = 31b5b65b7d1120fa7b733aa2b0dec403bfcc638ecb33b34cb331a7be76cc644cc879fdfb1a962ba3c1319ce0ce0c3ada06d1e83bd5f1462dd72ca6258829b4bc
+	b2sums = c09ab428cc0ec5aca43a4623c8bc7606a1f5caea70087f7effc75f97c67bcfd6858f5915783df65897e80ec30526f41347af2c8de3c3d6368fba4f65e49a3d2e
 	b2sums = SKIP
 	b2sums = SKIP
 
