@@ -1,6 +1,6 @@
 pkgbase = ttf-ptcode-git
 	pkgdesc = Ligatures font for PT Mono .
-	pkgver = 1
+	pkgver = r4.0a3769a
 	pkgrel = 1
 	url = https://github.com/liangjingkanji/PTCode
 	arch = any
