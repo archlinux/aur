@@ -1,5 +1,5 @@
 pkgbase = map-download-git
-	pkgdesc = 高德地图、百度地图（包括百度自定义地图）、腾讯地图、OpenStreetMap、CartoDb、ArcGIS在线地图的下载
+	pkgdesc = 高德地图,百度地图(包括百度自定义地图),腾讯地图,OpenStreetMap,CartoDb,ArcGIS在线地图,天地图,MapBox的下载
 	pkgver = 24.9.5.418.r0.gabe25e2
 	pkgrel = 1
 	url = https://github.com/Hxy1992/MapDownload
@@ -14,8 +14,8 @@ pkgbase = map-download-git
 	makedepends = cmake
 	makedepends = yarn
 	depends = electron16
-	depends = libvips
 	depends = nodejs
+	depends = libvips
 	provides = map-download=24.9.5.418
 	conflicts = map-download
 	source = map-download.git::git+https://github.com/Hxy1992/MapDownload.git
