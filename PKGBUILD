@@ -3,7 +3,7 @@ pkgbase=libastal-git
 pkgname=("libastal-git"
          "lua-libastal-git" "lua51-${pkgbase}" "lua53-${pkgbase}")
 _pkgname=libastal
-pkgver=r250.2927230
+pkgver=r361.ac5f7d2
 pkgrel=1
 pkgdesc="Building blocks for building desktop shells."
 arch=("x86_64")
@@ -11,6 +11,7 @@ license=(LGPL-2.1-only)
 url="https://github.com/Aylur/astal"
 makedepends=(
   "git"
+  "wayland" "wayland-protocols"
   "gobject-introspection" "meson" "vala"
   "lua" "lua51" "lua53" "luarocks")
 depends=("glib2" "glibc" "gtk3" "gtk-layer-shell")
