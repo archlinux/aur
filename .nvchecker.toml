@@ -1,0 +1,4 @@
+[hedgedoc2]
+source = "git"
+git = "https://github.com/hedgedoc/hedgedoc.git"
+prefix = "v"

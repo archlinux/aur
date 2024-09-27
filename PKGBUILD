@@ -3,9 +3,9 @@
 
 pkgname=hedgedoc2
 _reponame=hedgedoc
-_pkgver=2.0.0-alpha.2
-pkgver=2.0.0_alpha.2
-pkgrel=2
+_pkgver=2.0.0-alpha.3
+pkgver=2.0.0_alpha.3
+pkgrel=1
 pkgdesc="Platform to write and share markdown (Version 2)"
 arch=(x86_64)
 url='https://github.com/hedgedoc/hedgedoc'
@@ -24,7 +24,7 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/hedgedoc/hedgedoc/archi
         "$pkgname-backend.service"
         "$pkgname-frontend.service")
 options=(!emptydirs)
-sha256sums=('626bdb721b7ec13b4103bfc8b043cca6bc5037c87cbf73b5aace2e44758a0c2a'
+sha256sums=('fa1faed0395c515939e41270863b140e42e36c650e1fae254b73b3c0cec1278e'
             '113dd8cf558ced474a4aefa03418429526d2789c40acf6102785874d1e50e585'
             '331757b7a93259176332cd40226ac9fbd240d517daca812ddf84312709a9e845'
             '00941ecd1117f9b82c6770fca3efde6da276876056bffdfe2c99a20b01da40db'
