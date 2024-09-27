@@ -2,9 +2,9 @@
 _appname=iptvnator
 pkgname="${_appname}-electron-bin"
 _pkgname=IPTVnator
-pkgver=0.15.1
+pkgver=0.16.0
 _electronversion=27
-pkgrel=2
+pkgrel=1
 pkgdesc="Cross-platform IPTV player application with multiple features, such as support of m3u and m3u8 playlists, favorites, TV guide, TV archive/catchup and more.Use system electron."
 arch=(
     'aarch64'
@@ -28,26 +28,29 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('475a6c9a7c4fd3157f78c0afa1daab94fb81ff23dd94dad81e0f657ba5259f74'
-            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
-sha256sums_aarch64=('9eced4f3ef6d5be90005f4be4f070ebac2ac4a2af056afbde979eda0e6c9d067')
-sha256sums_armv7h=('5d313f5b5b421dc257879895960903ec5e2e36328a3013911eefcc8e43f73663')
-sha256sums_x86_64=('c03cd0dab0d4b1ac63f0cb26e30deeb2d1335f217d747ecd4a5fa7819a735986')
+            '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
+sha256sums_aarch64=('d353b5934e2d051398e682cb07fb412de57916578ec34bd6d2dbd26169807691')
+sha256sums_armv7h=('ec56e06bd047f1d1dab41ac3df491f82a6214d141eda638f2ff254cda304cbfa')
+sha256sums_x86_64=('d314e2e83c3a86200d0e9ed070d6c66f3267142a312bf9cfe180b0ccaeadff43')
 build() {
-    sed -e "s|@electronversion@|${_electronversion}|" \
-        -e "s|@appname@|${pkgname%-bin}|g" \
-        -e "s|@runname@|app.asar|g" \
-        -e "s|@cfgdirname@|${_appname}|g" \
-        -e "s|@options@||g" \
-        -i "${srcdir}/${pkgname%-bin}.sh"
+    sed -e "
+        s/@electronversion@/${_electronversion}/g
+        s/@appname@/${pkgname%-bin}/g
+        s/@runname@/app.asar/g
+        s/@cfgdirname@/${_appname}/g
+        s/@options@//g
+    " -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
-    sed "s|/opt/${_pkgname}/${_appname}|${pkgname%-bin}|g;s|Video|AudioVideo|g;s|Icon=${_appname}|Icon=${pkgname%-bin}|g" \
-        -i "${srcdir}/usr/share/applications/${_appname}.desktop"
+    sed -i "s/\/opt\/${_pkgname}\/${_appname}/${pkgname%-bin}/g;s/Video/AudioVideo/g;s/Icon=${_appname}/Icon=${pkgname%-bin}/g" \
+        "${srcdir}/usr/share/applications/${_appname}.desktop"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm644 "${srcdir}/opt/${_pkgname}/resources/app.asar" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
-    for icons in 32x32 48x48 64x64 128x128 256x256 512x512 1024x1024;do
-        install -Dm644 "${srcdir}/usr/share/icons/hicolor/${icons}/apps/${_appname}.png" -t "${pkgdir}/usr/share/icons/hicolor/${icons}/apps"
+    cp -r "${srcdir}/opt/${_pkgname}/resources/app.asar.unpacked" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
+    _icon_sizes=(192x192 256x256 512x512 1024x1024)
+    for _icons in "${_icon_sizes[@]}";do
+        install -Dm644 "${srcdir}/usr/share/icons/hicolor/${_icons}/apps/${_appname}.png" -t "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps"
     done
     install -Dm644 "${srcdir}/usr/share/applications/${_appname}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
     install -Dm644 "${srcdir}/LICENSE-${pkgver}.md" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.md"
