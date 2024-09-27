@@ -1,8 +1,8 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=fontproof
-pkgver=2.2.1
-pkgrel=1
+pkgver=2.2.2
+pkgrel=2
 _rockrel=1
 pkgdesc='A font design testing class and CLI tool for SILE'
 arch=(any)
@@ -12,22 +12,21 @@ depends=(lua51-cliargs
          luajit
          sile)
 makedepends=(luarocks)
-_archive="$pkgname-$pkgver"
-_rock="$_archive-$_rockrel.all.rock"
-_rockspec="$_archive-$_rockrel.rockspec"
-source=("$url/archive/v$pkgver/$_archive.tar.gz")
-sha256sums=('272211f604b9be5839e37f0ab9ffbb536fa22a8c3577fbac391f5782daa893a3')
+_rock="$pkgname-$pkgver-$_rockrel.src.rock"
+source=("$url/releases/download/v$pkgver/$_rock"{,.asc})
+sha256sums=('73dd9bae627c484e91d3101a2db8b2a89d46b098a51adac1877347d3b73821c9'
+            'SKIP')
+validpgpkeys=('9F377DDB6D3153A48EB3EB1E63CC496475267693') # Caleb Maclennan <caleb@alerque.com> (@alerque)
 
 prepare() {
-	cd "$_archive"
 	luarocks --local init
-	luarocks --local --lua-version 5.1 config --scope project lua_interpreter luajit
+	luarocks --local config --scope project lua_version 5.1
+	luarocks --local config --scope project lua_interpreter luajit
+	luarocks --local config --scope project variables.LUA "$(command -v luajit)"
 }
 
 package() {
-	cd "$_archive"
-	luarocks --lua-version 5.1 --tree "$pkgdir/usr/" \
-		make --deps-mode none --no-manifest -- rockspecs/$_rockspec
-	sed -i -e "s!$pkgdir!!" "$pkgdir/usr/bin/$pkgname"
-	install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname/" LICENSE.md
+	luarocks --tree "$pkgdir/usr/" install --deps-mode none --no-manifest -- $_rock
+	# sed -i -e "s!$pkgdir!!" "$pkgdir/usr/bin/$pkgname"
+	# install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname/" LICENSE.md
 }
