@@ -1,5 +1,5 @@
 pkgname=garden-tools
-pkgver=1.7.0
+pkgver=1.8.0
 pkgrel=1
 pkgdesc="Garden grows and cultivates collections of Git trees"
 arch=('x86_64')
@@ -8,7 +8,7 @@ license=('MIT')
 depends=('gcc-libs')
 makedepends=('cargo')
 source=("https://gitlab.com/garden-rs/garden/-/archive/v${pkgver}/garden-v${pkgver}.tar.gz")
-sha256sums=('a5687dda1feee7ea97105c9f7a725b917519b8d361594f871a59a9574992fd03')
+sha256sums=('15f39dfa378505ba463599a0330ad6c63020c37ad449ffba4bf31e4b3f30b9fc')
 
 prepare() {
   cd "garden-v${pkgver}"
