@@ -11,11 +11,13 @@
 : ${_nodeversion:=22}
 : ${_pandocver:=current}
 : ${_sociver:=4.0.3}
+: ${_quarto_branch:=release/rstudio-cranberry-hibiscus}
+: ${_quarto:=false}
 
 ## basic info
 _pkgname="rstudio-desktop"
 pkgname="$_pkgname-git"
-pkgver=2024.04.2.r377.g42d4fe2
+pkgver=2024.09.0.r181.g37e8dd3
 pkgrel=1
 pkgdesc="A powerful and productive integrated development environment (IDE) for R programming language"
 url="https://github.com/rstudio/rstudio"
@@ -51,6 +53,10 @@ optdepends=(
   'quarto: for Quarto projects support'
 )
 
+if [[ "${_quarto::1}" == "t" ]]; then
+  depends+=('quarto')
+fi
+
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 
@@ -59,7 +65,7 @@ options=('!emptydirs' '!debug')
 _pkgsrc="$_pkgname"
 source=(
   "$_pkgsrc"::"git+https://github.com/rstudio/rstudio.git"
-  "quarto"::"git+https://github.com/quarto-dev/quarto.git#branch=release/rstudio-cherry-blossom"
+  "quarto"::"git+https://github.com/quarto-dev/quarto.git#branch=${_quarto_branch}"
   "soci-$_sociver.tar.gz"::"https://github.com/SOCI/soci/archive/refs/tags/v${_sociver}.tar.gz"
   '0003-fix_boost_186.patch'
 )
@@ -174,15 +180,15 @@ build() (
   _nvm_env
   # Quarto set up
   if (pacman -Q quarto > /dev/null 2> /dev/null); then
-    _quarto="TRUE"
-    msg "Quarto is installed, include it to build"
+    _quarto="ON"
+    msg "Quarto is installed, linking for build"
     cd "$srcdir/$_pkgsrc/dependencies"
     install -d quarto/bin/tools
     ln -sfT /usr/bin/quarto quarto/bin/quarto
     ln -sfT /usr/bin/pandoc quarto/bin/tools/pandoc
   else
-    _quarto="FALSE"
-    msg "Quarto is not installed, use Pandoc"
+    _quarto="OFF"
+    msg "Quarto is not installed, using Pandoc"
     cd "$srcdir/$_pkgsrc/dependencies"
     install -d pandoc/${_pandocver}/bin/tools
     ln -sfT /usr/bin/pandoc pandoc/${_pandocver}/bin/tools/pandoc
