@@ -27,6 +27,8 @@ prepare() {
 
 package() {
 	luarocks --tree "$pkgdir/usr/" install --deps-mode none --no-manifest -- $_rock
-	# sed -i -e "s!$pkgdir!!" "$pkgdir/usr/bin/$pkgname"
-	# install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname/" LICENSE.md
+	sed -i -E -e 's#package.c?path="[^"]+"[^;]+;##g' -e "s#$pkgdir##g" "$pkgdir/usr/bin/$pkgname"
+	local _licensedir="$pkgdir/usr/share/licenses/$pkgname/"
+	install -d "$_licensedir"
+	ln -s /usr/lib/luarocks/rocks-5.1/$pkgname/$pkgver-$_rockrel/doc/LICENSE.md "$_licensedir/"
 }
