@@ -1,6 +1,6 @@
-# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Maintainer: mekambe <grubyogon10@gmail.com>
 
-## PGP key: https://github.com/joachimmetz.gpg
+
 
 pkgname=libbde
 pkgver=20240502
@@ -10,19 +10,19 @@ url="https://github.com/libyal/libbde"
 arch=('x86_64')
 license=('GPL3')
 depends=('openssl' 'libcrypt.so')
-makedepends=('python')
+makedepends=('python' 'git' 'gcc')
 optdepends=('fuse: bdemount support')
 provides=('libbde.so' 'pybde.so' 'python-pybde')
 source=("$pkgname-$pkgver.tar.gz::$url/releases/download/$pkgver/libbde-alpha-$pkgver.tar.gz"
         "$pkgname-$pkgver.tar.gz.asc::$url/releases/download/$pkgver/libbde-alpha-$pkgver.tar.gz.asc")
-sha256sums=('b8c6f0a1f6e878f0855a5c4439d45b64aeee66e8f43190bfaaeb16baed019bb8'
-            'SKIP')
-validpgpkeys=('0ED9020DA90D3F6E70BD3945D9625E5D7AD0177E') # Joachim Metz
+sha256sums=('2daeabcc139fc812170e7efcbd76fc194b7c8e0424ceca8cdfc91167bb77169d'
+'bbe9bddbf77551e61b50de5c873b18b52a3bc77266e46ec52ca2cfb7b7c52414')
+validpgpkeys=('0ED9020DA90D3F6E70BD3945D9625E5D7AD0177E') 
 
 build() {
   cd "$pkgname-$pkgver"
   ./configure --prefix=/usr --enable-python
-  make CFLAGS="${CFLAGS}" LDFLAGS="${LDFLAGS}"
+  make CFLAGS="${CFLAGS}" LDFLAGS="${LDFLAGS}" -j$(nproc)
 }
 
 package() {
