@@ -2,7 +2,7 @@
 
 pkgname=byedpi-bin
 pkgver=0.14.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple and fast software designed to bypass Deep Packet Inspection"
 arch=(aarch64 armv6h armv7h x86_64)
 url="https://github.com/hufrea/${pkgname%-bin}"
@@ -12,15 +12,15 @@ conflicts=(${pkgname%-bin})
 options=(!debug)
 backup=(etc/${pkgname%-bin}.conf)
 source=(
-  ${pkgname%-bin}.{conf,service}
+  $url/raw/main/dist/linux/${pkgname%-bin}.{conf,service}
   $url/raw/main/LICENSE
 )
 source_aarch64=($url/releases/download/v$pkgver/${pkgname%-bin}-${pkgver:2}-aarch64.tar.gz)
 source_armv6h=( $url/releases/download/v$pkgver/${pkgname%-bin}-${pkgver:2}-armv6.tar.gz)
 source_armv7h=( $url/releases/download/v$pkgver/${pkgname%-bin}-${pkgver:2}-armv7l.tar.gz)
 source_x86_64=( $url/releases/download/v$pkgver/${pkgname%-bin}-${pkgver:2}-x86_64.tar.gz)
-b2sums=('63b1b2d974e9f26dd0cb67ad86c9eb28611444d1db2dc1ce80bb21e8a57a71a2a9d247e3f217ae2ffad9af6f45a9f37f4e7eb57795d28e7cc00c8abe7a464349'
-        'f3340917f897d376466c5d3e4c4d6d4e29d929da2f44626e779a80a989a9376082388c941197fc16c78e848e7ee7e38f1a22ffbda5f7cdc6eee5556b4d16bc72'
+b2sums=('a00ad63914d0af3a6e44a968e8dba9af7051db841a4db913f2534d45b5122ade8974444ccdc612e0562d3bf3a9cb9fb868f453db29c8c6cc6a770793c826cc3f'
+        '639fc319c8273d0c727fd8805b271cb4a415ef1df29f261369d86a836ae2a0dd00d34b51298fc06fd41a3957e144277a1a2508fefebfaee60dd5813b6242e871'
         'dd51700e972d759a2297bddc15455477a9574b98174e48c6c89236999fb028c09b8eff8a67067bc49e1a8830e43c7a6d76c4c5c644716562818b02320463e1aa')
 b2sums_aarch64=('438626ba039a13d3927a361a44175f969e5764b3985ab89a10d5b24e1b4e88e2b28c37bd0d1414a768e8f3351a54938332a8c4b7619acf7cf8b74fc0be972bc4')
 b2sums_armv6h=('079e6ddf5f3c18a97db9920d028a025480ec6a88b2038d82ae6c53d9bbe19534ef14cd59a5ab252059ee6b6635ce86fda1858de5274a97d7dbdab422f0f3acb6')
