@@ -1,7 +1,7 @@
 pkgbase = alberta
 	pkgdesc = Adaptive multi-Level finite element toolbox
 	pkgver = 3.1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.alberta-fem.de
 	arch = x86_64
 	license = GPL2

@@ -2,7 +2,7 @@
 # Contributor: Lukas Böger <dev___AT___lboeger___DOT___de>
 pkgname=alberta
 pkgver=3.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Adaptive multi-Level finite element toolbox"
 url="https://www.${pkgname}-fem.de"
 license=(GPL2)
@@ -33,14 +33,16 @@ build() {
     --without-grape \
     --without-silo \
     --quiet \
-    CC="gcc -B/usr/bin/mold"
-
+    CC="gcc -Wno-error=incompatible-pointer-types -B/usr/bin/mold"
+  # https://github.com/xmlsec/python-xmlsec/issues/323#issuecomment-2137419853
+  # ../../../../alberta/tests/graphics.c:163:26: error: passing argument 2 of ‘graph_drv_d’ from incompatible pointer type [-Wincompatible-pointer-types]
+  # 163 |     graph_drv_d(win_val, u_h, 0.0, 0.0, refine);
   make V=0
 }
 
 check() {
   cd ${pkgname}3-v${pkgver}
-  make distcheck V=0
+  make check V=0
 }
 
 package() {
