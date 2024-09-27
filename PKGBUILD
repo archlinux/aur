@@ -97,7 +97,7 @@ check() {
 }
 
 package() {
-  depends+=('libqtutilities-qt6.so' 'libqtforkawesome-qt6.so' 'libc++utilities-qt6.so' 'libboost_filesystem.so')
+  depends+=('libqtutilities-qt6.so' 'libqtforkawesome-qt6.so' 'libc++utilities.so' 'libboost_filesystem.so')
 
   cd "$srcdir/${PROJECT_DIR_NAME:-$_reponame-$pkgver}"
   DESTDIR="${pkgdir}" ninja install

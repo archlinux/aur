@@ -46,5 +46,5 @@ pkgname = syncthingtray-qt6
 	depends = qt6-declarative
 	depends = libqtutilities-qt6.so
 	depends = libqtforkawesome-qt6.so
-	depends = libc++utilities-qt6.so
+	depends = libc++utilities.so
 	depends = libboost_filesystem.so
