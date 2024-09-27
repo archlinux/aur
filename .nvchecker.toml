@@ -1,0 +1,4 @@
+[thruk]
+source = "regex"
+url = "https://thruk.org/download.html"
+regex = ">thruk-(.*)\\.tar.gz<"
