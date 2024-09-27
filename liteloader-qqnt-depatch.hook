@@ -5,6 +5,6 @@ Target=liteloader-qqnt-git
 Target=liteloader-qqnt-bin
 
 [Action]
-Description=Depatch QQ for LiteLoaderQQNT
+Description=Unpatch QQ for LiteLoaderQQNT
 When=PreTransaction
-Exec=/bin/sh -c "grep -q /opt/LiteLoaderQQNT /opt/QQ/resources/app/app_launcher/index.js && sed -i '1d' /opt/QQ/resources/app/app_launcher/index.js" && /bin/sh -c "rm -rf /opt/QQ/resources/app/application"
+Exec=/bin/sh -c '/opt/LiteLoaderQQNT/patching/liteloader-qqnt-patcher.sh .\/application\/app_launcher\/index.js; echo "Unpatch done, but it\'s recommended to reinstall QQNT.";'
