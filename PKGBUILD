@@ -4,7 +4,7 @@
 # Contributor: Spider.007 <archlinux AT spider007 DOT net>
 
 pkgname=kibana
-pkgver=7.10.2
+pkgver=8.15.1
 pkgrel=1
 pkgdesc='Browser based analytics and search dashboard for Elasticsearch'
 url='https://www.elastic.co/products/kibana'
@@ -14,17 +14,22 @@ depends=('nodejs')
 optdepends=('elasticsearch')
 backup=('etc/kibana/kibana.yml')
 options=('!strip' 'emptydirs')
-source=(https://artifacts.elastic.co/downloads/${pkgname}/${pkgname}-oss-${pkgver}-linux-x86_64.tar.gz
+source=(https://artifacts.elastic.co/downloads/${pkgname}/${pkgname}-${pkgver}-linux-x86_64.tar.gz
+        https://artifacts.elastic.co/downloads/${pkgname}/${pkgname}-${pkgver}-linux-x86_64.tar.gz.asc
         kibana.service
         tmpfile.conf
         user.conf)
-sha512sums=('77ebb247d5326f3f9ab97d57ecc00c7f70deae0e1857d8b5d8f9a5d05d6713e27514cca342df666be79ab85a580e9dc5c7fa9676d67e95db64a0d69546d8d699'
+
+sha512sums=(SKIP
+            SKIP
             '3002f529c0960f1a0c233f7589819ed9c06c8ec6539ef416529d212bd1657d61bf0662b954b2b2dbff8a33cea2d545ea34e06df9088590156564e08bfc20216b'
             'afed49c164561f3c658a6d2423519adcf4d5293c416cd93fa5c9d12421416c1e9cb4287e832009049cfd014b365dc1cd93d9cf879117c701cce4caad3b772a8e'
             '9085884430c656cc68b855c3d6740e5fd0854a8785930341b29e15e201deacc1870d8223255d9ebe096cb111319bea9bf4faa03d0760d5819976ebf912221c7d')
 
+validpgpkeys=('46095ACC8548582C1A2699A9D27D666CD88E42B4')
+
 prepare() {
-  cd ${pkgbase}-${pkgver}-linux-x86_64
+  cd ${pkgbase}-${pkgver}
 
   # remove nodejs strict version requirements
   sed "s@^var isVersionValid = .*@var isVersionValid = true;@" -i src/setup_node_env/node_version_validator.js
@@ -34,7 +39,7 @@ prepare() {
 }
 
 package() {
-  cd ${pkgbase}-${pkgver}-linux-x86_64
+  cd ${pkgbase}-${pkgver}
 
   install -dm 755 "${pkgdir}/usr/share/kibana"
   cp -a * "${pkgdir}/usr/share/kibana"
