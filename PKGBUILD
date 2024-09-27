@@ -1,7 +1,7 @@
 # Maintainer: Emanuel Couto <unit73e@gmail.com>
 pkgname=cnijfilter2
-pkgver=6.60
-pkgrel=2
+pkgver=6.70
+pkgrel=1
 pkgdesc="Canon IJ Printer Driver for Linux"
 arch=('i686' 'x86_64')
 url="https://www.canon.com.au/home-printers"
@@ -10,8 +10,8 @@ depends=('cups' 'libxml2' 'ghostscript')
 makedepends=('automake' 'autoconf')
 provides=('tocanonij' 'tocnpwg' 'cnijlgmon3')
 conflicts=('cnijfilter' 'cnijfilter-mg3600')
-source=("https://gdlp01.c-wss.com/gds/3/0100011753/01/$pkgname-source-$pkgver-1.tar.gz" 'add-missing-import.patch')
-sha256sums=('997119d67897d2b6405555bc6baa4cf7727bf0ecc6467f86df408831b1dab6d0'
+source=("https://gdlp01.c-wss.com/gds/7/0100012137/01/$pkgname-source-$pkgver-1.tar.gz" 'add-missing-import.patch')
+sha256sums=('8c4e8c047fc3ed0848ecc315b3101d30fce0c1256c88844ba248b3cf9aec9e3e'
             'a1f2ebcfa0c5c6e0d680480bd349ff4b8e4315d031315819ff92a1c11e3d2281')
 
 prepare() {
@@ -112,7 +112,7 @@ package() {
 
 	install -m644 com/ini/cnnet.ini "$pkgdir/usr/lib/bjlib2"
 	install -sm755 com/libs_bin_$CARCH/*.so.* "$pkgdir/usr/lib"
-	install -Dm644 doc/LICENSE-cnijfilter-${pkgver}EN.txt \
+	install -Dm644 doc/LICENSE-cnijfilter-${pkgver}aEN.txt \
 		"$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
 	pushd ppd
