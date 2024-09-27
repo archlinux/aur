@@ -1,6 +1,6 @@
 pkgbase = android-x86-64-svt-av1
 	pkgdesc = Scalable Video Technology AV1 encoder and decoder (Android x86-64)
-	pkgver = 2.1.2
+	pkgver = 2.2.1
 	pkgrel = 1
 	url = https://gitlab.com/AOMediaCodec/SVT-AV1
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = android-x86-64-svt-av1
 	options = !buildflags
 	options = staticlibs
 	options = !emptydirs
-	source = https://gitlab.com/AOMediaCodec/SVT-AV1/-/archive/v2.1.2/SVT-AV1-v2.1.2.tar.bz2
-	md5sums = 258adaba11d2b990e81277a078b20211
+	source = https://gitlab.com/AOMediaCodec/SVT-AV1/-/archive/v2.2.1/SVT-AV1-v2.2.1.tar.bz2
+	md5sums = 975ab9ee4fd0dc08eba47b31bae15c78
 
 pkgname = android-x86-64-svt-av1
