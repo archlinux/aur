@@ -2,14 +2,14 @@
 # Contributor: jackoneill <cantabile dot desu at gmail dot com>
 
 pkgname=vapoursynth-git
-pkgver=R66.54.g1be0e1a7
+pkgver=R70.11.0.g5657c20b
 pkgrel=1
 pkgdesc="A video processing framework with simplicity in mind. (GIT version)"
 arch=('x86_64')
 url='http://www.vapoursynth.com'
 license=('LGPL2.1' 'custom:OFL' 'custom:WFTPL')
 depends=(
-  'zimg-git'
+  'zimg'
   'python'
 )
 makedepends=(
