@@ -4,8 +4,8 @@
 _android_arch=armv7a-eabi
 
 pkgname=android-${_android_arch}-imath
-pkgver=3.1.11
-pkgrel=2
+pkgver=3.1.12
+pkgrel=1
 pkgdesc="A C++ and python library of 2D and 3D vector, matrix, and math operations for computer graphics (Android ${_android_arch})"
 arch=('any')
 url='https://www.openexr.com/'
@@ -16,7 +16,7 @@ makedepends=('android-cmake'
              "android-${_android_arch}-boost")
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("https://github.com/AcademySoftwareFoundation/Imath/archive/v${pkgver}/imath-${pkgver}.tar.gz")
-sha256sums=('9057849585e49b8b85abe7cc1e76e22963b01bfdc3b6d83eac90c499cd760063')
+md5sums=('2262c2f1f2915695eb38523e632c31ea')
 
 build() {
     cd "${srcdir}/Imath-${pkgver}"
