@@ -3,7 +3,7 @@
 pkgbase=bayestraits
 _pkg=BayesTraits
 pkgname=('bayestraits' 'bayestraits-mpi')
-pkgver=4.1.2
+pkgver=4.1.3
 pkgrel=1
 arch=('x86_64')
 pkgdesc="A computer package for performing analyses of trait evolution among groups of species \
@@ -12,7 +12,7 @@ url="http://www.evolution.reading.ac.uk/BayesTraits.html"
 license=('GPL')
 makedepends=('gcc' 'nlopt' 'gsl' )
 source=(http://www.evolution.reading.ac.uk/BayesTraitsV${pkgver}/Files/BayesTraitsV${pkgver}-src.tar.gz)
-sha256sums=('0423daf1e385c8a007d932fb4c31365ec2a834d5929915ecd999c8e732d07d4a')
+sha256sums=('1c16bb161d3bd910ea8cb5af2c0f71551da5419fbf3d2eca822c1625320e6613')
 build() {
   cd ${_pkg}V${pkgver}-src
   gcc *.c -O3 -lm -lgsl -lgslcblas -lnlopt -o $pkgbase
