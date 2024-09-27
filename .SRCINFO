@@ -1,7 +1,7 @@
 pkgbase = reboot-to-windows
 	pkgdesc = Application to quickly reboot to Windows from Linux, bypassing the boot menu.
-	pkgver = 1.2
-	pkgrel = 2
+	pkgver = 1.3
+	pkgrel = 1
 	url = https://github.com/Wartybix/Reboot-To-Windows
 	arch = any
 	license = GPL-3.0-only
@@ -9,7 +9,7 @@ pkgbase = reboot-to-windows
 	depends = efibootmgr
 	depends = bash
 	optdepends = qt5-tools: Reboot screen support for KDE
-	source = reboot-to-windows-1.2.tar.gz::https://github.com/Wartybix/Reboot-To-Windows/archive/1.2.tar.gz
-	sha256sums = 25823808407ef5165b14735a332b476fcc8ddaefc770ddf9fbda9dd7e589c5bc
+	source = reboot-to-windows-1.3.tar.gz::https://github.com/Wartybix/Reboot-To-Windows/archive/1.3.tar.gz
+	sha256sums = 076e3cef98e3472b571af0eeba77be66a0db99c1595f77a7f951f11df333cfd6
 
 pkgname = reboot-to-windows
