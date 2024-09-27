@@ -8,7 +8,11 @@ pkgdesc="A free-to-win rhythm game. Rhythm is just a *click* away!"
 arch=(x86_64)
 url="https://osu.ppy.sh"
 license=("LicenseRef-custom")
-depends=("lttng-ust2.12")
+depends=(
+  "libgl"
+  "vulkan-driver"
+  "lttng-ust2.12"
+)
 makedepends=("desktop-file-utils")
 provides=(
   "osu-lazer"
