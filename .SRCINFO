@@ -1,0 +1,13 @@
+pkgbase = python-mingw-ldd
+	pkgdesc = Lists dependencies of a PE (exe/dll) file
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://github.com/nurupo/mingw-ldd
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python-pefile
+	source = https://github.com/nurupo/mingw-ldd/archive/refs/tags/v0.2.1.tar.gz
+	sha256sums = 60d34506d2f345e011b88de172ef312f37ca3ba87f3764f511061b69878ab204
+
+pkgname = python-mingw-ldd
