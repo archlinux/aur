@@ -1,16 +1,20 @@
 # Maintainer: maoyaotang <292898660@qq.com>
 
 pkgname=ttf-honorsans
-_pkgname=honorsans
-pkgver=1.2
+_pkgname=HONORSans
+pkgver=1.2.r1.g9c61e21
 pkgrel=1
 pkgdesc='华为HONORSans字体'
 arch=('any')
 url='https://developer.honor.com/cn/'
 license=('custom')
 provides=('HONORSans')
-source=("git+https://gitee.com/mao-yaotang/honorsans.git")
+source=("git+https://github.com/maoyaotang12/HONORSans.git")
 sha256sums=('SKIP')
+pkgver() {
+    cd "${_pkgname}"
+    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/v//g'
+}
 
 package() {
   cd "${_pkgname}"
