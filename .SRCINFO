@@ -1,5 +1,5 @@
-pkgbase = tic80-pro
-	pkgdesc = TIC-80 is a fantasy computer for making, playing and sharing tiny games.
+pkgbase = tic80-pro-git
+	pkgdesc = TIC-80 is a fantasy computer for making, playing and sharing tiny games. This is the pro version, built from git, for those who don't have money to buy it.
 	pkgver = 1.1.2837
 	pkgrel = 1
 	url = https://tic80.com
@@ -16,4 +16,4 @@ pkgbase = tic80-pro
 	source = git+https://github.com/nesbox/TIC-80.git#tag=v1.1.2837
 	sha256sums = SKIP
 
-pkgname = tic80-pro
+pkgname = tic80-pro-git
