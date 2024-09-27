@@ -1,0 +1,18 @@
+pkgbase = process-mem
+	pkgdesc = Display Memory Used by Process(es)
+	pkgver = 0.9.1
+	pkgrel = 1
+	url = https://github.com/gene-git/process-mem
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-wheel
+	makedepends = python-hatch
+	makedepends = rsync
+	makedepends = python-docutils
+	depends = python>=3.11
+	source = git+https://github.com/gene-git/process-mem#tag=0.9.1
+	sha512sums = SKIP
+
+pkgname = process-mem
