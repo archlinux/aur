@@ -2,14 +2,14 @@
 
 pkgname=eco-paste-beta-bin
 _pkgname="eco-paste"
-pkgver=0.1.0-rc.1
+pkgver=0.2.0-beta.1
 pkgrel=1
 pkgdesc="内测预览版!!!🎉跨平台的剪贴板管理工具 | Cross-platform clipboard management tool ."
 arch=('any')
 url="https://github.com/EcoPasteHub/EcoPaste"
 license=('Apache-2.0')
-provides=("eco-paste" "EcoPaste" "eco-paste" "eco-paste-beta-bin")
-conflicts=("eco-paste-git" "eco-paste-appimage" "eco-paste-beta-bin")
+provides=("eco-paste" "EcoPaste" "eco-paste-beta")
+conflicts=("eco-paste" "eco-paste-git" "eco-paste-appimage" "eco-paste-bin")
 optdepends=()
 _ocr_languages=(afr amh ara asm aze_cyrl aze bel ben bod bos bre bul cat ceb ces chi_sim chi_sim_vert
 chi_tra chi_tra_vert chr cos cym dan deu div dzo ell eng enm epo est eus fao fas fil fin fra frk
@@ -26,7 +26,7 @@ source=(
   "${_pkgname}-${pkgver}_amd64.deb::${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_amd64.deb"
   "LICENSE::https://raw.githubusercontent.com/EcoPasteHub/EcoPaste/refs/heads/master/LICENSE"
 )
-sha256sums=('7e24917cd0a772dcb8cb733f47c8853f1aa972a17d3fa3247dc0f085af08e28d'
+sha256sums=('ee369400a52864c0e59a1cae44a751a4d3c85681819c8c3494c8035a723924b9'
             'c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4')
 # 修复不能出现短线的问题
 fixver(){

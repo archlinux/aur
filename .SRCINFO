@@ -1,6 +1,6 @@
 pkgbase = eco-paste-beta-bin
 	pkgdesc = 内测预览版!!!🎉跨平台的剪贴板管理工具 | Cross-platform clipboard management tool .
-	pkgver = 0.1.0_rc.1
+	pkgver = 0.2.0_beta.1
 	pkgrel = 1
 	url = https://github.com/EcoPasteHub/EcoPaste
 	arch = any
@@ -131,14 +131,14 @@ pkgbase = eco-paste-beta-bin
 	optdepends = tesseract-data-best-yor: yor supported image OCR library tesseract
 	provides = eco-paste
 	provides = EcoPaste
-	provides = eco-paste
-	provides = eco-paste-beta-bin
+	provides = eco-paste-beta
+	conflicts = eco-paste
 	conflicts = eco-paste-git
 	conflicts = eco-paste-appimage
-	conflicts = eco-paste-beta-bin
-	source = eco-paste-0.1.0-rc.1_amd64.deb::https://github.com/EcoPasteHub/EcoPaste/releases/download/v0.1.0-rc.1/eco-paste_0.1.0-rc.1_amd64.deb
+	conflicts = eco-paste-bin
+	source = eco-paste-0.2.0-beta.1_amd64.deb::https://github.com/EcoPasteHub/EcoPaste/releases/download/v0.2.0-beta.1/eco-paste_0.2.0-beta.1_amd64.deb
 	source = LICENSE::https://raw.githubusercontent.com/EcoPasteHub/EcoPaste/refs/heads/master/LICENSE
-	sha256sums = 7e24917cd0a772dcb8cb733f47c8853f1aa972a17d3fa3247dc0f085af08e28d
+	sha256sums = ee369400a52864c0e59a1cae44a751a4d3c85681819c8c3494c8035a723924b9
 	sha256sums = c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4
 
 pkgname = eco-paste-beta-bin
