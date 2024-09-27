@@ -1,6 +1,6 @@
 pkgbase = qdrant
 	pkgdesc = Vector Database for the next generation of AI applications
-	pkgver = 1.11.4
+	pkgver = 1.11.5
 	pkgrel = 1
 	url = https://github.com/qdrant/qdrant
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = qdrant
 	makedepends = protobuf
 	depends = gcc-libs
 	depends = glibc
-	source = https://github.com/qdrant/qdrant/archive/refs/tags/v1.11.4.tar.gz
-	sha256sums = 273c55d8e743f0830cffd0f99e778cbfca444be1e0c74a9cf972929f760f7cb3
+	source = https://github.com/qdrant/qdrant/archive/refs/tags/v1.11.5.tar.gz
+	sha256sums = 18219a50e8fe7eb8d4e4a672570ca4835a57177e06e8fc76648834fedc228bdf
 
 pkgname = qdrant
