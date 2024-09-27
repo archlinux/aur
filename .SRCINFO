@@ -1,7 +1,7 @@
 pkgbase = android-aarch64-libjxl
 	pkgdesc = JPEG XL image format reference implementation (Android aarch64)
-	pkgver = 0.10.3
-	pkgrel = 2
+	pkgver = 0.11.0
+	pkgrel = 1
 	url = https://jpeg.org/jpegxl/
 	arch = any
 	groups = android-libjxl
@@ -27,7 +27,7 @@ pkgbase = android-aarch64-libjxl
 	options = !buildflags
 	options = staticlibs
 	options = !emptydirs
-	source = https://github.com/libjxl/libjxl/archive/refs/tags/v0.10.3.tar.gz
-	md5sums = 0fd3db8956a41d13b5e8eac4fe61d8d3
+	source = https://github.com/libjxl/libjxl/archive/refs/tags/v0.11.0.tar.gz
+	md5sums = 2b8433176a334480d21af02fd8bdc6fe
 
 pkgname = android-aarch64-libjxl
