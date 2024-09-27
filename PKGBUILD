@@ -1,23 +1,26 @@
-
 pkgname=mingw-w64-ldd
-pkgver=1
+pkgver=1.1
 pkgrel=1
 arch=('any')
 pkgdesc="Tool to list dependencies of a DLL"
-depends=('python-pefile')
-license=("WTFPL")
-url="https://github.com/xantares/mingw-ldd"
-source=('https://github.com/xantares/mingw-ldd/raw/master/mingw-ldd.py')
+depends=('python-mingw-ldd')
+license=("MIT")
+url="https://github.com/nurupo/mingw-ldd"
+source=("mingw-ldd.sh")
 sha256sums=('SKIP')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
+
+build() {
+  for _arch in ${_architectures}; do
+    sed "s|@TRIPLE@|${_arch}|g" mingw-ldd.sh > ${_arch}-ldd
+  done
+}
+
 package() {
   install -d "${pkgdir}"/usr/bin
-  install -d "${pkgdir}"/usr/share/mingw
-  install -m 755 mingw-ldd.py "${pkgdir}"/usr/share/mingw/
   for _arch in ${_architectures}; do
-    cd "${pkgdir}"/usr/bin
-    ln -s ../share/mingw/mingw-ldd.py ${_arch}-ldd
+    install -m 755 ${_arch}-ldd "${pkgdir}"/usr/bin/
   done
 }
