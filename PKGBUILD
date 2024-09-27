@@ -6,8 +6,9 @@ pkgdesc='Creates or removes environment variables from Password Store'
 arch=(any)
 license=('Unlicense')
 depends=(pass bash sed)
-source=('git+https://gitlab.com/aquator/pass2env.git#tag=3e0a8a0769e71de2ce1bfa08da4a0b75243ff478')
-md5sums=('4d56a2863f55a2aa5cd8926e23e28d73')
+source=('git+https://gitlab.com/aquator/pass2env.git?signed#commit=34fcc010d4e3dee7ee6bc4e081c489f8dd91b994')
+md5sums=('b997b1aee3734d0a83b78fee7cce3285')
+validgpgkeys=('B1F16E034EEF474477662AB6F7342E073FC5AFB0')
 
 package() {
 	cd ${pkgname%-git}
