@@ -18,7 +18,7 @@ source=(http://downloads.sourceforge.net/sourceforge/nsnam/nam-1/"${pkgver}"/nam
 sha256sums=('12ed547b3a5f8903890889d40cfea4d9bd66bb9ba6be99a0c753a9763cad8882'
             '2766040c6c367a03efa43e81cbe178150fad6f4ee0b2b6d0b87292cb7c0bfe0b'
             'b0ce4fb0b1fa6fe91ed26fd5daabede4521362f781364edcea4d7bff7d64472c'
-            '8eaaa487d224c0032dda28eaf5839d4cc33d333c4256d2c1a9d889a0c075acc2')
+            'b3ffdcca5a7b4fa01a28e979cc17e3f3174ede408d428d614b1975f029fa08ca')
 
 prepare() {
   cd "${srcdir}"/"${pkgname}"-"${pkgver}"
