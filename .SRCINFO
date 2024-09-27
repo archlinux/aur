@@ -1,13 +1,13 @@
 pkgbase = crest-bin
 	pkgdesc = A program for the automated exploration of low-energy molecular chemical space
-	pkgver = 3.0
+	pkgver = 3.0.2
 	pkgrel = 1
 	url = https://github.com/crest-lab/crest
 	arch = x86_64
 	license = LGPL3
 	provides = crest
 	conflicts = crest
-	source = crest-3.0.zip::https://github.com/crest-lab/crest/releases/download/v3.0/crest-v3.0-intel-meson.zip
-	sha256sums = 852ec12391b178b6ef12e1aca79b98b9d386b822e0f70d5671cf667bdf86693e
+	source = crest-3.0.2.xz::https://github.com/crest-lab/crest/releases/download/v3.0.2/crest-intel-2023.1.0-ubuntu-latest.tar.xz
+	sha256sums = dab8331ac75c27d7876fe93cbdc5159e5bf4c01bbdf8885bcd3579a2959ba26b
 
 pkgname = crest-bin
