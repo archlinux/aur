@@ -15,14 +15,13 @@ depends=(
     "electron${_electronversion}"
 )
 makedepends=(
-    'npm'
     'git'
     'nvm'
     'gendesk'
     'gcc'
     'cmake'
     'curl'
-    'yarn'
+    'bun'
 )
 source=(
     "${pkgname//-/.}::git+${url}.git"
@@ -32,47 +31,51 @@ sha256sums=('SKIP'
             '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 pkgver() {
     cd "${srcdir}/${pkgname//-/.}"
-    git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/v//g'
+    set -o pipefail
+    git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/v//g' ||
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 _ensure_local_nvm() {
-    export NVM_DIR="${srcdir}/.nvm"
+    local NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
     nvm install "${_nodeversion}"
     nvm use "${_nodeversion}"
 }
 build() {
-    sed -e "s|@electronversion@|${_electronversion}|" \
-        -e "s|@appname@|${pkgname%-git}|g" \
-        -e "s|@runname@|app.asar|g" \
-        -e "s|@cfgdirname@|${pkgname%-git}|g" \
-        -e "s|@options@|env ELECTRON_OZONE_PLATFORM_HINT=auto|g" \
-        -i "${srcdir}/${pkgname%-git}.sh"
+    sed -e "
+        s/@electronversion@/${_electronversion}/g
+        s/@appname@/${pkgname%-git}/g
+        s/@runname@/app.asar/g
+        s/@cfgdirname@/${pkgname%-git}/g
+        s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
+    " -i "${srcdir}/${pkgname%-git}.sh"
     _ensure_local_nvm
     gendesk -q -f -n --pkgname="${pkgname%-git}" --pkgdesc="${pkgdesc}" --categories="AudioVideo" --name="${_pkgname}" --exec="${pkgname%-git} %U"
     cd "${srcdir}/${pkgname//-/.}"
-    export npm_config_build_from_source=true
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
-    export ELECTRONVERSION="${_electronversion}"
     HOME="${srcdir}/.electron-gyp"
-    mkdir -p "${srcdir}/.electron-gyp"
-    touch "${srcdir}/.electron-gyp/.yarnrc"
-    if [ `curl -s ipinfo.io/country | grep CN | wc -l ` -ge 1 ];then
-        export npm_config_registry=https://registry.npmmirror.com
-        export npm_config_disturl=https://registry.npmmirror.com/-/binary/node/
-        export npm_config_electron_mirror=https://registry.npmmirror.com/-/binary/electron/
-        export npm_config_electron_builder_binaries_mirror=https://registry.npmmirror.com/-/binary/electron-builder-binaries/
-    else
-        echo "Your network is OK."
+    if [ -f bunfig.toml ]; then
+        rm -rf bunfig.toml
     fi
-    sed "s|\"electron\": \"\^32.0.1\",|\"electron\": \"${SYSTEM_ELECTRON_VERSION}\",|g" -i package.json
-    sed "s|icon\.icns|icon\.png|g" -i main/background.ts
-    sed "s|- AppImage|- dir|g" -i electron-builder.yml
-    corepack enable yarn
-    corepack yarn set version 4.3.1
-    # .yarnrc.yml existed
-    NODE_ENV=development    yarn install #--cache-folder "${srcdir}/.yarn_cache"
-    NODE_ENV=production     yarn run build:linux
+    if [ -f bun.lockb ];then
+        rm -rf bun.lockb
+    fi
+    if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
+        export npm_config_disturl="https://registry.npmmirror.com/-/binary/node/"
+        export npm_config_electron_mirror="https://registry.npmmirror.com/-/binary/electron/"
+        export npm_config_electron_builder_binaries_mirror="https://registry.npmmirror.com/-/binary/electron-builder-binaries/"
+        export sqlite3_binary_site="https://registry.npmmirror.com/-/sqlite3/"
+        {
+            echo '[install]'
+            echo 'registry = "https://registry.npmmirror.com"'
+        } >> bunfig.toml
+    fi
+    sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
+    sed -i "s/icon\.icns/icon\.png/g" main/background.ts
+    sed -i "s/- AppImage/- dir/g" electron-builder.yml
+    bun install
+    bun run build:linux
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"

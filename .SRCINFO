@@ -5,14 +5,13 @@ pkgbase = wora-git
 	url = https://github.com/hiaaryan/wora
 	arch = any
 	license = MIT
-	makedepends = npm
 	makedepends = git
 	makedepends = nvm
 	makedepends = gendesk
 	makedepends = gcc
 	makedepends = cmake
 	makedepends = curl
-	makedepends = yarn
+	makedepends = bun
 	depends = electron32
 	provides = wora=0.4.0.beta0
 	conflicts = wora
