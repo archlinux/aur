@@ -16,13 +16,15 @@ source=(http://downloads.sourceforge.net/sourceforge/nsnam/ns-2/"${pkgver}"/ns-s
         ns-2.35-tcl86.patch
         ns-2.35-getopts.patch
         ns-2.35-gcc-compile-errors.patch
-        ns-2.35-use-std-cpp14.patch)
+        ns-2.35-use-std-cpp14.patch
+        ns-2.35-random-return-type.patch)
 sha256sums=('2a32e831bcec7d255042a544577559d15eae67696d0e3d30881cedc1112e2387'
             'aedba646d1bc4d716031f9ea996e6d99c9bb227e7647138cccf39bdd6c069c3a'
             '7aa4a22492f2be37c81fcdc813972a6bde105e183a013d7b814a56f7bcef872c'
             '4d02ff0cf1c79d67c440c788d7163c7c873a6e4e2970bab3319cbe29f9b20c14'
             'd3a6e6bcc22ca9aa8f8901774eb58a4df3f2f4d6856a260561568a5a6d9f600e'
-            '2fac6b24607dedfd8b96c70a9222f0b92318b2cf0cc1501caf8c1a796771547d')
+            '2fac6b24607dedfd8b96c70a9222f0b92318b2cf0cc1501caf8c1a796771547d'
+            'b17c2104e8e6ff67f2b7835933f11f2eec7f4ac52ac67973ec1bb302cb0535a8')
 
 optdepends=('nam: Tcl/TK based animation tool for viewing network simulation traces',
 	    'xgraph: X-Windows application for interactive plotting and graphing')
@@ -34,6 +36,7 @@ prepare() {
   patch -uNp1 -i ../ns-2.35-getopts.patch
   patch -uNp1 -i ../ns-2.35-gcc-compile-errors.patch
   patch -uNp1 -i ../ns-2.35-use-std-cpp14.patch
+  patch -uNp1 -i ../ns-2.35-random-return-type.patch
 }
 
 build() {

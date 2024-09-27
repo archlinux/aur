@@ -1,0 +1,26 @@
+diff --git a/configure b/configure
+index 9031812..c02b3a0 100755
+--- a/configure
++++ b/configure
+@@ -7981,7 +7981,7 @@ else
+ #include <stdlib.h>
+ #include "confdefs.h"
+ long random() { return 1; }
+-main() { exit(0); }
++int main() { exit(0); }
+
+ _ACEOF
+ if ac_fn_c_try_run "$LINENO"; then :
+diff --git a/configure.in b/configure.in
+index 3b15ba2..c03f829 100644
+--- a/configure.in
++++ b/configure.in
+@@ -52,7 +52,7 @@ touch confdefs.h
+ AC_TRY_RUN([#include <stdlib.h>
+ #include "confdefs.h"
+ long random() { return 1; }
+-main() { exit(0); }
++int main() { exit(0); }
+ ],
+ AC_MSG_RESULT(long)
+ AC_DEFINE(RANDOM_RETURN_TYPE,long)
