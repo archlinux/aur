@@ -1,16 +1,17 @@
 pkgbase = kickpad
 	pkgdesc = Kick drum audio sample generator
-	pkgver = 1.2.3
-	pkgrel = 3
+	pkgver = 1.5.0
+	pkgrel = 1
 	url = https://github.com/xyproto/kickpad
 	arch = x86_64
 	license = MIT
 	makedepends = gendesk
 	makedepends = git
 	makedepends = go
-	depends = ffmpeg
 	depends = glfw
-	source = git+https://github.com/xyproto/kickpad#commit=f5abc72491d811ba5edfd112f4c2d32d6c2da407
-	b2sums = a2c05f4e6655fb3a3cf694f0c381da73d6e2748c3516c721444955a104a3696df41e857281438e0d7b85dfcf2d119f929f6a1e105d14bdb6555ea3d4b0cefc14
+	depends = sdl2
+	depends = sdl2_mixer
+	source = git+https://github.com/xyproto/kickpad#tag=v1.5.0
+	b2sums = 92073afb2dbb9d5aa9cc39c668bd2727ea36f8f9e71d436b6f800c0cbdc348a961c4ea5507e0fa7fa7529c6f63004b02471c88f685036d6b25f737e50b490856
 
 pkgname = kickpad

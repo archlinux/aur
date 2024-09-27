@@ -1,16 +1,16 @@
 # Maintainer: Alexander F. Rødseth <xyproto@archlinux.org>
 
 pkgname=kickpad
-pkgver=1.2.3
-pkgrel=3
+pkgver=1.5.0
+pkgrel=1
 pkgdesc='Kick drum audio sample generator'
 arch=(x86_64)
 url='https://github.com/xyproto/kickpad'
 license=(MIT)
-depends=(ffmpeg glfw)
+depends=(glfw sdl2 sdl2_mixer)
 makedepends=(gendesk git go)
-source=("git+$url#commit=f5abc72491d811ba5edfd112f4c2d32d6c2da407") # tag: v1.2.3
-b2sums=('a2c05f4e6655fb3a3cf694f0c381da73d6e2748c3516c721444955a104a3696df41e857281438e0d7b85dfcf2d119f929f6a1e105d14bdb6555ea3d4b0cefc14')
+source=("git+$url#tag=v$pkgver") # tag: v1.5.0
+b2sums=('92073afb2dbb9d5aa9cc39c668bd2727ea36f8f9e71d436b6f800c0cbdc348a961c4ea5507e0fa7fa7529c6f63004b02471c88f685036d6b25f737e50b490856')
 
 prepare() {
   gendesk -f -n --pkgdesc="$pkgdesc" --pkgname=$pkgname --categories 'AudioVideo;Audio'
@@ -18,7 +18,7 @@ prepare() {
 
 build() {
   cd $pkgname
-  go build -tags exclude_cimgui_sdl -mod=mod -v -trimpath -buildmode=pie -ldflags="-s -w -extldflags '$LDFLAGS'"
+  go build -tags=enable_cimgui_sdl2 -mod=mod -v -trimpath -buildmode=pie -ldflags="-s -w -extldflags '$LDFLAGS'"
 }
 
 package() {
