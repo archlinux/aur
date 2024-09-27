@@ -1,11 +1,12 @@
 pkgbase = perl-bencode
 	pkgdesc = BitTorrent serialisation format
 	pkgver = 1.502
-	pkgrel = 1
+	pkgrel = 2
 	url = https://search.cpan.org/dist/Bencode
 	arch = any
 	license = Artistic-1.0-Perl
 	license = GPL-1.0-or-later
+	checkdepends = perl-exporter-tidy
 	checkdepends = perl-test-differences
 	depends = perl
 	options = !emptydirs
