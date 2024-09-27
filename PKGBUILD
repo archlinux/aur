@@ -8,7 +8,7 @@
 readonly _pkgname="farmOS"
 
 pkgname="farmos"
-pkgver="3.3.0"
+pkgver="3.3.1"
 pkgrel="1"
 pkgdesc="A web-based farm record keeping application."
 arch=("any")
@@ -27,7 +27,7 @@ optdepends=("apache: HTTP server"
     "sqlite: Database")
 source=("${pkgname}-v${pkgver}.tar.gz::${url}/releases/download/${pkgver}/${_pkgname}-${pkgver}.tar.gz"
     "override-${pkgname}.conf")
-sha256sums=("d9daaf3d353879279af4553f79526986985e702e8334505026470d0a304d8aea"
+sha256sums=("c4393032b698f817af4adb5c01220dfd3600d2426913d1bb1c12decbdda268a2"
     "d42161c817011222d256232cacecf6b176901d48f8e7db70a10de5e98ea102bd")
 
 build()
