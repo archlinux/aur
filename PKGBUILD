@@ -2,7 +2,7 @@
 # shellcheck disable=2034,2154,2164
 pkgname=signal-monochrome-tray
 pkgver=0.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="changes the tray icon of Signal to monochrome"
 url="https://github.com/doppelhelix/signal-monochrome-tray-hook"
 arch=(any)
