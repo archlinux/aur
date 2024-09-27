@@ -1,13 +1,13 @@
 pkgbase = pass2env-git
 	pkgdesc = Creates or removes environment variables from Password Store
 	pkgver = 1.0
-	pkgrel = 0
+	pkgrel = 1
 	arch = any
 	license = Unlicense
 	depends = pass
 	depends = bash
 	depends = sed
-	source = git+https://gitlab.com/aquator/pass2env.git?signed#commit=34fcc010d4e3dee7ee6bc4e081c489f8dd91b994
-	md5sums = b997b1aee3734d0a83b78fee7cce3285
+	source = git+https://gitlab.com/aquator/pass2env.git?signed#commit=7a72952fe35950c285455aecdeecf599dfdeb083
+	md5sums = 88669a1b48de1b1827b6ab7370b2db86
 
 pkgname = pass2env-git

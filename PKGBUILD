@@ -1,13 +1,13 @@
 # Maintainer: Rábel, István <thraex dot aquator at icloud dot com>
 pkgname='pass2env-git'
 pkgver=1.0
-pkgrel=0
+pkgrel=1
 pkgdesc='Creates or removes environment variables from Password Store'
 arch=(any)
 license=('Unlicense')
 depends=(pass bash sed)
-source=('git+https://gitlab.com/aquator/pass2env.git?signed#commit=34fcc010d4e3dee7ee6bc4e081c489f8dd91b994')
-md5sums=('b997b1aee3734d0a83b78fee7cce3285')
+source=('git+https://gitlab.com/aquator/pass2env.git?signed#commit=7a72952fe35950c285455aecdeecf599dfdeb083')
+md5sums=('88669a1b48de1b1827b6ab7370b2db86')
 validgpgkeys=('B1F16E034EEF474477662AB6F7342E073FC5AFB0')
 
 package() {
