@@ -3,8 +3,8 @@
 _android_arch=x86
 
 pkgname=android-${_android_arch}-expat
-pkgver=2.6.2
-pkgrel=2
+pkgver=2.6.3
+pkgrel=1
 arch=('any')
 pkgdesc="An XML parser library (Android ${_android_arch})"
 url="https://libexpat.github.io/"
@@ -14,7 +14,7 @@ depends=('android-ndk')
 makedepends=('android-cmake')
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("https://github.com/libexpat/libexpat/archive/R_${pkgver//./_}.tar.gz")
-md5sums=('99a0df949cc18e9a21ee335b06bedce1')
+md5sums=('985086e206a01e652ca460eb069e4780')
 
 build() {
     cd "${srcdir}/libexpat-R_${pkgver//./_}/expat"
