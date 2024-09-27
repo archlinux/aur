@@ -2,7 +2,7 @@
 
 pkgname='retro-crisis-gdv-ntsc'
 pkgver=20240913
-pkgrel=1
+pkgrel=2
 arch=('any')
 pkgdesc='CRT shader preset for Libretro based on Guest Advanced NTSC'
 url='https://github.com/RetroCrisis/Retro-Crisis-GDV-NTSC'
@@ -13,8 +13,8 @@ sha512sums=('612f3e96ce1d47da6466026018ccdc311e20a9fe5b2335a13cee070c7c28cf260df
 options=('!debug' '!strip')
 
 package() {
-	while IFS= read -d $'\0' -r _file; do
-		_shaders_dir="$(dirname -- "$_file")"
-		install -Dm644 -t "${pkgdir}/usr/share/libretro/${_shaders_dir#"${srcdir}/"}" "$_file"
-	done < <(find "$srcdir" -type f -iname '*.slangp' -print0)
+    while IFS= read -d $'\0' -r _file; do
+        _shaders_dir="$(dirname -- "$_file")"
+        install -Dm644 -t "${pkgdir}/usr/share/libretro/${_shaders_dir#"${srcdir}/"}" "$_file"
+    done < <(find "$srcdir" -type f -iname '*.slangp' -print0)
 }
