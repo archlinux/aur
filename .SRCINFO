@@ -1,11 +1,12 @@
 pkgbase = kanri-bin
 	pkgdesc = Modern offline Kanban board app using tauri
 	pkgver = 0.7.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/kanriapp/kanri
 	arch = x86_64
 	license = GPL-3.0-or-later
 	makedepends = binutils
+	depends = webkit2gtk
 	source = kanri_0.7.1.deb::https://github.com/kanriapp/kanri/releases/download/app-v0.7.1/kanri_0.7.1_amd64.deb
 	sha256sums = 240ba8e18a43bd633d8b48f0759a29f0174849cb8e40c9af2f79a010b8ff3db6
 
