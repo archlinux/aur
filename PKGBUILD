@@ -1,7 +1,7 @@
 # Maintainer: MYT1 <MYT1 @ .com>
 
 pkgname=ttf-chillround-nerd
-pkgver=v3.200
+pkgver=3.200
 pkgrel=1
 pkgdesc='寒蝉全圆体nerd补丁版   '
 arch=('any')
@@ -10,6 +10,10 @@ license=('SIL-1.1')
 source=("git+https://github.com/maoyaotang12/ttf-nerd-.git
 ")
 sha256sums=('SKIP')
+
+pkgver() {
+    git describe --tags | sed 's/^v//;s/-/.r/;s/-/./'
+}
 
 package() {
 	cd ttf-nerd-
