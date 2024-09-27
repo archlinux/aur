@@ -1,0 +1,74 @@
+diff --color -Naur a/include/DynamicList.h b/include/DynamicList.h
+--- a/include/DynamicList.h	2010-12-04 20:13:35.000000000 +0200
++++ b/include/DynamicList.h	2022-11-24 13:09:10.524337827 +0200
+@@ -5,6 +5,7 @@
+ #include "BaseList.h"
+ #include "lcm_basethreads.h"
+ #include "Warnings.h"
++#include <cstdio>
+ 
+ namespace libcmatrix {
+   
+diff --color -Naur a/include/lcm_ssecomplex.h b/include/lcm_ssecomplex.h
+--- a/include/lcm_ssecomplex.h	2011-05-16 12:22:07.000000000 +0300
++++ b/include/lcm_ssecomplex.h	2022-11-24 13:09:10.527671113 +0200
+@@ -151,7 +151,7 @@
+ {
+   static const union {
+     int i[4]; ssecomplex_t v;
+-  } signbithigh = {{0,0,0,0x80000000}};
++  } signbithigh = {{0,0,0,(int)0x80000000}};
+   ssecomplex_t b_im = _mm_shuffle_pd(b,b,3); // Imag. part of b in both
+   const ssecomplex_t b_re = _mm_shuffle_pd(b,b,0); // Real part of b in both
+   const ssecomplex_t tmp=_mm_mul_pd(a,b_re);
+@@ -166,7 +166,7 @@
+   ssecomplex_t b_re = _mm_set1_pd(b);
+   static const union {
+     int i[4]; ssecomplex_t v;
+-  } signbithigh = {{0,0,0,0x80000000}};
++  } signbithigh = {{0,0,0,(int)0x80000000}};
+   b_re = _mm_xor_pd(b_re, signbithigh.v); // Change sign of high
+   return complex(_mm_mul_pd(a.z_, b_re));
+ }
+@@ -184,14 +184,14 @@
+ inline complex operator- (const complex& a) {
+   static const union { // (signbit,signbit)
+     int i[4]; ssecomplex_t v;
+-  } signbits = {{0,0x80000000,0,0x80000000}};
++  } signbits = {{0,(int)0x80000000,0,(int)0x80000000}};
+   return complex(_mm_xor_pd(a, signbits.v)); // Change sign of both elements
+ }
+ 
+ inline complex conj(const complex& a) {
+   static const union { // (signbit,signbit)
+     int i[4]; ssecomplex_t v;
+-  } signbithigh = {{0,0,0,0x80000000}};
++  } signbithigh = {{0,0,0,(int)0x80000000}};
+   return complex(_mm_xor_pd(a.z_, signbithigh.v)); // Change sign of imag. part
+ }
+ 
+diff --color -Naur a/NMR/MetaPropagation.cc b/NMR/MetaPropagation.cc
+--- a/NMR/MetaPropagation.cc	2011-04-28 21:37:11.000000000 +0300
++++ b/NMR/MetaPropagation.cc	2022-11-24 13:09:10.531004401 +0200
+@@ -2289,7 +2289,7 @@
+       { ref_.clear(0); }
+     const space_T& operator()() const { return ref_; }
+     ~fudge_isotropic_() { ref_.ensure_rank(0); }
+-    mutable space_T& ref_;
++    space_T& ref_;
+   };
+   template<> struct fudge_isotropic_<double> { 
+     fudge_isotropic_(double v) : v_(v) {};
+diff --color -Naur a/coredefs/diagonalise.cc b/coredefs/diagonalise.cc
+--- a/coredefs/diagonalise.cc	2011-06-22 11:33:15.000000000 +0300
++++ b/coredefs/diagonalise.cc	2022-11-26 18:00:21.276148521 +0200
+@@ -630,7 +630,8 @@
+ #ifdef USE_SUNPERF
+   zgeev('N','V',n,reinterpret_cast<complex*>(a.vector()),n,reinterpret_cast<complex*>(eigs.vector()),(complex*)NULL,1,reinterpret_cast<complex*>(V.vector()),n,&info);
+ #else
+-  complex worktmp=-1000.0;
++  complex worktmp;
++  worktmp.real(-1000.0);
+   ScratchList<double> rwork(2*n);
+   integer one=1;
+   integer minusone=-1;
