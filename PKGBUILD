@@ -8,7 +8,7 @@ url="https://gitlab.gnome.org/GNOME/gdl"
 arch=(x86_64)
 license=(GPL)
 depends=(gtk3)
-makedepends=(gtk-doc intltool gobject-introspection git)
+makedepends=(glib2-devel gtk-doc intltool gobject-introspection git)
 _commit=bc1f6e9deba012fd81c6c378cd67942a955b0bee  # tags/GDL_3_40_0^0
 source=("git+https://gitlab.gnome.org/GNOME/gdl.git#commit=$_commit")
 sha256sums=('SKIP')

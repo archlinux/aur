@@ -5,6 +5,7 @@ pkgbase = gdl
 	url = https://gitlab.gnome.org/GNOME/gdl
 	arch = x86_64
 	license = GPL
+	makedepends = glib2-devel
 	makedepends = gtk-doc
 	makedepends = intltool
 	makedepends = gobject-introspection
