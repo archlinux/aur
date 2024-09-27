@@ -1,4 +1,4 @@
-pkgname=(firefox-nightly)
+pkgname=(firefox-nightly firefox-nightly-debug)
 srcdest=/var/lib/archbuilddest/srcdest
 
 check_hg mozilla-central

@@ -3,7 +3,7 @@
 # Contributor: Jakub Schmidtke <sjakub@gmail.com>
 
 pkgname=firefox-nightly
-pkgver=132.0a1+20240925.1+hadf3c6ac684d
+pkgver=132.0a1+20240927.1+h79ef00c1355d
 pkgrel=1
 pkgdesc="Fast, Private & Safe Web Browser (Nightly version)"
 url="https://www.mozilla.org/firefox/channel/desktop/#nightly"
@@ -35,6 +35,7 @@ depends=(
   libxss
   libxt
   mime-types
+  nspr
   nss
   pango
   ttf-font
@@ -45,7 +46,6 @@ makedepends=(
   diffutils
   dump_syms
   imake
-  inetutils
   jack
   lld
   llvm
@@ -73,11 +73,9 @@ optdepends=(
   'xdg-desktop-portal: Screensharing with Wayland'
 )
 options=(
-  !debug
   !emptydirs
   !lto
   !makeflags
-  !strip
 )
 _repo=https://hg.mozilla.org/mozilla-central
 source=(
@@ -96,12 +94,12 @@ sha256sums=('SKIP'
             'a9b8b4a0a1f4a7b4af77d5fc70c2686d624038909263c795ecc81e0aec7711e9'
             '4304902899987928ea51b7020fb1298b01fa77e327ef66ab00b061f767042b9f'
             '41f24752cf1a1d2f757cb14aa0fab34453470386800360c7689825f925c2ba91'
-            'c80937969086550237b0e89a02330d438ce17c3764e43cc5d030cb21c2abce5f')
+            '080a5e4d75484e19df2c65c6aeb0300bbe503f3a08fc0a52d84adc76c95eba72')
 b2sums=('SKIP'
         '63a8dd9d8910f9efb353bed452d8b4b2a2da435857ccee083fc0c557f8c4c1339ca593b463db320f70387a1b63f1a79e709e9d12c69520993e26d85a3d742e34'
         '9c748d4c330d37d10862c73b3092c0d4308030fb62ca80da56ba9b3c3350ba4d779570308d1dd8e2c7d873f269654b72030702c5abc772aabfdfe7f39320a8b9'
         '10329d1988275cbbe20edc8fa764e7743b75797132f222ccff68b3a3ecd45de3e63689e487afd8284a14226fe1827281717eb1b559896b7d5a3e6414c050243a'
-        'f76eb72c326f347991133c004b252ed2e037e72a7a436012fb1495668d2b9194d836765b58b01ba0bd9f5c4b888ee5ee715bdb458823a2a7822f1b299f4d1948')
+        '286f44296e00a7b1ee3e62b51dc08bbba250430c1dd22c0be04a81abd817146bdf855e1e022a980030d93151fa372cbc481bfe69e910c57c9c6095e5a98952d7')
 
 # Google API keys (see http://www.chromium.org/developers/how-tos/api-keys)
 # Note: These are for Arch Linux use ONLY. For your own distribution, please
@@ -149,6 +147,7 @@ ac_add_options --enable-hardening
 ac_add_options --enable-optimize
 ac_add_options --enable-rust-simd
 ac_add_options --enable-linker=lld
+ac_add_options --disable-install-strip
 ac_add_options --disable-elf-hack
 ac_add_options --disable-bootstrap
 ac_add_options --with-wasi-sysroot=/usr/share/wasi-sysroot
@@ -228,8 +227,10 @@ ac_add_options --with-pgo-jarlog=${PWD@Q}/jarlog
 END
   ./mach build --priority normal
 
-  echo "Building symbol archive..."
-  ./mach buildsymbols
+  if [[ -f $startdir/.crash-stats-api.token ]]; then
+    echo "Building symbol archive..."
+    ./mach buildsymbols
+  fi
 }
 
 package() {
@@ -311,8 +312,6 @@ END
   export SOCORRO_SYMBOL_UPLOAD_TOKEN_FILE="$startdir/.crash-stats-api.token"
   if [[ -f $SOCORRO_SYMBOL_UPLOAD_TOKEN_FILE ]]; then
     make -C obj uploadsymbols
-  else
-    cp -fvt "$startdir" obj/dist/*crashreporter-symbols-full.tar.zst
   fi
 }
 
