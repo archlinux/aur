@@ -1,6 +1,6 @@
 pkgbase = vapoursynth-plugin-vsdenoise-git
 	pkgdesc = Plugin for Vapoursynth: vsdenoise (GIT version)
-	pkgver = 2.4.0.3.ga540892
+	pkgver = 2.6.0.15.g5cad32c
 	pkgrel = 1
 	url = https://github.com/Irrational-Encoding-Wizardry/vs-denoise
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = vapoursynth-plugin-vsdenoise-git
 	depends = vapoursynth-plugin-vskernels-git
 	depends = vapoursynth-plugin-vsexprtools-git
 	depends = vapoursynth-plugin-vsrgtools-git
-	depends = vapoursynth-plugin-vsmask-git
+	depends = vapoursynth-plugin-vsmasktools-git
 	depends = vapoursynth-plugin-vsaa-git
 	depends = vapoursynth-plugin-vsscale-git
 	optdepends = vapoursynth-plugin-nlm-cuda-git
