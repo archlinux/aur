@@ -2,7 +2,7 @@
 
 _plug=vsdeinterlace
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=0.5.0.1.g1b48bf0
+pkgver=0.7.0.18.g0cbcfd5
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('any')
@@ -14,7 +14,7 @@ depends=(
   'vapoursynth-plugin-vskernels-git'
   'vapoursynth-plugin-vsexprtools-git'
   'vapoursynth-plugin-vsrgtools-git'
-  'vapoursynth-plugin-vsmask-git'
+  'vapoursynth-plugin-vsmasktools-git'
   'vapoursynth-plugin-vsaa-git'
   'vapoursynth-plugin-vsscale-git'
   'vapoursynth-plugin-vsdenoise-git'
