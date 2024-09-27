@@ -1,6 +1,6 @@
 pkgbase = pixbufloader-qoi-git
 	pkgdesc = GdkPixbuf loader for the Quite Ok Image format
-	pkgver = 0.1.0.r5.97377b7
+	pkgver = 0.1.0.r6.5d6e8b6
 	pkgrel = 1
 	url = https://git.sr.ht/~fabrixxm/pixbufloader-qoi
 	arch = x86_64
@@ -8,11 +8,11 @@ pkgbase = pixbufloader-qoi-git
 	license = MIT
 	makedepends = git
 	makedepends = meson
+	makedepends = qoi-headers-git
 	depends = gdk-pixbuf2
+	depends = shared-mime-info>=2.3
 	provides = pixbufloader-qoi
 	source = git+https://git.sr.ht/~fabrixxm/pixbufloader-qoi
-	source = https://raw.githubusercontent.com/phoboslab/qoi/master/qoi.h
-	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = pixbufloader-qoi-git

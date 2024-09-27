@@ -1,17 +1,17 @@
 # Maintainer: Fabrix Xm <fabrix.xm@gmail.com>
 _pkgname=pixbufloader-qoi
 pkgname=$_pkgname-git
-pkgver=0.1.0.r5.97377b7
+pkgver=0.1.0.r6.5d6e8b6
 pkgrel=1
 pkgdesc='GdkPixbuf loader for the Quite Ok Image format'
 arch=('x86_64' 'aarch64')
 url='https://git.sr.ht/~fabrixxm/pixbufloader-qoi'
 license=('MIT')
-depends=('gdk-pixbuf2')
-makedepends=('git' 'meson') # 'qoi-headers-git')
+depends=('gdk-pixbuf2' 'shared-mime-info>=2.3')
+makedepends=('git' 'meson' 'qoi-headers-git')
 provides=('pixbufloader-qoi')
-source=("git+https://git.sr.ht/~fabrixxm/pixbufloader-qoi" "https://raw.githubusercontent.com/phoboslab/qoi/master/qoi.h")
-sha256sums=(SKIP SKIP)
+source=("git+https://git.sr.ht/~fabrixxm/pixbufloader-qoi")
+sha256sums=(SKIP)
 
 pkgver() {
   cd "${srcdir}/$_pkgname"
@@ -20,7 +20,7 @@ pkgver() {
 }
 
 build() {
-    arch-meson build "$_pkgname" -Dqoi_include_path=${srcdir}
+    arch-meson build "$_pkgname"
     ninja -C build
 }
 
