@@ -2,7 +2,7 @@
 
 pkgname="code2prompt"
 pkgver=2.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A CLI tool to convert your codebase into a single LLM prompt"
 arch=('x86_64')
 url="https://github.com/mufeedvh/${pkgname}"
@@ -23,6 +23,8 @@ prepare() {
 }
 
 build() {
+  CFLAGS+=" -ffat-lto-objects"
+  
   cd "${srcdir}/${_pkgsrc}"
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target

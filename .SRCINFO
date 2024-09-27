@@ -1,7 +1,7 @@
 pkgbase = code2prompt
 	pkgdesc = A CLI tool to convert your codebase into a single LLM prompt
 	pkgver = 2.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mufeedvh/code2prompt
 	arch = x86_64
 	license = MIT
