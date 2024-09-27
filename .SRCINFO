@@ -1,17 +1,20 @@
 pkgbase = python-mapbox-vector-tile
 	pkgdesc = Python package for encoding & decoding Mapbox Vector Tiles
-	pkgver = 1.2.0
-	pkgrel = 2
+	pkgver = 2.1.0
+	pkgrel = 1
 	url = https://github.com/tilezen/mapbox-vector-tile
 	arch = any
 	license = MIT
-	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-wheel
+	makedepends = python-installer
+	makedepends = python-poetry
+	depends = python
 	depends = python-protobuf
 	depends = python-shapely
 	depends = python-future
 	depends = python-pyclipper
-	source = python-mapbox-vector-tile-1.2.0.tar.gz::https://github.com/tilezen/mapbox-vector-tile/archive/v1.2.0.tar.gz
-	sha256sums = ec82ab629f82009155f485bec2a46a7d4f0b8ab01df4ff599cb71b030d463679
+	source = https://files.pythonhosted.org/packages/source/m/mapbox_vector_tile/mapbox_vector_tile-2.1.0.tar.gz
+	sha256sums = 9a0572e483c7b06762af73b9b5ee5f4e58441bcca9190105fe55cec71dd16cd8
 
 pkgname = python-mapbox-vector-tile
-

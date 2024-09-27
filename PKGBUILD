@@ -1,28 +1,30 @@
-# Maintainer: jerry73204 <jerry73204 at google gmail>
-
+# Maintainer: Leon Richardt <aur at leon dot dev>
+# Contributor: jerry73204 <jerry73204 at google gmail>
 pkgname='python-mapbox-vector-tile'
-pkgver=1.2.0
-pkgrel=2
+pkgver=2.1.0
+pkgrel=1
 pkgdesc='Python package for encoding & decoding Mapbox Vector Tiles'
 arch=('any')
 url='https://github.com/tilezen/mapbox-vector-tile'
 license=('MIT')
-makedepends=('python-setuptools')
-depends=('python-protobuf'
-         'python-shapely'
-         'python-future'
-         'python-pyclipper')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/tilezen/mapbox-vector-tile/archive/v${pkgver}.tar.gz")
-sha256sums=('ec82ab629f82009155f485bec2a46a7d4f0b8ab01df4ff599cb71b030d463679')
+depends=(
+    'python'
+    'python-protobuf'
+    'python-shapely'
+    'python-future'
+    'python-pyclipper'
+)
+makedepends=('python-build' 'python-wheel' 'python-installer' 'python-poetry')
+_name=${pkgname#python-}
+source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name//-/_}/${_name//-/_}-$pkgver.tar.gz")
+sha256sums=('9a0572e483c7b06762af73b9b5ee5f4e58441bcca9190105fe55cec71dd16cd8')
 
 build() {
-  cd "${srcdir}/mapbox-vector-tile-${pkgver}"
-  python setup.py build
+  cd "${_name//-/_}-$pkgver"
+  python -m build --wheel --no-isolation
 }
 
 package() {
-  cd "${srcdir}/mapbox-vector-tile-${pkgver}"
-  python setup.py install --skip-build --prefix=/usr --root="${pkgdir}" --optimize=1
-  install -D -m644 LICENSE* "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-  install -D -m644 README* "${pkgdir}/usr/share/doc/${pkgname}/README"
+  cd "${_name//-/_}-$pkgver"
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
