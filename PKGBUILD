@@ -35,7 +35,7 @@ makedepends=(
   'boost'
   'cmake'
   'git'
-  'jdk8-openjdk'
+  'jdk11-openjdk'
   'libcups'
   'ninja'
   'nvm' # AUR
@@ -54,7 +54,9 @@ optdepends=(
 )
 
 if [[ "${_quarto::1}" == "t" ]]; then
-  depends+=('quarto')
+  makedepends+=(
+    'quarto' # AUR
+  )
 fi
 
 provides=("$_pkgname")
@@ -101,10 +103,10 @@ prepare() (
   npm install yarn
 
   cd "$_pkgsrc"
-  msg "Do not use outdated version name of pandoc"
+  # Do not use outdated version name of pandoc
   sed -i '/PANDOC_VERSION/s/2.18/current/' "cmake/globals.cmake"
 
-  msg "Suppress _FORTIFY_SOURCE mismatch warnings"
+  # Suppress _FORTIFY_SOURCE mismatch warnings
   sed -i 's/D_FORTIFY_SOURCE=2/D_FORTIFY_SOURCE=3/' "src/cpp/CMakeLists.txt"
 
   # fix npm/node paths
@@ -150,7 +152,7 @@ prepare() (
 )
 
 _build_soci() {
-  msg "Building SOCI libs..."
+  echo "Building SOCI libs..."
 
   local _opts_soci=(
     -B "soci-${_sociver}/build"
@@ -181,14 +183,14 @@ build() (
   # Quarto set up
   if (pacman -Q quarto > /dev/null 2> /dev/null); then
     _quarto="ON"
-    msg "Quarto is installed, linking for build"
+    echo "Quarto is installed, linking for build"
     cd "$srcdir/$_pkgsrc/dependencies"
     install -d quarto/bin/tools
     ln -sfT /usr/bin/quarto quarto/bin/quarto
     ln -sfT /usr/bin/pandoc quarto/bin/tools/pandoc
   else
     _quarto="OFF"
-    msg "Quarto is not installed, using Pandoc"
+    echo "Quarto is not installed, using Pandoc"
     cd "$srcdir/$_pkgsrc/dependencies"
     install -d pandoc/${_pandocver}/bin/tools
     ln -sfT /usr/bin/pandoc pandoc/${_pandocver}/bin/tools/pandoc
@@ -199,7 +201,7 @@ build() (
   export LDFLAGS+=" -L$srcdir/$_pkgsrc/dependencies/soci-${_sociver}/build/lib"
 
   cd "${srcdir}"
-  msg "Downloading and installing R packages..."
+  echo "Downloading and installing R packages..."
   export R_LIBS_USER="${srcdir}/${_srcname}/dependencies/R"
   _JOBS="$(grep -oP -- "-j\s*\K[0-9]+" <<< "${MAKEFLAGS}")" || _JOBS="1"
   mkdir -p "${R_LIBS_USER}"
@@ -217,7 +219,7 @@ build() (
     Rscript -e "$RINSTALLCMD"
   done
 
-  export PATH="/usr/lib/jvm/java-8-openjdk/jre/bin/:${PATH}"
+  export PATH="/usr/lib/jvm/java-11-openjdk/jre/bin/:${PATH}"
   export RSTUDIO_TOOLS_ROOT="$srcdir/$_pkgsrc/dependencies"
   export RSTUDIO_NODE_PATH=/usr/
   export RSTUDIO_VERSION_MAJOR=$(cut -d'.' -f1 <<< "$pkgver")
