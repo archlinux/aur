@@ -1,7 +1,7 @@
 pkgbase = simp
 	pkgdesc = A simple and fast image manipulation program
-	pkgver = 3.7.1
-	pkgrel = 2
+	pkgver = 3.8.0
+	pkgrel = 1
 	url = https://github.com/Kl4rry/simp
 	arch = x86_64
 	license = Apache-2.0
@@ -14,7 +14,7 @@ pkgbase = simp
 	makedepends = cmake
 	depends = dav1d
 	depends = libheif
-	source = simp-3.7.1.tar.gz::https://static.crates.io/crates/simp/simp-3.7.1.crate
+	source = simp-3.8.0.tar.gz::https://static.crates.io/crates/simp/simp-3.8.0.crate
 	md5sums = SKIP
 
 pkgname = simp
