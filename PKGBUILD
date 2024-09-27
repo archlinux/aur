@@ -4,7 +4,7 @@
 _android_arch=aarch64
 
 pkgname=android-${_android_arch}-libnghttp2
-pkgver=1.62.1
+pkgver=1.63.0
 pkgrel=1
 arch=('any')
 pkgdesc="Framing layer of HTTP/2 is implemented as a reusable C library (Android ${_android_arch})"
@@ -14,7 +14,7 @@ depends=('android-ndk')
 makedepends=('android-configure')
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("https://github.com/nghttp2/nghttp2/releases/download/v${pkgver}/nghttp2-${pkgver}.tar.xz")
-md5sums=('965f9a9e0f0eef12d8976fb33e9312ef')
+md5sums=('15dd1a9e72fc1cd6000a88bced26552c')
 
 build() {
     cd "${srcdir}/nghttp2-$pkgver"
@@ -30,7 +30,7 @@ package() {
     cd "${srcdir}/nghttp2-$pkgver"
     source android-env ${_android_arch}
 
-    make DESTDIR="$pkgdir" install
+    make DESTDIR="${pkgdir}" install
     rm -rf "${pkgdir}/${ANDROID_PREFIX_SHARE}/doc"
     rm -rf "${pkgdir}/${ANDROID_PREFIX_SHARE}/man"
     ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.so
