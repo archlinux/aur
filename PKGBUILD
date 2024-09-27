@@ -3,7 +3,7 @@
 ## PGP key: https://github.com/joachimmetz.gpg
 
 pkgname=libbde
-pkgver=20221031
+pkgver=20240502
 pkgrel=1
 pkgdesc="Library and tools for accessing BitLocker Drive Encryption (BDE) encrypted volumes"
 url="https://github.com/libyal/libbde"
