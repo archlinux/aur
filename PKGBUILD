@@ -2,7 +2,7 @@
 
 _plug=vsdeband
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=1.1.1.2.g01f9f0d
+pkgver=1.2.0.1.gf947f90
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('any')
@@ -14,7 +14,7 @@ depends=(
   'vapoursynth-plugin-vskernels-git'
   'vapoursynth-plugin-vsexprtools-git'
   'vapoursynth-plugin-vsrgtools-git'
-  'vapoursynth-plugin-vsmask-git'
+  'vapoursynth-plugin-vsmasktools-git'
   'vapoursynth-plugin-vsaa-git'
   'vapoursynth-plugin-vsscale-git'
   'vapoursynth-plugin-vsdenoise-git'
