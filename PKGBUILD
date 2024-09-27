@@ -1,7 +1,7 @@
 # Maintainer: devome <evinedeng@hotmail.com>
 
 pkgname=ncmdump 
-pkgver=1.5.0
+pkgver=1.6.0
 pkgrel=1
 pkgdesc="Convert Netease Cloud Music ncm files to mp3/flac files."
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64' 'riscv64')
@@ -11,7 +11,7 @@ makedepends=("go")
 provides=("${pkgname}"{,-latest-bin})
 conflicts=("${pkgname}"{,-latest-bin})
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-sha256sums=('efa0b7db9cf8e357cbd03f2594f7f95c7b31dfc2417b5866c6cae45843dbbf7e')
+sha256sums=('10d262beaa55fd733ff55b6804392472333c01a06520d741ac1dbfddd11a5c81')
 
 build() {
     export CGO_CFLAGS="${CFLAGS}"
