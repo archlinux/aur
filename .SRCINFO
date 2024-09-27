@@ -8,6 +8,7 @@ pkgbase = nam
 	license = GPL
 	makedepends = tclcl
 	depends = otcl
+	depends = libxmu
 	source = http://downloads.sourceforge.net/sourceforge/nsnam/nam-1/1.15/nam-src-1.15.tar.gz
 	source = nam-1.15-tcl86.patch
 	source = nam-1.15-gcc61.patch

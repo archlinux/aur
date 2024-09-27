@@ -9,7 +9,8 @@ pkgdesc="Tcl/TK based animation tool for viewing network simulation traces and r
 url="http://www.isi.edu/nsnam/nam/"
 license=('GPL')
 arch=('i686' 'x86_64')
-depends=('otcl')
+depends=('otcl'
+         'libxmu')
 makedepends=('tclcl')
 source=(http://downloads.sourceforge.net/sourceforge/nsnam/nam-1/"${pkgver}"/nam-src-"${pkgver}".tar.gz
         nam-1.15-tcl86.patch
