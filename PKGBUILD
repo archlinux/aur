@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=youtube-downloader-git
 _pkgname="Youtube downloader"
-pkgver=1.1.3.r0.g372b9b0
+pkgver=1.1.3.r5.geeaf082
 _electronversion=31
 _nodeversion=20
 pkgrel=1
@@ -35,18 +35,18 @@ pkgver() {
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 _ensure_local_nvm() {
-    export NVM_DIR="${srcdir}/.nvm"
+    local NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
     nvm install "${_nodeversion}"
     nvm use "${_nodeversion}"
 }
 build() {
     sed -e "
-        s/@electronversion@/${_electronversion}/
-        s/@appname@/${pkgname%-git}/
-        s/@runname@/app.asar/
-        s/@cfgdirname@/${_pkgname}/
-        s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/
+        s/@electronversion@/${_electronversion}/g
+        s/@appname@/${pkgname%-git}/g
+        s/@runname@/app.asar/g
+        s/@cfgdirname@/${_pkgname}/g
+        s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
     " -i "${srcdir}/${pkgname%-git}.sh"
     _ensure_local_nvm
     gendesk -f -n -q --pkgname="${pkgname%-git}" --pkgdesc="${pkgdesc}" --categories="AudioVideo" --name="${_pkgname}" --exec="${pkgname%-git} %U"
@@ -64,7 +64,7 @@ build() {
             echo 'electron_builder_binaries_mirror=https://registry.npmmirror.com/-/binary/electron-builder-binaries/'
         fi
     } >> .npmrc
-    sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/" package.json
+    sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
     NODE_ENV=development    npm install
     NODE_ENV=production     npm run build:desk
     NODE_ENV=production     npx electron-builder -l --dir
