@@ -2,16 +2,16 @@
 
 _base=parserator
 pkgname=python-${_base}
-pkgver=0.6.8
+pkgver=0.6.9
 pkgrel=1
 pkgdesc="A toolkit for making domain-specific probabilistic parsers"
 arch=('any')
 url="https://github.com/datamade/${_base}"
 license=(MIT)
-depends=('python' 'python-future' 'python-lxml' 'python-crfsuite' 'python-chardet')
+depends=('python' 'python-lxml' 'python-crfsuite' 'python-chardet')
 makedepends=('python-setuptools' 'python-build' 'python-installer' 'python-wheel')
 source=("$pkgname-$pkgver.tar.gz"::${url}/archive/refs/tags/v${pkgver}.tar.gz)
-sha512sums=('2edc8c0309d9f5ac2b9570c606f7bb4ec1845ab09dc2eac371e10ebf0a21b167d687e76faa81c8e800f394345573e072a0db398c0abf4ba83023e73d9867a059')
+sha512sums=('4d40f6198b0f39101ea683fa5fa36ed221cc5a4e66360b0b9b0eec4762884c98a3eccbe5bb8c86e50966852f33d7c6e70e44630f2e9dbae08aaa4eeab3194339')
 
 build() {
   cd "${_base}-${pkgver}"
