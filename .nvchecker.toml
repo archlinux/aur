@@ -1,0 +1,4 @@
+[geist-font]
+source = "github"
+github = "vercel/geist-font"
+use_max_tag = true
