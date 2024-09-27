@@ -24,6 +24,7 @@ prepare() {
   cd "${srcdir}"/"${pkgname}"-"${pkgver}"
   patch -uNp1 -i ../nam-1.15-tcl86.patch
   patch -uNp1 -i ../nam-1.15-gcc61.patch
+  patch -uNp1 -i ../nam-1.15-tk-type.patch
 }
 
 build() {
