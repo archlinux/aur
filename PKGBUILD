@@ -3,8 +3,8 @@
 
 pkgname=python-beartype
 _pkgname=${pkgname#python-}
-pkgver=0.18.5
-pkgrel=3
+pkgver=0.19.0
+pkgrel=1
 pkgdesc="Unbearably fast near-real-time hybrid runtime-static type-checking in pure Python"
 arch=(any)
 url="https://github.com/beartype/beartype"
@@ -16,8 +16,8 @@ depends=(
 )
 makedepends=(
   python-build
+  python-hatchling
   python-installer
-  python-setuptools
   python-wheel
 )
 checkdepends=(
@@ -26,7 +26,7 @@ checkdepends=(
   python-sphinx
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('4507703930622b3b6814d12f95385461438c193d12c83fedcbd83e5904d485ee')
+sha256sums=('e7ad00eebf527d60f30e0b391209b561dabd2074b608c50e26c94c2d8250a6cd')
 
 build() {
   cd "$_pkgname-$pkgver"
