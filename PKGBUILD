@@ -3,8 +3,8 @@
 # Contributor: Pierre Schmitz <pierre@archlinux.de>
 
 pkgname=cmake
-pkgver=3.30.3
-pkgrel=2
+pkgver=3.30.4
+pkgrel=1
 pkgdesc='A cross-platform open-source make system'
 arch=('x86_64')
 url="https://www.cmake.org/"
@@ -32,7 +32,7 @@ optdepends=(
   'qt6-base: cmake-gui'
 )
 source=(git+https://gitlab.kitware.com/cmake/cmake#tag=v$pkgver?signed)
-sha512sums=('f32c5b835c25c6b5eec5a533be7ba33c8d16319ca8a3889b2cfb665ccdc05cc6a50fc81546da9c732e74d5e8a7222b74e523a23e5510e5c67e7d40c8df38e5b4')
+sha512sums=('1fe426c44ddefa9c5bd8269fc620b0b76eac4901c53ee5faccd06cba8328de688d68e0886b2bb9e3ef65122a594bfe754eb6ed43fc88757ea93847de4a9d446a')
 validpgpkeys=(CBA23971357C2E6590D9EFD3EC8FEF3A7BFB4EDA) # Brad King <brad.king@kitware.com>
 
 build() {
