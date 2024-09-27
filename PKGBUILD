@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=mediago-bin
 _pkgname=MediaGo
-pkgver=3.0.0_beta.1
+pkgver=3.0.0_beta.2
 _electronversion=30
 pkgrel=1
 pkgdesc="Video online extraction tool streaming media download, video download,m3u8 download,Bilibili video download.视频在线提取工具,流媒体下载,视频下载,m3u8下载,B站视频下载."
@@ -20,7 +20,7 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/caorushizi/mediago/v${pkgver//_/-}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('7c0ba4007161a5a79589ba90e7d17b0d5e38058100d837235837d4cd838c641f'
+sha256sums=('b1867c43266c249c8997b01205d60064dc26d4cec9ffe1fa46dae64abadb6e85'
             '029419e98f7e94359d2b8e96db62d1482242d51af55bc5c5b5ac3e2448edb4ee'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 build() {
