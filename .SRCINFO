@@ -1,0 +1,19 @@
+pkgbase = tic80-pro
+	pkgdesc = TIC-80 is a fantasy computer for making, playing and sharing tiny games.
+	pkgver = 1.1.2837
+	pkgrel = 1
+	url = https://tic80.com
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = cmake
+	makedepends = ruby
+	makedepends = mesa
+	makedepends = glu
+	makedepends = coreutils
+	depends = libglvnd
+	conflicts = tic80
+	source = git+https://github.com/nesbox/TIC-80.git#tag=v1.1.2837
+	sha256sums = SKIP
+
+pkgname = tic80-pro
