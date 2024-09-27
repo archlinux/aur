@@ -6,6 +6,7 @@ pkgbase = mpv-sponsorblock
 	arch = x86_64
 	license = MIT
 	makedepends = cargo
+	makedepends = clang
 	depends = mpv
 	options = !lto
 	source = mpv-sponsorblock-2.2.0.tar.gz::https://github.com/TheCactusVert/mpv-sponsorblock/archive/refs/tags/v2.2.0.tar.gz
