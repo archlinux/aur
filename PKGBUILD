@@ -7,12 +7,13 @@ pkgname=(
   regclient-regbot
 )
 pkgver=0.7.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Docker and OCI Registry tooling - regctl / regsync / regbot'
 arch=('x86_64' 'aarch64')
 url='https://github.com/regclient/regclient'
-license=('Apache')
-makedepends=('go' 'git')
+license=('Apache-2.0')
+makedepends=('go')
+depends=('glibc')
 source=("https://github.com/regclient/regclient/archive/v$pkgver/$pkgbase-$pkgver.tar.gz")
 # how to build git tag from github
 #source=("$pkgbase-$pkgver.tar.gz::https://github.com/regclient/regclient/archive/refs/tags/v$pkgver.tar.gz")
@@ -20,23 +21,20 @@ sha256sums=('17042a6f8b5d5bf25ce916347a0b314f7dd91a6c06f78761a4e5fe21f5eb9632')
 _bins=('regctl' 'regsync' 'regbot')
 
 build() {
-  local _commit
-  _commit="$(bsdcat "$pkgbase-$pkgver.tar.gz" | git get-tar-commit-id)"
-  mkdir -p build/ && cd build/
-  # we want "clean" go binaries
-  export CGO_ENABLED=0
+  export CGO_CPPFLAGS="${CPPFLAGS}"
+  export CGO_CFLAGS="${CFLAGS}"
+  export CGO_CXXFLAGS="${CXXFLAGS}"
+  export CGO_LDFLAGS="${LDFLAGS}"
+  export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+  # export CGO_ENABLED=0
 
-  # FIXME - what is the correct version here? the aur repo it's build from or the upstream repo?
-  # currently the "real" program version is not shown beacuse it's implicitely taken from the git tag from repo...
-  #( cd "../$pkgbase-$pkgver" && echo "{\"VCSRef\": \"${_commit}\", \"VCSTag\": \"${pkgver}\"}" >./embed/version.json )
+  mkdir -p build/ && cd build/
 
   for i in "${_bins[@]}"; do
     (
       cd "../$pkgbase-$pkgver"
-      #cp ./embed/version.json "cmd/$i/embed/"
-      go build -ldflags "-s -w -extldflags -static" -tags nolegacy -trimpath -o ../build ./cmd/$i
+      go build -o ../build/$i ./cmd/$i
     )
-
     ./$i completion bash >$i.bash
     ./$i completion zsh >$i.zsh
   done
@@ -66,6 +64,7 @@ _pkgcommon() {
   install -Dm755 "$_pkg" -t   "$pkgdir/usr/bin"
   install -Dm644 "$_pkg.bash" "$pkgdir/usr/share/bash-completion/completions/$_pkg"
   install -Dm644 "$_pkg.zsh"  "$pkgdir/usr/share/zsh/site-functions/_$_pkg"
+  install -Dm644 "../$pkgbase-$pkgver/LICENSE" "$pkgdir/usr/share/licenses/$pkgbase-$_pkg/LICENSE"
 }
 
 package_regclient-regctl() {
