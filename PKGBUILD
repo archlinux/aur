@@ -5,15 +5,14 @@
 # Contributor: Ilya Fedin <fedin-ilja2010@ya.ru>
 # Contributor: Auteiy <dmitry@auteiy.me>
 
-# options
-: ${_build_tg_owt:=true}
+## options
 : ${_branch=dev}
 
 # basic info
 _pkgname="kotatogram-desktop"
 pkgname="$_pkgname-git"
 pkgver=1.5.0.4.r1004.ge30c185
-pkgrel=1
+pkgrel=2
 pkgdesc='Experimental fork of Telegram Desktop'
 url="https://github.com/kotatogram/kotatogram-desktop"
 license=('GPL-3.0-only')
@@ -86,6 +85,15 @@ _source_main() {
   _pkgsrc="$_pkgname"
   source=("$_pkgsrc"::"git+$url.git#branch=$_branch")
   sha256sums=('SKIP')
+
+  _patch_commit='b1060b9deef05a3efaadf61d3e99dafa155710ea'
+  source+=("tg-5.5.5-fix_build_with_cppgir-${_patch_commit::7}.patch"::"https://gitlab.archlinux.org/archlinux/packaging/packages/telegram-desktop/-/raw/$_patch_commit/telegram-desktop-5_5_5-fix_build_with_cppgir.patch")
+  sha256sums+=('ee54bdf8fe67c8fadfffc794763fc62f4c6a15eb535c80ba7b1b74d6ec178882')
+
+  _prepare_main() (
+    cd "$srcdir/$_pkgsrc/cmake/external/glib/cppgir"
+    apply-patch "$srcdir/tg-5.5.5-fix_build_with_cppgir-${_patch_commit::7}.patch"
+  )
 }
 
 _source_kotatogram_tg_owt() {
@@ -318,12 +326,9 @@ _build_kotatogram() (
     -DCMAKE_BUILD_TYPE=Release
     -DCMAKE_INSTALL_PREFIX="/usr"
     -DTDESKTOP_API_TEST=ON
+    -Dtg_owt_DIR="$srcdir/build-tg_owt"
     -Wno-dev
   )
-
-  if [[ "${_build_tg_owt::1}" == "t" ]]; then
-    _cmake_options+=(-Dtg_owt_DIR="$srcdir/build-tg_owt")
-  fi
 
   cmake "${_cmake_options[@]}"
   cmake --build build
@@ -336,11 +341,7 @@ _source_telegramdesktop_libtgvoip
 _source_desktop_app_cmake_helpers
 _source_mnauw_cppgir
 
-if [[ "${_build_tg_owt::1}" == "t" ]]; then
-  _source_kotatogram_tg_owt
-else
-  makedepends+=('libtg_owt-git')
-fi
+_source_kotatogram_tg_owt
 
 prepare() {
   _submodule_update() {
@@ -358,15 +359,15 @@ prepare() {
     patch -Np1 -F100 -i "$1"
   }
 
-  if [[ "${_build_tg_owt::1}" == "t" ]]; then
-    _prepare_kotatogram_tg_owt
-  fi
+  _prepare_kotatogram_tg_owt
 
   _prepare_kotatogram_desktop
   _prepare_telegramdesktop_libtgvoip
 
   _prepare_desktop_app_cmake_helpers
   _prepare_mnauw_cppgir
+
+  _prepare_main
 }
 
 pkgver() {
@@ -390,10 +391,7 @@ pkgver() {
 build() {
   export CXXFLAGS+=" -Wp,-U_GLIBCXX_ASSERTIONS -fpermissive"
 
-  if [[ "${_build_tg_owt::1}" == "t" ]]; then
-    _build_tg_owt
-  fi
-
+  _build_tg_owt
   _build_kotatogram
 }
 

@@ -1,7 +1,7 @@
 pkgbase = kotatogram-desktop-git
 	pkgdesc = Experimental fork of Telegram Desktop
 	pkgver = 1.5.0.4.r1004.ge30c185
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/kotatogram/kotatogram-desktop
 	arch = x86_64
 	license = GPL-3.0-only
@@ -61,6 +61,7 @@ pkgbase = kotatogram-desktop-git
 	provides = kotatogram-desktop
 	conflicts = kotatogram-desktop
 	source = kotatogram-desktop::git+https://github.com/kotatogram/kotatogram-desktop.git#branch=dev
+	source = tg-5.5.5-fix_build_with_cppgir-b1060b9.patch::https://gitlab.archlinux.org/archlinux/packaging/packages/telegram-desktop/-/raw/b1060b9deef05a3efaadf61d3e99dafa155710ea/telegram-desktop-5_5_5-fix_build_with_cppgir.patch
 	source = apple.swift-corelibs-libdispatch::git+https://github.com/apple/swift-corelibs-libdispatch.git
 	source = cyan4973.xxhash::git+https://github.com/Cyan4973/xxHash.git
 	source = desktop-app.codegen::git+https://github.com/desktop-app/codegen.git
@@ -98,6 +99,7 @@ pkgbase = kotatogram-desktop-git
 	source = cisco.libsrtp::git+https://github.com/cisco/libsrtp.git
 	source = google.crc32c::git+https://github.com/google/crc32c.git
 	sha256sums = SKIP
+	sha256sums = ee54bdf8fe67c8fadfffc794763fc62f4c6a15eb535c80ba7b1b74d6ec178882
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
