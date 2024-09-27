@@ -4,7 +4,7 @@
 # Contributor: Jan de Groot <jgc@archlinux.org>
 
 pkgname=mingw-w64-orc
-pkgver=0.4.39
+pkgver=0.4.40
 pkgrel=1
 pkgdesc="Optimized Inner Loop Runtime Compiler (mingw-w64)"
 arch=(any)
@@ -26,7 +26,7 @@ options=(
 source=("git+https://gitlab.freedesktop.org/gstreamer/orc.git?signed#tag=$pkgver"
         meson_i686-w64-mingw32
         meson_x86_64-w64-mingw32)
-b2sums=('cd93b7a29c0240d299752338f7e87569cfb4f5b7e9dfca40005d1e4c6509236ac2a499050db01d94004b7061faed5b78dd8b4f3d358ffe90fbf65964d38e5c4d'
+b2sums=('08cd279d7a572b078b00aac3ced56fc96d7d4472103357e74e86901c5b1edc02df768fe4b862a55faf56b5218b05c71c64d0b378f1b9a1d4c40efcc7c738de4c'
         '982c4e5403159748625fccdea5754e10c7f191e04058f76378271a63c5ff5aa7d093b22a004382e47837412e836ee2278e762c98aaceb47afe690e8e48ea8c43'
         '96fe847dc06e9dd81ed0d28200275ef0ee8873666236b732c9933202e19d81f37625a2b7ca59056531877e9d4542a8faa34dba2f0bdcd87ac74b6c1360c3a4b7')
 validpgpkeys=(
