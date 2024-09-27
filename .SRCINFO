@@ -1,0 +1,16 @@
+pkgbase = estrace-git
+	pkgdesc = A tool that traces system calls using eBPF
+	pkgver = 0.2.2.r0.gd8fef85
+	pkgrel = 1
+	url = https://github.com/ri-char/eStrace
+	arch = x86_64
+	arch = aarch64
+	license = GPL
+	makedepends = git
+	makedepends = lld
+	makedepends = rust
+	provides = estrace
+	source = git+https://github.com/ri-char/eStrace.git
+	md5sums = SKIP
+
+pkgname = estrace-git
