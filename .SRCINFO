@@ -1,6 +1,6 @@
 pkgbase = otf-plex-mono-git
 	pkgdesc = Ligatures for IBM Plex Mono .
-	pkgver = 1.0
+	pkgver = r2.9310bc9
 	pkgrel = 1
 	url = https://github.com/liangjingkanji/PlexMono
 	arch = any

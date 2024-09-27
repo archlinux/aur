@@ -1,6 +1,6 @@
 # Maintainer: witt <1989161762 at qq dot com>
 pkgname=otf-plex-mono-git
-pkgver=1.0
+pkgver=r2.9310bc9
 pkgrel=1
 pkgdesc='Ligatures for IBM Plex Mono .'
 arch=('any')
