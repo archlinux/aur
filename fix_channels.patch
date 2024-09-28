@@ -1,0 +1,13 @@
+diff --git a/src/spek-audio.cc b/src/spek-audio.cc
+index 3acabe6..5bb18b6 100644
+--- a/src/spek-audio.cc
++++ b/src/spek-audio.cc
+@@ -142,7 +142,7 @@ std::unique_ptr<AudioFile> Audio::open(const std::string& file_name, int stream)
+         if (bits_per_sample) {
+             bit_rate = 0;
+         }
+-        channels = codecpar->channels;
++        channels = codecpar->ch_layout.nb_channels;
+ 
+         if (avstream->duration != AV_NOPTS_VALUE) {
+             duration = avstream->duration * av_q2d(avstream->time_base);

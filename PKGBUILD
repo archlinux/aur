@@ -1,7 +1,8 @@
-# Maintainer: Joel Grunbaum <joelgrun@gmail.com>
+# Former Maintainer: Joel Grunbaum <joelgrun@gmail.com>
+# Maintainer: Ash <xash at riseup d0t net>
 
 pkgname=spek-x-git
-pkgver=v0.9.0.r2.g5ed0a19
+pkgver=v0.9.0.r30.g362dd16
 pkgrel=1
 pkgdesc='Acoustic spectrum analyser forked from spek.'
 arch=('aarch64' 'arm' 'armv6h' 'armv7h' 'i686' 'x86_64')
@@ -11,13 +12,19 @@ makedepends=('git' 'pkgconfig' 'automake' 'intltool' 'gettext')
 url='https://github.com/MikeWang000000/spek-X'
 conflicts=('spek')
 provides=('spek')
-source=('spek-x-git::git+https://github.com/MikeWang000000/spek-X')
-md5sums=('SKIP')
-options=()
+source=('spek-x-git::git+https://github.com/MikeWang000000/spek-X'
+        'fix_channels.patch')
+md5sums=('SKIP'
+         '6c4043ff2bc04b7bdfc9a721171f0f1b')
 
 pkgver() {
     cd $pkgname
     git describe --long 2>/dev/null | sed -r 's/([^-]*-g)/r\1/;s/-/./g'
+}
+
+prepare() {
+    cd "$srcdir/$pkgname"
+    patch -p1 < "$srcdir/fix_channels.patch"
 }
 
 build() {
