@@ -1,19 +1,20 @@
 # Maintainer: Adam Perkowski <adas1per@protonmail.com>
 
-pkgbase=amdguid-glow-bin
 pkgname=amdguid-glow-bin
 pkgver=1.0.13
-pkgrel=1
+pkgrel=2
 pkgdesc="AMDGPU temperature and fan speed monitoring tool"
 url="https://github.com/Eraden/amdgpud"
 license=('MIT' 'Apache-2.0')
 source=("https://github.com/Eraden/amdgpud/releases/download/v1.0.12/amdguid-glow-archlinux-latest-${pkgver}.zip")
 arch=('x86_64')
 md5sums=('75a62a7c5e083334a3b236c907ee600e')
-keywords=('amdgpu' 'controller' 'fan', 'overclocking', 'voltage')
-depends=('amdfand-bin')
+keywords=('amdgpu' 'controller' 'fan' 'overclocking' 'voltage')
+depends=('amdfand')
 makedepends=('unzip')
-optdepends=('amdmond-bin' 'amdvold-bin')
+optdepends=('amdmond' 'amdvold')
+provides=('amdguid-glow' 'amdguid')
+conflicts=('amdguid-glow' 'amdguid')
 
 build() {
     cd $srcdir/
