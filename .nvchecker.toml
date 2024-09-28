@@ -1,0 +1,3 @@
+[ruby-libmspack]
+source = "gems"
+gems = "libmspack"

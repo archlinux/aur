@@ -1,0 +1,19 @@
+pkgbase = ruby-libmspack
+	pkgdesc = Ruby wrapper for libmspack.
+	pkgver = 0.11.0
+	pkgrel = 1
+	url = https://gitlab.com/davispuh/ruby-libmspack
+	arch = i686
+	arch = x86_64
+	license = UNLICENSE
+	license = LGPL-2
+	makedepends = ruby-rake
+	depends = ruby
+	depends = ruby-ffi
+	depends = ruby-ffi-compiler2
+	noextract = libmspack-0.11.0.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/libmspack-0.11.0.gem
+	sha1sums = c20f47b767de0266cda36c807ea827f594d433a8
+
+pkgname = ruby-libmspack
