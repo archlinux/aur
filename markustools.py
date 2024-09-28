@@ -8,7 +8,7 @@ def wronginput():
 
 #Introduction
 print("Welcome to markustools, a specially created tool for troubleshooting, games, installation and other plain, dumb stuff")
-option = input("\nPlease select your option:\nh) Help\n1) Exiting \n2) Editing a file\n3) Goofy stuff\n4) Cloning github repos\n5) Creating enviroment variables\n")
+option = input("\nPlease select your option:\nh) Help\n1) Exiting \n2) Goofy stuff\n3) Creating enviroment variables\n")
 
 #Help
 if option == "h":
@@ -40,13 +40,9 @@ elif option == "1":
 			wronginput()
 	else:
 		wronginput()
-#Edit files via nano
-elif option == "2":
-	pathfile = input("Path of file? ")
-	os.system("nano " + pathfile)
 
 #Goofy linux commands
-elif option == "3":
+elif option == "2":
 	goofy = input("What silly command do you want to execute?\n1) Speaking animals\n2) Crazy info\n3) Shocking matrixes\n")
 	#Pipe fortune into cowsay to make it look like it's speaking wisdom
 	if goofy == "1":
@@ -66,14 +62,8 @@ elif option == "3":
 	else:
 		wronginput()
 	
-#Cloning github repos via git
-elif option == "4":
-	repo = input("Link to repo? (Click green code button with a -> pointing down) ")			
-	save = input("Where to save? ")
-	os.system("git clone " + repo + " " + save)
-	
 #Making enviroment variables
-elif option == "5":
+elif option == "3":
 	var = input("Variable name? ")
 	varva = input("And value? ")
 	print("Now hacking the linux kernel..")

@@ -1,18 +1,15 @@
 pkgbase = markustools
 	pkgdesc = A tool for games, editing and other plain, dumb stuff (coded in Python)
-	pkgver = 1.1.1
-	pkgrel = 4
+	pkgver = 1.2.0
+	pkgrel = 5
 	url = https://techmarkus.com/markustools.html
 	arch = x86_64
 	license = GPL
 	depends = python
-	depends = nano
-	depends = git
 	depends = cmatrix
 	depends = neofetch
 	depends = cowsay
 	depends = fortune-mod
-	depends = less
 	source = markustools.py
 	sha256sums = SKIP
 

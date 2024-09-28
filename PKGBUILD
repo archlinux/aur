@@ -1,12 +1,12 @@
 #Proud to make this AUR package
 pkgname=markustools
-pkgver=1.1.1
-pkgrel=4
+pkgver=1.2.0
+pkgrel=5
 pkgdesc="A tool for games, editing and other plain, dumb stuff (coded in Python)"
 arch=('x86_64')
 url="https://techmarkus.com/markustools.html"
 license=('GPL')
-depends=('python' 'nano' 'git' 'cmatrix' 'neofetch' 'cowsay' 'fortune-mod' 'less')
+depends=('python' 'cmatrix' 'neofetch' 'cowsay' 'fortune-mod')
 source=("markustools.py")
 sha256sums=('SKIP')
 
