@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=RApiSerialize
-_pkgver=0.1.3
+_pkgver=0.1.4
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -13,8 +13,8 @@ depends=(
   r
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('be0a84260b8b40a3a0aa01941f4bc792')
-b2sums=('2facfe914717984377623952a3988623c7b539e0725f604fab6b233fabc56fbd8e3d663260d7821c4e815d547952264f70f71b8841fea8207eeec0754c84a2fc')
+md5sums=('56ab4c59e8a1433053fc7d318955ea4e')
+b2sums=('1bb85ffe507455329c5e038b7c3d87253d394ff5b587028f96c1bc6b6180dfef0daf32c067f1dab8be6e1317f2bbfa887d845792c8d16ee6a2e6c72e1aacc1f2')
 
 build() {
   mkdir build
