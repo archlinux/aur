@@ -2,16 +2,16 @@
 _pkgname="qflipper"
 pkgname=${_pkgname}-bin
 pkgver=1.3.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Desktop application for updating Flipper Zero firmware via PC - Packaged from official AppImage binaries"
 arch=('x86_64')
 url="https://update.flipperzero.one/"
-license=('GPL3')
+license=('GPL-3.0-only')
 depends=(
   'openssl-1.1'
   'libusb'
   'qt6-5compat'
-  'qt6-quickcontrols2'
+  'qt6-declarative'
   'qt6-serialport'
   'qt6-svg'
 )
