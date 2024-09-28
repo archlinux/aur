@@ -4,13 +4,13 @@
 # pkgver, source, and sha256sums are to be generated
 
 pkgname=hyde-ext
-pkgver=1.3.2
+pkgver=1.3.3
 pkgrel=1
 arch=(x86_64)
 license=(MIT)
 url="https://github.com/Da4ndo/Hyde-Ext"
-source=("https://github.com/Da4ndo/Hyde-Ext/releases/download/v1.3.2/hyde-ext-v1.3.2-x86_64-linux.tar.gz")
-sha256sums=('c8df707a64dbdf301866c36c7af0e47e7fa203732f93a311ad081f26a4fa2488')
+source=("https://github.com/Da4ndo/Hyde-Ext/releases/download/v1.3.3/hyde-ext-v1.3.3-x86_64-linux.tar.gz")
+sha256sums=('bc6a3a93f364ffd9a55fe8e8be7c06cc52cc1f9e055bc99398311c27c398584d')
 
 package() {
   cd "hyde-ext-v${pkgver}-x86_64-linux"
