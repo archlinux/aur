@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Sonic Robo Blast 2 Legacy (2.1)
+GenericName=3D platformer game
+Comment=A 3D classic Sonic fangame based on Doom Legacy, 2.1 Legacy version
+Exec=srb2legacy
+Icon=srb2legacy
+Terminal=false
+Categories=Game;
