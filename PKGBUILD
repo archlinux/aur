@@ -3,7 +3,7 @@
 
 pkgname=android-backup-extractor-git
 pkgver=r147.g70730dd
-pkgrel=1
+pkgrel=2
 pkgdesc='Utility to extract and repack Android backups created with adb backup'
 arch=('any')
 url="https://github.com/nelenkov/${pkgname%-git}"
