@@ -5,7 +5,7 @@
 
 _android_arch=aarch64
 pkgname=android-$_android_arch-qt6-shadertools
-_qtver=6.7.2
+_qtver=6.7.3
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=(any)
@@ -13,13 +13,13 @@ url='https://www.qt.io'
 license=(GPL3 LGPL3 FDL custom)
 pkgdesc='Experimental module providing APIs and a host tool to host tool to perform graphics and compute shader conditioning for the upcoming Qt graphics abstraction layer (android)'
 depends=('android-aarch64-qt6-base')
-makedepends=('android-cmake' 'qt6-shadertools' 'ninja' 'java-environment-openjdk=17')
+makedepends=('android-cmake' 'qt6-shadertools' 'ninja')
 optdepends=('qt6-shadertools: development tools')
 options=('!strip' '!buildflags' 'staticlibs' '!emptydirs')
 groups=(android-${_android_arch}-qt6)
 _pkgfqn="qtshadertools-everywhere-src-${_qtver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz")
-sha256sums=('edfa34c0ac8c00fcaa949df1d8e7a77d89dadd6386e683ce6c3e3b117e2f7cc1')
+sha256sums=('74e512798c7ddbda354a2d8d975211454bbabb47afb7e598892067a5828c0995')
 
 build() {
   export PATH=/usr/lib/jvm/java-17-openjdk/bin:$PATH
