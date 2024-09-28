@@ -1,6 +1,6 @@
 pkgbase = ttf-honorsans
-	pkgdesc = 华为HONORSans字体
-	pkgver = 1.2.r1.g9c61e21
+	pkgdesc = 华为HONORSans中文字体添加nerd补丁
+	pkgver = 1.2.r2.gac5a212
 	pkgrel = 1
 	url = https://developer.honor.com/cn/
 	arch = any

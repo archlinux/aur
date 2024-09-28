@@ -2,9 +2,9 @@
 
 pkgname=ttf-honorsans
 _pkgname=HONORSans
-pkgver=1.2.r1.g9c61e21
+pkgver=1.2.r2.gac5a212
 pkgrel=1
-pkgdesc='华为HONORSans字体'
+pkgdesc='华为HONORSans中文字体添加nerd补丁'
 arch=('any')
 url='https://developer.honor.com/cn/'
 license=('custom')
