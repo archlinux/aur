@@ -1,6 +1,6 @@
 pkgname="spicetify-theme-nord-git"
 pkgver=r527.g212f1d1
-pkgrel=1
+pkgrel=2
 pkgdesc="Nord Themed Spotify (JoshuaWierenga's fork)"
 arch=("any")
 url="https://tetrax-10.github.io/Nord-Spotify/"
