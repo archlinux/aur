@@ -1,6 +1,6 @@
 # Maintainer: Tim Schrodi <mail at timschrodi dot tech>
 pkgname=kubeswitch
-pkgver=0.8.1
+pkgver=0.9.1
 pkgrel=1
 pkgdesc="kubeswitch (lazy: switch) is the single pane of glass for all of your kubeconfig files.
 Caters to operators of large scale Kubernetes installations. Designed as a drop-in replacement for kubectx."
@@ -12,7 +12,7 @@ provides=('switch')
 install=switcher.install
 source=("https://github.com/danielfoehrKn/kubeswitch/archive/${pkgver}.tar.gz")
 noextract=()
-sha256sums=('be9860ecbfd40e3f0b8f94b969ce4218f3cd3d4cd5e329509a1bc597f6d6108a')
+sha256sums=('b35ae018245283142cdb5c4c3f9c342cb3194dec398cf69f2af955aa373da3a8')
 
 build() {
   cd "${pkgname}-${pkgver}"
