@@ -1,11 +1,13 @@
 pkgbase = python-fdt
 	pkgdesc = Flattened Device Tree Python Module
 	pkgver = 0.3.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/molejar/pyFDT
 	arch = any
 	license = Apache
-	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
 	depends = python
 	options = !emptydirs
 	source = python-fdt-0.3.3.tar.gz::https://github.com/molejar/pyFDT/archive/refs/tags/0.3.3.tar.gz
