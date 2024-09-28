@@ -1,6 +1,6 @@
 pkgbase = cromite-bin
 	pkgdesc = Cromite a Bromite fork with ad blocking and privacy enhancements (binary release)
-	pkgver = 129.0.6668.59
+	pkgver = 129.0.6668.71
 	pkgrel = 1
 	url = https://github.com/uazo/cromite
 	arch = x86_64
@@ -29,7 +29,7 @@ pkgbase = cromite-bin
 	sha256sums = d4a1391331e7a3757f11e65ada488cb8729b612ba2a073b95dafee2f8f76dfa5
 	sha256sums = 3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986
 	sha256sums = 213e50f48b67feb4441078d50b0fd431df34323be15be97c55302d3fdac4483a
-	source_x86_64 = https://github.com/uazo/cromite/releases/download/v129.0.6668.59-bbcb812cffa4e2815760cd7fc3e34b00b4e39ea1/chrome-lin64.tar.gz
-	sha256sums_x86_64 = b2e999b504ef7d77e780d6abb386381903c576e4b3eb6795e3a7583540ca09c6
+	source_x86_64 = https://github.com/uazo/cromite/releases/download/v129.0.6668.71-385912cca32ce2d15a3e295f79d5c4dc3a6f7785/chrome-lin64.tar.gz
+	sha256sums_x86_64 = 3ebe8f13a902bb72f78c88e10f486035994f7d9bb6d99039d1e00f5533bbb46e
 
 pkgname = cromite-bin
