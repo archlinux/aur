@@ -1,3 +1,4 @@
+.directory
 *.tar
 *.tar.*
 *.jar
@@ -8,10 +9,9 @@
 *.log
 *.log.*
 *.sig
-
-.directory
-pkg/
-src/
 vmcompile
 vmcompile.sh.x.c
+
+pkg/
+src/
 vmware-host-modules/
