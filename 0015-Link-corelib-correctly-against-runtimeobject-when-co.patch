@@ -1,4 +1,4 @@
-From 78069f8f87b2a4fde93d81c502830f9dbd66c23c Mon Sep 17 00:00:00 2001
+From bc4463eed7a2a75233959c49856fc8dc6475d4be Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sat, 17 Feb 2024 21:39:39 +0100
 Subject: [PATCH 15/18] Link corelib correctly against runtimeobject when
@@ -27,5 +27,5 @@ index bbe8ba84890..06ede966852 100644
          runtimeobject
  )
 -- 
-2.45.2
+2.46.2
 

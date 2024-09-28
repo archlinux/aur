@@ -1,4 +1,4 @@
-From 761b8ee762e3709e1b8a0bede7d47b8374476974 Mon Sep 17 00:00:00 2001
+From a7f8a018866ccd98b616df30bf6d5c6a5493dc0b Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sat, 17 Feb 2024 23:11:18 +0100
 Subject: [PATCH 16/18] Workaround linker error about missing symbol
@@ -83,5 +83,5 @@ index 4cc9b87ced7..d767b2a2659 100644
  set_source_files_properties("openglblacklists/default.json"
      PROPERTIES QT_RESOURCE_ALIAS "default.json"
 -- 
-2.45.2
+2.46.2
 
