@@ -1,6 +1,6 @@
 # Maintainer: Braulio <brauliobo@gmail.com>
 pkgname=bindp
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="A tool to bind an application to a specific IP address on Linux"
 arch=('x86_64')
