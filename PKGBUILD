@@ -1,7 +1,7 @@
 # Maintainer: Wartybix <34974060+Wartybix at users dot noreply dot github dot com>
 pkgname='reboot-to-windows'
 _pkgname='Reboot-To-Windows'
-pkgver=1.3
+pkgver=1.4
 pkgrel=1
 pkgdesc="Application to quickly reboot to Windows from Linux, bypassing the boot menu."
 arch=('any')
@@ -10,12 +10,12 @@ license=('GPL-3.0-only')
 depends=('polkit' 'efibootmgr' 'bash')
 optdepends=('qt5-tools: Reboot screen support for KDE')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-sha256sums=('076e3cef98e3472b571af0eeba77be66a0db99c1595f77a7f951f11df333cfd6')
+sha256sums=('4e8c99f91f9fcf7a814368f48b497d90362383fc9a937c29e860d6febf264bd2')
 
 package() {
 	cd "$_pkgname-$pkgver"
 	install -Dm755 reboot-to-windows.sh "$pkgdir/usr/bin/reboot-to-windows"
 	install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
-	install -Dm644 wartybix-windows-root.desktop "$pkgdir/usr/share/applications/$pkgname.desktop"
-	install -Dm644 windows_logo.png "$pkgdir/usr/share/pixmaps/windows_logo.png"
+	install -Dm644 reboot-to-windows.root.desktop "$pkgdir/usr/share/applications/$pkgname.desktop"
+	install -Dm644 icons/reboot-to-windows.svg "$pkgdir/usr/share/pixmaps/$pkgname.svg"
 }
