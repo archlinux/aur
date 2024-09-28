@@ -2,8 +2,8 @@
 # Maintainer: Marcell Meszaros < marcell.meszaros AT runbox.eu >
 
 pkgname=android-backup-extractor-git
-pkgver=r115.g33a2f6c
-pkgrel=2
+pkgver=r147.g70730dd
+pkgrel=1
 pkgdesc='Utility to extract and repack Android backups created with adb backup'
 arch=('any')
 url="https://github.com/nelenkov/${pkgname%-git}"
@@ -25,7 +25,7 @@ prepare() {
   cd "${pkgname}"
   # 1. set correct path to system bcprov
   # 2. do not include bcprov classes in the final abe.jar file
-  sed -e 's@lib/bcprov-jdk15on-1.70.jar@/usr/share/java/bcprov/bcprov.jar@g' \
+  sed -e 's@lib/bcprov-jdk18on-1.77.jar@/usr/share/java/bcprov/bcprov.jar@g' \
     -e 's@<zipfileset.*@@g' \
     -i build.xml || return 1
 
