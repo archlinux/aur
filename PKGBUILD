@@ -11,7 +11,7 @@ license=('custom: commercial')
 source=("${_pkgname}.desktop")
 
 source_x86_64=("apipost_linux_x64_${pkgver}.tar.xz::https://www.apipost.cn/dl.php?client=LinuxXz&arch=x64&version=${pkgver}")
-source_aarch64=("apipost_linux_x64_${pkgver}.tar.xz::https://www.apipost.cn/dl.php?client=LinuxXz&arch=arm64&version=${pkgver}")
+source_aarch64=("apipost_linux_arm64_${pkgver}.tar.xz::https://www.apipost.cn/dl.php?client=LinuxXz&arch=arm64&version=${pkgver}")
 
 sha256sums=('a13dc2b268aabd55bb48fc00171aa740501fe579b875df5f612a721392303854')
 sha256sums_x86_64=('05b82a8d9615fdc808548e3a3d283bf35e48ea70a1de3d0636688b413bf7f31c')
