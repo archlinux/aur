@@ -10,17 +10,18 @@
 # 6. Build
 
 pkgname=linkserver
-pkgver=1.6.133
+pkgver=24.9.75
 pkgrel=1
-pkgdesc="LinkServer is a utility for launching and managing GDB servers for NXP debug probes, which also provides a command-line target flash programming capabilities."
+pkgdesc="A utility for launching and managing GDB servers for NXP debug probes, which also provides a command-line target flash programming capabilities."
 arch=('x86_64')
 url="https://www.nxp.com/design/design-center/software/development-software/mcuxpresso-software-and-tools-/linkserver-for-microcontrollers:LINKERSERVER"
 license=('custom:LA_OPT_NXP_Software_License')
-depends=('bash' 'bzip2' 'expat' 'gcc-libs' 'glibc' 'libusb' 'openssl-1.1' 'systemd-libs' 'zlib' 'xz' )
+depends=('bash' 'bzip2' 'expat' 'gcc-libs' 'glibc' 'libusb' 'openssl-1.1' 'systemd-libs' 'zlib' 'xz' 'libx11' 'libxext' 'libxft' 'fontconfig' 'libxss'
+    'libxfixes' 'libpng' 'libxcb' 'libxcursor' 'tk' 'libbsd' 'tcl' 'util-linux-libs' 'libxrender' 'freetype2')
 _source="LinkServer_${pkgver}.${arch}.deb.bin"
 source=("file://${_source}")
 noextract=("${_source}")
-sha256sums=('e398fa28ff059a04625672a0cb4d12f8c8c86322b08b07a898e75855315990f9')
+sha256sums=('f0463fefebcb49e732bfe9040808ca554b399233796c8208b1855cb37b95729c')
 options=('!strip')
 
 prepare() {
