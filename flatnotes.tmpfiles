@@ -1,0 +1,2 @@
+d /var/lib/flatnotes 0755 flatnotes flatnotes -
+Z /var/lib/flatnotes -    flatnotes flatnotes -

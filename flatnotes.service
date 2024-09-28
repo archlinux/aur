@@ -1,0 +1,14 @@
+[Unit]
+Description = Flatnotes service
+Wants = network-online.target
+After = network-online.target
+
+[Service]
+User = flatnotes
+Restart = on-failure
+EnvironmentFile = -/etc/conf.d/flatnotes
+WorkingDirectory = /usr/share/flatnotes
+ExecStart = /usr/bin/uvicorn main:app --app-dir server $APPEND_ARGS
+
+[Install]
+WantedBy = multi-user.target
