@@ -1,6 +1,6 @@
 # Maintainer: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
 pkgname=oblivion-desktop-bin
-pkgver=1.6.15
+pkgver=1.14.0
 pkgrel=1
 pkgdesc="Unofficial Warp Client for Windows/Mac/Linux"
 arch=('x86_64' 'aarch64')
@@ -13,9 +13,9 @@ conflicts=("${pkgname%-bin}")
 source_x86_64=("${pkgname%-bin}-${pkgver//_/-}-amd64.deb::${url}/releases/download/v${pkgver//_/-}/${pkgname%-bin}-linux-amd64.deb")
 source_aarch64=("${pkgname%-bin}-${pkgver//_/-}-arm64.deb::${url}/releases/download/v${pkgver//_/-}/${pkgname%-bin}-linux-arm64.deb")
 source=("${pkgname%-bin}-LICENSE::${url}/blob/main/LICENSE.md")
-sha256sums=('SKIP')
-sha256sums_x86_64=('b1196c62a94080856ed33e7b92654dffe00722845c82d25c604394578ecad5c7')
-sha256sums_aarch64=('bdbe80c3b8a8779466e3c9cf1fcf07fdea355ee39152aa9cbcd0d48be74bfb4d')
+sha256sums=('c5a7dcb9f5d0113fa651f1ba58fa5a42271949243e3a88dfe9a380a59d8cf9e3')
+sha256sums_x86_64=('4a725548c716f61795b534938abf1d038c8ce5760ffad5e0490d4c20655b4e36')
+sha256sums_aarch64=('580af1aca71a2a70d09db4daba8b747588c130f542e00cf6700532bf560ecdfe')
 
 package() {
 	cd "${pkgdir}"
