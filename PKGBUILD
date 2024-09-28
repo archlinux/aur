@@ -1,6 +1,6 @@
 #Proud to make this AUR package
 pkgname=markustools
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="A tool for games, editing and other plain, dumb stuff (coded in Python)"
 arch=('x86_64')
