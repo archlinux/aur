@@ -1,7 +1,7 @@
 # Maintainer: Zesko
 _pkgname="limine-entry-tool"
 pkgname="limine-dracut-support"
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="Install kernel for Limine bootloader."
 arch=("any")
@@ -34,4 +34,4 @@ package() {
   install -Dm 644 target/limine-entry-tool*.jar $src_path/usr/share/java/
   cp -vr $src_path/usr $src_path/etc "$pkgdir"
 }
-sha256sums=('ed100c438e2e9081a5dce26b76a2e613a3d18da0f793078c46f90976965b07e2')
+sha256sums=('5601ef7b7302b4997a186f7bee9eeb61c22c82ecb2d8b0ade6c5e3ca9835c0b0')
