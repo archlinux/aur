@@ -5,7 +5,7 @@
 
 _android_arch=aarch64
 pkgname=android-$_android_arch-qt6-location
-_qtver=6.7.2
+_qtver=6.7.3
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=(any)
@@ -13,12 +13,12 @@ url='https://www.qt.io'
 license=(GPL3 LGPL3 FDL custom)
 pkgdesc='Helps you create viable mapping solutions using the data available from some of the popular location services (android)'
 depends=('android-aarch64-qt6-declarative' 'android-aarch64-qt6-positioning')
-makedepends=('android-cmake' 'android-aarch64-qt6-shadertools' 'android-aarch64-qt6-declarative' 'qt6-shadertools' 'qt6-declarative' 'ninja' 'java-environment-openjdk=17')
+makedepends=('android-cmake' 'android-aarch64-qt6-shadertools' 'android-aarch64-qt6-declarative' 'qt6-shadertools' 'qt6-declarative' 'ninja')
 options=('!strip' '!buildflags' 'staticlibs' '!emptydirs')
 groups=(android-${_android_arch}-qt6)
 _pkgfqn="qtlocation-everywhere-src-${_qtver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz")
-sha256sums=('f232da58bf1189b69f1f7029417ddfeffcfb801b275aedc720e38244f88a485d')
+sha256sums=('569fd7ddcd048ef7e8c64465eed93aeb8d021aa6f2befd5c1815fa992bd3a798')
 
 build() {
   export PATH=/usr/lib/jvm/java-17-openjdk/bin:$PATH
