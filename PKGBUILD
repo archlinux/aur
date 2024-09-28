@@ -12,13 +12,13 @@
 : ${_quarto_branch:=release/rstudio-cranberry-hibiscus}
 : ${_quarto:=false}
 
-: ${_pkgver=2024.09.0+375}
+: ${_commit:=c8fc7aee6dc218d5687553f9041c6b1e5ea268ff} # 2024.09.0+375
 
 ## basic info
 _pkgname="rstudio-desktop"
 pkgname="$_pkgname"
-pkgver="${_pkgver%%+*}"
-pkgrel=1
+pkgver=2024.09.0.375
+pkgrel=6
 pkgdesc="A powerful and productive integrated development environment (IDE) for R programming language"
 url="https://github.com/rstudio/rstudio"
 license=('AGPL-3.0-only')
@@ -64,16 +64,16 @@ conflicts=("$_pkgname")
 
 options=('!emptydirs' '!debug')
 
-_pkgsrc="rstudio-${_pkgver//+/-}"
+_pkgsrc="rstudio-$_commit"
 _pkgext="tar.gz"
 source=(
-  "$_pkgsrc.$_pkgext"::"https://github.com/rstudio/rstudio/archive/refs/tags/v$_pkgver.$_pkgext"
+  "rstudio-$pkgver-${_commit::7}.$_pkgext"::"https://github.com/rstudio/rstudio/archive/$_commit.$_pkgext"
   "quarto"::"git+https://github.com/quarto-dev/quarto.git#branch=${_quarto_branch}"
   "soci-$_sociver.tar.gz"::"https://github.com/SOCI/soci/archive/refs/tags/v${_sociver}.tar.gz"
   '0003-fix_boost_186.patch'
 )
 sha256sums=(
-  '8a29b77c53a3db8379d824a9f4a491843036003d105ed71981cd40fe39d2c8c8'
+  '8a814995b12769135c25b9753d89cbae4cc39d7e5dca057acc0d7f0c29c0d6f6'
   'SKIP'
   '4b1ff9c8545c5d802fbe06ee6cd2886630e5c03bf740e269bb625b45cf934928'
   '7b3384fc7349a69e866ef0db21f196a2cafa3a9e2fb7f1edaead773b991dac72'
@@ -220,7 +220,7 @@ build() (
   export RSTUDIO_VERSION_MINOR=$(cut -d'.' -f2 <<< "$pkgver")
   export RSTUDIO_VERSION_PATCH=$(cut -d'.' -f3 <<< "$pkgver")
   export RSTUDIO_VERSION_SUFFIX="+$(cut -d'.' -f4 <<< "$pkgver")"
-  export GIT_COMMIT=$(echo "$pkgver" | cut -d'.' -f6 | sed 's/^g//')
+  export GIT_COMMIT="${_commit::7}"
   export PACKAGE_OS=$(uname -om)
 
   # node-gyp or node have a bug that prevents building with "text file busy"
@@ -244,7 +244,6 @@ build() (
     -DRSTUDIO_TARGET=Electron
     -DRSTUDIO_USE_SYSTEM_BOOST=YES
     -DRSTUDIO_USE_SYSTEM_SOCI=NO
-    -DRSTUDIO_USE_SYSTEM_NODE=YES
     -DRSTUDIO_NODE_VERSION="$RSTUDIO_NODE_VERSION"
     -DRSTUDIO_INSTALLED_NODE_VERSION="$RSTUDIO_NODE_VERSION"
     -DQUARTO_ENABLED=${_quarto}
