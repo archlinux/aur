@@ -2,7 +2,7 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=spicyR
-_pkgver=1.16.3
+_pkgver=1.16.4
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -17,6 +17,7 @@ depends=(
   r-concaveman
   r-data.table
   r-dplyr
+  r-extrafont
   r-ggforce
   r-ggplot2
   r-lmertest
@@ -39,11 +40,12 @@ optdepends=(
   r-knitr
   r-pkgdown
   r-rmarkdown
+  r-spatialdatasets
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('fad9a0093b0e5d7094ebb4029426d77a')
-b2sums=('62e79059d899ac2a761ae6618723a38d98ce6f0453aef014a347071b83ab99d6ef4c2539d526281d69c13989186c8a134f255ab13281a15bb976f9e722d7201b')
+md5sums=('54024933accc3b0bd6fdb75920bc2b6f')
+b2sums=('d724f25c4e0e931075e76b769d13ebf488b08a79ca5683261c8766ff56e24aba9c3c0a9f199529ac54f4d194f4e91e16b1eaf0d1444e65de56275aeeb3c72d52')
 
 build() {
   mkdir build
