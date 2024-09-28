@@ -1,0 +1,5 @@
+[python-jupyterlab-vim]
+source = "github"
+github = "jupyterlab-contrib/jupyterlab-vim"
+use_latest_release = true
+prefix = "v"
