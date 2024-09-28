@@ -11,7 +11,7 @@
 # All patches are managed at https://github.com/Martchus/qtbase
 
 pkgname=mingw-w64-qt6-base
-_qtver=6.7.2
+_qtver=6.7.3
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=(any)
@@ -49,25 +49,25 @@ source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/subm
         '0016-Workaround-linker-error-about-missing-symbol-__sync_.patch'
         '0017-Workaround-Unknown-CMake-command-_qt_test_emscripten.patch'
         '0018-Fix-configuration-when-EMSCRIPTEN_ROOT-is-an-absolut.patch')
-sha256sums=('c5f22a5e10fb162895ded7de0963328e7307611c688487b5d152c9ee64767599'
-            '217fa5c44df0277155e2ef3d4cae8fc9285e379379a411d8ca1f3fc1324b6989'
-            '972e547f5e67ddaefab50d214f314efc28e79bf833354f358a1e1ab6a2f8d707'
-            '2f468ed9d2df0c4268b36899496c117f2ce79ba3f93baf02697ae3b78893546e'
-            'd392e4333b5c22fe9311c2e6eff5e2fc9475125b1ee7cb3b674ce2c6ecea0ff0'
-            'f9b5bf7e7b2596ceb3a5f6128df4d5673d3924db3a171297eaf7354379f5bb73'
-            '08316d483dcbf4fb09dfa57e8813842d9a9676b74d0526977e7c972d49137a81'
-            '284ee48fef5fc950b13100406b51603edab78a3ce844b30c283e7d43cd680770'
-            '3fa62a55e2bba3f1c61420b7b37f1cf51f57b8773da14d4d2fbd98cbe1a34d4f'
-            'fae4939da47d5382daabcc219ae769bd9b0e58bc3574816da681f45b6d350aca'
-            '47591452c62e9d50a1267d82c890173cfe211feb5fa2ad7d67ce92da56d452ab'
-            '201897d416eba8a5c70a491bbfcbf854669322d1116240571a3757087c4e1623'
-            '9f47f026417454ee04c9c6977fb8c0527b30dfe21481bb9aa1d519873fe520fa'
-            'cb2ae60aa82697d81347752901f3c0f5ab59b49948b0d68fbbc61864434d50fb'
-            'ae7f962f0532426ab5d63f40b5a42871f2a1dad66c69b0c3009ad6068c18d7e7'
-            '28c8635532fa0864659223cf311da87c362db308b62cb9373fb7ca8cf745ed24'
-            'fa7d743363115ac193b86820cdc39038a963ab540dbd52616b4f82bb67698538'
-            '5da28b0cea5bdf027601201bdc3512d5723d6dc64faac74a1c1a10eeffd91fcb'
-            'fb5d3896be9eada68ca77d9ff978adf30e8673f1736b56695766e74848a3e251')
+sha256sums=('8ccbb9ab055205ac76632c9eeddd1ed6fc66936fc56afc2ed0fd5d9e23da3097'
+            'af547377e9d6d6ab757fbcbc1c555cf3c4bf345838bceb0e4e4cb176515a8a81'
+            '523bc7177d282f71d0d70d8ea6fb83861e45d9b8882f88df8a71e4276619bd15'
+            '14070979d32a347bfab32aaf6d05245ddcadc30c75541f4a84cadf635d12ef41'
+            '0499063e794112a910c2b50bd4c0d393efcb3e78251551d403091c2cb8b0ed99'
+            'b5219ef30553b2cf2c581b3af16e44dfa2c4fe32779bae27ea383d64b6134557'
+            'f0194a9b8c724926f893eda11a2d9e10f3bd2eb19bb7f0593ea8addce80eb0d9'
+            '4aa57b28d808acf23c77271cfa1cba20352e0e05cd887009bdf59d2f16e7ca14'
+            'f17dbc7ead2be8d8b9dac6e88e499a0981fd350134329a6dd1ad7d815c0cfa10'
+            'a811e3678c3bad11e8798ea90d84690c73a6151042bc4d202af647b1cdb25537'
+            '1fa56c96eefdfe64d16bc46bbf7a815b18491c706e9d902dc91a66f874654535'
+            '2c6aaee3715fc94aec622b0e33290ec2ec388f7301220b3d8edeceba7b871bc0'
+            'e496216b356067e9d8ec18648a3aa97845a0f1a9e644a879eeda883525349f86'
+            'b15f4555a7f271824e87995fe5eb0bd7b9cb86c8c1286a2f23e4eb35c8e62ce6'
+            '7541ed5a3fbaec82edec6aefc4a5f350dfd9ca38e505be9adc6e3bdedee5d6a4'
+            'ca1fb271f30d606ffdc0a8688ba510ed3597b6d84ac9a1f8a1e42ecf6111397c'
+            '842cff7c1d91ed3665925b9295a054f9ce1c85d904f7de520d42859a5e3af01f'
+            '129e3572ed9dd9ab9e172093748fa81469f31eaf5870dd6dc3a9768ebfc18883'
+            '3a86f0edfe27fa14abd4fa8b10f9e9bcf289d23808829991b40834d04abaeb2e')
 
 # disable i686 build because 32-bit Windows is generally not supported by upstream and
 # it does not build anymore as of GCC 14 (probably due to commit 9a19fa8b616f83474c35cc5b34a3865073ced829)
