@@ -1,4 +1,3 @@
-pkg/
-bitmask-vpn/
-*.pkg.*
-src/
+*
+!PKGBUILD
+!.SRCINFO
