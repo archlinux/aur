@@ -1,0 +1,4 @@
+[python-irgen]
+source = "github"
+github = "elupus/irgen"
+use_latest_release = true
