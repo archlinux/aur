@@ -2,7 +2,7 @@
 # Contributor: sukanka <su975853527@gmail.com>
 
 _pkgname=rugarch
-_pkgver=1.5-2
+_pkgver=1.5-3
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -12,6 +12,7 @@ url="https://cran.r-project.org/package=$_pkgname"
 license=('GPL-3.0-only')
 depends=(
   r-chron
+  r-fracdiff
   r-ks
   r-nloptr
   r-numderiv
@@ -23,7 +24,6 @@ depends=(
   r-zoo
 )
 makedepends=(
-  gcc-fortran
   r-rcpparmadillo
 )
 optdepends=(
@@ -31,8 +31,8 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('8b90637c6e30c41ef077abbed88aadb3')
-b2sums=('e0b0431d6c85611386145c0320e752a60835a4e29e28c75f86ff51fe2b1b81fc8e6c93731eb8bae586696c3ec73e767973ccf04761cb1acd6f6f1a2a46eedd48')
+md5sums=('e83f2dd5f0fd82ccf95ae284891460b9')
+b2sums=('d358266623696cd7a126e53666bbc5efbc7fc7db14a8d29a3d14380d531795899e038a56db20a761fc135dd9d9147f8e0c42176b483b3b336dbea24b36309170')
 
 build() {
   mkdir build
