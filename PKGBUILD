@@ -1,34 +1,37 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=distributions3
-_pkgver=0.2.1
+_pkgver=0.2.2
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=3
+pkgrel=1
 pkgdesc="Probability Distributions as S3 Objects"
 arch=(any)
 url="https://cran.r-project.org/package=$_pkgname"
 license=('MIT')
 depends=(
-  r-ellipsis
   r-ggplot2
   r-glue
+  r-rlang
 )
 checkdepends=(
+  r-poissonbinomial
   r-revdbayes
   r-testthat
 )
 optdepends=(
-  r-covr
   r-cowplot
   r-knitr
+  r-poissonbinomial
   r-revdbayes
   r-rmarkdown
   r-testthat
+  r-tibble
+  r-vctrs
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('de2560c8cfa8a5ffa9ee9e0bcd7f745a')
-b2sums=('567b6e5660874079fbabe3bdb82b5f2834b7428c16d9a516359ef78fda368a0c76866fb06bad0040387d047d57f993e9a4b454f05ba071be17f1257f530d0a32')
+md5sums=('62b8642512113d37b1bee51d1eeba531')
+b2sums=('241bc4e51766125c9c465da6b7f31de4885c5f7f70f503365d3f67a54a72b7792109906c856fd66d9ad389639f7a935cc9e10ab35e1cb8608b5f6590a5a12d50')
 
 build() {
   mkdir build

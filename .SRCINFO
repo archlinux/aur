@@ -1,23 +1,26 @@
 pkgbase = r-distributions3
 	pkgdesc = Probability Distributions as S3 Objects
-	pkgver = 0.2.1
-	pkgrel = 3
+	pkgver = 0.2.2
+	pkgrel = 1
 	url = https://cran.r-project.org/package=distributions3
 	arch = any
 	license = MIT
+	checkdepends = r-poissonbinomial
 	checkdepends = r-revdbayes
 	checkdepends = r-testthat
-	depends = r-ellipsis
 	depends = r-ggplot2
 	depends = r-glue
-	optdepends = r-covr
+	depends = r-rlang
 	optdepends = r-cowplot
 	optdepends = r-knitr
+	optdepends = r-poissonbinomial
 	optdepends = r-revdbayes
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://cran.r-project.org/src/contrib/distributions3_0.2.1.tar.gz
-	md5sums = de2560c8cfa8a5ffa9ee9e0bcd7f745a
-	b2sums = 567b6e5660874079fbabe3bdb82b5f2834b7428c16d9a516359ef78fda368a0c76866fb06bad0040387d047d57f993e9a4b454f05ba071be17f1257f530d0a32
+	optdepends = r-tibble
+	optdepends = r-vctrs
+	source = https://cran.r-project.org/src/contrib/distributions3_0.2.2.tar.gz
+	md5sums = 62b8642512113d37b1bee51d1eeba531
+	b2sums = 241bc4e51766125c9c465da6b7f31de4885c5f7f70f503365d3f67a54a72b7792109906c856fd66d9ad389639f7a935cc9e10ab35e1cb8608b5f6590a5a12d50
 
 pkgname = r-distributions3
