@@ -7,7 +7,6 @@ pkgbase = vimg
 	license = MIT
 	makedepends = cargo
 	makedepends = git
-	makedepends = lld
 	depends = ffmpeg
 	source = vimg-0.1.4.tar.gz::https://github.com/alexheretic/vimg/archive/v0.1.4.tar.gz
 	sha256sums = fc76bbdaed60fe94a7ea183ba635090e031dd80a331447413b034f8057a6d1df

@@ -9,16 +9,13 @@ license=('MIT')
 depends=('ffmpeg')
 optdepends=()
 makedepends=('cargo'
-             'git'
-             'lld')
+             'git')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/alexheretic/$pkgname/archive/v$pkgver.tar.gz")
 sha256sums=('fc76bbdaed60fe94a7ea183ba635090e031dd80a331447413b034f8057a6d1df')
 
 build() {
   cd "$pkgname-$pkgver"
-  RUSTFLAGS='-C link-arg=-fuse-ld=lld' \
-    RUSTUP_TOOLCHAIN=stable \
-    cargo build --release --locked
+  RUSTUP_TOOLCHAIN=stable cargo build --release --locked
 }
 
 package() {
