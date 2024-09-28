@@ -1,7 +1,7 @@
 # Maintainer: Bink <B-Interactive@users.noreply.github.com>
 
 pkgname=air-sdk
-pkgver=51.1.1.4
+pkgver=51.1.1.5
 pkgrel=1
 epoch=1
 pkgdesc="A multi-operating system, multi-screen runtime that allows you to leverage your web development skills to build and deploy rich Internet applications to the desktop and mobile devices."
@@ -11,7 +11,7 @@ license=('custom:Harman Connected Services, Inc. (“Harman”) SDK License Agre
 depends=('jdk11-openjdk')
 makedepends=('wget' 'unzip')
 source=()
-_sha256sum='634c322dda0d6b566bd49146dde6a58ea1de5b766f099f45cdabc9bb80f69b33'
+_sha256sum='4e4b1e077173580056b5e6e6327c113688c11825a9898a01db0713173bf194b3'
 install="$pkgname.install"
 
 package() {
@@ -20,7 +20,7 @@ package() {
 		while true; do
 			echo ""
 			echo "Harman AIR SDK License Agreement"
-			echo "https://airsdk.harman.com/assets/pdfs/HARMAN%20AIR%20SDK%20License%20Agreement.pdf"
+			echo "${url}assets/pdfs/HARMAN%20AIR%20SDK%20License%20Agreement.pdf"
 			echo ""
 			read -n1 -p "I accept the terms of the AIR SDK License Agreement [y/n] " yn
 			case $yn in
@@ -29,7 +29,7 @@ package() {
 				* ) echo "Please answer [y]es or [n]o.";;
 			esac
 		done
-		wget "https://airsdk.harman.com/api/versions/$pkgver/sdks/AIRSDK_Linux.zip?license=accepted" -O "AIRSDK_Linux.zip"
+		wget "${url}api/versions/$pkgver/sdks/AIRSDK_Linux.zip?license=accepted" -O "AIRSDK_Linux.zip"
 	fi
 
 	if echo "$_sha256sum AIRSDK_Linux.zip" | sha256sum -c --status; then
@@ -47,6 +47,7 @@ package() {
 	echo "export AIR_HOME=/opt/$pkgname/AIRSDK" > "$pkgdir/etc/profile.d/$pkgname.sh"
 	echo "export PATH='${PATH}':'/opt/$pkgname/AIRSDK/bin'" >> "$pkgdir/etc/profile.d/$pkgname.sh"
 	echo "export JAVA_HOME=/usr/lib/jvm/java-11-openjdk" >> "$pkgdir/etc/profile.d/$pkgname.sh"
+	echo "export AIR_DISTRO=debian" > "$pkgdir/etc/profile.d/$pkgname.sh"
 
 	cd "$pkgdir/opt/$pkgname"
 	ln -s "$pkgver" "AIRSDK"
