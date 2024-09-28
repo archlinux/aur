@@ -25,7 +25,7 @@ depends=(
 	'python-importlib-metadata'
 )
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('6991ae3f1259cbd8b8e483808e86f110e6c867a59c0e4e3a24751c9345fc218d')
+sha256sums=('ef796c5a3cc21b26b194ae7eed8f0f0df768fcd5d69415d63f44483c1402f5de')
 
 _pkgname="${pkgname/python-/}"
 
