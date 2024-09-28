@@ -1,24 +1,23 @@
 pkgbase='python-oelint-parser'
-pkgname=('python-oelint-parser')
-_module='oelint-parser'
-pkgver='3.4.0'
+pkgname=("${pkgbase}")
+_module=${pkgbase/python-/}
+pkgver='5.0.0'
 pkgrel=1
-pkgdesc="Alternative parser for bitbake recipes"
-url="https://github.com/priv-kweihmann/oelint-parser"
+pkgdesc='Alternative parser for bitbake recipes'
+url='https://github.com/priv-kweihmann/oelint-parser'
 depends=('python-deprecated' 'python-regex')
 makedepends=('python-setuptools')
-license=('BSD-2-Clause')
+license=('BSD')
 arch=('any')
-source=("https://files.pythonhosted.org/packages/source/${_module::1}/$_module/${_module/-/_}-$pkgver.tar.gz")
-sha256sums=('92733154189b697df02bb54d04e0c778b7806c13971ca35bcb18c8b6235c21fc')
+source=("${url}/archive/refs/tags/${pkgver}.tar.gz")
+sha256sums=('2cd3c9d7508169d940493c663f0fae290ec3df98f673d0378111f0843e0b55cc')
 
 build() {
-    cd "${srcdir}/${_module//-/_}-${pkgver}"
+    cd "${srcdir}/${_module}-${pkgver}"
     python setup.py build
 }
 
 package() {
-    depends+=()
-    cd "${srcdir}/${_module//-/_}-${pkgver}"
+    cd "${srcdir}/${_module}-${pkgver}"
     python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
 }
