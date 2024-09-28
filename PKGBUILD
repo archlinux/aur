@@ -1,12 +1,12 @@
 pkgname=gpt4all-chat
 pkgver=3.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="run open-source LLMs anywhere"
 arch=("x86_64")
 url="https://gpt4all.io"
 license=("MIT")
 depends=(
-    "gcc-libs" "glibc" "qt6-base" "qt6-httpserver" "qt6-5compat" "qt6-quickcontrols2" 
+    "gcc-libs" "glibc" "qt6-base" "qt6-httpserver" "qt6-5compat" "qt6-declarative" 
     "qt6-webengine")
 makedepends=(
     "cmake" "shaderc" "vulkan-tools" "vulkan-headers" "qt6-shadertools" "qt6-svg" 
