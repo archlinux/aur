@@ -1,7 +1,7 @@
 # Maintainer: VCalV
 _pkgname=gourou
 pkgname="${_pkgname}-git"
-pkgver=r140.f60abf0
+pkgver=r145.d9a920b
 pkgrel=1
 pkgdesc="Download and decrypt adobe encrypted (acsm) pdf and epub files (git version)"
 arch=('x86_64')
@@ -10,11 +10,11 @@ url="https://forge.soutade.fr/soutade/libgourou"
 depends=(glibc gcc-libs zlib libzip openssl pugixml curl)
 makedepends=(git)
 conflicts=(gourou gourou-bin)
-provides=("gourou" "libgourou")
+provides=("gourou=${pkgver}" "libgourou=${pkgver}")
 options=(strip)
 source=(
-	"git://forge.soutade.fr/libgourou.git"
-	"git://forge.soutade.fr/updfparser.git"
+	"git://forge.soutade.fr/soutade/libgourou.git"
+	"git://forge.soutade.fr/soutade/updfparser.git"
 	"build.patch"
 )
 sha512sums=('SKIP'
