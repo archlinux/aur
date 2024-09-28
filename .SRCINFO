@@ -1,0 +1,18 @@
+pkgbase = nmcurse-git
+	pkgdesc = Curses interface for NetworkManager
+	pkgver = 8.3501282
+	pkgrel = 1
+	url = https://github.com/vilari-mickopf/nmcurse
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = git
+	depends = make
+	depends = cmake
+	depends = networkmanager
+	provides = nmcurse
+	conflicts = nmcurse
+	source = nmcurse::git+https://github.com/vilari-mickopf/nmcurse.git
+	md5sums = SKIP
+
+pkgname = nmcurse-git
