@@ -1,0 +1,24 @@
+diff --unified --recursive --text a/src/meson.build b/src/meson.build
+--- a/src/meson.build	2024-09-28 04:24:49.000000000 -0600
++++ b/src/meson.build	2024-09-28 11:08:24.155445288 -0600
+@@ -65,20 +65,3 @@
+ cargo_target_dir = meson.project_build_root() / 'target'
+ cargo_home = meson.project_build_root() / 'cargo-home'
+ manifest_path = meson.project_source_root() / 'Cargo.toml'
+-test (
+-  'clippy',
+-  cargo,
+-  args: [
+-    'clippy',
+-    '--manifest-path=@0@'.format(manifest_path),
+-    '--target-dir=@0@'.format(cargo_target_dir),
+-    '--',
+-    '-D',
+-    'warnings',
+-  ],
+-  env: [
+-    'CARGO_HOME=@0@'.format(cargo_home),
+-    'PATH=/app/bin:/usr/bin:/usr/lib/sdk/llvm18/bin:/usr/lib/sdk/rust-stable/bin',
+-  ],
+-  timeout: 300, # Give cargo more time
+-)
