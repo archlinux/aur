@@ -4,7 +4,7 @@ import os
 
 #Functions
 def wronginput():
-	print("Huh? I think you typed in the wrong thing.. Do me a favour and restart.")
+	print("Huh?")
 
 #Introduction
 print("Welcome to markustools, a specially created tool for troubleshooting, games, installation and other plain, dumb stuff")
@@ -19,7 +19,7 @@ if option == "h":
 elif option == "1":
 	exittype = input("Exit the desktop or exit this program?\n1) markustools\n2) Desktop") 
 	#Exit markustools
-	if "exittype" == "1":
+	if exittype == "1":
 		print("Now exiting markustools..")
 		exit()
 	#Exit DM
