@@ -2,7 +2,7 @@
 pkgbase=python-regions
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}" "python-${_pyname}-doc")
-pkgver=0.9
+pkgver=0.10
 pkgrel=1
 pkgdesc="Astropy affilated package for region handling"
 arch=('i686' 'x86_64')
@@ -16,17 +16,25 @@ makedepends=('python-setuptools-scm>=6.2'
              'python-numpy'
              'python-extension-helpers'
              'python-sphinx-astropy'
+             'python-matplotlib'
              'python-astropy'
              'python-shapely')
-checkdepends=('python-pytest-arraydiff'
-              'python-pytest-astropy-header'
-              'python-pytest-remotedata') # astropy already in makedepends
-#             'python-matplotlib')
+checkdepends=('python-pytest-astropy-header'
+#             'python-pytest-xdist'
+              'python-pytest-doctestplus'
+              'python-pytest-remotedata') # astropy，matplotlib already in makedepends
+#             'python-pytest-arraydiff'
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('34b1d0905ac72947f2619cc4638dc119')
+md5sums=('caf3a530e451836bffa0cb61c6a6b1c3')
 
 get_pyver() {
     python -c "import sys; print('$1'.join(map(str, sys.version_info[:2])))"
+}
+
+prepare() {
+    cd ${srcdir}/${_pyname}-${pkgver}
+
+    sed -i "/error/a \    'ignore:Expected None:pytest.PytestReturnNotNoneWarning'," pyproject.toml
 }
 
 build() {
@@ -34,13 +42,15 @@ build() {
     python -m build --wheel --no-isolation --skip-dependency-check
 
     msg "Building Docs"
+    ln -rs ${srcdir}/${_pyname}-${pkgver}/${_pyname/-/_}*egg-info \
+        build/lib.linux-${CARCH}-cpython-$(get_pyver)/${_pyname/-/_}-${pkgver}-py$(get_pyver .).egg-info
     PYTHONPATH="../build/lib.linux-${CARCH}-cpython-$(get_pyver)" make -C docs html
 }
 
 check() {
     cd ${srcdir}/${_pyname}-${pkgver}
 
-    pytest "build/lib.linux-${CARCH}-cpython-$(get_pyver)" || warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count
+    pytest "build/lib.linux-${CARCH}-cpython-$(get_pyver)" || warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count -p xdist -n 4
 }
 
 package_python-regions() {
