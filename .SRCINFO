@@ -1,0 +1,15 @@
+pkgbase = ruby-ffi-libarchive
+	pkgdesc = A Ruby FFI binding to libarchive.
+	pkgver = 1.1.14
+	pkgrel = 1
+	url = https://github.com/chef/ffi-libarchive
+	arch = any
+	license = Apache-2.0
+	depends = ruby
+	depends = ruby-ffi
+	noextract = ffi-libarchive-1.1.14.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/ffi-libarchive-1.1.14.gem
+	sha1sums = 5f122de65082dfd7b90c8f054ade4f6fbeac33c6
+
+pkgname = ruby-ffi-libarchive

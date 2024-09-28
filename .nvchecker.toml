@@ -1,0 +1,3 @@
+[ruby-ffi-libarchive]
+source = "gems"
+gems = "ffi-libarchive"
