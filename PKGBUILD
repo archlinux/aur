@@ -1,16 +1,20 @@
 # Maintainer: maoyaotang <292898660@qq.com>
 
 pkgname=otf-noto-full
-_pkgname=noto-fonts-otf
-pkgver=24.9.1
+_pkgname=otf-noto-Regular
+pkgver=24.9.1.r0.g70fed92
 pkgrel=1
 pkgdesc='Noto Fonts for all languages'
 arch=('any')
 url='https://fonts.google.com/noto'
 license=('Apache-2.0')
 provides=('Noto')
-source=("git+https://gitee.com/mao-yaotang/noto-fonts-otf.git")
+source=("git+https://github.com/maoyaotang12/otf-noto-Regular.git")
 sha256sums=('SKIP')
+pkgver() {
+    cd $_pkgname
+    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/v//g'
+}
 
 package() {
   cd "${_pkgname}"
