@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 # Contributor: Caleb Maclennan <caleb@alerque.com>
 pkgname=ezra-bible-app
-pkgver=1.14.1
+pkgver=1.15.0
 pkgrel=1
 pkgdesc="A modern and user-friendly Bible app for desktops, tablets and mobiles focussing on topical study"
 arch=('x86_64')
@@ -25,7 +25,7 @@ conflicts=('ezra-project')
 options=('!lto')
 source=("git+https://github.com/ezra-bible-app/ezra-bible-app.git#tag=$pkgver"
         'git+https://github.com/ezra-project/apidocs.ezrabibleapp.net.git')
-sha256sums=('918c8041f8a3d9b529bb530c9130bece0e830fb043f543cae2df44bc57ea7ce0'
+sha256sums=('13cf397e500dfce622bce9b60aa618d051d8fbf78eece650ab082b20458aee02'
             'SKIP')
 
 prepare() {
@@ -35,7 +35,7 @@ prepare() {
   git -c protocol.file.allow=always submodule update
 
   # Use latest version of Electron
-  sed -i "s/17.1.0/31.3.1/g" package.json
+  sed -i "s/17.1.0/32.1.2/g" package.json
 }
 
 build() {
