@@ -1,7 +1,7 @@
 _pkgname="spicetify-extensions-rxri"
 pkgname="$_pkgname-git"
 pkgver=r38.66ec39b
-pkgrel=1
+pkgrel=2
 pkgdesc="Add some spice with extensions to make spotify more enjoyable"
 arch=("any")
 url="https://github.com/rxri/spicetify-extensions"
