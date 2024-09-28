@@ -1,0 +1,22 @@
+pkgbase = python-click-prompt
+	pkgdesc = Interactive command line options for the click library
+	pkgver = 0.6.1
+	pkgrel = 1
+	url = https://github.com/markusgrotz/click-prompt
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-poetry-core>=1.0.0
+	makedepends = python-poetry-plugin-export
+	makedepends = python-platformdirs<5.0
+	makedepends = python-platformdirs>=3.9.1
+	depends = python>=3.6.9
+	depends = python-click>=8.0.4
+	depends = python-click<9.0
+	depends = python-questionary>=1.10.0
+	source = click_prompt.tar.gz::https://github.com/markusgrotz/click-prompt/releases/download/v0.6.1/click_prompt-0.6.1.tar.gz
+	sha256sums = c158c6227a30a803970d08cfcb2b83bcdbc1729bf0189c03981a2db28ac1ef04
+
+pkgname = python-click-prompt
