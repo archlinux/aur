@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=Rcpi
-_pkgver=1.40.2
+_pkgver=1.40.3
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -16,7 +16,7 @@ depends=(
   r-foreach
   r-gosemsim
   r-httr2
-  r-rjson
+  r-jsonlite
   r-rlang
 )
 optdepends=(
@@ -25,8 +25,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('ef8e55efba48f75448c0f202eead4fa7')
-b2sums=('979f05bc031d361e9d41a6ca9e5aea02d5cdc0cd315209c1bf594efca65cbd9818ea9fd1d554dff22e51747a8a236d39d25c9a13acb8346b21e54f5689c7219e')
+md5sums=('d9a0626039d41a94bf159095b04f4345')
+b2sums=('ad895d48c4e14407cd92f1945fb9a3dd3aa3fdab861622076d95a02c85022aa8a1603c1d5fd25728dacc227d1351d3bc72250f127fda0660c8eb96b5646421f2')
 
 build() {
   mkdir build
