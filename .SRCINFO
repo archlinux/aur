@@ -1,8 +1,8 @@
 pkgbase = markustools
 	pkgdesc = A tool for games, editing and other plain, dumb stuff (coded in Python)
-	pkgver = 1.2.1
-	pkgrel = 6
-	url = https://techmarkus.com/markustools.html
+	pkgver = 1.2.2
+	pkgrel = 7
+	url = https://github.com/markustools/magnificent-markustools
 	arch = x86_64
 	license = GPL
 	depends = python
