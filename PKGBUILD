@@ -5,7 +5,7 @@
 
 _android_arch=aarch64
 pkgname=android-$_android_arch-qt6-multimedia
-_qtver=6.7.2
+_qtver=6.7.3
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=(any)
@@ -14,14 +14,14 @@ license=(GPL3 LGPL3 FDL custom)
 pkgdesc='Classes for audio, video, radio and camera functionality (android)'
 depends=('android-aarch64-qt6-base')
 optdepends=('android-aarch64-qt6-declarative: QML bindings')
-makedepends=('android-cmake' 'android-aarch64-qt6-declarative' 'android-aarch64-qt6-shadertools' 'qt6-declarative' 'qt6-shadertools' 'ninja' 'java-environment-openjdk=17')
+makedepends=('android-cmake' 'android-aarch64-qt6-declarative' 'android-aarch64-qt6-shadertools' 'qt6-declarative' 'qt6-shadertools' 'ninja')
 options=('!strip' '!buildflags' 'staticlibs' '!emptydirs')
 groups=(android-${_android_arch}-qt6)
 _pkgfqn="qtmultimedia-everywhere-src-${_qtver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz"
         '0001-Fix-compile-flags-of-resonance-audio-for-mingw-w64.patch')
-sha256sums=('8ef835115acb9a1d3d2c9f23cfacb43f2c537e3786a8ab822299a2a7765651d3'
-            '41c43d6b97da13d07d5a1fdd6e74e032d4bc4b3a672c370bc687074e76763093')
+sha256sums=('304d28b8e592435293893b0110d5f3534407604d1e04d8a0b0e5b34afe577303'
+            'd198b2827f78b8e33a9d3e38d50f7fc0504cc990108f068187df06a909f29b2a')
 
 prepare () {
   cd $_pkgfqn
