@@ -1,18 +1,16 @@
 pkgname=nsight-systems
 pkgver=2024.5.1
 _pkgver=2024.5.1.113-3461954
-pkgrel=1
+pkgrel=2
 pkgdesc="A system-wide performance analysis tool for CPUs and GPUs"
 arch=('x86_64')
 url="https://developer.nvidia.com/nsight-systems"
 depends=(
   'libxcb'
-  'gstreamer'
   'dbus'
   'expat'
   'fontconfig'
   'freetype2'
-  'gst-plugins-base-libs'
   'libglvnd'
   'libice'
   'libsm'
@@ -31,21 +29,6 @@ depends=(
   'libxtst'
   'nspr'
   'nss'
-  'nvidia-utils'
-  'openucx'
-  'python'
-  'python-numpy'
-  'python-protobuf'
-  'python-psutil'
-  'python-xlib'
-  'qt6-base'
-  'qt6-declarative'
-  'qt6-positioning'
-  'qt6-svg'
-  'qt6-wayland'
-  'qt6-webchannel'
-  'qt6-webengine'
-  'wayland'
   'xcb-util-image'
   'xcb-util-keysyms'
   'xcb-util-renderutil'
