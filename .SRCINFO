@@ -1,0 +1,27 @@
+pkgbase = adbfileexplorer-git
+	pkgdesc = Simple File Explorer for adb devices
+	pkgver = git
+	pkgrel = 1
+	url = https://github.com/Aldeshov/ADBFileExplorer
+	arch = any
+	license = GPL-3.0-only
+	makedepends = gendesk
+	makedepends = git
+	depends = android-tools
+	depends = python>=3.8
+	depends = python-cffi
+	depends = python-cryptography
+	depends = python-libusb1
+	depends = python-pyasn1
+	depends = python-pycparser
+	depends = python-pyqt5
+	depends = python-pyqt5-sip
+	depends = python-pyqt5-stubs
+	depends = python-rsa
+	depends = python-setuptools
+	source = adbfileexplorer-git::git+https://github.com/Aldeshov/ADBFileExplorer.git
+	source = startup.patch
+	sha256sums = SKIP
+	sha256sums = 244a7be80ff1ce0006d8691dace430e91ece600c567474d22586a86a773cff76
+
+pkgname = adbfileexplorer-git

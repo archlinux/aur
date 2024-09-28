@@ -1,0 +1,4 @@
+[ADBFileExplorer]
+source = "github"
+github = "Aldeshov/ADBFileExplorer"
+use_latest_release = true

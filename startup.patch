@@ -1,0 +1,23 @@
+--- run.sh	2024-04-28 20:05:09.885896809 +0200
++++ run.sh	2024-04-28 20:16:10.182230504 +0200
+@@ -1,8 +1,19 @@
+-source ./venv/bin/activate
++#!/bin/bash
++
++#source ./venv/bin/activate
++
++cd "$(readlink -f $0 | xargs dirname)"
++
+ app=$(pwd)/src/app
+ src=$(pwd)/src
+ root=$(pwd)
+ path=$app:$src:$root
++
+ export PYTHONUNBUFFERED=1
+ export PYTHONPATH=$path:$PYTHONPATH
++
++# WorkAround for dark designs
++export XDG_CURRENT_DESKTOP=GNOME
++export GTK_THEME=Default
++
+ python ./src/app
