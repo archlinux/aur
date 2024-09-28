@@ -10,6 +10,7 @@ url='https://chromium.googlesource.com/chromiumos/platform2.git/+/HEAD/vm_tools/
 makedepends=('meson' 'ninja' 'mariadb' 'python-jinja' 'python')
 provides=('sommelier')
 conflicts=('sommelier')
+install="sommelier-git.install"
 source=('git+https://chromium.googlesource.com/chromiumos/platform2.git')
 sha256sums=('SKIP')
 
@@ -24,7 +25,6 @@ replace "/opt/google/cros-containers" "/usr" -- meson_options.txt
 meson setup --prefix=/usr ./ build
 cd build
 meson compile
-echo NOTE: Sommelier may only be able to run on your system with the --noop-driver flag added
 }
 
 

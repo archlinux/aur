@@ -1,0 +1,7 @@
+post_install() {
+         echo
+         echo "NOTE: Sommelier may require you to use the --noop-driver flag"
+         echo 
+}
+
+
