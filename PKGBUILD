@@ -2,7 +2,7 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=DNABarcodes
-_pkgver=1.34.0
+_pkgver=1.34.1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -20,8 +20,8 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('d75b23d31e60657da860ba04bedfd4c2')
-b2sums=('3af6f355ff223db7c5ecf16132f79be20dbfed0264919d4e186eb2f76cfb9d2100d15bd0b8f416db8fb7a2da4779b2f2897986de30ba303fdbe5378b7122f32a')
+md5sums=('8da270b83181920e9a8f30e5c122dca7')
+b2sums=('5e6718f78a0ca5d142b1d853b892b428c19a8b61477db662ef86e04a36cf41c136d2537afd7fc586aadbf3ed2821630c9c7fe4124766bd2b07c0285bf4d2aa96')
 
 build() {
   mkdir build
