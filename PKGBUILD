@@ -1,45 +1,25 @@
-# Maintainer: Jesse R Codling <codling@umich.edu>
-
-pkgbase='python-jupyterlab-variableinspector'
-pkgname=('python-jupyterlab-variableinspector')
-_module='lckr_jupyterlab_variableinspector'
-pkgver='3.2.1'
+# Maintainer: Carlos Aznarán <caznaranl@uni.pe>
+# Contributor: Jesse R Codling <codling@umich.edu>
+_base=jupyterlab-variableInspector
+pkgname=python-${_base,,}
+pkgdesc="Jupyterlab extension that shows currently used variables and their values"
+pkgver=3.2.4
 pkgrel=1
-pkgdesc="Jupyterlab extension that shows currently used variables and their values."
-url="https://github.com/jupyterlab-contrib/jupyterlab-variableInspector"
-depends=('python' 'jupyterlab-lsp')
-makedepends=(
-        # build system components
-        'python-build'
-        'python-installer'
-        'python-hatch-nodejs-version'
-        'python-hatch-jupyter-builder'
-
-        # required optdepends
-        'python-isoduration'
-        'python-fqdn'
-        'python-jsonpointer'
-        'python-uri-template'
-        'python-rfc3339-validator'
-        'python-webcolors'
-        'python-debugpy'
-        'python-jupyter-server-terminals'
-        'python-rfc3986-validator'
-        'python-types-python-dateutil'
-)
-license=('MIT')
-arch=('any')
-source=("${url}/releases/download/v${pkgver}/${_module}-${pkgver}.tar.gz")
-sha256sums=('f3cda3f5abce5a632aa78b55225623ed2c7dc9924dc2dd93b92cda811f0138e5')
+arch=(any)
+url="https://github.com/jupyterlab-contrib/${_base}"
+depends=(jupyterlab)
+makedepends=(python-build python-installer python-hatch-nodejs-version python-hatch-jupyter-builder npm)
+license=(MIT)
+source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
+sha512sums=('3affd6c1259c766cc817eafa394d96859edee8dbc0b60fb72cbf27ae70e3aa6c34ed990844febaac384990be13bd9e5e71279a06117a46911b4fac85cffc8fe8')
 
 build() {
-    cd "${srcdir}/${_module}-${pkgver}"
-    python -m build --wheel --no-isolation
+  cd ${_base}-${pkgver}
+  python -m build --wheel --skip-dependency-check --no-isolation
 }
 
 package() {
-    depends+=()
-    cd "${srcdir}/${_module}-${pkgver}"
-    install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgbase}/LICENSE"
-    python -m installer --destdir="${pkgdir}" dist/*.whl
+  cd ${_base}-${pkgver}
+  PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python -m installer --destdir="${pkgdir}" dist/*.whl
+  install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
