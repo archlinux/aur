@@ -1,0 +1,22 @@
+From fe42b832b4d2cccf6bec31eeec19b063d883a34d Mon Sep 17 00:00:00 2001
+From: "E. Albiter" <ealbiter@gmail.com>
+Date: Fri, 27 Sep 2024 19:10:05 -0600
+Subject: [PATCH] Add rocalution config search path
+
+---
+ CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index f2710b4162..119e30ba0e 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -231,7 +231,7 @@ IF (WITH_ROCALUTION)
+   MESSAGE(STATUS "------------------------------------------------")
+   MESSAGE(STATUS "Looking for rocALUTION installation")
+ 
+-  FIND_PACKAGE(rocalution REQUIRED)
++  FIND_PACKAGE(rocalution REQUIRED PATHS /opt/rocm/lib/cmake/rocalution/)
+ 
+   MESSAGE(STATUS "  rocALUTION:     " "${rocalution_FOUND}")
+   MESSAGE(STATUS "  rocALUTION_INC: " "${ROCALUTION_INCLUDE_DIR}")

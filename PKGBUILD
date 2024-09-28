@@ -42,7 +42,6 @@ if((!DISABLE_AUTOCONFIG)); then
   #AUR packages
   DISABLE_TRILINOS=1
   DISABLE_ZOLTAN=1
-  #Using external Zoltan is currently broken
   DISABLE_INTERNAL_ZOLTAN=0
   DISABLE_MUMPS=1
   DISABLE_HYPRE=1
@@ -135,9 +134,15 @@ _CMAKE_FLAGS+=(
 ((!DISABLE_ZOLTAN))     && _CMAKE_FLAGS+=(
                                   -DUSE_SYSTEM_ZOLTAN=${_use_external_zoltan}
                                   )
+((!DISABLE_ROCALUTION)) && _CMAKE_FLAGS+=(
+                                  -DHIP_DIR=/opt/rocm/lib/cmake/hip
+                                  -DAMDDeviceLibs_DIR=/opt/rocm/lib/cmake/AMDDeviceLibs
+                                  -Damd_comgr_DIR=/opt/rocm/lib/cmake/amd_comgr
+                                  -Dhsa-runtime64_DIR=/opt/rocm/lib/cmake/hsa-runtime64
+                                  )
 pkgname=elmerfem-git
 _pkgname=elmerfem
-pkgver=9.0.r3199.g4eaadd464
+pkgver=9.0.r3215.g6c43a0546
 pkgrel=1
 pkgdesc="A finite element software for multiphysical problems"
 arch=('x86_64')
@@ -182,20 +187,22 @@ options=(!emptydirs !staticlibs)
 ((ENABLE_DEBUG))      && options+=(debug !strip)
 
 source=("git+https://github.com/ElmerCSC/elmerfem.git${_fragment}"
-        "$_pkgname.desktop")
+        "$_pkgname.desktop"
+        "rocalution.patch::https://github.com/ElmerCSC/elmerfem/commit/fe42b832b4d2cccf6bec31eeec19b063d883a34d.patch")
 
 sha256sums=('SKIP'
-            'f4b39389e5f258c7860b8d7a6b171fb54bf849dc772f640ac5e7a12c7a384aca')
+            'f4b39389e5f258c7860b8d7a6b171fb54bf849dc772f640ac5e7a12c7a384aca'
+            '73aaeb599a4099302686aab3255c8ac3736cae6207880990bd633cc5a9d9e2ec')
 
 pkgver() {
   git -C "${srcdir}/${_pkgname}" describe --long --tag| sed -r 's/^release-//;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
 prepare() {
-  #cd "${srcdir}"/$_pkgname
-  #for patch in "${srcdir}"/*.patch
-  #  do msg2 "Apply: ${patch##*/}"; git apply -v "$patch"
-  #done
+  cd "${srcdir}"/$_pkgname
+  for patch in "${srcdir}"/*.patch
+    do msg2 "Apply: ${patch##*/}"; git apply -v "$patch"
+  done
   if((!DISABLE_INTERNAL_ZOLTAN && !DISABLE_ZOLTAN)); then
     cd "$srcdir/$_pkgname"
     git submodule update --init --recursive
