@@ -2,8 +2,9 @@
 # Contributor: Dominik Heidler <dheidler@gmail.com>
 
 pkgname=gqrx-git
-pkgver=20240418
+pkgver=r2574.25fdbb5a
 pkgrel=1
+epoch=1
 pkgdesc="SDR receiver for Funcube Dongle, RTL-SDR, USRP and OsmoSDR devices."
 arch=('i686' 'x86_64')
 url="http://gqrx.dk/"
@@ -30,9 +31,10 @@ sha256sums=('910bb64e475cfadc8f3ac51e2a3bb61f42a7a2ec55a60aa9121d213c651f2d73'
             'SKIP')
 
 pkgver() {
-  cd "$srcdir/$_gitname"
-  # disable $HOME to prevent git to use user's configuration
-  HOME=/dev/null git log -1 --format="%cd" --date=short | tr -d '-'
+	cd "$srcdir/$_gitname"
+	# disable $HOME to prevent git to use user's configuration
+	HOME=/dev/null printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+#	HOME=/dev/null git log -1 --format="%cd" --date=short | tr -d '-'
 }
 
 build() {
