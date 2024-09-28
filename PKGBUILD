@@ -15,7 +15,7 @@ source=("git+https://github.com/Heroic-Games-Launcher/HeroicGamesLauncher.git#ta
         heroic.desktop)
 sha256sums=('b752b2c11f7d20f068b40d8122a5d4b2b9dcdf3be134d84c9888fe71559045fe'
             '90cfbac9ec10b7de83a2a83f1e308e2239842fddf056a2031be70bb70fa4ee86'
-            'afaa370024a4f5f3aa85fa4cb53c0d7eed66e36f8b086ab9f6fcf09f4185d44b')
+            '61a10cc9de919e3c29f5832503ab6ea075826905fe432d5bb255c733847241c7')
 provides=(heroic-games-launcher)
 conflicts=(heroic-games-launcher)
 
