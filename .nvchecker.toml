@@ -1,0 +1,4 @@
+[colors_ai]
+source = "github"
+github = "tsinis/colors_ai"
+use_latest_release = true

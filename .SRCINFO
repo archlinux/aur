@@ -1,0 +1,29 @@
+pkgbase = colors-ai
+	pkgdesc = AI driven color scheme generator.
+	pkgver = 2.2.2
+	pkgrel = 1
+	url = https://github.com/tsinis/colors_ai
+	arch = x86_64
+	arch = armv7h
+	arch = aarch64
+	license = MIT
+	makedepends = clang
+	makedepends = cmake>=3.10
+	makedepends = flutter
+	makedepends = gendesk
+	makedepends = gst-plugins-base-libs
+	makedepends = gstreamer
+	makedepends = gtk3
+	makedepends = jsoncpp
+	makedepends = ninja
+	makedepends = xz
+	depends = curl
+	depends = libsecret
+	depends = mesa
+	depends = pkgconf
+	depends = unzip
+	source = colors-ai-2.2.2.tar.gz::https://github.com/tsinis/colors_ai/archive/refs/tags/2.2.2.tar.gz
+	md5sums = 80019f5c2f818112840f3c5ad2dad2ab
+	sha512sums = ad1856a3158dd37205a7fbcd8dc3117796ec317804f39c85ed6f94b376c4e53fe1954ed6b46b7ec60b56bde146e13efd42fd923f11ba861abab9869ef62459a0
+
+pkgname = colors-ai
