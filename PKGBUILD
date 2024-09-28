@@ -11,6 +11,6 @@ source=("vmcompile.sh")
 sha256sums=('d2dd3e73596be9a6c7bc28e2095633254d527e1a87b8ff348305e4a7a8e88428')
 
 package() {
-    shc -f "$srcdir/vmcompile.sh"-o "$srcdir/build/vmcompile"
+    shc -f "vmcompile.sh"-o "build/vmcompile"
     install -Dm755 "$srcdir/build/vmcompile" "$pkgdir/usr/bin/vmcompile"
 }
