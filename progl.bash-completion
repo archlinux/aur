@@ -1,0 +1,1 @@
+_have progl && complete -F _command progl
