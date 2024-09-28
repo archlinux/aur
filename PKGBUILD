@@ -1,4 +1,4 @@
-pkgname=Pinepods
+pkgname=pinepods
 pkgver=0.6.6
 pkgrel=1
 pkgdesc="Pinepods is a complete podcast management system and allows you to play, download, and keep track of podcasts you enjoy. All self hosted and enjoyed on your own server!"
