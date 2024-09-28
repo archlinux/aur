@@ -1,6 +1,6 @@
 pkgbase = python-trame-components
 	pkgdesc = Core components for trame widgets
-	pkgver = 2.4.1
+	pkgver = 2.4.2
 	pkgrel = 1
 	url = https://github.com/Kitware/trame-components
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = python-trame-components
 	makedepends = nodejs
 	makedepends = npm
 	depends = python-trame-client
-	source = trame-components-2.4.1.tar.gz::https://github.com/Kitware/trame-components/archive/v2.4.1.tar.gz
-	sha512sums = 103dccc43c20300243bfd3d007d79ad9f72da916d8828f639dc8061e028d19ffba8d5702c90c1f460af27b753987727e6438af0fb770cf5ada85a8516a35a166
+	source = trame-components-2.4.2.tar.gz::https://github.com/Kitware/trame-components/archive/v2.4.2.tar.gz
+	sha512sums = 9de2e6c53c07bceccb58318fa17f627d8542a1321fe944cb4fb1a4ea1252e100bf46dd72f6f1c2681b28c886918dcc6b9b832495519ff0cebb5dd70f917d6605
 
 pkgname = python-trame-components
