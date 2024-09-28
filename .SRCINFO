@@ -1,0 +1,12 @@
+pkgbase = srb2-legacy-data
+	pkgdesc = Data files for Sonic Robo Blast 2 2.1 (srb2-legacy specific install directory)
+	pkgver = 2.1.25
+	pkgrel = 1
+	url = http://www.srb2.org
+	arch = any
+	license = custom
+	optdepends = srb2-legacy: "Sonic Robo Blast 2" game, srb2-legacy fork
+	source = https://github.com/STJr/SRB2/releases/download/SRB2_release_2.1.25/SRB2-v2125-Installer.exe
+	sha256sums = a2f851685dcd7f34fdc53ef3239dd63023231ba3a83c1fdfb01df556b37fe6d9
+
+pkgname = srb2-legacy-data
