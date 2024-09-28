@@ -55,9 +55,7 @@ pkgbase = elmerfem-git
 	options = !staticlibs
 	source = git+https://github.com/ElmerCSC/elmerfem.git#branch=devel
 	source = elmerfem.desktop
-	source = rocalution.patch::https://github.com/ElmerCSC/elmerfem/commit/fe42b832b4d2cccf6bec31eeec19b063d883a34d.patch
 	sha256sums = SKIP
 	sha256sums = f4b39389e5f258c7860b8d7a6b171fb54bf849dc772f640ac5e7a12c7a384aca
-	sha256sums = 73aaeb599a4099302686aab3255c8ac3736cae6207880990bd633cc5a9d9e2ec
 
 pkgname = elmerfem-git
