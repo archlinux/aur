@@ -1,5 +1,5 @@
 pkgname="spicetify-theme-nord-git"
-pkgver=r525.g3191e91
+pkgver=r527.g212f1d1
 pkgrel=1
 pkgdesc="Nord Themed Spotify (JoshuaWierenga's fork)"
 arch=("any")
@@ -25,6 +25,6 @@ build() {
 }
 package() {
     cd "${srcdir}/Nord-Spotify"
-    mkdir -p "${pkgdir}/usr/share/spicetify-cli/Themes"
-    cp -a --no-preserve=ownership dist/Nord "${pkgdir}/usr/share/spicetify-cli/Themes"
+    mkdir -p "${pkgdir}/opt/spicetify-cli/Themes"
+    cp -a --no-preserve=ownership dist/Nord "${pkgdir}/opt/spicetify-cli/Themes"
 }
