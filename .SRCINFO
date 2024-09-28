@@ -14,6 +14,7 @@ pkgbase = flatnotes
 	depends = python-qrcode
 	depends = python-whoosh
 	depends = uvicorn
+	backup = etc/conf.d/flatnotes
 	source = flatnotes-5.3.0.tar.gz::https://github.com/dullage/flatnotes/archive/v5.3.0.tar.gz
 	source = flatnotes.env
 	source = flatnotes.service

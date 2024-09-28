@@ -9,6 +9,7 @@ url="https://github.com/dullage/${pkgname}"
 license=("MIT")
 depends=("python-aiofiles" "python-fastapi" "python-jose" "python-pyotp" "python-python-multipart" "python-qrcode" "python-whoosh" "uvicorn")
 makedepends=("npm")
+backup=("etc/conf.d/${pkgname}")
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz"
         "${pkgname}.env"
         "${pkgname}.service"
