@@ -1,34 +1,38 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=jackstraw
-_pkgver=1.3.9
+_pkgver=1.3.17
 pkgname=r-${_pkgname,,}
-pkgver=1.3.9
+pkgver=${_pkgver//-/.}
 pkgrel=1
-pkgdesc='Statistical Inference for Unsupervised Learning'
-arch=('any')
-url="https://cran.r-project.org/package=${_pkgname}"
-license=('GPL')
+pkgdesc="Statistical Inference for Unsupervised Learning"
+arch=(any)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('GPL-2.0-only')
 depends=(
-  r
+  r-bedmatrix
   r-clusterr
   r-corpcor
+  r-genio
   r-irlba
-  r-qvalue
   r-rsvd
 )
 optdepends=(
+  r-gcatest
+  r-lfa
+  r-qvalue
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('6a599ec3803c64884973eeab44aaf5a78ec44406ef4f536993406e4b6c90f871')
+md5sums=('d79f90e86983a1874a49ab228a1c11f8')
+b2sums=('9256169d7e93a162db51420f3790df0bb8afbdb7f72feee8602f87f47fdeed9acbbb9f4f67cc1aced7d172961286869cea046814235f843a4a85f3573bb6dcc6')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
