@@ -1,9 +1,9 @@
-pkgbase = Pinepods
+pkgbase = pinepods
 	pkgdesc = Pinepods is a complete podcast management system and allows you to play, download, and keep track of podcasts you enjoy. All self hosted and enjoyed on your own server!
 	pkgver = 0.7.0
 	pkgrel = 1
 	url = https://github.com/madeofpendletonwool/PinePods
-	install = Pinepods.install
+	install = pinepods.install
 	arch = x86_64
 	arch = aarch64
 	license = gpl3
@@ -21,4 +21,4 @@ pkgbase = Pinepods
 	source_x86_64 = https://github.com/madeofpendletonwool/PinePods/releases/download/0.7.0/Pinepods_0.7.0_amd64.deb
 	source_aarch64 = https://github.com/madeofpendletonwool/PinePods/releases/download/0.7.0/Pinepods_0.7.0_arm64.deb
 
-pkgname = Pinepods
+pkgname = pinepods
