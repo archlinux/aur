@@ -1,21 +1,28 @@
 pkgbase = pyspread
 	pkgdesc = Python based non-traditional spreadsheet application
-	pkgver = 2.2.3
+	pkgver = 2.3
 	pkgrel = 1
 	url = https://pyspread.gitlab.io/
 	arch = any
 	license = GPL3
 	depends = python-setuptools
-	depends = python-dateutil
 	depends = python-numpy>=1.1.0
-	depends = python-pyqt5
-	depends = qt5-svg
+	depends = python-pyqt6
+	depends = qt6-svg
 	depends = python-markdown2
 	optdepends = python-matplotlib
 	optdepends = python-pyenchant
 	optdepends = python-pip
+	optdepends = python-dateutil
+	optdepends = python-rpy2
+	optdepends = python-plotnine
+	optdepends = libvoikko
+	optdepends = nuspell
+	optdepends = hspell
+	optdepends = r-ggplot2
+	optdepends = python-openpyxl
 	options = !emptydirs
-	source = https://gitlab.com/pyspread/pyspread/-/archive/v2.2.3/pyspread-v2.2.3.tar.gz
-	sha512sums = 2d13b7ab02e6362d66390b0c663ec409884e2390629775b9bfc71bf5201816714ad78389ddafe4b402c064e469acd6f5eb4250ce4cfdf771d6433c34d8e8f566
+	source = https://gitlab.com/pyspread/pyspread/-/archive/v2.3/pyspread-v2.3.tar.gz
+	sha512sums = a171f3272c2bdbc1508fbdbdeefea7c1194a1cd05a227f6e1883bd9acb30d1c15b9edc44fe9dcd95f7fdcbfd4886e4de6147bac6837c97af13d85a5b4bdea59d
 
 pkgname = pyspread

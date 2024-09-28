@@ -4,24 +4,32 @@
 # Contributor Sindwiller
 
 pkgname=pyspread
-pkgver=2.2.3
+pkgver=2.3
 pkgrel=1
 pkgdesc="Python based non-traditional spreadsheet application"
 arch=('any')
 url="https://pyspread.gitlab.io/"
 license=('GPL3')
 depends=('python-setuptools'
-        'python-dateutil'
         'python-numpy>=1.1.0'
-        'python-pyqt5'
-        'qt5-svg'
+        'python-pyqt6'
+        'qt6-svg'
         'python-markdown2')
 optdepends=('python-matplotlib'
             'python-pyenchant'
-            'python-pip')
+            'python-pip'
+            'python-dateutil'
+            'python-rpy2'
+            'python-plotnine'
+            'libvoikko'
+            'nuspell'
+            'hspell'
+            'r-ggplot2'
+#             'pyhton-pycel'
+            'python-openpyxl')
 options=(!emptydirs)
 source=("https://gitlab.com/pyspread/pyspread/-/archive/v${pkgver}/pyspread-v${pkgver}.tar.gz")
-sha512sums=('2d13b7ab02e6362d66390b0c663ec409884e2390629775b9bfc71bf5201816714ad78389ddafe4b402c064e469acd6f5eb4250ce4cfdf771d6433c34d8e8f566')
+sha512sums=('a171f3272c2bdbc1508fbdbdeefea7c1194a1cd05a227f6e1883bd9acb30d1c15b9edc44fe9dcd95f7fdcbfd4886e4de6147bac6837c97af13d85a5b4bdea59d')
 
 package() {  
   cd "${srcdir}/${pkgname}-v${pkgver}"
