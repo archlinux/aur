@@ -1,10 +1,8 @@
 # Maintainer: Parker Reed <parker.l.reed@gmail.com>
 # Co-Maintainer: Martin Rys <https://rys.rs/contact> | Toss a coin on https://rys.rs/donate
-# PKGBUILD that builds package from git.
-# Run 'makepkg -i' and hope for best :)
 
 pkgname=sc-controller-git
-pkgver=0.4.9.3.r2.067ca6b
+pkgver=0.4.9.3.r4.5d8aa46
 pkgrel=1
 pkgdesc='User-mode driver and GTK3 based GUI for Steam Controller'
 arch=('x86_64' 'aarch64')
