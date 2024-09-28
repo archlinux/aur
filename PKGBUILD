@@ -5,7 +5,7 @@
 
 _android_arch=aarch64
 pkgname=android-$_android_arch-qt6-scxml
-_qtver=6.7.2
+_qtver=6.7.3
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=(any)
@@ -14,12 +14,12 @@ license=(GPL3 LGPL3 FDL custom)
 pkgdesc='Static and runtime integration of SCXML models into Qt6 code (android)'
 depends=('android-aarch64-qt6-base')
 optdepends=('android-aarch64-qt6-declarative: QML bindings')
-makedepends=('android-cmake' 'android-aarch64-qt6-declarative' 'qt6-declarative' 'qt6-scxml' 'ninja' 'java-environment-openjdk=17')
+makedepends=('android-cmake' 'android-aarch64-qt6-declarative' 'qt6-declarative' 'qt6-scxml' 'ninja')
 options=('!strip' '!buildflags' 'staticlibs' '!emptydirs')
 groups=(android-${_android_arch}-qt6)
 _pkgfqn="qtscxml-everywhere-src-${_qtver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz")
-sha256sums=('20ecf93506d48f27b492ad3dd9d88830e08d642faec3071ce53396a8ae05c86f')
+sha256sums=('608febeb0dafb6fbf559e064dee779ab799441ed804267b534705ea5077eeda3')
 
 build() {
   export PATH=/usr/lib/jvm/java-17-openjdk/bin:$PATH
