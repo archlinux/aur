@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=betareg
-_pkgver=3.2-0
+_pkgver=3.2-1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="Beta Regression"
 arch=(x86_64)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -19,14 +19,16 @@ depends=(
 optdepends=(
   r-car
   r-distributions3
+  r-knitr
   r-numderiv
   r-partykit
+  r-quarto
   r-statmod
   r-strucchange
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('f0ff3dc355f20716df7e51a0e507a02b')
-b2sums=('6304c6dff3dd35d9bf8cc6a4c96084a1a7d79065494b7ae541ba5a7aabb63fb1e542e2439ca87780311c4046618e2087bbc4e5422335e4d83aa52d211b424b3b')
+md5sums=('482ba7a2a6ae8968dcd3de03f84581d2')
+b2sums=('7119ff9cf4084f13934e8fcf97e67fecc4f2aceda45c3e3e6ab86f932acb26c4ba36ec4615071ed9407efe1d9917e39f7387860aa6e9fa643a407d0614c1128d')
 
 build() {
   mkdir build
