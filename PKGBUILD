@@ -2,14 +2,14 @@
 
 _pkgname=mwptools
 pkgname=mwptools-git
-pkgver=7.217.337.r0.7fb3fcca
-pkgrel=1
+pkgver=2024.09.08.r2.ccd028b5
+pkgrel=2
 pkgdesc='mission planner for INAV and MultiWii'
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'pentium4' 'aarch64' 'riscv64')
 url='https://github.com/stronnag/mwptools'
 license=('GPL-3.0-or-later')
-makedepends=('git' 'vala' 'meson' 'go')
-depends=('gtk3' 'gdl' 'libchamplain' 'clutter' 'bluez' 'libgudev' 'gstreamer' 'cairo' 'pango' 'libxml2' 'vte3' 'mosquitto' 'gst-plugins-base-libs' 'gst-plugins-good')
+makedepends=('git' 'vala' 'meson' 'go' 'blueprint-compiler')
+depends=('gtk4' 'bluez' 'libgudev' 'gstreamer' 'cairo' 'pango' 'libxml2' 'vte4' 'mosquitto' 'libshumate' 'libadwaita'  'libepoxy' 'libsoup3' 'libsecret')
 optdepends=('blackbox-tools-git: Replay Blackbox files (AUR)'
  'gnuplot: Mission Elevation plots'
  'ruby: Various analysis tools'
