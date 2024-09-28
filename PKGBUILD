@@ -1,7 +1,7 @@
 _pkgname="spicetify-extensions-rxri"
 pkgname="$_pkgname-git"
-pkgver=r30.9168bc5
-pkgrel=2
+pkgver=r38.66ec39b
+pkgrel=1
 pkgdesc="Add some spice with extensions to make spotify more enjoyable"
 arch=("any")
 url="https://github.com/rxri/spicetify-extensions"
@@ -29,7 +29,7 @@ package() {
     do
         extension=$(basename "$file")
         echo "Installing $extension..."
-        install -Dm644 "$file" "$pkgdir/usr/share/spicetify-cli/Extensions/$extension"
+        install -Dm644 "$file" "$pkgdir/opt/spicetify-cli/Extensions/$extension"
     done
     install -Dm644 "$srcdir/$_pkgname.hook" "$pkgdir/usr/share/libalpm/hooks/$_pkgname.hook"
 }
