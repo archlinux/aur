@@ -1,6 +1,6 @@
 pkgbase = ezra-bible-app-bin
 	pkgdesc = A user-friendly Bible study tool focussing on topical study based on keywords/tags
-	pkgver = 1.14.1
+	pkgver = 1.15.0
 	pkgrel = 1
 	url = https://github.com/ezra-bible-app/ezra-bible-app
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = ezra-bible-app-bin
 	depends = perl
 	provides = ezra-bible-app
 	conflicts = ezra-bible-app
-	source = https://github.com/ezra-bible-app/ezra-bible-app/releases/download/1.14.1/ezra-bible-app_opensuse_leap_15.2-1.14.1.rpm
-	sha256sums = a3a529a6e995a466ba85baf5e7323472d95999f4be5fb1ae1c613401827ea68d
+	source = https://github.com/ezra-bible-app/ezra-bible-app/releases/download/1.15.0/ezra-bible-app_opensuse_leap_15.2-1.15.0.rpm
+	sha256sums = d1f13eac5f53c0869a0df104e315c199fe1d912eeca99f13523dc6a84ee58535
 
 pkgname = ezra-bible-app-bin
