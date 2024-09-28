@@ -1,0 +1,16 @@
+pkgbase = r-bedmatrix
+	pkgdesc = Extract Genotypes from a PLINK .bed File
+	pkgver = 2.0.4
+	pkgrel = 1
+	url = https://cran.r-project.org/package=BEDMatrix
+	arch = x86_64
+	license = MIT
+	depends = r-crochet
+	optdepends = r-data.table
+	optdepends = r-linkedmatrix
+	optdepends = r-tinytest
+	source = https://cran.r-project.org/src/contrib/BEDMatrix_2.0.4.tar.gz
+	md5sums = 750a22f4e967696a39624442126e0470
+	b2sums = f3527a7b2c85e52ffcf50994021068ff1ee39be2ce03d8306f8e4e2e233cfe4945e3ca962b43e1d81ecbb0f841048bbd8e90c2630b861a410a0561817cf5e51d
+
+pkgname = r-bedmatrix
