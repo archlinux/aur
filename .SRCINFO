@@ -8,6 +8,7 @@ pkgbase = openfreebuds
 	makedepends = python-pip
 	makedepends = python
 	makedepends = python-poetry
+	makedepends = qt6-tools
 	depends = python
 	depends = python-dbus-next
 	depends = python-psutil

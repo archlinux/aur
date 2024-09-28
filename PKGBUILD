@@ -7,7 +7,7 @@ arch=(any)
 url="https://mmk.pw/en/openfreebuds"
 license=('GPLv3')
 depends=(python python-dbus-next python-psutil python-pyqt6 python-qasync python-aiohttp python-pillow)
-makedepends=(python-pip python python-poetry)
+makedepends=(python-pip python python-poetry qt6-tools) 
 source=("$pkgname-$pkgver::git+https://github.com/melianmiko/openfreebuds.git#tag=v$pkgver")
 md5sums=('SKIP')
 
