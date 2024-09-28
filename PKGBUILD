@@ -1,6 +1,6 @@
 pkgname=apk-mitm
-pkgver=1.2.1
-pkgrel=2
+pkgver=1.3.0
+pkgrel=1
 pkgdesc="A CLI application that automatically prepares Android APK files for HTTPS inspection "
 arch=('any')
 url="https://www.npmjs.com/package/$pkgname"
@@ -9,7 +9,7 @@ depends=('nodejs')
 makedepends=('npm' 'jq')
 source=("https://registry.npmjs.org/$pkgname/-/$pkgname-$pkgver.tgz")
 noextract=("$pkgname-$pkgver.tgz")
-sha256sums=('b265e2e6d36d9183805f19fff0ea96e9a1e2869c45d69615a0137089b8bbfa2e')
+sha256sums=('bc674d2dd1f2d0d782e1aadb703addd68184580b540eb04e0c1553a90de6c780')
 
 package() {
 	npm install -g --prefix "$pkgdir/usr" "$srcdir/$pkgname-$pkgver.tgz"
