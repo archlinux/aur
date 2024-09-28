@@ -5,7 +5,7 @@
 
 _android_arch=aarch64
 pkgname=android-$_android_arch-qt6-svg
-_qtver=6.7.2
+_qtver=6.7.3
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=(any)
@@ -13,12 +13,12 @@ url='https://www.qt.io'
 license=(GPL3 LGPL3 FDL custom)
 pkgdesc='Classes for displaying the contents of SVG files (android)'
 depends=('android-aarch64-qt6-base')
-makedepends=('android-cmake' 'qt6-base' 'ninja' 'java-environment-openjdk=17')
+makedepends=('android-cmake' 'qt6-base' 'ninja')
 options=('!strip' '!buildflags' 'staticlibs' '!emptydirs')
 groups=(android-${_android_arch}-qt6)
 _pkgfqn="qtsvg-everywhere-src-${_qtver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz")
-sha256sums=('fb0d1286a35be3583fee34aeb5843c94719e07193bdf1d4d8b0dc14009caef01')
+sha256sums=('40142cb71fb1e07ad612bc361b67f5d54cd9367f9979ae6b86124a064deda06b')
 
 build() {
   export PATH=/usr/lib/jvm/java-17-openjdk/bin:$PATH
