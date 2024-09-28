@@ -1,21 +1,22 @@
 pkgbase = r-bit
 	pkgdesc = Classes and Methods for Fast Memory-Efficient Boolean Selections
-	pkgver = 4.0.5
-	pkgrel = 3
+	pkgver = 4.5.0
+	pkgrel = 1
 	url = https://cran.r-project.org/package=bit
 	arch = x86_64
-	license = GPL
+	license = GPL-2.0-only OR GPL-3.0-only
 	checkdepends = r-testthat
 	depends = r
 	optdepends = r-bit64
 	optdepends = r-ff
 	optdepends = r-knitr
+	optdepends = r-markdown
 	optdepends = r-microbenchmark
 	optdepends = r-rmarkdown
 	optdepends = r-roxygen2
 	optdepends = r-testthat
-	source = https://cran.r-project.org/src/contrib/bit_4.0.5.tar.gz
-	md5sums = df4e6215d31058ea2860fadc7a7c80f4
-	sha256sums = f0f2536a8874b6a30b80baefbc68cb21f0ffbf51f3877bda8038c3f9f354bfbc
+	source = https://cran.r-project.org/src/contrib/bit_4.5.0.tar.gz
+	md5sums = 933b9d99ed4d52bb76070ae7cd857fa0
+	b2sums = 47605338c0aa3c208a71aff9073240d43c93483ffcca69c2db95856df6e541fc74e34fb8c0e386f4ee2c07190f6f1b1d41c7b4f6821bd14ae43ab44924321e1a
 
 pkgname = r-bit
