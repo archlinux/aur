@@ -1,4 +1,4 @@
-From 84b5328b27ff60c28b58932496297ba6fa8dbfe2 Mon Sep 17 00:00:00 2001
+From 93988652135e94155794ccbf4bc034701a310308 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sat, 17 Feb 2024 20:31:12 +0100
 Subject: [PATCH 13/18] Fix errors due to disabled exceptions with cpp_winrt
@@ -25,5 +25,5 @@ index ea119bfb1e2..4cc9b87ced7 100644
          main.cpp
          qtwindowsglobal.h
 -- 
-2.45.2
+2.46.2
 
