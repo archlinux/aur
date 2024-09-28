@@ -1,12 +1,13 @@
 # Maintainer: cat_nm
 pkgname=hyprpanel-git
-pkgver=r275.b004a8d
+pkgver=r276.233c97a
 pkgrel=1
 epoch=1
 pkgdesc="A Bar/Panel for Hyprland with extensive customizability"
 arch=('x86_64')
 url="https://hyprpanel.com/"
 license=('MIT')
+install='hyprpanel-git.install'
 depends=(
   # official repository:
   'pipewire'
@@ -74,10 +75,4 @@ package() {
 
   # License
   install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"
-}
-
-post_install() {
-  echo 'To configure ags run these two commands:'
-  echo 'mv $HOME/.config/ags $HOME/.config/ags.bkup 2>/dev/null'
-  echo 'ln -s /usr/share/HyprPanel $HOME/.config/ags'
 }

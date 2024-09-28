@@ -1,0 +1,5 @@
+post_install() {
+  echo 'To configure ags run these two commands:'
+  echo 'mv $HOME/.config/ags $HOME/.config/ags.bkup 2>/dev/null'
+  echo 'ln -s /usr/share/HyprPanel $HOME/.config/ags'
+}
