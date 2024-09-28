@@ -1,0 +1,4 @@
+[open-android-backup]
+source = "github"
+github = "mrrfv/open-android-backup"
+use_latest_release = true

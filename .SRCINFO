@@ -1,0 +1,20 @@
+pkgbase = open-android-backup
+	pkgdesc = A complete, easy to use script that lets you locally backup and restore your Android device.
+	pkgver = 1.0.18
+	pkgrel = 1
+	url = https://www.openandroidbackup.me
+	arch = i686
+	arch = x86_64
+	license = GPL-3.0-only
+	depends = android-tools
+	depends = bc
+	depends = curl
+	depends = libnewt
+	depends = p7zip
+	depends = pv
+	depends = zenity
+	optdepends = secure-delete: securely delete data in the temporary folder
+	source = open-android-backup-1.0.18.zip::https://github.com/mrrfv/open-android-backup/releases/download/v1.0.18/Open_Android_Backup_v1.0.18_Bundle.zip
+	sha512sums = 3c841636f5db854484aa0310a9323b0a509b4475122746572c1aa2179c5be6b61dcd050391562533e7faa3a3c27234c1896b3f39aca1d8d6bd55779ee356df8b
+
+pkgname = open-android-backup
