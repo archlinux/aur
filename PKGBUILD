@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=vdu_controls
-pkgver=2.0.4
+pkgver=2.1.0
 pkgrel=1
 pkgdesc="Visual Display Unit virtual control panel - a GUI front end to ddcutil"
 arch=('any')
@@ -11,32 +11,18 @@ depends=(
   'hicolor-icon-theme'
   'noto-fonts'
   'python-pyqt5'
-  'python-pyserial'
   'qt5-svg'
-)
-makedepends=(
-  'python-build'
-  'python-installer'
-  'python-setuptools'
-  'python-wheel'
 )
 optdepends=(
   'ddcutil-service: D-Bus Interface for up to 10x faster response times.'
+  'python-pyserial: If you wish to use a serial-port lux metering device'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('886b9267008199f4b7d9119a072091a737a3c2bfae7c377edfaa02575fb20c54')
-
-build() {
-  cd "$pkgname-$pkgver"
-  python -m build --wheel --no-isolation
-}
+sha256sums=('95e7f08157bb17449200f2a0ed6806e95432987c4be998cd0dc92705665c2f63')
 
 package() {
   cd "$pkgname-$pkgver"
-  python -m installer --destdir="$pkgdir" dist/*.whl
-
-  mv "$pkgdir/usr/bin/$pkgname.py" "$pkgdir/usr/bin/$pkgname"
-
+  install -Dm755 "$pkgname.py" "$pkgdir/usr/bin/$pkgname"
   install -Dm644 translations/*.{ts,txt} -t "$pkgdir/usr/share/$pkgname/translations/"
   install -Dm755 sample-scripts/* -t "$pkgdir/usr/share/$pkgname/sample-scripts/"
   install -Dm644 icons/* -t "$pkgdir/usr/share/$pkgname/icons/"
