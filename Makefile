@@ -1,4 +1,5 @@
 build: clean
+	updpkgsums
 	makepkg
 	makepkg --printsrcinfo > .SRCINFO
 

@@ -1,6 +1,6 @@
 pkgbase = chimera
 	pkgdesc = Configure and manage games in Steam
-	pkgver = 0.22.6
+	pkgver = 0.22.7
 	pkgrel = 1
 	url = https://github.com/chimeraos/chimera
 	arch = any
@@ -52,14 +52,13 @@ pkgbase = chimera
 	optdepends = libretro-opera-git
 	optdepends = libretro-prosystem-git
 	optdepends = libretro-citra
-	optdepends = srt-live-server
 	optdepends = steam-removable-media-git
 	optdepends = wyvern
 	provides = steam-tweaks
 	provides = steam-buddy
 	conflicts = steam-tweaks
 	conflicts = steam-buddy
-	source = chimera-0.22.6.tar.gz::https://github.com/chimeraos/chimera/archive/0.22.6.tar.gz
-	b2sums = 43335c2eeaa1f33f6983a3f289ba63c6bd81eae72597e78ca54ccd10121d687b11fd9051c2df3ddd259a4fb53ebe8a46ecddfc78e281f1147847cc96b1aa2a3b
+	source = chimera-0.22.7.tar.gz::https://github.com/chimeraos/chimera/archive/0.22.7.tar.gz
+	b2sums = 0fdfbd341dcc88c4ec45daa39fdbea447b0d7e189df0210300be01c4513dacc03eea89b52d20ae43c7b6f9dfa261e59ccaab7cd255b5e2d45287c2c07765b6eb
 
 pkgname = chimera
