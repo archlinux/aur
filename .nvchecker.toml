@@ -1,0 +1,4 @@
+[nchat]
+source = "git"
+git = "https://github.com/d99kris/nchat.git"
+prefix = "v"
