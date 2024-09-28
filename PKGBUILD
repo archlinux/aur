@@ -5,13 +5,13 @@ pkgbase=${_pkgbase}-git
 pkgname=dualsensectl-git
 pkgdesc='Tool for controlling PS5 DualSense controller'
 conflicts=('dualsensectl')
-pkgver=r39.7a2b191
+pkgver=r55.9d596ab
 pkgrel=1
 url='https://github.com/nowrep/dualsensectl'
 license=('GPL2')
 arch=('x86_64')
 depends=('dbus' 'hidapi')
-makedepends=('git' 'gcc')
+makedepends=('git' 'gcc' 'meson')
 source=("$_pkgbase::git+$url")
 sha512sums=('SKIP')
 
@@ -21,9 +21,12 @@ pkgver() {
 }
 
 build() {
-    make -C "$_pkgbase"
+    cd "$_pkgbase"
+    arch-meson build
+    meson compile -C build
 }
 
 package() {
-    make -C "$_pkgbase" DESTDIR="$pkgdir" install
+    cd "$_pkgbase"
+    meson install -C build --destdir "$pkgdir"
 }
