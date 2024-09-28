@@ -1,0 +1,15 @@
+pkgbase = ruby-seven-zip
+	pkgdesc = This is a ruby gem library to read and write 7zip files.
+	pkgver = 1.4.2
+	pkgrel = 1
+	url = https://github.com/fontist/seven_zip_ruby
+	arch = i686
+	arch = x86_64
+	license = LGPL-2.1-or-later
+	depends = ruby
+	noextract = seven-zip-1.4.2.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/seven-zip-1.4.2.gem
+	sha1sums = a6ffdc175e9259c73af6a54b28ef89d19ac2689e
+
+pkgname = ruby-seven-zip

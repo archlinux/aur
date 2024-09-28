@@ -1,0 +1,3 @@
+[ruby-seven-zip]
+source = "gems"
+gems = "seven-zip"
