@@ -5,7 +5,7 @@
 # Contributor: Kevin Kyzer <kev@k3v.in>
 # Contributor: Xabre <xabre @archlinux.info>
 pkgname=mudlet
-pkgver=4.18.3
+pkgver=4.18.5
 pkgrel=1
 pkgdesc="A modern MUD client with a graphical user inteface and built in Lua scripting"
 arch=('i686' 'x86_64')
@@ -16,21 +16,21 @@ depends=('qt5-multimedia' 'hunspell' 'libzip' 'glu' 'lua51-filesystem' 'luazip5.
 makedepends=('boost' 'qt5-tools')
 optdepends=('ttf-bitstream-vera: default font'
             'ttf-ubuntu-font-family: default font'
-            'noto-fonts-emoji: emoji font support')     
+            'noto-fonts-emoji: emoji font support')
 #source=("http://www.mudlet.org/download/Mudlet-${pkgver}.tar.xz")
 ##using alternate link
 source=("https://www.mudlet.org/wp-content/files/Mudlet-${pkgver}.tar.xz")
-sha256sums=('66ad8ccbe89bbee6c1102de6f7065ea3e9f7b31c68620a4ec1a179b5117c9b24')
+sha256sums=('58112a671daff2a1cd7b178279a24d39cf4e612e36a0ea43572c5f514113e053')
 
 
 build() {
     cd "$srcdir/src"
-    export WITH_FONTS=NO 
+    export WITH_FONTS=NO
     export WITH_OWN_QTKEYCHAIN=NO
     export WITH_UPDATER=NO
     export WITH_VARIABLE_SPLASH_SCREEN=NO
     export XDG_DATA_DIRS=/usr/share
-    
+
     qmake-qt5 PREFIX=/usr
     make
 }
@@ -41,5 +41,5 @@ package() {
     mkdir -p ${pkgdir}/usr/share/applications
     mkdir -p ${pkgdir}/usr/share/pixmaps
     install -m 644 ../mudlet.desktop ${pkgdir}/usr/share/applications
-    install -m 644 ../mudlet.svg ${pkgdir}/usr/share/pixmaps    
+    install -m 644 ../mudlet.svg ${pkgdir}/usr/share/pixmaps
 }
