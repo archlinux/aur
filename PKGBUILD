@@ -1,16 +1,23 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=quick-webapps
-pkgver=0.4.9
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="Web App Manager for the COSMIC™ desktop written with love and libcosmic."
 arch=('x86_64')
 url="https://github.com/cosmic-utils/web-apps"
 license=('GPL-3.0-or-later')
-depends=('gcc-libs' 'libxkbcommon' 'openssl')
-makedepends=('cargo' 'just')
+depends=(
+  'gcc-libs'
+  'libxkbcommon'
+  'openssl'
+)
+makedepends=(
+  'cargo'
+  'just'
+)
 conflicts=('cosmic-wam' 'cosmic-webapps')
 source=("web-apps-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('0efd98679d90af7f28737d1776d2c533ed69656cca8ae4e911863ecf109527e6')
+sha256sums=('1128ed1d720731e0973890fd02de090982213b5a479b9b72acfb2029ae073b95')
 
 prepare() {
   cd web-apps-$pkgver
