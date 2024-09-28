@@ -5,7 +5,7 @@
 
 _android_arch=aarch64
 pkgname=android-$_android_arch-qt6-serialbus
-_qtver=6.7.2
+_qtver=6.7.3
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=(any)
@@ -13,12 +13,12 @@ url='https://www.qt.io'
 license=(GPL3 LGPL3 FDL custom)
 pkgdesc='Qt module for general purpose serial bus access (android)'
 depends=('android-aarch64-qt6-serialport')
-makedepends=('android-cmake' 'qt6-base' 'qt6-serialbus' 'ninja' 'java-environment-openjdk=17')
+makedepends=('android-cmake' 'qt6-base' 'qt6-serialbus' 'ninja')
 options=('!strip' '!buildflags' 'staticlibs' '!emptydirs')
 groups=(android-${_android_arch}-qt6)
 _pkgfqn="qtserialbus-everywhere-src-${_qtver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz")
-sha256sums=('67641ca99b455746d7d956c516dfaa5f2c48696834c71d5720d63e736d374b2b')
+sha256sums=('55d82e9c7a827808b7383f0a57ad12c2a6fcf5b6c936b27e633155163c0a6276')
 
 build() {
   export PATH=/usr/lib/jvm/java-17-openjdk/bin:$PATH
