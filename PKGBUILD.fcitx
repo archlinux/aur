@@ -9,7 +9,7 @@
 
 ## Mozc compile option
 _bldtype=Release
-_mozc_commit=a47ae1c27546bb27b7517184cbbd63e0b6b95138
+_mozc_commit=ad5c2d3c5712678a0d8219649f3675c60a27c0c7
 _mozcdict_ext_commit=de931271344ebb2d1349a7ae0a8ec883457ed930
 _branch=fcitx
 # Sudachi Dictionary
@@ -18,7 +18,7 @@ _sudachidict_date=20240716
 pkgbase=mozc-with-jp-dict
 pkgname=("fcitx-$pkgbase")
 pkgver=2.30.5595.102
-pkgrel=5
+pkgrel=6
 arch=('x86_64')
 url="https://github.com/fcitx/mozc"
 license=('Apache-2.0 AND BSD-2-Clause AND BSD-3-Clause AND LGPL-3.0-only AND MIT AND NAIST-2003')
@@ -38,7 +38,7 @@ source=(git+https://github.com/fcitx/mozc.git#commit="${_mozc_commit}"
 #        https://dumps.wikimedia.org/jawiki/latest/jawiki-latest-all-titles-in-ns0.gz)
 #noextract=(jawiki-latest-all-titles-in-ns0.gz)
 
-sha512sums=('b5b772be0eafbab9892d66865c7dd07f5d18be03735aa50560d21a9a92086962bcb9fa6bbc6fdd3f116da677d75d129144d459d18efe94abbf20c43ffb6e019c'
+sha512sums=('9c60bdf04455ebe1b08455f6eac18d1036322cd17c15cf32e14b73945f2e39d900de799f2da6d3c1c53347fde585cbb92c2a1857b0d318fe1db751b0e41bd0fe'
             'a0aeb2856d62c71d0c137a687d901098eaa3371b896dbe39e54c36951cbd7d3cfba666ee96d055dba7e8c8384ed17e13597a697707cd960fac320e11f9b7b76c'
             'fcde4a3c0200969ebb21fa927f1ff59581386a39d83ea7ec5c0092e1566c38638129b71b286434e11fb4c6b76b48d6b36eb64b053306c2bbb8a7900e2c641558'
             '9428d55d2d9603c8bfcd12cc0184415f23af1d09a2d0ebdf0cce694a09638e7cfe0c1241bf1c943427b2fccfea619ca8b2e22db3452d837b416eb31aa224e766'
@@ -114,7 +114,7 @@ build() {
   #BAZEL_CXXOPTS=$(echo $CXXFLAGS | xargs -n1 echo "--cxxopt")
   
   # The bazel rules have changed, so the cache will be deleted.
-  bazel clean --expunge
+  #bazel clean --expunge
 
   if [[ $CC =~ gcc ]];then
     #bazel build --config oss_linux --compilation_mode opt unix/fcitx:fcitx-mozc.so server:mozc_server gui/tool:mozc_tool --cxxopt=-Wno-uninitialized --host_cxxopt=-Wno-uninitialized
