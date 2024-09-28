@@ -1,0 +1,15 @@
+pkgbase = ruby-ffi-compiler2
+	pkgdesc = Ruby FFI Rakefile generator
+	pkgver = 2.3.0
+	pkgrel = 1
+	url = https://gitlab.com/davispuh/ffi-compiler
+	arch = any
+	license = Apache-2.0
+	depends = ruby
+	depends = ruby-ffi
+	noextract = ffi-compiler2-2.3.0.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/ffi-compiler2-2.3.0.gem
+	sha1sums = 9cd014abadb66c24e7cea3484ea40c86f436efee
+
+pkgname = ruby-ffi-compiler2

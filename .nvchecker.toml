@@ -1,0 +1,3 @@
+[ruby-ffi-compiler2]
+source = "gems"
+gems = "ffi-compiler2"
