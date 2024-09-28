@@ -11,8 +11,7 @@ depends=('svt-av1'
          'vmaf')
 optdepends=()
 makedepends=('cargo'
-             'git'
-             'lld')
+             'git')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/alexheretic/$pkgname/archive/v$pkgver.tar.gz")
 sha256sums=('e3c0a7127cf1b9bbcc5596b125373c74c7cdfb6d8c0ffc169963ef1bd136f440')
 

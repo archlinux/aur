@@ -7,7 +7,6 @@ pkgbase = ab-av1
 	license = MIT
 	makedepends = cargo
 	makedepends = git
-	makedepends = lld
 	depends = svt-av1
 	depends = ffmpeg
 	depends = vmaf
