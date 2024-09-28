@@ -2,7 +2,7 @@
 
 pkgname=sc-controller
 pkgver=0.4.8.21
-pkgrel=2
+pkgrel=3
 pkgdesc='User-mode driver and GTK3 based GUI for Steam Controller'
 arch=('x86_64' 'aarch64')
 url='https://github.com/C0rn3j/sc-controller'
@@ -18,6 +18,9 @@ depends=(
 	'python-setuptools'
 	'python-vdf'
 	'xorg-xinput'
+)
+makedepends=(
+	'python-poetry'
 )
 conflicts=("${pkgname}-git" 'scc')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/C0rn3j/sc-controller/archive/v${pkgver}.tar.gz")
