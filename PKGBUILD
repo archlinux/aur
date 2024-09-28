@@ -1,5 +1,5 @@
 pkgname='slskd-bin'
-pkgver=0.21.3
+pkgver=0.21.4
 pkgrel=1
 pkgdesc='A modern client-server application for the Soulseek file-sharing network.'
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -28,9 +28,9 @@ noextract=()
 sha256sums=('535e14574a54723728fd2bddf62e54fa615a846afc0a0e69e249ae3850d503d4'
             '69545412a47b0d60b4af33faf61499168016202cd1a60da0c15f17f6da3c900b'
             '2f1d645115bbcf225be3e585aaeb598f1710277f17c41c64e0308eb25b8ed4f4')
-sha256sums_x86_64=('d8df3c3efefc305801e4a96d693d875ac334c504949b3723a43f5220f0f117f0')
-sha256sums_aarch64=('7b07c14d399cb0e5176a36df62381d4865ca3dce2e050cb5627be76a70cf9dd7')
-sha256sums_armv7h=('09d4a405ebc7af0f4e2278fb757411649f3ab62ad593fee808d252468075c9ec')
+sha256sums_x86_64=('8263eaa71015756414b649df70e9a59ecd31c5ae81f3e5fba7ac76648379ea39')
+sha256sums_aarch64=('be0a6b931889bc1d989b213a246f3315226067f838df568be2530fe81825a394')
+sha256sums_armv7h=('3b0fb10b0d7769164c9646e0ed17c56765add67833d361500b8ef6a5918e8519')
 
 #pkgver() {
 	#curl -s https://api.github.com/repos/slskd/slskd/releases/latest | grep tag_name | sed 's/.*: "\([^"]\+\)".*/\1/'
