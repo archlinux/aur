@@ -10,7 +10,7 @@
 *.log.*
 *.sig
 vmcompile
-vmcompile.sh.x.c
+vmcompile.sh.x.*
 
 pkg/
 src/
