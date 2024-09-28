@@ -1,0 +1,15 @@
+pkgbase = sommelier-git
+	pkgdesc = A Nested Wayland compositor with support for X11 forwarding
+	pkgver = r60306.ec0f09b
+	pkgrel = 1
+	url = https://chromium.googlesource.com/chromiumos/platform2.git/+/HEAD/vm_tools/sommelier
+	arch = x86_64
+	makedepends = meson
+	makedepends = ninja
+	depends = xorg-xwayland
+	provides = sommelier
+	conflicts = sommelier
+	source = git+https://chromium.googlesource.com/chromiumos/platform2.git
+	sha256sums = SKIP
+
+pkgname = sommelier-git
