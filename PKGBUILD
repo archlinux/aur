@@ -6,7 +6,7 @@ pkgdesc="kubeswitch (lazy: switch) is the single pane of glass for all of your k
 Caters to operators of large scale Kubernetes installations. Designed as a drop-in replacement for kubectx."
 arch=('x86_64' 'aarch64' 'arm' 'armv6h' 'armv7h')
 url="https://github.com/danielfoehrKn/kubeswitch"
-license=('')
+license=('Apache License 2.0')
 makedepends=('go')
 provides=('switch')
 install=switcher.install
