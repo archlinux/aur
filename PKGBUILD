@@ -1,7 +1,7 @@
 # Maintainer: Jeff Dickey <releases at usage dot jdx dot dev>
 
 pkgname=usage-bin
-pkgver=0.3.0
+pkgver=0.8.3
 pkgrel=1
 pkgdesc='A specification for CLIs'
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('MIT')
 provides=('usage')
 options=('!lto')
 source=("usage-$pkgver.tar.gz::https://github.com/jdx/usage/releases/download/v$pkgver/usage-x86_64-unknown-linux-gnu.tar.gz")
-sha512sums=('69e70d243a55aaf9b9d6a6556fc1c255101c0fbdb17d14e5a8963814ed0fe455c2f50dede6e3db3751e7ee620fa99462ba50454602bef4d07882ae30139377e6')
+sha512sums=('3a95c6f1ec9eb663974f5451cc90b35562aadd1e95d76b82640127ae892a2bdadac3b62bd054ce08b08d36b748af107c81e836284c58bc7d375cfc85ee9f5bfc')
 
 build() {
   cd "$srcdir/"
