@@ -5,7 +5,7 @@
 
 _android_arch=aarch64
 pkgname=android-$_android_arch-qt6-quick3d
-_qtver=6.7.2
+_qtver=6.7.3
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=(any)
@@ -13,12 +13,12 @@ url='https://www.qt.io'
 license=(GPL3 LGPL3 FDL custom)
 pkgdesc='Qt module and API for defining 3D content in Qt Quick (android)'
 depends=('android-aarch64-qt6-declarative')
-makedepends=('android-cmake' 'android-aarch64-qt6-shadertools' 'qt6-quick3d' 'qt6-shadertools' 'ninja' 'java-environment-openjdk=17')
+makedepends=('android-cmake' 'android-aarch64-qt6-shadertools' 'qt6-quick3d' 'qt6-shadertools' 'ninja')
 options=('!strip' '!buildflags' 'staticlibs' '!emptydirs')
 groups=(android-${_android_arch}-qt6)
 _pkgfqn="qtquick3d-everywhere-src-${_qtver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz")
-sha256sums=('bb8ff9aec6da2e2d3b3986cc859333a98b2f3d4bbe564c5733e8f1a089d15270')
+sha256sums=('d19a19750d42ef54860682b458adeccfd23335843d55427eb73b8228d3a79957')
 
 build() {
   export PATH=/usr/lib/jvm/java-17-openjdk/bin:$PATH
