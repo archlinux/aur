@@ -1,5 +1,5 @@
 pkgname=gpt4all-chat
-pkgver=3.3.0
+pkgver=3.3.1
 pkgrel=1
 pkgdesc="run open-source LLMs anywhere"
 arch=("x86_64")
@@ -83,7 +83,7 @@ do
     fi
 done
 unset _source_str _uri
-sha256sums=('684658a11aea425c1342c099f042af60934f1b0425bab265eaf86f1ad7f51a08'
+sha256sums=('ccc14519d7627f6c6f9c3bcb09825603527ac12182443f71362df6943e0e3108'
             'f7af6f66802f4df86eda10fe9bbcfc75c39562bed48ef6ace719a251cf1c2fdb'
             'ebc6a571e828e8b31b390172374fe3667e719f6de286860934c6f6d6bfc293d3'
             'b348d6b9228316e4611186df0558f032a25ffa20334e68a91a09e07ce84db77a'
