@@ -2,7 +2,7 @@
 
 pkgname=thqm
 pkgdesc='A simple HTTP server to serve a dynamic menu web page.'
-pkgver=0.4.1
+pkgver=0.5.0
 pkgrel=1
 arch=('any')
 url='https://github.com/loiccoyle/thqm-rs'
