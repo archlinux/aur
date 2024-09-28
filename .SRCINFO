@@ -1,7 +1,7 @@
 pkgbase = telegram-desktop-kdefix
 	pkgdesc = Telegram Desktop client with KDE unread counter bug reverted
 	pkgver = 5.5.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://desktop.telegram.org/
 	arch = x86_64
 	license = GPL3
@@ -56,7 +56,9 @@ pkgbase = telegram-desktop-kdefix
 	options = !debug
 	source = https://github.com/telegramdesktop/tdesktop/releases/download/v5.5.5/tdesktop-5.5.5-full.tar.gz
 	source = 0001-kde-theme-injection-fix.patch
+	source = telegram-desktop-5_5_5-fix_build_with_cppgir.patch
 	sha512sums = 88cd526fb02b7b0459cb1bd1b0c57147b2261e57c392d2cb62964015ef6b26e202fba717b35d74201c41becf0a5d78ef4d9d593b5666b3f0a0db646e40bfd1fc
 	sha512sums = 6cfe49956da17cb7d7fa108cb922bab78865cddfe1863238c64b9ef22d2c138b24491de091f011d723babc4ed771a60d4e5a3a78dd9472ed3600b19aaf79ae65
+	sha512sums = a65bca7d330519657fa647922df4c6d69f3d6af4008656084945a3c448aad62f228f91de8c5988cd9163856f376c0c136254eb68f6c9654ffdf9f5d3f52bc235
 
 pkgname = telegram-desktop-kdefix
