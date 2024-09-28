@@ -1,0 +1,13 @@
+pkgbase = bluedivision-bin
+	pkgdesc = A fanmade blue archive game heavily inspired by 'Tom Clancy's The Division'.
+	pkgver = 1.11
+	pkgrel = 1
+	url = https://github.com/WhatIsThisG/BlueDivision_Release
+	arch = x86_64
+	license = MIT
+	source = bluedivision-1.11.tar.gz::https://github.com/WhatIsThisG/BlueDivision_Release/releases/download/v1.11/BlueDivision.v1.11-linux.tar.gz
+	source = bluedivision.png
+	sha256sums = b2baf1f85ae98e960ff653a733f00fc319388d5e1a359830d45a89fc1446b20a
+	sha256sums = d803a71e2d1e1e471968a1265c46e731d3c13dd50515dc939caab973415e72c6
+
+pkgname = bluedivision-bin
