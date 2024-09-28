@@ -1,0 +1,11 @@
+pkgbase = otf-baskervillef
+	pkgdesc = A PDF-optimized serif font, fork of Libre Baskerville, with added Bold Italic style.
+	pkgver = 1.051
+	pkgrel = 1
+	url = https://ctan.org/pkg/baskervillef
+	arch = any
+	license = custom:OFL
+	source = https://mirrors.ctan.org/fonts/baskervillef.zip
+	b2sums = 695e455f35c2062c7fa30ec6ea62f52ee6ed6ac91ba8e28a717c0e1af4a3eccc4e315be26d1dd6822bc6993a1d4af630dc26caf1abb55ce060cea1efaa1f96e5
+
+pkgname = otf-baskervillef

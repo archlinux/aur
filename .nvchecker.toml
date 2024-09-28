@@ -1,0 +1,5 @@
+[otf-baskervillef]
+source = "regex"
+url = "https://mirrors.ctan.org/fonts/baskervillef/README"
+regex = 'Current version: ([\d.]+)'
+
