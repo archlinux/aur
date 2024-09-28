@@ -7,7 +7,10 @@ pkgbase = vmcompile
 	license = GPL
 	depends = git
 	depends = linux-headers
+<<<<<<< HEAD
 	depends = shc
+=======
+>>>>>>> 12c66bcc60b7cc0968e3d5970775d240279a25be
 	source = vmcompile.sh
 	sha256sums = d2dd3e73596be9a6c7bc28e2095633254d527e1a87b8ff348305e4a7a8e88428
 

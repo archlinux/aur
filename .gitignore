@@ -1,4 +1,7 @@
+<<<<<<< HEAD
 .directory
+=======
+>>>>>>> 12c66bcc60b7cc0968e3d5970775d240279a25be
 *.tar
 *.tar.*
 *.jar
@@ -9,9 +12,17 @@
 *.log
 *.log.*
 *.sig
+<<<<<<< HEAD
 vmcompile
 vmcompile.sh.*
 
 pkg/
 src/
+=======
+
+pkg/
+src/
+vmcompile.sh
+vmcompile.sh.*
+>>>>>>> 12c66bcc60b7cc0968e3d5970775d240279a25be
 vmware-host-modules/
