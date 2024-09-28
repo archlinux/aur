@@ -1,7 +1,7 @@
 # Maintainer: Furdox <furdox at furdox dot tk>
 pkgname=brawlcrate-wine-bin
 pkgver=0.42h1
-pkgrel=4
+pkgrel=5
 pkgdesc="An updated fork of BrawlBox (uses Wine)"
 arch=('x86_64')
 url="https://github.com/soopercool101/BrawlCrate"
@@ -18,7 +18,7 @@ sha256sums=('49196339e461a87008cdf10ff55b264e98980cf2736b41bacf7c154a07d594d5'
             'SKIP')
 
 # Custom Wine prefix path
-_wineprefix="${HOME}/.wine-prefixes/brawlcrate"
+_wineprefix="${HOME}/.local/share/wineprefixes/brawlcrate"
 
 prepare() {
     # Ensure the Wine prefix directory exists
