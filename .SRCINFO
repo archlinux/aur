@@ -1,7 +1,7 @@
 pkgbase = abracadabra
 	pkgdesc = Abraca DAB radio: DAB/DAB+ Software Defined Radio (SDR)
 	pkgver = 2.6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/KejPi/AbracaDABra
 	arch = x86_64
 	arch = aarch64
@@ -17,6 +17,8 @@ pkgbase = abracadabra
 	depends = qt6-multimedia
 	depends = qt6-svg
 	depends = qt6-imageformats
+	depends = qt6-location
+	depends = qt6-positioning
 	depends = rtl-sdr
 	depends = qcustomplot-qt6
 	optdepends = airspy: support for AirSpy devices

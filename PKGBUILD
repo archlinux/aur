@@ -3,12 +3,12 @@
 pkgname=abracadabra
 _appname=AbracaDABra
 pkgver=2.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Abraca DAB radio: DAB/DAB+ Software Defined Radio (SDR)"
 arch=("x86_64" "aarch64")
 url="https://github.com/KejPi/${_appname}"
 license=("MIT")
-depends=("faad2" "mpg123" "portaudio" "qt6-multimedia" "qt6-svg" "qt6-imageformats" "rtl-sdr" "qcustomplot-qt6")
+depends=("faad2" "mpg123" "portaudio" "qt6-multimedia" "qt6-svg" "qt6-imageformats" "qt6-location" "qt6-positioning" "rtl-sdr" "qcustomplot-qt6")
 optdepends=("airspy: support for AirSpy devices"
             "soapysdr: support for SopaySDR vendor neutral and platform independent SDR support library" 
 	    "soapyairspy: Soapy SDR plugin for Airspy" 
