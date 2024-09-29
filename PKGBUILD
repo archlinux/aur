@@ -3,7 +3,7 @@
 # Contributor: Stefan Karner <stefan.karner@student.tuwien.ac.at>
 pkgname=libdcp
 pkgver=1.8.110
-pkgrel=1
+pkgrel=2
 pkgdesc="A small C++ library which can create and read Digital Cinema Packages using JPEG2000 and WAV files"
 arch=('i686' 'x86_64')
 url="https://carlh.net/libdcp"
@@ -33,7 +33,7 @@ prepare() {
 build() {
   ### Configure libdcp ###
   cd "${srcdir}/${pkgname}-${pkgver}"
-  python waf configure --prefix=/usr --disable-tests
+  python waf configure --prefix=/usr --disable-tests --disable-examples
   python waf build
 }
 
