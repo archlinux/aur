@@ -1,14 +1,16 @@
 pkgbase = r-msm
 	pkgdesc = Multi-State Markov and Hidden Markov Models in Continuous Time
-	pkgver = 1.7.1
-	pkgrel = 2
+	pkgver = 1.8
+	pkgrel = 1
 	url = https://cran.r-project.org/package=msm
 	arch = x86_64
 	license = GPL-2.0-or-later
 	depends = blas
 	depends = lapack
 	depends = r-expm
+	depends = r-generics
 	depends = r-mvtnorm
+	depends = r-tibble
 	optdepends = r-covr
 	optdepends = r-doparallel
 	optdepends = r-flexsurv
@@ -17,8 +19,8 @@ pkgbase = r-msm
 	optdepends = r-mstate
 	optdepends = r-numderiv
 	optdepends = r-testthat
-	source = https://cran.r-project.org/src/contrib/msm_1.7.1.tar.gz
-	md5sums = 8aa592740ac775876b23cb0eb28b36d6
-	b2sums = 9b3096eabdb8585fa568d307fff8afc99d479030e5044d2f03a6fb6e7e7401408827f6420986ef988cf0446279b1ad19cdeaa4c689fe9f4433aadd7142e8b9fc
+	source = https://cran.r-project.org/src/contrib/msm_1.8.tar.gz
+	md5sums = 7a69baa41ee990cc40ea6ed98f3b2084
+	b2sums = 8666e148258983af502419c73515550de25017e8fa80e8da2068f3f9c422edce0a5064ae2f787f7eda5e73a3cef488d632120b5d24cec10c45a4605a11fd7bf7
 
 pkgname = r-msm
