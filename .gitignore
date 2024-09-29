@@ -1,0 +1,5 @@
+cl-linux
+*.sign
+*.xz
+*.gz
+*.zst
