@@ -1,6 +1,6 @@
 pkgbase = linwood-butterfly-bin
 	pkgdesc = Powerful, minimalistic, cross-platform, opensource note-taking app
-	pkgver = 2.1.1
+	pkgver = 2.2.0
 	pkgrel = 1
 	url = https://docs.butterfly.linwood.dev/
 	arch = x86_64
@@ -10,13 +10,13 @@ pkgbase = linwood-butterfly-bin
 	depends = gtk3
 	depends = at-spi2-core
 	depends = libsecret
-	provides = linwood-butterfly=2.1.1
+	provides = linwood-butterfly=2.2.0
 	conflicts = linwood-butterfly
-	source = linwood-butterfly-2.1.1.deb::https://github.com/LinwoodDev/Butterfly/releases/download/v2.1.1/linwood-butterfly-linux-x86_64.deb
-	source = LICENSE-2.1.1::https://raw.githubusercontent.com/LinwoodDev/Butterfly/v2.1.1/LICENSE
+	source = linwood-butterfly-2.2.0.deb::https://github.com/LinwoodDev/Butterfly/releases/download/v2.2.0/linwood-butterfly-linux-x86_64.deb
+	source = LICENSE-2.2.0::https://raw.githubusercontent.com/LinwoodDev/Butterfly/v2.2.0/LICENSE
 	source = linwood-butterfly.sh
-	sha256sums = 5db1cc21ab1651b1336a8e5092901bc5c661ec32a21af14a73aaf26a0e426ff8
+	sha256sums = 15541e4dd328730efa241217afc094dfb8dcb2e1c7e035c59960be4ee04f68be
 	sha256sums = 8486a10c4393cee1c25392769ddd3b2d6c242d6ec7928e1414efff7dfb2f07ef
-	sha256sums = 7a232e68a07c829390ea2b50cf8214db1d02ebe5fa8713722869352365aa2e92
+	sha256sums = 3b8311438e88f47eb507322a43c7a4156bfebb8c0f6e7b7436ef70842fb4c745
 
 pkgname = linwood-butterfly-bin
