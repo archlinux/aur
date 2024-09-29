@@ -1,7 +1,7 @@
 # Maintainer: Alexander F. Rødseth <xyproto@archlinux.org>
 
 pkgname=kickpad
-pkgver=1.5.0
+pkgver=1.5.1
 pkgrel=1
 pkgdesc='Kick drum audio sample generator'
 arch=(x86_64)
@@ -9,8 +9,8 @@ url='https://github.com/xyproto/kickpad'
 license=(MIT)
 depends=(glfw sdl2 sdl2_mixer)
 makedepends=(gendesk git go)
-source=("git+$url#tag=v$pkgver") # tag: v1.5.0
-b2sums=('92073afb2dbb9d5aa9cc39c668bd2727ea36f8f9e71d436b6f800c0cbdc348a961c4ea5507e0fa7fa7529c6f63004b02471c88f685036d6b25f737e50b490856')
+source=("git+$url#tag=v$pkgver")
+b2sums=('5078b979a78ebb39f2ee7faad11cc70081ab5104308151842dfa5a4ebaba6a6c31992519a9869f835c14b8ffd376453a20bf1c8ee2c061114d9af2ff13a1279a')
 
 prepare() {
   gendesk -f -n --pkgdesc="$pkgdesc" --pkgname=$pkgname --categories 'AudioVideo;Audio'
