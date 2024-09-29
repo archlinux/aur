@@ -1,7 +1,7 @@
 # Maintainer: Adam Perkowski <adas1per@protonmail.com>
 pkgname=linutil-git
 _pkgname=linutil
-pkgver=2024.09.19.r62.gf0e8861
+pkgver=2024.09.28.r11.ga9a678f
 pkgrel=1
 pkgdesc="Chris Titus Tech's Linutil is a distro-agnostic toolbox designed to simplify everyday Linux tasks."
 arch=('x86_64' 'aarch64')
@@ -10,7 +10,7 @@ license=('MIT')
 source=("git+https://github.com/ChrisTitusTech/$_pkgname")
 sha256sums=(SKIP)
 makedepends=('rustup' 'glibc' 'gcc-libs')
-depends=('git' 'pacman')
+depends=('git' 'pacman' 'tree-sitter' 'tree-sitter-bash')
 optdepends=('ttf-nerd-fonts-symbols: symbols and icons')
 conflicts=($_pkgname)
 provides=($_pkgname)
@@ -31,6 +31,7 @@ prepare() {
 build() {
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
+    export RUSTFLAGS="-C link-arg=/usr/lib/libtree-sitter.so -C link-arg=/usr/lib/libtree-sitter-bash.so"
 
     cd "$_pkgname"
 

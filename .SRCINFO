@@ -1,6 +1,6 @@
 pkgbase = linutil-git
 	pkgdesc = Chris Titus Tech's Linutil is a distro-agnostic toolbox designed to simplify everyday Linux tasks.
-	pkgver = 2024.09.19.r62.gf0e8861
+	pkgver = 2024.09.28.r11.ga9a678f
 	pkgrel = 1
 	url = https://github.com/ChrisTitusTech/linutil
 	arch = x86_64
@@ -11,6 +11,8 @@ pkgbase = linutil-git
 	makedepends = gcc-libs
 	depends = git
 	depends = pacman
+	depends = tree-sitter
+	depends = tree-sitter-bash
 	optdepends = ttf-nerd-fonts-symbols: symbols and icons
 	provides = linutil
 	conflicts = linutil
