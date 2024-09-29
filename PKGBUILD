@@ -8,7 +8,7 @@
 pkgname=libmodsecurity2
 _name=modsecurity
 pkgver=2.9.8
-pkgrel=1
+pkgrel=2
 pkgdesc='A cross platform web application firewall engine for Apache, IIS and Nginx, v2 branch'
 arch=('x86_64')
 url='https://github.com/owasp-modsecurity/ModSecurity/tree/v2/master'
@@ -32,7 +32,7 @@ depends=(
 makedepends=('gcc')
 provides=('libmodsecurity' 'modsecurity')
 conflicts=("libmodsecurity")
-source=("${url}/releases/download/v${pkgver}/${_name}-v${pkgver}.tar.gz")
+source=("https://github.com/owasp-modsecurity/ModSecurity/releases/download/v${pkgver}/${_name}-v${pkgver}.tar.gz")
 sha256sums=('cd57bd37f6062dca39dc8fba8d3e8db7351c5095de1e9ce7c3aa3890bc95855f')
 
 prepare() {
