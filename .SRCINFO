@@ -6,7 +6,6 @@ pkgbase = easytier
 	arch = x86_64
 	arch = aarch64
 	license = Apache-2.0
-	makedepends = git
 	makedepends = cargo
 	makedepends = protobuf
 	depends = glibc
