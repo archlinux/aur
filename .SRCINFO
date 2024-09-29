@@ -1,7 +1,7 @@
 pkgbase = toolblex
 	pkgdesc = A Bluetooth Low Energy device scanner and analyzer
 	pkgver = 0.12
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/emericg/toolBLEx
 	arch = x86_64
 	arch = i686
@@ -9,7 +9,6 @@ pkgbase = toolblex
 	makedepends = qt6-tools
 	depends = qt6-base
 	depends = qt6-declarative
-	depends = qt6-quickcontrols2
 	depends = qt6-connectivity
 	depends = qt6-charts
 	depends = qt6-svg
