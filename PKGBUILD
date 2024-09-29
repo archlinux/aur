@@ -18,12 +18,6 @@ makedepends=(
   python
   tar
   xz
-
-  # htmldocs
-  graphviz
-  imagemagick
-  python-sphinx
-  texlive-latexextra
 )
 options=('!strip')
 _srcname=linux-$pkgver
@@ -89,10 +83,7 @@ prepare() {
 build() {
   cd $_srcname
 
-  make htmldocs &
-  local pid_docs=$!
   make all
-  wait "${pid_docs}"
 }
 
 _package() {
@@ -285,9 +276,6 @@ _package-headers() {
     rm -r "$arch"
   done
 
-  echo "Removing documentation..."
-  rm -r "$builddir/Documentation"
-
   echo "Removing broken symlinks..."
   find -L "$builddir" -type l -printf 'Removing %P\n' -delete
 
@@ -322,55 +310,9 @@ _package-headers() {
   install -vDm 644 LICENSES/exceptions/* -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
 
-_package-docs() {
-  pkgdesc="Documentation for the $pkgdesc kernel"
-  license=(
-    BSD-3-Clause
-
-    GFDL-1.1-no-invariants-or-later
-
-    GPL-2.0-only
-    'GPL-2.0-only OR BSD-2-Clause'
-    'GPL-2.0-only OR BSD-3-Clause'
-    'GPL-2.0-only OR GFDL-1.1-no-invariants-or-later'
-    'GPL-2.0-only OR GFDL-1.2-no-invariants-only'
-    'GPL-2.0-only OR MIT'
-
-    GPL-2.0-or-later
-    'GPL-2.0-or-later OR BSD-2-Clause'
-    'GPL-2.0-or-later OR CC-BY-4.0'
-    'GPL-2.0-or-later OR MIT'
-    'GPL-2.0-or-later OR X11'
-
-    'LGPL-2.1-only OR BSD-2-Clause'
-
-    MIT
-  )
-
-  cd $_srcname
-  local builddir="$pkgdir/usr/lib/modules/$(<version)/build"
-
-  echo "Installing documentation..."
-  local src dst
-  while read -rd '' src; do
-    dst="${src#Documentation/}"
-    dst="$builddir/Documentation/${dst#output/}"
-    install -Dm644 "$src" "$dst"
-  done < <(find Documentation -name '.*' -prune -o ! -type d -print0)
-
-  echo "Adding symlink..."
-  mkdir -p "$pkgdir/usr/share/doc"
-  ln -sr "$builddir/Documentation" "$pkgdir/usr/share/doc/$pkgbase"
-
-  # licenses
-  install -vDm 644 LICENSES/deprecated/X11 -t "$pkgdir/usr/share/licenses/$pkgname/"
-  install -vDm 644 LICENSES/preferred/{BSD*,MIT} -t "$pkgdir/usr/share/licenses/$pkgname/"
-}
-
 pkgname=(
   "$pkgbase"
   "$pkgbase-headers"
-  "$pkgbase-docs"
 )
 for _p in "${pkgname[@]}"; do
   eval "package_$_p() {
