@@ -1,7 +1,7 @@
 # Maintainer: Astro Benzene <universebenzene at sina dot com>
 _pyname=tweakwcs
 pkgname=python-${_pyname}-doc
-pkgver=0.8.8
+pkgver=0.8.9
 pkgrel=1
 pkgdesc="Documentation for tweakwcs"
 arch=('any')
@@ -14,7 +14,7 @@ makedepends=("python-${_pyname}=${pkgver}"
              'python-stsci_rtd_theme'
              'texlive-latexextra')  # latex(texlive-bin), mktexfmt(texlive-basic), latex.fmt(texlive-latex), anyfontsize.sty needed
 source=("https://github.com/spacetelescope/${_pyname}/archive/${pkgver}.tar.gz")
-md5sums=('7c850f4d3b611d3a2502db69d4a4a895')
+md5sums=('03cc17e718feed1f1f58d46a74398954')
 
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}/docs
