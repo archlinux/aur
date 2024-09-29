@@ -1,33 +1,43 @@
-# Maintainer: cap153 <1536989047@qq.com>
 
+# Maintainer: bbaa <bbaa@bbaa.moe>
+# Contributor: cap153 <1536989047@qq.com>
+
+_pkgname=EasyTier
 pkgname=easytier
-pkgver=1.2.3
+pkgver=2.0.0
 pkgrel=1
-pkgdesc="由Rust和Tokio驱动，一个简单、安全、去中心化的内网穿透VPN组网方案"
+pkgdesc="A simple, decentralized mesh VPN with WireGuard support."
 arch=("x86_64" "aarch64")
 url="https://github.com/EasyTier/EasyTier"
-license=('Apache License 2.0')
-source=("easytier-example.service")
-source_x86_64=("$pkgname-$pkgver-x86_64.zip::https://github.com/EasyTier/EasyTier/releases/download/v1.2.3/easytier-linux-x86_64-v1.2.3.zip")
-source_aarch64=("$pkgname-$pkgver-aarch64.zip::https://github.com/EasyTier/EasyTier/releases/download/v1.2.3/easytier-linux-aarch64-v1.2.3.zip")
-sha256sums=('SKIP')
-sha256sums_x86_64=('SKIP')
-sha256sums_aarch64=('SKIP')
-options=('!strip')
-install='librewolf-bin.install'
+license=('Apache-2.0')
+depends=('glibc' 'gcc-libs')
+makedepends=('git' 'cargo' 'protobuf')
+backup=('etc/easytier/config.toml')
+source=("$_pkgname-$pkgver.tar.gz::https://github.com/EasyTier/EasyTier/archive/refs/tags/v$pkgver.tar.gz" "easytier.service" "config.toml")
+sha256sums=('f5b4d99fe44ce28b7b046b160748438cf050043d8243c792cdbdbe1a0c0fd30f'
+            '8bf506d141f3a7a716a9b483c8d469ad4e727f85c9664a35dbf467ae2c27513f'
+            'd25d57584779870938bfe71914e823a74b99b7c91f1cdf6dcb8076ebeb29e6ae')
 
 prepare() {
-  cd "$srcdir" || exit 1
-  if [ "$CARCH" == "x86_64" ]; then
-    bsdtar -xf "$pkgname-$pkgver-x86_64.zip" --strip-components=1
-  elif [ "$CARCH" == "aarch64" ]; then
-    bsdtar -xf "$pkgname-$pkgver-aarch64.zip" --strip-components=1
-  fi
+  cd "$_pkgname-$pkgver"
+  export RUSTUP_TOOLCHAIN=stable
+  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+}
+
+build() {
+  cd "$_pkgname-$pkgver"
+  CFLAGS+=' -ffat-lto-objects' # fix for mimalloc linking
+  export RUSTUP_TOOLCHAIN=stable
+  export CARGO_TARGET_DIR=target
+  cargo build --verbose --release
 }
 
 package() {
-  cd "$srcdir" || exit 1
-	install -Dm644 easytier-example.service -t "$pkgdir/etc/systemd/system"
-  install -Dm755 easytier-core "$pkgdir/usr/bin/easytier-core"
-  install -Dm755 easytier-cli "$pkgdir/usr/bin/easytier-cli"
+  install -dm755 "$pkgdir/var/lib/easytier"
+  install -Dm644 "easytier.service" "$pkgdir/usr/lib/systemd/system/easytier.service"
+  install -Dm644 "config.toml" "$pkgdir/etc/easytier/config.toml"
+  cd "$_pkgname-$pkgver"
+  install -Dm755 "target/release/easytier-cli" "$pkgdir/usr/bin/easytier-cli"
+  install -Dm755 "target/release/easytier-core" "$pkgdir/usr/bin/easytier-core"
+  install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/easytier/LICENSE"
 }

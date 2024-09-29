@@ -1,0 +1,14 @@
+[Unit]
+Description=easytier
+After=network.target
+
+[Service]
+TimeoutStartSec=10s
+Type=exec
+ExecStart=/usr/bin/easytier-core -c /etc/easytier/config.toml
+Restart=on-failure
+RestartSec=5s
+WorkingDirectory=/var/lib/easytier
+
+[Install]
+WantedBy=multi-user.target
