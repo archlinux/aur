@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=datamods
-_pkgver=1.5.1
+_pkgver=1.5.2
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -10,6 +10,7 @@ arch=(any)
 url="https://cran.r-project.org/package=$_pkgname"
 license=('GPL-3.0-only')
 depends=(
+  r-bslib
   r-classint
   r-data.table
   r-htmltools
@@ -26,7 +27,6 @@ depends=(
   r-writexl
 )
 optdepends=(
-  r-bslib
   r-ggplot2
   r-jsonlite
   r-knitr
@@ -35,8 +35,8 @@ optdepends=(
   r-validate
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('56f8d224ea953f90bb4b2e003e161098')
-b2sums=('c134e4d275a701e2605cbc1e389251d6fe530858ff105ef9c14f49f26c41dc0bff315b5598df7e9d0d1674d910866745936808c75323e5767cc6c744a4977f13')
+md5sums=('6f6ce0f1996967e1b3b1fd23bb0de0a5')
+b2sums=('ce8135b35d5f08707a5fbaacc94121dd0fda258563b8e4b6487adfcd728429b555d1eb40c24400bfde1b522658e172f57fe781b9637085686c407da408423d4f')
 
 build() {
   mkdir build
