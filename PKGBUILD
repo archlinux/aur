@@ -1,12 +1,15 @@
 pkgname=wallhaven-cli
 cli=wallhaven
-pkgver=1.0.5
+pkgver=1.0.6
 pkgrel=1
 pkgdesc='Search and download wallpapers from wallhaven.'
 arch=('x86_64')
 url="https://github.com/r3tr0ananas/wallhaven-cli"
 license=('MIT')
-makedepends=('go' 'kitty' 'fzf')
+makedepends=('go' 'chafa' 'fzf')
+optdepends=(
+  'kitty'
+)
 source=("${pkgname}-${pkgver}.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('SKIP')
 
