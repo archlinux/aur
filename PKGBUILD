@@ -4,8 +4,8 @@
 
 pkgbase=mesa-amd-bc250
 pkgname=(
-  mesa
-  vulkan-radeon
+  mesa-amd-bc250
+  vulkan-radeon-amd-bc250
 )
 pkgver=24.2.2
 pkgrel=1
