@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=trep-tracker-bin
-pkgver=2.2.0_beta
+pkgver=2.3.0_beta
 _electronversion=31
 pkgrel=1
 pkgdesc="Minimal, fast and powerful task tracker/todo list app with task tagging and quick views."
@@ -17,15 +17,15 @@ source=(
     "${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/v${pkgver//_/-}/${pkgname%-bin}_${pkgver//_/.}_amd64.deb"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('d67043f1a186b6aaf7c36d9ec1e570ed3994746d616bcadfc454b4f1f1b5863d'
+sha256sums=('18fb12aa338b014f8d4914a7734b8af38a933b45502abfd0a3c15d145dbb9114'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 build() {
     sed -e "
-        s/@electronversion@/${_electronversion}/
-        s/@appname@/${pkgname%-bin}/
-        s/@runname@/app.asar/
-        s/@cfgdirname@/${_pkgname}/
-        s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/
+        s/@electronversion@/${_electronversion}/g
+        s/@appname@/${pkgname%-bin}/g
+        s/@runname@/app.asar/g
+        s/@cfgdirname@/${_pkgname}/g
+        s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
     " -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
 }
