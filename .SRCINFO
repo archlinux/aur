@@ -1,22 +1,22 @@
 pkgbase = python-asteval-git
-	pkgdesc = minimalistic evaluator of python expression using ast module
-	pkgver = 0.9.13.r5.14d7d6e
+	pkgdesc = Minimalistic evaluator of python expression using ast module
+	pkgver = 1.0.4.r4.g36dc5f1
 	pkgrel = 1
-	url = https://github.com/newville/asteval.git
-	arch = i686
-	arch = x86_64
+	url = https://github.com/lmfit/asteval
+	arch = any
 	license = MIT
-	checkdepends = python-nose
-	checkdepends = python2-nose
+	checkdepends = python-pytest-cov
+	checkdepends = python-numpy
+	checkdepends = tk
 	makedepends = git
-	makedepends = python-numpy
-	makedepends = python2-numpy
-	source = python-asteval::git+https://github.com/newville/asteval.git
-	md5sums = SKIP
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools-scm
+	makedepends = python-wheel
+	depends = python
+	provides = python-asteval
+	conflicts = python-asteval
+	source = git+https://github.com/lmfit/asteval.git
+	sha512sums = SKIP
 
 pkgname = python-asteval-git
-	depends = python-numpy
-
-pkgname = python2-asteval-git
-	depends = python2-numpy
-
