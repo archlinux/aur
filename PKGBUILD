@@ -10,9 +10,9 @@
 pkgname=bilibili-bin
 _pkgname="io.github.msojocs.${pkgname%-bin}"
 pkgver=1.14.2_1
-_electronversion=30
+_electronversion=21
 epoch=5
-pkgrel=2
+pkgrel=3
 pkgdesc='哔哩哔哩官方客户端linux移植版。Bilibili official desktop client.Binary version.Use system-wide electron.'
 arch=(
     'aarch64'
