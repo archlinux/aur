@@ -1,6 +1,6 @@
 pkgbase = r-tnt
 	pkgdesc = Interactive Visualization for Genomic Features
-	pkgver = 1.26.2
+	pkgver = 1.26.3
 	pkgrel = 1
 	url = https://bioconductor.org/packages/TnT
 	arch = any
@@ -20,7 +20,7 @@ pkgbase = r-tnt
 	optdepends = r-rmarkdown
 	optdepends = r-shiny
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/TnT_1.26.2.tar.gz
-	sha256sums = 609f51f0956f38155b9879161a5431d6ae65546445da0526fece4292290cca47
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/TnT_1.26.3.tar.gz
+	sha256sums = 0b8ebb47986dea692e49fd60e926058a90123ac30eb9ddacfa9ee4a29e98cd66
 
 pkgname = r-tnt
