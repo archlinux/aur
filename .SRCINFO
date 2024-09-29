@@ -1,6 +1,6 @@
 pkgbase = r-dmrseq
 	pkgdesc = Detection and inference of differentially methylated regions from Whole Genome Bisulfite Sequencing
-	pkgver = 1.24.1
+	pkgver = 1.24.2
 	pkgrel = 1
 	url = https://bioconductor.org/packages/dmrseq
 	arch = any
@@ -27,7 +27,7 @@ pkgbase = r-dmrseq
 	optdepends = r-org.hs.eg.db
 	optdepends = r-rmarkdown
 	optdepends = r-txdb.hsapiens.ucsc.hg19.knowngene
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/dmrseq_1.24.1.tar.gz
-	sha256sums = 843f6cb135437f63f8d772b98fb4e457d9e9990bda015477c1f1077b7fe3ef74
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/dmrseq_1.24.2.tar.gz
+	sha256sums = 2cb67ea1b852ed0f0d21ed1cb8ed00ed9903677bbd4b5409003ee0d35ca5ad3b
 
 pkgname = r-dmrseq
