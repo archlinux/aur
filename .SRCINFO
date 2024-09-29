@@ -1,6 +1,6 @@
 pkgbase = firefox-syncstorage
 	pkgdesc = Sync storage server with built-in token server for running a self-hosted firefox sync server
-	pkgver = 0.17.7
+	pkgver = 0.17.9
 	pkgrel = 1
 	url = https://github.com/mozilla-services/syncstorage-rs
 	install = firefox-syncstorage.install
@@ -21,9 +21,9 @@ pkgbase = firefox-syncstorage
 	optdepends = mysql: for use with a local database server
 	options = !lto
 	backup = etc/firefox-syncstorage.toml
-	source = https://github.com/mozilla-services/syncstorage-rs/archive/0.17.7/syncstorage-rs-0.17.7.tar.gz
+	source = https://github.com/mozilla-services/syncstorage-rs/archive/0.17.9/syncstorage-rs-0.17.9.tar.gz
 	source = firefox-syncstorage.service
-	sha512sums = ac70bf6dc0b298b709e1d9b920deee711cdeaf3ecddb234199eb93b8eb24c6f71ddafe4458fb69d5f03b3c0532ddca91a9105e76f02b3227f08d58e157726f7a
+	sha512sums = 238d9e6ad768010d14d56f3cd0c84d5f256eb5f854cdbae32bc881047819bd1d1fd5a02cfa53e1c145cbc40b9d652c0d7661c43d3bd3102017bb662b322b32eb
 	sha512sums = 4c5fbb99160613ba3fb0fedce97f04f63b92699fe79c6edd899d4ec5f297c5a98c0c211df3eb9a6579c12c57f4c63513747ed8944a60fc76e32f1e0c0f5e3a95
 
 pkgname = firefox-syncstorage
