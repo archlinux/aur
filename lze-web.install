@@ -22,6 +22,13 @@ fi
   sed -i "203i Group $cu_user" /etc/httpd/conf/httpd.conf
   touch /etc/sudoers.d/brightness
  echo "$cu_user ALL = (root) NOPASSWD: /usr/bin/brightnessctl" > /etc/sudoers.d/brightness
+ if [ ! -e "/etc/lze-web/token" ]; then
+    touch "/etc/lze-web/token"
+fi
+if [ ! -e "/etc/lze-web/password" ]; then
+    touch "/etc/lze-web/password"
+fi
+chmod 777 -R /etc/lze-web/
   mv /etc/php/php.ini /etc/php/php.ini.bck
   mv /etc/php/php.ini.lze /etc/php/php.ini
   xhost +local:
