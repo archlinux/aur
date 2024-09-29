@@ -1,6 +1,6 @@
 pkgbase = devpod-bin
 	pkgdesc = Codespaces but open-source, client-only, and unopinionated - unofficial package
-	pkgver = 0.5.11
+	pkgver = 0.5.21
 	pkgrel = 1
 	url = https://github.com/loft-sh/devpod
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = devpod-bin
 	depends = fuse2
 	conflicts = devpod
 	options = !strip
-	source = https://github.com/loft-sh/devpod/releases/download/v0.5.11/DevPod_linux_x86_64.tar.gz
-	sha256sums = 9348f096a63dbad058cc0b49bbfb7004815f1f987d3abcba7274757ac5678b1a
+	source = devpod-bin-0.5.21.tar.gz::https://github.com/loft-sh/devpod/releases/download/v0.5.21/dev-pod-0.5.21.tar.gz
+	sha256sums = 660fa9ac1e21175851266a97f4f39341b83d62e2d572dfa6e92b0278003a065a
 
 pkgname = devpod-bin
