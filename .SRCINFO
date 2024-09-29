@@ -1,0 +1,15 @@
+pkgbase = pentest-db-git
+	pkgdesc = a program to store and collect data during penetration tests
+	pkgver = 0.3.12.r77f723a
+	pkgrel = 1
+	url = https://github.com/calacuda/PenTestDB
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = git
+	makedepends = rust
+	provides = ptdb
+	source = git+https://github.com/calacuda/PenTestDB
+	md5sums = SKIP
+
+pkgname = pentest-db-git
