@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=Ternary
-_pkgver=2.3.2
+_pkgver=2.3.3
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -14,7 +14,6 @@ depends=(
   r-rcpphungarian
   r-shiny
   r-sp
-  r-viridislite
 )
 optdepends=(
   r-colourpicker
@@ -27,8 +26,8 @@ optdepends=(
   r-vdiffr
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('6fd6ffb1f78a70238f86dd257a58342c')
-b2sums=('fe8f173e01e94bd3dce39e3ac39eea5f132f0ce994e3dba6e93b55c316085a1b084f76c7a6680a9939274c572b83332eaafa61e2031ee98103e6400f41c01420')
+md5sums=('805bd186c460257eafcfca77d6e858f0')
+b2sums=('de06c72aadc99db8f33aa2be4dbbadb32ab9552e99a98948d37ebd05fc5ace8f011aa6adf2fda61386e6e5e23e2d3376bed87bda70acdf6f6dc00488c95ff707')
 
 build() {
   mkdir build

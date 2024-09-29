@@ -1,6 +1,6 @@
 pkgbase = r-ternary
 	pkgdesc = Create Ternary and Holdridge Plots
-	pkgver = 2.3.2
+	pkgver = 2.3.3
 	pkgrel = 1
 	url = https://cran.r-project.org/package=Ternary
 	arch = any
@@ -9,7 +9,6 @@ pkgbase = r-ternary
 	depends = r-rcpphungarian
 	depends = r-shiny
 	depends = r-sp
-	depends = r-viridislite
 	optdepends = r-colourpicker
 	optdepends = r-knitr
 	optdepends = r-readxl
@@ -18,8 +17,8 @@ pkgbase = r-ternary
 	optdepends = r-spelling
 	optdepends = r-testthat
 	optdepends = r-vdiffr
-	source = https://cran.r-project.org/src/contrib/Ternary_2.3.2.tar.gz
-	md5sums = 6fd6ffb1f78a70238f86dd257a58342c
-	b2sums = fe8f173e01e94bd3dce39e3ac39eea5f132f0ce994e3dba6e93b55c316085a1b084f76c7a6680a9939274c572b83332eaafa61e2031ee98103e6400f41c01420
+	source = https://cran.r-project.org/src/contrib/Ternary_2.3.3.tar.gz
+	md5sums = 805bd186c460257eafcfca77d6e858f0
+	b2sums = de06c72aadc99db8f33aa2be4dbbadb32ab9552e99a98948d37ebd05fc5ace8f011aa6adf2fda61386e6e5e23e2d3376bed87bda70acdf6f6dc00488c95ff707
 
 pkgname = r-ternary
