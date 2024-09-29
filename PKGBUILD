@@ -1,5 +1,5 @@
 pkgname=mihomo-party
-pkgver=1.3.4
+pkgver=1.3.5
 pkgrel=1
 pkgdesc="Another Mihomo GUI."
 arch=('x86_64' 'aarch64')
@@ -14,7 +14,7 @@ source=(
     "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
     "${pkgname}.sh"
 )
-sha256sums=("0d76fb59641e270427bc2a28ec186c4e26615371f20a313192498e59cfd3ca82"
+sha256sums=("aa0a9135b511d6c34d771f212bc96b632bfd9e8a82400e6a86de481b6c980411"
 "f8049c1f26d5a92fbcebd7bebbdedbb3eab53422b21cf6127418251ccd061282")
 options=('!lto')
 
@@ -35,9 +35,8 @@ package() {
     chmod +x ${pkgdir}/opt/mihomo-party/mihomo-party
     chmod +x ${pkgdir}/opt/mihomo-party/resources/sidecar/mihomo
     chmod +x ${pkgdir}/opt/mihomo-party/resources/sidecar/mihomo-alpha
-    cd ${pkgdir}/../..
-	install -Dm755 "${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
-	sed -i '3s!/opt/mihomo-party/mihomo-party!mihomo-party!' "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+    install -Dm755 "${srcdir}/../${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
+    sed -i '3s!/opt/mihomo-party/mihomo-party!mihomo-party!' "${pkgdir}/usr/share/applications/${pkgname}.desktop"
 
     chown -R root:root ${pkgdir}
 }
