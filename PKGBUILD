@@ -1,15 +1,16 @@
-# Maintainer: whezzel <whezzel (at) gmail (dot) com>
+# Maintainer: elitemikofan <elitemikofan (at) pm (dot) me>
+# Contributor: whezzel <whezzel (at) gmail (dot) com>
 
 pkgname=undefined-medium-fonts
 _pkgname=undefined-medium
-pkgver=1.0
-pkgrel=5
+pkgver=1.3
+pkgrel=1
 pkgdesc='Package for undefined-medium-fonts. Includes ttf, otf, and webfonts.'
 arch=('any')
 url='https://undefined-medium.com/'
-license=('custom:SIL')
+license=('OFL-1.1')
 source=("${_pkgname}-${pkgver}-${pkgrel}.zip::https://github.com/andirueckel/${_pkgname}/archive/v${pkgver}.zip")
-sha256sums=('6e2acaae3bbd04347ba2c110fffc45560bc3c5e190e7dd223eb9ac648fcf0e84')
+sha256sums=('a8e7d738177af224c0cd5f659a9504c2976ab0194c91be3777d01e80d0f121f8')
 
 package()
 {
