@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=CHITUBOX Basic Beta
+GenericName=3D Printer Slicer
+Comment=All-in-one SLA/DLP/LCD Slicer
+Exec=/opt/CHITUBOX_Basic_Beta/CHITUBOX_Basic.sh %f
+Icon=chitubox-basic-beta
+Categories=Graphics;Utility;
+MimeType=model/chitubox;model/ctb;model/cbddlp;model/stl

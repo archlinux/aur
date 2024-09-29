@@ -1,0 +1,6 @@
+[chitubox-free-beta-bin]
+source = "jq"
+url = "https://sac.chitubox.com/getSoftwareBySoftwareId.do2?softwareId=17839"
+prefix = "v"
+# "bateVersion": sic!
+filter = ".data.bateVersion"
