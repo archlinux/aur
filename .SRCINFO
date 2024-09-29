@@ -1,0 +1,18 @@
+pkgbase = tt-burnin-git
+	pkgdesc = Tenstorrent Burnin (TT-Burnin) is a command line utility to run a high power consumption workload on TT devices.
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/tenstorrent/tt-burnin
+	arch = any
+	license = Apache
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python-luwen
+	depends = python-tomli
+	depends = python-tt-tools-common
+	provides = tt-burnin
+	source = tt-burnin::git+https://github.com/tenstorrent/tt-burnin.git
+	sha256sums = SKIP
+
+pkgname = tt-burnin-git
