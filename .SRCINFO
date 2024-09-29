@@ -1,0 +1,16 @@
+pkgbase = siyuan_stable
+	pkgdesc = This package is deprecated, please use siyuan-bin instead, deletion request submitted
+	pkgver = v3.1.8
+	pkgrel = 1
+	url = https://b3log.org/siyuan
+	arch = x86_64
+	license = AGPL-3.0-only
+	depends = fuse2
+	optdepends = pandoc: docx export
+	noextract = siyuan-v3.1.8-linux.AppImage
+	options = !strip
+	options = !debug
+	source = https://github.com/siyuan-note/siyuan/releases/download/vv3.1.8/siyuan-v3.1.8-linux.AppImage
+	sha256sums = SKIP
+
+pkgname = siyuan_stable
