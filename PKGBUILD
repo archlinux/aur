@@ -1,8 +1,8 @@
-# Maintainer: Martin Rys <rys.rs/contact>
+# Maintainer: Martin Rys <https://rys.rs/contact> | Toss a coin on https://rys.rs/donate
 
 pkgname=vtracer
 pkgver=0.6.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Convert PNG to SVG"
 arch=(x86_64)
 url="https://github.com/visioncortex/vtracer"
@@ -11,7 +11,7 @@ depends=('gcc-libs')
 options=('!lto')
 makedepends=('rust')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/visioncortex/${pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=('bea5233769f2295e7122f1e6b6180f34799f6faf6e645a060b21e0b98b0da740')
+sha256sums=('a4b554afe0384ddbdb5f96dde2d2e6f412493ae990acc32e0d71c4f8b63d8ba4')
 
 build() {
   cd "${pkgname}-${pkgver}"
