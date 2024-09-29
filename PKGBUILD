@@ -2,8 +2,8 @@
 # Maintainer: Bartosz Komosiński <contact@montidaproot.xyz>
 
 pkgname=devpod
-pkgver=0.5.20
-pkgrel=2
+pkgver=0.5.21
+pkgrel=1
 pkgdesc="Codespaces but open-source, client-only, and unopinionated - unofficial package"
 arch=('x86_64' 'arm64' 'aarch64')
 url="https://github.com/loft-sh/devpod"
@@ -41,7 +41,7 @@ source=(
   "${pkgname}-${pkgver}.tar.gz::https://github.com/loft-sh/devpod/archive/refs/tags/v${pkgver}.tar.gz"
 )
 sha256sums=(
-  '9c233a5d8043b34694b472855078ffb457e31c1fe65199a2297b5ce531b689cd'
+  '873b5b2bb143d2b8fbd40c20b988c264ba2a29f748cf4f7ee94349ec66f29833'
 )
 
 prepare() {
