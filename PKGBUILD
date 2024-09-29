@@ -1,10 +1,11 @@
 #Maintainer: Noble Eugene <nobleeugene2005@gmail.com>
 pkgname="swengine"
-pkgver="0.13.1"
+pkgver="0.14"
 pkgrel=1
 pkgdesc="Download and apply live wallpapers with swww"
 arch=("x86_64")
-depends=("vlc" "ffmpeg" "swww-git")
+depends=("vlc" "ffmpeg")
+optdepends=("swww-git: For wallpapers on wlroots compositors")
 makedepends=("dotnet-sdk" "git")
 url="https://www.github.com/eugenenoble2005/swengine"
 
