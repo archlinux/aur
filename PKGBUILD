@@ -10,7 +10,7 @@ arch=('x86_64')
 depends=(
   'libusb'
   'qt6-5compat'
-  'qt6-quickcontrols2'
+  'qt6-declarative'
   'qt6-serialport'
   'qt6-svg'
 )
