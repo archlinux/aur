@@ -1,34 +1,28 @@
-# Maintainer : SpepS <dreamspepser at yahoo dot it>
-# Contributor: Frikilinux <frikilinux at frikilinux.com.ar>
+# Maintainer: Mike Pento <mpento@darkforge.net>
 
-pkgname=gtk-engine-equinox
+pkgname=gtk2-engines-equinox
 pkgver=1.50
-pkgrel=2
-pkgdesc="A heavily modified version of the beautiful Aurora engine"
-url="http://gnome-look.org/content/show.php/Equinox+GTK+Engine?content=121881"
-license=('GPL')
-arch=('i686' 'x86_64')
+pkgrel=1
+pkgdesc="Equinox GTK2 theming engine"
+arch=('x86_64')
+url="https://launchpad.net/equinox"
+license=('GPL2')
 depends=('gtk2')
-makedepends=('libtool')
-options=('!libtool')
-source=("121881-equinox-$pkgver.tar.gz::https://www.ppload.com/api/files/download?id=1463004028")
+optdepends=('lib32-gtk-engine-equinox'
+	'gtk-theme-equinox')
+makedepends=('pkgconfig')
+replaces=('gtk-engine-equinox')
+source=(https://launchpad.net/ubuntu/+archive/primary/+sourcefiles/$pkgname/$pkgver-0ubuntu4/${pkgname}_$pkgver.orig.tar.gz)
 sha256sums=('0cf8b8cc841e0da7d4a08ab5a70d3bb330fd76bdcb03165a47aaddcd47e02227')
 
 build() {
-  cd "$srcdir/equinox-$pkgver"
-
-  # toolbar fix
-  sed -i "s/=\( EQUINOX_IS_TOOLBAR\)/= widget \&\&\1/" \
-    src/equinox_style.c
-
-  # glib2 fix
-  sed -i "/gtimer/d" src/animation.c
-        
-  ./configure --prefix=/usr \
-              --enable-animation
-  make
+	cd $srcdir/equinox-$pkgver
+	./configure --prefix=/usr --enable-animation
+	make
 }
+
 package() {
-  cd "$srcdir/equinox-$pkgver"
-  make DESTDIR="$pkgdir/" install
+	cd $srcdir/equinox-1.50
+	make DESTDIR="$pkgdir" install
 }
+
