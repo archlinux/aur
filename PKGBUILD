@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=RSEIS
-_pkgver=4.2-0
+_pkgver=4.2-4
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="Seismic Time Series Analysis Tools"
 arch=(x86_64)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -13,9 +13,12 @@ depends=(
   r-rpmg
   r-rwave
 )
+optdepends=(
+  r-geomap
+)
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('1e48488c5c3420d62970461cead4195f')
-b2sums=('0e24adf228f9e9d6b6230be1cc57088506911cd6e3983a4e9df869d6862cf3e6b498c74e7581e0678ee9c50c825b745072b792c305a9ae99b711c010a1f48ea3')
+md5sums=('42d631c04680746f7b73fabd8a59f4bf')
+b2sums=('e84e0e309c783f56563457b2e22004bb7f74eb655f02ffa011a70039c30d8623745caf44e1e13fe5679cbe373ea2bf4e6e1ce801552d75f7c8049865f93db6fe')
 
 build() {
   mkdir build
