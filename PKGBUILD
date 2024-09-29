@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=tiny-rdm
 _pkgname="Tiny RDM"
-pkgver=1.2.0
+pkgver=1.2.1
 _nodeversion=18
 pkgrel=1
 pkgdesc="A modern lightweight cross-platform Redis desktop manager"
@@ -30,9 +30,9 @@ options=(
 source=(
     "${pkgname}.git::git+${_ghurl}.git#tag=v${pkgver}"
 )
-sha256sums=('7583619cd52dd7d588317c6271dd7e06b3a61dcbaa6f5ac99a7906947260a166')
+sha256sums=('2e82c5276b59056e31b2dd4726aa90cdd8c1a47a99cee144ea66db63aca0f1de')
 _ensure_local_nvm() {
-    export NVM_DIR="${srcdir}/.nvm"
+    local NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
     nvm install "${_nodeversion}"
     nvm use "${_nodeversion}"
@@ -40,34 +40,31 @@ _ensure_local_nvm() {
 build() {
     _ensure_local_nvm
     cd "${srcdir}/${pkgname}.git"
-    export npm_config_build_from_source=true
-    export npm_config_cache="${srcdir}/.npm_cache"
-    #export ELECTRON_SKIP_BINARY_DOWNLOAD=1
-    #export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
-    #export npm_config_target="${SYSTEM_ELECTRON_VERSION}"
-    #export ELECTRONVERSION="${_electronversion}"
-    export npm_config_disturl=https://electronjs.org/headers
     HOME="${srcdir}/.electron-gyp"
     export CGO_ENABLED=1
     export GO111MODULE=on
     export GOOS=linux
     export GOCACHE="${srcdir}/go-build"
     export GOMODCACHE="${srcdir}/go/pkg/mod"
-    if [ `curl -s ipinfo.io/country | grep CN | wc -l ` -ge 1 ];then
-        export npm_config_registry=https://registry.npmmirror.com
-        export npm_config_electron_mirror=https://registry.npmmirror.com/-/binary/electron/
-        export npm_config_electron_builder_binaries_mirror=https://registry.npmmirror.com/-/binary/electron-builder-binaries/
-        export GOPROXY=https://goproxy.cn
-    else
-        echo "Your network is OK."
+    {
+        echo -e '\n'   
+        #echo 'build_from_source=true'
+        echo "cache=${srcdir}/.npm_cache"
+    } >> frontend/.npmrc
+    if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
+        {
+            echo 'registry=https://registry.npmmirror.com'
+            echo 'disturl=https://registry.npmmirror.com/-/binary/node/'
+        } >> frontend/.npmrc
+        go env -w GOPROXY=https://goproxy.cn,direct
     fi
-    npm install --prefix ./frontend
-    wails build -platform linux -ldflags "-X main.version=v${pkgver}" -o "${pkgname}"
-    sed -e "s|{{.Info.ProductName}}|${_pkgname}|g" \
-        -e "s|/usr/local/bin/${pkgname}|${pkgname}|g" \
-        -e "s|{{.Info.Comments}}|${pkgdesc}|g" \
-        -e "s|Office|Development|g" \
-        -i "build/linux/${pkgname}_0.0.0_amd64/usr/share/applications/${pkgname}.desktop"
+    export NODE_ENV=development
+    wails build -platform linux -o "${pkgname%-git}"
+    sed -e "
+        s/{{.Info.ProductName}}/${_pkgname}/g
+        s/\/usr\/local\/bin\/${pkgname%-git}/${pkgname%-git}/g
+        s/{{.Info.Comments}}/${pkgdesc}/g
+    " -i "build/linux/${pkgname%-git}_0.0.0_amd64/usr/share/applications/${pkgname%-git}.desktop"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname}.git/build/bin/${pkgname}" -t "${pkgdir}/usr/bin"
