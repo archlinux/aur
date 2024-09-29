@@ -304,7 +304,7 @@ package_mesa-amd-bc250() {
 }
 
 package_vulkan-radeon-amd-bc250() {
-  pkgdesc="Open-source Vulkan driver for AMD GPUs"
+  pkgdesc="Open-source Vulkan driver for AMD GPUs with fixes for the AMD BC-250"
   depends=(
     expat
     gcc-libs

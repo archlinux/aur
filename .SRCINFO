@@ -147,7 +147,7 @@ pkgname = mesa-amd-bc250
 	replaces = mesa-libgl
 
 pkgname = vulkan-radeon-amd-bc250
-	pkgdesc = Open-source Vulkan driver for AMD GPUs
+	pkgdesc = Open-source Vulkan driver for AMD GPUs with fixes for the AMD BC-250
 	depends = expat
 	depends = gcc-libs
 	depends = glibc
