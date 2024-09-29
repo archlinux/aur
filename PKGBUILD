@@ -3,19 +3,19 @@ _pkgname=EasyTier
 pkgname=easytier-git
 conflicts=("easytier")
 provides=("easytier")
-pkgver=1.2.3.r32.g7b4a01e
+pkgver=2.0.0.r0.gd0a3a40
 pkgrel=1
 pkgdesc="A simple, decentralized mesh VPN with WireGuard support."
 arch=('x86_64')
 url="https://github.com/EasyTier/EasyTier"
 license=('Apache-2.0')
 depends=('glibc' 'gcc-libs')
-makedepends=('git' 'cargo' 'protobuf' 'mimalloc')
+makedepends=('git' 'cargo' 'protobuf')
 backup=('etc/easytier/config.toml')
 source=("git+https://github.com/EasyTier/EasyTier.git" "easytier.service" "config.toml")
 sha256sums=('SKIP'
             '8bf506d141f3a7a716a9b483c8d469ad4e727f85c9664a35dbf467ae2c27513f'
-            '5daa50a33143242b3fe1d6c29a007cfadc457f013379f66dae097cbc96e79a7e')
+            'd25d57584779870938bfe71914e823a74b99b7c91f1cdf6dcb8076ebeb29e6ae')
 
 prepare() {
   cd "$_pkgname"
