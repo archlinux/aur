@@ -31,7 +31,7 @@ post_upgrade() {
     echo
     echo "/usr/bin/zmupdate.pl --nointeractive"
     echo "/usr/bin/zmupdate.pl --nointeractive --freshen > /dev/null 2>&1"
-    echo    
+    echo
     echo "To also update the PTZ camera control presets, run the following:"
     echo
     echo "/usr/bin/zmcamtool.pl --import > /dev/null 2>&1"

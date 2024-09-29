@@ -9,32 +9,31 @@
 # Contributor: (Parabola): Márcio Silva   <coadde@lavabit.com>
 # Contributor: (Parabola): André Silva    <emulatorman@lavabit.com>
 # Contributor: Charles Spence IV         <cspence@unomaha.edu>
-# Contributor: Joe Julian                <me@joejulian.name>     
+# Contributor: Joe Julian                <me@joejulian.name>
 # Orginally based on a Debian Squeeze package
 
 pkgname=zoneminder
-pkgver=1.36.33
-pkgrel=2
+pkgver=1.36.34
+pkgrel=1
 pkgdesc='A full-featured, open source, state-of-the-art video surveillance software system'
 arch=('any')
-url='https://www.zoneminder.com/'
+url='https://zoneminder.com/'
 license=('GPL-2.0-only')
 depends=('polkit' 'ffmpeg'
-         'php-apcu' 'php-fpm' 'php-gd' 'php-intl'
+         'php-apcu' 'php-fpm' 'php-gd'
          'perl-archive-zip' 'perl-data-dump' 'perl-date-manip' 'perl-datetime' 'perl-dbd-mysql' 'perl-device-serialport' 'perl-file-slurp'
          'perl-image-info' 'perl-libwww' 'perl-mime-lite' 'perl-mime-tools' 'perl-net-sftp-foreign' 'perl-number-bytes-human' 'perl-php-serialization'
          'perl-sys-cpu' 'perl-sys-meminfo' 'perl-sys-mmap' 'perl-uri-encode'
-         # Required for ONVIF support
+         # ONVIF
          'perl-data-uuid' 'perl-io-interface' 'perl-io-socket-multicast' 'perl-soap-wsdl' 'perl-xml-libxml' 'perl-xml-parser'
-         # Required for TLS support
+         # TLS
          'perl-lwp-protocol-https'
-         # Required for telemetry support
-         'perl-json-maybexs'         
-         # Required for encryption support
+         # Telemetry
+         'perl-json-maybexs'
+         # Encryption
          'perl-crypt-eksblowfish' 'perl-data-entropy'
-         # Required for the JWT-based API
-         'libjwt'
-         )
+         # JSON Web Token API
+         'libjwt')
 makedepends=('cmake')
 optdepends=('mariadb'
             'apache'
@@ -43,10 +42,9 @@ optdepends=('mariadb'
             'spawn-fcgi: required if using nginx'
             'multiwatch: required if using nginx'
             'pod2man: required for Docker support'
-            'zmeventnotification: machine learning powered recognition engine & event notification server'
-            'vlc: provides libvlc, which may achieve better performance with some camera models'
-            'libvncserver')
-conflicts=('zoneminder-git')
+            'zmeventnotification: machine learning-powered recognition engine & event notification server'
+            'vlc: may achieve better performance than FFmpeg with some camera models'
+            'libvncserver: allows for CCTV-like monitoring of remote desktop sessions')
 backup=("etc/nginx/sites-available/${pkgname}.conf"
         "etc/httpd/conf/extra/${pkgname}.conf"
         "etc/php/conf.d/${pkgname}.ini")
@@ -58,15 +56,17 @@ source=("https://github.com/ZoneMinder/zoneminder/archive/refs/tags/${pkgver}.ta
         'zoneminder-nginx.conf'
         'zoneminder-httpd.conf'
         'zoneminder-php.ini'
-        'fcgiwrap-multiwatch.service')
-sha256sums=('cd0f44c7238bcfd10579d665b271f6af81b61f5cbd8cbbc2ff5d7839232e267e'
+        'fcgiwrap-multiwatch.service'
+        'ffmpeg-7.0.patch')
+sha256sums=('d8a30b3a6420baf0861d9afa3e94bc39e0cfa0b38cf1eb55a2ad122ef8024e73'
             'dbd231e97b950c698f0f501d6a53c7291c9985e766b09e3afe00cfe69a969f44'
             '55be29e1eccb44d4ad0db8b23c37cec50f5341f8e498583d472ed1f0493876e3'
             'fad0f1646f65f1518dfde3390e6c907319bc67b61f2e04f5d5ac4144ab61131d'
-            'c60e855428a56cc327214aa13d02a70011bf3b63a94a0d845b1c5ea1fab28ad2'
-            '1f0d2276861065caf0b6c030ba27a6edb6a2988c7a1ac0fdf4e8fcb856972715'
+            '92803838896f045612cdb88807763ff446f38f8bb136712429daeb2e3848fa0f'
+            '62a3a907f48441cc40743d5b6957c727e90a34b310c6cad4b5344c91a8971e67'
             '8e1131dd6bf3796f5bcc9422c96ef77388d7ab0d8e8fc17f6b8dd1e8acc2442a'
-            'e95f9bef77aef647dd633bd9ad75dc099b6d7184684e133f2f20702de83a6260')
+            'e95f9bef77aef647dd633bd9ad75dc099b6d7184684e133f2f20702de83a6260'
+            'd9dc9ba1c706d462d4cfd7be906e22500b4fc50413a2fb562458f3d488ef4e69')
 
 prepare () {
     cd ${pkgname}-${pkgver}
@@ -78,11 +78,13 @@ prepare () {
     sed -i 's|After=network.target mysqld.service httpd.service|After=network.target mysqld.service httpd.service nginx.service|g' misc/${pkgname}.service.in
     sed -i 's|Requires=mysqld.service httpd.service|Wants=mysqld.service httpd.service nginx.service|g' misc/${pkgname}.service.in
 
+    # Fix for FFmpeg 7.0 (provided by @shella)
+    patch -Np1 <../ffmpeg-7.0.patch
+
     # Move third-party plugins into place
     mv ../CakePHP-Enum-Behavior-1.0-zm/* web/api/app/Plugin/CakePHP-Enum-Behavior
     mv ../crud-3.2.0/* web/api/app/Plugin/Crud
     mv ../RtspServer-055d81fe1293429e496b19104a9ed3360755a440/* dep/RtspServer
-
 }
 
 build() {
@@ -102,7 +104,7 @@ build() {
           -DZM_CGIDIR=/usr/share/webapps/${pkgname}/cgi-bin \
           -DZM_WEB_USER=http .
 
-    make
+    cmake --build .
 }
 
 package() {
@@ -128,7 +130,7 @@ package() {
     # Link ZM_WEBDIR/api/app/tmp to ZM_TMPDIR
     ln -sf /var/tmp/${pkgname}                                  ${pkgdir}/usr/share/webapps/${pkgname}/www/api/app/tmp
 
-    # Temporary fix for hardcoded /zm/ links (credit goes to @Kubax on AUR)
+    # Fix for hardcoded /zm/ links (credit goes to @Kubax on AUR)
     ln -sf /usr/share/webapps/${pkgname}/www                    ${pkgdir}/usr/share/webapps/${pkgname}/www/zm
 
     # Set correct permissions for ZM_CONFIG_DIR & ZM_CONFIG_SUBDIR

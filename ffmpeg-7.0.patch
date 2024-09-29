@@ -1,0 +1,109 @@
+--- a/src/zm_ffmpeg.cpp
++++ b/src/zm_ffmpeg.cpp
+@@ -334,8 +334,13 @@ void zm_dump_stream_format(AVFormatContext *ic, int i, int index, int is_output)
+     if (tbn)
+       zm_log_fps(1 / av_q2d(st->time_base), "stream tb numerator");
+   } else if (codec->codec_type == AVMEDIA_TYPE_AUDIO) {
++#if LIBAVUTIL_VERSION_CHECK(57, 28, 100, 28, 0)
++    Debug(1, "profile %d channels %d sample_rate %d",
++        codec->profile, codec->ch_layout.nb_channels, codec->sample_rate);
++#else
+     Debug(1, "profile %d channels %d sample_rate %d",
+         codec->profile, codec->channels, codec->sample_rate);
++#endif
+   }
+ 
+   if (st->disposition & AV_DISPOSITION_DEFAULT)
+--- a/src/zm_ffmpeg_input.cpp
++++ b/src/zm_ffmpeg_input.cpp
+@@ -300,7 +300,11 @@ AVFrame *FFmpeg_Input::get_frame(int stream_id, double at) {
+ 	last_seek_request = seek_target;
+ 
+   // Normally it is likely just the next packet. Need a heuristic for seeking, something like duration * keyframe interval
++#if LIBAVUTIL_VERSION_CHECK(57, 28, 100, 28, 0)
++  if (frame->pts + 10*frame->duration < seek_target) {
++#else
+   if (frame->pts + 10*frame->pkt_duration < seek_target) {
++#endif
+     Debug(1, "Jumping ahead");
+     if (( ret = av_seek_frame(input_format_context, stream_id, seek_target,
+             AVSEEK_FLAG_FRAME
+@@ -313,7 +317,11 @@ AVFrame *FFmpeg_Input::get_frame(int stream_id, double at) {
+   }
+   // Seeking seems to typically seek to a keyframe, so then we have to decode until we get the frame we want.
+   if (frame->pts <= seek_target) {
++#if LIBAVUTIL_VERSION_CHECK(57, 28, 100, 28, 0)
++    while (frame && (frame->pts + frame->duration < seek_target)) {
++#else
+     while (frame && (frame->pts + frame->pkt_duration < seek_target)) {
++#endif
+       if (is_video_stream(input_format_context->streams[stream_id])) {
+         zm_dump_video_frame(frame, "pts <= seek_target");
+       } else {
+--- a/src/zm_videostore.cpp
++++ b/src/zm_videostore.cpp
+@@ -1052,7 +1052,11 @@ bool VideoStore::setup_resampler() {
+ #else
+   out_frame->channels = audio_out_ctx->channels;
+ #endif
++#if LIBAVUTIL_VERSION_CHECK(57, 28, 100, 28, 0)
++  out_frame->ch_layout = audio_out_ctx->ch_layout;
++#else
+   out_frame->channel_layout = audio_out_ctx->channel_layout;
++#endif
+ #endif
+   out_frame->sample_rate = audio_out_ctx->sample_rate;
+ 
+@@ -1243,7 +1247,11 @@ int VideoStore::writeVideoFramePacket(const std::shared_ptr<ZMPacket> zm_packet)
+     //zm_packet->out_frame->pict_type = AV_PICTURE_TYPE_NONE;
+     //zm_packet->out_frame->key_frame = zm_packet->keyframe;
+ #if LIBAVCODEC_VERSION_CHECK(57, 64, 0, 64, 0)
++#if LIBAVUTIL_VERSION_CHECK(57, 28, 100, 28, 0)
++    frame->duration = 0;
++#else
+     frame->pkt_duration = 0;
++#endif
+ #endif
+ 
+     int64_t in_pts = zm_packet->timestamp.tv_sec * (uint64_t)1000000 + zm_packet->timestamp.tv_usec;
+@@ -1295,14 +1303,26 @@ int VideoStore::writeVideoFramePacket(const std::shared_ptr<ZMPacket> zm_packet)
+ 
+     int64_t duration = 0;
+     if (zm_packet->in_frame) {
++#if LIBAVUTIL_VERSION_CHECK(57, 28, 100, 28, 0)
++      if (zm_packet->in_frame->duration) {
++#else
+       if (zm_packet->in_frame->pkt_duration) {
++#endif
+         duration = av_rescale_q(
++#if LIBAVUTIL_VERSION_CHECK(57, 28, 100, 28, 0)
++            zm_packet->in_frame->duration,
++#else
+             zm_packet->in_frame->pkt_duration,
++#endif
+             video_in_stream->time_base,
+             video_out_stream->time_base);
+         Debug(1, "duration from ipkt: pts(%" PRId64 ") = pkt_duration(%" PRId64 ") => (%" PRId64 ") (%d/%d) (%d/%d)",
+             zm_packet->in_frame->pts,
++#if LIBAVUTIL_VERSION_CHECK(57, 28, 100, 28, 0)
++            zm_packet->in_frame->duration,
++#else
+             zm_packet->in_frame->pkt_duration,
++#endif
+             duration,
+             video_in_stream->time_base.num,
+             video_in_stream->time_base.den,
+@@ -1321,8 +1341,13 @@ int VideoStore::writeVideoFramePacket(const std::shared_ptr<ZMPacket> zm_packet)
+             duration
+             );
+         if (duration <= 0) {
++#if LIBAVUTIL_VERSION_CHECK(57, 28, 100, 28, 0)
++          duration = zm_packet->in_frame->duration ?
++            zm_packet->in_frame->duration :
++#else
+           duration = zm_packet->in_frame->pkt_duration ?
+             zm_packet->in_frame->pkt_duration :
++#endif
+             av_rescale_q(1, video_in_stream->time_base, video_out_stream->time_base);
+         }
+       }  // end if in_frmae->pkt_duration
