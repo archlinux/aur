@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=svd
-_pkgver=0.5.6
+_pkgver=0.5.7
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -21,8 +21,8 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('2f21c6a8136d4eb5248def2be1a39d05')
-b2sums=('cc51452753cabbad7bbf25ea0ce92c0cc1eb34267291d838a8839b9427c5d76c1b38a6aebebf7eafaae639021836915f1746edbf8c16d5344ff1fa34502f9d02')
+md5sums=('2c506dadd63283a11963af7ccd31ed51')
+b2sums=('958f0e6e7ce584f0d55522dc99ab70f4d8837d0413a7eb65f48ec3b11b72b168479c668601da87c342c6fdeec7cba750303069a9e12a39e0f12f9ff7fba879d1')
 
 build() {
   mkdir build
