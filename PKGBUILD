@@ -1,8 +1,8 @@
 # Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
 
 pkgname=filezilla-server
-pkgver=1.8.2
-pkgrel=3
+pkgver=1.9.1
+pkgrel=1
 pkgdesc="A simple FTP, FTPS or SFTP server"
 arch=(x86_64)
 url="https://filezilla-project.org/download.php?type=server"
@@ -12,8 +12,8 @@ makedepends=(wxwidgets-gtk3 pugixml)
 optdepends=(wxwidgets-gtk3)
 #source=("https://download.filezilla-project.org/server/FileZilla_Server_${pkgver}_src.tar.xz")
 #source=("FileZilla_Server_${pkgver}_src.tar.xz::https://dl1.cdn.filezilla-project.org/server/FileZilla_Server_${pkgver}_src.tar.xz?h=JVfOb794svM7ZUOHWIAsYg&x=1721567973")
-source=("FileZilla_Server_${pkgver}_src-srcfrg.tar.xz::https://sourceforge.net/projects/fabiololix-os-archive/files/src/FileZilla_Server_${pkgver}_src.tar.xz")
-sha256sums=('301f2871fe07ffda7b05a9c3f0c3ca9ebac498362d18094abeaf83380f18889f')
+source=("https://sourceforge.net/projects/fabiololix-os-archive/files/src/FileZilla_Server_${pkgver}_src.tar.xz")
+sha512sums=('2f61aec813254e32808ef579da36897164ee89ef365f5e0bdd2de92cae5ad3575b486a838cce35c00e697ed1a6c6b0b93918eec9ae9ac620777c418d9204f97e')
 
 build() {
   cd "filezilla-server-${pkgver}"

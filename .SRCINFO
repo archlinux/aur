@@ -1,7 +1,7 @@
 pkgbase = filezilla-server
 	pkgdesc = A simple FTP, FTPS or SFTP server
-	pkgver = 1.8.2
-	pkgrel = 3
+	pkgver = 1.9.1
+	pkgrel = 1
 	url = https://filezilla-project.org/download.php?type=server
 	arch = x86_64
 	license = GPL3
@@ -9,7 +9,7 @@ pkgbase = filezilla-server
 	makedepends = pugixml
 	depends = libfilezilla
 	optdepends = wxwidgets-gtk3
-	source = FileZilla_Server_1.8.2_src-srcfrg.tar.xz::https://sourceforge.net/projects/fabiololix-os-archive/files/src/FileZilla_Server_1.8.2_src.tar.xz
-	sha256sums = 301f2871fe07ffda7b05a9c3f0c3ca9ebac498362d18094abeaf83380f18889f
+	source = https://sourceforge.net/projects/fabiololix-os-archive/files/src/FileZilla_Server_1.9.1_src.tar.xz
+	sha512sums = 2f61aec813254e32808ef579da36897164ee89ef365f5e0bdd2de92cae5ad3575b486a838cce35c00e697ed1a6c6b0b93918eec9ae9ac620777c418d9204f97e
 
 pkgname = filezilla-server
