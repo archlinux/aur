@@ -1,10 +1,10 @@
 pkgbase = bertini_real-git
 	pkgdesc = Numerical decomposition of real algebraic sets, based on the Bertini homotopy continuation solver
-	pkgver = 1.6.1.r280.6bd1ddf
+	pkgver = 1.6.1.r281.062c9cc
 	pkgrel = 1
 	url = https://www.bertinireal.com
 	arch = x86_64
-	license = custom:Bertini license
+	license = custom:Bertini License
 	makedepends = git
 	makedepends = boost>=1.50
 	depends = glibc
@@ -15,12 +15,9 @@ pkgbase = bertini_real-git
 	depends = mpfr
 	depends = openmpi
 	optdepends = python-bertini_real: Python interface support
-	optdepends = bertini_real-docs: XHTML documentation
 	provides = bertini_real=1.6.1
 	conflicts = bertini_real
 	source = bertini_real::git+https://github.com/ofloveandhate/bertini_real.git
-	source = bertini_real_fix_decomposition_hpp.patch
 	sha256sums = SKIP
-	sha256sums = 38a788d71f39228a88225ce291de4218ec609215ab09ef10707f6cf4050002aa
 
 pkgname = bertini_real-git
