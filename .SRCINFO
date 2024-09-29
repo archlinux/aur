@@ -1,18 +1,18 @@
 pkgbase = python-climage
 	pkgdesc = Convert images to beautiful ANSI escape codes
-	pkgver = 0.2.0
-	pkgrel = 2
+	pkgver = 0.2.2
+	pkgrel = 1
 	url = https://github.com/pnappa/CLImage
 	arch = any
 	license = GPL-3.0-or-later
 	makedepends = python-build
 	makedepends = python-installer
+	makedepends = python-setuptools
 	makedepends = python-wheel
 	depends = python
-	depends = python-pillow
-	depends = python-setuptools
 	depends = python-kdtree
-	source = climage-0.2.0.tar.gz::https://files.pythonhosted.org/packages/source/c/climage/climage-0.2.0.tar.gz
-	sha256sums = 9cb97697279294faeacd5fcfd38c84ca29a53daf8fb6aca49f59b024cb0c2c08
+	depends = python-pillow
+	source = climage-0.2.2.tar.gz::https://files.pythonhosted.org/packages/source/c/climage/climage-0.2.2.tar.gz
+	sha256sums = e6116b2f5f3d313adb0856657efe4a6d119e2218cdef23c28a993d94b871ab8e
 
 pkgname = python-climage

@@ -12,23 +12,21 @@ _module="climage"
 _pkgname="python-$_module"
 pkgname="$_pkgname${_pkgtype:-}"
 pkgdesc="Convert images to beautiful ANSI escape codes"
-pkgver=0.2.0
-pkgrel=2
+pkgver=0.2.2
+pkgrel=1
 url='https://github.com/pnappa/CLImage'
 license=('GPL-3.0-or-later')
 arch=('any')
 
 depends=(
   'python'
+  'python-kdtree' # AUR
   'python-pillow'
-  'python-setuptools' # silence namcap warning
-
-  # AUR
-  'python-kdtree'
 )
 makedepends=(
   'python-build'
   'python-installer'
+  'python-setuptools'
   'python-wheel'
 )
 
@@ -40,7 +38,7 @@ if [ "${_build_git::1}" != "t" ]; then
     "$_pkgsrc.$_pkgext"::"https://files.pythonhosted.org/packages/source/${_module::1}/$_module/$_pkgsrc.$_pkgext"
   )
   sha256sums=(
-    '9cb97697279294faeacd5fcfd38c84ca29a53daf8fb6aca49f59b024cb0c2c08'
+    'e6116b2f5f3d313adb0856657efe4a6d119e2218cdef23c28a993d94b871ab8e'
   )
 
   pkgver() {
