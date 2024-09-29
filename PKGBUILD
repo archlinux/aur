@@ -2,8 +2,8 @@
 
 pkgname=gtk-engine-equinox
 pkgver=1.50
-pkgrel=2
-pkgdesc="Equinox GTK2 theming engine"
+pkgrel=3
+pkgdesc="A heavily modified version of the beautiful Aurora engine"
 arch=('x86_64')
 url="https://launchpad.net/equinox"
 license=('GPL2')

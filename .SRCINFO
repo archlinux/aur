@@ -1,7 +1,7 @@
 pkgbase = gtk-engine-equinox
-	pkgdesc = Equinox GTK2 theming engine
+	pkgdesc = A heavily modified version of the beautiful Aurora engine
 	pkgver = 1.50
-	pkgrel = 2
+	pkgrel = 3
 	url = https://launchpad.net/equinox
 	arch = x86_64
 	license = GPL2
