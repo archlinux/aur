@@ -22,12 +22,13 @@ source=("https://github.com/tsukinaha/tsukimi/releases/download/v${pkgver}/tsuki
 	"tsukimi.desktop"
 	"tsukimi.png")
 sha256sums=('a3fdaeed564d9bc79d5365c9bc640d8c1621a06e42aae124587e532cc89f4ac3'
-            'd12dc777bbb05ed92d75f8d36e453b651e12596ead6e297386419a24d051a0a3'
-            '04a712d60bbf5cc8873af24fb8ff76b47f27ef77ba45c7901fb7d3cd26dd6893')
+	'd12dc777bbb05ed92d75f8d36e453b651e12596ead6e297386419a24d051a0a3'
+	'04a712d60bbf5cc8873af24fb8ff76b47f27ef77ba45c7901fb7d3cd26dd6893')
 
 package() {
 	install -Dm0755 -t "${pkgdir}/usr/bin/" "tsukimi"
 	install -Dm 644 -t "${pkgdir}/usr/share/glib-2.0/schemas" "moe.tsuna.tsukimi.gschema.xml"
 	install -Dm 644 -t "${pkgdir}/usr/share/applications/" "${srcdir}/tsukimi.desktop"
 	install -Dm 644 -t "${pkgdir}/usr/share/pixmaps/" "${srcdir}/tsukimi.png"
+	cp -r "i18n/locale" "${pkgdir}/usr/share/locale"
 }
