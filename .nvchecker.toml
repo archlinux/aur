@@ -1,0 +1,4 @@
+[thunderbird-esr-bin]
+source = "regex"
+url = "https://ftp.mozilla.org/pub/thunderbird/releases/"
+regex = ">(128.*esr)/<"
