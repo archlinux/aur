@@ -1,6 +1,6 @@
 # Maintainer : aji <43468383+aji-prod@users.noreply.github.com>
 pkgname=tomato
-pkgver=0.8.3
+pkgver=0.8.4
 pkgrel=1
 pkgdesc="AUR local repository manager"
 arch=('any')
@@ -10,7 +10,7 @@ source=(
 	"${pkgname}-${pkgver}.tar.gz"::https://github.com/aji-prod/tomato/archive/v"${pkgver}".tar.gz
 )
 
-sha256sums=('724d8f719a3e6edc9bbdae99b2245337f1f8eb90851750e3ef6eedb429d085da')
+sha256sums=('224437179bf821a53d50f8c6cb8989210c0f0fe3b99b69dd84b83aea76415ddf')
 
 depends=(
 	'docker'
@@ -36,4 +36,5 @@ package() {
 	install -Dm644 "systemd/tomato-update.conf" "$pkgdir/usr/share/tomato/tomato-update.conf"
 	install -Dm644 "complete/tomato.bash" "$pkgdir/usr/share/bash-completion/completions/tomato"
 	mkdir -p -m755 "$pkgdir/var/pkg/tomato"
+	chown :alpm -R "$pkgdir/var/pkg/tomato"
 }
