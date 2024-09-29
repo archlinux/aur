@@ -2,7 +2,7 @@
 
 pkgname='spicetify-marketplace-bin'
 pkgver=1.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Spicetify app that integrates a marketplace for extensions, themes and snippets'
 arch=('any')
 url='https://github.com/spicetify/spicetify-marketplace'
@@ -19,8 +19,8 @@ install=spicetify-marketplace-bin.install
 
 package() {
 	# color.ini needed for custom themes to work according to https://github.com/spicetify/spicetify-marketplace/wiki/Installation#manual-install-recommended
-	install -Dm644 color-v$pkgver.ini "$pkgdir/usr/share/spicetify-cli/Themes/marketplace/color.ini"
+	install -Dm644 color-v$pkgver.ini "$pkgdir/opt/spicetify-cli/Themes/marketplace/color.ini"
 	install -Dm644 LICENSE-v$pkgver "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
     cd spicetify-marketplace-dist
-    find . -type f -not -name "README.md" -exec install -Dm644 {} $pkgdir/usr/share/spicetify-cli/CustomApps/marketplace/{} \;
+    find . -type f -not -name "README.md" -exec install -Dm644 {} $pkgdir/opt/spicetify-cli/CustomApps/marketplace/{} \;
 }
