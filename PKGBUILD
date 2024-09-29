@@ -2,13 +2,13 @@
 # Original author: Johannes Willem (Hans) Fernhout <hfern@fernhout.info>
 pkgname="iwdgui"
 pkgver="0.3.0"
-pkgrel=1
+pkgrel=2
 pkgdesc="A graphical frontend for IWD, Intel's iNet Wireless Daemon"
 arch=("any")
 url="https://gitlab.com/hfernh/iwdgui"
 license=("BSD")
 depends=("python>=3.10" "python-gobject" "gtk3" "python-netifaces" "dbus-python")
-makedepends=('python-setuptools')
+makedepends=('python-setuptools' 'python-pip')
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz")
 sha256sums=('fd4f02a778d2edf3f9d6552744a5d2427fb45f78ff0ed8eb15654b5fdb2a3ef2')
 
