@@ -1,7 +1,7 @@
 pkgbase = yacreader
 	pkgdesc = Comic reader for cross-platform reading and managing your digital comic collection.
 	pkgver = 9.14.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.yacreader.com
 	install = yacreader.install
 	arch = i686
@@ -10,7 +10,7 @@ pkgbase = yacreader
 	makedepends = qt6-tools
 	depends = qt6-base
 	depends = qt6-multimedia
-	depends = qt6-quickcontrols2
+	depends = qt6-declarative
 	depends = qt6-svg
 	depends = qt6-imageformats
 	depends = qt6-5compat
