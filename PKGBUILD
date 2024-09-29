@@ -1,6 +1,6 @@
 # Maintainer: meanlint <meanlint@outlook.com>
 pkgname=xivlauncher-cn-git
-pkgver=1.1.0.1.r561.7200e9f
+pkgver=1.1.0.3.r569.82434c8
 pkgrel=1
 pkgdesc="Custom Launcher for Final Fantasy XIV Online CN"
 arch=('x86_64')
@@ -8,24 +8,24 @@ url='https://github.com/ottercorp/XIVLauncher.Core'
 license=('GPL')
 depends=(
     'aria2'
-    'sdl2' 'lib32-sdl2'
+    'sdl2'
     'libsecret'
-    'attr'                  'lib32-attr'
-    'fontconfig'            'lib32-fontconfig'
-    'lcms2'                 'lib32-lcms2'
-    'libxml2'               'lib32-libxml2'
-    'libxcursor'            'lib32-libxcursor'
-    'libxrandr'             'lib32-libxrandr'
-    'libxdamage'            'lib32-libxdamage'
-    'libxi'                 'lib32-libxi'
-    'gettext'               'lib32-gettext'
-    'freetype2'             'lib32-freetype2'
-    'glu'                   'lib32-glu'
-    'libsm'                 'lib32-libsm'
-    'gcc-libs'              'lib32-gcc-libs'
-    'libpcap'               'lib32-libpcap'
-    'faudio'                'lib32-faudio'
-    'desktop-file-utils'    'jxrlib'
+    'attr'
+    'fontconfig'
+    'lcms2'
+    'libxml2'
+    'libxcursor'
+    'libxrandr'
+    'libxdamage'
+    'libxi'
+    'gettext'
+    'freetype2'
+    'glu'
+    'libsm'
+    'gcc-libs'
+    'libpcap'
+    'desktop-file-utils'
+    'jxrlib'
 )
 makedepends=('dotnet-sdk>=6' 'python-yaml' 'git')
 options=('!strip')
