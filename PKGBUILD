@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=fooyin
 _pkgname=Fooyin
-pkgver=0.7.2
+pkgver=0.7.3
 pkgrel=1
 pkgdesc="A customisable music player"
 arch=('x86_64')
@@ -37,7 +37,7 @@ optdepends=(
 source=(
     "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
 )
-sha256sums=('a5552e0a3ae1e706315b8dbecd84571b6f46de666407cbe5686169d36b2a3dca')
+sha256sums=('8fc803d9acaf513d40820f1f78c5e4d3dc730529cdebc07b87e3c674eb00508b')
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
     cmake -S . -B build -G Ninja \
