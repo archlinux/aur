@@ -4,6 +4,7 @@ pkgname=easytier-bin
 pkgver=2.0.0
 pkgrel=1
 pkgdesc="由Rust和Tokio驱动，一个简单、安全、去中心化的内网穿透VPN组网方案"
+conflicts=("easytier" "easytier-git")
 arch=("x86_64" "aarch64")
 url="https://github.com/EasyTier/EasyTier"
 license=('Apache License 2.0')
