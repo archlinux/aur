@@ -119,7 +119,7 @@ pkgbase = mesa-amd-bc250
 	b2sums = 7681b1a7497b5711e663773c1a7e076f333c06c10d3f289079a781c36f050c1620cc279742ea8e5b15ec48f3d6038a6079bbda7fee3ae8e1128bd916d53ed43a
 	b2sums = 8bc6f68ed286bea617a2cfaf3949bb699d3a0466faeca735314a51596ce950e4ee57eda88154bd562c1728cfaff4cdb5bc1ba701b9d47a9c50d4c4f011bee975
 
-pkgname = mesa
+pkgname = mesa-amd-bc250
 	depends = expat
 	depends = gcc-libs
 	depends = glibc
@@ -144,7 +144,7 @@ pkgname = mesa
 	conflicts = mesa-libgl
 	replaces = mesa-libgl
 
-pkgname = vulkan-radeon
+pkgname = vulkan-radeon-amd-bc250
 	pkgdesc = Open-source Vulkan driver for AMD GPUs
 	depends = expat
 	depends = gcc-libs
