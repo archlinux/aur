@@ -1,10 +1,10 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=memisc
-_pkgver=0.99.31.7
+_pkgver=0.99.31.8
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="Management of Survey Data and Presentation of Analysis Results"
 arch=(x86_64)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -20,8 +20,8 @@ optdepends=(
   r-sandwich
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('29549169c78c37545bb79bb7ac4753c9')
-b2sums=('f78fd33f467d6ccfe234e96fb00cea84c91644c0feb02415c75a56f545564ef575edc75115461f8cdc12eb0f9888a01f66bf2f852bcfbc6af6eb70c8bbd8e34d')
+md5sums=('50e3492635686382d2f2dc6ae39d92a7')
+b2sums=('cc06788e9626dd2479b70d47ab9c28c8662694235cfe45750b56116fed424f2f9ad90c3bafeb0664a0a57ba86694adbac6f9be1f0d0e5fa3ccedeb4fa9a6d567')
 
 build() {
   mkdir build
