@@ -2,7 +2,7 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=glmmTMB
-_pkgver=1.1.9
+_pkgver=1.1.10
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -13,20 +13,24 @@ license=('AGPL-3.0-only')
 depends=(
   r-lme4
   r-numderiv
+  r-reformulas
   r-tmb
 )
 makedepends=(
   r-rcppeigen
 )
 checkdepends=(
+  r-ade4
+  r-ape
   r-car
   r-effects
   r-emmeans
-  r-mvabund
   r-pscl
   r-testthat
 )
 optdepends=(
+  r-ade4
+  r-ape
   r-bbmle
   r-blme
   r-broom
@@ -40,12 +44,12 @@ optdepends=(
   r-emmeans
   r-estimability
   r-ggplot2
+  r-gsl
   r-huxtable
   r-knitr
   r-mlmrev
   r-multcomp
   r-mumin
-  r-mvabund
   r-plyr
   r-png
   r-pscl
@@ -57,8 +61,8 @@ optdepends=(
   r-xtable
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('a2d376ca8ae9bb5c5cacda1e557afb54')
-b2sums=('a93dea73e96a93d348c26df99a88b1a2a7e680ba46a1f4f45cd3f2f8beef5078adc73bf36f372899a9d37ffd46189a552c53a84b79fee5b174441c5c10a4f70b')
+md5sums=('fc29f7e987325f269b77501613c75c1e')
+b2sums=('e690c44638daee1f085511eaa6da7b29015e536744b0b6440c47aa09582b6e10683c5acbe7aeeb12babf65e2812916a73f517ded8b3eff9294d2808c25a74833')
 
 build() {
   mkdir build
