@@ -1,0 +1,10 @@
+#!/bin/sh
+home_dir_user=$USER
+
+if [ ! -d "/home/${home_dir_user}/Audio Assault/PluginData/Audio Assault/BassLockerData" ]; then
+    mkdir -p /home/${home_dir_user}/Audio\ Assault/PluginData/Audio\ Assault
+    ln -sf /usr/lib/BassLockerData /home/${home_dir_user}/Audio\ Assault/PluginData/Audio\ Assault/BassLockerData
+else
+    rm -r /home/${home_dir_user}/Audio\ Assault/PluginData/Audio\ Assault/BassLockerData
+    ln -sf /usr/lib/BassLockerData /home/${home_dir_user}/Audio\ Assault/PluginData/Audio\ Assault/BassLockerData
+fi
