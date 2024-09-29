@@ -7,44 +7,30 @@
 # Contributor: Michael Straube <straubem@gmx.de>
 
 pkgname=guayadeque
-pkgver=0.4.7+5+g8f214144
+pkgver=0.5.2
 pkgrel=1
 pkgdesc="Lightweight music player"
 arch=(x86_64)
-url="https://www.guayadeque.org/"
-license=(GPL3)
-depends=(wxsqlite3 wxwidgets-gtk3 webkit2gtk taglib gst-plugins-base gst-plugins-good)
-makedepends=(cmake git)
+url="https://github.com/thothix/guayadeque"
+license=(GPL-3.0-only)
+depends=(wxsqlite3 wxwidgets-gtk3 taglib gst-plugins-base gst-plugins-good jsoncpp)
+makedepends=(cmake)
 optdepends=('gst-libav: additional codecs'
             'gst-plugins-bad: additional codecs'
             'gst-plugins-ugly: additional codecs')
-source=("git+https://github.com/anonbeat/guayadeque.git#commit=8f21414475504d820d027b1d20268d7b39547188"
-        #"${pkgname}-${pkgver}.tar.gz::https://github.com/anonbeat/guayadeque/archive/v${pkgver}.tar.gz"
-        "guayadeque-wxWidgets-3.2.patch::https://github.com/sluedecke/guayadeque/commit/a9ecb9d8bf785281ed8ccf292cccf3525ffeb457.patch"
-        "guayadeque-taglib2.patch::https://github.com/openmonk/guayadeque/pull/5/commits/20315f28a6003287067e3da893af0499494a061d.patch")
-sha256sums=('7677304919cfd87f577e2e54ababc9884ba889e9b675760fa7d843684befe81f'
-            '046883477c149fb78668285cbd7293be343adc3010631ff55ab2eae2dc2d12e0'
-            '1a888ed69c5426b7f14b31f46607e5a8354dc24598c1b4646a44b14713dafeeb')
-
-prepare() {
-  cd guayadeque
-  install -d build-guayadeque
-  patch -Np1 -i ../guayadeque-wxWidgets-3.2.patch
-  patch -Np1 -i ../guayadeque-taglib2.patch
-}
-
-pkgver() {
-  cd guayadeque
-  git describe --tags | sed 's/^v//;s/-/+/g'
-}
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/thothix/guayadeque/archive/v${pkgver}.tar.gz")
+sha256sums=('42a86a2c8ead46a1cc6cd848d9d0e30ec07954f60031f3846f8f929a90508daf')
 
 build() {
-  cmake -B build -S "guayadeque" -Wno-dev \
-    -DCMAKE_CXX_STANDARD=11 \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -D_GUREVISION_:STRING="${pkgrel}" \
+  local _flags=(
     -DwxWidgets_CONFIG_EXECUTABLE=/usr/bin/wx-config
+    -D_GUREVISION_:STRING="${pkgrel}"
+  )
+
+  cmake -B build -S "guayadeque-${pkgver}" -Wno-dev \
+    -DCMAKE_BUILD_TYPE=None \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    "${_flags[@]}"
 
   cmake --build build
 }
