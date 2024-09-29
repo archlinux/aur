@@ -13,27 +13,23 @@
 # basic info
 _pkgname='beeper'
 pkgname="$_pkgname${_pkgtype:-}"
-pkgver=3.108.3
+pkgver=3.109.1
 pkgrel=1
 pkgdesc="A unified messaging app"
 url="https://beeper.com/"
 license=('LicenseRef-beeper')
 arch=('x86_64')
 
-# main package
-_main_package() {
-  _update_version
+options=('!strip' '!debug')
 
+_source_main() {
   provides=("$_pkgname")
   conflicts=("$_pkgname")
-
-  options=('!strip' '!debug')
 
   source=("$_filename"::"$_dl_url")
   sha256sums=('SKIP')
 }
 
-# common functions
 pkgver() {
   printf '%s' "${_pkgver:?}"
 }
@@ -123,7 +119,6 @@ END
   chmod -R u+rwX,go+rX,go-w "$pkgdir"
 }
 
-# update version
 _update_version() {
   : ${_pkgver:=$pkgver}
 
@@ -150,5 +145,5 @@ _update_version() {
   fi
 }
 
-# execute
-_main_package
+_update_version
+_source_main
