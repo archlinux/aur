@@ -14,12 +14,14 @@ depends=(
        'snapper'
        'btrfs-progs'
        'inotify-tools'
-       'dunst')
+       'inotify-tools')
 optdepends=(
-        'limine-dracut-support-git: Automates kernel installation/removal and Limine boot entry management.'
+        'dunst: Displays a desktop notification for one-click restoration.'
+        'limine-dracut-support: Automates kernel installation/removal and Limine boot entry management.'
         'rsync: Provides an alternative method for restoring snapshots.'
         'journalctl-desktop-notification: Sends desktop notifications for errors.'
 )
+
 makedepends=('git' 'maven')
 sha1sums=('SKIP')
 backup=(etc/limine-snapper-sync.conf)
