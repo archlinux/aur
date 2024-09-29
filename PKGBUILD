@@ -6,19 +6,18 @@ pkgver=1.6.1
 _commit="95a90e8bca7787731ba5b300f409bea0806fe112"
 pkgrel=1
 pkgdesc="Numerical decomposition of real algebraic sets, based on the Bertini homotopy continuation solver"
-arch=('any')
+arch=('x86_64')
 url="https://www.bertinireal.com"
 _url="https://github.com/ofloveandhate/${pkgname}"
-license=('custom:Bertini license')
+license=('custom:Bertini License')
 makedepends=('boost>=1.50')
-depends=('glibc' 'gcc-libs' 'boost-libs' 'bertini-parallel' 'gmp' 'mpfr' 'openmpi')
-optdepends=('python-bertini_real: Python interface support'
-            'bertini_real-docs: XHTML documentation')
+depends=('bertini-parallel' 'boost-libs' 'gcc-libs' 'glibc' 'gmp' 'mpfr' 'openmpi')
+optdepends=('python-bertini_real: Python interface support')
 _pkgsrc="${pkgname}-${_commit}"
 source=("${_pkgsrc}.tar.gz::${_url}/archive/${_commit}.tar.gz"
-        "${pkgname}_fix_decomposition_hpp.patch")
+        "${pkgname}_fix_include.patch::${_url}/commit/062c9cc1964d4e2a7b0c6c117419f9b98b0a71f3.patch")
 sha256sums=('25199494ed43de5f0cbffed15d108203da0308130cf3e1b0f0d6dd70621f8c47'
-            '38a788d71f39228a88225ce291de4218ec609215ab09ef10707f6cf4050002aa')
+            'e5e580413a4665a91b201e88a5048937a58ee7b90fd4184603ae1e61f2724593')
 
 pkgver() {
   cd "${srcdir}/${_pkgsrc}"
@@ -27,7 +26,7 @@ pkgver() {
 
 prepare() {
   cd "${srcdir}/${_pkgsrc}"
-  for _patch in "${srcdir}/${pkgname}_fix"*".patch"; do
+  for _patch in "${srcdir}/${pkgname}"*".patch"; do
     patch -p1 -i "${_patch}"
   done
 }
@@ -51,6 +50,6 @@ package() {
 
   install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
   # install -Dm644 "NEWS"      "${pkgdir}/usr/share/doc/${pkgname}/NEWS"
+  install -Dm644 "AUTHORS"   "${pkgdir}/usr/share/doc/${pkgname}/AUTHORS"
   install -Dm644 "COPYING"   "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
-  install -Dm644 "AUTHORS"   "${pkgdir}/usr/share/licenses/${pkgname}/AUTHORS"
 }
