@@ -14,15 +14,14 @@ we check directly the return of av_seek_frame.
  2 files changed, 14 insertions(+), 6 deletions(-)
 
 diff --git a/intern/ffmpeg/ffmpeg_compat.h b/intern/ffmpeg/ffmpeg_compat.h
-index 91ea1701db6..78778482e8d 100644
+index 260384a5dc8..1c3208b07f2 100644
 --- a/intern/ffmpeg/ffmpeg_compat.h
 +++ b/intern/ffmpeg/ffmpeg_compat.h
-@@ -141,6 +141,15 @@ int64_t av_get_frame_duration_in_pts_units(const AVFrame *picture)
- #endif
+@@ -161,6 +161,14 @@ FFMPEG_INLINE size_t ffmpeg_get_buffer_alignment()
+   return align;
  }
  
-+FFMPEG_INLINE
-+bool av_get_cur_key_frame_pts(const AVFrame *picture) {
++FFMPEG_INLINE bool av_get_cur_key_frame_pts(const AVFrame *picture) {
 +#if LIBAVUTIL_VERSION_INT >= AV_VERSION_INT(58, 29, 100)
 +  return (picture->flags & AV_FRAME_FLAG_KEY);
 +#else

@@ -12,7 +12,7 @@
 _fragment="${FRAGMENT:-#branch=master}"
 
 pkgname=upbge-git
-pkgver=144753.0b7de393842
+pkgver=148024.f9aaa040f02
 pkgrel=1
 pkgdesc="Uchronia Project Blender Game Engine fork of Blender Game Engine"
 arch=('i686' 'x86_64')
@@ -53,7 +53,7 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             '0bb8ac4cba0ac00999790087c51e601d185b78a96081f08a7c7afb8c0f4b0d7c'
-            '17d5fb1c4ddb9e95da590d2e43ae3f7ce2b02c3ec698b16ed2752e3b3e7840c0'
+            '6c92c8e725962a3518ca061f2bf6c08ab6c1c0512b2508fa9dc59c10f3cfa513'
             '847ffe878ede6ecae505d29a5feba9a998e8857fe99895ed4c2da5aaab813aa8'
             'd8fb694a41ea1848f0d75250e5a3b7bdd84f82f1af9fcb68659cd4075cc818b3')
 
