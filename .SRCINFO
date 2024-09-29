@@ -1,7 +1,7 @@
 pkgbase = srb2-legacy-git
 	pkgdesc = Updated fork of Sonic Robo Blast 2 2.1.25
-	pkgver = 2.1.26
-	pkgrel = 1
+	pkgver = 2.1.26.r48.g77835e0
+	pkgrel = 2
 	url = https://github.com/P-AS/srb2-legacy
 	arch = i686
 	arch = x86_64
@@ -22,7 +22,7 @@ pkgbase = srb2-legacy-git
 	source = git+https://github.com/P-AS/srb2-legacy.git
 	source = srb2legacy.desktop
 	sha256sums = SKIP
-	sha256sums = aac94fbe41be3d118b58a175442fb27fd37ad7e2c525347cd01282be5d11a7e0
+	sha256sums = 269f901a56429f81fe5d20000437799cfe58e020162dd18e5cb69a79f386cd3e
 	makedepends_i686 = nasm
 
 pkgname = srb2-legacy-git

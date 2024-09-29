@@ -6,9 +6,9 @@
 
 _pkgname="srb2-legacy"
 pkgname="${_pkgname}-git"
-pkgver=2.1.26
+pkgver=2.1.26.r48.g77835e0
 _dataver=2.1.25
-pkgrel=1
+pkgrel=2
 pkgdesc='Updated fork of Sonic Robo Blast 2 2.1.25'
 arch=('i686' 'x86_64' 'aarch64')
 license=('GPL')
@@ -21,7 +21,12 @@ conflicts=("${_pkgname}")
 source=("git+https://github.com/P-AS/srb2-legacy.git"
         "srb2legacy.desktop")
 sha256sums=('SKIP'
-            'aac94fbe41be3d118b58a175442fb27fd37ad7e2c525347cd01282be5d11a7e0')
+            '269f901a56429f81fe5d20000437799cfe58e020162dd18e5cb69a79f386cd3e')
+
+pkgver() {
+  cd "$_pkgname"
+  git describe --long --tags --abbrev=7 | sed 's/^SRB2_release_//' | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
 
 build() {
   cd "$srcdir"/srb2-legacy/src
