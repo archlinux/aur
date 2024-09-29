@@ -1,0 +1,14 @@
+post_upgrade() {
+  echo ">>    创建新的服务文件 /etc/systemd/system/easytier-example.service"
+	echo ">>    根据需要修改 ExecStart 后面的命令行参数"
+  echo ">>    查看 https://www.easytier.top/guide/network/install-as-a-systemd-service.html"
+  echo ">>    获取更多的帮助信息。"
+  echo ">>    Create a new service file /etc/systemd/system/easytier-example.service"
+	echo ">>    and modify the command line parameters after ExecStart as needed"
+  echo ">>    Check out https://www.easytier.top/guide/network/install-as-a-systemd-service.html"
+  echo ">>    for more information on this."
+}
+
+post_install() {
+  post_upgrade
+}

@@ -1,0 +1,12 @@
+[Unit]
+Description=EasyTier Service
+After=network.target syslog.target
+Wants=network.target
+
+[Service]
+ExecStart=/usr/bin/easytier-core --ipv4 x.x.x.x --network-name xxx --network-secret yyy --peers tcp://peer_host:11010
+Restart=always
+User=root
+
+[Install]
+WantedBy=multi-user.target
