@@ -1,12 +1,16 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 # Contributor: Zaoqi
 pkgname=electerm
-pkgver=1.40.6
+pkgver=1.40.16
 _electronversion=26
 _nodeversion=18
-pkgrel=2
+pkgrel=1
 pkgdesc="Terminal/ssh/telnet/serialport/sftp client(linux, mac, win)"
-arch=('any')
+arch=(
+    'aarch64'
+    'armv7h'
+    'x86_64'
+)
 url="https://electerm.html5beta.com/"
 _ghurl="https://github.com/electerm/electerm"
 license=('MIT')
@@ -24,7 +28,6 @@ makedepends=(
     'python-setuptools'
     'gcc'
     'curl'
-    'yarn'
 )
 source=(
     "${pkgname}.git::git+${_ghurl}.git"
@@ -63,11 +66,13 @@ build() {
             echo 'electron_builder_binaries_mirror=https://registry.npmmirror.com/-/binary/electron-builder-binaries/'
         fi
     } >> .npmrc
+    #sed -i "/\"rpm\",/d;/\"deb\",/d;/\"snap\"/d;s/\"tar.gz\",/\"tar.gz\"/g" electron-builder.json
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
     rm -rf package-lock.json
     NODE_ENV=development    npm install --no-lockfile
     NODE_ENV=production     npm run prepare-build
-    NODE_ENV=production     npx electron-builder build -l --dir
+    NODE_ENV=production     npx node build/bin/build-common
+    NODE_ENV=production     npx electron-builder -l --dir
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
