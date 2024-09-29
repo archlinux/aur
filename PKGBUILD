@@ -2,20 +2,21 @@
 # auto running on siyuan official repo
 # PKGBUILD is modified from https://aur.archlinux.org/cgit/aur.git/tree/PKGBUILD?h=siyuan-appimage
 # which is made by vvxxp8 <concatenate[g] the characters[x] in square[b] brackets[1] in[5] order[3] at gmail dot com>
+# had agreement with the author to use the PKGBUILD
 
 pkgname=siyuan_stable
 pkgver=v3.1.8
-pkgrel=0
+pkgrel=1
 pkgdesc="This package is deprecated, please use siyuan-bin instead, deletion request submitted"
 arch=("x86_64")
 url="https://b3log.org/siyuan"
 license=("AGPL-3.0-only")
-_pkgname=siyuan-3.1.8-linux.AppImage
-noextract=(siyuan-3.1.8-linux.AppImage)
+_pkgname=siyuan-${pkgver}-linux.AppImage
+noextract=(siyuan-${pkgver}-linux.AppImage)
 options=("!strip" "!debug")
 depends=("fuse2")
 optdepends=('pandoc: docx export')
-source=("${_pkgname}::https://github.com/siyuan-note/siyuan/releases/download/v3.1.8/siyuan-3.1.8-linux.AppImage")
+source=("https://github.com/siyuan-note/siyuan/releases/download/v${pkgver}/siyuan-${pkgver}-linux.AppImage")
 sha256sums=('SKIP')
 
 _installdir=/opt/appimages
@@ -31,11 +32,4 @@ package() {
     install -Dm755 ${_pkgname} "${pkgdir}/${_installdir}/siyuan.AppImage"
     install -Dm644 "squashfs-root/resources/stage/icon.png" "${pkgdir}/usr/share/icons/hicolor/512x512/apps/siyuan_stable.png"
     install -Dm644 "squashfs-root/siyuan.desktop" "${pkgdir}/usr/share/applications/siyuan_stable.desktop"
-
-    if [ ! -f "/usr/bin/siyuan" ]; then
-      mkdir -p "/usr/bin"
-      echo '#!/bin/sh' > "/usr/bin/siyuan"
-      echo "exec /siyuan.AppImage" >> "/usr/bin/siyuan"
-      chmod 755 "/usr/bin/siyuan"
-    fi
 }
