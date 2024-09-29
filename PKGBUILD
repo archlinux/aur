@@ -1,6 +1,6 @@
 pkgbase=aa-snapshot-maker
 pkgname=('aa-snapshot-maker-standalone-bin')
-pkgver=1.1.8
+pkgver=1.0.2
 pkgrel=1
 arch=('x86_64')
 url="https://audioassault.mx/products/snapshot-maker"
