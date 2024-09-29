@@ -1,6 +1,6 @@
 pkgbase = x48ng
 	pkgdesc = A reboot of the x48 HP 48 emulator
-	pkgver = 0.38.0
+	pkgver = 0.41.0
 	pkgrel = 1
 	url = https://github.com/gwenhael-le-moine/x48ng
 	install = x48ng.install
@@ -16,9 +16,9 @@ pkgbase = x48ng
 	depends = xterm
 	depends = xorg-mkfontscale
 	depends = xorg-fonts-misc
-	source = x48ng-0.38.0.tar.gz::https://github.com/gwenhael-le-moine/x48ng/archive/refs/tags/0.38.0.tar.gz
+	source = x48ng-0.41.0.tar.gz::https://github.com/gwenhael-le-moine/x48ng/archive/refs/tags/0.41.0.tar.gz
 	source = ui_text.c_1.patch
-	sha256sums = 06004b8121758e63723137a057149bdf5db9bf259f60d7596abe606c9790edc1
+	sha256sums = afc0bddb94190bad3f2d26eb020017c6cc37ddfb48ad20f6d9f1317375159471
 	sha256sums = 94550704486e179bf0e1495b5fb6fc55c9663fe61d6e44dd45cff8bfe840f301
 
 pkgname = x48ng
