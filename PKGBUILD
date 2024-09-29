@@ -5,7 +5,7 @@
 # had agreement with the author to use the PKGBUILD
 
 pkgname=siyuan_stable
-pkgver=3.1.9
+pkgver=3.1.8
 pkgrel=1
 pkgdesc="auto upload to AUR when SiYuan stable release"
 arch=("x86_64")
