@@ -2,10 +2,10 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=rsq
-_pkgver=2.6
+_pkgver=2.7
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="R-Squared and Related Measures"
 arch=(any)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -14,10 +14,11 @@ depends=(
   r-deming
   r-deriv
   r-lme4
+  r-mcr
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('f03014bff15521bcb09ba73f207a8fc5')
-b2sums=('f9336608cf889ec963069cce097b3a07847886519c13f09b5ade320ffaa08c07de91c76e46298fa5ebb50ae9254de9f7b24bd00b944fe04335439d2b7e82b1fa')
+md5sums=('27d756695fbf6abc04eb702000fd65ce')
+b2sums=('c660b8c617a733de44e9a9c7947cf70e1cbefc43e6d5256df0d781907072c40185bd090aadbf7c8b4a6eabc2ca16c425678cc1df813ff8369b713a6aa3b310b9')
 
 build() {
   mkdir build
