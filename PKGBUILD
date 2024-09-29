@@ -2,8 +2,8 @@
 # Contributor: AEnterprise <aenterprise2@gmail.com>
 
 pkgname='spacedrive'
-pkgver=0.2.14
-pkgrel=3
+pkgver=0.3.0
+pkgrel=1
 pkgdesc='Spacedrive is an open source cross-platform file explorer, powered by a virtual distributed filesystem written in Rust.'
 arch=('x86_64')
 url='https://spacedrive.com/'
@@ -13,11 +13,11 @@ source=(
 	"${pkgname}-v${pkgver}.tar.gz::https://github.com/spacedriveapp/spacedrive/archive/refs/tags/${pkgver}.tar.gz"
 	"spacedrive.desktop"
 )
-depends=('ffmpeg' 'libheif' 'gtk3' 'webkit2gtk' 'pango' 'gdk-pixbuf2' 'cairo' 'libsoup' 'glib2')
+depends=('ffmpeg' 'libheif' 'gtk3' 'webkit2gtk-4.1' 'pango' 'gdk-pixbuf2' 'cairo' 'libsoup' 'glib2' 'xdotool')
 makedepends=('cargo' 'pnpm>=9' 'clang' 'git' 'lld')
 sha256sums=(
-	'94e7e1d1debe3a4e180198e4e0041bc2e9c9549185df92a81ebbdaefbecafb87'
-	'a0ba3304b1ab4381653b7daa3fcd9386b5a54d9cf66ab97cb18b883d9b620e93'
+	'250588688d1ab160797322ad72fe465894597746629f9fa5cf8ac01cb32164c7'
+	'0d9149faa1b17c8fea16e2ea344ca394c7fe93b33e746bb0168af81302ed164e'
 )
 
 prepare() {
@@ -36,7 +36,7 @@ build() {
 	export COREPACK_ENABLE_STRICT=0
 
 	pnpm prep
-	pnpm tauri build --bundles app -- --no-default-features
+	pnpm exec tauri build --no-bundle -- --no-default-features
 }
 
 package() {
