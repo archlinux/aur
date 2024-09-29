@@ -1,6 +1,6 @@
 pkgbase = process-mem
 	pkgdesc = Display Memory Used by Process(es)
-	pkgver = 1.0.1
+	pkgver = 1.0.2
 	pkgrel = 1
 	url = https://github.com/gene-git/process-mem
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = process-mem
 	depends = python>=3.11
 	depends = python-pydantic
 	depends = python-psutil
-	source = git+https://github.com/gene-git/process-mem#tag=1.0.1
+	source = git+https://github.com/gene-git/process-mem#tag=1.0.2
 	sha512sums = SKIP
 
 pkgname = process-mem
