@@ -1,6 +1,7 @@
-# Maintainer: Daniel Landau <daniel.landau@iki.fi>
+# Contributor: Daniel Landau <daniel.landau@iki.fi>
+# Maintainer: Pedro Henrique Quitete Barreto <pedrohqb@gmail.com>
 pkgname=shrinkpdf
-pkgver=1.1
+pkgver=1.2
 pkgrel=1
 pkgdesc="Tiny shell script to shrink an image pdf"
 arch=('any')
@@ -10,7 +11,7 @@ depends=('ghostscript')
 source=(
 https://github.com/aklomp/shrinkpdf/archive/refs/tags/v${pkgver}.tar.gz
 )
-sha256sums=('e02cd491c6f7abbc5c129227dbcfe5257fc9a18b40129af29967be1542cddaaa')
+sha256sums=('8040ee876411fdcfe8e74040f700dcf4fc2844a7e6f29c5041e8e73c34af9cd0')
 
 package() {
 	cd "$srcdir/$pkgname-$pkgver"
