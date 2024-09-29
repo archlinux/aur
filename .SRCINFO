@@ -139,8 +139,10 @@ pkgname = mesa-amd-bc250
 	depends = zstd
 	depends = libomxil-bellagio
 	optdepends = opengl-man-pages: for the OpenGL API man pages
+	provides = mesa
 	provides = mesa-libgl
 	provides = opengl-driver
+	conflicts = mesa
 	conflicts = mesa-libgl
 	replaces = mesa-libgl
 
@@ -163,3 +165,5 @@ pkgname = vulkan-radeon-amd-bc250
 	depends = zstd
 	optdepends = vulkan-mesa-layers: additional vulkan layers
 	provides = vulkan-driver
+	provides = vulkan-radeon
+	conflicts = vulkan-radeon
