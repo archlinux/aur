@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=mustang-git
 _pkgname=Mustang
-pkgver=0.6.8.r1.g1c270f6
+pkgver=0.6.9.r1.gaa5dfc9
 _electronversion=32
 _nodeversion=20
 pkgrel=1
@@ -57,19 +57,16 @@ build() {
             echo 'electron_builder_binaries_mirror=https://registry.npmmirror.com/-/binary/electron-builder-binaries/'
         fi
     } >> .npmrc
+    echo app  lib backend e2 | xargs -n 1 cp .npmrc
     cd "${srcdir}/${pkgname//-/.}/app/build"
     sh "${pkgname%-git}-brand.sh"
     cd "${srcdir}/${pkgname//-/.}/app"
-    cp "${srcdir}/${pkgname//-/.}/.npmrc" "${srcdir}/${pkgname//-/.}/app"
     NODE_ENV=development    npm install --legacy-peer-deps
     cd "${srcdir}/${pkgname//-/.}/lib"
-    cp "${srcdir}/${pkgname//-/.}/.npmrc" "${srcdir}/${pkgname//-/.}/lib"
     NODE_ENV=development    npm install
     cd "${srcdir}/${pkgname//-/.}/backend"
-    cp "${srcdir}/${pkgname//-/.}/.npmrc" "${srcdir}/${pkgname//-/.}/backend"
     NODE_ENV=development    npm install
     cd "${srcdir}/${pkgname//-/.}/e2"
-    cp "${srcdir}/${pkgname//-/.}/.npmrc" "${srcdir}/${pkgname//-/.}/e2"
     sed -i "/- AppImage/d;/- snap/d;/- rpm/d;s/- deb/- dir/g" electron-builder.yml
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
     cp build/icon.png resources/
