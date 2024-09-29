@@ -3,7 +3,7 @@
 
 _pkgname="gala"
 pkgname="$_pkgname-git"
-pkgver=8.0.0.r21.g4ab7973
+pkgver=8.0.1.r13.ga31eab4
 pkgrel=1
 pkgdesc='The Pantheon Window Manager'
 url='https://github.com/elementary/gala'
@@ -17,26 +17,27 @@ depends=(
   gnome-desktop
   graphene
   gtk3
+  gtk4
   libcanberra
   libgee
   libgl
-  libgranite.so # granite
-  libhandy-1.so # libhandy
+  libgranite-7.so # granite7
+  libgranite.so   # granite
+  libhandy-1.so   # libhandy
   libxfixes
-  mutter
+  mutter46
 )
 makedepends=(
   git
-  granite7
   meson
   vala
 )
 
 provides=(
-  "gala=${pkgver%%.r*}"
+  "$_pkgname=${pkgver%%.r*}"
   libgala.so
 )
-conflicts=(gala)
+conflicts=("$_pkgname")
 
 _pkgsrc="$_pkgname"
 source=("$_pkgsrc"::"git+$url.git")

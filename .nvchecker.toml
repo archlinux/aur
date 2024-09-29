@@ -1,0 +1,4 @@
+[gala-git]
+source = "git"
+git = "https://github.com/elementary/gala.git"
+prefix = "v"
