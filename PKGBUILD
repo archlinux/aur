@@ -246,10 +246,14 @@ package_mesa-amd-bc250() {
   )
   optdepends=("opengl-man-pages: for the OpenGL API man pages")
   provides=(
+    mesa
     mesa-libgl
     opengl-driver
   )
-  conflicts=(mesa-libgl)
+  conflicts=(
+    mesa
+    mesa-libgl
+  )
   replaces=(mesa-libgl)
 
   meson install -C build --destdir "$pkgdir"
@@ -319,7 +323,13 @@ package_vulkan-radeon-amd-bc250() {
     zstd
   )
   optdepends=("vulkan-mesa-layers: additional vulkan layers")
-  provides=(vulkan-driver)
+  conflicts=(
+    vulkan-radeon
+  )
+  provides=(
+    vulkan-driver
+    vulkan-radeon
+  )
 
   mv vkradeon/* "$pkgdir"
 
