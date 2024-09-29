@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=mustang
 _pkgname=Mustang
-pkgver=0.6.8
+pkgver=0.6.9
 _electronversion=32
 _nodever=20
 pkgrel=1
@@ -17,7 +17,7 @@ source=(
     "${pkgname}.git::git+${_ghurl}.git#tag=v${pkgver}"
     "${pkgname}.sh"
 )
-sha256sums=('d7eeff2a6a14c6c54c7154415f502bce583bfe8db6ac80c55b53007bc6c115a6'
+sha256sums=('3ee48b3e417383ed6886838adbef3d61d294fd99a188bcd2ab40f0bffaf4ba0b'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
@@ -43,29 +43,25 @@ build() {
     #echo 'build_from_source=true'
     echo "cache=${srcdir}/.npm_cache"
     if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
-    {
-        echo 'registry=https://registry.npmmirror.com'
-        echo 'disturl=https://registry.npmmirror.com/-/binary/node/'
-        echo 'electron_mirror=https://registry.npmmirror.com/-/binary/electron/'
-        echo 'electron_builder_binaries_mirror=https://registry.npmmirror.com/-/binary/electron-builder-binaries/'
-    } >> .npmrc
-    echo '[url "https://github.moeyy.xyz/https://github.com/"]' >> "${srcdir}/${pkgname}.git/app/.gitconfig"
-    echo '    insteadof = https://github.com/' >> "${srcdir}/${pkgname}.git/app/.gitconfig"
+        {
+            echo 'registry=https://registry.npmmirror.com'
+            echo 'disturl=https://registry.npmmirror.com/-/binary/node/'
+            echo 'electron_mirror=https://registry.npmmirror.com/-/binary/electron/'
+            echo 'electron_builder_binaries_mirror=https://registry.npmmirror.com/-/binary/electron-builder-binaries/'
+        } >> .npmrc
+        echo '[url "https://github.moeyy.xyz/https://github.com/"]' >> "${srcdir}/${pkgname}.git/app/.gitconfig"
+        echo '    insteadof = https://github.com/' >> "${srcdir}/${pkgname}.git/app/.gitconfig"
     fi
-
+    echo app  lib backend e2 | xargs -n 1 cp .npmrc
     cd "${srcdir}/${pkgname}.git/app/build"
     sh "${pkgname}-brand.sh"
     cd "${srcdir}/${pkgname}.git/app"
-    cp "${srcdir}/${pkgname}.git/.npmrc" "${srcdir}/${pkgname}.git/app"
     NODE_ENV=development    npm install --legacy-peer-deps
     cd "${srcdir}/${pkgname}.git/lib"
-    cp "${srcdir}/${pkgname}.git/.npmrc" "${srcdir}/${pkgname}.git/lib"
     NODE_ENV=development    npm install
     cd "${srcdir}/${pkgname}.git/backend"
-    cp "${srcdir}/${pkgname}.git/.npmrc" "${srcdir}/${pkgname}.git/backend"
     NODE_ENV=development    npm install
     cd "${srcdir}/${pkgname}.git/e2"
-    cp "${srcdir}/${pkgname}.git/.npmrc" "${srcdir}/${pkgname}.git/e2"
     sed -i "/- AppImage/d;/- snap/d;/- rpm/d;s/- deb/- dir/g" electron-builder.yml
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
     cp build/icon.png resources/
