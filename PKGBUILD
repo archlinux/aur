@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=caretEnsemble
-_pkgver=4.0.0
+_pkgver=4.0.1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -20,7 +20,6 @@ depends=(
 optdepends=(
   r-catools
   r-covr
-  r-devtools
   r-earth
   r-gbm
   r-glmnet
@@ -28,7 +27,6 @@ optdepends=(
   r-knitr
   r-lintr
   r-mlbench
-  r-pkgdown
   r-randomforest
   r-rhub
   r-rmarkdown
@@ -37,8 +35,8 @@ optdepends=(
   r-usethis
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('c8792e74df9d3698f173c395673207f1')
-b2sums=('cae85f7174076349a9ae5cd27f7ce90f9335b35640743ef18c14d204643441be0348b66da169c1de60b96943ba2dc3370e818caf8723aa42ea13ac9dd66a8455')
+md5sums=('8ff469c233cd682f030426edc7528bc4')
+b2sums=('92422068c3e30010891bc19280ebc423ec338db13690b1135e720d09304191da162a5294514b5e855b524b91c3bbfbb82904276841be23ef5d32a0e90df567a2')
 
 build() {
   mkdir build
