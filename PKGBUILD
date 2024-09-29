@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 # Contributor: Bruce Zhang
 pkgname=rubick
-pkgver=4.2.6
+pkgver=4.2.7
 _electronversion=26
-_nodeversion=16
+_nodeversion=18
 pkgrel=1
 pkgdesc="Electron based open source toolbox, free integration of rich plug-ins. 基于 electron 的开源工具箱，自由集成丰富插件。"
 arch=('x86_64')
@@ -31,48 +31,56 @@ source=(
 	"${pkgname}.git::git+${_ghurl}.git#tag=v${pkgver}"
 	"${pkgname}.sh"
 )
-sha256sums=('da43b634a677851755df839675ae3e1429c222410fe7a1170d8179ed2477ef6d'
-            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
+sha256sums=('0742f0e2f943031a1a832a9634d83acd0fa0640b1f45ad52023a11c1f6aef6c4'
+            '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 _ensure_local_nvm() {
-    export NVM_DIR="${srcdir}/.nvm"
+    local NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
     nvm install "${_nodeversion}"
-	nvm use "${_nodeversion}"
+    nvm use "${_nodeversion}"
 }
 build() {
-	sed -e "s|@electronversion@|${_electronversion}|" \
-        -e "s|@appname@|${pkgname}|g" \
-        -e "s|@runname@|app.asar|g" \
-		-e "s|@cfgdirname@|${pkgname}|g" \
-		-e "s|@options@||g" \
-        -i "${srcdir}/${pkgname}.sh"
+	sed -e "
+        s/@electronversion@/${_electronversion}/g
+        s/@appname@/${pkgname}/g
+        s/@runname@/app.asar/g
+        s/@cfgdirname@/${pkgname}/g
+        s/@options@//g
+    " -i "${srcdir}/${pkgname}.sh"
 	_ensure_local_nvm
 	gendesk -q -f -n --pkgname="${pkgname}" --pkgdesc="${pkgdesc}" --categories="Utility" --name="${pkgname}" --exec="${pkgname} %U"
-	export npm_config_build_from_source=true
-	#export ELECTRON_SKIP_BINARY_DOWNLOAD=1
-	#export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
-	#export npm_config_target="${SYSTEM_ELECTRON_VERSION}"
-	#export ELECTRONVERSION="${_electronversion}"
+	cd "${srcdir}/${pkgname}.git"
+	export ELECTRON_SKIP_BINARY_DOWNLOAD=1
+	export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
 	HOME="${srcdir}/.electron-gyp"
 	mkdir -p "${srcdir}/.electron-gyp"
-	touch "${srcdir}/.electron-gyp/.yarnrc"
-	if [ `curl -s ipinfo.io/country | grep CN | wc -l ` -ge 1 ];then
-		export npm_config_registry=https://registry.npmmirror.com
-		export npm_config_disturl=https://registry.npmmirror.com/-/binary/node/
-		export npm_config_electron_mirror=https://registry.npmmirror.com/-/binary/electron/
-		export npm_config_electron_builder_binaries_mirror=https://registry.npmmirror.com/-/binary/electron-builder-binaries/
-	else
-		echo "Your network is OK."
-	fi
-	cd "${srcdir}/${pkgname}.git"
-	sed "s|deb|dir|g" -i vue.config.js
-	NODE_ENV=development yarn install --cache-folder "${srcdir}/.yarn_cache"
-	NODE_ENV=development yarn global add xvfb-maybe @vue/cli
+	{
+		if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
+			echo -e '\n'
+			echo 'registry "https://registry.npmmirror.com"'
+			echo 'disturl "https://registry.npmmirror.com/-/binary/node/"'
+			echo 'electron_mirror "https://registry.npmmirror.com/-/binary/electron/"'
+			echo 'electron_builder_binaries_mirror "https://registry.npmmirror.com/-/binary/electron-builder-binaries/"'
+			echo "cacheFolder "${srcdir}"/.yarn/cache"
+			echo "pluginsFolder "${srcdir}"/.yarn/plugins"
+			echo "globalFolder "${srcdir}"/.yarn/global"
+			echo 'useHardlinks true'
+			#echo 'buildFromSource true'
+			echo 'linkWorkspacePackages true'
+			echo 'fetchRetries 3'
+			echo 'fetchRetryTimeout 10000'
+		fi
+	} >> .yarnrc
+	cp .yarnrc feature
+	sed -i "s/deb/dir/g" vue.config.js
+	sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
+	NODE_ENV=development 	yarn install --cache-folder "${srcdir}/.yarn_cache" --no-lockfile
+	NODE_ENV=development 	yarn global add -D xvfb-maybe @vue/cli
 	cd "${srcdir}/${pkgname}.git/feature"
-	NODE_ENV=development yarn install --cache-folder "${srcdir}/.yarn_cache"
-	NODE_ENV=production yarn run build
+	NODE_ENV=development 	yarn install --cache-folder "${srcdir}/.yarn_cache" --no-lockfile
+	NODE_ENV=production 	npm run build
 	cd "${srcdir}/${pkgname}.git"
-	NODE_ENV=production yarn run release
+	NODE_ENV=production 	npm run release
 }
 package() {
 	install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
