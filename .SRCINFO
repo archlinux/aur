@@ -1,0 +1,35 @@
+pkgbase = hyprland-plugins
+	pkgdesc = Official plugins for Hyprland
+	pkgver = 0.43.0
+	pkgrel = 1
+	url = https://github.com/hyprwm/hyprland-plugins
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	makedepends = hyprland
+	source = hyprland-plugins::git+https://github.com/hyprwm/hyprland-plugins.git#tag=v0.43.0
+	sha256sums = SKIP
+
+pkgname = hyprland-plugin-borders-plus-plus
+	pkgdesc = A Hyprland plugin that adds one or two additional borders to your windows
+	provides = hyprland-plugin-borders-plus-plus
+
+pkgname = hyprland-plugin-csgo-vulkan-fix
+	pkgdesc = A Hyprland plugin that fixes custom resolutions on CS:GO with -vulkan
+	provides = hyprland-plugin-csgo-vulkan-fix
+
+pkgname = hyprland-plugin-hyprbars
+	pkgdesc = A Hyprland plugin that adds simple title bars to windows
+	provides = hyprland-plugin-hyprbars
+
+pkgname = hyprland-plugin-hyprexpo
+	pkgdesc = A Hyprland plugin that adds an expo-like workspace overview
+	provides = hyprland-plugin-hyprexpo
+
+pkgname = hyprland-plugin-hyprtrails
+	pkgdesc = A Hyprland plugin that adds smooth trails behind moving windows
+	provides = hyprland-plugin-hyprtrails
+
+pkgname = hyprland-plugin-hyprwinwrap
+	pkgdesc = A Hyprland clone of xwinwrap that allows you to put any app as a wallpaper
+	provides = hyprland-plugin-hyprwinwrap
