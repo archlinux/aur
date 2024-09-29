@@ -1,0 +1,16 @@
+pkgbase = python-jsons
+	pkgdesc = A Python lib for (de)serializing Python objects to/from JSON
+	pkgver = 1.6.3
+	pkgrel = 1
+	url = https://github.com/ramonhagenaars/jsons
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python-typish
+	provides = python-jsons
+	source = jsons::git+https://github.com/ramonhagenaars/jsons#tag=v1.6.3
+	sha256sums = SKIP
+
+pkgname = python-jsons
