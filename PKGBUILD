@@ -6,7 +6,7 @@
 pkgname=siyuan_stable
 pkgver=v3.1.8
 pkgrel=0
-pkgdesc="auto upload to AUR when SiYuan stable release"
+pkgdesc="This package is deprecated, please use siyuan-bin instead, deletion request submitted"
 arch=("x86_64")
 url="https://b3log.org/siyuan"
 license=("AGPL-3.0-only")

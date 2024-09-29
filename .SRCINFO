@@ -1,5 +1,5 @@
 pkgbase = siyuan_stable
-	pkgdesc = auto upload to AUR when SiYuan stable release
+	pkgdesc = This package is deprecated, please use siyuan-bin instead, deletion request submitted
 	pkgver = v3.1.8
 	pkgrel = 0
 	url = https://b3log.org/siyuan
