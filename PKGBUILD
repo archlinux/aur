@@ -1,7 +1,7 @@
 # Maintainer: max.bra <max dot bra at alice dot it>
 
 pkgname=hub-kids
-pkgver=6.3.300
+pkgver=7.0.376
 pkgrel=1
 pkgdesc="La piattaforma facile, gratuita e innovativa per la didattica digitale."
 arch=('x86_64')
@@ -22,7 +22,7 @@ options=(!strip)
 _debname=HUB-Kids.deb
 
 source=(https://bce.mondadorieducation.it/media_educar/contenuti/appdilettura/kidslinux.zip)
-sha256sums=('79ad6f3cf6667adc163d04b9995489d10cde6b374dc0128bd81fd034d704dc80')
+sha256sums=('6d235f2659dcffa0244eb6d7c2c422aff99f9325e17e9fb3fa2b0a8c33ce39b0')
 
 prepare() {
   cd "$srcdir"
@@ -32,7 +32,7 @@ prepare() {
 
   #find ./{etc,usr} -type d -exec chmod 755 '{}' \;
   find ./usr -type d -exec chmod 755 '{}' \;
-  chmod 755 ./usr/local/bin/hubkids/hub-kids
+  chmod 755 ./usr/local/bin/hubkids/hub-kids-prod
 }
 
 package() {
