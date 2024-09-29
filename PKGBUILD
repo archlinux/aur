@@ -2,7 +2,7 @@
 
 pkgname=ospd-openvas
 pkgver=22.7.1
-pkgrel=3
+pkgrel=4
 pkgdesc='OSP Server for openvas'
 arch=('x86_64')
 url="https://github.com/greenbone/ospd-openvas"
@@ -14,9 +14,11 @@ conflicts=('python-ospd-openvas')
 groups=('greenbone-vulnerability-manager')
 backup=("etc/gvm/ospd-openvas.conf")
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz"
-        ${pkgname}-${pkgver}.tar.gz.asc::${url}/releases/download/v${pkgver}/${pkgname}-v${pkgver}.tar.gz.asc)
+        ${pkgname}-${pkgver}.tar.gz.asc::${url}/releases/download/v${pkgver}/${pkgname}-v${pkgver}.tar.gz.asc
+        gvm.sysusers)
 sha512sums=('ae7fe56a2b825efc33d9e29f2a51ab1034155ee70a5790d98f3b811a29f4b35830afabc27abd14593d74e1bcc5dac0ea1cd33ed46cc3ca459256a4b452e10552'
-            'SKIP')
+            'SKIP'
+            'f1a518baaaef4ba4a4eefb7581ff12f7a495593c8640ec3a63e05a371e020f0d9a0bb480b9383995ff9b45e01bd94f58089f09f4b6ad67a990b3d0a834785ff8')
 validpgpkeys=('8AE4BE429B60A59B311C2E739823FAA60ED1E580') # GVM Transfer Integrity
 
 
@@ -31,5 +33,6 @@ package() {
 
     install -Dm 644 config/ospd-openvas.conf -t "${pkgdir}"/etc/gvm
     install -Dm 644 config/ospd-openvas.service -t "${pkgdir}"/usr/lib/systemd/system
+    install -Dm 644 ${srcdir}/gvm.sysusers -t "${pkgdir}"/usr/lib/sysusers.d/
 }
 
