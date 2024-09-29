@@ -2,8 +2,8 @@
 
 _pkgname=mwptools
 pkgname=mwptools-git
-pkgver=2024.09.08.r2.ccd028b5
-pkgrel=2
+pkgver=24.09.29.r0.41ecde7f
+pkgrel=1
 pkgdesc='mission planner for INAV and MultiWii'
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'pentium4' 'aarch64' 'riscv64')
 url='https://github.com/stronnag/mwptools'

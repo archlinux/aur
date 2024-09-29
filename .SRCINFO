@@ -1,7 +1,7 @@
 pkgbase = mwptools-git
 	pkgdesc = mission planner for INAV and MultiWii
-	pkgver = 2024.09.08.r2.ccd028b5
-	pkgrel = 2
+	pkgver = 24.09.29.r0.41ecde7f
+	pkgrel = 1
 	url = https://github.com/stronnag/mwptools
 	install = mwp.install
 	arch = i686
