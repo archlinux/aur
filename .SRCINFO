@@ -1,0 +1,26 @@
+pkgbase = python-tt-tools-common-git
+	pkgdesc = Common utilities shared across Tentorrent tools.
+	pkgver = 1.4.6
+	pkgrel = 1
+	url = https://github.com/tenstorrent/tt-tools-common
+	arch = any
+	license = Apache
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python-distro
+	depends = python-elasticsearch
+	depends = python-psutil
+	depends = python-pyyaml
+	depends = python-rich
+	depends = python-textual
+	depends = python-requests
+	depends = python-tqdm
+	depends = python-pydantic
+	depends = python-typish
+	depends = python-luwen
+	provides = python-tt-tools-common
+	source = tt-tools-common::git+https://github.com/tenstorrent/tt-tools-common.git
+	sha256sums = SKIP
+
+pkgname = python-tt-tools-common-git
