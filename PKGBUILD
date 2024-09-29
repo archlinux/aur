@@ -1,7 +1,7 @@
 # Maintainer:  Joshua Holmer <jholmer.in@gmail.com>
 
 pkgname=libjxl-metrics-git
-pkgver=0.10.2.r81.g680d0e38
+pkgver=0.11.0.r26.g7e178a51
 pkgrel=1
 pkgdesc="JPEG XL image format reference implementation with butteraugli, ssimulacra, and ssimulacra2 (git version)"
 arch=('x86_64')
@@ -14,7 +14,7 @@ makedepends=(
 )
 provides=(
     'libjxl' 'libjxl-git' 'libjpeg-xl-git' 'libjxl.so' 'libjxl_threads.so' 'libjxl-doc'
-    'libjxl.so=0.10-64' 'libjxl_threads.so=0.10-64'
+    'libjxl.so=0.11-64' 'libjxl_threads.so=0.11-64'
     'libjxl-doc-git' 'butteraugli' 'butteraugli-git' 'ssimulacra'
     'ssimulacra-git' 'ssimulacra2' 'ssimulacra2-git'
 )
