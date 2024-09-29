@@ -1,9 +1,12 @@
 [Desktop Entry]
-Type=Application
 Name=[NEXT] Firestorm Second Life Viewer
-GenericName=Second Life Viewer
-Comment=A feature-packed third-party viewer for Second Life
-Exec=/usr/bin/firestorm-next
-Icon=firestorm-next
-Terminal=false
 Categories=Game;Simulation;Chat;InstantMessaging;3DGraphics
+Comment=A feature-packed third-party viewer for Second Life (beta version)
+Exec=/usr/bin/firestorm-next
+GenericName=Second Life Viewer
+Icon=firestorm-next
+StartupNotify=true
+StartupWMClass=do-not-directly-run-firestorm-bin
+Terminal=false
+Type=Application
+X-GNOME-UsesNotifications=true
