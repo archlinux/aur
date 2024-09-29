@@ -1,7 +1,7 @@
 pkgbase = strawberry-lite
 	pkgdesc = A music player aimed at audio enthusiasts and music collectors, fewer fautures, Gstreamer and alsa only
-	pkgver = 1.1.1
-	pkgrel = 1
+	pkgver = 1.1.2
+	pkgrel = 2
 	url = https://www.strawberrymusicplayer.org/
 	arch = x86_64
 	arch = i686
@@ -41,8 +41,8 @@ pkgbase = strawberry-lite
 	optdepends = gst-plugins-ugly: additional codecs
 	provides = strawberry
 	conflicts = strawberry
-	source = git+https://github.com/jonaski/strawberry.git#tag=1.1.1
-	sha256sums = SKIP
+	source = git+https://github.com/jonaski/strawberry.git#tag=1.1.2
+	sha256sums = 7dfce6ede1e1347218926c0a41581e56a080a132354779e1102147dc3a550d65
 
 pkgname = strawberry-lite
 	depends = chromaprint
