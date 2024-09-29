@@ -1,22 +1,22 @@
 pkgbase = vapoursynth-plugin-svpflow
 	pkgdesc = SmoothVideo plugin for Vapoursynth
-	pkgver = 4.5.210
-	pkgrel = 5
+	pkgver = 4.6.263
+	pkgrel = 1
 	url = https://www.svp-team.com/wiki/SVP:Linux
 	arch = x86_64
-	license = GPL2
-	license = custom:svp-team
+	license = GPL-2.0-only
+	license = LicenseRef-svp-team
 	makedepends = p7zip
 	makedepends = qt6-base
 	makedepends = nasm
 	depends = vapoursynth
-	provides = vapoursynth-plugin-svpflow1
-	provides = vapoursynth-plugin-svpflow2=4.5.210
+	provides = vapoursynth-plugin-svpflow1=4.5.0.205
+	provides = vapoursynth-plugin-svpflow2=4.6.263
 	conflicts = vapoursynth-plugin-svpflow1
 	conflicts = vapoursynth-plugin-svpflow2-bin
-	source = svpflow1-src-4.5.210.zip::https://www.svp-team.com/files/gpl/svpflow1-src.zip
-	source = https://www.svp-team.com/files/svp4-linux.4.5.210-2.tar.bz2
+	source = svpflow1-src-4.5.0.205.zip::https://www.svp-team.com/files/gpl/svpflow1-src.zip
+	source = https://www.svp-team.com/files/svp4-linux.4.6.263.tar.bz2
 	sha256sums = c384b3b969d66f2e22003f87b644fa79ce9093a8af326f7fc79cc305239d05f3
-	sha256sums = 758f6e43d8f34c788dd974a73ab5ed1c3d75208256eadf415331864057d9fb28
+	sha256sums = 1f24435451d59936a7fd28b7423190a42df36b7d306b2d747741e4efda171bdf
 
 pkgname = vapoursynth-plugin-svpflow
