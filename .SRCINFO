@@ -1,0 +1,15 @@
+pkgbase = luwencpp-git
+	pkgdesc = Tenstorrent system interface library. C++ library and headers.
+	pkgver = 0.4.3
+	pkgrel = 1
+	url = https://github.com/tenstorrent/luwen
+	arch = x86_64
+	license = Apache
+	makedepends = gcc
+	makedepends = rust
+	makedepends = make
+	provides = luwencpp
+	source = luwen::git+https://github.com/tenstorrent/luwen.git
+	sha256sums = SKIP
+
+pkgname = luwencpp-git
