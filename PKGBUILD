@@ -1,6 +1,6 @@
 # Maintainer: Mike Pento <mpento@darkforge.net>
 
-pkgname=gtk2-engine-equinox
+pkgname=gtk-engine-equinox
 pkgver=1.50
 pkgrel=1
 pkgdesc="Equinox GTK2 theming engine"
