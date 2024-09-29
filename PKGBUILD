@@ -3,7 +3,7 @@
 # Contributor: SingYan <singyan@tuta.io>
 
 pkgname=mydumper
-pkgver=0.16.3_6
+pkgver=0.16.7_5
 pkgrel=1
 pkgdesc="A high performance MySQL backup tool."
 arch=("i686" "x86_64")
@@ -14,13 +14,15 @@ makedepends=("cmake")
 
 source=("https://github.com/mydumper/mydumper/archive/v${pkgver//_/-}/$pkgname-${pkgver//_/-}.tar.gz")
 
-sha256sums=('e9ec1d3a49dcd02297374ef0156b6ce480ee969cc61c1a4a4b81584d98994128')
+sha256sums=('f554552fe96c40a47b82018eb067168bcb267a96fd288ddf8523c9e472340f2e')
 
 build() {
+	# NOTE! As of 0.16.7-5 There is a maybe-uninitialized warning that is treated as an error
+	# This is a workaround to fix it, remove as soon as upstream releases the fix
 	cmake -B build -S "$srcdir/$pkgname-${pkgver//_/-}" \
 		-DCMAKE_INSTALL_PREFIX=/usr \
 		-DCMAKE_BUILD_TYPE=Release \
-		-DCMAKE_C_FLAGS_RELEASE="-Wno-unused-result -O2"
+		-DCMAKE_C_FLAGS_RELEASE="-Wno-unused-result -O2 -Wno-maybe-uninitialized"
 	cmake --build build
 }
 
