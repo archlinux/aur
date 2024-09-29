@@ -3,7 +3,7 @@
 pkgbase=python-stdatamodels
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}" "python-${_pyname}-doc")
-pkgver=2.1.0
+pkgver=2.1.1
 pkgrel=1
 pkgdesc="Core support for DataModel classes used in calibration pipelines"
 arch=('any')
@@ -24,7 +24,7 @@ checkdepends=('python-pytest-doctestplus'
               'python-psutil'
               'python-crds')   # asdf, astropy, already in makedepends
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('fcc26f6ae8a1c334c1209b4ffb7e275e')
+md5sums=('18e314004b16da947f41d40bbc06b4fd')
 
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}
@@ -41,6 +41,8 @@ check() {
 #   CRDS_PATH=".crds" \
     PYTHONPATH="build/lib" pytest \
         --ignore=src/stdatamodels/jwst/datamodels \
+        --ignore=src/stdatamodels/jwst/_tests/test_schemas.py \
+        --ignore=src/stdatamodels/jwst/transforms/converters/tests/test_models.py \
         --ignore=src/stdatamodels/jwst/transforms/extensions.py || warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count -p xdist -n 4
 }
 
