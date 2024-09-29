@@ -1,0 +1,3 @@
+post_upgrade() {
+  echo -e "\nRun 'ALTER EXTENSION vectors UPDATE;' to update the database\nhttps://docs.pgvecto.rs/admin/upgrading.html\n"
+}
