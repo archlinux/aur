@@ -11,12 +11,12 @@ pkgdesc="auto upload to AUR when SiYuan stable release"
 arch=("x86_64")
 url="https://b3log.org/siyuan"
 license=("AGPL-3.0-only")
-_pkgname=siyuan--linux.AppImage
-noextract=(siyuan--linux.AppImage)
+_pkgname=siyuan-${pkgver}-linux.AppImage
+noextract=(siyuan-${pkgver}-linux.AppImage)
 options=("!strip" "!debug")
 depends=("fuse2")
 optdepends=('pandoc: docx export')
-source=("https://github.com/siyuan-note/siyuan/releases/download/v/siyuan--linux.AppImage")
+source=("https://github.com/siyuan-note/siyuan/releases/download/v${pkgver}/siyuan-${pkgver}-linux.AppImage")
 sha256sums=('SKIP')
 
 _installdir=/opt/appimages
