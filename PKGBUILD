@@ -12,7 +12,7 @@ url="https://www.bertinireal.com"
 _url="https://github.com/ofloveandhate/${_pkgname}"
 license=('custom:Bertini License')
 makedepends=('git' 'boost>=1.50')
-depends=('glibc' 'gcc-libs' 'boost-libs>=1.50' 'bertini-parallel' 'gmp' 'mpfr'
+depends=('bertini-parallel' 'boost-libs>=1.50' 'gcc-libs' 'glibc' 'gmp' 'mpfr'
          'openmpi')
 optdepends=("python-${_pkgname}: Python interface support")
 provides=("${_pkgname}=${pkgver%%.r*}")
@@ -32,7 +32,7 @@ pkgver() {
 
 prepare() {
   cd "${srcdir}/${_pkgsrc}"
-  for _patch in "${srcdir}/${_pkgname}_fix"*".patch"; do 
+  for _patch in "${srcdir}/${_pkgname}"*".patch"; do 
     patch -p1 -i "${_patch}"
   done
 }

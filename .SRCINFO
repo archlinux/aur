@@ -7,10 +7,10 @@ pkgbase = bertini_real-git
 	license = custom:Bertini License
 	makedepends = git
 	makedepends = boost>=1.50
-	depends = glibc
-	depends = gcc-libs
-	depends = boost-libs>=1.50
 	depends = bertini-parallel
+	depends = boost-libs>=1.50
+	depends = gcc-libs
+	depends = glibc
 	depends = gmp
 	depends = mpfr
 	depends = openmpi
