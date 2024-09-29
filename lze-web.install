@@ -24,6 +24,7 @@ fi
  echo "$cu_user ALL = (root) NOPASSWD: /usr/bin/brightnessctl" > /etc/sudoers.d/brightness
   mv /etc/php/php.ini /etc/php/php.ini.bck
   mv /etc/php/php.ini.lze /etc/php/php.ini
+  xhost +local:
   systemctl enable httpd.service
   systemctl restart httpd.service
 }
