@@ -1,0 +1,78 @@
+# Maintainer: cat_nm
+pkgname=ags-hyprpanel-git
+pkgver=r278.19a0ccf
+pkgrel=1
+epoch=1
+pkgdesc="A Bar/Panel for Hyprland with extensive customizability"
+arch=('x86_64')
+url="https://hyprpanel.com/"
+license=('MIT')
+install='hyprpanel.install'
+depends=(
+  # official repository:
+  'pipewire'
+  'libgtop'
+  'bluez'
+  'bluez-utils'
+  'btop'
+  'networkmanager'
+  'dart-sass'
+  'wl-clipboard'
+  'brightnessctl'
+  'swww'
+  'gnome-bluetooth-3.0'
+  'libdbusmenu-gtk3'
+  # aur:
+  'grimblast-git'
+  'gpu-screen-recorder-git'
+  'hyprpicker'
+  'matugen-bin'
+  'aylurs-gtk-shell'
+)
+makedepends=(
+  'unzip'
+  'git'
+)
+optdepends=(
+  'python: GPU usage tracking (NVidia only)'
+  'python-gpustat: GPU usage tracking (NVidia only)'
+  'pywal: Pywal hook for wallpapers'
+  'pacman-contrib: Checking for pacman updates'
+  'power-profiles-daemon: Switch power profiles'
+)
+source=(
+  "git+https://github.com/Jas-SinghFSU/HyprPanel.git"
+  "https://github.com/oven-sh/bun/releases/latest/download/bun-linux-x64.zip"
+)
+sha256sums=('SKIP' 'SKIP')
+
+prepare() {
+    cd "$srcdir"
+
+    # download bun
+    unzip bun-linux-x64.zip
+}
+
+pkgver() {
+  cd "$srcdir/HyprPanel"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+}
+
+package() {
+  cd "$srcdir/HyprPanel"
+
+  #install bun
+  install -Dm755 "$srcdir/bun-linux-x64/bun" "$pkgdir/usr/bin/bun"
+
+  # install fonts
+  install -dm755 "$pkgdir/usr/share/fonts/NFP"
+  cp -r "$srcdir/HyprPanel/assets/fonts/"* "$pkgdir/usr/share/fonts/NFP/"
+  fc-cache -fv
+
+  # Install HyprPanel into /usr/share/HyprPanel
+  install -dm755 "$pkgdir/usr/share/HyprPanel"
+  cp -r ./* "$pkgdir/usr/share/HyprPanel/"
+
+  # License
+  install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"
+}

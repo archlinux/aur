@@ -1,0 +1,7 @@
+post_install() {
+  echo -e "\n=================================================="
+  echo -e "HyprPanel is installed!"
+  echo -e "To configure ags run this command:\n"
+  echo -e "ln -s /usr/share/HyprPanel $HOME/.config/ags"
+  echo -e "==================================================\n"
+}
