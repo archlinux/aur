@@ -2,7 +2,7 @@
 # Contributor: Hu Butui <hot123tea123@gmail.com>
 
 _pkgname=performance
-_pkgver=0.12.2
+_pkgver=0.12.3
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -59,6 +59,7 @@ optdepends=(
   r-compquadform
   r-correlation
   r-cplm
+  r-dagitty
   r-dbscan
   r-dharma
   r-estimatr
@@ -67,7 +68,7 @@ optdepends=(
   r-forecast
   r-ftextra
   r-gamm4
-  r-ggplot2
+  r-ggdag
   r-glmmtmb
   r-hmisc
   r-httr2
@@ -109,8 +110,8 @@ optdepends=(
   r-withr
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('9b50358d38b6fe85cdc631cd1facc88c')
-b2sums=('7b89b2040194612f2b3c69f92b26e4d1f64659172297bc997a6f5bedc55ee51500f12c81b67846b6ceb7a3078f0da087f9423847b3cf1bcfa14e7dcb325a7a13')
+md5sums=('c19bba70e4722b49576619297f7e5aa4')
+b2sums=('58e847423563954c38a72ec7b23e116dd6767b71ca1cd34d8e09697cfff1040f6daa5d51a9d8aecd955e211b87236eb3261b552d68c9634fc78c2bc60b244ea1')
 
 prepare() {
   # skip failing tests
