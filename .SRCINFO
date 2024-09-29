@@ -1,0 +1,18 @@
+pkgbase = lumafly
+	pkgdesc = A cross platform mod manager for Hollow Knight written in Avalonia.
+	pkgver = 3.3.0.0
+	pkgrel = 1
+	url = https://github.com/TheMulhima/Lumafly
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = dotnet-sdk-7.0
+	makedepends = gendesk
+	depends = glibc
+	depends = dotnet-runtime-7.0
+	depends = fontconfig
+	depends = gcc-libs
+	options = !strip
+	source = https://github.com/TheMulhima/Lumafly/archive/refs/tags/v3.3.0.0.tar.gz
+	sha256sums = 13a6e31ad490481da0a238972edf6bbb16ebdbc6db4361b8cfd4833d3d850de0
+
+pkgname = lumafly
