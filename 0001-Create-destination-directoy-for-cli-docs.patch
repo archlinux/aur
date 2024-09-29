@@ -1,0 +1,27 @@
+From 369894e08c204ec56607726c941f35b04f454e48 Mon Sep 17 00:00:00 2001
+From: Elias Werberich <elias@werberich.de>
+Date: Sun, 29 Sep 2024 16:04:46 +0200
+Subject: [PATCH] Create destination directoy for cli docs if it does not exist
+
+---
+ cmd/gen_test.go | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/cmd/gen_test.go b/cmd/gen_test.go
+index 4e70d12..d5592bf 100644
+--- a/cmd/gen_test.go
++++ b/cmd/gen_test.go
+@@ -41,6 +41,10 @@ func TestCanGetFiles(t *testing.T) {
+ 	// ignore any bad error trying to remove the file, it may not exist and that is ok
+ 	_ = os.Remove(configDocsPath)
+ 
++	// create cli docs directory if it does not already exist
++	err = os.MkdirAll(cliDocsPath, os.ModePerm)
++	then.Nil(t, err)
++
+ 	cliDocsFiles, err := os.ReadDir(cliDocsPath)
+ 	then.Nil(t, err)
+ 
+-- 
+2.46.2
+
