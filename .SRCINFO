@@ -1,6 +1,6 @@
 pkgbase = amp-locker
-	pkgver = 1.1.9
-	pkgrel = 2
+	pkgver = 1.2.0
+	pkgrel = 1
 	url = https://audioassault.mx/amplocker
 	arch = x86_64
 	license = EULA
@@ -41,25 +41,25 @@ pkgbase = amp-locker
 	sha256sums = bbeb596d62ed9943294ee5025ba690def02e263b5c9b3b88304ee84607c52f53
 	sha256sums = 7784d4c4cf7bd953b52c34268cfd92dae1e23028e15c77b8e9e3ebd4970d0e80
 	sha256sums = 2ccb54d693ba09c2f86750891f2d1ea090f74fe282c3268617d1519b58f79ad5
-	sha256sums = 65025ee2902448aaf48dd51dba0bcc364fe668005aecfc41501bb77b193ec4e5
+	sha256sums = f85c7ae660ddeab96da77c6067b076f8c55b1331c76bff6b08ceb107d74e846c
 
 pkgname = amp-locker-data-bin
-	pkgdesc = Audio Assault Multamp Simulator (Data Assets)
+	pkgdesc = Audio Assault Multiamp Simulator (Data Assets)
 	groups = pro-audio
 
 pkgname = amp-locker-standalone-bin
-	pkgdesc = Audio Assault Multamp Simulator (Standalone)
+	pkgdesc = Audio Assault Multiamp Simulator (Standalone)
 	groups = pro-audio
 	depends = amp-locker-data-bin
 
 pkgname = amp-locker-lv2-bin
-	pkgdesc = Audio Assault Multamp Simulator (LV2)
+	pkgdesc = Audio Assault Multiamp Simulator (LV2)
 	groups = pro-audio
 	groups = lv2-plugins
 	depends = amp-locker-data-bin
 
 pkgname = amp-locker-vst3-bin
-	pkgdesc = Audio Assault Multamp Simulator (VST3)
+	pkgdesc = Audio Assault Multiamp Simulator (VST3)
 	groups = pro-audio
 	groups = vst3-plugins
 	depends = amp-locker-data-bin
