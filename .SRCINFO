@@ -1,0 +1,15 @@
+pkgbase = r-reformulas
+	pkgdesc = Machinery for Processing Random Effect Formulas
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://cran.r-project.org/package=reformulas
+	arch = any
+	license = GPL-3.0-only
+	depends = r-rdpack
+	optdepends = r-lme4
+	optdepends = r-tinytest
+	source = https://cran.r-project.org/src/contrib/reformulas_0.3.0.tar.gz
+	md5sums = 77ac03912efe8d7bc435117e80ed157f
+	b2sums = 49faf0ed3bbf5c98c129270d8d736e3135f70b1cbff8ada26d4674da86203072f641ae7a17f43349506cff809828ee7e151d5208e3d69ce13a14c2ebcfc95c31
+
+pkgname = r-reformulas
