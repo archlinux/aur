@@ -11,8 +11,9 @@ url="https://www.bertinireal.com"
 _url="https://github.com/ofloveandhate/${pkgname}"
 license=('custom:Bertini License')
 makedepends=('boost>=1.50')
-depends=('bertini-parallel' 'boost-libs' 'gcc-libs' 'glibc' 'gmp' 'mpfr' 'openmpi')
-optdepends=('python-bertini_real: Python interface support')
+depends=('bertini-parallel' 'boost-libs>=1.50' 'gcc-libs' 'glibc' 'gmp' 'mpfr'
+         'openmpi')
+optdepends=("python-${pkgname}: Python interface support")
 _pkgsrc="${pkgname}-${_commit}"
 source=("${_pkgsrc}.tar.gz::${_url}/archive/${_commit}.tar.gz"
         "${pkgname}_fix_include.patch::${_url}/commit/062c9cc1964d4e2a7b0c6c117419f9b98b0a71f3.patch")
