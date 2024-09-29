@@ -1,0 +1,16 @@
+pkgbase = git-sync-git
+	pkgdesc = Safe and simple one-script git synchronization.
+	pkgver = r58.493b015
+	pkgrel = 1
+	url = https://github.com/simonthum/git-sync
+	arch = any
+	license = unknown
+	makedepends = git
+	depends = git
+	depends = bash
+	provides = git-sync
+	conflicts = git-sync
+	source = git+https://github.com/simonthum/git-sync.git
+	sha256sums = SKIP
+
+pkgname = git-sync-git
