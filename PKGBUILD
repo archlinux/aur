@@ -15,8 +15,7 @@ source=(
     "$_binary-$pkgver::$url/releases/download/v$pkgver/$_binary"
     "$url/raw/v$pkgver/LICENSE"
 )
-sha256sums=('2c078bd844d3b4b1b2ca56d894d739baa0aad5fa809246ec25ee932fd2b8e029'
-            '33504ada23da37774e0d02d99a3a61328f3df017a2bf8468525cd30bb86f57ec')
+sha256sums=('2c078bd844d3b4b1b2ca56d894d739baa0aad5fa809246ec25ee932fd2b8e029')
 
 package() {
     install -Dm0755 "$_binary-$pkgver" "$pkgdir/usr/bin/dooit"
