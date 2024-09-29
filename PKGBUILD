@@ -1,7 +1,7 @@
 # Maintainer: 0xGingi <0xgingi@0xgingi.com>
 pkgname=phantom-editor-git
-pkgver=0.7.0.r0.gf306321
-pkgrel=2
+pkgver=0.7.5.r0.gbb059c5
+pkgrel=1
 pkgdesc="Phantom is a lightweight terminal-based text editor written in Rust"
 arch=('x86_64')
 url="https://github.com/0xGingi/phantom"
