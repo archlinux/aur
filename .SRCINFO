@@ -1,6 +1,6 @@
 pkgbase = website-auditing-tool
 	pkgdesc = Tool to collect evidence, analyse them and generate reports regarding trackers that are being used by websites. It is intended to be used to facilitate website inspections.
-	pkgver = 1.2.4
+	pkgver = 1.2.5
 	pkgrel = 1
 	url = https://code.europa.eu/edpb/website-auditing-tool
 	arch = any
@@ -9,11 +9,11 @@ pkgbase = website-auditing-tool
 	makedepends = nodejs
 	makedepends = npm
 	makedepends = typescript
-	source = website-auditing-tool::git+https://code.europa.eu/edpb/website-auditing-tool.git/#tag=1.2.4
+	source = website-auditing-tool::git+https://code.europa.eu/edpb/website-auditing-tool.git/#tag=1.2.5
 	source = electron-disable-deb.patch
 	source = website-auditing-tool.desktop
-	sha256sums = 1a641a0923f8b98912c108c9254a738ad8ea4e782148860cf746baf2a9d33b96
-	sha256sums = 63d6da56c80f29ab0b6cfd4d148734c5c29e740731fda5de64e26e61d2ff7ea9
+	sha256sums = d9453206ca522e7944a1df7dbd592260eb05334e724a6d82833db4fe451588fc
+	sha256sums = 3ecbc420f21302ec48f5ef6e357bbb5ef4c0ffc195a76235505c62fafd595816
 	sha256sums = 6e7c6ee07e476996b72e9ad51dbe5d8515c2be853204b1d35bd83d857fe19392
 
 pkgname = website-auditing-tool

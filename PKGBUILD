@@ -1,6 +1,6 @@
 # Maintainer: aeris <aeris+aur@imirhil.fr>
 pkgname=website-auditing-tool
-pkgver=1.2.4
+pkgver=1.2.5
 pkgrel=1
 pkgdesc="Tool to collect evidence, analyse them and generate reports regarding trackers that are being used by websites. It is intended to be used to facilitate website inspections."
 arch=(any)
@@ -13,8 +13,8 @@ source=(
 	electron-disable-deb.patch
 	"$pkgname.desktop"
 )
-sha256sums=('1a641a0923f8b98912c108c9254a738ad8ea4e782148860cf746baf2a9d33b96'
-            '63d6da56c80f29ab0b6cfd4d148734c5c29e740731fda5de64e26e61d2ff7ea9'
+sha256sums=('d9453206ca522e7944a1df7dbd592260eb05334e724a6d82833db4fe451588fc'
+            '3ecbc420f21302ec48f5ef6e357bbb5ef4c0ffc195a76235505c62fafd595816'
             '6e7c6ee07e476996b72e9ad51dbe5d8515c2be853204b1d35bd83d857fe19392')
 
 prepare() {
@@ -30,9 +30,9 @@ build() {
 
 package() {
 	cd "$srcdir/$pkgname/releases/linux-unpacked/"
-	install -Dm 755 website-audit -t "$pkgdir/opt/$name/"
-	install -Dm 644 chrome_100_percent.pak icudtl.dat libffmpeg.so resources.pak v8_context_snapshot.bin -t "$pkgdir/opt/$name/"
-	install -Dm 644 resources/app.asar -t "$pkgdir/opt/$name/resources/"
+	install -Dm 755 website-audit -t "$pkgdir/opt/$pkgname/"
+	install -Dm 644 chrome_100_percent.pak icudtl.dat libffmpeg.so resources.pak v8_context_snapshot.bin -t "$pkgdir/opt/$pkgname/"
+	install -Dm 644 resources/app.asar -t "$pkgdir/opt/$pkgname/resources/"
 
 	cd "$srcdir/$pkgname/resources/icons/"
 	for res in 16 24 32 48 64 96 128 256 512; do
