@@ -63,11 +63,7 @@ build() {
         } >> frontend/.npmrc
         go env -w GOPROXY=https://goproxy.cn,direct
     fi
-    sed -i "/install/d;/build/d" wails.json
-    cd "${srcdir}/${pkgname%-git}.git/frontend"
-    NODE_ENV=development    npm install
-    NODE_ENV=production     npm run build
-    cd "${srcdir}/${pkgname%-git}.git"
+    export NODE_ENV=development
     wails build -platform linux -o "${pkgname%-git}"
     sed -e "
         s/{{.Info.ProductName}}/${_pkgname}/g
