@@ -2,7 +2,7 @@
 # Contributor: AEnterprise <aenterprise2@gmail.com>
 
 pkgname='spacedrive'
-pkgver=0.4.0
+pkgver=0.4.1
 pkgrel=1
 pkgdesc='Spacedrive is an open source cross-platform file explorer, powered by a virtual distributed filesystem written in Rust.'
 arch=('x86_64')
@@ -16,7 +16,7 @@ source=(
 depends=('ffmpeg' 'libheif' 'gtk3' 'webkit2gtk-4.1' 'pango' 'gdk-pixbuf2' 'cairo' 'libsoup' 'glib2' 'xdotool')
 makedepends=('cargo' 'pnpm>=9' 'clang' 'git' 'lld')
 sha256sums=(
-	'4dcb7ef7ca5e6dbab2a8afba98e76778a580163bf307f10d0503c25bd44ca543'
+	'0fe073714714d9ef1c0de6fc103cda250f0661055f2429cc8aa6ac780a7451e5'
 	'0d9149faa1b17c8fea16e2ea344ca394c7fe93b33e746bb0168af81302ed164e'
 )
 
