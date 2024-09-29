@@ -1,0 +1,21 @@
+pkgbase = jerry-cli
+	pkgdesc = watch anime with automatic anilist syncing and other cool stuff
+	pkgver = 1.9.9
+	pkgrel = 1
+	url = https://github.com/justchokingaround/jerry
+	arch = any
+	license = unknown
+	makedepends = git
+	depends = grep
+	depends = sed
+	depends = curl
+	depends = fzf
+	depends = mpv
+	optdepends = rofi: external launcher
+	optdepends = ueberzugpp: image preview with fzf
+	optdepends = jq: for displaying anime/manga info
+	conflicts = jerry-cli-git
+	source = jerry-1.9.9.tar.gz::https://github.com/justchokingaround/jerry/archive/refs/tags/v1.9.9.tar.gz
+	sha256sums = 3902F5C5201C0AB653CF0F94080E82436A63367A7BA7F6AECA1B480CB1B1C8B0
+
+pkgname = jerry-cli
