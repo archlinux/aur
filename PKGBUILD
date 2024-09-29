@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=gemini-desktop-git
 _pkgname="Google Gemini Desktop"
-pkgver=1.0.4.r5.ge6396ba
-_electronversion=30
+pkgver=1.0.5.r2.gd6d17f2
+_electronversion=32
 _nodeversion=20
 pkgrel=1
 pkgdesc="A simple Gemini client using the Electron framework(Unofficial).Use system-wide electron."
@@ -64,8 +64,7 @@ build() {
             echo 'electron_builder_binaries_mirror=https://registry.npmmirror.com/-/binary/electron-builder-binaries/'
         fi
     } >> .npmrc
-    sed -i "/\"electron\": \"[^\"]*\"/d" package.json
-    sed -i "/\"electron-builder\":/ a\    \"electron\": \"${SYSTEM_ELECTRON_VERSION}\"," package.json
+    sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
     NODE_ENV=development    npm install --force
     NODE_ENV=production     npx electron-builder -l --dir
 }
