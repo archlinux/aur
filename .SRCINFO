@@ -1,4 +1,4 @@
-pkgbase = gtk2-engines-equinox
+pkgbase = gtk2-engine-equinox
 	pkgdesc = Equinox GTK2 theming engine
 	pkgver = 1.50
 	pkgrel = 1
@@ -10,7 +10,7 @@ pkgbase = gtk2-engines-equinox
 	optdepends = lib32-gtk-engine-equinox
 	optdepends = gtk-theme-equinox
 	replaces = gtk-engine-equinox
-	source = https://launchpad.net/ubuntu/+archive/primary/+sourcefiles/gtk2-engines-equinox/1.50-0ubuntu4/gtk2-engines-equinox_1.50.orig.tar.gz
+	source = https://launchpad.net/ubuntu/+archive/primary/+sourcefiles/gtk2-engine-equinox/1.50-0ubuntu4/gtk2-engine-equinox_1.50.orig.tar.gz
 	sha256sums = 0cf8b8cc841e0da7d4a08ab5a70d3bb330fd76bdcb03165a47aaddcd47e02227
 
-pkgname = gtk2-engines-equinox
+pkgname = gtk2-engine-equinox
