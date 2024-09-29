@@ -11,8 +11,8 @@ pkgname=(buildbot buildbot-worker buildbot-docs buildbot-common
          python-buildbot-wsgi-dashboards python-buildbot-badges)
 # https://github.com/buildbot/buildbot/releases
 pkgver=4.0.3
-_bb_contrib_commit=4c8615db51253f0be4bfd08210a3aaf903a74b4f
-pkgrel=1
+_bb_contrib_commit=cc230791dcd4717830d4dcb62843c0a19bdf3262
+pkgrel=2
 arch=(any)
 url='https://buildbot.net'
 # https://github.com/buildbot/buildbot/blob/v3.10.1/master/setup.py says GPLv2, and does not mention "any later version"
@@ -34,11 +34,9 @@ makedepends=(python-build python-installer python-wheel
              git yarn)
 source=("git+https://github.com/buildbot/buildbot.git?signed#tag=v$pkgver"
         "git+https://github.com/buildbot/buildbot-contrib.git#commit=$_bb_contrib_commit"
-        "buildbot-contrib-systemd-common.patch::https://github.com/buildbot/buildbot-contrib/pull/22.patch"
         "disable-flaky-tests.diff")
 sha256sums=('f7e5177fe632df156bfd49f974649eaa9e773452d907f212d67a949d62c1eb0b'
-            '6ef2beaff974d48245a6a4f70219b89eb1ef6d484e27ee33b2ac6ab181ab3697'
-            '896eede4c33a8574d7c29ac4a28cebbe3d7e850931a86e945328f8ea358195a9'
+            '2f8747848b96d9e31a66d3becd62d36dcbdd349e5381a8bd2558da7c1f2faddb'
             '175cb41a707a278b0a7c0864304a00459d6e2dee16cd5ddbc28a6dc90abfd3fc')
 validpgpkeys=(
   'FD0004A26EADFE43A4C3F249C6F7AE200374452D'  # https://github.com/p12tic.gpg
@@ -70,9 +68,6 @@ prepare() {
 
   # See https://github.com/buildbot/buildbot/issues/6776 for an earlier report about those flaky tests
   patch -Np1 -i ../disable-flaky-tests.diff
-
-  cd "$srcdir"/buildbot-contrib
-  patch -Np1 -i ../buildbot-contrib-systemd-common.patch
 }
 
 get_pyver() {
