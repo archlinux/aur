@@ -1,6 +1,6 @@
 # Maintainer: Stephan Raabe <mail@ml4w.com>
 pkgname='ml4w-hyprland-git'
-pkgver=2.9.6.1.r0.g55dd532
+pkgver=2.9.6.1.r7.g2fe8082
 pkgrel=1
 pkgdesc="The ML4W Dotfiles for Hyprland - An advanced and full-featured configuration for the dynamic tiling window manager Hyprland including an easy to use installation script for Arch based Linux distributions. "
 arch=(any)
@@ -45,7 +45,6 @@ depends=(
     "gvfs"
     "xdg-user-dirs"
     "xclip"
-    "trizen"
     "oh-my-posh"
     "aylurs-gtk-shell"
     # Apps
@@ -57,7 +56,6 @@ depends=(
     "blueman"
     "pinta"
     "cliphist"
-    "pacseek"
     "nautilus"
     "gnome-text-editor"
     # Fonts
@@ -94,6 +92,7 @@ depends=(
 
 optdepends=(
     "firefox: Browser"
+    "pacseek: Package Manager"
     "flatpak: Flatpak support"
     "gnome-calculator: Calculator"
     "smile: Emoji Selector"
