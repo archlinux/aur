@@ -1,53 +1,42 @@
-# $Id$
-# Maintainer: Sven Fischer <aur.archlinux@linux4tw.de>
+# Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
+# Contributor: Sven Fischer <aur.archlinux@linux4tw.de>
 
 pkgname=guayadeque-git
-_pkgname=guayadeque
-pkgver=0.4.6.r2224.a8b47a68
-pkgrel=1
-pkgdesc='Lightweight music player'
-arch=('i686' 'x86_64')
-url='http://guayadeque.org/'
-license=('GPL3')
-provides=(${pkgname%-*})
-conflicts=(${pkgname%-*})
-depends=('curl' 'gst-plugins-base' 'jsoncpp' 'libgpod' 'taglib' 'webkit2gtk' 'wxgtk3' 'wxsqlite3')
-makedepends=('cmake' 'git')
-optdepends=('gst-plugins-good: Support for PulseAudio and additional file formats'
-            'gst-plugins-bad: Support for additional file formats'
-            'gst-plugins-ugly: Support for additional file formats'
-            'gst-libav: Support for additional file formats'
-            'gvfs: Support for external devices')
-source=('git+https://github.com/anonbeat/guayadeque.git'
-        'wxwidgets.patch')
-sha512sums=('SKIP'
-            'bdf0de22543b1c0db7e5619e4740ef7976bdc4f4428e7413824dce585ccc51b99af747ccacb5c9da931706b176f93f80c8f4669c9b0acd3b158974b3b0b6be10')
+pkgver=0.5.2.r0.gca56337c
+pkgrel=2
+pkgdesc="Lightweight music player"
+arch=(x86_64 i686)
+url="https://github.com/thothix/guayadeque"
+license=(GPL-3.0-only)
+depends=(wxsqlite3 wxwidgets-gtk3 taglib gst-plugins-base gst-plugins-good jsoncpp)
+makedepends=(cmake git)
+optdepends=('gst-libav: additional codecs'
+            'gst-plugins-bad: additional codecs'
+            'gst-plugins-ugly: additional codecs')
+provides=(guayadeque)
+conflicts=(guayadeque)
+source=("git+https://github.com/thothix/guayadeque.git")
+sha512sums=('SKIP')
 
 pkgver() {
-  cd "${srcdir}/${_pkgname}"
-  local srcversion="$(grep "ID_GUAYADEQUE_VERSION" src/Version.h.in | cut -d '"' -f 2)"
-  printf "%s.r%s.%s" $srcversion "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
-prepare() {
-  cd "${srcdir}/${_pkgname}"
-  patch -p1 < ../wxwidgets.patch
+  cd "guayadeque"
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  cd "${srcdir}/${_pkgname}"
-  ./buildt
-  cmake . \
-    -DCMAKE_CXX_STANDARD='11' \
-    -DCMAKE_BUILD_TYPE='Release' \
-    -DCMAKE_INSTALL_PREFIX='/usr' \
-    -DwxWidgets_wxrc_EXECUTABLE='/usr/bin/wxrc-3.2' \
-    -DwxWidgets_CONFIG_EXECUTABLE='/usr/bin/wx-config' \
-    -DwxWidgets_INCLUDE_DIRS='/usr/include/wx-3.2/'
-  make
+  local _flags=(
+    -DwxWidgets_CONFIG_EXECUTABLE=/usr/bin/wx-config
+    -D_GUREVISION_:STRING="${pkgrel}"
+  )
+
+  cmake -B build -S "guayadeque" -Wno-dev \
+    -DCMAKE_BUILD_TYPE=None \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    "${_flags[@]}"
+
+  cmake --build build
 }
 
 package() {
-  cd "${srcdir}/${_pkgname}"
-  make DESTDIR="${pkgdir}" install
+  DESTDIR="${pkgdir}" cmake --install build
 }
