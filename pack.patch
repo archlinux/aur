@@ -1,0 +1,17 @@
+diff --git a/forge.config.js b/forge.config.js
+index 685768e..6e76612 100644
+--- a/forge.config.js
++++ b/forge.config.js
+@@ -6,11 +6,7 @@ module.exports = {
+     executableName: "debugtron",
+   },
+   makers: [
+-    { name: "@electron-forge/maker-squirrel", config: {} },
+-    { name: "@electron-forge/maker-zip", platforms: ["darwin"] },
+-    { name: "@electron-forge/maker-deb", config: {} },
+-    { name: "@electron-forge/maker-dmg", config: {} },
+-    { name: "@electron-forge/maker-rpm", config: {} },
++    { name: "@electron-forge/maker-zip", platforms: ["linux"] },
+   ],
+   plugins: [
+     {

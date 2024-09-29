@@ -1,0 +1,81 @@
+From 0eb758bfa39f3e27a50d6504e5e197226f5f0fd4 Mon Sep 17 00:00:00 2001
+From: bigshans <26884666+bigshans@users.noreply.github.com>
+Date: Sun, 29 Sep 2024 21:41:01 +0800
+Subject: [PATCH] fix: fix some bugs for linux
+
+---
+ src/main/main.ts                      |  3 ++-
+ src/main/platforms/linux/find-icon.ts | 15 ++++++++++++---
+ 2 files changed, 14 insertions(+), 4 deletions(-)
+
+diff --git a/src/main/main.ts b/src/main/main.ts
+index 9359165..7682b15 100644
+--- a/src/main/main.ts
++++ b/src/main/main.ts
+@@ -15,6 +15,7 @@ import { composeWithStateSync } from "electron-redux/main";
+ import path from "path";
+ import logger from "redux-logger";
+ import { thunk } from "redux-thunk";
++import DebugtronIcon from "../../assets/icon.png";
+ 
+ // Handle creating/removing shortcuts on Windows when installing/uninstalling.
+ if (require("electron-squirrel-startup")) {
+@@ -31,7 +32,7 @@ const createWindow = () => {
+     trafficLightPosition: { x: 14, y: 14 },
+     icon:
+       process.platform === "linux"
+-        ? nativeImage.createFromDataURL(require("../../assets/icon.png"))
++        ? nativeImage.createFromDataURL(DebugtronIcon)
+         : undefined,
+     webPreferences: {
+       nodeIntegration: true,
+diff --git a/src/main/platforms/linux/find-icon.ts b/src/main/platforms/linux/find-icon.ts
+index 914c15c..57badac 100644
+--- a/src/main/platforms/linux/find-icon.ts
++++ b/src/main/platforms/linux/find-icon.ts
+@@ -77,7 +77,7 @@ function parseSize(name: string): number {
+   if (name === "symbolic") return 0.8;
+   if (!sizeReg.test(name)) return -1;
+   let [pixel, scala] = name.split("@");
+-  let size = Number(pixel.replace(pixelIgnoreReg, ""));
++  let size = Number(pixel?.replace(pixelIgnoreReg, ""));
+   let wight = Number(scala?.replace(scalaIgnoreReg, ""));
+   return (isNaN(size) ? 0 : size) + (isNaN(wight) ? 0 : wight) / 100;
+ }
+@@ -88,7 +88,7 @@ function findAllIconDirs(base: string, parent = base): SizeDir[] {
+   const files = fs.readdirSync(parent);
+   const dirs = files
+     .map((name) => path.join(parent, name))
+-    .filter((path) => fs.statSync(path).isDirectory());
++    .filter((path) => accessSync(path) && isDirectory(path));
+   if (dirs.length) {
+     return dirs.map(findAllIconDirs.bind(void 0, base)).flat();
+   }
+@@ -99,7 +99,7 @@ function findAllIconDirs(base: string, parent = base): SizeDir[] {
+   if (!pathNames.includes("apps")) return [];
+   // remove that path with 'apps' compatible theme/size/apps and theme/apps/size
+   const [_theme, size] = relative.split("/").filter((name) => name !== "apps");
+-  return [{ path: parent, size: parseSize(size) }];
++  return [{ path: parent, size: parseSize(size || '0') }];
+ }
+ 
+ function findThemeIconDirs(theme: string) {
+@@ -111,6 +111,15 @@ function iconDirSortBySize(dirs: SizeDir[]): SizeDir[] {
+   return dirs.sort((a, b) => b.size - a.size);
+ }
+ 
++function isDirectory(path: string): boolean {
++    try {
++      return fs.statSync(path).isDirectory();
++    } catch(e) {
++      console.error("can't read " + path);
++    }
++    return false;
++  }
++
+ function accessSync(path: string): boolean {
+   try {
+     fs.accessSync(path);
+-- 
+2.46.2
+

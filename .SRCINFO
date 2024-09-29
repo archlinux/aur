@@ -1,13 +1,20 @@
 pkgbase = debugtron
 	pkgdesc = Debug in-production Electron based app
-	pkgver = 0.5.0
+	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://github.com/bytedance/debugtron
 	arch = x86_64
 	license = MIT
-	source = https://github.com/bytedance/debugtron/releases/download/v0.5.0/Debugtron-linux-x64-0.5.0.zip
+	makedepends = yarn
+	provides = debugtron
+	conflicts = debugtron
+	source = debugtron.zip::https://codeload.github.com/pd4d10/debugtron/zip/refs/tags/v1.0.0-alpha.0
 	source = debugtron.desktop
-	sha256sums = 6808e728514d1f053bc3c63963cbf549f6e5fcb47220d964b793ac9be6172baf
-	sha256sums = 3725a52f0dfc698a3a93b2a49d6a7896e57e7a65f482a6a6ebb00874ef62e281
+	source = 0001-fix-fix-some-bugs-for-linux.patch
+	source = pack.patch
+	sha256sums = a4697a1871bf336ad67e1ce13a075240e7a4aad1e78fc4e287a657b0fed1a051
+	sha256sums = b3370dc82b46ceb874c6dccf643c4ea8c0581b10ba4a13dfb96e1a03b0c2d569
+	sha256sums = 01fa73f055c086987d7a05561fa4a2e3b5e092b008f74920600cf3bc9f92529f
+	sha256sums = a7084fd55e2e9216fab43c6086fb49412e68f2ee098c8118eb0cf5865dfd083d
 
 pkgname = debugtron
