@@ -1,6 +1,6 @@
 pkgname=lsp-ai
-_fragment=tag=v0.7.0
-pkgver=0.7.0
+_fragment=tag=v0.7.1
+pkgver=0.7.1
 pkgrel=1
 pkgdesc='A language server that performs completion using large language models (LLMs)'
 arch=('x86_64')
@@ -9,7 +9,7 @@ url='https://github.com/SilasMarvin/lsp-ai'
 source=("$pkgname::git+$url.git#$_fragment")
 depends=(gcc-libs)
 makedepends=(cargo git)
-sha1sums=('85fafc6901b47f6e6802d5711c2297753cc07547')
+sha1sums=('ca3e917f2064ebf92a26cc52cf6cc69efbef46ec')
 
 pkgver() {
 	cd $pkgname
