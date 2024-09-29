@@ -1,6 +1,6 @@
 pkgbase = another-redis-desktop-manager-git
 	pkgdesc = A faster, better and more stable Redis desktop manager [GUI client]
-	pkgver = 1.6.5.r0.gf799909
+	pkgver = 1.6.7.r1.gc6d177f
 	pkgrel = 1
 	url = https://github.com/qishibo/AnotherRedisDesktopManager
 	arch = any
@@ -11,11 +11,11 @@ pkgbase = another-redis-desktop-manager-git
 	makedepends = curl
 	makedepends = git
 	depends = electron12
-	provides = another-redis-desktop-manager=1.6.5
+	provides = another-redis-desktop-manager=1.6.7
 	conflicts = another-redis-desktop-manager
 	source = another-redis-desktop-manager.git::git+https://github.com/qishibo/AnotherRedisDesktopManager.git
 	source = another-redis-desktop-manager.sh
 	sha256sums = SKIP
-	sha256sums = 2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051
+	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
 
 pkgname = another-redis-desktop-manager-git
