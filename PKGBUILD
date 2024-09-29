@@ -111,7 +111,11 @@
 # CLANGD_HOVERFIELDIDX:
 #   'n' - do not apply this patch
 #   'y' - apply this patch
-
+#
+# Inlay hints: Ignore evident types in deduced types
+# CLANGD_INLAYHINTSIGNOREEVIDENT:
+#   'n' - do not apply this patch
+#   'y' - apply this patch
 
 : ${CLANGD_DEFAULT_PATCH_STATE:=n}
 : ${CLANGD_USER_PATCHES:=y}
@@ -134,65 +138,68 @@
 : ${CLANGD_CONFIG_INCLUDE_STYLE:=$CLANGD_DEFAULT_PATCH_STATE}
 : ${CLANGD_IMPL_ABSTRACT_CLASS:=$CLANGD_DEFAULT_PATCH_STATE}
 : ${CLANGD_HOVERFIELDIDX:=$CLANGD_DEFAULT_PATCH_STATE}
+: ${CLANGD_INLAYHINTSIGNOREEVIDENT:=$CLANGD_DEFAULT_PATCH_STATE}
 
 pkgname=clangd-opt-git
-pkgver=20.r6565.gb177a9b6efb6
+pkgver=20.r7368.g95ce78b742b2
 pkgrel=1
 pkgdesc='Trunk version of standalone clangd binary, with custom patches (look AUR page or PKGBUILD comments)'
 arch=('x86_64')
 url="https://llvm.org/"
 license=('Apache-2.0 WITH LLVM-exception')
 makedepends=('cmake' 'ninja' 'zlib' 'zstd' 'libffi' 'libedit' 'ncurses' 'patch'
-             'libxml2' 'python-setuptools' 'python-psutil' 'python-sphinx' 'git')
+    'libxml2' 'python-setuptools' 'python-psutil' 'python-sphinx' 'git')
 depends=('gcc-libs' 'glibc' 'ncurses' 'zlib' 'zstd')
 conflicts=('clangd-opt')
 replaces=('clangd-opt')
 provides=('clangd-opt')
 options=('!strip' '!lto')
 source=("git+https://github.com/llvm/llvm-project.git#branch=main"
-        'hover-doxygen-trunk.patch'
-        'doxygen-extra-render-trunk.patch'
-        'doxygen-more-fields.patch'
-        'hover-resolve-forward-params.patch'
-        'lsp-codelens.patch'
-        'postfix-completion-trunk.patch'
-        'refactor-extract-function.patch'
-        'inlay-hints-paddings.patch'
-        'hover-hex-formats.patch'
-        'hover-bit-fields-mask.patch'
-        'hover-virt-offset.patch'
-        'hover-layout-everyhere.patch'
-        'hover-no-defs.patch'
-        'resolve-depend-type.patch'
-        'inlay-hints-blockend-linelimit10.patch'
-        'resolve-incomplete-header-includes.patch'
-        'lsp-remove-files-from-cdb.patch'
-        'hover-record-paddings.patch'
-        'config-include-style.patch'
-        'implement-abstract-class.patch'
-        'hover-field-idx.patch')
+    'hover-doxygen-trunk.patch'
+    'doxygen-extra-render-trunk.patch'
+    'doxygen-more-fields.patch'
+    'hover-resolve-forward-params.patch'
+    'lsp-codelens.patch'
+    'postfix-completion-trunk.patch'
+    'refactor-extract-function.patch'
+    'inlay-hints-paddings.patch'
+    'hover-hex-formats.patch'
+    'hover-bit-fields-mask.patch'
+    'hover-virt-offset.patch'
+    'hover-layout-everyhere.patch'
+    'hover-no-defs.patch'
+    'resolve-depend-type.patch'
+    'inlay-hints-blockend-linelimit10.patch'
+    'resolve-incomplete-header-includes.patch'
+    'lsp-remove-files-from-cdb.patch'
+    'hover-record-paddings.patch'
+    'config-include-style.patch'
+    'implement-abstract-class.patch'
+    'hover-field-idx.patch'
+    'inlay-hints-hide-deduced-types-ignore-evident.patch')
 sha256sums=('SKIP'
-            '56ce56294fe225c9b6a57a2da016115ed1cd9234c1d149ac205e43d945c8f4f9'  # hover-doxygen-trunk
-            '614dd012009facb502a7d44e07fc819aa95383c8917537c57968f76ba7881a94'  # doxygen-extra-render-trunk
-            'cf8c80466e6a264e0dfb3750ea7353aa2bb1044bffff381630cb008b95ef2ceb'  # doxygen-more-fields
-            '9e5dd128cedc8f37724d9c39c0f8f7efc826b0fd367f3a03c2564ff9f514ced7'  # hover-resolve-forward-params
-            '85cec3889f7a818fcc998c3564cdd9b01fbeb95855d64ea999d6df5af9ebe817'  # lsp-codelens
-            '7eef87c878abf154548ed635cdc801004efff41facb7c0320ba31ebe50471316'  # postfix-completion-trunk
-            'f719fb52edee98f54ba40786d2ecac6ef63f56797c8f52d4d7ce76a3825966eb'  # refactor-extract-function
-            '2db1f319f850858ecebdcda1c1600d6dd523f171c5b019740298d43607d5fa00'  # inlay-hints-paddings
-            'ba47bb7ac05487a5a083094247eaa369f89404924172a4af40147507b15b90aa'  # hover-hex-formats
-            'e0c86d8cd1d1c4d68c07ed5843593a51607a268c39ccd76e7fe17bc168bf16f4'  # hover-bit-fields-mask
-            '1b1ad88faa83b36dd68f63851a0fd6e07eed16595fcbffdc8a57b5c884f8a98c'  # hover-virt-offset
-            '62e38f3074f39d51524b3d43aabb3991df97e43ea4a8c20e8073c479a41d1057'  # hover-layout-everyhere
-            '94b328ea81eb615a90acf18a9a78733d77093deb12203683510fe4881bad95c6'  # hover-no-defs
-            '4c610c149b6ca59ab5fad137a221d5d527a50f141fb782359cc2f9e5de7e68cd'  # resolve-depend-type
-            '3365392bf7d95a02e2fb22dffbba011a3fa1179543426a2558b9ac61a300a7a7'  # inlay-hints-blockend-linelimit10
-            '991fac650864bbf16832a8c8a0689ee44ef2959a79c9b950ff6200cb4c51beff'  # resolve-incomplete-header-includes
-            '459bc42c7366305e562fa710551de909b581aa2358ca739585a0477dd06ebd6d'  # lsp-remove-files-from-cdb
-            '0f5f7cc7f984988824bca66a2d08b0fa2b1b6ccdfcc1917e5cb0ed810036cfe7'  # hover-record-paddings
-            'a05f3894ddb881ef77146da6955fc0612de684d7bc09a2ef9b9fc6aa750efcac'  # config-include-style
-            '9dceaa36e551e13c4145b45baf694b04369ed525e34baa3b7f14c15f3e248e5f'  # implement-abstract-class
-            '4531b804507d11e1918858551575fee81605dbac0617d7b22f335b10642e782d') # hover-field-idx
+    '56ce56294fe225c9b6a57a2da016115ed1cd9234c1d149ac205e43d945c8f4f9'  # hover-doxygen-trunk
+    '614dd012009facb502a7d44e07fc819aa95383c8917537c57968f76ba7881a94'  # doxygen-extra-render-trunk
+    'cf8c80466e6a264e0dfb3750ea7353aa2bb1044bffff381630cb008b95ef2ceb'  # doxygen-more-fields
+    '9e5dd128cedc8f37724d9c39c0f8f7efc826b0fd367f3a03c2564ff9f514ced7'  # hover-resolve-forward-params
+    '85cec3889f7a818fcc998c3564cdd9b01fbeb95855d64ea999d6df5af9ebe817'  # lsp-codelens
+    '7eef87c878abf154548ed635cdc801004efff41facb7c0320ba31ebe50471316'  # postfix-completion-trunk
+    'f719fb52edee98f54ba40786d2ecac6ef63f56797c8f52d4d7ce76a3825966eb'  # refactor-extract-function
+    '2db1f319f850858ecebdcda1c1600d6dd523f171c5b019740298d43607d5fa00'  # inlay-hints-paddings
+    'ba47bb7ac05487a5a083094247eaa369f89404924172a4af40147507b15b90aa'  # hover-hex-formats
+    'e0c86d8cd1d1c4d68c07ed5843593a51607a268c39ccd76e7fe17bc168bf16f4'  # hover-bit-fields-mask
+    '1b1ad88faa83b36dd68f63851a0fd6e07eed16595fcbffdc8a57b5c884f8a98c'  # hover-virt-offset
+    '62e38f3074f39d51524b3d43aabb3991df97e43ea4a8c20e8073c479a41d1057'  # hover-layout-everyhere
+    '94b328ea81eb615a90acf18a9a78733d77093deb12203683510fe4881bad95c6'  # hover-no-defs
+    '4c610c149b6ca59ab5fad137a221d5d527a50f141fb782359cc2f9e5de7e68cd'  # resolve-depend-type
+    '3365392bf7d95a02e2fb22dffbba011a3fa1179543426a2558b9ac61a300a7a7'  # inlay-hints-blockend-linelimit10
+    '991fac650864bbf16832a8c8a0689ee44ef2959a79c9b950ff6200cb4c51beff'  # resolve-incomplete-header-includes
+    '459bc42c7366305e562fa710551de909b581aa2358ca739585a0477dd06ebd6d'  # lsp-remove-files-from-cdb
+    '0f5f7cc7f984988824bca66a2d08b0fa2b1b6ccdfcc1917e5cb0ed810036cfe7'  # hover-record-paddings
+    'a05f3894ddb881ef77146da6955fc0612de684d7bc09a2ef9b9fc6aa750efcac'  # config-include-style
+    '9dceaa36e551e13c4145b45baf694b04369ed525e34baa3b7f14c15f3e248e5f'  # implement-abstract-class
+    '4531b804507d11e1918858551575fee81605dbac0617d7b22f335b10642e782d'  # hover-field-idx
+    'ab61be8aae9e2e2f5bb090926912154fe14a77245dcd25aec5c0c447ee7a67ea') # inlay-hints-hide-deduced-types-ignore-evident
 
 pkgver() {
     cd llvm-project
@@ -268,6 +275,9 @@ prepare() {
     if [ "$CLANGD_INLAYHINTSBLOCKEND" != "n" ]; then
         apply_patch inlay-hints-blockend-linelimit10
     fi
+    if [ "$CLANGD_INLAYHINTSIGNOREEVIDENT" != "n" ]; then
+        apply_patch inlay-hints-hide-deduced-types-ignore-evident
+    fi
 
     # Resolve patches
     if [ "$CLANGD_RESOLVEDEPTYPE" != "n" ]; then
@@ -282,13 +292,12 @@ prepare() {
         apply_patch config-include-style
     fi
 
-
     # User patches
     if [ "$CLANGD_USER_PATCHES" != "n" ]; then
         config_path=${XDG_CONFIG_HOME:-"$HOME/.config"}/clangd
         if [[ -d "$config_path" ]]; then
             echo -e "\e[1;32mSearch user pathces in \e[1;37m'${config_path}'\033[0m"
-            patches=$(ls -1 "$config_path"/*.patch 2>/dev/null||true)
+            patches=$(ls -1 "$config_path"/*.patch 2>/dev/null || true)
 
             if [[ -n $patches ]]; then
                 for patch in ${patches[@]}; do

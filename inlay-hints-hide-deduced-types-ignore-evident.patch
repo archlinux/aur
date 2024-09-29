@@ -1,0 +1,78 @@
+diff --git a/clang-tools-extra/clangd/InlayHints.cpp b/clang-tools-extra/clangd/InlayHints.cpp
+index cd4f1931b3ce..45b890d70348 100644
+--- a/clang-tools-extra/clangd/InlayHints.cpp
++++ b/clang-tools-extra/clangd/InlayHints.cpp
+@@ -631,6 +631,73 @@ public:
+ 
+     if (auto *AT = D->getType()->getContainedAutoType()) {
+       if (AT->isDeduced() && !D->getType()->isDependentType()) {
++        // Filter evident types.
++        if (const auto *IE = D->getInit()) {
++          // Ignore literals
++          // (e.g. `auto x = 3.14f`).
++          if (llvm::isa<CompoundLiteralExpr>(IE) ||
++              llvm::isa<CXXBoolLiteralExpr>(IE) ||
++              llvm::isa<CXXNullPtrLiteralExpr>(IE) ||
++              llvm::isa<FixedPointLiteral>(IE) ||
++              llvm::isa<FloatingLiteral>(IE) ||
++              llvm::isa<ImaginaryLiteral>(IE) ||
++              llvm::isa<IntegerLiteral>(IE) || llvm::isa<StringLiteral>(IE) ||
++              llvm::isa<UserDefinedLiteral>(IE))
++            return true;
++
++          if (auto *CE = llvm::dyn_cast<CastExpr>(IE)) {
++            // Ignore type-independend cast expressions
++            // (e.g. `auto x = static_cast<int>(42)`).
++            if (auto *ECE = llvm::dyn_cast<ExplicitCastExpr>(CE)) {
++              const auto CT = ECE->getTypeAsWritten();
++              if (!CT->isDependentType())
++                return true;
++            }
++          }
++
++          // Ignore variables, what contains type in name
++          // (e.g. `auto iCounter = GetSomeInteger()`,
++          //       `auto hWnd = GetWindowHandle()`,
++          //       `auto dwTimer = GetTickCount()`).
++          static constexpr auto KPrefixes = {"m_", "ms_", "_", "m", ""};
++          const auto VarName = D->getNameAsString();
++          const auto TypeName = maybeDesugar(AST, D->getType()).getAsString();
++          std::string TypeNameLower = TypeName;
++          std::transform(TypeName.begin(), TypeName.end(),
++                         TypeNameLower.begin(), ::tolower);
++          for (const auto *Prefix : KPrefixes) {
++            const auto PrefixLength = strlen(Prefix);
++            if (VarName.size() <= PrefixLength)
++              continue;
++            if (VarName.find(Prefix) != 0)
++              continue;
++
++            const std::string_view VarNameNoPrefix = &VarName[strlen(Prefix)];
++            if (VarNameNoPrefix.size() > TypeName.length()) {
++              if (VarNameNoPrefix.find(TypeName) == 0 &&
++                  (VarNameNoPrefix[TypeName.length()] == '_' ||
++                   (islower(VarNameNoPrefix[TypeName.length() - 1]) &&
++                    isupper(VarNameNoPrefix[TypeName.length()]))))
++                return true;
++
++              if (VarNameNoPrefix.find(TypeNameLower) == 0 &&
++                  (VarNameNoPrefix[TypeName.length()] == '_' ||
++                   isupper(VarNameNoPrefix[TypeName.length()])))
++                return true;
++            }
++
++            std::string_view TypeNameShort = "";
++            auto TypeNameShortLength = 0u;
++            for (auto I = 0u;
++                 I < VarNameNoPrefix.size() && islower(VarNameNoPrefix[I]); ++I)
++              ++TypeNameShortLength;
++            if (TypeNameShortLength > 0) {
++              TypeNameShort = VarNameNoPrefix.substr(0, TypeNameShortLength);
++              if (std::string_view{TypeNameLower}.find(TypeNameShort) == 0)
++                return true;
++            }
++          }
++        }
+         // Our current approach is to place the hint on the variable
+         // and accordingly print the full type
+         // (e.g. for `const auto& x = 42`, print `const int&`).
