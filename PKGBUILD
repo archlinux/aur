@@ -222,7 +222,7 @@ _pick() {
   done
 }
 
-package_mesa() {
+package_mesa-amd-bc250() {
   depends=(
     expat
     gcc-libs
@@ -299,7 +299,7 @@ package_mesa() {
   install -Dm644 mesa-$pkgver/docs/license.rst -t "$pkgdir/usr/share/licenses/$pkgname"
 }
 
-package_vulkan-radeon() {
+package_vulkan-radeon-amd-bc250() {
   pkgdesc="Open-source Vulkan driver for AMD GPUs"
   depends=(
     expat
