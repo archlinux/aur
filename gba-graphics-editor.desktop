@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=GBA Graphics Editor
+Comment=Scan compressed and uncompress graphics from GBA ROMs.
+Exec=gba-graphics-editor
+Icon=gba-graphics-editor
+Terminal=false
+Categories=Wine;Graphics;
+MimeType=application/x-gba-rom;

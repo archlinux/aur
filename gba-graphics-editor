@@ -1,0 +1,14 @@
+#!/bin/bash
+
+# WINE Launcher script for GBA Graphics Editor
+
+export GBAGEDDIR=/usr/share/gba-graphics-editor # installation dir for AUR package
+
+cat << EOF
+GBA Graphics Editor Linux Loader by Atapi/Sterophonick
+Original Program: (c) Nintenlord
+
+EOF
+
+[[ "$1" == "" ]] && wine $GBAGEDDIR/GBA\ Graphics\ Editor.exe
+[[ "$1" != "" ]] && wine $GBAGEDDIR/GBA\ Graphics\ Editor.exe "$(winepath -w "$1")"

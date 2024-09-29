@@ -1,0 +1,18 @@
+pkgbase = gba-graphics-editor
+	pkgdesc = Scan compressed and uncompress graphics from GBA ROMs.
+	pkgver = v2.3
+	pkgrel = 1
+	arch = x86_64
+	arch = i686
+	depends = wine
+	depends = winetricks
+	source = https://www.hackromtools.info/downloads/gba/HackRomTools%20-%20GBAGraphicsEditor.7z
+	source = gba-graphics-editor
+	source = gba-graphics-editor.desktop
+	source = gba-graphics-editor.png
+	md5sums = 100653275bbf916531a0b206f9eb33d6
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = gba-graphics-editor
