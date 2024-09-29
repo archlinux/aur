@@ -1,6 +1,6 @@
 pkgbase = r-comparegroups
 	pkgdesc = Descriptive Analysis by Groups
-	pkgver = 4.8.0
+	pkgver = 4.9.0
 	pkgrel = 1
 	url = https://cran.r-project.org/package=compareGroups
 	arch = any
@@ -11,6 +11,7 @@ pkgbase = r-comparegroups
 	depends = r-kableextra
 	depends = r-knitr
 	depends = r-officer
+	depends = r-pmcmrplus
 	depends = r-rmarkdown
 	depends = r-writexl
 	optdepends = r-dt
@@ -24,8 +25,8 @@ pkgbase = r-comparegroups
 	optdepends = r-shinythemes
 	optdepends = r-shinywidgets
 	optdepends = r-tcltk2
-	source = https://cran.r-project.org/src/contrib/compareGroups_4.8.0.tar.gz
-	md5sums = 75fd7f131ad91fffd760b73ce7fdcd1a
-	b2sums = 6129aa3828c0c8d5c809ebdfdaa30b917623d7f03ad22ac473aeace3e202e989deba7202a2380f4dc794dc71e70a10748604783b9550d3bd1cf90fe7086fcd30
+	source = https://cran.r-project.org/src/contrib/compareGroups_4.9.0.tar.gz
+	md5sums = 910f387dc0f8c1e1219e8bb3e0b1223e
+	b2sums = 65603a732e8cd453a45aa362a65f3a1c5cfd323726ce7466ebd4d5f094c3aa07e0631f106a16e6b8b0fcff0b372ec47f0991992df2094b3a1e1dd8ff8bb8f6c2
 
 pkgname = r-comparegroups
