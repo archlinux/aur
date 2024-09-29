@@ -7,8 +7,8 @@ pkgrel=2
 pkgdesc="Comic reader for cross-platform reading and managing your digital comic collection, using poppler for PDF"
 arch=(x86_64)
 url="https://www.yacreader.com/"
-license=(GPL3)
-depends=(libunarr poppler-qt6 qt6-base qt6-multimedia qt6-quickcontrols2 qt6-5compat
+license=(GPL-3.0-only)
+depends=(libunarr poppler-qt6 qt6-base qt6-multimedia qt6-declarative qt6-5compat
          glibc libglvnd gcc-libs hicolor-icon-theme)
 makedepends=(git qt6-tools qt6-svg)
 optdepends=('qt6-imageformats: Support for extra image formats'
