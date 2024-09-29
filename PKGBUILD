@@ -1,7 +1,7 @@
 # Maintainer: meanlint <meanlint@outlook.com>
 # Maintainer: Robert Baker <reiichi001@gmail.com>
 pkgname=xivlauncher-cn-bin
-pkgver=1.1.0.1
+pkgver=1.1.0.3
 pkgrel=1
 pkgdesc="Custom Launcher for Final Fantasy XIV Online CN"
 arch=('x86_64')
@@ -24,7 +24,7 @@ source=(
     "xivlauncher-core"
 )
 sha512sums=(
-    'SKIP'
+    'aab660a671e93b0a6f17b69a5d8fe5875bb4b6840238666683c6b2844251c43b1e4d2b6e95b4adecf510495918e810e272c1b8af81065de125b3452ee3177eed'
     '0c33502cd915132151fa4b6c94899bf3f8806c2943469609cdda09365ff78be863215abd2741048d6c9a934a22dca0f8a8a2c67074c38abc6f67984c393859c4'
     '6c9a1f783969f293c07f06d167ab830f77ddaffdd8ce1df5f4e736056bd7c10c169c8c2411499493fb39659ca10643590998fccdaf4978dacb671ecfa2872949'
     'dad16da8e1d2bc772f7e1be1f59fd799c596fa88fb77a7e58a94baf10a1ca2f0ad7e79ad3baa8ba24e35dd0bc748884c74371c447816b1ea61098f58a130313a'
