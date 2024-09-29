@@ -7,7 +7,7 @@ pkgname=(
   lib32-mesa-amd-bc250
   lib32-vulkan-radeon-amd-bc250
 )
-pkgver=24.2.2
+pkgver=24.2.3
 pkgrel=1
 epoch=1
 pkgdesc="Open-source OpenGL drivers with amdgpu fixes for the AMD BC-250 - 32-bit"
