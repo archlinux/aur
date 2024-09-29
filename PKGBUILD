@@ -1,8 +1,8 @@
 # Maintainer: meanlint <meanlint@outlook.com>
-# Maintainer: Robert Baker <reiichi001@gmail.com>
+# Contributor: Robert Baker <reiichi001@gmail.com>
 pkgname=xivlauncher-cn-bin
 pkgver=1.1.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Custom Launcher for Final Fantasy XIV Online CN"
 arch=('x86_64')
 url='https://github.com/ottercorp/XIVLauncher.Core'
@@ -18,7 +18,7 @@ options=('!strip')
 provides=("xivlauncher=${pkgver}")
 conflicts=("xivlauncher")
 source=(
-    "https://github.com/ottercorp/XIVLauncher.Core/releases/download/${pkgver}/XIVLauncher.Core-arch.tar.gz"
+    "XIVLauncher.Core.tar.gz::https://github.com/ottercorp/XIVLauncher.Core/releases/download/${pkgver}/XIVLauncher.Core-arch.tar.gz"
     "512.png"
     "XIVLauncher.desktop"
     "xivlauncher-core"
@@ -31,13 +31,11 @@ sha512sums=(
 )
 
 package() {
-    mkdir "XIVLauncher"
-    tar -xf "XIVLauncher.Core-arch.tar.gz" -C "XIVLauncher"
     install -d "${pkgdir}/usr/bin/"
     install -d "${pkgdir}/opt/XIVLauncher/"
     install -D -m644 "${srcdir}/XIVLauncher.desktop" "${pkgdir}/usr/share/applications/XIVLauncher.desktop"
     install -D -m644 "${srcdir}/512.png" "${pkgdir}/usr/share/pixmaps/xivlauncher.png"
-    cp -r "${srcdir}/XIVLauncher/." "${pkgdir}/opt/XIVLauncher/"
+    cp -r "${srcdir}/." "${pkgdir}/opt/XIVLauncher/"
     ln -s ../../opt/XIVLauncher/XIVLauncher.Core "${pkgdir}/usr/bin/XIVLauncher.Core"
     install -D -m755  "${srcdir}/xivlauncher-core" "${pkgdir}/usr/bin/xivlauncher-core"
 }
