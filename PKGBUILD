@@ -8,7 +8,7 @@ _pkgname="srb2-legacy"
 pkgname="${_pkgname}-git"
 pkgver=2.1.26.r48.g77835e0
 _dataver=2.1.25
-pkgrel=2
+pkgrel=3
 pkgdesc='Updated fork of Sonic Robo Blast 2 2.1.25'
 arch=('i686' 'x86_64' 'aarch64')
 license=('GPL')
@@ -21,7 +21,7 @@ conflicts=("${_pkgname}")
 source=("git+https://github.com/P-AS/srb2-legacy.git"
         "srb2legacy.desktop")
 sha256sums=('SKIP'
-            '269f901a56429f81fe5d20000437799cfe58e020162dd18e5cb69a79f386cd3e')
+            '532e93656cd9269038aae8d93b3b32d9ff05e0e2f107e403d2d5eb503e9a8992')
 
 pkgver() {
   cd "$_pkgname"
@@ -41,7 +41,7 @@ package() {
     "$pkgdir"/usr/bin/srb2legacy
 
   # icon + .desktop
-  install -Dm644 "$_pkgname"/src/sdl/SDL_icon.xpm \
-    "$pkgdir"/usr/share/pixmaps/srb2legacy.xpm
+  install -Dm644 "$_pkgname"/srb2.png \
+    "$pkgdir"/usr/share/icons/hicolor/256x256/apps/srb2legacy.png
   install -Dm644 srb2legacy.desktop "$pkgdir"/usr/share/applications/srb2legacy.desktop
 }
