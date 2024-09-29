@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=splayer-git
 _pkgname=SPlayer
-pkgver=3.0.0.alpha.1.r0.g62c9dc3
+pkgver=3.0.0.alpha.2.r2.g2b48713
 _electronversion=28
 _nodeversion=20
 pkgrel=1
