@@ -1,5 +1,22 @@
 
+APP_PROFILE="/etc/apparmor.d/usr.bin.archey4"
+LOCAL_APP_PROFILE="/etc/apparmor.d/local/usr.bin.archey4"
+
 post_install() {
+	# Handles AppArmor profile (see dh_apparmor).
+	if [ -f "$APP_PROFILE" ]; then
+		# Add the local/ include
+		test -e "$LOCAL_APP_PROFILE" || {
+			mkdir -p "$(dirname "$LOCAL_APP_PROFILE")"
+			install --mode 644 /dev/null "$LOCAL_APP_PROFILE"
+		}
+
+		# Reload the profile, including any abstraction updates
+		if aa-enabled --quiet 2>/dev/null; then
+			apparmor_parser -r -T -W "$APP_PROFILE" || true
+		fi
+	fi
+
 	# Creates a symbolic link providing `archey4` command alias.
 	ln -s -f /usr/bin/archey /usr/bin/archey4
 }
@@ -12,5 +29,23 @@ pre_remove() {
 	# Removes symbolic link created by `post_install`.
 	if [ -L /usr/bin/archey4 ]; then
 		rm /usr/bin/archey4
+	fi
+
+	# Removes the AppArmor definition from kernel.
+	if aa-enabled --quiet 2>/dev/null; then
+		apparmor_parser -R "$APP_PROFILE" || true
+	fi
+}
+
+post_remove() {
+	# Handles AppArmor profile (see dh_apparmor).
+	if ! [ -e "$APP_PROFILE" ] ; then
+		rm -f /etc/apparmor.d/disable/usr.bin.archey4 || true
+		rm -f /etc/apparmor.d/force-complain/usr.bin.archey4 || true
+		rm -f "$LOCAL_APP_PROFILE" || true
+		rm -f /var/cache/apparmor/*/usr.bin.archey4 || true
+		rmdir /etc/apparmor.d/disable 2>/dev/null || true
+		rmdir /etc/apparmor.d/local   2>/dev/null || true
+		rmdir /etc/apparmor.d         2>/dev/null || true
 	fi
 }

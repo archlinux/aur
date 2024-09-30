@@ -45,6 +45,9 @@ package() {
 	# Configuration file.
 	install -D -m0644 config.json "${pkgdir}/etc/${pkgname}/config.json"
 
+	# AppArmor profile.
+	install -D -m0644 config.json "${pkgdir}/etc/apparmor.d/usr.bin.${pkgname}"
+
 	# Manual page.
 	install -D -m0644 dist/archey.1 "${pkgdir}/usr/share/man/man1/archey.1"
 
