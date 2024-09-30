@@ -1,5 +1,5 @@
 # Maintainer: Andrii Berezhynskyi <microsolutions_harebrain@aleeas.com>
-pkgname=scrolex
+pkgname=scrolex-bin
 pkgver=0.1.0
 pkgrel=2
 pkgfullver=0.1.0-alpha+2
