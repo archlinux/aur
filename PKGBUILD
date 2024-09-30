@@ -8,11 +8,12 @@ pkgver=1.0.20240711
 pkgrel=1
 license=('GPLv2')
 provides=("AMNEZIAWG-MODULE=${pkgver}")
-_kernel=$(pacman -Q linux | awk '{print $2}' | sed "s,.a.*,,g")
+depends=("linux")
+_kernel=$(pacman -Q linux | awk '{print $2}' | sed "s,.[a-zA-Z].*,,g")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/amnezia-vpn/amneziawg-linux-kernel-module/archive/refs/tags/v${pkgver}.tar.gz"
         "https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-${_kernel}.tar.xz")
 sha512sums=('0499fc3c29ceaa3e57611fd86c943e57b9621aa2db31f8fdafcfe0ff0dfaf5aa07381d462d9b194c8ea206f5eb9d1160976bfc6d0fdaf112b81b87ad3d391538'
-            '329c1f94008742e3f0c2ce7e591a16316d1b2cb9ea4596d4f45604097e07b7aa2f64afa40630a07f321a858455c77aa32ba57b271932ddcf4dc27863f9081cea')
+            'SKIP')
 install="amneziawg-linux.install"
 
 build() {
@@ -23,5 +24,5 @@ build() {
 
 package() {
     cd ${srcdir}/amneziawg-linux-kernel-module-${pkgver}/src
-    install -Dm644 "${srcdir}/amneziawg-linux-kernel-module-${pkgver}/src/amneziawg.ko" "$pkgdir/usr/lib/modules/$(uname -r)/kernel/drivers/net/wireguard/amneziawg.ko"
+    install -Dm644 "${srcdir}/amneziawg-linux-kernel-module-${pkgver}/src/amneziawg.ko" "$pkgdir/usr/lib/modules/$(ls /usr/lib/modules/ | grep arch | sort -u | tail -1)/kernel/drivers/net/wireguard/amneziawg.ko"
 }
