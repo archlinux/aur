@@ -1,4 +1,4 @@
-# Maintainer:
+# Maintainer: snit <snit@cock.li>
 # Contributor: Alice Jenkinson <virtual.aur at zero-x dot nz>
 
 _pkgname="katawa-shoujo"
