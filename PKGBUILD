@@ -1,17 +1,16 @@
-# Maintainer : SpepS <dreamspepser at yahoo dot it>
-# Contributor: Frikilinux <frikilinux at frikilinux.com.ar>
+# Maintainer: Mike Pento <mpento@darkforge.net>
 
 pkgname=lib32-gtk-engine-equinox
 pkgver=1.50
-pkgrel=2
-pkgdesc="A heavily modified version of the beautiful Aurora engine"
-url="http://gnome-look.org/content/show.php/Equinox+GTK+Engine?content=121881"
+pkgrel=3
+pkgdesc="A heavily modified version of the beautiful Aurora engine (lib32)"
+url="https://launchpad.net/equinox"
 license=('GPL')
 arch=('i686' 'x86_64')
 depends=('lib32-gtk2' 'gtk-engine-equinox')
 makedepends=('libtool')
 options=('!libtool')
-source=("http://gnome-look.org/CONTENT/content-files/121881-equinox-$pkgver.tar.gz")
+source=(https://launchpad.net/ubuntu/+archive/primary/+sourcefiles/gtk2-engines-equinox/$pkgver-0ubuntu4/gtk2-engines-equinox_$pkgver.orig.tar.gz)
 sha256sums=('0cf8b8cc841e0da7d4a08ab5a70d3bb330fd76bdcb03165a47aaddcd47e02227')
 
 build() {
