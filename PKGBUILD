@@ -5,7 +5,7 @@
 
 _pkgname=tty0tty
 pkgname=tty0tty-dkms-git
-pkgver=1.2+64.r80.20240915.2639a39
+pkgver=1.2+65.r81.20240426.1ed0185
 pkgrel=1
 pkgdesc="tty0tty Virtual Serial Cable (DKMS and userspace variant)."
 arch=(
