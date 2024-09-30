@@ -8,7 +8,7 @@
 
 pkgname=guayadeque
 pkgver=0.5.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Lightweight music player"
 arch=(x86_64)
 url="https://github.com/thothix/guayadeque"
@@ -22,13 +22,15 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/thothix/guayadeque/arch
 sha256sums=('42a86a2c8ead46a1cc6cd848d9d0e30ec07954f60031f3846f8f929a90508daf')
 
 build() {
+  # buildtype None introduce problems
+
   local _flags=(
     -DwxWidgets_CONFIG_EXECUTABLE=/usr/bin/wx-config
     -D_GUREVISION_:STRING="${pkgrel}"
   )
 
   cmake -B build -S "guayadeque-${pkgver}" -Wno-dev \
-    -DCMAKE_BUILD_TYPE=None \
+    -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
     "${_flags[@]}"
 
