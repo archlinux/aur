@@ -1,6 +1,6 @@
 pkgbase = ktailctl
 	pkgdesc = GUI to monitor and manage Tailscale
-	pkgver = 0.18.0
+	pkgver = 0.18.1
 	pkgrel = 1
 	url = https://github.com/f-koehler/KTailctl
 	arch = x86_64
@@ -26,8 +26,8 @@ pkgbase = ktailctl
 	depends = qt6-declarative
 	depends = qt6-svg
 	depends = tailscale
-	source = git+https://github.com/f-koehler/KTailctl.git#tag=v0.18.0?signed
+	source = git+https://github.com/f-koehler/KTailctl.git#tag=v0.18.1?signed
 	validpgpkeys = C5DC80511469AD81C84E3564D55A35AFB2900A11
-	sha256sums = 353902b12fd2296734980d82503a7808add586584872baed14d7c56401545601
+	sha256sums = 030f999ddc09e225051de5d67f418435dc849611fe67564165a43be49984ea0b
 
 pkgname = ktailctl
