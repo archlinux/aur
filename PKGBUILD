@@ -1,12 +1,12 @@
 # Maintainer: thialfi17 <thialfi17+arch@gmail.com>
 pkgname=lash-git
 _pkgname=lash
-pkgver=r21.ef251a9
+pkgver=r27.96998c0
 pkgrel=1
 pkgdesc='Symlink manager for dotfiles - a GNU Stow alternative'
 arch=('any')
 url='https://github.com/thialfi17/lash'
-license=('GPL3')
+license=('GPL-3.0-only')
 makedepends=('cargo' 'git')
 source=("git+https://github.com/thialfi17/lash")
 sha256sums=('SKIP')
@@ -17,11 +17,13 @@ pkgver() {
 }
 
 prepare() {
+  export RUSTUP_TOOLCHAIN=stable
   cd "$_pkgname"
   cargo fetch --locked --target "$(rustc -vV | sed -n 's|host: ||p')"
 }
 
 build() {
+  export RUSTUP_TOOLCHAIN=stable
   cd "$srcdir/$_pkgname"
 
   cargo build --frozen --release --target-dir target
@@ -29,6 +31,7 @@ build() {
 }
 
 check() {
+  export RUSTUP_TOOLCHAIN=stable
   cd "$srcdir/$_pkgname"
   cargo test --workspace --frozen
 }
