@@ -4,24 +4,22 @@
 
 pkgname=wgrib2
 pkgver=3.4.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Utility to read and write grib2 files"
 arch=('x86_64')
 url="https://github.com/NOAA-EMC/wgrib2"
 license=('GPL' 'Apache' 'custom')
-depends=('netcdf' 'hdf5' 'libaec')
+depends=('netcdf' 'hdf5' 'libaec' 'nceplibs-ip' 'openjpeg2')
 makedepends=('gcc-fortran' 'cmake')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/NOAA-EMC/wgrib2/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('ecbce2209c09bd63f1bca824f58a60aa89db6762603bda7d7d3fa2148b4a0536')
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
-  cmake -B build -DUSE_IPOLATES=OFF
+  cmake -B build -S "$srcdir/$pkgname-$pkgver" -DCMAKE_INSTALL_PREFIX="/usr" -DUSE_OPENJPEG=ON
   cmake --build build
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
-  install -Dm755 build/wgrib2/wgrib2 "$pkgdir/usr/bin/$pkgname"
-  install -Dm644 wgrib2/LICENSE-wgrib2 "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  DESTDIR="$pkgdir" cmake --install build
+  install -Dm644 "$srcdir/$pkgname-$pkgver/wgrib2/LICENSE-wgrib2" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
