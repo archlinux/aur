@@ -1,14 +1,14 @@
 pkgbase = rcs-fast-import
 	pkgdesc = Unpack a Git fast-import stream into an RCS file tree
-	pkgver = 1.2
+	pkgver = 1.4
 	pkgrel = 1
 	url = http://www.catb.org/esr/rcs-fast-import/
 	arch = any
 	license = BSD
-	makedepends = xmlto
+	makedepends = asciidoctor
 	depends = python
 	depends = rcs
-	source = https://gitlab.com/esr/rcs-fast-import/-/archive/1.2/rcs-fast-import-1.2.tar.gz
-	b2sums = 1909cced202cc537b01bce0c445fef2e6c1f6816d34f11264249b006147347199b420c897f3058819a2361e3f5391b37236bb60a972226db4ca8bd4c504dce35
+	source = https://gitlab.com/esr/rcs-fast-import/-/archive/1.4/rcs-fast-import-1.4.tar.gz
+	b2sums = e70f1fec45607fad07ee7e1944a94019c0fbb8dcd7d95787a95d28d6460dfa6d0248c5c65dfebc22b5640b5a2aaad79995a9f9671224f12d125dd249246be5cc
 
 pkgname = rcs-fast-import

@@ -1,0 +1,25 @@
+From 5d4d5ead122bf04fcd8851a34ca6984c8998295e Mon Sep 17 00:00:00 2001
+From: Mike Swanson <mikeonthecomputer@gmail.com>
+Date: Mon, 30 Sep 2024 09:08:26 -0700
+Subject: [PATCH] Fix a fat-finger typo breaking manpage file name
+
+---
+ rcs-fast-import.adoc | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/rcs-fast-import.adoc b/rcs-fast-import.adoc
+index bd07b08..0476412 100644
+--- a/rcs-fast-import.adoc
++++ b/rcs-fast-import.adoc
+@@ -2,7 +2,7 @@
+ :doctype: manpage
+ 
+ == NAME ==
+-rcs-fast-inmport - unpack a fast-import stream into an RCS repository tree
++rcs-fast-import - unpack a fast-import stream into an RCS repository tree
+ 
+ == SYNOPSIS ==
+ *rcs-fast-import* [-v] [-u] [-l] [-p] [-V] [-?] [file...]
+-- 
+2.46.2
+
