@@ -8,8 +8,8 @@
 
 _pkgname=libtorrent
 pkgname=libtorrent-ipv6
-pkgver=0.13.8
-pkgrel=5
+pkgver=0.14.0
+pkgrel=1
 pkgdesc='BitTorrent library with a focus on high performance and good code, with ipv6 support'
 url='https://github.com/rakshasa/libtorrent'
 arch=('x86_64')
@@ -18,10 +18,10 @@ depends=('openssl' 'zlib')
 makedepends=('git')
 conflicts=("${_pkgname}")
 provides=("${_pkgname}")
-source=("$_pkgname::git+https://github.com/rakshasa/libtorrent.git#commit=91f8cf4b0358d9b4480079ca7798fa7d9aec76b5"
+source=("$_pkgname::git+https://github.com/rakshasa/libtorrent.git#commit=08fb6635ba249665cb08a4de1b955288d25c21e1"
         tracker-ipv6.patch)
-sha256sums=('a5dcc71582ab775981cb9133bf07392926f482843972c8874743f92f7f305851'
-            'c0b08f7dec58136ed705c46a07fcd10b1c2b828462486b7e1df25c499b910a15')
+sha256sums=('771623ec47ad6e30d39b717aa3eb7535720e822aadf1a87ed40794b6a20cecf8'
+            '9dd23bcea2a71c188d14701d9aa2318a011bd85b1c687fd86343e015033da379')
 
 prepare() {
     cd "${srcdir}/${_pkgname}"

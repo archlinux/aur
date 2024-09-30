@@ -1,27 +1,8 @@
-diff --git a/configure.ac b/configure.ac
-index 453e2936..e9f3b816 100644
---- a/configure.ac
-+++ b/configure.ac
-@@ -111,10 +111,10 @@ CC_ATTRIBUTE_UNUSED(
- )
- 
- AC_CONFIG_FILES([
--	libtorrent.pc
--	Makefile
--	src/Makefile
--	src/torrent/Makefile
-+  libtorrent.pc
-+  Makefile
-+  src/Makefile
-+  src/torrent/Makefile
-   test/Makefile
-   test/torrent/net/Makefile
-   test/net/Makefile
 diff --git a/scripts/ax_cxx_compile_stdcxx.m4 b/scripts/ax_cxx_compile_stdcxx.m4
 old mode 100755
 new mode 100644
 diff --git a/src/download/download_main.cc b/src/download/download_main.cc
-index e075038a..7541fb6d 100644
+index 8a990c1a..5b8671e7 100644
 --- a/src/download/download_main.cc
 +++ b/src/download/download_main.cc
 @@ -66,7 +66,7 @@ DownloadMain::DownloadMain() :
@@ -34,7 +15,7 @@ index e075038a..7541fb6d 100644
  
    m_tracker_list->slot_success() = std::bind(&TrackerController::receive_success, m_tracker_controller, std::placeholders::_1, std::placeholders::_2);
 diff --git a/src/download/download_wrapper.cc b/src/download/download_wrapper.cc
-index 304bddce..3fb45588 100644
+index eb059795..9950ddc4 100644
 --- a/src/download/download_wrapper.cc
 +++ b/src/download/download_wrapper.cc
 @@ -45,7 +45,6 @@ DownloadWrapper::DownloadWrapper() :
@@ -603,7 +584,7 @@ index bd7546a9..39ecec28 100644
  
  inline bool
 diff --git a/src/torrent/tracker_controller.cc b/src/torrent/tracker_controller.cc
-index ddbf6538..abf77793 100644
+index f111e8c2..8bdd5bf4 100644
 --- a/src/torrent/tracker_controller.cc
 +++ b/src/torrent/tracker_controller.cc
 @@ -1,51 +1,15 @@
@@ -667,7 +648,7 @@ index ddbf6538..abf77793 100644
  
  #define LT_LOG_TRACKER(log_level, log_fmt, ...)                         \
    lt_log_print_info(LOG_TRACKER_##log_level, m_tracker_list->info(), "tracker_controller", log_fmt, __VA_ARGS__);
-@@ -220,7 +184,7 @@ TrackerController::send_stop_event() {
+@@ -218,7 +182,7 @@ TrackerController::send_stop_event() {
      if (!(*itr)->is_in_use())
        continue;
  
@@ -676,7 +657,7 @@ index ddbf6538..abf77793 100644
    }
  
    // Timer...
-@@ -251,7 +215,7 @@ TrackerController::send_completed_event() {
+@@ -249,7 +213,7 @@ TrackerController::send_completed_event() {
      if (!(*itr)->is_in_use())
        continue;
  
@@ -685,7 +666,7 @@ index ddbf6538..abf77793 100644
    }
  
    // Timer...
-@@ -412,7 +376,7 @@ tracker_find_preferred(TrackerList::iterator first, TrackerList::iterator last,
+@@ -410,7 +374,7 @@ tracker_find_preferred(TrackerList::iterator first, TrackerList::iterator last,
    uint32_t preferred_time_last = ~uint32_t();
  
    for (; first != last; first++) {
@@ -694,7 +675,7 @@ index ddbf6538..abf77793 100644
  
      if (tracker_timeout != 0) {
        *next_timeout = std::min(tracker_timeout, *next_timeout);
-@@ -459,7 +423,7 @@ TrackerController::do_timeout() {
+@@ -457,7 +421,7 @@ TrackerController::do_timeout() {
          preferred = tracker_find_preferred(preferred, group_end, &next_timeout);
  
        } else {
@@ -703,7 +684,7 @@ index ddbf6538..abf77793 100644
  
          if (tracker_timeout != 0) {
            next_timeout = std::min(tracker_timeout, next_timeout);
-@@ -511,7 +475,7 @@ TrackerController::do_scrape() {
+@@ -509,7 +473,7 @@ TrackerController::do_scrape() {
  
      while (itr != group_end) {
        if ((*itr)->can_scrape() && (*itr)->is_usable()) {
@@ -1601,7 +1582,7 @@ index 2d6adcff..2ceb47db 100644
    
    virtual bool        is_busy() const;
 diff --git a/src/tracker/tracker_udp.cc b/src/tracker/tracker_udp.cc
-index 93493e47..2ce56638 100644
+index 2083797b..cd6f5639 100644
 --- a/src/tracker/tracker_udp.cc
 +++ b/src/tracker/tracker_udp.cc
 @@ -1,39 +1,3 @@
@@ -1693,19 +1674,19 @@ index 93493e47..2ce56638 100644
  
      manager->poll()->insert_write(this);
    }
-@@ -275,9 +239,9 @@ TrackerUdp::event_read() {
+@@ -274,9 +238,9 @@ TrackerUdp::event_read() {
+ 
      prepare_announce_input();
  
-     priority_queue_erase(&taskScheduler, &m_taskTimeout);
--    priority_queue_insert(&taskScheduler, &m_taskTimeout, (cachedTime + rak::timer::from_seconds(m_parent->info()->udp_timeout())).round_seconds());
-+    priority_queue_insert(&taskScheduler, &m_taskTimeout, (cachedTime + rak::timer::from_seconds(m_info->udp_timeout())).round_seconds());
+-    priority_queue_update(&taskScheduler, &m_taskTimeout, (cachedTime + rak::timer::from_seconds(m_parent->info()->udp_timeout())).round_seconds());
++    priority_queue_update(&taskScheduler, &m_taskTimeout, (cachedTime + rak::timer::from_seconds(m_info->udp_timeout())).round_seconds());
  
 -    m_tries = m_parent->info()->udp_tries();
 +    m_tries = m_info->udp_tries();
      manager->poll()->insert_write(this);
      return;
  
-@@ -325,20 +289,18 @@ TrackerUdp::prepare_connect_input() {
+@@ -324,20 +288,18 @@ TrackerUdp::prepare_connect_input() {
  
  void
  TrackerUdp::prepare_announce_input() {
@@ -1731,7 +1712,7 @@ index 93493e47..2ce56638 100644
  
    m_writeBuffer->write_64(completed_adjusted);
    m_writeBuffer->write_64(download_left);
-@@ -353,8 +315,8 @@ TrackerUdp::prepare_announce_input() {
+@@ -352,8 +314,8 @@ TrackerUdp::prepare_announce_input() {
      local_addr = localAddress->sa_inet()->address_n();
  
    m_writeBuffer->write_32_n(local_addr);
@@ -1742,7 +1723,7 @@ index 93493e47..2ce56638 100644
    m_writeBuffer->write_16(manager->connection_manager()->listen_port());
  
    if (m_writeBuffer->size_end() != 98)
-@@ -398,7 +360,7 @@ TrackerUdp::process_announce_output() {
+@@ -397,7 +359,7 @@ TrackerUdp::process_announce_output() {
    // Some logic here to decided on whetever we're going to close the
    // connection or not?
    close_directly();
@@ -1765,21 +1746,19 @@ index aaa7ff67..68a31ef6 100644
    
    const char*         type_name() const { return "tracker_udp"; }
 diff --git a/test/Makefile.am b/test/Makefile.am
-index cb00dce3..8d7e6f1d 100644
+index 0221796c..a988c565 100644
 --- a/test/Makefile.am
 +++ b/test/Makefile.am
-@@ -34,7 +34,9 @@ LibTorrent_Test_Common = \
- 	helpers/test_fixture.cc \
- 	helpers/test_fixture.h \
- 	helpers/test_thread.cc \
--	helpers/test_thread.h
-+	helpers/test_thread.h \
+@@ -37,6 +37,8 @@ LibTorrent_Test_Common = \
+ 	helpers/test_thread.h \
+ 	helpers/test_utils.h \
+ 	helpers/utils.h
 +	mock/http.cc \
 +	mock/http.h
  
  LibTorrent_Test_Torrent_Net_SOURCES = $(LibTorrent_Test_Common) \
  	torrent/net/test_address_info.cc \
-@@ -65,6 +67,16 @@ LibTorrent_Test_Torrent_Utils_SOURCES = $(LibTorrent_Test_Common) \
+@@ -67,6 +69,16 @@ LibTorrent_Test_Torrent_Utils_SOURCES = $(LibTorrent_Test_Common) \
  LibTorrent_Test_Torrent_SOURCES = $(LibTorrent_Test_Common) \
  	torrent/test_http.cc \
  	torrent/test_http.h \
@@ -1796,7 +1775,7 @@ index cb00dce3..8d7e6f1d 100644
  	\
  	torrent/object_test.cc \
  	torrent/object_test.h \
-@@ -74,16 +86,6 @@ LibTorrent_Test_Torrent_SOURCES = $(LibTorrent_Test_Common) \
+@@ -76,16 +88,6 @@ LibTorrent_Test_Torrent_SOURCES = $(LibTorrent_Test_Common) \
  	torrent/object_static_map_test.h \
  	torrent/object_stream_test.cc \
  	torrent/object_stream_test.h \
