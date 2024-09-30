@@ -1,0 +1,26 @@
+From bc0138caf12f9d214b085ce6f207684e61eabdcc Mon Sep 17 00:00:00 2001
+From: "Eric S. Raymond" <esr@thyrsus.com>
+Date: Mon, 23 Sep 2024 18:37:28 -0400
+Subject: [PATCH] Allow ' in branch names.
+
+Addresses GitLab bug #66: cvs-fast-export does not handle branch/tag name with apostrophe
+---
+ lex.l | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/lex.l b/lex.l
+index 1efecdb..5f985a5 100644
+--- a/lex.l
++++ b/lex.l
+@@ -80,7 +80,7 @@ YY_DECL;
+ 					BEGIN(INITIAL);
+ 					return TEXT_DATA;
+ 				}
+-<CONTENT>[-a-zA-Z_+%][-a-zA-Z_0-9+/%=.~^\\*?#!\[\]()<>]* {
++<CONTENT>[-a-zA-Z_+%][-a-zA-Z_0-9+/%=.~^\\*?#!'\[\]()<>]* {
+ 					/* CVS-like tag identifiers */
+ 					fast_export_sanitize(yyscanner, cvs);
+ 					yylval->atom = atom(yytext);
+-- 
+2.46.2
+
