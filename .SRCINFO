@@ -1,13 +1,14 @@
 pkgbase = gtk-theme-equinox
-	pkgdesc = Gtk theme for equinox engine
+	pkgdesc = Official themes for Equinox GTK engine.
 	pkgver = 1.50
-	pkgrel = 4
-	url = http://gnome-look.org/content/show.php?content=140449
+	pkgrel = 1
+	url = https://launchpad.net/~tiheum/+archive/ubuntu/equinox
 	arch = any
 	license = GPL2
 	depends = gtk-engine-equinox
 	optdepends = faenza-icon-theme: icons designed for this theme
 	optdepends = lib32-gtk-engine-equinox: for 32 bits applications
+	source = https://launchpad.net/~tiheum/+archive/ubuntu/equinox/+sourcefiles/equinox-theme/1.50/equinox-theme_1.50.tar.gz
+	sha256sums = 58e85d1a41824e1d6b12e122ee03ffaa27c913907d35ed38ee6e40c08c09fda0
 
 pkgname = gtk-theme-equinox
-

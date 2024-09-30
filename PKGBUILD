@@ -1,48 +1,25 @@
-# Contributor: mortzprk <mortz.prk@gmail.com>
-# Contributor: eolianoe <eolianoe At GoogleMAIL DoT com>
-# Contributor: Frikilinux <frikilinux at frikilinux.com.ar>
+# Maintainer: Mike Pento <mpento@darkforge.net>
 
 pkgname=gtk-theme-equinox
 pkgver=1.50
-pkgrel=4
-pkgdesc="Gtk theme for equinox engine"
-url="http://gnome-look.org/content/show.php?content=140449"
+pkgrel=1
+pkgdesc="Official themes for Equinox GTK engine."
+url="https://launchpad.net/~tiheum/+archive/ubuntu/equinox"
 license=('GPL2')
 arch=('any')
 depends=('gtk-engine-equinox')
 optdepends=('faenza-icon-theme: icons designed for this theme'
             'lib32-gtk-engine-equinox: for 32 bits applications')
-#sha256sums=('32b3cedfbc27e466289aa8a0b6d1f3f964a553956d94bf267bd42c749691823c')
-#noextract=("140449-equinox-themes-${pkgver}.tar.gz")
+
+source=(https://launchpad.net/~tiheum/+archive/ubuntu/equinox/+sourcefiles/equinox-theme/$pkgver/equinox-theme_$pkgver.tar.gz)
+sha256sums=('58e85d1a41824e1d6b12e122ee03ffaa27c913907d35ed38ee6e40c08c09fda0')
 
 package() {
-  local _filename=140449-equinox-themes-${pkgver}.tar.gz
-
-  cd ${srcdir}
-
-  curl -L -o ${_filename} $(curl -s -X POST https://www.gnome-look.org/dl \
-    -d 'file_id=1460966672&file_type=application/x-gzip&file_name=140449-equinox-themes-1.50.tar.gz&file_size=507470&project_id=1078580' | \
-    grep -o 'https://.*tar.gz')
-
-  echo "32b3cedfbc27e466289aa8a0b6d1f3f964a553956d94bf267bd42c749691823c ${_filename}" | sha256sum --check --status
-  if [ $? -ne 0 ]; then
-    echo "${_filename}: bad checksum, exiting"
-    exit 1
-  fi
-
-  mkdir -p "${pkgdir}/usr/share/themes"
-  tar xzf ${_filename} -C "${pkgdir}"/usr/share/themes
-
-  mv "${pkgdir}/usr/share/themes/Equinox Evolution.crx" \
-    "${pkgdir}/usr/share/themes/Equinox Evolution"
-
-  for theme in Dawn Dusk Midnight; do
-    mv "${pkgdir}/usr/share/themes/Equinox Evolution ${theme}.crx" \
-      "${pkgdir}/usr/share/themes/Equinox Evolution ${theme}"
-  done;
+  cd ${srcdir}/equinox-theme-${pkgver}
+  mkdir -pv "${pkgdir}/usr/share/themes"
+  mv -v Equinox* ${pkgdir}/usr/share/themes/
 
   cd "${pkgdir}/usr/share/themes/"
   find -type f -name "gtkrc" -exec sed -i 's/#include/include/g' {} \;
-
   chown -R root:root "${pkgdir}/usr/share/themes"
 }
