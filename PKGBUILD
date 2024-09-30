@@ -58,6 +58,7 @@ check() {
   test_project
   testDXF  # https://github.com/CadQuery/cadquery/issues/1550
   test_dxf_approx
+  test_dxf_text
   testExtrude # https://github.com/CadQuery/cadquery/issues/1550
   )
   printf -v _joined '%s and not ' "${_these_fail[@]}"
