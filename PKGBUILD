@@ -3,6 +3,8 @@
 # Contributor: Dominik Adrian Grzywak <starterx4 at gmail dot com>
 
 _pkgname="thorium-browser"
+pkgname="$_pkgname-bin"
+pkgbase="$pkgname"
 pkgver=126.0.6478.231
 pkgrel=4
 pkgdesc="Chromium fork focused on high performance and security"

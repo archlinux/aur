@@ -1,7 +1,7 @@
 # Maintainer:
 
 _pkgname="thorium-browser"
-pkgname="$_pkgname-bin"
+: ${pkgname:=$_pkgname-bin}
 
 : ${pkgver:=$(grep -Pom1 '^pkgver=\K\S+' "$startdir"/PKGBUILD)}
 : ${pkgrel:=$(grep -Pom1 '^pkgrel=\K.*' "$startdir"/PKGBUILD)}

@@ -1,7 +1,7 @@
 # Maintainer:
 
 _pkgname="thorium-browser-avx2"
-pkgname="$_pkgname-bin"
+: ${pkgname:=$_pkgname-bin}
 
 : ${pkgver:=$(grep -Pom1 '^pkgver=\K\S+' "$startdir"/PKGBUILD)}
 : ${pkgrel:=$(grep -Pom1 '^pkgrel=\K.*' "$startdir"/PKGBUILD)}
@@ -56,8 +56,12 @@ END
 }
 
 package() {
-  provides=("$_pkgname")
-  conflicts=("$_pkgname")
+  provides=(
+    $(printf '%s\n' "${pkgbase%-bin}" "$_pkgname" | sort -u)
+  )
+  conflicts=(
+    $(printf '%s\n' "${pkgbase%-bin}" "$_pkgname" | sort -u)
+  )
 
   depends+=(
     'alsa-lib'
