@@ -1,6 +1,6 @@
-diff -ura mesa-24.2.2/src/amd/addrlib/src/amdgpu_asic_addr.h mesa-24.2.2.new/src/amd/addrlib/src/amdgpu_asic_addr.h
---- mesa-24.2.2/src/amd/addrlib/src/amdgpu_asic_addr.h	2024-09-05 18:28:45.000000000 -0400
-+++ mesa-24.2.2.new/src/amd/addrlib/src/amdgpu_asic_addr.h	2024-09-16 02:02:05.445254690 -0400
+diff -ura mesa-24.2.3/src/amd/addrlib/src/amdgpu_asic_addr.h mesa-24.2.2.new/src/amd/addrlib/src/amdgpu_asic_addr.h
+--- mesa-24.2.3/src/amd/addrlib/src/amdgpu_asic_addr.h	2024-09-05 18:28:45.000000000 -0400
++++ mesa-24.2.3.new/src/amd/addrlib/src/amdgpu_asic_addr.h	2024-09-16 02:02:05.445254690 -0400
 @@ -87,7 +87,7 @@
  #define AMDGPU_RAVEN2_RANGE     0x81, 0x90 //# 129 <= x < 144
  #define AMDGPU_RENOIR_RANGE     0x91, 0xFF //# 145 <= x < max
