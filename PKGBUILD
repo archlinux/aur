@@ -4,7 +4,7 @@
 
 _pkgname=touchegg
 pkgname=${_pkgname}-nosystemd-git
-pkgver=2.0.17+3.r651.20231002.686bff3
+pkgver=2.0.17+4.r652.20240918.5b19185
 pkgrel=1
 pkgdesc='Linux multi-touch gesture recognizer (without systemd dependency; latest git checkout).'
 arch=(
