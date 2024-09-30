@@ -1,4 +1,4 @@
-#!/usr/bin/sh
+#!/bin/bash -e
 
 # Function to detect the OS and set the package manager
 detect_os_and_set_package_manager() {
