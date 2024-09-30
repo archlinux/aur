@@ -1,0 +1,16 @@
+pkgbase = python-torchpippy
+	pkgdesc = Pipeline Parallelism for PyTorch.
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/pytorch/pippy
+	arch = any
+	license = Apache
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python-packaging
+	depends = python-pytorch
+	source = python-torchpippy-0.2.0.tar.gz::https://github.com/pytorch/pippy/archive/refs/tags/v0.2.0.tar.gz
+	sha256sums = 4604fe4816310b75e81e3bb5c95500743cd7242cbaf03ff486857c4379c063b6
+
+pkgname = python-torchpippy
