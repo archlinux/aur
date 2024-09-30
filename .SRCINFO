@@ -1,6 +1,6 @@
 pkgbase = opencpn-plugin-weatherrouting
 	pkgdesc = Weather routing plugin for OpenCPN
-	pkgver = 1.15.17.0
+	pkgver = 1.15.18.6
 	pkgrel = 1
 	url = https://opencpn.org/OpenCPN/plugins/weatherroute.html
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = opencpn-plugin-weatherrouting
 	license = CCPL:by
 	makedepends = cmake
 	depends = opencpn
-	source = opencpn-plugin-weatherrouting-1.15.17.0.tar.gz::https://github.com/rgleason/weather_routing_pi/archive/refs/tags/v1.15.17.0.tar.gz
-	source = opencpn-plugin-weatherrouting-1.15.17.0-opencpnlibs.tar.gz::https://github.com/OpenCPN/opencpn-libs/archive/9e502bf1cfe1101e6f60e2dfb57a45e8a8fbccdc.tar.gz
-	b2sums = 3b74f478d2f66a0d5f97b5c83ddcafc0074375b8816efa002f5568a996df91da0540d2096a226c2b773367e4e03d61cc09703526083daf6f8159cbd20b26eb73
-	b2sums = c7fb21369f732cb4256997317f40c1ea269153782f879d8e4a7a72c4c31aa80053f810c0ed26f3ac8ae8142757d29f210366fee4d5d185c40926ad27f0c8d5c5
+	source = opencpn-plugin-weatherrouting-1.15.18.6.tar.gz::https://github.com/rgleason/weather_routing_pi/archive/refs/tags/v1.15.18.6.tar.gz
+	source = opencpn-plugin-weatherrouting-1.15.18.6-opencpnlibs.tar.gz::https://github.com/OpenCPN/opencpn-libs/archive/a001083af21de2e3faa970b245877a5ee5899aba.tar.gz
+	b2sums = db1c6f237f1547c6c2e4475290895dbdcd9a17ab01b367a633ae54dc8cc2988835b0e2cef6539dab19af8d7e3f9536b07f2d96774aa70a653b72be6727dc91fe
+	b2sums = 24215376af8780b00e3611f2f9c2f3a408afcddfffc25c408117e0219eb0c70ca7805af349acb7616b900498d7b8e821db6ec2e18109247e81969f08b98a74aa
 
 pkgname = opencpn-plugin-weatherrouting
