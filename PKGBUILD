@@ -5,7 +5,7 @@ _hkgname=ShellCheck
 _pkgname=shellcheck
 pkgname=$_pkgname-git
 pkgver=0.10.0.r52.g79e43c4
-pkgrel=2
+pkgrel=1
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 pkgdesc="Shell script analysis tool"
@@ -21,7 +21,7 @@ sha512sums=('SKIP')
 
 pkgver() {
     cd $_pkgname
-    git describe --long --tags | sed 's/-/.r/;s/-/./'
+    git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
