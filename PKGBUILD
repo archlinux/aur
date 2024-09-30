@@ -13,7 +13,7 @@ pkgname=(
   libnautilus-extension-typeahead
 )
 packager="Albert Vaca Cintora <albertvaka@gmail.com>"
-pkgver=46.2
+pkgver=47.0
 pkgrel=1
 pkgdesc="Default file manager for GNOME - Patched to bring back the 'typeahead find' feature"
 url="https://apps.gnome.org/Nautilus/"
@@ -28,8 +28,9 @@ depends=(
   glibc
   gnome-autoar
   gnome-desktop-4
-  gstreamer
+  graphene
   gst-plugins-base-libs
+  gstreamer
   gtk4
   gvfs
   hicolor-icon-theme
@@ -38,24 +39,25 @@ depends=(
   libgexiv2
   libportal
   libportal-gtk4
+  libx11
+  localsearch
   pango
-  tracker3
+  tinysparql
+  wayland
 )
 makedepends=(
   appstream-glib
   git
   gobject-introspection
-  graphene
   meson
   ninja
   pkgconfig
-  tracker3-miners
   glib2-devel
 )
 checkdepends=(python-gobject)
-_commit=840ff0c85188a15fd7e5e726a2ad2bb5531add83
+_commit=05f8e6e9bee25c894d2f3582649750737081253b
 source=(
-  "git+https://gitlab.gnome.org/albertvaka/nautilus.git#commit=$_commit"
+  "git+https://gitlab.gnome.org/xclaesse/nautilus.git#commit=$_commit"
 )
 b2sums=('SKIP')
 
@@ -100,7 +102,6 @@ package_nautilus-typeahead() {
   )
   optdepends=(
     'nautilus-sendto: Share files from the right click menu'
-    'tracker3-miners: Full text search and metadata-based renaming'
     'python-nautilus: Use extensions written in python'
   )
   install='post.install'
