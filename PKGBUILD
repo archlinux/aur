@@ -1,7 +1,7 @@
 # Maintainer: Giovan Battista "giomba" Rolandi <giomba at glgprograms dot it>
 pkgname=2cdt
 pkgver=1.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Create CDT/TZX for Amstrad/Spectrum out of raw files"
 arch=('x86_64')
 url="http://cpctech.cpcwiki.de/download/2cdt.zip"
