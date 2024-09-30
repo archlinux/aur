@@ -4,11 +4,12 @@
 _hkgname=ShellCheck
 _pkgname=shellcheck
 pkgname=$_pkgname-git
-pkgver=v0.10.0.r52.g79e43c4
-pkgrel=1
-provides=("shellcheck")
-conflicts=("shellcheck")
+pkgver=0.10.0.r52.g79e43c4
+pkgrel=2
+provides=("$_pkgname")
+conflicts=("$_pkgname")
 pkgdesc="Shell script analysis tool"
+pkgdesc+=" (latest git commit)"
 url="https://www.shellcheck.net"
 license=("GPL")
 arch=('x86_64')

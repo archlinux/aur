@@ -1,7 +1,7 @@
 pkgbase = shellcheck-git
-	pkgdesc = Shell script analysis tool
-	pkgver = v0.10.0.r52.g79e43c4
-	pkgrel = 1
+	pkgdesc = Shell script analysis tool (latest git commit)
+	pkgver = 0.10.0.r52.g79e43c4
+	pkgrel = 2
 	url = https://www.shellcheck.net
 	arch = x86_64
 	license = GPL
