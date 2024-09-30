@@ -2,16 +2,16 @@
 # Contributor: TwoFinger
 # Contributor: taij33n <bwbuiz@gmail.com>
 pkgname=picolisp
-pkgver=24.9.7
-pkgrel=3
+pkgver=24.9.28
+pkgrel=1
 pkgdesc="Fast and tiny 64-bit Lisp interpreter: OO, dynamic and functional (database, prolog, coroutines)."
 url="https://picolisp.com"
 arch=(x86_64)
 license=(MIT)
 depends=(glibc bash openssl libffi readline ncurses)
 makedepends=(git clang llvm)
-source=("pil21::git+https://github.com/picolisp/pil21.git#commit=88c5c68b684e3a65f832bed4c2e4d88f45999098")
-sha256sums=("bc8213403bcf4b6b8d2520068d11ef5ad65c8578d5d78722e62cf03d80faf06d")
+source=("pil21::git+https://github.com/picolisp/pil21.git#commit=9486820694a48d4d79099c4f758fb4565c57087e")
+sha256sums=('dfbd150a5389dff82ba4bb70707d163e58997d4561c8a10ace7ac0dda1fbc48a')
 prepare() {
   MAKEFILE="$srcdir/pil21/src/Makefile"
   LDFLAGS=-Wl,-z,relro,-z,now,-z,shstk
