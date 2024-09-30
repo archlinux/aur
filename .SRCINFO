@@ -1,6 +1,6 @@
 pkgbase = r-rpostgresql
 	pkgdesc = R Interface to the 'PostgreSQL' Database System
-	pkgver = 0.7.6
+	pkgver = 0.7.7
 	pkgrel = 1
 	url = https://cran.r-project.org/package=RPostgreSQL
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = r-rpostgresql
 	depends = r
 	depends = r-dbi
 	depends = postgresql-libs
-	source = https://cran.r-project.org/src/contrib/RPostgreSQL_0.7-6.tar.gz
-	sha256sums = 385939708b6a3657663409f91e165ded0ff5268d1dc6225e0f9b34764baf2d2c
+	source = https://cran.r-project.org/src/contrib/RPostgreSQL_0.7-7.tar.gz
+	sha256sums = f0593aa325cbabe7d7f984869e87cd86d350aeb9b9bf589191c9ebbb986c7d1c
 
 pkgname = r-rpostgresql
