@@ -1,16 +1,16 @@
 # Maintainer: Mike Swanson <mikeonthecomputer@gmail.com>
 
 pkgname=sccs2rcs
-pkgver=1.11
+pkgver=1.14
 pkgrel=1
 pkgdesc="Move an SCCS repository to RCS"
 arch=('any')
 url="http://www.catb.org/esr/$pkgname/"
 license=('BSD')
-makedepends=('xmlto')
+makedepends=('asciidoctor')
 depends=('sccs' 'python' 'rcs')
 source=("https://gitlab.com/esr/$pkgname/-/archive/$pkgver/$pkgname-$pkgver.tar.gz")
-sha512sums=('0170b4dc052a4d43767de941d0dee15e32c6f5d1689d402746bdd9655ed5de3a9ad2d2457cc5fb18edc5cfc891ea2804222a2556f0bf4704f845a8904f0e94bc')
+sha512sums=('0eb059ea27e2a14a1f90116d5382f77df69be8df8c8a663ec77397505ac2b75270e391dcb16e554e8181e957caa4679644a464b110706b71e8bb6b75d8049606')
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
