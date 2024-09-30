@@ -3,15 +3,15 @@
 _pkgname="qogir-cursor-theme"
 pkgname="${_pkgname}-git"
 gitname="Qogir-icon-theme"
-pkgver=r290.6f0e9603
+pkgver=r292.91880625
 pkgrel=1
 pkgdesc="An x-cursor theme inspired by Qogir theme and based on capitaine-cursors"
 arch=("any")
 url="https://github.com/vinceliuice/${gitname}"
 license=("GPL3")
 makedepends=("git")
-provides=("${_pkgname}")
-conflicts=(${provides[@]})
+provides=("${pkgname}")
+conflicts=("${_pkgname}")
 source=("git+${url}.git")
 sha256sums=("SKIP")
 
@@ -21,12 +21,12 @@ pkgver() {
 }
 
 package() {
-  install -d "${pkgdir}/usr/share/icons"
+  install -d "${pkgdir}/usr/share/icons/"
   cd "${srcdir}/${gitname}/src/cursors/"
-  cp -r "dist" "${pkgdir}/usr/share/icons/Qogir-cursors"
-  cp -r "dist-dark" "${pkgdir}/usr/share/icons/Qogir-dark-cursors"
-  cp -r "dist-manjaro" "${pkgdir}/usr/share/icons/Qogir-manjaro-cursors"
-  cp -r "dist-manjaro-dark" "${pkgdir}/usr/share/icons/Qogir-manjaro-dark-cursors"
-  cp -r "dist-ubuntu" "${pkgdir}/usr/share/icons/Qogir-ubuntu-cursors"
-  cp -r "dist-ubuntu-dark" "${pkgdir}/usr/share/icons/Qogir-ubuntu-dark-cursors"
+  cp -r dist/ ${pkgdir}/usr/share/icons/Qogir-cursors/
+  cp -r dist-dark/ ${pkgdir}/usr/share/icons/Qogir-white-cursors/
+  cp -r dist-ubuntu/ ${pkgdir}/usr/share/icons/Qogir-ubuntu-cursors/
+  cp -r dist-ubuntu-dark/ ${pkgdir}/usr/share/icons/Qogir-ubuntu-white-cursors/
+  cp -r dist-manjaro/ ${pkgdir}/usr/share/icons/Qogir-manjaro-cursors/
+  cp -r dist-manjaro-dark/ ${pkgdir}/usr/share/icons/Qogir-manjaro-white-cursors/
 }
