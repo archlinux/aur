@@ -959,3 +959,24 @@ Fixes:
 === Morgen 3.5.8
 New Features:
 - Schedule tasks from Obsidian: Sync your Obsidian Tasks to Morgen using the Emoji format. Schedule Obsidian tasks in your calendars and mark them as complete from Morgen. The two way sync allows for task status, done dates, and due dates to be updated in Morgen and synced with your Obsidian vault.
+
+
+=== Morgen 3.5.9
+New Features:
+- You can now change due dates of Morgen, Notion, Todoist, Linear, and Clickup tasks directly from the task panel. Updated due dates will be synced back to their source.
+- We added more options for task filtering, including due date and task size.
+
+Improvements:
+- New Obsidian integration: Choose your default, be it to import tasks from all notes or no notes.
+- New Obsidian integration: Selectively import from notes using the Frontmatter checkbox property called morgen-tasks-include. Hint: Add this property to your Obsidian templates to make it easily accessible in newly created notes.
+- New Obsidian integration: Wikilinks tags ([[ ]]) are no longer displayed in task titles imported by Morgen.
+- New Obsidian integration: The parsing of task IDs has been improved to correctly parse even when IDs are not the last property of a task line.
+- New Obsidian integration: Additionally, we released a new version of the Morgen Tasks Obsidian plugin with:
+- New Morgen Tasks Obsidian Pluging: Support for hiding IDs in read mode.
+- New Morgen Tasks Obsidian Pluging: Support for the Obsidian mobile app.
+- Since P4 is the default priority for all tasks in Todoist, this level is no longer displayed in Morgen. Instead, P4 tasks will be displayed as not having a priority.
+
+Fixes:
+- A problem causing an error during the re-connection of a calendar account with expired credentials has been fixed.
+- We fixed an issue causing the app to crash if a connected Obsidian vault was moved, renamed, or deleted.
+- An issue causing the Obsidian preferences tab not to be accessible for some users has been rectified.
