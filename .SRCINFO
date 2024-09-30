@@ -1,13 +1,13 @@
 pkgbase = python-pympler
 	pkgdesc = A development tool to measure, monitor and analyze the memory behavior of Python objects
-	pkgver = 1.0.1
+	pkgver = 1.1
 	pkgrel = 1
 	url = https://pypi.org/project/Pympler/
 	arch = any
 	license = Apache
 	makedepends = python-setuptools
 	depends = python
-	source = https://files.pythonhosted.org/packages/12/b7/9d17fbb2fde0b035dbd27e5d82dfbcd3fa990cf5a469cef8e89712d16113/Pympler-1.0.1.tar.gz
-	sha256sums = 993f1a3599ca3f4fcd7160c7545ad06310c9e12f70174ae7ae8d4e25f6c5d3fa
+	source = https://files.pythonhosted.org/packages/dd/37/c384631908029676d8e7213dd956bb686af303a80db7afbc9be36bc49495/pympler-1.1.tar.gz
+	sha256sums = 1eaa867cb8992c218430f1708fdaccda53df064144d1c5656b1e6f1ee6000424
 
 pkgname = python-pympler
