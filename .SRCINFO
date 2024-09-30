@@ -1,6 +1,6 @@
 pkgbase = python-pip-audit-git
 	pkgdesc = A tool for scanning Python environments for known vulnerabilities
-	pkgver = r596.e56d124
+	pkgver = r654.060cc5d
 	pkgrel = 1
 	url = https://github.com/pypa/pip-audit
 	arch = any
@@ -12,7 +12,6 @@ pkgbase = python-pip-audit-git
 	makedepends = python-build
 	makedepends = python-flit
 	makedepends = python-installer
-	makedepends = python-wheel
 	depends = python
 	depends = python-cachecontrol
 	depends = python-cyclonedx-lib

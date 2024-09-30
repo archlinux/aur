@@ -2,7 +2,7 @@
 
 pkgname=python-pip-audit-git
 _gitpkgname=pip-audit
-pkgver=r596.e56d124
+pkgver=r654.060cc5d
 pkgrel=1
 pkgdesc='A tool for scanning Python environments for known vulnerabilities'
 arch=('any')
@@ -26,7 +26,6 @@ makedepends=(
   'python-build'
   'python-flit'
   'python-installer'
-  'python-wheel'
 )
 conflicts=('python-pip-audit')
 provides=('python-pip-audit')
