@@ -1,29 +1,26 @@
-# Maintainer: Jakob Gahde <j5lx@fmail.co.uk>
+# Maintainer: Mike Pento <mpento@darkforge.net>
+# Contributor: Jakob Gahde <j5lx@fmail.co.uk>
 # Contributor: Doug Newgard <scimmia at archlinux dot info>
 
 pkgname=enventor
-pkgver=1.0.0
+pkgver=1.0.99
 pkgrel=1
 pkgdesc="Editor for EDC files (edje/efl)"
 arch=('i686' 'x86_64')
 url="https://www.enlightenment.org/about-enventor"
 license=('BSD')
 depends=('efl')
-source=("http://download.enlightenment.org/rel/apps/${pkgname}/${pkgname}-${pkgver}.tar.xz")
-sha256sums=('6756707381de81d3cd6c445f7735927aa4dc853afdb04354d5267078b32bd134')
+source=(git+https://git.enlightenment.org/enlightenment/${pkgname}.git)
+sha256sums=('SKIP')
 
 build() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
-
-  ./configure \
-    --prefix=/usr \
-    --disable-static
-
+  cd "${srcdir}/${pkgname}"
+  ./autogen.sh --prefix=/usr --disable-statc
   make
 }
 
 package() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}/${pkgname}"
 
   make DESTDIR="${pkgdir}" install
 
