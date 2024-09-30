@@ -25,12 +25,13 @@ build() {
   cd "LIEF-$pkgver"
   cmake \
     -B build \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DBUILD_SHARED_LIBS=ON \
-    -DLIEF_EXAMPLES=OFF \
-    -DLIEF_PYTHON_API=ON \
-    -DLIEF_OPT_NLOHMANN_JSON_EXTERNAL=ON \
-    -DLIEF_OPT_EXTERNAL_EXPECTED=ON
+    -G Ninja \
+    -D CMAKE_BUILD_TYPE=Release \
+    -D BUILD_SHARED_LIBS=ON \
+    -D LIEF_EXAMPLES=OFF \
+    -D LIEF_PYTHON_API=ON \
+    -D LIEF_OPT_NLOHMANN_JSON_EXTERNAL=ON \
+    -D LIEF_OPT_EXTERNAL_EXPECTED=ON
   cmake --build build
 
   cd api/python
