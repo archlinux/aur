@@ -70,8 +70,7 @@ options=(
 )
 source=(
   "https://mesa.freedesktop.org/archive/mesa-$pkgver.tar.xz"{,.sig}
-  0001-rusticl-do-not-use-CL-vector-types-in-bindings-and-c.patch
-  0002-adjust-navi10-range.patch
+  0001-adjust-navi10-range.patch
 )
 validpgpkeys=(
   946D09B5E4C9845E63075FF1D961C596A7203456 # Andres Gomez <tanty@igalia.com>
@@ -110,7 +109,6 @@ done
 
 sha256sums=('4ea18b1155a4544a09f7361848974768f6f73c19d88f63de2ec650be313b2d0c'
             'SKIP'
-            '26402e3e1c7efed6dced9d4989d8c79e5a57ad5f802e56b77e18d394b27a8580'
             '501661a0b2d2f3443986a01b9ef58fba0be1ca75c54d269b1269254a3c87f605'
             'ed646292ffc8188ef8ea4d1e0e0150fb15a5c2e12ad9b8fc191ae7a8a7f3c4b9'
             'a941429fea7e08bedec25e4f6785b6ffaacc6b755da98df5ef3e7dcf4a124c4f'
@@ -129,7 +127,6 @@ sha256sums=('4ea18b1155a4544a09f7361848974768f6f73c19d88f63de2ec650be313b2d0c'
             '901fa70d88b9d6c98022e23b4136f9f3e54e4662c3bc1bd1d84a42a9a0f0c1e9')
 b2sums=('3c480bd9f5948ae4d66a833cfc059b1b872fca989296a070deaa46aeb72298eaca6a3fa9d13574859623cec4a6af978f44d2c9562b9757be2257364c27600be6'
         'SKIP'
-        '251a228c47c1d91a2063defbd5dda07deff6d763a2de5ed6c01e514b0f2326f2550b6174e0e98c2161971dbb888f5028243fe9645f9dea4b54308f0ae68e4e17'
         '9f6dbb22a5ade8baec0cbd683c86da77ef66cd64f8a5d464965703e7da8cf2357bc0c0cf1b2196feb1000c465a10f3aa352eb5bd2fab3c9ffb72a8a70e8dee5d'
         'a6d47c903be6094423d89b8ec3ca899d0a84df6dbd6e76632bb6c9b9f40ad9c216f8fa400310753d392f85072756b43ac3892e0a2c4d55f87ab6463002554823'
         '9c34f1ab14ad5ae124882513e0f14b1d731d06a43203bdc37fa3b202dd3ce93dbe8ebb554d01bab475689fe6ffd3ec0cbc0d5365c9b984cb83fb34ea3e9e732e'
@@ -146,15 +143,11 @@ b2sums=('3c480bd9f5948ae4d66a833cfc059b1b872fca989296a070deaa46aeb72298eaca6a3fa
         'dd65c69d8d0ff343d36e31e6a4f4e11aeb01b1fd23d0db06d90f506ec2f2bb2c50422f6a73b48780e16e07c8d0addb374dd09cfabaf6230d5b2ba409dd3fa6cd'
         '7681b1a7497b5711e663773c1a7e076f333c06c10d3f289079a781c36f050c1620cc279742ea8e5b15ec48f3d6038a6079bbda7fee3ae8e1128bd916d53ed43a'
         '8bc6f68ed286bea617a2cfaf3949bb699d3a0466faeca735314a51596ce950e4ee57eda88154bd562c1728cfaff4cdb5bc1ba701b9d47a9c50d4c4f011bee975')
-# https://docs.mesa3d.org/relnotes.html
 
 prepare() {
   cd mesa-$pkgver
 
-  # Unbreak build with bindgen 0.70.1
-  patch -Np1 -i ../0001-rusticl-do-not-use-CL-vector-types-in-bindings-and-c.patch
-
-  patch -Np1 -i ../0002-adjust-navi10-range.patch
+  patch -Np1 -i ../0001-adjust-navi10-range.patch
 
   # Include package release in version string so Chromium invalidates
   # its GPU cache; otherwise it can cause pages to render incorrectly.
