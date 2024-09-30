@@ -1,55 +1,62 @@
-# Maintainer: Luke Shumaker <lukeshu@lukeshu.com>
-# Maintainer (Arch:shellcheck): Felix Yan <felixonmars@archlinux.org>
-# Contributor (Arch:shellcheck): Arch Haskell Team <arch-haskell@haskell.org>
+# Maintainer: Application-Maker <Application-Maker.Uinwad@erine.email>
+# Contributor: lukeshu <lukeshu@lukeshu.com>
 
 _hkgname=ShellCheck
 _pkgname=shellcheck
-_pkgver=0.4.6
-_gitrev='51e6bf809fc7157b60bdb2c499d6b769b48d0759'
-_gitdate='20171108'
 pkgname=$_pkgname-git
-pkgver="$_pkgver.git$_gitdate"
-provides=("$_pkgname=$pkgver")
-conflicts=("$_pkgname")
+pkgver=v0.10.0.r52.g79e43c4
 pkgrel=1
+provides=("shellcheck")
+conflicts=("shellcheck")
 pkgdesc="Shell script analysis tool"
-pkgdesc+=" (latest git commit)"
-url="http://www.shellcheck.net"
-license=("GPL3") # NB: community/shellcheck is erroneously GPL2
-arch=('i686' 'x86_64')
-depends=('ghc' "haskell-json" "haskell-mtl" "haskell-parsec" "haskell-quickcheck"
-         "haskell-regex-tdfa")
-source=("$_pkgname-$_gitrev.zip::https://github.com/koalaman/$_pkgname/archive/$_gitrev.tar.gz")
-sha512sums=('67a70c91ae7d7f01e522438f54f26db41567a1a6a59fad10739b53960a3469af768e38dd9e610ee188f4422fecf493bf11bf672c95760250c62f78a779eaf2de')
+url="https://www.shellcheck.net"
+license=("GPL")
+arch=('x86_64')
+depends=('ghc-libs' 'haskell-aeson' 'haskell-diff' 'haskell-fgl' 'haskell-quickcheck'
+         'haskell-regex-tdfa')
+makedepends=('ghc' 'pandoc' 'uusi')
+source=("git+https://github.com/koalaman/shellcheck")
+sha512sums=('SKIP')
 
+pkgver() {
+    cd $_pkgname
+    git describe --long --tags | sed 's/-/.r/;s/-/./'
+}
+
+prepare() {
+    cd $_pkgname
+    gen-setup
+}
 
 build() {
-    cd "${srcdir}/${_pkgname}-${_gitrev}"
+    cd $_pkgname
 
-    # NB: community/shellcheck doesn't --disable-library-vanilla; but
-    # it's required to build with current ghc/libraries.
-    runhaskell Setup configure -O \
-        --enable-shared --enable-executable-dynamic --disable-library-vanilla \
-        --prefix=/usr --docdir="/usr/share/doc/${_pkgname}" \
-        --dynlibdir=/usr/lib --libsubdir=\$compiler/site-local/\$pkgid
-    runhaskell Setup build
-    runhaskell Setup haddock --hoogle --html
+    runhaskell Setup configure -O --enable-shared --enable-executable-dynamic --disable-library-vanilla \
+        --prefix=/usr --docdir=/usr/share/doc/$_pkgname --datasubdir=$_pkgname --enable-tests \
+        --dynlibdir=/usr/lib --libsubdir=\$compiler/site-local/\$pkgid \
+        --ghc-option=-optl-Wl\,-z\,relro\,-z\,now \
+        --ghc-option='-pie'
+    runhaskell Setup build $MAKEFLAGS
     runhaskell Setup register --gen-script
     runhaskell Setup unregister --gen-script
     sed -i -r -e "s|ghc-pkg.*update[^ ]* |&'--force' |" register.sh
     sed -i -r -e "s|ghc-pkg.*unregister[^ ]* |&'--force' |" unregister.sh
+
+    ./manpage
+}
+
+check() {
+    cd $_pkgname
+    # https://github.com/koalaman/shellcheck/issues/2677
+    runhaskell Setup test --show-details=direct || echo "Tests failed"
 }
 
 package() {
-    cd "${srcdir}/${_pkgname}-${_gitrev}"
+    cd $_pkgname
 
-    install -D -m744 register.sh   "${pkgdir}/usr/share/haskell/register/${_pkgname}.sh"
-    install -D -m744 unregister.sh "${pkgdir}/usr/share/haskell/unregister/${_pkgname}.sh"
-    install -d -m755 "${pkgdir}/usr/share/doc/ghc/html/libraries"
-    ln -s "/usr/share/doc/${_pkgname}/html" "${pkgdir}/usr/share/doc/ghc/html/libraries/${_hkgname}"
+    install -D -m644 $_pkgname.1    "${pkgdir}/usr/share/man/man1/${pkgname}.1"
+    install -D -m744 register.sh   "${pkgdir}/usr/share/haskell/register/${pkgname}.sh"
+    install -D -m744 unregister.sh "${pkgdir}/usr/share/haskell/unregister/${pkgname}.sh"
     runhaskell Setup copy --destdir="${pkgdir}"
-    rm -f "${pkgdir}/usr/share/doc/${_pkgname}/LICENSE"
-
-    # Remove static libs
-    find "$pkgdir"/usr/lib -name "*.a" -delete
+    rm -f "$pkgdir"/usr/share/doc/$_pkgname/LICENSE
 }

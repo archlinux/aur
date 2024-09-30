@@ -1,21 +1,22 @@
 pkgbase = shellcheck-git
-	pkgdesc = Shell script analysis tool (latest git commit)
-	pkgver = 0.4.6.git20171108
+	pkgdesc = Shell script analysis tool
+	pkgver = v0.10.0.r52.g79e43c4
 	pkgrel = 1
-	url = http://www.shellcheck.net
-	arch = i686
+	url = https://www.shellcheck.net
 	arch = x86_64
-	license = GPL3
-	depends = ghc
-	depends = haskell-json
-	depends = haskell-mtl
-	depends = haskell-parsec
+	license = GPL
+	makedepends = ghc
+	makedepends = pandoc
+	makedepends = uusi
+	depends = ghc-libs
+	depends = haskell-aeson
+	depends = haskell-diff
+	depends = haskell-fgl
 	depends = haskell-quickcheck
 	depends = haskell-regex-tdfa
-	provides = shellcheck=0.4.6.git20171108
+	provides = shellcheck
 	conflicts = shellcheck
-	source = shellcheck-51e6bf809fc7157b60bdb2c499d6b769b48d0759.zip::https://github.com/koalaman/shellcheck/archive/51e6bf809fc7157b60bdb2c499d6b769b48d0759.tar.gz
-	sha512sums = 67a70c91ae7d7f01e522438f54f26db41567a1a6a59fad10739b53960a3469af768e38dd9e610ee188f4422fecf493bf11bf672c95760250c62f78a779eaf2de
+	source = git+https://github.com/koalaman/shellcheck
+	sha512sums = SKIP
 
 pkgname = shellcheck-git
-
