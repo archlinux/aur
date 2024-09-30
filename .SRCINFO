@@ -1,6 +1,6 @@
 pkgbase = r-broom
 	pkgdesc = Convert Statistical Objects into Tidy Tibbles
-	pkgver = 1.0.6
+	pkgver = 1.0.7
 	pkgrel = 1
 	url = https://cran.r-project.org/package=broom
 	arch = any
@@ -19,12 +19,12 @@ pkgbase = r-broom
 	optdepends = r-aer
 	optdepends = r-auc
 	optdepends = r-bbmle
-	optdepends = r-betareg
+	optdepends = r-betareg>=3.2.1
 	optdepends = r-biglm
 	optdepends = r-bingroup
 	optdepends = r-boot
 	optdepends = r-btergm>=1.10.6
-	optdepends = r-car
+	optdepends = r-car>=3.1.2
 	optdepends = r-cardata
 	optdepends = r-caret
 	optdepends = r-cluster
@@ -52,7 +52,7 @@ pkgbase = r-broom
 	optdepends = r-knitr
 	optdepends = r-ks
 	optdepends = r-lahman
-	optdepends = r-lavaan
+	optdepends = r-lavaan>=0.6.8
 	optdepends = r-leaps
 	optdepends = r-lfe
 	optdepends = r-lm.beta
@@ -61,6 +61,7 @@ pkgbase = r-broom
 	optdepends = r-lmtest>=0.9.38
 	optdepends = r-lsmeans
 	optdepends = r-maps
+	optdepends = r-margins
 	optdepends = r-mass
 	optdepends = r-mclust
 	optdepends = r-mediation
@@ -96,7 +97,7 @@ pkgbase = r-broom
 	optdepends = r-tseries
 	optdepends = r-vars
 	optdepends = r-zoo
-	source = https://cran.r-project.org/src/contrib/broom_1.0.6.tar.gz
-	b2sums = 2dbf8e26f79f7c92ae7c953e4a8a7de1494cea85c680982d075be5eed26a4a43c08558941bbbc96fc31c9bc6549dcd254466a66c7f1e72502d61f187b48d38bc
+	source = https://cran.r-project.org/src/contrib/broom_1.0.7.tar.gz
+	b2sums = 141c14cb1bbde194eaf0f0846e98c2a453b824bd65283273dae3927ab9577aaa63a8c3792069eac3330ea5b9c5080ca9d5e4d1bae4d920392d83293c1c80ea23
 
 pkgname = r-broom
