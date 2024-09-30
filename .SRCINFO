@@ -10,7 +10,6 @@ pkgbase = python-py-serializable
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-poetry-core
-	makedepends = python-wheel
 	depends = python
 	depends = python-defusedxml
 	options = !debug

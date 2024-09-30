@@ -10,7 +10,7 @@ url='https://github.com/madpah/serializable'
 license=('Apache-2.0')
 depends=('python' 'python-defusedxml')
 checkdepends=('python-lxml' 'xmldiff')
-makedepends=('python-build' 'python-installer' 'python-poetry-core' 'python-wheel')
+makedepends=('python-build' 'python-installer' 'python-poetry-core')
 options=('!debug' '!strip')
 
 source=(
