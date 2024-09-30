@@ -24,7 +24,6 @@ makedepends=(
   'python-build'
   'python-flit'
   'python-installer'
-  'python-wheel'
 )
 options=('!debug' '!strip')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/pypa/pip-audit/archive/refs/tags/v${pkgver}.tar.gz")
