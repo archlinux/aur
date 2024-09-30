@@ -6,7 +6,7 @@ pkgdesc="A fuse base file system for FlightGear scenery."
 url="https://sourceforge.net/p/flightgear/terrafs/ci/master/tree/"
 license=("GPL2")
 epoch=0
-pkgver=r3.20180714.fd20891
+pkgver=r4.20240923.aa2bdaa
 pkgrel=1
 arch=(
   'i686'
