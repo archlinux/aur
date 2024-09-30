@@ -1,0 +1,12 @@
+diff --git a/src/bsppp/bsppp.cpp b/src/bsppp/bsppp.cpp
+index ab6d23e7..661a9a8c 100644
+--- a/src/bsppp/bsppp.cpp
++++ b/src/bsppp/bsppp.cpp
+@@ -3,6 +3,7 @@
+ #include <filesystem>
+ #include <type_traits>
+ #include <utility>
++#include <algorithm>
+ 
+ #include <FileStream.h>
+ 
