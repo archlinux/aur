@@ -1,7 +1,7 @@
 pkgbase = valhalla
 	pkgdesc = Routing engine for OpenStreetMap.
-	pkgver = 3.1.4
-	pkgrel = 4
+	pkgver = 3.5.0
+	pkgrel = 1
 	url = https://github.com/valhalla/valhalla
 	arch = x86_64
 	license = custom:MIT
@@ -17,9 +17,8 @@ pkgbase = valhalla
 	depends = libspatialite
 	depends = luajit
 	depends = chrono-date
-	source = valhalla-3.1.4::git+https://github.com/valhalla/valhalla#tag=3.1.4
-	source = protobuf-ifdefs.patch
-	sha256sums = SKIP
+	depends = gdal
+	source = valhalla-3.5.0::git+https://github.com/valhalla/valhalla#tag=3.5.0
 	sha256sums = SKIP
 
 pkgname = valhalla
