@@ -11,6 +11,6 @@ source=("https://github.com/fam007e/nerd_fonts_installer/releases/download/v${pk
 sha256sums=('10446880c5f7e7c30a16886dc975dc597c4e88605acb0b7247e26218913ac6cd')
 
 package() {
-    cd "$srcdir/nerd_fonts_installer-${pkgver}"
+    cd "$srcdir"
     install -Dm755 "nerdfonts-installer" "$pkgdir/usr/bin/nerdfonts-installer"
 }
