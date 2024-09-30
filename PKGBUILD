@@ -3,22 +3,20 @@
 
 _pkgname=valhalla
 pkgname=$_pkgname
-pkgver=3.1.4
-pkgrel=4
+pkgver=3.5.0
+pkgrel=1
 pkgdesc="Routing engine for OpenStreetMap."
 arch=('x86_64')
 url="https://github.com/valhalla/valhalla"
 license=('custom:MIT')
-depends=('prime_server' 'boost-libs' 'protobuf' 'python' 'libspatialite' 'luajit' 'chrono-date')
+depends=('prime_server' 'boost-libs' 'protobuf' 'python' 'libspatialite' 'luajit' 'chrono-date' 'gdal')
 makedepends=('cmake' 'git' 'vim' 'jq' 'boost')
-source=("$_pkgname-$pkgver::git+${url}#tag=$pkgver" "protobuf-ifdefs.patch")
-sha256sums=('SKIP' 'SKIP')
+source=("$_pkgname-$pkgver::git+${url}#tag=$pkgver")
+sha256sums=('SKIP')
 
 prepare() {
   cd "$_pkgname-$pkgver"
   git submodule update --init --recursive
-
-  patch -Np1 -i ../protobuf-ifdefs.patch
 
   cmake -S. -Bbuild \
     -DCMAKE_C_FLAGS:STRING="${CFLAGS}" \
