@@ -1,7 +1,7 @@
 # Maintainer: Fabrix Xm <fabrix.xm@gmail.com>
 _pkgname=pixbufloader-qoi
 pkgname=$_pkgname-git
-pkgver=0.1.0.r6.5d6e8b6
+pkgver=0.2.0.r12.c1ecb4f
 pkgrel=1
 pkgdesc='GdkPixbuf loader for the Quite Ok Image format'
 arch=('x86_64' 'aarch64')
