@@ -27,7 +27,6 @@ makedepends=(
   'python-build'
   'python-installer'
   'python-poetry-core'
-  'python-wheel'
 )
 conflicts=('python-cyclonedx-lib-git')
 options=('!debug' '!strip')
