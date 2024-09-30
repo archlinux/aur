@@ -1,6 +1,6 @@
 pkgbase = no-risk-client-bin
 	pkgdesc = NoRiskClient Launcher to install and launch Minecraft with several new features
-	pkgver = 0.5.6
+	pkgver = 0.5.10
 	pkgrel = 1
 	url = norisk.gg
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = no-risk-client-bin
 	depends = webkit2gtk
 	options = !strip
 	options = !emptydirs
-	source_x86_64 = https://github.com/NoRiskClient/noriskclient-launcher/releases/download/v0.5.6/NoRiskClient-Linux.deb
-	sha512sums_x86_64 = 67d021b7cc7e943da36d444b05ff3b5b62a632256a81cb0632417264727f58d9c42b3c41ba7bd3267961e8e38fca53f2fc3acb4bcd85cb99ec7615e2320b39f5
+	source_x86_64 = https://github.com/NoRiskClient/noriskclient-launcher/releases/download/v0.5.10/NoRiskClient-Linux.deb
+	sha512sums_x86_64 = 18378591ff3c4381614638a3c4cf3eb5e726d8a21120132085233eddd755487cfc96451da1af5ea60b80c50b60cc58f0fcdb008a14a0365a7f1838581dd5e851
 
 pkgname = no-risk-client-bin
