@@ -4,7 +4,7 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=qt6-base-headless
-_qtver=6.7.2
+_qtver=6.7.3
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=(x86_64)
@@ -37,7 +37,7 @@ _pkgfn=qtbase
 source=(git+https://code.qt.io/qt/$_pkgfn#tag=v$pkgver
         qt6-base-cflags.patch
         qt6-base-nostrip.patch)
-sha256sums=('9ca28c2614cc755c65e1f817e61cb3b88549f46300d84ed34faf01717f8c24e5'
+sha256sums=('3da3df07b4bbd6a963af0c975ab6ff18c8c0aa73454048b0318899362c4adab9'
             '5411edbe215c24b30448fac69bd0ba7c882f545e8cf05027b2b6e2227abc5e78'
             '4b93f6a79039e676a56f9d6990a324a64a36f143916065973ded89adc621e094')
 
@@ -50,6 +50,7 @@ prepare() {
   git cherry-pick -n a8ef8ea55014546e0e835cd0eacf694919702a11 # https://bugreports.qt.io/browse/QTBUG-124386
   git cherry-pick -n 062f701a11d2c46660f5c5edd73f245477918a47 # Fix dependencies in pc files
   git cherry-pick -n 5ee9da89af7efe31ac45858bf1eb04e5155a3b50 # Fix dependencies in pc files
+  git cherry-pick -n 0f35729f2cb43f0eb94e2a8d5e2d478a2c6a5007 # Fix potential Plasma crashes
 }
 
 build() {
