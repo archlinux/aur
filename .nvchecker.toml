@@ -1,0 +1,4 @@
+[horcrux]
+source = "git"
+git = "https://github.com/jesseduffield/horcrux.git"
+prefix = "v"
