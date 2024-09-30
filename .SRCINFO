@@ -1,15 +1,15 @@
 pkgbase = spectre-meltdown-checker-git
 	pkgdesc = Spectre, Meltdown, Foreshadow, Fallout, RIDL, ZombieLoad vulnerability/mitigation checker
-	pkgver = 0.44.r7.g3a486e9
+	pkgver = 0.46.r29.g34c6095
 	pkgrel = 1
 	url = https://github.com/speed47/spectre-meltdown-checker
 	arch = any
-	license = GPL3
+	license = GPL-3.0-only
 	makedepends = git
-	provides = spectre-meltdown-checker
+	depends = sh
+	provides = spectre-meltdown-checker=0.46.r29.g34c6095
 	conflicts = spectre-meltdown-checker
 	source = git+https://github.com/speed47/spectre-meltdown-checker.git
 	sha256sums = SKIP
 
 pkgname = spectre-meltdown-checker-git
-
