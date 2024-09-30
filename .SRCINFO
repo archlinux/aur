@@ -1,6 +1,6 @@
 pkgbase = python-pysodium
 	pkgdesc = python libsodium wrapper
-	pkgver = 0.7.14
+	pkgver = 0.7.18
 	pkgrel = 1
 	url = https://github.com/stef/pysodium
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = python-pysodium
 	makedepends = python-wheel
 	depends = libsodium
 	depends = python
-	source = https://files.pythonhosted.org/packages/source/p/pysodium/pysodium-0.7.14.tar.gz
-	sha256sums = df7de837a93b81afe6db1fa11f643f41ee2a59a0e481ce18e59420d7a5ea974d
+	source = https://files.pythonhosted.org/packages/source/p/pysodium/pysodium-0.7.18.tar.gz
+	sha256sums = 781ada024456ac74c411193b82d94018c85c94130ea01a22dbec48b8ff458b07
 
 pkgname = python-pysodium

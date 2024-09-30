@@ -3,7 +3,7 @@
 # Maintainer: Hauke Rehfeld <aur.archlinux.org@haukerehfeld.de>
 _name="pysodium"
 pkgname="python-${_name}"
-pkgver=0.7.14
+pkgver=0.7.18
 _pkgsubdir="${_name}-${pkgver}"
 pkgrel=1
 pkgdesc="python libsodium wrapper"
@@ -13,7 +13,7 @@ license=(BSD)
 makedepends=("python-build" "python-installer" "python-setuptools" "python-wheel")
 depends=("libsodium" "python")
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/${_pkgsubdir}.tar.gz")
-sha256sums=('df7de837a93b81afe6db1fa11f643f41ee2a59a0e481ce18e59420d7a5ea974d')
+sha256sums=('781ada024456ac74c411193b82d94018c85c94130ea01a22dbec48b8ff458b07')
 
 build() {
   cd "$_pkgsubdir"
