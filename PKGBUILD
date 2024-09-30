@@ -2,7 +2,7 @@
 # Contributor: George Rawlinson <grawlinson@archlinux.org>
 
 pkgname=tern
-pkgver=2.2.1
+pkgver=2.2.2
 pkgrel=1
 pkgdesc='A standalone migration tool for PostgreSQL'
 arch=('x86_64' 'aarch64')
@@ -12,7 +12,7 @@ depends=('glibc')
 makedepends=('git' 'go')
 optdepends=('postgresql: for local instance of PostgreSQL')
 options=('!lto')
-_commit='dd10d29fe1bd703d59fbbdc2aa831a10ede050cc'
+_commit='e68caad7c5dd70f59e0c5be2d2095422cb9b6e39'
 source=("$pkgname::git+$url.git#commit=$_commit")
 sha256sums=('SKIP')
 
@@ -35,15 +35,10 @@ build() {
   export CGO_CPPFLAGS="${CPPFLAGS}"
   export CGO_CFLAGS="${CFLAGS}"
   export CGO_CXXFLAGS="${CXXFLAGS}"
+  export CGO_LDFLAGS="${LDFLAGS}"
+  export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
 
-  go build -v \
-    -trimpath \
-    -buildmode=pie \
-    -mod=readonly \
-    -modcacherw \
-    -ldflags "-linkmode external" \
-    -o build \
-    .
+  go build -v -o build .
 }
 
 package() {
