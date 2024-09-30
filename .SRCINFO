@@ -1,7 +1,7 @@
 pkgbase = spicetify-marketplace-bin
 	pkgdesc = Spicetify app that integrates a marketplace for extensions, themes and snippets
 	pkgver = 1.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/spicetify/spicetify-marketplace
 	install = spicetify-marketplace-bin.install
 	arch = any
