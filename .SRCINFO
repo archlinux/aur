@@ -1,4 +1,4 @@
-pkgbase = python-xeger
+pkgbase = python-xeger-git
 	pkgdesc = A library for generating random strings from a valid regular expression.
 	pkgver = r40.e650ded
 	pkgrel = 1
@@ -11,4 +11,4 @@ pkgbase = python-xeger
 	source = xeger::git+https://github.com/crdoconnor/xeger.git
 	sha256sums = SKIP
 
-pkgname = python-xeger
+pkgname = python-xeger-git
