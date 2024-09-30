@@ -1,0 +1,24 @@
+diff --git a/src/common/quantile.h b/src/common/quantile.h
+index 59bc3a4f7..6cc466579 100644
+--- a/src/common/quantile.h
++++ b/src/common/quantile.h
+@@ -15,6 +15,7 @@
+ #include <cstring>
+ #include <iostream>
+ #include <set>
++#include <tuple>
+ #include <vector>
+
+ #include "categorical.h"
+@@ -71,6 +72,11 @@ struct WQSummary {
+          << "value: " << e.value;
+       return os;
+     }
++
++    inline bool operator==(const Entry &rhs) const {
++      return std::tie(rmin, rmax, wmin, value) ==
++             std::tie(rhs.rmin, rhs.rmax, rhs.wmin, rhs.value);
++    }
+   };
+   /*! \brief input data queue before entering the summary */
+   struct Queue {

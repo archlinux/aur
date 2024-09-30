@@ -2,7 +2,7 @@
 # Contributor: AchmadFathoni <fathoni.id@gmail.com>
 
 pkgname=xgboost
-pkgver=2.0.3
+pkgver=2.1.1
 pkgrel=1
 pkgdesc="An optimized distributed gradient boosting library"
 arch=('x86_64')
@@ -11,15 +11,15 @@ license=('Apache')
 depends=(gcc-libs glibc)
 makedepends=(cmake cuda git nccl)
 source=("$pkgname"::"git+$url#tag=v${pkgver}"
-        "tuple.patch")
-sha256sums=('SKIP'
-            'dc7a2fa0b59a8cb8a92c4ba7d0dc923c8a439d15e9ed9510b45d1c3e0e09fb77')
+        "quantile.patch")
+b2sums=('SKIP'
+        '715904014923edefd2824abb05462578be80f50c5ea76eca2b21f8403d345045917feb837aa67ab7014f07172a48b58e1a7d7f3d63d3f563ceb7dc0125d7a89d')
 
 prepare() {
     cd "${pkgname}"
     git submodule update --init --recursive
-    # https://github.com/NVIDIA/cccl/issues/1519
-    git apply "${srcdir}/tuple.patch"
+    # https://github.com/dmlc/xgboost/pull/10797
+    git apply "${srcdir}/quantile.patch"
 }
 
 build() {
@@ -27,6 +27,7 @@ build() {
         -B build \
         -D CMAKE_BUILD_TYPE=Release \
         -D CMAKE_INSTALL_PREFIX=/usr \
+        -D CMAKE_CUDA_HOST_COMPILER=$NVCC_CCBIN \
         -D USE_CUDA=ON \
         -D USE_NCCL=ON \
         -S "${srcdir}/${pkgname}"
