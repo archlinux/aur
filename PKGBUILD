@@ -1,5 +1,5 @@
 # Based on katawa-shoujo-bin PKGBUILD written by Alice Jenkinson <virtual.aur at zero-x dot nz>
-# Maintainer: Jans Heikkinen < jansheikkinen at gmail dot com >
+# Maintainer: snit <snit@cock.li>
 
 _pkgname=katawa-shoujo-reengineered
 pkgname=${_pkgname}-bin
