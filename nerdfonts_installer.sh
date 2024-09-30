@@ -46,10 +46,8 @@ install_dependencies() {
     fi
 }
 
-# Detect OS and set package manager
+# Detect OS and set package manager, and then check and install dependencies
 detect_os_and_set_package_manager
-
-# Check and install dependencies
 install_dependencies
 
 # Create directory for fonts
