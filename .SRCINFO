@@ -1,11 +1,13 @@
 pkgbase = ttf-jf-openhuninn
 	pkgdesc = An opensource Chinese font by justfont, based on Kosugi Maru and Varela Round
-	pkgver = 2.0
-	pkgrel = 2
+	pkgver = 2.1
+	pkgrel = 1
 	url = https://justfont.com/huninn/
 	arch = any
 	license = OFL
-	source = https://github.com/justfont/open-huninn-font/archive/refs/tags/v2.0.zip
-	sha256sums = aab98f5b649c8d60b23dca506f3b1401dbc6fcd4d91e1e8509bc4ef4544bdafd
+	source = https://github.com/justfont/open-huninn-font/archive/refs/tags/v2.1.zip
+	source = 46-jf-openhuninn.conf
+	sha256sums = 80a2cefe53f0cf625250ec146fd892f930178b20576cf908bdbb7b3bd37acb64
+	sha256sums = b71e9b7e2c4c7066c7953eef2eac5275bea77564df1134dd0d5d3a9edaab20ee
 
 pkgname = ttf-jf-openhuninn
