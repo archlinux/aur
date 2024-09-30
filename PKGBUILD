@@ -24,7 +24,7 @@ source=("WinBox-${pkgver}.zip::https://download.mikrotik.com/routeros/winbox/${p
         "${pkgname}.desktop")
 install=${pkgname}.install
 sha256sums=('2361fe66fa8d14c05f1ab5db4c547b2162d70cd5330ac9c7e6ec29d1da5bae19'
-            '3c838f1093c08c72971cb856229ccf0ec25a2b0204737840df598ab5453d50f6')
+            '82593c0808505c9d6dcf2f0065e7a3d9ef8e01ceb6c999b66510d7417f7d3bd9')
 
 package() {
   install -D -m0755 "${srcdir}/WinBox" "${pkgdir}/usr/bin/WinBox"

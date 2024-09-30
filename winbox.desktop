@@ -3,7 +3,7 @@ Type=Application
 Version=1.0
 Name=Winbox
 Comment=GUI administration for Mikrotik RouterOS
-Exec=/usr/bin/env QT_QPA_PLATFORM=xcb /usr/bin/WinBox
+Exec=/usr/bin/env --unset=QT_QPA_PLATFORM /usr/bin/WinBox
 Icon=winbox
 Terminal=false
 Categories=Utility
