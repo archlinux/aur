@@ -1,6 +1,6 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=vpkedit-git
-pkgver=4.3.0.r2.ga55cbaa
+pkgver=4.3.0.r5.g1662846
 epoch=1
 pkgrel=1
 pkgdesc="A library and tool to create, read, and write Valve VPK archives"
@@ -63,8 +63,6 @@ prepare() {
 	done
 	git config submodule.docs/layout/doxygen-awesome-css.url "$srcdir/doxygen-awesome-css"
 	git -c protocol.file.allow=always submodule update
-
-	sed -i '6s/^/#include <algorithm>/' "$srcdir/$pkgname/src/shared/thirdparty/sourcepp/src/bsppp/bsppp.cpp"
 }
 
 build() {
