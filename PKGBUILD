@@ -4,8 +4,8 @@
 
 pkgname=papis-git
 _pkgname=papis
-pkgver=0.13.r443.gb6fe8962
-pkgrel=4
+pkgver=0.13.r509.g9b270726
+pkgrel=1
 pkgdesc="Command-line document and bibliography manager"
 arch=('any')
 url="https://github.com/papis/papis"
@@ -49,8 +49,6 @@ optdepends=(
 makedepends=('git'
     'python-build'
     'python-installer'
-    'python-wheel'
-
     'python-hatchling'
 
     'python-sphinx-click'
