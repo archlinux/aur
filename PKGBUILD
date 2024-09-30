@@ -14,8 +14,8 @@ depends=(libxcb libxfixes nspr alsa-lib libcups at-spi2-core libxrandr libdrm li
 depends+=(libx11 glibc bash expat libxext libxtst dbus libxi gcc-libs glib2)
 url='http://www.sejda.com/desktop'
 source=("https://sejda-cdn.com/downloads/sejda-desktop_${pkgver}_amd64.deb")
-md5sums=('379927787ffc4791e1fc12562795988a')
-sha512sums=('134f56dd2b1f24d86195a9d932bab0d56ea30f00a148298f0ab7cfa2b63f45f74fc5135c307dfd8a9e1806c4029ce1359e345e9dc4fa6cfc3e2fb82fd1e12f50')
+md5sums=('2b7950ce803af32df9031ed209517eb0')
+sha512sums=('a632548dd2798d2e911acec7dcd632f2848e38620143728705907d4271c8c56c1f6797e64a709668f7bcf0ca0e7b899b760de003a13618969d4d8fbfd23f5a2a')
 options=('!strip')
 
 prepare() {
