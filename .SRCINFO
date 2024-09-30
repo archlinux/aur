@@ -1,6 +1,6 @@
 pkgbase = spek-git
 	pkgdesc = Acoustic spectrum analyser.
-	pkgver = 0.8.3.r105.gf071c29
+	pkgver = v0.8.5.r15.gb1600d9
 	pkgrel = 1
 	url = http://spek.cc
 	arch = aarch64
@@ -17,11 +17,10 @@ pkgbase = spek-git
 	makedepends = gettext
 	depends = ffmpeg
 	depends = desktop-file-utils
-	depends = wxgtk2
+	depends = wxgtk3
 	provides = spek
 	conflicts = spek
 	source = spek-git::git+https://github.com/alexkay/spek
 	md5sums = SKIP
 
 pkgname = spek-git
-
