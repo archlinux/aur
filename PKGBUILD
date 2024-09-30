@@ -12,7 +12,7 @@ sha256sums=('7c7a1e212a742d0dea7b352eedf5f96430d5d0819b118703684dc758dcad9bb1')
 
 package() {
     # Change to source directory
-    cd "$srcdir/nerdfonts_installer-${pkgver}"
+    cd "$srcdir"
 
     # Compile the script into a binary
     shc -f nerdfonts_installer.sh -o nerdfonts-installer
