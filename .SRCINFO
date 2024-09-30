@@ -1,6 +1,6 @@
 pkgbase = phantom-editor-git
 	pkgdesc = Phantom is a lightweight terminal-based text editor written in Rust
-	pkgver = 0.7.7.r2.g55fc13e
+	pkgver = 0.7.9.r0.gb1ade08
 	pkgrel = 1
 	url = https://github.com/0xGingi/phantom
 	arch = x86_64
