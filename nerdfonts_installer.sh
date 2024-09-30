@@ -157,7 +157,7 @@ done
 for selection in $font_selection; do
     font_index=$((selection))  # Get the user input number
     font_index=$((font_index + 1))  # Increment by 1 for the correct index
-    font=$(echo "$fonts" | sed -n "${font_index}p")  # Get the font based on adjusted index
+    font=$(printf "$fonts" | sed -n "${font_index}p")  # Get the font based on adjusted index
     if [ -z "$font" ]; then
         printf "%b\n" '\033[0;31mInvalid selection: '"$selection"'\033[0m'
         continue
