@@ -1,12 +1,12 @@
 # Maintainer: username227 <gfrank227 at gmail dot com>
 # Contributor: HurricanePootis <hurricanepootis@protonmail.com>
 
-_pkgver=5115f64
-_date=20240821
+_pkgver=608383e
+_date=20240927
 _pkgname=unified-source-$_date-$_pkgver
 pkgname=citra
-pkgver=r10102.5115f64
-pkgrel=3
+pkgver=r10111.608383e
+pkgrel=1
 epoch=1
 arch=('x86_64')
 pkgdesc='An experimental open-source Nintendo 3DS emulator/debugger'
@@ -17,7 +17,7 @@ makedepends=('git' 'cmake' 'python' 'doxygen' 'rapidjson' 'llvm' 'qt6-tools' 'gc
 conflicts=('citra-appimage')
 options=('!lto')
 source=("https://github.com/PabloMK7/citra/releases/download/r$_pkgver/citra-unified-source-$_date-$_pkgver.tar.xz")
-sha256sums=('6f980ef54a133caf385b84e15894ffd313ffc272fbc4470968d1ca7461c13ed5')
+sha256sums=('ef7e726ba77535ebe7ea2b9bb75b16fed9148b70c5b94fb0a7939f6802c1d076')
 
 build() {
     # Fix to help cmake find libusb
