@@ -2,7 +2,7 @@
 pkgname=('hyprland-plugin-borders-plus-plus' 'hyprland-plugin-csgo-vulkan-fix' 'hyprland-plugin-hyprbars' 'hyprland-plugin-hyprexpo' 'hyprland-plugin-hyprtrails' 'hyprland-plugin-hyprwinwrap')
 pkgbase='hyprland-plugins'
 pkgver='0.43.0'
-pkgrel=2
+pkgrel=3
 pkgdesc='Official plugins for Hyprland'
 arch=('x86_64')
 url='https://github.com/hyprwm/hyprland-plugins'
@@ -26,6 +26,7 @@ build() {
 package_hyprland-plugin-borders-plus-plus() {
     pkgdesc="A Hyprland plugin that adds one or two additional borders to your windows"
     provides=(hyprland-plugin-borders-plus-plus)
+    conflicts=(hyprland-plugin-borders-plus-plus)
 
     cd "$srcdir/$pkgbase/borders-plus-plus"
     install -Dm755 borders-plus-plus.so "$pkgdir/usr/lib/hyprland-plugins/borders-plus-plus.so"
@@ -35,6 +36,7 @@ package_hyprland-plugin-borders-plus-plus() {
 package_hyprland-plugin-csgo-vulkan-fix() {
     pkgdesc="A Hyprland plugin that fixes custom resolutions on CS:GO with -vulkan"
     provides=(hyprland-plugin-csgo-vulkan-fix)
+    conflicts=(hyprland-plugin-csgo-vulkan-fix)
 
     cd "$srcdir/$pkgbase/csgo-vulkan-fix"
     install -Dm755 csgo-vulkan-fix.so "$pkgdir/usr/lib/hyprland-plugins/csgo-vulkan-fix.so"
@@ -44,6 +46,7 @@ package_hyprland-plugin-csgo-vulkan-fix() {
 package_hyprland-plugin-hyprbars() {
     pkgdesc="A Hyprland plugin that adds simple title bars to windows"
     provides=(hyprland-plugin-hyprbars)
+    conflicts=(hyprland-plugin-hyprbars)
 
     cd "$srcdir/$pkgbase/hyprbars"
     install -Dm755 hyprbars.so "$pkgdir/usr/lib/hyprland-plugins/hyprbars.so"
@@ -53,6 +56,7 @@ package_hyprland-plugin-hyprbars() {
 package_hyprland-plugin-hyprexpo() {
     pkgdesc="A Hyprland plugin that adds an expo-like workspace overview"
     provides=(hyprland-plugin-hyprexpo)
+    conflicts=(hyprland-plugin-hyprexpo)
 
     cd "$srcdir/$pkgbase/hyprexpo"
     install -Dm755 hyprexpo.so "$pkgdir/usr/lib/hyprland-plugins/hyprexpo.so"
@@ -62,6 +66,7 @@ package_hyprland-plugin-hyprexpo() {
 package_hyprland-plugin-hyprtrails() {
     pkgdesc="A Hyprland plugin that adds smooth trails behind moving windows"
     provides=(hyprland-plugin-hyprtrails)
+    conflicts=(hyprland-plugin-hyprtrails)
 
     cd "$srcdir/$pkgbase/hyprtrails"
     install -Dm755 hyprtrails.so "$pkgdir/usr/lib/hyprland-plugins/hyprtrails.so"
@@ -71,6 +76,7 @@ package_hyprland-plugin-hyprtrails() {
 package_hyprland-plugin-hyprwinwrap() {
     pkgdesc="A Hyprland clone of xwinwrap that allows you to put any app as a wallpaper"
     provides=(hyprland-plugin-hyprwinwrap)
+    conflicts=(hyprland-plugin-hyprwinwrap)
 
     cd "$srcdir/$pkgbase/hyprwinwrap"
     install -Dm755 hyprwinwrap.so "$pkgdir/usr/lib/hyprland-plugins/hyprwinwrap.so"
