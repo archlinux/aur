@@ -1,0 +1,14 @@
+--- a/data/rakarrack.desktop
++++ b/data/rakarrack.desktop
+@@ -1,8 +1,10 @@
+ [Desktop Entry]
++Version=1.0
+ Type=Application
+ Categories=AudioVideo;Audio;
+ Exec=rakarrack
+ Name=Rakarrack
+-Comment=Guitar Effects Processor
++GenericName=Digital audio effects processor
++Comment=Real-time audio effects processing rack for guitar
+ Terminal=false
+ Icon=rakarrack
