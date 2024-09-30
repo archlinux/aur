@@ -6,7 +6,7 @@
 # Contributor: Matheus <matheusgwdl@protonmail.com>
 # Contributor: Michele <king_duckz@gmx.com>
 
-declare -r _version_frequi="1.4.1"
+declare -r _version_frequi="1.4.2"
 readonly _pkgname="freqtrade"
 
 pkgname="python-freqtrade"
@@ -24,7 +24,7 @@ conflicts=("python-freqtrade-git")
 source=("${pkgname}-v${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz"
     "frequi-v${_version_frequi}.zip::https://github.com/freqtrade/frequi/releases/download/${_version_frequi}/freqUI.zip")
 sha512sums=("5b7095179388ec78891e3f8f9327020742f4ab5af77195727d96d207f85250a7699815b37f30d14bb5f9535e6d46be24ef196daf0203121172e7cdd5bc9d1b46"
-    "2dcb77bf002644f30646b2e391ffebb337622f764d15e2e3830735989832549a99fbd2c9fd7de36cf0d5bdb3ec7f43298a45667cee6c9b5281bad80f47c8c493")
+    "03a8b8da342e6f5ca1245ee6f0c972670b6b5132afe9a99b7a8304cb6dbc0dc5e0fe7032416c2dd6d7a0c553d8832e2cb7700c94fb7f1ac960403cd61a10a9aa")
 
 build()
 {
