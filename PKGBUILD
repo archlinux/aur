@@ -1,7 +1,7 @@
 pkgname=python-cadquery
 local _build_hash=c44978d60cee2d61bdadf4cb4498286b7034b4c6
 pkgver=2.4.0
-pkgrel=5
+pkgrel=6
 pkgdesc="A parametric CAD scripting framework based on PythonOCC"
 arch=(x86_64)
 url="https://github.com/CadQuery/cadquery"
@@ -37,6 +37,11 @@ pkgver() {
   git describe --tags | rev | cut -d- -f2- | rev | sed 's/-/.r/'
 }
 
+prepare() {
+  cd cadquery
+  curl --silent https://patch-diff.githubusercontent.com/raw/CadQuery/cadquery/pull/1589.patch | patch -p1
+}
+
 build() {
   cd cadquery
   python -m build --wheel --no-isolation
@@ -52,6 +57,7 @@ check() {
   testTextAlignment
   test_project
   testDXF  # https://github.com/CadQuery/cadquery/issues/1550
+  test_dxf_approx
   testExtrude # https://github.com/CadQuery/cadquery/issues/1550
   )
   printf -v _joined '%s and not ' "${_these_fail[@]}"
