@@ -5,7 +5,7 @@
 
 _pkgname=ugene
 pkgname=('ugene' 'ugene-cuda')
-pkgver=50.0
+pkgver=51.0
 pkgrel=1
 pkgdesc='A free open-source cross-platform bioinformatics software'
 arch=('x86_64')
@@ -16,6 +16,8 @@ depends=(
   libxtst
   qt5-script
   qt5-svg
+  qt5-websockets
+  qt5-networkauth
 )
 makedepends=(
   cuda
@@ -23,7 +25,7 @@ makedepends=(
   opencl-headers
 )
 source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/ugeneunipro/ugene/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('96addcd302ee6695792c211897eee563ca8014f3e819705f5379ba9d6f1288ba')
+sha256sums=('f4c142af5f1db1ec70c3744d264f3feefd302c4cca7e414eadd04dd86d421ff5')
 
 prepare() {
   cd ${srcdir}
