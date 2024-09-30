@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Heynote
+Exec=heynote %U
+Terminal=false
+Type=Application
+Icon=heynote
+StartupWMClass=Heynote
+Comment=A dedicated scratch pad
+Categories=Utility;
