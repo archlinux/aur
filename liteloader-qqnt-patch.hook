@@ -4,6 +4,8 @@ Operation=Install
 Operation=Upgrade
 Target=liteloader-qqnt-git
 Target=liteloader-qqnt-bin
+Target=linuxqq
+Target=linuxqq-nt-bwrap
 
 [Trigger]
 Type=Path

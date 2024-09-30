@@ -1,8 +1,8 @@
 # Maintainers: kobe-koto <admin[at]koto.cc>, Ketal_Q_ray <k[at]ketal.icu>
 pkgname="liteloader-qqnt-git"
 _pkgname="LiteLoaderQQNT"
-pkgver=latest
-pkgrel=6
+pkgver=1.2.2.r0.g3e8bcb3
+pkgrel=1
 pkgdesc="轻量, 简洁, 开源的 QQNT 插件加载器"
 arch=('any')
 url="https://github.com/LiteLoaderQQNT/LiteLoaderQQNT"
@@ -22,7 +22,7 @@ sha256sums=(
 	'SKIP'
 	'71f645653e7ed404e70027bab159571636a2311b633246836028ddb9c730b530'
 	'5f963c6ec64e93332f9a965d0ab85cf989df3607759c88162593baf31a0bd66f'
-	'e54fe014ef331ac8cfea88febb83939e3a5c03affd8cbe057361fe3620101a2f'
+	'8daf3d1b8846f1fd8221b33c05a4e9224677654e66194961ce545ab95c35a77f'
 	)
 
 pkgver() {
