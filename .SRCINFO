@@ -1,6 +1,6 @@
 pkgbase = python-ezdxf
 	pkgdesc = Python interface to DXF
-	pkgver = 1.3.0
+	pkgver = 1.3.3
 	pkgrel = 1
 	url = https://ezdxf.mozman.at/
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = python-ezdxf
 	depends = python-pyparsing
 	depends = python-numpy
 	depends = python-fonttools
-	source = git+https://github.com/mozman/ezdxf.git#commit=c64dd7133e2cd97abedddadd393898563c5dc67b
+	source = git+https://github.com/mozman/ezdxf.git#commit=1b7a64737e57d2ba90d9ee7d6dacac956c3783b3
 	sha256sums = SKIP
 
 pkgname = python-ezdxf

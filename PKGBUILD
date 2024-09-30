@@ -1,8 +1,8 @@
 # Maintainer: Grey Christoforo <first name [at] last name [dot] net>
 
 pkgname=python-ezdxf
-_commit=c64dd7133e2cd97abedddadd393898563c5dc67b
-pkgver=1.3.0
+_commit=1b7a64737e57d2ba90d9ee7d6dacac956c3783b3
+pkgver=1.3.3
 pkgrel=1
 pkgdesc="Python interface to DXF"
 arch=('x86_64')
