@@ -1,18 +1,18 @@
 # Maintainer: xEricL <aur@alpineclient.com>
 pkgname=alpine-client
 _gitname=pinnacle
-pkgver=1.8.2
+pkgver=1.8.3
 pkgrel=1
 pkgdesc='A lightweight multi-version Minecraft modpack'
 arch=('x86_64')
 url='https://alpineclient.com'
 license=('MPL2')
-depends=('glibc' 'xorg-xrandr' 'xdg-desktop-portal' 'zenity')
+depends=('glibc' 'tar' 'xorg-xrandr' 'xdg-desktop-portal' 'zenity')
 options=(!strip !debug)
 makedepends=('go>=1.23.1' 'git')
 source=("${_gitname}-${pkgver}.tar.gz::https://github.com/alpine-client/$_gitname/archive/$pkgver.tar.gz")
 # sha256sum is auto-generated in GitHub Actions workflow
-sha256sums=('3d7cc66f5167e7ff7779477e35aa3d17c36cfad431f3696f8dc7fb69d41dec4c')
+sha256sums=('5868f89a2c1fc6151b93e1132aa6d130f659656edadd2a40bb4348bf435e31d9')
 
 build() {
   export CGO_CPPFLAGS="${CPPFLAGS}"
