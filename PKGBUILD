@@ -54,6 +54,7 @@ makedepends=('git'
     'python-hatchling'
 
     'python-sphinx-click'
+    'python-sphinx-design'
 )
 checkdepends=(
     # For pytest

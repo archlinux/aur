@@ -28,6 +28,7 @@ pkgbase = papis-git
 	makedepends = python-wheel
 	makedepends = python-hatchling
 	makedepends = python-sphinx-click
+	makedepends = python-sphinx-design
 	depends = python
 	depends = python-arxiv
 	depends = python-beautifulsoup4
