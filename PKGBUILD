@@ -6,7 +6,7 @@
 _basename=deskflow
 pkgname=${_basename}-git
 pkgver=1.8.4.r1782.g31e1c8d
-pkgrel=1
+pkgrel=2
 pkgdesc="Deskflow lets you share one mouse and keyboard between multiple computers (git version)"
 arch=('x86_64')
 url="https://deskflow.org/"
@@ -56,7 +56,7 @@ prepare() {
 
 build() {
 	cd "$_basename"
-	cmake --build build -j$(nproc)
+	cmake --build build
 }
 
 check() {
