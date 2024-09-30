@@ -14,6 +14,7 @@ makedepends=('python-setuptools')
 checkdepends=('python-pytest')
 source=("${_name}::git+https://github.com/crdoconnor/xeger.git")
 sha256sums=('SKIP')
+provides=('python-xeger')
 
 pkgver() {
   cd "$_name"
