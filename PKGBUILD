@@ -30,7 +30,7 @@ b2sums=('SKIP')
 pkgver() {
   cd "${_pkgname}"
 
-  git describe --tags
+  git describe --tags --abbrev=0
 }
 
 prepare() {
