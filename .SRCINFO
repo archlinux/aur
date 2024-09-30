@@ -6,8 +6,7 @@ pkgbase = qogir-cursor-theme-git
 	arch = any
 	license = GPL3
 	makedepends = git
-	provides = qogir-cursor-theme-git
-	conflicts = qogir-cursor-theme
+	provides = qogir-cursor-theme
 	source = git+https://github.com/vinceliuice/Qogir-icon-theme.git
 	sha256sums = SKIP
 

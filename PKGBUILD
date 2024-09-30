@@ -10,8 +10,7 @@ arch=("any")
 url="https://github.com/vinceliuice/${gitname}"
 license=("GPL3")
 makedepends=("git")
-provides=("${pkgname}")
-conflicts=("${_pkgname}")
+provides=("${_pkgname}")
 source=("git+${url}.git")
 sha256sums=("SKIP")
 
