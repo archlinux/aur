@@ -6,20 +6,20 @@
 
 _pkgname=rtorrent
 pkgname=rtorrent-ipv6
-pkgver=0.9.8
-pkgrel=5
+pkgver=0.10.0
+pkgrel=1
 pkgdesc='Ncurses BitTorrent client based on libTorrent, with IPv6 patch'
 url='http://rakshasa.github.io/rtorrent/'
 license=('GPL')
 arch=('x86_64')
-depends=('libtorrent-ipv6=0.13.8' 'xmlrpc-c')
+depends=('libtorrent-ipv6=0.14.0' 'xmlrpc-c')
 makedepends=('git')
 conflicts=("${_pkgname}")
 provides=("${_pkgname}")
-source=("$_pkgname::git+https://github.com/rakshasa/${_pkgname}.git#commit=1da0e3476dcabbf74b2e836d6b4c37b4d96bde09"
+source=("$_pkgname::git+https://github.com/rakshasa/${_pkgname}.git#commit=f929594763f675d6eb160690c71187b23611a4b7"
         tracker-ipv6.patch)
-sha256sums=('8cdeba8958f9a035f5d6a5015dc43bcbefa1a2cb6b585fe0e1d598a5bdec9720'
-            'e8209b8ed89a1f7b40d2d0c5616be44c6fe072995c8420b17f5fa3dd4e3bcad1')
+sha256sums=('02f2cd3acc986a81d64e25d5340964a4119f8b4bcfb16b7c38010e3b3020a709'
+            '526c2471b51a08a6520f1716f323a7c12bebc45d416e154afc68be7f86f410cf')
 
 prepare() {
     cd "${srcdir}/${_pkgname}"

@@ -1,8 +1,8 @@
 diff --git a/configure.ac b/configure.ac
-index b6cc7c1..2a8c2fb 100755
+index ca7d9ca..5a49cec 100755
 --- a/configure.ac
 +++ b/configure.ac
-@@ -18,6 +18,8 @@ RAK_ENABLE_DEBUG
+@@ -20,6 +20,8 @@ RAK_ENABLE_DEBUG
  RAK_ENABLE_EXTRA_DEBUG
  RAK_ENABLE_WERROR
  
