@@ -2,7 +2,7 @@
 # Contributor: Romain Bazile <gromain.baz@gmail.com>
 
 pkgname=opencpn-plugin-celestial-navigation
-pkgver=2.4.40.0
+pkgver=2.4.41.0
 pkgrel=1
 pkgdesc="Implements nautical almanac for sun, moon, planets, and various navigational stars. Plugin for OpenCPN."
 arch=('x86_64' 'aarch64')
@@ -10,11 +10,11 @@ license=("GPL3")
 depends=('opencpn')
 makedepends=('cmake')
 url="https://opencpn.org/OpenCPN/plugins/celestialnav.html"
-source=("$pkgname-$pkgver.tar.gz::https://github.com/rgleason/celestial_navigation_pi/archive/refs/tags/v${pkgver}.tar.gz" "$pkgname-$pkgver-opencpnlibs.tar.gz::https://github.com/OpenCPN/opencpn-libs/archive/b22adb2031106fa60c0b3824b489eacd92930c79.tar.gz")
-b2sums=('e97f5e8a27aedfce43a4bfd03f822e508f776b14d9efd5c4098a97ad70d4bc776e303f90e60f0c605c18ddfa43a2cf50a66861c2ac644b83645a19ffa4e7afc4' 'ae9cd331174b198f481c2c8365d4ffc1de9fa3629a669091c2dade7ef6767d32c5b0244c9526eef566c549ab4bfe9de09e266f97c959b3372c078f57fb742160')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/rgleason/celestial_navigation_pi/archive/refs/tags/v${pkgver}.tar.gz" "$pkgname-$pkgver-opencpnlibs.tar.gz::https://github.com/OpenCPN/opencpn-libs/archive/a001083af21de2e3faa970b245877a5ee5899aba.tar.gz")
+b2sums=('7ee0be24e217396b11a69705bd1b71fece55bfbc55ea0490a1178406e71e7b3044b3c146b281493e9b2141488eb5de6818d7150aceb13d9ae4885a102ede015a' '24215376af8780b00e3611f2f9c2f3a408afcddfffc25c408117e0219eb0c70ca7805af349acb7616b900498d7b8e821db6ec2e18109247e81969f08b98a74aa')
 
 prepare() {
-  cp -r opencpn-libs-b22adb2031106fa60c0b3824b489eacd92930c79/* celestial_navigation_pi-${pkgver}/opencpn-libs
+  cp -r opencpn-libs-a001083af21de2e3faa970b245877a5ee5899aba/* celestial_navigation_pi-${pkgver}/opencpn-libs
 }
 
 build() {
