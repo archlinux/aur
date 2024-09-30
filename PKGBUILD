@@ -7,40 +7,41 @@
 
 
 pkgname=kdenlive-release-git
-pkgver=23.08.2.r18567
+pkgver=24.08.1.r20587
 pkgrel=1
-pkgdesc="A non-linear video editor. Following latest released branch in git."
+pkgdesc="A non-linear video editor for Linux using the MLT video framework. KF5 Frameworks (Latest Applications GIT Version)"
 arch=('i686' 'x86_64')
 url="http://www.kdenlive.org/"
-license=('GPL')
-depends=('purpose5'
-	'qt5-networkauth' 
-	'breeze-icons' 
-	'kfilemetadata5' 
-	'knewstuff5' 'knotifyconfig5' 
-	'mlt'
-	'hicolor-icon-theme')
-makedepends=('extra-cmake-modules' 'kdoctools5' 'git' 'v4l-utils')
+license=('GPL-2.0-or-later')
+depends=( 'kfilemetadata' 'knewstuff' 'knotifyconfig' 'doxygen' 'ktextwidgets' 'qt6-multimedia'
+	  'mlt' 'hicolor-icon-theme' 'purpose' 'qt6-networkauth' 'python'
+	)
+makedepends=('extra-cmake-modules' 'kdoctools5' 'git' 'v4l-utils' 'qt6-tools')
 optdepends=('ffmpeg: for FFmpeg plugin'
-	    'python: for speech to text scripts'
             'cdrkit: for creation of DVD ISO images'
             'dvdauthor: for creation of DVD'
             'dvgrab: for firewire capture'
             'libdv: for webcam capture (if FFmpeg is not installed)'
             'recordmydesktop: for screen capture'
-            'perl-image-exiftool: for exif information'
-            'mediainfo: for exif information'
             'xine-ui: for DVD preview'
-	    'oxygen-icons: optional for xfce')
+	    'perl-image-exiftool: for exif information'
+	    'mediainfo: for exif information'
+	    'oxygen-icons: optional for xfce'
+	    'breeze-icons: otional for default theme'
+	    'opentimelineio: interchange format for editorial timeline information'
+	    'python-setuptools: for python modules'
+	    'python-vosk-bin: open source speech recognition')
 provides=('kdenlive')
 conflicts=('kdenlive')
-#Source repo has changed recently. To save yourself from downloading the entire repo again
-#run the following command in the kdenlive repo directory:
-#git remote set-url origin https://invent.kde.org/multimedia/kdenlive
-##If there has been a branch switch, Arch will not build unless you supply --cleanbuild to makepkg
-source=('git+https://invent.kde.org/multimedia/kdenlive#branch=release/23.08')
+#source=(${pkgname}::git://anongit.kde.org/kdenlive)
+#source=(git://anongit.kde.org/kdenlive) 
+#The git repo has changed recently. To update your git repo to the new one
+#and save yourself from downloading the entire repo again, do:
+#git remote set-url https://invent.kde.org/multimedia/kdenlive
+#in the kdenlive git directory
+source=('git+https://invent.kde.org/multimedia/kdenlive#branch=release/24.08')
 sha1sums=('SKIP')
-install=$pkgname.install
+#install=$pkgname.install
 #options=(debug !strip)
 
 pkgver() {
@@ -49,24 +50,16 @@ pkgver() {
   echo "$(echo ${_ver}).r$(git rev-list --count HEAD)"
 }
 
-prepare(){
-  mkdir -p build
-}
-
 #To get debug info, change -DCMAKE_BUILD_TYPE=Release to either "Debug" or "RelWithDebInfo"
 
 build() {
-  cd build
-  cmake ../kdenlive \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DKDE_INSTALL_LIBDIR=lib \
-    -DKDE_INSTALL_USE_QT_SYS_PATHS=ON \
-    -DBUILD_TESTING=OFF
-  make
+  cmake -B build -S kdenlive \
+    -DBUILD_TESTING=OFF \
+    -DBUILD_QCH=ON
+  cmake --build build
 }
 
 package() {
-  make -C build DESTDIR="${pkgdir}" install
+  DESTDIR="$pkgdir" cmake --install build
 }
 
