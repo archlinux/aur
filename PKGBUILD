@@ -19,6 +19,7 @@ makedepends=('python-setuptools')
 source=("${_name}::git+https://github.com/luogu-dev/cyaron.git")
 sha256sums=('SKIP')
 validpgpkeys=('517E4E3C364C6C55C907284915AC252CE20E3FC8')
+provides=('python-cyaron')
 
 pkgver() {
   	cd ${srcdir}/${_name}
