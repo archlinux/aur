@@ -14,7 +14,7 @@ _minor=0
 pkgbase=linux-multimedia
 pkgver=${_major}
 #pkgver=${_major}.${_minor}
-pkgrel=1
+pkgrel=2
 pkgdesc='Linux Multimedia Optimized'
 url="https://www.kernel.org/"
 arch=(x86_64)
@@ -45,21 +45,11 @@ export KBUILD_BUILD_USER=$pkgbase
 export KBUILD_BUILD_TIMESTAMP="$(date -Ru${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EPOCH})"
 
 prepare() {
+
+  # Change to source directory
   cd $_srcname
 
-  echo "Setting version..."
-  echo "-$pkgrel" > localversion.10-pkgrel
-  echo "${pkgbase#linux}" > localversion.20-pkgname
-
-  make defconfig
-  make -s kernelrelease > version
-  make mrproper
-  
-  ## --- Patches
-  
-  ### Apply patches
-
-  # GCC Optimizations
+  # GCC Optimizations Patches
 
   msg2 "Apply GCC Optimization Patch..."
   patch -Np1 < ${srcdir}/kernel_compiler_patch/more-ISA-levels-and-uarches-for-kernel-6.8-rc4+.patch
@@ -99,11 +89,15 @@ prepare() {
   msg2 "Apply 0014-OpenRGB.patch..."
   patch -Np1 < ${srcdir}/linux-tkg/linux-tkg-patches/${_major}/0014-OpenRGB.patch
 
-  ### Setting config
+  # Setting kernel version
+  echo "Setting version..."
+  echo "-$pkgrel" > localversion.10-pkgrel
+  echo "${pkgbase#linux}" > localversion.20-pkgname
+
+  # Setting config
   echo "Setting config..."
   cp ${srcdir}/linux-tkg/linux-tkg-config/${_major}/config.x86_64 .config
   make olddefconfig
-  diff -u ../config .config || :
 
   # Let's user choose microarchitecture optimization in GCC
   sh ${srcdir}/choose-gcc-optimization.sh $_microarchitecture
