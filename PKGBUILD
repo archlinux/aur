@@ -12,22 +12,22 @@ source=("$pkgname::git+https://github.com/bahamas10/vsv.git#tag=v$pkgver")
 sha256sums=('SKIP')
 
 pkgver() {
-	cd "$srcdir/$pkgname"
+	cd "$pkgname"
 	git describe --tags | sed -E 's/^v([0-9]+\.[0-9]+\.[0-9]+).*/\1/'
 }
 
 build() {
-	cd "$srcdir/$pkgname"
+	cd "$pkgname"
 	cargo build --release
 }
 
 check() {
-	cd "$srcdir/$pkgname"
+	cd "$pkgname"
 	cargo test
 }
 
 package() {
-	cd "$srcdir/$pkgname"
+	cd "$pkgname"
 	install -Dm755 target/release/vsv "$pkgdir/usr/bin/$pkgname"
 	install -Dm644 man/vsv.8 "$pkgdir/usr/share/man/man8/$pkgname.8"
 	install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
