@@ -3,7 +3,7 @@
 _pkgname=ashell
 pkgname="${_pkgname}"
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A ready to go Wayland status bar for Hyprland"
 _git="https://github.com/MalpenZibo/${_pkgname}.git"
 url="${_git}"
