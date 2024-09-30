@@ -17,12 +17,12 @@ source=(
 	"git+https://github.com/lemire/fast_double_parser.git#tag=v0.8.0"
 	"git+https://github.com/fmtlib/fmt.git#tag=11.0.2"
 )
-sha1sums=(
-	"SKIP"
-	"SKIP"
-	"SKIP"
-	"SKIP"
-	"SKIP"
+sha256sums=(
+	"25fd3c99ca6d7ba29fe3d4eec9f3a3a69c98240694743928ea7f36887a135e01"
+	"0d2106df399cf2260c5982eaf218d9d7d135a665084ebd590fab33f7414b72d7"
+	"a378af54cb5befc28cdfe409c26ec65cc3d81ac6f160a4797a2fa846f338d217"
+	"22b508276e8eb76bd663bb52ad567ba24e75f42862ccc953eba1040e90ad25f2"
+	"35604c27995f5c99f66fb54ac0571a889791880f1428b969dad602a0a13aeb90"
 )
 
 prepare()
