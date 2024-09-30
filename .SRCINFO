@@ -1,16 +1,16 @@
 pkgbase = ytui-bin
 	pkgdesc = ytui is a TUI tool that allows users to query videos on youtube and play them in their local player.
-	pkgver = 0.1.5
+	pkgver = 0.1.6
 	pkgrel = 1
 	url = https://github.com/banh-canh/ytui
 	license = MIT
 	conflicts = ytui
 	provides = ytui
 	arch = aarch64
-	source_aarch64 = https://github.com/Banh-Canh/ytui/releases/download/v0.1.5/ytui_Linux_arm64.tar.gz
-	sha256sums_aarch64 = f8d0974c146892d7ec7a1a9f041f42733354eb1f452cee17a4e2bab7b869bdeb
+	source_aarch64 = https://github.com/Banh-Canh/ytui/releases/download/v0.1.6/ytui_v0.1.6_Linux_arm64.tar.gz
+	sha256sums_aarch64 = 97e9c44c14cbd61332bb940e5d3871058219dbabaf60dd83d34325c69fb289d9
 	arch = x86_64
-	source_x86_64 = https://github.com/Banh-Canh/ytui/releases/download/v0.1.5/ytui_Linux_x86_64.tar.gz
-	sha256sums_x86_64 = 30bb4f80b9090200315fd1674645f8c273a2564f80ed161d18b3e6b4a04b25b1
+	source_x86_64 = https://github.com/Banh-Canh/ytui/releases/download/v0.1.6/ytui_v0.1.6_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = 7101c728dad47d7f0eda577e7763823fa8baeac60d40d433e464e3a807ad1f95
 	
 pkgname = ytui-bin
