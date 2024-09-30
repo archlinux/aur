@@ -1,6 +1,6 @@
 pkgbase = electron33-bin
 	pkgdesc = Build cross platform desktop apps with web technologies — prebuilt
-	pkgver = 33.0.0.beta.4
+	pkgver = 33.0.0.beta.5
 	pkgrel = 1
 	url = https://electronjs.org
 	arch = aarch64
@@ -17,19 +17,19 @@ pkgbase = electron33-bin
 	optdepends = gtk4: for --gtk-version=4 (GTK4 IME might work better on Wayland)
 	optdepends = trash-cli: file deletion support (trash-put)
 	optdepends = xdg-utils: open URLs with desktop's default (xdg-email, xdg-open)
-	provides = electron33=33.0.0.beta.4
+	provides = electron33=33.0.0.beta.5
 	conflicts = electron33
-	source_aarch64 = electron33-chromedriver-33.0.0.beta.4-aarch64.zip::https://github.com/electron/electron/releases/download/v33.0.0-beta.4/chromedriver-v33.0.0-beta.4-linux-arm64.zip
-	source_aarch64 = electron33-33.0.0.beta.4-aarch64.zip::https://github.com/electron/electron/releases/download/v33.0.0-beta.4/electron-v33.0.0-beta.4-linux-arm64.zip
-	sha256sums_aarch64 = d237be25e0b3f0236e6146707663c66796af623990825a8764fc3728e07763b7
-	sha256sums_aarch64 = eed7e7a1d1aa27f60a0534e54dca246b90cb94c6dae0868056d073bcfad229b9
-	source_armv7h = electron33-chromedriver-33.0.0.beta.4-armv7h.zip::https://github.com/electron/electron/releases/download/v33.0.0-beta.4/chromedriver-v33.0.0-beta.4-linux-armv7l.zip
-	source_armv7h = electron33-33.0.0.beta.4-armv7h.zip::https://github.com/electron/electron/releases/download/v33.0.0-beta.4/electron-v33.0.0-beta.4-linux-armv7l.zip
-	sha256sums_armv7h = 90c3cd97f4475f754162e9b590f53aaf9d6891a6cd2e51eb13735307de99c9ae
-	sha256sums_armv7h = d1c6ac30e6325fb5e25e45508dfee2dab227abb847cec561920bb0006b1c5208
-	source_x86_64 = electron33-chromedriver-33.0.0.beta.4-x86_64.zip::https://github.com/electron/electron/releases/download/v33.0.0-beta.4/chromedriver-v33.0.0-beta.4-linux-x64.zip
-	source_x86_64 = electron33-33.0.0.beta.4-x86_64.zip::https://github.com/electron/electron/releases/download/v33.0.0-beta.4/electron-v33.0.0-beta.4-linux-x64.zip
-	sha256sums_x86_64 = 9c2112993d899c16c9c5bfd9ee13d24be5cfa718bedd463523ff2664d3e4daf1
-	sha256sums_x86_64 = 89f5b46174c00026ab9a9937122966e92b305c979488dbf8ac8237fb2db69407
+	source_aarch64 = electron33-chromedriver-33.0.0.beta.5-aarch64.zip::https://github.com/electron/electron/releases/download/v33.0.0-beta.5/chromedriver-v33.0.0-beta.5-linux-arm64.zip
+	source_aarch64 = electron33-33.0.0.beta.5-aarch64.zip::https://github.com/electron/electron/releases/download/v33.0.0-beta.5/electron-v33.0.0-beta.5-linux-arm64.zip
+	sha256sums_aarch64 = 4d16191774b4e1f76a83058991ac1bbb7aa772c9ee57f314153a694923207bd6
+	sha256sums_aarch64 = 57bc95cea3ad03e2c0726becfabd865bdbc2f420920a0b513cd0de90ba0a4a66
+	source_armv7h = electron33-chromedriver-33.0.0.beta.5-armv7h.zip::https://github.com/electron/electron/releases/download/v33.0.0-beta.5/chromedriver-v33.0.0-beta.5-linux-armv7l.zip
+	source_armv7h = electron33-33.0.0.beta.5-armv7h.zip::https://github.com/electron/electron/releases/download/v33.0.0-beta.5/electron-v33.0.0-beta.5-linux-armv7l.zip
+	sha256sums_armv7h = 2442972150ec396e47c09a9783a3ad9d36a1b4bf2a9c30c36e6564183fb92e24
+	sha256sums_armv7h = 5819926b641c0da6805f8b8c68fe45fc74fa4afd01e2a512fe4130289fb2a4c2
+	source_x86_64 = electron33-chromedriver-33.0.0.beta.5-x86_64.zip::https://github.com/electron/electron/releases/download/v33.0.0-beta.5/chromedriver-v33.0.0-beta.5-linux-x64.zip
+	source_x86_64 = electron33-33.0.0.beta.5-x86_64.zip::https://github.com/electron/electron/releases/download/v33.0.0-beta.5/electron-v33.0.0-beta.5-linux-x64.zip
+	sha256sums_x86_64 = 659d50e38bb68215d4a63889b9c2555e438aeb1183df61e2f44d22713d640e32
+	sha256sums_x86_64 = d258b22042a51718849475747ee619289fb8346df2886e31041453debe069b81
 
 pkgname = electron33-bin
