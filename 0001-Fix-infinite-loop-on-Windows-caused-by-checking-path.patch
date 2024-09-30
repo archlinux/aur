@@ -1,0 +1,36 @@
+From a1ee216dcbfbe2dd06f7f3b0ea99e91106a6af5f Mon Sep 17 00:00:00 2001
+From: Shawn Hyam <shawn_hyam@apple.com>
+Date: Fri, 6 Sep 2024 07:49:48 -0400
+Subject: [PATCH] Fix infinite loop on Windows caused by checking path against
+ "/". (#802)
+
+---
+ Sources/SwiftFormat/API/Configuration.swift | 7 ++++++-
+ 1 file changed, 6 insertions(+), 1 deletion(-)
+
+diff --git a/Sources/SwiftFormat/API/Configuration.swift b/Sources/SwiftFormat/API/Configuration.swift
+index c6836ab..531461a 100644
+--- a/Sources/SwiftFormat/API/Configuration.swift
++++ b/Sources/SwiftFormat/API/Configuration.swift
+@@ -410,12 +410,17 @@ public struct Configuration: Codable, Equatable {
+       candidateDirectory.appendPathComponent("placeholder")
+     }
+     repeat {
++      let previousDirectory = candidateDirectory
+       candidateDirectory.deleteLastPathComponent()
++      // if deleting a path component resulted in no change, terminate the loop
++      if candidateDirectory == previousDirectory {
++        break
++      }
+       let candidateFile = candidateDirectory.appendingPathComponent(".swift-format")
+       if FileManager.default.isReadableFile(atPath: candidateFile.path) {
+         return candidateFile
+       }
+-    } while candidateDirectory.path != "/"
++    } while true
+ 
+     return nil
+   }
+-- 
+2.46.2
+
