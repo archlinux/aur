@@ -2,7 +2,7 @@
 # Contributor: Romain Bazile <gromain.baz@gmail.com>
 
 pkgname=opencpn-plugin-climatology
-pkgver=1.6.30.0
+pkgver=1.6.31
 pkgrel=1
 pkgdesc="Climatology plugin for OpenCPN"
 arch=('x86_64' 'aarch64')
@@ -10,11 +10,11 @@ license=("GPL3")
 depends=('opencpn')
 makedepends=('cmake')
 url="https://opencpn.org/OpenCPN/plugins/climatology.html"
-source=("$pkgname-$pkgver.tar.gz::https://github.com/rgleason/climatology_pi/archive/refs/tags/v$pkgver.tar.gz" "$pkgname-$pkgver-opencpnlibs.tar.gz::https://github.com/OpenCPN/opencpn-libs/archive/9e502bf1cfe1101e6f60e2dfb57a45e8a8fbccdc.tar.gz")
-b2sums=('bda1c1088b85db0b0e0ce72c84c4e63cf5ebf05fbfa051d61b2ab91c0e4d3b7ef1912a289d0e6705381f1cea9f6986fe50b079f6aa18c04aabddd86640ecc092' 'c7fb21369f732cb4256997317f40c1ea269153782f879d8e4a7a72c4c31aa80053f810c0ed26f3ac8ae8142757d29f210366fee4d5d185c40926ad27f0c8d5c5')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/rgleason/climatology_pi/archive/refs/tags/v$pkgver.tar.gz" "$pkgname-$pkgver-opencpnlibs.tar.gz::https://github.com/OpenCPN/opencpn-libs/archive/a001083af21de2e3faa970b245877a5ee5899aba.tar.gz")
+b2sums=('d687a0caf677c1a7f5e1c316d7c710cfaf155e1064fd53d1b0220318054463bce2683c23c9f497e4784d667de5e95bed6c32c3942a57997426c67fc479b7bc76' '24215376af8780b00e3611f2f9c2f3a408afcddfffc25c408117e0219eb0c70ca7805af349acb7616b900498d7b8e821db6ec2e18109247e81969f08b98a74aa')
 
 prepare() {
-  cp -r opencpn-libs-9e502bf1cfe1101e6f60e2dfb57a45e8a8fbccdc/* climatology_pi-$pkgver/opencpn-libs
+  cp -r opencpn-libs-a001083af21de2e3faa970b245877a5ee5899aba/* climatology_pi-$pkgver/opencpn-libs
 }
           
 build() {
