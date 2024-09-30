@@ -2,13 +2,13 @@
 # Maintainer: dj.zak <dz.wbdev@gmail.com>
 pkgname=accutimes
 pkgver=5.7
-pkgrel=4
+pkgrel=5
 pkgdesc="المواقيت الدقيقة،Accurate Times is the official software adopted by the Jordanian Ministry of Islamic Affairs to calculate the prayer times in Jordan."
 arch=('x86_64')
 url="https://astronomycenter.net/accut.html"
 license=('custom')
 depends=('wine' 'bash')
-source=('accutimes.tar.xz::https://github.com/dzwdev/Accurate_Times/raw/refs/heads/main/accutimes.tar.xz')
+source=('accutimes.tar.xz::https://github.com/dzwdev/Accurate_Times/raw/292b4e85092c3b087ba3b77997c3ce25594fe48f/accutimes.tar.xz')
 sha256sums=('db01e7f9afd8ff082e3f53b6848c5c6b2f2b6a9092352d618ec16535c3e71bce')
 
 package() {
