@@ -5,7 +5,7 @@
 # Contributor: Jonas Heinrich <onny@project-insanity.org>
 
 pkgname='sejda-desktop'
-pkgver='7.6.8'
+pkgver='7.7.4'
 pkgrel='1'
 license=('LicenseRef-EULA')
 pkgdesc='PDF editor'
