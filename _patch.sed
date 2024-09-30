@@ -1,5 +1,5 @@
 1 i # Maintainer: Sven Hebrok <xoimex[at]gmail[dot]com>
-1 i # Automatically created from cuops PKGBUILD
+1 i # Automatically created from cups PKGBUILD
 
 s/# Maintainer: (.+)/# Upstream Maintainer: \1/g
 

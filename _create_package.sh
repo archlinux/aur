@@ -9,16 +9,16 @@ if [ -d cups ]; then
     echo "[ ] Removing old cups directory"
     rm -r cups
 fi
-if ls !("_create_package.sh"|"_patch.sed"|"_docker_validate.sh") >/dev/null 2>/dev/null; then
+if ls !("_create_package.sh"|"_patch.sed"|"_docker_validate.sh"|"_README.md") >/dev/null 2>/dev/null; then
     echo "[ ] Removing old files (except ours)"
-    rm -r !("_create_package.sh"|"_patch.sed"|"_docker_validate.sh")
+    rm -r !("_create_package.sh"|"_patch.sed"|"_docker_validate.sh"|"_README.md")
 fi
 
 echo "[ ] Cloning cups"
 pkgctl repo clone --protocol=https cups
 echo "[#] Cloned cups"
 rm -rf cups/.git/
-mv cups/* ./
+mv cups/{.,}* ./
 rmdir cups
 
 # apply our patches

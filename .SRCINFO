@@ -1,11 +1,10 @@
 pkgbase = cups-gssapi
-	pkgver = 2.4.7
-	pkgrel = 2
-	epoch = 1
+	pkgver = 2.4.10
+	pkgrel = 1
+	epoch = 2
 	url = https://openprinting.github.io/cups/
 	arch = x86_64
-	license = Apache
-	license = custom
+	license = Apache-2.0 WITH LLVM-exception AND BSD-3-Clause AND Zlib AND BSD-2-Clause
 	makedepends = acl
 	makedepends = pam
 	makedepends = gnutls
@@ -15,8 +14,8 @@ pkgbase = cups-gssapi
 	makedepends = avahi
 	makedepends = systemd
 	makedepends = libpaper
-	source = https://github.com/OpenPrinting/cups/releases/download/v2.4.7/cups-2.4.7-source.tar.gz
-	source = https://github.com/OpenPrinting/cups/releases/download/v2.4.7/cups-2.4.7-source.tar.gz.sig
+	source = https://github.com/OpenPrinting/cups/releases/download/v2.4.10/cups-2.4.10-source.tar.gz
+	source = https://github.com/OpenPrinting/cups/releases/download/v2.4.10/cups-2.4.10-source.tar.gz.sig
 	source = cups.logrotate
 	source = cups.pam
 	source = cups.sysusers
@@ -24,14 +23,14 @@ pkgbase = cups-gssapi
 	source = cups-freebind.patch
 	source = guid.patch
 	validpgpkeys = 7082A0A50A2E92640F3880E0E4522DCC9B246FF7
-	sha256sums = dd54228dd903526428ce7e37961afaed230ad310788141da75cebaa08362cf6c
+	sha256sums = d75757c2bc0f7a28b02ee4d52ca9e4b1aa1ba2affe16b985854f5336940e5ad7
 	sha256sums = SKIP
 	sha256sums = d87fa0f0b5ec677aae34668f260333db17ce303aa1a752cba5f8e72623d9acf9
 	sha256sums = 57dfd072fd7ef0018c6b0a798367aac1abb5979060ff3f9df22d1048bb71c0d5
 	sha256sums = 06173dfaea37bdd9b39b3e09aba98c34ae7112a2f521db45a688907d8848caa2
 	sha256sums = f0b15192952c151b1843742c87850ff3a7d0f3ba5dd236ed16623ef908472ad7
 	sha256sums = 3385047b9ac8a7b13aeb8f0ca55d15f793ce7283516db0155fe28a67923c592d
-	sha256sums = 0bf6a75ba1b051771f155d9a5d36b307a6d40c6857d645b250fe93f3fb713474
+	sha256sums = 1b1c3268bdff6627b78070b6cd9abec6ef41572c27abbafccb237199f7137653
 
 pkgname = libcups-gssapi
 	pkgdesc = OpenPrinting CUPS - client libraries and headers - with gssapi (kerberos) enabled
@@ -39,8 +38,9 @@ pkgname = libcups-gssapi
 	depends = avahi
 	depends = glibc
 	depends = zlib
+	depends = sh
 	depends = krb5
-	provides = libcups=2.4.7
+	provides = libcups=2.4.10
 	conflicts = libcups
 
 pkgname = cups-gssapi
@@ -48,7 +48,7 @@ pkgname = cups-gssapi
 	install = cups.install
 	depends = acl
 	depends = pam
-	depends = libcups>=2.4.7
+	depends = libcups>=2.4.10
 	depends = cups-filters
 	depends = dbus
 	depends = systemd

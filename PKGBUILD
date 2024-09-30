@@ -1,14 +1,14 @@
 # Maintainer: Sven Hebrok <xoimex[at]gmail[dot]com>
-# Automatically created from cuops PKGBUILD
+# Automatically created from cups PKGBUILD
 # Upstream Maintainer: Andreas Radke <andyrtr@archlinux.org>
 
 pkgbase="cups-gssapi"
 pkgname=('libcups-gssapi' 'cups-gssapi')
-pkgver=2.4.7
-pkgrel=2
-epoch=1
+pkgver=2.4.10
+pkgrel=1
+epoch=2
 arch=('x86_64')
-license=('Apache' 'custom')
+license=('Apache-2.0 WITH LLVM-exception AND BSD-3-Clause AND Zlib AND BSD-2-Clause')
 url="https://openprinting.github.io/cups/"
 makedepends=('acl' 'pam' 'gnutls' 'colord' 
 'krb5'
@@ -23,14 +23,14 @@ source=(https://github.com/OpenPrinting/cups/releases/download/v${pkgver}/cups-$
         cups-freebind.patch
         guid.patch
 )
-sha256sums=('dd54228dd903526428ce7e37961afaed230ad310788141da75cebaa08362cf6c'
+sha256sums=('d75757c2bc0f7a28b02ee4d52ca9e4b1aa1ba2affe16b985854f5336940e5ad7'
             'SKIP'
             'd87fa0f0b5ec677aae34668f260333db17ce303aa1a752cba5f8e72623d9acf9'
             '57dfd072fd7ef0018c6b0a798367aac1abb5979060ff3f9df22d1048bb71c0d5'
             '06173dfaea37bdd9b39b3e09aba98c34ae7112a2f521db45a688907d8848caa2'
             'f0b15192952c151b1843742c87850ff3a7d0f3ba5dd236ed16623ef908472ad7'
             '3385047b9ac8a7b13aeb8f0ca55d15f793ce7283516db0155fe28a67923c592d'
-            '0bf6a75ba1b051771f155d9a5d36b307a6d40c6857d645b250fe93f3fb713474')
+            '1b1c3268bdff6627b78070b6cd9abec6ef41572c27abbafccb237199f7137653')
 #validpgpkeys=('3737FD0D0E63B30172440D2DDBA3A7AB08D76223') # CUPS.org (CUPS.org PGP key) <security@cups.org>
 #validpgpkeys+=('45D083946E3035282B3CCA9AF434104235DA97EB') # "CUPS.org <security@cups.org>"
 #validpgpkeys+=('845464660B686AAB36540B6F999559A027815955') # "Michael R Sweet <michael.r.sweet@gmail.com>"
@@ -98,7 +98,7 @@ package_libcups-gssapi() {
 provides=("libcups=${pkgver%.r*}")
 conflicts=('libcups')
 pkgdesc="OpenPrinting CUPS - client libraries and headers - with gssapi (kerberos) enabled"
-depends=('gnutls' 'avahi' 'glibc' 'zlib')
+depends=('gnutls' 'avahi' 'glibc' 'zlib' 'sh')
 depends+=("krb5")
 
   cd cups-${pkgver}
@@ -183,4 +183,7 @@ optdepends=('cups-browsed: to browse the network for remote CUPS queues and IPP 
 
   # no more xinetd support
   rm -rf "${pkgdir}"/etc/xinetd.d
+
+  # add license + exception
+  install -m644 -Dt "${pkgdir}/usr/share/licenses/${pkgname}" {LICENSE,NOTICE}
 }
