@@ -9,7 +9,6 @@ pkgbase = digimend-kernel-drivers-dkms
 	depends = dkms
 	depends = systemd
 	depends = xf86-input-wacom
-	conflicts = digimend-kernel-drivers-dkms-git
 	source = digimend-kernel-drivers-dkms-v13.tar.gz::https://github.com/DIGImend/digimend-kernel-drivers/archive/refs/tags/v13.tar.gz
 	source = Makefile
 	sha256sums = ee3fcd2eaa32bee4e5ce742c81e31d7290893772c3931d1888b32fe34ec0f3c8

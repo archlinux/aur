@@ -11,9 +11,8 @@ arch=('any')
 url='https://digimend.github.io'
 license=('GPL2')
 depends=('dkms' 'systemd' 'xf86-input-wacom')
-conflicts=("${pkgname}-git")
 source=("${pkgname}-v${pkgver}.tar.gz::https://github.com/DIGImend/${_pkgbase}/archive/refs/tags/v${pkgver}.tar.gz"
-        "Makefile")
+  "Makefile")
 sha256sums=('ee3fcd2eaa32bee4e5ce742c81e31d7290893772c3931d1888b32fe34ec0f3c8'
             'bacc8a6b0c5fdbc95b9ef6072c9db6afc56958c0f8e539d4338b8895377355fe')
 install="${pkgname}.install"
@@ -21,19 +20,19 @@ install="${pkgname}.install"
 package() {
   cd "${srcdir}/${_pkgbase}-${pkgver}"
 
-  install -Dm 0755 digimend-debug   "${pkgdir}/usr/bin/digimend-debug"
-  install -Dm 0755 hid-rebind       "${pkgdir}/usr/bin/hid-rebind"
+  install -Dm 0755 digimend-debug "${pkgdir}/usr/bin/digimend-debug"
+  install -Dm 0755 hid-rebind "${pkgdir}/usr/bin/hid-rebind"
 
-  install -Dm 0644 xorg.conf        "${pkgdir}/etc/X11/xorg.conf.d/50-digimend.conf"
-  install -Dm 0644 depmod.conf      "${pkgdir}/etc/depmod.d/digimend.conf"
-  install -Dm 0644 udev.rules       "${pkgdir}/etc/udev/rules.d/90-hid-rebind.rules"
+  install -Dm 0644 xorg.conf "${pkgdir}/etc/X11/xorg.conf.d/50-digimend.conf"
+  install -Dm 0644 depmod.conf "${pkgdir}/etc/depmod.d/digimend.conf"
+  install -Dm 0644 udev.rules "${pkgdir}/etc/udev/rules.d/90-hid-rebind.rules"
 
   install -dm 0755 "${pkgdir}/usr/src/${_dkmsbase}-${pkgver}"
   install -dm 0755 "${pkgdir}/usr/src/${_dkmsbase}-${pkgver}/usbhid"
-      
-  install -Dm 0644 dkms.conf        "${pkgdir}/usr/src/${_dkmsbase}-${pkgver}/dkms.conf"
 
-  for f in {usbhid/,}*.[ch] ; do
+  install -Dm 0644 dkms.conf "${pkgdir}/usr/src/${_dkmsbase}-${pkgver}/dkms.conf"
+
+  for f in {usbhid/,}*.[ch]; do
     install -Dm 0644 "$f" "${pkgdir}/usr/src/${_dkmsbase}-${pkgver}/${f}"
   done
 
