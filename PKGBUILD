@@ -1,7 +1,7 @@
 # Maintainer: Faisal Ahmed Moshiur <faisalmoshiur+nerdfonts@gmail.com>
 pkgname=nerdfonts-installer-bin
 pkgver=2024.09.30.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Executable binary to install Nerd Fonts"
 arch=('x86_64')
 url="https://github.com/fam007e/nerd_fonts_installer"
