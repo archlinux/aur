@@ -1,6 +1,6 @@
 pkgbase = pandoc-eisvogel-template-git
 	pkgdesc = The 'eisvogel' LaTeX-template for pandoc. A clean pandoc LaTeX template to convert your markdown files to PDF or LaTeX. It is designed for lecture notes and exercises with a focus on computer science. The template is compatible with pandoc 2.
-	pkgver = 2.4.2+3.r289.20240621.ffa4f0c
+	pkgver = 2.4.2+4.r290.20240918.1ad0d6d
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/Wandmalfarbe/pandoc-latex-template
@@ -8,7 +8,7 @@ pkgbase = pandoc-eisvogel-template-git
 	license = custom
 	makedepends = git
 	depends = pandoc
-	provides = pandoc-eisvogel-template=2.4.2+3.r289.20240621.ffa4f0c
+	provides = pandoc-eisvogel-template=2.4.2+4.r290.20240918.1ad0d6d
 	conflicts = pandoc-eisvogel-template
 	source = pandoc-eisvogel-template::git+https://github.com/Wandmalfarbe/pandoc-latex-template.git
 	sha256sums = SKIP
