@@ -2,8 +2,8 @@
 pkgname=minetest-whynot
 _pkgname=whynot_game
 _pkgauthor=bell07
-pkgver=2024.05.25
-_cdbrel=25233
+pkgver=2024.09.03
+_cdbrel=27061
 pkgrel=1
 pkgdesc="Aims to get all existing high quality mods working together "
 license=("GPLv3")
