@@ -1,0 +1,4 @@
+post_install() {
+echo "Running depmod:"
+depmod $(uname -r)
+}
