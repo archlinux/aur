@@ -1,6 +1,6 @@
 --- a/src/command_events.cc
 +++ b/src/command_events.cc
-@@ -216,7 +216,7 @@ void apply_import(const std::string& path)     { if (!rpc::parse_command_file(pa
+@@ -216,7 +216,7 @@ void apply_import(const std::string& pat
  void apply_try_import(const std::string& path) { if (!rpc::parse_command_file(path)) control->core()->push_log_std("Could not read resource file: " + path); }
  
  torrent::Object
@@ -18,11 +18,13 @@
        downloadList->close(*itr);
  
        (*itr)->set_hash_failed(true);
-@@ -391,5 +391,6 @@ initialize_command_events() {
+@@ -391,7 +391,8 @@ initialize_command_events() {
                                                           core::Manager::create_quiet | core::Manager::create_start | core::Manager::create_raw_data));
+   CMD2_ANY_LIST    ("load.raw_start_verbose", std::bind(&apply_load, std::placeholders::_2, core::Manager::create_start | core::Manager::create_raw_data));
  
--  CMD2_ANY_VALUE   ("close_low_diskspace", tr1::bind(&apply_close_low_diskspace, tr1::placeholders::_2));
-+  CMD2_ANY_VALUE   ("close_low_diskspace", tr1::bind(&apply_close_low_diskspace, tr1::placeholders::_2, 99));
-+  CMD2_ANY_VALUE   ("close_low_diskspace.normal", tr1::bind(&apply_close_low_diskspace, tr1::placeholders::_2, 3));
+-  CMD2_ANY_VALUE   ("close_low_diskspace", std::bind(&apply_close_low_diskspace, std::placeholders::_2));
++  CMD2_ANY_VALUE   ("close_low_diskspace", std::bind(&apply_close_low_diskspace, std::placeholders::_2, 99));
++  CMD2_ANY_VALUE   ("close_low_diskspace.normal", std::bind(&apply_close_low_diskspace, std::placeholders::_2, 3));
  
-   CMD2_ANY_LIST    ("download_list",       tr1::bind(&apply_download_list, tr1::placeholders::_2));
+   CMD2_ANY_LIST    ("download_list",       std::bind(&apply_download_list, std::placeholders::_2));
+   CMD2_ANY_LIST    ("d.multicall2",        std::bind(&d_multicall, std::placeholders::_2));

@@ -1,12 +1,20 @@
---- a/src/ui/download.cc	2015-09-03 21:03:30.000000000 +0200
-+++ b/src/ui/download.cc	2018-05-16 00:24:40.000000000 +0200
-@@ -129,3 +129,3 @@
+--- a/src/ui/download.cc
++++ b/src/ui/download.cc
+@@ -128,7 +128,7 @@ Download::create_menu() {
+                      std::bind(&Download::activate_display_focus, this, DISPLAY_TRANSFER_LIST),
+                      std::bind(&Download::activate_display_menu, this, DISPLAY_TRANSFER_LIST));
  
 -  element->set_entry(0, false);
 +  element->set_entry(1, false); // 'Info' active by default
  
-@@ -216,3 +216,3 @@
+   m_bindings['p'] = std::bind(&ElementMenu::set_entry_trigger, element, 0);
+   m_bindings['o'] = std::bind(&ElementMenu::set_entry_trigger, element, 1);
+@@ -215,7 +215,7 @@ Download::activate(display::Frame* frame
+   m_frame->frame(1)->initialize_window(m_windowDownloadStatus);
+   m_windowDownloadStatus->set_active(true);
  
 -  activate_display_menu(DISPLAY_PEER_LIST);
 +  activate_display_menu(DISPLAY_INFO); // 'Info' active by default
  }
+ 
+ void

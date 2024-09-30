@@ -45,7 +45,11 @@ python -c 'print u"\u22c5 \u22c5\u22c5 \u201d \u2019 \u266f \u2622 \u260d \u2318
 
 // In 0.9.x this changed to 'tr1', see https://stackoverflow.com/a/4682954/2748717
 // "C++ Technical Report 1" was later added to "C++11", using tr1 makes stuff compile on older GCC
-#define _cxxstd_ tr1
+#if RT_HEX_VERSION <= 0x000906
+    #define _cxxstd_ tr1
+#else
+    #define _cxxstd_ std
+#endif
 
 #define D_INFO(item) (item->info())
 #include "rpc/object_storage.h"
@@ -333,7 +337,6 @@ void ui_pyroscope_colormap_init() {
         if ((col[0] != -1 && col[0] >= get_colors()) || (col[1] != -1 && col[1] >= get_colors())) {
             char buf[33];
             sprintf(buf, "%d", get_colors());
-            Canvas::cleanup();
             throw torrent::input_error(col_def + ": your terminal only supports " + buf + " colors.");
         }
 
@@ -451,7 +454,11 @@ static void decorate_download_title(Window* window, display::Canvas* canvas, cor
     // download title color
     int title_col;
     unsigned long focus_attr = range.first == view->focus() ? attr_map[ps::COL_FOCUS] : 0;
+#if RT_HEX_VERSION <= 0x000906
     if ((*range.first)->is_done())
+#else
+    if ((*range.first)->data()->is_partially_done())
+#endif
         title_col = (active ? D_INFO(item)->up_rate()->rate() ?
                      ps::COL_SEEDING : ps::COL_COMPLETE : ps::COL_STOPPED) + offset;
     else
@@ -898,7 +905,11 @@ bool ui_pyroscope_download_list_redraw(Window* window, display::Canvas* canvas, 
         char* last = buffer + canvas->width() + 1;
 
         pos = canvas->height() - 2 - network_history_lines;
+#if RT_HEX_VERSION <= 0x000906
         print_download_info(buffer, last, *view->focus());
+#else
+        print_download_info_full(buffer, last, *view->focus());
+#endif
         canvas->print(3, pos, "%s", buffer);
         canvas->set_attr(0, pos, -1, attr_map[ps::COL_LABEL], ps::COL_LABEL);
         print_download_status(buffer, last, *view->focus());
@@ -1096,7 +1107,7 @@ torrent::Object ui_find_next() {
             if (name.empty()) name = (*itr)->info()->name();
             std::transform(name.begin(), name.end(), name.begin(), ::tolower);
             found = name.find(term) != std::string::npos;
-        } while (!found && itr != dl_view->focus());
+        } while (!found && itr != (dl_view->focus() == dl_view->end_visible() ? dl_view->begin_visible() : dl_view->focus()));
 
         if (!found) {
             control->core()->push_log(("Cannot find anything matching '" + term + "'").c_str());
@@ -1189,10 +1200,6 @@ void initialize_command_ui_pyroscope() {
     CMD2_ANY_LIST("convert.human_size",         _cxxstd_::bind(&apply_human_size, _cxxstd_::placeholders::_2));
     CMD2_ANY_LIST("convert.magnitude",          _cxxstd_::bind(&apply_magnitude, _cxxstd_::placeholders::_2));
 
-    // TODO: deprecated and useless, remove these in v1.2
-    CMD2_VAR_VALUE("ui.style.progress", 1);
-    CMD2_VAR_VALUE("ui.style.ratio", 1);
-
 
     // Set some defaults by executing an in-memory script
     std::string init_commands;
@@ -1221,8 +1228,7 @@ void initialize_command_ui_pyroscope() {
         "schedule2 = collapsed_view_toggle, 0, 0, ((ui.bind_key, download_list, *, \""
             "view.collapsed.toggle= ; ui.current_view.set = (ui.current_view)\"))\n"
 
-        // Bind 'F' / F3 to find the next item for 'ui.find.term'
-        "schedule2 = ui_find_next_f,  0, 0, ((ui.bind_key, download_list, F,    \"ui.find.next=\"))\n"
+        // Bind F3 to find the next item for 'ui.find.term'
         "schedule2 = ui_find_next_f3, 0, 0, ((ui.bind_key, download_list, 0413, \"ui.find.next=\"))\n"
 
         // Collapse built-in views

@@ -1,0 +1,31 @@
+From ae3387ead253c729f19685242513ba401e11dd9d Mon Sep 17 00:00:00 2001
+From: chros <chros73@gmail.com>
+Date: Tue, 22 Oct 2019 16:56:18 +0100
+Subject: [PATCH] Fix possible crash with save_input_history (See #26)
+
+---
+ src/ui/root.cc | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/ui/root.cc b/src/ui/root.cc
+index 074e97284..db7bab8d3 100644
+--- a/src/ui/root.cc
++++ b/src/ui/root.cc
+@@ -392,7 +392,7 @@ Root::set_input_history_size(int size) {
+ 
+ void
+ Root::load_input_history() {
+-  if (!m_control->core()->download_store()->is_enabled()) {
++  if (m_control == NULL || !m_control->core()->download_store()->is_enabled()) {
+     lt_log_print(torrent::LOG_DEBUG, "ignoring input history file");
+     return;
+   }
+@@ -460,7 +460,7 @@ Root::load_input_history() {
+ 
+ void
+ Root::save_input_history() {
+-  if (!m_control->core()->download_store()->is_enabled())
++  if (m_control == NULL || !m_control->core()->download_store()->is_enabled())
+     return;
+ 
+   std::string history_filename = m_control->core()->download_store()->path() + "rtorrent.input_history";

@@ -1,6 +1,34 @@
---- rtorrent-0.8.6/src/ui/download_list.h	2011-05-03 04:05:34.000000000 +0200
-+++ rtorrent-0.8.6/src/ui/download_list.h,pyro	2011-05-03 04:11:23.000000000 +0200
-@@ -99,6 +99,7 @@
+--- a/src/command_helpers.cc
++++ b/src/command_helpers.cc
+@@ -51,6 +51,7 @@ void initialize_command_peer();
+ void initialize_command_local();
+ void initialize_command_logging();
+ void initialize_command_network();
++void initialize_command_pyroscope();
+ void initialize_command_groups();
+ void initialize_command_throttle();
+ void initialize_command_tracker();
+@@ -70,6 +71,7 @@ initialize_commands() {
+   initialize_command_file();
+   initialize_command_ip();
+   initialize_command_peer();
++  initialize_command_pyroscope();
+   initialize_command_throttle();
+   initialize_command_tracker();
+   initialize_command_scheduler();
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -173,6 +173,7 @@ libsub_root_a_SOURCES = \
+ 	command_logging.cc \
+ 	command_network.cc \
+ 	command_peer.cc \
++	command_pyroscope.cc \
+ 	command_throttle.cc \
+ 	command_tracker.cc \
+ 	command_scheduler.cc \
+--- a/src/ui/download_list.h
++++ b/src/ui/download_list.h
+@@ -99,6 +99,7 @@ public:
    void                disable();
  
    void                activate_display(Display d);
@@ -8,19 +36,3 @@
  
    core::View*         current_view();
    void                set_current_view(const std::string& name);
---- rtorrent-0.8.7/src/command_helpers.cc.orig	2010-06-26 14:05:08.000000000 +0200
-+++ rtorrent-0.8.7/src/command_helpers.cc	2011-05-06 19:42:58.000000000 +0200
-@@ -50,2 +50,3 @@
- void initialize_command_local();
-+void initialize_command_pyroscope();
- void initialize_command_network();
-@@ -61,2 +62,3 @@
-   initialize_command_local();
-+  initialize_command_pyroscope();
-   initialize_command_ui();
---- rtorrent-0.8.7/src/Makefile.am.orig	2010-06-26 14:05:08.000000000 +0200
-+++ rtorrent-0.8.7/src/Makefile.am	2011-05-06 19:40:03.000000000 +0200
-@@ -23,2 +23,3 @@
- 	command_ui.cc \
-+	command_pyroscope.cc \
- 	control.cc \

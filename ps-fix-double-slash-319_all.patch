@@ -1,7 +1,0 @@
---- a/src/core/manager.cc
-+++ b/src/core/manager.cc
-@@ -418,3 +418,3 @@ path_expand(std::vector<std::string>* paths, const std::string& pattern) {
- 
--      std::transform(itr->begin(), itr->end(), std::back_inserter(nextCache), rak::bind1st(std::ptr_fun(&path_expand_transform), itr->path() + "/"));
-+      std::transform(itr->begin(), itr->end(), std::back_inserter(nextCache), rak::bind1st(std::ptr_fun(&path_expand_transform), itr->path() + (itr->path() == "/" ? "" : "/")));
-     }

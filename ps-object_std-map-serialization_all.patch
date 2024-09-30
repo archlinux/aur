@@ -1,24 +1,24 @@
 --- a/src/rpc/parse.cc
 +++ b/src/rpc/parse.cc
-@@ -506,6 +506,21 @@ print_object_std(std::string* dest, const torrent::Object* src, int flags) {
+@@ -505,7 +505,21 @@ print_object_std(std::string* dest, cons
+     }
  
      return;
- 
 +  case torrent::Object::TYPE_MAP:
 +  {
 +    bool first = true;
 +    for (torrent::Object::map_const_iterator itr = src->as_map().begin(), itrEnd = src->as_map().end(); itr != itrEnd; itr++) {
-+      if (!first) *dest += ", ";
++      if (!first)
++        *dest += ", ";
 +      *dest += itr->first;
 +      *dest += ": \"";
 +      print_object_std(dest, &(itr->second), flags);
 +      *dest += '"';
 +      first = false;
 +    }
-+
+ 
 +    return;
 +  }
-+
    case torrent::Object::TYPE_NONE:
      return;
    default:

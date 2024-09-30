@@ -1,13 +1,16 @@
---- rel-0.9.4/src/display/utils.cc	2012-02-14 04:32:01.000000000 +0100
-+++ rtorrent-0.9.4/src/display/utils.cc	2015-08-11 04:35:46.000000000 +0200
-@@ -133,4 +133,6 @@
+--- a/src/display/utils.cc
++++ b/src/display/utils.cc
+@@ -133,6 +133,8 @@ print_download_title(char* first, char*
+   return print_buffer(first, last, " %s", d->info()->name().c_str());
  }
  
 +std::string human_size(int64_t bytes, unsigned int format=0);
 +
  char*
- print_download_info(char* first, char* last, core::Download* d) {
-@@ -142,15 +144,16 @@
+ print_download_info_full(char* first, char* last, core::Download* d) {
+   if (!d->download()->info()->is_open())
+@@ -142,17 +144,18 @@ print_download_info_full(char* first, ch
+   else
      first = print_buffer(first, last, "          ");
  
 +  std::string h_size = human_size(d->download()->file_list()->size_bytes(), 0);
@@ -33,3 +36,4 @@
 +                       h_up.c_str(), h_down.c_str(), h_sum.c_str());
  
    if (d->download()->info()->is_active() && !d->is_done()) {
+     first = print_buffer(first, last, " ");

@@ -1,6 +1,0 @@
---- a/src/main.cc
-+++ b/src/main.cc
-@@ -199,2 +199,3 @@ main(int argc, char** argv) {
-     SignalHandler::set_handler(SIGINT,   std::tr1::bind(&Control::receive_normal_shutdown, control));
-+    SignalHandler::set_handler(SIGHUP,   std::tr1::bind(&Control::receive_normal_shutdown, control));
-     SignalHandler::set_handler(SIGTERM,  std::tr1::bind(&Control::receive_quick_shutdown, control));

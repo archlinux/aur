@@ -1,51 +1,127 @@
---- orig/src/Makefile.am	2009-11-14 08:34:04.000000000 +0100
-+++ rtorrent-0.8.6/src/Makefile.am	2011-05-27 00:38:37.000000000 +0200
-@@ -37,2 +38,3 @@
- 	main.cc \
-+	ui_pyroscope.cc \
- 	option_parser.cc \
---- orig/src/command_helpers.cc	2009-11-12 09:03:48.000000000 +0100
-+++ rtorrent-0.8.6/src/command_helpers.cc	2011-05-27 00:42:07.000000000 +0200
-@@ -77,2 +78,3 @@
+--- a/src/command_helpers.cc
++++ b/src/command_helpers.cc
+@@ -57,6 +57,7 @@ void initialize_command_throttle();
+ void initialize_command_tracker();
+ void initialize_command_scheduler();
  void initialize_command_ui();
 +void initialize_command_ui_pyroscope();
  
-@@ -91,2 +94,3 @@
+ void
+ initialize_commands() {
+@@ -75,4 +76,5 @@ initialize_commands() {
+   initialize_command_throttle();
+   initialize_command_tracker();
    initialize_command_scheduler();
 +  initialize_command_ui_pyroscope();
+ }
+--- a/src/display/canvas.cc
++++ b/src/display/canvas.cc
+@@ -47,6 +47,8 @@
  
---- orig/src/display/canvas.h	2009-11-12 09:03:47.000000000 +0100
-+++ rtorrent-0.8.6/src/display/canvas.h	2011-05-28 13:42:58.000000000 +0200
-@@ -134,4 +134,6 @@
-   va_start(arglist, str);
-+  if (y < height()) {
-   wmove(m_window, y, x);
-   vw_printw(m_window, const_cast<char*>(str), arglist);
-+  }
-   va_end(arglist);
---- orig/src/display/window_statusbar.cc	2009-11-12 09:03:47.000000000 +0100
-+++ rtorrent-0.8.6/src/display/window_statusbar.cc	2011-05-28 19:38:52.000000000 +0200
-@@ -69,2 +69,4 @@
+ namespace display {
  
-+  void ui_pyroscope_statusbar_redraw(Window* window, display::Canvas* canvas);
++extern void ui_pyroscope_canvas_init();
++
+ bool Canvas::m_isInitialized = false;
+ bool Canvas::m_isDaemon = false;
+ 
+@@ -111,6 +113,7 @@ Canvas::initialize() {
+ 
+   if (!m_isDaemon) {
+     initscr();
++    ui_pyroscope_canvas_init();
+     raw();
+     noecho();
+     nodelay(stdscr, TRUE);
+--- a/src/display/canvas.h
++++ b/src/display/canvas.h
+@@ -137,8 +137,10 @@ Canvas::print(unsigned int x, unsigned i
+ 
+   if (!m_isDaemon) {
+     va_start(arglist, str);
+-    wmove(m_window, y, x);
+-    vw_printw(m_window, const_cast<char*>(str), arglist);
++    if (y < height()) {
++      wmove(m_window, y, x);
++      vw_printw(m_window, const_cast<char*>(str), arglist);
++    }
+     va_end(arglist);
+   }
+ }
+--- a/src/display/window_download_list.cc
++++ b/src/display/window_download_list.cc
+@@ -49,6 +49,10 @@
+ 
+ namespace display {
+ 
++typedef std::pair<core::View::iterator, core::View::iterator> Range;
++bool ui_pyroscope_download_list_redraw(Window* window, display::Canvas* canvas, core::View* view);
++void ui_pyroscope_download_list_redraw_item(Window* window, display::Canvas* canvas, core::View* view, int pos, Range& range);
++
+ WindowDownloadList::WindowDownloadList() :
+   Window(new Canvas, 0, 120, 1, extent_full, extent_full),
+   m_view(NULL) {
+@@ -83,6 +87,8 @@ WindowDownloadList::redraw() {
+ 
+   m_canvas->print(0, 0, "%s", ("[View: " + m_view->name() + (m_view->get_filter_temp().is_empty() ? "" : " (filtered)") + "]").c_str());
+ 
++  if (ui_pyroscope_download_list_redraw(this, m_canvas, m_view))
++    return;
+   if (m_view->empty_visible() || m_canvas->width() < 5 || m_canvas->height() < 2)
+     return;
+ 
+@@ -107,8 +113,6 @@ WindowDownloadList::redraw() {
+     return;
+   }
+ 
+-  typedef std::pair<core::View::iterator, core::View::iterator> Range;
+-
+   Range range = rak::advance_bidirectional(m_view->begin_visible(),
+                                            m_view->focus() != m_view->end_visible() ? m_view->focus() : m_view->begin_visible(),
+                                            m_view->end_visible(),
+@@ -141,6 +145,7 @@ WindowDownloadList::redraw() {
+       print_download_status(buffer, last, *range.first);
+       m_canvas->print(0, pos++, "%c %s", range.first == m_view->focus() ? '*' : ' ', buffer);
+ 
++      ui_pyroscope_download_list_redraw_item(this, m_canvas, m_view, pos, range);
+       range.first++;
+     }
+ 
+@@ -150,6 +155,7 @@ WindowDownloadList::redraw() {
+       m_canvas->set_default_attributes(range.first == m_view->focus() ? A_REVERSE : A_NORMAL);
+       m_canvas->print(0, pos++, "%c %s", range.first == m_view->focus() ? '*' : ' ', buffer);
+ 
++      ui_pyroscope_download_list_redraw_item(this, m_canvas, m_view, pos, range);
+       range.first++;
+     }
+   }
+--- a/src/display/window_statusbar.cc
++++ b/src/display/window_statusbar.cc
+@@ -46,6 +46,8 @@
+ 
+ namespace display {
+ 
++void ui_pyroscope_statusbar_redraw(Window* window, display::Canvas* canvas);
++
+ void
+ WindowStatusbar::redraw() {
+   m_slotSchedule(this, (cachedTime + rak::timer::from_seconds(1)).round_seconds());
+@@ -67,6 +69,7 @@ WindowStatusbar::redraw() {
+     m_canvas->print(m_canvas->width() - (position - buffer), 0, "%s", buffer);
+   }
+ 
 +  ui_pyroscope_statusbar_redraw(this, m_canvas);
    m_lastTick = control->tick();
---- orig/src/display/window_download_list.cc	2009-11-12 09:03:47.000000000 +0100
-+++ rtorrent-0.8.6/src/display/window_download_list.cc	2011-05-30 20:34:59.000000000 +0200
-@@ -75,2 +75,4 @@
+ }
  
-+  bool ui_pyroscope_download_list_redraw(Window* window, display::Canvas* canvas, core::View* view);
-+  if (ui_pyroscope_download_list_redraw(this, m_canvas, m_view)) return;
-   if (m_view->empty_visible() || m_canvas->width() < 5 || m_canvas->height() < 2)
-@@ -107,2 +109,4 @@
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -189,6 +189,7 @@ libsub_root_a_SOURCES = \
+ 	thread_base.cc \
+ 	thread_base.h \
+ 	thread_worker.cc \
+-	thread_worker.h
++	thread_worker.h \
++	ui_pyroscope.cc
  
-+    void ui_pyroscope_download_list_redraw_item(Window* window, display::Canvas* canvas, core::View* view, int pos, Range& range);
-+    ui_pyroscope_download_list_redraw_item(this, m_canvas, m_view, pos, range);
-     ++range.first;
---- orig/src/display/canvas.cc	2009-11-12 09:03:47.000000000 +0100
-+++ rtorrent-0.8.6/src/display/canvas.cc	2011-05-30 21:07:29.000000000 +0200
-@@ -94,2 +94,4 @@
-   initscr();
-+  extern void ui_pyroscope_canvas_init();
-+  ui_pyroscope_canvas_init();
-   raw();
+ AM_CPPFLAGS = -I$(srcdir) -I$(top_srcdir)

@@ -1,19 +1,27 @@
---- a/src/core/manager.cc	2017-04-30 20:32:33.000000000 +0100
-+++ b/src/core/manager.cc	2018-04-20 15:45:33.380910446 +0100
-@@ -36,6 +36,7 @@
+--- a/src/core/manager.cc
++++ b/src/core/manager.cc
+@@ -38,6 +38,7 @@
  
- #include "config.h"
- 
-+#include <ctime>
  #include <cstdio>
  #include <cstring>
++#include <ctime>
  #include <fstream>
-@@ -83,6 +84,22 @@ void
+ #include <sstream>
+ #include <unistd.h>
+@@ -74,6 +75,8 @@
+ 
+ namespace core {
+ 
++extern int log_messages_fd;
++
+ const int Manager::create_start;
+ const int Manager::create_tied;
+ const int Manager::create_quiet;
+@@ -83,6 +86,21 @@ void
  Manager::push_log(const char* msg) {
    m_log_important->lock_and_push_log(msg, strlen(msg), 0);
    m_log_complete->lock_and_push_log(msg, strlen(msg), 0);
 +
-+  extern int log_messages_fd;
 +  if (log_messages_fd >= 0) {
 +    char buf[30];
 +    time_t t = std::time(0);
