@@ -2,7 +2,7 @@
 pkgname=flclash-bin
 _pkgname=flclash
 pkgver=0.8.62
-pkgrel=2
+pkgrel=3
 pkgdesc="A multi-platform proxy client based on ClashMeta,simple and easy to use, open-source and ad-free."
 arch=('x86_64')
 url="https://github.com/chen08209/FlClash"
@@ -30,6 +30,9 @@ optdepends=(
   'libayatana-appindicator: Display tray icon'
   'libkeybinder3: Multimedia key support under non Gnome setups'
 )
+makedepends=(
+  'patchelf'
+)
 source=(
 	"${_pkgname}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-amd64.deb"
 )
@@ -39,5 +42,15 @@ package() {
     msg "Converting debian package..."
     cd "$srcdir"
     tar -I zstd -xvf data.tar.zst -C "$pkgdir"
-    find "$pkgdir" -type d -exec chmod 755 {} \;
+
+    # runpath
+    patchelf --set-rpath '$ORIGIN/lib' "$pkgdir"/usr/share/FlClash/FlClash
+    for i in "$pkgdir"/usr/share/FlClash/lib/*.so; do
+      echo "find so $i"
+      [ -z "$(patchelf --print-rpath "$i")" ] && continue
+      patchelf --set-rpath '$ORIGIN' "$i"
+    done
+
+    # permissions
+    chmod -R u+rwX,go+rX,go-w "$pkgdir/"
 }
