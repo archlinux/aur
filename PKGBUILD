@@ -1,6 +1,6 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=vpkedit-git
-pkgver=4.2.3.r18.gf14fd1b
+pkgver=4.3.0.r2.ga55cbaa
 epoch=1
 pkgrel=1
 pkgdesc="A library and tool to create, read, and write Valve VPK archives"
@@ -23,8 +23,10 @@ source=("$pkgname::git+$url.git"
 	"minizip-ng::git+https://github.com/zlib-ng/minizip-ng.git"
 	"cryptopp::git+https://github.com/abdes/cryptopp-cmake.git"
 	"bufferstream::git+https://github.com/craftablescience/BufferStream.git"
-	"miniz::git+https://github.com/richgel999/miniz.git")
+	"miniz::git+https://github.com/richgel999/miniz.git"
+	"hat-trie::git+https://github.com/Tessil/hat-trie.git")
 sha256sums=('SKIP'
+            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -56,11 +58,13 @@ prepare() {
 
 	cd "$srcdir/$pkgname/src/shared/thirdparty/sourcepp"
 	git submodule init
-	for submodule in {bufferstream,miniz,minizip-ng,cryptopp}; do
+	for submodule in {bufferstream,miniz,minizip-ng,cryptopp,hat-trie}; do
 		git config submodule.ext/${submodule}.url "$srcdir/${submodule}"
 	done
 	git config submodule.docs/layout/doxygen-awesome-css.url "$srcdir/doxygen-awesome-css"
 	git -c protocol.file.allow=always submodule update
+
+	sed -i '6s/^/#include <algorithm>/' "$srcdir/$pkgname/src/shared/thirdparty/sourcepp/src/bsppp/bsppp.cpp"
 }
 
 build() {

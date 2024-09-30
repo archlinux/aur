@@ -1,6 +1,6 @@
 pkgbase = vpkedit-git
 	pkgdesc = A library and tool to create, read, and write Valve VPK archives
-	pkgver = 4.2.3.r18.gf14fd1b
+	pkgver = 4.3.0.r2.ga55cbaa
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/craftablescience/VPKEdit
@@ -30,6 +30,8 @@ pkgbase = vpkedit-git
 	source = cryptopp::git+https://github.com/abdes/cryptopp-cmake.git
 	source = bufferstream::git+https://github.com/craftablescience/BufferStream.git
 	source = miniz::git+https://github.com/richgel999/miniz.git
+	source = hat-trie::git+https://github.com/Tessil/hat-trie.git
+	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
