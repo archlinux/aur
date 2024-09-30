@@ -1,6 +1,6 @@
 pkgbase = python-chibi-dl-tmo
 	pkgdesc = command script for download mangas from lectortmo.com or visortmo.com
-	pkgver = 1.0.0
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://pypi.org/project/chibi-dl-tmo/
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = python-chibi-dl-tmo
 	makedepends = python-setuptools
 	depends = python-chibi-dl
 	depends = python-undetected-chromedriver
-	source = https://files.pythonhosted.org/packages/source/c/chibi_dl_tmo/chibi_dl_tmo-1.0.0.tar.gz
+	source = https://files.pythonhosted.org/packages/source/c/chibi_dl_tmo/chibi_dl_tmo-1.1.0.tar.gz
 	sha256sums = 40582b63cae040a72c45b9e35f608936414c10fc7a2cd61309f06cc2f708fd78
 
 pkgname = python-chibi-dl-tmo

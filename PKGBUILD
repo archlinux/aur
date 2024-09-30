@@ -1,6 +1,6 @@
 pkgname=python-chibi-dl-tmo
 _pyname=chibi_dl_tmo
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="command script for download mangas from lectortmo.com or visortmo.com"
 arch=('any')
