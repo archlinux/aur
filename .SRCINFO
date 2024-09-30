@@ -1,6 +1,6 @@
 pkgbase = python-django-soft-delete
 	pkgdesc = Soft delete models, managers, queryset for Django
-	pkgver = 1.0.14
+	pkgver = 1.0.15
 	pkgrel = 1
 	url = https://github.com/san4ezy/django_softdelete
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = python-django-soft-delete
 	makedepends = python-setuptools
 	makedepends = python-wheel
 	depends = python-django
-	source = django-soft-delete-1.0.14.tar.gz::https://files.pythonhosted.org/packages/source/d/django-soft-delete/django-soft-delete-1.0.14.tar.gz
-	sha256sums = 428df56ea4fbb13f42d4f752f11f2a517aa31ac3d1b450e6b78c4c5d5d9dfc3b
+	source = django-soft-delete-1.0.15.tar.gz::https://files.pythonhosted.org/packages/source/d/django-soft-delete/django-soft-delete-1.0.15.tar.gz
+	sha256sums = 36cf26a9eaa5f4c0fdb5cb6367ea183e91b7f73783cad173e4071a4747dd1277
 
 pkgname = python-django-soft-delete
