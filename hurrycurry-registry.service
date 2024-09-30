@@ -1,12 +1,11 @@
 [Unit]
-Description=hurrycurry game server
+Description=hurrycurry server registry service
 After=network.target
 Wants=network-online.target
 
 [Service]
-WorkingDirectory=/usr/share/hurrycurry
 Environment=XDG_DATA_HOME=/var/lib
-ExecStart=/usr/bin/hurrycurry-server
+ExecStart=/usr/bin/hurrycurry-registry
 User=hurrycurry
 LockPersonality=yes
 MemoryDenyWriteExecute=yes

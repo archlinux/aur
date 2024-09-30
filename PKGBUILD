@@ -1,8 +1,8 @@
 # Maintainer: metamuffin <metamuffin@disroot.org>
 
 pkgname=hurrycurry-server
-pkgver=1.6.0
-pkgrel=1
+pkgver=2.1.0
+pkgrel=4
 pkgdesc="A game about cooking (server)"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://codeberg.org/hurrycurry/hurrycurry"
@@ -10,11 +10,15 @@ license=('AGPL3')
 makedepends=('rustup' 'deno' 'graphviz' 'godot')
 source=("hurrycurry-$pkgver.tar.gz::https://codeberg.org/hurrycurry/hurrycurry/archive/v$pkgver.tar.gz"
         "hurrycurry.service"
+        "hurrycurry-registry.service"
         "hurrycurry.yaml"
+        "tmpfiles.conf"
         "sysusers.conf")
-sha256sums=('0bb49514884aafe091744cee1f8f95bb96da70f8722752e2e7d081058002cd1f'
-            'd520ab278a04fd434429833e806b67f876529fcbbf7e8f5aa80c3e102b621750'
+sha256sums=('f842d76a5691fbfbca25270ae991a966dfed9fea665798459288c2a0f322851a'
+            '2e10c8882ef4847586f03ac5feb469294c1b2304928f8df41db12a1d84569eb7'
+            'dec75b020f3a0bfc5c22f0fa013fe03d06feab608f9d4a42fb46d05dbed56844'
             'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855'
+            '47c6bd933fc96d08322d78a14c7932707b1dd1be2c1bb6eda2d212973f96aac9'
             'bbb29eff6b62d4530b04c0a964a88229212fea165f97a1c4674c53fae9fb4fe4')
 
 prepare() {
@@ -27,6 +31,8 @@ build() {
     cd "hurrycurry"
     cargo +nightly build --frozen --release --target "$CHOST" --bin hurrycurry-server
     cargo +nightly build --frozen --release --target "$CHOST" --bin hurrycurry-replaytool
+    cargo +nightly build --frozen --release --target "$CHOST" --bin hurrycurry-registry
+    cargo +nightly build --frozen --release --target "$CHOST" --bin hurrycurry-discover
     make -C data all
     make -C data recipes/default.svg
     esbuild test-client/main.ts --bundle --outdir=test-client
@@ -34,8 +40,12 @@ build() {
 package() {
     install -Dm755 hurrycurry/target/$CHOST/release/hurrycurry-server "$pkgdir/usr/bin/hurrycurry-server"
     install -Dm755 hurrycurry/target/$CHOST/release/hurrycurry-replaytool "$pkgdir/usr/bin/hurrycurry-replaytool"
+    install -Dm755 hurrycurry/target/$CHOST/release/hurrycurry-registry "$pkgdir/usr/bin/hurrycurry-registry"
+    install -Dm755 hurrycurry/target/$CHOST/release/hurrycurry-discover "$pkgdir/usr/bin/hurrycurry-discover"
     install -Dm644 hurrycurry.service "$pkgdir/usr/lib/systemd/system/hurrycurry.service"
+    install -Dm644 hurrycurry-registry.service "$pkgdir/usr/lib/systemd/system/hurrycurry-registry.service"
     install -Dm644 sysusers.conf "$pkgdir/usr/lib/sysusers.d/hurrycurry.conf"
+    install -Dm644 tmpfiles.conf "$pkgdir/usr/lib/tmpfiles.d/hurrycurry.conf"
     install -Dm644 hurrycurry/COPYING "$pkgdir/usr/share/licenses/hurrycurry-server/COPYING"
     install -Dm664 -t "$pkgdir/usr/share/hurrycurry/test-client" hurrycurry/test-client/* 
     install -Dm644 hurrycurry/data/index.yaml "$pkgdir/usr/share/hurrycurry/data/index.yaml"
