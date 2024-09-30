@@ -1,6 +1,6 @@
 pkgbase = hyprnotify
 	pkgdesc = A notification daemon with 'hyprctl notify' as its backend.
-	pkgver = 0.7.0
+	pkgver = 0.8.0
 	pkgrel = 1
 	url = https://github.com/codelif/hyprnotify
 	arch = x86_64
@@ -9,8 +9,7 @@ pkgbase = hyprnotify
 	makedepends = go
 	makedepends = alsa-lib
 	makedepends = binutils
-	depends = hyprland
-	source = hyprnotify-0.7.0.tar.gz::https://github.com/codelif/hyprnotify/archive/v0.7.0.tar.gz
-	sha256sums = 021e641b2be7cafedd4d7e605c10bb6ca51ef4d9192d496f690a123492db8b4f
+	source = hyprnotify-0.8.0.tar.gz::https://github.com/codelif/hyprnotify/archive/v0.8.0.tar.gz
+	sha256sums = f604868fd5aeef053a1e02e5642c81fb6d47351dedb030d88f24e5a27211c940
 
 pkgname = hyprnotify
