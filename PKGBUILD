@@ -3,7 +3,7 @@
 
 pkgname=spek-x-git
 pkgver=v0.9.0.r30.g362dd16
-pkgrel=1
+pkgrel=2
 pkgdesc='Acoustic spectrum analyser forked from spek.'
 arch=('aarch64' 'arm' 'armv6h' 'armv7h' 'i686' 'x86_64')
 license=('GPL3')
@@ -36,4 +36,5 @@ build() {
 package() {
     cd "$srcdir/$pkgname"
     make DESTDIR=$pkgdir install
+    install -Dm644 "LICENCE.md" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
