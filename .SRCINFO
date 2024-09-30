@@ -1,0 +1,24 @@
+pkgbase = kemoticons
+	pkgdesc = Support for emoticons and emoticons themes
+	pkgver = 5.116.0
+	pkgrel = 2
+	url = https://community.kde.org/Frameworks
+	arch = x86_64
+	arch = i686
+	arch = aarch64
+	arch = armv7h
+	groups = kf5
+	license = LGPL
+	makedepends = extra-cmake-modules
+	makedepends = doxygen
+	makedepends = qt5-tools
+	makedepends = qt5-doc
+	depends = karchive5
+	depends = kservice5
+	source = https://download.kde.org/stable/frameworks/5.116/kemoticons-5.116.0.tar.xz
+	source = https://download.kde.org/stable/frameworks/5.116/kemoticons-5.116.0.tar.xz.sig
+	validpgpkeys = 53E6B47B45CEA3E0D5B7457758D0EE648A48B3BB
+	sha256sums = ac63341b07fe151dcbb622495d9cfd5d42fbfc4c4e67bf915b8eec03cf626853
+	sha256sums = SKIP
+
+pkgname = kemoticons
