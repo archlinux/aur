@@ -2,7 +2,7 @@
 
 _pkgname="pman"
 pkgname="$_pkgname-helper"
-pkgver="1.1.1"
+pkgver="1.1.2"
 pkgrel="1"
 pkgdesc="A pacman helper script, because you forget all the stupid flags"
 url="https://git.bjphoster.com/source/${_pkgname}"
@@ -14,17 +14,17 @@ source=(
     "https://git.bjphoster.com/source/${_pkgname}/archive/${pkgver}.tar.gz"
 )
 sha1sums=(
-    "908e8746681f3b0f65128a05bf954f24e0d57346"
+  "af045144e207157c2e615cedf615e68a07c1af85"
 )
 sha256sums=(
-    "ab090fa3c7e4e5c97725799e27106ccb5506b05e0f0d43c0688f26371376c771"
+  "9ac3b495130d8d296e8cda1c9fdf7a908679c722ab746cdc8ff2e85606dac88a"
 )
 md5sums=(
-    "04826025b56e9ab28f79f63cbb5b0f60"
+  "33cd29b90bcf74946489e39271cbeb99"
 )
 package() {
-    mkdir -p "${pkgdir}/usr/share/licenses/${pkgname}"
-    mkdir -p "${pkgdir}/usr/bin"
-    install -Dm644 "${srcdir}/${_pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-    install -Dm755 "${srcdir}/${_pkgname}/pman.sh" "${pkgdir}/usr/bin/${_pkgname}"
+  mkdir -p "${pkgdir}/usr/share/licenses/${pkgname}"
+  mkdir -p "${pkgdir}/usr/bin"
+  install -Dm644 "${srcdir}/${_pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm755 "${srcdir}/${_pkgname}/pman.sh" "${pkgdir}/usr/bin/${_pkgname}"
 }
