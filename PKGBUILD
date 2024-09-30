@@ -1,4 +1,6 @@
-# Maintainer: Peter Jung ptr1337 <admin@ptr1337.dev> && Piotr Gorski <piotrgorski@cachyos.org>
+# Maintainer: Peter Jung ptr1337 <admin@ptr1337.dev>
+# Maintainer: Piotr Gorski <piotrgorski@cachyos.org>
+# Maintainer: Vasiliy Stelmachenok <ventureo@cachyos.org>
 # Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 # Contributor: Tobias Powalowski <tpowa@archlinux.org>
 # Contributor: Thomas Baechler <thomas@archlinux.org>
@@ -48,6 +50,9 @@ _NUMAdisable=${_NUMAdisable-}
 # More at this wiki page ---> https://wiki.archlinux.org/index.php/Modprobed-db
 _localmodcfg=${_localmodcfg-}
 
+# Path to the list of used modules
+_localmodcfg_path=${_localmodcfg_path-"$HOME/.config/modprobed.db"}
+
 # Use the current kernel's .config file
 # Enabling this option will use the .config of the RUNNING kernel rather than
 # the ARCH defaults. Useful when the package gets updated and you already went
@@ -57,10 +62,6 @@ _use_current=${_use_current-}
 
 ### Enable KBUILD_CFLAGS -O3
 _cc_harder=${_cc_harder-y}
-
-### Enable KBUILD_CFLAGS -Os
-## DO NOT SET, THIS IS FOR INTERNAL CI USE ONLY.
-_cc_size=${_cc_size-}
 
 ### Set this to your number of threads you have in your machine otherwise it will default to 320
 _nr_cpus=${_nr_cpus-}
@@ -173,7 +174,7 @@ elif [ -n "$_use_llvm_lto" ]  ||  [[ "$_use_lto_suffix" = "n" ]]; then
     pkgbase="linux-$_pkgsuffix"
 fi
 _major=6.6
-_minor=51
+_minor=53
 #_minorc=$((_minor+1))
 #_rcver=rc8
 pkgver=${_major}.${_minor}
@@ -202,16 +203,6 @@ makedepends=(
   xz
   zstd
 )
-# LLVM makedepends
-if [[ "$_use_llvm_lto" = "thin" || "$_use_llvm_lto" = "full" ]] || [ -n "$_use_kcfi" ]; then
-    makedepends+=(clang llvm lld)
-    BUILD_FLAGS=(
-        CC=clang
-        LD=ld.lld
-        LLVM=1
-        LLVM_IAS=1
-    )
-fi
 
 _patchsource="https://raw.githubusercontent.com/cachyos/kernel-patches/master/${_major}"
 _nv_ver=560.35.03
@@ -222,6 +213,18 @@ source=(
     "config"
     "auto-cpu-optimization.sh"
     "${_patchsource}/all/0001-cachyos-base-all.patch")
+
+# LLVM makedepends
+if [[ "$_use_llvm_lto" = "thin" || "$_use_llvm_lto" = "full" ]] || [ -n "$_use_kcfi" ]; then
+    makedepends+=(clang llvm lld)
+    source+=("${_patchsource}/misc/dkms-clang.patch")
+    BUILD_FLAGS=(
+        CC=clang
+        LD=ld.lld
+        LLVM=1
+        LLVM_IAS=1
+    )
+fi
 
 # WARNING The ZFS module doesn't build with selected RT sched due to licensing issues.
 if [[ "$_cpusched" = "rt" || "$_cpusched" = "rt-bore" ]]; then
@@ -237,14 +240,17 @@ fi
 # NVIDIA pre-build module support
 if [ -n "$_build_nvidia" ]; then
     source+=("https://us.download.nvidia.com/XFree86/Linux-x86_64/${_nv_ver}/${_nv_pkg}.run"
-             "${_patchsource}/misc/nvidia/make-modeset-fbdev-default.patch")
+             "${_patchsource}/misc/nvidia/0001-Make-modeset-and-fbdev-default-enabled.patch"
+             "${_patchsource}/misc/nvidia/0004-6.11-Add-fix-for-fbdev.patch")
 fi
 
 if [ -n "$_build_nvidia_open" ]; then
     source+=("nvidia-open-${_nv_ver}.tar.gz::https://github.com/NVIDIA/open-gpu-kernel-modules/archive/refs/tags/${_nv_ver}.tar.gz"
-             "${_patchsource}/misc/nvidia/make-modeset-fbdev-default.patch"
-             "${_patchsource}/misc/nvidia/nvidia-open-gcc-ibt-sls.patch"
-             "${_patchsource}/misc/nvidia/fix-zen5.patch")
+             "${_patchsource}/misc/nvidia/0001-Make-modeset-and-fbdev-default-enabled.patch"
+             "${_patchsource}/misc/nvidia/0002-Do-not-error-on-unkown-CPU-Type-and-add-Zen5-support.patch"
+             "${_patchsource}/misc/nvidia/0003-Add-IBT-Support.patch"
+             "${_patchsource}/misc/nvidia/0004-6.11-Add-fix-for-fbdev.patch"
+             "${_patchsource}/misc/nvidia/0005-6.12-drm_outpull_pill-changed-check.patch")
 fi
 
 ## List of CachyOS schedulers
@@ -278,7 +284,7 @@ export KBUILD_BUILD_HOST=cachyos
 export KBUILD_BUILD_USER="$pkgbase"
 export KBUILD_BUILD_TIMESTAMP="$(date -Ru${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EPOCH})"
 
-_die() { error "$@" ; exit; }
+_die() { error "$@" ; exit 1; }
 
 prepare() {
     cd "$_srcname"
@@ -290,11 +296,10 @@ prepare() {
     local src
     for src in "${source[@]}"; do
         src="${src%%::*}"
+        # Skip nvidia patches
+        [[ "$src" == "${_patchsource}"/misc/nvidia/*.patch ]] && continue
         src="${src##*/}"
         src="${src%.zst}"
-        [[ $src = make-modeset-fbdev-default.patch ]] && continue
-        [[ $src = nvidia-open-gcc-ibt-sls.patch ]] && continue
-        [[ $src = fix-zen5.patch ]] && continue
         [[ $src = *.patch ]] || continue
         echo "Applying patch $src..."
         patch -Np1 < "../$src"
@@ -306,16 +311,16 @@ prepare() {
     ### Select CPU optimization
     if [ -n "$_processor_opt" ]; then
         MARCH="${_processor_opt^^}"
-        MARCH2=${MARCH}
 
-        if [[ ! "$MARCH" =~ GENERIC* ]]; then
-            MARCH2="M${MARCH}"
-        else
-            MARCH2="${MARCH/V/CPU}"
+        if [ "$MARCH" != "GENERIC" ]; then
+            if [[ "$MARCH" =~ GENERIC_V[1-4] ]]; then
+                X86_64_LEVEL="${MARCH//GENERIC_V}"
+                scripts/config --set-val X86_64_VERSION "${X86_64_LEVEL}"
+            else
+                scripts/config -k -d CONFIG_GENERIC_CPU
+                scripts/config -k -e "CONFIG_M${MARCH}"
+            fi
         fi
-
-        scripts/config -k -d CONFIG_GENERIC_CPU
-        scripts/config -k -e "CONFIG_${MARCH2}"
     fi
 
     ### Use autooptimization
@@ -447,11 +452,20 @@ prepare() {
             -e CC_OPTIMIZE_FOR_PERFORMANCE_O3
     fi
 
-    ### Enable Os
-    if [ -n "$_cc_size" ] && [ -z "$_cc_harder" ]; then
-        echo "Enabling KBUILD_CFLAGS -Os..."
+    ### CI-only stuff
+    if [[ -n "$CI" || -n "$GITHUB_RUN_ID" ]]; then
+        echo "Detected build inside CI"
         scripts/config -d CC_OPTIMIZE_FOR_PERFORMANCE \
-            -e CONFIG_CC_OPTIMIZE_FOR_SIZE
+            -d CC_OPTIMIZE_FOR_PERFORMANCE_O3 \
+            -e CONFIG_CC_OPTIMIZE_FOR_SIZE \
+            -d SLUB_DEBUG \
+            -d PM_DEBUG \
+            -d PM_ADVANCED_DEBUG \
+            -d PM_SLEEP_DEBUG \
+            -d ACPI_DEBUG \
+            -d LATENCYTOP \
+            -d SCHED_DEBUG \
+            -d DEBUG_PREEMPT
     fi
 
     ### Enable bbr3
@@ -555,9 +569,9 @@ prepare() {
     ### Optionally load needed modules for the make localmodconfig
     # See https://aur.archlinux.org/packages/modprobed-db
     if [ -n "$_localmodcfg" ]; then
-        if [ -e "$HOME/.config/modprobed.db" ]; then
+        if [ -e "$_localmodcfg_path" ]; then
             echo "Running Steven Rostedt's make localmodconfig now"
-            make "${BUILD_FLAGS[@]}" LSMOD="$HOME/.config/modprobed.db" localmodconfig
+            make "${BUILD_FLAGS[@]}" LSMOD="${_localmodcfg_path}" localmodconfig
         else
             _die "No modprobed.db data found"
         fi
@@ -595,15 +609,21 @@ prepare() {
         sh "${_nv_pkg}.run" --extract-only
 
         # Use fbdev and modeset as default
-        patch -Np1 -i "${srcdir}/make-modeset-fbdev-default.patch" -d "${srcdir}/${_nv_pkg}/kernel"
+        patch -Np1 -i "${srcdir}/0001-Make-modeset-and-fbdev-default-enabled.patch" -d "${srcdir}/${_nv_pkg}/kernel"
+        # Fix broken fbdev on 6.11
+        patch -Np2 -i "${srcdir}/0004-6.11-Add-fix-for-fbdev.patch" -d "${srcdir}/${_nv_pkg}/kernel"
     fi
 
     if [ -n "$_build_nvidia_open" ]; then
-        patch -Np1 -i "${srcdir}/make-modeset-fbdev-default.patch" -d "${srcdir}/${_nv_open_pkg}/kernel-open"
+        patch -Np1 -i "${srcdir}/0001-Make-modeset-and-fbdev-default-enabled.patch" -d "${srcdir}/${_nv_open_pkg}/kernel-open"
         # Fix for https://bugs.archlinux.org/task/74886
-        patch -Np1 --no-backup-if-mismatch -i "${srcdir}/nvidia-open-gcc-ibt-sls.patch" -d "${srcdir}/${_nv_open_pkg}"
+        patch -Np1 --no-backup-if-mismatch -i "${srcdir}/0003-Add-IBT-Support.patch" -d "${srcdir}/${_nv_open_pkg}"
         # Fix for Zen5 error print in dmesg
-        patch -Np1 --no-backup-if-mismatch -i "${srcdir}/fix-zen5.patch" -d "${srcdir}/${_nv_open_pkg}"
+        patch -Np1 --no-backup-if-mismatch -i "${srcdir}/0002-Do-not-error-on-unkown-CPU-Type-and-add-Zen5-support.patch" -d "${srcdir}/${_nv_open_pkg}"
+        # Fix broken fbdev on 6.11
+        patch -Np1 --no-backup-if-mismatch -i "${srcdir}/0004-6.11-Add-fix-for-fbdev.patch" -d "${srcdir}/${_nv_open_pkg}"
+        # Fix for 6.12 Module Compilation
+        patch -Np1 --no-backup-if-mismatch -i "${srcdir}/0005-6.12-drm_outpull_pill-changed-check.patch" -d "${srcdir}/${_nv_open_pkg}"
     fi
 }
 
@@ -612,15 +632,14 @@ build() {
     make "${BUILD_FLAGS[@]}" -j"$(nproc)" all
     make -C tools/bpf/bpftool vmlinux.h feature-clang-bpf-co-re=1
 
+    local MODULE_FLAGS=(
+       KERNEL_UNAME="${_kernuname}"
+       IGNORE_PREEMPT_RT_PRESENCE=1
+       SYSSRC="${srcdir}/${_srcname}"
+       SYSOUT="${srcdir}/${_srcname}"
+    )
     if [ -n "$_build_nvidia" ]; then
-        local MODULE_FLAGS=(
-           KERNEL_UNAME="${_kernuname}"
-           IGNORE_PREEMPT_RT_PRESENCE=1
-           NV_EXCLUDE_BUILD_MODULES='__EXCLUDE_MODULES'
-           SYSSRC="${srcdir}/${_srcname}"
-           SYSOUT="${srcdir}/${_srcname}"
-        )
-
+        MODULE_FLAGS+=(NV_EXCLUDE_BUILD_MODULES='__EXCLUDE_MODULES')
         cd "${srcdir}/${_nv_pkg}/kernel"
         make "${BUILD_FLAGS[@]}" "${MODULE_FLAGS[@]}" -j"$(nproc)" modules
 
@@ -628,13 +647,7 @@ build() {
 
     if [ -n "$_build_nvidia_open" ]; then
         cd "${srcdir}/${_nv_open_pkg}"
-        local MODULE_FLAGS=(
-           KERNEL_UNAME="${_kernuname}"
-           IGNORE_PREEMPT_RT_PRESENCE=1
-           IGNORE_CC_MISMATCH=yes
-           SYSSRC="${srcdir}/${_srcname}"
-           SYSOUT="${srcdir}/${_srcname}"
-        )
+        MODULE_FLAGS+=(IGNORE_CC_MISMATCH=yes)
         CFLAGS= CXXFLAGS= LDFLAGS= make "${BUILD_FLAGS[@]}" "${MODULE_FLAGS[@]}" -j"$(nproc)" modules
     fi
 
@@ -841,8 +854,8 @@ for _p in "${pkgname[@]}"; do
     }"
 done
 
-sha256sums=('1c0c9a14650879c4913efdbac428ba31a540c3d987155ddf34d33e11eca008b3'
-            '692977cbef1ce2d669e19492bc607f5fb2c6fac0f73c1f37be6c0c5b753c5a08'
+sha256sums=('285d181d1b252b0bf905f040d094215cf183ac98c31a17f9cce9f3537ef4d779'
+            '7dc1a20396ef90dc4c7ce93f70d98a2b68aa9a9432f37515288ca0aa4fc5ec89'
             'a91249420d61edb17b8659ab3feca86d24cf3b1c941b14f232c47064fa4f4ce7'
             '6516e23cf0daed0d565766840342276e00516c732a0e70f996b0e8319221f8c2'
             '8b71209aa8b091dea5fa85921fbd888b5d8a4d351f04ce12d70b9c8d22758389')
