@@ -1,7 +1,7 @@
 pkgbase = sc-controller-git
 	pkgdesc = User-mode driver and GTK3 based GUI for Steam Controller
 	pkgver = 0.4.9.3.r4.5d8aa46
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/C0rn3j/sc-controller
 	arch = x86_64
 	arch = aarch64
@@ -14,6 +14,7 @@ pkgbase = sc-controller-git
 	depends = python-cairo
 	depends = python-evdev
 	depends = python-gobject
+	depends = python-libusb1
 	depends = python-pylibacl
 	depends = python-setuptools
 	depends = python-vdf
