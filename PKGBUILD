@@ -8,7 +8,9 @@ pkgrel=1
 pkgdesc="Typing stubs for beautifulsoup4"
 url="https://github.com/python/typeshed"
 depends=('python')
-makedepends=('python-build' 'python-installer' 'python-wheel')
+makedepends=(
+    'python-build' 'python-installer' 'python-wheel' 'python-setuptools'
+)
 license=('Apache-2.0')
 arch=('any')
 source=("https://files.pythonhosted.org/packages/43/b4/53d66eb8f6f358f6e5bd0c8bd373844b53b77fdb508d8f0d8000fbefa0a2/types-beautifulsoup4-4.12.0.20240106.tar.gz")
