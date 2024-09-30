@@ -4,7 +4,7 @@
 
 _pkgname=autorestic
 pkgname="${_pkgname}-git"
-pkgver=1.8.3+1.r532.20240829.1f7240c
+pkgver=1.8.3+5.r536.20240927.6424c64
 pkgrel=1
 pkgdesc='Config driven, easy backup cli for restic. Latest git checkout.'
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
