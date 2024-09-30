@@ -2,7 +2,7 @@
 # Contributor: TransistorLogic <liuhongwu2003@outlook.com>
 
 _name=xeger
-pkgname=python-$_name
+pkgname=python-$_name-git
 pkgver=r40.e650ded
 pkgrel=1
 pkgdesc="A library for generating random strings from a valid regular expression."
