@@ -2,7 +2,7 @@
 
 _pkgname="tsukimi"
 pkgname="${_pkgname}-git"
-pkgver=0.12.0.r437.g1b6f33d
+pkgver=0.13.0.r637.gf5a2162
 pkgrel=1
 pkgdesc='A simple third-party Emby client'
 arch=('x86_64')
@@ -29,7 +29,7 @@ sha256sums=('SKIP'
 
 pkgver() {
 	cd "${_pkgname}"
-	echo $(grep '^version =' Cargo.toml | head -n1 | cut -d\" -f2).r$(git rev-list --count HEAD).g$(git describe --always)
+	echo $(grep '^version =' Cargo.toml | head -n1 | cut -d\" -f2).r$(git rev-list --count HEAD).g$(git rev-parse --short=7 HEAD)
 }
 
 prepare() {
