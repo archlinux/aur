@@ -4,10 +4,10 @@
 _appname=ledger-live-desktop
 pkgname=ledger-live
 pkgdesc="Maintain your Ledger devices"
-_electron='electron30'
+_electron='electron32'
 _sha='c41378dc2620c366a46e01b36a1e8af03c8e9e62'
 _short_sha="${_sha::7}"
-pkgver=2.86.0
+pkgver=2.87.0
 pkgrel=1
 arch=('x86_64')
 _gh_owner='LedgerHQ'
