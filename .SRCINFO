@@ -1,0 +1,24 @@
+pkgbase = tuxsuite
+	pkgdesc = A command-line client for TuxSuite services
+	pkgver = 1.42.2
+	pkgrel = 1
+	url = https://docs.tuxsuite.com/
+	arch = any
+	license = Apache
+	makedepends = python-setuptools
+	makedepends = python-build
+	depends = python
+	depends = python-pip
+	depends = python-build
+	depends = python-installer
+	depends = python-setuptools
+	depends = python-wheel
+	depends = python-dkim
+	depends = b4
+	depends = python-voluptuous
+	depends = python-flask
+	depends = python-flask-restful
+	source = https://files.pythonhosted.org/packages/source/t/tuxsuite/tuxsuite-1.42.2.tar.gz
+	sha256sums = SKIP
+
+pkgname = tuxsuite
