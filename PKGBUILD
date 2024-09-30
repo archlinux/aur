@@ -3,7 +3,7 @@
 
 pkgname=libcpucycles
 epoch=
-pkgver=20240114
+pkgver=20240318
 pkgrel=1
 pkgdesc="A microlibrary for counting CPU cycles"
 url=https://cpucycles.cr.yp.to
@@ -11,7 +11,7 @@ license=(Unlicense)
 arch=(x86_64)
 makedepends=(python)
 source=(${url}/${pkgname}-${pkgver}.tar.gz)
-sha256sums=('e3d32462a53ba323b03b8b63544bcadca8a11514fb323e135661e22368316f02')
+sha256sums=('19646a1b69d8f013647313fcedf15b6a89327a4b7ce553536d513f1f6e54d32d')
 
 build() {
 	cd ${pkgname}-${pkgver}
