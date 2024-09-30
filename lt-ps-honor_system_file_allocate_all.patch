@@ -1,6 +1,6 @@
---- release/src/download/download_wrapper.cc	2015-08-08 16:01:49.000000000 +0100
-+++ patched/src/download/download_wrapper.cc	2016-08-23 18:06:34.346151049 +0100
-@@ -343,6 +343,8 @@ DownloadWrapper::receive_update_prioriti
+--- a/src/download/download_wrapper.cc
++++ b/src/download/download_wrapper.cc
+@@ -319,6 +319,8 @@ DownloadWrapper::receive_update_prioriti
        data()->mutable_high_priority()->insert((*itr)->range().first, (*itr)->range().second);
        break;
      default:
@@ -9,31 +9,9 @@
        break;
      }
    }
---- release/src/torrent/data/file.cc	2015-08-08 16:01:49.000000000 +0100
-+++ patched/src/torrent/data/file.cc	2016-08-23 12:59:32.115952838 +0100
-@@ -168,13 +168,14 @@ File::resize_file() {
-   if (m_size == SocketFile(m_fd).size())
-     return true;
- 
--  // For now make it so that the fallocate flag indicates if we want
--  // to do potentially blocking allocation, while FS supported
--  // non-blocking allocation is done always.
--  int flags = SocketFile::flag_fallocate;
-+  int flags = 0;
- 
--  if (m_flags & flag_fallocate)
-+  // Set FS supported non-blocking allocation flag and potentially
-+  // blocking allocation flag if fallocate flag is set.
-+  if (m_flags & flag_fallocate) {
-+    flags |= SocketFile::flag_fallocate;
-     flags |= SocketFile::flag_fallocate_blocking;
-+  }
- 
-   return SocketFile(m_fd).set_size(m_size, flags);
- }
---- release/src/torrent/data/file_list.cc	2015-08-08 16:01:32.000000000 +0100
-+++ patched/src/torrent/data/file_list.cc	2016-08-23 17:17:19.248826853 +0100
-@@ -580,7 +580,12 @@ FileList::open_file(File* node, const Pa
+--- a/src/torrent/data/file_list.cc
++++ b/src/torrent/data/file_list.cc
+@@ -578,7 +578,12 @@ FileList::open_file(File* node, const Pa
      return false;
    }
  
@@ -47,9 +25,9 @@
  }
  
  MemoryChunk
---- release/src/torrent/download.cc	2015-08-08 16:01:49.000000000 +0100
-+++ patched/src/torrent/download.cc	2016-08-23 18:14:20.843623816 +0100
-@@ -131,9 +131,9 @@ Download::start(int flags) {
+--- a/src/torrent/download.cc
++++ b/src/torrent/download.cc
+@@ -143,9 +143,9 @@ Download::start(int flags) {
  
  //   file_list()->open(flags);
  
