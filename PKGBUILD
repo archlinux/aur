@@ -1,4 +1,4 @@
-# Maintainer:
+# Maintainer: snit <snit@cock.li>
 # Contributor: Cravix < dr dot neemous at gmail dot com >
 
 _pkgname="katawa-shoujo"
