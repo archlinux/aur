@@ -1,7 +1,7 @@
 # Maintainer: metamuffin <metamuffin@disroot.org>
 
 pkgname=hurrycurry-client
-pkgver=1.6.0
+pkgver=2.1.0
 pkgrel=1
 pkgdesc="A game about cooking (client)"
 arch=('any')
@@ -12,7 +12,7 @@ makedepends=('godot')
 source=("hurrycurry-$pkgver.tar.gz::https://codeberg.org/hurrycurry/hurrycurry/archive/v$pkgver.tar.gz"
         "hurrycurry-client"
         "hurrycurry-client.desktop")
-sha256sums=('0bb49514884aafe091744cee1f8f95bb96da70f8722752e2e7d081058002cd1f'
+sha256sums=('f842d76a5691fbfbca25270ae991a966dfed9fea665798459288c2a0f322851a'
             '2853345b64837352f576397aac7659aa0306e03ca7de4cdd04bb64bab9c8706c'
             '2607233a774b1f74f10deb0ef1c594e418554c4b5701d0e700016368e6d59718')
 
@@ -20,12 +20,12 @@ build() {
     cd "hurrycurry"
     make client
     mkdir -p target/release
-    godot --headless --export-pack wasm32-unknown-unknown ../target/release/client.pck client/project.godot
+    godot --headless --export-pack $CHOST ../target/release/client.pck client/project.godot
 }
 package() {
     install -Dm755 hurrycurry-client "$pkgdir/usr/bin/hurrycurry-client"
     install -Dm644 hurrycurry-client.desktop "$pkgdir/usr/share/applications/hurrycurry-client.desktop"
     install -Dm644 hurrycurry/target/release/client.pck "$pkgdir/usr/share/hurrycurry/client.pck"
     install -Dm644 hurrycurry/COPYING "$pkgdir/usr/share/licenses/hurrycurry-client/COPYING"
-    install -Dm644 hurrycurry/client/icon.png "$pkgdir/usr/share/icons/hicolor/512x512/apps/hurrycurry.png"
+    install -Dm644 hurrycurry/client/icons/main.png "$pkgdir/usr/share/icons/hicolor/512x512/apps/hurrycurry.png"
 }
