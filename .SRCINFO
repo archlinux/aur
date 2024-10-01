@@ -1,0 +1,17 @@
+pkgbase = r-classdiscovery
+	pkgdesc = Classes and Methods for "Class Discovery" with Microarrays or Proteomics
+	pkgver = 3.4.5
+	pkgrel = 1
+	url = https://cran.r-project.org/package=ClassDiscovery
+	arch = any
+	license = Apache-2.0
+	depends = r-biobase
+	depends = r-mclust
+	depends = r-oompabase
+	depends = r-oompadata
+	optdepends = r-xtable
+	source = https://cran.r-project.org/src/contrib/ClassDiscovery_3.4.5.tar.gz
+	md5sums = 6a49c8af59d21a5aa4125e70a1971700
+	b2sums = ef5bf133992bb3117895ad28a13575f2a36b2496bce0f19b46266f4ca74ee991d72aa30c9abfc4dd1ac53cc37965e19c4197a02adf8b36bde2565ddbd02d5c8b
+
+pkgname = r-classdiscovery
