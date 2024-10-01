@@ -1,3 +1,14 @@
+2024-09-28 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
+  * 6.0.7.5-1:
+    Added new loot& and transfer& commands (@dm1tz #3287).
+    Added new bgrclear command (@JustArchi #3294).
+    Renamed Experimental update channel to PreRelease. This change affects only update command under the hood (@JustArchi).
+    Improved STM trades processing in a way it's no longer possible to accept together-conflicting trade offers (@JustArchi #3291).
+    Fixed regression introduced around V6.0.6.1 which caused ASF to sometimes not reconnect the bots after heartbeat failure (@JustArchi).
+    ASF now takes into account OnlyAllowRunInCountries extended property, which effectively fixes cards farming process sometimes getting stuck at impossible to play run-locked games. Since this requires cache update, it might take up to a week for old data to get invalidated - you can optionally speed up that process by manually deleting ASF.db, although best if you can just wait it out (@JustArchi).
+    Latest ASF-ui with new features, improvements and bugfixes (@MrBurrBurr).
+    Updated localization provided by our community (@JustArchi-ArchiBot).
+    Usual amount of other core improvements, optimizations and bugfixes (@JustArchi).
 2024-08-26 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
   * 6.0.6.4-1:
     Added OnlinePreferences bot config property, which right now allows you to enable Steam Deck presence (@JustArchi #3261).
