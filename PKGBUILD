@@ -10,7 +10,7 @@ arch=("any")
 provides=("pokego")
 conflicts=("pokego" "pokego-git")
 source=("https://github.com/rubiin/pokego/releases/download/v$pkgver/pokego-$pkgver.tar.gz")
-sha256sums=("725d1ab6de65faa02dae3262cf1c66ccfc8fb9a3dade0029e5832b2f072dfb60")
+sha256sums=("f7e34e1b553242ee44f37712208fb7a168141230f4aad88f1e1429186fd643bc")
 
 package() {
     install -Dm755 krabby -t "$pkgdir/usr/bin"
