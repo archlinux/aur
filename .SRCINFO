@@ -1,0 +1,20 @@
+pkgbase = r-leidenalg
+	pkgdesc = Implements the Leiden Algorithm via an R Interface
+	pkgver = 1.1.3
+	pkgrel = 1
+	url = https://cran.r-project.org/package=leidenAlg
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = gcc-fortran
+	makedepends = r-rcpparmadillo
+	makedepends = r-rcppeigen
+	depends = r-igraph
+	depends = r-rcpp
+	depends = r-sccore
+	optdepends = r-pbapply
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/leidenAlg_1.1.3.tar.gz
+	md5sums = 1cfeda2c0df7668f18500ae594019a08
+	b2sums = 218c83bf69b0e15f77cf447020d44e4ecaf2e803cee80d2b0df6acee9913c74a35fcc02cb2f27db90ff0d70ce62beb3e760295741c3de91816381bcab9e3d240
+
+pkgname = r-leidenalg
