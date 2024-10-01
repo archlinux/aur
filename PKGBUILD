@@ -2,7 +2,7 @@ PKGDEST="$HOME/.cache/pacman/pkg/$pkgname"
 
 pkgname=e-z-recorder
 pkgver=1.7.5
-pkgrel=2
+pkgrel=3
 pkgdesc="E-Z Video Recording & Uploading on Linux. Install dependencies based on your session type (Wayland or X11)."
 arch=('any')
 url="https://github.com/verysillycat/e-z-recorder-linux"
