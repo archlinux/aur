@@ -1,6 +1,6 @@
 pkgbase = r-rapiclient
 	pkgdesc = Dynamic OpenAPI/Swagger Client
-	pkgver = 0.1.6
+	pkgver = 0.1.8
 	pkgrel = 1
 	url = https://cran.r-project.org/package=rapiclient
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = r-rapiclient
 	depends = r-jsonlite
 	depends = r-yaml
 	optdepends = r-testthat
-	source = https://cran.r-project.org/src/contrib/rapiclient_0.1.6.tar.gz
-	sha256sums = b2b77f1234f53f1732360bef2b813291413d28891a93437d9cbd888fdf4f804f
+	source = https://cran.r-project.org/src/contrib/rapiclient_0.1.8.tar.gz
+	sha256sums = 1ced6376de92f2d99bde91c94d87dd6e8fe76ee09e6cd4b0c87b48f5379b9faa
 
 pkgname = r-rapiclient
