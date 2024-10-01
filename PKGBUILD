@@ -1,42 +1,36 @@
-# Maintainer: Jean-Baptiste Delisle <jb dot delisle at aliceadsl dot fr>
-pkgname=bed-latex
-pkgver=1.3.7
+# Maintainer: Jean-Baptiste Delisle <jb dot delisle at pi314 dot noho dot st>
+pkgname='bed-latex'
+pkgver='2.0.0'
 pkgrel=1
 pkgdesc="BEd: Beamer Editor, GUI for LaTeX Beamer presentations."
-arch=(any)
 url="https://framagit.org/delisle/bed"
-license=('GPL3')
-depends=('python>=3.0' 'python-pyqt5' 'python-poppler-qt5' 'texlive-core' 'texlive-latexextra')
+depends=('python>=3.8' 'pyside6' 'python-pymupdf' 'texlive-core' 'texlive-latexextra')
 optdepends=('python-pygments')
-makedepends=()
-conflicts=('bed')
+provides=('bed-latex')
+conflicts=('bed-latex')
+makedepends=('python-build' 'python-installer')
+license=('GPL3')
+arch=('any')
 install="bed.install"
-source=("bed-$pkgver.tar.gz::https://framagit.org/delisle/bed/-/archive/v${pkgver}/bed-v${pkgver}.tar.gz")
-md5sums=('6d4b1f42d20a218b9834b402fffd64aa')
+module='bed_latex'
+source=("https://files.pythonhosted.org/packages/source/${pkgname:0:1}/${pkgname}/${module}-${pkgver}.tar.gz")
+sha256sums=('e15f73e86cd37823412d758385be89350e98fe2ce8231f7fe470d72d07e2ac87')
 
 prepare() {
-  cd bed-v$pkgver
-  sed -i -e "s#/tmp/python3#/usr/bin/python3#" python/bed.py
-  sed -i -e "s#/tmp/pdflatex#pdflatex#" python/settings.py
-  sed -i 's#/local##g' launcher/bed.desktop
+  cd "${srcdir}"
+  tar -xvf "${module}-${pkgver}.tar.gz"
+  cd "${module}-${pkgver}"
+  python -m build --wheel --no-isolation
 }
 
-package(){
-    mkdir -p $pkgdir/usr/bin
-    mkdir -p $pkgdir/usr/share/bed
-    mkdir -p $pkgdir/usr/share/texmf/tex/latex/bed
-    mkdir -p $pkgdir/usr/share/applications
-    mkdir -p $pkgdir/usr/share/pixmaps
-
-    cd bed-v$pkgver
-    cp python/*.py $pkgdir/usr/share/bed
-    chmod +x $pkgdir/usr/share/bed/bed.py
-    cp icons/* $pkgdir/usr/share/bed
-    cp translation/*.qm $pkgdir/usr/share/bed
-    cp launcher/bed.desktop $pkgdir/usr/share/applications/
-    cp latex/bed.sty $pkgdir/usr/share/texmf/tex/latex/bed/
-    cd $pkgdir/usr/bin/
-    ln -s ../share/bed/bed.py bed
-    cd $pkgdir/usr/share/pixmaps
-    ln -s ../bed/bed.svg bed.svg
+package() {
+  cd "${srcdir}/${module}-${pkgver}"
+  python -m installer --destdir="${pkgdir}" dist/*.whl
+  py=$(ls "${pkgdir}/usr/lib/")
+  mkdir -p "${pkgdir}/usr/share/texmf/tex/latex/bed"
+  ln -s "/usr/lib/${py}/site-packages/bed/latex/bed.sty" "${pkgdir}/usr/share/texmf/tex/latex/bed"
+  mkdir -p "${pkgdir}/usr/local/share/pixmaps"
+  ln -s "/usr/lib/${py}/site-packages/bed/icons/bed.svg" "${pkgdir}/usr/local/share/pixmaps"
+  mkdir -p "${pkgdir}/usr/share/applications"
+  ln -s "/usr/lib/${py}/site-packages/bed/launcher/bed.desktop" "${pkgdir}/usr/share/applications"
 }
