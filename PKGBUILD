@@ -1,8 +1,9 @@
-# Maintainer: Reese Wang <thuwrx10 at gmail dot com>
+# Maintainer: alzpmq <kodatemitsuru@outlook.com>
+# Contributor: Reese Wang <thuwrx10 at gmail dot com>
 
 pkgname='hikvision-mvs'
-pkgver=2.1.1
-_pkgdate=220511
+pkgver=2.1.2
+_pkgdate=231225
 pkgrel=1
 pkgdesc="Machine Vision Software by Hikvision, for their industrial cameras."
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
@@ -12,7 +13,7 @@ source=("https://www.hikrobotics.com/cn2/source/support/software/MVS_STD_GML_V${
 	'logo.svg'
 	'hikvision-mvs.desktop')
 noextract=("${source[0]##*/}")
-sha256sums=('06ea46595c9b96c8cd5977949c2949735bc0f690b7d20fdb7efd069ef55273b4'
+sha256sums=('cf41b14b4fb776e6aa7270ac9b6a1c0d7a3766d162a101ca20f14e72f361851c'
 	'6be7b478c87b26e562ee385c91039b8b5d4927eb3d34a27089201edb2b2182fb'
 	'SKIP')
 
@@ -60,4 +61,5 @@ __END__
 	mv ${pkgdir}/opt/MVS/bin/*.pdf ${pkgdir}/usr/share/doc/${pkgname}/
 	mkdir -p ${pkgdir}/usr/share/licenses
 	mv ${pkgdir}/opt/MVS/license ${pkgdir}/usr/share/licenses/${pkgname}
+	sed '1a export QT_AUTO_SCREEN_SCALE_FACTOR=1' ${pkgdir}/opt/MVS/bin/MVS.sh 
 }
