@@ -4,7 +4,7 @@
 pkgname='hikvision-mvs'
 pkgver=2.1.2
 _pkgdate=231225
-pkgrel=2
+pkgrel=3
 pkgdesc="Machine Vision Software by Hikvision, for their industrial cameras."
 arch=('x86_64' 'i686')
 url="https://www.hikrobotics.com/"
