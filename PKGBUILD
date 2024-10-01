@@ -7,7 +7,7 @@
 # Contributor: Assarsson
 
 pkgname=musescore3-git
-pkgver=3.7.0.r20309.10d1b80
+pkgver=3.7.0.r20321.4cfc597
 pkgrel=1
 pkgdesc='Create, play and print beautiful sheet music (Jojo Schmitz fork)'
 arch=(x86_64)
@@ -42,7 +42,7 @@ makedepends=(
   texlive-core
 )
 optdepends=('lame: MP3 export')
-_commit="10d1b80018b36e4f652bdeef0d225f4ec1eb1bf8"
+_commit="4cfc5975c14c5b3b582bf218af1e56af16e5ec86"
 source=(
   "git+https://github.com/Jojo-Schmitz/MuseScore.git#commit=$_commit"
   "dtl-gcc14-fix.patch"
