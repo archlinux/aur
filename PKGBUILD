@@ -5,7 +5,7 @@ _name=ysfx_saike_mod
 _plugin_name=ysfx-s
 _reponame=ysfx
 pkgname=${_name//_/-}-git
-pkgver=0.0.22.r5.g51bbf27
+pkgver=0.0.25.r0.ga4da615
 pkgrel=1
 pkgdesc='Hosting library and plugin for JSFX (saike mod, git version)'
 arch=(x86_64)
@@ -66,8 +66,8 @@ package() {
   depends+=(libfontconfig.so libfreetype.so)
   DESTDIR="$pkgdir" cmake --install $pkgname-build
   install -vDm 755 \
-    $pkgname-build/ysfx_plugin_instrument_artefacts/Release/VST3/$_plugin_name.vst3/Contents/$CARCH-linux/$_plugin_name.so \
-    -t "$pkgdir"/usr/lib/vst3/$_plugin_name.vst3/Contents/$CARCH-linux
+    $pkgname-build/ysfx_plugin_instrument_artefacts/Release/VST3/"$_plugin_name instrument.vst3"/Contents/$CARCH-linux/"$_plugin_name instrument.so" \
+    -t "$pkgdir"/usr/lib/vst3/"$_plugin_name instrument".vst3/Contents/$CARCH-linux
   install -vDm 755 \
     "$pkgname-build/ysfx_plugin_artefacts/Release/VST3/$_plugin_name FX.vst3/Contents/$CARCH-linux/$_plugin_name FX.so" \
     -t "$pkgdir/usr/lib/vst3/$_plugin_name FX.vst3/Contents/$CARCH-linux"
