@@ -1,7 +1,7 @@
 # Maintainer: Adam Goldsmith <contact@adamgoldsmith.name>
 
 pkgname=touplite
-pkgver=2.1.26555.20240922
+pkgver=2.1.26598.20240928
 pkgrel=1
 pkgdesc="A port of the ToupTek Photonics's PC software ToupLite for Linux"
 arch=('i686' 'x86_64')
@@ -10,8 +10,8 @@ depends=(fontconfig dbus libglvnd libxrender freetype2)
 license=('custom')
 source_x86_64=("ToupTekToupLite.x64-${pkgver}.tar.bz2"::"https://www.touptekphotonics.com/software/ToupTekToupLite.x64.tar.bz2")
 source_i686=("ToupTekToupLite.x86-${pkgver}.tar.bz2"::"https://www.touptekphotonics.com/software/ToupTekToupLite.x86.tar.bz2")
-sha256sums_i686=('ee976308fad813621396ae0cf095bdae6f201f1240fbb241deacbdf08a451ce4')
-sha256sums_x86_64=('cdc611d33568f7511803eb43ed5a25e98b44db50a8b6e60a7e23db5c93f7780b')
+sha256sums_i686=('3d3c4b4bb7d7f0d9caca0825e3e725e33e0495496fac1f4dd533f9e84f2c5f0d')
+sha256sums_x86_64=('9448e29c219ac00ca5b475e59a4221b832f330264f1fbae72e72be02b5d8a9ed')
 options=('!strip')
 
 prepare() {
