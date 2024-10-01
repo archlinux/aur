@@ -1,0 +1,30 @@
+pkgbase = r-adegenet
+	pkgdesc = Exploratory Analysis of Genetic and Genomic Data
+	pkgver = 2.1.10
+	pkgrel = 1
+	url = https://cran.r-project.org/package=adegenet
+	arch = x86_64
+	license = GPL-2.0-or-later
+	depends = r-ade4
+	depends = r-ape
+	depends = r-dplyr
+	depends = r-ggplot2
+	depends = r-igraph
+	depends = r-reshape2
+	depends = r-seqinr
+	depends = r-shiny
+	depends = r-vegan
+	optdepends = r-adespatial
+	optdepends = r-hierfstat
+	optdepends = r-interp
+	optdepends = r-maps
+	optdepends = r-pegas
+	optdepends = r-poppr
+	optdepends = r-spdep
+	optdepends = r-splancs
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/adegenet_2.1.10.tar.gz
+	md5sums = 63003ec71b7a756243f28bbe9a864d70
+	b2sums = 9b85c908e0549e616f67954e90b7390fe4374fa8e09f3d1f5c06985ac3298b86214263cf734cad883be90ef466276a49315361079a796ee18fc09b37477e553f
+
+pkgname = r-adegenet
