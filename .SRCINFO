@@ -1,0 +1,11 @@
+pkgbase = cdirip
+	pkgdesc = CDI extraction tool
+	pkgver = 0.6.4
+	pkgrel = 1
+	url = https://github.com/jozip/cdirip
+	arch = x86_64
+	license = GPL2
+	source = https://github.com/jozip/cdirip/archive/refs/tags/v0.6.4.tar.gz
+	sha256sums = e9daad29eec25079be35474c39ebffeb3f2967adf1538c84562358449a0729b6
+
+pkgname = cdirip
