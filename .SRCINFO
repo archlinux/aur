@@ -8,6 +8,7 @@ pkgbase = pokego-git
 	makedepends = git
 	depends = coreutils
 	depends = go
+	depends = upx
 	source = pokego::git+https://github.com/rubiin/pokego.git
 	md5sums = SKIP
 
