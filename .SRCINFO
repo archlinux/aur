@@ -1,5 +1,5 @@
 pkgbase = pokego-git
-	pkgdesc = CLI utility that prints unicode sprites of pokemon to the terminal
+	pkgdesc = command-line tool that lets you display Pokémon sprites in color directly in your terminal.
 	pkgver = r9.13b23757
 	pkgrel = 1
 	url = https://github.com/rubiin/pokego.git
@@ -9,7 +9,8 @@ pkgbase = pokego-git
 	depends = coreutils
 	depends = go
 	depends = upx
-	source = pokego::git+https://github.com/rubiin/pokego.git
+	conflicts = krabby
+	source = pokego-git::git+https://github.com/rubiin/pokego.git
 	md5sums = SKIP
 
 pkgname = pokego-git
