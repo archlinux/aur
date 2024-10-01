@@ -1,7 +1,7 @@
 # Maintainer: Christopher Kaster <me@atomicptr.de>
 # Contributor: Hanna Rose <imhxnna@gmail.com>
 
-pkgver=2024_09
+pkgver=2024_10
 
 _srcname=odin
 pkgname=odin-bin
@@ -18,35 +18,30 @@ conflicts=("odin" "odin-git")
 options=("staticlibs")
 
 source=(
-  "https://github.com/odin-lang/Odin/releases/download/dev-$pkgver_fixed/odin-ubuntu-amd64-dev-$pkgver_fixed.zip"
+  "https://github.com/odin-lang/Odin/releases/download/dev-$pkgver_fixed/odin-linux-amd64-dev-$pkgver_fixed.zip"
 )
 sha256sums=(
-  "a2e29c1232400d831ef2568c4072c9e9bbaddf85f7f925e0bd777f41d70d1f66"
+  "785dcae8bc51dc7a10d2373d5ce8b308fcbde7d4f37668f2be60951c8b56e6b5"
 )
 
 build() {
-  # the man can't decide whetever or not to package the dist dir in a zip file so we just check for it now ffs
-  if [[ -f "${srcdir}/dist.zip" ]]; then
-    unzip "${srcdir}/dist.zip"
-  fi
-  
-  cd "${srcdir}/dist"
+  cd "${srcdir}/odin-linux-amd64-dev-${pkgver_fixed}/"
   chmod +x odin
 
   # this time odin forgot to add the SO (maybe intentional?)
-  cp /usr/lib/libLLVM-18.so "${srcdir}/dist/libLLVM-18.so.18.1"
+  cp /usr/lib/libLLVM-18.so "${srcdir}/odin-linux-amd64-dev-${pkgver_fixed}/libLLVM-18.so.18.1"
 
   # build libs
-  cd "${srcdir}/dist/vendor/cgltf/src" && make
-  cd "${srcdir}/dist/vendor/miniaudio/src" && make
-  cd "${srcdir}/dist/vendor/stb/src" && make
+  cd "${srcdir}/odin-linux-amd64-dev-${pkgver_fixed}/vendor/cgltf/src" && make
+  cd "${srcdir}/odin-linux-amd64-dev-${pkgver_fixed}/vendor/miniaudio/src" && make
+  cd "${srcdir}/odin-linux-amd64-dev-${pkgver_fixed}/vendor/stb/src" && make
 }
 
 package() {
   install -d "${pkgdir}/usr/bin"
   install -d "${pkgdir}/usr/lib/${_srcname}"
 
-  cd "${srcdir}/dist/"
+  cd "${srcdir}/odin-linux-amd64-dev-${pkgver_fixed}/"
 
   cp odin "${pkgdir}/usr/lib/${_srcname}/odin"
   cp libLLVM-18.so.18.1 "${pkgdir}/usr/lib/${_srcname}/libLLVM-18.so.18.1"
@@ -64,8 +59,8 @@ package() {
 }
 
 check() {
-  cd "${srcdir}/dist"
-  ODIN_ROOT="${srcdir}/dist" ./odin check examples/all -strict-style
+  cd "${srcdir}/odin-linux-amd64-dev-${pkgver_fixed}"
+  ODIN_ROOT="${srcdir}/odin-linux-amd64-dev-${pkgver_fixed}" ./odin check examples/all -strict-style
 }
 
 # Building this package in a clean docker env:
