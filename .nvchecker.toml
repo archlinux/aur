@@ -1,0 +1,4 @@
+[python-pathos]
+source = "github"
+github = "uqfoundation/pathos"
+use_latest_release = "true"

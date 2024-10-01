@@ -3,16 +3,16 @@
 _base=pathos
 pkgname=python-${_base}
 pkgdesc="parallel graph management and execution in heterogeneous computing"
-pkgver=0.3.2
+pkgver=0.3.3
 pkgrel=1
 url="https://github.com/uqfoundation/${_base}"
 arch=(any)
-license=('custom:BSD-3-clause')
+license=(BSD-3-Clause)
 depends=(python-dill python-ppft python-pox python-multiprocess)
 makedepends=(python-build python-installer python-setuptools python-wheel)
 # checkdepends=(python-pytest)
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz)
-sha512sums=('962e11e53e836e360ffb8c5eec7c3ea46d3f505e5f212cd500905e0215ce3f942a0e476cb77b1bbf5046e3731469a71a090062a1aef3aa2acfb4c9f6ad8ef985')
+sha512sums=('d62a9a79ae040cb9d73fc36f7adaf63965fa39c1b18b5d7ff40257d1ad556ccfdc51ed26193af8435d14f51db2abacd83bb7442a13458480dda6f03d28b4e371')
 
 build() {
   cd ${_base}-${pkgver}
