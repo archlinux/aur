@@ -1,0 +1,14 @@
+[Unit]
+Description=An easy to set up and use SSH honeypot, a fake SSH server that lets anyone in and logs their activity
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+User=sshesame
+Group=sshesame
+ExecStart=/usr/bin/sshesame -config /etc/sshesame/config.yaml -data_dir /etc/sshesame/data
+Restart=always
+CapabilityBoundingSet=CAP_NET_ADMIN CAP_NET_RAW CAP_NET_BIND_SERVICE
+AmbientCapabilities=CAP_NET_ADMIN CAP_NET_RAW CAP_NET_BIND_SERVICE
+[Install]
+WantedBy=multi-user.target
