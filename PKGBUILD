@@ -4,7 +4,7 @@
 _pkgname=smassh
 pkgname="$_pkgname-bin"
 pkgver=3.1.6
-pkgrel=1
+pkgrel=2
 pkgdesc="TUI based typing test application inspired by MonkeyType"
 url="https://github.com/kraanzu/smassh"
 arch=('x86_64')
