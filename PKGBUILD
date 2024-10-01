@@ -7,8 +7,8 @@
 _pkgname=input-leap
 pkgbase=$_pkgname-git
 pkgname=($_pkgname-headless-git $_pkgname-git)
-pkgver=2.4.0+888+g3a95e113
-pkgrel=2
+pkgver=2.4.0+930+g20c5c04b
+pkgrel=1
 pkgdesc="Open-source KVM software"
 arch=(x86_64)
 url="https://github.com/input-leap/input-leap"
@@ -21,7 +21,7 @@ _core_deps=(glibc gcc-libs libx11 libxrandr libxext libxinerama xorgproto libxts
 _gui_deps=(glibc gcc-libs libx11 openssl avahi qt6-base xdg-desktop-portal)
 makedepends=(${_core_deps[@]} ${_gui_deps[@]}
              # referenced in CMakeLists.txt but does not seem to be actually used
-             curl libsm libice qt6-tools
+             libsm libice qt6-tools
              git cmake gmock gtest)
 
 optdepends=(libportal-gtk3 libportal-gtk4 libportal-qt5 libportal-qt6)
