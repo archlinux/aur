@@ -1,10 +1,11 @@
 # Maintainer: Bruno Miguel <bruno@privacyrequired.com>
 pkgname=kdotool-git
 pkgver=0.2.1.e2f468b
-pkgrel=2
+pkgrel=4
 pkgdesc='xdotool-like for KDE Wayland'
 arch=(x86_64)
 url='https://github.com/jinliu/kdotool'
+source=('git+https://github.com/jinliu/kdotool')
 license=(Apache-2.0)
 depends=(plasma-wayland-protocols)
 makedepends=(git rust cargo)
@@ -28,10 +29,10 @@ build() {
     cargo build --all-features --release
 }
 
-#check() {
-#    cd "$provides"
-#    cargo test --frozen --all-features
-#}
+check() {
+    cd "$provides"
+    cargo test --frozen --all-features
+}
 
 package() {
     install -Dm755 "$srcdir/$provides/target/release/kdotool" "$pkgdir/usr/bin/kdotool"
