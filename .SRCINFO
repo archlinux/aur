@@ -1,0 +1,22 @@
+pkgbase = microsoft-office-365-nativefier
+	pkgdesc = Microsoft Office 365 desktop app (electron)
+	pkgver = 32.1.2
+	pkgrel = 1
+	url = https://www.office.com
+	arch = armv7l
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = imagemagick
+	makedepends = nodejs-nativefier
+	makedepends = unzip
+	depends = gtk3
+	depends = libxss
+	depends = nss
+	optdepends = libindicator-gtk3
+	source = microsoft-office-365-nativefier.png
+	source = microsoft-office-365-nativefier.desktop
+	sha256sums = a3385816f211739f798e1361b4b246a8e17a3bea08930e46a73adba9f3d6a629
+	sha256sums = b53f2441b4759fb6921bd79ccd2b4b69adc276d72a3e1846da64858cdb03926e
+
+pkgname = microsoft-office-365-nativefier

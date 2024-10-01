@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=Office365
+Comment=Microsoft Office 365 desktop app (electron)
+Exec=microsoft-office-365-nativefier
+Icon=microsoft-office-365-nativefier
+Encoding=UTF-8
+StartupWMClass=microsoftoffice365-nativefier-a510f5
+Terminal=false
+StartupNotify=true
+Type=Application
+Categories=Network;Chat;InstantMessaging;Application;
