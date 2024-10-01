@@ -15,7 +15,7 @@
 
 pkgname=cassandra
 pkgver=5.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Apache Cassandra NoSQL database'
 arch=('any')
 url='http://cassandra.apache.org/'
@@ -31,7 +31,7 @@ backup=(etc/cassandra/cassandra-env.sh
     etc/cassandra/logback.xml
     etc/cassandra/logback-tools.xml)
 install=cassandra.install
-source=(https://www.apache.org/dist/${pkgname}/${pkgver}/apache-${pkgname}-${pkgver}-bin.tar.gz{,.asc}
+source=(https://archive.apache.org/dist/cassandra/${pkgver}/apache-cassandra-${pkgver}-bin.tar.gz{,.asc}
     '01_fix_cassandra_home_path.patch'
     'cassandra.service'
     'cassandra-tmpfile.conf'
