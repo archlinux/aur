@@ -1,0 +1,96 @@
+diff -ura vsv.orig/man/vsv.8 vsv.new/man/vsv.8
+--- vsv.orig/man/vsv.8	2024-09-30 20:09:20.992030202 -0400
++++ vsv.new/man/vsv.8	2024-09-30 20:11:51.559024915 -0400
+@@ -18,7 +18,7 @@
+ Enable/disable color output, defaults to auto.
+ .TP
+ \fB\fC\-d\fR \fIdir\fP
+-Directory to look into, defaults to env \fB\fCSVDIR\fR or \fB\fC/var/service\fR if unset.
++Directory to look into, defaults to env \fB\fCSVDIR\fR or \fB\fC/run/runit/service\fR if unset.
+ .TP
+ \fB\fC\-h\fR2024-09-30 20:37:27.556970976 -0400
+ Print this message and exit.
+@@ -104,7 +104,7 @@
+ .PP
+ \fB\fCvsv\fR
+ .IP
+-Show service status in \fB\fC/var/service\fR
++Show service status in \fB\fC/run/runit/service\fR
+ .PP
+ \fB\fCvsv status\fR
+ .IP
+diff -ura vsv.orig/man/vsv.md vsv.new/man/vsv.md
+--- vsv.orig/man/vsv.md	2024-09-30 20:09:20.992030202 -0400
++++ vsv.new/man/vsv.md	2024-09-30 20:12:05.668024419 -0400
+@@ -27,7 +27,7 @@
+   Enable/disable color output, defaults to auto.
+ 
+ `-d` *dir*
+-  Directory to look into, defaults to env `SVDIR` or `/var/service` if unset.
++  Directory to look into, defaults to env `SVDIR` or `/run/runit/service` if unset.
+ 
+ `-h`
+   Print this message and exit.
+@@ -119,7 +119,7 @@
+ 
+ `vsv`
+ 
+-  Show service status in `/var/service`
++  Show service status in `/run/runit/service`
+ 
+ `vsv status`
+ 
+diff -ura vsv.orig/src/arguments.rs vsv.new/src/arguments.rs
+--- vsv.orig/src/arguments.rs	2024-09-30 20:09:20.992030202 -0400
++++ vsv.new/src/arguments.rs	2024-09-30 20:12:11.041024231 -0400
+@@ -36,7 +36,7 @@
+     #[clap(short, long, value_name = "yes|no|auto")]
+     pub color: Option<String>,
+ 
+-    /// Directory to look into, defaults to env SVDIR or /var/service if unset.
++    /// Directory to look into, defaults to env SVDIR or /run/runit/service if unset.
+     #[clap(short, long, parse(from_os_str), value_name = "dir")]
+     pub dir: Option<path::PathBuf>,
+ 
+diff -ura vsv.orig/src/config.rs vsv.new/src/config.rs
+--- vsv.orig/src/config.rs	2024-09-30 20:09:20.993030202 -0400
++++ vsv.new/src/config.rs	2024-09-30 20:12:24.100023772 -0400
+@@ -24,7 +24,7 @@
+ use crate::utils;
+ 
+ // default values
+-pub const DEFAULT_SVDIR: &str = "/var/service";
++pub const DEFAULT_SVDIR: &str = "/run/runit/service";
+ pub const DEFAULT_PROC_DIR: &str = "/proc";
+ pub const DEFAULT_SV_PROG: &str = "sv";
+ pub const DEFAULT_PSTREE_PROG: &str = "pstree";
+@@ -203,7 +203,7 @@
+  * 1. CLI option (`-d`) given
+  * 2. CLI option (`-u`) given
+  * 3. env `SVDIR` given
+- * 4. use `DEFAULT_SVDIR` (`"/var/service"`)
++ * 4. use `DEFAULT_SVDIR` (`"/run/runit/service"`)
+  */
+ fn get_svdir(dir_arg: &Option<PathBuf>, user_arg: bool) -> Result<PathBuf> {
+     // `-d <dir>`
+diff -ura vsv.orig/README.md vsv.new/README.md
+--- vsv.orig/README.md	2024-09-30 20:42:33.273960241 -0400
++++ vsv.new/README.md	2024-09-30 20:46:35.806951724 -0400
+@@ -33,7 +33,7 @@
+ **Note:** `sudo` or escalated privileges are required to determine service state
+ because of the strict permissions on each service's `supervise` directory.
+ 
+-`vsv` scans the `/var/service` directory by default, which can be overridden by
++`vsv` scans the `/run/runit/service` directory by default, which can be overridden by
+ setting the `$SVDIR` environmental variable or passing in a `-d <dir>` argument.
+ Any service that has been in a state for less than 5 seconds will be marked
+ in red and any less than 30 seconds will be marked in yellow, making new or
+@@ -121,7 +121,7 @@
+ 
+     OPTIONS:
+         -c, --color <yes|no|auto>    Enable or disable color output
+-        -d, --dir <dir>              Directory to look into, defaults to env SVDIR or /var/service if
++        -d, --dir <dir>              Directory to look into, defaults to env SVDIR or /run/runit/service if
+                                      unset
+         -h, --help                   Print help information
+         -l, --log                    Show log processes, this is a shortcut for `status -l`

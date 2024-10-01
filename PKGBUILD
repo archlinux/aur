@@ -8,12 +8,19 @@ url="https://github.com/bahamas10/$pkgname"
 license=('MIT')
 depends=('runit' 'glibc' 'gcc-libs')
 makedepends=('cargo' 'git')
-source=("$pkgname::git+https://github.com/bahamas10/vsv.git#tag=v$pkgver")
-sha256sums=('SKIP')
+source=("$pkgname::git+https://github.com/bahamas10/vsv.git#tag=v$pkgver"
+		'svdir.patch')
+sha256sums=('SKIP'
+			'SKIP')
 
 pkgver() {
 	cd "$pkgname"
 	git describe --tags | sed -E 's/^v([0-9]+\.[0-9]+\.[0-9]+).*/\1/'
+}
+
+prepare() {
+	cd "$pkgname"
+	patch -Np1 -i ../svdir.patch
 }
 
 build() {
