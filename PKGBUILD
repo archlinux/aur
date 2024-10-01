@@ -2,10 +2,10 @@
 # Contributor: Robert Greener <me@r0bert.dev>
 
 _pkgname=lmom
-_pkgver=3.0
+_pkgver=3.2
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="L-Moments"
 arch=(x86_64)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -17,8 +17,8 @@ makedepends=(
   gcc-fortran
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('01a213710c3f74aff1bc048e771e1f37')
-b2sums=('bf1e1f6a8584e3213e71cc050e52f371be16514cd2964363ef9a12e3ac55ff31fa3edd10977ffd1a1df10eb519aadf85a6daf7007836d2f3549c4b061f08ba8b')
+md5sums=('cc1776a2c4be7a83581efda584caa8ec')
+b2sums=('4d1e09692ddae134c4d2463927a16e491c2308d796ebe7ce5038f62297a1b4dc8f22b28f52f1f160c98b73d4b5fd0847d64d03ae3ca7707fbc66cffbcbeb752d')
 
 build() {
   mkdir build
