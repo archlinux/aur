@@ -1,21 +1,27 @@
 pkgbase = qpid-proton
 	pkgdesc = High-performance, lightweight messaging library
-	pkgver = 0.38.0
+	pkgver = 0.39.0
 	pkgrel = 1
 	url = https://qpid.apache.org/proton
 	arch = x86_64
 	license = Apache
 	makedepends = cmake
 	makedepends = doxygen
-	makedepends = go
+	makedepends = python-installer
 	makedepends = python-setuptools
 	makedepends = python-sphinx
 	makedepends = python-wheel
+	makedepends = python-cffi
 	makedepends = swig
 	depends = libjsoncpp.so
+	depends = libsasl
+	depends = openssl
 	depends = python
+	provides = python-qpid-proton=0.39.0
 	options = !emptydirs
-	source = https://www.apache.org/dist/qpid/proton/0.38.0/qpid-proton-0.38.0.tar.gz
-	sha512sums = 5333046c954d8b63c59579b05173fa2345e0a61f37a305d23b9e3afee461280c82f9f1c19c30954ba32176ce5fef9ce1f0afc57c99d6c614b2d66cdbb71ff00e
+	source = https://dlcdn.apache.org/qpid/proton/0.39.0/qpid-proton-0.39.0.tar.gz
+	source = python-3.12.patch::https://github.com/apache/qpid-proton/commit/ba49d2309c5a1abf0afcaad6d61d48fc5a6b7b85.patch
+	sha512sums = df5c5469ee82ba02de62dce15b73b81aab2aae07c7db668182df690cea4ff7584111bd12143fe5e3569469a9ddf4950ac68d60b53d1a7815da4748052948cd1b
+	sha512sums = 4e0045d13e721a5c32bd33b4b91b0132611a69555366ea5d1f4bbc8842016efd4247dce42519c421fbfd1b9ee71b0f029f0bdc0ba2f4e992a263562621e70209
 
 pkgname = qpid-proton
