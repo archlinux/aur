@@ -5,7 +5,7 @@
 
 pkgname='stream-overlay'
 pkgdesc="Borderless, transparent, click-through browser windows for streaming"
-pkgver='2.0.0'
+pkgver='5.0.0'
 pkgrel='2'
 url="https://github.com/hperrin/stream-overlay/"
 __baseurl="https://github.com/hperrin/stream-overlay/archive/refs/tags"
@@ -20,7 +20,7 @@ source=("${__baseurl}/v${pkgver}.tar.gz"
     "stream-overlay.png"
     "stream-overlay.desktop"
     "stream-overlay.sh")
-sha256sums=('980249bacb4bb6871d0418ce63f5e3a5078c589b625a7521aa4a3921ae05e42f'
+sha256sums=('8e9629728c52a46de42bc948e8aa4b32dd6f7732351c40f3045620bbdd27ca0c'
             'f2f99d2aed697ee813c0e351f949979148ac22d73271f667f0a7f5690124635e'
             'b936d6454c941232565e282f566845b8de2ee133bdcfeaff127a8f7e43f5b28e'
             '85dfd699c65ba774343def1522c1d929b63ca90af8dd1c3c17e6a6f0fb6f4191')
