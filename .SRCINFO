@@ -1,0 +1,16 @@
+pkgbase = firefox-nightly-i18n-ia
+	pkgdesc = Interlingua language pack for Firefox Nightly
+	pkgver = 132.0a1.20240917.213026
+	pkgrel = 1
+	url = https://www.mozilla.org/firefox/
+	arch = any
+	groups = firefox-nightly-i18n
+	license = MPL
+	license = GPL
+	license = LGPL
+	depends = firefox-nightly-bin
+	noextract = firefox-nightly-i18n-ia.xpi
+	source = firefox-nightly-i18n-ia.xpi::https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/linux-x86_64/xpi/firefox-132.0a1.ia.langpack.xpi
+	sha256sums = 71b33ccc1ce92af622a900314372ae1ca57b7a26049e6d62cd8c0a9c18a1691c
+
+pkgname = firefox-nightly-i18n-ia
