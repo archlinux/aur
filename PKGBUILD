@@ -31,6 +31,13 @@ prepare() {
 
 package() {
 	OPT=${pkgdir}/opt
+	declare -A arch_in_filename=(
+		['x86_64']='x86_64'
+		['i686']='i386'
+		['armv7h']='armhf'
+		['aarch64']='aarch64'
+	)
+	export FILENAME=MVS-${pkgver}_${arch_in_filename[$CARCH]}_20${_pkgdate}.tar.gz
 	install -Dm644 logo.svg "$pkgdir/usr/share/pixmaps/$pkgname.svg"
 	install -Dm644 hikvision-mvs.desktop "$pkgdir/usr/share/applications/$pkgname.desktop"
 
@@ -61,5 +68,5 @@ __END__
 	mv ${pkgdir}/opt/MVS/bin/*.pdf ${pkgdir}/usr/share/doc/${pkgname}/
 	mkdir -p ${pkgdir}/usr/share/licenses
 	mv ${pkgdir}/opt/MVS/license ${pkgdir}/usr/share/licenses/${pkgname}
-	sed '1a export QT_AUTO_SCREEN_SCALE_FACTOR=1' ${pkgdir}/opt/MVS/bin/MVS.sh 
+	sed -i '1a export QT_AUTO_SCREEN_SCALE_FACTOR=1' ${pkgdir}/opt/MVS/bin/MVS.sh 
 }
