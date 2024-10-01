@@ -17,11 +17,14 @@ groups=(fprint)
 source=("git+https://github.com/infinytum/libfprint.git#branch=unstable")
 sha256sums=('SKIP')
 
+prepare() {
+  sed -i "common_cflags = cc.get_supported_arguments(\[/a \    '-Wno-incompatible-pointer-types'," ${_pkgdirname}/meson.build
+}
+
 build() {
   arch-meson $_pkgdirname build
   ninja -C build
 }
-
 
 package() {
   DESTDIR="$pkgdir" meson install -C build
