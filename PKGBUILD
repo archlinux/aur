@@ -10,7 +10,8 @@ depends=('runit' 'glibc' 'gcc-libs')
 makedepends=('cargo' 'git')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/bahamas10/$pkgname/archive/refs/tags/v$pkgver.tar.gz"
 	'svdir.patch')
-sha256sums=('SKIP' 'SKIP')
+sha256sums=('05c20d8e04ca37fdc47dde80a04a4709b54650748529456ebdddb4104fc805ec'
+            '30b481c6c1a6869af578d517ccfd0cf4c2e3b0ca7ae597c157877636ab1d4e2e')
 
 prepare() {
 	cd "$pkgname-$pkgver"
