@@ -2,7 +2,7 @@
 
 _pkgname=opencolorio
 pkgname=mingw-w64-${_pkgname}
-pkgver=2.3.2
+pkgver=2.4.0
 pkgrel=1
 pkgdesc='A color management framework for visual effects and animation (mingw-w64)'
 arch=(any)
@@ -25,7 +25,7 @@ _repo='OpenColorIO'
 source=(
 	"$_pkgname-$pkgver.tar.gz::https://github.com/AcademySoftwareFoundation/${_repo}/archive/v${pkgver}.tar.gz"
 	'ocio-system-monitor-mingw.patch')
-sha256sums=('6bbf4e7fa4ea2f743a238cb22aff44890425771a2f57f62cece1574e46ceec2f'
+sha256sums=('00fc49578abf8435eb041088af44c8c4bcaafbe04021d53d341adcd488aec711'
             '73697fbd06b3f51cfd0a2df3579fc8579725b2a927edefa736fdb1fb2a361337')
 
 _srcdir="${_repo}-${pkgver}"
@@ -33,8 +33,8 @@ _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 _flags=( -Wno-dev -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_FLAGS_RELEASE='-DNDEBUG -msse4.2 -mxsave'
 	-DOCIO_BUILD_APPS=OFF
 	-DOCIO_BUILD_PYTHON=OFF
-	-DCMAKE_VISIBILITY_INLINES_HIDDEN=ON -DCMAKE_CXX_VISIBILITY_PRESET=hidden
 	-DCMAKE_CXX_STANDARD=20
+	-DCMAKE_VISIBILITY_INLINES_HIDDEN=ON -DCMAKE_CXX_VISIBILITY_PRESET=hidden
 	-DOCIO_INSTALL_EXT_PACKAGES=NONE )
 
 prepare() {
@@ -42,22 +42,23 @@ prepare() {
 	sed -i 's/if(NOT WIN32)/if(NOT WIN32 OR MINGW)/' 'src/OpenColorIO/CMakeLists.txt'
 	sed -i 's/if(WIN32)/if(WIN32 AND NOT MINGW)/' 'src/OpenColorIO/CMakeLists.txt'
 	sed -i 's/_str/str/g;s/_l(/(/g;s/_l (/ (/g;s/, loc.local//g;s|static const Locale loc;|//static const Locale loc;|' 'src/utils/NumberUtils.h'
-	
+	sed -i 's/#ifdef _WIN32/#ifdef _MSC_VER/' 'src/OpenColorIO/ops/fixedfunction/FixedFunctionOpCPU.cpp'
+
 	rm -f 'share/cmake/modules/Findyaml-cpp.cmake'
 	sed -i 's|${CMAKE_CURRENT_LIST_DIR}/share/cmake/modules/Findyaml-cpp.cmake||' 'CMakeLists.txt'
-	
+
 	sed -i 's/#if _MSC_VER/#if _WIN32/' 'src/OpenColorIO/CPUInfo.cpp'
-	
+
 	patch -p1 -i "${srcdir}/ocio-system-monitor-mingw.patch"
 }
 
-build() {	
+build() {
 	for _arch in ${_architectures}; do
 		${_arch}-cmake -S "${_srcdir}" -B "build-${_arch}-static" "${_flags[@]}" \
 			-DOCIO_BUILD_TESTS=OFF -DOCIO_BUILD_GPU_TESTS=OFF \
 			-DBUILD_SHARED_LIBS=OFF -DCMAKE_INSTALL_PREFIX="/usr/${_arch}/static"
 		cmake --build "build-${_arch}-static"
-		
+
 		${_arch}-cmake -S "${_srcdir}" -B "build-${_arch}" "${_flags[@]}" \
 			-DOCIO_BUILD_TESTS=OFF -DOCIO_BUILD_GPU_TESTS=OFF
 		cmake --build "build-${_arch}"
@@ -78,7 +79,7 @@ package() {
 		DESTDIR="${pkgdir}" cmake --install "build-${_arch}-static"
 		rm -rf "$pkgdir"/usr/${_arch}/static/share
 		${_arch}-strip -g "$pkgdir"/usr/${_arch}/static/lib/*.a
-		
+
 		DESTDIR="${pkgdir}" cmake --install "build-${_arch}"
 		rm -rf "$pkgdir"/usr/${_arch}/share
 		${_arch}-strip --strip-unneeded "$pkgdir"/usr/${_arch}/bin/*.dll
