@@ -8,7 +8,6 @@ pkgbase = neumodvb-git
 	makedepends = git
 	makedepends = boost
 	makedepends = tsduck
-	makedepends = ccache
 	depends = cmake
 	depends = uuid
 	depends = clang
@@ -41,6 +40,7 @@ pkgbase = neumodvb-git
 	depends = ffmpeg
 	depends = fmt
 	depends = python-mpl-scatter-density
+	optdepends = ccache
 	source = git+https://github.com/deeptho/neumodvb.git
 	md5sums = SKIP
 
