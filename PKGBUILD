@@ -1,32 +1,33 @@
-# Maintainer: Gustavo Castro < gustawho [ at ] gmail [ dot ] com >
+# Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
+# Contributor: Gustavo Castro < gustawho [ at ] gmail [ dot ] com >
 
 pkgname=mauikit-imagetools-git
-pkgver=v1.2.2.r1.g950db5e
+pkgver=4.0.0.r3.g9f35795
 pkgrel=1
 pkgdesc="MauiKit Image Tools Components"
-arch=(x86_64 i686 arm armv6h armv7h aarch64)
+arch=(x86_64 i686 armv7h aarch64)
 url="https://invent.kde.org/maui/mauikit-imagetools"
-license=('GPL3')
-depends=('mauikit-git' 'ki18n' 'kconfig' 'kcoreaddons' 'exiv2' 'kquickimageeditor-git')
-makedepends=('git' 'extra-cmake-modules')
-provides=('mauikit-imagetools')
-conflicts=('mauikit-imagetools')
-source=("git+${url}.git")
+license=(GPL3)
+depends=(mauikit-git exiv2 tesseract leptonica kquickimageeditor kcoreaddons)
+makedepends=(git extra-cmake-modules opencv)
+provides=(mauikit-imagetools)
+conflicts=(mauikit-imagetools)
+source=("git+https://invent.kde.org/maui/mauikit-imagetools.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "${pkgname%-git}"
-  ( set -o pipefail
-    git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-  )
+  cd "mauikit-imagetools"
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=RelWithDebInfo -B build -S "${pkgname%-git}"
-  cmake --build build --config RelWithDebInfo
+  cmake -B build -S "mauikit-imagetools" -Wno-dev \
+    -DCMAKE_BUILD_TYPE=None \
+    -DCMAKE_INSTALL_PREFIX=/usr
+
+  cmake --build build
 }
 
 package() {
-  DESTDIR="${pkgdir}" cmake --install build --config RelWithDebInfo
+  DESTDIR="${pkgdir}" cmake --install build
 }
