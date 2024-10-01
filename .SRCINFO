@@ -1,6 +1,6 @@
 pkgbase = pyinfra
 	pkgdesc = automate infrastructure super fast at massive scale
-	pkgver = 3.1
+	pkgver = 3.1.1
 	pkgrel = 1
 	url = https://github.com/pyinfra-dev/pyinfra
 	arch = any
@@ -14,12 +14,13 @@ pkgbase = pyinfra
 	depends = python-dateutil
 	depends = python-distro
 	depends = python-gevent
+	depends = python-importlib-metadata
 	depends = python-jinja
 	depends = python-packaging
 	depends = python-paramiko
 	depends = python-typeguard
 	depends = python-typing_extensions
-	source = pyinfra-3.1.tar.gz::https://github.com/pyinfra-dev/pyinfra/archive/v3.1.tar.gz
-	sha256sums = b797acbd0c978d69d0e24d18fa1b1cbfdc1ad67691890c12f4784c223aeca1db
+	source = pyinfra-3.1.1.tar.gz::https://github.com/pyinfra-dev/pyinfra/archive/v3.1.1.tar.gz
+	sha256sums = d3eea5304a51fdc2fd14062569af880db3f5deb87d97dd6dd5f98ecaab66dea9
 
 pkgname = pyinfra

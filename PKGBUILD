@@ -7,7 +7,7 @@
 
 _pkgname="pyinfra"
 pkgname="$_pkgname"
-pkgver=3.1
+pkgver=3.1.1
 pkgrel=1
 pkgdesc="automate infrastructure super fast at massive scale"
 url="https://github.com/pyinfra-dev/pyinfra"
@@ -20,6 +20,7 @@ depends=(
   'python-dateutil'
   'python-distro'
   'python-gevent'
+  'python-importlib-metadata'
   'python-jinja'
   'python-packaging'
   'python-paramiko'
@@ -36,7 +37,7 @@ makedepends=(
 _pkgsrc="$_pkgname-$pkgver"
 _pkgext="tar.gz"
 source=("$_pkgsrc.$_pkgext"::"https://github.com/pyinfra-dev/pyinfra/archive/v$pkgver.$_pkgext")
-sha256sums=('b797acbd0c978d69d0e24d18fa1b1cbfdc1ad67691890c12f4784c223aeca1db')
+sha256sums=('d3eea5304a51fdc2fd14062569af880db3f5deb87d97dd6dd5f98ecaab66dea9')
 
 prepare() {
   cd "$_pkgsrc"

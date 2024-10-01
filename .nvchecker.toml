@@ -1,0 +1,4 @@
+[pyinfra]
+source = "git"
+git = "https://github.com/pyinfra-dev/pyinfra.git"
+prefix = "v"
