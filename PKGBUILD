@@ -3,7 +3,7 @@
 # Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 
 pkgbase=linux-g14
-pkgver=6.10.10.arch1
+pkgver=6.11.1.arch1
 pkgrel=1
 pkgdesc='Linux-g14'
 url="https://gitlab.com/dragonn/linux-g14.git"
@@ -30,42 +30,25 @@ source=(
   https://cdn.kernel.org/pub/linux/kernel/v${pkgver%%.*}.x/$_srcname.tar.{xz,sign}
   $_url/releases/download/$_srctag/linux-$_srctag.patch.zst{,.sig}
   config         # the main kernel config file
+  
+  # patches to config & for tuning purposes
 #  modprobed.db
-
-  "choose-gcc-optimization.sh"
-
-  "sys-kernel_arch-sources-g14-6.8+--more-uarches-for-kernel.patch"::"https://raw.githubusercontent.com/graysky2/kernel_compiler_patch/master/more-uarches-for-kernel-6.8-rc4%2B.patch"
+  partial-rog.config::"https://gitlab.com/asus-linux/fedora-kernel/-/raw/rog-6.11/partial-rog.config"
+  choose-gcc-optimization.sh
+  more-uarches-for-kernel-6.8+.patch::"https://raw.githubusercontent.com/graysky2/kernel_compiler_patch/refs/heads/master/more-ISA-levels-and-uarches-for-kernel-6.8-rc4%2B.patch"
   
+  # actual kernel patch series
+  0000-asus-patch-series.patch::"https://gitlab.com/asus-linux/fedora-kernel/-/raw/rog-6.11/asus-patch-series.patch"
   0001-acpi-proc-idle-skip-dummy-wait.patch
-
-  0001-platform-x86-asus-wmi-add-debug-print-in-more-key-pl.patch
-  0002-platform-x86-asus-wmi-don-t-fail-if-platform_profile.patch
-  0003-asus-bios-refactor-existing-tunings-in-to-asus-bios-.patch
-  0004-asus-bios-add-panel-hd-control.patch
-  0005-asus-bios-add-dgpu-tgp-control.patch
-  0006-asus-bios-add-apu-mem.patch
-  0007-asus-bios-add-core-count-control.patch
-  v2-0001-hid-asus-use-hid-for-brightness-control-on-keyboa.patch
-  0003-platform-x86-asus-wmi-add-macros-and-expose-min-max-.patch 
-  
-  0027-mt76_-mt7921_-Disable-powersave-features-by-default.patch
-  
-  0032-Bluetooth-btusb-Add-a-new-PID-VID-0489-e0f6-for-MT7922.patch
-#  0035-Add_quirk_for_polling_the_KBD_port.patch
-  
-  0001-ACPI-resource-Skip-IRQ-override-on-ASUS-TUF-Gaming-A.patch
-  0002-ACPI-resource-Skip-IRQ-override-on-ASUS-TUF-Gaming-A.patch
-
-  0038-mediatek-pci-reset.patch
-  0040-workaround_hardware_decoding_amdgpu.patch
-
-  amd-tablet-sfh.patch
-
-#  "0001-sched-ext.patch"::"https://raw.githubusercontent.com/cachyos/kernel-patches/master/6.10/sched/0001-sched-ext.patch"
-  "0001-amd-pstate.patch"::"https://raw.githubusercontent.com/CachyOS/kernel-patches/master/6.10/0001-amd-pstate.patch"
-
-  "sys-kernel_arch-sources-g14_files-0047-asus-nb-wmi-Add-tablet_mode_sw-lid-flip.patch"
-  "sys-kernel_arch-sources-g14_files-0048-asus-nb-wmi-fix-tablet_mode_sw_int.patch"
+  0002-mt76_-mt7921_-Disable-powersave-features-by-default.patch  
+  0003-Bluetooth-btusb-Add-a-new-PID-VID-0489-e0f6-for-MT7922.patch
+  0004-ACPI-resource-Skip-IRQ-override-on-ASUS-TUF-Gaming-A.patch
+  0005-ACPI-resource-Skip-IRQ-override-on-ASUS-TUF-Gaming-A.patch
+  0006-mediatek-pci-reset.patch
+  0007-workaround_hardware_decoding_amdgpu.patch
+  0008-amd-tablet-sfh.patch
+  0009-asus-nb-wmi-Add-tablet_mode_sw-lid-flip.patch
+  0010-asus-nb-wmi-fix-tablet_mode_sw_int.patch
 )
 validpgpkeys=(
   ABAF11C65A2970B130ABE3C479BE3E4300411886  # Linus Torvalds
@@ -73,31 +56,23 @@ validpgpkeys=(
   83BC8889351B5DEBBB68416EB8AC08600F108CDF  # Jan Alexander Steffens (heftig)
 )
 
-sha256sums=('e687e735b5eb9efb6d67b42433c93fc9118106a995514f062652873b5e809bcd'
+sha256sums=('2a372373b4e1eaf55f2a2f104bfa91477ec9b263acf8f3aed08f4d8bdc78ee3d'
             'SKIP'
-            '064b9841dd6738e8a6f8859743c66e0d603541b6afa021ab98ea7e3623fca108'
+            'cb4acbf6c7f0ef00e335929d90ea2acadead0266d9f769c15976ee74c5c8828d'
             'SKIP'
-            '42dc2f91acbf4d7b17a8c398c691465651ceea58d64dd9e05a6255d0bafb6fb5'
+            'ef46abf8e2a0dfff3a63a911cb4819d7c8e276c78094afc37518e4b3d9c841d0'
+            '3cc13b8e108528bfba5f544e7993af415a3bdaab13fb36285c886a628cd39332'
             '278118011d7a2eeca9971ac97b31bf0c55ab55e99c662ab9ae4717b55819c9a2'
-            '072b148cfce317604c4e4ac74d8ced1ee8745ff43f9618cdf0281cde65f3ec25'
+            'bf7fbac9b9e9d4d8c00124b4249065ae098b837c0798d173ed85822d95e941cf'
+            '83139e91e77a2bd227fa7e53c0109ac4d25b93ee0935cda2e0560960f3b1d929'
             '0a7ea482fe20c403788d290826cec42fe395e5a6eab07b88845f8b9a9829998d'
-            '0ac28bb000cf2eb56f36d028588fd898dd8afa63ba247fcf326496570c2fe87e'
-            'f45f61b9e023bf0224d70f76c73c0f667193a9915ba6ae9586046a9c4d73b8a0'
-            '9de67962522d07b9babe7c97e4240bb267939c2c6c97bb91d64ed14123f81e3f'
-            '9884ce2c34d9520e343dbaf33ef1d053deeb752c12bd595ec5c96a17859131d4'
-            'cc7d6594d152b95d3edc82f4a01317881f94dd365b28264805840e33a523b4c6'
-            '5b6a2f1ac22c55f43cd7e7b8b79b7ee8a76d58acd74abecc3102b2c32ed15576'
-            '6f5325bf096668d25a9bcf7fdd9fc574fc1c16640f2d163c54b87527ed961d83'
-            'b7422349428f0476477167f81d9cd9e3692f7ca7345eb6e1f861a0994f9a366e'
-            'bf4a555719354bdcc8b0f3665f58b6915494924488b48736cc04d0a11b0fa96c'
             'ed242f4be3f8eaade2a1d42157c5c6c86281917a08ae43221b088fafdc775ee7'
             'a8e1e11a4ab1995cc4975c9b134a43ddfe7054ef0c965e52a7d8f9223e15c3e0'
-            'a00b952d53df9d3617d93e8fba4146a4d6169ebe79f029b3a55cca68f738d8ea'
             '4912b1319e46ddd6670147f5e878b4aca8bcfbd7b5c852fe11e434e424666365'
+            'a00b952d53df9d3617d93e8fba4146a4d6169ebe79f029b3a55cca68f738d8ea'
             'd673d034fbcd80426fd8d9c6af56537c5fe5b55fe49d74e313474d7fc285ecc1'
             'e41198b29cee4de7a5132d8df606f48c2d0f9c9076fe4230b00a33c7e0b22c71'
             '508f90cbe81a9a145cc540703470f1e6b5d21c7a7b9166d2ce6e56b401262b04'
-            '86f18404ac894c2fcdc111e8d40dd127fb4ae3bb8dda65cf4e5f7e8e7fe2d0a6'
             '15e912a66e4bbce1cf0450f1dc6610653df29df8dd6d5426f9c1b039490436c8'
             '444f2d86de8c2177655b01596f939f99c2e7abfa8efad8a509e0a334f42dfa85')
 
@@ -142,6 +117,7 @@ prepare() {
 
   echo "Setting config..."
   cp ../config .config
+  cat ../partial-rog.config >> .config
   make olddefconfig
   diff -u ../config .config || :
   
@@ -172,6 +148,14 @@ prepare() {
   #                --disable CONFIG_SND_SOC_INTEL_MACH \
   #                --disable CONFIG_INTEL_WMI \
   #                --disable CONFIG_INTEL_IOMMU
+
+  # Stuff from Fedora
+  scripts/config --enable CONFIG_ASUS_WMI_BIOS \
+                 --module CONFIG_HID_ASUS_ALLY \
+                 --module CONFIG_ASUS_ARMOURY \
+                 --enable CONFIG_CRYPTO_LZ4 \
+                 --enable CONFIG_CRYPTO_LZO \
+                 --module CONFIG_DRM_PRIVACY_SCREEN
 
   scripts/config --enable CONFIG_PINCTRL_AMD
   scripts/config --enable CONFIG_X86_AMD_PSTATE
@@ -294,6 +278,7 @@ _package-headers() {
   install -Dt "$builddir/kernel" -m644 kernel/Makefile
   install -Dt "$builddir/arch/x86" -m644 arch/x86/Makefile
   cp -t "$builddir" -a scripts
+  ln -srt "$builddir" "$builddir/scripts/gdb/vmlinux-gdb.py"
 
   # required when STACK_VALIDATION is enabled
   install -Dt "$builddir/tools/objtool" tools/objtool/objtool
