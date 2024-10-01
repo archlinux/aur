@@ -1,0 +1,4 @@
+[python-mystic]
+source = "github"
+github = "uqfoundation/mystic"
+use_latest_release = "true"
