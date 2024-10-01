@@ -1,7 +1,7 @@
 # Maintainer: Idares <idares at seznam dot cz>
 
 pkgname=nagios
-pkgver=4.5.4
+pkgver=4.5.5
 pkgrel=1
 pkgdesc="Nagios is an open source host, service and network monitoring program."
 license=('GPL')
@@ -71,8 +71,8 @@ package() {
 
 }
 
-md5sums=('7ff21e6b51f1ddd900274a6a16cb8604'
+md5sums=('9bf2a6e942dd55d07d77ac87427a5416'
          'e11fa7de430ed858269f82e179fc87ca')
-sha1sums=('d007e460065725dcadac5d45cc8f68579d1405e9'
+sha1sums=('f5f6d8119bd2037e5d9f0a4f3c443466f57beabb'
           '04008cee208226e60b099550bd9ec7dc78cb1457')
 
