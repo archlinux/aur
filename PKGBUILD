@@ -1,3 +1,4 @@
+# Maintainer: Pea <peanut2 [aaaaat] systemli [dooot] org>
 pkgname=riseup-vpn-git
 pkgrel=1
 pkgver=0.24.8.r21.g473595df
@@ -33,7 +34,7 @@ makedepends=(
 depends=(
     'qt6-base'
     'qt6-tools'
-    'qt6-quickcontrols2'
+    'qt6-declarative'
     'qt6-svg'
     'openvpn'
     'python'
@@ -53,7 +54,7 @@ build() {
     export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
 
     PROVIDER=riseup make vendor
-    RELEASE=yes PROVIDER=riseup make build
+    PROVIDER=riseup LRELEASE=/usr/lib/qt6/bin/lrelease RELEASE=yes make build
 }
 
 check() {
