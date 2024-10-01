@@ -5,14 +5,17 @@
 
 pkgbase=buildbot
 pkgname=(buildbot buildbot-worker buildbot-docs buildbot-common
-         python-buildbot-www
+         python-buildbot-www python-buildbot-www-react
          python-buildbot-waterfall-view
          python-buildbot-console-view python-buildbot-grid-view
-         python-buildbot-wsgi-dashboards python-buildbot-badges)
+         python-buildbot-wsgi-dashboards python-buildbot-badges
+         python-buildbot-react-waterfall-view
+         python-buildbot-react-console-view python-buildbot-react-grid-view
+         python-buildbot-react-wsgi-dashboards)
 # https://github.com/buildbot/buildbot/releases
-pkgver=4.0.3
-_bb_contrib_commit=cc230791dcd4717830d4dcb62843c0a19bdf3262
-pkgrel=2
+pkgver=3.11.6
+_bb_contrib_commit=4c8615db51253f0be4bfd08210a3aaf903a74b4f
+pkgrel=1
 arch=(any)
 url='https://buildbot.net'
 # https://github.com/buildbot/buildbot/blob/v3.10.1/master/setup.py says GPLv2, and does not mention "any later version"
@@ -21,39 +24,48 @@ checkdepends=(python-boto3 python-ldap3 python-lz4 python-treq python-txrequests
               python-moto python-docker python-parameterized python-subunit
               python-psutil python-ruamel-yaml python-markdown
               openssh chromium)
-makedepends=(python-build python-installer python-wheel
-             python-twisted python-jinja python-msgpack python-zope-interface python-sqlalchemy1.4
+makedepends=(python-twisted python-jinja python-msgpack python-zope-interface python-sqlalchemy1.4
              python-alembic python-dateutil python-txaio
              python-autobahn python-pyjwt python-yaml python-croniter python-unidiff
-             python-packaging
+             python-importlib_resources python-packaging
              python-graphql-core python-hvac
              libvirt-python python-novaclient python-pypugjs python-aiohttp
-             python-setuptools
+             python-setuptools python-six
              python-sphinx-jinja
              python-sphinx_rtd_theme
              git yarn)
-source=("git+https://github.com/buildbot/buildbot.git?signed#tag=v$pkgver"
+# Use `gitarchive` tarballs until a stable pacman version includes the fix to make git checksums stable
+# https://gitlab.archlinux.org/pacman/pacman/-/commit/9548d6cc765b1a8dcf933e8b1b89d0bcc3e50209
+source=("https://github.com/buildbot/buildbot/releases/download/v$pkgver/buildbot-v$pkgver.gitarchive.tar.gz"{,.asc}
         "git+https://github.com/buildbot/buildbot-contrib.git#commit=$_bb_contrib_commit"
+        "buildbot-contrib-systemd-common.patch::https://github.com/buildbot/buildbot-contrib/pull/22.patch"
         "disable-flaky-tests.diff")
-sha256sums=('f7e5177fe632df156bfd49f974649eaa9e773452d907f212d67a949d62c1eb0b'
-            '2f8747848b96d9e31a66d3becd62d36dcbdd349e5381a8bd2558da7c1f2faddb'
+sha256sums=('1a32fa10a2a5d3570c34674fca479b9bce638a23d19e83b42c959d0c0e59d36c'
+            'SKIP'
+            '6ef2beaff974d48245a6a4f70219b89eb1ef6d484e27ee33b2ac6ab181ab3697'
+            '896eede4c33a8574d7c29ac4a28cebbe3d7e850931a86e945328f8ea358195a9'
             '175cb41a707a278b0a7c0864304a00459d6e2dee16cd5ddbc28a6dc90abfd3fc')
 validpgpkeys=(
-  'FD0004A26EADFE43A4C3F249C6F7AE200374452D'  # https://github.com/p12tic.gpg
+  '390EB159056ED56F66AB1092AECD456B4D2531FC'  # Pierre Tardy <tardyp@gmail.com> (@tardyp on GitHub)
+  'FD0004A26EADFE43A4C3F249C6F7AE200374452D'  # Povilas Kanapickas <povilas@radix.lt> (@p12tic on GitHub)
 )
 
-# Some WWW modules are not tested by upstream, see https://github.com/buildbot/buildbot/blob/v4.0.3/Makefile#L30
-_buildbot_www_modules_with_tests=(base waterfall_view console_view)
-_buildbot_www_modules=(${_buildbot_www_modules_with_tests[@]} grid_view wsgi_dashboards badges)
+_buildbot_www_modules_with_tests=(base waterfall_view console_view grid_view wsgi_dashboards)
+_buildbot_www_react_modules_with_tests=(react-base react-waterfall_view react-console_view react-grid_view)
+_buildbot_www_modules=(${_buildbot_www_modules_with_tests[@]} ${_buildbot_www_react_modules_with_tests[@]} react-wsgi_dashboards badges)
 
 prepare() {
-  cd buildbot
+  cd buildbot-$pkgver
 
   # Some master tests use scripts from contrib
   ln -s ../../buildbot-contrib/master/contrib master/contrib
 
   # HACK: do not use virtualenv
   sed -i -e 's#frontend_deps:.*#frontend_deps:#' Makefile
+
+  # HACK: Do not build JS again during install
+  # We take care about the command order manually
+  sed -i '/egg_info=EggInfoCommand/d' pkg/buildbot_pkg.py
 
   sed -i '/buildbot_windows_service/d' master/setup.py
   rm -v master/buildbot/scripts/windows_service.py
@@ -68,69 +80,78 @@ prepare() {
 
   # See https://github.com/buildbot/buildbot/issues/6776 for an earlier report about those flaky tests
   patch -Np1 -i ../disable-flaky-tests.diff
-}
 
-get_pyver() {
-  python -c "import sys; print('{}.{}'.format(*sys.version_info[:2]))"
+  cd "$srcdir"/buildbot-contrib
+  patch -Np1 -i ../buildbot-contrib-systemd-common.patch
 }
 
 build() {
-  export NODE_OPTIONS="--max-old-space-size=2048"
+  export NODE_OPTIONS="--max-old-space-size=2048 --openssl-legacy-provider"
 
-  cd "$srcdir"/buildbot/pkg
-  python -m build --wheel --no-isolation
-  python -m installer --destdir="$srcdir/tmp_install" dist/*.whl
+  cd "$srcdir"/buildbot-$pkgver/pkg
+  python setup.py egg_info
 
   #################### buildbot ########################
-  cd "$srcdir"/buildbot/master
-  python -m build --wheel --no-isolation
+  cd "$srcdir"/buildbot-$pkgver/master
+  python setup.py build
 
   ################## buildbot-worker ###################
-  cd "$srcdir"/buildbot/worker
-  python -m build --wheel --no-isolation
+  cd "$srcdir"/buildbot-$pkgver/worker
+  python setup.py build
 
   ################### buildbot-www #####################
-  cd "$srcdir"/buildbot
+  cd "$srcdir"/buildbot-$pkgver
 
   # HACK: use system packages instead of ones via pip
   make PIP=/usr/bin/true frontend_deps
 
-  export PYTHONPATH="$srcdir/tmp_install/usr/lib/python$(get_pyver)/site-packages"
+  export PYTHONPATH="$srcdir"/buildbot-$pkgver/pkg
   for module in ${_buildbot_www_modules[@]}
   do
-    cd "$srcdir"/buildbot/www/$module
-    python -m build --wheel --no-isolation
+    cd "$srcdir"/buildbot-$pkgver/www/$module
+    python setup.py build
   done
 
   ################### buildbot-docs ####################
-  cd "$srcdir"/buildbot/master/docs
+  cd "$srcdir"/buildbot-$pkgver/master/docs
   # Default SPHINXOPTS used in upstream Makefile treats warnings as errors and may break the build when Arch uses newer sphinx
   make SPHINXOPTS="-j$(nproc)" clean html singlehtml
 }
 
 check() {
-  _basedir="$srcdir/buildbot"
-
   # Install packages to a temp folder for tests
-  for wheel_file in "$_basedir"/master/dist/*.whl "$_basedir"/worker/dist/*.whl "$_basedir"/www/base/dist/*.whl; do
-    python -m installer --destdir="$srcdir/tmp_install" "$wheel_file"
-  done
+  cd "$srcdir"/buildbot-$pkgver/master
+  python setup.py egg_info
+  python setup.py install_scripts --install-dir="$srcdir/tmp_install"
+
+  cd "$srcdir"/buildbot-$pkgver/worker
+  python setup.py egg_info
+
+  cd "$srcdir"/buildbot-$pkgver/www/base
+  python setup.py egg_info
 
   # Run tests
-  PYTHONPATH="$srcdir/tmp_install/usr/lib/python$(get_pyver)/site-packages"
-  export PATH="$PATH:$srcdir/tmp_install/usr/bin"
+  _basedir="$srcdir/buildbot-$pkgver"
+  export PYTHONPATH="$_basedir/master:$_basedir/worker:$_basedir/www/base:$_basedir/pkg"
+  export PATH="$PATH:$srcdir/tmp_install"
 
-  cd "$srcdir"/buildbot/master
-  PYTHONPATH="$PWD:$PYTHONPATH" TZ=UTC python -W default /usr/bin/trial --rterrors buildbot
+  cd "$srcdir"/buildbot-$pkgver/master
+  TZ=UTC python -W default /usr/bin/trial --rterrors buildbot
 
-  cd "$srcdir"/buildbot/worker
+  cd "$srcdir"/buildbot-$pkgver/worker
   PYTHONPATH=. python -W default /usr/bin/trial buildbot_worker
 
   export CHROME_BIN=/usr/bin/chromium
 
   for module in ${_buildbot_www_modules_with_tests[@]}
   do
-    cd "$srcdir"/buildbot/www/$module
+    cd "$srcdir"/buildbot-$pkgver/www/$module
+    yarn run test --browsers BBChromeHeadless
+  done
+
+  for module in ${_buildbot_www_react_modules_with_tests[@]}
+  do
+    cd "$srcdir"/buildbot-$pkgver/www/$module
     yarn run test
   done
 }
@@ -139,7 +160,7 @@ package_buildbot() {
   pkgdesc='The Continuous Integration Framework'
   depends=(buildbot-common=$pkgver-$pkgrel python python-twisted python-jinja python-msgpack python-zope-interface python-sqlalchemy1.4
            python-alembic python-dateutil python-txaio
-           python-autobahn python-pyjwt python-yaml python-croniter python-unidiff python-packaging)
+           python-autobahn python-pyjwt python-yaml python-croniter python-unidiff python-importlib_resources python-packaging)
   optdepends=(
     # reporters
     'python-pyopenssl: to use SSL/TLS in mail or IRC notifiers'
@@ -173,21 +194,21 @@ package_buildbot() {
     'python-markdown: for descriptions in markdown'
   )
 
-  cd buildbot/master
-  python -m installer --destdir="$pkgdir" dist/*.whl
+  cd buildbot-$pkgver/master
+  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
   install -Dm644 "$srcdir"/buildbot-contrib/master/contrib/systemd/buildbot@.service \
     -t "$pkgdir"/usr/lib/systemd/system/
 }
 
 package_buildbot-worker() {
   pkgdesc='Buildbot worker daemon'
-  depends=(buildbot-common=$pkgver-$pkgrel python python-twisted python-autobahn python-msgpack python-zope-interface)
+  depends=(buildbot-common=$pkgver-$pkgrel python python-twisted python-six python-autobahn python-msgpack python-zope-interface)
   optdepends=(
     'buildbot: for local worker'
   )
 
-  cd buildbot/worker
-  python -m installer --destdir="$pkgdir" dist/*.whl
+  cd buildbot-$pkgver/worker
+  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
   install -Dm644 "$srcdir"/buildbot-contrib/worker/contrib/systemd/buildbot-worker@.service \
     -t "$pkgdir"/usr/lib/systemd/system/
 }
@@ -195,7 +216,7 @@ package_buildbot-worker() {
 package_buildbot-docs() {
   pkgdesc='Buildbot docs'
 
-  cd buildbot/master/docs
+  cd buildbot-$pkgver/master/docs
   install -Ddm755 "$pkgdir"/usr/share/doc/buildbot
   for kind in html singlehtml ; do
     cp -dr --no-preserve=ownership _build/$kind "$pkgdir"/usr/share/doc/buildbot/$kind
@@ -220,40 +241,53 @@ package_python-buildbot-www() {
     'python-buildbot-badges'
   )
 
-  cd buildbot/www/base
-  python -m installer --destdir="$pkgdir" dist/*.whl
+  cd buildbot-$pkgver/www/base
+  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+}
+
+package_python-buildbot-www-react() {
+  pkgdesc='React-based Buildbot UI (experimental)'
+  depends=(python buildbot=$pkgver-$pkgrel)
+  optdepends=(
+    'python-buildbot-react-waterfall-view'
+    'python-buildbot-react-console-view'
+    'python-buildbot-react-grid-view'
+  )
+
+  cd buildbot-$pkgver/www/react-base
+  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
 }
 
 package_python-buildbot-waterfall-view() {
   pkgdesc='Buildbot Waterfall View plugin'
   depends=(buildbot=$pkgver-$pkgrel python-buildbot-www=$pkgver-$pkgrel)
 
-  cd buildbot/www/waterfall_view
-  python -m installer --destdir="$pkgdir" dist/*.whl
+  cd buildbot-$pkgver/www/waterfall_view
+  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
 }
 
 package_python-buildbot-console-view() {
   pkgdesc='Buildbot Console View plugin'
   depends=(buildbot=$pkgver-$pkgrel python-buildbot-www=$pkgver-$pkgrel)
 
-  cd buildbot/www/console_view
-  python -m installer --destdir="$pkgdir" dist/*.whl
+  cd buildbot-$pkgver/www/console_view
+  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
 }
 
 package_python-buildbot-grid-view() {
   pkgdesc='Buildbot Grid View plugin'
   depends=(buildbot=$pkgver-$pkgrel python-buildbot-www=$pkgver-$pkgrel)
 
-  cd buildbot/www/grid_view
-  python -m installer --destdir="$pkgdir" dist/*.whl
+  cd buildbot-$pkgver/www/grid_view
+  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
 }
 
 package_python-buildbot-wsgi-dashboards() {
   pkgdesc='Buildbot plugin to integrate flask or bottle dashboards to buildbot UI'
   depends=(buildbot=$pkgver-$pkgrel python-buildbot-www=$pkgver-$pkgrel python-twisted)
 
-  cd buildbot/www/wsgi_dashboards
-  python -m installer --destdir="$pkgdir" dist/*.whl
+  cd buildbot-$pkgver/www/wsgi_dashboards
+  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
 }
 
 package_python-buildbot-badges() {
@@ -264,6 +298,38 @@ package_python-buildbot-badges() {
     'ttf-dejavu: the default font for rendering badges as PNGs'
   )
 
-  cd buildbot/www/badges
-  python -m installer --destdir="$pkgdir" dist/*.whl
+  cd buildbot-$pkgver/www/badges
+  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+}
+
+package_python-buildbot-react-waterfall-view() {
+pkgdesc='Buildbot Waterfall View plugin (React)'
+  depends=(buildbot=$pkgver-$pkgrel python-buildbot-www-react=$pkgver-$pkgrel)
+
+  cd buildbot-$pkgver/www/react-waterfall_view
+  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+}
+
+package_python-buildbot-react-console-view() {
+pkgdesc='Buildbot Console View plugin (React)'
+  depends=(buildbot=$pkgver-$pkgrel python-buildbot-www-react=$pkgver-$pkgrel)
+
+  cd buildbot-$pkgver/www/react-console_view
+  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+}
+
+package_python-buildbot-react-grid-view() {
+  pkgdesc='Buildbot Grid View plugin (React)'
+  depends=(buildbot=$pkgver-$pkgrel python-buildbot-www-react=$pkgver-$pkgrel)
+
+  cd buildbot-$pkgver/www/react-grid_view
+  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+}
+
+package_python-buildbot-react-wsgi-dashboards() {
+  pkgdesc='Buildbot plugin to integrate flask or bottle dashboards to buildbot UI (React)'
+  depends=(buildbot=$pkgver-$pkgrel python-buildbot-www-react=$pkgver-$pkgrel python-twisted)
+
+  cd buildbot-$pkgver/www/react-wsgi_dashboards
+  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
 }
