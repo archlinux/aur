@@ -2,10 +2,10 @@
 
 _name=great-tables
 pkgname="python-${_name}"
-pkgver=0.11.1
+pkgver=0.12.0
 # setup-tools-scm doesn't get the dependencies right from the tarball sources
 # https://wiki.archlinux.org/title/Talk:Python_package_guidelines#Prefer_VCS_source_for_setuptools-scm_and_friends
-_tag=079dc836f7e198b6879a0f99a624ea5da271fdfa # git rev-parse "v${pkgver}"
+_tag=3bafd96c87e3593f51e2344f3da4c01c4112913b # git rev-parse "v${pkgver}"
 pkgrel=1
 pkgdesc="Make awesome display tables using Python"
 arch=('any')
@@ -41,7 +41,7 @@ checkdepends=(
 )
 source=("$pkgname-$pkgver::git+https://github.com/posit-dev/great-tables.git#tag=$_tag"
 	"pytest.ini")
-b2sums=('8ecdc238e3fd9c6101b1e86a3078aab3aee47dc44d2520428d86e7568e37bfa2e6a92304cded6271950e7e524f8e7fe85efbf28271e7849d49abfeefe7855c16'
+b2sums=('6d7fcdb2175e22fe0b2d3c480f92199a2d2a590e0f0642e87c9c9aa7b2d8bcef99f8e320b0cb08494cd1721bbc025a096d2e25900bc13e59cccca39f6f8c53f3'
         '6fc96614ad70fdb6774643e5a6bc08165cab99f5f0241c9b885fa93ba0742ff5f8224360c9914a9b8924311f3387fb6b204ec95a2be5dfb0e4dee711adf177da')
 
 prepare() {
@@ -55,7 +55,7 @@ check() {
     # Skipped tests :
     #   shiny: There is no package
     #   dependencies: packages are dependencies, so this test always fails?
-    pytest --ignore=tests/test_shiny.py --ignore=tests/test_dependencies.py
+    pytest --snapshot-update --ignore=tests/test_shiny.py --ignore=tests/test_dependencies.py
 }
 
 build() {
