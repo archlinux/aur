@@ -2,7 +2,7 @@
 pkgname=sirikali-bin
 _name=SiriKali
 pkgver=1.6.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A Qt/C++ GUI front end to sshfs, ecryptfs-simple, cryfs, gocryptfs, securefs, fscrypt and encfs"
 arch=('i686' 'x86_64')
 url="https://mhogomchungu.github.io/sirikali/"
@@ -20,9 +20,9 @@ optdepends=('lxqt_wallet: use an external lxqt_wallet (must recompile)'
     'sshfs: for SSHFS backend')
 conflicts=("sirikali-git" "sirikali")
 source_x86_64=("https://download.opensuse.org/repositories/home:/obs_mhogomchungu/Debian_12/amd64/sirikali_1.6.0-1_amd64.deb")
-sha256sums_x86_64=('edd35df958e7bbdc38b91a02acdfaf7e6168bb9ed4dd35b3bd90517fb08ec246')
+sha256sums_x86_64=('6d5c46aff965a75fd6b803c647f8c1228a28db035cc9e59d5218def5d6da3d56')
 source_i686=("https://download.opensuse.org/repositories/home:/obs_mhogomchungu/Debian_12/i386/sirikali_1.6.0-1_i386.deb")
-sha256sums_i686=('97dab373b39baca39cf2dd61bd63218c74cdcdac1d5d700ce83d1097865e7067')
+sha256sums_i686=('a58e6d2e281a7aed650d42ef26eab4a0b8980d6ba4d13c0931b3ffda221fd2d6')
 
 package() {
     cd "$srcdir/"
