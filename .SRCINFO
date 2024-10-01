@@ -1,0 +1,15 @@
+pkgbase = todoist-rs-git
+	pkgdesc = A terminal client for Todoist, (inspired by Spotify-TUI).
+	pkgver = 0.0.4.r0.g36e0dd0
+	pkgrel = 1
+	url = https://github.com/illiteratewriter/todoist-rs
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	provides = todoist-rs
+	conflicts = todoist-rs
+	source = todoist-rs::git+https://github.com/illiteratewriter/todoist-rs#branch=master
+	sha256sums = SKIP
+
+pkgname = todoist-rs-git
