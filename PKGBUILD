@@ -1,8 +1,8 @@
 # Maintainer: David Gonzalez <neko.eth0 AT gmail DOT com>
 # Contributor: Ricardo Band <email AT ricardo DOT band>
-_pkgver="11.2.0.0-213"
-_folder_num="FOLDER11566538M"
-_folder_gpg="FOLDER11565201M"
+_pkgver="11.2.1.0-528"
+_folder_num="FOLDER12112988M"
+_folder_gpg="FOLDER12112987M"
 pkgname=dell-idractools
 pkgver=${_pkgver/-/.}
 pkgrel=1
@@ -15,7 +15,7 @@ makedepends=(rpmextract)
 source=("https://dl.dell.com/${_folder_gpg}/1/Dell-iDRACTools-Web-LX-${_pkgver}_A00.tar.gz.sign"
         "https://dl.dell.com/${_folder_num}/1/Dell-iDRACTools-Web-LX-${_pkgver}_A00.tar.gz")
 sha256sums=('SKIP'
-            '5df8cb37391eff84b473daff9c30f79e824440c5cf9d4fb8be3ceafb9a9a686a')
+            '4cb92c7c2341095f999a6e1afebf4a8e11158c19df2376274695d2cff1fab26f')
 validpgpkeys=("42550ABD1E80D7C1BC0BAD851285491434D8786F")
 
 # dl.dell.com doesn't like cURL
