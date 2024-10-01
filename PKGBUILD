@@ -1,7 +1,7 @@
 # Contributor: Swift Geek
 
 pkgname=authprogs-git
-pkgver=0.7.5.r0.g4eb0cee
+pkgver=a
 pkgrel=1
 pkgdesc="SSH Command Authenticator"
 arch=('any')
