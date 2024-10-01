@@ -10,7 +10,7 @@ license=('GPL2')
 depends=()
 makedepends=()
 conflicts=()
-source=("${pkgname}.tar.gz::https://github.com/someoneonsmile/stow/releases/download/nightly/${_pkgname}-x86_64-unknown-linux-musl.tar.gz")
+source=("${pkgname}.tar.gz::https://github.com/someoneonsmile/${_pkgname}/releases/download/nightly/${_pkgname}-x86_64-unknown-linux-musl.tar.gz")
 sha512sums=('SKIP')
 
 pkgver() {
