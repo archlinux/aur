@@ -2,7 +2,7 @@
 # Co-maintainer: Nebulosa <nebulosa2007 at yandex dot ru>
 
 pkgname=cassette-git
-pkgver=0.2.0.r52.gf17ae75
+pkgver=0.2.0.r9.ga0a1bcb
 pkgrel=1
 pkgdesc="GTK4/Adwaita application that allows you to use Yandex Music service on Linux operating systems"
 arch=(aarch64 x86_64)
@@ -36,10 +36,10 @@ provides=(${pkgname%-git})
 conflicts=(${pkgname%-git})
 options=(!debug)
 source=(${pkgname%-git}::git+$url.git)
-b2sums=(SKIP)
+b2sums=('SKIP')
 
 pkgver() {
-  git -C ${pkgname%-git} describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^ver.//'
+  git -C ${pkgname%-git} describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
 }
 
 build() {
