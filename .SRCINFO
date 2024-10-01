@@ -1,0 +1,27 @@
+pkgbase = r-noisyr
+	pkgdesc = Noise Quantification in High Throughput Sequencing Output
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://cran.r-project.org/package=noisyr
+	arch = any
+	license = GPL-2.0-only
+	depends = r-doparallel
+	depends = r-dplyr
+	depends = r-foreach
+	depends = r-genomicranges
+	depends = r-ggplot2
+	depends = r-iranges
+	depends = r-magrittr
+	depends = r-philentropy
+	depends = r-preprocesscore
+	depends = r-rsamtools
+	depends = r-tibble
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	optdepends = r-roxygen2
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/noisyr_1.0.0.tar.gz
+	md5sums = 970c060f9754927acdbb2af41ac01dea
+	b2sums = 31b1f41944205c6b2e64734196d804d221ac1dbdee0a7a38f362562e30a2000a24db7b0efb9adfe6c61a11f365569e70f9a1af77decddac53b808c9149370c48
+
+pkgname = r-noisyr
