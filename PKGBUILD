@@ -10,7 +10,7 @@ groups=()
 depends=("python-chibi-dl" "python-undetected-chromedriver")
 makedepends=("python-setuptools")
 source=("https://files.pythonhosted.org/packages/source/${_pyname::1}/${_pyname//-/_}/${_pyname//-/_}-$pkgver.tar.gz")
-sha256sums=('40582b63cae040a72c45b9e35f608936414c10fc7a2cd61309f06cc2f708fd78')
+sha256sums=('43efd0c306dfb3e14122a219397df18afb68f777ccd76896dc55b14d5823d4c3')
 
 build() {
 	cd "$_pyname-$pkgver"
