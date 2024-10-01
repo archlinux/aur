@@ -2,7 +2,7 @@
 
 pkgname=opencpn-plugin-o_charts
 pkgver=2.0.13.0
-pkgrel=1
+pkgrel=2
 pkgdesc="use charts from o-charts.org in opencpn"
 arch=('x86_64' 'aarch64')
 license=("GPL2" "custom")
@@ -28,6 +28,7 @@ build() {
 package() {
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   # upstream is using make install for their packaging so we need to copy the files manually
+  cd o-charts_pi-${pkgver}
   cd build/app/files/
   cp -r ./* $pkgdir/usr/
   rm $pkgdir/usr/metadata.xml
