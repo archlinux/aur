@@ -2,8 +2,8 @@
 # Maintainer: Antti <antti@antti.codes>
 
 pkgname=modrinth-app-segfault-fix-bin
-pkgver=0.8.7
-pkgrel=1
+pkgver=0.8.8
+pkgrel=2
 pkgdesc='An unique, open source launcher that allows you to play your favorite mods, and keep them up to date, all in one neat little package.'
 url='https://modrinth.com/app'
 arch=('x86_64')
@@ -22,18 +22,31 @@ conflicts=('modrinth-app')
 source=(
     "https://launcher-files.modrinth.com/versions/${pkgver}/linux/Modrinth%20App_${pkgver}_amd64.deb"
     "modrinth-app"
+    "modrinth-file-extensions.xml"
 )
-sha256sums=('03fd48168abdccf7074d30015ec9aeeae7f684a8b9495102e246b6ed3791b88c'
-            '8b4f95adec7a0d84b11c304430b1a1e5bcb8422314072b3c56ed53e22cd22030')
+sha256sums=('554ed0a9ed232539534ed922b2edb83fbbf8061d1344b677c0fb4fb799ec32c4'
+            '8b4f95adec7a0d84b11c304430b1a1e5bcb8422314072b3c56ed53e22cd22030'
+            'e0b3eab49465709ed5053dc1fa4206071ab32657d25bd1f9c01850d696715cff')
 
 build() {
     cd "$srcdir/"
     tar xf data.tar.gz
 }
 
+_binname="Modrinth App"
 package() {
-    cp -r "${srcdir}/usr/" "${pkgdir}"
-    mkdir -p "${pkgdir}/opt/modrinth-app"
-    mv "${pkgdir}/usr/bin/modrinth-app" "${pkgdir}/opt/modrinth-app/"
+    cd "$srcdir"
+    find "./usr/share" -type f -print0 | while read -d $'\0' f; do
+        filename=$(basename -- "$f")
+        target="modrinth-app.${filename##*.}"
+        dir=$(dirname -- "$f")
+        install -Dm644 "$f" "$pkgdir/$dir/$target"
+    done
+    sed -i \
+      -e "s/Exec=${_binname}/Exec=modrinth-app %u/" \
+      -e "s/mrpack/x-modrinth-mrpack/" \
+      "${pkgdir}/usr/share/applications/modrinth-app.desktop"
+    install -Dm755 "${srcdir}/usr/bin/${_binname}" "${pkgdir}/opt/modrinth-app/modrinth-app"
     install -Dm755 "${srcdir}/modrinth-app" "${pkgdir}/usr/bin/modrinth-app"
+    install -Dm644 "${srcdir}/modrinth-file-extensions.xml" "${pkgdir}/usr/share/mime/packages/modrinth-file-extensios.xml"
 }
