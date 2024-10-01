@@ -1,7 +1,7 @@
 pkgbase = clash-verge-rev-alpha-bin
 	pkgdesc = Continuation of Clash Verge | A Clash Meta GUI based on Tauri | Alpha Version
 	pkgver = 2.0.0
-	pkgrel = 18
+	pkgrel = 19
 	url = https://github.com/clash-verge-rev/clash-verge-rev
 	install = .install
 	arch = x86_64
@@ -15,6 +15,6 @@ pkgbase = clash-verge-rev-alpha-bin
 	conflicts = clash-verge
 	conflicts = clash-verge-bin
 	source_x86_64 = clash-verge-rev-2.0.0-x86_64.deb::https://github.com/clash-verge-rev/clash-verge-rev/releases/download/alpha/Clash.Verge_2.0.0_amd64.deb
-	sha512sums_x86_64 = 9e2a2d17b52016f555b14c7e728ddaea474eed738f6e132e32264c6518f50a7e292a40c2d5a85eb269bd6983278230e53a9f9214684323c56e258904b22e53ff
+	sha512sums_x86_64 = a636989f625d715830a5e8d91671f34da034c0e2f0dd2953ff3ad37e670d2d634565673ac5c512406aa8eebc6ca1bdf8dfc0db4507cc98d07a12e044bfbfd45a
 
 pkgname = clash-verge-rev-alpha-bin
