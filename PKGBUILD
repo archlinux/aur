@@ -1,5 +1,6 @@
 # Maintainer: Maxim Baz <$pkgname at maximbaz dot com>
 pkgname=bright-nightly-bin
+_pkgname=bright
 pkgver=nightly
 pkgrel=1
 pkgdesc="Automatically adjust brightness based on configuration"
@@ -9,7 +10,7 @@ license=('GPL2')
 depends=()
 makedepends=()
 conflicts=()
-source=("${pkgname}.tar.gz::https://github.com/someoneonsmile/stow/releases/download/nightly/${pkgname}-x86_64-unknown-linux-musl.tar.gz")
+source=("${pkgname}.tar.gz::https://github.com/someoneonsmile/stow/releases/download/nightly/${_pkgname}-x86_64-unknown-linux-musl.tar.gz")
 sha512sums=('SKIP')
 
 pkgver() {
@@ -18,6 +19,6 @@ pkgver() {
 
 package() {
   cd "$srcdir/stow-x86_64-unknown-linux-musl"
-  install -Dm755 "${pkgname}" "$pkgdir/usr/bin/$pkgname"
-  install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm755 "${_pkgname}" "$pkgdir/usr/bin/$_pkgname"
+  install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
 }
