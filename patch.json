@@ -293,6 +293,7 @@
 	"extensionEnabledApiProposals": {
 		"ms-vscode.vscode-selfhost-test-provider": [
 			"testObserver",
+			"testRelatedCode",
 			"attributableCoverage"
 		],
 		"VisualStudioExptTeam.vscodeintellicode-completions": [
@@ -330,7 +331,7 @@
 			"terminalDataWriteEvent",
 			"terminalExecuteCommandEvent",
 			"contribIssueReporter",
-			"terminalShellIntegration"
+			"notebookReplDocument"
 		],
 		"ms-dotnettools.dotnet-interactive-vscode": [
 			"notebookMessaging"
@@ -424,6 +425,7 @@
 			"codeActionRanges",
 			"commentingRangeHint",
 			"commentReactor",
+			"commentReveal",
 			"commentThreadApplicability",
 			"contribAccessibilityHelpContent",
 			"contribCommentEditorActionsMenu",
@@ -463,6 +465,8 @@
 			"codeActionAI",
 			"findTextInFiles",
 			"textSearchProvider",
+			"activeComment",
+			"commentReveal",
 			"contribSourceControlInputBoxMenu",
 			"contribCommentEditorActionsMenu",
 			"contribCommentThreadAdditionalMenu",
@@ -474,7 +478,9 @@
 			"testObserver",
 			"aiTextSearchProvider",
 			"documentFiltersExclusive",
-			"chatParticipantPrivate"
+			"chatParticipantPrivate",
+			"lmTools",
+			"contribDebugCreateConfiguration"
 		],
 		"GitHub.remotehub": [
 			"contribRemoteHelp",
@@ -498,9 +504,10 @@
 			"notebookCellExecutionState"
 		],
 		"ms-python.debugpy": [
-			"portsAttributes",
 			"contribIssueReporter",
-			"debugVisualization"
+			"contribViewsWelcome",
+			"debugVisualization",
+			"portsAttributes"
 		],
 		"ms-toolsai.jupyter-renderers": [
 			"contribNotebookStaticPreloads"
@@ -519,7 +526,8 @@
 			"quickPickItemTooltip",
 			"notebookExecution",
 			"notebookCellExecution",
-			"notebookVariableProvider"
+			"notebookVariableProvider",
+			"notebookReplDocument"
 		],
 		"dbaeumer.vscode-eslint": [
 			"notebookCellExecutionState"
@@ -530,22 +538,21 @@
 		"ms-azuretools.vscode-azureappservice": [
 			"terminalDataWriteEvent"
 		],
-		"ms-azuretools.vscode-azureresourcegroups": [
-			"authGetSessions"
-		],
 		"ms-azuretools.vscode-azure-github-copilot": [
-			"chatParticipantAdditions",
-			"embeddings",
-			"languageModelSystem"
+			"lmTools"
 		],
 		"ms-vscode.anycode": [
 			"extensionsAny"
 		],
 		"ms-vscode.cpptools": [
-			"terminalDataWriteEvent"
+			"terminalDataWriteEvent",
+			"lmTools"
 		],
 		"redhat.java": [
 			"documentPaste"
+		],
+		"vscjava.vscode-java-pack": [
+			"lmTools"
 		],
 		"ms-dotnettools.csdevkit": [
 			"inlineCompletionsAdditions"
@@ -775,14 +782,18 @@
 			"ms-vscode.remote-server",
 			"ms-vsliveshare.vsliveshare",
 			"ms-azuretools.vscode-azureresourcegroups",
-			"ms-edu.vscode-learning"
+			"ms-edu.vscode-learning",
+			"ms-toolsai.vscode-ai",
+			"ms-toolsai.vscode-ai-remote"
 		],
 		"microsoft-sovereign-cloud": [
 			"ms-vscode.azure-repos",
 			"ms-vscode.remote-server",
 			"ms-vsliveshare.vsliveshare",
 			"ms-azuretools.vscode-azureresourcegroups",
-			"ms-edu.vscode-learning"
+			"ms-edu.vscode-learning",
+			"ms-toolsai.vscode-ai",
+			"ms-toolsai.vscode-ai-remote"
 		]
 	},
 	"auth": {
