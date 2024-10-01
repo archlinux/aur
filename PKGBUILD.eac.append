@@ -43,15 +43,3 @@ for i in "${_old_pkgname[@]}"; do
 
   unset -f "package_${i}"
 done
-
-_bump_pkgrel() {
-  local _pkgver_old="${1%-*}"
-  local _pkgrel_old="${1##*-}"
-  local _bump="${2}"
-
-  if [[ "$pkgver" == "$_pkgver_old" ]] && [[ "$pkgrel" == "$_pkgrel_old" ]]; then
-    pkgrel+=".$_bump"
-  fi
-}
-
-_bump_pkgrel 2.40+r16+gaa533d58ff-2 1

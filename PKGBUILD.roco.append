@@ -9,7 +9,7 @@ unset -f check
 options=('!debug')
 
 # modify package
-_rogue_company_reverts_patch="rogue_company_reverts-$pkgver.patch"
+_rogue_company_reverts_patch="rogue_company_reverts-$_pkgver.patch"
 source+=("$_rogue_company_reverts_patch"::"https://github.com/Frogging-Family/glibc-eac/raw/main/rogue_company_reverts.patch")
 b2sums+=('SKIP')
 

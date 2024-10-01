@@ -2,6 +2,9 @@
 
 # This package syncs with core/glibc on rebuild.
 
+pkgver=2.40+r16+gaa533d58ff
+pkgrel=2
+
 ## options
 : ${_build_roco=true}
 
@@ -31,11 +34,26 @@ if [ ! -e "$_file" ]; then
   done
 fi
 
+# fixups
+sed -E -e 's&^(pkgver=.*)$&_\1&' \
+  -e 's&^(pkgrel=.*)$&_\1&' \
+  -e 's&abbrev=[0-9]+&abbrev=10&' \
+  -i "arch-glibc/PKGBUILD"
+
 # package
 source "arch-glibc/PKGBUILD"
 
 if [ "${_build_roco::1}" == "t" ]; then
-  source "PKGBUILD.roco.append"
+  source "$startdir/PKGBUILD.roco.append"
 else
-  source "PKGBUILD.eac.append"
+  source "$startdir/PKGBUILD.eac.append"
 fi
+
+source+=(
+  'PKGBUILD.eac.append'
+  'PKGBUILD.roco.append'
+)
+b2sums+=(
+  'SKIP'
+  'SKIP'
+)
