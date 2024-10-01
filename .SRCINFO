@@ -1,0 +1,18 @@
+pkgbase = aescrypt-gui-bin
+	pkgdesc = A file encryption software that uses the Advanced Encryption (AES) standard - GUI
+	pkgver = 4.0.6
+	pkgrel = 1
+	url = https://www.aescrypt.com
+	arch = any
+	license = custom:Commercial
+	depends = aescrypt
+	depends = hicolor-icon-theme
+	depends = perl
+	optdepends = zenity: GTK-based password prompt
+	optdepends = kdialog: Qt-based password prompt
+	provides = aescrypt-gui
+	conflicts = aescrypt-gui
+	source = aescrypt-gui-4.0.6.tar.gz::https://www.aescrypt.com/download/v4/linux/aescrypt_gui-4.0.6-Linux-x86_64.tar.gz
+	b2sums = 98649c74ed7ea7ec09905ff449dd7cc81488ae020a5b4a875e44c2cbe3ff39e23fbb5c6e8aa6ecbfae3b3690844da1410144b9e1352954bb0439485631192105
+
+pkgname = aescrypt-gui-bin
