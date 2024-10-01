@@ -3,21 +3,19 @@
 _base=python-crfsuite
 pkgname=${_base}-git
 epoch=1
-pkgver=0.9.10.r0.gf7c0165
-pkgrel=4
+pkgver=v0.9.11.r0.g77b4717
+pkgrel=1
 pkgdesc="A python binding for crfsuite"
-arch=('any')
+arch=('x86_64')
 url="https://github.com/scrapinghub/${_base}"
 license=('MIT')
 depends=('python')
 makedepends=('python-build' 'python-wheel' 'python-installer' 'python-setuptools' 'cython' 'git')
 source=("git+https://github.com/scrapinghub/python-crfsuite.git"
         "git+https://github.com/chokkan/crfsuite.git"
-        "001-Fix-GCC-14-build-error.patch"
         "git+https://github.com/chokkan/liblbfgs.git")
 sha512sums=('SKIP'
             'SKIP'
-            '3adc9802a06cfe58244e621d77ada45a90deab3744c31313a64ac0da6791f985df7c52c4a392f060c19030babec77f41f6dcbed3f49ccf9563316ae9f0e92320'
             'SKIP')
 provides=('python-crfsuite')
 conflicts=('python-crfsuite')
@@ -29,8 +27,7 @@ pkgver() {
 
 prepare() {
   cd "${_base}"
-  patch -Np1 < "$srcdir"/"001-Fix-GCC-14-build-error.patch"
-  cython pycrfsuite/_pycrfsuite.pyx --cplus -a -2 -I pycrfsuite
+  cython pycrfsuite/_pycrfsuite.pyx --cplus -a -3 -I pycrfsuite
 
   git submodule init
 

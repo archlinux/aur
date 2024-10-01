@@ -1,10 +1,10 @@
 pkgbase = python-crfsuite-git
 	pkgdesc = A python binding for crfsuite
-	pkgver = 0.9.10.r0.gf7c0165
-	pkgrel = 4
+	pkgver = v0.9.11.r0.g77b4717
+	pkgrel = 1
 	epoch = 1
 	url = https://github.com/scrapinghub/python-crfsuite
-	arch = any
+	arch = x86_64
 	license = MIT
 	makedepends = python-build
 	makedepends = python-wheel
@@ -17,11 +17,9 @@ pkgbase = python-crfsuite-git
 	conflicts = python-crfsuite
 	source = git+https://github.com/scrapinghub/python-crfsuite.git
 	source = git+https://github.com/chokkan/crfsuite.git
-	source = 001-Fix-GCC-14-build-error.patch
 	source = git+https://github.com/chokkan/liblbfgs.git
 	sha512sums = SKIP
 	sha512sums = SKIP
-	sha512sums = 3adc9802a06cfe58244e621d77ada45a90deab3744c31313a64ac0da6791f985df7c52c4a392f060c19030babec77f41f6dcbed3f49ccf9563316ae9f0e92320
 	sha512sums = SKIP
 
 pkgname = python-crfsuite-git
