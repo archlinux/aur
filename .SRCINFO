@@ -1,0 +1,13 @@
+pkgbase = librandombytes
+	pkgdesc = A microlibrary for generating randomness
+	pkgver = 20240318
+	pkgrel = 1
+	url = https://randombytes.cr.yp.to
+	arch = x86_64
+	license = Unlicense
+	makedepends = python
+	depends = openssl
+	source = https://randombytes.cr.yp.to/librandombytes-20240318.tar.gz
+	sha256sums = fae6fb839096e54ce8abb6dc8ae46ed67b02034474e83cbda088eddd2e584641
+
+pkgname = librandombytes
