@@ -3,7 +3,7 @@
 pkgname=pokego-git
 _pkgname=pokego
 pkgrel=1
-pkgver=r9.13b23756%
+pkgver=r9.13b23756
 pkgdesc="CLI utility that prints unicode sprites of pokemon to the terminal"
 arch=('any')
 url="https://github.com/rubiin/pokego.git"
