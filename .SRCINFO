@@ -1,0 +1,33 @@
+pkgbase = r-popgenreport
+	pkgdesc = A Simple Framework to Analyse Population and Landscape Genetic Data
+	pkgver = 3.1
+	pkgrel = 1
+	url = https://cran.r-project.org/package=PopGenReport
+	arch = any
+	license = GPL-2.0-or-later
+	depends = r-ade4
+	depends = r-adegenet
+	depends = r-calibrate
+	depends = r-dismo
+	depends = r-gap
+	depends = r-gdistance
+	depends = r-genetics
+	depends = r-ggally
+	depends = r-ggplot2
+	depends = r-knitr
+	depends = r-mmod
+	depends = r-pegas
+	depends = r-plyr
+	depends = r-r.utils
+	depends = r-raster
+	depends = r-reshape2
+	depends = r-rgooglemaps
+	depends = r-sp
+	depends = r-vegan
+	depends = r-xtable
+	optdepends = r-sf
+	source = https://cran.r-project.org/src/contrib/PopGenReport_3.1.tar.gz
+	md5sums = 7b17b5e2a8a5bda48ca5ac8986d93380
+	b2sums = 182b8d7c321f36a44d45c9fa7975e60522c6a115f07043f8b4be227bdda2f61c57a27fd13fcc633e668622792f4ce4aba15ecaf57e32c0358453156f145a64dc
+
+pkgname = r-popgenreport
