@@ -40,6 +40,9 @@ optdepends=(
   'pacman-contrib: Checking for pacman updates'
   'power-profiles-daemon: Switch power profiles'
 )
+provides=('hyprpanel-git')
+conflicts=('hyprpanel-git')
+replaces=('hyprpanel-git')
 source=(
   "git+https://github.com/Jas-SinghFSU/HyprPanel.git"
   "https://github.com/oven-sh/bun/releases/latest/download/bun-linux-x64.zip"
