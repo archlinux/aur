@@ -3,13 +3,13 @@
 pkgname=v2socks
 pkgdesc="An opinioned lightweight socks5 server and vmess (v2ray) client."
 pkgrel=1
-pkgver=0.2.1
+pkgver=0.2.4
 arch=(any)
 url='https://github.com/ylxdzsw/v2socks'
 license=(GPL3)
 makedepends=(cargo)
 source=("https://github.com/ylxdzsw/v2socks/archive/v$pkgver.tar.gz")
-md5sums=(SKIP)
+md5sums=(5964079a3f037a59bd0f0cdefe264f6a)
 
 package() {
     cd "$srcdir/v2socks-$pkgver"

@@ -1,13 +1,12 @@
 pkgbase = v2socks
 	pkgdesc = An opinioned lightweight socks5 server and vmess (v2ray) client.
-	pkgver = 0.2.1
+	pkgver = 0.2.4
 	pkgrel = 1
 	url = https://github.com/ylxdzsw/v2socks
 	arch = any
 	license = GPL3
 	makedepends = cargo
-	source = https://github.com/ylxdzsw/v2socks/archive/v0.2.1.tar.gz
-	md5sums = SKIP
+	source = https://github.com/ylxdzsw/v2socks/archive/v0.2.4.tar.gz
+	md5sums = 5964079a3f037a59bd0f0cdefe264f6a
 
 pkgname = v2socks
-
