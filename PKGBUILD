@@ -5,8 +5,8 @@
 
 pkgname=php-xhprof
 
-pkgver=2.3.9
-pkgrel=2
+pkgver=2.3.10
+pkgrel=1
 
 pkgdesc="A Hierarchical Profiler for PHP"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -19,7 +19,7 @@ optdepends=('graphviz: to generate callgraphs in reports')
 options=()
 #install=php-xhprof.install
 source=("https://pecl.php.net/get/xhprof-${pkgver}.tgz")
-sha512sums=('38a2609d961d908c6a4b5d1ff2085ffdad4a5f7d277705c826ae19e215660802528d606c5ee052f2e65255a7a85b2a9cb9038f4785c730ec468fc76dc7bcf5de')
+sha512sums=('fcd96013222cfde9a5a26e818effc35fdc686e1aeec5040964af7672700938b1e6090b84090234ef05b7ae4deb9fa2869eb53ae5d7c6666fcb1c6e0b484a7a9c')
 
 prepare() {
 	cd "$srcdir/xhprof-${pkgver}/extension/"
@@ -47,8 +47,9 @@ package() {
 	cp -ra xhprof_html $pkgdir/usr/share/webapps/xhprof/
 	cp -ra xhprof_lib $pkgdir/usr/share/webapps/xhprof/
 
+	# For NGINX: set xhprof.output_dir = /srv/http/tmp in php.ini
+	# and activate PHP.
 	# Apache web-server config stuff. Left here in comments.
-	# I prefer Hiawatha web-server, others might prefer NGINX, etc.
 #	mkdir -p $pkgdir/etc/httpd/conf/extra/
 #	cat >$pkgdir/etc/httpd/conf/extra/xhprof.conf <<EOF
 #	Alias /xhprof "/usr/share/webapps/xhprof/xhprof_html"
