@@ -8,7 +8,7 @@ pkgrel=1
 pkgdesc="Turn your computer into an AI machine"
 arch=('x86_64')
 url="https://jan.ai/"
-license=('custom')
+license=('AGPL-3.0-only')
 depends=('zlib' 'hicolor-icon-theme' 'fuse2')
 options=(!strip !debug)
 _appimage="${pkgname}-${pkgver}.AppImage"
@@ -33,7 +33,6 @@ build() {
 package() {
     # AppImage
     install -Dm755 "${srcdir}/${_appimage}" "${pkgdir}/opt/${pkgname}/${pkgname}.AppImage"
-    install -Dm644 "${srcdir}/squashfs-root/LICENSE.electron.txt" "${pkgdir}/opt/${pkgname}/LICENSE"
 
     # Desktop file
     install -Dm644 "${srcdir}/squashfs-root/${appname}.desktop"\
@@ -46,8 +45,4 @@ package() {
     # Symlink executable
     install -dm755 "${pkgdir}/usr/bin"
     ln -s "/opt/${pkgname}/${pkgname}.AppImage" "${pkgdir}/usr/bin/${appname}"
-
-    # Symlink license
-    install -dm755 "${pkgdir}/usr/share/licenses/${pkgname}/"
-    ln -s "/opt/$pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname"
 }
