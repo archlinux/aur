@@ -2,23 +2,25 @@
 
 _name=Microsoft.ComponentDetection
 pkgname=component-detection
-pkgver=4.9.6 # renovate: datasource=github-tags depName=microsoft/component-detection
+pkgver=5.0.0 # renovate: datasource=github-tags depName=microsoft/component-detection
 pkgrel=1
 pkgdesc='Scans your project to determine what components you use'
 arch=('x86_64')
 url='https://github.com/microsoft/component-detection'
 license=('MIT')
 depends=('icu')
-makedepends=('dotnet-sdk-6.0')
+makedepends=('dotnet-sdk')
 options=("staticlibs")
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/microsoft/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
-b2sums=('17604901297338f0e81e5401a194b3c491eabf72d0320f4579802b671876a3c64b7fd5b15201e299747ae53ac6e5ffc99be95170bd5a0573422a2022b1c6f2a2')
+b2sums=('d6ac2d18245c8d397773a9733089292fe55fbfaba7c835fa0243acc45b74ebd2203e524425e3cc850f2277815e42017dd9d02d24950004cd7f07596736f04c2a')
 
 build() {
   cd "$pkgname-$pkgver"
   rm global.json
   DOTNET_SYSTEM_GLOBALIZATION_INVARIANT=1 \
   MSBUILDDISABLENODEREUSE=1 \
+  DOTNET_SKIP_FIRST_TIME_EXPERIENCE=1 \
+  DOTNET_CLI_TELEMETRY_OPTOUT=1 \
   dotnet publish \
     --configuration Release \
     --self-contained true \
@@ -27,6 +29,7 @@ build() {
     -property:PackageVersion=${pkgver} \
     -property:AssemblyVersion=${pkgver}.0 \
     -property:FileVersion=${pkgver}.0 \
+    -property:TreatWarningsAsErrors=false \
     --output $pkgname \
     "./src/${_name}/${_name}.csproj"
 }
