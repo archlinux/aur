@@ -1,0 +1,4 @@
+[python-pyina]
+source = "github"
+github = "uqfoundation/pyina"
+use_latest_release = "true"

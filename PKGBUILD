@@ -2,17 +2,17 @@
 _base=pyina
 pkgname=python-${_base}
 pkgdesc="MPI parallel map and cluster scheduling"
-pkgver=0.2.9
+pkgver=0.3.0
 pkgrel=1
 url="https://github.com/uqfoundation/${_base}"
 arch=(any)
-license=('custom:BSD-3-clause')
+license=(BSD-3-Clause)
 depends=(python-numpy python-mpi4py python-pathos)
 makedepends=(python-build python-installer python-setuptools python-wheel)
 # checkdepends=(python-pytest)
 optdepends=('python-mystic: for mystic models')
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz)
-sha512sums=('4e006738f0ab528131e7d9bb3b9f598eac45c377ed4a215f10e8e416ac6fbe534e4d1bc2a7e48b4902c75d6bb7419ca8a8e0e5fab8a3b3e7f3a11231971903b3')
+sha512sums=('1cfeabef389f881c56a4fecfe1dee3d5145c2260324fbd179cc0df8b8bc4bee8032761bb002d952ae31864eeba92070417e07e79c36409dd3b879c0ac18488c7')
 
 build() {
   cd ${_base}-${pkgver}
