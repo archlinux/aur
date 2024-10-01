@@ -201,12 +201,6 @@ prepare() {
   #          (mostly Chromium/Electron based apps with Ozone Wayland.)
   pick_mr '3751' 'mr3751.patch' 'patch'
 
-  # Title: [47] Revert "window/wayland: Use scale for configured rect in configuration"
-  # Author: Jonas Ådahl <jadahl@gmail.com>
-  # Type: 3
-  # Comment: This fixes #2616.
-  pick_mr '4041' 'mr4041.patch' 'patch'
-
   # Title: Draft: Dynamic triple/double buffering (v4)
   # Author: Daniel van Vugt <daniel.van.vugt@canonical.com>
   # URL:  https://gitlab.gnome.org/GNOME/mutter/-/merge_requests/1441
