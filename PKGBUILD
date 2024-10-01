@@ -13,6 +13,6 @@ source=("https://github.com/rubiin/pokego/releases/download/v$pkgver/pokego-$pkg
 sha256sums=("f7e34e1b553242ee44f37712208fb7a168141230f4aad88f1e1429186fd643bc")
 
 package() {
-    install -Dm755 krabby -t "$pkgdir/usr/bin"
+    install -Dm755 pokego -t "$pkgdir/usr/bin"
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
