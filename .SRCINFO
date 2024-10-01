@@ -1,0 +1,26 @@
+pkgbase = r-dismo
+	pkgdesc = Species Distribution Modeling
+	pkgver = 1.3.14
+	pkgrel = 1
+	url = https://cran.r-project.org/package=dismo
+	arch = x86_64
+	license = GPL-3.0-or-later
+	depends = java-runtime
+	depends = r-raster
+	depends = r-rcpp
+	depends = r-sp
+	depends = r-terra
+	optdepends = r-deldir
+	optdepends = r-gbm
+	optdepends = r-gstat
+	optdepends = r-jsonlite
+	optdepends = r-kernlab
+	optdepends = r-randomforest
+	optdepends = r-rjava
+	optdepends = r-rocr
+	optdepends = r-xml
+	source = https://cran.r-project.org/src/contrib/dismo_1.3-14.tar.gz
+	md5sums = df359ee83b53c4a8953574f1a28b62ef
+	b2sums = 844566e185ff125c3c48e474498d7012db099230b7e3c9822701ff60cb3d6cdae614e491981496316e7db6b8f346540bc8f97c01d72311441a934fafb28a6e87
+
+pkgname = r-dismo
