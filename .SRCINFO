@@ -1,6 +1,6 @@
 pkgbase = webcamoid-git
 	pkgdesc = Webcamoid is a full featured webcam capture application.
-	pkgver = 9.1.1.r165.g2a3694a77
+	pkgver = 9.2.0.r0.gbecae6d61
 	pkgrel = 1
 	url = https://webcamoid.github.io/
 	install = webcamoid.install
@@ -24,7 +24,7 @@ pkgbase = webcamoid-git
 	makedepends = sdl2
 	makedepends = v4l-utils
 	makedepends = vlc
-	depends = qt6-quickcontrols2
+	depends = qt6-declarative
 	depends = qt6-svg
 	optdepends = v4l-utils: Extra formats support for webcams
 	optdepends = akvcam-dkms-git: Virtual camera support (Recommended)

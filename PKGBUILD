@@ -2,13 +2,13 @@
 
 pkgrealname=webcamoid
 pkgname=webcamoid-git
-pkgver=9.1.1.r165.g2a3694a77
+pkgver=9.2.0.r0.gbecae6d61
 pkgrel=1
 pkgdesc="Webcamoid is a full featured webcam capture application."
 url='https://webcamoid.github.io/'
 license=('GPL')
 arch=('i686' 'x86_64' 'armv6h' 'aarch64')
-depends=('qt6-quickcontrols2'
+depends=('qt6-declarative'
          'qt6-svg')
 optdepends=('v4l-utils: Extra formats support for webcams'
             'akvcam-dkms-git: Virtual camera support (Recommended)'
