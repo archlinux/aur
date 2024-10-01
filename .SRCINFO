@@ -1,0 +1,16 @@
+pkgbase = plymouth-themes-adi1090x-git
+	pkgdesc = The plymouth theme collection by adi1090x
+	pkgver = r47.5d88174
+	pkgrel = 1
+	url = https://github.com/adi1090x/plymouth-themes
+	arch = any
+	license = GPL-3.0-only
+	depends = plymouth
+	depends = cantarell-fonts
+	depends = ttf-dejavu
+	conflicts = ddcci-driver-linux
+	conflicts = ddcci-driver-linux-dkms
+	source = git+https://github.com/adi1090x/plymouth-themes.git
+	b2sums = SKIP
+
+pkgname = plymouth-themes-adi1090x-git
