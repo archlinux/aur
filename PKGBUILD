@@ -1,23 +1,35 @@
-# Maintainer: Swift Geek
+# Contributor: Swift Geek
+
 pkgname=authprogs-git
-_pkgname=authprogs
-pkgver=a
+pkgver=0.7.5.r0.g4eb0cee
 pkgrel=1
 pkgdesc="SSH Command Authenticator"
-arch=('i686' 'x86_64' 'armv7h' 'armv6h')
-url="https://github.com/daethnir/authprogs/"
-license=('GPL')
-depends=('python2')
-makedepends=('git' 'ruby-ronn' 'python-markdown')
-source=("git://github.com/daethnir/authprogs.git")
+arch=('any')
+url="https://github.com/daethnir/authprogs"
+license=('GPL-2.0-or-later')
+depends=('python' 'python-yaml')
+makedepends=('git' 'ruby-ronn-ng' 'python-markdown' 'python-setuptools'
+             'python-build' 'python-installer' 'python-wheel')
+checkdepends=('openssh')
+source=("$pkgname::git+${url}.git")
 md5sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/$_pkgname"
-  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  cd "$pkgname"
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+build() {
+  cd "$pkgname"
+  python -m build --wheel --no-isolation
+}
+
+check() {
+  cd "$pkgname"
+  python -m unittest discover
 }
 
 package() {
-  cd "$srcdir/${_pkgname}"
-  python2 setup.py install --root="$pkgdir/" --optimize=1
+  cd "$pkgname"
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
