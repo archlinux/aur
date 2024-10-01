@@ -12,7 +12,7 @@ _system_flutter=false # build_system part seems missing in aur/flutter
 _flutter_version=3.22.3
 
 pkgname=spotube
-pkgver=3.8.1
+pkgver=3.8.2
 pkgrel=1
 pkgdesc="Open source Spotify client that doesn't require Premium nor uses Electron! Available for both desktop & mobile!"
 arch=("x86_64" "aarch64")
@@ -31,10 +31,10 @@ options=("!lto") # undefined symbol: Dart_NewPersistentHandle_DL
 source=(
     "spotube-$pkgver.tar.gz::https://github.com/KRTirtho/spotube/archive/refs/tags/v$pkgver.tar.gz"
 )
-sha256sums=('1199475d24773942f64989dfbaa2138e59d694b9884dc24dc3fdb4f0d04ecdd6'
+sha256sums=('01e077865b6d7b91bad13dbe18b5bfc74791d7f59a17c8dd82f4689ab7019e84'
             '9c5f70ba118b9163552144901a2efd91d40b22a68a04e67271d6a5ad936e8368')
 
-_release_date=2024-09-15
+_release_date=2024-10-01
 
 
 if $_system_flutter
