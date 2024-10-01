@@ -14,7 +14,7 @@ options=(!strip !debug)
 _appimage="${pkgname}-${pkgver}.AppImage"
 source_x86_64=("${_appimage}::https://github.com/janhq/jan/releases/download/v${pkgver}/jan-linux-x86_64-${pkgver}.AppImage")
 noextract=("${_appimage}")
-sha256sums_x86_64=('10340af16d0cc705d235a1f1dac9c1c87b365abdd15ed94d8976a3cc33152697')
+sha256sums_x86_64=('06b35fa5ff6ff3202ce32def68f96ab4e23d484ec815f666fc261e81cb994f77')
 appname="jan"
 
 prepare() {
