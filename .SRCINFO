@@ -1,0 +1,17 @@
+pkgbase = davutils
+	pkgdesc = Powerful webdav client and sync tools with client-side AES encryption
+	pkgver = 1.3.0
+	pkgrel = 1
+	url = https://davutils.sourceforge.net
+	arch = x86_64
+	arch = i686
+	license = BSD-2-Clause
+	depends = curl>=7.18
+	depends = glibc
+	depends = libxml2
+	depends = openssl
+	noextract = davutils-1.3.0.tar.gz
+	source = davutils-1.3.0.tar.gz::https://downloads.sourceforge.net/sourceforge/davutils/dav-1.3.0.tar.gz
+	b2sums = e8546c7be59c9e7d54949018eb8d14bd21c329c4c0cafc6c287aa76a1d550abbce2dc419688b1c783fcb88f09df55f03ac5760c73ae5909d4f59e7deba65dd68
+
+pkgname = davutils
