@@ -1,0 +1,16 @@
+pkgbase = r-n2r
+	pkgdesc = Fast and Scalable Approximate k-Nearest Neighbor Search Methods using 'N2' Library
+	pkgver = 1.0.3
+	pkgrel = 1
+	url = https://cran.r-project.org/package=N2R
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = r-rcppeigen
+	makedepends = r-rcppspdlog
+	depends = r-rcpp
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/N2R_1.0.3.tar.gz
+	md5sums = b3d43a66bc38311a9fd470114306967e
+	b2sums = 3776ebae6cf6493842cd17d6dec7e43c959df65ca4e5e421a0c08f88958ec770a5f18b2fbaa3d12cb624dff241281b4aca2826c4b87acfb1f7b5cd673c8d7df0
+
+pkgname = r-n2r
