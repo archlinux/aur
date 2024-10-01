@@ -2,7 +2,7 @@
 # Contributors: SoftwareRat <jaguar5018@gmail.com>, Michael Herzberg
 
 pkgname=moonlight-qt-git
-pkgver=6.0.1.r22.gc707dab
+pkgver=6.1.0.r16.g6ce0261
 pkgrel=2
 pkgdesc='GameStream client for PCs (Windows, Mac, and Linux) (master branch)'
 arch=('aarch64' 'x86_64')
@@ -30,9 +30,11 @@ pkgver() {
 prepare() {
 	cd "$pkgname"
 	git submodule update --init --recursive
-	for p in ../*.patch; do
-		patch -Np1 -i "$p"
-	done
+	if [[ -f *.patch ]]; then
+		for p in ../*.patch; do
+			patch -Np1 -i "$p"
+		done
+	fi
 	qmake6 PREFIX="$pkgdir/usr" moonlight-qt.pro
 }
 
