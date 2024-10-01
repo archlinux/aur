@@ -15,6 +15,7 @@ checkdepends=('python-pytest')
 source=("${_name}::git+https://github.com/crdoconnor/xeger.git")
 sha256sums=('SKIP')
 provides=('python-xeger')
+conflicts=('python-xeger')
 
 pkgver() {
   cd "$_name"
