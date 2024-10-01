@@ -1,0 +1,7 @@
+src/
+pkg/
+*.AppImage
+*.tar.zst
+
+# KDE dolphin
+.directory
