@@ -1,0 +1,18 @@
+[Unit]
+Description=bazel-remote cache server
+Documentation=https://github.com/buchgr/bazel-remote
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=simple
+Restart=on-failure
+User=bazel-remote
+Group=bazel-remote
+LimitNOFILE=40000
+LimitNPROC=infinity
+TasksMax=infinity
+ExecStart=/usr/bin/bazel-remote --config_file /etc/bazel-remote.conf
+
+[Install]
+WantedBy=multi-user.target

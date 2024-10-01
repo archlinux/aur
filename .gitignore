@@ -1,0 +1,8 @@
+*
+!/.gitignore
+!/PKGBUILD
+!/.SRCINFO
+!/bazel-remote.conf
+!/bazel-remote.service
+!/sysusers.conf
+!/tmpfiles.conf

@@ -1,0 +1,20 @@
+pkgbase = bazel-remote
+	pkgdesc = A remote cache server for Bazel (and other build systems)
+	pkgver = 2.4.4
+	pkgrel = 1
+	url = https://github.com/buchgr/bazel-remote
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = go
+	source = bazel-remote-2.4.4.tar.gz::https://github.com/buchgr/bazel-remote/archive/refs/tags/v2.4.4.tar.gz
+	source = bazel-remote.service
+	source = bazel-remote.conf
+	source = sysusers.conf
+	source = tmpfiles.conf
+	b2sums = 259f70b38c1f3cfc5b90917e627545a80de15d785379d7a2b5bc9a1bc0f05968ee7c6d6e0f455b07c4648f5ed48fa65c9091166eccabd12881f884ddaaaee745
+	b2sums = 99940252528b14b66d1f64b6da918d126ec5d7cb480567f7941a527761970754cfa20e3928fd6041196e51d34facc48652a0ff1021926609df8715ea63be6ac4
+	b2sums = 7ac4524785343a45e649806fb19e648cbc3128cb658528b20503a71cd5cf3e0e77dd6d2811f5caa467e9254dc446b9c8cbaa98f12d3139c77718d0d057d4b137
+	b2sums = f3899570f3cbe5c36344cadd3b23be36cc0e87e18c66758f64f9ae6152126c08b695311239c9833dcf6c8512eb384537805e5b9a22c1a4076073ecd1d2268184
+	b2sums = 57be109368362e1d9d1203aff1c0b6851bee2172ef5a1d1a3360062cd1432cbd7d30a584551588344bb41d252efdc488e9705b7eed46ed6d0493381f7c94ba65
+
+pkgname = bazel-remote
