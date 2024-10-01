@@ -1,13 +1,19 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=hardinfo2
-pkgver=2.1.14
+pkgver=2.1.17
 pkgrel=1
 pkgdesc="System Information and Benchmark for Linux Systems."
 arch=('x86_64')
 url="https://www.hardinfo2.org"
 license=('GPL-2.0-or-later AND GPL-3.0-or-later AND LGPL-2.1-or-later')
-depends=('gtk3' 'libsoup3' 'qt5-base')
-makedepends=('cmake')
+depends=(
+  'gtk3'
+  'libsoup3'
+)
+makedepends=(
+  'cmake'
+  'qt5-base'
+)
 optdepends=(
   'dmidecode: Memory Devices / System DMI module'
   'fwupd: Firmware module'
@@ -16,15 +22,19 @@ optdepends=(
   'lsscsi: SCSI support for Storage module'
   'mesa-utils: GLX info for Display module'
   'pciutils: PCI Devices module'
+  'qt5-base: OpenGL benchmark'
   'sysbench: SysBench CPU benchmark'
   'udisks2: Storage module'
   'usbutils: USB Devices module'
-  'xdg-utils: open your browser for bugs, homepage & links')
+  'vulkan-tools: display Vulkan information'
+  'xdg-utils: open your browser for bugs, homepage & links'
+  'xorg-xrandr: read monitor setup'
+)
 provides=('hardinfo')
 conflicts=('hardinfo')
 install="$pkgname.install"
 source=("$pkgname-$pkgver.tar.gz::https://github.com/hardinfo2/hardinfo2/archive/refs/tags/release-$pkgver.tar.gz")
-sha256sums=('9bd3fdbc1149e1dc88694a72824d5f334b7b36e3b147da8004443928b139ae87')
+sha256sums=('48275986d1cbfeb363a2ed5cad9b280d5e0a40636a10480b8aca3e86a8272687')
 
 build() {
   cmake -B build -S "$pkgname-release-$pkgver" \
