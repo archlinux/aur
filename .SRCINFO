@@ -1,12 +1,11 @@
 pkgbase = vsv
 	pkgdesc = Runit service manager CLI
 	pkgver = 2.0.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/bahamas10/vsv
 	arch = any
 	license = MIT
 	makedepends = cargo
-	makedepends = git
 	depends = runit
 	depends = glibc
 	depends = gcc-libs
