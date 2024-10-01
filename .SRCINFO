@@ -1,0 +1,20 @@
+pkgbase = r-airr
+	pkgdesc = AIRR Data Representation Reference Library
+	pkgver = 1.5.0
+	pkgrel = 1
+	url = https://cran.r-project.org/package=airr
+	arch = any
+	license = CC-BY-4.0
+	depends = r-jsonlite
+	depends = r-readr
+	depends = r-stringi
+	depends = r-yaml
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	optdepends = r-testthat
+	optdepends = r-tibble
+	source = https://cran.r-project.org/src/contrib/airr_1.5.0.tar.gz
+	md5sums = 9e4729ed604fc3d017223dc675504fb9
+	b2sums = 36349b4a789aef3bab66efad7ef24401625b9cb34ecfc996754e0025a0b3f9b1ca9710403bd79fcf1a37c577a72c292f216499f87476b61d155191355db5656c
+
+pkgname = r-airr
