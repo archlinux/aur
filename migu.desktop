@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Migu
+Comment=Stream anime torrents, real-time with no waiting for downloads
+Exec=/usr/bin/migu
+Icon=migu
+Terminal=false
+Type=Application
+Categories=AudioVideo;
