@@ -55,7 +55,10 @@ package() {
     # lib64 is a symlink
     install -m 755 "$pkgdir/usr/lib64/libneumolmdb.a" "$pkgdir/usr/lib"
     rm -rf "$pkgdir/usr/lib64"    
-}
+
+    # install the .desktop file
+    install -Dm644 "$srcdir/neumodvb/neumodvb.desktop" "$pkgdir/usr/share/applications/neumodvb.desktop"
+}   
 
 # Optional: Handle ccache setup for faster rebuilds, if user has ccache enabled
 ccache_setup() {
