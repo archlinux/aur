@@ -4,7 +4,7 @@
 pkgname='hikvision-mvs'
 pkgver=2.1.2
 _pkgdate=231225
-pkgrel=1
+pkgrel=2
 pkgdesc="Machine Vision Software by Hikvision, for their industrial cameras."
 arch=('x86_64' 'i686')
 url="https://www.hikrobotics.com/"
@@ -31,7 +31,6 @@ package() {
 	OPT=${pkgdir}/opt
 	install -Dm644 logo.svg "$pkgdir/usr/share/pixmaps/$pkgname.svg"
 	install -Dm644 hikvision-mvs.desktop "$pkgdir/usr/share/applications/$pkgname.desktop"
-	export tarname =
 	echo "Install MVS,Please wait..."
 	mkdir -p ${OPT}
 	tar -C ${OPT} -xzf "$srcdir/${FILENAME%%.tar.gz}/MVS.tar.gz"
