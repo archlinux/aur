@@ -1,6 +1,6 @@
 pkgbase = notes
 	pkgdesc = Note taking application, write down your thoughts
-	pkgver = 2.3.0
+	pkgver = 2.3.1
 	pkgrel = 1
 	url = https://www.get-notes.com/
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = notes
 	depends = qt6-base
 	depends = qt6-declarative
 	depends = qt6-quick3d
-	source = git+https://github.com/nuttyartist/notes.git#commit=v2.3.0
+	source = git+https://github.com/nuttyartist/notes.git#commit=v2.3.1
 	source = git+https://github.com/b00f/qautostart.git
 	source = git+https://github.com/pbek/qmarkdowntextedit.git
 	source = git+https://github.com/alex-spataru/QSimpleUpdater.git
