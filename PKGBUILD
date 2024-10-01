@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=phylolm
-_pkgver=2.6.2
+_pkgver=2.6.5
 pkgname=r-${_pkgname,,}
-pkgver=2.6.2
+pkgver=2.6.5
 pkgrel=1
 pkgdesc='Phylogenetic Linear Regression'
 arch=('x86_64')
@@ -18,7 +18,7 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('d6fa45f58689cce9fe91519ab55a61c1e549e5a7f18b6989bf86234d483cff12')
+sha256sums=('658b22fb3e9c8e9ae7e54d2296e668b55d85ce129bac2626bcc515afe351e269')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
