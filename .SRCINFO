@@ -1,6 +1,6 @@
 pkgbase = ruyi-bin
 	pkgdesc = The package manager for RuyiSDK.
-	pkgver = 0.18.0
+	pkgver = 0.19.0
 	pkgrel = 1
 	url = https://github.com/ruyisdk/ruyi
 	arch = x86_64
@@ -15,11 +15,11 @@ pkgbase = ruyi-bin
 	depends = zstd
 	provides = ruyi=$pkgver
 	options = !strip
-	source_x86_64 = ruyi-0.18.0-bin-x86_64::https://mirror.iscas.ac.cn/ruyisdk/ruyi/releases/0.18.0/ruyi.amd64
-	sha256sums_x86_64 = bfc64fbbfe96c09fb65fb1f8825d2cd171a31edc33eca7fb47bfe34ea21fad45
-	source_arm64 = ruyi-0.18.0-bin-arm64::https://mirror.iscas.ac.cn/ruyisdk/ruyi/releases/0.18.0/ruyi.arm64
-	sha256sums_arm64 = 1cdc17eba3163dd888d9e8465ebced5ee563a5c6363fb79d5681d285dc0288cc
-	source_riscv64 = ruyi-0.18.0-bin-riscv64::https://mirror.iscas.ac.cn/ruyisdk/ruyi/releases/0.18.0/ruyi.riscv64
-	sha256sums_riscv64 = fd2551fef5a6921689dcf4e6863ce133719a2a5a31a7d3d496e17695701114c8
+	source_x86_64 = ruyi-0.19.0-bin-x86_64::https://mirror.iscas.ac.cn/ruyisdk/ruyi/releases/0.19.0/ruyi.amd64
+	sha256sums_x86_64 = ab25cff322f65ce791a1a2854e368a56d1c74957818e2f46bece7ec3b6756b47
+	source_arm64 = ruyi-0.19.0-bin-arm64::https://mirror.iscas.ac.cn/ruyisdk/ruyi/releases/0.19.0/ruyi.arm64
+	sha256sums_arm64 = 6a5ea9911b90bc0c02d8747e3d39c80a10c5a3e0a0df102573cfa40536d0652e
+	source_riscv64 = ruyi-0.19.0-bin-riscv64::https://mirror.iscas.ac.cn/ruyisdk/ruyi/releases/0.19.0/ruyi.riscv64
+	sha256sums_riscv64 = 90ae74f82e709b9c3b730fdd34223b4fe64ae412b21c3dba2cfb723f57e542fe
 
 pkgname = ruyi-bin
