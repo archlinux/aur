@@ -2,6 +2,7 @@
 # Contributor: Alexandre Teles (afterSt0rm) <ateles.1@gmail.com>
 # Contributor: Emanuel Fernandes <efernandes@tektorque.com>
 # Maintainer: Erik Bender <erik.bender@develerik.dev>
+# Maintainer: Dmitry Chusovitin <dchusovitin@gmail.com>
 
 pkgname=studio-3t
 pkgver=2024.3.1
