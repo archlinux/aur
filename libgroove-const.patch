@@ -1,0 +1,26 @@
+diff --git a/src/encoder.c b/src/encoder.c
+index dc5fdac..97562cb 100644
+--- a/src/encoder.c
++++ b/src/encoder.c
+@@ -352,7 +352,7 @@ static void audioq_get(struct GrooveQueue *queue, void *obj) {
+         pthread_cond_signal(&e->drain_cond);
+ }
+ 
+-static int encoder_write_packet(void *opaque, uint8_t *buf, int buf_size) {
++static int encoder_write_packet(void *opaque, const uint8_t *buf, int buf_size) {
+     struct GrooveEncoderPrivate *e = (struct GrooveEncoderPrivate *)opaque;
+ 
+     struct GrooveBufferPrivate *b = ALLOCATE(struct GrooveBufferPrivate, 1);
+diff --git a/src/file.c b/src/file.c
+index 85c8004..b9f02a2 100644
+--- a/src/file.c
++++ b/src/file.c
+@@ -26,7 +26,7 @@ static int avio_read_packet_callback(void *opaque, uint8_t *buf, int buf_size) {
+     return f->custom_io->read_packet(f->custom_io, buf, buf_size);
+ }
+ 
+-static int avio_write_packet_callback(void *opaque, uint8_t *buf, int buf_size) {
++static int avio_write_packet_callback(void *opaque, const uint8_t *buf, int buf_size) {
+     struct GrooveFilePrivate *f = (struct GrooveFilePrivate *)opaque;
+     return f->custom_io->write_packet(f->custom_io, buf, buf_size);
+ }

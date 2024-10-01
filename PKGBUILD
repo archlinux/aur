@@ -4,7 +4,7 @@
 
 pkgname=libgroove-git
 _pkgname=libgroove
-pkgver=4.3.0.70.gaed5104
+pkgver=4.3.0.81.gaf456a0
 pkgrel=1
 pkgdesc='Library that provides decoding and encoding of audio on a playlist.'
 arch=(i686 x86_64)
@@ -16,8 +16,9 @@ makedepends=(cmake yasm)
 provides=(libgroove)
 conflicts=(libgroove)
 options=('strip')
-source=('git+https://github.com/andrewrk/libgroove.git')
-sha256sums=('SKIP')
+source=('git+https://github.com/andrewrk/libgroove.git' libgroove-const.patch )
+sha256sums=('SKIP'
+            'c4deaff272fb3a4991e7fdeb4cae4cc7c62da9a8b394cca5a076ecefff00c348')
 
 pkgver() {
   cd "${_pkgname}"
@@ -25,15 +26,19 @@ pkgver() {
 }
 
 prepare() {
+  cd "${_pkgname}"
+
   # The version inserted in to libgroove.pc includes no hash. It is something
   # like "4.2.1". This matches what libgroove itself reports.
-  version=$(cd "${_pkgname}" && git describe --always --abbrev=0)
+  version=$(git describe --always --abbrev=0)
   sed \
     -e 's|^libdir=$|libdir=/usr/lib|' \
     -e 's|^includedir=$|includedir=/usr/include/groove|' \
     -e "s|^Version:$|Version: ${version}|" \
     "${srcdir}/${_pkgname}/doc/libgroove.pc" \
     > "${srcdir}/libgroove.pc"
+
+  patch -Np1 -i $srcdir/libgroove-const.patch
 }
 
 build() {
