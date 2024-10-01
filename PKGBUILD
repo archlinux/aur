@@ -6,7 +6,7 @@ pkgver=2.1.2
 _pkgdate=231225
 pkgrel=1
 pkgdesc="Machine Vision Software by Hikvision, for their industrial cameras."
-arch=('x86_64' 'i686' 'armv7h' 'aarch64')
+arch=('x86_64' 'i686')
 url="https://www.hikrobotics.com/"
 license=('LGPL2.1' 'LGPL3' 'custom')
 source=("https://www.hikrobotics.com/cn2/source/support/software/MVS_STD_GML_V${pkgver}_${_pkgdate}.zip"
@@ -21,8 +21,6 @@ prepare() {
 	declare -A arch_in_filename=(
 		['x86_64']='x86_64'
 		['i686']='i386'
-		['armv7h']='armhf'
-		['aarch64']='aarch64'
 	)
 	export FILENAME=MVS-${pkgver}_${arch_in_filename[$CARCH]}_20${_pkgdate}.tar.gz
 	unzip -o ${noextract[0]} $FILENAME
@@ -31,19 +29,12 @@ prepare() {
 
 package() {
 	OPT=${pkgdir}/opt
-	declare -A arch_in_filename=(
-		['x86_64']='x86_64'
-		['i686']='i386'
-		['armv7h']='armhf'
-		['aarch64']='aarch64'
-	)
-	export FILENAME=MVS-${pkgver}_${arch_in_filename[$CARCH]}_20${_pkgdate}.tar.gz
 	install -Dm644 logo.svg "$pkgdir/usr/share/pixmaps/$pkgname.svg"
 	install -Dm644 hikvision-mvs.desktop "$pkgdir/usr/share/applications/$pkgname.desktop"
-
+	export tarname =
 	echo "Install MVS,Please wait..."
 	mkdir -p ${OPT}
-	tar -C ${OPT} -xzf ${FILENAME%%.tar.gz}/MVS.tar.gz
+	tar -C ${OPT} -xzf "$srcdir/${FILENAME%%.tar.gz}/MVS.tar.gz"
 	#mkdir -p ${pkgdir}/usr/local/Qt-5.6.3/lib/fonts
 	install -Dm644 -t ${pkgdir}/usr/local/Qt-5.6.3/lib/fonts ${pkgdir}/opt/MVS/bin/Fonts/* 
 
