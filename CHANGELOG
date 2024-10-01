@@ -1,3 +1,17 @@
+4.7.4
+-----
+
+- Fix call signature for :py:func:`pepxml.read` and make it a full alias to :py:class:`pepxml.PepXML`.
+- Disable indexing of pepXML in :py:func:`pepxml.DataFrame`, which fixes creation of dataframes from files
+  with non-unique spectrum IDs.
+- Allow iteration over search hits instead of spectrum queries with :py:meth:`pyteomics.pepxml.PepXML.search_hits`.
+  :py:func:`pyteomics.pepxml.DataFrame` has a new argument `by`, which accepts values "spectrum_query" (default)
+  and "search_hit" (new).
+- Fix `#156 <https://github.com/levitsky/pyteomics/issues/156>`_.
+- Fix `#157 <https://github.com/levitsky/pyteomics/issues/157>`_
+  (`#158 <https://github.com/levitsky/pyteomics/pull/158>`_ by Joshua Klein).
+
+
 4.7.3
 -----
 

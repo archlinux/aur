@@ -1,14 +1,14 @@
 # Maintainer: Lev Levitsky <levlev at mail dot ru>
 pkgname=python-pyteomics
 _name=${pkgname#python-}
-pkgver=4.7.3
+pkgver=4.7.4
 pkgrel=1
 pkgdesc="A framework for proteomics data analysis."
 arch=('any')
 url="https://pyteomics.readthedocs.io"
 license=('Apache')
 depends=('python')
-makedepends=(python-build python-installer python-wheel)
+makedepends=(python-build python-installer)
 optdepends=('python-matplotlib: for pylab_aux module'
             'python-sqlalchemy: for mass.unimod module'
             'python-pandas: for convenient filtering of CSV tables from search engines'
@@ -18,7 +18,7 @@ optdepends=('python-matplotlib: for pylab_aux module'
             'python-pynumpress: for Numpress support')
 options=(!emptydirs)
 source=("https://pypi.debian.net/${_name}/${_name}-${pkgver}.tar.gz")
-sha256sums=('ae87f6ba02ee735b06ae56e1ac85a37051aa503e0c9dbfee650c8a7107d08f57')
+sha256sums=('cd8a9b48ea3a3075bbbc3085880b5a4f76eb7359e3c71ee3948d9bb2aa48883b')
 changelog=CHANGELOG
 
 build() {
