@@ -3,8 +3,8 @@
 
 pkgname=onedrivegui
 _pkgname=OneDriveGUI
-pkgver=1.1.0
-_commit=0dff5718ace7fd16649ab0959d232afbad9f94bc
+pkgver=1.1.1
+_commit=ff7edf15141bc629dd5e778d772113feb8b48077
 pkgrel=1
 pkgdesc="A simple GUI for OneDrive Linux client, with multi-account support."
 license=("GPL-3.0-or-later")
@@ -16,7 +16,7 @@ arch=("any")
 url="https://github.com/bpozdena/${_pkgname}"
 source=("${_pkgname}::git+${url}.git#commit=$_commit" "onedrivegui.desktop")
 
-sha256sums=('4bf841abfb0c18615151e36a76f9c190317add030ce75c004cb3bb6c74e0efa1'
+sha256sums=('fd2e57c992534eaab376a120d5be2ca80523fb37c8b557eff480d52db6d85bb7'
             'c531f57c3c8424f265c0aad2e93260eab071d066d75de2f7eebb47e41c644267')
 
 package(){
