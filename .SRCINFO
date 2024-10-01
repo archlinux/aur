@@ -42,7 +42,10 @@ pkgbase = neumodvb-git
 	depends = python-mpl-scatter-density
 	depends = python-regex
 	optdepends = ccache
+	options = !lto
 	source = git+https://github.com/deeptho/neumodvb.git
-	md5sums = SKIP
+	source = static-build-fmt.patch
+	sha256sums = SKIP
+	sha256sums = 5c2b5d92ae0efb6142e22b648a7da8ffcc15e5bb52b1e5e951875ae70a92c989
 
 pkgname = neumodvb-git

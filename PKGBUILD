@@ -13,17 +13,18 @@ depends=('cmake' 'uuid' 'clang' 'libtool' 'boost-libs' 'curl' 'log4cxx' 'libconf
          'ffmpeg' 'fmt' 'python-mpl-scatter-density' 'python-regex')
 makedepends=('git' 'boost' 'tsduck')
 optdepends=('ccache')
-source=("git+https://github.com/deeptho/neumodvb.git")
-md5sums=('SKIP')
-
+source=("git+https://github.com/deeptho/neumodvb.git"
+"static-build-fmt.patch")
+sha256sums=('SKIP'
+            '5c2b5d92ae0efb6142e22b648a7da8ffcc15e5bb52b1e5e951875ae70a92c989')
+options=('!lto')
 prepare() {
     cd "$srcdir/neumodvb"
     
-    # Remove build directory if it exists
-    [ -d build ] && rm -rf build
-    
-    # make the install dir because right now it brings it's own fmt
-    mkdir -p "$pkgdir/neumodvb"
+    # Remove build directory if it exists, weird issues if we don't
+    git clean -xdf
+
+    patch -Np1 -i "$srcdir/static-build-fmt.patch"
 }
 
 pkgver() {
@@ -43,13 +44,17 @@ build() {
     cd "$srcdir/neumodvb"
     mkdir -p build
     cd build
-    cmake -DCMAKE_INSTALL_PREFIX="$pkgdir/opt/neumodvb" ..
+    cmake ..
     make -j$(nproc)
 }
 
 package() {
     cd "$srcdir/neumodvb/build"
     make DESTDIR="$pkgdir" install
+
+    # lib64 is a symlink
+    install -m 755 "$pkgdir/usr/lib64/libneumolmdb.a" "$pkgdir/usr/lib"
+    rm -rf "$pkgdir/usr/lib64"    
 }
 
 # Optional: Handle ccache setup for faster rebuilds, if user has ccache enabled
