@@ -3,17 +3,17 @@
 _base=ppft
 pkgname=python-${_base}
 pkgdesc="distributed and parallel python"
-pkgver=1.7.6.8
+pkgver=1.7.6.9
 pkgrel=1
 url="https://github.com/uqfoundation/${_base}"
 arch=(any)
-license=('custom:BSD-3-clause')
+license=(BSD-3-Clause)
 depends=(python)
 makedepends=(python-build python-installer python-setuptools python-wheel)
 # checkdepends=(python-pytest)
 optdepends=('python-dill: for serialization support')
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz)
-sha512sums=('8f12dfe560eebecbf2fffa6fe0a34989f626b83b8c5b6b0978ee53c0b5f3265215ce33d7c3491b94debae63c535ba39604ee82fb49cde07bed847aa121a3830d')
+sha512sums=('d70bde1222fc5f26a6dd6b4545d6c1898f4e13c248ec4e68da55d32467ac146e4ae890eac82b820a78a607b54c13797b0f049214b3a9a27888bb58f7ce9a1448')
 
 build() {
   cd ${_base}-${pkgver}

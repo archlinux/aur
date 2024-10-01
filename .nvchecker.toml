@@ -1,0 +1,4 @@
+[python-ppft]
+source = "github"
+github = "uqfoundation/ppft"
+use_latest_release = "true"
