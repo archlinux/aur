@@ -1,16 +1,16 @@
 # Maintainers: XenHat <me at xenh.at>, luni3359
 pkgname=moonlight-qt-bin
 pkgver=6.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="moonlight-qt bin from appimage"
 arch=('x86_64')
 url="https://moonlight-stream.org"
 license=('GPL3-or-later')
-depends=('qt6-base' 'qt6-quickcontrols2' 'qt6-svg' 'ffmpeg' 'sdl2_ttf')
+depends=('qt6-base' 'qt6-declarative' 'qt6-svg' 'ffmpeg' 'sdl2_ttf')
 optdepends=(
 	'libva-intel-driver: hardware-acelerated decoding for Intel'
 	'libva-mesa-driver: hardware-acelerated decoding for AMD/others'
-	'libva-nvidia-nvidia-driver: hardware-acelerated decoding for NVIDIA with NVDEC via VA-API'
+	'libva-nvidia-driver: hardware-acelerated decoding for NVIDIA with NVDEC via VA-API'
 )
 source=("${pkgname%-bin}-$pkgver.AppImage::https://github.com/moonlight-stream/moonlight-qt/releases/download/v${pkgver}/Moonlight-${pkgver}-x86_64.AppImage"
 	"launcher.sh")
