@@ -1,10 +1,10 @@
 pkgbase = python-klepto
 	pkgdesc = persistent caching to memory, disk, or database
-	pkgver = 0.2.5
+	pkgver = 0.2.6
 	pkgrel = 1
 	url = https://github.com/uqfoundation/klepto
 	arch = any
-	license = custom:BSD-3-clause
+	license = BSD-3-Clause
 	checkdepends = python-pytest
 	checkdepends = python-h5py
 	makedepends = python-build
@@ -18,7 +18,7 @@ pkgbase = python-klepto
 	optdepends = python-sqlalchemy: for connect to MySQL or PostgreSQL database
 	optdepends = python-h5py: for support dictionary-style interface to a hdf5 file
 	optdepends = python-pandas: for dataframe support
-	source = klepto-0.2.5.tar.gz::https://github.com/uqfoundation/klepto/archive/0.2.5.tar.gz
-	sha512sums = 490382d3b44d43f0e1e48d2f82df63b797bdda4ca82b4de2a99e8f0228bfaa802b39a5b70886137704191b49388ad40636c09be8d19a01a5d0e84405ecf1bc45
+	source = klepto-0.2.6.tar.gz::https://github.com/uqfoundation/klepto/archive/0.2.6.tar.gz
+	sha512sums = e28b922195c8c8485ac1c6560d5c4f6911644e8a7cf365c078a335e322cdf248e6a3742c8c41d748aaf8245e39bc963346e2a532483b0b45835acbd621d0bd9d
 
 pkgname = python-klepto

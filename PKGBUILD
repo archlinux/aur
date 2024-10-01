@@ -2,12 +2,12 @@
 # Contributor: Conni2461 <Simon-Hauser@outlook.de>
 _base=klepto
 pkgname=python-${_base}
-pkgver=0.2.5
+pkgver=0.2.6
 pkgrel=1
 pkgdesc="persistent caching to memory, disk, or database"
 arch=(any)
 url="https://github.com/uqfoundation/${_base}"
-license=('custom:BSD-3-clause')
+license=(BSD-3-Clause)
 depends=(python-dill python-pox)
 makedepends=(python-build python-installer python-setuptools python-wheel)
 checkdepends=(python-pytest python-h5py)
@@ -17,7 +17,7 @@ optdepends=('python-jsonpickle: for serializers support'
   'python-h5py: for support dictionary-style interface to a hdf5 file'
   'python-pandas: for dataframe support')
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz)
-sha512sums=('490382d3b44d43f0e1e48d2f82df63b797bdda4ca82b4de2a99e8f0228bfaa802b39a5b70886137704191b49388ad40636c09be8d19a01a5d0e84405ecf1bc45')
+sha512sums=('e28b922195c8c8485ac1c6560d5c4f6911644e8a7cf365c078a335e322cdf248e6a3742c8c41d748aaf8245e39bc963346e2a532483b0b45835acbd621d0bd9d')
 
 build() {
   cd ${_base}-${pkgver}

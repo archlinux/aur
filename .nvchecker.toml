@@ -1,0 +1,4 @@
+[python-klepto]
+source = "github"
+github = "uqfoundation/klepto"
+use_latest_release = "true"
