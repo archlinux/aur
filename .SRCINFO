@@ -1,0 +1,19 @@
+pkgbase = subcablemap-dl-bin
+	pkgdesc = Download full-resolution versions of Telegeography Submarine Cable Maps
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/gabe565/subcablemap-dl
+	license = MIT
+	conflicts = subcablemap-dl
+	provides = subcablemap-dl
+	arch = aarch64
+	source_aarch64 = https://github.com/gabe565/subcablemap-dl/releases/download/v0.0.1/subcablemap-dl_0.0.1_linux_arm64.tar.gz
+	sha256sums_aarch64 = fc76b05b15a4b9a88db0ceedbfc0e2cf108bf459d6fa091daf440090ee914fdd
+	arch = armv7h
+	source_armv7h = https://github.com/gabe565/subcablemap-dl/releases/download/v0.0.1/subcablemap-dl_0.0.1_linux_armv7.tar.gz
+	sha256sums_armv7h = acbc5d55566ee77795f3f00c768f9ca7c38eded51cca64be5daa0e649e41c343
+	arch = x86_64
+	source_x86_64 = https://github.com/gabe565/subcablemap-dl/releases/download/v0.0.1/subcablemap-dl_0.0.1_linux_amd64.tar.gz
+	sha256sums_x86_64 = 89f3b6a2d987354037d59f8044126c3616403aeb20a404203c3a1304c773cdb3
+	
+pkgname = subcablemap-dl-bin
