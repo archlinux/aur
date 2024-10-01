@@ -5,11 +5,11 @@
 pkgname=python-binary
 _pkg="${pkgname#python-}"
 pkgver=1.0.0
-pkgrel=6
+pkgrel=7
 pkgdesc="Easily convert between binary and SI units"
 arch=('any')
 url="https://github.com/ofek/binary"
-license=('MIT' 'Apache')
+license=('MIT' 'Apache-2.0')
 depends=('python')
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 checkdepends=('python-pytest' 'python-coverage')
