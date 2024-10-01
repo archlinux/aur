@@ -1,10 +1,10 @@
-# Maintainer: AstroFloyd  < AstroFloyd [at] gmail [dt] com >
+# Contributor: AstroFloyd  < AstroFloyd [at] gmail [dt] com >
 # Contributor: Julien Morin <morin.jul@gmail.com>
 # Contributor: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=pgplot
 pkgver=5.2.2
-pkgrel=7
+pkgrel=8
 pkgdesc="Fortran- or C-callable, device-independent graphics package for making simple scientific graphs."
 url="http://www.astro.caltech.edu/~tjp/pgplot/"
 license=('custom')
@@ -18,6 +18,11 @@ md5sums=('e8a6e8d0d5ef9d1709dfb567724525ae' '25535f059b2e39ea44f93c24a41abacd')
 
 build() {
   cd $srcdir/$pkgname
+  sed -i '23i#include <string.h>' sys/grfileio.c
+  sed -i '23i#include <unistd.h>' sys/grfileio.c
+  sed -i '10i#include <string.h>' sys/grtermio.c
+  sed -i '10i#include <fcntl.h>' sys/grtermio.c
+  sed -i '10i#include <unistd.h>' sys/grtermio.c
   sed -i 's/! CGDRIV/CGDRIV/' drivers.list
   sed -i 's/! LXDRIV/LXDRIV/' drivers.list
   #sed -i 's/! PNDRIV/PNDRIV/' drivers.list
