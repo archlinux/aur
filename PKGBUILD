@@ -1,7 +1,7 @@
 # Maintainer: Markus Kitsinger (SwooshyCueb) <root@swooshalicio.us>
 
 pkgname=ovpn-dco-dkms
-pkgver=0.2.20231010
+pkgver=0.2.20240712
 pkgrel=1
 epoch=1
 pkgdesc='Optional Data Channel Offload kernel module for OpenVPN 3'
