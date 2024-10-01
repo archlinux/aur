@@ -1,0 +1,18 @@
+pkgbase = r-rgooglemaps
+	pkgdesc = Overlays on Static Maps
+	pkgver = 1.5.1
+	pkgrel = 1
+	url = https://cran.r-project.org/package=RgoogleMaps
+	arch = any
+	license = GPL-2.0-or-later
+	depends = r-png
+	optdepends = r-jpeg
+	optdepends = r-leaflet
+	optdepends = r-pbsmapping
+	optdepends = r-rcolorbrewer
+	optdepends = r-rcurl
+	source = https://cran.r-project.org/src/contrib/RgoogleMaps_1.5.1.tar.gz
+	md5sums = e1c161a7daed4d7aaef73d5005e97be1
+	b2sums = 8d3dff9023d1ba317f6a3e4196a61cb9c4e5250fe06ed02296d8d6cb8417593572cff973e6838ad84b7cbb97836da3c0de2673bbebc06f0963f26107e167d489
+
+pkgname = r-rgooglemaps
