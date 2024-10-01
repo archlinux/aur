@@ -6,7 +6,7 @@
 
 _pkgname="floorp"
 pkgname="$_pkgname-bin"
-pkgver=11.18.1
+pkgver=11.19.0
 pkgrel=1
 pkgdesc="Firefox-based web browser focused on performance and customizability"
 url="https://floorp.app/"
@@ -42,22 +42,13 @@ sha256sums=(
   '07a63f189beaafe731237afed0aac3e1cfd489e432841bd2a61daa42977fb273'
   '853ba77377f296d3bf52f191131883702dd96d38084f78ea5ddb29821ac253d1'
 )
-sha256sums_x86_64=('7674917d08c9a27fb03df7516622ff354a429ac77c1d00840fc28133cede9e5f')
-sha256sums_aarch64=('36931d2f89c161e581aeda5aeb430c3709c986e3d5a3bd6650d952f8f7330738')
+sha256sums_x86_64=('a250157f3e5061a2715fbfa1fab867d02365912d48655e37a2c37bf5390fd1eb')
+sha256sums_aarch64=('f474577a9731b7632940d7d410b9073de96d3a4eede2c79638f51e6d8290dcdc')
 
 package() {
   depends=(
     'alsa-lib'
-    'dbus-glib'
     'gtk3'
-
-    ## implicit
-    #'at-spi2-core'
-    #'hicolor-icon-theme'
-    #'libxcomposite'
-    #'libxi'
-    #'libxrandr'
-    #'libxtst'
   )
 
   local _install_path="opt/$_pkgname"
@@ -70,7 +61,7 @@ package() {
   for i in 32 64 128 256 512; do
     local _icon_dest="$pkgdir/usr/share/icons/hicolor/${i}x${i}/apps"
     install -dm755 "$_icon_dest"
-    convert -resize ${i}x${i} "$_pkgname.png" "$_icon_dest/$_pkgname.png"
+    magick convert -resize ${i}x${i} "$_pkgname.png" "$_icon_dest/$_pkgname.png"
     optipng "$_icon_dest/$_pkgname.png"
     chmod 644 "$_icon_dest/$_pkgname.png"
   done
