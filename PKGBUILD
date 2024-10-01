@@ -27,7 +27,7 @@ build() {
   ./"${_appimage}" --appimage-extract
   
   # update script
-  sed -i "s|appdir=\$(readlink -f \${APPDIR:-\$(dirname \"\$0\")})|appdir=\"/opt/rpcs3\"|" "$srcdir/squashfs-root/AppRun"
+  sed -i "s|this_dir=\"\$(readlink -f \"\$(dirname \"\$0\")\")\"|this_dir=\"/opt/rpcs3\"|" "$srcdir/squashfs-root/AppRun"
 }
 
 package() {
