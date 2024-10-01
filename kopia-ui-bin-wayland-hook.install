@@ -1,0 +1,7 @@
+post_install() {
+	echo "Defaulting to Wayland in the current kopia-ui-bin install"
+	rm -f /usr/bin/KopiaUI
+	echo -e "#! /bin/bash\n\n/opt/KopiaUI/kopia-ui --ozone-platform-hint=auto" > /usr/bin/KopiaUI
+	sed -E "s|/opt/KopiaUI/kopia-ui|/opt/KopiaUI/kopia-ui --ozone-platform-hint=auto|" -i /usr/share/applications/kopia-ui.desktop
+	chmod +x /opt/KopiaUI/kopia-ui
+}

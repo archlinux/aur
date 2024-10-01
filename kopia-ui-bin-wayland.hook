@@ -1,0 +1,17 @@
+[Trigger]
+Type = Package
+Operation = Install
+Operation = Upgrade
+Target = kopia-ui-bin
+
+[Trigger]
+Type = Package
+Operation = Install
+Operation = Upgrade
+Target = kopia-ui-bin-wayland-hook
+
+
+[Action]
+Description = Defaulting to Wayland support for kopia-ui-bin
+When = PostTransaction
+Exec = /usr/share/libalpm/scripts/kopia-ui-bin-wayland

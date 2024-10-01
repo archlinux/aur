@@ -1,0 +1,14 @@
+pkgbase = kopia-ui-bin-wayland-hook
+	pkgdesc = Pacman hook to change kopia-ui-bin to start with ozone-platform-hint=auto after install or upgrade.
+	pkgver = 1
+	pkgrel = 1
+	install = kopia-ui-bin-wayland-hook.install
+	arch = any
+	license = MIT
+	depends = kopia-ui-bin
+	source = kopia-ui-bin-wayland.hook
+	source = kopia-ui-bin-wayland
+	sha1sums = 038203b9c9da6bc8a3de4e266a3a58a1f2af3061
+	sha1sums = fdbf52c61d926bb67cb47d9b5d80c8ab93eb86da
+
+pkgname = kopia-ui-bin-wayland-hook
