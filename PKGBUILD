@@ -8,7 +8,7 @@ url="https://github.com/rubiin/pokego.git"
 license=("GPL-3.0")
 depends=('coreutils' 'go' 'upx')
 makedepends=('git')
-conflicts=('krabby')
+conflicts=('pokego')
 source=("$pkgname::git+$url")
 md5sums=('SKIP')
 
