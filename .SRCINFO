@@ -1,0 +1,22 @@
+pkgbase = hack-browser-data-bin
+	pkgdesc = Extract and decrypt browser data, supporting multiple data types
+	pkgver = 0.4.6
+	pkgrel = 1
+	url = https://github.com/moonD4rk/HackBrowserData
+	arch = x86_64
+	arch = aarch64
+	arch = i686
+	arch = armv7h
+	license = MIT
+	provides = hack-browser-data
+	conflicts = hack-browser-data
+	source_x86_64 = hack-browser-data-0.4.6-x86_64.zip::https://github.com/moonD4rk/HackBrowserData/releases/download/v0.4.6/hack-browser-data-linux-64bit.zip
+	b2sums_x86_64 = 9b8b9b8830aeb97ef8ace8e3521a36d58fbd74e99768eeefb5ac15116609545f989f87d8953c455b8ffa80f331ab4a6eafcde535d87c2b62b798e0e2816e5a22
+	source_aarch64 = hack-browser-data-0.4.6-aarch64.zip::https://github.com/moonD4rk/HackBrowserData/releases/download/v0.4.6/hack-browser-data-linux-arm64.zip
+	b2sums_aarch64 = dc8380985f05cf9072811f8256839bf4b5d8423a7209c56e4f343aac75f9ca6e841241c563d9c392b469c515d5cfe66339bdae12cf3d333465b1ba49800205c3
+	source_i686 = hack-browser-data-0.4.6-i686.zip::https://github.com/moonD4rk/HackBrowserData/releases/download/v0.4.6/hack-browser-data-linux-32bit.zip
+	b2sums_i686 = d9d024bb9a343b4c30f606f325a32671a82aac91f472083196cc80ca7ac52b3220b8eeca1ea6ff1aab0229ad93cd75942d104373b0d52c2cb06f75ced8549399
+	source_armv7h = hack-browser-data-0.4.6-armv7h.zip::https://github.com/moonD4rk/HackBrowserData/releases/download/v0.4.6/hack-browser-data-linux-arm.zip
+	b2sums_armv7h = 9e0048dc1c9336610c87277af37a2a1b82eecaedf5dccbecaab4aa59694696411ff4a3ceb7a1bc3cee606445e6cef2648f27d67e4ee5f062fa13fb97cbaca3e4
+
+pkgname = hack-browser-data-bin
