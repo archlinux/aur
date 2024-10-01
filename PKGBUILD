@@ -11,7 +11,7 @@ pkgdesc="A dedicated scratchpad for developers"
 arch=('x86_64')
 url="https://heynote.com/"
 _ghurl="https://github.com/heyman/heynote"
-license=('MIT')
+license=('LicenseRef-Commons-Clause-1.0')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
