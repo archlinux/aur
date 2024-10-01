@@ -5,7 +5,7 @@ pkgver=nightly
 pkgrel=1
 pkgdesc="Automatically adjust brightness based on configuration"
 arch=('x86_64')
-url="https://github.com/someoneonsmile/bright"
+url="https://github.com/someoneonsmile/${_pkgname}"
 license=('GPL2')
 depends=()
 makedepends=()
@@ -18,7 +18,7 @@ pkgver() {
 }
 
 package() {
-  cd "$srcdir/stow-x86_64-unknown-linux-musl"
+  cd "$srcdir/${_pkgname}-x86_64-unknown-linux-musl"
   install -Dm755 "${_pkgname}" "$pkgdir/usr/bin/$_pkgname"
   install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
 }
