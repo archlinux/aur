@@ -5,7 +5,7 @@
 # Contributor: Hugo Doria <hugo@archlinux.org>
 
 pkgname=mplayer-gui-svn
-pkgver=38660
+pkgver=38663
 pkgrel=1
 pkgdesc='Media player for Linux'
 url='http://www.mplayerhq.hu/'
@@ -74,7 +74,7 @@ build() {
     --enable-smb \
     --enable-freetype \
     --enable-menu \
-    --language=zh_CN \
+    --language=all \
     --confdir=/etc/mplayer \
     --extra-cflags="${CFLAGS} ${CPPFLAGS}" \
     --extra-ldflags="${LDFLAGS}"
