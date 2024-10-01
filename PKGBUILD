@@ -16,6 +16,13 @@ optdepends=('ccache')
 source=("git+https://github.com/deeptho/neumodvb.git")
 md5sums=('SKIP')
 
+prepare() {
+    cd "$srcdir/neumodvb"
+    
+    # Remove build directory if it exists
+    [ -d build ] && rm -rf build
+}
+
 pkgver() {
     cd "$srcdir/neumodvb"
     
