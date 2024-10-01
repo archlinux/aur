@@ -1,0 +1,14 @@
+pkgbase = r-dartr.data
+	pkgdesc = Auxiliary Data Package for Our Main Package 'dartR'
+	pkgver = 1.0.8
+	pkgrel = 1
+	url = https://cran.r-project.org/package=dartR.data
+	arch = any
+	license = GPL-3.0-or-later
+	depends = r-adegenet
+	depends = r-crayon
+	source = https://cran.r-project.org/src/contrib/dartR.data_1.0.8.tar.gz
+	md5sums = b2a1a22a89f932b0541da23a3069740e
+	b2sums = 09073a6e053167d157ca8d408010d40d783cb85ec21578d67b3e7c66b1a784ec14b6df9e4dce5379d2993e6a0bf695802ad25758cfbd9b28b7f8a35f142612af
+
+pkgname = r-dartr.data
