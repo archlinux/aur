@@ -10,7 +10,10 @@ arch=("x86_64")
 url="https://github.com/bytedance/debugtron"
 license=('MIT')
 makedepends=(
-  yarn
+  "yarn"
+  "python-distutils-extra"
+  "node-gyp"
+  "zip"
 )
 source=("${_pkgname}.zip::https://codeload.github.com/pd4d10/debugtron/zip/refs/tags/v${pkgver}-alpha.0"
         "${_pkgname}.desktop"
@@ -26,6 +29,10 @@ prepare() {
     patch -Np1 -i ../0001-fix-fix-some-bugs-for-linux.patch
     patch -Np1 -i ../pack.patch
 
+}
+
+build() {
+    cd ./${pkgname}-${pkgver}-alpha.0
     yarn install
     yarn make
 }
