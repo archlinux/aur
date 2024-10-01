@@ -2,7 +2,7 @@
 # Maintainer: Neko_Rikka <yjzyl9008 at gmail dot com>
 
 pkgname=python-unitypy-git
-pkgver=r499.b4bc2ce
+pkgver=r512.8fcc664
 pkgrel=1
 pkgdesc="A unity asset extractor based on unitypack and AssetStudio."
 arch=('x86_64')
@@ -35,6 +35,7 @@ pkgver() {
 
 check() {
   cd UnityPy
+  export LANG=En_US.UTF-8
   pytest -v --cov || true
 }
 
