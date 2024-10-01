@@ -10,32 +10,30 @@
 
 pkgbase=gdal-ecw
 _pkgbase=gdal
-provides=('gdal=3.9.1')
+provides=('gdal=3.9.2')
 conflicts=('gdal')
 pkgname=('gdal-ecw' 'python-gdal-ecw')
-pkgver=3.9.1
-pkgrel=3
+pkgver=3.9.2
+pkgrel=1
 pkgdesc="A translator library for raster and vector geospatial data formats, with support to ECW format. Based on gdal-hdf4 AUR package."
 arch=(x86_64)
 url="https://gdal.org/"
 license=(custom)
 depends=('curl' 'geos' 'giflib' 'hdf5' 'libgeotiff' 'libjpeg-turbo' 'libpng' 'libspatialite' 'libtiff' 'netcdf'
          'openjpeg2' 'poppler' 'cfitsio' 'sqlite' 'mariadb-libs' 'postgresql-libs' 'xerces-c' 'json-c' 'arrow' 'pcre2'
-         # needed for ecw support:
-         'libecwj2')
+         'libecwj2' 'sfcgal')
 
 makedepends=(cmake opencl-headers python-setuptools python-numpy
              proj arrow blosc cfitsio curl crypto++ libdeflate expat libfreexl
              libgeotiff geos giflib libheif hdf5 libjpeg-turbo json-c libjxl xz
              libxml2 lz4 mariadb-libs netcdf unixodbc ocl-icd openexr openjpeg2
              openssl pcre2 libpng podofo poppler postgresql-libs qhull
-             libspatialite sqlite swig libtiff libwebp xerces-c zlib zstd libaec
-             sfcgal)
+             libspatialite sqlite swig libtiff libwebp xerces-c zlib zstd libaec)
              # armadillo basisu brunsli lerc libkml qb3 rasterlite2 tiledb
              # ogdi
 changelog=$_pkgbase.changelog
 source=(https://download.osgeo.org/${_pkgbase}/${pkgver}/${_pkgbase}-${pkgver}.tar.xz)
-b2sums=('a9c5c20b1bc704a331ea54f1575f655197075dde75fa6144cff43763d57d64b9bd6e3c7a40bedb919567b45185688b206a3cc13278d0605c5be0b895b403bbab')
+b2sums=('131543da5c93f5234b0314d60a67a8f032a81c18d2289051a2b939d843d46156d24be713e3ae9470af962d151570385d46be39adcb2b559b61e6e0a1aecd5ec0')
 
 build() {
   opt_libs=""
