@@ -1,0 +1,15 @@
+pkgbase = r-abdiv
+	pkgdesc = Alpha and Beta Diversity Measures
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://cran.r-project.org/package=abdiv
+	arch = any
+	license = MIT
+	depends = r-ape
+	optdepends = r-testthat
+	optdepends = r-vegan
+	source = https://cran.r-project.org/src/contrib/abdiv_0.2.0.tar.gz
+	md5sums = 80931c0ca85ba5386000bf617552c5ce
+	b2sums = 531122112297ce086c5b1266a350a6a9001b4b27565b86f70b3770f1220380835e2f1ab4c0678e9dbbb47a0573d6901cf82e217981fa7de1a6006a38ba15ccbc
+
+pkgname = r-abdiv
