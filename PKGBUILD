@@ -1,7 +1,7 @@
 # Maintainer: Will Handley <wh260@cam.ac.uk> (aur.archlinux.org/account/wjhandley)
 pkgname=python-mistralai
 _name=${pkgname#python-}
-pkgver=0.4.2
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="You can use the Mistral Python client to interact with the Mistral AI API."
 arch=(any)
@@ -17,7 +17,7 @@ backup=()
 options=(!emptydirs)
 install=
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('5eb656710517168ae053f9847b0bb7f617eda07f1f93f946ad6c91a4d407fd93')
+sha256sums=('9d1fe778e0e8c6ddab714e6a64c6096bd39cfe119ff38ceb5019d8e089df08ba')
 
 build() {
     cd "$srcdir/$_name-$pkgver"
