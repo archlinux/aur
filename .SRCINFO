@@ -1,0 +1,33 @@
+pkgbase = r-sccore
+	pkgdesc = Core Utilities for Single-Cell RNA-Seq
+	pkgver = 1.0.5
+	pkgrel = 1
+	url = https://cran.r-project.org/package=sccore
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = r-rcpparmadillo
+	makedepends = r-rcppeigen
+	makedepends = r-rcppprogress
+	depends = r-dplyr
+	depends = r-ggplot2
+	depends = r-ggrepel
+	depends = r-igraph
+	depends = r-irlba
+	depends = r-magrittr
+	depends = r-pbmcapply
+	depends = r-proc
+	depends = r-rcpp
+	depends = r-rlang
+	depends = r-scales
+	depends = r-tibble
+	depends = r-uwot
+	depends = r-withr
+	optdepends = r-ggrastr
+	optdepends = r-jsonlite
+	optdepends = r-rmumps
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/sccore_1.0.5.tar.gz
+	md5sums = 9aed0f3a67614c35ee12a50c0b5acbaf
+	b2sums = 903adac8e47187ea941f30c98c8e2cde539210179352ba540a9c3bbeb7dab68de1c637511522d07219d1c3a94bee98f0607d188102546de127d87581ae9001bc
+
+pkgname = r-sccore
