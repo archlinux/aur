@@ -2,7 +2,7 @@
 
 _hkgname=mpd-current-json
 pkgname=${_hkgname}
-pkgver=2.0.0.1
+pkgver=2.1.0.0
 pkgrel=1
 pkgdesc="Print current MPD song and status as JSON"
 url="https://codeberg.org/useless-utils/mpd-current-json"
@@ -11,7 +11,7 @@ arch=('x86_64')
 depends=('ghc-libs' 'haskell-aeson' 'haskell-aeson-pretty' 'haskell-libmpd' 'haskell-optparse-applicative')
 makedepends=('ghc' 'uusi')
 source=("https://hackage.haskell.org/packages/archive/$_hkgname/$pkgver/$_hkgname-$pkgver.tar.gz")
-sha256sums=('60029fe7813e59dd8cb1eb961dea6c6c6e61bdfb8caa3e6af24f2666c7421ebe')
+sha256sums=('a2ee161ab01b7332ef55d86c0c52eadce524ca52f5676d9f4094c1ed82399145')
 
 # From https://gitlab.archlinux.org/archlinux/packaging/packages/arch-hs/-/blob/main/PKGBUILD?ref_type=heads
 # The use of `${1}' is for generating/installing completion for multiple executables with a suffixed name.
@@ -28,11 +28,12 @@ _install_comp(){
 }
 
 prepare() {
-  # -O2 make a big difference in static compilation. Arch uses dynamic
-  # -and it doesn't seem to make a difference here.
+  # -O2 makes a big difference in Cabal's default 'semi-static'
+  # compilation (not 'fully-static'). Since Arch uses fully-dynamic
+  # and it doesn't seem to make a difference here, remove it:
   uusi --all --remove-options-all=-O2 $_hkgname-$pkgver/$_hkgname.cabal
 
-  # remvoe type definition of KeyValue that conflicts with `aeson <2.2'
+  # remove type definition of KeyValue that conflicts with `aeson <2.2'
   sed -i '/(.=?) :: (KeyValue e a, ToJSON v) => Key -> Maybe v -> Maybe a/d' $_hkgname-$pkgver/lib/Network/MPD/JSON.hs
 }
 
