@@ -30,3 +30,16 @@ case "$CARCH" in
     source "$startdir"/PKGBUILD.avx2
     ;;
 esac
+
+source+=(
+  'PKGBUILD.avx2'
+  'PKGBUILD.base'
+  'PKGBUILD.i386'
+  'PKGBUILD.sse4'
+)
+sha256sums+=(
+  'SKIP'
+  'SKIP'
+  'SKIP'
+  'SKIP'
+)

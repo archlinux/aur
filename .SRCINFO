@@ -14,7 +14,15 @@ pkgbase = thorium-browser-bin
 	options = !strip
 	options = !debug
 	source = https://github.com/Alex313031/Thorium/releases/download/M126.0.6478.231/thorium-browser_126.0.6478.231_SSE3.deb
+	source = PKGBUILD.avx2
+	source = PKGBUILD.base
+	source = PKGBUILD.i386
+	source = PKGBUILD.sse4
 	sha256sums = 5dcea3c3508b9fe6b4990d8663254f6a333a5a4fe0644a9f86ceca5a57444a27
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
 
 pkgname = thorium-browser-bin
 	depends = alsa-lib
