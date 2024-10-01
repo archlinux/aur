@@ -1,8 +1,8 @@
 pkgbase = clipboard-manager-git
 	pkgdesc = Clipboard manager for COSMIC™
-	pkgver = r100.1fb389e
+	pkgver = r105.d87bd4b
 	pkgrel = 1
-	url = https://github.com/wiiznokes/clipboard-manager
+	url = https://github.com/cosmic-utils/clipboard-manager
 	arch = x86_64
 	license = GPL3-or-later
 	makedepends = cargo
@@ -13,7 +13,7 @@ pkgbase = clipboard-manager-git
 	conflicts = clipboard-manager
 	conflicts = cosmic-clipboard-manager-git
 	options = !lto
-	source = git+https://github.com/wiiznokes/clipboard-manager.git
+	source = git+https://github.com/cosmic-utils/clipboard-manager.git
 	sha256sums = SKIP
 
 pkgname = clipboard-manager-git
