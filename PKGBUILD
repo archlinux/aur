@@ -1,7 +1,7 @@
 # Maintainer: dr460nf1r3 <dr460nf1r3 at garudalinux dot org>
 
 pkgname=whoogle
-pkgver=0.8.4
+pkgver=0.9.0
 pkgrel=1
 pkgdesc='A self-hosted, ad-free, privacy-respecting metasearch engine'
 arch=(x86_64 aarch64)
@@ -13,10 +13,10 @@ optdepends=('tor: use the TOR network to perform searches')
 conflicts=($pkgname-git)
 backup=('etc/default/whoogle')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/benbusby/whoogle-search/archive/refs/tags/v$pkgver.tar.gz"
-        $pkgname
-        $pkgname.conf
-        $pkgname.service)
-sha256sums=('982ffc76ab72553badf9f7c23b071d0af396036ab1a247a73898bcdb86fb7ce5'
+  $pkgname
+  $pkgname.conf
+  $pkgname.service)
+sha256sums=('e4acde05537f13cb591b8c442f0c12693707bfa9578a25d216d1b245d8d7f887'
             'e30ff5ecef199ce2a37b097709461c51ca07bdbbcc4609db74203834b62c60b1'
             '51cda92f3ad2166eb2cb63ff80561f48b39688a57b66291d2eee5e1c7fcd8ee3'
             'ab6256f3fdaac3ba58ddbb39bb5c24bde53312f0584ae4ed4ae74bc7752a07f4')
@@ -32,9 +32,12 @@ build() {
   python3 -m venv venv
   source venv/bin/activate
   pip install -r requirements.txt
-  
-  # Cleanup unsed
-  rm -r docs test .dockerignore .gitignore .replit docker-compose.yml Dockerfile heroku.yml MANIFEST.in README.md requirements.txt
+
+  # Cleanup unsed files
+  _cleanup=(docs test .dockerignore .gitignore .replit docker-compose.yml Dockerfile heroku.yml MANIFEST.in README.md requirements.txt)
+  for i in "${_cleanup[@]}"; do
+    rm -r "$i"
+  done
 }
 
 package() {
