@@ -21,6 +21,9 @@ prepare() {
     
     # Remove build directory if it exists
     [ -d build ] && rm -rf build
+    
+    # make the install dir because right now it brings it's own fmt
+    mkdir -p "$pkgdir/neumodvb"
 }
 
 pkgver() {
@@ -40,7 +43,7 @@ build() {
     cd "$srcdir/neumodvb"
     mkdir -p build
     cd build
-    cmake ..
+    cmake -DCMAKE_INSTALL_PREFIX="$pkgdir/opt/neumodvb" ..
     make -j$(nproc)
 }
 
