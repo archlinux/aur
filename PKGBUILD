@@ -19,6 +19,7 @@ makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name//-/_}/${_name//-/_}-$pkgver.tar.gz")
 sha256sums=('SKIP')
 validpgpkeys=('517E4E3C364C6C55C907284915AC252CE20E3FC8')
+conflicts=('python-cyaron-git')
 
 build() {
 	cd ${srcdir}/${_name}-${pkgver}
