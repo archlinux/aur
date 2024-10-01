@@ -1,14 +1,14 @@
 pkgbase = emonoda
 	pkgdesc = A set of tools to organize and manage your torrents
 	pkgver = 2.1.38
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mdevaev/emonoda
 	arch = any
 	license = GPL
 	makedepends = python-setuptools
 	makedepends = cython
-	depends = python>=3.10
-	depends = python<3.11
+	depends = python>=3.12
+	depends = python<3.13
 	depends = python-chardet
 	depends = python-yaml
 	depends = python-colorama
