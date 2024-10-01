@@ -11,6 +11,7 @@ arch=('x86_64')
 url="https://tsduck.io/"
 license=('BSD')
 depends=(git git-lfs make gcc cmake dos2unix which inetutils net-tools curl tar zip doxygen graphviz linux-api-headers libedit libusb pcsclite srt python jdk-openjdk)
+makedepends=(asciidoctor)
 source=("$pkgname-${_pkgver}.tar.gz::https://github.com/tsduck/tsduck/archive/v${_pkgver}.tar.gz")
 sha256sums=('18bb779584384197dbb72af406cdcd42fe06efbf4a6ca8fd3138eb518b7ad369')
 

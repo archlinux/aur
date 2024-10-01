@@ -5,6 +5,7 @@ pkgbase = tsduck
 	url = https://tsduck.io/
 	arch = x86_64
 	license = BSD
+	makedepends = asciidoctor
 	depends = git
 	depends = git-lfs
 	depends = make
