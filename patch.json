@@ -507,7 +507,9 @@
 					"pathGlob": "{**/*.ts,**/*.tsx,**/*.js,**/*.py,**/*.go,**/*.rb}"
 				}
 			],
-			"onSettingsEditorOpen": {}
+			"onSettingsEditorOpen": {
+				"descriptionOverride": "GitHub Copilot is an AI pair programmer tool that helps you write code faster and smarter."
+			}
 		},
 		"GitHub.vscode-github-actions": {
 			"onFileOpen": [
