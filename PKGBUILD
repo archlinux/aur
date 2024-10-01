@@ -28,6 +28,11 @@ prepare() {
 }
 
 package() {
+	declare -A arch_in_filename=(
+		['x86_64']='x86_64'
+		['i686']='i386'
+	)
+	export FILENAME=MVS-${pkgver}_${arch_in_filename[$CARCH]}_20${_pkgdate}.tar.gz #why paru cant do this?
 	OPT=${pkgdir}/opt
 	install -Dm644 logo.svg "$pkgdir/usr/share/pixmaps/$pkgname.svg"
 	install -Dm644 hikvision-mvs.desktop "$pkgdir/usr/share/applications/$pkgname.desktop"
