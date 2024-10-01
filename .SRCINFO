@@ -1,6 +1,6 @@
 pkgbase = firefox-nightly-i18n
-	pkgdesc = Language pack for Firefox Nightly
-	pkgver = 132.0a1.20240928.195442
+	pkgdesc = Language packs for Firefox Nightly
+	pkgver = 132.0a1
 	pkgrel = 1
 	url = https://www.mozilla.org/firefox/
 	arch = any
@@ -8,479 +8,100 @@ pkgbase = firefox-nightly-i18n
 	license = GPL
 	license = LGPL
 	depends = firefox-nightly
-	provides = firefox-nightly-i18n=132.0a1-1
-	noextract = firefox-i18n-132.0a1-ach.xpi
-	noextract = firefox-i18n-132.0a1-af.xpi
-	noextract = firefox-i18n-132.0a1-an.xpi
-	noextract = firefox-i18n-132.0a1-ar.xpi
-	noextract = firefox-i18n-132.0a1-ast.xpi
-	noextract = firefox-i18n-132.0a1-az.xpi
-	noextract = firefox-i18n-132.0a1-be.xpi
-	noextract = firefox-i18n-132.0a1-bg.xpi
-	noextract = firefox-i18n-132.0a1-bn.xpi
-	noextract = firefox-i18n-132.0a1-br.xpi
-	noextract = firefox-i18n-132.0a1-bs.xpi
-	noextract = firefox-i18n-132.0a1-ca-valencia.xpi
-	noextract = firefox-i18n-132.0a1-ca.xpi
-	noextract = firefox-i18n-132.0a1-cak.xpi
-	noextract = firefox-i18n-132.0a1-cs.xpi
-	noextract = firefox-i18n-132.0a1-cy.xpi
-	noextract = firefox-i18n-132.0a1-da.xpi
-	noextract = firefox-i18n-132.0a1-de.xpi
-	noextract = firefox-i18n-132.0a1-dsb.xpi
-	noextract = firefox-i18n-132.0a1-el.xpi
-	noextract = firefox-i18n-132.0a1-en-CA.xpi
-	noextract = firefox-i18n-132.0a1-en-GB.xpi
-	noextract = firefox-i18n-132.0a1-eo.xpi
-	noextract = firefox-i18n-132.0a1-es-AR.xpi
-	noextract = firefox-i18n-132.0a1-es-CL.xpi
-	noextract = firefox-i18n-132.0a1-es-ES.xpi
-	noextract = firefox-i18n-132.0a1-es-MX.xpi
-	noextract = firefox-i18n-132.0a1-et.xpi
-	noextract = firefox-i18n-132.0a1-eu.xpi
-	noextract = firefox-i18n-132.0a1-fa.xpi
-	noextract = firefox-i18n-132.0a1-ff.xpi
-	noextract = firefox-i18n-132.0a1-fi.xpi
-	noextract = firefox-i18n-132.0a1-fr.xpi
-	noextract = firefox-i18n-132.0a1-fy-NL.xpi
-	noextract = firefox-i18n-132.0a1-ga-IE.xpi
-	noextract = firefox-i18n-132.0a1-gd.xpi
-	noextract = firefox-i18n-132.0a1-gl.xpi
-	noextract = firefox-i18n-132.0a1-gn.xpi
-	noextract = firefox-i18n-132.0a1-gu-IN.xpi
-	noextract = firefox-i18n-132.0a1-he.xpi
-	noextract = firefox-i18n-132.0a1-hi-IN.xpi
-	noextract = firefox-i18n-132.0a1-hr.xpi
-	noextract = firefox-i18n-132.0a1-hsb.xpi
-	noextract = firefox-i18n-132.0a1-hu.xpi
-	noextract = firefox-i18n-132.0a1-hy-AM.xpi
-	noextract = firefox-i18n-132.0a1-ia.xpi
-	noextract = firefox-i18n-132.0a1-id.xpi
-	noextract = firefox-i18n-132.0a1-is.xpi
-	noextract = firefox-i18n-132.0a1-it.xpi
-	noextract = firefox-i18n-132.0a1-ja.xpi
-	noextract = firefox-i18n-132.0a1-ka.xpi
-	noextract = firefox-i18n-132.0a1-kab.xpi
-	noextract = firefox-i18n-132.0a1-kk.xpi
-	noextract = firefox-i18n-132.0a1-km.xpi
-	noextract = firefox-i18n-132.0a1-kn.xpi
-	noextract = firefox-i18n-132.0a1-ko.xpi
-	noextract = firefox-i18n-132.0a1-lij.xpi
-	noextract = firefox-i18n-132.0a1-lt.xpi
-	noextract = firefox-i18n-132.0a1-lv.xpi
-	noextract = firefox-i18n-132.0a1-mk.xpi
-	noextract = firefox-i18n-132.0a1-mr.xpi
-	noextract = firefox-i18n-132.0a1-ms.xpi
-	noextract = firefox-i18n-132.0a1-my.xpi
-	noextract = firefox-i18n-132.0a1-nb-NO.xpi
-	noextract = firefox-i18n-132.0a1-ne-NP.xpi
-	noextract = firefox-i18n-132.0a1-nl.xpi
-	noextract = firefox-i18n-132.0a1-nn-NO.xpi
-	noextract = firefox-i18n-132.0a1-oc.xpi
-	noextract = firefox-i18n-132.0a1-pa-IN.xpi
-	noextract = firefox-i18n-132.0a1-pl.xpi
-	noextract = firefox-i18n-132.0a1-pt-BR.xpi
-	noextract = firefox-i18n-132.0a1-pt-PT.xpi
-	noextract = firefox-i18n-132.0a1-rm.xpi
-	noextract = firefox-i18n-132.0a1-ro.xpi
-	noextract = firefox-i18n-132.0a1-ru.xpi
-	noextract = firefox-i18n-132.0a1-si.xpi
-	noextract = firefox-i18n-132.0a1-sk.xpi
-	noextract = firefox-i18n-132.0a1-sl.xpi
-	noextract = firefox-i18n-132.0a1-son.xpi
-	noextract = firefox-i18n-132.0a1-sq.xpi
-	noextract = firefox-i18n-132.0a1-sr.xpi
-	noextract = firefox-i18n-132.0a1-sv-SE.xpi
-	noextract = firefox-i18n-132.0a1-ta.xpi
-	noextract = firefox-i18n-132.0a1-te.xpi
-	noextract = firefox-i18n-132.0a1-th.xpi
-	noextract = firefox-i18n-132.0a1-tl.xpi
-	noextract = firefox-i18n-132.0a1-tr.xpi
-	noextract = firefox-i18n-132.0a1-trs.xpi
-	noextract = firefox-i18n-132.0a1-uk.xpi
-	noextract = firefox-i18n-132.0a1-ur.xpi
-	noextract = firefox-i18n-132.0a1-uz.xpi
-	noextract = firefox-i18n-132.0a1-vi.xpi
-	noextract = firefox-i18n-132.0a1-xh.xpi
-	noextract = firefox-i18n-132.0a1-zh-CN.xpi
-	noextract = firefox-i18n-132.0a1-zh-TW.xpi
-	source = firefox-i18n-132.0a1-ach.xpi::https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/linux-x86_64/xpi/firefox-132.0a1.ach.langpack.xpi
-	source = firefox-i18n-132.0a1-af.xpi::https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/linux-x86_64/xpi/firefox-132.0a1.af.langpack.xpi
-	source = firefox-i18n-132.0a1-an.xpi::https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/linux-x86_64/xpi/firefox-132.0a1.an.langpack.xpi
-	source = firefox-i18n-132.0a1-ar.xpi::https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/linux-x86_64/xpi/firefox-132.0a1.ar.langpack.xpi
-	source = firefox-i18n-132.0a1-ast.xpi::https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/linux-x86_64/xpi/firefox-132.0a1.ast.langpack.xpi
-	source = firefox-i18n-132.0a1-az.xpi::https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/linux-x86_64/xpi/firefox-132.0a1.az.langpack.xpi
-	source = firefox-i18n-132.0a1-be.xpi::https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/linux-x86_64/xpi/firefox-132.0a1.be.langpack.xpi
-	source = firefox-i18n-132.0a1-bg.xpi::https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/linux-x86_64/xpi/firefox-132.0a1.bg.langpack.xpi
-	source = firefox-i18n-132.0a1-bn.xpi::https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/linux-x86_64/xpi/firefox-132.0a1.bn.langpack.xpi
-	source = firefox-i18n-132.0a1-br.xpi::https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/linux-x86_64/xpi/firefox-132.0a1.br.langpack.xpi
-	source = firefox-i18n-132.0a1-bs.xpi::https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/linux-x86_64/xpi/firefox-132.0a1.bs.langpack.xpi
-	source = firefox-i18n-132.0a1-ca-valencia.xpi::https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/linux-x86_64/xpi/firefox-132.0a1.ca-valencia.langpack.xpi
-	source = firefox-i18n-132.0a1-ca.xpi::https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/linux-x86_64/xpi/firefox-132.0a1.ca.langpack.xpi
-	source = firefox-i18n-132.0a1-cak.xpi::https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/linux-x86_64/xpi/firefox-132.0a1.cak.langpack.xpi
-	source = firefox-i18n-132.0a1-cs.xpi::https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/linux-x86_64/xpi/firefox-132.0a1.cs.langpack.xpi
-	source = firefox-i18n-132.0a1-cy.xpi::https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/linux-x86_64/xpi/firefox-132.0a1.cy.langpack.xpi
-	source = firefox-i18n-132.0a1-da.xpi::https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/linux-x86_64/xpi/firefox-132.0a1.da.langpack.xpi
-	source = firefox-i18n-132.0a1-de.xpi::https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/linux-x86_64/xpi/firefox-132.0a1.de.langpack.xpi
-	source = firefox-i18n-132.0a1-dsb.xpi::https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/linux-x86_64/xpi/firefox-132.0a1.dsb.langpack.xpi
-	source = firefox-i18n-132.0a1-el.xpi::https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/linux-x86_64/xpi/firefox-132.0a1.el.langpack.xpi
-	source = firefox-i18n-132.0a1-en-CA.xpi::https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/linux-x86_64/xpi/firefox-132.0a1.en-CA.langpack.xpi
-	source = firefox-i18n-132.0a1-en-GB.xpi::https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/linux-x86_64/xpi/firefox-132.0a1.en-GB.langpack.xpi
-	source = firefox-i18n-132.0a1-eo.xpi::https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/linux-x86_64/xpi/firefox-132.0a1.eo.langpack.xpi
-	source = firefox-i18n-132.0a1-es-AR.xpi::https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/linux-x86_64/xpi/firefox-132.0a1.es-AR.langpack.xpi
-	source = firefox-i18n-132.0a1-es-CL.xpi::https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/linux-x86_64/xpi/firefox-132.0a1.es-CL.langpack.xpi
-	source = firefox-i18n-132.0a1-es-ES.xpi::https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/linux-x86_64/xpi/firefox-132.0a1.es-ES.langpack.xpi
-	source = firefox-i18n-132.0a1-es-MX.xpi::https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/linux-x86_64/xpi/firefox-132.0a1.es-MX.langpack.xpi
-	source = firefox-i18n-132.0a1-et.xpi::https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/linux-x86_64/xpi/firefox-132.0a1.et.langpack.xpi
-	source = firefox-i18n-132.0a1-eu.xpi::https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/linux-x86_64/xpi/firefox-132.0a1.eu.langpack.xpi
-	source = firefox-i18n-132.0a1-fa.xpi::https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/linux-x86_64/xpi/firefox-132.0a1.fa.langpack.xpi
-	source = firefox-i18n-132.0a1-ff.xpi::https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/linux-x86_64/xpi/firefox-132.0a1.ff.langpack.xpi
-	source = firefox-i18n-132.0a1-fi.xpi::https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/linux-x86_64/xpi/firefox-132.0a1.fi.langpack.xpi
-	source = firefox-i18n-132.0a1-fr.xpi::https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/linux-x86_64/xpi/firefox-132.0a1.fr.langpack.xpi
-	source = firefox-i18n-132.0a1-fy-NL.xpi::https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/linux-x86_64/xpi/firefox-132.0a1.fy-NL.langpack.xpi
-	source = firefox-i18n-132.0a1-ga-IE.xpi::https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/linux-x86_64/xpi/firefox-132.0a1.ga-IE.langpack.xpi
-	source = firefox-i18n-132.0a1-gd.xpi::https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/linux-x86_64/xpi/firefox-132.0a1.gd.langpack.xpi
-	source = firefox-i18n-132.0a1-gl.xpi::https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/linux-x86_64/xpi/firefox-132.0a1.gl.langpack.xpi
-	source = firefox-i18n-132.0a1-gn.xpi::https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/linux-x86_64/xpi/firefox-132.0a1.gn.langpack.xpi
-	source = firefox-i18n-132.0a1-gu-IN.xpi::https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/linux-x86_64/xpi/firefox-132.0a1.gu-IN.langpack.xpi
-	source = firefox-i18n-132.0a1-he.xpi::https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/linux-x86_64/xpi/firefox-132.0a1.he.langpack.xpi
-	source = firefox-i18n-132.0a1-hi-IN.xpi::https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/linux-x86_64/xpi/firefox-132.0a1.hi-IN.langpack.xpi
-	source = firefox-i18n-132.0a1-hr.xpi::https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/linux-x86_64/xpi/firefox-132.0a1.hr.langpack.xpi
-	source = firefox-i18n-132.0a1-hsb.xpi::https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/linux-x86_64/xpi/firefox-132.0a1.hsb.langpack.xpi
-	source = firefox-i18n-132.0a1-hu.xpi::https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/linux-x86_64/xpi/firefox-132.0a1.hu.langpack.xpi
-	source = firefox-i18n-132.0a1-hy-AM.xpi::https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/linux-x86_64/xpi/firefox-132.0a1.hy-AM.langpack.xpi
-	source = firefox-i18n-132.0a1-ia.xpi::https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/linux-x86_64/xpi/firefox-132.0a1.ia.langpack.xpi
-	source = firefox-i18n-132.0a1-id.xpi::https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/linux-x86_64/xpi/firefox-132.0a1.id.langpack.xpi
-	source = firefox-i18n-132.0a1-is.xpi::https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/linux-x86_64/xpi/firefox-132.0a1.is.langpack.xpi
-	source = firefox-i18n-132.0a1-it.xpi::https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/linux-x86_64/xpi/firefox-132.0a1.it.langpack.xpi
-	source = firefox-i18n-132.0a1-ja.xpi::https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/linux-x86_64/xpi/firefox-132.0a1.ja.langpack.xpi
-	source = firefox-i18n-132.0a1-ka.xpi::https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/linux-x86_64/xpi/firefox-132.0a1.ka.langpack.xpi
-	source = firefox-i18n-132.0a1-kab.xpi::https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/linux-x86_64/xpi/firefox-132.0a1.kab.langpack.xpi
-	source = firefox-i18n-132.0a1-kk.xpi::https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/linux-x86_64/xpi/firefox-132.0a1.kk.langpack.xpi
-	source = firefox-i18n-132.0a1-km.xpi::https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/linux-x86_64/xpi/firefox-132.0a1.km.langpack.xpi
-	source = firefox-i18n-132.0a1-kn.xpi::https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/linux-x86_64/xpi/firefox-132.0a1.kn.langpack.xpi
-	source = firefox-i18n-132.0a1-ko.xpi::https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/linux-x86_64/xpi/firefox-132.0a1.ko.langpack.xpi
-	source = firefox-i18n-132.0a1-lij.xpi::https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/linux-x86_64/xpi/firefox-132.0a1.lij.langpack.xpi
-	source = firefox-i18n-132.0a1-lt.xpi::https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/linux-x86_64/xpi/firefox-132.0a1.lt.langpack.xpi
-	source = firefox-i18n-132.0a1-lv.xpi::https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/linux-x86_64/xpi/firefox-132.0a1.lv.langpack.xpi
-	source = firefox-i18n-132.0a1-mk.xpi::https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/linux-x86_64/xpi/firefox-132.0a1.mk.langpack.xpi
-	source = firefox-i18n-132.0a1-mr.xpi::https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/linux-x86_64/xpi/firefox-132.0a1.mr.langpack.xpi
-	source = firefox-i18n-132.0a1-ms.xpi::https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/linux-x86_64/xpi/firefox-132.0a1.ms.langpack.xpi
-	source = firefox-i18n-132.0a1-my.xpi::https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/linux-x86_64/xpi/firefox-132.0a1.my.langpack.xpi
-	source = firefox-i18n-132.0a1-nb-NO.xpi::https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/linux-x86_64/xpi/firefox-132.0a1.nb-NO.langpack.xpi
-	source = firefox-i18n-132.0a1-ne-NP.xpi::https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/linux-x86_64/xpi/firefox-132.0a1.ne-NP.langpack.xpi
-	source = firefox-i18n-132.0a1-nl.xpi::https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/linux-x86_64/xpi/firefox-132.0a1.nl.langpack.xpi
-	source = firefox-i18n-132.0a1-nn-NO.xpi::https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/linux-x86_64/xpi/firefox-132.0a1.nn-NO.langpack.xpi
-	source = firefox-i18n-132.0a1-oc.xpi::https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/linux-x86_64/xpi/firefox-132.0a1.oc.langpack.xpi
-	source = firefox-i18n-132.0a1-pa-IN.xpi::https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/linux-x86_64/xpi/firefox-132.0a1.pa-IN.langpack.xpi
-	source = firefox-i18n-132.0a1-pl.xpi::https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/linux-x86_64/xpi/firefox-132.0a1.pl.langpack.xpi
-	source = firefox-i18n-132.0a1-pt-BR.xpi::https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/linux-x86_64/xpi/firefox-132.0a1.pt-BR.langpack.xpi
-	source = firefox-i18n-132.0a1-pt-PT.xpi::https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/linux-x86_64/xpi/firefox-132.0a1.pt-PT.langpack.xpi
-	source = firefox-i18n-132.0a1-rm.xpi::https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/linux-x86_64/xpi/firefox-132.0a1.rm.langpack.xpi
-	source = firefox-i18n-132.0a1-ro.xpi::https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/linux-x86_64/xpi/firefox-132.0a1.ro.langpack.xpi
-	source = firefox-i18n-132.0a1-ru.xpi::https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/linux-x86_64/xpi/firefox-132.0a1.ru.langpack.xpi
-	source = firefox-i18n-132.0a1-si.xpi::https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/linux-x86_64/xpi/firefox-132.0a1.si.langpack.xpi
-	source = firefox-i18n-132.0a1-sk.xpi::https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/linux-x86_64/xpi/firefox-132.0a1.sk.langpack.xpi
-	source = firefox-i18n-132.0a1-sl.xpi::https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/linux-x86_64/xpi/firefox-132.0a1.sl.langpack.xpi
-	source = firefox-i18n-132.0a1-son.xpi::https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/linux-x86_64/xpi/firefox-132.0a1.son.langpack.xpi
-	source = firefox-i18n-132.0a1-sq.xpi::https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/linux-x86_64/xpi/firefox-132.0a1.sq.langpack.xpi
-	source = firefox-i18n-132.0a1-sr.xpi::https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/linux-x86_64/xpi/firefox-132.0a1.sr.langpack.xpi
-	source = firefox-i18n-132.0a1-sv-SE.xpi::https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/linux-x86_64/xpi/firefox-132.0a1.sv-SE.langpack.xpi
-	source = firefox-i18n-132.0a1-ta.xpi::https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/linux-x86_64/xpi/firefox-132.0a1.ta.langpack.xpi
-	source = firefox-i18n-132.0a1-te.xpi::https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/linux-x86_64/xpi/firefox-132.0a1.te.langpack.xpi
-	source = firefox-i18n-132.0a1-th.xpi::https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/linux-x86_64/xpi/firefox-132.0a1.th.langpack.xpi
-	source = firefox-i18n-132.0a1-tl.xpi::https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/linux-x86_64/xpi/firefox-132.0a1.tl.langpack.xpi
-	source = firefox-i18n-132.0a1-tr.xpi::https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/linux-x86_64/xpi/firefox-132.0a1.tr.langpack.xpi
-	source = firefox-i18n-132.0a1-trs.xpi::https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/linux-x86_64/xpi/firefox-132.0a1.trs.langpack.xpi
-	source = firefox-i18n-132.0a1-uk.xpi::https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/linux-x86_64/xpi/firefox-132.0a1.uk.langpack.xpi
-	source = firefox-i18n-132.0a1-ur.xpi::https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/linux-x86_64/xpi/firefox-132.0a1.ur.langpack.xpi
-	source = firefox-i18n-132.0a1-uz.xpi::https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/linux-x86_64/xpi/firefox-132.0a1.uz.langpack.xpi
-	source = firefox-i18n-132.0a1-vi.xpi::https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/linux-x86_64/xpi/firefox-132.0a1.vi.langpack.xpi
-	source = firefox-i18n-132.0a1-xh.xpi::https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/linux-x86_64/xpi/firefox-132.0a1.xh.langpack.xpi
-	source = firefox-i18n-132.0a1-zh-CN.xpi::https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/linux-x86_64/xpi/firefox-132.0a1.zh-CN.langpack.xpi
-	source = firefox-i18n-132.0a1-zh-TW.xpi::https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/linux-x86_64/xpi/firefox-132.0a1.zh-TW.langpack.xpi
-	sha256sums = d50c0ba4500822a3cbf7eaa617024cc8f171e8279a3fbe38010750dcc1ab6677
-	sha256sums = 1c767178535d34b9a6021da8f56411f44c3b54b4fbec939bc0f7419892b2329f
-	sha256sums = d5bc75cd562bed30f9e03c3e92747e14026b87f101a7d3402269eebc7f5ba9dd
-	sha256sums = 11d1ef04fcd5ff50a0d78188723563fae57abdb4fb8fa1ede2e991bacd0a2562
-	sha256sums = e956772142b2fac56af883d6fc2d032b270e10581f9d1a9a164302cf3b49d0de
-	sha256sums = 8d262b774ff18c73593bd71c6142e6cbac8432071541f805214bbfa0f7c88a51
-	sha256sums = 54d5f56da137d8c66fa5c8528d7008ca405fc55475fe071bca6c50c74ecbd688
-	sha256sums = a8a35d6724bcd52bbcc341fad7637d87f21deec4548f6126b9ffb810ee45a238
-	sha256sums = fe99aa59bcffac0e27ab4c60d40ebf8a75cc87252471a1198f2083e998427b62
-	sha256sums = 2ef5bafc39b5f2180e2ff8daf83f41a6a81d52560616ef3aaa9881969ab623e9
-	sha256sums = acb7880c69126a1683495b71b1ee0a6e9cf0f532b131515c15b214ebd5fd7118
-	sha256sums = 03c614dfd075cdb6d7f3eb6cf4889f9a6bee561a72c149bb3851006a4b2751e7
-	sha256sums = ff2b4b2a8a52056f6c76e721ec7b6d34a930afa4fc01a01aaba69543bb1a2412
-	sha256sums = 58475322e3a0f40f1f2b7043416b94401c91e616ccf5cef331860016d4a3355d
-	sha256sums = 01931d743e275c3350a1d272ecc5ad66ca2a90836f9fee93501ff172f8bc0154
-	sha256sums = 63f1596f79fb129c7a6b1f04c96afa4df266542cc8cf62b42614136ed934b77c
-	sha256sums = fd8a4f7905c8e67b88635eb84ce8c10eb2b8e2b3ba87950db653e9a6f29d1114
-	sha256sums = 5408fb21c58bb5dbc357ca5d51028c85f39df047bec8824600f2dfeb98dab506
-	sha256sums = 788f4446ce9f4699e37c43ecf896f674401181dcbb7254c4352638f4d45a0157
-	sha256sums = 342ac4447fb7aeaf743d5d825c77ce6a62c2d968d0718aac00c02b8bf173bc38
-	sha256sums = cddfa3006e90c044eb29c0b0e962f896c739110c41c25e074e7a23d8385f3e40
-	sha256sums = c99646d1275db953ed56a9ebf0c0cb00530ce7392d78c0e95aa0f690f50065b5
-	sha256sums = 0bf78b356082e6202ab73768e469aee8b0b6371d77356b9fdc5c7b144b0f9903
-	sha256sums = e103c6fb5758b07e033f5905c56ac2496946c2d7e48b2112268c1e83ebb107ce
-	sha256sums = 19c0999894a64c5f816b051bcbf6474dd52b81391191ff52af8c1460602234b6
-	sha256sums = 75f915640500cd094d2585d1ced60cfc3ba404129940b3ad2a98dd8fcc50063e
-	sha256sums = 706d9901c798c98e7f140677e3870e2085fb8d45d912542285bab059a9c358c6
-	sha256sums = b6e2d0e2371d1330daf8ea312ab61118c66d79cc0d5d4226d8265a5a4c63a285
-	sha256sums = 51db45664a3e8939455c1c42f164552b1959c1bc8da3dedac25cde2e0b5a0692
-	sha256sums = 9494edeadc25fbffdf25d876b18ee4325292a996e8531881bcdbdbbf4aa5698b
-	sha256sums = f7979a5251451a290999e569c71d441bca7846a587a4459da4c8a364be397558
-	sha256sums = 5973aa8b39b74711684e9dfde988dcce1705635fbdbfe79df7ca841999ae3f34
-	sha256sums = 7887b02e18f57438bad6a8bf3a7dc125f1c9d722e533701f3c92492ee5a92b14
-	sha256sums = e36c5e21068ac5f26440d2c2075e342e5edcbe66066ce39cdd9f3f158d258438
-	sha256sums = e2761a2864f1ff5f0cd87162bdddd0f395b325c22480c4f624f2f633dd057ad1
-	sha256sums = c13de993097c6f599227c9b4714191c6cf68a95d626c99942fdb74f4bb9c9a9b
-	sha256sums = 8f29fe99d6194fdfca5f7267f86c8ad4b1fbc963861ff2afba58256939f142a0
-	sha256sums = 88a7a9e59fd55c22040d2452b2acca6da0fa644cdd083393e0ae231ace1c82fb
-	sha256sums = 735635e99a69f7bd1d0d4d0bb96832d48675e7b4c25bd2c81fc579c7804b936f
-	sha256sums = ef4d5dc1a5b03f9cf6dbfb41e16a436031f8ca5a0cc0ec9cbc7ae5168f6ae6f8
-	sha256sums = d253cb9bab2b23605ddd5a5f189e9bd9062815887169dfda755bd8f3eb8219ad
-	sha256sums = 84961e5ea6a587cef3f8d4af45b912bf2f981aa5191b7706cc4c46fe4a61d4dc
-	sha256sums = 4ff52884ef223acc1206dc687541ce9bb5f7dc524052bc4a21274ed41e59ee02
-	sha256sums = cf41960d156470ab1a7a418505ec8ca44f3495daa05b648192f66e793112cf1d
-	sha256sums = 46c7e425787a19e80910e91beb63222366a08515d16e2e780de652279efd8de2
-	sha256sums = 62744ff5236ee3d147f7f3026cb99cda13ae05bd06a16b70f07a0928e678ca41
-	sha256sums = 2f5f77dc07b90b8d71dddeb0941b7791bf04e6dbb71fc648823ae3574b23f1b3
-	sha256sums = c0941db230f90e655f621cb75ce2e95d00ec299e02f4a50a7c55799cc2eb5186
-	sha256sums = b12cac91338e4763ef5d76c082196a14701b461cb0b5fb41c37840413ef97f2a
-	sha256sums = 5e1e057e56bb5dd2f9d0ecd1bc981730fd7bd20af71ae778155d85af3bfebbc6
-	sha256sums = 0c7dece98d1a3769d8f58d8aacb8799e4c00c5252f31faab536764c0723a910f
-	sha256sums = 4cde19b3e83e4d92f6515193aeede0c5bd9c017cf077d71bb53e069c9c1ad2b9
-	sha256sums = d079bad1b3ac622f04270fa6076fe8f9c1c1376ab15cda7f11ca43fb9d1d272c
-	sha256sums = 41b0901d70bc2a4e29e10caaec6d659c5854c1c9d39a1f4769b7c34ca552f2ac
-	sha256sums = 12b3f36056385026169c94505b2f32d916f020ee478ea8b73f7e4c6dfee3241f
-	sha256sums = 048c3e44be813e906feba742269bdb21680c66ed92e7f28a51be82a2748376ec
-	sha256sums = d129980d63bde8170daa9ee097a1b897ce80fb9653d4c6d946a71386cbb5e92f
-	sha256sums = e69c14b67fe49103164e41b4d64ceb82869b167d8208683061c87fc57c07d34e
-	sha256sums = 1139ee0ceaa5fb6cc0d85085a9f87590dcb2d8b083d9c5a8c66b2a700ee564df
-	sha256sums = 4003fa95750267ffaf7468a2c3b308aa975203b06bfaaee98be0538d886ec7a4
-	sha256sums = c1a1b5ccee78ce7ba3fca73e18ce315fbd0d3ac3842ff71f0969fe69318c407c
-	sha256sums = b598f4d7fdf6d40f7a5350c35d6fe634b4f4c78a40b6306009cbc5b3fe8852b2
-	sha256sums = 80df1ef1319923b8f5875173860c915e1220cd98959744adb8976f0a9dfc7929
-	sha256sums = c0eebad135b5fbf79f5f454f28345f787263eceb7a354f3729fa0e682f7c68fa
-	sha256sums = 883c6a33535bbb954b3d51fcb1f132306843d45dc00940a842c65b7de6d41c8b
-	sha256sums = 398575a1941ea099377528de702ded749483d101f06b0bbf76ac598e50f6c46f
-	sha256sums = 7e69ede484f7f0557632f697906dc302c57c22f4fc9aff9c3c667d2747808491
-	sha256sums = 625b540baa5c0d0a7129bc1b1f81553ad8e997a36047f0127e68a87ad6a22625
-	sha256sums = 149075e95d176471ce31d9771f8546cfa9823d08e29611047658cf2faa7b7671
-	sha256sums = 7a1f59067b3a6a6d692298c17c0790b7cd4b6e1fd8db0e2c3a7d53a0c55ddba7
-	sha256sums = c27d757542da1ebc19048952589af0942a9f34fc720de250d3953e9e67416677
-	sha256sums = d881daab6931d5d86fc4b7c954faea12628a0d225f22f3c47c5f713b4131b2eb
-	sha256sums = f174bd254be65eebb5fa6e5601721d8dc87ae30b8670e380c60eb6a67c685537
-	sha256sums = df727594ef54314c095b4500972d2e334d65b4f2bad1c9fa6af2ddcd999b9abc
-	sha256sums = f567f7ef6e99dae7b51684713c7a0efe907ffcba3c6d5ca75b619742924fc398
-	sha256sums = 7aa62080c07e2cf54c0e8020654fe63aa0154ec1fae3c3fc1c729fee13abef74
-	sha256sums = 16d899f568babbbd4be7ad6219431754b77a273c841fe2e5f7b75b9133a2c4a1
-	sha256sums = 1e8c71ad1ce53f3d9f12c975289cc24268961e3be4e29628a2f18695ddc904c8
-	sha256sums = 479a3e338daa47c196c6b1957bf3f05f011b959a7ccb5f01a811cef8969aa483
-	sha256sums = 49b4fb992687842336ea46514715422874b3b96b4c7f4f57d2a9946563c53a3f
-	sha256sums = 1952c053a38a577a7fe584706dba485897cb4cd5343d119aafc11ff943c5457c
-	sha256sums = 0e019441ac8709d5e48c974e96fe236b5593aad6316d832d095bdeb0e2573adf
-	sha256sums = 653c20482e9f5f1d325f5aa9809f8d32b86eaa88ded128c35e9afc19562c1224
-	sha256sums = 3cb5c21074ff1fbfa6f6048c6a8bae0e378da769222a145e038452c07d258814
-	sha256sums = 7fb0875884278ebf51fead0a6103d01f9cd603140a75edea268b45cb850452c3
-	sha256sums = c75ab5cbabcd5bc3e8085ba34355707dfd040238fa906434225f4fac3aaf2882
-	sha256sums = f6062d62cdd1601681dec015c273d1f25cfde141dff908ed0c8a1f7b4377102b
-	sha256sums = 086e8637a7316606102947ed1fd36db83b1f365dfafb1e07af3ceeee2760ecfd
-	sha256sums = 3fa14b4c79ca99bf2b0225f8dfed3e2d6ffc17997dd04410fd6c80cd7d6a1dd5
-	sha256sums = 4e3d6a4bcf42464eff4a36781ffeac225de384ec78724560154ee86936b9f63d
-	sha256sums = 5533ff42658585b46921ba2d6ca66b745cc73accd0dc74d6f942d2b7c42f097c
-	sha256sums = 0305535d532abdb2c6a54344a2c204deb94c8e840a3347215a43277d303c2ebf
-	sha256sums = 4ad5fe4ecbabebe4b521248dfdbfbd8d33db4fb369d23a9e97c13d5f08afd679
-	sha256sums = 0bd7cb21acb65299d64d6af029c6555beb3e2d655641c83d81089a274471eae2
-	sha256sums = 8dff7481feaf038efb2da9860ed69a24db5efaed636aa558f2bc9a3068646a60
-
-pkgname = firefox-nightly-i18n-ach
-
-pkgname = firefox-nightly-i18n-af
-
-pkgname = firefox-nightly-i18n-an
-
-pkgname = firefox-nightly-i18n-ar
-
-pkgname = firefox-nightly-i18n-ast
-
-pkgname = firefox-nightly-i18n-az
-
-pkgname = firefox-nightly-i18n-be
-
-pkgname = firefox-nightly-i18n-bg
-
-pkgname = firefox-nightly-i18n-bn
-
-pkgname = firefox-nightly-i18n-br
-
-pkgname = firefox-nightly-i18n-bs
-
-pkgname = firefox-nightly-i18n-ca-valencia
-
-pkgname = firefox-nightly-i18n-ca
-
-pkgname = firefox-nightly-i18n-cak
-
-pkgname = firefox-nightly-i18n-cs
-
-pkgname = firefox-nightly-i18n-cy
-
-pkgname = firefox-nightly-i18n-da
-
-pkgname = firefox-nightly-i18n-de
-
-pkgname = firefox-nightly-i18n-dsb
-
-pkgname = firefox-nightly-i18n-el
-
-pkgname = firefox-nightly-i18n-en-ca
-
-pkgname = firefox-nightly-i18n-en-gb
-
-pkgname = firefox-nightly-i18n-eo
-
-pkgname = firefox-nightly-i18n-es-ar
-
-pkgname = firefox-nightly-i18n-es-cl
-
-pkgname = firefox-nightly-i18n-es-es
-
-pkgname = firefox-nightly-i18n-es-mx
-
-pkgname = firefox-nightly-i18n-et
-
-pkgname = firefox-nightly-i18n-eu
-
-pkgname = firefox-nightly-i18n-fa
-
-pkgname = firefox-nightly-i18n-ff
-
-pkgname = firefox-nightly-i18n-fi
-
-pkgname = firefox-nightly-i18n-fr
-
-pkgname = firefox-nightly-i18n-fy-nl
-
-pkgname = firefox-nightly-i18n-ga-ie
-
-pkgname = firefox-nightly-i18n-gd
-
-pkgname = firefox-nightly-i18n-gl
-
-pkgname = firefox-nightly-i18n-gn
-
-pkgname = firefox-nightly-i18n-gu-in
-
-pkgname = firefox-nightly-i18n-he
-
-pkgname = firefox-nightly-i18n-hi-in
-
-pkgname = firefox-nightly-i18n-hr
-
-pkgname = firefox-nightly-i18n-hsb
-
-pkgname = firefox-nightly-i18n-hu
-
-pkgname = firefox-nightly-i18n-hy-am
-
-pkgname = firefox-nightly-i18n-ia
-
-pkgname = firefox-nightly-i18n-id
-
-pkgname = firefox-nightly-i18n-is
-
-pkgname = firefox-nightly-i18n-it
-
-pkgname = firefox-nightly-i18n-ja
-
-pkgname = firefox-nightly-i18n-ka
-
-pkgname = firefox-nightly-i18n-kab
-
-pkgname = firefox-nightly-i18n-kk
-
-pkgname = firefox-nightly-i18n-km
-
-pkgname = firefox-nightly-i18n-kn
-
-pkgname = firefox-nightly-i18n-ko
-
-pkgname = firefox-nightly-i18n-lij
-
-pkgname = firefox-nightly-i18n-lt
-
-pkgname = firefox-nightly-i18n-lv
-
-pkgname = firefox-nightly-i18n-mk
-
-pkgname = firefox-nightly-i18n-mr
-
-pkgname = firefox-nightly-i18n-ms
-
-pkgname = firefox-nightly-i18n-my
-
-pkgname = firefox-nightly-i18n-nb-no
-
-pkgname = firefox-nightly-i18n-ne-np
-
-pkgname = firefox-nightly-i18n-nl
-
-pkgname = firefox-nightly-i18n-nn-no
-
-pkgname = firefox-nightly-i18n-oc
-
-pkgname = firefox-nightly-i18n-pa-in
-
-pkgname = firefox-nightly-i18n-pl
-
-pkgname = firefox-nightly-i18n-pt-br
-
-pkgname = firefox-nightly-i18n-pt-pt
-
-pkgname = firefox-nightly-i18n-rm
-
-pkgname = firefox-nightly-i18n-ro
-
-pkgname = firefox-nightly-i18n-ru
-
-pkgname = firefox-nightly-i18n-si
-
-pkgname = firefox-nightly-i18n-sk
-
-pkgname = firefox-nightly-i18n-sl
-
-pkgname = firefox-nightly-i18n-son
-
-pkgname = firefox-nightly-i18n-sq
-
-pkgname = firefox-nightly-i18n-sr
-
-pkgname = firefox-nightly-i18n-sv-se
-
-pkgname = firefox-nightly-i18n-ta
-
-pkgname = firefox-nightly-i18n-te
-
-pkgname = firefox-nightly-i18n-th
-
-pkgname = firefox-nightly-i18n-tl
-
-pkgname = firefox-nightly-i18n-tr
-
-pkgname = firefox-nightly-i18n-trs
-
-pkgname = firefox-nightly-i18n-uk
-
-pkgname = firefox-nightly-i18n-ur
-
-pkgname = firefox-nightly-i18n-uz
-
-pkgname = firefox-nightly-i18n-vi
-
-pkgname = firefox-nightly-i18n-xh
-
-pkgname = firefox-nightly-i18n-zh-cn
-
-pkgname = firefox-nightly-i18n-zh-tw
+	depends = firefox-nightly-i18n-ach
+	depends = firefox-nightly-i18n-af
+	depends = firefox-nightly-i18n-an
+	depends = firefox-nightly-i18n-ar
+	depends = firefox-nightly-i18n-ast
+	depends = firefox-nightly-i18n-az
+	depends = firefox-nightly-i18n-be
+	depends = firefox-nightly-i18n-bg
+	depends = firefox-nightly-i18n-bn
+	depends = firefox-nightly-i18n-br
+	depends = firefox-nightly-i18n-bs
+	depends = firefox-nightly-i18n-ca-valencia
+	depends = firefox-nightly-i18n-ca
+	depends = firefox-nightly-i18n-cak
+	depends = firefox-nightly-i18n-cs
+	depends = firefox-nightly-i18n-cy
+	depends = firefox-nightly-i18n-da
+	depends = firefox-nightly-i18n-de
+	depends = firefox-nightly-i18n-dsb
+	depends = firefox-nightly-i18n-el
+	depends = firefox-nightly-i18n-en-ca
+	depends = firefox-nightly-i18n-en-gb
+	depends = firefox-nightly-i18n-eo
+	depends = firefox-nightly-i18n-es-ar
+	depends = firefox-nightly-i18n-es-cl
+	depends = firefox-nightly-i18n-es-es
+	depends = firefox-nightly-i18n-es-mx
+	depends = firefox-nightly-i18n-et
+	depends = firefox-nightly-i18n-eu
+	depends = firefox-nightly-i18n-fa
+	depends = firefox-nightly-i18n-ff
+	depends = firefox-nightly-i18n-fi
+	depends = firefox-nightly-i18n-fr
+	depends = firefox-nightly-i18n-fy-nl
+	depends = firefox-nightly-i18n-ga-ie
+	depends = firefox-nightly-i18n-gd
+	depends = firefox-nightly-i18n-gl
+	depends = firefox-nightly-i18n-gn
+	depends = firefox-nightly-i18n-gu-in
+	depends = firefox-nightly-i18n-he
+	depends = firefox-nightly-i18n-hi-in
+	depends = firefox-nightly-i18n-hr
+	depends = firefox-nightly-i18n-hsb
+	depends = firefox-nightly-i18n-hu
+	depends = firefox-nightly-i18n-hy-am
+	depends = firefox-nightly-i18n-ia
+	depends = firefox-nightly-i18n-id
+	depends = firefox-nightly-i18n-is
+	depends = firefox-nightly-i18n-it
+	depends = firefox-nightly-i18n-ja
+	depends = firefox-nightly-i18n-ka
+	depends = firefox-nightly-i18n-kab
+	depends = firefox-nightly-i18n-kk
+	depends = firefox-nightly-i18n-km
+	depends = firefox-nightly-i18n-kn
+	depends = firefox-nightly-i18n-ko
+	depends = firefox-nightly-i18n-lij
+	depends = firefox-nightly-i18n-lt
+	depends = firefox-nightly-i18n-lv
+	depends = firefox-nightly-i18n-mk
+	depends = firefox-nightly-i18n-mr
+	depends = firefox-nightly-i18n-ms
+	depends = firefox-nightly-i18n-my
+	depends = firefox-nightly-i18n-nb-no
+	depends = firefox-nightly-i18n-ne-np
+	depends = firefox-nightly-i18n-nl
+	depends = firefox-nightly-i18n-nn-no
+	depends = firefox-nightly-i18n-oc
+	depends = firefox-nightly-i18n-pa-in
+	depends = firefox-nightly-i18n-pl
+	depends = firefox-nightly-i18n-pt-br
+	depends = firefox-nightly-i18n-pt-pt
+	depends = firefox-nightly-i18n-rm
+	depends = firefox-nightly-i18n-ro
+	depends = firefox-nightly-i18n-ru
+	depends = firefox-nightly-i18n-si
+	depends = firefox-nightly-i18n-sk
+	depends = firefox-nightly-i18n-sl
+	depends = firefox-nightly-i18n-son
+	depends = firefox-nightly-i18n-sq
+	depends = firefox-nightly-i18n-sr
+	depends = firefox-nightly-i18n-sv-se
+	depends = firefox-nightly-i18n-ta
+	depends = firefox-nightly-i18n-te
+	depends = firefox-nightly-i18n-th
+	depends = firefox-nightly-i18n-tl
+	depends = firefox-nightly-i18n-tr
+	depends = firefox-nightly-i18n-trs
+	depends = firefox-nightly-i18n-uk
+	depends = firefox-nightly-i18n-ur
+	depends = firefox-nightly-i18n-uz
+	depends = firefox-nightly-i18n-vi
+	depends = firefox-nightly-i18n-xh
+	depends = firefox-nightly-i18n-zh-cn
+	depends = firefox-nightly-i18n-zh-tw
+
+pkgname = firefox-nightly-i18n-all
