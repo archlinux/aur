@@ -1,13 +1,20 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=hardinfo2-git
-pkgver=2.1.11.r52.g0bcb2d9
+pkgver=2.1.17.r1.g6216559
 pkgrel=1
 pkgdesc="System Information and Benchmark for Linux Systems."
 arch=('x86_64')
 url="https://www.hardinfo2.org"
 license=('GPL-2.0-or-later AND GPL-3.0-or-later AND LGPL-2.1-or-later')
-depends=('gtk3' 'libsoup3' 'qt5-base')
-makedepends=('cmake' 'git')
+depends=(
+  'gtk3'
+  'libsoup3'
+)
+makedepends=(
+  'cmake'
+  'git'
+  'qt5-base'
+)
 optdepends=(
   'dmidecode: Memory Devices / System DMI module'
   'fwupd: Firmware module'
@@ -16,10 +23,14 @@ optdepends=(
   'lsscsi: SCSI support for Storage module'
   'mesa-utils: GLX info for Display module'
   'pciutils: PCI Devices module'
+  'qt5-base: OpenGL benchmark'
   'sysbench: SysBench CPU benchmark'
   'udisks2: Storage module'
   'usbutils: USB Devices module'
-  'xdg-utils: open your browser for bugs, homepage & links')
+  'vulkan-tools: display Vulkan information'
+  'xdg-utils: open your browser for bugs, homepage & links'
+  'xorg-xrandr: read monitor setup'
+)
 install="${pkgname%-git}.install"
 provides=("${pkgname%-git}" 'hardinfo')
 conflicts=("${pkgname%-git}" 'hardinfo')
