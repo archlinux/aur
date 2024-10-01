@@ -1,0 +1,16 @@
+pkgbase = r-stampp
+	pkgdesc = Statistical Analysis of Mixed Ploidy Populations
+	pkgver = 1.6.3
+	pkgrel = 1
+	url = https://cran.r-project.org/package=StAMPP
+	arch = any
+	license = GPL-3.0-only
+	depends = r-adegenet
+	depends = r-doparallel
+	depends = r-foreach
+	depends = r-pegas
+	source = https://cran.r-project.org/src/contrib/StAMPP_1.6.3.tar.gz
+	md5sums = 55572ba048c52d49532485790d4644a3
+	b2sums = 019a1b1b8d68c17a281fc4b2970efae0c5cf33a5950d9de8c511d501a86bf67c7bd82cc54942b9684a586f604784accb9fad80eb6b4c515fe74a23722bbf3bbe
+
+pkgname = r-stampp
