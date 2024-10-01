@@ -9,7 +9,7 @@ pkgbase = pokego-git
 	depends = coreutils
 	depends = go
 	depends = upx
-	conflicts = krabby
+	conflicts = pokego
 	source = pokego-git::git+https://github.com/rubiin/pokego.git
 	md5sums = SKIP
 
