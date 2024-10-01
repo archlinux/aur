@@ -2,7 +2,7 @@
 # Maintainer: Murli Tawari <kraanzu@gmail.com>
 
 pkgname=smassh
-pkgver=3.1.5
+pkgver=3.1.6
 pkgrel=1
 pkgdesc="TUI based typing test application inspired by MonkeyType"
 url="https://github.com/kraanzu/smassh"
@@ -23,7 +23,7 @@ makedepends=(
         'python-poetry-core>=1.0.0'
 )
 source=("$pkgname-$pkgver.tar.gz::${url}/archive/v$pkgver.tar.gz")
-sha256sums=('677429f19be37c8ef78679bf769282f2057e97c5f7b31e597b5e5af07880bfd8')
+sha256sums=('d20535c2324cff24bfe0cd5259640bb8b07eef421be1bd1a1a24514664d2c14e')
 
 build() {
         cd "$pkgname-$pkgver"
