@@ -2,21 +2,20 @@
 
 _pkgname=loopauditioneer
 _pkgname_orig=LoopAuditioneer
-_pkgver_maj_min=0.9
 
 pkgname="${_pkgname}"-appimage
-pkgver=0.9.66
-pkgrel=4
+pkgver=0.11.0
+pkgrel=1
 pkgdesc="Software for loop and cue handling in .wav files."
 arch=('x86_64')
-url="https://sourceforge.net/projects/loopauditioneer/"
+url="https://github.com/GrandOrgue/LoopAuditioneer"
 license=('GPL3')
 depends=('zlib' 'hicolor-icon-theme')
 options=(!strip)
 _appimage="${pkgname}-${pkgver}.AppImage"
-source_x86_64=("${_appimage}::https://sourceforge.net/projects/loopauditioneer/files/LoopAuditioneer-${_pkgver_maj_min}/LoopAuditioneer-${pkgver}-x86_64.AppImage")
+source_x86_64=("${_appimage}::https://github.com/GrandOrgue/LoopAuditioneer/releases/download/v${pkgver}/LoopAuditioneer-${pkgver}.x86_64.AppImage")
 noextract=("${_appimage}")
-sha256sums_x86_64=('3bc78e025eefc6ed4491acd7d7baa22e9dbf2f52475e9bd97c615e6009c1ff30')
+sha256sums_x86_64=('ee414eefd08abbcb2eb86b50228f4570408929de4e1ec0e89d43cd8b63f034a2')
 
 prepare() {
     chmod +x "${_appimage}"
