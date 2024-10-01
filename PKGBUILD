@@ -11,7 +11,8 @@ depends=('cmake' 'uuid' 'clang' 'libtool' 'boost-libs' 'curl' 'log4cxx' 'libconf
          'python-jinja' 'python-matplotlib' 'python-scipy' 'sip4' 'python-cachetools' 
          'python-gobject' 'python-configobj' 'libx11' 'libglvnd' 'espeak' 'mesa' 'mpv' 'libdvbcsa' 
          'ffmpeg' 'fmt' 'python-mpl-scatter-density')
-makedepends=('git' 'boost' 'tsduck' 'ccache')
+makedepends=('git' 'boost' 'tsduck')
+optdepends('ccache')
 source=("git+https://github.com/deeptho/neumodvb.git")
 md5sums=('SKIP')
 
