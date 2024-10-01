@@ -1,5 +1,6 @@
 pkg
 src
-webcamoid-*.tar.xz
 webcamoid
 *.tar.gz
+*.tar.xz
+*.tar.zst
