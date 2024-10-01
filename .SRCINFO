@@ -1,6 +1,6 @@
 pkgbase = ayatana-settings
 	pkgdesc = Configuration tool for tweaking all Ayatana system indicators
-	pkgver = 23.11.14
+	pkgver = 24.10.1
 	pkgrel = 1
 	url = https://github.com/AyatanaIndicators/ayatana-settings
 	arch = i686
@@ -13,7 +13,7 @@ pkgbase = ayatana-settings
 	depends = glib2
 	depends = glibc
 	depends = hicolor-icon-theme
-	source = ayatana-settings-23.11.14.tar.gz::https://github.com/AyatanaIndicators/ayatana-settings/archive/23.11.14.tar.gz
-	md5sums = 234caec1854c6ece424f1ef61f46178b
+	source = ayatana-settings-24.10.1.tar.gz::https://github.com/AyatanaIndicators/ayatana-settings/archive/24.10.1.tar.gz
+	md5sums = 510b3de6694a456825aeb039c9fc7968
 
 pkgname = ayatana-settings
