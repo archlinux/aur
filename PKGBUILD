@@ -1,4 +1,5 @@
-# Maintainer: rbagpksr <rbagpksr@mailer.me>
+# Maintainer: AlphaLynx <alphalynx@protonmail.com
+# Contributor: rbagpksr <rbagpksr@mailer.me>
 
 _pkgname=jan
 
