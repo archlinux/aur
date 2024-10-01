@@ -3,7 +3,7 @@
 _pkgname=jan
 
 pkgname="${_pkgname}"-appimage
-pkgver=0.4.11
+pkgver=0.5.4
 pkgrel=1
 pkgdesc="Turn your computer into an AI machine"
 arch=('x86_64')
