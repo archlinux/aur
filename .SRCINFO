@@ -1,0 +1,11 @@
+pkgbase = slurp-vst-bin
+	pkgdesc = The freely distributed version of the SLURP VST Plugin.
+	pkgver = 1.0.0
+	pkgrel = 0
+	url = https://isivisi.ca/slurp
+	arch = x86_64
+	license = SLURP-EULA
+	source = https://isivisi.ca/slurp/downloads/SLURP-linux-x64.zip
+	sha256sums = dbc732dde499bdd3f2b11036fd8620b97143a07c75b8b2725182e5d993a93787
+
+pkgname = slurp-vst-bin

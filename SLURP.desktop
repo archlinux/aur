@@ -1,0 +1,7 @@
+[Desktop Entry]
+Version=1.0
+Name=SLURP
+Type=Application
+Exec=/usr/bin/SLURP
+Terminal=false
+StartupNotify=true
