@@ -1,6 +1,6 @@
 pkgbase = smassh-bin
 	pkgdesc = TUI based typing test application inspired by MonkeyType
-	pkgver = 3.1.4
+	pkgver = 3.1.5
 	pkgrel = 1
 	url = https://github.com/kraanzu/smassh
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = smassh-bin
 	depends = zlib
 	provides = smassh
 	conflicts = smassh
-	source = smassh-3.1.4::https://github.com/kraanzu/smassh/releases/download/v3.1.4/linux-smassh
-	sha256sums = 30e22bdd31cad2fd4a7c02e62aba09d7851df4dd68ba607f08ba5d81266dc054
+	source = smassh-3.1.5::https://github.com/kraanzu/smassh/releases/download/v3.1.5/linux-smassh
+	sha256sums = 6da9f9215f713323aaf6066f94758c62fee8fb8b02f4174c8affe8b1f593b084
 
 pkgname = smassh-bin
