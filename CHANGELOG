@@ -2415,3 +2415,14 @@ Thu Sep 19 22:31:43 2024 +0200
     
     Other Changes:
     *  2024-09-19 12125dc actionless fix(progressbar): make it look nice for both cases when number of `values > term width` and `<`
+
+
+Tue Oct 1 23:29:16 2024 +0200
+-------------------------------------------------
+1.30            Release 1.30
+    
+    Notable Changes:
+    *  2024-10-01 e41ff77 actionless doc(readme): mention pikaur-static ⚡
+    *  2024-10-01 1476fcd actionless chore(argparse_extras): sync with upstream (3.12.7) argparse (fixes: #845)
+    *  2024-09-28 6d78019 actionless feat(build: set_build_package_path): if `*-debug` package was built, copy it to pikaur ./pkgs/ cache dir
+    *  2024-09-21 e8727d5 Bundy01 chore(locale): update es.po and fr.po (#842)
