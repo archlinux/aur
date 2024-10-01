@@ -1,0 +1,19 @@
+pkgbase = r-bisquerna
+	pkgdesc = Decomposition of Bulk Expression with Single-Cell Sequencing
+	pkgver = 1.0.5
+	pkgrel = 1
+	url = https://cran.r-project.org/package=BisqueRNA
+	arch = any
+	license = GPL-3.0-only
+	depends = r-biobase
+	depends = r-limsolve
+	optdepends = r-knitr
+	optdepends = r-plyr
+	optdepends = r-rmarkdown
+	optdepends = r-seurat
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/BisqueRNA_1.0.5.tar.gz
+	md5sums = a9226ff04e21bfc97fc707f4e11d8a06
+	b2sums = 06cdcb0e54dae68ac5d49d96dbf2182a4c8f23789d4560735bbdef5018e88b199ed139b751fd17414d35d5c27f59cc9230312784a9aab503928418a6f0dc0772
+
+pkgname = r-bisquerna
