@@ -1,7 +1,7 @@
 pkgbase = python-chibi-dl-tmo
 	pkgdesc = command script for download mangas from lectortmo.com or visortmo.com
 	pkgver = 1.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pypi.org/project/chibi-dl-tmo/
 	arch = any
 	license = WTFPL
