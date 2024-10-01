@@ -1,7 +1,7 @@
 # Maintainer: Denis Benato <benato.denis96@gmail.com>
 
 pkgname=frzr-git
-pkgver=0.15.4.r0.g5ac6bba
+pkgver=0.15.5.r2.g0eed95b
 pkgrel=1
 pkgdesc="A deployment and update system for read-only btrfs subvolume based operating systems"
 arch=('any')
@@ -20,7 +20,8 @@ md5sums=('SKIP'
 
 prepare() {
     cd "$pkgname"
-    git checkout $(git describe --tag --abbrev=0)
+    git describe --tag --abbrev=0
+    #git checkout $(git describe --tag --abbrev=0)
 }
 pkgver() {
     cd "$pkgname"
