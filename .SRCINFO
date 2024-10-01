@@ -1,6 +1,6 @@
 pkgbase = pokego-git
 	pkgdesc = CLI utility that prints unicode sprites of pokemon to the terminal
-	pkgver = r9.13b23756%
+	pkgver = r9.13b23756
 	pkgrel = 1
 	url = https://github.com/rubiin/pokego.git
 	arch = any
