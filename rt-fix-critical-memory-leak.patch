@@ -1,0 +1,24 @@
+From 6e9902c23b9f6b849180f67f1eca32dfe722ab3b Mon Sep 17 00:00:00 2001
+From: stickz <stickman002@mail.com>
+Date: Fri, 6 Sep 2024 11:16:47 -0400
+Subject: [PATCH] Fix critical memory leak
+
+This commit fixes a critical memory leak with the inserting RPC commands. We must initialize the cmd_flags with the delete key, otherwise they hang around in memory forever; potentially leaking significant amounts of resources.
+---
+ src/command_dynamic.cc | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/src/command_dynamic.cc b/src/command_dynamic.cc
+index 2d62ca3a0..5b65d2891 100644
+--- a/src/command_dynamic.cc
++++ b/src/command_dynamic.cc
+@@ -171,7 +171,8 @@ system_method_insert_object(const torrent::Object::list_type& args, int flags) {
+     throw torrent::input_error("Invalid type.");
+   }
+ 
+-  int cmd_flags = 0;
++  // We must initialize this varriable to prevent a critical memory leak
++  int cmd_flags = rpc::CommandMap::flag_delete_key;
+ 
+   if (!(flags & rpc::object_storage::flag_static))
+     cmd_flags |= rpc::CommandMap::flag_modifiable;

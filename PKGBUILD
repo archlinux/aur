@@ -5,9 +5,9 @@
 # - patches to fix compilation issues and crashes
 _pkgname=rtorrent
 pkgname=rtorrent-ps
-_pkgver=0.10.0
+_pkgver=0.9.8
 pkgver=1.1.r71.gee296b1
-pkgrel=1
+pkgrel=2
 pkgdesc='Extended rTorrent distribution with UI enhancements, colorization, and some added features'
 url='https://github.com/pyroscope/rtorrent-ps'
 license=('GPL-2.0-only')
@@ -29,12 +29,14 @@ source=("$_pkgname-$_pkgver.tar.gz::https://github.com/rakshasa/$_pkgname/archiv
         'ps-silent-catch_all.patch'
         'ps-ui_pyroscope_all.patch'
         'pyroscope.patch'
-        'rt-add-ax_require_defined_m4-to-scripts.patch'
+        'rt-avoid-stack-overflow-for-lockfile-buffer.patch'
+        'rt-fix-critical-memory-leak.patch'
         'rt-fix-possible-crash-with-save_input_history.patch'
+        'rt-fix-session-file-data-corruption.patch'
         'ui_pyroscope.cc'
         'ui_pyroscope.h'
         'ui_pyroscope.patch')
-sha256sums=('f1112e8ad9f4be09dc1ee2539fd73758de7fcd86a391814e73fb671c929f79b2'
+sha256sums=('bc889ce1dde475ec56aa72ae996912ff58723226a4f4256fef4f1f8636d991d4'
             '444de25e5fb0e42d516799637047f6081f93e789db11018231b725b334ea66b5'
             'bad5ef67100e18866cf80bd7dbd4e36a19468c7825129eb494e156fbc2e82c7f'
             '6984b56fa923edb5226b03f49eb6849d8c046e5221e7a1a86b2d68e9b1186ce5'
@@ -48,8 +50,10 @@ sha256sums=('f1112e8ad9f4be09dc1ee2539fd73758de7fcd86a391814e73fb671c929f79b2'
             '28b2d3e08930e505858c977766455a998530b094ff312930484c1f277b30e8a7'
             '19b32f933ec0f3f8dc841c50557c44b9300e2b0add2403f47fb99636b98d8072'
             '18cf8395bef353db44521177cce8caab8a0b11543f79e41269a55b6d085b208f'
-            'fe8a630720879705c63d74cbf83997e282545b60031cdb5ff6e725fd0de75b5f'
+            '3cb7843ead68c778e3c9a46269e712a0605fcaa151f58cd5242228b203ba9941'
+            '167746cbd931301fe097fc7d4e73bfa116e2a23df35b7d280c2eb85d0ef8760f'
             '294a7e9bd261e4657e19b6dc71cab71d01a43ba79f4c0dc69762234050c1a5d5'
+            '20b1b05d2b9844f81f5d9e96467eb68992f5c914cf4d0235ba294915631f59f2'
             'e2ae0fce316a1d20eb045840e0460895be3dce33174f034c1443fe3f0fb98fe0'
             '55cff4d33bae90d9d9c03f063c2b65fe5a5fd47053961b89de35793bc9c7945a'
             '23d5d8561d5e4a6f2872b57bbf0e1183a6caa46e0124ef907d4f47eec0bc8a3e')
@@ -63,13 +67,21 @@ prepare() {
   grep "AC_DEFINE.*API_VERSION" configure.ac >/dev/null || \
     sed -i -e "s:\\(AC_DEFINE(HAVE_CONFIG_H.*\\):\1  AC_DEFINE(API_VERSION, 0, api version):" configure.ac
 
-  RT_BASE_PATCHES=()
-  RT_PATCHES=("$srcdir"/rt-add-ax_require_defined_m4-to-scripts.patch
-              "$srcdir"/rt-fix-possible-crash-with-save_input_history.patch)
+  RT_BASE_PATCHES=(
+    # https://github.com/rakshasa/rtorrent/pull/1169
+    rt-avoid-stack-overflow-for-lockfile-buffer.patch
+    # https://github.com/rakshasa/rtorrent/pull/1294
+    rt-fix-critical-memory-leak.patch
+    # https://github.com/rakshasa/rtorrent/pull/929
+    rt-fix-possible-crash-with-save_input_history.patch
+    # https://github.com/rakshasa/rtorrent/pull/1293
+    rt-fix-session-file-data-corruption.patch
+  )
+  RT_PATCHES=()
 
   # Patch rTorrent
-  for corepatch in "${RT_BASE_PATCHES[@]}" \
-                   "$srcdir"/ps-*_{${_pkgver},all}.patch "${RT_PATCHES[@]}"; do
+  for corepatch in "${RT_BASE_PATCHES[@]/#/$srcdir/}" \
+                   "$srcdir"/ps-*_{${_pkgver},all}.patch "${RT_PATCHES[@]/#/$srcdir/}"; do
     test ! -e "$corepatch" || { msg2 "$(basename $corepatch)"; patch -uNp1 -i "$corepatch"; }
   done
 
