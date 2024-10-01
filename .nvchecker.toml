@@ -1,0 +1,4 @@
+[gitnr]
+source = "git"
+git = "https://github.com/reemus-dev/gitnr.git"
+prefix = "v"
