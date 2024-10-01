@@ -1,10 +1,10 @@
 pkgbase = pinstall
 	pkgdesc = Installer Tool for Python Programs
-	pkgver = 1.17
+	pkgver = 1.18
 	pkgrel = 1
 	url = https://github.com/bulletmark/pinstall
 	arch = any
-	license = GPL3
+	license = GPL-3.0-or-later
 	makedepends = python-setuptools
 	makedepends = python-build
 	makedepends = python-installer
@@ -14,7 +14,7 @@ pkgbase = pinstall
 	depends = sudo
 	depends = python-packaging
 	depends = python-argcomplete
-	source = pinstall-1.17.tar.gz::https://github.com/bulletmark/pinstall/archive/1.17.tar.gz
-	sha1sums = 31eabc29c4b71716a27daf2d653999325e896104
+	source = pinstall-1.18.tar.gz::https://github.com/bulletmark/pinstall/archive/1.18.tar.gz
+	sha1sums = 4bcf596fe08a9c71c4aea1a1db19290b1e1b5082
 
 pkgname = pinstall
