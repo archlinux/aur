@@ -32,7 +32,7 @@ isSignedByDiscord_offset = krisp_initialize_address - address_to_file
 
 f = open(executable, "rb")
 f.seek(krisp_initialize_offset)
-krisp_initialize = f.read(64)
+krisp_initialize = f.read(96)
 f.close()
 
 # States
