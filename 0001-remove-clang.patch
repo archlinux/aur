@@ -1,0 +1,18 @@
+diff '--color=auto' -ura lib25519-20240928/compilers/amd64+sse3+ssse3+sse41+sse42+avx lib25519-20240928.new/compilers/amd64+sse3+ssse3+sse41+sse42+avx
+--- lib25519-20240928/compilers/amd64+sse3+ssse3+sse41+sse42+avx	2024-09-28 14:14:02.000000000 +0200
++++ lib25519-20240928.new/compilers/amd64+sse3+ssse3+sse41+sse42+avx	2024-10-01 10:49:14.471367478 +0200
+@@ -1,2 +1 @@
+ gcc -Wall -fPIC -fwrapv -O2 -mmmx -msse -msse2 -msse3 -mssse3 -msse4.1 -msse4.2 -mavx -mtune=sandybridge
+-clang -Wall -fPIC -fwrapv -Qunused-arguments -O2 -mmmx -msse -msse2 -msse3 -mssse3 -msse4.1 -msse4.2 -mavx -mtune=sandybridge
+diff '--color=auto' -ura lib25519-20240928/compilers/amd64+sse3+ssse3+sse41+sse42+avx+bmi1+bmi2+avx2 lib25519-20240928.new/compilers/amd64+sse3+ssse3+sse41+sse42+avx+bmi1+bmi2+avx2
+--- lib25519-20240928/compilers/amd64+sse3+ssse3+sse41+sse42+avx+bmi1+bmi2+avx2	2024-09-28 14:14:02.000000000 +0200
++++ lib25519-20240928.new/compilers/amd64+sse3+ssse3+sse41+sse42+avx+bmi1+bmi2+avx2	2024-10-01 10:49:18.851366992 +0200
+@@ -1,2 +1 @@
+ gcc -Wall -fPIC -fwrapv -O2 -mmmx -msse -msse2 -msse3 -mssse3 -msse4.1 -msse4.2 -mavx -mbmi -mbmi2 -mavx2 -mtune=haswell
+-clang -Wall -fPIC -fwrapv -Qunused-arguments -O2 -mmmx -msse -msse2 -msse3 -mssse3 -msse4.1 -msse4.2 -mavx -mbmi -mbmi2 -mavx2 -mtune=haswell
+diff '--color=auto' -ura lib25519-20240928/compilers/default lib25519-20240928.new/compilers/default
+--- lib25519-20240928/compilers/default	2024-09-28 14:14:02.000000000 +0200
++++ lib25519-20240928.new/compilers/default	2024-10-01 10:49:23.139366683 +0200
+@@ -1,2 +1 @@
+ gcc -Wall -fPIC -fwrapv -O2
+-clang -Wall -fPIC -fwrapv -Qunused-arguments -O2

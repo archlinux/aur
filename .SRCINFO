@@ -1,0 +1,18 @@
+pkgbase = lib25519
+	pkgdesc = A microlibrary for the X25519 encryption system and the Ed25519 signature system
+	pkgver = 20240928
+	pkgrel = 1
+	url = https://lib25519.cr.yp.to
+	arch = x86_64
+	license = Unlicense
+	makedepends = python
+	makedepends = valgrind
+	depends = libcpucycles
+	depends = librandombytes
+	depends = openssl
+	source = https://lib25519.cr.yp.to/lib25519-20240928.tar.gz
+	source = 0001-remove-clang.patch
+	sha512sums = 76ba9c2585645e28f18c01ebe1d4fc2424b781afc242a993c8ec80445c807b07a4574b91aa902722529b3e130fd86a8d5aad700322ef67aebf61a4686f583941
+	sha512sums = 70da7f1c8d8497c1f908a3880b22b706eb3aa214e706b7c2335eb0280897a6ea16e4abdd07699fbb78659cd5afc0f340a7ff29ca207e46886736147c6e21687f
+
+pkgname = lib25519
