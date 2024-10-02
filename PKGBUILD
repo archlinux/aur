@@ -1,6 +1,6 @@
 # Maintainer: Jorge Hernández <jfernandohernandez28@gmail.com>
 pkgname="battery-advisor"
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="A simple tool to monitor and notify about battery status. Built with Python."
 arch=('any')
@@ -11,7 +11,7 @@ backup=("etc/battery-advisor/defaultSettings.toml")
 makedepends=(python-build python-installer python-wheel)
 _name=${pkgname#python-}
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name//-/_}/${_name//-/_}-$pkgver.tar.gz")
-sha256sums=(d4a6f15ded5961d37566e232fccdc4b52d25ea545d67697f55da6778aa5a8205)
+sha256sums=(21b8767a7d92f5806b5c077d62d7c32c017a42312a08585a5c63b6bbb3ef19e8)
 validpgpkeys=()
 
 prepare() {
