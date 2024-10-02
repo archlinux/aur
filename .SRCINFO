@@ -6,12 +6,13 @@ pkgbase = zig-nightly-bin
 	arch = x86_64
 	arch = aarch64
 	license = MIT
+	depends = jq
 	optdepends = curl: for downloading the latest version
 	optdepends = wget: alternative for downloading the latest version
 	provides = zig
 	conflicts = zig
 	options = !strip
-	source = zig-0.14.0_dev.184.gbf588f67d-x86_64-linux.tar.xz::https://ziglang.org/builds/zig-linux-x86_64-0.14.0-dev.184+bf588f67d.tar.xz
-	sha256sums = 5576440040a54f2931a22a26089d5675ea3b1bec007f387da2aff57ce2463c46
+	source = zig-0.14.0_dev.184.gbf588f67d-x86_64-linux.tar.xz::https://ziglang.org/builds/zig-linux-x86_64-0.14.0-dev.1694+3b465ebec.tar.xz
+	sha256sums = 5481a69b6036392d2562a3605309ff65b0bab159929a1f56af40df52fdbe03b3
 
 pkgname = zig-nightly-bin
