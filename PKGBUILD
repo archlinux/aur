@@ -3,7 +3,7 @@
 # This PKGBUILD was generated using `cargo aur`: https://crates.io/crates/cargo-aur, and bash skripting.
 
 pkgname=pgburst
-pkgver=0.2.1
+pkgver=0.2.2
 pkgrel=1
 pkgdesc="A file-based way to edit postgresql databases (procedures, views, triggers) without GUI"
 url="https://github.com/Jakubzik/pgburst"
@@ -12,7 +12,7 @@ arch=("x86_64")
 provides=("pgburst")
 conflicts=("pgburst")
 source=("https://github.com/Jakubzik/pgburst/releases/download/v$pkgver/pgburst-$pkgver-x86_64.tar.gz")
-sha256sums=("af77d72575127e98e3d30e13de76cbc387edf6c1d7e64a4e1072656f45dd56cc")
+sha256sums=("9a9f8e5c65dcc49d64d63d247e9881f217fbe9cbdd5247198d94fff4983459c4")
 
 package() {
     install -Dm755 pgburst -t "$pkgdir/usr/bin"
