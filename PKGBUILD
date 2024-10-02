@@ -1,5 +1,6 @@
-# Maintainer: Christian Cwienk <ccwienk@dr1fter.de>
-# Maintainer: Gerald Morrison <gerald.gm.morrison@gmail.com>
+# Maintainer: ocm.software <ocm@sap.com>
+# Contributor: Christian Cwienk <ccwienk@dr1fter.de>
+# Contributor: Gerald Morrison <gerald.gm.morrison@gmail.com>
 
 pkgname=ocm-cli
 pkgver=0.15.0
