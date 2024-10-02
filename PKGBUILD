@@ -1,5 +1,5 @@
 pkgname=companion
-pkgver=3.3.1
+pkgver=3.4.1
 pkgrel=1
 pkgdesc="Control software for the Elgato Streamdeck with a focus on broadcasting."
 arch=('x86_64' 'aarch64')
@@ -8,11 +8,12 @@ license=('custom')
 depends=('gtk3' 'alsa-lib' 'nss' 'hicolor-icon-theme' 'libusb')
 makedepends=('nvm' 'git' 'zip' 'python>=3.10.0')
 install=companion.install
+_node_version="18.20.4"
 
 source=("${pkgname}-${pkgver}::git+https://github.com/bitfocus/companion.git#tag=v${pkgver}"
 		"bitfocus-companion.desktop")
 
-sha256sums=('acdc4153dffbca2e02eb075d1bdfa8a836504c74c6a1588d6e7140aa71a535de'
+sha256sums=('bb9210ce064548969fef5cf0204aab6c0504ba848d0b0bbb578808a69efa0df2'
             '65289895360dae94dd710e6804709c1e3f95e6bc275b1621cb88eb8a7cbd348f')
 
 _ensure_local_nvm() {
@@ -43,7 +44,7 @@ prepare() {
 	# Init submodules
 	git submodule update --init
 
-	nvm install
+	nvm install "${_node_version}"
 	npm config set cache "${srcdir}/npm"
 
 	# Enable corepack
