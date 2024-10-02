@@ -1,11 +1,14 @@
 pkgbase = alberta
 	pkgdesc = Adaptive multi-Level finite element toolbox
 	pkgver = 3.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.alberta-fem.de
 	arch = x86_64
-	license = GPL2
+	license = GPL-2.0-or-later
 	makedepends = gcc-fortran
+	makedepends = texlive-latexextra
+	makedepends = texlive-plaingeneric
+	makedepends = texlive-fontutils
 	source = https://gitlab.com/alberta-fem/alberta3/-/archive/v3.1.1/alberta3-v3.1.1.tar.gz
 	sha512sums = c3912500cf9181be075a5a79f75646cf69539f268e151ff0a33cd1099f379dc2d8b868bd9772d91c43ae9457cb7e658d3cd7b72534b81ccee802a9aac163c3f0
 
