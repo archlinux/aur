@@ -1,6 +1,6 @@
 pkgbase = typioca-bin
 	pkgdesc = Minimal, terminal based typing speed tester
-	pkgver = 3.0.0
+	pkgver = 3.1.0
 	pkgrel = 1
 	url = https://github.com/bloznelis/typioca
 	arch = x86_64
@@ -8,11 +8,11 @@ pkgbase = typioca-bin
 	depends = glibc
 	provides = typioca
 	conflicts = typioca
-	source = README.md-3.0.0::https://github.com/bloznelis/typioca/raw/3.0.0/README.md
-	source = LICENSE-3.0.0::https://github.com/bloznelis/typioca/raw/3.0.0/LICENSE
+	source = README.md-3.1.0::https://github.com/bloznelis/typioca/raw/3.1.0/README.md
+	source = LICENSE-3.1.0::https://github.com/bloznelis/typioca/raw/3.1.0/LICENSE
 	sha256sums = d84a639a9c40f495c35f0e8ad7feec85f6bcb21a9c471dc93bd38cb5822d49c3
 	sha256sums = 4dfb396be86063cc1ad0fb6978d72632005f38884ef5a5457d8502302e2b7cc7
-	source_x86_64 = typioca-3.0.0-x86_64::https://github.com/bloznelis/typioca/releases/download/3.0.0/typioca-linux-amd64
-	sha256sums_x86_64 = b482ff0e33743431b9d1c7a371b6bf6ea978473a9bd1b9fdc0f48bb157f37126
+	source_x86_64 = typioca-3.1.0-x86_64::https://github.com/bloznelis/typioca/releases/download/3.1.0/typioca-linux-amd64
+	sha256sums_x86_64 = e4c3cbd08e8c2ab12fb02fdc664b6ea555d508eb4c66358eda42921331a3a0ca
 
 pkgname = typioca-bin
