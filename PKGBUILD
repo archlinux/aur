@@ -1,8 +1,10 @@
 # Maintainer: Felix Yan <felixonmars@archlinux.org>
+# Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=python-pyrsistent
+_name=${pkgname#python-}
 pkgver=0.19.3
-pkgrel=4
+pkgrel=5
 pkgdesc="Persistent/Functional/Immutable data structures"
 arch=('x86_64')
 license=('MIT')
@@ -15,8 +17,8 @@ makedepends=(
   'python-wheel'
 )
 checkdepends=('python-pytest' 'python-hypothesis')
-source=("https://github.com/tobgu/pyrsistent/archive/v$pkgver/$pkgname-$pkgver.tar.gz")
-sha512sums=('045d9ca4a2a5c5525887fbbcae77b2bc0271e6a596686ad6281c74fb1f6c8d8a4b0c9444cbd951900d953c61d51cf9452290f1e63e9107f7828bfea6e6b34545')
+source=("${_name}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
+sha512sums=('6bb70b6fd65b5cd9f961a3199c2d90725aaa66fb869e4eba2143735e2f3a7e4ecdc782b3498acc2d92e263c3bed14cec8cc77324f4ebd08c300ba6735db5ecf7')
 
 build() {
   cd pyrsistent-$pkgver
