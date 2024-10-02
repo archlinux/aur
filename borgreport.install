@@ -1,0 +1,5 @@
+pre_remove() {
+	# Clean up empty tmpfiles.d files and folders
+	rmdir --ignore-fail-on-non-empty /etc/borgreport/repos
+    rmdir --ignore-fail-on-non-empty /etc/borgreport
+}

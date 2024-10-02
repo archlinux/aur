@@ -1,0 +1,22 @@
+pkgbase = borgreport
+	pkgdesc = Summarize the status of multiple BorgBackup repositories in one report
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/bbx0/borgreport
+	install = borgreport.install
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-or-later
+	makedepends = cargo
+	makedepends = cargo-about
+	makedepends = grep
+	makedepends = groff
+	makedepends = help2man
+	makedepends = sed
+	source = borgreport-0.1.0.tar.gz::https://github.com/bbx0/borgreport//releases/download/v0.1.0/borgreport-0.1.0.tar.gz
+	b2sums = 30ea3b913ee1f40aa62fc8172fb0010b038c42b7ea464fe7886a048009b6fac0678829dc70a5b7d1a0a0fa3f14a0c29e931b2db1bbda04c7e39a024d3bb349dc
+
+pkgname = borgreport
+	depends = borg
+	depends = glibc
+	depends = gcc-libs
