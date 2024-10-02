@@ -47,11 +47,19 @@ prepare() {
     sed -i "s/@PROJECT_NAME@/$_pkgname/g" "$_pkgname-$pkgver.desktop"
     sed -i "s/@PROJECT_DESCRIPTION@/$pkgdesc/g" "$_pkgname-$pkgver.desktop"
     sed -i "s/@PROJECT_VERSION@/$_gittag/g" "$_pkgname-$pkgver.desktop"
+
+    patchelf \
+    --replace-needed libminiupnpc.so.1{7,8} \
+    --replace-needed libboost_locale.so.1.8{3,6}.0 \
+	--replace-needed libboost_log.so.1.8{3,6}.0 \
+	--replace-needed libboost_filesystem.so.1.8{3,6}.0 \
+	--replace-needed libboost_program_options.so.1.8{3,6}.0 \
+	--replace-needed libboost_thread.so.1.8{3,6}.0 \
+    "usr/bin/sunshine"
 }
 
 package() {
     install -Dm755 "usr/bin/sunshine-v$pkgver" "$pkgdir/usr/bin/sunshine"
-    patchelf --replace-needed libminiupnpc.so.17 libminiupnpc.so.18 "$pkgdir/usr/bin/sunshine"
     install -Dm644 "$_pkgname-$pkgver.desktop" "$pkgdir/usr/share/applications/$_pkgname.desktop"
     cp -r "usr/lib" "usr/share" "$pkgdir/usr"
 }
