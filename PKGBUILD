@@ -1,7 +1,7 @@
 # Maintainer: Māris Vilks <kaaposc@gmail.com>
 pkgname=eparakstitajs3
 pkgver=1.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Application software to sign and validate documents in EDOC and PDF formats."
 arch=('x86_64')
 url="https://www.eparaksts.lv"
@@ -20,7 +20,7 @@ sha512sums=('79ca9b06ed5a04f46b69ae80b50878f2ed709689c38bb32f4eb91a8788124eaafb7
 
 package() {
 
-  tar -xJf data.tar.xz -C "${pkgdir}"
+  tar -xf data.tar.zst -C "${pkgdir}"
 
   install -D "${pkgdir}/usr/share/doc/eparakstitajs3/copyright" "${pkgdir}/usr/share/licenses/$pkgname/LICENSE"
 

@@ -1,7 +1,7 @@
 pkgbase = eparakstitajs3
 	pkgdesc = Application software to sign and validate documents in EDOC and PDF formats.
 	pkgver = 1.8.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.eparaksts.lv
 	arch = x86_64
 	groups = eparaksts
