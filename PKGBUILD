@@ -1,7 +1,7 @@
 # Maintainer: yifwon <wyf9661 at gmail dot com>
 pkgname=drawio-desktop-appimage
 _pkgname=drawio
-pkgver=24.7.8
+pkgver=24.7.17
 pkgrel=1
 pkgdesc="Diagram drawing application built on web technology"
 arch=('x86_64' 'aarch64')
@@ -13,9 +13,9 @@ conflicts=(drawio-desktop)
 depends=('zlib' 'hicolor-icon-theme')
 _install_path=/opt/${pkgname}
 source_x86_64=("${_pkgname}-${pkgver}.AppImage::${_githuburl}/releases/download/v${pkgver}/${_pkgname}-x86_64-${pkgver}.AppImage")
-sha1sums_x86_64=('3728513fa37e98f0d919b87eedab98007b18f142')
+sha1sums_x86_64=('d844203becbecc9fa8e9fc590565b10bebd66cec')
 source_aarch64=("${_pkgname}-${pkgver}.AppImage::${_githuburl}/releases/download/v${pkgver}/${_pkgname}-arm64-${pkgver}.AppImage")
-sha1sums_aarch64=('50b1fd851f91c524644680d7b47c0d6100af5c8b')
+sha1sums_aarch64=('5f9d5f5a83461427ea80e22ccf54641c33b2d7aa')
 prepare() {
     chmod a+x "${_pkgname}-${pkgver}.AppImage"
     "./${_pkgname}-${pkgver}.AppImage" --appimage-extract
