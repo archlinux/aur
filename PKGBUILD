@@ -2,7 +2,7 @@
 
 pkgname="envio"
 pkgver=0.6.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A Modern And Secure CLI Tool For Managing Environment Variables"
 arch=('x86_64' 'aarch64' 'i686')
 url="https://envio-cli.github.io/home"

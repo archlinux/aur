@@ -1,7 +1,7 @@
 pkgbase = envio
 	pkgdesc = A Modern And Secure CLI Tool For Managing Environment Variables
 	pkgver = 0.6.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://envio-cli.github.io/home
 	arch = x86_64
 	arch = aarch64
