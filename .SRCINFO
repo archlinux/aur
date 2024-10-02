@@ -1,4 +1,4 @@
-pkgbase = carl
+pkgbase = carl-calendar
 	pkgdesc = A colorful commandline calendar with ical support. Similar to outubro 2024 do se te qu qu se sá 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 , but with more features.
 	pkgver = 0.3.1
 	pkgrel = 1
@@ -17,4 +17,4 @@ pkgbase = carl
 	source = https://github.com/b1rger/carl/archive/refs/tags/v0.3.1/carl-0.3.1.tar.gz
 	sha256sums = c0413e7f1524c757b78e96c0c60adccdfece1748ad46c4409e51c5978ba1d449
 
-pkgname = carl
+pkgname = carl-calendar
