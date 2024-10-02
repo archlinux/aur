@@ -2,7 +2,7 @@
 
 pkgname=modrinth-app-bin
 pkgver=0.8.8
-pkgrel=2
+pkgrel=3
 pkgdesc='An unique, open source launcher that allows you to play your favorite mods, and keep them up to date, all in one neat little package.'
 url='https://modrinth.com/app'
 arch=('x86_64')
@@ -23,7 +23,7 @@ source=(
     "modrinth-app"
     "modrinth-file-extensions.xml"
 )
-sha256sums=('554ed0a9ed232539534ed922b2edb83fbbf8061d1344b677c0fb4fb799ec32c4'
+sha256sums=('1ee34732f1fe949576c899bd1d3afc9e7f0a37f6590daba516f5805977d122d4'
             '5404b4e7b25903afe43ab2f2451be4b27f4823c6785327b166f2faa519fa38a9'
             'e0b3eab49465709ed5053dc1fa4206071ab32657d25bd1f9c01850d696715cff')
 
@@ -32,7 +32,7 @@ build() {
     tar xf data.tar.gz
 }
 
-_binname="Modrinth App"
+_binname="ModrinthApp"
 package() {
     cd "$srcdir"
     find "./usr/share" -type f -print0 | while read -d $'\0' f; do
@@ -43,6 +43,7 @@ package() {
     done
     sed -i \
       -e "s/Exec=${_binname}/Exec=modrinth-app %u/" \
+      -e "s/Icon=${_binname}/Icon=modrinth-app/" \
       -e "s/mrpack/x-modrinth-mrpack/" \
       "${pkgdir}/usr/share/applications/modrinth-app.desktop"
     install -Dm755 "${srcdir}/usr/bin/${_binname}" "${pkgdir}/opt/modrinth-app/modrinth-app"
