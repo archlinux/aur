@@ -1,7 +1,7 @@
 pkgbase = logria
 	pkgdesc = A powerful CLI tool that puts log analytics at your fingertips.
 	pkgver = 0.1.3alpha
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ReagentX/Logria
 	arch = i686
 	arch = x86_64

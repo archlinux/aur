@@ -1,7 +1,7 @@
 # Maintainer: Kemel Zaidan <kemelzaidan@gmail.com>
 pkgname=logria
 pkgver=0.1.3alpha
-pkgrel=1
+pkgrel=2
 url="https://github.com/ReagentX/Logria"
 makedepends=('rust' 'cargo' 'wget')
 depends=('glibc' 'gcc-libs')
@@ -24,5 +24,6 @@ build() {
 
 package() {
     install -Dm 755 "$srcdir/bin/$pkgname" "$pkgdir/usr/bin/$pkgname"
-    install -D "$srcdir/usr/share/licenses/$pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    # GPL licences are provided in the /usr/share/licenses/spdx:
+    # https://wiki.archlinux.org/title/PKGBUILD#license
 }
