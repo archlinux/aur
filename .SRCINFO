@@ -1,0 +1,19 @@
+pkgbase = portable-text-encryptor-bin
+	pkgdesc = Single Linux or Windows binary for secure text encryption
+	pkgver = 14.12
+	pkgrel = 1
+	url = https://portable-text-encryptor.sourceforge.net
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = patchelf
+	depends = fontconfig
+	depends = glibc
+	depends = libx11
+	depends = libxft
+	provides = portable-text-encryptor
+	conflicts = portable-text-encryptor
+	noextract = portable-text-encryptor-14.12-x86_64.zip
+	source_x86_64 = portable-text-encryptor-14.12-x86_64.zip::https://downloads.sourceforge.net/sourceforge/portable-text-encryptor/pte_v14.12.zip
+	sha256sums_x86_64 = 220a0262522b22abea3855494bd4987d6031487edc1234741cae15632d12e91f
+
+pkgname = portable-text-encryptor-bin
