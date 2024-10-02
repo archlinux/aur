@@ -7,7 +7,7 @@ _cdbrel=27693
 pkgrel=1
 pkgdesc="Original, immersive puzzle/adventure game with NO popup GUIs, minimal HUDs."
 license=("MIT")
-sha256sums=('ae3e58d8a1bf7434d081f384f793e5948e5620bc215e56b6ee8bb470bf80cf17')
+sha256sums=('6a3c965852c5f5e3e6fde89794dda417066d9f1bc48828f187b6b2ec73242275')
 
 arch=("any")
 url="https://content.minetest.net/packages/${_pkgauthor}/${_pkgname}/"
