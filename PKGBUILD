@@ -3,22 +3,28 @@
 # Maintainer: asuka minato
 
 pkgname=remnote
-pkgver=1.13.8
+pkgver=1.16.127
 pkgrel=1
 pkgdesc="All-in-one workspace for note-taking, learning, organizing thoughts and growing knowledge"
 arch=('x86_64' 'aarch64')
-depends=(bash electron21) # cur 10.6.194.26-electron.0 , https://releases.electronjs.org/release/v21.3.1
+depends=(bash electron28) # cur 10.6.194.26-electron.0 , https://releases.electronjs.org/release/v21.3.1
 url="https://www.remnote.com"
 license=('custom:Commercial')
 _appimage="RemNote-${pkgver}.AppImage"
-source=("https://download.remnote.io/remnote-desktop/RemNote-$pkgver.AppImage"
-	remnote.sh)
-sha256sums=('d55aeda15556c962399f58cf2159f6db318eb6f68c7d3c9970e39a4f20bffa09'
-            'c6bd5671157a94676ca8ca47163e329b645bc5a679e8b1e90f3cdbddb4ad869e')
+source=("https://download2.remnote.io/remnote-desktop2/RemNote-$pkgver.AppImage")
+	#remnote.sh)
+sha256sums=('56c4bd4576dcbba695edbf81937941fb1ebf5ff1f1379128ca91429f8a8a3449')
+            #'6fabb8dc40b63d8bbc447df45f7b31e7e0b43d30f144496fb7d900542ada2534')
 
+#prepare() {
+#	chmod a+x $_appimage
+#	./$_appimage --appimage-extract
+#	sed -i -e "s|^Exec=.*|Exec=/usr/bin/$pkgname %U|" \
+#		-e '/^X-AppImage-Version=.*/d' \
+#		-e '/Categories=/s/=/&Office;/' squashfs-root/${pkgname}.desktop
+#}
+# makepkg is capable of automatically unpacking .AppImage files using bsdtar
 prepare() {
-	chmod a+x $_appimage
-	./$_appimage --appimage-extract
 	sed -i -e "s|^Exec=.*|Exec=/usr/bin/$pkgname %U|" \
 		-e '/^X-AppImage-Version=.*/d' \
 		-e '/Categories=/s/=/&Office;/' squashfs-root/${pkgname}.desktop
