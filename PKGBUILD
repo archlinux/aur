@@ -3,8 +3,8 @@
 
 _pkgname=guitarix.vst
 pkgname=$_pkgname-git
-pkgver=v0.3.r1.g313edd9
-pkgrel=2
+pkgver=0.3.r7.gb2c2e3d
+pkgrel=1
 pkgdesc='A versatile (guitar) amplifier VST3 plugin (git version)'
 arch=(x86_64)
 url='https://github.com/brummer10/guitarix.vst'
@@ -44,13 +44,17 @@ source=("$_pkgname::git+https://github.com/brummer10/guitarix.vst"
         'NAM::git+https://github.com/sdatkinson/NeuralAmpModelerCore.git'
         'eigen::git+https://gitlab.com/libeigen/eigen.git'
         'RTNeural::git+https://github.com/jatinchowdhury18/RTNeural.git')
-sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
+sha256sums=('SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP')
 
 pkgver() {
   cd $_pkgname
   (
     set -o pipefail
-    git describe --long --tag --match 'v*' | sed -r 's/([^-]*-g)/r\1/;s/-/./g' ||
+    git describe --long --tag --match 'v*' | sed -r 's/^v//;s/([^-]*-g)/r\1/;s/-/./g' ||
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
   )
 }
