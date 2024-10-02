@@ -10,6 +10,6 @@ pkgbase = minetest-whynot
 	noextract = whynot_game-2024.09.03.zip
 	options = !strip
 	source = whynot_game-2024.09.03.zip::https://content.minetest.net/packages/bell07/whynot_game/releases/27061/download/
-	sha256sums = 45336f52e3b2f64d045c2ab38215a8be0e2df9a96c804f623f49b45c38f7a4cd
+	sha256sums = caaefd8a3cc762f6537f86546e72b1e45877f835b1bc7138733044c33504e519
 
 pkgname = minetest-whynot

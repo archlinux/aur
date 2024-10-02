@@ -7,7 +7,7 @@ _cdbrel=27061
 pkgrel=1
 pkgdesc="Aims to get all existing high quality mods working together "
 license=("GPLv3")
-sha256sums=('45336f52e3b2f64d045c2ab38215a8be0e2df9a96c804f623f49b45c38f7a4cd')
+sha256sums=('caaefd8a3cc762f6537f86546e72b1e45877f835b1bc7138733044c33504e519')
 
 arch=("any")
 url="https://content.minetest.net/packages/${_pkgauthor}/${_pkgname}/"
