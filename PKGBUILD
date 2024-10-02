@@ -19,7 +19,7 @@ package() {
   cp -rv "$srcdir/runtime" "$pkgdir/usr/share/ucm/runtime"
   cp -rv "$srcdir/ui" "$pkgdir/usr/share/ucm/ui"
   cp -rv "$srcdir/unison" "$pkgdir/usr/share/ucm/unison"
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 LICENSE-$pkgver "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
   mkdir -p "${pkgdir}/usr/bin"
   cat > "${pkgdir}/usr/bin/ucm" <<-EOF
