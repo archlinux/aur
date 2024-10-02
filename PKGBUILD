@@ -1,37 +1,45 @@
-#TODO: pkgver
-#TODO: fetch version of nginx automatically
-#TODO: any hook for nginx upgrades?
-#TODO: add nginx vesrion to pkgver - nginxver-pkgver
+# Contributor: Massimiliano Torromeo
+# PKGBUILD adapted from nginx-mod-echo
+
 pkgname=nginx-mod-http-knock
-pkgver=a
+pkgver=r11.3afcd02
 pkgrel=1
-
-_modname=ngx_http_knock_module
-_nginxver=1.13.4
-
+_commit=3afcd025ad3eda80fbe21eb606d1ce14ae614d4c # pin last commit
 pkgdesc='Nginx module ngx_http_knock_module to guard websites with a secret handshake'
-arch=('i686' 'x86_64')
-depends=('nginx')
+arch=('x86_64')
 url="https://github.com/PhillipTaylor/ngx_http_knock_module"
 license=('MIT')
+makedepends=('nginx' 'nginx-src' 'git')
+source=("$pkgname::git+$url.git#commit=$_commit")
+sha256sums=('62ab79a3e46adbf44d427c3dbe99ac16853aa2c45a6e14b8d88cb92a3765fe2e')
 
-source=(
-	"https://nginx.org/download/nginx-$_nginxver.tar.gz"
-	"git+https://github.com/PhillipTaylor/ngx_http_knock_module.git"
-)
+pkgver() {
+    cd $pkgname
+    printf "r%s.%s" $(git rev-list --count HEAD) $(git rev-parse --short HEAD)
+}
 
-sha256sums=('de21f3c49ba65c611329d8759a63d72e5fcf719bc6f2a3270e2541348ef1fbba'
-            'SKIP')
+prepare() {
+    mkdir -p build
+    cd build
+    ln -sf /usr/src/nginx/auto
+    ln -sf /usr/src/nginx/src
+}
 
 build() {
-	cd "$srcdir"/nginx-$_nginxver
-	./configure --with-compat --add-dynamic-module=../$_modname
-	make modules
+    cd build
+    /usr/src/nginx/configure \
+        --with-ld-opt="$LDFLAGS" \
+        --with-compat \
+        --add-dynamic-module=../$pkgname
+    make modules
 }
 
 package() {
-	cd "$srcdir"/nginx-$_nginxver/objs
-	for mod in *.so; do
-		install -Dm755 $mod "$pkgdir"/usr/lib/nginx/modules/$mod
-	done
+    local _nginx_version=$(nginx -v 2>&1 | sed 's|^.*/||')
+    depends+=("nginx=${_nginx_version}")
+
+    install -Dm644 $pkgname/LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+
+    cd build/objs
+    install -Dm755 -t "$pkgdir"/usr/lib/nginx/modules/$mod *.so
 }
