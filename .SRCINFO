@@ -11,7 +11,7 @@ pkgbase = ghidra-git
 	makedepends = gradle
 	makedepends = unzip
 	depends = bash
-	depends = java-environment>=17
+	depends = java-environment>=21
 	depends = polkit
 	provides = ghidra
 	conflicts = ghidra
