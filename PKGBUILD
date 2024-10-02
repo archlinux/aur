@@ -3,7 +3,7 @@
 
 # basic info
 pkgname="lightly-qt6"
-pkgver=0.5.1 # change this to match the name of the release tag you want to build from
+pkgver=0.5.2 # change this to match the name of the release tag you want to build from
 pkgrel=2
 pkgdesc="Bali10050's fork of Lightly (A modern style for qt applications)"
 url="https://github.com/Bali10050/lightly"
