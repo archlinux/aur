@@ -9,8 +9,8 @@ pkgbase = firefox-nightly-i18n-nb-no
 	license = GPL
 	license = LGPL
 	depends = firefox-nightly-bin
-	noextract = firefox-nightly-i18n-nb-NO.xpi
-	source = firefox-nightly-i18n-nb-NO.xpi::https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/linux-x86_64/xpi/firefox-133.0a1.nb-NO.langpack.xpi
+	noextract = firefox-nightly-i18n-nb-NO-133.0a1.20241002.095009.xpi
+	source = firefox-nightly-i18n-nb-NO-133.0a1.20241002.095009.xpi::https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/linux-x86_64/xpi/firefox-133.0a1.nb-NO.langpack.xpi
 	sha256sums = dddf45e95e2c128a81a628177fc179d34cdec87bc4f00aa977b5e1edc1e0a238
 
 pkgname = firefox-nightly-i18n-nb-no
