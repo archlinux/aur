@@ -1,25 +1,31 @@
-# Maintainer: Murli Tawari <kraanzu@gmail.com>
-# Maintainer: Jax Young <jaxvanyang@gmail.com>
+# Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dor com>
 
-pkgname=dooit-bin
-pkgver=2.1.0
+_pkgauthor=kraanzu
+_pkgname=dooit
+pkgname=${_pkgname}-bin
+pkgver=2.2.0
 pkgrel=1
 pkgdesc="A todo manager that you didn't ask for, but needed!"
-url='https://github.com/kraanzu/dooit'
+url="https://github.com/${_pkgauthor}/${_pkgname}"
+_urlraw="https://raw.githubusercontent.com/${_pkgauthor}/${_pkgname}/v${pkgver}"
 arch=('x86_64')
 license=('MIT')
-depends=('zlib')
-provides=('dooit')
-conflicts=('dooit' 'dooit-git')
-_binary=linux-dooit
-source=(
-    "$_binary-$pkgver::$url/releases/download/v$pkgver/$_binary"
-    "$url/raw/v$pkgver/LICENSE"
-)
-sha256sums=('bae540f4da2f73f1dbab5860d05df798b6ab27d5690d84f3405fc1232cee9c60'
-            '33504ada23da37774e0d02d99a3a61328f3df017a2bf8468525cd30bb86f57ec')
+depends=('glibc')
+makedepends=('tar')
+conflicts=("${_pkgname}")
+provides=("${_pkgname}")
+source=("LICENSE-${pkgver}::${_urlraw}/LICENSE"
+        "README-${pkgver}::${_urlraw}/README.md")
+source_x86_64=("${url}/releases/download/v${pkgver}/linux-${_pkgname}")
+sha256sums=('33504ada23da37774e0d02d99a3a61328f3df017a2bf8468525cd30bb86f57ec'
+            '674030742a89529e8616360e923d22df737816f0fccf25c53e4790f39294adbe')
+sha256sums_x86_64=('2c078bd844d3b4b1b2ca56d894d739baa0aad5fa809246ec25ee932fd2b8e029')
 
 package() {
-    install -Dm0755 "$_binary-$pkgver" "$pkgdir/usr/bin/dooit"
-    install -Dm0644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  cd "$srcdir/"
+
+  install -Dm755 "linux-${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
+
+  install -Dm644 "LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 "README-${pkgver}" "$pkgdir/usr/share/doc/$pkgname/README.md"
 }

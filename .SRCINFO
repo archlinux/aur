@@ -1,17 +1,19 @@
 pkgbase = dooit-bin
 	pkgdesc = A todo manager that you didn't ask for, but needed!
-	pkgver = 2.1.0
+	pkgver = 2.2.0
 	pkgrel = 1
 	url = https://github.com/kraanzu/dooit
 	arch = x86_64
 	license = MIT
-	depends = zlib
+	makedepends = tar
+	depends = glibc
 	provides = dooit
 	conflicts = dooit
-	conflicts = dooit-git
-	source = linux-dooit-2.1.0::https://github.com/kraanzu/dooit/releases/download/v2.1.0/linux-dooit
-	source = https://github.com/kraanzu/dooit/raw/v2.1.0/LICENSE
-	sha256sums = bae540f4da2f73f1dbab5860d05df798b6ab27d5690d84f3405fc1232cee9c60
+	source = LICENSE-2.2.0::https://raw.githubusercontent.com/kraanzu/dooit/v2.2.0/LICENSE
+	source = README-2.2.0::https://raw.githubusercontent.com/kraanzu/dooit/v2.2.0/README.md
 	sha256sums = 33504ada23da37774e0d02d99a3a61328f3df017a2bf8468525cd30bb86f57ec
+	sha256sums = 674030742a89529e8616360e923d22df737816f0fccf25c53e4790f39294adbe
+	source_x86_64 = https://github.com/kraanzu/dooit/releases/download/v2.2.0/linux-dooit
+	sha256sums_x86_64 = 2c078bd844d3b4b1b2ca56d894d739baa0aad5fa809246ec25ee932fd2b8e029
 
 pkgname = dooit-bin
