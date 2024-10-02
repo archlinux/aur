@@ -1,0 +1,13 @@
+pkgbase = arch-simplicity-grub-theme-git
+	pkgdesc = A Simple Grub Theme
+	pkgver = r8.5cc2ad0
+	pkgrel = 1
+	url = https://codeberg.org/TheSmilingTurtle/arch-simplicity.git
+	install = arch-simplicity.install
+	arch = any
+	license = GPL
+	makedepends = git
+	source = git+https://codeberg.org/TheSmilingTurtle/arch-simplicity.git
+	sha512sums = SKIP
+
+pkgname = arch-simplicity-grub-theme-git
