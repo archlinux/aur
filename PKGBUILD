@@ -4,8 +4,8 @@ _name=helm
 _pkgname=$_name-synth
 pkgbase=helm-synth-git
 pkgname=(helm-synth{,-common,-lv2,-standalone,-vst}-git)
-pkgver=v0.9.0.r21.gabdedd52
-pkgrel=2
+pkgver=0.9.0.r21.gabdedd52
+pkgrel=1
 pkgdesc="A virtual analog poly synth LV2 and VST2 plugin and standalone application (git version)"
 arch=(x86_64)
 url="https://tytel.org/helm/"
@@ -26,10 +26,12 @@ makedepends=(
 source=(
   "$_name::git+https://github.com/mtytel/helm.git"
   $_pkgname-gcc91.patch
+  $_pkgname-0.9.0-fix-compile-error.patch
   $_pkgname-0.9.0-rename_helm-synth.patch
 )
 sha256sums=('SKIP'
             '8a7e45210cef0af82cf8fa857c2219ab8c6e1eb3279ac0f7bc6e7c3546418f08'
+            '5748adb588172c621538ad6f672096b17ff4a0672e4fe43a651a4758fb3feb15'
             '4f41a6616720fd9665a511c016ac9b683c721fa77226721ddd2bec35fadc16a1')
 
 _pick() {
@@ -46,7 +48,7 @@ pkgver() {
   cd $_name
   local ver="$(grep 'JUCERPROJECT.*version' helm.jucer | sed 's/.*version=\"\(.*\)\".*/\1/')"
   ( set -o pipefail
-    git describe --long --tags 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+    git describe --long --tags 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' ||
     printf "%s.r%s.%s" "$ver" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
   )
 }
@@ -56,6 +58,8 @@ prepare() {
   # gcc > 9.1 fixes:
   # https://github.com/mtytel/helm/pull/233
   patch -Np1 -d $_name -i ../$_pkgname-gcc91.patch
+  # https://github.com/Jikstra/helm/pull/1
+  patch -Np1 -d $_name -i ../$_pkgname-0.9.0-fix-compile-error.patch
   # rename to helm-synth as (kubernetes) helm will be in the repos
   patch -Np1 -d $_name -i ../$_pkgname-0.9.0-rename_helm-synth.patch
   # prevent from linking against libcurl.so for no reason

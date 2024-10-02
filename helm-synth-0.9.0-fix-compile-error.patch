@@ -1,0 +1,27 @@
+From b729bb6d66f982382a83b8f83b534d155cdf67a6 Mon Sep 17 00:00:00 2001
+From: tippfehlr <tippfehlr@tippfehlr.eu>
+Date: Sat, 14 Sep 2024 18:32:40 +0200
+Subject: [PATCH] fix compile errors
+
+---
+ JUCE/modules/juce_graphics/native/juce_freetype_Fonts.cpp | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/JUCE/modules/juce_graphics/native/juce_freetype_Fonts.cpp b/JUCE/modules/juce_graphics/native/juce_freetype_Fonts.cpp
+index 367d3b26..5d143140 100644
+--- a/JUCE/modules/juce_graphics/native/juce_freetype_Fonts.cpp
++++ b/JUCE/modules/juce_graphics/native/juce_freetype_Fonts.cpp
+@@ -353,8 +353,8 @@ private:
+     bool getGlyphShape (Path& destShape, const FT_Outline& outline, const float scaleX)
+     {
+         const float scaleY = -scaleX;
+-        const short* const contours = outline.contours;
+-        const char* const tags = outline.tags;
++        const short* const contours = reinterpret_cast<const short*>(outline.contours);
++        const char* const tags = reinterpret_cast<const char*>(outline.tags);
+         const FT_Vector* const points = outline.points;
+ 
+         for (int c = 0; c < outline.n_contours; ++c)
+-- 
+2.46.0
+
