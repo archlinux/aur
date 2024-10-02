@@ -1,7 +1,7 @@
 # Maintainer: Cacoro2 <marcos707@gmail.com>
 # Contributor: Christopher Wallace <christopher@wallaces.email>
 pkgname=(webull-desktop)
-pkgver=7.10.0
+pkgver=8.2.0
 pkgrel=1
 pkgdesc="Invest in stocks, ETFs, and options with Webull Financial, all commission-free, \$0 minimum deposit."
 arch=('x86_64')
@@ -9,8 +9,8 @@ url="https://webull.com"
 options=("!strip")
 license=('custom')
 depends=('hicolor-icon-theme' 'nss')
-source_x86_64=("https://u1sweb.webullfintech.com/us/Webull%20Desktop_7.10.0_7001000_global_x64signed.deb")
-sha512sums_x86_64=('6f4e63a32ecaabbf172dcc389e37748300ebf92d812dab740c03d3693deccb9a6d88928049bbf304619d4d15e43660e0a00680ea1339345a255514bca96fefe5')
+source_x86_64=("https://u1sweb.webullfintech.com/us/Webull%20Desktop_8.2.0_800200_global_x64signed.deb")
+sha512sums_x86_64=('3200c65fdf16d52cab8fe396c4b5d9e526f52fc05e69429e375ecc5ea7a87f22e4a77b57b6be25cf7ac1b72e1c7a1a4cf204fef96577106a4d3b11531ca8875f')
 
 package(){
   bsdtar --no-same-owner -xf  data.tar.xz -C "${pkgdir}"
