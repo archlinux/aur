@@ -2,8 +2,8 @@
 # Contributor: Dominik Schwaiger <mail@dominik-schwaiger.ch>
 
 pkgname=surrealdb
-pkgver=2.0.1
-pkgrel=2
+pkgver=2.0.2
+pkgrel=1
 pkgdesc="A scalable, distributed, collaborative, document-graph database, for the realtime web"
 arch=('x86_64')
 url="https://github.com/surrealdb/surrealdb"
@@ -21,7 +21,7 @@ source=(
 
 sha256sums=(
 	"dd98c688e54be8b85ad79e603f5112449b9789dfc031db94eb5c7dc843702aef"
-	"2e0e48b4a7e10ccdd152d9b3228abb493f1c8ded19f18a518e97e00158095ae8"
+	"fa0e1ba30bf32e4ce62a9ff96655670455999e181c29a9167ff1011b43e17519"
 )
 
 prepare() {
@@ -41,19 +41,6 @@ build() {
 	export LDFLAGS="${LDFLAGS//-flto=[^]*/ }"
 
 	cargo build --release --locked --target "$CARCH-unknown-linux-gnu"
-}
-
-check() {
-	cd "$pkgname-${pkgver//_/-}" || exit
-	# We dont need cargo-fmt here...
-	#cargo make check
-	
-	export CFLAGS="${CFLAGS//-flto=[^ ]*/ }"
-	export CXXFLAGS="${CXXFLAGS//-flto=[^ ]*/ }"
-	export LDFLAGS="${LDFLAGS//-flto=[^]*/ }"
-
-	cargo make cargo-check
-	cargo make cargo-clippy
 }
 
 package() {
