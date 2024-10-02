@@ -6,7 +6,7 @@ pkgdesc="A GUI application for Waydroid configuration and extension installation
 arch=('any')
 url="https://github.com/ayasa520/waydroid-helper"
 license=('GPL')
-depends=('python' 'python-bidict' 'python-httpx' 'python-gobject>=3.50.0' 'python-yaml' 'python-pywayland' 'python-cairo' 'gtk4' 'libadwaita' 'python-aiofiles')
+depends=('python' 'fakeroot' 'python-bidict' 'python-httpx' 'python-gobject>=3.50.0' 'python-yaml' 'python-pywayland' 'python-cairo' 'gtk4' 'libadwaita' 'python-aiofiles')
 makedepends=('git' 'python-setuptools' 'meson' 'ninja')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")

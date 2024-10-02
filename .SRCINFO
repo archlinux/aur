@@ -10,6 +10,7 @@ pkgbase = waydroid-helper
 	makedepends = meson
 	makedepends = ninja
 	depends = python
+	depends = fakeroot
 	depends = python-bidict
 	depends = python-httpx
 	depends = python-gobject>=3.50.0
