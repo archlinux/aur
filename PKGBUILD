@@ -5,7 +5,7 @@ pkgbase="python-${_pkgname}"
 # pkgname=("${pkgbase}" "${pkgbase}-docs") - docs require many new dependencies
 pkgname=$pkgbase
 pkgver=2.6.5
-pkgrel=2
+pkgrel=3
 pkgdesc="Manipulate jagged, chunky, and/or bitmasked arrays as easily as Numpy"
 url="https://github.com/scikit-hep/awkward"
 license=('BSD')
@@ -16,7 +16,7 @@ optdepends=('cuda: CUDA support'
             'python-numexpr: numexpr connector'
             'python-pandas: pandas connector')
 makedepends=('cmake' 'git' 'python-build' 'python-installer' 'python-hatchling' 'cuda' 'doxygen' 'python-sphinx' 'python-sphinx_rtd_theme' 'python-hatch-fancy-pypi-readme' 'python-scikit-build-core' 'python-nox')
-checkdepends=('python-pyaml' 'python-pytest' 'python-pytest-cov' 'python-hist' 'python-pandas' 'python-numexpr' 'python-pyarrow' 'python-scikit-hep-testdata' 'python-vector'
+checkdepends=('python-pyaml' 'python-pytest' 'python-hist' 'python-pandas' 'python-numexpr' 'python-pyarrow' 'python-scikit-hep-testdata' 'python-vector'
               'root' 'pybind11' 'rapidjson' 'python-fsspec')
 source=(
   "${pkgname}::git+https://github.com/scikit-hep/${_pkgname}#tag=v${pkgver}"
