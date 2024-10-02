@@ -1,0 +1,20 @@
+pkgbase = python-deltachat-bin
+	pkgdesc = Python bindings for the Delta Chat Core library - Binary package
+	pkgver = 1.142.7
+	pkgrel = 1
+	url = https://pypi.org/project/deltachat/
+	arch = x86_64
+	license = MPL-2.0
+	makedepends = python-wheel
+	makedepends = python-installer
+	depends = python>=3.12
+	depends = libdeltachat
+	depends = python-cffi
+	depends = python-pluggy
+	depends = python-idna
+	depends = python-imap-tools
+	noextract = deltachat-1.142.7-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
+	source = https://files.pythonhosted.org/packages/03/1e/5d575377a5c798df0d2f4630d3c99f2fc5b117c1cb80d5cf273bf2de3515/deltachat-1.142.7-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
+	sha256sums = b7eb1c7b110ccbfb23c17dca77d9ce1d857e2764d519532830669590d099c50d
+
+pkgname = python-deltachat-bin
