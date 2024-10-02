@@ -1,7 +1,7 @@
 # Maintainer: Andy Botting <andy@andybotting.com>
 
 pkgname=python-blazarclient
-pkgver=4.0.1
+pkgver=4.1.0
 pkgrel=1
 pkgdesc='Client library for the Blazar API'
 arch=(any)
@@ -13,22 +13,22 @@ depends=(python-pbr python-cliff python-prettytable python-oslo-i18n
          python-osc-lib)
 checkdepends=(python-oslotest python-fixtures python-stestr
               python-testtools)
-source=("$pkgname-$pkgver.tar.gz::https://opendev.org/openstack/$pkgname/archive/$pkgver.tar.gz")
-sha512sums=('b6cda005f0e7ed821fa094d8408dccb11dd438f07f5193c0dde1a46749c6ded82594e154a0023578951a03f60ed7b6a0e53a6a20c80137e21e08c37551a8f69e')
+source=("https://tarballs.opendev.org/openstack/$pkgname/$pkgname-$pkgver.tar.gz")
+sha512sums=('0202463b083fb45b48d3aa15dc029c3d80cb22281d93ee882a4ab2109f9ac73bbda99ab54fb4a9115c08357cbdd9b2ea928dd44ae94983ed5b4689d884adf992')
 
 export PBR_VERSION=$pkgver
 
 build() {
-  cd $pkgname
+  cd $pkgname-$pkgver
   python setup.py build
 }
 
 check() {
-  cd $pkgname
+  cd $pkgname-$pkgver
   stestr run
 }
 
 package() {
-  cd $pkgname
+  cd $pkgname-$pkgver
   python setup.py install --root="$pkgdir" --optimize=1
 }
