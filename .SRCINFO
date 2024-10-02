@@ -1,7 +1,7 @@
 pkgbase = gama-github-actions-manager
 	pkgdesc = Manage your GitHub Actions from Terminal with great UI
 	pkgver = 1.1.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/termkit/gama
 	arch = i686
 	arch = x86_64
