@@ -2,8 +2,8 @@
 
 pkgname=dosbox-x-sdl2
 _pkgname=dosbox-x
-pkgver=2024.07.01
-pkgrel=2
+pkgver=2024.10.01
+pkgrel=1
 pkgdesc="x86 emulator with builtin DOS, with patches and more features"
 arch=(i686 x86_64 aarch64)
 url="http://dosbox-x.com"
@@ -12,17 +12,13 @@ depends=(fluidsynth libxkbfile libxrandr sdl2_net libslirp)
 makedepends=(glu)
 optdepends=()
 conflicts=('dosbox-x-git' 'dosbox-x' 'dosbox-x-sdl2-git')
-source=(https://github.com/joncampbell123/dosbox-x/archive/dosbox-x-v${pkgver}.tar.gz
-	desktop.patch)
-sha256sums=('23462a3398303f8558e86973af9ba5d3d6d53bdaf324ec749610f2baf1dd449b'
-            '4494010f970246ed4a61ece2a3504ea48cc7dd212de9f7e7afaf6daa5e8d85a9')
+source=(https://github.com/joncampbell123/dosbox-x/archive/dosbox-x-v${pkgver}.tar.gz)
+sha256sums=('9940662759b9910e3c4549216be8db0278ceaaa80ace5b19f87b04d0b6ff8a3a')
 	    
 options=(!debug)
 
 prepare() {
   cd "$srcdir/dosbox-x-dosbox-x-v$pkgver"
-  # fix bug https://github.com/joncampbell123/dosbox-x/issues/5097
-  patch -p1 -i ../desktop.patch 
 }
 
 build() {
