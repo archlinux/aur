@@ -1,4 +1,0 @@
-[python-pyrsistent]
-source = "git"
-git = "https://github.com/tobgu/pyrsistent.git"
-prefix = "v"

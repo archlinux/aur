@@ -3,8 +3,8 @@
 
 pkgname=python-pyrsistent
 _name=${pkgname#python-}
-pkgver=0.19.3
-pkgrel=5
+pkgver=0.20.0
+pkgrel=1
 pkgdesc="Persistent/Functional/Immutable data structures"
 arch=('x86_64')
 license=('MIT')
@@ -18,7 +18,7 @@ makedepends=(
 )
 checkdepends=('python-pytest' 'python-hypothesis')
 source=("${_name}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha512sums=('6bb70b6fd65b5cd9f961a3199c2d90725aaa66fb869e4eba2143735e2f3a7e4ecdc782b3498acc2d92e263c3bed14cec8cc77324f4ebd08c300ba6735db5ecf7')
+sha512sums=('ac78c55e8687f12ae8729f2262a76a9257a6d6f4bbb5a01cb45ffb170d5c2044b1f26b3ed1359b2d722201507c32781f024b49b20d45faedf288823a98255a6f')
 
 build() {
   cd pyrsistent-$pkgver
