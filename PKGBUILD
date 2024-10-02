@@ -1,6 +1,6 @@
 # Maintainer: Martynas Mickevičius <self at 2m dot lt>
 pkgname=ucm-bin
-pkgver=0.5.26
+pkgver=0.5.27
 pkgrel=1
 pkgdesc='Unison language code manager'
 arch=('x86_64')
@@ -9,8 +9,8 @@ license=('custom')
 depends=('gmp' 'zlib')
 
 source=("ucm-$pkgver::https://github.com/unisonweb/unison/releases/download/release%2F$pkgver/ucm-linux.tar.gz"
-        "https://raw.githubusercontent.com/unisonweb/unison/release/$pkgver/LICENSE")
-sha256sums=('b74adcd5fe0f7e31d1bbfb73a16f2c27fe91d0a05b6103e2587aac21aa9cf926'
+        "LICENSE-$pkgver::https://raw.githubusercontent.com/unisonweb/unison/release/$pkgver/LICENSE")
+sha256sums=('8ececc8332504a1cbacf540db084708ed65facd386c14034d3549694a5a03280'
             '26537a8bd08791aef2f335fd296b00023b292546b8a1b35223c11abca39cd6ed')
 
 package() {
