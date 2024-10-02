@@ -4,6 +4,7 @@ pkgbase = envio
 	pkgrel = 1
 	url = https://envio-cli.github.io/home
 	arch = x86_64
+	arch = aarch64
 	arch = i686
 	license = Apache-2.0
 	license = MIT
