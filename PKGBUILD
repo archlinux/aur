@@ -15,11 +15,14 @@
 
 #PKGEXT=.pkg.tar
 pkgname=vmware-workstation-openrc
-pkgver=17.5.2
-_buildver=23775571
+pkgver=17.6.0
+_buildver=24238078
 _pkgver=${pkgver}_${_buildver}
 pkgrel=1
-_tools_version=12.4.0_23259341
+_tools_version=12.4.5_23787635
+_legacy_ver=17.5.2
+_legacy_buildver=23775571
+_legacy_tools_version=12.4.0_23259341
 pkgdesc='The industry standard for running multiple operating systems as virtual machines on a single Linux PC. Modified to use OpenRC.'
 arch=(x86_64)
 url='https://www.vmware.com/products/workstation-for-linux.html'
@@ -61,13 +64,13 @@ backup=(
 )
 source=(
   "https://softwareupdate.vmware.com/cds/vmw-desktop/ws/${pkgver}/${_buildver}/linux/core/VMware-Workstation-${_pkgver/_/-}.${CARCH}.bundle.tar"
-  "https://softwareupdate.vmware.com/cds/vmw-desktop/ws/${pkgver}/${_buildver}/linux/packages/vmware-tools-linux-${_tools_version/_/-}.${CARCH}.component.tar"
-  "https://softwareupdate.vmware.com/cds/vmw-desktop/ws/${pkgver}/${_buildver}/linux/packages/vmware-tools-linuxPreGlibc25-${_tools_version/_/-}.${CARCH}.component.tar"
-  "https://softwareupdate.vmware.com/cds/vmw-desktop/ws/${pkgver}/${_buildver}/linux/packages/vmware-tools-netware-${_tools_version/_/-}.${CARCH}.component.tar"
-  "https://softwareupdate.vmware.com/cds/vmw-desktop/ws/${pkgver}/${_buildver}/linux/packages/vmware-tools-solaris-${_tools_version/_/-}.${CARCH}.component.tar"
+  "https://softwareupdate.vmware.com/cds/vmw-desktop/ws/${_legacy_ver}/${_legacy_buildver}/linux/packages/vmware-tools-linux-${_legacy_tools_version/_/-}.${CARCH}.component.tar"
+  "https://softwareupdate.vmware.com/cds/vmw-desktop/ws/${_legacy_ver}/${_legacy_buildver}/linux/packages/vmware-tools-linuxPreGlibc25-${_legacy_tools_version/_/-}.${CARCH}.component.tar"
+  "https://softwareupdate.vmware.com/cds/vmw-desktop/ws/${_legacy_ver}/${_legacy_buildver}/linux/packages/vmware-tools-netware-${_legacy_tools_version/_/-}.${CARCH}.component.tar"
+  "https://softwareupdate.vmware.com/cds/vmw-desktop/ws/${_legacy_ver}/${_legacy_buildver}/linux/packages/vmware-tools-solaris-${_legacy_tools_version/_/-}.${CARCH}.component.tar"
   "https://softwareupdate.vmware.com/cds/vmw-desktop/ws/${pkgver}/${_buildver}/linux/packages/vmware-tools-windows-${_tools_version/_/-}.${CARCH}.component.tar"
-  "https://softwareupdate.vmware.com/cds/vmw-desktop/ws/${pkgver}/${_buildver}/linux/packages/vmware-tools-winPre2k-${_tools_version/_/-}.${CARCH}.component.tar"
-  "https://softwareupdate.vmware.com/cds/vmw-desktop/ws/${pkgver}/${_buildver}/linux/packages/vmware-tools-winPreVista-${_tools_version/_/-}.${CARCH}.component.tar"
+  "https://softwareupdate.vmware.com/cds/vmw-desktop/ws/${_legacy_ver}/${_legacy_buildver}/linux/packages/vmware-tools-winPre2k-${_legacy_tools_version/_/-}.${CARCH}.component.tar"
+  "https://softwareupdate.vmware.com/cds/vmw-desktop/ws/${_legacy_ver}/${_legacy_buildver}/linux/packages/vmware-tools-winPreVista-${_legacy_tools_version/_/-}.${CARCH}.component.tar"
 
   'vmware-bootstrap'
   'vmware-vix-bootstrap'
@@ -85,12 +88,12 @@ source=(
   'vmnet.patch'
 )
 sha256sums=(
-  'f4eb354eb2a417bc81f9d33001a29ed1150b41eaa3364291cbc139475247414f'
+  '5ec0b5f08961cc943369168b676f5a5cf6c7e7886043508f7226dab37e78cb80'
   'd862be0d12796134b40e5ffc7534a5e6161b8898355fe32ca8f705a3806cbfe4'
   'd79f79f17e5f37399046d16be3967e0cff3c9474e2cb6ea3f2c3ebea3ff68cea'
   '4643fff3ed4f8af5a56a1c4c2084fa7327d78e58ee9b0687b98390a4b4a1ac14'
   '196c842f758b813afb202b0db2d09d457fccafac212ca41ef3277dfe9ceaf9ec'
-  '3a6a2ea1bf0262830be5f8b5e0636654101a20d62fe3eb65565a9afa4a4bafbd'
+  'bf2e5ff35f06c1447bff4c9dc4c6faf1f1ddd0af048eed1cfca9d661b15cdc2c'
   'd4e9884f5f11cef4e261023d895eba5b57a8a80623bff0de8b3f1c47154b2a11'
   '20abd21da43ac31741f8bb26db1ae7d8f4ef4c5082c9a2cc3ae5da494f1b9529'
 
@@ -106,8 +109,8 @@ sha256sums=(
 
   '10562d11d50edab9abc2b29c8948714edcb9b084f99b3766d07ddd21259e372e'
   '273d4357599a3e54259c78cc49054fef8ecfd2c2eda35cbcde3a53a62777a5ac'
-  '2bd592c28c383264a14167ddca8686912ddbadb1ba16d40560d75b082d439ed7'
-  'b4fd63440e6829d8d73055d23e451386837683e2ac1e84549d58a748b486743a'
+  '4ef2944491390ecf8e924bffbad9069cacf7083d51a8bf655473b52143deb401'
+  'e02b8f37ddb78cb8463f4fe33c8ca7f131ddf666ea0bb3d34c6bf74262a9401c'
 )
 options=(!strip emptydirs !debug)
 
@@ -177,13 +180,13 @@ prepare() {
 
   bash \
     "$(readlink -f "$srcdir/VMware-Workstation-${_pkgver/_/-}.${CARCH}.bundle")" \
-    --install-component "vmware-tools-linux-${_tools_version/_/-}.${CARCH}.component" \
-    --install-component "vmware-tools-linuxPreGlibc25-${_tools_version/_/-}.${CARCH}.component" \
-    --install-component "vmware-tools-netware-${_tools_version/_/-}.${CARCH}.component" \
-    --install-component "vmware-tools-solaris-${_tools_version/_/-}.${CARCH}.component" \
+    --install-component "vmware-tools-linux-${_legacy_tools_version/_/-}.${CARCH}.component" \
+    --install-component "vmware-tools-linuxPreGlibc25-${_legacy_tools_version/_/-}.${CARCH}.component" \
+    --install-component "vmware-tools-netware-${_legacy_tools_version/_/-}.${CARCH}.component" \
+    --install-component "vmware-tools-solaris-${_legacy_tools_version/_/-}.${CARCH}.component" \
     --install-component "vmware-tools-windows-${_tools_version/_/-}.${CARCH}.component" \
-    --install-component "vmware-tools-winPre2k-${_tools_version/_/-}.${CARCH}.component" \
-    --install-component "vmware-tools-winPreVista-${_tools_version/_/-}.${CARCH}.component" \
+    --install-component "vmware-tools-winPre2k-${_legacy_tools_version/_/-}.${CARCH}.component" \
+    --install-component "vmware-tools-winPreVista-${_legacy_tools_version/_/-}.${CARCH}.component" \
     --extract "$extracted_dir"
 
 if [ -n "$_enable_macOS_guests" ]; then

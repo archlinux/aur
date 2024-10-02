@@ -12,6 +12,18 @@
  
  # Header directory for the running kernel
  ifdef LINUXINCLUDE
+Fix from https://communities.vmware.com/t5/VMware-Workstation-Pro/Workstation-17-5-0-vmware-clk-spinning-on-CPU-when-Linux-VMs-are/m-p/2996282
+--- a/vmmon-only/linux/hostif.c
++++ b/vmmon-only/linux/hostif.c
+@@ -3351,7 +3351,7 @@
+     * threads running in the monitor on all physical CPUs.
+     */
+ 
+-   if (rate > MIN_RATE) {
++   if (false) {
+       if (!linuxState.fastClockThread) {
+          struct task_struct *rtcTask;
+ 
 From 4c2a103fd2d71f2084f1fe7ceacb816b9832ffa2 Mon Sep 17 00:00:00 2001
 From: Michal Kubecek <mkubecek@suse.cz>
 Date: Sun, 22 Oct 2023 23:24:05 +0200
@@ -48,7 +60,7 @@ diff --git a/vmmon-only/include/pgtbl.h b/vmmon-only/include/pgtbl.h
 index 3f43c62..7eaa49a 100644
 --- a/vmmon-only/include/pgtbl.h
 +++ b/vmmon-only/include/pgtbl.h
-@@ -25,6 +25,7 @@
+@@ -26,6 +26,7 @@
  #include "compat_pgtable.h"
  #include "compat_spinlock.h"
  #include "compat_page.h"
@@ -56,7 +68,7 @@ index 3f43c62..7eaa49a 100644
  
  
  /*
-@@ -45,6 +46,7 @@
+@@ -46,6 +47,7 @@
   *-----------------------------------------------------------------------------
   */
  
@@ -64,7 +76,7 @@ index 3f43c62..7eaa49a 100644
  static INLINE MPN
  PgtblVa2MPNLocked(struct mm_struct *mm, // IN: Mm structure of a process
                    VA addr)              // IN: Address in the virtual address
-@@ -106,6 +108,7 @@ PgtblVa2MPNLocked(struct mm_struct *mm, // IN: Mm structure of a process
+@@ -107,6 +109,7 @@ PgtblVa2MPNLocked(struct mm_struct *mm, // IN: Mm structure of a process
     }
     return mpn;
  }
@@ -72,7 +84,7 @@ index 3f43c62..7eaa49a 100644
  
  
  /*
-@@ -125,6 +128,8 @@ PgtblVa2MPNLocked(struct mm_struct *mm, // IN: Mm structure of a process
+@@ -126,6 +129,8 @@ PgtblVa2MPNLocked(struct mm_struct *mm, // IN: Mm structure of a process
   *-----------------------------------------------------------------------------
   */
  
@@ -81,7 +93,7 @@ index 3f43c62..7eaa49a 100644
  static INLINE MPN
  PgtblVa2MPN(VA addr)  // IN
  {
-@@ -139,4 +144,24 @@ PgtblVa2MPN(VA addr)  // IN
+@@ -140,4 +145,24 @@ PgtblVa2MPN(VA addr)  // IN
     return mpn;
  }
  
@@ -106,144 +118,3 @@ index 3f43c62..7eaa49a 100644
 +#endif /* COMPAT_LINUX_VERSION_CHECK_LT(6, 5, 0) */
 +
  #endif /* __PGTBL_H__ */
-From 2c6d66f3f1947384038b765c897b102ecdb18298 Mon Sep 17 00:00:00 2001
-From: Michal Kubecek <mkubecek@suse.cz>
-Date: Fri, 12 Jan 2024 08:30:33 +0100
-Subject: [PATCH] modules: fix build with -Wmissing-prototypes
-
-Mainline commit 0fcb70851fbf ("Makefile.extrawarn: turn on
-missing-prototypes globally") in 6.8-rc1 enables -Wmissing-prototypes
-globally, revealing a lot of unclean code and also some actual problems.
-This is also the case in vmmon and vmnet modules.
-
-Most of them are addressed by making functions used only within one file
-static. The missing prototype of random_get_entropy_fallback() is handled
-by including <linux/timex.h> rather than <asm/timex.h>.
-
-Finally, there are four functions in vmnet module which are actually used
-in multiple files but instead of proper declarations, their prototype is
-duplicated in vmnet-only/driver.c, risking that the two copies won't match
-(which actually happened in one case). The cleanest solution would be
-creating separate header files for them (bridge.h, netif.h, userif.h and
-vnetUserListener.h) and including them in the respective source file and
-driver.c. As the developers already handle similar cases by simply putting
-the declarations into vnetInt.h, let us do the same to keep things simple.
----
- vmmon-only/common/task.c  |  2 +-
- vmmon-only/common/vmx86.c |  6 +++---
- vmmon-only/linux/driver.c |  4 ++--
- vmmon-only/linux/hostif.c |  6 +++---
- vmnet-only/bridge.c       |  2 +-
- vmnet-only/driver.c       | 16 ++--------------
- vmnet-only/vnetInt.h      |  7 +++++++
- 7 files changed, 19 insertions(+), 24 deletions(-)
-
-diff --git a/vmmon-only/common/task.c b/vmmon-only/common/task.c
-index 5d34cf4d..f3752069 100644
---- a/vmmon-only/common/task.c
-+++ b/vmmon-only/common/task.c
-@@ -544,7 +544,7 @@ Task_Terminate(void)
-  *-----------------------------------------------------------------------------
-  */
- 
--Selector
-+static Selector
- TaskGetFlatWriteableDataSegment(void)
- {
-    DTR hostGDTR;
-diff --git a/vmmon-only/common/vmx86.c b/vmmon-only/common/vmx86.c
-index 86e52fb4..cf64b123 100644
---- a/vmmon-only/common/vmx86.c
-+++ b/vmmon-only/common/vmx86.c
-@@ -49,7 +49,7 @@
- #include "x86svm.h"
- #include "x86cpuid_asm.h"
- #if defined(__linux__)
--#include <asm/timex.h>
-+#include <linux/timex.h>
- #endif
- #include "perfctr.h"
- #include "x86vtinstr.h"
-@@ -696,7 +696,7 @@ Vmx86FreeCrossPages(VMDriver *vm)
-  *-----------------------------------------------------------------------------
-  */
- 
--void
-+static void
- Vmx86FreeVMDriver(VMDriver *vm)
- {
-    Vmx86_Free(vm->ptRootMpns);
-@@ -729,7 +729,7 @@ Vmx86FreeVMDriver(VMDriver *vm)
-  *-----------------------------------------------------------------------------
-  */
- 
--VMDriver *
-+static VMDriver *
- Vmx86AllocVMDriver(uint32 numVCPUs)
- {
-    VMDriver *vm = Vmx86_Calloc(1, sizeof *vm, TRUE);
-diff --git a/vmmon-only/linux/driver.c b/vmmon-only/linux/driver.c
-index 3d8b7228..ab8e2dc4 100644
---- a/vmmon-only/linux/driver.c
-+++ b/vmmon-only/linux/driver.c
-@@ -267,7 +267,7 @@ LinuxDriverInitTSCkHz(void)
-  *----------------------------------------------------------------------
-  */
- 
--int
-+static int
- LinuxDriverInit(void)
- {
-    int retval;
-@@ -335,7 +335,7 @@ LinuxDriverInit(void)
-  *----------------------------------------------------------------------
-  */
- 
--void
-+static void
- LinuxDriverExit(void)
- {
-    /*
-diff --git a/vmmon-only/linux/hostif.c b/vmmon-only/linux/hostif.c
-index 5d08f33a..c1e6c671 100644
---- a/vmmon-only/linux/hostif.c
-+++ b/vmmon-only/linux/hostif.c
-@@ -2922,7 +2922,7 @@ HostIF_CallOnEachCPU(void (*func)(void*), // IN: function to call
-  *-----------------------------------------------------------------------------
-  */
- 
--Bool
-+static Bool
- HostIFCheckTrackedMPN(VMDriver *vm, // IN: The VM instance
-                       MPN mpn)      // IN: The MPN
- {
-@@ -3042,7 +3042,7 @@ HostIF_ReadPhysical(VMDriver *vm,      // IN: The VM instance
-  *----------------------------------------------------------------------
-  */
- 
--int
-+static int
- HostIFWritePhysicalWork(MA ma,             // MA to be written to
-                         VA64 addr,         // src data to write
-                         Bool kernelBuffer, // is the buffer in kernel space?
-@@ -3201,7 +3201,7 @@ HostIF_GetCurrentPCPU(void)
-  *----------------------------------------------------------------------
-  */
- 
--int
-+static int
- HostIFStartTimer(Bool rateChanged,  //IN: Did rate change?
-                  unsigned int rate) //IN: current clock rate
- {
-Fix from https://communities.vmware.com/t5/VMware-Workstation-Pro/Workstation-17-5-0-vmware-clk-spinning-on-CPU-when-Linux-VMs-are/m-p/2996282
---- a/vmmon-only/linux/hostif.c
-+++ b/vmmon-only/linux/hostif.c
-@@ -3350,7 +3350,7 @@
-     * threads running in the monitor on all physical CPUs.
-     */
- 
--   if (rate > MIN_RATE) {
-+   if (false) {
-       if (!linuxState.fastClockThread) {
-          struct task_struct *rtcTask;
- 
