@@ -76,7 +76,6 @@ build() (
   printf "Using $(($(nproc) - 1)) cores\n"
 
   make -j $(($(nproc) - 1)) -C "$srcdir/build_kf6/kdecoration/config/"
-  make -j $(($(nproc) - 1)) -C "$srcdir/build_kf6/colors/"
   make -j $(($(nproc) - 1)) -C "$srcdir/build_kf6/"
 )
 
