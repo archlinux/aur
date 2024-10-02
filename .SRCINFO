@@ -1,7 +1,7 @@
 pkgbase = ruby-timers
 	pkgdesc = Schedule procs to run after a certain time, or at periodic intervals, using any API that accepts a timeout
 	pkgver = 4.3.5
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/celluloid/timers
 	arch = any
 	license = MIT
