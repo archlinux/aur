@@ -10,7 +10,7 @@ WITH_KNOTIFICATION=0
 # WITH_DARK_ICON = 1 -> Replace the green icon by a dark one (dark themes support)
 WITH_DARK_ICON=1
 
-PARALLEL_JOBS=8
+PARALLEL_JOBS=$(nproc)
 
 pkgname=octopi-git
 pkgver=0.16.2.r31.d98b3541
