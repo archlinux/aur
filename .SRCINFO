@@ -1,0 +1,14 @@
+pkgbase = rolr-bin
+	pkgdesc = Host role manager built on top of ansible
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/thorio/rolr
+	arch = x86_64
+	license = GPL3
+	provides = rolr
+	conflicts = rolr
+	options = !strip
+	source = https://github.com/thorio/rolr/releases/download/v1.0.1/rolr-x86_64.pkg.tar.zst
+	sha256sums = bb811c3fe2541fe9ee0f09e13cc9f66eb71fe63e76e6e4766b81e3abb90e1811
+
+pkgname = rolr-bin
