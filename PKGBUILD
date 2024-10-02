@@ -1,7 +1,7 @@
 # Maintainer: Chooks22
 
 pkgname=migu
-pkgver=5.6.1
+pkgver=5.6.2
 pkgrel=1
 pkgdesc="Stream anime torrents, real-time with no waiting for downloads"
 arch=("x86_64")
@@ -12,7 +12,7 @@ options=("!strip")
 source=("https://github.com/NoCrypt/migu/releases/download/v$pkgver/linux-Migu-$pkgver.AppImage"
         "migu.png"
         "migu.desktop")
-sha256sums=("a969123d2b651dcb7fd7209d54d92e6d4a278b3b37fdd815e912525ebe605214"
+sha256sums=("799117af104fbdfb5ea0108a0c6065005cd0a1bf586b5d5c6d1aac6f08143c8c"
             "ba2fd640b2fa465cb18c3f028b46f2faabedc3103739ef3fe0c369f620b88bb9"
             "adb55a394a24048016db91b62a9124f8617d2dfc58f1d93fbfb819f1902b5341")
 
