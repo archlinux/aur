@@ -1,4 +1,4 @@
-# Maintainer: Ethan Cheng <ethanrc0528 at gmail dot com>
+# Maintainer: Ethan Cheng <ethan@nijika.org>
 pkgname='zwc-git'
 pkgver=0.1.1.r3.gfe99965
 pkgrel=1
