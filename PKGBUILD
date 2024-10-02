@@ -1,7 +1,7 @@
 # Maintainer: Ingo Meyer <IJ_M@gmx.de>
 
 pkgname="radiotray-ng-mpris"
-pkgver="0.1.2"
+pkgver="0.1.3"
 pkgrel="1"
 pkgdesc="A wrapper script for Radiotray-NG which provides an MPRIS2 interface."
 arch=("any")
@@ -16,7 +16,7 @@ depends=(
 )
 makedepends=("python-setuptools")
 source=("https://github.com/IngoMeyer441/radiotray-ng-mpris/archive/v${pkgver}.tar.gz")
-sha256sums=("36696eb2a0f1ff1522fcbc880c8d992f7bb534ef8d8758425603b91b917cc2b1")
+sha256sums=("ca42fc5e6079ebd408af61504c5d0ea27cab16d6885a428180c4f2dcf8e0e70c")
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}" || return
