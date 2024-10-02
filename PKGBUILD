@@ -5,12 +5,13 @@ _pkgname=jan
 
 pkgname="${_pkgname}"-appimage
 pkgver=0.5.4
-pkgrel=1
+pkgrel=2
 pkgdesc='Turn your computer into an AI computer'
 arch=('x86_64')
 url='https://jan.ai/'
 license=('AGPL-3.0-only')
 depends=('zlib' 'hicolor-icon-theme' 'fuse2')
+provides=("${_pkgname}")
 options=(!strip !debug)
 _appimage="${pkgname}-${pkgver}.AppImage"
 source_x86_64=("${_appimage}::https://github.com/janhq/jan/releases/download/\
