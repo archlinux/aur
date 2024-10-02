@@ -1,0 +1,32 @@
+CONFIG_TEMPLATE='################################
+# default config file for carl #
+################################
+
+# the name of the carl theme:
+theme = "default"
+
+# you can include multiple ics files:
+[[ical]]
+file = "carl.ics"
+
+#[[ical]]
+#file = "birthdays.ics"
+#stylenames =  ['\'FGPurple\'']
+#weight = 3
+'
+
+post_install() {
+    # Check if the user home exists
+    for userhome in /home/*; do
+        if [ -d "$userhome" ]; then
+            # Cria um arquivo na home de cada usuário
+            if [ ! -f "$userhome/.config/carl/config.toml" ]; then
+                mkdir -p "$userhome/.config/carl"
+                cd "$userhome/.config/carl" || return 1; echo "folder not found in $userhome"
+                touch "config.toml"
+                echo "$CONFIG_TEMPLATE" > "config.toml"
+                chown -R "${userhome#\/home\/}":"${userhome#\/home\/}" "$userhome/.config/carl"
+            fi
+        fi
+    done
+}
