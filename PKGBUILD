@@ -3,14 +3,14 @@
 pkgname=python-wstools
 pkgver=0.4.10
 _commit=c7f6c2973f5c598affa7def61d87e1775a6ac1d1
-pkgrel=8
+pkgrel=9
 pkgdesc="WSDL parsing services package for Web Services for Python"
 arch=('any')
 url="https://github.com/pycontribs/wstools"
 license=('BSD-3-Clause')
 depends=('python-six')
 makedepends=('git' 'python-pbr' 'python-setuptools' 'python-build' 'python-installer' 'python-wheel')
-checkdepends=('python-pytest' 'autopep8' 'python-pytest-cov')
+checkdepends=('python-pytest')
 source=("git+https://github.com/pycontribs/wstools.git#commit=$_commit"
         python310.patch
 	unittest-assertequal-deprecated-alias.patch)

@@ -1,13 +1,11 @@
 pkgbase = python-wstools
 	pkgdesc = WSDL parsing services package for Web Services for Python
 	pkgver = 0.4.10
-	pkgrel = 8
+	pkgrel = 9
 	url = https://github.com/pycontribs/wstools
 	arch = any
 	license = BSD-3-Clause
 	checkdepends = python-pytest
-	checkdepends = autopep8
-	checkdepends = python-pytest-cov
 	makedepends = git
 	makedepends = python-pbr
 	makedepends = python-setuptools
