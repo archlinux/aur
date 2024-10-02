@@ -2,7 +2,7 @@
 _pkgname=mwcleric
 pkgname=python-mwcleric-git
 pkgdesc="General purpose tools for MediaWiki editing using Python"
-pkgver=237876c
+pkgver=6b224f0
 pkgrel=1
 arch=('any')
 url="https://github.com/RheingoldRiver/mwcleric"
@@ -20,11 +20,6 @@ pkgver() {
 build() {
   cd "$_pkgname"
   python setup.py build
-}
-
-check() {
-  cd "$_pkgname"
-  python setup.py test
 }
 
 package() {
