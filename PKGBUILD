@@ -3,7 +3,7 @@
 
 pkgname=modpoll-bin
 _pkgname=modpoll
-pkgver=3.13
+pkgver=3.15
 pkgrel=1
 pkgdesc="A command line based Modbus master simulator and test utility."
 arch=("x86_64")
@@ -12,7 +12,7 @@ license=('custom')
 provides=("$_pkgname")
 changelog="CHANGELOG"
 source=("https://www.modbusdriver.com/downloads/$_pkgname.$pkgver.tgz")
-b2sums=('2a838badd6a50ba8a4bc3c7862219679a1d2d3a07ce33b0ab4791bd692831a4225779ee18750558d3dd10c2f6f681d2f71170dacda49220c1204f4a601f3d0cf')
+b2sums=('a21e681cbc37399a3e7b33baa4284c0920e88320a27a832ee437de400c8224f31088b2045e47ec4332ea9d10cdd2027454c1a4b6105b12fb1ba6cef8cbf2febc')
 
 package() {
         cd "$srcdir/$_pkgname"

@@ -1,5 +1,14 @@
 Release history
 
+  Version 3.15 (2024-09-27)
+
+     * Add support to display integer values as unsigned values
+
+  Version 3.14 (2024-09-07)
+
+     * Read  device  identification  for  a  slave  conformity level of 1
+       triggered wrongly an Invalid reply error
+
   Version 3.13 (2024-08-09)
 
      * Fixed bug regards display of 64-bit input registers
