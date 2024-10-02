@@ -1,7 +1,7 @@
 # Maintainer: tarball <bootctl@gmail.com>
 
 pkgname=letmein
-pkgver=5.0.0
+pkgver=5.1.0
 pkgrel=1
 pkgdesc='Authenticating port knocker'
 arch=(i686 x86_64 armv7h aarch64)
@@ -12,7 +12,7 @@ depends=(glibc gcc-libs nftables)
 install=$pkgname.install
 backup=(etc/letmein.conf etc/letmeind.conf)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgname-$pkgver.tar.gz")
-sha256sums=('3220aea82c2508427cd8f8247a25495d0d3e1d3a01d1dfc4f9981afd3487f5a5')
+sha256sums=('6af934acfb728c55d15e90e10ac95c440c7a5bdb4a1313c7c954b61c209194d9')
 
 build() {
   export RUSTUP_TOOLCHAIN=stable
@@ -37,7 +37,7 @@ package() {
     target/release/letmein{,d,fwd}
 
   install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname/" \
-    README.md nftables.conf
+    README.md CONFIGURATION.md nftables.conf
 
   install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname/" \
     LICENSE-{APACHE,MIT}
