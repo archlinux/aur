@@ -1,17 +1,17 @@
 # Maintainer: Jorge Hernández <jfernandohernandez28@gmail.com>
 pkgname="battery-advisor"
-pkgver=0.1.0
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="A simple tool to monitor and notify about battery status. Built with Python."
 arch=('any')
 url="https://github.com/fer-hnndz/battery-advisor"
 license=('MIT')
-depends=("python")
+depends=("python" "python-psutil" "python-toml" "python-gobject" "libnotify" "python-pystray")
 backup=("etc/battery-advisor/defaultSettings.toml")
 makedepends=(python-build python-installer python-wheel)
 _name=${pkgname#python-}
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name//-/_}/${_name//-/_}-$pkgver.tar.gz")
-sha256sums=("e85608ed5c7674a0d682cc36a5ce360c91871e9c481157ddf84e66ff7cb47590")
+sha256sums=(d4a6f15ded5961d37566e232fccdc4b52d25ea545d67697f55da6778aa5a8205)
 validpgpkeys=()
 
 prepare() {
@@ -27,6 +27,9 @@ package() {
     cd "$srcdir/${_name//-/_}-$pkgver"
     python -m installer --destdir="$pkgdir" dist/*.whl
 
-    # Install the defaultSettings.toml file to /etc/battery-advisor/
+    # Install the defaultSettings.toml file to /etc/battery-advisor
     install -Dm644 "$srcdir/battery_advisor-$pkgver/defaultSettings.toml" "$pkgdir/etc/battery-advisor/defaultSettings.toml"
+
+    # Install license
+    install -Dm644 "$srcdir/battery_advisor-$pkgver/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
