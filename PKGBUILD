@@ -2,7 +2,7 @@
 
 _pkgname=xdelta3-cross-gui
 pkgname=$_pkgname-bin
-pkgver=1.6.1
+pkgver=1.6.2
 pkgrel=1
 pkgdesc="A cross-platform GUI for creating xDelta3 patches (binary release)"
 url="https://github.com/dan0v/xdelta3-cross-gui"
@@ -14,7 +14,7 @@ makedepends=('fuse2')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=("$_pkgname-$pkgver.tar.gz::$url/releases/download/$pkgver/${_pkgname}_linux_AppImage_x86_64.tar.gz")
-sha256sums=('3b369cbad11e5c797534ae550eb5a86e6e4ef9165bdbca31bf8c51dabefa263b')
+sha256sums=('8de414362d71863d1c9bd7e6d8316dd14cb3efefa71d8ec9062f3868f1639c49')
 
 prepare() {
 # Extract the AppImage
@@ -35,12 +35,13 @@ prepare() {
 
 package() {
 # Create directories
-  mkdir -p "$pkgdir/usr/bin" "$pkgdir/usr/share" "$pkgdir/opt/$_pkgname"
+  mkdir -p "$pkgdir/usr/bin" "$pkgdir/opt/$_pkgname"
 # Clean up
   cd squashfs-root/usr/bin/Assets/exec
   rm xdelta3_mac xdelta3_x86_64_win.exe
   cd ..
-  mv doc "$pkgdir/usr/share"
+  install -Dm644 doc/1.Readme.txt -t "$pkgdir/usr/share/doc/$_pkgname"
+  rm -dr doc
 # Install
   cd "$srcdir"/squashfs-root
   install -Dm644 icn.png "$pkgdir/usr/share/icons/hicolor/96x96/apps/$_pkgname.png"
