@@ -1,0 +1,4 @@
+[gama-github-actions-manager]
+source = "git"
+git = "https://github.com/termkit/gama.git"
+prefix = "v"
