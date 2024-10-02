@@ -2,7 +2,7 @@
 
 pkgname=xame
 pkgver=3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="XFCE Applications Menu Editor"
 arch=('any')
 url="http://www.redsquirrel87.com/XAME.html"
