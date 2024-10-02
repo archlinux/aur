@@ -10,23 +10,26 @@ WITH_KNOTIFICATION=0
 # WITH_DARK_ICON = 1 -> Replace the green icon by a dark one (dark themes support)
 WITH_DARK_ICON=1
 
+PARALLEL_JOBS=8
+
 pkgname=octopi-git
-pkgver=0.14.0.r4.2db10e3b
+pkgver=0.16.2.r31.d98b3541
 pkgrel=1
 pkgdesc="This is Octopi, a powerful Pacman frontend using Qt libs"
 arch=('x86_64')
 url="https://github.com/aarnt/octopi"
 license=('GPL2')
 depends=(
-  'alpm_octopi_utils-git'
+  'sudo'
   'pkgfile'
   'qtermwidget'
-  'sudo'
+  'qt-sudo'
+  'alpm_octopi_utils-git'
 )
 makedepends=(
   'git'
-  'qt5-base'
-  'qt5-tools'
+  'qt6-base'
+  'qt6-tools'
 )
 provides=(
   'octopi'
@@ -77,29 +80,34 @@ prepare() {
 build() {
   cd "${pkgname/-git/}" || exit
   echo "Starting build..."
-  qmake-qt5 PREFIX=/usr QMAKE_CFLAGS="${CFLAGS}" QMAKE_CXXFLAGS="${CXXFLAGS}" QMAKE_LFLAGS="${LDFLAGS}" octopi.pro
-  make
+  qmake6 PREFIX=/usr MAKEFLAGS="${MAKEFLAGS} -j${PARALLEL_JOBS}" QMAKE_CFLAGS="${CFLAGS} -j4" QMAKE_CXXFLAGS="${CXXFLAGS}" QMAKE_LFLAGS="${LDFLAGS}" octopi.pro
+  make -j${PARALLEL_JOBS}
 
-  _subdirs="cachecleaner helper notifier repoeditor sudo"
+  _subdirs="cachecleaner helper notifier repoeditor"
 
   for _subdir in $_subdirs; do
     pushd $_subdir
     echo "Building octopi-$_subdir..."
-    qmake-qt5 PREFIX=/usr QMAKE_CFLAGS="${CFLAGS}" QMAKE_CXXFLAGS="${CXXFLAGS}" QMAKE_LFLAGS="${LDFLAGS}" "octopi-$_subdir.pro"
-    make
+    qmake6 PREFIX=/usr MAKEFLAGS="${MAKEFLAGS} -j${PARALLEL_JOBS}" QMAKE_CFLAGS="${CFLAGS}" QMAKE_CXXFLAGS="${CXXFLAGS}" QMAKE_LFLAGS="${LDFLAGS}" "octopi-$_subdir.pro"
+    make -j${PARALLEL_JOBS}
     popd
   done
 }
 
 package() {
   cd "${pkgname/-git/}" || exit
+
+  install -d "$pkgdir"/usr/local/bin
+
   make INSTALL_ROOT="${pkgdir}" install
 
-  _subdirs="cachecleaner helper notifier repoeditor sudo"
+  _subdirs="cachecleaner helper notifier repoeditor"
 
   for _subdir in $_subdirs; do
     pushd $_subdir
     make INSTALL_ROOT="${pkgdir}" install
     popd
   done
+
+  ln -s /usr/bin/qt-sudo "$pkgdir"/usr/local/bin/qt-sudo
 }
