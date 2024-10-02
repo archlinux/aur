@@ -10,7 +10,7 @@ arch=("any")
 provides=("pokego")
 conflicts=("pokego" "pokego-git")
 source=("https://github.com/rubiin/pokego/releases/download/v$pkgver/pokego-$pkgver.tar.gz")
-sha256sums=("f8fd0b77a5b440dabb7032cd95e33bc71daf3bc00972c2571ddad26783eca08")
+sha256sums=("d349ee1f417239be356df1dedfd08e664712d391e2534982b0009a37f4388499")
 
 package() {
     install -Dm755 pokego -t "$pkgdir/usr/bin"
