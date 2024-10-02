@@ -1,112 +1,162 @@
-# Maintainer: Peter Jung ptr1337 <admin@ptr1337.dev>
-# Maintainer: SoulHarsh007 <admin@soulharsh007.dev>
+# Maintainer:
+# Contributor: Peter Jung ptr1337 <admin@ptr1337.dev>
+# Contributor: SoulHarsh007 <admin@soulharsh007.dev>
 # Contributor: MedzikUser <nivua1fn@duck.com>
 
-pkgname=forkgram
-_pkgname=frk
+_pkgname="forkgram"
+pkgname="$_pkgname"
 pkgver=5.5.6
-pkgrel=2
-pkgdesc='Fork of Telegram Desktop messaging app.'
-arch=('x86_64')
+pkgrel=3
+pkgdesc="Fork of the Telegram Desktop messaging app"
 url="https://github.com/Forkgram/tdesktop"
 license=('GPL-3.0-or-later')
+arch=('x86_64')
+
 depends=(
-  abseil-cpp
   ada
   ffmpeg
-  glib2
-  hicolor-icon-theme
   hunspell
+  jemalloc
   kcoreaddons
   libdispatch
-  libsigc++-3.0
+  libpipewire
   libvpx
   libxcomposite
   libxdamage
   libxrandr
   libxtst
-  lz4
   minizip
   openal
   openh264
-  openssl
-  pipewire
+  opus
   protobuf
-  qt6-imageformats
+  qt6-base
+  qt6-declarative
   qt6-svg
   qt6-wayland
   rnnoise
+  xcb-util-keysyms
   xxhash
 )
 makedepends=(
   boost
   cmake
-  dos2unix
   extra-cmake-modules
   fmt
   git
   glib2-devel
   gobject-introspection
   libtg_owt
-  meson
   microsoft-gsl
   mm-common
   ninja
   perl-xml-parser
   plasma-wayland-protocols
   python
+  python-packaging
   range-v3
   tl-expected
   wayland-protocols
 )
-optdepends=('webkit2gtk: embedded browser features'
-            'xdg-desktop-portal: desktop integration')
-provides=(forkgram-bin)
-conflicts=(forkgram-bin telegram-desktop)
-source=("https://github.com/Forkgram/tdesktop/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-full.tar.gz"
-        "${pkgname}.desktop")
-sha512sums=('594311efa25b0027b12659320e27637980c50e0c49c7310b7cfdd261e210acd510fed173c1f1fdd694f92151a41d4a02788ee80a8d6e860bab2d7d79691880a8'
-            'd6d54a5a396c0a84645ca5f38cd2d0c774d1a00f081cdf6151228b581ff1c05234550d4829aab4fe2221dec8e0477199da5a0cb1bc3a60fa1fbfe0336db365dd')
+optdepends=(
+  'webkit2gtk: embedded browser features'
+  'xdg-desktop-portal: desktop integration'
+)
 
-prepare() {
-    cd ${_pkgname}-v${pkgver}-full
-}
+provides=("forkgram-bin")
+conflicts=("forkgram-bin")
+
+options=('!debug' '!emptydirs')
+
+: ${_patch_commit:='b1060b9deef05a3efaadf61d3e99dafa155710ea'}
+
+_pkgsrc="frk-v$pkgver-full"
+_pkgext="tar.gz"
+source=(
+  "$_pkgname-$pkgver.$_pkgext"::"https://github.com/Forkgram/tdesktop/releases/download/v$pkgver/$_pkgsrc.$_pkgext"
+  "tg-5.5.5-fix_build_with_cppgir-${_patch_commit::7}.patch"::"https://gitlab.archlinux.org/archlinux/packaging/packages/telegram-desktop/-/raw/$_patch_commit/telegram-desktop-5_5_5-fix_build_with_cppgir.patch"
+)
+sha256sums=(
+  '9e5a0397a95778b38b48c3292f6dda8af46aa4a23094cb77a8f1607d5785b28d'
+  'ee54bdf8fe67c8fadfffc794763fc62f4c6a15eb535c80ba7b1b74d6ec178882'
+)
+
+prepare() (
+  apply-patch() {
+    printf '\nApplying patch %s\n' "$1"
+    patch -Np1 -F100 -i "$1"
+  }
+
+  cd "$_pkgsrc/cmake/external/glib/cppgir"
+  apply-patch "$srcdir/tg-5.5.5-fix_build_with_cppgir-${_patch_commit::7}.patch"
+)
 
 build() {
-    CXXFLAGS+=' -ffat-lto-objects'
+  local _cmake_options=(
+    -B build
+    -S "$_pkgsrc"
+    -G Ninja
+    -DCMAKE_BUILD_TYPE=None
+    -DCMAKE_INSTALL_PREFIX=/usr
+    -DDESKTOP_APP_DISABLE_AUTOUPDATE=ON
+    -DTDESKTOP_API_TEST=ON
+    -DTDESKTOP_API_ID=611335
+    -DTDESKTOP_API_HASH=d524b414d21f4d37f08684c1df41ac9c
+    -DDESKTOP_APP_USE_PACKAGED_FONTS=OFF
+    -Wno-dev
+  )
 
-    cmake -B build $_pkgname-v$pkgver-full -G Ninja \
-        -DCMAKE_VERBOSE_MAKEFILE=ON \
-        -DCMAKE_INSTALL_PREFIX="/usr" \
-        -DCMAKE_BUILD_TYPE=Release \
-        -DTDESKTOP_API_ID=611335 \
-        -DTDESKTOP_API_HASH=d524b414d21f4d37f08684c1df41ac9c
-    cmake --build build
+  cmake "${_cmake_options[@]}"
+  cmake --build build
 }
 
 package() {
   DESTDIR="$pkgdir" cmake --install build
-  install -Dm644 /dev/null "${pkgdir}/etc/tdesktop/externalupdater"
+  #install -Dm644 /dev/null "$pkgdir/etc/tdesktop/externalupdater"
 
-  # Remove default icon
-  find "${pkgdir}/usr/share/icons" -name telegram.png -delete
-  rm "${pkgdir}/usr/share/applications/org.telegram.desktop.desktop" "${pkgdir}/usr/share/metainfo/org.telegram.desktop.metainfo.xml"
+  # remove unwanted files
+  find "$pkgdir/usr/share/icons" -name '*.png' -delete
+  find "$pkgdir/usr/share/icons" -name '*.svg' -delete
+  rm "$pkgdir/usr/share/applications/org.telegram.desktop.desktop"
+  rm "$pkgdir/usr/share/metainfo/org.telegram.desktop.metainfo.xml"
+  rm "$pkgdir/usr/share/dbus-1/services/org.telegram.desktop.service"
 
-  # Rename executable
-  mv -v "${pkgdir}"/usr/bin/{telegram-desktop,Forkgram}
+  # rename executable
+  mv -v "$pkgdir"/usr/bin/{telegram-desktop,"$_pkgname"}
 
-  # Main icons
-  install -dm755 "${pkgdir}/usr/share/pixmaps/"
-  install -Dm644 "${srcdir}/${_pkgname}-v${pkgver}-full/Telegram/Resources/art/forkgram/logo_256.png" "${pkgdir}/usr/share/pixmaps/"
+  # icon
+  install -Dm644 "$srcdir/$_pkgsrc/Telegram/Resources/art/forkgram/logo_256.png" "$pkgdir/usr/share/pixmaps/$_pkgname.png"
 
-  # Desktop launcher
-  install -Dm644 "${srcdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+  # service
+  install -Dm644 /dev/stdin "$pkgdir/usr/share/dbus-1/services/forkgram.service" << END
+[D-BUS Service]
+Name=org.telegram.desktop
+Exec=/usr/bin/$_pkgname
+END
 
-  # Icons
-  local icon_size icon_dir
-  for icon_size in 16 32 48 64 128 256 512; do
-    icon_dir="${pkgdir}/usr/share/icons/hicolor/${icon_size}x${icon_size}/apps"
-    install -d "${icon_dir}"
-    install -m644 "${srcdir}/${_pkgname}-v${pkgver}-full/Telegram/Resources/art/icon${icon_size}.png" "${icon_dir}/${pkgname}.png"
-  done
+  # .desktop
+  install -Dm644 /dev/stdin "$pkgdir/usr/share/applications/$_pkgname.desktop" << END
+[Desktop Entry]
+Name=${_pkgname^}
+Comment=$pkgdesc
+TryExec=$_pkgname
+Exec=$_pkgname -- %u
+Icon=$_pkgname
+Terminal=false
+StartupWMClass=TelegramDesktop
+Type=Application
+Categories=Chat;Network;InstantMessaging;Qt;
+MimeType=x-scheme-handler/tg;x-scheme-handler/tonsite;
+Keywords=tg;chat;im;messaging;messenger;sms;tdesktop;$_pkgname
+Actions=quit;
+DBusActivatable=true
+SingleMainWindow=true
+X-GNOME-UsesNotifications=true
+X-GNOME-SingleWindow=true
+
+[Desktop Action quit]
+Exec=$_pkgname -quit
+Name=Quit ${_pkgname^}
+Icon=application-exit
+END
 }
