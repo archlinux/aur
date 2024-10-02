@@ -1,4 +1,4 @@
-# Maintainer:
+# Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 # Contributor: Marco Rubin <marco.rubin@protonmail.com>
 
 ## options
@@ -9,10 +9,10 @@ fi
 ## basic info
 _pkgname="ryujinx"
 pkgname="$_pkgname"
-pkgver=1.1.1400
+pkgver=1.1.1403
 pkgrel=1
 pkgdesc="Experimental Nintendo Switch Emulator written in C#"
-url="https://github.com/Ryujinx/Ryujinx"
+url="https://git.naxdy.org/Mirror/Ryujinx/"
 license=('MIT')
 arch=('x86_64')
 
@@ -23,13 +23,14 @@ depends=(
 makedepends=(
   'desktop-file-utils'
   'dotnet-sdk-bin' # aur/dotnet-core-bin
+  'jq'
 )
 
 options=('!strip' '!debug' 'emptydirs')
 install="$_pkgname.install"
 
 _source_ryujinx() {
-  _pkgsrc="Ryujinx-$_pkgver"
+  _pkgsrc="ryujinx"
   _pkgext="tar.gz"
   source=("$_pkgname-$_pkgver.$_pkgext"::"$url/archive/$_pkgver.$_pkgext")
   sha256sums=('SKIP')
@@ -120,12 +121,11 @@ _update_version() {
     return
   fi
 
-  local _response=$(curl -Ssf "$url/releases.atom")
+  local _response=$(curl -Ssf "https://git.naxdy.org/api/v1/repos/Mirror/Ryujinx/tags?page=1&limit=1")
   local _tag=$(
     printf '%s' "$_response" \
-      | grep '"https://.*/releases/tag/.*"' \
-      | sed -E 's@^.*/releases/tag/(.*)".*$@\1@' \
-      | grep -Ev '[a-z]{2}' | sort -rV | head -1
+      | jq '.[] | .name' \
+      | sed 's/"//g'
   )
   local _pkgver_new="${_tag#v}"
 
@@ -134,6 +134,5 @@ _update_version() {
     _pkgver="${_pkgver_new:?}"
   fi
 }
-
 _update_version
 _source_ryujinx
