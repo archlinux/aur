@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=[NEXT] Firestorm Second Life Viewer
 Categories=Game;Simulation;Chat;InstantMessaging;3DGraphics
-Comment=A feature-packed third-party viewer for Second Life (beta version)
+Comment=A feature-packed third-party viewer for Second Life (next version)
 Exec=/usr/bin/firestorm-next
 GenericName=Second Life Viewer
 Icon=firestorm-next
