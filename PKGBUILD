@@ -1,7 +1,8 @@
 # Maintainer: Denis Benato <benato.denis96@gmail.com>
+# Maintainer: William Edwards <shadowapex@gmail.com>
 pkgname=inputplumber
 _pkgbase=inputplumber
-pkgver=0.35.4
+pkgver=0.36.0
 pkgrel=1
 pkgdesc="Open source input router and remapper daemon for Linux"
 arch=('x86_64')
@@ -13,18 +14,18 @@ makedepends=('rust' 'make' 'cmake' 'clang')
 provides=('inputplumber')
 conflicts=('inputplumber-bin' 'inputplumber-git')
 source=("InputPlumber-$pkgver.tar.gz::https://github.com/ShadowBlip/InputPlumber/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('cce52a9ed156936aac3835ea864af96c18b4fc87c840a59a9226671fecf6352e')
+sha256sums=('5f3fd727aa63b6051cdfe56407ef153eac867fee3c210957678ee23e3e800ad4')
 
 prepare() {
-	cd "$srcdir/InputPlumber-$pkgver"
+  cd "$srcdir/InputPlumber-$pkgver"
 }
 
 build() {
-	cd "$srcdir/InputPlumber-$pkgver"
-	make build
+  cd "$srcdir/InputPlumber-$pkgver"
+  make build
 }
 
 package() {
-	cd "$srcdir/InputPlumber-$pkgver"
-	make install PREFIX=${pkgdir}/usr NO_RELOAD=true
+  cd "$srcdir/InputPlumber-$pkgver"
+  make install PREFIX=${pkgdir}/usr NO_RELOAD=true
 }
