@@ -9,7 +9,6 @@ pkgbase = lc0-cudnn-git
 	makedepends = git
 	makedepends = meson>=0.46
 	makedepends = ninja
-	makedepends = gcc11
 	depends = cuda
 	depends = cudnn
 	depends = protobuf

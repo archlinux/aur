@@ -8,7 +8,7 @@ arch=('i686' 'x86_64')
 url="https://lczero.org/"
 license=('GPL3')
 depends=('cuda' 'cudnn' 'protobuf')
-makedepends=('git' 'meson>=0.46' 'ninja' 'gcc11')
+makedepends=('git' 'meson>=0.46' 'ninja')
 source=("${_pkgname}::git+https://github.com/LeelaChessZero/lc0.git#branch=master")
 md5sums=('SKIP')
 
@@ -19,13 +19,14 @@ pkgver() {
 
 prepare() {
     cd "${srcdir}/${_pkgname}"
-    git checkout $(git tag|grep -v rc|sort -rh|head -n 1)
+    #git checkout $(git tag|grep -v rc|sort -rh|head -n 1)
+    git checkout master
     git submodule update --init --recursive
 }
 
 build() {
     cd "${srcdir}/${_pkgname}"
-    PATH=$PATH:/opt/cuda/bin ./build.sh release -Dblas=false -Dopencl=false -Dnvcc_ccbin=g++-11 || return 1
+    PATH=$PATH:/opt/cuda/bin ./build.sh release -Dblas=false -Dopencl=false || return 1
 }
 
 package() {
