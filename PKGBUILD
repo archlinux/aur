@@ -51,10 +51,10 @@ prepare() {
     patchelf \
     --replace-needed libminiupnpc.so.1{7,8} \
     --replace-needed libboost_locale.so.1.8{3,6}.0 \
-	--replace-needed libboost_log.so.1.8{3,6}.0 \
-	--replace-needed libboost_filesystem.so.1.8{3,6}.0 \
-	--replace-needed libboost_program_options.so.1.8{3,6}.0 \
-	--replace-needed libboost_thread.so.1.8{3,6}.0 \
+    --replace-needed libboost_log.so.1.8{3,6}.0 \
+    --replace-needed libboost_filesystem.so.1.8{3,6}.0 \
+    --replace-needed libboost_program_options.so.1.8{3,6}.0 \
+    --replace-needed libboost_thread.so.1.8{3,6}.0 \
     "usr/bin/sunshine"
 }
 
