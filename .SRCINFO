@@ -1,7 +1,7 @@
 pkgbase = ruby-cucumber-compatibility-kit
 	pkgdesc = Kit to check compatibility with official cucumber implementation
 	pkgver = 15.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/cucumber/compatibility-kit
 	arch = any
 	license = MIT

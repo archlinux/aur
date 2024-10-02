@@ -2,7 +2,7 @@
 
 pkgname=ruby-cucumber-compatibility-kit
 pkgver=15.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Kit to check compatibility with official cucumber implementation"
 arch=(any)
 url='https://github.com/cucumber/compatibility-kit'
