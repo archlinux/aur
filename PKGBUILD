@@ -1,6 +1,6 @@
 pkgname=mihomo-party-bin
 _pkgname=mihomo-party
-pkgver=1.4.0
+pkgver=1.4.1
 pkgrel=1
 pkgdesc="Another Mihomo GUI."
 arch=('x86_64' 'aarch64')
@@ -15,8 +15,8 @@ source=("${_pkgname}.sh")
 source_x86_64=("${_pkgname}-${pkgver}-x86_64.deb::${url}/releases/download/v${pkgver}/mihomo-party-linux-${pkgver}-amd64.deb")
 source_aarch64=("${_pkgname}-${pkgver}-aarch64.deb::${url}/releases/download/v${pkgver}/mihomo-party-linux-${pkgver}-arm64.deb")
 sha256sums=('f8049c1f26d5a92fbcebd7bebbdedbb3eab53422b21cf6127418251ccd061282')
-sha256sums_x86_64=("fe20badd05c443c0e7ac74e48183ba02e77189be06a92703224efa903ca937a1")
-sha256sums_aarch64=("a27c17c8b0babef5a5ddc7175068a6d82cd0aae92662e8fe3bab71b0206e133e")
+sha256sums_x86_64=("1e83a11aef92e254b945a7ec8fbd8985f18d176666d735caed3eabc4b6a559e5")
+sha256sums_aarch64=("451c64ce2bd9070e9408c82ec20de2be9c241f5ca370ff9c984fed0250ac79fe")
 
 package() {
     bsdtar -xf data.tar.xz -C "${pkgdir}/"
