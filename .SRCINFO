@@ -7,8 +7,7 @@ pkgbase = vim-arduino-syntax-git
 	license = custom:vim
 	makedepends = git
 	depends = vim
-	source = git://github.com/sudar/vim-arduino-syntax.git
+	source = git+https://github.com/sudar/vim-arduino-syntax.git
 	md5sums = SKIP
 
 pkgname = vim-arduino-syntax-git
-

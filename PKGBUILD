@@ -11,7 +11,7 @@ license=(custom:vim)
 arch=(any)
 makedepends=(git)
 depends=(vim)
-source=("git://github.com/sudar/vim-arduino-syntax.git")
+source=("git+https://github.com/sudar/vim-arduino-syntax.git")
 md5sums=(SKIP)
 
 pkgver() {
