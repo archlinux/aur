@@ -1,13 +1,13 @@
 # Maintainer: dec05eba <dec05eba@protonmail.com>
 
 pkgname=gpu-screen-recorder-git
-pkgver=r825.07a8437
+pkgver=r827.fdc4bfe
 pkgrel=1
 pkgdesc='A shadowplay-like screen recorder for Linux. The fastest screen recorder for Linux'
 arch=('x86_64')
 url="https://git.dec05eba.com/gpu-screen-recorder"
 license=('GPL-3.0-only')
-makedepends=('meson')
+makedepends=('meson' 'vulkan-headers')
 depends=('ffmpeg' 'libglvnd' 'libxcomposite' 'libxrandr' 'libxfixes' 'libxdamage' 'libx11' 'libpulse' 'libva' 'libdrm' 'libcap' 'wayland' 'libpipewire' 'dbus')
 optdepends=(
     'nvidia-utils: Required to record your screen on NVIDIA'
@@ -21,7 +21,7 @@ optdepends=(
 provides=('gpu-screen-recorder')
 conflicts=('gpu-screen-recorder')
 source=("${pkgname}-${pkgver}.tar.gz::https://dec05eba.com/snapshot/gpu-screen-recorder.git.${pkgver}.tar.gz")
-sha512sums=('2c94a2870615a562ec6a20cff69502e9b3358e13b08f4a83fc02bda1d4cc009cb7baf124a7e44ce4f9eac734f46826d88dcfcf789d41f8545751e9b9f78402a8')
+sha512sums=('d7bcb7c72c13610fe1f3b27a2667eeedaab4f89f8b1e5fb815a336442d2669da51b3eb248ed58f247158c39b03314ecd3fd61a976b8d02ab183d3b75e4fd0670')
 install="${pkgname}.install" # setcap cap_sys_admin (gsr-kms-server), setcap cap_sys_nice (gpu-screen-recorder)
 
 build() {
