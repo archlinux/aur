@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=datamods
-_pkgver=1.5.2
+_pkgver=1.5.3
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -35,8 +35,8 @@ optdepends=(
   r-validate
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('6f6ce0f1996967e1b3b1fd23bb0de0a5')
-b2sums=('ce8135b35d5f08707a5fbaacc94121dd0fda258563b8e4b6487adfcd728429b555d1eb40c24400bfde1b522658e172f57fe781b9637085686c407da408423d4f')
+md5sums=('e21c9e2b451c9890d3a5afaa2b6fe584')
+b2sums=('bf18f81334b119ae0eefcf863e4e4d8c493dc17bb8b37b63631cc591a718ac33bfca198f853a30d0a550ef92831799ac9f303e20966009bfe5b67c09da211e98')
 
 build() {
   mkdir build
