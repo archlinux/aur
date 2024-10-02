@@ -45,26 +45,18 @@ optdepends=(
 
   # Default applications
   # See data/cosmic-mimeapps.list
-#  'abiword'
-#  'brasero'
 #  'cosmic-edit'
 #  'cosmic-files'
 #  'cosmic-store'
 #  'eog'
-#  'dia'
 #  'evince'
-#  'evolution'
 #  'file-roller'
 #  'firefox'
 #  'gimp'
 #  'gnome-font-viewer'
-#  'gnumeric'
 #  'libreoffice'
 #  'popsicle'
-#  'rhythmbox'
-#  'sound-juicer'
 #  'totem'
-#  'yelp'
 )
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
