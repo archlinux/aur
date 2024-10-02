@@ -1,0 +1,15 @@
+pkgbase = raidfs
+	pkgdesc = A data recovery tool used to reassemble RAID subsystems without the corresponding controller
+	pkgver = 0.3
+	pkgrel = 1
+	url = https://raidfs.sourceforge.net
+	arch = x86_64
+	arch = i686
+	license = GPL-2.0-or-later
+	depends = fuse2
+	depends = glibc
+	noextract = raidfs-0.3.tar.gz
+	source = raidfs-0.3.tar.gz::https://downloads.sourceforge.net/sourceforge/raidfs/raidfs_0.3.tar.gz
+	sha256sums = d504adbe5f499c5393c622895c64a7b9e38d35d10f238a3c3d4585ffa001904a
+
+pkgname = raidfs
