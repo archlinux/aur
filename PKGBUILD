@@ -1,4 +1,5 @@
-# Maintainer: Philip Nelson <7PMNelson@gmail.com>
+# Maintainer: macinsight <git@macinsight.net>
+# Contributor: Philip Nelson <7PMNelson@gmail.com>
 _pkgname=mwcleric
 pkgname=python-mwcleric-git
 pkgdesc="General purpose tools for MediaWiki editing using Python"
