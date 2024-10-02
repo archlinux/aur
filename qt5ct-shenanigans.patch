@@ -252,16 +252,16 @@ Index: qt5ct/src/qt5ct-qtplugin/qt5ctplatformtheme.cpp
  void Qt5CTPlatformTheme::applySettings()
  {
      if(!QGuiApplication::desktopSettingsAware() || m_isIgnored)
-@@ -245,6 +258,9 @@
-     if(m_palette && m_usePalette)
-         QGuiApplication::setPalette(*m_palette); //apply palette
+@@ -204,6 +217,9 @@
+         }
+     }
  
 +    if(Qt5CT::isKColorScheme(m_schemePath))
 +        qApp->setProperty("KDE_COLOR_SCHEME_PATH", m_schemePath);
 +
  #ifdef QT_WIDGETS_LIB
-     if(m_palette && m_usePalette && !m_update)
-         qApp->setPalette(*m_palette);
+     if(hasWidgets())
+     {
 @@ -295,12 +311,11 @@
  
      settings.beginGroup("Appearance");
