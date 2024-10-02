@@ -1,7 +1,7 @@
 # Maintainer: Trey Blancher $(base64 -d <<< dHJleUBibGFuY2hlci5uZXQK)
 pkgname=nri-nginx-bin
 _pkg=${pkgname/-bin/}
-pkgver=3.4.6
+pkgver=3.4.10
 pkgrel=1
 pkgdesc="nginx integration for New Relic"
 arch=(aarch64 armv7h x86_64)
@@ -15,6 +15,9 @@ changelog=CHANGELOG
 source_aarch64=(https://github.com/newrelic/${_pkg}/releases/download/v${pkgver}/${_pkg}_linux_${pkgver}_arm64.tar.gz)
 source_armv7h=(https://github.com/newrelic/${_pkg}/releases/download/v${pkgver}/${_pkg}_linux_${pkgver}_arm.tar.gz)
 source_x86_64=(https://github.com/newrelic/${_pkg}/releases/download/v${pkgver}/${_pkg}_linux_${pkgver}_amd64.tar.gz)
+sha256sums_aarch64=('ce6f3a389df3b1a615c5b9f685e197a1e6d733fecad45eea0dbd42829bc91eae')
+sha256sums_armv7h=('09fdad76a857ee147b95b027b6faf49ed668a50330562367b7e54bf09a6588e4')
+sha256sums_x86_64=('ff59a65682d1d9a2a1dbeecb4989a1df8849af63a086935cf0d73d152ad6b457')
 
 package() {
     mkdir -p ${pkgdir}/etc/newrelic-infra/integrations.d
@@ -27,6 +30,3 @@ package() {
     install -m u=rwx,go=rx ${srcdir}/var/db/newrelic-infra/newrelic-integrations/bin/nri-nginx \
         ${pkgdir}/var/db/newrelic-infra/newrelic-integrations/bin/
 }
-sha256sums_aarch64=('8d481eb51d4192631d3bad9026dc68fbdffb54f6f2f202746a7371d475bd28a8')
-sha256sums_armv7h=('2f29ccc04ebdbdea83c8b2c0e1befae5b4863e4b976dbd9cb5279196030a91f0')
-sha256sums_x86_64=('6938f360b3ba35986363e225a4cb33b06da253230caaf54c5ff691c85732c9c5')
