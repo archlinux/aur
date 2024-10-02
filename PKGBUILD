@@ -1,7 +1,7 @@
 # Maintainer: Alexandre Leconte <aleconte@dwightstudio.fr>
 pkgname=jarmemu
-pkgver=1.1.0
-pkgrel=1
+pkgver=1.0.0
+pkgrel=2
 pkgdesc="Simple ARMv7 simulator written in Java, intended for educational purpose"
 arch=('any')
 url="https://dwightstudio.fr/jarmemu"
@@ -17,9 +17,10 @@ backup=()
 options=()
 install=
 changelog=
+# TODO: Use portable archive instead
 source=("https://github.com/Dwight-Studio/JArmEmu/releases/download/v$pkgver/JArmEmu-$pkgver.zip")
 noextract=()
-sha256sums=("71bf450d18e3e8ea9bb3122b32bea060ae73d525dbf2d3c95ca59b0695b45b80")
+sha256sums=("5be7c12b8a5d4f88c09eca63e77fb3f559e6edffe8a6399932f7da2e6a76a23b")
 
 build() {
     cd $srcdir/jarmemu
@@ -38,6 +39,7 @@ package() {
     install -Dm 644 resources/metainfo/fr.dwightstudio.JArmEmu.metainfo.xml $pkgdir/usr/share/metainfo/fr.dwightstudio.JArmEmu.metainfo.xml
 
     desktop-file-install --dir=$pkgdir/usr/share/applications resources/fr.dwightstudio.JArmEmu.desktop
+    xdg-desktop-icon install --novendor resources/fr.dwightstudio.JArmEmu.desktop
 
     depends=("java-runtime>=21")
 }
