@@ -3,7 +3,7 @@
 _fbxver=2020.3.7
 
 pkgname=usd-fileformat-plugins
-pkgver=1.0.7
+pkgver=1.0.8
 pkgrel=1
 pkgdesc='Adobe collection of USD fileformat plugins'
 arch=(x86_64)
@@ -29,7 +29,7 @@ source=("$pkgname::git+$url.git"
        )
 sha512sums=('SKIP'
             'c2076ab34c4afe541f503643ea18e737cdb045973cc60811916feddeb75f7945d22b5537c40471c80cc1b0fb623556517d5c33e139e55e724701f7619a196cdb'
-            'SKIP')
+            'decb329cdcad02f73c1072128886662ae4c974185e61b2794cc767fd87b03148bcca047598b2513f40230277889f413a807c1bcc97a6880ee5cace6622e78434')
 
 prepare() {
     #FBX
