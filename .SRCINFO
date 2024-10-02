@@ -1,0 +1,14 @@
+pkgbase = neatjson-git
+	pkgdesc = A small program to work with JSON-encoded data
+	pkgver = r2.10bf461
+	pkgrel = 1
+	url = https://github.com/aligrudi/json
+	arch = i686
+	arch = x86_64
+	license = ISC
+	makedepends = git
+	conflicts = neatjson
+	source = neatjson-git::git+https://github.com/aligrudi/json
+	md5sums = SKIP
+
+pkgname = neatjson-git
