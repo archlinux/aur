@@ -14,7 +14,7 @@ declare -r _tag="4fc87365c0e812d6d4e6984a8be7798341966205"
 
 pkgname="soci-git"
 pkgver="v4.0.1_559_g4440c789"
-pkgrel=1
+pkgrel="1"
 pkgdesc="C++ database access library."
 arch=("x86_64")
 url="https://github.com/SOCI/${_pkgname}"
