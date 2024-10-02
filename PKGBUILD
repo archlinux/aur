@@ -12,7 +12,7 @@ depends=('glibc')
 makedepends=('git' 'go')
 provides=("$_pkgname=${pkgver%%.r*}")
 conflicts=("$_pkgname")
-source=('git+https://gitlab.com/shackra/goimapnotify#branch=2.3.x')
+source=('git+https://gitlab.com/shackra/goimapnotify#branch=master')
 sha256sums=('SKIP')
 options=(!lto)
 

@@ -11,7 +11,7 @@ pkgbase = goimapnotify-git
 	provides = goimapnotify=2.3.15
 	conflicts = goimapnotify
 	options = !lto
-	source = git+https://gitlab.com/shackra/goimapnotify#branch=2.3.x
+	source = git+https://gitlab.com/shackra/goimapnotify#branch=master
 	sha256sums = SKIP
 
 pkgname = goimapnotify-git
