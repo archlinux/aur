@@ -1,7 +1,7 @@
 pkgbase = ruby-hitimes
 	pkgdesc = Fast, high resolution timer library for recording performance metrics
 	pkgver = 2.0.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/copiousfreetime/hitimes
 	arch = x86_64
 	license = ISC
