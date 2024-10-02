@@ -1,7 +1,7 @@
 pkgbase = libcs50
 	pkgdesc = CS50 Library for C
 	pkgver = 11.0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/cs50/libcs50
 	install = libcs50.install
 	arch = i686

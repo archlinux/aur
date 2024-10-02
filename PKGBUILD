@@ -6,7 +6,7 @@
 
 pkgname='libcs50'
 pkgver=11.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="CS50 Library for C"
 arch=('i686' 'x86_64')
 url='https://github.com/cs50/libcs50'
