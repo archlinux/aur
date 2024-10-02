@@ -1,0 +1,15 @@
+pkgbase = git-age
+	pkgdesc = a smudge/clean filter to encrypt/decrypt files in a git repository transparently
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/prskr/git-age
+	arch = aarch64
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	depends = glibc
+	optdepends = git
+	source = git-age-0.2.0.tar.gz::https://github.com/prskr/git-age/archive/refs/tags/v0.2.0.tar.gz
+	md5sums = 7f8815062747104a1c097e31a41b9ef9
+
+pkgname = git-age
