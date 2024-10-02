@@ -1,7 +1,7 @@
 # Maintainer: Stefan Gehr <stefan@gehr.xyz>
 
 pkgname=hayagriva
-pkgver=0.5.3
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="Format references and citations for your YAML-encoded or BibLaTeX bibliography files and query bibliographies using selectors."
 arch=('any')
@@ -9,7 +9,7 @@ url="https://github.com/typst/hayagriva"
 license=('Apache-2.0 OR MIT')
 makedepends=(cargo)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/typst/hayagriva/archive/refs/tags/v$pkgver.tar.gz")
-b2sums=("32bd05c2e98e25462662b9a8e390f1d621ba1d8c0348f632299b85cf6f38ffea67f1a15e86701a24a8d01c50a839576ef815da58b3ee6ec7e928170352da4708")
+b2sums=("7ca3df50d33ffd27fd27b5a1681452e164c62d062a17f56600cc8804a17bc1f6a2c80255998fd79a8d0fe3c6591a07223d0cf3fa6281e84cfadf9c4763fb53af")
 
 prepare() {
 	cd $pkgname-$pkgver
