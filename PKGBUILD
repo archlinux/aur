@@ -1,5 +1,5 @@
 pkgname=nzportable-bin
-pkgver=2.0.0indev20240915071841
+pkgver=2.0.0indev20240929071903
 pkgrel=2
 scriptver=1.0.5
 pkgdesc='Nazi Zombies: Portable, a Call of Duty: Zombies "de-make" powered by various enhanced forks of the Quake engine'
@@ -12,13 +12,13 @@ _pkgrel_x86_64=1
 _pkgrel_aarch64=1
 _pkgrel_i686=1
 sha256sums_x86_64=('63618827047a5045b1f8e26db28a44868ce50c12e5662cca8d646bace08d2ba0'
-                   '9fd317e570d27d82d1d2293445409f0f2d90ed0a5b6155aa055158f0b08e1a0e')
+                   '700d411db4e92735a497c509ba981bd5548c59553d5268cc66dec66d6bb04320')
 sha256sums_i686=('63618827047a5045b1f8e26db28a44868ce50c12e5662cca8d646bace08d2ba0'
-                 'f800728c4b67a8360c9d919c730071cfe8d20af04e3381c101fe7c28647dd2ed')
+                 '756ef36fa7d58bf57ea5e7f0509f4c2398c341dbbb795465c159e3758f8d02bc')
 sha256sums_aarch64=('63618827047a5045b1f8e26db28a44868ce50c12e5662cca8d646bace08d2ba0'
-                    '8060893b234a9d98a1791e4ee9c8b4791b5aaaaf710b19f784872747f50b2e2f')
+                    '8c4c95a40a11849f78d2dbf0ba6063adf9e1c1a17a08d598e2c3f05e8016ba06')
 sha256sums_armv7l=('63618827047a5045b1f8e26db28a44868ce50c12e5662cca8d646bace08d2ba0'
-                   '7f195d4391d984286b94bb796048b952f7abfb716deae57cfb8660ee198b12ae')
+                   '0b447722801235a87dcab1732b7fcf83573e362f1c95e5be8f5a8eaa24161a2a')
 source_x86_64=("https://gitlab.com/linuxbombay/nzp/nzp-packaging/-/archive/$scriptver/nzp-packaging-$scriptver.tar.bz2" "https://gitlab.com/linuxbombay/nzp/binaries/$pkgver/-/raw/main/nzportable-linux64.zip")
 source_aarch64=("https://gitlab.com/linuxbombay/nzp/nzp-packaging/-/archive/$scriptver/nzp-packaging-$scriptver.tar.bz2" "https://gitlab.com/linuxbombay/nzp/binaries/$pkgver/-/raw/main/nzportable-linuxarm64.zip")
 source_armv7l=("https://gitlab.com/linuxbombay/nzp/nzp-packaging/-/archive/$scriptver/nzp-packaging-$scriptver.tar.bz2" "https://gitlab.com/linuxbombay/nzp/binaries/$pkgver/-/raw/main/nzportable-linuxarmhf.zip")
