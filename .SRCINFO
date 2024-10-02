@@ -1,0 +1,24 @@
+pkgbase = zf-bin
+	pkgdesc = a commandline fuzzy finder designed for filtering filepaths
+	pkgver = 0.10.0
+	pkgrel = 1
+	url = https://github.com/natecraddock/zf
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = help2man
+	depends = glibc
+	provides = zf
+	conflicts = zf
+	source = LICENSE-0.10.0::https://raw.githubusercontent.com/natecraddock/zf/0.10.0/LICENSE
+	source = README-0.10.0::https://raw.githubusercontent.com/natecraddock/zf/0.10.0/README.md
+	source = CHANGELOG-0.10.0::https://raw.githubusercontent.com/natecraddock/zf/0.10.0/CHANGELOG.md
+	sha256sums = 28cc086b5786113ea2b710c1976ba14b0fcf82eaa25e504f4b77be4e1e386fea
+	sha256sums = ec3ee7f38a4d5b32d7af6303c6749d79ed8ca352f0e6bb81216a75ca9ce0ff2c
+	sha256sums = 4e2756564939bba4d88a43b54dbc86815e884dcab53755e3fcd9d9613f6a2d00
+	source_x86_64 = https://github.com/natecraddock/zf/releases/download/0.10.0/zf-0.10.0-x86_64-linux.tar.xz
+	sha256sums_x86_64 = 4c1f9f9e2ccfb3e35a14d4448047288386ebca383c1e33a44400ab0fc1ee3cc9
+	source_aarch64 = https://github.com/natecraddock/zf/releases/download/0.10.0/zf-0.10.0-aarch64-linux.tar.xz
+	sha256sums_aarch64 = c41f6975a5f2fe85ea03a88ea4b142807d1d00cd768b736e4a78b6d6961696ee
+
+pkgname = zf-bin
