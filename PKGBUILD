@@ -2,10 +2,10 @@
 
 _pkgname="envio"
 pkgname="${_pkgname}-git"
-pkgver=0.6.0.r0.gbc08e2c
+pkgver=0.6.1.r1.g1641d18
 pkgrel=1
 pkgdesc="A Modern And Secure CLI Tool For Managing Environment Variables"
-arch=('x86_64' 'i686')
+arch=('x86_64' 'aarch64' 'i686')
 url="https://envio-cli.github.io/home"
 _url="https://github.com/envio-cli/${_pkgname}"
 license=('Apache-2.0' 'MIT')
@@ -49,4 +49,11 @@ package() {
   install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
   install -Dm644 "LICENSE-APACHE" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE-APACHE-2.0"
   install -Dm644 "LICENSE-MIT" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE-MIT"
+  install -Dm644 "man/${_pkgname}.1" "${pkgdir}/usr/share/man/man1/${_pkgname}.1"
+
+  cd "completions"
+  install -Dm644 "${_pkgname}.bash" "${pkgdir}/usr/share/bash-completion/completions/${_pkgname}"
+  install -Dm644 "${_pkgname}.fish" "${pkgdir}/usr/share/fish/vendor_completions.d/${_pkgname}.fish"
+  install -Dm644 "_${_pkgname}"     "${pkgdir}/usr/share/zsh/site-functions/_${_pkgname}"
+  install -Dm644 "_${_pkgname}.ps1" "${pkgdir}/usr/share/powershell/Completions/${_pkgname}.ps1"
 }
