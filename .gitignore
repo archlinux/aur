@@ -1,5 +1,6 @@
+choosenim-*.patch
+choosenim-*.pkg.tar.*
 choosenim-*.tar.gz
 nim-*-linux_*.tar.xz
-choosenim-*.pkg.tar.*
 pkg/
 src/

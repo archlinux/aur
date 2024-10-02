@@ -1,7 +1,7 @@
 pkgbase = choosenim
 	pkgdesc = Installs different versions of Nim compiler and tools and switches between them
-	pkgver = 0.8.7
-	pkgrel = 3
+	pkgver = 0.8.9
+	pkgrel = 1
 	url = https://github.com/nim-lang/choosenim
 	install = choosenim.install
 	arch = x86_64
@@ -17,8 +17,10 @@ pkgbase = choosenim
 	provides = nimpretty
 	provides = nimsuggest
 	conflicts = nim
-	source = choosenim-0.8.7.tar.gz::https://github.com/nim-lang/choosenim/archive/refs/tags/v0.8.7.tar.gz
-	sha256sums = 21201a9625c0fc3253dfa6c6ff18c2fb0b16e7c82cf73a188120b7cf3df11dc0
+	source = choosenim-0.8.9.tar.gz::https://github.com/nim-lang/choosenim/archive/refs/tags/v0.8.9.tar.gz
+	source = choosenim-execv.patch::https://patch-diff.githubusercontent.com/raw/nim-lang/choosenim/pull/38.patch
+	sha256sums = 56824e0bd694afe0eeb22cef1b58a1e1b7e31d7ff573692347210d2f3c46ef71
+	sha256sums = cc3967087b2002a0e346aa65b628b89f9373c1755dfe3469d7ff88f1db322a9e
 	source_x86_64 = https://nim-lang.org/download/nim-2.0.8-linux_x64.tar.xz
 	sha256sums_x86_64 = c971320d391db30917b3b61c471cff4b3cd3cd883d4f7af099d3c9018cc15683
 

@@ -5,7 +5,7 @@ post_install() {
 Please remember to add '\$HOME/.nimble/bin' to your PATH, e.g. by adding the
 following to your ~/.bashrc file:
 
-    export PATH="\$HOME/.nimble/bin:$PATH"
+    export PATH="\$HOME/.nimble/bin:\$PATH"
 
 Then install the current stable Nim version with:
 
