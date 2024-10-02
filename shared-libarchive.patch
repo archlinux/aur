@@ -43,14 +43,15 @@ index e1e3bc1ae3..4a37838e95 100644
 --- a/src/app/CMakeLists.txt
 +++ b/src/app/CMakeLists.txt
 @@ -651,8 +651,8 @@ target_link_libraries(app-lib
+   ${GIF_LIBRARIES}
+   ${PNG_LIBRARIES}
    ${ZLIB_LIBRARIES}
-   ${FREETYPE_LIBRARIES}
-   ${HARFBUZZ_LIBRARIES}
 +  ${LibArchive_LIBRARIES}
    json11
 -  archive_static
    ${FMT_LIBRARIES}
-   tinyexpr)
+   tinyexpr
+   qoi)
  
 diff --git a/third_party/CMakeLists.txt b/third_party/CMakeLists.txt
 index ffd1c0cfcd..4839d4097c 100644

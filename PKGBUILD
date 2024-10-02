@@ -9,10 +9,10 @@
 # Contributor: Kamil Biduś <kamil.bidus@gmail.com>
 
 pkgname=aseprite
-pkgver=1.3.8.1
+pkgver=1.3.9
 _skiaver=m102
 _skiahash=861e4743af
-pkgrel=2
+pkgrel=1
 pkgdesc='Create animated sprites and pixel art'
 arch=('x86_64')
 url="https://www.aseprite.org/"
@@ -52,12 +52,12 @@ source=("https://github.com/aseprite/aseprite/releases/download/v$pkgver/Aseprit
         optional-pixman.patch)
 noextract=("Aseprite-v$pkgver-Source.zip"
            "skia-$_skiaver.tar.gz") # Don't extract Aseprite or skia sources at the root
-sha256sums=('fc13536a9e14551245028d578493aa63f9978b943250936735dc62a5abfbee53'
+sha256sums=('672c8ddb12d4c180f6c27b33ec4b0faefe5df321c7d40c03cb62ad3182e584ff'
             '8d76c1ad3693e1fc019eb14d806082148eb4ed7d601474aeeaae601b05a9b3ad'
             '8b14e36939e930de581e95abf0591645aa0fcfd47161cf88b062917dbaaef7f9'
             'c3591d376180d99ff8001c3d549c0bd18ef5e4d95f1755ccaa8e2fd65dd5d2b3'
-            'bed004cdbe61793c759a30c4afa5d844ce08c55a321d5c3625426f059f98b503'
-            '320ed456512fb26f30aa682d7d34529d6fc3372d76daba3812cecb8fc21d5f1d'
+            '89cd28a5a90ee9dd42e85866b6f954bde526068d94311b0730a62f00f9cfffdb'
+            '0f8adb959d7000697af453d6cf5aaf9984b74868008382aad541d2c29871c751'
             'eb9f544e68b41b5cb1a9ab7a6648db51587e67e94f1a452cb5a84f3d224bf5d0'
             'c2d14f9738a96a9db3695c00ac3d14b1312b6a595b151bd56e19422c86517654')
 
