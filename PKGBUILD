@@ -2,7 +2,7 @@
 # Maintainer: Paul Irofti <paul@irofti.net>
 pkgname=python-scholarly
 _name=${pkgname#python-}
-pkgver=1.7.2
+pkgver=1.7.11
 pkgrel=1
 pkgdesc="Retrieve author and publication information from Google Scholar in a friendly, Pythonic way"
 arch=(any)
@@ -18,7 +18,7 @@ backup=()
 options=(!emptydirs)
 install=
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=(558ed93cc64d0e87585e4a23046ee071297e60b2a57da4f06cddb5129493d49a)
+sha256sums=('2c983dd44d9d9398a6f2605102ae6e5586023b41ebbaec1461917ee48eb153f0')
 
 build() {
     cd "$srcdir/$_name-$pkgver"
