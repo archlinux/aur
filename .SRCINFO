@@ -1,0 +1,25 @@
+pkgbase = python-cupy-bin
+	pkgdesc = NumPy-like API accelerated with CUDA
+	pkgver = 13.3.0
+	pkgrel = 1
+	url = https://cupy.dev
+	arch = x86_64
+	license = MIT
+	makedepends = python-wheel
+	makedepends = python-hatchling
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	depends = cuda
+	depends = python-fastrlock
+	depends = python-numpy
+	depends = libcutensor
+	depends = cusparselt
+	optdepends = libcutensor
+	optdepends = nccl
+	provides = python-cupy
+	conflicts = python-cupy
+	source = https://files.pythonhosted.org/packages/90/dc/da09e5184d94146b8cbf240c2bef1c4851cbafd7e2d60cc71b1530c766ec/cupy_cuda12x-13.3.0-cp312-cp312-manylinux2014_x86_64.whl
+	sha256sums = e206bd8664f0763732b6012431f484ee535bffd77a5ae95e9bfe1c7c72396625
+
+pkgname = python-cupy-bin

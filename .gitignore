@@ -1,0 +1,5 @@
+pkg/
+src/
+
+python-cupy-*.pkg.*
+cupy_cuda12x-*.whl
