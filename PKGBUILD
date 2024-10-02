@@ -2,11 +2,11 @@
 pkgname=carl-calendar
 _pkgname=carl
 pkgver=0.3.1
-pkgrel=1
+pkgrel=2
 makedepends=('rust' 'cargo')
 depends=('glibc' 'gcc-libs')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
-pkgdesc="A colorful commandline calendar with ical support. Similar to `cal`, but with more features."
+pkgdesc="A colorful commandline calendar with ical support. Similar to cal, but with more features."
 license=('MIT' 'CC0-1.0')
 url="https://github.com/b1rger/carl"
 source=("$url/archive/refs/tags/v$pkgver/$_pkgname-$pkgver.tar.gz")
