@@ -1,7 +1,7 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 _pkgname=shadps4
 pkgname=$_pkgname-git
-pkgver=0.3.0.r32.g54e21793
+pkgver=0.3.0.r92.g7e533ccf
 pkgrel=1
 pkgdesc="Sony PlayStation 4 emulator"
 arch=('aarch64' 'x86_64')
@@ -74,19 +74,13 @@ prepare() {
 	git config submodule.externals/tracy.url ../$_pkgname-tracy
 	git config submodule.externals/zydis.url ../zydis
 	git -c protocol.file.allow=always submodule update
-	# https://github.com/shadps4-emu/shadPS4/issues/1078
-	sed -i '/desc_layout_result/s/static//' src/video_core/texture_cache/tile_manager.cpp
-	# https://github.com/shadps4-emu/shadPS4/issues/568#issuecomment-2363862313
-	sed -i 's/SDL_TRUE/true/g;s/SDL_FALSE/false/g;s/SDL_bool/bool/g' \
-		externals/dear_imgui/backends/*.cpp \
-		src/imgui/renderer/imgui_impl_sdl3.cpp
 }
 
 build() {
 	cmake -B build -S $_pkgname \
 		-DCMAKE_BUILD_TYPE=Release \
 		-DCMAKE_C_FLAGS_RELEASE="-DNDEBUG" \
-		-DCMAKE_CXX_FLAGS_RELEASE="-DNDEBUG" \
+		-DCMAKE_CXX_FLAGS_RELEASE="-DNDEBUG -DSDL_ENABLE_OLD_NAMES -DSDL_bool=bool" \
 		-DCMAKE_DISABLE_FIND_PACKAGE_Zydis=ON \
 		-DENABLE_QT_GUI=ON \
 		-DSIRIT_USE_SYSTEM_SPIRV_HEADERS=ON \
