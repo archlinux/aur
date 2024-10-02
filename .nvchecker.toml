@@ -1,0 +1,5 @@
+[alberta]
+source = "gitlab"
+gitlab = "alberta-fem/alberta3"
+use_max_tag = true
+prefix = "v"
