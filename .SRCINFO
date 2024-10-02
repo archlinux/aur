@@ -1,7 +1,7 @@
 pkgbase = 1password-beta
 	pkgdesc = Password manager and secure wallet
-	pkgver = 8.10.46_23.BETA
-	pkgrel = 23
+	pkgver = 8.10.48_17.BETA
+	pkgrel = 17
 	url = https://1password.com
 	install = 1password.install
 	arch = x86_64
@@ -9,11 +9,11 @@ pkgbase = 1password-beta
 	conflicts = 1password
 	conflicts = 1password-beta-bin
 	options = !strip
-	source = https://downloads.1password.com/linux/tar/beta/x86_64/1password-8.10.46-23.BETA.x64.tar.gz
-	source = https://downloads.1password.com/linux/tar/beta/x86_64/1password-8.10.46-23.BETA.x64.tar.gz.sig
+	source = https://downloads.1password.com/linux/tar/beta/x86_64/1password-8.10.48-17.BETA.x64.tar.gz
+	source = https://downloads.1password.com/linux/tar/beta/x86_64/1password-8.10.48-17.BETA.x64.tar.gz.sig
 	validpgpkeys = 3FEF9748469ADBE15DA7CA80AC2D62742012EA22
-	sha256sums = 8be974e18c35288cc3f07309b96836f0564ce24d0408989f4828bb78aacbb122
-	sha256sums = 7e4467daf8ede29bee8738b3fd6969b2010fde57f71a5adccacac5765ee2f3b4
+	sha256sums = e123d924ffde6e7c803045ab206a276fee67617b8cf0a08f2bd9a8742fc2aff6
+	sha256sums = eb976a40c6cba907fbac68ef68f759d0fa706caf62ea1524fe8bdeaf75543667
 
 pkgname = 1password-beta
 	depends = hicolor-icon-theme
