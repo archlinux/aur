@@ -5,6 +5,12 @@ post_install() {
   echo "     sudo gpasswd -a USERNAME nordvpn"
   echo ':: You then have to restart for the group to be created:'
   echo "     reboot"
+
+  for lib in /usr/lib/nordvpn/*.so ; do
+    if [ -f "$lib" ] ; then
+      ln -s $lib /usr/lib/
+    fi
+  done
 }
 
 pre_install() {
@@ -17,6 +23,19 @@ pre_upgrade() {
   chattr -i /var/lib/nordvpn/data/*
 }
 
+post_upgrade() {
+  for lib in /usr/lib/nordvpn/*.so ; do
+    if [ -f "$lib" ] ; then
+      ln -sf $lib /usr/lib/
+    fi
+  done
+}
+
 pre_remove() {
   chattr -i /var/lib/nordvpn/data/*
+  for lib in /usr/lib/nordvpn/*.so ; do
+    if [ -f "$lib" ] ; then
+      unlink /usr/lib/$(echo $lib | cut -d '/' -f 5)
+    fi
+  done
 }
