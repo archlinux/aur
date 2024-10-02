@@ -1,0 +1,11 @@
+diff -ura src_orig/cnijfilter2-source-6.10-1/lgmon3/src/keytext.c src_new/cnijfilter2-source-6.10-1/lgmon3/src/keytext.c
+--- src_orig/cnijfilter2-source-6.10-1/lgmon3/src/keytext.c	2020-06-18 04:22:58.000000000 +0200
++++ src_new/cnijfilter2-source-6.10-1/lgmon3/src/keytext.c	2024-10-02 22:29:25.233427576 +0200
+@@ -37,6 +37,7 @@
+ #include <unistd.h>
+ #include <libxml/parser.h>	/* Ver.2.80 */
+ #include <string.h>
++#include <stdlib.h>
+ 
+ #include "keytext.h"
+ 
