@@ -23,8 +23,8 @@ optdepends=('arc: Arc file archiver and compressor'
             'upx: Extendable, high-performance executable packer for several executable formats'
             'zpaq: Programmable file compressor, library and utilities'
             '7-zip: File archiver with a high compression ratio')
-provides=('peazip')
-conflicts=('peazip')
+provides=("peazip")
+conflicts=("peazip")
 source=("$url/releases/download/$pkgver/peazip-$pkgver.LINUX.Qt5-1.x86_64.rpm")
 sha256sums=('22c95f0d4d13302b9d966d0efa1b35fa27fd264cdde777e3c14e917e30cc50fb')
 
@@ -53,7 +53,7 @@ package() {
   mv applications "$pkgdir/usr/share"
   mv pixmaps/* "$pkgdir/usr/share/icons/hicolor/256x256/apps"
   cd peazip
-  mv peazip_help.pdf "$pkgdir/usr/share/doc"
+  mv peazip_help.pdf "$pkgdir/usr/share/doc/peazip"
   mv copying/* "$pkgdir/usr/share/licenses/peazip"
   mv readme/readme_Linux.txt "$pkgdir/usr/share/doc/peazip/readme.txt"
   rm -r readme
