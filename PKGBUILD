@@ -2,8 +2,8 @@
 
 pkgname=modrinth-app-appimage
 _pkgname=${pkgname%-appimage}
-pkgver=0.8.7
-pkgrel=2
+pkgver=0.8.8
+pkgrel=1
 pkgdesc='An unique, open source launcher that allows you to play your favorite mods, and keep them up to date, all in one neat little package.'
 url='https://modrinth.com/app'
 arch=('x86_64')
@@ -20,7 +20,7 @@ source=(
 )
 options=(!strip !debug)
 noextract=("Modrinth%20App_${pkgver}_amd64.AppImage")
-sha256sums=('7c874ec6c972478fc0a02abcdda64a7292f9c4777bb8e02cc5496237b9044670'
+sha256sums=('4cd35500681f0d3774d26c78ddd1942415582c4ba0fc151d3eb5304eb18f4f3e'
             '891da8d3927841954ee771c80fe6018b90553902dcfc9f1e945a2c52a80874bc'
             'e0b3eab49465709ed5053dc1fa4206071ab32657d25bd1f9c01850d696715cff')
 
@@ -28,15 +28,22 @@ package() {
     cd "$srcdir"
 
     chmod +x "$_pkgname-$pkgver.AppImage"
-    "./$_pkgname-$pkgver.AppImage" --appimage-extract "usr/share/applications/modrinth-app.desktop"
-    "./$_pkgname-$pkgver.AppImage" --appimage-extract "usr/share/icons/hicolor/128x128/apps/modrinth-app.png"
-    "./$_pkgname-$pkgver.AppImage" --appimage-extract "usr/share/icons/hicolor/256x256@2/apps/modrinth-app.png"
+    "./$_pkgname-$pkgver.AppImage" --appimage-extract "usr/share/applications/Modrinth App.desktop"
+    "./$_pkgname-$pkgver.AppImage" --appimage-extract "usr/share/icons/hicolor/128x128/apps/ModrinthApp.png"
+    "./$_pkgname-$pkgver.AppImage" --appimage-extract "usr/share/icons/hicolor/256x256@2/apps/ModrinthApp.png"
 
-    cp -r "squashfs-root/usr/" "${pkgdir}"
-
-    install -Dm644 "squashfs-root/usr/share/applications/modrinth-app.desktop" "$pkgdir/usr/share/applications/modrinth-app.desktop"
+    pushd "squashfs-root"
+    find "./usr/share" -type f -print0 | while read -d $'\0' f; do
+        filename=$(basename -- "$f")
+        target="modrinth-app.${filename##*.}"
+        dir=$(dirname -- "$f")
+        install -Dm644 "$f" "$pkgdir/$dir/$target"
+    done
+    popd
+    
     sed -i \
-      -e "s/Exec=modrinth-app/Exec=modrinth-app %u/" \
+      -e "s/Exec=ModrinthApp/Exec=modrinth-app %u/" \
+      -e "s/Icon=ModrinthApp/Icon=modrinth-app/" \
       -e "s/mrpack/x-modrinth-mrpack/" \
       "${pkgdir}/usr/share/applications/modrinth-app.desktop"
     
