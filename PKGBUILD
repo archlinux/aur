@@ -1,14 +1,14 @@
 # Maintainer: Martin Hoeher <martin@rpdev.net>
-# Automatically released from https://gitlab.com/rpdev/opentodolist/-/pipelines/1123391654
+# Automatically released from https://gitlab.com/rpdev/opentodolist/-/pipelines/1478824166
 pkgname=opentodolist
-pkgver=3.47.0
+pkgver=3.48.0
 pkgrel=1
 pkgdesc="Maintain todo lists, notes and images in libraries, which can be synced via various services like NextCloud between your devices."
 arch=('x86_64')
 url="https://opentodolist.rpdev.net/"
 license=('GPL')
-depends=('qt6-base' 'qt6-quickcontrols2' 'qt6-remoteobjects' 'qt6-networkauth' 'libsecret' 'ttf-roboto' 'noto-fonts' 'qtkeychain-qt6')
-makedepends=('git' 'cmake' 'ninja' 'qt6-tools')
+depends=('qt6-base' 'qt6-declarative' 'qt6-remoteobjects' 'qt6-networkauth' 'libsecret' 'ttf-roboto' 'noto-fonts' 'qtkeychain-qt6')
+makedepends=('git' 'git-lfs' 'cmake' 'ninja' 'qt6-tools')
 provides=("${pkgname%}")
 conflicts=("${pkgname%}")
 source=("${pkgname}::git+https://gitlab.com/rpdev/opentodolist.git#commit=${pkgver}")
