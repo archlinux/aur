@@ -21,6 +21,6 @@ pkgbase = winbox
 	source = WinBox-4.0beta8.zip::https://download.mikrotik.com/routeros/winbox/4.0beta8/WinBox_Linux.zip
 	source = winbox.desktop
 	sha256sums = 2361fe66fa8d14c05f1ab5db4c547b2162d70cd5330ac9c7e6ec29d1da5bae19
-	sha256sums = 82593c0808505c9d6dcf2f0065e7a3d9ef8e01ceb6c999b66510d7417f7d3bd9
+	sha256sums = 2880ba075a3a5d75113707bbf642bd6018f0eb40a2d725d6adfe8d5d2ee14425
 
 pkgname = winbox

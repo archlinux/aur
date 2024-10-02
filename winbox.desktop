@@ -1,7 +1,7 @@
 [Desktop Entry]
 Type=Application
 Version=1.0
-Name=Winbox
+Name=WinBox
 Comment=GUI administration for Mikrotik RouterOS
 Exec=/usr/bin/env --unset=QT_QPA_PLATFORM /usr/bin/WinBox
 Icon=winbox
