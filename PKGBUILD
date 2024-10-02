@@ -3,7 +3,7 @@
 # Maintainer: iettuce <necoarc@tutanota.com>
 
 pkgname="firealpaca-appimage"
-pkgver="2.11.15"
+pkgver="2.12.0"
 pkgrel="1"
 pkgdesc="Simple and easy digital painting software - AppImage"
 arch=("x86_64")
@@ -20,8 +20,8 @@ source=(
 	"${_filename}::${url}"
 )
 sha256sums=(
-	bfef535332754d196da0b688979fdf7846728ed91d214f501118ed26578097c9
-)
+	d0c96ce03c9681b94e13a523bfc9f8b58c4d61aeda8e522d034ef3ffb935f68a
+	)
 
 
 
