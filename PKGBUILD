@@ -5,7 +5,7 @@
 
 pkgname=asciinema-git
 pkgver=3.0.0rc.3.r26.g2728a10
-pkgrel=1
+pkgrel=2
 pkgdesc="Record and share your terminal sessions"
 arch=('x86_64')
 url="https://github.com/asciinema/asciinema"
@@ -41,9 +41,9 @@ package() {
   install -Dm644 man/*.1 -t "${pkgdir}/usr/share/man/man1"
 
   pushd completion
-  install -Dm644 asciinema.fish -t "${pkgdir}/usr/share/fish/completions"
+  install -Dm644 asciinema.fish -t "${pkgdir}/usr/share/fish/vendor_completions.d/"
   install -Dm644 asciinema.bash "${pkgdir}/usr/share/bash-completion/completions/asciinema"
-  install -Dm644 _asciinema -t "${pkgdir}/usr/share/zsh/functions/Completion/Unix"
+  install -Dm644 _asciinema -t "${pkgdir}/usr/share/zsh/site-functions/"
   install -Dm644 asciinema.elv -t "${pkgdir}/usr/share/elvish/lib"
   # not sure where these files should go; copying them to the dir below
   install -Dm644 *.ps1 -t "${pkgdir}/usr/share/${pkgname}/completion"

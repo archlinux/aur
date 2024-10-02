@@ -1,7 +1,7 @@
 pkgbase = asciinema-git
 	pkgdesc = Record and share your terminal sessions
 	pkgver = 3.0.0rc.3.r26.g2728a10
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/asciinema/asciinema
 	arch = x86_64
 	license = GPL-3.0-only
