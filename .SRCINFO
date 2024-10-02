@@ -1,0 +1,17 @@
+pkgbase = ulexec-bin
+	pkgdesc = A tool for loading and executing PE on Windows and ELF on Linux from memory
+	pkgver = 0.0.2
+	pkgrel = 1
+	url = https://github.com/VHSgunzo/ulexec
+	arch = x86_64
+	provides = ulexec-bin
+	provides = ulexec
+	conflicts = ulexec-bin
+	conflicts = ulexec
+	conflicts = ulexec-git
+	source = ulexec::https://github.com/VHSgunzo/ulexec/releases/download/v0.0.2/ulexec
+	source = LICENSE::https://raw.githubusercontent.com/VHSgunzo/ulexec/refs/heads/main/LICENSE
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = ulexec-bin
