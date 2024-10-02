@@ -20,14 +20,14 @@ pkgname=${_pkgname_base}-${_language_short,,}
 pkgdesc="${_language} language pack for Firefox Nightly"
 
 groups=('firefox-nightly-i18n')
-source=("${_pkgname_base}-${_language_short}.xpi::$_url/firefox-${_version}.${_language_short}.langpack.xpi")
+source=("${_pkgname_base}-${_language_short}-${pkgver}.xpi::$_url/firefox-${_version}.${_language_short}.langpack.xpi")
 
 # Don't extract anything
-noextract=("${_pkgname_base}-${_language_short}.xpi")
+noextract=("${_pkgname_base}-${_language_short}-${pkgver}.xpi")
 
 sha256sums=('c8023bd04dd9fd6f30da15dcadabb6f85afbb056b3a48f62ac03e7b553db1e8a')
 
 package() {
-  install -Dm644 "${_pkgname_base}-${_language_short}.xpi" \
+  install -Dm644 "${_pkgname_base}-${_language_short}-${pkgver}.xpi" \
       "$pkgdir/opt/firefox-nightly/distribution/extensions/langpack-${_language_short}@firefox.mozilla.org.xpi"
 }
