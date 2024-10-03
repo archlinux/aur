@@ -30,15 +30,15 @@ backup=('etc/nginx/fastcgi.conf'
 install=nginx.install
 provides=('nginx' 'nginx-mainline')
 conflicts=('nginx')
-source=("git+https://github.com/nginx/nginx.git#commit=$_commit"
+source=("git+https://github.com/nginx/nginx.git#commit=${_commit}"
 #       "hg+https://hg.nginx.org/nginx#revision=$_commit"
         "https://cdn.openbsd.org/pub/OpenBSD/LibreSSL/libressl-${_libressl_ver}.tar.gz"
         "service"
         "logrotate")
-sha256sums=('SKIP'
-            '7b031dac64a59eb6ee3304f7ffb75dad33ab8c9d279c847f92c89fb846068f97'
-            'adb4a2b5176be3a3bf39666584f7a0a7f10b1b1aca927c189c1910c789d6d13c'
-            'b9af19a75bbeb1434bba66dd1a11295057b387a2cbff4ddf46253133909c311e')
+sha512sums=('5e6d345d7171bed3e1e2853f4e2ab23af05d89a93cc3af224ff9ffec6b96dc455c50bf05bbd1c9621a3f75b72ec6712dbdbc0be4bcb4ed8341daef5274cdf18b'
+            'b7b9f47c77fd27787b7c7ae7e78cd831fe9f7f32e280f54952994569bfe69ff03022e349aea9ea734c50b079693c6e15a3c1115ef0093e523437904074da5784'
+            'ca7d8666177d31b6c4924e9ab44ddf3d5b596b51da04d38da002830b03bd176d49354bbdd2a496617d57f44111ad59833296af87d03ffe3fca6b99327a7b4c3c'
+            '8fc2d0d1c4d14b80b82f158adb508bdd65428862cd6197c7b443d4612d0a225b82a4cae8fc76ab49560c97f0bf56427b3f4abc0a598abfa9b25cdd30d1f15a30')
 
 _common_flags=(
   --with-compat
