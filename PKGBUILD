@@ -2,12 +2,12 @@
 # Contributor: David Runge <dvzrv@archlinux.org>
 
 pkgname=gammastep-git
-pkgver=2.0.7.r1.gc5c3ac0
+pkgver=2.0.9.r1.geab8be4
 pkgrel=1
 pkgdesc="Adjust the color temperature of your screen according to your surroundings."
 arch=('x86_64')
 url="https://gitlab.com/chinstrap/gammastep"
-license=('GPL3')
+license=('GPL-3.0-or-later')
 provides=('gammastep')
 conflicts=('gammastep')
 depends=('geoclue' 'glibc' 'hicolor-icon-theme' 'libdrm' 'libx11' 'libxcb'
@@ -15,7 +15,8 @@ depends=('geoclue' 'glibc' 'hicolor-icon-theme' 'libdrm' 'libx11' 'libxcb'
 makedepends=('git' 'glib2' 'intltool' 'python' 'systemd')
 optdepends=('python-gobject: for gammastep-indicator'
             'python-xdg: for gammastep-indicator'
-            'gtk3: for gammastep-indicator')
+            'gtk3: for gammastep-indicator'
+            'libappindicator-gtk3: for gammastep-indicator')
 source=("git+https://gitlab.com/chinstrap/gammastep.git")
 sha256sums=('SKIP')
 
@@ -41,7 +42,7 @@ check() {
 }
 
 package() {
-  depends+=('libgio-2.0.so' 'libgobject-2.0.so' 'libglib-2.0.so')
+  depends+=('glib2' 'libgio-2.0.so' 'libgobject-2.0.so' 'libglib-2.0.so')
   cd "$srcdir"/gammastep
   make DESTDIR="$pkgdir/" install
   install -vDm 644 {CONTRIBUTING,NEWS,README}.md \
