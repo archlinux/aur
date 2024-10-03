@@ -1,6 +1,6 @@
 # Maintainer: Mika Hyttinen <mika dot hyttinen+arch ät gmail dot com>
 pkgname=cellframe-node
-pkgver=5.3.304
+pkgver=5.3.r2972.e326836
 pkgrel=1
 pkgdesc='Cellframe blockchain node with a powerful SDK'
 arch=('x86_64' 'aarch64')
@@ -10,7 +10,7 @@ makedepends=(git cmake python3 libxslt)
 depends=(logrotate libxcrypt-compat)
 provides=('cellframe-node' 'cellframe-node-cli' 'cellframe-node-tool' 'cellframe-node-config')
 replaces=('cellframe-node-debug')
-source=(git+https://gitlab.demlabs.net/cellframe/$pkgname.git#commit=6e37bed925fe1824c7a95306f1d80804c7288e7d
+source=(git+https://gitlab.demlabs.net/cellframe/$pkgname.git#commit=e326836171aee7393ac62676a6e3ea71f0da22e8
 	cellframe-node.logrotate
 	cellframe-node.service
 	cellframe-node-asan.service
@@ -31,7 +31,7 @@ prepare() {
 	cd "$pkgname" && git submodule update --init --recursive --progress
 	VERSION_MAJOR=$(echo "$pkgver" | cut -d '.' -f1)
 	VERSION_MINOR=$(echo "$pkgver" | cut -d '.' -f2)
-	VERSION_PATCH=$(echo "$pkgver" | cut -d '.' -f3)
+	VERSION_PATCH=$(echo "$pkgver" | cut -d '.' -f3,4)
 	sed -i "s|^VERSION_MAJOR=.*|VERSION_MAJOR=$VERSION_MAJOR|" "$srcdir/$pkgname/version.mk"
 	sed -i "s|^VERSION_MINOR=.*|VERSION_MINOR=$VERSION_MINOR|" "$srcdir/$pkgname/version.mk"
 	sed -i "s|^VERSION_PATCH=.*|VERSION_PATCH=$VERSION_PATCH|" "$srcdir/$pkgname/version.mk"
