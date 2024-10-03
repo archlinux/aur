@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Sudokuki
+Comment=A free graphical sudoku game written in Java
+Exec=sudokuki
+Icon=sudokuki
+Terminal=false
+StartupNotify=false
+Categories=Game;ArcadeGame;
