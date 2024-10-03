@@ -13,6 +13,6 @@ sha256sums=('SKIP')
 
 package() {
     cd "$srcdir/$pkgname-$pkgver"
-    install -Dm755 hyproled "$pkgdir/usr/bin/hyproled"
-    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/hyproled/LICENSE"
+    install -Dm755 hyproled/hyproled "$pkgdir/usr/bin/hyproled"
+    install -Dm644 hyproled/LICENSE "$pkgdir/usr/share/licenses/hyproled/LICENSE"
 }
