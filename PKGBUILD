@@ -21,26 +21,13 @@ arch=(x86_64)
 license=(GPL2)
 options=('!strip')
 
-_kernpkg=${_pkgname}-${_pkgver}-${_pkgrel}-${arch}.pkg.tar.zst
-_headerspkg=${_pkgname}-headers-${_pkgver}-${_pkgrel}-${arch}.pkg.tar.zst
-_docspkg=${_pkgname}-docs-${_pkgver}-${_pkgrel}-${arch}.pkg.tar.zst
+_kernpkg=linux-hardened-6.10.12.hardened1-1-x86_64.pkg.tar.zst
+_headerspkg=linux-hardened-headers-6.10.12.hardened1-1-x86_64.pkg.tar.zst
+_docspkg=linux-hardened-docs-6.10.12.hardened1-1-x86_64.pkg.tar.zst
 
-# See if the sources are available from our own mirror:
-_kernsrc=$(pacman -Spdd "${_pkgname}" 2> /dev/null)
-_headerssrc=$(pacman -Spdd "${_pkgname}-headers" 2> /dev/null)
-_docssrc=$(pacman -Spdd "${_pkgname}-docs" 2> /dev/null)
-
-# If not, then use the Arch Linux archive:
-if [ "$(basename "${_kernsrc}" 2> /dev/null)" != "${_kernpkg}" ]; then
-  _arch_archive=https://archive.archlinux.org/packages/.all
-  _kernsrc=${_arch_archive}/${_kernpkg}
-  _headerssrc=${_arch_archive}/${_headerspkg}
-  _docssrc=${_arch_archive}/${_docspkg}
-fi
-
-source=("${_kernsrc}"
-        "${_headerssrc}"
-        "${_docssrc}")
+source=("https://archive.archlinux.org/packages/.all/${_kernpkg}"
+        "https://archive.archlinux.org/packages/.all/${_headerspkg}"
+        "https://archive.archlinux.org/packages/.all/${_docspkg}")
 
 noextract=("${source[@]##*/}")
 
