@@ -2,7 +2,7 @@
 
 pkgname=ruby-trenni
 pkgver=3.14.0
-pkgrel=3
+pkgrel=4
 pkgdesc='A fast native templating system that compiles directly to Ruby code'
 arch=(x86_64)
 url='https://github.com/ioquatix/trenni'
