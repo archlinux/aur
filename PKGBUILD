@@ -3,7 +3,7 @@
 _pkgname="dosage-tracker"
 pkgname="${_pkgname}-bin"
 pkgver=1.6.6
-pkgrel=1
+pkgrel=2
 pkgdesc='Medication tracker for Linux'
 arch=('any')
 url="https://github.com/diegopvlk/Dosage"
@@ -13,11 +13,13 @@ depends=('dconf' 'gjs' 'hicolor-icon-theme' 'libportal')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 _pkgsrc="${_pkgname}-${pkgver}"
-source=("README-${pkgver}.md::${url}/raw/v${pkgver}/README.md"
-        "COPYING-${pkgver}::${url}/raw/v${pkgver}/COPYING")
 # https://askubuntu.com/a/1196449
-source=("${_pkgsrc}.snap::https://api.snapcraft.io/api/v1/snaps/download/IMBLvaS6amNAHz2u7dqN8rGUlKegMSnm_655.snap") # x86_64
-b2sums=('02bd9f8aeba8e654c4a147cca8b86ba919520264c829fe42b3130e6e3fce910b69dde9c7f831715911fd6f49dd75f1b3b00bae0f08a6a2593161a4141ff88c89')
+source=("${_pkgsrc}.snap::https://api.snapcraft.io/api/v1/snaps/download/IMBLvaS6amNAHz2u7dqN8rGUlKegMSnm_655.snap" # x86_64
+        "README-${pkgver}.md::${url}/raw/v${pkgver}/README.md"
+        "COPYING-${pkgver}::${url}/raw/v${pkgver}/COPYING")
+b2sums=('02bd9f8aeba8e654c4a147cca8b86ba919520264c829fe42b3130e6e3fce910b69dde9c7f831715911fd6f49dd75f1b3b00bae0f08a6a2593161a4141ff88c89'
+        'fde3a864795e6e2b593a0e520fee3725d7c341b31dc4769329d5a8a2419cf34bc555d499fac1f064c403d92d2571cc3b8653f1946e54a43caecc0d4361795d73'
+        '29481d2748ce7343f521b95ecb147d3b141c53cc15995f993d153323af7b206c6096f8642f8cb1e63210a6af5c1be1f1c9022058fb627883272f4c7dac87e187')
 
 prepare() {
   cd "${srcdir}"
