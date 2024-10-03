@@ -18,7 +18,7 @@ optdepends=(
         'dunst: Displays a desktop notification for one-click restoration.'
         'limine-dracut-support: Automates kernel installation/removal and Limine boot entry management.'
         'rsync: Provides an alternative method for restoring snapshots.'
-        'journalctl-desktop-notification: Sends desktop notifications for errors.'
+        'journalctl-desktop-notification: Sends desktop notifications for errors, including detected hardware issues.'
         'b3sum: Blake3 fast hash function that avoids duplication.'
 )
 makedepends=('git' 'maven')
