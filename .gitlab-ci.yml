@@ -68,13 +68,16 @@ release_job:
     - git remote add aur ssh://aur@aur.archlinux.org/terraform-bin.git 
     - git fetch aur master
     - git checkout master
+    - git stash
     - git rebase aur/master
     - pk_name=$(grep -Po "^pkgname=\K.*" PKGBUILD)
     - pk_ver=$(grep -Po "^pkgver=\K.*" PKGBUILD)
     - pk_rel=$(grep -Po "^pkgrel=\K.*" PKGBUILD)
     - commit_msg="update to $pk_name ver $pk_ver, rel version $pk_rel"
+    - git stash apply
     - git add PKGBUILD .SRCINFO
     - git commit -m "$commit_msg"
+    - git stash clear
     - git push aur master
 
   dependencies:
