@@ -1,0 +1,23 @@
+pkgbase = project-graph
+	pkgdesc = A simple tool to create topology diagrams.
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/LiRenTech/project-graph
+	install = project-graph.install
+	arch = x86_64
+	license = mit
+	depends = cairo
+	depends = desktop-file-utils
+	depends = gdk-pixbuf2
+	depends = glib2
+	depends = gtk3
+	depends = hicolor-icon-theme
+	depends = libsoup
+	depends = pango
+	depends = webkit2gtk
+	options = !strip
+	options = !emptydirs
+	source_x86_64 = https://github.com/LiRenTech/project-graph/releases/download/v0.1.0/Project.Graph_0.1.0_amd64.deb
+	sha256sums_x86_64 = SKIP
+
+pkgname = project-graph
