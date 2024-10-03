@@ -9,13 +9,12 @@ arch=(any)
 url=https://github.com/brown-uk/dict_uk
 license=(GPL-3.0-or-later CC-BY-NC-SA-4.0)
 optdepends=('hunspell: the spell checking libraries and apps')
-makedepends=(java-environment=11 gradle qt5-webengine)
+makedepends=(java-environment gradle qt5-webengine)
 source=($pkgname-$pkgver.tar.gz::https://github.com/brown-uk/dict_uk/archive/refs/tags/v$pkgver.tar.gz)
 sha256sums=('0e66bf07cc8377642897fda05396817e6347e917e22aab0cc2d29620d80be0b1')
 
 build() {
   cd "$srcdir/dict_uk-$pkgver"
-  export PATH="/usr/lib/jvm/java-11-openjdk/bin:${PATH}"
   gradle -b distr/hunspell/build.gradle hunspell --no-daemon --gradle-user-home "$srcdir"/gradle
 }
 

@@ -6,7 +6,7 @@ pkgbase = hunspell-uk
 	arch = any
 	license = GPL-3.0-or-later
 	license = CC-BY-NC-SA-4.0
-	makedepends = java-environment=11
+	makedepends = java-environment
 	makedepends = gradle
 	makedepends = qt5-webengine
 	optdepends = hunspell: the spell checking libraries and apps
