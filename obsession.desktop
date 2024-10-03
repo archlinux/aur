@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Obsession
+Exec=/usr/bin/Obsession
+Terminal=false
+Type=Application
+Icon=obsession
+Comment=Hotline Client
+Categories=Network

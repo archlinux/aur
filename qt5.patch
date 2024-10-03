@@ -1,0 +1,42 @@
+diff --git a/src/dialogtrackers.cpp b/src/dialogtrackers.cpp
+index 7415f78..ba8d985 100644
+--- a/src/dialogtrackers.cpp
++++ b/src/dialogtrackers.cpp
+@@ -24,9 +24,9 @@ DialogTrackers::DialogTrackers(ConnectionController * c, QWidget *parent) :
+ 
+     addTrackerDialog = new DialogAddTracker(this);
+ 
+-    ui->treeWidget->header()->setResizeMode(0, QHeaderView::ResizeToContents);
+-    ui->treeWidget->header()->setResizeMode(1, QHeaderView::ResizeToContents);
+-    ui->treeWidget->header()->setResizeMode(2, QHeaderView::Stretch);
++    ui->treeWidget->header()->setSectionResizeMode(0, QHeaderView::ResizeToContents);
++    ui->treeWidget->header()->setSectionResizeMode(1, QHeaderView::ResizeToContents);
++    ui->treeWidget->header()->setSectionResizeMode(2, QHeaderView::Stretch);
+ 
+     connect(ui->comboBox, SIGNAL(currentIndexChanged(QString)), this, SLOT(updateServerList(QString)));
+     connect(ui->pushButton, SIGNAL(clicked()), addTrackerDialog, SLOT(show()));
+diff --git a/src/downloadmanager.cpp b/src/downloadmanager.cpp
+index 37c91ef..2335a21 100644
+--- a/src/downloadmanager.cpp
++++ b/src/downloadmanager.cpp
+@@ -240,6 +240,5 @@ void DownloadManager::addDownload(quint32 ref, quint32 size, quint32 queuepos) {
+ 
+ QString DownloadManager::GetDownloadsDirectoryPath()
+ {
+-    // Qt4 does not offer a standard "Downloads" location. We could define one in the preferences dialog.
+-    return QDesktopServices::storageLocation(QDesktopServices::DesktopLocation);
++    return QStandardPaths::writableLocation(QStandardPaths::DesktopLocation);
+ }
+diff --git a/src/main.cpp b/src/main.cpp
+index 1936770..574e814 100644
+--- a/src/main.cpp
++++ b/src/main.cpp
+@@ -9,7 +9,7 @@
+ #include "connectioncontroller.h"
+ 
+ void kill_threads( void );
+-void * __gxx_personality_v0=0;
++/*void * __gxx_personality_v0=0; */
+ 
+ qint32 main(qint32 argc, char *argv[])
+ {
