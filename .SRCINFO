@@ -1,6 +1,6 @@
 pkgbase = anylogic-professional
 	pkgdesc = AnyLogic Professional Edition - for companies and government organizations
-	pkgver = 8.9.0
+	pkgver = 8.9.1
 	pkgrel = 1
 	url = https://www.anylogic.com
 	arch = x86_64
@@ -8,12 +8,13 @@ pkgbase = anylogic-professional
 	depends = glibc
 	optdepends = chromium: alternative browser for model animating
 	optdepends = firefox: alternative browser for model animating
+	optdepends = webkitgtk: it may be required because of libwebkitgtk-1.0 dependency (not building as of now, only binary)
 	provides = anylogic
 	conflicts = anylogic
 	options = !strip
-	source = https://files.anylogic.com/anylogic-professional-8.9.0.linux.x86_64.tgz.bin
+	source = https://files.anylogic.com/anylogic-professional-8.9.1.linux.x86_64.tgz.bin
 	source = anylogic-professional.desktop
-	sha256sums = 50f36b9cd3d3d2d0eed3f11afc57ecdc6c86f94bc3d67dcc20c1dacb0b4a615f
+	sha256sums = fd9eab4ed3e357852d17e835467cadfb07779c4bc9c9e207fc38214dc5cc3d82
 	sha256sums = 3d1c428d84b20cfc7ddd8977cf00e732893881de2295d326b72cd57b0568102b
 
 pkgname = anylogic-professional
