@@ -1,6 +1,6 @@
 pkgbase = google-chrome-beta
 	pkgdesc = The popular web browser by Google (Beta Channel)
-	pkgver = 130.0.6723.19
+	pkgver = 130.0.6723.31
 	pkgrel = 1
 	url = https://www.google.com/chrome
 	install = google-chrome-beta.install
@@ -21,10 +21,10 @@ pkgbase = google-chrome-beta
 	provides = google-chrome
 	options = !emptydirs
 	options = !strip
-	source = https://dl.google.com/linux/chrome/deb/pool/main/g/google-chrome-beta/google-chrome-beta_130.0.6723.19-1_amd64.deb
+	source = https://dl.google.com/linux/chrome/deb/pool/main/g/google-chrome-beta/google-chrome-beta_130.0.6723.31-1_amd64.deb
 	source = eula_text.html
 	source = google-chrome-beta.sh
-	sha512sums = 8798826aee7cb0fa86f70f60bc856fb014e80392a40bede0e2b274eda0a137c02c7cb8c052b4723c8a7065d3c52abcb93657401949d660fe3999f28462a9acb6
+	sha512sums = 7a71e65dfa712c8aa9122481b9f89f06c1436c4ce3bf5851f7bc8625275168549676d3cab261a154e56fe96bd6ad558baace6e77426729987e2ef65582ee0b5d
 	sha512sums = a225555c06b7c32f9f2657004558e3f996c981481dbb0d3cd79b1d59fa3f05d591af88399422d3ab29d9446c103e98d567aeafe061d9550817ab6e7eb0498396
 	sha512sums = 17827849624a365b501da6b4e9648f324dfa1ee081dbb46f8e9519de355c4b2996075c3acb254921afd7553e4814877fa6e4355ab29bbed5825c9cffa3032f03
 
