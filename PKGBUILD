@@ -1,0 +1,18 @@
+# Maintainer: mklan <me@klanm.at>
+pkgname=hyproled-git
+pkgver=0.1.0
+pkgrel=1
+pkgdesc="A hyprland shader utility to prevent OLED burn in."
+arch=('any')
+url="https://github.com/mklan/hyproled"
+license=('BSD 3')
+depends=('hyprland' 'bash')
+makedepends=('git')
+source=("git+https://github.com/mklan/hyproled.git")
+sha256sums=('SKIP')
+
+package() {
+    cd "${pkgname}"
+    install -Dm755 hyproled "$pkgdir/usr/bin/hyproled"
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/hyproled/LICENSE"
+}
