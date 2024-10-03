@@ -12,6 +12,7 @@ source=("git+https://github.com/mklan/hyproled.git")
 sha256sums=('SKIP')
 
 package() {
+    cd "$srcdir/$pkgname-$pkgver"
     install -Dm755 hyproled "$pkgdir/usr/bin/hyproled"
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/hyproled/LICENSE"
 }
