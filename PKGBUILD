@@ -4,19 +4,20 @@
 pkgname=zed-preview
 _pkgname=${pkgname%-preview}
 pkgver=0.156.0
-pkgrel=2
+pkgrel=3
 pkgdesc='A high-performance, multiplayer code editor from the creators of Atom and Tree-sitter'
 arch=(x86_64)
 url=https://zed.dev
 _url="https://github.com/zed-industries/$_pkgname"
 license=(GPL-3.0-or-later AGPL-3.0-or-later Apache-2.0)
 depends=(alsa-lib libasound.so
+         curl libcurl.so
          fontconfig
          gcc-libs # libgcc_s.so libstdc++.so
          glibc # libc.so libm.so
          # libgit2 libgit2.so
          # libxau libXau.so
-         libxcb # libxcb-xkb.so
+         libxcb # libxcb.so libxcb-xkb.so
          # libxdmcp libXdmcp.so
          libxkbcommon # libxkbcommon.so
          libxkbcommon-x11 # libxkbcommon-x11.so
@@ -26,7 +27,8 @@ depends=(alsa-lib libasound.so
          vulkan-icd-loader
          vulkan-tools
          wayland
-         zlib libz.so)
+         zlib libz.so
+         zstd libzstd.so)
 makedepends=(cargo
              clang
              cmake
