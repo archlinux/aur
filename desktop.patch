@@ -1,0 +1,10 @@
+--- 1/haptic.desktop
++++ 2/haptic.desktop
+@@ -1,6 +1,6 @@
+ [Desktop Entry]
+ Categories=Development;
+-Exec=haptic
++Exec=env WEBKIT_DISABLE_DMABUF_RENDERER=1 haptic
+ Icon=haptic
+ Name=Haptic
+ Terminal=false
