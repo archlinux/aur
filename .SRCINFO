@@ -1,13 +1,13 @@
 pkgbase = gnome-shell-extension-hide-keyboard-layout
 	pkgdesc = GNOME Shell extension to hide keyboard layout indicator in status bar.
-	pkgver = 8
+	pkgver = 9
 	pkgrel = 1
 	url = https://github.com/ai/hide-keyboard-layout
 	arch = any
 	license = MIT
 	makedepends = git
 	depends = gnome-shell
-	source = gnome-shell-extension-hide-keyboard-layout-8.tar.gz::https://github.com/ai/hide-keyboard-layout/archive/8.tar.gz
-	b2sums = c6840058999ad6133cda49e03db64686d4092edb42dc2c4711b3dd8f67b28b482a68aa90db73a8457feb97df85ccb0d80769a0fc37d0d1f484cd6e9f892377e4
+	source = gnome-shell-extension-hide-keyboard-layout-9.tar.gz::https://github.com/ai/hide-keyboard-layout/archive/9.tar.gz
+	b2sums = 10aa0668771e6fb61deac19eaea2868947a0e29d9a238d643ac0405a59f26b4dc9a846c1c29275ad8b3add8e36487035ccaae6d271802677ef69eb0489e0a175
 
 pkgname = gnome-shell-extension-hide-keyboard-layout
