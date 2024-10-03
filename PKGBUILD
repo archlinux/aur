@@ -6,6 +6,7 @@ pkgdesc="LXD-UI patched for Incus"
 arch=(any)
 url="https://github.com/canonical/lxd-ui"
 license=('GPL')
+makedepends=('yarn' 'git' 'npm')
 source=("git+https://github.com/zabbly/incus.git"
         "lxd-ui::https://github.com/canonical/lxd-ui/archive/refs/tags/${pkgver}.tar.gz"
         "incus-ui.conf"
