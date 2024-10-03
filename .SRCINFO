@@ -1,6 +1,6 @@
 pkgbase = project-graph-git
 	pkgdesc = A simple tool to create topology diagrams.
-	pkgver = 1.1.0
+	pkgver = 0.1.0
 	pkgrel = 1
 	url = https://github.com/LiRenTech/project-graph
 	arch = any
