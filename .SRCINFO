@@ -1,6 +1,6 @@
 pkgbase = zotero-bin
 	pkgdesc = Zotero Standalone. Is a free, easy-to-use tool to help you collect, organize, cite, and share your research sources.
-	pkgver = 7.0.5
+	pkgver = 7.0.7
 	pkgrel = 1
 	url = https://www.zotero.org/download
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = zotero-bin
 	conflicts = zotero
 	source = zotero.desktop
 	sha256sums = 8504fea45af534515f21019a4ba17435c832ccb918f046601030e3ed562fa587
-	source_x86_64 = Zotero-7.0.5_linux_x86_64.tar.bz2::https://www.zotero.org/download/client/dl?channel=release&platform=linux-x86_64&version=7.0.5
-	sha256sums_x86_64 = 2e39f62143171a196ffd1629472cf1a5d113c5038759dc3bd0ac0f8eb726213d
+	source_x86_64 = Zotero-7.0.7_linux_x86_64.tar.bz2::https://www.zotero.org/download/client/dl?channel=release&platform=linux-x86_64&version=7.0.7
+	sha256sums_x86_64 = 1112fecca8cd3b3fa3fd0e5dc935d57332e7c1a4e5fd2ce049a295900f6ec89e
 
 pkgname = zotero-bin
