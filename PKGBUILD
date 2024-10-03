@@ -1,7 +1,7 @@
 # Maintainer: Claudia Pellegrino <aur ät cpellegrino.de>
 
 pkgname=en-croissant
-pkgver=0.11.0
+pkgver=0.11.1
 pkgrel=1
 pkgdesc='Modern chess GUI and analysis tool'
 arch=('x86_64')
@@ -40,7 +40,7 @@ source=(
   'en-croissant.desktop'
 )
 
-sha512sums=('122b1b5fcad7bc473b5ce8e2f627bd4e784cbf26aba60ec43cf1c8ef2405370df30892b39c9101b070f1930c25d6a25a5889d7af50e9260eaa5c915c0c5c7339'
+sha512sums=('fea6be1c1fc39972fe4b8956ff1f9e67851142a8db093e16200f6e2793e2518bce50aaeca79855752d9ab4041d3ff475e2fb539bfa047421de642790ee6c1162'
             'fe5dbb7df6b25d9c1512bf9e38dc4eb8096d5c9bcafe328f7e55fb42064695234016e3baed7008bded04501494e149bcbb34ad5ebbaa885eda880497d8cd208e'
             '0ca0416ec4941d0a9194048b7e099c433bdb7f309dd0746e272757f02e5d13bb899090ac390b9fbdd6f075070e5cf54996d63348f5f1cafdc8f5d7d798b92023')
 
