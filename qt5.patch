@@ -28,10 +28,10 @@ index 37c91ef..2335a21 100644
 +    return QStandardPaths::writableLocation(QStandardPaths::DesktopLocation);
  }
 diff --git a/src/main.cpp b/src/main.cpp
-index 1936770..574e814 100644
+index 1936770..b6bdfa3 100644
 --- a/src/main.cpp
 +++ b/src/main.cpp
-@@ -9,7 +9,7 @@
+@@ -9,16 +9,16 @@
  #include "connectioncontroller.h"
  
  void kill_threads( void );
@@ -40,3 +40,18 @@ index 1936770..574e814 100644
  
  qint32 main(qint32 argc, char *argv[])
  {
+-    FILE * debugLog = fopen("log.txt", "a");
+-    if(debugLog)
+-    {
+-        fwrite("\n", 1, 1, debugLog);
+-        fclose(debugLog);
+-    }
++    // FILE * debugLog = fopen("log.txt", "a");
++    // if(debugLog)
++    // {
++    //     fwrite("\n", 1, 1, debugLog);
++    //     fclose(debugLog);
++    // }
+ 
+     QApplication a(argc, argv);
+     MainWindow w(0, true);
