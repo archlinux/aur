@@ -1,6 +1,6 @@
 pkgbase = apexsky
 	pkgdesc = A game mod loader with integrated aimbot and ESP
-	pkgver = b157.g10c4c37
+	pkgver = b160.g3f58a3f
 	pkgrel = 1
 	url = https://github.com/chettoy/apexsky
 	arch = x86_64
@@ -8,6 +8,7 @@ pkgbase = apexsky
 	makedepends = cargo-nightly
 	makedepends = clang
 	makedepends = lld
+	makedepends = pkgconf
 	makedepends = protobuf
 	makedepends = zstd
 	depends = alsa-lib
@@ -16,7 +17,7 @@ pkgbase = apexsky
 	optdepends = libusb: DMA device support
 	options = !debug
 	options = !lto
-	source = apexsky-b157.g10c4c37.tar.gz::https://github.com/chettoy/apexsky/archive/10c4c37ca6270a342063b8b89f9228c8ce9d7b91.tar.gz
-	sha256sums = 0d82b6c2120d45d40234376e28c00bb8bfb578bc3ec1ffaafcb53c11e19ddb1f
+	source = apexsky-b160.g3f58a3f.tar.gz::https://github.com/chettoy/apexsky/archive/3f58a3f289c32103f78d2d7dbcf532defe1c1a14.tar.gz
+	sha256sums = 0d57301ea2503f46d924eda0c9e1854b1a0614e5371ab01462beb649dc54744a
 
 pkgname = apexsky
