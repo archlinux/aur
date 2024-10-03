@@ -35,7 +35,7 @@ source=("git+https://github.com/nginx/nginx.git#commit=$_commit"
         "https://cdn.openbsd.org/pub/OpenBSD/LibreSSL/libressl-${_libressl_ver}.tar.gz"
         "service"
         "logrotate")
-sha256sums=('4d389babb5f552e380499291993be099d0bf04b4e8cb8d733689d8537989ded8'
+sha256sums=('ac1954455b611fb03f4118ca233a2bdd4af1964f6feae2dc5a1a0b4ae7204c8f'
             '7b031dac64a59eb6ee3304f7ffb75dad33ab8c9d279c847f92c89fb846068f97'
             'adb4a2b5176be3a3bf39666584f7a0a7f10b1b1aca927c189c1910c789d6d13c'
             'b9af19a75bbeb1434bba66dd1a11295057b387a2cbff4ddf46253133909c311e')
