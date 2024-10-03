@@ -2,11 +2,14 @@
 
 pkgname=ttf-honorsans
 _pkgname=HONORSans
-pkgver=1.2.r2.gac5a212
+_pkgname1=HONORSansArabic
+_pkgname2=HONORSansCN
+_pkgname3=HONORSansTC
+pkgver=1.2.r5.g98984fa
 pkgrel=1
-pkgdesc='华为HONORSans中文字体添加nerd补丁'
+pkgdesc='华为HONORSans中文简繁字体添加nerd补丁    '
 arch=('any')
-url='https://developer.honor.com/cn/'
+url='https://developer.honor.com/cn/doc/guides/100681'
 license=('custom')
 provides=('HONORSans')
 source=("git+https://github.com/maoyaotang12/HONORSans.git")
@@ -18,7 +21,10 @@ pkgver() {
 
 package() {
   cd "${_pkgname}"
-  install -dm 755 "${pkgdir}/usr/share/fonts/HONORSans"
-  cp -r * "${pkgdir}/usr/share/fonts/HONORSans"
+  install -dm 755 "${pkgdir}/usr/share/fonts/$_pkgname"
+  cp -r ${srcdir}/$_pkgname/$_pkgname "${pkgdir}/usr/share/fonts/$_pkgname"
+  cp -r ${srcdir}/$_pkgname/$_pkgname1 "${pkgdir}/usr/share/fonts/$_pkgname"
+  cp -r ${srcdir}/$_pkgname/$_pkgname2 "${pkgdir}/usr/share/fonts/$_pkgname" #简体字去除前面加上# 
+#  cp -r ${srcdir}/$_pkgname/$_pkgname3 "${pkgdir}/usr/share/fonts/$_pkgname" #繁体字把#去除
   install -Dm644 LICENSE.txt "${pkgdir}/usr/share/licenses/$pkgname/LICENSE"
 }

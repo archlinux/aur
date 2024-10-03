@@ -1,8 +1,8 @@
 pkgbase = ttf-honorsans
-	pkgdesc = 华为HONORSans中文字体添加nerd补丁
-	pkgver = 1.2.r2.gac5a212
+	pkgdesc = 华为HONORSans中文简繁字体添加nerd补丁    
+	pkgver = 1.2.r5.g98984fa
 	pkgrel = 1
-	url = https://developer.honor.com/cn/
+	url = https://developer.honor.com/cn/doc/guides/100681
 	arch = any
 	license = custom
 	provides = HONORSans
