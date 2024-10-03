@@ -5,7 +5,7 @@
 
 pkgname=nordvpn-bin
 pkgver=3.19.0
-pkgrel=1
+pkgrel=2
 pkgdesc="NordVPN CLI tool for Linux"
 arch=('x86_64' 'i686' 'armv7h' 'aarch64' 'armeabi')
 url="https://nordvpn.com/download/linux/"
