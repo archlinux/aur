@@ -16,19 +16,12 @@ source=("https://download2.remnote.io/remnote-desktop2/RemNote-$pkgver.AppImage"
 sha256sums=('56c4bd4576dcbba695edbf81937941fb1ebf5ff1f1379128ca91429f8a8a3449')
             #'6fabb8dc40b63d8bbc447df45f7b31e7e0b43d30f144496fb7d900542ada2534')
 
-#prepare() {
-#	chmod a+x $_appimage
-#	./$_appimage --appimage-extract
-#	sed -i -e "s|^Exec=.*|Exec=/usr/bin/$pkgname %U|" \
-#		-e '/^X-AppImage-Version=.*/d' \
-#		-e '/Categories=/s/=/&Office;/' squashfs-root/${pkgname}.desktop
-#}
-# makepkg is capable of automatically unpacking .AppImage files using bsdtar
 prepare() {
 	sed -i -e "s|^Exec=.*|Exec=/usr/bin/$pkgname %U|" \
 		-e '/^X-AppImage-Version=.*/d' \
 		-e '/Categories=/s/=/&Office;/' squashfs-root/${pkgname}.desktop
 }
+# insert script into desktop-entry to force correct electron-version
 
 package() {
 	install -Dm755 "${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
