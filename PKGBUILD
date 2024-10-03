@@ -2,7 +2,7 @@
 
 pkgname=ruby-formatador
 pkgver=1.1.0
-pkgrel=3
+pkgrel=4
 pkgdesc='STDOUT text formatting'
 arch=(any)
 url='https://github.com/geemus/formatador'
