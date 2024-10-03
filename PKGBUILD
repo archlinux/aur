@@ -10,12 +10,21 @@ license=('MIT')
 makedepends=('git' 'cmake')
 provides=('libcrossguid')
 conflicts=('libcrossguid')
-source=('libcrossguid::git+https://github.com/graeme-hill/crossguid.git')
-md5sums=('SKIP')
+source=(
+  'libcrossguid::git+https://github.com/graeme-hill/crossguid.git'
+  'cstdint.diff::https://github.com/graeme-hill/crossguid/pull/67.diff'
+)
+sha256sums=('SKIP'
+            '17f3cb3951be4e04e53d3a1005339663b98053928715bf216512a01c2fa7e9e9')
 
 pkgver() {
   cd "$srcdir"/libcrossguid
   git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+  cd "$srcdir"/libcrossguid
+  patch -p1 < ../cstdint.diff
 }
 
 build() {

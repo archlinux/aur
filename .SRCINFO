@@ -11,6 +11,8 @@ pkgbase = libcrossguid-git
 	provides = libcrossguid
 	conflicts = libcrossguid
 	source = libcrossguid::git+https://github.com/graeme-hill/crossguid.git
-	md5sums = SKIP
+	source = cstdint.diff::https://github.com/graeme-hill/crossguid/pull/67.diff
+	sha256sums = SKIP
+	sha256sums = 17f3cb3951be4e04e53d3a1005339663b98053928715bf216512a01c2fa7e9e9
 
 pkgname = libcrossguid-git
