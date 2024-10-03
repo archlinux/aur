@@ -1,12 +1,11 @@
 pkgbase = python-aioconsole
 	pkgdesc = Asynchronous console and interfaces for asyncio
 	pkgver = 0.7.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/vxgmichel/aioconsole
 	arch = any
 	license = GPL
 	checkdepends = python-pytest-asyncio
-	checkdepends = python-pytest-cov
 	checkdepends = python-pytest-repeat
 	makedepends = python-setuptools
 	depends = python
