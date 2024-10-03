@@ -7,6 +7,7 @@ pk_rel=$(grep -Po "^pkgrel=\K.*" PKGBUILD)
 
 commit_msg="update to $pk_name ver $pk_ver, rel version $pk_rel" 
 
+gir checkout main
 git add PKGBUILD .SRCINFO
 git commit -m "$commit_msg"
 git checkout master
