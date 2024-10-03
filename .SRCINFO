@@ -1,10 +1,14 @@
 pkgbase = quodlibet-git
 	pkgdesc = Music player and music library manager
-	pkgver = r11444.4aff05b37
+	pkgver = r11752.7fbd8ce82
 	pkgrel = 1
 	url = https://quodlibet.readthedocs.io
 	arch = any
-	license = GPL2
+	license = GPL-2.0-or-later
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
 	makedepends = gettext
 	makedepends = git
 	makedepends = python-sphinx_rtd_theme
