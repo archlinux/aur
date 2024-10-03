@@ -1,7 +1,7 @@
 pkgbase = zed-preview
 	pkgdesc = A high-performance, multiplayer code editor from the creators of Atom and Tree-sitter
 	pkgver = 0.156.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://zed.dev
 	arch = x86_64
 	license = GPL-3.0-or-later
@@ -10,6 +10,7 @@ pkgbase = zed-preview
 	makedepends = cargo
 	makedepends = clang
 	makedepends = cmake
+	makedepends = protobuf
 	makedepends = vulkan-headers
 	makedepends = vulkan-validation-layers
 	depends = alsa-lib

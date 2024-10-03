@@ -4,7 +4,7 @@
 pkgname=zed-preview
 _pkgname=${pkgname%-preview}
 pkgver=0.156.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A high-performance, multiplayer code editor from the creators of Atom and Tree-sitter'
 arch=(x86_64)
 url=https://zed.dev
@@ -30,6 +30,7 @@ depends=(alsa-lib libasound.so
 makedepends=(cargo
              clang
              cmake
+             protobuf
              vulkan-headers
              vulkan-validation-layers)
 optdepends=('clang: improved C/C++ language support'
@@ -72,6 +73,8 @@ build() {
 	_srcenv
 	export ZED_UPDATE_EXPLANATION='Updates are handled by pacman'
 	export RELEASE_VERSION="$pkgver"
+	export PROTOC=/usr/bin/protoc
+	export PROTOC_INCLUDE=/usr/include
 	cargo build --release --frozen --package zed --package cli
 }
 
