@@ -1,7 +1,7 @@
 # Maintainer: Lukas Pöschl <lukas@smart-ies.de>
 
 pkgbase=linux-morphius
-pkgver=6.5.5
+pkgver=6.11.1
 pkgrel=1
 pkgdesc='Linux-morphius'
 _srctag=v${pkgver%.*}-${pkgver##*.}
@@ -37,9 +37,9 @@ validpgpkeys=(
   C7E7849466FE2358343588377258734B41C31549  # David Runge <dvzrv@archlinux.org>
 )
 
-b2sums=('d4d7c082a627dd35e7b994adea0011efe57e22f03c6d548bf09f524074a0293fdb4c2980db914bc93493ff0b29e804b777111d0756d52cc1c1d026e6dec3d2e4'
-        'ff5e44410d9982a2ca6b74da5d9a8f50255be08f37d600f85db6eb21059e98467aedae37f506c3d65458c3a66ea97a2ec5147c5c9b2271eaceca0235fad14f2d'
-        'bf90bebe4d5f03eeef1949bdcfe430c11679849c74331856e87be4b8803c0c4e445e9f937ae4c4578e7897e1c6cee1143e961bf397f1d165eb54d5bb2e6c926b')
+b2sums=('ecc34758ffdb61266592cb4bd33ea26b1ab60c4ba21e5fea3bd9516e9b574ae1d1155bee7864bd1b2ea8e784c16bd801369d397f719ef133d043e1399f135016'
+        '29e5747255b9a41460d63c85bea1667ecec0e0a00092ac7fd4cc014fa01c32cfa487b7e71cc81662a754b374b79359dd3d22be67d68446a66bcb530987a979d2'
+        '1b443c48efe98e5090b0eac3f0bb7e381a0b1f9bc5e1b24929c736bbed6a29c9efa842ad64dd65b75d6ee3a505d92ff365e2557b5dbf3ce714bb0e10a38a52f3')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
@@ -59,13 +59,13 @@ prepare() {
   echo ">>> Copying and extracting firmware from /usr/lib/firmware..."
   mkdir -p fw
   cd fw
-  cp -r /usr/lib/firmware/amdgpu/ .
-  cp /usr/lib/firmware/iwlwifi-cc-a0-59.ucode.zst .
+  cp -Lr /usr/lib/firmware/amdgpu/ .
+  cp /usr/lib/firmware/iwlwifi-cc-a0-77.ucode.zst .
   
   cd amdgpu
   zstd -d ./*
   cd ..
-  zstd -d iwlwifi-cc-a0-59.ucode.zst
+  zstd -d iwlwifi-cc-a0-77.ucode.zst
 
   cd ..
 
@@ -128,8 +128,8 @@ _package() {
   ZSTD_CLEVEL=19 _make INSTALL_MOD_PATH="$pkgdir/usr" INSTALL_MOD_STRIP=1 \
     DEPMOD=/doesnt/exist modules_install  # Suppress depmod
 
-  # remove build and source links
-  rm "$modulesdir"/{source,build}
+  # remove build link
+  rm "$modulesdir"/build
 }
 
 _package-headers() {

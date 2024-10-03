@@ -1,8 +1,6 @@
-diff --git a/drivers/platform/chrome/chromeos_acpi.c b/drivers/platform/chrome/chromeos_acpi.c
-index 1312aaa..57f78b2 100644
---- a/drivers/platform/chrome/chromeos_acpi.c
-+++ b/drivers/platform/chrome/chromeos_acpi.c
-@@ -1,286 +1,797 @@
+--- a/drivers/platform/chrome/chromeos_acpi.c	2024-10-01 01:45:37.000000000 +0200
++++ b/drivers/platform/chrome/chromeos_acpi.c	2024-10-03 11:25:46.117994579 +0200
+@@ -1,286 +1,798 @@
 -// SPDX-License-Identifier: GPL-2.0-only
 -/*
 - * ChromeOS specific ACPI extensions
@@ -29,7 +27,13 @@ index 1312aaa..57f78b2 100644
 +#include <linux/acpi.h>
  
 -#define ACPI_ATTR_NAME_LEN 4
--
++#define CHNV_DEBUG_RESET_FLAG	0x40	     /* flag for S3 reboot */
++#define CHNV_RECOVERY_FLAG	0x80	     /* flag for recovery reboot */
++#define CHSW_RECOVERY_FW	0x00000002   /* recovery button depressed */
++#define CHSW_RECOVERY_EC	0x00000004   /* recovery button depressed */
++#define CHSW_DEVELOPER_MODE	0x00000020   /* developer switch set */
++#define CHSW_WP			0x00000200   /* write-protect (optional) */
+ 
 -#define DEV_ATTR(_var, _name)					\
 -	static struct device_attribute dev_attr_##_var =	\
 -		__ATTR(_name, 0444, chromeos_first_level_attr_show, NULL);
@@ -75,38 +79,20 @@ index 1312aaa..57f78b2 100644
 -		.is_visible = attr_is_visible_gpio_##_num,				\
 -		.attrs = attrs_##_group,						\
 -	};
-+#define CHNV_DEBUG_RESET_FLAG	0x40	     /* flag for S3 reboot */
-+#define CHNV_RECOVERY_FLAG	0x80	     /* flag for recovery reboot */
-+#define CHSW_RECOVERY_FW	0x00000002   /* recovery button depressed */
-+#define CHSW_RECOVERY_EC	0x00000004   /* recovery button depressed */
-+#define CHSW_DEVELOPER_MODE	0x00000020   /* developer switch set */
-+#define CHSW_WP			0x00000200   /* write-protect (optional) */
- 
--static unsigned int chromeos_acpi_gpio_groups;
 +/* the following defines are copied from
 + * vboot_reference:firmware/lib/vboot_nvstorage.c.
 + */
 +#define RECOVERY_OFFSET              2
 +#define VBNV_RECOVERY_RW_INVALID_OS  0x43
  
+-static unsigned int chromeos_acpi_gpio_groups;
++#define MAX_VBOOT_CONTEXT_BUFFER_SIZE 64  /* Should be enough for anything. */
+ 
 -/* Parse the ACPI package and return the data related to that attribute */
 -static int chromeos_acpi_handle_package(struct device *dev, union acpi_object *obj,
 -					int pkg_num, int sub_pkg_num, char *name, char *buf)
 -{
 -	union acpi_object *element = obj->package.elements;
-+#define MAX_VBOOT_CONTEXT_BUFFER_SIZE 64  /* Should be enough for anything. */
- 
--	if (pkg_num >= obj->package.count)
--		return -EINVAL;
--	element += pkg_num;
--
--	if (element->type == ACPI_TYPE_PACKAGE) {
--		if (sub_pkg_num >= element->package.count)
--			return -EINVAL;
--		/* select sub element inside this package */
--		element = element->package.elements;
--		element += sub_pkg_num;
--	}
 +/*
 + * Structure containing one ACPI exported integer along with the validity
 + * flag.
@@ -116,6 +102,39 @@ index 1312aaa..57f78b2 100644
 +	bool	 cad_is_set;
 +};
  
+-	if (pkg_num >= obj->package.count)
+-		return -EINVAL;
+-	element += pkg_num;
++struct chromeos_vbc {
++	/**
++	 * Read vboot context to buffer
++	 *
++	 * @param buf		Pointer to buffer for storing vboot context
++	 * @param count		Size of buffer
++	 * @return	on success, the number of bytes read is returned and
++	 *		on error, -err is returned.
++	 */
++	ssize_t (*read)(void *buf, size_t count);
++	/**
++	 * Write vboot context from buffer
++	 *
++	 * @param buf		Pointer to buffer of new vboot context content
++	 * @param count		Size of buffer
++	 * @return	on success, the number of bytes written is returned and
++	 *		on error, -err is returned.
++	 */
++	ssize_t (*write)(const void *buf, size_t count);
++	const char *name;
++};
+ 
+-	if (element->type == ACPI_TYPE_PACKAGE) {
+-		if (sub_pkg_num >= element->package.count)
+-			return -EINVAL;
+-		/* select sub element inside this package */
+-		element = element->package.elements;
+-		element += sub_pkg_num;
+-	}
+-
 -	switch (element->type) {
 -	case ACPI_TYPE_INTEGER:
 -		return sysfs_emit(buf, "%d\n", (int)element->integer.value);
@@ -144,28 +163,6 @@ index 1312aaa..57f78b2 100644
 -				at += r;
 -				room_left -= r;
 -			}
-+struct chromeos_vbc {
-+	/**
-+	 * Read vboot context to buffer
-+	 *
-+	 * @param buf		Pointer to buffer for storing vboot context
-+	 * @param count		Size of buffer
-+	 * @return	on success, the number of bytes read is returned and
-+	 *		on error, -err is returned.
-+	 */
-+	ssize_t (*read)(void *buf, size_t count);
-+	/**
-+	 * Write vboot context from buffer
-+	 *
-+	 * @param buf		Pointer to buffer of new vboot context content
-+	 * @param count		Size of buffer
-+	 * @return	on success, the number of bytes written is returned and
-+	 *		on error, -err is returned.
-+	 */
-+	ssize_t (*write)(const void *buf, size_t count);
-+	const char *name;
-+};
-+
 +/*
 + * Structure containing the set of ACPI exported integers required by chromeos
 + * wrapper.
@@ -199,8 +196,10 @@ index 1312aaa..57f78b2 100644
 +static void chromeos_device_remove(struct acpi_device *device);
 +
 +int chromeos_legacy_set_need_recovery(void);
++int chromeos_set_need_recovery(void);
 +
 +static struct chromeos_vbc *chromeos_vbc_ptr;
++int chromeos_vbc_register(struct chromeos_vbc *chromeos_vbc);
 +static int vbc_read(u8 *buf, int buf_size);
 +static int vbc_write_byte(unsigned offset, u8 value);
 +
@@ -213,7 +212,6 @@ index 1312aaa..57f78b2 100644
 +		.add = chromeos_device_add,
 +		.remove = chromeos_device_remove,
 +		},
-+	.owner = THIS_MODULE,
 +};
 +
 +/* The default list of methods the chromeos ACPI device is supposed to export,
@@ -264,8 +262,6 @@ index 1312aaa..57f78b2 100644
 +		return 0;
 +	return vbc_write_byte(RECOVERY_OFFSET, VBNV_RECOVERY_RW_INVALID_OS);
 +}
-+
-+EXPORT_SYMBOL(chromeos_set_need_recovery);
  
 -			buf[at] = 0;
 -			return at;
@@ -273,6 +269,8 @@ index 1312aaa..57f78b2 100644
 -			dev_info_once(dev, "truncating sysfs content for %s\n", name);
 -			sysfs_emit_at(buf, PAGE_SIZE - 4, "..\n");
 -			return PAGE_SIZE - 1;
++EXPORT_SYMBOL(chromeos_set_need_recovery);
++
 +/*
 + * Lifted from vboot_reference:firmware/lib/vboot_nvstorage.c and formatted.
 + *
@@ -461,7 +459,11 @@ index 1312aaa..57f78b2 100644
 +	}
 +	return size;
 +}
-+
+ 
+-	status = acpi_evaluate_object(ACPI_HANDLE(dev), name, NULL, &output);
+-	if (ACPI_FAILURE(status)) {
+-		dev_err(dev, "failed to retrieve %s. %s\n", name, acpi_format_exception(status));
+-		return count;
 +/*
 + * To show attribute value just access the container structure's `value'
 + * field.
@@ -473,11 +475,7 @@ index 1312aaa..57f78b2 100644
 +	paa = container_of(attr, struct acpi_attribute, dev_attr);
 +	return snprintf(buf, PAGE_SIZE, paa->value);
 +}
- 
--	status = acpi_evaluate_object(ACPI_HANDLE(dev), name, NULL, &output);
--	if (ACPI_FAILURE(status)) {
--		dev_err(dev, "failed to retrieve %s. %s\n", name, acpi_format_exception(status));
--		return count;
++
 +/*
 + * create_sysfs_attribute() create and initialize an ACPI sys fs attribute
 + *			    structure.
@@ -537,7 +535,7 @@ index 1312aaa..57f78b2 100644
 +	if (!paa) {
 +		printk(MY_ERR "out of memory in %s!\n", __func__);
 +		return NULL;
- 	}
++	}
 +	sysfs_attr_init(&paa->dev_attr.attr);
 +	paa->dev_attr.attr.mode = 0444;  /* read only */
 +	paa->dev_attr.show = show_acpi_attribute;
@@ -551,7 +549,7 @@ index 1312aaa..57f78b2 100644
 +	} else {
 +		snprintf((char *)paa->dev_attr.attr.name, room_left,
 +			 "%s.%d", name, instance);
-+	}
+ 	}
 +	paa->next_acpi_attr = chromeos_acpi.attributes;
 +	chromeos_acpi.attributes = paa;
 +	return paa;
@@ -866,11 +864,7 @@ index 1312aaa..57f78b2 100644
 - * Every platform can have a different number of GPIO attribute groups.
 - * Define upper limit groups. At run time, the platform decides to show
 - * the present number of groups only, others are hidden.
-+ * add_acpi_method() evaluate an ACPI method and create sysfs attributes.
-+ *
-+ * @device: ACPI device
-+ * @pm: name of the method to evaluate
-  */
+- */
 -GPIO_ATTR_GROUP(gpio0, "GPIO.0", 0)
 -GPIO_ATTR_GROUP(gpio1, "GPIO.1", 1)
 -GPIO_ATTR_GROUP(gpio2, "GPIO.2", 2)
@@ -892,6 +886,11 @@ index 1312aaa..57f78b2 100644
 -	&attr_group_gpio7,
 -	NULL
 -};
++ * add_acpi_method() evaluate an ACPI method and create sysfs attributes.
++ *
++ * @device: ACPI device
++ * @pm: name of the method to evaluate
++ */
 +static void add_acpi_method(struct acpi_device *device, char *pm)
 +{
 +	acpi_status status;
@@ -982,9 +981,9 @@ index 1312aaa..57f78b2 100644
  	return 0;
  }
  
--/* GGL is valid PNP ID of Google. PNP ID can be used with the ACPI devices. */
 -static const struct acpi_device_id chromeos_device_ids[] = {
 -	{ "GGL0001", 0 },
+-	{ "GOOG0016", 0 },
 -	{}
 +static void chromeos_device_remove(struct acpi_device *device)
 +{
