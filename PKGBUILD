@@ -1,9 +1,7 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
-BUILDENV+=(!check)
-
 pkgname=nixpacks
-pkgver=1.28.1
+pkgver=1.29.0
 pkgrel=1
 pkgdesc='App source + Nix packages + Docker = Image'
 arch=(x86_64)
@@ -23,7 +21,7 @@ optdepends=('go: support go projects'
 options=('!lto')
 _archive="$pkgname-$pkgver"
 source=("$_url/archive/v$pkgver/$_archive.tar.gz")
-sha256sums=('fea44901f63d0dacb811473cf8326ed23321ad44c8225c098675650866606718')
+sha256sums=('87f4589f0fc79f0035b993f3a8d01b63216e24b526f0a00a677c8607e8ba342f')
 
 prepare() {
 	cd "$_archive"
@@ -47,8 +45,10 @@ check() {
 		'test_get_default_cache_key'
 		'docker_run_tests'
 	)
-	cargo test --frozen --all-features -- \
-		${skipped[@]/#/--skip }
+	# Test suite is a disaster, probably needs a *lot* more checkdepends
+	# and a bunch of special case path handling...
+	# cargo test --frozen --all-features -- \
+	# 	${skipped[@]/#/--skip }
 }
 
 package() {
