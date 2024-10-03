@@ -1,6 +1,6 @@
 pkgbase = ashell-git
 	pkgdesc = A ready to go Wayland status bar for Hyprland
-	pkgver = r161.c31cf6c
+	pkgver = r174.8f57e68
 	pkgrel = 1
 	url = https://github.com/MalpenZibo/ashell.git
 	arch = x86_64

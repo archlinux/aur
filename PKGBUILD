@@ -2,7 +2,7 @@
 
 _pkgname=ashell
 pkgname="${_pkgname}-git"
-pkgver=r161.c31cf6c
+pkgver=r174.8f57e68
 pkgrel=1
 pkgdesc="A ready to go Wayland status bar for Hyprland"
 _git="https://github.com/MalpenZibo/${_pkgname}.git"
@@ -28,20 +28,20 @@ source=(${_pkgname}::git+${_git})
 b2sums=('SKIP')
 
 pkgver() {
-  cd "${_pkgname}"
+  cd "${srcdir}/${_pkgname}"
 
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
-  cd "${_pkgname}"
+  cd "${srcdir}/${_pkgname}"
 
   export RUSTUP_TOOLCHAIN=stable
   cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
-  cd "${_pkgname}"
+  cd "${srcdir}/${_pkgname}"
 
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
@@ -49,7 +49,7 @@ build() {
 }
 
 package() {
-  cd "${_pkgname}"
+  cd "${srcdir}/${_pkgname}"
 
   install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/${_pkgname}"
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
