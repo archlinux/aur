@@ -1,6 +1,6 @@
 pkgbase = mozillavpn
 	pkgdesc = Fast, secure, and easy to use VPN from the makers of Firefox
-	pkgver = 2.23.1
+	pkgver = 2.24.1
 	pkgrel = 1
 	url = https://vpn.mozilla.org
 	install = mozillavpn.install
@@ -34,11 +34,11 @@ pkgbase = mozillavpn
 	depends = qt6-websockets
 	depends = wireguard-tools
 	optdepends = qt6-wayland: for Wayland support
-	source = mozillavpn-2.23.1.tar.gz::https://github.com/mozilla-mobile/mozilla-vpn-client/archive/refs/tags/v2.23.1.tar.gz
-	source = https://launchpad.net/~mozillacorp/+archive/ubuntu/mozillavpn/+sourcefiles/mozillavpn/2.23.0~rc20240626151300-noble1/mozillavpn_2.23.0~rc20240626151300.orig.tar.gz
+	source = mozillavpn-2.24.1.tar.gz::https://github.com/mozilla-mobile/mozilla-vpn-client/archive/refs/tags/v2.24.1.tar.gz
+	source = https://launchpad.net/~mozillacorp/+archive/ubuntu/mozillavpn/+sourcefiles/mozillavpn/2.24.1-oracular1/mozillavpn_2.24.1.orig.tar.gz
 	source = mozillavpn-l10n-45def08.tar.gz::https://github.com/mozilla-l10n/mozilla-vpn-client-l10n/archive/45def08c897e96ad92199910b41cc4884af35940.tar.gz
-	sha256sums = 1e22787bf636853c5fbb2f83ec06a06dee46500d433a72c3aac403ffee37abec
-	sha256sums = 7d96b6317a79e9315d02f41c41cf658d4237ba1aa73787c49f81a4d732e27fac
+	sha256sums = fab04cd425eba5baebaa5b61c198c723989bfca4a113433ce6b8950032dfe9ff
+	sha256sums = 733bd3e90fe4ca0e6a432ad316e763bb2a887cad1f2b51c14a45c3139c798795
 	sha256sums = 82fe6a1b2a63aafc9e1ba1c376f3fdfbf65c16898c770433104e4aa330564b3a
 
 pkgname = mozillavpn

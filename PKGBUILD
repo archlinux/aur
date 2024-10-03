@@ -9,7 +9,7 @@
 # https://launchpad.net/~mozillacorp/+archive/ubuntu/mozillavpn/+packages
 
 pkgname=mozillavpn
-pkgver=2.23.1
+pkgver=2.24.1
 pkgrel=1
 pkgdesc="Fast, secure, and easy to use VPN from the makers of Firefox"
 url="https://vpn.mozilla.org"
@@ -57,8 +57,8 @@ _commit_l10n="45def08c897e96ad92199910b41cc4884af35940"
 _dl_url_l10n="https://github.com/mozilla-l10n/mozilla-vpn-client-l10n"
 _pkgsrc_l10n="mozilla-vpn-client-l10n-$_commit_l10n"
 
-_debian_series="noble1"
-_pkgver_lp="2.23.0~rc20240626151300"
+_debian_series="oracular1"
+_pkgver_lp="2.24.1"
 _dl_url_lp="https://launchpad.net/~mozillacorp/+archive/ubuntu/mozillavpn/+sourcefiles/mozillavpn"
 _pkgsrc_lp="$pkgname-$_pkgver_lp"
 
@@ -70,16 +70,14 @@ source=(
   "$_dl_url_lp/${_pkgver_lp}-${_debian_series}/mozillavpn_${_pkgver_lp}.orig.tar.gz"
   "mozillavpn-l10n-${_commit_l10n::7}.tar.gz"::"$_dl_url_l10n/archive/$_commit_l10n.tar.gz"
 )
-sha256sums=(
-  '1e22787bf636853c5fbb2f83ec06a06dee46500d433a72c3aac403ffee37abec'
-  '7d96b6317a79e9315d02f41c41cf658d4237ba1aa73787c49f81a4d732e27fac'
-  '82fe6a1b2a63aafc9e1ba1c376f3fdfbf65c16898c770433104e4aa330564b3a'
-)
+sha256sums=('fab04cd425eba5baebaa5b61c198c723989bfca4a113433ce6b8950032dfe9ff'
+            '733bd3e90fe4ca0e6a432ad316e763bb2a887cad1f2b51c14a45c3139c798795'
+            '82fe6a1b2a63aafc9e1ba1c376f3fdfbf65c16898c770433104e4aa330564b3a')
 
 _cargo_env() {
   : ${CARGO_HOME:=$SRCDEST/cargo-home}
   export CARGO_HOME
-  export RUSTUP_TOOLCHAIN=1.79
+  export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
 
   CFLAGS+=" -ffat-lto-objects"
