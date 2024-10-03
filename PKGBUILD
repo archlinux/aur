@@ -1,6 +1,8 @@
-# Maintainer Christian Rebischke <chris.rebischke@archlinux.org>
-# Maintainer: Fredy García <frealgagu at gmail dot com>
-# Maintainer: Maxim Baz <${reponame} at maximbaz dot com>
+# Maintainer: Christian Rebischke <chris.rebischke@archlinux.org>
+# Maintainer: Andreas 'Segaja' Schleifer <segaja at archlinux dot org>
+# Maintainer: Carl Smedstad <carsme@archlinux.org>
+# Contributor: Fredy García <frealgagu at gmail dot com>
+# Contributor: Maxim Baz <${reponame} at maximbaz dot com>
 # Contributor: Stefan Cocora <stefan dot cocora at gmail dot com>
 # Maintainer: Jerry Y. Chen <chen@jyny.dev>
 
@@ -8,61 +10,81 @@ pkgname=skaffold-git
 reponame=skaffold
 provides=('skaffold')
 conflicts=('skaffold')
-pkgver=2.13.0
+
+pkgver=2.13.2
 pkgrel=1
 pkgdesc="A command line tool that facilitates continuous development for Kubernetes applications"
 arch=("x86_64")
-url="https://github.com/GoogleContainerTools/${reponame}"
-license=("Apache")
-makedepends=("go")
+url="https://github.com/GoogleContainerTools/skaffold"
+license=("Apache-2.0")
+depends=(
+  "docker"
+  "glibc"
+  "kompose"
+)
+makedepends=(
+  "git"
+  "go"
+  "go-licenses"
+  "python"
+)
 optdepends=(
-  "docker: One of tools for building images support by skaffold"
+  "kubectl: For Kubernetes support"
   "minikube: To use Minikube"
-  "kubectl: One of tools for deploying applications support by skaffold"
-  "bash-completion: Tab autocompletion"
 )
-
-source=(
-  "${reponame}-${pkgver}.tar.gz::https://github.com/GoogleContainerTools/${reponame}/archive/v${pkgver}.tar.gz"
-)
-sha256sums=('0aaf85009ceafec5e6f129f0f84c31b5c4375410638f1668761a82e56f2f2ccc')
-b2sums=('f2742ab06f412ab60482092f0551988e4c8489c67e673c57e6c2a126c57c63ba445a203ed2f71d21d7a4296722e44b9fff413b9e58491e2b130c4b5837ab0b3b')
-_commit="7f817f3e065287292e7e216862fc4460be192ac9"
+options=(!lto)
+source=("$reponame::git+$url.git#tag=v$pkgver")
+sha512sums=('126b9a3c82b4df3a1ab4c4f12b8dd8ad89aca344190089bf7f7d44d0d8dd233cd70a91b2cfbeac14670e3b2ad75a51ebc3d8effc2ddd4d5003f7e4d6cbcd0112')
+b2sums=('7ae0ff553404bcaf4337253ca1a7bd5f358f187f42529d26fc58bebab9b0e955ae2a4d380ae368a230edac91b67c9f027fbbf19e8a4c10eeeea4293f40a89089')
 
 prepare() {
-  cd "${srcdir}/${reponame}-${pkgver}"
-
-  rm -rf "${srcdir}/gopath"
-  mkdir -p "${srcdir}/gopath/bin"
-  mkdir -p "${srcdir}/gopath/src/github.com/GoogleContainerTools"
-  ln -rTsf "${srcdir}/${reponame}-${pkgver}" "${srcdir}/gopath/src/github.com/GoogleContainerTools/${reponame}"
+  cd "${reponame}"
+  GOFLAGS="-mod=readonly" go mod vendor -v
+  # Remove check that requires running Docker.
+  sed -i "/test-generated-proto/d" hack/checks.sh
 }
 
 build() {
-  cd "${srcdir}/gopath/src/github.com/GoogleContainerTools/${reponame}"
-  export GOPATH="${srcdir}/gopath"
-  export PATH="${PATH}:${GOPATH}/bin"
-  export VERSION="v${pkgver}"
-  export COMMIT="${_commit}"
-  export TREE_STATE="clean"
+  cd "${reponame}"
   export CGO_CPPFLAGS="${CPPFLAGS}"
   export CGO_CFLAGS="${CFLAGS}"
   export CGO_CXXFLAGS="${CXXFLAGS}"
   export CGO_LDFLAGS="${LDFLAGS}"
-  export GOFLAGS="-buildmode=pie -mod=readonly -modcacherw -x -v -ldflags=-linkmode=external"
-  go install github.com/google/go-licenses@latest
-  make install
+  export GOFLAGS="-buildmode=pie -mod=vendor -modcacherw"
+  export GOPATH="${srcdir}"
 
-  # To avoid issues deleting directories next time
-  go clean --modcache
+  local tags="timetzdata osusergo netgo release"
+  local version_package="github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/version"
+  local ld_flags=" \
+    -X ${version_package}.gitCommit=$(git rev-parse HEAD) \
+    -X ${version_package}.version=${pkgver} \
+    -compressdwarf=false \
+    -linkmode=external \
+  "
+  go build -v -ldflags "${ld_flags}" -tags "${tags}" ./cmd/skaffold/skaffold.go
+}
 
-  # Create completion files
-  "${srcdir}/gopath/bin/${reponame}" completion bash > "${srcdir}/${reponame}-completion.bash"
-  "${srcdir}/gopath/bin/${reponame}" completion zsh > "${srcdir}/${reponame}-completion.zsh"
+check() {
+  cd "${reponame}"
+  # Skip integration tests, requires Java, a running Docker daemon and
+  # connection to a Kubernetes cluster.
+  local tests=$(
+    go list ./... \
+      | grep -v github.com/GoogleContainerTools/skaffold/v2/integration
+  )
+  export PATH="${PWD}:${PATH}"
+  # shellcheck disable=SC2086
+  go test -v -short -timeout=90s $tests
+  #./hack/checks.sh
 }
 
 package() {
-  install -Dm755 "${srcdir}/gopath/bin/${reponame}" "${pkgdir}/usr/bin/${reponame}"
-  install -Dm644 "${srcdir}/${reponame}-completion.bash" "${pkgdir}/usr/share/bash-completion/completions/${reponame}"
-  install -Dm644 "${srcdir}/${reponame}-completion.zsh" "${pkgdir}/usr/share/zsh/site-functions/_skaffold"
+  cd "${reponame}"
+  install -vDm755 -t "${pkgdir}/usr/bin" skaffold
+  ./skaffold completion bash \
+    | install -vDm644 /dev/stdin "${pkgdir}/usr/share/bash-completion/completions/skaffold"
+  ./skaffold completion zsh \
+    | install -vDm644 /dev/stdin "${pkgdir}/usr/share/zsh/site-functions/_skaffold"
+  ./skaffold completion fish \
+    | install -vDm644 /dev/stdin "${pkgdir}/usr/share/fish/vendor_completions.d/skaffold.fish"
 }
