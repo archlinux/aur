@@ -12,12 +12,14 @@ depends=(bash electron28)
 url="https://www.remnote.com"
 license=('custom:Commercial')
 _appimage="RemNote-${pkgver}.AppImage"
-source=("https://download2.remnote.io/remnote-desktop2/RemNote-$pkgver.AppImage")
-	#remnote.sh)
-sha256sums=('56c4bd4576dcbba695edbf81937941fb1ebf5ff1f1379128ca91429f8a8a3449')
-            #'6fabb8dc40b63d8bbc447df45f7b31e7e0b43d30f144496fb7d900542ada2534')
+source=("https://download2.remnote.io/remnote-desktop2/RemNote-$pkgver.AppImage"
+	remnote.sh)
+sha256sums=('56c4bd4576dcbba695edbf81937941fb1ebf5ff1f1379128ca91429f8a8a3449'
+            '42aeb6d5c89ab3e15d44617c06f50082cfdb57bce78b04bdf8885b41bf6bd293')
 
 prepare() {
+    chmod a+x $_appimage
+    ./$_appimage --appimage-extract
 	sed -i -e "s|^Exec=.*|Exec=/usr/bin/$pkgname %U|" \
 		-e '/^X-AppImage-Version=.*/d' \
 		-e '/Categories=/s/=/&Office;/' squashfs-root/${pkgname}.desktop

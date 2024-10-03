@@ -9,6 +9,8 @@ pkgbase = remnote
 	depends = bash
 	depends = electron28
 	source = https://download2.remnote.io/remnote-desktop2/RemNote-1.16.127.AppImage
+	source = remnote.sh
 	sha256sums = 56c4bd4576dcbba695edbf81937941fb1ebf5ff1f1379128ca91429f8a8a3449
+	sha256sums = 42aeb6d5c89ab3e15d44617c06f50082cfdb57bce78b04bdf8885b41bf6bd293
 
 pkgname = remnote
