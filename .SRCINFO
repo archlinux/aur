@@ -7,8 +7,8 @@ pkgbase = fabric-git
 	license = MIT
 	makedepends = git
 	depends = go
-	provides = fabric
-	conflicts = fabric
+	provides = fabric-ai
+	conflicts = fabric-ai
 	source = git+https://github.com/danielmiessler/fabric.git
 	md5sums = SKIP
 

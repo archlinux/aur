@@ -8,8 +8,8 @@ url="https://github.com/danielmiessler/fabric"
 license=('MIT')
 depends=('go')
 makedepends=('git')
-provides=('fabric')
-conflicts=('fabric')
+provides=('fabric-ai')
+conflicts=('fabric-ai')
 source=("git+https://github.com/danielmiessler/fabric.git")
 md5sums=('SKIP')
 
