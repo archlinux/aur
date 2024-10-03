@@ -1,0 +1,4 @@
+[tldr-lint]
+source = "git"
+git = "https://github.com/tldr-pages/tldr-lint"
+prefix = "v"
