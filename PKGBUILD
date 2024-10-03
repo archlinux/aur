@@ -2,7 +2,7 @@
 
 pkgname=libcrossguid-git
 pkgver=0.2.2.r52.gca1bf4b
-pkgrel=2
+pkgrel=3
 pkgdesc="Lightweight cross platform C++ GUID/UUID library"
 arch=('i686' 'x86_64')
 url="https://github.com/graeme-hill/crossguid"
