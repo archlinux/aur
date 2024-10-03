@@ -1,7 +1,7 @@
 # Maintainer: Maksim Kurnosenko <asusx2@mail.ru>
 
 pkgname=anylogic-university
-pkgver=8.9.0
+pkgver=8.9.1
 pkgrel=1
 pkgdesc="AnyLogic University Edition - for public research in universities"
 arch=(x86_64)
@@ -9,18 +9,19 @@ url="https://www.anylogic.com"
 license=('custom')
 depends=('glibc')
 optdepends=('chromium: alternative browser for model animating'
-            'firefox: alternative browser for model animating')
+            'firefox: alternative browser for model animating'
+            'webkitgtk: it may be required because of libwebkitgtk-1.0 dependency (not building as of now, only binary)')
 provides=('anylogic')
 conflicts=('anylogic')
 options=(!strip)
 source=("https://files.anylogic.com/$pkgname-$pkgver.linux.x86_64.tgz.bin"
         "$pkgname.desktop")
-sha256sums=('fa4ad1c754e485de549e3009fa06bece686c59f921bde92313b87a46597b066e'
+sha256sums=('34861626942a5988f98ba22c4c89f0ed18f3e317cad490929253a00eb02e5464'
             'f0d4b44dd6f53d0aa940b730d1c0dfac77ab3aea4cca6ab185abc7e458a8c135')
 
 prepare() {
     msg2 "Unpacking archive..."
-    tail -n +357 "$srcdir/$pkgname-$pkgver.linux.x86_64.tgz.bin" > "$pkgname-$pkgver.linux.x86_64.tgz"
+    tail -n +511 "$srcdir/$pkgname-$pkgver.linux.x86_64.tgz.bin" > "$pkgname-$pkgver.linux.x86_64.tgz"
 
     msg2 "Extracting archive..."
     tar -xf $pkgname-$pkgver.linux.x86_64.tgz
