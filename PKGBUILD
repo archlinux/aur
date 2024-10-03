@@ -10,7 +10,7 @@ pkgbase=scala
 pkgname=(scala scala-docs scala-sources)
 pkgver=2.13.15
 # shellcheck disable=SC2034
-pkgrel=1
+pkgrel=2
 pkgdesc='A Java-interoperable language with object-oriented and functional features'
 # shellcheck disable=SC2034
 arch=('any')
@@ -57,17 +57,15 @@ package_scala() {
               'scala-sources'
               'graphviz: generate diagrams')
 
-  cd "${srcdir}/scala-${pkgver}/build/pack" || exit 1
-
   install -d "${pkgdir:?}/usr/"{bin,share} "${pkgdir}/usr/share/man/man1" "${pkgdir}/usr/share/scala/"{bin,lib}
-  cp -r lib "${pkgdir}/usr/share/scala/"
-  install -m755 bin/{fsc,scala,scalac,scalap,scaladoc} "${pkgdir}/usr/share/scala/bin"
+  cp -r "${srcdir}/scala-${pkgver}/build/pack/lib" "${pkgdir}/usr/share/scala/"
+  install -m755 "${srcdir}/scala-${pkgver}/build/pack/bin/"{fsc,scala,scalac,scalap,scaladoc} "${pkgdir}/usr/share/scala/bin"
 
-  ln -s '../share/scala/bin/fsc' "${pkgdir}/usr/bin/fsc"
-  ln -s '../share/scala/bin/scala' "${pkgdir}/usr/bin/scala"
-  ln -s '../share/scala/bin/scalac' "${pkgdir}/usr/bin/scalac"
-  ln -s '../share/scala/bin/scalap' "${pkgdir}/usr/bin/scalap"
-  ln -s '../share/scala/bin/scaladoc' "${pkgdir}/usr/bin/scaladoc"
+  ln -s "${srcdir}/scala-${pkgver}/build/share/scala/bin/fsc" "${pkgdir}/usr/bin/fsc"
+  ln -s "${srcdir}/scala-${pkgver}/build/share/scala/bin/scala" "${pkgdir}/usr/bin/scala"
+  ln -s "${srcdir}/scala-${pkgver}/build/share/scala/bin/scalac" "${pkgdir}/usr/bin/scalac"
+  ln -s "${srcdir}/scala-${pkgver}/build/share/scala/bin/scalap" "${pkgdir}/usr/bin/scalap"
+  ln -s "${srcdir}/scala-${pkgver}/build/share/scala/bin/scaladoc" "${pkgdir}/usr/bin/scaladoc"
 }
 
 package_scala-docs() {
@@ -75,9 +73,8 @@ package_scala-docs() {
   pkgdesc='Scala documentation'
   depends=()
 
-  cd "${srcdir}/scala-${pkgver}" || exit 1
   mkdir -p "${pkgdir}/usr/share/doc/"
-  cp -r api "${pkgdir}/usr/share/doc/scala"
+  cp -r "${srcdir}/scala-${pkgver}/api" "${pkgdir}/usr/share/doc/scala"
 }
 
 package_scala-sources() {
@@ -85,9 +82,8 @@ package_scala-sources() {
   pkgdesc='Scala sources'
   depends=()
 
-  cd "${srcdir}/scala-${pkgver}" || exit 1
   mkdir -p "${pkgdir}/usr/share/scala/"
-  find . -type f -name '*-sources.jar' | while read -r f; do
+  find "${srcdir}/scala-${pkgver}" -type f -name '*-sources.jar' | while read -r f; do
     install -Dm0644 "${f}" "${pkgdir}/usr/share/scala/src/$(basename -- "${f}")"
   done
 }
