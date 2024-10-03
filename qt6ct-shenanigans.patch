@@ -87,7 +87,7 @@ index d97d4c7..6aa3864 100644
      QSettings settings(filePath, QSettings::IniFormat);
      settings.beginGroup("ColorScheme");
 diff --git a/src/qt6ct-common/qt6ct.h b/src/qt6ct-common/qt6ct.h
-index 3608c11..78f2076 100644
+index e01ddd2..bd4cb43 100644
 --- a/src/qt6ct-common/qt6ct.h
 +++ b/src/qt6ct-common/qt6ct.h
 @@ -67,6 +67,7 @@ public:
@@ -99,7 +99,7 @@ index 3608c11..78f2076 100644
  
      static void registerStyleInstance(StyleInstance *instance);
 diff --git a/src/qt6ct-qtplugin/CMakeLists.txt b/src/qt6ct-qtplugin/CMakeLists.txt
-index c3d7498..60b2599 100644
+index c3d7498..9d85f2b 100644
 --- a/src/qt6ct-qtplugin/CMakeLists.txt
 +++ b/src/qt6ct-qtplugin/CMakeLists.txt
 @@ -9,5 +9,5 @@ include_directories(${CMAKE_CURRENT_SOURCE_DIR}/../)
@@ -107,13 +107,20 @@ index c3d7498..60b2599 100644
  add_library(qt6ct-qtplugin MODULE ${app_SRCS})
  set_target_properties(qt6ct-qtplugin PROPERTIES OUTPUT_NAME qt6ct)
 -target_link_libraries(qt6ct-qtplugin PRIVATE Qt6::Widgets Qt6::GuiPrivate qt6ct-common)
-+target_link_libraries(qt6ct-qtplugin PRIVATE Qt6::Widgets Qt6::GuiPrivate Qt6::QuickControls2 KF6::IconThemes qt6ct-common)
++target_link_libraries(qt6ct-qtplugin PRIVATE Qt6::WidgetsPrivate Qt6::GuiPrivate Qt6::QuickControls2 KF6::IconThemes qt6ct-common)
  install(TARGETS qt6ct-qtplugin DESTINATION ${PLUGINDIR}/platformthemes)
 diff --git a/src/qt6ct-qtplugin/qt6ctplatformtheme.cpp b/src/qt6ct-qtplugin/qt6ctplatformtheme.cpp
-index 1d13faf..50f8aaa 100644
+index 1d13faf..912c206 100644
 --- a/src/qt6ct-qtplugin/qt6ctplatformtheme.cpp
 +++ b/src/qt6ct-qtplugin/qt6ctplatformtheme.cpp
-@@ -44,6 +44,7 @@
+@@ -41,9 +41,14 @@
+ #include <QStyleFactory>
+ #include <QApplication>
+ #include <QWidget>
++#if QT_CONFIG(graphicsview)
++#include <QGraphicsScene>
++#endif
++#include <private/qapplication_p.h>
  #endif
  #include <QFile>
  #include <QFileSystemWatcher>
@@ -121,20 +128,31 @@ index 1d13faf..50f8aaa 100644
  #include <private/qiconloader_p.h>
  
  #include "qt6ct.h"
-@@ -52,6 +53,9 @@
+@@ -51,12 +56,18 @@
+ 
  #include <QStringList>
  #include <qpa/qplatformthemefactory_p.h>
- 
++#include <qpa/qwindowsysteminterface.h>
++
 +#include <KIconEngine>
 +#include <KIconLoader>
-+
+ 
  Q_LOGGING_CATEGORY(lqt6ct, "qt6ct", QtWarningMsg)
  
  //QT_QPA_PLATFORMTHEME=qt6ct
-@@ -67,12 +71,16 @@ Qt6CTPlatformTheme::Qt6CTPlatformTheme()
+ 
+-Qt6CTPlatformTheme::Qt6CTPlatformTheme()
++Qt6CTPlatformTheme::Qt6CTPlatformTheme() :
++    m_generalFont(*QGenericUnixTheme::font(QPlatformTheme::SystemFont)),
++    m_fixedFont(*QGenericUnixTheme::font(QPlatformTheme::FixedFont))
+ {
+     Qt6CT::initConfig();
+     if(QGuiApplication::desktopSettingsAware())
+@@ -66,13 +77,16 @@ Qt6CTPlatformTheme::Qt6CTPlatformTheme()
+ #ifdef QT_WIDGETS_LIB
          QMetaObject::invokeMethod(this, "createFSWatcher", Qt::QueuedConnection);
  #endif
-         QGuiApplication::setFont(m_generalFont);
+-        QGuiApplication::setFont(m_generalFont);
 +        //don't override the value explicitly set by the user
 +        if(QQuickStyle::name().isEmpty() || QQuickStyle::name() == QLatin1String("Fusion"))
 +            QQuickStyle::setStyle(QLatin1String("org.kde.desktop"));
@@ -148,7 +166,16 @@ index 1d13faf..50f8aaa 100644
  }
  
  Qt6CTPlatformTheme::~Qt6CTPlatformTheme()
-@@ -146,6 +154,11 @@ QIcon Qt6CTPlatformTheme::fileIcon(const QFileInfo &fileInfo, QPlatformTheme::Ic
+@@ -92,7 +106,7 @@ QPlatformDialogHelper *Qt6CTPlatformTheme::createPlatformDialogHelper(DialogType
+ 
+ const QPalette *Qt6CTPlatformTheme::palette(QPlatformTheme::Palette type) const
+ {
+-    return (m_usePalette && m_palette) ? m_palette.get() : QGenericUnixTheme::palette(type);
++    return m_palette ? m_palette.get() : QGenericUnixTheme::palette(type);
+ }
+ 
+ const QFont *Qt6CTPlatformTheme::font(QPlatformTheme::Font type) const
+@@ -146,46 +160,32 @@ QIcon Qt6CTPlatformTheme::fileIcon(const QFileInfo &fileInfo, QPlatformTheme::Ic
      return QIcon::fromTheme(type.iconName());
  }
  
@@ -160,23 +187,38 @@ index 1d13faf..50f8aaa 100644
  void Qt6CTPlatformTheme::applySettings()
  {
      if(!QGuiApplication::desktopSettingsAware() || m_isIgnored)
-@@ -167,6 +180,15 @@ void Qt6CTPlatformTheme::applySettings()
+     {
+-        m_usePalette = false;
+         m_update = true;
+         return;
+     }
  
-     QGuiApplication::setFont(m_generalFont); //apply font
- 
+-    if(!m_update)
+-    {
+-        //do not override application palette
+-        if(QCoreApplication::testAttribute(Qt::AA_SetPalette))
+-        {
+-            m_usePalette = false;
+-            qCDebug(lqt6ct) << "palette support is disabled";
+-        }
+-    }
+-
+-    QGuiApplication::setFont(m_generalFont); //apply font
 +    if(Qt6CT::isKColorScheme(m_schemePath))
 +        qApp->setProperty("KDE_COLOR_SCHEME_PATH", m_schemePath);
-+
-+    if(!m_palette)
-+        m_palette = std::make_unique<QPalette>(*QGenericUnixTheme::palette(QPlatformTheme::SystemPalette));
-+
-+    if(m_update && m_usePalette)
-+        qApp->setPalette(*m_palette);
-+
+ 
  #ifdef QT_WIDGETS_LIB
      if(hasWidgets())
      {
-@@ -180,12 +202,6 @@ void Qt6CTPlatformTheme::applySettings()
+-        qApp->setFont(m_generalFont);
+-
+-        //Qt 5.6 or higher should be use themeHint function on application startup.
+-        //So, there is no need to call this function first time.
+         if(m_update)
+         {
+-            qApp->setWheelScrollLines(m_wheelScrollLines);
++            if(FontHash *hash = qt_app_fonts_hash(); hash && hash->size())
++                hash->clear();
              Qt6CT::reloadStyleInstanceSettings();
          }
  
@@ -189,7 +231,37 @@ index 1d13faf..50f8aaa 100644
          if(m_userStyleSheet != m_prevStyleSheet)
          {
              // prepend our stylesheet to that of the application
-@@ -248,18 +264,16 @@ void Qt6CTPlatformTheme::updateSettings()
+@@ -207,18 +207,21 @@ void Qt6CTPlatformTheme::applySettings()
+ #endif
+ 
+     if(m_update)
+-        QIconLoader::instance()->updateSystemTheme(); //apply icons
++    {
++        QWindowSystemInterface::handleThemeChange();
++        QCoreApplication::postEvent(qGuiApp, new QEvent(QEvent::ApplicationFontChange));
++    }
+ 
+ #ifdef QT_WIDGETS_LIB
+     if(hasWidgets() && m_update)
+     {
+-        for(QWidget *w : qApp->allWidgets())
+-        {
+-            QEvent e(QEvent::ThemeChange);
+-            QApplication::sendEvent(w, &e);
+-            if(m_palette && m_usePalette)
+-                w->setPalette(*m_palette);
+-        }
++#if QT_CONFIG(graphicsview)
++        for(auto scene : std::as_const(QApplicationPrivate::instance()->scene_list))
++            QCoreApplication::postEvent(scene, new QEvent(QEvent::ApplicationFontChange));
++#endif
++
++        for(QWidget *w : QApplication::allWidgets())
++            QCoreApplication::postEvent(w, new QEvent(QEvent::ThemeChange));
+     }
+ #endif
+ 
+@@ -248,18 +251,16 @@ void Qt6CTPlatformTheme::updateSettings()
  
  void Qt6CTPlatformTheme::readSettings()
  {
@@ -205,7 +277,7 @@ index 1d13faf..50f8aaa 100644
 -        schemePath = Qt6CT::resolvePath(schemePath); //replace environment variables
 -        m_palette = std::make_unique<QPalette>(Qt6CT::loadColorScheme(schemePath, *QPlatformTheme::palette(SystemPalette)));
 -    }
-+    m_schemePath = settings.value("custom_palette", false).toBool()
++    m_schemePath = !m_isIgnored && settings.value("custom_palette", false).toBool()
 +        ? Qt6CT::resolvePath(settings.value("color_scheme_path").toString()) //replace environment variables
 +        : QString();
 +    m_palette = !m_schemePath.isEmpty()
@@ -214,7 +286,31 @@ index 1d13faf..50f8aaa 100644
      m_iconTheme = settings.value("icon_theme").toString();
      //load dialogs
      if(!m_update)
-@@ -367,3 +381,17 @@ QString Qt6CTPlatformTheme::loadStyleSheets(const QStringList &paths)
+@@ -277,10 +278,10 @@ void Qt6CTPlatformTheme::readSettings()
+     settings.endGroup();
+ 
+     settings.beginGroup("Fonts");
+-    m_generalFont = QGuiApplication::font();
+-    m_generalFont.fromString(settings.value("general", QGuiApplication::font()).toString());
+-    m_fixedFont = QGuiApplication::font();
+-    m_fixedFont.fromString(settings.value("fixed", QGuiApplication::font()).toString());
++    m_generalFont = *QGenericUnixTheme::font(QPlatformTheme::SystemFont);
++    m_generalFont.fromString(settings.value("general").toString());
++    m_fixedFont = *QGenericUnixTheme::font(QPlatformTheme::FixedFont);
++    m_fixedFont.fromString(settings.value("fixed").toString());
+     settings.endGroup();
+ 
+     settings.beginGroup("Interface");
+@@ -336,8 +337,6 @@ void Qt6CTPlatformTheme::readSettings()
+             QCoreApplication::setAttribute(Qt::AA_ForceRasterWidgets, true);
+         else if(!m_isIgnored && forceRasterWidgets == Qt::Unchecked)
+             QCoreApplication::setAttribute(Qt::AA_ForceRasterWidgets, false);
+-        if(m_isIgnored)
+-            m_usePalette = false;
+         settings.endGroup();
+     }
+ }
+@@ -367,3 +366,17 @@ QString Qt6CTPlatformTheme::loadStyleSheets(const QStringList &paths)
      content.replace(regExp, "\n");
      return content;
  }
@@ -233,7 +329,7 @@ index 1d13faf..50f8aaa 100644
 +    return QObject::eventFilter(obj, e);
 +}
 diff --git a/src/qt6ct-qtplugin/qt6ctplatformtheme.h b/src/qt6ct-qtplugin/qt6ctplatformtheme.h
-index 6ad245b..ea1918b 100644
+index 6ad245b..f054d25 100644
 --- a/src/qt6ct-qtplugin/qt6ctplatformtheme.h
 +++ b/src/qt6ct-qtplugin/qt6ctplatformtheme.h
 @@ -62,10 +62,13 @@ public:
@@ -260,6 +356,14 @@ index 6ad245b..ea1918b 100644
      std::unique_ptr<QPalette> m_palette;
      QFont m_generalFont, m_fixedFont;
      int m_doubleClickInterval;
+@@ -88,7 +91,6 @@ private:
+     int m_buttonBoxLayout;
+     int m_keyboardScheme;
+     bool m_update = false;
+-    bool m_usePalette = true;
+     int m_toolButtonStyle = Qt::ToolButtonFollowStyle;
+     int m_wheelScrollLines = 3;
+     bool m_showShortcutsInContextMenus = false;
 diff --git a/src/qt6ct/CMakeLists.txt b/src/qt6ct/CMakeLists.txt
 index fb0e1f7..acd8313 100644
 --- a/src/qt6ct/CMakeLists.txt
@@ -363,6 +467,69 @@ index a5c1a88..3404fdc 100644
      Ui::PreviewForm *m_previewUi;
  };
  
+diff --git a/src/qt6ct/fontspage.cpp b/src/qt6ct/fontspage.cpp
+index 5113edd..419ac0a 100644
+--- a/src/qt6ct/fontspage.cpp
++++ b/src/qt6ct/fontspage.cpp
+@@ -29,6 +29,7 @@
+ #include <QMessageBox>
+ #include <QSettings>
+ #include <QApplication>
++#include <QFontDatabase>
+ #include <QFontDialog>
+ #include <QDir>
+ #include <QFile>
+@@ -61,8 +62,8 @@ FontsPage::~FontsPage()
+ void FontsPage::writeSettings(QSettings *settings)
+ {
+     settings->beginGroup("Fonts");
+-    settings->setValue("general", m_ui->generalFontLabel->font().toString());
+-    settings->setValue("fixed", m_ui->fixedFontLabel->font().toString());
++    settings->setValue("general", m_ui->generalFontLabel->property("value"));
++    settings->setValue("fixed", m_ui->fixedFontLabel->property("value"));
+     settings->endGroup();
+ }
+ 
+@@ -70,11 +71,19 @@ void FontsPage::onFontChangeRequested(QWidget *widget)
+ {
+     bool ok = false;
+     QFont font = QFontDialog::getFont (&ok, widget->font(), this);
+-    if(ok)
+-    {
+-        widget->setFont(font);
+-        qobject_cast<QLabel*>(widget)->setText(font.family () + " " + QString::number(font.pointSize ()));
+-    }
++    if(!ok)
++        return;
++
++    if(font.weight() == QFont::Normal
++        && (font.styleName() == QLatin1String("Regular")
++            || font.styleName() == QLatin1String("Normal")
++            || font.styleName() == QLatin1String("Book")
++            || font.styleName() == QLatin1String("Roman")))
++        font.setStyleName(QString());
++
++    widget->setProperty("value", font.toString());
++    widget->setFont(font);
++    qobject_cast<QLabel*>(widget)->setText(font.family () + " " + QString::number(font.pointSize ()));
+ }
+ 
+ void FontsPage::readSettings()
+@@ -88,10 +97,12 @@ void FontsPage::readSettings()
+ 
+ void FontsPage::loadFont(QSettings *settings, QLabel *label, const QString &key)
+ {
+-    QFont font = QApplication::font();
+-    font.fromString(settings->value(key, QApplication::font().toString()).toString());
++    QFont font = settings->value(key, key == "fixed"
++        ? QFontDatabase::systemFont(QFontDatabase::FixedFont)
++        : QFontDatabase::systemFont(QFontDatabase::GeneralFont)).value<QFont>();
+     label->setText(font.family() + " " + QString::number(font.pointSize()));
+     label->setFont(font);
++    label->setProperty("value", font.toString());
+ }
+ 
+ void FontsPage::on_createFontsConfButton_clicked()
 diff --git a/src/qt6ct/iconthemepage.cpp b/src/qt6ct/iconthemepage.cpp
 index 2f7621b..b5666c0 100644
 --- a/src/qt6ct/iconthemepage.cpp
