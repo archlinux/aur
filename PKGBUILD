@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=cast_control
-pkgver=0.14.0
-pkgrel=3
+pkgver=0.16.1
+pkgrel=1
 epoch=1
 pkgdesc="Control Chromecasts from Linux and D-Bus"
 arch=('any')
@@ -23,8 +23,8 @@ depends=(
 )
 makedepends=(
   'python-build'
+  'python-hatchling'
   'python-installer'
-  'python-setuptools'
   'python-wheel'
 )
 optdepends=(
@@ -32,7 +32,7 @@ optdepends=(
 )
 conflicts=('chromecast_mpris')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('01b88c1d9305d812222f5598597519bd52ab0568246b876fa2799833fb69abbd')
+sha256sums=('66ff3fdb4b22140f42f9fd2db2b734246f730fde80cfa45d07fd1e0eb20b08a6')
 
 build() {
   cd "$pkgname-$pkgver"
@@ -42,4 +42,8 @@ build() {
 package() {
   cd "$pkgname-$pkgver"
   python -m installer --destdir="$pkgdir" dist/*.whl
+
+  # Neither build nor rye pack module folder
+  local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
+  cp -r "src/$pkgname" "${pkgdir}${site_packages}"
 }
