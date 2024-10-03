@@ -1,13 +1,14 @@
 # Contributor: solopasha <daron439 at gmail dot com>
 # Contributor: Aron Young <tkf6fkt at gmail dot com>
-# Maintainer: asuka minato
+# Contributor: asuka minato
+# Maintainer: tristanrw <hidden>
 
 pkgname=remnote
 pkgver=1.16.127
-pkgrel=1
+pkgrel=2
 pkgdesc="All-in-one workspace for note-taking, learning, organizing thoughts and growing knowledge"
 arch=('x86_64' 'aarch64')
-depends=(bash electron28) # cur 10.6.194.26-electron.0 , https://releases.electronjs.org/release/v21.3.1
+depends=(bash electron28)
 url="https://www.remnote.com"
 license=('custom:Commercial')
 _appimage="RemNote-${pkgver}.AppImage"
