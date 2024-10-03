@@ -3,7 +3,7 @@ _pkgname=linux-lts
 _pkgver=6.6.52
 _pkgrel=1
 pkgbase="${_pkgname}-versioned-bin"
-KERNNAME="${_pkgver}-${_pkgrel}-lts"
+_KERNNAME="${_pkgver}-${_pkgrel}-lts"
 _versioned_pkgname="linux${_pkgver}-${_pkgrel}-lts"
 pkgname=("${_pkgname}-versioned-bin"
          "${_pkgname}-versioned-headers-bin"
@@ -19,26 +19,13 @@ arch=(x86_64)
 license=(GPL2)
 options=('!strip')
 
-_kernpkg=${_pkgname}-${_pkgver}-${_pkgrel}-${arch}.pkg.tar.zst
-_headerspkg=${_pkgname}-headers-${_pkgver}-${_pkgrel}-${arch}.pkg.tar.zst
-_docspkg=${_pkgname}-docs-${_pkgver}-${_pkgrel}-${arch}.pkg.tar.zst
+_kernpkg=linux-lts-6.6.52-1-x86_64.pkg.tar.zst
+_headerspkg=linux-lts-headers-6.6.52-1-x86_64.pkg.tar.zst
+_docspkg=linux-lts-docs-6.6.52-1-x86_64.pkg.tar.zst
 
-# See if the sources are available from our own mirror:
-_kernsrc=$(pacman -Spdd "${_pkgname}" 2> /dev/null)
-_headerssrc=$(pacman -Spdd "${_pkgname}-headers" 2> /dev/null)
-_docssrc=$(pacman -Spdd "${_pkgname}-docs" 2> /dev/null)
-
-# If not, then use the Arch Linux archive:
-if [ "$(basename "${_kernsrc}" 2> /dev/null)" != "${_kernpkg}" ]; then
-  _arch_archive=https://archive.archlinux.org/packages/.all
-  _kernsrc=${_arch_archive}/${_kernpkg}
-  _headerssrc=${_arch_archive}/${_headerspkg}
-  _docssrc=${_arch_archive}/${_docspkg}
-fi
-
-source=("${_kernsrc}"
-        "${_headerssrc}"
-        "${_docssrc}")
+source=("https://archive.archlinux.org/packages/.all/${_kernpkg}"
+        "https://archive.archlinux.org/packages/.all/${_headerspkg}"
+        "https://archive.archlinux.org/packages/.all/${_docspkg}")
 
 noextract=("${source[@]##*/}")
 
@@ -63,7 +50,7 @@ package_linux-lts-versioned-docs-bin() {
 }
 
 package_linux6.6.52-1-lts-bin() {
-  pkgdesc="The LTS Linux kernel and modules, version ${KERNNAME}"
+  pkgdesc="The LTS Linux kernel and modules, version ${_KERNNAME}"
   depends=(coreutils
            initramfs
            kmod)
@@ -76,12 +63,12 @@ package_linux6.6.52-1-lts-bin() {
   replaces=(wireguard-lts)
   tar -xf "${_kernpkg}" -C "${pkgdir}"
   rm "${pkgdir}"/{.MTREE,.BUILDINFO,.PKGINFO}
-  sed -ic "s/${_pkgname}/${KERNNAME}/" "${pkgdir}/usr/lib/modules/${KERNNAME}/pkgbase"
+  sed -ic "s/${_pkgname}/${_KERNNAME}/" "${pkgdir}/usr/lib/modules/${_KERNNAME}/pkgbase"
   mv "${pkgdir}/usr/share/licenses/"{"${_pkgname}","${_versioned_pkgname}-bin"}
 }
 
 package_linux6.6.52-1-lts-headers-bin() {
-  pkgdesc="Headers and scripts for building modules for the LTS Linux kernel ${KERNNAME}"
+  pkgdesc="Headers and scripts for building modules for the LTS Linux kernel ${_KERNNAME}"
   depends=(pahole)
   conflicts=("${_pkgname}-headers")
   tar -xf "${_headerspkg}" -C "${pkgdir}"
@@ -91,7 +78,7 @@ package_linux6.6.52-1-lts-headers-bin() {
 }
 
 package_linux6.6.52-1-lts-docs-bin() {
-  pkgdesc="Documentation for the LTS Linux kernel ${KERNNAME}"
+  pkgdesc="Documentation for the LTS Linux kernel ${_KERNNAME}"
   conflicts=("${_pkgname}-docs")
   tar -xf "${_docspkg}" -C "${pkgdir}"
   rm "${pkgdir}"/{.MTREE,.BUILDINFO,.PKGINFO}

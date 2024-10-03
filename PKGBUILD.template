@@ -3,7 +3,7 @@ _pkgname=linux-lts
 _pkgver=%PKGVER
 _pkgrel=%PKGREL
 pkgbase="${_pkgname}-versioned-bin"
-KERNNAME="${_pkgver}-${_pkgrel}-lts"
+_KERNNAME="${_pkgver}-${_pkgrel}-lts"
 _versioned_pkgname="linux${_pkgver}-${_pkgrel}-lts"
 pkgname=("${_pkgname}-versioned-bin"
          "${_pkgname}-versioned-headers-bin"
@@ -19,32 +19,17 @@ arch=(x86_64)
 license=(GPL2)
 options=('!strip')
 
-_kernpkg=${_pkgname}-${_pkgver}-${_pkgrel}-${arch}.pkg.tar.zst
-_headerspkg=${_pkgname}-headers-${_pkgver}-${_pkgrel}-${arch}.pkg.tar.zst
-_docspkg=${_pkgname}-docs-${_pkgver}-${_pkgrel}-${arch}.pkg.tar.zst
+_kernpkg=%KERN_PKG
+_headerspkg=%HEADERS_PKG
+_docspkg=%DOCS_PKG
 
-# See if the sources are available from our own mirror:
-_kernsrc=$(pacman -Spdd "${_pkgname}" 2> /dev/null)
-_headerssrc=$(pacman -Spdd "${_pkgname}-headers" 2> /dev/null)
-_docssrc=$(pacman -Spdd "${_pkgname}-docs" 2> /dev/null)
-
-# If not, then use the Arch Linux archive:
-if [ "$(basename "${_kernsrc}" 2> /dev/null)" != "${_kernpkg}" ]; then
-  _arch_archive=https://archive.archlinux.org/packages/.all
-  _kernsrc=${_arch_archive}/${_kernpkg}
-  _headerssrc=${_arch_archive}/${_headerspkg}
-  _docssrc=${_arch_archive}/${_docspkg}
-fi
-
-source=("${_kernsrc}"
-        "${_headerssrc}"
-        "${_docssrc}")
+source=("https://archive.archlinux.org/packages/.all/${_kernpkg}"
+        "https://archive.archlinux.org/packages/.all/${_headerspkg}"
+        "https://archive.archlinux.org/packages/.all/${_docspkg}")
 
 noextract=("${source[@]##*/}")
 
-sha256sums=('0358dc97518d1e1dcb8aae3b0a3c9d0e43dd69708cd92ecef22e6e9dd3f9d1c8'
-            'b6f662509ddcaa185f8eef31157cbb1e576efa6453e1a86c440bd3a21e1bc591'
-            '19802a951538749da4d5120ff89d1fc792e4bb8f465c1d3455d3803084e5f922')
+sha256sums=(SKIP) # To be filled in by updpkgsums
 
 package_linux-lts-versioned-bin() {
   pkgdesc="Metapackage depending on ${_versioned_pkgname}-bin"  
@@ -63,7 +48,7 @@ package_linux-lts-versioned-docs-bin() {
 }
 
 package_linux%PKGVER-%PKGREL-lts-bin() {
-  pkgdesc="%KERN_PKGDESC, version ${KERNNAME}"
+  pkgdesc="%KERN_PKGDESC, version ${_KERNNAME}"
   %KERN_DEPENDS
   %KERN_CONFLICTS
   %KERN_OPTDEPENDS
@@ -71,12 +56,12 @@ package_linux%PKGVER-%PKGREL-lts-bin() {
   %KERN_REPLACES
   tar -xf "${_kernpkg}" -C "${pkgdir}"
   rm "${pkgdir}"/{.MTREE,.BUILDINFO,.PKGINFO}
-  sed -ic "s/${_pkgname}/${KERNNAME}/" "${pkgdir}/usr/lib/modules/${KERNNAME}/pkgbase"
+  sed -ic "s/${_pkgname}/${_KERNNAME}/" "${pkgdir}/usr/lib/modules/${_KERNNAME}/pkgbase"
   mv "${pkgdir}/usr/share/licenses/"{"${_pkgname}","${_versioned_pkgname}-bin"}
 }
 
 package_linux%PKGVER-%PKGREL-lts-headers-bin() {
-  pkgdesc="%HEADERS_PKGDESC ${KERNNAME}"
+  pkgdesc="%HEADERS_PKGDESC ${_KERNNAME}"
   %HEADERS_DEPENDS
   %HEADERS_CONFLICTS
   %HEADERS_OPTDEPENDS
@@ -89,7 +74,7 @@ package_linux%PKGVER-%PKGREL-lts-headers-bin() {
 }
 
 package_linux%PKGVER-%PKGREL-lts-docs-bin() {
-  pkgdesc="%DOCS_PKGDESC ${KERNNAME}"
+  pkgdesc="%DOCS_PKGDESC ${_KERNNAME}"
   %DOCS_DEPENDS
   %DOCS_CONFLICTS
   %DOCS_OPTDEPENDS
