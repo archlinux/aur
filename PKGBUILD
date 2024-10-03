@@ -26,10 +26,10 @@ provides=('tuxedo-drivers-dkms' 'tuxedo-keyboard'
 	'ite_8297'
 	'ite_829x')
 conflicts=('tuxedo-drivers-dkms' 'tuxedo-keyboard-dkms' 'tuxedo-keyboard-ite-dkms')
-source=($pkgname-$pkgver.tar.gz::https://gitlab.com/kreny/${_reponame}/-/archive/v${pkgver}-patched.${pkgrel}/${_reponame}-v${pkgver}-patched.${pkgrel}.tar.gz tuxedo_io.conf)
-sha256sums=('e1b9265a10d91543627db21f06910fabfa97e99b389f55ff8207565bb6c143ea'
+source=($pkgname-$pkgver.tar.gz::https://gitlab.com/kreny/${_reponame}/-/archive/v${pkgver}-patched.${pkgrel}/tuxedo-drivers-v${pkgver}-patched.${pkgrel}.tar.gz tuxedo_io.conf)
+sha256sums=('07f376897b535a8eae08504be6c4b57df5c1b7b4fa083e1b7d4506ef6606bc5a'
 	'd94d305bfd2767ad047bc25cc5ce986e76804e7376c3dd4d8e500ebe2c7bef3c')
-sha512sums=('a2e03c58f2a10736d77809411191f35b30d87fe241983d2b52c931ba7a50ed7a27067d56c993dade7db56b068075a880e392b63d3e7ddd2ac81d83db5d151e23'
+sha512sums=('3483e3d6a16091130d31807d5c2f9b2ab96313e6990839f3a79f3645af0d4a8674a6e9ebeed7e5f04f70fb8f6c454ea85fead609e4d55f44b02b39395d4de880'
 	'3101d1063e9c45eccb505fa21578cba33ae5c85b3d5b1c62c90806ad9d7b04410c91ded7a7115a85d1f6ecbd90ccc9e5f2ecf269dac4a557baa017a629bbcf81')
 
 package() {
