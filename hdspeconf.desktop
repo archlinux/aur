@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=HDSPEConf
+Comment=RME HDSPe MADI/AES/RayDAT/AIO/AIO-Pro configuration tool
+Exec=hdspeconf
+Terminal=false
+Type=Application
+Categories=AudioVideo;
