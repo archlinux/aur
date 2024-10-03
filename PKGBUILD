@@ -14,8 +14,11 @@ sha256sums=("6339c7605e9b6f414d1be32530c9c8011f38820d36431c8a62e8674ca37140f0")
 
 build () {
     cd prelink
+
+    # fix libelf detection
     sed -i 's/#include <string.h>/&\n#include <unistd.h>/' m4/libelf.m4
     autoreconf -fi
+
     ./configure
     cd src
     make execstack
