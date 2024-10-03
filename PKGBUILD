@@ -2,7 +2,7 @@
 
 pkgname=hiera
 pkgver=3.12.0
-pkgrel=4
+pkgrel=5
 pkgdesc='Lightweight pluggable hierarchical database'
 arch=('any')
 url="https://github.com/puppetlabs/${pkgname}"
