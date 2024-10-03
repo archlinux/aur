@@ -1,12 +1,13 @@
 # Maintainer: Péter Bohner <peter@bohner.me>
 pkgname=gf2-git
-pkgver=r309.82889c4
+pkgver=r322.40f2ae6
 pkgrel=1
 pkgdesc="A GDB frontend for Linux."
 arch=('x86_64' 'i686')
 url="https://github.com/nakst/gf"
 license=('MIT')
-depends=('gdb' 'freetype2' 'libx11' 'vim')
+depends=('gdb' 'freetype2' 'libx11')
+optdepends=('vim: enhanced source viewing')
 makedepends=('git')
 provides=("gf2")
 conflicts=("gf2")

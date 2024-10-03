@@ -1,6 +1,6 @@
 pkgbase = gf2-git
 	pkgdesc = A GDB frontend for Linux.
-	pkgver = r309.82889c4
+	pkgver = r322.40f2ae6
 	pkgrel = 1
 	url = https://github.com/nakst/gf
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = gf2-git
 	depends = gdb
 	depends = freetype2
 	depends = libx11
-	depends = vim
+	optdepends = vim: enhanced source viewing
 	provides = gf2
 	conflicts = gf2
 	source = gf::git+https://github.com/nakst/gf.git#branch=master
