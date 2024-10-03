@@ -1,8 +1,8 @@
-# Maintainer: Pierre Chapuis <catwell at archlinux dot us>
+# Maintainer: Pierre Chapuis <arch@catwell.info>
 
 pkgname=execstack
 pkgver=20130503
-pkgrel=7
+pkgrel=8
 pkgdesc="set the executable stack flag of ELF binaries and libraries"
 depends=(libelf elfutils)
 arch=("x86_64")
@@ -12,15 +12,17 @@ conflicts=(prelink)
 source=("https://people.redhat.com/jakub/prelink/prelink-$pkgver.tar.bz2")
 sha256sums=("6339c7605e9b6f414d1be32530c9c8011f38820d36431c8a62e8674ca37140f0")
 
-build() {
-    cd "prelink"
+build () {
+    cd prelink
+    sed -i 's/#include <string.h>/&\n#include <unistd.h>/' m4/libelf.m4
+    autoreconf -fi
     ./configure
-    cd "src"
+    cd src
     make execstack
 }
 
-package() {
-    cd "prelink/src"
+package () {
+    cd prelink/src
     mkdir -p "$pkgdir/usr/bin"
     cp execstack "$pkgdir/usr/bin"
 }

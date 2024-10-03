@@ -1,7 +1,7 @@
 pkgbase = execstack
 	pkgdesc = set the executable stack flag of ELF binaries and libraries
 	pkgver = 20130503
-	pkgrel = 7
+	pkgrel = 8
 	url = https://people.redhat.com/jakub/prelink
 	arch = x86_64
 	license = GPL
@@ -12,4 +12,3 @@ pkgbase = execstack
 	sha256sums = 6339c7605e9b6f414d1be32530c9c8011f38820d36431c8a62e8674ca37140f0
 
 pkgname = execstack
-
