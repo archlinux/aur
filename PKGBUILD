@@ -1,7 +1,7 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 _pkgname=cemu
 pkgname=$_pkgname-git
-pkgver=2.2.r3.g8508c625
+pkgver=2.2.r4.g6dc73f5d
 pkgrel=1
 pkgdesc="Nintendo Wii U emulator"
 arch=('x86_64')
@@ -22,7 +22,7 @@ makedepends=(
 	'cmake>=3.21.1'
 	'cubeb'
 	'curl'
-	'fmt10'
+	'fmt>=9'
 	'git'
 	'glib2'
 	'glm'
@@ -65,8 +65,6 @@ prepare() {
 	git -c protocol.file.allow=always submodule update
 	sed -i '/CMAKE_INTERPROCEDURAL_OPTIMIZATION/d' CMakeLists.txt
 	sed -i '/FMT_HEADER_ONLY/d' src/Common/precompiled.h
-	# https://github.com/cemu-project/Cemu/issues/1338
-	sed -i 's/fmt 9/&...<11/' CMakeLists.txt
 }
 
 build() {
