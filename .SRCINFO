@@ -1,6 +1,6 @@
 pkgbase = nodejs-commitizen
 	pkgdesc = Git plugin to help you write consistent commit messages
-	pkgver = 4.3.0
+	pkgver = 4.3.1
 	pkgrel = 1
 	url = https://github.com/commitizen/cz-cli
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = nodejs-commitizen
 	makedepends = npm
 	makedepends = jq
 	depends = nodejs>=10
-	noextract = commitizen-4.3.0.tgz
-	source = http://registry.npmjs.org/commitizen/-/commitizen-4.3.0.tgz
-	sha512sums = 1f488db4294d1214f47e8b47bc657713db437a30de4b4e2c375bde21e6ec29818cb86b1c15ab304686092a64f7796f39788240b34176f1b1b6f9affdc0239f3f
+	noextract = commitizen-4.3.1.tgz
+	source = http://registry.npmjs.org/commitizen/-/commitizen-4.3.1.tgz
+	sha512sums = 83000f0154f2fe3e5870e39e6dc0912228e7fa64a35890be2182a2bd3bba686f048bfb1ca1781fb0c467b8093a6f4191b2d7b6278346c5574c3776697cd6956b
 
 pkgname = nodejs-commitizen
