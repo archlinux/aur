@@ -1,16 +1,16 @@
 # Contributor: Vojtech Horky <AUR / hotspur>
 pkgname=msim-git
-pkgver=0443c37
+pkgver=482a575
 pkgrel=1
-pkgdesc="Light-weight computer simulator based on MIPS R4000"
-url="http://dsrg.mff.cuni.cz/~holub/sw/msim/"
+pkgdesc="Light-weight MIPS R4000 and RISC-V system simulator"
+url="https://d3s.mff.cuni.cz/software/msim/"
 arch=('i686' 'x86_64')
 license=('GPL')
 depends=('readline')
 makedepends=('imake')
 provides=('msim')
 conflicts=('msim')
-source=("$pkgname"::'git://github.com/D-iii-S/msim.git')
+source=("$pkgname"::'git+https://github.com/d-iii-s/msim.git')
 md5sums=('SKIP')
 
 pkgver() {
@@ -28,8 +28,4 @@ build() {
 package() {
 	cd "${srcdir}/${pkgname}"
 	make "DESTDIR=${pkgdir}" install
-	msg "Installing documentation"
-	install -d -m 0755 "${pkgdir}/usr/share/doc/${pkgname}-${pkgver}/"
-	install -m 0644 doc/reference.html doc/default.css \
-		"${pkgdir}/usr/share/doc/${pkgname}-${pkgver}/"
 }
