@@ -1,6 +1,6 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=vpkedit
-pkgver=4.3.0
+pkgver=4.3.1
 pkgrel=1
 pkgdesc="A library and CLI/GUI tool to create, read, and write several pack file formats"
 arch=('x86_64')
@@ -15,7 +15,6 @@ source=("$pkgname::git+$url.git#tag=v${pkgver}"
 	"discord::git+https://github.com/craftablescience/discord-rpc-clean.git"
 	"miniaudio::git+https://github.com/mackron/miniaudio.git"
 	"sourcepp::git+https://github.com/craftablescience/sourcepp.git"
-	"bsppp.diff"
 	#Submodule for submodules
 	"doxygen-awesome-css::git+https://github.com/jothepro/doxygen-awesome-css.git"
 	"bufferstream::git+https://github.com/craftablescience/BufferStream.git"
@@ -23,13 +22,12 @@ source=("$pkgname::git+$url.git#tag=v${pkgver}"
 	"hat-trie::git+https://github.com/Tessil/hat-trie.git"
 	"miniz::git+https://github.com/richgel999/miniz.git"
 	"minizip-ng::git+https://github.com/zlib-ng/minizip-ng.git")
-sha256sums=('f482157c24ccf0d6c2cd9ca2b284fb39a10c6cc0921314f3fa24c46c93ecaa84'
+sha256sums=('4acebf5f8d6b6da5bca017c945b504e045cf3ed9b59c8a2f2eeb94024ee26aee'
             'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            '0453ac0278ef8de2910c13013f1f5e3d85d432acfd22019c87fd10a9ea131899'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -55,9 +53,6 @@ prepare() {
 	done
 	git config submodule.docs/layout/doxygen-awesome-css.url "$srcdir/doxygen-awesome-css"
 	git -c protocol.file.allow=always submodule update
-
-	cd "$srcdir/$pkgname/src/shared/thirdparty/sourcepp"
-	patch -p1 < "$srcdir/bsppp.diff"
 }
 
 build() {
