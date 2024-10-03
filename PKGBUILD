@@ -3,9 +3,9 @@
 _pkgname=ashell
 pkgname="${_pkgname}"
 pkgver=0.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A ready to go Wayland status bar for Hyprland"
-_git="https://github.com/MalpenZibo/${_pkgname}.git"
+_git="https://github.com/MalpenZibo/${_pkgname}.git#tag=${pkgver}"
 url="${_git}"
 license=("MIT")
 provides=("${_pkgname}")
@@ -28,20 +28,20 @@ source=(${_pkgname}::git+${_git})
 b2sums=('SKIP')
 
 pkgver() {
-  cd "${_pkgname}"
+  cd "${srcdir}/${_pkgname}"
 
   git describe --tags --abbrev=0
 }
 
 prepare() {
-  cd "${_pkgname}"
+  cd "${srcdir}/${_pkgname}"
 
   export RUSTUP_TOOLCHAIN=stable
   cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
-  cd "${_pkgname}"
+  cd "${srcdir}/${_pkgname}"
 
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
@@ -49,7 +49,7 @@ build() {
 }
 
 package() {
-  cd "${_pkgname}"
+  cd "${srcdir}/${_pkgname}"
 
   install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/${_pkgname}"
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
