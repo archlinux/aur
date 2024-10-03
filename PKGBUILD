@@ -1,14 +1,14 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=imgbrd-grabber
 pkgver=7.12.2
-pkgrel=3
+pkgrel=4
 pkgdesc="Very customizable imageboard/booru downloader with powerful filenaming features."
 arch=('x86_64')
 url="https://github.com/Bionus/imgbrd-grabber"
 license=('Apache-2.0')
 depends=('qt6-multimedia' 'qt6-declarative' 'nodejs' 'qt6-networkauth' 'hicolor-icon-theme' 'gcc-libs' 'glibc' 'qt6-base'
 	 'qt6-webengine')
-makedepends=('git' 'cmake' 'qt6-tools' 'npm' 'qt6-shadertools' 'clang')
+makedepends=('git' 'cmake' 'qt6-tools' 'npm' 'qt6-shadertools' 'clang' 'jq')
 optdepends=('openssl: Access HTTPS sources')
 conflicts=("imgbrd-grabber-git" 'imgbrd-grabber-bin' 'imgbrd-grabber-appimage')
 source=('git+https://github.com/Bionus/imgbrd-grabber.git#tag=v'${pkgver}''
@@ -55,6 +55,17 @@ package() {
     cd "$srcdir"
 
     DESTDIR="$pkgdir/" cmake --install build && rm -rf "$pkgdir/usr/include" "$pkgdir/usr/lib"
+    cat >> "$pkgdir/usr/share/applications/org.bionus.Grabber.desktop" <<-EOF
+
+StartupWMClass=cr.fr.bionus.Grabber
+EOF
+    sed -i 's/Icon=grabber/Icon=org.bionus.Grabber.png/g' "$pkgdir/usr/share/applications/org.bionus.Grabber.desktop"
+    for size in {128,96,48};
+    do
+      cd "$pkgdir/usr/share/icons/hicolor/${size}x${size}/apps"
+      mv grabber.png org.bionus.Grabber.png
+      ln -s org.bionus.Grabber.png cr.fr.bionus.Grabber.png
+    done
 
     touch "$pkgdir/usr/share/Grabber/settings.ini"
 }
