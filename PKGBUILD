@@ -2,7 +2,7 @@
 
 pkgname=ruby-shindo
 pkgver=0.3.11
-pkgrel=2
+pkgrel=3
 pkgdesc='Simple depth first ruby testing, watch and learn.'
 arch=(any)
 url='https://github.com/geemus/shindo'
