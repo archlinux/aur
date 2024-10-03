@@ -3,7 +3,7 @@
 
 pkgname=shiny-server-git
 _pkgname=${pkgname%-git}
-pkgver=1.5.22.1017.r0.g6df085e
+pkgver=1.5.23.1030.r0.gc3cae6c
 pkgrel=1
 epoch=1
 pkgdesc="Host Shiny applications over the web"

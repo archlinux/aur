@@ -1,6 +1,6 @@
 pkgbase = shiny-server-git
 	pkgdesc = Host Shiny applications over the web
-	pkgver = 1.5.22.1017.r0.g6df085e
+	pkgver = 1.5.23.1030.r0.gc3cae6c
 	pkgrel = 1
 	epoch = 1
 	url = https://rstudio.com/shiny/server
