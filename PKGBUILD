@@ -1,4 +1,5 @@
-# Maintainer: mnussbaum <michaelnussbaum08@gmail.com>
+# Maintainer: 
+# Contributor: mnussbaum <michaelnussbaum08@gmail.com>
 
 _gemname=reverse_markdown
 pkgname=ruby-reverse_markdown
@@ -9,12 +10,11 @@ arch=("any")
 depends=(
   ruby
   ruby-nokogiri
-  license-wtfpl
 )
 makedepends=(rubygems)
 url="https://github.com/xijo/reverse_markdown"
 noextract=($_gemname-$pkgver.gem)
-license=("custom:WTFPL")
+license=(WTFPL)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 sha256sums=("b2206466b682ac1177b6b8ec321d00a84fca02d096c5d676a7a0cc5838dc0701")
