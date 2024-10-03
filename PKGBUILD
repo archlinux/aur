@@ -1,8 +1,8 @@
 # Maintainer: qlrddev <qlrddev@gmail.com>
 
 pkgname=gossip-bin
-pkgver=0.11
-pkgrel=3
+pkgver=0.12
+pkgrel=0
 pkgdesc="gossip nostr client built with rust"
 arch=('x86_64')
 url="https://github.com/mikedilger/gossip"
@@ -20,10 +20,10 @@ source=(
   "changelog.txt::https://github.com/mikedilger/gossip/releases/download/v${pkgver}.${pkgrel}/changelog-${pkgver}.${pkgrel}.txt"
   "gossip.png::https://raw.githubusercontent.com/mikedilger/gossip/c437e3ebf30ff168395bcdcb94cab7c88a5d0543/logo/gossip.png"
 )
-sha256sums=('cfabc8788aca8e4ac07d4cf6da605de8729cbbac0e356563b12c796be680ed1a'
+sha256sums=('d4b474854aaad46778ffb3a8f6674103384579108d5b759019831d9e35a8bcb8'
             '8a8543ebe0203fa8597bfcf70e7841f6fb66367358ff6180be692d4d724def70'
-            '2314c3d6c044e57531fea4e6fc67686e0794d9ac83f6d3bfa9b07e095ba6c54d'
-            '660df6dacde13c3c9ebc10a57e81c87d467278e3baa16be29e856987601209f9'
+            'ace36c7563bae04f03d25b04e6f28e781874e7fca509f25345c08651a1c921fa'
+            'd9fb7281fe5c8350a767b8569821a9008ac0b7025782127fa985b93be8034a6a'
             '7f4f3e319a429825008c8d46cc2cfbaf3bdce70972e5900df7e548df6967258b')
 
 prepare() {
