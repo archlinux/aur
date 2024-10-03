@@ -2,29 +2,17 @@
 
 pkgname=firefox-userchromejs
 _pkgname=firefox-scripts
-pkgver=117
-_pkgver=b013243f1916576166a02d816651c2cc6416f63e
-pkgrel=2
+pkgver=131
+_pkgver=0c288820e16af6827e0cc19bb3fcdaec36a58935
+pkgrel=1
 pkgdesc="Patching Firefox to enable JS injection (userchrome-js)"
 arch=('any')
 depends=('firefox')
-makedepends=('dos2unix')
 url="https://github.com/xiaoxiaoflood/firefox-scripts"
 license=('MPL2')
-source=(https://codeload.github.com/xiaoxiaoflood/$_pkgname/tar.gz/$_pkgver
-        fix117.patch)
-sha512sums=('5ce25bc5a239b6bdd60578caddcf97f1af05db06309fee91165ea10be4dafbb43ee26515eaeff398947926c74e0253b0a02e8106941c55e593667e7c1dd7542d'
-            'SKIP')
+source=(https://codeload.github.com/xiaoxiaoflood/$_pkgname/tar.gz/$_pkgver)
+sha512sums=('8f5baaea696845a2e89b99779a743ee532b3269400912153570b68535bb589169eb7e457a4d7f83891a9742fc28c5b8ad27ee8c1ad447a627c14514b9e87f079')
 install=firefox-userchromejs.install
-
-prepare() {
-  cd $srcdir/$_pkgname-$_pkgver/
-  dos2unix chrome/utils/xPref.jsm
-  dos2unix chrome/utils/userChrome.jsm
-  patch -p1 -i ../fix117.patch
-  unix2dos chrome/utils/xPref.jsm
-  unix2dos chrome/utils/userChrome.jsm
-}
 
 package() {
   cd $srcdir/$_pkgname-$_pkgver/
@@ -33,16 +21,18 @@ package() {
 
   cd installation-folder
   install -d $pkgdir/usr/lib/firefox/browser/defaults/preferences
+  #install -d $pkgdir/usr/lib/firefox/defaults/pref
   install config.js $pkgdir/usr/lib/firefox/
   install config-prefs.js $pkgdir/usr/lib/firefox/browser/defaults/preferences/
+  #install config-prefs.js $pkgdir/usr/lib/firefox/defaults/pref/
 
   cd ../chrome/utils
   install -d $pkgdir/usr/share/$pkgname/base/chrome/utils
-  install BootstrapLoader.jsm $pkgdir/usr/share/$pkgname/base/chrome/utils/
-  install RDFDataSource.jsm $pkgdir/usr/share/$pkgname/base/chrome/utils/
-  install RDFManifestConverter.jsm $pkgdir/usr/share/$pkgname/base/chrome/utils/
+  install BootstrapLoader.js $pkgdir/usr/share/$pkgname/base/chrome/utils/
+  install RDFDataSource.sys.mjs $pkgdir/usr/share/$pkgname/base/chrome/utils/
+  install RDFManifestConverter.sys.mjs $pkgdir/usr/share/$pkgname/base/chrome/utils/
   install chrome.manifest $pkgdir/usr/share/$pkgname/base/chrome/utils/
-  install hookFunction.jsm $pkgdir/usr/share/$pkgname/base/chrome/utils/
+  #install hookFunction.jsm $pkgdir/usr/share/$pkgname/base/chrome/utils/
   install userChrome.jsm $pkgdir/usr/share/$pkgname/base/chrome/utils/
   install xPref.jsm $pkgdir/usr/share/$pkgname/base/chrome/utils/
 
