@@ -1,0 +1,15 @@
+pkgbase = fabric-git
+	pkgdesc = An open-source framework for augmenting humans using AI
+	pkgver = r1549.fc3aa9c
+	pkgrel = 1
+	url = https://github.com/danielmiessler/fabric
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = go
+	provides = fabric
+	conflicts = fabric
+	source = git+https://github.com/danielmiessler/fabric.git
+	md5sums = SKIP
+
+pkgname = fabric-git
