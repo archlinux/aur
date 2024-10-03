@@ -2,8 +2,8 @@
 # Generator : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-linux-desktopfiles'
-pkgver='0.25'
-pkgrel='2'
+pkgver='0.26'
+pkgrel='1'
 pkgdesc="Linux::DesktopFiles - a very fast Perl module for parsing the Linux desktop files."
 arch=('any')
 license=('PerlArtistic' 'GPL')
@@ -12,8 +12,7 @@ depends=('perl>=5.14.0')
 makedepends=()
 url='https://metacpan.org/release/Linux-DesktopFiles'
 source=("https://cpan.metacpan.org/authors/id/T/TR/TRIZEN/Linux-DesktopFiles-$pkgver.tar.gz")
-md5sums=('ec72ae0a0c4f8fc4d242f836d26c99e6')
-sha512sums=('a825b014e85e53cf0a142c7d239948f288930627a517444d21a81b8ee898ab3bc1b7dc8864df7b76b2f3a982280ffcb09325f492d0d83950c682110999d5e107')
+b2sums=('5f5a69390a1a528b4195bda36dd2d9a08a25cd121883c9e24ffd1ff3419d372070ce8997cb859a3fecd8dc8e9d9647b57fd3a72b1631f0e5e14ad900a40d9e01')
 _distdir="Linux-DesktopFiles-${pkgver}"
 
 build() {
@@ -39,13 +38,6 @@ check() {
 package() {
   cd "$srcdir/$_distdir"
   make install
-
   rm -r "$pkgdir/usr/lib"
   find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
 }
-
-# Local Variables:
-# mode: shell-script
-# sh-basic-offset: 2
-# End:
-# vim:set ts=2 sw=2 et:
