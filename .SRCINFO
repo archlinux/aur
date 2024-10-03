@@ -1,17 +1,18 @@
 pkgbase = archlinux-studio-utils
-	pkgver = r25.26be4ee
+	pkgdesc = Pipewire and AV application control
+	pkgver = r29.db84ab8
 	pkgrel = 1
 	url = https://github.com/usrmusicman/ArchLinuxStudioUtils
 	arch = x86_64
 	license = EULA
 	makedepends = git
+	depends = pipewire
+	depends = pipewire-jack
+	provides = archlinux-studio-utils-cpufreq-scaling
+	provides = archlinux-studio-utils-pipewire
+	conflicts = archlinux-studio-utils-cpufreq-scaling
+	conflicts = archlinux-studio-utils-pipewire
 	source = archlinux-studio-utils::git+https://github.com/usrmusicman/ArchLinuxStudioUtils
 	sha256sums = SKIP
 
-pkgname = archlinux-studio-utils-cpufreq-scaling
-	pkgdesc = CPU frequency scaling selection script
-
-pkgname = archlinux-studio-utils-pipewire
-	pkgdesc = GUI pipewire session toggle tool
-	depends = pipewire
-	depends = kdialog
+pkgname = archlinux-studio-utils

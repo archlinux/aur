@@ -1,12 +1,21 @@
-pkgbase=archlinux-studio-utils
-pkgname=('archlinux-studio-utils-cpufreq-scaling' 'archlinux-studio-utils-pipewire')
-pkgver=r25.26be4ee
+pkgname=archlinux-studio-utils
+pkgver=r29.db84ab8
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/usrmusicman/ArchLinuxStudioUtils"
 license=('EULA')
+depends=('pipewire' 'pipewire-jack')
+optdepnds=('ardour: Professional-grade digital audio workstation'
+          'carla: Audio Plugin Host'
+          'kdialog: A utility for displaying dialog boxes from shell scripts'
+          'qtractor: Audio/MIDI multitrack sequencer'
+          'reaper: A complete digital audio production application for computers'
+          'zenity: Display graphical dialog boxes from shell scripts')
+provides=('archlinux-studio-utils-cpufreq-scaling' 'archlinux-studio-utils-pipewire')
+conflicts=('archlinux-studio-utils-cpufreq-scaling' 'archlinux-studio-utils-pipewire')
 makedepends=('git')
-source=("$pkgbase"::"git+https://github.com/usrmusicman/ArchLinuxStudioUtils")
+pkgdesc="Pipewire and AV application control"
+source=("$pkgname"::"git+https://github.com/usrmusicman/ArchLinuxStudioUtils")
 sha256sums=('SKIP')
 
 pkgver() {
@@ -14,23 +23,10 @@ pkgver() {
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
-package_archlinux-studio-utils-cpufreq-scaling() {
-    pkgdesc="CPU frequency scaling selection script"
-
+package() {
     ## Install Script
-    install -Dm755 "$pkgbase/cpufreq/script/cpufreq_governor_selector" "$pkgdir/usr/bin/cpufreq_governor_selector"
+    install -Dm755 "$pkgbase/pipewire/script/pipewire_control_center" "$pkgdir/usr/bin/pipewire_control_center"
 
     ## Install Menu Entries
-    install -Dm644 "$pkgbase/cpufreq/menu_entry/CPUFreq Selector.desktop" "$pkgdir/usr/share/applications/CPUFreq Selector.desktop"
-}
-
-package_archlinux-studio-utils-pipewire() {
-    depends=('pipewire' 'kdialog')
-    pkgdesc="GUI pipewire session toggle tool"
-
-    ## Install Script
-    install -Dm755 "$pkgbase/pipewire/script/pipewire_audio_toggle" "$pkgdir/usr/bin/pipewire_audio_toggle"
-
-    ## Install Menu Entries
-    install -Dm644 "$pkgbase/pipewire/menu_entry/Pipewire Audio Sesssion Toggle.desktop" "$pkgdir/usr/share/applications/Pipewire Audio Sesssion Toggle.desktop"
+    install -Dm644 "$pkgbase/pipewire/menu_entry/Pipewire Control Center.desktop" "$pkgdir/usr/share/applications/Pipewire Control Center.desktop"
 }
