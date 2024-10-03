@@ -5,10 +5,26 @@ post_install() {
   echo "     sudo gpasswd -a USERNAME nordvpn"
   echo ':: You then have to restart for the group to be created:'
   echo "     reboot"
-
+  # Add logic to avoid interposing with sqlite library if it already exists
   for lib in /usr/lib/nordvpn/*.so ; do
     if [ -f "$lib" ] ; then
-      ln -s $lib /usr/lib/
+      if [ ! -f /usr/lib/$(echo $lib | cut -d '/' -f 5) ] ; then
+        ln -s $lib /usr/lib/
+      fi
+    fi
+  done
+}
+
+post_upgrade() {
+  # Add logic to avoid interposing with sqlite library if it already exists
+  for lib in /usr/lib/nordvpn/*.so ; do
+    if [ -f "$lib" ] ; then
+      if [ $(readlink -- "/usr/lib/$(echo $lib | cut -d '/' -f 5)") = "$lib" ] ; then
+        ln -sf $lib /usr/lib/
+      fi
+      if [ ! -f /usr/lib/$(echo $lib | cut -d '/' -f 5) ] ; then
+        ln -s $lib /usr/lib/
+      fi
     fi
   done
 }
@@ -23,19 +39,14 @@ pre_upgrade() {
   chattr -i /var/lib/nordvpn/data/*
 }
 
-post_upgrade() {
-  for lib in /usr/lib/nordvpn/*.so ; do
-    if [ -f "$lib" ] ; then
-      ln -sf $lib /usr/lib/
-    fi
-  done
-}
-
 pre_remove() {
   chattr -i /var/lib/nordvpn/data/*
+  # Add logic to avoid interposing with sqlite library if it already exists
   for lib in /usr/lib/nordvpn/*.so ; do
     if [ -f "$lib" ] ; then
-      unlink /usr/lib/$(echo $lib | cut -d '/' -f 5)
+      if [ $(readlink -- "/usr/lib/$(echo $lib | cut -d '/' -f 5)") = "$lib" ] ; then
+        unlink /usr/lib/$(echo $lib | cut -d '/' -f 5)
+      fi
     fi
   done
 }
