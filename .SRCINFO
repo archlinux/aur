@@ -1,0 +1,19 @@
+pkgbase = mcuviewer
+	pkgdesc = Real-time embedded variable & trace viewer
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/klonyyy/MCUViewer
+	arch = i686
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = cmake
+	makedepends = spdlog
+	depends = libusb
+	depends = glfw
+	depends = gtk3
+	depends = glib2
+	provides = mcuviewer
+	source = mcuviewer.src.tgz::https://github.com/klonyyy/MCUViewer/archive/refs/tags/v1.0.1.tar.gz
+	sha256sums = c76486ba3ff6c650b6f8a384a21396c3c1c658dc187fa607d6473b9761447fdb
+
+pkgname = mcuviewer
