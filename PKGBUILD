@@ -3,13 +3,13 @@
 _extractedName="google-cloud-sdk"
 _pkgname="google-cloud-cli"
 pkgname="${_pkgname}-lite"
-pkgver=483.0.0
+pkgver=495.0.0
 pkgrel=1
 pkgdesc="A distribution of the gcloud CLI that strips unnecessary dependencies to reduce the size by > 75%"
 url="https://github.com/tonymet/gcloud-lite"
 license=('Apache-2.0')
 arch=('x86_64')
-depends=('python')
+depends=('python' 'python-botocore')
 optdepends=(
   "python-crcmod: [gsutil] verify the integrity of GCS object contents"
 )
@@ -23,7 +23,7 @@ source=(
 conflicts=('google-cloud-sdk' 'google-cloud-cli')
 provides=('google-cloud-sdk' 'google-cloud-cli')
 replaces=('google-cloud-sdk')
-sha256sums=('cba557cd92e6153317e20492beb548aa7d419b0362e3beaa01c2021db2264699'
+sha256sums=('4be55388f5ad45f329eb7b50e07b600352197623d82424b63ac7d04a57bac190'
             '5d9ca924675b24fc1ed044cf52f9f218e72ddc12703770271b0417a4a3c3a15d'
             'c19dbe916e6fd18d9b17b3309ee60c5d389035c5520822d2c14c045d8b853924')
 

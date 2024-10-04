@@ -1,11 +1,12 @@
 pkgbase = google-cloud-cli-lite
 	pkgdesc = A distribution of the gcloud CLI that strips unnecessary dependencies to reduce the size by > 75%
-	pkgver = 483.0.0
+	pkgver = 495.0.0
 	pkgrel = 1
 	url = https://github.com/tonymet/gcloud-lite
 	arch = x86_64
 	license = Apache-2.0
 	depends = python
+	depends = python-botocore
 	optdepends = python-crcmod: [gsutil] verify the integrity of GCS object contents
 	provides = google-cloud-sdk
 	provides = google-cloud-cli
@@ -15,10 +16,10 @@ pkgbase = google-cloud-cli-lite
 	options = !strip
 	options = staticlibs
 	options = !zipman
-	source = google-cloud-cli-lite-483.0.0.orig.tar.gz::https://github.com/tonymet/gcloud-lite/releases/download/483.0.0/google-cloud-cli-483.0.0-linux-x86_64-lite.tar.gz
+	source = google-cloud-cli-lite-495.0.0.orig.tar.gz::https://github.com/tonymet/gcloud-lite/releases/download/495.0.0/google-cloud-cli-495.0.0-linux-x86_64-lite.tar.gz
 	source = google-cloud-cli.sh
 	source = 0003-add-compdef-to-zsh-completion.patch
-	sha256sums = cba557cd92e6153317e20492beb548aa7d419b0362e3beaa01c2021db2264699
+	sha256sums = 4be55388f5ad45f329eb7b50e07b600352197623d82424b63ac7d04a57bac190
 	sha256sums = 5d9ca924675b24fc1ed044cf52f9f218e72ddc12703770271b0417a4a3c3a15d
 	sha256sums = c19dbe916e6fd18d9b17b3309ee60c5d389035c5520822d2c14c045d8b853924
 
