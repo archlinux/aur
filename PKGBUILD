@@ -2,7 +2,7 @@
 
 _name=jaxlib
 pkgname=python-${_name,,}-bin
-pkgver=0.4.31
+pkgver=0.4.33
 pkgrel=1
 pkgdesc='XLA library for JAX - binary package'
 arch=('x86_64') # TODO make also aarch64 available if possible
@@ -17,8 +17,9 @@ depends=('python-absl'
          'python-scipy')
 makedepends=('python-installer' 'python-wheel')
 _whl="${_name//-/_}-$pkgver-cp312-cp312-manylinux2014_x86_64.whl"
-source=("https://files.pythonhosted.org/packages/b1/09/58d35465d48c8bee1d9a4e7a3c5db2edaabfc7ac94f4576c9f8c51b83e70/jaxlib-0.4.31-cp312-cp312-manylinux2014_x86_64.whl")
-sha256sums=(1f1afa5fd58a60f67f0ca586e26714aece62eaa2c8334c24d0e8285afc4a7ccd)
+source=("https://files.pythonhosted.org/packages/c3/03/d2bfd28e57cde716dd3729c980d450a2acd5711d50cbb9e54b23b54bc2f5/jaxlib-0.4.33-cp312-cp312-manylinux2014_x86_64.whl")
+
+sha256sums=(054aa0f122725e000b8f8815b1794067ef2ff821588b62e1fab2a1280847f5c6)
 
 noextract=("$_whl")
 package() {
