@@ -1,7 +1,7 @@
 pkgbase = scala
 	pkgdesc = A Java-interoperable language with object-oriented and functional features
 	pkgver = 2.13.15
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.scala-lang.org
 	arch = any
 	license = Apache-2.0

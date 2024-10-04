@@ -10,7 +10,7 @@ pkgbase=scala
 pkgname=(scala scala-docs scala-sources)
 pkgver=2.13.15
 # shellcheck disable=SC2034
-pkgrel=2
+pkgrel=3
 pkgdesc='A Java-interoperable language with object-oriented and functional features'
 # shellcheck disable=SC2034
 arch=('any')
@@ -61,11 +61,11 @@ package_scala() {
   cp -r "${srcdir}/scala-${pkgver}/build/pack/lib" "${pkgdir}/usr/share/scala/"
   install -m755 "${srcdir}/scala-${pkgver}/build/pack/bin/"{fsc,scala,scalac,scalap,scaladoc} "${pkgdir}/usr/share/scala/bin"
 
-  ln -s "${srcdir}/scala-${pkgver}/build/share/scala/bin/fsc" "${pkgdir}/usr/bin/fsc"
-  ln -s "${srcdir}/scala-${pkgver}/build/share/scala/bin/scala" "${pkgdir}/usr/bin/scala"
-  ln -s "${srcdir}/scala-${pkgver}/build/share/scala/bin/scalac" "${pkgdir}/usr/bin/scalac"
-  ln -s "${srcdir}/scala-${pkgver}/build/share/scala/bin/scalap" "${pkgdir}/usr/bin/scalap"
-  ln -s "${srcdir}/scala-${pkgver}/build/share/scala/bin/scaladoc" "${pkgdir}/usr/bin/scaladoc"
+  ln -s '/usr/share/scala/bin/fsc' "${pkgdir}/usr/bin/fsc"
+  ln -s '/usr/share/scala/bin/scala' "${pkgdir}/usr/bin/scala"
+  ln -s '/usr/share/scala/bin/scalac' "${pkgdir}/usr/bin/scalac"
+  ln -s '/usr/share/scala/bin/scalap' "${pkgdir}/usr/bin/scalap"
+  ln -s '/usr/share/scala/bin/scaladoc' "${pkgdir}/usr/bin/scaladoc"
 }
 
 package_scala-docs() {
