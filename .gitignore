@@ -1,0 +1,4 @@
+faust/
+pkg/
+src/
+faust-git-*.pkg.tar.*
