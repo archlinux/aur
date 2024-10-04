@@ -1,7 +1,7 @@
 # Maintainer: Dmali <dmali@vk.com>
 
 pkgname=klaus-bin
-pkgver=17.2
+pkgver=17.3
 _releasedate=2024-10-04
 pkgrel=1
 pkgdesc="Arch manager that allows you to download, install, delete packages..."
