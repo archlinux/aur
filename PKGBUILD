@@ -2,12 +2,13 @@
 
 pkgname=rustmission
 pkgver=0.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Performant TUI for Transmission capable of managing hundreds of torrents.'
 url='https://github.com/intuis/rustmission'
 license=(GPL-3.0-or-later)
 makedepends=('cargo')
 depends=()
+optionaldepends=(ttf-font-nerd: Nerd Font for icons)
 arch=('x86_64')
 options=(!lto)
 source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate")
