@@ -33,8 +33,7 @@ EOL
 }
 
 package() {
-    cd "$srcdir/$pkgname/src"
-
+    cd "$srcdir/$pkgname"
     cat > freakfox << EOL
 #!/bin/sh
 source /usr/share/freakfox/venv/bin/activate && exec python3 /usr/share/freakfox/browser.py
