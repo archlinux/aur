@@ -1,6 +1,6 @@
 pkgname=xava-git
 _pkgname=xava
-pkgver=0.7.1.1.r6.ge1d52fa
+pkgver=0.7.1.1.r0.gd0ccf97
 pkgrel=1
 pkgdesc='X11 Audio Visualizer for Alsa/Pulseaudio/FIFO'
 arch=('any')
