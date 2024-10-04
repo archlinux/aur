@@ -1,10 +1,11 @@
 pkgbase = sile-resilient
 	pkgdesc = Advanced book classes and packages for the SILE typesetting system
 	pkgver = 2.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Omikhleia/resilient.sile
 	arch = any
 	license = MIT
+	makedepends = lua51
 	makedepends = luarocks
 	depends = sile
 	depends = sile-barcodes
