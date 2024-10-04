@@ -1,0 +1,13 @@
+pkgbase = mushaf_almadinah
+	pkgdesc = مصحف المدينة.
+	pkgver = 1
+	pkgrel = 1
+	url = https://astronomycenter.net/accut.html
+	arch = x86_64
+	license = custom
+	depends = wine
+	depends = bash
+	source = mushaf_almadinah.tar.xz::https://github.com/dzwdev/mushaf_almadinah/raw/ad3c9412894f178eecbeff661e8dbc84f01c58c1/mushaf_almadinah.tar.xz
+	sha256sums = 464423661e1e01b829d940692e5904e2d694436e3de6c0bf3174281025796daa
+
+pkgname = mushaf_almadinah
