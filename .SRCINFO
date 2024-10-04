@@ -1,4 +1,4 @@
-pkgbase = thdnd2
+pkgbase = tkdnd2
         pkgdesc = About Tkinter native drag and drop support.
         pkgver = r46.9a55907
         pkgrel = 1

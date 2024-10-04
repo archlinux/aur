@@ -1,6 +1,6 @@
 # Maintainer: Neko_Rikka <yjzyl9008 at gmail dot com>
 
-pkgname=thdnd2
+pkgname=tkdnd2
 pkgver=r46.9a55907
 pkgrel=1
 pkgdesc="About Tkinter native drag and drop support."
