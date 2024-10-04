@@ -1,0 +1,13 @@
+pkgbase = git-branch-manager
+	pkgdesc = Manage your git branches with ease
+	pkgver = 0.1.r.
+	pkgrel = 1
+	url = https://github.com/demonkingswarn/git-branch-manager
+	arch = any
+	license = GPL
+	depends = git
+	depends = gum
+	source = git+https://github.com/demonkingswarn/git-branch-manager
+	sha256sums = SKIP
+
+pkgname = git-branch-manager
