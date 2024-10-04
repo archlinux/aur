@@ -1,6 +1,6 @@
 # Maintainer: Jakub Dupak <dev@jakubdupak.com>
 pkgname=qtrvsim
-pkgver=0.9.7
+pkgver=0.9.8
 pkgrel=1
 pkgdesc="RISC-V CPU simulator for education purposes"
 arch=("any")
@@ -9,7 +9,7 @@ license=('GPL-3.0-or-later ')
 depends=("qt5-base")
 makedepends=("cmake" "elfutils")
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/cvut/qtrvsim/archive/v${pkgver}.tar.gz")
-sha256sums=('6113ab077ca6fd720cace98e15136ce567f6c7207be284f852829775c132b326')
+sha256sums=('bf7999ea953ebdad283a8415614a36a11c05043431f516d2dd3e53e5471cd329')
 
 prepare() {
     export CMAKE_BUILD_PARALLEL_LEVEL=$(nproc)
