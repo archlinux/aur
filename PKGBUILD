@@ -1,7 +1,7 @@
 # Maintainer: Robin Candau <antiz@archlinux.org>
 
 pkgname=arch-update
-pkgver=3.2.1
+pkgver=3.2.2
 pkgrel=1
 pkgdesc="An update notifier & applier that assists you with important pre / post update tasks."
 url="https://github.com/Antiz96/arch-update"
@@ -18,7 +18,7 @@ optdepends=('yay: AUR Packages support'
             'sudo: Privilege elevation'
             'doas: Privilege elavation')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('978e207ea29ee3cb2cdf097eec90f459d4f3fa141b86e188ba5f73da3ae8bb90')
+sha256sums=('b9c35913a6c93f046545579b29d0b0b1a6f37066bd6c5c5ed571cb14113523e3')
 
 check() {
 	cd "${pkgname}-${pkgver}"
