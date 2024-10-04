@@ -1,26 +1,30 @@
-# Maintainer: éclairevoyant
+# Maintainer: Christopher Arndt <aur -at- chrisarndt -dot- de>
+# Contributor: éclairevoyant
 # Contributor: Michael A. Sinclair <squattingmonk at gmail dot com>
 # Contributor: Dan Beste <drb at wishalloy dot com>
 
 _pkgname=choosenim
-pkgname="$_pkgname-bin"
-pkgver=0.8.4
-pkgrel=2
+pkgname=$_pkgname-bin
+pkgver=0.8.9
+pkgrel=1
 pkgdesc='Nim toolchain installer'
 arch=(x86_64)
-url="https://github.com/dom96/$_pkgname"
-license=(BSD)
-depends=(glibc)
-optdepends=('clang: C/C++ backend'
-            'gcc: C/C++ backend')
-provides=("$_pkgname=$pkgver" nim nimble nimgrep nimpretty nimsuggest)
-conflicts=("$_pkgname" nim nimble nimgrep nimpretty nimsuggest)
+url="https://github.com/nim-lang/$_pkgname"
+license=(BSD-3-Clause)
+depends=(curl glibc)
+optdepends=(
+  'clang: C/C++ backend'
+  'gcc: C/C++ backend'
+)
+provides=($_pkgname nim nimble nimgrep nimpretty nimsuggest)
+conflicts=($_pkgname nim)
+install=$pkgname.install
 source=("$pkgname-$pkgver::$url/releases/download/v$pkgver/$_pkgname-${pkgver}_linux_amd64"
-        "$pkgname-$pkgver.LICENSE::$url/raw/v$pkgver/LICENSE")
-b2sums=('4190f29eec3f28a9161a229e4466858c997abd6a15e6e01d83e51c4a8ae327d5bbbffd5b465ee1ba9f095609fa0245900caa4bbb46b041b0f5f334e4e8edaa7d'
-        '8f19a2a567b2415263d72a13cd1508a1ba189e211a91580bf78653185717df5c7582e09ef27f60176eba3dbdb379d0f64fccc595a5970d40bc381f62a72cad00')
+        "LICENSE-$pkgname-$pkgver::$url/raw/v$pkgver/LICENSE")
+sha256sums=('c70975e1467b43842f7bcfd535b9d599ed359c7b61e26fab246b9e6fbab7bff6'
+            '5cb6b77a8a0f2f60ed5b9ceeb633fc79331a012c209fc05617f47bc528724d87')
 
 package() {
-	install -vDm755 $pkgname-$pkgver "$pkgdir/usr/bin/$_pkgname"
-	install -vDm644 $pkgname-$pkgver.LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -vDm 755 $pkgname-$pkgver "$pkgdir"/usr/bin/$_pkgname
+  install -vDm 644 LICENSE-$pkgname-$pkgver "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
