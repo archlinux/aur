@@ -1,6 +1,6 @@
 pkgbase = input-leap-git
 	pkgdesc = Open-source KVM software
-	pkgver = 2.4.0+930+g20c5c04b
+	pkgver = 3.0.0
 	pkgrel = 1
 	url = https://github.com/input-leap/input-leap
 	arch = x86_64
@@ -54,8 +54,8 @@ pkgname = input-leap-headless-git
 	depends = openssl
 	depends = libei
 	depends = libportal
-	provides = input-leap-headless=2.4.0+930+g20c5c04b
-	provides = barrier-headless=2.4.0+930+g20c5c04b
+	provides = input-leap-headless=3.0.0
+	provides = barrier-headless=3.0.0
 	conflicts = input-leap-headless
 	conflicts = barrier-headless
 
@@ -69,7 +69,7 @@ pkgname = input-leap-git
 	depends = avahi
 	depends = qt6-base
 	depends = xdg-desktop-portal
-	provides = input-leap=2.4.0+930+g20c5c04b
-	provides = barrier=2.4.0+930+g20c5c04b
+	provides = input-leap=3.0.0
+	provides = barrier=3.0.0
 	conflicts = input-leap
 	conflicts = barrier
