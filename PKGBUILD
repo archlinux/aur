@@ -3,8 +3,8 @@
 _name=scitokens
 pkgname=python-${_name}
 pkgver=1.8.1
-pkgrel=1
-pkgdesc="Normalising flows implemented using nflows."
+pkgrel=2
+pkgdesc="A reference library for generating and using SciTokens. "
 arch=('any')
 url='https://github.com/scitokens/scitokens'
 license=('Apache License 2.0')

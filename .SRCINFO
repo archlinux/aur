@@ -1,7 +1,7 @@
 pkgbase = python-scitokens
-	pkgdesc = Normalising flows implemented using nflows.
+	pkgdesc = A reference library for generating and using SciTokens.
 	pkgver = 1.8.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/scitokens/scitokens
 	arch = any
 	license = Apache License 2.0
