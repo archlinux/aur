@@ -1,7 +1,7 @@
 pkgbase='python-oelint-parser'
 pkgname=("${pkgbase}")
 _module=${pkgbase/python-/}
-pkgver='5.0.0'
+pkgver='5.1.0'
 pkgrel=1
 pkgdesc='Alternative parser for bitbake recipes'
 url='https://github.com/priv-kweihmann/oelint-parser'
@@ -10,7 +10,7 @@ makedepends=('python-setuptools')
 license=('BSD')
 arch=('any')
 source=("${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('2cd3c9d7508169d940493c663f0fae290ec3df98f673d0378111f0843e0b55cc')
+sha256sums=('548e58ae2be9be7b42dea0ff0435da53e70e0bb1bcd198eff55135bc3bec8da1')
 
 build() {
     cd "${srcdir}/${_module}-${pkgver}"
