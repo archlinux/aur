@@ -1,15 +1,18 @@
 pkgbase = powdertoy-jacobsmod-bin
 	pkgdesc = Desktop version of the classic falling sand physics sandbox, simulates air pressure, velocity & heat! Modded version by Jacob1
-	pkgver = 53.0
+	pkgver = 57.1
 	pkgrel = 1
 	url = https://powdertoy.co.uk/Discussions/Thread/View.html?Thread=11117
 	arch = x86_64
 	license = GPL3
 	depends = openssl
-	source = powdertoy-jacobsmod-bin-53.0.tar.gz::https://starcatcher.us/TPT/mod/Older/Jacob1's%20Mod%20ver%2053.0%20linux64.zip
+	depends = hicolor-icon-theme
+	provides = powder-toy-jacob
+	conflicts = powder-toy-jacob
+	source = powdertoy-jacobsmod-bin-57.1.tar.gz::https://starcatcher.us/TPT/mod/Older/Jacob1's%20Mod%20ver%2057.1%20linux64.zip
+	source = powder-jacobsmod.png::https://static.powdertoy.co.uk/avatars/jacob1.256.png
 	source = powdertoy-jacobsmod.desktop
-	source = jacobsmod
-	sha256sums = 0532b642e2d4402f7e962968bfed9b57c78b70686efb6ee8cdf732b30ba79e1b
+	sha256sums = 64659ec606531d775c19e4a7e40d09e215577f9cbbf927004b5878b899928805
 	sha256sums = SKIP
 	sha256sums = SKIP
 

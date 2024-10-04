@@ -2,8 +2,9 @@
 Version=1.0
 Encoding=UTF-8
 Name=Powder Toy: Jacob1's Mod
+GenericName=Physics sandbox game
+Comment=Simulates air pressure and velocity, heat, gravity interactions between different substances.
 Type=Application
-Comment=Physics sandbox game
-Categories=Game;Simulation
-Icon=powdertoy.png
-Exec=jacobsmod
+Categories=Game;Simulation;Amusement;
+Icon=powder-jacobsmod
+Exec=powder-jacobsmod
