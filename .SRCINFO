@@ -1,0 +1,25 @@
+pkgbase = ruby-dry-logic
+	pkgdesc = Predicate logic with rule composition
+	pkgver = 1.5.0
+	pkgrel = 1
+	url = https://github.com/dry-rb/dry-logic
+	arch = any
+	license = MIT
+	checkdepends = ruby-bundler
+	checkdepends = ruby-rake
+	checkdepends = ruby-rspec
+	checkdepends = ruby-warning
+	makedepends = ruby-rdoc
+	depends = ruby
+	depends = ruby-concurrent
+	depends = ruby-dry-core
+	depends = ruby-zeitwerk
+	options = !emptydirs
+	source = https://github.com/dry-rb/dry-logic/archive/v1.5.0/ruby-dry-logic-1.5.0.tar.gz
+	source = https://patch-diff.githubusercontent.com/raw/dry-rb/dry-logic/pull/90.patch
+	sha512sums = cde3a01c0c16af1bd40f6c0c39b8777e464d6796f5c1eb52297453bb4301934c23ec48ac0e2bcc023844252b5da38687ae0bb8977f99c7f656d3fe18708bb7b8
+	sha512sums = d3ab10ed59d0a3800180380e32ce435feaff288e71660a5284b041b353ebabac7e662c2732201a64222a66752d19638e94a5302eb2e3214591f578aa4f4a38d1
+	b2sums = 9b00ac4bed7c400858554b3485f0bce04633caaac2b70bd0c76c1d11cb20b1ab34136a3e2189e247b012833f10219140366c18faa7af09d603b3b8cca4778dda
+	b2sums = 33e405446e3ca113247fa897bd3d1fde4b85707cf2f33bea1c13a199fa6dd21b94ed2ea734d4668d74ec1d5b09b5a0a49a64f58574dd9ee93875ae067b7ea8ca
+
+pkgname = ruby-dry-logic
