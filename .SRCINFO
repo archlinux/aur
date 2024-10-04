@@ -1,6 +1,6 @@
 pkgbase = freakfox-git
 	pkgdesc = Mega Freaky web browser
-	pkgver = 1.0.r0.g5930f98
+	pkgver = 1.0.r0.g29afbde
 	pkgrel = 1
 	url = https://github.com/1-K-SSPS/freakfox.git
 	arch = any
