@@ -1,0 +1,20 @@
+pkgbase = python-igwn-auth-utils
+	pkgdesc = Python authorisation utilities for IGWN.
+	pkgver = 1.1.1
+	pkgrel = 1
+	url = https://git.ligo.org/computing/software/igwn-auth-utils
+	arch = any
+	license = BSD 3-Clause
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	makedepends = python-setuptools-scm
+	makedepends = python-build
+	makedepends = python-installer
+	depends = python-cryptography
+	depends = python-requests
+	depends = python-safe-netrc
+	depends = python-scitokens
+	source = igwn-auth-utils-1.1.1.tar.gz::https://git.ligo.org/computing/software/igwn-auth-utils/-/archive/1.1.1/igwn-auth-utils-1.1.1.tar.gz
+	sha256sums = c2f8f6b188b5c9dc8f9e8aa5ea739423c02f05c03b41319f051a5442ba1bb52c
+
+pkgname = python-igwn-auth-utils
