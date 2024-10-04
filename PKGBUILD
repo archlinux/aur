@@ -3,7 +3,7 @@
 _gemname='dry-types'
 pkgname="ruby-${_gemname}"
 pkgver=1.7.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Type system for Ruby supporting coercions, constraints and complex types like structs, value objects, enums etc'
 arch=('any')
 url="https://github.com/dry-rb/${_gemname}"
@@ -22,6 +22,8 @@ makedepends=(
 )
 checkdepends=(
   ruby-bundler
+  ruby-dry-monads
+  ruby-dry-struct
   ruby-rake
   ruby-rspec
   ruby-warning
