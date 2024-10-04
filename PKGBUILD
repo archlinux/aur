@@ -151,7 +151,7 @@ elif [ -n "$_use_llvm_lto" ]  ||  [[ "$_use_lto_suffix" = "n" ]]; then
     pkgbase="linux-$_pkgsuffix"
 fi
 _major=6.11
-_minor=1
+_minor=2
 #_minorc=$((_minor+1))
 #_rcver=rc8
 pkgver=${_major}.${_minor}
@@ -313,12 +313,12 @@ prepare() {
     [ -z "$_cpusched" ] && _die "The value is empty. Choose the correct one again."
 
     case "$_cpusched" in
-        cachyos) scripts/config -e SCHED_CLASS_EXT -e SCHED_BORE --set-val MIN_BASE_SLICE_NS 1000000;;
-        bore|hardened) scripts/config -e SCHED_BORE --set-val MIN_BASE_SLICE_NS 1000000;;
+        cachyos) scripts/config -e SCHED_CLASS_EXT -e SCHED_BORE;;
+        bore|hardened) scripts/config -e SCHED_BORE;;
         bmq) scripts/config -e SCHED_ALT -e SCHED_BMQ;;
         eevdf) ;;
         rt) scripts/config -e PREEMPT_COUNT -e PREEMPTION -d PREEMPT_VOLUNTARY -d PREEMPT -d PREEMPT_NONE -d PREEMPT_RT -d PREEMPT_DYNAMIC -e PREEMPT_BUILD -e PREEMPT_BUILD_AUTO -e PREEMPT_AUTO;;
-        rt-bore) scripts/config -e SCHED_BORE --set-val MIN_BASE_SLICE_NS 1000000 -e PREEMPT_COUNT -e PREEMPTION -d PREEMPT_VOLUNTARY -d PREEMPT -d PREEMPT_NONE -d PREEMPT_RT -d PREEMPT_DYNAMIC -e PREEMPT_BUILD -e PREEMPT_BUILD_AUTO -e PREEMPT_AUTO;;
+        rt-bore) scripts/config -e SCHED_BORE -e PREEMPT_COUNT -e PREEMPTION -d PREEMPT_VOLUNTARY -d PREEMPT -d PREEMPT_NONE -d PREEMPT_RT -d PREEMPT_DYNAMIC -e PREEMPT_BUILD -e PREEMPT_BUILD_AUTO -e PREEMPT_AUTO;;
         sched-ext) scripts/config -e SCHED_CLASS_EXT;;
         *) _die "The value $_cpusched is invalid. Choose the correct one again.";;
     esac
@@ -773,8 +773,8 @@ for _p in "${pkgname[@]}"; do
     }"
 done
 
-b2sums=('ac9927d74542a2d244b9d683920363ec2dbbe851ae0e069b278f1a0ba82c58b00f0f0312104b46f1b8c06585c2e6acb7eb1e63bd28499891f629c00f9a32f6b5'
-        'cd69b5c9fca0788936a96b4e64f4d56f6e70818591587062b5ef4ae98e401d15ffddb910cdc2a1c70516c183bb2b4f2be955d7b1e1fec9bb37e632064068abae'
+b2sums=('5720e8dd0bed0247dcfe0bdbce17e36e67bff56811611ae1b04f048b77b6e60c2a48303db73c5a0d4a56c7125cdd695116c4dfd965bd7cb28aa932f427bb3e7d'
+        '92e635bb3553896146bea23e5e414853723be9843c94750bc6d4bc327a76925bedb2b3b4481f2816a4691d684e417eae0279c1a2019cb37e9e852914696695da'
         'b1e964389424d43c398a76e7cee16a643ac027722b91fe59022afacb19956db5856b2808ca0dd484f6d0dfc170482982678d7a9a00779d98cd62d5105200a667'
-        'cdefbe6df1fbf6da4b38042e1304996be508ba303d4193bab63f40e94a37755ac7597cda4b25c142d46a88841352d01ced7959bbfc7225e1ae58246df9b174c7'
-        '49c1ba4652e5be2135c8b45c545bf964b8f9dcf143ebd4616f4b7d925a96b27d903c8a7d1032bef136366094d46f2e1d9ee28d8193b87b62b889dd52e2171b68')
+        '3e03591e3aea3583b8a1b28acca45e15b590edd3c7c996baabe1163f6c7a9d956042940aeab9fc07fc3972e8b89517b6762ed2599ea2e02f68d6e0e8513a8e80'
+        '247c736bb3f1b99d5b42fab824fb9e174dd83191ec6d1f7eaff56e0e63425e1fdb7d829fb6521dc506d92eef9a40ca870382284f489ad460b10e140d2e110f11')
