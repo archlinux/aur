@@ -1,0 +1,25 @@
+pkgbase = cepces
+	pkgdesc = certmonger plugin to enroll certificates through Active Directory Certificate Services CEP and CES.
+	pkgver = 0.3.9
+	pkgrel = 1
+	url = https://github.com/openSUSE/cepces
+	arch = any
+	license = GPL-3.0
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = certmonger
+	depends = python-cryptography
+	depends = python-requests
+	depends = python-requests-gssapi
+	backup = etc/cepces/cepces.conf
+	backup = etc/cepces/logging.conf
+	source = git+https://github.com/openSUSE/cepces.git#tag=v0.3.9
+	source = 0001-Remove-insecure-enctypes.patch
+	validpgpkeys = 968479A1AFF927E37D1A566BB5690EEEBB952194
+	sha256sums = a28e198c8c851ec2453cea9f52df120441785fda1bf4cffda9d0c2ac76157ecf
+	sha256sums = a60a241a0da7ce380f5bd11cff18e8d0dacab5613a08107720f8889ae42734f2
+
+pkgname = cepces

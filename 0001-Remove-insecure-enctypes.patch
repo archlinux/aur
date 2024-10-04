@@ -1,0 +1,27 @@
+From 1d5d146c568d180107b742c04d35b5fb5d8d2689 Mon Sep 17 00:00:00 2001
+Message-ID: <1d5d146c568d180107b742c04d35b5fb5d8d2689.1728023362.git.s.brunner@stephan-brunner.net>
+From: Stephan Brunner <s.brunner@stephan-brunner.net>
+Date: Fri, 4 Oct 2024 08:29:13 +0200
+Subject: [PATCH] Remove insecure enctypes
+
+---
+ conf/cepces.conf.dist | 3 ---
+ 1 file changed, 3 deletions(-)
+
+diff --git a/conf/cepces.conf.dist b/conf/cepces.conf.dist
+index 582851f..038c10e 100644
+--- a/conf/cepces.conf.dist
++++ b/conf/cepces.conf.dist
+@@ -89,9 +89,6 @@ principals=
+ #
+ # Default: <not defined>
+ enctypes=
+-  des-cbc-crc
+-  des-cbc-md5
+-  arcfour-hmac
+   aes128-cts-hmac-sha1-96
+   aes256-cts-hmac-sha1-96
+ 
+-- 
+2.46.2
+
