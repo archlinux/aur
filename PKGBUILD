@@ -5,6 +5,7 @@ pkgver=10.1.2
 pkgrel=1
 pkgdesc="Tunnel all your traffic over websocket protocol - Bypass firewalls/DPI"
 arch=('x86_64' 'i686' 'aarch64' 'armv7h')
+options=('!lto')
 url="https://github.com/erebe/wstunnel"
 license=('BSD-3-Clause')
 provides=('wstunnel')
