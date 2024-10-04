@@ -1,4 +1,5 @@
-# Maintainer: Caleb Maclennan <caleb@alerque.com>
+# Maintainer:
+# Contributor: Caleb Maclennan <caleb@alerque.com>
 # Contributor: hollma <hollma@users.noreply.github.com>
 
 pkgname=sile-package-omikhleia-git
