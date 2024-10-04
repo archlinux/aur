@@ -7,12 +7,18 @@
 
 pkgname=gcalcli
 pkgver=4.5.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Google calendar command line interface'
 arch=('any')
 url=https://github.com/insanum/gcalcli
 license=('MIT')
-makedepends=('python-setuptools')
+makedepends=(
+    'python-build'
+    'python-installer'
+    'python-setuptools'
+    'python-setuptools-scm'
+    'python-wheel'
+)
 depends=(
     'python-argcomplete'
     'python-babel'
@@ -22,17 +28,19 @@ depends=(
     'python-google-auth-oauthlib'
     'python-httplib2'
     'python-parsedatetime'
+    'python-platformdirs'
+    'python-pydantic'
     'python-truststore'
 )
 optdepends=(
     'python-vobject: for ics/vcal importing'
 )
-source=("gcalcli-$pkgver.tar.gz::https://github.com/insanum/gcalcli/archive/v$pkgver.tar.gz")
-sha256sums=('db906fde41236a5563af58d359f5b35ba586a4ad4c6cf2646dd6ba976857c1e3')
+source=("https://pypi.io/packages/source/g/${pkgname}/${pkgname}-${pkgver}.tar.gz")
+sha256sums=('fb3b7b2f4a086581ed5141b5a0f61822ef374ea782707e736b7711ecc35a0574')
 
 build() {
-    cd "gcalcli-$pkgver"
-    python setup.py build
+    cd "${pkgname}-${pkgver}"
+    python -m build --wheel --no-isolation
 }
 
 # Disabled because it downloads deps via pip. Report this upstream (if
@@ -44,8 +52,8 @@ build() {
 # }
 
 package() {
-    cd "gcalcli-$pkgver"
-    python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+    cd "${pkgname}-${pkgver}"
+    python -m installer --destdir="${pkgdir}" dist/*.whl
     install -Dm644 docs/*.{md,png} -t "$pkgdir/usr/share/doc/$pkgname"
     install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
 }
