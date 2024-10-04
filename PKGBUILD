@@ -2,8 +2,8 @@
 
 pkgname=python-xxtea-git
 pkgver=r185.3a106bc
-pkgrel=1
-pkgdesc="A unity asset extractor based on unitypack and AssetStudio."
+pkgrel=2
+pkgdesc="Python extension module xxtea."
 arch=('x86_64')
 url="https://github.com/ifduyue/xxtea"
 license=('BSD')

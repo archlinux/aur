@@ -1,7 +1,7 @@
 pkgbase = python-xxtea-git
-        pkgdesc = A unity asset extractor based on unitypack and AssetStudio.
+        pkgdesc = Python extension module xxtea.
         pkgver = r185.3a106bc
-        pkgrel = 1
+        pkgrel = 2
         url = https://github.com/ifduyue/xxtea
         arch = x86_64
         license = BSD
