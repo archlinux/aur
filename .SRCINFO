@@ -1,0 +1,18 @@
+pkgbase = tuime
+	pkgdesc = A colorful and fun TUI clock written in Rust, with a screensaver mode
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/nthnd/tuime
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	license = GPL-3.0-only
+	makedepends = rust
+	makedepends = cargo
+	depends = glibc
+	depends = gcc-libs
+	source = https://github.com/nthnd/tuime/archive/refs/tags/v1.0.1/tuime-1.0.1.tar.gz
+	sha256sums = 98e359afd1138405ad49da1807691d87e2a5051e37c22b01cd8c928aab7bd6bc
+
+pkgname = tuime

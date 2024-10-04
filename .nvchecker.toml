@@ -1,0 +1,4 @@
+[tuime]
+source = "git"
+git = "https://github.com/nthnd/tuime.git"
+prefix = "v"
