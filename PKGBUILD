@@ -37,13 +37,14 @@ package() {
 
     cat > freakfox << EOL
 #!/bin/sh
-source /usr/share/freakfox/venv/bin/activate && exec python3 /usr/share/freakfox/browser.py
+(cd /usr/share/freakfox/ && ./browser.py)
 EOL
     install -Dm755 freakfox "$pkgdir/usr/bin/freakfox"
 
     install -Dm755 browser.py "$pkgdir/usr/share/freakfox/browser.py"
-    install -Dm755 *.png "$pkgdir/usr/share/freakfox/"
-    install -Dm755 *.jpg "$pkgdir/usr/share/freakfox/"
+    install -Dm644 *.png "$pkgdir/usr/share/freakfox/"
+    install -Dm644 *.jpg "$pkgdir/usr/share/freakfox/"
+    install -Dm644 *.mp3 "$pkgdir/usr/share/freakfox/"
     install -Dm644 index.html "$pkgdir/usr/share/freakfox/index.html"
     install -Dm644 style.css "$pkgdir/usr/share/freakfox/style.css"
     install -Dm644 balance.txt "$pkgdir/usr/share/freakfox/balance.txt"
