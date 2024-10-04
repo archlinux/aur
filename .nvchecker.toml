@@ -1,0 +1,4 @@
+[diffnav]
+source = "git"
+git = "https://github.com/dlvhdr/diffnav.git"
+prefix = "v"
