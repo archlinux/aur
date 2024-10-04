@@ -2,7 +2,7 @@
 # Maintainer: Wu Zhenyu <wuzhenyu@ustc.edu>
 # Updated by https://github.com/neomutt/mutt-language-server/blob/main/.github/workflows/main.yml
 pkgname=mutt-language-server
-pkgver=0.0.11
+pkgver=0.0.12
 pkgrel=1
 pkgdesc="mutt/neomutt's language server"
 arch=(any)
@@ -17,7 +17,7 @@ makedepends=(python-installer)
 license=(GPL3)
 _py=py3
 source=("https://files.pythonhosted.org/packages/$_py/${pkgname::1}/${pkgname//-/_}/${pkgname//-/_}-$pkgver-$_py-none-any.whl")
-sha256sums=('c947943c46f95fff1e6d9836857568c24e95e9b52287620affabf61f6fcd8585')
+sha256sums=('20bcb7073cd8d4b3f5c61a09e2c5b77a3667437167db45577690ae58a8489227')
 
 package() {
 	python -m installer -d "$pkgdir" ./*.whl
