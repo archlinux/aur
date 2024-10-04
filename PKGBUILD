@@ -21,7 +21,7 @@ _clangbuild=
 
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 pkgbase=linux-ck
-pkgver=6.11.1
+pkgver=6.11.2
 _upstream=arch1
 pkgrel=1
 arch=(x86_64)
@@ -49,7 +49,7 @@ options=(
 _ckhrtimer=linux-6.11.y
 _commit=7bdeefd29a299f812f1d14ef7ef46bdb32ed5b6d
 
-_gcc_more_v=20240922
+_gcc_more_v=20241001
 source=(
   "https://www.kernel.org/pub/linux/kernel/v6.x/linux-$pkgver.tar".{xz,sign}
   config  # the main kernel config file
@@ -61,11 +61,11 @@ validpgpkeys=(
   ABAF11C65A2970B130ABE3C479BE3E4300411886  # Linus Torvalds
   647F28654894E3BD457199BE38DBBDC86092693E  # Greg Kroah-Hartman
 )
-sha256sums=('2a372373b4e1eaf55f2a2f104bfa91477ec9b263acf8f3aed08f4d8bdc78ee3d'
+sha256sums=('ec9ef7a0b9cebb55940e1ef87a1f9e1004b10456a119dc386bb3e565b0d39c42'
             'SKIP'
-            'ef46abf8e2a0dfff3a63a911cb4819d7c8e276c78094afc37518e4b3d9c841d0'
-            'cb4acbf6c7f0ef00e335929d90ea2acadead0266d9f769c15976ee74c5c8828d'
-            '5846616133bea55bef2f01541b84f3e8c3ef3ae20a5c973f625b7643c86bb47e'
+            '6be68246a4abf8c4a71b94f315076b482bf6e99447d4c67a24f8e8b4aadda0eb'
+            '86e2959cac748ff503f33e40d5994acc3eb5008b9ff9ca2a7e2d264c107a4b24'
+            '3c0a38110cc21dca6b6efec03ce82ed24f473da190354cf740b5ecd6f6589aa7'
             'afa9bf94d6820c86041c7d55c25b04fe7f1aec86adbe45cb282d285901e827b3')
 
 prepare() {
