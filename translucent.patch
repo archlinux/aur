@@ -38,13 +38,13 @@ diff -Naur a/src/vs/platform/windows/electron-main/windows.ts b/src/vs/platform/
  		minWidth: WindowMinimumSize.WIDTH,
  		minHeight: WindowMinimumSize.HEIGHT,
 diff -Naur a/src/vs/workbench/common/theme.ts b/src/vs/workbench/common/theme.ts
---- a/src/vs/workbench/common/theme.ts	2022-09-01 00:05:32.000000000 +0200
-+++ b/src/vs/workbench/common/theme.ts	2022-09-03 22:50:19.628326135 +0200
+--- a/src/vs/workbench/common/theme.ts	2024-10-02 05:59:58.000000000 +0200
++++ b/src/vs/workbench/common/theme.ts	2024-10-04 18:41:24.005864953 +0200
 @@ -7,21 +7,11 @@
- import { registerColor, editorBackground, contrastBorder, transparent, editorWidgetBackground, textLinkForeground, lighten, darken, focusBorder, activeContrastBorder, editorWidgetForeground, editorErrorForeground, editorWarningForeground, editorInfoForeground, treeIndentGuidesStroke, errorForeground, listActiveSelectionBackground, listActiveSelectionForeground, editorForeground, toolbarHoverBackground } from 'vs/platform/theme/common/colorRegistry';
- import { IColorTheme } from 'vs/platform/theme/common/themeService';
- import { Color } from 'vs/base/common/color';
--import { ColorScheme } from 'vs/platform/theme/common/theme';
+ import { registerColor, editorBackground, contrastBorder, transparent, editorWidgetBackground, textLinkForeground, lighten, darken, focusBorder, activeContrastBorder, editorWidgetForeground, editorErrorForeground, editorWarningForeground, editorInfoForeground, treeIndentGuidesStroke, errorForeground, listActiveSelectionBackground, listActiveSelectionForeground, editorForeground, toolbarHoverBackground, inputBorder, widgetBorder, scrollbarShadow } from '../../platform/theme/common/colorRegistry.js';
+ import { IColorTheme } from '../../platform/theme/common/themeService.js';
+ import { Color } from '../../base/common/color.js';
+-import { ColorScheme } from '../../platform/theme/common/theme.js';
  
  // < --- Workbench (not customizable) --- >
  
@@ -63,9 +63,9 @@ diff -Naur a/src/vs/workbench/common/theme.ts b/src/vs/workbench/common/theme.ts
  }
  
  // < --- Tabs --- >
-@@ -855,6 +845,13 @@
- 	hcLight: editorInfoForeground
- }, localize('notificationsInfoIconForeground', "The color used for the icon of info notifications. Notifications slide in from the bottom right of the window."));
+@@ -780,6 +770,13 @@
+ 
+ export const NOTIFICATIONS_INFO_ICON_FOREGROUND = registerColor('notificationsInfoIcon.foreground', editorInfoForeground, localize('notificationsInfoIconForeground', "The color used for the icon of info notifications. Notifications slide in from the bottom right of the window."));
  
 +export const WINDOW_BACKGROUND = registerColor('window.background', {
 +	dark: '#252526',

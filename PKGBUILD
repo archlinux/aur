@@ -1,7 +1,7 @@
 # Maintainer: David Čuček <observ33r@gmail.com>
 
 pkgname="code-translucent"
-pkgver=1.93.1
+pkgver=1.94.0
 pkgrel=1
 pkgdesc="The Open Source build of Visual Studio Code (vscode) editor with translucent window, official marketplace, unblocked proprietary features and wayland support!"
 
@@ -56,8 +56,8 @@ source=(
 sha512sums=(
 	"SKIP"
 	"9de3f195e711814e1e457e8ccb6383c6000bc83ee707f2bc138fe66c3cf6c35a6e9c755594afb5fbf8c4f05c3c87f7f3b8714e7947b62094ead6f5f1b81f5b24"
-	"d0d292b0b89675c2c7d892069cceb15183f2404a1c9090ce78a620bd6cd40f14f9fa315070694a7c341be87832384532fa6e299895cbd94fdb5d09ab1f263ae2"
-	"2f72c08085d801758061c5b22957ae8ee927440a4ef444ef0a888f9dad9fc71e19f0432c5355e1936d0bd3fd90b1b0bbc3130c94a8841a8c1c1a89adaee47b1f"
+	"9281b112e15ae728634ad27a5da43d90f5d24227746c225fd27d6bf9f3abffcdaedacc3b413bf53f3a8cfc095d3323df1f24f45d670e0f9ac10f3b802e28b882"
+	"3b556f3b8fcf7be5fe70ce4b565d086338ba3e261a4d3ac9bef0d3d2bd04b3c38374cbd3ce74072e0a845ddbab41206c75fb2ddc9e4263b91fc68ac82edc5046"
 	"6234842d41d9cb6cdd27766e35804644c59a39b43a92f2243b18525dc69d954d1e9dcd4297538de3dfd26051c7035d1ebb04f849a69208afa8214e42160c18dd"
 )
 
@@ -120,7 +120,7 @@ build() {
 
 	cd "${srcdir}/${pkgname}"
 
-	yarn install --arch="${_vscode_arch}"
+	npm install --arch="${_vscode_arch}"
 
 	gulp --max_old_space_size=8192 vscode-linux-"${_vscode_arch}"-min
 
