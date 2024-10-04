@@ -1,0 +1,16 @@
+pkgbase = freakfox
+	pkgdesc = Mega Freaky web browser
+	pkgver = 1.0
+	pkgrel = 1
+	url = http://spatula.net/software/sex/
+	arch = any
+	license = freakyGPL
+	depends = python
+	depends = python-pip
+	depends = python-pyqt5
+	depends = python-pyqt5-webengine
+	depends = python-pygame
+	source = git+https://github.com/1-K-SSPS/freakfox.git
+	md5sums = SKIP
+
+pkgname = freakfox
