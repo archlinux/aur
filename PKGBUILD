@@ -20,7 +20,7 @@ source=("git+https://github.com/1-K-SSPS/freakfox.git")
 md5sums=(SKIP)
 
 prepare() {
-    cd "$srcdir/$pkgname/src"
+    cd "$srcdir/$_pkgname/src"
     cat > freakfox.desktop << EOL
 [Desktop Entry]
 Name=Freakfox
@@ -33,7 +33,8 @@ EOL
 }
 
 package() {
-    cd "$srcdir/$pkgname"
+    cd "$srcdir/$_pkgname/src"
+
     cat > freakfox << EOL
 #!/bin/sh
 source /usr/share/freakfox/venv/bin/activate && exec python3 /usr/share/freakfox/browser.py
