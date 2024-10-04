@@ -2,20 +2,20 @@
 # Maintainer: Jonas Lähnemann <jonas at pdi-berlin dot de>
 pkgname=python-diffpy.structure
 pkgshort=diffpy.structure
-pkgver=3.2.1
+pkgver=3.2.2rc0
 pkgrel=1
 pkgdesc="Storage and manipulation of crystal structure data in python"
 arch=('any')
 url="https://www.diffpy.org/diffpy.structure/"
 license=('BSD-3-Clause')
 
-depends=('python'
-         'python-six'
-         'python-pycifrw>=4.4.3'
+depends=('python>=3.10'
+         'python-numpy'
+         'python-pycifrw'
          )
 
-makedepends=('python-setuptools'
-             'python-setuptools-git-versioning<2'
+makedepends=('python-setuptools>=62.0'
+             'python-setuptools-git-versioning>=2.0'
              )
 
 provides=('diffpy.structure')
@@ -33,4 +33,4 @@ package() {
   python -m installer --destdir="$pkgdir" dist/*.whl
 }
 
-md5sums=('9dfbd923fb4f80a894421ced7ba1c8eb')
+md5sums=('d077b74f2fbaea96b33ff4df17fa0dff')
