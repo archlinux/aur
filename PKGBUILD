@@ -2,7 +2,7 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=qpdf
-_pkgver=1.3.3
+_pkgver=1.3.4
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -23,8 +23,8 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('befda010dc47d87b6e988db7d6941768')
-b2sums=('9ead90e9319b76f36815730c0d1cb3a80d0f8bab8541cb4be121b32fa730226cd94d10f45964654b11abbe8051fa1b3b0b0d4c2b75578eb7a89d73a3ccc8500f')
+md5sums=('373ae41bd1e14c0efc45f6cb273ea459')
+b2sums=('8c2f0036fb0f9c7ca3a9ce31c6c3725a20e750e58cf9942bd20f2579597cc4a45fb30d484ade57050b4c8189c84e6cf02800a4d2a41372a994bab0d8dc53a4c0')
 
 build() {
   mkdir build
