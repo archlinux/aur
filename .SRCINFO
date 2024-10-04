@@ -1,0 +1,15 @@
+pkgbase = python-fclist-cffi
+	pkgdesc = Python cffi bridge to fontconfig's FcFontList/FcFontMatch
+	pkgver = 1.1.2
+	pkgrel = 1
+	url = https://github.com/MonsieurV/python-fclist
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	depends = python-cffi
+	source = https://files.pythonhosted.org/packages/source/f/fclist-cffi/fclist-cffi-1.1.2.tar.gz
+	sha256sums = 1bb3c039156b8b1913b9e582d4a8f1a48b3d8ea56e5152d604c020874a7e779a
+
+pkgname = python-fclist-cffi
