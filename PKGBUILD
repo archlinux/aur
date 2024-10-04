@@ -5,7 +5,7 @@ pkgname=freakfox-git
 pkgver=1.0
 pkgrel=1
 pkgdesc="Mega Freaky web browser"
-url="http://spatula.net/software/sex/"
+url="https://github.com/1-K-SSPS/freakfox"
 license=('freakyGPL')
 depends=(python
     python-pip
