@@ -1,6 +1,6 @@
 # Maintainer: Stephan Raabe <mail@ml4w.com>
 pkgname='ml4w-hyprland-git'
-pkgver=2.9.6.1.r7.g2fe8082
+pkgver=2.9.6.1.r20.gb5d1dd7
 pkgrel=1
 pkgdesc="The ML4W Dotfiles for Hyprland - An advanced and full-featured configuration for the dynamic tiling window manager Hyprland including an easy to use installation script for Arch based Linux distributions. "
 arch=(any)
@@ -45,7 +45,6 @@ depends=(
     "gvfs"
     "xdg-user-dirs"
     "xclip"
-    "oh-my-posh"
     "aylurs-gtk-shell"
     # Apps
     "wlogout"
@@ -87,19 +86,7 @@ depends=(
     # Screenshot
     "grim" 
     "slurp"
-    "grimblast"
-)
-
-optdepends=(
-    "firefox: Browser"
-    "pacseek: Package Manager"
-    "flatpak: Flatpak support"
-    "gnome-calculator: Calculator"
-    "smile: Emoji Selector"
-    "breeze: Breeze Theme"
-    "breeze-icons: Breeze Icons"
-    "mpv: Media Player" 
-    "mission-center: System Monitor"
+    "grimblast-git"
 )
 
 conflicts=('ml4w-hyprland')
