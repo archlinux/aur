@@ -1,0 +1,19 @@
+pkgbase = python-ligotimegps-git
+	pkgdesc = Pure-python implementation of lal.LIGOTimeGPS
+	pkgver = 2.0.1.r19.g7359fc7
+	pkgrel = 1
+	url = https://github.com/gwpy/ligotimegps
+	arch = any
+	license = GPLv3
+	makedepends = python-wheel
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-setuptools-scm
+	depends = python
+	provides = python-ligotimegps
+	conflicts = python-ligotimegps
+	source = ligotimegps::git+https://github.com/gwpy/ligotimegps
+	sha256sums = SKIP
+
+pkgname = python-ligotimegps-git
