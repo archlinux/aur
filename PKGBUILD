@@ -1,7 +1,7 @@
-# Maintainer: Your Name <your.email@example.com>
+# Packager: teraflops cprieto.ortiz@gmail.com
 
 pkgname=gnome-monitor-config-git
-pkgver=1.0.r0.gabcdef
+pkgver=04b854e
 pkgrel=1
 pkgdesc="GNOME monitor configuration utility"
 arch=('x86_64')
