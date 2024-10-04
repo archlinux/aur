@@ -1,0 +1,4 @@
+*.whl
+pkg
+src
+*.pkg.tar.zst
