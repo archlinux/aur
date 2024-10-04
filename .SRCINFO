@@ -1,7 +1,7 @@
 pkgbase = python-luna-usb
 	pkgdesc = Amaranth HDL framework for monitoring, hacking, and developing USB devices
-	pkgver = 0.1.1
-	pkgrel = 2
+	pkgver = 0.1.2
+	pkgrel = 1
 	url = https://github.com/greatscottgadgets/luna
 	arch = any
 	license = BSD-3-Clause
@@ -24,7 +24,7 @@ pkgbase = python-luna-usb
 	optdepends = python-libusb1: to use the bulk_speed_test applet
 	optdepends = python-luna-boards: connect to Luna boards
 	optdepends = python-prompt_toolkit: to use the included applets
-	source = luna-0.1.1.tar.gz::https://github.com/greatscottgadgets/luna/archive/0.1.1.tar.gz
-	sha512sums = 09e8df0f62ddcfbcf41cee48255f5c5c18e732f9011e0dacaef48cc80c6223f45092eaafe348632661f79a6033818d2af7fded8ef9b46cbd673af5579d708009
+	source = luna-0.1.2.tar.gz::https://github.com/greatscottgadgets/luna/archive/0.1.2.tar.gz
+	sha512sums = 2ba9721b0df191b7092ea163fef67c3ad0b96d28ab8c4d60a31bec2a0436978b32e5d2c8660430b24c96e47f2f92d6be6419807fb872e26b57d44f9eba09988a
 
 pkgname = python-luna-usb
