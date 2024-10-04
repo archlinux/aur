@@ -1,10 +1,13 @@
 pkgbase = coolprop-git
 	pkgdesc = CoolProp shared library and headers; the open-source thermodynamic and transport properties database
-	pkgver = 6.4.2dev
-	pkgrel = 2
+	pkgver = 6.6.1dev
+	pkgrel = 1
 	url = https://github.com/CoolProp/CoolProp
 	arch = x86_64
 	license = MIT
+	makedepends = git
+	makedepends = cmake
+	makedepends = python
 	source = coolprop::git+https://github.com/CoolProp/CoolProp.git
 	md5sums = SKIP
 
