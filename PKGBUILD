@@ -2,22 +2,37 @@
 
 _pyname=xgboost
 pkgname=python-$_pyname
-pkgver=2.1.0
+pkgver=2.1.1
 pkgrel=1
 pkgdesc="Gradient Boosting Library for Python"
 arch=(x86_64 aarch64)
 url="https://xgboost.ai"
 license=(Apache-2.0)
-depends=(python-scikit-learn python-pandas python-matplotlib python-pyarrow
-         python-graphviz python-dask)
-makedepends=(python-build python-installer python-wheel python-hatchling
-             python-setuptools cmake ninja git)
+depends=(
+  python-scikit-learn
+  python-pandas
+  python-matplotlib
+  python-pyarrow
+  python-graphviz
+  python-dask
+  python-hypothesis
+)
+makedepends=(
+  python-build
+  python-installer
+  python-wheel
+  python-hatchling
+  python-setuptools
+  cmake
+  ninja
+  git
+)
 optdepends=('apache-spark: Distributed XGBoost with PySpark' 'python-pytest')
 provides=(python-$_pyname)
 conflicts=(python-$_pyname-git)
 source=($_pyname-$pkgver.tar.gz::https://github.com/dmlc/xgboost/archive/refs/tags/v$pkgver.tar.gz
         git+https://github.com/dmlc/dmlc-core.git)
-sha256sums=('380c66ac3611a9cc867d4f51aaa95bb8946f75a84e5a3f0a3f37b89a072e6f93'
+sha256sums=('3204cc5cc3cf421c42d310cd5ef7711bf8fe7e11c34641e1f042625566a421b2'
             'SKIP')
 
 prepare() {
@@ -43,7 +58,8 @@ build() {
   cmake --build build
 
   cd $_pyname-$pkgver/python-package
-  python -m build \
+  python \
+    -m build \
     --wheel \
     --no-isolation \
     --skip-dependency-check
@@ -51,7 +67,8 @@ build() {
 
 package() {
   cd "$srcdir/$_pyname-$pkgver/python-package"
-  python -m installer dist/*.whl \
+  python \
+    -m installer dist/*.whl \
     --destdir="$pkgdir" \
     --compile-bytecode=2
 }
