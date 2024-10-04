@@ -1,6 +1,6 @@
 # Maintainer: Mark Collins <tera_1225 [aaht] hotmail ðot com>
 pkgname=noseyparker
-pkgver=0.19.0
+pkgver=0.20.0
 pkgrel=1
 pkgdesc="find secrets and sensitive information in textual data and Git history"
 arch=('x86_64')
@@ -17,7 +17,7 @@ makedepends=(
   'pkgconfig' # This is a vectorscan dep
 )
 source=("${pkgname}-${pkgver}::${url}/archive/refs/tags/v${pkgver}.zip")
-sha256sums=('a8234cb9dfcaa5ee4c01cad8593f2a66e9887006d88103f7f13d9a42da64a56d')
+sha256sums=('4f24d2aef1267d3ba8b4b44a572991ba3fe1f79dc5723c5af022cedfb2fb7730')
 options=(!lto) # Vectorscan build fails with LTO
 build() {
 	cd "$srcdir/${pkgname}-${pkgver}"
