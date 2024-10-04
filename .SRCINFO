@@ -1,0 +1,16 @@
+pkgbase = python-gwdatafind
+	pkgdesc = The client library for the GWDataFind service
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://git.ligo.org/computing/gwdatafind/client
+	arch = any
+	license = GPLv3
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	makedepends = python-build
+	makedepends = python-installer
+	depends = python
+	source = client-1.2.0.tar.gz::https://git.ligo.org/computing/gwdatafind/client/-/archive/1.2.0/client-1.2.0.tar.gz
+	sha256sums = 025307223131ed447139a4d12a6e5f6a3ebe4ae5ed516a706ee2015e88bd7ffe
+
+pkgname = python-gwdatafind
