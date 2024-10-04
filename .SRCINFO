@@ -1,0 +1,16 @@
+pkgbase = arrow-c-glib
+	pkgdesc = Apache Arrow GLib is a wrapper library for Apache Arrow C++. Apache Arrow GLib provides C API.
+	pkgver = 17.0.0
+	pkgrel = 1
+	arch = x86_64
+	license = Apache License 2.0
+	makedepends = git
+	makedepends = cmake
+	makedepends = meson
+	depends = arrow
+	depends = glib2
+	depends = gobject-introspection
+	source = https://github.com/apache/arrow/archive/refs/tags/apache-arrow-17.0.0.zip
+	md5sums = 21a584f2f80fb54b39dc9ed4c0ffa956
+
+pkgname = arrow-c-glib
