@@ -1,8 +1,8 @@
 # Maintainer: Jose Maria Garcia <josemaria.alkala@gmail.com>
 _name="coolprop"
 pkgname="$_name"-git
-pkgver=6.4.2dev
-pkgrel=2
+pkgver=6.6.1dev
+pkgrel=1
 # epoch=
 pkgdesc="CoolProp shared library and headers; the open-source thermodynamic and transport properties database"
 arch=('x86_64')
@@ -46,16 +46,17 @@ check() {
 package() {
   cd "$_name"
 
-  install -Dm755 build/libCoolProp.so.6.4.2dev ${pkgdir}/usr/lib/libCoolProp.so.6.4.2dev
+  install -Dm755 build/libCoolProp.so.${pkgver} ${pkgdir}/usr/lib/libCoolProp.so.${pkgver}
 
   # headers
-  install -d ${pkgdir}/usr/include/CoolProp/fmt  # Create the folder
+  install -d ${pkgdir}/usr/include/CoolProp/fmt/  # Create the folder
+
   install -Dm644 include/*.h ${pkgdir}/usr/include/CoolProp
-  install -Dm644 externals/fmtlib/fmt/*.h ${pkgdir}/usr/include/CoolProp/fmt
-  install -Dm644 externals/fmtlib/fmt/*.cc ${pkgdir}/usr/include/CoolProp/fmt
+  install -Dm644 externals/fmtlib/include/fmt/*.h ${pkgdir}/usr/include/CoolProp/fmt
+  install -Dm644 externals/fmtlib/src/*.cc ${pkgdir}/usr/include/CoolProp/fmt
 
 
   cd ${pkgdir}/usr/lib/
-  ln -s libCoolProp.so.6.4.2dev libCoolProp.so.6
-  ln -s libCoolProp.so.6.4.2dev libCoolProp.so  
+  ln -s libCoolProp.so.${pkgver} libCoolProp.so.6
+  ln -s libCoolProp.so.${pkgver} libCoolProp.so  
 }
