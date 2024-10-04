@@ -2,7 +2,7 @@
 # Maintainer: Wu Zhenyu <wuzhenyu@ustc.edu>
 # Updated by https://github.com/termux/termux-language-server/blob/main/.github/workflows/main.yml
 pkgname=termux-language-server
-pkgver=0.0.25
+pkgver=0.0.26
 pkgrel=1
 pkgdesc="Language server for build.sh, PKGBUILD, ebuild"
 arch=(any)
@@ -16,7 +16,7 @@ makedepends=(python-installer)
 license=(GPL3)
 _py=py3
 source=("https://files.pythonhosted.org/packages/$_py/${pkgname::1}/${pkgname//-/_}/${pkgname//-/_}-$pkgver-$_py-none-any.whl")
-sha256sums=('053c89147ee9daa64d6f42803e61646176c724ed6fbd383a18487d5b85c5762e')
+sha256sums=('ac2d4d274341b79edff4815baba857b129431bbd7702d34a474ca4b2bbaf8e7e')
 
 package() {
 	python -m installer -d "$pkgdir" ./*.whl
