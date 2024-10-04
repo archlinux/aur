@@ -1,7 +1,7 @@
 # Maintainer: Atle Solbakken <atle@goliathdns.no>
 
 pkgname=ngtcp2-git
-pkgver=r3286.fc6dd8aa
+pkgver=r4927.8ae7650c
 pkgrel=1
 pkgdesc="An effort to implement IETF QUIC protocol"
 arch=('x86_64')
@@ -12,9 +12,15 @@ optdepends=('quictls-openssl')
 makedepends=('git')
 checkdepends=('cunit')
 provides=('ngtcp2' 'libngtcp2.so')
-conflicts=('ngtcp2')
+conflicts=('ngtcp2' 'libngtcp2' 'libngtcp2-git')
 source=('git+https://github.com/ngtcp2/ngtcp2')
 md5sums=('SKIP')
+
+prepare() {
+	cd ngtcp2
+
+	git submodule update --init --depth 1
+}
 
 pkgver() {
 	cd ngtcp2
