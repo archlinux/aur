@@ -5,9 +5,13 @@ After=network-online.target
 
 [Service]
 Restart=on-failure
+DynamicUser=yes
+StateDirectory=derper
+WorkingDirectory=/var/lib/derper
 EnvironmentFile=-/etc/conf.d/derper
+ExecStartPre=/usr/bin/sh /etc/derper/openssl-cert-gen.sh
 ExecStart=/usr/bin/derper $DERPER_ARGS
-ExecReload=/bin/kill -HUP $MAINPID
+ExecReload=/usr/bin/kill -HUP $MAINPID
 LimitNOFILE=65535
 NoNewPrivileges=true
 ProtectHome=true
