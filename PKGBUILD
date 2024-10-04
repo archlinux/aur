@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=base64
-_pkgver=2.0.1
+_pkgver=2.0.2
 pkgname=r-${_pkgname,,}
-pkgver=2.0.1
+pkgver=2.0.2
 pkgrel=1
 pkgdesc='Base64 Encoder and Decoder'
 arch=('any')
@@ -14,7 +14,7 @@ depends=(
   r-openssl
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('4d22687c0195c2049e0af2c613b1ebcb908037010ad6e550bf47d69e842535f1')
+sha256sums=('b1e87be296145efd887c8272996111d1b190c88485348420f358a847ad470e0c')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
