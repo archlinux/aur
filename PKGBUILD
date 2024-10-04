@@ -1,12 +1,15 @@
 # Maintainer: Ruiqi Niu <rniu5 at jh dot edu>
 
 pkgname=netgen-cgx
-pkgver=6.2.2404
+pkgver=6.2.2405
 pkgrel=1
 pkgdesc='`ng_vol` utility enabling Calculix CGX to mesh with Netgen.'
 url=https://github.com/NGSolve/netgen
 license=('LGPL2.1')
 arch=('i686' 'x86_64')
+depends=(
+	'opencascade'
+)
 makedepends=(
 	'cmake'
 	'gcc'
@@ -17,19 +20,15 @@ options=(
 )
 source=(
 	"https://codeload.github.com/NGSolve/netgen/tar.gz/refs/tags/v$pkgver"
-	'fix-building-without-python.patch'
 	'ng_vol.cpp'
 )
 md5sums=(
-	'0d1dd5b8858e35ed2564ec86703ff602'
-	'c5602654983f6874e49d80e0fbdbd01f'
+	'6c5cdd4d8796b54bfe680c96f66dc4d4'
 	'b7ffcdefaaa0c0b92937e8652a9c2351'
 )
 
 prepare() {
 	cd $srcdir/netgen-$pkgver
-
-	patch -p1 < $srcdir/fix-building-without-python.patch
 }
 
 build() {
