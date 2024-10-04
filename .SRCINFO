@@ -6,6 +6,7 @@ pkgbase = python-orix
 	arch = any
 	license = GPL3
 	makedepends = python-setuptools
+	makedepends = python-hatchling
 	depends = python
 	depends = python-dask
 	depends = python-diffpy.structure>=3.0.2

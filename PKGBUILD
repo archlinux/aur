@@ -23,7 +23,9 @@ depends=('python'
 	 'python-tqdm'
          )
 
-makedepends=('python-setuptools' )
+makedepends=('python-setuptools'
+             'python-hatchling'
+             )
 
 provides=('orix')
 
