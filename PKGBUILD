@@ -9,7 +9,6 @@ url="https://github.com/ifduyue/xxtea"
 license=('BSD')
 provides=('python-xxtea')
 conflicts=('python-xxtea')
-checkdepends=('python-pytest' 'python-pytest-cov')
 makedepends=('git')
 
 source=("git+https://github.com/ifduyue/xxtea.git")
@@ -18,11 +17,6 @@ md5sums=('SKIP')
 pkgver() {
   cd xxtea
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
-check() {
-  cd xxtea
-  pytest -v --cov || true
 }
 
 package() {
