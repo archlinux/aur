@@ -2,7 +2,7 @@
 
 pkgname=python-cynthion
 _gitpkgname=cynthion
-pkgver=0.1.3
+pkgver=0.1.6
 pkgrel=1
 pkgdesc='Python package and utilities for the Great Scott Gadgets Cynthion USB Test Instrument'
 arch=('any')
@@ -41,7 +41,7 @@ source=(
   "${_gitpkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz"
 )
 
-sha512sums=('3637994b29ae9e21364ff785e2a5646799289fd0634a8914c3f8f58c2eec2c85d0e0fbb6f2bd955f39dc04326f4c29a3d4e476b37f05da0d796fcfd743222fef')
+sha512sums=('a9e892674ce2e5fb2c13c349b97f26bdcf06e5981dedb082b6aedc1e4548fc904e89be95a8c948ef5cb8e85c3de36a0d45f7e1560d5126e8be72de8a1aa28a74')
 
 prepare() {
   cd "${_gitpkgname}-${pkgver}"
