@@ -1,6 +1,6 @@
 # Maintainer: Cobra <najahannah [at] gmail [dot] com>
 pkgname=portfolio
-pkgver=0.71.0
+pkgver=0.71.2
 pkgrel=1
 pkgdesc="Track your portfolio performance (finance)"
 arch=('i686' 'x86_64')
@@ -18,7 +18,7 @@ _mvnver=3.9.9
 
 source=("https://github.com/buchen/portfolio/archive/$pkgver.tar.gz"
         "https://dlcdn.apache.org/maven/maven-3/$_mvnver/binaries/apache-maven-$_mvnver-bin.tar.gz")
-sha1sums=('20c95241ba5155534ec83a60ca64a98873b228e5'
+sha1sums=('944279aa9a7d4b254422240bc2e64bacc6c838dc'
           'ab87467cfef9d9cb422c56ecdc4b20e368a71793')
 
 prepare() {
