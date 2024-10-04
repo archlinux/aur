@@ -4,7 +4,7 @@
 # Thanks to https://aur.archlinux.org/packages/factorio/ for authentication code
 
 pkgname=fmodengine
-pkgver=2.02.23
+pkgver=2.02.24
 pkgrel=1
 pkgdesc="FMOD Engine API and tools"
 arch=('x86_64')
@@ -91,14 +91,12 @@ package() {
     chmod +x ${pkgdir}/opt/fmodengine/bin/fsbank_gui
     
     install -d "${pkgdir}/usr/bin"
-    ln -s /opt/fmodengine/bin/fmodprofiler "${pkgdir}/usr/bin/fmodprofiler"
-    ln -s /opt/fmodengine/bin/fsbank "${pkgdir}/usr/bin/fsbank"
-    ln -s /opt/fmodengine/bin/fsbank_gui "${pkgdir}/usr/bin/fsbank_gui"
+    ln -sf /opt/fmodengine/bin/fmodprofiler "${pkgdir}/usr/bin/fmodprofiler"
+    ln -sf /opt/fmodengine/bin/fsbank "${pkgdir}/usr/bin/fsbank"
+    ln -sf /opt/fmodengine/bin/fsbank_gui "${pkgdir}/usr/bin/fsbank_gui"
 
     install -d "${pkgdir}/usr/lib/$pkgname"
-    mv "${pkgdir}/opt/fmodengine/api/core/lib/${arch}"/*.so "${pkgdir}/usr/lib/$pkgname"
-    mv "${pkgdir}/opt/fmodengine/api/fsbank/lib/${arch}"/*.so "${pkgdir}/usr/lib/$pkgname"  
-    mv "${pkgdir}/opt/fmodengine/api/studio/lib/${arch}"/*.so "${pkgdir}/usr/lib/$pkgname"
-
-    install -Dm644 "${pkgdir}/opt/fmodengine/doc/LICENSE.TXT" "$pkgdir/usr/share/licenses/$pkgname/LICENSE.TXT"
+    cp "${pkgdir}/opt/fmodengine/api/core/lib/${arch}"/*.so "${pkgdir}/usr/lib/$pkgname"
+    cp "${pkgdir}/opt/fmodengine/api/fsbank/lib/${arch}"/*.so "${pkgdir}/usr/lib/$pkgname"  
+    cp "${pkgdir}/opt/fmodengine/api/studio/lib/${arch}"/*.so "${pkgdir}/usr/lib/$pkgname"
 }
