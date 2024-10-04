@@ -1,0 +1,19 @@
+pkgbase = python-dqsegdb2
+	pkgdesc = Simplified DQSEGDB API interface
+	pkgver = 1.2.1
+	pkgrel = 1
+	url = https://git.ligo.org/computing/software/dqsegdb2
+	arch = any
+	license = GPLv3
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	makedepends = python-setuptools-scm
+	makedepends = python-build
+	makedepends = python-installer
+	depends = python-click
+	depends = python-igwn-auth-utils
+	depends = python-ligo-segments
+	source = dqsegdb2-1.2.1.tar.gz::https://git.ligo.org/computing/software/dqsegdb2/-/archive/1.2.1/dqsegdb2-1.2.1.tar.gz
+	sha256sums = bb72442abdf8df6daa719f17820639b6126c296b40c6b3936567756a6ac70a40
+
+pkgname = python-dqsegdb2
