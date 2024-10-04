@@ -1,0 +1,16 @@
+pkgbase = tkdnd2-git
+        pkgdesc = About Tkinter native drag and drop support.
+        pkgver = r46.9a55907
+        pkgrel = 1
+        url = https://github.com/Eliav2/tkinterdnd2
+        arch = x86_64
+        license = MIT
+        checkdepends = python-pytest
+        checkdepends = python-pytest-cov
+        makedepends = git
+        depends = tk
+        conflicts = tkdnd2
+        source = git+https://github.com/Eliav2/tkinterdnd2.git
+        md5sums = SKIP
+
+pkgname = tkdnd2-git
