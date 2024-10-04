@@ -7,8 +7,8 @@ post_install() {
   echo "     reboot"
   # Add logic to avoid interposing with sqlite library if it already exists
   for lib in /usr/lib/nordvpn/*.so ; do
-    if [ -f "$lib" ] ; then
-      if [ ! -f /usr/lib/$(echo $lib | cut -d '/' -f 5) ] ; then
+    if [[ -f $lib ]] ; then
+      if [[ ! -f "/usr/lib/$(printf '%s' $lib | cut -d '/' -f 5)" ]] ; then
         ln -s $lib /usr/lib/
       fi
     fi
@@ -18,11 +18,11 @@ post_install() {
 post_upgrade() {
   # Add logic to avoid interposing with sqlite library if it already exists
   for lib in /usr/lib/nordvpn/*.so ; do
-    if [ -f "$lib" ] ; then
-      if [ $(readlink -- "/usr/lib/$(echo $lib | cut -d '/' -f 5)") = "$lib" ] ; then
-        ln -sf $lib /usr/lib/
+    if [[ -f $lib ]] ; then
+      if [[ $(readlink -- /usr/lib/$(printf '%s' $lib | cut -d '/' -f 5)) == $lib ]] ; then
+        unlink /usr/lib/$(printf '%s' $lib | cut -d '/' -f 5)
       fi
-      if [ ! -f /usr/lib/$(echo $lib | cut -d '/' -f 5) ] ; then
+      if [[ ! -f "/usr/lib/$(printf '%s' $lib | cut -d '/' -f 5)" ]] ; then
         ln -s $lib /usr/lib/
       fi
     fi
@@ -43,9 +43,9 @@ pre_remove() {
   chattr -i /var/lib/nordvpn/data/*
   # Add logic to avoid interposing with sqlite library if it already exists
   for lib in /usr/lib/nordvpn/*.so ; do
-    if [ -f "$lib" ] ; then
-      if [ $(readlink -- "/usr/lib/$(echo $lib | cut -d '/' -f 5)") = "$lib" ] ; then
-        unlink /usr/lib/$(echo $lib | cut -d '/' -f 5)
+    if [[ -f $lib ]] ; then
+      if [[ $(readlink -- /usr/lib/$(printf '%s' $lib | cut -d '/' -f 5)) == $lib ]] ; then
+        unlink /usr/lib/$(printf '%s' $lib | cut -d '/' -f 5)
       fi
     fi
   done
