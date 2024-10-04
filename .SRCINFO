@@ -1,0 +1,17 @@
+pkgbase = python-gwosc
+	pkgdesc = A python interface to the Gravitational-Wave Open Data Center archive
+	pkgver = 0.7.1
+	pkgrel = 1
+	url = https://git.ligo.org/gwosc/client
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools-scm
+	depends = python
+	source = client-v0.7.1.tar.gz::https://git.ligo.org/gwosc/client/-/archive/v0.7.1/client-v0.7.1.tar.gz
+	sha256sums = d03b87c222c4f5235fb8a04d5b3841d60893b3fa400126b1b7ce0cb1e911f8c3
+
+pkgname = python-gwosc
