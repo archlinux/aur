@@ -1,7 +1,7 @@
 pkgbase = r-spam
 	pkgdesc = SPArse Matrix
-	pkgver = 2.10.0
-	pkgrel = 3
+	pkgver = 2.11.0
+	pkgrel = 1
 	url = https://cran.r-project.org/package=spam
 	arch = x86_64
 	license = LGPL-2.0-only OR BSD-3-Clause
@@ -18,8 +18,8 @@ pkgbase = r-spam
 	optdepends = r-spam64
 	optdepends = r-testthat
 	optdepends = r-truncdist
-	source = https://cran.r-project.org/src/contrib/spam_2.10-0.tar.gz
-	md5sums = 544bbc0a7ae76ef34ed01bf61c666f82
-	b2sums = 5a112675245f0937367334ad0f86330f7813ac51b8a2e0690a464bd8d925048214e55d96a0a18933daee2551a93fb8d553b6c27bbb8e25106366b799a882f384
+	source = https://cran.r-project.org/src/contrib/spam_2.11-0.tar.gz
+	md5sums = daf8e9195dd34a2f0922a4b607575dde
+	b2sums = 116e9991c563de6893c514041108817bec0ecd15c03ab67fb95360f120692e75deace4da90611f355485ed0e5988ab0039e63a94a246123995db92862d7ba2de
 
 pkgname = r-spam

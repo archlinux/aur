@@ -4,10 +4,10 @@
 # Contributor: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
 
 _pkgname=spam
-_pkgver=2.10-0
+_pkgver=2.11-0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=3
+pkgrel=1
 pkgdesc="SPArse Matrix"
 arch=(x86_64)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -34,8 +34,8 @@ optdepends=(
   r-truncdist
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('544bbc0a7ae76ef34ed01bf61c666f82')
-b2sums=('5a112675245f0937367334ad0f86330f7813ac51b8a2e0690a464bd8d925048214e55d96a0a18933daee2551a93fb8d553b6c27bbb8e25106366b799a882f384')
+md5sums=('daf8e9195dd34a2f0922a4b607575dde')
+b2sums=('116e9991c563de6893c514041108817bec0ecd15c03ab67fb95360f120692e75deace4da90611f355485ed0e5988ab0039e63a94a246123995db92862d7ba2de')
 
 prepare() {
   # skip tests that require r-fields
