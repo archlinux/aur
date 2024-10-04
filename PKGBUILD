@@ -29,9 +29,15 @@ provides=('orix')
 
 source=(https://github.com/pyxem/orix/archive/v$pkgver.tar.gz)
 
+build() {
+  cd "$srcdir/$pkgshort-$pkgver"
+  export SETUPTOOLS_SCM_PRETEND_VERSION=$pkgver
+  python -m build --wheel --no-isolation
+}
+
 package() {
   cd "$srcdir/$pkgshort-$pkgver"
-  python setup.py install --root="$pkgdir/" --optimize=1
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
 
 md5sums=('fb2627446b3087de8678ffffe3934ad2')
