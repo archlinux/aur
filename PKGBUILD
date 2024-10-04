@@ -1,7 +1,7 @@
 # Maintainer: Claudia Pellegrino <aur ät cpellegrino.de>
 
 pkgname=packetry
-pkgver=0.2.1
+pkgver=0.2.2
 pkgrel=1
 pkgdesc='USB 2.0 protocol analysis app for use with Cynthion'
 arch=('x86_64')
@@ -26,6 +26,7 @@ makedepends=(
   'python-sphinx_rtd_theme'
 )
 checkdepends=('at-spi2-core' 'xorg-server-xvfb')
+options=('!debug')
 
 source=(
   "${pkgname}-${pkgver}.tar.gz::https://github.com/greatscottgadgets/packetry/archive/v${pkgver}.tar.gz"
@@ -33,7 +34,7 @@ source=(
   'packetry.desktop'
 )
 
-sha512sums=('e05708ace8ba743e6869e1acbf9cac5feed9587c944865979d62d09faa85250914bc6598b747086d57bb48940590a5f2d12bc89f039a661d36b31b11a40a7e53'
+sha512sums=('6bec45777ad1022902b1955c677f9752d88cf6826724405aec32137d6046f7b1b6a2863e9f75e0f96dae4e49e0f7bf9897ed9b38cd37ab80b050408270aaeefd'
             '1ab20c64195fb67204d1b0aab17e5f1d54b9d0b416074eb32fa5806a4618d0c6d3b5beb54473160690f56f969598b5d1c2de0eaaa5c87f43c14e18059d259212'
             '92b735f7cdd5c07797bd48cdffc4cef2218df1a0d0517a8acb6813e41a972a0881eadf617dfe7524f4ed48e5e14fd55743a986f50a707bfca0f279068f46e410')
 
@@ -47,7 +48,10 @@ prepare() {
 
   echo >&2 'Downloading dependencies'
   export RUSTUP_TOOLCHAIN=stable
-  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+  # For some reason, `cargo test --frozen` wants dependencies for
+  # unrelated targets, e.g. `cfg(target_os = "macos")`, too.
+  # To work around that, run `cargo fetch` without `--target`.
+  cargo fetch --locked
 }
 
 build() {
