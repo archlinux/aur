@@ -1,6 +1,6 @@
 # Maintainer: Mika Hyttinen <mika dot hyttinen+arch ät gmail dot com>
 pkgname=cellframe-node
-pkgver=5.3.r2972.e326836
+pkgver=5.3.r2976.1c69cab
 pkgrel=1
 pkgdesc='Cellframe blockchain node with a powerful SDK'
 arch=('x86_64' 'aarch64')
@@ -10,7 +10,7 @@ makedepends=(git cmake python3 libxslt)
 depends=(logrotate libxcrypt-compat)
 provides=('cellframe-node' 'cellframe-node-cli' 'cellframe-node-tool' 'cellframe-node-config')
 replaces=('cellframe-node-debug')
-source=(git+https://gitlab.demlabs.net/cellframe/$pkgname.git#commit=e326836171aee7393ac62676a6e3ea71f0da22e8
+source=(git+https://gitlab.demlabs.net/cellframe/$pkgname.git#commit=1c69cab2f4d1b469b00bc08587a260f449d67c0f
 	cellframe-node.logrotate
 	cellframe-node.service
 	cellframe-node-asan.service
