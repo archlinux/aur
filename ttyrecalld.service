@@ -1,0 +1,13 @@
+[Unit]
+Description=TTY Recall
+Documentation=https://github.com/kxxt/ttyrecall
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/ttyrecall daemon --config /etc/ttyrecall/daemon.toml
+Restart=on-failure
+RestartSec=30
+TimeoutStopSec=10
+
+[Install]
+WantedBy=multi-user.target

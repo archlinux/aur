@@ -1,0 +1,23 @@
+pkgbase = ttyrecall-git
+	pkgdesc = Recall, but for terminals
+	pkgver = 0.0.1.alpha.2.r0.g9a38cbf
+	pkgrel = 1
+	url = https://github.com/kxxt/ttyrecall
+	arch = x86_64
+	license = AGPL-3.0-or-later AND GPL-2.0-or-later AND MIT-0
+	makedepends = cargo-nightly
+	makedepends = rust-src-nightly
+	makedepends = bpf-linker
+	makedepends = git
+	depends = gcc-libs
+	depends = zstd
+	provides = ttyrecall
+	conflicts = ttyrecall
+	conflicts = ttyrecall-bin
+	backup = etc/ttyrecall/daemon.toml
+	source = ttyrecall::git+https://github.com/kxxt/ttyrecall.git
+	source = ttyrecalld.service
+	b2sums = SKIP
+	b2sums = b416725ba80259f25fb448e2308e3a18c0fc4eeb4b0d5adb8e423b3a39c2f36df936bc7a639624ce33f689ed38851861fc6d1c1546fb6017c3ad3854ea041e98
+
+pkgname = ttyrecall-git
