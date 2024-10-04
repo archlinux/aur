@@ -2,7 +2,7 @@
 
 _rockname=markdown.sile
 pkgname=("sile-${_rockname%.sile}")
-pkgver=2.1.0
+pkgver=2.2.0
 _rockrel=1
 pkgrel=1
 pkgdesc='Native Markdown and Djot support for the SILE typesetting system'
@@ -12,19 +12,21 @@ license=(MIT)
 _siledeps=(embedders
            labelrefs
            ptable
+           silex
            smartquotes
            textsubsuper)
-depends=(sile
+depends=(lua51-lunajson
+         sile
          "${_siledeps[@]/#/sile-}")
-optdepends=('sile-silex: use with resiliant classes')
-makedepends=(luarocks)
+makedepends=(lua51
+             luarocks)
 _archive="$_rockname-$pkgver"
 source=("$url/archive/v$pkgver/$_archive.tar.gz")
-sha256sums=('eaf9a0ca00bd92db1dc2723d53c27408eb185c27bb570e848c3ff704dfba9fad')
+sha256sums=('4be82e6e8971297afbd8ea2f42dee9792c493fac6dc816be52f77e7138508c16')
 
 package() {
 	cd "$_archive"
-	luarocks --lua-version "5.1" --tree="$pkgdir/usr/" \
-		make --deps-mode=none --no-manifest "rockspecs/$_archive-$_rockrel.rockspec"
+	luarocks --lua-version 5.1 --tree "$pkgdir/usr/" \
+		make --deps-mode none --no-manifest "rockspecs/$_archive-$_rockrel.rockspec"
 	install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname/" LICENSE
 }
