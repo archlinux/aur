@@ -8,7 +8,7 @@
 pkgname=libmodsecurity2
 _name=modsecurity
 pkgver=2.9.8
-pkgrel=2
+pkgrel=3
 pkgdesc='A cross platform web application firewall engine for Apache, IIS and Nginx, v2 branch'
 arch=('x86_64')
 url='https://github.com/owasp-modsecurity/ModSecurity/tree/v2/master'
@@ -32,20 +32,26 @@ depends=(
 makedepends=('gcc')
 provides=('libmodsecurity' 'modsecurity')
 conflicts=("libmodsecurity")
-source=("https://github.com/owasp-modsecurity/ModSecurity/releases/download/v${pkgver}/${_name}-v${pkgver}.tar.gz")
-sha256sums=('cd57bd37f6062dca39dc8fba8d3e8db7351c5095de1e9ce7c3aa3890bc95855f')
+source=(
+  "https://github.com/owasp-modsecurity/ModSecurity/releases/download/v${pkgver}/${_name}-v${pkgver}.tar.gz" 
+  "rootpath_bug.patch"
+  "format-security_bug.patch"
+)
+sha256sums=('cd57bd37f6062dca39dc8fba8d3e8db7351c5095de1e9ce7c3aa3890bc95855f'
+            '885b64fe6295b8c1d217e20b406b9511a08aea9ffeed261e005d77312225fe19'
+            '98ea88c2086eba42dc14ffe84632c80faacc647f48e2b31ef6cb889bf8d32548')
 
 prepare() {
   cd "${srcdir}/${_name}-v${pkgver}"
+  # see https://github.com/owasp-modsecurity/ModSecurity/issues/3173
+  patch -Np1 -i ../rootpath_bug.patch
+  # and https://github.com/owasp-modsecurity/ModSecurity/commit/cddd9a7eb5585a9b3be1f9bdcadcace8f60f5808
+  patch -Np1 -i ../format-security_bug.patch
   ./autogen.sh
 }
 
 build() {
   cd "${srcdir}/${_name}-v${pkgver}"
-  # Consider errors from -Wformat-security -Wincompatible-pointer-types as warnings
-  # see https://github.com/owasp-modsecurity/ModSecurity/issues/3173
-  export CFLAGS="$CFLAGS -Wno-error=format-security -Wno-error=incompatible-pointer-types"
-  export CXXFLAGS="$CXXFLAGS -Wno-error=format-security -Wno-error=incompatible-pointer-types"
   ./configure \
     --prefix=/usr \
     --enable-standalone-module \

@@ -1,7 +1,7 @@
 pkgbase = libmodsecurity2
 	pkgdesc = A cross platform web application firewall engine for Apache, IIS and Nginx, v2 branch
 	pkgver = 2.9.8
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/owasp-modsecurity/ModSecurity/tree/v2/master
 	arch = x86_64
 	license = Apache-2.0
@@ -24,6 +24,10 @@ pkgbase = libmodsecurity2
 	provides = modsecurity
 	conflicts = libmodsecurity
 	source = https://github.com/owasp-modsecurity/ModSecurity/releases/download/v2.9.8/modsecurity-v2.9.8.tar.gz
+	source = rootpath_bug.patch
+	source = format-security_bug.patch
 	sha256sums = cd57bd37f6062dca39dc8fba8d3e8db7351c5095de1e9ce7c3aa3890bc95855f
+	sha256sums = 885b64fe6295b8c1d217e20b406b9511a08aea9ffeed261e005d77312225fe19
+	sha256sums = 98ea88c2086eba42dc14ffe84632c80faacc647f48e2b31ef6cb889bf8d32548
 
 pkgname = libmodsecurity2

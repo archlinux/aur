@@ -1,0 +1,32 @@
+diff -ura modsecurity-2.9.4.orig/standalone/config.c modsecurity-2.9.4.mod/standalone/config.c
+--- modsecurity-2.9.4.orig/standalone/config.c	2021-06-21 14:34:56.000000000 +0200
++++ modsecurity-2.9.4.mod/standalone/config.c	2024-10-04 07:29:48.346602243 +0200
+@@ -1028,7 +1028,8 @@
+ 	ap_directive_t *newdir;
+ 	int optional;
+ 	char *err = NULL;
+-	char *rootpath, *incpath;
++	const char *rootpath, *incpath;
++	char *configfilepath;
+ 	int li;
+ 
+ 	errmsg = populate_include_files(p, ptemp, ari, filename, 0);
+@@ -1108,13 +1109,13 @@
+ 
+ 				/* we allow APR_SUCCESS and APR_EINCOMPLETE */
+ 				if (APR_ERELATIVE == status) {
+-					rootpath = apr_pstrdup(ptemp, parms->config_file->name);
+-					li = strlen(rootpath) - 1;
++					configfilepath = apr_pstrdup(ptemp, parms->config_file->name);
++					li = strlen(configfilepath) - 1;
+ 
+-					while(li >= 0 && rootpath[li] != '/' && rootpath[li] != '\\')
+-						rootpath[li--] = 0;
++					while(li >= 0 && configfilepath[li] != '/' && configfilepath[li] != '\\')
++						configfilepath[li--] = 0;
+ 
+-					w = apr_pstrcat(p, rootpath, w, NULL);
++					w = apr_pstrcat(p, configfilepath, w, NULL);
+ 				}
+ 				else if (APR_EBADPATH == status) {
+ 					ap_cfg_closefile(parms->config_file);
