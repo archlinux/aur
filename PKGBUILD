@@ -11,7 +11,7 @@ license=("GPLv3")
 arch=("x86_64")
 provides=("rremind")
 conflicts=("rremind")
-source=("https://github.com/Jakubzik/pgburst/releases/download/v$pkgver/rremind-$pkgver-x86_64.tar.gz")
+source=("https://github.com/Jakubzik/rremind/releases/download/v$pkgver/rremind-$pkgver-x86_64.tar.gz")
 sha256sums=("759db85e1a426c7e86f1c0be7a1cd5d22797d6e7f82553d11ec5b12fd2e00482")
 
 package() {
