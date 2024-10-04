@@ -1,7 +1,7 @@
 pkgbase = python-rtmixer
 	pkgdesc = Reliable low-latency audio playback and recording with Python
 	pkgver = 0.1.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/spatialaudio/python-rtmixer
 	arch = any
 	license = MIT
@@ -12,7 +12,7 @@ pkgbase = python-rtmixer
 	makedepends = python-pa-ringbuffer
 	makedepends = python-setuptools
 	makedepends = python-wheel
-	source = https://github.com/spatialaudio/python-rtmixer/archive/0.1.7.tar.gz
-	sha256sums = 17cc6798a56278b5d74a07a9f607093089ab1b3fcfbaecaafb30659100935cc1
+	source = git+https://github.com/spatialaudio/python-rtmixer.git
+	sha256sums = SKIP
 
 pkgname = python-rtmixer
