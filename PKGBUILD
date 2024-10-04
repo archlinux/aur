@@ -4,7 +4,7 @@
 # Contributor: Kibouo <csonka.mihaly@hotmail.com>
 
 _pkgname=hunspell
-_pkgver=3.0.4
+_pkgver=3.0.5
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -26,8 +26,8 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('24dfeee2405093d70c916e8db4c0810b')
-b2sums=('042c8ebe508435b2d6230eafe795ead9a5212e3a253761714af74589ba88a6e53f513d90abed50e844578e019b8ba415f595dc707fcfbadd0ee2d92c25cb6652')
+md5sums=('80f00b7b65d3672b6626c8b5d5f4bb31')
+b2sums=('e715851fecc39b79015571ae1b805ec05e05325929112706d09a4bae8bfe99ffd49f89e8aa91451fcaba9a0ae6551ba0394a92fc79073bc7dc28da5317eba5be')
 
 build() {
   mkdir build
