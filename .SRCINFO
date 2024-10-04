@@ -1,6 +1,6 @@
 pkgbase = kgeotag
 	pkgdesc = Photo geotagging program
-	pkgver = 1.5.0
+	pkgver = 1.6.0
 	pkgrel = 1
 	url = https://kgeotag.kde.org/
 	arch = x86_64
@@ -19,10 +19,10 @@ pkgbase = kgeotag
 	depends = marble-common
 	depends = qt5-base
 	depends = xdg-utils
-	source = https://download.kde.org/stable/kgeotag/1.5.0/kgeotag-1.5.0.tar.xz
-	source = https://download.kde.org/stable/kgeotag/1.5.0/kgeotag-1.5.0.tar.xz.sig
-	validpgpkeys = A53563BC888E6CE5215535992523842AF9681DDF
-	sha256sums = 684864ac61a32ec9c4cc645f89d15e7bce5930e96a7784a40c7eed0db555fa2a
+	source = https://download.kde.org/stable/kgeotag/1.6.0/kgeotag-1.6.0.tar.xz
+	source = https://download.kde.org/stable/kgeotag/1.6.0/kgeotag-1.6.0.tar.xz.sig
+	validpgpkeys = F277636BA2E409347D503411CAA57B280FE0E9EE
+	sha256sums = 131fec1a99a200858da4371989af1649bd2a9e974beb1c9feef19164aac5afeb
 	sha256sums = SKIP
 
 pkgname = kgeotag
