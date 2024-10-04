@@ -1,3 +1,5 @@
+# Maintainer: Your Name <your_email@example.com>
+
 pkgname=freakfox
 pkgver=1.0
 pkgrel=1
@@ -31,7 +33,6 @@ EOL
 package() {
     cd "$srcdir/$pkgname/src"
 
-    # Create the executable script
     cat > freakfox << EOL
 #!/bin/sh
 source /usr/share/freakfox/venv/bin/activate && exec python3 /usr/share/freakfox/browser.py
@@ -46,5 +47,5 @@ EOL
     install -Dm644 balance.txt "$pkgdir/usr/share/freakfox/balance.txt"
 
     install -Dm644 freakfox.desktop "$pkgdir/usr/share/applications/freakfox.desktop"
-    install -Dm644 freakfox_icon.png "$pkgdir/usr/share/icons/hicolor/256x256/apps/freakfox_icon.png" # Adjust if necessary
+    install -Dm644 freakfox_icon.png "$pkgdir/usr/share/icons/hicolor/256x256/apps/freakfox_icon.png"
 }
