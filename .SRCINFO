@@ -1,4 +1,4 @@
-pkgbase = freakfox
+pkgbase = freakfox-git
 	pkgdesc = Mega Freaky web browser
 	pkgver = 1.0
 	pkgrel = 1
@@ -13,4 +13,4 @@ pkgbase = freakfox
 	source = git+https://github.com/1-K-SSPS/freakfox.git
 	md5sums = SKIP
 
-pkgname = freakfox
+pkgname = freakfox-git

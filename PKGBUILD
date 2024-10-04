@@ -1,7 +1,7 @@
 # Maintainer: Kubander <jakub.hosek.osobni@gmail.com>
 # Contributor poliecho <poliecho@pupes.org>
 
-pkgname=freakfox
+pkgname=freakfox-git
 pkgver=1.0
 pkgrel=1
 pkgdesc="Mega Freaky web browser"
