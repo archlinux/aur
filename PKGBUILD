@@ -2,7 +2,7 @@
 
 pkgname=python-bbpb-git
 pkgver=r171.0c8f37b
-pkgrel=1
+pkgrel=2
 pkgdesc="A set of tools for working with encoded Protocol Buffers."
 arch=('x86_64')
 url="https://github.com/nccgroup/blackboxprotobuf"
@@ -26,4 +26,7 @@ package() {
   cd blackboxprotobuf/lib
   make prepublish
   python -m installer --destdir="$pkgdir" dist/*.whl
+  cd ..
+  install -Dm 644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm 644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README" 
 }
