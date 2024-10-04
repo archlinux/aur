@@ -1,14 +1,13 @@
 pkgbase = perl-alien-proj
 	pkgdesc = Compile the Proj library
 	pkgver = 1.27
-	pkgrel = 4
+	pkgrel = 5
 	url = https://metacpan.org/release/Alien-proj
 	arch = any
 	license = GPL-1.0-or-later OR Artistic-1.0-Perl
 	depends = proj
 	depends = perl
 	depends = perl-alien-build
-	depends = perl-alien-build-plugin-cleanse-builddir
 	depends = perl-alien-build-plugin-pkgconfig-ppwrapper
 	depends = perl-alien-sqlite
 	depends = perl-ffi-checklib
