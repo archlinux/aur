@@ -8,5 +8,6 @@ Terminal=false
 Type=Application
 StartupWMClass=vkteams
 Categories=Network;InstantMessaging;Qt;
-MimeType=x-scheme-handler/vkteams;x-scheme-handler/myteam-messenger;
+MimeType=x-scheme-handler/mailto;
+NoDisplay=true
 X-Desktop-File-Install-Version=0.27
