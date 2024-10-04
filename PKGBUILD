@@ -1,11 +1,12 @@
 # Maintainer: Hans-Nikolai Viessmann <hans AT viess DOT mn>
 pkgname=doxypress-bin
-pkgver=1.6.0
+pkgver=1.7.0
 pkgrel=1
 pkgdesc="A fork of Doxygen, with improved output and support for clang parsing"
 arch=('x86_64')
 url="https://www.copperspice.com/documentation-doxypress.html"
-license=('GPL')
+license=('GPL-2.0-only')
+makedepends=('patchelf')
 depends=('clang' 'libxi' 'fontconfig' 'xcb-util-renderutil' 'xcb-util-wm' 'libxkbcommon-x11'
          'libglvnd' 'libxrandr' 'libxcursor' 'xcb-util-keysyms' 'libxinerama' 'libsm'
          'xcb-util-image' 'libjpeg-turbo')
@@ -13,7 +14,7 @@ provides=('doxypress')
 conflicts=('doxypress')
 replaces=('doxypress')
 source=("https://download.copperspice.com/doxypress/binary/${pkgname%-bin}-${pkgver}-arch-x64.tar.bz2")
-sha512sums=('77265d18818c0fa16b84764e3b93e8ff231ab110256c9a0d06436dea2319944bcacd850f6198b4380fc81d6882d336a3665a6cd31b7894d7fc785c079def4f29')
+sha512sums=('b2a45f097d27176ca6297fd70859b31678586d6ad67addf08cd8be28751ba11aac983ea3833a279c247f3b7071b22ca69d63754720596750331ed630d416ea57')
 noextract=("${pkgname%-bin}-${pkgver}-arch-x64.tar.bz2")
 
 package() {
