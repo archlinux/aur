@@ -1,8 +1,8 @@
 # Maintainer: networkException <git@nwex.de>
 
 pkgname=ungoogled-chromium-bin
-pkgver=129.0.6668.70
-pkgrel=3
+pkgver=129.0.6668.89
+pkgrel=1
 pkgdesc="A lightweight approach to removing Google web service dependency"
 arch=('x86_64')
 url="https://github.com/ungoogled-software/ungoogled-chromium"
@@ -14,35 +14,36 @@ optdepends=('pipewire: WebRTC desktop sharing under Wayland'
             'kdialog: support for native dialogs in Plasma'
             'gtk4: for --gtk-version=4 (GTK4 IME might work better on Wayland)'
             'org.freedesktop.secrets: password storage backend on GNOME / Xfce'
-            'kwallet: support for storing passwords in KWallet on Plasma')
+            'kwallet: support for storing passwords in KWallet on Plasma'
+            'upower: Battery Status API support')
 provides=("chromium=$pkgver" "chromedriver=$pkgver")
 conflicts=('chromium' 'chromedriver')
 source=(https://github.com/ungoogled-software/ungoogled-chromium-archlinux/releases/download/$pkgver-$pkgrel/ungoogled-chromium-$pkgver-$pkgrel-x86_64.pkg.tar.zst)
-sha256sums=('ae2e2667ce6163063fc9136adc38435889260ad8ceb53cd27e6c26f4ccdf0d30')
+sha256sums=('69e912458e05f3b2ffa09b97d2971d3d0e1489390bc37ba5c05c4669778637a3')
 
 declare -gA _system_libs=(
-    #[brotli]=brotli
-    [dav1d]=dav1d
-    [ffmpeg]=ffmpeg
+    [brotli]=brotli
+    #[dav1d]=dav1d
+    #[ffmpeg]=ffmpeg    # YouTube playback stopped working in Chromium 120
     [flac]=flac
     [fontconfig]=fontconfig
     [freetype]=freetype2
     [harfbuzz-ng]=harfbuzz
     [icu]=icu
-    [jsoncpp]=jsoncpp
+    #[jsoncpp]=jsoncpp  # needs libstdc++
     #[libaom]=aom
-    [libavif]=libavif
+    #[libavif]=libavif  # needs -DAVIF_ENABLE_EXPERIMENTAL_GAIN_MAP=ON
     [libdrm]=
-    [libjpeg]=libjpeg
+    [libjpeg]=libjpeg-turbo
     [libpng]=libpng
     #[libvpx]=libvpx
     [libwebp]=libwebp
     [libxml]=libxml2
     [libxslt]=libxslt
     [opus]=opus
-    [re2]=re2
-    [snappy]=snappy
-    [woff2]=woff2
+    #[re2]=re2          # needs libstdc++
+    #[snappy]=snappy    # needs libstdc++
+    #[woff2]=woff2      # needs libstdc++
     [zlib]=minizip
 )
 _unwanted_bundled_libs=(
