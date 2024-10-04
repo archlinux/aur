@@ -16,18 +16,18 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/$pkgname"
-  # Generates a version number like: 1.0.r123.gabcdef
   git describe --tags --long --always | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
   cd "$srcdir/$pkgname"
-  meson setup build
-  meson compile -C build
+  meson build
+  cd build
+  meson compile
 }
 
 package() {
   cd "$srcdir/$pkgname"
-  DESTDIR="$pkgdir" meson install -C build
+  install -Dm755 build/src/gnome-monitor-config "$pkgdir/usr/bin/gnome-monitor-config"
 }
 
