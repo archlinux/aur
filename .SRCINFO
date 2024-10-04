@@ -1,0 +1,20 @@
+pkgbase = gnome-monitor-config-git
+	pkgdesc = GNOME monitor configuration utility
+	pkgver = 1.0.r0.gabcdef
+	pkgrel = 1
+	url = https://github.com/jadahl/gnome-monitor-config
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = meson
+	makedepends = ninja
+	makedepends = pkg-config
+	makedepends = gobject-introspection
+	depends = gtk4
+	depends = libadwaita
+	provides = gnome-monitor-config
+	conflicts = gnome-monitor-config
+	source = gnome-monitor-config-git::git+https://github.com/jadahl/gnome-monitor-config.git
+	sha256sums = SKIP
+
+pkgname = gnome-monitor-config-git
