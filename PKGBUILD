@@ -1,19 +1,19 @@
 # Maintainer: Maciej Dems <macdems@gmail.com>
 pkgname=z-library-bin
 pkgver=2.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Z-library application"
 arch=('x86_64')
-url="https://go-to-library.sk/"
+url="https://singlelogin.rs/z-access"
 depends=('gtk3' 'libnotify' 'nss' 'libxss' 'libxtst' 'at-spi2-core' 'util-linux-libs' 'libsecret' 'libappindicator-gtk3')
 license=('ISC')
-source=("https://go-to-library.sk/soft/linux/zlibrary-setup-latest.deb")
-sha256sums=('7fbdcefcea789dea4e2cde07593fdfa2c35626e94d03e017047ee96f597fefe3')
+source=("zlibrary-setup-latest_${pkgver}.deb::https://s3proxy.cdn-zlib.se/te_public_files/soft/linux/zlibrary-setup-latest.deb")
+sha256sums=('d3d6c845fafd3a16bd1cb28451bfa8295767c6942fb0449930ee51db54b94c7f')
 
 prepare() {
     mkdir -p "$srcdir/z-library"
     cd "$srcdir/z-library"
-    ar p ../zlibrary-setup-latest.deb data.tar.xz | tar xJ
+    ar p ../zlibrary-setup-latest_${pkgver}.deb data.tar.xz | tar xJ
 }
 
 # build() {
