@@ -1,0 +1,17 @@
+pkgbase = python-safe-netrc
+	pkgdesc = Safe netrc file parser
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://git.ligo.org/computing/software/safe-netrc
+	arch = any
+	license = GPL-2.0-or-later
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	makedepends = python-setuptools-scm
+	makedepends = python-build
+	makedepends = python-installer
+	depends = python
+	source = safe-netrc-v1.0.1.tar.gz::https://git.ligo.org/computing/software/safe-netrc/-/archive/v1.0.1/safe-netrc-v1.0.1.tar.gz
+	sha256sums = 1a5da11017812efc83bceaeb249244b0f90ee9c708fa5a228bf6c3ee70d5978e
+
+pkgname = python-safe-netrc
