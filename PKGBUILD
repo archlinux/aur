@@ -1,6 +1,6 @@
 # Maintainer: Kemel Zaidan <kemelzaidan@gmail.com>
 pkgname=rp-bookshelf
-pkgver=r131.16bf438
+pkgver=r132.75ca8c4
 pkgrel=1
 pkgdesc="Browser for Raspberry Pi Press publications in PDF format"
 arch=('x86_64' 'i686' 'arm64')
@@ -10,7 +10,7 @@ depends=('glib2' 'gtk3>=3.24' 'libx11' 'curl' 'gdk-pixbuf2'
 		'hicolor-icon-theme' 'glibc')
 makedepends=('git' 'sed' 'coreutils')
 provides=("rp-bookshelf")
-conflicts=("rp-bookshelf" "rp-bookshelf-git")
+conflicts=("rp-bookshelf-git")
 source=('git+https://github.com/raspberrypi-ui/bookshelf.git')
 sha256sums=('SKIP')
 
