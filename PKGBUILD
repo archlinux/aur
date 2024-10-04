@@ -1,7 +1,7 @@
 # Maintainer: Claudia Pellegrino <aur ät cpellegrino.de>
 
 pkgname=pkgx
-pkgver=1.1.6
+pkgver=1.2.2
 pkgrel=1
 pkgdesc='Run Anything'
 arch=('x86_64')
@@ -16,9 +16,7 @@ source=(
   "${pkgname}-${pkgver}.tar.gz::https://github.com/pkgxdev/pkgx/archive/v${pkgver}.tar.gz"
 )
 
-sha512sums=(
-  '3f046e43caddbd2eade44e5d02337d5ed8bdada406572e45337f3c390bf955b4a72acd7588711efbca6d6841acb4d00b20033ad07df6f8e2a16703ecdecbe6f3'
-)
+sha512sums=('5818ca2914a880064cae9f2c40413b0e41b3f675b4c6164a8a4ba961cdff50ca9d235ba5851a8723c1cf59f3516a5a1a545f3a226867b1edf482b478be803cb9')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
