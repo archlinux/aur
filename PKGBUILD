@@ -2,7 +2,7 @@
 
 pkgname=gpt4all-chat-git
 _gitname=gpt4all
-pkgver=3.2.1.r21.ged85cd8
+pkgver=3.3.0.r22.g767189d
 pkgrel=1
 pkgdesc="Cross platform Qt based GUI for GPT4All versions"
 arch=('x86_64')
@@ -10,7 +10,7 @@ url="https://github.com/nomic-ai/gpt4all"
 license=('MIT')
 makedepends=('cmake' 'git' 'vulkan-tools' 'shaderc' 'qt6-tools')
 depends=(
-  'qt6-base' 'qt6-httpserver' 'qt6-quickcontrols2' 'qt6-svg'
+  'qt6-base' 'qt6-httpserver' 'qt6-declarative' 'qt6-svg'
   'qt6-webengine' 'qt6-shadertools' 'qt6-5compat' 'qt6-wayland'
   'python'
 )
