@@ -1,0 +1,75 @@
+pkgbase = input-leap
+	pkgdesc = Open-source KVM software
+	pkgver = 3.0.0
+	pkgrel = 1
+	url = https://github.com/input-leap/input-leap
+	arch = x86_64
+	license = custom:GPL2WithOpenSSLException
+	makedepends = glibc
+	makedepends = gcc-libs
+	makedepends = libx11
+	makedepends = libxrandr
+	makedepends = libxext
+	makedepends = libxinerama
+	makedepends = xorgproto
+	makedepends = libxtst
+	makedepends = libxi
+	makedepends = openssl
+	makedepends = libei
+	makedepends = libportal
+	makedepends = glibc
+	makedepends = gcc-libs
+	makedepends = libx11
+	makedepends = openssl
+	makedepends = avahi
+	makedepends = qt6-base
+	makedepends = xdg-desktop-portal
+	makedepends = libsm
+	makedepends = libice
+	makedepends = qt6-tools
+	makedepends = git
+	makedepends = cmake
+	makedepends = gmock
+	makedepends = gtest
+	optdepends = libportal-gtk3
+	optdepends = libportal-gtk4
+	optdepends = libportal-qt5
+	optdepends = libportal-qt6
+	source = input-leap::git+https://github.com/input-leap/input-leap.git#tag=v3.0.0
+	source = gulrak-filesystem::git+https://github.com/gulrak/filesystem.git
+	sha512sums = fcf127352cffed4cb79be86d8846cc3ff834083b5bd8e2a0a849031545ffbdab800c34e49bb5a4ca68292ee4005ff9a5752e61c7abb0f83120cf53e2f1610406
+	sha512sums = SKIP
+
+pkgname = input-leap-headless
+	pkgdesc = Open-source KVM software (client and server CLI binaries)
+	depends = glibc
+	depends = gcc-libs
+	depends = libx11
+	depends = libxrandr
+	depends = libxext
+	depends = libxinerama
+	depends = xorgproto
+	depends = libxtst
+	depends = libxi
+	depends = openssl
+	depends = libei
+	depends = libportal
+	provides = input-leap-headless=3.0.0
+	provides = barrier-headless=3.0.0
+	conflicts = input-leap-headless
+	conflicts = barrier-headless
+
+pkgname = input-leap
+	pkgdesc = Open-source KVM software (GUI)
+	depends = input-leap-headless
+	depends = glibc
+	depends = gcc-libs
+	depends = libx11
+	depends = openssl
+	depends = avahi
+	depends = qt6-base
+	depends = xdg-desktop-portal
+	provides = input-leap=3.0.0
+	provides = barrier=3.0.0
+	conflicts = input-leap
+	conflicts = barrier
