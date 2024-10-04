@@ -15,7 +15,7 @@ source=("https://github.com/Jakubzik/rremind/releases/download/v$pkgver/rremind-
 sha256sums=("759db85e1a426c7e86f1c0be7a1cd5d22797d6e7f82553d11ec5b12fd2e00482")
 
 package() {
-    install -Dm755 pgburst -t "$pkgdir/usr/bin"
+    install -Dm755 rremind -t "$pkgdir/usr/bin"
     install -Dm644 LICENSE.md "$pkgdir/usr/share/licenses/$pkgname/LICENSE.md"
-    install -Dm644 pgburst.1.gz "$pkgdir/usr/share/man/man1/$pkgname.1.gz"
+    install -Dm644 rremind.1.gz "$pkgdir/usr/share/man/man1/$pkgname.1.gz"
 }
