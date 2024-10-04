@@ -1,7 +1,7 @@
 pkgbase = lexmark-network-scan
 	pkgdesc = Lexmark Network and USB Scan Drivers
 	pkgver = 3.17.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.lexmark.com/
 	install = lexmark-network-scan.install
 	arch = x86_64

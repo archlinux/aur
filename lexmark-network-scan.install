@@ -1430,7 +1430,7 @@ post_install() {
 	show_weee()
 	{
 
-	cat << WEEE_TEXT
+	cat <<- WEEE_TEXT
 
 	EU waste electronics information
 	********************************
@@ -1451,7 +1451,7 @@ post_install() {
 
 	dump_rhel6_properties()
 	{
-	cat << RHEL6_PROPERTIES_TEXT
+	cat <<- RHEL6_PROPERTIES_TEXT
 
 	version=1
 

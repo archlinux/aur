@@ -5,7 +5,7 @@
 pkgname=lexmark-network-scan
 pkgver=3.17.0.0
 _revision=01252024
-pkgrel=1
+pkgrel=2
 pkgdesc="Lexmark Network and USB Scan Drivers"
 arch=('x86_64')
 url="http://www.lexmark.com/"
