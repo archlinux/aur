@@ -1,0 +1,53 @@
+From 4fea11900121ab83a5c0066e0aa878445c1361a7 Mon Sep 17 00:00:00 2001
+From: Alexander Harvey Nitz <alex.nitz@gmail.com>
+Date: Mon, 29 Jul 2024 15:55:58 -0400
+Subject: [PATCH] set types
+
+---
+ src/infinity.c    | 2 +-
+ src/segment.c     | 2 +-
+ src/segmentlist.c | 2 +-
+ 3 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/src/infinity.c b/src/infinity.c
+index d85ea13..8996c23 100644
+--- a/src/infinity.c
++++ b/src/infinity.c
+@@ -268,7 +268,7 @@ static struct PyMethodDef methods[] = {
+ 
+ 
+ PyTypeObject segments_Infinity_Type = {
+-	PyObject_HEAD_INIT(NULL)
++	PyObject_HEAD_INIT((long int) NULL)
+ 	.tp_as_number = &as_number,
+ 	.tp_basicsize = sizeof(segments_Infinity),
+ 	.tp_doc =
+diff --git a/src/segment.c b/src/segment.c
+index cc9a418..2214be9 100644
+--- a/src/segment.c
++++ b/src/segment.c
+@@ -480,7 +480,7 @@ static struct PyMethodDef methods[] = {
+ 
+ 
+ PyTypeObject segments_Segment_Type = {
+-	PyObject_HEAD_INIT(NULL)
++	PyObject_HEAD_INIT((long int) NULL)
+ 	.tp_as_number = &as_number,
+ 	.tp_as_sequence = &as_sequence,
+ 	.tp_doc =
+diff --git a/src/segmentlist.c b/src/segmentlist.c
+index 98b6b76..592a925 100644
+--- a/src/segmentlist.c
++++ b/src/segmentlist.c
+@@ -1540,7 +1540,7 @@ static struct PyMethodDef methods[] = {
+ 
+ 
+ PyTypeObject segments_SegmentList_Type = {
+-	PyObject_HEAD_INIT(NULL)
++	PyObject_HEAD_INIT((long int) NULL)
+ 	.tp_as_number = &as_number,
+ 	.tp_as_sequence = &as_sequence,
+ 	.tp_doc =
+-- 
+2.46.2
+
