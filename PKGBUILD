@@ -2,10 +2,10 @@
 # Contributor poliecho <poliecho@pupes.org>
 
 pkgname=freakfox-git
-pkgver=1.0
+pkgver=1.0.r0.g$(git rev-parse --short HEAD)
 pkgrel=1
 pkgdesc="Mega Freaky web browser"
-url="https://github.com/1-K-SSPS/freakfox"
+url="https://github.com/1-K-SSPS/freakfox.git"
 license=('freakyGPL')
 depends=(python
     python-pip
@@ -14,7 +14,7 @@ depends=(python
     python-pygame
 )
 arch=('any')
-makedepends=()
+makedepends=('git')
 source=("git+https://github.com/1-K-SSPS/freakfox.git")
 md5sums=(SKIP)
 
