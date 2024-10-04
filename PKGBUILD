@@ -1,7 +1,7 @@
 # Maintainer: KokaKiwi <kokakiwi+aur at kokakiwi dot net>
 
 pkgname=agree
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="A CLI application that implements multi-key-turn security via Shamir's Secret Sharing"
 url='https://github.com/replicadse/agree'
@@ -9,16 +9,16 @@ license=('MIT')
 arch=('x86_64' 'i686' 'arm' 'aarch64')
 depends=('gcc-libs')
 makedepends=('cargo')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/nix-community/nurl/archive/refs/tags/v$pkgver.tar.gz")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/replicadse/agree/archive/refs/tags/$pkgver.tar.gz"
         "$pkgname-$pkgver-manpages.tar.gz::https://github.com/replicadse/agree/releases/download/$pkgver/docs-manpages.tar.gz"
         "$pkgname-$pkgver-shell-completion.tar.gz::https://github.com/replicadse/agree/releases/download/$pkgver/shell-completion.tar.gz")
-sha256sums=('01aad4ff6a3006465b3ac50b3f3727fc3030a2f9357d349684e9946e7de95e8a'
-            'd98525c14bde342e3ff99952bf95698186c7ee893624beb59b4b1922f5878043'
-            '3253806e195aae6873c8b4b1d97d30ae2f393458cc8f976dd0bc2ce18ad3bf75')
-b2sums=('fb203a757b716d6065c8314f6d3ba2693c77ada150648ebd53fc703f712dad86a52a58f55eefeea5d18a560cb15ea5bdf7c4231e04fee77059458810ebb7f854'
-        '75259ef6b4e8893b2195397350fba29d3221a83c03f888b4a3b2965e125444ad7732aef47098d7ff1bebd7acf5fd951a0a5d8e716d2733d1aec7881edc414b39'
-        'a37f38ce880aaa5fbcb02e5749ae43acb9152e3054f8103f4ebdd0a7754c004cf7753c76e67204f486895bd98923fede3b8a06ec05ad29702e07286e5e871643')
+sha256sums=('b6e3e2ddabf128e3fc9def63b430cf023e1550ea3ec7fcfbb4b2045f6f9ec121'
+            '24fcba938d6f476077b18fc2c74ce36befb2da83bdf407bdb731127e7f0aeba5'
+            'e5ab7d30309605f4512a074ac2466ca2ba58dc3c4ee24841e31e9ee98599072e')
+b2sums=('b23f4744e55b084a080953ba14f6a9de83371c0ff8254759f731cfe7db16ebfb7ea99a7ab945ecc32b3ae09cce0d95cb16b322bb2c0031074a651c73eee4eea9'
+        '048db1cb5c36aa537edd3ba236160994af406983e1aa92cfbee7cacfc31ca436f2c0696f068dda3b53c75ecab681caeb794a031f3da6ea5d99d01c82b164cdbb'
+        '07dfbf39ec0e9a46f6156aaf0b2092fddb5ee4e695e96458572ec641ae8639a14526a1cd58ecbc9eb19cf7fb1656467633f00f6819a15455c404ca72bf546b64')
+options=(!lto)
 
 case $CARCH in
   x86_64|i686|aarch64)
@@ -28,9 +28,7 @@ case $CARCH in
 esac
 
 prepare() {
-  for f in _neomake neomake.*; do
-    sed -i -s 's/neomake/agree/' "$f"
-  done
+  sed -i -s 's/neomake/agree/' _neomake neomake.*
 
   cd "$pkgname-$pkgver"
 
