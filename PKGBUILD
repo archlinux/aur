@@ -10,7 +10,7 @@
 pkgname=snort
 _pkgname=snort3
 _openappid=33380
-pkgver=3.3.3.0
+pkgver=3.3.7.0
 pkgrel=1
 pkgdesc='A lightweight network IDS /IPS with OpenAppID support.'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64' 'arm')
@@ -86,7 +86,7 @@ package() {
 
 }
 
-sha256sums=('6f56c02d642ae1d43ed8eadc18421c60d8de6fff721ae3672df0f16d7ca44831'
+sha256sums=('ce4c5fc162ea3245dbd5aaa7661843731b63260d78b9ba7b9a39cc62356e1cbd'
   '3046c5af1dd81a104f13d8e895226ef64bca7fa358238fb5f29c659081eaee2a'
   '7fbf5c1b1ca10fba73350e563cafeb8ea4db7eb5d69ef62c067df602f27678f2'
   'b61d6492f86c7d79c1a76d1394d099403981aac7f371b1fe22ddd8a4bb15c87c'
