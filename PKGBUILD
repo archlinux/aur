@@ -8,15 +8,15 @@
 
 pkgname=perl-pdl
 _dist=PDL
-pkgver=2.089
-pkgrel=7
+pkgver=2.093
+pkgrel=1
 pkgdesc='The Perl Data Language'
 license=('GPL-1.0-or-later OR Artistic-1.0-Perl')
 
 url="https://metacpan.org/release/$_dist"
 source=("$pkgname-$pkgver.tar.gz::https://cpan.metacpan.org/authors/id/E/ET/ETJ/$_dist-$pkgver.tar.gz"
         perldl.conf)
-sha256sums=('9e408e4f06685de911697e12eaa5c8538e8521cbb80b876eda4bbcc7f98f196f'
+sha256sums=('7cc43ae8db553960da964c9964f043128c417f1151202ad3f74ae6c2b0fe588a'
             'SKIP')
 
 arch=(i686 x86_64)

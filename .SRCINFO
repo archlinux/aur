@@ -1,7 +1,7 @@
 pkgbase = perl-pdl
 	pkgdesc = The Perl Data Language
-	pkgver = 2.089
-	pkgrel = 7
+	pkgver = 2.093
+	pkgrel = 1
 	url = https://metacpan.org/release/PDL
 	arch = i686
 	arch = x86_64
@@ -36,9 +36,9 @@ pkgbase = perl-pdl
 	depends = perl-extutils-f77
 	optdepends = ds9: PDL::Graphics::IIS
 	options = !emptydirs
-	source = perl-pdl-2.089.tar.gz::https://cpan.metacpan.org/authors/id/E/ET/ETJ/PDL-2.089.tar.gz
+	source = perl-pdl-2.093.tar.gz::https://cpan.metacpan.org/authors/id/E/ET/ETJ/PDL-2.093.tar.gz
 	source = perldl.conf
-	sha256sums = 9e408e4f06685de911697e12eaa5c8538e8521cbb80b876eda4bbcc7f98f196f
-	sha256sums = SKIP
+	sha256sums = 7cc43ae8db553960da964c9964f043128c417f1151202ad3f74ae6c2b0fe588a
+	sha256sums = 1badf770a1afdc451cbab51bad70e513c60fb6d2a1b3f6fd98d5159e3c280db8
 
 pkgname = perl-pdl
