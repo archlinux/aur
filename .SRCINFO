@@ -8,7 +8,6 @@ pkgbase = python-into-dbus
 	checkdepends = python-hypothesis
 	checkdepends = python-hs-dbus-signature
 	makedepends = git
-	makedepends = python-pylint
 	makedepends = python-setuptools
 	depends = dbus-python
 	depends = python-dbus-signature-pyparsing
