@@ -1,12 +1,14 @@
 pkgbase = rpcsx-git
 	pkgdesc = Sony PlayStation 4 emulator
-	pkgver = r509.13b760a
+	pkgver = r556.113abf2
 	pkgrel = 1
 	url = https://rpcsx.github.io/rpcsx-site/
 	arch = x86_64
 	license = GPL-2.0-only AND MIT
+	makedepends = alsa-lib
 	makedepends = cmake
 	makedepends = git
+	makedepends = libunwind
 	makedepends = nlohmann-json
 	makedepends = python
 	makedepends = sox
@@ -15,9 +17,8 @@ pkgbase = rpcsx-git
 	depends = gcc-libs
 	depends = glfw>=3.3
 	depends = glibc
-	depends = libunwind
 	optdepends = vulkan-validation-layers: for rpcsx-gpu --validate
-	provides = rpcsx=509.13b760a
+	provides = rpcsx=556.113abf2
 	conflicts = rpcsx
 	source = rpcsx::git+https://github.com/RPCSX/rpcsx.git
 	source = rpcsx-SPIRV-Tools::git+https://github.com/RPCSX/SPIRV-Tools.git
@@ -36,6 +37,8 @@ pkgname = rpcsx-git
 	depends = gcc-libs
 	depends = glfw>=3.3
 	depends = glibc
-	depends = libunwind
+	depends = libasound.so
 	depends = libsox.so
+	depends = libunwind.so
+	depends = libunwind-x86_64.so
 	depends = libvulkan.so

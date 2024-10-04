@@ -1,7 +1,7 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 _pkgname=rpcsx
 pkgname=$_pkgname-git
-pkgver=r509.13b760a
+pkgver=r556.113abf2
 pkgrel=1
 pkgdesc="Sony PlayStation 4 emulator"
 arch=('x86_64')
@@ -11,11 +11,12 @@ depends=(
 	'gcc-libs'
 	'glfw>=3.3'
 	'glibc'
-	'libunwind'
 )
 makedepends=(
+	'alsa-lib'
 	'cmake'
 	'git'
+	'libunwind'
 	'nlohmann-json'
 	'python'
 	'sox'
@@ -67,7 +68,13 @@ build() {
 }
 
 package() {
-	depends+=('libsox.so' 'libvulkan.so')
+	depends+=(
+		'libasound.so'
+		'libsox.so'
+		'libunwind.so'
+		'libunwind-x86_64.so'
+		'libvulkan.so'
+	)
 	# shellcheck disable=SC2154
 	DESTDIR="$pkgdir" cmake --install build
 	install -Dm644 -t "$pkgdir"/usr/share/licenses/$pkgname $_pkgname/orbis-kernel/LICENSE
