@@ -1,0 +1,17 @@
+pkgbase = python-glasflow
+	pkgdesc = Normalising flows implemented using nflows.
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/uofgravity/glasflow
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	makedepends = python-setuptools-scm
+	makedepends = python-build
+	makedepends = python-installer
+	depends = python-pytorch
+	source = glasflow-0.4.0.tar.gz::https://github.com/uofgravity/glasflow/archive/refs/tags/v0.4.0.tar.gz
+	sha256sums = 2ed62e797f0c81daf11023ff7e59e9bd056673bb54ae09566d3c0f78e56e89e1
+
+pkgname = python-glasflow
