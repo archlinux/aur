@@ -2,7 +2,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=basilk
-pkgver=0.1.3
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="A TUI to manage your tasks with minimal kanban logic"
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('MIT' 'Apache-2.0')
 depends=('gcc-libs')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha512sums=('1154daa8bb107a02e4823c693853bacf6940b2a0de3f6ed950475d5570a7bb0d8e66ce1219583aa1fae0f5b37aa0b26a52457cb7c540730fa938a3acc61d8062')
+sha512sums=('d7447cc128f761138e8dbd4e86ac15d48a483cab62aa301ab06e880242c986d6e1bf485be9118de741cad078ea0d885869a7e7fb08b1a73d2a7f5d4ee1d65673')
 
 prepare() {
   cd "$pkgname-$pkgver"
