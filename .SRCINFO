@@ -1,7 +1,7 @@
 pkgbase = python-scitokens
 	pkgdesc = A reference library for generating and using SciTokens.
 	pkgver = 1.8.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/scitokens/scitokens
 	arch = any
 	license = Apache License 2.0
@@ -9,7 +9,9 @@ pkgbase = python-scitokens
 	makedepends = python-wheel
 	makedepends = python-build
 	makedepends = python-installer
-	depends = python
+	depends = python-pyjwt
+	depends = python-cryptography
+	depends = python-requests
 	source = scitokens-1.8.1.tar.gz::https://github.com/scitokens/scitokens/archive/refs/tags/v1.8.1.tar.gz
 	sha256sums = 2d2cbf7b07e23a4cbb030826e09f3f81b5443dad22335906fce8fc09065ef6df
 
