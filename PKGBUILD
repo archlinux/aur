@@ -2,7 +2,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=fblog-bin
-pkgver=4.12.0
+pkgver=4.13.0
 pkgrel=1
 pkgdesc="Small command-line JSON log viewer"
 arch=('x86_64')
@@ -13,9 +13,9 @@ provides=("${pkgname%-bin}")
 source_x86_64=("$pkgname-$pkgver::$url/releases/download/v$pkgver/${pkgname%-bin}"
                "$pkgname-$pkgver-LICENSE::$url/raw/v$pkgver/LICENSE"
                "$pkgname-$pkgver-README.md::$url/raw/v$pkgver/README.md")
-sha512sums_x86_64=('63d4c144b3de9b5a78448526ed508f3986b4790fc4922429176cc3b1d7c93ec843ee43914793335dec898d80c368dd30e625c68f5b9dec8ae7b7f2be513043a8'
+sha512sums_x86_64=('f2f1e9f63ab96d8d6e5dc39befab407bb2c0891e0e35f28a266c2d30a257cc8aaca59e94c94f68e4c225795bef7f560ea423f17f33932c8c47e618293d0c45f0'
                    '1b4064171fa88f41d05e3d1d1c14ceb8a5cb4cca9e6f08f7e267d7740b7d65e4765cb56f0ccf3765ee9c85654559d2d7726d71516b890b0174b68e6cc62ef421'
-                   'b18443354a50c2c1650c3a97823693552f47e9dcf77a02bdf96d447e0de34bb697d1976862c7457ec38e16e106a2d0a00f06b176538352cbd379609121329d5e')
+                   'f623b15fb2bba71a15ad65bb95c4badd866cfe02ac8f7d60d196effcc16a58e82e68e95f5d173e3f6ff96fb474559e969d68d3bfdac50e7b666ae016c79af21c')
 
 prepare() {
   chmod +x $pkgname-$pkgver
