@@ -1,7 +1,7 @@
 # Maintainer: Tony Benoy <me@tonybenoy.com>
 pkgname=screenpipe
-pkgver=0.1.0
-pkgrel=1
+pkgver=0.19.4
+pkgrel=2
 pkgdesc="24/7 Screen and Audio Capture with AI-powered tools"
 arch=('x86_64')
 url="https://github.com/mediar-ai/screenpipe"

@@ -1,7 +1,7 @@
 pkgbase = screenpipe
 	pkgdesc = 24/7 Screen and Audio Capture with AI-powered tools
-	pkgver = 0.1.0
-	pkgrel = 1
+	pkgver = 0.19.4
+	pkgrel = 2
 	url = https://github.com/mediar-ai/screenpipe
 	arch = x86_64
 	license = MIT
