@@ -1,6 +1,6 @@
 pkgbase = libyang-cpp-git
 	pkgdesc = C++ bindings for the libyang library
-	pkgver = r395.38e3399
+	pkgver = r406.f3cd4e0
 	pkgrel = 1
 	url = https://github.com/CESNET/libyang-cpp/
 	arch = i686

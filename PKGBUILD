@@ -2,7 +2,7 @@
 
 pkgname=libyang-cpp-git
 _gitname=libyang-cpp
-pkgver=r395.38e3399
+pkgver=r406.f3cd4e0
 pkgrel=1
 pkgdesc='C++ bindings for the libyang library'
 url='https://github.com/CESNET/libyang-cpp/'
@@ -26,7 +26,7 @@ check() {
 }
 
 build() {
-	cmake -S "$srcdir/$_gitname" -B "$srcdir/build" -DCMAKE_INSTALL_PREFIX=/usr
+	cmake -S "$srcdir/$_gitname" -B "$srcdir/build" -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_DISABLE_FIND_PACKAGE_date=ON
 
 	cmake --build "$srcdir/build"
 }
