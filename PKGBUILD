@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=strex
-_pkgver=2.0.0
+_pkgver=2.0.1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -30,8 +30,8 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('a044e493f751df4369925a5c967b8277')
-b2sums=('ea59aad141f3d69b9abbbee7ffbdfabe663f07192d6bbb8c2155c11440a3aefe3082d8cc9a91d2b190b26fdfc700af1a3bbc1bab5b1614c014cb404000a3e4b6')
+md5sums=('450971e4e4adc803cc7054809303c1f3')
+b2sums=('833070813881c95f7668abdb83345f8db9f4a85bc3c237b8eab9aae707b3a27facf36ee3cf0ab061dbf8d24161933a4dd97902543c5f902b14da7dc745a39fe6')
 
 build() {
   mkdir build
