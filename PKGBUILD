@@ -3,13 +3,14 @@
 _pkgname=ttyrecall
 pkgname=$_pkgname-git
 pkgver=0.0.1.alpha.2.r0.g9a38cbf
-pkgrel=1
+pkgrel=2
 pkgdesc="Recall, but for terminals"
 arch=('x86_64')
 url="https://github.com/kxxt/ttyrecall"
 license=('AGPL-3.0-or-later AND GPL-2.0-or-later AND MIT-0')
 depends=('gcc-libs' 'zstd')
-makedepends=('cargo-nightly' 'rust-src-nightly' 'bpf-linker' 'git')
+# Cannot use cargo-nightly here because of missing rust-src-nightly..
+makedepends=('rustup' 'bpf-linker' 'git')
 source=("$_pkgname::git+https://github.com/kxxt/ttyrecall.git"
         "ttyrecalld.service")
 b2sums=('SKIP'
@@ -25,17 +26,20 @@ pkgver() {
 
 prepare() {
   cd "$_pkgname"
+  export RUSTUP_TOOLCHAIN=stable
   cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
   cd "$_pkgname"
+  export RUSTUP_TOOLCHAIN=stable # Only the eBPF build need nightly toolchain
   export ZSTD_SYS_USE_PKG_CONFIG=1
   cargo xtask build --release 
 }
 
 check() {
   cd "$_pkgname"
+  export RUSTUP_TOOLCHAIN=stable
   export ZSTD_SYS_USE_PKG_CONFIG=1
   cargo test --frozen --release
 }
