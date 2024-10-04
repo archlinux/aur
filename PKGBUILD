@@ -1,7 +1,7 @@
 # Maintainer: Claudia Pellegrino <aur ät cpellegrino.de>
 
 pkgname=packetry-git
-pkgver=0.1.0.r630.2380eac
+pkgver=0.2.2.r765.282b54e
 pkgrel=1
 pkgdesc='USB 2.0 protocol analysis app for use with Cynthion'
 arch=('x86_64')
@@ -29,6 +29,8 @@ makedepends=(
 checkdepends=('at-spi2-core' 'xorg-server-xvfb')
 provides=("packetry=${pkgver%.r*}")
 conflicts=('packetry')
+options=('!debug')
+
 source=(
   "${pkgname}::git+https://github.com/greatscottgadgets/packetry.git"
   'icon.svg'  # From https://github.com/greatscottgadgets/packetry/pull/95
@@ -58,7 +60,10 @@ prepare() {
 
   echo >&2 'Downloading dependencies'
   export RUSTUP_TOOLCHAIN=stable
-  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+  # For some reason, `cargo test --frozen` wants dependencies for
+  # unrelated targets, e.g. `cfg(target_os = "macos")`, too.
+  # To work around that, run `cargo fetch` without `--target`.
+  cargo fetch --locked
 }
 
 build() {
