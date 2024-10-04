@@ -8,9 +8,9 @@ pkgrel=1
 pkgdesc="talosctl - utility for controling Talos"
 arch=('x86_64')
 url="https://github.com/siderolabs/talos"
-license=('MPL')
-source=("https://github.com/siderolabs/talos/releases/download/v${pkgver}/talosctl-linux-amd64")
-sha256sums=('e61249bf9488e779182ea67864838e530053084b2f20481565a26c62220be5d1')
+license=('MPL-2.0')
+source=("talosctl-linux-amd64-v${pkgver}::https://github.com/siderolabs/talos/releases/download/v${pkgver}/talosctl-linux-amd64")
+sha256sums=('e15f78aaf08b613c797ef350051b26271609890631ce51e50907f6348ac2d823')
 options=(!strip)
 
 package() {
