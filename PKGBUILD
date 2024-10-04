@@ -3,7 +3,7 @@
 # Contributor: Matej Horváth <matej.horvath@gmail.com>
 
 pkgname=gscreenshot
-pkgver=3.6.2
+pkgver=3.6.3
 pkgrel=1
 epoch=
 pkgdesc="A simple screenshot tool supporting multiple backends"
@@ -26,7 +26,8 @@ optdepends=('xclip: command line clipboard support'
             'pandoc: for generating the manpage at build (or use go-md2man)'
             'go-md2man: for generating the manpage at build (or use pandoc)'
             'slurp: for region selecton on Wayland'
-            'wl-clipboard: Wayland clipboard support')
+            'wl-clipboard: Wayland clipboard support'
+            'python-dbus: required when using the XDG desktop portal backend')
 provides=()
 conflicts=()
 replaces=()
@@ -35,7 +36,7 @@ options=()
 install=
 changelog=
 source=("https://github.com/thenaterhood/gscreenshot/archive/v$pkgver.tar.gz")
-sha256sums=('d551f315773ce50f7b9ec66ef9a461431549cfbf8e206d00bf252869e8a601b7')
+sha256sums=('3f84c71635b9512a1ef7820579213b806ec61796b6224f7a35357008aba27be6')
 validpgpkeys=()
 
 prepare() {
