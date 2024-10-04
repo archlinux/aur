@@ -1,0 +1,21 @@
+pkgbase = ruby-dry-core
+	pkgdesc = A toolset of small support modules used throughout the dry-rb ecosystem
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/dry-rb/dry-core
+	arch = any
+	license = MIT
+	checkdepends = ruby-bundler
+	checkdepends = ruby-dry-types
+	checkdepends = ruby-rake
+	checkdepends = ruby-rspec
+	makedepends = ruby-rdoc
+	depends = ruby
+	depends = ruby-concurrent
+	depends = ruby-zeitwerk
+	options = !emptydirs
+	source = https://github.com/dry-rb/dry-core/archive/v1.0.1/ruby-dry-core-1.0.1.tar.gz
+	sha512sums = d769795459a0ffc007eb66e2b9af9be4e635c620a5ca54a76113057b495e1126600a572761d8ff33a3ee6a4fca948f6fc29d3200e7ba0b56c1bb600a4749bbd4
+	b2sums = fb85107dd68dfb2a8d3ee2e66b4bb8b416ac325be4d28bcbbf5605e0a90992eb8aa85a8fad3cba8f228a5a7e50109cd2c1dbf920eebc3423d282055204c6b0a5
+
+pkgname = ruby-dry-core
