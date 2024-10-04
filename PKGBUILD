@@ -1,8 +1,8 @@
 # Maintainer: Claudia Pellegrino <aur ät cpellegrino.de>
 # Contributor: Marcin Kornat <rarvolt@gmail.com>
 pkgname=labelle
-pkgver=1.2.2
-pkgrel=2
+pkgver=1.3.1
+pkgrel=1
 pkgdesc="Linux Software to print with LabelManager PnP from Dymo"
 arch=('any')
 license=('Apache-2.0')
@@ -23,20 +23,27 @@ depends=(
 makedepends=(
     'git'
     'python-build'
+    'python-hatch-fancy-pypi-readme'
     'python-hatch-vcs'
     'python-hatchling'
     'python-installer'
     'python-pip'
     'python-setuptools'
     'python-setuptools-scm'
-    'python-wheel'
+)
+checkdepends=(
+    'at-spi2-core'
+    'python-pytest'
+    'python-pytest-image-diff'
+    'python-pytest-qt'
+    'xorg-server-xvfb'
 )
 source=(
         "${pkgname}-${pkgver}.tar.gz::https://github.com/labelle-org/labelle/archive/v${pkgver}.tar.gz"
         "91-dymo-labelmanager-pnp.rules"
         "dymo-labelmanager-pnp.conf"
 )
-sha512sums=('69ea79dc8dc1b00724f5f7d344e1e6c4059c2237152e5ad34fc93232aad17872a4bfeedabc1c1fd78edd64ff072c67875457c5fd1a201bd3c3227803fff52569'
+sha512sums=('f70b5f14333c55ab5fb68faad4a70f28e59967787cf8707f0e85f90bf1ac1290ee2d48cccdbb1d7d624ce3a4594d5a1bb7d39542788505c7cf0d0e69f1f5ca0d'
             '76c4d8b9b9abd6c9100b6d0032af0d3752fbb7827f2d3a8417b28d2b822b9f7956051163de015a26e0fa6c548851a0f73e74bea37d1c1583cc457a9dc6be6b68'
             'a73a5cd46e020d9d43d18cf52927085f055b9d3e77d5ed98f254e3fff07b053aff1125e931b2fd984f08dcb501d344544dc2de58adb66270455b4f482bc8f3f1')
 
@@ -50,6 +57,18 @@ build() {
     cd "${pkgname}-${pkgver}"
     export SETUPTOOLS_SCM_PRETEND_VERSION="${pkgver}"
     python -m build --wheel --no-isolation
+}
+
+check() {
+    cd "${pkgname}-${pkgver}"
+    local _site_packages
+    _site_packages="$(python -c 'import site; print(site.getsitepackages()[0])')"
+    python -m installer --destdir=tmp_install dist/*.whl
+
+    echo >&2 'Running unit tests'
+    PYTHONPATH="${PWD}/tmp_install/${_site_packages}" \
+        dbus-run-session xvfb-run -s '-nolisten local' \
+        pytest src
 }
 
 package() {
