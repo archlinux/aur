@@ -1,7 +1,7 @@
 pkgbase = python-bbpb-git
         pkgdesc = A set of tools for working with encoded Protocol Buffers.
         pkgver = r171.0c8f37b
-        pkgrel = 1
+        pkgrel = 2
         url = https://github.com/nccgroup/blackboxprotobuf
         arch = x86_64
         license = MIT
