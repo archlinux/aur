@@ -1,0 +1,13 @@
+pkgbase = rustmission
+	pkgdesc = Performant TUI for Transmission capable of managing hundreds of torrents.
+	pkgver = 0.5.0
+	pkgrel = 1
+	url = https://github.com/intuis/rustmission
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = cargo
+	options = !lto
+	source = rustmission-0.5.0.tar.gz::https://static.crates.io/crates/rustmission/rustmission-0.5.0.crate
+	b2sums = 64367f367c5b8770ff088c84a451975538bc866c12bca89f6e01c71b17b790776f78bc113935bea703252ad3a8e83eadcc74d2118ae3044b3f809a271f7ec630
+
+pkgname = rustmission
