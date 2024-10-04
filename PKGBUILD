@@ -3,19 +3,19 @@
 _name=FotoKilof
 
 pkgname=${_name,,}
-pkgver=5.0.0
+pkgver=5.0.7
 pkgrel=1
 pkgdesc="GUI for ImageMagick"
 url="https://github.com/TeaM-TL/FotoKilof"
-makedepends=('python-setuptools')
-depends=('imagemagick' 'tk' 'python-pillow' 'python-wand' 'python-ttkbootstrap' 'python-requests')
+makedepends=(python-build python-installer python-setuptools)
+depends=('imagemagick' 'tk' 'python-pillow' 'python-wand' 'python-ttkbootstrap' 'python-requests' 'python-fclist-cffi')
 license=('MIT')
 arch=('any')
-source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz"
+source=("https://github.com/TeaM-TL/${_name}/archive/refs/tags/$pkgver.tar.gz"
         0001-fix-character-in-setup.py-entrypoint-gui_script.patch
         $pkgname.desktop)
-sha256sums=('5129b8acd38ad9085c296cfb67e142efcbb734d91384b34c6fc69a1c9aab0d2a'
-            'fff5a43a08c5c5ef2483dafff22c749527c4f392645cf9517621a9dbc6ec00b3'
+sha256sums=('944e52b61d7c9175a4e0bb4a229080434e4459eed423f1674294e5f4c6ebbce3'
+            'e86029fc9075960ac0819d1958b77c1cee49aca7e842c266e63de1538b28faea'
             '8f6610e5b14c7ecc3d099b6c03ee2ea638b6080d625d4d7ed2e6baa95daaf1c2')
 
 prepare() {
@@ -25,12 +25,12 @@ prepare() {
 
 build() {
     cd "${srcdir}/${_name}-${pkgver}"
-    python setup.py build
+    python -m build --wheel --no-isolation
 }
 
 package() {
     cd "${srcdir}/${_name}-${pkgver}"
-    python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+    python -m installer --destdir="$pkgdir" dist/*.whl
     install -Dvm644 "${srcdir}/${pkgname}.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
     install -Dvm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }

@@ -6,7 +6,7 @@ diff -u --label a/setup.py b/setup.py
      entry_points = {
          "gui_scripts": [
 -            "fotokilof = fotokilof:__main__",
-+            "fotokilof = fotokilof.__main__",
++            "fotokilof = fotokilof.__main__:__main__",
          ]
      },
  )
