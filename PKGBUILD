@@ -3,7 +3,7 @@
 
 pkgname='dbus-client-gen'
 pkgver=0.5.1
-pkgrel=4
+pkgrel=5
 pkgdesc='A library for generating some simple classes and functions useful for a Python D-Bus client'
 arch=('any')
 license=('MPL2')
@@ -16,7 +16,7 @@ sha256sums=('2fd53bf85955cf9bc76f8bbbdb9968fc891401bea247b31d702a35f5a3bd8bba')
 
 check() {
   cd "${pkgname}-${pkgver}"
-  PYTHONPATH=src pytest
+  PYTHONPATH=src python -m unittest discover -vs .
 }
 
 package() {
