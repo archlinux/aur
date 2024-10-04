@@ -1,4 +1,5 @@
-# Maintainer: Your Name <your_email@example.com>
+# Maintainer: Kubander <jakub.hosek.osobni@gmail.com>
+# Contributor poliecho <poliecho@pupes.org>
 
 pkgname=freakfox
 pkgver=1.0
