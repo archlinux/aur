@@ -1,0 +1,29 @@
+# Maintainer: Neko_Rikka <yjzyl9008 at gmail dot com>
+
+pkgname=python-bbpb-git
+pkgver=r171.0c8f37b
+pkgrel=1
+pkgdesc="A set of tools for working with encoded Protocol Buffers."
+arch=('x86_64')
+url="https://github.com/nccgroup/blackboxprotobuf"
+license=('MIT')
+provides=('python-bbpb')
+conflicts=('python-bbpb')
+depends=(
+  'python-six'
+)
+makedepends=('git')
+
+source=("git+https://github.com/nccgroup/blackboxprotobuf.git")
+md5sums=('SKIP')
+
+pkgver() {
+  cd blackboxprotobuf
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+package() {
+  cd blackboxprotobuf/lib
+  make prepublish
+  python -m installer --destdir="$pkgdir" dist/*.whl
+}
