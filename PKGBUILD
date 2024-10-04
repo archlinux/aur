@@ -2,6 +2,7 @@
 # Contributor poliecho <poliecho@pupes.org>
 
 pkgname=freakfox-git
+_pkgname=freakfox
 pkgver=1.0.r0.g$(git rev-parse --short HEAD)
 pkgrel=1
 pkgdesc="Mega Freaky web browser"
