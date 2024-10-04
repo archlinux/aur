@@ -2,10 +2,10 @@
 # Contributor: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
 
 _pkgname=dotCall64
-_pkgver=1.1-1
+_pkgver=1.2
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="Enhanced Foreign Function Interface Supporting Long Vectors"
 arch=(x86_64)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -25,8 +25,8 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('daf0febb534609e779c515d35795175c')
-b2sums=('898a974de53f98672fbd3365b1ba433529dd82c6f7ad1cfc9a645b2c724afbc7ffec6e0f0185b9391d054728e9d230ac0a4204c13c8915a9f6ece637e2e40b0b')
+md5sums=('e645e9c27a51360d272da63737862e42')
+b2sums=('9c0cca3cc4130b7e1b70eb4264cfd445c4e3b4ca49012e79dc93d6beb547736045a778bf9bf3c27e93e0b15231da306f1682b54d88d1de20d275199cc2d0d59d')
 
 build() {
   mkdir build
