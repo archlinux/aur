@@ -9,7 +9,7 @@ url="https://gitlab.com/MagmaTV/magmatv"
 license=('GPL3')
 depends=('btfs' 'mpv' 'sqlite' 'libxml2' 'sed' 'curl')
 makedepends=('git')
-optdepends=('subliminal-git: subtitles support' 'libnotify')
+optdepends=('subliminal: subtitles support' 'libnotify')
 provides=('magmatv-git')
 conflicts=('magmatv')
 source=('magmatv::git+https://gitlab.com/MagmaTV/magmatv.git#branch=dev')
