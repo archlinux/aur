@@ -3,15 +3,15 @@
 # Contributor: Emiliano Vavassori <syntaxerrormmm@gmail.com>
 
 pkgname=ruby-highline
-pkgver=2.1.0
-_commit=33cee8a7a7946e27b3be8459721f69c73eee7694
-pkgrel=2
+pkgver=3.1.1
+pkgrel=1
 pkgdesc='A higher level command-line oriented interface'
 arch=(x86_64)
 url='https://github.com/JEG2/highline'
 license=(MIT)
 depends=(
   ruby
+  ruby-reline
 )
 makedepends=(
   git
@@ -19,14 +19,15 @@ makedepends=(
 )
 checkdepends=(
   ruby-bundler
+  ruby-dry-types
   ruby-erb
-  ruby-rake
   ruby-minitest
+  ruby-rake
   ruby-simplecov
 )
 options=(!emptydirs)
-source=(git+https://github.com/JEG2/highline.git#commit=$_commit)
-sha256sums=('SKIP')
+source=("git+${url}.git#tag=v${pkgver}")
+sha256sums=('c3ea54a565f818a8120214f0dfafd521535614b14ca1c71ee22d911cc1772641')
 
 build() {
   local _gemdir="$(gem env gemdir)"
