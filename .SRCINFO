@@ -1,7 +1,7 @@
 pkgbase = python-snakemake-interface-report-plugins
 	pkgdesc = The interface for Snakemake report plugins
-	pkgver = 1.0.0
-	pkgrel = 2
+	pkgver = 1.1.0
+	pkgrel = 1
 	url = https://github.com/snakemake/snakemake-interface-report-plugins
 	arch = any
 	license = MIT
@@ -10,7 +10,7 @@ pkgbase = python-snakemake-interface-report-plugins
 	makedepends = python-wheel
 	makedepends = python-poetry-core
 	depends = python-snakemake-interface-common
-	source = snakemake-interface-report-plugins-1.0.0.tar.gz::https://github.com/snakemake/snakemake-interface-report-plugins/archive/refs/tags/v1.0.0.tar.gz
-	sha256sums = 83729b6f32e2f2c3215a5d350842ecff5270dcd9601eba7a9bf6d737b76df427
+	source = snakemake-interface-report-plugins-1.1.0.tar.gz::https://github.com/snakemake/snakemake-interface-report-plugins/archive/refs/tags/v1.1.0.tar.gz
+	sha256sums = 5b0fa1badfa92205920599c3df539137e9978e3caac9da63589fd642460c4d85
 
 pkgname = python-snakemake-interface-report-plugins
