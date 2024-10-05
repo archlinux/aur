@@ -5,7 +5,7 @@
 _pkgname=tailscale
 pkgname=derper-ipcert
 pkgver=1.74.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A tool that runs a custom Tailscale DERP server (IP certs version)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/tailscale/tailscale"
@@ -13,6 +13,7 @@ license=('BSD-3-Clause')
 depends=(
     'bash'
     'glibc'
+    'openssl'
 )
 makedepends=('go')
 provides=("derper=${pkgver}")
@@ -22,6 +23,7 @@ backup=(
     'etc/derper/openssl.cnf'
 )
 options=(!lto)
+install=derper-ipcert.install
 source=("${pkgname}-v${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz"
         "derper.conf"
         "derper.service"
@@ -29,9 +31,9 @@ source=("${pkgname}-v${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz"
         "openssl.cnf"
         "0001-allow-usage-of-ip-certificates-by-bypassing-hostname.patch")
 sha256sums=('ef7b8a76ce81133dc10f243d733302c070232cdd6594b685c6adbf32769d4f2c'
-            '28f550b84a1873983763f8914d81fb057199d61e6d2781a7232dfb7aae717cda'
-            '91a5c52b8aab064d851dde58770c6f0baccd31ea5f5ccca28d1fdaa5f3398640'
-            '5c78d28f278240423acf6e7937568034646894bed69908815f213caf4dd95a3d'
+            '8593d6c048f4174206cbac5d82810903eab8f0afef36c50be66a2c6018c9f988'
+            'cda0c4e9b6e3be7ca4950ae43bd29588447eba7233e52ea067eb0215ee8eed18'
+            '8473e7dde4617d2899f97e0f1716e2bfa780837486b3c8fe1f5a9f57c9c440d9'
             'fd981cea16dae0b6f3008a7009a2faabe1911706d06856d504a2e046fae63cc9'
             '66407bec41131197d2b0133dafe0e04b814b6c458052509515a1284a42046719')
 
