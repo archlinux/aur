@@ -25,14 +25,14 @@ pkgver() {
 }
 
 build() {
-  cd "${srcdir}/${_gitname}"
-  
-  cmake -B build -DCMAKE_INSTALL_PREFIX:PATH=/usr -DCMAKE_CXX_FLAGS=-fext-numeric-literals -DDISABLE_WERROR=TRUE .
+  cmake -B build -S "${srcdir}/${_gitname}" \
+        -DCMAKE_INSTALL_PREFIX:PATH='/usr' \
+        -DCMAKE_CXX_FLAGS=-fext-numeric-literals \
+        -DDISABLE_WERROR=TRUE \
+        -Wno-dev
   cmake --build build
 }
 
 package() {
-  cd "${srcdir}/${_gitname}"
-
   DESTDIR="$pkgdir" cmake --install build
 }
