@@ -5,7 +5,7 @@
 # Contributor: Hugo Doria <hugo@archlinux.org>
 
 pkgname=mplayer-gui-svn
-pkgver=38663
+pkgver=38665
 pkgrel=1
 pkgdesc='Media player for Linux'
 url='http://www.mplayerhq.hu/'
