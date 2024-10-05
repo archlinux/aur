@@ -13,7 +13,6 @@ depends=(python
     python-pyqt5
     python-pyqt5-webengine
     python-pygame
-    python-venv
 )
 arch=('any')
 makedepends=('git')
