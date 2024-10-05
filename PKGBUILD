@@ -7,9 +7,20 @@ pkgdesc="Linux AIO c python bindings"
 arch=('x86_64')
 url="https://github.com/mosquito/caio"
 license=('Apache-2.0')
-depends=('python')
-makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
-#checkdepends=('python-aiomisc-pytest' 'python-pytest-cov')
+depends=(
+  'python'
+)
+makedepends=(
+  'python-build'
+  'python-installer'
+  'python-setuptools'
+  'python-wheel'
+)
+#checkdepends=(
+#  'python-aiomisc'  ## TODO
+#  'python-pytest'
+#  'python-pytest-aiohttp'
+#)
 source=("$_name-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
 sha256sums=('af63a39624b36bdc838b8bfe4c02995a047ce36728e98db4e574b4dceb6eba81')
 
@@ -20,7 +31,7 @@ build() {
 
 #check() {
 #  cd "$_name-$pkgver"
-#  pytest
+#  PYTHONPATH=. pytest
 #}
 
 package() {
