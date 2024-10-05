@@ -3,15 +3,15 @@
 
 _pkgname=openvpn3-linux
 pkgname=openvpn3
-pkgver=22_dev
-pkgrel=8
+pkgver=23
+pkgrel=1
 pkgdesc='OpenVPN 3 Linux client'
 arch=('x86_64' 'aarch64')
 url="https://codeberg.org/OpenVPN/$_pkgname"
 license=('AGPL3')
 depends=(
   'glib2>=2.56' 'jsoncpp>=0.10.5' 'libcap-ng>=0.7.5' 'lz4>=1.8.4' 'util-linux-libs>=2.23.2' 'protobuf>=2.4.0'
-  'python-dbus' 'python-gobject' 'python-systemd' 'tinyxml2>=2.1.0' 'libnl>=3.2.29' gdbuspp
+  'python-dbus' 'python-gobject' 'python-systemd' 'tinyxml2>=2.1.0' 'libnl>=3.2.29' 'gdbuspp>=2'
 )
 optdepends=(
   'openssl: OpenSSL version' 'mbedtls: mbed TLS version' 'polkit>=0.112: for systemd-resolved integration'
@@ -26,7 +26,7 @@ source=(
   'sysusers-openvpn3.conf'
 )
 sha256sums=(
-  'ad8f373814bfbefd12f9824d57badef4535f6c1fde68d2c73d7ee14863547cb6'
+  '3c5a4e27e0618f395c1688b50b62b887543ff203d4c99af7f7bfe1d61d0e753b'
   'ec0b8e28ae77b4b074d3eb8a084626e6dcfc587a07bef5d53fe1c6e160c0fc01'
   '045e914bb6fff5a082314dfc805bb511c9a80170619fa1e94a07825fa977c90a'
 )
