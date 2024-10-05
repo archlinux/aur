@@ -1,12 +1,11 @@
 pkgbase = python-backoff
 	pkgdesc = Python library providing function decorators for configurable backoff and retry
 	pkgver = 2.2.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/litl/backoff
 	arch = any
 	license = MIT
 	checkdepends = python-pytest-asyncio
-	checkdepends = python-pytest-cov
 	checkdepends = python-responses
 	makedepends = python-build
 	makedepends = python-installer
