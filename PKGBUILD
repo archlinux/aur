@@ -1,8 +1,8 @@
 # Maintainer: Matt Cuneo <m@cuneo.au>
 _pkgname='matrix-authentication-service'
 pkgname="$_pkgname-git"
-pkgver=r2940.87f34522
-pkgrel=1
+pkgver=r2979.498147ee
+pkgrel=2
 pkgdesc='Authentication service for Matrix Synapse'
 arch=('x86_64')
 url="https://github.com/element-hq/$_pkgname"
