@@ -2,7 +2,7 @@
 # Maintainer: Abhimanyu Sharma <abhimanyusharma003@gmail.com>
 
 pkgname='kubewall-bin'
-pkgver=0.0.7
+pkgver=0.0.8
 pkgrel=1
 pkgdesc='kubewall is a single binary to manage multiple clusters.'
 url='https://github.com/kubewall/kubewall'
@@ -11,14 +11,14 @@ license=('Apache License 2.0')
 provides=('kubewall')
 conflicts=('kubewall')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/kubewall/kubewall/releases/download/v0.0.7/kubewall_Linux_arm64.tar.gz")
-sha256sums_aarch64=('3eb7039de833d6613445bfd0a33b581806c6722be7530323cabecb9fda8d94da')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/kubewall/kubewall/releases/download/v0.0.8/kubewall_Linux_arm64.tar.gz")
+sha256sums_aarch64=('a6b4426bd7ffae52946ca5053fb26790d1245fdbde6369be7665ad71e1799b31')
 
-source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/kubewall/kubewall/releases/download/v0.0.7/kubewall_Linux_i386.tar.gz")
-sha256sums_i686=('cfa55a384b31b9644fa15291d3c49fc913c3a1ca5bd3d14d2d581540120f4a4e')
+source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/kubewall/kubewall/releases/download/v0.0.8/kubewall_Linux_i386.tar.gz")
+sha256sums_i686=('c40402f9bea1d88a04633f9a35cd6929a6ac4130ea2cb255f8844f0686172bcc')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/kubewall/kubewall/releases/download/v0.0.7/kubewall_Linux_x86_64.tar.gz")
-sha256sums_x86_64=('691ee2f4298a152456a1f257dc326612fcd07ed2794c3d237a85f4562beba2ce')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/kubewall/kubewall/releases/download/v0.0.8/kubewall_Linux_x86_64.tar.gz")
+sha256sums_x86_64=('8173e803572e6aa980743867ad1cf4c38813cf59a0c4e2227228ac47d838a99d')
 
 package() {
   install -Dm755 "./kubewall" "${pkgdir}/usr/bin/kubewall"
