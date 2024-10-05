@@ -1,6 +1,6 @@
 pkgbase = freakfox-git
 	pkgdesc = Mega Freaky web browser
-	pkgver = 1.0.r0.ga971b68
+	pkgver = 1.0.r0.ge13b515
 	pkgrel = 1
 	url = https://github.com/1-K-SSPS/freakfox.git
 	arch = any
@@ -11,7 +11,6 @@ pkgbase = freakfox-git
 	depends = python-pyqt5
 	depends = python-pyqt5-webengine
 	depends = python-pygame
-	depends = python-venv
 	source = git+https://github.com/1-K-SSPS/freakfox.git
 	md5sums = SKIP
 
