@@ -1,22 +1,22 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=libmodplug-git
-pkgver=r299.g9357867
+pkgver=r461.gd1b97ed
 pkgrel=1
 pkgdesc="A MOD playing library"
 arch=('i686' 'x86_64')
 url="https://modplug-xmms.sourceforge.net/"
-license=('custom')
+license=('LicenseRef-libmodplug')
 depends=('gcc-libs')
 makedepends=('git')
 provides=("libmodplug=$pkgver")
 conflicts=('libmodplug')
-source=("git+https://git.code.sf.net/p/modplug-xmms/git")
+source=("git+https://github.com/Konstanty/libmodplug.git")
 sha256sums=('SKIP')
 
 
 pkgver() {
-  cd "git"
+  cd "libmodplug"
 
   _rev=$(git rev-list --count --all)
   _hash=$(git rev-parse --short HEAD)
@@ -24,7 +24,7 @@ pkgver() {
 }
 
 build() {
-  cd "git/libmodplug"
+  cd "libmodplug"
 
   autoreconf -fi
   ./configure \
@@ -33,13 +33,13 @@ build() {
 }
 
 check() {
-  cd "git/libmodplug"
+  cd "libmodplug"
 
   make check
 }
 
 package() {
-  cd "git/libmodplug"
+  cd "libmodplug"
 
   make DESTDIR="$pkgdir" install
   install -Dm644 "COPYING" -t "$pkgdir/usr/share/licenses/libmodplug"
