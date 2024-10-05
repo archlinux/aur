@@ -1,9 +1,10 @@
 # Maintainer: Astro Benzene <universebenzene at sina dot com>
 
 pkgbase=mkdocs-git-committers-plugin-2
-_pyname=${pkgbase}
-pkgname=("${_pyname}")
-pkgver=2.3.0
+_pname=${pkgbase#python-}
+_pyname=${_pname//-/_}
+pkgname=("${pkgbase}")
+pkgver=2.4.1
 pkgrel=1
 pkgdesc="An MkDocs plugin to create a list of contributors on the page"
 arch=('any')
@@ -16,7 +17,7 @@ makedepends=('python-setuptools-scm')
 #checkdepends=('python-pytest')
 checkdepends=('python-nose')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('b4ed23c5efb836a63ff23e19b14c8517')
+md5sums=('b22118d81096b652e192fa6fd9354d6c')
 
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}
