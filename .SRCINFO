@@ -1,6 +1,6 @@
 pkgbase = python-snakemake-interface-executor-plugins
 	pkgdesc = Common functions and classes for Snakemake and its plugins
-	pkgver = 9.2.0
+	pkgver = 9.3.1
 	pkgrel = 1
 	url = https://github.com/snakemake/snakemake-interface-executor-plugins
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = python-snakemake-interface-executor-plugins
 	depends = python-snakemake-interface-common
 	depends = python-throttler
 	depends = python-argparse_dataclass
-	source = snakemake-interface-executor-plugins-9.2.0.tar.gz::https://github.com/snakemake/snakemake-interface-executor-plugins/archive/refs/tags/v9.2.0.tar.gz
-	sha256sums = a493f95543e767119f10bbdf98b9f50d67249f25c186a53ffd5263e7e310aba5
+	source = snakemake-interface-executor-plugins-9.3.1.tar.gz::https://github.com/snakemake/snakemake-interface-executor-plugins/archive/refs/tags/v9.3.1.tar.gz
+	sha256sums = a583b25b52676b95a259280af79a06ce30c10726901206e6562680b667251d0b
 
 pkgname = python-snakemake-interface-executor-plugins
