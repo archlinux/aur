@@ -10,7 +10,7 @@ url="https://github.com/kxxt/ttyrecall"
 license=('AGPL-3.0-or-later AND GPL-2.0-or-later AND MIT-0')
 depends=('gcc-libs' 'zstd')
 # Cannot use cargo-nightly here because of missing rust-src-nightly..
-makedepends=('rustup' 'bpf-linker' 'git')
+makedepends=('cargo' 'rust-src' 'bpf-linker' 'git')
 source=("$_pkgname::git+https://github.com/kxxt/ttyrecall.git"
         "ttyrecalld.service")
 b2sums=('SKIP'
@@ -34,8 +34,10 @@ build() {
   cd "$_pkgname"
   export RUSTUP_TOOLCHAIN=stable # Only the eBPF build need nightly toolchain
   export ZSTD_SYS_USE_PKG_CONFIG=1
+  export RUSTC_BOOTSTRAP=1 # HACK: building eBPF requires build-std=core, needs nightly
   cargo xtask build --release
-  local compgen="target/release/$_pkgname generate-completions"
+  local compgen="target/release/$_pkgname generate-completion"
+  mkdir -p completions
   $compgen bash >"completions/$_pkgname"
   $compgen elvish >"completions/$_pkgname.elv"
   $compgen fish >"completions/$_pkgname.fish"
@@ -46,6 +48,7 @@ check() {
   cd "$_pkgname"
   export RUSTUP_TOOLCHAIN=stable
   export ZSTD_SYS_USE_PKG_CONFIG=1
+  export RUSTC_BOOTSTRAP=1 # HACK: building eBPF requires build-std=core, needs nightly
   cargo test --frozen --release
 }
 
