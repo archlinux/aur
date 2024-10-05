@@ -3,7 +3,7 @@
 
 _pkgbase=luau
 pkgname=luau-bin
-pkgver=0.644
+pkgver=0.645
 pkgrel=1
 pkgdesc='A fast, small, safe, gradually typed embeddable scripting language derived from Lua'
 arch=('x86_64')
@@ -12,7 +12,7 @@ license=('MIT')
 conflicts=("$_pkgbase" "$_pkgbase"-git)
 provides=("$_pkgbase")
 source=("luau-$pkgver.zip::https://github.com/luau-lang/luau/releases/download/${pkgver}/luau-ubuntu.zip")
-b2sums=('bf60683a0e13e59a34a8bededc194ea361d8d32ec4e27d69747db88ea9012474b735a1fd8e725d65e2a066284cee5afbe315ea0460c8c3e6caacab0c0d763254')
+b2sums=('5e5afb69838bfbc742763d2fa2a36a9d098a196294d6d72f5ad337bf4e1646564de4c2f17e157d5caef8cb71cfcb0b458440252ab93b0423437f1d4b4011133c')
 
 prepare() {
     bsdunzip -o "luau-$pkgver.zip"
