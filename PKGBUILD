@@ -4,7 +4,7 @@
 _pkgauthor=sachaos
 _pkgname=viddy
 pkgname=${_pkgname}-bin
-pkgver=1.1.5
+pkgver=1.1.6
 pkgrel=1
 pkgdesc='A modern watch command, binary version'
 url="https://github.com/${_pkgauthor}/${_pkgname}"
@@ -21,10 +21,10 @@ source_x86_64=("${url}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-linux
 source_i686=("${url}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-linux-i686.tar.gz")
 source_aarch64=("${url}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-linux-arm64.tar.gz")
 sha256sums=('e6eea22d4e9e0aa6a78d0f9126009ec041ea047f94b320c003c34a631821f953'
-            'b93dc7b89de815da67b9b574b2fe1762aa1fd9d4c3ee98b1092fc67e20a9f3e8')
-sha256sums_x86_64=('324e41364aaa3165f501c9e726ce23075054b2ac9df398bd9a35b5c7133792ff')
-sha256sums_i686=('c85c381782c4bb9bf66eca888a6fbb641a9e65da98e9ff689c725dfdb6847b34')
-sha256sums_aarch64=('6bae1c7d4d05417f8911c58f5e4f547237cf5f9b7520524ce9730a34e0cf87bf')
+            '9559b7e87d0816c9c3f4d198fa6045c6db3d5b87794e5ed0c35bee3d6ff3dd6d')
+sha256sums_x86_64=('55c350fe71dc78546bf76a062378b5e668cc8f5cbf8252d13723b7173bc1c769')
+sha256sums_i686=('5b3c5d37e4b32221555472e23765714a5b2d7056710b1380bdcb429d91c83c22')
+sha256sums_aarch64=('0e59f0a795dab42f2e0257b0ae844a991765ca3f840a3d9fefd78e272eabfba5')
 
 build() {
   help2man ./${_pkgname} --output "MAN-${pkgver}.1"
