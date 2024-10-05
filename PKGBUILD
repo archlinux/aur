@@ -18,6 +18,7 @@ checkdepends=()
 optdepends=(
 	'mpv: Video player'
 	'ocl-icd: for GPU acceleration'
+	'python38: SVPTube extension - Basic support'
 	'python-certifi: youtube-dl extension - Basic support'
 	'python-pycryptodomex: youtube-dl extension - For decrypting AES-128 HLS streams and various other data'
 	'python-websockets: youtube-dl extension - For downloading over websocket'
