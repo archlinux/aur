@@ -1,6 +1,6 @@
 pkgbase = owncloud
 	pkgdesc = Securely access and share data from everywhere and any device
-	pkgver = 10.14.0
+	pkgver = 10.15.0
 	pkgrel = 1
 	url = https://owncloud.org/
 	arch = any
@@ -18,12 +18,12 @@ pkgbase = owncloud
 	optdepends = libreoffice: file preview
 	options = !strip
 	backup = etc/webapps/owncloud/apache.example.conf
-	source = https://download.owncloud.com/server/stable/owncloud-complete-20240226.zip
+	source = https://download.owncloud.com/server/stable/owncloud-complete-20240724.zip
 	source = apache.example.conf
 	source = owncloud.hook
 	validpgpkeys = E3036906AD9F30807351FAC32D5D5E97F6978A26
 	validpgpkeys = DDA2C105C4B73A6649AD2BBD47AE7F72479BC94B
-	sha256sums = 9b3448d45663c2c818ab804c6972fa3fc47b94e216fc25cfbc34809a6fd96ceb
+	sha256sums = 06317241c624c7b1426c886c9adac8ac4f31615559c1466a85c1ec686f7f3493
 	sha256sums = e19149bbe2fef90d2d669ca8912104f6cf3c435a6c19610b00c844230190f0fb
 	sha256sums = fae2a021055a7bcf2ceece645e15a921aecefab088583a3f8c4d7d969578a36e
 
