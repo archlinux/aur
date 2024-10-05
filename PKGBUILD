@@ -2,7 +2,7 @@
 pkgname=normcap
 _app_id="eu.dynobo.$pkgname"
 pkgver=0.5.8
-pkgrel=1
+pkgrel=2
 pkgdesc="OCR powered screen-capture tool to capture information instead of images"
 arch=('any')
 url="https://dynobo.github.io/normcap"
@@ -23,20 +23,16 @@ makedepends=(
   'python-toml'
   'python-wheel'
 )
+checkdepends=(
+#  'appstream'
+  'desktop-file-utils'
+)
 optdepends=(
   'qt6-wayland: Required in Wayland sessions'
   'wl-clipboard: clipboard access for Wayland'
   'xclip: clipboard access for Xorg'
   'xsel: alternative Xorg clipboard handler'
 )
-#checkdepends=(
-#  'python-pytest-instafail' ## TODO
-#  'python-pytest-cov'
-#  'python-pytest-qt'
-#  'python-pytest-xvfb'
-#  'xclip'
-#  'xdg-desktop-portal'
-#)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/dynobo/normcap/archive/refs/tags/v$pkgver.tar.gz"
         "${_app_id}.desktop")
 sha256sums=('0d7a67954c45c8339c461eb612aadddb88328b0dfb847217641e1aeb52ae0e8a'
@@ -47,12 +43,11 @@ build() {
   python -m build --wheel --no-isolation
 }
 
-#check() {
-#  cd "$pkgname-$pkgver"
-#  export HOME=$(mktemp -d)
-#  export DISPLAY=:$((2000 + $RANDOM % 1000))
-#  xvfb-run ${DISPLAY} -screen 5 1024x768x8 dbus-run-session pytest
-#}
+check() {
+  cd "$pkgname-$pkgver"
+#  appstreamcli validate --no-net bundle/metainfo
+  desktop-file-validate "$srcdir/${_app_id}.desktop"
+}
 
 package() {
   cd "$pkgname-$pkgver"
@@ -65,8 +60,8 @@ package() {
 
   install -Dm644 "bundle/imgs/$pkgname.svg" -t \
     "$pkgdir/usr/share/icons/hicolor/scalable/apps/"
-  install -Dm644 bundle/metainfo \
-    "$pkgdir/usr/share/metainfo/${_app_id}.metainfo.xml"
+#  install -Dm644 bundle/metainfo \
+#    "$pkgdir/usr/share/metainfo/${_app_id}.metainfo.xml"
   install -Dm644 "$srcdir/${_app_id}.desktop" -t \
     "$pkgdir/usr/share/applications/"
 
