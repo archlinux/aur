@@ -21,7 +21,7 @@ makedepends=(
 #checkdepends=(
 #  'python-path'
 #  'python-pytest-black'
-#  'python-pytest-cov'
+#  'python-pytest'
 #  'python-pytest-enabler'
 #  'python-pytest-flake8'
 #  'python-pytest-mypy'
@@ -29,6 +29,13 @@ makedepends=(
 #)
 source=("$_name-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('0f45f2542e0888ebc6b611291ad7ee80448d3cf70b24cf587dabe5ca189cc8b5')
+
+#prepare() {
+#  cd "${_name}-$pkgver"
+
+  # Skip coverage 
+#  sed -i '/pytest-cov/d' pyproject.toml
+#}
 
 build() {
   cd "$_name-$pkgver"
