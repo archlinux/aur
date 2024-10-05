@@ -5,7 +5,7 @@ pkgver=r698.e162f1be
 pkgrel=1
 pkgdesc="Tool for building tasks for informatics competitions, with support for cache, distributed computations and more"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
-url="https://github.com/edomora97/task-maker-rust"
+url="https://github.com/olimpiadi-informatica/task-maker-rust"
 license=('MPL2')
 depends=()
 makedepends=('cargo')
@@ -13,7 +13,7 @@ optdepends=('texlive-core: booklet compilations')
 options=()
 provides=('task-maker-rust')
 conflicts=('task-maker-rust')
-source=("git+https://github.com/edomora97/task-maker-rust.git")
+source=("git+https://github.com/olimpiadi-informatica/task-maker-rust.git")
 sha384sums=('SKIP')
 
 pkgver() {
