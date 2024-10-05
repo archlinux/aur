@@ -1,7 +1,7 @@
 pkgbase = e-z-recorder
 	pkgdesc = e-z.host Video Recording & Uploading on Linux.
-	pkgver = 1.7.5
-	pkgrel = 4
+	pkgver = 1.8.1
+	pkgrel = 1
 	url = https://github.com/verysillycat/e-z-recorder-linux
 	arch = any
 	license = MIT
@@ -12,6 +12,7 @@ pkgbase = e-z-recorder
 	optdepends = wl-clipboard: Wayland Clipboard support
 	optdepends = slurp: Wayland wlroots based support
 	optdepends = wf-recorder: Wayland wlroots based support
+    optdepends = wl-screenrec: Wayland wlroots based support
 	optdepends = xclip: X11 Clipboard support
 	optdepends = slop: X11 Support
 	source = https://raw.githubusercontent.com/verysillycat/e-z-recorder-linux/main/e-z-recorder.sh
