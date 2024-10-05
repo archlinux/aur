@@ -13,7 +13,7 @@ _devenv=false
 _generic_release=false
 
 ## hack taken from wine-tkg PKGBUILD, real pkgrel is the eval one
-pkgver=9.18.w109.s3dfacea
+pkgver=9.19.w1.s858bf97
 pkgrel=1
 eval pkgrel=1
 
@@ -32,10 +32,10 @@ _enabled_staging=()
 
 ## if all staging patches are to be applied, what (array of) patches to omit?
 ## e.g. "Compiler_Warnings user32-. . ."
-_disabled_staging=()
+_disabled_staging=(eventfd_synchronization)
 
 ## main AUR version control setting, wine/staging base will be taken from this if custompatches=false (default)
-_patchbase_tag="09-25-2024-2b32c285-3dfacea3"
+_patchbase_tag="10-05-2024-7ee99608-858bf979"
 
 ## to use this, set this to true, create a "custompatches" folder in the top-level PKGBUILD directory, and place your patches there.
 ## the patches from the wine-osu-patches git repo will no longer be applied, but you can copy them to the
@@ -45,8 +45,8 @@ _custompatches=false
 
 ## (with custompatches) uses wine/staging master if empty, uses given commit or tag if set
 ## (without custompatches) ignored and overwritten by upstream commits from patchbase repo
-_desired_wine_commit=2b32c2859166e5542012b517cdef4699d8bb322c
-_desired_staging_commit=3dfacea342c956ca8e2b2b7d7da339636f56eed1
+_desired_wine_commit=7ee99608f469723bafadb28ef0ebd20631f86e9d
+_desired_staging_commit=858bf979a1c177ae7b43a8ea697032e09059d553
 
 ## (with custompatches) ignore the _desired_wine_commit above and take the wine commit from the "upstream-commit" file in the staging repo
 _use_staging_upstream=false
@@ -56,7 +56,7 @@ _wine_git="https://gitlab.winehq.org/wine/wine.git"
 _staging_git="https://github.com/wine-staging/wine-staging.git"
 
 ## install static .a libraries (recommend using standard wine for these instead)
-_install_static=true
+_install_static=false
 
 ## removes src, pkg folders on exit (both failure and success)
 _cleanbuildfolders=false
@@ -65,6 +65,7 @@ _cleanbuildfolders=false
 _strip_package=true
 
 ## for native compilation (non-true is gcc):
+## true=system clang, bundled=llvm-mingw's clang (requires _use_mingw=llvm), anything else is gcc
 _use_clang=true
 
 ## for cross compilation
@@ -113,7 +114,6 @@ source=(
   "wine-binfmt.conf"
   "Makefile.single"
   "lto-fixup.patch"
-  "mingw-gcc-float-precision-fix.patch"
   "buildiswow64"
   "wine::git+${_wine_git}#commit=${_desired_wine_commit:-master}"
   "wine-staging::git+${_staging_git}#commit=${_desired_staging_commit:-master}"
@@ -125,7 +125,6 @@ sha512sums=(
   'bdde7ae015d8a98ba55e84b86dc05aca1d4f8de85be7e4bd6187054bfe4ac83b5a20538945b63fb073caab78022141e9545685e4e3698c97ff173cf30859e285'
   '59920a54e9bd8d1f73c15675f7df29829680b59f4d1c4fc74fe710e4b596fd6a96f3b43994eb5da0fd1e50299b0ada933c6f3796e1d0698febb7870995f7f266'
   'c949136c1dca345ab4e86cb7ac6d0f02595e09a9f0c344dc9ca454cfa3aab8845a2e1f36f27e9357f3a6a3ead0d6b7f1ffb1444246cd3b76aedbe30942d20859'
-  '78e639a52e940573bcced55502fc04dfa4791486cd3c2f7b79c581b8c79bfad46f99b1586928973b6863ad54e3feb83d2ff63cb6e03dfa5bc22f453f1379f438'
   'SKIP'
   'SKIP'
   'SKIP'
@@ -135,7 +134,7 @@ noextract=()
 ## don't needlessly add the wine-osu-patches repo if we explicitly specify custom ones
 if ! { [ -d "${_where}"/custompatches ] && [ "${_custompatches}" = "true" ] ; }; then
   source+=("git+https://github.com/whrvt/wine-osu-patches.git#tag=${_patchbase_tag}")
-  sha512sums+=('25bcb9d0afaa08dfe90ad7c57bb2035328e5949ec10682a99c59012887793378a882732d2884e600a58b62825298bc8cfa2ced1d744b9f23bc70b70ec0165dc4')
+  sha512sums+=('3d5a7e48a4797054113afb1755e5d485aac327865a6643b582c5046aaaffc3385fc358c37d23f1342799b21a931abbb9cc617eced2e96e9dcb6c3669d1db529e')
 
   if [ "${_custompatches}" = "true" ]; then
     msg2 "WARNING: _custompatches=true but custompatches directory not found. Will be using wine-osu-patches repo."
@@ -165,6 +164,7 @@ depends=(
   libpulse
   bash
   ffmpeg
+  NTSYNC-MODULE
 )
 
 makedepends=(autoconf bison ccache perl fontforge flex
@@ -191,6 +191,7 @@ makedepends=(autoconf bison ccache perl fontforge flex
   nasm
   attr
   gtk3
+  ntsync-header
 )
 
 optdepends=(
@@ -221,7 +222,7 @@ if [ "${_wow64build}" != "true" ]; then
   depends+=(lib32-ffmpeg lib32-libxkbcommon libvulkan.so=1-32 lib32-gnutls lib32-libxcomposite lib32-libpulse lib32-fontconfig lib32-lcms2 lib32-libxml2 lib32-libxcursor lib32-libxrandr lib32-libxdamage lib32-libxi lib32-gettext lib32-freetype2 lib32-glu lib32-libsm lib32-gcc-libs lib32-libpcap)
   makedepends+=(lib32-wayland lib32-gtk3 lib32-attr lib32-giflib lib32-libpng lib32-libxmu lib32-libxxf86vm lib32-libldap lib32-mpg123 lib32-openal lib32-v4l-utils lib32-alsa-lib lib32-mesa lib32-mesa-libgl lib32-opencl-icd-loader lib32-libxslt lib32-sdl2)
   optdepends+=(lib32-libusb lib32-libxinerama lib32-giflib lib32-libpng lib32-libldap lib32-mpg123 lib32-openal lib32-v4l-utils lib32-alsa-plugins lib32-alsa-lib lib32-libjpeg-turbo lib32-libxcomposite lib32-libxinerama lib32-opencl-icd-loader lib32-libxslt lib32-vkd3d lib32-sdl2)
-  if [ "${_use_clang}" = "true" ] || [ "${_use_mingw}" = "llvm" ]; then makedepends+=(lib32-llvm-libs); fi
+  if [ "${_use_clang}" = "true" ]; then makedepends+=(lib32-llvm-libs); fi
 fi
 
 if [ "${_use_clang}" = "true" ]; then
@@ -230,14 +231,17 @@ if [ "${_use_clang}" = "true" ]; then
   _cc="/usr/bin/clang"
   _cxx="/usr/bin/clang++"
 
-  #_lto_flags="-flto -Wl,--flto"
-  _lto_flags="-ffat-lto-objects -fuse-linker-plugin -flto -Wl,--flto,--flto-partition=one"
+  #_lto_flags="-flto -Wl,--lto"
+  _lto_flags="-fuse-linker-plugin -flto -Wl,--flto,--flto-partition=one"
+elif [ "${_use_clang}" = "bundled" ] && [ "${_use_mingw}" = "llvm" ]; then
+  _cc="clang"
+  _cxx="clang++"
 else
   _cc="/usr/bin/gcc"
   _cxx="/usr/bin/g++"
 
   _lto_flags="-fuse-linker-plugin -fdevirtualize-at-ltrans -flto-partition=one -flto -Wl,-flto"
-  _extra_native_flags="-floop-nest-optimize -fgraphite-identity -floop-strip-mine" # graphite opts
+  #_extra_native_flags="-floop-nest-optimize -fgraphite-identity -floop-strip-mine" # graphite opts
 fi
 
 if [ "${_use_mingw}" = "llvm" ]; then
@@ -305,8 +309,8 @@ _set_vars() {
   export PATH="${_cross_path}"
 
   #_OPTIMIZE_HARDER_FLAGS="-fipa-pta -fgcse-sm -fgcse-las -fira-loop-pressure" # -fsched-pressure -fsched-spec-load
-
-  _common_cflags="${_cpu_target} -O3 -pipe -fwrapv -fno-strict-aliasing -fno-semantic-interposition -fomit-frame-pointer -Wno-error=incompatible-pointer-types -Wno-error=implicit-function-declaration -Wno-error=int-conversion -w"
+  # note: using Oz for a smaller memory footprint, otherwise 32bit programs can hit the virtual address space limit quickly
+  _common_cflags="${_cpu_target} -Oz -pipe -fomit-frame-pointer -Wno-error=incompatible-pointer-types -Wno-error=implicit-function-declaration -Wno-error=int-conversion -w"
   _native_common_cflags="${_lto_flags:-} ${_extra_native_flags:-}" # only for the non-mingw side
 
   export CPPFLAGS="-U_FORTIFY_SOURCE -D_FORTIFY_SOURCE=0 -DNDEBUG -D_NDEBUG"
@@ -337,12 +341,6 @@ _set_vars() {
 }
 
 _set_vars64() {
-  PKG_CONFIG_LIBDIR="/usr/lib/pkgconfig:/usr/share/pkgconfig"
-  if [ "${_use_mingw}" = "llvm" ]; then
-    PKG_CONFIG_LIBDIR="/opt/llvm-mingw/x86_64-w64-mingw32/lib/pkgconfig:$PKG_CONFIG_LIBDIR"
-  fi
-  export PKG_CONFIG_PATH="$PKG_CONFIG_LIBDIR" PKG_CONFIG_LIBDIR
-
   _common_64_cflags=""
   _common_32_cflags=""
   _set_vars
@@ -351,14 +349,8 @@ _set_vars64() {
 }
 
 _set_vars32() {
-  PKG_CONFIG_LIBDIR="/usr/lib32/pkgconfig:/usr/share/pkgconfig"
-  if [ "${_use_mingw}" = "llvm" ]; then
-    PKG_CONFIG_LIBDIR="/opt/llvm-mingw/i686-w64-mingw32/lib/pkgconfig:$PKG_CONFIG_LIBDIR"
-  fi
-  export PKG_CONFIG_PATH="$PKG_CONFIG_LIBDIR" PKG_CONFIG_LIBDIR
-
   ## lib32 fsync doesn't compile with clang due to undefined atomic ops otherwise (ntdll.so)
-  if [ "${_use_clang}" = "true" ]; then export I386_LIBS="-latomic"; fi
+  # if [ "${_use_clang}" = "true" ]; then export I386_LIBS="-latomic"; fi
 
   _common_64_cflags=""
   _common_32_cflags=""
@@ -505,7 +497,6 @@ prepare() { _set_vars;
 
   patchlist=()
 
-  if [ "${_use_mingw}" != "llvm" ] && [ "${_use_mingw}" != "clang" ]; then patchlist+=("${srcdir}"/mingw-gcc-float-precision-fix.patch); fi
   if [ "${_use_clang}" != "true" ]; then patchlist+=("${srcdir}"/lto-fixup.patch); fi
 
   mapfile -t patchlist_tmp < <(find "${_patchdir}" -type f -regex ".*\.patch" | LC_ALL=C sort -f)
@@ -516,6 +507,7 @@ prepare() { _set_vars;
     shortname="${patch#"${_where}/"}"
     printf "\nApplying %s\n\n" "${shortname}" >> "${_where}"/patchlog.txt
     msg2 "Applying '${shortname}'"
+    git apply --ignore-whitespace --verbose "${patch}" &>> "${_where}"/patchlog.txt || \
     patch -Np1 <"${patch}" &>> "${_where}"/patchlog.txt || \
         _failure "An error occurred applying ${shortname}, check patchlog.txt for info."
   done
@@ -698,12 +690,12 @@ package() { _set_vars;
   install -Dm 644 "${srcdir}"/wine-binfmt.conf "${pkgdir}"/usr/lib/binfmt.d/wine"${_wowname}"-spec.conf
 
   if [ "${_strip_package}" = "true" ]; then
-    msg "Stripping unneeded symbols from libraries"
+    msg "Stripping symbols from libraries"
 
     find "${pkgdir}"/opt/"${pkgname}"/lib{,64} \
       -type f '(' -iname '*.a' -or -iname '*.dll' -or -iname '*.so' -or -iname '*.sys' -or -iname '*.drv' -or -iname '*.exe' ')' \
       -print0 \
-      | xargs -0 /usr/bin/strip --strip-unneeded &>/dev/null || true
+      | xargs -0 strip -s &>/dev/null || true
   fi
 
   if [ "${_wow64build}" = "true" ]; then
