@@ -4,7 +4,7 @@
 
 pkgname=tmuxinator
 pkgver=3.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Manage complex tmux sessions easily"
 arch=(any)
 url="https://github.com/aziz/tmuxinator"
@@ -12,6 +12,7 @@ license=(MIT)
 depends=(
   'ruby'
   'ruby-erubi'
+  'ruby-erb'
   'ruby-thor'
   'ruby-xdg5'
 )
