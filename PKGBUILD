@@ -1,8 +1,9 @@
-# Maintainer: carstene1ns <arch carsten-teibes de> - http://git.io/ctPKG
+# Maintainer: Mia <46620osu gmail com>
+# Old maintainer: carstene1ns <arch carsten-teibes de> - http://git.io/ctPKG
 # Contributor: Jaume <jaume@delclos.com>
 
 pkgname=rgbds-git
-pkgver=0.3.7.r34.g5cb6c4a
+pkgver=0.9.0.rrc1.25.gcf851463
 pkgrel=1
 pkgdesc="Rednex GameBoy Development System (development version)"
 arch=('i686' 'x86_64')
@@ -13,11 +14,11 @@ conflicts=('rgbds')
 makedepends=('git')
 depends=('libpng')
 source=($pkgname::"git+https://github.com/rednex/rgbds")
-md5sums=("SKIP")
+md5sums=('SKIP')
 
 pkgver() {
   cd $pkgname
-  git describe --long --tags | sed 's/^v//;s/-/.r/;s/-/./'
+  git describe --long --tags | sed 's/^v//;s/-/.r/;s/-/./' | sed 's/-/./'
 }
 
 build() {
