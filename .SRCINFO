@@ -1,14 +1,13 @@
 pkgbase = brother-dcpl8410cdw-cups-bin
 	pkgdesc = CUPS wrapper for Brother DCP-L8410CDW printer
-	pkgver = 1.4.0
+	pkgver = 1.5.0
 	pkgrel = 1
 	url = https://support.brother.com/g/b/producttop.aspx?c=eu_ot&lang=en&prod=dcpl8410cdw_eu
 	arch = i686
 	arch = x86_64
 	groups = base-devel
 	license = EULA
-	source = https://download.brother.com/welcome/dlf103248/dcpl8410cdwcupswrapper-1.4.0-0.i386.deb
-	md5sums = 405bde4a8de6b82cfe9cd6872086ffc5
+	source = https://download.brother.com/welcome/dlf103248/dcpl8410cdwcupswrapper-1.5.0-0.i386.deb
+	md5sums = efc8971290459402de7950dee79c4d23
 
 pkgname = brother-dcpl8410cdw-cups-bin
-
