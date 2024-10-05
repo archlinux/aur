@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Night in the Woods
+Comment=Adventure game focused on exploration, story, and character, starring college dropout Mae Borowski
+Exec=night-in-the-woods
+Icon=gog-night-in-the-woods
+Type=Application
+Terminal=false
+StartupNotify=true
+Categories=Game;
+Encoding=UTF-8
