@@ -13,7 +13,7 @@ depends=('glibc')
 _pkgsrc="${pkgname}-${pkgver}"
 source=("${_pkgsrc}::git+${_url}.git#tag=v${pkgver}"
         "LICENSE.md::https://github.com/appscode/licenses/raw/1.0.0/AppsCode-Community-1.0.0.md")
-sha256sums=('SKIP'
+sha256sums=('40581d5b860e53de653729c3693bd9e454c0fe36c24f681623f6f8a68031ab0e'
             '98112798ec6560d74223511ed367c2c170a63e5cdf5855dd444009cb3c80b07c')
 
 prepare() {
@@ -28,7 +28,7 @@ build() {
   export CGO_CXXFLAGS="${CXXFLAGS}"
   export CGO_LDFLAGS="${LDFLAGS}"
   export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
-  go build -o "build/${pkgname}" -ldflags "\
+  go build -v -o "build/${pkgname}" -ldflags "\
     -X main.Version=${pkgver} \
     -X main.VersionStrategy=tag \
     -X main.GitTag=$(git describe --exact-match --abbrev=0 2>/dev/null || echo '') \
