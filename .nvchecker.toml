@@ -1,0 +1,7 @@
+[lib32-libwebp]
+source = "git"
+git = "https://chromium.googlesource.com/webm/libwebp"
+include_regex = 'v\d+(\.\d+)*'
+from_pattern = '-([a-z])'
+to_pattern = '\1'
+prefix = "v"
