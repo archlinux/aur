@@ -4,7 +4,7 @@
 
 pkgname=rgbds-git
 pkgver=0.9.0.rrc1.25.gcf851463
-pkgrel=1
+pkgrel=2
 pkgdesc="Rednex GameBoy Development System (development version)"
 arch=('i686' 'x86_64')
 url="https://github.com/rednex/rgbds/"
@@ -18,7 +18,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd $pkgname
-  git describe --long --tags | sed 's/^v//;s/-/.r/;s/-/./' | sed 's/-/./'
+  git describe --long --tags | sed 's/^v//;s/-/.r/;s/-/./g'
 }
 
 build() {
