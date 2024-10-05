@@ -1,0 +1,16 @@
+pkgbase = mympc-git
+	pkgdesc = A zsh plugin for mpc command completion
+	pkgver = r0.0
+	pkgrel = 1
+	url = https://gitlab.com/teraflops/mympc
+	install = mympc-git.install
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = zsh
+	provides = mympc
+	conflicts = mympc
+	source = git+https://gitlab.com/teraflops/mympc.git
+	sha256sums = SKIP
+
+pkgname = mympc-git
