@@ -1,0 +1,19 @@
+pkgbase = kubectl-dba-git
+	pkgdesc = kubectl plugin for KubeDB
+	pkgver = 0.48.0.r0.g6d82a89
+	pkgrel = 1
+	url = https://kubedb.com
+	arch = x86_64
+	arch = aarch64
+	license = custom:AppsCode-Community-1.0.0
+	makedepends = git
+	makedepends = go
+	depends = glibc
+	provides = kubectl-dba=0.48.0
+	conflicts = kubectl-dba
+	source = kubectl-dba::git+https://github.com/kubedb/cli.git
+	source = LICENSE.md::https://github.com/appscode/licenses/raw/1.0.0/AppsCode-Community-1.0.0.md
+	sha256sums = SKIP
+	sha256sums = 98112798ec6560d74223511ed367c2c170a63e5cdf5855dd444009cb3c80b07c
+
+pkgname = kubectl-dba-git
