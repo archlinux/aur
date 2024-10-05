@@ -1,8 +1,9 @@
-# Maintainer: Hansruedi Patzen <hp@revy.ch>
+# Maintainer: Florian Bruhin (The Compiler) <archlinux.org@the-compiler.org>  
+# Contributor: Hansruedi Patzen <hp@revy.ch>
 
 pkgname=banana9
 pkgver=9.0.5
-pkgrel=2
+pkgrel=3
 provides=('banana9')
 conflicts=('banana9')
 pkgdesc='Banana Accounting 9 Software'
@@ -31,7 +32,7 @@ package() {
 
   install -D /dev/stdin "${pkgdir}/usr/bin/${pkgname}" <<END
 #!/usr/bin/env sh
-cd ${_install_dir} && ./start_${pkgname}.sh
+cd ${_install_dir} && ./start_${pkgname}.sh "\$@"
 END
 
   install -Dm644 "${srcdir}/banico.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/banico.svg"
