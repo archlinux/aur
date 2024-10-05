@@ -1,4 +1,4 @@
-# Maintainer: teraflops cprieto.ortis@gmail.com
+# Maintainer: teraflops cprieto.ortiz@gmail.com
 
 pkgname=mympc-git
 pkgver=r0.0
