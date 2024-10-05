@@ -34,7 +34,12 @@ build() {
   cd "$_pkgname"
   export RUSTUP_TOOLCHAIN=stable # Only the eBPF build need nightly toolchain
   export ZSTD_SYS_USE_PKG_CONFIG=1
-  cargo xtask build --release 
+  cargo xtask build --release
+  local compgen="target/release/$_pkgname generate-completions"
+  $compgen bash >"completions/$_pkgname"
+  $compgen elvish >"completions/$_pkgname.elv"
+  $compgen fish >"completions/$_pkgname.fish"
+  $compgen zsh >"completions/_$_pkgname"
 }
 
 check() {
@@ -55,6 +60,11 @@ package() {
   # Config
   install -dm755 "$pkgdir/etc/ttyrecall"
   install -Dm644 -t "$pkgdir/etc/ttyrecall" etc/daemon.toml
+  # Shell completions
+  install -Dm644 "completions/$_pkgname" -t "$pkgdir/usr/share/bash-completion/completions/"
+  install -Dm644 "completions/$_pkgname.elv" -t "$pkgdir/usr/share/elvish/lib/"
+  install -Dm644 "completions/$_pkgname.fish" -t "$pkgdir/usr/share/fish/vendor_completions.d/"
+  install -Dm644 "completions/_$_pkgname" -t "$pkgdir/usr/share/zsh/site-functions/"
   # Docs
   install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
   # License
