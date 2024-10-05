@@ -13,7 +13,7 @@ provides=("exif-cleaner-gui")
 conflicts=("exif-cleaner-gui")
 depends=("gtk3" "libgexiv2")
 source=("https://codeberg.org/paulollivier/exif-cleaner-gui/releases/download/v$pkgver/exif-cleaner-gui-$pkgver-x86_64.tar.gz")
-sha256sums=("7ae6ad65f1ac179bdc8000cd980cd77beec6fc46804b6d510c1e830bc42e80ba")
+sha256sums=("c72db6189d7c84564ec46a63dec114da4f6ec3d58e543bbff4bad7ba879ab8ac")
 
 package() {
     install -Dm755 exif-cleaner-gui -t "$pkgdir/usr/bin"
