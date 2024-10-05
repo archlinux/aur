@@ -1,7 +1,7 @@
 pkgbase = prboom-plus
 	pkgdesc = An advanced, Vanilla-compatible Doom engine based on PrBoom
 	pkgver = 2.6.66
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/coelckers/prboom-plus
 	arch = x86_64
 	license = GPL2

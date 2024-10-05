@@ -5,7 +5,7 @@
 
 pkgname=prboom-plus
 pkgver=2.6.66
-pkgrel=1
+pkgrel=2
 pkgdesc='An advanced, Vanilla-compatible Doom engine based on PrBoom'
 url='https://github.com/coelckers/prboom-plus'
 arch=('x86_64')
@@ -40,7 +40,11 @@ build() {
   mkdir -p "${_builddir}"
   cd "${_builddir}"
 
-  cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release ../
+  cmake \
+    -Wno-dev \
+    -DCMAKE_C_FLAGS="-Wno-error=incompatible-pointer-types" \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_BUILD_TYPE=Release ../
   make
 }
 
