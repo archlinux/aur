@@ -2,6 +2,7 @@
 # Contributor: Thomas Krug <t.krug@elektronenpumpe.de>
 # Contributor: veox <veox at wemakethings dot net>
 # Contributor: megamoth
+# Contributor: xorly
 
 _gitname='pulseview'
 pkgname="${_gitname}-git"
