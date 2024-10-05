@@ -10,7 +10,7 @@
 
 pkgname=vagrant
 pkgver=2.4.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Build and distribute virtualized development environments"
 arch=('x86_64')
 url="https://vagrantup.com"
@@ -22,17 +22,26 @@ makedepends=('git' 'go')
 optdepends=('dnsmasq: if using libvirt')
 conflicts=('vagrant-substrate')
 replaces=('vagrant-substrate')
-source=($pkgname-$pkgver.tar.gz::https://github.com/hashicorp/$pkgname/archive/v$pkgver.tar.gz
+source=("$pkgname-$pkgver.tar.gz::https://github.com/hashicorp/$pkgname/archive/v$pkgver.tar.gz"
         "git+https://github.com/hashicorp/vagrant-installers.git#commit=7bcf4d4")
 sha256sums=('19cfa306e3ffae5ddbf30504f61a1a3124aa9a87721b130a14098d4ea1febf89'
-            'SKIP')
+            '6a12657a82226a942ca57f5b3a6f3684d312fe1ef6f876dfb6c246b7e757aa26')
 
 prepare() {
-  cd vagrant-installers
+  pushd "${pkgname}-${pkgver}"
+
+  # update gemspec/Gemfile to allow newer version of the dependencies
+  sed --in-place --regexp-extended 's|~>|>=|g' "${pkgname}.gemspec"
+
+  popd
+  pushd vagrant-installers
+
   local _gemdir="$(gem env gemdir)"
 
   # Allow Vagrant to see the system gems as these have been de-vendored from the ruby package
   sed -i "s_embeddedDir, \"gems\")_embeddedDir, \"gems:$_gemdir\")_g" substrate/launcher/main.go
+
+  popd
 }
 
 build() {
