@@ -1,0 +1,14 @@
+pkgbase = ebus
+	pkgdesc = An event bus that allows for inter-process communication by emitting and polling events on channels
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/Tylo-6/ebus
+	arch = x86_64
+	license = GPL-3.0
+	makedepends = gcc
+	depends = glibc
+	options = !debug
+	source = https://github.com/Tylo-6/eBus/archive/refs/tags/v1.0.1-release.tar.gz
+	sha256sums = SKIP
+
+pkgname = ebus
