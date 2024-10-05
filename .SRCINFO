@@ -1,0 +1,23 @@
+pkgbase = jupyterlab-autosave-on-focus-change
+	pkgdesc = JupyterLab extension to autosave files on focus change
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/s-weigand/jupyterlab_autosave_on_focus_change
+	arch = any
+	license = BSD-3-Clause
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	makedepends = python-jupyter-packaging
+	makedepends = python-hatchling
+	makedepends = python-hatch-nodejs-version
+	makedepends = python-hatch-jupyter-builder
+	makedepends = npm
+	depends = jupyterlab
+	source = jupyterlab-autosave-on-focus-change-0.4.0.tar.gz::https://github.com/s-weigand/jupyterlab_autosave_on_focus_change/archive/refs/tags/v0.4.0.tar.gz
+	source = install.json
+	sha256sums = d092c0eaadf17288990b47c690be76cc2a0133d3d70db631d2c15ae7040b14d5
+	sha256sums = 5ae4dc788e815001de85448b35358ab5e3b8862ce7029cca4288c8a8227bb98b
+
+pkgname = jupyterlab-autosave-on-focus-change

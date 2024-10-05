@@ -1,0 +1,5 @@
+{
+  "packageManager": "pacman",
+  "packageName": "jupyterlab-autosave-on-focus-change",
+  "uninstallInstructions": "Use pacman to uninstall the package jupyterlab-autosave-on-focus-change"
+}
