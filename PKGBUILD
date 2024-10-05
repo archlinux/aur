@@ -164,7 +164,7 @@ depends=(
   libpulse
   bash
   ffmpeg
-  NTSYNC-MODULE
+  ntsync-dkms
 )
 
 makedepends=(autoconf bison ccache perl fontforge flex
