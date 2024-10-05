@@ -2,11 +2,11 @@
 
 pkgname=gcap2022
 pkgver=2022.1.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Brazilian physical person income tax (IRPF) auxiliary program for calculation of capital gains (2022 version)'
 arch=('any')
-url='https://www.gov.br/pt-br/servicos/apurar-imposto-sobre-ganhos-de-capital'
-license=('custom')
+url='https://www.gov.br/receitafederal/pt-br/centrais-de-conteudo/download/pgd/gcap'
+license=('LicenseRef-Custom')
 depends=('sh' 'java-runtime=11' 'hicolor-icon-theme')
 makedepends=('icoutils')
 source=("https://downloadirpf.receita.fazenda.gov.br/irpf/${pkgver%%.*}/gcap/GCAP${pkgver%%.*}v${pkgver#*.}-v2.zip"
@@ -14,7 +14,7 @@ source=("https://downloadirpf.receita.fazenda.gov.br/irpf/${pkgver%%.*}/gcap/GCA
         'gcap.sh'
         'LICENSE')
 sha256sums=('4f03d397e05b53f364b36084e2174584470263261c61f8acb97a1b74704ba5f2'
-            '79e86047741ccc153c2e6b6842cbf8725977c9202a0b9081f647e3c30fde1e43'
+            '3002cd342c2673eae262c05c0b04f2d8acecd96123d731df1b83f75be1c6b24a'
             'fbe0d3aa1e0260200f0465a0f12434c6fdf5e7dc28d65e47adf1dc21dbd7b539'
             'a406e102e2c10c202bd7a0ba775b004c0f04440544db73ce6923172a62aacd67')
 

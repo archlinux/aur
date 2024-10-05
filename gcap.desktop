@@ -5,6 +5,7 @@ Comment=Programa de Apuração dos Ganhos de Capital (versão 2022)
 Path=/usr/bin
 Exec=gcap-2022
 Icon=gcap-2022
+StartupWMClass=br-gov-serpro-gcap-app-PGDGCAP
 Terminal=false
 StartupNotify=false
 Type=Application
