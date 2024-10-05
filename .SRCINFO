@@ -1,6 +1,6 @@
 pkgbase = python-jwst
 	pkgdesc = Library for calibration of science observations from the James Webb Space Telescope
-	pkgver = 1.15.1
+	pkgver = 1.16.0
 	pkgrel = 1
 	url = https://jwst-pipeline.readthedocs.io
 	arch = i686
@@ -10,7 +10,7 @@ pkgbase = python-jwst
 	makedepends = python-wheel
 	makedepends = python-build
 	makedepends = python-installer
-	makedepends = python-numpy
+	makedepends = python-numpy>=2.0
 	makedepends = python-sphinx-automodapi
 	makedepends = python-sphinx_rtd_theme
 	makedepends = python-psutil
@@ -30,8 +30,8 @@ pkgbase = python-jwst
 	makedepends = python-wiimatch
 	makedepends = graphviz
 	makedepends = texlive-latexextra
-	source = https://files.pythonhosted.org/packages/source/j/jwst/jwst-1.15.1.tar.gz
-	md5sums = 1ba8f055fe5c8beab5d4f7bf0fdd1262
+	source = https://files.pythonhosted.org/packages/source/j/jwst/jwst-1.16.0.tar.gz
+	md5sums = 0e76a1a3a354a054dc43800f62bd1205
 
 pkgname = python-jwst
 	depends = python-asdf>=3.1.0
@@ -50,13 +50,13 @@ pkgname = python-jwst
 	depends = python-scikit-image>=0.19
 	depends = python-scipy>=1.9.3
 	depends = python-spherical_geometry>=1.2.22
-	depends = python-stcal>=1.7.3
-	depends = python-stdatamodels>=2.0.0
-	depends = python-stpipe>=0.6.0
+	depends = python-stcal>=1.9.0
+	depends = python-stdatamodels>=2.1.0
+	depends = python-stpipe>=0.7.0
 	depends = python-stsci.image>=2.3.5
 	depends = python-stsci.imagestats>=1.6.3
 	depends = python-synphot>=1.2
-	depends = python-tweakwcs>=0.8.6
+	depends = python-tweakwcs>=0.8.8
 	depends = python-asdf-astropy>=0.3.0
 	depends = python-wiimatch>=0.2.1
 	depends = python-packaging>20.0

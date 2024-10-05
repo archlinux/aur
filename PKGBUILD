@@ -3,7 +3,7 @@
 pkgbase=python-jwst
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}" "python-${_pyname}-doc")
-pkgver=1.15.1
+pkgver=1.16.0
 pkgrel=1
 pkgdesc="Library for calibration of science observations from the James Webb Space Telescope"
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ makedepends=('python-setuptools-scm>=3.4'
              'python-wheel'
              'python-build'
              'python-installer'
-             'python-numpy'
+             'python-numpy>=2.0'
              'python-sphinx-automodapi'
              'python-sphinx_rtd_theme'
              'python-psutil'
@@ -41,11 +41,11 @@ makedepends=('python-setuptools-scm>=3.4'
 #              'rsync'
 #              ) # psutil, bayesicfitting, drizzle, jsonschema, photutil, poppy, skimage, stcal, stdatamodel, stpipe, synphot, tweakwcs, wiimatch already in makedepends
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('1ba8f055fe5c8beab5d4f7bf0fdd1262')
+md5sums=('0e76a1a3a354a054dc43800f62bd1205')
 
 get_pyinfo() {
-     [[ $1 == "site" ]] && python -c "import site; print(site.getsitepackages()[0])" || \
-             python -c "import sys; print('$1'.join(map(str, sys.version_info[:2])))"
+    [[ $1 == "site" ]] && python -c "import site; print(site.getsitepackages()[0])" || \
+        python -c "import sys; print('$1'.join(map(str, sys.version_info[:2])))"
 }
 
 build() {
@@ -64,12 +64,12 @@ build() {
 #    # Takes long time
 #    mkdir -p .crds/config/jwst
 #    touch .crds/config/jwst/server_config
-#    python -m installer --destdir=tmp_install dist/*.whl
-#    rm -r tmp_install/usr/lib pytest_crds
+##    python -m installer --destdir=tmp_install dist/*.whl
+##    rm -r tmp_install/usr/lib pytest_crds
 #    for sos in $(find build -name '*.so' | sed "s:build/lib.linux-${CARCH}-cpython-$(get_pyinfo)/::g"); do
 #        cp -v {build/lib.linux-${CARCH}-cpython-$(get_pyinfo)/,}$sos
 #    done
-#    CRDS_PATH=".crds" CRDS_SERVER_URL=https://jwst-crds.stsci.edu PATH="${PWD}/tmp_install/usr/bin:${PATH}" \
+#    CRDS_PATH=".crds" CRDS_SERVER_URL=https://jwst-crds.stsci.edu CRDS_CONTEXT=jwst_1281.pmap PATH="${PWD}/tmp_install/usr/bin:${PATH}" \
 #        PYTHONPATH="build/lib.linux-${CARCH}-cpython-$(get_pyinfo)" pytest -vv -l -ra --color=yes -o console_output_style=count -p xdist -n 4 \
 #        --ignore=jwst/refpix/tests/test_refpix.py \
 #        --ignore=jwst/resample/tests/test_resample_step.py \
@@ -133,13 +133,13 @@ package_python-jwst() {
              'python-scikit-image>=0.19'
              'python-scipy>=1.9.3'
              'python-spherical_geometry>=1.2.22'
-             'python-stcal>=1.7.3'
-             'python-stdatamodels>=2.0.0'
-             'python-stpipe>=0.6.0'
+             'python-stcal>=1.9.0'
+             'python-stdatamodels>=2.1.0'
+             'python-stpipe>=0.7.0'
              'python-stsci.image>=2.3.5'
              'python-stsci.imagestats>=1.6.3'
              'python-synphot>=1.2'
-             'python-tweakwcs>=0.8.6'
+             'python-tweakwcs>=0.8.8'
              'python-asdf-astropy>=0.3.0'
              'python-wiimatch>=0.2.1'
              'python-packaging>20.0'
