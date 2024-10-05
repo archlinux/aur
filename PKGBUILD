@@ -16,7 +16,7 @@ makedepends=(
 )
 #checkdepends=(
 #  'python-pytest-black'
-#  'python-pytest-cov'
+#  'python-pytest'
 #  'python-pytest-pylint'  ## Dropped to AUR
 #)
 source=("$_name-$pkgver.tar.gz::https://github.com/irgeek/StrEnum/archive/refs/tags/v$pkgver.tar.gz"
