@@ -2,14 +2,15 @@ pkgbase = inja
 	pkgdesc = A template engine for modern C++.
 	pkgver = 3.4.0
 	pkgrel = 1
-	url = https://github.com/Spixmaster/inja
+	url = https://github.com/pantor/inja
 	arch = any
 	license = MIT
 	checkdepends = doctest
 	makedepends = cmake
 	makedepends = doxygen
+	makedepends = git
 	depends = nlohmann-json
-	source = inja::git+https://github.com/Spixmaster/inja.git#tag=17eb440d6792960c1a56d2b8832b9edd23eadab3
+	source = inja::git+https://github.com/pantor/inja.git#tag=fddbfce5a303eeda806982fea671aa3d20a08bcb
 	sha512sums = SKIP
 
 pkgname = inja

@@ -5,17 +5,17 @@
 # Maintainer: Matheus <matheusgwdl@protonmail.com>
 # Contributor: Matheus <matheusgwdl@protonmail.com>
 
-declare -r _tag="17eb440d6792960c1a56d2b8832b9edd23eadab3"
+declare -r _tag="fddbfce5a303eeda806982fea671aa3d20a08bcb"
 
 pkgname="inja"
 pkgver="3.4.0"
 pkgrel="1"
 pkgdesc="A template engine for modern C++."
 arch=("any")
-url="https://github.com/Spixmaster/${pkgname}"
+url="https://github.com/pantor/${pkgname}"
 license=("MIT")
 depends=("nlohmann-json")
-makedepends=("cmake" "doxygen")
+makedepends=("cmake" "doxygen" "git")
 checkdepends=("doctest")
 source=("${pkgname}::git+${url}.git#tag=${_tag}")
 sha512sums=("SKIP")
@@ -23,7 +23,6 @@ sha512sums=("SKIP")
 _compile()
 {
     cmake -B "${srcdir}"/"${pkgname}"/build/ \
-        -D BUILD_BENCHMARK=OFF \
         -D BUILD_TESTING="$1" \
         -D CMAKE_BUILD_TYPE=None \
         -D CMAKE_INSTALL_PREFIX=/usr/ \
