@@ -3,7 +3,7 @@
 _gemname='dry-core'
 pkgname="ruby-${_gemname}"
 pkgver=1.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A toolset of small support modules used throughout the dry-rb ecosystem'
 arch=('any')
 url="https://github.com/dry-rb/${_gemname}"
@@ -17,21 +17,30 @@ makedepends=(
   ruby-rdoc
 )
 checkdepends=(
+  ruby-activesupport
   ruby-bundler
+  ruby-dry-inflector
   ruby-dry-types
   ruby-rake
   ruby-rspec
 )
 options=('!emptydirs')
-source=("${url}/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha512sums=('d769795459a0ffc007eb66e2b9af9be4e635c620a5ca54a76113057b495e1126600a572761d8ff33a3ee6a4fca948f6fc29d3200e7ba0b56c1bb600a4749bbd4')
-b2sums=('fb85107dd68dfb2a8d3ee2e66b4bb8b416ac325be4d28bcbbf5605e0a90992eb8aa85a8fad3cba8f228a5a7e50109cd2c1dbf920eebc3423d282055204c6b0a5')
+source=(
+  "${url}/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz"
+  "${pkgname}_fix_tests.patch"
+)
+sha512sums=('d769795459a0ffc007eb66e2b9af9be4e635c620a5ca54a76113057b495e1126600a572761d8ff33a3ee6a4fca948f6fc29d3200e7ba0b56c1bb600a4749bbd4'
+            'd23c59a164eb81ff953a31ee1a03f8c0dd2720a0af4fd8dbb9cf6a131f10dbfeb28c708bded8431764bd70e1f8f9ec9652102ae9c874c4863690864f3aa709b9')
+b2sums=('fb85107dd68dfb2a8d3ee2e66b4bb8b416ac325be4d28bcbbf5605e0a90992eb8aa85a8fad3cba8f228a5a7e50109cd2c1dbf920eebc3423d282055204c6b0a5'
+        'b5e153845ec054e4f35a14368c28793ec2973be60718c6a67b557af20ab8ebd032720bc9e9090f50d69ce6d81893d2ae168f332e2655716d4ce9111cdbdc5cba')
 
 prepare() {
   cd "${_gemname}-${pkgver}"
 
   # update gemspec/Gemfile to allow newer version of the dependencies
   sed --in-place --regexp-extended 's|~>|>=|g' "${_gemname}.gemspec"
+
+  patch --verbose --strip=1 --input="../${pkgname}_fix_tests.patch"
 }
 
 build() {

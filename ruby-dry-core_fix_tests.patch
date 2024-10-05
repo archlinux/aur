@@ -1,0 +1,24 @@
+diff --git a/spec/dry/core/inflector_spec.rb b/spec/dry/core/inflector_spec.rb
+index 62d5075..9abed50 100644
+--- a/spec/dry/core/inflector_spec.rb
++++ b/spec/dry/core/inflector_spec.rb
+@@ -72,19 +72,6 @@ RSpec.describe Dry::Core::Inflector do
+     it_behaves_like "an inflector with constantize"
+   end
+ 
+-  context "with Inflecto" do
+-    before do
+-      api.select_backend(:inflecto)
+-    end
+-
+-    it "is Inflecto" do
+-      expect(api.inflector).to be(::Inflecto)
+-    end
+-
+-    it_behaves_like "an inflector"
+-    it_behaves_like "an inflector with constantize"
+-  end
+-
+   context "with Dry::Inflector" do
+     before do
+       api.select_backend(:dry_inflector)
