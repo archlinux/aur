@@ -1,21 +1,24 @@
 # Maintainer: Cyril Waechter <cyril[at]biminsight[dot]ch>
 pkgname=ifcopenshell
-pkgver=0.8.1_alpha240902
+pkgver=0.8.1_alpha241011
 _vername=bonsai
 pkgrel=1
 pkgdesc="Open source IFC library and geometry engine. Provides static libraries, python3 wrapper and blender addon."
 arch=('x86_64' 'i686')
-url="http://ifcopenshell.org/"
+url="https://ifcopenshell.org/"
 license=('LGPL-3.0-or-later' 'GPL-3.0-or-later')
 depends=(
   'boost-libs'
   'hdf5'
+  'hicolor-icon-theme'
   'mpfr'
   'opencascade'
   'opencollada'
   'python'
   'python-numpy'
+  'python-jinja'
   'python-ordered-set'
+  'python-pytz'
   'python-typing_extensions'
   'python-requests'
 
@@ -62,26 +65,24 @@ source=("https://github.com/IfcOpenShell/IfcOpenShell/archive/refs/tags/${_verna
   "bpypolyskel-1.1.2.tar.gz::https://github.com/prochitecture/bpypolyskel/archive/refs/tags/v1.1.2.tar.gz"
 
   "001-libsvgfill.patch::https://github.com/sukanka/svgfill/commit/af69c5c.patch"
-  "002-add-shared-libs.patch::https://github.com/sukanka/IfcOpenShell/commit/011088e.patch"
-  "003-install-cityjson-files.patch::https://github.com/sukanka/IfcOpenShell/commit/56766cc.patch"
-  "004-skip-install-python-package-only-install-wrapper.patch::https://github.com/sukanka/IfcOpenShell/commit/b7e6f1c.patch"
-  "005-only-install-headers-for-serializer.patch::https://github.com/sukanka/IfcOpenShell/commit/208ab42.patch"
-  "006-fix-rpath.patch::https://github.com/sukanka/IfcOpenShell/commit/614b511.patch"
-  "007-install-missing-libs.patch::https://github.com/sukanka/IfcOpenShell/commit/f48c261.patch"
+  "002-fix-for-cgal6.0.patch::https://github.com/sukanka/IfcOpenShell/commit/02c9034.patch"
+  "003-skip-install-python-package-only-install-wrapper.patch::https://github.com/sukanka/IfcOpenShell/commit/725d509.patch"
+  "004-add-shared-libs.patch::https://github.com/sukanka/IfcOpenShell/commit/0a6ff03.patch"
+  "005-install-missing-files-skip-redundant-files.patch::https://github.com/sukanka/IfcOpenShell/commit/fcc902b.patch"
+  "006-fix-rpath.patch::https://github.com/sukanka/IfcOpenShell/commit/96b6f8d.patch"
 
 )
-sha256sums=('8761f240ef3e304b09914b0d509e3af1802b19cb020e57608704438c4dcc9bcf'
+sha256sums=('04927b77b4cadcdcd1ae0cb88979449255025e808dab007ca50532d9f74e6b28'
             'SKIP'
             'SKIP'
             'SKIP'
             'f000262395449808c32e10664468ec2acd2a22e04b202037f15e03611506cfc5'
             'c673bc7a6e6cdb7288577c9a98fa864ebf5d5800ae948b5fd41165004e29d992'
-            '44fd888bd2e41820771aab12a431577396036057520ab53989d69e6a62666415'
-            '0d82930b081ffeef87cdad4b4392119029de447b9f76cb99398b44d5b4d4c536'
-            '75976c985b8d8a04f5a44ef3c22b9b9bb594809670baef8e7e00d67e86d1fd19'
-            '5196b4fcc96e277640f46a37afb2989c96afd211e6624d6d798a1fef59c7e778'
-            '8aa5b33acef30fc024e4cbbd965bf0cb367ec597b2ade1090fa39e9c69c74926'
-            '571efebfa39ed08495deaed18c0198cbaf62f2d4bfcf678a7443bbf2ad7d1f10')
+            'ed53b683ccf6ca7e114558a3c75cdc97fe5e4935712ce7c7499738dd39edaea7'
+            'b18d6a595985e066e070373c2f8a6e8c9a18666ce46156cdc532d29292da85e5'
+            '8604fb3c0f733839435e2d6c91b2b5abaa5198ad3f034121fa10145ac9763919'
+            'edb7d3610d52e05cdaf98b7c2939b2deeabfed238fee641d0c62b30b88a878b4'
+            '75504aabcc4c05d058537a3bfc6384ca242732c71e15c4f716783eebbdb06f83')
 
 _iosdir="IfcOpenShell-${_vername}-${pkgver//_/-}"
 
@@ -91,19 +92,23 @@ prepare() {
   cp -ar svgfill/* ${_iosdir}/src/svgfill
   cp -ar ifc-to-cityjson/* ${_iosdir}/src/ifcconvert/cityjson
   cd ${_iosdir}
-  patch --strip=1 --ignore-whitespace <../002-add-shared-libs.patch
-  patch --strip=1 --ignore-whitespace <../003-install-cityjson-files.patch
-  patch --strip=1 --ignore-whitespace <../004-skip-install-python-package-only-install-wrapper.patch
-  patch --strip=1 --ignore-whitespace <../005-only-install-headers-for-serializer.patch
+  patch --strip=1 --ignore-whitespace <../002-fix-for-cgal6.0.patch
+  patch --strip=1 --ignore-whitespace <../003-skip-install-python-package-only-install-wrapper.patch
+  patch --strip=1 --ignore-whitespace <../004-add-shared-libs.patch
+  patch --strip=1 --ignore-whitespace <../005-install-missing-files-skip-redundant-files.patch
   patch --strip=1 --ignore-whitespace <../006-fix-rpath.patch
-  patch --strip=1 --ignore-whitespace <../007-install-missing-libs.patch
   pushd src/svgfill
   patch --strip=1 --ignore-whitespace <${srcdir}/001-libsvgfill.patch
   popd
   sed -i src/ifcwrap/CMakeLists.txt -e 's|libsvgfill|svgfill|g'
+  sed -i 's|AABB_traits|AABB_traits_3|g' \
+    src/ifcconvert/validate_space_boundaries.cpp \
+    src/ifcconvert/validation_utils.h \
+    src/ifcconvert/cityjson/global_execution_context.h
 }
 _build_pymodules() {
-  cd "${srcdir}/${_iosdir}"
+
+  pushd "${srcdir}/${_iosdir}"
   find src -name '*.py' -o -name '*.toml' | xargs sed -i "/version =/s/0.0.0/${pkgver//_/-}/g"
   for _dir in src/*; do
     if [ ! -d ${_dir} ]; then
@@ -115,15 +120,14 @@ _build_pymodules() {
     fi
     popd
   done
+  popd
 }
 build() {
-  cd "${srcdir}/${_iosdir}"
   _build_pymodules
-
   install -d build
 
   local CMAKE_ARGS=(
-    -S ./cmake
+    -S ${_iosdir}/cmake
     -B build
     -G Ninja
     -DEIGEN_DIR=/usr/include/eigen3
@@ -152,7 +156,7 @@ build() {
 package() {
   _blender_ver=$(blender --version | grep -Po 'Blender \K[0-9].[0-9]+')
   _python_ver=$(python --version | grep -Po 'Python \K[0-9].[0-9]+')
-  cd "${srcdir}/${_iosdir}/build"
+  cd "${srcdir}/build"
   DESTDIR="$pkgdir" ninja install
 
   # Install license file
@@ -165,7 +169,7 @@ package() {
 
   # extra modules that does not build whl
   cp -rf src/{ifc2ca,ifcsverchok} ${pkgdir}/usr/lib/python${_python_ver}/site-packages
-  cp -rf build/ifcwrap/{ifcopenshell_wrapper.py,*.so} ${pkgdir}/usr/lib/python${_python_ver}/site-packages/ifcopenshell
+  cp -rf "${srcdir}"/build/ifcwrap/{ifcopenshell_wrapper.py,*.so} ${pkgdir}/usr/lib/python${_python_ver}/site-packages/ifcopenshell
 
   # provides blender extension
   install -d "${pkgdir}/usr/share/blender/${_blender_ver}/extensions/system"
