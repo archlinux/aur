@@ -1,0 +1,20 @@
+pkgbase = rl_custom_rime
+	pkgdesc = rime for readline
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/Freed-Wu/rl_custom_rime
+	arch = i686
+	arch = x86_64
+	arch = arm
+	arch = aarch64
+	license = GPL3
+	makedepends = xmake
+	makedepends = git
+	depends = librime
+	depends = glib2
+	depends = readline
+	depends = rl_custom_function
+	source = https://github.com/Freed-Wu/rl_custom_rime/archive/0.0.1.tar.gz
+	sha256sums = 0e38134d2c13db47bd4f47398f8a7c619e1137c6032e6fed3ebfd6c3bbea6188
+
+pkgname = rl_custom_rime
