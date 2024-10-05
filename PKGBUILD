@@ -4,7 +4,7 @@ pkgname=chez-srfi
 _pkgname=chez-srfi
 pkgdesc='SRFI for ChezScheme'
 pkgver=1.2
-pkgrel=1
+pkgrel=2
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url='https://github.com/shih-liang/chez-srfi'
 license=('MIT')
@@ -15,10 +15,10 @@ provides=('chez-srfi')
 
 build(){
   cd ${_pkgname}-${pkgver}
-  make CHEZ=scheme
+  make CHEZ=chez
 }
 package(){
   cd ${_pkgname}-${pkgver}
-  make install CHEZ=scheme PREFIX=${pkgdir}/usr
+  make install CHEZ=chez PREFIX=${pkgdir}/usr
 }
 
