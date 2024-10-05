@@ -1,7 +1,7 @@
 pkgbase = xfconf-git
 	pkgdesc = D-Bus-based configuration storage system - git checkout
 	pkgver = 4.19.2+14+g4593943
-	pkgrel = 2
+	pkgrel = 3
 	url = https://docs.xfce.org/xfce/xfconf/start
 	arch = i686
 	arch = x86_64

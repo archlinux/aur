@@ -7,7 +7,7 @@
 _pkgname=xfconf
 pkgname="${_pkgname}-git"
 pkgver=4.19.2+14+g4593943
-pkgrel=2
+pkgrel=3
 pkgdesc="D-Bus-based configuration storage system - git checkout"
 arch=('i686' 'x86_64')
 url="https://docs.xfce.org/xfce/${_pkgname}/start"
