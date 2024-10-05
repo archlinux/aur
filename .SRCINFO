@@ -1,6 +1,6 @@
 pkgbase = pbfetch-git
 	pkgdesc = An unbelievably customizable hardware/software fetch
-	pkgver = r314.74ad06c
+	pkgver = r355.dac032a
 	pkgrel = 1
 	url = https://github.com/pennybelle/pbfetch
 	arch = x86_64
@@ -12,6 +12,7 @@ pkgbase = pbfetch-git
 	makedepends = python-hatchling
 	makedepends = git
 	depends = python-psutil
+	depends = tk
 	provides = pbfetch-git
 	conflicts = pbfetch-git
 	source = git+https://github.com/pennybelle/pbfetch.git#branch=main
