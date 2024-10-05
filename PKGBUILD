@@ -2,7 +2,7 @@
 pkgname=python-jaraco.vcs
 _name=${pkgname#python-}
 pkgver=2.4.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Facilities for working with VCS repositories"
 arch=('any')
 url="https://github.com/jaraco/jaraco.vcs"
@@ -25,7 +25,6 @@ makedepends=(
 checkdepends=(
   'python-pygments'
   'python-pytest'
-  'python-pytest-cov'
   'python-pytest-enabler'
   'python-pytest-home'
   'python-pytest-mypy'

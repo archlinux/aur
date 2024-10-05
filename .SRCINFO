@@ -1,13 +1,12 @@
 pkgbase = python-jaraco.vcs
 	pkgdesc = Facilities for working with VCS repositories
 	pkgver = 2.4.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/jaraco/jaraco.vcs
 	arch = any
 	license = MIT
 	checkdepends = python-pygments
 	checkdepends = python-pytest
-	checkdepends = python-pytest-cov
 	checkdepends = python-pytest-enabler
 	checkdepends = python-pytest-home
 	checkdepends = python-pytest-mypy
