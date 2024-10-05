@@ -3,11 +3,11 @@
 # Contributor: Márcio Sousa Rocha <marciosr10@gmail.com>
 
 pkgname=irpf
-pkgver=2024.1.4
+pkgver=2024.1.5
 pkgrel=1
 pkgdesc='Brazilian physical person income tax (IRPF) program'
 arch=('any')
-url='https://www.gov.br/receitafederal/pt-br/assuntos/meu-imposto-de-renda'
+url='https://www.gov.br/receitafederal/pt-br/centrais-de-conteudo/download/pgd/dirpf'
 license=('LicenseRef-Custom')
 depends=('sh' 'java-runtime=11' 'hicolor-icon-theme')
 optdepends=('gvfs: for importing pre-filled data from a gov.br account')
@@ -16,7 +16,7 @@ source=("https://downloadirpf.receita.fazenda.gov.br/irpf/${pkgver%%.*}/irpf/arq
         'irpf.desktop'
         'irpf.sh'
         'LICENSE')
-sha256sums=('dd83bc4d67efb753000531768ec0cf74b56656108b5e10086e19e6767804fbf1'
+sha256sums=('dd5dc4d72d18810832a591183cf77f6b3bb988f93d6c094e75be6511f7e4a628'
             '129071a957742e0a3703e3952745b5491698d9cd855daa6c3e174658989e6e90'
             '38a727fe91acce9192fad3cc0235e6110e14279f32ee8efbc45a008cc03eb81f'
             'a406e102e2c10c202bd7a0ba775b004c0f04440544db73ce6923172a62aacd67')
