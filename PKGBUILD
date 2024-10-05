@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=exomePeak2
-_pkgver=1.16.1
+_pkgver=1.16.2
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -37,8 +37,8 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('22545283967d3dc6c3362b2d2fe9ae27')
-b2sums=('ac5c9c3eb7c0e202ed8c750c28a710d4699c4bf0f5cc8bba6fe4c3b6b1981765a116456445e1fb02e2a8293c8f28de3c9490490e98f65bdf89114c35b77a7197')
+md5sums=('4d505f936ac0a6e6baa89b2a8624bb74')
+b2sums=('c80d039c80e139cde002f7f136e434e078aadbf3e457cbedebf4d95c6a8757b6b8df7a39a15fb87a02eadf9951ffee1d916dba9d701f6e310128c861ced7a806')
 
 build() {
   mkdir build
