@@ -2,7 +2,7 @@
 # Contributor: n0vella <n0vella@outlook.com>
 
 pkgname=cardo-git
-pkgver=1.6.0.r2.ge71d0d2
+pkgver=1.7.0.r0.geea8258
 pkgrel=1
 pkgdesc='Podcast client inspired by the Antennapod Android app'
 arch=(x86_64)
@@ -30,7 +30,7 @@ build() {
 
 package() {
   local version
-  version="$(jq --raw-output '.version' $pkgname/package.json)"
+  version="$(jq --raw-output '.package.version' $pkgname/src-tauri/tauri.conf.json)"
   version="${version:-VERSION_NOT_FOUND}"
 
   cp -rT "$pkgname/src-tauri/target/release/bundle/deb/${pkgname%-git}_${version}_amd64/data" "$pkgdir"
