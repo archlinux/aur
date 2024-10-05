@@ -1,11 +1,11 @@
 pkgbase = wallheaven
 	pkgdesc = wallheaven is a CLI tool for fetching random wallpapers from wallhaven.cc.
-	pkgver = 1.1.0
-	pkgrel = 1
+	pkgver = 1.1.1
+	pkgrel = 2
 	url = https://github.com/davenicholson-xyz/wallheaven
 	arch = x86_64
 	license = MIT
-	source = https://github.com/davenicholson-xyz/wallheaven/releases/download/v1.1.0/wallheaven-x86_64-unknown-linux-gnu.tar.xz
-	sha256sums = a6f40cc0cef4502a4c895382748a08314e376d2c68ab897c99e9d421af58ce6f
+	source = https://github.com/davenicholson-xyz/wallheaven/releases/download/v1.1.1/wallheaven-x86_64-unknown-linux-gnu.tar.xz
+	sha256sums = 2fd719ddaafdab77885b07fe90c8a98f29f719875a478090777c710c79b5b13c
 
 pkgname = wallheaven
