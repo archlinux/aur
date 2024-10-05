@@ -4,7 +4,7 @@
 
 pkgname=exif-cleaner-gui-bin
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A graphical EXIF data cleaner using gtk3"
 url="https://codeberg.org/paulollivier/exif-cleaner-gui"
 license=("AGPL-3.0-or-later")
