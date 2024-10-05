@@ -8,7 +8,7 @@ arch=('any')
 license=('Zlib')
 depends=('mingw-w64-crt')
 makedepends=('mingw-w64-cmake' 'ninja')
-options=('staticlibs' '!buildflags' '!strip')
+options=('!debug' '!buildflags' '!strip' 'staticlibs')
 source=("https://github.com/libsdl-org/SDL/releases/download/preview-${pkgver}/SDL3-${pkgver}.tar.xz")
 b2sums=('3daca77f7f1c7134272dd9bab70f5086d72f02093f3c588daf3e847e073251c8718238b46dc8e1a53c8e008df7441bd2d258b8d4950c42453a29d6e944db8cb2')
 
