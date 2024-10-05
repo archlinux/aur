@@ -1,0 +1,4 @@
+[smtprelay]
+source = "git"
+git = "https://github.com/decke/smtprelay.git"
+prefix = "v"
