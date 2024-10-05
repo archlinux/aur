@@ -9,7 +9,7 @@ url="https://caido.io/"
 license=('private')
 depends=(glibc gcc-libs)
 provides=(caido)
-source=("https://storage.googleapis.com/caido-releases/v${pkgver}/caido-desktop-v${pkgver}-linux-x86_64.AppImage")
+source=("https://caido.download/releases/v${pkgver}/caido-desktop-v${pkgver}-linux-x86_64.AppImage")
 sha256sums=('0e05f138e59a2c91b58759c1fa6930efb00f874e96889a3d57d6450a259e85af')
 
 prepare() {
