@@ -1,0 +1,35 @@
+diff --unified --recursive --text a/pyproject.toml b/pyproject.toml
+--- a/pyproject.toml	2022-09-09 14:30:24.000000000 -0600
++++ b/pyproject.toml	2024-10-05 10:45:40.429781723 -0600
+@@ -35,14 +35,9 @@
+ ]
+ test = [
+     "pytest ~= 7.1",
+-    "pytest-cov ~= 3.0",
+     "pytest-forked ~= 1.4 ; sys_platform != 'win32'",
+ ]
+ 
+-[tool.coverage.run]
+-branch = true
+-source = ["landlock"]
+-
+ [tool.isort]
+ profile = "black"
+ 
+@@ -50,16 +45,9 @@
+ addopts = [
+     "--strict-config",
+     "--strict-markers",
+-    "--cov",
+-    "--cov-config=pyproject.toml",  # explicitly required to workaround bug pytest-cov#168 (or #479)
+-    "--cov-report=html",
+-    "--cov-report=term",
+     "--junit-xml=junit.xml",
+ ]
+ log_file_level = "DEBUG"
+ junit_family = "xunit2"
+-required_plugins = [
+-    "pytest-cov",
+-]
+ xfail_strict = true
+ filterwarnings = "error"
