@@ -1,4 +1,4 @@
-# Maintainer: Mario Ray Mahardhika <leledumbo_cool@yahoo.co.id>
+# Maintainer: cookie <coookieuniverse@gmail.com>
 pkgname=staruml
 pkgver=6.2.2
 pkgrel=1
