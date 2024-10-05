@@ -2,7 +2,7 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=methylscaper
-_pkgver=1.12.0
+_pkgver=1.12.3
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -31,8 +31,8 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('da76dd45cdba774ec799f415e5a95743')
-b2sums=('afc889892c8050ab087f2a360290fdf478f2a9b03bd53870b15e8a419dbc42a37ab60bd733b6a43479d5d2e5411453f237b9c559667150171bdb7577eba1b83b')
+md5sums=('14189e0866a7f72721a70985ff03d736')
+b2sums=('b49098076b7d2d4f68176b0ffbfaac003cc578723650db1132ce920394352e6c5eb963644a85e4a7a9158056123ae2105841d54c9f9982328c58d54d9b2a2873')
 
 build() {
   mkdir build
