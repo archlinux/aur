@@ -2,21 +2,21 @@
 # Contributor: Astro Benzene <universebenzene at sina dot com>
 
 pkgname=python-pyregion
-pkgver=2.2.0
-pkgrel=2
+pkgver=2.3.0
+pkgrel=1
 pkgdesc="A python module to parse ds9 and ciao region files"
 arch=('i686' 'x86_64')
 url="https://github.com/astropy/pyregion"
 license=("MIT")
-depends=('python>=3.7' 'python-astropy>=4.0' 'python-pyparsing>=2.0' 'python-numpy>=1.16' 'cython')
+depends=('python>=3.10' 'python-astropy>=5.0' 'python-pyparsing>=2.0' 'python-numpy>=2.0' 'cython>=3.0' 'python-setuptools' 'python-setuptools-scm>=6.2')
 optdepends=('python-matplotlib')
 source=("https://files.pythonhosted.org/packages/source/p/pyregion/pyregion-${pkgver}.tar.gz")
-sha512sums=('707ca08bb2bdd3afdb2cc42ade19ff46dca4b8f4824cfe5ac76704de50a15bf7c98b90cd6b28fd9c7ee6ba4219494109f2d329966b307bda074f144ef1aaa78d')
+sha512sums=('7722709eb02eccc64134750098d6261b26bae936af378f9c18470c29a4f6bd865c9e453c7a5cb2102e86619addd8ae71ce05d7e8ca7219642b7bc9b449a2851d')
 
 build() {
   cd ${srcdir}/pyregion-${pkgver}
 
-  python setup.py build
+  python -m build --wheel --no-isolation
 }
 
 package() {
@@ -24,5 +24,5 @@ package() {
 
   install -D -m644 -t "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE
   install -D -m644 -t "${pkgdir}/usr/share/doc/${pkgname}" README.rst
-  python setup.py install --root=${pkgdir}  --prefix=/usr --optimize=1
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
