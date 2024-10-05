@@ -2,10 +2,10 @@
 
 _githubuser=Azure
 _githubrepo=WALinuxAgent
-_pkgtagname=v2.11.1.4
+_pkgtagname=v2.11.1.12
 
 pkgname=walinuxagent
-pkgver=2.11.1.4
+pkgver=2.11.1.12
 pkgrel=1
 pkgdesc='Microsoft Azure Linux Agent'
 arch=('any')
@@ -16,7 +16,7 @@ makedepends=('python-setuptools')
 install=${pkgname}.install
 backup=('etc/waagent.conf')
 source=("${_githubrepo}-${pkgver}.tar.gz::https://github.com/${_githubuser}/${_githubrepo}/archive/refs/tags/${_pkgtagname}.tar.gz")
-sha256sums=('956f12e31b0903f304cc070ddcbe4c8130c10e7ccc2597061e6467e911bc085d')
+sha256sums=('faab56182f55b6dd44e7c018305637e4a1708d5388fe1a8524e020825eac5f92')
 
 package() {
 	cd "${_githubrepo}-${pkgver}"
