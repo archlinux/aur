@@ -25,7 +25,7 @@ makedepends=(
   'python-wheel'
 )
 #checkdepends=(
-#  'python-pytest-cov'
+#  'python-pytest'
 #  'radicale'
 #  'xandikos'
 #)
