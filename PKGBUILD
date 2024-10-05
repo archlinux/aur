@@ -26,7 +26,7 @@ pkgver() {
 }
 
 prepare() {
-  cd "{_$pkgname}" || return 1
+  cd "${_pkgname}" || return 1
   ./autogen.sh \
     --prefix=/usr \
     --sysconfdir=/etc \
