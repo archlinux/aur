@@ -12,6 +12,7 @@ arch=('x86_64')
 url='https://tauonmusicbox.rocks'
 license=('GPL-3.0-only')
 
+conflicts=("${pkgname%-git}")
 depends=(
 	'python-pillow'
 	'python-pylast'
@@ -28,6 +29,7 @@ depends=(
 	'python-dbus'
 	'python-natsort'
 	'python-websocket-client'
+	'libayatana-appindicator'
 	'libnotify'
 	'ffmpeg'
 	'flac'
@@ -93,10 +95,10 @@ build() {
 
 package() {
 	cd "${pkgname%-git}"
-	install -Dm755 tauon.py -t "${pkgdir}/opt/${pkgname}"
-	install -Dm644 input.txt -t "${pkgdir}/opt/${pkgname}"
+	install -Dm755 tauon.py -t "${pkgdir}/opt/${pkgname%-git}"
+	install -Dm644 input.txt -t "${pkgdir}/opt/${pkgname%-git}"
 
-	cp -r assets templates theme t_modules lib "${pkgdir}/opt/${pkgname}"
+	cp -r assets templates theme t_modules lib "${pkgdir}/opt/${pkgname%-git}"
 
 	for t in cs de es fr_FR fi hu id ja_JP nb_NO pl pt pt_BR pt_PT ru sv tr zh_CN; do
 		install -Dm644 locale/${t}/LC_MESSAGES/*.mo -t "${pkgdir}/usr/share/locale/${t}/LC_MESSAGES"
@@ -105,6 +107,6 @@ package() {
 	install -Dm644 "extra/${_pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
 	install -Dm644 "extra/${_pkgname}-symbolic.svg" -t "${pkgdir}/usr/share/icons/hicolor/symbolic/apps"
 	install -Dm644 "extra/${_pkgname}.svg" -t "${pkgdir}/usr/share/icons/hicolor/scalable/apps"
-	install -Dm755 "extra/tauonmb.sh" "${pkgdir}/opt/${pkgname}/tauonmb.sh"
+	install -Dm755 "extra/tauonmb.sh" "${pkgdir}/opt/${pkgname%-git}/tauonmb.sh"
 	install -Dm755 "extra/tauonmb.sh" "${pkgdir}/usr/bin/tauon"
 }
