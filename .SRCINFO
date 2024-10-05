@@ -1,13 +1,21 @@
 pkgbase = pccts
-	pkgdesc = PCCTS is the Purdue Compiler-Compiler Tool Set
+	pkgdesc = Purdue Compiler-Compiler Tool Set
 	pkgver = 1.33MR33
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.polhode.com/pccts.html
 	arch = x86_64
-	license = LGPL
-	depends = dpkg
-	source = http://archive.ubuntu.com/ubuntu/pool/universe/p/pccts/pccts_1.33MR33-6_amd64.deb
-	sha1sums = fe6c8efcf6b6ff7f787a15b9419899d2e92946d4
+	license = custom:Public Domain
+	depends = glibc
+	noextract = pccts-1.33MR33.zip
+	source = pccts-1.33MR33.zip::http://www.polhode.com/pccts133mr.zip
+	source = pccts_conversion_format_3.0_quilt.patch::https://sources.debian.org/data/main/p/pccts/1.33MR33-6.4/debian/patches/conversion-format-3.0-quilt.patch
+	source = pccts_fix_implicit_declarations.patch::https://sources.debian.org/data/main/p/pccts/1.33MR33-6.4/debian/patches/implicit-declarations.patch
+	source = pccts_fix_format_security.patch
+	source = pccts_fix_genmk_flags.patch
+	sha256sums = d5aaf0b53999f43a9ff97c4993ba9f9682ed1864603c34f5e2728ae6a40f30a4
+	sha256sums = a0473aa7167a751e9397a44fbd77295b4e8c5573a266de57b72b0bc3a8639bab
+	sha256sums = bd040b0818f4ff9cc1a8c14b7efe926e5cd5200c79c32160b6450b0e2df4714d
+	sha256sums = 883df724e644ec30814b6135ac6ceadac6a11d197793fdd6f3ad56981832b871
+	sha256sums = dcbd4391361b437a59ecea535e1717c449ed16ef8555f4ec08ff9e0b9d5ec316
 
 pkgname = pccts
-

@@ -1,0 +1,11 @@
+--- a/support/genmk/makefile
++++ b/support/genmk/makefile
+@@ -14,7 +14,7 @@
+ BAG=../../bin/bag
+ 
+ genmk: $(OBJ) $(SRC) ../../h/pcctscfg.h
+-	$(CC) -o genmk $(OBJ)
++	$(CC) $(CFLAGS) $(LDFLAGS) -o genmk $(OBJ)
+ 
+ clean:
+ 	rm -rf core *.o
