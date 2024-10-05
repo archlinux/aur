@@ -1,15 +1,15 @@
 pkgbase = python-pyregion-doc
 	pkgdesc = Documentation for Python pyregion module
-	pkgver = 2.2.0
+	pkgver = 2.3.0
 	pkgrel = 1
 	url = http://pyregion.readthedocs.io
 	arch = any
 	license = MIT
-	makedepends = python-pyregion=2.2.0
+	makedepends = python-pyregion=2.3.0
 	makedepends = python-sphinx-automodapi
 	makedepends = python-sphinx_rtd_theme
 	makedepends = python-matplotlib
-	source = https://files.pythonhosted.org/packages/source/p/pyregion/pyregion-2.2.0.tar.gz
-	md5sums = 54f9c062409892a95cd4fee46a6105bb
+	source = https://files.pythonhosted.org/packages/source/p/pyregion/pyregion-2.3.0.tar.gz
+	md5sums = da51ec143f5bf07785eddcff0552c780
 
 pkgname = python-pyregion-doc
