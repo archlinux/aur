@@ -35,6 +35,7 @@ EOL
 package() {
     cd "$srcdir/$_pkgname/src"
 
+    install -d "$pkgdir/usr/share/freakfox"
     python -m venv "$pkgdir/usr/share/freakfox/venv"
     "$pkgdir/usr/share/freakfox/venv/bin/pip" install PyQt5 PyQtWebEngine pygame
 
