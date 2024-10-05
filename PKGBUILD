@@ -1,7 +1,7 @@
 # Maintainer: Alexander F. Rødseth <xyproto@archlinux.org>
 
 pkgname=ollamaurl
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc='See what ollama pull would have fetched'
 arch=(x86_64)
@@ -9,7 +9,7 @@ url='https://github.com/xyproto/ollamaurl'
 license=(BSD-3-Clause)
 makedepends=(git go)
 source=("git+$url#tag=v$pkgver")
-b2sums=('5357964be77d0449172199258e6babd37d4526875dbe7ee822260419391a9422e69a8cda0c5386819528f672414f9d9fd63a2486cc0609a71e549ecd2f97a059')
+b2sums=('2dfaec17d68b76ab0d004f9f9a4d65e1230c778a710aa361b6ede72453c5a4c2251b2cf01e8b6469f058dc31d030be605b3adeaac67ec5a48c41f1323079fc4f')
 
 build() {
   cd $pkgname
