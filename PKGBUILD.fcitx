@@ -9,7 +9,8 @@
 
 ## Mozc compile option
 _bldtype=Release
-_mozc_commit=4edf39e29bac451ac9d376c9b60d697f93ca08aa
+_mozc_commit=e7fbedee076e8428abb72de77236e312073f8846
+_bcr_commit=0471f8991f94f6be393c8fd8d3c80a43e235f61d
 _mozcdict_ext_commit=de931271344ebb2d1349a7ae0a8ec883457ed930
 _branch=fcitx
 # Sudachi Dictionary
@@ -18,13 +19,14 @@ _sudachidict_date=20240716
 pkgbase=mozc-with-jp-dict
 pkgname=("fcitx-$pkgbase")
 pkgver=2.30.5595.102
-pkgrel=8
+pkgrel=9
 arch=('x86_64')
 url="https://github.com/fcitx/mozc"
 license=('Apache-2.0 AND BSD-2-Clause AND BSD-3-Clause AND LGPL-3.0-only AND MIT AND NAIST-2003')
 makedepends=('qt6-base' 'fcitx' 'fcitx-qt6' 'bazel' 'git' 'python' 'python-six' 'pkg-config' 'curl' 'mesa' 'clang' 'ibus' 'rustup')
 options=(!lto)
 source=(git+https://github.com/fcitx/mozc.git#commit="${_mozc_commit}"
+        "bcr::git+https://github.com/bazelbuild/bazel-central-registry.git#commit=${_bcr_commit}"
         https://github.com/fcitx/mozc/pull/61.patch
         git+https://github.com/phoepsilonix/mozcdict-ext.git#commit=${_mozcdict_ext_commit}
         #"https://www.post.japanpost.jp/zipcode/dl/kogaki/zip/ken_all.zip"
@@ -38,7 +40,7 @@ source=(git+https://github.com/fcitx/mozc.git#commit="${_mozc_commit}"
 #        https://dumps.wikimedia.org/jawiki/latest/jawiki-latest-all-titles-in-ns0.gz)
 #noextract=(jawiki-latest-all-titles-in-ns0.gz)
 
-sha512sums=('6593b9a62759a27421ddf83ce0ca25b8963ff896a42a1ad9d08024d6e4efe217fe6025185daa539ca7bf309e8cfe5afcbbbfac40818afbab0c939df3102c16cf'
+sha512sums=('cc024ae518208170ef5b540135e9730bd5ef0009aef0724d4c0e2bb952f27f76d4d07bba940af2bbe6b60d27f3ebe9da570b02e30b303d9e34e15a59f259caad'
             'a0aeb2856d62c71d0c137a687d901098eaa3371b896dbe39e54c36951cbd7d3cfba666ee96d055dba7e8c8384ed17e13597a697707cd960fac320e11f9b7b76c'
             'fcde4a3c0200969ebb21fa927f1ff59581386a39d83ea7ec5c0092e1566c38638129b71b286434e11fb4c6b76b48d6b36eb64b053306c2bbb8a7900e2c641558'
             '9428d55d2d9603c8bfcd12cc0184415f23af1d09a2d0ebdf0cce694a09638e7cfe0c1241bf1c943427b2fccfea619ca8b2e22db3452d837b416eb31aa224e766'
@@ -118,10 +120,10 @@ build() {
 
   if [[ $CC =~ gcc ]];then
     #bazel build --config oss_linux --compilation_mode opt unix/fcitx:fcitx-mozc.so server:mozc_server gui/tool:mozc_tool --cxxopt=-Wno-uninitialized --host_cxxopt=-Wno-uninitialized
-    bazel build --config oss_linux --config release_build unix/fcitx:fcitx-mozc.so server:mozc_server gui/tool:mozc_tool renderer/qt:mozc_renderer --cxxopt=-Wno-uninitialized --host_cxxopt=-Wno-uninitialized
+    bazel build --registry=file://$srcdir/bcr --config oss_linux --config release_build unix/fcitx:fcitx-mozc.so server:mozc_server gui/tool:mozc_tool renderer/qt:mozc_renderer --cxxopt=-Wno-uninitialized --host_cxxopt=-Wno-uninitialized
   else
     #bazel build --config oss_linux --compilation_mode opt unix/fcitx:fcitx-mozc.so server:mozc_server gui/tool:mozc_tool $BAZEL_LDOPTS $BAZEL_COPTS $BAZEL_CXXOPTS
-    bazel build --config oss_linux --config release_build unix/fcitx:fcitx-mozc.so server:mozc_server gui/tool:mozc_tool renderer/qt:mozc_renderer $BAZEL_LDOPTS $BAZEL_COPTS $BAZEL_CXXOPTS
+    bazel build --registry=file://$srcdir/bcr --config oss_linux --config release_build unix/fcitx:fcitx-mozc.so server:mozc_server gui/tool:mozc_tool renderer/qt:mozc_renderer $BAZEL_LDOPTS $BAZEL_COPTS $BAZEL_CXXOPTS
   fi
   bazel shutdown
 }
