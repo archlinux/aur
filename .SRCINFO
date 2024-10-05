@@ -1,6 +1,6 @@
 pkgbase = python-smart-open
 	pkgdesc = Utils for streaming large files (S3, HDFS, GCS, Azure Blob Storage, gzip, bz2...)
-	pkgver = 7.0.4
+	pkgver = 7.0.5
 	pkgrel = 1
 	url = https://github.com/piskvorky/smart_open
 	arch = any
@@ -11,8 +11,8 @@ pkgbase = python-smart-open
 	makedepends = python-wheel
 	makedepends = python-build
 	makedepends = python-installer
-	source = https://files.pythonhosted.org/packages/source/s/smart_open/smart_open-7.0.4.tar.gz
-	md5sums = 0bf207d444f285aab8486c0b384c2f68
+	source = https://files.pythonhosted.org/packages/source/s/smart_open/smart_open-7.0.5.tar.gz
+	md5sums = e26329aca66b36264db8eea68a5933cf
 
 pkgname = python-smart-open
 	depends = python>=3.7

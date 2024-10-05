@@ -8,7 +8,7 @@ _pyname=${_pname//-/_}
 #_pyname=${pkgbase#python-}
 pkgname=("python-${_pname}")
 #"python-${_pname}-doc")
-pkgver=7.0.4
+pkgver=7.0.5
 pkgrel=1
 pkgdesc="Utils for streaming large files (S3, HDFS, GCS, Azure Blob Storage, gzip, bz2...)"
 arch=('any')
@@ -21,7 +21,7 @@ makedepends=('python-setuptools'
 checkdepends=('python-nose'
               'python-wrapt')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('0bf207d444f285aab8486c0b384c2f68')
+md5sums=('e26329aca66b36264db8eea68a5933cf')
 
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}
