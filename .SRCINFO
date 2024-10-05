@@ -1,11 +1,11 @@
 pkgbase = python-gevent-eventemitter
 	pkgdesc = EventEmitter using gevent
 	pkgver = 2.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/rossengeorgiev/gevent-eventemitter
 	arch = any
 	license = MIT
-	checkdepends = python-pytest-cov
+	checkdepends = python-pytest
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-setuptools
