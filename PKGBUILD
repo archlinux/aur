@@ -22,7 +22,7 @@
 pkgname=salt-onedir
 provides=('salt')
 pkgver=3007.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Central system and configuration manager (onedir installation +[${SALT_ADDITIONAL_PIP_PACKAGES}])"
 arch=('x86_64' 'aarch64')
 url='http://saltstack.org/'
@@ -67,7 +67,7 @@ build() {
   pip install relenv
   # fetch the relenv distribution
   # this unfortunately writes to ${HOME}/.local/relenv/build
-  relenv fetch --python=3.10.14
+  relenv fetch --python=3.10.15
   # create the relenv environment into which we will install Salt
   relenv create "${onedir}"
   deactivate
