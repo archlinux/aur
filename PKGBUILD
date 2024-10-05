@@ -2,7 +2,7 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=OmnipathR
-_pkgver=3.12.3
+_pkgver=3.12.4
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -60,8 +60,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('f389efe4b1545999bb931b8a3d315344')
-b2sums=('c7f952c36c94b6316896883e580cf64a55d62410f3f4f56a3ea3d890dfa751292764c2b85e269c3796c152312254a9fa5570db85a0cf235bdbafb6d952507afb')
+md5sums=('bc6a953c52a5ebb64ac347817911e1dd')
+b2sums=('dc69a4a4f652f71e2aff8eb73c3fb59bc3119c02dca340b52a957d0b8fb82775dfbb1a06f5cb5d1aa629b21bcf67dc2c362c70ed13a24a0df311034626efaf23')
 
 build() {
   mkdir build
