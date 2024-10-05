@@ -1,5 +1,5 @@
 pkgname=orca-slicer-git
-pkgver=2.2.0.158c71f05e_beta
+pkgver=2.2.0.beta2.9245a87293
 pkgrel=1
 pkgdesc="G-code generator for 3D printers (Bambu, Prusa, Voron, VzBot, RatRig, Creality, etc.)"
 arch=('x86_64')
@@ -14,11 +14,11 @@ source=("$pkgname::git+https://github.com/SoftFever/OrcaSlicer.git")
 b2sums=('SKIP')
 
 pkgver() {
-  cd $pkgname
+  cd $srcdir/$pkgname
   _version=$(sed -n 's/set(SoftFever_VERSION "\([^"]*\)-.*".*/\1/p' version.inc)
   _suffix=$(sed -n 's/set(SoftFever_VERSION ".*-\([^"]*\)".*/\1/p' version.inc)
   _commit=$(git rev-parse --short HEAD)
-  printf "%s.%s_%s" $_version $_commit $_suffix
+  printf "%s.%s.%s" $_version $_suffix $_commit
 }
 
 prepare() {
@@ -26,7 +26,7 @@ prepare() {
 
   # C++20 disallows the use of the Point<T> syntax in the constructor
   sed -i 's/explicit Point<T>(/explicit Point(/' src/clipper2/Clipper2Lib/include/clipper2/clipper.core.h
-  # abuse PLATPAK IF statement to build with some system libs
+  # abuse FLATPAK IF statement to build against some system libs
   sed -i 's/if(FLATPAK)/if(true)/' deps/CMakeLists.txt
   # System Freetype has some breaking changes
   sed -i 's/find_package(Freetype)/# find_package(Freetype)/' deps/CMakeLists.txt
@@ -48,7 +48,7 @@ build() {
     -S . \
     -B build \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_INSTALL_FULL_DATAROOTDIR=/usr\/share/ \
+    -DCMAKE_INSTALL_FULL_DATAROOTDIR=/usr/share/ \
     -DCMAKE_PREFIX_PATH=$srcdir/$pkgname/deps/build/destdir/usr/local \
     -DSLIC3R_STATIC=1 \
     -DORCA_TOOLS=1 \
