@@ -1,9 +1,10 @@
 # Maintainer: Kemel Zaidan <kemelzaidan@gmail.com>
 pkgname=tuime
 pkgver=1.0.1
-pkgrel=1
+pkgrel=2
 makedepends=('rust' 'cargo')
 depends=('glibc' 'gcc-libs')
+optdepends=('cfonts: sexy and colorful fonts for the console')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 pkgdesc="A colorful and fun TUI clock written in Rust, with a screensaver mode"
 license=('GPL-3.0-only')
