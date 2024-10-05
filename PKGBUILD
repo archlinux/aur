@@ -3,7 +3,7 @@
 
 pkgname=linphone-desktop
 pkgver=5.2.6
-pkgrel=1
+pkgrel=2
 pkgdesc='A free VoIP and video softphone based on the SIP protocol'
 arch=(x86_64)
 url='http://linphone.org'
@@ -30,41 +30,41 @@ source=("git+https://github.com/BelledonneCommunications/linphone-desktop.git#co
 "git+https://gitlab.linphone.org/BC/public/mediastreamer2.git#commit=08ab6ddbb85d66079b4b81cd61def78a58e90f3e"
 "git+https://gitlab.linphone.org/BC/public/mswasapi.git#commit=f584ef3ecf5b837de6db04f7eb4e50eb47d475d6"
 "git+https://gitlab.linphone.org/BC/public/bcmatroska2.git#commit=40b2b14993b92980af1339145de3203432f036e5"
-"git+https://gitlab.linphone.org/BC/public/external/mbedtls.git"
-"git+https://gitlab.linphone.org/BC/public/external/bv16-floatingpoint.git"
-"git+https://gitlab.linphone.org/BC/public/external/speex.git"
-"git+https://gitlab.linphone.org/BC/public/external/ffmpeg.git"
-"git+https://gitlab.linphone.org/BC/public/external/libvpx.git"
-"git+https://gitlab.linphone.org/BC/public/external/opus.git"
-"git+https://gitlab.linphone.org/BC/public/external/gsm.git"
-"git+https://gitlab.linphone.org/BC/public/external/srtp.git"
-"git+https://gitlab.linphone.org/BC/public/external/libxml2.git"
-"git+https://gitlab.linphone.org/BC/public/external/zlib.git"
-"git+https://gitlab.linphone.org/BC/public/external/openh264.git"
-"git+https://gitlab.linphone.org/BC/public/external/libjpeg-turbo.git"
-"git+https://gitlab.linphone.org/BC/public/external/xerces-c.git"
-"git+https://gitlab.linphone.org/BC/public/external/soci.git"
-"git+https://gitlab.linphone.org/BC/public/external/sqlite3.git"
-"git+https://gitlab.linphone.org/BC/public/external/codec2.git"
+"git+https://gitlab.linphone.org/BC/public/external/mbedtls.git#commit=2acc0f26e6e97c82ff9981c1ec32b497d4ea9426"
+"git+https://gitlab.linphone.org/BC/public/external/bv16-floatingpoint.git#commit=714c280aa8b068278c965e1d7ef69080048f09fb"
+"git+https://gitlab.linphone.org/BC/public/external/speex.git#commit=f775510ed05a7b480ef8bb4b060c21af9f6c9006"
+"git+https://gitlab.linphone.org/BC/public/external/ffmpeg.git#commit=2a73517a5b83b92355b5d4d0e27a7da847adeb57"
+"git+https://gitlab.linphone.org/BC/public/external/libvpx.git#commit=4f496f8d966088e712a79237cfe44197c771ae1a"
+"git+https://gitlab.linphone.org/BC/public/external/opus.git#commit=eba0313c23a34f4c35d76b1bcdc3ccb10fb0c0b5"
+"git+https://gitlab.linphone.org/BC/public/external/gsm.git#commit=f3426b54a14cb2d42cfa78cb84b0147859ad58fb"
+"git+https://gitlab.linphone.org/BC/public/external/srtp.git#commit=c136e9462551add57ad29844822e1f5dece4e4d7"
+"git+https://gitlab.linphone.org/BC/public/external/libxml2.git#commit=8d7a049c8495354c361468d2cf82b90e219bb443"
+"git+https://gitlab.linphone.org/BC/public/external/zlib.git#commit=3c0830d48463436e431de2b64647de1ed3fc98d9"
+"git+https://gitlab.linphone.org/BC/public/external/openh264.git#commit=b20e25e99f85a58c13ab6204afe103bf1040d416"
+"git+https://gitlab.linphone.org/BC/public/external/libjpeg-turbo.git#commit=91f8025a3071d6cec2c41265a038f47fcd28f092"
+"git+https://gitlab.linphone.org/BC/public/external/xerces-c.git#commit=f40b8e10dddcf6fc70fc1a200d0806312ece4fd1"
+"git+https://gitlab.linphone.org/BC/public/external/soci.git#commit=d26d42eae02051ccbc53e8684cbc8b5aeb6cea13"
+"git+https://gitlab.linphone.org/BC/public/external/sqlite3.git#commit=a7e599dffa9b7b4696296055a92def3444e2fca0"
+"git+https://gitlab.linphone.org/BC/public/external/codec2.git#commit=86e2af3a9317d371462aa6c19cc64b877e40ba2e"
 "git+https://gitlab.linphone.org/BC/public/mscodec2.git#commit=4a0298386c50d59b86c64277e7d5bf53dc9f0bd3"
-"git+https://gitlab.linphone.org/BC/public/external/decaf.git"
-"git+https://gitlab.linphone.org/BC/public/external/zxing-cpp.git"
-"git+https://gitlab.linphone.org/BC/public/external/vo-amrwbenc.git"
-"git+https://gitlab.linphone.org/BC/public/external/opencore-amr.git"
+"git+https://gitlab.linphone.org/BC/public/external/decaf.git#commit=63ad363f92eb50bc09ed3be8574f84650ed377a9"
+"git+https://gitlab.linphone.org/BC/public/external/zxing-cpp.git#commit=8ac6bcdc6c0b4122c457408bdba9514aa116c905"
+"git+https://gitlab.linphone.org/BC/public/external/vo-amrwbenc.git#commit=986a52ced2a02511a3c250f101df18e7f7d36dde"
+"git+https://gitlab.linphone.org/BC/public/external/opencore-amr.git#commit=084d2a08e2bce13a27cb33f4b371030dab8c2460"
 "git+https://gitlab.linphone.org/BC/public/lime.git#commit=c1a310c8776183a853b9a0eb8f2bd08535447694"
 "git+https://gitlab.linphone.org/BC/public/msaaudio.git#commit=b11b661b4138aecb06585bb276acf59fbed73458"
 "git+https://gitlab.linphone.org/BC/public/msandroidcamera2.git#commit=465e15fd814dc16111fe5c603b56460a5426acbc"
-"git+https://gitlab.linphone.org/BC/public/external/openldap.git"
-"git+https://gitlab.linphone.org/BC/public/external/jsoncpp.git"
+"git+https://gitlab.linphone.org/BC/public/external/openldap.git#commit=72cc60cf3f7d8fbb363077cd480779b1f45ecb74"
+"git+https://gitlab.linphone.org/BC/public/external/jsoncpp.git#commit=b1bd848241880ccea2d940f67343a899b9f65d5d"
 "git+https://gitlab.linphone.org/BC/public/msoboe.git#commit=4d5b66202a8a7a734e75446d0ce44bf342835736"
 "git+https://github.com/google/oboe#commit=5975ab04b02861dc126f3c8fd687321520cd8ae4"
-"git+https://gitlab.linphone.org/BC/public/external/libyuv.git"
-"git+https://gitlab.linphone.org/BC/public/external/liboqs.git"
+"git+https://gitlab.linphone.org/BC/public/external/libyuv.git#commit=918f69d14dba48437334b938584928c0f301e1e6"
+"git+https://gitlab.linphone.org/BC/public/external/liboqs.git#commit=864261998c940283b369b7105437b18632d8734d"
 "git+https://gitlab.linphone.org/BC/public/postquantumcryptoengine.git#commit=e441d9ac0290b35f2ba816d9e85bf176cbcf96a8"
-"git+https://gitlab.linphone.org/BC/public/external/dav1d.git"
-"git+https://gitlab.linphone.org/BC/public/external/aom.git"
-"git+https://gitlab.linphone.org/BC/public/external/qtkeychain.git"
-"git+https://gitlab.linphone.org/BC/public/external/ispell.git"
+"git+https://gitlab.linphone.org/BC/public/external/dav1d.git#commit=48035599cdd4e4415732e408c407e0c1cd1c7444"
+"git+https://gitlab.linphone.org/BC/public/external/aom.git#commit=01db72d94094637cbd001cc1d7f7dd3eeeb21c2b"
+"git+https://gitlab.linphone.org/BC/public/external/qtkeychain.git#commit=72e39ee293f4598955b92f9fb21b97cf21a8d1a6"
+"git+https://gitlab.linphone.org/BC/public/external/ispell.git#commit=05574fe160222c3d0b6283c1433c9b087271fad1"
 )
 sha512sums=('SKIP'
 'd6495cdc022b1e4c92b3641cb70347e7e6b6ef47599004de729e908b4876a12540713ab54b588611c99c8025fb9b33e3392573c85c13f72cdaee8bcf7a73d65d'
@@ -180,6 +180,7 @@ prepare() {
     mkdir -p linphone-desktop/linphone-sdk/external && rm -r linphone-desktop/linphone-sdk/external/aom && mv aom linphone-desktop/linphone-sdk/external/aom
     mkdir -p linphone-desktop/external && rm -r linphone-desktop/external/qtkeychain && mv qtkeychain linphone-desktop/external/qtkeychain
     mkdir -p linphone-desktop/external && rm -r linphone-desktop/external/ispell && mv ispell linphone-desktop/external/ispell
+
 }
 
 build() {
