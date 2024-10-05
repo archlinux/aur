@@ -4,21 +4,28 @@
 _base=or-tools
 pkgname=python-${_base}
 pkgver=9.11
-pkgrel=3
+pkgrel=4
 pkgdesc="Google's Operations Research tools"
 arch=(x86_64 i686 aarch64 armv7h)
 url="https://github.com/google/${_base}"
 license=(Apache-2.0)
 depends=(abseil-cpp coin-or-cbc coin-or-clp eigen glpk re2 scip swig
   pybind11 python-absl python-mypy-protobuf python-numpy) # pybind11-abseil pybind11-protobuf
-makedepends=(cmake git python-build python-installer python-setuptools python-wheel python-virtualenv)
+makedepends=(cmake git python-installer python-setuptools python-wheel python-virtualenv)
 # checkdepends(gtest)
 optdepends=('cplex: CPLEX solver support'
   'python-matplotlib: used by some examples'
   'python-pandas: used by some examples')
 options=(!emptydirs)
-source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-b2sums=('f5fc5d9d4c72a6e73fddc1c198320744ea5386d11379aaa058a15c9f574795ae99ea8ebb74d21454a86616b6cadec9cfd33787ca0095eed0a2f4162495f1c63b')
+source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz
+  pybind11_protobuf.patch)
+b2sums=('f5fc5d9d4c72a6e73fddc1c198320744ea5386d11379aaa058a15c9f574795ae99ea8ebb74d21454a86616b6cadec9cfd33787ca0095eed0a2f4162495f1c63b'
+  '0d097b8e13ec5b9143c4195a5fe4d331a60bfe9fb3f82762c89a7769f356ccb34b5a4a371baf3eabb1232b87a9f31e294794547983b18513103a5cb0684c399b')
+
+prepare() {
+  # https://github.com/google/or-tools/issues/4380#issuecomment-2394980250
+  cp pybind11_protobuf.patch ${_base}-${pkgver}/patches
+}
 
 build() {
   cmake \
@@ -27,8 +34,9 @@ build() {
     -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DBUILD_SHARED_LIBS=TRUE \
-    -DCMAKE_CXX_STANDARD=20 \
+    -DCMAKE_CXX_STANDARD=17 \
     -DBUILD_CXX=ON \
+    -DCMAKE_CXX_FLAGS="-Wno-format-security" \
     -DBUILD_CXX_EXAMPLES=OFF \
     -DBUILD_CXX_SAMPLES=OFF \
     -DBUILD_DOTNET=OFF \
@@ -54,7 +62,11 @@ build() {
 }
 
 package() {
-  cd ${_base}-${pkgver}
-  PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python -m installer --destdir="${pkgdir}" "$(find -name 'ortools*whl')"
-  install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  DESTDIR="${pkgdir}" cmake --build build --target install
+  PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python -m installer --destdir="${pkgdir}" build/python/dist/*.whl
+  install -Dm 644 ${_base}-${pkgver}/LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
+  rm -r ${pkgdir}${site_packages}/pybind11_abseil
+  rm -r "${pkgdir}"/usr/share/minizinc
+  rm -r "${pkgdir}"/usr/share/doc/
 }
