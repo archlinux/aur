@@ -1,8 +1,8 @@
 pkgbase = gcap2023
 	pkgdesc = Brazilian physical person income tax (IRPF) auxiliary program for calculation of capital gains (2023 version)
 	pkgver = 2023.1.6
-	pkgrel = 1
-	url = https://www.gov.br/pt-br/servicos/apurar-imposto-sobre-ganhos-de-capital
+	pkgrel = 2
+	url = https://www.gov.br/receitafederal/pt-br/centrais-de-conteudo/download/pgd/gcap
 	arch = any
 	license = LicenseRef-Custom
 	makedepends = icoutils
