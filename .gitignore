@@ -4,3 +4,5 @@
 !*.patch
 !PKGBUILD
 !.SRCINFO
+!nvidia_oc.json
+!nvidia_oc.service

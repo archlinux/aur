@@ -1,0 +1,10 @@
+[Unit]
+Description=NVIDIA Overclocking Service
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/nvidia_oc
+User=root
+
+[Install]
+WantedBy=multi-user.target
