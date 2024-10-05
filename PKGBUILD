@@ -4,14 +4,14 @@
 
 pkgname=lib32-sdl2_image
 pkgver=2.8.2
-pkgrel=1
+pkgrel=2
 pkgdesc='A simple library to load images of various formats as SDL surfaces'
 arch=(x86_64)
 url=https://www.libsdl.org/projects/SDL_image/
 license=(MIT)
 depends=(
   lib32-glibc
-  lib32-libjpeg
+  lib32-libjpeg-turbo
   lib32-libpng
   lib32-libtiff
   lib32-sdl2
