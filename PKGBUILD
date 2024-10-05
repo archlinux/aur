@@ -2,8 +2,8 @@
 
 _pkgname=ttyrecall
 pkgname=$_pkgname-git
-pkgver=0.0.1.alpha.2.r0.g9a38cbf
-pkgrel=2
+pkgver=0.0.1.alpha.2.r1.g7fb4906
+pkgrel=1
 pkgdesc="Recall, but for terminals"
 arch=('x86_64')
 url="https://github.com/kxxt/ttyrecall"
@@ -50,6 +50,8 @@ package() {
   install -Dm755 -t "$pkgdir/usr/bin/" "target/release/$_pkgname"
   # Service
   install -vDm644 "$srcdir/ttyrecalld.service" "$pkgdir/usr/lib/systemd/system/ttyrecalld.service"
+  # Storage dir
+  install -dm755 "$pkgdir/var/lib/ttyrecall"
   # Config
   install -dm755 "$pkgdir/etc/ttyrecall"
   install -Dm644 -t "$pkgdir/etc/ttyrecall" etc/daemon.toml
