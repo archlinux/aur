@@ -1,11 +1,12 @@
 pkgbase = ttyrecall-git
 	pkgdesc = Recall, but for terminals
-	pkgver = 0.0.1.alpha.2.r1.g7fb4906
+	pkgver = 0.0.1.alpha.3.r5.gf33adb5
 	pkgrel = 1
 	url = https://github.com/kxxt/ttyrecall
 	arch = x86_64
 	license = AGPL-3.0-or-later AND GPL-2.0-or-later AND MIT-0
-	makedepends = rustup
+	makedepends = cargo
+	makedepends = rust-src
 	makedepends = bpf-linker
 	makedepends = git
 	depends = gcc-libs

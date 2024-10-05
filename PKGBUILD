@@ -2,7 +2,7 @@
 
 _pkgname=ttyrecall
 pkgname=$_pkgname-git
-pkgver=0.0.1.alpha.2.r1.g7fb4906
+pkgver=0.0.1.alpha.3.r5.gf33adb5
 pkgrel=1
 pkgdesc="Recall, but for terminals"
 arch=('x86_64')
