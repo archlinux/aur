@@ -2,12 +2,12 @@
 # Former maintainer: Sven-Hendrik Haase <sh@lutzhaase.com>
 
 pkgname=binaryen-git
-pkgver=113.r9.g97178d08d
+pkgver=119.r60.g0be8d5e07
 pkgrel=1
 pkgdesc="Compiler infrastructure and toolchain library for WebAssembly"
 arch=('i686' 'x86_64')
 url="https://github.com/WebAssembly/binaryen"
-license=('Apache')
+license=('Apache-2.0')
 depends=('gcc-libs')
 makedepends=('git' 'cmake')
 #checkdepends=('python')
@@ -18,6 +18,12 @@ source=("git+https://github.com/WebAssembly/binaryen.git"
 sha256sums=('SKIP'
             'SKIP')
 
+
+prepare() {
+  cd "binaryen"
+
+  git submodule update --init --recursive
+}
 
 pkgver() {
   cd "binaryen"
@@ -36,6 +42,7 @@ build() {
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX="/usr" \
     -DCMAKE_INSTALL_LIBDIR="lib" \
+    -DENABLE_WERROR=OFF \
     ./
   make -C "_build"
 }
