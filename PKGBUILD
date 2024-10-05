@@ -16,5 +16,5 @@ sha256sums=('SKIP' 'SKIP')
 
 package() {
     install -Dm755 ${binname} "$pkgdir/usr/bin/${binname}"
-    install -Dm755 LICENSE "$pkgdir/usr/share/licenses/ulexec/LICENSE"
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/${binname}/LICENSE"
 }
