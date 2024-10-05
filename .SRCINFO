@@ -1,11 +1,11 @@
 pkgbase = python-kiss-headers
 	pkgdesc = Python package for HTTP/1.1 style headers. Parse headers to objects.
 	pkgver = 2.4.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://ousret.github.io/kiss-headers
 	arch = any
 	license = MIT
-	checkdepends = python-pytest-cov
+	checkdepends = python-pytest
 	checkdepends = python-requests
 	makedepends = python-build
 	makedepends = python-hatchling
