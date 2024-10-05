@@ -6,7 +6,7 @@ pkgname=jre${_java_ver}-zulu-bin
 pkgver="${_java_ver}.0.4"
 pkgrel=1
 pkgdesc='Azul Zulu OpenJDK full runtime environment, bin version.'
-arch=('aarch64' 'i686' 'x86_64')
+arch=('aarch64' 'x86_64')
 url='https://www.azul.com/downloads/'
 license=('custom')
 depends=(
@@ -42,7 +42,6 @@ _jvmdir=/usr/lib/jvm/java-${_java_ver}-zulu
 case "${CARCH}" in
   aarch64) _JARCH='aarch64';;
   x86_64) _JARCH='x64';;
-  i686)   _JARCH='i686';;
 esac
 
 package() {
