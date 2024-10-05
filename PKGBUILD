@@ -1,10 +1,10 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=gifski
-_pkgver=1.12.0-2
+_pkgver=1.32.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=3
+pkgrel=1
 pkgdesc="Highest Quality GIF Encoder"
 arch=(x86_64)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -20,8 +20,8 @@ optdepends=(
   r-ggplot2
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('b132e35042ef99534d06d6bd6242a0ca')
-b2sums=('bc24f39d2eb80a4604f8b7254333f5631ad54542093c1a101181bc30a6cd8117c6002a2ac91453c600be81fa4d8bfd9e5d46350a02714cf69721b60fbbf12bba')
+md5sums=('22a70b901b36a2ac1886299f75a62b0e')
+b2sums=('40188eecf6d755d7dbcb8fd7bcc80bbb9fd898be71b431ef60faaf075d1f6d08fcf872e87c9d9439e5b32d684174562e36ba731e6cebe14c9f3995499503bc88')
 
 build() {
   mkdir build
