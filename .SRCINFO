@@ -1,7 +1,7 @@
 pkgbase = perl-mousex-nativetraits
 	pkgdesc = Extend your attribute interfaces for Mouse
 	pkgver = 1.09
-	pkgrel = 1
+	pkgrel = 2
 	url = http://search.cpan.org/dist/MouseX-NativeTraits
 	arch = any
 	license = PerlArtistic

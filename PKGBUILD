@@ -3,7 +3,7 @@
 
 pkgname='perl-mousex-nativetraits'
 pkgver='1.09'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="Extend your attribute interfaces for Mouse"
 arch=('any')
 license=('PerlArtistic' 'GPL')
