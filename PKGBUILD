@@ -2,7 +2,7 @@
 
 _pkgname=phpstan
 pkgname=${_pkgname}-bin
-pkgver=1.12.0
+pkgver=1.12.6
 pkgrel=1
 pkgdesc="PHP Static Analysis Tool - finding errors in your code without actually running it"
 provides=('phpstan' 'php-stan')
@@ -15,7 +15,7 @@ source=("phpstan-${pkgver}.phar::https://github.com/phpstan/phpstan/releases/dow
         "phpstan-${pkgver}.phar.asc::https://github.com/phpstan/phpstan/releases/download/${pkgver}/phpstan.phar.asc"
         "LICENSE-${pkgver}::https://raw.githubusercontent.com/phpstan/phpstan/${pkgver}/LICENSE")
 validpgpkeys=('CA7C2C7A30C8E8E1274A847651C67305FFC2E5C0')
-sha256sums=('c7b2bf04ad75cf37792681ca401aa7b2c7bf33e716e986bdfee86da324337f7d'
+sha256sums=('54488aa8e0cfb461be3d4f995159be61c502c410de618d4a479a81f5d9372db9'
             'SKIP'
             'c4fa9cc466f14e40ce3011670ca4eb2596e107007e83aa6f5c139cf8adcb776f')
 
