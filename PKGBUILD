@@ -17,17 +17,22 @@ build() {
   cmake \
     -S ${pkgname}-${pkgver} \
     -B build \
-    -DCMAKE_BUILD_TYPE=None \
-    -DCMAKE_INSTALL_PREFIX=/usr \
     -DBUILD_SHARED_LIBS=TRUE \
+    -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_CXX_STANDARD=17 \
     -DCMAKE_CXX_COMPILER=g++ \
-    -DKokkos_ENABLE_HWLOC=ON \
-    -DKokkos_ENABLE_OPENMP=ON \
-    -DKokkos_ENABLE_THREADS=OFF \
-    -DKokkos_ENABLE_SERIAL=ON \
-    -DKokkos_ENABLE_TESTS=OFF \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DKokkos_ENABLE_CUDA=OFF \
+    -DKokkos_ENABLE_DEBUG=OFF \
     -DKokkos_ENABLE_EXAMPLES=OFF \
+    -DKokkos_ENABLE_HIP=OFF \
+    -DKokkos_ENABLE_HWLOC=ON \
+    -DKokkos_ENABLE_LIBDL=O \
+    -DKokkos_ENABLE_OPENMP=ON \
+    -DKokkos_ENABLE_SERIAL=ON \
+    -DKokkos_ENABLE_SYCL=OFF \
+    -DKokkos_ENABLE_TESTS=OFF \
+    -DKokkos_ENABLE_THREADS=OFF \
     -Wno-dev
   cmake --build build --target all
 }
