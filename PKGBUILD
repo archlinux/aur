@@ -3,7 +3,7 @@
 pkgname=mympc-git
 pkgver=r7.99708e5
 pkgrel=1
-pkgdesc="An mpc wrapper with zsh library command completion"
+pkgdesc="An mpc wrapper with music library zsh completion"
 arch=('any')
 url="https://gitlab.com/teraflops/mympc"
 license=('MIT')
