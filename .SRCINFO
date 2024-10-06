@@ -1,13 +1,15 @@
 pkgbase = dnuos
 	pkgdesc = Music library list creator
 	pkgver = 1.0.11
-	pkgrel = 6
+	pkgrel = 7
 	url = https://bitheap.org/dnuos
 	arch = any
-	license = GPL
+	license = GPL-2.0-or-later
 	makedepends = python2-setuptools
 	depends = python2
-	source = https://bitheap.org/dnuos/files/dnuos-1.0.11.tar.gz
-	md5sums = bbd14149547c527086624cf55f852d69
+	source = dnuos-1.0.11.tar.gz::https://bitheap.org/dnuos/files/dnuos-1.0.11.tar.gz
+	source = testdata.zip::https://bitheap.org/dnuos/files/testdata.zip
+	sha256sums = bfadc736d769ff9414d23a2084807c77f3eabcd6306e230faa16db18754fda54
+	sha256sums = 19e012ffc2727daa0cc5ba859ff9387fbd250ce3ca6dc8921486943995ab4e88
 
 pkgname = dnuos
