@@ -1,6 +1,6 @@
 pkgname=otf-operator-mono-lig
 _pkgname=operator-mono-lig
-pkgver=2.4.2
+pkgver=2.5.2
 pkgrel=1
 pkgdesc='Add ligatures to Operator Mono similar to Fira Code'
 arch=('x86_64' 'arm64')
@@ -9,7 +9,6 @@ license=('MIT')
 makedepends=(
 	'npm'
 	'python-fonttools'
-	'python2'
 )
 # markdown license generated using:
 # curl https://www.typography.com/requests/policies/eula.json | jq .content.markdown | sed -e 's/^"//' -e 's/"$//' -e 's/\\n/\n/g' > hoefler-co-eula.md
@@ -17,7 +16,7 @@ source=(
 	"$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
 	"hoefler-co-eula.md"
 )
-sha256sums=('f66cc609655e9cc3426bc0e6c058c6528db9ccc25a58c841c34ba6a99dbd249a'
+sha256sums=('b0aac3dcd9d8d7022bbf2a8b85dc5aac2514cca6f101fa11052ef9716a1d8bdc'
             '820160042b3a26add024ad21f0cb93e2898d96f4558a6b2cdd0c988c7601eadd')
 
 prepare(){
