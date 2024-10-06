@@ -2,19 +2,19 @@
 
 pkgname=clipboard-git
 _pkgname="${pkgname%-git}"
-pkgver=0.8.1.r1732.263df73
+pkgver=0.9.1.r1845.de938aa
 pkgrel=1
 pkgdesc="Cut, copy, and paste anything in your terminal (git version)."
-arch=('x86_64' 'aarch64' 'riscv64')
 url="https://getclipboard.app"
-license=('GPL3')
-provides=("${_pkgname}")
-conflicts=("${_pkgname}")
-depends=('alsa-lib')
+arch=('x86_64' 'aarch64' 'riscv64')
+license=('GPL-3.0-or-later')
+depends=('alsa-lib' 'openssl')
 makedepends=('git' 'cmake' 'libx11' 'wayland' 'wayland-protocols')
 optdepends=('libx11: X11 support'
 	    'wayland: Wayland support'
 	    'wayland-protocols: Wayland support')
+provides=("${_pkgname}")
+conflicts=("${_pkgname}")
 source=("${_pkgname}::git+https://github.com/Slackadays/Clipboard.git")
 sha256sums=('SKIP')
 
