@@ -1,6 +1,6 @@
 pkgbase = mtr085
 	pkgdesc = Full screen ncurses traceroute tool, mtr v0.85 fork
-	pkgver = 0.85.r165.f795850
+	pkgver = 0.85.r166.dd259ed
 	pkgrel = 1
 	url = https://github.com/yvs2014/mtr085
 	arch = x86_64
