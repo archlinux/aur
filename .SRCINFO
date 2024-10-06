@@ -1,6 +1,6 @@
 pkgbase = fabric-git
 	pkgdesc = An open-source framework for augmenting humans using AI
-	pkgver = r1549.fc3aa9c
+	pkgver = r1584.0b26b93
 	pkgrel = 1
 	url = https://github.com/danielmiessler/fabric
 	arch = x86_64

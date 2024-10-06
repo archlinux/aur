@@ -1,6 +1,6 @@
 # Maintainer: Thomas Herrle <th-arch@pm.me>
 pkgname=fabric-git
-pkgver=r1549.fc3aa9c
+pkgver=r1584.0b26b93
 pkgrel=1
 pkgdesc="An open-source framework for augmenting humans using AI"
 arch=('x86_64')
