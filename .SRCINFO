@@ -12,7 +12,7 @@ pkgbase = magmatv-git
 	depends = libxml2
 	depends = sed
 	depends = curl
-	optdepends = subliminal-git: subtitles support
+	optdepends = subliminal: subtitles support
 	optdepends = libnotify
 	provides = magmatv-git
 	conflicts = magmatv
@@ -20,4 +20,3 @@ pkgbase = magmatv-git
 	sha256sums = SKIP
 
 pkgname = magmatv-git
-
