@@ -1,6 +1,6 @@
 pkgbase = e-z-recorder
 	pkgdesc = e-z.host Video Recording & Uploading on Linux.
-	pkgver = 1.8.1
+	pkgver = 1.8.3
 	pkgrel = 2
 	url = https://github.com/verysillycat/e-z-recorder-linux
 	arch = any
