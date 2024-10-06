@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=cosmic-session-git
-pkgver=1.0.0.alpha.2.r0.gd06f94a
-pkgrel=2
+pkgver=1.0.0.alpha.2.r5.gb3900bc
+pkgrel=1
 pkgdesc="Session manager for the COSMIC desktop environment"
 arch=('x86_64' 'aarch64')
 url="https://github.com/pop-os/cosmic-session"
@@ -11,6 +11,7 @@ depends=(
   'cosmic-applets-git'
   'cosmic-bg-git'
   'cosmic-comp-git'
+  'cosmic-files-git'
   'cosmic-greeter-git'
   'cosmic-icons-git'
   'cosmic-launcher-git'
@@ -36,27 +37,11 @@ makedepends=(
 )
 optdepends=(
   'cosmic-edit-git: COSMIC text editor'
-  'cosmic-files-git: COSMIC file manager'
   'cosmic-store-git: COSMIC store'
   'cosmic-term-git: COSMIC terminal'
   'cosmic-wallpapers-git: COSMIC wallpapers'
   'system-config-printer: printer settings'
   'vulkan-driver: packaged vulkan driver'
-
-  # Default applications
-  # See data/cosmic-mimeapps.list
-#  'cosmic-edit'
-#  'cosmic-files'
-#  'cosmic-store'
-#  'eog'
-#  'evince'
-#  'file-roller'
-#  'firefox'
-#  'gimp'
-#  'gnome-font-viewer'
-#  'libreoffice'
-#  'popsicle'
-#  'totem'
 )
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
