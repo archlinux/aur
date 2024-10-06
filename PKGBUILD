@@ -1,15 +1,16 @@
 # Maintainer: AlphaJack <alphajack at tuta dot io>
 # Contributor: Barry Smith <brrtsm at gmmal dot com>
+# Contributor: TheDL98 <ahmed at thedl98 dot com>
 
 pkgname="ntopng-bin"
 # to update visit https://packages.ntop.org/apt/bookworm/x64/ and keep track of the latest pkgver, date and build
-_pkgverAmd64=6.1
-_dateAmd64=240720
-_buildAmd64=23968
-# to update visit https://packages.ntop.org/apt/bullseye_pi/arm64/ and keep track of the latest pkgver, date and build
-_pkgverArm64=6.1
-_dateArm64=240715
-_buildArm64=23788
+_pkgverAmd64=6.3
+_dateAmd64=241006
+_buildAmd64=24535
+# to update visit https://packages.ntop.org/apt/bookworm_pi/arm64/ and keep track of the latest pkgver, date and build
+_pkgverArm64=6.3
+_dateArm64=241006
+_buildArm64=24535
 # to update visit https://packages.ntop.org/apt/buster_pi/armhf/ and keep track of the latest pkgver, date and build
 _pkgverArm32=6.1
 _dateArm32=240707
@@ -40,9 +41,9 @@ source_armv7h=("https://packages.ntop.org/apt/buster_pi/armhf/ntopng_${_pkgverAr
 b2sums=('c0ba0afb3fdeedaf57f54ce405cd5ce688bb5ed19d05cc21fbefca7ecda98bc5df2cf603e7ac92108763dc26c1ef391afdf69116bb13c03f8e2d3e75fe6bbda5'
         'ca912cbe9e43a5be67e2b487183e43615b93497a62515cad7b1468fab5e3dc9a2dc3fd2e8d88c12d54c91cb3b8c61ebe682c1e7dc5f3ea49aaf0d87aa2a9bbd1'
         'e374ff823b8218faf86c56e0794622954b09b41f5c893db08d3ad38ea1d4fe47733095853d1bf11041b1e4b476d01c1a1a495af40221d6e4e30a0ac223684fac')
-b2sums_x86_64=('628229dcd566b10f7ec591da06cf4d92be8fc91ca1f74fa9fc54ae14b0dc29fc13f277979cb45b95efb555737a5ba05e0381a84d291a7af9ac2136cc758016b5')
+b2sums_x86_64=('7b10a4e1b460ebff6f30ffe63d7b67a73108965d4e223edd4dd20cee4ed779231a08d5eb34522137c70aa6c2a5aef75cd8a355752be9f14394722118be4e755e')
 b2sums_armv7h=('f2996f73459a37fe6cdf31d91d96f6bb7154133093c1202eee688aa58345b873db8ee00944955648a1994341b8619c6900f0b709d878517c9b92a466a961144a')
-b2sums_aarch64=('104a8dbd381ecf069b740d11f13a147e5f30ee4b5d8b287256600047f5df51fe3bf5c78f845427197f8c36b0b1112c5ec6d4196f652e2aedd56c668ebbcef5f1')
+b2sums_aarch64=('c4b33058ef67fe5b96e8d15a9afa1f7c7fce28c487f27173eeefc93a6f89278f9f4850ff864248cdd4d45f7f548f47eedbe72bea407fdb787907a3590a4430f8')
 options=("!strip")
 
 prepare(){
