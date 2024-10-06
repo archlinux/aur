@@ -3,7 +3,8 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 _pkgname=kwin
-pkgname=kwin-frog-fifo-v1
+pkgbase=kwin-frog-fifo-v1
+pkgname=(kwin)
 pkgver=6.1.5
 _dirver=$(echo $pkgver | cut -d. -f1-3)
 pkgrel=2
@@ -103,6 +104,6 @@ build() {
   cmake --build build
 }
 
-package() {
+package_kwin() {
   DESTDIR="$pkgdir" cmake --install build
 }

@@ -88,4 +88,4 @@ pkgbase = kwin-frog-fifo-v1
 	sha256sums = SKIP
 	sha256sums = 90a75a99227eaca2423b014fc46acb590979bc619de9e43e440eae7c2e7ff9f0
 
-pkgname = kwin-frog-fifo-v1
+pkgname = kwin
