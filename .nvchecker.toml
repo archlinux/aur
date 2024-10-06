@@ -1,0 +1,6 @@
+[python-symfem]
+source = "github"
+github = "mscroggs/symfem"
+use_latest_release = "true"
+prefix = "v"
+
