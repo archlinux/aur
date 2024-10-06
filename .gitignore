@@ -1,3 +1,4 @@
 /src
 /pkg
-/neo4j*
+/neo4j*.deb
+/neo4j*.tar*
