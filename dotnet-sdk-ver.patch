@@ -1,0 +1,13 @@
+diff -Naur GitVersion-6.0.2.org/global.json GitVersion-6.0.2/global.json
+--- GitVersion-6.0.2.org/global.json	2024-10-06 19:08:19.231380505 +0200
++++ GitVersion-6.0.2/global.json	2024-10-06 19:08:33.367555072 +0200
+@@ -3,8 +3,5 @@
+     "build",
+     "new-cli",
+     "src"
+-  ],
+-  "sdk": {
+-    "version": "8.0.303"
+-  }
++  ]
+ }

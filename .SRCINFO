@@ -1,15 +1,17 @@
 pkgbase = gitversion
 	pkgdesc = From git log to SemVer in no time
-	pkgver = 5.12.0
-	pkgrel = 2
+	pkgver = 6.0.2
+	pkgrel = 3
 	url = https://github.com/GitTools/GitVersion
 	arch = x86_64
 	license = MIT
-	makedepends = dotnet-sdk-6.0
+	makedepends = dotnet-sdk-bin
 	depends = glibc
 	options = !strip
 	options = staticlibs
-	source = https://github.com/GitTools/GitVersion/archive/refs/tags/5.12.0.tar.gz
-	sha512sums = 7d156ed5675d3200d7bc2ccb190234c0647b48e5411fe9c0c3205663dddb30597b48df14f50d16724d1f538f9352b11cddbab2678861e7d6176255139ad11e88
+	source = https://github.com/GitTools/GitVersion/archive/refs/tags/6.0.2.tar.gz
+	source = dotnet-sdk-ver.patch
+	sha512sums = 7ba2bb753421fb6f3661a8b7e1ec5ff550e8ab7fb26156353b452a4e68c4873ba4326f249c4810bd9f1e97663ff152319fbb14e89794cb71b2cb80bb1945c1d1
+	sha512sums = 5dbfd6a0c7c82c8137f5d09868f6a242c9befdf6224316d6f55e9b5782d9e615e35ad853db53c3776922764979a00c478cb006c83a52e87a354f933974554f5d
 
 pkgname = gitversion
