@@ -1,10 +1,10 @@
 pkgbase = ladybird
 	pkgdesc = Truly independent web browser
-	pkgver = 20240716
+	pkgver = 20241006
 	pkgrel = 1
 	url = https://github.com/LadybirdBrowser/ladybird
 	arch = x86_64
-	license = BSD
+	license = BSD-2-Clause
 	makedepends = git
 	makedepends = cmake
 	makedepends = ninja
@@ -23,11 +23,11 @@ pkgbase = ladybird
 	depends = ttf-liberation
 	options = !lto
 	options = !debug
-	source = git+https://github.com/LadybirdBrowser/ladybird#commit=bfc9dc447f42eb9d7d0927721291d1b528b3125d
-	source = git+https://github.com/microsoft/vcpkg.git#commit=f7423ee180c4b7f40d43402c2feb3859161ef625
+	source = git+https://github.com/LadybirdBrowser/ladybird#commit=5056bda043984953685bb4284fc698ab42418045
+	source = git+https://github.com/microsoft/vcpkg.git#commit=2960d7d80e8d09c84ae8abf15c12196c2ca7d39a
 	source = ladybird.desktop
-	b2sums = SKIP
-	b2sums = SKIP
-	b2sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
 
 pkgname = ladybird
