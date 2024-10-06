@@ -11,10 +11,15 @@ pkgdesc="Library for manipulation of TIFF images (mingw-w64)"
 arch=('any')
 url="https://libtiff.gitlab.io/libtiff/"
 license=('custom')
-depends=('mingw-w64-libjpeg-turbo'
-         'mingw-w64-zlib'
-         'mingw-w64-xz')
-makedepends=('mingw-w64-configure')
+depends=(
+  'mingw-w64-libjpeg-turbo'
+  'mingw-w64-zlib'
+  'mingw-w64-xz'
+)
+makedepends=(
+  'git'
+  'mingw-w64-configure'
+)
 options=('!strip' 'staticlibs' '!buildflags')
 source=("git+https://gitlab.com/libtiff/libtiff.git?signed#tag=v${pkgver}")
 b2sums=('15c36e609a96fe58ffb6123d0f99dbed22e3af532e1b2f72347b3fb37932437d85ae2e7489edb67553e3339da3742693abe2d38dcc3d8fe3c3a6df9be38ca948')

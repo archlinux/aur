@@ -5,6 +5,7 @@ pkgbase = mingw-w64-libtiff
 	url = https://libtiff.gitlab.io/libtiff/
 	arch = any
 	license = custom
+	makedepends = git
 	makedepends = mingw-w64-configure
 	depends = mingw-w64-libjpeg-turbo
 	depends = mingw-w64-zlib
