@@ -1,4 +1,4 @@
-pkgbase = zfs-dkms-staging-git
+pkgbase = zfs-dkms-staging-compat-git
 	pkgdesc = Kernel modules for the Zettabyte File System (release staging branch).
 	pkgver = 2.2.6.r0.gbaa5031456
 	pkgrel = 1
@@ -17,7 +17,7 @@ pkgbase = zfs-dkms-staging-git
 	sha256sums = SKIP
 	sha256sums = 8d5c31f883a906ab42776dcda79b6c89f904d8f356ade0dab5491578a6af55a5
 
-pkgname = zfs-dkms-staging-git
+pkgname = zfs-dkms-staging-compat-git
 	depends = zfs-utils>=2.2.6
 	depends = zfs-utils<=2.2.7
 	depends = dkms
