@@ -1,36 +1,63 @@
-# Maintainer: Neptune <neptune650@proton.me>
+# Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
+# Contributor: Neptune <neptune650@proton.me>
 # Contributor: Bjoern Franke <bjo+aur<at>schafweide.org>
 # Contributor: Ivan Semkin (ivan at semkin dot ru)
 # Contributor: kikadf <kikadf.01@gmail.com>
 
 pkgname=mir
-pkgver=2.16.3
-pkgrel=1
+pkgver=2.18.2
+pkgrel=3
 pkgdesc="Canonical's display server"
-url='https://mir-server.io'
+url="https://github.com/canonical/mir"
 arch=(x86_64 i686)
-license=(GPL LGPL)
-depends=(gtest boost-libs capnproto google-glog gflags libglvnd  liburcu lttng-ust libepoxy libxml++2.6 nettle libinput libxkbcommon python-pillow freetype2 libevdev protobuf python-dbus python-gobject hicolor-icon-theme libxcursor yaml-cpp)
-makedepends=(git glm doxygen cmake boost gcovr gmock lcov valgrind python-dbusmock umockdev wlcs libxkbcommon-x11)
+license=('GPL-2.0-or-later OR GPL-3.0-or-later')
+depends=(boost-libs libglvnd lttng-ust libepoxy libxml++2.6 libinput yaml-cpp
+         libxkbcommon  freetype2  hicolor-icon-theme libxcursor
+
+        egl-wayland wayland
+
+        glib2 glibc gcc-libs util-linux-libs libxcb libxkbcommon-x11 libdrm mesa libx11 gtest glibmm
+
+        # capnproto google-glog gflags liburcu nettle libevdev protobuf  python-gobject
+)
+makedepends=(glm doxygen graphviz cmake boost umockdev wlcs glmark2
+
+             python-pillow python-dbus
+             #gcovr lcov valgrind
+             python-dbusmock
+             glib2-devel
+)
 optdepends=('qterminal: required for miral demos'
             'ttf-ubuntu-font-family: required for miral demos'
             'qt5-wayland: required for miral demos'
             'xcursor-dmz: opt requirement for miral demos')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/MirServer/mir/archive/v${pkgver}.tar.gz")
-sha256sums=('d0128d3061e72fc4cba811267e6ad988563f1a24487d8752d643abdcaa75272d')
+options=(!lto)
+source=("https://github.com/canonical/mir/releases/download/v${pkgver}/mir-${pkgver}.tar.xz")
+sha256sums=('e03d6c88eeabe177528e69719331529ed25f10266fe8a80d829071ab755b9ef7')
 
-BUILD_DIR=build
+# glm not found but is listed here
 
 build() {
-  cd ${pkgname}-${pkgver}
-  mkdir -p ${BUILD_DIR}
-  cd ${BUILD_DIR}
-  cmake -DCMAKE_INSTALL_PREFIX:PATH=/usr -DCMAKE_INSTALL_LIBDIR="lib/" -DMIR_USE_PRECOMPILED_HEADERS=OFF ..
-  cmake --build ./
+  export CFLAGS+=" -Wno-error=array-bounds"
+  export CXXFLAGS+=" -Wno-error=array-bounds"
+
+  local _flags=(
+    -DMIR_USE_PRECOMPILED_HEADERS=OFF
+    -Dglm_DIR:PATH=/usr/lib/cmake/glm
+  )
+
+  cmake -B build -S "mir-${pkgver}" -Wno-dev \
+    -DCMAKE_BUILD_TYPE=None \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    "${_flags[@]}"
+
+  cmake --build build
 }
 
+#check() {
+#  ctest --test-dir build --output-on-failure
+#}
+
 package() {
-  cd ${pkgname}-${pkgver}/${BUILD_DIR}
-  make DESTDIR="${pkgdir}/" install
+  DESTDIR="${pkgdir}" cmake --install build
 }
-# vim:set ts=2 sw=2 et:
