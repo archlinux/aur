@@ -3,12 +3,12 @@
 pkgname=tauon-music-box-git
 _pkgname=tauonmb
 _gitname=Tauon
-pkgver=7.8.3.r19.dd3b6d34
+pkgver=7.8.3.r22.6ce33532
 pkgrel=1
 _kissfftver=131.1.0
 _miniaudiocommit=4a5b74bef029b3592c54b6048650ee5f972c1a48
 pkgdesc='A modern music player'
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url='https://tauonmusicbox.rocks'
 license=('GPL-3.0-only')
 
