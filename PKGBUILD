@@ -2,7 +2,7 @@
 
 pkgname=clonezilla-unstable
 _pkgname=clonezilla
-pkgver=5.6.21
+pkgver=5.6.22
 pkgrel=1
 pkgdesc="ncurses partition and disk imaging/cloning program"
 arch=('any')
@@ -16,7 +16,7 @@ conflicts=("${_pkgname}")
 provides=("${_pkgname}")
 source=("https://free.nchc.org.tw/drbl-core/src/unstable/${_pkgname}-${pkgver}.tar.xz"
 	'usrbin.patch')
-sha512sums=('3839a217e579e529783d4078124055c10e40ed7450d496a7be3aa951bb169c19f0fbe0aa88a92299ae47a4ba986c79bb1d9bee6843d4d436bedbdfaef2faf79d'
+sha512sums=('e1b58bbde1cf6fe42b94e5788207b9e1fb88b48522a0bae90567dd60ff26167aadcab0dfde2a1fb84701e0409928f991c91f4c44070fa740425095efb25657cc'
             '39e63eaa18ffaed7fe9a2dde449c8b57d4a3dc313024213881bd620d0011671bb7f8a0346df7c247c2da94f8d82afb669057cb05dd9cefffafb680826544d6ac')
 
 prepare() {
