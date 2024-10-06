@@ -1,0 +1,24 @@
+pkgbase = wlcs-git
+	pkgdesc = Canonical's protocol-conformance-verifying test suite for Wayland compositor implementations.
+	pkgver = 1.7.0.r79.ge7c53c8
+	pkgrel = 2
+	url = https://github.com/canonical/wlcs
+	arch = x86_64
+	arch = i686
+	arch = armv7h
+	arch = aarch64
+	license = GPL-2.0-or-later OR GPL-3.0-or-later
+	makedepends = git
+	makedepends = cmake
+	makedepends = boost
+	makedepends = wayland-protocols
+	depends = glibc
+	depends = gcc-libs
+	depends = gtest
+	depends = wayland
+	provides = wlcs
+	conflicts = wlcs
+	source = git+https://github.com/canonical/wlcs.git
+	sha512sums = SKIP
+
+pkgname = wlcs-git
