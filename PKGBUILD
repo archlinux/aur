@@ -50,6 +50,8 @@ package() {
     # bin
     install -dm755 "${pkgdir}/usr/bin/"
     install -m755 -t "${pkgdir}/usr/bin/" "${source_dir}/bin"/*
+    # 复制软链接 覆盖
+    find "${source_dir}/bin" -type l -exec cp -P -f {} "${pkgdir}/usr/bin/" \;
 
     # conf
     install -dm755 "${pkgdir}/etc/${_basename}"
