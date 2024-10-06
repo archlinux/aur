@@ -1,24 +1,24 @@
+# Maintainer: Sich <little_sich@tuta.io>
+# Contributor: Mr.Smith1974
 _pkgname=celestia
-_pkgver=1.6.3
-_appimage="${_pkgname}-${_pkgver}-lp154.2.1.Build2.2.glibc2.29-x86_64.AppImage"
-_desktopfile="space.celestia.celestia.desktop"
+_appimage="${_pkgname}-latest-x86_64.AppImage"
+_desktopfile="space.celestiaproject.celestia.desktop"
 
 pkgname=celestia-appimage
-pkgver=1.6.3
-pkgrel=2
+pkgver=1.7.0
+pkgrel=1
 pkgdesc="Real-time space simulation"
 arch=(x86_64)
-license=(GPL)
+license=(GPL-2.0-or-later)
 url="https://github.com/CelestiaProject/Celestia"
-depends=('gtk2')
+depends=()
 options=(!strip)
-source=("https://github.com/CelestiaProject/Celestia/releases/download/${pkgver}/${_pkgname}-${pkgver}-lp154.2.1.Build2.2.glibc2.29-x86_64.AppImage")
-sha256sums=('7c3c586d4e9e8e91c7d660a5312e95fd80600c482b84dadfa13f81bfc907f8ef')
+source=("https://download.opensuse.org/repositories/home:/munix9:/unstable/AppImage/celestia-latest-x86_64.AppImage")
+sha512sums=('bd0bc0b86e70a82c93970b4aa7896eb2eaf0b35c323ee9b4aaf4b8200893a42b88eae6f827fab4791e39aef78f2d83f539c9367664ee1369942e9ef58ad9b5b0')
 
 
 prepare() {
     chmod +x ${_appimage}
-    #./${_appimage} --appimage-extract
     ./${_appimage} --appimage-extract usr/share/applications/${_desktopfile}
     ./${_appimage} --appimage-extract usr/share/pixmaps/${_pkgname}.png
 }
