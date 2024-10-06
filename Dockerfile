@@ -1,7 +1,7 @@
 FROM archlinux
 
 # Install dependencies
-RUN pacman --noconfirm -Sy fakeroot
+RUN pacman --noconfirm -Sy fakeroot debugedit
 
 # Set up user
 RUN useradd -m builder
