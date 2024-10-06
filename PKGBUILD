@@ -26,7 +26,8 @@ prepare() {
   # Use the default system rust toolchain
   # rm -f rust-toolchain
 
-  sed -i 's/exit 2//' java/build_jni.sh
+  sed -i 's/exit 2/suffix=""/' java/build_jni.sh
+  sed -i 's/-Xmx4g//' java/gradle.properties
   sed -i "s/cargo build/cargo build --frozen/" java/build_jni.sh
 
   cargo fetch --locked --target "$(rustc -vV | awk '/^host: / {print $2}')"
