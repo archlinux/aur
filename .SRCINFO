@@ -1,14 +1,13 @@
 pkgbase = python-softlayer-zeep
 	pkgdesc = A modern/fast python SOAP client based on lxml / requests
 	pkgver = 5.0.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/softlayer/softlayer-zeep
 	arch = any
 	license = MIT
 	checkdepends = python-pytest
 	checkdepends = python-freezegun
 	checkdepends = python-pretend
-	checkdepends = python-pytest-cov
 	checkdepends = python-pytest-httpx
 	checkdepends = python-pytest-asyncio
 	checkdepends = python-requests-mock
