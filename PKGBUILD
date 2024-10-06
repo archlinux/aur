@@ -4,7 +4,8 @@
 # Contributor: Filip Brcic < brcha at gna dot org >
 # Contributor: Martchus < martchus at gmx dot net >
 
-_pkgver=3.3.1
+_pkgname=openssl
+_pkgver=3.3.2
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 pkgname=mingw-w64-openssl
@@ -19,13 +20,13 @@ makedepends=('mingw-w64-gcc'
              'mingw-w64-environment'
              'perl')
 options=('!strip' 'staticlibs' '!buildflags' '!lto')
-source=("https://www.openssl.org/source/openssl-${_pkgver}.tar.gz"{,.asc})
-sha256sums=('777cd596284c883375a2a7a11bf5d2786fc5413255efab20c50d6ffe6d020b7e'
-            'SKIP')
-validpgpkeys=('8657ABB260F056B1E5190839D9C4D26D0E604491'
-              '7953AC1FBC3DC8B3B292393ED5E9E43F7DF9EE8C'
-              'A21FAB74B0088AA361152586B8EF1A6BA9DA2D5C'
-              'EFC0A467D613CB83C7ED6D30D894E2CE8B3D79F5')
+source=("https://github.com/${_pkgname}/${_pkgname}/releases/download/${_pkgname}-${pkgver}/${_pkgname}-${pkgver}.tar.gz"{,.asc})
+b2sums=('cc53d45418673bc2a406d6697b8bd17ff6c726463c4ccc87bb2fa5a6592d0d178dc8cfeb2fbb980ea354a5dc2c86f31c48453427c6937896c7221273e623c9b5'
+        'SKIP')
+validpgpkeys=(
+  'EFC0A467D613CB83C7ED6D30D894E2CE8B3D79F5'
+  'BA5473A2B0587B07FB27CF2D216094DFD0CB81EF'
+)
 
 prepare() {
   cd openssl-${_pkgver}
