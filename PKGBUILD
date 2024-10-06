@@ -1,4 +1,4 @@
-# Maintainer: Johnny Everman <johneverman08@gmail.com>
+# Maintainer: AntiApple4life <antiapple at antiapple dot net>
 # Contributor: Mees Valkenburg <`echo bWVlc3J1ZGlnZXJhcmRAbGl2ZS5ubAo= | base64 -d`>
 # Contributor: Kaiting Chen <kaitocracy@gmail.com>
 # Contributor: Anton Bazhenov <anton.bazhenov at gmail>
