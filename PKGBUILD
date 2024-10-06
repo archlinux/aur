@@ -6,7 +6,7 @@ _openapi_commit=0f9d3ec7c033fef184ec54e1ffc201b2d61ce023
 pkgrel=3
 pkgdesc="Resolving Swagger/OpenAPI 2.0 and 3.0 Parser"
 url="https://github.com/jfinkhaeuser/prance"
-license=('custom:MITNFA')
+license=('MITNFA')
 arch=('any')
 depends=('python-chardet' 'python-ruamel-yaml' 'python-requests' 'python-six' 'python-semver'
          'python-packaging')
