@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=wine-staging-git
-pkgver=9.9.r5.g68925c8f
+pkgver=9.19.r0.g858bf979
 pkgrel=1
 pkgdesc='A compatibility layer for running Windows programs (staging branch, git version)'
 arch=('x86_64')
@@ -106,8 +106,8 @@ build() {
     export CFLAGS+=' -ffat-lto-objects'
     
     # apply flags for cross-compilation
-    export CROSSCFLAGS="${CFLAGS/-Werror=format-security/}"
-    export CROSSCXXFLAGS="${CXXFLAGS/-Werror=format-security/}"
+    export CROSSCFLAGS="${CFLAGS/-Werror=format-security/} -g"
+    export CROSSCXXFLAGS="${CXXFLAGS/-Werror=format-security/} -g"
     export CROSSLDFLAGS="${LDFLAGS//-Wl,-z*([^[:space:]])/}"
     
     # fix build with gcc 14

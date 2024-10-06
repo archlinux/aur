@@ -1,6 +1,6 @@
 pkgbase = wine-staging-git
 	pkgdesc = A compatibility layer for running Windows programs (staging branch, git version)
-	pkgver = 9.9.r5.g68925c8f
+	pkgver = 9.19.r0.g858bf979
 	pkgrel = 1
 	url = https://www.wine-staging.com/
 	install = wine-staging-git.install
@@ -103,8 +103,8 @@ pkgbase = wine-staging-git
 	optdepends = cups
 	optdepends = samba
 	optdepends = dosbox
-	provides = wine-staging=9.9.r5.g68925c8f
-	provides = wine=9.9
+	provides = wine-staging=9.19.r0.g858bf979
+	provides = wine=9.19
 	provides = wine-wow64
 	conflicts = wine
 	conflicts = wine-wow64
