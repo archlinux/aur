@@ -15,20 +15,28 @@
 
 pkgname=loot
 # https://github.com/loot/loot/releases
-pkgver=0.23.1
+pkgver=0.24.0
 pkgrel=1
 pkgdesc="A load order optimisation tool for Starfield, The Elder Scrolls (Morrowind and later) and Fallout (3 and later) games."
 arch=('x86_64')
 url="https://loot.github.io"
 license=('GPL-3.0-only')
-depends=('icu' 'hicolor-icon-theme' 'onetbb' 'qt6-base' 'libloot')
+depends=('fmt' 'icu' 'hicolor-icon-theme' 'onetbb' 'qt6-base' 'libloot')
 makedepends=('git' 'boost' 'cbindgen' 'cmake' 'rust')
 source=(
 	"${pkgname}-${pkgver}.tar.gz::https://github.com/${pkgname}/${pkgname}/archive/${pkgver}.tar.gz"
 	'LOOT.desktop'
+	'algorithm.patch'
 )
-sha256sums=('8091189e8ad83d0322d8c4061f06f747ad7b782cb4440b0c56b55b12b9cda0b8'
-            '3dd063fdbe33dc82a4298bd5bcd3b4e7490adab4128389c153d12c6b074b27fb')
+sha256sums=('14ccb1652079c7df9088bca837deee55bbe352ae44afb10f1139e1c4cff199a3'
+            '3dd063fdbe33dc82a4298bd5bcd3b4e7490adab4128389c153d12c6b074b27fb'
+            'dfcacfd850b9e89607944c091733df6ca7830dc4a8bce144db32e01b8bf4436a')
+
+prepare() {
+	cd "${pkgname}-${pkgver}"
+	# See https://aur.archlinux.org/packages/loot#comment-993431
+	patch -Np1 -i "${srcdir}"/algorithm.patch
+}
 
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"

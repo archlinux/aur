@@ -1,0 +1,11 @@
+diff --unified --recursive --text a/src/gui/state/game/detection/common.cpp b/src/gui/state/game/detection/common.cpp
+--- a/src/gui/state/game/detection/common.cpp	2024-10-05 10:43:13.000000000 -0600
++++ b/src/gui/state/game/detection/common.cpp	2024-10-05 12:29:14.776578866 -0600
+@@ -26,6 +26,7 @@
+ #include "gui/state/game/detection/common.h"
+
+ #include <functional>
++#include <algorithm>
+
+ #include "gui/helpers.h"
+ #include "gui/state/game/game_settings.h"
