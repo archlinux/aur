@@ -1,6 +1,6 @@
 pkgbase = celestia-qt5-git
 	pkgdesc = Real-time space simulation (git version with Qt5 and video capture)
-	pkgver = r7102.8ae5818db
+	pkgver = r7149.3c9edf58d
 	pkgrel = 1
 	url = https://celestiaproject.space
 	arch = x86_64
@@ -8,6 +8,7 @@ pkgbase = celestia-qt5-git
 	makedepends = git
 	makedepends = cmake
 	makedepends = make
+	makedepends = boost
 	makedepends = gperf
 	depends = mesa
 	depends = libepoxy
