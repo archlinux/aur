@@ -1,0 +1,13 @@
+pkgbase = fubar
+	pkgdesc = Formidable Unix Binary Arsenal & Repository
+	pkgver = 09d86bc
+	pkgrel = 1
+	url = https://github.com/irishmaestro/fubar
+	arch = x86_64
+	license = GPL3
+	makedepends = cargo
+	makedepends = git
+	source = git+https://github.com/irishmaestro/fubar.git
+	sha256sums = SKIP
+
+pkgname = fubar-cli-git
