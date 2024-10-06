@@ -2,7 +2,7 @@
 # Maintainer:  Nick Bilbrey (beelzebud) <beelzebud@gmail.com>
 
 pkgname=hypseus-singe
-pkgver=2.11.2
+pkgver=2.11.3
 pkgrel=1
 pkgdesc="A drop-in replacement to daphne, to play laserdisc arcade games on a PC."
 arch=('x86_64' 'aarch64')
@@ -14,7 +14,7 @@ conflicts=("daphne" "$pkgname-git")
 replaces=("daphne" "$pkgname-git")
 _tag=e2ad79d9d3a6102efe9e5fad2cc45294c9a0303c
 source=(git+$url.git#tag=${_tag})
-sha256sums=('SKIP')
+sha256sums=('dde76fdf229984abf4a32a23c986f92e6b4c5bca3207fd1b68923f68d90061b5')
 
 build()
 {
