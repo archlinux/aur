@@ -8,12 +8,12 @@
 
 _pack=audio
 pkgname=octave-$_pack
-pkgver=2.0.8
+pkgver=2.0.9
 pkgrel=1
 pkgdesc="Audio recording, processing and playing tools."
 arch=(any)
 url="https://gnu-octave.github.io/packages/$_pack/"
-license=('GPL')
+license=('GPL-3.0-or-later')
 groups=('octave-forge')
 depends=('octave>=4.0.0' 'rtmidi')
 makedepends=()
@@ -24,7 +24,7 @@ install=$pkgname.install
 _archive=$_pack-$pkgver.tar.gz
 source=("https://github.com/gnu-octave/$pkgname/releases/download/release-$pkgver/$_archive")
 noextract=("$_archive")
-sha256sums=('b0a72e744ab56079a0489a60caba76d68642bf2ce15ab55c7df01792479524cc')
+b2sums=('648f45f45ec7bacd16ab8aa2a7e5b347aad4ae4a76b31e71b121b619f488f6ef248ce67e5a004984ba900642bfbc1a7c22e198884b5c85160f7731be4715d3a7')
 
 _octave_run() {
 	octave --no-history --no-init-file --no-window-system -q -f --eval "$*"
