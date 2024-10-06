@@ -13,7 +13,7 @@
 
 pkgbase=imagemagick-full-git
 pkgname=('imagemagick-full-git' 'imagemagick-full-doc-git')
-pkgver=7.1.1.33.r24.g33119d988
+pkgver=7.1.1.39.r2.g0ca37b0de2
 pkgrel=1
 arch=('x86_64')
 _qdepth='32'
@@ -29,19 +29,12 @@ makedepends=(
         'graphviz' 'openexr' 'libheif' 'openjpeg2' 'libjpeg-turbo' 'xz' 'glib2' 'pango'
         'cairo' 'libpng' 'ghostscript' 'ming' 'librsvg' 'libtiff' 'libwebp' 'libwmf'
         'ocl-icd' 'gsfonts' 'ttf-dejavu' 'perl' 'libzip' 'libjxl' 'gperftools'
-        'autotrace'
+        'libultrahdr' 'autotrace-nomagick'
     # AUR:
-        'dmalloc' 'flif' 'libfpx' 'libultrahdr-git' 'libumem-git' 'magickcache-git'
+        'dmalloc' 'flif' 'libfpx' 'libumem-git' 'magickcache-git'
 )
-source=('git+https://github.com/ImageMagick/ImageMagick.git'
-        'arch-fonts.diff')
-sha256sums=('SKIP'
-            '290c6a87845b419459fb552c0e7dcd81fbeafcecc370818d442fedf4d315b7fb')
-
-prepare() {
-    # fix up typemaps to match Arch Linux packages, where possible
-    patch -d ImageMagick -Np1 -i "${srcdir}/arch-fonts.diff"
-}
+source=('git+https://github.com/ImageMagick/ImageMagick.git')
+sha256sums=('SKIP')
 
 pkgver() {
     git -C ImageMagick describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
@@ -135,9 +128,9 @@ package_imagemagick-full-git() {
             'graphviz' 'openexr' 'libheif' 'openjpeg2' 'libjpeg-turbo' 'xz' 'glib2' 'pango'
             'cairo' 'libpng' 'ghostscript' 'ming' 'librsvg' 'libtiff' 'libwebp' 'libwmf'
             'ocl-icd' 'gsfonts' 'ttf-dejavu' 'perl' 'libzip' 'libjxl' 'gperftools'
-            'autotrace-nomagick'
+            'libultrahdr' 'autotrace-nomagick'
         # AUR:
-            'dmalloc' 'flif' 'libfpx' 'libultrahdr-git' 'libumem-git' 'magickcache-git'
+            'dmalloc' 'flif' 'libfpx' 'libumem-git' 'magickcache-git'
     )
     optdepends=('imagemagick-full-doc-git: manual and API docs')
     backup=("etc/ImageMagick-${pkgver%%.*}"/{colors,delegates,log,mime,policy,quantization-table,thresholds,type-{apple,dejavu,ghostscript,urw-base35,windows,}}.xml)
