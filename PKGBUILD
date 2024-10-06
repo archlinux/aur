@@ -2,7 +2,7 @@
 # Contributor: Sefa Eyeoglu <contact@scrumplex.net>
 
 pkgname=sway-systemd
-pkgver=0.4.0
+pkgver=0.4.1
 pkgrel=1
 pkgdesc="Systemd integration for Sway session"
 arch=(any)
@@ -12,7 +12,7 @@ depends=("python" "sway" "dbus" "python-dbus-next" "python-i3ipc" "python-psutil
 makedepends=("git" "meson")
 conflicts=("sway-services-git")
 source=("sway-systemd::git+https://github.com/alebastr/sway-systemd.git#tag=v${pkgver}")
-sha512sums=('SKIP')
+sha512sums=('4c1b01e45ae152e221412ea29f5c5fdbe55c17405e23c46ba8d93e15a963f1bb0efa22ab30ccf8f18a3b85f68f9ff005b378c471794449589219ad5238728028')
 
 build() {
   arch-meson \
