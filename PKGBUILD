@@ -13,7 +13,7 @@
 
 pkgbase=imagemagick-full
 pkgname=('imagemagick-full' 'imagemagick-full-doc')
-pkgver=7.1.1.38
+pkgver=7.1.1.39
 pkgrel=1
 arch=('x86_64')
 _qdepth='32'
@@ -33,17 +33,10 @@ makedepends=(
     # AUR:
         'dmalloc' 'flif' 'libfpx' 'libumem-git' 'magickcache-git'
 )
-source=("https://imagemagick.org/archive/releases/ImageMagick-${pkgver%.*}-${pkgver##*.}.tar.xz"{,.asc}
-        'arch-fonts.diff')
-sha256sums=('48de548d4977fc226c982ca03b9d6ad8001b47d8dc142b49fdca69333bc4ad82'
-            'SKIP'
-            '290c6a87845b419459fb552c0e7dcd81fbeafcecc370818d442fedf4d315b7fb')
+source=("https://imagemagick.org/archive/releases/ImageMagick-${pkgver%.*}-${pkgver##*.}.tar.xz"{,.asc})
+sha256sums=('b5a18ed9eb0db1e5e1fde26fc95f38bd7d71d9de05dde8b23c238debe332fada'
+            'SKIP')
 validpgpkeys=('D8272EF51DA223E4D05B466989AB63D48277377A')  # Lexie Parsimoniae
-
-prepare() {
-    # fix up typemaps to match Arch Linux packages, where possible
-    patch -d "ImageMagick-${pkgver%.*}-${pkgver##*.}" -Np1 -i "${srcdir}/arch-fonts.diff"
-}
 
 build() {
     cd "ImageMagick-${pkgver%.*}-${pkgver##*.}"
