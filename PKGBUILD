@@ -3,7 +3,7 @@
 _pkgname=getkey
 pkgname=python-getkey
 pkgver=0.6.5
-pkgrel=5
+pkgrel=6
 pkgdesc='Python library to easily read single chars and key strokes'
 arch=('any')
 url='https://github.com/kcsaff/getkey'
@@ -15,7 +15,7 @@ makedepends=(
   'python-setuptools'
   'python-wheel'
 )
-checkdepends=('python-pytest-cov')
+checkdepends=('python-pytest')
 source=("https://github.com/kcsaff/$_pkgname/archive/v$pkgver/$pkgname-$pkgver.tar.gz")
 sha256sums=('096792463ed0cd8ac92d7b2b6d23cff1c815b449403115034bed2029b378d54c')
 
@@ -26,7 +26,7 @@ build() {
 
 check() {
   cd $_pkgname-$pkgver
-  pytest
+  pytest --override-ini="addopts="
 }
 
 package() {
