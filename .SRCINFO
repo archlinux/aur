@@ -1,10 +1,11 @@
 pkgbase = fnm-bin
 	pkgdesc = Fast and simple Node.js version manager, built in Rust
 	pkgver = 1.37.2
-	pkgrel = 0
+	pkgrel = 1
 	url = https://github.com/Schniz/fnm
 	arch = x86_64
 	arch = aarch64
+	arch = armv7h
 	license = GPL3
 	provides = fnm
 	conflicts = fnm-git
@@ -13,5 +14,7 @@ pkgbase = fnm-bin
 	sha256sums_x86_64 = 439ccbc11e65df970500833e152b896c107f3f3014ea7aaf42213241b403338c
 	source_aarch64 = fnm-1.37.2-aarch64.zip::https://github.com/Schniz/fnm/releases/download/v1.37.2/fnm-arm64.zip
 	sha256sums_aarch64 = 8db196f4bcbb2f27b4742bd5a898ab79d444006d121f888d9201bb3690419763
+	source_armv7h = fnm-1.37.2-aarch64.zip::https://github.com/Schniz/fnm/releases/download/v1.37.2/fnm-arm32.zip
+	sha256sums_armv7h = 8db196f4bcbb2f27b4742bd5a898ab79d444006d121f888d9201bb3690419763
 
 pkgname = fnm-bin
