@@ -1,7 +1,7 @@
 # Maintainer: jason.nader@protonmail.com
 # Based on PKGBUILD by Kevin S <aur@eldenring.mozmail.com>
 pkgname=audiobookshelf
-pkgver=v2.13.4
+pkgver=v2.14.0
 pkgrel=1
 pkgdesc="Self-hosted audiobook server for managing and playing audiobooks"
 arch=('x86_64')
@@ -21,7 +21,7 @@ source=(
 	'audiobookshelf.tmpfiles'
 )
 
-sha256sums=('4752935fd4d4d1ffc84dfb46bfeb3a3abdab13ce151d5119862aafeeb73e274f'
+sha256sums=('106d853ff70758c8394da8accbce45d0c8c866d7c034ea39df4812d0e8408c9c'
             '839c778b8ae951d82a602d370452d702ad9b1d8ab6844984c934a3d2af0b710a'
             '91d00bbc9800f80cde439fd9b5343cf031b6a09557f03172c92d40f2f0775c2b'
             '4f37d8e407eda555231dc23d1cd35d329075ae6686acbb89d0b4612a824d594d'
