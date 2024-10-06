@@ -21,6 +21,7 @@ depends=(embree3 freetype2 graphite harfbuzz harfbuzz-icu libglvnd libspeechd
 optdepends=('pipewire-alsa: for audio support'
     'pipewire-pulse: for audio support')
 makedepends=(git alsa-lib scons wayland yasm)
+options=('!debug')
 source=(
     "${_pkgname}::git+https://github.com/Redot-Engine/redot-engine.git"
     Redot.desktop
