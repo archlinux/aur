@@ -5,7 +5,7 @@
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 pkgname=mingw-w64-libtiff
-pkgver=4.6.0
+pkgver=4.7.0
 pkgrel=1
 pkgdesc="Library for manipulation of TIFF images (mingw-w64)"
 arch=('any')
@@ -16,13 +16,22 @@ depends=('mingw-w64-libjpeg-turbo'
          'mingw-w64-xz')
 makedepends=('mingw-w64-configure')
 options=('!strip' 'staticlibs' '!buildflags')
-source=("http://download.osgeo.org/libtiff/tiff-${pkgver}.tar.gz")
-sha256sums=('88b3979e6d5c7e32b50d7ec72fb15af724f6ab2cbf7e10880c360a77e4b5d99a')
+source=("git+https://gitlab.com/libtiff/libtiff.git?signed#tag=v${pkgver}")
+b2sums=('15c36e609a96fe58ffb6123d0f99dbed22e3af532e1b2f72347b3fb37932437d85ae2e7489edb67553e3339da3742693abe2d38dcc3d8fe3c3a6df9be38ca948')
+validpgpkeys=(
+  'EBDFDB21B020EE8FD151A88DE301047DE1198975' # Bob Friesenhahn <bfriesen@simple.dallas.tx.us>
+  'B1FA7D81EEB8E66399178B9733EBBFC47B3DD87D' # Even Rouault <even.rouault@spatialys.com>
+)
+
+prepare() {
+  cd "${srcdir}/libtiff"
+  autoreconf -fiv
+} 
 
 build() {
   export CFLAGS="-fno-strict-aliasing"
   export CXXFLAGS="-fno-strict-aliasing"
-  cd "${srcdir}/tiff-${pkgver}"
+  cd "${srcdir}/libtiff"
   for _arch in ${_architectures}; do
     mkdir -p build-${_arch} && pushd build-${_arch}
     ${_arch}-configure \
@@ -35,9 +44,9 @@ build() {
 
 package() {
   for _arch in ${_architectures}; do
-    cd "${srcdir}/tiff-${pkgver}/build-${_arch}"
+    cd "${srcdir}/libtiff/build-${_arch}"
     make DESTDIR="${pkgdir}" install
-    cp "${srcdir}/tiff-${pkgver}/libtiff/"{tiffiop,tif_dir}.h "${pkgdir}/usr/${_arch}/include/"
+    cp "${srcdir}/libtiff/libtiff/"{tiffiop,tif_dir}.h "${pkgdir}/usr/${_arch}/include/"
     cp libtiff/tif_config.h "${pkgdir}/usr/${_arch}/include/"
     find "${pkgdir}/usr/${_arch}" -name '*.exe' -exec rm {} \;
     find "${pkgdir}/usr/${_arch}" -name '*.dll' -exec ${_arch}-strip --strip-unneeded {} \;
