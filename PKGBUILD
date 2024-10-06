@@ -6,7 +6,7 @@
 # Contributor: Stefan Husmann <stefan-husmann at t-online dot de>
 
 pkgname=sagemath-git
-pkgver=10.5.beta1.r0.g0f3477394fb
+pkgver=10.5.beta6.r0.gb0f09d9d782
 pkgrel=1
 pkgdesc='Open Source Mathematics Software, free alternative to Magma, Maple, Mathematica, and Matlab'
 arch=(x86_64)
@@ -135,9 +135,11 @@ makedepends=(bliss
 conflicts=(sagemath)
 provides=(sagemath)
 source=(git+https://github.com/sagemath/sage#branch=develop
-        latte-count.patch)
+        latte-count.patch
+        pari-2.17.patch)
 sha256sums=('SKIP'
-            'f1dd7fea298f38be0f03f46ed4bc9281267f03ec3eee2582edb385ca4cb5db09')
+            'f1dd7fea298f38be0f03f46ed4bc9281267f03ec3eee2582edb385ca4cb5db09'
+            'a0de4523ba630a49350329207082ebc68155489817d758c31f0f960a748725b8')
 _pkgs=(standard
        bliss
        coxeter3
@@ -156,6 +158,8 @@ prepare(){
 
 # use correct latte-count binary name
   patch -p1 -i ../latte-count.patch
+# Fix build with pari 2.17
+  patch -p1 -i ../pari-2.17.patch
 
   ./bootstrap
 }
