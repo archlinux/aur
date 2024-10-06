@@ -1,8 +1,8 @@
 # Maintainer: Gilbert Gilb's <gilbsgilbert@gmail.com>
 
 pkgname=freecad-assembly3-appimage
-pkgver=2024.04.07
-pkgrel=2
+pkgver=2024.10.03
+pkgrel=1
 pkgdesc="Assembly3 workbench for FreeCAD."
 arch=('x86_64')
 url="https://github.com/realthunder/FreeCAD"
@@ -21,12 +21,12 @@ _install_path="/opt/appimages/${_appimage_name}"
 
 noextract=("${_filename}")
 source=(
-  "${_filename}::https://github.com/realthunder/FreeCAD/releases/download/20240407stable/FreeCAD-Link-Stable-Linux-x86_64-py3.11-20240407.AppImage"
-  "https://raw.githubusercontent.com/realthunder/FreeCAD/20240407stable/LICENSE"
+  "${_filename}::https://github.com/realthunder/FreeCAD/releases/download/20241003stable/FreeCAD-Link-Stable-Linux-x86_64-py3.11-20241003.AppImage"
+  "https://raw.githubusercontent.com/realthunder/FreeCAD/20241003stable/LICENSE"
   "freecad_link.desktop.patch"
 )
 sha512sums=(
-  "17d8478f493ef294abcc6cf6039fe5f8f95899e758bf0090ca3e89599de4a809aa02cc9c48c954901174d3bd07e75781f8b622260e18fec4158e9b5faa5d9d1f"
+  "8cfd219386f3f8c6862d6bb62014787583f0300b4b350e6cfc29ad0571609b74823abbb1d4801b4f91fe60aafd343f9f6b0467f37547e7d6a74cb31af534156c"
   "4d1b0998dc55adcfb2ac2f33382bce6467078aaa33dbd3bedf5c2102da853d4186836ad4103ea6100f34068751a5a9d627c022bf2f01deb712e88c6c58e0e292"
   "d7683d92271e9127b7bb0a0a5869caa8d8f8b17aa6426f342a48798568ae9ce8f10a454abf894ca53bd7440f0fc3085650eaa4b4128be525b8a62120360abced"
 )
