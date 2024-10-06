@@ -3,7 +3,7 @@
 # Contributor: jthvai
 
 pkgname=naps2-bin
-pkgver=7.5.1
+pkgver=7.5.2
 pkgrel=1
 pkgdesc="NAPS2 - Not Another PDF Scanner. Scan documents to PDF and more, as simply as possible."
 arch=("aarch64" "x86_64")
@@ -19,8 +19,8 @@ options=("!strip" "!debug")
 source_aarch64=("https://github.com/cyanfish/${pkgname%-bin}/releases/download/v$pkgver/${pkgname%-bin}-$pkgver-linux-arm64.rpm")
 source_x86_64=("https://github.com/cyanfish/${pkgname%-bin}/releases/download/v$pkgver/${pkgname%-bin}-$pkgver-linux-x64.rpm")
 
-b2sums_aarch64=("58f1ab35b6c0730ef956923f51efe51ba7bc03ae62feb942e4033b2a5108f05edf633733689aebcdd26017a9dbfad48e87dacb891573ea899f2eedfe8b53631c")
-b2sums_x86_64=("1e14b5052bcaa2c3dfcbef9e5ace3afd1dab5d1f59cdfe64951847fee475b648c7d63ec8ff3f8a74d8d30d05d0a0faae6a030cec94e133940e697e7e62742fc5")
+b2sums_aarch64=("a61f4d36c19380c64298f12f94aaaf2a3d59c73d69df70d569e91e71d7c08a667d5c62dbb998f9bb5d4a5fb3957f7ac4549e63bb523794b3420cdec5830084d8")
+b2sums_x86_64=("7e13e27928fca3dade4deaabeb55aac9c65472f062185025304e793508d5a12dff525a546e9bc7c74fe522b17c6d9799ed2b3880b04062c6a6babbf27cbef8d8")
 
 package() {
   rm -r "${srcdir}/usr/lib/.build-id"
