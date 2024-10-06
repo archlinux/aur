@@ -1,11 +1,10 @@
 pkgbase = vagrant-git
 	pkgdesc = Build and distribute virtualized development environments
-	pkgver = 2.2.6.203.ga1abc177b
+	pkgver = 2.4.2.dev+000013.26a1ff10.69.g71150ee3d
 	pkgrel = 1
 	url = https://vagrantup.com
-	arch = i686
 	arch = x86_64
-	license = MIT
+	license = BUSL-1.1
 	makedepends = git
 	makedepends = go
 	depends = curl
@@ -16,17 +15,16 @@ pkgbase = vagrant-git
 	depends = rsync
 	depends = ruby
 	depends = xz
+	depends = perl
+	optdepends = dnsmasq: if using libvirt
 	provides = vagrant
-	conflicts = vagrant
 	conflicts = vagrant-substrate
 	conflicts = vagrant-substrate-git
-	replaces = vagrant-substrate
-	replaces = vagrant-substrate-git
+	conflicts = vagrant
 	options = !emptydirs
-	source = git://github.com/hashicorp/vagrant.git
-	source = git://github.com/hashicorp/vagrant-installers.git
+	source = git+https://github.com/hashicorp/vagrant.git
+	source = git+https://github.com/hashicorp/vagrant-installers.git
 	md5sums = SKIP
 	md5sums = SKIP
 
 pkgname = vagrant-git
-
