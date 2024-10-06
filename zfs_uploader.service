@@ -1,0 +1,12 @@
+[Unit]
+Description=ZFS snapshot to S3 uploader
+Wants=network-online.target
+
+[Service]
+Environment=PYTHONUNBUFFERED=1
+ExecStart=/usr/bin/zfsup backup
+Restart=on-failure
+WorkingDirectory=/etc/zfs_uploader
+
+[Install]
+WantedBy=default.target
