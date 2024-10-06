@@ -1,0 +1,25 @@
+pkgbase = jan
+	pkgdesc = Jan is an open source alternative to ChatGPT that runs 100% offline on your computer (stable version)
+	pkgver = 0.5.6
+	pkgrel = 1
+	url = https://jan.ai/
+	arch = x86_64
+	license = AGPL-3.0
+	makedepends = git
+	makedepends = nodejs
+	makedepends = npm
+	makedepends = yarn
+	makedepends = libxcrypt-compat
+	depends = nss
+	depends = atk
+	depends = libcups
+	depends = gtk3
+	depends = alsa-lib
+	provides = jan
+	conflicts = jan
+	source = jan::git+https://github.com/janhq/jan.git#tag=v0.5.6
+	source = jan.desktop
+	sha256sums = SKIP
+	sha256sums = 689c50321d61f2c40a275c004865e9956501038782867bbe73e9d42128f40048
+
+pkgname = jan
