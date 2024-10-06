@@ -1,0 +1,15 @@
+pkgbase = passwordbox
+	pkgdesc = A console-mode program that will keep all your passwords safe
+	pkgver = 0.11
+	pkgrel = 1
+	url = https://passwbox.sourceforge.net
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = freebasic
+	depends = glibc
+	depends = libncursesw.so
+	noextract = passwordbox-0.11.zip
+	source = passwordbox-0.11.zip::https://downloads.sourceforge.net/sourceforge/passwbox/pbox011-src.zip
+	b2sums = d019524b85897e01a03024cd2e11ef3b599d649e1f4629cf6ecf54fee2bb2f2214bab2d15ec1311e3d12cd32912290c04d899bd3a9c0cfba28b167e5723a4945
+
+pkgname = passwordbox
