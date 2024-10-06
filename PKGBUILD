@@ -10,7 +10,7 @@ _miniaudiocommit=4a5b74bef029b3592c54b6048650ee5f972c1a48
 pkgdesc='A modern music player'
 arch=('x86_64' 'aarch64')
 url='https://tauonmusicbox.rocks'
-license=('GPL-3.0-only')
+license=('GPL-3.0-or-later')
 
 conflicts=("${pkgname%-git}")
 depends=(
