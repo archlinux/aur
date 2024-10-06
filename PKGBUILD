@@ -5,14 +5,14 @@
 pkgname=lando
 pkgver=3.21.2
 _target_version=${pkgver//_/-}
-pkgrel=3
+pkgrel=4
 pkgdesc="A free, open source, cross-platform, local development environment and DevOps tool built on Docker container technology"
 arch=('x86_64')
 url="https://docs.lando.dev"
 license=('GPL')
 depends=('docker' 'docker-compose')
 optdepends=('gcc-libs')
-makedepends=('npm' 'git' 'nodejs-lts-iron')
+makedepends=('npm' 'git' 'nodejs')
 source=("${pkgname}::git+https://github.com/lando/cli.git#tag=v${_target_version}")
 sha256sums=('15570ce4ffec23cf21559f998facc217bc3c78e65870be8232083f3727c68b44')
 conflicts=("lando-git")
