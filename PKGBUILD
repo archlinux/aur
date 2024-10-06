@@ -3,8 +3,7 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 _pkgname=kwin
-pkgbase=kwin-frog-fifo-v1
-pkgname=(kwin)
+pkgname=kwin-frog-fifo-v1
 pkgver=6.1.5
 _dirver=$(echo $pkgver | cut -d. -f1-3)
 pkgrel=2
@@ -13,6 +12,7 @@ arch=(x86_64)
 url='https://kde.org/plasma-desktop/'
 license=(LGPL-2.0-or-later)
 provides=(kwin)
+conflicts=(kwin)
 depends=(breeze
          gcc-libs
          glibc
@@ -104,6 +104,6 @@ build() {
   cmake --build build
 }
 
-package_kwin() {
+package() {
   DESTDIR="$pkgdir" cmake --install build
 }
