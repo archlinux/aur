@@ -1,0 +1,37 @@
+pkgbase = rune-player-git
+	pkgdesc = The player that blends classic design with modern technology
+	pkgver = 0.0.0
+	pkgrel = 1
+	url = https://github.com/Losses/rune
+	arch = x86_64
+	license = MPL-2.0
+	makedepends = flutter-intellij-patch
+	makedepends = flutter-target-linux
+	makedepends = flutter-tool
+	makedepends = git
+	makedepends = protobuf
+	makedepends = protoc-gen-dart
+	makedepends = protoc-gen-prost
+	makedepends = rustup
+	depends = alsa-lib
+	depends = at-spi2-core
+	depends = cairo
+	depends = dbus
+	depends = fontconfig
+	depends = gcc-libs
+	depends = glib2
+	depends = glibc
+	depends = gtk3
+	depends = hicolor-icon-theme
+	depends = libepoxy
+	depends = lmdb
+	depends = pango
+	provides = rune-player=0.0.0
+	conflicts = rune-player
+	options = !lto
+	source = rune-player::git+https://github.com/Losses/rune.git
+	source = rune-player.desktop
+	sha256sums = SKIP
+	sha256sums = 7da52f8c68eafc20e85e60996e2c6ac677009a96a67e77a38753201096a3333a
+
+pkgname = rune-player-git
