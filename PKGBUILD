@@ -5,7 +5,7 @@
 #
 
 pkgname=minipro-git
-pkgver=0.7.r2.g0a686a3
+pkgver=0.7.2.r66.g51fd060
 pkgrel=1
 
 pkg_name_ver="${pkgname}-${pkgver}"
@@ -15,7 +15,7 @@ url="https://gitlab.com/DavidGriffith/minipro"
 arch=("i686" "x86_64")
 license=("GPL-3.0-only")
 makedepends=("git")
-depends=("libusb")
+depends=("libusb" "libb64")
 optdepends=("srecord: Motorola srecord format")
 source=(${pkgname}::git+https://gitlab.com/DavidGriffith/minipro.git)
 conflicts=("minipro")
