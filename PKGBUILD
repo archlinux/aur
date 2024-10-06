@@ -1,4 +1,5 @@
-# Maintainer: Mees Valkenburg <`echo Zmx1ZmZ5QGdvZG90LnVrLnRvCg== | base64 -d`>
+# Maintainer: AntiApple4life <antiapple at antiapple dot net>
+# Contributor: Mees Valkenburg <`echo Zmx1ZmZ5QGdvZG90LnVrLnRvCg== | base64 -d`>
 # Contributor: Kaiting Chen <kaitocracy@gmail.com>
 # Contributor: Anton Bazhenov <anton.bazhenov at gmail>
 # Contributor: rabyte <rabyte*gmail>
