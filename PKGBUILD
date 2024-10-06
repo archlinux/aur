@@ -11,11 +11,11 @@ arch=('x86_64')
 license=('GPL3')
 provides=('oxdna')
 conflicts=('oxdna')
-pkgrel=1
+pkgrel=2
 
 depends=('python3' 'python-matplotlib' 'python-scikit-learn' 'python-setuptools' 'ipython')
 
-makedepends=('git' 'cmake' 'gsl' 'cuda-12.2' 'gcc12' 'python-build' 'python-wheel' 'python-installer' 'cython' 'python-setuptools-scm')
+makedepends=('git' 'cmake' 'gsl' 'cuda>=12.6.1' 'gcc12' 'python-build' 'python-wheel' 'python-installer' 'cython' 'python-setuptools-scm')
 optdepends=('python-matplotlib: for plotting')
 
 source=("https://github.com/lorenzo-rovigatti/oxDNA/archive/refs/tags/v3.6.1.tar.gz")
