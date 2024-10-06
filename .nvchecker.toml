@@ -1,0 +1,3 @@
+[clipboard]
+source = "git"
+git = "https://github.com/Slackadays/Clipboard.git"
