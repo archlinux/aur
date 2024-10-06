@@ -2,7 +2,7 @@
 # Contributor: rich_o <aurua@riseup.net>
 
 pkgname=ncmpcpp-git
-pkgver=0.9.2.r21.g81e5cf58
+pkgver=0.10.r5.g440e9a57
 pkgrel=1
 epoch=2
 pkgdesc='An almost exact clone of ncmpc with some new features (git version)'
@@ -20,7 +20,7 @@ sha256sums=('SKIP'
 
 prepare() {
     patch -d ncmpcpp -Np1 -i "${srcdir}/010-ncmpcpp-use-arch-flags.patch"
-    ncmpcpp/autogen.sh
+    autoreconf -fi ncmpcpp
 }
 
 pkgver() {
