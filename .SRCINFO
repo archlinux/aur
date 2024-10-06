@@ -1,0 +1,14 @@
+pkgbase = vlabeler-git
+	pkgdesc = Open source voice labeling application
+	pkgver = r1211.4254d16
+	pkgrel = 1
+	url = https://github.com/sdercolin/vlabeler
+	arch = x86_64
+	license = Apache
+	makedepends = jdk17-openjdk
+	source = git+https://github.com/sdercolin/vlabeler.git
+	source = vLabeler-git.desktop
+	sha256sums = SKIP
+	sha256sums = 09b95edfac36de77ed8eb4f9c8dad46eded967f6ec20d532d21377293fbc4bd7
+
+pkgname = vlabeler-git
