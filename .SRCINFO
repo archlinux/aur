@@ -76,6 +76,7 @@ pkgbase = kwin-frog-fifo-v1
 	depends = xcb-util-keysyms
 	depends = xcb-util-wm
 	optdepends = maliit-keyboard: virtual keyboard for kwin-wayland
+	provides = kwin
 	source = https://download.kde.org/stable/plasma/6.1.5/kwin-frog-fifo-v1-6.1.5.tar.xz
 	source = https://download.kde.org/stable/plasma/6.1.5/kwin-frog-fifo-v1-6.1.5.tar.xz.sig
 	source = 6474.diff

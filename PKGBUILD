@@ -10,6 +10,7 @@ pkgdesc='An easy to use, but flexible, composited Window Manager'
 arch=(x86_64)
 url='https://kde.org/plasma-desktop/'
 license=(LGPL-2.0-or-later)
+provides=(kwin)
 depends=(breeze
          gcc-libs
          glibc
