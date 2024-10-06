@@ -2,8 +2,8 @@
 pkgname=arch-sign-modules
 _pkgname=Arch-SKM
 pkgver=0.7.7
-pkgrel=1
-pkgdesc="Signed (In Tree & Out of Tree) Kernel Modules for linux linux-lts linux-hardened linux-zen + AUR kernels"
+pkgrel=2
+pkgdesc="Signed (In Tree & Out of Tree) Kernel Modules for linux linux-lts linux-hardened linux-zen linux-rt + AUR kernels"
 arch=(any)
 url="https://github.com/itoffshore/Arch-SKM"
 license=(MIT)
