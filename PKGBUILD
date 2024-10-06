@@ -2,8 +2,8 @@
 _base=pystencils
 pkgname=python-${_base}
 pkgdesc="Speeding up stencil computations on CPUs and GPUs"
-pkgver=1.3.5
-pkgrel=2
+pkgver=1.3.6
+pkgrel=1
 arch=(any)
 url="https://i10git.cs.fau.de/pycodegen/${_base}"
 license=(AGPL-3.0-or-later)
@@ -24,14 +24,11 @@ optdepends=('python-cupy: for gpu support'
   'python-pyevtk: for interactive support'
   'python-rich: for interactive support'
   'python-graphviz: for interactive support')
-source=(${url}/-/archive/release/${pkgver}/${_base}-release-${pkgver}.tar.gz
-  sve.patch::${url}/-/commit/e77df63f672ea28cc389c1fadd695338f2985c7d.patch)
-sha512sums=('b66b32cbbf949edf8eca70fe599ce69138d8e057a76185ae37885fa9bc1ed768f91a7c7cec4f54579cc3e662b799e2e36a938cd7953ab71531a2bdb15e9ae7e3'
-  '197267789bbea5cf0d7acfda032ebbb351ad6658e7050e03e877194d605a02b22255d79cc578a5037fdc04c8168f6861acdeebe4d2364ed4ca8dcdd214d136b9')
+source=(${url}/-/archive/release/${pkgver}/${_base}-release-${pkgver}.tar.gz)
+sha512sums=('f83879d834add82edaf6bdf26e3ad25c4cdedc28dcce456e99bd03227add55fbdc8e41e1bd26f734d426ee9bf631150acf23ff15a471d6767c86de8b3a72979c')
 
 prepare() {
   cd ${_base}-release-${pkgver}
-  patch -p1 -i ../sve.patch
   sed -i '1 a import math' tests/test_fvm.py
   sed -i 's/np.math/math/' tests/test_fvm.py
 }
