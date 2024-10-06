@@ -2,6 +2,7 @@
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
+_pkgname=kwin
 pkgname=kwin-frog-fifo-v1
 pkgver=6.1.5
 _dirver=$(echo $pkgver | cut -d. -f1-3)
@@ -81,8 +82,8 @@ makedepends=(extra-cmake-modules
              xorg-xwayland)
 optdepends=('maliit-keyboard: virtual keyboard for kwin-wayland')
 groups=(plasma)
-source=(https://download.kde.org/stable/plasma/$_dirver/$pkgname-$pkgver.tar.xz{,.sig} 6474.diff)
-install=$pkgname.install
+source=(https://download.kde.org/stable/plasma/$_dirver/$_pkgname-$pkgver.tar.xz{,.sig} 6474.diff)
+install=$_pkgname.install
 sha256sums=('ba0aace323195b58adbfde14ec74cdd4c28c211d78a567c44af70f336dcab3f7'
             'SKIP'
             '90a75a99227eaca2423b014fc46acb590979bc619de9e43e440eae7c2e7ff9f0')
@@ -92,11 +93,11 @@ validpgpkeys=('E0A3EB202F8E57528E13E72FD7574483BB57B18D'  # Jonathan Esk-Riddell
               '1FA881591C26B276D7A5518EEAAF29B42A678C20') # Marco Martin <notmart@gmail.com>
 
 build() {
-  pushd $pkgname-$pkgver
+  pushd $_pkgname-$pkgver
     git apply < ../6474.diff
   popd
 
-  cmake -B build  -S $pkgname-$pkgver \
+  cmake -B build  -S $_pkgname-$pkgver \
     -DCMAKE_INSTALL_LIBEXECDIR=lib \
     -DBUILD_TESTING=OFF
   cmake --build build
