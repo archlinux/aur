@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Jan
+Exec=/opt/Jan/jan %U
+Terminal=false
+Type=Application
+Icon=jan
+StartupWMClass=Jan
+Comment=Use offline LLMs with your own data. Run open source models like Llama2 or Falcon on your internal computers/servers.
+MimeType=x-scheme-handler/jan;
+Categories=Utility;
