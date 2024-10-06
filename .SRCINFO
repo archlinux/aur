@@ -1,6 +1,6 @@
 pkgbase = fex-emu
 	pkgdesc = Fast usermode x86 and x86-64 emulator for Arm64
-	pkgver = 2409
+	pkgver = 2410
 	pkgrel = 1
 	url = https://fex-emu.com
 	arch = aarch64
@@ -12,12 +12,12 @@ pkgbase = fex-emu
 	makedepends = llvm
 	makedepends = python-setuptools
 	makedepends = pkgconf
-	depends = sdl2
-	depends = libepoxy
+	depends = qt5-declarative
+	depends = qt5-quickcontrols
 	depends = squashfs-tools
 	depends = squashfuse
 	depends = erofs-utils
-	source = git+https://github.com/FEX-Emu/FEX#tag=FEX-2409
+	source = git+https://github.com/FEX-Emu/FEX#tag=FEX-2410
 	source = git+https://github.com/catchorg/Catch2
 	source = git+https://github.com/KhronosGroup/Vulkan-Headers
 	source = git+https://github.com/Sonicadvance1/cpp-optparse
