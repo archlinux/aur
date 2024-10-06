@@ -9,7 +9,7 @@ license=("GPL-3.0")
 arch=("any")
 provides=("pokego")
 conflicts=("pokego" "pokego-git")
-source=("https://github.com/rubiin/pokego/releases/download/v$pkgver/pokego-$pkgver.tar.gz")
+source=("https://github.com/rubiin/pokego/releases/download/v$pkgver/pokego-linux-$pkgver.tar.gz")
 sha256sums=("d349ee1f417239be356df1dedfd08e664712d391e2534982b0009a37f4388499")
 
 package() {
