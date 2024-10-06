@@ -81,7 +81,7 @@ pkgver() {
 	printf "%s" "$(git describe --tags --long | sed -e 's/\([^-]*-\)g/r\1/;s/-/./g' -e 's/^v//')"
 }
 
-prepare(){
+prepare() {
 	cp -r kissfft-${_kissfftver}/* ${pkgname%-git}/src/phazor/kissfft/
 	cp -r miniaudio-${_miniaudiocommit}/* ${pkgname%-git}/src/phazor/miniaudio/
 }
