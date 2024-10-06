@@ -4,12 +4,16 @@ pkgbase = doi2bib
 	pkgrel = 1
 	url = https://github.com/bibcure/doi2bib
 	arch = any
-	license = AGPL3
-	depends = python-requests
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
 	depends = python-bibtexparser
 	depends = python-future
+	depends = python-requests
 	source = doi2bib-0.4.0.tar.gz::https://github.com/bibcure/doi2bib/archive/0.4.0.tar.gz
 	sha256sums = 272458eb88a34ab0fd4c69c6a4f2698496ccd9791d827f52b6c2b3ae6a3a221c
 
 pkgname = doi2bib
-
