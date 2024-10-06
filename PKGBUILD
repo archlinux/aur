@@ -12,11 +12,11 @@ pkgver=0.0.1
 pkgrel=1
 pkgdesc="Tool for tracing program output and creating structured logs using plain text or html."
 arch=('x86_64')
-url="https://github.com/Student-Team-Projects/Debugger.git"
+url="https://github.com/Student-Team-Projects/anteater.git"
 license=('GPL-3.0-or-later')
 depends=('libbpf' 'bpf' 'boost')
 makedepends=('make' 'clang')
-source=("debugger-2.0.1.zip::https://github.com/Student-Team-Projects/debugger/archive/refs/tags/v2.0.1.zip")
+source=("debugger-2.0.1.zip::https://github.com/Student-Team-Projects/anteater/archive/refs/tags/v2.0.1.zip")
 md5sums=("SKIP")
 noextract=()
 
