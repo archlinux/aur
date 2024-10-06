@@ -57,9 +57,6 @@ makedepends=(
   python-installer
   python-hatchling
 )
-provides=('ulwgl-launcher')
-conflicts=('ulwgl-launcher')
-replaces=('ulwgl-launcher')
 install=
 _commit=b9c9b8ffad994a7f791d67a1850e8c57ebc2af74
 _origin="https://github.com/Open-Wine-Components/umu-launcher.git"
@@ -77,13 +74,13 @@ prepare() {
 }
 
 build() {
-  cd "$srcdir/umu-launcher"
+  cd "$srcdir"/umu-launcher
   ./configure.sh --prefix=/usr
   make
 }
 
 package() {
-  cd "$srcdir/umu-launcher"
+  cd "$srcdir"/umu-launcher
   make DESTDIR="$pkgdir" install
 }
 

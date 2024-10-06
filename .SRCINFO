@@ -35,9 +35,6 @@ pkgbase = umu-launcher
 	depends = gcc-libs
 	depends = python-xlib
 	depends = python-filelock
-	provides = ulwgl-launcher
-	conflicts = ulwgl-launcher
-	replaces = ulwgl-launcher
 	source = git+https://github.com/Open-Wine-Components/umu-launcher.git#commit=b9c9b8ffad994a7f791d67a1850e8c57ebc2af74
 	sha256sums = 457acf3cf1705831c3685236fe4d4cc67e5df7fd8ddb0c21e6968f2b8a848cf6
 	depends_x86_64 = lib32-glibc
