@@ -1,7 +1,7 @@
 # Maintainer: Troplo <troplo@troplo.com>
 pkgname=flowinity
 pkgname_internal=flowinity-desktop
-pkgver=1.0.6
+pkgver=1.0.7
 pkgrel=1
 pkgdesc="Flowinity/PrivateUploader Desktop (Binary version)"
 arch=('x86_64')
@@ -11,10 +11,6 @@ license=('GPL')
 source=("https://updates.flowinity.com/download/flavor/default/${pkgver}/linux_64/${pkgname_internal}-${pkgver}.tar.gz"
         "${pkgname_internal}.desktop"
         "flowinity.png")
-
-sha256sums=('SKIP'
-            'SKIP'
-            'SKIP')
 
 package() {
   install -d "${pkgdir}/opt/${pkgname_internal}"
@@ -28,3 +24,9 @@ package() {
   install -Dm644 ${srcdir}/flowinity.png ${pkgdir}/usr/share/icons/hicolor/512x512/apps/flowinity.png
 
 }
+sha256sums=('3fa6fa7f9465056fa17580bd5ff43adfa7124cb5e217ccfa0152c178ac203a63'
+            'c7c22501503c13cfe7132b8677c6fc1c38471cf02516c55c92888d0afc96fcbb'
+            '7e1c3148491581e1e73164402acb5dbd61e60c2143292cf6c4b37a31c07a4c9c')
+sha256sums=('3fa6fa7f9465056fa17580bd5ff43adfa7124cb5e217ccfa0152c178ac203a63'
+            'c7c22501503c13cfe7132b8677c6fc1c38471cf02516c55c92888d0afc96fcbb'
+            '7e1c3148491581e1e73164402acb5dbd61e60c2143292cf6c4b37a31c07a4c9c')
