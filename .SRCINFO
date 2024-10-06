@@ -1,7 +1,7 @@
 pkgbase = clipboard
 	pkgdesc = Cut, copy, and paste anything in your terminal.
 	pkgver = 0.9.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://getclipboard.app
 	arch = x86_64
 	arch = aarch64
@@ -12,6 +12,7 @@ pkgbase = clipboard
 	makedepends = wayland
 	makedepends = wayland-protocols
 	depends = alsa-lib
+	depends = openssl
 	optdepends = libx11: X11 support
 	optdepends = wayland: Wayland support
 	optdepends = wayland-protocols: Wayland support

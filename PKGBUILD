@@ -3,12 +3,12 @@
 pkgname=clipboard
 _pkgname=Clipboard
 pkgver=0.9.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Cut, copy, and paste anything in your terminal."
 url="https://getclipboard.app"
 arch=('x86_64' 'aarch64' 'riscv64')
 license=('GPL-3.0-or-later')
-depends=('alsa-lib')
+depends=('alsa-lib' 'openssl')
 makedepends=('cmake' 'libx11' 'wayland' 'wayland-protocols')
 optdepends=('libx11: X11 support'
 	    'wayland: Wayland support'
