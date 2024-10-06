@@ -20,7 +20,7 @@ depends=('openssl' 'hicolor-icon-theme'
     'sh'
     # i18n
     'gettext'
-    'mimalloc')
+)
 makedepends=('rust' 'git' 'jq')
 optdepends=(
     'breeze-icons: better tray-icon icons'

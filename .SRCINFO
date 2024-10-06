@@ -20,7 +20,6 @@ pkgbase = waylyrics-git
 	depends = gtk4
 	depends = sh
 	depends = gettext
-	depends = mimalloc
 	optdepends = breeze-icons: better tray-icon icons
 	optdepends = xdg-desktop-portal: file dialog to import LRC
 	provides = waylyrics
