@@ -1,14 +1,14 @@
 # Maintainer: Ricardo Band <email@ricardo.band>
 
 pkgname=mpy-cross
-pkgver=1.22.0
+pkgver=1.23.0
 pkgrel=1
 pkgdesc="MicroPython cross compiler compiles .py scripts into .mpy files"
 arch=('any')
 license=('MIT')
 url=https://github.com/micropython/micropython/tree/master/mpy-cross
 source=(https://github.com/micropython/micropython/releases/download/v${pkgver}/micropython-${pkgver}.tar.xz)
-sha256sums=('a042764f0b6f6d92b267454c5bd5afcb83fc3900119f2583672aac571e661924')
+sha256sums=('0ab283c2fc98d466c1ff26692bee46abaeeab55d488a36fc3cb6372cb8fb390d')
 
 build() {
     cd micropython-${pkgver}/mpy-cross
