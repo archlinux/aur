@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=izpack-git
-pkgver=5.2.1.r30.g3073356e5
+pkgver=5.2.3.r1.g5a01d5af8
 pkgrel=1
 pkgdesc='Tool for packaging applications on the Java platform as cross-platform installers (git version)'
 arch=('any')
@@ -16,7 +16,7 @@ checkdepends=('gtk2' 'gnome-themes-standard')
 source=('git+https://github.com/izpack/izpack.git'
         '010-izpack-compile.patch')
 sha256sums=('SKIP'
-            '42609fa684456afe770d43670fcc1ffcce099f25a76cea00df3f8323aa95f582')
+            'a42578544bfba028a804f9fd9dfa7ad69bc3d7be72bedd47c95341c7719ab17c')
 
 prepare() {
     patch -d izpack -Np1 -i "${srcdir}/010-izpack-compile.patch"

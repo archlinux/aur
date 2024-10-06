@@ -1,6 +1,6 @@
 --- a/izpack-dist/src/main/resources/bin/compile
 +++ b/izpack-dist/src/main/resources/bin/compile
-@@ -14,130 +14,11 @@
+@@ -14,123 +14,11 @@
  #   See the License for the specific language governing permissions and
  #   limitations under the License.
  
@@ -8,8 +8,7 @@
 -if [ -z "$IZPACK_OPTS" ] ; then 
 -  IZPACK_OPTS=""
 -fi
-+MAIN_CLASS='com.izforge.izpack.compiler.bootstrap.CompilerLauncher'
- 
+-
 -# load user izpack configuration (may specify IZPACK_HOME
 -if [ -f "$HOME/.izpackrc" ] ; then
 -  . $HOME/.izpackrc
@@ -118,19 +117,12 @@
 -    CLASSPATH=`cygpath --path --windows "$CLASSPATH"`
 -fi
 -
--# For Darwin, use classes.jar for TOOLS_JAR
--TOOLS_JAR="${JAVA_HOME}/lib/tools.jar"
--if $darwin; then
--  TOOLS_JAR="/System/Library/Frameworks/JavaVM.framework/Versions/${JAVA_VERSION}/Classes/classes.jar"
--fi
--
--MAIN_CLASS=com.izforge.izpack.compiler.bootstrap.CompilerLauncher
--
+ MAIN_CLASS=com.izforge.izpack.compiler.bootstrap.CompilerLauncher
+ 
 -"$JAVACMD" -Xmx512m \
 +exec java -Xmx512m \
    $IZPACK_OPTS \
 -  -classpath "${IZPACK_HOME}/lib/*" \
--  "-Dtools.jar=$TOOLS_JAR" \
 -  "-Dizpack.home=${IZPACK_HOME}" \
 -  $MAIN_CLASS "$@"
 +  -classpath '/opt/izpack/lib/*' \

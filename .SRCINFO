@@ -1,6 +1,6 @@
 pkgbase = izpack-git
 	pkgdesc = Tool for packaging applications on the Java platform as cross-platform installers (git version)
-	pkgver = 5.2.1.r30.g3073356e5
+	pkgver = 5.2.3.r1.g5a01d5af8
 	pkgrel = 1
 	url = http://izpack.org/
 	arch = any
@@ -18,6 +18,6 @@ pkgbase = izpack-git
 	source = git+https://github.com/izpack/izpack.git
 	source = 010-izpack-compile.patch
 	sha256sums = SKIP
-	sha256sums = 42609fa684456afe770d43670fcc1ffcce099f25a76cea00df3f8323aa95f582
+	sha256sums = a42578544bfba028a804f9fd9dfa7ad69bc3d7be72bedd47c95341c7719ab17c
 
 pkgname = izpack-git
