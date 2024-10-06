@@ -8,7 +8,6 @@ pkgbase = kokkos
 	makedepends = cmake
 	depends = bash
 	depends = hwloc
-	depends = openmp
 	conflicts = trilinos
 	source = kokkos-4.4.01.tar.gz::https://github.com/kokkos/kokkos/archive/4.4.01.tar.gz
 	sha256sums = 3f7096d17eaaa4004c7497ac082bf1ae3ff47b5104149e54af021a89414c3682

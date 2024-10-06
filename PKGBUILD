@@ -6,7 +6,7 @@ pkgdesc="C++ performance portability programming ecosystem"
 arch=(x86_64)
 url="https://github.com/${pkgname}/${pkgname}"
 license=(Apache-2.0)
-depends=(bash hwloc openmp)
+depends=(bash hwloc)
 makedepends=(cmake)
 # checkdepends=(gtest)
 conflicts=('trilinos')
@@ -32,12 +32,12 @@ build() {
     -DKokkos_ENABLE_LIBDL=ON \
     -DKokkos_ENABLE_ONEDPL=OFF \
     -DKokkos_ENABLE_OPENACC=OFF \
-    -DKokkos_ENABLE_OPENMP=ON \
+    -DKokkos_ENABLE_OPENMP=OFF \
     -DKokkos_ENABLE_ROCM=OFF \
     -DKokkos_ENABLE_SERIAL=ON \
     -DKokkos_ENABLE_SYCL=OFF \
     -DKokkos_ENABLE_TESTS=OFF \
-    -DKokkos_ENABLE_THREADS=OFF \
+    -DKokkos_ENABLE_THREADS=ON \
     -Wno-dev
   cmake --build build --target all
 }
