@@ -1,0 +1,10 @@
+#!/bin/sh
+home_dir_user=$USER
+
+if [ ! -d "/home/${home_dir_user}/.config/5db5/PluginData/Channel551/Presets" ]; then
+    mkdir -p /home/${home_dir_user}/.config/5db5/PluginData/Channel551
+    ln -sf /usr/lib/5db5/Channel551/Presets /home/${home_dir_user}/.config/5db5/PluginData/Channel551/Presets
+else
+    rm -r /home/${home_dir_user}/.config/5db5/PluginData/Channel551/Presets
+    ln -sf /usr/lib/5db5/Channel551/Presets /home/${home_dir_user}/.config/5db5/PluginData/Channel551/Presets
+fi
