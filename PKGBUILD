@@ -1,8 +1,8 @@
 # Maintainer: awsl1414 <awsl1414@qq.com>
 pkgname=wechat-devtools-git
-pkgver=1.06.2405020
-pkgrel=2
-pkgdesc="WeChat Devtools For Linux."
+pkgver=1.06.2407120
+pkgrel=1
+pkgdesc="WeChat Devtools For Linux. This version is unofficial."
 license=("MIT")
 arch=("x86_64")
 url="https://github.com/msojocs/wechat-web-devtools-linux"
@@ -15,9 +15,11 @@ source=(
     "wechat-devtools.desktop"
     "wechat-devtools.svg"
 )
-md5sums=('52e5875f5a4af831a8f1df105870d801'
-         '08b27001217b9732289cd0e33f8f8d58'
-         'cd6a5d400025355a7c3d1156dea424c8')
+md5sums=(
+    '278a12f6df857f68a8af8e1861c14e0b'
+    '08b27001217b9732289cd0e33f8f8d58'
+    'cd6a5d400025355a7c3d1156dea424c8'
+)
 
 package() {
 

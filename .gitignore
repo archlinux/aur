@@ -1,4 +1,5 @@
-pkg
-src
-*.pkg.tar.zst
-*.tar.gz
+/pkg/
+/src/
+/*.zst
+/*.tar.gz
+/README.md
