@@ -2,16 +2,17 @@
 # Contributor: Markus Kaiser <markus dot kaiser at in dot tum dot de>
 _base=panel
 pkgname=python-${_base}
-pkgver=1.5.1
+pkgver=1.5.2
 pkgrel=1
 pkgdesc="The powerful data exploration & web app framework for Python"
 arch=(any)
 url="https://${_base}.holoviz.org"
 license=(BSD-3-Clause)
-depends=(python-bokeh python-pyviz_comms python-markdown python-linkify-it-py python-tqdm python-bleach) # python-mdit-py-plugins
-makedepends=(python-build python-installer python-setuptools python-wheel npm)
+depends=(python-bokeh python-pyviz_comms python-markdown python-markdown-it-py
+  python-linkify-it-py python-mdit-py-plugins python-tqdm python-bleach)
+makedepends=(python-build python-installer python-hatchling python-wheel npm)
 source=(${_base}-${pkgver}.tar.gz::https://github.com/holoviz/${_base}/archive/v${pkgver}.tar.gz)
-sha512sums=('8fbeb258014ea8ed34fe66431c530374342b93abde9b10c8c39c3da0f6dfe64b743deaf22e208785a864ea070572c2ff2af57b96cb989619a390c522f8240f0b')
+sha512sums=('50747ccb669660f6e2d9d8699ed7a3ca63a774b2c0880580383cbbe9c54e93d63731afd0281623e5bf4505c1dd995282b7ba41ce37bd57d5fcd6ed93b6079dd3')
 
 build() {
   cd ${_base}-${pkgver}
