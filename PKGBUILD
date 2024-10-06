@@ -8,7 +8,7 @@
 
 pkgname=megasync
 pkgver=5.5.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Official MEGA desktop application for syncing with MEGA Cloud Drive'
 arch=('x86_64')
 url='https://github.com/meganz/MEGAsync/'
@@ -47,8 +47,7 @@ sha256sums=('e8100bb0626de0b6f06b73ff73327ec1ab64d0f0c3eeec801fabf50f10cee57f'
             'SKIP'
             '3df5d43ca1951c9e48dbb7f8e221bc8fff1a9fb1b7c934cb5ea7f195ae8f2e04'
             '2da83bb6a20aa19b58b4115646bacb9d76e2504b45b5094abeba94beac2301fb'
-            'a5883be2d00dbacaacf78231bfeeac27f4e8a471c3256370e94fec3e55b1d171'
-            '1fc357c73283aac125d8ca391033d800993dff196bd23f59890e92d5415ae22f')
+            'a5883be2d00dbacaacf78231bfeeac27f4e8a471c3256370e94fec3e55b1d171')
 
 prepare() {
     git -C MEGAsync submodule init
