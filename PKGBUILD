@@ -9,14 +9,19 @@ arch=('any')
 url='https://github.com/kcsaff/getkey'
 license=('MIT')
 depends=('python')
-makedepends=('python-setuptools' 'flake8')
+makedepends=(
+  'python-build'
+  'python-installer'
+  'python-setuptools'
+  'python-wheel'
+)
 checkdepends=('python-pytest-cov')
 source=("https://github.com/kcsaff/$_pkgname/archive/v$pkgver/$pkgname-$pkgver.tar.gz")
 sha256sums=('096792463ed0cd8ac92d7b2b6d23cff1c815b449403115034bed2029b378d54c')
 
 build() {
   cd $_pkgname-$pkgver
-  python setup.py build
+  python -m build --wheel --no-isolation --skip-dependency-check
 }
 
 check() {
@@ -26,6 +31,6 @@ check() {
 
 package() {
   cd $_pkgname-$pkgver
-  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+  python -m installer --destdir="$pkgdir" dist/*.whl
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
