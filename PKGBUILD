@@ -2,12 +2,12 @@
 # Contributor: Scarlett Veldt <scarlett AT enby DOT site>
 pkgname=arrpc
 pkgver=3.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Open Discord RPC server for atypical setups"
-arch=('x86_64' 'x86_64_v3')
+arch=('any')
 url="https://arrpc.openasar.dev/"
 license=('MIT')
-depends=("glibc" "gcc-libs")
+depends=('nodejs')
 makedepends=("npm")
 # for some reason stripping the binary breaks it
 options=(!strip)
