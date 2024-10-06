@@ -1,10 +1,10 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=mission-center
-pkgver=0.6.0
+pkgver=0.6.1
 pkgrel=1
 pkgdesc="Monitor your CPU, Memory, Disk, Network and GPU usage"
 arch=('x86_64' 'aarch64')
-url="https://gitlab.com/mission-center-devs/mission-center"
+url="https://missioncenter.io"
 license=('GPL-3.0-or-later')
 depends=(
   'dmidecode'
@@ -18,8 +18,8 @@ makedepends=(
 checkdepends=(
   'appstream-glib'
 )
-source=("$url/-/archive/v$pkgver/$pkgname-v$pkgver.tar.gz")
-sha256sums=('62ddce4f5078be8b9fca66923916012fe049799e5c11ef8f40377592be9c2f58')
+source=("https://gitlab.com/mission-center-devs/mission-center/-/archive/v$pkgver/$pkgname-v$pkgver.tar.gz")
+sha256sums=('0c76860edebc612dbda1c0b872be8455ca23a24ef3a2d66698cc591a57ecd800')
 
 prepare() {
   cd "$pkgname-v$pkgver"
