@@ -2,7 +2,7 @@
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
-pkgname=kwin
+pkgname=kwin-frog-fifo-v1
 pkgver=6.1.5
 _dirver=$(echo $pkgver | cut -d. -f1-3)
 pkgrel=2
