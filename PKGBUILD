@@ -8,7 +8,7 @@ arch=('i686' 'x86_64')
 url="https://www.gnupg.org/related_software/gpa/"
 license=('GPL-3.0-or-later')
 depends=('gpgme' 'gtk3')
-makedepends=('git')
+makedepends=('git' 'glib2-devel')
 provides=('gpa')
 conflicts=('gpa')
 source=('gpa-git::git://git.gnupg.org/gpa.git#branch=master')
@@ -29,7 +29,7 @@ prepare() {
 
 build() {
   cd "$pkgname"
-  ./configure CFLAGS=-fno-exceptions --prefix=/usr
+  ./configure CFLAGS='-fno-exceptions -Wno-implicit-function-declaration' --prefix=/usr
   make
 }
 
