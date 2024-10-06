@@ -4,7 +4,7 @@
 
 _pkgname=renpy
 pkgname=${_pkgname}-git
-pkgver=8.2.3.24061702.r356.ga8ffb16
+pkgver=8.3.1.24090601.r124.g916c6cc
 pkgrel=1
 pkgdesc="Visual novel engine Ren'Py along with its platdeps libs (dev channel)"
 arch=('i686' 'x86_64')
@@ -43,11 +43,25 @@ build() {
 	export CFLAGS+=' -I/usr/include/ffmpeg6.1 -Wno-error=incompatible-pointer-types -Wno-error=implicit-function-declaration'
 	export RENPY_DEPS_INSTALL='/usr/include/ffmpeg6.1:/usr/lib/ffmpeg6.1:/usr'
 
+	local _version="${pkgver%.*}"
+	_version="${_version%.*}"
+
+	install -Dm644 <(cat << EOF
+branch = 'master'
+nightly = False
+official = False
+version = '$_version'
+version_name = 'TBD'
+EOF
+	) 'renpy/vc_version.py'
+
 	pushd 'module'
 		python -m build --wheel --no-isolation
 		#rm -rf "$srcdir/tempinstall"
 		#python -m installer --destdir="$srcdir/tempinstall" dist/*.whl
 	popd
+
+	python -m compileall 'renpy'
 
 	# build docs
 	#cd 'sphinx'
