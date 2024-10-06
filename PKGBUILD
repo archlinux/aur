@@ -3,7 +3,7 @@
 pkgname=ivy-calc
 _srcname=ivy
 _binname=ivyc
-pkgver=0.3.4
+pkgver=0.3.6
 pkgrel=1
 pkgdesc='An APL-like calculator.'
 arch=(i686 x86_64 arm armv6h armv7h aarch64)
@@ -14,7 +14,7 @@ makedepends=('go')
 provides=("${_binname}=${pkgver}")
 conflicts=("${_binname}" 'ivy-git<1')
 source=("${_srcname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('8ce02c376d6bd2198988f2ed41c3fb6b204e96a4395802d445cb9499b22456ab')
+sha256sums=('7285f0fee2e7cf2397aa32eacb8775d16b17737bab34b09c61e12b0c1cac79d3')
 
 prepare() {
 	cp "$startdir/genmanpage.sh" "$srcdir/${_srcname}-${pkgver}"
