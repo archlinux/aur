@@ -1,8 +1,8 @@
 [Desktop Entry]
-Name=Oracle Java 22 Runtime
-Comment=Oracle Java 22 Runtime
+Name=Oracle Java 23 Runtime
+Comment=Oracle Java 23 Runtime
 Keywords=java;runtime
-Exec=/usr/lib/jvm/java-22-jdk/bin/java -jar
+Exec=/usr/lib/jvm/java-23-jdk/bin/java -jar
 Terminal=false
 Type=Application
 Icon=java-jdk
