@@ -3,17 +3,24 @@
 
 pkgname=ncpamixer
 pkgver=1.3.7
-pkgrel=1
+pkgrel=2
 pkgdesc='ncurses PulseAudio Mixer'
 url='https://github.com/fulhax/ncpamixer'
 arch=('i686' 'x86_64' 'armv7h' 'armv6h' 'aarch64')
 license=('MIT')
-depends=('ncurses' 'pulseaudio')
+depends=('ncurses' 'pulse-native-provider')
 makedepends=('git' 'cmake')
 provides=('ncpamixer')
 conflicts=('ncpamixer-git')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/fulhax/${pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=('8a647b333875e117449fdfa3167ed50cfebe2c2254ae2618eaa5e64a5e5db3a6')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/fulhax/${pkgname}/archive/${pkgver}.tar.gz"
+        "0001-fix-ncurses-update-for-latest-version.patch")
+sha256sums=('8a647b333875e117449fdfa3167ed50cfebe2c2254ae2618eaa5e64a5e5db3a6'
+            '238676ea31d14fe8cad93ddb9814c2d1661f1e9eeaf6058a6291a130a004a493')
+
+prepare() {
+  cd "$srcdir/$pkgname-$pkgver"
+  patch -Np1 -i ../0001-fix-ncurses-update-for-latest-version.patch 
+}
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"

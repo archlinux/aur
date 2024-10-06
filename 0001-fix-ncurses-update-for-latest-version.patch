@@ -1,0 +1,79 @@
+From fe6c27a605b053e8b9baf7f1f9d263f38ef7ed3e Mon Sep 17 00:00:00 2001
+From: Reinaldo Molina <5428479+tricktux@users.noreply.github.com>
+Date: Fri, 28 Jun 2024 22:42:32 -0400
+Subject: [PATCH] fix(ncurses): update for latest version
+
+- Use ncurses api as opposed to meddling with raw item structure
+---
+ src/ui/tab.cpp | 27 ++++++++-------------------
+ 1 file changed, 8 insertions(+), 19 deletions(-)
+
+diff --git a/src/ui/tab.cpp b/src/ui/tab.cpp
+index b8d17d3..96b584c 100644
+--- a/src/ui/tab.cpp
++++ b/src/ui/tab.cpp
+@@ -689,18 +689,9 @@ uint32_t Tab::dropDown(
+     WINDOW *menu_win = 0;
+ 
+     for (auto &i : objects) {
+-        ITEM *item = (ITEM*) malloc(sizeof(ITEM));
+-        memset(item, 0, sizeof(ITEM));
+-
+-        item->opt = O_SELECTABLE;
+-        item->name.str = new char[i.second.length() + 1];
+-        memcpy(
+-            const_cast<char *>(item->name.str),
+-            i.second.c_str(),
+-            i.second.length()
+-        );
+-        item->name.length = i.second.length();
+-        item->userptr = static_cast<void *>(&i);
++        ITEM *item = new_item(i.second.c_str(), nullptr);
++        set_item_opts(item, O_SELECTABLE);
++        set_item_userptr(item, static_cast<void*>(&i));
+ 
+         items.push_back(item);
+ 
+@@ -777,7 +768,7 @@ uint32_t Tab::dropDown(
+ 
+                     ITEM *item = current_item(menu);
+                     selected = static_cast<std::pair<uint32_t, std::string>*>(
+-                                   item->userptr
++                                   item_userptr(item)
+                                )->first;
+ 
+                     selecting = false;
+@@ -799,7 +790,7 @@ uint32_t Tab::dropDown(
+                     ITEM* item = its[idx];
+                     set_current_item(menu, item);
+                     selected = static_cast<std::pair<uint32_t, std::string>*>(
+-                                   item->userptr
++                                   item_userptr(item)
+                                )->first;
+                 }
+ 
+@@ -834,7 +825,7 @@ uint32_t Tab::dropDown(
+ 
+             ITEM *item = current_item(menu);
+             selected = static_cast<std::pair<uint32_t, std::string>*>(
+-                           item->userptr
++                            item_userptr(item)
+                        )->first;
+ 
+             selecting = false;
+@@ -857,10 +848,8 @@ uint32_t Tab::dropDown(
+     free_menu(menu);
+ 
+     for (auto i : items) {
+-        if ((i != nullptr) && (i->name.str != nullptr)) {
+-            delete[] i->name.str;
+-        }
+-        free_item(i);
++        if (i != nullptr)
++            free_item(i);
+     }
+ 
+     items.clear();
+-- 
+2.46.2
+
