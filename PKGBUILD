@@ -1,7 +1,7 @@
 # Maintainer: kumax <kumax2048@pm.me>
 pkgname=firefox-extension-listen1
-pkgver=2.27.0
-pkgrel=4
+pkgver=2.32.0
+pkgrel=1
 pkgdesc="One for all free music in China"
 arch=("any")
 url="https://listen1.github.io/listen1"
@@ -11,7 +11,7 @@ license=('MIT')
 depends=("firefox")
 makedepends=("zip")
 source=("${_githuburl}/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('0d38d88b61217535a7f5c984fed1667cf41b64b17df06c392214476fcfc8758c')
+sha256sums=('e734d834f59f7138b7d3e8b6f4c4bcb2150c8b9ed70345e91e8801d5cc307f43')
 
 prepare() {
     cd ${srcdir}/${_name}-${pkgver}
