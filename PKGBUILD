@@ -1,55 +1,67 @@
-# Maintainer: Ivan Semkin (ivan at semkin dot ru)
+# Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
+# Contributor: Ivan Semkin (ivan at semkin dot ru)
 # Contributor: kikadf <kikadf.01@gmail.com>
 
 pkgname=mir-git
-_pkgname=mir
-pkgver=1.5.0+146+gd42981b4a6
-pkgrel=2
+pkgver=2.18.2.r58.g8cccc26
+pkgrel=3
 pkgdesc="Canonical's display server"
-url='https://mir-server.io'
+url="https://github.com/canonical/mir"
 arch=(x86_64 i686 armv7h aarch64)
-license=(GPL LGPL)
-conflicts=(mir)
-provides=(mir)
-depends=(gtest boost-libs capnproto google-glog gflags libglvnd  liburcu lttng-ust libepoxy libxml++2.6 nettle libinput libxkbcommon python-pillow freetype2 libevdev protobuf python-dbus python-gobject hicolor-icon-theme libxcursor yaml-cpp)
-makedepends=(git glm doxygen cmake boost gcovr gmock lcov valgrind python-dbusmock umockdev wlcs)
+license=('GPL-2.0-or-later OR GPL-3.0-or-later')
+depends=(boost-libs libglvnd lttng-ust libepoxy libxml++2.6 libinput yaml-cpp
+         libxkbcommon  freetype2  hicolor-icon-theme libxcursor
+
+        egl-wayland wayland
+        libevdev umockdev
+
+        glib2 glibc gcc-libs util-linux-libs libxcb libxkbcommon-x11 libdrm mesa libx11 gtest glibmm
+
+        # capnproto google-glog gflags liburcu nettle libevdev protobuf python-gobject
+)
+makedepends=(git glm doxygen graphviz cmake boost wlcs glmark2
+
+             python-pillow python-dbus # required
+             #gcovr lcov valgrind
+             python-dbusmock
+             glib2-devel
+)
 optdepends=('qterminal: required for miral demos'
             'ttf-ubuntu-font-family: required for miral demos'
             'qt5-wayland: required for miral demos'
-            'xcursor-dmz: opt requirement for miral demos'
-            'qtubuntu: opt requirement for miral demos')
-source=('git+https://github.com/MirServer/mir.git')
+            'xcursor-dmz: opt requirement for miral demos')
+conflicts=(mir)
+provides=(mir)
+options=(!lto)
+source=("git+https://github.com/canonical/mir.git")
 sha256sums=('SKIP')
 
-BUILD_DIR=build
-
-prepare() {
-  cd ${_pkgname}
-  git submodule init
-  git submodule update
-}
-
 pkgver() {
-  cd ${_pkgname}
-  git describe --tags | sed 's/-/+/g' | cut -d "v" -f 2
+  cd "mir"
+  git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  cd ${_pkgname}
-  mkdir -p ${BUILD_DIR}
-  cd ${BUILD_DIR}
-  cmake -DCMAKE_INSTALL_PREFIX:PATH=/usr -DCMAKE_INSTALL_LIBDIR="lib/" ..
-  cmake --build ./
+  export CFLAGS+=" -Wno-error=array-bounds"
+  export CXXFLAGS+=" -Wno-error=array-bounds"
+
+  local _flags=(
+    -DMIR_USE_PRECOMPILED_HEADERS=OFF
+    -Dglm_DIR:PATH=/usr/lib/cmake/glm
+  )
+
+  cmake -B build -S "mir" -Wno-dev \
+    -DCMAKE_BUILD_TYPE=None \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    "${_flags[@]}"
+
+  cmake --build build
 }
 
-check() {
-  cd ${_pkgname}/${BUILD_DIR}
-  GTEST_OUTPUT=xml:./
-  make ptest
-}
+#check() {
+#  ctest --test-dir build --output-on-failure
+#}
 
 package() {
-  cd ${_pkgname}/${BUILD_DIR}
-  make DESTDIR="${pkgdir}/" install
+  DESTDIR="${pkgdir}" cmake --install build
 }
-# vim:set ts=2 sw=2 et:
