@@ -1,5 +1,6 @@
-# Maintainer: Eric S. Londres <ericlondres@protonmail.com>
-# Maintainer: Mandeep Sangwan <mandeep@sangwan.me>
+# Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
+# Contributor: Eric S. Londres <ericlondres@protonmail.com>
+# Contributor: Mandeep Sangwan <mandeep@sangwan.me>
 # Contributor: Joakim Nylén <me@jnylen.nu>
 # Contributor: Rashintha Maduneth <rashinthamaduneth@gmail.com>
 # Contributor: Dhananjay Balan <mail@dbalan.in>
@@ -7,26 +8,45 @@
 
 pkgname=mailspring
 pkgver=1.14.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A beautiful, fast and maintained fork of Nylas Mail by one of the original authors."
-arch=('x86_64')
-license=('custom: GPL3 and (C) 2017-2020 Foundry 376, LLC.')
-url="https://getmailspring.com/"
-options=('!strip')
+arch=(x86_64)
+license=(GPL-3.0-only)
+url="https://github.com/Foundry376/Mailspring"
+depends=(alsa-lib gtk3 libsecret nss)
+makedepends=(git npm nodejs-lts-hydrogen grunt-cli python)
+source=("${pkgname%-git}::git+https://github.com/Foundry376/Mailspring.git#tag=${pkgver}"
+        "https://raw.githubusercontent.com/FabioLolix/AUR-artifacts/master/mailspring_0001-linux-don-t-build-a-deb-or-rpm-please.patch")
+sha256sums=('SKIP'
+            'fd2158e0e3d39df0fa498b2afbcfa55c30607018ae144656f9575a6ec9e3dc98')
 
-source=()
+prepare() {
+  cd mailspring
+  patch -p1 < ../mailspring_0001-linux-don-t-build-a-deb-or-rpm-please.patch
+}
 
-source_x86_64=("https://github.com/Foundry376/Mailspring/releases/download/${pkgver}/mailspring-${pkgver}-amd64.deb")
-sha256sums_x86_64=('66998be9dd1090728ac67f8a1753840de01bd5b169f6ea210686c2bdb944f8bf')
-
-depends=("libxss" "libtool" "c-ares" "ctemplate" "tidy" "libxkbfile" "libsecret" "gtk3" "nss" "libglvnd")
-
-optdepends=('libappindicator-gtk3: for system tray support' 'appmenu-gtk-module: for system tray support' "libgnome-keyring: keyrings" "gnome-keyring: keyrings" 'zenity: for showing desktop notifications')
+build() {
+  cd "${pkgname%-git}/"
+  npm install
+  npm run-script build
+}
 
 package() {
-  cd ${srcdir}
-  
-  tar -xf data.tar.xz -C ${pkgdir} --exclude='./control'
-  chmod go-w "${pkgdir}"/usr "${pkgdir}"/usr/bin
-  chmod -R go-w "${pkgdir}"/usr/share
+  cd mailspring
+  install -d "${pkgdir}/opt/mailspring"
+  cp -r app/dist/mailspring-linux-x64/* "${pkgdir}/opt/mailspring"
+
+  install -d "${pkgdir}/usr/bin"
+  ln -s /opt/mailspring/mailspring "${pkgdir}/usr/bin/mailspring"
+
+  cd app/build/resources/linux
+
+  install -D Mailspring.desktop.in "${pkgdir}/usr/share/applications/Mailspring.desktop"
+  install -D mailspring.appdata.xml.in "${pkgdir}/usr/share/metainfo/mailspring.appdata.xml"
+
+  for s in 16 32 64 128 256 512; do
+    install -Dm0644 "icons/$s.png" "${pkgdir}/usr/share/icons/hicolor/$s/apps/mailspring.png"
+  done
+
+#Insecure RPATH '/opt/openssl/lib' in file ('opt/mailspring/resources/app.asar.unpacked/mailsync.bin')
 }
