@@ -1,0 +1,13 @@
+pkgbase = ligolo-ng
+	pkgdesc = A simple, light and fast reverse proxy for pentesters
+	pkgver = 1.0.0.r5.g1234567
+	pkgrel = 1
+	url = https://github.com/nicocha30/ligolo-ng
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = go
+	source = ligolo-ng-git::git+https://github.com/nicocha30/ligolo-ng.git
+	sha256sums = SKIP
+
+pkgname = ligolo-ng-git
