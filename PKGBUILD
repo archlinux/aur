@@ -2,7 +2,7 @@
 # Co-Maintainer: Martin Rys <https://rys.rs/contact> | Toss a coin on https://rys.rs/donate
 
 pkgname=sc-controller-git
-pkgver=0.4.9.3.r6.e2c3d74
+pkgver=0.4.9.4.r8.ae6593c
 pkgrel=1
 pkgdesc='User-mode driver, mapper and GTK3 based GUI for Steam Controller, DS4 and similar controllers.'
 arch=('x86_64' 'aarch64')
@@ -30,6 +30,8 @@ conflicts=("${pkgname%-git}" 'scc')
 source=('sc-controller'::'git+https://github.com/C0rn3j/sc-controller.git')
 sha256sums=('SKIP')
 
+# This ends up not matching the verison as intended by https://github.com/C0rn3j/sc-controller/pull/30
+# so About mismatches pkgver, but it's good enough
 pkgver() {
 	cd "${srcdir}/${pkgname%-git}"
 	printf "%s" "$(git describe --tags --long | sed -e 's/\([^-]*-\)g/r\1/;s/-/./g' -e 's/^v//')"
