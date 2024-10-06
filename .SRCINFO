@@ -1,0 +1,12 @@
+pkgbase = guessthenumber
+	pkgdesc = A game in which you have to guess a number from 1 to 10
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://andreiapps.com
+	arch = any
+	license = GPL
+	depends = jre17-openjdk
+	source = https://andreiapps.com/downloads/GuessTheNumber/v1.0/archlinux/guessthenumber-1.0.tar.gz
+	sha256sums = cdaede047a53e86aedcdda2a0240a64affc963f65db364e41238aac1c5b9ace1
+
+pkgname = guessthenumber
