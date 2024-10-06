@@ -1,0 +1,904 @@
+diff --git a/src/compositor_wayland.cpp b/src/compositor_wayland.cpp
+index 420592f54c1e91d7522d90c7580a893ad79d05d4..859cb988fd7a14d85c06d33810d3d9a78015e2f9 100644
+--- a/src/compositor_wayland.cpp
++++ b/src/compositor_wayland.cpp
+@@ -292,6 +292,18 @@ static bool checkForBlackBackground(SurfaceItem *background)
+     return nits.lengthSquared() <= (0.1 * 0.1);
+ }
+ 
++static void preFifoPass(RenderLayer *layer)
++{
++    layer->delegate()->prepareFifoPresentation();
++
++    const auto sublayers = layer->sublayers();
++    for (RenderLayer *sublayer : sublayers) {
++        if (sublayer->isVisible()) {
++            preFifoPass(sublayer);
++        }
++    }
++}
++
+ void WaylandCompositor::composite(RenderLoop *renderLoop)
+ {
+     if (m_backend->checkGraphicsReset()) {
+@@ -314,6 +326,10 @@ void WaylandCompositor::composite(RenderLoop *renderLoop)
+     auto frame = std::make_shared<OutputFrame>(renderLoop, std::chrono::nanoseconds(1'000'000'000'000 / output->refreshRate()));
+     bool directScanout = false;
+ 
++    // TODO do something smarter about tearing presentation here
++    // like, only do one preFifoPass once per refresh cycle?
++    preFifoPass(superLayer);
++
+     if (primaryLayer->needsRepaint() || superLayer->needsRepaint()) {
+         auto totalTimeQuery = std::make_unique<CpuRenderTimeQuery>();
+         renderLoop->beginPaint();
+diff --git a/src/core/renderlayerdelegate.cpp b/src/core/renderlayerdelegate.cpp
+index b4638ce42abcaef34a38b75e35c1078a9f6d5306..261a6438b45f6c5ea7f1ecd241f1e184fadd14de 100644
+--- a/src/core/renderlayerdelegate.cpp
++++ b/src/core/renderlayerdelegate.cpp
+@@ -23,6 +23,10 @@ void RenderLayerDelegate::frame(OutputFrame *frame)
+ {
+ }
+ 
++void RenderLayerDelegate::prepareFifoPresentation()
++{
++}
++
+ QRegion RenderLayerDelegate::prePaint()
+ {
+     return QRegion();
+diff --git a/src/core/renderlayerdelegate.h b/src/core/renderlayerdelegate.h
+index 4cf3da8c9bf5c65054fbe2fc33694de46ca0d3bd..a3c117ff812011fe0dc93d7b2b3a243d24db7926 100644
+--- a/src/core/renderlayerdelegate.h
++++ b/src/core/renderlayerdelegate.h
+@@ -37,6 +37,11 @@ public:
+      */
+     virtual void frame(OutputFrame *frame);
+ 
++    /**
++     * This method is called by the compositor before starting painting for a FIFO frame
++     */
++    virtual void prepareFifoPresentation();
++
+     /**
+      * This function is called by the compositor before starting painting. Reimplement
+      * this function to do frame initialization.
+diff --git a/src/core/renderloop.cpp b/src/core/renderloop.cpp
+index 9b4fe9f5edcdfe11a0557568fc96291d709f4453..0b9fb92a5926a165afde2c76448ef9973cf54b7a 100644
+--- a/src/core/renderloop.cpp
++++ b/src/core/renderloop.cpp
+@@ -180,7 +180,9 @@ void RenderLoopPrivate::dispatch()
+ {
+     // On X11, we want to ignore repaints that are scheduled by windows right before
+     // the Compositor starts repainting.
+-    pendingRepaint = true;
++    if (kwinApp()->operationMode() == Application::OperationModeX11) {
++        pendingRepaint = true;
++    }
+ 
+     Q_EMIT q->frameRequested(q);
+ 
+diff --git a/src/scene/cursorscene.cpp b/src/scene/cursorscene.cpp
+index 7c9c271ce447693ed0a1b4042034c8e024701a4d..de745c8c979e64d196fd8b6ce98e3d636f504d3e 100644
+--- a/src/scene/cursorscene.cpp
++++ b/src/scene/cursorscene.cpp
+@@ -44,6 +44,16 @@ static void resetRepaintsHelper(Item *item, SceneDelegate *delegate)
+     }
+ }
+ 
++void CursorScene::prepareFifoPresentation(SceneDelegate *delegate)
++{
++    if (!delegate->output()) {
++        return;
++    }
++    if (m_cursorItem->mapToScene(m_cursorItem->boundingRect()).intersects(delegate->output()->geometry())) {
++        m_cursorItem->prepareFifoPresentation();
++    }
++}
++
+ QRegion CursorScene::prePaint(SceneDelegate *delegate)
+ {
+     resetRepaintsHelper(m_rootItem.get(), delegate);
+diff --git a/src/scene/cursorscene.h b/src/scene/cursorscene.h
+index db01f410991f225152d7538e4ceb2d2103d2e707..4ecc9c7efd3115c2c02de5c3f9449c1ac414dd1c 100644
+--- a/src/scene/cursorscene.h
++++ b/src/scene/cursorscene.h
+@@ -23,6 +23,7 @@ public:
+     explicit CursorScene(std::unique_ptr<ItemRenderer> &&renderer);
+     ~CursorScene() override;
+ 
++    void prepareFifoPresentation(SceneDelegate *delegate) override;
+     QRegion prePaint(SceneDelegate *delegate) override;
+     void postPaint() override;
+     void paint(const RenderTarget &renderTarget, const QRegion &region) override;
+diff --git a/src/scene/item.cpp b/src/scene/item.cpp
+index 3ecaaf501acd21ff766463d55747e446ee3ee65c..7afd66516766fc62faf31eb02e9d246c3c39c55e 100644
+--- a/src/scene/item.cpp
++++ b/src/scene/item.cpp
+@@ -408,6 +408,13 @@ void Item::scheduleFrame()
+     }
+ }
+ 
++void Item::prepareFifoPresentation()
++{
++    for (const auto &child : m_childItems) {
++        child->prepareFifoPresentation();
++    }
++}
++
+ void Item::preprocess()
+ {
+ }
+diff --git a/src/scene/item.h b/src/scene/item.h
+index 39f2ecaaa7f8ebbb622e2fd9761f2f0a65f6c204..07d6c12edcbb342890d20b3b330dc491e3756c32 100644
+--- a/src/scene/item.h
++++ b/src/scene/item.h
+@@ -128,6 +128,7 @@ public:
+     void resetRepaints(SceneDelegate *delegate);
+ 
+     WindowQuadList quads() const;
++    virtual void prepareFifoPresentation();
+     virtual void preprocess();
+     const ColorDescription &colorDescription() const;
+     RenderingIntent renderingIntent() const;
+diff --git a/src/scene/scene.cpp b/src/scene/scene.cpp
+index 271b78201994360b0bd3a27c016f2353b1786166..5ddec114c157ba706023fe4c66c85279f139429d 100644
+--- a/src/scene/scene.cpp
++++ b/src/scene/scene.cpp
+@@ -29,6 +29,11 @@ QList<SurfaceItem *> SceneDelegate::scanoutCandidates(ssize_t maxCount) const
+     return m_scene->scanoutCandidates(maxCount);
+ }
+ 
++void SceneDelegate::prepareFifoPresentation()
++{
++    m_scene->prepareFifoPresentation(this);
++}
++
+ QRegion SceneDelegate::prePaint()
+ {
+     return m_scene->prePaint(this);
+diff --git a/src/scene/scene.h b/src/scene/scene.h
+index cc47296aa6b8d3ce311a57ddb2c27312e06fc3ff..5c75a4f4a367a831dbad85b7610777eb7d8b0383 100644
+--- a/src/scene/scene.h
++++ b/src/scene/scene.h
+@@ -31,6 +31,7 @@ public:
+ 
+     QList<SurfaceItem *> scanoutCandidates(ssize_t maxCount) const override;
+     void frame(OutputFrame *frame) override;
++    void prepareFifoPresentation() override;
+     QRegion prePaint() override;
+     void postPaint() override;
+     void paint(const RenderTarget &renderTarget, const QRegion &region) override;
+@@ -82,6 +83,7 @@ public:
+     void removeDelegate(SceneDelegate *delegate);
+ 
+     virtual QList<SurfaceItem *> scanoutCandidates(ssize_t maxCount) const;
++    virtual void prepareFifoPresentation(SceneDelegate *delegate) = 0;
+     virtual QRegion prePaint(SceneDelegate *delegate) = 0;
+     virtual void postPaint() = 0;
+     virtual void paint(const RenderTarget &renderTarget, const QRegion &region) = 0;
+diff --git a/src/scene/surfaceitem_wayland.cpp b/src/scene/surfaceitem_wayland.cpp
+index a4d012f774046a31735d78746d5db3e30227d46a..66371008f70254949da4d9b679cb4aa6204f7fc7 100644
+--- a/src/scene/surfaceitem_wayland.cpp
++++ b/src/scene/surfaceitem_wayland.cpp
+@@ -48,6 +48,7 @@ SurfaceItemWayland::SurfaceItemWayland(SurfaceInterface *surface, Item *parent)
+             this, &SurfaceItemWayland::handlePresentationModeHintChanged);
+     connect(surface, &SurfaceInterface::bufferReleasePointChanged, this, &SurfaceItemWayland::handleReleasePointChanged);
+     connect(surface, &SurfaceInterface::alphaMultiplierChanged, this, &SurfaceItemWayland::handleAlphaMultiplierChanged);
++    connect(surface, &SurfaceInterface::waitingOnFifo, this, &SurfaceItemWayland::handleWaitingOnFifo);
+ 
+     SubSurfaceInterface *subsurface = surface->subSurface();
+     if (subsurface) {
+@@ -68,6 +69,11 @@ SurfaceItemWayland::SurfaceItemWayland(SurfaceInterface *surface, Item *parent)
+     setBufferSize(surface->bufferSize());
+     setColorDescription(surface->colorDescription());
+     setOpacity(surface->alphaMultiplier());
++
++    // FIFO requires some minimum refresh rate to guarantee forward progress
++    m_fifoFallbackTimer.setInterval(1000 / 20);
++    m_fifoFallbackTimer.setSingleShot(true);
++    connect(&m_fifoFallbackTimer, &QTimer::timeout, this, &SurfaceItemWayland::handleFifoFallback);
+ }
+ 
+ QList<QRectF> SurfaceItemWayland::shape() const
+@@ -200,6 +206,7 @@ void SurfaceItemWayland::freeze()
+     }
+ 
+     m_surface = nullptr;
++    m_fifoFallbackTimer.stop();
+ }
+ 
+ void SurfaceItemWayland::handleColorDescriptionChanged()
+@@ -223,6 +230,31 @@ void SurfaceItemWayland::handleAlphaMultiplierChanged()
+     setOpacity(m_surface->alphaMultiplier());
+ }
+ 
++void SurfaceItemWayland::prepareFifoPresentation()
++{
++    if (m_surface) {
++        m_surface->prepareFifoPresentation();
++        if (m_fifoFallbackTimer.isActive()) {
++            // reset the timer, it should only trigger if we don't present fast enough
++            m_fifoFallbackTimer.start();
++        }
++    }
++    Item::prepareFifoPresentation();
++}
++
++void SurfaceItemWayland::handleWaitingOnFifo()
++{
++    m_fifoFallbackTimer.start();
++    scheduleFrame();
++}
++
++void SurfaceItemWayland::handleFifoFallback()
++{
++    if (m_surface) {
++        m_surface->prepareFifoPresentation();
++    }
++}
++
+ SurfacePixmapWayland::SurfacePixmapWayland(SurfaceItemWayland *item, QObject *parent)
+     : SurfacePixmap(Compositor::self()->backend()->createSurfaceTextureWayland(this), parent)
+     , m_item(item)
+diff --git a/src/scene/surfaceitem_wayland.h b/src/scene/surfaceitem_wayland.h
+index 991cd168c308664a77c4a90b8e6897b863a0876e..58fe5818ea752bd9e7de212fbbfbfb6d94e3d24a 100644
+--- a/src/scene/surfaceitem_wayland.h
++++ b/src/scene/surfaceitem_wayland.h
+@@ -8,6 +8,7 @@
+ 
+ #include "scene/surfaceitem.h"
+ 
++#include <QTimer>
+ #include <unordered_map>
+ 
+ namespace KWin
+@@ -33,6 +34,7 @@ public:
+     ContentType contentType() const override;
+     void setScanoutHint(DrmDevice *device, const QHash<uint32_t, QList<uint64_t>> &drmFormats) override;
+     void freeze() override;
++    void prepareFifoPresentation() override;
+ 
+     SurfaceInterface *surface() const;
+ 
+@@ -52,6 +54,9 @@ private Q_SLOTS:
+     void handleReleasePointChanged();
+     void handleAlphaMultiplierChanged();
+ 
++    void handleWaitingOnFifo();
++    void handleFifoFallback();
++
+ protected:
+     std::unique_ptr<SurfacePixmap> createPixmap() override;
+ 
+@@ -66,6 +71,7 @@ private:
+     };
+     std::optional<ScanoutFeedback> m_scanoutFeedback;
+     std::unordered_map<SubSurfaceInterface *, std::unique_ptr<SurfaceItemWayland>> m_subsurfaces;
++    QTimer m_fifoFallbackTimer;
+ };
+ 
+ class KWIN_EXPORT SurfacePixmapWayland final : public SurfacePixmap
+diff --git a/src/scene/workspacescene.cpp b/src/scene/workspacescene.cpp
+index 70a33a8ef5a7e2c60551140a212037f619aecaa9..9ae84b6cc47eb9f8a6a483aca8781addb40cb718 100644
+--- a/src/scene/workspacescene.cpp
++++ b/src/scene/workspacescene.cpp
+@@ -256,6 +256,16 @@ void WorkspaceScene::frame(SceneDelegate *delegate, OutputFrame *frame)
+     }
+ }
+ 
++void WorkspaceScene::prepareFifoPresentation(SceneDelegate *delegate)
++{
++    const auto items = m_containerItem->sortedChildItems();
++    for (const auto &item : items) {
++        if (item->mapToScene(item->boundingRect()).intersects(delegate->output()->geometry())) {
++            item->prepareFifoPresentation();
++        }
++    }
++}
++
+ QRegion WorkspaceScene::prePaint(SceneDelegate *delegate)
+ {
+     createStackingOrder();
+diff --git a/src/scene/workspacescene.h b/src/scene/workspacescene.h
+index 43a13630aa65fc0c0dedb1696d45af2280b36d6a..2d3734ba74a467e24147ae534a43e21fcb00a63d 100644
+--- a/src/scene/workspacescene.h
++++ b/src/scene/workspacescene.h
+@@ -50,6 +50,7 @@ public:
+     Item *overlayItem() const;
+ 
+     QList<SurfaceItem *> scanoutCandidates(ssize_t maxCount) const override;
++    void prepareFifoPresentation(SceneDelegate *delegate) override;
+     QRegion prePaint(SceneDelegate *delegate) override;
+     void postPaint() override;
+     void paint(const RenderTarget &renderTarget, const QRegion &region) override;
+diff --git a/src/wayland/CMakeLists.txt b/src/wayland/CMakeLists.txt
+index c25ae07f2eb842c04ced06a1896652aa53a1c1bf..46f1fc098078380394939a355cd7cca266ac2320 100644
+--- a/src/wayland/CMakeLists.txt
++++ b/src/wayland/CMakeLists.txt
+@@ -302,9 +302,15 @@ ecm_add_qtwayland_server_protocol_kde(WaylandProtocols_xml
+     BASENAME kde-external-brightness-v1
+ )
+ ecm_add_qtwayland_server_protocol_kde(WaylandProtocols_xml
++    PRIVATE_CODE
+     PROTOCOL ${WaylandProtocols_DATADIR}/staging/alpha-modifier/alpha-modifier-v1.xml
+     BASENAME alpha-modifier-v1
+ )
++ecm_add_qtwayland_server_protocol_kde(WaylandProtocols_xml
++    PRIVATE_CODE
++    PROTOCOL ${PROJECT_SOURCE_DIR}/src/wayland/protocols/frog-fifo-v1.xml
++    BASENAME frog-fifo-v1
++)
+ 
+ target_sources(kwin PRIVATE
+     abstract_data_source.cpp
+@@ -391,6 +397,7 @@ target_sources(kwin PRIVATE
+     xwaylandkeyboardgrab_v1.cpp
+     xwaylandshell_v1.cpp
+     xx_colormanagement_v4.cpp
++    frog_fifo_v1.cpp
+ )
+ 
+ install(FILES
+@@ -469,6 +476,7 @@ install(FILES
+     xwaylandkeyboardgrab_v1.h
+     xwaylandshell_v1.h
+     xx_colormanagement_v4.h
++    frog_fifo_v1.h
+ 
+     ${CMAKE_CURRENT_BINARY_DIR}/qwayland-server-alpha-modifier-v1.h
+     ${CMAKE_CURRENT_BINARY_DIR}/qwayland-server-content-type-v1.h
+@@ -477,6 +485,7 @@ install(FILES
+     ${CMAKE_CURRENT_BINARY_DIR}/qwayland-server-linux-drm-syncobj-v1.h
+     ${CMAKE_CURRENT_BINARY_DIR}/qwayland-server-presentation-time.h
+     ${CMAKE_CURRENT_BINARY_DIR}/qwayland-server-xx-color-management-v4.h
++    ${CMAKE_CURRENT_BINARY_DIR}/qwayland-server-frog-fifo-v1.h
+     ${CMAKE_CURRENT_BINARY_DIR}/wayland-alpha-modifier-v1-server-protocol.h
+     ${CMAKE_CURRENT_BINARY_DIR}/wayland-content-type-v1-server-protocol.h
+     ${CMAKE_CURRENT_BINARY_DIR}/wayland-frog-color-management-v1-server-protocol.h
+@@ -484,5 +493,6 @@ install(FILES
+     ${CMAKE_CURRENT_BINARY_DIR}/wayland-linux-drm-syncobj-v1-server-protocol.h
+     ${CMAKE_CURRENT_BINARY_DIR}/wayland-presentation-time-server-protocol.h
+     ${CMAKE_CURRENT_BINARY_DIR}/wayland-xx-color-management-v4-server-protocol.h
++    ${CMAKE_CURRENT_BINARY_DIR}/wayland-frog-fifo-v1-server-protocol.h
+ 
+     DESTINATION ${KDE_INSTALL_INCLUDEDIR}/kwin/wayland COMPONENT Devel)
+diff --git a/src/wayland/frog_fifo_v1.cpp b/src/wayland/frog_fifo_v1.cpp
+new file mode 100644
+index 0000000000000000000000000000000000000000..55505488307d8be6cfbea09e94f593c722555972
+--- /dev/null
++++ b/src/wayland/frog_fifo_v1.cpp
+@@ -0,0 +1,75 @@
++#include "frog_fifo_v1.h"
++
++#include "display.h"
++#include "surface_p.h"
++#include "transaction_p.h"
++
++namespace KWin
++{
++
++static constexpr uint32_t s_version = 1;
++
++FrogFifoManagerV1::FrogFifoManagerV1(Display *display, QObject *parent)
++    : QObject(parent)
++    , QtWaylandServer::frog_fifo_manager_v1(*display, s_version)
++{
++}
++
++void FrogFifoManagerV1::frog_fifo_manager_v1_destroy(Resource *resource)
++{
++    wl_resource_destroy(resource->handle);
++}
++
++void FrogFifoManagerV1::frog_fifo_manager_v1_get_fifo(Resource *resource, uint32_t id, struct ::wl_resource *wlSurface)
++{
++    const auto surface = SurfaceInterface::get(wlSurface);
++    const auto surfacePrivate = SurfaceInterfacePrivate::get(surface);
++    if (surfacePrivate->fifoSurface) {
++        wl_resource_post_error(resource->handle, error_fifo_surface_already_exists, "Attempted to create a second fifo surface for the wl_surface");
++        return;
++    }
++    surfacePrivate->fifoSurface = new XXFifoV1Surface(resource->client(), id, resource->version(), surface);
++}
++
++XXFifoV1Surface::XXFifoV1Surface(wl_client *client, uint32_t id, uint32_t version, SurfaceInterface *surface)
++    : QtWaylandServer::frog_fifo_surface_v1(client, id, version)
++    , m_surface(surface)
++{
++}
++
++XXFifoV1Surface::~XXFifoV1Surface()
++{
++    if (m_surface) {
++        SurfaceInterfacePrivate::get(m_surface)->fifoSurface = nullptr;
++    }
++}
++
++void XXFifoV1Surface::frog_fifo_surface_v1_destroy_resource(Resource *resource)
++{
++    delete this;
++}
++
++void XXFifoV1Surface::frog_fifo_surface_v1_destroy(Resource *resource)
++{
++    wl_resource_destroy(resource->handle);
++}
++
++void XXFifoV1Surface::frog_fifo_surface_v1_set_barrier(Resource *resource)
++{
++    if (!m_surface) {
++        wl_resource_post_error(resource->handle, error_surface_destroyed, "called set_barrier on a destroyed surface");
++        return;
++    }
++    SurfaceInterfacePrivate::get(m_surface)->pending->fifoBarrier = std::make_unique<FifoBarrier>();
++}
++
++void XXFifoV1Surface::frog_fifo_surface_v1_wait_barrier(Resource *resource)
++{
++    if (!m_surface) {
++        wl_resource_post_error(resource->handle, error_surface_destroyed, "called wait_barrier on a destroyed surface");
++        return;
++    }
++    SurfaceInterfacePrivate::get(m_surface)->pending->hasFifoWaitCondition = true;
++}
++
++}
+diff --git a/src/wayland/frog_fifo_v1.h b/src/wayland/frog_fifo_v1.h
+new file mode 100644
+index 0000000000000000000000000000000000000000..528ea7ee25aa0f691933cea6f9be610feaacc1ba
+--- /dev/null
++++ b/src/wayland/frog_fifo_v1.h
+@@ -0,0 +1,40 @@
++#pragma once
++#include <QObject>
++#include <QPointer>
++
++#include "wayland/qwayland-server-frog-fifo-v1.h"
++
++namespace KWin
++{
++
++class Display;
++class SurfaceInterface;
++class Transaction;
++
++class FrogFifoManagerV1 : public QObject, public QtWaylandServer::frog_fifo_manager_v1
++{
++    Q_OBJECT
++public:
++    explicit FrogFifoManagerV1(Display *display, QObject *parent);
++
++private:
++    void frog_fifo_manager_v1_destroy(Resource *resource) override;
++    void frog_fifo_manager_v1_get_fifo(Resource *resource, uint32_t id, struct ::wl_resource *surface) override;
++};
++
++class XXFifoV1Surface : public QtWaylandServer::frog_fifo_surface_v1
++{
++public:
++    explicit XXFifoV1Surface(wl_client *client, uint32_t id, uint32_t version, SurfaceInterface *surface);
++    ~XXFifoV1Surface();
++
++private:
++    void frog_fifo_surface_v1_destroy_resource(Resource *resource) override;
++    void frog_fifo_surface_v1_destroy(Resource *resource) override;
++    void frog_fifo_surface_v1_set_barrier(Resource *resource) override;
++    void frog_fifo_surface_v1_wait_barrier(Resource *resource) override;
++
++    const QPointer<SurfaceInterface> m_surface;
++};
++
++}
+diff --git a/src/wayland/protocols/frog-fifo-v1.xml b/src/wayland/protocols/frog-fifo-v1.xml
+new file mode 100644
+index 0000000000000000000000000000000000000000..18ce10cd5fbcc0df7c04ff30cfaf69845d8b3a33
+--- /dev/null
++++ b/src/wayland/protocols/frog-fifo-v1.xml
+@@ -0,0 +1,137 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<protocol name="frog_fifo_v1">
++  <copyright>
++    Copyright © 2023 Valve Corporation
++
++    Permission is hereby granted, free of charge, to any person obtaining a
++    copy of this software and associated documentation files (the "Software"),
++    to deal in the Software without restriction, including without limitation
++    the rights to use, copy, modify, merge, publish, distribute, sublicense,
++    and/or sell copies of the Software, and to permit persons to whom the
++    Software is furnished to do so, subject to the following conditions:
++
++    The above copyright notice and this permission notice (including the next
++    paragraph) shall be included in all copies or substantial portions of the
++    Software.
++
++    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
++    IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
++    FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.  IN NO EVENT SHALL
++    THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
++    LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
++    FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
++    DEALINGS IN THE SOFTWARE.
++  </copyright>
++
++  <interface name="frog_fifo_manager_v1" version="1">
++    <description summary="protocol for fifo constraints">
++      When a Wayland compositor considers applying a content update,
++      it must ensure all the update's readiness constraints (fences, etc)
++      are met.
++
++      This protocol provides a way to use the completion of a display refresh
++      cycle as an additional readiness constraint.
++
++      Warning! The protocol described in this file is currently in the testing
++      phase. Backward compatible changes may be added together with the
++      corresponding interface version bump. Backward incompatible changes can
++      only be done by creating a new major version of the extension.
++    </description>
++
++    <enum name="error">
++      <description summary="fatal presentation error">
++        These fatal protocol errors may be emitted in response to
++        illegal requests.
++      </description>
++      <entry name="fifo_surface_already_exists" value="0"
++             summary="fifo extension already exists for surface"/>
++    </enum>
++
++    <request name="destroy" type="destructor">
++      <description summary="unbind from the manager interface">
++        Informs the server that the client will no longer be using
++        this protocol object. Existing objects created by this object
++        are not affected.
++      </description>
++    </request>
++
++    <request name="get_fifo">
++      <description summary="request fifo interface for surface">
++        Establish a fifo object for a surface that may be used to add
++        display refresh constraints to content updates.
++
++        Only one such object may exist for a surface and attempting
++        to create more than one will result in a fifo_manager_already_exists
++        protocol error. If a surface is acted on by multiple software
++        components, general best practice is that only the component
++        performing wl_surface.attach operations should use this protocol.
++      </description>
++      <arg name="id" type="new_id" interface="frog_fifo_surface_v1"/>
++      <arg name="surface" type="object" interface="wl_surface"/>
++    </request>
++  </interface>
++
++  <interface name="frog_fifo_surface_v1" version="1">
++    <description summary="fifo interface">
++      A fifo object for a surface that may be used to add
++      display refresh constraints to content updates.
++    </description>
++
++    <enum name="error">
++      <description summary="fatal error">
++        These fatal protocol errors may be emitted in response to
++        illegal requests.
++      </description>
++      <entry name="surface_destroyed" value="0"
++             summary="the associated surface no longer exists"/>
++    </enum>
++
++    <request name="set_barrier">
++      <description summary="Sets the start point for a fifo constraint">
++        When the content update containing the "set_barrier" is applied,
++        it sets a "fifo_barrier" condition on the surface associated with
++        the fifo object. The condition is cleared immediately after the
++        following latching deadline for non-tearing presentation.
++        If the surface is not currently being presented by the compositor,
++        the condition needs to be cleared soon enough so that forward
++        progress for the application is guaranteed. The exact rate at which
++        that happens is implementation defined.
++
++        To wait for this condition to clear, use the "wait_barrier" request.
++
++        "set_barrier" is double-buffered state, see wl_surface.commit.
++
++        Requesting set_barrier after the fifo object's surface is
++        destroyed will generate a "surface_destroyed" error.
++      </description>
++    </request>
++
++    <request name="wait_barrier">
++      <description summary="Adds a fifo constraint to a content update">
++        Indicate that this content update is not ready while a
++        "fifo_barrier" condition is present on the surface.
++
++        This means that when the content update containing "set_barrier"
++        was made active at a latching deadline, it will be active for
++        at least one refresh cycle. A content update which is allowed to
++        tear might become active after a latching deadline if no content
++        update became active at the deadline.
++
++        "wait_barrier" is double-buffered state, see wl_surface.commit.
++
++        Requesting "wait_barrier" after the fifo object's surface is
++        destroyed will generate a "surface_destroyed" error.
++      </description>
++    </request>
++
++    <request name="destroy" type="destructor">
++      <description summary="Destroy the fifo interface">
++        Informs the server that the client will no longer be using
++        this protocol object.
++
++        Surface state changes previously made by this protocol are
++        unaffected by this object's destruction.
++      </description>
++    </request>
++  </interface>
++</protocol>
+diff --git a/src/wayland/surface.cpp b/src/wayland/surface.cpp
+index 601aab3286ab1b2406db19e6f80b53287acfeedb..542e9e5c8c208f448558c867e4483fec798ac7e0 100644
+--- a/src/wayland/surface.cpp
++++ b/src/wayland/surface.cpp
+@@ -24,6 +24,7 @@
+ #include "subcompositor.h"
+ #include "surface_p.h"
+ #include "transaction.h"
++#include "transaction_p.h"
+ #include "utils/resource.h"
+ #include "xx_colormanagement_v4.h"
+ 
+@@ -429,6 +430,13 @@ SurfaceInterface::SurfaceInterface(CompositorInterface *compositor, wl_resource
+ 
+ SurfaceInterface::~SurfaceInterface()
+ {
++    // ensure that we won't wait on any pending transactions
++    Transaction *transaction = firstTransaction();
++    while (transaction) {
++        transaction->entryFor(this)->state->hasFifoWaitCondition = false;
++        transaction = transaction->next(this);
++    }
++    d->fifoBarrier.reset();
+ }
+ 
+ SurfaceRole *SurfaceInterface::role() const
+@@ -593,6 +601,8 @@ void SurfaceState::mergeInto(SurfaceState *target)
+         target->alphaMultiplier = alphaMultiplier;
+         target->alphaMultiplierIsSet = true;
+     }
++    target->fifoBarrier = std::move(fifoBarrier);
++    target->hasFifoWaitCondition = hasFifoWaitCondition;
+     target->presentationFeedback = std::move(presentationFeedback);
+ 
+     *this = SurfaceState{};
+@@ -666,6 +676,8 @@ void SurfaceInterfacePrivate::applyState(SurfaceState *next)
+         opaqueRegion = QRegion();
+     }
+ 
++    fifoBarrier = std::move(current->fifoBarrier);
++
+     if (opaqueRegionChanged) {
+         Q_EMIT q->opaqueChanged(opaqueRegion);
+     }
+@@ -1194,6 +1206,15 @@ Transaction *SurfaceInterface::firstTransaction() const
+ void SurfaceInterface::setFirstTransaction(Transaction *transaction)
+ {
+     d->firstTransaction = transaction;
++    if (d->fifoBarrier) {
++        const auto entry = transaction ? transaction->entryFor(this) : nullptr;
++        if (entry && entry->state->hasFifoWaitCondition && (!subSurface() || !subSurface()->isSynchronized())) {
++            d->fifoBarrier->setTransaction(transaction);
++            Q_EMIT waitingOnFifo();
++        } else {
++            d->fifoBarrier->setTransaction(nullptr);
++        }
++    }
+ }
+ 
+ Transaction *SurfaceInterface::lastTransaction() const
+@@ -1228,6 +1249,17 @@ double SurfaceInterface::alphaMultiplier() const
+     return d->current->alphaMultiplier;
+ }
+ 
++void SurfaceInterface::prepareFifoPresentation()
++{
++    d->fifoBarrier.reset();
++    for (const auto &subsurface : d->current->subsurface.below) {
++        subsurface->surface()->prepareFifoPresentation();
++    }
++    for (const auto &subsurface : d->current->subsurface.above) {
++        subsurface->surface()->prepareFifoPresentation();
++    }
++}
++
+ } // namespace KWin
+ 
+ #include "moc_surface.cpp"
+diff --git a/src/wayland/surface.h b/src/wayland/surface.h
+index 021f91cac60edecfb0bc53f5f32661e9fd0330e7..9a2986c0eadba4a5d48cf7a84dd793214835d922 100644
+--- a/src/wayland/surface.h
++++ b/src/wayland/surface.h
+@@ -364,6 +364,13 @@ public:
+      */
+     SurfaceInterface *mainSurface();
+ 
++    /**
++     * Should be called immediately before compositing the next non-tearing frame
++     * but always at a minimum rate that guarantees forward progress for the application
++     * (for example 30Hz)
++     */
++    void prepareFifoPresentation();
++
+ Q_SIGNALS:
+     /**
+      * This signal is emitted when the underlying wl_surface resource is about to be freed.
+@@ -466,6 +473,12 @@ Q_SIGNALS:
+      */
+     void stateApplied(quint32 serial);
+ 
++    /**
++     * This signal is emitted when the surface is waiting on the compositor to call
++     * prepareFifoPresentation before processing the next commit
++     */
++    void waitingOnFifo();
++
+ private:
+     std::unique_ptr<SurfaceInterfacePrivate> d;
+     friend class SurfaceInterfacePrivate;
+diff --git a/src/wayland/surface_p.h b/src/wayland/surface_p.h
+index f93c0504d55a9a5b9351a60c22b23e3d10cc5904..dafe95352b96cb248757f28869ec6d1e694caab3 100644
+--- a/src/wayland/surface_p.h
++++ b/src/wayland/surface_p.h
+@@ -31,6 +31,8 @@ class XXColorSurfaceV4;
+ class XXColorFeedbackSurfaceV4;
+ class LinuxDrmSyncObjSurfaceV1;
+ class AlphaModifierSurfaceV1;
++class XXFifoV1Surface;
++class FifoBarrier;
+ 
+ struct SurfaceState
+ {
+@@ -83,6 +85,8 @@ struct SurfaceState
+     } acquirePoint;
+     std::shared_ptr<SyncReleasePoint> releasePoint;
+     double alphaMultiplier = 1;
++    std::unique_ptr<FifoBarrier> fifoBarrier;
++    bool hasFifoWaitCondition = false;
+ 
+     struct
+     {
+@@ -161,6 +165,7 @@ public:
+ 
+     Transaction *firstTransaction = nullptr;
+     Transaction *lastTransaction = nullptr;
++    std::unique_ptr<FifoBarrier> fifoBarrier;
+ 
+     QList<OutputInterface *> outputs;
+     QPointer<OutputInterface> primaryOutput;
+@@ -185,6 +190,7 @@ public:
+     QList<XXColorFeedbackSurfaceV4 *> xxColorFeedbacks;
+     LinuxDrmSyncObjSurfaceV1 *syncObjV1 = nullptr;
+     AlphaModifierSurfaceV1 *alphaModifier = nullptr;
++    XXFifoV1Surface *fifoSurface = nullptr;
+ 
+     struct
+     {
+diff --git a/src/wayland/transaction.cpp b/src/wayland/transaction.cpp
+index fcd19d4036f3cdc68d9f149248d18507f6901d7d..61eb7d2f1a597a84a948856187933efaca8bd301 100644
+--- a/src/wayland/transaction.cpp
++++ b/src/wayland/transaction.cpp
+@@ -96,6 +96,28 @@ void TransactionEventFdLocker::unlock()
+     delete this;
+ }
+ 
++FifoBarrier::FifoBarrier()
++{
++}
++
++FifoBarrier::~FifoBarrier()
++{
++    if (m_nextTransaction) {
++        m_nextTransaction->unlock();
++    }
++}
++
++void FifoBarrier::setTransaction(Transaction *transaction)
++{
++    if (m_nextTransaction) {
++        m_nextTransaction->unlock();
++    }
++    m_nextTransaction = transaction;
++    if (transaction) {
++        transaction->lock();
++    }
++}
++
+ Transaction::Transaction()
+ {
+ }
+@@ -300,6 +322,14 @@ void Transaction::commit()
+     }
+ }
+ 
++const TransactionEntry *Transaction::entryFor(SurfaceInterface *surface) const
++{
++    const auto it = std::ranges::find_if(m_entries, [surface](const TransactionEntry &entry) {
++        return entry.surface == surface;
++    });
++    return it == m_entries.end() ? nullptr : &(*it);
++}
++
+ } // namespace KWin
+ 
+ #include "moc_transaction.cpp"
+diff --git a/src/wayland/transaction.h b/src/wayland/transaction.h
+index d138dc84227a1d9c59e173493c3bbcf7b7d2df29..da3cf7b5db0019353005e1fdea28469770ba0dc9 100644
+--- a/src/wayland/transaction.h
++++ b/src/wayland/transaction.h
+@@ -110,6 +110,8 @@ public:
+      */
+     void commit();
+ 
++    const TransactionEntry *entryFor(SurfaceInterface *surface) const;
++
+ private:
+     void apply();
+     bool tryApply();
+diff --git a/src/wayland/transaction_p.h b/src/wayland/transaction_p.h
+index 29a9921e81f74ec5c87ea0db5dd64ae2714b37a2..d2b64323e12231be2b3f03b5b0a057a545e92d49 100644
+--- a/src/wayland/transaction_p.h
++++ b/src/wayland/transaction_p.h
+@@ -48,4 +48,16 @@ private:
+     QSocketNotifier m_notifier;
+ };
+ 
++class FifoBarrier
++{
++public:
++    explicit FifoBarrier();
++    ~FifoBarrier();
++
++    void setTransaction(Transaction *transaction);
++
++private:
++    Transaction *m_nextTransaction = nullptr;
++};
++
+ } // namespace KWin
+diff --git a/src/wayland_server.cpp b/src/wayland_server.cpp
+index 5a3f7d481259a455142b6b5f864837bf11c4e105..6da37033be072fb46550f4a35065240a3b199c10 100644
+--- a/src/wayland_server.cpp
++++ b/src/wayland_server.cpp
+@@ -39,6 +39,7 @@
+ #include "wayland/filtered_display.h"
+ #include "wayland/fractionalscale_v1.h"
+ #include "wayland/frog_colormanagement_v1.h"
++#include "wayland/frog_fifo_v1.h"
+ #include "wayland/idle.h"
+ #include "wayland/idleinhibit_v1.h"
+ #include "wayland/idlenotify_v1.h"
+@@ -525,6 +526,7 @@ bool WaylandServer::init()
+ 
+     m_externalBrightness = new ExternalBrightnessV1(m_display, m_display);
+     m_alphaModifierManager = new AlphaModifierManagerV1(m_display, m_display);
++    m_fifoManager = new FrogFifoManagerV1(m_display, m_display);
+     return true;
+ }
+ 
+diff --git a/src/wayland_server.h b/src/wayland_server.h
+index 874b62094c60ca05c88082929dfae1d102ad888a..39c5474e884135d4be3a010f344b6c57f6828bc7 100644
+--- a/src/wayland_server.h
++++ b/src/wayland_server.h
+@@ -64,6 +64,7 @@ class XXColorManagerV4;
+ class LinuxDrmSyncObjV1Interface;
+ class RenderBackend;
+ class AlphaModifierManagerV1;
++class FrogFifoManagerV1;
+ 
+ class KWIN_EXPORT WaylandServer : public QObject
+ {
+@@ -293,6 +294,7 @@ private:
+     XdgDialogWmV1Interface *m_xdgDialogWm = nullptr;
+     ExternalBrightnessV1 *m_externalBrightness = nullptr;
+     AlphaModifierManagerV1 *m_alphaModifierManager = nullptr;
++    FrogFifoManagerV1 *m_fifoManager = nullptr;
+     KWIN_SINGLETON(WaylandServer)
+ };
+ 
