@@ -1,6 +1,6 @@
 pkgbase = power-options-tray-git
 	pkgdesc = A system tray item for Power Options, a blazingly fast power management solution.
-	pkgver = 1.1.0r55.4d96c3
+	pkgver = 1.1.0r55.3a6c0d
 	pkgrel = 1
 	url = https://github.com/thealexdev23/power-options
 	arch = x86_64
