@@ -1,7 +1,8 @@
 pkgbase = where-is-my-sddm-theme-git
 	pkgdesc = The most minimalistic SDDM theme among all themes.
-	pkgver = 1.10.0.r8.gd05f54a
+	pkgver = r105.9637154
 	pkgrel = 1
+	epoch = 1
 	url = https://github.com/stepanzubkov/where-is-my-sddm-theme
 	arch = any
 	license = MIT

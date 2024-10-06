@@ -1,7 +1,8 @@
 # Maintainer: cyqsimon <28627918+cyqsimon@users.noreply.github.com>
 pkgname=where-is-my-sddm-theme-git
 _pkgname=${pkgname%-git}
-pkgver=1.10.0.r8.gd05f54a
+epoch=1
+pkgver=r105.9637154
 pkgrel=1
 pkgdesc='The most minimalistic SDDM theme among all themes.'
 arch=("any")
@@ -16,7 +17,7 @@ sha256sums=('SKIP')
 
 pkgver() {
     cd "$_pkgname"
-    git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
 package() {
