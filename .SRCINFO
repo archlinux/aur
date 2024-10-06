@@ -1,6 +1,6 @@
 pkgbase = octave-statistics
 	pkgdesc = Additional statistics functions for Octave.
-	pkgver = 1.6.7
+	pkgver = 1.7.0
 	pkgrel = 1
 	url = https://gnu-octave.github.io/packages/statistics/
 	install = octave-statistics.install
@@ -8,8 +8,8 @@ pkgbase = octave-statistics
 	groups = octave-forge
 	license = GPL-3.0-or-later
 	depends = octave>=7.2.0
-	noextract = statistics-1.6.7.tar.gz
-	source = statistics-1.6.7.tar.gz::https://github.com/gnu-octave/statistics/archive/refs/tags/release-1.6.7.tar.gz
-	sha256sums = 94bceae33ca35ec68a849cdacb572c91c6c19e7624cfc7c4c9da232de22b4e12
+	noextract = statistics-1.7.0.tar.gz
+	source = statistics-1.7.0.tar.gz::https://github.com/gnu-octave/statistics/archive/refs/tags/release-1.7.0.tar.gz
+	b2sums = fcdbb2dd46e2968cfdb4e51f193e6720ee3a76d42b6061700469dbe5cb68c4ffe7537a228a293b896fbad7bb77883dd75d020f20f3e8157d8b5bf8e32898568d
 
 pkgname = octave-statistics
