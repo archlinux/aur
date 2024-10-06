@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=izpack
-pkgver=5.2.1
+pkgver=5.2.3
 pkgrel=1
 pkgdesc='Tool for packaging applications on the Java platform as cross-platform installers'
 arch=('any')
@@ -11,33 +11,36 @@ depends=('sh' 'java-environment=11' 'hicolor-icon-theme')
 optdepends=('python: for wrapper utils'
             'p7zip: for izpack2exe wrapper'
             'upx: for izpack2exe wrapper')
-makedepends=('maven')
+makedepends=('git' 'maven')
 checkdepends=('gtk2' 'gnome-themes-standard')
-source=("https://github.com/izpack/izpack/archive/${pkgname}-${pkgver}/${pkgname}-${pkgver}.tar.gz"
+source=("git+https://github.com/izpack/izpack.git#tag=${pkgname}-${pkgver}"
         '010-izpack-compile.patch')
-sha256sums=('dd3b35e74f982d338129663bfd333a51d7e6c4b92db6d55c7b952e9bc9d2072e'
-            '42609fa684456afe770d43670fcc1ffcce099f25a76cea00df3f8323aa95f582')
+sha256sums=('9fe0573a3843221e34caaf7aa50f29531065b234ca0c60b439554d3baec4ed1d'
+            'a42578544bfba028a804f9fd9dfa7ad69bc3d7be72bedd47c95341c7719ab17c')
 
 prepare() {
-    patch -d "${pkgname}-${pkgname}-${pkgver}" -Np1 -i "${srcdir}/010-izpack-compile.patch"
+    patch -d izpack -Np1 -i "${srcdir}/010-izpack-compile.patch"
 }
 
 build() {
-    mvn -f "${pkgname}-${pkgname}-${pkgver}" \
+    mvn -f izpack \
         -Dproject.build.outputTimestamp="$SOURCE_DATE_EPOCH" \
         -DskipTests='true' \
         clean package
 }
 
 check() {
-    mvn -f "${pkgname}-${pkgname}-${pkgver}" test
+    mvn -f izpack test
 }
 
 package() {
     # install
+    local _ver
+    _ver="$(find izpack/izpack-dist/target -type f -name 'izpack-dist-*.jar' |
+        sort | head -n1 | sed 's/\.jar$//;s/-tests$//;s|.*/izpack-dist-||')"
     printf '%s\n' '0' '1' '1' '1' "${pkgdir}/opt/izpack" \
                   'O' '1' 'Y' '1' 'N' 'N' 'Y' "${pkgdir}/opt/izpack/auto-install.xml" |
-    java -jar "${pkgname}-${pkgname}-${pkgver}/izpack-dist/target/izpack-dist-${pkgver}.jar" -console
+    java -jar "izpack/izpack-dist/target/izpack-dist-${_ver}.jar" -console
     
     # fix permissions
     chmod a+x "${pkgdir}/opt/izpack/utils/wrappers/izpack2app/izpack2app.py"
@@ -53,8 +56,7 @@ package() {
     sed -Ei "s|${pkgdir}(/opt/izpack)|\1|" "${pkgdir}/opt/izpack/auto-install.xml"
     
     # wrapper utils doc
-    install -D -m644 "${pkgname}-${pkgname}-${pkgver}/src/doc-reST/izpack-utils.txt" \
-        -t "${pkgdir}/usr/share/doc/${pkgname}"
+    install -D -m644 izpack/src/doc-reST/izpack-utils.txt -t "${pkgdir}/usr/share/doc/${pkgname}"
     
     # symlinks
     local _dest
