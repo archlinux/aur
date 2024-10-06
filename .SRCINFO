@@ -1,6 +1,6 @@
 pkgbase = python-cyaron
 	pkgdesc = Random Olympic-informatics test data generator
-	pkgver = 0.5.0
+	pkgver = 0.6.0
 	pkgrel = 1
 	url = https://github.com/luogu-dev/cyaron
 	arch = any
@@ -9,8 +9,9 @@ pkgbase = python-cyaron
 	depends = python
 	depends = python-colorful
 	depends = python-xeger
-	source = https://files.pythonhosted.org/packages/source/c/cyaron/cyaron-0.5.0.tar.gz
+	conflicts = python-cyaron-git
+	source = https://files.pythonhosted.org/packages/source/c/cyaron/cyaron-0.6.0.tar.gz
 	validpgpkeys = 517E4E3C364C6C55C907284915AC252CE20E3FC8
-	sha256sums = SKIP
+	sha256sums = c9aa6449cb4a2738120662f05a7112978a6f379c89bdf304e418ad73606f86f6
 
 pkgname = python-cyaron
