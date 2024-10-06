@@ -1,7 +1,7 @@
 # Maintainer: Alexander Karpukhin <thealexdev23@gmail.com>
 
 pkgname=power-options-tray-git
-pkgver=1.1.0r55.161cca
+pkgver=1.1.0r55.4d96c3
 pkgrel=1
 pkgdesc="A system tray item for Power Options, a blazingly fast power management solution."
 arch=('x86_64')
