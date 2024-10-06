@@ -8,7 +8,7 @@ url=https://fex-emu.com
 arch=(aarch64)
 license=(MIT)
 makedepends=(git cmake ninja clang llvm python-setuptools)
-depends=(sdl2 libepoxy squashfs-tools squashfuse erofs-utils)
+depends=(qt5-declarative qt5-quickcontrols squashfs-tools squashfuse erofs-utils)
 source=("git+https://github.com/FEX-Emu/FEX"
         "git+https://github.com/catchorg/Catch2"
         "git+https://github.com/KhronosGroup/Vulkan-Headers"

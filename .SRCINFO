@@ -12,8 +12,8 @@ pkgbase = fex-emu-git
 	makedepends = llvm
 	makedepends = python-setuptools
 	makedepends = pkgconf
-	depends = sdl2
-	depends = libepoxy
+	depends = qt5-declarative
+	depends = qt5-quickcontrols
 	depends = squashfs-tools
 	depends = squashfuse
 	provides = fex-emu=2406
