@@ -1,7 +1,7 @@
 # Maintainer: teraflops cprieto.ortiz@gmail.com
 
 pkgname=mympc-git
-pkgver=r0.0
+pkgver=r7.99708e5
 pkgrel=1
 pkgdesc="An mpc wrapper with zsh library command completion"
 arch=('any')
@@ -24,5 +24,6 @@ package() {
   cd "$srcdir/mympc"
   install -Dm644 "usr/local/share/zsh/site-functions/_mympc" "$pkgdir/usr/local/share/zsh/site-functions/_mympc"
   install -Dm755 "usr/local/bin/mympc" "$pkgdir/usr/local/bin/mympc"
+  install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
