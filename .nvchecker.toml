@@ -1,0 +1,5 @@
+[innotop]
+source = "github"
+github = "innotop/innotop"
+use_max_tag = "true"
+prefix = "v"
