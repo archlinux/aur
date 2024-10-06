@@ -6,7 +6,6 @@ Wants=network-online.target
 Environment=PYTHONUNBUFFERED=1
 ExecStart=/usr/bin/zfsup backup
 Restart=on-failure
-WorkingDirectory=/etc/zfs_uploader
 
 [Install]
 WantedBy=default.target

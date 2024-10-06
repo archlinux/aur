@@ -3,3 +3,4 @@
 !.SRCINFO
 !PKGBUILD
 !zfs_uploader.service
+!/*.patch

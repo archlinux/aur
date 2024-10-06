@@ -1,0 +1,17 @@
+diff --git a/zfs_uploader/__main__.py b/zfs_uploader/__main__.py
+index ecae633..f0f0b68 100644
+--- a/zfs_uploader/__main__.py
++++ b/zfs_uploader/__main__.py
+@@ -14,10 +14,10 @@ LOG_FORMAT = 'time=%(asctime)s.%(msecs)03d level=%(levelname)s %(message)s'
+ 
+ 
+ @click.group()
+-@click.option('--config-path', default='config.cfg',
++@click.option('--config-path', default='/etc/zfs_uploader/config.cfg',
+               help='Config file path.',
+               show_default=True)
+-@click.option('--log-path', default='zfs_uploader.log',
++@click.option('--log-path', default='/var/log/zfs_uploader.log',
+               help='Log file path.',
+               show_default=True)
+ @click.pass_context
