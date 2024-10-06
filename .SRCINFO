@@ -1,6 +1,6 @@
 pkgbase = home-assistant
 	pkgdesc = Open source home automation that puts local control and privacy first
-	pkgver = 2024.9.2
+	pkgver = 2024.10.1
 	pkgrel = 1
 	epoch = 1
 	url = https://home-assistant.io/
@@ -22,11 +22,11 @@ pkgbase = home-assistant
 	depends = python
 	depends = tzdata
 	depends = zlib
-	source = home-assistant::git+https://github.com/home-assistant/core.git#tag=2024.9.2
+	source = home-assistant::git+https://github.com/home-assistant/core.git#tag=2024.10.1
 	source = home-assistant.service
-	sha512sums = bda77daa18c0e45b59ab01ea03ec2534c017be1ca0d7834776819fab3be95dfd2005a59cabc730b12d55c70195e82a34ff2b34eade3b135b82bd350220271b59
+	sha512sums = 99b1cf657e7b6a932a9025291c755ddbb3580f523033e1cb68d16689832dcaff3f35101e8fbfd7eec9db8fdce4bd61b84778f63397eae437f1d75da9cf5b8dbe
 	sha512sums = 487b0140564f1495bf4587abda7b82d0bf0d72adbdbdf7a368a375c85a874c14e9c0cf34e0d5e298d2634d6bbcee580bce3bc40a07c901474004908eb7890a18
-	b2sums = 1fe130cfe7b25c3d9650f5346c3211bf9924bfd9cc2b5b53b9ed78ee6d554351bff943eee8ddeeab042a195e140d4f0e64a7723ca29ef6fa08b40eb0a868bed7
+	b2sums = a9d703b08bd7dd5f8994934e48c301a5b708c2f90a9f16daaa348fcd9bb333935fb6afb7194d5c751a546e5cb02e6e4db992594656bbf78dc703f3b5fb0942f3
 	b2sums = d7a6cd85b89c74997cd7794e5205504033c37684d798bd12e40786f33fce846980d10373261444077cc527ef382246b8235573e1bb6ade8bb8e6d9e34f9961ad
 
 pkgname = home-assistant
