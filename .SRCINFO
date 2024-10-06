@@ -32,6 +32,7 @@ pkgbase = redot-git
 	depends = pcre2
 	optdepends = pipewire-alsa: for audio support
 	optdepends = pipewire-pulse: for audio support
+	options = !debug
 	source = redot::git+https://github.com/Redot-Engine/redot-engine.git
 	source = Redot.desktop
 	sha256sums = SKIP
