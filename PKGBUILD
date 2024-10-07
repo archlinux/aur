@@ -4,13 +4,13 @@
 
 _pkgname='mycorrhiza'
 pkgname="$_pkgname-git"
-pkgver=1.15.0.r0.g719de9b
+pkgver=1.15.1.r1.g7272801
 pkgrel=1
-pkgdesc='Filesystem and git-based wiki engine written in Go using mycomarkup (built from latest commit)'
+pkgdesc='Filesystem and git-based wiki engine written in Go using mycomarkup (latest git commit)'
 arch=('aarch64' 'armv7h' 'x86_64')
 url="https://github.com/bouncepaw/$_pkgname"
 license=('AGPL-3.0-or-later')  # SPDX-License-Identifier: AGPL-3.0-or-later
-depends=('git' 'glibc')
+depends=('glibc')
 makedepends=('git' 'go')
 source=("git+$url.git")
 provides=('mycorrhiza')
@@ -26,8 +26,8 @@ prepare() {
   export CGO_CXXFLAGS="$CXXFLAGS"
   export CGO_LDFLAGS="$LDFLAGS"
 
-  mkdir -p build
-  go mod tidy
+  mkdir -p build \
+  && go mod tidy
 }
 
 pkgver() {
