@@ -16,8 +16,8 @@ SUDACHI_DATE=$(grep "^_sudachidict_date" PKGBUILD|cut -f2 -d"=")
 UPDATED_FLAG=0
 if [[ "$COMMIT" != "$FCITX5_MOZC_COMMIT" ]]; then
     echo "Mozc Updated."
-    echo "$COMMIT"
-    echo "$FCITX5_MOZC_COMMIT"
+    echo "Current: $COMMIT"
+    echo "Latest : $FCITX5_MOZC_COMMIT"
     UPDATED_FLAG=1
 fi
 if [[ "$SudachiDict_DATE" != "$SUDACHI_DATE" ]];then
@@ -42,7 +42,9 @@ if [[ "$SudachiDict_DATE" != "$SUDACHI_DATE" ]];then
 fi
 if [[ "$UPDATE_FLAG" == "1" ]]; then
     echo "Change Detected."
-    updpkgsums
+    eval $(makepkg -g -p PKGBUILD)
+    ./update_sha512sums.sh PKGBUILD ${sha512sums[@]}
+    ./update_sha512sums.sh PKGBUILD.fcitx ${sha512sums[@]}
     mksrcinfo
     git commit -a -m "Update CheckSum."
     #git push
