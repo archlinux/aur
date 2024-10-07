@@ -15,14 +15,14 @@ conflicts=('terminaltexteffects')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/ChrisBuilds/terminaltexteffects/archive/refs/tags/release-$pkgver.tar.gz")
 
 build() {
-	cd "$_pkgname-release-$pkgver"
+	cd "$_pkgname-release-$pkgver" || exit
 	python -m build --wheel --no-isolation
 }
 
 package() {
-	cd "$_pkgname-release-$pkgver"
+	cd "$_pkgname-release-$pkgver" || exit
 	python -m installer --destdir="$pkgdir" dist/*.whl
-	install -Dm644 "$srcdir/$_pkgname-release-$pkgver/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
 # vim: set ts=2 sw=2 et:
