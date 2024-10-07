@@ -1,5 +1,5 @@
-[python-matrepr]
+[python-matspy]
 source = "github"
-github = "alugowski/matrepr"
+github = "alugowski/matspy"
 use_latest_release = "true"
 prefix = "v"
