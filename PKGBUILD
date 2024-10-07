@@ -12,7 +12,7 @@ depends=(
     sh
     glibc
     gcc-libs
-    "sdl2>=2.30.6"
+    sdl2
     qt6-base
     libwebp.so
     libjpeg.so
