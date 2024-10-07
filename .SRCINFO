@@ -1,15 +1,17 @@
 pkgbase = xwmplay
-	pkgdesc = play with windowmanagers in xephyr, automatic screenresolution
+	pkgdesc = Play with window managers in Xephyr, with automatic screen resolution
 	pkgver = 0.1.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/budRich/xwmplay
 	arch = any
-	license = BSD
+	license = 0BSD
 	makedepends = gawk
 	depends = bash
 	depends = xorg-server-xephyr
 	depends = xorg-xrandr
 	depends = xeventbind-git
+	provides = xwmplay
+	conflicts = xwmplay
 	source = xwmplay-0.1.5::https://github.com/budRich/xwmplay/archive/0.1.5/xwmplay-0.1.5.tar.gz
 	sha256sums = 84f1e04283db3e7c0b0f0cc51b5e982a0e18f9a838c3128b717cfead0ffbc4cd
 
