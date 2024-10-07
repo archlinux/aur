@@ -2,7 +2,7 @@
 
 _pkgname=rune-player
 pkgname=rune-player-git
-pkgver=0.0.0
+pkgver=0.0.0.dev.7.r4.g323db82
 pkgrel=1
 pkgdesc="The player that blends classic design with modern technology"
 arch=('x86_64')
@@ -28,6 +28,7 @@ makedepends=(
     'flutter-target-linux'
     'flutter-tool'
     'git'
+    'patchelf'
     'protobuf'
     'protoc-gen-dart'
     'protoc-gen-prost'
@@ -48,13 +49,17 @@ pkgver() {
     git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
+prepare() {
+    cd "${srcdir}/${_pkgname}"
+    flutter pub get
+}
+
 build() {
     cd "${srcdir}/${_pkgname}"
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
-    flutter pub get
     flutter pub run rinf message
-    flutter build linux --release --verbose
+    flutter build linux --no-pub --release --verbose
 }
 
 package() {
@@ -81,6 +86,13 @@ package() {
     popd
     install -dm755 "$pkgdir/usr/bin"
     ln -sfrv "$pkgdir/usr/lib/$_pkgname/player" "$pkgdir/usr/bin/player"
+
+    # Fix rpath that causes 'Insecure RUNPATH'
+    for shared_lib in "$pkgdir/usr/lib/$_pkgname/lib"/*.so; do
+        [[ -z $(patchelf --print-rpath "$shared_lib") ]] && continue
+        [[ $(patchelf --print-rpath "$shared_lib") == '$ORIGIN' ]] && continue
+        patchelf --set-rpath '$ORIGIN' "$shared_lib"
+    done
 
     install -Dm644 "$srcdir/$_pkgname.desktop" -t "$pkgdir/usr/share/applications/"
 }
