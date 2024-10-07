@@ -1,48 +1,30 @@
-# Maintainer: Andrea Denisse Gómez-Martínez <aur at denisse dot dev>
+# Maintainer: Vladislav Minakov <v@minakov.pro>
 
 pkgname=oauth2-proxy-bin
-_pkgname=${pkgname%-bin}
-pkgdesc='A reverse proxy that provides authentication with Google, Github or other providers.'
-arch=(aarch64 armv6h x86_64)
-url='https://oauth2-proxy.github.io/oauth2-proxy/'
-_url='https://github.com/oauth2-proxy/oauth2-proxy'
-_branch='master'
-pkgver=7.2.0
+pkgver=7.7.0
 pkgrel=1
-license=('MIT')
-makedepends=(git go sed)
+pkgdesc="A reverse proxy and static file server that provides authentication using Providers (Google, Keycloak, GitHub and others) to validate accounts by email, domain or group."
+arch=("x86_64")
+url="https://github.com/oauth2-proxy/oauth2-proxy"
+license=("MIT")
 source=("$_pkgname::git+$_url.git#branch=$_branch")
-source=("oauth2-proxy.tar.gz::${_url}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}.linux-amd64.tar.gz"
-        "LICENSE::https://github.com/oauth2-proxy/oauth2-proxy/blob/v${pkgver}/LICENSE"
-        "oauth2-proxy.service::https://github.com/oauth2-proxy/oauth2-proxy/blob/v${pkgver}/contrib/oauth2-proxy.cfg.example"
-        "oauth2-proxy.cfg::https://github.com/oauth2-proxy/oauth2-proxy/blob/master/contrib/oauth2-proxy.cfg.example")
-source_aarch64=("oauth2-proxy.tar.gz::${_url}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}.linux-arm64.tar.gz"
-                "LICENSE::https://github.com/oauth2-proxy/oauth2-proxy/blob/v${pkgver}/LICENSE"
-                "oauth2-proxy.service::https://github.com/oauth2-proxy/oauth2-proxy/blob/${pkgver}/contrib/oauth2-proxy.service.example"
-                "oauth2-proxy.cfg::https://github.com/oauth2-proxy/oauth2-proxy/blob/v${pkgver}/contrib/oauth2-proxy.cfg.example")
-source_armv6h=("oauth2-proxy.tar.gz::${_url}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}.linux-armv6.tar.gz"
-               "LICENSE::https://raw.githubusercontent.com/oauth2-proxy/oauth2-proxy/v${pkgbuild}/LICENSE"
-               "oauth2-proxy.service::https://raw.githubusercontent.com/oauth2-proxy/oauth2-proxy/v${pkgbuild}/contrib/oauth2-proxy.service.example"
-               "oauth2-proxy.cfg::https://raw.githubusercontent.com/oauth2-proxy/oauth2-proxy/v${pkgbuild}/contrib/oauth2-proxy.cfg.example")
-provides=($_pkgname)
-conflicts=($_pkgname)
+source=("oauth2-proxy-${pkgver}.tar.gz::https://github.com/oauth2-proxy/oauth2-proxy/releases/download/v${pkgver}/oauth2-proxy-v${pkgver}.linux-amd64.tar.gz"
+        "LICENSE::https://raw.githubusercontent.com/oauth2-proxy/oauth2-proxy/refs/heads/master/LICENSE"
+        "oauth2-proxy.service::https://raw.githubusercontent.com/oauth2-proxy/oauth2-proxy/refs/heads/master/contrib/oauth2-proxy.service.example"
+        "oauth2-proxy.cfg::https://raw.githubusercontent.com/oauth2-proxy/oauth2-proxy/refs/heads/master/contrib/oauth2-proxy.cfg.example")
+provides=("oauth2-proxy")
+conflicts=("oauth2-proxy")
 
-b2sums=('1eee625fde1fb301b01d708f58b819e5b64a4e4d62b5ebba9e9f83fdd027704d9120d793a74735970384e90628c26974b3e6d8b113b693a72fd8fe06cee8c71f'
-        'fa5849073a77503437305af2be2affe8825ff09adbceeb5283f80c1dcfa4b4e5184c4ab2be04bdcdfd024608c81c5e78925054a0ddde5acf8c7e021149741b29'
-        'a21931d41c1693999c0dc815024050f976e7f9be1420c73ea811687650076ad3d173aaaeb5d565c2fab22daa67699c7b02c88198a5fb3a5a9573d2c65187096f'
-        '27917f1fc826e039da7dc7fa1abb88bb3ebe7933316562e5525722a05352268a4714daa67328e842dbaa7f489d2889781d0144f0aaf380ed5d0b040b7a9f06be')
-b2sums_aarch64=('1eee625fde1fb301b01d708f58b819e5b64a4e4d62b5ebba9e9f83fdd027704d9120d793a74735970384e90628c26974b3e6d8b113b693a72fd8fe06cee8c71f'
-                'fa5849073a77503437305af2be2affe8825ff09adbceeb5283f80c1dcfa4b4e5184c4ab2be04bdcdfd024608c81c5e78925054a0ddde5acf8c7e021149741b29'
-                'a21931d41c1693999c0dc815024050f976e7f9be1420c73ea811687650076ad3d173aaaeb5d565c2fab22daa67699c7b02c88198a5fb3a5a9573d2c65187096f'
-                '27917f1fc826e039da7dc7fa1abb88bb3ebe7933316562e5525722a05352268a4714daa67328e842dbaa7f489d2889781d0144f0aaf380ed5d0b040b7a9f06be')
-b2sums_armv6h=('1eee625fde1fb301b01d708f58b819e5b64a4e4d62b5ebba9e9f83fdd027704d9120d793a74735970384e90628c26974b3e6d8b113b693a72fd8fe06cee8c71f'
-               'fa5849073a77503437305af2be2affe8825ff09adbceeb5283f80c1dcfa4b4e5184c4ab2be04bdcdfd024608c81c5e78925054a0ddde5acf8c7e021149741b29'
-               'a21931d41c1693999c0dc815024050f976e7f9be1420c73ea811687650076ad3d173aaaeb5d565c2fab22daa67699c7b02c88198a5fb3a5a9573d2c65187096f'
-               '27917f1fc826e039da7dc7fa1abb88bb3ebe7933316562e5525722a05352268a4714daa67328e842dbaa7f489d2889781d0144f0aaf380ed5d0b040b7a9f06be')
-
+sha512sums=('99c06c0c12a73a6717f4a192ac1a932a3f00ec9f76ac36889305298edd0bfadc40a8ca614d3bf788867170ff4205b0d25587f100bfdb920114b1358b03fa846a'
+            'e2f593cf01c162b5ea4a177dc69e8aaed9da5d98fcd8912944e352d4656468e73de28b039943ebd1996552dd1fa5bd4243b170ae22567e3b2523f47b2466ba9c'
+            'eb61d30f5098c9c689df91c45194a85485de3794c0a976e9d4ddbd173a1718f573446e3d139800b8db6f931fbbce779913732382e09ecf849a0f073046eda350'
+            'fb95bf4f0bb32289b2d27847fb8936fafad55f5fb87f0b7481c96f324ea697ac01a1cd33b19275674abac6558d4bcba9af2e8c4e623a35fe738e99938278da3f')
+prepare() {
+  sed -i -e 's|/usr/local/bin/oauth2-proxy|/usr/bin/oauth2-proxy|' -e 's/www-data/http/' -e '/^#/d' "oauth2-proxy.service"
+}
 package() {
-  install -Dm755 "$_pkgname/$_pkgname" "$pkgdir/usr/bin/$_pkgname"
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-  install -Dm644 oauth2-proxy.cfg "$pkgdir/etc/oauth2-proxy.cfg"
-  install -Dm644 oauth2-proxy.service "$pkgdir/usr/lib/systemd/system/oauth2-proxy.service"
+  install -Dm755 "${srcdir}/oauth2-proxy-v${pkgver}.linux-amd64/oauth2-proxy" "$pkgdir/usr/bin/oauth2-proxy"
+  install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 "oauth2-proxy.cfg" "$pkgdir/etc/oauth2-proxy.cfg"
+  install -Dm644 "oauth2-proxy.service" "$pkgdir/usr/lib/systemd/system/oauth2-proxy.service"
 }
