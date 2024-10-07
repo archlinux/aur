@@ -12,7 +12,7 @@ arch=("x86_64")
 provides=("rremind")
 conflicts=("rremind")
 source=("https://github.com/Jakubzik/rremind/releases/download/v$pkgver/rremind-$pkgver-x86_64.tar.gz")
-sha256sums=("c5bc7f3ca10ae9495d6fea4e821914680ee31dfdd3c47ed0f71a389144c16306")
+sha256sums=("9767695025d9c0adce6a3fa6f68a0064f9b906c2c07e0777b8c1fbea0a130c35")
 
 package() {
     install -Dm755 rremind -t "$pkgdir/usr/bin"
