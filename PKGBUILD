@@ -1,55 +1,40 @@
-# shellcheck disable=SC2034,SC2154,SC2164
-pkgname=('docker-compose-git')
-_srcname='compose'
-pkgver='r5440'
-pkgrel='1'
-pkgdesc='Define and run complex applications using Docker'
-arch=('any')
-url="https://github.com/docker/${_srcname}"
-license=('Apache')
+# Maintainer: 
+# Contributor: Fabio 'Lolix' Loli <fabio.loli@disroot.org>
+# Contributor: nfnty
 
-depends=(
-    'python'
-    'python-docopt'
-    'python-yaml'
-    'python-requests'
-    'python-texttable'
-    'python-websocket-client'
-    'python-docker-py'
-    'python-dockerpty'
-    'python-six'
-    'python-jsonschema'
-    'python-setuptools'
-)
-makedepends=('git')
-provides=("${pkgname[0]%-git}")
-conflicts=("${pkgname[0]%-git}")
-
-source=("${_srcname}::git+${url}.git")
+pkgname=docker-compose-git
+pkgver=2.29.7.r19.g407d825
+pkgrel=1
+pkgdesc="Define and run complex applications using Docker"
+arch=(x86_64)
+url="https://github.com/docker/compose"
+license=(Apache-2.0)
+depends=(glibc)
+makedepends=(git go)
+provides=(docker-compose)
+conflicts=(docker-compose)
+source=("docker-compose::git+https://github.com/docker/compose.git")
 sha512sums=('SKIP')
 
 pkgver() {
-    cd "${srcdir}/${_srcname}"
-
-    printf 'r%s.%s.%s\n' \
-        "$( git rev-list --count 'HEAD' )" \
-        "$( git log --max-count='1' --pretty='format:%ct' )" \
-        "$( git rev-parse --short 'HEAD' )"
+  cd "docker-compose"
+  git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-prepare() {
-    cd "${srcdir}/${_srcname}"
-
-    # Remove upper bound on requirements
-    sed --regexp-extended --in-place 's/==(\s*[0-9]+(\.[0-9]+)*)/>=\1/g' requirements.txt
-    sed --regexp-extended --in-place "s/, < [0-9]+(\.[0-9]+)*//g" setup.py
+build() {
+  cd "docker-compose/cmd"
+  go build \
+    -trimpath \
+    -buildmode=pie \
+    -mod=readonly \
+    -modcacherw \
+    -ldflags "-linkmode external -extldflags \"${LDFLAGS}\"" \
+    .
 }
 
 package() {
-    cd "${srcdir}/${_srcname}"
+  cd "docker-compose/cmd"
+  install -D cmd "${pkgdir}/usr/bin/docker-compose"
 
-    python setup.py install --root="${pkgdir}" --optimize=1
-
-    install -D --mode=644 LICENSE "${pkgdir}/usr/share/licenses/${_srcname}/LICENSE"
-    install -D --mode=644 contrib/completion/bash/docker-compose "${pkgdir}/usr/share/bash-completion/completions/docker-compose"
+  #install -D --mode=644 contrib/completion/bash/docker-compose "${pkgdir}/usr/share/bash-completion/completions/docker-compose"
 }
