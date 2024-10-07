@@ -1,0 +1,13 @@
+diff --git a/tests/test_parser.py b/tests/test_parser.py
+index b554a63..c793832 100644
+--- a/tests/test_parser.py
++++ b/tests/test_parser.py
+@@ -1025,7 +1025,7 @@ def test_parser_selection():
+ 
+     assert parse('file:o') == ('urlp-file', ['file:o'], None, None, 'type/file')
+     assert file_retriever.last_http_accept is None
+-    assert parse('file:///o') == ('urlp-file', ['file:///o'], None, None, 'type/file')
++    assert parse('file:///o') == ('filep-file', ['file:///o'], None, None, 'type/file')
+ 
+ 
+ def test_retriever_selection():
