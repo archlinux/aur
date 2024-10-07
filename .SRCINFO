@@ -1,11 +1,10 @@
 pkgbase = commit
 	pkgdesc = Commit message editor.
-	pkgver = 4.1
-	pkgrel = 2
+	pkgver = 4.2
+	pkgrel = 1
 	url = https://apps.gnome.org/Commit
 	arch = any
 	license = GPL-3.0-or-later
-	checkdepends = appstream-glib
 	makedepends = blueprint-compiler
 	makedepends = git
 	makedepends = meson
@@ -15,9 +14,9 @@ pkgbase = commit
 	depends = gtksourceview5
 	optdepends = git: git support
 	optdepends = mercurial: mercurial support
-	source = git+https://github.com/sonnyp/Commit.git#tag=v4.1
+	source = git+https://github.com/sonnyp/Commit.git#tag=v4.2
 	source = git+https://github.com/sonnyp/troll.git
-	sha256sums = 805b79e8866523c22d29905cb00521734d72ff57c8131f483c58698e19c884ab
+	sha256sums = 1ea5596a4cfc49fa57317f0d439c01ad249521a2b10a0e0c6e572aa769bac950
 	sha256sums = SKIP
 
 pkgname = commit
