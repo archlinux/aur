@@ -1,14 +1,15 @@
 # Maintainer: Adam Perkowski <adas1per@protonmail.com>
 pkgname=linutil-git
 _pkgname=linutil
-pkgver=2024.09.28.r11.ga9a678f
+pkgver=2024.09.28.r35.g26d0adc
 pkgrel=1
 pkgdesc="Chris Titus Tech's Linutil is a distro-agnostic toolbox designed to simplify everyday Linux tasks."
 arch=('x86_64' 'aarch64')
 url="https://github.com/ChrisTitusTech/$_pkgname"
 license=('MIT')
-source=("git+https://github.com/ChrisTitusTech/$_pkgname")
-sha256sums=(SKIP)
+source=("git+https://github.com/ChrisTitusTech/$_pkgname"
+    "https://raw.githubusercontent.com/adamperkowski/$_pkgname-dev/refs/heads/desktop_file/$_pkgname.desktop")
+sha256sums=('SKIP' 'SKIP')
 makedepends=('rustup' 'glibc' 'gcc-libs')
 depends=('git' 'pacman' 'tree-sitter' 'tree-sitter-bash')
 optdepends=('ttf-nerd-fonts-symbols: symbols and icons')
@@ -21,6 +22,8 @@ pkgver() {
 }
 
 prepare() {
+    echo "Version=$pkgver" >> "$_pkgname.desktop"
+
     export RUSTUP_TOOLCHAIN=stable
 
     cd "$_pkgname"
@@ -42,4 +45,5 @@ package() {
     cd "$_pkgname"
 
     install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/$_pkgname"
+    install -Dm644 "${srcdir}/$_pkgname.desktop" "${pkgdir}/usr/share/applications/$_pkgname.desktop"
 }
