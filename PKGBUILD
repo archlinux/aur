@@ -2,7 +2,7 @@
 
 pkgname=purple-teams-git
 _pkgname=purple-teams
-pkgver=r131.96dc9d3
+pkgver=r160.d519b2f
 pkgrel=1
 pkgdesc="MS Teams Plugin for Pidgin"
 arch=('x86_64' 'i686' 'pentium4')
