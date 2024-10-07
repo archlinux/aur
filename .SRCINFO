@@ -1,0 +1,13 @@
+pkgbase = mcdc-checker
+	pkgdesc = A tool to check C/C++ source code for non tree-like binary decisions so that its MCDC test coverage can be assessed with GCov
+	pkgver = 1.4.0
+	pkgrel = 1
+	url = https://gitlab.com/gtd-gmbh/mcdc-checker/mcdc-checker
+	arch = any
+	license = Mozilla Public License Version 2.0
+	depends = python>=3.10
+	depends = clang>=19.1.0
+	source = https://gitlab.com/gtd-gmbh/mcdc-checker/mcdc-checker/-/jobs/8011273687/artifacts/raw/dist/mcdc_checker-1.4.0-py3-none-any.whl
+	sha256sums = a9b7feec55bc7356280942e76323df1a7c1d6371e069a451d95819451bfda03e
+
+pkgname = mcdc-checker
