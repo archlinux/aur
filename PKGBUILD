@@ -7,7 +7,6 @@ pkgdesc='Trustbuilder Authenticator / AppImage version'
 arch=(x86_64)
 url=https://www.trustbuilder.com/
 license=(GPL)
-groups=(pro-audio)
 _appimage="Authenticator6-Linux.AppImage"
 noextract=("${_appimage}")
 provides=('trustbuilder')
