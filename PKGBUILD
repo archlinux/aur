@@ -28,7 +28,7 @@ sha256sums=('0233b9cd4e196fefb38c51cbd3f76e3f58fa7cd27d872e68b6ed08bd915c6430'
 build() {
 	cd "${pkgname}"
 
-	export CFLAGS+=' -I/usr/include/ffmpeg6.1 -Wno-error=incompatible-pointer-types -Wno-error=implicit-function-declaration'
+	export CFLAGS+=' -I/usr/include/ffmpeg6.1 -L/usr/lib/ffmpeg6.1 -Wno-error=incompatible-pointer-types -Wno-error=implicit-function-declaration'
 	export RENPY_DEPS_INSTALL='/usr/include/ffmpeg6.1:/usr/lib/ffmpeg6.1:/usr'
 
 	# This always return the last version from HEAD regardless of what version we are building.
