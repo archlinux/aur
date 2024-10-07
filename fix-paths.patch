@@ -1,0 +1,218 @@
+From ade068255f092fb80ca54e5db935009bee96e027 Mon Sep 17 00:00:00 2001
+From: Austin Appleby <aappleby@gmail.com>
+Date: Mon, 7 Oct 2024 19:41:14 -0700
+Subject: [PATCH] checkpoint, mucking around with paths again
+
+---
+ examples/dynamic_dependencies/build.hancho    |  3 +
+ .../filelist/build.hancho                     | 67 ++++++++++---------
+ .../random_deps/build.hancho                  |  3 +
+ examples/examples.hancho                      |  8 +--
+ .../{hello_gtk.hancho => build.hancho}        |  0
+ examples/subrepos/build.hancho                |  6 +-
+ examples/subrepos/myrepo/build.hancho         |  4 +-
+ hancho.py                                     | 15 +++++
+ 8 files changed, 68 insertions(+), 38 deletions(-)
+ create mode 100644 examples/dynamic_dependencies/build.hancho
+ rename examples/hello_gtk/{hello_gtk.hancho => build.hancho} (100%)
+
+diff --git a/examples/dynamic_dependencies/build.hancho b/examples/dynamic_dependencies/build.hancho
+new file mode 100644
+index 0000000..b2179f2
+--- /dev/null
++++ b/examples/dynamic_dependencies/build.hancho
+@@ -0,0 +1,3 @@
++import hancho
++
++hancho.load("filelist/build.hancho")
+\ No newline at end of file
+diff --git a/examples/dynamic_dependencies/filelist/build.hancho b/examples/dynamic_dependencies/filelist/build.hancho
+index 17940dd..186f91c 100644
+--- a/examples/dynamic_dependencies/filelist/build.hancho
++++ b/examples/dynamic_dependencies/filelist/build.hancho
+@@ -1,55 +1,60 @@
+-
++import hancho
+ import random
+ from glob import glob
++import os
+ 
+ #hancho.verbose = True
+ 
+ src_files = glob("src/*")
+ 
+-random_touch = hancho.task(
+-  desc = "Touch 3 random files in src/ - {source_files}",
++random_touch = hancho.Task(
++  desc = "Touch 3 random files in src/ - {in_src}",
+   command = [
+-    "touch {source_files[0]}",
+-    "touch {source_files[1]}",
+-    "touch {source_files[2]}",
++    "touch {in_src[0]}",
++    "touch {in_src[1]}",
++    "touch {in_src[2]}",
+   ],
+-  command_path = hancho.file_path,
+-  source_files = random.sample(src_files, 3),
++  in_src = random.sample(src_files, 3),
+ )
+ 
+-"""
+ def generate_filelist(task):
+-  with open(task._build_files[0], "w") as file:
++  with open(task.out_list, "w", encoding="utf-8") as file:
+     for f in random.sample(src_files, 3):
+-      hancho.log(f"Writing {f} to {task.config.build_files}")
++      hancho.log(f"Writing {f} to {task.out_list}")
+       file.write(str(f) + "\n")
+-  return task._build_files
++  return task.out_list
+ 
+-filelist_txt = hancho.task(
+-  desc = "Write the names of 3 random files in src/ to {build_files}",
+-  command = generate_filelist,
+-  build_files = "filelist.txt",
++filelist_txt = hancho.Task(
++  desc     = "Write the names of 3 random files in src/ to {out_list}",
++  command  = generate_filelist,
++  out_list = "filelist.txt",
+ )
+-"""
+ 
+-"""
+ def generate_result(task):
+-  " ""Read build/filelist.txt and create a new task to cat those files together into result.txt"" "
+-  from_filelist = [f.strip() for f in open(task._source_files[0], "r").readlines()]
+-  return hancho.task(
+-    desc = "Concatenate {rel_source_files} into {rel_build_files}",
+-    command = "cat {rel_source_files} > {rel_build_files}",
+-    source_files = from_filelist,
+-    build_files = "result.txt",
+-    other_files = [random_touch, filelist_txt],
+-  )
+-
+-result_txt = hancho.task(
+-  desc = "Read {rel_source_files} and use its contents to generate another task",
++  """Read build/filelist.txt and create a new task to cat those files together into result.txt"""
++  with open(task.in_filelist[0], "r", encoding="utf-8") as file:
++    from_filelist = [f.strip() for f in file.readlines()]
++    task = hancho.Task(
++      desc = "Concatenate {in_files} into {out_files}",
++      command = "cat {rel(in_files)} > {rel(out_files)}",
++      in_files = from_filelist,
++      out_files = "result.txt",
++      other_files = [random_touch, filelist_txt],
++    )
++    task.queue()
++    return task
++
++
++result_txt = hancho.Task(
++  desc = "Read {in_filelist} and use its contents to generate another task",
+   command = generate_result,
+-  source_files = filelist_txt,
++  in_filelist = filelist_txt,
++  #command_path = os.getcwd(),
+ )
+ 
++#print(result_txt)
++
++"""
+ hancho.task(
+   desc = "Print the contents of {rel_source_files}",
+   command = "cat {rel_source_files}",
+diff --git a/examples/dynamic_dependencies/random_deps/build.hancho b/examples/dynamic_dependencies/random_deps/build.hancho
+index b5066fd..9ed14ed 100644
+--- a/examples/dynamic_dependencies/random_deps/build.hancho
++++ b/examples/dynamic_dependencies/random_deps/build.hancho
+@@ -1,7 +1,9 @@
+ # Touches 3 random source files, then cats 3 random source files into build/result.txt
+ 
++import hancho
+ import random
+ 
++"""
+ all_deps  = [f"src/text{d}.txt" for d in range(0, 9)]
+ 
+ hancho.task(
+@@ -16,3 +18,4 @@ hancho.task(
+   source_files = random.sample(all_deps, 3),
+   build_files = "result.txt",
+ )
++"""
+\ No newline at end of file
+diff --git a/examples/examples.hancho b/examples/examples.hancho
+index 8828a2b..5e76c74 100644
+--- a/examples/examples.hancho
++++ b/examples/examples.hancho
+@@ -1,8 +1,6 @@
+ import hancho
+ 
+-hancho.load("hello_world/hello_world.hancho")
+-hancho.load("hello_gtk/hello_gtk.hancho")
++hancho.load("hello_world/build.hancho")
++hancho.load("hello_gtk/build.hancho")
+ hancho.load("subrepos/build.hancho")
+-
+-# needs source_path fix
+-hancho.load("dynamic_dependencies/filelist/build.hancho")
++#hancho.load("dynamic_dependencies/build.hancho")
+diff --git a/examples/hello_gtk/hello_gtk.hancho b/examples/hello_gtk/build.hancho
+similarity index 100%
+rename from examples/hello_gtk/hello_gtk.hancho
+rename to examples/hello_gtk/build.hancho
+diff --git a/examples/subrepos/build.hancho b/examples/subrepos/build.hancho
+index 40014e5..a2a7d63 100644
+--- a/examples/subrepos/build.hancho
++++ b/examples/subrepos/build.hancho
+@@ -1 +1,5 @@
+-myrepo = hancho.subrepo("myrepo")
++import hancho
++
++assert hancho.Config.repo_path.endswith("/hancho")
++
++myrepo = hancho.repo("myrepo/build.hancho")
+diff --git a/examples/subrepos/myrepo/build.hancho b/examples/subrepos/myrepo/build.hancho
+index 231c574..d402ff6 100644
+--- a/examples/subrepos/myrepo/build.hancho
++++ b/examples/subrepos/myrepo/build.hancho
+@@ -1 +1,3 @@
+-print(hancho)
++import hancho
++
++assert hancho.Config.repo_path.endswith("hancho/examples/subrepos/myrepo")
+diff --git a/hancho.py b/hancho.py
+index 6d40372..15d91aa 100755
+--- a/hancho.py
++++ b/hancho.py
+@@ -2,6 +2,16 @@
+ 
+ """Hancho v0.1.0 @ 2024-03-25 - A simple, pleasant build system."""
+ 
++# base_path
++# build_path
++# file_path
++# repo_path
++# root_path
++
++# command_path
++# in_path
++# out_path
++
+ from os import path
+ from types import MappingProxyType
+ import argparse
+@@ -1108,7 +1118,12 @@ async def run_command(self, command):
+ 
+         # Custom commands just get called and then early-out'ed.
+         if callable(command):
++            #print("DJFJFJFJFJFJ")
++            #print(self.command_path)
++            #print("DJFJFJFJFJFJ")
++            app.pushdir(self.command_path)
+             result = command(self)
++            app.popdir()
+             while inspect.isawaitable(result):
+                 result = await result
+             return

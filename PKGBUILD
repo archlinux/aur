@@ -1,8 +1,8 @@
 # Maintainer: Claudia Pellegrino <aur ät cpellegrino.de>
 
 pkgname=hancho
-pkgver=0.0.5
-pkgrel=3
+pkgver=0.2.0
+pkgrel=1
 pkgdesc='Simple pleasant build system in Python'
 arch=('any')
 url='https://github.com/aappleby/hancho'
@@ -23,13 +23,13 @@ options=('!debug' '!strip')
 
 source=(
   "${pkgname}-${pkgver}.tar.gz::https://github.com/aappleby/hancho/archive/${pkgver}.tar.gz"
+  'fix-paths.patch'
   'pyproject.toml.template'
 )
 
-sha512sums=(
-  'eef8e2e22c154efc4f1722d8bc50a4865d4151a467a9408811b888d5a0f20f537e7bc3776c8a7cc59a7a62c181b7bb82039432610a04ee2b5ce5cf9f22ea54e9'
-  '8d37cd359870614d0bd8c60e4f4bac867482e8460daad4a2d1974deefc5fffb79da1c880acadb7c8a7d28a733067cbf185cfbf3982090122fd2b934e6b47de83'
-)
+sha512sums=('5ce2a91eba1617bf94f264ecf7957934b21f2cda869a9a888f8510c09cd38d1a5ea76f562870ebacfe6f8c6116da40af16145772276fb3c5915423a54d9f558e'
+            '0a20ffe9a5b7e79f048c278d49ba28578af71a78b3ab8f7a4d0126d8f8372fe03757247eb9a27eb1f405f7b4129dc1b8ed5ae968306cb6e90fb42a38611459ff'
+            '8d37cd359870614d0bd8c60e4f4bac867482e8460daad4a2d1974deefc5fffb79da1c880acadb7c8a7d28a733067cbf185cfbf3982090122fd2b934e6b47de83')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
@@ -40,6 +40,12 @@ prepare() {
   echo >&2 'Configuring build backend'
   j2 -f env -o 'pyproject.toml' '../pyproject.toml.template' - \
     <<< "pkgver=${pkgver}"
+
+  echo >&2 'Fixing paths'
+  patch -p1 < ../fix-paths.patch
+
+  echo >&2 'Disabling non-functional example'
+  sed -i 's/.*subrepos.*/#\0/' examples/examples.hancho
 }
 
 build() {
@@ -77,9 +83,9 @@ package() {
 
   echo >&2 'Packaging the documentation'
   install -D -m 644 -t "${pkgdir}/usr/share/doc/${pkgname}" 'README.md'
-  cp -vR 'docs' 'tutorial' "${pkgdir}/usr/share/doc/${pkgname}/"
+  cp -vR 'docs' "${pkgdir}/usr/share/doc/${pkgname}/"
 
-  echo >&2 'Packaging the examples'
+  echo >&2 'Packaging examples and tutorial'
   mkdir -pv "${pkgdir}/usr/share/${pkgname}"
-  cp -vR 'examples' "${pkgdir}/usr/share/${pkgname}/"
+  cp -vR 'examples' 'tutorial' "${pkgdir}/usr/share/${pkgname}/"
 }
