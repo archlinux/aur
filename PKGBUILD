@@ -15,16 +15,16 @@ conflicts=('libedgetpu' 'libedgetpu-std')
 # The links to the files are taken from:
 # https://packages.cloud.google.com/apt/dists/coral-edgetpu-stable/main
 source_x86_64=(
-    'libedgetpu-dev_16-0.deb::https://packages.cloud.google.com/apt/pool/libedgetpu-dev_16.0_amd64_f647861f3ae6406f101c975b419af4c479889d99c4d41ef83593c9b67503fc58.deb'
-    'libedgetpu1-max_16-0.deb::https://packages.cloud.google.com/apt/pool/libedgetpu1-max_16.0_amd64_707ca6c21f4506a5753ad3f7fbdfef442a28056daf8e0b64dec3f58e97f520b9.deb'
+    'libedgetpu-dev_16-0.deb::https://downloads.iterait.com/libedgetpu/libedgetpu-dev_16.0_amd64_f647861f3ae6406f101c975b419af4c479889d99c4d41ef83593c9b67503fc58.deb'
+    'libedgetpu1-max_16-0.deb::https://downloads.iterait.com/libedgetpu/libedgetpu1-max_16.0_amd64_707ca6c21f4506a5753ad3f7fbdfef442a28056daf8e0b64dec3f58e97f520b9.deb'
 )
 source_armv7h=(
-    'libedgetpu-dev_16-0.deb::https://packages.cloud.google.com/apt/pool/libedgetpu-dev_16.0_armhf_4b74b127ed8d8c48b986373df32069ff76f39bf35865f83001685cc552a2eb9b.deb'
-    'libedgetpu1-max_16-0.deb::https://packages.cloud.google.com/apt/pool/libedgetpu1-max_16.0_armhf_9a0aba1c790bc7de0ff9997ba78310d8c5146c94ce5c141eba378b7542fa98fa.deb'
+    'libedgetpu-dev_16-0.deb::https://downloads.iterait.com/libedgetpu/libedgetpu-dev_16.0_armhf_4b74b127ed8d8c48b986373df32069ff76f39bf35865f83001685cc552a2eb9b.deb'
+    'libedgetpu1-max_16-0.deb::https://downloads.iterait.com/libedgetpu/libedgetpu1-max_16.0_armhf_9a0aba1c790bc7de0ff9997ba78310d8c5146c94ce5c141eba378b7542fa98fa.deb'
 )
 source_aarch64=(
-    'libedgetpu-dev_16-0.deb::https://packages.cloud.google.com/apt/pool/libedgetpu-dev_16.0_arm64_0b4fb43e4f7b44a0ce1f13b0736b3b7f03b09a24fca7e81bdb40185e98527325.deb'
-    'libedgetpu1-max_16-0.deb::https://packages.cloud.google.com/apt/pool/libedgetpu1-max_16.0_arm64_e07bb1a21da8e7ee464cbe2b2923d58dd727b0700ee067b6d5d36c2cd715dcc5.deb'
+    'libedgetpu-dev_16-0.deb::https://downloads.iterait.com/libedgetpu/libedgetpu-dev_16.0_arm64_0b4fb43e4f7b44a0ce1f13b0736b3b7f03b09a24fca7e81bdb40185e98527325.deb'
+    'libedgetpu1-max_16-0.deb::https://downloads.iterait.com/libedgetpu/libedgetpu1-max_16.0_arm64_e07bb1a21da8e7ee464cbe2b2923d58dd727b0700ee067b6d5d36c2cd715dcc5.deb'
 )
 sha256sums_x86_64=(
     'f647861f3ae6406f101c975b419af4c479889d99c4d41ef83593c9b67503fc58'
