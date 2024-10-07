@@ -1,7 +1,7 @@
 pkgbase = local-by-flywheel-bin
 	pkgdesc = A program to create a local WordPress development environment.
-	pkgver = 9.0.5
-	pkgrel = 6706
+	pkgver = 9.1.0
+	pkgrel = 6719
 	url = https://localbyflywheel.com/
 	arch = x86_64
 	license = custom:proprietary
@@ -15,7 +15,7 @@ pkgbase = local-by-flywheel-bin
 	depends = libxss
 	depends = libxslt
 	options = emptydirs
-	source = https://cdn.localwp.com/releases-stable/9.0.5+6706/local-9.0.5-linux.rpm
-	sha1sums = ff4c503e60c108f93cf0e9561cff68657a8454c6
+	source = https://cdn.localwp.com/releases-stable/9.1.0+6719/local-9.1.0-linux.rpm
+	sha1sums = ef369b748b61e6ee832897b1921d32afbbdfe42a
 
 pkgname = local-by-flywheel-bin
