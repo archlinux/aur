@@ -3,7 +3,7 @@
 # Contributor: Jooa <aur at (name) dot xyz>
 
 _cranname=raster
-_cranver=3.6-26
+_cranver=3.6-30
 pkgname=r-${_cranname,,}
 pkgdesc="Geographic Data Analysis and Modeling"
 url="https://cran.r-project.org/package=${_cranname}"
@@ -48,7 +48,7 @@ optdepends=(
 # )
 
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-b2sums=("95a51d47b34e46ac07f0359c3930ed9daf37156b587b7d896fc2244a27af3cefdb7ac445accc6eb816c9be3053596800bf81a264be5c06796cb6b06f00b932d6")
+b2sums=("aec52270aebf5f0f2dc82bedec5d94cade55714deb2ceb7969af1d59b7354e9d5a270f09ccea5eef8efa50574b83b7ae5f38c789ce0e60de93b0855bab07dca8")
 
 build() {
     mkdir -p "${srcdir}/build/"
