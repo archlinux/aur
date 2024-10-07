@@ -125,6 +125,10 @@ package() {
     install -dm755 "${pkgdir}/usr/lib/cjust"
     install -m755 -t "${pkgdir}/usr/lib/cjust" "${source_dir}/lib/cjust"/*.sh
 
+    # /usr/lib/os-*
+    install -dm755 "${pkgdir}/usr/lib"
+    install -m755 -t "${pkgdir}/usr/lib" "${source_dir}/lib/os-"*
+
     # polkit actions
     install -dm755 "${pkgdir}/usr/share/polkit-1/actions"
     install -m644 -t "${pkgdir}/usr/share/polkit-1/actions" "${source_dir}/share/polkit-1/actions"/*
