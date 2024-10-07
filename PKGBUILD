@@ -1,7 +1,7 @@
 # Maintainer: Andrew Rabert <ar@nullsum.net>
 
 pkgbase=linux-flowx13
-pkgver=6.11.1.arch1
+pkgver=6.11.2.arch1
 pkgrel=1
 pkgdesc='Linux (with patches for the Asus Flow X13)'
 url='https://github.com/archlinux/linux'
@@ -43,17 +43,17 @@ validpgpkeys=(
   83BC8889351B5DEBBB68416EB8AC08600F108CDF  # Jan Alexander Steffens (heftig)
 )
 # https://www.kernel.org/pub/linux/kernel/v6.x/sha256sums.asc
-sha256sums=('2a372373b4e1eaf55f2a2f104bfa91477ec9b263acf8f3aed08f4d8bdc78ee3d'
+sha256sums=('ec9ef7a0b9cebb55940e1ef87a1f9e1004b10456a119dc386bb3e565b0d39c42'
             'SKIP'
-            'cb4acbf6c7f0ef00e335929d90ea2acadead0266d9f769c15976ee74c5c8828d'
+            '86e2959cac748ff503f33e40d5994acc3eb5008b9ff9ca2a7e2d264c107a4b24'
             'SKIP'
-            'ef46abf8e2a0dfff3a63a911cb4819d7c8e276c78094afc37518e4b3d9c841d0'
+            '6be68246a4abf8c4a71b94f315076b482bf6e99447d4c67a24f8e8b4aadda0eb'
             '508f90cbe81a9a145cc540703470f1e6b5d21c7a7b9166d2ce6e56b401262b04')
-b2sums=('ac9927d74542a2d244b9d683920363ec2dbbe851ae0e069b278f1a0ba82c58b00f0f0312104b46f1b8c06585c2e6acb7eb1e63bd28499891f629c00f9a32f6b5'
+b2sums=('5720e8dd0bed0247dcfe0bdbce17e36e67bff56811611ae1b04f048b77b6e60c2a48303db73c5a0d4a56c7125cdd695116c4dfd965bd7cb28aa932f427bb3e7d'
         'SKIP'
-        '3621c4b5476cd615d0abb2568ed8b67bc5a4022a35ae0fa2c0d9ef27d5e31fcab56d38aa0ca86320357f4cc31c7e5d3acb12222694ec83a8aab21b16847c8b81'
+        'a34d50594e17ea6e9e89dc9fecfcc1417db823e5bbaa7038864b6d1edfdfb38424cdb4a97b70ec57b625b72c7f239b9c1cb2acfab00af8aca5bea566de662bc4'
         'SKIP'
-        'b28d19b0f7f3ea8d88e80d0828102173075e75c8d2584b29f687077594967634844234748478b0834d814a20c4f0eb8d2ac1a77e5fddb51afc7b85410785ea7e'
+        '632406cbbd14ac1db306bd2dacc21ecf0320cbf04f028c6d09290404af63e642a873295a6bc7db14c6e395c910d5c8f731efd39e52f3ac8de51596d434236c2b'
         'c0090c819342838fbb242f41ee057612ade9c1e564ea250bcd454d57677196a590e392ee6ef0b45d8d9463ab92a8ae3b3668f162c45a8d0e714747235d1cccff')
 
 
@@ -147,6 +147,7 @@ _package-headers() {
   install -Dt "$builddir/kernel" -m644 kernel/Makefile
   install -Dt "$builddir/arch/x86" -m644 arch/x86/Makefile
   cp -t "$builddir" -a scripts
+  ln -srt "$builddir" "$builddir/scripts/gdb/vmlinux-gdb.py"
 
   # required when STACK_VALIDATION is enabled
   install -Dt "$builddir/tools/objtool" tools/objtool/objtool
