@@ -1,7 +1,7 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
 pkgname="updatecli"
-pkgver=0.84.1
+pkgver=0.85.0
 pkgrel=1
 pkgdesc="A declarative dependency management command line tool"
 arch=('x86_64')
@@ -13,7 +13,7 @@ makedepends=('go')
 depends=('glibc')
 _pkgsrc="${pkgname}-${pkgver}"
 source=("${_pkgsrc}.tar.gz::${_url}/archive/refs/tags/v${pkgver}.tar.gz")
-b2sums=('f17e9750649c9e6825a50d8ade31581870c94626a87f648ec073e0c1af064e7342c30142e2e703adf545561fb40f67f738ea66b0b61a811ff213af7123c6e8a0')
+b2sums=('5a3416b71af00c79b6882786f90069b53b7d317eae782cb68eb0dc311229802d62576e44d647ae3bc132ed8991a126334827dd61755a2fa0b7178eb43e26a724')
 
 prepare() {
   cd "${srcdir}/${_pkgsrc}"
