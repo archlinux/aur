@@ -1,7 +1,7 @@
 # Maintainer: Nathan Wong, NorthWestWind <wsyn148@gmail.com>
 _pkgname=cls
 pkgname=$_pkgname-soundboard
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="cls - Command-Line Soundboard"
 arch=("i686" "x86_64")
@@ -10,7 +10,7 @@ license=('GPL3')
 depends=("ffmpeg" "pulse-native-provider")
 makedepends=("cargo")
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=("58ebd77eacf1ee59b7dc61317712f3704841256b4bce3daa402be96ecc068f12")
+sha256sums=("e3f69e757dd9ea0f76bc169b2e55a9042db02ca2bbe6e12b937cca206eac9c45")
 
 prepare() {
   export RUSTUP_TOOLCHAIN=stable
