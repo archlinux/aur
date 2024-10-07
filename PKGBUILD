@@ -2,14 +2,14 @@
 
 _pkgname=notmuch-mailmover
 pkgname=${_pkgname}-git
-pkgver=v0.3.0
+pkgver=v0.4.0
 pkgrel=1
 pkgdesc='notmuch-mailmover is a tool to move notmuch tagged mails into Maildir folders'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url='https://github.com/michaeladler/notmuch-mailmover'
 license=('Apache')
-depends=('notmuch-runtime')
-makedepends=('git' 'cargo')
+depends=('notmuch-runtime' 'lua')
+makedepends=('git' 'cargo' 'pkgconf')
 provides=("${pkgname%-*}")
 conflicts=("${pkgname%-*}")
 source=("${pkgname%-*}::git+$url")
@@ -29,13 +29,13 @@ build() {
   cd "${_pkgname}"
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
-  cargo build --frozen --release --all-features
+  cargo build --frozen --release
 }
 
 check() {
   cd "${_pkgname}"
   export RUSTUP_TOOLCHAIN=stable
-  cargo test --frozen --all-features
+  cargo test --frozen
 }
 
 package() {
@@ -45,6 +45,10 @@ package() {
 
   # man page
   install -Dm644 share/notmuch-mailmover.1.gz "$pkgdir/usr/share/man/man1/notmuch-mailmover.1.gz"
+
+  # examples
+  mkdir -p "$pkgdir/usr/share/doc/notmuch-mailmover"
+  cp -d -R example "$pkgdir/usr/share/doc/notmuch-mailmover/"
 
   # shell completions
   install -Dm644 share/notmuch-mailmover.bash "$pkgdir/usr/share/bash-completion/completions/notmuch-mailmover"
