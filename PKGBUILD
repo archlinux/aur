@@ -1,6 +1,4 @@
-# Maintainer: George Rawlinson <grawlinson@archlinux.org>
-
-pkgname=home-assistant-hacs
+pkgname=python-home-assistant-hacs
 pkgver=1.34.0
 pkgrel=1
 pkgdesc='Manage and discover custom elements for Home Assistant directly from the UI'
@@ -8,6 +6,8 @@ arch=('any')
 url='https://hacs.xyz'
 license=('MIT')
 depends=('home-assistant')
+replaces=('home-assistant-hacs')
+conflicts=('home-assistant-hacs')
 noextract=("$pkgname-$pkgver.zip")
 source=("$pkgname-$pkgver.zip::https://github.com/hacs/integration/releases/download/$pkgver/hacs.zip")
 sha512sums=('3852cb15dccd7b0a3438ba0d8a9e4ec9acd3f2d354b4a4238c1f3b7c136e1429d93e0612ed459d41ba5b22cc55e1620cd11a640ec0d8e4e6ba413f0cb1f044c0')
