@@ -3,10 +3,10 @@
 
 _pkgname="protoc-gen-go"
 pkgname="${_pkgname}-git"
-pkgver=1.34.2.r5.gb46f280
+pkgver=1.35.1.r1.gd340238
 pkgrel=1
 pkgdesc="Go support for Google's protocol buffers"
-arch=('any')
+arch=('x86_64' 'aarch64' 'i686')
 url="https://github.com/protocolbuffers/protobuf-go"
 license=('BSD-3-Clause')
 depends=('glibc')
