@@ -1,5 +1,5 @@
 pkgname=mingw-w64-python313-bin
-pkgver=3.13.0rc2
+pkgver=3.13.0
 _pybasever=313
 pkgrel=1
 pkgdesc="The Python programming language (native MSVC version) (mingw-w64)"
@@ -10,15 +10,15 @@ depends=('mingw-w64-openssl')
 optdepends=('mingw-w64-wine: runtime support')
 makedepends=('mingw-w64-tools' 'mingw-w64-binutils')
 options=('staticlibs' '!buildflags' '!strip')
-source=("https://www.python.org/ftp/python/${pkgver/rc2/}/python-${pkgver}-embed-win32.zip"
-        "https://www.python.org/ftp/python/${pkgver/rc2/}/python-${pkgver}-embed-amd64.zip"
-        "https://www.python.org/ftp/python/${pkgver/rc2/}/Python-${pkgver}.tgz"
+source=("https://www.python.org/ftp/python/${pkgver}/python-${pkgver}-embed-win32.zip"
+        "https://www.python.org/ftp/python/${pkgver}/python-${pkgver}-embed-amd64.zip"
+        "https://www.python.org/ftp/python/${pkgver}/Python-${pkgver}.tgz"
         wine-python.sh)
 noextract=("python-${pkgver}-embed-win32.zip"
            "python-${pkgver}-embed-amd64.zip")
-sha256sums=('73072a27f1c8495c99f90c4c0a5be994d0cb017260aaa7d6ff605febfe372f33'
-            'ba0e3c41cb4ceef816d61980810d1f1f18493af9d79eedc46550afa48d272e9f'
-            'd08965c543f21d9949b2715b50d7e4619a5c13984a2ba6d2efcabf413d41479a'
+sha256sums=('bc57b9c6b570ff667fbd7165a4068f3f7757935808c8fa1bd94b64bacdb9d90d'
+            '01c32d0737432240adcf0bbc1d32327f0976d3a1e1427774bc8febc8f1c03111'
+            '12445c7b3db3126c41190bfdc1c8239c39c719404e844babbd015a1bc3fafcd4'
             'a76a4715e87d3ed4aca6babc8715de8de94513dae4c683c1681551c43698b5ae')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
