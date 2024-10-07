@@ -11,7 +11,7 @@ url="https://github.com/${pkgauthor}/${pkgname}"
 _trgdir="$pkgname-$pkgver"
 license=('0BSD')
 depends=('bash' 'xorg-server-xephyr' 'xorg-xrandr' 'xeventbind-git')
-makedepends=('gawk')
+makedepends=('gawk' 'shellcheck')
 conflicts=("${pkgname}")
 provides=("${pkgname}")
 source=("${_trgdir}::$url/archive/${pkgver}/${pkgname}-${pkgver}.tar.gz")
@@ -21,6 +21,12 @@ build() {
   cd "${_trgdir}"
 
   make all readme
+}
+
+check() {
+  cd "${_trgdir}"
+
+  make check
 }
 
 package() {

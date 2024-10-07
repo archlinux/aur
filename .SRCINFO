@@ -6,6 +6,7 @@ pkgbase = xwmplay
 	arch = any
 	license = 0BSD
 	makedepends = gawk
+	makedepends = shellcheck
 	depends = bash
 	depends = xorg-server-xephyr
 	depends = xorg-xrandr
