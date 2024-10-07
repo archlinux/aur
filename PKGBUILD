@@ -2,7 +2,7 @@
 # Contributor: Leonidas Spyropoulos <artafinde@archlinux.org>
 
 pkgname=mingw-w64-trompeloeil
-pkgver=48
+pkgver=49
 pkgrel=1
 pkgdesc="Thread-safe header-only mocking framework for C++11/14"
 arch=('x86_64')
@@ -11,8 +11,8 @@ license=('Boost')
 makedepends=(cmake ninja)
 checkdepends=(catch2)
 source=("trompeloeil-$pkgver.tar.gz::https://github.com/rollbear/trompeloeil/archive/v${pkgver}.tar.gz")
-sha256sums=('eebd18456975251ea3450b815e241cccfefba5b883e4a36bd309f9cf629bdec6')
-b2sums=('8f1a1214953f0acac49da8a211320fa76bc7176ff8163fae6f63b1e86bce213aab0e5ad7f62ae3e2d5bb2611a69a6d9fec0467d4c596021a47a280c43d1df714')
+sha256sums=('2523571fb7920b2813cbc23b46e60294aba8ead7eba434bfec69c24408615593')
+b2sums=('b6e5807f43becc27ea6cee6614485cf537c81eb12dee92e47800470673f7b912a20d30318e6c1bb3abc5a7f3013db89b60bea36962f8694305d5e807b46d8ad0')
 # Build fails with `buildflags` because ld.exe doesn't recognize `-z`
 options=(!buildflags !strip)
 
