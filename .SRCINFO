@@ -1,0 +1,14 @@
+pkgbase = libreoffice-extension-expandanimations
+	pkgdesc = An Open Source style and grammar checker (more than 30 languages)
+	pkgver = 0.13
+	pkgrel = 1
+	url = https://languagetool.org
+	arch = any
+	groups = libreoffice-extensions
+	license = LGPL-3.0-or-later
+	depends = libreoffice
+	depends = java-runtime>=8
+	source = https://github.com/monperrus/ExpandAnimations/releases/download/0.13/ExpandAnimations-0.13.oxt
+	sha512sums = 702e001c7f71c13addaebe19faa610afe526f5723eb7795dfc9173ca4d6650dfafdd3c0f8e3adeb88dfdb1ca02a6fc7f22294525a0fed59190b200ccaeafd189
+
+pkgname = libreoffice-extension-expandanimations
