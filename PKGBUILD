@@ -2,7 +2,7 @@
 
 _pkgname=python-bigquery-storage
 pkgname=python-google-cloud-bigquery-storage
-pkgver=2.25.0
+pkgver=2.26.0
 pkgrel=1
 pkgdesc='BigQuery Storage API client library'
 arch=(any)
@@ -35,7 +35,7 @@ optdepends=(
 # )
 changelog=CHANGELOG.md
 source=(${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-b2sums=(1727458f63e012f1776a691492bc463ee2a22246f87a0a30fda02c764e7a1c4d3a7c521c05c4f25b448d09b1c70d03a5934bd40ea3a6b6c5d637a1a93b0c2c44)
+b2sums=(41e1b1f3adeca01837150c727a3e616c0be86bb82b4da073de4d37447f03bd7df44bccd1ed593721463279c51a28b3eb3abd5390ad82ef611d37732a669bbed4)
 
 build() {
   cd ${_pkgname}-${pkgver}
@@ -61,8 +61,8 @@ package() {
     --destdir="${pkgdir}" \
     dist/*.whl
 
-  install -Dm644 README.rst -t "${pkgdir}"/usr/share/doc/${pkgname}
-  install -Dm644 docs/_build/google-cloud-bigquery-storage.1 -t "${pkgdir}"/usr/share/man/man1
+  install -Dm644 -t "${pkgdir}"/usr/share/doc/${pkgname} README.rst
+  install -Dm644 -t "${pkgdir}"/usr/share/man/man1 docs/_build/google-cloud-bigquery-storage.1
   install -d "${pkgdir}"/usr/share/licenses/${pkgname}
   ln -s \
     ${_site}/google_cloud_bigquery_storage-${pkgver}.dist-info/LICENSE \

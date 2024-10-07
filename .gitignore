@@ -3,6 +3,7 @@
 
 ## Except
 !.gitignore
+!.nvchecker.toml
 !PKGBUILD
 !.SRCINFO
-!/CHANGELOG.md
+!CHANGELOG.md
