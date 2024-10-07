@@ -24,14 +24,21 @@
 : ${_lang:=}
 
 ## update
-_icver="115.15.0"
-_commit="53ca891e1aac86153b65a12af97eef9752503313"
-_icsum="b02d9dab31d9a12d50bc4e5393fcc6f93292c8754da460491398ef92b365a05f"
-_ffsum="effed92aa0d961871614c611259dfe3eab72e5ebfe8f2405f9bc92c5e7feae81"
+_icver="115.16.0"
+_commit="08202dd51b8c05e17238549e7922b1e02f4a0d1a"
+_icsum="25a852f9524976c678b111b3a683a53a74adb6875fd30535b8af763fcc98c8c5"
+_ffsum="d67f6611d55cdaa2e4e90a3eba332dcee2f6bf74a7842e928996db62e4aa801f"
 
 if [ -n "$_srcinfo" ]; then
   : ${_lang:=en-US}
 fi
+
+## remove partial downloads
+# server cannot resume
+(
+  cd "$SRCDEST"
+  rm -f *.part
+)
 
 ## basic info
 _pkgname="icecat"
