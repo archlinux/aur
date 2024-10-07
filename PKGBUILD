@@ -1,8 +1,8 @@
 # Maintainer: K4YT3X <aur@k4yt3x.com>
 pkgname=video2x-git
-pkgver=r849.5712796
+pkgver=r865.0c87724
 pkgrel=1
-pkgdesc="A lossless video upscaling program and library"
+pkgdesc="A lossless video super resolution framework"
 arch=('x86_64')
 url="https://github.com/k4yt3x/video2x"
 license=('AGPL3')
@@ -24,7 +24,7 @@ prepare() {
 build() {
     cd "$srcdir/${pkgname%-git}"
     cmake -B build -S . -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr
-    cmake --build build --parallel $(nproc)
+    cmake --build build --config Release --parallel $(nproc)
 }
 
 package() {
