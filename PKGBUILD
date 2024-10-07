@@ -5,10 +5,10 @@
 _realname=CPU-X
 _basename=cpu-x
 pkgname="${_basename}-opencl"
-pkgver=5.0.4
+pkgver=5.1.0
 pkgrel=1
 pkgdesc='Gathers information on CPU, motherboard, GPU and more (with OpenCL support)'
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url="https://thetumultuousunicornofdarkness.github.io/${_realname}"
 _repourl="https://github.com/TheTumultuousUnicornOfDarkness/${_realname}"
 license=('GPL3')
@@ -18,7 +18,7 @@ depends=(
   'gtk3'
   'gtkmm3'
   'hicolor-icon-theme'
-  'libcpuid>=0.6.0'
+  'libcpuid>=0.7.0'
   'libgl'
   'ncurses'
   'opencl-icd-loader'
@@ -42,7 +42,7 @@ provides=("${_basename}=${pkgver}")
 conflicts=("${_basename}")
 _tarname="${_basename}-${pkgver}"
 source=("${_tarname}.tar.gz::${_repourl}/archive/refs/tags/v${pkgver}.tar.gz")
-sha512sums=('134f8a8fe6782279f7288d891a66b3d426b0e173de3d5445367c94029aa9d33348d037f5bca25690aff16f00d261777a71de6847991e564578099b03ff398453')
+sha512sums=('7f0ce6123cdd957663aa1012194cee12a09cdd3a44b0bcdfecad36315a3b1c1e5e6461ffa0d9613c0ff275332d4aae0499f8687d1acbcd921703971508819ed6')
 
 prepare() {
   cmake -S "${_realname}-${pkgver}" -B build \
