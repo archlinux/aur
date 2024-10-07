@@ -1,0 +1,20 @@
+pkgbase = python-matrepr
+	pkgdesc = Format matrices and tensors to HTML, string, and LaTeX, with Jupyter integration
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/alugowski/matrepr
+	arch = any
+	license = BSD-2-Clause
+	checkdepends = python-pytest
+	checkdepends = python-html5lib
+	checkdepends = python-scipy
+	checkdepends = python-pytorch
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python-tabulate
+	source = matrepr-1.0.1.tar.gz::https://github.com/alugowski/matrepr/archive/v1.0.1.tar.gz
+	sha512sums = f8321c53f4859c233eefb36825d52e8e1798efbe6d349f7f15a561421fc57a2a2ea0c661587e32c4fccc1833276ec31a9b22c9b720648e01ca7e2bb357a0a889
+
+pkgname = python-matrepr

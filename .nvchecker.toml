@@ -1,0 +1,4 @@
+[python-rasterio]
+source = "github"
+github = "rasterio/rasterio"
+use_latest_release = "true"
