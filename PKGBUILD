@@ -2,7 +2,7 @@
 # Contributor: oldNo.7 <oldNo.7@archlinux.org>
 
 pkgname=catapult
-pkgver=1.0.1
+pkgver=1.1
 pkgrel=1
 pkgdesc="App launcher for Linux, similar to ulauncher(wayland support)"
 arch=('any')
