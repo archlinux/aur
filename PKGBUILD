@@ -1,8 +1,8 @@
 # Maintainer: Brody <archfan at brodix dot de>
 
-_pyname=google-cloud-bigquery
+_pyname=google_cloud_bigquery
 pkgname=python-google-cloud-bigquery
-pkgver=3.25.0
+pkgver=3.26.0
 pkgrel=1
 pkgdesc='Google BigQuery API client library'
 arch=(any)
@@ -38,7 +38,7 @@ optdepends=(
 changelog=CHANGELOG.md
 # source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
 source=(${pkgname}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_pyname::1}/${_pyname}/${_pyname}-${pkgver}.tar.gz)
-b2sums=(f1528c392a061a360c2c67e2f0bb54fbfc68b362368f137d231001d19fd362cfef1cc253f698621d872046887f618db99b7dafbf0a61dbcb28efbbdb6334f245)
+b2sums=(dfd0d064cafae9a2262ac1a2cb461fc8dc0ba5a1d19c63e25e436c4436bd6b79d08c3d0b614d6b8e665a4f63c18dec8dfc4117aeaa92228420da317e432dcbe4)
 
 build() {
   cd ${_pyname}-${pkgver}
@@ -61,9 +61,6 @@ package() {
   install -d "${pkgdir}"/usr/share/licenses/${pkgname}
   ln -sr -t "${pkgdir}"/usr/share/licenses/${pkgname} \
     "${pkgdir}"${_site}/google_cloud_bigquery-${pkgver}.dist-info/LICENSE
-#  ln -s \
-#    ${_site}/google_cloud_bigquery-${pkgver}.dist-info/LICENSE \
-#    "${pkgdir}"/usr/share/licenses/${pkgname}
 }
 
 # vim: ts=2 sw=2 et:
