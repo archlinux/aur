@@ -2,7 +2,7 @@
 
 pkgname=qtl-seq
 _name=QTL-seq
-pkgver=2.2.5
+pkgver=2.2.6
 pkgrel=1
 pkgdesc='Pipeline for bulk segregant analysis. https://doi.org/10.7717/peerj.13170'
 arch=('x86_64')
@@ -26,7 +26,7 @@ makedepends=(
             )
 options=(!emptydirs)
 source=($_name-$pkgver::"https://github.com/YuSugihara/QTL-seq/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('96f461feab354e07a3cc453f4b2ff2ba35a9d4214b4a8afba54e7bea2a0b0c76')
+sha256sums=('dd21dc8a7c75e330d3333356a113373e342e298882511e15f7da801035957e4f')
 
 build() {
   cd "$srcdir/$_name-$pkgver"
