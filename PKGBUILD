@@ -1,13 +1,13 @@
 pkgname='mostaqem'
-pkgver=1.6.4
-pkgrel=4
+pkgver=2.0.0
+pkgrel=5
 pkgdesc="An Islamic app"
 arch=("x86_64")
 url="https://github.com/Mostaqem/mostaqem_desktop"
 license=('GNU-V3')
 depends=("mpv" "zenity")
 source=("mostaqem-linux-${pkgver//_/-}-x86_64.tar.gz::https://github.com/Mostaqem/mostaqem_desktop/releases/download/v${pkgver//_/-}/mostaqem-linux-x86_64.tar.gz")
-sha256sums=('584ae7958314d9f131f462a7d56aca32ec43dbaf11c547c8c2efb1066f36b20c')
+sha256sums=('1786d2dcfecf753d0f730538170e8d3e9b302aab38dd841fce9cd9b475356308')
 
 package() {
 	cp -dr "$srcdir"/usr "$pkgdir"/usr
