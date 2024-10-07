@@ -2,7 +2,7 @@
 
 # Use the following variable to change package architecture.
 # To use OS architecture please uncomment it
-_arch="x86"
+_arch="x64"
 # possible values: "x86", "x64"
 
 case "${_arch-"${CARCH}"}" in
