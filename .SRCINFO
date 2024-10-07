@@ -1,7 +1,7 @@
 pkgbase = llvm-mingw-w64-toolchain-msvcrt-bin
 	pkgdesc = LLVM/Clang/LLD based mingw-w64 toolchain (MSVCRT) targeting i686, x86-64, armv7, and aarch64
-	pkgver = 20240619
-	pkgrel = 2
+	pkgver = 20241001
+	pkgrel = 1
 	url = https://github.com/mstorsjo/llvm-mingw
 	arch = x86_64
 	license = custom
@@ -12,7 +12,7 @@ pkgbase = llvm-mingw-w64-toolchain-msvcrt-bin
 	provides = mingw-w64-headers
 	provides = mingw-w64-winpthreads
 	options = !strip
-	source = https://github.com/mstorsjo/llvm-mingw/releases/download/20240619/llvm-mingw-20240619-msvcrt-ubuntu-20.04-x86_64.tar.xz
-	sha256sums = 8a78af8e05a707df02dae9e98e5277e92ba22b8d7f346db1ee3d603c7518ff12
+	source = https://github.com/mstorsjo/llvm-mingw/releases/download/20241001/llvm-mingw-20241001-msvcrt-ubuntu-20.04-x86_64.tar.xz
+	sha256sums = de0458fcf30d4683344ef1e7666c67c6f0204b5c018de0253ff2a124ea3803b7
 
 pkgname = llvm-mingw-w64-toolchain-msvcrt-bin
