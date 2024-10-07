@@ -8,12 +8,12 @@ pkgbase = astro-bin
 	provides = astro
 	arch = aarch64
 	source_aarch64 = https://github.com/joaofnds/astro/releases/download/0.0.36/astro_0.0.36_linux_arm64.tar.gz
-	sha256sums_aarch64 = 14075f0537b56e558f5b78054bbb9b520f3717e2836bf447503f6a1ac481eab2
+	sha256sums_aarch64 = 1c4f8428848c051be47e4d91e2642e5eab8301bf43613e137baf53c0d494d4f3
 	arch = i686
 	source_i686 = https://github.com/joaofnds/astro/releases/download/0.0.36/astro_0.0.36_linux_386.tar.gz
-	sha256sums_i686 = c28e9bfb09914dda19d951d6d859c649db6f8a3ad1681f9ead8cab0d5c25ad56
+	sha256sums_i686 = c75820a2c3c9f560f095bb57520f156b0066f842d12c953be880da2e99dcb53e
 	arch = x86_64
 	source_x86_64 = https://github.com/joaofnds/astro/releases/download/0.0.36/astro_0.0.36_linux_amd64.tar.gz
-	sha256sums_x86_64 = 82025414b4a25b9fb6fb0f74c77938a4b04483ca3f56a08dd63b8dd4bb9b16f1
+	sha256sums_x86_64 = 7bd8ced139462621c0482fb175f910ad0556fc97bb768369d3061f08be1d3077
 	
 pkgname = astro-bin
