@@ -4,7 +4,7 @@
 # Contributor: DrZaius <lou at fakeoutdoorsman.com>
 
 pkgname=ffmpeg-git
-pkgver=7.1.r116685.ga797317ab1
+pkgver=7.2.r117413.g73b3344edd
 pkgrel=1
 pkgdesc='Complete solution to record, convert and stream audio and video (git version)'
 arch=('x86_64')
@@ -21,6 +21,7 @@ depends=(
   fribidi
   glib2
   glibc
+  glslang
   gmp
   gnutls
   gsm
@@ -69,7 +70,6 @@ depends=(
   srt
   svt-av1
   v4l-utils
-  vapoursynth
   vid.stab
   vmaf
   vulkan-icd-loader
@@ -77,6 +77,7 @@ depends=(
   x265
   xvidcore
   xz
+  zeromq
   zimg
   zlib
 )
@@ -91,12 +92,14 @@ makedepends=(
   mesa
   nasm
   opencl-headers
+  vapoursynth
   vulkan-headers
 )
 optdepends=('avisynthplus: for AviSynthPlus support'
             'frei0r-plugins: for Frei0r video effects support'
             'ladspa: for LADSPA filters'
             'nvidia-utils: for NVIDIA NVDEC/NVENC support'
+            'vapoursynth: for VapourSynth demuxer support'
             'vpl-runtime: for Intel Quick Sync Video'
 )
 provides=('libavcodec.so' 'libavdevice.so' 'libavfilter.so' 'libavformat.so'
@@ -108,9 +111,9 @@ source=('git+https://git.ffmpeg.org/ffmpeg.git'
         '050-ffmpeg-fix-segfault-with-avisynthplus.patch'
         '060-ffmpeg-fix-nvidia-vulkan-decoding-segfault.patch')
 sha256sums=('SKIP'
-            'c413f87df4ec496b0e8be705be407ee9c43f09a24ea14b01ea9688d5b410f0f0'
+            '4ce15cce0b78a6b6f0124a7474ca00a31205310f7230f4603b47b597ab2e640d'
             '26419f819d1f3e4d0534995b73d05a8195bc7c892b74c37c3880085af027515b'
-            'aa054ee88401c7f7b189fee350438c9b3cabbc544a8b533d39e4a4dd267a09fb')
+            'd2b8da8f468cb24cdd47e4a779d84622b5f564f47c6e3ecf79625dcbdaf8b383')
 
 prepare() {
     patch -d ffmpeg -Np1 -i "${srcdir}/040-ffmpeg-add-av_stream_get_first_dts-for-chromium.patch"
@@ -153,6 +156,7 @@ build() {
         --enable-libdvdread \
         --enable-libfreetype \
         --enable-libfribidi \
+        --enable-libglslang \
         --enable-libgsm \
         --enable-libharfbuzz \
         --enable-libiec61883 \
@@ -190,6 +194,7 @@ build() {
         --enable-libxml2 \
         --enable-libxvid \
         --enable-libzimg \
+        --enable-libzmq \
         --enable-nvdec \
         --enable-nvenc \
         --enable-opencl \
@@ -198,7 +203,6 @@ build() {
         --enable-vapoursynth \
         --enable-version3 \
         --enable-vulkan
-
     make
     make tools/qt-faststart
 }
