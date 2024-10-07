@@ -98,7 +98,6 @@ build() {
       -DK3D_BUILD_OPENEXR_IO_MODULE=OFF \
       -DImageMagick_Magick++_ARCH_INCLUDE_DIR=/usr/include/ImageMagick-7 \
       -D CMAKE_CXX_FLAGS="-DMAGICKCORE_HDRI_ENABLE=1 -DMAGICKCORE_QUANTUM_DEPTH=16" \
-      -DCMAKE_CXX_STANDARD=14 \
       -DK3D_BUILD_OSMESA_MODULE=OFF \
       -Wno-dev
 
