@@ -1,23 +1,25 @@
 # Maintainer: Nils Czernia <nils [at] czserver.de>
 
 pkgname=python-snap7
-pkgver=1.3
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="ctypes based python wrapper for snap7"
 url="https://github.com/gijzelaerr/python-snap7"
-license=("LGPL3")
+license=("MIT")
 arch=("any")
 depends=("snap7" "python")
-makedepends=("python-setuptools")
+makedepends=('python-build' 'python-installer' 'python-wheel')
 source=("https://github.com/gijzelaerr/${pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=('0636464c0613203cacb1f96a2eec6aed23758a375c24fa124bcaf242a45cbd6b')
+sha256sums=('0deff2c68cbec9b667940c919940ede24ab57fda3421f17c95e8f0a905512ab2')
 
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
-	python ./setup.py build
+	python -m build --wheel --no-isolation
 }
 
 package() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
-	python ./setup.py install --prefix=/usr --root="${pkgdir}"
+	python -m installer --destdir="$pkgdir" dist/*.whl
+
+	install -vDm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
