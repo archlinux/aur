@@ -1,0 +1,16 @@
+pkgbase = nextcloud-app-gpoddersync
+	pkgdesc = gpodder.net api for Nextcloud
+	pkgver = 3.10.0
+	pkgrel = 1
+	url = https://github.com/thrillfall/nextcloud-gpodder
+	arch = any
+	groups = nextcloud-apps
+	license = AGPL-3.0-or-later
+	makedepends = nextcloud
+	makedepends = yq
+	options = !strip
+	source = nextcloud-app-gpoddersync-3.10.0.tar.gz::https://github.com/thrillfall/nextcloud-gpodder/releases/download/3.10.0/gpoddersync.tar.gz
+	sha256sums = 38c1ffa670d2fe27035546f9ea6cf1a3002104269563ad1b306266c2c8c47349
+	b2sums = f1c137261bca31cc88549164584cdbef308943a2eca797a6911df65d0a7928bc7c8317bff5f3eead1654ddaafd258da215ac5617056ae65b727221683e2fae7c
+
+pkgname = nextcloud-app-gpoddersync
