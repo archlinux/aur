@@ -1,0 +1,5 @@
+[celestia]
+source = "github"
+github = "CelestiaProject/Celestia"
+use_latest_release = "true"
+prefix = "Celestia-"
