@@ -2,10 +2,10 @@
 
 pkgname=scu
 pkgver=1.4.0
-pkgrel=2
+pkgrel=3
 pkgdesc="System fetch utility is aimed at informativeness"
 arch=(i686 x86_64)
-url="https://gitlab.com/omnitix/$pkgname"
+url="https://gitlab.com/omnid/$pkgname"
 license=(GPL-3.0-or-later)
 depends=(
   gcc-libs
