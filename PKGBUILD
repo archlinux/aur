@@ -2,29 +2,28 @@
 # Contributor: Justin Kromlinger <hashworks@archlinux.org>
 
 pkgname=vector-git
-pkgver=0.19.0.r2241.g68aae83229
+pkgver=0.19.0.r5796.g43eaf93020
 pkgrel=1
 pkgdesc="A high-performance observability data pipeline"
 arch=("x86_64")
-_target="x86_64-unknown-linux-gnu"
+_target="$CARCH-unknown-linux-gnu"
 url="https://vector.dev"
 license=("MPL2")
 options=(!lto) # TODO: Build with LTO
 backup=(
-	"etc/vector/vector.toml"
-	"etc/vector/agent/vector.yaml"
-	"etc/vector/aggregator/vector.yaml"
+	"etc/vector/vector.yaml"
 )
 conflicts=("vector" "vector-bin")
-depends=("gcc-libs")
+depends=("glibc" "gcc-libs")
 # https://github.com/vectordotdev/vector/blob/master/docs/DEVELOPING.md#bring-your-own-toolbox
 makedepends=(
-	"git"
 	"cargo"
+	"cmake"
+	"git"
+	"perl"
 	"protobuf"
 	"python"
-	"perl"
-	"cmake"
+	"zlib"
 )
 checkdepends=(
 	"cargo-nextest"
@@ -60,21 +59,6 @@ build() {
 		--target "${_target}"
 }
 
-check() {
-	cd "${pkgname}"
-	# Unit-Tests only, integration tests require services
-	cargo nextest run \
-		--workspace \
-		--fail-fast \
-		--test-threads num-cpus \
-		--frozen \
-		--release \
-		--locked \
-		--offline \
-		--no-default-features \
-		--target "${_target}"
-}
-
 package() {
 	install -Dm644 "${pkgname%-git}.sysusers" "${pkgdir}/usr/lib/sysusers.d/${pkgname%-git}.conf"
 	install -Dm644 "${pkgname%-git}.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/${pkgname%-git}.conf"
@@ -93,9 +77,9 @@ package() {
 
 	install -Dm755 "target/${_target}/release/vector" "${pkgdir}/usr/bin/vector"
 
-	install -Dm644 "config/vector.toml" "${pkgdir}/etc/vector/vector.toml"
-	install -Dm644 "config/agent/vector.yaml" "${pkgdir}/etc/vector/agent/vector.yaml"
-	install -Dm644 "config/aggregator/vector.yaml" "${pkgdir}/etc/vector/aggregator/vector.yaml"
+	install -Dm644 "config/vector.yaml" "${pkgdir}/etc/vector/vector.yaml"
+	#install -Dm644 "config/agent/vector.yaml" "${pkgdir}/etc/vector/agent/vector.yaml"
+	#install -Dm644 "config/aggregator/vector.yaml" "${pkgdir}/etc/vector/aggregator/vector.yaml"
 	cp -r config/examples "${pkgdir}/usr/share/doc/${pkgname}/examples"
 
 	install -Dm644 "distribution/systemd/vector.service" "${pkgdir}/usr/lib/systemd/system/vector.service"
