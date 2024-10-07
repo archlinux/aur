@@ -1,4 +1,4 @@
-# Maintainer: Severin Glöckner <severin.gloeckner@stud.htwk-leipzig.de>
+# Contributor: Severin Glöckner <severin.gloeckner@stud.htwk-leipzig.de>
 # Contributor: Thomas Ascher <thomas.ascher@gmx.at>
 
 # To build with python support, set this vairable in your /etc/makepkg.conf
@@ -10,7 +10,7 @@ fi
 
 pkgname=k3d-git
 pkgver=0.8.0.6+17
-pkgrel=2
+pkgrel=3
 pkgdesc="3D modelling and animation software"
 arch=('i486' 'i686' 'pentium4' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="http://www.k-3d.org"
@@ -63,6 +63,8 @@ prepare() {
 
   # https://github.com/K-3D/k3d/issues/43
   rm -r k3dsdk/gil/boost/gil/extension/numeric
+  # set c++ standard to 14
+  sed -i -e "s/11)/14)/" CMakeLists.txt
 }
 
 build() {
@@ -95,6 +97,9 @@ build() {
       -DK3D_BUILD_PYUI_MODULE=$_k3d_python \
       -DK3D_BUILD_OPENEXR_IO_MODULE=OFF \
       -DImageMagick_Magick++_ARCH_INCLUDE_DIR=/usr/include/ImageMagick-7 \
+      -D CMAKE_CXX_FLAGS="-DMAGICKCORE_HDRI_ENABLE=1 -DMAGICKCORE_QUANTUM_DEPTH=16" \
+      -DCMAKE_CXX_STANDARD=14 \
+      -DK3D_BUILD_OSMESA_MODULE=OFF \
       -Wno-dev
 
   make

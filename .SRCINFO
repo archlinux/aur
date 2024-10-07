@@ -1,7 +1,7 @@
 pkgbase = k3d-git
 	pkgdesc = 3D modelling and animation software
 	pkgver = 0.8.0.6+17
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.k-3d.org
 	arch = i486
 	arch = i686
