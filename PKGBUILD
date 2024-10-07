@@ -1,19 +1,30 @@
-# Maintainer: Michael Hauser-Raspe
+# Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org>
+# Contributor: Michael Hauser-Raspe
+
 pkgname=astro-cli
-pkgver=v1.14.1
+pkgver=1.29.0
 pkgrel=1
-pkgdesc="The Astronomer CLI can be used to build Airflow DAGs locally and run them via docker-compose, as well as to deploy those DAGs to Astronomer-managed Airflow clusters and interact with the Astronomer API in general."
-arch=('x86_64')
+pkgdesc="CLI that makes it easy to create, test and deploy Airflow DAGs to Astronomer "
+arch=(x86_64)
 url="https://github.com/astronomer/astro-cli"
-license=('Apache')
-makedepends=('tar')
-provides=('astro')
-source=("https://github.com/astronomer/$pkgname/releases/download/$pkgver/astro_${pkgver/v/}_linux_amd64.tar.gz")
-sha256sums=('bef39af38a3caba584575e8d9e8185972c8b509354c0469a02ff6b581ce7cfec')
+license=(Apache-2.0)
+depends=(glibc)
+makedepends=(go)
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/astronomer/astro-cli/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('b9392eadc21d888b753e7c97c6f44da61ad0fcc90e9b2395e3fe39ee10cdcff5')
+
+build() {
+  cd "${pkgname}-${pkgver}"
+  go build \
+    -trimpath \
+    -buildmode=pie \
+    -mod=readonly \
+    -modcacherw \
+    -ldflags "-linkmode external -extldflags \"${LDFLAGS}\"" \
+    .
+}
 
 package() {
-  cd "$srcdir"
-  tar xvfz astro_${pkgver/v/}_linux_amd64.tar.gz
-  mkdir -p $pkgdir/usr/local/bin/
-  mv astro $pkgdir/usr/local/bin/
+  cd "${pkgname}-${pkgver}"
+  install -D astro-cli -t "${pkgdir}/usr/bin/"
 }
