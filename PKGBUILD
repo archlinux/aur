@@ -1,18 +1,25 @@
-# Maintainer: Sander Van Balen <aur at sandervanbalen dot be>
+# Maintainer: Merlijn Verstraete <toxicmushroom + aur A_ melijn · com>
+# Contributor: Sander Van Balen <aur at sandervanbalen dot be>
 # Contributor: imec-DistriNet research group, Department of Computer Science, KU Leuven - University of Leuven, Belgium
 
 pkgname=verifast-bin
 _pkgname=verifast
-pkgver=19.12
-pkgrel=2
-pkgdesc="research prototype of a tool for formal verification of C and Java programs"
+pkgver=24.08.30
+pkgrel=1
+pkgdesc="Research prototype tool for modular formal verification of C and Java programs"
 arch=("any")
 url="https://github.com/verifast/verifast"
 license=('MIT')
 depends=()
 conflicts=()
 source=("http://github.com/${_pkgname}/${_pkgname}/releases/download/${pkgver}/${_pkgname}-${pkgver}-linux.tar.gz" "https://raw.githubusercontent.com/verifast/verifast/master/LICENSE.md")
-md5sums=("235d075fa0790ad2e8401f71d9307d73" "a53d80725c9b46c7dc7dc507b6dee172")
+sha256sums=("8484b97becd597148eaabd7f643cb43da9e0c968c1f6e2c2bcdf10afaf3c9ac8" "309c4afede6331d0b813e5f0e850d6b638370a70dd31fa2fbf5e40bc5421b49f")
+
+prepare() {
+    # idk what the proper way to do this is, this feels wrong
+    cp ../$_pkgname.desktop $_pkgname.desktop
+    cp ../icon.png icon.png
+}
 
 package() {
 	install -d "${pkgdir}/usr/bin"
@@ -25,7 +32,11 @@ package() {
 	destdir="${pkgdir}${_destdir}"
 	cp -r "${srcdir}/${_pkgname}-${pkgver}" "${destdir}"
 
-	ln -s "${_destdir}/bin/verifast" "${pkgdir}/usr/bin/verifast"
+    install -d "$pkgdir"/usr/share/applications
+    install -m644 "${srcdir}/icon.png" "${destdir}/icon.png"
+    install -m644 "${srcdir}/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
+	
+    ln -s "${_destdir}/bin/verifast" "${pkgdir}/usr/bin/verifast"
 	ln -s "${_destdir}/bin/vfide" "${pkgdir}/usr/bin/vfide"
 	ln -s "${_destdir}/bin/vfide" "${pkgdir}/usr/bin/verifast-ide"
 }
