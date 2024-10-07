@@ -1,13 +1,15 @@
-# Maintainer:  DJ Lucas <dj@linuxfromscratch.org>
+# Maintainer:  <noen>
+# Contributor: dreieck (https://aur.archlinux.org/account/dreieck)
+# Contributor: DJ Lucas <dj@linuxfromscratch.org> (https://aur.archlinux.org/account/DJ_L)
 
 pkgname=tftpgui
 pkgver=3.1
-pkgrel=3
+pkgrel=4
 pkgdesc="A TFTP server intended to run as a user initiated program, rather than a service daemon."
 arch=('any')
 url="https://code.google.com/p/tftpgui/"
-license=('GPL3')
-depends=('tk' 'python>=3.2' 'authbind')
+license=('GPL-3.0-or-later')
+depends=('tk' 'python>=3.2' 'authbind' 'python-pyasyncore')
 makedepends=('imagemagick')
 install=tftpgui.install
 source=("https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/${pkgname}/${pkgname}_3_1.tar"
