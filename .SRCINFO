@@ -1,22 +1,21 @@
 pkgbase = python-firefly
 	pkgdesc = A browser-based particle visualization platform
-	pkgver = 3.2.3
+	pkgver = 3.3.2
 	pkgrel = 1
-	url = http://www.firefly-viz.com
+	url = https://firefly.rcs.northwestern.edu
 	arch = any
-	license = BSD
+	license = AGPL-3.0-or-later
 	checkdepends = python-pytest
 	checkdepends = python-h5py
 	checkdepends = python-pandas
 	checkdepends = python-requests
-	checkdepends = python-matplotlib
 	checkdepends = python-abg
 	makedepends = python-setuptools-scm
 	makedepends = python-wheel
 	makedepends = python-build
 	makedepends = python-installer
-	source = https://files.pythonhosted.org/packages/source/f/firefly/firefly-3.2.3.tar.gz
-	md5sums = de3dd25218bf2dea4c2d84bc202c7038
+	source = https://files.pythonhosted.org/packages/source/f/firefly/firefly-3.3.2.tar.gz
+	md5sums = ad4d7cf7954769489fdc15453cc760c4
 
 pkgname = python-firefly
 	depends = python>=3.6
@@ -26,4 +25,4 @@ pkgname = python-firefly
 	depends = python-h5py
 	depends = python-pandas
 	depends = python-requests
-	depends = python-abg
+	depends = python-abg>=1.1.1
