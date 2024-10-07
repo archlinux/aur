@@ -1,13 +1,13 @@
 # Maintainer: peippo <christoph+aur@christophfink.com>
 
 _cranname=jose
-_cranver=1.2.0
+_cranver=1.2.1
 pkgname=r-${_cranname,,}
 pkgdesc="JavaScript Object Signing and Encryption"
 url="https://cran.r-project.org/package=${_cranname}"
 license=("MIT")
 pkgver=${_cranver//[:-]/.}
-pkgrel=3
+pkgrel=1
 
 arch=("any")
 depends=(
@@ -41,7 +41,7 @@ optdepends=(
 # )
 
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-b2sums=("105c77d909cb56075721008566372306e934a8bb788e83d34cf3966534d54ae9632d4a8c286151313fe46925c13e8d454c586d6d0a58c2580e2e912c3c2ed886")
+b2sums=("9bb1ff4b18deb77dace6a79f0b0c5e1ba73817d1b4f5b39a5f01b928a2f67e91ca8f5202a04c80ef9451186398155085db954d7d2fb17d0978ffa1da5f5dd77c")
 
 build() {
     mkdir -p "${srcdir}/build/"
