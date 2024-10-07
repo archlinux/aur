@@ -3,8 +3,8 @@
 # Contributor: Andrew Rabert <draje@nullsum.net>
 
 pkgname=perl-linux-fd
-_perl_version=5.38
-pkgver=0.014
+_perl_version=5.40
+pkgver=0.016
 pkgrel=5
 pkgdesc="Provides you Linux specific special file handles"
 arch=('any')
@@ -13,7 +13,7 @@ license=('PerlArtistic' 'GPL')
 depends=('perl' 'perl-params-util' 'perl-module-build' 'perl-sub-exporter' 'perl-test-exception')
 options=('!emptydirs')
 source=("http://search.cpan.org/CPAN/authors/id/L/LE/LEONT/Linux-FD-$pkgver.tar.gz")
-sha256sums=('6bb579d47644cb0ed35626ff77e909ae69063073c6ac09aa0614fef00fa37356')
+sha256sums=('25204ff2ee679e22641d2dd6e9a30ab1d9ab1ffe972e8e05a2f823f1ccdbecec')
 
 build() {
   cd Linux-FD-$pkgver
@@ -31,4 +31,3 @@ package() {
   mkdir -p "$pkgdir/usr/lib/perl5/$_perl_version/vendor_perl"
   cp -r ./lib/perl5/*/* "$pkgdir/usr/lib/perl5/$_perl_version/vendor_perl"
 }
-sha256sums=('7831dc264c46d9b87f76436174d76614145243633083e090aab4d9a352f043ad')
