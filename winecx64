@@ -1,0 +1,8 @@
+#!/bin/bash
+
+#export WINEPREFIX="${HOME}/.winecx"  
+#export WINEARCH="win64" 
+export WINE="/opt/winecx/bin/wine64" 
+
+exec /opt/winecx/bin/wine64 "$@"
+
