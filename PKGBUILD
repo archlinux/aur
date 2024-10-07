@@ -6,7 +6,7 @@
 _basename=deskflow
 pkgname=${_basename}-bin
 pkgver=1.17.0.r1
-pkgrel=1
+pkgrel=2
 pkgdesc="Deskflow lets you share one mouse and keyboard between multiple computers (binary version)"
 arch=('x86_64')
 url="https://deskflow.org/"
@@ -20,7 +20,7 @@ depends=(
 	'libxinerama'
 	'libxrandr'
 	'libei'
-	'libportal'
+	'libportal=0.6'
 	'qt6-base'
 	'gdk-pixbuf2'
 	'pugixml'

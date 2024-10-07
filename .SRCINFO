@@ -1,7 +1,7 @@
 pkgbase = deskflow-bin
 	pkgdesc = Deskflow lets you share one mouse and keyboard between multiple computers (binary version)
 	pkgver = 1.17.0.r1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://deskflow.org/
 	arch = x86_64
 	license = GPL-2.0
@@ -13,7 +13,7 @@ pkgbase = deskflow-bin
 	depends = libxinerama
 	depends = libxrandr
 	depends = libei
-	depends = libportal
+	depends = libportal=0.6
 	depends = qt6-base
 	depends = gdk-pixbuf2
 	depends = pugixml
