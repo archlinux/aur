@@ -139,7 +139,7 @@ source=(git+https://github.com/sagemath/sage#branch=develop
         pari-2.17.patch)
 sha256sums=('SKIP'
             'f1dd7fea298f38be0f03f46ed4bc9281267f03ec3eee2582edb385ca4cb5db09'
-            'a0de4523ba630a49350329207082ebc68155489817d758c31f0f960a748725b8')
+            '4d27866ef6b86c7f161144763fd96914667e678fad219292354abb9b1d6bed9a')
 _pkgs=(standard
        bliss
        coxeter3
