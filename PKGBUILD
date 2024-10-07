@@ -4,7 +4,7 @@
 
 _name=imbalanced-learn
 pkgname=python-${_name,,}
-pkgver=0.12.3
+pkgver=0.12.4
 pkgrel=1
 pkgdesc='Toolbox for imbalanced dataset in machine learning'
 arch=('any')
@@ -20,7 +20,7 @@ optdepends=('python-keras: for dealing with Keras models'
 makedepends=('python-installer' 'python-wheel')
 _whl="${_name//-/_}-$pkgver-py3-none-any.whl"
 source=("https://files.pythonhosted.org/packages/py3/${_name::1}/$_name/${_name//-/_}-$pkgver-py3-none-any.whl")
-sha256sums=(0e83e8226cb27dd567dff6aef0136bde0f54922ea1bd9d5f38f62701dc51a152)
+sha256sums=(d47fc599160d3ea882e712a3a6b02bdd353c1a6436d8d68d41b1922e6ee4a703)
 
 noextract=("$_whl")
 package() {
