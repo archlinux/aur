@@ -1,12 +1,12 @@
 pkgbase = cpp-taskflow
 	pkgdesc = Modern C++ Parallel Task Programming Library
-	pkgver = 3.7.0
+	pkgver = 3.8.0
 	pkgrel = 1
 	url = https://github.com/taskflow/taskflow
 	arch = any
 	license = MIT
 	makedepends = cmake
-	source = cpp-taskflow-3.7.0.tar.gz::https://github.com/taskflow/taskflow/archive/v3.7.0.tar.gz
-	sha256sums = 788b88093fb3788329ebbf7c7ee05d1f8960d974985a301798df01e77e04233b
+	source = cpp-taskflow-3.8.0.tar.gz::https://github.com/taskflow/taskflow/archive/v3.8.0.tar.gz
+	sha256sums = 51316ee5fbf0c8f8f4638eb7428430cadfe6e8910756593884710e99129fa0ab
 
 pkgname = cpp-taskflow
