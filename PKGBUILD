@@ -11,7 +11,7 @@ url="https://tonelib.net/tonelib-metal"
 depends=('alsa-lib' 'desktop-file-utils' 'freetype2' 'hicolor-icon-theme' 'mesa')
 optdepends=('jack: JACK output')
 source=("${pkgname}-${pkgver}.deb::https://www.tonelib.net/download/ToneLib-Metal-amd64.deb")
-sha256sums=('1bcd04280b17a26764f06b27372be337cb21cf760c2a1a9d596632541ef14ec5')
+sha256sums=('9112c098e4005e6c907e30651eaf529e262503ce3a10320c12f60601ed94ba73')
 
 
 package () {
