@@ -3,13 +3,13 @@
 # Contributor: taij33n <bwbuiz@gmail.com>
 pkgname=picolisp
 pkgver=24.9.28
-pkgrel=2
+pkgrel=3
 pkgdesc="Fast and tiny 64-bit Lisp interpreter: OO, dynamic and functional (database, prolog, coroutines)."
 url="https://picolisp.com"
 arch=(x86_64)
 license=(MIT)
 depends=(glibc bash openssl libffi readline ncurses)
-makedepends=(git clang llvm)
+makedepends=(git clang llvm make)
 source=("pil21::git+https://github.com/picolisp/pil21.git#commit=9486820694a48d4d79099c4f758fb4565c57087e")
 sha256sums=('dfbd150a5389dff82ba4bb70707d163e58997d4561c8a10ace7ac0dda1fbc48a')
 prepare() {
@@ -20,7 +20,12 @@ prepare() {
 }
 
 build() {
-  cd "$srcdir/pil21/src" && touch base.ll && make
+  cd "$srcdir/pil21/src"
+  # Working around awkward cyclic dependencies in Makefile
+  touch *.ll
+  sed -i 's/^.SILENT:$//g' Makefile
+  make ../bin/picolisp
+  make -B
 }
 
 package() {
