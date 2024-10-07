@@ -1,8 +1,8 @@
 pkgbase = amarok
 	pkgdesc = The powerful music player for KDE
-	pkgver = 3.1.0
+	pkgver = 3.1.1
 	pkgrel = 1
-	url = https://apps.kde.org/de/amarok/
+	url = https://apps.kde.org/amarok/
 	arch = x86_64
 	license = FDL
 	license = GPL2
@@ -61,7 +61,7 @@ pkgbase = amarok
 	depends = solid5
 	optdepends = qt5-webengine: wikipedia
 	optdepends = loudmouth: backend needed by mp3tunes for syncing
-	source = https://invent.kde.org/multimedia/amarok/-/archive/v3.1.0/amarok-v3.1.0.tar.gz
-	sha256sums = 68738e2b34aef89f6a1620d8bed502596c81522428e4b0a58c37e19218084978
+	source = https://invent.kde.org/multimedia/amarok/-/archive/v3.1.1/amarok-v3.1.1.tar.gz
+	sha256sums = 1bd96711a9b0848509e95ec99dc5caff830755d086a0b7d2b9b6016f193390c2
 
 pkgname = amarok
