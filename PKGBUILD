@@ -1,11 +1,11 @@
 # Maintainer: Nebulosa  <nebulosa2007-at-yandex-dot-ru>
 
 pkgname=scu-git
-pkgver=1.4.0.r38.g3c3bf7e
+pkgver=1.4.0.r64.gf41ac1b
 pkgrel=1
 pkgdesc="System fetch utility is aimed at informativeness"
 arch=(i686 x86_64)
-url="https://gitlab.com/omnitix/${pkgname%-git}"
+url="https://gitlab.com/omnid/${pkgname%-git}"
 license=(GPL-3.0-or-later)
 depends=(
   glibc
