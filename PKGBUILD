@@ -1,17 +1,19 @@
 # Maintainer: Luis Gustavo S. Barreto <gustavosbarreto@gmail.com>
 # Maintainer: Leandro Cunha <leandrocunha016@gmail.com>
+
 pkgname=docker-desktop
 pkgver=4.34.2
 _revision=167172
-pkgrel=2
+pkgrel=3
 pkgdesc="Docker Desktop is an easy-to-install application that enables you to locally build and share containerized applications and microservices."
 arch=('x86_64')
 url="https://www.docker.com/products/docker-desktop/"
 license=('custom: Docker Agreement')
 depends=('docker>=24.0.6' 'curl' 'qemu>=8.0.4' 'libseccomp' 'libcap-ng' 'pass' 'desktop-file-utils' 'gtk3' 'libx11' 'shadow')
+conflicts=('docker-compose' 'docker-buildx')
 makedepends=('w3m')
 install='docker-desktop.install'
-source=("https://desktop.docker.com/linux/main/amd64/$_revision/$pkgname-x86_64.pkg.tar.zst")
+source=("$pkgname-$pkgver-x86_64.tar.zst::https://desktop.docker.com/linux/main/amd64/$_revision/$pkgname-x86_64.pkg.tar.zst")
 sha256sums=('a5fd4cb4742e82bc1faeec553a5b289cfc2607699159548e5f29d8589dc253c6')
 
 package() {
