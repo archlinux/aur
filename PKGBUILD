@@ -2,16 +2,16 @@
 
 pkgname=python-secure
 _pypiname=secure
-pkgver=0.3.0
-pkgrel=3
+pkgver=1.0.0
+pkgrel=1
 pkgdesc="secure.py is a lightweight package that adds optional security headers for Python web frameworks."
 url="https://github.com/TypeError/secure.py/releases"
 arch=('any')
 license=('MIT')
 depends=('python')
 makedepends=('python-build' 'python-installer' 'python-wheel')
-source=(${_pypiname}-${pkgver}.tar.gz::"https://github.com/TypeError/secure/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('a9b5a61a78cd53c4b5c186579964025ff9d51ebb66bd66492f027240088e8984')
+source=(${_pypiname}-${pkgver}.tar.gz::"https://github.com/TypeError/secure/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('a1a211f73d3ea4212396b77654ee772e69153ad97c51e7e73c09b28898bc9252')
 
 build() {
     cd "${_pypiname}-${pkgver}"
