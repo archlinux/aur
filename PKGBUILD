@@ -10,10 +10,11 @@
 # https://raw.githubusercontent.com/archlinux/svntogit-community/packages/telegram-desktop/trunk/PKGBUILD
 # Thanks to the Arch maintainers :)
 
-# You can pass parameters to `ninja` via MAKEFLAGS
+# You can pass parameters to nake / ninja via MAKEFLAGS.
+# You can use TMPDIR in $srcdir by exporting TMPDIR_FIX with some value.
 
 pkgname=telegram-desktop-dev
-pkgver=5.5.3
+pkgver=5.5.8
 pkgrel=1
 pkgdesc='Official Telegram Desktop client - development release'
 arch=(x86_64)
@@ -50,7 +51,7 @@ source=(
     # New approach: source tarball, same as the stable Arch package
     "https://github.com/telegramdesktop/tdesktop/releases/download/v${pkgver}/tdesktop-${pkgver}-full.tar.gz"
 )
-sha512sums=('27eee61e4e81d0cdeeb7c13111a6a98f0deb83204a13e475d1d0c548bd0ac9fc607a95b5e2b0c16a00fca746d3c0ea039120dcc4104b3bcc8970b7ee13300c74')
+sha512sums=('0e65d7a0dbc4ed5f1b69be576a30aa1cc3e0210fc6cc4c5f6658f287bbe06d3081e13469baa4ff13f392dc283cdc1771313bd454643b66ef6856b5384b5a0932')
 
 prepare() {
     # Magic submodule configuration, thanks to the Python script
@@ -81,9 +82,13 @@ build() {
     CXXFLAGS+=' -ffat-lto-objects'
 
     # Ensure that we won't have issues with tmpfs.
-    # If you prefer to speed up things, comment the next 2 lines.
-    # export TMPDIR="$srcdir/build_tmp"
-    # mkdir -p $TMPDIR
+    # Available via TMPDIR_FIX
+    if [ -n "$TMPDIR_FIX" ]
+    then
+        export TMPDIR="$srcdir/build_tmp"
+        mkdir -p $TMPDIR
+        echo "Using \$TMPDIR = $TMPDIR ..."
+    fi
 
     # Turns out we're allowed to use the official API key that telegram uses for their snap builds:
     # https://github.com/telegramdesktop/tdesktop/blob/8fab9167beb2407c1153930ed03a4badd0c2b59f/snap/snapcraft.yaml#L87-L88
