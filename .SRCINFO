@@ -1,7 +1,7 @@
 pkgbase = zeromq3
 	pkgdesc = Fast messaging system built on sockets, C and C++ bindings. aka 0MQ, ZMQ.
 	pkgver = 3.2.5
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.zeromq.org
 	arch = i686
 	arch = x86_64
