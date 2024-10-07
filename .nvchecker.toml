@@ -1,0 +1,4 @@
+[ugm]
+source = "git"
+git = "https://github.com/ariasmn/ugm.git"
+prefix = "v"
