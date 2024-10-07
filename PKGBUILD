@@ -3,7 +3,7 @@
 pkgbase=python-abg
 _pyname=abg_python
 pkgname=("${pkgbase}")
-pkgver=1.1.3
+pkgver=1.1.5
 pkgrel=1
 pkgdesc="common python utilities"
 arch=('any')
@@ -18,7 +18,13 @@ checkdepends=('python-pytest'
               'python-h5py'
               'python-matplotlib')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('d41fd59f0947880b58dd751b3f302811')
+md5sums=('812ecfb31ae625c22a52773e8fdee1e0')
+
+prepare() {
+    cd ${srcdir}/${_pyname}-${pkgver}
+
+    sed -i 's/np.AxisError/np.exceptions.AxisError/g' src/abg_python/array_utils.py
+}
 
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}
@@ -29,7 +35,7 @@ build() {
 check() {
     cd ${srcdir}/${_pyname}-${pkgver}
 
-    pytest -vv --color=yes #|| warning "Tests failed"
+    pytest || warning "Tests failed" -vv -l -ra --color=yes -o console_output_style=count
 }
 
 package_python-abg() {
