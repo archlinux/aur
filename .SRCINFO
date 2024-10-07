@@ -5,15 +5,21 @@ pkgbase = zeromq3
 	url = http://www.zeromq.org
 	arch = i686
 	arch = x86_64
-	license = LGPL
+	license = LGPL-3.0-only
+	makedepends = pkg-config
 	makedepends = python2
 	depends = gcc-libs
-	depends = util-linux
+	depends = glibc
 	conflicts = zeromq
-	source = http://download.zeromq.org/zeromq-3.2.5.tar.gz
+	options = strip
+	options = debug
+	options = zipman
+	options = !staticlibs
+	source = https://github.com/zeromq/zeromq3-x/releases/download/v3.2.5/zeromq-3.2.5.tar.gz
 	source = https://raw.githubusercontent.com/zeromq/cppzmq/1f05e0d11/zmq.hpp
-	md5sums = d4189c152fbdc45b376a30bd643f67fd
-	md5sums = 6a7b5e04ff4a55c75683aa9fa7ec8e5e
+	source = 1_FIX_MISSING_TIME_H.patch
+	b2sums = 88fe3b3206f0e59acb3cf370964c9e40df2dceb5e40aef85ae8cd8fedef4c655fd2698a7f81431e34550b5156814a75c0b1a738393e7c44acbfefe96acc4c4bc
+	b2sums = d29c6fe033804d597108d41db676e62b71819753e85b687d94d2d0fa2dd45a120d8084f9cb27004ce1613913b5a8ffaa1a5c17f19a43e197e1c163a0340da04f
+	b2sums = 2ba5bd092c7de27a43b30c5d542eaf8c32171d2a4d5073869e2ca5fbffdd61fe4bf706ce7f4ed2bb8afc1228b8884cc5862212565cb86476b94186725221784c
 
 pkgname = zeromq3
-

@@ -1,0 +1,11 @@
+diff -ura zeromq-3.2.5/tests/test_connect_delay.cpp zeromq-3.2.5.mod/tests/test_connect_delay.cpp
+--- zeromq-3.2.5/tests/test_connect_delay.cpp	2024-10-07 13:57:34.693215213 -0500
++++ zeromq-3.2.5.mod/tests/test_connect_delay.cpp	2024-10-07 14:08:00.556521799 -0500
+@@ -23,6 +23,7 @@
+ #include <string.h>
+ #include <unistd.h>
+ #include <string>
++#include <time.h>
+ 
+ #undef NDEBUG
+ #include <assert.h>
