@@ -51,7 +51,7 @@ package() {
     install -dm755 "${pkgdir}/usr/bin/"
     install -m755 -t "${pkgdir}/usr/bin/" "${source_dir}/bin"/*
     # 复制软链接 覆盖
-    find "${source_dir}/bin" -type l -exec cp -P -f {} "${pkgdir}/usr/bin/" \;
+    find "${source_dir}/bin" -maxdepth 1 -type l -exec cp -P -f {} "${pkgdir}/usr/bin/" \;
 
     # conf
     install -dm755 "${pkgdir}/etc/${_basename}"
@@ -79,7 +79,8 @@ package() {
 
     # lib service
     install -dm755 "${pkgdir}/usr/lib/systemd/system"
-    install -m644 -t "${pkgdir}/usr/lib/systemd/system" "${source_dir}/systemd/system"/*.*
+    # install -m644 -t "${pkgdir}/usr/lib/systemd/system" "${source_dir}/systemd/system"/*.{service,timer,swap}
+    find "${source_dir}/systemd/system" -maxdepth 1 -type f -exec install -m644 -D {} "${pkgdir}/usr/lib/systemd/system/" \;
     install -dm755 "${pkgdir}/usr/lib/systemd/system/hhd@.service.d"
     install -m644 -t "${pkgdir}/usr/lib/systemd/system/hhd@.service.d" "${source_dir}/systemd/system/hhd@.service.d"/*
 
