@@ -1,4 +1,5 @@
-[python-rasterio]
+[python-matrepr]
 source = "github"
-github = "rasterio/rasterio"
+github = "alugowski/matrepr"
 use_latest_release = "true"
+prefix = "v"
