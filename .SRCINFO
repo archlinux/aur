@@ -1,0 +1,15 @@
+pkgbase = cls-soundboard
+	pkgdesc = cls - Command-Line Soundboard
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/North-West-Wind/cls
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = cargo
+	depends = ffmpeg
+	depends = pulse-native-provider
+	source = https://github.com/North-West-Wind/cls/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = 58ebd77eacf1ee59b7dc61317712f3704841256b4bce3daa402be96ecc068f12
+
+pkgname = cls-soundboard
