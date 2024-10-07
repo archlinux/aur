@@ -2,7 +2,7 @@
 
 pkgname=python-aardwolf
 _pkgname=aardwolf
-pkgver=0.2.8
+pkgver=0.2.9
 pkgrel=1
 pkgdesc="Asynchronous RDP/VNC client in Python (headless)"
 url="https://github.com/skelsec/aardwolf"
@@ -16,8 +16,7 @@ optdepends=('python-pyqt5')
 makedepends=( 'cython' 'python-build' 'python-installer' 'python-wheel'
 	      'python-setuptools>=62.4' 'python-setuptools-rust>=1.5.2' 'rust')
 source=("https://github.com/skelsec/aardwolf/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('98034239707819cb7faa026cbf3a8c5f2573db0bfe58d6957a47ce579b220c44')
-
+sha256sums=('e723b275dd62e9f42d437ea8175c40b3118183c56093afc56d3faf7264ab0c3c')
 
 build() {
   cd "${_pkgname}-${pkgver}"
