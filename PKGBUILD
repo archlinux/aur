@@ -1,7 +1,7 @@
 # Maintainer: Enzo Einhorn <enzo.einh@gmail.com>
 # Co-Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=gnome-extensions-cli
-pkgver=0.10.2
+pkgver=0.10.3
 pkgrel=1
 pkgdesc="Command line tool to manage your GNOME Shell extensions"
 arch=('any')
@@ -24,7 +24,7 @@ optdepends=(
   'python-dbus: communicate with GNOME Shell directly'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('d7f0f7b14e9dd52e9706aa27164b2bc786d0e5666319bc3231b49d2950b4a217')
+sha256sums=('d2cffcd6d9a7b19d557231de997b69dce45d9a8c68824741a56b0eaa6b4242fb')
 
 build() {
   cd "$pkgname-$pkgver"
