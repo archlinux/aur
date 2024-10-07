@@ -1,11 +1,11 @@
 pkgbase = insomnia-electron
 	pkgdesc = Cross-platform HTTP and GraphQL Client
 	pkgver = 10.0.0
-	pkgrel = 2
+	pkgrel = 3
 	epoch = 1
 	url = https://github.com/Kong/insomnia
 	arch = any
-	license = MIT
+	license = Apache-2.0
 	makedepends = npm
 	makedepends = nvm
 	makedepends = fontconfig
