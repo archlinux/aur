@@ -11,6 +11,7 @@ LogsDirectory=hass
 StateDirectory=hass
 WorkingDirectory=/var/lib/hass
 Environment=HOME=/var/lib/hass
+Environment=PATH=/usr/bin:/var/lib/hass/.venv/bin
 
 ExecStartPre=/usr/bin/python -m venv --upgrade /var/lib/hass/.venv
 ExecStartPre=/var/lib/hass/.venv/bin/python -m pip install wheel
