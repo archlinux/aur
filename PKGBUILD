@@ -1,7 +1,7 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 _pkgname=shadps4
 pkgname=$_pkgname-git
-pkgver=0.3.0.r92.g7e533ccf
+pkgver=0.3.0.r125.g7389cf3e
 pkgrel=1
 pkgdesc="Sony PlayStation 4 emulator"
 arch=('aarch64' 'x86_64')
@@ -15,7 +15,7 @@ depends=(
 	'glslang>=14.2'
 	'hicolor-icon-theme'
 	'pugixml>=1.14'
-	'sdl3>=1:3.0.0.r6266'
+	'sdl3>=1:3.1.3'
 	'zlib-ng>=2.1.7'
 )
 makedepends=(
@@ -80,7 +80,7 @@ build() {
 	cmake -B build -S $_pkgname \
 		-DCMAKE_BUILD_TYPE=Release \
 		-DCMAKE_C_FLAGS_RELEASE="-DNDEBUG" \
-		-DCMAKE_CXX_FLAGS_RELEASE="-DNDEBUG -DSDL_ENABLE_OLD_NAMES -DSDL_bool=bool" \
+		-DCMAKE_CXX_FLAGS_RELEASE="-DNDEBUG" \
 		-DCMAKE_DISABLE_FIND_PACKAGE_Zydis=ON \
 		-DENABLE_QT_GUI=ON \
 		-DSIRIT_USE_SYSTEM_SPIRV_HEADERS=ON \
