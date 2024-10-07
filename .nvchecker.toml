@@ -1,0 +1,5 @@
+[python-aleatory]
+source = "github"
+github = "quantgirluk/aleatory"
+use_latest_release = "true"
+prefix = "v."
