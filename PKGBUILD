@@ -3,7 +3,7 @@ pkgname=sk-chos-addon
 _basename=sk-chos-tool
 _reponame=sk-chos-config
 _pkgname=${pkgname}
-pkgver=1.17.1
+pkgver=1.17.2
 pkgrel=1
 pkgdesc="Addon for sk-chimeros"
 arch=('any')
@@ -80,6 +80,8 @@ package() {
     # lib service
     install -dm755 "${pkgdir}/usr/lib/systemd/system"
     install -m644 -t "${pkgdir}/usr/lib/systemd/system" "${source_dir}/systemd/system"/*.*
+    install -dm755 "${pkgdir}/usr/lib/systemd/system/hhd@.service.d"
+    install -m644 -t "${pkgdir}/usr/lib/systemd/system/hhd@.service.d" "${source_dir}/systemd/system/hhd@.service.d"/*
 
     # user service
     install -dm755 "${pkgdir}/usr/lib/systemd/user"
