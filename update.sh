@@ -26,29 +26,28 @@ if [[ "$SudachiDict_DATE" != "$SUDACHI_DATE" ]];then
     echo "${SudachiDict_DATE}"
     UPDATED_FLAG=1
 fi
-if [[ "$UPDATE_FLAG" == "1" ]]; then
-    git checkout makepkg
-fi
 if [[ "$COMMIT" != "$FCITX5_MOZC_COMMIT" ]]; then
     sed -i 's|^_mozc_commit=.*$|_mozc_commit='"${FCITX5_MOZC_COMMIT}"'|' PKGBUILD*
     sed -i 's|^_bcr_commit=.*$|_bcr_commit='"${BCR_COMMIT}"'|' PKGBUILD*
+    eval $(makepkg -g -p PKGBUILD)
+    ./update_sha512sums.sh PKGBUILD ${sha512sums[@]}
+    ./update_sha512sums.sh PKGBUILD.fcitx ${sha512sums[@]}
+    mksrcinfo
     git diff
     git commit -a -m "Update: _mozc_commit=$FCITX5_MOZC_COMMIT"
 fi
 if [[ "$SudachiDict_DATE" != "$SUDACHI_DATE" ]];then
     sed -i 's|^_sudachidict_date=.*$|_sudachidict_date='"${SudachiDict_DATE}"'|' PKGBUILD*
+    eval $(makepkg -g -p PKGBUILD)
+    ./update_sha512sums.sh PKGBUILD ${sha512sums[@]}
+    ./update_sha512sums.sh PKGBUILD.fcitx ${sha512sums[@]}
+    mksrcinfo
     git diff
     git commit -a -m "Update: SudachiDict=$SudachiDict_DATE"
 fi
 if [[ "$UPDATE_FLAG" == "1" ]]; then
     echo "Change Detected."
-    eval $(makepkg -g -p PKGBUILD)
-    ./update_sha512sums.sh PKGBUILD ${sha512sums[@]}
-    ./update_sha512sums.sh PKGBUILD.fcitx ${sha512sums[@]}
-    mksrcinfo
-    git commit -a -m "Update CheckSum."
     #git push
-    git checkout master
 else
     echo "No change Detected."
 fi
