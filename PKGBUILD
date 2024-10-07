@@ -10,8 +10,8 @@ url="https://github.com/thrillfall/nextcloud-gpodder"
 license=(AGPL-3.0-or-later)
 makedepends=(nextcloud yq)
 groups=(nextcloud-apps)
-options=('!strip')
-source=($pkgname-$pkgver.tar.gz::$url/releases/download/$pkgver/gpoddersync.tar.gz)
+options=(!strip)
+source=($pkgname-$pkgver.tar.gz::$url/releases/download/$pkgver/$_name.tar.gz)
 sha256sums=('38c1ffa670d2fe27035546f9ea6cf1a3002104269563ad1b306266c2c8c47349')
 b2sums=('f1c137261bca31cc88549164584cdbef308943a2eca797a6911df65d0a7928bc7c8317bff5f3eead1654ddaafd258da215ac5617056ae65b727221683e2fae7c')
 
