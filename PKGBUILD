@@ -3,7 +3,7 @@
 # Contributor: taij33n <bwbuiz@gmail.com>
 pkgname=picolisp
 pkgver=24.9.28
-pkgrel=1
+pkgrel=2
 pkgdesc="Fast and tiny 64-bit Lisp interpreter: OO, dynamic and functional (database, prolog, coroutines)."
 url="https://picolisp.com"
 arch=(x86_64)
@@ -20,7 +20,7 @@ prepare() {
 }
 
 build() {
-  cd "$srcdir/pil21/src" && make -W base.ll
+  cd "$srcdir/pil21/src" && touch base.ll && make
 }
 
 package() {
