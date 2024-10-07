@@ -1,8 +1,8 @@
 # Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
 
 pkgname=strawberry-lite
-pkgver=1.1.2
-pkgrel=2
+pkgver=1.2.0
+pkgrel=1
 pkgdesc="A music player aimed at audio enthusiasts and music collectors, fewer fautures, Gstreamer and alsa only"
 arch=(x86_64 i686 armv7h aarch64)
 url="https://www.strawberrymusicplayer.org/"
@@ -10,6 +10,7 @@ license=(GPL3)
 depends=(chromaprint protobuf gst-plugins-base gst-plugins-good qt6-base
          sqlite udisks2 dbus alsa-lib libcdio fftw libebur128 kdsingleapplication
 
+         libicuuc.so libicui18n.so libprotobuf.so
          # namcap implicit depends
          glibc gcc-libs glib2 icu hicolor-icon-theme libx11 gstreamer
          abseil-cpp taglib gst-plugins-base-libs)
@@ -45,7 +46,6 @@ build() {
 }
 
 package() {
-  depends+=(libicuuc.so libicui18n.so libprotobuf.so)
   cd strawberry/strawberry-build
   make DESTDIR="${pkgdir}" install
 }
