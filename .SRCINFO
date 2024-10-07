@@ -1,0 +1,19 @@
+pkgbase = libakrypt
+	pkgdesc = C library implementing key management and Russian national cryptographic standards. It aims to provide an open-source module for cryptographic protection systems, compliant with standard Р 1323565.1.012-2017.
+	pkgver = 0.9.15
+	pkgrel = 1
+	url = https://libakrypt.ru/
+	arch = x86_32
+	arch = x86_64
+	arch = aarmv7
+	arch = mips
+	arch = mips64
+	license = MIT
+	depends = gcc
+	depends = make
+	depends = cmake
+	depends = git
+	source = libakrypt::git+https://git.miem.hse.ru/axelkenzo/libakrypt-0.x.git#branch=master
+	sha256sums = SKIP
+
+pkgname = libakrypt
