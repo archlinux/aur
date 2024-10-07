@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 # Contributor: Igor Dyatlov <dyatlov.igor@protonmail.com>
 pkgname=pods
-pkgver=2.1.0
+pkgver=2.1.1
 pkgrel=1
 pkgdesc="A Podman desktop application"
 arch=('x86_64' 'aarch64')
@@ -22,7 +22,7 @@ checkdepends=(
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
         'disable-clippy-test.patch')
-sha256sums=('dba67080ed2a781275126f8660877dc4fad18bd8aadfb181f839c217fd446fd6'
+sha256sums=('01b93deacc646921fde0e341cf0a222450016861defb9e1cd8b1e36b600cd992'
             '558659ee8959d82236a69d22e977d0cbe8eb28a3799a7aff2c9dd69b9e1ae888')
 
 prepare() {

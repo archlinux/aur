@@ -1,6 +1,6 @@
 pkgbase = pods
 	pkgdesc = A Podman desktop application
-	pkgver = 2.1.0
+	pkgver = 2.1.1
 	pkgrel = 1
 	url = https://github.com/marhkb/pods
 	arch = x86_64
@@ -13,9 +13,9 @@ pkgbase = pods
 	depends = libadwaita
 	depends = podman
 	depends = vte4
-	source = pods-2.1.0.tar.gz::https://github.com/marhkb/pods/archive/v2.1.0.tar.gz
+	source = pods-2.1.1.tar.gz::https://github.com/marhkb/pods/archive/v2.1.1.tar.gz
 	source = disable-clippy-test.patch
-	sha256sums = dba67080ed2a781275126f8660877dc4fad18bd8aadfb181f839c217fd446fd6
+	sha256sums = 01b93deacc646921fde0e341cf0a222450016861defb9e1cd8b1e36b600cd992
 	sha256sums = 558659ee8959d82236a69d22e977d0cbe8eb28a3799a7aff2c9dd69b9e1ae888
 
 pkgname = pods
