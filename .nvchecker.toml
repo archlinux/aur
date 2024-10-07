@@ -1,0 +1,4 @@
+[mdtt]
+source = "git"
+git = "https://github.com/szktkfm/mdtt.git"
+prefix = "v"
