@@ -1,7 +1,7 @@
 pkgbase = korgwm
 	pkgdesc = Tiling window manager written in Perl
 	pkgver = 4.0
-	pkgrel = 1.0
+	pkgrel = 1.1
 	url = http://metacpan.org/release/X11-korgwm
 	arch = i686
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = korgwm
 	depends = perl-yaml-tiny
 	depends = perl-x11-xcb>=0.22
 	options = !emptydirs
-	source = https://cpan.metacpan.org/authors/id/Z/ZH/ZHMYLOVE/X11-korgwm-3.1.tar.gz
+	source = https://cpan.metacpan.org/authors/id/Z/ZH/ZHMYLOVE/X11-korgwm-4.0.tar.gz
 	md5sums = 39cb5e016986e1212f3876edf3bbf0d1
 	sha512sums = 410c768c27319aabe57439f67fd19e6cab492b400e984ff823bfaf82d3d6d5a83cd939718e49f2aed6faf37dbfadf93914b6d59872a0d051d46b74751cc0976f
 

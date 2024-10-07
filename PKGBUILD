@@ -3,7 +3,7 @@
 pkgname=korgwm
 _cpanname=X11-korgwm
 pkgver=4.0
-pkgrel=1.0
+pkgrel=1.1
 pkgdesc="Tiling window manager written in Perl"
 arch=('i686' 'x86_64')
 url="http://metacpan.org/release/$_cpanname"
