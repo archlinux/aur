@@ -1,0 +1,19 @@
+pkgbase = python-terminaltexteffects
+	pkgdesc = Visual effects engine applied to text in the terminal.
+	pkgver = 0.11.0
+	pkgrel = 1
+	url = https://github.com/ChrisBuilds/terminaltexteffects
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	makedepends = python-poetry-core
+	depends = python
+	provides = terminaltexteffects
+	conflicts = terminaltexteffects
+	source = python-terminaltexteffects-0.11.0.tar.gz::https://github.com/ChrisBuilds/terminaltexteffects/archive/refs/tags/release-0.11.0.tar.gz
+	b2sums = 5647c695ef36ba3ff2ae9a535dc54b1189ca0be53a6479528d4a223d67d91d2fc4f5e06d4325d8f18d81cc79b53ec21a3c9173b319612b8f0c8c8b804b4b60b4
+
+pkgname = python-terminaltexteffects
