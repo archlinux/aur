@@ -4,7 +4,7 @@
 # Contributor: Alex Gu <gualse.mail@yandex.com>
 
 pkgname='mycorrhiza'
-pkgver=1.15.0
+pkgver=1.15.1
 pkgrel=1
 pkgdesc='Filesystem and git-based wiki engine written in Go using mycomarkup'
 arch=('aarch64' 'armv7h' 'x86_64')
@@ -18,8 +18,8 @@ options=('lto')
 prepare() {
   cd "$pkgname"
 
-  mkdir -p build
-  go mod tidy
+  mkdir -p build \
+  && go mod tidy
 }
 
 build() {
@@ -66,10 +66,10 @@ package() {
 }
 
 sha256sums=(
-  '6f9a89d7b2d1967430f926c001d9ebbd4539eae4f2a2d3b4aaba8b72fa751df3'
+  'a4f01e5f06421b285d1d9041fc5503cc71383931e337dd9ae8b2b6de166f2364'
 )
 b2sums=(
-  '8189f6ea9ed1672822bc4d45a3affd9e4164236c8ccf2cce4bc494fdbbe23b077f5acbd6feaaa3625d63ec521e88680577d8d7610372c979a0848c37fafe2c9e'
+  'edba1f275295a39a807532a553dfe6eb8ad3d2e9222561c93dc8b0e530ea2dc7253c6956fde4b3cfdd031a4ea477ac253e46dcfadf72b08b1ac5f9be117c549f'
 )
 
 # eof
