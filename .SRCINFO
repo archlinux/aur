@@ -1,0 +1,19 @@
+pkgbase = python-matspy
+	pkgdesc = Sparse matrix spy plot and sparkline renderer that works with Jupyter
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/alugowski/matspy
+	arch = any
+	license = BSD-2-Clause
+	checkdepends = python-pytest
+	checkdepends = python-scipy
+	checkdepends = python-html5lib
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python-matplotlib
+	source = matspy-1.0.0.tar.gz::https://github.com/alugowski/matspy/archive/v1.0.0.tar.gz
+	sha512sums = 1e16d94731cb1cebf321d75c8532c8018be4037bb5ca33a3a78e3784fdc814b8306802145faec6fab9252668e5630f3940f5919aece423116816799d1548f009
+
+pkgname = python-matspy

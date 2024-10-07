@@ -1,0 +1,5 @@
+[python-matrepr]
+source = "github"
+github = "alugowski/matrepr"
+use_latest_release = "true"
+prefix = "v"
