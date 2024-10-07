@@ -4,7 +4,7 @@
 _reponame=bubblewrap
 pkgname=${_reponame}-overlayfs
 pkgver=0.10.0.r0.gdc63ec6
-pkgrel=3
+pkgrel=4
 pkgdesc='Unprivileged sandboxing tool (with overlay enabled)'
 url='https://github.com/containers/bubblewrap'
 arch=(x86_64)
@@ -28,7 +28,7 @@ source=(
 )
 
 sha256sums=('96245c818e9533927863ba1cec173fdbd3dd9759e86861aaee843bb90c4fd0d7'
-            '24db5684b49783a60a24177286834902dfe5833c99be764a197b5c1531284fc6')
+            '799434ad9fff749e983370e1c666c6cca0b08aa79e2a12f332caf4ee539291c4')
 
 pkgver() {
 	cd "$_reponame"
