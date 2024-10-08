@@ -1,6 +1,6 @@
 pkgbase = linux-pf
 	pkgdesc = pf-kernel
-	pkgver = 6.11.pf1
+	pkgver = 6.11.pf2
 	pkgrel = 1
 	url = https://pfkernel.natalenko.name
 	arch = x86_64
@@ -12,17 +12,14 @@ pkgbase = linux-pf
 	makedepends = pahole
 	makedepends = perl
 	makedepends = python
-	makedepends = rust
-	makedepends = rust-bindgen
-	makedepends = rust-src
 	makedepends = tar
 	makedepends = xz
 	options = !debug
 	options = !strip
-	source = https://codeberg.org/pf-kernel/linux/archive/43c8291990464a1af9b451d5030c1939e36c692c.tar.gz
+	source = https://codeberg.org/pf-kernel/linux/archive/b75824c2d1f2a6db1327db223c9f9ac9e16fed42.tar.gz
 	source = config
 	b2sums = SKIP
-	b2sums = 3c600f730a2ff8805f1e81dba81f5f60a4e0f10c5adef2fc8be4536851cb6af3268136a8f28413a34a48062f79dced21e072c2d0e425e12692184ebbe7372841
+	b2sums = de41de56eb24763b97c0067f0b346c112418a3618076e34352b5cc34e443651ee7bf2835240b9a5b139ea3f3a9179c85c1c808dc7dfa27a0db290c6c8a56d62a
 
 pkgname = linux-pf
 	pkgdesc = The pf-kernel and modules
