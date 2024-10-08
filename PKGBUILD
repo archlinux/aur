@@ -1,10 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=nvm-desktop-bin
-_pkgname=NVM-Desktop
-pkgver=3.4.0
-_electronversion=31
+_pkgname=NVM.Desktop
+pkgver=4.0.0
 pkgrel=1
-pkgdesc="A version management desktop client for the Nodejs."
+pkgdesc="Node Version Manager Desktop - A desktop application to manage multiple active node.js versions."
 arch=(
     'aarch64'
     'x86_64'
@@ -15,46 +14,29 @@ license=('MIT')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
-    "electron${_electronversion}"
-)
-makedepends=(
-    'fuse2'
-    'asar'
+    'webkit2gtk-4.1'
+    'gtk3'
 )
 source=(
-    "LICENSE-${pkgver}::https://raw.githubusercontent.com/1111mp/nvm-desktop/${pkgver}/LICENSE"
-    "${pkgname%-bin}.sh"
+    "LICENSE-${pkgver}::https://raw.githubusercontent.com/1111mp/nvm-desktop/v${pkgver}/LICENSE"
 )
-source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.AppImage::${url}/releases/download/${pkgver}/${pkgname%-bin}_Setup_linux_arm64_${pkgver}.AppImage")
-source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.AppImage::${url}/releases/download/${pkgver}/${pkgname%-bin}_Setup_linux_x86_64_${pkgver}.AppImage")
-sha256sums=('569c63fcd9eccc38f8c0402b33980d4e1e64f483d5ebc5338e6e4af83ae98d9f'
-            '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-sha256sums_aarch64=('bd09f2613cacc71aab0e4e6da0b60c6c3c1c9a52c786bff8a64e687c24c0cd68')
-sha256sums_x86_64=('66aab6818ba326d85ff0ab13953b22eaa6b83e5dcc8ea1e17f52280f9bcee33c')
+source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_arm64.deb")
+source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_amd64.deb")
+sha256sums=('67fae9ba39c4a7c4af6bc4c4e25e72b6e8786f064f79107e534e5d8cff2c10c2')
+sha256sums_aarch64=('5fcbaa36ba536b4486316501a11265a4a45dc945ed4fe82706b5351d7c10e489')
+sha256sums_x86_64=('614b61f610d6ffa010a1538108fc8f3691814b6f37758e1fd27866960604b9e4')
 build() {
-    sed -e "s|@electronversion@|${_electronversion}|g" \
-        -e "s|@appname@|${pkgname%-bin}|g" \
-        -e "s|@runname@|app.asar|g" \
-        -e "s|@cfgdirname@|${_pkgname}|g" \
-        -e "s|@options@|env ELECTRON_OZONE_PLATFORM_HINT=auto|g" \
-        -i "${srcdir}/${pkgname%-bin}.sh"
-    chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage"
-    "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage" --appimage-extract > /dev/null
-    sed "s|AppRun --no-sandbox|${pkgname%-bin}|g" -i "${srcdir}/squashfs-root/${pkgname%-bin}.desktop"
-    asar e "${srcdir}/squashfs-root/resources/app.asar" "${srcdir}/app.asar.unpacked"
-    sed "s|process.resourcesPath|\"\/usr\/lib\/${pkgname%-bin}\"|g" -i "${srcdir}/app.asar.unpacked/dist/main/main.mjs"
-    asar p "${srcdir}/app.asar.unpacked" "${srcdir}/app.asar"
-    find "${srcdir}/squashfs-root/resources" -type d -exec chmod 755 {} \;
+    bsdtar -xf "${srcdir}/data."*
 }
 package() {
-    install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
-    install -Dm644 "${srcdir}/app.asar" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
-    cp "${srcdir}/squashfs-root/resources/"{_locales,assets} -r "${pkgdir}/usr/lib/${pkgname%-bin}"
-    install -Dm644 "${srcdir}/squashfs-root/usr/lib/"* -t "${pkgdir}/usr/lib/${pkgname%-bin}/lib"
-    for _icons in 16x16 24x24 32x32 48x48 64x64 96x96 128x128 256x256 512x512 1024x1024;do
-        install -Dm644 "${srcdir}/squashfs-root/usr/share/icons/hicolor/${_icons}/apps/${pkgname%-bin}.png" \
-            -t "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps"
+    install -Dm755 "${srcdir}/usr/bin/${pkgname%-bin}" -t "${pkgdir}/usr/bin"
+    install -Dm755 "${srcdir}/usr/lib/${_pkgname//./ }/resources/nvmd" -t "${srcdir}/pkgdir/lib/${_pkgname//./ }/resources"
+    install -Dm644 "${srcdir}/usr/lib/${_pkgname//./ }/icons/icon.png" -t "${srcdir}/pkgdir/lib/${_pkgname//./ }/icons"
+    _icon_sizes=(32x32 128x128 256x256@2)
+    for _icons in "${_icon_sizes[@]}";do
+        install -Dm644 "${srcdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname%-bin}.png" \
+            -t "${pkgdir}/usr/share/icons/hicolor/${_icons//@2/}/apps"
     done
-    install -Dm644 "${srcdir}/squashfs-root/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
+    install -Dm644 "${srcdir}/usr/share/applications/${_pkgname//./ }.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
     install -Dm644 "${srcdir}/LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
