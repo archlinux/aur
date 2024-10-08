@@ -10,5 +10,6 @@ pkgbase = rune-cpp-git
 	makedepends = cmake
 	provides = rune-cpp
 	source = git+https://github.com/ISBachvarov21/Rune.git
+	sha256sums = SKIP
 
 pkgname = rune-cpp-git

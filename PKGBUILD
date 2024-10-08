@@ -40,3 +40,4 @@ package() {
 	cd "$pkgname-$pkgver"
 	sudo cmake --install build --prefix /usr
 }
+sha256sums=('SKIP')
