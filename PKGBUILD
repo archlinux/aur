@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=nvm-desktop-git
 _pkgname="NVM Desktop"
-pkgver=4.0.0.alpha.r1.g6eb67d4
+pkgver=4.0.0.r3.g1c3ad6a
 _nodeversion=20
 pkgrel=1
 pkgdesc="A version management desktop client for the Nodejs."
@@ -43,13 +43,6 @@ _ensure_local_nvm() {
     nvm use "${_nodeversion}"
 }
 build() {
-    sed -e "
-        s/@electronversion@/${_electronversion}/
-        s/@appname@/${pkgname%-git}/
-        s/@runname@/app.asar/
-        s/@cfgdirname@/${pkgname%-git}/
-        s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/
-    " -i "${srcdir}/${pkgname%-git}.sh"
     gendesk -f -n -q --pkgname="${pkgname%-git}" --pkgdesc="${pkgdesc}" --categories="Development" --name="${pkgname%-git}" --exec="${pkgname%-git} %U"
     # build nvmd
     cd "${srcdir}/nvmd.git"
@@ -72,21 +65,25 @@ build() {
         echo 'fetch-retry-maxtimeout=10000'
         echo "cache-dir="${srcdir}"/.pnpm_cache"
         echo "store-dir="${srcdir}"/.pnpm_store"
-        if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
+    } >> .npmrc
+    if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
+        export RUSTUP_DIST_SERVER=https://mirrors.ustc.edu.cn/rust-static
+	    export RUSTUP_UPDATE_ROOT=https://mirrors.ustc.edu.cn/rust-static/rustup
+        {
             echo 'registry=https://registry.npmmirror.com'
             echo 'disturl=https://registry.npmmirror.com/-/binary/node/'
-        fi
-    } >> .npmrc
+        } >> .npmrc
+    fi
     NODE_ENV=development    pnpm install
-    NODE_ENV=production     pnpm run build -b deb
+    NODE_ENV=production     pnpm run tauri build -b deb
 }
 package() {
-    install -Dm755 "${srcdir}/${pkgname%-git}.git/src-tauri/target/release/bundle/deb/${_pkgname}_${pkgver%.a*}_"*/data/usr/bin/"${pkgname%-git}" \
+    install -Dm755 "${srcdir}/${pkgname%-git}.git/src-tauri/target/release/bundle/deb/${_pkgname}_${pkgver%.r*}_"*/data/usr/bin/"${pkgname%-git}" \
         -t "${pkgdir}/usr/bin"
     install -Dm755 -d "${pkgdir}/usr/lib"
-    cp -r "${srcdir}/${pkgname%-git}.git/src-tauri/target/release/bundle/deb/${_pkgname}_${pkgver%.a*}_"*/data/usr/lib/"${pkgname%-git}" "${pkgdir}/usr/lib"
-    install -Dm644 "${srcdir}/${pkgname%-git}.git/src-tauri/target/release/bundle/deb/${_pkgname}_${pkgver%.a*}_"*/data/usr/share/applications/"${pkgname%-git}.desktop" \
-        -t "${pkgdir}/usr/share/applications"
+    cp -r "${srcdir}/${pkgname%-git}.git/src-tauri/target/release/bundle/deb/${_pkgname}_${pkgver%.r*}_"*/data/usr/lib/"${_pkgname}" "${pkgdir}/usr/lib"
+    install -Dm644 "${srcdir}/${pkgname%-git}.git/src-tauri/target/release/bundle/deb/${_pkgname}_${pkgver%.r*}_"*/data/usr/share/applications/"${_pkgname}.desktop" \
+        "${pkgdir}/usr/share/applications/${pkgname%-git}.desktop"
     install -Dm644 "${srcdir}/${pkgname%-git}.git/src-tauri/icons/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-git}.png"
     install -Dm644 "${srcdir}/${pkgname%-git}.git/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
