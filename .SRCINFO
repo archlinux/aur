@@ -10,7 +10,8 @@ pkgbase = python-elasticsearch-dsl
 	makedepends = python-setuptools
 	makedepends = python-wheel
 	depends = python-elasticsearch
-	depends = python-dateparser
+	depends = python-dateutil
+	depends = python-typing_extensions
 	source = elasticsearch-dsl-py-8.15.4.tar.gz::https://github.com/elastic/elasticsearch-dsl-py/archive/v8.15.4.tar.gz
 	sha512sums = d878d9dae4726a5ab4f393b1ea941d8ce7b6f9e42421dcadb4634fb740163ae8b82c95696ea4e5cfbfafd58c573781a7f144f9f0a54538be13856dd50d7a7fb1
 

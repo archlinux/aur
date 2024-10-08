@@ -9,7 +9,7 @@ pkgdesc="Python client for Elasticsearch"
 arch=(any)
 url="https://github.com/elastic/${_base}-py"
 license=(Apache-2.0)
-depends=(python-elasticsearch python-dateparser)
+depends=(python-elasticsearch python-dateutil python-typing_extensions)
 makedepends=(python-build python-installer python-setuptools python-wheel) # python-sphinx_rtd_theme
 # checkdepends=(python-pytest-mock python-mock python-pytest-asyncio python-nltk
 #   python-sentence-transformers)
