@@ -1,0 +1,14 @@
+pkgbase = rune-cpp-git
+	pkgdesc = A C++ framework for developing REST APIs with a focus on simplicity and speed.
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/ISBachvarov21/Rune.git
+	arch = x86_64
+	arch = i686
+	license = MIT
+	makedepends = git
+	makedepends = cmake
+	provides = rune-cpp
+	source = git+https://github.com/ISBachvarov21/Rune.git
+
+pkgname = rune-cpp-git
