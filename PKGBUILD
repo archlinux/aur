@@ -3,7 +3,7 @@
 pkgname=polycule-git
 _name=polycule
 _appid=business.braid.polycule
-pkgver=56969c1
+pkgver=v0.0.1.r12.gb65c0c3
 pkgrel=1
 pkgdesc="A geeky and efficient [matrix] client for power users."
 # Flutter officially supports amd64 and AArch64
@@ -108,11 +108,17 @@ package() {
   install -dm755 "${pkgdir}/usr/bin"
   ln -s "/usr/lib/${_name}/${_name}" "${pkgdir}/usr/bin/${_name}"
 
+  for font in "${srcdir}/${_name}/assets/fonts/"* ; do
+    install -Dm 644 "${font}/LICENSE.txt" "${pkgdir}/usr/share/licenses/${_name}/$(basename "${font}")".txt
+  done
+
   # install desktop file, metainfo, license and icons
   install -Dm 644 "${srcdir}/${_name}/linux/${_appid}.desktop" "${pkgdir}/usr/share/applications/${_appid}.desktop"
+  install -Dm 644 "${srcdir}/${_name}/linux/${_appid}-daemon.desktop" "${pkgdir}/etc/xdg/autostart/${_appid}-daemon.desktop"
   install -Dm 644 "${srcdir}/${_name}/linux/${_appid}.service" "${pkgdir}/usr/share/dbus-1/services/${_appid}.service"
   install -Dm 644 "${srcdir}/${_name}/linux/${_appid}.metainfo.xml" "${pkgdir}/usr/share/metainfo/${_appid}.metainfo.xml"
-  install -Dm644 "${srcdir}/${_name}/LICENSE" "${pkgdir}/usr/share/licenses/${_name}/LICENSE"
+  install -Dm 644 "${srcdir}/${_name}/LICENSE" "${pkgdir}/usr/share/licenses/${_name}/COPYING"
+  ln -s "/usr/lib/polycule/data/flutter_assets/NOTICES.Z" "${pkgdir}/usr/share/licenses/${_name}/NOTICES.Z"
   install -Dm 644 "${srcdir}/${_name}/assets/logo/logo-circle.svg" "${pkgdir}/usr/share/pixmaps/${_appid}.svg"
   install -Dm 644 "${srcdir}/${_name}/assets/logo/logo-circle.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/${_appid}.svg"
 }
