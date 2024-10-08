@@ -1,7 +1,7 @@
 # Maintainer: icepie <icepie.dev [at] gmail dot com>
 pkgname=tiny-rdm-bin
 _pkgname=tiny-rdm
-pkgver=1.1.13
+pkgver=1.2.1
 pkgrel=2
 pkgdesc="A modern redis desktop manager. A better redis GUI client."
 arch=("x86_64")
@@ -14,7 +14,7 @@ conflicts=('tiny-rdm-git')
 replaces=()
 source=("${_pkgname}_${pkgver}-${arch}.deb::https://github.com/tiny-craft/tiny-rdm/releases/download/v${pkgver}/${_pkgname}_${pkgver}_linux_amd64.deb")
 
-sha512sums=('81675ab8accd62fa278872cc836d518aa8bceabae693af3d15d922c0fcd8234b')
+sha256sums=('c16bb9d9b55b5dd6c1cf4706cd21d446f02e82e04ca04d72c72c1ea7e1535afe')
 
 prepare(){
     cd ${srcdir}

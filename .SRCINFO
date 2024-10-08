@@ -1,13 +1,13 @@
 pkgbase = tiny-rdm-bin
 	pkgdesc = A modern redis desktop manager. A better redis GUI client.
-	pkgver = 1.1.13
+	pkgver = 1.2.1
 	pkgrel = 2
 	url = https://redis.tinycraft.cc/
 	arch = x86_64
 	license = custom
 	provides = tiny-rdm
 	conflicts = tiny-rdm-git
-	source = tiny-rdm_1.1.13-x86_64.deb::https://github.com/tiny-craft/tiny-rdm/releases/download/v1.1.13/tiny-rdm_1.1.13_linux_amd64.deb
-	sha512sums = 81675ab8accd62fa278872cc836d518aa8bceabae693af3d15d922c0fcd8234b
+	source = tiny-rdm_1.2.1-x86_64.deb::https://github.com/tiny-craft/tiny-rdm/releases/download/v1.2.1/tiny-rdm_1.2.1_linux_amd64.deb
+	sha256sums = c16bb9d9b55b5dd6c1cf4706cd21d446f02e82e04ca04d72c72c1ea7e1535afe
 
 pkgname = tiny-rdm-bin
