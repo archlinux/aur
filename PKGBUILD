@@ -2,8 +2,8 @@
 # Maintainer: Neko_Rikka <yjzyl9008 at gmail dot com>
 
 pkgname=python-unitypy-git
-pkgver=r512.8fcc664
-pkgrel=3
+pkgver=r514.4f14a38
+pkgrel=1
 pkgdesc="A unity asset extractor based on unitypack and AssetStudio."
 arch=('x86_64')
 url="https://github.com/K0lb3/UnityPy"
@@ -15,7 +15,7 @@ depends=(
   'python-lz4'
   'python-brotli'
   'python-pillow'
-  'python-pyfmodex'
+  'python-pyfmodex-git'
   'python-fsspec'
   'python-texture2ddecoder'
   'python-etcpak-git'
