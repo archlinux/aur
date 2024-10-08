@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=examine-git
-pkgver=r14.385da59
+pkgver=1.0.0.r0.ga34c1b9
 pkgrel=1
 pkgdesc="A system information viewer for the COSMIC™ Desktop"
 arch=('x86_64' 'aarch64')
@@ -14,23 +14,23 @@ source=('git+https://github.com/cosmic-utils/examine.git')
 sha256sums=('SKIP')
 
 pkgver() {
-  cd examine
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+  cd "${pkgname%-git}"
+  git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
-  cd examine
+  cd "${pkgname%-git}"
   export RUSTUP_TOOLCHAIN=stable
   cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
-  cd examine
+  cd "${pkgname%-git}"
   export RUSTUP_TOOLCHAIN=stable
   just build-release --frozen
 }
 
 package() {
-  cd examine
+  cd "${pkgname%-git}"
   just rootdir="$pkgdir" install
 }
