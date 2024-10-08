@@ -1,11 +1,11 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=ghost-chat
 _pkgname=GhostChat
-pkgver=3.2.7
+pkgver=3.3.0
 _electronversion=32
 _nodeversion=20
 pkgrel=1
-pkgdesc="A standalone, multiplatform Twitch.tv chat as overlay on windowed/windowed fullscreen applications."
+pkgdesc="A standalone, multi-platform Twitch.tv， Kick.com chat as an overlay on windowed/windowed full-screen applications"
 arch=('any')
 url="https://github.com/Enubia/ghost-chat"
 license=('Zlib')
@@ -24,7 +24,7 @@ source=(
     "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.zip"
     "${pkgname}.sh"
 )
-sha256sums=('2cc62684808cba629497724521c1286cb1601e0d4fd2035c4d28d30a145a6346'
+sha256sums=('c20582abaa907854579ef40cf19a21cf69b3cdc6a13cf5414c9ed8fa9d8e1ac7'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 _ensure_local_nvm() {
     export NVM_DIR="${srcdir}/.nvm"
@@ -74,5 +74,5 @@ package() {
             "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname}.png"
     done
     install -Dm644 "${srcdir}/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
-    install -Dm644  "${srcdir}/${pkgname}-${pkgver}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -Dm644  "${srcdir}/${pkgname}-${pkgver}/LICENSE.md" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
