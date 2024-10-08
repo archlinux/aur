@@ -1,4 +1,4 @@
-# Maintainer: Mattias Andrée <`base64 -d`(bWF0dGlhcy5hbmRyZWU)@protonmail.com>
+# Maintainer: Mattias Andrée <m@`base64 -d`(bWFhbmRyZWU).se>
 
 pkgbase=libar2simplified
 pkgname=($pkgbase $pkgbase-doc $pkgbase-musl)
