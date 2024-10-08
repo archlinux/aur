@@ -1,6 +1,6 @@
 pkgbase = discord-rpc-extension-bin
 	pkgdesc = Discord rich presence extension with open API.
-	pkgver = 0.1.2
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/lolamtisch/Discord-RPC-Extension
 	arch = x86_64
@@ -10,8 +10,7 @@ pkgbase = discord-rpc-extension-bin
 	conflicts = discord-rpc-extension-no-tray-bin
 	conflicts = discord-rpc-extension-no-tray-git
 	options = !strip
-	source = discord-rpc-extension-bin-0.1.2.zip::https://github.com/lolamtisch/Discord-RPC-Extension/releases/download/0.1.2/linux.zip
+	source = discord-rpc-extension-bin-0.3.0.zip::https://github.com/lolamtisch/Discord-RPC-Extension/releases/download/0.3.0/linux.zip
 	sha256sums = 91db83b55d458c046a3157a6a61a38ed6529914f458f9e93b589034f01647c6b
 
 pkgname = discord-rpc-extension-bin
-
