@@ -7,11 +7,11 @@
 _cranver=1.7-16
 pkgname=r-e1071
 pkgver=${_cranver//[:-]/.}
-pkgrel=1
+pkgrel=2
 pkgdesc='Functions for latent class analysis, short time Fourier transform, fuzzy clustering, support vector machines, shortest path computation, bagged clustering, naive Bayes classifier, ...'
 arch=('x86_64')
 url='https://cran.r-project.org/web/packages/e1071'
-license=('GPL')
+license=('GPL-2.0-or-later')
 depends=('r' 'r-proxy')
 replaces=('r-cran-e1071')
 source=("https://cran.r-project.org/src/contrib/e1071_"$_cranver".tar.gz")
