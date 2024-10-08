@@ -2,13 +2,14 @@
 
 pkgname=openvas-scanner
 pkgver=23.9.0
-pkgrel=5
+pkgrel=6
 pkgdesc='Vulnerability scanning Daemon'
 arch=('x86_64')
 url="https://github.com/greenbone/openvas-scanner"
 license=('GPL-2.0-only')
 depends=('gvm-libs' 'json-glib' 'libbsd' 'libgcrypt' 'redis' 'rsync')
 makedepends=('cmake' 'doxygen')
+optdepends=('greenbone-feed-sync: scripts for downloading updated feed informations')
 groups=('greenbone-vulnerability-manager')
 install=openvas.install
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz"
