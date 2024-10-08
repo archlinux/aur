@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=imagenormalizer-bin
 _pkgname=ImageNormalizer
-pkgver=1.2024.08.19
+pkgver=1.2024.10.01
 pkgrel=1
 pkgdesc="A cross-platform command-line batch-processing tool that resizes and compresses images."
 arch=(
@@ -21,10 +21,10 @@ options=(
 depends=(
     'dotnet-runtime>=8'
 )
-source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.zip::${url}/releases/download/${pkgver}/${_pkgname}_Linux_arm64.zip")
-source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.zip::${url}/releases/download/${pkgver}/${_pkgname}_Linux_x64.zip")
-sha256sums_aarch64=('8fbe8bc1577090ef37f5c3ef8e31474a5a9f65438e7e5ac9c9ce9e7ad6b900bf')
-sha256sums_x86_64=('329fab19ef3055159f1cd79586116910e1c76532758672f123217abc020ee984')
+source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.tar.gz::${url}/releases/download/${pkgver}/${_pkgname}_Linux_arm64.tar.gz")
+source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.tar.gz::${url}/releases/download/${pkgver}/${_pkgname}_Linux_x64.tar.gz")
+sha256sums_aarch64=('656ccbfbeed09c01f81f8f4107811cd0afea97e1283384ff51e8608a9040b0ae')
+sha256sums_x86_64=('8baf39d3fce9419a2b23343417a6dc7f7f9a7140ddb1bc559e89ddb1a545bf76')
 package() {
     install -Dm755 "${srcdir}/${_pkgname}_Linux_"*/"${_pkgname}" -t "${pkgdir}/usr/bin"
     install -Dm644 "${srcdir}/${_pkgname}_Linux_"*/LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
