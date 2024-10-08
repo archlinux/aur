@@ -3,7 +3,7 @@
 
 pkgname=banana9
 pkgver=9.0.5
-pkgrel=3
+pkgrel=4
 provides=('banana9')
 conflicts=('banana9')
 pkgdesc='Banana Accounting 9 Software'
@@ -30,9 +30,10 @@ package() {
   install -Dm644 "${srcdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
   sed -i "s-@exepath@-${_install_dir}/start_${pkgname}.sh-g" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
 
+  # we can't use a symlink as start_banana.sh uses `dirname $0` without readlink.
   install -D /dev/stdin "${pkgdir}/usr/bin/${pkgname}" <<END
 #!/usr/bin/env sh
-cd ${_install_dir} && ./start_${pkgname}.sh "\$@"
+exec "${_install_dir}/start_${pkgname}.sh" "\$@"
 END
 
   install -Dm644 "${srcdir}/banico.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/banico.svg"
