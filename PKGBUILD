@@ -1,7 +1,7 @@
 # Maintainer:  Jason Kercher <jkercher 43 at gmail dot com>
 
 pkgname=linuxcnc-git
-pkgver=2.9.3.r2055.gda67fbe110
+pkgver=2.9.3.r2192.gf357bfcf93
 pkgrel=1
 pkgdesc="Controls CNC machines. It can drive milling machines, lathes, 3d printers, laser cutters, plasma cutters, robot arms, hexapods, and more (formerly EMC2)"
 arch=('i686' 'x86_64')
@@ -31,8 +31,8 @@ depends=(
   libxinerama
   libxmu
   libxss
-#   readline
-  editline
+  #   readline
+  #   editline
   systemd-libs
   pango
   python
@@ -46,19 +46,19 @@ depends=(
   python-numpy
   python-matplotlib
   python-poppler-qt5
-#   python-psycopg
+  #   python-psycopg
   python-pyqt5
   python-pyserial
   python-pyzmq
   python-xlib
-#   python-validate-pyproject
+  #   python-validate-pyproject
   tk
   tcl
   zlib
-# AUR
-  gtksourceview2
-  python-pyodbc
-# python-espeak
+  # AUR
+  #   gtksourceview2
+  #   python-pyodbc
+  # python-espeak
   libmodbus
 )
 makedepends=(
@@ -80,16 +80,16 @@ makedepends=(
   man-db
   #AUR
   bwidget
-#   tclx
+  #   tclx
   linkchecker
   python-yapps2
-  )
+)
 checkdepends=()
 provides=('linuxcnc')
 conflicts=('linuxcnc' 'linuxcnc-bin')
 options=(!emptydirs)
 source=("${pkgname}::git+https://github.com/LinuxCNC/linuxcnc"
-        'libtirpc.patch')
+  'libtirpc.patch')
 sha256sums=('SKIP'
             'bc95bafd67fad1c1d3722261bc586cdc612ec9e1597fadb95fa825c10550ac2c')
 
@@ -101,30 +101,30 @@ pkgver() {
   # Format git-based version for pkgver
   # Expected format: e.g. 1.5.0rc2.r521.g99982a1c
   echo "${_gitversion}" | sed \
-      -e 's|^\([0-9][0-9.]*\)-\([a-zA-Z]\+\)|\1\2|' \
-      -e 's|\([0-9]\+-g\)|r\1|' \
-      -e 's|-|.|g'
+    -e 's|^\([0-9][0-9.]*\)-\([a-zA-Z]\+\)|\1\2|' \
+    -e 's|\([0-9]\+-g\)|r\1|' \
+    -e 's|-|.|g'
 }
 
 prepare() {
   git -C "${srcdir}/${pkgname}" clean -dfx
-  
+
   cd "${srcdir}/${pkgname}/src"
-  echo "export TCLLIBPATH=$TCLLIBPATH:/usr/lib/tcltk/linuxcnc" > ${pkgname}.sh
+  echo "export TCLLIBPATH=$TCLLIBPATH:/usr/lib/tcltk/linuxcnc" >${pkgname}.sh
   find . -iname fixpaths.py -o -iname checkglade -o \
-   -iname update_ini | xargs perl -p -i -e "s/python/python3/"
+    -iname update_ini | xargs perl -p -i -e "s/python/python3/"
   patch -Np2 -i "${srcdir}/libtirpc.patch"
   sed -i 's|/usr/local/etc/emc2/configs|/etc/emc2/configs|g' Makefile.inc.in
-#   sed -i 's|libgpiod <|libgpiod >|g' configure.ac
-#   sed -i 's|$(DESTDIR)$(sysconfdir)/linuxcnc|$(DESTDIR)/etc/linuxcnc|g' Makefile.orig
-#   ./autogen.sh
-#   ./configure --prefix=/usr \
-#    --enable-non-distributable=yes \
-#    --with-realtime=uspace \
-#    --without-libmodbus \
-#    --with-python=/usr/bin/python3 \
-#    --disable-gtk2
-#
+  #   sed -i 's|libgpiod <|libgpiod >|g' configure.ac
+  #   sed -i 's|$(DESTDIR)$(sysconfdir)/linuxcnc|$(DESTDIR)/etc/linuxcnc|g' Makefile.orig
+  #   ./autogen.sh
+  #   ./configure --prefix=/usr \
+  #    --enable-non-distributable=yes \
+  #    --with-realtime=uspace \
+  #    --without-libmodbus \
+  #    --with-python=/usr/bin/python3 \
+  #    --disable-gtk2
+  #
   sed -i 's|$(DESTDIR)$(sysconfdir)/linuxcnc|$(DESTDIR)/etc/linuxcnc|g' Makefile
 
   autoreconf -i
@@ -137,15 +137,14 @@ prepare() {
     --with-realtime=uspace
 }
 
-build () {
+build() {
   cd "${srcdir}/${pkgname}/src"
-#   make
-  eatmydata make -O -j$((1+$(nproc))) default pycheck V=1
-    # Note that the package build covers html docs
-  eatmydata make -O -j$((1+$(nproc))) manpages V=1
-#   eatmydata make -O -j$((1+$(nproc))) translateddocs V=1
-  eatmydata make -O -j$((1+$(nproc))) default pycheck V=1
-
+  #   make
+  eatmydata make -O -j$((1 + $(nproc))) default pycheck V=1
+  # Note that the package build covers html docs
+  eatmydata make -O -j$((1 + $(nproc))) manpages V=1
+  #   eatmydata make -O -j$((1+$(nproc))) translateddocs V=1
+  eatmydata make -O -j$((1 + $(nproc))) default pycheck V=1
 
 }
 
@@ -156,12 +155,12 @@ build () {
 
 package() {
   cd "${srcdir}/${pkgname}/src"
-  DESTDIR=${pkgdir} make install 
+  DESTDIR=${pkgdir} make install
   cp -PR "${srcdir}/${pkgname}/share/applications" "${pkgdir}/usr/share"
   mkdir -p "${pkgdir}/etc/xdg"
   cp -PR "${srcdir}/${pkgname}/share/menus" "${pkgdir}/etc/xdg/"
   install -Dm755 "${srcdir}/${pkgname}/src/${pkgname}.sh" \
-   "${pkgdir}/etc/profile.d/${pkgname}.sh"
+    "${pkgdir}/etc/profile.d/${pkgname}.sh"
   sed -i "s|${srcdir}||" "${pkgdir}/usr/share/linuxcnc/Makefile.modinc"
   install -Dm644 ${pkgdir}/usr/share/linuxcnc/linuxcncicon.png -t ${pkgdir}/usr/share/pixmaps
 }
