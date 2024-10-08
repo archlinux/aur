@@ -10,8 +10,8 @@ pkgbase = gaiasky
 	license = MPL
 	depends = java-runtime
 	depends = xorg-xrandr
-	source = http://gaia.ari.uni-heidelberg.de/gaiasky/files/releases/3.6.4.431291e37/gaiasky-3.6.4.431291e37.tar.gz
-	md5sums = 60da4932a808ceb170ae6b56d533aba0
-	sha256sums = 34d6f54d664c2ca2c8bf43836ef1368d7564bba1916d16369c55de6895931cf0
+	source = http://gaia.ari.uni-heidelberg.de/gaiasky/files/releases/3.6.4.a10728410/gaiasky-3.6.4.a10728410.tar.gz
+	md5sums = 891eeac33acd5c007daa49c74d7a9ffc
+	sha256sums = eb960e282c4ad703a2cab78af4af146835577f460b11fa630ce400c561850117
 
 pkgname = gaiasky
