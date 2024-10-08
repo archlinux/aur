@@ -1,30 +1,26 @@
 # Maintainer: kevku <kevku@gmx.com>
 pkgbase=web-eid
 pkgname=("web-eid-native" "web-eid-firefox" "web-eid-chrome")
-pkgver=2.5.0.642
-_rls_tag=v2.5.0
+pkgver=2.6.0.654
+_rls_tag=v2.6.0
 _ext_ver=2.2.1
 pkgrel=1
 arch=('x86_64')
 url="https://www.id.ee/"
 license=('MIT')
 conflicts=('chrome-token-signing')
-depends=('openssl' 'qt6-base' 'qt6-svg' 'pcsclite' 'ccid' 'hicolor-icon-theme')
-makedepends=('git' 'qt6-tools' 'gtest' 'gmock' 'cmake')
+depends=('pcsclite' 'ccid' 'openssl' 'qt6-base' 'qt6-svg' 'hicolor-icon-theme')
+makedepends=('git' 'cmake' 'gtest' 'qt6-tools')
 source=("$pkgbase::git+https://github.com/web-eid/web-eid-app.git?signed#tag=$_rls_tag"
         "web-eid-libelectronic-id::git+https://github.com/web-eid/libelectronic-id.git"
-        "web-eid-libpcsc-cpp::git+https://github.com/web-eid/libpcsc-cpp.git"
-        "web-eid-libpcsc-mock::git+https://github.com/web-eid/libpcsc-mock.git"
         "https://addons.mozilla.org/firefox/downloads/file/4079746/web_eid_webextension-$_ext_ver.xpi")
 noextract=("web_eid_webextension-$_ext_ver.xpi")
 sha256sums=('SKIP'
             'SKIP'
-            'SKIP'
-            'SKIP'
             '392666581a3e71130307eb94f9010b4ca843829f592db9a093ad68fc00ca59ba')
 validpgpkeys=(
     '1282B0F8809D0DC632C85A3F86B611CE24492160'  # Mart Somermaa https://github.com/mrts.gpg
-    'D1EBC666EFCBFBD3CFC2EBAA90C0B5E75C3B195D'  # Raul Metsma
+    'D1EBC666EFCBFBD3CFC2EBAA90C0B5E75C3B195D'  # Raul Metsma https://github.com/metsma.gpg
 )
 
 prepare() {
@@ -35,16 +31,6 @@ prepare() {
     git submodule init
     git config submodule.lib/libelectronic-id.url $srcdir/web-eid-libelectronic-id
     git -c protocol.file.allow=always submodule update lib/libelectronic-id
-    
-    cd "$srcdir/$pkgbase/lib/libelectronic-id"
-    git submodule init
-    git config submodule.lib/libpcsc-cpp.url $srcdir/web-eid-libpcsc-cpp
-    git -c protocol.file.allow=always submodule update
-
-    cd "$srcdir/$pkgbase/lib/libelectronic-id/lib/libpcsc-cpp"
-    git submodule init
-    git config submodule.tests/lib/libpcsc-mock.url $srcdir/web-eid-libpcsc-mock
-    git -c protocol.file.allow=always submodule update
 }
 
 build() {

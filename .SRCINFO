@@ -1,31 +1,26 @@
 pkgbase = web-eid
-	pkgver = 2.5.0.642
+	pkgver = 2.6.0.654
 	pkgrel = 1
 	url = https://www.id.ee/
 	arch = x86_64
 	license = MIT
 	makedepends = git
-	makedepends = qt6-tools
-	makedepends = gtest
-	makedepends = gmock
 	makedepends = cmake
+	makedepends = gtest
+	makedepends = qt6-tools
+	depends = pcsclite
+	depends = ccid
 	depends = openssl
 	depends = qt6-base
 	depends = qt6-svg
-	depends = pcsclite
-	depends = ccid
 	depends = hicolor-icon-theme
 	conflicts = chrome-token-signing
 	noextract = web_eid_webextension-2.2.1.xpi
-	source = web-eid::git+https://github.com/web-eid/web-eid-app.git?signed#tag=v2.5.0
+	source = web-eid::git+https://github.com/web-eid/web-eid-app.git?signed#tag=v2.6.0
 	source = web-eid-libelectronic-id::git+https://github.com/web-eid/libelectronic-id.git
-	source = web-eid-libpcsc-cpp::git+https://github.com/web-eid/libpcsc-cpp.git
-	source = web-eid-libpcsc-mock::git+https://github.com/web-eid/libpcsc-mock.git
 	source = https://addons.mozilla.org/firefox/downloads/file/4079746/web_eid_webextension-2.2.1.xpi
 	validpgpkeys = 1282B0F8809D0DC632C85A3F86B611CE24492160
 	validpgpkeys = D1EBC666EFCBFBD3CFC2EBAA90C0B5E75C3B195D
-	sha256sums = SKIP
-	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = 392666581a3e71130307eb94f9010b4ca843829f592db9a093ad68fc00ca59ba
