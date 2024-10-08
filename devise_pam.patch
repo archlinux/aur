@@ -1,0 +1,12 @@
+diff --git a/config/initializers/devise.rb b/config/initializers/devise.rb
+index 5c88c4cd5..c333fe443 100644
+--- a/config/initializers/devise.rb
++++ b/config/initializers/devise.rb
+@@ -1,6 +1,7 @@
+ # frozen_string_literal: true
+ 
+ require 'devise/strategies/authenticatable'
++require 'devise_pam_authenticatable'
+ 
+ Warden::Manager.after_set_user except: :fetch do |user, warden|
+   session_id = warden.cookies.signed['_session_id'] || warden.raw_session['auth_id']
