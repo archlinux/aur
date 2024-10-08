@@ -2,7 +2,7 @@
 
 pkgname=strawberry-lite
 pkgver=1.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A music player aimed at audio enthusiasts and music collectors, fewer fautures, Gstreamer and alsa only"
 arch=(x86_64 i686 armv7h aarch64)
 url="https://www.strawberrymusicplayer.org/"
@@ -11,6 +11,7 @@ depends=(chromaprint protobuf gst-plugins-base gst-plugins-good qt6-base
          sqlite udisks2 dbus alsa-lib libcdio fftw libebur128 kdsingleapplication
 
          libicuuc.so libicui18n.so libprotobuf.so
+
          # namcap implicit depends
          glibc gcc-libs glib2 icu hicolor-icon-theme libx11 gstreamer
          abseil-cpp taglib gst-plugins-base-libs)
@@ -21,7 +22,7 @@ optdepends=('gst-libav: additional codecs'
 provides=(strawberry)
 conflicts=(strawberry)
 source=("git+https://github.com/jonaski/strawberry.git#tag=${pkgver}")
-sha256sums=('7dfce6ede1e1347218926c0a41581e56a080a132354779e1102147dc3a550d65')
+sha256sums=('39b0a9f0710e6eb2a4f47df181dc6bbc26cdb06fee54ac9dc0f4c391371d9f31')
 
 prepare() {
   cd strawberry

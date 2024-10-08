@@ -1,7 +1,7 @@
 pkgbase = strawberry-lite
 	pkgdesc = A music player aimed at audio enthusiasts and music collectors, fewer fautures, Gstreamer and alsa only
 	pkgver = 1.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.strawberrymusicplayer.org/
 	arch = x86_64
 	arch = i686
@@ -45,6 +45,6 @@ pkgbase = strawberry-lite
 	provides = strawberry
 	conflicts = strawberry
 	source = git+https://github.com/jonaski/strawberry.git#tag=1.2.0
-	sha256sums = 7dfce6ede1e1347218926c0a41581e56a080a132354779e1102147dc3a550d65
+	sha256sums = 39b0a9f0710e6eb2a4f47df181dc6bbc26cdb06fee54ac9dc0f4c391371d9f31
 
 pkgname = strawberry-lite
