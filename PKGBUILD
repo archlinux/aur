@@ -1,7 +1,7 @@
 # Maintainer: Adam Perkowski <adas1per@protonmail.com>
 pkgname=linutil-git
 _pkgname=linutil
-pkgver=2024.09.28.r38.g49379a7
+pkgver=2024.09.28.r66.g55b5838
 pkgrel=1
 pkgdesc="Chris Titus Tech's Linutil is a distro-agnostic toolbox designed to simplify everyday Linux tasks."
 arch=('x86_64' 'aarch64')
@@ -45,5 +45,6 @@ package() {
     cd "$_pkgname"
 
     install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/$_pkgname"
-    install -Dm644 "${srcdir}/$_pkgname.desktop" "${pkgdir}/usr/share/applications/$_pkgname.desktop"
+    install -Dm644 "man/$_pkgname.1" "$pkgdir/usr/share/man/man1/$_pkgname.1"
+    install -Dm644 "$srcdir/$_pkgname.desktop" "$pkgdir/usr/share/applications/$_pkgname.desktop"
 }
