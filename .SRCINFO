@@ -1,6 +1,6 @@
 pkgbase = rune-cpp-git
 	pkgdesc = A C++ framework for developing REST APIs with a focus on simplicity and speed.
-	pkgver = 0.1.r5.e52e582
+	pkgver = 0.1
 	pkgrel = 1
 	url = https://github.com/ISBachvarov21/Rune
 	arch = x86_64
