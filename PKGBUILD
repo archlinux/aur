@@ -17,12 +17,12 @@ makedepends=('python-poetry')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/ollama/ollama-python/archive/refs/tags/v$pkgver.tar.gz")
 
 build() {
-	cd "ollama-python-$pkgver"
+	cd "ollama-python-$pkgver" || exit
 	poetry build -f wheel
 }
 
 package() {
-	cd "ollama-python-$pkgver"
+	cd "ollama-python-$pkgver" || exit
 	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 	python -m installer --destdir="$pkgdir" dist/*.whl
 }
