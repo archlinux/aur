@@ -1,13 +1,13 @@
 pkgbase = ruby-ast-tdl
 	pkgdesc = An experimental and minimalistic Training Description Language for Artificial Sport Trainer
-	pkgver = 0.2.3
+	pkgver = 0.2.4
 	pkgrel = 1
 	url = https://github.com/firefly-cpp/ast-tdl
 	arch = x86_64
 	license = MIT
 	depends = ruby-enum
-	noextract = ast-tdl-0.2.3.gem
-	source = https://rubygems.org/downloads/ast-tdl-0.2.3.gem
-	sha256sums = 227792abfbc3735b0c206585399837e8391f5cef3a91b2a56656f2ce7018cc3e
+	noextract = ast-tdl-0.2.4.gem
+	source = https://rubygems.org/downloads/ast-tdl-0.2.4.gem
+	sha256sums = 9f9ed96e9a9c0d97d3af7f8597b6a2e13326b80aca56642e9b93ac84aee98247
 
 pkgname = ruby-ast-tdl
