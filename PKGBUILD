@@ -7,8 +7,9 @@ arch=('x86_64' 'aarch64')
 url="https://github.com/ChrisTitusTech/$pkgname"
 license=('MIT')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/ChrisTitusTech/$pkgname/archive/refs/tags/$pkgver.tar.gz"
-    "https://raw.githubusercontent.com/ChrisTitusTech/$pkgname/refs/heads/main/$pkgname.desktop")
-sha256sums=('f618ff87a4ce9b18c10e1c35b60e1bfc59c95826f75b49e5eeac8ae5b4672940' 'SKIP')
+    "https://raw.githubusercontent.com/ChrisTitusTech/$pkgname/refs/heads/main/$pkgname.desktop"
+    "https://raw.githubusercontent.com/ChrisTitusTech/$pkgname/refs/heads/main/man/$pkgname.1") # REMOVE THIS WITH THE NEXT RELEASE
+sha256sums=('f618ff87a4ce9b18c10e1c35b60e1bfc59c95826f75b49e5eeac8ae5b4672940' 'SKIP' 'SKIP')
 makedepends=('rustup' 'glibc' 'gcc-libs')
 depends=('git' 'pacman' 'tree-sitter' 'tree-sitter-bash')
 optdepends=('ttf-nerd-fonts-symbols: symbols and icons')
@@ -37,5 +38,6 @@ package() {
     cd "$pkgname-$pkgver"
 
     install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/$pkgname"
-    install -Dm644 "${srcdir}/$pkgname.desktop" "${pkgdir}/usr/share/applications/$pkgname.desktop"
+    install -Dm644 "$srcdir/$pkgname.1" "$pkgdir/usr/share/man/man1/$pkgname.1"
+    install -Dm644 "$srcdir/$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
 }
