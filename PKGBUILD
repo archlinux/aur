@@ -1,13 +1,14 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=vnite-git
 _pkgname=Vnite
-pkgver=1.3.3.r0.g85b8537
+pkgver=1.5.7.r5.g6d24463
 _electronversion=28
 _nodeversion=20
 pkgrel=1
 pkgdesc="Visual Novel Management Software.视觉小说 / Galgame 管理软件"
 arch=('x86_64')
-url="https://github.com/ximu3/vnite"
+url="https://vnite.ximu.dev/"
+_ghurl="https://github.com/ximu3/vnite"
 license=("LicenseRef-unknown")
 conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}=${pkgver%.r*}")
@@ -22,7 +23,7 @@ makedepends=(
     'curl'
 )
 source=(
-    "${pkgname//-/.}::git+${url}.git"
+    "${pkgname//-/.}::git+${_ghurl}.git"
     "${pkgname%-git}.sh"
 )
 sha256sums=('SKIP'
@@ -65,7 +66,7 @@ build() {
     } >> .npmrc
     sed -i "/external: /d" electron.vite.config.mjs
     sed -i "s/getAppRootPath(), \'\/logs/app.getPath(\'userData\'), \'\/logs/" src/main/index.js
-    sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/" package.json
+    sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
     NODE_ENV=development    npm install
     NODE_ENV=production     npm run build:unpack
 }

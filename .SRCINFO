@@ -1,8 +1,8 @@
 pkgbase = vnite-git
 	pkgdesc = Visual Novel Management Software.视觉小说 / Galgame 管理软件
-	pkgver = 1.3.3.r0.g85b8537
+	pkgver = 1.5.7.r5.g6d24463
 	pkgrel = 1
-	url = https://github.com/ximu3/vnite
+	url = https://vnite.ximu.dev/
 	arch = x86_64
 	license = LicenseRef-unknown
 	makedepends = npm
@@ -11,7 +11,7 @@ pkgbase = vnite-git
 	makedepends = gendesk
 	makedepends = curl
 	depends = electron28
-	provides = vnite=1.3.3
+	provides = vnite=1.5.7
 	conflicts = vnite
 	source = vnite.git::git+https://github.com/ximu3/vnite.git
 	source = vnite.sh
