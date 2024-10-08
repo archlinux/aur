@@ -1,16 +1,19 @@
 pkgbase = openhome-bin
-	pkgdesc = Application for importing and transferring Pokémon between save files
-	pkgver = 0.3.0
-	pkgrel = 5
+	pkgdesc = Application for importing and transferring Pokémon between save files.
+	pkgver = 0.4.0
+	pkgrel = 1
 	url = https://github.com/andrewbenington/OpenHome
+	arch = aarch64
 	arch = x86_64
 	license = GPL-3.0-only
-	depends = electron25
-	provides = openhome=0.3.0
+	depends = electron31
+	provides = openhome=0.4.0
 	conflicts = openhome
-	source = openhome-0.3.0.deb::https://github.com/andrewbenington/OpenHome/releases/download/v0.3.0/openhome_0.3.0_amd64.deb
 	source = openhome.sh
-	sha256sums = d7c3c19e486b75a170d769569e9a43a3fbcd445af8f0a4ebc6557720567c773e
-	sha256sums = 2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051
+	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
+	source_aarch64 = openhome-0.4.0-aarch64.deb::https://github.com/andrewbenington/OpenHome/releases/download/v0.4.0/openhome_0.4.0_arm64.deb
+	sha256sums_aarch64 = 142e2f3d84d80d290b573e5c6e177343fb58e438e9d65375a1767345edc8e308
+	source_x86_64 = openhome-0.4.0-x86_64.deb::https://github.com/andrewbenington/OpenHome/releases/download/v0.4.0/openhome_0.4.0_amd64.deb
+	sha256sums_x86_64 = b124e5410885791a6f6f453a9bfe86954a3e304b8388e69eb110fcf22eaeb6cc
 
 pkgname = openhome-bin
