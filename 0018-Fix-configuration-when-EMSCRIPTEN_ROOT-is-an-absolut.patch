@@ -1,0 +1,34 @@
+From 679883d7d294baabc50e8704dacaea6fea76018c Mon Sep 17 00:00:00 2001
+From: Martchus <martchus@gmx.net>
+Date: Sun, 9 Jun 2024 23:31:12 +0200
+Subject: [PATCH 18/18] Fix configuration when `EMSCRIPTEN_ROOT` is an absolute
+ path
+
+Not sure whether this is unusual but under Arch Linux the `emscripten`
+package specifies absoute paths in `/usr/lib/emscripten/.emscripten`. In
+this case it makes no sense to treat them as relative to `EMSDK` (which
+would lead to configuration errors).
+
+Change-Id: I506de85f3bc0ab2f865d5fd3c7e6767d51e9396e
+---
+ cmake/QtPublicWasmToolchainHelpers.cmake | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/cmake/QtPublicWasmToolchainHelpers.cmake b/cmake/QtPublicWasmToolchainHelpers.cmake
+index 2b93284cda8..bd7f4a7c4b6 100644
+--- a/cmake/QtPublicWasmToolchainHelpers.cmake
++++ b/cmake/QtPublicWasmToolchainHelpers.cmake
+@@ -13,6 +13,10 @@ function(__qt_internal_get_emroot_path_suffix_from_emsdk_env out_var)
+     string(REGEX MATCH "EMSCRIPTEN_ROOT.*$" EMROOT "${ver}")
+     string(REGEX MATCH "'([^' ]*)'" EMROOT2 "${EMROOT}")
+     string(REPLACE "'" "" EMROOT_PATH "${EMROOT2}")
++    if (IS_ABSOLUTE ${EMROOT_PATH})
++        set($ENV{EMSDK} "${EMROOT_PATH}")
++        set(EMROOT_PATH "")
++    endif ()
+ 
+     set(${out_var} "${EMROOT_PATH}" PARENT_SCOPE)
+ endfunction()
+-- 
+2.47.0
+
