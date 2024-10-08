@@ -1,0 +1,136 @@
+From 486749911f5d4aa664fbb5612db239aed6fcb6c3 Mon Sep 17 00:00:00 2001
+From: Martchus <martchus@gmx.net>
+Date: Thu, 5 Nov 2020 21:59:33 +0100
+Subject: [PATCH 04/18] Fix transitive dependencies (of static libraries)
+
+The dependencies of these libraries are not reliably picked up by their
+corresponding find modules. This change allows adding the required
+dependencies by setting certain variables, e.g. within the toolchain file.
+
+This change also disables the upstream hack for OpenSSL's dependencies
+as it is even more hacky to hardcode the library names.
+
+Change-Id: I3baec612ee071eec77f756b18bbb9af87663527c
+---
+ .../3rdparty/extra-cmake-modules/find-modules/FindGLIB2.cmake | 2 +-
+ cmake/FindMySQL.cmake                                         | 1 +
+ cmake/FindWrapDBus1.cmake                                     | 1 +
+ cmake/FindWrapOpenSSL.cmake                                   | 4 ++--
+ cmake/FindWrapSystemFreetype.cmake                            | 2 +-
+ cmake/FindWrapSystemHarfbuzz.cmake                            | 2 +-
+ cmake/FindWrapSystemPNG.cmake                                 | 2 +-
+ src/plugins/sqldrivers/psql/CMakeLists.txt                    | 2 +-
+ 8 files changed, 9 insertions(+), 7 deletions(-)
+
+diff --git a/cmake/3rdparty/extra-cmake-modules/find-modules/FindGLIB2.cmake b/cmake/3rdparty/extra-cmake-modules/find-modules/FindGLIB2.cmake
+index 24a194c9cb3..a6a16b494fd 100644
+--- a/cmake/3rdparty/extra-cmake-modules/find-modules/FindGLIB2.cmake
++++ b/cmake/3rdparty/extra-cmake-modules/find-modules/FindGLIB2.cmake
+@@ -135,7 +135,7 @@ if(GLIB2_FOUND AND NOT TARGET GLIB2::GLIB2)
+   add_library(GLIB2::GLIB2 UNKNOWN IMPORTED)
+   set_target_properties(GLIB2::GLIB2 PROPERTIES
+                         IMPORTED_LOCATION "${GLIB2_LIBRARIES}"
+-                        INTERFACE_LINK_LIBRARIES "${GTHREAD2_LIBRARIES}"
++                        INTERFACE_LINK_LIBRARIES "${GTHREAD2_LIBRARIES};${GLIB2_DEPENDENCIES}"
+                         INTERFACE_INCLUDE_DIRECTORIES "${GLIB2_INCLUDE_DIRS}")
+ endif()
+ 
+diff --git a/cmake/FindMySQL.cmake b/cmake/FindMySQL.cmake
+index 3dedca85759..d0fa2e81dd0 100644
+--- a/cmake/FindMySQL.cmake
++++ b/cmake/FindMySQL.cmake
+@@ -83,6 +83,7 @@ if(MySQL_FOUND)
+     add_library(MySQL::MySQL UNKNOWN IMPORTED)
+     set_target_properties(MySQL::MySQL PROPERTIES
+                           IMPORTED_LOCATION "${MySQL_LIBRARIES}"
++                          INTERFACE_LINK_LIBRARIES "${MYSQL_DEPENDENCIES}"
+                           INTERFACE_INCLUDE_DIRECTORIES "${MySQL_INCLUDE_DIRS}")
+     if(MySQL_LIBRARY_DEBUG)
+       set_target_properties(MySQL::MySQL PROPERTIES
+diff --git a/cmake/FindWrapDBus1.cmake b/cmake/FindWrapDBus1.cmake
+index 8e0ed81f893..0aec7dbb776 100644
+--- a/cmake/FindWrapDBus1.cmake
++++ b/cmake/FindWrapDBus1.cmake
+@@ -50,4 +50,5 @@ find_package_handle_standard_args(WrapDBus1 REQUIRED_VARS
+                                             VERSION_VAR DBus1_VERSION)
+ if(TARGET dbus-1)
+     set_property(TARGET dbus-1 PROPERTY IMPORTED_IMPLIB ${DBus1_LIBRARY})
++    set_property(TARGET dbus-1 PROPERTY INTERFACE_LINK_LIBRARIES "${DBUS1_DEPENDENCIES}")
+ endif()
+diff --git a/cmake/FindWrapOpenSSL.cmake b/cmake/FindWrapOpenSSL.cmake
+index a4341271fee..be6ac7003a1 100644
+--- a/cmake/FindWrapOpenSSL.cmake
++++ b/cmake/FindWrapOpenSSL.cmake
+@@ -14,7 +14,7 @@ set(WrapOpenSSL_FOUND OFF)
+ find_package(WrapOpenSSLHeaders ${WrapOpenSSL_FIND_VERSION})
+ 
+ if(TARGET OpenSSL::SSL)
+-    if(WIN32)
++    if(WIN32 AND NOT MINGW)
+         get_target_property(libType OpenSSL::Crypto TYPE)
+         if(libType STREQUAL "ALIAS")
+             get_target_property(writableLib OpenSSL::Crypto ALIASED_TARGET)
+@@ -29,7 +29,7 @@ if(TARGET OpenSSL::SSL)
+     set(WrapOpenSSL_FOUND ON)
+ 
+     add_library(WrapOpenSSL::WrapOpenSSL INTERFACE IMPORTED)
+-    target_link_libraries(WrapOpenSSL::WrapOpenSSL INTERFACE OpenSSL::SSL)
++    target_link_libraries(WrapOpenSSL::WrapOpenSSL INTERFACE OpenSSL::SSL ${OPENSSL_DEPENDENCIES})
+ endif()
+ 
+ include(FindPackageHandleStandardArgs)
+diff --git a/cmake/FindWrapSystemFreetype.cmake b/cmake/FindWrapSystemFreetype.cmake
+index d0c27a9f0f7..64e14c584c2 100644
+--- a/cmake/FindWrapSystemFreetype.cmake
++++ b/cmake/FindWrapSystemFreetype.cmake
+@@ -47,7 +47,7 @@ find_package_handle_standard_args(WrapSystemFreetype
+ if(WrapSystemFreetype_FOUND)
+     add_library(WrapSystemFreetype::WrapSystemFreetype INTERFACE IMPORTED)
+     target_link_libraries(WrapSystemFreetype::WrapSystemFreetype
+-                          INTERFACE "${__freetype_target_name}")
++                          INTERFACE "${__freetype_target_name}" ${FREETYPE_DEPENDENCIES})
+ endif()
+ unset(__freetype_target_name)
+ unset(__freetype_found)
+diff --git a/cmake/FindWrapSystemHarfbuzz.cmake b/cmake/FindWrapSystemHarfbuzz.cmake
+index d989c93e440..faa070f5ce8 100644
+--- a/cmake/FindWrapSystemHarfbuzz.cmake
++++ b/cmake/FindWrapSystemHarfbuzz.cmake
+@@ -80,7 +80,7 @@ find_package_handle_standard_args(WrapSystemHarfbuzz
+ if(WrapSystemHarfbuzz_FOUND)
+     add_library(WrapSystemHarfbuzz::WrapSystemHarfbuzz INTERFACE IMPORTED)
+     target_link_libraries(WrapSystemHarfbuzz::WrapSystemHarfbuzz
+-                          INTERFACE "${__harfbuzz_target_name}")
++                          INTERFACE "${__harfbuzz_target_name}" ${HARFBUZZ_DEPENDENCIES})
+ endif()
+ unset(__harfbuzz_target_name)
+ unset(__harfbuzz_find_include_dirs_hints)
+diff --git a/cmake/FindWrapSystemPNG.cmake b/cmake/FindWrapSystemPNG.cmake
+index 967ccc5c026..9a7d5150dcf 100644
+--- a/cmake/FindWrapSystemPNG.cmake
++++ b/cmake/FindWrapSystemPNG.cmake
+@@ -36,7 +36,7 @@ find_package_handle_standard_args(WrapSystemPNG
+ if(WrapSystemPNG_FOUND)
+     add_library(WrapSystemPNG::WrapSystemPNG INTERFACE IMPORTED)
+     target_link_libraries(WrapSystemPNG::WrapSystemPNG
+-                          INTERFACE "${__png_target_name}")
++                          INTERFACE "${__png_target_name}" ${LIBPNG_DEPENDENCIES})
+ endif()
+ unset(__png_target_name)
+ unset(__png_found)
+diff --git a/src/plugins/sqldrivers/psql/CMakeLists.txt b/src/plugins/sqldrivers/psql/CMakeLists.txt
+index 2f55ab49500..bcf0bdbb42e 100644
+--- a/src/plugins/sqldrivers/psql/CMakeLists.txt
++++ b/src/plugins/sqldrivers/psql/CMakeLists.txt
+@@ -18,7 +18,7 @@ qt_internal_add_plugin(QPSQLDriverPlugin
+         QT_NO_CAST_TO_ASCII
+         QT_NO_CONTEXTLESS_CONNECT
+     LIBRARIES
+-        PostgreSQL::PostgreSQL
++        PostgreSQL::PostgreSQL ${POSTGRESQL_DEPENDENCIES}
+         Qt::Core
+         Qt::CorePrivate
+         Qt::SqlPrivate
+-- 
+2.47.0
+
