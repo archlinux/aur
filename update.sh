@@ -45,7 +45,7 @@ if [[ "$SudachiDict_DATE" != "$SUDACHI_DATE" ]];then
     git diff
     git commit -a -m "Update: SudachiDict=$SudachiDict_DATE"
 fi
-if [[ "$UPDATE_FLAG" == "1" ]]; then
+if [[ "$UPDATED_FLAG" == "1" ]]; then
     echo "Change Detected."
     #git push
 else
