@@ -13,9 +13,9 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "$pkgname"
-  _head_ver=$(grep -oP '(?<=set\s*\(\s*HEAD_VERSION\s*)\d+' CMakeLists.txt)
-  _main_ver=$(grep -oP '(?<=set\s*\(\s*MAIN_VERSION\s*)\d+' CMakeLists.txt)
-  _minor_ver=$(grep -oP '(?<=set\s*\(\s*MINOR_VERSION\s*)\d+' CMakeLists.txt)
+  _head_ver=$(grep -oP '(?<=set\( HEAD_VERSION )\d+' CMakeLists.txt)
+  _main_ver=$(grep -oP '(?<=set\( MAIN_VERSION )\d+' CMakeLists.txt)
+  _minor_ver=$(grep -oP '(?<=set\( MINOR_VERSION )\d+' CMakeLists.txt)
 
   printf '%s.%s.%s' "${_head_ver:?}" "${_main_ver:?}" "${_minor_ver:?}"
 }
