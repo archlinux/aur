@@ -1,4 +1,4 @@
-# Maintainer: Mattias Andrée <`base64 -d`(bWF0dGlhcy5hbmRyZWU)@protonmail.com>
+# Maintainer: Mattias Andrée <m@`base64 -d`(bWFhbmRyZWU).se>
 # Previous maintainer: crshd <crshd@mail.com>
 
 pkgname=nafe
