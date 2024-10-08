@@ -1,4 +1,4 @@
-From 58397ed601ce1dd51937dd42b4b17fe32f290564 Mon Sep 17 00:00:00 2001
+From 5227771f3fbb19d14476b15f92dcedda9f32f699 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 1 May 2022 23:28:26 +0200
 Subject: [PATCH 11/18] Allow using properties of PkgConfig targets for Wayland
@@ -49,5 +49,5 @@ index 233cc88d020..875c71377c6 100644
  set_package_properties(Wayland PROPERTIES
      URL "http://wayland.freedesktop.org"
 -- 
-2.46.2
+2.47.0
 

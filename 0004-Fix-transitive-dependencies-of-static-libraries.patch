@@ -1,4 +1,4 @@
-From 9e9e9109e2badd9b29529b90e1834953960c1343 Mon Sep 17 00:00:00 2001
+From 486749911f5d4aa664fbb5612db239aed6fcb6c3 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Thu, 5 Nov 2020 21:59:33 +0100
 Subject: [PATCH 04/18] Fix transitive dependencies (of static libraries)
@@ -36,7 +36,7 @@ index 24a194c9cb3..a6a16b494fd 100644
  endif()
  
 diff --git a/cmake/FindMySQL.cmake b/cmake/FindMySQL.cmake
-index d191d1ac0a3..b61d0107f25 100644
+index 3dedca85759..d0fa2e81dd0 100644
 --- a/cmake/FindMySQL.cmake
 +++ b/cmake/FindMySQL.cmake
 @@ -83,6 +83,7 @@ if(MySQL_FOUND)
@@ -132,5 +132,5 @@ index 2f55ab49500..bcf0bdbb42e 100644
          Qt::CorePrivate
          Qt::SqlPrivate
 -- 
-2.46.2
+2.47.0
 

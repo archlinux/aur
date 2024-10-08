@@ -1,4 +1,4 @@
-From 43408f1bb5344f8a3bebb382f844741913c2489f Mon Sep 17 00:00:00 2001
+From 679883d7d294baabc50e8704dacaea6fea76018c Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 9 Jun 2024 23:31:12 +0200
 Subject: [PATCH 18/18] Fix configuration when `EMSCRIPTEN_ROOT` is an absolute
@@ -15,7 +15,7 @@ Change-Id: I506de85f3bc0ab2f865d5fd3c7e6767d51e9396e
  1 file changed, 4 insertions(+)
 
 diff --git a/cmake/QtPublicWasmToolchainHelpers.cmake b/cmake/QtPublicWasmToolchainHelpers.cmake
-index 31f6b5aca5a..38c0ef22193 100644
+index 2b93284cda8..bd7f4a7c4b6 100644
 --- a/cmake/QtPublicWasmToolchainHelpers.cmake
 +++ b/cmake/QtPublicWasmToolchainHelpers.cmake
 @@ -13,6 +13,10 @@ function(__qt_internal_get_emroot_path_suffix_from_emsdk_env out_var)
@@ -30,5 +30,5 @@ index 31f6b5aca5a..38c0ef22193 100644
      set(${out_var} "${EMROOT_PATH}" PARENT_SCOPE)
  endfunction()
 -- 
-2.46.2
+2.47.0
 
