@@ -1,7 +1,7 @@
 pkgbase = greenbone-feed-sync
 	pkgdesc = script for downloading the Greenbone Community Feed
 	pkgver = 24.9.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/greenbone/greenbone-feed-sync
 	arch = any
 	groups = greenbone-vulnerability-manager

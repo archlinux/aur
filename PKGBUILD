@@ -2,7 +2,7 @@
 
 pkgname=greenbone-feed-sync
 pkgver=24.9.0
-pkgrel=2
+pkgrel=3
 pkgdesc='script for downloading the Greenbone Community Feed'
 arch=('any')
 url="https://github.com/greenbone/greenbone-feed-sync"
@@ -43,13 +43,13 @@ package() {
     python -m installer --destdir="$pkgdir" dist/*.whl
 
     # Install custom unit files
-    install -m 644 greenbone-certdata-sync.service "${pkgdir}"/usr/lib/systemd/system
-    install -m 644 greenbone-certdata-sync.timer "${pkgdir}"/usr/lib/systemd/system
-    install -m 644 greenbone-feed-sync.service "${pkgdir}"/usr/lib/systemd/system
-    install -m 644 greenbone-feed-sync.timer "${pkgdir}"/usr/lib/systemd/system
-    install -m 644 greenbone-nvt-sync.service "${pkgdir}"/usr/lib/systemd/system
-    install -m 644 greenbone-nvt-sync.timer "${pkgdir}"/usr/lib/systemd/system
-    install -m 644 greenbone-scapdata-sync.service "${pkgdir}"/usr/lib/systemd/system
-    install -m 644 greenbone-scapdata-sync.timer "${pkgdir}"/usr/lib/systemd/system
+    install -Dm 644 "${srcdir}"/greenbone-certdata-sync.service -t "${pkgdir}"/usr/lib/systemd/system
+    install -Dm 644 "${srcdir}"/greenbone-certdata-sync.timer -t "${pkgdir}"/usr/lib/systemd/system
+    install -Dm 644 "${srcdir}"/greenbone-feed-sync.service -t "${pkgdir}"/usr/lib/systemd/system
+    install -Dm 644 "${srcdir}"/greenbone-feed-sync.timer -t "${pkgdir}"/usr/lib/systemd/system
+    install -Dm 644 "${srcdir}"/greenbone-nvt-sync.service -t "${pkgdir}"/usr/lib/systemd/system
+    install -Dm 644 "${srcdir}"/greenbone-nvt-sync.timer -t "${pkgdir}"/usr/lib/systemd/system
+    install -Dm 644 "${srcdir}"/greenbone-scapdata-sync.service -t "${pkgdir}"/usr/lib/systemd/system
+    install -Dm 644 "${srcdir}"/greenbone-scapdata-sync.timer -t "${pkgdir}"/usr/lib/systemd/system
 }
 
