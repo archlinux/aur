@@ -1,20 +1,20 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
 pkgname="cxcli"
-pkgver=1.230.0
+pkgver=1.231.0
 pkgrel=1
 pkgdesc="The missing CLI for your Dialogflow CX projects"
-arch=('x86_64')
+arch=('x86_64' 'aarch64' 'i686' 'armv7h')
 url="https://cxcli.xavidop.me"
 _url="https://github.com/xavidop/dialogflow-cx-cli"
 license=('Apache-2.0')
-makedepends=('go')
 depends=('glibc')
+makedepends=('go')
 provides=('dialogflow-cx-cli')
 conflicts=('dialogflow-cx-cli')
 _pkgsrc="dialogflow-cx-cli-${pkgver}"
 source=("${_pkgsrc}.tar.gz::${_url}/archive/refs/tags/v${pkgver}.tar.gz")
-b2sums=('f5d301b7e2dc8b44cb369b9092e3c60a3d9c54bdb01a27feb65270e88aa55786703d5e6c567fcf53699fc60cb032895b876bfdc53af27e18d32d024516327b42')
+b2sums=('32be097c603707b774310a7f6c7b5cb2b95c4b3e672a395aa7de38b5ea3acab64bfd5dc0f95b1be2197708c0cb09a5ad3c422deb93f3cbb99c55e93ca1149edb')
 
 prepare() {
   cd "${srcdir}/${_pkgsrc}"
