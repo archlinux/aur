@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=zerochess-git
 _pkgname=ZeroChess
-pkgver=1.0.2.r3.gfc79192
+pkgver=1.0.3.r0.g34be170
 _electronversion=27
 _nodeversion=18
 pkgrel=1
