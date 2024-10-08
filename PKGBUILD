@@ -12,11 +12,11 @@ source=("git+$url#tag=v$pkgver")
 sha256sums=('SKIP')  
 
 build() {
-  cd "$srcdir/borg"
+  cd "$srcdir/org"
   python setup.py build
 }
 
 package() {
-  cd "$srcdir/borg"
+  cd "$srcdir/org"
   python setup.py install --root="$pkgdir/" --optimize=1
 }
