@@ -1,0 +1,34 @@
+From fc413eaff70ba6052290ce366968c455b0a60a82 Mon Sep 17 00:00:00 2001
+From: Martchus <martchus@gmx.net>
+Date: Sun, 9 Jun 2024 23:28:03 +0200
+Subject: [PATCH 17/18] Workaround `Unknown CMake command
+ "_qt_test_emscripten_version".`
+
+Not sure why `QtPublicWasmToolchainHelpers.cmake` is not included
+automatically in my WASM builds; this helps fixing the configuration error
+at least.
+
+Change-Id: Id63c90a1f564688849c5bd7193195faa1eb38a0a
+---
+ src/corelib/Qt6WasmMacros.cmake | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/src/corelib/Qt6WasmMacros.cmake b/src/corelib/Qt6WasmMacros.cmake
+index b590d893962..9bdd24b719d 100644
+--- a/src/corelib/Qt6WasmMacros.cmake
++++ b/src/corelib/Qt6WasmMacros.cmake
+@@ -1,6 +1,11 @@
+ # Copyright (C) 2022 The Qt Company Ltd.
+ # SPDX-License-Identifier: BSD-3-Clause
+ 
++# Workaround `Unknown CMake command "_qt_test_emscripten_version".`
++if(NOT COMMAND _qt_test_emscripten_version)
++    include("$ENV{EMSDK}/system/lib/cmake/Qt6/QtPublicWasmToolchainHelpers.cmake")
++endif()
++
+ # Copy in Qt HTML/JS launch files for apps.
+ function(_qt_internal_wasm_add_target_helpers target)
+ 
+-- 
+2.47.0
+

@@ -1,0 +1,29 @@
+From 1540ab0f104c0c8a27d54a505ec49f73add6bd6c Mon Sep 17 00:00:00 2001
+From: Martchus <martchus@gmx.net>
+Date: Sun, 8 Nov 2020 00:34:09 +0100
+Subject: [PATCH 07/18] Allow overriding CMAKE_FIND_LIBRARY_SUFFIXES to prefer
+ static libraries
+
+Change-Id: Ibb688ac503ecdf1dd3bd838890efdfc01bf706aa
+---
+ cmake/QtBuildInternals/QtBuildInternalsConfig.cmake | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/cmake/QtBuildInternals/QtBuildInternalsConfig.cmake b/cmake/QtBuildInternals/QtBuildInternalsConfig.cmake
+index 129f1ebb771..9bae62d8795 100644
+--- a/cmake/QtBuildInternals/QtBuildInternalsConfig.cmake
++++ b/cmake/QtBuildInternals/QtBuildInternalsConfig.cmake
+@@ -4,6 +4,10 @@
+ # These values should be kept in sync with those in qtbase/.cmake.conf
+ cmake_minimum_required(VERSION 3.16...3.21)
+ 
++if (CMAKE_FIND_LIBRARY_SUFFIXES_OVERRIDE)
++    set(CMAKE_FIND_LIBRARY_SUFFIXES "${CMAKE_FIND_LIBRARY_SUFFIXES_OVERRIDE}")
++endif ()
++
+ set(QT_BACKUP_CMAKE_INSTALL_PREFIX_BEFORE_EXTRA_INCLUDE "${CMAKE_INSTALL_PREFIX}")
+ 
+ # This depends on qt_internal_read_repo_dependencies existing.
+-- 
+2.47.0
+
