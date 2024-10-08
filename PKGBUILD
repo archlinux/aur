@@ -1,3 +1,4 @@
+# Maintainer: Mattias Andrée <m@`base64 -d`(bWFhbmRyZWU).se>                                                                            
 pkgname=xcman
 pkgver=1.1.1
 pkgrel=1
