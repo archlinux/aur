@@ -5,7 +5,7 @@
 # Contributor: Dimitris Kiziridis <ragouel at outlook dot com>
 pkgname=netron-bin
 _pkgname=Netron
-pkgver=7.9.3
+pkgver=7.9.5
 _electronversion=32
 pkgrel=1
 pkgdesc="Visualizer for neural network, deep learning and machine learning models.Prebuilt version,use system-wide electron."
@@ -23,7 +23,7 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/lutzroeder/netron/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('31d85f3173355a5a334124dacf53b6961ce23b5ef4aa5cbf0b4a2dcdc7b4fc06'
+sha256sums=('5af7ac5673c52bd122002883c0870f6456e604de8f3d657348c1bab44c351659'
             '535cb2c7c8990f967c106e3035e4df8d3e070144af1163b86c8bb58b65fe5e88'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 build() {
