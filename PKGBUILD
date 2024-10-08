@@ -1,6 +1,7 @@
 # Maintainer: Ivaylo Bachvarov <ISBachvarov21@codingburgas.bg>
 pkgname=rune-cpp-git
-pkgver=0.1.r$(git rev-list --count HEAD)
+pkgver=0.1.r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+
 pkgrel=1
 pkgdesc="A C++ framework for developing REST APIs with a focus on simplicity and speed."
 arch=(x86_64 i686)
