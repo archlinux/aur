@@ -10,26 +10,23 @@
 # Contributor: Marcin Nowak <marcin [dot] j [dot] nowak [at] gmail [dot] com>
 
 pkgname=lightworks-beta
-lwksver=2023.2
-lwksbuild=142600
-pkgver=$lwksver
+lwksver=2024.1
+lwksreldir=$lwksver
+lwksbuild=147877
+pkgver=$lwksver.$lwksbuild
 pkgrel=1
 pkgdesc="Lightworks Beta is the public Beta branch for Lightworks, the professional video editing suite, updated weekly"
 arch=('x86_64')
 options=('!strip')
 url="http://www.lwks.com/"
 license=('custom')
-depends=('cairo' 'gdk-pixbuf2' 'glib2' 'libjpeg-turbo' 'pango' 'curl' 'gtk3' 'portaudio' 'openssl' 'libgl' 'libtiff' 'libutil-linux' 'ffmpeg' 'glu' 'libedit' 'nvidia-cg-toolkit')
-optdepends=('nvidia-utils: only for nVidia users')
+depends=('cairo' 'gdk-pixbuf2' 'glib2' 'libjpeg-turbo' 'pango' 'curl' 'gtk3' 'portaudio' 'openssl' 'libgl' 'libtiff' 'libutil-linux' 'ffmpeg' 'glu' 'libedit' 'nvidia-cg-toolkit' 'twolame' )
+optdepends=('nvidia-utils: only for nVidia users' 'libc++: only for BlackMagic RAW support (BRAW)' 'libc++abi: only for BlackMagic RAW support (BRAW)')
 provides=('lightworks')
 conflicts=('lightworks' 'lwks-beta')
 replaces=('lwks-beta')
 source=(
-    "https://cdn.lwks.com/releases/${lwksver}/lightworks_${lwksver}_r${lwksbuild}.deb"
-    )
-
-sha512sums=(
-    '0d5857a37a9958e8e9ea7340de5771abb35847616f270784e828a3f1f7c92b9fea07547d6333608444701addff7c75a11d60cc144f1bef3c2077f89a8217fbb6'
+    "https://cdn.lwks.com/betas/public/lightworks/${lwksver}+Beta+Revision+${lwksbuild}+%281st+October%29/Lightworks-${lwksver}-Beta-${lwksbuild}.deb"
     )
 
 package() {
@@ -49,3 +46,4 @@ package() {
     chmod a+rw "$pkgdir"/usr/share/lightworks/Preferences
     chmod a+rw "$pkgdir"/usr/share/lightworks/"Audio Mixes"
 }
+sha256sums=('eae685e168d1af27594f67138f9d28145713e712f8655fd167b0cebce477e5f1')
