@@ -2,20 +2,20 @@
 
 _pkgbase=synaptics-led
 pkgname=synaptics-led-dkms
-pkgver=6.5.7
+pkgver=6.11.2
 pkgrel=1
 arch=(i686 x86_64)
 license=(GPL2)
 url="https://github.com/vantu5z/synaptics-led"
 pkgdesc="Synaptics LED enabled psmouse kernel module. DKMS version."
-depends=('dkms' 'linux>=6.5.7')
+depends=('dkms' 'linux>=6.11.0')
 makedepends=('git')
 conflicts=("${_pkgbase}")
 provides=("${_pkgbase}")
 
 source=("https://github.com/vantu5z/synaptics-led/archive/refs/tags/${pkgver}.tar.gz"
         'dkms.conf')
-sha256sums=('77a2553ab70845a28bb630e7cbc84716bab717042f245886215c4ce9e84324a4'
+sha256sums=('dc443110cdaaf89c8320db75d3f70bd4828cff003eeca34138800de5577c124e'
             '4bae506df68782fc57471eb983b3ec332694e642c43defeeeba3e3af0802b69f')
 
 package() {
