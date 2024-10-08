@@ -1,13 +1,13 @@
 # Maintainer: Adam Perkowski <adas1per@protonmail.com>
 pkgname="linutil"
 pkgver=2024.09.28
-pkgrel=2
+pkgrel=3
 pkgdesc="Chris Titus Tech's Linutil is a distro-agnostic toolbox designed to simplify everyday Linux tasks."
 arch=('x86_64' 'aarch64')
 url="https://github.com/ChrisTitusTech/$pkgname"
 license=('MIT')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/ChrisTitusTech/$pkgname/archive/refs/tags/$pkgver.tar.gz"
-    "https://raw.githubusercontent.com/adamperkowski/$pkgname-dev/refs/heads/desktop_file/$pkgname.desktop")
+    "https://raw.githubusercontent.com/ChrisTitusTech/$pkgname/refs/heads/main/$pkgname.desktop")
 sha256sums=('f618ff87a4ce9b18c10e1c35b60e1bfc59c95826f75b49e5eeac8ae5b4672940' 'SKIP')
 makedepends=('rustup' 'glibc' 'gcc-libs')
 depends=('git' 'pacman' 'tree-sitter' 'tree-sitter-bash')
