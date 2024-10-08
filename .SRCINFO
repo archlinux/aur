@@ -1,0 +1,23 @@
+pkgbase = android-x86-qt6-svg
+	pkgdesc = Classes for displaying the contents of SVG files (android)
+	pkgver = 6.8.0
+	pkgrel = 1
+	url = https://www.qt.io
+	arch = any
+	groups = android-x86-qt6
+	license = GPL3
+	license = LGPL3
+	license = FDL
+	license = custom
+	makedepends = android-cmake
+	makedepends = qt6-base
+	makedepends = ninja
+	depends = android-x86-qt6-base
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = https://download.qt.io/official_releases/qt/6.8/6.8.0/submodules/qtsvg-everywhere-src-6.8.0.tar.xz
+	sha256sums = cf7a593d5e520f8177240610d9e55d5b75b0887fe5f385554ff64377f1646199
+
+pkgname = android-x86-qt6-svg
