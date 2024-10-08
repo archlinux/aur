@@ -3,7 +3,7 @@
 
 _pkgname="supabase"
 pkgname="${_pkgname}-bin"
-pkgver=1.200.3
+pkgver=1.203.0
 pkgrel=1
 pkgdesc="A CLI for Supabase, an open source Firebase alternative"
 arch=('x86_64' 'aarch64')
@@ -15,8 +15,8 @@ conflicts=("${_pkgname}")
 _pkgsrc="${_pkgname}-${pkgver}"
 source_x86_64=("${_pkgsrc}-x86_64.tar.gz::${_url}/releases/download/v${pkgver}/${_pkgname}_linux_amd64.tar.gz")
 source_aarch64=("${_pkgsrc}-aarch64.tar.gz::${_url}/releases/download/v${pkgver}/${_pkgname}_linux_arm64.tar.gz")
-b2sums_x86_64=('c486535fa3ba58c70978e711c1e73ac3c9670bde4da2263ec826a980e68aff972133ba52b12df813b648e3eab24830e450926623c2fdbfc7bf69edd5d735a465')
-b2sums_aarch64=('100d7d5d59eab28622d173dfb0e636ba872dd1dbe6895551b736ccb06bab54818f33422e613f6971a53266c8768f2444ddf735015f9f17e54c6263acf59b7210')
+sha256sums_x86_64=('8338ba5db47ab2182df49a578e52c842b9097dcbc94b341355af49b701456bc9')
+sha256sums_aarch64=('999bc78f7ac151432c1d5caeb546ec7d5a10bae0efc10236116cb92189ae24e0')
 
 prepare() {
   cd "${srcdir}"
