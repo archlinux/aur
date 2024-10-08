@@ -12,7 +12,7 @@ source=("git+$url#tag=v$pkgver")
 sha256sums=('SKIP')  # You can update this with the actual checksum
 
 build() {
-  cd "$srcdir/$pkgname"
+  cd "$srcdir"
   python setup.py build
 }
 
