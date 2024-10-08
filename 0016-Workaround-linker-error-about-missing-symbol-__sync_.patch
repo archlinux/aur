@@ -1,4 +1,4 @@
-From a7f8a018866ccd98b616df30bf6d5c6a5493dc0b Mon Sep 17 00:00:00 2001
+From 7816d48f125a244ad9d0646a45df4689358127b1 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sat, 17 Feb 2024 23:11:18 +0100
 Subject: [PATCH 16/18] Workaround linker error about missing symbol
@@ -19,10 +19,10 @@ Change-Id: I1b96a6dc44c5f7d527dbed9db58b4f030f175721
  4 files changed, 20 insertions(+)
 
 diff --git a/src/corelib/CMakeLists.txt b/src/corelib/CMakeLists.txt
-index 06ede966852..ae036b97ca7 100644
+index 80d939dbfff..245419bc45d 100644
 --- a/src/corelib/CMakeLists.txt
 +++ b/src/corelib/CMakeLists.txt
-@@ -819,6 +819,11 @@ qt_internal_extend_target(Core CONDITION WASM
+@@ -850,6 +850,11 @@ qt_internal_extend_target(Core CONDITION WASM
          text/qlocale_wasm.cpp
  )
  
@@ -51,10 +51,10 @@ index acd3754f4e5..0557c60afd1 100644
  set_property(TARGET QNLMNIPlugin PROPERTY
      AUTOGEN_BUILD_DIR "${CMAKE_CURRENT_BINARY_DIR}/autogen")
 diff --git a/src/plugins/platforms/direct2d/CMakeLists.txt b/src/plugins/platforms/direct2d/CMakeLists.txt
-index fe4a237aff3..98f96827ab2 100644
+index 062dc301433..8a189c52b44 100644
 --- a/src/plugins/platforms/direct2d/CMakeLists.txt
 +++ b/src/plugins/platforms/direct2d/CMakeLists.txt
-@@ -83,6 +83,11 @@ qt_internal_add_plugin(QWindowsDirect2DIntegrationPlugin
+@@ -81,6 +81,11 @@ qt_internal_add_plugin(QWindowsDirect2DIntegrationPlugin
          runtimeobject
  )
  
@@ -67,10 +67,10 @@ index fe4a237aff3..98f96827ab2 100644
  set_source_files_properties("../windows/openglblacklists/default.json"
      PROPERTIES QT_RESOURCE_ALIAS "default.json"
 diff --git a/src/plugins/platforms/windows/CMakeLists.txt b/src/plugins/platforms/windows/CMakeLists.txt
-index 4cc9b87ced7..d767b2a2659 100644
+index 8ad72dad080..9064100e912 100644
 --- a/src/plugins/platforms/windows/CMakeLists.txt
 +++ b/src/plugins/platforms/windows/CMakeLists.txt
-@@ -71,6 +71,11 @@ qt_internal_add_plugin(QWindowsIntegrationPlugin
+@@ -69,6 +69,11 @@ qt_internal_add_plugin(QWindowsIntegrationPlugin
          runtimeobject
  )
  
@@ -83,5 +83,5 @@ index 4cc9b87ced7..d767b2a2659 100644
  set_source_files_properties("openglblacklists/default.json"
      PROPERTIES QT_RESOURCE_ALIAS "default.json"
 -- 
-2.46.2
+2.47.0
 
