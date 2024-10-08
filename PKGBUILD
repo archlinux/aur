@@ -1,15 +1,15 @@
-# Maintainer: Your Name <your.email@example.com>
+# Maintainer: Benjamin Hammond <benjaminphammond@gmail.com>
 pkgname=org
-pkgver=0.0.1
+pkgver=0.0.2
 pkgrel=1
-pkgdesc="Suckless second brain - a simple terminal note-taking and task management app"
+pkgdesc="Suckless second brain"
 arch=('any')
-url="https://github.com/benjaminingreens/borg"
-license=('MIT')  # Change to your project's license
-depends=('python' 'python-setuptools')
+url="https://github.com/benjaminingreens/org"
+license=('MIT')  
+depends=('python' 'python-pyyaml' 'python-setuptools')
 makedepends=('git')
 source=("git+$url#tag=v$pkgver")
-sha256sums=('SKIP')  # You can update this with the actual checksum
+sha256sums=('SKIP')  
 
 build() {
   cd "$srcdir/borg"
