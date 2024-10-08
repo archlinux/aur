@@ -1,6 +1,6 @@
 pkgbase = pystand
 	pkgdesc = Install Python Versions From The Python-Build-Standalone Project
-	pkgver = 1.11
+	pkgver = 1.12
 	pkgrel = 1
 	url = https://github.com/bulletmark/pystand
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = pystand
 	depends = python-packaging
 	depends = python-platformdirs
 	depends = python-pygithub
-	source = pystand-1.11.tar.gz::https://github.com/bulletmark/pystand/archive/1.11.tar.gz
-	sha1sums = f4b0603a68f3e47b0a1e60a599df04c0b8ae06b7
+	source = pystand-1.12.tar.gz::https://github.com/bulletmark/pystand/archive/1.12.tar.gz
+	sha1sums = e289fd73010392e54c3f5e40e55416bbcd214096
 
 pkgname = pystand
