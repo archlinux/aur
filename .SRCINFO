@@ -1,6 +1,6 @@
 pkgbase = python-linuxpy
 	pkgdesc = Human friendly interface to linux subsystems using python
-	pkgver = 0.10.0
+	pkgver = 0.16.0
 	pkgrel = 1
 	url = https://github.com/tiagocoutinho/linuxpy
 	arch = any
