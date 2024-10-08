@@ -1,7 +1,7 @@
 pkgbase = sile-printoptions
 	pkgdesc = Image tools for professional printers with the SILE typesetting system
-	pkgver = 1.1.0
-	pkgrel = 2
+	pkgver = 1.2.0
+	pkgrel = 1
 	url = https://github.com/Omikhleia/printoptions.sile
 	arch = any
 	license = MIT
@@ -9,7 +9,7 @@ pkgbase = sile-printoptions
 	makedepends = luarocks
 	depends = sile
 	depends = sile-silex
-	source = https://github.com/Omikhleia/printoptions.sile/archive/v1.1.0/printoptions.sile-1.1.0.tar.gz
-	sha256sums = 66961fc63b3d441a78d25767f263a0bddeb62691a6700b808dc81392d48c64f0
+	source = https://github.com/Omikhleia/printoptions.sile/archive/v1.2.0/printoptions.sile-1.2.0.tar.gz
+	sha256sums = d94e626d37b7e355eeebfe4fb0bced44bbfe522e98b83c0e32af7d11440e0a6f
 
 pkgname = sile-printoptions
