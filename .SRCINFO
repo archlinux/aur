@@ -1,6 +1,6 @@
 pkgbase = quick-webapps
 	pkgdesc = Web App Manager for the COSMIC™ desktop written with love and libcosmic.
-	pkgver = 0.5.0
+	pkgver = 0.5.1
 	pkgrel = 1
 	url = https://github.com/cosmic-utils/web-apps
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = quick-webapps
 	depends = openssl
 	conflicts = cosmic-wam
 	conflicts = cosmic-webapps
-	source = web-apps-0.5.0.tar.gz::https://github.com/cosmic-utils/web-apps/archive/refs/tags/0.5.0.tar.gz
-	sha256sums = 1128ed1d720731e0973890fd02de090982213b5a479b9b72acfb2029ae073b95
+	source = web-apps-0.5.1.tar.gz::https://github.com/cosmic-utils/web-apps/archive/refs/tags/0.5.1.tar.gz
+	sha256sums = d7853c874577172a4dae2921a7165a98f56afa6dbf8c63603106da2ea4808842
 
 pkgname = quick-webapps
