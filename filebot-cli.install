@@ -1,0 +1,25 @@
+pre_install() {
+    if [ -e /usr/bin/filebot ]; then
+        rm /usr/bin/filebot
+    fi
+}
+
+pre_upgrade() {
+    if [ -e /usr/bin/filebot ]; then
+        rm /usr/bin/filebot
+    fi
+}
+
+pre_remove() {
+    if [ -e /usr/bin/filebot ]; then
+        rm /usr/bin/filebot
+    fi
+}
+
+post_install() {
+    ln -sf /usr/share/filebot/bin/filebot.sh /usr/bin/filebot
+}
+
+post_upgrade() {
+    ln -sf /usr/share/filebot/bin/filebot.sh /usr/bin/filebot
+}
