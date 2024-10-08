@@ -1,6 +1,6 @@
 pkgbase = nixd
 	pkgdesc = Nix language server, based on nix libraries
-	pkgver = 1.2.2
+	pkgver = 2.4.0
 	pkgrel = 1
 	url = https://github.com/nix-community/nixd
 	arch = i686
@@ -10,18 +10,11 @@ pkgbase = nixd
 	license = LGPL3
 	makedepends = meson
 	makedepends = pkg-config
-	makedepends = bison
-	makedepends = flex
-	makedepends = libbacktrace
-	makedepends = nix
-	makedepends = gtest
 	makedepends = boost
-	makedepends = llvm
-	depends = libbacktrace
 	depends = nix
 	depends = boost-libs
 	depends = llvm
-	source = https://github.com/nix-community/nixd/archive/1.2.2.tar.gz
+	source = https://github.com/nix-community/nixd/archive/2.4.0.tar.gz
 	sha256sums = SKIP
 
 pkgname = nixd
