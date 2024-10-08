@@ -1,4 +1,4 @@
-From 6cc5733b03e8e9b13608d6f35b9efa6536d0d50b Mon Sep 17 00:00:00 2001
+From f6862d514883a48050b0c15ae6b0679780dd8a49 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 24 Apr 2022 23:00:27 +0200
 Subject: [PATCH 08/18] Find fontconfig via pkg-config for correct handling of
@@ -33,10 +33,10 @@ index 00000000000..1a52327ae6f
 +    set(Fontconfig_FOUND 1)
 +endif()
 diff --git a/src/gui/CMakeLists.txt b/src/gui/CMakeLists.txt
-index b6f74369ae5..1fa0f9906db 100644
+index 3b3dbd13218..2a8d4828eb6 100644
 --- a/src/gui/CMakeLists.txt
 +++ b/src/gui/CMakeLists.txt
-@@ -742,7 +742,7 @@ qt_internal_extend_target(Gui CONDITION QT_FEATURE_fontconfig AND QT_FEATURE_fre
+@@ -769,7 +769,7 @@ qt_internal_extend_target(Gui CONDITION QT_FEATURE_fontconfig AND QT_FEATURE_fre
          text/unix/qfontconfigdatabase.cpp text/unix/qfontconfigdatabase_p.h
          text/unix/qfontenginemultifontconfig.cpp text/unix/qfontenginemultifontconfig_p.h
      LIBRARIES
@@ -46,7 +46,7 @@ index b6f74369ae5..1fa0f9906db 100644
  
  qt_internal_extend_target(Gui CONDITION APPLE AND NOT MACOS
 diff --git a/src/gui/configure.cmake b/src/gui/configure.cmake
-index 99c517e3581..daed7ab7bef 100644
+index db627d7453a..170627fb678 100644
 --- a/src/gui/configure.cmake
 +++ b/src/gui/configure.cmake
 @@ -43,7 +43,7 @@ qt_find_package(WrapSystemFreetype 2.2.0 PROVIDED_TARGETS WrapSystemFreetype::Wr
@@ -59,5 +59,5 @@ index 99c517e3581..daed7ab7bef 100644
  qt_find_package(gbm PROVIDED_TARGETS gbm::gbm MODULE_NAME gui QMAKE_LIB gbm)
  qt_find_package(WrapSystemHarfbuzz 2.6.0 PROVIDED_TARGETS WrapSystemHarfbuzz::WrapSystemHarfbuzz MODULE_NAME gui QMAKE_LIB harfbuzz)
 -- 
-2.46.2
+2.47.0
 
