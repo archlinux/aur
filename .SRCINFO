@@ -1,0 +1,16 @@
+pkgbase = waywall-git
+	pkgdesc = Dynamic wallpaper manager for Wayland
+	pkgver = r685.2024.10.04
+	pkgrel = 1
+	url = https://github.com/tesselslate/waywall
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = wayland-protocols
+	depends = libxkbcommon
+	depends = luajit
+	depends = wayland
+	source = git+https://github.com/tesselslate/waywall.git
+	md5sums = SKIP
+
+pkgname = waywall-git
