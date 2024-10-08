@@ -1,0 +1,23 @@
+pkgbase = greenbone-feed-sync
+	pkgdesc = script for downloading the Greenbone Community Feed
+	pkgver = 24.9.0
+	pkgrel = 1
+	url = https://github.com/greenbone/greenbone-feed-sync
+	arch = any
+	groups = greenbone-vulnerability-manager
+	license = GPL-3.0-only
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-poetry
+	depends = rsync
+	depends = python-rich
+	depends = python-tomli
+	depends = python-shtab
+	source = greenbone-feed-sync-24.9.0.tar.gz::https://github.com/greenbone/greenbone-feed-sync/archive/v24.9.0.tar.gz
+	source = greenbone-feed-sync-24.9.0.tar.gz.asc::https://github.com/greenbone/greenbone-feed-sync/releases/download/v24.9.0/greenbone-feed-sync-24.9.0.tar.gz.asc
+	validpgpkeys = 8AE4BE429B60A59B311C2E739823FAA60ED1E580
+	sha512sums = 97ff2abd1ee604893546e6f4befceb70ec496e83f1920da8820c4c1de1dc8f12301aaac6030d68a19a3eeb7bd0dd143941693d8f986a7748e6bc0c463deae0bb
+	sha512sums = SKIP
+
+pkgname = greenbone-feed-sync
