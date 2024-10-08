@@ -1,24 +1,23 @@
 # Maintainer: kevku <kevku@gmx.com>
 pkgname=qdigidoc4
-pkgver=4.5.1.4455
-_rls_tag=v4.5.1
+pkgver=4.6.0.4458
+_rls_tag=v4.6.0
 pkgrel=1
 pkgdesc="DigiDoc4 Client is an application for digitally signing and encrypting documents; the software includes functionality to manage Estonian ID-card - change pin codes, update certificates etc."
-arch=('x86_64' 'i686')
+arch=('x86_64')
 url="https://www.id.ee/"
 license=('LGPL-2.1-or-later')
-depends=('qt6-base' 'qt6-svg' 'qt6-5compat' 'libdigidocpp>=3.17.0' 'openssl' 'zlib' 'libldap' 'pcsclite' 'hicolor-icon-theme')
-makedepends=('cmake' 'qt6-tools' 'qt6-translations' 'flatbuffers' 'git')
-optdepends=('opensc: smart card support'
-            'ccid: smart card support'
-            'python-gobject: nautilus extension')
+depends=('zlib' 'openssl' 'libdigidocpp>=4.0.0' 'libldap' 'pcsclite' 'opensc' 'qt6-base' 'qt6-svg' 'hicolor-icon-theme')
+makedepends=('git' 'cmake' 'gettext' 'flatbuffers' 'qt6-tools' 'qt6-translations')
+optdepends=('ccid: Smart Card support'
+            'python-nautilus: Nautilus Extension')
 source=("$pkgname-$pkgver::git+https://github.com/open-eid/DigiDoc4-Client.git?signed#tag=$_rls_tag"
         "open-eid-cmake::git+https://github.com/open-eid/cmake.git"
         "open-eid-common::git+https://github.com/open-eid/qt-common.git"
         "open-eid-extensions::git+https://github.com/open-eid/digidoc-extensions.git")
 sha256sums=("SKIP" "SKIP" "SKIP" "SKIP")
 validpgpkeys=(
-    'D1EBC666EFCBFBD3CFC2EBAA90C0B5E75C3B195D'  # Raul Metsma
+    'D1EBC666EFCBFBD3CFC2EBAA90C0B5E75C3B195D'  # Raul Metsma https://github.com/metsma.gpg
 )
 
 prepare() {
