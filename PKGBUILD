@@ -1,48 +1,47 @@
-# Maintainer: Chris <christopher.r.mullins g-mail>
+# Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
+# Contributor: Chris <christopher.r.mullins g-mail>
 
 pkgname=commontk-git
 pkgrel=1
-pkgdesc='A set of common support code for medical imaging, surgical navigation, and related purposes.' 
-pkgver=r5007.0f14f50
-arch=('i686' 'x86_64')
-url='http://commontk.org'
-depends=('qt4' 'pythonqt')
-makedepends=('git' 'cmake')
-optdepends=('python2: For scripting support')
-license=('Apache')
-source=("git://github.com/commontk/CTK.git")
-md5sums=("SKIP")
+pkgver=2023.07.13.r158.gd7ce6d91
+pkgdesc="set of common support code for medical imaging, surgical navigation, and related purposes"
+arch=(x86_64)
+url="https://github.com/commontk/CTK"
+license=(Apache-2.0)
+depends=(qt5-base gcc-libs glibc)
+makedepends=(git cmake qt5-svg qt5-tools python)
+checkdepends=(xorg-server-xvfb)
+optdepends=('python: For scripting support')
+provides=(commontk)
+conflicts=(commontk)
+source=("git+https://github.com/commontk/CTK.git")
+sha256sums=("SKIP")
 
 pkgver() {
   cd "$srcdir"/CTK
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  cd "$srcdir"
-  rm -rf build
-  mkdir build
-  cd build
-
-  cmake \
+  local _flags=(
     -DCTK_SUPERBUILD:BOOL=OFF \
-    -DCMAKE_BUILD_TYPE:STRING=Release \
-    -DCMAKE_INSTALL_PREFIX:PATH=/usr \
     -DBUILD_SHARED_LIBS:BOOL=ON \
     -DCTK_LIB_Widgets:BOOL=ON \
-    -DCTK_ENABLE_Python_Wrapping:BOOL=ON \
-    -DPYTHON_INCLUDE_DIR:PATH=/usr/include/python2.7 \
-    -DPYTHON_LIBRARY:PATH=/usr/lib64/libpython2.7.so \
-    -DPYTHON_EXECUTABLE:PATH=/usr/bin/python2.7 \
-    -DPYTHONQT_INCLUDE_DIR:PATH=/usr/include/PythonQt \
-    -DPYTHONQT_INSTALL_DIR:PATH=/usr \
-    -DPYTHONQT_LIBRARY_RELEASE:FILEPATH=/usr/lib64/libPythonQt.so \
-    ../CTK
+    -DCTK_ENABLE_Python_Wrapping:BOOL=OFF \
+  )
 
-  make
+  cmake -B build -S "CTK" -Wno-dev \
+    -DCMAKE_BUILD_TYPE=None \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    "${_flags[@]}"
+
+  cmake --build build
 }
 
+#check() {
+#  xvfb-run -s '-screen 0 1920x1080x24 -nolisten local' ctest --test-dir build --output-on-failure
+#}
+
 package() {
-  cd "$srcdir"/build
-  make DESTDIR="${pkgdir}" install
+  DESTDIR="${pkgdir}" cmake --install build
 }
