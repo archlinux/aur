@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=axonops-workbench-bin
 _pkgname=AxonOps.Workbench
-pkgver=1.0.0_beta2
+pkgver=1.0.0_beta7
 _electronversion=31
 pkgrel=1
 pkgdesc="A desktop application built for Cassandra DB developers and DBAs"
@@ -22,7 +22,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/v${pkgver//_/-}/${_pkgname}-${pkgver//_/-}-linux-amd64.deb"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('ad3f6bc9f6572dd705ae35fd39704f6e6230a8708327314e3e0595fbb51742e2'
+sha256sums=('af3bfeec7f762553b0cc3d07423d2c13e4a8fe8ef8b1a29eb93ecbc8cf75f940'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 build() {
     sed -e "
