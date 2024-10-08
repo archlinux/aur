@@ -1,7 +1,7 @@
 # Maintainer: piernov <piernov@piernov.org>
 
 pkgname=python-pytorch3d
-pkgver=0.7.7
+pkgver=0.7.8
 pkgrel=1
 pkgdesc="Provides efficient, reusable components for 3D Computer Vision research with PyTorch."
 arch=('x86_64')
@@ -9,10 +9,10 @@ url="https://pytorch3d.org/"
 license=('BSD')
 depends=('python-fvcore' 'python-iopath')
 makedepends=('python-setuptools')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/facebookresearch/pytorch3d/archive/v$pkgver.tar.gz"
+source=("$pkgname-$pkgver.tar.gz::https://github.com/facebookresearch/pytorch3d/archive/V$pkgver.tar.gz"
   'setup-py_extensions_relative_paths.patch'
   'glog_use_glog_export.patch')
-md5sums=('eed5222eeddec0f36306fca8f17cd139'
+md5sums=('183ed7707b49e61de62f0b389f0c24d7'
          '91631716dae72cd1b8c004148ef39e76'
          '5aba33291116b36d04fe038b0b26274f')
 
