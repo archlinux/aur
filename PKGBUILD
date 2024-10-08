@@ -1,7 +1,7 @@
 # Maintainer: dan <dan@digitalprivacy.diy>
 pkgname="mjolnir"
 pkgver="1.8.3"
-pkgrel=1
+pkgrel=2
 pkgdesc="A moderation tool for Matrix."
 arch=("any")
 url="https://github.com/matrix-org/mjolnir"
