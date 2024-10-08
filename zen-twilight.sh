@@ -1,3 +1,3 @@
 #!/bin/bash
 
-exec /opt/zen-browser-bin-git/zen-bin "$@"
+exec /opt/zen-twilight-bin/zen-bin "$@"

@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=Zen Browser Twilight
 Comment=Experience tranquillity while browsing the web without people tracking you!
-Exec=/opt/zen-browser-bin-git/zen-bin %u
+Exec=/opt/zen-twilight-bin/zen-bin %u
 Icon=zen-twilight
 Type=Application
 MimeType=text/html;text/xml;application/xhtml+xml;x-scheme-handler/http;x-scheme-handler/https;application/x-xpinstall;application/pdf;application/json;
@@ -15,12 +15,12 @@ Actions=new-window;new-private-window;profilemanager;
 
 [Desktop Action new-window]
 Name=Open a New Window
-Exec=/opt/zen-browser-bin-git/zen-bin %u
+Exec=/opt/zen-twilight-bin/zen-bin %u
 
 [Desktop Action new-private-window]
 Name=Open a New Private Window
-Exec=/opt/zen-browser-bin-git/zen-bin --private-window %u
+Exec=/opt/zen-twilight-bin/zen-bin --private-window %u
 
 [Desktop Action profilemanager]
 Name=Open the Profile Manager
-Exec=/opt/zen-browser-bin-git/zen-bin --ProfileManager %u
+Exec=/opt/zen-twilight-bin/zen-bin --ProfileManager %u
