@@ -2,7 +2,7 @@
 
 pkgname=python-kiauto
 _name=${pkgname#python-}
-pkgver=2.3.2
+pkgver=2.3.3
 pkgrel=1
 epoch=
 pkgdesc="KiCad automation scripts. In particular to automate tasks that can't be done using the KiCad native Python interface. The automation is carried out emulating the user interaction."
@@ -25,7 +25,7 @@ makedepends=(python-build
 options=('!strip')
 source=("${_name}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 noextract=()
-sha256sums=('94b7f9f23b355a728fb3aa40d504bce0a2620c5f291ffecc36d986717953a70a')
+sha256sums=('944c857b0e4e9f1b911b45c370484ce12bd5e9563586d95745ddf321d70ce8fe')
 
 build() {
     cd "${srcdir}/${_name}-${pkgver}"
