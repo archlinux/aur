@@ -36,7 +36,7 @@ package() {
 	install -Dm 644 -t ${pkgdir}/usr/share/licenses/${pkgname} LICENSE
 	cd cmd/jira
 	./jira man --generate --output ${pkgdir}/usr/share/man/man7/
-	install -Dm 644 bash ${pkgdir}/usr/share/bash-completions/completions/jira
+	install -Dm 644 bash ${pkgdir}/usr/share/bash-completion/completions/jira
 	install -Dm 644 zsh ${pkgdir}/usr/share/zsh/site-functions/_jira
 	install -Dm 644 fish ${pkgdir}/usr/share/fish/vendor_completions.d/jira.fish
 	install -D -m755 jira ${pkgdir}/usr/bin/jira
