@@ -2,10 +2,10 @@
 # Contributor: criptixo <therealcriptixo@gmail.com>
 pkgname=waveterm-bin
 _pkgname=Wave
-pkgver=0.8.6
+pkgver=0.8.8
 _electronversion=32
 pkgrel=1
-pkgdesc='An open-source, cross-platform terminal for seamless workflows.Use system-wide electron.'
+pkgdesc='An open-source, cross-platform terminal for seamless workflows.Prebuilt version.Use system-wide electron.'
 arch=(
     'aarch64'
     'x86_64'
@@ -15,6 +15,7 @@ _ghurl="https://github.com/wavetermdev/waveterm"
 license=('Apache-2.0')
 depends=(
     "electron${_electronversion}"
+    'libvips'
 )
 source=(
     "${pkgname%-bin}.sh"
@@ -22,8 +23,8 @@ source=(
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.pacman::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-linux-aarch64-${pkgver}.pacman")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.pacman::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-linux-x64-${pkgver}.pacman")
 sha256sums=('291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-sha256sums_aarch64=('3375a6408d2206ce8cd5cb3dfacadbd5e54b3f9c9fa4ce34fc28a24ef59fa079')
-sha256sums_x86_64=('9bcf5d6bb087e98a39cbb3c7fd03ac317cf2b745b65b5beeedd799b3d4c92084')
+sha256sums_aarch64=('22f8f7f1144dcf44649d5c9c95d829ce6a2ff594c984a6d7639e94dfa7319dd3')
+sha256sums_x86_64=('ed4d9822cd0e28fbe28a7b7724cd056d1c8191a6070979d711f8108c6fc94e00')
 build() {
     sed -e "
         s/@electronversion@/${_electronversion}/g
