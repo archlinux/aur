@@ -1,5 +1,5 @@
 pkgbase = waywall-git
-	pkgdesc = Dynamic wallpaper manager for Wayland
+	pkgdesc = Wayland compositor for Minecraft speedrunning
 	pkgver = r685.2024.10.04
 	pkgrel = 1
 	url = https://github.com/tesselslate/waywall
