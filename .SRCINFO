@@ -1,0 +1,14 @@
+pkgbase = python-mjolnir-synapse_antispam
+	pkgdesc = Mjolnir antispam module for matrix-synapse.
+	pkgver = 1.8.3
+	pkgrel = 1
+	url = https://github.com/matrix-org/mjolnir/tree/main/synapse_antispam
+	arch = any
+	license = Apache-2.0
+	makedepends = python-setuptools
+	depends = matrix-synapse
+	depends = mjolnir
+	source = https://github.com/matrix-org/mjolnir/archive/refs/tags/v1.8.3.tar.gz
+	sha256sums = 0e134ab1339b666629718a81d923410f3af31559afbe4d6dc8f895aba4ef5192
+
+pkgname = python-mjolnir-synapse_antispam
