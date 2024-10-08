@@ -1,8 +1,8 @@
-# Maintainer: Mattias Andrée <`base64 -d`(bWF0dGlhcy5hbmRyZWU)@protonmail.com>
+# Maintainer: Mattias Andrée <m@`base64 -d`(bWFhbmRyZWU).se>
 
 pkgname=libkeccak-musl
 _pkgname=libkeccak
-pkgver=1.4.1
+pkgver=1.4.2
 pkgrel=1
 pkgdesc='Keccak-family hashing library (musl-version)'
 arch=('x86_64' 'i686')
@@ -11,7 +11,7 @@ license=('custom:ISC')
 _compiler=gcc
 depends=('musl' "${_compiler}")
 source=("${_pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-b2sums=('b2863d4050aaab16717ce3bfb6461b2e0cc6dad7d6a44b27c382218e26c23aef50f3d6215a5d2418b0d7b5740eb5bbb67f30ed7c716d1ce987e2742d02ac5f4a')
+b2sums=('619cd806261b3d764d54912a6a760f266422e371e7140a4446053e7f3bae19957539e15d027d71d2f63b9f7a994bd4606548a6402d6454f29e351b0e1a4c0d43')
 
 prepare() {
   cd ${_pkgname}

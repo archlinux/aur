@@ -1,6 +1,6 @@
 pkgbase = libkeccak-musl
 	pkgdesc = Keccak-family hashing library (musl-version)
-	pkgver = 1.4.1
+	pkgver = 1.4.2
 	pkgrel = 1
 	url = https://codeberg.org/maandree/libkeccak
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = libkeccak-musl
 	license = custom:ISC
 	depends = musl
 	depends = gcc
-	source = libkeccak-1.4.1.tar.gz::https://codeberg.org/maandree/libkeccak/archive/1.4.1.tar.gz
-	b2sums = b2863d4050aaab16717ce3bfb6461b2e0cc6dad7d6a44b27c382218e26c23aef50f3d6215a5d2418b0d7b5740eb5bbb67f30ed7c716d1ce987e2742d02ac5f4a
+	source = libkeccak-1.4.2.tar.gz::https://codeberg.org/maandree/libkeccak/archive/1.4.2.tar.gz
+	b2sums = 619cd806261b3d764d54912a6a760f266422e371e7140a4446053e7f3bae19957539e15d027d71d2f63b9f7a994bd4606548a6402d6454f29e351b0e1a4c0d43
 
 pkgname = libkeccak-musl
