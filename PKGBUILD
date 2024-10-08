@@ -1,27 +1,29 @@
-# Maintainer: Ben Westover <kwestover.kw@gmail.com>
+# Maintainer: Steven Hicks <site-brhll32810aur@stevenkhicks.de>
 # based on https://aur.archlinux.org/packages/brother-mfc-l2710dw/
-pkgname='brother-hll3270cdw'
-pkgver='1.0.2'
+pkgname='brother-hll3280cdw'
+pkgver='3.5.1'
 pkgrel=1
-pkgdesc='LPR and CUPS driver for the Brother HL-L3270CDW'
-url='http://support.brother.com/g/b/downloadtop.aspx?c=us&lang=en&prod=hll3270cdw_us_eu_as'
+pkgdesc='LPR and CUPS driver for the Brother HL-L3280CDW'
+url='https://support.brother.com/g/b/downloadend.aspx?c=us&lang=en&prod=hll3280cdw_us_as&os=127&dlid=dlf105746_000&flang=4&type3=10282'
 arch=('i686' 'x86_64')
 license=('custom:Brother commercial license')
 depends=('cups')
 depends_x86_64=('lib32-glibc')
 install="$pkgname.install"
-source=("https://download.brother.com/welcome/dlf103945/hll3270cdwpdrv-$pkgver-0.i386.rpm")
-sha256sums=('18b479c8587430675d13e116dcf4e77010840ff47e61bc80d91c3ab87023abc1')
+source=("https://download.brother.com/welcome/dlf105746/hll3280cdwpdrv-$pkgver-1.i386.rpm")
+sha256sums=('798a6cbda2a21d7046c5e0a7a68a4aff16e0fbd75982d93ac2a74462efbbc8af')
 
 package() {
-	_model="hll3270cdw"
+	_model="hll3280cdw"
 
 	# using /usr/share instead of /opt
 	mkdir -p "$pkgdir/usr/share"
+	echo "Seding"
 	cp -R "$srcdir/opt/brother" "$pkgdir/usr/share"
 	sed -i 's|\\\/opt\\\/|\\\/usr\\\/|' "$pkgdir/usr/share/brother/Printers/$_model/cupswrapper/brother_lpdwrapper_$_model"
 	sed -i 's|\\\/opt\\\/|\\\/usr\\\/|' "$pkgdir/usr/share/brother/Printers/$_model/lpd/filter_$_model"
 
+        echo "Test"
 	# /etc/printcap is managed by cups
 	find "$pkgdir" -type f -name 'setupPrintcap*' -delete
 
@@ -36,6 +38,9 @@ package() {
 	# a couple architecture-specific symlinks
 	ln -s "/usr/share/brother/Printers/$_model/lpd/$CARCH/brprintconflsr3" "$pkgdir/usr/share/brother/Printers/$_model/lpd/"
 	ln -s "/usr/share/brother/Printers/$_model/lpd/$CARCH/rawtobr3" "$pkgdir/usr/share/brother/Printers/$_model/lpd/"
+	
+        echo "/usr/share/brother/Printers/$_model/lpd/$CARCH/br${_model}filter" "$pkgdir/usr/share/brother/Printers/$_model/lpd/"
+        ln -s "/usr/share/brother/Printers/$_model/lpd/$CARCH/br${_model}filter" "$pkgdir/usr/share/brother/Printers/$_model/lpd/"
 
 	# symlink for inf because it tries to execute it there
 	ln -s "/usr/share/brother/Printers/$_model/inf" "$pkgdir/usr/share/brother/Printers/$_model/lpd/"
