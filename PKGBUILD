@@ -1,8 +1,7 @@
 # Maintainer: cat_nm
 pkgname=ags-hyprpanel-git
-pkgver=r278.19a0ccf
-pkgrel=1
-epoch=1
+pkgver=r292.f2985e7
+pkgrel=2
 pkgdesc="A Bar/Panel for Hyprland with extensive customizability"
 arch=('x86_64')
 url="https://hyprpanel.com/"
@@ -28,6 +27,7 @@ depends=(
   'hyprpicker'
   'matugen-bin'
   'aylurs-gtk-shell'
+  'bun-bin'
 )
 makedepends=(
   'unzip'
@@ -40,21 +40,8 @@ optdepends=(
   'pacman-contrib: Checking for pacman updates'
   'power-profiles-daemon: Switch power profiles'
 )
-provides=('hyprpanel-git')
-conflicts=('hyprpanel-git')
-replaces=('hyprpanel-git')
-source=(
-  "git+https://github.com/Jas-SinghFSU/HyprPanel.git"
-  "https://github.com/oven-sh/bun/releases/latest/download/bun-linux-x64.zip"
-)
-sha256sums=('SKIP' 'SKIP')
-
-prepare() {
-    cd "$srcdir"
-
-    # download bun
-    unzip bun-linux-x64.zip
-}
+source=('git+https://github.com/Jas-SinghFSU/HyprPanel.git')
+sha256sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/HyprPanel"
@@ -63,9 +50,6 @@ pkgver() {
 
 package() {
   cd "$srcdir/HyprPanel"
-
-  #install bun
-  install -Dm755 "$srcdir/bun-linux-x64/bun" "$pkgdir/usr/bin/bun"
 
   # install fonts
   install -dm755 "$pkgdir/usr/share/fonts/NFP"
