@@ -1,14 +1,14 @@
 pkgbase = mjolnir
 	pkgdesc = A moderation tool for Matrix.
 	pkgver = 1.8.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/matrix-org/mjolnir
 	arch = any
 	license = Apache-2.0
 	makedepends = yarn
 	depends = nodejs
 	optdepends = python-mjolnir-synapse_antispam: Mjolnir antispam module for matrix-synapse
-	backup = etc/mjolnir/production.yaml
+	backup = etc/mjolnir/config/production.yaml
 	source = https://github.com/matrix-org/mjolnir/archive/refs/tags/v1.8.3.tar.gz
 	source = mjolnir
 	source = mjolnir.service
