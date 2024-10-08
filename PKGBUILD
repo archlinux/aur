@@ -3,7 +3,7 @@
 pkgname=polycule
 _name=polycule
 _appid=business.braid.polycule
-pkgver=0.0.1
+pkgver=0.0.2
 pkgrel=1
 pkgdesc="A geeky and efficient [matrix] client for power users."
 # Flutter officially supports amd64 and AArch64
@@ -42,7 +42,7 @@ conflicts=("$_name")
 source=(
   "${_name}-v${pkgver}.tar.gz::https://gitlab.com/polycule_client/polycule/-/archive/v${pkgver}/polycule-v${pkgver}.tar.gz"
 )
-sha256sums=('1d0aebf5cf44592bed01e37f2c1187787f0bf9546ca03418e53468752c9f0842')
+sha256sums=('f8f0293bdc47f79d4b24f0d1d902c0a531ce692b76208465dda2bb60cbcbaeb2')
 
 # ensure we have the proper Dart architecture name for the current CARCH
 case "${CARCH}" in
@@ -84,7 +84,7 @@ build() {
   cd "${srcdir}/${_name}-v${pkgver}"
 
   # build in release mode without running pub
-  flutter build linux --no-pub --release --dart-define=POLYCULE_IS_STABLE=true --dart-define=POLYCULE_VERSION=${pkgver}
+  flutter build linux --no-pub --release --dart-define=POLYCULE_IS_STABLE=true --dart-define=POLYCULE_VERSION=v${pkgver}
 }
 
 package() {
@@ -100,11 +100,17 @@ package() {
   install -dm755 "${pkgdir}/usr/bin"
   ln -s "/usr/lib/${_name}/${_name}" "${pkgdir}/usr/bin/${_name}"
 
+  for font in "${srcdir}/${_name}-v${pkgver}/assets/fonts/"* ; do
+    install -Dm 644 "${font}/LICENSE.txt" "${pkgdir}/usr/share/licenses/${_name}/$(basename "${font}")".txt
+  done
+
   # install desktop file, metainfo, license and icons
   install -Dm 644 "${srcdir}/${_name}-v${pkgver}/linux/${_appid}.desktop" "${pkgdir}/usr/share/applications/${_appid}.desktop"
+  install -Dm 644 "${srcdir}/${_name}-v${pkgver}/linux/${_appid}-daemon.desktop" "${pkgdir}/etc/xdg/autostart/${_appid}-daemon.desktop"
   install -Dm 644 "${srcdir}/${_name}-v${pkgver}/linux/${_appid}.service" "${pkgdir}/usr/share/dbus-1/services/${_appid}.service"
   install -Dm 644 "${srcdir}/${_name}-v${pkgver}/linux/${_appid}.metainfo.xml" "${pkgdir}/usr/share/metainfo/${_appid}.metainfo.xml"
-  install -Dm644 "${srcdir}/${_name}-v${pkgver}/LICENSE" "${pkgdir}/usr/share/licenses/${_name}/LICENSE"
+  install -Dm 644 "${srcdir}/${_name}-v${pkgver}/LICENSE" "${pkgdir}/usr/share/licenses/${_name}/COPYING"
+  ln -s "/usr/lib/polycule/data/flutter_assets/NOTICES.Z" "${pkgdir}/usr/share/licenses/${_name}/NOTICES.Z"
   install -Dm 644 "${srcdir}/${_name}-v${pkgver}/assets/logo/logo-circle.svg" "${pkgdir}/usr/share/pixmaps/${_appid}.svg"
   install -Dm 644 "${srcdir}/${_name}-v${pkgver}/assets/logo/logo-circle.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/${_appid}.svg"
 }
