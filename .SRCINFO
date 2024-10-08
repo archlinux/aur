@@ -1,16 +1,16 @@
 pkgbase = python-aiofile
 	pkgdesc = Real asynchronous file operations with asyncio support
-	pkgver = 3.8.8
+	pkgver = 3.9.0
 	pkgrel = 1
 	url = https://github.com/mosquito/aiofile
 	arch = any
 	license = Apache-2.0
 	makedepends = python-build
 	makedepends = python-installer
-	makedepends = python-setuptools
+	makedepends = python-poetry-core
 	makedepends = python-wheel
 	depends = python-caio
-	source = https://files.pythonhosted.org/packages/source/a/aiofile/aiofile-3.8.8.tar.gz
-	sha256sums = 41f3dc40bd730459d58610476e82e5efb2f84ae6e9fa088a9545385d838b8a43
+	source = https://files.pythonhosted.org/packages/source/a/aiofile/aiofile-3.9.0.tar.gz
+	sha256sums = e5ad718bb148b265b6df1b3752c4d1d83024b93da9bd599df74b9d9ffcf7919b
 
 pkgname = python-aiofile
