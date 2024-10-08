@@ -10,7 +10,7 @@ pkgrel=1
 epoch=
 pkgdesc="A C++ framework for developing REST APIs with a focus on simplicity and speed."
 arch=(x86_64 i686)
-url="https://github.com/ISBachvarov21/Rune.git"
+url="https://github.com/ISBachvarov21/Rune"
 license=('MIT')
 groups=()
 depends=()
@@ -24,20 +24,19 @@ backup=()
 options=()
 install=
 changelog=
-source=("git+$url")
+source=("$pkgname::git+$url.git")
 noextract=()
-sha256sums=()
+sha256sums=('SKIP')
 validpgpkeys=()
 
 build() {
-	cd "$pkgname-$pkgver"
+  cd $pkgname
   mkdir build
   cmake -S . -B build
   cmake --build build
 }
 
 package() {
-	cd "$pkgname-$pkgver"
+  cd $pkgname
 	sudo cmake --install build --prefix /usr
 }
-sha256sums=('SKIP')
