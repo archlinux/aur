@@ -2,7 +2,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=proxmark3-iceman-git
-pkgver=4.17768.r201.gab0c46a
+pkgver=4.18994.r238.g11d9336
 pkgrel=1
 pkgdesc='RRG / Iceman repo - Proxmark3 RDV4.0 and other Proxmark3 platforms.'
 arch=('x86_64')
@@ -22,8 +22,8 @@ makedepends=('git'
   'readline'
   'bzip2'
   'lz4'
-#   'lua'
-#   'libwhereami'
+  #   'lua'
+  #   'libwhereami'
 )
 # checkdepends=(
 #   python-pyopenssl
@@ -42,27 +42,30 @@ sha512sums=('SKIP'
 install=${pkgname}.install
 
 pkgver() {
-    cd "${srcdir}/${pkgname}"
-    ( set -o pipefail
-        git describe --long --tag --abbrev=7 2>/dev/null | sed 's/^v//g;s/\([^-]*-g\)/r\1/;s/-/./g' ||
-        printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
-    )
+  cd "${srcdir}/${pkgname}"
+  (
+    set -o pipefail
+    git describe --long --tag --abbrev=7 2>/dev/null | sed 's/^v//g;s/\([^-]*-g\)/r\1/;s/-/./g' ||
+      printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+  )
 }
 
-prepare()
-{
-    git -C "${srcdir}/${pkgname}" clean -dfx
+prepare() {
+  git -C "${srcdir}/${pkgname}" clean -dfx
 }
 
 build() {
   export DESTDIR="build"
   export PREFIX="/usr"
   export UDEV_PREFIX="/usr/lib/udev/rules.d"
-  
+  export CXXFLAGS="-Wall -Wextra"
+
   cd "${srcdir}/${pkgname}"
 
+  sed -i 's|PLATFORM=PM3OTHER|PLATFORM=PM3GENERIC|g' common_arm/Makefile.hal
+
   mkdir "$DESTDIR"
- 
+
   STANDALONE_MODES=(
     'LF_SKELETON'
     'LF_EM4100EMUL'
@@ -88,7 +91,7 @@ build() {
     'HF_UNISNIFF'
     'HF_YOUNG'
     'DANKARMULTI'
-    )
+  )
   RDV4_STANDALONE_MODES=(
     'LF_HIDFCBRUTE'
     'LF_ICEHID'
@@ -102,8 +105,8 @@ build() {
     'HF_LEGICSIM'
     'HF_MFCSIM'
     'HF_REBLAY'
-    )
- 
+  )
+
   # Build recovery (without PLATFORM_EXTRAS and STANDALONE)
   make \
     PLATFORM="PM3RDV4" STANDALONE= FWTAG="rdv4-nostandalone" recovery/install
@@ -116,21 +119,21 @@ build() {
   # Build various firmwares
   for standalone in ${STANDALONE_MODES[@]}; do
 
-      make \
-        PLATFORM="PM3RDV4" PLATFORM_EXTRAS="BTADDON" STANDALONE="${standalone}" \
-        FWTAG="rdv4-"$(echo ${standalone} | tr '[:upper:]' '[:lower:]') armsrc/install
+    make \
+      PLATFORM="PM3RDV4" PLATFORM_EXTRAS="BTADDON" STANDALONE="${standalone}" \
+      FWTAG="rdv4-"$(echo ${standalone} | tr '[:upper:]' '[:lower:]') armsrc/install
 
-      make \
-        PLATFORM="PM3OTHER" STANDALONE="${standalone}" \
-        FWTAG="other-"$(echo ${standalone} | tr '[:upper:]' '[:lower:]') armsrc/install
+    make \
+      PLATFORM="PM3OTHER" STANDALONE="${standalone}" \
+      FWTAG="other-"$(echo ${standalone} | tr '[:upper:]' '[:lower:]') armsrc/install
 
   done
 
   for standalone in ${RDV4_STANDALONE_MODES[@]}; do
 
-      make \
-        PLATFORM="PM3RDV4" PLATFORM_EXTRAS="BTADDON" STANDALONE="${standalone}" \
-        FWTAG="rdv4-"$(echo ${standalone} | tr '[:upper:]' '[:lower:]') armsrc/install
+    make \
+      PLATFORM="PM3RDV4" PLATFORM_EXTRAS="BTADDON" STANDALONE="${standalone}" \
+      FWTAG="rdv4-"$(echo ${standalone} | tr '[:upper:]' '[:lower:]') armsrc/install
 
   done
 
