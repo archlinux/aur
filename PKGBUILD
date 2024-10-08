@@ -10,7 +10,7 @@ license=('GPL3')
 provides=('discord-rpc-extension')
 conflicts=('discord-rpc-extension-git' 'discord-rpc-extension-no-tray-bin' 'discord-rpc-extension-no-tray-git')
 source=("${pkgname}-${pkgver}.zip::${url}/releases/download/${pkgver}/linux.zip")
-sha256sums=('91db83b55d458c046a3157a6a61a38ed6529914f458f9e93b589034f01647c6b')
+sha256sums=('8a637b65be65a62d56c5fdc9b0613e70003a2413a9873316c54623309ab64f08')
 options=(!strip)
 
 package() {
