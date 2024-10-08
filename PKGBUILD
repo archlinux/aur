@@ -4,7 +4,7 @@
 pkgname=waveterm
 _pkgname=Wave
 _appname="${_pkgname} Terminal"
-pkgver=0.8.6
+pkgver=0.8.8
 _electronversion=32
 _nodeversion=22
 pkgrel=1
@@ -38,7 +38,7 @@ source=(
     "${pkgname}-${pkgver}.tar.gz::${_ghurl}/archive/refs/tags/v${pkgver}.tar.gz"
     "${pkgname}.sh"
 )
-sha256sums=('7f2b285ab0e064556479cd25f4157660a047eb8556066cc05555e3cc175695a3'
+sha256sums=('8c28fe63c485feaf2b598fc6965089c2a05ebb9d66ae5c935d27264e5332905d'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
@@ -81,6 +81,8 @@ build() {
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
     sed -i "s/build\/icons.icns/build\/appicon.png/g;s/\"zip\", \"deb\", \"rpm\", \"AppImage\", \"pacman\"/\"dir\"/g" electron-builder.config.cjs
     sed -i "/- build:server:macos/d;/- build:server:windows/d" Taskfile.yml
+    sed -i "138,145d" Taskfile.yml
+    sed -i "122,129d" Taskfile.yml
     gem install fpm
     _yarnver=`grep "yarn@" package.json | awk '{print $2}' | sed "s/\"//g;s/yarn@//g;s/,//g"`
     corepack enable yarn
