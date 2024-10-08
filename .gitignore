@@ -1,6 +1,7 @@
 src
 pkg
 FjordLauncher
+FjordLauncherUnlocked
 libnbtplusplus
 
 *.tar.gz

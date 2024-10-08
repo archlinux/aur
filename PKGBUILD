@@ -1,4 +1,5 @@
-# Maintainer: Evan Goode <mail@evangoo.de>
+# Maintainer: Herobrine Persson <heropersson@protonmail.com>
+# Contributor: Evan Goode <mail@evangoo.de>
 # Contributor: Sefa Eyeoglu <contact@scrumplex.net>
 # Contributor: txtsd <aur.archlinux@ihavea.quest>
 # Contributor: seth <getchoo at tuta dot io>
@@ -9,13 +10,13 @@
 # Contributor: Cheru Berhanu <aur attt cheru doot dev>
 # Contributor: dada513 <dada513@protonmail.com>
 
-_pkgname=fjordlauncher
+_pkgname=fjordlauncherunlocked
 pkgname=${_pkgname}-git
-pkgver=8.4.r1.gf4b787282
-pkgrel=2
+pkgver=8.4.2.r0.ga3e3f6769
+pkgrel=1
 pkgdesc="Prism Launcher fork with support for alternative auth servers"
 arch=('i686' 'x86_64' 'aarch64')
-url="https://github.com/unmojang/FjordLauncher"
+url="https://github.com/hero-persson/FjordLauncherUnlocked"
 license=('GPL-3.0-only AND LGPL-3.0-or-later AND LGPL-2.0-or-later AND Apache-2.0 AND MIT AND BSD-2-Clause AND BSD-3-Clause AND LicenseRef-Batch AND OFL-1.1')
 depends=('java-runtime=17' 'libgl' 'qt6-base' 'qt6-5compat' 'qt6-svg' 'qt6-imageformats' 'qt6-networkauth' 'zlib' 'hicolor-icon-theme' 'quazip-qt6' 'cmark' 'tomlplusplus')
 provides=('fjordlauncher')
@@ -29,16 +30,17 @@ optdepends=('glfw: to use system GLFW libraries'
             'flite: minecraft voice narration'
 )
 options=(debug)
-source=("git+https://github.com/unmojang/FjordLauncher.git")
+source=("git+https://github.com/hero-persson/FjordLauncherUnlocked.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "FjordLauncher"
+  cd FjordLauncher
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
-  cd "FjordLauncher"
+  mv FjordLauncherUnlocked FjordLauncher
+  cd FjordLauncher
 
   git submodule init
   git config submodule.libraries/cmark.active false

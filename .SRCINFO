@@ -1,8 +1,8 @@
-pkgbase = fjordlauncher-git
+pkgbase = fjordlauncherunlocked-git
 	pkgdesc = Prism Launcher fork with support for alternative auth servers
-	pkgver = 8.4.r1.gf4b787282
-	pkgrel = 2
-	url = https://github.com/unmojang/FjordLauncher
+	pkgver = 8.4.2.r0.ga3e3f6769
+	pkgrel = 1
+	url = https://github.com/hero-persson/FjordLauncherUnlocked
 	arch = i686
 	arch = x86_64
 	arch = aarch64
@@ -35,7 +35,7 @@ pkgbase = fjordlauncher-git
 	provides = fjordlauncher
 	conflicts = fjordlauncher
 	options = debug
-	source = git+https://github.com/unmojang/FjordLauncher.git
+	source = git+https://github.com/hero-persson/FjordLauncherUnlocked.git
 	sha256sums = SKIP
 
-pkgname = fjordlauncher-git
+pkgname = fjordlauncherunlocked-git
