@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=netpad-bin
 _pkgname=NetPad
-pkgver=0.7.2
+pkgver=0.8.0
 _electronversion=23
 pkgrel=1
 pkgdesc="A cross-platform C# editor and playground."
@@ -26,23 +26,25 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/tareqimbasher/NetPad/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('e2a7137602b43e9507d4d0f5d3310bd059623303cb5bc09be0f4185c1bc2a393'
+sha256sums=('c4c82bcc9c064965af24c48f0bed2c782dbeaba9d9d3f4bf7774492245b545b2'
             '43485534798b716310ae2a0edeebb00e97ff0e42e5fde13ff2994e2bc82348f6'
-            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
+            '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 build() {
-    sed -e "s|@electronversion@|${_electronversion}|g" \
-        -e "s|@appname@|${pkgname%-bin}|g" \
-        -e "s|@runname@|app.asar|g" \
-        -e "s|@cfgdirname@|${pkgname%-bin}|g" \
-        -e "s|@options@||g" \
-        -i "${srcdir}/${pkgname%-bin}.sh"
-    sed "s|/opt/${_pkgname}/${pkgname%-bin}|${pkgname%-bin}|g" -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
+    sed -e "
+        s/@electronversion@/${_electronversion}/g
+        s/@appname@/${pkgname%-bin}/g
+        s/@runname@/app.asar/g
+        s/@cfgdirname@/${_pkgname}/g
+        s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
+    " -i "${srcdir}/${pkgname%-bin}.sh"
+    sed -i "s/\/opt\/${_pkgname}\/${pkgname%-bin}/${pkgname%-bin}/g" "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm644 "${srcdir}/opt/${_pkgname}/resources/app.asar" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
     cp -r "${srcdir}/opt/${_pkgname}/resources/bin" "${pkgdir}/usr/lib/${pkgname%-bin}"
-    for _icons in 32x32 64x64 128x128 256x256;do
+    _icon_sizes=(32x32 64x64 128x128 256x256)
+    for _icons in "${_icon_sizes[@]}";do
         install -Dm644 "${srcdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname%-bin}.png" \
             -t "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps"
     done
