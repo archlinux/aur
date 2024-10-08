@@ -1,0 +1,34 @@
+pkgbase = zen-twilight-bin
+	pkgdesc = Performance oriented Firefox-based web browser (Unstable)
+	pkgver = 66fc824
+	pkgrel = 1
+	url = https://github.com/zen-browser/desktop
+	arch = x86_64
+	arch = i686
+	license = MPL-2.0
+	depends = gtk3
+	depends = libxt
+	depends = mime-types
+	depends = dbus-glib
+	depends = nss
+	depends = ttf-font
+	depends = systemd
+	optdepends = ffmpeg: H264/AAC/MP3 decoding
+	optdepends = networkmanager: Location detection via available WiFi networks
+	optdepends = libnotify: Notification integration
+	optdepends = pulseaudio: Audio support
+	optdepends = speech-dispatcher: Text-to-Speech
+	optdepends = hunspell-en_US: Spell checking, American English
+	provides = zen-twilight=66fc824
+	conflicts = zen-twilight
+	options = !strip
+	source = zen-browser-twilight.tar.bz2::https://github.com/zen-browser/desktop/releases/download/twilight/zen.linux-generic.tar.bz2
+	source = zen-twilight.sh
+	source = zen-twilight.desktop
+	source = policies.json
+	sha256sums = 4ca7cc582a9aebf778d247033d852905d3e5051ad33ed76f870c5510000a5352
+	sha256sums = e0dcdb6b380933c8e81270a28a3c8d689265e8ed0c3af45f58ff388c2f8d7686
+	sha256sums = 9f4feeccb229c94a08d23055b92d7e8d5e36515b8026929259a37a26b0c43eda
+	sha256sums = f93eb77db526147a8a20744905923a6eda79e2fbcc9f282e2f9228a7a995c798
+
+pkgname = zen-twilight-bin

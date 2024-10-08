@@ -1,0 +1,18 @@
+{
+    "policies": {
+      "DisableAppUpdate": true,
+      "Homepage": {
+        "URL": "https://zen-browser.app/",
+        "Locked": false
+      },
+      "SearchEngines": {
+        "Default": "DuckDuckGo",
+        "PreventInstalls": true
+      },
+      "DNSOverHTTPS": {
+        "Enabled": true,
+        "Locked": false
+      }
+    }
+  }
+  
