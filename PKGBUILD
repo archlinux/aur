@@ -12,11 +12,11 @@ source=("git+$url#tag=v$pkgver")
 sha256sums=('SKIP')  # You can update this with the actual checksum
 
 build() {
-  cd "$srcdir"
+  cd "$srcdir/borg"
   python setup.py build
 }
 
 package() {
-  cd "$srcdir/$pkgname"
+  cd "$srcdir/borg"
   python setup.py install --root="$pkgdir/" --optimize=1
 }
