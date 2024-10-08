@@ -1,7 +1,7 @@
 # Maintainer: Chris Zhang <develop [at] zcy [dot] moe>
 
 pkgname=shader-slang-git
-pkgver=2024.1.6+10.gc0482ec12d
+pkgver=2024.13+18.g509409ef11
 pkgrel=1
 pkgdesc='Shading language that makes it easier to build and maintain large shader codebases in a modular and extensible fashion.'
 url='https://github.com/shader-slang/slang'
@@ -31,7 +31,7 @@ sha1sums=('SKIP'
           'SKIP'
           'SKIP'
           'SKIP')
-makedepends=(premake git)
+makedepends=(git)
 depends=(glslang)
 conflicts=(shader-slang shader-slang-bin)
 provides=(shader-slang)
@@ -52,16 +52,16 @@ pkgver() {
 
 build() {
   cd slang
-  chmod +x external/slang-binaries/premake/premake-5.0.0-alpha16/bin/linux-64/premake5
-  msg2 "Generating makefiles"
-  external/slang-binaries/premake/premake-5.0.0-alpha16/bin/linux-64/premake5 gmake2 --deps=true --arch=x64
+
+  msg2 "Configuring project"
+  cmake --preset default
   msg2 "Building shader-slang"
-  make config=release_x64
+  cmake --build --preset release
 }
 
 check() {
   cd slang
-  bin/linux-x64/release/slang-test
+#   build/Release/bin/slang-test
 }
 
 package() {
@@ -69,17 +69,22 @@ package() {
 
   for bin in slangc slangd
   do
-    install -Dm755 "bin/linux-x64/release/$bin" "$pkgdir/opt/shader-slang/bin/$bin"
+    install -Dm755 "build/Release/bin/$bin" "$pkgdir/opt/shader-slang/bin/$bin"
   done
 
   for lib in libslang{,-glslang,-llvm}.so libgfx.so
   do
-    install -Dm755 "bin/linux-x64/release/$lib" "$pkgdir/opt/shader-slang/bin/$lib"
+    install -Dm755 "build/Release/lib/$lib" "$pkgdir/opt/shader-slang/lib/$lib"
   done
 
-  for header in *.h prelude/*.h
+  for header in include/*.h
   do
-    install -Dm644 "$header" "$pkgdir/opt/shader-slang/$header"
+    install -Dm644 "$header" "$pkgdir/opt/shader-slang/include/$header"
+  done
+
+  for header in prelude/*.h
+  do
+    install -Dm644 "$header" "$pkgdir/opt/shader-slang/include/prelude/$header"
   done
 
   find docs examples -type f -exec install -Dm644 "{}" "$pkgdir/opt/shader-slang/{}" \;
