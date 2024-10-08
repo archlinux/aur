@@ -27,10 +27,11 @@ build() {
   automake --add-missing
   autoconf
   
-  CXXFLAGS+=" -std=c++11 -fpermissive" ./configure --prefix=/usr --enable-enumpoly
+  CXXFLAGS+=" -std=c++17 -fpermissive" ./configure --prefix=/usr
+  
   make
   
-  CFLAGS+=" -std=c++11 -fpermissive" python setup.py build
+  CFLAGS+=" -std=c++17 -fpermissive" python -m build --wheel --no-isolation
 }
 
 package() {
