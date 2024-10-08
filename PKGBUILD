@@ -12,12 +12,12 @@ license=('MIT')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/roosta/$pkgname/archive/v$pkgver.tar.gz")
 
 build() {
-	cd "$pkgname-$pkgver"
+	cd "$pkgname-$pkgver" || exit
 	cargo build --release
 }
 
 package() {
-	cd "$pkgname-$pkgver"
+	cd "$pkgname-$pkgver" || exit
 	install -Dm755 "target/release/$pkgname" "$pkgdir/usr/bin/$pkgname"
 	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
