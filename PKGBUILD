@@ -1,4 +1,5 @@
-# Maintainer: jamnor <software [at] vncompat [dot] org>
+# Maintainer: nick <AUR [at] lwks [dot] com>
+# Contributor: jamnor <software [at] vncompat [dot] org>
 # Contributor: Mateus Rodrigues Costa <charles [dot] costar [at] gmail [dot] com>
 # Contributor: PieterDeBruijn <arch [at] pieterdebruijn [dot] nl [dot] com>
 # Contributor: stjhimy <stjhimy [at] gmail [dot] com>
