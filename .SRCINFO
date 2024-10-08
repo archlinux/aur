@@ -9,6 +9,9 @@ pkgbase = cls-rs
 	makedepends = cargo
 	depends = ffmpeg
 	depends = pulse-native-provider
+	conflicts = cls-rs-git
+	conflicts = cls-rs-bin
+	replaces = cls-soundboard
 	source = https://github.com/North-West-Wind/cls/archive/refs/tags/v1.0.1.tar.gz
 	sha256sums = e3f69e757dd9ea0f76bc169b2e55a9042db02ca2bbe6e12b937cca206eac9c45
 

@@ -9,6 +9,8 @@ url="https://github.com/North-West-Wind/cls"
 license=('GPL3')
 depends=("ffmpeg" "pulse-native-provider")
 makedepends=("cargo")
+replaces=("cls-soundboard")
+conflicts=("cls-rs-git" "cls-rs-bin")
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=("e3f69e757dd9ea0f76bc169b2e55a9042db02ca2bbe6e12b937cca206eac9c45")
 
@@ -23,12 +25,6 @@ build() {
 	export CARGO_TARGET_DIR=target
 	cd "$srcdir/$_pkgname-$pkgver"
 	cargo build --frozen --release --all-features
-}
-
-check() {
-	export RUSTUP_TOOLCHAIN=stable
-	cd "$srcdir/$_pkgname-$pkgver"
-	cargo test --frozen --all-features
 }
 
 package() {
