@@ -19,12 +19,12 @@ makedepends=(
 source=("$pkgname-$pkgver.tar.gz::https://github.com/ggozad/textualeffects/archive/refs/tags/$pkgver.tar.gz")
 
 build() {
-	cd "$_pkgname-$pkgver"
+	cd "$_pkgname-$pkgver" || exit
 	uvx --from build pyproject-build --installer uv
 }
 
 package() {
-	cd "$_pkgname-$pkgver"
+	cd "$_pkgname-$pkgver" || exit
 	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 	python -m installer --destdir="$pkgdir" dist/*.whl
 }
