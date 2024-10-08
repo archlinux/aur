@@ -1,0 +1,17 @@
+pkgbase = gw
+	pkgdesc = Genome browser and variant annotation
+	pkgver = 1.1.0
+	pkgrel = 0
+	url = https://github.com/kcleal/gw
+	arch = x86_64
+	license = MIT
+	makedepends = make
+	depends = gcc-libs
+	depends = freetype2
+	depends = fontconfig
+	depends = glfw
+	depends = htslib
+	source = https://github.com/kcleal/gw/archive/refs/tags/v1.1.0.tar.gz
+	sha256sums = dc96521b8252bde02d9cc68bb3cee156c0469889d2783ee72682338d10657892
+
+pkgname = gw
