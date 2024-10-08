@@ -2,7 +2,7 @@
 pkgname=wordpress-studio-git
 _appname=Studio
 _pkgname="WordPress ${_appname}"
-pkgver=1.1.2.r2.g1928b54
+pkgver=1.1.3.r8.gbae0104
 _electronversion=29
 _nodeversion=20
 pkgrel=1
@@ -48,11 +48,11 @@ _ensure_local_nvm() {
 }
 build() {
     sed -e "
-        s/@electronversion@/${_electronversion}/
-        s/@appname@/${pkgname%-git}/
-        s/@runname@/app.asar/
-        s/@cfgdirname@/${_appname}/
-        s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/
+        s/@electronversion@/${_electronversion}/g
+        s/@appname@/${pkgname%-git}/g
+        s/@runname@/app.asar/g
+        s/@cfgdirname@/${_appname}/g
+        s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
     " -i "${srcdir}/${pkgname%-git}.sh"
     _ensure_local_nvm
     gendesk -q -f -n --pkgname="${pkgname%-git}" --pkgdesc="${pkgdesc}" --categories="Development" --name="${_pkgname}" --exec="${pkgname%-git} %U"
@@ -77,8 +77,8 @@ build() {
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
-    install -Dm644 "${srcdir}/${pkgname%-git}.git/out/Studio-linux-"*/resources/app.asar -t "${pkgdir}/usr/lib/${pkgname%-git}"
-    cp -r "${srcdir}/${pkgname%-git}.git/out/Studio-linux-"*/resources/{assets,wp-files} "${pkgdir}/usr/lib/${pkgname%-git}"
+    install -Dm644 "${srcdir}/${pkgname%-git}.git/out/${_appname}-linux-"*/resources/app.asar -t "${pkgdir}/usr/lib/${pkgname%-git}"
+    cp -r "${srcdir}/${pkgname%-git}.git/out/${_appname}-linux-"*/resources/{assets,wp-files} "${pkgdir}/usr/lib/${pkgname%-git}"
     install -Dm644 "${srcdir}/${pkgname%-git}.git/assets/studio-app-icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-git}.png"
     install -Dm644 "${srcdir}/${pkgname%-git}.desktop" -t "${pkgdir}/usr/share/applications"
     install -Dm644 "${srcdir}/${pkgname%-git}.git/LICENSE.md" -t "${pkgdir}/usr/share/licenses/${pkgname}"
