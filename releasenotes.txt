@@ -1,7 +1,29 @@
-# Gaia Sky 3.6.3-2
+# Gaia Sky 3.6.4
 
 ## Features
-- use noise library for star surface shader.
+- improve on-screen keyboard in controller UI.
+- add custom marker textures and custom colors for locations.
+- add markers to locations; they pinpoint the exact position of the location labe.
+- add new attribute to location marks, 'ignoreSolidAngleLimit', which disregards the limits when computing visibility. Cap angular sizes for all locations.
+- add session type to system information (Linux only).
+- remove 'cosmic locations' content type, move it to regular locations (requires default data pack update.).
+- add location type attribute to location objects. This attribute is used to categorize locations by groups in the individual visibility window.
+- separate scene from other elements (labels, lines, etc.) to be able to apply different post-processing effects to each.
+- move console business logic to console manager entity.
+- add an implementation of console/terminal, which accepts commands to interact directly with the Gaia Sky API.
+- add a generic map in the base component to store 'unrecognized' attributes; these get displayed in the object info window.
 
 ## Bug Fixes
-- bad truncation leads to some SVTs not working properly. Fixes [#778](https://codeberg.org/gaiasky/gaiasky/issues/778).
+- prevent virtual objects (hooks, invisibles, catalogs, etc.) from appearing in the individual visibility window. Hide meta-components (atmospheres, keyframes, etc.) from buttons list. Fix layout.
+- always load HIP numbers if present in the STIL data loader.
+- update jetty, json and xmlrpc libraries to secure versions (the old versions contain known vulnerabilities).
+- inform user of unsupported cubemap textured objects with procedural generation.
+
+## Build System
+- update versions of jcommander, STIL and ApFloat, remove Joise.
+- update oshi library version.
+
+## Documentation
+- add architectures to download table.
+- fix typos and spelling errors in changelog file.
+- move VR info into README.md from VR.md.
