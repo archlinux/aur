@@ -1,5 +1,5 @@
 # Maintainer: Your Name <your.email@example.com>
-pkgname=borg
+pkgname=b-org
 pkgver=0.0.1
 pkgrel=1
 pkgdesc="Suckless second brain - a simple terminal note-taking and task management app"
