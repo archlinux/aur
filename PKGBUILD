@@ -2,7 +2,7 @@
 # Co-maintainer: Edu4rdSHL <edu4rdshl@protonmail.com>
 pkgname=waveterm-git
 _pkgname=Wave
-pkgver=0.8.3.r0.g4d8075d
+pkgver=0.8.9.beta.5.r2.ge2bd3cd
 _electronversion=32
 _nodeversion=22
 pkgrel=1
@@ -15,6 +15,7 @@ conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}=${pkgver%.r}")
 depends=(
     "electron${_electronversion}"
+    'libvips'
 )
 makedepends=(
     'gcc'
@@ -63,7 +64,8 @@ build() {
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
     export CGO_ENABLED=1
-    export GO111MODULE=on
+    export GO111MODULE=onsed -i "138,145d" Taskfile.yml
+    sed -i "122,129d" Taskfile.yml
     export GOOS=linux
     export GOCACHE="${srcdir}/go-build"
     export GOMODCACHE="${srcdir}/go/pkg/mod"
@@ -86,10 +88,14 @@ build() {
     fi
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
     sed -i "s/build\/icons.icns/build\/appicon.png/g;s/\"zip\", \"deb\", \"rpm\", \"AppImage\", \"pacman\"/\"dir\"/g" electron-builder.config.cjs
+    sed -i "/- build:server:macos/d;/- build:server:windows/d" Taskfile.yml
+    sed -i "138,145d" Taskfile.yml
+    sed -i "122,129d" Taskfile.yml
     gem install fpm
-    corepack enable
-    echo y | yarn set version 4.4.1
-    NODE_ENV=development    yarn install #--cache-folder "${srcdir}/.yarn_cache"
+    _yarnver=`grep "yarn@" package.json | awk '{print $2}' | sed "s/\"//g;s/yarn@//g;s/,//g"`
+    corepack enable yarn
+    echo y | yarn version "${_yarnver}"
+    NODE_ENV=development    yarn install
     NODE_ENV=production     go-task package
 }
 package() {
