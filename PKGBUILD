@@ -1,14 +1,14 @@
 # Maintainer: Owen Trigueros <owentrigueros@gmail.com>
 
 pkgname=httpdirfs-git
-pkgver=r540.f48ee93
+pkgver=r586.de9e594
 pkgrel=1
 pkgdesc="A filesystem which allows you to mount HTTP directory listings"
 arch=('x86_64' 'aarch64')
 url="https://github.com/fangfufu/httpdirfs"
 license=('GPL')
-depends=('gumbo-parser' 'fuse2' 'curl' 'expat')
-makedepends=('help2man' 'doxygen' 'graphviz')
+depends=('gumbo-parser' 'fuse3' 'curl' 'expat' 'util-linux-libs' 'openssl')
+makedepends=('meson' 'help2man' 'doxygen' 'graphviz')
 provides=('httpdirfs')
 conflicts=('httpdirfs')
 source=("$pkgname::git+https://github.com/fangfufu/httpdirfs.git")
@@ -20,16 +20,10 @@ pkgver() {
 }
 
 build() {
-  cd "$pkgname"
-  autoconf
-  automake
-  ./configure --prefix=/usr
-  make man
-  make doc
-  make
+  arch-meson "$pkgname" build
+  meson compile -C build
 }
 
 package() {
-  cd "$pkgname"
-  make prefix=/usr DESTDIR="$pkgdir" install
+  meson install -C build --destdir "$pkgdir"
 }
