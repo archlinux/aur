@@ -2,7 +2,7 @@
 
 pkgname=python-pyfmodex-git
 pkgver=r231.80b028b
-pkgrel=1
+pkgrel=2
 pkgdesc="Python bindings for the FMOD Ex sound library"
 arch=('x86_64')
 url="https://github.com/tyrylu/pyfmodex"
@@ -15,6 +15,7 @@ makedepends=('python-build' 'python-installer' 'python-wheel')
 optdepends=('fmodengine: FMOD Engine API and tools')
 source=("git+https://github.com/tyrylu/pyfmodex.git")
 md5sums=('SKIP')
+makedepends=('git')
 install=$pkgname.install
 
 pkgver() {
