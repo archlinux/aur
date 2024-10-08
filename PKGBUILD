@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=p3x-onenote-bin
 _pkgname=P3X-OneNote
-pkgver=2024.10.110
-_electronversion=31
+pkgver=2024.10.117
+_electronversion=32
 pkgrel=1
 pkgdesc="Linux Electron Onenote - A Linux compatible version of OneNote.Use system-wide electron."
 arch=(
@@ -26,25 +26,27 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('1847e0e0698142ed4347c1441a9fa81c8fbddd44b1d8bbcd5e3647f991759d7f'
-            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
-sha256sums_aarch64=('70f7f554126c98440119d80f3b84589d7000592ea4ed3ddecf487f2941d71621')
-sha256sums_armv7h=('797e769181a84caa4cac8228c7403336373d17df9f937ba5d5230ededed8991a')
-sha256sums_x86_64=('75f7bee1bcacab062dacb0ed016121e69b21bd396062e94e148370bccd643223')
+            '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
+sha256sums_aarch64=('1a6886936b8db8e874d36115b5815d81339acea737c18ed29250835fb6ce08ab')
+sha256sums_armv7h=('266c2bbd14dea1d337f020d0a30ef3ede134792e253dcca0af9c226b5f55fe61')
+sha256sums_x86_64=('be2b327ae5d30b90efd323872d4a3da1dec5e05c2d66df5e4a5246c42f6ae038')
 build() {
-    sed -e "s|@electronversion@|${_electronversion}|g" \
-        -e "s|@appname@|${pkgname%-bin}|g" \
-        -e "s|@runname@|app.asar|g" \
-        -e "s|@cfgdirname@|${pkgname%-bin}|g" \
-        -e "s|@options@|env ELECTRON_OZONE_PLATFORM_HINT=auto|g" \
-        -i "${srcdir}/${pkgname%-bin}.sh"
+    sed -e "
+        s/@electronversion@/${_electronversion}/g
+        s/@appname@/${pkgname%-bin}/g
+        s/@runname@/app.asar/g
+        s/@cfgdirname@/${pkgname%-bin}/g
+        s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
+    " -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
-    sed "s|/opt/${_pkgname}/${pkgname%-bin}|${pkgname%-bin}|g" -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
+    sed -i "s/\/opt\/${_pkgname}\/${pkgname%-bin}/${pkgname%-bin}/g" "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm644 "${srcdir}/opt/${_pkgname}/resources/app.asar" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
     install -Dm644 "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
-    for _icons in 128x128 256x256;do
+    _icon_sizes=(128x128 256x256 512x512)
+    for _icons in "${_icon_sizes[@]}";do
         install -Dm644 "${srcdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname%-bin}.png" \
             -t "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps"
     done
