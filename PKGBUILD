@@ -5,8 +5,8 @@
 
 _pkgname="forkgram"
 pkgname="$_pkgname"
-pkgver=5.5.6
-pkgrel=3
+pkgver=5.6.1
+pkgrel=1
 pkgdesc="Fork of the Telegram Desktop messaging app"
 url="https://github.com/Forkgram/tdesktop"
 license=('GPL-3.0-or-later')
@@ -68,27 +68,13 @@ conflicts=("forkgram-bin")
 
 options=('!debug' '!emptydirs')
 
-: ${_patch_commit:='b1060b9deef05a3efaadf61d3e99dafa155710ea'}
-
 _pkgsrc="frk-v$pkgver-full"
 _pkgext="tar.gz"
 source=(
   "$_pkgname-$pkgver.$_pkgext"::"https://github.com/Forkgram/tdesktop/releases/download/v$pkgver/$_pkgsrc.$_pkgext"
-  "tg-5.5.5-fix_build_with_cppgir-${_patch_commit::7}.patch"::"https://gitlab.archlinux.org/archlinux/packaging/packages/telegram-desktop/-/raw/$_patch_commit/telegram-desktop-5_5_5-fix_build_with_cppgir.patch"
 )
 sha256sums=(
-  '9e5a0397a95778b38b48c3292f6dda8af46aa4a23094cb77a8f1607d5785b28d'
-  'ee54bdf8fe67c8fadfffc794763fc62f4c6a15eb535c80ba7b1b74d6ec178882'
-)
-
-prepare() (
-  apply-patch() {
-    printf '\nApplying patch %s\n' "$1"
-    patch -Np1 -F100 -i "$1"
-  }
-
-  cd "$_pkgsrc/cmake/external/glib/cppgir"
-  apply-patch "$srcdir/tg-5.5.5-fix_build_with_cppgir-${_patch_commit::7}.patch"
+  '7c3a44fe8a8c250d905b73e2ee01ca610f214dc9a5b0cb75a868a04466b88126'
 )
 
 build() {
