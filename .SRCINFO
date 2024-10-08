@@ -1,6 +1,6 @@
 pkgbase = linutil-git
 	pkgdesc = Chris Titus Tech's Linutil is a distro-agnostic toolbox designed to simplify everyday Linux tasks.
-	pkgver = 2024.09.28.r35.g26d0adc
+	pkgver = 2024.09.28.r38.g49379a7
 	pkgrel = 1
 	url = https://github.com/ChrisTitusTech/linutil
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = linutil-git
 	provides = linutil
 	conflicts = linutil
 	source = git+https://github.com/ChrisTitusTech/linutil
-	source = https://raw.githubusercontent.com/adamperkowski/linutil-dev/refs/heads/desktop_file/linutil.desktop
+	source = https://raw.githubusercontent.com/ChrisTitusTech/linutil/refs/heads/main/linutil.desktop
 	sha256sums = SKIP
 	sha256sums = SKIP
 
