@@ -1,0 +1,22 @@
+pkgbase = filebot-cli
+	pkgdesc = The ultimate TV and Movie Renamer
+	pkgver = 5.1.5
+	pkgrel = 1
+	url = https://www.filebot.net/
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	arch = armv7l
+	arch = armv7h
+	license = Commercial
+	depends = java-runtime
+	depends = mediainfo
+	provides = filebot
+	conflicts = filebot47
+	conflicts = filebot
+	options = !strip
+	source = https://get.filebot.net/filebot/FileBot_5.1.5/FileBot_5.1.5-aur.tar.xz
+	validpgpkeys = B0976E51E5C047AD0FD051294E402EBF7C3C6A71
+	sha256sums = 5ce11f2528e8764bcd09a2c093aee698d2b118d11cfcab7fa128a4003172d330
+
+pkgname = filebot-cli
