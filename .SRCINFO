@@ -1,8 +1,8 @@
 pkgbase = miteiru
-	pkgdesc = An open source Electron video player to learn Japanese. It has main language dictionary and tokenizer (morphological analyzer), heavily based on External software MeCab
-	pkgver = 5.3.0
+	pkgdesc = An open source Electron video player to learn Chinese, Cantonese, and Japanese. It can play all Youtube and HTML 5 supported format (.mkv, .mp4, .mov, and many more) videos, and lots of supports on other subtitle formats (.srt, .ass, .vtt, and many more)
+	pkgver = 5.5.0
 	pkgrel = 1
-	url = https://github.com/hockyy/miteiru
+	url = https://miteiru.hocky.id/
 	arch = any
 	license = CC-BY-NC-4.0
 	makedepends = npm
@@ -12,15 +12,13 @@ pkgbase = miteiru
 	makedepends = icoutils
 	makedepends = gcc
 	makedepends = cmake
-	makedepends = git
 	depends = electron31
-	depends = mecab
 	optdepends = python-jieba
 	optdepends = pypinyin
 	conflicts = miteiru
-	source = miteiru.git::git+https://github.com/hockyy/miteiru.git#tag=v5.3.0
+	source = miteiru-5.5.0.tar.gz::https://github.com/hockyy/miteiru/archive/refs/tags/v5.5.0.tar.gz
 	source = miteiru.sh
-	sha256sums = 4bfc7010015eb0b3b85e3462b56e7499b89e26a9db6e3e2e94bbbe3d8c258f52
+	sha256sums = e6f7c11288f9d766e3aacce5dc1723adb230c4f1f8d42ae60da03a62d551414c
 	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
 
 pkgname = miteiru
