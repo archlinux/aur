@@ -1,7 +1,7 @@
 # Maintainer: Gabriel Araujo <gabriel_scf@hotmail.com>
 
 pkgname=gambit-git
-pkgver=16.1.0a1
+pkgver=16.2.0.r40.gad47d544
 pkgrel=1
 pkgdesc="Tools for doing computation in game theory - git version"
 arch=('i686' 'x86_64')
