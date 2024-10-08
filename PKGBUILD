@@ -2,7 +2,7 @@
 _appname=codium
 _pkgname="vs${_appname}"
 pkgname="${_pkgname}-electron-bin"
-pkgver=1.93.1.24256
+pkgver=1.94.0.24281
 _electronversion=30
 pkgrel=1
 pkgdesc="VS Code without MS branding/telemetry/licensing.Prebuild and System-wide Electron edition"
@@ -44,21 +44,21 @@ source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${_ghurl}/releases/downloa
 sha256sums=('ed289092386002771285e3423f66f49af65ff918e1b667b517d977fa4fe1f057'
             '71463726de1e6b3d8e2daf8d6816f2dc616ebac36c7097c5829074ca38a95309'
             '164bbaffe22f4ad43607f44a114528317c4d63592b88e911abadfa962443ac26')
-sha256sums_aarch64=('9256f409552c653fd3ffd41d91747c26a1460f464d6e5227f289a39d8b0a6b3e')
-sha256sums_armv7h=('cd195d6ac6136eb2045691b51d1f6a343f2c70408e2de099e37cce665fce0a9d')
-sha256sums_x86_64=('477da5d0ac439f8acb836c90b276c02c2f5d275aa57397c414c9dce82036dee7')
+sha256sums_aarch64=('c6e4a2796ce0c725fd1915cd1c2e55d2ea57459f69051c5a22964de05d202996')
+sha256sums_armv7h=('58fe67d649df0077afccaecc913bee939a380a7df4be24a993e9f54abce6d782')
+sha256sums_x86_64=('4ab4af2cde899ac7fc52d7f0372abeacc7fa6808d093312bcec1ec8e7fff6d99')
 build() {
     sed -e "
-        s/@electronversion@/${_electronversion}/
-        s/@appname@/${pkgname%-bin}/
-        s/@runname@/app.asar/
-        s/@cfgdirname@/${_pkgname}/
-        s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/
+        s/@electronversion@/${_electronversion}/g
+        s/@appname@/${pkgname%-bin}/g
+        s/@runname@/app.asar/g
+        s/@cfgdirname@/${_pkgname}/g
+        s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
     " -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
-    sed "s/${_appname}.desktop/${pkgname%-bin}.desktop/" -i "${srcdir}/usr/share/appdata/${_appname}.appdata.xml"
-    sed "s/\/usr\/share\/${_appname}\/${_appname}/${pkgname%-bin}/;s/Icon=${_pkgname}/Icon=${pkgname%-bin}/" \
-        -i "${srcdir}/usr/share/applications/"{"${_appname}-url-handler.desktop","${_appname}.desktop"}
+    sed -i "s/${_appname}.desktop/${pkgname%-bin}.desktop/g" "${srcdir}/usr/share/appdata/${_appname}.appdata.xml"
+    sed -i "s/\/usr\/share\/${_appname}\/${_appname}/${pkgname%-bin}/;s/Icon=${_pkgname}/Icon=${pkgname%-bin}/" \
+        "${srcdir}/usr/share/applications/"{"${_appname}-url-handler.desktop","${_appname}.desktop"}
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
