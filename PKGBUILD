@@ -1,12 +1,12 @@
 # Maintainer: Noa <coolreader18@gmail.com>
 pkgname=celeste64-fuji-git
-pkgver=0.6.0.r35.261dda3
+pkgver=0.7.1.r0.c5f3d41
 pkgrel=1
 pkgdesc="A free and open source mod loader for Celeste 64: Fragments of the Mountain (dev branch)"
 arch=(x86_64 aarch64)
 url="https://fujiapi.github.io"
 license=('custom:celeste64-fuji')
-depends=()
+depends=(dotnet-runtime)
 makedepends=('git' dotnet-sdk)
 options=('!strip' '!debug')
 provides=("${pkgname%-git}")
