@@ -2,22 +2,22 @@
 
 _binname="flow"
 pkgname="${_binname}-cli"
-pkgver=2.0.6
+pkgver=2.0.7
 pkgrel=1
 pkgdesc="A command-line interface that provides useful utilities for building Flow applications"
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url="https://docs.onflow.org/flow-cli"
 _url="https://github.com/onflow/${pkgname}"
 license=('Apache-2.0')
-makedepends=('go')
 depends=('glibc')
+makedepends=('go')
 _pkgsrc="${pkgname}-${pkgver}"
 source=("${_pkgsrc}.tar.gz::${_url}/archive/refs/tags/v${pkgver}.tar.gz")
-b2sums=('7f8ae4adb85b1b5a89aaedc415e6c55fcc0b3e938cd6e00c9b34174cc33e238417354a11dba81a2cbac84eaf3cd7377f6bc83b69279d43bf1fe56d12bfe9b512')
+b2sums=('33ef52c0d35e466814604b3154a67fce24ae7c88d8f50cdf53cb7be6badc211291752b7790526cb87b04770465d032ab27ee4c01e5e7d2e5d8f187826d405c95')
 
 prepare() {
   cd "${srcdir}/${_pkgsrc}"
-  mkdir -p "build"
+  mkdir -p "build" "completions"
 }
 
 build() {
@@ -32,6 +32,10 @@ build() {
     -X ${_url#https://}/internal/command.mixpanelToken=$(grep -E '^MIXPANEL_PROJECT_TOKEN :=' Makefile | sed 's/.*= //') \
     -X ${_url#https://}/internal/accounts.accountToken=$(grep -E '^ACCOUNT_TOKEN :=' Makefile | sed 's/.*= //')" \
     ./"cmd/${_binname}"
+
+  for _sh in bash fish zsh powershell; do
+    ./"build/${_binname}" completion "${_sh}" > "completions/${_binname}.${_sh}"
+  done
 }
 
 check() {
@@ -42,6 +46,12 @@ check() {
 package() {
   cd "${srcdir}/${_pkgsrc}"
   install -Dm755 "build/${_binname}" "${pkgdir}/usr/bin/${_binname}"
-  install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${_binname}/README.md"
-  install -Dm644 "LICENSE"   "${pkgdir}/usr/share/licenses/${_binname}/LICENSE"
+  install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+  install -Dm644 "LICENSE"   "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+
+  cd "completions"
+  install -Dm644 "${_binname}.bash"       "${pkgdir}/usr/share/bash-completion/completions/${_binname}"
+  install -Dm644 "${_binname}.fish"       "${pkgdir}/usr/share/fish/vendor_completions.d/${_binname}.fish"
+  install -Dm644 "${_binname}.zsh"        "${pkgdir}/usr/share/zsh/site-functions/_${_binname}"
+  install -Dm644 "${_binname}.powershell" "${pkgdir}/usr/share/powershell/Modules/${_binname}/${_binname}.ps1"
 }
