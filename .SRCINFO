@@ -1,4 +1,4 @@
-pkgbase = b-org
+pkgbase = org
 	pkgdesc = Suckless second brain - a simple terminal note-taking and task management app
 	pkgver = 0.0.1
 	pkgrel = 1
@@ -11,4 +11,4 @@ pkgbase = b-org
 	source = git+https://github.com/benjaminingreens/borg#tag=v0.0.1
 	sha256sums = SKIP
 
-pkgname = b-org
+pkgname = org
