@@ -1,7 +1,7 @@
 pkgbase = python-sssekai-git
         pkgdesc = About Project SEKAI Asset Utility.
         pkgver = r113.661ad80
-        pkgrel = 1
+        pkgrel = 2
         url = https://github.com/mos9527/sssekai
         arch = x86_64
         license = MIT
@@ -23,7 +23,7 @@ pkgbase = python-sssekai-git
         depends = python-msgpack
         depends = python-pillow
         depends = python-pycryptodome
-        depends = python-pyfmodex
+        depends = python-pyfmodex-git
         depends = python-json-logger
         depends = python-requests
         depends = python-tabulate

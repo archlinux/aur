@@ -2,7 +2,7 @@
 
 pkgname=python-sssekai-git
 pkgver=r113.661ad80
-pkgrel=1
+pkgrel=2
 pkgdesc="About Project SEKAI Asset Utility."
 arch=('x86_64')
 url="https://github.com/mos9527/sssekai"
@@ -25,7 +25,7 @@ depends=(
   'python-msgpack'
   'python-pillow'
   'python-pycryptodome'
-  'python-pyfmodex'
+  'python-pyfmodex-git'
   'python-json-logger'
   'python-requests'
   'python-tabulate'
