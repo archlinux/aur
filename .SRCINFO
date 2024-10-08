@@ -1,14 +1,15 @@
 pkgbase = otf-xkcd-font
-	pkgdesc = The xkcd font.
+	pkgdesc = The xkcd fonts
 	pkgver = r39.5632fde
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/ipython/xkcd-font
 	arch = any
-	license = CCPL:cc-by-nc-3.0
+	license = CC-BY-NC-3.0
 	source = xkcd-font-r39.5632fde.zip::https://github.com/ipython/xkcd-font/archive/5632fde618845dba5c22f14adc7b52bf6c52d46d.zip
 	sha256sums = 8d58ee790c9aa35ea7937443cb304ce9f8b663b9628a91c13a5a4b163772b904
 
 pkgname = otf-xkcd-font
+	pkgdesc = The xkcd font
 
 pkgname = ttf-xkcd-script-font
-
+	pkgdesc = The xkcd script font
