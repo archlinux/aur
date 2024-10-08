@@ -1,6 +1,6 @@
 pkgbase = gambit-git
 	pkgdesc = Tools for doing computation in game theory - git version
-	pkgver = 16.1.0a1
+	pkgver = 16.2.0.r40.gad47d544
 	pkgrel = 1
 	url = http://www.gambit-project.org
 	arch = i686
@@ -10,6 +10,8 @@ pkgbase = gambit-git
 	makedepends = cython
 	depends = wxwidgets-gtk3
 	depends = python
+	depends = python-build
+	depends = python-installer
 	provides = gambit
 	conflicts = gambit
 	options = !makeflags
