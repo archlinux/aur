@@ -1,7 +1,7 @@
 # Maintainer: Sherlock Holo <sherlockya(at)gmail.com>
 
 pkgname=gnome-shell-extension-kimpanel-git
-pkgver=20240913
+pkgver=20240925
 pkgrel=1
 pkgdesc="KDE's kimpanel implementation for GNOME Shell, now support fcitx"
 arch=("i686" "x86_64")
@@ -9,12 +9,12 @@ license=('GPL')
 url="https://github.com/wengxt/kimpanel-for-gnome-shell"
 depends=('gnome-shell' 'zip' 'unzip')
 makedepends=('cmake' 'git')
-source=("git+https://github.com/wengxt/kimpanel-for-gnome-shell.git")
+source=("git+https://github.com/wengxt/gnome-shell-extension-kimpanel.git")
 sha256sums=('SKIP')
 
 _extensionname="kimpanel@kde.org"
-_gitname="kimpanel-for-gnome-shell"
-_gitroot="https://github.com/wengxt/kimpanel-for-gnome-shell.git"
+_gitname="gnome-shell-extension-kimpanel"
+_gitroot="https://github.com/wengxt/gnome-shell-extension-kimpanel.git"
 
 build() {
   cd "$srcdir/$_gitname"
