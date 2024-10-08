@@ -1,7 +1,7 @@
 # Maintainer: Daniel Chesters <archlinux@coin-coin.xyz>
 
 pkgname=python-ollama-git
-pkgver=0.1.7.r0.gfcdf577
+pkgver=0.3.3.r9.gebe332b
 pkgrel=1
 pkgdesc="Ollama Python library"
 arch=('any')
@@ -24,17 +24,17 @@ b2sums=('SKIP')
 source=("$pkgname::git+https://github.com/ollama/ollama-python.git")
 
 pkgver() {
-	cd "$pkgname"
+	cd "$pkgname" || exit
 	git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-	cd "$pkgname"
+	cd "$pkgname" || exit
 	poetry build -f wheel
 }
 
 package() {
-	cd "$pkgname"
+	cd "$pkgname" || exit
 	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 	python -m installer --destdir="$pkgdir" dist/*.whl
 }
