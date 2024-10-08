@@ -8,7 +8,7 @@
 
 pkgname=bleachbit-cli
 _pkgname=bleachbit
-pkgver=4.6.1
+pkgver=4.6.2
 pkgrel=1
 pkgdesc='Deletes unneeded files to free disk space and maintain privacy. CLI version/no GUI.'
 conflicts=($_pkgname)
@@ -20,7 +20,7 @@ depends=(python-gobject)
 makedepends=(git)
 source=(git+https://github.com/bleachbit/bleachbit.git#tag=v${pkgver}?signed)
 validpgpkeys=(A9E582E4054A159315EDC943D6D447B02B4D4C9D) # Andrew Ziem <ahz001@gmail.com>
-sha256sums=('e95eef4829a5b25c43d5926c283f6f3bda4977c5587236f4925050e132c85673')
+sha256sums=('5185820f38f258db4c64983b54cfef22193a5625e3f54fdeda130d4de33b1653')
 
 package() {
   cd $_pkgname
