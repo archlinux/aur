@@ -1,3 +1,4 @@
-[oterm]
+[kalker]
 source = "git"
-git = "https://github.com/ggozad/oterm.git"
+git = "https://github.com/PaddiM8/kalker.git"
+prefix = "v"
