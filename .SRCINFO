@@ -1,0 +1,27 @@
+pkgbase = android-x86-64-qt6-location
+	pkgdesc = Helps you create viable mapping solutions using the data available from some of the popular location services (android)
+	pkgver = 6.8.0
+	pkgrel = 1
+	url = https://www.qt.io
+	arch = any
+	groups = android-x86-64-qt6
+	license = GPL3
+	license = LGPL3
+	license = FDL
+	license = custom
+	makedepends = android-cmake
+	makedepends = android-x86-64-qt6-shadertools
+	makedepends = android-x86-64-qt6-declarative
+	makedepends = qt6-shadertools
+	makedepends = qt6-declarative
+	makedepends = ninja
+	depends = android-x86-64-qt6-declarative
+	depends = android-x86-64-qt6-positioning
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = https://download.qt.io/official_releases/qt/6.8/6.8.0/submodules/qtlocation-everywhere-src-6.8.0.tar.xz
+	sha256sums = a0c487f4b36965ea921127033cc227acf1f292ba577081842c5b75d2ef9731a0
+
+pkgname = android-x86-64-qt6-location
