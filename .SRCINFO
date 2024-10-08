@@ -1,6 +1,6 @@
 pkgbase = xmcl-launcher
 	pkgdesc = X Minecraft Launcher - A modern Minecraft launcher
-	pkgver = 0.46.1
+	pkgver = 0.47.0
 	pkgrel = 1
 	url = https://xmcl.app/
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = xmcl-launcher
 	conflicts = xmcl-launcher-bin
 	source = https://github.com/voxelum/x-minecraft-launcher/releases/tag/v0.46.1
 	source = LICENSE::https://raw.githubusercontent.com/Voxelum/x-minecraft-launcher/master/LICENSE
-	sha256sums = c69e9fc03b3696b1d75e66534f71298f789c69ea14342e342911cba1844dddb10
-	sha256sums = dd22f27866de20e0bc2cc21c70f0c974f6a6788c4958fce168d2f9fc28d8f0a8
+	sha256sums = 82f9199c0111b8c02b454bfb28bc6b428b076f9fabb690ff6284101c54c33f79
+	sha256sums = d7895221720c8e04f2547490f973aec06955498f878b5984f98ee4d0b0be4791
 
 pkgname = xmcl-launcher
