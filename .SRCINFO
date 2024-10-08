@@ -1,0 +1,25 @@
+pkgbase = mingw-w64-qt6-webview-static
+	pkgdesc = Provides a way to display web content in a QML application (mingw-w64)
+	pkgver = 6.8.0
+	pkgrel = 1
+	url = https://www.qt.io
+	arch = any
+	groups = mingw-w64-qt6
+	license = GPL3
+	license = LGPL3
+	license = FDL
+	license = custom
+	makedepends = mingw-w64-cmake-static
+	makedepends = mingw-w64-vulkan-headers
+	makedepends = mingw-w64-vulkan-icd-loader
+	makedepends = qt6-declarative
+	makedepends = ninja
+	depends = mingw-w64-qt6-declarative-static
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = https://download.qt.io/official_releases/qt/6.8/6.8.0/submodules/qtwebview-everywhere-src-6.8.0.tar.xz
+	sha256sums = 7cb89d41593876b176368b15c1cded3d5a3c4fdf7e0a10f0c61021e3e8c179f3
+
+pkgname = mingw-w64-qt6-webview-static
