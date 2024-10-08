@@ -1,8 +1,8 @@
 # Maintainer: desbma
 # shellcheck disable=SC2034,SC2148,SC2154,SC2164
 pkgname=motd
-pkgver=1.3.0
-pkgrel=3
+pkgver=1.3.2
+pkgrel=1
 pkgdesc='Dynamically generate system information for MOTD SSH banner'
 arch=('x86_64')
 url="https://github.com/desbma/${pkgname}"
@@ -12,7 +12,7 @@ makedepends=('cargo')
 optdepends=('hddtemp: to probe hard drive temperatures'
             'systemd: to display failed units')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/desbma/${pkgname}/archive/${pkgver}.tar.gz")
-sha512sums=('4c2db03a8f0dc36db6bd27669324de0cbf5f8a2ea58c7443e3998885ec99a71e5185025188bd07f13af4e0410ac3df0063c1d7e4cb663265b2151d738784e420')
+sha512sums=('47b004cd5b11fcccea251ea76d16af022edfaa4a94ad832ddecafd43484acb3e4cae983ee4793c9beb2897758676e3af1b75f343b6942ecbf6a2a815e697eac3')
 
 prepare() {
     cd "${pkgname}-${pkgver}"
