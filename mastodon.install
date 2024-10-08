@@ -14,10 +14,15 @@ Finally, enable and start all the required services:
 post_upgrade() {
   cd /var/lib/mastodon
 
+  echo "For the 4.2 to 4.3 update, generate new encryption secrets:
+# sudo -u mastodon sh -c \"cd /var/lib/mastodon && RAILS_ENV=production bin/rails db:encryption:init\"
+And add them and MASTODON_USE_LIBVIPS=true to /etc/mastodon.conf"
+
   echo "Setting ownership of mastodon files"
   find -path ./public/system -prune -o -exec chown -h mastodon:mastodon {} +
   echo "Upgrading database schema"
   sudo -u mastodon RAILS_ENV=production bundle exec rails db:migrate
   echo "Precompiling assets"
-  sudo -u mastodon RAILS_ENV=production NODE_OPTIONS=--openssl-legacy-provider bundle exec rails assets:precompile
+  sudo -u mastodon corepack enable --install-directory . yarn
+  sudo -u mastodon RAILS_ENV=production NODE_OPTIONS=--openssl-legacy-provider PATH=$PATH:./ bundle exec rails assets:precompile
 }

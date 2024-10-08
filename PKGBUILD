@@ -5,7 +5,7 @@
 # Contributor: Fredrick Brennan <copypaste@kittens.ph>
 
 pkgname=mastodon
-pkgver=4.2.13
+pkgver=4.3.0
 pkgrel=1
 pkgdesc='Your self-hosted, globally interconnected microblogging community'
 arch=(any)
@@ -13,9 +13,9 @@ url=https://github.com/mastodon/mastodon
 license=(AGPL3)
 depends=(ffmpeg
          git
-         imagemagick
          libidn
          libpqxx
+         libvips
          libxml2
          libxslt
          libyaml
@@ -25,7 +25,6 @@ depends=(ffmpeg
          ruby-bundler
          sudo
          valkey
-         yarn
          zlib)
 backup=(etc/mastodon.conf)
 install=mastodon.install
@@ -34,7 +33,7 @@ source=(https://github.com/mastodon/mastodon/archive/v$pkgver.tar.gz
         mastodon.target
         mastodon.sysusers.d
         mastodon.tmpfiles.d)
-sha512sums=('4a966c8f8e51f448bb01b3d78b591e499a41886c7bba4e165d0b9d049df2e95467dc5a593587f240437ef1bbffb29075295cd3845f9573963e3f4fd85cf4e18a'
+sha512sums=('07679a20d26cf0e640e2b10de8f12e30e718d404f05df77537bc7ce4d372574f77eae4b295e6ce039378f10afe13a0e3e31dde99960bbaf72ffae9acfc4aca7e'
             'ce9fe810654f3a641bbc1ea9707fa1b149e3955bfc55da20ed27e58f9c768dd65534fa43c9d67042fff40c48ef33c660efac8ef11c60f1111173326e2a93814c'
             '4ee4210bde391e6dc782cb7c14f2cb968c95ad541aa0efcf843a811f8cc5f0d1067ee3c8346bb412aa9fd1dd5a8bd05a4524df7dc4a106957009853dd237074a'
             '27c4eb01d462c525b59e5808a3b2501b63a34425752128388fbde82f7eb5944b20d2f8d8b1be8ed8adb165cab4cfb8e13f90215f20989ca671a0422ffa37001f')
@@ -48,7 +47,8 @@ build() {
   bundle config set frozen false
   bundle add erb
   bundle install -j$(getconf _NPROCESSORS_ONLN)
-  yarn install --pure-lockfile
+  corepack enable --install-directory . yarn
+  ./yarn install
   # https://aur.archlinux.org/packages/mastodon?O=0#comment-986425
   cd vendor/bundle/ruby/*/gems/ox-*/ext/ox
   make
