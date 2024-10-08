@@ -2,7 +2,7 @@
 # Contributor: Igor Dyatlov <dyatlov.igor@protonmail.com>
 
 pkgname=clairvoyant
-pkgver=3.1.7
+pkgver=3.1.8
 pkgrel=1
 pkgdesc="Magic 8-Ball Fortune Teller"
 arch=('x86_64' 'aarch64')
@@ -12,7 +12,7 @@ depends=('libadwaita' 'libportal' 'gtk4' 'glib2')
 makedepends=('meson' 'vala')
 
 source=("${pkgname}-${pkgver}.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-b2sums=('d99f227208905fae65d7ba630a71fcd05337d410aae1c5e11a7ce5564433f019675a53c3e87154534edad57d3cae8e33c4ed3946751c7245e47a6bb146e0ae00')
+b2sums=('3ad7e1a6b627ccb3515c3f08d9571fbe0e496eccfab65fdbc3afc7bd79e824edfedeb1d9d3835847b1389d93d833766ec9fd34281d102a5a8bde95931eff2d15')
 
 build() {
   arch-meson "$pkgname-$pkgver" build
