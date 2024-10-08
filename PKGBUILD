@@ -2,14 +2,14 @@
 # QT5_BUILD= makepkg -si
 
 pkgname=torrent-file-editor
-pkgver=0.3.18
-pkgrel=3
+pkgver=1.0.0
+pkgrel=1
 pkgdesc='Qt based GUI tool designed to create and edit .torrent files'
 arch=('x86_64')
 url="https://${pkgname}.github.io/"
 license=('GPL-3.0-or-later')
 
-depends=()
+depends=('glibc')
 makedepends=('cmake')
 _buildflags=()
 
@@ -23,16 +23,14 @@ else
     _buildflags+=('QT6_BUILD=ON' 'QT5_BUILD=OFF')
 fi
 
-_buildflags=("${_buildflags[@]/#/'-D'}")
-
 _snapshot="${pkgname}-${pkgver}"
 source=("https://github.com/${pkgname}/${pkgname}/releases/download/v${pkgver}/${_snapshot}.tar.gz")
-sha256sums=('78b69e0151c5998b4df8b69225e7930c18b7d4419eeaabcad769df0f38a86292')
+sha256sums=('47162b34fd9969aaf2afd43d1a5ee4a641f2e482dbfbbc8e8257a8c05d8fd42e')
 
 build() {
     cmake -B 'build' -S "${_snapshot}" \
         -DCMAKE_INSTALL_PREFIX=/usr \
-        "${_buildflags[@]}"
+        "${_buildflags[@]/#/'-D'}"
 
     cmake --build 'build'
 }
