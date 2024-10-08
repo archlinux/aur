@@ -2,13 +2,14 @@
 # Contributor: Jan Cholasta <grubber at grubber cz>
 
 pkgname=vkdoom-git
-pkgver=v0.9+573+ge9620e64a
+pkgver=v0.9+1615+g2a3fe915a
 pkgrel=1
 pkgdesc='Feature centric port for all Doom engine games, with a focus on Vulkan and modern computers (git version)'
 arch=('x86_64' 'aarch64') #Ok so aarch64 works i guess
 url='https://vkdoom.org/'
 license=('BSD' 'GPL3' 'LGPL3')
-depends=('gtk3'
+depends=('bzip2'
+         'gtk3'
          'hicolor-icon-theme'
          'libgl'
          'libjpeg'
@@ -36,15 +37,17 @@ optdepends=('blasphemer-wad: Blasphemer (free Heretic) game data'
             'square1-wad: The Adventures of Square, Episode 1 game data'
             'urbanbrawl-wad: Urban Brawl: Action Doom 2 game data'
             'xorg-xmessage: crash dialog (other)')
-provides=('vkdoom')
-conflicts=('vkdoom')
+provides=('vkdoom' 'vkdoom-bin-nightly')
+conflicts=('vkdoom' 'vkdoom-bin-nightly')
+#disable LTO due to instability
+options=(!debug !lto)
 source=('vkdoom::git+https://github.com/dpjudas/VkDoom/'
         'vkdoom.desktop'
-        '0001-Fix-file-paths.patch'
+        '0001-Enforce-file-paths.patch'
         'vkdoom.svg')
 b2sums=('SKIP'
             '4129062d604c978682536d5d4cb00d1995a8a77b41235556614252f779882623b6babd46f3f9cb3544c62b67a4e9026c7bb68960c319f2cf32682535c43a2bed'
-            'fbec476e07feadccbe60fe8059f063fc810fbc3ca5fcfc57c05baa5b2bb75e46408e7462ba23ca0a993ffc0662e0e5fb77edd731300e526bd0c00e71e8897ec6'
+            'b61b7fd292db0632e3ea155dccbe38d80589d07c1d37c19963ac5e39103f57c489c3c08ab5a3f6a07f7f1d8ae6f7ddf3fdfc0006313312754d7b91f35d6780f4'
             'b9587a107c69dc98593f98454d411bcd69e9257b15d0d7d535c3afd19ce18b74a4513d67c7e973712768d60d1457dd5972d993cb84466d15525e26cf582cb105')
 
 _enforce_clang=${_enforce_clang-}
@@ -60,7 +63,7 @@ pkgver() {
 
 prepare() {
     cd vkdoom
-    patch -i "$srcdir"/0001-Fix-file-paths.patch -p 1
+    patch -i "$srcdir"/0001-Enforce-file-paths.patch -p 1
 }
 
 build() {
