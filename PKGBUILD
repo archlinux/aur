@@ -4,7 +4,7 @@
 pkgname='swiv-git'
 _pkgname='swiv'
 pkgver=0.1.r0.gc353580
-pkgrel=1
+pkgrel=2
 pkgdesc="A fork of sxiv for wayland"
 arch=('x86_64')
 license=('GPL-2.0')
@@ -12,7 +12,7 @@ url="https://github.com/ShaqeelAhmad/${_pkgname}"
 depends=('imlib2' 'cairo' 'fontconfig' 'pango' 'wayland' 'libxkbcommon')
 optdepends=('giflib: gif support',
 	    'libexif: parsing exif data')
-makedepends=('git')
+makedepends=('git' 'wayland-protocols')
 source=("git+https://github.com/ShaqeelAhmad/${_pkgname}.git")
 sha256sums=('SKIP')
 
