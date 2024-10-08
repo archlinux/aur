@@ -15,7 +15,7 @@ optdepends=('libpulse: Pulseaudio support'
 source=("https://dl-canary.discordapp.net/apps/linux/$pkgver/$pkgname-$pkgver.tar.gz"
         'LICENSE.html::https://discordapp.com/terms'
         'OSS-LICENSES.html::https://discordapp.com/licenses')
-sha512sums=('a9c2909805a148516c00903e2eaa9ca43cc567249c36785d47b21443d431912f06684bdbe88310ea81853504380411f26d47434b39adf70caae0e215ba11e1f8'
+sha512sums=('bfbd8eb8e750b2dbb131ed60cd2b69a811798c77ca73f0757bf9f59b46695ca7befd91311f685d6b2ff510999e2516416550ead9f078200cf7bcc364c7a0a6a6'
             'SKIP'
             'SKIP')
 
