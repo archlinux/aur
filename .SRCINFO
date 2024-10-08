@@ -26,9 +26,9 @@ pkgbase = zen-browser-avx2-bin-git
 	source = zen-twilight.sh
 	source = zen-twilight.desktop
 	source = policies.json
-	sha256sums = temp
-	sha256sums = temp
-	sha256sums = temp
-	sha256sums = temp
+	sha256sums = 0157838d7328cf9a478aaf55d2bd7ff0e5ceaa62ddfdf55527a2d9ce0e776b94
+	sha256sums = e05917496b50ee24428ba770543349bcabf96cf8f0e1742a53588af3ef23c894
+	sha256sums = 6fd1e271c23b7e1b92fc55cb0079e027d479dbf5edaab8405852cd215ab73461
+	sha256sums = 4728b4aaec237d18a6ebf9331005fb1084ecf672075db8d4cdf1a503f3dd0c1e
 
 pkgname = zen-browser-avx2-bin-git

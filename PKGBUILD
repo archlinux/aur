@@ -25,10 +25,10 @@ source=("zen-browser-$_realpkgver.tar.bz2::https://github.com/zen-browser/deskto
         "$_pkgname.sh"
         "$_desktopname.desktop"
         "policies.json")
-sha256sums=('temp'
-            'temp'
-            'temp'
-            'temp')
+sha256sums=('0157838d7328cf9a478aaf55d2bd7ff0e5ceaa62ddfdf55527a2d9ce0e776b94'
+            'e05917496b50ee24428ba770543349bcabf96cf8f0e1742a53588af3ef23c894'
+            '6fd1e271c23b7e1b92fc55cb0079e027d479dbf5edaab8405852cd215ab73461'
+            '4728b4aaec237d18a6ebf9331005fb1084ecf672075db8d4cdf1a503f3dd0c1e')
 
 package() {
   # Create directories
