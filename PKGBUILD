@@ -1,8 +1,8 @@
 # Maintainer: Josh Ellithorpe <quest@mac.com>
 
 pkgname=obsession-git
-pkgver=109.04.alpha.r3.gffc8a99
-pkgrel=2
+pkgver=109.04.alpha.r8.g17b000d
+pkgrel=1
 pkgdesc="A Hotline client written in Qt featuring Shift-JIS support and other stuff."
 arch=('i686' 'x86_64')
 url="https://github.com/tjohnman/Obsession"
@@ -13,7 +13,7 @@ source=('git+https://github.com/tjohnman/Obsession.git'
         'qt5.patch'
         'obsession.desktop')
 sha256sums=('SKIP'
-            '440b8f412e38cb1b05609dc1b0fb9cc7af4994ab614dc8971ecaa8eeedb81d9d'
+            '9a4223ad58aabeec5b9dba04a045dbad49f9ce5dece822f441578e98b1b67410'
             '1d6692f0add24ca7e8eb246035a5ee730453505c4f2868b51ec71b6d3fa7a14c')
 provides=('Obsession')
 

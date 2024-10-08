@@ -1,3 +1,209 @@
+diff --git a/Obsession.pro b/Obsession.pro
+index bb341c6..270ffde 100644
+--- a/Obsession.pro
++++ b/Obsession.pro
+@@ -112,8 +112,7 @@ FORMS += src/mainwindow.ui \
+     src/dialogbroadcast.ui \
+     src/dialogpostlinearnews.ui
+ INCLUDEPATH += src/
+-RESOURCES += resources/resources.qrc \
+-    resources/icons1.qrc \
++RESOURCES += resources/icons1.qrc \
+     resources/icons2.qrc \
+     resources/resources.qrc
+ RC_ICONS = resources/icon.ico
+diff --git a/src/cdownload.cpp b/src/cdownload.cpp
+index cdf2e07..8362ae8 100644
+--- a/src/cdownload.cpp
++++ b/src/cdownload.cpp
+@@ -65,34 +65,34 @@ void CDownload::updateSpeed() {
+     QString sizeString, readString, timeString;
+     if(size > 1024) {
+         if(size > 1024*1024*1024) {
+-            sizeString = sizeString.sprintf("%.2f GB", size/1024/1024/1024);
+-            readString = readString.sprintf("%.2f GB", read/1024/1024/1024);
++            sizeString = QString("%1 GB").arg(size/1024/1024/1024, 0, 'f', 2);
++            readString = QString("%1 GB").arg(read/1024/1024/1024, 0, 'f', 2);
+         } else {
+             if(size > 1024*1024) {
+-                sizeString = sizeString.sprintf("%.2f MB", size/1024/1024);
+-                readString = readString.sprintf("%.2f MB", read/1024/1024);
++                sizeString = QString("%1 MB").arg(size/1024/1024, 0, 'f', 2);
++                readString = QString("%1 MB").arg(read/1024/1024, 0, 'f', 2);
+             } else {
+-                sizeString = sizeString.sprintf("%.2f KB", size/1024);
+-                readString = readString.sprintf("%.2f KB", read/1024);
++                sizeString = QString("%1 KB").arg(size/1024, 0, 'f', 2);
++                readString = QString("%1 KB").arg(read/1024, 0, 'f', 2);
+             }
+         }
+     } else {
+-        sizeString = sizeString.sprintf("%.0f bytes", size);
+-        readString = readString.sprintf("%.0f bytes", read);
++        sizeString = QString("%1 bytes").arg(size, 0, 'f', 0);
++        readString = QString("%1 bytes").arg(read, 0, 'f', 0);
+     }
+ 
+     if(speed > 1024) {
+         if(speed > 1024*1024*1024) {
+-            speedString = speedString.sprintf("%.2f GB/s", speed/1024/1024/1024); // Would love to live to see this :P
++            speedString = QString("%1 GB/s").arg(speed/1024/1024/1024, 0, 'f', 2);
+         } else {
+             if(speed > 1024*1024) {
+-                speedString = speedString.sprintf("%.2f MB/s", speed/1024/1024);
++                speedString = QString("%1 MB/s").arg(speed/1024/1024, 0, 'f', 2);
+             } else {
+-                speedString = speedString.sprintf("%.2f KB/s", speed/1024);
++                speedString = QString("%1 KB/s").arg(speed/1024, 0, 'f', 2);
+             }
+         }
+     } else {
+-        speedString = speedString.sprintf("%.0f bytes/s", speed);
++        speedString = QString("%1 bytes/s").arg(speed, 0, 'f', 0);
+     }
+ 
+     timeElapsed++;
+@@ -212,7 +212,7 @@ void CDownload::startDownloading() {
+     if(connection->pSocket.isValid() && connection->pSocket.state() == QAbstractSocket::ConnectedState) {
+         socket.connectToHost(connection->pSocket.peerAddress(), connection->pSocket.peerPort()+1, QIODevice::ReadWrite);
+         socket.waitForConnected();
+-        if(socket.state() == !QAbstractSocket::ConnectedState) {
++        if(socket.state() != QAbstractSocket::ConnectedState) {
+             return;
+         }
+ 
+@@ -296,14 +296,14 @@ void CDownload::serverReady() {
+ 
+     qint32 nameSize = forkSize - 72;
+ 
+-    bool hxd = false;
+-
+     char * reportedName = (char *)malloc(nameSize);
+     memcpy(reportedName, forkInfo+72, nameSize);
+ 
++    /*bool hxd = false;
++
+     if(!strncmp(reportedName, "hxd", 3)) {
+         hxd = true;
+-    }
++    }*/
+ 
+     char * dataHeader = new char[16];
+     
+diff --git a/src/ctransaction.cpp b/src/ctransaction.cpp
+index e03a7de..05c01c9 100644
+--- a/src/ctransaction.cpp
++++ b/src/ctransaction.cpp
+@@ -123,6 +123,7 @@ void CTransaction::addData(const char * data) {
+         case 110:
+         case 115:
+             newParameter.type = TYPE_STRING;
++            break;
+         case 116:
+             if(size <= 2) {
+                 newParameter.type = TYPE_SHORT;
+@@ -223,7 +224,9 @@ char * CTransaction::bytes() {
+         qint16 plen = qToBigEndian(pParameters[i]->length());
+         memcpy(b+24+offset, &plen, 2);
+ 
+-        qint16 sval, ival;
++        qint16 sval;
++        qint32 ival;
++
+         switch(pParameters[i]->type()) {
+         case TYPE_STRING:
+             for(qint32 j=0; j<pParameters[i]->length(); j++) {
+diff --git a/src/cupload.cpp b/src/cupload.cpp
+index 17fbcb5..908d905 100644
+--- a/src/cupload.cpp
++++ b/src/cupload.cpp
+@@ -54,34 +54,34 @@ void CUpload::updateSpeed() {
+     QString sizeString, readString;
+     if(size > 1024) {
+         if(size > 1024*1024*1024) {
+-            sizeString = sizeString.sprintf("%.2f GB", size/1024/1024/1024);
+-            readString = readString.sprintf("%.2f GB", read/1024/1024/1024);
++            sizeString = QString("%1 GB").arg(size/1024/1024/1024, 0, 'f', 2);
++            readString = QString("%1 GB").arg(read/1024/1024/1024, 0, 'f', 2);
+         } else {
+             if(size > 1024*1024) {
+-                sizeString = sizeString.sprintf("%.2f MB", size/1024/1024);
+-                readString = readString.sprintf("%.2f MB", read/1024/1024);
++                sizeString = QString("%1 MB").arg(size/1024/1024, 0, 'f', 2);
++                readString = QString("%1 MB").arg(read/1024/1024, 0, 'f', 2);
+             } else {
+-                sizeString = sizeString.sprintf("%.2f KB", size/1024);
+-                readString = readString.sprintf("%.2f KB", read/1024);
++                sizeString = QString("%1 KB").arg(size/1024, 0, 'f', 2);
++                readString = QString("%1 KB").arg(read/1024, 0, 'f', 2);
+             }
+         }
+     } else {
+-        sizeString = sizeString.sprintf("%.0f bytes", size);
+-        readString = readString.sprintf("%.0f bytes", read);
++        sizeString = QString("%1 bytes").arg(size, 0, 'f', 0);
++        readString = QString("%1 bytes").arg(read, 0, 'f', 0);
+     }
+ 
+     if(speed > 1024) {
+         if(speed > 1024*1024*1024) {
+-            speedString = speedString.sprintf("%.2f GB/s", speed/1024/1024/1024); // Would love to live to see this :P
++            speedString = QString("%1 GB/s").arg(speed/1024/1024/1024, 0, 'f', 2);
+         } else {
+             if(speed > 1024*1024) {
+-                speedString = speedString.sprintf("%.2f MB/s", speed/1024/1024);
++                speedString = QString("%1 MB/s").arg(speed/1024/1024, 0, 'f', 2);
+             } else {
+-                speedString = speedString.sprintf("%.2f KB/s", speed/1024);
++                speedString = QString("%1 KB/s").arg(speed/1024, 0, 'f', 2);
+             }
+         }
+     } else {
+-        speedString = speedString.sprintf("%.0f bytes/s", speed);
++        speedString = QString("%1 bytes/s").arg(speed, 0, 'f', 0);
+     }
+ 
+     widget->infoLabel()->setText(readString+" of "+sizeString+" ("+speedString+")");
+diff --git a/src/dialogfilebrowser.cpp b/src/dialogfilebrowser.cpp
+index 30bff53..2bc8f8c 100644
+--- a/src/dialogfilebrowser.cpp
++++ b/src/dialogfilebrowser.cpp
+@@ -90,7 +90,7 @@ void DialogFileBrowser::load() {
+     CTransaction * fileListTransaction = connection->createTransaction(200);
+ 
+     if(path.length() > 1) {
+-        QStringList levels = path.split("/", QString::SkipEmptyParts);
++        QStringList levels = path.split("/", Qt::SkipEmptyParts);
+         quint16 directorylevels = levels.count();
+         quint16 pathlen = 2 + directorylevels * 3;
+         for(qint32 i=0; i<levels.count(); i++) {
+@@ -332,7 +332,7 @@ void DialogFileBrowser::goDirectoryUp() {
+         path = "/";
+         return;
+     }
+-    QStringList levels = path.split("/", QString::SkipEmptyParts);
++    QStringList levels = path.split("/", Qt::SkipEmptyParts);
+     levels.pop_back();
+     path = levels.join("/");
+     load();
+@@ -365,7 +365,7 @@ void DialogFileBrowser::requestFileDelete()
+     CTransaction * transaction = connection->createTransaction(204);
+     transaction->addParameter(201, TextHelper::EncodeText(ui->treeWidget->currentItem()->data(0, 0).toString()).size(), TextHelper::EncodeText(ui->treeWidget->currentItem()->data(0, 0).toString()).data());
+ 
+-    QStringList levels = path.split("/", QString::SkipEmptyParts);
++    QStringList levels = path.split("/", Qt::SkipEmptyParts);
+     quint16 directorylevels = levels.count();
+     quint16 pathlen = 2 + directorylevels * 3;
+     for(qint32 i=0; i<levels.count(); i++) {
+@@ -423,7 +423,7 @@ void DialogFileBrowser::requestUpload() {
+         path.append("/");
+     }
+ 
+-    QStringList levels = path.split("/", QString::SkipEmptyParts);
++    QStringList levels = path.split("/", Qt::SkipEmptyParts);
+     quint16 directorylevels = levels.count();
+     quint16 pathlen = 2 + directorylevels * 3;
+     for(qint32 i=0; i<levels.count(); i++) {
 diff --git a/src/dialogtrackers.cpp b/src/dialogtrackers.cpp
 index 7415f78..ba8d985 100644
 --- a/src/dialogtrackers.cpp
@@ -16,9 +222,18 @@ index 7415f78..ba8d985 100644
      connect(ui->comboBox, SIGNAL(currentIndexChanged(QString)), this, SLOT(updateServerList(QString)));
      connect(ui->pushButton, SIGNAL(clicked()), addTrackerDialog, SLOT(show()));
 diff --git a/src/downloadmanager.cpp b/src/downloadmanager.cpp
-index 37c91ef..2335a21 100644
+index 37c91ef..4855652 100644
 --- a/src/downloadmanager.cpp
 +++ b/src/downloadmanager.cpp
+@@ -105,7 +105,7 @@ void DownloadManager::sendDownloadRequestToServer(CDownload * download) {
+         path.append("/");
+     }
+ 
+-    QStringList levels = path.split("/", QString::SkipEmptyParts);
++    QStringList levels = path.split("/", Qt::SkipEmptyParts);
+     quint16 directorylevels = levels.count();
+     quint16 pathlen = 2 + directorylevels * 3;
+     for(qint32 i=0; i<levels.count(); i++) {
 @@ -240,6 +240,5 @@ void DownloadManager::addDownload(quint32 ref, quint32 size, quint32 queuepos) {
  
  QString DownloadManager::GetDownloadsDirectoryPath()
@@ -55,3 +270,28 @@ index 1936770..b6bdfa3 100644
  
      QApplication a(argc, argv);
      MainWindow w(0, true);
+diff --git a/src/widgetnews.cpp b/src/widgetnews.cpp
+index afa44f6..ceb036c 100644
+--- a/src/widgetnews.cpp
++++ b/src/widgetnews.cpp
+@@ -65,7 +65,7 @@ void WidgetNews::getNews() {
+         }
+ 
+         if(path.length() > 1) {
+-            QStringList levels = path.split(":", QString::SkipEmptyParts);
++            QStringList levels = path.split(":", Qt::SkipEmptyParts);
+             quint16 directorylevels = levels.count();
+             quint16 pathlen = 2 + directorylevels * 3;
+             for(qint32 i=0; i<levels.count(); i++) {
+@@ -212,9 +212,9 @@ void WidgetNews::onNewsCategory(unsigned char _type, QString _name) {
+ }
+ 
+ void WidgetNews::onItemSelectionChanged() {
+-    const QTreeWidgetItem * item = ui->treeWidget->currentItem();
++    /*const QTreeWidgetItem * item = ui->treeWidget->currentItem();
+ 
+-    /*if (item) {
++    if (item) {
+         ui->pushButtonDelete->setEnabled(true);
+         ui->pushButtonReply->setEnabled(true);
+     } else {
