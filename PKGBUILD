@@ -1,9 +1,12 @@
 # Maintainer:
 
-# basic info
+## links
+# https://bitbucket.org/agriggio/art
+# https://github.com/agriggio/ART-releases/releases
+
 _pkgname="art-rawconverter"
 pkgname="$_pkgname-bin"
-pkgver=1.23
+pkgver=1.24
 pkgrel=1
 pkgdesc="Raw image converter forked from RawTherapee with ease of use in mind"
 url="https://bitbucket.org/agriggio/art"
@@ -15,13 +18,14 @@ conflicts=("$_pkgname")
 
 options=('!strip' '!debug')
 
-source=("$_pkgname-$pkgver.tar.xz"::"$url/downloads/ART-$pkgver-linux64.tar.xz")
-sha256sums=('c6b8a0e4ccf2052d40fbfc1d91933ca15ada9d31a145553ee4ae395e75171da7')
+_url="https://github.com/agriggio/ART-releases"
+_pkgsrc="ART-$pkgver-linux64"
+_pkgext="tar.xz"
+source=("$_pkgname-$pkgver.$_pkgext"::"$_url/releases/download/v$pkgver/$_pkgsrc.$_pkgext")
+sha256sums=('de7a53a00c4913b415d196a35ec9ac3cf2200438cf89125a546a68c3b17987b7')
 
 prepare() {
-  cp -rl "ART-$pkgver-linux64" "$_pkgname-$pkgver"
-
-  cat "$_pkgname-$pkgver/share/applications/ART.desktop" \
+  cat "$_pkgsrc/share/applications/ART.desktop" \
     | sed 's/Name=ART/Name=ART Raw Converter/' \
     | sed 's/Exec=ART/Exec=art/' \
     | sed "s/Icon=ART/Icon=$_pkgname/" \
@@ -31,9 +35,9 @@ prepare() {
 package() {
   local OPT_PATH="opt/$_pkgname"
 
-  # Install the package files
+  # main files
   install -dm755 "$pkgdir/opt"
-  cp --reflink=auto -r "$_pkgname-$pkgver" "$pkgdir/$OPT_PATH"
+  cp --reflink=auto -r "$_pkgsrc" "$pkgdir/$OPT_PATH"
 
   # symlinks
   install -dm755 "$pkgdir/usr/bin"
@@ -47,7 +51,7 @@ package() {
   install -Dm644 "$_pkgname.desktop" -t "$pkgdir/usr/share/applications"
 
   # icons
-  local SRC_LOC="$srcdir/$_pkgname-$pkgver/share/icons/hicolor"
+  local SRC_LOC="$srcdir/$_pkgsrc/share/icons/hicolor"
   local DEST_LOC="$pkgdir/usr/share/icons/hicolor"
   for i in 16 24 48 128 256; do
     install -Dm644 "$SRC_LOC/${i}x${i}/apps/ART.png" "$DEST_LOC/${i}x${i}/apps/$_pkgname.png"
