@@ -1,5 +1,5 @@
 pkgbase = python-aleatory
-	pkgdesc = Sparse matrix spy plot and sparkline renderer that works with Jupyter
+	pkgdesc = Stochastic Processes Simulation and Visualisation
 	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://github.com/quantgirluk/aleatory
