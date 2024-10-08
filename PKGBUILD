@@ -19,7 +19,7 @@ source=("${url}/archive/refs/tags/v${pkgver}.tar.gz"
         "0001-gemspec.patch")
 options=(!emptydirs)
 sha256sums=('7e5befcf8f2d155302a08ed45a11341e7c3930a6596a40e99ecec77cce855a20'
-            'a46d37974685ab4296ab285e7f3e0926f3a7ba123083f3a43f65d8cbd1d3b69c')
+            'f40289fd12c3a65b31a9eadd19258204f60556b8841decde918afabc6b361b5b')
 
 ################################################################################
 

@@ -12,6 +12,6 @@ pkgbase = ruby-reverse_markdown
 	source = https://github.com/xijo/reverse_markdown/archive/refs/tags/v2.1.1.tar.gz
 	source = 0001-gemspec.patch
 	sha256sums = 7e5befcf8f2d155302a08ed45a11341e7c3930a6596a40e99ecec77cce855a20
-	sha256sums = a46d37974685ab4296ab285e7f3e0926f3a7ba123083f3a43f65d8cbd1d3b69c
+	sha256sums = f40289fd12c3a65b31a9eadd19258204f60556b8841decde918afabc6b361b5b
 
 pkgname = ruby-reverse_markdown
