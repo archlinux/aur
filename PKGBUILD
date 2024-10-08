@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=syng-bin
 _appname=syng
-pkgver=2.0.0_beta_5
-pkgrel=6
+pkgver=2.0.0_beta_6
+pkgrel=1
 pkgdesc="A free, open source, cross-platform, Chinese-To-English dictionary for desktops."
 arch=("x86_64")
 url="https://getsyng.com/"
@@ -18,19 +18,20 @@ depends=(
     'webkit2gtk'
 )
 source=(
-    "${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/v${pkgver//_/-}/${pkgname%-bin}-2_0.0.5_amd64.deb"
+    "${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/v${pkgver//_/-}/${pkgname%-bin}-2_0.0.6_amd64.deb"
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/sotch-pr35mac/syng/v${pkgver//_/-}/LICENSE-CC-CEDICT"
 )
-sha256sums=('18d9c3474e4c486460cc34f07b00259381875f0ac22db6a3cbe24713ba1693ab'
+sha256sums=('dc3d1c2f8a63c97bbf55b122e10002a178194153cc2ba33c78ac6caf3ee949fc'
             '997e0e57760a71dfc656727d5bc14149bae55f907990f8c75650673924434f0c')
 build() {
     bsdtar -xf "${srcdir}/data."*
-    sed "s|${pkgname%-bin}-2|${pkgname%-bin}|g" -i "${srcdir}/usr/share/applications/${pkgname%-bin}-2.desktop"
+    sed -i "s/${pkgname%-bin}-2/${pkgname%-bin}/g" "${srcdir}/usr/share/applications/${pkgname%-bin}-2.desktop"
 }
 package() {
     install -Dm755 "${srcdir}/usr/bin/${pkgname%-bin}-2" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm644 "${srcdir}/usr/share/applications/${pkgname%-bin}-2.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
-    for _icons in 32x32 128x128 256x256@2;do
+    _icon_sizes=(32x32 128x128 256x256@2)
+    for _icons in "${_icon_sizes[@]}";do
       install -Dm644 "${srcdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname%-bin}-2.png" \
         "${pkgdir}/usr/share/icons/hicolor/${_icons//@2/}/apps/${pkgname%-bin}.png"
     done
