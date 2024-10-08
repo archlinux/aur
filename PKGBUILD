@@ -2,14 +2,15 @@
 
 pkgname=gvmd
 pkgver=23.10.0
-pkgrel=8
+pkgrel=9
 pkgdesc='Vulnerability manager Daemon'
 arch=('x86_64')
 url="https://github.com/greenbone/gvmd"
 license=('AGPL-3.0-only')
 depends=('ospd-openvas' 'cjson' 'gvm-libs' 'libbsd' 'libical' 'python' 'gnutls' 'postgresql' 'libxslt')
 makedepends=('cmake' 'doxygen' 'xmltoman' 'libxslt')
-optdepends=('logrotate: for rotating logs')
+optdepends=('logrotate: for rotating logs'
+			'greenbone-feed-sync: scripts for downloading updated feed informations')
 groups=('greenbone-vulnerability-manager')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz"
         ${pkgname}-${pkgver}.tar.gz.asc::${url}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz.asc
