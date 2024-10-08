@@ -3,7 +3,7 @@
 _base=jupyter-book
 pkgname=python-${_base}
 pkgdesc="Build a book with Jupyter Notebooks and Sphinx"
-pkgver=1.0.2
+pkgver=1.0.3
 pkgrel=1
 arch=(any)
 url="https://${_base/-/}.org"
@@ -25,9 +25,12 @@ depends=(python-click
   python-sphinxcontrib-bibtex
   python-sphinx-multitoc-numbering)
 makedepends=(python-build python-installer python-flit-core)
-checkdepends=(python-pytest python-jupytext python-texsoup)
+checkdepends=(python-pytest python-jupytext python-texsoup python-cookiecutter
+  python-sphinx-inline-tabs python-altair texlive-binextra texlive-xetex
+  texlive-latexrecommended texlive-pictures texlive-fontsrecommended
+  texlive-fontsextra texlive-latexextra)
 source=(${_base}-${pkgver}.tar.gz::https://github.com/executablebooks/${_base}/archive/v${pkgver}.tar.gz)
-sha512sums=('b64efda06d8714c9824970f5d02e529d78989c07ade2f672e5a01a619cc618ae4cb9dfa509a6585fb89c89d96bd7d9d8eca6d22e21f10f9982b80f03148f82ba')
+sha512sums=('60740ffbf30988bf16ab037517614239a517b9608a004451dd36e41680909d2b818cc02d07d1fc81de85dda3d3654364613af53abd563a6e3a026fbef9083f42')
 
 build() {
   cd ${_base}-${pkgver}
@@ -38,14 +41,10 @@ check() {
   cd ${_base}-${pkgver}
   python -m venv --system-site-packages test-env
   test-env/bin/python -m installer dist/*.whl
-  test-env/bin/python -m pytest \
-    --ignore=tests/test_build.py \
-    --ignore=tests/test_clean.py \
-    --ignore=tests/test_config.py \
+  PATH=${srcdir}/${_base}-${pkgver}/test-env/bin:$PATH test-env/bin/python -m pytest \
+    -k 'not execution_timeout and not toc_numbered[_toc_numbered.yml] and not toc_numbered[_toc_numbered_depth.yml] and not toc_numbered[_toc_numbered_parts.yml] and not toc_numbered[_toc_numbered_parts_subset.yml] and not toc_numbered[_toc_numbered_depth_parts_subset.yml] and not mathjax_config_warning and not mathjax_config_warning_mathjax2path and not toc_parts' \
     --ignore=tests/test_pdf.py \
-    --ignore=tests/test_sphinx_multitoc_numbering.py \
-    --ignore=tests/test_tocdirective.py \
-    -k 'not toc'
+    --ignore=tests/test_sphinx_multitoc_numbering.py
 }
 
 package() {
