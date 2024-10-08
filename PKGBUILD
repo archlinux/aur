@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=mediago-bin
 _pkgname=MediaGo
-pkgver=3.0.0_beta.2
+pkgver=3.0.0
 _electronversion=30
 pkgrel=1
 pkgdesc="Video online extraction tool streaming media download, video download,m3u8 download,Bilibili video download.视频在线提取工具,流媒体下载,视频下载,m3u8下载,B站视频下载."
@@ -16,11 +16,11 @@ depends=(
     'python'
 )
 source=(
-    "${pkgname%-bin}-${pkgver//_/-}.deb::${_ghurl}/releases/download/v${pkgver//_/-}/${pkgname%-bin}-setup-linux-amd64-${pkgver//_/-}.deb"
-    "LICENSE-${pkgver}::https://raw.githubusercontent.com/caorushizi/mediago/v${pkgver//_/-}/LICENSE"
+    "${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-setup-linux-amd64-${pkgver}.deb"
+    "LICENSE-${pkgver}::https://raw.githubusercontent.com/caorushizi/mediago/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('b1867c43266c249c8997b01205d60064dc26d4cec9ffe1fa46dae64abadb6e85'
+sha256sums=('6c91ee0f9db8c6a5220bbaa7ac46a4cf7e6805df92082a8d8c033cf6fd60fcc6'
             '029419e98f7e94359d2b8e96db62d1482242d51af55bc5c5b5ac3e2448edb4ee'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 build() {
