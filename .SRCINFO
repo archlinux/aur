@@ -1,0 +1,18 @@
+pkgbase = gtrash
+	pkgdesc = A Trash CLI manager written in Go
+	pkgver = 0.0.6
+	pkgrel = 1
+	url = https://github.com/umlx5h/gtrash
+	arch = aarch64
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	depends = glibc
+	conflicts = gtrash-bin
+	options = strip
+	options = buildflags
+	source = https://github.com/umlx5h/gtrash/archive/refs/tags/v0.0.6/gtrash-0.0.6.tar.gz
+	sha256sums = 66003276073d9da03cbb4347a4b161f89c81f3706012b77c3e91a154c91f3586
+
+pkgname = gtrash

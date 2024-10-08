@@ -1,0 +1,4 @@
+[gtrash]
+source = "git"
+git = "https://github.com/umlx5h/gtrash.git"
+prefix = "v"
