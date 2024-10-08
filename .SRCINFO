@@ -1,0 +1,17 @@
+pkgbase = aider-chat-venv
+	pkgdesc = AI pair programming in your terminal
+	pkgver = 0.59.0
+	pkgrel = 1
+	url = https://github.com/Aider-AI/aider
+	arch = any
+	license = Apache-2.0
+	depends = python
+	provides = aider-chat
+	provides = aider-chat
+	conflicts = aider-chat
+	conflicts = aider-chat
+	options = !strip
+	source = aider.bin
+	b2sums = 717fa32e049ed4f21794997d74910be6c6c105ac0304aa98cfd0c59ce5e1212ea68a242d18bd698564fa1f5365cfe998d583bf4b95afbf39b2d4aa0b9dbb5bad
+
+pkgname = aider-chat-venv
