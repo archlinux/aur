@@ -1,19 +1,19 @@
 # Maintainer: kevku <kevku@gmx.com>
 pkgname=libdigidocpp
-pkgver=3.17.1.1453
-_rls_tag=v3.17.1
+pkgver=4.0.0.1460
+_rls_tag=v4.0.0
 pkgrel=1
 pkgdesc="Library for creating, signing and verification of digitally signed documents, according to XAdES and XML-DSIG standards"
-arch=('x86_64' 'i686')
+arch=('x86_64')
 url="https://www.id.ee/"
 license=('LGPL-2.1-or-later')
-depends=('minizip' 'zlib' 'openssl' 'xalan-c' 'xerces-c' 'xml-security-c')
-makedepends=('cmake' 'git' 'libxsd' 'xsd' 'xxd')
+depends=('minizip' 'zlib' 'openssl' 'libxml2' 'libxslt' 'xmlsec')
+makedepends=('cmake' 'git' 'libxsd' 'xsd')
 source=("$pkgname-$pkgver::git+https://github.com/open-eid/libdigidocpp.git?signed#tag=$_rls_tag"
         "open-eid-cmake::git+https://github.com/open-eid/cmake.git")
 sha256sums=("SKIP" "SKIP")
 validpgpkeys=(
-    'D1EBC666EFCBFBD3CFC2EBAA90C0B5E75C3B195D'  # Raul Metsma
+    'D1EBC666EFCBFBD3CFC2EBAA90C0B5E75C3B195D'  # Raul Metsma https://github.com/metsma.gpg
 )
 
 prepare() {
@@ -37,8 +37,7 @@ build() {
              -DCMAKE_INSTALL_SYSCONFDIR="/etc" \
              -DCMAKE_DISABLE_FIND_PACKAGE_Doxygen=TRUE \
              -DCMAKE_DISABLE_FIND_PACKAGE_SWIG=TRUE \
-             -DCMAKE_DISABLE_FIND_PACKAGE_Boost=TRUE \
-             -DCMAKE_DISABLE_FIND_PACKAGE_JNI=TRUE
+             -DCMAKE_DISABLE_FIND_PACKAGE_Boost=TRUE
     make
 }
 
