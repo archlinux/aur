@@ -1,6 +1,6 @@
 pkgbase = polycule-git
 	pkgdesc = A geeky and efficient [matrix] client for power users.
-	pkgver = 56969c1
+	pkgver = v0.0.1.r12.gb65c0c3
 	pkgrel = 1
 	url = https://gitlab.com/polycule_client/polycule
 	arch = x86_64
