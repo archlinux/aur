@@ -1,0 +1,4 @@
+[oterm]
+source = "git"
+git = "https://github.com/roosta/i3wsr"
+prefix = "v"
