@@ -1,7 +1,7 @@
 pkgbase = tribler-bin
 	pkgdesc = P2P/Bittorrent/YouTube client
 	pkgver = 7.14.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://tribler.org
 	arch = x86_64
 	license = GPL3
@@ -42,6 +42,6 @@ pkgbase = tribler-bin
 	provides = tribler
 	conflicts = tribler
 	source = https://github.com/Tribler/tribler/releases/download/v7.14.0/tribler_7.14.0_all.deb
-	sha256sums = 8000833f6ccf7952fec9e729296f82172f6105c738064f552832910aaf645527
+	sha256sums = 2c8d43acdae81fec82c53a5f62efaaccc12d984e14f7b5585ebe3fe31c98bc40
 
 pkgname = tribler-bin
