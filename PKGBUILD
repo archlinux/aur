@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=typesense-dashboard-bin
 _pkgname="Typesense-Dashboard"
-pkgver=1.9.1
-_electronversion=29
-pkgrel=2
+pkgver=1.9.2
+_electronversion=32
+pkgrel=1
 pkgdesc="A Typesense Dashboard to manage and browse collections."
 arch=('x86_64')
 url="https://bfritscher.github.io/typesense-dashboard/"
@@ -22,16 +22,17 @@ source=(
     "${pkgname%-bin}-${pkgver}.png::https://raw.githubusercontent.com/bfritscher/typesense-dashboard/v${pkgver}/public/icons/favicon-128x128.png"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('a69a44ad9869474f2c2af9146cc47415a3084b3932a9401311b09393e71bdeba'
+sha256sums=('3a33e90a840d55a56d36dbc5060d01e22dfe8a63e8301baf960432bae0f3737b'
             'ce61a0d27e9167938ce2083e1391de1ee514b40d8a0f5c3602a7a04f449f6779'
-            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
+            '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 build() {
-    sed -e "s|@electronversion@|${_electronversion}|" \
-        -e "s|@appname@|${pkgname%-bin}|g" \
-        -e "s|@runname@|app.asar|g" \
-        -e "s|@cfgdirname@|${_pkgname}|g" \
-        -e "s|@options@|env ELECTRON_OZONE_PLATFORM_HINT=auto|g" \
-        -i "${srcdir}/${pkgname%-bin}.sh"
+    sed -e "
+        s/@electronversion@/${_electronversion}/g
+        s/@appname@/${pkgname%-bin}/g
+        s/@runname@/app.asar/g
+        s/@cfgdirname@/${_pkgname}/g
+        s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
+    " -i "${srcdir}/${pkgname%-bin}.sh"
     gendesk -q -f -n --pkgname="${pkgname%-bin}" --pkgdesc="${pkgdesc}" --categories="Utility" --name="${_pkgname}" --exec="${_pkgname} %U"
 }
 package() {
