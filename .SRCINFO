@@ -1,0 +1,14 @@
+pkgbase = borg
+	pkgdesc = Suckless second brain - a simple terminal note-taking and task management app
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/benjaminingreens/borg
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = python
+	depends = python-setuptools
+	source = git+https://github.com/benjaminingreens/borg#tag=v0.0.1
+	sha256sums = SKIP
+
+pkgname = borg
