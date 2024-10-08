@@ -7,7 +7,7 @@ pkgdesc="Tools for doing computation in game theory - git version"
 arch=('i686' 'x86_64')
 url="http://www.gambit-project.org"
 license=('GPL')
-depends=('wxwidgets-gtk3' 'python')
+depends=('wxwidgets-gtk3' 'python' 'python-build' 'python-installer')
 makedepends=('git' 'cython')
 provides=('gambit')
 conflicts=('gambit')
@@ -37,5 +37,5 @@ package() {
   cd "gambit"
   make DESTDIR="$pkgdir/" install
   
-  python setup.py install --root="$pkgdir"
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
