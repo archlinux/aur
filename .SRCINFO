@@ -1,0 +1,13 @@
+pkgbase = python-ippserver
+	pkgdesc = IPP server implementing enough of IPP to fool CUPS into thinking its a real printer.
+	pkgver = 0.2
+	pkgrel = 1
+	url = https://github.com/h2g2bob/ipp-server
+	arch = any
+	license = custom
+	makedepends = python-setuptools
+	depends = python
+	source = python-ippserver-0.2.tar.gz::https://github.com/h2g2bob/ipp-server/archive/v0.2.tar.gz
+	sha512sums = 01ae4d6903dc2293a76ed90d1ec8fe6790345728850432f0da53adf1f2ad6c749f645653844804da242f4bbb7fac1911f3ec2353c1ec5a36e716d5a44adf2e47
+
+pkgname = python-ippserver
