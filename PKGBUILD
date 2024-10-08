@@ -1,7 +1,7 @@
 # Maintainer: Jay Tauron <jytrn@protonmail.com>
 
 pkgname=discord-rpc-extension-no-tray-bin
-pkgver=0.1.2
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="Discord rich presence extension with open API. No tray."
 arch=('x86_64')
