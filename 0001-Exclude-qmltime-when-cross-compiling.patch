@@ -1,0 +1,33 @@
+From 21b10990934f2120be9411ff03db0ad1e28239aa Mon Sep 17 00:00:00 2001
+From: Martchus <martchus@gmx.net>
+Date: Fri, 5 Feb 2021 02:22:45 +0100
+Subject: [PATCH] Exclude qmltime when cross compiling
+
+as the build script would attempt to set the property of a target
+which does not exist (leading to a configuration error).
+
+This tool seems not really requird and is already disabled when
+compiling for Android or when compiling static libraries anyways.
+That's likely also why upstream did not notice this problem so far.
+---
+ tools/CMakeLists.txt | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/tools/CMakeLists.txt b/tools/CMakeLists.txt
+index 0b89bea46e..63f873b360 100644
+--- a/tools/CMakeLists.txt
++++ b/tools/CMakeLists.txt
+@@ -36,7 +36,9 @@ if(NOT (ANDROID OR WASM OR IOS OR VISIONOS OR rtems))
+         endif()
+         if(QT_BUILD_SHARED_LIBS AND TARGET Qt::Quick)
+             add_subdirectory(qmlscene)
+-            add_subdirectory(qmltime)
++            if(NOT CMAKE_CROSSCOMPILING)
++                 add_subdirectory(qmltime)
++            endif()
+         endif()
+         if(QT_BUILD_SHARED_LIBS
+             AND QT_FEATURE_process
+-- 
+2.47.0
+
