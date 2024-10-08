@@ -1,42 +1,29 @@
-# This is an example PKGBUILD file. Use this as a start to creating your own,
-# and remove these comments. For more information, see 'man PKGBUILD'.
-# NOTE: Please fill out the license field for your package! If it is unknown,
-# then please put 'unknown'.
-
 # Maintainer: Ivaylo Bachvarov <ISBachvarov21@codingburgas.bg>
 pkgname=rune-cpp-git
-pkgver=0.1
+pkgver=0.1.r$(git rev-list --count HEAD)
 pkgrel=1
-epoch=
 pkgdesc="A C++ framework for developing REST APIs with a focus on simplicity and speed."
 arch=(x86_64 i686)
 url="https://github.com/ISBachvarov21/Rune"
 license=('MIT')
-groups=()
-depends=()
-makedepends=('git' 'cmake')
-checkdepends=()
-optdepends=()
-provides=(rune-cpp)
-conflicts=()
-replaces=()
-backup=()
-options=()
-install=
-changelog=
+makedepends=('git' 'gcc' 'cmake')
 source=("$pkgname::git+$url.git")
-noextract=()
-sha256sums=('SKIP')
-validpgpkeys=()
+sha256sums=('SKIP')  # Git repositories do not need checksums
+
+pkgver() {
+  cd "$srcdir/$pkgname"
+  # Use the latest commit count as the version
+  echo "0.1.r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+}
 
 build() {
-  cd $pkgname
-  mkdir build
+  cd "$srcdir/$pkgname"
+  mkdir -p build
   cmake -S . -B build
   cmake --build build
 }
 
 package() {
-  cd $pkgname
-	sudo cmake --install build --prefix /usr
+  cd "$srcdir/$pkgname"
+  cmake --install build --prefix "$pkgdir/usr"
 }
