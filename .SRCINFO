@@ -1,11 +1,12 @@
 pkgbase = swiv-git
 	pkgdesc = A fork of sxiv for wayland
 	pkgver = 0.1.r0.gc353580
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ShaqeelAhmad/swiv
 	arch = x86_64
 	license = GPL-2.0
 	makedepends = git
+	makedepends = wayland-protocols
 	depends = imlib2
 	depends = cairo
 	depends = fontconfig
