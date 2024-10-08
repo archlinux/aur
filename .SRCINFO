@@ -1,0 +1,23 @@
+pkgbase = android-armv7a-eabi-qt6-webchannel
+	pkgdesc = Provides access to QObject or QML objects from HTML clients for seamless integration of Qt applications with HTML/JavaScript clients (android)
+	pkgver = 6.8.0
+	pkgrel = 1
+	url = https://www.qt.io
+	arch = any
+	groups = android-armv7a-eabi-qt6
+	license = GPL3
+	license = LGPL3
+	license = FDL
+	license = custom
+	makedepends = android-cmake
+	makedepends = qt6-declarative
+	makedepends = ninja
+	depends = android-armv7a-eabi-qt6-declarative
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = https://download.qt.io/official_releases/qt/6.8/6.8.0/submodules/qtwebchannel-everywhere-src-6.8.0.tar.xz
+	sha256sums = d6250d25bf8a8d2af608239d259ec72db6dc28f08aefc8895492ad09ebaf60c0
+
+pkgname = android-armv7a-eabi-qt6-webchannel
