@@ -1,0 +1,25 @@
+pkgbase = android-x86-qt6-websockets
+	pkgdesc = Provides WebSocket communication compliant with RFC 6455 (android)
+	pkgver = 6.8.0
+	pkgrel = 1
+	url = https://www.qt.io
+	arch = any
+	groups = android-x86-qt6
+	license = GPL3
+	license = LGPL3
+	license = FDL
+	license = custom
+	makedepends = android-cmake
+	makedepends = android-x86-qt6-declarative
+	makedepends = qt6-declarative
+	makedepends = ninja
+	depends = android-x86-qt6-base
+	optdepends = android-x86-qt6-declarative: QML bindings
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = https://download.qt.io/official_releases/qt/6.8/6.8.0/submodules/qtwebsockets-everywhere-src-6.8.0.tar.xz
+	sha256sums = c14be05c46b71c2a89865987ffe0a8d40d8ecb01d48dcdca7fc02ba83a5eaf6f
+
+pkgname = android-x86-qt6-websockets
