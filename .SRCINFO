@@ -1,18 +1,17 @@
 pkgbase = less-player-git
 	pkgdesc = Less is More~ All for One, One for All ! Less Player, 基于Electron + Vue3开发、插件化的播放器
-	pkgver = 0.1.26.r1.gb127288
+	pkgver = 0.1.27.r2.g52361d3
 	pkgrel = 1
 	url = https://github.com/GeekLee2012/Less-Player-Desktop
 	arch = x86_64
 	license = Apache-2.0
 	makedepends = gendesk
 	makedepends = npm
-	makedepends = yarn
 	makedepends = nvm
 	makedepends = git
 	makedepends = curl
 	depends = electron22
-	provides = less-player=0.1.26
+	provides = less-player=0.1.27
 	conflicts = less-player
 	source = less-player.git::git+https://github.com/GeekLee2012/Less-Player-Desktop.git
 	source = less-player.sh
