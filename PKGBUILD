@@ -1,32 +1,30 @@
- # Maintainer: Leo sk <sk.griffinix@gmail.com>
+# Maintainer: Manuel Hüsers <aur@huesers.de>
+# Contributor: Leo sk <sk.griffinix@gmail.com>
 
- pkgname=sierra-breeze-enhanced
- _gitname=SierraBreezeEnhanced
- pkgver=1.3.3
- pkgrel=1
- pkgdesc="A kwin decoration with support for transparency, rounded corners, multiple titlebar button presets and more"
- arch=('x86_64')
- url="https://github.com/kupiqu/SierraBreezeEnhanced/"
- license=('GPL3')
- depends=('kwin')
- makedepends=('cmake' 'extra-cmake-modules')
- source=("${url}archive/refs/tags/V${pkgver}.tar.gz")
- sha256sums=('37d10ee089091e33b48d27829c0659a2240c55bcb8b762fddd03cc6ab59458c0')
+pkgname=sierra-breeze-enhanced
+_pkgname=SierraBreezeEnhanced
+pkgver=2.0.1
+pkgrel=1
+pkgdesc="A kwin decoration with support for transparency, rounded corners, multiple titlebar button presets and more"
+arch=('x86_64')
+url="https://github.com/kupiqu/${_pkgname,,}"
+license=('GPL-3.0-or-later')
+depends=('kwin')
+makedepends=('cmake' 'extra-cmake-modules')
+source=("${url}/archive/V${pkgver}/${pkgname}-V${pkgver}.tar.gz")
+sha512sums=('1c7f55e979c854135a4c6e21d9838df8de0b7dd0ee252f100c8b622e72224d19bf8e06318ad43367112f6c3422ac5ac44242b74635cce5e96107c1ea447ce838')
 
- build() {
+build() {
+	cmake -B build -S "${_pkgname}-${pkgver}" \
+		-DCMAKE_INSTALL_PREFIX=/usr \
+		-DCMAKE_BUILD_TYPE=Release \
+		-DKDE_INSTALL_LIBDIR=lib \
+		-DBUILD_TESTING=OFF \
+		-DKDE_INSTALL_USE_QT_SYS_PATHS=ON \
+		-Wno-dev
+}
 
-     cd "${srcdir}/${_gitname}-${pkgver}"
-
-     mkdir build && cd build
-     cmake ..  \
-     -DCMAKE_INSTALL_PREFIX=/usr \
-     -DCMAKE_BUILD_TYPE=Release \
-     -DKDE_INSTALL_LIBDIR=lib \
-     -DBUILD_TESTING=OFF \
-     -DKDE_INSTALL_USE_QT_SYS_PATHS=ON
-
- }
-
- package() {
-     make -C ${srcdir}/${_gitname}-${pkgver}/build DESTDIR="$pkgdir" install
- }
+package() {
+	#DESTDIR="$pkgdir" cmake --install build
+	make -C build DESTDIR="$pkgdir" install
+}
