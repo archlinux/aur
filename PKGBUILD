@@ -1,7 +1,7 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=cyan
-pkgver=0.3.1
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="The Teal build system and project manager"
 arch=(any)
@@ -15,7 +15,7 @@ depends=(lua
          teal)
 makedepends=(luarocks)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('e06affe2180cff8f7e05e970cbc8d685124950aa282797a7aba04d320c84e56f')
+sha256sums=('7e367c8d29883af0fde17abfc4fb6cb4cc9f7cebdcba069617b27c8d61fc5662')
 
 package() {
 	cd "$pkgname-$pkgver"
