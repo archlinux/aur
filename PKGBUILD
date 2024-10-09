@@ -2,7 +2,7 @@
 
 pkgname=python-bbpb-git
 pkgver=r171.0c8f37b
-pkgrel=2
+pkgrel=3
 pkgdesc="A set of tools for working with encoded Protocol Buffers."
 arch=('x86_64')
 url="https://github.com/nccgroup/blackboxprotobuf"
@@ -12,7 +12,7 @@ conflicts=('python-bbpb')
 depends=(
   'python-six'
 )
-makedepends=('git')
+makedepends=('python-build' 'python-installer' 'python-wheel' 'git')
 
 source=("git+https://github.com/nccgroup/blackboxprotobuf.git")
 md5sums=('SKIP')
@@ -24,7 +24,7 @@ pkgver() {
 
 package() {
   cd blackboxprotobuf/lib
-  make prepublish
+  python -m build --wheel --no-isolation
   python -m installer --destdir="$pkgdir" dist/*.whl
   cd ..
   install -Dm 644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
