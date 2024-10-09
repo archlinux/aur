@@ -7,6 +7,8 @@ pkgbase = alcom-bin
 	license = MIT
 	depends = webkit2gtk-4.1
 	depends = gtk3
+	provides = alcom
+	conflicts = alcom
 	source = https://github.com/vrc-get/vrc-get/releases/download/gui-v0.1.16-beta.1/alcom_0.1.16-beta.1_amd64.deb
 	sha256sums = f73153372e0607f9db4b206bebf561457d4b511ebf1c89725bf99352ff733cb6
 
