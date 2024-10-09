@@ -1,7 +1,7 @@
-# Maintainer: Mattias Andrée <`base64 -d`(bWF0dGlhcy5hbmRyZWU)@protonmail.com>
+# Maintainer: Mattias Andrée <m@`base64 -d`(bWFhbmRyZWU).se>
 
 pkgname=libhashsum
-pkgver=1.1
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="Library for calculating the cryptographic hashes"
 arch=(i686 x86_64)
@@ -11,7 +11,7 @@ depends=(libsha1 libsha2 'libkeccak>=1.3' 'libblake>=3.0')
 checkdepends=()
 makedepends=()
 source=(libhashsum-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz)
-sha256sums=(449a05fc1d4e5b2de313f865dadd2612e76c2a188452e2323a7758cc20dcf1f7)
+sha256sums=(fafef9b55d12ceba32d9343f573ae2e07e7b29a30383c2dbf36ab614d0a9069b)
 
 build() {
   cd "$srcdir/$pkgname"
