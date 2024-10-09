@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=akuse-bin
-pkgver=1.7.0
+pkgver=1.8.0
 _electronversion=26
 pkgrel=1
 pkgdesc="Simple and easy to use anime streaming desktop app without ads."
@@ -19,7 +19,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/${pkgver}/linux-${pkgname%-bin}-${pkgver}.deb"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('f48cc0d7b4aaa6652dfaf0828b35b0ac3c687034963904c94a4f28ee0ecf6a53'
+sha256sums=('c6cc8df0e4be678eff9641138923c79f9b31d66c577b2661a0c712158dbc3663'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 build() {
     sed -e "
@@ -35,7 +35,7 @@ build() {
         s/Icon=${pkgname%-bin}-beta/Icon=${pkgname%-bin}/g
     " -i "${srcdir}/usr/share/applications/${pkgname%-bin}-beta.desktop"
     asar e "${srcdir}/opt/${pkgname%-bin}/resources/app.asar" "${srcdir}/app.asar.unpacked"
-    find "${srcdir}/app.asar.unpacked/dist/main" -type f -exec sed -i "s/process.resourcesPath/\'\/usr\/lib\/${pkgname%-bin}\'/g" {} \;
+    find "${srcdir}/app.asar.unpacked/dist/main" -type f -exec sed -i "s/process.resourcesPath/\'\/usr\/lib\/${pkgname%-bin}\'/g" {} +
     asar p "${srcdir}/app.asar.unpacked" "${srcdir}/app.asar"
 }
 package() {
