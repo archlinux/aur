@@ -1,0 +1,22 @@
+pkgbase = tyrogit-client-git
+	pkgdesc = Git client created by and for Tyrolium.
+	pkgver = Release.r2.g0e61c6d
+	pkgrel = 1
+	url = https://github.com/TheMaxium69/TyroGit
+	arch = any
+	license = LicenseRef-unknown
+	makedepends = npm
+	makedepends = nvm
+	makedepends = curl
+	depends = electron21
+	depends = git
+	provides = tyrogit-client=Release
+	conflicts = tyrogit-client
+	source = tyrogit-client.git::git+https://github.com/TheMaxium69/TyroGit.git
+	source = tyrogit-client.desktop
+	source = tyrogit-client.sh
+	sha256sums = SKIP
+	sha256sums = b38e29c10b5f092208304561e6028412d6dc888a47b8bcdb664328b8baeaced8
+	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
+
+pkgname = tyrogit-client-git

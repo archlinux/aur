@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=TyroGit
+Comment=Git client created by and for Tyrolium
+Icon=tyrogit-client
+Exec=tyrogit-client %U
+Categories=Development;
+Keywords=git;tyrogit;
+Terminal=false
