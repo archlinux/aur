@@ -3,7 +3,7 @@
 # Contributor: Yuval Adam <yuval at y3xz dot com> PGP-Key: 271386AA2EB7672F
 
 pkgname=libosmo-sigtran
-pkgver=2.0.0
+pkgver=2.0.1
 pkgrel=1
 pkgdesc="Osmocom SIGTRAN (SCCP/SUA/M3UA) library as well as OsmoSTP"
 arch=('any')
@@ -18,7 +18,7 @@ conflicts=("${pkgname}-git"
 replaces=('libosmo-sccp')
 backup=('etc/osmocom/osmo-stp.cfg')
 source=("https://downloads.osmocom.org/releases/${pkgname}/${pkgname}-${pkgver}.tar.bz2")
-sha256sums=('37b6f5ba9edbaf0e846d512ce80375b874a21bad1f707a5efcad5598b2659912')
+sha256sums=('31eeb0a0322c3edbdc1f1d4ffc6f1efb40a27c281b50708a6f0704655960c22b')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"

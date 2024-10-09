@@ -1,6 +1,6 @@
 pkgbase = libosmo-sigtran
 	pkgdesc = Osmocom SIGTRAN (SCCP/SUA/M3UA) library as well as OsmoSTP
-	pkgver = 2.0.0
+	pkgver = 2.0.1
 	pkgrel = 1
 	url = https://osmocom.org/projects/libosmo-sccp
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = libosmo-sigtran
 	conflicts = libosmo-sccp
 	replaces = libosmo-sccp
 	backup = etc/osmocom/osmo-stp.cfg
-	source = https://downloads.osmocom.org/releases/libosmo-sigtran/libosmo-sigtran-2.0.0.tar.bz2
-	sha256sums = 37b6f5ba9edbaf0e846d512ce80375b874a21bad1f707a5efcad5598b2659912
+	source = https://downloads.osmocom.org/releases/libosmo-sigtran/libosmo-sigtran-2.0.1.tar.bz2
+	sha256sums = 31eeb0a0322c3edbdc1f1d4ffc6f1efb40a27c281b50708a6f0704655960c22b
 
 pkgname = libosmo-sigtran
