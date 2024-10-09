@@ -4,7 +4,7 @@ pkgver=1.8.0
 _electronversion=26
 pkgrel=1
 pkgdesc="Simple and easy to use anime streaming desktop app without ads."
-arch=('any')
+arch=('x86_64')
 url="https://github.com/akuse-app/akuse"
 license=('GPL-3.0-or-later')
 provides=("${pkgname%-bin}=${pkgver}")
