@@ -1,19 +1,5 @@
-diff --git a/Obsession.pro b/Obsession.pro
-index bb341c6..270ffde 100644
---- a/Obsession.pro
-+++ b/Obsession.pro
-@@ -112,8 +112,7 @@ FORMS += src/mainwindow.ui \
-     src/dialogbroadcast.ui \
-     src/dialogpostlinearnews.ui
- INCLUDEPATH += src/
--RESOURCES += resources/resources.qrc \
--    resources/icons1.qrc \
-+RESOURCES += resources/icons1.qrc \
-     resources/icons2.qrc \
-     resources/resources.qrc
- RC_ICONS = resources/icon.ico
 diff --git a/src/cdownload.cpp b/src/cdownload.cpp
-index cdf2e07..8362ae8 100644
+index c723449..c882f96 100644
 --- a/src/cdownload.cpp
 +++ b/src/cdownload.cpp
 @@ -65,34 +65,34 @@ void CDownload::updateSpeed() {
@@ -63,56 +49,6 @@ index cdf2e07..8362ae8 100644
      }
  
      timeElapsed++;
-@@ -212,7 +212,7 @@ void CDownload::startDownloading() {
-     if(connection->pSocket.isValid() && connection->pSocket.state() == QAbstractSocket::ConnectedState) {
-         socket.connectToHost(connection->pSocket.peerAddress(), connection->pSocket.peerPort()+1, QIODevice::ReadWrite);
-         socket.waitForConnected();
--        if(socket.state() == !QAbstractSocket::ConnectedState) {
-+        if(socket.state() != QAbstractSocket::ConnectedState) {
-             return;
-         }
- 
-@@ -296,14 +296,14 @@ void CDownload::serverReady() {
- 
-     qint32 nameSize = forkSize - 72;
- 
--    bool hxd = false;
--
-     char * reportedName = (char *)malloc(nameSize);
-     memcpy(reportedName, forkInfo+72, nameSize);
- 
-+    /*bool hxd = false;
-+
-     if(!strncmp(reportedName, "hxd", 3)) {
-         hxd = true;
--    }
-+    }*/
- 
-     char * dataHeader = new char[16];
-     
-diff --git a/src/ctransaction.cpp b/src/ctransaction.cpp
-index e03a7de..05c01c9 100644
---- a/src/ctransaction.cpp
-+++ b/src/ctransaction.cpp
-@@ -123,6 +123,7 @@ void CTransaction::addData(const char * data) {
-         case 110:
-         case 115:
-             newParameter.type = TYPE_STRING;
-+            break;
-         case 116:
-             if(size <= 2) {
-                 newParameter.type = TYPE_SHORT;
-@@ -223,7 +224,9 @@ char * CTransaction::bytes() {
-         qint16 plen = qToBigEndian(pParameters[i]->length());
-         memcpy(b+24+offset, &plen, 2);
- 
--        qint16 sval, ival;
-+        qint16 sval;
-+        qint32 ival;
-+
-         switch(pParameters[i]->type()) {
-         case TYPE_STRING:
-             for(qint32 j=0; j<pParameters[i]->length(); j++) {
 diff --git a/src/cupload.cpp b/src/cupload.cpp
 index 17fbcb5..908d905 100644
 --- a/src/cupload.cpp
@@ -243,10 +179,10 @@ index 37c91ef..4855652 100644
 +    return QStandardPaths::writableLocation(QStandardPaths::DesktopLocation);
  }
 diff --git a/src/main.cpp b/src/main.cpp
-index 1936770..b6bdfa3 100644
+index a252cac..736957d 100644
 --- a/src/main.cpp
 +++ b/src/main.cpp
-@@ -9,16 +9,16 @@
+@@ -9,7 +9,7 @@
  #include "connectioncontroller.h"
  
  void kill_threads( void );
@@ -255,21 +191,6 @@ index 1936770..b6bdfa3 100644
  
  qint32 main(qint32 argc, char *argv[])
  {
--    FILE * debugLog = fopen("log.txt", "a");
--    if(debugLog)
--    {
--        fwrite("\n", 1, 1, debugLog);
--        fclose(debugLog);
--    }
-+    // FILE * debugLog = fopen("log.txt", "a");
-+    // if(debugLog)
-+    // {
-+    //     fwrite("\n", 1, 1, debugLog);
-+    //     fclose(debugLog);
-+    // }
- 
-     QApplication a(argc, argv);
-     MainWindow w(0, true);
 diff --git a/src/widgetnews.cpp b/src/widgetnews.cpp
 index afa44f6..ceb036c 100644
 --- a/src/widgetnews.cpp
