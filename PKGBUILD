@@ -4,8 +4,8 @@
 _name=MediathekView
 _pkgname=mediathekview
 pkgname=${_pkgname}-xdg
-pkgver=14.0.0
-pkgrel=4
+pkgver=14.1.0
+pkgrel=1
 pkgdesc="Access the Mediathek of many German TV stations (store data in XDG_DATA_HOME)"
 arch=(any)
 url="https://github.com/mediathekview/mediathekview"
@@ -35,10 +35,10 @@ source=(
   "de.$_pkgname.$_name.desktop"
   "$_pkgname.sh"
 )
-sha512sums=('e97844b4a06dbe42603d55854528b446638a4c0b830f824e7092c19ec2a7d308378f05887d2d0636ded48ec51354b8b2084448bf55778a7d5e31f1d145e030f2'
+sha512sums=('0498c3d6d0ec671fa2efcdc9ef91be97dcc9a4776ceb398668d70808f10c7065e2597ed72b950422e3f45d976cfb575281d8e9b8074a0dfb38917b340b0556b2'
             '24a94a078180aca7c50ed7763ef4806c116c27f901f644ef570ee413ffc3ac795b5ebd24d696a9b2ec426e7c9b6eaf8a8b22addb5ac7c9fe9700f7c04305f64b'
             '1cdae5a1311cacb7b9b16d2f34d9d2ae38a3ba730253244208663654670760dfac80a93c56b22cf327e60e25402fbe0d64fd6012f821762d2ec5e2943b52f50a')
-b2sums=('a24308a98714b05d8df34bf06d64e3854ed9b826276b0ea576c23cebdf2ffd47139c003a9d8fdd12a87cf47191b50b63c1e2e66a1e141c2bc07b8a22b5a312c9'
+b2sums=('c3323197322d81959644e7fbe0dacf6286e600144b3070d50bd3ee415a7c7de99e5f8fd0f7cb58c35d636b3cdebdef219b143f4d060ab56c110fba8bf85f357b'
         '6dbcdea2918009621fc132b4ff1056ef79f06e27c3299b69ccd7e3cb2b093e3a2a5f76acd6b1ab62689edd867ac1650f61bf829f2a1c575835d31e117d9b9ae5'
         'd6e7e7acfa09c76a7439b173d55fd1c5470535356d7d307674f76c0f3cb5c201ebdd570d1c8ec5506b276b5c5c215e645aa7e9d253d02ff785f9b0c584aeb725')
 
