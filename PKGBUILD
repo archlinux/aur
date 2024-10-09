@@ -5,7 +5,7 @@ pkgname=("${pkgbase}-captain-ce"
          "${pkgbase}-salto-ce"
          "${pkgbase}-twig-ce"
          "${pkgbase}-hoof-ce")
-pkgver=2024.2.1
+pkgver=2024.2.2
 pkgrel=1
 pkgdesc='SIP3 monitoring system'
 arch=('any')

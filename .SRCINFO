@@ -1,6 +1,6 @@
 pkgbase = sip3
 	pkgdesc = SIP3 monitoring system
-	pkgver = 2024.2.1
+	pkgver = 2024.2.2
 	pkgrel = 1
 	url = https://sip3.io
 	arch = any
@@ -14,13 +14,13 @@ pkgbase = sip3
 	optdepends = mongodb: A high-performance, open source, schema-free document-oriented database
 	optdepends = influxdb: Scalable datastore for metrics, events, and real-time analytics
 	options = !lto
-	source = sip3-hoof-ce.tgz::https://repo.sip3.io/jar/releases-ce/sip3-hoof/2024.2.1/sip3-hoof-latest.tgz
-	source = sip3-twig-ce::git+https://github.com/sip3io/sip3-twig-ce.git#branch=release/2024.2.1
-	source = sip3-salto-ce::git+https://github.com/sip3io/sip3-salto-ce.git#branch=release/2024.2.1
-	source = sip3-captain-ce::git+https://github.com/sip3io/sip3-captain-ce.git#branch=release/2024.2.1
+	source = sip3-hoof-ce.tgz::https://repo.sip3.io/jar/releases-ce/sip3-hoof/2024.2.2/sip3-hoof-latest.tgz
+	source = sip3-twig-ce::git+https://github.com/sip3io/sip3-twig-ce.git#branch=release/2024.2.2
+	source = sip3-salto-ce::git+https://github.com/sip3io/sip3-salto-ce.git#branch=release/2024.2.2
+	source = sip3-captain-ce::git+https://github.com/sip3io/sip3-captain-ce.git#branch=release/2024.2.2
 	source = logback-webhook-appender::git+https://github.com/sip3io/logback-webhook-appender.git#branch=release/1.0.6
-	source = sip3-parent::git+https://github.com/sip3io/sip3-parent.git#branch=release/2024.2.1
-	source = sip3-commons::git+https://github.com/sip3io/sip3-commons.git#branch=release/2024.2.1
+	source = sip3-parent::git+https://github.com/sip3io/sip3-parent.git#branch=release/2024.2.2
+	source = sip3-commons::git+https://github.com/sip3io/sip3-commons.git#branch=release/2024.2.2
 	source = sip3-captain.conf
 	source = captain-environment.conf
 	source = sip3-captain@.service
