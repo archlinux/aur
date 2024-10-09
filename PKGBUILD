@@ -6,8 +6,8 @@
 #       !buildflags is needed in order to compile the code
 
 pkgname=calculix-ccx
-pkgver=2.21
-pkgrel=2
+pkgver=2.22
+pkgrel=1
 provides=('calculix')
 replaces=('calculix')
 conflicts=('calculix')
@@ -29,12 +29,10 @@ source=(
     "http://www.dhondt.de/ccx_${pkgver}.structest.tar.bz2"
 )
 
-sha256sums=(
-    '52a20ef7216c6e2de75eae460539915640e3140ec4a2f631a9301e01eda605ad'
-    '094a0a2ec324fc6f937a96e932b488f48f31ad8d5d1186cd14437e6dc3e599ea'
-    'b7a5f672918deb4176c9c1c02619a16178e31771b72a58c1188db57e91f28954'
-    '264c6f9e9335f9bdcf6a39eafcdc868f47549a64866278d848e41bd9cd1b1a1b'
-)
+sha256sums=('3a94dcc775a31f570229734b341d6b06301ebdc759863df901c8b9bf1854c0bc'
+            '804c1ab099f5694b67955ddd72ad4708061019298c5d1d1788bf404d900b86fc'
+            '1f2c71b826c9318403e9325d30e014e245274bfadc01263f86c10d105786387e'
+            '8c2bdeb8e433fe76778c3fb1161348cb04f034aad769ccf11f23d35271ee9b95')
 #
 # NOTE: remove -Wno-implicit when code is fixed by upstream
 #
