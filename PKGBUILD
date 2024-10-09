@@ -3,7 +3,7 @@
 pkgname='opencoarrays-git'
 _name="OpenCoarrays"
 pkgver=2.10.2.r0.g5f09984
-pkgrel=2
+pkgrel=3
 pkgdesc="A transport layer for coarray Fortran compilers."
 arch=('x86_64')
 url="https://github.com/sourceryinstitute/${_name}"
@@ -14,7 +14,7 @@ makedepends=('cmake' 'git' 'gcc-fortran')
 checkdepends=()
 optdepends=()
 provides=()
-conflicts=("${pkgname%-*}")
+conflicts=("${pkgname%-*}" "${pkgname%-*}"-mpich-git)
 replaces=()
 backup=()
 options=()
