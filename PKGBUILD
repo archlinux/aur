@@ -2,7 +2,7 @@
 
 pkgname="velocidrone"
 pkgver=1.17.1
-pkgrel=2
+pkgrel=3
 pkgdesc="a fast paced multi-player and single player FPV drone racing simulator"
 url="https://www.velocidrone.com/"
 arch=('x86_64')
@@ -19,7 +19,7 @@ OPTIONS=(!strip)
 
 source=("git+https://github.com/patchkit-net/patchkit-launcher-qt.git"
         "velocidrone.zip::local://velocidrone.zip"
-        "velocidrone.png::https://www.velocidrone.com/img/logo.png"
+        "velocidrone.png::https://velocidrone.com/assets/images/VelocidroneLogoWeb.png"
         "velocidrone.desktop")
 md5sums=('SKIP'
          '74b07b8d820753bb436259b7620de9c4'
