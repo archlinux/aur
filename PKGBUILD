@@ -46,7 +46,7 @@ VENV_DIR="/usr/share/curd/venv"
 source "$VENV_DIR/bin/activate"
 
 # Run the Python script
-python /usr/bin/curd.py
+python /usr/bin/curd.py $@
 
 # Deactivate the virtual environment after running
 deactivate
