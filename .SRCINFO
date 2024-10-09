@@ -1,4 +1,4 @@
-pkgbase = psa-update
+pkgbase = psa-update-bin
 	pkgdesc = CLI alternative to PSA (Peugeot / Citroën / DS / Opel) infotainment system update (NAC / RCC firmware and navigation maps), hopefully more robust.
 	pkgver = 1.0.6
 	pkgrel = 1
