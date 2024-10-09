@@ -1,9 +1,9 @@
 # Maintainer: Eugene Gershnik <gershnik@hotmail.com>
 pkgname='wsdd-native'
 pkgver='1.15'
-pkgrel=1
+pkgrel=2
 pkgdesc='WS-Discovery Host Daemon. Makes your machine visible in Network view of Windows Explorer'
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url='https://github.com/gershnik/wsdd-native'
 license=('BSD-3-Clause')
 depends=('glibc' 'gcc-libs')

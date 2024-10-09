@@ -1,9 +1,10 @@
 pkgbase = wsdd-native
 	pkgdesc = WS-Discovery Host Daemon. Makes your machine visible in Network view of Windows Explorer
 	pkgver = 1.15
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/gershnik/wsdd-native
 	arch = x86_64
+	arch = aarch64
 	license = BSD-3-Clause
 	makedepends = cmake>=3.25
 	makedepends = make
