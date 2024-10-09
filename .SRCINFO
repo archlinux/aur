@@ -1,0 +1,23 @@
+pkgbase = python-customtkinter-git
+        pkgdesc = Python bindings for the FMOD Ex sound library
+        pkgver = r583.10f34d2
+        pkgrel = 1
+        url = A modern and customizable python UI-library based on Tkinter.
+        arch = x86_64
+        license = MIT
+        makedepends = python-build
+        makedepends = python-installer
+        makedepends = python-wheel
+        makedepends = python-setuptools
+        makedepends = git
+        depends = python
+        depends = tk
+        depends = python-darkdetect
+        depends = python-typing_extensions
+        depends = python-packaging
+        provides = python-customtkinter
+        conflicts = python-customtkinter
+        source = git+https://github.com/TomSchimansky/CustomTkinter.git
+        md5sums = SKIP
+
+pkgname = python-customtkinter-git
