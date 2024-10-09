@@ -21,7 +21,7 @@ pkgbase = mozc-with-jp-dict
 	source = git+https://github.com/fcitx/mozc.git#commit=53f12eaaeeb14f5aa5d1ff0f1bef87245a9c3627
 	source = bcr::git+https://github.com/bazelbuild/bazel-central-registry.git#commit=f0e3787ea9fec94332eb345084b7cc052c5d3938
 	source = https://github.com/fcitx/mozc/pull/61.patch
-	source = git+https://github.com/phoepsilonix/dict-to-mozc.git#commit=acf0252beb027451cb8921c97a91e433e2b10735
+	source = git+https://github.com/phoepsilonix/dict-to-mozc.git#commit=b849f77255f05c9a89b65accc8f9306db6a21477
 	source = http://sudachi.s3-website-ap-northeast-1.amazonaws.com/sudachidict-raw/20240716/small_lex.zip
 	source = http://sudachi.s3-website-ap-northeast-1.amazonaws.com/sudachidict-raw/20240716/core_lex.zip
 	source = http://sudachi.s3-website-ap-northeast-1.amazonaws.com/sudachidict-raw/20240716/notcore_lex.zip
@@ -29,7 +29,7 @@ pkgbase = mozc-with-jp-dict
 	sha512sums = 4eab04915e802f949ea3b293e5397b8e6eab47eb9ab70f437c138022d0f46700baae0f2d6a4fafe8978d790126934a4808ed7d84ee52da4c097da263d6439ed5
 	sha512sums = bc686f02d0fd3d65b5d40268723ec35bae89594c554c5f1c9c564da13fea8b4d79d36563be7e7a592ed605062b2a4549cb6926391af19f8066e526d17ca4ad65
 	sha512sums = a0aeb2856d62c71d0c137a687d901098eaa3371b896dbe39e54c36951cbd7d3cfba666ee96d055dba7e8c8384ed17e13597a697707cd960fac320e11f9b7b76c
-	sha512sums = ba53f7fc2801b371638c5ff65abb2eda4210acacb0a0fd6596117a975acd03bac4fc3b1cc5476f545357aa911566c33c14101d8edefc5497f3e7e59d02bbe167
+	sha512sums = bcad6c2008afdd8eeb27e1ff25ff114331cbbe08cbadfd7125396258fb32fafe14ad9b8489f0fb5cadf2424e6b62f9a32ab463016a51f7b5a9295262f532465b
 	sha512sums = 9428d55d2d9603c8bfcd12cc0184415f23af1d09a2d0ebdf0cce694a09638e7cfe0c1241bf1c943427b2fccfea619ca8b2e22db3452d837b416eb31aa224e766
 	sha512sums = f0a3544dcc99bf8c4cea8ebfd31af827e209f0678997ab55f6eda54f34cad5e148d1bd156417a621665c2068e7371801dc9cf1baa34f2270a99da7055f46d95d
 	sha512sums = 5551cbf4da52bc2eb73841013f98634ac8fcb56e5f6e163c9e640d5b9eaa4eafc2fa72cc20660db012ebdb438f835c2098b77c02c483d3244df901748e3d30fa
