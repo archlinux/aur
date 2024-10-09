@@ -1,7 +1,7 @@
 pkgbase = mediathekview-xdg
 	pkgdesc = Access the Mediathek of many German TV stations (store data in XDG_DATA_HOME)
 	pkgver = 14.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mediathekview/mediathekview
 	arch = any
 	license = GPL-3.0-or-later
