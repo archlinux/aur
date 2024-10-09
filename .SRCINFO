@@ -1,0 +1,18 @@
+pkgbase = pvw
+	pkgdesc = A simple and intuitive TUI to monitor the ports used on a computer
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://github.com/allyring/pvw
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	arch = aarch64
+	license = GPL-3.0-only
+	makedepends = go
+	depends = glibc
+	options = strip
+	options = buildflags
+	source = https://github.com/allyring/pvw/archive/refs/tags/v2.0.0/pvw-2.0.0.tar.gz
+	sha256sums = 05f979d56d6a3f4bdd7182573b599aa82938058a6b1fe904c54dc0da86b4a38b
+
+pkgname = pvw
