@@ -1,0 +1,24 @@
+pkgbase = nginx-ui-bin
+	pkgdesc = Yet another WebUI for Nginx.Prebuilt version.
+	pkgver = 2.0.0_beta.36
+	pkgrel = 1
+	url = https://nginxui.com/
+	arch = aarch64
+	arch = armv7h
+	arch = i686
+	arch = x86_64
+	license = AGPL-3.0-only
+	depends = nginx
+	provides = nginx-ui=2.0.0_beta.36
+	conflicts = nginx-ui
+	options = !strip
+	source_aarch64 = nginx-ui-2.0.0_beta.36-aarch64.tar.gz::https://github.com/0xJacky/nginx-ui/releases/download/v2.0.0-beta.36/nginx-ui-linux-arm64-v8a.tar.gz
+	sha256sums_aarch64 = d4821e9f9536af7d47175c605c479b67ce92448e7e5306574d3d40ed08bf5b67
+	source_armv7h = nginx-ui-2.0.0_beta.36-armv7h.tar.gz::https://github.com/0xJacky/nginx-ui/releases/download/v2.0.0-beta.36/nginx-ui-linux-arm32-v7a.tar.gz
+	sha256sums_armv7h = 09dde971423401c4411c89f57f6ae8f92a25610d2d1097066ceafcce76327af4
+	source_i686 = nginx-ui-2.0.0_beta.36-i686.tar.gz::https://github.com/0xJacky/nginx-ui/releases/download/v2.0.0-beta.36/nginx-ui-linux-32.tar.gz
+	sha256sums_i686 = 839218417d76df2501e49459166425afb7f321b498a7807693b53b8e8f6484b7
+	source_x86_64 = nginx-ui-2.0.0_beta.36-x86_64.tar.gz::https://github.com/0xJacky/nginx-ui/releases/download/v2.0.0-beta.36/nginx-ui-linux-64.tar.gz
+	sha256sums_x86_64 = 4ba46be4cb03164ea5a1dad084d592b3b0c3342797eccbd32ae2d301f3bb0721
+
+pkgname = nginx-ui-bin
