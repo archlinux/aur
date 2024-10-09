@@ -1,7 +1,7 @@
-# Maintainer: Mattias Andrée <`base64 -d`(bWF0dGlhcy5hbmRyZWU)@protonmail.com>
+# Maintainer: Mattias Andrée <m@`base64 -d`(bWFhbmRyZWU).se>
 
 pkgname=sleeping-getty
-pkgver=1.2
+pkgver=1.2.1
 pkgrel=1
 pkgdesc="Do not start a fullblown getty before it is necessary"
 arch=(i686 x86_64)
@@ -10,7 +10,7 @@ license=('custom:ISC')
 depends=()
 makedepends=(linux-api-headers)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=(0622e1f5de6b22be2463bef3e3e11cc360f79ccec77ff3034dfd1a3e2a7e78f2)
+sha256sums=(e30f2c9b1c4681cc53cfda79866282fc8d5735406ec5df7f2cc00fe4f1ddb919)
 
 build() {
   cd "$srcdir/$pkgname"
