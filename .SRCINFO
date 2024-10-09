@@ -1,0 +1,21 @@
+pkgbase = note-mark-git
+	pkgdesc = A note-taking desktop app with out-of-the-box markdown support.Perfect for storing markdown notes on your desktop with ease.
+	pkgver = r10.2d1d925
+	pkgrel = 1
+	url = https://github.com/AbdulDevHub/NoteMark
+	arch = any
+	license = MIT
+	makedepends = npm
+	makedepends = git
+	makedepends = nvm
+	makedepends = gendesk
+	makedepends = curl
+	depends = electron28
+	provides = note-mark=r10.2d1d925
+	conflicts = note-mark
+	source = note-mark.git::git+https://github.com/AbdulDevHub/NoteMark.git
+	source = note-mark.sh
+	sha256sums = SKIP
+	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
+
+pkgname = note-mark-git
