@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=DMRcate
-_pkgver=3.0.9
+_pkgver=3.0.10
 pkgname=r-${_pkgname,,}
-pkgver=3.0.9
+pkgver=3.0.10
 pkgrel=1
 pkgdesc='Methylation array and sequencing spatial analysis methods'
 arch=('any')
@@ -38,7 +38,7 @@ optdepends=(
   r-tissuetreg
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('fdc3d3f46c7a4d3af38f33f022e06136bdc464c8b2deb52d648182a6e220807e')
+sha256sums=('dd7f12106bb2dbfeb00329ed60eb0847cc112e2bd3e97bc29464e82508a6a3b2')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
