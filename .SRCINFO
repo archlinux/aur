@@ -1,6 +1,6 @@
 pkgbase = asroot-libpassphrase
 	pkgdesc = A simpler alternative to sudo and doas, libpassphrase version
-	pkgver = 1.1.7
+	pkgver = 1.1.8
 	pkgrel = 1
 	url = https://codeberg.org/maandree/asroot
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = asroot-libpassphrase
 	depends = libpassphrase
 	provides = asroot
 	conflicts = asroot
-	source = asroot-1.1.7.tar.gz::https://codeberg.org/maandree/asroot/archive/1.1.7.tar.gz
-	sha256sums = 29fa6ed440f0c80e75174df4213c336f7dcd454d7f653ddc33f51f6343d4eec9
+	source = asroot-1.1.8.tar.gz::https://codeberg.org/maandree/asroot/archive/1.1.8.tar.gz
+	sha256sums = d67b91eabbe4bf72a6acf17cc1dbafb0d2cf44ddbf07eedf8bd1be53cc0d981f
 
 pkgname = asroot-libpassphrase
