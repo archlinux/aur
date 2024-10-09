@@ -8,4 +8,5 @@ Icon=mediathekview
 Exec=mediathekview
 Terminal=false
 StartupNotify=true
+StartupWMClass=mediathek-Main
 Categories=AudioVideo;Audio;Video;Player;TV;
