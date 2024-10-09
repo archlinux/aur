@@ -5,24 +5,24 @@ _name=${pkgname%-git}
 pkgver=0.2.10.r1.g5b98fc8
 pkgrel=1
 pkgdesc='Lightweight yet complete CardDAV/CalDAV server that backs onto a Git repository'
-arch=('any')
+arch=(any)
 url=https://www.xandikos.org
-license=('GPL3')
+license=('GPL-3.0-or-later')
 depends=(
-  'python-aiohttp'
-  'python-defusedxml'
-  'python-dulwich'
-  'python-icalendar'
-  'python-jinja'
-  'python-multidict'
-  'python-vobject'
+  python-aiohttp
+  python-defusedxml
+  python-dulwich
+  python-icalendar
+  python-jinja
+  python-multidict
+  python-vobject
 )
 makedepends=(
-  'git'
-  'python-build'
-  'python-installer'
-  'python-setuptools'
-  'python-wheel'
+  git
+  python-build
+  python-installer
+  python-setuptools
+  python-wheel
 )
 optdepends=(
   'python-aiohttp-openmetrics: for metrics with the standalone server'
