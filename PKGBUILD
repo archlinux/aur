@@ -1,11 +1,9 @@
-# Contributor:  Vincent Grande <shoober420@gmail.com>
-# Contributor: Philip Abernethy <chais.z3r0@gmail.com>
 # Maintainer:  Rikka_Neko <yjzyl9008@gmail.com>
 # Thanks to https://aur.archlinux.org/packages/factorio/ for authentication code
 
 pkgname=fmodengine
 pkgver=2.02.24
-pkgrel=5
+pkgrel=1
 pkgdesc="FMOD Engine API and tools"
 arch=('x86_64')
 url="https://www.fmod.com/"
@@ -82,7 +80,7 @@ build() {
 }
 
 package() {
-    install -d ${pkgdir}/opt/$pkgname
+    install -d "${pkgdir}/opt/$pkgname"
     tar -xzf "${SRCDEST}/${_filename}" -C "${pkgdir}/opt/$pkgname" --strip-components=1
     
     install -d "${pkgdir}/usr/bin"
