@@ -1,6 +1,6 @@
 pkgbase = orature-bin
-	pkgdesc = An application for creating Narrations and Translations of Audio Bibles, Books, Resources, Commentaries, etc.
-	pkgver = 3.1.25_qa
+	pkgdesc = An application for creating Narrations and Translations of Audio Bibles, Books, Resources, Commentaries, etc.Prebuilt version.
+	pkgver = 3.1.26
 	pkgrel = 1
 	url = https://github.com/Bible-Translation-Tools/Orature
 	arch = x86_64
@@ -9,14 +9,13 @@ pkgbase = orature-bin
 	depends = alsa-lib
 	depends = libxtst
 	depends = libxrender
-	depends = ffmpeg
 	depends = ffmpeg4.4
 	depends = gtk3
-	provides = orature=3.1.25_qa
+	provides = orature=3.1.26
 	conflicts = orature
-	source = orature-3.1.25_qa.deb::https://github.com/Bible-Translation-Tools/Orature/releases/download/v3.1.25-qa/orature-linux-3.1.25-qa+9702.deb
+	source = orature-3.1.26.deb::https://github.com/Bible-Translation-Tools/Orature/releases/download/v3.1.26/orature-linux-3.1.26+9711.deb
 	source = orature.sh
-	sha256sums = ad5d7e683f409c42acc063b6990104562950d1e5d0f2f6db474421c91224f136
+	sha256sums = 47d1bf1bf89fe484f69b20b70658727d590a1f0337748264c36fe24ced7b3642
 	sha256sums = 2da799c244ab45eb58acdb280a0ee4e8b886977834af2c59f6b9ba2310ff7964
 
 pkgname = orature-bin
