@@ -2,7 +2,7 @@
 
 _pkgname=fcitx5-chinese-addons
 pkgname=${_pkgname}-without-browser
-pkgver=5.1.6
+pkgver=5.1.7
 pkgrel=2
 pkgdesc='Addons related to Chinese, including IME previous bundled inside fcitx4, without browser'
 arch=('x86_64')
@@ -14,7 +14,7 @@ optdepends=('fcitx5-lua: Lua and imeapi support from pinyin')
 provides=(${_pkgname})
 conflicts=(${_pkgname})
 source=("${_pkgname}"::"git+${url}.git?#tag=${pkgver}")
-sha512sums=('a5f654bb9b2d1c6e4c8802b9ad7d57e7d6057974ee0e3a22df75b6f2581057624c0f2292504b7b023f4d10ebb98f26f1a38a1e10fac25604cb44aedcaec77f5b')
+sha512sums=('6c44c99d2ae9545735f710c750a11c95009a44e94a80f26e8e32a48c5a2c261eca050e0dc4299485644d50b3ccb60be6c402800338dcbdc3e08246e4ff507f40')
 
 build() {
   cd ${_pkgname}
