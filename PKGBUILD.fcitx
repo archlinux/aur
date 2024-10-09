@@ -11,7 +11,7 @@
 _bldtype=Release
 _mozc_commit=53f12eaaeeb14f5aa5d1ff0f1bef87245a9c3627
 _bcr_commit=f0e3787ea9fec94332eb345084b7cc052c5d3938
-_mozcdict_ext_commit=ae5f2e42e2edfeaa0e3127cf39980ea9889ddda0
+_dict_to_mozc_commit=b82cf8f63af6c9ec0e8cf8f0f02582a025a5ca98
 _branch=fcitx
 # Sudachi Dictionary
 _sudachidict_date=20240716
@@ -28,7 +28,7 @@ options=(!lto)
 source=(git+https://github.com/fcitx/mozc.git#commit="${_mozc_commit}"
         "bcr::git+https://github.com/bazelbuild/bazel-central-registry.git#commit=${_bcr_commit}"
         https://github.com/fcitx/mozc/pull/61.patch
-        git+https://github.com/phoepsilonix/mozcdict-ext.git#commit=${_mozcdict_ext_commit}
+        git+https://github.com/phoepsilonix/dict-to-mozc.git#commit=${_dict_to_mozc_commit}
         #"https://www.post.japanpost.jp/zipcode/dl/kogaki/zip/ken_all.zip"
         #"https://www.post.japanpost.jp/zipcode/dl/jigyosyo/zip/jigyosyo.zip"
         # https://github.com/WorksApplications/SudachiDict
@@ -43,7 +43,7 @@ source=(git+https://github.com/fcitx/mozc.git#commit="${_mozc_commit}"
 sha512sums=('4eab04915e802f949ea3b293e5397b8e6eab47eb9ab70f437c138022d0f46700baae0f2d6a4fafe8978d790126934a4808ed7d84ee52da4c097da263d6439ed5'
             'bc686f02d0fd3d65b5d40268723ec35bae89594c554c5f1c9c564da13fea8b4d79d36563be7e7a592ed605062b2a4549cb6926391af19f8066e526d17ca4ad65'
             'a0aeb2856d62c71d0c137a687d901098eaa3371b896dbe39e54c36951cbd7d3cfba666ee96d055dba7e8c8384ed17e13597a697707cd960fac320e11f9b7b76c'
-            '359ad91d5af999de8a74041186996fe6980e1ea676be8a0e0197f3496936c03d677616dd2bd3652f3f8b4d1654f042e9e71a33faf6694cddbc1d9449532d7f3c'
+            'c97f07c0171ea3148cfac9018b3c93d3c66ab8f4a1b338dac8c66d6d3b706e9df28ae1d9277d22a8d087ca528468d42ed05412d59a001bae3c77d539d70b7e56'
             '9428d55d2d9603c8bfcd12cc0184415f23af1d09a2d0ebdf0cce694a09638e7cfe0c1241bf1c943427b2fccfea619ca8b2e22db3452d837b416eb31aa224e766'
             'f0a3544dcc99bf8c4cea8ebfd31af827e209f0678997ab55f6eda54f34cad5e148d1bd156417a621665c2068e7371801dc9cf1baa34f2270a99da7055f46d95d'
             '5551cbf4da52bc2eb73841013f98634ac8fcb56e5f6e163c9e640d5b9eaa4eafc2fa72cc20660db012ebdb438f835c2098b77c02c483d3244df901748e3d30fa'
@@ -75,18 +75,16 @@ prepare() {
   #sed -i -e "/2.25.4150.102.1/d"  -e "s/2.26.4220.106.1/${pkgver}.${pkgrel}/" -e "s/2021-01-16/${_date}/" src/unix/fcitx5/org.fcitx.Fcitx5.Addon.Mozc.metainfo.xml.in
   rustup update stable
 
-  cd "${srcdir}/mozcdict-ext/" || exit
+  cd "${srcdir}/dict-to-mozc/" || exit
   # すだちを優先
   msg '1. Build the rust program(mozcdict-ext), it may take some time...'
-  cd sudachi || exit
   rustup target list --installed | grep $(rustc -vV | sed -e 's|host: ||' -e 's|-gnu||p' -n) | grep -v musl && TARGET=$(rustup target list --installed | grep $(rustc -vV | sed -e 's|host: ||' -e 's|-gnu||p' -n)|grep -v musl|head -n1) || TARGET=$(rustup target list --installed | grep $(rustc -vV | sed -e 's|host: ||' -e 's|-gnu||p' -n)|grep musl|head -n1)
   unset RUSTC
   cargo build --release --target $TARGET
   msg '2. Convert SudachiDict to Mozc System Dictionary format. It may take some time...'
   cat ${srcdir}/small_lex.csv ${srcdir}/core_lex.csv ${srcdir}/notcore_lex.csv > all.csv
   cp ${srcdir}/mozc/src/data/dictionary_oss/id.def ./
-  ./target/$TARGET/release/dict-to-mozc -s -i ./id.def -f all.csv > ../all-dict.txt
-  cd ..
+  ./target/$TARGET/release/dict-to-mozc -s -i ./id.def -f all.csv > all-dict.txt
 
   #msg '3. Duplicate data will be removed.'
   #awk -f sudachi/dup.awk all-dict.txt > finish-dict.txt
