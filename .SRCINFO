@@ -1,7 +1,7 @@
 pkgbase = python-rasterio
 	pkgdesc = Fast and direct raster I/O for use with Numpy and SciPy
 	pkgver = 1.4.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/rasterio/rasterio
 	arch = x86_64
 	license = BSD
