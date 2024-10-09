@@ -2,13 +2,13 @@
 
 pkgname=mayland-git
 _pkgname=mayland
-pkgver=r140.110e85f
+pkgver=r161.dbe04c3
 pkgrel=1
 pkgdesc="a bad wayland compositor"
 arch=('x86_64')
 url="https://github.com/m4rch3n1ng/mayland"
 license=('GPL-3.0-or-later')
-depends=('glibc' 'mesa' 'seatd' 'libinput' 'libxkbcommon' 'wayland')
+depends=('expat' 'gcc-libs' 'glib2' 'glibc' 'icu' 'libcap' 'libdisplay-info' 'libdrm' 'libedit' 'libelf' 'libevdev' 'libffi' 'libgudev' 'libinput' 'libpciaccess' 'libwacom' 'libx11' 'libxau' 'libxcb' 'libxdmcp' 'libxkbcommon' 'libxml2' 'libxshmfence' 'llvm-libs' 'lm_sensors' 'mesa' 'mtdev' 'ncurses' 'pcre2' 'seatd' 'systemd-libs' 'wayland' 'xz' 'zlib' 'zstd' )
 makedepends=('cargo')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
