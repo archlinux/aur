@@ -2,7 +2,7 @@
 _appname=affine
 pkgname="${_appname}-canary-bin"
 _pkgname=AFFiNE-canary
-pkgver=0.17.2_canary.1
+pkgver=0.17.2_canary.2
 _electronversion=32
 pkgrel=1
 pkgdesc="A next-gen knowledge base that brings planning, sorting and creating all together. Privacy first, open-source, customizable and ready to use.(Test Version,use system-wide electron)"
@@ -30,7 +30,7 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/toeverything/AFFiNE/v${pkgver//_/-}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('ace3423f97c73ebecec57e89938a3de28902f3dfa4a39cf22d088ad1f48752f4'
+sha256sums=('1458b788dce10edd18c12eea4d739c8b7d5f4afdbeb8e5694785c7b889859695'
             '1cdeca52d4f740361f103926144eb8b3f265975b2337d4e27b3313f72465897f'
             'b54bb7aa14dd5725bc268921eeea9dee973dacbc13e0cea30e7d2adb5cd5a53f'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
@@ -46,7 +46,7 @@ build() {
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
     sed -i "/Exec=${_pkgname}/d;s/Icon=${_pkgname}/Icon=${pkgname%-bin}/g" "${srcdir}/squashfs-root/${_pkgname}.desktop"
     sed -i "3i\Exec=${pkgname%-bin} %U" "${srcdir}/squashfs-root/${_pkgname}.desktop"
-    find "${srcdir}/squashfs-root/resources" -type d -exec chmod 755 {} \;
+    find "${srcdir}/squashfs-root/resources" -type d -exec chmod 755 {} +
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
