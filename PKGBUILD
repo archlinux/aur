@@ -1,26 +1,28 @@
-# Maintainer: username227 <gfrank227 [at] gmail [dot] com> 
+# Maintainer: Fazzi <faaris <dot> ansari <at> proton <dot> me> 
 
 pkgname=sudachi-bin
-_pkgver=v1.0.2
-pkgver=1.0.2
+_pkgver=v1.0.11
+pkgver=1.0.11
 pkgrel=1
 pkgdesc="Sudachi is a Nintendo Switch emulator for Android, Linux, macOS and Windows, written in C++"
 arch=(x86_64)
-url=https://github.com/sudachi-emu/sudachi/
+url=https://sudachi.emuplace.app/
 license=(GPL-3.0-or-later)
 provides=('sudachi')
 provides=('sudachi')
-depends=('brotli' 'enet' 'llvm-libs' 'gcc-libs' 'glibc' 'hicolor-icon-theme' 'libcrypto.so' 'libssl.so' 'libva.so' 'lz4' 'qt5-base' 'qt5-multimedia' 'qt5-webengine' 'sdl2' 'zlib')
-source=("https://github.com/sudachi-emu/sudachi/releases/download/${_pkgver}/${_pkgver}-linux.7z"
-        "https://raw.githubusercontent.com/sudachi-emu/sudachi/39f1a62c8d45c960c0a262d48152c41a1d5b3730/dist/sudachi.svg"
-        "https://raw.githubusercontent.com/sudachi-emu/sudachi/main/dist/sudachi.desktop")
-sha256sums=('de826818053c8c9d54a6d9505da678dea88c42ff204956f45ae7e2c7fea0293e'
+depends=('brotli' 'enet' 'llvm-libs' 'gcc-libs' 'glibc' 'hicolor-icon-theme' 'libcrypto.so' 'libssl.so' 'libva.so' 'lz4' 'qt6-base' 'qt6-multimedia' 'qt6-webengine' 'sdl2' 'zlib')
+optdepends=('qt6-wayland: wayland support')
+source=("https://github.com/emuplace/sudachi.emuplace.app/releases/download/${_pkgver}/sudachi-linux-${_pkgver}.7z"
+        "./sudachi.svg"
+        "./sudachi.desktop")
+sha256sums=('b91d1cc675b313cd99f6d5de31c79ff5050111c6112eb6e426e5dc4a5acb6ec2'
             '1edb61d2a01d926654fc98f8e59253df600d88ca4b2c5706a3b01368b830f31d'
-            'bb0b197cfa369c713fae146e3fcdf2a758ca1436e8761aa89ffd418c88845392')
+            '0081f2b36ef69abfc328e11cfae2dd83ed74695bfec0f04938ad80b6f5200708')
 
 package() {
 install -Dm755 $srcdir/sudachi -t "$pkgdir/usr/bin"
 install -Dm755 $srcdir/sudachi-cmd -t "$pkgdir/usr/bin"
+install -Dm755 $srcdir/sudachi-room -t "$pkgdir/usr/bin"
 install -Dm755 $srcdir/sudachi.desktop -t "$pkgdir/usr/share/applications"
 install -Dm644 $srcdir/sudachi.svg -t "$pkgdir/usr/share/icons/hicolor/scalable/apps"
 }
