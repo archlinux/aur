@@ -4,12 +4,11 @@ _pkgname=Android-Toolkit
 pkgver=1.5.23
 _electronversion=25
 _nodeversion=18
-pkgrel=2
+pkgrel=3
 pkgdesc="A cross platform desktop app written in Typescript/Node using React and Electron.A GUI for adb and can be used to modify android devices such as firesticks and google TVs."
 arch=('x86_64')
 url="https://github.com/AnthonyGress/Android-Toolkit"
 license=("MIT")
-provides=("${pkgname}")
 conflicts=("${pkgname}")
 depends=(
     'android-sdk-platform-tools'
@@ -17,62 +16,66 @@ depends=(
 )
 makedepends=(
     'npm'
-    'git'
     'nvm'
     'gendesk'
     'curl'
 )
+options=(
+    '!emptydirs'
+)
 source=(
-    "${pkgname}.git::git+${url}.git#tag=v${pkgver}"
+    "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
     "${pkgname}.sh"
 )
-sha256sums=('b0414dd9bcf4a6df24ca0120498d951d24acb39e057ccb69634a3125d6b3e3a0'
-            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
+sha256sums=('9a69d15996f44cd34cbd9a9eb51df7c1d026aa82a6c3912716ef2fa1b8facc1b'
+            '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 _ensure_local_nvm() {
-    export NVM_DIR="${srcdir}/.nvm"
+    local NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
     nvm install "${_nodeversion}"
     nvm use "${_nodeversion}"
 }
 build() {
-    sed -e "s|@electronversion@|${_electronversion}|" \
-        -e "s|@appname@|${pkgname}|g" \
-        -e "s|@runname@|app.asar|g" \
-        -e "s|@cfgdirname@|${pkgname}|g" \
-        -e "s|@options@||g" \
-        -i "${srcdir}/${pkgname}.sh"
+    sed -e "
+        s/@electronversion@/${_electronversion}/g
+        s/@appname@/${pkgname}/g
+        s/@runname@/app.asar/g
+        s/@cfgdirname@/${pkgname}/g
+        s/@options@//g
+    " -i "${srcdir}/${pkgname}.sh"
     _ensure_local_nvm
     gendesk -q -f -n --pkgname="${pkgname}" --pkgdesc="${pkgdesc}" --categories="Utility" --name="${_pkgname}" --exec="${pkgname} %U"
-    cd "${srcdir}/${pkgname}.git"
-    export npm_config_build_from_source=true
-    export npm_config_cache="${srcdir}/.npm_cache"
+    cd "${srcdir}/${_pkgname}-${pkgver}"
+    install -dm755 .git
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
-    #export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
-    #export npm_config_target="${SYSTEM_ELECTRON_VERSION}"
-    #export ELECTRONVERSION="${_electronversion}"
+    export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
     HOME="${srcdir}/.electron-gyp"
-    if [ `curl -s ipinfo.io/country | grep CN | wc -l ` -ge 1 ];then
-        export npm_config_registry=https://registry.npmmirror.com
-        export npm_config_disturl=https://registry.npmmirror.com/-/binary/node/
-        export npm_config_electron_mirror=https://registry.npmmirror.com/-/binary/electron/
-        export npm_config_electron_builder_binaries_mirror=https://registry.npmmirror.com/-/binary/electron-builder-binaries/
-    else
-        echo "Your network is OK."
-    fi
-    sed "s|AppImage|dir|g" -i package.json
-    NODE_ENV=development npm install
-    NODE_ENV=production npm run package
+    {
+        echo -e '\n'	
+        #echo 'build_from_source=true'
+        echo "cache=${srcdir}/.npm_cache"
+        if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
+            echo 'registry=https://registry.npmmirror.com'
+            echo 'disturl=https://registry.npmmirror.com/-/binary/node/'
+            echo 'electron_mirror=https://registry.npmmirror.com/-/binary/electron/'
+            echo 'electron_builder_binaries_mirror=https://registry.npmmirror.com/-/binary/electron-builder-binaries/'
+        fi
+    } >> .npmrc
+    sed -i "s/AppImage/dir/g;s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
+    NODE_ENV=development    npm install
+    NODE_ENV=production     npm run package
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
-    install -Dm644 "${srcdir}/${pkgname}.git/release/build/linux-"*/resources/app.asar -t "${pkgdir}/usr/lib/${pkgname}"
-    cp -r "${srcdir}/${pkgname}.git/release/build/linux-"*/resources/assets "${pkgdir}/usr/lib/${pkgname}"
-    for _icons in 16x16 32x32 180x180 192x192 512x512 1024x1024;do
-        install -Dm644 "${srcdir}/${pkgname}.git/assets/icons/${_icons}.png" \
+    install -Dm644 "${srcdir}/${_pkgname}-${pkgver}/release/build/linux-"*/resources/app.asar -t "${pkgdir}/usr/lib/${pkgname}"
+    cp -r "${srcdir}/${_pkgname}-${pkgver}/release/build/linux-"*/resources/assets "${pkgdir}/usr/lib/${pkgname}"
+    _icon_sizes=(16x16 32x32 180x180 192x192 512x512 1024x1024)
+    for _icons in "${_icon_sizes[@]}";do
+        install -Dm644 "${srcdir}/${_pkgname}-${pkgver}/assets/icons/${_icons}.png" \
             "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname}.png"
     done
     install -Dm644 "${srcdir}/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
-    install -Dm644 "${srcdir}/${pkgname}.git/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -Dm644 "${srcdir}/${_pkgname}-${pkgver}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
     install -Dm755 -d "${pkgdir}/usr/bin/Android-Toolkit/"{apks,platform-tools}
-    ln -sf "/opt/apk-editor-studio/bin/adb" "${pkgdir}/usr/bin/Android-Toolkit/platform-tools/adb"
+    ln -sf "/opt/android-sdk/platform-tools/adb" "${pkgdir}/usr/bin/Android-Toolkit/platform-tools/adb"
 }
