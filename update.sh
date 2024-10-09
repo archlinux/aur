@@ -1,8 +1,15 @@
 #!/bin/bash
 
-# Fetch the latest version
-latest_version=$(curl -s "https://opera-versions.flawcra.cc" | grep -oP '(?<="latest":")[^"]*')
-echo "Latest Opera Version: v${latest_version}"
+# Check if a version override is provided
+if [ -n "$1" ]; then
+    latest_version="$1"
+    echo "Using version override: v${latest_version}"
+else
+    # Fetch the latest version
+    latest_version=$(curl -s "https://opera-versions.flawcra.cc" | grep -oP '(?<="latest":")[^"]*')
+    echo "Latest Opera Version: v${latest_version}"
+fi
+
 
 # Backup the original PKGBUILD
 cp ./PKGBUILD ./PKGBUILD.bak
