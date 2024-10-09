@@ -1,20 +1,20 @@
-# Contributor: John D Jones III <j[nospace]n[nospace]b[nospace]e[nospace]k[nospace]1972 -_AT_- the domain name google offers a mail service at ending in dot com>
-# Generator  : CPANPLUS::Dist::Arch 1.25
+# Contributor: CpanBot <cpanbot at sch bme hu>
+# Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-ipc-sysv'
-pkgver='2.04'
+pkgver='2.09'
 pkgrel='1'
 pkgdesc="System V IPC constants and system calls"
 arch=('i686' 'x86_64')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('perl')
+depends=('perl>=0')
 makedepends=()
-url='http://search.cpan.org/dist/IPC-SysV'
-source=('http://search.cpan.org/CPAN/authors/id/M/MH/MHX/IPC-SysV-2.04.tar.gz')
-md5sums=('8c9b695409fb3b49177529f7c2ec6657')
-sha512sums=('28b173e67873856073c19b5bf8c900c64ffc5bde81e7d02dfc3d907c37418eced170e720d7c3dd3d465751b52bec8d06b6ff9cb48601eda8f7a8ccabcd9a7683')
-_distdir="IPC-SysV-2.04"
+url='https://metacpan.org/release/IPC-SysV'
+source=('http://search.cpan.org/CPAN/authors/id/M/MH/MHX/IPC-SysV-2.09.tar.gz')
+md5sums=('c573ba407e8981f321ee610edb176225')
+sha512sums=('b573b9ce11ebe0a3c89932539513ef11489a954a2a37cfd4eb8ccf10b090697123a9cbcf7c19b307c1b2914450833735eeef27deffe84fc82e75465435014201')
+_distdir="IPC-SysV-2.09"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
@@ -39,7 +39,6 @@ check() {
 package() {
   cd "$srcdir/$_distdir"
   make install
-
   find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
 }
 
