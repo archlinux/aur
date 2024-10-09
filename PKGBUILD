@@ -2,7 +2,7 @@
 # Contributor: Juliette Cordor 
 
 pkgname=("podman-desktop")
-pkgver=1.12.0
+pkgver=1.13.1
 pkgrel=1
 pkgdesc="Manage Podman and other container engines from a single UI and tray."
 arch=('x86_64' 'aarch64')
@@ -10,7 +10,7 @@ url=https://github.com/containers/podman-desktop
 license=('Apache-2.0')
 depends=()
 makedepends=(
-    'yarn' 'node-gyp' 'npm' 'nodejs-lts-iron' 'libvips' 'lcms2'
+    'pnpm' 'node-gyp' 'npm' 'nodejs-lts-iron' 'libvips' 'lcms2'
     'openjpeg2' 'glib2' 'python-setuptools'
 )
 optdepends=(
@@ -20,14 +20,12 @@ optdepends=(
     "docker: docker plugin"
 )
 source=(${pkgname}-${pkgver}.tar.gz"::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('d427461f44c274a022f20703d60256fbdb60de3502bdbaa18401a7994758ee92')
+sha256sums=('979d2231c9a6e1d72cd6c2b49d450da0ee4dc962b078c2c365d3d8f3fd2fba73')
 
 build(){
     cd "${srcdir}/podman-desktop-$pkgver"
-    # husky install will be failed when there is no .git folder but has command git
-    command -v git > /dev/null && sed -i 's/"husky install"/""/' package.json
-    yarn --frozen-lockfile --network-timeout 180000
-    yarn run compile
+    pnpm install --ignore-scripts --frozen-lockfile
+    pnpm run compile:current --dir
 }
 package_podman-desktop(){
     depends+=(
