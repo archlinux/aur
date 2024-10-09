@@ -1,14 +1,14 @@
 pkgbase = s6-man-pages-git
 	pkgdesc = Manual pages for the s6 suite of software
-	pkgver = v2.11.0.0.4.r0.efea5f8
+	pkgver = v2.13.0.0.1.r0.fc8619f
 	pkgrel = 1
-	url = https://github.com/flexibeast/s6-man-pages
+	url = https://git.sr.ht/~flexibeast/s6-man-pages
 	arch = any
 	license = ISC
 	makedepends = git
 	provides = s6-man-pages
 	conflicts = s6-man-pages
-	source = git+https://github.com/flexibeast/s6-man-pages.git
+	source = git+https://git.sr.ht/~flexibeast/s6-man-pages
 	sha256sums = SKIP
 
 pkgname = s6-man-pages-git
