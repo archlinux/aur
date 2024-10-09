@@ -2,7 +2,7 @@
 
 pkgname='python-wagtail'
 _name=${pkgname#python-}
-pkgver='6.2'
+pkgver='6.2.2'
 pkgrel=1
 pkgdesc="A Django content management system."
 url="https://wagtail.org/"
@@ -32,7 +32,7 @@ checkdepends=(
 license=('MIT')
 arch=('any')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha512sums=('4dac90941d39b4d0571638616e7b2431e15e0d07550ea79b5ee7610316042b19d900c877f68647075979aa544fefdf6550df5eb803c06a62d986892418523f59')
+sha512sums=('cd3da0ab6c128790c16a388f648d07ea499b803e33bc7cd6370d869e5f7f10144b9081a7998765c4eb12c7dacc9eb488f48dff713c88ef304e212d0f777f4ecc')
 
 build() {
 	cd "${srcdir}/${_name}-${pkgver}"
