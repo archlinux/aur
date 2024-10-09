@@ -14,13 +14,13 @@ _java_version=${JAVA_VERSION:-22}
 depends=(
   bash
   hicolor-icon-theme
-  java-runtime-openjdk=$_java_version
+  java-runtime-openjdk="$_java_version"
   xdg-user-dirs
 )
 makedepends=(
   maven
   strip-nondeterminism
-  java-environment-openjdk=$_java_version
+  java-environment-openjdk="$_java_version"
 )
 conflicts=(mediathek)
 provides=(mediathek)
@@ -31,9 +31,9 @@ optdepends=(
   'vlc: for stream playback'
 )
 source=(
-  $_pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz
-  de.$_pkgname.$_name.desktop
-  $_pkgname.sh
+  "$_pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz"
+  "de.$_pkgname.$_name.desktop"
+  "$_pkgname.sh"
 )
 sha512sums=('e97844b4a06dbe42603d55854528b446638a4c0b830f824e7092c19ec2a7d308378f05887d2d0636ded48ec51354b8b2084448bf55778a7d5e31f1d145e030f2'
             '24a94a078180aca7c50ed7763ef4806c116c27f901f644ef570ee413ffc3ac795b5ebd24d696a9b2ec426e7c9b6eaf8a8b22addb5ac7c9fe9700f7c04305f64b'
@@ -45,14 +45,14 @@ b2sums=('a24308a98714b05d8df34bf06d64e3854ed9b826276b0ea576c23cebdf2ffd47139c003
 prepare() {
   # check for correct java version
   local status=''
-  read -a javac_version < <(javac --version) || status='failed'
+  read -ra javac_version < <(javac --version) || status='failed'
   if [ -n "$status" ] || [ ! "${javac_version[1]%%.*}" = "$_java_version" ]; then
     echo "Please set your java version to openjdk $_java_version unsing \"archlinux-java\"" >&2
     return 1
   fi
 
   # set java version for wrapper script
-  sed "s/JAVA_VERSION/$_java_version/" $_pkgname.sh > $_pkgname
+  sed "s/JAVA_VERSION/$_java_version/" "$_pkgname.sh" > "$_pkgname"
 }
 
 build() {
