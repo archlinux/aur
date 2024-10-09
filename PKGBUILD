@@ -3,37 +3,38 @@
 # Contributor: Jonas Heinrich <onny@project-insanity.org>
 
 pkgname="invoiceninja"
-pkgver=5.5.60
+pkgver=5.10.29
 pkgrel=1
 pkgdesc="Invoices, Expenses and Tasks built with Laravel and Flutter"
 url="https://www.invoiceninja.com/"
 license=("ELv2")
 arch=("any")
 depends=("php" "php-gd")
-makedepends=("unzip")
+makedepends=("tar")
 optdepends=("mariadb: database"
             "apache: web server"
             "nginx: web server"
             "redis: session driver"
             "chromium: pdf generation using snappdf"
            )
-source=("$pkgname-$pkgver.zip::https://github.com/$pkgname/$pkgname/releases/download/v$pkgver/$pkgname.zip"
+source=("$pkgname-$pkgver.tar::https://github.com/$pkgname/$pkgname/releases/download/v$pkgver/$pkgname.tar"
         "$pkgname-queue.service"
         "$pkgname-queue.timer"
         "$pkgname-scheduler.service"
         "$pkgname-scheduler.timer")
-sha256sums=('ee7ec50f78b08b9081433728091299a47a76c3a32f5d8eb4a35d8f5b8e7ad83b'
+sha256sums=('76a15b683a401f76583d1ee6f463ae08429757d28ead07571ff6372228f31d23'
             '2e41b2c94877d29f7abf8912d7bd9a26dd7d003876253c7d49762c6ec9f72ea5'
             'ed7ce9c42bf1de019c4ca43c1a7bfb32e65aae8c6687ce0e5a4474c7e4a7537e'
             'b54a95a349294c93a97832cc88652e46d30692c722906ef4bce99ef4d73e8d33'
             'a72270bdc4bb146cc00fe0162b8d366467eed96582f64a40ec6d8e2bd9a013ba')
-noextract=("$pkgname-$pkgver.zip")
+noextract=("$pkgname-$pkgver.tar")
 backup=("etc/webapps/$pkgname/config.env" "var/lib/$pkgname/config.env")
 install="$pkgname.install"
 options=("!strip")
 
 prepare(){
- unzip -q -o "$pkgname-$pkgver.zip" -d "$pkgname-$pkgver"
+ mkdir -p "$pkgname-$pkgver"
+ tar xfv "$pkgname-$pkgver.tar" -C "$pkgname-$pkgver"
  cd "$pkgname-$pkgver"
 
  # create new copy of example configuration file
@@ -50,7 +51,7 @@ prepare(){
 SNAPPDF_SKIP_DOWNLOAD=true
 
 # write to /var/lib/invoiceninja/app instead of /usr/share/webapps/invoiceninja/public
-FILESYSTEM_DRIVER=local
+FILESYSTEM_DISK=local
 
 # advanced log options
 #EXPANDED_LOGGING=false
@@ -86,7 +87,7 @@ package(){
  # persistent storage and logs
  install -d "$pkgdir/var/lib/"
  mv "$pkgdir/usr/share/webapps/$pkgname/storage" "$pkgdir/var/lib/$pkgname"
- ln -s "/var/lib/$pkgname" "$pkgdir/usr/share/webapps/$pkgname/storage"
+ ln -s "/var/lib/$pkgname/storage" "$pkgdir/usr/share/webapps/$pkgname/storage"
  chown -R http: "$pkgdir/var/lib/$pkgname"
  chmod 750 "$pkgdir/var/lib/$pkgname"
  # systemd files
