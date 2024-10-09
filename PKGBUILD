@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=BSgenomeForge
-_pkgver=1.4.0
+_pkgver=1.4.1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -35,8 +35,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('22dca3b3a7c2277c174c20cd5df0b698')
-b2sums=('a9e8236b6588462966ac068d57aadab8a5856208ccd2faa714298f622ac3c456bd972d85f9a37370dc051623866fb1a6a87747d7e6ecace2d768cf5c933e81a5')
+md5sums=('db5c3ec5aad15c8291d37fc5e81260db')
+b2sums=('fdd64227d523bd02c1ed003e6cf6742db15059eb695a2347744342b35a3207677fff46603472983a222240c877660d5b937a86a158e024e69497f6ca059ca833')
 
 build() {
   mkdir build
