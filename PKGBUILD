@@ -18,12 +18,10 @@ package() {
 
 	# using /usr/share instead of /opt
 	mkdir -p "$pkgdir/usr/share"
-	echo "Seding"
 	cp -R "$srcdir/opt/brother" "$pkgdir/usr/share"
 	sed -i 's|\\\/opt\\\/|\\\/usr\\\/|' "$pkgdir/usr/share/brother/Printers/$_model/cupswrapper/brother_lpdwrapper_$_model"
 	sed -i 's|\\\/opt\\\/|\\\/usr\\\/|' "$pkgdir/usr/share/brother/Printers/$_model/lpd/filter_$_model"
 
-        echo "Test"
 	# /etc/printcap is managed by cups
 	find "$pkgdir" -type f -name 'setupPrintcap*' -delete
 
@@ -38,8 +36,6 @@ package() {
 	# a couple architecture-specific symlinks
 	ln -s "/usr/share/brother/Printers/$_model/lpd/$CARCH/brprintconflsr3" "$pkgdir/usr/share/brother/Printers/$_model/lpd/"
 	ln -s "/usr/share/brother/Printers/$_model/lpd/$CARCH/rawtobr3" "$pkgdir/usr/share/brother/Printers/$_model/lpd/"
-	
-        echo "/usr/share/brother/Printers/$_model/lpd/$CARCH/br${_model}filter" "$pkgdir/usr/share/brother/Printers/$_model/lpd/"
         ln -s "/usr/share/brother/Printers/$_model/lpd/$CARCH/br${_model}filter" "$pkgdir/usr/share/brother/Printers/$_model/lpd/"
 
 	# symlink for inf because it tries to execute it there
