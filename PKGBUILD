@@ -1,6 +1,6 @@
 # Maintainer: Levitating <me@levitati.ng>
 pkgname=incus-ui
-pkgver=0.12
+pkgver=0.13
 pkgrel=1
 pkgdesc="LXD-UI patched for Incus"
 arch=(any)
@@ -11,10 +11,9 @@ source=("git+https://github.com/zabbly/incus.git"
         "lxd-ui::https://github.com/canonical/lxd-ui/archive/refs/tags/${pkgver}.tar.gz"
         "incus-ui.conf"
 )
-sha256sums=(SKIP
-			a82779ba405bda6bf0c704edbd3c153a7719197383928512e8a9519650662849
-			f6f1a4669e7ac2c733544c6ee96ae739f77981184603d36fc8ae906481177bee
-)
+sha256sums=('SKIP'
+            'a82779ba405bda6bf0c704edbd3c153a7719197383928512e8a9519650662849'
+            'f6f1a4669e7ac2c733544c6ee96ae739f77981184603d36fc8ae906481177bee')
 
 prepare() {
 	cd "$srcdir/lxd-ui-$pkgver"
