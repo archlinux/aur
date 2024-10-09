@@ -1,7 +1,7 @@
 pkgbase = i2pd-tools-git
 	pkgdesc = Useful tools for I2P (git version)
-	pkgver = r268.gcf0c9c9
-	pkgrel = 2
+	pkgver = r280.ge872010
+	pkgrel = 1
 	url = https://github.com/PurpleI2P/i2pd-tools/
 	arch = x86_64
 	license = BSD-3-Clause
@@ -18,6 +18,6 @@ pkgbase = i2pd-tools-git
 	source = 010-i2pd-tools-use-arch-flags.patch
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = fb2eba0fbc3a9ce5d39c099561bc56ba9f39dbed540b7f0fcd3377c426533300
+	sha256sums = 840e4aae34262cf657a0162540dcdf1a3ef0fdaf05b7d162f179c5575329e8a5
 
 pkgname = i2pd-tools-git
