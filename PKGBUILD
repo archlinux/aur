@@ -4,8 +4,8 @@ pkgname=zen-twilight-avx2-bin
 _pkgname=zen-twilight
 _realpkgver=twilight
 _desktopname=zen-twilight
-pkgver=66fc824
-pkgrel=2
+pkgver=2345563
+pkgrel=1
 pkgdesc="Performance oriented Firefox-based web browser - Utilizes AVX2 for better performance (Unstable)"
 arch=('x86_64' 'i686')
 url="https://github.com/zen-browser/desktop"
@@ -25,7 +25,7 @@ source=("zen-browser-$_realpkgver.tar.bz2::https://github.com/zen-browser/deskto
         "$_pkgname.sh"
         "$_desktopname.desktop"
         "policies.json")
-sha256sums=('0157838d7328cf9a478aaf55d2bd7ff0e5ceaa62ddfdf55527a2d9ce0e776b94'
+sha256sums=('87ccdc1cda978be67c9bf3075200b6391ce78fcf18bab99aedce56096bd014aa'
             '41a3e5afe9bd278aa1614e0201aecdc82607d824021a28c181a6830f9627fcab'
             'e5fc10b93a545c7f09db87386bf8cd889f38fed03a348f1ddb48a13f15073bff'
             '4728b4aaec237d18a6ebf9331005fb1084ecf672075db8d4cdf1a503f3dd0c1e')
