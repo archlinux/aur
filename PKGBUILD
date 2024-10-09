@@ -2,7 +2,7 @@
 pkgname=podman-desktop-git
 _pkgname="Podman Desktop"
 _flatpakname="io.podman_desktop.${_pkgname// /}"
-pkgver=r5126.e67b2f6
+pkgver=r5386.4415a62
 _electronversion=32
 _nodeversion=20
 pkgrel=1
@@ -60,11 +60,11 @@ _ensure_local_nvm() {
 }
 build() {
     sed -e "
-        s/@electronversion@/${_electronversion}/
-        s/@appname@/${pkgname%-git}/
-        s/@runname@/app/
-        s/@cfgdirname@/${_pkgname}/
-        s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/
+        s/@electronversion@/${_electronversion}/g
+        s/@appname@/${pkgname%-git}/g
+        s/@runname@/app/g
+        s/@cfgdirname@/${_pkgname}/g
+        s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
     " -i "${srcdir}/${pkgname%-git}.sh"
     _ensure_local_nvm
     cd "${srcdir}/${pkgname%-git}.git"
@@ -84,13 +84,13 @@ build() {
             echo 'electron_builder_binaries_mirror=https://registry.npmmirror.com/-/binary/electron-builder-binaries/'
         fi
     } >> .npmrc
-    find packages -type f -exec sed -i "s/process.resourcesPath/\'\/usr\/lib\/${pkgname%-git}\'/" {} \;
-    sed "s/\'flatpak\', \'tar.gz\'/\'dir\'/" -i .electron-builder.config.cjs
+    find packages -type f -exec sed -i "s/process.resourcesPath/\'\/usr\/lib\/${pkgname%-git}\'/" {} +
+    sed -i "s/\'flatpak\', \'tar.gz\'/\'dir\'/" .electron-builder.config.cjs
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/" package.json
     NODE_ENV=development    pnpm install --no-lockfile
     NODE_ENV=production     pnpm run compile
-    sed "s/run.sh/${pkgname%-git}/;s/${_flatpakname}/${pkgname%-git}/;/X-Flatpak/d" -i .flatpak.desktop
-    sed "s/${_flatpakname}/${pkgname%-git}/" -i .flatpak-appdata.xml
+    sed -i "s/run.sh/${pkgname%-git}/;s/${_flatpakname}/${pkgname%-git}/;/X-Flatpak/d" .flatpak.desktop
+    sed -i "s/${_flatpakname}/${pkgname%-git}/" .flatpak-appdata.xml
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
