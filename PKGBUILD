@@ -3,7 +3,7 @@
 
 _pkgbase=hid-gamecube-adapter
 pkgname=hid-gamecube-adapter-dkms-git
-pkgver=r10.4ca834d
+pkgver=r10.a36a63d
 pkgrel=1
 pkgdesc="A Linux kernel module for the Nintendo Wii U/Mayflash GameCube adapter"
 arch=('any')
