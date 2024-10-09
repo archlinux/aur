@@ -44,6 +44,11 @@ build() {
     cd "$srcdir/neumodvb"
     mkdir -p build
     cd build
+
+    # be double sure we use clang...
+    export CC=clang
+    export CXX=clang++
+
     cmake ..
     make -j$(nproc)
 }
