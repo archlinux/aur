@@ -1,10 +1,10 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=witsy-bin
 _pkgname=Witsy
-pkgver=1.17.0
+pkgver=1.17.1
 _electronversion=29
 pkgrel=1
-pkgdesc="Generative AI desktop application"
+pkgdesc="Generative AI desktop application.Prebuilt version.Use system-wide electron."
 arch=("x86_64")
 url="https://github.com/nbonamy/witsy"
 license=('Apache-2.0')
@@ -24,7 +24,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.png::https://raw.githubusercontent.com/nbonamy/witsy/v${pkgver}/assets/icon.png"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('13f78a6831e0e9db56cc77135231c1d9ee4546765317e74ec619667e4f992caa'
+sha256sums=('2e42a3022f9b85934577b4e7f8f3ceffedb7e5e649c044686efe25d66a7af5c9'
             '1f290bf14df85930c04881b362b015791a0c94dd491979acfccb0bdcfd35e58e'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 build() {
