@@ -1,8 +1,8 @@
 # Maintainer: Arnaud Gissinger (contact: mathix.dev)
 _pkgname="swayfx-i3-style-fullscreen"
 pkgname="$_pkgname-2-git"
-pkgver=r7057.da559b3e
-pkgrel=1
+pkgver=r7062.ef080851
+pkgrel=2
 license=("MIT")
 pkgdesc="SwayFX: Sway, but with eye candy!"
 makedepends=(
@@ -58,17 +58,17 @@ sha512sums=(
 	"d5f9aadbb4bbef067c31d4c8c14dad220eb6f3e559e9157e20e1e3d47faf2f77b9a15e52519c3ffc53dc8a5202cb28757b81a4b3b0cc5dd50a4ddc49e03fe06e"
 	"790741df028822bf4d83170dea57e1c63f7d7938cf31969e4cd347b0fc07330322b603c9ec0091b7a3f425132bed9dee6f261074cc273555120858beaaaf5da1")
 provides=("sway" "swayfx" "wayland-compositor")
-conflicts=("sway" "swayfx" "swayfx-git")
+conflicts=("sway" "swayfx" "swayfx-git" "swayfx-i3-style-fullscreen-git")
 options=(debug)
 install=sway.install
 
 pkgver() {
-	cd "$_pkgname"
+	cd "$pkgname"
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
-    cd "$_pkgname"
+    cd "$pkgname"
     patch --forward --strip=1 --input="${srcdir}/i3-style-fullscreen.patch"
     patch --forward --strip=1 --input="${srcdir}/keep-hidden-cursor-active.patch"
 }
@@ -78,7 +78,7 @@ build() {
 	arch-meson \
 		-Dwerror=false \
 		-Dsd-bus-provider=libsystemd \
-		"$_pkgname" build
+		"$pkgname" build
 	meson compile -C build
 }
 
@@ -88,7 +88,7 @@ package() {
 
 	DESTDIR="$pkgdir" meson install -C build
 
-	cd "$_pkgname"
+	cd "$pkgname"
 	install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 	for util in autoname-workspaces.py inactive-windows-transparency.py grimshot/grimshot; do
 		install -Dm755 "$srcdir/sway-contrib/$util" -t "$pkgdir/usr/share/$pkgname/scripts"
