@@ -18,6 +18,7 @@ pkgver() {
 }
 
 build() {
+  #test
     # No compilation needed for a Python script
     return 0
 }
