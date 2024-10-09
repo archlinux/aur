@@ -5,8 +5,8 @@ _pkgauthor=sachaos
 _pkgname=viddy
 pkgname=${_pkgname}-bin
 pkgver=1.1.6
-pkgrel=1
-pkgdesc='A modern watch command, binary version'
+pkgrel=2
+pkgdesc='A modern watch command. Time machine and pager.'
 url="https://github.com/${_pkgauthor}/${_pkgname}"
 _urlraw="https://raw.githubusercontent.com/${_pkgauthor}/${_pkgname}/v${pkgver}"
 arch=('x86_64' 'i686' 'aarch64')
@@ -27,16 +27,18 @@ sha256sums_i686=('5b3c5d37e4b32221555472e23765714a5b2d7056710b1380bdcb429d91c83c
 sha256sums_aarch64=('0e59f0a795dab42f2e0257b0ae844a991765ca3f840a3d9fefd78e272eabfba5')
 
 build() {
+  cd "${srcdir}/" || exit
+
   help2man ./${_pkgname} --output "MAN-${pkgver}.1"
 }
 
 package() {
-  cd "$srcdir/"
+  cd "${srcdir}/" || exit
 
   install -Dm755 "${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
 
-  install -Dm644 "LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/$pkgname/LICENSE"
-  install -Dm644 "README-${pkgver}" "$pkgdir/usr/share/doc/$pkgname/README.md"
+  install -Dm644 "LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 "README-${pkgver}" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 
   install -Dm644 "MAN-${pkgver}.1" "${pkgdir}/usr/share/man/man1/${_pkgname}.1"
   gzip "${pkgdir}/usr/share/man/man1/${_pkgname}.1"
