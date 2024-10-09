@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=redisinsight-git
 _pkgname="Redis Insight"
-pkgver=2.54.r66.g5b02a83
+pkgver=2.58.0.r61.ged28a1d
 _electronversion=31
-_nodeversion=18
+_nodeversion=20
 pkgrel=1
 pkgdesc="Desktop manager that provides an intuitive and efficient GUI for Redis, allowing you to interact with your databases, monitor, and manage your data."
 arch=('any')
@@ -17,6 +17,7 @@ depends=(
     'alsa-lib'
     'nss'
     'libsecret'
+    'nodejs'
 )
 makedepends=(
     'npm'
@@ -34,10 +35,12 @@ source=(
 sha256sums=('SKIP')
 pkgver() {
     cd "${srcdir}/${pkgname//-/.}"
-    git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/v//g'
+    set -o pipefail
+    git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/v//g' ||
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 _ensure_local_nvm() {
-    export NVM_DIR="${srcdir}/.nvm"
+    local NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
     nvm install "${_nodeversion}"
     nvm use "${_nodeversion}"
@@ -46,36 +49,50 @@ build() {
     gendesk -q -f -n --pkgname="${pkgname%-git}" --pkgdesc="${pkgdesc}" --categories="Development" --name="${_pkgname}" --exec="${pkgname%-git} --no-sandbox %U"
     cd "${srcdir}/${pkgname//-/.}"
     _ensure_local_nvm
-    export npm_config_build_from_source=true
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
-    #export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
-    #export npm_config_target="${SYSTEM_ELECTRON_VERSION}"
-    #export ELECTRONVERSION="${_electronversion}"
+    export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
     HOME="${srcdir}/.electron-gyp"
     mkdir -p "${srcdir}/.electron-gyp"
-    touch "${srcdir}/.electron-gyp/.yarnrc"
-    if [ `curl -s ipinfo.io/country | grep CN | wc -l ` -ge 1 ];then
-        export npm_config_registry=https://registry.npmmirror.com
-        export npm_config_disturl=https://registry.npmmirror.com/-/binary/node/
-        export npm_config_electron_mirror=https://registry.npmmirror.com/-/binary/electron/
-        export npm_config_electron_builder_binaries_mirror=https://registry.npmmirror.com/-/binary/electron-builder-binaries/
-    else
-        echo "Your network is OK."
+    if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
+        {        
+            echo -e '\n'
+            echo 'registry "https://registry.npmmirror.com"'
+            echo 'disturl "https://registry.npmmirror.com/-/binary/node/"'
+            echo 'electron_mirror "https://registry.npmmirror.com/-/binary/electron/"'
+            echo 'electron_builder_binaries_mirror "https://registry.npmmirror.com/-/binary/electron-builder-binaries/"'
+            echo "cacheFolder "${srcdir}"/.yarn/cache"
+            echo "pluginsFolder "${srcdir}"/.yarn/plugins"
+            echo "globalFolder "${srcdir}"/.yarn/global"
+            echo 'useHardlinks true'
+            #echo 'buildFromSource true'
+            echo 'linkWorkspacePackages true'
+            echo 'fetchRetries 3'
+            echo 'fetchRetryTimeout 10000'
+        } >> .yarnrc
+        echo "${pkgname%-git}" "${pkgname%-git}/"{api,ui} | xargs -n 1 cp .yarnrc
+        find ./ -type f -name "yarn.lock" -exec sed -i "s/registry.yarnpkg.com/registry.npmmirror.com/g" {} +
     fi
-    #sed "s|process.resourcesPath|\"\/usr\/lib\/${pkgname%-git}\"|g" \
-    #    -i "${srcdir}/${pkgname//-/.}/${pkgname%-git}/desktop/src/"{lib/aboutPanel/aboutPanel.ts,utils/getAssetPath.ts}
-    sed "s|electron-builder build -p never|electron-builder build -l --dir -p never|g" -i package.json
+    find "${pkgname%-git}" -type f -exec sed -i "s/process.resourcesPath/\'\/usr\/lib\/${pkgname%-git}\'/g" {} +
+    sed -e "
+        s/electron-builder build -p never/electron-builder build -l dir/g
+        s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g
+    " -i package.json
+    yarn cache clean
+    NODE_ENV=development    yarn --cwd "${pkgname%-git}" add -D "redisinsight-plugin-sdk" "react-json-tree" "@antv/x6" "@antv/x6-react-shape" "plotly.js-dist-min" "@antv/hierarchy"
     NODE_ENV=development    yarn install --cache-folder "${srcdir}/.yarn_cache"
     NODE_ENV=development    yarn add -D "parcel" "@parcel/transformer-sass" "@parcel/transformer-less" "@nestjs/cli"
-    yarn --cwd "${pkgname%-git}"/api/
-    NODE_ENV=production yarn run build:statics
-    NODE_ENV=production yarn run package:prod
+    NODE_ENV=development    yarn --cwd "${pkgname%-git}"/api/ install --cache-folder "${srcdir}/.yarn_cache"
+    NODE_ENV=production     yarn run build:ui
+    NODE_ENV=production     yarn run build:statics
+    NODE_ENV=production     yarn run build:api
+    NODE_ENV=production     yarn run package:prod
 }
 package() {
-    install -Dm755 -d "${pkgdir}/"{opt/"${pkgname%-git}",usr/bin}
-    cp -r "${srcdir}/${pkgname//-/.}/release/linux-"*/* "${pkgdir}/opt/${pkgname%-git}"
-    ln -sf "/opt/${pkgname%-git}/${pkgname%-git}" "${pkgdir}/usr/bin/${pkgname%-git}"
-    for _icons in 16x16 24x24 32x32 48x48 64x64 96x96 128x128 256x256 512x512 1024x1024;do
+    install -Dm755 -d "${pkgdir}/usr/"{bin,lib/"${pkgname%-git}"}
+    cp -Pr --no-preserve=ownership "${srcdir}/${pkgname//-/.}/release/linux-"*/* "${pkgdir}/usr/lib/${pkgname%-git}"
+    ln -sf "/usr/lib/${pkgname%-git}/${pkgname%-git}" "${pkgdir}/usr/bin/${pkgname%-git}"
+    _icon_sizes=(16x16 24x24 32x32 48x48 64x64 96x96 128x128 256x256 512x512 1024x1024)
+    for _icons in "${_icon_sizes[@]}";do
         install -Dm644 "${srcdir}/${pkgname//-/.}/resources/icons/${_icons}.png" \
             "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname%-git}.png"
     done

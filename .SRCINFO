@@ -1,6 +1,6 @@
 pkgbase = redisinsight-git
 	pkgdesc = Desktop manager that provides an intuitive and efficient GUI for Redis, allowing you to interact with your databases, monitor, and manage your data.
-	pkgver = 2.54.r66.g5b02a83
+	pkgver = 2.58.0.r61.ged28a1d
 	pkgrel = 1
 	url = https://redis.io/insight/
 	arch = any
@@ -17,7 +17,8 @@ pkgbase = redisinsight-git
 	depends = alsa-lib
 	depends = nss
 	depends = libsecret
-	provides = redisinsight=2.54
+	depends = nodejs
+	provides = redisinsight=2.58.0
 	conflicts = redisinsight
 	source = redisinsight.git::git+https://github.com/RedisInsight/RedisInsight.git
 	sha256sums = SKIP
