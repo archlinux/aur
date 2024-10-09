@@ -1,6 +1,6 @@
 # Maintainer: Eragon <eragon at eragon dot re>
 pkgname=pg_uuidv7
-pkgver=1.5.0
+pkgver=1.6.0
 pkgrel=1
 pkgdesc="A tiny Postgres extension to create valid version 7 UUIDs in Postgres."
 arch=(any)
@@ -9,7 +9,7 @@ license=('MPL2')
 depends=('postgresql')
 makedepends=('postgresql-libs')
 source=("https://github.com/fboulnois/pg_uuidv7/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=("5f53e5ce0fa4e01c1d489f736478224571d4b2b88eaf63186265e38f0b8d3d78")
+sha256sums=("0fa6c710929d003f6ce276a7de7a864e9d1667b2d78be3dc2c07f2409eb55867")
 install=package.install
 
 build() {
