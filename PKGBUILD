@@ -6,7 +6,7 @@ pkgdesc="A Python library for network analysis"
 url="http://udst.github.io/pandana/"
 
 pkgver=0.6.1
-pkgrel=7
+pkgrel=8
 
 arch=("any")
 license=("AGPL-3.0-only")
