@@ -1,11 +1,11 @@
 # Maintainer: Ghassan Alduraibi <doti@ghassan.dev>
 
 pkgname=doti
-pkgver=0.3.1
+pkgver=0.4.0
 pkgrel=1
 pkgdesc='Easily manage all your dotfiles across your devices'
 arch=('any')
-url='https://github.com/ghassan0/doti'
+url='https://github.com/alduraibi/doti'
 license=('GPL3')
 depends=(
 	python
@@ -19,7 +19,7 @@ makedepends=(
 )
 _tag=v${pkgver}
 source=("${url}/archive/refs/tags/${_tag}.tar.gz")
-b2sums=('fd70b9b82c20eb080fe96108b302d7059eec349002969de4a0b2a9312e981d4bf8f2d0c45715bfdb5267e205b288a57400033f5da61bee33d49f0eae1920b901')
+b2sums=('c33754b572b50aa65b2bf4fca314647d42da3bbdaaeeae3ba82f4d49179063bf5916eb23ccade750ad01a1338455456a319788ac08e760eb601f02a31a848f3b')
 
 build() {
 	cd "$pkgname-$pkgver"

@@ -1,8 +1,8 @@
 pkgbase = doti
 	pkgdesc = Easily manage all your dotfiles across your devices
-	pkgver = 0.3.1
+	pkgver = 0.4.0
 	pkgrel = 1
-	url = https://github.com/ghassan0/doti
+	url = https://github.com/alduraibi/doti
 	arch = any
 	license = GPL3
 	makedepends = python-build
@@ -11,7 +11,7 @@ pkgbase = doti
 	makedepends = python-hatchling
 	depends = python
 	depends = stow
-	source = https://github.com/ghassan0/doti/archive/refs/tags/v0.3.1.tar.gz
-	b2sums = fd70b9b82c20eb080fe96108b302d7059eec349002969de4a0b2a9312e981d4bf8f2d0c45715bfdb5267e205b288a57400033f5da61bee33d49f0eae1920b901
+	source = https://github.com/alduraibi/doti/archive/refs/tags/v0.4.0.tar.gz
+	b2sums = c33754b572b50aa65b2bf4fca314647d42da3bbdaaeeae3ba82f4d49179063bf5916eb23ccade750ad01a1338455456a319788ac08e760eb601f02a31a848f3b
 
 pkgname = doti
