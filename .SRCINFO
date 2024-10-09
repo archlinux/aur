@@ -1,0 +1,12 @@
+pkgbase = hid-msi-claw-dkms-git
+	pkgdesc = Linux kernel driver for MSI Claw device
+	pkgver = 0.0.2
+	pkgrel = 1
+	url = https://github.com/NeroReflex/hid-msi-claw-dkms
+	arch = x86_64
+	license = GPL2
+	depends = dkms
+	source = git+https://github.com/NeroReflex/hid-msi-claw-dkms.git
+	sha256sums = SKIP
+
+pkgname = hid-msi-claw-dkms-git
