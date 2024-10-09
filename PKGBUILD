@@ -1,3 +1,4 @@
+# Maintainer: Glucy2<glucy-2@outlook.com>
 _pkgname=sast-evento
 pkgname=${_pkgname}-bin
 
