@@ -3,7 +3,7 @@ _pkgname=antares
 pkgname="${_pkgname}-sql-git"
 _appname=AntaresSQL
 _flatpakname="it.fabiodistasio.${_appname}"
-pkgver=0.7.28.r0.gc2b6027
+pkgver=0.7.28.r6.g3fa0bd3
 _electronversion=30
 _nodeversion=20
 pkgrel=1
@@ -71,14 +71,15 @@ build() {
     } >> .npmrc
     sed -i "s/Exec=startantares/Exec=${pkgname%-git} %U/g;s/${_flatpakname}/${pkgname%-git}/g" assets/flatpak/"${_flatpakname}".desktop
     sed -i "s/${_flatpakname}/${pkgname%-git}/g" assets/flatpak/"${_flatpakname}".metainfo.xml
-    sed -i "s/--publish never/-l --dir/g;s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
+    sed -i "s/--publish never/-l dir/g;s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
     NODE_ENV=development    npm install
     NODE_ENV=production     npm run build
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
     install -Dm644 "${srcdir}/${pkgname%-git}.git/build/linux-"*/resources/app.asar -t "${pkgdir}/usr/lib/${pkgname%-git}"
-    for _icons in 16x16 32x32 64x64 128x128 256x256;do
+    _icon_sizes=(16x16 32x32 48x48 64x64 128x128 256x256)
+    for _icons in "${_icon_sizes[@]}";do
         install -Dm644 "${srcdir}/${pkgname%-git}.git/assets/linux/${_icons}.png" \
             "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname%-git}.png"
     done

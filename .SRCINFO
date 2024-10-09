@@ -1,6 +1,6 @@
 pkgbase = antares-sql-git
 	pkgdesc = A modern, fast and productivity driven SQL client with a focus in UX.
-	pkgver = 0.7.28.r0.gc2b6027
+	pkgver = 0.7.28.r6.g3fa0bd3
 	pkgrel = 1
 	url = https://antares-sql.app/
 	arch = any
