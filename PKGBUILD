@@ -1,17 +1,17 @@
 # Maintainer: Kian Kasad <kian at kasad.com>
 pkgname=s6-man-pages-git
-pkgver=v2.11.0.0.4.r0.efea5f8
+pkgver=v2.13.0.0.1.r0.fc8619f
 pkgrel=1
 pkgdesc='Manual pages for the s6 suite of software'
 arch=('any')
-url='https://github.com/flexibeast/s6-man-pages'
+url='https://git.sr.ht/~flexibeast/s6-man-pages'
 license=('ISC')
 groups=()
 depends=()
 makedepends=('git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=("git+$url.git")
+source=("git+$url")
 sha256sums=('SKIP')
 
 pkgver() {
