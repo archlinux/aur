@@ -26,7 +26,7 @@ build() {
 package() {
 	cd "$pkgname-$pkgver"
     cmake --install out --prefix $pkgdir/usr 
-	install -Dm 0644 config/systemd/usr/lib/systemd/system/wsddn.service \
+    install -Dm 0644 config/systemd/usr/lib/systemd/system/wsddn.service \
                             $pkgdir/usr/lib/systemd/system/wsddn.service
     install -Dm 0644 config/systemd/etc/ufw/applications.d/wsddn \
                             $pkgdir/etc/ufw/applications.d/wsddn
