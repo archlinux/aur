@@ -1,7 +1,7 @@
 pkgbase = castoro-font
 	pkgdesc = a synthesis of aspects of assorted Dutch types from the 16–18th Centuries
 	pkgver = 3.010
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Tirotypeworks/Castoro
 	arch = any
 	license = OFL-1.1-no-RFN

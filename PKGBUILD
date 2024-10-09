@@ -5,7 +5,7 @@ pkgbase=$_name-font
 pkgname=(otf-$_name otf-$_name-titling otf-$_name-variable ttf-$_name ttf-$_name-titling ttf-$_name-variable)
 pkgver=3.010
 _tagver=${pkgver%0}
-pkgrel=1
+pkgrel=2
 pkgdesc='a synthesis of aspects of assorted Dutch types from the 16–18th Centuries'
 arch=(any)
 url="https://github.com/Tirotypeworks/${_name^}"
@@ -31,7 +31,7 @@ package_otf-castoro-titling() {
 package_otf-castoro-variable() {
     provides=("$pkgbase-variable=$pkgver")
     cd "$_archive"
-    install -Dm0644 -t "$pkgdir/usr/share/fonts/OTF/" fonts/Castoro-variable/OTFVF/*.otf
+    install -Dm0644 -t "$pkgdir/usr/share/fonts/OTFVF/" fonts/Castoro-variable/OTFVF/*.otf
     install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname/" OFL.txt AUTHORS.txt
 }
 
@@ -51,6 +51,6 @@ package_ttf-castoro-titling() {
 package_ttf-castoro-variable() {
     provides=("$pkgbase-variable=$pkgver")
     cd "$_archive"
-    install -Dm0644 -t "$pkgdir/usr/share/fonts/TTF/" fonts/Castoro-variable/TTFVF/*.ttf
+    install -Dm0644 -t "$pkgdir/usr/share/fonts/TTFVF/" fonts/Castoro-variable/TTFVF/*.ttf
     install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname/" OFL.txt AUTHORS.txt
 }
