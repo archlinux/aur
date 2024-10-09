@@ -1,6 +1,6 @@
 pkgbase = dash-player-git
 	pkgdesc = A video player designed specifically for English learning.一款专为英语学习打造的视频播放器
-	pkgver = 4.3.0.r0.gd9b8e84
+	pkgver = 4.3.1.r0.gac31961
 	pkgrel = 1
 	url = https://solidspoon.xyz/app/dash-player/
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = dash-player-git
 	depends = electron29
 	depends = ffmpeg
 	depends = yt-dlp
-	provides = dash-player=4.3.0
+	provides = dash-player=4.3.1
 	conflicts = dash-player
 	source = dash-player.git::git+https://github.com/solidSpoon/DashPlayer.git
 	source = dash-player.sh
