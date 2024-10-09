@@ -1,6 +1,6 @@
 # Maintainer: Nikl <nikl174@mailbox.org>
 pkgname=aur_helper
-pkgver=0.1.1
+pkgver=0.2.0
 pkgrel=3
 pkgdesc="a simple aur_helper used to manage a AUR-Directory"
 arch=('any')
@@ -11,7 +11,7 @@ makedepends=(
 	'cargo'
 )
 source=("https://github.com/Nikl174/$pkgname/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('e4c30ce178b67f8fcec92d11454da96528e98687542371fb998022f6f350117b')
+sha256sums=('b43ff47df34aed4ce9f48bcce3e19b0537d0a70b02cf5719f8d80993402e7dec')
 prepare() {
 	cd "$pkgname-$pkgver"
 	export RUSTUP_TOOLCHAIN=stable
