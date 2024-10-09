@@ -3,12 +3,13 @@ pkgname=(
   vencord-git
   chromium-vencord-git
   firefox-vencord-git
+  firefox-developer-edition-vencord-git
   librewolf-vencord-git
 )
 pkgbase=vencord-git
 _pkgname=Vencord
-pkgver=1.9.3.r10.g5c05443
-pkgrel=4
+pkgver=1.10.4.r0.g013c8d0
+pkgrel=1
 pkgdesc="The cutest Discord client mod"
 arch=(any)
 url=https://vencord.dev
@@ -75,6 +76,16 @@ package_firefox-vencord-git() {
 
   cd "$srcdir"/$_pkgname/dist
   install -Dm644 extension-firefox.zip "$pkgdir"/usr/lib/firefox/browser/extensions/vencord-firefox@vendicated.dev.xpi
+}
+
+package_firefox-developer-edition-vencord-git() {
+  depends=(firefox-developer-edition)
+  provides=(firefox-vencord)
+  conflicts=(firefox-vencord)
+  install=vencord.install
+
+  cd "$srcdir"/$_pkgname/dist
+  install -Dm644 extension-firefox.zip "$pkgdir"/usr/lib/firefox-developer-edition/browser/extensions/vencord-firefox@vendicated.dev.xpi
 }
 
 package_librewolf-vencord-git() {
