@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=spacemesh-bin
 _pkgname=Spacemesh
-pkgver=1.7.1
+pkgver=1.7.4
 _electronversion=25
 pkgrel=1
 pkgdesc="Spacemesh App (Smesher + Wallet). Use system-wide electron."
@@ -25,8 +25,8 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-sha256sums_aarch64=('d18213e5e30e125b25f927c35182a908fb2492bc79f6ec6308c57d0ee3da2735')
-sha256sums_x86_64=('a3b44f230c73380bd1993a94860409178c84fd9e93c691862caac62d0c546484')
+sha256sums_aarch64=('c881e24490672fd44dfbcefef739fd8926b9c62c5a4a9e4b72d0c89a3c374e76')
+sha256sums_x86_64=('5e324bad264600866fdb86f00a8df1b42fa9f1d9671b62c33a0fa26fbab76139')
 build() {
     sed -e "
         s/@electronversion@/${_electronversion}/g
@@ -36,8 +36,10 @@ build() {
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
     " -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
-    sed -i "s/\/opt\/${_pkgname}\/${pkgname%-bin}_app/${pkgname%-bin}/g;s/${pkgname%-bin}_app/${pkgname%-bin}/g" \
-        "${srcdir}/usr/share/applications/${pkgname%-bin}_app.desktop"
+    sed -e "
+        s/\/opt\/${_pkgname}\/${pkgname%-bin}_app/${pkgname%-bin}/g
+        s/${pkgname%-bin}_app/${pkgname%-bin}/g
+    " -i "${srcdir}/usr/share/applications/${pkgname%-bin}_app.desktop"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
