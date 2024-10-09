@@ -5,7 +5,7 @@
 
 pkgname=fmodengine
 pkgver=2.02.24
-pkgrel=3
+pkgrel=4
 pkgdesc="FMOD Engine API and tools"
 arch=('x86_64')
 url="https://www.fmod.com/"
@@ -82,21 +82,20 @@ build() {
 }
 
 package() {
-    echo "Unpacking..."
-    mkdir -p "${pkgdir}/opt/fmodengine"
-    tar -xzf "${SRCDEST}/${_filename}" -C "${pkgdir}/opt/fmodengine" --strip-components=1
+    install -d ${pkgdir}/opt/$pkgname
+    tar -xzf "${SRCDEST}/${_filename}" -C "${pkgdir}/opt/$pkgname" --strip-components=1
     
-    chmod +x ${pkgdir}/opt/fmodengine/bin/fmodprofiler
-    chmod +x ${pkgdir}/opt/fmodengine/bin/fsbank
-    chmod +x ${pkgdir}/opt/fmodengine/bin/fsbank_gui
+    chmod +x ${pkgdir}/opt/$pkgname/bin/fmodprofiler
+    chmod +x ${pkgdir}/opt/$pkgname/bin/fsbank
+    chmod +x ${pkgdir}/opt/$pkgname/bin/fsbank_gui
     
     install -d "${pkgdir}/usr/bin"
-    ln -sf "/opt/fmodengine/bin/fmodprofiler" "${pkgdir}/usr/bin/fmodprofiler"
-    ln -sf "/opt/fmodengine/bin/fsbank" "${pkgdir}/usr/bin/fsbank"
-    ln -sf "/opt/fmodengine/bin/fsbank_gui" "${pkgdir}/usr/bin/fsbank_gui"
+    ln -sf "/opt/$pkgname/bin/fmodprofiler" "${pkgdir}/usr/bin/fmodprofiler"
+    ln -sf "/opt/$pkgname/bin/fsbank" "${pkgdir}/usr/bin/fsbank"
+    ln -sf "/opt/$pkgname/bin/fsbank_gui" "${pkgdir}/usr/bin/fsbank_gui"
 
     install -d "${pkgdir}/usr/lib/$pkgname"
-    ln -sf "/opt/fmodengine/api/core/lib/${arch}"/*.so "${pkgdir}/usr/lib/$pkgname"
-    ln -sf "/opt/fmodengine/api/fsbank/lib/${arch}"/*.so "${pkgdir}/usr/lib/$pkgname"
-    ln -sf "/opt/fmodengine/api/studio/lib/${arch}"/*.so "${pkgdir}/usr/lib/$pkgname"
+    ln -sf "/opt/$pkgname/api/core/lib/${arch}"/*.so "${pkgdir}/usr/lib/$pkgname"
+    ln -sf "/opt/$pkgname/api/fsbank/lib/${arch}"/*.so "${pkgdir}/usr/lib/$pkgname"
+    ln -sf "/opt/$pkgname/api/studio/lib/${arch}"/*.so "${pkgdir}/usr/lib/$pkgname"
 }
