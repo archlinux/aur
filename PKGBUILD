@@ -14,6 +14,6 @@ sha256sums=("0412662abf533a4044e09196ff18918529d5cc4b4475ff00199c779acf92cecc")
 
 package() {
     mkdir -p "$pkgdir"/usr/bin
-    install -Dm644 "$srcdir"/xterm \
+    install -Dm777 "$srcdir"/xterm \
       "$pkgdir"/usr/bin/xterm
 }
