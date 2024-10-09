@@ -2,8 +2,8 @@
 _pkgname=sast-evento
 pkgname=${_pkgname}-bin
 
-pkgver="2.0.42"
-_hotfix=1
+pkgver="2.0.46"
+_hotfix=0
 _pkgrel=0
 pkgrel="$((_pkgrel+_hotfix))"
 replace=('sast-evento-appimage')
@@ -19,10 +19,7 @@ url="https://github.com/NJUPT-SAST/sast-evento"
 provides=(${_pkgname})
 conflicts=(${_pkgname})
 source_x86_64=("${url}/releases/download/${pkgver}/${_pkgname}-${pkgver}.${_hotfix}-pacman-linux-x64.pkg.tar.zst")
-#source_aarch64=("${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_linux_arm64.tar.gz")
-
-sha256sums_x86_64=('1627c226d673e0ac703e47c2c5dffd38ce76c678714a3b8e472e29650fc2dffd')
-#sha256sums_aarch64=('673f5e094a4732983cc924161435c51c5f455a3debb3711f07393416e50910df')
+sha256sums_x86_64=('814a58b3159d52d826d5a4a65395a29c18de8f5d0641f0d6ee713d6acb22e672')
 
 package() {
     cp -r ${srcdir}/* ${pkgdir}
