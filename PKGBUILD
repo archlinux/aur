@@ -1,7 +1,7 @@
 # Maintainer: robertfoster
 
 pkgname=ostinato
-pkgver=1.2.0
+pkgver=1.3.0
 pkgrel=1
 url="http://ostinato.org/"
 pkgdesc="Cross-platform network packet/traffic generator and analyzer"
@@ -26,6 +26,6 @@ package() {
   install -Dm644 "$srcdir/$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
 }
 
-md5sums=('2114f928546f700060707705eba51c02'
-         '87e4dbdde1a16e6db537b2d01ed0a798'
-         '5ddf0b07a4a088630ed6655869f8d2aa')
+sha256sums=('cbc4ff88ccef3bb6fb5d9ae0b4a3d15509e50817435d09d8d37acb903fbf22d5'
+  '1afc5727cdd0480a81cc5cd4ae478d0b77086ae4689e3daed44d9693cb874de7'
+  'f6cba049e6c2f482298a7a15822cfae22f253289529f55687088fe8fc887a930')
