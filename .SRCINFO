@@ -1,0 +1,17 @@
+pkgbase = opencoarrays-mpich-git
+	pkgdesc = A transport layer for coarray Fortran compilers, compiled with MPICH.
+	pkgver = 2.10.2.r0.g5f09984
+	pkgrel = 1
+	url = https://github.com/sourceryinstitute/OpenCoarrays
+	arch = x86_64
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = gcc-fortran
+	depends = mpich
+	conflicts = opencoarrays
+	conflicts = opencoarrays-git
+	source = opencoarrays-mpich::git+https://github.com/sourceryinstitute/OpenCoarrays.git
+	sha256sums = SKIP
+
+pkgname = opencoarrays-mpich-git
