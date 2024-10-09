@@ -1,7 +1,7 @@
 pkgbase = trgui-ng
 	pkgdesc = Remote GUI for Transmission torrent daemon
-	pkgver = 1.3.0
-	pkgrel = 2
+	pkgver = 1.4.0
+	pkgrel = 1
 	url = https://github.com/openscopeproject/TrguiNG
 	arch = x86_64
 	license = AGPL-3.0
@@ -24,11 +24,11 @@ pkgbase = trgui-ng
 	conflicts = trgui-ng-git
 	noextract = dbip.mmdb
 	options = !lto
-	source = git+https://github.com/openscopeproject/TrguiNG#tag=v1.3.0
-	source = https://github.com/openscopeproject/TrguiNG/releases/download/v1.3.0/dbip.mmdb
+	source = git+https://github.com/openscopeproject/TrguiNG#tag=v1.4.0
+	source = https://github.com/openscopeproject/TrguiNG/releases/download/v1.4.0/dbip.mmdb
 	source = TrguiNG.desktop::https://raw.githubusercontent.com/flathub/org.openscopeproject.TrguiNG/master/org.openscopeproject.TrguiNG.desktop
 	sha256sums = SKIP
-	sha256sums = c7e542b95c8981037a35ab339c2bd7bd083b5e2d1436d3f0024315d119106223
+	sha256sums = 0f9a459f66aa99138412213ec9d5a2635ab6e623759a8326f49ea508db0eed62
 	sha256sums = 21bef47c8cddae5365a7af8867d43c25e80db53ec8dbb1940138ad26d02a401a
 
 pkgname = trgui-ng
