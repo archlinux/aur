@@ -1,0 +1,21 @@
+pkgbase = jdk23-graalvm-ee-bin
+	pkgdesc = Universal virtual machine for running applications written in a variety of languages (JVM-based, LLVM-based, or other), Java 23 version
+	pkgver = 23
+	pkgrel = 1
+	url = https://www.graalvm.org/
+	install = jdk23-graalvm-ee-bin.install
+	arch = x86_64
+	arch = aarch64
+	license = LicenseRef-GFTC
+	depends = java-runtime-common
+	depends = java-environment-common
+	provides = java-runtime=23
+	provides = java-environment=23
+	options = staticlibs
+	options = !debug
+	source_x86_64 = https://download.oracle.com/graalvm/23/archive/graalvm-jdk-23_linux-x64_bin.tar.gz
+	sha256sums_x86_64 = 9e0632fe4be3d7fed6f03b3afc349b72fd5cb857ec6b69008202257e8a3ed858
+	source_aarch64 = https://download.oracle.com/graalvm/23/archive/graalvm-jdk-23_linux-aarch64_bin.tar.gz
+	sha256sums_aarch64 = f6a12e7f09f3bc23d46d2dda6f9dc6a16f094489d56549a1dcc11a7e6826ed9f
+
+pkgname = jdk23-graalvm-ee-bin
