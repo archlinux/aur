@@ -1,6 +1,6 @@
 pkgbase = tsmclient
 	pkgdesc = IBM Tivoli Storage Manager Client
-	pkgver = 8.1.14.0
+	pkgver = 8.1.23.0
 	pkgrel = 1
 	url = http://www-03.ibm.com/software/products/en/tivostormana/
 	arch = x86_64
@@ -9,12 +9,13 @@ pkgbase = tsmclient
 	makedepends = patchelf
 	depends = gcc-libs
 	depends = zlib
+	depends = libxcrypt-compat
 	optdepends = jre8-openjdk: support for dsmj java gui
 	options = !strip
-	source = https://public.dhe.ibm.com/storage/tivoli-storage-management/maintenance/client/v8r1/Linux/LinuxX86/BA/v8114/8.1.14.0-TIV-TSMBAC-LinuxX86.tar
+	source = https://public.dhe.ibm.com/storage/tivoli-storage-management/maintenance/client/v8r1/Linux/LinuxX86/BA/v8123/8.1.23.0-TIV-TSMBAC-LinuxX86.tar
 	source = dkms.conf
 	source = jbb_version.h
-	sha256sums = c0723cbc86b9676611066a646c07e4f69edc58e733a11c00b7f8f38c38619fc5
+	sha256sums = 8aa79527914a8e7749d940b7d269286a8a9165e7302e61c463ead8cea6714dac
 	sha256sums = 6ae5ff0c4c23138573ec8254cfc45c7f0883f43dbcede57ded5831ae9d233bf3
 	sha256sums = b47806d7307fc955469f5b46b9f23cad24f72725a204380d369013c8d9fde88d
 
