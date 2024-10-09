@@ -1,14 +1,14 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=oaqc
-_pkgver=1.0
+_pkgver=2.0.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=3
+pkgrel=1
 pkgdesc="Computation of the Orbit-Aware Quad Census"
 arch=(x86_64)
 url="https://cran.r-project.org/package=$_pkgname"
-license=('GPL-3.0-only')
+license=('GPL-3.0-or-later')
 depends=(
   r
 )
@@ -16,10 +16,11 @@ optdepends=(
   r-igraph
   r-knitr
   r-rmarkdown
+  r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('035a9d6aebcc688ab3cb16d3d47a28cd')
-b2sums=('74f44785b29d8e9994d3cbf7915c035e05b7d1ba2e5431430ae74b4c25ada532f5f9cf06785a1ceee68986fc78951e552dd750d08b5f7ef879370d6062e661fe')
+md5sums=('9340b95a6dca62c83f83ba05aa5b4b2f')
+b2sums=('78bf4e22e91716133d28f99744aa711aea3a2533d4f24483d79928ee5ad7fc76746b9f233db43782ab159f0aa88f228bf1c87f869f9118c54092d6eb416755e9')
 
 build() {
   mkdir build
