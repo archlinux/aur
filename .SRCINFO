@@ -1,13 +1,13 @@
 pkgbase = blue
 	pkgdesc = Creates table of when the blue hour, the golden hour, or whatever you want occurs
-	pkgver = 1.1.1
+	pkgver = 1.1.2
 	pkgrel = 1
-	url = https://github.com/maandree/blue
+	url = https://codeberg.org/maandree/blue
 	arch = any
 	license = custom:ISC
 	depends = python3
 	depends = solar-python
-	source = https://github.com/maandree/blue/archive/1.1.1.tar.gz
-	sha256sums = 1d41cf95ecadc6ca9997a89fe55668b1bf68f84b1b259df91987e6fe22c545e5
+	source = blue-1.1.2.tar.gz::https://codeberg.org/maandree/blue/archive/1.1.2.tar.gz
+	sha256sums = 77aaf03d0374a0fff1e3290cc8492ef9f48ccf8517b411396a90f83ff1c162a9
 
 pkgname = blue
