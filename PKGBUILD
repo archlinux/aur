@@ -1,0 +1,73 @@
+# Maintainer: Aseem Athale <athaleaseem@gmail.com>
+
+_appprefix="/opt"
+_appdataprefix="/var/opt"
+
+pkgname=open-webui
+pkgver=0.3.32
+pkgrel=1
+pkgdesc="Web UI and OpenAI API for various LLM runners, including Ollama"
+arch=('any')
+url="https://github.com/open-webui/open-webui"
+license=('MIT')
+depends=('python311')
+makedepends=('npm')
+conflicts=('open-webui-git')
+source=("${pkgname}-${pkgver}.tar.gz"::"${url}/archive/refs/tags/v${pkgver}.tar.gz"
+    "open-webui.service"
+    "open-webui.conf")
+
+install="${pkgname}.install"
+sha1sums=('9d3cfd310c8a5c428ba531ef5bc6c4460a4c7a4a'
+          '9b789adb8d91f15ece2187af4aec810847d4b0b2'
+          'fb015c224b9529988823f0e24d65ab4a004d30c0')
+options=(!strip !debug)
+
+build() {
+    cd "${pkgname}-${pkgver}"
+    npm install
+    npm run format
+    npm run i18n:parse
+    npm run build
+}
+
+test() {
+    cd "${pkgname}-${pkgver}"
+    npm run test:frontend
+}
+
+package() {
+    # Install systemd service
+    install -Dm644 "./$pkgname.service" "$pkgdir/usr/lib/systemd/system/$pkgname.service"
+
+    # Install license
+    install -Dm 644 "$srcdir/${pkgname}-${pkgver}"/LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
+
+    # Install the default config file to /usr/share/$pkgname/open-webui.conf
+    install -d "$pkgdir/usr/share/$pkgname"
+    install -Dm644 "./$pkgname.conf" "$pkgdir/usr/share/$pkgname/$pkgname.conf"
+
+    # Copy source to app's home directory
+    parent_dir="$pkgdir/${_appprefix}"  # /opt
+
+    install -d "$pkgdir/${_appprefix}/$pkgname"
+    install -d "$pkgdir/${_appdataprefix}/$pkgname"
+
+    # copy over files
+    cp -R "$srcdir/${pkgname}-${pkgver}/." "$pkgdir/${_appprefix}/$pkgname"
+
+    # clean up stuff we don't need
+    rm -rf "$pkgdir/${_appprefix}/$pkgname/node_modules"
+    rm -rf "$pkgdir/${_appprefix}/$pkgname/.git"
+
+    # Fix permissions
+    echo "Setting permissions for $pkgdir${_appprefix}/$pkgname"
+    chmod 755 "$pkgdir/${_appprefix}/$pkgname"
+    find "$pkgdir/${_appprefix}/$pkgname" -type d -exec chmod 755 {} \;
+    find "$pkgdir/${_appprefix}/$pkgname" -type f -exec chmod 644 {} \;
+
+    echo "Setting permissions for $pkgdir${_appdataprefix}/$pkgname"
+    chmod 755 "$pkgdir/${_appdataprefix}/$pkgname"
+    find "$pkgdir/${_appdataprefix}/$pkgname" -type d -exec chmod 775 {} \;
+    find "$pkgdir/${_appdataprefix}/$pkgname" -type f -exec chmod 664 {} \;
+}
