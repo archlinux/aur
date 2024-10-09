@@ -1,0 +1,17 @@
+pkgbase = vapoursynth-plugin-bore-git
+	pkgdesc = Plugin for VapourSynth: bore (GIT version)
+	pkgver = r33.252518c
+	pkgrel = 1
+	url = https://github.com/OpusGang/bore
+	arch = x86_64
+	license = GPL-3.0
+	makedepends = git
+	makedepends = meson
+	depends = gsl
+	depends = vapoursynth
+	provides = vapoursynth-plugin-bore
+	conflicts = vapoursynth-plugin-bore
+	source = bore::git+https://github.com/OpusGang/bore.git
+	sha256sums = SKIP
+
+pkgname = vapoursynth-plugin-bore-git
