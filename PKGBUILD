@@ -2,7 +2,7 @@
 pkgbase=python-crds
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}")
-pkgver=12.0.0
+pkgver=12.0.2
 pkgrel=1
 pkgdesc="Calibration Reference Data System for HST and JWST"
 arch=('any')
@@ -15,14 +15,16 @@ makedepends=('python-setuptools-scm' 'python-wheel' 'python-build' 'python-insta
 #              'python-yaml'
 #              'python-beautifulsoup4'
 #              'python-asdf'
-#              'python-parsley')
+#              'python-parsley'
+#              'python-jwst'
+#              )
 ##             'python-lockfile'
 ##             'python-filelock'
 ##             'python-nose'
 ##             'python-pylint'
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
 #       'fix-roman-asdf-test.patch')
-md5sums=('732b0c50bdbc90357e914ef257ff2422')
+md5sums=('2f6b016445c370d15ebd49f6446aa8ff')
 
 #get_pyinfo() {
 #     [[ $1 == "site" ]] && python -c "import site; print(site.getsitepackages()[0])" || \
@@ -51,7 +53,7 @@ build() {
 ##   mkdir -p .crds/mappings/hst
 #    python -m installer --destdir=tmp_install dist/*.whl
 #    PATH="tmp_install/usr/bin:${PATH}" PYTHONPATH="tmp_install/$(get_pyinfo site)" \
-#        CRDS_PATH=.crds CRDS_SERVER_URL=https://hst-crds.stsci.edu pytest -vv -l -ra --color=yes -o console_output_style=count -p xdist -n 5 \
+#        CRDS_PATH=.crds CRDS_SERVER_URL=https://hst-crds.stsci.edu CRDS_CONTEXT=hst_1186.pmap pytest -vv -l -ra --color=yes -o console_output_style=count -p xdist -n 5 \
 #        --ignore=test/bestrefs/test_bestrefs.py \
 #        --ignore=test/certify/test_certify.py \
 #        --ignore=test/roman/test_roman.py \
@@ -93,7 +95,9 @@ build() {
 #        --deselect=test/submit/test_submit.py::TestSubmit::test_rmfile \
 #        --deselect=test/submit/test_submit.py::TestSubmit::test_addbadfile \
 #        --deselect=test/certify/test_certify.py::test_asdf_library_version_fail \
-#        --deselect=test/misc/test_synphot.py::test_synphot_certify_rmaps_thruput #|| warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count
+#        --deselect=test/misc/test_synphot.py::test_synphot_certify_rmaps_thruput \
+#        --deselect=test/submit/test_submit.py::TestSubmit::test_emptyvalue_char \
+#        --deselect=test/submit/test_submit.py::TestSubmit::test_emptyvalue_optional #|| warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count
 #
 ##       --deselect=test/test_list.py::test_list_hst_mappings \
 ##       --deselect=test/test_list.py::test_list_jwst_mappings \
