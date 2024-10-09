@@ -1,9 +1,9 @@
 # Maintainer:
 # Contributor: easymodo <easymodofrf@gmail.com>
 
-_pkgname=qimgv
+_pkgname="qimgv"
 pkgname="$_pkgname-git"
-pkgver=1.0.2.r135.gb515dcd
+pkgver=1.0.2.r153.gb43fe80
 pkgrel=1
 pkgdesc="Qt image viewer with video playback"
 url="https://github.com/easymodo/qimgv"
@@ -27,12 +27,19 @@ optdepends=(
   'kimageformats: support for more image formats'
 )
 
-provides=("qimgv")
-conflicts=("qimgv")
+provides=("$_pkgname")
+conflicts=("$_pkgname")
 
 _pkgsrc="$_pkgname"
-source=("$_pkgname"::"git+https://github.com/easymodo/qimgv.git")
+source=("$_pkgname"::"git+$url.git")
 sha256sums=('SKIP')
+
+prepare() {
+  cd "$_pkgsrc"
+  sed -E -e 's/Qt5_FOUND/FALSE/' \
+    -e '/\bQt5\b/d' \
+    -i CMakeLists.txt
+}
 
 pkgver() {
   cd "$_pkgsrc"

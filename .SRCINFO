@@ -1,6 +1,6 @@
 pkgbase = qimgv-git
 	pkgdesc = Qt image viewer with video playback
-	pkgver = 1.0.2.r135.gb515dcd
+	pkgver = 1.0.2.r153.gb43fe80
 	pkgrel = 1
 	url = https://github.com/easymodo/qimgv
 	arch = i686
