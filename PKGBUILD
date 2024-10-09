@@ -4,9 +4,9 @@ _appname="GitHub Desktop"
 pkgname="${_pkgname}-zh-bin"
 pkgver=3.4.3_linux1
 #_zhpkgver="${pkgver%_linux2}"
-_zhpkgver=3.4.5
+_zhpkgver=3.4.6
 _electronversion=30
-pkgrel=3
+pkgrel=4
 pkgdesc="GUI for managing Git and GitHub.Chinese SC Version.Github Desktop 汉化版.Use system-wide electron."
 arch=(
     'aarch64'
@@ -38,7 +38,7 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/shiftkey/desktop/release-${pkgver//_/-}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('63c782d5bacc8d9db07451926050e62e021d7cef3b14a0ce86c6cb0bfa8f6216'
+sha256sums=('05ff0d2e416c87f72ad25e52d24494247afdbd49d003125d9e2a474aaac28704'
             '891d678cd6aa67c0712f663b5fee690f24d11d360795300814f7bf2eb91ba530'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 sha256sums_aarch64=('da070a8379dda95cceb6c2a331fde7d33d56feee31de647e334435d34c6cfb22')
@@ -46,19 +46,19 @@ sha256sums_armv7h=('44b85e5a3fdb1c575b6ee6101f45c97680554f143add2dec330104575e10
 sha256sums_x86_64=('e2c8aa0ee4f67b1d12e96080fef4dd342b0fd7aa619ead158f1e48cd5123c238')
 build() {
     sed -e "
-        s/@electronversion@/${_electronversion}/
-        s/@appname@/${pkgname%-bin}/
-        s/@runname@/app/
-        s/@cfgdirname@/${_pkgname}/
-        s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/
+        s/@electronversion@/${_electronversion}/g
+        s/@appname@/${pkgname%-bin}/g
+        s/@runname@/app/g
+        s/@cfgdirname@/${_pkgname}/g
+        s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
     " -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
     install -Dm644 "${srcdir}/GithubDesktop汉化工具/Linux/"* -t "${srcdir}/usr/lib/${_pkgname}/resources/app"
     sed -e "
         5i\Name[zh_CN]=Github桌面版
         6i\Comment[zh_CN]=从桌面对Github进行简单协作
-        s/Exec=${_pkgname}/Exec=${pkgname%-bin}/
-        s/Icon=${_pkgname}/Icon=${pkgname%-bin}/
+        s/Exec=${_pkgname}/Exec=${pkgname%-bin}/g
+        s/Icon=${_pkgname}/Icon=${pkgname%-bin}/g
     " -i "${srcdir}/usr/share/applications/${_pkgname}.desktop"
 }
 package() {
@@ -67,7 +67,8 @@ package() {
     cp -r "${srcdir}/usr/lib/${_pkgname}/resources/app" "${pkgdir}/usr/lib/${pkgname%-bin}"
     install -Dm644 "${srcdir}/usr/share/applications/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
     install -Dm644 "${srcdir}/LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-    for _icons in 32x32 64x64 128x128 256x256 512x512 1024x1024;do
+    _icon_sizes=(32x32 64x64 128x128 256x256 512x512 1024x1024)
+    for _icons in "${_icon_sizes[@]}";do
         install -Dm644 "${srcdir}/usr/share/icons/hicolor/${_icons}/apps/${_pkgname}.png" \
             "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname%-bin}.png"
     done
