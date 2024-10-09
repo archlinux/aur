@@ -1,7 +1,7 @@
 # Maintainer: lstnbl<jialanxin1996@hotmail.com>
 pkgname=fanyi-git
 _pkgname=fanyi
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 arch=("x86_64")
 url="https://github.com/jialanxin/fanyi.git"
