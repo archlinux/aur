@@ -1,0 +1,20 @@
+pkgbase = android-armv7a-eabi-faac
+	pkgdesc = Freeware Advanced Audio Coder (Android armv7a-eabi)
+	pkgver = 1.30
+	pkgrel = 1
+	url = https://www.audiocoding.com/
+	arch = any
+	license = GPL2
+	license = custom
+	makedepends = android-configure
+	depends = android-ndk
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = https://github.com/knik0/faac/archive/1_30/faac-1_30.tar.gz
+	source = faac-1.30-pkgconfig.patch::https://github.com/knik0/faac/commit/11215a2dc792d28a8fa7bbef059c6798d248a0ea.patch
+	md5sums = 8d61e6d55088e599aa91532d5e6995b0
+	md5sums = 8142b5e0c0b169ffd61c8dfdf336fbaa
+
+pkgname = android-armv7a-eabi-faac
