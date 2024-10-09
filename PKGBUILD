@@ -2,7 +2,7 @@
 
 pkgname=python-xxtea-git
 pkgver=r185.3a106bc
-pkgrel=2
+pkgrel=3
 pkgdesc="Python extension module xxtea."
 arch=('x86_64')
 url="https://github.com/ifduyue/xxtea"
@@ -10,7 +10,7 @@ license=('BSD')
 provides=('python-xxtea')
 conflicts=('python-xxtea')
 makedepends=('git')
-
+depends=('python')
 source=("git+https://github.com/ifduyue/xxtea.git")
 md5sums=('SKIP')
 
