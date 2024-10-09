@@ -5,7 +5,7 @@
 
 pkgname=govmomi
 pkgdesc='A Go library for interacting with VMware vSphere APIs (ESXi and/or vCenter).'
-pkgver=0.44.0
+pkgver=0.44.1
 pkgrel=1
 url="https://github.com/vmware/${pkgname}"
 license=('Apache')
@@ -13,7 +13,7 @@ arch=('x86_64')
 makedepends=('go')
 depends=('glibc')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha512sums=('cb7573b67d61d41deab66faca3038610227ea53e4af6274b394e799a0844f4ad8dca3ad4f65abb6e06aa95594ed3af2d01367ceab77d486ab5510806f4503972')
+sha512sums=('a7246dd5ab2c99c6a283020e1567266e53850d24eca72eaca9f789979d7e7fb0e5d4712be5c76b37a4c05e1941a49ee82730d621b50a849f09a2fc95f88456ed')
 
 build() {
   cd "${pkgname}-${pkgver}"
