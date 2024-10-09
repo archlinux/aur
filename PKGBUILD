@@ -1,22 +1,19 @@
-# Maintainer: Quentin Bourgeois <quentin+archlinux@bourgeois.eu>
+# Maintainer: bananana <bananana dot aur at glasmail dot de>
+# Contributor: Quentin Bourgeois <quentin+archlinux@bourgeois.eu>
 
 pkgname=mooltipass-udev
-pkgver=2019120501
-pkgrel=2
+pkgver=2023011200
+pkgrel=1
 pkgdesc="Udev rules to connect Mooltipass devices"
 arch=('any')
 url="https://github.com/mooltipass/mooltipass-udev"
-license=('GPL3')
+license=('GPL-3.0-or-later')
 
 depends=('libusb'
          'udev')
 
-validpgpkeys=('3486CBAC7F116CA71351B0D7F7181B2010660E6F')
-
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz"
-        "${pkgname}-${pkgver}.tar.gz.asc::${url}/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.gz.asc")
-sha256sums=('da18bba623890cfab6903c4f7872899693aee9eb1d13a3cd316174505d26b572'
-            'SKIP')
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
+sha256sums=('00285402ecf887da2a938d8375725fd07553c1ad11e426659a72c42dc0027c82')
 
 package() {
         cd "${srcdir}/${pkgname}-${pkgver}"
