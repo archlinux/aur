@@ -22,10 +22,10 @@ makedepends=(
   'just'
   'mold'
 )
-backup() {
+backup=(
   "etc/greetd/${pkgname%-git}.toml"
 #  "/etc/pam.d/${pkgname%-git}"
-}
+)
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=('git+https://github.com/pop-os/cosmic-greeter.git'

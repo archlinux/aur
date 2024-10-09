@@ -20,6 +20,7 @@ pkgbase = cosmic-greeter-git
 	depends = wayland
 	provides = cosmic-greeter
 	conflicts = cosmic-greeter
+	backup = etc/greetd/cosmic-greeter.toml
 	source = git+https://github.com/pop-os/cosmic-greeter.git
 	source = display-manager.patch
 	source = lto.patch
