@@ -2,7 +2,7 @@
 _appname=codium
 _pkgname="vs${_appname}"
 pkgname="${_pkgname}-electron-bin"
-pkgver=1.94.0.24281
+pkgver=1.94.0.24282
 _electronversion=30
 pkgrel=1
 pkgdesc="VS Code without MS branding/telemetry/licensing.Prebuild and System-wide Electron edition"
@@ -16,11 +16,14 @@ _ghurl="https://github.com/VSCodium/vscodium"
 license=("MIT")
 provides=(
     "${_pkgname}=${pkgver}"
+    "${_appname}=${pkgver}"
 )
 conflicts=(
     "${pkgname%-bin}"
     "${_pkgname}"
     "${_appname}"
+    "${_pkgname}-insiders"
+    "${_pkgname}-marketplace"
 )
 depends=(
     "electron${_electronversion}"
@@ -28,6 +31,7 @@ depends=(
     'libx11'
     'libxkbfile'
     'ripgrep'
+    'nodejs'
 )
 optdepends=(
 	'gvfs: For move to trash functionality'
@@ -44,9 +48,9 @@ source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${_ghurl}/releases/downloa
 sha256sums=('ed289092386002771285e3423f66f49af65ff918e1b667b517d977fa4fe1f057'
             '71463726de1e6b3d8e2daf8d6816f2dc616ebac36c7097c5829074ca38a95309'
             '164bbaffe22f4ad43607f44a114528317c4d63592b88e911abadfa962443ac26')
-sha256sums_aarch64=('c6e4a2796ce0c725fd1915cd1c2e55d2ea57459f69051c5a22964de05d202996')
-sha256sums_armv7h=('58fe67d649df0077afccaecc913bee939a380a7df4be24a993e9f54abce6d782')
-sha256sums_x86_64=('4ab4af2cde899ac7fc52d7f0372abeacc7fa6808d093312bcec1ec8e7fff6d99')
+sha256sums_aarch64=('682b257c6a70fa29d11359f5e90809c6a9d789257d953594b048232b446138b1')
+sha256sums_armv7h=('86c9b07df40665df70da86486674ccfe44b2c7c87d423498420ceb73495d3d78')
+sha256sums_x86_64=('d3a70eaaea89a0c7783630051f08b057015696deedea761cc6fc40a502f94c13')
 build() {
     sed -e "
         s/@electronversion@/${_electronversion}/g
