@@ -1,4 +1,4 @@
-# Maintainer: Sir-Photch <sir-photch at posteo dot me>
+# Maintainer: Sir-Photch <aur@liebender.dev>
 
 pkgname=gmlgcd
 pkgver=2.0
