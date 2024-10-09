@@ -1,8 +1,8 @@
 # Maintainer: begin-theadventure <begin-thecontact.ncncb at dralias dot com>
 
 pkgname=overskride
-pkgver=0.6.0
-_commit=8979e01c40cba1020b995777cff9182c94a34e35
+pkgver=0.6.1
+_commit=30545dac89ff7a95484e8f9f8d8a868e09a716b1
 pkgrel=1
 pkgdesc='A simple yet powerful bluetooth client'
 url="https://github.com/kaii-lb/overskride"
