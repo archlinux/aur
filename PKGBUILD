@@ -6,7 +6,7 @@
 pkgbase=tuned
 pkgname=("${pkgbase}" "${pkgbase}-ppd")
 pkgver=2.24.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Daemon that performs monitoring and adaptive configuration of devices in the system'
 arch=('any')
 url="https://github.com/redhat-performance/${pkgbase}"
@@ -28,7 +28,8 @@ prepare() {
 package_tuned() {
 	optdepends=('virt-what: virtual machine detection'
 		'systemtap: detailed system monitoring'
-		'tuned-ppd: power-profiles-daemon api translation')
+		'tuned-ppd: power-profiles-daemon api translation'
+		'wireless_tools: wireless device power management')
 	backup=('etc/tuned/active_profile'
 		'etc/tuned/bootcmdline'
 		'etc/tuned/cpu-partitioning-powersave-variables.conf'
@@ -53,6 +54,7 @@ package_tuned() {
 package_tuned-ppd() {
 	pkgdesc='Daemon that allows applications to easily transition to TuneD from power-profiles-daemon (PPD)'
 	depends=('tuned')
+	provides=('power-profiles-daemon')
 	conflicts=('power-profiles-daemon')
 	backup=('etc/tuned/ppd.conf')
 	options=('!emptydirs')
