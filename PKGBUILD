@@ -3,7 +3,7 @@
 # Contributor: ZhangHua
 
 pkgname=qcm
-pkgver=1.0.5
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="Qt client for netease cloud music"
 arch=('x86_64')
@@ -63,8 +63,8 @@ function package(){
 	cd "${srcdir}/Qcm"
 	DESTDIR="${pkgdir}" cmake --install build
 	mv "${pkgdir}/usr/local"/* "${pkgdir}/usr"
-	mkdir -p "${pkgdir}/usr/share/Qcm/"
-	cp -r "${srcdir}/Qcm/build/qml_modules" "${pkgdir}/usr/share/Qcm/"
-	sed -i 's|Exec=Qcm|Exec=env QML_IMPORT_PATH=/usr/share/Qcm/qml_modules Qcm|g' \
-		"${pkgdir}/usr/share/applications"/*.desktop
+# 	mkdir -p "${pkgdir}/usr/share/Qcm/"
+# 	cp -r "${srcdir}/Qcm/build/qml_modules" "${pkgdir}/usr/share/Qcm/"
+# 	sed -i 's|Exec=Qcm|Exec=env QML_IMPORT_PATH=/usr/share/Qcm/qml_modules Qcm|g' \
+# 		"${pkgdir}/usr/share/applications"/*.desktop
 }
