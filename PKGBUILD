@@ -5,7 +5,7 @@ pkgname="stm32cubeide"
 pkgver=1.16.1
 _pkgver_ext=1.16.1_22882_20240916_0822
 _pkg_file_name=st-stm32cubeide_1.16.1_22882_20240916_0822_amd64.sh.zip
-pkgrel=1
+pkgrel=2
 pkgdesc="Integrated Development Environment for STM32"
 arch=("x86_64")
 makedepends=('imagemagick')
@@ -16,28 +16,33 @@ url="https://www.st.com/en/development-tools/stm32cubeide.html"
 license=('custom:SLA0048')
 options=(!strip)
 
+# Create header file for curl request
+install -Dm 755 /dev/stdin "${srcdir}headers" <<END
+sec-ch-ua: Chromium;v=128, Not;A=Brand;v=24, Google Chrome;v=128
+sec-ch-ua-mobile: ?0
+sec-ch-ua-platform: Linux
+sec-fetch-dest: empty
+sec-fetch-site: same-origin 
+user-agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36
+END
 
-
-# Extract actual direct download link */
-_curl_useragent="User-Agent: Mozilla/5.0 (X11; Linux ${CARCH}) \
-                        AppleWebKit/537.36 (KHTML, like Gecko) \
-                        Chrome/124.0.0.0 \
-                        Safari/537.36"
-_curl_useragent="$(printf '%s' "$_curl_useragent" | sed 's/[[:space:]]\+/ /g')"
-_useragent_escaped="${_curl_useragent// /\\ }"
+# Download file with list of URLs to files
 _curl_req_url="https://www.st.com/content/st_com_cx/en/products/development-tools/software-development-tools/stm32-software-development-tools/stm32-ides/stm32cubeide/_jcr_content/get-software/getsw-table-nli.nocache.html/st-site-cx/components/containers/product/get-software-table-body.html"
+_curl_req="$(curl -s --compressed -H "@${srcdir}headers" "$_curl_req_url" )"
 
-_curl_req="$(curl -s --compressed -H "$_curl_useragent" "$_curl_req_url")"
+# Extract actual download link to the desired file
 _pkg_url="$(grep -m 1 "${_pkg_file_name}" <<< "$_curl_req")"
 _pkg_url="$(awk -F'"' '{print $4}' <<< "$_pkg_url")"
-_download_path="https://www.st.com""$_pkg_url"
+
+#_download_path="https://www.st.com""$_pkg_url"
+#echo $_download_path
 
 DLAGENTS=("https::/usr/bin/curl \
               -gqb '' --retry 3 --retry-delay 3 \
-              -H ${_useragent_escaped} \
+              -H "@${srcdir}headers" \
               -o %o --compressed %u")
 
-source=("${_pkg_file_name}"::"$_download_path"
+source=("${_pkg_file_name}"::"https://www.st.com""$_pkg_url"
 #	"99-jlink.rules.patch"
 	"https://www.st.com/resource/en/license/SLA0048_STM32CubeIDE.pdf"
 	)
@@ -95,7 +100,7 @@ END
 END
 
 	msg2 'Installing desktop shortcut and icon'
-	convert "${pkgdir}/opt/${pkgname}/icon.xpm" "${srcdir}/${pkgname}.png"
+	magick "${pkgdir}/opt/${pkgname}/icon.xpm" "${srcdir}/${pkgname}.png"
 	install -Dm 644 "${srcdir}/${pkgname}.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
 	install -Dm 644 /dev/stdin "${pkgdir}/usr/share/applications/${pkgname}.desktop" <<END
 [Desktop Entry]
@@ -103,8 +108,8 @@ Name=STM32CubeIDE
 Comment=STM32CubeIDE ${pkgver}
 GenericName=STM32CubeIDE
 #Exec=env GDK_BACKEND=x11 stm32cubeide %F
-#Exec=env WEBKIT_DISABLE_COMPOSITING_MODE=1 stm32cubeide %F
-Exec=stm32cubeide_wayland %F
+Exec=env WEBKIT_DISABLE_COMPOSITING_MODE=1 stm32cubeide_wayland %F
+#Exec=stm32cubeide_wayland %F
 Icon=${pkgname}
 Path=/opt/${pkgname}/
 Terminal=false

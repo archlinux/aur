@@ -7,3 +7,5 @@ src/
 *.pdf
 *.part
 *.tar
+
+headers
