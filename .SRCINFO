@@ -1,0 +1,12 @@
+pkgbase = cvemap
+	pkgdesc = Navigate the CVE jungle with ease
+	pkgver = 0.0.7
+	pkgrel = 1
+	url = https://github.com/projectdiscovery/cvemap
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	source = cvemap-0.0.7.tar.gz::https://github.com/projectdiscovery/cvemap/archive/refs/tags/v0.0.7.tar.gz
+	sha256sums = 4648b800c596e388a22922a04849f58f04bb5f73630cd8006c2756b3751b889b
+
+pkgname = cvemap
