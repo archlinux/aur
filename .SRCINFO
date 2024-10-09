@@ -1,6 +1,6 @@
 pkgbase = faircamp
 	pkgdesc = A static site generator for audio producers
-	pkgver = 0.16.1
+	pkgver = 0.17.0
 	pkgrel = 1
 	url = https://simonrepp.com/faircamp
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = faircamp
 	depends = opus
 	depends = poppler-glib
 	options = !lto
-	source = faircamp-0.16.1.tar.gz::https://codeberg.org/simonrepp/faircamp/archive/0.16.1.tar.gz
-	md5sums = e1f44e24ca09baec47238231a4d71cc7
+	source = faircamp-0.17.0.tar.gz::https://codeberg.org/simonrepp/faircamp/archive/0.17.0.tar.gz
+	md5sums = 1c39a5ea6eea6b8018b2207438929317
 
 pkgname = faircamp
