@@ -1,0 +1,18 @@
+pkgbase = gnubg-git
+	pkgdesc = World class backgammon application
+	pkgver = 1.08.003.r49.g898bb44f
+	pkgrel = 1
+	url = https://www.gnu.org/software/gnubg/
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = git
+	depends = python
+	depends = gtkglext
+	depends = curl
+	source = git+https://git.savannah.gnu.org/git/gnubg.git#branch=master
+	source = gnubg.desktop
+	validpgpkeys = 39FC530C20B9B8C627E71BAC973B63D4ECB3B8BD
+	sha256sums = SKIP
+	sha256sums = e9b40a2ce5e0b4f3c517913189abc138fe3377d86ca0baafa2b220c962caf7f1
+
+pkgname = gnubg-git
