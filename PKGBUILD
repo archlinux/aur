@@ -2,7 +2,7 @@
 
 pkgname='gtrash'
 pkgver=0.0.6
-pkgrel=1
+pkgrel=2
 pkgdesc='A Trash CLI manager written in Go'
 url='https://github.com/umlx5h/gtrash'
 arch=('aarch64' 'i686' 'x86_64')
@@ -41,12 +41,15 @@ check() {
 
 package() {
   cd "$pkgname-$pkgver"
+  # license
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+
   # bin
   install -Dm755 "build/gtrash" "${pkgdir}/usr/bin/gtrash"
 
-  cd "build"
   # generate completions
-  gtrash completion bash | install -Dm644 /dev/stdin "${pkgdir}/usr/share/bash-completion/completions/gtrash"
-  gtrash completion zsh | install -Dm644 /dev/stdin "${pkgdir}/usr/share/zsh/site-functions/_gtrash"
-  gtrash completion fish | install -Dm644 /dev/stdin "${pkgdir}/usr/share/fish/vendor_completions.d/gtrash.fish"
+  cd "./build"
+  ./gtrash completion bash | install -Dm644 /dev/stdin "${pkgdir}/usr/share/bash-completion/completions/gtrash"
+  ./gtrash completion zsh | install -Dm644 /dev/stdin "${pkgdir}/usr/share/zsh/site-functions/_gtrash"
+  ./gtrash completion fish | install -Dm644 /dev/stdin "${pkgdir}/usr/share/fish/vendor_completions.d/gtrash.fish"
 }

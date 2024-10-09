@@ -1,7 +1,7 @@
 pkgbase = gtrash
 	pkgdesc = A Trash CLI manager written in Go
 	pkgver = 0.0.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/umlx5h/gtrash
 	arch = aarch64
 	arch = i686
