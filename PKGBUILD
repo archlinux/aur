@@ -2,11 +2,11 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=limma
-_pkgver=3.60.5
+_pkgver=3.60.6
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
-pkgdesc="Linear Models for Microarray Data"
+pkgdesc="Linear Models for Microarray and Omics Data"
 arch=(x86_64)
 url="https://bioconductor.org/packages/$_pkgname"
 license=('GPL-2.0-or-later')
@@ -29,8 +29,8 @@ optdepends=(
   r-vsn
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('6a772d1f9b2469c4739aaece98fbac75')
-b2sums=('30967c216defa14e06fcd41c6ee45ea47eab231d790e48ec517bcb9e45851bb867aaeacd2fe2aae313f948e1241421e4dc99fea3126b708d41c97bd7e406a490')
+md5sums=('f34f17c631a7e7e1a15da8bc8e983ccc')
+b2sums=('36bda5bbf9201bb7ba440ad2eacc5e08e7bf6e0835e161e44b9773092047561c98d0e76d75ab46f162e5aeed7ab185e4533a04f12a6719a1f7bc962c5fd06a6d')
 
 build() {
   mkdir build
