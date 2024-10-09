@@ -1,0 +1,24 @@
+pkgbase = brother-dcpt725dw
+	pkgdesc = Brother printer driver (lpd/cups) for the DCP-T725DW multifuncional printer
+	pkgver = 3.5.0
+	pkgrel = 1
+	url = https://support.brother.com/g/b/producttop.aspx?c=cn&lang=zh&prod=dcpt725dw_cn
+	install = dcpt725dw.install
+	arch = i686
+	arch = x86_64
+	license = custom: Brother License
+	license = EULA
+	license = GPL
+	depends = a2ps
+	depends = cups
+	optdepends = sane: scanning support
+	optdepends = sane-airscan: SANE backend for AirScan (eSCL) and WSD document scanners
+	optdepends = brscan5: making dcpt820dw scaner available to sane
+	optdepends = brscan-skey: scankey support if connected via usb
+	source = https://download.brother.com/pub/com/linux/linux/packages/dcpt725dwpdrv-3.5.0-1.i386.deb
+	source = spool.patch
+	sha256sums = 7cae911da5bf7a3d6716049a4dbcd6c55823216df66136c96ddd710f7ed913b7
+	sha256sums = 3d7f03c0c8fc9604f022f473daad8931a9f6d68b557b4febadc78f066b1031da
+	depends_x86_64 = lib32-glibc
+
+pkgname = brother-dcpt725dw
