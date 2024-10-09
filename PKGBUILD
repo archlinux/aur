@@ -1,8 +1,8 @@
-# Maintainer: Mattias Andrée <`base64 -d`(bWF0dGlhcy5hbmRyZWU)@protonmail.com>
+# Maintainer: Mattias Andrée <m@`base64 -d`(bWFhbmRyZWU).se>
 
 pkgname=metar
-pkgver=1.3.4
-pkgrel=2
+pkgver=1.3.5
+pkgrel=1
 pkgdesc="Trivial, yet fully fledged, weather report"
 arch=(any)
 url="https://codeberg.org/maandree/metar"
@@ -10,7 +10,7 @@ license=('custom:ISC')
 depends=(sh sed grep curl coreutils python3)
 makedepends=()
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=(2fb2f7bd17d3f42614681ad645e91caea55d7ed81024ab36a536dc2783419c70)
+sha256sums=(4d56285a5d6c8d5a50f72fbb2387e09a0ee06361233d2e8b801f4b245e4490d4)
 
 
 build() {
