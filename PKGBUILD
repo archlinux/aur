@@ -2,7 +2,7 @@
 
 _pkgname=xfce4-panel
 pkgname=${_pkgname}-devel
-pkgver=4.19.4
+pkgver=4.19.5
 pkgrel=1
 pkgdesc="Panel for the Xfce desktop environment (development release)"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
@@ -11,13 +11,13 @@ license=('GPL2')
 groups=('xfce4-devel')
 depends=('exo' 'garcon' 'libxfce4ui' 'xfconf' 'libwnck3'
          'hicolor-icon-theme' 'desktop-file-utils' 'libdbusmenu-gtk3'
-         'libxfce4windowing>=4.19.3' 'gtk-layer-shell')
+         'libxfce4windowing>=4.19.6' 'gtk-layer-shell')
 makedepends=('intltool' 'gtk-doc' 'gobject-introspection' 'vala' 'glib2-devel')
 provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}" 'xfce4-statusnotifier-plugin')
 replaces=('xfce4-statusnotifier-plugin')
 source=("https://archive.xfce.org/src/xfce/$_pkgname/${pkgver%.*}/${_pkgname}-${pkgver}.tar.bz2")
-sha256sums=('8c3267784771f94f8a32ca0ce8ce845cf4a4c39091235e6ce1c5b6d35e349bfd')
+sha256sums=('35983f28834ca1a33c94562783cb9771543ddd1d588f45b54ec54d82692b8d52')
 
 build() {
   cd "${_pkgname}-${pkgver}"
