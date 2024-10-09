@@ -15,6 +15,6 @@ pkgbase = rl_custom_rime
 	depends = readline
 	depends = rl_custom_function
 	source = https://github.com/Freed-Wu/rl_custom_rime/archive/0.0.1.tar.gz
-	sha256sums = 0e38134d2c13db47bd4f47398f8a7c619e1137c6032e6fed3ebfd6c3bbea6188
+	sha256sums = 6e91d22e29d1968a03b7ce3ed0d291e562ebea6a2599c4679491ba41b68c56aa
 
 pkgname = rl_custom_rime
