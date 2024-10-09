@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=CBNplot
-_pkgver=1.4.0
+_pkgver=1.4.2
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -25,7 +25,6 @@ depends=(
   r-graphlayouts
   r-igraph
   r-magrittr
-  r-oaqc
   r-org.hs.eg.db
   r-patchwork
   r-purrr
@@ -41,8 +40,6 @@ optdepends=(
   r-biocstyle
   r-bnviewer
   r-concaveman
-  r-deseq2
-  r-geoquery
   r-knitr
   r-reactomepa
   r-rmarkdown
@@ -50,8 +47,8 @@ optdepends=(
   r-withr
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('b60f0a79c17ba8d75344850ee7a1b0de')
-b2sums=('f69aa146099ef4ad6b65b9b4ee2f00abff909dd4110f3363286f2c31bceabdc8e6440a3b7232afef1e38a13d23dc251299270da52976d6142a860e49ebbc908d')
+md5sums=('05cfcb896f00a2a55d06ec1d740f80dc')
+b2sums=('3631b5772f4d7b4295ce63168ffabbdf049d6b3c59763c87afaf1362887a3747ff3d8e87fdde73981a46f58f8593b842fad44ae62f03e3f7a193cf4c84f0303a')
 
 build() {
   mkdir build
