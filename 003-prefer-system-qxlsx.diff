@@ -1,0 +1,22 @@
+diff -u -r a/gpt4all-chat/CMakeLists.txt b/gpt4all-chat/CMakeLists.txt
+--- a/gpt4all-chat/CMakeLists.txt	2024-10-09 08:27:52.003838993 +0800
++++ b/gpt4all-chat/CMakeLists.txt	2024-10-09 09:53:18.921332170 +0800
+@@ -335,7 +335,17 @@
+ target_link_libraries(chat
+     PRIVATE Qt6::Core Qt6::HttpServer Qt6::Pdf Qt6::Quick Qt6::Sql Qt6::Svg)
+ target_link_libraries(chat
+-    PRIVATE llmodel SingleApplication fmt::fmt duckx::duckx QXlsx)
++    PRIVATE llmodel SingleApplication fmt::fmt duckx::duckx)
++find_package(QXlsxQt6 REQUIRED)
++if (QXlsx_FOUND)
++    message(STATUS "Using QXlsx provided by system.")
++    target_link_libraries(chat
++    PRIVATE QXlsx::QXlsx)
++else()
++    message(STATUS "Using QXlsx in source.")
++    target_link_libraries(chat
++    PRIVATE QXlsx)
++endif()
+ 
+ if(LINUX)
+   set_target_properties(chat PROPERTIES
