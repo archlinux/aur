@@ -2,7 +2,7 @@
 # Contributor: criptixo <therealcriptixo@gmail.com>
 pkgname=waveterm-bin
 _pkgname=Wave
-pkgver=0.8.8
+pkgver=0.8.9
 _electronversion=32
 pkgrel=1
 pkgdesc='An open-source, cross-platform terminal for seamless workflows.Prebuilt version.Use system-wide electron.'
@@ -15,7 +15,6 @@ _ghurl="https://github.com/wavetermdev/waveterm"
 license=('Apache-2.0')
 depends=(
     "electron${_electronversion}"
-    'libvips'
 )
 source=(
     "${pkgname%-bin}.sh"
@@ -23,8 +22,8 @@ source=(
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.pacman::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-linux-aarch64-${pkgver}.pacman")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.pacman::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-linux-x64-${pkgver}.pacman")
 sha256sums=('291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-sha256sums_aarch64=('22f8f7f1144dcf44649d5c9c95d829ce6a2ff594c984a6d7639e94dfa7319dd3')
-sha256sums_x86_64=('ed4d9822cd0e28fbe28a7b7724cd056d1c8191a6070979d711f8108c6fc94e00')
+sha256sums_aarch64=('316c93b05a4b93f47acfa5c124b6442c761c27b00dadef46d430c7631a37ca4c')
+sha256sums_x86_64=('a619f62a59dff12286af0730de43af10c0737029115495389ae358f607c39007')
 build() {
     sed -e "
         s/@electronversion@/${_electronversion}/g
@@ -33,8 +32,12 @@ build() {
         s/@cfgdirname@/${_pkgname}/g
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
     " -i "${srcdir}/${pkgname%-bin}.sh"
-    sed -i "s/\/opt\/${_pkgname}\/${_pkgname}/${pkgname%-bin}/g;s/Icon=${_pkgname}/Icon=${pkgname%-bin}/g;s/TerminalEmulator/TerminalEmulator;Utility/g" \
-        "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
+    sed -e "
+        s/\/opt\/${_pkgname}\/${pkgname%-bin}/${pkgname%-bin}/g
+        s/Icon=${_pkgname}/Icon=${pkgname%-bin}/g
+        s/TerminalEmulator/TerminalEmulator;Utility/g
+    " -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
+    find "${srcdir}/opt/${_pkgname}/resources/app.asar.unpacked" -type f \( -name "*-darwin.*" -o -name "*-windows.*" \) -exec rm -rf {} +
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
