@@ -2,7 +2,7 @@
 
 pkgname=gmlgcd
 pkgver=2.0
-pkgrel=1
+pkgrel=2
 pkgdesc='The gemlog comment daemon'
 arch=('x86_64' 'aarch64')
 url='https://sr.ht/~chrs/gmlgcd'
@@ -11,7 +11,7 @@ makedepends=('meson' 'scdoc')
 checkdepends=('fish')
 depends=('libevent' 'libbsd' 'confuse')
 
-backup=('etc/gmlgcd.conf')
+backup=('etc/gmlgcd.conf' 'etc/gmlgcd.conf.d/help-template.gmi')
 source=(
 	"$pkgname-$pkgver.tar.gz::https://git.sr.ht/~chrs/$pkgname/archive/$pkgver.tar.gz"
 	"$pkgname-$pkgver.tar.gz.asc::https://git.sr.ht/~chrs/$pkgname/archive/$pkgver.tar.gz.asc"

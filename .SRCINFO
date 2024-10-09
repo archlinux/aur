@@ -1,7 +1,7 @@
 pkgbase = gmlgcd
 	pkgdesc = The gemlog comment daemon
 	pkgver = 2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://sr.ht/~chrs/gmlgcd
 	arch = x86_64
 	arch = aarch64
@@ -13,6 +13,7 @@ pkgbase = gmlgcd
 	depends = libbsd
 	depends = confuse
 	backup = etc/gmlgcd.conf
+	backup = etc/gmlgcd.conf.d/help-template.gmi
 	source = gmlgcd-2.0.tar.gz::https://git.sr.ht/~chrs/gmlgcd/archive/2.0.tar.gz
 	source = gmlgcd-2.0.tar.gz.asc::https://git.sr.ht/~chrs/gmlgcd/archive/2.0.tar.gz.asc
 	source = sysusers-gmlgcd.conf
