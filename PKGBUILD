@@ -2,7 +2,7 @@
 
 pkgname=ospd-openvas
 pkgver=22.7.1
-pkgrel=4
+pkgrel=5
 pkgdesc='OSP Server for openvas'
 arch=('x86_64')
 url="https://github.com/greenbone/ospd-openvas"
@@ -33,6 +33,6 @@ package() {
 
     install -Dm 644 config/ospd-openvas.conf -t "${pkgdir}"/etc/gvm
     install -Dm 644 config/ospd-openvas.service -t "${pkgdir}"/usr/lib/systemd/system
-    install -Dm 644 ${srcdir}/gvm.sysusers -t "${pkgdir}"/usr/lib/sysusers.d/
+    install -Dm 644 ${srcdir}/gvm.sysusers "${pkgdir}"/usr/lib/sysusers.d/gvm.conf
 }
 

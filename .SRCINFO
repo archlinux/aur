@@ -1,7 +1,7 @@
 pkgbase = ospd-openvas
 	pkgdesc = OSP Server for openvas
 	pkgver = 22.7.1
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/greenbone/ospd-openvas
 	arch = x86_64
 	groups = greenbone-vulnerability-manager
