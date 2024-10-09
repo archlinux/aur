@@ -1,15 +1,16 @@
-# Maintainer: Mattias Andrée <`base64 -d`(bWF0dGlhcy5hbmRyZWU)@protonmail.com>
+# Maintainer: Mattias Andrée <m@`base64 -d`(bWFhbmRyZWU).se>
+
 pkgname=pdeath
-pkgver=1.1.1
+pkgver=1.1.2
 pkgrel=1
 pkgdesc="Run a command that is killed when its parent exits"
 arch=(i686 x86_64)
 url="https://codeberg.org/maandree/pdeath"
 license=('custom:ISC')
-depends=('linux>=2.1.57')
-makedepends=('linux>=2.1.57')
+depends=()
+makedepends=()
 source=($pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz)
-sha256sums=(35b3e0e2497f564cb57bb8c44c38da5e25c7d4784f3893237ddec7c6ad384010)
+sha256sums=(3dae3078a17b65a9a0b18f2170abe722697894513fc885ec9846c9abf0313302)
 
 build() {
   cd "$srcdir/$pkgname"
