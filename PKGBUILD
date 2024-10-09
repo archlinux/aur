@@ -1,13 +1,13 @@
-# Maintainer: Mattias Andrée <`base64 -d`(bWF0dGlhcy5hbmRyZWU)@protonmail.com>
+# Maintainer: Mattias Andrée <m@`base64 -d`(bWFhbmRyZWU).se>
 pkgname=adjbacklight
-pkgver=8.2.1
-pkgrel=2
+pkgver=8.2.2
+pkgrel=1
 pkgdesc="Convenient method for adjusting the backlight on your portable computer"
 arch=('x86_64' 'i686')
 url="https://codeberg.org/maandree/adjbacklight"
 license=('custom:ISC')
 source=(adjbacklight-$pkgver.tar.gz::${url}/archive/${pkgver}.tar.gz)
-sha256sums=(b1a33f0e7c67bc5275b839a511fff54ecd7a5fdb001108282dc4dcb9e365e4e9)
+sha256sums=(7cfa3933222d1b6025cbcadc2385160601fabc5aaaab47406589ca12c2134644)
 
 build() {
   cd "${srcdir}/adjbacklight"

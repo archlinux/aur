@@ -1,12 +1,12 @@
 pkgbase = adjbacklight
 	pkgdesc = Convenient method for adjusting the backlight on your portable computer
-	pkgver = 8.2.1
-	pkgrel = 2
+	pkgver = 8.2.2
+	pkgrel = 1
 	url = https://codeberg.org/maandree/adjbacklight
 	arch = x86_64
 	arch = i686
 	license = custom:ISC
-	source = adjbacklight-8.2.1.tar.gz::https://codeberg.org/maandree/adjbacklight/archive/8.2.1.tar.gz
-	sha256sums = b1a33f0e7c67bc5275b839a511fff54ecd7a5fdb001108282dc4dcb9e365e4e9
+	source = adjbacklight-8.2.2.tar.gz::https://codeberg.org/maandree/adjbacklight/archive/8.2.2.tar.gz
+	sha256sums = 7cfa3933222d1b6025cbcadc2385160601fabc5aaaab47406589ca12c2134644
 
 pkgname = adjbacklight
