@@ -1,7 +1,7 @@
 # Maintainer: Vladimir Gladkov <vovkos[at]gmail>
 
 pkgname=ioninja
-pkgver=5.7.0
+pkgver=5.7.1
 pkgtag=
 pkgrel=1
 pkgdesc="Professional all-in-one terminal emulator, sniffer, and protocol analyzer"
@@ -12,8 +12,8 @@ depends=("qt5-base" "openssl")
 options=("!strip")
 source_i686=("https://tibbo.com/downloads/archive/ioninja/ioninja-$pkgver/ioninja-$pkgver$pkgtag-linux-x86.tar.xz")
 source_x86_64=("https://tibbo.com/downloads/archive/ioninja/ioninja-$pkgver/ioninja-$pkgver$pkgtag-linux-amd64.tar.xz")
-sha256sums_i686=("ffaf70a5c8c62e093eabc7a0cd1616629e6513ca71bb8c312e8e690712379157")
-sha256sums_x86_64=("f74ccc96d65fe24f05103b280d1ea16cc0fc92c61ec41df92048c35291dd1354")
+sha256sums_i686=("9e8ff14a3fd2661b75999c5e8bf4bcd8aa2c7e11fd2c929a987c907cb5b7ddd3")
+sha256sums_x86_64=("f2763aa1d93d1a240a580c51778b2ef608058ba20342885ba5c6076d3d511b3d")
 
 package() {
 	if [ "$CARCH" == "x86_64" ]; then
