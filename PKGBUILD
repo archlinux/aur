@@ -1,28 +1,34 @@
-# Maintainer: j605
+# Contributor: a821
+# Contributor: j605
 
-_gitname=duviz
-pkgname=$_gitname-git
-pkgver=r48.3ae1f98
+pkgname=duviz-git
+pkgver=3.2.0.r12.g7e30b21
 pkgrel=1
 pkgdesc='Command line disk space usage visualization utility'
 arch=('any')
-url="http://soxofaan.github.com/duviz/"
-license=('GPL')
+url="https://github.com/soxofaan/duviz"
+license=('MIT')
 depends=('python')
 makedepends=('git')
-source=('git+https://github.com/soxofaan/duviz.git')
-md5sums=('SKIP')
+checkdepends=('python-pytest')
+provides=('duviz')
+conflicts=('duviz')
+source=("${pkgname}::git+${url}.git")
+sha256sums=('SKIP')
 
 pkgver() {
-  cd "$_gitname"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd "$pkgname"
+  git describe --long --tags | sed 's/^v//;s/-/.r/;s/-/./'
 }
 
-prepare() {
-  cd "$_gitname"
-  sed -i -e '1s:#!/usr/bin/env python:#!/usr/bin/python:' duviz.py
+check() {
+  cd "$pkgname"
+  pytest
 }
+
 package() {
-  cd "$_gitname"
-  install -Dm 755 duviz.py ${pkgdir}/usr/bin/duviz
+  cd "$pkgname"
+  install -Dm755 duviz.py "${pkgdir}/usr/bin/duviz"
+  install -Dm644 README.rst CHANGELOG.md -t "${pkgdir}/usr/share/doc/$pkgname"
+  install -Dm644 LICENSE.txt "${pkgdir}/usr/share/licenses/$pkgname/LICENSE"
 }
