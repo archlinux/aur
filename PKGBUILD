@@ -1,21 +1,21 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
 pkgname="cunicu"
-pkgver=0.5.44
+pkgver=0.5.45
 pkgrel=1
 pkgdesc="A zeroconf peer-to-peer mesh VPN using Wireguard® and Interactive Connectivity Establishment (ICE)"
-arch=('x86_64')
+arch=('x86_64' 'aarch64' 'i686' 'armv7h')
 url="https://cunicu.li"
 # _url="https://github.com/${pkgname}/${pkgname}"
 _url="https://codeberg.org/${pkgname}/${pkgname}"
 license=('Apache-2.0')
-makedepends=('git' 'go' 'protoc-gen-go' 'protoc-gen-go-grpc') # 'golangci-lint'
 depends=('glibc' 'gcc-libs')
+makedepends=('git' 'go' 'protoc-gen-go' 'protoc-gen-go-grpc') # 'golangci-lint'
 # checkdepends=('ginkgo')
 optdepends=('wireguard-tools: for controlling WireGuard interfaces')
 _pkgsrc="${pkgname}-${pkgver}"
 source=("${_pkgsrc}::git+${_url}.git#tag=v${pkgver}")
-b2sums=('085e69699584143ffb15d3312637870f5a8780540dfde403d34645a3568664636d1d8b688c480fc1da2c2d06e4e7992b100fa3ad6e5b5f8d7f5269678978388b')
+b2sums=('c8d39c30101b23adb7677f2c1ccd35d20113709690cb235396f68fa1bc85f53ad6745c162e355ac226dcd20277d7d57c17f885a5cec23b145838b61539323a01')
 
 prepare() {
   cd "${srcdir}/${_pkgsrc}"
@@ -60,7 +60,7 @@ package() {
   cd "${srcdir}/${_pkgsrc}"
   install -Dm755 "build/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
   install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
-  install -Dm644 "LICENSE"   "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   install -Dm644 "manpages/${pkgname}.1" "${pkgdir}/usr/share/man/man1/${pkgname}.1"
 
   cd "completions"
@@ -68,4 +68,10 @@ package() {
   install -Dm644 "${pkgname}.fish"       "${pkgdir}/usr/share/fish/vendor_completions.d/${pkgname}.fish"
   install -Dm644 "${pkgname}.zsh"        "${pkgdir}/usr/share/zsh/site-functions/_${pkgname}"
   install -Dm644 "${pkgname}.powershell" "${pkgdir}/usr/share/powershell/Completions/${pkgname}.ps1"
+
+  cd "${srcdir}/${_pkgsrc}/etc"
+  install -Dm644 "${pkgname}.yaml" "${pkgdir}/etc/${pkgname}.example.yaml"
+
+  cd "systemd"
+  install -Dm644 "${pkgname}.service" "${pkgdir}/usr/lib/systemd/${pkgname}.service"
 }
