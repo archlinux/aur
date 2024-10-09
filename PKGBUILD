@@ -2,14 +2,13 @@
 
 pkgname=gsim
 pkgver=21.3
-pkgrel=7
+pkgrel=8
 pkgdesc="A tool for visualisation and processing of NMR spectra"
 arch=(x86_64)
 url="https://sourceforge.net/projects/gsim"
 license=(GPL)
-depends=(root muparser qt5-svg libcmatrix libemf cblas lapack)
+depends=(root muparser qt5-svg libcmatrix-lite libemf cblas lapack)
 makedepends=(imagemagick)
-conflicts=($pkgname-bin $pkgname-git)
 source=("http://downloads.sourceforge.net/$pkgname/${pkgver:0:2}/$pkgname-$pkgver.tar.gz"
         "pro.patch")
 sha256sums=('d3dd161078862fa990b40ff5df988bb82c8469e17dda8e81eda5f1419742de47'
@@ -22,7 +21,8 @@ prepare() {
   sed -i "s/toAscii/toUtf8/g" graphics_out.cpp
 
   # A dirty fix for manuals path
-  sed -i '/applicationDirPath()/c\    QString s="\/usr\/share\/doc\/gsim\/"+fname;' mainformsignals.cpp
+  sed -i '/applicationDirPath()/c\    QString s="\/usr\/share\/doc\/gsim\/"+fname;' \
+    mainformsignals.cpp
 }
 
 build() {
@@ -34,10 +34,10 @@ build() {
   make release
 
   ln -s images/aboutlogo.png 128x128.png
-  magick convert 128x128.png -resize 64x64 64x64.png
-  magick convert 128x128.png -resize 48x48 48x48.png
-  magick convert 128x128.png -resize 32x32 32x32.png
-  magick convert 128x128.png -resize 16x16 16x16.png
+  magick 128x128.png -resize 64x64 64x64.png
+  magick 128x128.png -resize 48x48 48x48.png
+  magick 128x128.png -resize 32x32 32x32.png
+  magick 128x128.png -resize 16x16 16x16.png
 }
 
 package() {
