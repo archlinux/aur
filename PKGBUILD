@@ -3,7 +3,7 @@
 # Contributor: Jaroslav Bojko <echo "Ym95amFyIGF0IHNlem5hbSBkb3QgY3oK" | base64 -d>
 
 pkgname=amazon-ecr-credential-helper
-pkgver=0.7.1
+pkgver=0.9.0
 pkgrel=1
 _commit=9cabe9aafd12c95cd51e6fb0847aaa2eecd957d7
 pkgdesc="A credential helper for the Docker daemon that makes it easier to use Amazon EC2 Container Registry."
@@ -13,7 +13,7 @@ license=('Apache')
 makedepends=('go')
 _gourl=github.com/awslabs
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/awslabs/amazon-ecr-credential-helper/archive/v${pkgver}.tar.gz")
-sha512sums=('3f633f889ac3d8fb545aa909f260da41a1427cb7c600bb0aa74e6b687fab03a87557a429ae5f8c343a87b421ac7343986b75424c03498d9b955dce22dc553ffd')
+sha512sums=('354be080bbe83065191efc7c2814cae739944d9405f6472ca99f2a2b00365689ef33361dc1da6ae2e816e6544beb7f8947352752568736382bfb4d976cac7a74')
 
 prepare() {
   mkdir -p "${srcdir}/src/${_gourl}"
