@@ -1,14 +1,15 @@
-# Maintainer: Mattias Andrée <`base64 -d`(bWF0dGlhcy5hbmRyZWU)@protonmail.com>
+# Maintainer: Mattias Andrée <m@`base64 -d`(bWFhbmRyZWU).se>
+
 pkgname=orphan-reaper
-pkgver=2.3.3
+pkgver=2.3.4
 pkgrel=1
 pkgdesc="Place subreapers in your process tree to keep it structured"
 arch=(i686 x86_64)
 url="https://codeberg.org/maandree/orphan-reaper"
 license=('custom:ISC')
-depends=('linux>=3.4')
+depends=()
 source=($pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz)
-sha256sums=(528179d8e4dcf1d5a5efd8eaa9e52c6c33b51481a108d6ba8583614cf02cdd9d)
+sha256sums=(f5ce137699b02e01059f1e02f71f4a69caf02e54fb77f910066592a33e9c2550)
 
 build() {
   cd "$srcdir/$pkgname"
