@@ -1,6 +1,6 @@
 pkgbase = taisei
 	pkgdesc = Open source Touhou clone
-	pkgver = 1.4.1
+	pkgver = 1.4.2
 	pkgrel = 1
 	url = https://taisei-project.org/
 	arch = i686
@@ -19,7 +19,7 @@ pkgbase = taisei
 	depends = zstd
 	depends = opusfile
 	depends = hicolor-icon-theme
-	source = https://github.com/taisei-project/taisei/releases/download/v1.4.1/taisei-1.4.1.tar.xz
-	sha256sums = 98a4fcea296e7bd3ef21c23adf065500ee5e41cbc66e6cf611168a20cd539a01
+	source = https://github.com/taisei-project/taisei/releases/download/v1.4.2/taisei-1.4.2.tar.xz
+	sha256sums = 5d869aae64f8f3390c47b74441fd041c7777e594e4a60536bb7b52564ea84fa7
 
 pkgname = taisei
