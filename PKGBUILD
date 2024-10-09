@@ -2,7 +2,7 @@
 
 pkgname=openvas-scanner
 pkgver=23.9.0
-pkgrel=6
+pkgrel=7
 pkgdesc='Vulnerability scanning Daemon'
 arch=('x86_64')
 url="https://github.com/greenbone/openvas-scanner"
@@ -44,5 +44,5 @@ build() {
 package() {
   make DESTDIR="${pkgdir}/" -C build install
 
-  install -Dm 644 ${srcdir}/openvas-scanner.tmpfiles -t "${pkgdir}"/usr/lib/tmpfiles.d/
+  install -Dm 644 ${pkgname}.tmpfiles "${pkgdir}"/usr/lib/tmpfiles.d/${pkgname}.conf
 }
