@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=cosmic-greeter-git
-pkgver=1.0.0.alpha.2.r0.g4ddb320
-pkgrel=4
+pkgver=1.0.0.alpha.2.r8.g6ba26db
+pkgrel=1
 pkgdesc="libcosmic greeter for greetd, which can be run inside cosmic-comp"
 arch=('x86_64' 'aarch64')
 url="https://github.com/pop-os/cosmic-greeter"
@@ -25,6 +25,9 @@ makedepends=(
 backup=(
   "etc/greetd/${pkgname%-git}.toml"
 #  "/etc/pam.d/${pkgname%-git}"
+)
+optdepends=(
+  'fprintd: fingerprint authentication'
 )
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
