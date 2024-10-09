@@ -1,24 +1,29 @@
 # Maintainer: Sylvain POULAIN <sylvain.poulain at giscan dot com>
 pkgname=python-segment-geospatial
 _pkgname=segment-geospatial
-pkgver=0.11.2
+pkgver=0.11.5
 pkgrel=1
 pkgdesc="A Python package for segmenting geospatial data with the Segment Anything Model (SAM)"
 arch=('any')
 url="https://github.com/opengeos/segment-geospatial"
 license=('MIT')
-depends=('python' 'python-segment-anything-py' 'python-rasterio')
+depends=('python' 'python-segment-anything-py' 'python-rasterio' 'python-rioxarray' 'python-scikit-image' 'python-scikit-learn')
 makedepends=('git' 'python-setuptools')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/opengeos/segment-geospatial/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('db9ff083070b3ff6c3e9d229d943a7c2bc6f5b16e279ddf9bd0fdafc9274e4cc')
+# Temporary workaround with git version
+source=('git+https://github.com/opengeos/segment-geospatial.git#tag=v0.11.5')
+#source=("$_pkgname-$pkgver::$url/archive/refs/tags/v$pkgver.zip")
+#sha256sums=('711fc63d58e3b6aff81468fcba583e20c2ead2b501c293912b2aee2e436c222c')
+sha256sums=('SKIP')
 
 build() {
-  cd "$srcdir/$_pkgname-$pkgver"
+  cd "$srcdir/$_pkgname"
+#"-$pkgver"
   python -m build --wheel --skip-dependency-check --no-isolation
 }
 
 package() {
-  cd "$srcdir/$_pkgname-$pkgver"
+  cd "$srcdir/$_pkgname"
+#"-$pkgver"
   PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python -m installer --destdir="${pkgdir}" dist/*.whl
 
   install -Dm 644 README.md -t "${pkgdir}/usr/share/doc/${_pkgname}"
