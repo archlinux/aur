@@ -33,6 +33,6 @@ package() {
 
     install -Dm 644 config/ospd-openvas.conf -t "${pkgdir}"/etc/gvm
     install -Dm 644 config/ospd-openvas.service -t "${pkgdir}"/usr/lib/systemd/system
-    install -Dm 644 ${srcdir}/gvm.sysusers "${pkgdir}"/usr/lib/sysusers.d/gvm.conf
+    install -Dm 644 "${srcdir}"/gvm.sysusers "${pkgdir}"/usr/lib/sysusers.d/gvm.conf
 }
 
