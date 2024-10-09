@@ -4,9 +4,9 @@ pkgname=zen-twilight-bin
 _pkgname=zen-twilight
 _realpkgver=twilight
 _desktopname=zen-twilight
-pkgver=89b9733
+pkgver=945ee12
 pkgrel=1
-pkgdesc="Performance oriented Firefox-based web browser (Unstable)"
+pkgdesc="Unstable Nightly release of the Performance oriented Firefox-based web browser"
 arch=('x86_64' 'i686')
 url="https://github.com/zen-browser/desktop"
 license=(MPL-2.0)
@@ -25,7 +25,7 @@ source=("zen-browser-$_realpkgver.tar.bz2::https://github.com/zen-browser/deskto
         "$_pkgname.sh"
         "$_desktopname.desktop"
         "policies.json")
-sha256sums=('c04095df422867e5cf3cf7058932da5e14a38bc83f4266fff37b136ec7850008'
+sha256sums=('26034f8c08fc81ecaa80fdec0695ca3495e8c770ecff60fc407634fcc9492811'
             'b26c2221dc9ee8b6041aea31ae7b030bf9de5facc9933109f829559bd1bdb4fb'
             '837bfee0672d9548d92da125e28e05089bbd722f0cf48d6d9765a832c610b32c'
             'f93eb77db526147a8a20744905923a6eda79e2fbcc9f282e2f9228a7a995c798')
