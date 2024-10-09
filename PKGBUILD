@@ -1,7 +1,7 @@
 # Maintainer: Oleksandr Natalenko <oleksandr@natalenko.name>
 pkgname=microsip
-pkgver=3.21.4
-pkgrel=2
+pkgver=3.21.5
+pkgrel=1
 pkgdesc="Open source portable SIP softphone for Windows based on PJSIP stack"
 _repouser=post-factum
 _reponame=microsip
@@ -13,7 +13,7 @@ license=(GPL-2.0-or-later)
 source=("MicroSIP-Lite-${pkgver}.zip"::"https://www.microsip.org/downloads/?file=MicroSIP-Lite-${pkgver}.zip"
 		"${_reponame}-${_wrapperver}.tar.gz"::"https://codeberg.org/${_repouser}/${_reponame}/archive/v${_wrapperver}.tar.gz")
 
-sha256sums=('2745efabac7439c664f0ebd6d92774eaf1f226bbdb356006dd743a380a8d36bd'
+sha256sums=('22ea74ec8864607e479ced3c9cfef22dcd4b94302c0796c1b6537ec1c92935fa'
             '7ff13e1c93434f1350132aad1b708461ef84e2fe181cade419d0f25e5a9f3510')
 
 package() {
