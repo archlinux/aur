@@ -1,0 +1,20 @@
+pkgbase = huhnitor-bin
+	pkgdesc = An intergalactic serial monitor for the ESP8266 Deauther v3
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://github.com/SpacehuhnTech/Huhnitor
+	arch = x86_64
+	license = MIT
+	depends = gcc-libs
+	depends = glibc
+	depends = systemd-libs
+	provides = huhnitor
+	conflicts = huhnitor
+	source = README-2.0.0.md::https://github.com/SpacehuhnTech/Huhnitor/raw/refs/tags/2.0.0/README.md
+	source = LICENSE-2.0.0::https://github.com/SpacehuhnTech/Huhnitor/raw/refs/tags/2.0.0/LICENSE
+	sha256sums = 8fb7497845ae3983d1e7f8d9210fade00f2cdb9c5a3a331c2c9c6cdb6a774134
+	sha256sums = 5ae55d4b3a2a48c7c601a4bdb693be0d4a3ed9668e55d928991f8d61f8171e6e
+	source_x86_64 = huhnitor-2.0.0-x86_64::https://github.com/SpacehuhnTech/Huhnitor/releases/download/2.0.0/huhnitor_2.0.0_linux
+	sha256sums_x86_64 = 36d74f6bd093540070b26210df5081072cb80914a87d06665c72edb7c10e779f
+
+pkgname = huhnitor-bin
