@@ -1,7 +1,7 @@
 # Maintainer: chettoy <chettoy@with.moe>
 pkgname=apexsky
-pkgver=b160.g3f58a3f
-_pkgver=3f58a3f289c32103f78d2d7dbcf532defe1c1a14
+pkgver=b162.gb62a825
+_pkgver=b62a825ba435d53496175bf2f07ce8dbd64a12f9
 pkgrel=1
 pkgdesc="A game mod loader with integrated aimbot and ESP"
 arch=(x86_64)
@@ -24,7 +24,7 @@ checkdepends=()
 optdepends=('libusb: DMA device support')
 options=(!debug !lto)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/chettoy/apexsky/archive/$_pkgver.tar.gz")
-sha256sums=('0d57301ea2503f46d924eda0c9e1854b1a0614e5371ab01462beb649dc54744a')
+sha256sums=('0aad3d74441cd6fb3fff954f3ac2064c6f747f340977cbed3abfbe87c220cdec')
 
 prepare() {
 	cd "$pkgname-$_pkgver/apexsky"
