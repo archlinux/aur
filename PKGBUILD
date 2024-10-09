@@ -8,7 +8,7 @@ pkgname=(
 pkgbase=vencord-bin
 _dirname=builds
 pkgver=1.10.4
-pkgrel=1
+pkgrel=2
 pkgdesc="The cutest Discord client mod"
 arch=(any)
 url=https://vencord.dev
@@ -55,6 +55,16 @@ package_firefox-vencord-bin() {
 
   cd "$srcdir"/$_dirname
   install -Dm644 extension-firefox.zip "$pkgdir"/usr/lib/firefox/browser/extensions/vencord-firefox@vendicated.dev.xpi
+}
+
+package_firefox-developer-edition-vencord-bin() {
+  depends=(firefox-developer-edition)
+  provides=(firefox-developer-edition-vencord)
+  conflicts=(firefox-developer-edition-vencord)
+  install=vencord.install
+
+  cd "$srcdir"/$_dirname
+  install -Dm644 extension-firefox.zip "$pkgdir"/usr/lib/firefox-developer-edition/browser/extensions/vencord-firefox@vendicated.dev.xpi
 }
 
 package_librewolf-vencord-bin() {
