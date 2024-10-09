@@ -3,13 +3,13 @@
 
 pkgname='perl-module-util'
 pkgver='1.09'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="Module name tools and transformations"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
 depends=('perl')
-makedepends=()
+makedepends=('perl-module-build')
 url='https://metacpan.org/release/Module-Util'
 source=('http://search.cpan.org/CPAN/authors/id/M/MA/MATTLAW/Module-Util-1.09.tar.gz')
 md5sums=('4b7cc19f3f998e2d543ae033fbcb5666')
