@@ -28,13 +28,13 @@ build() {
 	fi
 
 	cd "${srcdir}"
-	cmake -B build -S "${pkgname}-${pkgver}"
+   cmake -B build -S "${pkgname}-${pkgver}" -DCMAKE_INSTALL_PREFIX=/usr
 	cmake --build build
 }
 
 package() {
-	# Install application
-	install -Dm755 "${srcdir}/build/picotool" -t "${pkgdir}/usr/bin/"
+   # Install application etc
+   DESTDIR="$pkgdir" cmake --install build
 
 	# Install udev rules
 	install -Dm644 "${srcdir}/70-picotool.rules" -t "${pkgdir}/usr/lib/udev/rules.d/"
