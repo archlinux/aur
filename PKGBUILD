@@ -1,6 +1,6 @@
 # Maintainer: swearchnick <swearchnick[at]gmail[dot]com>
 pkgname="pdf-xchange"
-pkgver="10.4.1.389"
+pkgver="10.4.2.390"
 pkgrel="1"
 pkgdesc="Feature-rich PDF editor/viewer. Create, view, edit and annotate plus much more."
 license=('Custom')
@@ -19,7 +19,7 @@ _redactpatterns="$_commonfiles/RedactPatterns"
 _tesseract="$_commonfiles/Tesseract"
 
 source=("$pkgname-$pkgver.msi::$_downloadsource/$_x64file")
-sha256sums=('1e1ac49b9010fb1b949a313d5f577d9a3c26af5e6036d9011e743ed581369cb8')
+sha256sums=('a114ecbb2b6843306e2aba86d042dbdc8e89704d600b20b4936aeb7986f92f8e')
 
 prepare()
 {
@@ -454,7 +454,7 @@ package()
  install -Dm644 "$srcdir/FID_OD_uk_UA" "$pkgdir${_installdir}/$pkgname/${_languages}/OneDrive.uk-UA.xcl"
  install -Dm644 "$srcdir/FID_OD_zh_CN" "$pkgdir${_installdir}/$pkgname/${_languages}/OneDrive.zh-CN.xcl"
  install -Dm644 "$srcdir/FID_PDFA_ar_SA" "$pkgdir${_installdir}/$pkgname/${_languages}/PDFAConverter.ar-SA.xcl"
- install -Dm644 "$srcdir/FID_PDFA_az_Latn_AZ" "$pkgdir${_installdir}/$pkgname/${_languages}/PDFAConverter.az-Latn-AZ.xcl"
+ install -Dm644 "$srcdir/FID_CONV_az_Latn_AZ" "$pkgdir${_installdir}/$pkgname/${_languages}/PDFAConverter.az-Latn-AZ.xcl"
  install -Dm644 "$srcdir/FID_PDFA_ca_ES" "$pkgdir${_installdir}/$pkgname/${_languages}/PDFAConverter.ca-ES.xcl"
  install -Dm644 "$srcdir/FID_PDFA_cs_CZ" "$pkgdir${_installdir}/$pkgname/${_languages}/PDFAConverter.cs-CZ.xcl"
  install -Dm644 "$srcdir/FID_PDFA_da_DK" "$pkgdir${_installdir}/$pkgname/${_languages}/PDFAConverter.da-DK.xcl"
