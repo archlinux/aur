@@ -1,7 +1,7 @@
 # Maintainer: Guillaume Meunier <guillaume.meunier@centraliens.net>
 pkgname=wivrn-server
 pkgver=0.19
-pkgrel=1
+pkgrel=2
 pkgdesc="A wireless Monado-based OpenXR runtime for standalone headsets."
 arch=(x86_64)
 url="https://github.com/WiVRn/WiVRn"
@@ -51,4 +51,9 @@ build() {
 package() {
 	cd "WiVRn-$pkgver"
 	DESTDIR="$pkgdir" cmake --install build-server
+
+	# Workaround until 0.20 is released
+	rm -r "$pkgdir"/usr/share/applications/
+	rm -r "$pkgdir"/usr/share/icons/
+	rm -r "$pkgdir"/usr/share/metainfo/
 }
