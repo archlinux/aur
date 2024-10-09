@@ -1,7 +1,7 @@
 # Maintainer: Matt Parnell <mparnell at gmail dot com>
 pkgname=neumodvb-git
 pkgver=1.7.bf0f307
-pkgrel=1
+pkgrel=2
 pkgdesc="NeumoDVB is software to interact with DVB devices"
 arch=('x86_64')
 url="https://github.com/deeptho/neumodvb"
