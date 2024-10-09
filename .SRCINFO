@@ -1,7 +1,7 @@
 pkgbase = mqttx-clean-bin
 	pkgdesc = A Powerful and All-in-One MQTT 5.0 client toolbox for Desktop, CLI and WebSocket.
 	pkgver = 1.10.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://mqttx.app
 	arch = x86_64
 	license = Apache

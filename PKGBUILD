@@ -2,7 +2,7 @@
 
 pkgname=mqttx-clean-bin
 pkgver=1.10.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A Powerful and All-in-One MQTT 5.0 client toolbox for Desktop, CLI and WebSocket."
 arch=('x86_64')
 url="https://mqttx.app"
@@ -17,4 +17,7 @@ package() {
     # Move icon to correct path.
     mkdir --parents "${pkgdir}/usr/share/icons/hicolor/512x512/apps"
     mv "${pkgdir}/usr/share/icons/hicolor/0x0/apps/mqttx.png" "${pkgdir}/usr/share/icons/hicolor/512x512/apps/mqttx.png"
+
+    mkdir --parents "${pkgdir}/usr/bin"
+    ln -s /opt/MQTTX/mqttx "${pkgdir}/usr/bin/mqttx"
 }
