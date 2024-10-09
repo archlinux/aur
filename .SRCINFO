@@ -5,7 +5,7 @@ pkgbase = cmakeed
 	url = https://github.com/15knots/cmakeed
 	arch = any
 	license = EPL
-	depends = eclipse-cpp
+	depends = eclipse-cpp-bin
 	source = https://dl.cloudsmith.io/public/15knots/p2-zip/raw/files/CMakeEd-1.24.0.zip
 	md5sums = 38590477bd95d479cc095a9838b65f65
 
