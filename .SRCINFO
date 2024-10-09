@@ -1,7 +1,7 @@
 pkgbase = openplc-editor-git
 	pkgdesc = OpenPLC editor
-	pkgver = r184.f772039
-	pkgrel = 3
+	pkgver = r479.5e4f443
+	pkgrel = 4
 	url = https://github.com/thiagoralves/OpenPLC_Editor
 	arch = x86_64
 	license = GPL2

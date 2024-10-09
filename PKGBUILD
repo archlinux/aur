@@ -1,8 +1,8 @@
 # Maintainer: watasuke <watasuke102@gmail.com>
 _pkgname=openplc-editor
 pkgname="${_pkgname}-git"
-pkgver=r184.f772039
-pkgrel=3
+pkgver=r479.5e4f443
+pkgrel=4
 pkgdesc="OpenPLC editor"
 arch=("x86_64")
 url="https://github.com/thiagoralves/OpenPLC_Editor"
@@ -19,6 +19,7 @@ pkgver() {
 
 build() {
   cd "${srcdir}/OpenPLC_Editor"
+  git submodule update --init --recursive
   cd matiec
   autoreconf -i
   ./configure --prefix="${pkgdir}" CXXFLAGS="-std=c++03"
@@ -33,18 +34,30 @@ prepare() {
   "${srcdir}/OpenPLC_Editor/.venv/bin/python" -m pip install wheel jinja2 lxml==4.6.2 future matplotlib zeroconf pyserial pypubsub pyro5 attrdict3
   "${srcdir}/OpenPLC_Editor/.venv/bin/python" -m pip install wxPython==4.2.0
 
-  echo -e "[Desktop Entry]\n\
-Name=OpenPLC Editor\n\
-Categories=Development;\n\
-Exec=\"/opt/OpenPLC_Editor/openplc_editor.sh\"\n\
-Icon=/opt/OpenPLC_Editor/editor/images/brz.png\n\
-Type=Application\n\
-Terminal=false" > OpenPLC_Editor.desktop
+  cat << END > OpenPLC_Editor.desktop
+[Desktop Entry]
+Name=OpenPLC Editor
+Categories=Development;
+Exec="/opt/OpenPLC_Editor/openplc_editor.sh"
+Icon=/opt/OpenPLC_Editor/editor/images/brz.png
+Type=Application
+Terminal=false
+END
 
   cd "${srcdir}/OpenPLC_Editor"
-  echo -e "#!/bin/bash\n\
-cd \"/opt/OpenPLC_Editor\"\n\
-./.venv/bin/python3 ./editor/Beremiz.py" > openplc_editor.sh
+  cat << END > openplc_editor.sh
+#!/bin/bash
+cd "/opt/OpenPLC_Editor"
+if [ -d "./new_editor" ]; then
+    rm -Rf editor
+    rm -Rf ./matiec/lib
+    mv ./new_editor ./editor
+    mv ./new_lib ./matiec/lib
+fi
+source ".venv/bin/activate"
+export GDK_BACKEND=x11
+./.venv/bin/python3 ./editor/Beremiz.py
+END
   chmod +x openplc_editor.sh
 }
 
