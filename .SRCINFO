@@ -1,12 +1,12 @@
 pkgbase = editasroot
 	pkgdesc = Edit a file that requires root access
-	pkgver = 1.0.1
+	pkgver = 1.0.2
 	pkgrel = 1
 	url = https://codeberg.org/maandree/editasroot
 	arch = x86_64
 	license = custom:ISC
 	depends = asroot
-	source = editasroot-1.0.1.tar.gz::https://codeberg.org/maandree/editasroot/archive/1.0.1.tar.gz
-	sha256sums = 5743a5f6796ce47d79a949aa3ef231da9ad71e47a4c1e5220cdd7ebb09547604
+	source = editasroot-1.0.2.tar.gz::https://codeberg.org/maandree/editasroot/archive/1.0.2.tar.gz
+	sha256sums = 669513b4b86bf0a7a22d58c1f3acd2251fabde0c9897b1d95cf01da43c4a3052
 
 pkgname = editasroot
