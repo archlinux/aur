@@ -1,0 +1,16 @@
+pkgbase = hid-gamecube-adapter-dkms-git
+	pkgdesc = A Linux kernel module for the Nintendo Wii U/Mayflash GameCube adapter
+	pkgver = r10.4ca834d
+	pkgrel = 1
+	url = https://github.com/bemug/hid-gamecube-adapter
+	arch = any
+	license = GPL2
+	makedepends = git
+	depends = dkms
+	conflicts = hid-gamecube-adapter
+	source = git+https://github.com/bemug/hid-gamecube-adapter.git
+	source = dkms.conf
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = hid-gamecube-adapter-dkms-git
