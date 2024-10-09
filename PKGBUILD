@@ -1,32 +1,35 @@
 # Maintainer: Benji377 <demetzbenjamin23@gmail.com>
 pkgname=raspirus
-pkgver=1.1.3
+pkgver=2.0.0
 pkgrel=1
-pkgdesc="User- and resources-friendly signatures-based malware scanner"
-arch=("x86_64")
-url="https://raspirus.deno.dev"
+pkgdesc="A user- and resources-friendly rules-based malware scanner"
+arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 license=('GPL-3.0-only')
-# Dependencies from https://tauri.app/v1/guides/getting-started/prerequisites#setting-up-linux
-depends=('webkit2gtk' 'curl' 'wget' 'file' 'openssl' 'appmenu-gtk-module' 'gtk3' 'libappindicator-gtk3' 'librsvg' 'libvips')
-makedepends=('cargo' 'npm')
-backup=('etc/Raspirus/Raspirus.json')
+url="https://github.com/Raspirus/Raspirus"
+depends=('glibc' 'openssl')
+makedepends=('cargo')
+provides=('raspirus')
+options=('!strip' '!emptydirs')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Raspirus/Raspirus/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('SKIP')
 
 prepare() {
-	cd "Raspirus-$pkgver"
-	npm install
-	mkdir out
-	cargo install --path src-tauri/
-	cargo install tauri-cli --locked
+    export RUSTUP_TOOLCHAIN=stable
+    cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
-	cd "Raspirus-$pkgver"
-	cargo tauri build -b none
+    export RUSTUP_TOOLCHAIN=stable
+    export CARGO_TARGET_DIR=target
+    cargo build --frozen --release --all-features
+}
+
+check() {
+    export RUSTUP_TOOLCHAIN=stable
+    cargo test --frozen --all-features
 }
 
 package() {
-	cd "Raspirus-$pkgver"
-	cp target/release/raspirus $pkgdir/usr/bin/
+    install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/$pkgname"
+    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
