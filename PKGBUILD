@@ -1,8 +1,8 @@
-# Maintainer: Michał Wojdyła < micwoj9292 at gmail dot com >
+# Contributor: Michał Wojdyła < micwoj9292 at gmail dot com >
 # Contributor: John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
 
 pkgname='perl-datetime-format-natural'
-pkgver='1.16'
+pkgver='1.18'
 pkgrel='1'
 pkgdesc="Parse informal natural language date/time strings"
 arch=('any')
@@ -12,9 +12,9 @@ depends=('perl-clone' 'perl-datetime' 'perl-datetime-hires' 'perl-boolean')
 makedepends=('perl-module-build')
 checkdepends=('perl-module-util' 'perl-test-mocktime-hires')
 url='https://metacpan.org/dist/DateTime-Format-Natural'
-source=('https://cpan.metacpan.org/authors/id/S/SC/SCHUBIGER/DateTime-Format-Natural-1.16.tar.gz')
-md5sums=('cd2d34fd04ffa4473ad37a944e7fbd2f')
-_distdir="DateTime-Format-Natural-1.16"
+source=(https://cpan.metacpan.org/authors/id/S/SC/SCHUBIGER/DateTime-Format-Natural-$pkgver.tar.gz)
+md5sums=('17253821734e7166036e3e223fd3f006')
+_distdir="DateTime-Format-Natural-$pkgver"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \

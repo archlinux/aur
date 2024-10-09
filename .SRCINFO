@@ -1,6 +1,6 @@
 pkgbase = perl-datetime-format-natural
 	pkgdesc = Parse informal natural language date/time strings
-	pkgver = 1.16
+	pkgver = 1.18
 	pkgrel = 1
 	url = https://metacpan.org/dist/DateTime-Format-Natural
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = perl-datetime-format-natural
 	depends = perl-datetime-hires
 	depends = perl-boolean
 	options = !emptydirs
-	source = https://cpan.metacpan.org/authors/id/S/SC/SCHUBIGER/DateTime-Format-Natural-1.16.tar.gz
-	md5sums = cd2d34fd04ffa4473ad37a944e7fbd2f
+	source = https://cpan.metacpan.org/authors/id/S/SC/SCHUBIGER/DateTime-Format-Natural-1.18.tar.gz
+	md5sums = 17253821734e7166036e3e223fd3f006
 
 pkgname = perl-datetime-format-natural
