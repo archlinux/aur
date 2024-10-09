@@ -5,7 +5,7 @@
 # Maintainer: Matheus <matheusgwdl@protonmail.com>
 # Contributor: Matheus <matheusgwdl@protonmail.com>
 
-declare -r _tag="fddbfce5a303eeda806982fea671aa3d20a08bcb"
+declare -r _tag="17ba53cb9e0950625512fd939af91050bc6f3a3d"
 
 pkgname="inja"
 pkgver="3.4.0"
