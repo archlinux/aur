@@ -1,0 +1,17 @@
+pkgbase = plasma6-kde_controlcentre
+	pkgdesc = A beautiful control centre widget for KDE Plasma directly inspired by the MacOS control centre. Made by Prayag2
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/Prayag2/kde_controlcentre
+	arch = any
+	license = GPL-3.0-only
+	makedepends = git
+	makedepends = kpackage5
+	depends = plasma-nm
+	depends = kdeplasma-addons
+	depends = plasma-pa
+	depends = qt6-5compat
+	source = git+https://github.com/Prayag2/kde_controlcentre
+	sha256sums = SKIP
+
+pkgname = plasma6-kde_controlcentre
