@@ -7,7 +7,7 @@ pkgdesc="A simple and lightweight app for running Windows games using UMU-Launch
 arch=('x86_64')
 url="https://github.com/Faugus/faugus-launcher"
 license=('MIT')
-depends=('python' 'python-gobject' 'umu-launcher' 'p7zip')
+depends=('python' 'python-gobject' 'python-requests' 'umu-launcher' 'p7zip')
 makedepends=(git)
 provides=('faugus-launcher')
 conflicts=('faugus-launcher')
@@ -23,6 +23,7 @@ package() {
     cd "faugus-launcher"
     install -Dm755 faugus-launcher.py "$pkgdir/usr/bin/faugus-launcher"
     install -Dm755 faugus-run.py "$pkgdir/usr/bin/faugus-run"
+    install -Dm755 faugus-proton-manager.py "$pkgdir/usr/bin/faugus-proton-manager"
     install -Dm644 faugus-launcher.desktop "$pkgdir/usr/share/applications/faugus-launcher.desktop"
     install -Dm644 faugus-shortcut.desktop "$pkgdir/usr/share/applications/faugus-shortcut.desktop"
     install -Dm644 faugus-launcher.png "$pkgdir/usr/share/icons/faugus-launcher.png"

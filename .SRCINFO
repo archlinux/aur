@@ -8,6 +8,7 @@ pkgbase = faugus-launcher-git
 	makedepends = git
 	depends = python
 	depends = python-gobject
+	depends = python-requests
 	depends = umu-launcher
 	depends = p7zip
 	provides = faugus-launcher
