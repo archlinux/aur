@@ -1,0 +1,15 @@
+pkgbase = systemc3
+	pkgdesc = Set of C++ classes and macros which provide an event-driven simulation interface for modeling and describing complex hardware systems
+	pkgver = 3.0.0
+	pkgrel = 1
+	url = http://www.accellera.org/downloads/standards/systemc
+	arch = x86_64
+	license = Apache
+	makedepends = cmake
+	makedepends = ninja
+	depends = gcc-libs
+	conflicts = systemc
+	source = systemc3-3.0.0.tar.gz::https://github.com/accellera-official/systemc/archive/3.0.0.tar.gz
+	sha512sums = c88002ca788b39f7fb3ce4a2752f99db21fac25f66d53aee9f26e87ef000e4ed7ff3e805c0df575280c28f78c57d71223b4312f987acbf57723c37003b407adf
+
+pkgname = systemc3
