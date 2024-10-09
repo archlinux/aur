@@ -1,0 +1,26 @@
+pkgbase = ts.net-git
+	pkgdesc = Thunderscope-compatible PC-host software written in C# using high-performing primitives & SIMD.
+	pkgver = r213.ea6fa52
+	pkgrel = 1
+	url = https://github.com/EEVengers/TS.NET
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = curl
+	makedepends = git
+	makedepends = dotnet-host
+	makedepends = dotnet-sdk
+	depends = bash
+	depends = gcc-libs
+	depends = glibc
+	depends = zlib
+	optdepends = scopehal-apps: glscopeclient and other client applications for libscopehal
+	provides = ts.net
+	conflicts = ts.net
+	options = !strip
+	options = !debug
+	options = !lto
+	source = ts.net-git::git+https://github.com/EEVengers/TS.NET.git
+	sha256sums = SKIP
+
+pkgname = ts.net-git
