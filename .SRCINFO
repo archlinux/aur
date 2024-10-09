@@ -34,6 +34,12 @@ pkgname = firefox-vencord
 	provides = firefox-vencord
 	conflicts = firefox-vencord
 
+pkgname = firefox-developer-edition-vencord
+	install = vencord.install
+	depends = firefox-developer-edition
+	provides = firefox-developer-edition-vencord
+	conflicts = firefox-developer-edition-vencord
+
 pkgname = librewolf-vencord
 	install = vencord.install
 	depends = librewolf

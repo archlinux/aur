@@ -3,6 +3,7 @@ pkgname=(
   vencord
   chromium-vencord
   firefox-vencord
+  firefox-developer-edition-vencord
   librewolf-vencord
 )
 pkgbase=vencord
