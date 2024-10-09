@@ -11,8 +11,21 @@ index d4b99581..c8eea212 100644
  	} else if err != nil {
  		return fmt.Errorf("failed to read old prefs file: %w", err)
  	}
+diff --git a/internal/app/vault.go b/internal/app/vault.go
+index 8ec90f74..481b3103 100644
+--- a/internal/app/vault.go
++++ b/internal/app/vault.go
+@@ -107,7 +107,7 @@ func loadVaultKey(vaultDir string, keychains *keychain.List) ([]byte, error) {
+ 	key, err := vault.GetVaultKey(kc)
+ 	if err != nil {
+ 		if keychain.IsErrKeychainNoItem(err) {
+-			logrus.WithError(err).Warn("no vault key found, generating new")
++			logrus.Warn("no vault key found, generating new")
+ 			return vault.NewVaultKey(kc)
+ 		}
+ 
 diff --git a/pkg/keychain/helper_linux.go b/pkg/keychain/helper_linux.go
-index ce531faa..0a89c06b 100644
+index 7a395bc6..cb6878b5 100644
 --- a/pkg/keychain/helper_linux.go
 +++ b/pkg/keychain/helper_linux.go
 @@ -18,63 +18,42 @@
@@ -36,7 +49,7 @@ index ce531faa..0a89c06b 100644
 +	secrets = "~/.config/protonmail/bridge-v3/secrets"
  )
  
- func listHelpers() (Helpers, string) {
+ func listHelpers(_ bool) (Helpers, string) {
  	helpers := make(Helpers)
 +	var defaultHelper string
  
@@ -101,7 +114,7 @@ index ce531faa..0a89c06b 100644
  }
 diff --git a/pkg/keychain/keyfile.go b/pkg/keychain/keyfile.go
 new file mode 100644
-index 00000000..cef725b5
+index 00000000..68cbe534
 --- /dev/null
 +++ b/pkg/keychain/keyfile.go
 @@ -0,0 +1,131 @@
@@ -218,7 +231,7 @@ index 00000000..cef725b5
 +	}
 +	record, ok := keychain[serverURL]
 +	if !ok {
-+		return "", "", errors.New("Attempt to fetch a nonexistent record")
++		return "", "", ErrKeychainNoItem
 +	}
 +	return record.username, record.password, nil
 +}
