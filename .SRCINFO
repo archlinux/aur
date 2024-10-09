@@ -1,7 +1,7 @@
 pkgbase = cbang
 	pkgdesc = a library of cross-platform C++ utilities
 	pkgver = 1.8.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/CauldronDevelopmentLLC/cbang
 	arch = x86_64
 	license = LGPL2.1
@@ -21,9 +21,11 @@ pkgbase = cbang
 	source = 0001_v8_sandbox_enable.patch
 	source = 0002_include_cstdint.patch
 	source = 0003_ScriptOrigin.patch
+	source = 0004_URI_contains.patch
 	sha256sums = 4be28b0aa0d024e5c9fd274264bed7f82551219414c12c45e35afd8946f6e7d7
-	sha256sums = 75eff0bcd04293990f8dfb0771562356ccac2a7f40a06df0c0ba515fcdf4126a
+	sha256sums = b6bc2013fb3ac58daba7bab7b34cf1331ebd5a85da7947ef87feb09e6f6fe512
 	sha256sums = a2e16d999e58856fe9885243235d711afc0b2260c0c0b346b59aa4b948209d5c
-	sha256sums = 8b1beb7ef9e4aba856d5fc14f0de0bf7eeb321dcfc7ce1a8c64a3ae3b4363c9b
+	sha256sums = 664931b22afc7452e357e991a321fd35ffd49a06e8f1e33653e023cb02e2b5d0
+	sha256sums = 130c32e2e03cbec45a8969dc6bd2b7ea1e8e21518f39a6116041cb620140a37b
 
 pkgname = cbang
