@@ -35,8 +35,8 @@ depends=(
 optdepends=(
     'python-vobject: for ics/vcal importing'
 )
-source=("https://pypi.io/packages/source/g/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('bbc8d6b9ce40d0be0535ffec3bb3384761400c7fbf1d67716e7d0e5fe9c6f2d5')
+source=("git+https://github.com/insanum/$pkgname.git#tag=v$pkgver")
+sha256sums=('093572d0151245d061c1504953e7ad9f8f2b883ea70fd2d2f48fa766c919e8af')
 
 build() {
     cd "${pkgname}-${pkgver}"
