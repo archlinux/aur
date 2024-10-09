@@ -4,7 +4,7 @@
 # Maintainer: tristanrw <hidden>
 
 pkgname=remnote
-pkgver=1.16.127
+pkgver=1.16.129
 pkgrel=2
 pkgdesc="All-in-one workspace for note-taking, learning, organizing thoughts and growing knowledge"
 arch=('x86_64' 'aarch64')
