@@ -1,5 +1,5 @@
 pkgname=nzportable-bin
-pkgver=2.0.0indev20240929071903
+pkgver=2.0.0indev20241006072024
 pkgrel=1
 scriptver=1.0.5
 pkgdesc='Nazi Zombies: Portable, a Call of Duty: Zombies "de-make" powered by various enhanced forks of the Quake engine'
@@ -12,17 +12,28 @@ _pkgrel_x86_64=1
 _pkgrel_aarch64=1
 _pkgrel_i686=1
 sha256sums_x86_64=('63618827047a5045b1f8e26db28a44868ce50c12e5662cca8d646bace08d2ba0'
-                   '700d411db4e92735a497c509ba981bd5548c59553d5268cc66dec66d6bb04320')
+                   '044fb25f7aaec8f041839d9c29e5acf51ee8185f2b0ffb88f0aa858a3dbf3937')
 sha256sums_i686=('63618827047a5045b1f8e26db28a44868ce50c12e5662cca8d646bace08d2ba0'
-                 '756ef36fa7d58bf57ea5e7f0509f4c2398c341dbbb795465c159e3758f8d02bc')
+                 '8fc2a9b9119f4bd81169ba4058cefcc62252bcfd048556a7a42f84625927bd05')
 sha256sums_aarch64=('63618827047a5045b1f8e26db28a44868ce50c12e5662cca8d646bace08d2ba0'
-                    '8c4c95a40a11849f78d2dbf0ba6063adf9e1c1a17a08d598e2c3f05e8016ba06')
+                    '3d286a05ebf3bb6f0b1505959c30e8ac9310503cd872b3e7e2b8e278bb4519e0')
 sha256sums_armv7l=('63618827047a5045b1f8e26db28a44868ce50c12e5662cca8d646bace08d2ba0'
-                   '0b447722801235a87dcab1732b7fcf83573e362f1c95e5be8f5a8eaa24161a2a')
-source_x86_64=("https://gitlab.com/linuxbombay/nzp/nzp-packaging/-/archive/$scriptver/nzp-packaging-$scriptver.tar.bz2" "https://gitlab.com/linuxbombay/nzp/binaries/$pkgver/-/raw/main/nzportable-linux64.zip")
-source_aarch64=("https://gitlab.com/linuxbombay/nzp/nzp-packaging/-/archive/$scriptver/nzp-packaging-$scriptver.tar.bz2" "https://gitlab.com/linuxbombay/nzp/binaries/$pkgver/-/raw/main/nzportable-linuxarm64.zip")
-source_armv7l=("https://gitlab.com/linuxbombay/nzp/nzp-packaging/-/archive/$scriptver/nzp-packaging-$scriptver.tar.bz2" "https://gitlab.com/linuxbombay/nzp/binaries/$pkgver/-/raw/main/nzportable-linuxarmhf.zip")
-source_i686=("https://gitlab.com/linuxbombay/nzp/nzp-packaging/-/archive/$scriptver/nzp-packaging-$scriptver.tar.bz2" "https://gitlab.com/linuxbombay/nzp/binaries/$pkgver/-/raw/main/nzportable-linux32.zip")
+                   'ead40a0d27f825138f9c60108873da2592281070906fd41cf68cf62d221feec8')
+source_x86_64=(
+"https://gitlab.com/linuxbombay/nzp/nzp-packaging/-/archive/$scriptver/nzp-packaging-$scriptver.tar.bz2" 
+"nzportable-linux64-$pkgver.zip::https://gitlab.com/linuxbombay/nzp/binaries/$pkgver/-/raw/main/nzportable-linux64.zip")
+
+source_aarch64=(
+"https://gitlab.com/linuxbombay/nzp/nzp-packaging/-/archive/$scriptver/nzp-packaging-$scriptver.tar.bz2" 
+"nzportable-linuxarm64-$pkgver.zip::https://gitlab.com/linuxbombay/nzp/binaries/$pkgver/-/raw/main/nzportable-linuxarm64.zip")
+
+source_armv7l=(
+"https://gitlab.com/linuxbombay/nzp/nzp-packaging/-/archive/$scriptver/nzp-packaging-$scriptver.tar.bz2" 
+"nzportable-linuxarmhf-$pkgver.zip::https://gitlab.com/linuxbombay/nzp/binaries/$pkgver/-/raw/main/nzportable-linuxarmhf.zip")
+
+source_i686=(
+"https://gitlab.com/linuxbombay/nzp/nzp-packaging/-/archive/$scriptver/nzp-packaging-$scriptver.tar.bz2" 
+"nzportable-linux32-$pkgver.zip::https://gitlab.com/linuxbombay/nzp/binaries/$pkgver/-/raw/main/nzportable-linux32.zip")
 
 package() {
     install -dm755 "$pkgdir/usr/bin"
