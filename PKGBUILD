@@ -4,7 +4,7 @@
 pkgname=waveterm
 _pkgname=Wave
 _appname="${_pkgname} Terminal"
-pkgver=0.8.8
+pkgver=0.8.9
 _electronversion=32
 _nodeversion=22
 pkgrel=1
@@ -39,7 +39,7 @@ source=(
     "${pkgname}-${pkgver}.tar.gz::${_ghurl}/archive/refs/tags/v${pkgver}.tar.gz"
     "${pkgname}.sh"
 )
-sha256sums=('8c28fe63c485feaf2b598fc6965089c2a05ebb9d66ae5c935d27264e5332905d'
+sha256sums=('1392e7c83aa7ab106347abeab1929e3488c6a6f0e15307250c9bf110bc414d25'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
@@ -74,8 +74,8 @@ build() {
         export npm_config_electron_builder_binaries_mirror=https://registry.npmmirror.com/-/binary/electron-builder-binaries/
         echo 'npmRegistryServer: "https://registry.npmmirror.com"' >> "${srcdir}/.electron-gyp/.yarnrc.yml"
         go env -w GOPROXY=https://goproxy.cn,direct
-        gem sources --add https://mirrors.tuna.tsinghua.edu.cn/rubygems/ --remove https://rubygems.org/
-        bundle config mirror.https://rubygems.org https://mirrors.tuna.tsinghua.edu.cn/rubygems
+        gem sources --add https://mirrors.aliyun.com/rubygems/ --remove https://rubygems.org/
+        bundle config mirror.https://rubygems.org https://mirrors.aliyun.com/rubygems
     else
         echo "Your network is OK."
     fi
