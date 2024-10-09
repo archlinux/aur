@@ -9,6 +9,7 @@ pkgbase = muon-meson-git
 	makedepends = ninja
 	makedepends = python-yaml
 	makedepends = scdoc
+	makedepends = glib2-devel
 	depends = pkgconf
 	depends = curl
 	depends = zlib
