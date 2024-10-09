@@ -1,9 +1,9 @@
 # Maintainer: Fabian Bornschein <fabiscafe@archlinux.org>
 
 pkgname=gtuber
-pkgver=r446.f5a64d4
+pkgver=r449.adda1ed
 pkgrel=1
-_commit=f5a64d442c18ae2fa732a851ccb4859c8a45d944
+_commit=adda1edbfd4e9f80abb2d5d0e59bee175d958f64
 pkgdesc="C library to fetch media info from websites (bilibili, lbry, niconico, reddit, twitch, youtube)"
 arch=(x86_64)
 url="https://github.com/Rafostar/gtuber"
@@ -25,7 +25,7 @@ makedepends=(
 )
 provides=(gst-plugins-gtuber=$pkgver)
 source=("git+https://github.com/Rafostar/gtuber.git#commit=$_commit")
-b2sums=('f98e190f38b315e87bfcacf00b196c5acd0d6d87db00e44e97d669283295a5594b923f2ec2f13558b78a65c7a044b5abdb2554623fe55f464fc1bc9eb5cbd2bd')
+b2sums=('673a7a8252c0546c40abde7ec7eba2aedb2f738f4ca7ceb21b9fc867fff4ff67706da18183995ba0a6da74b210a6b027a340c48fdae9ab9418cad91ec8b72543')
 
 pkgver() {
   cd "$pkgname"
