@@ -6,10 +6,11 @@
 # Contributor: Matthew Gyurgyik <matthew@pyther.net>
 # Contributor: Giorgio Azzinnaro <giorgio@azzinna.ro>
 
-pkgver=24.2.0.65
+pkgver=24.8.0.70
 pkgname=icaclient-beta
-pkgrel=2
-arch=('x86_64' 'armv7h')
+pkgrel=1
+# arch=('x86_64' 'armv7h')
+arch=('x86_64')
 license=('custom:Citrix')
 depends=('alsa-lib' 'curl' 'gst-plugins-base-libs' 'gtk2' 'libc++' 'libc++abi' 'libidn11'
          'libjpeg6-turbo' 'libpng12' 'libsecret' 'libsoup' 'libvorbis' 'libxaw' 'libxp'
@@ -68,9 +69,9 @@ pkgver() {
 }
 read -r _source64 _sourcearmhf _pkgtype _url <<< $(pkgver init)
 source_x86_64=("$_artefactid-x64.tar.gz::$_source64")
-source_armv7h=("$_artefactid-armhf.tar.gz::$_sourcearmhf")
+#source_armv7h=("$_artefactid-armhf.tar.gz::$_sourcearmhf")
 sha256sums_x86_64=('SKIP')
-sha256sums_armv7h=('SKIP')
+#sha256sums_armv7h=('SKIP')
 pkgdesc="Citrix Workspace App (a.k.a. ICAClient, Citrix Receiver) [$_pkgtype]"
 url="$_url"
 

@@ -1,11 +1,10 @@
 pkgbase = icaclient-beta
-	pkgdesc = Citrix Workspace App (a.k.a. ICAClient, Citrix Receiver) [Release]
-	pkgver = 24.2.0.65
-	pkgrel = 2
-	url = https://www.citrix.com/downloads/workspace-app/linux/workspace-app-for-linux-latest.html
+	pkgdesc = Citrix Workspace App (a.k.a. ICAClient, Citrix Receiver) [Technology]
+	pkgver = 24.8.0.70
+	pkgrel = 1
+	url = Preview https://www.citrix.com/downloads/workspace-app/betas-and-tech-previews/workspace-app-tp-for-linux.html
 	install = citrix-client.install
 	arch = x86_64
-	arch = armv7h
 	license = custom:Citrix
 	depends = alsa-lib
 	depends = curl
@@ -47,9 +46,7 @@ pkgbase = icaclient-beta
 	sha256sums = cdfb3a2ef3bf6b0dd9d17c7a279735db23bc54420f34bfd43606830557a922fe
 	sha256sums = fe0b92bb9bfa32010fe304da5427d9ca106e968bad0e62a5a569e3323a57443f
 	sha256sums = a3bd74aaf19123cc550cde71b5870d7dacf9883b7e7a85c90e03b508426c16c4
-	source_x86_64 = icaclient-x64.tar.gz::https://downloads.citrix.com/22629/linuxx64-24.2.0.65.tar.gz?__gda__=exp=1710382579~acl=/*~hmac=0ace04f226ff777ccfa2f314113ba6263936b86ec096d7e5bb6bb9ccbed9e722
+	source_x86_64 = icaclient-x64.tar.gz::https://downloads.citrix.com/22878/linuxx64-24.8.0.70.tar.gz?__gda__=exp=1728527651~acl=/*~hmac=27485d5ec8442524413ac04e8a4629a0278898ad96ca98fdb4cbd6aa28b9c0a7
 	sha256sums_x86_64 = SKIP
-	source_armv7h = icaclient-armhf.tar.gz::https://downloads.citrix.com/22629/linuxarmhf-24.2.0.65.tar.gz?__gda__=exp=1710382579~acl=/*~hmac=0ace04f226ff777ccfa2f314113ba6263936b86ec096d7e5bb6bb9ccbed9e722
-	sha256sums_armv7h = SKIP
 
 pkgname = icaclient-beta
