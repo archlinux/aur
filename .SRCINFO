@@ -6,6 +6,7 @@ pkgbase = python-sphinx-jinja
 	arch = any
 	license = MIT
 	checkdepends = python-pytest
+	checkdepends = python-defusedxml
 	makedepends = git
 	makedepends = python-build
 	makedepends = python-installer
