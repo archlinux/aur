@@ -1,14 +1,18 @@
 pkgbase = basix
 	pkgdesc = FEniCS finite element basis evaluation library
-	pkgver = 0.8.0
+	pkgver = 0.9.0
 	pkgrel = 1
 	url = https://github.com/FEniCS/basix
 	arch = x86_64
 	license = MIT
-	checkdepends = python
 	makedepends = cmake
+	makedepends = doxygen
+	makedepends = texlive-plaingeneric
+	makedepends = texlive-fontsrecommended
+	makedepends = texlive-latexextra
+	depends = gcc-libs
 	depends = lapack
-	source = basix-0.8.0.tar.gz::https://github.com/FEniCS/basix/archive/v0.8.0.tar.gz
-	sha512sums = 4f259173e97da9141b79f66e76baddab9e0d00f672feedde18742ac95d6d31668b80e319b939a67a4558bc7dd8e7479d9c75f3a1c2bf5abdf077ed3202ea4f99
+	source = basix-0.9.0.tar.gz::https://github.com/FEniCS/basix/archive/v0.9.0.tar.gz
+	sha512sums = 0ea49f7710265ef7d3d61607285c263b923265af8d1435ebeb557f26281bca593a1ee711c2c3f3bf97048cb5e226e574279f22fd2c6d3898e4f1e5b48251f806
 
 pkgname = basix
