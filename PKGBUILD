@@ -3,7 +3,7 @@
 
 pkgname=yass-proxy-qt5
 pkgver=1.14.3
-pkgrel=1
+pkgrel=2
 _pkgver=1.14.3
 _pkgrel=1
 pkgdesc="lightweight http/socks proxy"
@@ -17,8 +17,17 @@ checkdepends=(curl)
 provides=(yass-proxy)
 conflicts=(yass-proxy-git)
 source=("https://github.com/Chilledheart/yass/releases/download/${_pkgver}/yass-${_pkgver}.tar.zst"
+        "translation-qt5.patch"
         )
-sha256sums=('b65cea6fb41a651532dd2d6476a0e2d2e207cf6b5c8573cbbfa450e47b7474fe')
+sha256sums=('b65cea6fb41a651532dd2d6476a0e2d2e207cf6b5c8573cbbfa450e47b7474fe'
+            'efade2f2fb6dab97b9264f5fc3c318af016857e38045bbf264df44aa9654b8f7')
+
+prepare(){
+  SRC_DIR="${srcdir}/yass-${_pkgver}"
+  pushd $SRC_DIR
+  patch -Np1 -i ../translation-qt5.patch
+  popd
+}
 
 build(){
   SRC_DIR="${srcdir}/yass-${_pkgver}"

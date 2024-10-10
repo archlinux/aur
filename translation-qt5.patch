@@ -1,0 +1,13 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 0626408c..a6c3c48f 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -2169,7 +2169,7 @@ elseif (GUI)
+     set(GUI_LIBRARIES Qt6::Widgets Qt6::Gui)
+     set(GUI_FLAVOUR "qt6")
+   elseif(USE_QT5)
+-    find_package(Qt5 REQUIRED Core Widgets Gui)
++    find_package(Qt5 REQUIRED Core Widgets Gui OPTIONAL_COMPONENTS LinguistTools)
+     set(GUI_USE_FILE "")
+     set(GUI_INCLUDE_DIRS "")
+     set(GUI_DEFINITIONS "")
