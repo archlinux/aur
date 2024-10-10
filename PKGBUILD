@@ -118,6 +118,10 @@ _use_llvm_lto=${_use_llvm_lto-none}
 # https://github.com/CachyOS/linux-cachyos/issues/36
 _use_lto_suffix=${_use_lto_suffix-y}
 
+# Use suffix -gcc when requested by the user
+# This was added to facilitate https://github.com/CachyOS/linux-cachyos/issues/286
+_use_gcc_suffix=${_use_gcc_suffix-}
+
 # KCFI is a proposed forward-edge control-flow integrity scheme for
 # Clang, which is more suitable for kernel use than the existing CFI
 # scheme used by CONFIG_CFI_CLANG. kCFI doesn't require LTO, doesn't
@@ -144,14 +148,15 @@ _build_debug=${_build_debug-}
 
 if [[ "$_use_llvm_lto" = "thin" || "$_use_llvm_lto" = "full" ]] && [ "$_use_lto_suffix" = "y"  ]; then
     _pkgsuffix="cachyos-${_cpusched}-lto"
-    pkgbase="linux-$_pkgsuffix"
-
-elif [ -n "$_use_llvm_lto" ]  ||  [[ "$_use_lto_suffix" = "n" ]]; then
+elif [ "$_use_llvm_lto" = "none" ]  && [ -z "$_use_kcfi" ] && [ "$_use_gcc_suffix" = "y" ]; then
+    _pkgsuffix="cachyos-${_cpusched}-gcc"
+else
     _pkgsuffix="cachyos-${_cpusched}"
-    pkgbase="linux-$_pkgsuffix"
 fi
+
+pkgbase="linux-$_pkgsuffix"
 _major=6.11
-_minor=2
+_minor=3
 #_minorc=$((_minor+1))
 #_rcver=rc8
 pkgver=${_major}.${_minor}
@@ -242,12 +247,10 @@ case "$_cpusched" in
     eevdf) ## 6.12 EEVDF patches
         source+=("${_patchsource}/sched/0001-eevdf-next.patch");;
     rt) ## EEVDF with RT patches
-        source+=("${_patchsource}/misc/0001-rt.patch"
-                 linux-cachyos-rt.install);;
+        source+=("${_patchsource}/misc/0001-rt.patch");;
     rt-bore) ## RT with BORE Scheduler
         source+=("${_patchsource}/misc/0001-rt.patch"
-                 "${_patchsource}/sched/0001-bore-cachy-rt.patch"
-                 linux-cachyos-rt.install);;
+                 "${_patchsource}/sched/0001-bore-cachy-rt.patch");;
     hardened) ## Hardened Patches with BORE Scheduler
         source+=("${_patchsource}/sched/0001-bore-cachy.patch"
                  "${_patchsource}/misc/0001-hardened.patch");;
@@ -773,8 +776,8 @@ for _p in "${pkgname[@]}"; do
     }"
 done
 
-b2sums=('5720e8dd0bed0247dcfe0bdbce17e36e67bff56811611ae1b04f048b77b6e60c2a48303db73c5a0d4a56c7125cdd695116c4dfd965bd7cb28aa932f427bb3e7d'
-        '92e635bb3553896146bea23e5e414853723be9843c94750bc6d4bc327a76925bedb2b3b4481f2816a4691d684e417eae0279c1a2019cb37e9e852914696695da'
+b2sums=('69582e4745850f3ec004d87859ac88994e3715ed38cd66aff2633fbcb6c20ca2e3be83417cd2c42c2757ab4e084e622c688799b5ad28e15c391adb2afab79a68'
+        'de8ce27719874bda9132a4b5b18be05b26e75bdf1ecf7370a65518d400f1840c71859ad41bc5afc93944f096f3eb26d80a7afe0ac8bd377244a3e8cdcac35b5f'
         'b1e964389424d43c398a76e7cee16a643ac027722b91fe59022afacb19956db5856b2808ca0dd484f6d0dfc170482982678d7a9a00779d98cd62d5105200a667'
-        'cdb2c8d3184c4f0c9c9d50cf78db2e5e4a56eac0162b5d2400277e98c0432fecb96a25c50ef99aae328524bb546c3941e5fb3141e59d4943796574d73cd83182'
-        'b74de20dc3dfbb84a4c0014d04f91f7001fd816977471bae9069b24540e969f9404f10ba18d20a7e50e6a8d3e7c1cc74d0942e09da0fe7bfcc741d2d82e540ab')
+        'd79b732315c88d373946b817ed7deb0215521ec260ac0e3a22f75bf9716d4d1d9e364c24b339e18797c016abacacef139aa7a2a612df23e7fa07cc3ace8638c0'
+        '615936c3f921af5df57106fd94f537cf18c3870095a7cd0e6961aa7dc9dc762a7c8428c16b376cbd36b197da79a542614904572618583716da2ca0ab1beaf8b1')
