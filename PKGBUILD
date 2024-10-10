@@ -1,4 +1,4 @@
-# Maintainer: Martin Rys <rys.pw/contact>
+# Maintainer: Martin Rys <https://rys.rs/contact> | Toss a coin on https://rys.rs/donate
 # Previous maintainers: Luiz Ribeiro <luizribeiro@gmail.com>, Tom Wambold <tom5760@gmail.com>
 
 #Unresolved issues:
@@ -7,8 +7,8 @@
 
 
 pkgname=oauth2-proxy
-pkgver=7.6.0
-pkgrel=5
+pkgver=7.7.1
+pkgrel=1
 pkgdesc="A reverse proxy that provides authentication with Google, Keycloak, GitHub or other providers."
 arch=('x86_64' 'aarch64')
 url="https://github.com/oauth2-proxy/oauth2-proxy"
@@ -17,7 +17,7 @@ depends=(glibc)
 makedepends=(go)
 backup=('etc/oauth2-proxy.cfg')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/oauth2-proxy/oauth2-proxy/archive/v${pkgver}.tar.gz")
-sha256sums=('2beac9e817d59b37f2277efefeda68447418355792a60da709a80c278628fcd8')
+sha256sums=('05a849bb79a6cd160779982f5564c0551e20a08e4c4ff947882817cc638a516f')
 
 prepare() {
 	sed -i -e 's|/usr/local/bin/oauth2-proxy|/usr/bin/oauth2-proxy|' -e 's/www-data/oauth2-proxy/' -e '/^#/d' "${pkgname}-${pkgver}/contrib/${pkgname}.service.example"
@@ -49,7 +49,7 @@ build() {
 	cd github.com/oauth2-proxy/oauth2-proxy
 
 	# Default version variable to $pkgver instead of "undefined" as the buildtime version detection in the Makefile fails
-	sed -i "s,VERSION = \"undefined\",VERSION = \"${pkgver}\"," version.go
+	sed -i "s,VERSION = \"undefined\",VERSION = \"${pkgver}\"," pkg/version/version.go
 
 	go build -o ../../../dist/oauth2-proxy
 }
