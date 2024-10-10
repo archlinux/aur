@@ -2,8 +2,8 @@
 
 pkgname=ft-bin
 pkgver=2.2.3
-pkgrel=1
-pkgdesc="Modern UI for Ansible (Binary Release)"
+pkgrel=2
+pkgdesc="Tunnel TCP connections through a file"
 arch=('x86_64' 'aarch64')
 url="https://github.com/fiddyschmitt/File-Tunnel"
 license=('MIT')
