@@ -7,12 +7,12 @@ _archivever="24_rc5"
 
 pkgname=ambertools
 pkgver=24.00
-pkgrel=1
+pkgrel=2
 pkgdesc="Biomolecular simulation package (tools only)"
 url="http://ambermd.org/"
 license=('GPL-3.0-or-later AND LGPL-3.0-or-later AND BSD-3-Clause AND MIT')
 arch=(x86_64)
-depends=(blas boost bzip2 fftw lapack netcdf
+depends=(blas boost bzip2 fftw lapack netcdf python-matplotlib
          python-scipy readline tk zlib gcc13-libs)
 makedepends=(cmake cython gcc13-fortran)
 optdepends=('cuda: GPU acceleration support'
