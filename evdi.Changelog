@@ -1,3 +1,10 @@
+v1.14.7
+- Preliminary support for 6.11 kernel
+- Support for 6.11 kernel
+- Preliminary support for 6.12 kernel
+- Fix display delay on Wayland
+- Fix not blanked screen content when switching to TTY
+
 v1.14.6
 - Preliminary support for 6.11 kernel
 
