@@ -1,5 +1,5 @@
 pkgname=versiobit
-pkgver=3.14
+pkgver=3.18
 pkgrel=1
 pkgdesc="Versiobit Desktop App"
 arch=("x86_64")
@@ -7,12 +7,12 @@ url="https://versiobit.com"
 license=("custom")
 #depends=('dependencies_required_by_your_software')
 
-source=("versiobit-$pkgver.tar.gz::https://releases.versiobit.com/linux/generic/versiobit-$pkgver.tar.gz")
+source=("versiobit-$pkgver.zip::https://releases.versiobit.com/linux/generic/versiobit-$pkgver.zip")
 sha512sums=("SKIP")
 
 package() {
     cd "$srcdir"
-    tar xaf versiobit-$pkgver.tar.gz
+    unzip -o versiobit-$pkgver.zip
     mkdir "$pkgdir/opt"
     cp -r "$srcdir/versiobit" "$pkgdir/opt/versiobit"
     
