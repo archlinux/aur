@@ -1,9 +1,10 @@
-#Maintainer Guoyi Zhang <GuoyiZhang at malacology dot net>
+#Maintainer pika02 <pikakolendo02 at gmail dot com>
+#Contributor Guoyi Zhang <GuoyiZhang at malacology dot net>
 #Contributor Matthijs Tadema <M dot J dot Tadema at pm dot me>
 #Contributor Jens Staal <staal1978@gmail.com>
 
 pkgname=ugene-bin
-pkgver=49.1
+pkgver=51.0
 pkgrel=1
 pkgdesc="A free cross-platform genome analysis suite (binary release)"
 arch=('x86_64')
@@ -16,7 +17,7 @@ optdepends=('cufflinks' 'bowtie' 'clustalw' 'phyml' 'blast+' 'clustal-omega' 'vc
 provides=('ugene')
 conflicts=('ugene-git' 'ugene' 'ugene-cuda')
 source=("https://github.com/ugeneunipro/ugene/releases/download/${pkgver}/ugene-${pkgver}-linux-x86-64.tar.gz" "ugene.desktop" "ugene.svg")
-sha256sums=('e80cb2b282e023a7dfcc31b0f77964f555d736d00d106ec9a3defbaf55b1d8e3'
+sha256sums=('23dfd976029a1ef0d420460d5274e44c01efd3c5efe82f9aa7c9ec5beb867706'
             '58aeee982faa07913c016323cdded0a4022695c4e313954fdc09c36742013896'
             '5a159437635965cae796c968c7297fd098e7f86dcecbe6a97e62950e782641fc')
 
