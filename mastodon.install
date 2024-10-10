@@ -6,7 +6,8 @@ Create the Mastodon PostgreSQL user and grant it the ability to create databases
 Then, run:
 # cd /var/lib/mastodon
 # sudo chown mastodon:mastodon -R .
-# sudo -u mastodon RAILS_ENV=production NODE_OPTIONS=--openssl-legacy-provider bundle exec rails mastodon:setup
+# sudo -u mastodon corepack enable --install-directory . yarn
+# sudo -u mastodon RAILS_ENV=production NODE_OPTIONS=--openssl-legacy-provider PATH=./:$PATH bundle exec rails mastodon:setup
 Finally, enable and start all the required services:
 # systemctl enable --now mastodon.target"
 }
@@ -24,5 +25,5 @@ And add them and MASTODON_USE_LIBVIPS=true to /etc/mastodon.conf"
   sudo -u mastodon RAILS_ENV=production bundle exec rails db:migrate
   echo "Precompiling assets"
   sudo -u mastodon corepack enable --install-directory . yarn
-  sudo -u mastodon RAILS_ENV=production NODE_OPTIONS=--openssl-legacy-provider PATH=$PATH:./ bundle exec rails assets:precompile
+  sudo -u mastodon RAILS_ENV=production NODE_OPTIONS=--openssl-legacy-provider PATH=./:$PATH bundle exec rails assets:precompile
 }
