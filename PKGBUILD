@@ -6,8 +6,8 @@
 
 pkgname=evince-no-gnome
 _pkgname=evince
-pkgver=44.1
-_milestone=44
+pkgver=46.3.1
+_milestone="${pkgver%%.*}"
 pkgrel=1
 pkgdesc="Document viewer, no gnome dependencies"
 url="https://wiki.gnome.org/Apps/Evince"
@@ -21,7 +21,7 @@ provides=("$_pkgname" libev{document,view}3.so)
 conflicts=("$_pkgname" libev{document,view}3.so)
 options=('!emptydirs')
 source=("https://download.gnome.org/sources/evince/${_milestone}/evince-${pkgver}.tar.xz")
-sha256sums=('15afd3bb15ffb38fecab34c23350950ad270ab03a85b94e333d9dd7ee6a74314')
+sha256sums=('945c20a6f23839b0d5332729171458e90680da8264e99c6f9f41c219c7eeee7c')
 
 prepare () {
     tar -xvf evince-${pkgver}.tar.xz
