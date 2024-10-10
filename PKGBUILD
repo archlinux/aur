@@ -1,6 +1,6 @@
 # Maintainer: tee < teeaur at duck dot com >
 pkgname=nocodb-bin
-pkgver=0.255.2
+pkgver=0.257.0
 pkgrel=1
 pkgdesc="Open Source Airtable Alternative: Turns any MySQL, PostgreSQL, SQL Server, SQLite & MariaDB into a smart spreadsheet."
 arch=("x86_64")
@@ -13,7 +13,7 @@ source=("LICENSE::$_src/raw/$pkgver/LICENSE")
 __pkgname="$pkgname-$arch-$pkgver"
 source_x86_64=("$__pkgname::$_src/releases/download/$pkgver/Noco-linux-x64")
 sha256sums=('d8de517917a591daa447d6be28ffb2fac866703e4feb65e86221be9a22d3033a')
-sha256sums_x86_64=('8fa55e00f503507cf8f2eadc2e699a37739e86ebebedfa91c6a586a73edf5edf')
+sha256sums_x86_64=('387956860e054aca90170703e81f61f3dbb58170104d9691cf121ae9ce3f83cd')
 options=(!strip)
 
 package() {
