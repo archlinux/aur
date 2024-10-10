@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=listera-novelreader-bin
 pkgver=1.2.1
-pkgrel=7
+pkgrel=8
 pkgdesc="A txt Chinese novel reader, developed based on Qt5 and Dtk5.一个 txt 中文小说阅读器，基于 Qt5 和 Dtk5 开发。"
 arch=('x86_64')
 url="https://www.listera.top/tag/novelreader"
@@ -21,7 +21,10 @@ source=(
 sha256sums=('74fda48d298a908db84ba2f945c2d72cfc3a8eb7ee4696a3f619f1060dd78ef7')
 build() {
     bsdtar -xf "${srcdir}/data.tar.gz"
-    sed "s|/usr/bin/${pkgname%-bin}|${pkgname%-bin} %U|g;s|Viewer|Utility;Office|g" -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
+    sed -e "
+        s/\/usr\/bin\/${pkgname%-bin}/${pkgname%-bin}/g
+        s/Viewer/Utility;Office/g
+    " -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
 package() {
     install -Dm755 "${srcdir}/usr/bin/${pkgname%-bin}" -t "${pkgdir}/usr/bin"
