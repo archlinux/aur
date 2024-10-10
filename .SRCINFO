@@ -1,6 +1,6 @@
 pkgbase = r-smacof
 	pkgdesc = Multidimensional Scaling
-	pkgver = 2.1.6
+	pkgver = 2.1.7
 	pkgrel = 1
 	url = https://cran.r-project.org/package=smacof
 	arch = x86_64
@@ -24,7 +24,7 @@ pkgbase = r-smacof
 	optdepends = r-mpsychor
 	optdepends = r-prefmod
 	optdepends = r-rmarkdown
-	source = https://cran.r-project.org/src/contrib/smacof_2.1-6.tar.gz
-	sha256sums = 4a1d58f6f2e8fb5582fd672dc2f6d5784a03702d8c748b972e0be1c4d6dcad1a
+	source = https://cran.r-project.org/src/contrib/smacof_2.1-7.tar.gz
+	sha256sums = 7a965a4e06a2ef1e01e37ae7ce6a55f2e745d4aaf99eb1c592b3d835bac9493a
 
 pkgname = r-smacof
