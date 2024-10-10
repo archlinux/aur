@@ -37,8 +37,6 @@ build() {
 		#/usr/bin/ld: /tmp/go-link-1117948769/000019.o: error: missing IBT and SHSTK properties
 		#collect2: error: ld returned 1 exit status
 
-	# oauth2-proxy W: ELF file ('usr/bin/oauth2-proxy') lacks FULL RELRO, check LDFLAGS.
-	# oauth2-proxy W: ELF file ('usr/bin/oauth2-proxy') lacks PIE.
 	# https://wiki.archlinux.org/title/Go_package_guidelines#Flags_and_build_options
 	export CGO_CPPFLAGS="${CPPFLAGS}"
 	export CGO_CFLAGS="${CFLAGS}"
