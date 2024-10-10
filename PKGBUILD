@@ -1,6 +1,6 @@
 pkgname=slint-cpp
 _pkgname=slint
-pkgver=1.6.0
+pkgver=1.8.0
 pkgrel=1
 pkgdesc="Declarative GUI toolkit to build native user interfaces for Rust, C++, or JavaScript apps"
 license=('GPL-3.0-or-later')
@@ -10,7 +10,7 @@ depends=('freetype2' 'libglvnd' 'libx11' 'mesa' 'wayland')
 makedepends=('cmake>=3.21' 'rust>=1.70')
 options=('strip')
 source=("https://github.com/${_pkgname}-ui/${_pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('8b2ff946804bd9cfa98937f0f90b9092fbd8686f7c7a4166a3714734e98a2fbb')
+sha256sums=('bbc532d097be73daa4bccaffb10992315cf406336b90be4ce0604a4c798ed3b1')
 
 prepare () {
   cd ${_pkgname}-${pkgver}
