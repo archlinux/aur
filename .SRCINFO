@@ -1,14 +1,13 @@
 pkgbase = mailspring-bin
-	pkgdesc = A beautiful, fast and fully open source mail client.
+	pkgdesc = A beautiful, fast and fully open source mail client.Prebuilt version.Use system-wide electron.
 	pkgver = 1.14.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://getmailspring.com/
 	arch = x86_64
 	license = GPL-3.0-only
 	depends = electron30
 	depends = krb5
 	depends = db5.3
-	depends = openssl-1.0
 	provides = mailspring=1.14.0
 	conflicts = mailspring
 	source = mailspring-1.14.0.deb::https://github.com/Foundry376/Mailspring/releases/download/1.14.0/mailspring-1.14.0-amd64.deb
