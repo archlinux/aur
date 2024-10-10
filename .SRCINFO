@@ -29,11 +29,11 @@ pkgbase = nginx-quic-libressl
 	backup = etc/nginx/uwsgi_params
 	backup = etc/nginx/win-utf
 	backup = etc/logrotate.d/nginx
-	source = git+https://github.com/nginx/nginx.git#commit=e24f7ccc161f1a2a759eb27263ec9af4fc7c8e96
+	source = git+https://github.com/nginx/nginx.git#commit=3f6d94d8881ca6755b1baa4dd6248a7b7ed15735
 	source = https://cdn.openbsd.org/pub/OpenBSD/LibreSSL/libressl-3.9.2.tar.gz
 	source = service
 	source = logrotate
-	sha512sums = 5e6d345d7171bed3e1e2853f4e2ab23af05d89a93cc3af224ff9ffec6b96dc455c50bf05bbd1c9621a3f75b72ec6712dbdbc0be4bcb4ed8341daef5274cdf18b
+	sha512sums = abd195e898e6d14e55fbf9a32ca657765cfc5ee6ae9feea2e305036f94bd4d740d04e3a278cafe9a1982c763bd225a5e1ba15e65c89d53925e0bffd40addee9c
 	sha512sums = b7b9f47c77fd27787b7c7ae7e78cd831fe9f7f32e280f54952994569bfe69ff03022e349aea9ea734c50b079693c6e15a3c1115ef0093e523437904074da5784
 	sha512sums = ca7d8666177d31b6c4924e9ab44ddf3d5b596b51da04d38da002830b03bd176d49354bbdd2a496617d57f44111ad59833296af87d03ffe3fca6b99327a7b4c3c
 	sha512sums = 8fc2d0d1c4d14b80b82f158adb508bdd65428862cd6197c7b443d4612d0a225b82a4cae8fc76ab49560c97f0bf56427b3f4abc0a598abfa9b25cdd30d1f15a30
