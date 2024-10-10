@@ -1,5 +1,5 @@
-# Maintainer: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
-# Maintainer: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
+# Maintainer: Dinamyc <dinamycdinamyc at gmail dot com>
+# Contributor: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
 pkgname=oblivion-desktop-bin
 pkgver=1.14.0
 pkgrel=1
