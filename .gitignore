@@ -1,4 +1,4 @@
-src/
-*.log
-pkg/
-*.pkg.*
+*
+!PKGBUILD
+!.SRCINFO
+!.gitignore

@@ -1,20 +1,20 @@
 # Maintainer: Yurii Kolesnykov <root@yurikoles.com>
-
+# Co-maintainer: zxp19821005 <zxp19821005 at 163 dot com>
+#
 # Based on extra/electron by
 # Caleb Maclennan <caleb@alerque.com>
 # Bruno Pagani <archange@archlinux.org>
 
-pkgver=31
+pkgver=32
 pkgrel=1
-_pkgname=electron
-pkgname="${_pkgname}-bin"
+pkgname=electron-bin
 pkgdesc='Meta package providing the latest available stable Electron build'
 pkgdesc+=' — binary'
 arch=(any)
 url='https://electronjs.org'
 license=(MIT)
-provides=("${_pkgname}=${pkgver}")
-conflicts=("${_pkgname}")
+provides=("electron=${pkgver}")
+conflicts=('electron')
 
 package() {
 	depends=("electron${pkgver}-bin")
