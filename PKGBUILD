@@ -1,4 +1,5 @@
-# Maintainer: Nikolaos Bezirgiannis <bezeria@gmail.com>
+# Maintainer: Aleks Grabowski <hurufu+aur@gmail.com>
+# Contributor: Nikolaos Bezirgiannis <bezeria@gmail.com>
 # Contributor: Alexander Rødseth <rodseth@gmail.com>
 # Contributor: Jachym Barvinek <jachymb@gmail.com>
 # Contributor: Thomas Dziedzic < gostrc at gmail >
@@ -6,10 +7,10 @@
 # Contributor: Juergen Hoetzel <juergen@archlinux.org>
 
 pkgname=swi-prolog-git
-pkgver=7.2.2.r0.ge10fe28
+pkgver=9.2.7.r34.ge973d414a
 pkgrel=1
 pkgdesc='Prolog environment (latest git stable version)'
-arch=('x86_64' 'i686')
+arch=(x86_64 i686)
 url='http://www.swi-prolog.org/'
 license=('GPL' 'LGPL')
 depends=('gmp' 'readline' 'openssl' 'libarchive')
@@ -20,41 +21,78 @@ optdepends=('unixodbc: for using the odbc4pl library'
             'libxinerama: for using the pl2xpce library'
             'libxft: for using the pl2xpce library'
             'java-environment: for interfacing java with the jpl package')
-#options=('!makeflags')
-source=("git://github.com/SWI-Prolog/swipl")
-sha256sums=('SKIP')
+options=(!makeflags !lto)
+source=(
+    'git+https://github.com/SWI-Prolog/swipl-devel.git'
+    'modules/packages-chr::git+https://github.com/SWI-Prolog/packages-chr.git'
+    'modules/packages-jpl::git+https://github.com/SWI-Prolog/packages-jpl.git'
+    'modules/packages-clpqr::git+https://github.com/SWI-Prolog/packages-clpqr.git'
+    'modules/packages-inclpr::git+https://github.com/SWI-Prolog/packages-inclpr.git'
+    'modules/bench::git+https://github.com/SWI-Prolog/bench.git'
+    'modules/packages-utf8proc::git+https://github.com/SWI-Prolog/packages-utf8proc.git'
+    'modules/contrib-protobufs::git+https://github.com/SWI-Prolog/contrib-protobufs.git'
+    'modules/packages-xpce::git+https://github.com/SWI-Prolog/packages-xpce.git'
+    'modules/packages-odbc::git+https://github.com/SWI-Prolog/packages-odbc.git'
+    'modules/packages-sgml::git+https://github.com/SWI-Prolog/packages-sgml.git'
+    'modules/packages-clib::git+https://github.com/SWI-Prolog/packages-clib.git'
+    'modules/packages-http::git+https://github.com/SWI-Prolog/packages-http.git'
+    'modules/packages-plunit::git+https://github.com/SWI-Prolog/packages-plunit.git'
+    'modules/packages-pldoc::git+https://github.com/SWI-Prolog/packages-pldoc.git'
+    'modules/packages-RDF::git+https://github.com/SWI-Prolog/packages-RDF.git'
+    'modules/packages-semweb::git+https://github.com/SWI-Prolog/packages-semweb.git'
+    'modules/packages-ssl::git+https://github.com/SWI-Prolog/packages-ssl.git'
+    'modules/packages-zlib::git+https://github.com/SWI-Prolog/packages-zlib.git'
+    'modules/contrib-tipc::git+https://github.com/SWI-Prolog/contrib-tipc.git'
+    'modules/packages-table::git+https://github.com/SWI-Prolog/packages-table.git'
+    'modules/packages-nlp::git+https://github.com/SWI-Prolog/packages-nlp.git'
+    'modules/packages-bdb::git+https://github.com/SWI-Prolog/packages-bdb.git'
+    'modules/packages-cpp::git+https://github.com/SWI-Prolog/packages-cpp.git'
+    'modules/packages-ltx2htm::git+https://github.com/SWI-Prolog/packages-ltx2htm.git'
+    'modules/packages-windows::git+https://github.com/SWI-Prolog/packages-windows.git'
+    'modules/packages-PDT::git+https://github.com/SWI-Prolog/packages-PDT.git'
+    'modules/packages-archive::git+https://github.com/SWI-Prolog/packages-archive.git'
+    'modules/distro-debian::git+https://github.com/SWI-Prolog/distro-debian.git'
+    'modules/packages-swipl-win::git+https://github.com/SWI-Prolog/packages-swipl-win.git'
+    'modules/packages-pengines::git+https://github.com/SWI-Prolog/packages-pengines.git'
+    'modules/packages-cql::git+https://github.com/SWI-Prolog/packages-cql.git'
+    'modules/packages-readline::git+https://github.com/SWI-Prolog/packages-readline.git'
+    'modules/packages-libedit::git+https://github.com/SWI-Prolog/packages-libedit.git'
+    'modules/packages-pcre::git+https://github.com/SWI-Prolog/packages-pcre.git'
+    'modules/packages-yaml::git+https://github.com/SWI-Prolog/packages-yaml.git'
+    'modules/packages-paxos::git+https://github.com/SWI-Prolog/packages-paxos.git'
+    'modules/packages-redis::git+https://github.com/SWI-Prolog/packages-redis.git'
+    'modules/packages-stomp::git+https://github.com/SWI-Prolog/packages-stomp.git'
+    'modules/packages-mqi::git+https://github.com/SWI-Prolog/packages-mqi.git'
+    'modules/packages-sweep::git+https://github.com/SWI-Prolog/packages-sweep.git'
+    'modules/packages-swipy::git+https://github.com/SWI-Prolog/packages-swipy.git'
+)
+sha256sums=(
+    SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP
+    SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP
+    SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP
+)
 conflicts=('swi-prolog')
 provides=('swi-prolog')
 
 pkgver() {
-  cd "$srcdir/swipl"
-  git describe --long | sed -r 's/^V//;s/([^-]*-g)/r\1/;s/-/./g'
+    git -C "$srcdir/swipl" describe --long | sed -r 's/^V//;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
 prepare() {
-  cd "$srcdir/swipl"
-  # fix submodules url
-  sed -i -e 's,\.\.,git://github.com/SWI-Prolog,g' .gitmodules
-  git submodule update --init
+    git -C "$srcdir/swipl" -c protocol.file.allow=always submodule update --init
 }
 
 build() {
-  cd "${srcdir}/swipl"
+    mkdir -p build
+    cd build
+    cmake -G Ninja -DCMAKE_INSTALL_PREFIX=/usr ../swipl
+    ninja
+}
 
-  echo 2 | ./configure --prefix=/usr --with-world
-  cd src
-  ./configure --enable-readline --prefix=/usr
-
-  make -C ..
+check() {
+    env -C build ctest -j 8
 }
 
 package() {
-  cd "${srcdir}/swipl"        
-  make DESTDIR="$pkgdir" install
-
-  _tag=$(git describe --abbrev=0 --tags | sed -r 's/^V//g')
-
-  # Fix for FS#20873
-  chmod +x "$pkgdir/usr/lib/swipl-${_tag}/library/dialect/sicstus/swipl-lfr.pl"
+    DESTDIR="$pkgdir" ninja -C build install
 }
-
