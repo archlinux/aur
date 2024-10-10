@@ -20,6 +20,9 @@ depends=(
     'libxcb'
     'libgpg-error'
 )
+makedepends=(
+    'fuse2'
+)
 source=(
     "${pkgname%-bin}-${pkgver}.AppImage::${_dlurl}/releases/download/v${pkgver}/${_pkgname// /_}-${CARCH}_v${pkgver}_ubu20_qt66.AppImage"
     "${pkgname%-bin}.sh"

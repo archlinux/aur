@@ -5,6 +5,7 @@ pkgbase = caesium-image-compressor-bin
 	url = https://saerasoft.com/caesium#downloads
 	arch = x86_64
 	license = GPL-3.0-only
+	makedepends = fuse2
 	depends = e2fsprogs
 	depends = gmp
 	depends = libglvnd
