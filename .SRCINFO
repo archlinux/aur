@@ -1,6 +1,6 @@
 pkgbase = salvage-git
 	pkgdesc = Copy files comfortably and automate your backups.
-	pkgver = 1.5.3.r2.g846765d
+	pkgver = r212.b236382
 	pkgrel = 1
 	url = https://github.com/RenanSui/salvage
 	arch = any
@@ -11,12 +11,13 @@ pkgbase = salvage-git
 	makedepends = npm
 	makedepends = pnpm
 	makedepends = curl
-	depends = electron24
-	provides = salvage=1.5.3.r2.g846765d
+	makedepends = rust
+	depends = gtk3
+	depends = gdk-pixbuf2
+	depends = webkit2gtk
+	provides = salvage=r212.b236382
 	conflicts = salvage
 	source = salvage.git::git+https://github.com/RenanSui/salvage.git
-	source = salvage.sh
 	sha256sums = SKIP
-	sha256sums = 2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051
 
 pkgname = salvage-git
