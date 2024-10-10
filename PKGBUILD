@@ -1,14 +1,13 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 _pkgname=shadps4
 pkgname=$_pkgname-git
-pkgver=0.3.0.r135.ge45eb0da
+pkgver=0.3.0.r159.g0f916616
 pkgrel=1
 pkgdesc="Sony PlayStation 4 emulator"
 arch=('aarch64' 'x86_64')
 url="https://shadps4.net/"
 license=('GPL-2.0-or-later')
 depends=(
-	'bash'
 	'crypto++>=8.9'
 	'gcc-libs'
 	'glibc'
@@ -52,7 +51,6 @@ source=(
 	"$_pkgname-sirit::git+https://github.com/shadps4-emu/sirit.git"
 	"$_pkgname-tracy::git+https://github.com/shadps4-emu/tracy.git"
 	"zydis::git+https://github.com/zyantific/zydis.git"
-	"$_pkgname.sh"
 )
 b2sums=(
 	'SKIP'
@@ -61,7 +59,6 @@ b2sums=(
 	'SKIP'
 	'SKIP'
 	'SKIP'
-	'03abf49a4be0a1308baa2a8d6abe9e4d8cbd5e3fb5b87855d6466f7b21892382fd9e2d574c96cd52bb64f8a529725a3ef3e2994ed5e477be8a25b69052c38483'
 )
 
 pkgver() {
@@ -105,8 +102,7 @@ package() {
 		'qt6-multimedia'
 	)
 	# shellcheck disable=SC2154
-	install -D -t "$pkgdir"/usr/lib/$_pkgname build/shadps4
-	install -D $_pkgname.sh "$pkgdir"/usr/bin/shadps4
+	install -D -t "$pkgdir"/usr/bin build/shadps4
 	cd $_pkgname
 	install -Dm644 -t "$pkgdir"/usr/share/icons/hicolor/512x512/apps .github/shadps4.png
 	install -Dm644 -t "$pkgdir"/usr/share/applications .github/shadps4.desktop

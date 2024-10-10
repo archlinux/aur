@@ -1,6 +1,6 @@
 pkgbase = shadps4-git
 	pkgdesc = Sony PlayStation 4 emulator
-	pkgver = 0.3.0.r135.ge45eb0da
+	pkgver = 0.3.0.r159.g0f916616
 	pkgrel = 1
 	url = https://shadps4.net/
 	arch = aarch64
@@ -25,7 +25,6 @@ pkgbase = shadps4-git
 	makedepends = xbyak>=7.07
 	makedepends = xxhash>=0.8.2
 	makedepends = zycore-c
-	depends = bash
 	depends = crypto++>=8.9
 	depends = gcc-libs
 	depends = glibc
@@ -36,7 +35,7 @@ pkgbase = shadps4-git
 	depends = zlib-ng>=2.1.7
 	optdepends = renderdoc: for graphics debugging
 	optdepends = vulkan-validation-layers: for vulkan debugging
-	provides = shadps4=0.3.0.r135.ge45eb0da
+	provides = shadps4=0.3.0.r159.g0f916616
 	conflicts = shadps4
 	source = shadps4::git+https://github.com/shadps4-emu/shadPS4.git
 	source = shadps4-discord-rpc::git+https://github.com/shadps4-emu/ext-discord-rpc.git
@@ -44,17 +43,14 @@ pkgbase = shadps4-git
 	source = shadps4-sirit::git+https://github.com/shadps4-emu/sirit.git
 	source = shadps4-tracy::git+https://github.com/shadps4-emu/tracy.git
 	source = zydis::git+https://github.com/zyantific/zydis.git
-	source = shadps4.sh
 	b2sums = SKIP
 	b2sums = SKIP
 	b2sums = SKIP
 	b2sums = SKIP
 	b2sums = SKIP
 	b2sums = SKIP
-	b2sums = 03abf49a4be0a1308baa2a8d6abe9e4d8cbd5e3fb5b87855d6466f7b21892382fd9e2d574c96cd52bb64f8a529725a3ef3e2994ed5e477be8a25b69052c38483
 
 pkgname = shadps4-git
-	depends = bash
 	depends = crypto++>=8.9
 	depends = gcc-libs
 	depends = glibc
