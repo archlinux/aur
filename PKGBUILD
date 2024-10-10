@@ -7,7 +7,7 @@ _electron=electron30
 _nodejs="20.16.0"
 
 pkgname=${_pkgname}-electron
-pkgver=1.93.1.24256
+pkgver=1.94.1.24283
 pkgrel=1
 pkgdesc="VS Code without MS branding/telemetry/licensing. - System-wide Electron edition"
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -40,9 +40,9 @@ source=(
 )
 sha256sums=(
 	SKIP
-        '3ef48e81949b6f25fd328dcb4b69e5aab0d5c0e0d82ee60f4818601e2be21062'
+	'57385081b3fb4dcdd32587ff967c66a7c2281c5ff662ac44daa2f1b8cedc748a'
         'da8fbd6dcafa667e2b3368ae87ed216e7e76f56ce4a3e4ede426dc129e8f8349'
-        '3010640182f3bb65404eb96e087e3cbe9f2d931c74822cc3c7547712fab1acec'
+	'28a271ba5b2e50b11259abd794ad2ab083612c78bee2d617bb5a8702932c8f44'
         '3a5bc109974fcf408855c13965f6d6be0997655c5b359de0bfd19a678c00844e'
         '6eef345b65bf2679c928c763529540435ab9c6e1836917319810a7a2d484ae1b'
 )
@@ -158,5 +158,5 @@ package() {
 	ln -s /usr/lib/${_pkgname}/completions/bash/codium ${pkgdir}/usr/share/bash-completion/completions
 
 	# vscodium-electron modification: Replace bundled ripgrep with system ripgrep
-	ln -sf /usr/bin/rg ${pkgdir}/usr/lib/$_pkgname/node_modules.asar.unpacked/@vscode/ripgrep/bin/rg
+	ln -sf /usr/bin/rg ${pkgdir}/usr/lib/$_pkgname/node_modules/@vscode/ripgrep/bin/rg
 }

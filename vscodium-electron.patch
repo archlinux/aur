@@ -13,7 +13,7 @@ index 919a6a5..440d3e7 100755
 +  # Build native modules for system electron
 +  # ref: https://gitlab.archlinux.org/archlinux/packaging/packages/code/-/blob/main/PKGBUILD
 +  _target=$(</usr/lib/$_electron/version)
-+  sed -i "s/^target .*/target \"${_target//v/}\"/" .yarnrc
++  sed -i "s/^target.*/target=\"${_target//v/}\"/" .npmrc
 +  # During build, electron source will be downloaded
 +  # In this package, the version downloaded is the same as the system version
 +  # Thus, replace the checksum file with the one for the system version
