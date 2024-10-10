@@ -1,24 +1,59 @@
 #!/bin/bash
 
-# This script updates the package version if a new version is available
-set -euxo pipefail
+set -euo pipefail
+use_tmpfs=true
+CHROOT="/tmp/mkarchroot"
 
-# Preparing arch-chroot
-CHROOT=$HOME/.local/share/chroot
-if [[ ! -d "$CHROOT" ]]; then
-	mkdir -p "$CHROOT"
-	mkarchroot "$HOME/.local/share/chroot/root" base-devel
-	arch-nspawn "$HOME/.local/share/chroot/root" pacman -Syu
-fi
+check_available_ram() {
+    if [ "$(awk '/^MemAvailable:/ { print $2; }' /proc/meminfo)" -lt 50000 ]; then
+        use_tmpfs=false
+    fi
+}
 
-# Start generate package
-makechrootpkg -c -r "$CHROOT" -- -Acsf .
+create_chroot_directory() {
+    if [ $use_tmpfs ]; then
+        sudo mount --mkdir -t tmpfs -o defaults,size=20G tmpfs $CHROOT
+    else
+        sudo mkdir -p "$CHROOT"
+    fi
+}
 
-# Update .SRCINFO
-#makepkg --printsrcinfo >.SRCINFO
+create_chroot_environment() {
+    if [[ ! -d "$CHROOT/root" ]]; then
+        mkarchroot -M ~/.config/pacman/makepkg.conf "$CHROOT/root" base-devel
+    fi
+}
 
-# Commit changes
-#git add PKGBUILD .SRCINFO
-#git commit -s -m "Update to ${VER}"
-#rm -rf *.gz *.log *.zst
-sudo rm -Rf "$CHROOT"
+build_package(){
+    arch-nspawn "$CHROOT/root" pacman -Syu
+    makechrootpkg -c -r "$CHROOT" -- -Asf .
+    makepkg --printsrcinfo >.SRCINFO
+}
+
+sign_package(){
+    PACKAGE="$(makepkg --packagelist)"
+    gpg --use-agent --output "$PACKAGE.sig" --detach-sign "$PACKAGE"
+}
+
+delete_chroot_environment() {
+    if [ "$(stat -f --format=%T "$CHROOT")" == "btrfs" ]; then
+        {
+            sudo btrfs subvolume delete "$CHROOT/root/var/lib/portables"
+            sudo btrfs subvolume delete "$CHROOT/root/var/lib/machines"
+            sudo btrfs subvolume delete "$CHROOT/root"
+            sudo rm -Rf $CHROOT
+        } >>/dev/null 2>&1
+    elif [ "$(stat -f --format=%T "$CHROOT")" == "tmpfs" ]; then
+        sudo umount -f $CHROOT
+    fi
+    sudo rm -Rf $CHROOT
+}
+
+check_available_ram
+create_chroot_directory
+create_chroot_environment
+build_package
+sign_package
+delete_chroot_environment
+
+# vim: set ts=4 sw=4 et:

@@ -1,0 +1,4 @@
+[fortune-mod-de]
+source = "git"
+git = "https://salsa.debian.org/debian/fortunes-de"
+prefix = "upstream/"

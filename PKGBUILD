@@ -2,45 +2,45 @@
 
 pkgname=fortune-mod-de
 pkgver=0.36
-pkgrel=2
+pkgrel=5
 pkgdesc="Fortune Cookies in german, from the Debian project"
-url="https://packages.debian.org/source/sid/fortunes-de"
+arch=('any')
+url="https://salsa.debian.org/debian/fortunes-de"
+license=(
+    'GPL-2.0-or-later'
+)
 depends=(
     'fortune-mod'
 )
 makedepends=(
+    'git'
     'recode'
 )
-source=(http://ftp.de.debian.org/debian/pool/main/f/fortunes-de/fortunes-de_$pkgver.orig.tar.gz)
-arch=('any')
-license=(
-    'GPL-2.0-or-later'
+source=("$pkgname::git+$url.git#tag=upstream/0.36"
 )
-md5sums=(
-    '0a59881abb5af5d44be06c70ed91308f'
-)
-provides=("${pkgname}")
-conflicts=("${pkgname}")
+sha256sums=('a910d0b161412c077bc02f71e9d4f2da9caf3cc919e485c5bf62f1bcd05217cc')
 
 build() {
-    cd "$srcdir/fortunes-de-${pkgver}"
+    cd "$pkgname"
     PREFIX=$(pwd)/build \
-    DOCDIR=usr/share/doc/${pkgname%-git} \
+    DOCDIR=usr/share/doc/${pkgname} \
     BINDIR=usr/bin \
     FORTUNESDIR=usr/share/fortune \
         ./install.sh -utf8
 }
 
 package() {
-    cd "$srcdir/fortunes-de-${pkgver}/build"
+    cd "$pkgname/build"
     rm -r {man,usr/bin}
-    cp -r * "${pkgdir}"
+    cp -r ./* "${pkgdir}"
     # Remove *.u8 files and strip ".fortunes" from filenames
-    cd $pkgdir/usr/share/fortune/de
+    cd "$pkgdir/usr/share/fortune/de"
     mv debian debian-de
     mv debian.dat debian-de.dat
-    rm *.u8
-    mv * ..
-    cd ..
+    rm ./*.u8
+    mv ./* ..
+    cd "$pkgdir/usr/share/fortune"
     rm -r de
 }
+
+# vim: set ts=4 sw=4 et:
