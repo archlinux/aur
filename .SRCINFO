@@ -1,6 +1,6 @@
 pkgbase = browsers-git
 	pkgdesc = Open the right browser at the right time
-	pkgver = r394.acfebf4
+	pkgver = r671.c8811a4
 	pkgrel = 1
 	url = https://github.com/Browsers-software/browsers
 	arch = any

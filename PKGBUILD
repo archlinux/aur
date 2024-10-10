@@ -5,7 +5,7 @@ pkgdesc="Open the right browser at the right time"
 url="https://github.com/Browsers-software/browsers"
 license=("custom")
 arch=("any")
-pkgver=r394.acfebf4
+pkgver=r671.c8811a4
 pkgrel=1
 makedepends=("rust" "cargo" "git")
 depends=()
@@ -42,7 +42,7 @@ function package() {
 	install -Dm644 "${srcdir}/browsers/extra/linux/dist/software.Browsers.template.desktop" "${pkgdir}/usr/share/applications/software.Browsers.desktop"
 	mkdir -p "${pkgdir}/usr/share/icons/hicolor"
 	#cp -r "${srcdir}"/browsers/resources/icons/* "${pkgdir}/usr/share/icons/hicolor"
-	sed -i 's/€ExecCommand€/browsers/g' "${pkgdir}/usr/share/applications/software.Browsers.desktop"
+	sed -i 's/€ExecCommand€/browsers %u/g' "${pkgdir}/usr/share/applications/software.Browsers.desktop"
 	cp -r "${srcdir}/browsers/resources" "${pkgdir}/usr/share/software.Browsers"
 	chmod -R 755 "${pkgdir}/usr"
 	install -Dm755 "${srcdir}"/browsers/resources/icons/512x512/software.Browsers.png "${pkgdir}/usr/share/icons/hicolor/512x512/apps/software.Browsers.png"
