@@ -15,6 +15,8 @@ else
 fi
 url="https://github.com/Redot-Engine/redot-engine"
 license=('MIT')
+provides=('redot')
+conflicts=('redot-bin')
 depends=(embree3 freetype2 graphite harfbuzz harfbuzz-icu libglvnd libspeechd
     libsquish libtheora libvorbis libwebp libwslay libxcursor libxi
     libxinerama libxrandr mbedtls2 miniupnpc pcre2)
