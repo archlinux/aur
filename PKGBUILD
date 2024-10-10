@@ -2,7 +2,7 @@
 
 pkgname=('dashpay-bls-signatures')
 _pkgname=('bls-signatures')
-pkgver=1.3.1
+pkgver=1.3.2
 pkgrel=1
 pkgdesc='Chia Networks BLS Signatures implementation fork for Dashcore'
 arch=('x86_64')
@@ -11,8 +11,8 @@ license=('Apache')
 depends=()
 conflicts=('codablock-bls-signatures')
 makedepends=('git' 'libgmp-static' 'libsodium-static' 'cmake' 'catch2')
-source=($pkgname-v$pkgver.tar.gz::https://github.com/dashpay/$_pkgname/archive/refs/tags/v$pkgver.tar.gz)
-sha512sums=('fd3a741185d87c8e40f3744e41ae75922924630fe33808ea3ddb0fb68895b6c5c0078673751c3c3f360755b866218c91c41bcfd1ddf00b780fc065706fc3c575')
+source=($pkgname-v$pkgver.tar.gz::https://github.com/dashpay/$_pkgname/archive/refs/tags/$pkgver.tar.gz)
+sha512sums=('e4df88b79d4cf71fe228bb4871ae10b6d3d0aadb92bd417a51d45346838ab11d24193ba3ec959e6d70dc28bd6fae57fdae40299e85a37d2769115c4ceed3cc3a')
 
 build() {
    cd $_pkgname-$pkgver
