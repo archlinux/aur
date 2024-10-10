@@ -6,7 +6,7 @@
 
 _pkgname="floorp"
 pkgname="$_pkgname-bin"
-pkgver=11.19.0
+pkgver=11.19.1
 pkgrel=1
 pkgdesc="Firefox-based web browser focused on performance and customizability"
 url="https://floorp.app/"
@@ -42,8 +42,8 @@ sha256sums=(
   '07a63f189beaafe731237afed0aac3e1cfd489e432841bd2a61daa42977fb273'
   '853ba77377f296d3bf52f191131883702dd96d38084f78ea5ddb29821ac253d1'
 )
-sha256sums_x86_64=('a250157f3e5061a2715fbfa1fab867d02365912d48655e37a2c37bf5390fd1eb')
-sha256sums_aarch64=('f474577a9731b7632940d7d410b9073de96d3a4eede2c79638f51e6d8290dcdc')
+sha256sums_x86_64=('1b84be3354dfa9857ff9bfe29590ef60f59351f4caf28e87cf19ca242991d80f')
+sha256sums_aarch64=('1fccd29529e19b118eb30055116d8363eba4b607097bd11dbb3a48a2be87619f')
 
 package() {
   depends=(
