@@ -1,7 +1,7 @@
 pkgbase = batch-explorer-bin
-	pkgdesc = A client tool to help create, debug and monitor Azure Batch Applications
+	pkgdesc = A client tool to help create, debug and monitor Azure Batch Applications.Prebuilt version.Use system-wide electron.
 	pkgver = 2.20.0_stable.966
-	pkgrel = 3
+	pkgrel = 4
 	url = https://azure.github.io/BatchExplorer/
 	arch = x86_64
 	license = MIT
@@ -12,8 +12,11 @@ pkgbase = batch-explorer-bin
 	depends = python>=3
 	depends = libsecret
 	depends = openssl-1.1
+	depends = nodejs
 	provides = batch-explorer=2.20.0_stable.966
 	conflicts = batch-explorer
+	options = !strip
+	options = !emptydirs
 	source = batch-explorer-2.20.0_stable.966.deb::https://github.com/Azure/BatchExplorer/releases/download/v2.20.0-stable.966/batch-explorer_2.20.0-stable.966_amd64.deb
 	source = LICENSE-2.20.0_stable.966::https://raw.githubusercontent.com/Azure/BatchExplorer/v2.20.0-stable.966/LICENSE
 	sha256sums = 2d4a1b57f8c3d83e47233f533d71340aeaac11c3e03be0beea0fd6a49c7acb60
