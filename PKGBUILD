@@ -1,29 +1,37 @@
-# Maintainer:  Christian Holme <hcmh (at) kolabnow (dot) com>
+# Maintainer: Jakub Klinkovský <lahwaacz at archlinux dot org>
+# Contributor:  Christian Holme <hcmh (at) kolabnow (dot) com>
 
 _name=bash_kernel
 pkgname=jupyter-${_name}
 pkgver=0.9.3
-pkgrel=1
-pkgdesc="A Jupyter kernel for bash"
-arch=('any')
+pkgrel=2
+pkgdesc="A bash kernel for Jupyter"
+arch=(any)
 url="https://github.com/takluyver/bash_kernel"
-license=('BSD')
-depends=('jupyter-notebook' 'bash' 'python-pexpect' 'python-flit-core' 'python-ipykernel' 'python-debugpy')
-makedepends=(python-build python-installer python-wheel)
-source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('9f7a03811ca7d9cb1fbff8082237cf0450b97182252fd0b80587a16b65e66d58')
-  
-
+license=(BSD-3-Clause)
+depends=(
+  bash
+  python-pexpect
+  python-ipykernel
+  python-debugpy
+)
+makedepends=(
+  python-build
+  python-installer
+  python-flit-core
+)
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
+b2sums=('2d1cf609594fc4333d74821b69c5df685c3f8ecf908ad4a0ad7411118a46b4046817ef5c166aac0fbc28c9a54d28ca1fa614f00194d5ad7b7d4c630cdcc92301')
 
 build() {
-  cd "$srcdir"/${_name}-${pkgver}
+  cd $_name-$pkgver
   python -m build --wheel --no-isolation
 }
 
 package() {
-  cd "$srcdir"/${_name}-${pkgver}
+  cd $_name-$pkgver
   python -m installer --destdir="$pkgdir" dist/*.whl
 
-  install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -vDm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
   python -m bash_kernel.install --prefix="$pkgdir"/usr
 }
