@@ -1,7 +1,7 @@
 pkgbase = perl-css-sass
 	pkgdesc = Compile .scss files using libsass
 	pkgver = 3.6.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://metacpan.org/release/CSS-Sass
 	arch = i686
 	arch = x86_64

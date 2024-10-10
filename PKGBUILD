@@ -3,7 +3,7 @@ _author=OCBNET
 
 pkgname='perl-css-sass'
 pkgver='3.6.4'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="Compile .scss files using libsass"
 arch=('i686' 'x86_64')
 license=('PerlArtistic' 'GPL')
