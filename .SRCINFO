@@ -1,6 +1,6 @@
 pkgbase = osgearth
 	pkgdesc = A terrain rendering toolkit for OpenSceneGraph
-	pkgver = 3.1
+	pkgver = 3.5
 	pkgrel = 1
 	url = https://osgearth.org
 	arch = i686
@@ -13,9 +13,13 @@ pkgbase = osgearth
 	depends = qt5-base
 	depends = rocksdb
 	depends = duktape
+	depends = rapidjson
+	depends = draco
+	depends = protobuf
 	provides = osgearth
-	source = https://github.com/gwaldron/osgearth/archive/osgearth-3.1.tar.gz
-	md5sums = 20230b8e07da210c1a7757247a339243
+	source = https://github.com/gwaldron/osgearth/archive/osgearth-3.5.tar.gz
+	source = fix_rapidjson.patch
+	md5sums = 40d99071dfaef77d7da103cbed6d194c
+	md5sums = 9da9dba182e6a182e0baaa55b588aa35
 
 pkgname = osgearth
-

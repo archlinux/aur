@@ -1,0 +1,18 @@
+--- ./src/third_party/tinygltf/tiny_gltf.h	2023-10-23 08:54:59.000000000 -0500
++++ tiny_gltf.h	2023-10-23 19:16:07.180239756 -0500
+@@ -1500,11 +1500,11 @@
+ #ifndef TINYGLTF_USE_RAPIDJSON
+ #include "json.hpp"
+ #else
+-#include "rapidjson.h"
+-#include "document.h"
+-#include "prettywriter.h"
+-#include "stringbuffer.h"
+-#include "writer.h"
++#include "rapidjson/rapidjson.h"
++#include "rapidjson/document.h"
++#include "rapidjson/prettywriter.h"
++#include "rapidjson/stringbuffer.h"
++#include "rapidjson/writer.h"
+ #endif
+ #endif
