@@ -2,10 +2,12 @@
 _pkgname=sast-evento
 pkgname=${_pkgname}-git
 
-pkgver=2.0.46.0.g94f8c5b
+pkgver=2.0.46.1.g72f5100
 pkgrel=1
 pkgdesc='An event management system developed and used by NJUPT SAST (git package)'
 license=("${srcdir}/sast-evento/LICENSE")
+provides=("${_pkgname}")
+conflicts=("${_pkgname}" "${_pkgname}-bin")
 
 _slintver=1.8.0
 
@@ -36,11 +38,8 @@ arch=('x86_64')
 
 url="https://github.com/NJUPT-SAST/sast-evento"
 
-provides=("${_pkgname}")
-conflicts=("${_pkgname}" "${_pkgname}-bin")
-
 pkgver() {
-    cd ${srcdir}/sast-evento
+    cd "${srcdir}/sast-evento"
     git --no-pager describe --tags --exclude "v[0-9]*[._][0-9]*[._][0-9]*-[0-9]*" --always --dirty --long | sed 's/-/./g'
 }
 
@@ -67,11 +66,11 @@ build() {
     cmake -B build \
         -DSLINT_FEATURE_RENDERER_SKIA=ON \
         -DSLINT_FEATURE_RENDERER_FEMTOVG=OFF \
-        -DSlint_DIR=${srcdir}/Slint-cpp-1.8.0-Linux-x86_64/lib/cmake/Slint
+        -DSlint_DIR=${srcdir}/Slint-cpp-${_slintver}-Linux-x86_64/lib/cmake/Slint
     cmake --build build
     cmake --install ./build --prefix "${srcdir}/build"
 }
 
 package() {
-    cp -r "${srcdir}/build/*" "${pkgdir}"
+    cp -r "${srcdir}"/build/* "${pkgdir}"
 }
