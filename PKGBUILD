@@ -2,7 +2,7 @@
 # Maintainer: Vilsol <me at vil dot so>
 
 pkgname='ficsit-cli-bin'
-pkgver=0.5.1
+pkgver=0.6.0
 pkgrel=1
 pkgdesc='A CLI for managing mods for the game Satisfactory'
 url='https://github.com/satisfactorymodding/ficsit-cli'
@@ -11,17 +11,17 @@ license=('GPL3')
 provides=('ficsit')
 conflicts=('ficsit')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.binary::https://github.com/satisfactorymodding/ficsit-cli/releases/download/v0.5.1/ficsit_linux_arm64")
-sha256sums_aarch64=('a8c4efa86bdcf9814ae0c0bc0e814e9901006fadc7a40c66169af6b1be28ce70')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.binary::https://github.com/satisfactorymodding/ficsit-cli/releases/download/v0.6.0/ficsit_linux_arm64")
+sha256sums_aarch64=('c150c738bef130df45b3a32dcf4d1329ca41bc760fcf1c15f22ed9a27debad03')
 
-source_armv7h=("${pkgname}_${pkgver}_armv7h.binary::https://github.com/satisfactorymodding/ficsit-cli/releases/download/v0.5.1/ficsit_linux_armv7")
-sha256sums_armv7h=('492fb5904a738de4969a9f53b154a40edfd5e0407a0e04e54ae6f059914f1c73')
+source_armv7h=("${pkgname}_${pkgver}_armv7h.binary::https://github.com/satisfactorymodding/ficsit-cli/releases/download/v0.6.0/ficsit_linux_armv7")
+sha256sums_armv7h=('fa57321fec4cf922f2f4dcf9c07414bc525b1fba6cd96de6e0dbcbfa4c9477f0')
 
-source_i686=("${pkgname}_${pkgver}_i686.binary::https://github.com/satisfactorymodding/ficsit-cli/releases/download/v0.5.1/ficsit_linux_386")
-sha256sums_i686=('cb4b5edb7a5eb778f9ccbf6fc51acddde283a0cf423221f3f6cb454eb8dcbb12')
+source_i686=("${pkgname}_${pkgver}_i686.binary::https://github.com/satisfactorymodding/ficsit-cli/releases/download/v0.6.0/ficsit_linux_386")
+sha256sums_i686=('9081e3025a5a94d274c6a07bac1b061dba700ee9edb166c42ce2716c8617e7eb')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.binary::https://github.com/satisfactorymodding/ficsit-cli/releases/download/v0.5.1/ficsit_linux_amd64")
-sha256sums_x86_64=('dda23138884410a7890ca5f1ece72846cdb5a9cfb80ea4d371224a09d7e5591f')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.binary::https://github.com/satisfactorymodding/ficsit-cli/releases/download/v0.6.0/ficsit_linux_amd64")
+sha256sums_x86_64=('ed8625951df329a122f160c642b8a350c47794c79b8c1a45fe0a3dff52cafcfd')
 
 package() {
   install -Dm755 "./${pkgname}_${pkgver}_${CARCH}.binary" "${pkgdir}/usr/bin/ficsit"
