@@ -1,0 +1,19 @@
+pkgbase = r-multidplyr
+	pkgdesc = Partition a data frame across multiple worker processes to provide simple multicore parallelism.
+	pkgver = 0.1.3
+	pkgrel = 1
+	url = https://cran.r-project.org/package=multidplyr
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-dplyr
+	depends = r-cli
+	depends = r-crayon
+	depends = r-tibble
+	depends = r-tidyselect
+	depends = r-vctrs
+	depends = r-qs
+	source = https://cran.r-project.org/src/contrib/multidplyr_0.1.3.tar.gz
+	sha256sums = 92b75ed45e39d0525357e916d7a96e44cd943494670267621f8ea3173411d4a3
+
+pkgname = r-multidplyr
