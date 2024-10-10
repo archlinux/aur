@@ -1,0 +1,13 @@
+pkgbase = jqjq-git
+	pkgdesc = jq implementation of jq
+	pkgver = r189.15c9d86
+	pkgrel = 1
+	url = https://github.com/wader/jqjq
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = jq
+	source = git+https://github.com/wader/jqjq#tag=15c9d864a4b5154c1e1f7a1663ed19eed7636dfd
+	sha256sums = SKIP
+
+pkgname = jqjq-git
