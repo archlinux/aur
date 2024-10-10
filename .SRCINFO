@@ -1,7 +1,7 @@
 pkgbase = rudesktop
 	pkgdesc = Ru-Desktop client for home use
 	pkgver = 2.7.552
-	pkgrel = 2
+	pkgrel = 3
 	url = https://rudesktop.ru/downloads/
 	arch = x86_64
 	license = custom
@@ -11,7 +11,6 @@ pkgbase = rudesktop
 	depends = libxinerama
 	depends = python
 	depends = gdk-pixbuf2
-	depends = libx21
 	depends = libxcb
 	depends = gcc-libs
 	depends = hicolor-icon-theme
