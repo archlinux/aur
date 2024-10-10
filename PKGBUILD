@@ -2,11 +2,11 @@
 
 pkgname=yojo-git
 _pkgname=yojo
-pkgver=r18.abfbe875475c
+pkgver=r45.57321884506c
 pkgrel=1
 pkgdesc='A CI bridge from Forgejo/Gitea to SourceHut'
 arch=('x86_64')
-url='https://git.sr.ht/~emersion/yojo'
+url='https://codeberg.org/emersion/yojo'
 license=('MIT')
 depends=('sqlite')
 makedepends=('git' 'go')
@@ -14,7 +14,7 @@ provides=('yojo')
 conflicts=('yojo')
 backup=(etc/yojo/config)
 source=(
-	"git+https://git.sr.ht/~emersion/yojo"
+	"git+https://codeberg.org/emersion/yojo.git"
 	"yojo.service"
 	"yojo.sysusers"
 	"yojo.tmpfiles"
