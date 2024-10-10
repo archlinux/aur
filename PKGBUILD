@@ -27,7 +27,7 @@ prepare() {
 
     cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 
-    mkdir completions
+    mkdir -p completions
 }
 
 build() {
