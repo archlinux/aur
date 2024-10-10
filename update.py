@@ -6,6 +6,7 @@ import argparse
 import getpass
 import hashlib
 import http.cookiejar
+import time
 import json
 import re
 import subprocess as subp
@@ -79,15 +80,15 @@ if "sessionid" not in (c.name for c in cookiejar):
 
     with open("/dev/tty", "r+b", buffering=0) as f:
         f.write("Foundry username: ".encode())
-        username = f.readline().decode()
+        username = f.readline().decode().strip()
     password = getpass.getpass(prompt="Foundry password: ")
 
     auth = urlencode(
         {
             "csrfmiddlewaretoken": csrfmiddlewaretoken,
-            "login_redirect": "/",
-            "login_username": username,
-            "login_password": password,
+            "next": "/",
+            "username": username,
+            "password": password,
             "login": "",
         }
     )
@@ -97,7 +98,9 @@ if "sessionid" not in (c.name for c in cookiejar):
         data=auth.encode(),
     )
     with opener.open(auth_req) as res:
-        csrftoken_cookie = res.getheader("Set-Cookie").split(";")[0]
+        headers = res.getheaders()
+        csrf_header = next(val for (_, val) in headers if val.startswith("csrftoken="))
+        csrftoken_cookie = csrf_header.split(";")[0]
     cookiejar.save()
 
 with opener.open("https://foundryvtt.com/releases/") as res:
@@ -118,12 +121,13 @@ if latest_release > curr_version:
         f"https://foundryvtt.com/releases/download?build={latest_release[-1]}&platform=linux&response_type=json"
     )
     with opener.open(download_req) as res:
-        download_url = json.loads(res.read())["url"]
-    with opener.open(download_url) as res:
+        response = res.read()
+        download_url = json.loads(response)["url"]
+    with req.urlopen(download_url) as res:
         filename = f"FoundryVTT-{release_str}.zip"
         with open(filename, "wb") as f:
             hasher = hashlib.sha256()
-            expected_bytes = int(res.headers['Content-Length'])
+            expected_bytes = int(res.headers["Content-Length"])
             received_bytes = 0
             chunk = res.read(1024)
             while len(chunk) > 0:
