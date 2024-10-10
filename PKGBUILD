@@ -1,7 +1,8 @@
-# Maintainer: Chris Severance aur.severach aATt spamgourmet dott com
-# Previous Maintainer: ghost64 <michael at corrigan dot xyz>
-# Previous Maintainer: uzerus <szymonscholz at gmail dot com>
-# Previous Maintainer: Matthew Gamble
+# Maintainer: Matt Quintanilla <matt @ matt quintanilla .xyz>
+# Contributor: Chris Severance aur.severach aATt spamgourmet dott com
+# Contributor: ghost64 <michael at corrigan dot xyz>
+# Contributor: uzerus <szymonscholz at gmail dot com>
+# Contributor: Matthew Gamble
 
 pkgname='duck'
 pkgver='9.0.2.42108'
