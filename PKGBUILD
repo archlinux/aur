@@ -4,16 +4,16 @@
 # Contributor: ponsfoot <cabezon dot hashimoto at gmail dot com>
 
 pkgname='emacs-mozc'
-pkgver=2.30.5595.102
+pkgver=2.30.5618.102
 pkgrel=1
 pkgdesc='Mozc module for Emacs'
 arch=('x86_64')
 url='https://github.com/google/mozc'
 license=('Apache-2.0 AND BSD-2-Clause AND BSD-3-Clause AND MIT AND NAIST-2003 AND Unicode-3.0 AND LicenseRef-Okinawa-Dictionary')
-depends=('emacs' 'mozc>=2.30.5595.102')
+depends=('emacs' 'mozc>=2.30.5618.102')
 makedepends=('bazel' 'git' 'python' 'qt6-base')
 options=(!distcc !ccache)
-source=('git+https://github.com/google/mozc.git#commit=b52f3048e4becb08f0addc997e40540f6baa5508'
+source=('git+https://github.com/google/mozc.git#commit=1d74ac4a0f569aaa99838df861997f3e882add3c'
         'git+https://github.com/abseil/abseil-cpp.git#commit=4447c7562e3bc702ade25105912dce503f0c4010'
         'git+https://github.com/google/breakpad.git#commit=216cea7bca53fa441a3ee0d0f5fd339a3a894224'
         'git+https://github.com/google/googletest.git#commit=b514bdc898e2951020cbdca1304b75f5950d1f59'
@@ -21,7 +21,7 @@ source=('git+https://github.com/google/mozc.git#commit=b52f3048e4becb08f0addc997
         'git+https://github.com/hiroyuki-komatsu/japanese-usage-dictionary.git#commit=e5b3425575734c323e1d947009dd74709437b684'
         'git+https://github.com/protocolbuffers/protobuf.git#commit=7cc670c1809e704ebeba90fb430d50e009f36727'
         'git+https://github.com/microsoft/wil.git#commit=fc5dbf55989fe20351c71d038a8d12de4b397a6d')
-sha256sums=('367dbf90873203766785ce17e00df56d9682af6d0082a9974934d599e7e29e93'
+sha256sums=('6510cf464223d46042d446652a4f7e4bafc3be89ca5aa3990223d73a0df70089'
             'e131bbdd4e207d6cc2930bca9db82d6da9e347175c1125d9d1f2e09a36652278'
             '5168bb8ea19e2f696eeecbdee991f28e496aea206a473fd7cb49b547f5d0c5af'
             'c081295f2c22705e07fc430e152a30b36f949a179075d47d3e12ff3109d43c6a'
