@@ -1,82 +1,73 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
-# based on aur electron21-bin: Yurii Kolesnykov <root@yurikoles.com>
-pkgname=electron2-bin
+# Co-maintainer: Yurii Kolesnykov <root@yurikoles.com>
+# Based on extra/electron* by
+# Bruno Pagani <archange@archlinux.org>
+# Caleb Maclennan <caleb@alerque.com>
+_projectname=electron
 _major=2
-_subver=0.18
+_pkgname="${_projectname}${_major}"
+pkgname="${_pkgname}"-bin
+_subver="0.18"
 _pkgver="${_major}.${_subver}"
 pkgver="${_pkgver/-/.}"
-pkgrel=3
-pkgdesc="Build cross platform desktop apps with web technologies - Binary version ${_major}"
+pkgrel=4
+pkgdesc="Build cross platform desktop apps with web technologies — prebuilt"
 arch=(
-	'x86_64'
-	'aarch64'
+    'aarch64'
+    'armv7h'
+	'i686'
+    'x86_64'
 )
-url="https://electronjs.org"
-_releaseurl="https://github.com/${pkgname%2-bin}/${pkgname%2-bin}/releases/download/v${_pkgver}"
+url='https://electronjs.org'
+_ghurl="https://github.com/electron/electron"
 license=(
-	'MIT'
-	'LicenseRef-custom'
+    'MIT'
+    'LicenseRef-custom'
 )
-provides=("${pkgname%-bin}=${pkgver}")
-conflicts=("${pkgname%-bin}")
+provides=(
+    "${_pkgname}=${pkgver}"
+)
+conflicts=("${_pkgname}")
 depends=(
-	'alsa-lib'
-	'gtk3'
-	'libxss'
-	'nss'
-	'gconf'
-	'libxcursor'
-	'libcups'
-	'libxrandr'
-	'pango'
-	'expat'
-	'gdk-pixbuf2'
-	'at-spi2-core'
-	'libxcomposite'
-	'libxdamage'
-	'libxext'
-	'libx11'
-	'libxfixes'
-	'libxtst'
-	'cairo'
-	'libxcb'
-	'nspr'
-	'libxrender'
-	'fontconfig'
-	'libxi'
+    'alsa-lib'
+    'gtk3'
+    'nss'
 )
 optdepends=(
-	'kde-cli-tools: file deletion support (kioclient5)'
-	'libappindicator-gtk3: StatusNotifierItem support'
-	'pipewire: WebRTC desktop sharing under Wayland'
-	'qt5-base: enable Qt5 with --enable-features=AllowQt'
-	'trash-cli: file deletion support (trash-put)'
-	"xdg-utils: open URLs with desktop's default (xdg-email, xdg-open)"
-)
-noextract=(
-	"${pkgname}-chromedriver-${pkgver}-${CARCH}.zip"
-	"${pkgname}-${pkgver}-${CARCH}.zip"
-)
-source_x86_64=(
-	"${pkgname}-chromedriver-${pkgver}-x86_64.zip::${_releaseurl}/chromedriver-v${_pkgver}-linux-x64.zip"
-	"${pkgname}-${pkgver}-x86_64.zip::${_releaseurl}/${pkgname%2-bin}-v${_pkgver}-linux-x64.zip"
+    'kde-cli-tools: file deletion support (kioclient5)'
+    'pipewire: WebRTC desktop sharing under Wayland'
+    'qtt-base: enable Qt6 with --enable-features=AllowQt'
+    'trash-cli: file deletion support (trash-put)'
+    "xdg-utils: open URLs with desktop's default (xdg-email, xdg-open)"
 )
 source_aarch64=(
-	"${pkgname}-chromedriver-${pkgver}-aarch64.zip::${_releaseurl}/chromedriver-v${_pkgver}-linux-arm64.zip"
-	"${pkgname}-${pkgver}-aarch64.zip::${_releaseurl}/${pkgname%2-bin}-v${_pkgver}-linux-arm64.zip"
+    "${_pkgname}-chromedriver-${pkgver}-aarch64.zip::${_ghurl}/releases/download/v${_pkgver}/chromedriver-v${_pkgver}-linux-arm64.zip"
+    "${_pkgname}-${pkgver}-aarch64.zip::${_ghurl}/releases/download/v${_pkgver}/electron-v${_pkgver}-linux-arm64.zip"
 )
-sha256sums_x86_64=('37140f6ec7d333dcd559c85815d547ef7a0046272f37fce0f78c308032779edc'
-                   'f196e06b6ecfa33bffb02b3d6c4a64bd5a076014e2f21c4a67356474ee014000')
+source_armv7h=(
+    "${_pkgname}-chromedriver-${pkgver}-armv7h.zip::${_ghurl}/releases/download/v${_pkgver}/chromedriver-v${_pkgver}-linux-armv7l.zip"
+    "${_pkgname}-${pkgver}-armv7h.zip::${_ghurl}/releases/download/v${_pkgver}/electron-v${_pkgver}-linux-armv7l.zip"
+)
+source_i686=(
+    "${_pkgname}-chromedriver-${pkgver}-i686.zip::${_ghurl}/releases/download/v${_pkgver}/chromedriver-v${_pkgver}-linux-ia32.zip"
+    "${_pkgname}-${pkgver}-i686.zip::${_ghurl}/releases/download/v${_pkgver}/electron-v${_pkgver}-linux-ia32.zip"
+)
+source_x86_64=(
+    "${_pkgname}-chromedriver-${pkgver}-x86_64.zip::${_ghurl}/releases/download/v${_pkgver}/chromedriver-v${_pkgver}-linux-x64.zip"
+    "${_pkgname}-${pkgver}-x86_64.zip::${_ghurl}/releases/download/v${_pkgver}/electron-v${_pkgver}-linux-x64.zip"
+)
 sha256sums_aarch64=('516981ca6f7465dba55228df9ba30b7e0566a3eec694e5a2cc2fbe58a41ff006'
                     'dfcfb60fc57dcec41a25cebbea37c0486a0ffd690ac3ccbb80a97161851df81f')
-build() {
-	install -Dm755 -d "${srcdir}/${pkgname%-bin}"
-	bsdtar -xf "${srcdir}/${pkgname}-chromedriver-${pkgver}-${CARCH}.zip" -C "${srcdir}/${pkgname%-bin}"
-	bsdtar -xf "${pkgname}-${pkgver}-${CARCH}.zip" -C "${srcdir}/${pkgname%-bin}"
-}
+sha256sums_armv7h=('dfb244c4347481a526567418f78a0fb6b9ccff6205a55f51225cfe4d1796b0d9'
+                   '75c37301e958368263cee27539bc80ab9bcf810a83f3e3dd6367f6646866b9fb')
+sha256sums_i686=('6750ebb6f48e2ba104d33f8f407818d8316bcc438590bb04a2dfb03cd069f2f4'
+                 '05bbd3e73776143ac357b0c25a631bf2e503a922b9506b23d636bd0b06a3f2f6')
+sha256sums_x86_64=('37140f6ec7d333dcd559c85815d547ef7a0046272f37fce0f78c308032779edc'
+                   'f196e06b6ecfa33bffb02b3d6c4a64bd5a076014e2f21c4a67356474ee014000')
 package() {
-	install -Dm755 -d "${pkgdir}/usr/"{bin,lib}
-	cp -r "${srcdir}/${pkgname%-bin}" "${pkgdir}/usr/lib"
-	ln -sf "/usr/lib/${pkgname%-bin}/${pkgname%2-bin}" "${pkgdir}/usr/bin/${pkgname%-bin}"
-	install -Dm644 "${srcdir}/${pkgname%-bin}/LICENSE"* -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -Dm755 -d "${pkgdir}/usr/"{bin,lib/"${_pkgname}"}
+    find "${srcdir}" -mindepth 1 -maxdepth 1 -type f ! -name "*.zip" ! -name "LICENSE*" -exec cp -r --no-preserve=ownership --preserve=mode -t "${pkgdir}/usr/lib/${_pkgname}/." {} +
+    cp -r --no-preserve=ownership --preserve=mode "${srcdir}/"{locales,resources} "${pkgdir}/usr/lib/${_pkgname}"
+    ln -nfs "/usr/lib/${_pkgname}/${_projectname}" "${pkgdir}/usr/bin/${_pkgname}"
+    install -Dm644 "${srcdir}/LICENSE"* -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
