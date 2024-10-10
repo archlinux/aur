@@ -1,0 +1,12 @@
+pkgbase = jaq-symlinks
+	pkgdesc = Runs jaq if jq is called
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://aur.archlinux.org/packages/jaq-symlinks
+	arch = any
+	license = GPL3
+	depends = jaq
+	provides = jq
+	conflicts = jq
+
+pkgname = jaq-symlinks
