@@ -1,7 +1,7 @@
 pkgbase = curd
 	pkgdesc = Watch anime in cli with Anilist Tracking, Discord RPC, Intro Outro Skipping, etc.
 	pkgver = r89.cd4f38a
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/Wraient/curd
 	arch = x86_64
 	license = GPL
