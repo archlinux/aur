@@ -15,6 +15,7 @@ makedepends=(
     'git'
     'base-devel'
     'cmake'
+    'qt5-base'
     'qt6-base'
     'boost'
     'rust'

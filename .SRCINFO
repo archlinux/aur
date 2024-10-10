@@ -8,6 +8,7 @@ pkgbase = sast-evento-git
 	makedepends = git
 	makedepends = base-devel
 	makedepends = cmake
+	makedepends = qt5-base
 	makedepends = qt6-base
 	makedepends = boost
 	makedepends = rust
