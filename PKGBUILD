@@ -4,7 +4,7 @@ pkgname=${_pkgname}-git
 
 pkgver=2.0.46.0.g94f8c5b
 pkgrel=1
-pkgdesc='An event management system developed and used by NJUPT SAST (binary package)'
+pkgdesc='An event management system developed and used by NJUPT SAST (git package)'
 license=("${srcdir}/sast-evento/LICENSE")
 
 _slintver=1.8.0
@@ -69,9 +69,9 @@ build() {
         -DSLINT_FEATURE_RENDERER_FEMTOVG=OFF \
         -DSlint_DIR=${srcdir}/Slint-cpp-1.8.0-Linux-x86_64/lib/cmake/Slint
     cmake --build build
-    cmake --install ./build --prefix ${srcdir}/installed
+    cmake --install ./build --prefix "${srcdir}/build"
 }
 
 package() {
-    cp -r ${srcdir}/installed/* ${pkgdir}
+    cp -r "${srcdir}/build/*" "${pkgdir}"
 }
