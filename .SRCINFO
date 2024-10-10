@@ -1,0 +1,16 @@
+pkgbase = nomctx-bin
+	pkgdesc = Faster way to switch between clusters and namespaces in nomad
+	pkgver = 0.2.7
+	pkgrel = 1
+	url = https://github.com/mr-karan/nomctx
+	license = MIT
+	conflicts = nomctx
+	provides = nomctx
+	arch = aarch64
+	source_aarch64 = https://github.com/mr-karan/nomctx/releases/download/v0.2.7/nomctx_Linux_arm64.tar.gz
+	sha256sums_aarch64 = b11ba86e733d3be32b61e08a8b4822da91f33f84f422f665969ae3f204527d15
+	arch = x86_64
+	source_x86_64 = https://github.com/mr-karan/nomctx/releases/download/v0.2.7/nomctx_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = c240c8419ca5df733949923008abbf5687485560d2eec07200a29a84280f5aac
+	
+pkgname = nomctx-bin
