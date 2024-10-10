@@ -4,7 +4,7 @@
 _pkgname='gr-rds'
 pkgname="${_pkgname}-git"
 epoch=1
-pkgver=3.10+r332.20240811.6bfa53f
+pkgver=3.10+r333.20241002.046896f
 pkgrel=1
 pkgdesc="An FM-RDS Receiver for GNU Radio"
 arch=('i686' 'x86_64')
