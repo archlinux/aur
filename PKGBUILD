@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=own3d-desktop-git
 _pkgname="OWN3D Pro Desktop"
-pkgver=2.3.0.r0.ge83d3a1
+pkgver=2.4.0.r0.g61113ea
 _electronversion=29
 _nodeversion=20
 pkgrel=1
@@ -74,7 +74,8 @@ build() {
             echo 'fetchRetryTimeout 10000'
         } >> .yarnrc
     fi
-    NODE_ENV=development    yarn install --cache-folder "${srcdir}/.yarn_cache"
+    sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
+    NODE_ENV=development yarn install --cache-folder "${srcdir}/.yarn_cache"
     NODE_ENV=production     yarn run package
 }
 package() {
