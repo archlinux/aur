@@ -4,7 +4,7 @@
 # Contributor: Bruno Filipe < gmail-com: bmilreu >
 
 pkgname=ffmpeg-amd-full-git
-pkgver=7.1.r117040.g3f84d1d1fb
+pkgver=7.2.r117451.g0f5592cfc7
 pkgrel=1
 _svt_hevc_ver='ed80959ebb5586aa7763c91a397d44be1798587c'
 _svt_vp9_ver='3b9a3fa43da4cc5fe60c7d22afe2be15341392ea'
@@ -37,6 +37,7 @@ depends=(
     'kvazaar'
     'ladspa'
     'lame'
+    'lcevcdec'
     'libavc1394'
     'lcms2'
     'lensfun-git'
@@ -242,6 +243,7 @@ build() {
         --enable-libklvanc \
         --enable-libkvazaar \
         --enable-liblc3 \
+        --enable-liblcevc-dec \
         --enable-liblensfun \
         --enable-libmodplug \
         --enable-libmp3lame \
