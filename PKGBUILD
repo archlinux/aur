@@ -3,7 +3,7 @@
 pkgname=oblivion-desktop-bin
 pkgver=1.14.0
 pkgrel=1
-pkgdesc="Unofficial Warp Client for Windows/Mac/Linux"
+pkgdesc="Unofficial Warp Client for Windows/Mac/Linux (Pre-compiled version)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/bepass-org/oblivion-desktop"
 license=("custom:${pkgname%-bin}")
