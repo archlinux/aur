@@ -1,7 +1,7 @@
 pkgbase = electron2-bin
 	pkgdesc = Build cross platform desktop apps with web technologies — prebuilt
 	pkgver = 2.0.18
-	pkgrel = 4
+	pkgrel = 5
 	url = https://electronjs.org
 	arch = aarch64
 	arch = armv7h
@@ -14,7 +14,7 @@ pkgbase = electron2-bin
 	depends = nss
 	optdepends = kde-cli-tools: file deletion support (kioclient5)
 	optdepends = pipewire: WebRTC desktop sharing under Wayland
-	optdepends = qtt-base: enable Qt6 with --enable-features=AllowQt
+	optdepends = qt6-base: enable Qt6 with --enable-features=AllowQt
 	optdepends = trash-cli: file deletion support (trash-put)
 	optdepends = xdg-utils: open URLs with desktop's default (xdg-email, xdg-open)
 	provides = electron2=2.0.18

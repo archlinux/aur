@@ -10,12 +10,12 @@ pkgname="${_pkgname}"-bin
 _subver="0.18"
 _pkgver="${_major}.${_subver}"
 pkgver="${_pkgver/-/.}"
-pkgrel=4
+pkgrel=5
 pkgdesc="Build cross platform desktop apps with web technologies — prebuilt"
 arch=(
     'aarch64'
     'armv7h'
-	'i686'
+    'i686'
     'x86_64'
 )
 url='https://electronjs.org'
@@ -36,7 +36,7 @@ depends=(
 optdepends=(
     'kde-cli-tools: file deletion support (kioclient5)'
     'pipewire: WebRTC desktop sharing under Wayland'
-    'qtt-base: enable Qt6 with --enable-features=AllowQt'
+    'qt6-base: enable Qt6 with --enable-features=AllowQt'
     'trash-cli: file deletion support (trash-put)'
     "xdg-utils: open URLs with desktop's default (xdg-email, xdg-open)"
 )
