@@ -29,4 +29,7 @@ package() {
   SRCDIR="$pkgdir/usr/src/$pkgname-$pkgver"	# This one is needed for dkms
   install -d "$SRCDIR"
   find module -maxdepth 1 -type f -exec install -m0644 '{}' "$SRCDIR" \;
+
+  install -d "$SRCDIR/tests"
+  find module/tests -maxdepth 1 -type f -exec install -m0644 '{}' "$SRCDIR/tests" \;
 }
