@@ -3,7 +3,7 @@ _pkgname=noi
 pkgname="${_pkgname}-desktop-bin"
 pkgver=0.4.0
 _electronversion=28
-pkgrel=1
+pkgrel=2
 pkgdesc="Power Your World with AI - Explore, Extend, Empower."
 arch=("x86_64")
 url="https://noi.nofwl.com/"
@@ -22,13 +22,12 @@ source=(
 sha256sums=('80921cf6a68aac06ef1051dfd23573e040bedabf17f90717bafe7085ec0fd928')
 build() {
     bsdtar -xf "${srcdir}/data."*
-    sed "s|${_pkgname} %U|${pkgname%-bin} --no-sandbox %U|g;s|Icon=${_pkgname}|Icon=${pkgname%-bin}|g" \
-        -i "${srcdir}/usr/share/applications/${_pkgname}.desktop"
+    sed -i "s/${_pkgname}/${pkgname%-bin}/g" "${srcdir}/usr/share/applications/${_pkgname}.desktop"
 }
 package() {
-    install -Dm755 -d "${pkgdir}/"{opt/"${pkgname%-bin}",usr/bin}
-    cp -r "${srcdir}/usr/lib/${_pkgname}/"* "${pkgdir}/opt/${pkgname%-bin}"
-    ln -sf "/opt/${pkgname%-bin}/${_pkgname}" "${pkgdir}/usr/bin/${pkgname%-bin}"
+    install -Dm755 -d "${pkgdir}/usr/"{bin,lib/"${pkgname%-bin}"}
+    cp -Pr --no-preserve=ownership "${srcdir}/usr/lib/${_pkgname}/"* "${pkgdir}/usr/lib/${pkgname%-bin}"
+    ln -sf "/usr/lib/${pkgname%-bin}" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm644 "${srcdir}/usr/share/applications/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
     install -Dm644 "${srcdir}/usr/share/pixmaps/${_pkgname}.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-bin}.png"
     install -Dm644 "${srcdir}/usr/lib/${_pkgname}/LICENSE"* -t "${pkgdir}/usr/share/licenses/${pkgname}"

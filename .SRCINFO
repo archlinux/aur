@@ -1,7 +1,7 @@
 pkgbase = noi-desktop-bin
 	pkgdesc = Power Your World with AI - Explore, Extend, Empower.
 	pkgver = 0.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://noi.nofwl.com/
 	arch = x86_64
 	license = LicenseRef-custom
