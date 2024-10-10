@@ -41,8 +41,8 @@ if [[ "$COMMIT" != "$FCITX5_MOZC_COMMIT" ]]; then
     eval $(makepkg -g -p PKGBUILD)
     ./update_sha512sums.sh PKGBUILD ${sha512sums[@]}
     ./update_sha512sums.sh PKGBUILD.fcitx ${sha512sums[@]}
-    makepkg -do -P PKGBUILD
-    makepkg -doe -P PKGBUILD.fcitx
+    makepkg -do --noprepare -p PKGBUILD
+    makepkg -doe --noprepare -p PKGBUILD.fcitx
     mksrcinfo
     git diff
     git commit -a -m "Update: _mozc_commit=$FCITX5_MOZC_COMMIT"
