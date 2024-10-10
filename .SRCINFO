@@ -1,0 +1,22 @@
+pkgbase = caesium-image-compressor-bin
+	pkgdesc = An image compression software that helps you store, send and share digital pictures, supporting JPG, PNG, WebP and TIFF formats. You can quickly reduce the file size (and resolution, if you want) by preserving the overall quality of the image.
+	pkgver = 2.6.0
+	pkgrel = 1
+	url = https://saerasoft.com/caesium#downloads
+	arch = x86_64
+	license = GPL-3.0-only
+	depends = e2fsprogs
+	depends = gmp
+	depends = libglvnd
+	depends = zlib
+	depends = libx11
+	depends = libxcb
+	depends = libgpg-error
+	provides = caesium-image-compressor=2.6.0
+	conflicts = caesium-image-compressor
+	source = caesium-image-compressor-2.6.0.AppImage::https://github.com/larygwil/caesium-image-compressor/releases/download/v2.6.0/Caesium_Image_Compressor-x86_64_v2.6.0_ubu20_qt66.AppImage
+	source = caesium-image-compressor.sh
+	sha256sums = 549b026616d0992a5d34a4fe09782af450437046d622b03ad9451b197b3e7495
+	sha256sums = bf28379cb0ba33a297560e1e50c2ae13504487be2e8ebb39b899f48b442886f0
+
+pkgname = caesium-image-compressor-bin
