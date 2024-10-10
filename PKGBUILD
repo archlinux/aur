@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=own3d-desktop-bin
 _pkgname="OWN3D Pro Desktop"
-pkgver=2.3.0
+pkgver=2.4.0
 _electronversion=29
 pkgrel=1
 pkgdesc="Public Development Preview of the OWN3D Desktop App.Prebuilt version.Use system-wide electron."
@@ -21,7 +21,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('e9c3422d7a117cc7a0c27a4dbbf45713277ced75556d2d9812e3be777fe444d1'
+sha256sums=('c848fa3b812122f57dd11fcb904f62d772f9af0816af48a6cec28bf1d54d98ef'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 build() {
     sed -e "
