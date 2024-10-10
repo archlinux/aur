@@ -1,0 +1,221 @@
+From git@z Thu Jan  1 00:00:00 1970
+Subject: [PATCH 1/2] x86/cpufeatures: Add feature bits for AMD
+ heterogeneous processor
+From: Perry Yuan <perry.yuan@amd.com>
+Date: Thu, 03 Oct 2024 16:37:58 -0500
+Message-Id: <20241003213759.3038862-2-superm1@kernel.org>
+MIME-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+
+CPUID leaf 0x80000026 advertises core types with different efficiency
+rankings.
+
+Bit 30 indicates the heterogeneous core topology feature, if the bit
+set, it means not all instances at the current hierarchical level have
+the same core topology.
+
+This is described in the AMD64 Architecture Programmers Manual Volume
+2 and 3, doc ID #25493 and #25494.
+
+Signed-off-by: Perry Yuan <perry.yuan@amd.com>
+Co-developed-by: Mario Limonciello <mario.limonciello@amd.com>
+Signed-off-by: Mario Limonciello <mario.limonciello@amd.com>
+Reviewed-by: Gautham R. Shenoy <gautham.shenoy@amd.com>
+---
+ arch/x86/include/asm/cpufeatures.h | 1 +
+ arch/x86/kernel/cpu/scattered.c    | 1 +
+ 2 files changed, 2 insertions(+)
+
+diff --git a/arch/x86/include/asm/cpufeatures.h b/arch/x86/include/asm/cpufeatures.h
+index dd4682857c12..cea1ed82aeb4 100644
+--- a/arch/x86/include/asm/cpufeatures.h
++++ b/arch/x86/include/asm/cpufeatures.h
+@@ -473,6 +473,7 @@
+ #define X86_FEATURE_CLEAR_BHB_HW	(21*32+ 3) /* BHI_DIS_S HW control enabled */
+ #define X86_FEATURE_CLEAR_BHB_LOOP_ON_VMEXIT (21*32+ 4) /* Clear branch history at vmexit using SW loop */
+ #define X86_FEATURE_FAST_CPPC		(21*32 + 5) /* AMD Fast CPPC */
++#define X86_FEATURE_HETERO_CORE_TOPOLOGY	(21*32 + 6) /* Heterogeneous Core Topology */
+ 
+ /*
+  * BUG word(s)
+diff --git a/arch/x86/kernel/cpu/scattered.c b/arch/x86/kernel/cpu/scattered.c
+index c84c30188fdf..3bba55323163 100644
+--- a/arch/x86/kernel/cpu/scattered.c
++++ b/arch/x86/kernel/cpu/scattered.c
+@@ -52,6 +52,7 @@ static const struct cpuid_bit cpuid_bits[] = {
+ 	{ X86_FEATURE_PERFMON_V2,	CPUID_EAX,  0, 0x80000022, 0 },
+ 	{ X86_FEATURE_AMD_LBR_V2,	CPUID_EAX,  1, 0x80000022, 0 },
+ 	{ X86_FEATURE_AMD_LBR_PMC_FREEZE,	CPUID_EAX,  2, 0x80000022, 0 },
++	{ X86_FEATURE_HETERO_CORE_TOPOLOGY,	CPUID_EAX,  30, 0x80000026, 0 },
+ 	{ 0, 0, 0, 0, 0 }
+ };
+ 
+-- 
+2.43.0
+
+From git@z Thu Jan  1 00:00:00 1970
+Subject: [PATCH 2/2] CPPC: Use heterogeneous core topology for identifying
+ boost numerator
+From: Mario Limonciello <mario.limonciello@amd.com>
+Date: Thu, 03 Oct 2024 16:37:59 -0500
+Message-Id: <20241003213759.3038862-3-superm1@kernel.org>
+MIME-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+
+AMD heterogeneous designs include two types of cores:
+ * Performance
+ * Efficiency
+
+Each core type has different highest performance values configured by the
+platform.  Drivers such as `amd_pstate` need to identify the type of
+core to correctly set an appropriate boost numerator to calculate the
+maximum frequency.
+
+X86_FEATURE_HETERO_CORE_TOPOLOGY is used to identify whether the SoC
+supports heterogeneous core type by reading CPUID leaf Fn_0x80000026.
+
+On performance cores the scaling factor of 196 is used.  On efficiency
+cores the scaling factor is the value reported as the highest perf.
+Efficiency cores have the same preferred core rankings.
+
+Suggested-by: Perry Yuan <perry.yuan@amd.com>
+Signed-off-by: Mario Limonciello <mario.limonciello@amd.com>
+Reviewed-by: Gautham R. Shenoy <gautham.shenoy@amd.com>
+---
+ arch/x86/include/asm/processor.h | 13 +++++++++++++
+ arch/x86/kernel/acpi/cppc.c      | 30 ++++++++++++++++++++++++++++++
+ arch/x86/kernel/cpu/amd.c        | 29 +++++++++++++++++++++++++++++
+ 3 files changed, 72 insertions(+)
+
+diff --git a/arch/x86/include/asm/processor.h b/arch/x86/include/asm/processor.h
+index 4a686f0e5dbf..d81a6efa81bb 100644
+--- a/arch/x86/include/asm/processor.h
++++ b/arch/x86/include/asm/processor.h
+@@ -691,6 +691,14 @@ static inline u32 per_cpu_l2c_id(unsigned int cpu)
+ 	return per_cpu(cpu_info.topo.l2c_id, cpu);
+ }
+ 
++/* defined by CPUID_Fn80000026_EBX BIT [31:28] */
++enum amd_core_type {
++	CPU_CORE_TYPE_NO_HETERO_SUP = -1,
++	CPU_CORE_TYPE_PERFORMANCE = 0,
++	CPU_CORE_TYPE_EFFICIENCY = 1,
++	CPU_CORE_TYPE_UNDEFINED = 2,
++};
++
+ #ifdef CONFIG_CPU_SUP_AMD
+ /*
+  * Issue a DIV 0/1 insn to clear any division data from previous DIV
+@@ -703,9 +711,14 @@ static __always_inline void amd_clear_divider(void)
+ }
+ 
+ extern void amd_check_microcode(void);
++extern enum amd_core_type amd_get_core_type(void);
+ #else
+ static inline void amd_clear_divider(void)		{ }
+ static inline void amd_check_microcode(void)		{ }
++static inline enum amd_core_type amd_get_core_type(void)
++{
++	return CPU_CORE_TYPE_NO_HETERO_SUP;
++}
+ #endif
+ 
+ extern unsigned long arch_align_stack(unsigned long sp);
+diff --git a/arch/x86/kernel/acpi/cppc.c b/arch/x86/kernel/acpi/cppc.c
+index 956984054bf3..ca289e6ec82c 100644
+--- a/arch/x86/kernel/acpi/cppc.c
++++ b/arch/x86/kernel/acpi/cppc.c
+@@ -217,6 +217,12 @@ int amd_detect_prefcore(bool *detected)
+ }
+ EXPORT_SYMBOL_GPL(amd_detect_prefcore);
+ 
++static void amd_do_get_core_type(void *data)
++{
++	enum amd_core_type *core_type = data;
++	*core_type = amd_get_core_type();
++}
++
+ /**
+  * amd_get_boost_ratio_numerator: Get the numerator to use for boost ratio calculation
+  * @cpu: CPU to get numerator for.
+@@ -234,7 +240,9 @@ EXPORT_SYMBOL_GPL(amd_detect_prefcore);
+  */
+ int amd_get_boost_ratio_numerator(unsigned int cpu, u64 *numerator)
+ {
++	enum amd_core_type core_type;
+ 	bool prefcore;
++	u32 tmp;
+ 	int ret;
+ 
+ 	ret = amd_detect_prefcore(&prefcore);
+@@ -261,6 +269,28 @@ int amd_get_boost_ratio_numerator(unsigned int cpu, u64 *numerator)
+ 			break;
+ 		}
+ 	}
++
++	/* detect if running on heterogeneous design */
++	smp_call_function_single(cpu, amd_do_get_core_type, &core_type, 1);
++	switch (core_type) {
++	case CPU_CORE_TYPE_NO_HETERO_SUP:
++		break;
++	case CPU_CORE_TYPE_PERFORMANCE:
++		/* use the max scale for performance cores */
++		*numerator = CPPC_HIGHEST_PERF_PERFORMANCE;
++		return 0;
++	case CPU_CORE_TYPE_EFFICIENCY:
++		/* use the highest perf value for efficiency cores */
++		ret = amd_get_highest_perf(cpu, &tmp);
++		if (ret)
++			return ret;
++		*numerator = tmp;
++		return 0;
++	default:
++		pr_warn("WARNING: Undefined core type %d found\n", core_type);
++		break;
++	}
++
+ 	*numerator = CPPC_HIGHEST_PERF_PREFCORE;
+ 
+ 	return 0;
+diff --git a/arch/x86/kernel/cpu/amd.c b/arch/x86/kernel/cpu/amd.c
+index 015971adadfc..8ad5f1385f0e 100644
+--- a/arch/x86/kernel/cpu/amd.c
++++ b/arch/x86/kernel/cpu/amd.c
+@@ -1204,3 +1204,32 @@ void amd_check_microcode(void)
+ 
+ 	on_each_cpu(zenbleed_check_cpu, NULL, 1);
+ }
++
++/**
++ * amd_get_core_type - Heterogeneous core type identification
++ *
++ * Returns the CPU type [31:28] (i.e., performance or efficient) of
++ * a CPU in the processor.
++ *
++ * If the processor has no core type support, returns
++ * CPU_CORE_TYPE_NO_HETERO_SUP.
++ */
++enum amd_core_type amd_get_core_type(void)
++{
++	struct {
++		u32  num_processors             :16,
++		     power_efficiency_ranking   :8,
++		     native_model_id            :4,
++		     core_type                  :4;
++	} props;
++
++	if (!cpu_feature_enabled(X86_FEATURE_HETERO_CORE_TOPOLOGY))
++		return CPU_CORE_TYPE_NO_HETERO_SUP;
++
++	cpuid_leaf_reg(0x80000026, CPUID_EBX, &props);
++	if (props.core_type >= CPU_CORE_TYPE_UNDEFINED)
++		return CPU_CORE_TYPE_UNDEFINED;
++
++	return props.core_type;
++}
++EXPORT_SYMBOL_GPL(amd_get_core_type);
+-- 
+2.43.0
+
