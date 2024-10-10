@@ -13,7 +13,6 @@ depends=(embree3 freetype2 graphite harfbuzz harfbuzz-icu libglvnd libspeechd
     libxinerama libxrandr mbedtls2 miniupnpc pcre2)
 optdepends=('pipewire-alsa: for audio support'
     'pipewire-pulse: for audio support')
-makedepends=(git alsa-lib scons wayland yasm)
 source=("https://github.com/decryptedchaos/redot-aur-bin/raw/refs/heads/main/redot-engine-4.4dev3.tar.gz")
 sha256sums=('2af87873cc526fd7e3b4f1a3b31beea2eb9e49e670a1bdd09dbdd62cc5e6312d')
 
