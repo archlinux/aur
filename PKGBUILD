@@ -1,24 +1,21 @@
-# Maintainer: Nikhil Singh <nik.singh710@gmail.com>
+# Maintainer: Arthur McLain <mclain.it@gmail.com>
+# Contributor: Nikhil Singh <nik.singh710@gmail.com>
 pkgname=getnf
-pkgver=r81.0776636
+pkgver=0.1.0.r17.g1fde620
 pkgrel=1
-pkgdesc="Simple utility to install nerd fonts in system."
-arch=("any")
-url="https://github.com/getnf/getnf"
+pkgdesc='Simple utility to install nerd fonts'
+arch=('any')
+url='https://github.com/getnf/getnf'
 license=('GPL3')
-makedepends=("git")
-depends=(
-  curl
-  fontconfig
-)
-source=("git+https://github.com/getnf/getnf.git")
+makedepends=('git')
+depends=('curl' 'fontconfig')
+optdepends=('fzf: for "getnf -f" functionality')
+source=('git+https://github.com/getnf/getnf.git')
 md5sums=('SKIP')
-provides=('getnf')
-conflicts=('getnf')
 
 pkgver() {
   cd "$pkgname"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
