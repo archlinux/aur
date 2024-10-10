@@ -1,6 +1,6 @@
 pkgbase = icecat
 	pkgdesc = GNU version of the Firefox ESR browser
-	pkgver = 115.16.0
+	pkgver = 115.16.1
 	pkgrel = 1
 	url = https://git.savannah.gnu.org/cgit/gnuzilla.git
 	arch = x86_64
@@ -57,15 +57,15 @@ pkgbase = icecat
 	optdepends = networkmanager: Location detection via available WiFi networks
 	optdepends = speech-dispatcher: Text-to-Speech
 	optdepends = xdg-desktop-portal: Screensharing with Wayland
-	noextract = firefox-115.16.0esr.source.tar.xz
+	noextract = firefox-115.16.1esr.source.tar.xz
 	options = !debug
 	options = !emptydirs
 	options = !lto
 	options = !makeflags
 	options = !strip
-	source = https://git.savannah.gnu.org/cgit/gnuzilla.git/snapshot/gnuzilla-08202dd51b8c05e17238549e7922b1e02f4a0d1a.tar.gz
-	source = https://archive.mozilla.org/pub/firefox/releases/115.16.0esr/source/firefox-115.16.0esr.source.tar.xz
-	source = https://archive.mozilla.org/pub/firefox/releases/115.16.0esr/source/firefox-115.16.0esr.source.tar.xz.asc
+	source = https://git.savannah.gnu.org/cgit/gnuzilla.git/snapshot/gnuzilla-2a76759a6220e9eeb9037671140b5574d6d1981e.tar.gz
+	source = https://archive.mozilla.org/pub/firefox/releases/115.16.1esr/source/firefox-115.16.1esr.source.tar.xz
+	source = https://archive.mozilla.org/pub/firefox/releases/115.16.1esr/source/firefox-115.16.1esr.source.tar.xz.asc
 	source = 18d19413472f-24a6ea8.patch::https://aur.archlinux.org/cgit/aur.git/plain/18d19413472f.patch?h=firefox-esr&id=24a6ea8
 	source = b1cc62489fae-24a6ea8.patch::https://aur.archlinux.org/cgit/aur.git/plain/b1cc62489fae.patch?h=firefox-esr&id=24a6ea8
 	source = patch-python3.12-bug1831512-3d03cbf.patch::https://aur.archlinux.org/cgit/aur.git/plain/patch-python3.12-bug1831512.patch?h=firedragon&id=3d03cbfb37298c494be59bb34e3da365f10c00a3
@@ -74,8 +74,8 @@ pkgbase = icecat
 	source = patch-python3.12-bug1874280-3d03cbf.patch::https://aur.archlinux.org/cgit/aur.git/plain/patch-python3.12-bug1874280.patch?h=firedragon&id=3d03cbfb37298c494be59bb34e3da365f10c00a3
 	source = 0004-Bug-1912663-d2127a9.patch::https://gitlab.archlinux.org/archlinux/packaging/packages/firefox/-/raw/d2127a9424507a38cff13cce49403214a8190bed/0004-Bug-1912663-Fix-some-build-issues-with-cbindgen-0.27.patch
 	validpgpkeys = 14F26682D0916CDD81E37B6D61B7B526D98F0353
-	sha256sums = 25a852f9524976c678b111b3a683a53a74adb6875fd30535b8af763fcc98c8c5
-	sha256sums = d67f6611d55cdaa2e4e90a3eba332dcee2f6bf74a7842e928996db62e4aa801f
+	sha256sums = 5a475b6214fe8515e7b55e09d796ae653fdce09ea57441b1f5dfc528157a6d59
+	sha256sums = c3bb5a210738ca0f8cd26aa53fc4a07560db079c06cd0421cf35af4035029367
 	sha256sums = SKIP
 	sha256sums = 3cc55401ed5e027f1b9e667b0b52296af11f3c5c62b4a80b7e55cda0e117ed18
 	sha256sums = f66a944fa8804c16b1f7bd9b42b18bfc2552a891adc148085f4b91685e8db117

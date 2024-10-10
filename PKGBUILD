@@ -24,10 +24,10 @@
 : ${_lang:=}
 
 ## update
-_icver="115.16.0"
-_commit="08202dd51b8c05e17238549e7922b1e02f4a0d1a"
-_icsum="25a852f9524976c678b111b3a683a53a74adb6875fd30535b8af763fcc98c8c5"
-_ffsum="d67f6611d55cdaa2e4e90a3eba332dcee2f6bf74a7842e928996db62e4aa801f"
+_icver="115.16.1"
+_commit="2a76759a6220e9eeb9037671140b5574d6d1981e"
+_icsum="5a475b6214fe8515e7b55e09d796ae653fdce09ea57441b1f5dfc528157a6d59"
+_ffsum="c3bb5a210738ca0f8cd26aa53fc4a07560db079c06cd0421cf35af4035029367"
 
 if [ -n "$_srcinfo" ]; then
   : ${_lang:=en-US}
