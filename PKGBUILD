@@ -8,7 +8,7 @@ pkgdesc="Implementation of the MTCNN face detector for Keras. Written from scrat
 url="http://github.com/ipazc/mtcnn"
 license=("MIT")
 epoch=0
-pkgver=0.1.0+r56.20210709.3208d44
+pkgver=1.0.0+r62.20241008.14c9b05
 pkgrel=1
 arch=(
   'any'
