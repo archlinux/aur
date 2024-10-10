@@ -1,7 +1,7 @@
 pkgbase = evdi
 	pkgdesc = A Linux® kernel module that enables management of multiple screens.
 	pkgver = 1.14.7
-	pkgrel = 0
+	pkgrel = 1
 	url = https://github.com/DisplayLink/evdi
 	changelog = evdi.Changelog
 	arch = i686
