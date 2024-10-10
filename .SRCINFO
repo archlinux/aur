@@ -1,0 +1,21 @@
+pkgbase = kwin-effect-reflect-cursor-git
+	pkgdesc = Reflect cursor effect for kwin
+	pkgver = 0.1.r2.eb90b4b
+	pkgrel = 1
+	url = https://github.com/fanzhuyifan/kwin-effect-reflect-cursor
+	arch = x86_64
+	license = GPL-2.0-or-later
+	makedepends = cmake
+	makedepends = extra-cmake-modules
+	makedepends = git
+	depends = gcc-libs
+	depends = glibc
+	depends = kconfig
+	depends = kcoreaddons
+	depends = kwin
+	depends = qt6-base
+	provides = kwin-effect-reflect-cursor
+	source = kwin-effect-reflect-cursor::git+https://github.com/fanzhuyifan/kwin-effect-reflect-cursor
+	md5sums = SKIP
+
+pkgname = kwin-effect-reflect-cursor-git
