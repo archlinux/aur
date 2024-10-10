@@ -1,6 +1,6 @@
 pkgbase = vscodium-electron-bin
-	pkgdesc = VS Code without MS branding/telemetry/licensing.Prebuild and System-wide Electron edition
-	pkgver = 1.94.0.24282
+	pkgdesc = VS Code without MS branding/telemetry/licensing.Prebuilt and System-wide Electron edition.
+	pkgver = 1.94.1.24283
 	pkgrel = 1
 	url = https://vscodium.com/
 	arch = aarch64
@@ -15,24 +15,24 @@ pkgbase = vscodium-electron-bin
 	depends = nodejs
 	optdepends = gvfs: For move to trash functionality
 	optdepends = libdbusmenu-glib: For KDE global menu
-	provides = vscodium=1.94.0.24282
-	provides = codium=1.94.0.24282
+	provides = vscodium=1.94.1.24283
+	provides = codium=1.94.1.24283
 	conflicts = vscodium-electron
 	conflicts = vscodium
 	conflicts = codium
 	conflicts = vscodium-insiders
 	conflicts = vscodium-marketplace
-	source = LICENSE-1.94.0.24282::https://raw.githubusercontent.com/VSCodium/vscodium/1.94.0.24282/LICENSE
+	source = LICENSE-1.94.1.24283::https://raw.githubusercontent.com/VSCodium/vscodium/1.94.1.24283/LICENSE
 	source = vscodium-electron.js
 	source = vscodium-electron.sh
 	sha256sums = ed289092386002771285e3423f66f49af65ff918e1b667b517d977fa4fe1f057
 	sha256sums = 71463726de1e6b3d8e2daf8d6816f2dc616ebac36c7097c5829074ca38a95309
 	sha256sums = 164bbaffe22f4ad43607f44a114528317c4d63592b88e911abadfa962443ac26
-	source_aarch64 = vscodium-electron-1.94.0.24282-aarch64.deb::https://github.com/VSCodium/vscodium/releases/download/1.94.0.24282/codium_1.94.0.24282_arm64.deb
-	sha256sums_aarch64 = 682b257c6a70fa29d11359f5e90809c6a9d789257d953594b048232b446138b1
-	source_armv7h = vscodium-electron-1.94.0.24282-armv7h.deb::https://github.com/VSCodium/vscodium/releases/download/1.94.0.24282/codium_1.94.0.24282_armhf.deb
-	sha256sums_armv7h = 86c9b07df40665df70da86486674ccfe44b2c7c87d423498420ceb73495d3d78
-	source_x86_64 = vscodium-electron-1.94.0.24282-x86_64.deb::https://github.com/VSCodium/vscodium/releases/download/1.94.0.24282/codium_1.94.0.24282_amd64.deb
-	sha256sums_x86_64 = d3a70eaaea89a0c7783630051f08b057015696deedea761cc6fc40a502f94c13
+	source_aarch64 = vscodium-electron-1.94.1.24283-aarch64.deb::https://github.com/VSCodium/vscodium/releases/download/1.94.1.24283/codium_1.94.1.24283_arm64.deb
+	sha256sums_aarch64 = 64321b7db3c9cf106a6b6e9a8d89e6e3c7a7b13b8a1aca7c5c0501bc97d03d3f
+	source_armv7h = vscodium-electron-1.94.1.24283-armv7h.deb::https://github.com/VSCodium/vscodium/releases/download/1.94.1.24283/codium_1.94.1.24283_armhf.deb
+	sha256sums_armv7h = cd92b3196cc177f77253b308f9b46333161c19dd1599fb5c3a9a7976c8003c64
+	source_x86_64 = vscodium-electron-1.94.1.24283-x86_64.deb::https://github.com/VSCodium/vscodium/releases/download/1.94.1.24283/codium_1.94.1.24283_amd64.deb
+	sha256sums_x86_64 = 6f543b873ae5b9b702e1f386b5c3e01a7236d7d04fee0dbd2d15e479a90e588e
 
 pkgname = vscodium-electron-bin
