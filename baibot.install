@@ -1,0 +1,29 @@
+post_install() {
+  echo -e "\e[91;1m
+Before setting up Baibot, ensure you have the required configuration files in place.
+\e[0m
+To initialize Baibot, configure the necessary settings in:
+\e[1;32m# /etc/baibot/config.yml\e[0m
+
+Once configured, you can enable and start the Baibot service with:
+\e[1;32m# systemctl enable --now baibot.service\e[0m
+"
+}
+
+post_upgrade() {
+  echo -e "\e[1;32m
+Baibot has been updated. Please restart the service using:
+# systemctl restart baibot.service
+\e[0m"
+}
+
+pre_remove() {
+    # Stop the service if it's running
+    systemctl stop baibot.service || true
+
+    # Disable the service
+    systemctl disable baibot.service || true
+
+    # Remove the baibot user and its home directory
+    userdel -r baibot 2>/dev/null || true
+}

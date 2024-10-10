@@ -1,0 +1,14 @@
+[Unit]
+Description=Baibot AI Chatbot Service
+After=network.target
+
+[Service]
+User=baibot
+WorkingDirectory=/var/lib/baibot
+Environment=BAIBOT_CONFIG_FILE_PATH=/etc/baibot/config.yml
+Environment=BAIBOT_PERSISTENCE_DATA_DIR_PATH=/var/lib/baibot
+ExecStart=/usr/bin/baibot
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
