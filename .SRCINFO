@@ -1,0 +1,20 @@
+pkgbase = nvidiactl-git
+	pkgdesc = A tool providing dynamic fan speed and power limit adjustments for NVIDIA GPUs, balancing performance and noise. It can optionally be run as a systemd service.
+	pkgver = r24.7f13bca
+	pkgrel = 1
+	url = https://codeberg.org/mutker/nvidiactl
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = go>=1.23
+	makedepends = upx
+	depends = NVIDIA-MODULE
+	optdepends = sudo
+	optdepends = doas
+	provides = nvidiactl
+	conflicts = nvidiactl
+	options = !strip
+	source = nvidiactl::git+https://codeberg.org/mutker/nvidiactl.git
+	sha256sums = SKIP
+
+pkgname = nvidiactl-git
