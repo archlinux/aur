@@ -1,8 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
+# `vscodium-electron.js` from Richardn <rniu at umich dot edu>
 _appname=codium
 _pkgname="vs${_appname}"
 pkgname="${_pkgname}-electron-bin"
-pkgver=1.94.1.24283
+pkgver=1.94.2.24284
 _electronversion=30
 pkgrel=1
 pkgdesc="VS Code without MS branding/telemetry/licensing.Prebuilt and System-wide Electron edition."
@@ -27,10 +28,8 @@ conflicts=(
 )
 depends=(
     "electron${_electronversion}"
-    'libsecret'
     'libx11'
     'libxkbfile'
-    'ripgrep'
     'nodejs'
 )
 optdepends=(
@@ -46,11 +45,11 @@ source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${_ghurl}/releases/downl
 source_armv7h=("${pkgname%-bin}-${pkgver}-armv7h.deb::${_ghurl}/releases/download/${pkgver}/codium_${pkgver}_armhf.deb")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${_ghurl}/releases/download/${pkgver}/codium_${pkgver}_amd64.deb")
 sha256sums=('ed289092386002771285e3423f66f49af65ff918e1b667b517d977fa4fe1f057'
-            '71463726de1e6b3d8e2daf8d6816f2dc616ebac36c7097c5829074ca38a95309'
+            '3ed94f3752e2695f64b6c5e9c40120837f463bfe55f330fd59a285c7d21f4bf2'
             '164bbaffe22f4ad43607f44a114528317c4d63592b88e911abadfa962443ac26')
-sha256sums_aarch64=('64321b7db3c9cf106a6b6e9a8d89e6e3c7a7b13b8a1aca7c5c0501bc97d03d3f')
-sha256sums_armv7h=('cd92b3196cc177f77253b308f9b46333161c19dd1599fb5c3a9a7976c8003c64')
-sha256sums_x86_64=('6f543b873ae5b9b702e1f386b5c3e01a7236d7d04fee0dbd2d15e479a90e588e')
+sha256sums_aarch64=('260ca05e89ebf19844602d38ce204d006826928471aeb44692845f301d6f245d')
+sha256sums_armv7h=('2d643d1fd59773588298dd5dd28a03ca5d2a62f56e162d023e616eb4814e0044')
+sha256sums_x86_64=('8ad865b90e1543fe615f8c03bf60c04130b2fb7a0599990f48f5743dde84d0aa')
 build() {
     sed -e "
         s/@electronversion@/${_electronversion}/g
