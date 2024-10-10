@@ -3,7 +3,7 @@
 
 pkgname='perl-data-dmp'
 pkgver='0.242'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="Dump Perl data structures as Perl code"
 arch=('any')
 license=('PerlArtistic' 'GPL')

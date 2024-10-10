@@ -1,7 +1,7 @@
 pkgbase = perl-data-dmp
 	pkgdesc = Dump Perl data structures as Perl code
 	pkgver = 0.242
-	pkgrel = 1
+	pkgrel = 2
 	url = https://metacpan.org/release/Data-Dmp
 	arch = any
 	license = PerlArtistic
