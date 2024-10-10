@@ -9,8 +9,8 @@
 
 ## Mozc compile option
 _bldtype=Release
-_mozc_commit=74d915f1bd905a6923d4ab5acaa10898f103e317
-_bcr_commit=26aaa13dc0464127b16e96875632c11412aaef1c
+_mozc_commit=0cbb8f18e8df5eb4e110bab850cebc1f57811f16
+_bcr_commit=78837d290757ac27b73013147c515623ff9196c4
 _dict_to_mozc_commit=e5579de8302d2928a2e04dd03c575f001cebc5dd
 _branch=fcitx
 # Sudachi Dictionary
@@ -40,8 +40,8 @@ source=(git+https://github.com/fcitx/mozc.git#commit="${_mozc_commit}"
 #        https://dumps.wikimedia.org/jawiki/latest/jawiki-latest-all-titles-in-ns0.gz)
 #noextract=(jawiki-latest-all-titles-in-ns0.gz)
 
-sha512sums=('0abab8ba80567d42c56462b08911574435271a72c86c796b31908099ec1e87698792834d209e0fbec8ed70867532088929a6a107d30dc88e3f820d5e7c5277a6'
-            'a026414d9b5d765d51ae3ec58c3a8c7e3e4d86461e052ca19f1f7148b8c1ed77715af59e5bc11252bce99ebf63836221a6bc52691bd90f7b86971421966c38b9'
+sha512sums=('20335ac48f9719143e9c647613a3a8da4e5110bf367d9333f9389f1a456c7340e179a790eec2dadc63f7b428fdd7d52778bd522b809ddd77da49b4d8c0360b55'
+            'cbff7e417918d9827ac7399bdf8389bc9eb862db52785fd35a4e4dea210c13925b6ca0b3b5a9079fd14bb0f9e0342f6c097c6934fbf7f1d71a3d044aa6a88ff0'
             'a0aeb2856d62c71d0c137a687d901098eaa3371b896dbe39e54c36951cbd7d3cfba666ee96d055dba7e8c8384ed17e13597a697707cd960fac320e11f9b7b76c'
             '91a93a34f6c5a240cfec32e0605f45ff3ebe0d9a920d8bcac7748009cea9c6a4677bd6e64fc732f13cba455ec9ce5ed0dd4777a2d13f8c5781f4b35675029e5b'
             '9428d55d2d9603c8bfcd12cc0184415f23af1d09a2d0ebdf0cce694a09638e7cfe0c1241bf1c943427b2fccfea619ca8b2e22db3452d837b416eb31aa224e766'
