@@ -4,7 +4,7 @@
 pkgname=waveterm
 _pkgname=Wave
 _appname="${_pkgname} Terminal"
-pkgver=0.8.9
+pkgver=0.8.10
 _electronversion=32
 _nodeversion=22
 pkgrel=1
@@ -19,7 +19,6 @@ license=('Apache-2.0')
 conflicts=("${pkgname}")
 depends=(
     "electron${_electronversion}"
-    'libvips'
 )
 makedepends=(
     'gcc'
@@ -39,7 +38,7 @@ source=(
     "${pkgname}-${pkgver}.tar.gz::${_ghurl}/archive/refs/tags/v${pkgver}.tar.gz"
     "${pkgname}.sh"
 )
-sha256sums=('1392e7c83aa7ab106347abeab1929e3488c6a6f0e15307250c9bf110bc414d25'
+sha256sums=('36dfd3d289f599c29f404bee3911ff2dafc700e01bbed7727ad135332a5adc33'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
@@ -76,8 +75,6 @@ build() {
         go env -w GOPROXY=https://goproxy.cn,direct
         gem sources --add https://mirrors.aliyun.com/rubygems/ --remove https://rubygems.org/
         bundle config mirror.https://rubygems.org https://mirrors.aliyun.com/rubygems
-    else
-        echo "Your network is OK."
     fi
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
     sed -i "s/build\/icons.icns/build\/appicon.png/g;s/\"zip\", \"deb\", \"rpm\", \"AppImage\", \"pacman\"/\"dir\"/g" electron-builder.config.cjs
