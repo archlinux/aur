@@ -137,6 +137,10 @@ _use_llvm_lto=${_use_llvm_lto-none}
 # https://github.com/CachyOS/linux-cachyos/issues/36
 _use_lto_suffix=${_use_lto_suffix-y}
 
+# Use suffix -gcc when requested by the user
+# This was added to facilitate https://github.com/CachyOS/linux-cachyos/issues/286
+_use_gcc_suffix=${_use_gcc_suffix-}
+
 # KCFI is a proposed forward-edge control-flow integrity scheme for
 # Clang, which is more suitable for kernel use than the existing CFI
 # scheme used by CONFIG_CFI_CLANG. kCFI doesn't require LTO, doesn't
@@ -166,15 +170,16 @@ _build_nvidia_open=${_build_nvidia_open-}
 _build_debug=${_build_debug-}
 
 if [[ "$_use_llvm_lto" = "thin" || "$_use_llvm_lto" = "full" ]] && [ "$_use_lto_suffix" = "y"  ]; then
-    _pkgsuffix=cachyos-lts-lto
-    pkgbase="linux-$_pkgsuffix"
-
-elif [ -n "$_use_llvm_lto" ]  ||  [[ "$_use_lto_suffix" = "n" ]]; then
-    _pkgsuffix=cachyos-lts
-    pkgbase="linux-$_pkgsuffix"
+    _pkgsuffix="cachyos-lts-lto"
+elif [ "$_use_llvm_lto" = "none" ]  && [ -z "$_use_kcfi" ] && [ "$_use_gcc_suffix" = "y" ]; then
+    _pkgsuffix="cachyos-lts-gcc"
+else
+    _pkgsuffix="cachyos-lts"
 fi
+
+pkgbase="linux-$_pkgsuffix"
 _major=6.6
-_minor=53
+_minor=56
 #_minorc=$((_minor+1))
 #_rcver=rc8
 pkgver=${_major}.${_minor}
@@ -260,12 +265,10 @@ case "$_cpusched" in
     bore) ## BORE Scheduler
         source+=("${_patchsource}/sched/0001-bore-cachy.patch");;
     rt) ## EEVDF with RT patches
-        source+=("${_patchsource}/misc/0001-rt.patch"
-                 linux-cachyos-rt.install);;
+        source+=("${_patchsource}/misc/0001-rt.patch");;
     rt-bore) ## RT with BORE Scheduler
         source+=("${_patchsource}/misc/0001-rt.patch"
-                 "${_patchsource}/sched/0001-bore-cachy-rt.patch"
-                 linux-cachyos-rt.install);;
+                 "${_patchsource}/sched/0001-bore-cachy-rt.patch");;
     hardened) ## Hardened Patches with BORE Scheduler
         source+=("${_patchsource}/sched/0001-bore-cachy.patch"
                  "${_patchsource}/misc/0001-hardened.patch");;
@@ -854,8 +857,8 @@ for _p in "${pkgname[@]}"; do
     }"
 done
 
-sha256sums=('285d181d1b252b0bf905f040d094215cf183ac98c31a17f9cce9f3537ef4d779'
-            '7dc1a20396ef90dc4c7ce93f70d98a2b68aa9a9432f37515288ca0aa4fc5ec89'
+sha256sums=('f74812f78e88992c416434cb107639e13a551dbaff36bb90d6346ab16ab71a95'
+            '4f8b2f6d883e73cd736c45e1f1fcafd7540717889e9d48e5e6100e7dc77e13d1'
             'a91249420d61edb17b8659ab3feca86d24cf3b1c941b14f232c47064fa4f4ce7'
             '6516e23cf0daed0d565766840342276e00516c732a0e70f996b0e8319221f8c2'
             '8b71209aa8b091dea5fa85921fbd888b5d8a4d351f04ce12d70b9c8d22758389')
