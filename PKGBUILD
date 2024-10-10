@@ -2,7 +2,7 @@
 pkgname=podman-desktop-git
 _pkgname="Podman Desktop"
 _flatpakname="io.podman_desktop.${_pkgname// /}"
-pkgver=r5386.4415a62
+pkgver=r5398.d81b487
 _electronversion=32
 _nodeversion=20
 pkgrel=1
@@ -85,12 +85,12 @@ build() {
         fi
     } >> .npmrc
     find packages -type f -exec sed -i "s/process.resourcesPath/\'\/usr\/lib\/${pkgname%-git}\'/" {} +
+    sed -i "s/run.sh/${pkgname%-git}/;s/${_flatpakname}/${pkgname%-git}/;/X-Flatpak/d" .flatpak.desktop
+    sed -i "s/${_flatpakname}/${pkgname%-git}/" .flatpak-appdata.xml
     sed -i "s/\'flatpak\', \'tar.gz\'/\'dir\'/" .electron-builder.config.cjs
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/" package.json
     NODE_ENV=development    pnpm install --no-lockfile
     NODE_ENV=production     pnpm run compile
-    sed -i "s/run.sh/${pkgname%-git}/;s/${_flatpakname}/${pkgname%-git}/;/X-Flatpak/d" .flatpak.desktop
-    sed -i "s/${_flatpakname}/${pkgname%-git}/" .flatpak-appdata.xml
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
