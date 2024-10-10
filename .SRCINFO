@@ -1,6 +1,6 @@
 pkgbase = python-varname
 	pkgdesc = A Python library to retrieve variable names from functions or classes
-	pkgver = 0.13.3
+	pkgver = 0.13.4
 	pkgrel = 1
 	url = https://github.com/pwwang/python-varname
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = python-varname
 	depends = python-executing
 	optdepends = python-asttokens
 	optdepends = python-pure-eval
-	source = https://github.com/pwwang/python-varname/archive/refs/tags/0.13.3.tar.gz
-	sha512sums = 3c6004fc0fee7c10f54c50c08351b53178fde87c92040c0715363662600fdd0743168ed27128623dee39c9dea7fd38cc6b71373c1e562bbae89eb78b86349ac5
+	source = https://github.com/pwwang/python-varname/archive/refs/tags/0.13.4.tar.gz
+	sha512sums = 3a39546474a1f5dc0331b25b586f3d1e803895e0fc795a4bea640b899b94dc8c3e149a92bdb8af1a70c0ce3cdac6bba4459cf60e00afdbf753913f4e5fd35c76
 
 pkgname = python-varname
