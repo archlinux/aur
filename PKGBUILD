@@ -45,13 +45,25 @@ pkgver() {
 }
 
 prepare() {
-    rm -rf ${srcdir}/sast-evento
-    cd ${srcdir}
-    git clone --recursive -b dev https://github.com/NJUPT-SAST/sast-evento.git
+    if [[
+        -d ${srcdir}/sast-evento
+        &&
+        $(git -C "${srcdir}/sast-evento" config --get remote.origin.url) = "https://github.com/NJUPT-SAST/sast-evento.git"
+        &&
+        $(git -C "${srcdir}/sast-evento" branch --show-current) = "dev"
+         ]] ; then
+        cd "${srcdir}/sast-evento"
+        git pull
+        git submodule update --init --recursive
+    else
+        rm -rf "${srcdir}/sast-evento"
+        cd "${srcdir}"
+        git clone --recursive -b dev https://github.com/NJUPT-SAST/sast-evento.git
+    fi
 }
 
 build() {
-    cd ${srcdir}/sast-evento
+    cd "${srcdir}/sast-evento"
     cmake -B build \
         -DSLINT_FEATURE_RENDERER_SKIA=ON \
         -DSLINT_FEATURE_RENDERER_FEMTOVG=OFF \
