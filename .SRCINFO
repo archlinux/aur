@@ -1,6 +1,6 @@
 pkgbase = python-fenics-dolfinx
 	pkgdesc = Next generation FEniCS problem solving environment (python interface)
-	pkgver = 0.8.0
+	pkgver = 0.9.0
 	pkgrel = 1
 	url = https://github.com/FEniCS/dolfinx
 	arch = x86_64
@@ -22,7 +22,7 @@ pkgbase = python-fenics-dolfinx
 	optdepends = python-numba: for jit support
 	optdepends = slepc: for eigenvalue solver support
 	optdepends = gmsh: for extract data from Gmsh models
-	source = dolfinx-0.8.0.tar.gz::https://github.com/FEniCS/dolfinx/archive/v0.8.0.tar.gz
-	sha512sums = 2f3ee72733f058bfa77548a3f5955fd43ad24a1d5643a26cf513b263c9ae089d73b7062bc8ebc9986baebc26804f9763a7ef8f957ff1b532605ad96310862d35
+	source = dolfinx-0.9.0.tar.gz::https://github.com/FEniCS/dolfinx/archive/v0.9.0.tar.gz
+	sha512sums = fad0eb08f2f0f375e304e9549c5dd0b5f74b78f90dc422982baa93186ddd7d852d52553adcc0c2ef13a3a003d9e77039073250834b24053ba89dc8a5c6c0e95f
 
 pkgname = python-fenics-dolfinx
