@@ -6,7 +6,7 @@
 pkgbase=tuned
 pkgname=("${pkgbase}" "${pkgbase}-ppd")
 pkgver=2.24.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Daemon that performs monitoring and adaptive configuration of devices in the system'
 arch=('any')
 url="https://github.com/redhat-performance/${pkgbase}"
@@ -40,7 +40,6 @@ package_tuned() {
 		'etc/tuned/realtime-virtual-guest-variables.conf'
 		'etc/tuned/realtime-virtual-host-variables.conf'
 		'etc/tuned/tuned-main.conf')
-	install="${pkgbase}.install"
 
 	cd "${pkgbase}-${pkgver}"
 

@@ -1,7 +1,7 @@
 pkgbase = tuned
 	pkgdesc = Daemon that performs monitoring and adaptive configuration of devices in the system
 	pkgver = 2.24.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/redhat-performance/tuned
 	arch = any
 	license = GPL-2.0-or-later
@@ -21,7 +21,6 @@ pkgbase = tuned
 	sha512sums = d004cd621e26195fff14b39f29b2143cf47de09641454acd3029d61142c3d000a452f018356c84c32772bd99fc766f6ee847d2a8eddbde8ae34aaa0ecefa644e
 
 pkgname = tuned
-	install = tuned.install
 	optdepends = virt-what: virtual machine detection
 	optdepends = systemtap: detailed system monitoring
 	optdepends = tuned-ppd: power-profiles-daemon api translation
