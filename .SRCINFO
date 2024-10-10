@@ -1,19 +1,17 @@
 pkgbase = stklos
 	pkgdesc = Free R7RS Scheme system.
-	pkgver = 2.00
-	pkgrel = 4
+	pkgver = 2.10
+	pkgrel = 1
 	url = http://www.stklos.net
 	arch = i686
 	arch = x86_64
-	license = GPL
-	depends = readline
+	license = GPL-2.0-or-later
 	depends = gmp
-	depends = pcre
+	depends = pcre2
 	depends = libffi
 	depends = gc
-	source = http://www.stklos.net/download/stklos-2.00.tar.gz
-	source = stklos-2.00.patch
-	md5sums = 8eb4b2edad1b77cedd16b0833ea4dad7
-	md5sums = 03b6f898179eaf896a68999877793550
+	optdepends = readline: line editing and history support
+	source = http://www.stklos.net/download/stklos-2.10.tar.gz
+	md5sums = 15347ac3137b21a806a2da3ab899f17d
 
 pkgname = stklos
