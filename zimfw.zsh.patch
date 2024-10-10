@@ -1,19 +1,19 @@
 diff --git a/zimfw.zsh b/zimfw.zsh
-index 4725340..f1e813c 100644
+index d0ecef6..42b6791 100644
 --- a/zimfw.zsh
 +++ b/zimfw.zsh
-@@ -52,10 +52,6 @@ _zimfw_mv() {
+@@ -56,10 +56,6 @@ _zimfw_mv() {
  
  _zimfw_build_init() {
    local -r ztarget=${ZIM_HOME}/init.zsh
 -  # Force update of init.zsh if it's older than .zimrc
--  if [[ ${ztarget} -ot ${ZIM_CONFIG_FILE:-${ZDOTDIR:-${HOME}}/.zimrc} ]]; then
+-  if [[ ${ztarget} -ot ${_zconfig} ]]; then
 -    command mv -f ${ztarget}{,.old} || return 1
 -  fi
    _zimfw_mv =(
-     print -R "zimfw() { source ${(q-)ZIM_HOME}/zimfw.zsh \"\${@}\" }"
-     print -R "zmodule() { source ${(q-)ZIM_HOME}/zimfw.zsh \"\${@}\" }"
-@@ -93,17 +89,15 @@ _zimfw_build_init() {
+     print -R '# FILE AUTOMATICALLY GENERATED FROM '${_zconfig}
+     print '# EDIT THE SOURCE FILE AND THEN RUN zimfw build. DO NOT DIRECTLY EDIT THIS FILE!'
+@@ -99,17 +95,15 @@ _zimfw_build_init() {
        fi
      done
    ) ${ztarget}
@@ -23,7 +23,7 @@ index 4725340..f1e813c 100644
  _zimfw_build_login_init() {
    local -r ztarget=${ZIM_HOME}/login_init.zsh
 -  # Force update of login_init.zsh if it's older than .zimrc
--  if [[ ${ztarget} -ot ${ZIM_CONFIG_FILE:-${ZDOTDIR:-${HOME}}/.zimrc} ]]; then
+-  if [[ ${ztarget} -ot ${_zconfig} ]]; then
 -    command mv -f ${ztarget}{,.old} || return 1
 -  fi
    _zimfw_mv =(
