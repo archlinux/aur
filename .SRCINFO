@@ -1,6 +1,6 @@
 pkgbase = podman-desktop
 	pkgdesc = Manage Podman and other container engines from a single UI and tray.
-	pkgver = 1.13.1
+	pkgver = 1.13.2
 	pkgrel = 1
 	url = https://github.com/containers/podman-desktop
 	arch = x86_64
@@ -19,8 +19,8 @@ pkgbase = podman-desktop
 	optdepends = crc: crc plugin
 	optdepends = lima: lima plugin
 	optdepends = docker: docker plugin
-	source = podman-desktop-1.13.1.tar.gz::https://github.com/containers/podman-desktop/archive/refs/tags/v1.13.1.tar.gz
-	sha256sums = 979d2231c9a6e1d72cd6c2b49d450da0ee4dc962b078c2c365d3d8f3fd2fba73
+	source = podman-desktop-1.13.2.tar.gz::https://github.com/containers/podman-desktop/archive/refs/tags/v1.13.2.tar.gz
+	sha256sums = f8d00e08695b5ac4da40e752f64249e49f4d97027b61af847f0f5a5c99dada44
 
 pkgname = podman-desktop
 	depends = c-ares
