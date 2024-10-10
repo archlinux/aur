@@ -1,6 +1,6 @@
 _pkgname=gamescope
 pkgname=${_pkgname}-sk-git
-pkgver=3.14.3.r12.g248fb56
+pkgver=3.15.9.r24.geb74150
 pkgrel=1
 pkgdesc='SteamOS session compositing window manager'
 arch=(x86_64)
@@ -10,50 +10,49 @@ depends=(
     gcc-libs
     glibc
     glm
-    hwdata
     lcms2
     libavif
     libcap.so
-    libdrm
     libdecor
-    libliftoff.so
+    libdrm
     libinput
     libpipewire-0.3.so
-    libvulkan.so
     libx11
     libxcb
     libxcomposite
     libxdamage
     libxext
     libxfixes
-    libxkbcommon
+    libxkbcommon.so
     libxmu
     libxrender
     libxres
     libxtst
     libxxf86vm
-    seatd
+    luajit
     sdl2
+    seatd
     vulkan-icd-loader
     wayland
-    xcb-util-renderutil
-    xcb-util-wm
     xcb-util-errors
+    xcb-util-wm
     xorg-server-xwayland
 )
 makedepends=(
     benchmark
     cmake
+    gcc
     git
     glslang
     meson
+    pkgconf
     ninja
     vulkan-headers
     wayland-protocols
 )
 # _tag=62d425164d383fcde498b17b0af5d00bfa92aed4
 _branch="sk-gamescope"
-source=("git+https://github.com/3003n/gamescope.git#tag=${_tag}"
+source=("git+https://github.com/3003n/gamescope.git#branch=${_branch}"
     "git+https://github.com/nothings/stb.git#commit=af1a5bc352164740c1cc1354942b1c6b72eacb8a"
     "git+https://github.com/Joshua-Ashton/wlroots.git"
     "git+https://gitlab.freedesktop.org/emersion/libliftoff.git"
