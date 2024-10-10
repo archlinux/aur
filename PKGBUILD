@@ -3,7 +3,7 @@ pkgname=streamdock-bin
 _pkgname=StreamDock
 pkgver=2.0.1
 _electronversion=27
-pkgrel=4
+pkgrel=5
 pkgdesc="Streaming service viewer."
 arch=('x86_64')
 url="https://github.com/jtvberg/StreamDock"
@@ -24,15 +24,18 @@ sha256sums=('0c9ba367771a5e7ad1147d30821ded2ea00eeb90e26470f58985e79c08f26609'
             'b6e6ffdf656d1070c5cbaa10491eb4ae4977c8312c7da38d2ed5f118006ce776')
 build() {
     bsdtar -xf "${srcdir}/data."*
-    sed "s|/opt/${_pkgname}/${pkgname%-bin} %U|${pkgname%-bin} --no-sandbox %U|g;s|Video;|AudioVideo;|g" \
-        -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
+    sed -e "
+        s/\/opt\/${_pkgname}\/${pkgname%-bin}/${pkgname%-bin}/g
+        s/Video;/AudioVideo;/g
+    " -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
 package() {
-    install -Dm755 -d "${pkgdir}/"{opt/"${pkgname%-bin}",usr/bin}
-    cp -r "${srcdir}/opt/${_pkgname}/"* "${pkgdir}/opt/${pkgname%-bin}"
-    ln -sf "/opt/${pkgname%-bin}/${pkgname%-bin}" "${pkgdir}/usr/bin/${pkgname%-bin}"
+    install -Dm755 -d "${pkgdir}/usr/"{bin,lib/"${pkgname%-bin}"}
+    cp -Pr --no-preserve=ownership "${srcdir}/opt/${_pkgname}/"* "${pkgdir}/usr/lib/${pkgname%-bin}"
+    ln -sf "/usr/lib/${pkgname%-bin}/${pkgname%-bin}" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm644 "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
-    for _icons in 16x16 32x32 48x48 64x64 128x128 256x256 512x512 1024x1024;do
+    _icon_sizes=(16x16 32x32 48x48 64x64 128x128 256x256 512x512 1024x1024)
+    for _icons in "${_icon_sizes[@]}";do
         install -Dm644 "${srcdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname%-bin}.png" \
             -t "${pkgdir}/usr/share/icons/hicolor/${_icons}x${_icons}/apps"
     done
