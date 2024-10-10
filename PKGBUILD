@@ -1,7 +1,7 @@
 # Maintainer: lonaowna
 # Contributor: Xandaros
 pkgname=libcoap
-pkgver=4.3.4
+pkgver=4.3.5
 pkgrel=1
 pkgdesc="C-Implementation of CoAP"
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -10,7 +10,7 @@ license=('BSD2' 'GPL2')
 makedepends=('git' 'doxygen' 'asciidoc')
 provides=('coap-client' 'coap-rd' 'coap-server')
 source=("https://github.com/obgm/libcoap/archive/refs/tags/v$pkgver.tar.gz")
-md5sums=('482408115b1ee2c506e4e5758c8cc4fa')
+sha256sums=('a417ed26ec6c95c041b42353b5b6fad1602e2bf42a6e26c09863450e227b7b5f')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
