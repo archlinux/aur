@@ -1,25 +1,23 @@
-# Maintainer: Mattias Andrée <`base64 -d`(bWFhbmRyZWUK)@member.fsf.org>
+# Maintainer: Mattias Andrée <m@`base64 -d`(bWFhbmRyZWU).se>
 
 pkgname=crt-calibrator
-pkgver=1.3.1
+pkgver=1.3.4
 pkgrel=1
 pkgdesc="CRT monitor calibrator utility for Linux VT"
-url="https://github.com/maandree/crt-calibrator"
+url="https://codeberg.org/maandree/crt-calibrator"
 arch=(i686 x86_64)
-license=(GPL3)
-depends=(glibc libdrm linux)
-makedepends=(make coreutils gcc glibc libdrm linux texinfo)
-install=crt-calibrator.install
-source=("${url}/archive/${pkgver}.tar.gz")
-sha256sums=(23ec9913dcfb2e4a0a7879a1665a1026648367a88411e7c50621e06d0ce781e5)
+license=('custom:ISC')
+depends=(libdrm)
+makedepends=(make coreutils gcc glibc libdrm)
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
+sha256sums=(1ed1393be9740ed3e217700777c6b7742c291b64e61fe17aa83154c9b8c708cc)
 
 build() {
-	cd "${srcdir}/crt-calibrator-${pkgver}"
+	cd "${srcdir}/${pkgname}"
 	make DESTDIR="${pkgdir}"
 }
 
 package() {
-	cd "${srcdir}/crt-calibrator-${pkgver}"
+	cd "${srcdir}/${pkgname}"
 	make DESTDIR="${pkgdir}" install
 }
-
