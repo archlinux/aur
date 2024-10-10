@@ -1,0 +1,16 @@
+pkgbase = jqfmt-git
+	pkgdesc = like gofmt, but for jq
+	pkgver = r5.8fc6f86
+	pkgrel = 1
+	url = https://github.com/noperator/jqfmt
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	makedepends = git
+	depends = glibc
+	provides = jqfmt
+	conflicts = jqfmt
+	source = git+https://github.com/noperator/jqfmt#tag=8fc6f864c295e6bd6b08f36f503b3d809270da61
+	sha256sums = 5db32cf6b05e4ca0ef70838c322138e2ac0bfdfb5207bc6fad59aae679f12663
+
+pkgname = jqfmt-git
