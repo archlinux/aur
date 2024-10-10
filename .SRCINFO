@@ -1,6 +1,6 @@
 pkgbase = terminaltexteffects-git
 	pkgdesc = Visual effects engine applied to text in the terminal.
-	pkgver = r1161.0ba769c
+	pkgver = 0.11.0.r6.g0ba769c
 	pkgrel = 1
 	url = https://github.com/ChrisBuilds/terminaltexteffects
 	arch = any
@@ -13,7 +13,10 @@ pkgbase = terminaltexteffects-git
 	makedepends = python-poetry-core
 	depends = python
 	provides = terminaltexteffects
+	provides = python-terminaltexteffects
+	provides = python-terminaltexteffects-git
 	conflicts = terminaltexteffects
+	conflicts = python-terminaltexteffects
 	source = terminaltexteffects-git::git+https://github.com/ChrisBuilds/terminaltexteffects
 	sha256sums = SKIP
 
