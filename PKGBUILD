@@ -3,7 +3,7 @@
 
 pkgname='perl-data-clean'
 pkgver='0.508'
-pkgrel='2'
+pkgrel='3'
 pkgdesc="Clean data structure"
 arch=('any')
 license=('PerlArtistic' 'GPL')

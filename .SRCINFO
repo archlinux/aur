@@ -1,7 +1,7 @@
 pkgbase = perl-data-clean
 	pkgdesc = Clean data structure
 	pkgver = 0.508
-	pkgrel = 2
+	pkgrel = 3
 	url = https://metacpan.org/release/Data-Clean
 	arch = any
 	license = PerlArtistic
