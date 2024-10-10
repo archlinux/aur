@@ -9,9 +9,9 @@
 
 ## Mozc compile option
 _bldtype=Release
-_mozc_commit=53f12eaaeeb14f5aa5d1ff0f1bef87245a9c3627
-_bcr_commit=f0e3787ea9fec94332eb345084b7cc052c5d3938
-_dict_to_mozc_commit=89be1d8512fba3e1dc3d8ca12670584ad05dc0a3
+_mozc_commit=74d915f1bd905a6923d4ab5acaa10898f103e317
+_bcr_commit=26aaa13dc0464127b16e96875632c11412aaef1c
+_dict_to_mozc_commit=e5579de8302d2928a2e04dd03c575f001cebc5dd
 _branch=fcitx
 # Sudachi Dictionary
 _sudachidict_date=20240716
@@ -19,7 +19,7 @@ _sudachidict_date=20240716
 pkgbase=mozc-with-jp-dict
 pkgname=("ibus-$pkgbase" "fcitx5-$pkgbase" "emacs-$pkgbase")
 pkgver=2.30.5595.102
-pkgrel=10
+pkgrel=11
 arch=('x86_64')
 url="https://github.com/fcitx/mozc"
 license=('Apache-2.0 AND BSD-2-Clause AND BSD-3-Clause AND LGPL-3.0-only AND MIT AND NAIST-2003')
@@ -40,10 +40,10 @@ source=("git+$url.git#commit=${_mozc_commit}"
 #        https://dumps.wikimedia.org/jawiki/latest/jawiki-latest-all-titles-in-ns0.gz)
 #noextract=(jawiki-latest-all-titles-in-ns0.gz)
 
-sha512sums=('4eab04915e802f949ea3b293e5397b8e6eab47eb9ab70f437c138022d0f46700baae0f2d6a4fafe8978d790126934a4808ed7d84ee52da4c097da263d6439ed5'
-            'bc686f02d0fd3d65b5d40268723ec35bae89594c554c5f1c9c564da13fea8b4d79d36563be7e7a592ed605062b2a4549cb6926391af19f8066e526d17ca4ad65'
+sha512sums=('0abab8ba80567d42c56462b08911574435271a72c86c796b31908099ec1e87698792834d209e0fbec8ed70867532088929a6a107d30dc88e3f820d5e7c5277a6'
+            'a026414d9b5d765d51ae3ec58c3a8c7e3e4d86461e052ca19f1f7148b8c1ed77715af59e5bc11252bce99ebf63836221a6bc52691bd90f7b86971421966c38b9'
             'a0aeb2856d62c71d0c137a687d901098eaa3371b896dbe39e54c36951cbd7d3cfba666ee96d055dba7e8c8384ed17e13597a697707cd960fac320e11f9b7b76c'
-            '1523dd6e50d77cef6f5818dff71c71ad92a2c6fdd763b98634e710bc9125dc5120c0165fa37cc7607bf2b49fbc93544178b0e3a84a118c595e424e738397fa1f'
+            '91a93a34f6c5a240cfec32e0605f45ff3ebe0d9a920d8bcac7748009cea9c6a4677bd6e64fc732f13cba455ec9ce5ed0dd4777a2d13f8c5781f4b35675029e5b'
             '9428d55d2d9603c8bfcd12cc0184415f23af1d09a2d0ebdf0cce694a09638e7cfe0c1241bf1c943427b2fccfea619ca8b2e22db3452d837b416eb31aa224e766'
             'f0a3544dcc99bf8c4cea8ebfd31af827e209f0678997ab55f6eda54f34cad5e148d1bd156417a621665c2068e7371801dc9cf1baa34f2270a99da7055f46d95d'
             '5551cbf4da52bc2eb73841013f98634ac8fcb56e5f6e163c9e640d5b9eaa4eafc2fa72cc20660db012ebdb438f835c2098b77c02c483d3244df901748e3d30fa'
