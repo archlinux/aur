@@ -1,7 +1,7 @@
 # Maintainer: Wraient <rushikeshwastaken@gmail.com>
 pkgname='curd'
-pkgver=r89.cd4f38a
-pkgrel=4
+pkgver=r92.d2c2c15
+pkgrel=5
 pkgdesc="Watch anime in cli with Anilist Tracking, Discord RPC, Intro Outro Skipping, etc."
 arch=("x86_64")
 url="https://github.com/Wraient/curd"
@@ -18,20 +18,21 @@ pkgver() {
 }
 
 build() {
-  #test
     # No compilation needed for a Python script
     return 0
 }
 
 package() {
-    # Create the directory for the virtual environment
+    # Create the directory for the virtual environment and script
     install -dm755 "$pkgdir/usr/share/$pkgname"
 
-    # Create a virtual environment in the /usr/share directory
-    python -m venv "$pkgdir/usr/share/$pkgname/venv"
+    # Check if the virtual environment already exists, if not, create it
+    if [ ! -d "$pkgdir/usr/share/$pkgname/venv" ]; then
+        python -m venv "$pkgdir/usr/share/$pkgname/venv"
+    fi
 
-    # Install pypresence and requests in the virtual environment
-    "$pkgdir/usr/share/$pkgname/venv/bin/pip" install pypresence requests
+    # Install or update packages in the virtual environment
+    "$pkgdir/usr/share/$pkgname/venv/bin/pip" install --upgrade pypresence requests
 
     # Install the Python script
     install -Dm755 "$srcdir/$pkgname/curd.py" "$pkgdir/usr/share/$pkgname/curd.py"
@@ -43,6 +44,12 @@ package() {
 
 # Path to the virtual environment
 VENV_DIR="/usr/share/curd/venv"
+
+# Check if the virtual environment exists, create if not
+if [ ! -d "$VENV_DIR" ]; then
+    python -m venv "$VENV_DIR"
+    "$VENV_DIR/bin/pip" install pypresence requests
+fi
 
 # Activate the virtual environment
 source "$VENV_DIR/bin/activate"
