@@ -1,6 +1,6 @@
 pkgbase = gtk4-paper-plane
 	pkgdesc = GObject-based multi-platform GUI toolkit (Version required by Paper Plane)
-	pkgver = 4.14.3
+	pkgver = 4.16.3
 	pkgrel = 1
 	url = https://www.gtk.org/
 	arch = i686
@@ -10,7 +10,9 @@ pkgbase = gtk4-paper-plane
 	license = LGPL-2.1-or-later
 	checkdepends = weston
 	makedepends = git
+	makedepends = glib2-devel
 	makedepends = gobject-introspection
+	makedepends = libsysprof-capture
 	makedepends = meson
 	makedepends = python-docutils
 	makedepends = python-gobject
@@ -43,7 +45,7 @@ pkgbase = gtk4-paper-plane
 	depends = libegl
 	depends = libepoxy
 	depends = libgl
-	depends = libjpeg
+	depends = libjpeg-turbo
 	depends = libpng
 	depends = librsvg
 	depends = libtiff
@@ -59,15 +61,15 @@ pkgbase = gtk4-paper-plane
 	depends = libxrender
 	depends = pango
 	depends = shared-mime-info
-	depends = tracker3
+	depends = tinysparql
 	depends = vulkan-icd-loader
 	depends = wayland
 	optdepends = evince: Default print preview command
-	provides = gtk4=4.14.3
+	provides = gtk4=4.16.3
 	provides = libgtk-4.so
 	conflicts = gtk4
-	source = git+https://gitlab.gnome.org/GNOME/gtk.git#tag=4.14.3
-	source = gtk-reversed-list-4.14.3.patch::https://raw.githubusercontent.com/paper-plane-developers/paper-plane/main/build-aux/gtk-reversed-list.patch
+	source = git+https://gitlab.gnome.org/GNOME/gtk.git#tag=4.16.3
+	source = gtk-reversed-list-4.16.3.patch::https://raw.githubusercontent.com/paper-plane-developers/paper-plane/main/build-aux/gtk-reversed-list.patch
 	source = gtk4-querymodules.hook
 	source = gtk4-querymodules.script
 	sha256sums = SKIP

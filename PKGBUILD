@@ -3,7 +3,7 @@
 # Contributor: Fabian Bornschein <fabiscafe@archlinux.org>
 
 pkgname=gtk4-paper-plane
-pkgver=4.14.3
+pkgver=4.16.3
 pkgrel=1
 pkgdesc="GObject-based multi-platform GUI toolkit (Version required by Paper Plane)"
 url="https://www.gtk.org/"
@@ -35,7 +35,7 @@ depends=(
   libegl
   libepoxy
   libgl
-  libjpeg
+  libjpeg-turbo
   libpng
   librsvg
   libtiff
@@ -51,13 +51,15 @@ depends=(
   libxrender
   pango
   shared-mime-info
-  tracker3
+  tinysparql
   vulkan-icd-loader
   wayland
 )
 makedepends=(
   git
+  glib2-devel
   gobject-introspection
+  libsysprof-capture
   meson
   python-docutils
   python-gobject
@@ -110,9 +112,6 @@ package() {
   # files belonging to gtk-update-icon-cache, the official package is used instead
   rm "$pkgdir/usr/bin/gtk4-update-icon-cache"
   rm "$pkgdir/usr/share/man/man1/gtk4-update-icon-cache.1"
-
-  # files belonging to gtk4-demos, the official package is used instead
-  rm "$pkgdir/usr/share/man/man1/gtk4-"{demo-application,demo,icon-browser,node-editor,widget-factory}".1"
 
   install -Dm644 /dev/stdin "$pkgdir/usr/share/gtk-4.0/settings.ini" <<END
 [Settings]
