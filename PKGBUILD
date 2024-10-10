@@ -1,7 +1,7 @@
 # Maintainer: Jeff Henson <jeff@henson.io>
 
 pkgname=mobsh
-pkgver=5.3.1
+pkgver=5.3.2
 pkgrel=1
 pkgdesc="Tool for smooth git handover"
 arch=('x86_64' 'i686')
@@ -13,7 +13,7 @@ optdepends=('espeak-ng-espeak: Multi-lingual software speech synthesizer'
 makedepends=('go')
 conflicts=('mob')
 source=("$pkgname-$pkgver.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('225ae1e2769ad73f32f50e27a7df0bcc3fc3ae4489f4798acbe1d33ad3436c24')
+sha256sums=('ed71b623b7ffd535145d766ef3cb2406654e841c026a55eaa9e785f911dab8a7')
 
 build() {
 	cd "mob-${pkgver}"
