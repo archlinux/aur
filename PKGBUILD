@@ -3,7 +3,7 @@
 pkgname=tdx-bin
 pkgver=7.64
 pkgrel=1
-pkgdesc="通达信信创桌面版"
+pkgdesc="通达信信创桌面版，通达信金融终端"
 arch=("x86_64")
 url="https://www.tdx.com.cn/soft.html"
 
