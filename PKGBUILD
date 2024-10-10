@@ -9,10 +9,10 @@
 # for workarounds to `Insecure RPATH '<build path>' in usr/lib/spotube/lib/lib*_plugin.so`
 
 _system_flutter=false # build_system part seems missing in aur/flutter
-_flutter_version=3.22.3
+_flutter_version=3.24.3
 
 pkgname=spotube
-pkgver=3.8.2
+pkgver=3.8.3
 pkgrel=1
 pkgdesc="Open source Spotify client that doesn't require Premium nor uses Electron! Available for both desktop & mobile!"
 arch=("x86_64" "aarch64")
@@ -31,10 +31,10 @@ options=("!lto") # undefined symbol: Dart_NewPersistentHandle_DL
 source=(
     "spotube-$pkgver.tar.gz::https://github.com/KRTirtho/spotube/archive/refs/tags/v$pkgver.tar.gz"
 )
-sha256sums=('01e077865b6d7b91bad13dbe18b5bfc74791d7f59a17c8dd82f4689ab7019e84'
-            '9c5f70ba118b9163552144901a2efd91d40b22a68a04e67271d6a5ad936e8368')
+sha256sums=('e4436f11e31bfbd79e76e0bae524e06ece095da548d3a5b8ccd1f7a28ce2b79a'
+            'f4e2369afaf38a8e381c9243fad2ca04b8514194c40ec946825d1f4c5539a095')
 
-_release_date=2024-10-01
+_release_date=2024-10-09
 
 
 if $_system_flutter
