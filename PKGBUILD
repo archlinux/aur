@@ -43,7 +43,7 @@ validpgpkeys=()
 
 pkgver() {
   cd "${srcdir}/${_pymodule}"
-  _ver="$(grep -E '^[[:space:]]*__version__[[:space:]]*=' mtcnn/__init__.py | awk -F= '{print $2}' | tr -d "[[:space:]]\"'")"
+  _ver="$(grep -E '^[[:space:]]*__version__[[:space:]]*=' mtcnn/metadata.py | awk -F= '{print $2}' | tr -d "[[:space:]]\"'")"
   _rev="$(git rev-list HEAD --count)"
   _date="$(git log -1 --format=%cd --date=format:%Y%m%d)"
   _hash="$(git rev-parse --short HEAD)"
