@@ -1,14 +1,12 @@
 # Maintainer: Jikstra <jikstra@disroot.org>
 pkgname=deltachat-desktop-git
-pkgver=1.44.1.r78.g1dafb97c3
+pkgver=monorepo.testrelease.rc1.r6.g3bd0c73bc
 pkgrel=1
 pkgdesc="A privacy oriented chat application built on e-mail"
 arch=("any")
 url="https://github.com/deltachat/deltachat-desktop"
 license=("GPL")
-#IMPORTANT: if you update electron, make sure to also update deltachat-desktop.sh 
-depends=('electron30')
-makedepends=('npm' 'nodejs' 'git' 'rustup' 'python')
+makedepends=('pnpm' 'nodejs-lts-iron' 'git' 'python')
 source=(
     "deltachat-desktop-git::git+https://git@github.com/deltachat/deltachat-desktop.git"
     "deltachat-desktop.desktop"
@@ -19,7 +17,7 @@ source=(
 sha256sums=(
     "SKIP"
     "bdd5740b8d051fe9b4d3bace656b2475a322352f9826eb329a0daf0a7bf3a4c2"
-    "b06fdecd741618604e364c07cb02ed8eab135a92c6ebe1958c59a287d759cdc3"
+    "3a546d9aa79e0d4faa090523e7774fded1ffdeb22995bd013e9cb40e20117dd0"
     "851a593350fa064dfcb8ea2a021dc997c908c7568c3ceb5dab6809209958b9aa"
 )
 
@@ -34,34 +32,28 @@ pkgver() {
 build() {
     cd "$srcdir/${pkgname}"
 
-    npm install --verbose
-    npm run build
+    pnpm install --verbose
 
-    # Delete development dependencies, we don't need them anymore
-    npm prune --production 
+    pnpm --filter @deltachat-desktop/target-electron build4production
+    pnpm --filter @deltachat-desktop/target-electron pack:generate_config
+    pnpm --filter @deltachat-desktop/target-electron pack:patch-node-modules
+    pnpm --filter @deltachat-desktop/target-electron pack:linux:dir
 }
 
 
 package() {
-    cd "$srcdir/${pkgname}"
+    cd "$srcdir/${pkgname}/packages/target-electron"
     
     install -d "${pkgdir}/opt/DeltaChat/electron_app"
-    cp -r node_modules  images tsc-dist build html-dist _locales themes "${pkgdir}/opt/DeltaChat/electron_app"
+    cp -r "$srcdir/${pkgname}/packages/target-electron/dist/linux-unpacked/"* "${pkgdir}/opt/DeltaChat/electron_app"
 
-    rm -rf "${pkgdir}/opt/DeltaChat/electron_app/node_modules/deltachat-node/prebuilds/win32-x64"
-    rm -rf "${pkgdir}/opt/DeltaChat/electron_app/node_modules/deltachat-node/prebuilds/darwin-x64"
-    find "${pkgdir}/opt/DeltaChat/electron_app/node_modules/" -name "*.js.map" -exec rm {} \;
-
-    cp index.js package.json "${pkgdir}/opt/DeltaChat/electron_app"
-
-    
     install -Dm644 "${srcdir}/deltachat-desktop.desktop" "${pkgdir}/usr/share/applications/deltachat.desktop"
     install -Dm644 "${srcdir}/deltachat-desktop.xml" "${pkgdir}/usr/share/mime/chat.delta.desktop.xml"
-
     install -Dm755 "${srcdir}/deltachat-desktop.sh" "${pkgdir}/opt/DeltaChat/deltachat"
+
     install -d "${pkgdir}/usr/bin"
     ln -s "/opt/DeltaChat/deltachat" "${pkgdir}/usr/bin/deltachat"
     
-    install -Dm644 ./images/deltachat.png "${pkgdir}/usr/share/icons/hicolor/scalable/apps/deltachat.png"
+    install -Dm644 ../../images/deltachat.png "${pkgdir}/usr/share/icons/hicolor/scalable/apps/deltachat.png"
 }
  
