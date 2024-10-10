@@ -4,8 +4,8 @@ pkgname=tvtower-bin
 _pkgname=TVTower
 pkgver=0.8.2
 _subver=20231220
-pkgrel=2
-pkgdesc="A tribute to Mad TV. Written in BlitzMax, Lua and a bit of C."
+pkgrel=3
+pkgdesc="A tribute to Mad TV. Written in BlitzMax, Lua and a bit of C.Prebuilt version."
 arch=(
 	'i686'
 	'x86_64'
@@ -35,7 +35,7 @@ source=(
 	"${pkgname%-bin}.sh"
 )
 sha256sums=('503e6ff876e5afbcbb56638c6076b54d5392e67e48651b3b7bdf44faf750f286'
-            'a9783526d93e6c72c7e1551cc5cc513fd6056dcc4593abe8fac815721d32dd5a')
+            '66ba0a42698a2815cfec1c2a5a2b459e4ea9c054481c859acf5dd4aa84d49ce8')
 build() {
 	case "${CARCH}" in
 		i686)
@@ -45,24 +45,25 @@ build() {
 			_RUNNAME="${_pkgname}_Linux64"
 		;;
 	esac
-	sed -e "s|@appname@|${pkgname%-bin}|g" \
-        -e "s|@runname@|${_RUNNAME}|g" \
-        -i "${srcdir}/${pkgname%-bin}.sh"
-	gendesk -q -f -n --categories="Game" --name="${_pkgname}" --exec="${pkgname%-bin}"
-	install -Dm755 -d "${srcdir}/opt/${pkgname%-bin}/logfiles"
-	bsdtar -xf "${srcdir}/${pkgname%-bin}-${pkgver}.zip" -C "${srcdir}/opt/${pkgname%-bin}"
-	rm -rf "${srcdir}/opt/${pkgname%-bin}/"*.{bat,exe}
-	for _logtxt in app ai1 ai2 ai3 ai4;do
-		touch "${srcdir}/opt/${pkgname%-bin}/logfiles/log.${_logtxt}.txt"
+	sed -e "
+		s/@appname@/${pkgname%-bin}/g
+        s/@runname@/${_RUNNAME}/g
+    " -i "${srcdir}/${pkgname%-bin}.sh"
+	gendesk -q -f -n --pkgname="${pkgname%-bin}" --pkgdesc="${pkgdesc}" --categories="Game" --name="${_pkgname}" --exec="${pkgname%-bin}"
+	install -Dm755 -d "${srcdir}/usr/lib/${pkgname%-bin}/logfiles"
+	bsdtar -xf "${srcdir}/${pkgname%-bin}-${pkgver}.zip" -C "${srcdir}/usr/lib/${pkgname%-bin}"
+	rm -rf "${srcdir}/usr/lib/${pkgname%-bin}/"*.{bat,exe}
+	for _logtxt in app ai1 ai2 ai3 ai4 app.error;do
+		touch "${srcdir}/usr/lib/${pkgname%-bin}/logfiles/log.${_logtxt}.txt"
 	done
-	touch "${srcdir}/opt/${pkgname%-bin}/log.profiler.txt"
+	touch "${srcdir}/usr/lib/${pkgname%-bin}/log.profiler.txt"
 }
 package() {
 	install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
-	cp -r "${srcdir}/opt" "${pkgdir}"
-	install -Dm644 "${srcdir}/opt/${pkgname%-bin}/LICENCE.txt" -t "${pkgdir}/usr/share/licenses/${pkgname}"
-	install -Dm644 "${srcdir}/opt/${pkgname%-bin}/${pkgname%-bin}.png" -t "${pkgdir}/usr/share/pixmaps"
+	cp -r "${srcdir}/usr" "${pkgdir}"
+	install -Dm644 "${srcdir}/usr/lib/${pkgname%-bin}/LICENCE.txt" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+	install -Dm644 "${srcdir}/usr/lib/${pkgname%-bin}/${pkgname%-bin}.png" -t "${pkgdir}/usr/share/pixmaps"
 	install -Dm644 "${srcdir}/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
-	chmod 777 "${pkgdir}/opt/${pkgname%-bin}/savegames"
-	find "${pkgdir}/opt/${pkgname%-bin}/logfiles" -name "log.*.txt" -perm 644 -exec chmod 666 {} \;
+	chmod 777 "${pkgdir}/usr/lib/${pkgname%-bin}/savegames"
+	find "${pkgdir}/usr/lib/${pkgname%-bin}/logfiles" -name "log.*.txt" -perm 644 -exec chmod 666 {} +
 }
