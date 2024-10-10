@@ -4,7 +4,7 @@
 # Contributor: Bruno Filipe < gmail-com: bmilreu >
 
 pkgname=ffmpeg-amd-full
-pkgver=7.0.2
+pkgver=7.1
 pkgrel=1
 _svt_hevc_ver='ed80959ebb5586aa7763c91a397d44be1798587c'
 _svt_vp9_ver='3b9a3fa43da4cc5fe60c7d22afe2be15341392ea'
@@ -148,18 +148,18 @@ source=("https://ffmpeg.org/releases/ffmpeg-${pkgver}.tar.xz"{,.asc}
         "010-ffmpeg-add-svt-hevc-g${_svt_hevc_ver:0:7}.patch"::"https://raw.githubusercontent.com/OpenVisualCloud/SVT-HEVC/${_svt_hevc_ver}/ffmpeg_plugin/master-0001-lavc-svt_hevc-add-libsvt-hevc-encoder-wrapper.patch"
         "020-ffmpeg-add-svt-hevc-docs-g${_svt_hevc_ver:0:7}.patch"::"https://raw.githubusercontent.com/OpenVisualCloud/SVT-HEVC/${_svt_hevc_ver}/ffmpeg_plugin/0002-doc-Add-libsvt_hevc-encoder-docs.patch"
         "030-ffmpeg-add-svt-vp9-g${_svt_vp9_ver:0:7}.patch"::"https://raw.githubusercontent.com/OpenVisualCloud/SVT-VP9/${_svt_vp9_ver}/ffmpeg_plugin/master-0001-Add-ability-for-ffmpeg-to-run-svt-vp9.patch"
+        "031-ffmpeg-add-svt-vp9.patch"
         "040-ffmpeg-add-av_stream_get_first_dts-for-chromium.patch"
         "050-ffmpeg-fix-segfault-with-avisynthplus.patch"
-        '070-ffmpeg-xeve0.5.1-support.patch'::'https://git.ffmpeg.org/gitweb/ffmpeg.git/patch/3e6c7948626f19c46c1a630c788ea6bbd9e7fbcb'
         "LICENSE")
-sha256sums=('8646515b638a3ad303e23af6a3587734447cb8fc0a0c064ecdb8e95c4fd8b389'
+sha256sums=('40973d44970dbc83ef302b0609f2e74982be2d85916dd2ee7472d30678a7abe6'
             'SKIP'
             '9047e18d34716812d4ea7eafc1d0fd8b376d922a4b6b4dc20237662fcaf0c996'
             'a164ebdc4d281352bf7ad1b179aae4aeb33f1191c444bed96cb8ab333c046f81'
             '59da61f2b2c556fbe0cdbf84bcc00977ee3d2447085decb21f6298226559f2aa'
-            '62509a98460d3d48afcb0ce26250def7dfed124b82acc95a3b84a2802910c1fa'
-            'b0ce071f0d9c7c5eff8e7e654e30c6f4377aa137797aeb54338c2c3a93d5472c'
-            '9c76e4c5af11afed32c588d5d900f2eaf1ca43fc2611365f661df16acde912d0'
+            'f3918985d0a156ceb2d05903500544eb1cf6df2ee950cbf6aa63718eb10f6abf'
+            'c413f87df4ec496b0e8be705be407ee9c43f09a24ea14b01ea9688d5b410f0f0'
+            '26419f819d1f3e4d0534995b73d05a8195bc7c892b74c37c3880085af027515b'
             '04a7176400907fd7db0d69116b99de49e582a6e176b3bfb36a03e50a4cb26a36')
 validpgpkeys=('FCF986EA15E6E293A5644F10B4322F04D67658D8')
 
@@ -167,10 +167,10 @@ prepare() {
     rm -f "ffmpeg-${pkgver}/libavcodec/"libsvt_{hevc,vp9}.c
     patch -d "ffmpeg-${pkgver}" -Np1 -i "${srcdir}/010-ffmpeg-add-svt-hevc-g${_svt_hevc_ver:0:7}.patch"
     patch -d "ffmpeg-${pkgver}" -Np1 -i "${srcdir}/020-ffmpeg-add-svt-hevc-docs-g${_svt_hevc_ver:0:7}.patch"
-    patch -d "ffmpeg-${pkgver}" -Np1 -i "${srcdir}/030-ffmpeg-add-svt-vp9-g${_svt_vp9_ver:0:7}.patch"
+    patch -d "ffmpeg-${pkgver}" -Np1 -i "${srcdir}/031-ffmpeg-add-svt-vp9.patch"
+    patch -d "ffmpeg-${pkgver}" -Np1 -i <(filterdiff -i b/libavcodec/libsvt_vp9.c "030-ffmpeg-add-svt-vp9-g${_svt_vp9_ver:0:7}.patch")
     patch -d "ffmpeg-${pkgver}" -Np1 -i "${srcdir}/040-ffmpeg-add-av_stream_get_first_dts-for-chromium.patch"
     patch -d "ffmpeg-${pkgver}" -Np1 -i "${srcdir}/050-ffmpeg-fix-segfault-with-avisynthplus.patch"
-    patch -d "ffmpeg-${pkgver}" -Np1 -i <(filterdiff -x a/libavcodec/version.h "070-ffmpeg-xeve0.5.1-support.patch")
 }
 
 build() {
@@ -183,8 +183,6 @@ build() {
     ./configure \
         --prefix='/usr' \
         --enable-lto \
-        --cc=$CC \
-        --cxx=$CXX \
         \
         --disable-rpath \
         --enable-gpl \
@@ -237,6 +235,7 @@ build() {
         --enable-libjxl \
         --enable-libklvanc \
         --enable-libkvazaar \
+        --enable-liblc3 \
         --enable-liblensfun \
         --enable-libmodplug \
         --enable-libmp3lame \
@@ -282,6 +281,7 @@ build() {
         --enable-libvo-amrwbenc \
         --enable-libvorbis \
         --enable-libvpx \
+        --enable-libvvenc \
         --enable-libwebp \
         --enable-libx264 \
         --enable-libx265 \
@@ -325,7 +325,7 @@ build() {
         --disable-libnpp \
         --disable-nvdec \
         --disable-nvenc \
-        --enable-omx \
+        --disable-omx \
         --disable-rkmpp \
         --enable-v4l2-m2m \
         --enable-vaapi \
