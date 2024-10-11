@@ -2,9 +2,9 @@
 
 _pkgname=koboldcpp
 pkgname=koboldcpp-bin
-pkgver=1.75.2
+pkgver=1.76
 pkgrel=1
-pkgdesc="A simple one-file way to run various GGML and GGUF models with KoboldAI's UI. (Requires AVX2 support)"
+pkgdesc="A simple one-file way to run various GGML and GGUF models with KoboldAI's UI"
 arch=('x86_64')
 url="https://github.com/LostRuins/${_pkgname}"
 license=('AGPL3')
@@ -17,7 +17,7 @@ source=(
   "koboldcpp.png"
 )
 sha256sums=(
-  'c76f1f3f85da399678d504424498132a6459813cbbe7f8b89966b6171999da20'
+  '0775f146e12afc71889786ee245d498b437c5d2a6185f23829bff6a13c107d2c'
   'fcec7b843b908e1c03496fdc0605e6509f52526a855c43db16e287ef646503ef'
   'd244788c74a693a383bea7db6ab2bb2f762e6020de900be977b16e18dcd20f54'
 )
