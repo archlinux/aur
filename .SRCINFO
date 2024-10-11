@@ -1,12 +1,12 @@
 pkgbase = libesedb
 	pkgdesc = Library and tools to access the Extensible Storage Engine (ESE) Database File (EDB) format.
-	pkgver = 20230318
+	pkgver = 20240420
 	pkgrel = 1
 	url = https://github.com/libyal/libesedb
 	arch = any
 	license = LGPLv3+
 	depends = glibc
-	source = https://github.com/libyal/libesedb/releases/download/20230318/libesedb-experimental-20230318.tar.gz
-	sha256sums = 184178eb825c43e502eae33730a40fc2ca14f8beae023ef525f9bbe407e19078
+	source = https://github.com/libyal/libesedb/releases/download/20240420/libesedb-experimental-20240420.tar.gz
+	sha256sums = 07250741dff8a1ea1f5e38c02f1b9a1ae5e9fa52d013401067338842883a5b9f
 
 pkgname = libesedb
