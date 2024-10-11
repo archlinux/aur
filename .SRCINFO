@@ -1,0 +1,20 @@
+pkgbase = shinyfetch-git
+	pkgdesc = The shiniest hardware fetch
+	pkgver = r17.47ce18d
+	pkgrel = 1
+	url = https://github.com/morr0ne/shinyfetch
+	arch = x86_64
+	arch = aarch64
+	groups = shinyfetch
+	license = Apache-2.0
+	makedepends = git
+	makedepends = cargo
+	makedepends = just
+	makedepends = gleam
+	depends = erlang-nox
+	provides = shinyfetch
+	conflicts = shinyfetch
+	source = git+https://github.com/morr0ne/shinyfetch.git
+	sha256sums = SKIP
+
+pkgname = shinyfetch-git
