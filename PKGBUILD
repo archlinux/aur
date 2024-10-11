@@ -4,8 +4,8 @@
 
 _name=gaphor
 pkgname=python-${_name}
-pkgver=2.26.0
-pkgrel=2
+pkgver=2.27.0
+pkgrel=1
 pkgdesc="Simple and easy to use modeling tool for UML using GTK"
 arch=('any')
 url="https://github.com/gaphor/${_name}"
@@ -25,6 +25,7 @@ depends=(
 	'python-defusedxml'
 	'python-dulwich'
 )
+conflicts=('python-gaphas>=5.0.0')
 makedepends=(
 	'gendesk'
 	'python-build'
@@ -40,6 +41,7 @@ checkdepends=(
 	'python-sphinx'
 	'python-xdoctest'
 	'xorg-server-xvfb'
+	'python-types-docutils'
 )
 provides=("${_name}")
 source=(
@@ -47,9 +49,18 @@ source=(
 	"${_name}.xml"
 	"org.gaphor.Gaphor.gschema.xml"
 )
-sha256sums=('2e4ad71f74b960fe9386260beb2e0ecc191b77b30ceb18c5a5a6a28cf7de6e6c'
+sha256sums=('a13435cc8833b5e5149bdcf70d82fdb32e5597331ba44669421848809686fdf8'
             'c3868ac8cb77749ef5a5afab722c67b6510f0bfe5a9e1da27ed06c3a8ab444a1'
             'fbf86b3155b0d28158f5c8c29aaa8db897e403f0c6542c331d35a3dfbe0875e1')
+
+prepare() {
+	cd "${srcdir}/${_name}-${pkgver}"
+	# Note: Using poetry within src dir; since otherwise tests won't run on my machine. There seem to be some issues in upstream code, e.g. interfering with my localized system.
+	# Using poetry that way is not nice, but system itself is not touched so I don't see any reason not to.
+	#  @actionless: You are welcome to change back again and make me wiser, I only commented out the original lines :-)
+	poetry config virtualenvs.in-project true --local
+	poetry install
+}
 
 build() {
 	cd "${srcdir}/${_name}-${pkgver}"
@@ -59,18 +70,22 @@ build() {
 	gendesk -f -n --pkgname="$_name" --pkgdesc="$pkgdesc" --genericname="UML modelling tool" --mimetypes="application/x-gaphor" --icon='org.gaphor.Gaphor' --categories='Development' PKGBUILD
 	echo '* Compiling translations ...'
 	python po/build-babel.py &> /dev/null
-	# Note: set `GIT_CEILING_DIRECTORIES` to prevent poetry
-	# from incorrectly using a parent git checkout info.
-	# https://github.com/pypa/build/issues/384#issuecomment-947675975
-	GIT_CEILING_DIRECTORIES="${PWD}/.." \
-		python -m build --wheel --no-isolation
+
+	echo '* Building wheel ...'
+	poetry build
+#	# Note: set `GIT_CEILING_DIRECTORIES` to prevent poetry
+#	# from incorrectly using a parent git checkout info.
+#	# https://github.com/pypa/build/issues/384#issuecomment-947675975
+#	GIT_CEILING_DIRECTORIES="${PWD}/.." \
+#		python -m build --wheel --no-isolation
 }
 
 check() {
 	cd "${srcdir}/${_name}-${pkgver}"
-	PYTHONPATH="${srcdir}/${_name}-${pkgver}/dist/${_name}-${pkgver}-py3-none-any.whl:${PYTHONPATH}" \
-		xvfb-run --auto-servernum pytest \
-			--ignore=tests/test_plugins.py
+	xvfb-run --auto-servernum poetry run pytest -s tests
+#	PYTHONPATH="${srcdir}/${_name}-${pkgver}/dist/${_name}-${pkgver}-py3-none-any.whl:${PYTHONPATH}" \
+#		xvfb-run --auto-servernum pytest \
+#			--ignore=tests/test_plugins.py
 }
 
 package() {
