@@ -1,0 +1,21 @@
+pkgbase = amazingurho-git
+	pkgdesc = Eat all the shrimp as fast as you can in this rhythmic maze game
+	pkgver = r169.83f44db
+	pkgrel = 1
+	url = https://gitlab.com/luckeyproductions/games/amazingurho
+	arch = x86_64
+	license = GPL-2.0-or-later
+	license = CC0-1.0
+	license = CC-BY-4.0
+	license = CC-BY-3.0
+	license = CC-BY-SA-4.0
+	makedepends = git
+	makedepends = qt5-base
+	depends = dry
+	depends = hicolor-icon-theme
+	provides = amazingurho
+	conflicts = amazingurho
+	source = amazingurho-git::git+https://gitlab.com/luckeyproductions/games/amazingurho.git
+	sha512sums = SKIP
+
+pkgname = amazingurho-git
