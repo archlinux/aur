@@ -17,7 +17,7 @@ arch=(
   "x86_64"
 )
 url="https://codeberg.org/${_gituser}/${_gitname}"
-license=("LGPL2.1")
+license=("LGPL-2.1-or-later")
 provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}")
 depends=(
