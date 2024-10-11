@@ -2,15 +2,15 @@
 # Contributor: Robin Nehls <aur@manol.is>
 
 pkgname=gr-fosphor-git
-pkgver=r133.7b6b996
-pkgrel=2
+pkgver=r179.74d54fc
+pkgrel=1
 pkgdesc="GNU Radio block for RTSA-like spectrum visualization using OpenCL and OpenGL acceleration"
 arch=('any')
 url="https://osmocom.org/projects/sdr/wiki/fosphor"
 license=('GPL-3.0-or-later')
 depends=('gnuradio' 'pybind11' 'boost-libs' 'glfw' 'ocl-icd' 'freetype2')
 makedepends=('git' 'cmake' 'boost' 'opencl-headers')
-provides=("${pkgname%-git}")
+provides=("${pkgname%-git}=${pkgver}")
 source=('git+https://gitea.osmocom.org/sdr/gr-fosphor.git')
 sha1sums=('SKIP')
 
