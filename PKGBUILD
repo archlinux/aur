@@ -18,7 +18,7 @@ license=("custom:GPL2WithOpenSSLException")
 
 source=("${_pkgname}::git+${url}.git#tag=v${pkgver}"
         "gulrak-filesystem::git+https://github.com/gulrak/filesystem.git")
-sha512sums=('SKIP'
+sha512sums=('c0186769b8e22868f46ba8f12139a9d5d07a12ea3503366b43340f3160a777ca3bdad50aedd609bcf12e915f25b040c83dfe4f1aebed4ea3a2edc4424c3ad923'
             'SKIP')
 _core_deps=(glibc gcc-libs libx11 libxrandr libxext libxinerama xorgproto libxtst libxi openssl libei libportal)
 _gui_deps=(glibc gcc-libs libx11 openssl avahi qt6-base xdg-desktop-portal)

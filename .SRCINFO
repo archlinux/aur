@@ -37,7 +37,7 @@ pkgbase = input-leap
 	optdepends = libportal-qt6
 	source = input-leap::git+https://github.com/input-leap/input-leap.git#tag=v3.0.1
 	source = gulrak-filesystem::git+https://github.com/gulrak/filesystem.git
-	sha512sums = SKIP
+	sha512sums = c0186769b8e22868f46ba8f12139a9d5d07a12ea3503366b43340f3160a777ca3bdad50aedd609bcf12e915f25b040c83dfe4f1aebed4ea3a2edc4424c3ad923
 	sha512sums = SKIP
 
 pkgname = input-leap-headless
