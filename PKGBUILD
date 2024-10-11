@@ -2,8 +2,8 @@
 pkgname='wfinfo-ng-git'
 _pkgname="wfinfo-ng"
 pkgdesc="Analyze Warframe relic reward screen to determine platinum value of items."
-pkgver=0.1.0.112.g399be07
-pkgrel=1
+pkgver=0.1.0.113.g87d033a
+pkgrel=2
 #epoch=1
 arch=('any') #TODO: verify this
 url="https://github.com/knoellle/wfinfo-ng"
@@ -13,8 +13,8 @@ makedepends=(git rust\>=1.74 cmake clang libxtst fontconfig)
 optdepends=('mlocate: to autodetect EE.log location')
 provides=('wfinfo')
 #conflicts=('wfinfo')
-source=("$_pkgname::git+https://github.com/knoellle/wfinfo-ng.git" 'wfinfo.sh')
-sha256sums=('SKIP' '79a10b27dc87328fbb35bb7c10f3eb33ff6459c55e301ada4db2f352ae5f770f')
+source=("$_pkgname::git+$url.git" 'wfinfo.sh')
+sha256sums=('SKIP' '9493ca86314d36f50ee71831188cef8ed202a422f1924395ac7a8d3bccf2fbb0')
 
 pkgver() {
 	cd "$srcdir/$_pkgname"
@@ -27,7 +27,7 @@ pkgver() {
 
 build(){
 	cd "$srcdir/$_pkgname"
-	env CFLAGS= cargo build --bin wfinfo --release
+	env CFLAGS= cargo build --bin wfinfo --release --locked
 	sed 's/ | jq .//' -i "update.sh"
 }
 
@@ -37,7 +37,7 @@ check(){
 	./update.sh
 	echo Grabbing test-images/1.png... # (bypassing git-lfs)
 	curl https://media.githubusercontent.com/media/knoellle/wfinfo-ng/master/test-images/1.png > test-images/1.png
-	env CFLAGS= cargo test --bin wfinfo --release -- --skip wfi_images_99_percent
+	env CFLAGS= cargo test --bin wfinfo --release --locked -- --skip wfi_images_99_percent
 }
 
 package() {
