@@ -1,6 +1,6 @@
 [Desktop Entry]
 Name=Writerside EAP
-Exec="/opt/writerside-eap/bin/writerside.sh" %u
+Exec="/opt/writerside-eap/bin/writerside" %u
 Version=1.0
 Type=Application
 Categories=Development;IDE;

@@ -2,7 +2,7 @@
 
 pkgbase=writerside-eap
 pkgname=(writerside-eap writerside-eap-jre)
-pkgver=241.18775.101
+pkgver=242.21870.138
 pkgrel=1
 pkgdesc="Documentation authoring IDE from JetBrains. Early Access Program."
 arch=("x86_64")
@@ -13,8 +13,8 @@ _pkgname="writerside"
 
 source=(https://download.jetbrains.com/${_pkgname}/${_pkgname}-${pkgver}.tar.gz
         writerside-eap.desktop)
-sha256sums=("7da1531fc7f1f3995957729b412bf43e5757b0029ffcdf858270e64ae30ee462"
-            "4aa5408b4aa3fb083e6c54d267c9fb8aa010bafd5a11e84fb404d0ea99890bc2")
+sha256sums=("89d1f4bda404bb81c315600f6b673f89e2798066f68b661a904c9e30db45b4e8"
+            "edba515d4fc04bf417fa9ab2da31cccebfe3c00cb8013cede909f6550650df7f")
 
 package_writerside-eap() {
   optdepends=("writerside-eap-jre: JetBrains custom Java Runtime (Recommended)"
