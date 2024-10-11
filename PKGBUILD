@@ -3,7 +3,7 @@
 pkgname=freelib-dev-git
 pkgver=6.1.12
 pkgrel=1
-pkgdesc="Freelib is book library manager"
+pkgdesc="Book library manager"
 arch=(x86_64)
 url="https://github.com/petrovvlad/freeLib"
 license=(GPL3)
