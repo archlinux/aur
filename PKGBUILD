@@ -18,7 +18,7 @@
 
 pkgname=mutter-x11-scaling
 pkgver=47.0
-pkgrel=4
+pkgrel=5
 pkgdesc="Window manager and compositor for GNOME with X11 fractional scaling patch"
 url="https://gitlab.gnome.org/GNOME/mutter"
 arch=(x86_64)
@@ -106,6 +106,9 @@ prepare() {
   # Revert "window/wayland: Use scale for configured rect in configuration"
   # https://gitlab.gnome.org/GNOME/mutter/-/commit/70c0eca6b08b7a5aed7a1951149f72f98331a6b4
   git cherry-pick -n 70c0eca6b08b7a5aed7a1951149f72f98331a6b4
+
+  # https://gitlab.gnome.org/GNOME/mutter/-/merge_requests/4028
+  git cherry-pick -n 18eb1be4915603afc5efead1918dfa8ca744af46
 
   # Add scaling support using randr under x11
   patch -p1 -i "${srcdir}/x11-Add-support-for-fractional-scaling-using-Randr.patch"
