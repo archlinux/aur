@@ -1,19 +1,22 @@
 # Maintainer: Karl-Felix Glatzer <karl.glatzer@gmx.de>
 pkgname=mingw-w64-libvpx
 pkgver=1.14.1
-pkgrel=1
+pkgrel=2
 pkgdesc="VP8 and VP9 codec (mingw-w64)"
 arch=('any')
 url="http://www.webmproject.org/"
 license=('custom:BSD')
 depends=('mingw-w64-crt')
-options=(!strip !buildflags staticlibs)
+options=(!strip !buildflags staticlibs !debug)
 makedepends=('mingw-w64-gcc' 'yasm' 'git')
 _tag=12f3a2ac603e8f10742105519e0cd03c3b8f71dd
 source=(git+https://chromium.googlesource.com/webm/libvpx#tag=${_tag}
-        'configure.patch')
+        # patches from MSYS2 (https://github.com/msys2/MINGW-packages/tree/master/mingw-w64-libvpx)
+        '0001-enable-shared-on.mingw.patch'
+        '0005-fix-exports.mingw.patch')
 b2sums=('2ee22fba5822c0f3667c0c74de799536724ce88694b31e0493ce10c6f9a11c6ac563e39f5dcaf9fb4378346276610008dcbfc47f9407411b7c35ba4c71fb5f66'
-        'fe5d0f5035cc872936010e6a3c24212da4ed5b0ba841e3271f8b419502bc251bae28b821fc4543021bf4d4594400b800796ddb993c443c881b98f59c0ae8a19e')
+        '717394b571a5fa8325cd64092886e2f013facde7bea08aef4f8361e97e10fd2c9ffc93ab8d070ab2f16e994766206e9ba39e793b7852e5b70f426b50fb9e63f1'
+        '89024d854bf3fd514b2c219f133f2fc82bdab22158b74da90053c3a3812c148f6b43e7061d179ab8dbc0e6c441a23f95499a00180fb52b20effb9ba2504f00a8')
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 pkgver() {
@@ -25,7 +28,8 @@ pkgver() {
 prepare() {
   cd ${srcdir}/libvpx
 
-  patch -Np1 < ../configure.patch
+  patch -Np1 -i "${srcdir}/0001-enable-shared-on.mingw.patch"
+  patch -Np1 -i "${srcdir}/0005-fix-exports.mingw.patch"
 }
 
 build() {
@@ -65,13 +69,6 @@ package() {
   for _arch in ${_architectures}; do
     cd ${srcdir}/libvpx/build-${_arch}
     make DIST_DIR="$pkgdir/usr/${_arch}" install
-
-    #Move the hacked in shared libs to bin
-    mv ${pkgdir}/usr/${_arch}/lib/libvpx.dll ${pkgdir}/usr/${_arch}/bin/
-    mv ${pkgdir}/usr/${_arch}/lib/libvpx.dll.9* ${pkgdir}/usr/${_arch}/bin/
-
-    #Install implib
-    install -m 0644 ${srcdir}/libvpx/build-${_arch}/libvpx.dll.a ${pkgdir}/usr/${_arch}/lib/libvpx.dll.a
 
     ${_arch}-strip -s ${pkgdir}/usr/${_arch}/bin/*.exe
     ${_arch}-strip -g --strip-unneeded ${pkgdir}/usr/${_arch}/bin/*.dll
