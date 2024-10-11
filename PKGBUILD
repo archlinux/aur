@@ -1,9 +1,9 @@
 # Maintainer: Adrian Perez de Castro <aperez@igalia.com>
-pkgdesc='Understated cursor theme, tailless/black variant'
+pkgdesc='Understated cursor theme - black, tailless'
 pkgname=xcursor-cz-hickson-black
-pkgver=20230203
-pkgrel=1
-_commit=9b6bc8874d9de7fa264dcf1571d2e7e51d75e06f
+pkgver=20210706
+pkgrel=0
+_commit=02a7977b3d009525c95787c756fce8d824960e4c
 license=(GPL3)
 url="https://github.com/charakterziffer/cursor-toolbox"
 _repo=${url##*/}
