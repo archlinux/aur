@@ -10,26 +10,24 @@ url="https://osmocom.org/projects/sdr/wiki/fosphor"
 license=('GPL-3.0-or-later')
 depends=('gnuradio' 'pybind11' 'boost-libs' 'glfw' 'ocl-icd' 'freetype2')
 makedepends=('git' 'cmake' 'boost' 'opencl-headers')
-provides=('gr-fosphor')
+provides=("${pkgname%-git}")
 source=('git+https://gitea.osmocom.org/sdr/gr-fosphor.git')
 sha1sums=('SKIP')
-_gitname=gr-fosphor
 
 pkgver() {
-  cd $_gitname
+  cd "${pkgname%-git}"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-  cd $_gitname
+  cd "${pkgname%-git}"
   mkdir build && cd build
   cmake -DCMAKE_INSTALL_PREFIX=/usr ..
   make
 }
 
 package() {
-  cd $_gitname
-  cd build
+  cd "${pkgname%-git}/build"
   make DESTDIR=${pkgdir} install
 }
 
