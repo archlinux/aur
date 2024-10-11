@@ -10,10 +10,10 @@
 # Contributor: Mika Fischer <mika.fischer@zoopnet.de>
 
 readonly _pkgname="soci"
-declare -r _tag="4fc87365c0e812d6d4e6984a8be7798341966205"
+declare -r _tag="d7bec49aaa6e44c85e3e72dcf3c57458724cfc72"
 
 pkgname="soci-git"
-pkgver="v4.0.1_559_g4440c789"
+pkgver="4.1.0"
 pkgrel="1"
 pkgdesc="C++ database access library."
 arch=("x86_64")

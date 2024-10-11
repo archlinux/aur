@@ -1,6 +1,6 @@
 pkgbase = soci-git
 	pkgdesc = C++ database access library.
-	pkgver = v4.0.1_559_g4440c789
+	pkgver = 4.1.0
 	pkgrel = 1
 	url = https://github.com/SOCI/soci
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = soci-git
 	depends = unixodbc
 	provides = soci
 	conflicts = soci
-	source = soci::git+https://github.com/SOCI/soci.git#tag=4fc87365c0e812d6d4e6984a8be7798341966205
+	source = soci::git+https://github.com/SOCI/soci.git#tag=d7bec49aaa6e44c85e3e72dcf3c57458724cfc72
 	sha512sums = SKIP
 
 pkgname = soci-git
