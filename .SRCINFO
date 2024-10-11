@@ -1,10 +1,14 @@
 pkgbase = python-xxtea-git
         pkgdesc = Python extension module xxtea.
-        pkgver = r185.3a106bc
-        pkgrel = 3
+        pkgver = r186.9b9698a
+        pkgrel = 1
         url = https://github.com/ifduyue/xxtea
         arch = x86_64
         license = BSD
+        makedepends = python-build
+        makedepends = python-installer
+        makedepends = python-setuptools
+        makedepends = python-wheel
         makedepends = git
         depends = python
         provides = python-xxtea

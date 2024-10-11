@@ -1,15 +1,15 @@
 # Maintainer: Neko_Rikka <yjzyl9008 at gmail dot com>
 
 pkgname=python-xxtea-git
-pkgver=r185.3a106bc
-pkgrel=3
+pkgver=r186.9b9698a
+pkgrel=1
 pkgdesc="Python extension module xxtea."
 arch=('x86_64')
 url="https://github.com/ifduyue/xxtea"
 license=('BSD')
 provides=('python-xxtea')
 conflicts=('python-xxtea')
-makedepends=('git')
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel' 'git')
 depends=('python')
 source=("git+https://github.com/ifduyue/xxtea.git")
 md5sums=('SKIP')
