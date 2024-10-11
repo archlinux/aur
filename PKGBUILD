@@ -1,9 +1,9 @@
-# Maintainer: Xavier (sapphirus at azorium dot net)
-# Original Maintainer: Ossi Saukko <osaukko at gmail dot com>
+# Maintainer: Xavier Moffett (sapphirus at azorium dot net)
+# Contributor: Ossi Saukko <osaukko at gmail dot com>
 
 _pkgbase=ocp
 pkgname=('ocp-git' 'ocp-sdl2-git')
-pkgver=0.2.108.r2.d1fc8df
+pkgver=0.2.109.r11.c1069f5
 pkgrel=1
 pkgdesc="Open Cubic Player (GIT Version)"
 arch=('i686' 'x86_64')
@@ -36,12 +36,12 @@ makedepends=('alsa-lib'
 	     'libvorbis')
 
 pkgver() {
-    	cd $_pkgbase
+    cd $_pkgbase
 	echo "$(git describe --tags | sed 's/^v//; s/-/.r/; s/-g/./')"
 }
 
 prepare() {
-        cd $_pkgbase
+    cd $_pkgbase
 	git submodule init
 	git submodule update --init --recursive
 }
@@ -58,9 +58,8 @@ build() {
 }
 
 package_ocp-sdl2-git() {
-	provides=(${_pkgbase}=${pkgver}
-		  ${_pkgbase}-sdl2=${pkgver})
-	conflicts=('ocp' 'ocp-sdl2' 'ocp-curses')
+	provides=(${_pkgbase}=${pkgver})
+	conflicts=('ocp' 'ocp-curses')
 	install=${_pkgbase}.install	
 	depends=('alsa-lib'
 		 'bzip2'
@@ -89,9 +88,8 @@ package_ocp-sdl2-git() {
 }
 
 package_ocp-git() {
-	provides=(${_pkgbase}=${pkgver}
-		  ${_pkgbase}-curses=${pkgver})
-	conflicts=('ocp-curses' 'ocp-sdl2')
+	provides=(${_pkgbase}=${pkgver})
+	conflicts=('ocp' 'ocp-curses')
 	depends=('alsa-lib'
 		 'bzip2'
 		 'cjson'
