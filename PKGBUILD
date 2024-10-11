@@ -2,7 +2,7 @@
 
 _pkgname=hammer-editor
 pkgname=$_pkgname-bin
-pkgver=1.7.2
+pkgver=1.8.1
 pkgrel=1
 pkgdesc="A simple tool for building stories (binary release)"
 url="https://github.com/Wavesonics/hammer-editor"
@@ -12,7 +12,7 @@ depends=('xdg-utils')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=("$_pkgname-$pkgver.deb::$url/releases/download/v$pkgver/hammer.deb")
-sha256sums=('a3e901ff3230ec752030142b41bbcbdbdf4b20b6d00fa894193140ec94eeffec')
+sha256sums=('ffb8720f3f1895f4a7354cf51426039ac5cc155fc1960b8bafcb13eeb367f213')
 
 package() {
 # Create a directory
