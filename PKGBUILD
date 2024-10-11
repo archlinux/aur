@@ -1,9 +1,9 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=proton-mail
 pkgver=1.0.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Proton official desktop application for Proton Mail and Proton Calendar"
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url="https://proton.me"
 license=('GPL-3.0-or-later')
 depends=(
@@ -13,6 +13,7 @@ depends=(
   'libdrm'
   'libnotify'
   'nss'
+  'xdg-utils'
 )
 makedepends=(
   'git'
@@ -21,9 +22,9 @@ makedepends=(
 )
 optdepends=(
   'kde-cli-tools: file deletion support (kioclient5)'
-  'pipewire: WebRTC desktop sharing under Wayland'
+  'libgnome-keyring'
+  'lsb-release'
   'trash-cli: file deletion support (trash-put)'
-  'xdg-utils: open URLs with desktop’s default (xdg-email, xdg-open)'
 )
 conflicts=('protonmail-desktop')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/ProtonMail/inbox-desktop/releases/download/$pkgver/inbox-desktop-$pkgver-source.zip"
@@ -50,10 +51,10 @@ build() {
 package() {
   cd "$pkgname-$pkgver"
   install -d "$pkgdir/opt/$pkgname"
-  cp -r out/Proton\ Mail-linux-x64/* "$pkgdir/opt/$pkgname"
+  cp -r out/Proton\ Mail-linux-*/* "$pkgdir/opt/$pkgname"
 
   install -d "$pkgdir/usr/bin"
-  ln -sf /opt/$pkgname/Proton\ Mail "$pkgdir/usr/bin/$pkgname"
+  ln -s "/opt/$pkgname/Proton Mail" "$pkgdir/usr/bin/$pkgname"
 
   install -Dm644 assets/linux/icon.svg \
     "$pkgdir/usr/share/icons/hicolor/scalable/apps/$pkgname.svg"
