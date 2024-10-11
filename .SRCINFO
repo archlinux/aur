@@ -1,0 +1,13 @@
+pkgbase = dicedb-git
+	pkgdesc = DiceDB is a redis-compliant, in-memory, real-time, and reactive database optimized for modern hardware and for building and scaling truly real-time applications
+	pkgver = 0.0.4.r169.g766cf4e
+	pkgrel = 1
+	url = https://dicedb.io/
+	arch = x86_64
+	makedepends = go
+	makedepends = git
+	makedepends = cmake
+	source = /dicedb-git::git+https://github.com/DiceDB/dice.git#branch=master
+	sha256sums = SKIP
+
+pkgname = dicedb-git
