@@ -9,15 +9,12 @@ pkgdesc="Open Cubic Player"
 arch=('i686' 'x86_64')
 url="https://stian.cubic.org/project-ocp.php"
 license=('GPL')
-
 source=(${_pkgbase}::git+https://github.com/mywave82/opencubicplayer.git#tag=v${pkgver})
 sha256sums=('SKIP')
-
 optdepends=('libvorbis: Vorbis codec support'
         'libmad: MPEG codec support'
         'flac: FLAC codec support'
         'libgme: Video game music emulation/playback support')
-
 makedepends=('alsa-lib'
         'cjson'
         'desktop-file-utils'
