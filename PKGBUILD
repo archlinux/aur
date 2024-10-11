@@ -8,8 +8,7 @@ url="https://go-to-zlibrary.se/#desktop_app_tab"
 license=('unknown')
 makedepends=(asar)
 depends=(electron bash hicolor-icon-theme)
-source=("https://go-to-library.sk/soft/zlibrary-setup-latest.deb"
-)
+source=("https://s3proxy.cdn-zlib.se/te_public_files/soft/linux/zlibrary-setup-latest.deb")
 sha256sums=('d3d6c845fafd3a16bd1cb28451bfa8295767c6942fb0449930ee51db54b94c7f')
 
 package() {
