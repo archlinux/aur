@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=proton-mail-bin
 pkgver=1.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Proton official desktop application for Proton Mail and Proton Calendar"
 arch=('x86_64')
 url="https://proton.me"
@@ -13,12 +13,13 @@ depends=(
   'libdrm'
   'libnotify'
   'nss'
+  'xdg-utils'
 )
 optdepends=(
   'kde-cli-tools: file deletion support (kioclient5)'
-  'pipewire: WebRTC desktop sharing under Wayland'
+  'libgnome-keyring'
+  'lsb-release'
   'trash-cli: file deletion support (trash-put)'
-  'xdg-utils: open URLs with desktop’s default (xdg-email, xdg-open)'
 )
 provides=("${pkgname%-bin}")
 conflicts=("${pkgname%-bin}" 'protonmail-desktop')
