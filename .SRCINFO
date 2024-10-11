@@ -1,15 +1,16 @@
 pkgbase = python-runlike
 	pkgdesc = Given an existing docker container, prints the command line necessary to run a copy of it
 	pkgver = 1.4.14
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/lavie/runlike
 	arch = any
-	license = BSD
-	makedepends = python-setuptools
+	license = BSD-2-Clause-Views
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-poetry-core
+	depends = python
 	depends = python-click
 	source = https://files.pythonhosted.org/packages/source/r/runlike/runlike-1.4.14.tar.gz
-	source = https://github.com/lavie/runlike/raw/master/LICENSE.txt
 	b2sums = 0ac93e6ea98f81c69e6f3aaeac614fe3295cd76580548dfcfc991b9b87f962fe4c9eb20c8b80e2e42e87859bbdc38fc50ce4b8251d7509754f6cf3a28bc294ba
-	b2sums = 63dfe6d6c08298442d1d40cc4db199113527e8124018fc864a008a2f00f2e25ddf9cf4cece3762be8fe4bf6b3f9b788c6c7e9fd2069aaa7ccbc0231f341b5330
 
 pkgname = python-runlike
