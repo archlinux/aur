@@ -1,0 +1,16 @@
+pkgbase = betterx-desktop-git
+	pkgdesc = Desktop application for BetterX, enhancing your X browsing experience
+	pkgver = 1.0.0.alpha.1.r0.gxxxxxxx
+	pkgrel = 1
+	url = https://github.com/Feur-Inc/BetterX-Desktop
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = pnpm
+	depends = electron
+	provides = betterx-desktop
+	conflicts = betterx-desktop
+	source = git+https://github.com/Feur-Inc/BetterX-Desktop.git
+	sha256sums = SKIP
+
+pkgname = betterx-desktop-git
