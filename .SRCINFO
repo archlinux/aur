@@ -1,6 +1,6 @@
 pkgbase = flow
 	pkgdesc = A static type checker for JavaScript
-	pkgver = 0.247.1
+	pkgver = 0.248.0
 	pkgrel = 1
 	url = https://flow.org
 	arch = x86_64
@@ -24,7 +24,7 @@ pkgbase = flow
 	makedepends = ocaml-wtf8
 	depends = libev
 	optdepends = bash-completion: Tab completion support for bash
-	source = flow-0.247.1.tar.gz::https://github.com/facebook/flow/archive/v0.247.1.tar.gz
-	b2sums = bcd19626e61853254d9e7af1130773744ed2e2ea567c2d7ddaec5147584be5b4834d2773a8df6c24549d3f2d4b974bd4da800e2b66d13942c4b239659edf1c17
+	source = flow-0.248.0.tar.gz::https://github.com/facebook/flow/archive/v0.248.0.tar.gz
+	b2sums = 5e4944da37fd73ca987c4af609adee95ae86a56875280a8bba138f35a69f8703c72068b42a15a1d7455669a61e9cfb6e1700c6ea12e44e34cf0b14aeab83c6c4
 
 pkgname = flow
