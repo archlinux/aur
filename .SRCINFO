@@ -7,7 +7,6 @@ pkgbase = xcursor-cz-hickson-black
 	license = GPL3
 	makedepends = git
 	makedepends = xorg-xcursorgen
-	makedepends = patch
 	source = git+https://github.com/charakterziffer/cursor-toolbox#commit=02a7977b3d009525c95787c756fce8d824960e4c
 	source = build.patch
 	sha512sums = SKIP

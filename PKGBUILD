@@ -8,15 +8,14 @@ license=(GPL3)
 url="https://github.com/charakterziffer/cursor-toolbox"
 _repo=${url##*/}
 arch=(any)
-makedepends=(git xorg-xcursorgen patch)
-depends=()
+makedepends=(git xorg-xcursorgen)
 source=("git+${url}#commit=${_commit}" build.patch)
 sha512sums=('SKIP'
             'c2b8792e0a9afd639864608dc674acbc1a368d9a83cd46dd3422403961af2b001c3eb004269eb701fcd34f4cfceaca5912a751a6ecd68ad08901ec94e0afb972')
 
 prepare () {
-	cd "${_repo}"
-	patch -p1 < "${srcdir}/build.patch"
+	cd "${srcdir}/${_repo}"
+	git apply -p1 "${srcdir}/build.patch"
 }
 
 build () {
