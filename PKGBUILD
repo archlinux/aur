@@ -1,5 +1,7 @@
-# Maintainer: Chris Rizzitello <sithlord48@gmail.com>
-# Maintainer: Lahfa Samy <akechishiro-aur@lahfa.xyz>
+# Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
+# Maintainer: C. R. <crdaley at gmail>
+# Contributor: Chris Rizzitello <sithlord48@gmail.com>
+# Contributor: Lahfa Samy <akechishiro-aur@lahfa.xyz>
 # Contributor: Chih-Hsuan Yen <base64_decode("eWFuMTIxMjUgQVQgYXJjaGxpbnV4IERPVCBvcmc=")>
 # Forked from aur/barrier-git
 # Contributor: Pellegrino Prevete <pellegrinoprevete@gmail.com>
@@ -7,7 +9,7 @@
 _pkgname=input-leap
 pkgbase=$_pkgname
 pkgname=($_pkgname-headless $_pkgname)
-pkgver=3.0.0
+pkgver=3.0.1
 pkgrel=1
 pkgdesc="Open-source KVM software"
 arch=(x86_64)
@@ -16,7 +18,7 @@ license=("custom:GPL2WithOpenSSLException")
 
 source=("${_pkgname}::git+${url}.git#tag=v${pkgver}"
         "gulrak-filesystem::git+https://github.com/gulrak/filesystem.git")
-sha512sums=('fcf127352cffed4cb79be86d8846cc3ff834083b5bd8e2a0a849031545ffbdab800c34e49bb5a4ca68292ee4005ff9a5752e61c7abb0f83120cf53e2f1610406'
+sha512sums=('SKIP'
             'SKIP')
 _core_deps=(glibc gcc-libs libx11 libxrandr libxext libxinerama xorgproto libxtst libxi openssl libei libportal)
 _gui_deps=(glibc gcc-libs libx11 openssl avahi qt6-base xdg-desktop-portal)
