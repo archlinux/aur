@@ -4,38 +4,71 @@
 # Contributor: William Di Luigi <williamdiluigi@gmail.com>
 
 pkgname=evince-git
-pkgver=42.0+9+g53f38dae
+pkgver=46.1+278+g7b8dbf09
 pkgrel=1
-pkgdesc="Simply a document viewer"
+pkgdesc="Document viewer (PDF, PostScript, XPS, djvu, dvi, tiff, cbr, cbz, cb7, cbt)"
 url="http://projects.gnome.org/evince/"
 arch=(x86_64)
-license=(GPL)
-depends=(gtk3 libgxps libspectre gsfonts poppler-glib djvulibre t1lib libsecret
-         desktop-file-utils dconf gsettings-desktop-schemas adwaita-icon-theme
-         gspell gnome-desktop libhandy)
-makedepends=(itstool libnautilus-extension texlive-bin gobject-introspection
-             docbook-xsl python gtk-doc git meson gi-docgen)
-optdepends=('texlive-bin: DVI support'
-	          'gvfs: bookmark support and session saving')
-provides=('evince')
-conflicts=('evince')
+license=(GPL-2.0-or-later)
+depends=(
+  at-spi2-core
+  cairo
+  dconf
+  djvulibre
+  gcc-libs
+  gdk-pixbuf2
+  glib2
+  glibc
+  gnome-desktop
+  gsettings-desktop-schemas
+  gsfonts
+  gspell
+  gst-plugins-base-libs
+  gstreamer
+  gtk3
+  gvfs
+  hicolor-icon-theme
+  libarchive
+  libgxps
+  libhandy
+  libsecret
+  libspectre
+  libsynctex
+  libtiff
+  libxml2
+  pango
+  poppler-glib
+)
+makedepends=(
+  appstream-glib
+  gi-docgen
+  git
+  glib2-devel
+  gobject-introspection
+  meson
+  texlive-bin
+  yelp-tools
+)
+optdepends=('texlive-bin: DVI support')
+provides=(evince libev{document,view}3.so)
+conflicts=(evince)
 options=('!emptydirs')
 source=($pkgname::"git+https://gitlab.gnome.org/GNOME/evince.git")
 md5sums=('SKIP')
 
-
 pkgver() {
-  cd "$srcdir/$pkgname"
+  cd "$pkgname"
   git describe --tags | sed 's/-/+/g'
 }
 
 build() {
-  cd $pkgname
-  arch-meson build
-  ninja -C build
+  local meson_options=(
+    -D ps=enabled
+  )
+  arch-meson "$pkgname" build
+  meson compile -C build
 }
 
 package() {
-  cd $pkgname
-  DESTDIR="$pkgdir" meson install -C build
+  meson install -C build --destdir "$pkgdir"
 }
