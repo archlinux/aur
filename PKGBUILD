@@ -5,7 +5,7 @@ _plasmoidName="com.github.prayag2.controlcentre"
 
 pkgname=plasma6-kde_controlcentre
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A beautiful control centre widget for KDE Plasma directly inspired by the MacOS control centre. Made by Prayag2"
 arch=("any")
 url="https://github.com/Prayag2/kde_controlcentre"

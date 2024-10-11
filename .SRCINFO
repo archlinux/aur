@@ -1,7 +1,7 @@
 pkgbase = plasma6-kde_controlcentre
 	pkgdesc = A beautiful control centre widget for KDE Plasma directly inspired by the MacOS control centre. Made by Prayag2
 	pkgver = 0.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Prayag2/kde_controlcentre
 	arch = any
 	license = GPL-3.0-only
