@@ -2,7 +2,7 @@
 # Contributor: Rohan Jain <crodjer [@] protonmail [dot] com>
 
 pkgname=babashka-bin
-pkgver=1.4.192
+pkgver=1.12.193
 pkgrel=1
 pkgdesc='A Clojure babashka for the grey areas of Bash.'
 arch=('x86_64' 'aarch64')
@@ -15,8 +15,8 @@ conflicts=("${pkgname%-bin}")
 source_aarch64=("${pkgname}-${pkgver}-linux-aarch64-static.tar.gz::${url}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-linux-aarch64-static.tar.gz")
 source_x86_64=("${pkgname}-${pkgver}-linux-amd64-static.tar.gz::${url}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-linux-amd64-static.tar.gz")
 
-sha256sums_x86_64=('d8371697a727495749f9481414a2fdba5fe702dfc1b74a8ec58195f0a646abd5')
-sha256sums_aarch64=('da4a7660ba5449922db46bc74966f2bb1041340edaf1b107fd6af66464764e97')
+sha256sums_x86_64=('0720cd3f86ce99fbd0e7b4aea1c65d254383c4b56c95c2798a341b9e4413a395')
+sha256sums_aarch64=('c37be477b18dfcaefdb348231c4ff727e96b27067136b4a4c1b85afbbbdfb299')
 
 package() {
   install -Dm755 "${srcdir}/bb" "${pkgdir}/usr/bin/bb"
