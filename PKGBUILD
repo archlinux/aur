@@ -88,7 +88,7 @@ build() {
     ./scripts/dkms.mkconf -n ${_pkgname} -v "${pkgver}" -f dkms.conf
     printf '#define\tZFS_META_GITREV "zfs-%s"\n' "${pkgver}" >include/zfs_gitrev.h
 
-    # ignore "Linux-Maximum" section in META file
+    # building against unsupported kernel version
     sed -i '/^PRE_BUILD=/a\  --enable-linux-experimental' dkms.conf
 }
 
