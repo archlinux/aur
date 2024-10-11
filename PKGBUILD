@@ -1,15 +1,13 @@
-# Maintainer: Xavier (sapphirus at azorium dot net)
+# Maintainer: Xavier Moffett (sapphirus at azorium dot net)
 
 _pkgbase=libancient
 pkgname=${_pkgbase}
-pkgver=2.1.1
+pkgver=2.2.0
 pkgrel=1
 pkgdesc="Decompression routines for ancient formats"
 arch=('i686' 'x86_64')
 url="https://github.com/temisu/ancient/"
 license=('BSD-2-Clause')
-
-conflicts=(${_pkgbase}-git)
 provides=(${_pkgbase}=${pkgver})
 
 #depends=('')
