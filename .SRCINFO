@@ -1,0 +1,14 @@
+pkgbase = kubectl-view-secret-git
+	pkgdesc = kubectl view-secret plugin
+	pkgver = r44.9599a2e
+	pkgrel = 1
+	url = https://github.com/elsesiy/kubectl-view-secret
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	depends = kubectl
+	conflicts = kubectl-view-secret-bin
+	source = git+https://github.com/elsesiy/kubectl-view-secret.git
+	md5sums = SKIP
+
+pkgname = kubectl-view-secret-git
