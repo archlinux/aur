@@ -3,14 +3,15 @@
 
 pkgname=libasn1c-git
 pkgver=0.9.37.r0.gde520a4
-pkgrel=1
+pkgrel=2
 pkgdesc="runtime library of Lev Walkin's asn1c split out as separate library"
 url="https://cgit.osmocom.org/libasn1c"
 arch=('i686' 'x86_64' 'aarch64' 'armv7h')
 license=('BSD-2-Clause')
 depends=('talloc')
 makedepends=('git')
-provides=('libasn1c.so=1-64')
+provides=("${pkgname%-git}=${pkgver}"
+          'libasn1c.so=1-64')
 conflicts=("${pkgname%-git}")
 source=("git+https://gitea.osmocom.org/cellular-infrastructure/${pkgname%-git}.git")
 sha256sums=('SKIP')
