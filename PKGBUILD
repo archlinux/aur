@@ -1,7 +1,7 @@
 # Maintainer: L. Bradley LaBoon <brad@laboon.io>
 pkgname=splunk
-basever=9.3.0
-splunkver=${basever}-51ccf43db5bd
+basever=9.3.1
+splunkver=${basever}-0b8d769cb912
 # Splunk is inconsistent with the length of their version numbers
 if [ ${#basever} -gt 5 ]; then
 	pkgver=${basever}
@@ -20,7 +20,7 @@ source_x86_64=("https://download.splunk.com/products/splunk/releases/$basever/li
 sha256sums=('b6e93690f033416fd765fd7cb97147a1872c3f5ecc3dad13714d83f765c6291e'
             '236deb352218f9551df894efd613aad201afb20713ac563ab381f68b6ffce853'
             '56b70a2395270fc038987241504df11c390f3234d5be640bbc6a311b978e8475')
-sha256sums_x86_64=('3b526e1e521e072b3f13fcbd9ff086101bab021c38cc76eacac372d8ffcf4177')
+sha256sums_x86_64=('dab896fc85e4faf6744a5f3ee35eb6c4c6414421fb6e521c8810fa48eee67673')
 options=(!strip)
 
 package() {
