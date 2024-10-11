@@ -1,26 +1,32 @@
 # Maintainer: chardon55 <charlesdong_2000@outlook.com>
 
 pkgname=deno-init
-pkgver=1.0+deno+1.x
-pkgrel=2
+pkgver=2.x.x
+pkgrel=1
 pkgdesc="Startup AUR providing the latest deno runtime, then you can upgrade deno using \`deno upgrade\`"
 arch=('x86_64' 'aarch64')
-url="https://deno.land"
+url="https://deno.com"
 license=(MIT)
 provides=(deno)
-conflicts=(deno deno-git deno-bin)
+conflicts=(deno)
 
-_target_x86_64=deno-$CARCH-unknown-linux-gnu.zip
-source_x86_64=(
-    https://github.com/denoland/deno/releases/latest/download/$_target_x86_64
+_target=deno-$CARCH-unknown-linux-gnu
+_baseurl=https://github.com/denoland/deno/releases/latest/download
+source=(
+    $_baseurl/${_target}.zip
+    $_baseurl/${_target}.sha256sum
 )
-sha256sums_x86_64=(SKIP)
+sha256sums=(
+    SKIP
+    SKIP
+)
 
-_target_aarch64=deno-linux-arm64.zip
-source_aarch64=(
-    https://github.com/LukeChannings/deno-arm64/releases/latest/download/$_target_aarch64
-)
-sha256sums_aarch64=(SKIP)
+check() {
+    cd $srcdir
+
+    echo "Checksums: "
+    sha256sum -c $_target.sha256sum
+}
 
 package() {
     install -Dm755 "$srcdir/deno" "$pkgdir/usr/bin/deno"
