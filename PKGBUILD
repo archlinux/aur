@@ -1,7 +1,7 @@
 # Maintainer: SandaruKasa <sandarukasa plus aur at ya dot ru>
 
 pkgname=kani-verifier
-pkgver=0.55.0
+pkgver=0.56.0
 pkgrel=1
 pkgdesc='Bit-precise model checker for Rust'
 arch=('x86_64' 'aarch64')
@@ -12,7 +12,7 @@ depends=(gcc-libs glibc)
 provides=(kani cargo-kani)
 conflicts=(kani cargo-kani)
 source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate")
-sha256sums=('eaeeb6f6b97ece79e4680f2188153de5897550c83505846a2574d2fac0884201')
+sha256sums=('e5c62ff9aa4abb9d8dbf4df00d078fe474dce90385eeb600933c55d05d89c0bc')
 _src="${pkgname}-${pkgver}"
 
 prepare() {
