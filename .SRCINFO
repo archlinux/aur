@@ -17,11 +17,11 @@ pkgbase = aliae-bin
 	conflicts = aliae
 	source = LICENSE::https://raw.githubusercontent.com/JanDeDobbeleer/aliae/v0.22.2/LICENSE
 	sha256sums = df419cb226a6174d115f4306653312cb924e47c8e87209243ecb76a4031355cf
-	source_x86_64 = aliae::https://github.com/JanDeDobbeleer/aliae/releases/download/v0.22.2/aliae-linux-amd64
+	source_x86_64 = aliae-0.22.2-1::https://github.com/JanDeDobbeleer/aliae/releases/download/v0.22.2/aliae-linux-amd64
 	sha256sums_x86_64 = 002c0cfa83440ab0e58ed039718350fce5333dfd454014240807235eb8d3a17f
-	source_armv7h = aliae::https://github.com/JanDeDobbeleer/aliae/releases/download/v0.22.2/aliae-linux-arm
+	source_armv7h = aliae-0.22.2-1::https://github.com/JanDeDobbeleer/aliae/releases/download/v0.22.2/aliae-linux-arm
 	sha256sums_armv7h = 002c0cfa83440ab0e58ed039718350fce5333dfd454014240807235eb8d3a17f
-	source_aarch64 = aliae::https://github.com/JanDeDobbeleer/aliae/releases/download/v0.22.2/aliae-linux-arm64
+	source_aarch64 = aliae-0.22.2-1::https://github.com/JanDeDobbeleer/aliae/releases/download/v0.22.2/aliae-linux-arm64
 	sha256sums_aarch64 = 002c0cfa83440ab0e58ed039718350fce5333dfd454014240807235eb8d3a17f
 
 pkgname = aliae-bin
