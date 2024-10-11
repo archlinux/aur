@@ -1,14 +1,14 @@
 # Maintainer: begin-theadventure <begin-thecontact.ncncb at dralias dot com>
 
 pkgname=hamonikr-onboard-layout-ko
-pkgver=1.3.1
-pkgrel=2
+pkgver=1.3.3
+_commit=99125d9a379df5bc130b20b8e3a5a14a4091e86c
+pkgrel=1
 pkgdesc="Korean Keyboard Layout for onboard"
 url="https://github.com/hamonikr/hamonikr-onboard-layout-ko"
 arch=('any')
-license=('GPL3')
+license=('GPL-3.0-or-later')
 depends=('onboard')
-_commit=2505c2abf8088d96cbff2976fb9b015da17efcd2
 _path=usr/share/onboard/layouts
 source=("$url/raw/$_commit/$_path/Compact-ko.onboard"
         "$url/raw/$_commit/$_path/Full-Keyboard-ko.onboard"
