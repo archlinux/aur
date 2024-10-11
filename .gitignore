@@ -2,7 +2,7 @@ pkg/
 src/
 
 # Source files
-pvs-studio-latest.tgz
+pvs-studio-*-*.tgz
 
 # Compressed package
 pvs-studio-*-*.pkg.tar.xz
