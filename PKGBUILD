@@ -1,20 +1,21 @@
 # Maintainer: eric-dev <eric2043@gmail.com>
+# Contributor: endorfina <emilia@carcosa.space>
 # Contributor: rHermes <teodor_spaeren@riseup.net>
 # Contributor: bnavigator <code@bnavigator.de>
 # Contributor: PlusMinus
 # Contributor: rhabbachi
 
 pkgname=displaylink-runit
-pkgver=5.8
-_releasedate=2023-08
-_pkgfullver=5.8.0-63.33
-pkgrel=1
+pkgver=6.0
+_releasedate=2024-05
+_pkgfullver=6.0.0-24
+pkgrel=0
 pkgdesc="Linux driver for DL-6xxx, DL-5xxx, DL-41xx and DL-3x00"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://www.synaptics.com/products/displaylink-graphics"
 license=('custom' 'GPL2' 'LGPL2.1')
 conflicts=('displaylink')
-depends=('evdi<1.15.0'
+depends=('evdi<1.15'
          'libusb')
 makedepends=('grep' 'gawk' 'wget')
 changelog="displaylink-release-notes-${pkgver}.txt"
@@ -23,12 +24,12 @@ source=(displaylink-driver-${pkgver}.zip::https://www.synaptics.com/sites/defaul
         DISPLAYLINK-EULA
         udev.sh
         99-displaylink.rules
-        displaylink.run)
-sha256sums=('22c552ead448c80d9e8dd48a842bb511184d07a74180ac76bd89dd144ddda816'
-            'b5a1a75b2042cd5efb475b53f1ead5207f706c6eb45f4572d7b226ffcdee3ee9'
+	      displaylink.run)
+sha256sums=('fc7aa51afabe6a19ee0423b749c95d242669f005f4d8733c2b821f33399db9c7'
+            'b2b42abdbf04fab78a8d7f9d36a28ee30d0a35e3c993ba733cf9adfabe3ebcd1'
             '2f81fea43332a62b2cf1dd47e56ea01caf1e886bcd16c3f82b18bfe148fb21a9'
-            'c844f324ba0be36a3960e09e6db09dee108e18ca94f05135b0215b6e9e7406ed'
-            'c08a4726cf4e2f92c7cab00168ae9cc8d69d36a67c570609396a4a674934245a'
+            '5f89c3153bd090b17394449ef6a7d7c854e865773dfef7e7a35259129d3445d9'
+            '530c488fa9b2833ff64611ff2b533f63212a85f8ebed446d5a4d51cf9a52c7ea'
             'bf14a9fd6d7b2b6047647d1f6fdc6ee85bcfb0ac2e62af5d90e10e293fb4a741')
 
 prepare() {
@@ -38,16 +39,19 @@ prepare() {
      --target $pkgname-$pkgver \
      --nox11 \
      --noprogress
-  test -d $pkgname-$pkgver || (echo "Extracting the driver with the .run installer failed"; exit 1)
+  if [[ ! -d $pkgname-$pkgver ]]
+  then
+    echo "Extracting the driver with the .run installer failed"
+    exit 1
+  fi
 }
 
 package() {
   echo "Adding udev rule for DisplayLink DL-3xxx/5xxx devices"
-  install -D -m644 99-displaylink.rules "$pkgdir/etc/udev/rules.d/99-displaylink.rules"
+  install -D -m644 99-displaylink.rules "$pkgdir/usr/lib/udev/rules.d/99-displaylink.rules"
   install -D -m755 udev.sh "$pkgdir/opt/displaylink/udev.sh"
 
   echo "Installing DLM runit service"
-
   install -Dm744 displaylink.run "$pkgdir/etc/runit/sv/displaylink/run"
 
   COREDIR="$pkgdir/usr/lib/displaylink"
