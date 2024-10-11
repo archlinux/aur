@@ -1,6 +1,6 @@
 pkgbase = betterx-desktop-git
 	pkgdesc = Desktop application for BetterX, enhancing your X browsing experience
-	pkgver = 1.0.0.alpha.1.r0.gxxxxxxx
+	pkgver = alpha.r8.g5530a8b
 	pkgrel = 1
 	url = https://github.com/Feur-Inc/BetterX-Desktop
 	arch = x86_64
