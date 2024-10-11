@@ -1,3 +1,4 @@
+# Maintainer: gigamicro <gammamicro@gmail.com>
 pkgname=ttf-noto-sans-egyptian-hieroglyphs
 _pkgname=NotoSansEgyptianHieroglyphs
 pkgver=2.002
