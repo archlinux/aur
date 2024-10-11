@@ -1,6 +1,6 @@
 pkgbase = tracktion-waveform
 	pkgdesc = Audio and MIDI Workstation (DAW)
-	pkgver = 13.1.2
+	pkgver = 13.1.18
 	pkgrel = 1
 	url = https://www.tracktion.com/
 	arch = x86_64
@@ -41,9 +41,9 @@ pkgbase = tracktion-waveform
 	optdepends = vst3-plugins: A set of vst3 plugins
 	conflicts = waveform-bundle
 	conflicts = tracktion-waveform-beta
-	source_x86_64 = https://cdn.tracktion.com/file/tracktiondownload/w13/1312/waveform13_13.1.2_amd64.deb
-	sha256sums_x86_64 = 13b07452ec7d3959b6a9570494dbb0e8e54a3ec3014cff3bfc84850712de39e8
-	source_aarch64 = https://cdn.tracktion.com/file/tracktiondownload/w13/1312/waveform13_13.1.2_arm64.deb
-	sha256sums_aarch64 = c6ad5c6c8cba8b4b5e33b500cd12137db09bbc5ab391b39e2551738d10f8eb43
+	source_x86_64 = https://cdn.tracktion.com/file/tracktiondownload/w13/13118/waveform13_13.1.18_amd64.deb
+	sha256sums_x86_64 = 5859b6e2ce75b1e106435c945ac648c197e5aa065f9d883d2ae43fbd2097dea0
+	source_aarch64 = https://cdn.tracktion.com/file/tracktiondownload/w13/13118/waveform13_13.1.18_arm64.deb
+	sha256sums_aarch64 = c215c984e09fae2ff91a4797b22daff13234679b8bf0d53acffc6f49cd123a00
 
 pkgname = tracktion-waveform
