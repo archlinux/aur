@@ -1,6 +1,6 @@
 _pkgname=gamescope
 pkgname=${_pkgname}-sk
-pkgver=3.15.11.sk.2.r0.gb78c5a3
+pkgver=3.15.11.lua.sk1
 pkgrel=1
 pkgdesc='SteamOS session compositing window manager'
 arch=(x86_64)
@@ -29,6 +29,7 @@ depends=(
     libxres
     libxtst
     libxxf86vm
+    luajit
     sdl2
     seatd
     vulkan-icd-loader
@@ -49,7 +50,7 @@ makedepends=(
     vulkan-headers
     wayland-protocols
 )
-_tag=3.15.11-sk-2
+_tag=3.15.11.lua-sk1
 source=("git+https://github.com/3003n/gamescope.git#tag=${_tag}"
     "git+https://github.com/nothings/stb.git#commit=af1a5bc352164740c1cc1354942b1c6b72eacb8a"
     "git+https://github.com/Joshua-Ashton/wlroots.git"
@@ -109,8 +110,9 @@ prepare() {
 }
 
 pkgver() {
-    cd "$srcdir/$_pkgname"
-    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+    # cd "$srcdir/$_pkgname"
+    # git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+    echo "$_tag" | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
