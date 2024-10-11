@@ -2,7 +2,7 @@
 # Maintainer: Vladislav Nepogodin <nepogodin.vlad@gmail.com>
 
 pkgname=contour
-pkgver=0.5.0.7168
+pkgver=0.5.1.7247
 pkgrel=1
 pkgdesc="Modern C++ Terminal Emulator"
 arch=(x86_64 aarch64)
@@ -36,7 +36,7 @@ makedepends=(
 )
 optdepends=('ncurses: for contour terminfo database')
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
-sha512sums=('6b2ce583b6a10e0dd475a0675147305980323c65099097dfcfc5d1b865583c19785c2d149bdb02e1eb963750b9964ec6e61e0ccfea9f625a196ef23b88cad8a2')
+sha512sums=('0c763e543b5a279bb1b9cc1be95607354e817ba8f166aff9554c9157be7959d60e635406fce3d8ba2e15be9a62d46335ead2a497a0dcc3301249f16b317c5b69')
 
 build() {
 
