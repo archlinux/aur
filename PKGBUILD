@@ -2,7 +2,7 @@
 # Previous maintainer: Kaizhao Zhang <zhangkaizhao@gmail.com>
 
 pkgname=ameba
-pkgver=1.6.1
+pkgver=1.6.2
 pkgrel=1
 pkgdesc="A static code analysis tool for Crystal"
 arch=('x86_64')
@@ -13,10 +13,11 @@ makedepends=('crystal>=1.5.0' 'shards')
 source=(
   "${url}/archive/v${pkgver}.tar.gz"
 )
-sha256sums=('d65aed0b8e67c92fee1e9b16e54e3b79b96f089dfd33fb270ae9c71028f8c68e')
+sha256sums=('e05de5b5fa6f2c394fcf4cdeb1b1c2ff99f06a7663256acd759c50f2c1251b48')
 
 package() {
   cd "${pkgname}-${pkgver}"
+  mkdir -p "${pkgdir}/usr/bin"
   make PREFIX="${pkgdir}/usr" CRFLAGS=--release install
 
   install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
