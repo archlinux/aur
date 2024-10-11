@@ -1,6 +1,6 @@
 pkgbase = modelio-bin
 	pkgdesc = The opensource modeling environment
-	pkgver = 5.3.1
+	pkgver = 5.4.1
 	pkgrel = 0
 	url = https://www.modelio.org/
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = modelio-bin
 	source = modelio.patch
 	sha256sums = ea0233daf57b51b05f0a0322217ebbab02b41864dd56ea31bd057a506e1f8249
 	sha256sums = bc87a815e0af78ece34ccbc878b88b17b9b00557a98c113cefc9b4111462dbbb
-	source_x86_64 = modelio-5.3.1-x86_64.deb::https://github.com/ModelioOpenSource/Modelio/releases/download/v5.3.1/modelio-open-source-5.3.1-amd64.deb
-	sha256sums_x86_64 = 6edc838b5075fd444e6aab55a73b31ddb6dda3af47121f5cd4478c65812742d1
+	source_x86_64 = modelio-5.4.1-x86_64.deb::https://github.com/ModelioOpenSource/Modelio/releases/download/v5.4.1/modelio-open-source-5.4.1_amd64.deb
+	sha256sums_x86_64 = 720eebb886293a0cf69df6b1dfb33cb14b3cf50bdb6f93ccb9dc91d19362511a
 
 pkgname = modelio-bin

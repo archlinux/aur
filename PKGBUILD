@@ -1,5 +1,6 @@
-# Maintainer: rafaelsoaresbr <rafaelsoaresbr@gmail.com>
-# Maintainer: llde 
+# Maintainer: Taleiven Kattan <taleiven at gmail dot com>
+# Contributor: rafaelsoaresbr <rafaelsoaresbr@gmail.com>
+# Contributor: llde 
 # modelio-bin
 # Contributing: https://github.com/rafaelsoaresbr/pkgbuild
 # Builds: https://gitlab.com/rafaelsoaresbr/pkgbuild/builds
@@ -8,7 +9,7 @@ pkgname=modelio-bin
 
 # Version
 _pkgvermajor=5
-_pkgverminor=3
+_pkgverminor=4
 _pkgverpatch=1
 pkgver="${_pkgvermajor}.${_pkgverminor}.${_pkgverpatch}"
 pkgrel=0
@@ -38,12 +39,12 @@ optdepends=('gtk2' 'webkitgtk2')
 
 # Sources
 source=("modelio.desktop" "modelio.patch")
-source_x86_64=("modelio-${pkgver}-x86_64.deb::https://github.com/ModelioOpenSource/Modelio/releases/download/v${pkgver}/modelio-open-source-${pkgver}-amd64.deb")
+source_x86_64=("modelio-${pkgver}-x86_64.deb::https://github.com/ModelioOpenSource/Modelio/releases/download/v${pkgver}/modelio-open-source-${pkgver}_amd64.deb")
 #noextract=()
 #validpgpkeys=()
 sha256sums=('ea0233daf57b51b05f0a0322217ebbab02b41864dd56ea31bd057a506e1f8249'
             'bc87a815e0af78ece34ccbc878b88b17b9b00557a98c113cefc9b4111462dbbb')
-sha256sums_x86_64=('6edc838b5075fd444e6aab55a73b31ddb6dda3af47121f5cd4478c65812742d1')
+sha256sums_x86_64=('720eebb886293a0cf69df6b1dfb33cb14b3cf50bdb6f93ccb9dc91d19362511a')
 
 #pkgver() {
 #}
