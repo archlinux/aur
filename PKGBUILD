@@ -1,7 +1,7 @@
 # Maintainer: Marco Kage <marco.kage at outlook dot com>
 
 pkgname=stash-bin
-pkgver=0.27.0
+pkgver=0.27.1
 pkgrel=1
 pkgdesc="An organizer for your porn, written in Go"
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -13,9 +13,9 @@ conflicts=('stash')
 source_x86_64=("${pkgname}-${pkgver}::https://github.com/stashapp/stash/releases/download/v${pkgver}/stash-linux")
 source_aarch64=("${pkgname}-${pkgver}::https://github.com/stashapp/stash/releases/download/v${pkgver}/stash-linux-arm64v8")
 source_armv7h=("${pkgname}-${pkgver}::https://github.com/stashapp/stash/releases/download/v${pkgver}/stash-linux-arm32v7")
-sha1sums_x86_64=('c4ec01a403fbe03a65c311244f0ea7b4a7e6809c')
-sha1sums_aarch64=('850987b94e5f5dcf5251afd040e37b9c4aff427f')
-sha1sums_armv7h=('52b2c718edc6bb04b992700b15cfb20ac908ddad')
+sha1sums_x86_64=('12ebfdb5a8d10db13e29829a02cb0690bb44d8cd')
+sha1sums_aarch64=('dd8fa8884334d21aaa6b617cc065b3c558798e00')
+sha1sums_armv7h=('3d9803a836d89d7ae7816511c8c88b078b558571')
 
 source=("stash.service"
 "stash-user.service"
