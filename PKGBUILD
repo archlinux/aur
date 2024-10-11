@@ -1,7 +1,7 @@
 # Maintainer: begin-theadventure <begin-thecontact.ncncb at dralias dot com>
 
 pkgname=ttop-bin
-pkgver=1.5.2
+pkgver=1.5.3
 pkgrel=1
 pkgdesc='System monitoring tool with historical data service, triggers and top-like TUI (binary release)'
 url="https://github.com/inv2004/ttop"
@@ -13,7 +13,7 @@ source=("ttop$pkgver::$url/releases/download/v$pkgver/ttop"
         "LICENSE2023::$url/raw/v1.5.2/LICENSE"
         "README1.md::$url/raw/v1.5.2/README.md"
         "screen1.png::$url/raw/v1.5.2/.github/images/screen.png")
-sha256sums=('7fd2096f6d7394855d09b83393e2a6e39c65d5a23f90fc2319c0b089d83b4325'
+sha256sums=('1a0d5b4c8801ec330ba413deb2338f59b3c6f157208661ad44fa30fd3a4d1a0e'
             'd02b237a4b7b295eea657a27274b6d6ed08695807006562d7252398e34f59079'
             '2a8e481fa846fcc5623f721a4aba8d9b7afee2ff2eaed8234a06107f77ac4d9d'
             '9746ec96a19dddb22eb8165825c70be3abcf8ff43e44301ef0ad9fc88fa98075')
