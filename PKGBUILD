@@ -1,16 +1,16 @@
 # Maintainer: ferreum <code at ferreum dot de>
 
 pkgname=jdk-android-studio
-pkgver=3
+pkgver=4
 pkgrel=1
 pkgdesc="Integrate android-studio provided JDK with archlinux-java"
 # android-studio package depends on external java-environment on i686
 arch=(x86_64)
 url="https://developer.android.com/studio"
 license=(APACHE)
-depends=('android-studio>=2023.1.1.1' java-environment-common)
-provides=(java-runtime=17 java-runtime-openjdk=17
-          java-environment=17 java-environment-openjdk=17)
+depends=('android-studio>=2024.2.1.1' java-environment-common)
+provides=(java-runtime=21 java-runtime-openjdk=21
+          java-environment=21 java-environment-openjdk=21)
 install=jdk-android-studio.install
 
 package() {
