@@ -1,0 +1,4 @@
+[zeitfetch]
+source = "git"
+git = "https://github.com/nidnogg/zeitfetch.git"
+prefix = "v"
