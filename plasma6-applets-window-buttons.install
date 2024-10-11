@@ -1,0 +1,24 @@
+all_off="$(tput sgr0)"
+bold="${all_off}$(tput bold)"
+blue="${bold}$(tput setaf 4)"
+yellow="${bold}$(tput setaf 3)"
+
+msg() {
+    echo -e "${blue}==>${bold} $1${all_off}";
+}
+
+note() {
+    echo -e "${blue}==>${yellow} NOTE:${bold} $1${all_off}";
+}
+
+post_install() {
+    msg "After adding the Plasma Widget, run it manually \n\tcd \${HOME} && sudo ./.local/share/plasma/plasmoids/org.kde.windowbuttons/lib-install.sh";
+}
+
+post_upgrade() {
+    post_install
+}
+
+post_remove() {
+	sudo rm -rf /usr/lib/qt/qml/org/kde/appletdecoration/
+}
