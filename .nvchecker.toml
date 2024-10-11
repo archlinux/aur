@@ -1,0 +1,4 @@
+[git-machete]
+source = "git"
+git = "https://github.com/VirtusLab/git-machete.git"
+prefix = "v"
