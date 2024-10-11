@@ -1,6 +1,6 @@
 pkgbase = dotnet-core-bin
 	pkgver = 8.0.10.sdk403
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.microsoft.com/net/core
 	arch = x86_64
 	arch = armv7h
