@@ -1,7 +1,7 @@
 # Maintainer: Carlos Aznarán <caznaranl@uni.pe>
 pkgname=dolfinx
 pkgdesc="Next generation FEniCS problem solving environment"
-pkgver=0.9.0
+pkgver=0.9.0.post0
 pkgrel=1
 arch=(x86_64)
 url="https://github.com/FEniCS/${pkgname}"
@@ -14,7 +14,7 @@ checkdepends=(catch2)
 #   'parmetis: for parallel graph partitioning'
 #   'slepc: for use SLEPc eigen solver')
 source=(${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('fad0eb08f2f0f375e304e9549c5dd0b5f74b78f90dc422982baa93186ddd7d852d52553adcc0c2ef13a3a003d9e77039073250834b24053ba89dc8a5c6c0e95f')
+sha512sums=('2e6a5de29f7c31bd215b6892c216487855648ab30c11925546f09de462c7cfeb533417c026e7a1787712d83959c30b4ae3aa3ccb13aed43f68d6852bac1ff601')
 
 build() {
   cmake \
@@ -60,7 +60,7 @@ check() {
     -S ${pkgname}-${pkgver}/cpp/demo \
     -B build_demo
   cmake --build build_demo
-  ctest -E "(demo_biharmonic_mpi_*|demo_poisson_mpi_*|demo_hyperelasticity_mpi_*)" --test-dir build_demo
+  ctest -E "(demo_biharmonic_mpi_*|demo_poisson_mpi_*|demo_hyperelasticity_mpi_*|demo_codim_0_assembly_mpi_*|demo_custom_kernel_mpi_*|demo_poisson_matrix_free_mpi_*|demo_interpolation-io_mpi_*|demo_interpolation_different_meshes_mpi_*)" --test-dir build_demo
 }
 
 package() {
