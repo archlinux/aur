@@ -207,7 +207,7 @@ prepare() {
   # Type: 1
   # Status: 2 & 3
   # Comment: Helps GPU frequencies to scale up.
-  #          Backported: !3184 !3265 !3799 !3817 !3829 !3830 !3891 !3934 !3958 !4015
+  #          Included: !4015 !4027
   pick_mr '1441' 'mr1441.patch' 'patch'
 
 }
