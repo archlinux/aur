@@ -1,4 +1,4 @@
-# Maintainer: Abdus Azad <abdus [at] abdus [dot] net>
+# Maintainer: Abdus Azad <abdus at abdus dot net>
 
 pkgname=dicedb-git
 pkgver=0.0.4.r169.g766cf4e
