@@ -1,6 +1,6 @@
 pkgbase = chatbox-appimage
 	pkgdesc = User-friendly Desktop Client App for AI Models/LLMs (GPT, Claude, Gemini, Ollama...)
-	pkgver = 1.5.0
+	pkgver = 1.5.1
 	pkgrel = 1
 	url = https://chatboxai.app
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = chatbox-appimage
 	provides = chatbox-appimage
 	conflicts = chatbox-bin
 	conflicts = chatbox-git
-	noextract = Chatbox-1.5.0-x86_64.AppImage
+	noextract = Chatbox-1.5.1-x86_64.AppImage
 	options = !strip
-	source = https://download.chatboxai.app/releases/Chatbox-1.5.0-x86_64.AppImage
-	sha512sums = ed132d184fece7b52fb02fec2ad9ee129b658701d6b6965f0b57d09cd4792ffc8107bbe4b84651b473c663a7d67add16f3e2f077ab080618b7dc3e6dc4431df0
+	source = https://download.chatboxai.app/releases/Chatbox-1.5.1-x86_64.AppImage
+	sha512sums = f07d7872026d634610fd548a325d2d59b1d87ff7520a06384fd694197b5f4923f7faaea726161e0e379fc76722dab8b45943913ddf134d4ba20cc0e942e019f8
 
 pkgname = chatbox-appimage
