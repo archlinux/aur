@@ -7,7 +7,7 @@ pkgdesc='LPR and CUPS driver for the Brother HL-L3280CDW'
 url='https://support.brother.com/g/b/downloadend.aspx?c=us&lang=en&prod=hll3280cdw_us_as&os=127&dlid=dlf105746_000&flang=4&type3=10282'
 arch=('i686' 'x86_64')
 license=('custom:Brother commercial license')
-depends=('cups')
+depends=('cups' 'ghostscript' )
 depends_x86_64=('lib32-glibc')
 install="$pkgname.install"
 source=("https://download.brother.com/welcome/dlf105746/hll3280cdwpdrv-$pkgver-1.i386.rpm")
