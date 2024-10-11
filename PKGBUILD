@@ -2,7 +2,7 @@
 
 pkgname=python-tyro
 _pkgname=${pkgname#python-}
-pkgver=0.8.11
+pkgver=0.8.12
 pkgrel=1
 pkgdesc='Strongly typed, zero-effort CLI interfaces'
 arch=('any')
@@ -19,7 +19,7 @@ makedepends=('python-build' 'python-installer' 'python-setuptools'
              'python-wheel')
 optdepends=()
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('8170fde4f24e2ef65cff2e724b07125dcf52f3df24a78c679810ef15b16a66c7')
+sha256sums=('5c94bb91eccdc84d77791d4f118a653f4e9b5e36dba7a203fd2828a6e4e354b6')
 
 build() {
     python -m build -nw $srcdir/$_pkgname-$pkgver
