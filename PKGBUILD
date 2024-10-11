@@ -5,10 +5,14 @@
 
 _pkgname=zfs
 _git_repo=https://github.com/openzfs/zfs.git
-_git_branch="$(/usr/bin/git ls-remote -h --sort=-v:refname "${_git_repo}" 'zfs-*-staging' | head -n 1)"
+_git_branch="$(/usr/bin/git ls-remote -h --sort=-v:refname "${_git_repo}" "zfs-*-*" | grep -E '[-](release|staging)$' | head -n 1)"
 _git_branch=${_git_branch##*/}
 _staging_ver=${_git_branch#zfs-}
-_staging_ver=${_staging_ver%-staging}
+if [[ ${_staging_ver} == *-staging ]]; then
+    _staging_ver=${_staging_ver%-staging}
+else
+    _staging_ver=${_staging_ver%-release}.0
+fi
 
 if /usr/bin/git ls-remote -t --exit-code "${_git_repo}" "zfs-${_staging_ver}" >/dev/null; then
     _git_branch="tag=zfs-${_staging_ver}"
@@ -17,7 +21,7 @@ else
 fi
 
 pkgname=${_pkgname}-utils-staging-git
-pkgver=2.2.6.r0.gbaa5031456
+pkgver=2.3.0.rc1.g3a9fca901b
 pkgrel=1
 pkgdesc="Userspace utilities for the Zettabyte File System (release staging branch)."
 arch=("i686" "x86_64" "aarch64")
@@ -52,9 +56,15 @@ prepare() {
 pkgver() {
     cd "${srcdir}/${_pkgname}"
 
-    METAVER=$(grep -F Version "${srcdir}/${_pkgname}/META" | tr -d '[:space:]')
+    METAVER=$(grep -F Version: "${srcdir}/${_pkgname}/META" | tr -d '[:space:]')
     METAVER=${METAVER##*:}
-    printf "%s.r%s.g%s" "${METAVER}" "$(git rev-list zfs-${METAVER}..HEAD --count)" "$(git rev-parse --short HEAD)"
+    if git rev-parse --verify -q zfs-${METAVER} >/dev/null; then
+        printf "%s.r%s.g%s" "${METAVER}" "$(git rev-list zfs-${METAVER}..HEAD --count)" "$(git rev-parse --short HEAD)"
+    else
+        METAREL=$(grep -F Release: "${srcdir}/${_pkgname}/META" | tr -d '[:space:]')
+        METAREL=${METAREL##*:}
+        printf "%s.%s.g%s" "${METAVER}" "${METAREL}" "$(git rev-parse --short HEAD)"
+    fi
 }
 
 build() {
