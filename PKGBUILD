@@ -1,35 +1,66 @@
-# Maintainer: Allonsy <linuxbash8@gmail.com>
+# Maintainer:
+# Contributor: Allonsy <linuxbash8@gmail.com>
 
-DLAGENTS=('http::/usr/bin/wget -c -U Mozilla -t 3 --waitretry=3 -O %o %u')
+## links
+# https://sourceforge.net/projects/gtktiemu
+# http://lpg.ticalc.org/prj_tiemu
+# https://github.com/debrouxl/tiemu
 
-pkgname=tiemu
-pkgver=3.03
-pkgrel=5
-pkgdesc="TiEmu emulates Texas Instruments calculators TI-89/92/92+/V200PLT (no GDB)."
-arch=(i686 x86_64)
-url="http://tilp.info/"
-license=('GPL')
-makedepends=('wget')
-depends=('libglade' 'libticalcs' 'sdl')
+# 75fd9f4da = 3.04
+: ${_commit:=2b8df9280d2054e11ffcf7e57a73899b3ce7a7e5} # 3.04.r26
+
+_pkgname="tiemu"
+pkgname="$_pkgname"
+pkgver=3.04
+pkgrel=1
+pkgdesc="Emulator of TI-89/92/92+/V200 calculators"
+url="https://github.com/debrouxl/tiemu"
+license=('GPL-2.0-or-later')
+arch=('i686' 'x86_64')
+
+depends=(
+  'libglade'
+  'libticalcs'
+  'sdl12-compat'
+)
+makedepends=(
+  'git'
+)
+
 options=('!libtool')
-source=(http://download.sourceforge.net/project/gtktiemu/tiemu-linux/TIEmu%203.03/tiemu-3.03-nogdb.tar.gz
-        01-build-fix.patch
-		sysdeps.patch)
-md5sums=('2736440d717a0ee97cdb35189814fc93' 
-         '3d87b3c7130c9e3bce07f92156c21d70'
-		 'e09e54413b912fd86a553bed7865c32e')
+
+_pkgsrc="$_pkgname"
+source=(
+  "$_pkgsrc"::"git+$url.git#commit=$_commit"
+  'sysdeps.patch'
+)
+
+sha256sums=(
+  'SKIP'
+  'e5270440115bfbba6721d44b8e5a0fca295a8c02c724b07cff717ab887b6cfc8'
+)
+
+prepare() {
+  cd "$_pkgsrc/$_pkgname/trunk"
+  local src
+  for src in "${source[@]}"; do
+    src="${src%%::*}"
+    src="${src##*/}"
+    src="${src%.zst}"
+    if [[ $src == *.patch ]]; then
+      printf '\nApplying patch: %s\n' "$src"
+      patch -Np1 -F100 -i "${srcdir:?}/$src"
+    fi
+  done
+}
 
 build() {
-  cd $srcdir/tiemu-$pkgver
-  patch -p1 --input ../01-build-fix.patch
-  patch -p1 --input ../sysdeps.patch
+  cd "$_pkgsrc/$_pkgname/trunk"
   ./configure --without-kde --disable-gdb --prefix=/usr
   make
 }
 
-package() 
-{
-  cd "$srcdir/$pkgname-$pkgver"
+package() {
+  cd "$_pkgsrc/$_pkgname/trunk"
   make install prefix="$pkgdir/usr"
 }
-		
