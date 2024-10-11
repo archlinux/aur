@@ -1,0 +1,5 @@
+[json-log-viewer]
+source = "git"
+git = "https://github.com/hedhyw/json-log-viewer"
+prefix = "v"
+exclude_regex = ".*rc.$"
