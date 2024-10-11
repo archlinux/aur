@@ -34,11 +34,11 @@ fi
 ###################################################################################
 
 pkgbase=linux-bore
-pkgver=6.10.5
-_pkgver=6.10.5
+pkgver=6.11.0
+_pkgver=6.11
 pkgrel=1
-major=6.10
-commit=335b711f590650ef037442bf876f3551e5af0669
+major=6.11
+commit=14fad3df4488776debb20a3abdd9ae98efaa9df5
 arch=(x86_64)
 url='https://www.kernel.org/'
 license=(GPL-2.0-only)
@@ -50,6 +50,9 @@ makedepends=(
   pahole
   perl
   python
+  rust
+  rust-bindgen
+  rust-src
   tar
   xz
   kmod
@@ -92,12 +95,10 @@ source=(https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-$_pkgver.tar.xz
         ${archlinuxpath}/config
         # Arch patches
         0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
-        0002-drivers-firmware-skip-simpledrm-if-nvidia-drm.modese.patch
-        0003-arch-Kconfig-Default-to-maximum-amount-of-ASLR-bits.patch
-        0004-x86-apic-Remove-logical-destination-mode-for-64-bit.patch
-        0005-btrfs-only-run-the-extent-map-shrinker-from-kswapd-t.patch
+        0002-arch-Kconfig-Default-to-maximum-amount-of-ASLR-bits.patch
+        0003-x86-apic-Remove-logical-destination-mode-for-64-bit.patch
         # BORE Patch
-        0001-linux6.10.y-bore5.2.8.patch)
+        0001-linux6.11.y-bore5.3.0.patch)
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
@@ -279,6 +280,7 @@ _package-headers(){
   install -Dt "$builddir/kernel" -m644 kernel/Makefile
   install -Dt "$builddir/arch/x86" -m644 arch/x86/Makefile
   cp -t "$builddir" -a scripts
+  ln -srt "$builddir" "$builddir/scripts/gdb/vmlinux-gdb.py"
 
   # required when STACK_VALIDATION is enabled
   install -Dt "$builddir/tools/objtool" tools/objtool/objtool
@@ -350,14 +352,12 @@ _package-headers(){
   ln -sr "$builddir" "$pkgdir/usr/src/$pkgbase"
 }
 
-sha256sums=('30909eb2e0434dce97a93cd97ed0dfab7688a124bc3ebc3ecf6c776de09ccc0b'
-            '09bc22332affedcdf96cfa7b4ff3dcf1d087d1bde818b9929f5ad1102bc4f775'
-            '2dd41feb40495348e83f9d774a6ce2b9672621601215990a79c136040fd65091'
-            'd3ee8b341a389a6ef9c614876862924c3c0aff2f1ee2e67b90e06a5a39778683'
-            '56bb7873a1a9abdcec0797709cefb486f7e00e9a792c00be4f390b2408669c9d'
-            '74d12e96b8ce056a5f1b4fd10cf3f4b671eb3d50d4124cd8fa7a81c83b55ae1e'
-            '994514f16122c25e6b8debf79aab539f92ad3f25f94729197912f250eaf75a11'
-            'b8e5c01906743ff3b98a8a835e0b94d6b0877f4c420a35d66f8a225f95f806ff')
+sha256sums=('55d2c6c025ebc27810c748d66325dd5bc601e8d32f8581d9e77673529bdacb2e'
+            'bb5b077af2b1b01440835eec1ac4443fdd483a21505d2eb91d58254b2b49784b'
+            '59d3f843f0255119a6439bc6047969fb58d568f2aab205a048253f4c93735452'
+            '86bccfe078176856647b9ece9af7ec2dee5b53ea51b172454de1358c0419947b'
+            '0bec5e038b49428c5e2176043adc895f6b6c2ba94f4208b51d426a859e7dbcbd'
+            '7d7b63fe3f7f72babb3a42277dcfe8ad7d8eb6a63767edfe31f05c82b5008019')
 
 pkgname=($pkgbase $pkgbase-headers)
 for _p in "${pkgname[@]}"; do
