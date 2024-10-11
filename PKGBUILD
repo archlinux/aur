@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=forestplot
-_pkgver=3.1.3
+_pkgver=3.1.5
 pkgname=r-${_pkgname,,}
-pkgver=3.1.3
+pkgver=3.1.5
 pkgrel=1
 pkgdesc="Advanced Forest Plot Using 'grid' Graphics"
 arch=('any')
@@ -31,7 +31,7 @@ optdepends=(
   r-tidyverse
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('13eb7b18e33ecd304e0cdec52550c920c0fa4835ce46dc2988fd98e0d6837549')
+sha256sums=('7f694266b015b71570d84ef6bece6915c15beecb1e633b8d4e1f575195202dcc')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
