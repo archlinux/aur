@@ -1,7 +1,7 @@
 pkgbase = efax-gtk
 	pkgdesc = A GUI front end for the 'efax' fax program
 	pkgver = 3.2.15
-	pkgrel = 1
+	pkgrel = 2
 	url = http://efax-gtk.sourceforge.net/
 	arch = x86_64
 	arch = i686
@@ -20,4 +20,3 @@ pkgbase = efax-gtk
 	sha256sums = c43514fb2cd83390b82dba830fcbff3d6614d392c94d1da6312368d02acd211d
 
 pkgname = efax-gtk
-

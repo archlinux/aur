@@ -3,7 +3,7 @@
 
 pkgname=efax-gtk
 pkgver=3.2.15
-pkgrel=1
+pkgrel=2
 pkgdesc="A GUI front end for the 'efax' fax program"
 arch=(x86_64 i686 pentium4 arm armv6h armv7h aarch64)
 url="http://efax-gtk.sourceforge.net/"
@@ -15,8 +15,10 @@ source=("http://downloads.sourceforge.net/${pkgname}/${pkgname}-${pkgver}.src.tg
 sha256sums=('c43514fb2cd83390b82dba830fcbff3d6614d392c94d1da6312368d02acd211d')
 
 build() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  export CFLAGS+=" -Wno-error=format-security"
+  export CXXFLAGS+=" -Wno-error=format-security"
 
+  cd "${srcdir}/${pkgname}-${pkgver}"
   ./configure --prefix=/usr \
               --sysconfdir=/etc \
               --with-spooldir=/usr/bin
