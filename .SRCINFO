@@ -1,6 +1,6 @@
 pkgbase = aocc
 	pkgdesc = AMD Optimizing C/C++ Compiler
-	pkgver = 4.2.0
+	pkgver = 5.0.0
 	pkgrel = 1
 	url = https://developer.amd.com/amd-aocc/
 	install = aocc.install
@@ -10,9 +10,9 @@ pkgbase = aocc
 	options = staticlibs
 	options = !strip
 	options = libtool
-	source = local://aocc-compiler-4.2.0.tar
+	source = local://aocc-compiler-5.0.0.tar
 	source = local://modulefile
-	sha256sums = ed5a560ec745b24dc0685ccdcbde914843fb2f2dfbfce1ba592de4ffbce1ccab
+	sha256sums = 966fac2d2c759e9de6e969c10ada7a7b306c113f7f1e07ea376829ec86380daa
 	sha256sums = SKIP
 
 pkgname = aocc
