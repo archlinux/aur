@@ -1,8 +1,8 @@
 pkgbase = pd-l2ork-bin
 	pkgdesc = L2Ork (Linux Laptop Orchestra) version of PureData (upstream Debian package)
-	pkgver = 20240401
+	pkgver = 20240930
 	pkgrel = 1
-	url = http://l2ork.music.vt.edu/main/?page_id=56
+	url = https://l2ork.music.vt.edu/main/make-your-own-l2ork/software/
 	arch = x86_64
 	license = GPL
 	depends = bluez-libs
@@ -18,7 +18,7 @@ pkgbase = pd-l2ork-bin
 	depends = libpng
 	provides = pd-l2ork
 	conflicts = pd-l2ork
-	source = http://l2ork.music.vt.edu/data/pd-l2ork/Pd-L2Ork-full-20240401-rev.8bddcbf5e-x86_64.deb
-	sha256sums = b7ee5ab418ea499bfe44f39102d9a6d7fafa8f13ba3719608e1c78891580f11c
+	source = http://l2ork.music.vt.edu/data/pd-l2ork/Pd-L2Ork-full-20240930-rev.4d094c625-x86_64.deb
+	sha256sums = 4a9acbd886f5c131a58aca43f58d026c229c63c55c6052003c7ede6914c5e2de
 
 pkgname = pd-l2ork-bin
