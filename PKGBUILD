@@ -2,7 +2,7 @@
 
 pkgname=hoarder
 pkgver=0.17.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A self-hostable bookmark-everything app (links, notes and images) with AI-based automatic tagging and full text search"
 arch=("x86_64" "aarch64")
 url="https://github.com/${pkgname}-app/${pkgname}"
@@ -30,6 +30,12 @@ sha256sums=('bae76ba63dc9d4d1a16bf9c8b5bec53877506cb860b7a4da79860a6808e5eb8b'
             '1c42c86c6245c04f9da4d97fc4cb0100ce8a69784692fe2b30069940a4de31bf'
             'ebbca6d919fdb201177a816e6a9a9d634f2ee3df222a1d43d38b9a280b593544')
 
+prepare() {
+    # fix ERR_PACKAGE_PATH_NOT_EXPORTED error
+    cd "${pkgname}"
+    sed -i 's|"execa": "^9.1.0",|"execa": "9.1.0",|' apps/workers/package.json
+}
+
 build() {
     export COREPACK_ENABLE_STRICT=0
     export SERVER_VERSION="$pkgver"
@@ -44,17 +50,17 @@ build() {
     pnpm dlx @vercel/ncc build migrate.ts -o ../../db_migrations
     cp -R drizzle ../../db_migrations
     cd ../../apps/web
-    pnpm next experimental-compile
+    pnpm exec next build --experimental-build-mode compile
 
     # build workers
     cd ../..
     rm -rf workers &>/dev/null
     pnpm deploy --node-linker=isolated --filter @hoarder/workers --prod workers
 
-    # delete musl files, macos/win files, map file
+    # delete musl files, macos/win/android files, map file
     find apps/web/.next -type d -name "*musl*" | xargs rm -rf
     find workers -type f -name "*.map" | xargs rm -rf
-    find workers -type d \( -name "darwin-arm64" -o -name "darwin-x64" -o -name "win32-x64" \) | xargs rm -rf
+    find workers -type d \( -name "darwin-arm64" -o -name "darwin-x64" -o -name "win32-x64" -o -name "android-arm*" \) | xargs rm -rf
     case $CARCH in
         x86_64)  find workers -type d -name "linux-arm64" | xargs rm -rf;;
         aarch64) find workers -type d -name "linux-x64"   | xargs rm -rf;;
