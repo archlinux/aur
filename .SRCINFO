@@ -1,0 +1,78 @@
+pkgbase = postgresql17
+	pkgdesc = Sophisticated object-relational DBMS
+	pkgver = 17.0
+	pkgrel = 1
+	url = https://www.postgresql.org/
+	arch = x86_64
+	license = custom:PostgreSQL
+	makedepends = krb5
+	makedepends = libxml2
+	makedepends = python
+	makedepends = perl
+	makedepends = tcl>=8.6.0
+	makedepends = openssl>=1.0.0
+	makedepends = pam
+	makedepends = zlib
+	makedepends = icu
+	makedepends = systemd
+	makedepends = libldap
+	makedepends = llvm
+	makedepends = clang
+	makedepends = libxslt
+	provides = postgresql
+	source = https://ftp.postgresql.org/pub/source/v17.0/postgresql-17.0.tar.bz2
+	source = postgresql.service
+	source = postgresql-check-db-dir
+	source = postgresql.sysusers
+	source = postgresql.tmpfiles
+	source = pgenv.sh
+	source = postgresql-run-socket.patch
+	source = postgresql-perl-rpath.patch
+	sha256sums = 7e276131c0fdd6b62588dbad9b3bb24b8c3498d5009328dba59af16e819109de
+	sha256sums = 1b10acff7b5f80ea39c6c122569cd461a12cf90114b777ad46d438447c5c5774
+	sha256sums = 55c7282fdb116741a5de1c572a1b727b6c53a38b8c13d7c4b5d7a62e654084b2
+	sha256sums = 7fa8f0ef3f9d40abd4749cc327c2f52478cb6dfb6e2405bd0279c95e9ff99f12
+	sha256sums = fddc68565151077b4f514345087c38ca069d049b8a17dbf7eef2826f49ccbc7b
+	sha256sums = fbe59d8e34d67a56a911fcefd15f4103a0fba4b4ed496531a2618008b741f160
+	sha256sums = 02ffb53b0a5049233f665c873b96264db77daab30e5a2194d038202d815a8e6a
+	sha256sums = af6186d40128e043f333da4591455bf62b7c96e80214835f5c8c60b635ea9afb
+
+pkgname = postgresql17-libs
+	pkgdesc = Libraries for use with PostgreSQL
+	depends = krb5
+	depends = openssl>=1.0.0
+	depends = readline>=6.0
+	depends = zlib
+	depends = libldap
+	provides = postgresql17-client
+	provides = libpq.so
+	provides = libecpg.so
+	provides = libecpg_compat.so
+	provides = libpgtypes.so
+	conflicts = postgresql17-client
+
+pkgname = postgresql17-docs
+	pkgdesc = HTML documentation for PostgreSQL
+	options = docs
+
+pkgname = postgresql17
+	pkgdesc = Sophisticated object-relational DBMS
+	install = postgresql.install
+	depends = postgresql17-libs>=17.0
+	depends = krb5
+	depends = libxml2
+	depends = readline>=6.0
+	depends = openssl>=1.0.0
+	depends = pam
+	depends = icu
+	depends = systemd-libs
+	depends = libldap
+	depends = llvm-libs
+	depends = libxslt
+	depends = libxslt
+	depends = lz4
+	depends = zstd
+	optdepends = python: for PL/Python 3 support
+	optdepends = perl: for PL/Perl support
+	optdepends = tcl: for PL/Tcl support
+	options = staticlibs
