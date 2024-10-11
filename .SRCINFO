@@ -1,0 +1,14 @@
+pkgbase = ros2-humble-geographic-msgs
+	pkgdesc = ROS messages for Geographic Information Systems.
+	pkgver = 1.0.6
+	pkgrel = 1
+	url = https://index.ros.org/p/geographic_info/
+	arch = x86_64
+	license = BSD-3-Clause
+	checkdepends = cppcheck
+	makedepends = cmake
+	depends = ros2-humble
+	source = geographic_info-1.0.6.tar.gz::https://github.com/ros-geographic-info/geographic_info/archive/1.0.6.tar.gz
+	sha256sums = 7ae385951816abde470463b0b7ed24ad5e4dce2d8c6a2f120e42e337b013ae18
+
+pkgname = ros2-humble-geographic-msgs
