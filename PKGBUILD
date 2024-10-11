@@ -6,7 +6,7 @@
 pkgbase=aocl
 pkgname=(aocl-aocc aocl-gcc)
 pkgver=5.0.0
-pkgrel=3
+pkgrel=4
 pkgdesc="AMD Optimizing CPU Libraries"
 arch=('x86_64')
 license=('custom')
@@ -52,7 +52,7 @@ package_aocl-aocc() {
 	patchelf --add-needed ${aocl_prefix}/aocc/lib_LP64/libaoclutils.so ${prefix}/aocc/lib_LP64/libflame.so
 
 	# fix amd-libs.cfg, pkgconfig, and cmake files containing ${pkgdir}
-	sed -e "s:/.*/opt:/opt:g" -s -i ${prefix}/aocc/amd-libs.cfg ${prefix}/aocc/lib_*P64/pkgconfig/*  ${prefix}/aocc/lib_*P64/cmake/*/*.cmake
+	find ${prefix}/aocc \( -name 'amd-libs.cfg' -o -name '*.pc' -o -name '*.cmake' -o -name '*_module' \) -exec sed -e "s:/.*/opt:/opt:g" -s -i {} \;
 
 	# env-modules (optional)
 	cp ${srcdir}/modulefile ${prefix}/aocc
@@ -85,7 +85,7 @@ package_aocl-gcc() {
 	patchelf --add-needed ${aocl_prefix}/gcc/lib_LP64/libaoclutils.so ${prefix}/gcc/lib_LP64/libflame.so
 
 	# fix amd-libs.cfg, pkconfig, and cmake files containing ${pkgdir} and ${pkgver}
-	sed -e "s:/.*/opt:/opt:g" -e "s:/${pkgver}::g" -s -i ${prefix}/gcc/amd-libs.cfg ${prefix}/gcc/lib_*P64/pkgconfig/* ${prefix}/gcc/lib_*P64/cmake/*/*.cmake
+	find ${prefix}/gcc \( -name 'amd-libs.cfg' -o -name '*.pc' -o -name '*.cmake' -o -name '*_module' \) -exec sed -e "s:/.*/opt:/opt:g" -s -i {} \;
 
 	# env-modules (optional)
 	cp ${srcdir}/modulefile ${prefix}/gcc
