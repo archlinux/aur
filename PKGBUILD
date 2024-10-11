@@ -1,8 +1,8 @@
 # Maintainer: Peter Jung <ptr1337@cachyos.org>
 
 pkgname=boxed-cpp
-pkgver=1.4.2
-pkgrel=2
+pkgver=1.4.3
+pkgrel=1
 pkgdesc="Small header-only library for easing primitive type boxing in C++"
 arch=('any')
 url="https://github.com/contour-terminal/boxed-cpp"
@@ -12,7 +12,7 @@ makedepends=(
   cmake
 )
 source=("git+https://github.com/contour-terminal/boxed-cpp.git#tag=v${pkgver}")
-sha256sums=('1f5abdfe042743fe6206d9404ac0eb34f0e82ab55c9da41d303656c30bdd18f2')
+sha256sums=('85853227b1067032f54fcfc8cff30eb49d4daa7ced7e9629910b72563c60c1e2')
 
 build() {
   cmake -B build -S boxed-cpp \
