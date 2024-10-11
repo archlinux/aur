@@ -36,72 +36,74 @@ makedepends=('alsa-lib'
         'libvorbis')
 
 pkgver() {
-    cd $_pkgbase
-    echo "$(git describe --tags | sed 's/^v//; s/-/.r/; s/-g/./')"
+        cd $_pkgbase
+        echo "$(git describe --tags | sed 's/^v//; s/-/.r/; s/-g/./')"
 }
 
 prepare() {
-    cd $_pkgbase
-    git submodule init
-    git submodule update --init --recursive
+        cd $_pkgbase
+        git submodule init
+        git submodule update --init --recursive
 }
 
 build() {
-    cd $_pkgbase
-    ./configure --prefix=/usr --sysconfdir=/etc --with-builtin=core cross_compiling=yes\
-    --without-update-desktop-database\
-    --without-update-mime-database\
-    --with-unifont-ttf=/usr/share/fonts/Unifont/Unifont.ttf\
-    --with-unifont-csur-ttf=/usr/share/fonts/Unifont/Unifont_CSUR.ttf\
-    --with-unifont-upper-ttf=/usr/share/fonts/Unifont/Unifont_Upper.ttf
-    make DESTDIR="$pkgdir" subdirs ocp ocp.hlp
+        cd $_pkgbase
+        ./configure --prefix=/usr --sysconfdir=/etc --with-builtin=core cross_compiling=yes\
+        --without-update-desktop-database\
+        --without-update-mime-database\
+        --with-unifont-ttf=/usr/share/fonts/Unifont/Unifont.ttf\
+        --with-unifont-csur-ttf=/usr/share/fonts/Unifont/Unifont_CSUR.ttf\
+        --with-unifont-upper-ttf=/usr/share/fonts/Unifont/Unifont_Upper.ttf
+        make DESTDIR="$pkgdir" subdirs ocp ocp.hlp
 }
 
 package_ocp-sdl2-git() {
     provides=(${_pkgbase}=${pkgver})
-    conflicts=('ocp' 'ocp-curses')
-    install=${_pkgbase}.install	
-    depends=('alsa-lib'
-            'bzip2'
-            'cjson'
-            'freetype2'
-            'hicolor-icon-theme'
-            'ncurses'
-            'sdl2'
-            'shared-mime-info'
-            'zlib'
-            'libancient'
-            'libdiscid'
-            'libjpeg-turbo' 
-            'libpng'
-            'ttf-unifont')
-    cd $_pkgbase
-    ./configure --prefix=/usr --sysconfdir=/etc --with-builtin=core cross_compiling=yes\
-    --without-sdl --without-x11\
-    --without-update-desktop-database\
-    --without-update-mime-database\
-    --with-unifont-ttf=/usr/share/fonts/Unifont/Unifont.ttf\
-    --with-unifont-csur-ttf=/usr/share/fonts/Unifont/Unifont_CSUR.ttf\
-    --with-unifont-upper-ttf=/usr/share/fonts/Unifont/Unifont_Upper.ttf
-    make DESTDIR="$pkgdir" libocp.so
-    make DESTDIR="$pkgdir" install
+        conflicts=('ocp' 'ocp-curses')
+        install=${_pkgbase}.install
+        depends=('alsa-lib'
+                'bzip2'
+                'cjson'
+                'freetype2'
+                'hicolor-icon-theme'
+                'ncurses'
+                'sdl2'
+                'shared-mime-info'
+                'zlib'
+                'libancient'
+                'libdiscid'
+                'libjpeg-turbo'
+                'libpng'
+                'ttf-unifont')
+        cd $_pkgbase
+        ./configure --prefix=/usr --sysconfdir=/etc --with-builtin=core cross_compiling=yes\
+        --without-sdl --without-x11\
+        --without-update-desktop-database\
+        --without-update-mime-database\
+        --with-unifont-ttf=/usr/share/fonts/Unifont/Unifont.ttf\
+        --with-unifont-csur-ttf=/usr/share/fonts/Unifont/Unifont_CSUR.ttf\
+        --with-unifont-upper-ttf=/usr/share/fonts/Unifont/Unifont_Upper.ttf
+        make DESTDIR="$pkgdir" libocp.so
+        make DESTDIR="$pkgdir" install
 }
 
 package_ocp-git() {
-    provides=(${_pkgbase}=${pkgver})
-    conflicts=('ocp' 'ocp-curses')
-    depends=('alsa-lib'
+        provides=(${_pkgbase}=${pkgver})
+        conflicts=('ocp' 'ocp-curses')
+        depends=('alsa-lib'
                 'bzip2'
                 'cjson'
                 'ncurses'
                 'zlib'
                 'libancient'
                 'libdiscid')
-    cd $_pkgbase
-    ./configure --prefix=/usr --sysconfdir=/etc --with-builtin=core\
-    --without-x11 --without-sdl --without-sdl2\
-    --without-update-desktop-database\
-    --without-update-mime-database
-    make DESTDIR="$pkgdir" libocp.so
-    make DESTDIR="$pkgdir" install
+        cd $_pkgbase
+        ./configure --prefix=/usr --sysconfdir=/etc --with-builtin=core\
+        --without-x11 --without-sdl --without-sdl2\
+        --without-update-desktop-database\
+        --without-update-mime-database
+        make DESTDIR="$pkgdir" libocp.so
+        make DESTDIR="$pkgdir" install
 }
+
+# vim:set ts=4 sw=4 et:1
