@@ -10,8 +10,7 @@ _repo=${url##*/}
 arch=(any)
 makedepends=(git xorg-xcursorgen)
 source=("git+${url}#commit=${_commit}" build.patch)
-sha512sums=('SKIP'
-            'c2b8792e0a9afd639864608dc674acbc1a368d9a83cd46dd3422403961af2b001c3eb004269eb701fcd34f4cfceaca5912a751a6ecd68ad08901ec94e0afb972')
+sha512sums=('SKIP' 'c2b8792e0a9afd639864608dc674acbc1a368d9a83cd46dd3422403961af2b001c3eb004269eb701fcd34f4cfceaca5912a751a6ecd68ad08901ec94e0afb972')
 
 prepare () {
 	cd "${srcdir}/${_repo}"
@@ -19,14 +18,12 @@ prepare () {
 }
 
 build () {
-	cd "${_repo}"
-	msg2 "Rendering variant: Hickson v3 black"
-	# python render-pngs.py "more-themes/cz-Hickson/cz-Hickson_v3-black.svg"
-	ln -s more-themes/cz-Hickson/pngs-black pngs
-	themetitle="cz-Hickson-black" ./make.sh
+	cd "${srcdir}/${_repo}/more-themes/cz-Hickson"
+	ln -sfT pngs-black pngs
+	themetitle="cz-Hickson-black" "${srcdir}/${_repo}/make.sh"
 }
 
 package () {
 	install -dm755 "${pkgdir}/usr/share/icons"
-	cp -a "${_repo}/cz-Hickson-black" "${pkgdir}/usr/share/icons/"
+	cp -a "${srcdir}/${_repo}/more-themes/cz-Hickson/cz-Hickson-black" "${pkgdir}/usr/share/icons/"
 }
