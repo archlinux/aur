@@ -3,7 +3,7 @@ _appname=firestorm-next
 pkgname="${_appname}-bin"
 provides=("${_appname}")
 conflicts=("${_appname}")
-pkgver=7.1.11.76454
+pkgver=7.1.11.76467
 pkgrel=1
 pkgdesc="Firestorm is a feature-packed third-party viewer for Second Life (next version)"
 url="https://www.firestormviewer.org/early-access-beta-downloads/"
@@ -47,14 +47,14 @@ optdepends=(
   "nvidia-utils: for NVIDIA support"
 )
 install="${_appname}.install"
-tardir="Phoenix-Firestorm-Betax64-${pkgver//./-}"
+tardir="Phoenix-Firestorm-Betax64_AVX2-${pkgver//./-}"
 source=(
   "https://downloads.firestormviewer.org/preview/linux/${tardir}.tar.xz"
   "${_appname}.desktop"
 )
 md5sums=(
-  "6f0573c566156efed7aa528fb7644b2a"
-  "f9fbea1c93e486cfd59177213b4870ad"
+  "681e8f222741d1e98f28a3df7c4f4824"
+  "67c165cfb593cce56007421f8dcaaa38"
 )
 
 package() {
