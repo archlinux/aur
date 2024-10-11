@@ -2,13 +2,13 @@
 
 _pkgname=lbry-gtk
 pkgname=${_pkgname}-git
-pkgver=r492.6939df3
+pkgver=r530.5a0432f
 pkgrel=1
 pkgdesc='Native desktop LBRY client'
 arch=('x86_64')
 url="https://codeberg.org/MorsMortium/${_pkgname}"
-license=('GPL3')
-depends=('python' 'python-gobject' 'python-cairo' 'gtk3' 'lbrynet' 'jansson' 'curl' 'md4c' 'pcre2' 'imagemagick' 'sqlite')
+license=('GPL-3.0-or-later')
+depends=('python' 'python-gobject' 'python-cairo' 'gtk3' 'lbrynet' 'jansson' 'curl' 'md4c' 'pcre2' 'imagemagick' 'sqlite' 'hicolor-icon-theme')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 makedepends=('git')
