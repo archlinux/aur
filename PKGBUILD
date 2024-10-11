@@ -1,5 +1,5 @@
 pkgname=mihomo-party
-pkgver=1.4.4
+pkgver=1.4.5
 pkgrel=1
 pkgdesc="Another Mihomo GUI."
 arch=('x86_64' 'aarch64')
@@ -14,7 +14,7 @@ source=(
     "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
     "${pkgname}.sh"
 )
-sha256sums=("93d96f8dbb03d44c7c7fa026f7d805c7ea5cd1e13c0b2ba36309452923728617"
+sha256sums=("12bc6bcddc32ba44376b214e462c9d8501400b1685996b4d1240ff7d0dc30099"
 "f8049c1f26d5a92fbcebd7bebbdedbb3eab53422b21cf6127418251ccd061282")
 options=('!lto')
 
