@@ -5,7 +5,7 @@
 # To refresh with a new build, delete previously downloaded postgresql-snapshot.tar.bz2
 
 pkgbase=postgresql-devel
-pkgver=17devel
+pkgver=18devel
 pkgname=("${pkgbase}-libs" "${pkgbase}-docs" "${pkgbase}")
 pkgrel=1
 pkgdesc='Sophisticated object-relational DBMS'
