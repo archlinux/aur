@@ -3,7 +3,7 @@
 pkgbase=ch9344ser-git
 pkgname=(ch9344ser-dkms-git libch9344ser-git)
 pkgver=r38.d4fc95f
-pkgrel=3
+pkgrel=8
 pkgdesc="This driver supports USB to quad serial ports chip ch9344 and USB to octal serial ports chip ch348."
 arch=('any')
 url="https://github.com/WCHSoftGroup/ch9344ser_linux"
@@ -17,14 +17,14 @@ options=(!strip !debug)
 
 pkgver() {
     cd "${srcdir}/${pkgbase}"
-    ( set -o pipefail
+    (
+        set -o pipefail
         git describe --long --tag --abbrev=7 2>/dev/null | sed 's/^v//g;s/\([^-]*-g\)/r\1/;s/-/./g' ||
-        printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+            printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
     )
 }
 
-prepare()
-{
+prepare() {
     git -C "${srcdir}/${pkgbase}" clean -dfx
 }
 
@@ -34,26 +34,27 @@ package_ch9344ser-dkms-git() {
     conflicts=(${pkgname%-git})
     depends=(dkms)
     optdepends=('linux-headers: build the module against Arch kernel'
-  'linux-ck-headers: build the module against Linux-ck kernel'
-  'linux-lts-headers: build the module against LTS Arch kernel')
+        'linux-ck-headers: build the module against Linux-ck kernel'
+        'linux-lts-headers: build the module against LTS Arch kernel')
     arch=('any')
     cd "$srcdir/${pkgbase}/driver"
     rm -rf Makefile
-    install -Dm755 /dev/stdin  Makefile <<EOF
+    install -Dm755 /dev/stdin Makefile <<EOF
 obj-m := ch9344.o
 
 KVER ?= \$(shell uname -r)
 KDIR ?= /lib/modules/$(KVER)/build
 VERSION ?= \$(shell cat VERSION)
+SRC_DIR=\$(shell pwd)
 
 default:
-    \$(MAKE) -C \$(KDIR) M=\$(CURDIR) modules
+    \$(MAKE) -C \$(KDIR) M=\$(SRC_DIR) modules
 
 clean:
-    \$(MAKE) -C \$(KDIR) M=\$(CURDIR) clean
+    \$(MAKE) -C \$(KDIR) M=\$(SRC_DIR) clean
 
 install:
-    \$(MAKE) -C \$(KDIR) M=\$(CURDIR) modules_install
+    \$(MAKE) -C \$(KDIR) M=\$(SRC_DIR) modules_install
 
 load: -/sbin/rmmod ch9344
     /sbin/insmod ch9344.ko
@@ -62,7 +63,7 @@ dkms.conf: dkms.conf.in
     sed "s/@@VERSION@@/\$(VERSION)/" $^ > \$@
 
 dkms-add: dkms.conf
-    /usr/sbin/dkms add \$(CURDIR)
+    /usr/sbin/dkms add \$(SRC_DIR)
 
 dkms-build: dkms.conf
     /usr/sbin/dkms build ch9344/\$(VERSION)
@@ -103,9 +104,9 @@ ch9344
 EOF
 
     # Blacklists conflicting module
-#     install -Dm644 /dev/stdin "${pkgdir}/usr/lib/modprobe.d/cdc_acm.conf" <<EOF
-# blacklist cdc_acm
-# EOF
+    #     install -Dm644 /dev/stdin "${pkgdir}/usr/lib/modprobe.d/cdc_acm.conf" <<EOF
+    # blacklist cdc_acm
+    # EOF
 }
 
 package_libch9344ser-git() {
@@ -120,7 +121,7 @@ package_libch9344ser-git() {
         mv x64 libch9344ser
     fi
     if [ ${CARCH} = "aarch64" ]; then
-       mv aarch64 libch9344ser
+        mv aarch64 libch9344ser
     fi
 
     install -dm755 "${pkgdir}/usr/lib/" \
