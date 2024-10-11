@@ -20,7 +20,8 @@ package() {
 	mkdir -p "$pkgdir/usr/share"
 	cp -R "$srcdir/opt/brother" "$pkgdir/usr/share"
 	sed -i 's|\\\/opt\\\/|\\\/usr\\\/|' "$pkgdir/usr/share/brother/Printers/$_model/cupswrapper/brother_lpdwrapper_$_model"
-	sed -i 's|\\\/opt\\\/|\\\/usr\\\/|' "$pkgdir/usr/share/brother/Printers/$_model/lpd/filter_$_model"
+	sed -i 's|/opt/|/usr/|' "$pkgdir/usr/share/brother/Printers/$_model/lpd/filter_$_model"
+	sed -i 's|/opt/|/usr/|' "$pkgdir/usr/share/brother/Printers/$_model/cupswrapper/cupswrapper$_model"
 
 	# /etc/printcap is managed by cups
 	find "$pkgdir" -type f -name 'setupPrintcap*' -delete
