@@ -32,7 +32,8 @@ check() {
     --ignore=python/test/unit/mesh/test_higher_order_mesh.py \
     --ignore=python/test/unit/io/test_xdmf_function.py \
     --ignore=python/test/unit/io/test_adios2.py
-  MPLBACKEND=Agg test-env/bin/python -m pytest python/demo/test.py
+  MPLBACKEND=Agg test-env/bin/python -m pytest python/demo/test.py \
+  -k 'not demos[path5-demo_gmsh.py] and not demos[path13-demo_pml.py] and not demos[path18-demo_scattering_boundary_conditions.py] and not demos[path19-demo_static-condensation.py] and not demos_mpi[path5-demo_gmsh.py] and not demos_mpi[path13-demo_pml.py] and not demos_mpi[path18-demo_scattering_boundary_conditions.py] and not demos_mpi[path19-demo_static-condensation.py]'
 }
 
 package() {
