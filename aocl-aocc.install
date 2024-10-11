@@ -9,6 +9,8 @@ post_install() {
 	echo 'by creating `/etc/ld.so.conf.d/aocl-aocc.conf` containing:'
 	echo " 	/opt/aocl/aocc/lib/"
 	echo 'then running `ldconfig`'
+	echo 'and creating `/etc/profile.d/aocl-aocc.sh` containing:'
+	echo " export AOCL_ROOT=/opt/aocl/aocc/"
 }
 
 post_upgrade() {
