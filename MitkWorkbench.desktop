@@ -2,8 +2,8 @@
 Name=MITK Workbench
 GenericName=Image Visualization
 Comment=Medical Imaging Interaction Toolkit (MITK) Workbench
-Exec=mitk-workbench %U
-TryExec=mitk-workbench
+Exec=/opt/mitk-2024.06.2/MitkWorkbench %U
+TryExec=/opt/mitk-2024.06.2/MitkWorkbench
 Terminal=false
 Type=Application
 Categories=Graphics;Science
