@@ -1,7 +1,7 @@
 pkgbase = libunicode
 	pkgdesc = Unicode and UTF-8 C++ library
-	pkgver = 0.5.0
-	pkgrel = 2
+	pkgver = 0.6.0
+	pkgrel = 1
 	url = https://github.com/contour-terminal/libunicode
 	arch = x86_64
 	license = Apache-2.0
@@ -12,7 +12,7 @@ pkgbase = libunicode
 	makedepends = unicode-character-database
 	depends = gcc-libs
 	depends = fmt
-	source = git+https://github.com/contour-terminal/libunicode.git#tag=v0.5.0
-	sha256sums = 808e7824139b1791f89eb49356c98b89f437bcd3b9adbfb62cce8ece9a12564d
+	source = git+https://github.com/contour-terminal/libunicode.git#tag=v0.6.0
+	sha256sums = c870c781d1b830e764c933b3601ade23eb55ae37af7900609f415950c2e08398
 
 pkgname = libunicode
