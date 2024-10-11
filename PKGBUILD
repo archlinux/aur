@@ -4,7 +4,7 @@
 # Webpage: https://github.com/chenxiaolong/avbroot
 
 pkgname=avbroot
-pkgver=3.7.0
+pkgver=3.7.1
 pkgrel=1
 pkgdesc="Application for patching Android A/B-style OTA images for root access"
 arch=('x86_64')
@@ -12,7 +12,7 @@ url="https://github.com/chenxiaolong/avbroot"
 license=('GPL')
 
 source=("https://github.com/chenxiaolong/$pkgname/releases/download/v$pkgver/$pkgname-$pkgver-x86_64-unknown-linux-gnu.zip")
-md5sums=('a5f4db83712937b0fea65634d95fabfe')
+md5sums=('baea7c504c0dc6e2e4a930ba8219099e')
 
 package() {
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
