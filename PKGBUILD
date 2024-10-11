@@ -1,4 +1,4 @@
-# Maintainer: chardon55 <charlesdong_2000@outlook.com>
+# Maintainer: Charles Dong <chardon_cs@proton.me>
 
 pkgname=deno-init
 pkgver=2.x.x
