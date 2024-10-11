@@ -1,5 +1,5 @@
 pkgname=aocl-libflame
-pkgver=4.2
+pkgver=5.0
 pkgrel=1
 pkgdesc="High-performance object-based library for DLA computations, AOCL branding"
 arch=('x86_64')
@@ -11,10 +11,11 @@ provides=('lapack' 'lapacke')
 conflicts=('lapack' 'lapacke')
 _lapackver=3
 source=("$pkgname-$pkgver.tar.gz::https://github.com/amd/libflame/archive/$pkgver.tar.gz")
-sha256sums=('93a433c169528ffba74a99df0ba3ce3d5b1fab9bf06ce8d2fd72ee84768ed84c')
+sha256sums=('3bee3712459a8c5bd728a521d8a4c8f46735730bf35d48c878d2fc45fc000918')
 
-build() {
+prepare() {
     cd "$srcdir/libflame-$pkgver"
+
     CFLAGS=${CFLAGS/-march=x86-64/}
     CXXFLAGS=${CXXFLAGS/-march=x86-64/}
     AOCL_ROOT=/
@@ -24,10 +25,30 @@ build() {
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DENABLE_AOCL_BLAS=ON \
         -DLIBAOCLUTILS_INCLUDE_PATH=/usr/include/alci/ \
-        -DLIBAOCLUTILS_LIBRARY_PATH=/usr/lib/libaoclutils.so
+        -DLIBAOCLUTILS_LIBRARY_PATH=/usr/lib/libaoclutils.so \
+	# -DBUILD_TEST=ON \ # for testing only
+	# -DCMAKE_EXT_BLAS_LIBRARY_DEPENDENCY_PATH=/usr/lib/ \
+	# -DEXT_BLAS_LIBNAME=libblis-mt.so
+
+}
+
+build() {
+    cd "$srcdir/libflame-$pkgver"
+    CFLAGS=${CFLAGS/-march=x86-64/}
+    CXXFLAGS=${CXXFLAGS/-march=x86-64/}
+    AOCL_ROOT=/
 
     cmake --build newbuild
 }
+
+# check() { # testing this library takes an exorbitant amount of time
+#     cd "$srcdir/libflame-$pkgver"
+#     CFLAGS=${CFLAGS/-march=x86-64/}
+#     CXXFLAGS=${CXXFLAGS/-march=x86-64/}
+#     AOCL_ROOT=/
+#
+#     ctest --test-dir newbuild
+# }
 
 package() {
     cd "$srcdir/libflame-$pkgver"
