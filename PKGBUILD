@@ -1,7 +1,7 @@
 # Maintainer: Caleb Maclennnan <caleb@alerque.com>
 
 pkgname=dotslash
-pkgver=0.4.1
+pkgver=0.4.2
 pkgrel=1
 pkgdesc='Simplified executable deployment'
 arch=(x86_64)
@@ -12,7 +12,7 @@ depends=(gcc-libs
 makedepends=(cargo)
 _archive="$pkgname-$pkgver"
 source=("$url/archive/v$pkgver/$_archive.tar.gz")
-sha256sums=('c8d24060cc0a4ec374ea519133948b2229f0aca6e696fdfc330601d9d9cd5509')
+sha256sums=('5d54dce858e306b201e1023d9b3d884355b22b1c2f920d98f957f64993eaa44e')
 
 prepare() {
 	cd "$_archive"
