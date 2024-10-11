@@ -1,0 +1,13 @@
+pkgbase = puredns
+	pkgdesc = A fast domain resolver and subdomain bruteforcing tool that can accurately filter out wildcard subdomains and DNS poisoned entries
+	pkgver = 2.1.1
+	pkgrel = 1
+	url = https://github.com/d3mondev/puredns
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = go
+	depends = massdns
+	source = puredns-2.1.1.tar.gz::https://github.com/d3mondev/puredns/archive/refs/tags/v2.1.1.tar.gz
+	sha256sums = cff6466a422ab7db00a8277b32159cc6c416980f0921a5a7c72c43255d233c0f
+
+pkgname = puredns
