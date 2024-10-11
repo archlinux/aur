@@ -1,0 +1,27 @@
+pkgbase = lyrica
+	pkgdesc = Linux desktop lyrics widget focused on simplicity and integration.
+	pkgver = 0.10
+	pkgrel = 1
+	url = https://github.com/chiyuki0325/lyrica/
+	arch = x86_64
+	license = LicenseRef-unknown
+	makedepends = cargo
+	makedepends = jq
+	depends = zlib
+	depends = dbus
+	depends = gcc-libs
+	depends = glibc
+	depends = openssl
+	depends = qt6-declarative
+	depends = qt6-websockets
+	depends = libplasma
+	depends = kirigami
+	depends = plasma5support
+	optdepends = python-websockets: Run examples/lyrica_obs_plugin.py
+	optdepends = python: Run examples/lyrica_obs_plugin.py
+	optdepends = obs-studio: Run examples/lyrica_obs_plugin.py
+	options = !lto
+	source = lyrica-0.10.tar.gz::https://github.com/chiyuki0325/lyrica/archive/refs/tags/v0.10.tar.gz
+	sha256sums = 8fc5f0a9461019404eb0d138fd705d3aa25d199c043fdb2fa7cfd477f6a0e85b
+
+pkgname = lyrica
