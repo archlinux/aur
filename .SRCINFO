@@ -1,6 +1,6 @@
 pkgbase = supabase-bin
 	pkgdesc = A CLI for Supabase, an open source Firebase alternative
-	pkgver = 1.203.0
+	pkgver = 1.204.3
 	pkgrel = 1
 	url = https://supabase.com/docs/reference/cli/about
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = supabase-bin
 	license = MIT
 	provides = supabase
 	conflicts = supabase
-	source_x86_64 = supabase-1.203.0-x86_64.tar.gz::https://github.com/supabase/cli/releases/download/v1.203.0/supabase_linux_amd64.tar.gz
-	sha256sums_x86_64 = 8338ba5db47ab2182df49a578e52c842b9097dcbc94b341355af49b701456bc9
-	source_aarch64 = supabase-1.203.0-aarch64.tar.gz::https://github.com/supabase/cli/releases/download/v1.203.0/supabase_linux_arm64.tar.gz
-	sha256sums_aarch64 = 999bc78f7ac151432c1d5caeb546ec7d5a10bae0efc10236116cb92189ae24e0
+	source_x86_64 = supabase-1.204.3-x86_64.tar.gz::https://github.com/supabase/cli/releases/download/v1.204.3/supabase_linux_amd64.tar.gz
+	sha256sums_x86_64 = 835c5d878627cfa553b721a1a94e6f30dceaca1193f7d9402bbebbdc7ae9894e
+	source_aarch64 = supabase-1.204.3-aarch64.tar.gz::https://github.com/supabase/cli/releases/download/v1.204.3/supabase_linux_arm64.tar.gz
+	sha256sums_aarch64 = e20f357c6429b4cd8168861393863afa39d18ab23fe368282acf821199a0844b
 
 pkgname = supabase-bin
