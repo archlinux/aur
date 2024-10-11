@@ -1,6 +1,6 @@
 pkgbase = sast-evento-git
 	pkgdesc = An event management system developed and used by NJUPT SAST (git package)
-	pkgver = 2.0.46.1.g72f5100
+	pkgver = 2.0.53.0.g6b43d7b
 	pkgrel = 1
 	url = https://github.com/NJUPT-SAST/sast-evento
 	arch = x86_64

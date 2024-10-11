@@ -2,7 +2,7 @@
 _pkgname=sast-evento
 pkgname=${_pkgname}-git
 
-pkgver=2.0.46.1.g72f5100
+pkgver=2.0.53.0.g6b43d7b
 pkgrel=1
 pkgdesc='An event management system developed and used by NJUPT SAST (git package)'
 license=("${srcdir}/sast-evento/LICENSE")
