@@ -11,7 +11,19 @@ BCR_COMMIT=$(curl -s https://api.github.com/repos/$BCR_REPO/commits/main|jq -r "
 
 # PKGBUILD
 COMMIT=$(grep "^_mozc_commit" PKGBUILD|cut -f2 -d"=")
+BCR_CURRENT_COMMIT=$(grep "^_bcr_commit" PKGBUILD|cut -f2 -d"=")
 SUDACHI_DATE=$(grep "^_sudachidict_date" PKGBUILD|cut -f2 -d"=")
+
+echo $ORIGINAL_REPO
+echo "Latest:"
+echo "Fcitx5     :" $FCITX5_MOZC_COMMIT
+echo "bcr        :" $BCR_COMMIT
+echo "SudachiDict:" $SudachiDict_DATE
+echo
+echo "Current:"
+echo "Fcitx5     :" $COMMIT
+echo "bcr        :" $BCR_CURRENT_COMMIT
+echo "SudachiDict:" $SUDACHI_DATE
 
 UPDATED_FLAG=0
 if [[ "$COMMIT" != "$FCITX5_MOZC_COMMIT" ]]; then
