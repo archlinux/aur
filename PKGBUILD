@@ -1,5 +1,5 @@
 pkgname=erlang_ls
-pkgver=0.52.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc='The Erlang Language Server'
 arch=(any)
@@ -9,12 +9,6 @@ depends=(erlang-nox)
 makedepends=(rebar3)
 source=(git+https://github.com/erlang-ls/erlang_ls.git#tag=$pkgver)
 b2sums=('SKIP')
-
-prepare() {
-  cd $pkgname
-
-  git cherry-pick 8700e96fba0087248ea27be2a7b09b9f3dc4ea44
-}
 
 build() {
   cd $pkgname
