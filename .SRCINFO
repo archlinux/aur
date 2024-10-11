@@ -1,12 +1,12 @@
 pkgbase = rain
 	pkgdesc = A development workflow tool for working with AWS CloudFormation
-	pkgver = 1.16.0
+	pkgver = 1.16.1
 	pkgrel = 1
 	url = https://github.com/aws-cloudformation/rain
 	arch = x86_64
 	license = Apache-2.0
 	makedepends = go
-	source = rain-1.16.0.tar.gz::https://github.com/aws-cloudformation/rain/archive/refs/tags/v1.16.0.tar.gz
-	sha256sums = 9d4ba6a1fd2d0cd553ec0450f0615b02aa433c0edb5f40e8519d38983691dbba
+	source = rain-1.16.1.tar.gz::https://github.com/aws-cloudformation/rain/archive/refs/tags/v1.16.1.tar.gz
+	sha256sums = 0c73ddedd02317ec2cc80c183c0c60a6fc871aaff58602623d4e17668054aa8f
 
 pkgname = rain
