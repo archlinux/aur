@@ -1,0 +1,42 @@
+# Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
+
+_pkgname="kaskade"
+pkgname="${_pkgname}-git"
+pkgver=2.3.6.r0.gae52eea
+pkgrel=1
+pkgdesc="A text user interface for Kafka. Interact and consume topics from your terminal in style!"
+arch=('any')
+url="https://github.com/sauljabin/${_pkgname}"
+license=('MIT')
+depends=('python>=3.10' 'python-cloup' 'python-textual'
+         'python-confluent-kafka' 'python-rich' 'python-protobuf'
+         'python-click')
+makedepends=('git' 'python-build' 'python-installer' 'python-poetry-core>=1')
+provides=("${_pkgname}=${pkgver%%.r*}")
+conflicts=("${_pkgname}")
+_pkgsrc="${_pkgname}"
+source=("${_pkgsrc}::git+${url}.git")
+sha256sums=('SKIP')
+
+pkgver() {
+  cd "${_pkgsrc}"
+  git describe --long --tags --abbrev=7 | sed 's/v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+build () {
+  cd "${srcdir}/${_pkgsrc}"
+  python -m build --wheel --no-isolation
+}
+
+package () {
+  local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
+
+  cd "${srcdir}/${_pkgsrc}"
+  python -m installer --destdir="${pkgdir}" dist/*.whl
+  rm -f "${pkgdir}${site_packages}/LICENSE"
+
+  install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
+  install -d "${pkgdir}/usr/share/licenses/${_pkgname}"
+  ln -s "${site_packages}/${_pkgname}-${pkgver%%.r*}.dist-info/LICENSE" \
+    "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
+}

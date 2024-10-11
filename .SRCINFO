@@ -1,0 +1,24 @@
+pkgbase = kaskade-git
+	pkgdesc = A text user interface for Kafka. Interact and consume topics from your terminal in style!
+	pkgver = 2.3.6.r0.gae52eea
+	pkgrel = 1
+	url = https://github.com/sauljabin/kaskade
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-poetry-core>=1
+	depends = python>=3.10
+	depends = python-cloup
+	depends = python-textual
+	depends = python-confluent-kafka
+	depends = python-rich
+	depends = python-protobuf
+	depends = python-click
+	provides = kaskade=2.3.6
+	conflicts = kaskade
+	source = kaskade::git+https://github.com/sauljabin/kaskade.git
+	sha256sums = SKIP
+
+pkgname = kaskade-git
