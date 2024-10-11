@@ -3,13 +3,13 @@
 # Contributor: Sergey Kostyaev <feo.me@ya.ru>
 
 pkgname=freelib-git
-pkgver=6.1.10
+pkgver=6.1.12
 pkgrel=1
-pkgdesc="Freelib is book library manager"
+pkgdesc="Book library manager"
 arch=(x86_64)
 url="https://github.com/petrovvlad/freeLib"
 license=(GPL3)
-depends=(qt6-base qt6-svg qt6-httpserver quazip-qt6 onetbb)
+depends=(qt6-base qt6-svg qt6-httpserver quazip-qt6 onetbb qtkeychain-qt6)
 optdepends=('kindlegen: convert to MOBI, AZW3'
             'djvulibre: djvu covers')
 makedepends=(git cmake)
