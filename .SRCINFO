@@ -1,6 +1,6 @@
 pkgbase = aocl-blis
 	pkgdesc = BLAS-like Library Instantiation Software Framework, AOCL branding
-	pkgver = 4.2
+	pkgver = 5.0
 	pkgrel = 1
 	url = https://github.com/amd/blis
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = aocl-blis
 	provides = cblas
 	conflicts = blas
 	conflicts = cblas
-	source = aocl-blis-4.2.tar.gz::https://github.com/amd/blis/archive/4.2.tar.gz
-	sha256sums = 0e1baf850ba0e6f99e79f64bbb0a59fcb838ddb5028e24527f52b407c3c62963
+	source = aocl-blis-5.0.tar.gz::https://github.com/amd/blis/archive/5.0.tar.gz
+	sha256sums = 5abb34972b88b2839709d0af8785662bc651c7806ccfa41d386d93c900169bc2
 
 pkgname = aocl-blis
