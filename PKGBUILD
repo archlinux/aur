@@ -6,7 +6,7 @@
 pkgbase=aocl
 pkgname=(aocl-aocc aocl-gcc)
 pkgver=5.0.0
-pkgrel=5
+pkgrel=6
 pkgdesc="AMD Optimizing CPU Libraries"
 arch=('x86_64')
 license=('custom')
@@ -25,7 +25,7 @@ sha256sums=('604ae6c34ef2648504ba08d2f33e42b5a9cf4032eaefaa9253560747ebaeb1ca'
             'e7e1e1fec01ad2e184d06d27dbe977883c3d93a3ffda72997fb23335975dd595'
             '4f58524e1948b2cb470b856546b87656b2fbce0b98b0d43d345fcedb101f1295'
             'fe5245a7b34253a67105ee5e6bb868bbb69ebf318af32dc81e1cdd7d7277b639'
-            'f9b7731299e912873de3a83a354a1456a4acdea77c785bff17ec72b49b7c867e')
+            '5fa50773bb1076ee9ac1010844c86d749757a4da0c703d33b163863f75242670')
 
 package_aocl-aocc() {
 	install=${pkgname}.install
