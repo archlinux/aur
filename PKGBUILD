@@ -1,4 +1,4 @@
-# Maintainer: Adrian Perez de Castro <aperez@igalia.com>
+# Maintainer: gigamicro <gammamicro@gmail.com>
 pkgdesc='Understated cursor theme - black, tailless'
 pkgname=(xcursor-cz-hickson-{black,white})
 pkgver=20210706
@@ -27,7 +27,7 @@ build () {
 
 package_xcursor-cz-hickson-black () {
 	install -dm755 "${pkgdir}/usr/share/icons/"
-	cp -a "${srcdir}/${_repo}/more-themes/cz-Hickson/cz-Hickson-${1:-black}" "${pkgdir}/usr/share/icons/"
+	cp -at "${pkgdir}/usr/share/icons/" "${srcdir}/${_repo}/more-themes/cz-Hickson/cz-Hickson-${1:-black}"
 }
 package_xcursor-cz-hickson-white(){
 	pkgdesc='Understated cursor theme - white, tailless'
