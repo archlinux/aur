@@ -1,0 +1,16 @@
+pkgbase = term3d
+	pkgdesc = 3D Model viewer for the terminal
+	pkgver = 1.0.8
+	pkgrel = 1
+	url = https://github.com/3Marz/term3d
+	arch = x86_64
+	arch = i686
+	arch = armv7h
+	arch = aarch64
+	license = MIT
+	makedepends = npm
+	noextract = term3d-1.0.8.tgz
+	source = https://registry.npmjs.org/term3d/-/term3d-1.0.8.tgz
+	sha256sums = SKIP
+
+pkgname = term3d
