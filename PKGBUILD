@@ -1,7 +1,7 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 _pkgname=shadps4
 pkgname=$_pkgname-git
-pkgver=0.3.0.r159.g0f916616
+pkgver=0.3.0.r162.gdc99d3eb
 pkgrel=1
 pkgdesc="Sony PlayStation 4 emulator"
 arch=('aarch64' 'x86_64')
@@ -82,6 +82,8 @@ build() {
 		-DCMAKE_C_FLAGS_RELEASE="-DNDEBUG" \
 		-DCMAKE_CXX_FLAGS_RELEASE="-DNDEBUG" \
 		-DCMAKE_DISABLE_FIND_PACKAGE_Zydis=ON \
+		-DCMAKE_INSTALL_PREFIX=/usr \
+		-DCMAKE_SKIP_INSTALL_RPATH=ON \
 		-DENABLE_QT_GUI=ON \
 		-DSIRIT_USE_SYSTEM_SPIRV_HEADERS=ON \
 		-Wno-dev
@@ -102,8 +104,5 @@ package() {
 		'qt6-multimedia'
 	)
 	# shellcheck disable=SC2154
-	install -D -t "$pkgdir"/usr/bin build/shadps4
-	cd $_pkgname
-	install -Dm644 -t "$pkgdir"/usr/share/icons/hicolor/512x512/apps .github/shadps4.png
-	install -Dm644 -t "$pkgdir"/usr/share/applications .github/shadps4.desktop
+	DESTDIR="$pkgdir" cmake --install build
 }
