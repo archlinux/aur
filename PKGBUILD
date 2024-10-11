@@ -1,6 +1,6 @@
 # Maintainer: William Belanger <echo d2lsbGlhbS5iZWxyQGdtYWlsLmNvbQ== | base64 -d>
 
-pkgver=r721.66607af
+pkgver=r723.016b4fc
 pkgrel=1
 pkgname=primenote-git
 pkgdesc="Fanciest sticky note-taking application"
