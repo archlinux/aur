@@ -2,7 +2,7 @@
 
 _hgname=gsm-codec-lib
 pkgname="freecalypso-${_hgname}"
-pkgver=r3
+pkgver=r4
 pkgrel=1
 pkgdesc="FreeCalypso GSM codec libraries and utilities"
 arch=('x86_64' 'i686')
@@ -12,7 +12,7 @@ groups=('freecalypso')
 conflicts=("${pkgname}-hg")
 _tarname="${_hgname}-${pkgver}"
 source=("https://www.freecalypso.org/pub/GSM/codecs/${_tarname}.tar.bz2")
-sha256sums=('f5b9e719b4c715c9d9e3bbbf89c12eacdf6030f357d226cef3ec33a6a123a6ea')
+sha256sums=('fd0c24a69ad0abaec1efbaa17bee78c1efe0f7d38718c56b018e307ee7cc1b4c')
 
 build() {
 	cd "${_tarname}"
