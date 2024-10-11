@@ -1,6 +1,6 @@
 # Maintainer: Adrian Perez de Castro <aperez@igalia.com>
 pkgdesc='Understated cursor theme - black, tailless'
-pkgname=xcursor-cz-hickson-black
+pkgname=(xcursor-cz-hickson-{black,white})
 pkgver=20210706
 pkgrel=0
 _commit=02a7977b3d009525c95787c756fce8d824960e4c
@@ -19,11 +19,16 @@ prepare () {
 
 build () {
 	cd "${srcdir}/${_repo}/more-themes/cz-Hickson"
-	ln -sfT pngs-black pngs
-	themetitle="cz-Hickson-black" "${srcdir}/${_repo}/make.sh"
+	ln -sfT pngs-black pngs; themetitle="cz-Hickson-black" "${srcdir}/${_repo}/make.sh"
+	ln -sfT pngs-white pngs; themetitle="cz-Hickson-white" "${srcdir}/${_repo}/make.sh"
+	rm pngs
 }
 
-package () {
-	install -dm755 "${pkgdir}/usr/share/icons"
-	cp -a "${srcdir}/${_repo}/more-themes/cz-Hickson/cz-Hickson-black" "${pkgdir}/usr/share/icons/"
+package_xcursor-cz-hickson-black () {
+	install -dm755 "${pkgdir}/usr/share/icons/"
+	cp -a "${srcdir}/${_repo}/more-themes/cz-Hickson/cz-Hickson-${1:-black}" "${pkgdir}/usr/share/icons/"
+}
+package_xcursor-cz-hickson-white(){
+	pkgdesc='Understated cursor theme - white, tailless'
+	package_xcursor-cz-hickson-black white
 }

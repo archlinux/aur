@@ -13,3 +13,6 @@ pkgbase = xcursor-cz-hickson-black
 	sha512sums = c2b8792e0a9afd639864608dc674acbc1a368d9a83cd46dd3422403961af2b001c3eb004269eb701fcd34f4cfceaca5912a751a6ecd68ad08901ec94e0afb972
 
 pkgname = xcursor-cz-hickson-black
+
+pkgname = xcursor-cz-hickson-white
+	pkgdesc = Understated cursor theme - white, tailless
