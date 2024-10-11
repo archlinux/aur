@@ -1,6 +1,6 @@
 pkgbase = purr-data
 	pkgdesc = Jonathan Wilkes' nw.js variant of Pd-L2Ork (git version)
-	pkgver = 2.19.4.r5212.de36ab35
+	pkgver = 2.19.4.r5314.ae37ff8c
 	pkgrel = 1
 	url = https://agraef.github.io/purr-data/
 	install = purr-data.install
@@ -16,7 +16,6 @@ pkgbase = purr-data
 	depends = desktop-file-utils
 	depends = dssi
 	depends = fftw
-	depends = flite
 	depends = fluidsynth
 	depends = freeglut
 	depends = ftgl
