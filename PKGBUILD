@@ -1,10 +1,10 @@
-# Maintainer: Xavier (sapphirus at azorium dot net)
+# Maintainer: Xavier Moffett (sapphirus at azorium dot net)
 # Contributor: Mikael Eriksson <mikael_eriksson@miffe.org>
 
 _pkgbase=ocp
 pkgname=('ocp' 'ocp-sdl2')
 pkgver=0.2.109
-pkgrel=1
+pkgrel=2
 pkgdesc="Open Cubic Player"
 arch=('i686' 'x86_64')
 url="https://stian.cubic.org/project-ocp.php"
@@ -53,9 +53,8 @@ build() {
 }
 
 package_ocp-sdl2() {
-	provides=(${_pkgbase}=${pkgver}
-		  ${_pkgbase}-sdl2=${pkgver})
-	conflicts=('ocp' 'ocp-sdl2' 'ocp-curses')
+	provides=(${_pkgbase}=${pkgver})
+	conflicts=('ocp' 'ocp-curses')
 	install=${_pkgbase}.install	
 	depends=('alsa-lib'
 		 'bzip2'
@@ -84,8 +83,7 @@ package_ocp-sdl2() {
 }
 
 package_ocp() {
-	provides=(${_pkgbase}=${pkgver}
-		  ${_pkgbase}-curses=${pkgver})
+	provides=(${_pkgbase}=${pkgver})
 	conflicts=('ocp-curses' 'ocp-sdl2')
 	depends=('alsa-lib'
 	         'bzip2'

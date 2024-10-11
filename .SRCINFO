@@ -1,7 +1,7 @@
 pkgbase = ocp
 	pkgdesc = Open Cubic Player
 	pkgver = 0.2.109
-	pkgrel = 1
+	pkgrel = 2
 	url = https://stian.cubic.org/project-ocp.php
 	arch = i686
 	arch = x86_64
@@ -38,7 +38,6 @@ pkgname = ocp
 	depends = libancient
 	depends = libdiscid
 	provides = ocp=0.2.109
-	provides = ocp-curses=0.2.109
 	conflicts = ocp-curses
 	conflicts = ocp-sdl2
 
@@ -59,7 +58,5 @@ pkgname = ocp-sdl2
 	depends = libpng
 	depends = ttf-unifont
 	provides = ocp=0.2.109
-	provides = ocp-sdl2=0.2.109
 	conflicts = ocp
-	conflicts = ocp-sdl2
 	conflicts = ocp-curses
