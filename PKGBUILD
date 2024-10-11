@@ -3,13 +3,15 @@
 _hgname=gsm-codec-lib
 _pkgname=freecalypso-gsm-codec-lib
 pkgname="${_pkgname}-hg"
-pkgver=r488.6724fbb01a09
+pkgver=r556.18aca50d68df
 pkgrel=1
 pkgdesc="FreeCalypso GSM codec libraries and utilities"
 arch=('x86_64' 'i686')
 url="https://www.freecalypso.org/hg/${_hgname}"
 license=('LicenseRef-FreeCalypso')
 groups=('freecalypso')
+provides=("${_pkgname}=${pkgver}")
+conflicts=("${_pkgname}")
 makedepends=('mercurial')
 source=("hg+https://www.freecalypso.org/hg/${_hgname}")
 md5sums=('SKIP')
