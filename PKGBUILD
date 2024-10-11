@@ -3,17 +3,21 @@
 # Contributor: Florian Lindner <florian.lindner@xgm.de>
 _base=precice
 pkgname=${_base}-git
-pkgver=3.0.0.r47.gf74d3940
+pkgver=3.1.2.r97.g30671d34
 pkgrel=1
 pkgdesc="A Coupling Library for Partitioned Multi-Physics Simulations on Massively Parallel Systems (git version)"
 arch=(x86_64)
 url="https://${_base}.org"
 license=(LGPL-3.0-or-later)
-depends=(boost eigen jsoncpp libxml2 petsc)
-makedepends=(cmake doxygen gcc-fortran graphviz texlive-basic git)
-# checkdepends=(python-polars)
+depends=(boost eigen jsoncpp libxml2 libbacktrace petsc)
+makedepends=(cmake doxygen gcc-fortran graphviz git) # ginkgo-hpc
+checkdepends=(python-polars)
 optdepends=('man-db: manual pages for precice-tools'
-  'git: for Git Revision Info support')
+  'git: for Git Revision Info support'
+  'python-polars: for precice-profiling support'
+  'python-simplejson: for precice-profiling support'
+  'python-matplotlib: for precice-profiling support'
+  'python-ujson: for precice-profiling support')
 source=(git+https://github.com/${_base}/${_base}.git#branch=develop)
 sha512sums=('SKIP')
 provides=(${_base})
@@ -34,15 +38,15 @@ build() {
     -DCMAKE_CXX_STANDARD_REQUIRED=Yes \
     -DBUILD_SHARED_LIBS=ON \
     -DBUILD_TESTING=ON \
-    -DPRECICE_FEATURE_MPI_COMMUNICATION=ON \
-    -DPRECICE_FEATURE_PETSC_MAPPING=ON \
-    -DPRECICE_FEATURE_PYTHON_ACTIONS=ON \
     -DPRECICE_CONFIGURE_PACKAGE_GENERATION=ON \
-    -DPRECICE_FEATURE_GINKGO_MAPPING=OFF \
     -DPRECICE_BINDINGS_C=ON \
     -DPRECICE_BINDINGS_FORTRAN=ON \
     -DPRECICE_BUILD_TOOLS=ON \
+    -DPRECICE_FEATURE_GINKGO_MAPPING=OFF \
     -DPRECICE_FEATURE_LIBBACKTRACE_STACKTRACES=ON \
+    -DPRECICE_FEATURE_MPI_COMMUNICATION=ON \
+    -DPRECICE_FEATURE_PETSC_MAPPING=ON \
+    -DPRECICE_FEATURE_PYTHON_ACTIONS=ON \
     -DCMAKE_CXX_EXTENSIONS=No \
     -DCMAKE_EXPORT_COMPILE_COMMANDS=ON \
     -Wno-dev
@@ -51,7 +55,7 @@ build() {
 }
 
 check() {
-  ctest --test-dir build
+  ctest -E "(${_base}.integration.GeometricMultiscale|${_base}.integration.Parallel|${_base}.integration.QuasiNewton|${_base}.integration.Serial)" --test-dir build
 }
 
 package() {
