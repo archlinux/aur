@@ -1,6 +1,6 @@
 pkgbase = riscv-none-elf-gcc-bin
 	pkgdesc = Cross compiler for 32-bit and 64-bit RISC-V (The xPack GNU RISC-V Embedded GCC)
-	pkgver = 13.2.0_2
+	pkgver = 14.2.0_2
 	pkgrel = 1
 	url = https://github.com/xpack-dev-tools/riscv-none-elf-gcc-xpack
 	arch = arm
@@ -15,11 +15,11 @@ pkgbase = riscv-none-elf-gcc-bin
 	provides = riscv-none-elf-newlib
 	options = !emptydirs
 	options = !strip
-	source_arm = https://github.com/xpack-dev-tools/riscv-none-elf-gcc-xpack/releases/download/v13.2.0-2/xpack-riscv-none-elf-gcc-13.2.0-2-linux-arm.tar.gz
-	sha256sums_arm = 29a876dbab0b770e20bcbb81d6de0802a81608e7d049e5f79b18c28b1a83c1d6
-	source_aarch64 = https://github.com/xpack-dev-tools/riscv-none-elf-gcc-xpack/releases/download/v13.2.0-2/xpack-riscv-none-elf-gcc-13.2.0-2-linux-arm64.tar.gz
-	sha256sums_aarch64 = 1c981c611a38dfe5af902089aed570d4dd501eb4ed88d801043e59ab9a62a86a
-	source_x86_64 = https://github.com/xpack-dev-tools/riscv-none-elf-gcc-xpack/releases/download/v13.2.0-2/xpack-riscv-none-elf-gcc-13.2.0-2-linux-x64.tar.gz
-	sha256sums_x86_64 = 52545afb900200fbf65fe05f7ce7090b8a42c64091f4f5d43cae6bb68ea2434a
+	source_arm = https://github.com/xpack-dev-tools/riscv-none-elf-gcc-xpack/releases/download/v14.2.0-2/xpack-riscv-none-elf-gcc-14.2.0-2-linux-arm.tar.gz
+	sha256sums_arm = 16a797c25e3bc1aeb056472b357731cae38378fe52bde75b11abf23eecfd14b9
+	source_aarch64 = https://github.com/xpack-dev-tools/riscv-none-elf-gcc-xpack/releases/download/v14.2.0-2/xpack-riscv-none-elf-gcc-14.2.0-2-linux-arm64.tar.gz
+	sha256sums_aarch64 = e1348fdd679131510f610a9aa42ec4e5d6bceb40115df4b57a44cb7186a7caa7
+	source_x86_64 = https://github.com/xpack-dev-tools/riscv-none-elf-gcc-xpack/releases/download/v14.2.0-2/xpack-riscv-none-elf-gcc-14.2.0-2-linux-x64.tar.gz
+	sha256sums_x86_64 = 0ab93937aab882c3a69f63eff4fe8fc6e360e4a23776004fa116ad692e699d23
 
 pkgname = riscv-none-elf-gcc-bin
