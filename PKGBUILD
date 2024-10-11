@@ -10,7 +10,7 @@ pkgname=fritzing
 # We drop the "b" at the end of the version number. It probably means beta
 # while there is also "d" for development versions. This would not be correctly
 # parsed by `pkgver` anyway (d > b), so let's leave out the b suffix entirely.
-pkgver=1.0.3
+pkgver=1.0.4
 pkgrel=1
 
 # Tag version can be obtained from github release page. Sometimes this is the
@@ -19,8 +19,8 @@ pkgrel=1
 # guess what corresponds to the latest official release.
 #_tagver=0.9.8
 
-# This is probably closest to what has been released as 1.0.1.
-_gitrev=a7811ba0427e664c740b5616b10626f2d45fd8b3
+# This is probably close to what has been released
+_gitrev=a8c6ef7cf66f7a42b9b233d6137f1b70a9573a25
 
 # Parts come from a different respository and are not versioned anymore since
 # 2016. Sometimes we can get the revision by downloading the release build,
@@ -28,7 +28,7 @@ _gitrev=a7811ba0427e664c740b5616b10626f2d45fd8b3
 # release build seems to be hidden behind a paywall. Then we need to guess
 # based on the master branch of the fritzing-parts repository and the date when
 # the release archive was created.
-_partsrev=5fe29ef4d0826d823d71c97a28ce428f8cd129d0
+_partsrev=76235099ed556e52003de63522fdd74e61d53a36
 
 pkgdesc='PCB layout prototyping application'
 arch=('aarch64' 'i686' 'x86_64')
@@ -39,13 +39,13 @@ makedepends=('boost' 'git' 'qt6-tools')
 depends=('libgit2' 'polyclipping' 'qt6-serialport' 'qt6-svg' 'quazip-qt6' 'ngspice')
 source=("git+https://github.com/fritzing/fritzing-app.git#commit=${_gitrev}"
         "git+https://github.com/fritzing/fritzing-parts.git#commit=${_partsrev}"
-        svgpp-1.3.0.tar.gz::https://github.com/svgpp/svgpp/archive/refs/tags/v1.3.0.tar.gz
+        svgpp-1.3.1.tar.gz::https://github.com/svgpp/svgpp/archive/refs/tags/v1.3.1.tar.gz
         0001-Quick-Dirty-patch-to-allow-finding-quazip-qt6-on-Arc.patch
         0002-Quick-Dirty-patch-to-allow-finding-ngspice-on-Arch-L.patch
         0003-Quick-Dirty-patch-to-allow-finding-Clipper1-on-Arch-.patch)
 sha256sums=('SKIP'
             'SKIP'
-            'cb14e9de41994e3451aaee61d8284848bfccc7f9a5bf1873a76f199ff0c20b74'
+            'be8a89df72d01cf062cc9815dd64c9576b4d20910d6d7aee7f0ea26484dc5e76'
             'a16a8831d97459646e3042e94cd1157ce2315eb9d6e74278260592d97dc1affe'
             '845111a3e46e78b5410c2129f00b219fdcab8b5df27906541b8225fc7374e2b7'
             '852d32cce399cd00896455701c51b7f4373e5a26ec664d7e3c299714f8038e6c')
