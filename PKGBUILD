@@ -1,4 +1,4 @@
-# Maintainer: Your Name <your.email@example.com>
+# Maintainer: Richard Holt <meowxiik@gmail.com>
 pkgname=boring
 pkgver=0.4.1
 pkgrel=1
@@ -22,6 +22,3 @@ package() {
   cd "$srcdir/$pkgname"
   install -Dm755 "./bin/boring" "$pkgdir/usr/bin/boring"
 }
-
-# No checksums are used, as requested
-
