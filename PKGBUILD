@@ -9,28 +9,25 @@ arch=('i686' 'x86_64')
 url="https://github.com/temisu/ancient/"
 license=('BSD-2-Clause')
 provides=(${_pkgbase}=${pkgver})
-
-#depends=('')
-
-makedepends=('git'
-	     'autoconf-archive')
-
+makedepends=('git' 'autoconf-archive')
 source=(${_pkgbase}::git+https://github.com/temisu/ancient.git#tag=v${pkgver})
 md5sums=('SKIP')
 
 prepare() {
-	cd $_pkgbase
-	./autogen.sh
-	./configure --prefix=/usr LIBANCIENT_CXXFLAGS="-DANCIENT_API_VISIBILITY_DEFAULT -std=c++17" 
+        cd $_pkgbase
+        ./autogen.sh
+        ./configure --prefix=/usr LIBANCIENT_CXXFLAGS="-DANCIENT_API_VISIBILITY_DEFAULT -std=c++17"
 }
 
 
 build() {
-  	cd $_pkgbase	
-	make DESTDIR="$pkgdir"
+        cd $_pkgbase
+        make DESTDIR="$pkgdir"
 }
 
 package() {
-	cd $_pkgbase
-	make DESTDIR="$pkgdir" install
+        cd $_pkgbase
+        make DESTDIR="$pkgdir" install
 }
+
+# vim:set ts=4 sw=4 et:1
