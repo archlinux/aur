@@ -2,12 +2,13 @@
 pkgname='evilwm-gm-git'
 _pkgname=evilwm
 pkgdesc='Personal fork of a "Minimalist but usable window manager for the X Window System"'
-pkgver=1.4.3.517.g7958ac6
+pkgver=1.4.3.602.g2b40507
 pkgrel=1
 arch=('x86_64' 'i686')
 url="https://github.com/gigamicro/evilwm"
 license=(custom)
 depends=(libxrandr)
+makedepends=(git)
 provides=(evilwm)
 source=("$_pkgname::git+https://github.com/gigamicro/evilwm.git")
 sha256sums=(SKIP)

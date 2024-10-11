@@ -1,11 +1,12 @@
 pkgbase = evilwm-gm-git
 	pkgdesc = Personal fork of a "Minimalist but usable window manager for the X Window System"
-	pkgver = 1.4.3.517.g7958ac6
+	pkgver = 1.4.3.602.g2b40507
 	pkgrel = 1
 	url = https://github.com/gigamicro/evilwm
 	arch = x86_64
 	arch = i686
 	license = custom
+	makedepends = git
 	depends = libxrandr
 	provides = evilwm
 	source = evilwm::git+https://github.com/gigamicro/evilwm.git
