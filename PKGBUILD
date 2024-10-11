@@ -19,8 +19,9 @@ prepare () {
 
 build () {
 	cd "${srcdir}/${_repo}/more-themes/cz-Hickson"
-	ln -sfT pngs-black pngs; themetitle="cz-Hickson-black" "${srcdir}/${_repo}/make.sh"
-	ln -sfT pngs-white pngs; themetitle="cz-Hickson-white" "${srcdir}/${_repo}/make.sh"
+	for pngs in pngs-*; do
+		ln -sfT "${pngs}" pngs; themetitle="cz-Hickson-${pngs#pngs-}" "${srcdir}/${_repo}/make.sh"
+	done
 	rm pngs
 }
 
