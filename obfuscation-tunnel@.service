@@ -1,0 +1,17 @@
+# /usr/lib/systemd/system/obfuscation-tunnel@.service
+[Unit]
+Description=Obfuscation-Tunnel service
+After=network.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+DynamicUser=yes
+PrivateTmp=yes
+NoNewPrivileges=yes
+#AmbientCapabilities=CAP_NET_BIND_SERVICE CAP_NET_ADMIN
+ExecStart=/usr/lib/obfuscation-tunnel-git/obfuscation-tunnel-starter /etc/obfuscation-tunnel/%i.conf
+
+[Install]
+WantedBy=multi-user.target
+

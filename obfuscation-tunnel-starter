@@ -1,0 +1,65 @@
+#!/bin/bash
+
+if [[ $# -ne 1 ]]; then
+  echo "usage $0 CONFIG.conf"
+  echo "  see /etc/obfuscation-tunnel/example.conf.example"
+  exit 1
+fi
+
+if [[ -e ${1} ]]; then
+  LOCAL=''
+  REMOTE=''
+  DISABLE_THREADING=''
+  VERBOSE=''
+  OBFUSCATION=''
+  SOCKS=''
+  MOCK=''
+  DISABLE_THREADING=''
+  VERBOSE=''
+  FAKE_TCP_ENCODING=''
+  USE_PCAP=''
+  FRAGMENT_DNS_ON_60BYTE=''
+  AUTHORITATIVE_DOMAIN=''
+  TLS_NO_VERIFY=''
+  TLS_CA_BUNDLE=''
+  TLS_CERT=''
+  TLS_KEY=''
+  while read line; do
+    k="${line%=*}"
+    v="${line#*=}"
+    case "${k,,}" in
+      local|l) LOCAL="-l ${v}" ;;
+      remote|r) REMOTE="-r ${v}" ;;
+      obfuscation|o) [[ ${v} != '0' ]] && OBFUSCATION="-o ${v}" ;;
+      key|k) KEY="-k ${v}" ;;
+      mock|m)
+        if [[ ${v,,} == "socks5:*" ]]; then
+          SOCKS="-m ${v}"
+        else
+          MOCK="-m ${v}"
+        fi
+        ;;
+      socks|socks5) SOCKS="-m ${v}" ;;
+      nothread|s) [[ ${v} != '0' ]] && DISABLE_THREADING='-s' ;;
+      verbose|v) [[ ${v} != '0' ]] && VERBOSE='-v' ;;
+
+      #TCP options
+      encoding|e) FAKE_TCP_ENCODING="-e ${v}" ;;
+
+      #ICMP options (-x not supported)
+      pcap|use_pcap|p) USE_PCAP="-p ${v}" ;;
+
+      #DNS options
+      fragment|f) [[ ${v} != '0' ]] && FRAGMENT_DNS_ON_60BYTE='-f' ;;
+      domain|d) AUTHORITATIVE_DOMAIN="-d ${v}" ;;
+
+      #TLS options
+      tls-no-verify) [[ ${v} != '0' ]] && TLS_NO_VERIFY='--tls-no-verify' ;;
+      tls-ca-bundle) TLS_CA_BUNDLE="--tls-ca-bundle ${v}" ;;
+      tls-cert) TLS_CERT="--tls-cert ${v}" ;;
+      tls-key) TLS_KEY="--tls-key ${v}" ;;
+    esac
+  done < grep '=' ${1}
+
+  /usr/bin/obfuscation-tunnel ${LOCAL} ${REMOTE} ${DISABLE_THREADING} ${VERBOSE} ${OBFUSCATION} ${MOCK} ${SOCKS} ${FAKE_TCP_ENCODING} ${USE_PCAP} ${FRAGMENT_DNS_ON_60BYTE} ${AUTHORITATIVE_DOMAIN} ${TLS_NO_VERIFY} ${TLS_CA_BUNDLE} ${TLS_CERT} ${TLS_KEY}
+fi
