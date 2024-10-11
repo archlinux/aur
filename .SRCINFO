@@ -1,0 +1,18 @@
+pkgbase = qt5-advanced-docking-system
+	pkgdesc = Qt advanced docking widgets
+	pkgver = 4.3.1
+	pkgrel = 1
+	url = https://github.com/githubuser0xFFFF/Qt-Advanced-Docking-System/
+	arch = x86_64
+	license = LGPL-2.1-only
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = gcc
+	depends = qt5-base
+	depends = glibc
+	depends = gcc-libs
+	depends = libxcb
+	source = qt5-advanced-docking-system-4.3.1.tar.gz::https://github.com/githubuser0xFFFF/Qt-Advanced-Docking-System/archive/refs/tags/4.3.1.tar.gz
+	sha512sums = ee78b1c7f6164b06ce9c193aa5dfa19281a1c894cd8a8cbcae6d137abc13417f32e0f2a05f9d91557e14ced91b3b541991065d0ee190ea5ad2623c3848674eaf
+
+pkgname = qt5-advanced-docking-system
