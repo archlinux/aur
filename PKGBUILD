@@ -3,8 +3,8 @@
 
 pkgname=pvs-studio
 pkgver=7.33.85330.89
-pkgrel=1
-pkgdesc='Static code analyzer for C, C++ and C#'
+pkgrel=2
+pkgdesc='Static code analyzer for C and C++'
 arch=('pentium4' 'x86_64')
 url=http://www.$pkgname.com/en/$pkgname
 license=('unknown')

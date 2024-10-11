@@ -1,7 +1,7 @@
 pkgbase = pvs-studio
-	pkgdesc = Static code analyzer for C, C++ and C#
+	pkgdesc = Static code analyzer for C and C++
 	pkgver = 7.33.85330.89
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.pvs-studio.com/en/pvs-studio
 	install = pvs-studio.install
 	arch = pentium4
