@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=ALCOM
+Icon=ALCOM
+Exec=/usr/bin/ALCOM link %u
+NoDisplay=true
+Terminal=false
+MimeType=x-scheme-handler/vcc
+Categories=Utility;
