@@ -16,7 +16,10 @@ optdepends=(
   'xdg-utils: Open links, files, etc'
 )
 provides=(legcord)
-conflicts=(legcord)
+conflicts=(
+	'armcord'
+	'legcord'
+)
 replaces=(armcord)
 install="notes.install"
 

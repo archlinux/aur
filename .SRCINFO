@@ -14,6 +14,7 @@ pkgbase = legcord-git
 	optdepends = libnotify: Notifications
 	optdepends = xdg-utils: Open links, files, etc
 	provides = legcord
+	conflicts = armcord
 	conflicts = legcord
 	replaces = armcord
 	source = legcord-git::git+https://github.com/LegCord/LegCord.git
