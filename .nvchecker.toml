@@ -1,0 +1,5 @@
+[python-colour-science]
+source = "github"
+github = "colour-science/colour"
+use_max_tag = "true"
+prefix = "v"

@@ -1,6 +1,6 @@
 pkgbase = python-colour-science
 	pkgdesc = Colour Science for Python
-	pkgver = 0.4.5
+	pkgver = 0.4.6
 	pkgrel = 1
 	url = https://colour-science.org
 	arch = any
@@ -21,7 +21,7 @@ pkgbase = python-colour-science
 	optdepends = python-pandas: for use dataframes
 	optdepends = python-pydot: for plot automatic colour conversion graph using Graphviz
 	optdepends = python-tqdm: for compute hull section
-	source = colour-0.4.5.tar.gz::https://github.com/colour-science/colour/archive/v0.4.5.tar.gz
-	sha512sums = 5e4198d2f2412e7766daecfd75913a0c1e21efcab8a7977507322a79e2adef442be0e683e42d55820becbae409df3795b3864bee2254978807166497215f3c0c
+	source = colour-0.4.6.tar.gz::https://github.com/colour-science/colour/archive/v0.4.6.tar.gz
+	sha512sums = 074262ba14ce66e833d3780e2ddf74e77ea915609f8a92bb94916f9b03d9b3a6a7e058d86f50e84542883bb7beca5c57e3fe75dc5f7f5f576411a270390f4935
 
 pkgname = python-colour-science
