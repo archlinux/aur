@@ -35,10 +35,10 @@ fi
 ###################################################################################
 
 pkgbase=linux-rc
-pkgver=6.11rc3
-_pkgver=6.11-rc3
+pkgver=6.12rc2
+_pkgver=6.12-rc2
 pkgrel=1
-commit=335b711f590650ef037442bf876f3551e5af0669
+commit=01de38aa212df7075dc8f4af3f0fa79e1fec2f7b
 arch=(x86_64)
 url='https://www.kernel.org/'
 license=(GPL-2.0-only)
@@ -50,6 +50,9 @@ makedepends=(
   pahole
   perl
   python
+  rust
+  rust-bindgen
+  rust-src
   tar
   xz
   kmod
@@ -264,6 +267,7 @@ _package-headers(){
   install -Dt "$builddir/kernel" -m644 kernel/Makefile
   install -Dt "$builddir/arch/x86" -m644 arch/x86/Makefile
   cp -t "$builddir" -a scripts
+  ln -srt "$builddir" "$builddir/scripts/gdb/vmlinux-gdb.py"
 
   # required when STACK_VALIDATION is enabled
   install -Dt "$builddir/tools/objtool" tools/objtool/objtool
@@ -335,9 +339,9 @@ _package-headers(){
   ln -sr "$builddir" "$pkgdir/usr/src/$pkgbase"
 }
 
-sha256sums=('0b5b2461dc372b972e780b8da4c7ec471166e2f556420898dfce75c1e2a2637d'
-            '09bc22332affedcdf96cfa7b4ff3dcf1d087d1bde818b9929f5ad1102bc4f775'
-            'd2d673e130d2a8006aeca9892238db432fe6de628327e6999b3567c0e40a01ae')
+sha256sums=('36efbb865ead39771f63ecad7a26adf3dc7de93e27932e59dda81a0bda556b91'
+            '6c4d63503c77465232fe4ed42671261b476bb0bfd1223b1a3da4afcc1cd615fb'
+            '0cfc1a7b378ae17d932645d00333b9198b7bf24bf8e029ce738f23c71ed8b899')
 
 pkgname=($pkgbase $pkgbase-headers)
 for _p in "${pkgname[@]}"; do
