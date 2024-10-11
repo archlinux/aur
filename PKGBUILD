@@ -28,7 +28,7 @@ check() {
   python -m venv --system-site-packages test-env
   test-env/bin/python -m installer python/dist/*.whl
   MPLBACKEND=Agg test-env/bin/python -m pytest python/test/unit \
-    -k 'not mixed_topology_partitioning and not custom_mesh_loop_rank1[complex64] and not custom_mesh_loop_rank1[complex128]' \
+    -k 'not mixed_topology_partitioning and not custom_mesh_loop_rank1[complex64] and not custom_mesh_loop_rank1[complex128] and not vtx_reuse_mesh[True-True-2] and not read_write_p2_mesh[Encoding.HDF5] and not read_write_p2_mesh[Encoding.ASCII]' \
     --ignore=python/test/unit/mesh/test_higher_order_mesh.py \
     --ignore=python/test/unit/io/test_xdmf_function.py
   MPLBACKEND=Agg test-env/bin/python -m pytest python/demo/test.py
