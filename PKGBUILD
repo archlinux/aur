@@ -63,4 +63,6 @@ build() {
 package() {
     cd "${_pkgname}"
     make DESTDIR="${pkgdir}" install
+
+    rmdir "$pkgdir/usr/lib/ofono/plugins" || true
 }
