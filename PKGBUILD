@@ -5,14 +5,15 @@ pkgname=todesk-bin
 _pkgname=${pkgname%-bin}
 _binaryname=ToDesk
 pkgver=4.7.2.0
-pkgrel=5
+pkgrel=6
 pkgdesc="Remote control and team work"
 arch=('x86_64' 'aarch64')
 url="https://www.todesk.com/"
 license=('custom')
 depends=('gtk3'
-         'libappindicator-gtk3')
-makedepends=('tar')
+         'libappindicator-gtk3'
+         'noto-fonts-cjk')
+makedepends=('wget' 'tar')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 # !strip: strip could generate error.
