@@ -1,0 +1,19 @@
+pkgbase = hlam
+	pkgdesc = Half-Life Asset Manager
+	pkgver = 3.0.0
+	pkgrel = 1
+	url = https://github.com/SamVanheer/HalfLifeAssetManager
+	arch = x86_64
+	license = custom:HLAM
+	depends = glibc
+	depends = gcc-libs
+	depends = openal
+	depends = qt5-base
+	depends = qt5-x11extras
+	depends = qt5-tools
+	source = https://github.com/SamVanheer/HalfLifeAssetManager/releases/download/HLAM-V3.0.0/halflifeassetmanager_3.0.0_amd64.deb
+	source = hlam.desktop
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = hlam
