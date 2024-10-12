@@ -4,11 +4,11 @@
 pkgname=waveterm
 _pkgname=Wave
 _appname="${_pkgname} Terminal"
-pkgver=0.8.10
+pkgver=0.8.11
 _electronversion=32
 _nodeversion=22
 pkgrel=1
-pkgdesc="An open-source, cross-platform terminal for seamless workflows"
+pkgdesc="An open-source, cross-platform terminal for seamless workflows.Use system-wide electron."
 arch=(
     'aarch64'
     'x86_64'
@@ -38,7 +38,7 @@ source=(
     "${pkgname}-${pkgver}.tar.gz::${_ghurl}/archive/refs/tags/v${pkgver}.tar.gz"
     "${pkgname}.sh"
 )
-sha256sums=('36dfd3d289f599c29f404bee3911ff2dafc700e01bbed7727ad135332a5adc33'
+sha256sums=('004d0e4e7a2bef83971ffbd54f7feb762e3968f7d34175e3ebc858faa1c493cd'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
@@ -68,10 +68,14 @@ build() {
     mkdir -p "${srcdir}/.electron-gyp"
     touch "${srcdir}/.electron-gyp/.yarnrc.yml"
     if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
+        {
+            echo 'npmRegistryServer: "https://registry.npmmirror.com"'
+            echo "cacheFolder: "${srcdir}"/.yarn/cache"
+            echo "globalFolder: "${srcdir}"/.yarn/global"
+        } >> .yarnrc.yml
         export npm_config_disturl=https://registry.npmmirror.com/-/binary/node/
         export npm_config_electron_mirror=https://registry.npmmirror.com/-/binary/electron/
         export npm_config_electron_builder_binaries_mirror=https://registry.npmmirror.com/-/binary/electron-builder-binaries/
-        echo 'npmRegistryServer: "https://registry.npmmirror.com"' >> "${srcdir}/.electron-gyp/.yarnrc.yml"
         go env -w GOPROXY=https://goproxy.cn,direct
         gem sources --add https://mirrors.aliyun.com/rubygems/ --remove https://rubygems.org/
         bundle config mirror.https://rubygems.org https://mirrors.aliyun.com/rubygems
