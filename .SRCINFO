@@ -1,6 +1,6 @@
 pkgbase = bio-tbtools
 	pkgdesc = GUI/CommandLine Tool Box for biologistists to utilize NGS data. \ https://doi.org/10.1016/j.molp.2023.09.010
-	pkgver = 2.126
+	pkgver = 2.127
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/CJ-Chen/TBtools-II
@@ -18,7 +18,7 @@ pkgbase = bio-tbtools
 	optdepends = trimal: large scale align support
 	optdepends = iqtree: maximum likelihood phylogenomic tree support
 	optdepends = kaks_calculator: kaks calculate support
-	source = https://github.com/CJ-Chen/TBtools-II/releases/download/2.126/TBtools_JRE1.6.jar
-	sha256sums = d40d92c82dbe176b91342a0cf06b9cc4c8a989f7d9a86533edb0cd53a2e6d505
+	source = https://github.com/CJ-Chen/TBtools-II/releases/download/2.127/TBtools_JRE1.6.jar
+	sha256sums = 579765b79ade8b8f40eb2c8dfddba4eca3c1c59c0b21a5bf460fe1e8fb2b6c5e
 
 pkgname = bio-tbtools
