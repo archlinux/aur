@@ -6,7 +6,6 @@ pkgbase = carch
 	arch = x86_64
 	license = MIT
 	depends = bash
-	depends = libnewt
 	source = https://github.com/harilvfs/carch/releases/download/v3.0.2/carch
 	source = https://raw.githubusercontent.com/harilvfs/carch/refs/heads/main/carch.desktop
 	sha256sums = SKIP
