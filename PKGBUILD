@@ -8,7 +8,7 @@ _pkgname="hidapi-testgui"
 pkgname="${_pkgname}-git"
 pkgver=0.14.0+40.r665.20241003.750bf20
 _pkgmajorver="$(awk -F. '{print $1}' <<<"${pkgver}")"
-pkgrel=1
+pkgrel=2
 epoch=0
 pkgdesc="'hidapi-hidraw-testgui' and 'hidapi-libusb-testgui' for hidapi."
 arch=(
@@ -17,7 +17,6 @@ arch=(
   "aarch64"
   "armv6h"
   "armv7h"
-  # "any"
 )
 url='https://github.com/libusb/hidapi'
 license=(
@@ -40,8 +39,6 @@ makedepends=(
   'libusb'
   'libtool' # for 'libtoolize'
   'libudev.so'
-  "libhidapi-hidraw.so=${_pkgmajorver}"
-  "libhidapi-libusb.so=${_pkgmajorver}"
 )
 optdepends=(
   'libusb: for the libusb backend -- hidapi-libusb.so'
