@@ -7,7 +7,7 @@
 # Contributor: Juergen Hoetzel <juergen@archlinux.org>
 
 pkgname=swi-prolog-git
-pkgver=9.2.7.r34.ge973d414a
+pkgver=9.3.13.r0.gd829bc57e
 pkgrel=1
 pkgdesc='Prolog environment (latest git stable version)'
 arch=(x86_64 i686)
@@ -22,8 +22,9 @@ optdepends=('unixodbc: for using the odbc4pl library'
             'libxft: for using the pl2xpce library'
             'java-environment: for interfacing java with the jpl package')
 options=(!makeflags !lto)
+_pkgname=swipl-devel # Can be swipl or swipl-devel
 source=(
-    'git+https://github.com/SWI-Prolog/swipl-devel.git'
+    "git+https://github.com/SWI-Prolog/$_pkgname.git"
     'modules/packages-chr::git+https://github.com/SWI-Prolog/packages-chr.git'
     'modules/packages-jpl::git+https://github.com/SWI-Prolog/packages-jpl.git'
     'modules/packages-clpqr::git+https://github.com/SWI-Prolog/packages-clpqr.git'
@@ -75,17 +76,20 @@ conflicts=('swi-prolog')
 provides=('swi-prolog')
 
 pkgver() {
-    git -C "$srcdir/swipl" describe --long | sed -r 's/^V//;s/([^-]*-g)/r\1/;s/-/./g'
+    git -C "$srcdir/$_pkgname" describe --long | sed -r 's/^V//;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
 prepare() {
-    git -C "$srcdir/swipl" -c protocol.file.allow=always submodule update --init
+    cd "$srcdir/$_pkgname"
+    sed -i -e "/url/ s/.git//; s^= \.\.^= $srcdir^" .gitmodules
+    git -c protocol.file.allow=always submodule update --init
+    patch -p1 <"$srcdir/../0001-Add-hamcrest-generator-to-classpath.patch"
 }
 
 build() {
     mkdir -p build
     cd build
-    cmake -G Ninja -DCMAKE_INSTALL_PREFIX=/usr ../swipl
+    cmake -G Ninja -DCMAKE_INSTALL_PREFIX=/usr ../$_pkgname
     ninja
 }
 
