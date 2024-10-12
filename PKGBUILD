@@ -13,8 +13,8 @@ pkgname=(
   ${_pkgbase}-double-pinyin-ziguang-git
 )
 
-pkgver=r631.ea74e40
-pkgrel=2
+pkgver=r633.87a7de4
+pkgrel=1
 pkgdesc="Rime 配置：雾凇拼音 | 长期维护的简体词库"
 arch=("any")
 url="https://github.com/iDvel/rime-ice"
@@ -195,7 +195,6 @@ _patch_double_pinyin() {
   )
 
   # patch radical_pinyin
-  set -ex
   for _f in "${_schemas_to_patch[@]}"; do
     _patch_f="${_install_base}/${_f}.schema.yaml"
     if [ -f "${_patch_f}" ]; then
