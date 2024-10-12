@@ -1,7 +1,7 @@
 # Maintainer: Diablo (https://github.com/progzone122) (https://t.me/DiabloSat)
 pkgname=facad
 pkgver=latest
-pkgrel=1
+pkgrel=2
 pkgdesc="A modern, colorful ls alternative for bringing clarity to the filesystem ☀️"
 arch=('any')
 url="https://github.com/yellow-footed-honeyguide/facad"
@@ -14,13 +14,20 @@ depends=(
     'sudo' 
     'unzip'
     'jq'
-    'sed'
     'curl'
     'wget'
 )
 
 prepare() {
     url=$(curl -s https://api.github.com/repos/yellow-footed-honeyguide/facad/releases/latest | jq -r '.zipball_url')
+
+    if [ -z "$url" ]; then
+        echo "Could not get link to latest release"
+        exit 1
+    fi
+
+    echo "The latest version will be downloaded from: $url"
+
     filename=$(basename "$url")
 
     wget -O "$srcdir/$filename" "$url" || { echo "Failed to download $url"; exit 1; }
