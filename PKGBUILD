@@ -19,10 +19,7 @@ package() {
 
     # we let them put it in their preferred location and just symlink it
     cp -R "$srcdir/opt" "$pkgdir"
-#     cp -R "$srcdir/usr" "$pkgdir"
 
-    #ln -s "/opt/brother/Printers/$_model/lpd/$CARCH/brprintconflsr3" "$pkgdir/opt/brother/Printers/$_model/lpd/"
-    #ln -s "/opt/brother/Printers/$_model/lpd/$CARCH/rawtobr3" "$pkgdir/opt/brother/Printers/$_model/lpd/"
     ln -s "/opt/brother/Printers/$_model/lpd/$CARCH/br${_model}filter" "$pkgdir/opt/brother/Printers/$_model/lpd/"
 
     # symlink for lpdwrapper so it correctly figures out the printer model from the path
