@@ -21,7 +21,7 @@ else
 fi
 
 pkgname=${_pkgname}-dkms-staging-git
-pkgver=2.3.0.rc1.g3a9fca901b
+pkgver=2.3.0pre.rc1.g3a9fca901b
 pkgrel=1
 pkgdesc="Kernel modules for the Zettabyte File System (release staging branch)."
 arch=('any')
@@ -73,7 +73,7 @@ pkgver() {
     else
         METAREL=$(grep -F Release: "${srcdir}/${_pkgname}/META" | tr -d '[:space:]')
         METAREL=${METAREL##*:}
-        printf "%s.%s.g%s" "${METAVER}" "${METAREL}" "$(git rev-parse --short HEAD)"
+        printf "%spre.%s.g%s" "${METAVER}" "${METAREL}" "$(git rev-parse --short HEAD)"
     fi
 }
 
@@ -93,7 +93,7 @@ build() {
 }
 
 package() {
-    depends=("zfs-utils>=${pkgver%%.r*}" "zfs-utils<=${_staging_ver}" 'dkms')
+    depends=("zfs-utils>=${pkgver%.*.*}" "zfs-utils<=${_staging_ver}" 'dkms')
 
     cd "${srcdir}/${_pkgname}"
 
