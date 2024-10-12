@@ -2,12 +2,16 @@
 pkgname=dbgate-git
 _pkgname=DbGate
 _debname="org.${pkgname%-git}.${_pkgname}"
-pkgver=5.5.1.r5.ge3249c6
+pkgver=5.5.5.r0.g06753ff
 _electronversion=30
 _nodeversion=18
 pkgrel=1
-pkgdesc="	Database manager for MySQL, PostgreSQL, SQL Server, MongoDB, SQLite and others. Runs under Windows, Linux, Mac or as web application"
-arch=('any')
+pkgdesc="Database manager for MySQL, PostgreSQL, SQL Server, MongoDB, SQLite and others.Use system-wide electron."
+arch=(
+    'aarch64'
+    'armv7h'
+    'x86_64'
+)
 url="https://dbgate.org/"
 _ghurl="https://github.com/dbgate/dbgate"
 license=("GPL-3.0-only")
@@ -57,15 +61,17 @@ build() {
     cd "${srcdir}/${pkgname//-/.}"
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
+    electronDist="/usr/lib/electron${_electronversion}"
     HOME="${srcdir}/.electron-gyp"
     mkdir -p "${srcdir}/.electron-gyp"
-    {
-        if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
+    if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
+        {
             echo -e '\n'
             echo 'registry "https://registry.npmmirror.com"'
             echo 'disturl "https://registry.npmmirror.com/-/binary/node/"'
             echo 'electron_mirror "https://registry.npmmirror.com/-/binary/electron/"'
             echo 'electron_builder_binaries_mirror "https://registry.npmmirror.com/-/binary/electron-builder-binaries/"'
+            echo 'sqlite3_binary_site "https://registry.npmmirror.com/-/sqlite3/"'
             echo "cacheFolder "${srcdir}"/.yarn/cache"
             echo "pluginsFolder "${srcdir}"/.yarn/plugins"
             echo "globalFolder "${srcdir}"/.yarn/global"
@@ -74,16 +80,16 @@ build() {
             echo 'linkWorkspacePackages true'
             echo 'fetchRetries 3'
             echo 'fetchRetryTimeout 10000'
-        fi
-    } >> .yarnrc
+        } >> .yarnrc
+        sed -i "s/registry.yarnpkg.com/registry.npmmirror.com/g" yarn.lock app/yarn.lock
+        echo "${srcdir}/${pkgname//-/.}/packages/web" "${srcdir}/${pkgname//-/.}/app" | xargs -n 1 cp .yarnrc
+        cat .yarnrc >> "${srcdir}/${pkgname//-/.}/packages/api/.yarnrc"
+    fi
     NODE_ENV=development    yarn run adjustPackageJson
-    NODE_ENV=development    yarn install --cache-folder "${srcdir}/.yarn_cache" --no-lockfile
-    NODE_ENV=production     yarn setCurrentVersion
-    NODE_ENV=production     yarn printSecrets
+    NODE_ENV=development    yarn install --cache-folder "${srcdir}/.yarn_cache"
     NODE_ENV=production     yarn fillNativeModulesElectron
-    NODE_ENV=production     yarn run plugins:copydist
+    NODE_ENV=production     yarn fillPackagedPlugins
     cd "${srcdir}/${pkgname//-/.}/app"
-    cp ../.yarnrc ./
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g;47,56d;s/tar.gz/dir/g" package.json
     NODE_ENV=development    yarn install --cache-folder "${srcdir}/.yarn_cache" --no-lockfile
     NODE_ENV=production     yarn run build
