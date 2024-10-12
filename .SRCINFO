@@ -8,6 +8,7 @@ pkgbase = carch
 	depends = bash
 	depends = whiptail
 	source = https://github.com/harilvfs/carch/releases/latest/download/carch
+	source = https://raw.githubusercontent.com/harilvfs/carch/refs/heads/main/carch.desktop
 	sha256sums = SKIP
 
 pkgname = carch
