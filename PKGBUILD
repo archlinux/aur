@@ -272,7 +272,7 @@ else # remove llvm-mingw paths from externally set PATH
   fi
 
   if [ "${_use_mingw}" = "msvc" ]; then
-    makedepends+=(clang llvm-libs)
+    makedepends+=(clang llvm-libs llvm lld)
 
     _cross64="/usr/bin/clang"
     _crossxx64="/usr/bin/clang++"
