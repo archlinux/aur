@@ -10,7 +10,7 @@ url="https://${_pkgname}.sourceforge.net"
 license=('GPL-2.0-or-later')
 makedepends=('patchelf')
 depends=('dbus-glib' 'flac' 'gdk-pixbuf2' 'glib2' 'glibc' 'gsl' 'gtk2'
-         'libaudclient' 'mpg321' 'pango')
+         'libaudclient' 'mpg123' 'pango')
 optdepends=('audacious: small and fast audio player which supports lots of formats'
             'libmpdclient: Music Player Daemon'
             'vorbis-tools: support .ogg files')
