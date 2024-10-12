@@ -6,7 +6,7 @@ pkgname='modem-manager-gui-hg'
 _pkgname="${pkgname%-hg}"
 pkgver=r85+.3f6d6c4ee74c+
 arch=('x86_64')
-pkgrel=2
+pkgrel=3
 license=('GPL-3.0-or-later')
 
 conflicts=(modem-manager-gui)
