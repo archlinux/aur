@@ -1,7 +1,7 @@
 # Maintainer: tarball <bootctl@gmail.com>
 
 pkgname=letmein
-pkgver=5.1.0
+pkgver=6.0.0
 pkgrel=1
 pkgdesc='Authenticating port knocker'
 arch=(i686 x86_64 armv7h aarch64)
@@ -12,7 +12,7 @@ depends=(glibc gcc-libs nftables)
 install=$pkgname.install
 backup=(etc/letmein.conf etc/letmeind.conf)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgname-$pkgver.tar.gz")
-sha256sums=('6af934acfb728c55d15e90e10ac95c440c7a5bdb4a1313c7c954b61c209194d9')
+sha256sums=('8fa7b84fe0235d960bcdd18f56e911b4af6e2f3ff25222c3b81af4db8c02767b')
 
 build() {
   export RUSTUP_TOOLCHAIN=stable
