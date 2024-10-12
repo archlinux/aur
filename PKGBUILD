@@ -1,26 +1,23 @@
-# Maintainer: morning_star <livef3@aol.com>
+# Contributor: morning_star <livef3@aol.com>
 
 pkgname=kbtin
-pkgver=1.0.14
-pkgrel=2
-pkgdesc="KBtin is a very heavily extended clone of well-known TinTin++."
-arch=('i686' 'x86_64')
-url="http://kbtin.sourceforge.net/"
-license=('GPL2')
-depends=('zlib' 'pcre')
-options=('strip')
-source=(http://downloads.sourceforge.net/$pkgname/$pkgname-$pkgver.tar.xz)
-md5sums=('407ae55dea60bd43fb17879ed7d8e4ce')
+pkgver=2.1
+pkgrel=1
+pkgdesc="Very heavily extended clone of well-known TinTin++"
+arch=('x86_64')
+url="https://github.com/kilobyte/kbtin"
+license=('GPL-2.0-or-later')
+depends=('zlib' 'gnutls' 'hyperscan')
+makedepends=('cmake' 'perl' 'valgrind')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
+sha512sums=('94b3b07381b6b8f37b14266d37f574a9b2381fcbe8bc2ae0a15cec6e25c435d973012486230fe036acb4b42bc2e231a730b8fc9153d7834e9acbaf0a264168ff')
 
 build() {
-  cd $srcdir/$pkgname-$pkgver
-  sh configure --prefix=/usr
-  make
-
+  cmake -B build -S $pkgname-$pkgver \
+    -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=None
+  cmake --build build
 }
 
 package() {
-  cd $srcdir/$pkgname-$pkgver
-  make DESTDIR="$pkgdir/" install
+  DESTDIR="$pkgdir" cmake --install build
 }
-
