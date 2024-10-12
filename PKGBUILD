@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=electerm-git
-pkgver=1.40.16.r0.g368c0d9
+pkgver=1.40.18.r0.gb48b41f
 _electronversion=26
 _nodeversion=20
 pkgrel=1
@@ -59,10 +59,12 @@ build() {
     cd "${srcdir}/${pkgname//-/.}"
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
+    electronDist="/usr/lib/electron${_electronversion}"
+    export PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=1
     HOME="${srcdir}/.electron-gyp"
     mkdir -p "${srcdir}/.electron-gyp"
-    {
-        if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
+    if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
+        {
             echo -e '\n'
             echo 'registry "https://registry.npmmirror.com"'
             echo 'disturl "https://registry.npmmirror.com/-/binary/node/"'
@@ -76,14 +78,13 @@ build() {
             echo 'linkWorkspacePackages true'
             echo 'fetchRetries 3'
             echo 'fetchRetryTimeout 10000'
-        fi
-    } >> .yarnrc
-    export PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=1
+        } >> .yarnrc
+    fi
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/" package.json
     NODE_ENV=development    yarn install --cache-folder "${srcdir}/.yarn_cache"
     NODE_ENV=production     yarn run prepare-build
     NODE_ENV=production     yarn node build/bin/build-common
-    NODE_ENV=production     yarn electron-builder -l --dir
+    NODE_ENV=production     yarn electron-builder --linux dir -c.electronDist="${electronDist}" -c.electronVersion="${electronVer}"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
