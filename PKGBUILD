@@ -4,10 +4,10 @@
 # Helper: paulequilibrio
 pkgname=gdevelop-bin
 _pkgname=GDevelop
-pkgver=5.4.213
+pkgver=5.4.215
 _electronversion=18
 pkgrel=1
-pkgdesc="A full-featured, no-code, open-source game development software."
+pkgdesc="A full-featured, no-code, open-source game development software.Prebuilt version.Use system-wide electron."
 arch=(
     'aarch64'
     'x86_64'
@@ -34,21 +34,21 @@ source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.AppImage::${_ghurl}/releases/
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-5-${pkgver}.AppImage")
 sha256sums=('0620d885ddbc88e952f99090d767de08671b6a81e5c10900ef5b949531460b92'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-sha256sums_aarch64=('f2337ea74bcf3766eef35ae88bf0d709642ca79b094f881eb2a3b3461bee0b5a')
-sha256sums_x86_64=('d88183b34fcbbdb139fe547b82c63209d005b9a1f0e5b25a1d0e7c20d70b1837')
+sha256sums_aarch64=('a78f1550ca281c8860743cc0e355c7a465f7deb3839f5c5ff50d7ff9c42cfa96')
+sha256sums_x86_64=('79b1114cb4ddabe967a01283d594709308bd73f8716d7b2add264bf0d4effd01')
 build() {
     sed -e "
-        s/@electronversion@/${_electronversion}/
-        s/@appname@/${pkgname%-bin}/
-        s/@runname@/app.asar/
-        s/@cfgdirname@/${_appname}/
-        s/@options@//
+        s/@electronversion@/${_electronversion}/g
+        s/@appname@/${pkgname%-bin}/g
+        s/@runname@/app.asar/g
+        s/@cfgdirname@/${_appname}/g
+        s/@options@//g
     " -i "${srcdir}/${pkgname%-bin}.sh"
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage" --appimage-extract > /dev/null
-    sed -i "s/AppRun --no-sandbox/${pkgname%-bin}/" "${srcdir}/squashfs-root/${pkgname%-bin}.desktop"
+    sed -i "s/AppRun --no-sandbox/${pkgname%-bin}/g" "${srcdir}/squashfs-root/${pkgname%-bin}.desktop"
     asar e "${srcdir}/squashfs-root/resources/app.asar" "${srcdir}/app.asar.unpacked"
-    sed -i "s/if (isDev)/if (!isDev)/;s/isDev,/\/\/isDev,/;s/devTools,/\/\/devTools,/" "${srcdir}/app.asar.unpacked/main.js"
+    sed -i "s/if (isDev)/if (!isDev)/g;s/isDev,/\/\/isDev,/g;s/devTools,/\/\/devTools,/g" "${srcdir}/app.asar.unpacked/main.js"
     asar p "${srcdir}/app.asar.unpacked" "${srcdir}/app.asar"
     find "${srcdir}/squashfs-root/resources" -type d -exec chmod 755 {} \;
 }
@@ -58,7 +58,8 @@ package() {
     cp -r "${srcdir}/squashfs-root/resources/"{app.asar.unpacked,GDJS,preview_node_modules} "${pkgdir}/usr/lib/${pkgname%-bin}"
     install -Dm644 "${srcdir}/squashfs-root/swiftshader/"* -t "${pkgdir}/usr/lib/${pkgname%-bin}/swiftshader"
     install -Dm644 "${srcdir}/squashfs-root/usr/lib/"* -t "${pkgdir}/usr/lib/${pkgname%-bin}/lib"
-    for _icons in 16x16 32x32 48x48 64x64 128x128 256x256 512x512 1024x1024;do
+    _icon_sizes=(16x16 32x32 48x48 64x64 128x128 256x256 512x512 1024x1024)
+    for _icons in "${_icon_sizes[@]}";do
         install -Dm644 "${srcdir}/squashfs-root/usr/share/icons/hicolor/${_icons}/apps/${pkgname%-bin}.png" \
             -t "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps"
     done
