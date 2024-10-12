@@ -6,7 +6,10 @@ arch=('x86_64')
 url="https://harilvfs.github.io/carch/"
 license=('MIT')
 depends=('bash' 'whiptail')
-source=("https://github.com/harilvfs/carch/releases/latest/download/carch")
+source=(
+    "https://github.com/harilvfs/carch/releases/latest/download/carch"
+    "https://raw.githubusercontent.com/harilvfs/carch/refs/heads/main/carch.desktop"
+    )
 sha256sums=('SKIP') 
 
 build() {
