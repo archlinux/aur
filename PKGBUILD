@@ -14,6 +14,8 @@ provides=(modem-manager-gui)
 
 makedepends=(
     mercurial
+    po4a
+    itstool
 )
 
 depends=(
@@ -26,8 +28,6 @@ depends=(
 )
 
 optdepends=(
-	po4a
-	itstool
 )
 
 source=("${_pkgname}::hg+http://hg.code.sf.net/p/modem-manager-gui/code"
