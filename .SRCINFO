@@ -1,0 +1,19 @@
+pkgbase = facad
+	pkgdesc = A modern, colorful ls alternative for bringing clarity to the filesystem ☀️
+	pkgver = latest
+	pkgrel = 1
+	url = https://github.com/yellow-footed-honeyguide/facad
+	arch = any
+	license = MIT
+	depends = git
+	depends = meson
+	depends = ninja
+	depends = base-devel
+	depends = sudo
+	depends = unzip
+	depends = jq
+	depends = sed
+	depends = curl
+	depends = wget
+
+pkgname = facad

@@ -1,5 +1,5 @@
 # Maintainer: Diablo (https://github.com/progzone122) (https://t.me/DiabloSat)
-pkgname=facad-git
+pkgname=facad
 pkgver=latest
 pkgrel=1
 pkgdesc="A modern, colorful ls alternative for bringing clarity to the filesystem ☀️"
