@@ -2,16 +2,17 @@
 
 pkgname=openvas-scanner
 pkgver=23.9.0
-pkgrel=7
+pkgrel=8
 pkgdesc='Vulnerability scanning Daemon'
 arch=('x86_64')
 url="https://github.com/greenbone/openvas-scanner"
 license=('GPL-2.0-only')
 depends=('gvm-libs' 'json-glib' 'libbsd' 'libgcrypt' 'redis' 'rsync')
-makedepends=('cmake' 'doxygen')
+makedepends=('cmake' 'doxygen' 'cargo' 'inetutils')
 optdepends=('greenbone-feed-sync: scripts for downloading updated feed informations')
 groups=('greenbone-vulnerability-manager')
 install=openvas.install
+options=(!lto)
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz"
         ${pkgname}-${pkgver}.tar.gz.asc::${url}/releases/download/v${pkgver}/${pkgname}-v${pkgver}.tar.gz.asc
         openvas-scanner.tmpfiles)
@@ -22,8 +23,12 @@ validpgpkeys=('8AE4BE429B60A59B311C2E739823FAA60ED1E580') # GVM Transfer Integri
 
 
 prepare() {
-	cd "$pkgname-$pkgver"
-	sed -i '/-Werror/d' CMakeLists.txt
+  cd "$pkgname-$pkgver"
+  sed -i '/-Werror/d' CMakeLists.txt
+
+  cd rust
+  export RUSTUP_TOOLCHAIN=stable
+  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
@@ -39,10 +44,22 @@ build() {
     -DOPENVAS_FEED_LOCK_PATH=/run/gvm/feed-update.lock \
     -DOPENVAS_NVT_DIR=/var/lib/openvas
   make -C build
+
+  # Build openvasd and scannerctl
+  cd ${pkgname}-${pkgver}/rust
+  export RUSTUP_TOOLCHAIN=stable
+  export CARGO_TARGET_DIR=target
+  cargo build --frozen --release --all-features
 }
 
 package() {
   make DESTDIR="${pkgdir}/" -C build install
+
+  find ${pkgname}-${pkgver}/rust/target/release \
+    -maxdepth 1 \
+    -executable \
+    -type f \
+    -exec install -Dm0755 -t "$pkgdir/usr/bin/" {} +
 
   install -Dm 644 ${pkgname}.tmpfiles "${pkgdir}"/usr/lib/tmpfiles.d/${pkgname}.conf
 }
