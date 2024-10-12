@@ -1,0 +1,24 @@
+pkgbase = codefuse-ide-git
+	pkgdesc = AI Native IDE based on CodeFuse and OpenSumi.
+	pkgver = 0.6.2.r2.ga6c254b
+	pkgrel = 1
+	url = https://codefuse.ai/
+	arch = any
+	license = Apache-2.0
+	makedepends = gendesk
+	makedepends = npm
+	makedepends = nvm
+	makedepends = git
+	makedepends = curl
+	makedepends = gcc
+	makedepends = cmake
+	makedepends = nodejs
+	depends = electron30
+	provides = codefuse-ide=0.6.2
+	conflicts = codefuse-ide
+	source = codefuse-ide.git::git+https://github.com/codefuse-ai/codefuse-ide
+	source = codefuse-ide.sh
+	sha256sums = SKIP
+	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
+
+pkgname = codefuse-ide-git
