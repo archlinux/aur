@@ -1,7 +1,7 @@
 # Maintainer: fiatjaf <fiatjaf@gmail.com>
 
 pkgname="nak-bin"
-pkgver="0.7.3"
+pkgver="0.7.7"
 pkgrel="1"
 pkgdesc="a command line tool for doing all things nostr"
 arch=("x86_64")
