@@ -39,7 +39,7 @@ source=("git+https://github.com/insanum/$pkgname.git#tag=v$pkgver")
 sha256sums=('093572d0151245d061c1504953e7ad9f8f2b883ea70fd2d2f48fa766c919e8af')
 
 build() {
-    cd "${pkgname}-${pkgver}"
+    cd "${pkgname}"
     python -m build --wheel --no-isolation
 }
 
@@ -52,7 +52,7 @@ build() {
 # }
 
 package() {
-    cd "${pkgname}-${pkgver}"
+    cd "${pkgname}"
     python -m installer --destdir="${pkgdir}" dist/*.whl
     install -Dm644 docs/*.{md,png} -t "$pkgdir/usr/share/doc/$pkgname"
     install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
