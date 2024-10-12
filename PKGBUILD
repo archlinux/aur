@@ -17,6 +17,7 @@ makedepends=(
 )
 
 depends=(
+    libayatana-appindicator
     gtk3
     glib2
     gdbm
@@ -25,7 +26,6 @@ depends=(
 )
 
 optdepends=(
-    libayatana-appindicator
 	po4a
 	itstool
 )
