@@ -12,10 +12,10 @@ _devenv=false
 
 _generic_release=false
 
-## hack taken from wine-tkg PKGBUILD, real pkgrel is the eval one
-pkgver=9.19.w1.s858bf97
+## real pkgrel is the eval one
+pkgver=9.19.w93.s858bf97
 pkgrel=1
-eval pkgrel=1
+eval pkgrel=2
 
 ################################################################################################################################
 ################################################################################################################################
@@ -35,7 +35,7 @@ _enabled_staging=()
 _disabled_staging=(eventfd_synchronization)
 
 ## main AUR version control setting, wine/staging base will be taken from this if custompatches=false (default)
-_patchbase_tag="10-05-2024-7ee99608-858bf979"
+_patchbase_tag="10-12-2024-7ce580d1-858bf979"
 
 ## to use this, set this to true, create a "custompatches" folder in the top-level PKGBUILD directory, and place your patches there.
 ## the patches from the wine-osu-patches git repo will no longer be applied, but you can copy them to the
@@ -45,7 +45,7 @@ _custompatches=false
 
 ## (with custompatches) uses wine/staging master if empty, uses given commit or tag if set
 ## (without custompatches) ignored and overwritten by upstream commits from patchbase repo
-_desired_wine_commit=7ee99608f469723bafadb28ef0ebd20631f86e9d
+_desired_wine_commit=7ce580d1fa0bb3acf98edbc4171ddbcd83867db8
 _desired_staging_commit=858bf979a1c177ae7b43a8ea697032e09059d553
 
 ## (with custompatches) ignore the _desired_wine_commit above and take the wine commit from the "upstream-commit" file in the staging repo
@@ -69,8 +69,8 @@ _strip_package=true
 _use_clang=true
 
 ## for cross compilation
-## llvm=llvm-mingw, clang=clang in msvc-mode, anything else is mingw-gcc
-_use_mingw=llvm
+## llvm=llvm-mingw, msvc=clang in msvc-mode, anything else is mingw-gcc
+_use_mingw=msvc
 
 ## leave empty unless you want to manually change the type of build (true: wow64)
 _wow64build=
@@ -134,7 +134,7 @@ noextract=()
 ## don't needlessly add the wine-osu-patches repo if we explicitly specify custom ones
 if ! { [ -d "${_where}"/custompatches ] && [ "${_custompatches}" = "true" ] ; }; then
   source+=("git+https://github.com/whrvt/wine-osu-patches.git#tag=${_patchbase_tag}")
-  sha512sums+=('3d5a7e48a4797054113afb1755e5d485aac327865a6643b582c5046aaaffc3385fc358c37d23f1342799b21a931abbb9cc617eced2e96e9dcb6c3669d1db529e')
+  sha512sums+=('c8332682ceb4bdf30f9488c364b82f6c48d015a691b8bbdf17859373ca8015cdf7f7735a41a5317d4151ff6c67f0e9f298b55577111cf52a41c645b36141545c')
 
   if [ "${_custompatches}" = "true" ]; then
     msg2 "WARNING: _custompatches=true but custompatches directory not found. Will be using wine-osu-patches repo."
@@ -164,7 +164,6 @@ depends=(
   libpulse
   bash
   ffmpeg
-  ntsync-dkms
 )
 
 makedepends=(autoconf bison ccache perl fontforge flex
@@ -272,15 +271,13 @@ else # remove llvm-mingw paths from externally set PATH
     _cross_path="${PATH}"
   fi
 
-  if [ "${_use_mingw}" = "clang" ]; then
+  if [ "${_use_mingw}" = "msvc" ]; then
     makedepends+=(clang llvm-libs)
 
     _cross64="/usr/bin/clang"
     _crossxx64="/usr/bin/clang++"
     _cross32="/usr/bin/clang"
     _crossxx32="/usr/bin/clang++"
-
-    _lto_flags=""
   else
     makedepends+=(mingw-w64-binutils mingw-w64-gcc mingw-w64-crt mingw-w64-headers mingw-w64-winpthreads)
 
@@ -292,6 +289,7 @@ else # remove llvm-mingw paths from externally set PATH
 fi
 
 makedepends=("${makedepends[@]}" "${depends[@]}")
+depends+=(ntsync-dkms) # "temporary" anyways...
 
 pkgver() {
   _pkgver=$(git -C "${srcdir}"/"${pkgname}" describe --tags --abbrev=0 | cut -f2 -d'-')
@@ -308,17 +306,22 @@ _set_vars() {
 
   export PATH="${_cross_path}"
 
-  #_OPTIMIZE_HARDER_FLAGS="-fipa-pta -fgcse-sm -fgcse-las -fira-loop-pressure" # -fsched-pressure -fsched-spec-load
   # note: using Oz for a smaller memory footprint, otherwise 32bit programs can hit the virtual address space limit quickly
-  _common_cflags="${_cpu_target} -Oz -pipe -fomit-frame-pointer -Wno-error=incompatible-pointer-types -Wno-error=implicit-function-declaration -Wno-error=int-conversion -w"
+  _common_cflags="${_cpu_target} -pipe -Oz -mfpmath=sse -mno-avx -mno-avx2 -fno-strict-aliasing -fomit-frame-pointer -Wno-error=incompatible-pointer-types -Wno-error=implicit-function-declaration -Wno-error=int-conversion -w"
   _native_common_cflags="${_lto_flags:-} ${_extra_native_flags:-}" # only for the non-mingw side
 
   export CPPFLAGS="-U_FORTIFY_SOURCE -D_FORTIFY_SOURCE=0 -DNDEBUG -D_NDEBUG"
   _GCC_FLAGS="${_common_cflags} ${_native_common_cflags} ${CPPFLAGS}"
-  _LD_FLAGS="${_GCC_FLAGS} -Wl,-O2,--sort-common,--as-needed"
-
   _CROSS_FLAGS="${_common_cflags} ${CPPFLAGS}"
-  _CROSS_LD_FLAGS="${_CROSS_FLAGS} -Wl,-O2,--sort-common,--as-needed,--file-alignment=4096"
+
+  _LD_FLAGS="${_GCC_FLAGS} -Wl,-O2,--sort-common,--as-needed"
+  _CROSS_LD_FLAGS="${_CROSS_FLAGS}"
+
+  if [ "${_use_mingw}" = "msvc" ]; then
+    _CROSS_LD_FLAGS+=" -Wl,/FILEALIGN:4096,/OPT:REF,/OPT:ICF"
+  else
+    _CROSS_LD_FLAGS+=" -Wl,-O2,--sort-common,--as-needed,--file-alignment=4096"
+  fi
 
   export CC="ccache ${_cc}"
   export CXX="ccache ${_cxx}"
@@ -361,7 +364,8 @@ _set_vars32() {
 
 ## ccache configuration (taken from https://raw.githubusercontent.com/openglfreak/wine-tkg-userpatches/next/config/ccache.cfg)
 _prep_ccache() {
-  export _compilerhash="$(md5sum "$(command -v "${_cc}")" | cut -d ' ' -f 1),$(md5sum "$(command -v "${_cross64}")" | cut -d ' ' -f 1),$(md5sum "$(command -v "${_cross32}")" | cut -d ' ' -f 1)"
+  _compilerhash="$(md5sum "$(command -v "${_cc}")" | cut -d ' ' -f 1),$(md5sum "$(command -v "${_cross64}")" | cut -d ' ' -f 1),$(md5sum "$(command -v "${_cross32}")" | cut -d ' ' -f 1)"
+  export _compilerhash
 
   export CCACHE_DIR="${XDG_CACHE_HOME:-${HOME}/.cache}/ccache/wine"
   mkdir -p "${CCACHE_DIR}"
@@ -644,7 +648,7 @@ build() { _set_vars;
     _configure64
     _build64
   else
-    export _TMP_VARFILE="$(mktemp)"
+    _TMP_VARFILE="$(mktemp)" && export _TMP_VARFILE
     trap 'rm -f -- "$_TMP_VARFILE"' EXIT
     { ( unset MAKEFLAGS; unset MFLAGS; set ); echo; set +o; } >"$_TMP_VARFILE"
 
