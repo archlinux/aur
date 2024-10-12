@@ -1,12 +1,12 @@
-# Maintainer:  Birk Birkner <aur at bbirkner.de>
+# Maintainer:  Berrit Birkner <aur at bbirkner.de>
 
 pkgname=qrca-git
-pkgver=0.1.r351.c48d5c2
+pkgver=0.1.r387.2b9c3f4
 pkgrel=1
 pkgdesc="Scan QR-Codes with your camera on phones and laptops, and create your own for easily sharing data between devices."
 arch=('x86_64' 'aarch64')
 url="https://apps.kde.org/de/qrca/"
-license=('GPL3')
+license=('GPL-3.0-or-later')
 #_KF_Version=5.240.0
 depends=(
     "qt6-declarative"
@@ -28,7 +28,6 @@ makedepends=(
     "cmake"
     "extra-cmake-modules"
     "qt6-svg"
-    "qt6-quickcontrols2"
     "qt6-multimedia"
     "purpose"
     "python"
