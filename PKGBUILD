@@ -17,10 +17,11 @@ makedepends=(
 )
 
 depends=(
-	gtk3
-	glib2
-	gdbm
-	gtkspell3
+    gtk3
+    glib2
+    gdbm
+    gtkspell3
+    python
 )
 
 optdepends=(
