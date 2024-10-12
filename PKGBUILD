@@ -1,7 +1,7 @@
 # Maintainer: n0vella <n0vella@outlook.com>
 # This PKGBUILD compiles and installs the latest tag of the git repository
 pkgname=cardo
-pkgver=1.6.0
+pkgver=1.8.0
 pkgrel=1
 pkgdesc="Cardo podcast client"
 arch=('x86_64')
@@ -19,7 +19,7 @@ sha256sums=('SKIP')
 
 pkgver() {
 	cd "$srcdir/${pkgname}"
-	git describe --abbrev=0
+	git tag -l --sort=-creatordate | head -n 1
 }
 
 prepare() {
