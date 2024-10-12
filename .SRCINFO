@@ -1,11 +1,11 @@
 pkgbase = riff-bin
 	pkgdesc = A diff filter highlighting which line parts have changed
 	pkgver = 3.3.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/walles/riff
 	arch = x86_64
 	license = MIT
-	depends = glibc
+	makedepends = help2man
 	provides = riff
 	conflicts = riff
 	source = https://github.com/walles/riff/releases/download/3.3.4/riff-3.3.4-x86_64-linux
