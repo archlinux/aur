@@ -1,7 +1,7 @@
 pkgname=voms-clients
 pkgver=3.3.2
 _gittag="v$pkgver"
-pkgrel=1
+pkgrel=2
 pkgdesc="Virtual Organization Membership Service (Java-based clients)"
 arch=(any)
 url="http://italiangrid.github.io/voms/"
@@ -18,14 +18,12 @@ pkgver() {
 build() {
   cd "$pkgname"
   mvn -Dmaven.javadoc.skip=true \
-      -Dvoms-clients.libs="/usr/share/$pkgname/lib" \
       package
 }
 
 package() {
   install -dm 755 "$pkgdir/usr/share/$pkgname"
   bsdtar -C "$pkgdir/usr" --strip-components 1 -xf "$pkgname/target/voms-clients.tar.gz"
-  mv "$pkgdir/usr/share/java" "$pkgdir/usr/share/$pkgname/lib"
   # rename to avoid conflicts with C clients from voms 2.x
   for f in /usr/bin/voms-proxy-{init,info,destroy}; do
     mv "$pkgdir/$f" "$pkgdir/${f/%/3}"

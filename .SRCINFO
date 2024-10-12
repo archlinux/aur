@@ -1,7 +1,7 @@
 pkgbase = voms-clients
 	pkgdesc = Virtual Organization Membership Service (Java-based clients)
 	pkgver = 3.3.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://italiangrid.github.io/voms/
 	arch = any
 	makedepends = java-environment
