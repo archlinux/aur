@@ -2,8 +2,8 @@
 # Contributor: Felix Yan <felixonmars@archlinux.org>
 
 pkgname=python-pip-api
-pkgver=0.0.33
-pkgrel=2
+pkgver=0.0.34
+pkgrel=1
 pkgdesc="An unofficial, importable pip API"
 url="https://github.com/di/pip-api"
 license=('Apache-2.0')
@@ -28,10 +28,8 @@ source=(
   'skip-unsupported-test.patch'
 )
 
-sha512sums=(
-  '4f711de7a05209b0aa57ef39fa1e507a171f8b807de0915fdacaef9b0a943e3ba03edb190d6b0a804c3a54e2575c501abe4ab3f27ad50b4b912c7703cb0144e3'
-  '41e55d61912e6f010d1087f8883cc2ed1796caaf11a54be950afc5b409ad3ce1f99d7fa9980b83e6b1a4725f9fc402cc213a8f42d71e6f824f9a8fa0442c8d79'
-)
+sha512sums=('3492c69be8100bb5dab260a9dfbccd101fddc0aa20358edc34f07e141a63ed8d36534b7011ff4d8b5f988c7517da6f4c8af42397b2bfe1320be0eb0abd03eed1'
+            '41e55d61912e6f010d1087f8883cc2ed1796caaf11a54be950afc5b409ad3ce1f99d7fa9980b83e6b1a4725f9fc402cc213a8f42d71e6f824f9a8fa0442c8d79')
 
 prepare() {
   cd pip-api-$pkgver
