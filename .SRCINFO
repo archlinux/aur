@@ -1,6 +1,6 @@
 pkgbase = aiwnios-git
-	pkgdesc = A HolyC Compiler/Runtime for 64bit ARM/x86
-	pkgver = r600.11374be
+	pkgdesc = A HolyC Compiler/Runtime for 64bit ARM/x86/RISC
+	pkgver = r679.f1f76a3
 	pkgrel = 1
 	url = https://github.com/nrootconauto/Aiwnios
 	arch = x86_64

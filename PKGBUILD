@@ -2,14 +2,14 @@
 
 _pkgname="aiwnios"
 pkgname="${_pkgname}-git"
-pkgver=r600.11374be
+pkgver=r679.f1f76a3
 pkgrel=1
-pkgdesc="A HolyC Compiler/Runtime for 64bit ARM/x86"
+pkgdesc="A HolyC Compiler/Runtime for 64bit ARM/x86/RISC"
 arch=('x86_64' 'aarch64' 'riscv64')
-url='https://github.com/nrootconauto/Aiwnios'
+url="https://github.com/nrootconauto/Aiwnios"
 license=('BSD-3-Clause')
-makedepends=('git' 'cmake')
 depends=('glibc' 'sdl2')
+makedepends=('git' 'cmake')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 _pkgsrc="Aiwnios"
@@ -25,6 +25,8 @@ prepare() {
   cd "${srcdir}/${_pkgsrc}"
   cp -f "misc/${_pkgname}.desktop.in" "${_pkgname}.desktop"
   sed -i 's|@CMAKE_INSTALL_PREFIX@|/usr|g' "${_pkgname}.desktop"
+
+  sed -i 's|Vocab.DD|God/Vocab.DD|g' "CMakeLists.txt"
 }
 
 build() {
