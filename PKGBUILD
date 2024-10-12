@@ -2,16 +2,16 @@
 # Contributor: Stephanie Wilde-Hobbs (RX14) <steph@rx14.co.uk>
 
 pkgname=mcstatus
-pkgver=9.4.2
+pkgver=11.1.1
 pkgrel=1
 pkgdesc="Provides an easy way to query Minecraft servers for any information they can expose."
 arch=(any)
 url="https://github.com/py-mine/mcstatus"
 license=('Apache')
-depends=(python python-six python-click python-dnspython python-asyncio-dgram)
+depends=(python python-dnspython python-asyncio-dgram)
 makedepends=()
 source=("${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('8c4e2534d384f904eef797a8d787be360754df03dd0b5859ab65163caedfd11a')
+sha256sums=('ebaa03d69ef78f3719ff3506228be4b24304966d040b9aa4630edc0fcf018eb6')
 
 python_version () {
     python --version | cut -d' ' -f2 | cut -d'.' -f1,2
