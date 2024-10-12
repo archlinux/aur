@@ -5,7 +5,7 @@
  
  ${BIN}: ${OBJ}
 -	$(LD) -o $@ $(LDFLAGS) $^
-+	ld -o $@ $^
++	$(LD) -o $@ $^
  
  ${BUILDDIR}/%.o: %.asm
  	@mkdir -p ${@D}

@@ -5,11 +5,10 @@ pkgbase = snake-asm
 	url = https://github.com/NikitaIvanovV/snake-asm
 	arch = x86_64
 	license = MIT
-	makedepends = make
 	makedepends = nasm
 	source = snake-asm-0.4.1.tar.gz::https://github.com/NikitaIvanovV/snake-asm/archive/refs/tags/v0.4.1.tar.gz
-	source = fix_ldflags.patch
+	source = snake-asm_fix_make_ldflags.patch
 	sha256sums = f1d4c098913db2c363c5b924f45f0a94118fa6fde511c3c8473ebd89f0200aa8
-	sha256sums = b4f36aad672175334b00dc80b9d1b3d532bd1577e6cf2ab8e8193142ec833310
+	sha256sums = 4d0d7453f66ca6fe7f7a544ef17e504ef2a365ab3729067933c138d1574282a9
 
 pkgname = snake-asm

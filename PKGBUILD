@@ -7,16 +7,16 @@ pkgdesc="Terminal-based snake game written in x86_64 assembly"
 arch=('x86_64')
 url="https://github.com/NikitaIvanovV/${pkgname}"
 license=('MIT')
-makedepends=('make' 'nasm')
+makedepends=('nasm')
 _pkgsrc="${pkgname}-${pkgver}"
 source=("${_pkgsrc}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
-        "fix_ldflags.patch")
+        "${pkgname}_fix_make_ldflags.patch")
 sha256sums=('f1d4c098913db2c363c5b924f45f0a94118fa6fde511c3c8473ebd89f0200aa8'
-            'b4f36aad672175334b00dc80b9d1b3d532bd1577e6cf2ab8e8193142ec833310')
+            '4d0d7453f66ca6fe7f7a544ef17e504ef2a365ab3729067933c138d1574282a9')
 
 prepare() {
   cd "${srcdir}/${_pkgsrc}"
-  patch -p1 -i "${srcdir}/fix_ldflags.patch"
+  patch -p1 -i "${srcdir}/${pkgname}_fix_make_ldflags.patch"
 }
 
 build() {
