@@ -1,23 +1,31 @@
 pkgbase = hidapi-git
-	pkgdesc = Simple library for communicating with USB and Bluetooth HID devices
-	pkgver = 0.10.1.r18.g6fcb0bb
+	pkgdesc = Simple library for communicating with USB and Bluetooth HID devices. Latest git checkout.
+	pkgver = 0.14.0+40.r665.20241003.750bf20
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/libusb/hidapi
 	arch = x86_64
-	license = GPL3
-	license = BSD
-	license = custom
+	arch = i686
+	arch = aarch64
+	arch = armv6h
+	arch = armv7h
+	license = GPL-3.0-or-later
+	license = BSD-3-Clause
+	license = LicenseRef-HIDAPI
+	makedepends = autoconf
+	makedepends = automake
+	makedepends = bash
 	makedepends = git
-	makedepends = systemd
-	makedepends = systemd-libs
+	makedepends = make
 	makedepends = libusb
+	makedepends = libtool
+	makedepends = libudev.so
+	optdepends = hidapi-testgui: For a GUI programme using this library
 	optdepends = libusb: for the libusb backend -- hidapi-libusb.so
 	optdepends = libudev.so: for the hidraw backend -- hidapi-hidraw.so
-	provides = hidapi
+	provides = hidapi=0.14.0+40.r665.20241003.750bf20
 	conflicts = hidapi
-	source = hidapi-git::git+https://github.com/libusb/hidapi
+	source = hidapi::git+https://github.com/libusb/hidapi.git
 	sha256sums = SKIP
 
 pkgname = hidapi-git
-
