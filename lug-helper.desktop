@@ -1,9 +1,9 @@
 [Desktop Entry]
 Exec=/usr/bin/lug-helper
-Icon=/usr/share/pixmaps/lug-logo.png
+Icon=/usr/share/icons/hicolor/256x256/apps/lug-logo.png
 Name=LUG-Helper
 StartupNotify=true
-Terminal=false
+Terminal=true
 Type=Application
 Categories=Game
 
