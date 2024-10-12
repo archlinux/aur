@@ -2,14 +2,14 @@
 
 _pkgname=ansible-navigator
 pkgname=ansible-navigator-git
-pkgver=24.9.0.r4.g5eb748c7
+pkgver=24.9.0.r7.g3695138e
 pkgrel=1
 pkgdesc="A text-based user interface (TUI) for Ansible."
 arch=('any')
 url="https://github.com/ansible/ansible-navigator"
 license=('Apache-2.0')
 depends=(python python-{jsonschema,onigurumacffi} ansible-{core,runner} git podman)
-makedepends=(python-{build,installer,setuptools,wheel,setuptools-scm})
+makedepends=(python-{build,installer,pip,setuptools,setuptools-scm,wheel})
 checkdepends=('python-pytest')
 optdepends=('ansible: check official ansible collections')
 provides=('ansible-navigator')
