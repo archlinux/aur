@@ -1,6 +1,6 @@
 pkgbase = linux-wallpaperengine-git
 	pkgdesc = use steam's wallpaperengine on linux
-	pkgver = r481.5f58178
+	pkgver = r482.7278f2f
 	pkgrel = 1
 	url = https://github.com/Almamu/linux-wallpaperengine
 	arch = x86_64
@@ -12,7 +12,6 @@ pkgbase = linux-wallpaperengine-git
 	depends = lz4
 	depends = ffmpeg
 	depends = mpv
-	depends = freeimage
 	depends = glfw
 	depends = glew
 	depends = freeglut
