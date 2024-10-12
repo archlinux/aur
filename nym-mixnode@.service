@@ -2,13 +2,13 @@
 Description=Nym Mixnode %I
 After=network-online.target nss-lookup.target
 Wants=network-online.target nss-lookup.target
-Documentation=https://nymtech.net/docs/stable/run-nym-nodes/nodes/mixnodes
+Documentation=https://nymtech.net/operators/nodes/setup.html
 StartLimitIntervalSec=350
 StartLimitBurst=10
 
 [Service]
 User=nym
-ExecStart=/usr/bin/nym-mixnode run --id %i
+ExecStart=/usr/bin/nym-node run --mode mixnode --id %i --deny-init --accept-operator-terms-and-conditions
 KillSignal=SIGINT
 Restart=always
 RestartSec=30
