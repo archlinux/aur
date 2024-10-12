@@ -1,0 +1,5 @@
+[python-mkl-random]
+source = "github"
+github = "IntelPython/mkl_random"
+use_latest_release = "true"
+prefix = "v"
