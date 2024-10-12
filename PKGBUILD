@@ -1,10 +1,10 @@
 # Maintainer: bageljr <bageljr 897 at protonmail dot com>
-# Contributor: dmitmel <dmytro dot meleshko at gmail dot com>
+# Maintainer: dmitmel <dmytro dot meleshko at gmail dot com>
 # Maintainer: Mahor Foruzesh <mahor1221 at gmail dot com>
 
 pkgname=codelldb-git
 _pkgname="${pkgname%-git}"
-pkgver=v1.9.0.r1084.88d6925
+pkgver=v1.10.1.r1174.fe108b5
 pkgrel=1
 pkgdesc="A native debugger extension for VSCode based on LLDB. Also known as vscode-lldb (NOT lldb-vscode)"
 arch=(x86_64 arm7h aarch64)
@@ -25,6 +25,12 @@ pkgver() {
     "$(git rev-parse --short HEAD)"
 }
 
+prepare() {
+    export RUSTUP_TOOLCHAIN=stable
+    cd "$_pkgname-$pkgver/build"
+    cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+}
+
 build() {
   export RUSTUP_TOOLCHAIN=stable
   export CFLAGS="-mtune=generic -O2 -pipe -fexceptions -Wp,-D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security"
@@ -35,17 +41,26 @@ build() {
 }
 
 package() {
-  local reset_shopt="$(shopt -p globstar)"
-  shopt -s globstar
-
   cd "$_pkgname"
   local libdir="$pkgdir/usr/lib/$_pkgname"
 
-  #https://github.com/vadimcn/codelldb/blob/v1.9.0/CMakeLists.txt#L187-L200
-  install -Dm644 -t "$libdir"             build/platform.ok
-  install -Dm755 -t "$libdir"/adapter     build/adapter/{codelldb,*.so}
-  install -Dm644 -t "$libdir"/adapter     build/adapter/scripts/**/*.py
-  install -Dm644 -t "$libdir"/formatters  build/formatters/**/*.py
+  (
+    cd build
+    shopt -s globstar nullglob
+
+    # Files that need to be installed:
+    # https://github.com/vadimcn/codelldb/blob/v1.11.0/CMakeLists.txt#L200-L213
+
+    install -Dm644 -t "$libdir" platform.ok
+
+    local file; for file in adapter/codelldb adapter/*.so; do
+      install -Dm755 "$file" "$libdir/$file"
+    done
+
+    local file; for file in adapter/scripts/**/*.py formatters/**/*.py; do
+      install -Dm644 "$file" "$libdir/$file"
+    done
+  )
 
   install -d "$libdir"/lldb
   ln -s -t "$libdir"/lldb /usr/{bin,lib}
@@ -54,6 +69,4 @@ package() {
   ln -s -t "$pkgdir"/usr/bin /usr/lib/"$_pkgname"/adapter/codelldb
 
   install -Dm644 -t "$pkgdir"/usr/share/licenses/"$_pkgname" LICENSE
-  eval "$reset_shopt"
 }
-
