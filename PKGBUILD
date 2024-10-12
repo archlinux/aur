@@ -5,7 +5,7 @@ pkgdesc="A script to automate Arch Linux setup"
 arch=('x86_64')
 url="https://harilvfs.github.io/carch/"
 license=('MIT')
-depends=('bash' 'whiptail')
+depends=('bash' 'libnewt')
 source=(
     "https://github.com/harilvfs/carch/releases/latest/download/carch"
     "https://raw.githubusercontent.com/harilvfs/carch/refs/heads/main/carch.desktop"
