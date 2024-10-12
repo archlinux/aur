@@ -3,7 +3,7 @@
 
 pkgname=aocc
 pkgver=5.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="AMD Optimizing C/C++ Compiler"
 arch=('x86_64')
 license=('custom')
@@ -15,9 +15,9 @@ install=aocc.install
 sha256sums=("966fac2d2c759e9de6e969c10ada7a7b306c113f7f1e07ea376829ec86380daa" "SKIP")
 
 # default flags for compiler
-# edit this or /etc/makepkg.conf to your liking for default flags for your architecutre
+# edit this to your liking for default flags for your architecutre
 # like e.g. "-O3 -march=znver2 -mtune=znver2"
-_default_flags="${CFLAGS}"
+_default_flags=""
 
 # path hardcoded in aocc.install. if you change this, change paths there as well
 _aocc_prefix=/opt/aocc
