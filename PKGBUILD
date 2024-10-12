@@ -4,7 +4,7 @@ pkgbase=python-griffe
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}")
 #"python-${_pyname}-doc")
-pkgver=1.3.2
+pkgver=1.4.1
 pkgrel=1
 pkgdesc="Signatures for entire Python programs"
 arch=('any')
@@ -37,7 +37,7 @@ checkdepends=('python-pytest'
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
 #       "https://github.com/mkdocstrings/griffe/raw/main/logo.svg")
 #       "${pkgver}-schema.json::https://github.com/mkdocstrings/griffe/raw/${pkgver}/docs/schema.json")
-md5sums=('157b5faaf01c5f09078aae4265850ae5')
+md5sums=('bdab18184329caa18fe73d3dc4257dde')
 
 #prepare() {
 #    cd ${srcdir}/${_pyname}-${pkgver}
@@ -68,7 +68,7 @@ check() {
 }
 
 package_python-griffe() {
-    depends=('python>=3.8' 'python-astunparse>=1.6' 'python-colorama>=0.4')
+    depends=('python>=3.9' 'python-astunparse>=1.6' 'python-colorama>=0.4')
     cd ${srcdir}/${_pyname}-${pkgver}
 
     install -D -m644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
