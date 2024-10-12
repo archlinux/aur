@@ -3,8 +3,8 @@
 # ex-maintainer: ceri <ceri@dev.null>
 
 pkgname=apkeep
-pkgver=0.16.0
-pkgrel=2
+pkgver=0.17.0
+pkgrel=1
 pkgdesc='CLI tool from EFF for downloading APK files from various sources'
 url='https://github.com/EFForg/apkeep'
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
@@ -12,7 +12,7 @@ arch=('i686' 'x86_64' 'arm' 'armv7h' 'aarch64')
 license=('MIT')
 depends=('openssl' 'gcc-libs')
 makedepends=('cargo' 'mold')
-sha256sums=('5ce2f478c607f08a2766e1b3b7762e6579ea3922acf6c0a24582c0374567e505')
+sha256sums=('f5fa0d8c02d5c078f69ec18e080463113c3794be8b94130f6a81f463c36bca0b')
 
 prepare() {
   cd "$pkgname-$pkgver"
