@@ -1,7 +1,7 @@
 # Maintainer: KokaKiwi <kokakiwi+aur at kokakiwi dot net>
 
 pkgname=ferium
-pkgver=4.7.0
+pkgver=4.7.1
 pkgrel=1
 pkgdesc='Fast and multi-source CLI program for managing Minecraft mods and modpacks from Modrinth, CurseForge, and Github Releases'
 url='https://github.com/gorilla-devs/ferium'
@@ -10,8 +10,8 @@ arch=('x86_64' 'aarch64')
 depends=('gcc-libs')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/gorilla-devs/ferium/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('a7804e44d1949e3fe2c5e875d7d70fc6d2ecd16cbcb65619b9ad4f61ac3b1887')
-b2sums=('b4922b986a80471449d63cb90ff01310e7884e56848936309ab6434b00f56b04f1b7bf9e268fa77916881c590f8d1001ba09c0f76fa3afe8887d66f02c0da5cb')
+sha256sums=('a9b9fd966f47d5f8c32e483a21ea476f6883f194e7813f1f81b0001e14b046a5')
+b2sums=('4277f8f3028e87dc63c3649298c3ae778b80ba8c59f944f914484d02d21941b4a4cd326e5d87ef59ae7f7ca6e17c0eefb88bf6ac6508f19e758643db190bfade')
 options=(!lto)
 
 export RUSTUP_TOOLCHAIN=${RUSTUP_TOOLCHAIN:-stable}
