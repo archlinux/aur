@@ -2,14 +2,14 @@
 
 _pkgname=ansible-creator
 pkgname=ansible-creator-git
-pkgver=24.2.0.r12.g25c1767
+pkgver=24.10.0.r0.g71782dc
 pkgrel=1
 pkgdesc="A CLI tool for scaffolding all your Ansible Content."
 arch=('any')
 url="https://github.com/ansible/ansible-creator"
 license=('MIT')
 depends=(python python-{jsonschema,onigurumacffi} ansible-{core,runner} git)
-makedepends=(python-{build,installer,setuptools,wheel,setuptools-scm})
+makedepends=(python-{build,installer,pip,setuptools,setuptools-scm,wheel})
 checkdepends=('python-pytest')
 optdepends=('ansible: check official ansible collections')
 provides=('ansible-creator')
