@@ -1,4 +1,8 @@
-*.tar.gz
-*.pkg.tar.zst
-*/*
+# Ignore everything
+*
 
+# But not these files...
+!.gitignore
+!PKGBUILD
+!.SRCINFO
+!chroot-build.sh
