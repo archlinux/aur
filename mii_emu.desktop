@@ -1,0 +1,28 @@
+[Desktop Entry]
+
+# The type as listed above
+Type=Application
+
+# The version of the desktop entry specification to which this file complies
+Version=0.8.0-1
+
+# The name of the application
+Name=MII Apple //e Emulator for Linux
+
+# A comment which can/will be used as a tooltip
+Comment=Modern, clean code, modular Apple //e Emulator
+
+# The path to the folder in which the executable is run
+#Path=
+
+# The executable of the application, possibly with arguments.
+Exec=/usr/bin/mii_emu
+
+# The name of the icon that will be used to display this entry
+Icon=mii_emu
+
+# Describes whether this application needs to be run in a terminal or not
+Terminal=false
+
+# Describes the categories in which this entry should be shown
+Categories=Emulator;System;

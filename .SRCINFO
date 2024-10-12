@@ -1,0 +1,23 @@
+pkgbase = mii_emu-git
+	pkgdesc = Apple //e Emulator for Linux
+	pkgver = 1.9.5.g683dbe6
+	pkgrel = 1
+	url = https://github.com/buserror/mii_emu
+	arch = any
+	license = MIT
+	makedepends = base-devel
+	depends = alsa-lib
+	depends = libglvnd
+	depends = glu
+	depends = libx11
+	depends = pixman
+	depends = mold
+	optdepends = alsa-lib: needed for sound
+	provides = mii_emu
+	conflicts = mii_emu
+	source = git+https://github.com/buserror/mii_emu.git
+	source = mii_emu.desktop
+	sha256sums = SKIP
+	sha256sums = 30ed9a8f75daf97aad8933d0409dd6dc0933e1b4ec4f077a8121eff14e53f951
+
+pkgname = mii_emu-git
