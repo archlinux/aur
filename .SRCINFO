@@ -1,6 +1,6 @@
 pkgbase = typora-with-plugin
 	pkgdesc = 一款 Markdown 编辑器和阅读器（with typora_plugin）
-	pkgver = 1.9.3_plugin_1.11.3
+	pkgver = 1.9.3_plugin_1.11.4
 	pkgrel = 1
 	url = https://typoraio.cn/
 	arch = x86_64
@@ -14,9 +14,9 @@ pkgbase = typora-with-plugin
 	conflicts = typora
 	source = https://download2.typoraio.cn/linux/typora_1.9.3_amd64.deb
 	source = typora.sh
-	source = https://gh.api.99988866.xyz/https://github.com/obgnail/typora_plugin/archive/refs/tags/1.11.3.tar.gz
+	source = https://gh.api.99988866.xyz/https://github.com/obgnail/typora_plugin/archive/refs/tags/1.11.4.tar.gz
 	sha512sums = da7714d8a2ef228d1df13bf2a6862f3be3fad51238657e8ee48350380267ecfed29b391e0c66653e3b4322e3dada02d2bea6e1041f5230988358645ea0cf4b28
 	sha512sums = de9c883c63f3ea35bd551c8761e605f8e1a3468943e000abcbf94bb0c5cbb5f0f6c7fa4d49ab39c177f167e0e3d0b061c861bf828627b4a34f7f1589119c3d04
-	sha512sums = 035eab071d8874e84e9c501c46739397724c90c6fc92454b9a2aa1c4a37eea84b87845267541bdf6a064dfa7182f54d096493f6e69804d41689f896fca38b179
+	sha512sums = cd72d0517a37efb8a7c70014c0689dbcf6ca783d39e22c22f15ea89d13bb5f3cdfc2c1e22d1ddd7daf3aa598f30af06905138df3b8fc898a447283d790b5c1f5
 
 pkgname = typora-with-plugin
