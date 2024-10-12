@@ -119,9 +119,9 @@
 
 # Kernel version
 _kernel_major=6.10
-_kernel_minor=11
+_kernel_minor=12
 # Clear Linux patches version
-_clr=11-1464
+_clr=12-1467
 # kernel_compiler_patch version
 _kernelcompilerpatch="20240221.2"
 # Source directory names
@@ -148,7 +148,8 @@ source=(
   "cl-linux::git+https://github.com/clearlinux-pkgs/linux.git#tag=${_src_clr}"
   "more-uarches-${_kernelcompilerpatch}.tar.gz::https://github.com/graysky2/kernel_compiler_patch/archive/${_kernelcompilerpatch}.tar.gz"
   #"git+https://github.com/openzfs/zfs.git#branch=zfs-2.2-release"
-  "git+https://github.com/openzfs/zfs.git"
+  #"git+https://github.com/openzfs/zfs.git"
+  "git+https://github.com/openzfs/zfs.git#tag=zfs-2.3.0-rc1"
   "0001-cjktty.patch::https://github.com/bigshans/cjktty-patches/raw/master/v6.x/cjktty-6.9.patch"
   "0002-cjktty-32.patch::https://github.com/bigshans/cjktty-patches/raw/master/cjktty-add-cjk32x32-font-data.patch"
 )
@@ -483,7 +484,7 @@ validpgpkeys=(
 )
 sha256sums=("9c00b10afafbe4a6aba5bd8a0ff3efd3f98c5c0ed23883c7d6b357bf04edf8eb"
             "SKIP"
-            "b0d817a660609b41bdee44e63e3e8dd077ad64cd6e22818e21fe1b8b97a6adb8"
+            "85994d53de093fff217962232b49629b6c5607eae03fa4e234fed740a16ff665"
             "SKIP"
             "1d3ac3e581cbc5108f882fcdc75d74f7f069654c71bad65febe5ba15a7a3a14f"
             'SKIP'
