@@ -2,13 +2,13 @@
 
 pkgname=aspisec
 pkgver=0.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Removes the traces left by offensive security tools.'
 arch=('any')
-url='https://acceis.github.io/aspisec/'
+url='https://noraj.github.io/aspisec/'
 license=('MIT')
 depends=('ruby' 'ruby-bundler')
-source=("https://github.com/Acceis/$pkgname/archive/refs/tags/$pkgver.tar.gz")
+source=("https://github.com/noraj/$pkgname/archive/refs/tags/$pkgver.tar.gz")
 b2sums=('aa31f3a6f2cce047d3de1e5a34be8c8b606241f8f5a9bf127193c5405a7e416232684db07d0ce6e772da1449cb23236564f2a8cf0d5f53fb0772ff864345d79a')
 install="$pkgname.install"
 
