@@ -67,5 +67,6 @@ package() {
     cd "${_pkgname}"
     make DESTDIR="${pkgdir}" install
 
-    rmdir "$pkgdir/usr/lib/ofono/plugins" || true
+    cd "$pkgdir/usr/lib"
+    rmdir -p "ofono/plugins" || true
 }
