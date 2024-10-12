@@ -8,7 +8,7 @@ pkgrel=1
 pkgdesc="🌊 Dive into creativity with AquaQuill, a user-friendly Markdown editor that transforms your text in real-time like waves shaping the shore!"
 arch=('any')
 url="https://github.com/Rujuu-prog/AquaQuill"
-license=("MIT")
+license=('LicenseRef-unknown')
 conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}=${pkgver%.r*}")
 depends=(
@@ -44,21 +44,22 @@ _ensure_local_nvm() {
 }
 build() {
     sed -e "
-        s/@electronversion@/${_electronversion}/
-        s/@appname@/${pkgname%-git}/
-        s/@runname@/app.asar/
-        s/@cfgdirname@/${pkgname%-git}/
-        s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/
+        s/@electronversion@/${_electronversion}/g
+        s/@appname@/${pkgname%-git}/g
+        s/@runname@/app.asar/g
+        s/@cfgdirname@/${pkgname%-git}/g
+        s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
     " -i "${srcdir}/${pkgname%-git}.sh"
     _ensure_local_nvm
     gendesk -q -f -n --pkgname="${pkgname%-git}" --pkgdesc="${pkgdesc}" --categories="Utility" --name="${_pkgname}" --exec="${pkgname%-git} %U"
     cd "${srcdir}/${pkgname//-/.}"
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
+    electronDist="/usr/lib/electron${_electronversion}"
     HOME="${srcdir}/.electron-gyp"
     mkdir -p "${srcdir}/.electron-gyp"
-    {
-        if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
+    if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
+        {
             echo -e '\n'
             echo 'registry "https://registry.npmmirror.com"'
             echo 'disturl "https://registry.npmmirror.com/-/binary/node/"'
@@ -72,12 +73,12 @@ build() {
             echo 'linkWorkspacePackages true'
             echo 'fetchRetries 3'
             echo 'fetchRetryTimeout 10000'
-        fi
-    } >> .yarnrc
+        } >> .yarnrc
+    fi
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
-    sed -i "/- AppImage/d;/- snap/d;s/- deb/- dir/g" electron-builder.yml
     NODE_ENV=development    yarn install --cache-folder "${srcdir}/.yarn_cache" --no-lockfile
-    NODE_ENV=production     yarn run build:linux
+    NODE_ENV=production     yarn electron-vite build
+    NODE_ENV=production     yarn electron-builder --linux dir -c.electronDist="${electronDist}" -c.electronVersion="${_electronversion}"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
@@ -85,5 +86,5 @@ package() {
     cp -r "${srcdir}/${pkgname//-/.}/dist/linux-"*/resources/app.asar.unpacked -t "${pkgdir}/usr/lib/${pkgname%-git}"
     install -Dm644 "${srcdir}/${pkgname//-/.}/build/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-git}.png"
     install -Dm644 "${srcdir}/${pkgname%-git}.desktop" -t "${pkgdir}/usr/share/applications"
-    install -Dm644 "${srcdir}/${pkgname//-/.}/dist/linux-"*/LICENSE* -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    #install -Dm644 "${srcdir}/${pkgname//-/.}/dist/linux-"*/LICENSE* -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
