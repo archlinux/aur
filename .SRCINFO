@@ -1,7 +1,7 @@
 pkgbase = obs-studio-git
 	pkgdesc = Free and open source software for video recording and live streaming.
 	pkgver = 30.2.3.r270.g4dd3cf6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/obsproject/obs-studio
 	arch = i686
 	arch = x86_64
@@ -59,9 +59,9 @@ pkgbase = obs-studio-git
 	source = git+https://github.com/Mixer/ftl-sdk.git
 	source = git+https://github.com/obsproject/obs-browser.git
 	source = git+https://github.com/obsproject/obs-websocket.git
-	md5sums = SKIP
-	md5sums = SKIP
-	md5sums = SKIP
-	md5sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
 
 pkgname = obs-studio-git

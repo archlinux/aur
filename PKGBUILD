@@ -2,9 +2,10 @@
 # Contributor: Jonathan Steel <jsteel at archlinux.org>
 # Contributor: ArcticVanguard <LideEmily at gmail dot com>
 # Contributor: ledti <antergist at gmail dot com>
+
 pkgname=obs-studio-git
 pkgver=30.2.3.r270.g4dd3cf6
-pkgrel=1
+pkgrel=2
 pkgdesc="Free and open source software for video recording and live streaming."
 arch=("i686" "x86_64")
 url="https://github.com/obsproject/obs-studio"
@@ -62,13 +63,13 @@ source=("$pkgname::git+https://github.com/obsproject/obs-studio.git#branch=maste
         "git+https://github.com/Mixer/ftl-sdk.git"
         "git+https://github.com/obsproject/obs-browser.git"
         "git+https://github.com/obsproject/obs-websocket.git")
-md5sums=("SKIP" "SKIP" "SKIP" "SKIP")
+sha256sums=("SKIP" "SKIP" "SKIP" "SKIP")
 
 pkgver() {
-  cd "$pkgname"
-  _version=$(git tag | grep -Ev '.*[a-z]{2}.*' | sort -V | tail -1)
-  _revision=$(git rev-list --count $_version..HEAD)
-  _hash=$(git rev-parse --short=7 HEAD)
+  cd "$_pkgsrc"
+  local _version=$(git tag | grep -Ev '.*[a-z]{2}.*' | sort -rV | head -1)
+  local _revision=$(git rev-list --count --cherry-pick "$_version"...HEAD)
+  local _hash=$(git rev-parse --short=7 HEAD)
   printf '%s.r%s.g%s' "${_version:?}" "${_revision:?}" "${_hash:?}"
 }
 
@@ -86,11 +87,14 @@ build() {
   cmake -B build -S $pkgname \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBDIR=lib \
+    -DENABLE_AJA=0 \
     -DENABLE_BROWSER=ON \
     -DENABLE_JACK=ON \
-    -DCEF_ROOT_DIR="/opt/cef-obs" \
     -DENABLE_LIBFDK=ON \
-    -DENABLE_AJA=0 \
+    -DCEF_ROOT_DIR="/opt/cef-obs" \
+    -DOBS_VERSION_OVERRIDE="${pkgver%%.r*}" \
+    -DBUILD_TESTS=OFF \
+    -DENABLE_UNIT_TESTS=OFF \
     -Wno-dev
 
   cmake --build build
