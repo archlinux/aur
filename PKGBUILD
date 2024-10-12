@@ -2,14 +2,14 @@
 
 _pkgname=ansible-dev-environment
 pkgname=ansible-dev-environment-git
-pkgver=24.9.0.r1.g4638116
+pkgver=24.9.0.r3.g62cdcd8
 pkgrel=1
 pkgdesc="A pip-like install for ansible collections."
 arch=('any')
 url="https://github.com/ansible/ansible-dev-environment"
 license=('GPLv3')
 depends=(python python-{jsonschema,onigurumacffi} ansible-{core,runner} git)
-makedepends=(python-{build,installer,setuptools,wheel,setuptools-scm})
+makedepends=(python-{build,installer,pip,setuptools,setuptools-scm,wheel})
 checkdepends=('python-pytest')
 optdepends=('ansible: check official ansible collections')
 provides=('ansible-dev-environment')
@@ -33,6 +33,7 @@ build() {
 
 package() {
   cd "${srcdir}/${_pkgname}"
+  echo python -m installer --destdir="$pkgdir" ${srcdir}/${_pkgname}/dist/*.whl
   python -m installer --destdir="$pkgdir" ${srcdir}/${_pkgname}/dist/*.whl
   install -Dm 644 LICENSE -t "${pkgdir}"/usr/share/licenses/${pkgname}
 }
