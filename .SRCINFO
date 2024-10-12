@@ -13,9 +13,9 @@ pkgbase = epson-inkjet-printer-escpr2
 	depends = ghostscript
 	optdepends = imagescan: scanner support
 	options = !libtool
-	source = https://download3.ebz.epson.net/dsc/f/03/00/16/12/30/3fd23c698b87f1587a56c51d3c116f552f8f79b8/epson-inkjet-printer-escpr2-1.2.18-1.tar.gz
+	source = https://download3.ebz.epson.net/dsc/f/03/00/16/25/42/e3f5ef2ecf59ba3d4b1ecbbfe20f776fec56137d/epson-inkjet-printer-escpr2-1.2.18-1.tar.gz
 	source = bug_x86_64.patch
-	sha256sums = 5031c1ef3a35e0b1c0e468dcfa81483a274e412b9d00d04b17c1a3dbb9b31ba2
+	sha256sums = 749ca1c0a94a219588933ef9b8a7e67c99f29b55f95ef8d13da91cfdeeea8fc4
 	sha256sums = 1baff7a23db91544fec6ff5a27ba8fe4f05958b7f2f95f0c087518b9c0e1b733
 
 pkgname = epson-inkjet-printer-escpr2
