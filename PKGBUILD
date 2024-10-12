@@ -3,12 +3,12 @@
 _basename=lilipod
 pkgname=${_basename}-git
 pkgver=0.0.3.r0.g68b04f2
-pkgrel=1
+pkgrel=2
 pkgdesc="Lilipod is a simple container manager, able to download, unpack and use OCI images from various container registries (git version)"
 arch=('any')
 url="https://github.com/89luca89/lilipod"
 license=('GPL-3.0')
-makedepends=('go')
+makedepends=('git' 'go')
 provides=("$_basename")
 conflicts=("$_basename")
 source=("$_basename::git+https://github.com/89luca89/lilipod.git")

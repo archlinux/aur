@@ -1,10 +1,11 @@
 pkgbase = lilipod-git
 	pkgdesc = Lilipod is a simple container manager, able to download, unpack and use OCI images from various container registries (git version)
 	pkgver = 0.0.3.r0.g68b04f2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/89luca89/lilipod
 	arch = any
 	license = GPL-3.0
+	makedepends = git
 	makedepends = go
 	provides = lilipod
 	conflicts = lilipod
