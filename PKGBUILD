@@ -2,9 +2,9 @@
 pkgname=ocat-bin
 _appname=OCAT
 _pkgname=OCAuxiliaryTools
-pkgver=20240001
-pkgrel=4
-pkgdesc="OpenCore Auxiliary Tools is a GUI-based Configurator for editing config.plist files for Acidanthera's OpenCore Boot Manager."
+pkgver=20240003
+pkgrel=1
+pkgdesc="OpenCore Auxiliary Tools is a GUI-based Configurator for editing config.plist files for Acidanthera's OpenCore Boot Manager.Prebuilt version."
 arch=("x86_64")
 url="https://github.com/ic005k/OCAuxiliaryTools"
 license=("MIT")
@@ -30,22 +30,26 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/ic005k/OCAuxiliaryTools/${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('648dd19968dbcaaa8c8eeb2fb129f1cc8b1b562b3f3e0b1e6dceb47837f4e627'
+sha256sums=('e882cf0aae77ed35302a0ef76f6a02785f8cfc96db0e9c025008fbbe092a326b'
             '3515a1c9e2ce8df51e80f0a03a0ffca92430c7dca6989ff20b16031d676a652b'
-            '8fd9eac47233169a5450bf97aee502fb5173512186d900d7ecc1f21b658db225')
+            'bafc8570aa7f973b5a662e2d2fa23d8d2fd291fa5d3f0265cbfeaf8e2d82ed76')
 build() {
-    sed -e "s|@appname@|${pkgname%-bin}|g" \
-        -e "s|@runname@|${_pkgname}|g" \
-        -i "${srcdir}/${pkgname%-bin}.sh"
+    sed -e "
+        s/@appname@/${pkgname%-bin}/g
+        s/@runname@/${_pkgname}/g
+    " -i "${srcdir}/${pkgname%-bin}.sh"
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
-    sed "s|Exec=${_pkgname}|Exec=${pkgname%-bin}|g;s|icon|${pkgname%-bin}|g;s|Application;|Utility;|g" \
-        -i "${srcdir}/squashfs-root/default.desktop"
+    sed -e "
+        s/Exec=${_pkgname}/Exec=${pkgname%-bin}/g
+        s/icon/${pkgname%-bin}/g
+        s/Application;/Utility;/g
+    " -i "${srcdir}/squashfs-root/default.desktop"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
-    install -Dm755 -d "${pkgdir}/opt/${pkgname%-bin}"
-    cp -r "${srcdir}/squashfs-root/"* "${pkgdir}/opt/${pkgname%-bin}"
+    install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
+    cp -Pr --no-preserve=ownership "${srcdir}/squashfs-root/"* "${pkgdir}/usr/lib/${pkgname%-bin}"
     install -Dm644 "${srcdir}/squashfs-root/default.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
     install -Dm644 "${srcdir}/squashfs-root/icon.png" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/${pkgname%-bin}.png"
     install -Dm644 "${srcdir}/LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
