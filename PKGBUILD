@@ -1,7 +1,7 @@
 # Maintainer: devome <evinedeng@hotmail.com>
 
 pkgname="metacubexd"
-pkgver=1.164.0
+pkgver=1.166.0
 pkgrel=1
 pkgdesc="Mihomo Dashboard, The Official One, XD"
 arch=("any")
@@ -14,7 +14,7 @@ optdepends=('clash: A rule-based tunnel in Go'
             'mihomo: Another Clash Kernel by MetaCubeX'
             'sing-box: The universal proxy platform')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('1c9066c4f107c558b2b5ec77707402985b2896e36b4be5ba0018fee5260eb2e0')
+sha256sums=('3d6e1c20ea43b9c9cb6ddedfc070f577fad1a31bfda63d6c20e6f92a5d91a4ec')
 
 build() {
     cd "${pkgname}-${pkgver}"
