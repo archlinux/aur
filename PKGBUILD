@@ -5,7 +5,7 @@
 pkgname=tvheadend
 # 4.3.0 is beta and older than 4.2.8
 pkgver=4.2.8
-pkgrel=6
+pkgrel=7
 pkgdesc="TV streaming server for Linux"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://tvheadend.org/"
@@ -53,20 +53,15 @@ prepare() {
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
 
-	# libavresample is not provided by the ffmpeg package,
-	# instead if you want to enable libav (i.e. for transcoding),
-	# install the libavresample package from the AUR, plus ffmpeg.
-	local _uselibav="--enable-libav"
-	if [ ! -f /usr/include/libavresample/avresample.h ]; then
-		_uselibav="--disable-libav"
-	fi
-	
+	# libswresample is disabled in Arch ffmpeg, therefore libav
+	# (which is e.g. used for transcoding) has to be disabled
 	./configure \
 		--prefix=/usr \
 		--sysconfdir=/etc \
 		--mandir=/usr/share/man \
 		--infodir=/usr/share/info \
 		--localstatedir=/var \
+		--disable-libav
 		--disable-ffmpeg_static \
 		--disable-libx264_static \
 		--disable-libx265_static \
@@ -77,7 +72,6 @@ build() {
 		--disable-libmfx_static \
 		--python=python3 \
 		--nowerror \
-		${uselibav}
 
 	make
 }
