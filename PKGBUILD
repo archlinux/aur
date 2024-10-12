@@ -2,7 +2,7 @@
 # based on https://aur.archlinux.org/packages/brother-mfc-l2710dw/
 pkgname='brother-hll3280cdw'
 pkgver='3.5.1'
-pkgrel=1
+pkgrel=2    
 pkgdesc='LPR and CUPS driver for the Brother HL-L3280CDW'
 url='https://support.brother.com/g/b/downloadend.aspx?c=us&lang=en&prod=hll3280cdw_us_as&os=127&dlid=dlf105746_000&flang=4&type3=10282'
 arch=('i686' 'x86_64')
@@ -17,7 +17,7 @@ package() {
 	_model="hll3280cdw"
 	mkdir -p "$pkgdir/usr/share"
 
-    # we let them put it in their preferred location and just symlink it
+    # we let them put it in their pr    eferred location and just symlink it
     cp -R "$srcdir/opt" "$pkgdir"
 
     ln -s "/opt/brother/Printers/$_model/lpd/$CARCH/br${_model}filter" "$pkgdir/opt/brother/Printers/$_model/lpd/"

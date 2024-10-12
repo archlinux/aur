@@ -1,7 +1,7 @@
 pkgbase = brother-hll3280cdw
 	pkgdesc = LPR and CUPS driver for the Brother HL-L3280CDW
 	pkgver = 3.5.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://support.brother.com/g/b/downloadend.aspx?c=us&lang=en&prod=hll3280cdw_us_as&os=127&dlid=dlf105746_000&flang=4&type3=10282
 	install = brother-hll3280cdw.install
 	arch = i686
@@ -9,6 +9,7 @@ pkgbase = brother-hll3280cdw
 	license = custom:Brother commercial license
 	depends = cups
 	depends = ghostscript
+	depends = perl
 	source = https://download.brother.com/welcome/dlf105746/hll3280cdwpdrv-3.5.1-1.i386.rpm
 	sha256sums = 798a6cbda2a21d7046c5e0a7a68a4aff16e0fbd75982d93ac2a74462efbbc8af
 	depends_x86_64 = lib32-glibc
