@@ -1,7 +1,7 @@
 pkgbase = perl-pdl
 	pkgdesc = The Perl Data Language
 	pkgver = 2.093
-	pkgrel = 1
+	pkgrel = 2
 	url = https://metacpan.org/release/PDL
 	arch = i686
 	arch = x86_64
@@ -39,6 +39,6 @@ pkgbase = perl-pdl
 	source = perl-pdl-2.093.tar.gz::https://cpan.metacpan.org/authors/id/E/ET/ETJ/PDL-2.093.tar.gz
 	source = perldl.conf
 	sha256sums = 7cc43ae8db553960da964c9964f043128c417f1151202ad3f74ae6c2b0fe588a
-	sha256sums = 1badf770a1afdc451cbab51bad70e513c60fb6d2a1b3f6fd98d5159e3c280db8
+	sha256sums = SKIP
 
 pkgname = perl-pdl

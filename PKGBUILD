@@ -9,7 +9,7 @@
 pkgname=perl-pdl
 _dist=PDL
 pkgver=2.093
-pkgrel=1
+pkgrel=2
 pkgdesc='The Perl Data Language'
 license=('GPL-1.0-or-later OR Artistic-1.0-Perl')
 
@@ -120,7 +120,7 @@ check() {
 
 package() {
   # Fixes first builds: "No such file or directory at blib/lib/PDL/Doc.pm line 741"
-  mkdir --parents "$pkgdir/usr/lib/perl5/5.38/vendor_perl/$_dist"
+  mkdir --parents "$pkgdir/usr/lib/perl5/$(perl -e '$^V =~ /v(\d+\.\d+)\.\d+/; print $1')/vendor_perl/$_dist"
 
   cd "$srcdir/$_dist-$pkgver"
   unset PERL5LIB PERL_MM_OPT PERL_LOCAL_LIB_ROOT
