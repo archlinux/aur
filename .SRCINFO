@@ -1,7 +1,7 @@
 pkgbase = sile-resilient
 	pkgdesc = Advanced book classes and packages for the SILE typesetting system
-	pkgver = 2.4.0
-	pkgrel = 2
+	pkgver = 2.5.0
+	pkgrel = 1
 	url = https://github.com/Omikhleia/resilient.sile
 	arch = any
 	license = MIT
@@ -20,7 +20,7 @@ pkgbase = sile-resilient
 	depends = sile-qrcode
 	depends = sile-silex
 	depends = sile-textsubsuper
-	source = https://github.com/Omikhleia/resilient.sile/archive/v2.4.0/resilient.sile-2.4.0.tar.gz
-	sha256sums = 7286bf9b8a58b0284e102eef496ebb8ea7ce69b0a0f6e824c3779b9bb762c912
+	source = https://github.com/Omikhleia/resilient.sile/archive/v2.5.0/resilient.sile-2.5.0.tar.gz
+	sha256sums = be40b095d34961056618c5bc23950b62c8286d27f9b5fe27b8a0e4f0a7a43518
 
 pkgname = sile-resilient
