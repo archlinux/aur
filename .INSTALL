@@ -4,9 +4,13 @@ post_install() {
   cat <<EOF
 
 -----------------------------------------------------------------------------
-oama version 0.14
 
-See release notes at: https://github.com/pdobsan/oama/releases/tag/0.14
+oama version 0.15
+
+If you are using the GPG backend then this relaese is a BREAKING change!
+Manual intervention is needed.
+
+See release notes at: https://github.com/pdobsan/oama/releases/tag/0.15
 
 -----------------------------------------------------------------------------
 
