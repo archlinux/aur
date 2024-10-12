@@ -2,8 +2,8 @@
 
 pkgbase=ch343ser-git
 pkgname=(ch343ser-dkms-git libch343ser-git)
-pkgver=r42.05b4e1f
-pkgrel=8
+pkgver=r44.6255aaa
+pkgrel=7
 pkgdesc="USB serial driver for ch342/ch343/ch344/ch347/ch347f/ch9101/ch9102/ch9103/ch9104, etc."
 arch=('any')
 url="https://github.com/WCHSoftGroup/ch343ser_linux"
@@ -17,14 +17,14 @@ options=(!strip !debug)
 
 pkgver() {
     cd "${srcdir}/${pkgbase}"
-    ( set -o pipefail
+    (
+        set -o pipefail
         git describe --long --tag --abbrev=7 2>/dev/null | sed 's/^v//g;s/\([^-]*-g\)/r\1/;s/-/./g' ||
-        printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+            printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
     )
 }
 
-prepare()
-{
+prepare() {
     git -C "${srcdir}/${pkgbase}" clean -dfx
 }
 
@@ -34,26 +34,27 @@ package_ch343ser-dkms-git() {
     conflicts=(${pkgname%-git})
     depends=(dkms)
     optdepends=('linux-headers: build the module against Arch kernel'
-  'linux-ck-headers: build the module against Linux-ck kernel'
-  'linux-lts-headers: build the module against LTS Arch kernel')
+        'linux-ck-headers: build the module against Linux-ck kernel'
+        'linux-lts-headers: build the module against LTS Arch kernel')
     arch=('any')
     cd "$srcdir/${pkgbase}/driver"
     rm -rf Makefile
-    install -Dm755 /dev/stdin  Makefile <<EOF
+    install -Dm755 /dev/stdin Makefile <<EOF
 obj-m := ch343.o
 
 KVER ?= \$(shell uname -r)
 KDIR ?= /lib/modules/\$(KVER)/build
 VERSION ?= \$(shell cat VERSION)
+SRC_DIR=\$(shell pwd)
 
 default:
-	\$(MAKE) -C \$(KDIR) M=\$(CURDIR) modules
+	\$(MAKE) -C \$(KDIR) M=\$(SRC_DIR) modules
 
 clean:
-	\$(MAKE) -C \$(KDIR) M=\$(CURDIR) clean
+	\$(MAKE) -C \$(KDIR) M=\$(SRC_DIR) clean
 
 install:
-	\$(MAKE) -C \$(KDIR) M=\$(CURDIR) modules_install
+	\$(MAKE) -C \$(KDIR) M=\$(SRC_DIR) modules_install
 
 unload:
 	/sbin/rmmod ch343
@@ -65,7 +66,7 @@ dkms.conf: dkms.conf.in
 	sed "s/@@VERSION@@/\$(VERSION)/" $^ > \$@
 
 dkms-add: dkms.conf
-	/usr/sbin/dkms add \$(CURDIR)
+	/usr/sbin/dkms add \$(SRC_DIR)
 
 dkms-build: dkms.conf
 	/usr/sbin/dkms build ch343/\$(VERSION)
@@ -106,9 +107,9 @@ ch343
 EOF
 
     # Blacklists conflicting module
-#     install -Dm644 /dev/stdin "${pkgdir}/usr/lib/modprobe.d/cdc_acm.conf" <<EOF
-# blacklist cdc_acm
-# EOF
+    #     install -Dm644 /dev/stdin "${pkgdir}/usr/lib/modprobe.d/cdc_acm.conf" <<EOF
+    # blacklist cdc_acm
+    # EOF
 }
 
 package_libch343ser-git() {
@@ -123,7 +124,7 @@ package_libch343ser-git() {
         mv x64 libch343ser
     fi
     if [ ${CARCH} = "aarch64" ]; then
-       mv aarch64 libch343ser
+        mv aarch64 libch343ser
     fi
 
     install -dm755 "${pkgdir}/usr/lib/" \
@@ -133,5 +134,5 @@ package_libch343ser-git() {
     install -Dm644 libch34xcfg.so -t "${pkgdir}/usr/lib/"
     install -Dm644 ch343_lib.h -t "${pkgdir}/usr/include/"
     install -Dm644 ch34x_parse_cfg.h -t "${pkgdir}/usr/include/"
-#     install -Dm644 ch9344_lib.h -t "${pkgdir}/usr/include/"
+    #     install -Dm644 ch9344_lib.h -t "${pkgdir}/usr/include/"
 }
