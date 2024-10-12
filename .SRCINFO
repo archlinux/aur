@@ -1,6 +1,6 @@
 pkgbase = zfs-utils-staging-git
 	pkgdesc = Userspace utilities for the Zettabyte File System (release staging branch).
-	pkgver = 2.3.0.rc1.g3a9fca901b
+	pkgver = 2.3.0pre.rc1.g3a9fca901b
 	pkgrel = 1
 	url = https://zfsonlinux.org/
 	arch = i686
@@ -25,4 +25,4 @@ pkgbase = zfs-utils-staging-git
 	sha256sums = 93e6ac4e16f6b38b2fa397a63327bcf7001111e3a58eb5fb97c888098c932a51
 
 pkgname = zfs-utils-staging-git
-	provides = zfs-utils=2.3.0
+	provides = zfs-utils=2.3.0pre

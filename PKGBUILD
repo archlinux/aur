@@ -21,7 +21,7 @@ else
 fi
 
 pkgname=${_pkgname}-utils-staging-git
-pkgver=2.3.0.rc1.g3a9fca901b
+pkgver=2.3.0pre.rc1.g3a9fca901b
 pkgrel=1
 pkgdesc="Userspace utilities for the Zettabyte File System (release staging branch)."
 arch=("i686" "x86_64" "aarch64")
@@ -63,7 +63,7 @@ pkgver() {
     else
         METAREL=$(grep -F Release: "${srcdir}/${_pkgname}/META" | tr -d '[:space:]')
         METAREL=${METAREL##*:}
-        printf "%s.%s.g%s" "${METAVER}" "${METAREL}" "$(git rev-parse --short HEAD)"
+        printf "%spre.%s.g%s" "${METAVER}" "${METAREL}" "$(git rev-parse --short HEAD)"
     fi
 }
 
@@ -96,7 +96,7 @@ build() {
 }
 
 package() {
-    provides=("${_pkgname}-utils=${pkgver%%.r*}")
+    provides=("${_pkgname}-utils=${pkgver%.*.*}")
 
     cd "${srcdir}/${_pkgname}"
 
