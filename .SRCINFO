@@ -1,6 +1,6 @@
 pkgbase = autocut-git
 	pkgdesc = Cut videos using a text editor.用文本编辑器剪视频.
-	pkgver = r102.0046fc7
+	pkgver = r110.ba2bb3b
 	pkgrel = 1
 	url = https://github.com/mli/autocut
 	arch = any
