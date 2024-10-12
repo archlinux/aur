@@ -4,3 +4,4 @@ pkg
 *.zst
 *.zst.sig
 *.rpm
+.idea
