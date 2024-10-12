@@ -1,8 +1,3 @@
-pre_install() {
-  echo "\x1b[31mRequires Ruby 3.1+, won't work with official ArchLinux Ruby."
-  echo "Set another Ruby runtime for example with asdf-vm.\x1b[0m"
-}
-
 post_install() {
   set -e
   cd /usr/share/aspisec

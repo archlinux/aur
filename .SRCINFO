@@ -1,7 +1,7 @@
 pkgbase = aspisec
 	pkgdesc = Removes the traces left by offensive security tools.
 	pkgver = 0.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://acceis.github.io/aspisec/
 	install = aspisec.install
 	arch = any

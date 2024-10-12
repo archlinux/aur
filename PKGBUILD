@@ -2,7 +2,7 @@
 
 pkgname=aspisec
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Removes the traces left by offensive security tools.'
 arch=('any')
 url='https://acceis.github.io/aspisec/'
