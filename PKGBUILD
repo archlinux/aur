@@ -2,7 +2,7 @@
 
 pkgname=hurrycurry-client
 pkgver=2.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A game about cooking (client)"
 arch=('any')
 url="https://codeberg.org/hurrycurry/hurrycurry"
@@ -20,7 +20,7 @@ build() {
     cd "hurrycurry"
     make client
     mkdir -p target/release
-    godot --headless --export-pack $CHOST ../target/release/client.pck client/project.godot
+    godot --headless --export-pack wasm32-unknown-unknown ../target/release/client.pck client/project.godot
 }
 package() {
     install -Dm755 hurrycurry-client "$pkgdir/usr/bin/hurrycurry-client"

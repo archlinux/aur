@@ -1,7 +1,7 @@
 pkgbase = hurrycurry-client
 	pkgdesc = A game about cooking (client)
 	pkgver = 2.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://codeberg.org/hurrycurry/hurrycurry
 	arch = any
 	license = AGPL3
