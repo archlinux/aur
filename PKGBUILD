@@ -7,7 +7,7 @@ url="https://harilvfs.github.io/carch/"
 license=('MIT')
 depends=('bash' 'libnewt')
 source=(
-    "https://github.com/harilvfs/carch/releases/latest/download/carch"
+    ""https://github.com/harilvfs/carch/releases/download/v3.0.2/carch
     "https://raw.githubusercontent.com/harilvfs/carch/refs/heads/main/carch.desktop"
     )
 sha256sums=('SKIP') 
