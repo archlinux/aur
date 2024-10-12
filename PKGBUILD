@@ -10,15 +10,18 @@ source=(
     "https://github.com/harilvfs/carch/releases/download/v3.0.2/carch"
     "https://raw.githubusercontent.com/harilvfs/carch/refs/heads/main/carch.desktop"
 )
-sha256sums=('SKIP' 'SKIP')  
+sha256sums=('SKIP' 'SKIP')  # Add one SKIP for each source
 
 build() {
+    # No build steps needed
     :
 }
 
 package() {
-    install -Dm755 "$srcdir/carch" "$pkgdir/usr/bin/carch"
+    # Install the main script
+    install -Dm755 "$srcdir/carch" "$pkgdir/usr/bin/carch-setup"
 
+    # Install the desktop file
     install -Dm644 "$srcdir/carch.desktop" "$pkgdir/usr/share/applications/carch.desktop"
 }
 
