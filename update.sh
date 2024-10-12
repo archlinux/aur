@@ -17,3 +17,7 @@ updpkgsums
 
 # Update .SRCINFO
 makepkg --printsrcinfo > .SRCINFO
+
+git add PKGBUILD .SRCINFO
+git commit -m "chore!: update to discord ${discordVersion}"
+git push origin master
