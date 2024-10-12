@@ -14,10 +14,15 @@ sha256sums=('SKIP')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
+
+    cd "$srcdir/$pkgname-$pkgver"
 }
 
 package() {
     cd "$srcdir/$pkgname-$pkgver"
-    install -Dm755 setup.sh "$pkgdir/usr/bin/carch"
+    install -Dm755 carch "$pkgdir/usr/bin/carch-setup"
+
+    cd "$srcdir/source2-$pkgver"
+    install -Dm755 desktop "$pkgdir/usr/bin/carch"
 }
 
