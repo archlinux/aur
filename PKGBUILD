@@ -1,6 +1,6 @@
 pkgname=opendnp3-git
 _name=${pkgname%-git}
-pkgver=2.3.1.r6.g44c06cb14
+pkgver=3.1.2.r6.gc1dc7165a
 pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc='DNP3 (IEEE-1815) protocol stack built with modern C++'
@@ -10,7 +10,7 @@ makedepends=('cmake' 'git')
 provides=("${_name}")
 conflicts=("${_name}")
 url="https://github.com/dnp3/${_name}"
-source=("${_name}::git://github.com/dnp3/${_name}.git")
+source=("${_name}::git+https://github.com/dnp3/${_name}.git")
 sha256sums=('SKIP')
 
 pkgver() {
