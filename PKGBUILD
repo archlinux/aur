@@ -39,7 +39,8 @@ source=("ftp://ftp.gnu.org/gnu/${pkgname}/${pkgname}-${pkgver}.tar.gz"{,.sig}
         "${pkgname}.sysusers"
         "${pkgname}.tmpfiles"
         "${pkgname}-user.conf"
-        "${pkgname}-user.service")
+        "${pkgname}-user.service"
+        "${pkgname}-transport.patch")
 install="${pkgname}.install"
 validpgpkeys=('3D11063C10F98D14BD24D1470B0998EF86F59B6A')
 sha256sums=('816b20b9fbc0e2d2d6a2c9e90183dd008b38c893967e3623e04d75fc4ce0afaa'
@@ -48,11 +49,17 @@ sha256sums=('816b20b9fbc0e2d2d6a2c9e90183dd008b38c893967e3623e04d75fc4ce0afaa'
             '66299dbbdd0219d2f5f0520e69fc094f38f789724d973c2f63a421257ea4f755'
             '5c34e1ecc6208900426f8e399e8c3edbef12cce19eba605fd7364ddb3547d9f0'
             '3f17b9ed2c1f8cc0f919fe477df99678c17778a31f1eeb56517e285e3cef30f2'
-            '60caee20b53bcc69522556b35ac3d35d89e28c49b9a22a2ed5121df4a2c33be5')
+            '60caee20b53bcc69522556b35ac3d35d89e28c49b9a22a2ed5121df4a2c33be5'
+            '506f09ef8032a5f1eddac30b247c8ac3c1ac9abd189fc42c880cee953d740ca5')
 
 prepare() {
 
 	cd "${srcdir}/${pkgname}-${pkgver}"
+
+	# See https://git.gnunet.org/gnunet.git/patch/?id=52a084ad6e003e8b0315c313796dbc8ce0e0a3e5
+	# See https://lists.gnu.org/archive/html/gnunet-developers/2024-10/msg00004.html
+	# Remove this patch with the next update
+	patch -Np1 -i ../"${pkgname}-transport.patch"
 
 	export GNUNET_PREFIX='/usr/lib'
 	autoreconf -i
