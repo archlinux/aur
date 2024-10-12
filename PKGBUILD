@@ -1,7 +1,7 @@
 # Maintainer: KokaKiwi <kokakiwi+aur at kokakiwi dot net>
 
 pkgname=goku
-pkgver=1.1.4
+pkgver=1.1.6
 pkgrel=1
 pkgdesc='HTTP load testing application'
 url='https://github.com/jcaromiq/goku'
@@ -10,8 +10,8 @@ arch=('x86_64' 'i686' 'arm' 'aarch64')
 depends=('gcc-libs' 'openssl')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/jcaromiq/goku/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('f09dd49d2e37dd0db9c184067fc198a5e109770d9e6ee53c99a39f5690e41fe6')
-b2sums=('0aa847d0e545dee3d8e67e6d2f6de37507296d8de027aa33af4800f70673c132987bba9db8c0607131586cc8d103389b1e1a17073052554a0dc607ddc4a42381')
+sha256sums=('c98e99975942d52932bb1b141aa19390183594793ac38c9db7b1871b06bd24c7')
+b2sums=('28dd35bd5b0e63c33014b9b10229daf7d10be0088d611f1dfd43b7bebeffa6d8f8a4f5e778f34d48827c8c1762813f942f0245e81947139323741793fa0da931')
 options=(!lto)
 
 case $CARCH in
