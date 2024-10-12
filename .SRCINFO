@@ -1,16 +1,17 @@
 pkgbase = hourglass
 	pkgdesc = Simple clock application that provides stopwatches, alarms, and timers
-	pkgver = 2.0.2
+	pkgver = 3.1.0
 	pkgrel = 1
 	url = https://github.com/sgpthomas/hourglass
 	arch = x86_64
 	license = GPL3
 	makedepends = meson
 	makedepends = vala
-	depends = granite
-	depends = libnotify
-	depends = libhandy
-	source = hourglass-2.0.2.tar.gz::https://github.com/sgpthomas/hourglass/archive/2.0.2.tar.gz
-	sha256sums = a4d9dcb95ab3b41b6e4f60d1fa5d83f70d5b533a5e1e579ba63e0830d55c4208
+	depends = gtk4
+	depends = libgee
+	depends = granite7
+	depends = libportal-gtk4
+	source = hourglass-3.1.0.tar.gz::https://github.com/sgpthomas/hourglass/archive/3.1.0.tar.gz
+	sha256sums = b58104bc983a329ca0036d7df974828f7fd4659ac425e33d02de8c46a2c571d9
 
 pkgname = hourglass
