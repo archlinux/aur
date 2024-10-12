@@ -2,13 +2,13 @@
 # Contributor: Talebian <talebian@sovietunion.xyz>
 
 pkgname=bottles-git
-pkgver=51.10.r0.g28ab196b
-pkgrel=2
+pkgver=51.14.r0.g6ac4156a
+pkgrel=1
 epoch=2
 pkgdesc="Easily manage wineprefix using environments"
 arch=(any)
 url="https://usebottles.com/"
-license=(GPL3)
+license=(GPL-3.0-only)
 depends=(
   blueprint-compiler
   cabextract
