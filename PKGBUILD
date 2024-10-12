@@ -1,7 +1,7 @@
 # Maintainer: Francisco Carpio <carpiofj at gmail dot com>
 pkgname=alpaca-git
 _pkgname=Alpaca
-pkgver=2.0.2.r11.g25eb152
+pkgver=2.6.0.r8.g4c10456
 pkgrel=1
 pkgdesc="An Ollama client made with GTK4 and Adwaita"
 arch=('any')
@@ -9,12 +9,14 @@ url="https://github.com/jeffser/Alpaca"
 license=('GPL-3.0')
 makedepends=('meson')
 depends=(
-  'ollama'
   'python-requests'
   'python-pillow'
   'python-pypdf'
   'python-pytube'
   'python-html2text'
+)
+optdepends=(
+  'ollama'
 )
 conflicts=('alpaca-ai')
 source=("git+https://github.com/jeffser/$_pkgname.git")
