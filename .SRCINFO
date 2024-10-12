@@ -1,7 +1,7 @@
 pkgbase = hurrycurry-server
 	pkgdesc = A game about cooking (server)
 	pkgver = 2.1.1
-	pkgrel = 4
+	pkgrel = 6
 	url = https://codeberg.org/hurrycurry/hurrycurry
 	arch = i686
 	arch = x86_64

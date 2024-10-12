@@ -2,7 +2,7 @@
 
 pkgname=hurrycurry-server
 pkgver=2.1.1
-pkgrel=4
+pkgrel=6
 pkgdesc="A game about cooking (server)"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://codeberg.org/hurrycurry/hurrycurry"
@@ -34,8 +34,8 @@ build() {
     cargo +nightly build --frozen --release --target "$CHOST" --bin hurrycurry-registry
     cargo +nightly build --frozen --release --target "$CHOST" --bin hurrycurry-discover
     make -C data all
+    make -C test-client
     make -C data recipes/default.svg
-    esbuild test-client/main.ts --bundle --outdir=test-client
 }
 package() {
     install -Dm755 hurrycurry/target/$CHOST/release/hurrycurry-server "$pkgdir/usr/bin/hurrycurry-server"
@@ -47,7 +47,10 @@ package() {
     install -Dm644 sysusers.conf "$pkgdir/usr/lib/sysusers.d/hurrycurry.conf"
     install -Dm644 tmpfiles.conf "$pkgdir/usr/lib/tmpfiles.d/hurrycurry.conf"
     install -Dm644 hurrycurry/COPYING "$pkgdir/usr/share/licenses/hurrycurry-server/COPYING"
-    install -Dm664 -t "$pkgdir/usr/share/hurrycurry/test-client" hurrycurry/test-client/* 
+    install -Dm664 hurrycurry/test-client/main.js "$pkgdir/usr/share/hurrycurry/test-client/main.js"
+    install -Dm664 hurrycurry/test-client/index.html "$pkgdir/usr/share/hurrycurry/test-client/index.html"
+    install -dm755 "$pkgdir/usr/share/hurrycurry/test-client/locale"
+    install -Dm664 -t "$pkgdir/usr/share/hurrycurry/test-client/locale" hurrycurry/test-client/locale/*
     install -Dm644 hurrycurry/data/index.yaml "$pkgdir/usr/share/hurrycurry/data/index.yaml"
     install -Dm664 -t "$pkgdir/usr/share/hurrycurry/data/recipes" hurrycurry/data/recipes/*.yaml 
     install -Dm664 -t "$pkgdir/usr/share/hurrycurry/data/maps" hurrycurry/data/maps/*.yaml 
