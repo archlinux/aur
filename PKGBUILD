@@ -25,6 +25,9 @@ depends=(
     gdbm
     gtkspell3
     python
+    cairo
+    hicolor-icon-theme
+    gdk-pixbuf2
 )
 
 optdepends=(
