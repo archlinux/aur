@@ -1,0 +1,10 @@
+pkgbase = carch
+	pkgdesc = A script to automate Arch Linux setup
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://harilvfs.github.io/carch/
+	arch = x86_64
+	license = MIT
+	depends = bash
+
+pkgname = carch
