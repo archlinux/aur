@@ -1,13 +1,13 @@
 # Maintainer: Neboer <rubinposter@gmail.com>
 pkgname=dns2hostssyncer-git
-pkgver=2.1
-pkgrel=3
+pkgver=2.3
+pkgrel=1
 pkgdesc="A tool to sync DNS records with the hosts file using PowerDNS Admin API"
 arch=('x86_64')
 url="https://github.com/Neboer/DNS2HostsSyncer"
 license=('MIT')
-depends=('nlohmann-json' 'spdlog' 'argparse' 'restclient-cpp-git')
-makedepends=('meson' 'ninja')
+depends=('nlohmann-json' 'spdlog' 'argparse' 'curl')
+makedepends=('meson' 'ninja' 'cmake')
 provides=("dns2hostssyncer")
 conflicts=("dns2hostssyncer")
 
@@ -19,7 +19,7 @@ backup=('etc/d2hs/d2hs.json')
 pkgver() {
 	cd "$srcdir/$_gitname"
 	local v
-  v="$(git describe --tags)"
+        v="$(git describe --tags)"
 	v="${v#v}"
 	printf %s "${v//-/+}"
 }
