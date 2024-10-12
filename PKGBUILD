@@ -3,8 +3,8 @@
 _pkgauthor=pythops
 _pkgname=oryx
 pkgname=${_pkgname}-bin
-pkgver=0.2
-pkgrel=2
+pkgver=0.3
+pkgrel=1
 pkgdesc="A TUI for sniffing network traffic using eBPF"
 arch=('x86_64' 'aarch64')
 url="https://github.com/${_pkgauthor}/${_pkgname}"
@@ -20,10 +20,10 @@ source=("LICENSE-${pkgver}::${_urlraw}/LICENSE"
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}::${url}/releases/download/v${pkgver}/${_pkgname}-${arch[0]}-unknown-linux-musl")
 source_aarch64=("${_pkgname}-${arch[0]}-${pkgver}::${url}/releases/download/v${pkgver}/${_pkgname}-${arch[1]}-unknown-linux-musl")
 sha512sums=('d361e5e8201481c6346ee6a886592c51265112be550d5224f1a7a6e116255c2f1ab8788df579d9b8372ed7bfd19bac4b6e70e00b472642966ab5b319b99a2686'
-            'f0aec270c7264824170fd114f68e97950fcdc1d511c4b24b8f4993c8f08348acbe91d2915134d8a3ab38e7b3d8b14339b0b631b7f6dedb8e0b63e4414c7dfedc'
-            '9a9d07093e77a1cc19b2cbf3136982270d1d802ebcb1575b1affd206d43501dfafcc7eaa0da4fd950c66f6ef4eb70494314417122044d0c40e760ea8e26b3f75')
-sha512sums_x86_64=('fe8b18122fec7fe2f155b7cbbc1920f6daa7a69936c8e978ad527aa10cca6960f01a685619c9744b2b36337905124c0e8840fd5e858b9ed5e79a6004a670fbfb')
-sha512sums_aarch64=('8845d3413ccc74e7d38a513dea7054134dc3e040a02ef59169e522b303ff88202452f4370b41aaaea7975dfe3b06400b61d0018cf81935c164bd51a07b1eb71d')
+            '60f3720bba49e2e09a319ebdbfe72738b7f620b581d6f07597a7043378b28bb69dfbb85d433c50082371b627ce99a8dab57f63018f3558c9bbb644fb4b326bac'
+            'ce8a4278a38cd89b8e8339312624f18a276864783dbaa05d9f1421402a69670a4090a64e3094088541523bc671aef07136077b28a886a6dc1a55cff2a4577306')
+sha512sums_x86_64=('6c57207ebfb95130203b5474030508ea99f96d65a9a527d8334935a189f8f62aba834766d74bed1621bbc5591fdfb019a439d4065a68ed86c2fdac4eb5c137f3')
+sha512sums_aarch64=('6c57207ebfb95130203b5474030508ea99f96d65a9a527d8334935a189f8f62aba834766d74bed1621bbc5591fdfb019a439d4065a68ed86c2fdac4eb5c137f3')
 
 
 prepare() {
