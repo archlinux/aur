@@ -1,0 +1,9 @@
+# http://standards.freedesktop.org/desktop-entry-spec/desktop-entry-spec-1.0.html
+[Desktop Entry]
+Type=Application
+Version=3.0.0
+Exec=hlam
+Icon=hlam
+Name=Half-Life Asset Manager
+Comment=Application for viewing and editing Half-Life 1 models
+Categories=Game;
