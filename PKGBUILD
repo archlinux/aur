@@ -18,15 +18,16 @@ source=("$_pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('c37a8c52bd7e81e5d12aa1c56f3c14496dde2c52198ab98a16369ee45890e8bd')
 
 prepare() {
-    export RUSTUP_TOOLCHAIN=stable
-    cd "$_pkgname-$pkgver/build"
-    cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+  export RUSTUP_TOOLCHAIN=stable
+  cd "$_pkgname-$pkgver"
+  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
   export RUSTUP_TOOLCHAIN=stable
   export CFLAGS="-mtune=generic -O2 -pipe -fexceptions -Wp,-D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security"
   # Doesn't build with -fno-plt
+  cd "$_pkgname-$pkgver/"
   cmake -B build -DLLDB_PACKAGE=/usr -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr -Wno-dev
   cmake --build build --target adapter
 }
