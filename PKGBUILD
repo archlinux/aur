@@ -47,6 +47,7 @@ build() {
   cmake -S ${_pkgname} -B build-sdl -G Ninja \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_INSTALL_SYSCONFDIR=/etc \
     -DCMAKE_SKIP_RPATH=TRUE \
     -DENABLE_SDL=TRUE \
     -DENABLE_WX=FALSE \
@@ -57,6 +58,7 @@ build() {
   cmake -S ${_pkgname} -B build-wx -G Ninja \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_INSTALL_SYSCONFDIR=/etc \
     -DCMAKE_SKIP_RPATH=TRUE \
     -DENABLE_SDL=FALSE \
     -DENABLE_WX=TRUE \
