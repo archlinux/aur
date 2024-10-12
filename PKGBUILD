@@ -11,7 +11,7 @@ _url="https://github.com/csmall/${pkgname}"
 license=('GPL-2.0-or-later')
 makedepends=('libmpdclient' 'libvorbis')
 depends=('dbus-glib' 'flac' 'gdk-pixbuf2' 'glib2' 'glibc' 'gsl' 'gtk2'
-         'libaudclient' 'mpg321')
+         'libaudclient' 'mpg123')
 optdepends=('audacious: small and fast audio player which supports lots of formats'
             'libmpdclient: Music Player Daemon'
             'vorbis-tools: support .ogg files')
