@@ -13,48 +13,53 @@ conflicts=(modem-manager-gui)
 provides=(modem-manager-gui)
 
 makedepends=(
-        mercurial
+    mercurial
 )
 
 depends=(
 	gtk3
 	glib2
 	gdbm
-	po4a
-	itstool
 	gtkspell3
 )
 
+optdepends=(
+    libayatana-appindicator
+	po4a
+	itstool
+)
+
 source=("${_pkgname}::hg+http://hg.code.sf.net/p/modem-manager-gui/code"
-        "fix_notification_segfault.patch"
-        "fix_segfault_on_DNS_entries.patch")
+    "fix_notification_segfault.patch"
+    "fix_segfault_on_DNS_entries.patch")
 
 sha256sums=('SKIP'
-            '593ba269cef6168c14e4bdd5098753b3603a78fe702cd20bd634cdd213198114'
-            '2a21a7ab4ae78e4296a28e46a337eee042a8d7855a8af5d116ebcfcd989e9892')
+    '593ba269cef6168c14e4bdd5098753b3603a78fe702cd20bd634cdd213198114'
+    '2a21a7ab4ae78e4296a28e46a337eee042a8d7855a8af5d116ebcfcd989e9892'
+)
 
 pkgver() {
-  cd "${_pkgname}"
-  printf "r%s.%s" "$(hg identify -n)" "$(hg identify -i)"
+    cd "${_pkgname}"
+    printf "r%s.%s" "$(hg identify -n)" "$(hg identify -i)"
 }
 
 prepare() {
- cd "${_pkgname}"
- patch --forward --strip=1 --input="${srcdir}/fix_segfault_on_DNS_entries.patch"
- patch --forward --strip=1 --input="${srcdir}/fix_notification_segfault.patch"
+    cd "${_pkgname}"
+    patch --forward --strip=1 --input="${srcdir}/fix_segfault_on_DNS_entries.patch"
+    patch --forward --strip=1 --input="${srcdir}/fix_notification_segfault.patch"
 }
 
 build() {
-  cd "${_pkgname}"
-  #meson build
-  #cd build
-  #ninja
-  sh configure
-  make
+    cd "${_pkgname}"
+    #meson build
+    #cd build
+    #ninja
+    sh configure
+    make
 }
 
 
 package() {
-  cd "${_pkgname}"
-  make DESTDIR="${pkgdir}" install
+    cd "${_pkgname}"
+    make DESTDIR="${pkgdir}" install
 }
