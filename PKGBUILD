@@ -3,7 +3,7 @@
 pkgbase=ch343ser-git
 pkgname=(ch343ser-dkms-git libch343ser-git)
 pkgver=r44.6255aaa
-pkgrel=7
+pkgrel=9
 pkgdesc="USB serial driver for ch342/ch343/ch344/ch347/ch347f/ch9101/ch9102/ch9103/ch9104, etc."
 arch=('any')
 url="https://github.com/WCHSoftGroup/ch343ser_linux"
@@ -11,8 +11,10 @@ license=('GPL-2.0-or-later')
 depends=(dkms
     glibc)
 makedepends=('git')
-source=("${pkgbase}::git+${url}.git")
-sha256sums=('SKIP')
+source=("${pkgbase}::git+${url}.git"
+    "ch343ser-dkms-git.install")
+sha256sums=('SKIP'
+    '1f0445a1d1d7f54cac4be51b88d2af2e23e591893b42cbf8fe3b83079246ccb2')
 options=(!strip !debug)
 
 pkgver() {
@@ -37,6 +39,7 @@ package_ch343ser-dkms-git() {
         'linux-ck-headers: build the module against Linux-ck kernel'
         'linux-lts-headers: build the module against LTS Arch kernel')
     arch=('any')
+    install=${pkgname}.install
     cd "$srcdir/${pkgbase}/driver"
     rm -rf Makefile
     install -Dm755 /dev/stdin Makefile <<EOF
@@ -105,7 +108,7 @@ EOF
     install -Dm644 /dev/stdin "${pkgdir}/etc/modules-load.d/ch343.conf" <<EOF
 ch343
 EOF
-
+    install -Dm644 "${srcdir}/${pkgbase}/udev/99-ch34x.rules" -t "${pkgdir}/usr/lib/udev/rules.d/"
     # Blacklists conflicting module
     #     install -Dm644 /dev/stdin "${pkgdir}/usr/lib/modprobe.d/cdc_acm.conf" <<EOF
     # blacklist cdc_acm

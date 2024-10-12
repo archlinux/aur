@@ -1,0 +1,15 @@
+# h7toolpc-wine.install
+info() {
+    echo -e "USB serial driver for ch342/ch343/ch344/ch347/ch347f/ch9101/ch9102/ch9103/ch9104, etc."
+    echo -e "非 root 用户需要将用户添加到 uucp 用户组:"
+    echo -e "Non-root users need to be added to the uucp usergroup:"
+    echo -e "  sudo gpasswd -a \$USER uucp"
+    udevadm control --reload
+}
+post_install() {
+    info
+}
+post_upgrade() {
+    info
+}
+
