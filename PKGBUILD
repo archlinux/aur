@@ -9,7 +9,7 @@ arch=('x86_64')
 url="https://${pkgname}.sourceforge.net"
 _url="https://github.com/csmall/${pkgname}"
 license=('GPL-2.0-or-later')
-makedepends=('libmpdclient' 'libvorbis')
+makedepends=('audacious' 'libmpdclient' 'libvorbis')
 depends=('dbus-glib' 'flac' 'gdk-pixbuf2' 'glib2' 'glibc' 'gsl' 'gtk2'
          'libaudclient' 'mpg123')
 optdepends=('audacious: small and fast audio player which supports lots of formats'

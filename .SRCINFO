@@ -5,6 +5,7 @@ pkgbase = gjay
 	url = https://gjay.sourceforge.net
 	arch = x86_64
 	license = GPL-2.0-or-later
+	makedepends = audacious
 	makedepends = libmpdclient
 	makedepends = libvorbis
 	depends = dbus-glib
