@@ -1,7 +1,7 @@
 pkgbase = perl-net-freedb
 	pkgdesc = Net::FreeDB is an oo-based module to interface with FreeDB servers
 	pkgver = 0.10
-	pkgrel = 1
+	pkgrel = 2
 	url = https://metacpan.org/release/Net-FreeDB
 	arch = any
 	license = GPL

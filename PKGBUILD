@@ -2,7 +2,7 @@
 
 pkgname=perl-net-freedb
 pkgver=0.10
-pkgrel=1
+pkgrel=2
 pkgdesc='Net::FreeDB is an oo-based module to interface with FreeDB servers'
 _dist=Net-FreeDB
 arch=('any')
