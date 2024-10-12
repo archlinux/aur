@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 # Contributor: Carl Smedstad <carl.smedstad at protonmail dot com>
 pkgname=tbls-bin
-pkgver=1.77.0
+pkgver=1.78.0
 pkgrel=1
-pkgdesc="CI-Friendly tool for documenting a database"
+pkgdesc="CI-Friendly tool for documenting a database.Written in Go.Prebuilt version."
 arch=(
   'aarch64'
   'x86_64'
@@ -19,8 +19,8 @@ source=(
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}-1_arm64.deb")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}-1_amd64.deb")
 sha256sums=('6eefa0bec6e7c3654bdc29cb8f8c4adbc1327d2e912b532aacc68f6e2fa9d63c')
-sha256sums_aarch64=('59da25e1188fde332cfdd00e90468c443ff2256b1ce27503f3f07d7ed629a2bd')
-sha256sums_x86_64=('eb10489296fec94197fd707699e5787ff599aee02b8e0f31276fa8a38127c846')
+sha256sums_aarch64=('fc66e247cf55fb37259ece2d0cb43b438ce0bd52bc5b73d485b46339b012f2b3')
+sha256sums_x86_64=('9e15af2b4287ef47e7867f0f78295cf3b62359dec11623260e9d8c0f9dedba84')
 build() {
     bsdtar -xf "${srcdir}/data."*
     "${srcdir}/usr/bin/${pkgname%-bin}" completion bash > "${srcdir}/${pkgname%-bin}.bash"
