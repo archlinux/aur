@@ -1,3 +1,5 @@
+disables use of /etc/sysconfig
+---
 diff --git a/rpm/tvheadend.service b/rpm/tvheadend.service
 index cd2ff3445..47f4183bb 100644
 --- a/rpm/tvheadend.service

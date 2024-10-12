@@ -1,80 +1,95 @@
-# Maintainer:  Louis Tim Larsen <louis(a)louis.dk>, Alex Mekkering <amekkering at gmail dot com>
+# Maintainer: fossdd <fossdd@pwned.life>
+# Contributor: Louis Tim Larsen <louis(a)louis.dk>, Alex Mekkering <amekkering at gmail dot com>
 # Contributor: Bjoern Franke <bjo@nord-west.org>
 
 pkgname=tvheadend
-
+# 4.3.0 is beta and older than 4.2.8
 pkgver=4.2.8
-pkgrel=5
+pkgrel=6
 pkgdesc="TV streaming server for Linux"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
-url="https://tvheadend.org/projects/tvheadend"
-license=('GPL3')
-depends=('avahi' 'ffmpeg' 'uriparser' 'openssl' 'tar')
-makedepends=('git' 'wget' 'python')
-optdepends=('xmltv: For an alternative source of programme listings'
-	    'libiconv: For conversion of character encodings'
-        'libavresample.so: For use of libav (i.e. for transcoding)'
+url="https://tvheadend.org/"
+license=('GPL-3.0-only')
+depends=(
+	'avahi'
+	'dbus'
+	'openssl'
+	'uriparser'
 )
-provides=('tvheadend')
-conflicts=('tvheadend-git')
-install=tvheadend.install
-
-source=("https://github.com/tvheadend/tvheadend/archive/v$pkgver.tar.gz"
-	"tvheadend-service.patch"
-	"tvheadend-4.2.8-fno-common.patch"
-	"libhdhomerun-20180327.patch"
+makedepends=(
+	'git'
+	'python'
+	'wget'
+)
+optdepends=(
+	'libiconv: For conversion of character encodings'
+	'xmltv: For an alternative source of programme listings'
+)
+source=("$pkgname-$pkgver.tar.gz::https://github.com/tvheadend/tvheadend/archive/v$pkgver.tar.gz"
+	"tvheadend.sysusers"
+	"service-no-sysconfig.patch"
+	"gcc10.patch"
+	"update-vendored-libhdhomerun.patch"
 )
 sha256sums=('1aef889373d5fad2a7bd2f139156d4d5e34a64b6d38b87b868a2df415f01f7ad'
-            '23897afe6a6aa1382d0d37bf2c38bd4d04deabcb2bcc1f966b57323ffdc23f2c'
-            '79a6f04859050830f2b0a8f3c025841627d8ab91fe2f5f73109cd72b02bb4ea8'
-            '6c03e7c6cc0d5af1053bf428b004886fcbcd658a9e59a504aa028137de1f0343')
+            'fcdd5803857ccecd69fdacf6588b05807948939fc9e23e0d78b432e67fe45ad6'
+            'c7fa91e1a93e8b7a4d623bb56de5a3d19486d2621b15d6a1348c8bd4cdacccb8'
+            '67feec28c10ae8bf9273f44af98675e89f7fd3df306d8c7d990450bbe21c96f9'
+            'fba1b02700a0bee5c456e6e0904fd371978b92890e0a7d44b43b46d162f0fe1f')
 
 prepare() {
-    cd "${srcdir}/${pkgname}-${pkgver}"
+	cd "${srcdir}/${pkgname}-${pkgver}"
 
-    # Patch tvheadend.service for Arch Linux
-    patch -p1 -i "${srcdir}/tvheadend-service.patch"
+	# Disables use of /etc/sysconfig
+	patch -p1 -i "${srcdir}/service-no-sysconfig.patch"
 
-    # Fix building with -fno-common (default from GCC 10)
-    patch -p1 -i "${srcdir}/tvheadend-4.2.8-fno-common.patch"
+	# Fix building with -fno-common (default from GCC 10)
+	patch -p1 -i "${srcdir}/gcc10.patch"
 
-    # Change libhdhomerun source from 20171221 to 20180327
-    patch -i "${srcdir}/libhdhomerun-20180327.patch"
-
-    # detect libavresample and prepare for using it
-    uselibav=""
-    if [ -f /usr/include/libavresample/avresample.h ]; then
-        echo "libavresample found, enabling use of libav!"
-        CFLAGS="${CFLAGS} -Wno-error=stringop-truncation"
-    else
-        echo "libavresample not found, disabling use of libav! Please install libavresample to enable libav (i.e. for transcoding)."
-        uselibav="--disable-libav"
-    fi
-
-    ./configure --prefix=/usr --python=python3 \
-        --disable-ffmpeg_static \
-        --disable-libx264_static \
-        --disable-libx265_static \
-        --disable-libvpx_static \
-        --disable-libtheora_static \
-        --disable-libvorbis_static \
-        --disable-libfdkaac_static \
-        ${uselibav}
+	# Change libhdhomerun source from 20171221 to 20180327
+	patch -i "${srcdir}/update-vendored-libhdhomerun.patch"
 }
 
 build() {
-    CFLAGS="$CFLAGS -Wno-error=implicit-function-declaration -Wno-error=use-after-free"
-    cd "${srcdir}/${pkgname}-${pkgver}"
-    make
+	cd "${srcdir}/${pkgname}-${pkgver}"
+
+	# libavresample is not provided by the ffmpeg package,
+	# instead if you want to enable libav (i.e. for transcoding),
+	# install the libavresample package from the AUR, plus ffmpeg.
+	local _uselibav="--enable-libav"
+	if [ ! -f /usr/include/libavresample/avresample.h ]; then
+		_uselibav="--disable-libav"
+	fi
+	
+	./configure \
+		--prefix=/usr \
+		--sysconfdir=/etc \
+		--mandir=/usr/share/man \
+		--infodir=/usr/share/info \
+		--localstatedir=/var \
+		--disable-ffmpeg_static \
+		--disable-libx264_static \
+		--disable-libx265_static \
+		--disable-libvpx_static \
+		--disable-libtheora_static \
+		--disable-libvorbis_static \
+		--disable-libfdkaac_static \
+		--disable-libmfx_static \
+		--python=python3 \
+		--nowerror \
+		${uselibav}
+
+	make
 }
 
 package() {
-    cd "${srcdir}/${pkgname}-${pkgver}"
-    make DESTDIR="$pkgdir" install
+	cd "${srcdir}/${pkgname}-${pkgver}"
+	make DESTDIR="$pkgdir" install
 
-    # Fix permission mode of man-page
-    chmod 0644 "${pkgdir}/usr/share/man/man1/tvheadend.1"
+	# systemd
+	install -Dvm644 rpm/tvheadend.service "$pkgdir"/usr/lib/systemd/system/tvheadend.service
+	install -Dvm644 "$srcdir"/tvheadend.sysusers "$pkgdir"/usr/lib/sysusers.d/tvheadend.conf
 
-    # Install service file
-    install -Dm644 "rpm/tvheadend.service" "$pkgdir/usr/lib/systemd/system/tvheadend.service"
+	# Fix permission mode of man-page
+	chmod 0644 "${pkgdir}/usr/share/man/man1/tvheadend.1"
 }
