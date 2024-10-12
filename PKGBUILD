@@ -4,7 +4,7 @@ pkgname=${_pkgname}-bin
 
 pkgver="2.0.53"
 _hotfix=0
-_pkgrel=0
+_pkgrel=1
 pkgrel="$((_pkgrel+_hotfix))"
 replace=('sast-evento-appimage')
 provides=("${_pkgname}")
@@ -23,4 +23,5 @@ sha256sums_x86_64=('0798e231166d66a652f7e5404454be2a31c6e0f260ffc83c4ee70af2f791
 
 package() {
     cp -r "${srcdir}"/* "${pkgdir}"
+    rm -rf "${pkgdir}"/*.pkg.*
 }

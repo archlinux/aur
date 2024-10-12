@@ -1,7 +1,7 @@
 pkgbase = sast-evento-bin
 	pkgdesc = An event management system developed and used by NJUPT SAST (binary package)
 	pkgver = 2.0.53
-	pkgrel = 0
+	pkgrel = 1
 	url = https://github.com/NJUPT-SAST/sast-evento
 	arch = x86_64
 	license = MIT
