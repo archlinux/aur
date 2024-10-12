@@ -1,0 +1,18 @@
+pkgbase = python-ahrs
+	pkgdesc = Attitude and Heading Reference Systems in Python
+	pkgver = 0.3.1
+	pkgrel = 1
+	url = https://github.com/Mayitzin/ahrs
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	makedepends = python-wheel
+	makedepends = python-build
+	makedepends = python-installer
+	depends = python-numpy
+	depends = python-scipy
+	depends = python-matplotlib
+	source = ahrs-0.3.1.tar.gz::https://github.com/Mayitzin/ahrs/archive/v0.3.1.tar.gz
+	sha256sums = 205c5751f8db7621a11dbdc451b5ff51ec53a9b065e59153b64cf5704da3a175
+
+pkgname = python-ahrs
