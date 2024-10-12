@@ -1,7 +1,8 @@
+# Maintainer: Julio Gonzalez juliolokooo at gmail dot com
 # Contributor: Johannes Dewender  arch at JonnyJD dot net
 pkgname=indicator-keylock
 pkgver=3.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="An indicator that displays the status of the keyboard lock keys"
 arch=('x86_64' 'i686')
 url="https://launchpad.net/indicator-keylock/"
