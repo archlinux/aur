@@ -1,28 +1,20 @@
-# Maintainer: Your Name <your.email@example.com>
 pkgname="carch"
-pkgver="1.0.0"
-pkgrel="1"
+pkgver="3.0.2" 
+pkgrel=1
 pkgdesc="A script to automate Arch Linux setup"
 arch=('x86_64')
 url="https://harilvfs.github.io/carch/"
 license=('MIT')
-depends=('bash')  
-source=()
-sha256sums=()
+depends=('bash' 'whiptail')
+source=("https://github.com/harilvfs/carch/releases/latest/download/carch")
+sha256sums=('SKIP') 
 
 build() {
-    echo "Downloading setup.sh..."
-    curl -L -o setup.sh "https://chalisehari.com.np/carch" || {
-        echo "Failed to download setup.sh"
-        exit 1
-    }
-
-    chmod +x setup.sh
-
-    ./setup.sh
+    cd "$srcdir/$pkgname-$pkgver"
 }
 
 package() {
-    install -Dm755 setup.sh "$pkgdir/usr/bin/carch-setup"
+    cd "$srcdir/$pkgname-$pkgver"
+    install -Dm755 setup.sh "$pkgdir/usr/bin/carch"
 }
 

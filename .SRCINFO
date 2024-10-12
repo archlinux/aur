@@ -1,10 +1,13 @@
 pkgbase = carch
 	pkgdesc = A script to automate Arch Linux setup
-	pkgver = 1.0.0
+	pkgver = 3.0.2
 	pkgrel = 1
 	url = https://harilvfs.github.io/carch/
 	arch = x86_64
 	license = MIT
 	depends = bash
+	depends = whiptail
+	source = https://github.com/harilvfs/carch/releases/latest/download/carch
+	sha256sums = SKIP
 
 pkgname = carch
