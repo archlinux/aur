@@ -65,6 +65,9 @@ prepare() {
     patch -Np1 < "../$src"
   done
 
+  # fix manual pages path
+  sed -i -e 's|man/man1|share/man/man1|' setup.py
+
   dos2unix examples/attrib_plugin.py
 }
 
