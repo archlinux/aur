@@ -1,0 +1,5 @@
+[vacuum]
+source = "github"
+github = "daveshanley/vacuum"
+use_max_tag = true
+prefix = "v"
