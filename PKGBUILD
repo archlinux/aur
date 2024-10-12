@@ -20,60 +20,10 @@ _localmodcfg=
 # Compile using clang rather than gcc
 _clangbuild=
 
-# Optionally select a sub architecture by number or leave blank which will
-# require user interaction during the build. Note that the generic (default)
-# option is 39.
-_subarch=39
-
-#  1. AMD Opteron/Athlon64/Hammer/K8 (MK8)
-#  2. AMD Opteron/Athlon64/Hammer/K8 with SSE3 (MK8SSE3) (NEW)
-#  3. AMD 61xx/7x50/PhenomX3/X4/II/K10 (MK10) (NEW)
-#  4. AMD Barcelona (MBARCELONA) (NEW)
-#  5. AMD Bobcat (MBOBCAT) (NEW)
-#  6. AMD Jaguar (MJAGUAR) (NEW)
-#  7. AMD Bulldozer (MBULLDOZER) (NEW)
-#  8. AMD Piledriver (MPILEDRIVER) (NEW)
-#  9. AMD Steamroller (MSTEAMROLLER) (NEW)
-#  10. AMD Excavator (MEXCAVATOR) (NEW)
-#  11. AMD Zen (MZEN) (NEW)
-#  12. AMD Zen 2 (MZEN2) (NEW)
-#  13. AMD Zen 3 (MZEN3) (NEW)
-#  14. AMD Zen 4 (MZEN4) (NEW)
-#  15. Intel P4 / older Netburst based Xeon (MPSC)
-#  16. Intel Core 2 (MCORE2)
-#  17. Intel Atom (MATOM)
-#  18. Intel Nehalem (MNEHALEM) (NEW)
-#  19. Intel Westmere (MWESTMERE) (NEW)
-#  20. Intel Silvermont (MSILVERMONT) (NEW)
-#  21. Intel Goldmont (MGOLDMONT) (NEW)
-#  22. Intel Goldmont Plus (MGOLDMONTPLUS) (NEW)
-#  23. Intel Sandy Bridge (MSANDYBRIDGE) (NEW)
-#  24. Intel Ivy Bridge (MIVYBRIDGE) (NEW)
-#  25. Intel Haswell (MHASWELL) (NEW)
-#  26. Intel Broadwell (MBROADWELL) (NEW)
-#  27. Intel Skylake (MSKYLAKE) (NEW)
-#  28. Intel Skylake X (MSKYLAKEX) (NEW)
-#  29. Intel Cannon Lake (MCANNONLAKE) (NEW)
-#  30. Intel Ice Lake (MICELAKE) (NEW)
-#  31. Intel Cascade Lake (MCASCADELAKE) (NEW)
-#  32. Intel Cooper Lake (MCOOPERLAKE) (NEW)
-#  33. Intel Tiger Lake (MTIGERLAKE) (NEW)
-#  34. Intel Sapphire Rapids (MSAPPHIRERAPIDS) (NEW)
-#  35. Intel Rocket Lake (MROCKETLAKE) (NEW)
-#  36. Intel Alder Lake (MALDERLAKE) (NEW)
-#  37. Intel Raptor Lake (MRAPTORLAKE) (NEW)
-#  38. Intel Meteor Lake (MMETEORLAKE) (NEW)
-#  39. Generic-x86-64 (GENERIC_CPU)
-#  40. Generic-x86-64-v2 (GENERIC_CPU2) (NEW)
-#  41. Generic-x86-64-v3 (GENERIC_CPU3) (NEW)
-#  42. Generic-x86-64-v4 (GENERIC_CPU4) (NEW)
-#  43. Intel-Native optimizations autodetected by the compiler (MNATIVE_INTEL) (NEW)
-#  44. AMD-Native optimizations autodetected by the compiler (MNATIVE_AMD) (NEW)
-
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-prjc
-pkgver=6.10.5
+pkgver=6.11.3
 pkgrel=1
 pkgdesc='Linux'
 url="https://gitlab.com/alfredchen/linux-prjc"
@@ -97,12 +47,12 @@ options=(
   !strip
 )
 _srcname=linux-${pkgver}
-_kernel_base_commit=4ead4c82a6d6d3883fbb0fac465da83e58eabf42
+_kernel_base_commit=8e24a758d14c0b1cd42ab0aea980a1030eea811f
 _kernel_arch_tag=${pkgver}-arch1
-_arch_config_commit=335b711f590650ef037442bf876f3551e5af0669
-_prjc_version=6.10-r2
+_arch_config_commit=01de38aa212df7075dc8f4af3f0fa79e1fec2f7b
+_prjc_version=6.11-r1
 _prjc_patch="prjc_v${_prjc_version}.patch"
-_gcc_more_v=20240221.2
+_gcc_more_v=20241001
 source=(
   "https://www.kernel.org/pub/linux/kernel/v6.x/linux-$pkgver.tar".{xz,sign}
   "${pkgbase}-${pkgver}-config::https://gitlab.archlinux.org/archlinux/packaging/packages/linux/-/raw/${_arch_config_commit}/config"
@@ -116,12 +66,12 @@ validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-b2sums=('e4f8d468ff4e4ec45a697c69676a21e1716f3e4c8ed456def866125a93826de5e2f1366ba4fa970879744d431eac85377951cee391e39745d2e56eabd7985c83'
+b2sums=('69582e4745850f3ec004d87859ac88994e3715ed38cd66aff2633fbcb6c20ca2e3be83417cd2c42c2757ab4e084e622c688799b5ad28e15c391adb2afab79a68'
         'SKIP'
-        'c68807547b8dd52734252ae4002993b9dbeac2e171ab5db22256e9234331f96a830cee50ba9fcfc89f01b99df1d46caee42e2d282a75b40520b2e37a9b77c34c'
-        'f8306a6512d4640d67e19def2f3c7b55ac26dac24464c788aa4199c61afb66aee0a32bdb6e2e8efb4a637a55efaf7629479449c61cbad463aaed218fa08afeac'
-        '221de3283857198a908a28b837cb542c5cf4e29868539f3f3c2c783c07c59a6868f3b1d4fe1e023e986fd3f9d17bd2e4f68b7c86fa5da76fcde25e5955b3c74d'
-        '701faffc63b5c16438e161ccb9fde5747ae327f53bdcd170f1fb8c665a73938451643aa19b97ad2cff5ac37a5dd8c1bf8b3de1caa1b0d6df3a3785b7907ca173'
+        '9ab6e9162c8a443dab748b8a6be946d5b112c617c4192a6219c515c23883e30978838411491c86c08679e559f952e5a6d727f5bacde00e18bbb60004ef0c213f'
+        '9ce94b0bb10453c8d16393a36776f394e188eca6e4591fb8aa5c71225a739051ed111294a2416a5ff9ff3e215ebd717917e6d00773bf535e0ac878e1cc5610b5'
+        '11c6a4b815cd456e0f314b9695890fc5a1c393171d4443a673dc826fb2445359b9678850d17bbd948a294ec9c7757a582faa58a812a888c65f1467bcda63ae60'
+        'ead1cafef5bc22c7a8ca47d86e40f6c8f284e1288b4ce1d76d76a2731c36c4f68bf2fe5200270fe977092bda312327bcaa3a4484ff336f19f58d8ed4bdd9d23e'
         '07318d94a39ffe5fd252836a7a0d872c217bf57da25cab0411f04676273027763237b9eb8c83bf808c77e2f1b211469f740baf28fe8b6b739dcaf556b54a4ddb')
 
 _kernelname=${pkgbase#linux}
@@ -192,15 +142,14 @@ prepare() {
   # https://github.com/graysky2/kernel_gcc_patch
   # make sure to apply after olddefconfig to allow the next section
   echo "Patching to enable GCC optimization for other uarchs..."
-  patch -Np1 -i "$srcdir/kernel_compiler_patch-$_gcc_more_v/more-uarches-for-kernel-6.8-rc4+.patch"
+  #patch -Np1 -i "$srcdir/kernel_compiler_patch-$_gcc_more_v/more-ISA-levels-and-uarches-for-kernel-6.8-rc4+.patch"
 
-  if [ -n "$_subarch" ]; then
-    # user wants a subarch so apply choice defined above interactively via 'yes'
-    yes "$_subarch" | _make LLVM=$_LLVM LLVM_IAS=$_LLVM oldconfig
-  else
-    # no subarch defined so allow user to pick one
-    _make LLVM=$_LLVM LLVM_IAS=$_LLVM oldconfig
-  fi
+  # since there are multiple options in the above patch (uarch + ISA setting), the yes method that worked
+  # in the past will no long work so remove it
+  make LLVM=$_LLVM LLVM_IAS=$_LLVM olddefconfig
+
+  # @@@ this is a sed target for repo-ck build script
+
 
   ### Optionally load needed modules for the make localmodconfig
   # See https://aur.archlinux.org/packages/modprobed-db
