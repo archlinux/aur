@@ -1,0 +1,18 @@
+pkgbase = pacdef-python
+	pkgdesc = declarative package manager for Arch Linux
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/ironashram/pacdef
+	arch = any
+	license = GPL3
+	checkdepends = python-pytest
+	checkdepends = python-mock
+	makedepends = python-pip
+	depends = python
+	depends = pyalpm
+	conflicts = pacdef
+	conflicts = pacdef-git
+	source = pacdef-1.0.0.tar.gz::https://github.com/ironashram/pacdef/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = 5bf5c1404a3821e1ac2b766551fd7b55c88581f0fca3d23600830185596f6cbc
+
+pkgname = pacdef-python

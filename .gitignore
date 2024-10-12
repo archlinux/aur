@@ -1,0 +1,5 @@
+*.tar.gz
+pacdef.py
+pacdef
+src
+pkg
