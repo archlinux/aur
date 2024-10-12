@@ -2,7 +2,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=proxmark3-iceman-git
-pkgver=4.18994.r238.g11d9336
+pkgver=4.18994.r249.gdc76492
 pkgrel=1
 pkgdesc='RRG / Iceman repo - Proxmark3 RDV4.0 and other Proxmark3 platforms.'
 arch=('x86_64')
@@ -138,7 +138,8 @@ build() {
   done
 
   # Build & install other targets
-  make {bootrom,client,mfkey,nonce2key,common}/install
+  #   make {client,bootrom,recovery,mfc_card_only,mfc_card_reader,mfd_aes_brute,fpga_compress,cryptorf,common}/install
+  make install
 }
 
 # check() {
