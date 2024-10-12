@@ -1,6 +1,6 @@
 pkgbase = mkosi-git
 	pkgdesc = Build Legacy-Free OS Images
-	pkgver = 24.3.r245.g85074abcd0
+	pkgver = 24.3.r371.g2195d95e07
 	pkgrel = 1
 	url = https://github.com/systemd/mkosi
 	arch = any

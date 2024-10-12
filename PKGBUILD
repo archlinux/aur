@@ -3,7 +3,7 @@
 # Contributor: Reto Brunner <brunnre8@gmail.com>
 
 pkgname=mkosi-git
-pkgver=24.3.r245.g85074abcd0
+pkgver=24.3.r371.g2195d95e07
 pkgrel=1
 pkgdesc='Build Legacy-Free OS Images'
 arch=('any')
@@ -94,7 +94,10 @@ package() {
 
   install -Dm 755 kernel-install/50-mkosi.install -t "$pkgdir/usr/lib/kernel/install.d/"
 
-  install -Dm 644 mkosi/resources/mkosi.1 "$pkgdir/usr/share/man/man1/mkosi.1" || true
+  install -Dm 644 mkosi/resources/man/mkosi.1 "$pkgdir/usr/share/man/man1/mkosi.1" || true
+  install -Dm 644 mkosi/resources/man/mkosi-initrd.1 "$pkgdir/usr/share/man/man1/mkosi-initrd.1" || true
+  install -Dm 644 mkosi/resources/man/mkosi-sandbox.1 "$pkgdir/usr/share/man/man1/mkosi-sandbox.1" || true
+  install -Dm 644 mkosi/resources/man/mkosi.news.7 "$pkgdir/usr/share/man/man7/mkosi.news.7" || true
 
   python -m mkosi completion bash | install -Dm 644 /dev/stdin "$pkgdir/usr/share/bash-completion/completions/mkosi"
   python -m mkosi completion fish | install -Dm 644 /dev/stdin "$pkgdir/usr/share/fish/completions/mkosi.fish"
