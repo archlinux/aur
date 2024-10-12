@@ -1,0 +1,14 @@
+pkgbase = lilipod-bin
+	pkgdesc = Lilipod is a simple container manager, able to download, unpack and use OCI images from various container registries (binary version)
+	pkgver = 0.0.3
+	pkgrel = 1
+	url = https://github.com/89luca89/lilipod
+	arch = x86_64
+	license = GPL-3.0
+	makedepends = go
+	provides = lilipod
+	conflicts = lilipod
+	source = lilipod::https://github.com/89luca89/lilipod/releases/download/v0.0.3/lilipod-linux-amd64
+	sha256sums = e781e67fd2eb42150f9bbcfd8338d9c248c27f061e720508ffc471731ae0001b
+
+pkgname = lilipod-bin
