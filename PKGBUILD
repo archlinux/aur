@@ -5,7 +5,7 @@
 pkgname=tvheadend
 # 4.3.0 is beta and older than 4.2.8
 pkgver=4.2.8
-pkgrel=7
+pkgrel=8
 pkgdesc="TV streaming server for Linux"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://tvheadend.org/"
@@ -61,7 +61,7 @@ build() {
 		--mandir=/usr/share/man \
 		--infodir=/usr/share/info \
 		--localstatedir=/var \
-		--disable-libav
+		--disable-libav \
 		--disable-ffmpeg_static \
 		--disable-libx264_static \
 		--disable-libx265_static \
@@ -71,7 +71,7 @@ build() {
 		--disable-libfdkaac_static \
 		--disable-libmfx_static \
 		--python=python3 \
-		--nowerror \
+		--nowerr
 
 	make
 }
