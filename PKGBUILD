@@ -1,5 +1,5 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
-# Contributor: Thomas Schoenauer <t.schoenauer@hgs-wt.at>
+# Co-Maintainer: Thomas Schoenauer <t.schoenauer@hgs-wt.at>
 # Contributor: Roey Darwish Dror <roey.ghost@gmail.com>
 pkgname=topgrade
 pkgver=16.0.1
