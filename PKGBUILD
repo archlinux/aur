@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=log4r
-_pkgver=0.4.3
+_pkgver=0.4.4
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=3
+pkgrel=1
 pkgdesc="A Fast and Lightweight Logging System for R, Based on 'log4j'"
 arch=(x86_64)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -28,8 +28,8 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('48d5f4212c65e91cbd900c2fbaf2f3d6')
-b2sums=('2ba50dbe1312f564dba282afda0adf9ecbd1b7f4e2e7e9ddb2b1f12f398286c5523321d7686c0733831d19b0d05024f485f90d93b59cd721570c94a8891ee31e')
+md5sums=('6e9876924f52202a0e6437b1551b986d')
+b2sums=('ab8bf5b9217d471e13e16337ca09254e2d498d9d2f45b4da5782dbff639ca8463023c75a93fbe5d03bf7c5b05fb38359508db6ac79261cf83bbf79d62b3d46ea')
 
 build() {
   mkdir build
