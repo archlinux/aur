@@ -71,7 +71,7 @@ build() {
 		--disable-libfdkaac_static \
 		--disable-libmfx_static \
 		--python=python3 \
-		--nowerr
+		--nowerror
 
 	make
 }
