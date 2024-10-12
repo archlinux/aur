@@ -34,9 +34,6 @@ package() {
   install -Dm755 "$srcdir/warp-gui" "$pkgdir/usr/bin/warp-gui"
   chmod +x "$pkgdir/usr/bin/warp-gui"
 
-  mkdir -p "$pkgdir/usr/share/icons/48x48/apps"
-  install -Dm644 "$srcdir/watermark.png" "$pkgdir/usr/share/icons/hicolor/48x48/apps/warp-gui.png"  
-
   mkdir -p "$pkgdir/usr/share/applications"
   install -Dm644 "$srcdir/warp-gui.desktop" "$pkgdir/usr/share/applications/warp-gui.desktop"
 }
