@@ -1,7 +1,7 @@
 # Maintainer: Tom Zander
 
 pkgname=flowee
-pkgver=2024.07.0
+pkgver=2024.10.0
 options=(!lto)
 pkgrel=1
 pkgdesc="Flowee provides the shortest path to Bitcoin Cash"
@@ -16,26 +16,19 @@ provides=('flowee-hub' 'flowee-libs')
 backup=("etc/flowee/flowee.conf" "etc/flowee/rest-service.conf")
 install=flowee.install
 source=("https://codeberg.org/Flowee/thehub/archive/$pkgver.tar.gz"
-    "0001-Backport-uPNP-compile-fix.patch"
     "flowee.logrotate"
     "flowee.conf")
 
-sha256sums=("508f9290f5a4017a53db292e9860d1c2e03dc490e9966ec7c599e1d141aaa35f"
-    "28c452aa03034ec6593954eb1c4afcd4275ae163069779b77f0eef537497f715"
+sha256sums=("a92a69926a1e9a065e78ddcbb1d3189d0b42bf57582d87e3fa7a1becd95fb062"
     "0438e1a44523aeb3bbecd60fd920ca7b2aacd267b5cf988ab77a44eb7c03929e"
     "59c1928ddb33fed1d4bf35df8fecd1dbdda0b308eac943503a2e3afb8c64bc89")
-
-prepare() {
-    cd "$srcdir/thehub"
-    patch -Np1 -i ../0001-Backport-uPNP-compile-fix.patch
-}
 
 build() {
   mkdir -p build
   cd build
   cmake -DCMAKE_BUILD_TYPE=Release -Dbuild_apps=ON -DCMAKE_INSTALL_PREFIX=$pkgdir/usr/ ../thehub
-  echo '#define GIT_COMMIT_ID "9008b4a3"' > include/build.h
-  echo '#define BUILD_DATE "2024-06-29 20:18:35 +0200"' >> include/build.h
+  echo '#define GIT_COMMIT_ID "e9915cbc"' > include/build.h
+  echo '#define BUILD_DATE "2024-10-11 19:44:54 +0200"' >> include/build.h
   make
 }
 
