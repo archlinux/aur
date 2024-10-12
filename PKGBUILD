@@ -1,11 +1,11 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=miteiru
 _pkgname=Miteiru
-pkgver=5.5.0
+pkgver=5.6.0
 _electronversion=31
 _nodeversion=20
 pkgrel=1
-pkgdesc="An open source Electron video player to learn Chinese, Cantonese, and Japanese. It can play all Youtube and HTML 5 supported format (.mkv, .mp4, .mov, and many more) videos, and lots of supports on other subtitle formats (.srt, .ass, .vtt, and many more)"
+pkgdesc="An open source Electron video player to learn Chinese,Cantonese,and Japanese.It can play all Youtube and HTML 5 supported format videos,and lots of supports on other subtitle formats."
 arch=('any')
 url="https://miteiru.hocky.id/"
 _ghurl="https://github.com/hockyy/miteiru"
@@ -32,7 +32,7 @@ source=(
     "${pkgname}-${pkgver}.tar.gz::${_ghurl}/archive/refs/tags/v${pkgver}.tar.gz"
     "${pkgname}.sh"
 )
-sha256sums=('e6f7c11288f9d766e3aacce5dc1723adb230c4f1f8d42ae60da03a62d551414c'
+sha256sums=('21972a40867347e41dc8ea770918f7d187971c22c606773d556df8402a378251'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
@@ -58,13 +58,15 @@ build() {
         echo -e '\n'	
         #echo 'build_from_source=true'
         echo "cache=${srcdir}/.npm_cache"
-        if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
+    } >> .npmrc
+    if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
+        {
             echo 'registry=https://registry.npmmirror.com'
             echo 'disturl=https://registry.npmmirror.com/-/binary/node/'
             echo 'electron_mirror=https://registry.npmmirror.com/-/binary/electron/'
             echo 'electron_builder_binaries_mirror=https://registry.npmmirror.com/-/binary/electron-builder-binaries/'
-        fi
-    } >> .npmrc
+        } >> .npmrc
+    fi
     icotool -i 1 -x resources/icon.ico -o resources/icon.png
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
     sed -i "s/icon.icns/icon.png/g;s/\"deb\", \"AppImage\"/\"dir\"/g" buildConfig/linux22.config.json
