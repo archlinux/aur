@@ -13,7 +13,7 @@ source=(
   "https://raw.githubusercontent.com/elee1766/potatoe/v${pkgver}/quotes.txt"
 )
 sha256sums=(
-  '4db5b0ead1ed86178f5db3c3cafdc4745bcf57bf3a4eb27b2616dad67ae3a9a3'
+  '4ca53ce41d51e3e3c5bd6159f616aae9fd78b7b4872091dd9779a55c9a6c95ff'
   'b6e29b842da4dc9c2302ee53208a7fd0479117aa18ad2df8a96814de3d165d5c'
 )
 
