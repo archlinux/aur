@@ -1,6 +1,6 @@
 # Maintainer: lpt <aur AT lucapetrucci DOT net>
 pkgname=tgeraser
-pkgver=1.3.1
+pkgver=1.3.3
 pkgrel=1
 pkgdesc="Delete all your messages from chat/channel/dialog on Telegram"
 arch=('any')
@@ -19,7 +19,7 @@ source=(
 	"https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz"
 )
 sha256sums=(
-	'3c2938b3de88f2ed95ad24ca85f22a821b427e339265d67861124ebfdd2d3d6b'
+	'3f297397a2c222c4959f3a61e131f24bb568f9109a8a2fc62676e11bb1ca8f49'
 )
 
 build () {
