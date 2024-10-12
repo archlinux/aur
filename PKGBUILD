@@ -2,10 +2,10 @@
 # Contributor: Xuanwo
 pkgname=follow-bin
 _pkgname=Follow
-pkgver=0.0.1_alpha.19
+pkgver=0.0.1_alpha.20
 _electronversion=32
 pkgrel=1
-pkgdesc="🧡 Next generation information browser.This software is all about allowing you to follow your favorite websites, blogs, social media accounts, podcasts and notifications in one place. "
+pkgdesc="🧡 Next generation information browser.This software is all about allowing you to follow your favorite websites, blogs, social media accounts, podcasts and notifications in one place. Prebuilt version.Use system-wide electron."
 arch=('x86_64')
 url="https://follow.is/"
 _ghurl="https://github.com/RSSNext/follow"
@@ -22,7 +22,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.AppImage::${_ghurl}/releases/download/v${pkgver//_/-}/${_pkgname}-${pkgver//_/-}-linux-x64.AppImage"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('65320aa930e63030eb0e1c97f3bcdceec845502992f3fdcd84b6e19ff5035979'
+sha256sums=('2a7a876acff6e92504c0b51eea4e0126a499facd421e0022b7fb0c1e3e02285b'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 build() {
     sed -e "
@@ -34,8 +34,10 @@ build() {
     " -i "${srcdir}/${pkgname%-bin}.sh"
     chmod +x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
-    sed -i "s/${_pkgname} --no-sandbox --disable-setuid-sandbox/${pkgname%-bin}/g;s/Icon=${_pkgname}/Icon=${pkgname%-bin}/g" \
-        "${srcdir}/squashfs-root/${_pkgname}.desktop"
+    sed -e "
+        s/${_pkgname} --no-sandbox/${pkgname%-bin}/g
+        s/Icon=${_pkgname}/Icon=${pkgname%-bin}/g
+    " -i "${srcdir}/squashfs-root/${_pkgname}.desktop"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
