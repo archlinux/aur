@@ -1,31 +1,32 @@
-# Maintainer: fossdd <fossdd@tutanota.com>
+# Contributor: fossdd <fossdd@tutanota.com>
 pkgname=boa-git
 _pkgname=boa
-pkgver=v0.11.r103.gbd199677a
+pkgver=0.19.r64.g94d08fe
 pkgrel=1
-pkgdesc=" Boa is an embeddable and experimental Javascript engine written in Rust. Currently, it has support for some of the language. "
+pkgdesc="Boa is an embeddable and experimental Javascript engine written in Rust. Currently, it has support for some of the language."
 arch=('i686' 'x86_64')
 url="https://github.com/boa-dev/boa"
 license=(MIT)
+depends=('gcc-libs' 'glibc')
 makedepends=('rust' 'git')
+options=(!lto)
 source=('git+https://github.com/boa-dev/boa.git')
 sha256sums=('SKIP')
-
 pkgver() {
-  cd "${_pkgname}"
-  ( set -o pipefail
-    git describe --long --tags 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-  )
+  cd ${_pkgname}
+  git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
+prepare() {
+  cd ${_pkgname}
 
+  cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+}
 build() {
   cd ${_pkgname}
-  cargo build --release
+  cargo build --frozen --release --all-features --bin boa
 }
-
 package() {
   cd ${_pkgname}
   install -Dm755 target/release/${_pkgname} -t "${pkgdir}"/usr/bin/
+  install -Dm644 LICENSE-MIT "$pkgdir"/usr/share/licenses/$pkgname/LICENSE-MIT
 }
-
