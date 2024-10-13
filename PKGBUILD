@@ -13,9 +13,11 @@ optdepends=(
     'scryer-prolog: Free ISO Prolog system'
     'trealla: A compact, efficient Prolog interpreter'
 )
+source=(git+https://github.com/hurufu/prolog-all.git)
+sha256sums=(SKIP)
 
 package() {
-    cd "$srcdir/all-prologs"
-    install -d --mode=644 rules.mk "$pkgdir/usr/share/$pkgname/rules.mk"
-    install -d --mode=755 prologs "$pkgdir/usr/bin/$pkgname"
+    cd "$srcdir/prolog-all"
+    install -D --mode=644 rules.mk "$pkgdir/usr/share/$pkgname/rules.mk"
+    install -D --mode=755 prologs "$pkgdir/usr/bin/$pkgname"
 }
