@@ -2,9 +2,8 @@
 
 _pkgbase=penpot
 pkgname=(penpot penpot-exporter penpot-frontend)
-pkgver=2.1.4
-babashka_version="1.3.189"
-pkgrel=3
+pkgver=2.2.0
+pkgrel=1
 pkgdesc="The open-source design tool for design and code collaboration "
 arch=('x86_64')
 url="https://penpot.app"
@@ -29,7 +28,7 @@ depends=(
   'netpbm'
   'potrace'
 )
-makedepends=('clojure' 'git' 'curl' 'npm' 'rsync' 'babashka')
+makedepends=('clojure' 'git' 'curl' 'npm' 'yarn' 'rsync' 'babashka')
 optdepends=(
   "python-tabulator: for the penbot-manage script"
   "sfnt2woff: for uploading own fonts"
@@ -48,7 +47,7 @@ source=(
 )
 noextract=($pkgname-$pkgver.tgz)
 sha256sums=(
-  'fcc1bb377c3163e9c6ad8218d8f876f7bfa36f227fdd3030cf05e6a0ea0eceb7'
+  '842b3262fbcd0a0fec398a0b2817efddc831874214657732f7074ada8b9503b8'
   '4b82b8a79d8a143fd8a6e4473447f8946c095e2617ba5fcba4cb5b1fdd840c2c'
   'bc133ba7409921978655c488293ef83f77250fd65cb7d574c3cba9f34ff42523'
   '828087c8fab14fb481b4bd01d92f47e9ecc9c07551a7a873bcfbafd1e3644afb'
@@ -60,34 +59,34 @@ sha256sums=(
 )
 
 build() {
-  # build the frontend
+  # # build the frontend
+  echo "==== BULDING frontend"
   cd "${srcdir}/${_pkgbase}-${pkgver}/frontend"
-  # we dont have yarn @ version 4 as package, so use npm
-  sed -i s/yarn\ /npm\ / ./scripts/build
-  sed -i 's/npm install/npm install --dev/' ./scripts/build
-  # add buffer to dependencies?
-  sed -i 's/"dependencies": {/"dependencies": {"buffer": "*",/' package.json
+  # # we dont have yarn @ version 4 as package, so use yarn 1.x
+  sed -i '/"packageManager":.*,/d' ../package.json
+  sed -i '/"packageManager":.*,/d' ./package.json
+  sed -i 's/yarn install/NODE_ENV=development yarn install/' ./scripts/build
   sed -i 's/\.git#commit=/.git#/' package.json
-  rm -f package-lock.json
-  # somehow shadow-cljs is needed but isnt installed (maybe because of not using yarn?)
-  npm install --save-dev shadow-cljs
   CURRENT_HASH=$(echo $sha256sums[0] | head -c 7) ./scripts/build $pkgver
+
+  echo "==== BUILDING EXPORTER"
 
   # build the exporter
   cd "${srcdir}/${_pkgbase}-${pkgver}/exporter"
-  sed -i s/yarn\ /npm\ / ./scripts/build
-  sed -i 's/cp npm.lock target/#/' ./scripts/build
+  sed -i '/"packageManager":.*,/d' ./package.json
   # patch playwright to use chromium from archlinux
   # so we don't have to install the playwright binaries
   sed -i 's|:args #js|:executablePath "/usr/bin/chromium", :args #js|' src/app/browser.cljs
+  sed -i 's#^{#{\n  "bin": "./app.js",#' package.json
   ./scripts/build "${pkgver}"
   cd target
-  sed -i 's#"packageManager": ".*",#"bin": "./app.js",#' package.json
   sed -i 's#"name": "exporter",#"name": "penpot-exporter",#' package.json
   tar cvf penpot-exporter.tgz .
 
+  echo "==== BUILDING BACKEND"
   # build the backend
   cd "${srcdir}/${_pkgbase}-${pkgver}/backend"
+  sed -i '/"packageManager":.*,/d' ./package.json
   ./scripts/build "${pkgver}"
   sed -i "2 i JAVA_HOME='$JAVA_HOME'" target/dist/run.sh
   sed -i s#penpot.jar#/usr/share/java/penpot/backend.jar# target/dist/run.sh
