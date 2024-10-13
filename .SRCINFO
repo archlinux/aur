@@ -1,8 +1,8 @@
 pkgbase = dudenbib
 	pkgdesc = Utility to view books from Duden, Brockhaus and some others
-	pkgver = 6.4.0
+	pkgver = 6.5.2
 	pkgrel = 1
-	url = http://www.duden.de/deutsche_sprache/index.php?nid=185
+	url = https://www.duden.de/digitales/duden-bibliothek
 	install = duden.install
 	arch = i686
 	arch = x86_64
@@ -15,8 +15,8 @@ pkgbase = dudenbib
 	depends = lib32-libxi
 	depends = lib32-libxinerama
 	depends = lib32-libxcb
-	noextract = dudenbibliothek6_6.4.0.7_amd64.deb
-	source = https://cdn.duden.de/downloads/proxy/2001_duden_bibliothek-update-6.4/dudenbibliothek6_6.4.0.7_amd64.deb
-	md5sums = 7d82bf1ebb715ab8be7d506998a3ec26
+	noextract = dudenbibliothek6_6.5.2.0_amd64.deb
+	source = https://cdn.duden.de/downloads/proxy/duden_bibliothek-update-6.5/dudenbibliothek6_6.5.2.0_amd64.deb
+	md5sums = 0086cb9b3e39c40fcb858b542af5a3d4
 
 pkgname = dudenbib
