@@ -1,7 +1,7 @@
 # Maintainer: Alexander Karpukhin <thealexdev23@gmail.com>
 
 pkgname=power-options-webview-git
-pkgver=1.1.0r56.9cb462
+pkgver=1.1.0r57.5fd8a1
 pkgrel=1
 pkgdesc="A Web Renderer frontend for Power Options, a blazingly fast power management solution."
 arch=('x86_64')
