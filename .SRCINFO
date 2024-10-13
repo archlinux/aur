@@ -1,5 +1,5 @@
 pkgbase = carch
-	pkgdesc = A script to automate Arch Linux setup
+	pkgdesc = An automated script for quick & easy Arch Linux system setup
 	pkgver = 3.0.2
 	pkgrel = 1
 	url = https://harilvfs.github.io/carch/

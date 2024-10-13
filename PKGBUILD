@@ -1,7 +1,8 @@
+# Maintainer Hari Chalise <ingoprivate@gmail.com>
 pkgname="carch"
 pkgver="3.0.2"
 pkgrel=1
-pkgdesc="A script to automate Arch Linux setup"
+pkgdesc="An automated script for quick & easy Arch Linux system setup"
 arch=('x86_64')
 url="https://harilvfs.github.io/carch/"
 license=('Apache-2.0')
