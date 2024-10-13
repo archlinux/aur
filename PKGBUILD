@@ -10,7 +10,7 @@ source=(
     "https://github.com/harilvfs/carch/releases/download/v3.0.2/carch"
     "https://raw.githubusercontent.com/harilvfs/carch/refs/heads/main/carch.desktop"
 )
-sha256sums=('SKIP' 'SKIP')  
+sha256sums=('da4ca1df39e9d27b006ddb06ee0ce78cf4c957cff05b2e59080144b612614fd7' '2171e7dc0300fced083f4b74548253fe0ff8b40b34ad0446d2c3557245735acc')  
 
 build() {
     
