@@ -14,3 +14,6 @@ post_upgrade() {
   post_install
 }
 
+post_remove() {
+    echo "mpdcovergrabber-git has been unninstalled."
+}
