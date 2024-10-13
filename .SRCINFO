@@ -1,0 +1,14 @@
+pkgbase = ttf-ar-one-sans-variable-git
+	pkgdesc = Fonts for augmented and virtual reality
+	pkgver = 1.001.r0.g6dc5e68
+	pkgrel = 1
+	url = https://github.com/niteeshy/ar-one-sans
+	arch = any
+	license = OFL-1.1
+	makedepends = git
+	provides = ttf-ar-one-sans-variable=1.001.r0.g6dc5e68
+	conflicts = ttf-ar-one-sans-variable
+	source = ttf-ar-one-sans-variable-git::git+https://github.com/niteeshy/ar-one-sans.git
+	md5sums = SKIP
+
+pkgname = ttf-ar-one-sans-variable-git
