@@ -1,0 +1,26 @@
+pkgbase = surrealengine-git
+	pkgdesc = A reimplementation of Unreal Engine 1 (Git version)
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/dpjudas/SurrealEngine
+	arch = x86_64
+	license = BSD-3-Clause AND MIT AND various others
+	makedepends = gcc
+	makedepends = git
+	makedepends = cmake
+	makedepends = vulkan-driver
+	makedepends = sdl2
+	makedepends = alsa-lib
+	makedepends = waylandpp
+	depends = libx11
+	depends = spirv-tools
+	depends = vulkan-icd-loader
+	depends = vulkan-driver
+	depends = sdl2
+	depends = alsa-lib
+	optdepends = waylandpp: For ZWidget Wayland backend
+	provides = surrealengine
+	source = git+https://github.com/dpjudas/SurrealEngine.git
+	sha512sums = SKIP
+
+pkgname = surrealengine-git
