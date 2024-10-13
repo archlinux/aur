@@ -12,6 +12,7 @@ pkgbase = mpdcovergrabber-git
 	depends = python-requests
 	depends = python-urllib3
 	depends = mpdris2-rs
+	depends = python-dbus-next
 	provides = mpdcovergrabber
 	conflicts = mpdcovergrabber
 	conflicts = mpdris2
