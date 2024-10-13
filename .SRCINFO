@@ -1,15 +1,14 @@
 pkgbase = envchain
 	pkgdesc = Set environment variables with D-Bus secret service
-	pkgver = 1.0.1
-	pkgrel = 3
+	pkgver = 1.1.0
+	pkgrel = 1
 	url = https://github.com/sorah/envchain
-	arch = i686
 	arch = x86_64
+	arch = aarch64
 	license = MIT
 	depends = readline
 	depends = libsecret
-	source = https://github.com/sorah/envchain/archive/v1.0.1.tar.gz
-	sha256sums = 09af1fe1cfba3719418f90d59c29c081e1f22b38249f0110305b657bd306e9ae
+	source = https://github.com/sorah/envchain/archive/v1.1.0.tar.gz
+	sha256sums = 832bcf58037db6187f7327282e347e45627ea617c2e09a9e6d18629e7310fff9
 
 pkgname = envchain
-
