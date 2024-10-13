@@ -4,7 +4,7 @@
 
 pkgname=kdocker-git
 _pkgname=kdocker
-pkgver=6.1.r1.97a6dce
+pkgver=6.1.r2.fe7bd0e
 pkgrel=1
 pkgdesc="An application to help you dock any application into the system tray (git version)"
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ license=('GPL2')
 depends=('qt6-base' 'libxpm' 'libxmu')
 conflicts=("${_pkgname}")
 replaces=("${_pkgname}")
-makedepends=('git' 'ninja' 'clang' 'make' 'gcc' 'cmake')
+makedepends=('git' 'ninja' 'clang' 'make' 'gcc' 'cmake' 'pod2man')
 source=("$_pkgname::git+$url.git")
 md5sums=('SKIP')
 
