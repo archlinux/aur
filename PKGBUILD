@@ -4,7 +4,7 @@
 # Contributor: Det <nimetonmaili g-mail>
 
 pkgname=jre17
-pkgver=17.0.11
+pkgver=17.0.12
 _majver="${pkgver%%.*}"
 pkgrel=1
 pkgdesc='Oracle Java 17 Runtime Environment'
@@ -32,7 +32,7 @@ backup=("etc/java${_majver}-${pkgname}/management/jmxremote.access"
         "etc/java${_majver}-${pkgname}/sound.properties")
 install="${pkgname}.install"
 source=("jdk-${pkgver}.tar.gz"::"https://download.oracle.com/java/${_majver}/latest/jdk-${_majver}_linux-x64_bin.tar.gz")
-sha256sums=('62f12f52306217ec80bdc6ad0bdc627824b584d4d96c56976215f0167d92a322')
+sha256sums=('311f1448312ecab391fe2a1b2ac140d6e1c7aea6fbf08416b466a58874f2b40f')
 
 package() {
     cd "jdk-${pkgver}"
