@@ -1,0 +1,12 @@
+diff '--color=auto' -ura smem-1.5/smem smem-1.5.new/smem
+--- smem-1.5/smem	2015-05-15 12:52:02.000000000 -0500
++++ smem-1.5.new/smem	2024-10-13 02:55:19.670091304 -0500
+@@ -646,7 +646,7 @@
+ 
+     pl = []
+     ind = numpy.arange(len(l))
+-    for n in xrange(len(rc)):
++    for n in range(len(rc)):
+         pl.append(pylab.bar(ind + offset + width * n,
+                              [x[1][rc[n]] for x in l], width, color=gc(n)))
+ 

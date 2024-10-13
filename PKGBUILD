@@ -6,7 +6,7 @@
 
 pkgname=smem
 pkgver=1.5
-pkgrel=4
+pkgrel=5
 pkgdesc="Generate reports on memory usage."
 url="https://www.selenic.com/smem/"
 license=("GPL")
@@ -15,6 +15,11 @@ optdepends=('python-matplotlib: for chart generation')
 arch=('x86_64')
 source=("$pkgname-$pkgver.tgz::https://www.selenic.com/repo/smem/archive/$pkgver.tar.gz")
 sha256sums=('5c3907b0ac9d3252cbbc5cb9ebe93f0c2b602df67376d9050c09146871822293')
+
+prepare() {
+  cd "$pkgname-$pkgver"
+  patch -N -p1 -i ../../0001-Fix-xrange-in-Python-3.patch
+}
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
