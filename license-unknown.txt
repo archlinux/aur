@@ -1,0 +1,5 @@
+As of 2024-10-13 it is unknown what the license of this project is.
+
+Assume full copyright to the author https://github.com/yamatsum.
+
+See https://github.com/yamatsum/nvim-nonicons/issues/34 for the issue of unknow license.
