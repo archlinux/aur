@@ -7,17 +7,14 @@ pkgrel=1
 pkgdesc="iTeX to MathML converter"
 arch=('x86_64')
 url="https://golem.ph.utexas.edu/~distler/blog/itex2MML.html"
-license=('custom:GPL-unknown-version' 'custom:LGPL-unknown-version' 'custom:MPL-unknown-version')
+license=('GPL-2.0-or-later' 'MPL-1.1' 'LGPL-2.0-or-later')
+depends=('gcc-libs' 'glibc')
 makedepends=('bzr')
-depends=('glibc' 'gcc-libs')
-provides=("${_pkgname}=${pkgver%%.r*}")
+provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 _pkgsrc="${_pkgname}"
-source=("${_pkgsrc}::bzr+https://golem.ph.utexas.edu/~distler/code/itexToMML"
-        "${_pkgname}_fix_makefile.patch")
-noextract=("${_pkgsrc}.tar.gz")
-sha256sums=('SKIP'
-            '88905ddf2aa4add02ba100afa71b209f1f9eae51e26239b1590de7b4df407c75')
+source=("${_pkgsrc}::bzr+https://golem.ph.utexas.edu/~distler/code/itexToMML")
+sha256sums=('SKIP')
 
 pkgver() {
   cd "${_pkgsrc}"
@@ -27,9 +24,7 @@ pkgver() {
 prepare() {
   cd "${_pkgsrc}/itex-src"
   sed -i "s|/usr/local/bin|${pkgdir}/usr/bin|" Makefile
-  for _patch in "${srcdir}/${_pkgname}"*".patch"; do
-    patch -p1 -i "${_patch}"
-  done
+  sed -i "s/\$(CXX) \$(CFLAGS)/ \$(CXX) ${CFLAGS} ${LDFLAGS}/" Makefile
 }
 
 build() {
