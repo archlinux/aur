@@ -2,18 +2,18 @@
 
 pkgname=ttf-rubik-vf
 pkgver=2.3.0
-pkgrel=1
+pkgrel=2
 _commit=e337a5f69a9bea30e58d05bd40184d79cc099628
 pkgdesc="A sans serif font family with slightly rounded corners: variable font version"
 arch=("any")
 url="https://github.com/googlefonts/rubik"
 license=("OFL")
 source=(
-      "${url}/raw/${_commit}/fonts/variable/Rubik[wght].ttf"
-      "${url}/raw/${_commit}/fonts/variable/Rubik-Italic[wght].ttf"
-      "${url}/raw/${_commit}/OFL.txt"
-      "${url}/raw/${_commit}/AUTHORS.txt"
-      "${url}/raw/${_commit}/CONTRIBUTORS.txt"
+  "${url}/raw/${_commit}/fonts/variable/Rubik%5Bwght%5D.ttf"
+  "${url}/raw/${_commit}/fonts/variable/Rubik-Italic%5Bwght%5D.ttf"
+  "${url}/raw/${_commit}/OFL.txt"
+  "${url}/raw/${_commit}/AUTHORS.txt"
+  "${url}/raw/${_commit}/CONTRIBUTORS.txt"
 )
 
 sha256sums=('1b3a7437ba2af80e465e773ed60c5036d1ba6ace492d89046dbcf18fb31e4e88'
@@ -23,8 +23,8 @@ sha256sums=('1b3a7437ba2af80e465e773ed60c5036d1ba6ace492d89046dbcf18fb31e4e88'
             'd0955625026fcda3c16cbf518486e7e272ef3a4ca86ef11daafc2892cabb59b6')
 
 package() {
-      install -d ${pkgdir}/usr/share/fonts/TTF
-      install -m644 ${srcdir}/*.ttf ${pkgdir}/usr/share/fonts/TTF/
-      cd ${srcdir}
-      install -D -m644 -t ${pkgdir}/usr/share/licenses/${pkgname}/ OFL.txt AUTHORS.txt CONTRIBUTORS.txt
+  install -d "${pkgdir}/usr/share/fonts/TTF"
+  install -m644 "${srcdir}/*.ttf" "${pkgdir}/usr/share/fonts/TTF/"
+  cd "$srcdir"
+  install -D -m644 -t "${pkgdir}/usr/share/licenses/${pkgname}/" OFL.txt AUTHORS.txt CONTRIBUTORS.txt
 }
