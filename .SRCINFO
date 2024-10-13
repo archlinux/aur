@@ -1,6 +1,6 @@
 pkgbase = sast-evento-bin
 	pkgdesc = An event management system developed and used by NJUPT SAST (binary package)
-	pkgver = 2.0.53
+	pkgver = 2.0.55
 	pkgrel = 1
 	url = https://github.com/NJUPT-SAST/sast-evento
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = sast-evento-bin
 	provides = sast-evento
 	conflicts = sast-evento-git
 	conflicts = sast-evento
-	source_x86_64 = https://github.com/NJUPT-SAST/sast-evento/releases/download/2.0.53/sast-evento-2.0.53.0-pacman-linux-x64.pkg.tar.zst
-	sha256sums_x86_64 = 0798e231166d66a652f7e5404454be2a31c6e0f260ffc83c4ee70af2f791ba7a
+	source_x86_64 = https://github.com/NJUPT-SAST/sast-evento/releases/download/2.0.55/sast-evento-2.0.55.0-pacman-linux-x64.pkg.tar.zst
+	sha256sums_x86_64 = ea079c4d1e0952d8e20226ee1c3ad650b4a991cb23388a3dee7d9b7f128ae0b1
 
 pkgname = sast-evento-bin
