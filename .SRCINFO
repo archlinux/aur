@@ -6,7 +6,6 @@ pkgbase = gnome-shell-extension-autohide-battery-git
 	arch = any
 	license = MIT
 	makedepends = git
-	makedepends = pnpm
 	makedepends = unzip
 	depends = gnome-shell
 	source = git+https://github.com/ai/autohide-battery.git

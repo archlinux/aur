@@ -8,7 +8,7 @@ arch=('any')
 url="https://github.com/ai/autohide-battery.git"
 license=('MIT')
 depends=('gnome-shell')
-makedepends=('git' 'pnpm' 'unzip')
+makedepends=('git' 'unzip')
 source=("git+https://github.com/ai/autohide-battery.git")
 md5sums=('SKIP')
 
