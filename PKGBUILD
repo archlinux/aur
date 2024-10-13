@@ -2,11 +2,11 @@
 
 pkgname=sketch
 pkgver=0.3.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Small, simple system for producing line drawings of two- or three-dimensional solid objects and scenes"
 arch=('i686' 'x86_64')
 url="http://sketch4latex.sourceforge.net"
-license=('GPL3')
+license=('GPL-3.0-or-later')
 depends=('glibc')
 source=("$url/$pkgname-$pkgver.tgz")
 md5sums=('c51c6a0ed6c16a95e1a1afe1afd5d70e')
