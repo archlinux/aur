@@ -1,0 +1,4 @@
+[tupitube]
+source = "regex"
+url = "https://sourceforge.net/projects/tupi2d/files/Source%20Code"
+regex = 'tupitube.desk-(\d+\.\d+\.\d+)\.tar\.gz'
