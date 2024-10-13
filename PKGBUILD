@@ -36,10 +36,6 @@ prepare() {
 
 build() {
   cd "$srcdir/$_pkgname"
-  if [ ! -d "cmd/nvidiactl" ]; then
-    echo "Error: cmd/nvidiactl directory not found"
-    return 1
-  fi
   export CGO_ENABLED=1
   go build \
     -ldflags="-s -w" \
@@ -52,16 +48,9 @@ build() {
 
 package() {
   cd "$srcdir/$_pkgname"
-  install -Dm 755 build/"$_pkgname"  "$pkgdir"/usr/bin/"$_pkgname"
+  install -Dm 755 build/"$_pkgname" "$pkgdir/usr/bin/$_pkgname"
   install -Dm 644 -t "$pkgdir/usr/share/doc/$_pkgname/" README.md
-  if [ -f "$_pkgname.service" ]; then
-    install -Dm 644 "$_pkgname.service" "$pkgdir/usr/lib/systemd/system/$_pkgname.service"
-  else
-    echo "Warning: $_pkgname.service file not found"
-  fi
-  if [ -f "LICENSE" ]; then
-    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
-  else
-    echo "Warning: LICENSE file not found"
-  fi
+  install -Dm 644 "$_pkgname.service" "$pkgdir/usr/lib/systemd/system/$_pkgname.service"
+  install -Dm 644 "$_pkgname.example.conf" "$pkgdir/etc/$_pkgname.conf"
+  install -Dm 644 LICENSE "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
 }
