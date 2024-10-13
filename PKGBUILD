@@ -139,7 +139,7 @@ _CMAKE_FLAGS+=(
                                   )
 pkgname=elmerfem-git
 _pkgname=elmerfem
-pkgver=9.0.r3215.g6c43a0546
+pkgver=9.0.r3246.g89b896c9b
 pkgrel=1
 pkgdesc="A finite element software for multiphysical problems"
 arch=('x86_64')
@@ -159,7 +159,7 @@ conflicts=('elmerfem')
 # Main repos
 ((DISABLE_INTERNAL_UMFPACK ||  !DISABLE_CHOLMOD )) && depends+=('suitesparse')
 ((DISABLE_INTERNAL_ARPACK))  && depends+=('arpack') || conflicts+=('arpack')
-((!DISABLE_GUI))             && depends+=('qt5-base' 'qt5-script' 'qt5-svg' 'glew')
+((!DISABLE_GUI))             && depends+=('qt5-base' 'qt5-script' 'qt5-svg' 'qt5-declarative' 'glew')
 ((!DISABLE_QWT))             && depends+=('qwt')
 ((!DISABLE_MPI))             && depends+=('openmpi')
 if((!DISABLE_NETCFD)); then
