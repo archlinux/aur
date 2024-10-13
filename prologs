@@ -1,0 +1,29 @@
+#!/bin/sh
+
+set -eu ${TRACE+-x}
+
+usage() {
+    cat <<-EOT
+	Usage:
+	    $0 [-h] [-k] [-O type] [-j jobs] [-p prolog1 -p prolog2 ...'] [-g goal] -- file
+	
+	Supported Prologs:
+	    ciao gnu scryer swi trealla
+EOT
+}
+
+while getopts hp:g:f: op
+do
+    case $op in
+        p) PROLOGS="$PROLOGS $OPTARG" ;;
+        g) GOAL="$OPTARG" ;;
+        f) FILE="$OPTARG" ;;
+        h) usage; exit ;;
+        ?) usage; exit 1;;
+    esac
+done
+shift $((OPTIND - 1))
+
+# PROLOGS variable is meant to be expanded to multiple arguments
+# shellcheck disable=SC2086
+"${MAKE:-remake}" "$@" -f /usr/share/prologs/rules.mk PROG="${FILE}" MAIN="${GOAL:-test}" ${PROLOGS:-all}
