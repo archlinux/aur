@@ -7,7 +7,7 @@ arch=('x86_64')
 url="https://singlelogin.rs/z-access"
 depends=('gtk3' 'libnotify' 'nss' 'libxss' 'libxtst' 'at-spi2-core' 'util-linux-libs' 'libsecret' 'libappindicator-gtk3')
 license=('ISC')
-source=("zlibrary-setup-latest_${pkgver}.deb::https://s3proxy.cdn-zlib.se/te_public_files/soft/linux/zlibrary-setup-latest.deb")
+source=("zlibrary-setup-latest_${pkgver}.deb::https://s3proxy.cdn-zlib.sk/te_public_files/soft/linux/zlibrary-setup-latest.deb")
 sha256sums=('d3d6c845fafd3a16bd1cb28451bfa8295767c6942fb0449930ee51db54b94c7f')
 
 prepare() {

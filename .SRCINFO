@@ -14,7 +14,7 @@ pkgbase = z-library-bin
 	depends = util-linux-libs
 	depends = libsecret
 	depends = libappindicator-gtk3
-	source = zlibrary-setup-latest_2.0.0.deb::https://s3proxy.cdn-zlib.se/te_public_files/soft/linux/zlibrary-setup-latest.deb
+	source = zlibrary-setup-latest_2.0.0.deb::https://s3proxy.cdn-zlib.sk/te_public_files/soft/linux/zlibrary-setup-latest.deb
 	sha256sums = d3d6c845fafd3a16bd1cb28451bfa8295767c6942fb0449930ee51db54b94c7f
 
 pkgname = z-library-bin
