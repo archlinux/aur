@@ -4,7 +4,7 @@
 # Contributor: Usama <eruzzamma at gmail dot com>
 pkgname=cursor-appimage
 _pkgname=cursor
-pkgver=0.42.1
+pkgver=0.42.2
 pkgrel=1
 pkgdesc="Write, edit, and chat about your code with GPT. (AppImage)"
 arch=('x86_64')
@@ -17,7 +17,7 @@ depends=('hicolor-icon-theme' 'zlib' 'fuse2')
 # pkgver=$(curl -s -o /dev/null -D - -r 0-0 https://download.cursor.sh/linux/appImage/x64 | grep -o -E 'filename=.*$' | sed -e 's/.*cursor-\(.*\)\(.*\)\.AppImage.*/\1\.\2/')
 
 source=("${_pkgname}-${pkgver}.AppImage::https://downloader.cursor.sh/linux/appImage/x64")
-sha256sums=('a37942cc3486ff51b625e78c21c1d9ca2512823c5279025e0fa1c9094f1a51ce')
+sha256sums=('1c367c8bff3aa993aaaec05c31b81e5c6b59e619907de0c2aaff6c7014f57da9')
 _install_path="/opt/appimages"
 
 prepare() {
