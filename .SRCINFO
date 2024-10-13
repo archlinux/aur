@@ -24,6 +24,7 @@ pkgbase = nodejs-fast-cli
 	depends = libffi
 	depends = libgcrypt
 	depends = libjpeg
+	depends = libjpeg-turbo
 	depends = libpng
 	depends = libpulse
 	depends = libva

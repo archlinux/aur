@@ -14,7 +14,7 @@
 pkgname=nodejs-fast-cli
 _npmname=${pkgname/nodejs-/}
 pkgver=4.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Test your download and upload speed using fast.com from Netflix"
 arch=(any)
 url="https://github.com/sindresorhus/fast-cli#readme"
@@ -39,6 +39,7 @@ depends=(
          'libffi'
          'libgcrypt'
          'libjpeg'
+         'libjpeg-turbo'
          'libpng'
          'libpulse'
          'libva'
