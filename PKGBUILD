@@ -3,10 +3,10 @@
 
 pkgname=naiveproxy
 pkgdesc="A Proxy using Chrome's network stack to camouflage traffic with strong censorship resistence and low detectablility."
-pkgver=127.0.6533.64_2
+pkgver=130.0.6723.40_1
 pkgrel=1
-_pkgver=127.0.6533.64
-_pkgrel=2
+_pkgver=130.0.6723.40
+_pkgrel=1
 arch=('x86_64')
 url='https://github.com/klzgrad/naiveproxy'
 license=('BSD-3-Clause')
@@ -14,8 +14,8 @@ depends=("gcc-libs" "glibc")
 makedepends=("ninja" "gn" "ccache" "python")
 checkdepends=("python" "openssl")
 
-_PGO_PATH='chrome-linux-6533-1721647559-b59d3252e50dcc0e34a9d5ca3790d80421583ca4-419f07950174cbcea67e9a8035fcc0a2ced2ff1e.profdata'
-_clang_path='clang-llvmorg-19-init-10646-g084e2b53-57.tgz'
+_PGO_PATH='chrome-linux-6723-1728387217-9f5646f93bc4ba3a2a9310010e81c26b70db13b1-f044eaa32696eb5c9c4d3ffede525cf50c8cc3e9.profdata'
+_clang_path='clang-llvmorg-20-init-3847-g69c43468-28.tar.xz'
 
 source=(
   "naiveproxy.service"
@@ -33,15 +33,15 @@ noextract=(
 sha1sums=('4c18f44ba51d40bfd7e6ae8ecb30b8e812acb8e8'
           '013b31ae43e309bc6560b61e8b4196f8f14f738f'
           '3727d7da81b1480d60e593a7d6878d981b35c4f6'
-          '84a65658ce9d28a09ad6b75fe6fa71c7864d3ed6'
-          'b59d3252e50dcc0e34a9d5ca3790d80421583ca4'
-          'dfe7e4e0070de12463ea519488b86640d22a41f6')
+          'fd18fa5b79036f095c6d97a9a705da6507677be9'
+          '9f5646f93bc4ba3a2a9310010e81c26b70db13b1'
+          'e24758e3441d38fc7b38597de48a18999ba87eb1')
 sha256sums=('c05026423ca08e2c712745b717c23395e344f2c99b2dad30beed8e26922d268f'
             'daa0f591233625730168f3ea006f1d5a7e439e26b35a1051d957e394aa8a4440'
             '5bc9ef361e6303e151b6e63deb31b47e24a4f34ade4d8f092a04bc98e89a2edb'
-            '1eeb7c9cfc5ec36d100c559285ec0946cc5a032a9d178b61ec7b15402e5f8d16'
-            '4cc810ce3d9f9979a6dbcd6df1c65c8070ab7635f399af3b0bfc7df3f17083c3'
-            '256569cef49a1a955570a3026b8910689cac106a1336238f592296c544f6b8c3')
+            '307b334020bccf1e02b676318bfff82f6bc7c0cfccad8fd8347027ef0c50e9e8'
+            '157240225fdd60edcc09ea28a861add344641eff5dd726c437fe241a44c92bd2'
+            '6a30f7bc7c5f0eac02a40a4ec9a1ab906ddff2adacf2c9ff065916047c79f0fb')
 
 backup=('etc/naiveproxy/config.json')
 provides=('naiveproxy')
@@ -54,7 +54,7 @@ prepare() {
   cp ${_PGO_PATH} "${SRC_DIR}/chrome/build/pgo_profiles/"
 
   mkdir -p "${SRC_DIR}/third_party/llvm-build/Release+Asserts"
-  tar xzf ${_clang_path} -C "${SRC_DIR}/third_party/llvm-build/Release+Asserts/"
+  tar xJf ${_clang_path} -C "${SRC_DIR}/third_party/llvm-build/Release+Asserts/"
 }
 
 build() {
@@ -80,11 +80,6 @@ build() {
   export CCACHE_CPP2=yes
   CCACHE=ccache
 
-  pushd "tools/clang/scripts"
-  CLANG_REVISION=$($PYTHON -c 'import update; print(update.PACKAGE_VERSION)')
-  popd
-  echo "$CLANG_REVISION" >third_party/llvm-build/Release+Asserts/cr_build_revision
-
   flags="$flags
     cc_wrapper=\"$CCACHE\""
 
@@ -95,6 +90,9 @@ build() {
     fatal_linker_warnings=false
     treat_warnings_as_errors=false
 
+    is_cronet_build=true
+    chrome_pgo_phase=2
+
     enable_base_tracing=false
     use_udev=false
     use_aura=false
@@ -103,16 +101,20 @@ build() {
     use_gtk=false
     use_platform_icu_alternatives=true
     use_glib=false
-    enable_js_protobuf=false
 
     disable_file_support=true
     enable_websockets=false
     use_kerberos=false
+    disable_file_support=true
+    disable_zstd_filter=false
     enable_mdns=false
     enable_reporting=false
     include_transport_security_state_preload_list=false
-    use_nss_certs=false
+    enable_device_bound_sessions=false
+    enable_bracketed_proxy_uris=true
 
+    use_nss_certs=false
+  
     enable_backup_ref_ptr_support=false
     enable_dangling_raw_ptr_checks=false
   '
