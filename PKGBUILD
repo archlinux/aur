@@ -1,7 +1,7 @@
 # Maintainer: Energi <lukas.bloznelis@gmail.com>
 
 pkgname=krowbar
-pkgver=0.1.12
+pkgver=0.2.5
 pkgrel=1
 pkgdesc="BSPWM status bar"
 arch=(x86_64)
