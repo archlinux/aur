@@ -5,7 +5,7 @@
 
 # Maintainer: Daudi Wampamba <me@daudi.dev>
 pkgname=linux-enable-ir-emitter-bin
-pkgver=5.2.4
+pkgver=6.0.6
 pkgrel=1
 epoch=
 pkgdesc="Enables infrared cameras that are not directly enabled out-of-the box"
@@ -34,12 +34,9 @@ install=
 changelog=
 source=("linux-enable-ir-emitter-$pkgver.systemd.x86-64.tar.gz::https://github.com/EmixamPP/linux-enable-ir-emitter/releases/download/$pkgver/linux-enable-ir-emitter-$pkgver.systemd.x86-64.tar.gz")
 noextract=()
-md5sums=('c39697f9120b1ca5aa2d2df8b22cee98')
+md5sums=('508765419da44f0de6fe2d1fc63f1c08')
 validpgpkeys=()
 
 package() {
 	tar -C $pkgdir --no-same-owner -h -xzf linux-enable-ir-emitter-$pkgver.systemd.x86-64.tar.gz
-	# Fix issues with Lib64 being symlinked to lib
-	mv $pkgdir/usr/lib64/* $pkgdir/usr/lib
-	rmdir $pkgdir/usr/lib64
 }
