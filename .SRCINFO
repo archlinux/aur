@@ -1,0 +1,15 @@
+pkgbase = bin2header-git
+	pkgdesc = A small tool to convert binary files into C-header files to include into your code
+	pkgver = r4.f5a8cef
+	pkgrel = 1
+	url = https://github.com/spacerace/bin2header
+	arch = x86_64
+	license = custom:None
+	makedepends = git
+	depends = glibc
+	provides = bin2header
+	conflicts = bin2header
+	source = bin2header::git+https://github.com/spacerace/bin2header.git
+	sha256sums = SKIP
+
+pkgname = bin2header-git
