@@ -1,0 +1,21 @@
+pkgbase = tty-share-bin
+	pkgdesc = Share your terminal over the Internet
+	pkgver = 2.4.0
+	pkgrel = 1
+	url = https://tty-share.com
+	arch = x86_64
+	arch = i686
+	license = MIT
+	depends = glibc
+	provides = tty-share
+	conflicts = tty-share
+	source = README-2.4.0.md::https://github.com/elisescu/tty-share/raw/v2.4.0/README.md
+	source = LICENSE-2.4.0::https://github.com/elisescu/tty-share/raw/v2.4.0/LICENSE
+	sha256sums = 5d55ba252d9faa9983857285cb524b403927cd212e2f1e58cb3ee55b46b3a465
+	sha256sums = 29758dfaac84d3a8de50b2fd9c1b73ac2e58197035b9df5ccc1f5f67e01a8ab0
+	source_x86_64 = tty-share-2.4.0-x86_64::https://github.com/elisescu/tty-share/releases/download/v2.4.0/tty-share_linux-amd64
+	sha256sums_x86_64 = 7c26894c13ad1a066382f2d8e6812d3a25f4bf6b595e369e0f1b70e09d7883d9
+	source_i686 = tty-share-2.4.0-i686::https://github.com/elisescu/tty-share/releases/download/v2.4.0/tty-share_linux-386
+	sha256sums_i686 = e5a0033f48290823c5872a780846184decc7076e1f2e6c16689be7cb08324a58
+
+pkgname = tty-share-bin
