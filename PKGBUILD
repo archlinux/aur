@@ -1,4 +1,5 @@
 # Maintainer: KafCoppelia <k740677208@gmail.com>
+# Contributor: jacko <obri.jack.02@gmail.com>
 
 # BUILD INSTRUCTIONS:
 #
@@ -11,13 +12,13 @@
 
 pkgname=linkserver
 pkgver=24.9.75
-pkgrel=1
+pkgrel=2
 pkgdesc="A utility for launching and managing GDB servers for NXP debug probes, which also provides a command-line target flash programming capabilities."
 arch=('x86_64')
 url="https://www.nxp.com/design/design-center/software/development-software/mcuxpresso-software-and-tools-/linkserver-for-microcontrollers:LINKERSERVER"
 license=('custom:LA_OPT_NXP_Software_License')
 depends=('bash' 'bzip2' 'expat' 'gcc-libs' 'glibc' 'libusb' 'openssl-1.1' 'systemd-libs' 'zlib' 'xz' 'libx11' 'libxext' 'libxft' 'fontconfig' 'libxss'
-    'libxfixes' 'libpng' 'libxcb' 'libxcursor' 'tk' 'libbsd' 'tcl' 'util-linux-libs' 'libxrender' 'freetype2')
+    'libxfixes' 'libpng' 'libxcb' 'libxcursor' 'tk' 'libbsd' 'tcl' 'util-linux-libs' 'libxrender' 'freetype2' 'ncurses5-compat-libs' 'python38')
 _source="LinkServer_${pkgver}.${arch}.deb.bin"
 source=("file://${_source}")
 noextract=("${_source}")
