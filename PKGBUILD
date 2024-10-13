@@ -2,15 +2,15 @@
 
 pkgname=steam-acolyte
 pkgver=0.10.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Lightweight user account switcher/login keeper for steam"
 arch=('any')
 url="https://github.com/coldfix/${pkgname}"
-license=('custom:UNLICENSE')
+license=('Unlicense')
 depends=('python' 'python-pyqt5' 'python-vdf' 'python-docopt')
 makedepends=('python-setuptools')
 source=("https://pypi.org/packages/source/${pkgname:0:1}/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-md5sums=('1ad7f9578a16e73427202c2ab2018439')
+sha256sums=('25e117f37deae6bebd2bd60ca87098497a203d9aa1b69460bb99c85b32aa4d29')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
