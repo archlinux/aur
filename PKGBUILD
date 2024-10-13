@@ -12,11 +12,11 @@ source=("git+https://github.com/System64fumo/frog")
 sha256sums=('SKIP')
 
 build() {
-	cd "${pkgname}"
+	cd "frog"
 	make
 }
 
 package() {
-	cd "${pkgname}"
+	cd "frog"
 	make PREFIX=/usr DESTDIR="${pkgdir}" install
 }
