@@ -20,8 +20,8 @@ pkgver() {
 
 build() {
   cd ${pkgname%-git}
-  sed -i "s|PREFIX = /usr/local|PREFIX = ${pkgdir}/usr|" Makefile
   ./configure
+  sed -i "s|PREFIX = /usr/local|PREFIX = ${pkgdir}/usr|" Makefile
   make
 }
 
