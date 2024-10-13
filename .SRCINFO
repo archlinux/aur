@@ -1,0 +1,14 @@
+pkgbase = neovim-texlabconfig-opt-git
+	pkgdesc = Smart and powerful comment plugin for Neovim.
+	pkgver = 64.b817297
+	pkgrel = 1
+	url = https://github.com/f3fora/nvim-texlabconfig
+	arch = any
+	license = Unilicense
+	makedepends = git
+	depends = neovim
+	depends = go
+	source = texlabconfig::git+https://github.com/f3fora/nvim-texlabconfig.git
+	sha256sums = SKIP
+
+pkgname = neovim-texlabconfig-opt-git
