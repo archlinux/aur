@@ -7,7 +7,7 @@
 
 pkgname='hmcl-dev'
 _pkgname='hmcl'
-pkgver='3.5.9.252'
+pkgver='3.5.9.255'
 pkgrel='1'
 pkgdesc='A Minecraft Launcher which is multi-functional, cross-platform and popular (development version)'
 arch=('any')
@@ -22,7 +22,7 @@ source=('hmcl-launch-script'
         "git+https://github.com/huanghongxun/HMCL.git#tag=v${pkgver}")
 sha256sums=('5052316e95f26a137cd7ab3953e7b019bcd0a755cfe27abb318c505eb6268baf'
             '5780cf70f1afec0eb3cd8fc43297d361903c7204e274a28c5edf9b8ac3eea83e'
-            'f9b4f5246438a5f9982e358cb363aa5ad389236fee38f2c71bebe36be1c55f23')
+            'f40f14deaa7c5f03a38ffdd5ea9a5db16ed8def1e58d9b998e42e0d757ecd6a0')
 
 build ()
 {
