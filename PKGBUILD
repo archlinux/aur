@@ -70,9 +70,9 @@ package() {
 
   install -D -m 755 bin/64bit/StreamFX.so $pkgdir/usr/lib/obs-plugins/StreamFX.so
 
-  mkdir -p $pkgdir/usr/share/obs/obs-plugins/StreamFX
-  cp -R data/* $pkgdir/usr/share/obs/obs-plugins/StreamFX
-  chmod u=rwX,g=rX,o=rX $pkgdir/usr/share/obs/obs-plugins/StreamFX/*/**/*
+  mkdir -p "$pkgdir"/usr/share/obs/obs-plugins/StreamFX
+  cp -R data/* "$pkgdir"/usr/share/obs/obs-plugins/StreamFX
+  chmod u=rwX,g=rX,o=rX "$pkgdir"/usr/share/obs/obs-plugins/StreamFX/*/**/*
 }
 
 # vim: ts=2:sw=2:expandtab
