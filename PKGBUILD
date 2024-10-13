@@ -1,4 +1,5 @@
-# Maintainer: Amanoel Dawod <amoka at amanoel dot com>
+# Adam Maroti <jmarotiadam@gmail.com>
+# Ex-Maintainer: Amanoel Dawod <amoka at amanoel dot com>
 # Contributor: Jacob Humphrey (kaknife) <jacob.ryan.humphrey@gmail.com>
 
 pkgname=gnome-shell-extension-ubuntu-dock
