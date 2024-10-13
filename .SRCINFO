@@ -1,12 +1,12 @@
 pkgbase = libgeneral
 	pkgdesc = Common library for tihmstar tools
-	pkgver = 83
+	pkgver = 84
 	pkgrel = 1
 	url = https://github.com/tihmstar/libgeneral
 	arch = x86_64
 	license = LGPL-2.1-only
 	makedepends = git
-	source = git+https://github.com/tihmstar/libgeneral.git#tag=83
-	sha256sums = 42500dae120cdf7576a61d21c82e602522b5b7745a2aa47045af1baa89f3ab96
+	source = git+https://github.com/tihmstar/libgeneral.git#tag=84
+	sha256sums = 94576233e79e0bf8413dc562d05bc154b522462a106a76ce0f6f5dbf20c29499
 
 pkgname = libgeneral
