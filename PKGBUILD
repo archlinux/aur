@@ -1,7 +1,7 @@
 # Maintainer: Thomas Gläßle <aur@coldfix.de>
 
 pkgname=git-punchcard
-pkgver=2.0.3
+pkgver=2.0.4
 pkgrel=1
 pkgdesc="Show punchcard graphs with git commit activity."
 arch=('any')
@@ -10,7 +10,7 @@ license=('custom:UNLICENSE')
 depends=('git' 'python-numpy' 'python-matplotlib' 'python-pytz')
 makedepends=('python-setuptools')
 source=("https://pypi.python.org/packages/source/${pkgname:0:1}/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-md5sums=('d5905fe42a44c0c8756f6f00ece547c5')
+sha256sums=('c24855cf53140396e723883e95f5e9b9732f93fbbd38cd64e8bb2dc102d3da76')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
