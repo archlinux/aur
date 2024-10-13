@@ -210,6 +210,26 @@
  static unsigned int LinuxDriverEstimateTSCkHz(void);
  
  static struct vm_operations_struct vmuser_mops = {
+@@ -201,17 +203,8 @@
+    if (khz != 0) {
+       return khz;
+    }
+-   err = compat_smp_call_function_single(0, LinuxDriverEstimateTSCkHzWork,
+-                                         NULL, 1);
+-   /*
+-    * The smp function call may fail for two reasons, either
+-    * the function is not supportd by the kernel, or the cpu
+-    * went offline. In this unlikely event, we just perform
+-    * the work wherever we can.
+-    */
+-   if (err != 0) {
+-      LinuxDriverEstimateTSCkHzWork(NULL);
+-   }
++
++   LinuxDriverEstimateTSCkHzWork(NULL);
+ 
+    return Atomic_Read(&tsckHz);
+ }
 @@ -227,7 +229,7 @@ LinuxDriverEstimateTSCkHz(void)
   *----------------------------------------------------------------------
   */
