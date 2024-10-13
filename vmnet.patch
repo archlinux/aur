@@ -405,6 +405,55 @@ Fixing VMWare Player on Linux when using DHCP addresses: https://www.nikhef.nl/~
     if (port->jack.state == FALSE || hubJack == NULL) {
        return -EINVAL;
     }
+--- a/vmnet/vm_basic_types.h
++++ b/vmnet/vm_basic_types.h
+@@ -956,6 +956,27 @@
+ #define ALIGN_SUFFIX(BOUNDRY) __attribute__((__aligned__(BOUNDRY)))
+ #endif
+ 
++#ifndef __has_attribute
++# define __has_attribute(x) 0
++#endif
++
++/*
++ * COUNTED_BY attribute may be attached to the C99 flexible array
++ * member of a structure. It indicates that the number of the elements
++ * of the array is given by the field "member" in the same structure as
++ * the flexible array member. Compilers may use this information to
++ * improve detection of object size information for such structures
++ * and provide better results in compile-time diagnostics and runtime
++ * features like the array bound sanitizer.
++ *
++ * https://people.kernel.org/kees/bounded-flexible-arrays-in-c
++ */
++
++#if __has_attribute(__counted_by__)
++# define COUNTED_BY(member) __attribute__((__counted_by__(member)))
++#else
++# define COUNTED_BY(member)
++#endif
+ 
+ /*
+  * Once upon a time, this was used to silence compiler warnings that
+--- a/vmnet/vmnetInt.h
++++ b/vmnet/vmnetInt.h
+@@ -41,9 +42,14 @@
+     compat_skb_set_network_header(skb, sizeof (struct ethhdr)),  \
+     dev_queue_xmit(skb)                                   \
+   )
+-#define dev_lock_list()    read_lock(&dev_base_lock)
+-#define dev_unlock_list()  read_unlock(&dev_base_lock)
+ 
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(6, 9, 0)
++#   define dev_lock_list()    rcu_read_lock()
++#   define dev_unlock_list()  rcu_read_unlock()
++#else
++#   define dev_lock_list()    read_lock(&dev_base_lock)
++#   define dev_unlock_list()  read_unlock(&dev_base_lock)
++#endif
+ 
+ extern struct proto vmnet_proto;
+ #if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 2, 0) || defined(sk_net_refcnt)
 --- a/vmnet/vnetEvent.c
 +++ b/vmnet/vnetEvent.c
 @@ -60,10 +60,12 @@
@@ -521,22 +570,3 @@ Fixing VMWare Player on Linux when using DHCP addresses: https://www.nikhef.nl/~
     if (count < n) {
        n = count;
     }
-Patch for Linux 6.9 from https://github.com/mkubecek/vmware-host-modules/issues/239
---- a/vmnet-only/vmnetInt.h
-+++ b/vmnet-only/vmnetInt.h
-@@ -41,8 +41,13 @@
-     compat_skb_set_network_header(skb, sizeof (struct ethhdr)),  \
-     dev_queue_xmit(skb)                                   \
-   )
--#define dev_lock_list()    read_lock(&dev_base_lock)
--#define dev_unlock_list()  read_unlock(&dev_base_lock)
-+#if LINUX_VERSION_CODE >= KERNEL_VERSION(6, 9, 0)
-+#   define dev_lock_list()    rcu_read_lock()
-+#   define dev_unlock_list()  rcu_read_unlock()
-+#else
-+#   define dev_lock_list()    read_lock(&dev_base_lock)
-+#   define dev_unlock_list()  read_unlock(&dev_base_lock)
-+#endif
- 
- 
- extern struct proto vmnet_proto;
