@@ -2,12 +2,13 @@
 
 pkgname=git-punchcard
 pkgver=2.0.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Show punchcard graphs with git commit activity."
 arch=('any')
 url="https://github.com/coldfix/git-punchcard"
-license=('custom:UNLICENSE')
+license=('Unlicense')
 depends=('git' 'python-numpy' 'python-matplotlib' 'python-pytz')
+optdepends=('python-pyqt5: for immediate graph display')
 makedepends=('python-setuptools')
 source=("https://pypi.python.org/packages/source/${pkgname:0:1}/${pkgname}/${pkgname}-${pkgver}.tar.gz")
 sha256sums=('c24855cf53140396e723883e95f5e9b9732f93fbbd38cd64e8bb2dc102d3da76')
