@@ -1,6 +1,6 @@
 # Maintainer: Zhanibek Adilbekov <zhanibek.adilbekov@pm.me>
 pkgname=rusty_ulid
-pkgver=1.0.0
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="Rust ULID generation and processing"
 arch=('x86_64')
@@ -10,7 +10,7 @@ makedepends=('cargo')
 depends=('gcc-libs')
 source=(
     "$pkgname-$pkgver.tar.gz::https://github.com/huxi/rusty_ulid/archive/refs/tags/$pkgver.tar.gz")
-b2sums=('e7e3ae0e3edff7e90112a77be640510e51c155bbb2a497c86a6f99994755ff4d040b23f221a626eb3cf945ba0e3a69c26a1b885a119b0309492f799a42a71a0b')
+b2sums=('2536be5c177ce95626b7f2897f1de364f0f76e586e22ea559c8385adaec4cc74471d45fc2922b7d2d783e4b88a7000bee93d8201f244010dd11c220cc5e93f3d')
 
 build() {
     cd "$pkgname-$pkgver"
