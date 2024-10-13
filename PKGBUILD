@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=R2jags
-_pkgver=0.8-5
+_pkgver=0.8-9
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -20,8 +20,8 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('f4daddcc2cafdecc9e53e6b88461ec7b')
-b2sums=('c7a18ec417476690178a0b36d50a95e3bdfb6cd28cd8dccae0c80e5f2775e44ee9bd6b4c26b95607962da1592072d69bce02d5706ebe87fc713469e6391c232b')
+md5sums=('58acbde539ecc0f4668862b17fac60f8')
+b2sums=('688ef12712195add8fea264b96454490ff295b3a31b2730ba4f933a779198923f0835bf2b0cf9c7c0ed872506b380b5513a85e893cd349190148593f99196825')
 
 build() {
   mkdir build
