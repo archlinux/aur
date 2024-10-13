@@ -1,0 +1,3 @@
+[czkawka]
+source = "git"
+git = "https://github.com/qarmin/czkawka.git"
