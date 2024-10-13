@@ -1,16 +1,16 @@
 # Maintainer: Zhanibek Adilbekov <zhanibek.adilbekov@pm.me>
 pkgname=zbctl
-pkgver=8.3.3
+pkgver=8.6.0
 pkgrel=1
 pkgdesc="CLI to interact with Zeebe"
 arch=('x86_64')
-url="https://github.com/zeebe-io/zeebe/tree/master/clients/go/cmd/zbctl"
-license=('Apache')
+url="https://github.com/camunda-community-hub/zeebe-client-go"
+license=('Apache-2.0')
 depends=()
 source=(
-    "$pkgname-$pkgver::https://github.com/zeebe-io/zeebe/releases/download/$pkgver/zbctl")
+    "$pkgname-$pkgver::https://github.com/camunda-community-hub/zeebe-client-go/releases/download/v$pkgver/zbctl")
 # noextract=("$pkgname-$pkgver")
-b2sums=('a2f4d1a8faea2369f845dd3272e478a64ad76a66b4186ddd18f3b36da7def036d1e0621f8a874250b41797a065bfd2c56c6f8ba029db81dd5da0760adfa64dee')
+b2sums=('84382e45bbdad0d7c045cca5d8934d1e0227c32e762bd8a1261acc04bdcff7c9a12dab00c32f7d0733003168720696992685fc0ce170ac3423bb4a153534d5d7')
 
 build() {
 	chmod +x "${srcdir}/${pkgname}-${pkgver}"
