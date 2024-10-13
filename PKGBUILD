@@ -3,11 +3,11 @@
 _pkgname=obs-StreamFX
 pkgname=${_pkgname,,}-unstable
 pkgver=0.12.0b299
-pkgrel=4
+pkgrel=5
 pkgdesc="Bring your stream back to life with modern effects! (unstable/testing version)"
 arch=("x86_64" "x86_64_v3")
 url="https://github.com/Xaymar/$_pkgname"
-license=("GPL2")
+license=('GPL-2.0-only') # no "any later version" mention in source tree
 # same dependencies as OBS Studio + nlohmann-json + ninja makedepends
 depends=("ffmpeg" "jansson" "libxinerama" "libxkbcommon-x11"
          "qt6-base" "curl" "gtk-update-icon-cache"
