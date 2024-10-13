@@ -39,8 +39,25 @@ validpgpkeys=('E0A3EB202F8E57528E13E72FD7574483BB57B18D'  # Jonathan Esk-Riddell
               'D07BD8662C56CB291B316EB2F5675605C74E02CF'  # David Edmundson <davidedmundson@kde.org>
               '1FA881591C26B276D7A5518EEAAF29B42A678C20') # Marco Martin <notmart@gmail.com>
 
+# For simplify rebase on `extra/plasma-vault` package
+_pkgname=$pkgname
+pkgname=$pkgname-open-with-pass
+pkgrel=$pkgrel.2
+provides=(plasma-vault)
+conflicts=(plasma-vault plasma-vault-git)
+pkgdesc="$pkgdesc (With \`openVaultWithPass\` DBus interface)"
+source=($source plasma-vault--openVaultWithPass\`s\(ss\)\`.patch)
+sha256sums=($sha256sums
+            'a7614a1eedfb903151f0274d456c2f81b20ecf730a3cabbcf3d41342df63b9f5')
+
+prepare() {
+  cd $_pkgname-$pkgver
+  patch -p1 -i "$srcdir/plasma-vault--openVaultWithPass\`s(ss)\`.patch"
+  cd -
+}
+
 build() {
-  cmake -B build  -S $pkgname-$pkgver \
+  cmake -B build  -S $_pkgname-$pkgver \
     -DBUILD_TESTING=OFF
   cmake --build build
 }

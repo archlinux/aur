@@ -1,0 +1,121 @@
+diff --git a/common/org.kde.plasmavault.xml b/common/org.kde.plasmavault.xml
+index 188c1d4..ac6302b 100644
+--- a/common/org.kde.plasmavault.xml
++++ b/common/org.kde.plasmavault.xml
+@@ -22,6 +22,11 @@
+     <method name="openVault">
+       <arg name="device" type="s" direction="in"/>
+     </method>
++    <method name="openVaultWithPass">
++      <arg name="device" type="s" direction="in"/>
++      <arg name="pass" type="s" direction="in"/>
++      <arg type="s" direction="out"/>
++    </method>
+     <method name="closeVault">
+       <arg name="device" type="s" direction="in"/>
+     </method>
+diff --git a/kded/service.cpp b/kded/service.cpp
+index a17328a..fc36ef3 100644
+--- a/kded/service.cpp
++++ b/kded/service.cpp
+@@ -324,6 +324,55 @@ void PlasmaVaultService::openVault(const QString &device)
+     }
+ }
+ 
++QString PlasmaVaultService::openVaultWithPass(const QString &device, const QString &pass)
++{
++    if (auto vault = d->vaultFor(device)) {
++        if (vault->isOpened())
++            return "";
++
++        if (vault->isOfflineOnly()) {
++            d->saveNetworkingState();
++
++            auto &devicesInhibittingNetworking = d->savedNetworkingState->devicesInhibittingNetworking;
++            auto deviceOpeningHandle = "{opening}" + vault->device().data();
++
++            // We need to check whether this vault
++            // should be added or removed from the
++            // inhibitors list
++            const bool alreadyInhibiting = devicesInhibittingNetworking.contains(deviceOpeningHandle);
++
++            if (!alreadyInhibiting) {
++                devicesInhibittingNetworking << deviceOpeningHandle;
++            }
++
++            NetworkManager::setNetworkingEnabled(false);
++        }
++
++        auto stopInhibiting = [this, vault] {
++            if (d->savedNetworkingState) {
++                auto &devicesInhibittingNetworking = d->savedNetworkingState->devicesInhibittingNetworking;
++                auto deviceOpeningHandle = "{opening}" + vault->device().data();
++                devicesInhibittingNetworking.removeAll(deviceOpeningHandle);
++            }
++        };
++
++        auto future = vault->open({{KEY_PASSWORD, pass}});
++        const auto result = AsynQt::await(future);
++        if (result) {
++            Q_EMIT vaultChanged(vault->info());
++            stopInhibiting();
++        } else {
++            stopInhibiting();
++            if (vault->status() != VaultInfo::Opened) {
++                d->restoreNetworkingState();
++            }
++            return result.error().message();
++        }
++    }
++
++    return "";
++}
++
+ void PlasmaVaultService::closeVault(const QString &device)
+ {
+     if (auto vault = d->vaultFor(device)) {
+diff --git a/kded/service.h b/kded/service.h
+index e8e0f2a..eca1397 100644
+--- a/kded/service.h
++++ b/kded/service.h
+@@ -27,6 +27,7 @@ public Q_SLOTS:
+     Q_SCRIPTABLE void requestNewVault();
+     Q_SCRIPTABLE void requestImportVault();
+     Q_SCRIPTABLE void openVault(const QString &device);
++    Q_SCRIPTABLE QString openVaultWithPass(const QString &device, const QString &pass);
+     Q_SCRIPTABLE void closeVault(const QString &device);
+     Q_SCRIPTABLE void forceCloseVault(const QString &device);
+ 
+diff --git a/plasma/vaultsmodel.cpp b/plasma/vaultsmodel.cpp
+index ba651e9..4de178a 100644
+--- a/plasma/vaultsmodel.cpp
++++ b/plasma/vaultsmodel.cpp
+@@ -305,6 +305,14 @@ void VaultsModel::open(const QString &device)
+     d->service.openVault(device);
+ }
+ 
++QString VaultsModel::openWithPass(const QString &device, const QString &pass)
++{
++    if (!d->vaults.contains(device))
++        return "";
++
++    return d->service.openVaultWithPass(device, pass);
++}
++
+ void VaultsModel::close(const QString &device)
+ {
+     if (!d->vaults.contains(device))
+diff --git a/plasma/vaultsmodel.h b/plasma/vaultsmodel.h
+index 9d609c0..66a266c 100644
+--- a/plasma/vaultsmodel.h
++++ b/plasma/vaultsmodel.h
+@@ -56,6 +56,9 @@ public Q_SLOTS:
+     // Open (unlock) a vault
+     void open(const QString &device);
+ 
++    // Open (unlock) a vault
++    QString openWithPass(const QString &device, const QString &pass);
++
+     // Close the vault
+     void close(const QString &device);
+ 
