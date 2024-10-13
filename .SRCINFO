@@ -1,0 +1,37 @@
+pkgbase = nonicons-bin-git
+	pkgdesc = A next-generation icon set for developers that extends octicons.
+	pkgver = r67.20230530.8454b3b
+	pkgrel = 1
+	url = https://github.com/yamatsum/nonicons
+	arch = any
+	license = MIT
+	makedepends = git
+	source = nonicons::git+https://github.com/yamatsum/nonicons.git
+	sha256sums = SKIP
+
+pkgname = nonicons-license-git
+	optdepends = ttf-nonicons: TTF font this license is for.
+	optdepends = woff-nonicons: WOFF font this license is for.
+	provides = nonicons-license
+	conflicts = nonicons-license
+
+pkgname = nonicons-doc-git
+	optdepends = ttf-nonicons: TTF font this documentation is for.
+	optdepends = woff-nonicons: WOFF font this documentation is for.
+	provides = nonicons-doc
+	conflicts = nonicons-doc
+
+pkgname = ttf-nonicons-bin-git
+	depends = nonicons-license
+	optdepends = nonicons-doc: For information files about nonicons.
+	provides = ttf-nonicons
+	provides = nonicons-git=r67.20230530.8454b3b
+	conflicts = ttf-nonicons
+	conflicts = nonicons-git
+	replaces = nonicons-git<=r67.8454b3b
+
+pkgname = woff-nonicons-bin-git
+	depends = nonicons-license
+	optdepends = nonicons-doc: For information files about nonicons.
+	provides = woff-nonicons
+	conflicts = woff-nonicons
