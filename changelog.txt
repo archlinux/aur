@@ -1,3 +1,21 @@
+* Sun Oct 13 2024 Yvaniak <yvaniak11 at gmail dot com> - 9.9.1-1
+  PeaZip 9.9.1 is a minor update introducing fixes and updated translations,
+  mainly meant to update and tidy up the GitHub repository.
+  PeaZip 9.9.0 completes the evolution of 9.x line and sets the starting point
+  for the upcoming 10.x releases.
+  Alongside many improvements and fixes in file manager (improved UAC elevation,
+  and password testing) the new release adds the ability to drag and drop extract
+  content from file browser to any folder in left sidebar (containing Bookmarks,
+  History, and filesystem treeview).
+  Also, a new quick extraction link is now displayed on the right of the toolbar
+  when an archive is being browsed, to extract all or selected content in current
+  path (optionally to new folder/smart new folder).
+  Backends are now updated to 7z 24.07, Zstd 1.5.6, and Pea 1.19, which allows
+  the user to specify a variable number of KDF rounds to further increase security
+  against password brute forcing
+  Sources are compiled with new Lazarus 3.4, and are still compatible with Lazarus 2.x line.
+
+
 * Wed Jun 26 2024 Yvaniak <yvaniak11 at gmail dot com> - 9.8.0-1
   PeaZip 9.8.0 release brings new Themes, improved flat mode (display all archive
   content at once), and the ability to directly extract all or selected items to
