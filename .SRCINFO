@@ -7,11 +7,13 @@ pkgbase = godots-git
 	license = MIT
 	makedepends = git
 	makedepends = godot=4.3
-	makedepends = curl
 	conflicts = godots
 	conflicts = godots-bin
+	noextract = Godot_v4.3-stable_export_templates.tpz
 	options = !strip
 	source = git+https://github.com/MakovWait/godots.git
+	source = https://github.com/godotengine/godot/releases/download/4.3-stable/Godot_v4.3-stable_export_templates.tpz
 	sha256sums = SKIP
+	sha256sums = f5f10dbaf56a7908349e64b94ea8c2c93c2cc11fb1014c9565b68a2bb437b922
 
 pkgname = godots-git
