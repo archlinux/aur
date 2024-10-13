@@ -2,7 +2,7 @@
 # Contributor: Sin Kim <kimsin98@gmail.com>
 
 pkgname=webchanges
-pkgver=3.25.0
+pkgver=3.26.0
 pkgrel=0
 pkgdesc='Check web content for changes and notify'
 arch=('any')
@@ -38,7 +38,7 @@ optdepends=('python-playwright: option to use browser'
             'python-redis: redis database'
             'python-keyring: password keyring storage')
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz")
-sha256sums=('91fe0605e4730105bee400e9ecd1f3e123630fd2864928068b6caddb6b086707')
+sha256sums=('5b54d315dc7d13211ecb9ef97bc13986b869f34e60cf16cfea2bdfbd3ce44e56')
 
 build() {
     cd "$pkgname-$pkgver"
