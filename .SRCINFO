@@ -1,0 +1,14 @@
+pkgbase = savvy-git
+	pkgdesc = Command line tool for savvy services services (built from master)
+	pkgver = 0.16.0.r1.g0e3533d
+	pkgrel = 1
+	url = https://getsavvy.so
+	arch = x86_64
+	license = MIT
+	depends = go
+	provides = savvy
+	conflicts = savvy
+	source = savvy-cli::git+https://github.com/getsavvyinc/savvy-cli
+	sha256sums = SKIP
+
+pkgname = savvy-git
