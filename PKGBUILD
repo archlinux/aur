@@ -1,7 +1,7 @@
 # Maintainer: hawkeye116477 <hawkeye116477 at gmail dot com>
 
 pkgname=waterfox-kde
-_pkgver=6.0.18
+_pkgver=6.0.20
 pkgver=G${_pkgver}
 pkgrel=1
 pkgdesc="Customizable privacy conscious web browser with better integration with KDE and primary support for webextensions"
