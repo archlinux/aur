@@ -2,12 +2,12 @@
 _pkgname=pidgin-tts
 pkgname=pidgin-espeak-git
 pkgver=2019_11_20..210876f
-pkgrel=2
+pkgrel=3
 pkgdesc="espeak plugin for the pidgin IM"
 arch=('x86_64')
 url="https://github.com/coldfix/pidgin-tts"
 license=('WTFPL')
-depends=('pidgin' 'espeak')
+depends=('pidgin' 'espeak' 'glib2' 'libpurple')
 makedepends=('git')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
