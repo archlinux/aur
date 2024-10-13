@@ -1,7 +1,7 @@
 pkgbase = mission-center
 	pkgdesc = Monitor your CPU, Memory, Disk, Network and GPU usage
 	pkgver = 0.6.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://missioncenter.io
 	arch = x86_64
 	arch = aarch64
@@ -10,8 +10,8 @@ pkgbase = mission-center
 	makedepends = blueprint-compiler
 	makedepends = cargo
 	makedepends = meson
-	depends = dmidecode
 	depends = libadwaita
+	depends = systemd
 	source = https://gitlab.com/mission-center-devs/mission-center/-/archive/v0.6.1/mission-center-v0.6.1.tar.gz
 	sha256sums = 0c76860edebc612dbda1c0b872be8455ca23a24ef3a2d66698cc591a57ecd800
 
