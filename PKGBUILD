@@ -9,17 +9,15 @@
 _pkgname=input-leap
 pkgbase=$_pkgname
 pkgname=($_pkgname-headless $_pkgname)
-pkgver=3.0.1
+pkgver=3.0.2
 pkgrel=1
 pkgdesc="Open-source KVM software"
 arch=(x86_64)
 url="https://github.com/input-leap/input-leap"
 license=("custom:GPL2WithOpenSSLException")
 
-source=("${_pkgname}::git+${url}.git#tag=v${pkgver}"
-        "gulrak-filesystem::git+https://github.com/gulrak/filesystem.git")
-sha512sums=('c0186769b8e22868f46ba8f12139a9d5d07a12ea3503366b43340f3160a777ca3bdad50aedd609bcf12e915f25b040c83dfe4f1aebed4ea3a2edc4424c3ad923'
-            'SKIP')
+source=("${_pkgname}::git+${url}.git#tag=v${pkgver}")
+sha512sums=('a26c365b5c1e482d14d9b72e38ae7abfb738e241cfe0bf81806ea9cf5418fc58ad2af8e47fc97b2a537768acfe1b584b409019bf1e3389cfc4d567931e3bbe59')
 _core_deps=(glibc gcc-libs libx11 libxrandr libxext libxinerama xorgproto libxtst libxi openssl libei libportal)
 _gui_deps=(glibc gcc-libs libx11 openssl avahi qt6-base xdg-desktop-portal)
 makedepends=(${_core_deps[@]} ${_gui_deps[@]}
@@ -32,8 +30,6 @@ optdepends=(libportal-gtk3 libportal-gtk4 libportal-qt5 libportal-qt6)
 prepare() {
   cd $_pkgname
   git submodule init
-  git config submodule.ext/gulrak-filesystem.url "$srcdir"/gulrak-filesystem
-  git -c protocol.file.allow=always submodule update ext/gulrak-filesystem
 }
 
 build() {
