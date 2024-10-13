@@ -1,8 +1,8 @@
 # Maintainer: Ali Molaei <ali dot molaei at protonmail dot com>
 
 pkgname=python-proton-keyring-linux
-pkgver=0.0.2
-pkgrel=3
+pkgver=0.1.0
+pkgrel=1
 pkgdesc="The proton-keyring-linux component."
 arch=("any")
 url="https://github.com/ProtonVPN/python-proton-keyring-linux"
@@ -17,7 +17,8 @@ optdepends=(
 )
 source=("git+https://github.com/ProtonVPN/${pkgname}.git#tag=v${pkgver}")
 sha256sums=('SKIP')
-
+conflicts=('python-proton-keyring-linux-secretservice')
+replacess=('python-proton-keyring-linux-secretservice')
 build() {
 	cd "$pkgname"
 	python setup.py build
