@@ -1,0 +1,4 @@
+[easytier]
+source = "git"
+git = "https://github.com/EasyTier/EasyTier.git"
+prefix = "v"
