@@ -1,15 +1,17 @@
 pkgbase = ttea
 	pkgdesc = CLI tea manager
-	pkgver = 1.2.1
-	pkgrel = 4
+	pkgver = 1.3.0
+	pkgrel = 1
 	url = https://git.roshless.me/~roshless/ttea
 	arch = x86_64
 	arch = i686
 	license = GPL
+	makedepends = meson
 	depends = glibc
 	optdepends = mpv: play timer sound
-	optdepends = mplayer: alternative player
-	source = https://git.roshless.me/roshless/ttea/-/archive/1.2.1/ttea-1.2.1.tar.gz
-	md5sums = aaacf75cccc3eb3eeab96a4451905db4
+	optdepends = mplayer: alternative player for timer
+	optdepends = gtk4: alternative GTK gui
+	source = https://git.roshless.me/roshless/ttea/-/archive/1.3.0/ttea-1.3.0.tar.gz
+	sha512sums = 1a01f8b555c402f8f285e9b3580bbacea77a89e3807b508432558fed1459bf0845ce6d6cdb378dfd1c579020a6e7dd40edb6e79f680324bdc1904eb6b671cf89
 
 pkgname = ttea
