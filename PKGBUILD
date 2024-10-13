@@ -4,7 +4,7 @@
 _pkgname="libpamac"
 pkgname="$_pkgname-git"
 pkgver=11.6.4.r6.g968e661
-pkgrel=2
+pkgrel=3
 pkgdesc="Library for Pamac package manager based on libalpm"
 url="https://github.com/manjaro/libpamac"
 license=('GPL-3.0-or-later')
@@ -29,7 +29,7 @@ makedepends=(
   'xorgproto'
 )
 
-provides=("$_pkgname")
+provides=("$_pkgname=${pkgver%%.r*}")
 conflicts=("$_pkgname")
 
 _pkgsrc="$_pkgname"
