@@ -2,7 +2,7 @@
 _pkgname=sast-evento
 pkgname=${_pkgname}-git
 
-pkgver=2.0.53.0.g6b43d7b
+pkgver=2.0.55.0.g7ed0482
 pkgrel=1
 pkgdesc='An event management system developed and used by NJUPT SAST (git package)'
 license=("${srcdir}/sast-evento/LICENSE")
@@ -20,7 +20,6 @@ makedepends=(
     'qt5-base'
     'qt6-base'
     'boost'
-    'rust'
     'nlohmann-json'
     'spdlog'
     'liburing'
