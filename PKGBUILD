@@ -5,8 +5,9 @@ pkgver=0.1
 pkgrel=1
 pkgdesc='Test your Prolog program against different engines'
 arch=(x86_64 i686)
-depends=(make remake)
+depends=(make)
 optdepends=(
+    'remake: For time profiling'
     'swi-prolog: Comprehensive free Prolog environment'
     'ciao-lang: Modern Prolog implementation'
     'gprolog: Free Prolog compiler'
