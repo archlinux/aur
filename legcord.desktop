@@ -1,6 +1,6 @@
 [Desktop Entry]
-Name=LegCord
-Comment=LegCord is a custom client designed to enhance your Discord experience while keeping everything lightweight
+Name=Legcord
+Comment=Legcord is a custom client designed to enhance your Discord experience while keeping everything lightweight
 GenericName=Internet Messenger
 Type=Application
 Exec=/usr/bin/legcord

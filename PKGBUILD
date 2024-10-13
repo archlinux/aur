@@ -4,9 +4,9 @@ pkgname=legcord-git
 pkgver=r1612.b78c779 
 pkgrel=1
 
-pkgdesc="LegCord dev build using the system electron. LegCord is a custom client designed to enhance your Discord experience while keeping everything lightweight"
+pkgdesc="Legcord dev build using the system electron. Legcord is a custom client designed to enhance your Discord experience while keeping everything lightweight"
 arch=("x86_64" "aarch64")
-url="https://github.com/LegCord/LegCord"
+url="https://github.com/Legcord/Legcord"
 license=("custom:OSL-3.0")
 depends=("electron")
 makedepends=("git" "nodejs" "yarn-pnpm-corepack")
