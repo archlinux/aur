@@ -1,14 +1,17 @@
 pkgbase = python-justbases
 	pkgdesc = conversion of ints and rationals to any base
-	pkgver = 0.15
-	pkgrel = 6
+	pkgver = 0.15.2
+	pkgrel = 1
 	url = https://github.com/mulkieran/justbases
 	arch = any
-	license = GPL
+	license = LGPL-2.1-or-later
 	checkdepends = python-hypothesis
 	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
 	depends = python
-	source = python-justbases-0.15.tar.gz::https://github.com/mulkieran/justbases/archive/v0.15.tar.gz
-	sha256sums = e2ae5a552816f618dc4dcb408b3fc1711097f829dd825a1fd508c69357b562e6
+	source = python-justbases-0.15.2.tar.gz::https://github.com/mulkieran/justbases/archive/v0.15.2.tar.gz
+	sha256sums = 3d85648d1c797f1857decc641d648b7d3b6902b204e4b7a4961896c5ffe055ef
 
 pkgname = python-justbases
