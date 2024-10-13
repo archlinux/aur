@@ -1,7 +1,7 @@
 pkgbase = convco
 	pkgdesc = Conventional commits, changelog, versioning, validation
 	pkgver = 0.6.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://convco.github.io
 	arch = x86_64
 	arch = i686
