@@ -3,7 +3,7 @@
 pkgname=openarc-unofficial-patches
 _pkgname=openarc
 pkgver=1.0.0.Beta3
-pkgrel=3
+pkgrel=4
 _commit=0676227216f69bb52a4da2e52faf1978062b1fd7
 pkgdesc="OpenARC with patches from not-yet-merged PRs - by flowerysong"
 arch=(x86_64)
@@ -13,7 +13,7 @@ depends=('sh' 'glibc' 'jansson' 'openssl' 'libbsd')
 optdepends=('smtp-server: for using a local mail server'
 	    'bind: required only for signature verification (alternatives available)')
 makedepends=('libmilter' 'git')
-conflicts=('openarc')
+conflicts=('openarc' 'openarc-unofficial-patches-git')
 source=("git+https://github.com/flowerysong/OpenARC.git#commit=${_commit}"
         openarc.service
         openarc.sysusers
