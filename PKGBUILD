@@ -12,7 +12,7 @@ license=('GPL-2.0-or-later' 'MPL-1.1' 'LGPL-2.0-or-later')
 depends=('gcc-libs' 'glibc')
 _pkgsrc="${pkgname}-${pkgver}"
 noextract=("${_pkgsrc}.tar.gz")
-source=("${_pkgsrc}.tar.gz::http://golem.ph.utexas.edu/~distler/blog/files/itexToMML-${pkgver}.tar.gz")
+source=("${_pkgsrc}.tar.gz::https://golem.ph.utexas.edu/~distler/blog/files/itexToMML-${pkgver}.tar.gz")
 sha256sums=('3ef2572aa3421cf4d12321905c9c3f6b68911c3c9283483b7a554007010be55f')
 
 prepare() {
