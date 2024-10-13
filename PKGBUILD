@@ -38,7 +38,7 @@ build() {
     -gcflags=all="-l -B" \
     -tags smallpt \
     -trimpath \
-    -o build/"$_pkgname" .
+    -o build/"$_pkgname" ./cmd/nvidiactl
   upx -qqq build/"$_pkgname"
 }
 
