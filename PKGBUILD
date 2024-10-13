@@ -1,7 +1,7 @@
 # Maintainer: Glucy2 <glucy-2@outlook.com>
 pkgname=sast-evento
 
-pkgver=2.0.53
+pkgver=2.0.55
 pkgrel=1
 pkgdesc='An event management system developed and used by NJUPT SAST'
 license=("${srcdir}/sast-evento/LICENSE")
@@ -19,7 +19,6 @@ makedepends=(
     'qt5-base'
     'qt6-base'
     'boost'
-    'rust'
     'nlohmann-json'
     'spdlog'
     'liburing'
