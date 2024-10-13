@@ -1,7 +1,7 @@
 # Maintainer: Taufik Hidayat <tfkhdyt@proton.me>
 
 pkgname=geminicommit-bin
-pkgver=0.0.5
+pkgver=0.1.0
 pkgrel=1
 pkgdesc='A CLI that writes your git commit messages for you with Google Gemini AI'
 arch=('x86_64' 'aarch64')
