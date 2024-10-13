@@ -14,20 +14,14 @@ DLAGENTS=("https::/usr/bin/curl --compressed -fLC - --retry 0 --retry-delay 0 -e
           "${DLAGENTS[@]}")
 
 source=("${pkgname}.tar.gz::https://static.tibia.com/download/tibia.x64.tar.gz"
-        "${pkgname}-agreement.php::https://www.tibia.com/support/agreement.php"
-        "02_freetype.patch")
+        "${pkgname}-agreement.php::https://www.tibia.com/support/agreement.php")
 
 sha256sums=('SKIP'
-            'SKIP'
-            '55d87bd8f32728cd47757a195102e2af2d10a1501d9370af86606b2c75211515')
+            'SKIP')
 
 prepare() {
   gendesk -f -n
   html2text "${pkgname}-agreement.php" > LICENSE
-
-  cd Tibia
-  # Tibia relies on specific freetype version
-  patch -Np0 -i "${srcdir}/02_freetype.patch"
 }
 
 package() {
@@ -42,5 +36,5 @@ package() {
 
   mkdir -p "${pkgdir}/usr/bin"
   cd "${pkgdir}/usr/bin/"
-  ln -s "../../opt/Tibia/start-tibia-launcher.sh" tibia
+  ln -s "../../opt/Tibia/Tibia" tibia
 }

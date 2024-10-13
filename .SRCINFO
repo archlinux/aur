@@ -13,9 +13,7 @@ pkgbase = tibia
 	depends = libxext
 	source = tibia.tar.gz::https://static.tibia.com/download/tibia.x64.tar.gz
 	source = tibia-agreement.php::https://www.tibia.com/support/agreement.php
-	source = 02_freetype.patch
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = 55d87bd8f32728cd47757a195102e2af2d10a1501d9370af86606b2c75211515
 
 pkgname = tibia
