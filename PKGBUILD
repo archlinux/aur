@@ -2,13 +2,13 @@
 _pkgname=citip
 pkgname=citip-git
 pkgver=2020_07_23..6e46631
-pkgrel=1
+pkgrel=2
 pkgdesc="Information Theoretic Inequality Prover (CLI)"
-arch=('any')
+arch=('x86_64')
 url="https://github.com/coldfix/Citip"
-license=('GPL3')
-depends=('glpk' )
-makedepends=('glpk' 'bison' 'flex')
+license=('GPL-3.0-or-later')
+depends=('gcc-libs' 'glibc' 'glpk')
+makedepends=('git')
 
 provides=("$_pkgname")
 source=("$_pkgname::git+https://github.com/coldfix/${_pkgname}")
