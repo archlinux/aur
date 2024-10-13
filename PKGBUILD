@@ -1,7 +1,7 @@
 # Maintainer: Radiolin <anton.osi2011@gmail.com>
 
 pkgname=mangojuice
-pkgver=0.6.7
+pkgver=0.6.8
 pkgrel=1
 pkgdesc="A convenient alternative to GOverlay for configuring MangoHud"
 arch=(x86_64)
