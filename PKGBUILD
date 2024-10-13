@@ -67,7 +67,7 @@ check() {
 }
 
 package_python-markdown-exec() {
-    depends=('pymdown-extensions>=9')
+    depends=('python-pymdown-extensions>=9')
     cd ${srcdir}/${_pyname}-${pkgver}
 
     install -D -m644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"

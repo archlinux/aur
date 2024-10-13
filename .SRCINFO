@@ -16,4 +16,4 @@ pkgbase = python-markdown-exec
 	md5sums = b5a5265bf74f5243f8a549342a38ade1
 
 pkgname = python-markdown-exec
-	depends = pymdown-extensions>=9
+	depends = python-pymdown-extensions>=9
