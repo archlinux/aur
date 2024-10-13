@@ -1,6 +1,6 @@
 pkgbase = surrealengine-git
 	pkgdesc = A reimplementation of Unreal Engine 1 (Git version)
-	pkgver = 0.0.1
+	pkgver = r1042.784a270
 	pkgrel = 1
 	url = https://github.com/dpjudas/SurrealEngine
 	arch = x86_64
