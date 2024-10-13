@@ -1,7 +1,7 @@
 # Maintainer: Michal Donát <aur at donat dot cz>
 pkgname=gnome-shell-extension-autohide-battery-git
 _pkgname=autohide-battery
-pkgver=r171.14a01ac
+pkgver=r285.935aa8c
 pkgrel=1
 pkgdesc="GNOME Shell extension to hide battery icon, if battery is fully charged and AC is connected"
 arch=('any')
@@ -19,11 +19,13 @@ pkgver() {
 
 build() {
   cd "${srcdir}/${_pkgname}"
-  pnpm run build
+  make build
+  glib-compile-schemas schemas
 }
 
 package() {
   targetdir="${pkgdir}/usr/share/gnome-shell/extensions/autohide-battery@sitnik.ru/"
   install -d "${targetdir}"
   unzip -d "${targetdir}" "${srcdir}/${_pkgname}/autohide-battery@sitnik.ru.shell-extension.zip" 
+  install "${srcdir}/${_pkgname}/schemas/gschemas.compiled" "${targetdir}/schemas"
 }
