@@ -8,8 +8,8 @@ pkgbase = geminicommit-bin
 	license = GPL3
 	depends = git
 	source_x86_64 = geminicommit-bin-v0.1.0.tar.gz::https://github.com/tfkhdyt/geminicommit/releases/download/v0.1.0/geminicommit-v0.1.0-linux-amd64.tar.gz
-	sha256sums_x86_64 = 2a467b4a5b3d56f76a50ee61fa964832b8326912ec3854f87e4b3acc16cd3089
+	sha256sums_x86_64 = b502ff4136c57ecd55d89d18c01e0f101a7b90e8eb238b3d393bbdec83c72e3c
 	source_aarch64 = geminicommit-bin-v0.1.0.tar.gz::https://github.com/tfkhdyt/geminicommit/releases/download/v0.1.0/geminicommit-v0.1.0-linux-arm64.tar.gz
-	sha256sums_aarch64 = 26bb27cb663e1fed462fe277b7c4965077e68d62845f138a9fa9a751bf48dbf7
+	sha256sums_aarch64 = 1e5e14cb4bacacdf3f3a315be6d8171fd9fe25032426d63c2fb25e26314bcbe8
 
 pkgname = geminicommit-bin

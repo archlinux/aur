@@ -1,4 +1,4 @@
-# Maintainer: Taufik Hidayat <tfkhdyt@proton.me>
+# Maintainer: Rizal Nur A <rizal.jal2002@gmail.com>
 
 pkgname=geminicommit-bin
 pkgver=0.1.0
@@ -9,10 +9,10 @@ url='https://github.com/tfkhdyt/geminicommit'
 license=('GPL3')
 depends=('git')
 source_x86_64=("${pkgname}-v${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/geminicommit-v${pkgver}-linux-amd64.tar.gz")
-sha256sums_x86_64=('2a467b4a5b3d56f76a50ee61fa964832b8326912ec3854f87e4b3acc16cd3089')
+sha256sums_x86_64=('b502ff4136c57ecd55d89d18c01e0f101a7b90e8eb238b3d393bbdec83c72e3c')
 
 source_aarch64=("${pkgname}-v${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/geminicommit-v${pkgver}-linux-arm64.tar.gz")
-sha256sums_aarch64=('26bb27cb663e1fed462fe277b7c4965077e68d62845f138a9fa9a751bf48dbf7')
+sha256sums_aarch64=('1e5e14cb4bacacdf3f3a315be6d8171fd9fe25032426d63c2fb25e26314bcbe8')
 
 build() {
 	./geminicommit completion bash >geminicommit.bash
