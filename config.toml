@@ -68,5 +68,7 @@ use_smoltcp = false
 foreign_network_whitelist = "*"
 # Disable P2P
 disable_p2p = false
+# Relay Other
+relay_all_peer_rpc = false
 # Disable udp hole punching
 disable_udp_hole_punching = false
