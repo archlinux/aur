@@ -20,7 +20,7 @@ pkgbase = chatgpt.sh
 	optdepends = poppler: dump PDF as text (gs, abiword, ebook-convert)
 	optdepends = libreoffice: dump doc files as text
 	optdepends = dialog: file picker (kdialog, zenity, vifm, ranger, nnn)
-	source = chatgpt.sh-0.78.11::git+https://gitlab.com/fenixdragao/shellchatgpt.git#commit=40b915c7fe0e6d12a176b1af2e2c9900f21ee4bd
+	source = chatgpt.sh-0.78.11::git+https://gitlab.com/fenixdragao/shellchatgpt.git#commit=e891b8341019fe086f52d65acf630c7dbfc43629
 	sha256sums = SKIP
 
 pkgname = chatgpt.sh
