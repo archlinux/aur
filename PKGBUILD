@@ -9,7 +9,7 @@
 
 pkgname=peazip-gtk2-bin
 pkgver=9.9.1
-pkgrel=1
+pkgrel=2
 pkgdesc='PeaZip file manager and archiver (GTK 2)'
 arch=('x86_64')
 url='https://peazip.github.io'
