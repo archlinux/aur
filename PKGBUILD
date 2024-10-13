@@ -7,23 +7,22 @@ pkgrel=1
 pkgdesc="iTeX to MathML converter"
 arch=('x86_64')
 url="https://golem.ph.utexas.edu/~distler/blog/itex2MML.html"
-license=('custom:GPL-unknown-version' 'custom:LGPL-unknown-version' 'custom:MPL-unknown-version')
-depends=('glibc' 'gcc-libs')
+license=('GPL-2.0-or-later' 'MPL-1.1' 'LGPL-2.0-or-later')
+depends=('gcc-libs' 'glibc')
 _pkgsrc="${_pkgname}-${pkgver}"
-source=("${_pkgsrc}.tar.gz::http://golem.ph.utexas.edu/~distler/blog/files/itexToMML.tar.gz")
 noextract=("${_pkgsrc}.tar.gz")
+source=("${_pkgsrc}.tar.gz::https://golem.ph.utexas.edu/~distler/blog/files/itexToMML-${pkgver}.tar.gz")
 sha256sums=('3ef2572aa3421cf4d12321905c9c3f6b68911c3c9283483b7a554007010be55f')
 
 prepare() {
   cd "${srcdir}"
   mkdir -p "${srcdir}/${_pkgsrc}"
-  bsdtar -xzf "${_pkgsrc}.tar.gz" --strip-components 1 -C "${srcdir}/${_pkgsrc}"
+  bsdtar -xzf "${_pkgsrc}.tar.gz" --strip-components=3 -C "${srcdir}/${_pkgsrc}" "itexToMML/itex-binaries/Linux"
+  bsdtar -xzf "${_pkgsrc}.tar.gz" --strip-components=1 -C "${srcdir}/${_pkgsrc}" "itexToMML/README"
 }
 
 package() {
   cd "${srcdir}/${_pkgsrc}"
-  install -Dm644 "README" "${pkgdir}/usr/share/doc/${_pkgname}/README"
-  
-  cd "itex-binaries/Linux"
   install -Dm755 "itex2MML" "${pkgdir}/usr/bin/itex2MML"
+  install -Dm644 "README"   "${pkgdir}/usr/share/doc/${_pkgname}/README"
 }
