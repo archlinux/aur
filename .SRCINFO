@@ -1,0 +1,14 @@
+pkgbase = swiss-army-knife-hs
+	pkgdesc = A collection of powerful but useful small tools.
+	pkgver = 0.0.0.2
+	pkgrel = 1
+	url = https://github.com/flajann2/swiss-army-knife-hs
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = ghc
+	depends = stack
+	source = swiss-army-knife-hs::git+https://github.com/flajann2/swiss-army-knife-hs.git
+	md5sums = SKIP
+
+pkgname = swiss-army-knife-hs
