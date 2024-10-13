@@ -11,7 +11,6 @@ pkgbase = tibia
 	depends = libgl
 	depends = libice
 	depends = libxext
-	depends = pcre
 	source = tibia.tar.gz::https://static.tibia.com/download/tibia.x64.tar.gz
 	source = tibia-agreement.php::https://www.tibia.com/support/agreement.php
 	source = 02_freetype.patch
