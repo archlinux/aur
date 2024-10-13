@@ -14,6 +14,7 @@ depends=(
   'python-pypdf'
   'python-pytube'
   'python-html2text'
+  'vte4'
 )
 optdepends=(
   'ollama'
