@@ -1,12 +1,12 @@
 # Maintainer: Frederik “Freso” S. Olesen <archlinux at freso.dk>
 # Contributor: Hugo Denizart <hugo at denizart dot pro>
-_pkgname=obs-StreamFX
-pkgname=${_pkgname,,}-unstable
-pkgver=0.12.0b299
-pkgrel=5
+_pkgname=obs-StreamFX-free
+pkgname=$(sed 's/free$/unstable/' <<< "${_pkgname,,}")
+pkgver=0.12.0b372
+pkgrel=1
 pkgdesc="Bring your stream back to life with modern effects! (unstable/testing version)"
 arch=("x86_64" "x86_64_v3")
-url="https://github.com/Xaymar/$_pkgname"
+url="https://github.com/DAMIOSKIDEV/$_pkgname"
 license=('GPL-2.0-only') # no "any later version" mention in source tree
 # same dependencies as OBS Studio + nlohmann-json + ninja makedepends
 depends=("ffmpeg" "jansson" "libxinerama" "libxkbcommon-x11"
@@ -14,22 +14,24 @@ depends=("ffmpeg" "jansson" "libxinerama" "libxkbcommon-x11"
          "obs-studio>=29" "nlohmann-json")
 makedepends=("cmake" "git" "libfdk-aac" "libxcomposite" "x264" "jack"
              "vlc" "swig" "luajit" "python" "ninja")
-provides=(${_pkgname,,})
-conflicts=(${_pkgname,,})
+provides=(${pkgname%-unstable})
+conflicts=(${pkgname%-unstable})
 source=("$_pkgname::git+$url.git#tag="$pkgver
         'Xaymar-cmake-clang::git+https://github.com/Xaymar/cmake-clang.git'
         'Xaymar-cmake-version::git+https://github.com/Xaymar/cmake-version.git'
         'Xaymar-msvc-redist-helper::git+https://github.com/Xaymar/msvc-redist-helper.git'
         'git+https://github.com/NVIDIA/MAXINE-AR-SDK.git'
+        'git+https://github.com/NVIDIA/MAXINE-AFX-SDK.git'
         'git+https://github.com/NVIDIA/MAXINE-VFX-SDK.git'
         'git+https://github.com/obsproject/obs-studio.git')
-md5sums=('SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP')
+b2sums=('cba3585f64b48054c075f2cd73b923e545ea739720de93d34d004ff15576852b94c19cc2bff8f6761a3bd7afcb962b71c7085be6087550191c90f1bbf3279069'
+        'SKIP'
+        'SKIP'
+        'SKIP'
+        'SKIP'
+        'SKIP'
+        'SKIP'
+        'SKIP')
 
 prepare() {
   cd $_pkgname
@@ -45,10 +47,14 @@ prepare() {
   git config submodule.cmake/version.url "$srcdir/Xaymar-cmake-version"
   git config submodule.third-party/msvc-redist-helper.url "$srcdir/Xaymar-msvc-redist-helper"
   git config submodule.third-party/nvidia-maxine-ar-sdk.url "$srcdir/MAXINE-AR-SDK"
+  git config submodule.third-party/nvidia-maxine-afx-sdk.url "$srcdir/MAXINE-AFX-SDK"
   git config submodule.third-party/nvidia-maxine-vfx-sdk.url "$srcdir/MAXINE-VFX-SDK"
   git config submodule.third-party/obs-studio.url "$srcdir/obs-studio"
 
   git -c protocol.file.allow=always submodule update
+
+  sed -i 's/AV_PIX_FMT_XVMC/AV_PIX_FMT_XV30/' components/ffmpeg/source/ffmpeg/tools.cpp
+  sed -i 's/AV_OPT_TYPE_CHANNEL_LAYOUT/AV_OPT_TYPE_CHLAYOUT/' components/ffmpeg/source/encoders/ffmpeg/debug.cpp
 }
 
 build() {

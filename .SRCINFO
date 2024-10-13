@@ -1,8 +1,8 @@
 pkgbase = obs-streamfx-unstable
 	pkgdesc = Bring your stream back to life with modern effects! (unstable/testing version)
-	pkgver = 0.12.0b299
-	pkgrel = 5
-	url = https://github.com/Xaymar/obs-StreamFX
+	pkgver = 0.12.0b372
+	pkgrel = 1
+	url = https://github.com/DAMIOSKIDEV/obs-StreamFX-free
 	arch = x86_64
 	arch = x86_64_v3
 	license = GPL-2.0-only
@@ -28,19 +28,21 @@ pkgbase = obs-streamfx-unstable
 	depends = nlohmann-json
 	provides = obs-streamfx
 	conflicts = obs-streamfx
-	source = obs-StreamFX::git+https://github.com/Xaymar/obs-StreamFX.git#tag=0.12.0b299
+	source = obs-StreamFX-free::git+https://github.com/DAMIOSKIDEV/obs-StreamFX-free.git#tag=0.12.0b372
 	source = Xaymar-cmake-clang::git+https://github.com/Xaymar/cmake-clang.git
 	source = Xaymar-cmake-version::git+https://github.com/Xaymar/cmake-version.git
 	source = Xaymar-msvc-redist-helper::git+https://github.com/Xaymar/msvc-redist-helper.git
 	source = git+https://github.com/NVIDIA/MAXINE-AR-SDK.git
+	source = git+https://github.com/NVIDIA/MAXINE-AFX-SDK.git
 	source = git+https://github.com/NVIDIA/MAXINE-VFX-SDK.git
 	source = git+https://github.com/obsproject/obs-studio.git
-	md5sums = SKIP
-	md5sums = SKIP
-	md5sums = SKIP
-	md5sums = SKIP
-	md5sums = SKIP
-	md5sums = SKIP
-	md5sums = SKIP
+	b2sums = cba3585f64b48054c075f2cd73b923e545ea739720de93d34d004ff15576852b94c19cc2bff8f6761a3bd7afcb962b71c7085be6087550191c90f1bbf3279069
+	b2sums = SKIP
+	b2sums = SKIP
+	b2sums = SKIP
+	b2sums = SKIP
+	b2sums = SKIP
+	b2sums = SKIP
+	b2sums = SKIP
 
 pkgname = obs-streamfx-unstable
