@@ -4,8 +4,8 @@
 # Contributor: ledti <antergist at gmail dot com>
 
 pkgname=obs-studio-git
-pkgver=30.2.3.r270.g4dd3cf6
-pkgrel=2
+pkgver=30.2.3.r315.gba6a6bf
+pkgrel=1
 pkgdesc="Free and open source software for video recording and live streaming."
 arch=("i686" "x86_64")
 url="https://github.com/obsproject/obs-studio"
@@ -66,7 +66,7 @@ source=("$pkgname::git+https://github.com/obsproject/obs-studio.git#branch=maste
 sha256sums=("SKIP" "SKIP" "SKIP" "SKIP")
 
 pkgver() {
-  cd "$_pkgsrc"
+  cd "$pkgname"
   local _version=$(git tag | grep -Ev '.*[a-z]{2}.*' | sort -rV | head -1)
   local _revision=$(git rev-list --count --cherry-pick "$_version"...HEAD)
   local _hash=$(git rev-parse --short=7 HEAD)
@@ -74,7 +74,7 @@ pkgver() {
 }
 
 prepare() {
-  cd $pkgname
+  cd "$pkgname"
   gitconf="protocol.file.allow=always"
 
   git config submodule.plugins/obs-outputs/ftl-sdk.url $srcdir/ftl-sdk
@@ -84,7 +84,7 @@ prepare() {
 }
 
 build() {
-  cmake -B build -S $pkgname \
+  cmake -B build -S "$pkgname" \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBDIR=lib \
     -DENABLE_AJA=0 \
