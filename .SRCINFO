@@ -1,12 +1,12 @@
 pkgbase = carch
 	pkgdesc = An automated script for quick & easy Arch Linux system setup
-	pkgver = 3.0.2
+	pkgver = v3.0.2
 	pkgrel = 1
 	url = https://harilvfs.github.io/carch/
 	arch = x86_64
 	license = Apache-2.0
 	depends = bash
-	source = carch-3.0.2.tar.gz::https://github.com/harilvfs/carch/archive/refs/tags/3.0.2.tar.gz
+	source = carch-v3.0.2.tar.gz::https://github.com/harilvfs/carch/archive/refs/tags/v3.0.2.tar.gz
 	source = https://github.com/harilvfs/carch/releases/download/v3.0.2/carch
 	source = https://raw.githubusercontent.com/harilvfs/carch/refs/heads/main/carch.desktop
 	sha256sums = 176f44570a7c60feed575ac2fe142a801168152d9d6c467e56aab21ff51f4882

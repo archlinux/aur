@@ -1,6 +1,6 @@
 # Maintainer Hari Chalise <ingoprivate@gmail.com>
 pkgname="carch"
-pkgver="3.0.2"
+pkgver="v3.0.2"
 pkgrel=1
 pkgdesc="An automated script for quick & easy Arch Linux system setup"
 arch=('x86_64')
