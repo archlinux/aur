@@ -1,6 +1,6 @@
 pkgbase = jdk-temurin
-	pkgdesc = Temurin (OpenJDK 22 Java binaries by Adoptium, formerly AdoptOpenJDK)
-	pkgver = 22.0.2.u9
+	pkgdesc = Temurin (OpenJDK 23 Java binaries by Adoptium, formerly AdoptOpenJDK)
+	pkgver = 23.0.0.u37
 	pkgrel = 1
 	url = https://adoptium.net/
 	install = install_jdk-temurin.sh
@@ -15,16 +15,16 @@ pkgbase = jdk-temurin
 	depends = alsa-lib
 	optdepends = gtk2: for the Gtk+ 2 look and feel
 	optdepends = gtk3: for the Gtk+ 3 look and feel
-	provides = java-runtime-headless=22
-	provides = java-runtime-headless-openjdk=22
-	provides = java-runtime=22
-	provides = java-runtime-openjdk=22
-	provides = java-environment=22
-	provides = java-environment-openjdk=22
-	provides = jdk22-openjdk=22.0.2.u9
-	provides = jdk-openjdk=22.0.2.u9
-	provides = openjdk22-src=22.0.2.u9
-	provides = openjdk-src=22.0.2.u9
+	provides = java-runtime-headless=23
+	provides = java-runtime-headless-openjdk=23
+	provides = java-runtime=23
+	provides = java-runtime-openjdk=23
+	provides = java-environment=23
+	provides = java-environment-openjdk=23
+	provides = jdk23-openjdk=23.0.0.u37
+	provides = jdk-openjdk=23.0.0.u37
+	provides = openjdk23-src=23.0.0.u37
+	provides = openjdk-src=23.0.0.u37
 	replaces = jdk-adoptopenjdk
 	options = !strip
 	backup = etc/java-temurin/logging.properties
@@ -42,13 +42,13 @@ pkgbase = jdk-temurin
 	backup = etc/java-temurin/security/policy/unlimited/default_local.policy
 	backup = etc/java-temurin/security/policy/unlimited/default_US_export.policy
 	backup = etc/java-temurin/sound.properties
-	source = https://github.com/adoptium/temurin22-binaries/releases/download/jdk-22.0.2%2B9/OpenJDK22U-jdk_x64_linux_hotspot_22.0.2_9.tar.gz
+	source = https://github.com/adoptium/temurin23-binaries/releases/download/jdk-23%2B37/OpenJDK23U-jdk_x64_linux_hotspot_23_37.tar.gz
 	source = freedesktop-java.desktop
 	source = freedesktop-jconsole.desktop
 	source = freedesktop-jshell.desktop
-	sha256sums = 05cd9359dacb1a1730f7c54f57e0fed47942a5292eb56a3a0ee6b13b87457a43
-	sha256sums = a67f393684e85d04653eb925fa4a6baaa618a152899bb81646a4ff7f30e84c30
-	sha256sums = bc6f506add26b48d77282535026357984fdb8bd924fe6f053fbec5a37984b710
-	sha256sums = 0544f1ca50c9d8d4a7361392c31e5cdafdd12e9587c9a1d710074f6ab14f7aff
+	sha256sums = 630c4f3870056e7e005736ec1edc34ee63a9b45e2027582c52f53a9bf44314b8
+	sha256sums = 858f1e7700a3c5658ea2b3874f3ad32b1ffffd1e93c21f7d16b57095c307183d
+	sha256sums = 41af2cbeed31a4f463f22fb409de9efe16b38904cdb5b104ae9414d9a7845a03
+	sha256sums = 177e31fa4be661c04b6294e6611ee8630dbd303d896ccaa10454511bf72bf63f
 
 pkgname = jdk-temurin
