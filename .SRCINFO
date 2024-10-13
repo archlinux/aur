@@ -1,7 +1,7 @@
 pkgbase = ttf-rubik-vf
 	pkgdesc = A sans serif font family with slightly rounded corners: variable font version
 	pkgver = 2.3.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/googlefonts/rubik
 	arch = any
 	license = OFL
