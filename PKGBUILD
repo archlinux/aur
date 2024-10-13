@@ -1,53 +1,47 @@
-# Maintainer: Levente Polyak <anthraxx[at]archlinux[dot]org>
+# This is an example PKGBUILD file. Use this as a start to creating your own,
+# and remove these comments. For more information, see 'man PKGBUILD'.
+# NOTE: Please fill out the license field for your package! If it is unknown,
+# then please put 'unknown'.
 
-_pkgname=moonlight
-pkgname=${_pkgname}-git
-pkgver=0.7.1.0.465.056bf35
+# Maintainer: Ivan Stoychev <IYStoychev21@codingburgas.bg>
+pkgname=moonlight-git
+pkgver=0.1.r18.8901687
 pkgrel=1
-pkgdesc="Open source implementation of NVIDIA's GameStream, as used by the NVIDIA Shield"
-url="http://moonlight-stream.com"
-arch=('x86_64' 'i686')
-license=('GPL3')
-depends=('java-runtime' 'sh')
-makedepends=('git' 'apache-ant')
-provides=('moonlight')
-conflicts=("moonlight")
-source=(${pkgname}::git+https://github.com/moonlight-stream/moonlight-pc)
-sha512sums=('SKIP')
+epoch=
+pkgdesc="Moonlight is a simple dotfiles management tool written in golang"
+arch=(x86_64 i686)
+url="https://github.com/IYStoychev21/Moonlight"
+license=('MIT')
+groups=()
+depends=(go)
+makedepends=(git)
+checkdepends=()
+optdepends=()
+provides=(moonlight)
+conflicts=()
+replaces=()
+backup=()
+options=()
+install=
+changelog=
+source=("git+$url")
+noextract=()
+sha256sums=('SKIP')
+validpgpkeys=()
 
 pkgver() {
-  cd ${pkgname}
-  printf "%s.%s.%s" "$(git describe --tags --abbrev=0|cut -dv -f2|sed 's|\-|.|g')" \
-    "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
-prepare() {
-  cd ${pkgname}
-  cat > ${_pkgname} <<EOF
-#!/bin/sh
-exec /usr/bin/java -jar "/usr/share/java/${_pkgname}/${_pkgname}.jar" "\$@"
-EOF
+    cd "${_pkgname}"
+    printf "0.1.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-  cd ${pkgname}
-  if [ "${CARCH}" == "x86_64" ]; then
-    ant moonlight-lin64
-  elif [ "${CARCH}" == "i686" ]; then
-    ant moonlight-lin32
-  fi
+	cd Moonlight
+    go build -o build/moonlight cmd/moonlight/main.go
 }
 
 package() {
-  cd ${pkgname}
-  if [ "${CARCH}" == "x86_64" ]; then
-    install -Dm 644 ./build/moonlight-lin64.jar "${pkgdir}/usr/share/java/${_pkgname}/${_pkgname}.jar"
-  elif [ "${CARCH}" == "i686" ]; then
-    install -Dm 644 ./build/moonlight-lin32.jar "${pkgdir}/usr/share/java/${_pkgname}/${_pkgname}.jar"
-  fi
-  install -Dm 755 ${_pkgname} "${pkgdir}/usr/bin/${_pkgname}"
-  install -Dm 644 LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-  install -Dm 644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+    cd Moonlight
+    mkdir -p ${pkgdir}/opt/${pkgname}
+    cp -rf * ${pkgdir}/opt/${pkgname}
+    sudo cp build/moonlight /usr/bin
 }
-
-# vim: ts=2 sw=2 et:
