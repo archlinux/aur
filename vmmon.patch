@@ -57,18 +57,80 @@
     VMDriver *vm = Vmx86_Calloc(1, sizeof *vm, TRUE);
 --- a/vmmon/include/pgtbl.h
 +++ b/vmmon/include/pgtbl.h
-@@ -91,7 +91,11 @@
-          } else {
-             pte_t *pte;
+@@ -25,7 +25,9 @@
+ #include "compat_pgtable.h"
+ #include "compat_spinlock.h"
+ #include "compat_page.h"
++#include "compat_version.h"
  
-+#if LINUX_VERSION_CODE >= KERNEL_VERSION(6,5,0)
-+            pte = pte_offset_kernel(pmd, addr);
++#if COMPAT_LINUX_VERSION_CHECK_LT(4, 10, 0)
+ 
+ /*
+  *-----------------------------------------------------------------------------
+@@ -107,17 +109,31 @@
+    return mpn;
+ }
+ 
++static INLINE MPN
++UserVa2MPN(VA addr)  // IN
++{
++   struct mm_struct *mm;
++   MPN mpn;
++
++   /* current->mm is NULL for kernel threads, so use active_mm. */
++   mm = current->active_mm;
++   spin_lock(&mm->page_table_lock);
++   mpn = PgtblVa2MPNLocked(mm, addr);
++   spin_unlock(&mm->page_table_lock);
++   return mpn;
++}
+ 
 +#else
-             pte = pte_offset_map(pmd, addr);
-+#endif
-             if (pte_present(*pte) == 0) {
-                pte_unmap(pte);
-                return INVALID_MPN;
+ /*
+  *-----------------------------------------------------------------------------
+  *
+- * PgtblVa2MPN --
++ * UserVa2MPN --
+  *
+  *    Walks through the hardware page tables of the current process to try to
+  *    find the page structure associated to a virtual address.
+  *
+  * Results:
+- *    Same as PgtblVa2MPNLocked()
++ *    MPN associated with the given virtual address
+  *
+  * Side effects:
+  *    None
+@@ -126,17 +142,22 @@
+  */
+ 
+ static INLINE MPN
+-PgtblVa2MPN(VA addr)  // IN
++UserVa2MPN(VA addr)  // IN
+ {
+-   struct mm_struct *mm;
++   struct page *page;
++   int npages;
+    MPN mpn;
+ 
+-   /* current->mm is NULL for kernel threads, so use active_mm. */
+-   mm = current->active_mm;
+-   spin_lock(&mm->page_table_lock);
+-   mpn = PgtblVa2MPNLocked(mm, addr);
+-   spin_unlock(&mm->page_table_lock);
++   npages = get_user_pages_unlocked(addr, 1, &page, 0);
++   if (npages != 1) {
++      return INVALID_MPN;
++   }
++
++   mpn = page_to_pfn(page);
++   put_page(page);
++
+    return mpn;
+ }
++#endif /* COMPAT_LINUX_VERSION_CHECK_LT(4, 10, 0) */
+ 
+ #endif /* __PGTBL_H__ */
 --- a/vmmon/include/vm_assert.h
 +++ b/vmmon/include/vm_assert.h
 @@ -40,7 +40,11 @@
@@ -97,6 +159,68 @@
  #  include <stddef.h>
  #else
     /*
+--- a/vmmon/include/vm_basic_types.h
++++ b/vmmon/include/vm_basic_types.h
+@@ -934,6 +934,27 @@
+ #define ALIGNED(n)
+ #endif
+ 
++#ifndef __has_attribute
++# define __has_attribute(x) 0
++#endif
++
++/*
++ * COUNTED_BY attribute may be attached to the C99 flexible array
++ * member of a structure. It indicates that the number of the elements
++ * of the array is given by the field "member" in the same structure as
++ * the flexible array member. Compilers may use this information to
++ * improve detection of object size information for such structures
++ * and provide better results in compile-time diagnostics and runtime
++ * features like the array bound sanitizer.
++ *
++ * https://people.kernel.org/kees/bounded-flexible-arrays-in-c
++ */
++
++#if __has_attribute(__counted_by__)
++# define COUNTED_BY(member) __attribute__((__counted_by__(member)))
++#else
++# define COUNTED_BY(member)
++#endif
+ 
+ /*
+  * Once upon a time, this was used to silence compiler warnings that
+--- a/vmmon/include/x86cpuid.h
++++ b/vmmon/include/x86cpuid.h
+@@ -89,10 +89,10 @@
+ } CPUIDReply;
+ 
+ typedef struct CPUIDQuery {
+-   uint32 eax;                // IN
+-   uint32 ecx;                // IN
+-   uint32 numLogicalCPUs;     // IN/OUT
+-   CPUIDReply logicalCPUs[0]; // OUT
++   uint32 eax;                                          // IN
++   uint32 ecx;                                          // IN
++   uint32 numLogicalCPUs;                               // IN/OUT
++   CPUIDReply logicalCPUs[] COUNTED_BY(numLogicalCPUs); // OUT
+ } CPUIDQuery;
+ #pragma pack(pop)
+ #endif
+--- a/vmmon/include/x86msr.h
++++ b/vmmon/include/x86msr.h
+@@ -64,9 +64,9 @@
+ 
+ #pragma pack(push, 1)
+ typedef struct MSRQuery {
+-   uint32 msrNum;           // IN
+-   uint32 numLogicalCPUs;   // IN/OUT
+-   MSRReply logicalCPUs[0]; // OUT
++   uint32 msrNum;                                     // IN
++   uint32 numLogicalCPUs;                             // IN/OUT
++   MSRReply logicalCPUs[] COUNTED_BY(numLogicalCPUs); // OUT
+ } MSRQuery;
+ #pragma pack(pop)
+ 
 --- a/vmmon/linux/driver.c
 +++ b/vmmon/linux/driver.c
 @@ -256,7 +256,7 @@
@@ -147,6 +271,38 @@
 +module_exit(LinuxDriverExit);
 --- a/vmmon/linux/hostif.c
 +++ b/vmmon/linux/hostif.c
+@@ -1174,7 +1174,7 @@
+    void *uvAddr = VA64ToPtr(uAddr);
+    int retval = PAGE_LOCK_SUCCESS;
+ 
+-   *mpn = PgtblVa2MPN((VA)uvAddr);
++   *mpn = UserVa2MPN((VA)uvAddr);
+ 
+    /*
+     * On failure, check whether the page is locked.
+@@ -1202,7 +1202,7 @@
+             volatile int c;
+ 
+             get_user(c, (char *)uvAddr);
+-            *mpn = PgtblVa2MPN((VA)uvAddr);
++            *mpn = UserVa2MPN((VA)uvAddr);
+             if (*mpn == entryPtr->mpn) {
+ #ifdef VMX86_DEBUG
+                printk(KERN_DEBUG "Page %p disappeared from %s(%u)... "
+@@ -1432,11 +1432,11 @@
+ 
+       /*
+        * Verify for debugging that VA and MPN make sense.
+-       * PgtblVa2MPN() can fail under high memory pressure.
++       * UserVa2MPN() can fail under high memory pressure.
+        */
+ 
+       if (va != NULL) {
+-         MPN lookupMpn = PgtblVa2MPN((VA)va);
++         MPN lookupMpn = UserVa2MPN((VA)va);
+ 
+          if (lookupMpn != INVALID_MPN && mpn != lookupMpn) {
+             Warning("Page lookup fail %#"FMT64"x %016" FMT64 "x %p\n",
 @@ -2356,7 +2332,11 @@
     int ret;
  
@@ -187,97 +343,3 @@
  HostIFStartTimer(Bool rateChanged,  //IN: Did rate change?
                   unsigned int rate) //IN: current clock rate
  {
-From 4c2a103fd2d71f2084f1fe7ceacb816b9832ffa2 Mon Sep 17 00:00:00 2001
-From: Michal Kubecek <mkubecek@suse.cz>
-Date: Sun, 22 Oct 2023 23:24:05 +0200
-Subject: [PATCH] vmmon: use get_user_pages to get page PFN
-
-As a side effect of mainline commit 0d940a9b270b ("mm/pgtable: allow
-pte_offset_map[_lock]() to fail") in 6.5-rc1, __pte_offset_map(), called by
-pte_offset_map(), is no longer exported. WMware developers decided to hack
-around this by replacing pte_offset_map() by pte_offset_kernel() which does
-not seem to be a good idea and apparently may trigger warn checks in RCU
-code on some systems as mentioned in the discussion on issue #223.
-Therefore let's use the same solution as we had for 17.0.2 and older
-versions as it does not show these problems.
-
-Based on an upstream IRC discussion and the hva_to_pfn_*() family of
-functions in KVM code, what PgtblVa2MPNLocked() does seems to be an
-incomplete and partial open coded logic of get_user_pages() and as it is
-only used to get PFN from a virtual address, it can be easily implemented
-using get_user_pages() family.
-
-Without knowledge what exactly are the PFNs used for in VMware, it is hard
-to guess the right flags, these seem to work and have been tested by
-multiple users over last few weeks.
-
-We could likely use get_user_pages() also on older kernels and it might be
-actually cleaner and more reliable as existing open coded implementation
-does not seem to handle some corner cases but without knowledge of VMware
-internals, it will be safer to stick to existing code where possible.
----
- vmmon-only/include/pgtbl.h | 25 +++++++++++++++++++++++++
- 1 file changed, 25 insertions(+)
-
-diff --git a/vmmon-only/include/pgtbl.h b/vmmon-only/include/pgtbl.h
-index 3f43c62..7eaa49a 100644
---- a/vmmon-only/include/pgtbl.h
-+++ b/vmmon-only/include/pgtbl.h
-@@ -25,6 +25,7 @@
- #include "compat_pgtable.h"
- #include "compat_spinlock.h"
- #include "compat_page.h"
-+#include "compat_version.h"
- 
- 
- /*
-@@ -45,6 +46,7 @@
-  *-----------------------------------------------------------------------------
-  */
- 
-+#if COMPAT_LINUX_VERSION_CHECK_LT(6, 5, 0) // only used by PgtblVa2MPN() below
- static INLINE MPN
- PgtblVa2MPNLocked(struct mm_struct *mm, // IN: Mm structure of a process
-                   VA addr)              // IN: Address in the virtual address
-@@ -110,6 +112,7 @@ PgtblVa2MPNLocked(struct mm_struct *mm, // IN: Mm structure of a process
-    }
-    return mpn;
- }
-+#endif
- 
- 
- /*
-@@ -129,6 +132,8 @@ PgtblVa2MPNLocked(struct mm_struct *mm, // IN: Mm structure of a process
-  *-----------------------------------------------------------------------------
-  */
- 
-+#if COMPAT_LINUX_VERSION_CHECK_LT(6, 5, 0)
-+
- static INLINE MPN
- PgtblVa2MPN(VA addr)  // IN
- {
-@@ -143,4 +148,24 @@ PgtblVa2MPN(VA addr)  // IN
-    return mpn;
- }
- 
-+#else /* COMPAT_LINUX_VERSION_CHECK_LT(6, 5, 0) */
-+
-+static INLINE MPN
-+PgtblVa2MPN(VA addr)  // IN
-+{
-+   struct page *page;
-+   int npages;
-+   MPN mpn;
-+
-+   npages = get_user_pages_unlocked(addr, 1, &page, FOLL_HWPOISON);
-+   if (npages != 1)
-+	   return INVALID_MPN;
-+   mpn = page_to_pfn(page);
-+   put_page(page);
-+
-+   return mpn;
-+}
-+
-+#endif /* COMPAT_LINUX_VERSION_CHECK_LT(6, 5, 0) */
-+
- #endif /* __PGTBL_H__ */
