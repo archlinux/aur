@@ -1,6 +1,6 @@
 pkgbase = neovim-texlabconfig-opt-git
-	pkgdesc = Smart and powerful comment plugin for Neovim.
-	pkgver = 64.b817297
+	pkgdesc = Forward and Inverse Search for Texlab and neovim
+	pkgver = r64.b817297
 	pkgrel = 1
 	url = https://github.com/f3fora/nvim-texlabconfig
 	arch = x86_64
