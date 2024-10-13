@@ -1,16 +1,16 @@
 diff --git a/clang-tools-extra/clangd/CodeComplete.cpp b/clang-tools-extra/clangd/CodeComplete.cpp
-index 0e5f08cec440..3048f6944eb6 100644
+index 2c2d5f0b5ac9..f3c9357994bb 100644
 --- a/clang-tools-extra/clangd/CodeComplete.cpp
 +++ b/clang-tools-extra/clangd/CodeComplete.cpp
-@@ -21,6 +21,7 @@
+@@ -21,7 +21,6 @@
  #include "AST.h"
  #include "CodeCompletionStrings.h"
  #include "Compiler.h"
-+#include "Config.h"
+-#include "Config.h"
  #include "ExpectedTypes.h"
  #include "Feature.h"
  #include "FileDistance.h"
-@@ -1639,7 +1640,9 @@ public:
+@@ -1663,7 +1662,9 @@ public:
        Inserter.emplace(
            SemaCCInput.FileName, SemaCCInput.ParseInput.Contents, Style,
            SemaCCInput.ParseInput.CompileCommand.Directory,
@@ -21,8 +21,8 @@ index 0e5f08cec440..3048f6944eb6 100644
        for (const auto &Inc : Includes.MainFileIncludes)
          Inserter->addExisting(Inc);
  
-@@ -1722,7 +1725,9 @@ public:
-     auto Style = getFormatStyleForFile(FileName, Content, TFS);
+@@ -1746,7 +1747,9 @@ public:
+     auto Style = getFormatStyleForFile(FileName, Content, TFS, false);
      // This will only insert verbatim headers.
      Inserter.emplace(FileName, Content, Style,
 -                     /*BuildDir=*/"", /*HeaderSearchInfo=*/nullptr);
@@ -33,10 +33,10 @@ index 0e5f08cec440..3048f6944eb6 100644
      auto Identifiers = collectIdentifiers(Content, Style);
      std::vector<RawIdentifier> IdentifierResults;
 diff --git a/clang-tools-extra/clangd/Config.h b/clang-tools-extra/clangd/Config.h
-index 4371c80a6c58..3559591fce00 100644
+index 8fcbc5c33469..e2f1f829cf17 100644
 --- a/clang-tools-extra/clangd/Config.h
 +++ b/clang-tools-extra/clangd/Config.h
-@@ -123,6 +123,10 @@ struct Config {
+@@ -124,6 +124,10 @@ struct Config {
      // declarations, always spell out the whole name (with or without leading
      // ::). All nested namespaces are affected as well.
      std::vector<std::string> FullyQualifiedNamespaces;
@@ -46,9 +46,9 @@ index 4371c80a6c58..3559591fce00 100644
 +    std::vector<std::function<bool(llvm::StringRef)>> AngledHeaders;
    } Style;
  
-   /// Configures code completion feature.
+   /// controls the completion options for argument lists.
 diff --git a/clang-tools-extra/clangd/ConfigCompile.cpp b/clang-tools-extra/clangd/ConfigCompile.cpp
-index 5bb2eb4a9f80..def0ee30e8fc 100644
+index 58610a5b8792..ffb93e1ff578 100644
 --- a/clang-tools-extra/clangd/ConfigCompile.cpp
 +++ b/clang-tools-extra/clangd/ConfigCompile.cpp
 @@ -483,6 +483,55 @@ struct FragmentCompiler {
@@ -108,10 +108,10 @@ index 5bb2eb4a9f80..def0ee30e8fc 100644
  
    void appendTidyCheckSpec(std::string &CurSpec,
 diff --git a/clang-tools-extra/clangd/ConfigFragment.h b/clang-tools-extra/clangd/ConfigFragment.h
-index 7fa61108c78a..f0d1080f6c83 100644
+index fc1b45f5d4c3..03f4c0e631bd 100644
 --- a/clang-tools-extra/clangd/ConfigFragment.h
 +++ b/clang-tools-extra/clangd/ConfigFragment.h
-@@ -296,6 +296,23 @@ struct Fragment {
+@@ -301,6 +301,23 @@ struct Fragment {
      // ::). All nested namespaces are affected as well.
      // Affects availability of the AddUsing tweak.
      std::vector<Located<std::string>> FullyQualifiedNamespaces;
@@ -136,7 +136,7 @@ index 7fa61108c78a..f0d1080f6c83 100644
    StyleBlock Style;
  
 diff --git a/clang-tools-extra/clangd/ConfigYAML.cpp b/clang-tools-extra/clangd/ConfigYAML.cpp
-index ce09af819247..ec7c91fe33b0 100644
+index bcdda99eeed6..d38e01bb40ed 100644
 --- a/clang-tools-extra/clangd/ConfigYAML.cpp
 +++ b/clang-tools-extra/clangd/ConfigYAML.cpp
 @@ -117,6 +117,14 @@ private:
@@ -155,7 +155,7 @@ index ce09af819247..ec7c91fe33b0 100644
    }
  
 diff --git a/clang-tools-extra/clangd/Headers.cpp b/clang-tools-extra/clangd/Headers.cpp
-index 75f8668e7bef..2e474aaca209 100644
+index b537417bd105..0ffd9ee4d275 100644
 --- a/clang-tools-extra/clangd/Headers.cpp
 +++ b/clang-tools-extra/clangd/Headers.cpp
 @@ -9,6 +9,7 @@
@@ -263,23 +263,23 @@ index 41cf3de6bba3..b91179da253e 100644
  
  } // namespace clangd
 diff --git a/clang-tools-extra/clangd/IncludeCleaner.h b/clang-tools-extra/clangd/IncludeCleaner.h
-index b3ba3a716083..7e289ef4c135 100644
+index a01146d14e3c..3f6e3b2fd45b 100644
 --- a/clang-tools-extra/clangd/IncludeCleaner.h
 +++ b/clang-tools-extra/clangd/IncludeCleaner.h
-@@ -55,7 +55,6 @@ struct IncludeCleanerFindings {
- 
- IncludeCleanerFindings computeIncludeCleanerFindings(ParsedAST &AST);
+@@ -57,7 +57,6 @@ IncludeCleanerFindings
+ computeIncludeCleanerFindings(ParsedAST &AST,
+                               bool AnalyzeAngledIncludes = false);
  
 -using HeaderFilter = llvm::ArrayRef<std::function<bool(llvm::StringRef)>>;
  std::vector<Diag>
  issueIncludeCleanerDiagnostics(ParsedAST &AST, llvm::StringRef Code,
                                 const IncludeCleanerFindings &Findings,
 diff --git a/clang-tools-extra/clangd/ParsedAST.cpp b/clang-tools-extra/clangd/ParsedAST.cpp
-index bbb0e2c77b3f..785fd4162462 100644
+index 045d32afbc93..725cbeb154cb 100644
 --- a/clang-tools-extra/clangd/ParsedAST.cpp
 +++ b/clang-tools-extra/clangd/ParsedAST.cpp
-@@ -628,7 +628,8 @@ ParsedAST::build(llvm::StringRef Filename, const ParseInputs &Inputs,
-           getFormatStyleForFile(Filename, Inputs.Contents, *Inputs.TFS);
+@@ -639,7 +639,8 @@ ParsedAST::build(llvm::StringRef Filename, const ParseInputs &Inputs,
+           getFormatStyleForFile(Filename, Inputs.Contents, *Inputs.TFS, false);
        auto Inserter = std::make_shared<IncludeInserter>(
            Filename, Inputs.Contents, Style, BuildDir.get(),
 -          &Clang->getPreprocessor().getHeaderSearchInfo());
@@ -289,102 +289,61 @@ index bbb0e2c77b3f..785fd4162462 100644
        if (Preamble) {
          MainFileIncludes = Preamble->Includes.MainFileIncludes;
 diff --git a/clang-tools-extra/clangd/unittests/CodeCompleteTests.cpp b/clang-tools-extra/clangd/unittests/CodeCompleteTests.cpp
-index 6d387fec9b38..bf264a5a44ee 100644
+index a89f49973622..aa3efede6849 100644
 --- a/clang-tools-extra/clangd/unittests/CodeCompleteTests.cpp
 +++ b/clang-tools-extra/clangd/unittests/CodeCompleteTests.cpp
-@@ -11,6 +11,7 @@
+@@ -11,7 +11,6 @@
  #include "ClangdServer.h"
  #include "CodeComplete.h"
  #include "Compiler.h"
-+#include "Config.h"
+-#include "Config.h"
  #include "Feature.h"
  #include "Matchers.h"
  #include "Protocol.h"
-@@ -916,6 +917,41 @@ TEST(CompletionTest, NoIncludeInsertionWhenDeclFoundInFile) {
-                           AllOf(named("Y"), Not(insertInclude()))));
+@@ -865,38 +864,6 @@ TEST(CompletionTest, SemaIndexMergeWithLimit) {
+   EXPECT_TRUE(Results.HasMore);
  }
  
-+TEST(CompletionTest, IncludeInsertionRespectsQuotedAngledConfig) {
-+  TestTU TU;
-+  TU.ExtraArgs.push_back("-I" + testPath("sub"));
-+  TU.AdditionalFiles["sub/bar.h"] = "";
-+  auto BarURI = URI::create(testPath("sub/bar.h")).toString();
-+
-+  Symbol Sym = cls("ns::X");
-+  Sym.CanonicalDeclaration.FileURI = BarURI.c_str();
-+  Sym.IncludeHeaders.emplace_back(BarURI, 1, Symbol::Include);
-+  Annotations Test("int main() { ns::^ }");
-+  TU.Code = Test.code().str();
-+  auto Results = completions(TU, Test.point(), {Sym});
-+  // Default for a local path is quoted include
-+  EXPECT_THAT(Results.Completions,
-+              ElementsAre(AllOf(named("X"), insertInclude("\"bar.h\""))));
-+  {
-+    Config C;
-+    C.Style.AngledHeaders.push_back(
-+        [](auto header) { return header == "bar.h"; });
-+    WithContextValue WithCfg(Config::Key, std::move(C));
-+    Results = completions(TU, Test.point(), {Sym});
-+    EXPECT_THAT(Results.Completions,
-+                ElementsAre(AllOf(named("X"), insertInclude("<bar.h>"))));
-+  }
-+  {
-+    Config C;
-+    C.Style.QuotedHeaders.push_back(
-+        [](auto header) { return header == "bar.h"; });
-+    WithContextValue WithCfg(Config::Key, std::move(C));
-+    Results = completions(TU, Test.point(), {Sym});
-+    EXPECT_THAT(Results.Completions,
-+                ElementsAre(AllOf(named("X"), insertInclude("\"bar.h\""))));
-+  }
-+}
-+
- TEST(CompletionTest, IndexSuppressesPreambleCompletions) {
-   Annotations Test(R"cpp(
-       #include "bar.h"
-@@ -1134,8 +1170,8 @@ TEST(CodeCompleteTest, NoColonColonAtTheEnd) {
- }
- 
- TEST(CompletionTests, EmptySnippetDoesNotCrash) {
--    // See https://github.com/clangd/clangd/issues/1216
--    auto Results = completions(R"cpp(
-+  // See https://github.com/clangd/clangd/issues/1216
-+  auto Results = completions(R"cpp(
-         int main() {
-           auto w = [&](auto &&f) { return f(f); };
-           auto f = w([&](auto &&f) {
-@@ -1151,18 +1187,18 @@ TEST(CompletionTests, EmptySnippetDoesNotCrash) {
- }
- 
- TEST(CompletionTest, Issue1427Crash) {
--    // Need to provide main file signals to ensure that the branch in
--    // SymbolRelevanceSignals::computeASTSignals() that tries to
--    // compute a symbol ID is taken.
--    ASTSignals MainFileSignals;
--    CodeCompleteOptions Opts;
--    Opts.MainFileSignals = &MainFileSignals;
--    completions(R"cpp(
-+  // Need to provide main file signals to ensure that the branch in
-+  // SymbolRelevanceSignals::computeASTSignals() that tries to
-+  // compute a symbol ID is taken.
-+  ASTSignals MainFileSignals;
-+  CodeCompleteOptions Opts;
-+  Opts.MainFileSignals = &MainFileSignals;
-+  completions(R"cpp(
-       auto f = []() {
-         1.0_^
-       };
-     )cpp",
--                {}, Opts);
-+              {}, Opts);
- }
- 
- TEST(CompletionTest, BacktrackCrashes) {
+-TEST(CompletionTest, IncludeInsertionPreprocessorIntegrationTests) {
+-  TestTU TU;
+-  TU.ExtraArgs.push_back("-I" + testPath("sub"));
+-  TU.AdditionalFiles["sub/bar.h"] = "";
+-  auto BarURI = URI::create(testPath("sub/bar.h")).toString();
+-
+-  Symbol Sym = cls("ns::X");
+-  Sym.CanonicalDeclaration.FileURI = BarURI.c_str();
+-  Sym.IncludeHeaders.emplace_back(BarURI, 1, Symbol::Include);
+-  // Shorten include path based on search directory and insert.
+-  Annotations Test("int main() { ns::^ }");
+-  TU.Code = Test.code().str();
+-  auto Results = completions(TU, Test.point(), {Sym});
+-  EXPECT_THAT(Results.Completions,
+-              ElementsAre(AllOf(named("X"), insertInclude("\"bar.h\""))));
+-  // Can be disabled via option.
+-  CodeCompleteOptions NoInsertion;
+-  NoInsertion.InsertIncludes = CodeCompleteOptions::NeverInsert;
+-  Results = completions(TU, Test.point(), {Sym}, NoInsertion);
+-  EXPECT_THAT(Results.Completions,
+-              ElementsAre(AllOf(named("X"), Not(insertInclude()))));
+-  // Duplicate based on inclusions in preamble.
+-  Test = Annotations(R"cpp(
+-          #include "sub/bar.h"  // not shortest, so should only match resolved.
+-          int main() { ns::^ }
+-      )cpp");
+-  TU.Code = Test.code().str();
+-  Results = completions(TU, Test.point(), {Sym});
+-  EXPECT_THAT(Results.Completions, ElementsAre(AllOf(named("X"), labeled("X"),
+-                                                     Not(insertInclude()))));
+-}
+-
+ TEST(CompletionTest, NoIncludeInsertionWhenDeclFoundInFile) {
+   Symbol SymX = cls("ns::X");
+   Symbol SymY = cls("ns::Y");
 diff --git a/clang-tools-extra/clangd/unittests/ConfigCompileTests.cpp b/clang-tools-extra/clangd/unittests/ConfigCompileTests.cpp
-index f0ffc429c0ca..efee23003067 100644
+index 4ecfdf0184ab..179960a02cad 100644
 --- a/clang-tools-extra/clangd/unittests/ConfigCompileTests.cpp
 +++ b/clang-tools-extra/clangd/unittests/ConfigCompileTests.cpp
-@@ -539,6 +539,44 @@ TEST_F(ConfigCompileTests, Style) {
+@@ -545,6 +545,44 @@ TEST_F(ConfigCompileTests, Style) {
    Frag.Style.FullyQualifiedNamespaces.push_back(std::string("bar"));
    EXPECT_TRUE(compileAndApply());
    EXPECT_THAT(Conf.Style.FullyQualifiedNamespaces, ElementsAre("foo", "bar"));
@@ -430,10 +389,10 @@ index f0ffc429c0ca..efee23003067 100644
  } // namespace
  } // namespace config
 diff --git a/clang-tools-extra/clangd/unittests/ConfigYAMLTests.cpp b/clang-tools-extra/clangd/unittests/ConfigYAMLTests.cpp
-index 44a6647d4c0a..8f8ecc52b403 100644
+index 10d67dead342..979d725461fd 100644
 --- a/clang-tools-extra/clangd/unittests/ConfigYAMLTests.cpp
 +++ b/clang-tools-extra/clangd/unittests/ConfigYAMLTests.cpp
-@@ -282,13 +282,19 @@ TEST(ParseYAML, Style) {
+@@ -297,13 +297,19 @@ TEST(ParseYAML, Style) {
    CapturedDiags Diags;
    Annotations YAML(R"yaml(
  Style:
