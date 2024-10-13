@@ -2,12 +2,12 @@
 
 pkgname=tty-share
 pkgver=2.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Shares terminal session with no setup on remote end (browser)"
-arch=('any')
+arch=('x86_64')
 url="https://github.com/elisescu/tty-share"
 license=('MIT')
-depends=()
+depends=('glibc')
 source=("${url}/archive/v${pkgver}.zip")
 sha256sums=('3618361c8b8cf68097d6aa5e00f0d25c2e52f29c6ff566e1771b2ffa6d965180')
 makedepends=('go')
