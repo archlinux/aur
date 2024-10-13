@@ -13,6 +13,9 @@ pkgbase = betterx-desktop-git
 	depends = libxcrypt-compat
 	provides = betterx-desktop
 	conflicts = betterx-desktop
+	options = !strip
+	options = staticlibs
+	backup = usr/bin/betterx-desktop
 	source = git+https://github.com/Feur-Inc/BetterX-Desktop.git
 	sha256sums = SKIP
 

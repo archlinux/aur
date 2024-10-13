@@ -12,6 +12,8 @@ provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=('git+https://github.com/Feur-Inc/BetterX-Desktop.git')
 sha256sums=('SKIP')
+options=('!strip' 'staticlibs')
+backup=('usr/bin/betterx-desktop')
 
 pkgver() {
   cd "$srcdir/BetterX-Desktop"
@@ -20,6 +22,7 @@ pkgver() {
 
 prepare() {
   cd "$srcdir/BetterX-Desktop"
+  git pull
   rm -rf node_modules
   pnpm install
 }
@@ -33,9 +36,16 @@ package() {
   cd "$srcdir/BetterX-Desktop"
   install -d "$pkgdir/usr/lib/$pkgname"
   cp -r dist/linux-unpacked/* "$pkgdir/usr/lib/$pkgname"
-
-  install -d "$pkgdir/usr/bin"
-  ln -s "/usr/lib/$pkgname/betterx-desktop" "$pkgdir/usr/bin/betterx-desktop"
-
+  
+  install -Dm755 "$pkgdir/usr/lib/$pkgname/betterx-desktop" "$pkgdir/usr/bin/betterx-desktop"
+  
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  
+  # Install icons
+  for size in 16 32 48 64 128 256 512; do
+    install -Dm644 "build/icons/${size}x${size}.png" "$pkgdir/usr/share/icons/hicolor/${size}x${size}/apps/$pkgname.png"
+  done
+  
+  # Install desktop file
+  install -Dm644 "dist/linux-unpacked/$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
 }
