@@ -13,11 +13,11 @@ conflicts=('ddev')
 depends=('docker' 'mkcert')
 optdepends=('bash-completion: subcommand completion support')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/ddev-test/ddev/releases/download/v1.23.5-aaa-testwinarm64.4/ddev_linux-arm64.v1.23.5-aaa-testwinarm64.4.tar.gz")
-sha256sums_aarch64=('8d8cba2fa7f7271da9c1248bf5a48b45cdcf813c8267a15c72b8f11754eee22f')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/ddev-test/ddev/releases/download/v1.23.5-aaa-testgitpod.1/ddev_linux-arm64.v1.23.5-aaa-testgitpod.1.tar.gz")
+sha256sums_aarch64=('a2d9489ab24f761e0c0918daffd4370d3e37728629537019a18e72da62b9d170')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/ddev-test/ddev/releases/download/v1.23.5-aaa-testwinarm64.4/ddev_linux-amd64.v1.23.5-aaa-testwinarm64.4.tar.gz")
-sha256sums_x86_64=('2cec3304698529317c7fb24d4271411092f3f89ce1c3d0de2c9f1d0e514cf75d')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/ddev-test/ddev/releases/download/v1.23.5-aaa-testgitpod.1/ddev_linux-amd64.v1.23.5-aaa-testgitpod.1.tar.gz")
+sha256sums_x86_64=('4754dccd567faaa73cf2db6e8058745fe4b4a867b56729412adec0c03e98e493')
 
 package() {
   # bin
