@@ -1,4 +1,4 @@
-# Maintainer: Jerome Gravel-Niquet <jeromegn@gmail.com>
+# Maintainer: Blallo <blallo@autistici.org>
 
 pkgname="savvy"
 pkgver="0.16.0"
