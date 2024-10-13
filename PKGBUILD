@@ -2,14 +2,14 @@
 
 pkgname=tty-proxy
 pkgver=0.0.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Proxy for tty-share"
-arch=('any')
+arch=('x86_64')
 url="https://github.com/elisescu/tty-proxy"
 license=('MIT')
-depends=()
+depends=('glibc')
 source=("${url}/archive/v${pkgver}.zip")
-md5sums=('5b37e94491a5bfe3a18eca85a7a9f2cf')
+sha256sums=('e40d6a95e4fc2a3af35441b5017c6901453b28f540d185baa5cb8f94da2e8dd1')
 makedepends=('go')
 
 build() {

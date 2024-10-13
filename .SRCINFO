@@ -1,13 +1,13 @@
 pkgbase = tty-proxy
 	pkgdesc = Proxy for tty-share
 	pkgver = 0.0.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/elisescu/tty-proxy
-	arch = any
+	arch = x86_64
 	license = MIT
 	makedepends = go
+	depends = glibc
 	source = https://github.com/elisescu/tty-proxy/archive/v0.0.2.zip
-	md5sums = 5b37e94491a5bfe3a18eca85a7a9f2cf
+	sha256sums = e40d6a95e4fc2a3af35441b5017c6901453b28f540d185baa5cb8f94da2e8dd1
 
 pkgname = tty-proxy
-
