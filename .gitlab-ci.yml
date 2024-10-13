@@ -29,6 +29,7 @@ test:
   script:
     - yay -Sy --noconfirm
     - yay -S --noconfirm archlinux-keyring
+    - yay -Syu --noconfirm
     - yay -S --noconfirm python-portalocker
     - yay --noconfirm -U *.pkg.tar.zst
     - autosuspend -h

@@ -1,6 +1,6 @@
 pkgbase = autosuspend
 	pkgdesc = A daemon to suspend and wake up a system based on configurable checks
-	pkgver = 7.0.0
+	pkgver = 7.0.1
 	pkgrel = 1
 	url = https://github.com/languitar/autosuspend
 	install = autosuspend.install
@@ -31,7 +31,7 @@ pkgbase = autosuspend
 	optdepends = xprintidle: X server idle time check
 	backup = etc/autosuspend.conf
 	backup = etc/autosuspend-logging.conf
-	source = autosuspend-7.0.0.tar.gz::https://github.com/languitar/autosuspend/archive/v7.0.0.tar.gz
-	sha256sums = 3f09e61a7679bf1769b2587cbb597622885284c7e6be1821d02a304816a936fe
+	source = autosuspend-7.0.1.tar.gz::https://github.com/languitar/autosuspend/archive/v7.0.1.tar.gz
+	sha256sums = f99672ae73954cac999b1bdc52b29b79c34b24c18f54572fa7a4888b013a602e
 
 pkgname = autosuspend
