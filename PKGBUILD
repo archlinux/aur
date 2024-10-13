@@ -8,12 +8,12 @@
 
 pkgname=swi-prolog-git
 pkgver=9.3.13.r0.gd829bc57e
-pkgrel=1
+pkgrel=2
 pkgdesc='Prolog environment (latest git stable version)'
 arch=(x86_64 i686)
 url='http://www.swi-prolog.org/'
 license=('GPL' 'LGPL')
-depends=('gmp' 'readline' 'openssl' 'libarchive')
+depends=(gmp readline openssl libarchive gperftools)
 makedepends=('git' 'libxft' 'libjpeg' 'unixodbc' 'libxpm' 'libxinerama')
 optdepends=('unixodbc: for using the odbc4pl library'
             'libjpeg: for using the pl2xpce library'

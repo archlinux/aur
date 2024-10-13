@@ -1,7 +1,7 @@
 pkgbase = swi-prolog-git
 	pkgdesc = Prolog environment (latest git stable version)
 	pkgver = 9.3.13.r0.gd829bc57e
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.swi-prolog.org/
 	arch = x86_64
 	arch = i686
@@ -17,6 +17,7 @@ pkgbase = swi-prolog-git
 	depends = readline
 	depends = openssl
 	depends = libarchive
+	depends = gperftools
 	optdepends = unixodbc: for using the odbc4pl library
 	optdepends = libjpeg: for using the pl2xpce library
 	optdepends = libxpm: for using the pl2xpce library
