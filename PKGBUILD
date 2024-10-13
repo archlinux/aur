@@ -2,10 +2,10 @@
 #
 # mantainer: Muflone http://www.muflone.com/contacts/english/
 # contributor: Piero Proietti <piero.proietti_at_gmail.com>
-_commit=73cd53b7ff437e6f1f7b53a19dd93ec1ef47f8b2
+_commit=f000a83d2492fa6220b999d6923ffb1272bfbff4
 pkgname=penguins-eggs
 pkgver=10.0.42
-pkgrel=1
+pkgrel=2
 pkgdesc="A console tool that allows you to remaster your system and redistribute it as live images on USB sticks or via PXE"
 arch=('any')
 url="https://penguins-eggs.net"
@@ -65,14 +65,26 @@ build() {
 package() {
 	cd "$srcdir"/"$pkgname"
 	install -Dm644 .oclif.manifest.json package.json -t "$pkgdir/"usr/lib/"$pkgname"
-	cp -r addons assets bin conf ipxe dracut dist eui mkinitcpio mkinitfs node_modules scripts syslinux \
+	cp -r addons \
+		assets \
+		bin \
+		conf \
+		ipxe \
+		dracut \
+		dist \
+		eui \
+		mkinitcpio \
+		mkinitfs \
+		node_modules \
+		scripts \
+		syslinux \
 		"$pkgdir/"usr/lib/"$pkgname/"
 
 	# Fix permissions
 	chown root:root "$pkgdir/"usr/lib/"$pkgname/"
 
 	# Package contains reference to $srcdir
-	find "$pkgdir/"usr/lib/"$pkgname" -name package.json -print0 | xargs -r -0 sed -i '/_where/d'
+	# find "$pkgdir/"usr/lib/"$pkgname" -name package.json -print0 | xargs -r -0 sed -i '/_where/d'
 
 	# Install documentation
 	install -Dm644 README.md -t "$pkgdir/"usr/share/doc/"$pkgname/"
