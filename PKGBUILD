@@ -3,7 +3,7 @@
 
 _pkgbase=wl-mirror
 pkgname=wl-mirror-git
-pkgver=0.16.5.r0.g9b83955
+pkgver=0.16.5.r24.g71dab26
 pkgrel=1
 pkgdesc="a simple Wayland output mirror client"
 url="https://github.com/Ferdi265/wl-mirror"
