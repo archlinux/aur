@@ -2,7 +2,7 @@
 
 pkgname=ttea
 pkgrel=1
-pkgver=1.3.0
+pkgver=1.3.1
 pkgdesc="CLI tea manager"
 url="https://git.roshless.me/~roshless/ttea"
 arch=('x86_64' 'i686')
@@ -25,4 +25,4 @@ package() {
 	meson install -C build --destdir "$pkgdir"
 }
 
-sha512sums=('1a01f8b555c402f8f285e9b3580bbacea77a89e3807b508432558fed1459bf0845ce6d6cdb378dfd1c579020a6e7dd40edb6e79f680324bdc1904eb6b671cf89')
+sha512sums=('08814e6cf45614cccef8a75e04529e7af3f7da343a95930b7167d8be6c5476e9f7ac74a58584dcf9428f29418a0b67b9b7baa9c7ad5a546bff6f16ba5a97def8')
