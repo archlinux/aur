@@ -1,7 +1,7 @@
 # Maintainer: Ali Molaei <ali dot molaei at protonmail dot com>
 
 pkgname=python-proton-vpn-api-core
-pkgver=0.33.12
+pkgver=0.35.5
 pkgrel=1
 pkgdesc="The proton-vpn-core-api acts as a facade to the other Proton VPN components, exposing a uniform API to the available Proton VPN services."
 arch=("any")
@@ -14,11 +14,13 @@ sha256sums=('SKIP')
 replaces=(
 	"python-proton-vpn-connection"
 	"python-proton-vpn-killswitch"
+	"python-proton-vpn-logger"
 	"python-proton-vpn-session"
 )
 conflicts=(
 	"python-proton-vpn-connection"
 	"python-proton-vpn-killswitch"
+	"python-proton-vpn-logger"
 	"python-proton-vpn-session"
 )
 build() {
