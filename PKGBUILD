@@ -2,12 +2,12 @@
 
 pkgname=setcapslock
 pkgver=0.0.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Small utility to set the caps lock state in an X session."
 arch=('i686' 'x86_64')
 url="https://github.com/coldfix/setcapslock"
-license=('custom:UNLICENSE')
-depends=('libx11')
+license=('Unlicense')
+depends=('glibc' 'libx11')
 source=("$url/archive/${pkgver}.tar.gz")
 md5sums=('6b6be3209e635724eb761fd2889b8a70')
 
