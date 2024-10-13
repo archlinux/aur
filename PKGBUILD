@@ -1,4 +1,4 @@
-# Maintainer shanewstone gmail
+# Maintainer: shanewstone gmail
 
 pkgname=neovim-texlabconfig-opt-git
 pkgver=r64.b817297
