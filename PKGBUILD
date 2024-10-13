@@ -1,39 +1,58 @@
-# Maintainer: Frederic Bezies <fredbezies at gmail dot com> 
+# Maintainer:
+# Contributor: Frederic Bezies <fredbezies at gmail dot com>
 
-pkgname=libpamac-git
-_pkgname=libpamac
-pkgver=11.6.4.r0.g9108cba
+_pkgname="libpamac"
+pkgname="$_pkgname-git"
+pkgver=11.6.4.r6.g968e661
 pkgrel=2
-pkgdesc="Library for Pamac package manager based on libalpm - git version"
+pkgdesc="Library for Pamac package manager based on libalpm"
+url="https://github.com/manjaro/libpamac"
+license=('GPL-3.0-or-later')
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
-url="https://gitlab.manjaro.org/applications/libpamac"
-license=('GPL3')
-depends=('pacman>=6.1' 'pacman<6.2' 'appstream-glib' 'polkit' 'archlinux-appstream-data' 'libsoup3' 'appstream')
-makedepends=('gettext' 'itstool' 'vala' 'meson' 'ninja' 'gobject-introspection' 'xorgproto' 'asciidoc' 'git')
-options=(!emptydirs)
-conflicts=('libpamac-aur' 'libpamac-full' 'libpamac-full-dev' 'libpamac')
-source=(git+https://gitlab.manjaro.org/applications/libpamac.git)
+
+depends=(
+  'appstream'
+  'appstream-glib'
+  'archlinux-appstream-data'
+  'libsoup3'
+  'pacman'
+  'polkit'
+)
+makedepends=(
+  'asciidoc'
+  'gettext'
+  'git'
+  'gobject-introspection'
+  'itstool'
+  'meson'
+  'vala'
+  'xorgproto'
+)
+
+provides=("$_pkgname")
+conflicts=("$_pkgname")
+
+_pkgsrc="$_pkgname"
+source=("$_pkgsrc"::"git+$url.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd $_pkgname
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  cd "$_pkgsrc"
+  git describe --long --tags --abbrev=7 --exclude='*[a-zA-Z][a-zA-Z]*' \
+    | sed -E 's/^[^0-9]*//;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
 build() {
-  cd $_pkgname
-  mkdir -p builddir
-  cd builddir
-  meson setup --prefix=/usr --sysconfdir=/etc --buildtype=release
-  # build
-  ninja
+  local _meson_args=(
+    -Denable-aur=true
+    -Denable-appstream=true
+  )
+
+  arch-meson "$_pkgsrc" build "${_meson_args[@]}"
+  meson compile -C build
 }
 
 package() {
   backup=('etc/pamac.conf')
-  cd $_pkgname
-  cd builddir
-  DESTDIR="$pkgdir" ninja install
+  meson install -C build --destdir "$pkgdir"
 }
-
-#vim:set ts=2 sw=2 et:
