@@ -1,0 +1,7 @@
+*
+!.gitignore
+!*.service
+!*.sysusers
+!*.tmpfiles
+!PKGBUILD
+!.SRCINFO

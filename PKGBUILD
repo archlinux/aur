@@ -3,7 +3,7 @@
 pkgname=openarc-unofficial-patches-git
 _pkgname=openarc
 pkgver=1.0.0.Beta3.r24.g0676227
-pkgrel=1
+pkgrel=2
 _commit=0676227216f69bb52a4da2e52faf1978062b1fd7
 pkgdesc="OpenARC with patches from not-yet-merged PRs - by flowerysong"
 arch=(x86_64)
@@ -13,12 +13,12 @@ depends=('sh' 'glibc' 'jansson' 'openssl' 'libbsd')
 optdepends=('smtp-server: for using a local mail server'
 	    'bind: required only for signature verification (alternatives available)')
 makedepends=('libmilter' 'git')
-conflicts=('openarc')
-source=("git+https://github.com/flowerysong/OpenARC.git#commit=${_commit}"
+conflicts=('openarc' 'openarc-unofficial-patches')
+source=("git+https://github.com/flowerysong/OpenARC.git#branch=main"
         openarc.service
         openarc.sysusers
         openarc.tmpfiles)
-sha256sums=('2b2f0739071bfa4982eca651dc7a49584bed93eac14535cf04947eaa4e108780'
+sha256sums=('SKIP'
             'd438b4a2e0ab5b247938213da7e8062fa5865e750e4f89d41471311edc163022'
             '31c399c0e3a69bb845b033ab5c0ad92d44cacb0fd58e0113cd1901e75900515e'
             'a27619fe3bbea2a0fd7c555851089722b1d67818bc014d1dce20620b5eb4bbc5')
@@ -52,9 +52,9 @@ check() {
 
 package() {
   cd "$srcdir/OpenARC"
-  
+
   make -j1 DESTDIR="$pkgdir/" install
-  
+
   # systemd integration
   install -Dm644 "$srcdir/$_pkgname.sysusers" "$pkgdir/usr/lib/sysusers.d/$_pkgname.conf"
   install -Dm644 "$srcdir/$_pkgname.tmpfiles" "$pkgdir/usr/lib/tmpfiles.d/$_pkgname.conf"
