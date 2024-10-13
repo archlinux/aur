@@ -1,13 +1,16 @@
 pkgbase = betterx-desktop-git
 	pkgdesc = Desktop application for BetterX, enhancing your X browsing experience
-	pkgver = alpha.r8.g5530a8b
+	pkgver = alpha.r11.gb4f9ed9
 	pkgrel = 1
 	url = https://github.com/Feur-Inc/BetterX-Desktop
 	arch = x86_64
 	license = GPL-3.0-or-later
 	makedepends = git
 	makedepends = pnpm
+	makedepends = ruby
+	makedepends = ruby-rdoc
 	depends = electron
+	depends = libxcrypt-compat
 	provides = betterx-desktop
 	conflicts = betterx-desktop
 	source = git+https://github.com/Feur-Inc/BetterX-Desktop.git
