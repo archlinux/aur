@@ -8,7 +8,7 @@
 # Contributor: TuxSpirit <tuxspirit@archlinux.fr>
 
 pkgname=peazip-gtk2-bin
-pkgver=9.8.0
+pkgver=9.9.1
 pkgrel=1
 pkgdesc='PeaZip file manager and archiver (GTK 2)'
 arch=('x86_64')
@@ -25,7 +25,7 @@ optdepends=('p7zip: Command-line file archiver with high compression ratio'
 provides=('peazip')
 conflicts=('peazip-qt-bin' 'peazip-qt5' 'peazip-qt5-bin')
 source=("https://github.com/peazip/PeaZip/releases/download/${pkgver}/peazip-${pkgver}.LINUX.GTK2-1.${CARCH}.rpm")
-sha256sums=('c1d569cc8075dabd863b75ca20d3aeed7dfd7820500f25dc25cf2baa00709321')
+sha256sums=('3c03cbf7557d6d0d9bb5bf67224ffe8312725598a0e72f178b1d21f42693241f')
 changelog=changelog.txt
 
 prepare() {
