@@ -2,7 +2,7 @@
 
 pkgname=nvidiactl-git
 _pkgname=${pkgname%-git}
-pkgver=r24.7f13bca
+pkgver=r43.3338a48
 pkgrel=1
 pkgdesc='A tool providing dynamic fan speed and power limit adjustments for NVIDIA GPUs, balancing performance and noise. It can optionally be run as a systemd service.'
 arch=('x86_64')
@@ -27,11 +27,19 @@ pkgver() {
 
 prepare() {
   cd "$srcdir/$_pkgname"
+  if [ ! -d "cmd/nvidiactl" ]; then
+    echo "Error: cmd/nvidiactl directory not found"
+    return 1
+  fi
   mkdir -p build
 }
 
 build() {
   cd "$srcdir/$_pkgname"
+  if [ ! -d "cmd/nvidiactl" ]; then
+    echo "Error: cmd/nvidiactl directory not found"
+    return 1
+  fi
   export CGO_ENABLED=1
   go build \
     -ldflags="-s -w" \
@@ -46,6 +54,14 @@ package() {
   cd "$srcdir/$_pkgname"
   install -Dm 755 build/"$_pkgname"  "$pkgdir"/usr/bin/"$_pkgname"
   install -Dm 644 -t "$pkgdir/usr/share/doc/$_pkgname/" README.md
-  install -Dm 644 "$_pkgname.service" "$pkgdir/usr/lib/systemd/system/$_pkgname.service"
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
+  if [ -f "$_pkgname.service" ]; then
+    install -Dm 644 "$_pkgname.service" "$pkgdir/usr/lib/systemd/system/$_pkgname.service"
+  else
+    echo "Warning: $_pkgname.service file not found"
+  fi
+  if [ -f "LICENSE" ]; then
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
+  else
+    echo "Warning: LICENSE file not found"
+  fi
 }
