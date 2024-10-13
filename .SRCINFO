@@ -3,11 +3,11 @@ pkgbase = neovim-texlabconfig-opt-git
 	pkgver = 64.b817297
 	pkgrel = 1
 	url = https://github.com/f3fora/nvim-texlabconfig
-	arch = any
-	license = Unilicense
+	arch = x86_64
+	license = Unlicense
 	makedepends = git
+	makedepends = go
 	depends = neovim
-	depends = go
 	source = texlabconfig::git+https://github.com/f3fora/nvim-texlabconfig.git
 	sha256sums = SKIP
 
