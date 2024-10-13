@@ -1,0 +1,20 @@
+pkgbase = android-x86-cppunit
+	pkgdesc = A C++ unit testing framework (Android, x86)
+	pkgver = 1.15.1
+	pkgrel = 1
+	url = https://www.freedesktop.org/wiki/Software/cppunit
+	arch = any
+	license = LGPL
+	makedepends = android-configure
+	depends = android-ndk
+	conflicts = android-cppunit-x86
+	replaces = android-cppunit-x86
+	options = !strip
+	options = !buildflags
+	options = !libtool
+	options = staticlibs
+	options = !emptydirs
+	source = https://dev-www.libreoffice.org/src/cppunit-1.15.1.tar.gz
+	sha256sums = 89c5c6665337f56fd2db36bc3805a5619709d51fb136e51937072f63fcc717a7
+
+pkgname = android-x86-cppunit
