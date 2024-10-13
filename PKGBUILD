@@ -3,7 +3,7 @@
 
 pkgname=armcord-git
 pkgdesc="ArmCord dev build using the system electron. ArmCord is a custom client designed to enhance your Discord experience while keeping everything lightweight"
-pkgver=r1190.b4f8871
+pkgver=r1631.d796052
 pkgrel=1
 
 arch=("x86_64" "aarch64")
@@ -39,6 +39,8 @@ pkgver() {
 }
 
 build() {
+  echo -e "\033[0;31mARMCORD IS NOW LEGCORD DUE TO DMCA. SEE https://github.com/Legcord/Legcord/issues/745 \033[0m"
+  exit 451
   cd "$pkgname"
   pnpm install --frozen-lockfile --ignore-scripts
   pnpm run packageQuick
