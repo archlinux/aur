@@ -1,0 +1,16 @@
+post_install() {
+  echo "==> You do need a LastFM api key (it's free) to use this script."
+  echo "==> You have to set these variables in your environment" 
+  echo "==> I'd recommend ~/.config/environment.d/envvars.conf:"
+  echo "==> LASTFM_API_KEY_PATH"
+  echo "==> MUSIC_LIBRARY_PATH"
+  echo "==> You can get an api key at https://www.last.fm/api/account/create"
+  echo "==> To enable 'mpdcovergrabber' run the following command:"
+  echo "systemctl --user enable --now mpdcovergrabber"
+  
+}
+
+post_upgrade() {
+  post_install
+}
+
