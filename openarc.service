@@ -1,0 +1,23 @@
+[Unit]
+Description=OpenARC daemon
+After=network.target remote-fs.target nss-lookup.target
+
+[Service]
+Type=simple
+RuntimeDirectory=openarc
+RuntimeDirectoryMode=0750
+StateDirectory=openarc
+StateDirectoryMode=0750
+ConfigurationDirectory=openarc
+ConfigurationDirectoryMode=0750
+ExecStart=/usr/bin/openarc -f $OPTIONS
+ExecReload=/bin/kill -USR1 $MAINPID
+Restart=on-failure
+User=openarc
+Group=openarc
+UMask=0007
+ProtectSystem=strict
+ProtectHome=true
+
+[Install]
+WantedBy=multi-user.target

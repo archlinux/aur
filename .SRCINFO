@@ -1,0 +1,29 @@
+pkgbase = openarc-unofficial-patches-git
+	pkgdesc = OpenARC with patches from not-yet-merged PRs - by flowerysong
+	pkgver = 1.0.0.Beta3.r24.g0676227
+	pkgrel = 1
+	url = https://github.com/flowerysong/OpenARC
+	arch = x86_64
+	license = BSD-2-Clause
+	license = LicenseRef-Sendmail-1.1
+	makedepends = libmilter
+	makedepends = git
+	depends = sh
+	depends = glibc
+	depends = jansson
+	depends = openssl
+	depends = libbsd
+	optdepends = smtp-server: for using a local mail server
+	optdepends = bind: required only for signature verification (alternatives available)
+	conflicts = openarc
+	source = git+https://github.com/flowerysong/OpenARC.git#commit=0676227216f69bb52a4da2e52faf1978062b1fd7
+	source = openarc.service
+	source = openarc.sysusers
+	source = openarc.tmpfiles
+	validpgpkeys = 5CDD574C22FF4D2480ACABDF5254B96BC608B511
+	sha256sums = 2b2f0739071bfa4982eca651dc7a49584bed93eac14535cf04947eaa4e108780
+	sha256sums = d438b4a2e0ab5b247938213da7e8062fa5865e750e4f89d41471311edc163022
+	sha256sums = 31c399c0e3a69bb845b033ab5c0ad92d44cacb0fd58e0113cd1901e75900515e
+	sha256sums = a27619fe3bbea2a0fd7c555851089722b1d67818bc014d1dce20620b5eb4bbc5
+
+pkgname = openarc-unofficial-patches-git
