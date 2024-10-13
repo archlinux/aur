@@ -1,6 +1,6 @@
 pkgbase = mpdcovergrabber-git
-	pkgdesc = user service that fetches album covers for the currently playing song in mpd
-	pkgver = r7.99708e5
+	pkgdesc = User service that fetches album covers for the currently playing song in MPD
+	pkgver = 0.r7.99708e5
 	pkgrel = 1
 	url = https://gitlab.com/teraflops/mpdcovergrabber
 	install = mpdcovergrabber-git.install
@@ -8,15 +8,11 @@ pkgbase = mpdcovergrabber-git
 	license = BSD
 	makedepends = git
 	depends = mpd
-	depends = python-dbus
 	depends = python-requests
-	depends = python-urllib3
-	depends = mpdris2-rs
 	depends = python-dbus-next
+	depends = mpdris2-rs
 	provides = mpdcovergrabber
 	conflicts = mpdcovergrabber
-	conflicts = mpdris2
-	conflicts = mpdris2-git
 	source = git+https://gitlab.com/teraflops/mpdcovergrabber.git
 	sha256sums = SKIP
 
