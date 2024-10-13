@@ -16,7 +16,7 @@ pkgname=vmware-workstation12
 pkgver=12.5.9
 _buildver=7535481
 _pkgver=${pkgver}_${_buildver}
-pkgrel=36
+pkgrel=37
 _tools_version=10.1.6-5214329
 pkgdesc='The industry standard for running multiple operating systems as virtual machines on a single Linux PC.'
 arch=(x86_64)
@@ -139,8 +139,8 @@ sha256sums=(
 
   '10562d11d50edab9abc2b29c8948714edcb9b084f99b3766d07ddd21259e372e'
   '273d4357599a3e54259c78cc49054fef8ecfd2c2eda35cbcde3a53a62777a5ac'
-  'e9a2d5ed96678649754709a334c99b1c185bd8ba99406fef9e0ade99ccbff35c'
-  'c2228bf8904ddbe2f829a0d26c967e0582cf3dc7fece8ac7e2eca6bfeceef444'
+  'b724a965454437b86b0f4207832477c8ac667393ce6d3fd169a18f3597ecaa5b'
+  '23f91cb28603dfdf48216450136c948d417fc0b95d52e024729846d168624b0c'
 )
 options=(!strip emptydirs !debug)
 
