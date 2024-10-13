@@ -1,0 +1,13 @@
+pkgbase = asciidoctor-revealjs
+	pkgdesc = Asciidoctor reveal.js is a converter for Asciidoctor and Asciidoctor.js that transforms an AsciiDoc document into an HTML5 presentation designed to be executed by the reveal.js presentation framework.
+	pkgver = 5.1.0
+	pkgrel = 1
+	url = https://github.com/asciidoctor/asciidoctor-reveal.js
+	arch = any
+	license = MIT
+	options = !strip
+	options = !docs
+	source = https://github.com/asciidoctor/asciidoctor-reveal.js/releases/download/v5.1.0/asciidoctor-revealjs-linux
+	sha256sums = 9639870b9dd032a8aa36567e39ce3c0572e5614559597ce4095637eb7fc5c415
+
+pkgname = asciidoctor-revealjs

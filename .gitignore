@@ -1,0 +1,5 @@
+pkg/
+src/
+
+asciidoctor-revealjs-*.pkg.*
+asciidoctor-revealjs-linux
