@@ -1,10 +1,10 @@
-# Contributor: dreieck
+# Maintainer:  dreieck
 # Contributor: Luis Martinez <luis dot martinez at tuta dot io>
 
 _pkgname="neovim-nonicons"
 pkgname="${_pkgname}-git"
 pkgver=r39.20230204.ceda07d
-pkgrel=1
+pkgrel=2
 pkgdesc="Icon set for neovim plugins and settings"
 arch=('any')
 url="https://github.com/yamatsum/nvim-nonicons"

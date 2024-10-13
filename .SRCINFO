@@ -1,7 +1,7 @@
 pkgbase = neovim-nonicons-git
 	pkgdesc = Icon set for neovim plugins and settings
 	pkgver = r39.20230204.ceda07d
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/yamatsum/nvim-nonicons
 	arch = any
 	groups = neovim-plugins
