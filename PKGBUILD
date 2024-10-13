@@ -1,4 +1,7 @@
 # Maintainer: Nick Dowsett <nick42d AT gmail DOT com>
+# Contributor: Evert Vorster <superchief AT evertvorster DOT com>
+# Contributor: Steven Seifried <gitlab@canox.net>
+
 pkgname=clevo-drivers-dkms-git
 _pkgname=clevo-drivers
 pkgver=4.8.0
