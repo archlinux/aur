@@ -1,7 +1,7 @@
 # Maintainer: Kenneth Shaw <kenshaw at gmail com>
 
 pkgname=wofimoji
-pkgver=0.2.2
+pkgver=0.3.0
 pkgrel=1
 pkgdesc='the wofi emoji picker'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -9,7 +9,7 @@ url="https://github.com/kenshaw/wofimoji"
 license=('MIT')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('ad942e4ebaa0a1f9a1fe35771403cd5a20f525dd9899b7dd8ab1e23737bd40b2')
+sha256sums=('40361770319017dc3e073e609bffdc8c3c620401f7ceebd23ecc6470eebd219b')
 
 build() {
     cd $pkgname-$pkgver
