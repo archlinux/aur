@@ -78,6 +78,10 @@ cc_library(
         "@uim//:uim",
         "@com_google_protobuf//:protobuf",
     ],
+    linkopts = [
+        "-luim",
+        "-luim-scm"
+    ],
 )
 
 cc_shared_library(

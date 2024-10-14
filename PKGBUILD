@@ -11,7 +11,7 @@ _mozcrev="5e6abfe1853b080766def432b746a9bed79e54b0"
 pkgname=uim-mozc
 _pkgname=mozc
 pkgver=2.30.5544.102
-pkgrel=1
+pkgrel=2
 pkgdesc="uim plugin module for Mozc"
 arch=('i686' 'x86_64')
 url="https://github.com/e-kato/macuim"
@@ -31,7 +31,7 @@ sha1sums=('SKIP'
           'SKIP'
           '7547e5cae4df8b516580c882bc975d8a70251db1'
           'eff91b1139561bb5e2f90936776b8e796e7506a7'
-          '279a05a3e6339c388744f16952ccd798ab9989a8')
+          'eb8bcf1e55280ad85960aad3bce7631a487bb5f6')
 
 prepare() {
   cd "${srcdir}/${_pkgname}/"
@@ -57,7 +57,9 @@ build() {
   msg "Starting make..."
 
   unset ANDROID_NDK_HOME
-  export JAVA_HOME='/usr/lib/jvm/java-11-openjdk/'
+  unset ANDROID_HOME
+  export JAVA_HOME='/usr/lib/jvm/java-21-openjdk/'
+
   bazel build unix/uim:uim-mozc unix/icons --config oss_linux --compilation_mode opt --cxxopt=-Wno-uninitialized --host_cxxopt=-Wno-uninitialized --experimental_cc_shared_library
 }
 
