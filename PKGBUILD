@@ -2,7 +2,7 @@
 
 pkgbase=linux-flowx13
 pkgver=6.11.3.arch1
-pkgrel=1
+pkgrel=2
 pkgdesc='Linux (with patches for the Asus Flow X13)'
 url='https://github.com/archlinux/linux'
 arch=(x86_64)
@@ -80,6 +80,10 @@ prepare() {
 
   echo "Setting config..."
   cp ../config .config
+  scripts/config --enable  CONFIG_ANDROID
+  scripts/config --enable  CONFIG_ANDROID_BINDER_IPC
+  scripts/config --enable  CONFIG_ANDROID_BINDERFS
+  scripts/config --set-str CONFIG_ANDROID_BINDER_DEVICES ""
   make olddefconfig
   diff -u ../config .config || :
 
