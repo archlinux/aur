@@ -1,7 +1,7 @@
 pkgbase = ttf-noto-emoji-monochrome
 	pkgdesc = Google Noto Emoji Monochrome font
 	pkgver = 1.0.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://fonts.google.com/noto/specimen/Noto+Emoji
 	arch = any
 	license = OFL
