@@ -1,7 +1,7 @@
 # Maintainer: TrueConf LLC <packager@trueconf.com>
 pkgbase='trueconf-client'
 pkgname='trueconf'
-pkgver='8.5.0.697'
+pkgver='8.5.0.822'
 pkgrel='1'
 pkgdesc='Video conference client with a range of rich collaborative tools and an easy-to-use interface'
 arch=('x86_64')
@@ -55,8 +55,8 @@ depends=('alsa-utils'
 )
 install="${pkgname}-client.install"
 _channel=stable
-source=('https://mirror.trueconf.com/archlinux/trueconf-8.5.0.697-1-x86_64.pkg.tar.zst')
-sha512sums=('41c79bd90ed13bbbd1dcec644eade936c85e68ed5d5d20f5f824269bdcffd8ddc946aff90ba7d706528473462ef568e61fe17436b22f9d9da2e43ed8de3e971a')
+source=('https://mirror.trueconf.com/archlinux/trueconf-8.5.0.822-1-x86_64.pkg.tar.zst')
+sha512sums=('1b1c7ae4b10dc38b85c69c3f8ad9ed2236b874de019f74ff6bc6e46d28fa9a5a29e5ee5bcefc8f599098adc8d439ea25c9a79d0dc42b9f7c0f8cc860468349e9')
 
 package() {
   cd "${srcdir}"
