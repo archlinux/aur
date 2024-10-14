@@ -2,7 +2,7 @@
 
 pkgname=yt-dlp-youtube-oauth2-git
 
-provides=(yt-dlp-youtube-oauth)
+provides=(yt-dlp-youtube-oauth2)
 
 pkgdesc="Plugin that adds OAuth2 login support to yt-dlp's YouTube extractors"
 url=https://github.com/coletdjnz/yt-dlp-youtube-oauth2
