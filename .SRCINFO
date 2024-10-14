@@ -10,8 +10,6 @@ pkgbase = gambal-git
 	depends = libx11
 	provides = gambal
 	source = git+https://github.com/ashtum/gambal.git
-	source = build-fix.patch
 	md5sums = SKIP
-	md5sums = 064447eb13ff05e811f2f4b3d00d11fc
 
 pkgname = gambal-git
