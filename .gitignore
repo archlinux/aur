@@ -1,0 +1,5 @@
+*.deb
+*.rpm
+*.tar.gz
+*.tar.zst
+alsa-scarlett-gui/
