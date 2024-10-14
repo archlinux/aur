@@ -1,15 +1,20 @@
 # Maintainer: system64 <system64fumo@protonmail.com>
 
 pkgname=frogfm
-pkgver=0.1
-pkgrel=1
+pkgver=9.9.9
+pkgrel=9
 pkgdesc="Sleek file manager written in gtkmm 4"
 arch=('aarch64' 'riscv64' 'x86_64')
 url="https://github.com/System64fumo/frog"
 license=('WTFPL')
-depends=('gtkmm-4.0' 'gtk4-layer-shell' 'libudev' 'gstreamer')
+depends=('gtkmm-4.0' 'gtk4-layer-shell' 'gstreamer')
+makedepends=('git' 'gcc' 'make')
 source=("git+https://github.com/System64fumo/frog")
 sha256sums=('SKIP')
+
+pkgver() {
+	date -u +"%y.%m.%d"
+}
 
 build() {
 	cd "frog"
