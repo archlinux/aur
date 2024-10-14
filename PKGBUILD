@@ -3,7 +3,7 @@
 
 pkgname=seamly2d
 _pkgname=Seamly2D
-pkgver=2023.3.6.1639
+pkgver=2024.10.8.1758
 pkgrel=1
 pkgdesc="Open source patternmaking software"
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ license=('GPL3')
 depends=('qt5-svg' 'qt5-xmlpatterns' 'desktop-file-utils')
 source=("https://github.com/FashionFreedom/Seamly2D/archive/v$pkgver.tar.gz")
 
-sha512sums=('ffae879b6f332635b560e8e6d1a5dc6688ac17efdd930a7710c7f1924f0e9b58cd1093fa7c074c6d1d2f4d19bc30ae3510ebb6e8bc59c4a031fabafeeaf4eb49')
+sha512sums=('bcdc91c0454a6640f163961103bceb4b0cf0f6de99183b2e623a04223a4a54d501428f04ed37241f2db0a582a461f256943477e745923681bc54e6fa014a5b8c')
 
 build() {
   cd "$srcdir/$_pkgname-$pkgver"
