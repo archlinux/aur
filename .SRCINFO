@@ -1,6 +1,6 @@
 pkgbase = kdocker
 	pkgdesc = An application to help you dock any application into the system tray
-	pkgver = 6.0
+	pkgver = 6.1
 	pkgrel = 1
 	url = https://github.com/user-none/KDocker
 	arch = i686
@@ -9,8 +9,10 @@ pkgbase = kdocker
 	makedepends = cmake
 	makedepends = ninja
 	makedepends = perl
+	makedepends = pod2man
+	makedepends = gcc
 	depends = qt6-base
-	source = https://github.com/user-none/KDocker/archive/6.0.tar.gz
-	sha256sums = e319a0ed42417f824e5358fbdb528865d32de4c0558104bee8d51c8c8afaeafd
+	source = https://github.com/user-none/KDocker/archive/6.1.tar.gz
+	sha256sums = 0377cffb2071568c2980b70c798da3d5c2823a74acee9c526e69843a720e81a7
 
 pkgname = kdocker
