@@ -1,6 +1,6 @@
 pkgbase = rune-player-git
 	pkgdesc = The player that blends classic design with modern technology
-	pkgver = 0.0.0.dev.7.r4.g323db82
+	pkgver = 0.0.0.dev.11.r6.g191c195
 	pkgrel = 1
 	url = https://github.com/Losses/rune
 	arch = x86_64
@@ -20,14 +20,16 @@ pkgbase = rune-player-git
 	depends = dbus
 	depends = fontconfig
 	depends = gcc-libs
+	depends = gdk-pixbuf2
 	depends = glib2
 	depends = glibc
 	depends = gtk3
+	depends = harfbuzz
 	depends = hicolor-icon-theme
 	depends = libepoxy
-	depends = lmdb
 	depends = pango
-	provides = rune-player=0.0.0.dev.7.r4.g323db82
+	depends = zlib
+	provides = rune-player=0.0.0.dev.11.r6.g191c195
 	conflicts = rune-player
 	options = !lto
 	source = rune-player::git+https://github.com/Losses/rune.git

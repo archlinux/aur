@@ -2,7 +2,7 @@
 
 _pkgname=rune-player
 pkgname=rune-player-git
-pkgver=0.0.0.dev.7.r4.g323db82
+pkgver=0.0.0.dev.11.r6.g191c195
 pkgrel=1
 pkgdesc="The player that blends classic design with modern technology"
 arch=('x86_64')
@@ -15,13 +15,15 @@ depends=(
     'dbus'
     'fontconfig'
     'gcc-libs'
+    'gdk-pixbuf2'
     'glib2'
     'glibc'
     'gtk3'
+    'harfbuzz'
     'hicolor-icon-theme'
     'libepoxy'
-    'lmdb'
     'pango'
+    'zlib'
 )
 makedepends=(
     'flutter-intellij-patch'
@@ -56,6 +58,7 @@ prepare() {
 
 build() {
     cd "${srcdir}/${_pkgname}"
+    export LDFLAGS="${LDFLAGS} -Wl,--no-as-needed"
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
     flutter pub run rinf message
