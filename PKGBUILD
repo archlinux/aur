@@ -1,29 +1,50 @@
-pkgname='alsa-scarlett-gui-git'
+pkgname='alsa-scarlett-gui-dev'
 _pkgname='alsa-scarlett-gui'
-pkgver=0.2.7.g65c0
+pkgver=0.4.1.test1.8.g9fa6
 pkgrel=1
-pkgdesc="Gtk4 GUI for the Focusrite Scarlett Gen 2/3 ALSA Mixer Driver."
+pkgdesc="GUI for the ALSA controls presented by the Scarlett2 driver, Development version"
 arch=('i686' 'x86_64')
 url="https://github.com/geoffreybennett/alsa-scarlett-gui"
-license=('GPL3')
-depends=('gtk4' 'alsa-lib')
+license=('GPL-3.0-or-later' 'LGPL-3.0-or-later')
+depends=(
+    'glibc'
+    'glib2'
+    'alsa-lib'
+    'gtk4'
+    'hicolor-icon-theme'
+    'cairo'
+    'openssl'
+)
 makedepends=('gcc' 'make' 'git' 'pkgconf' 'sed')
-provides=('alsa-scarlett-gui')
-source=( "$_pkgname::git+https://github.com/geoffreybennett/alsa-scarlett-gui.git")
-sha384sums=('SKIP')
+provides=("$_pkgname")
+source=("git+${url}.git#branch=dev")
+sha256sums=('SKIP')
 
 pkgver() {
     cd "$_pkgname"
-    echo "$(git describe --abbrev=4 --always --tags | sed 's/-/./g')"
+    git describe --abbrev=4 --always --tags | sed 's/-/./g'
 }
 
 build() {
-    cd $_pkgname
-    sed -i 's/-Werror//' src/Makefile
-    PREFIX="/usr" make -C src
- }
+    cd "$srcdir/$_pkgname"
+
+    make \
+        -C src \
+        PREFIX=/usr \
+        VERSION="$pkgver"
+}
 
 package() {
     cd "$srcdir/$_pkgname"
-    PREFIX="${pkgdir}/usr" make -C src install
+
+    make \
+        -C src \
+        PREFIX="$pkgdir/usr" \
+        VERSION="$pkgver" \
+        install
+
+    # documentation
+    install -vDm644 -t "$pkgdir/usr/share/doc/$pkgname" ./*.md ./docs/*.md
+    install -vDm644 -t "$pkgdir/usr/share/doc/$pkgname/img" img/*
+    install -vDm644 -t "$pkgdir/usr/share/doc/$pkgname/demo" demo/*
 }
