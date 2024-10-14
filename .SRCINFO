@@ -1,6 +1,6 @@
 pkgbase = kangaroo-max-bin
 	pkgdesc = A SQL client and admin tool for popular databases(SQLite/MySQL/PostgreSQL/...),support table design,query,model,sync,export/import etc,focus on comfortable,fun and developer friendly.
-	pkgver = 5.3.1.240901
+	pkgver = 6.0.1.241012
 	pkgrel = 1
 	url = https://www.datatable.online
 	arch = x86_64
@@ -14,15 +14,18 @@ pkgbase = kangaroo-max-bin
 	depends = libarchive
 	depends = qrencode
 	depends = libadwaita
-	depends = libsoup
 	depends = editorconfig-core-c
 	depends = unixodbc
-	provides = kangaroo=5.3.1.240901
+	depends = gtksourceview5
+	depends = libpanel
+	depends = libgee
+	depends = sqlite3mc
+	provides = kangaroo=6.0.1.241012
 	conflicts = kangaroo-max
 	conflicts = kangaroo
-	source = kangaroo-max-5.3.1.240901.pkg.tar.zst::https://github.com/dbkangaroo/kangaroo/releases/download/v5.3.1.240901/kangaroo-multiple-5.3.1.240901-1-x86_64.pkg.tar.zst
+	source = kangaroo-max-6.0.1.241012.pkg.tar.zst::https://github.com/dbkangaroo/kangaroo/releases/download/v6.0.1.241012/kangaroo-multiple-ai-6.0.1.241012-1-x86_64.pkg.tar.zst
 	source = LICENSE.html::https://www.datatable.online/en/license/service-agreement.html
-	sha256sums = 151f0544b39d4fb6c5d4d1d472011765fc399ceb1b41ab11000f035f6ac918e5
-	sha256sums = 392c6c163fff9cb561653b0c813127654115bf23adcc14b532b275ebd7ff683c
+	sha256sums = 2fa2453c52b3298acaf0591ee4d00de227e4cf21f000de8027dfedd932ebb9ac
+	sha256sums = 0b60b12fefddb850563a0479e6d0c253b09f412d05f117fcbc04d642c91a67a0
 
 pkgname = kangaroo-max-bin
