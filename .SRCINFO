@@ -1,6 +1,6 @@
 pkgbase = ueli-git
-	pkgdesc = Keystroke launcher for Windows, macOS and Linux
-	pkgver = 9.6.0.r0.gfca5ef9
+	pkgdesc = Cross-Platform Keystroke Launcher.Use system-wide electron.
+	pkgver = 9.7.0.r0.gfa359bd
 	pkgrel = 1
 	url = https://ueli.app/
 	arch = any

@@ -1,11 +1,11 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=ueli-git
 _pkgname=Ueli
-pkgver=9.6.0.r0.gfca5ef9
+pkgver=9.7.0.r0.gfa359bd
 _electronversion=32
 _nodeversion=20
 pkgrel=1
-pkgdesc="Keystroke launcher for Windows, macOS and Linux"
+pkgdesc="Cross-Platform Keystroke Launcher.Use system-wide electron."
 arch=('any')
 url="https://ueli.app/"
 _ghurl="https://github.com/oliverschwendener/ueli"
@@ -44,6 +44,7 @@ build() {
     cd "${srcdir}/${pkgname//-/.}"
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
+    electronDist="/usr/lib/electron${_electronversion}"
     HOME="${srcdir}/.electron-gyp"
     {
         echo -e '\n'	
@@ -60,12 +61,12 @@ build() {
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
     NODE_ENV=development    npm install
     NODE_ENV=production     npm run build
-    NODE_ENV=production     npm run package
+    NODE_ENV=production     npm exec -c "electron-builder --linux dir -c.electronDist=${electronDist} --config electron-builder.config.js"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
     install -Dm644 "${srcdir}/${pkgname//-/.}/release/linux-"*/resources/app.asar -t "${pkgdir}/usr/lib/${pkgname%-git}"
-    cp -r "${srcdir}/${pkgname//-/.}/release/linux-"*/resources/app.asar.unpacked "${pkgdir}/usr/lib/${pkgname%-git}"
+    cp -Pr --no-preserve=ownership "${srcdir}/${pkgname//-/.}/release/linux-"*/resources/app.asar.unpacked "${pkgdir}/usr/lib/${pkgname%-git}"
     install -Dm644 "${srcdir}/${pkgname//-/.}/assets/Build/app-icon-dark.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-git}.png"
     install -Dm644 "${srcdir}/${pkgname%-git}.desktop" -t "${pkgdir}/usr/share/applications"
     install -Dm644 "${srcdir}/${pkgname//-/.}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
