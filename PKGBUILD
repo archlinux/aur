@@ -8,12 +8,12 @@ arch=(x86_64 i686)
 depends=(make)
 optdepends=(
     'remake: For time profiling'
-    'swi-prolog: Comprehensive free Prolog environment'
-    'ciao-lang: Modern Prolog implementation'
-    'gprolog: Free Prolog compiler'
-    'scryer-prolog: Free ISO Prolog system'
-    'trealla: A compact, efficient Prolog interpreter'
-    'eclipse-clp: Constraint Logic Programming System'
+    swi-prolog
+    ciao-lang
+    gprolog
+    scryer-prolog
+    trealla
+    eclipse-clp
     bprolog
     binprolog
 )
