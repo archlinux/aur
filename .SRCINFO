@@ -1,4 +1,4 @@
-pkgbase = tuprolog
+pkgbase = tuprolog-repl
 	pkgdesc = A Kotlin Multi-Platform ecosystem for symbolic AI (REPL)
 	pkgver = 1.0.4
 	pkgrel = 1
@@ -10,4 +10,4 @@ pkgbase = tuprolog
 	source = https://github.com/tuProlog/2p-kt/releases/download/1.0.4/2p-repl-1.0.4-redist.jar
 	sha256sums = 9b7055100b6f297247f8e57f648941ab1b85d9d97ce37f90bc05507af5893b3c
 
-pkgname = tuprolog
+pkgname = tuprolog-repl

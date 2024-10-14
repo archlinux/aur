@@ -1,5 +1,5 @@
 # Maintainer: AleX Grabowski <hurufu+aur@gmail.com>
-pkgname=tuprolog
+pkgname=tuprolog-repl
 pkgver=1.0.4
 pkgrel=1
 pkgdesc="A Kotlin Multi-Platform ecosystem for symbolic AI (REPL)"
