@@ -2,8 +2,9 @@
 # Contributer: Alpin <alpin 'at' alpindale 'dot' dev>
 # Author: LostRuins (concedo), YellowRoseCx
 pkgname=koboldcpp-hipblas
-_pkgver=1.75.2
-pkgver=$_pkgver.yr2
+_pkgver=1.76
+pkgver=$_pkgver.yr0
+_git_pkgver=$pkgver-ROCm-7900xt
 pkgrel=1
 pkgdesc="An easy-to-use AI text-generation software for GGML and GGUF models (with HIPBLAS, for ROCM)"
 arch=('x86_64')
@@ -23,23 +24,23 @@ optdepends=(
 provides=("koboldcpp=$_pkgver" "koboldcpp-rocm=$_pkgver")
 conflicts=('koboldcpp')
 source=(
-  "$pkgname-$pkgver.tar.gz::https://github.com/YellowRoseCx/koboldcpp-rocm/archive/refs/tags/v$pkgver-ROCm.tar.gz"
+  "$pkgname-${_git_pkgver}.tar.gz::https://github.com/YellowRoseCx/koboldcpp-rocm/archive/refs/tags/v${_git_pkgver}.tar.gz"
   'koboldcpp.desktop'
   'koboldcpp.png'
 )
 sha256sums=(
-  '5ffc6c9524e1ed28f13748a63a0e7c8e944c227e461ea35c028cbd4faa9e4324'
+  '15d9cd33a4962cc2495731feca0576cd42fe9ebb6038bc4fea656ba9e7870098'
   'fcec7b843b908e1c03496fdc0605e6509f52526a855c43db16e287ef646503ef'
   'd244788c74a693a383bea7db6ab2bb2f762e6020de900be977b16e18dcd20f54'
 )
 
 build() {
-  cd "$srcdir/koboldcpp-rocm-$pkgver-ROCm"
+  cd "$srcdir/koboldcpp-rocm-${_git_pkgver}"
   make LLAMA_VULKAN=1 LLAMA_CLBLAST=1 LLAMA_HIPBLAS=1 LLAMA_PORTABLE=1
 }
 
 package() {
-  cd "$srcdir/koboldcpp-rocm-$pkgver-ROCm"
+  cd "$srcdir/koboldcpp-rocm-${_git_pkgver}"
 
   install -d "$pkgdir/usr/share/koboldcpp"
 

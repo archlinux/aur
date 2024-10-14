@@ -1,6 +1,6 @@
 pkgbase = koboldcpp-hipblas
 	pkgdesc = An easy-to-use AI text-generation software for GGML and GGUF models (with HIPBLAS, for ROCM)
-	pkgver = 1.75.2.yr2
+	pkgver = 1.76.yr0
 	pkgrel = 1
 	url = https://github.com/YellowRoseCx/koboldcpp-rocm
 	arch = x86_64
@@ -12,13 +12,13 @@ pkgbase = koboldcpp-hipblas
 	depends = hipblas
 	optdepends = python-customtkinter: for GUI launcher
 	optdepends = python-psutil: increasing the process CPU priority
-	provides = koboldcpp=1.75.2
-	provides = koboldcpp-rocm=1.75.2
+	provides = koboldcpp=1.76
+	provides = koboldcpp-rocm=1.76
 	conflicts = koboldcpp
-	source = koboldcpp-hipblas-1.75.2.yr2.tar.gz::https://github.com/YellowRoseCx/koboldcpp-rocm/archive/refs/tags/v1.75.2.yr2-ROCm.tar.gz
+	source = koboldcpp-hipblas-1.76.yr0-ROCm-7900xt.tar.gz::https://github.com/YellowRoseCx/koboldcpp-rocm/archive/refs/tags/v1.76.yr0-ROCm-7900xt.tar.gz
 	source = koboldcpp.desktop
 	source = koboldcpp.png
-	sha256sums = 5ffc6c9524e1ed28f13748a63a0e7c8e944c227e461ea35c028cbd4faa9e4324
+	sha256sums = 15d9cd33a4962cc2495731feca0576cd42fe9ebb6038bc4fea656ba9e7870098
 	sha256sums = fcec7b843b908e1c03496fdc0605e6509f52526a855c43db16e287ef646503ef
 	sha256sums = d244788c74a693a383bea7db6ab2bb2f762e6020de900be977b16e18dcd20f54
 
