@@ -1,10 +1,11 @@
 # Maintainer: Cody Schafer <aur at codyps com>
 # Maintainer: dequis <dx@dxzone.com.ar>
 # Previous maintainer: Joel Teichroeb <joel@teichroeb.net>
+# Contributor: SandaruKasa <sandarukasa plus aur at ya dot ru>
 
 pkgname=rr
 pkgver=5.8.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Record and Replay framework: lightweight recording and deterministic debugging'
 arch=(i686 x86_64 aarch64)
 url='http://rr-project.org/'
@@ -45,4 +46,6 @@ package() {
 		find "${pkgdir}/usr/bin" -type f -executable -exec strip $STRIP_BINARIES {} + || :
 	fi
 	install -D "$pkgname-$pkgver"/LICENSE "${pkgdir}/usr/share/licenses/rr/LICENSE"
+	install -D "$pkgname-$pkgver"/scripts/zen_workaround.service "${pkgdir}/usr/lib/systemd/system/zen_workaround.service"
+	install -D "$pkgname-$pkgver"/scripts/zen_workaround.py "${pkgdir}/usr/share/zen_workaround/zen_workaround.py"
 }
