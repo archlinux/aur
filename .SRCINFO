@@ -1,7 +1,7 @@
 pkgbase = bprolog
 	pkgdesc = Versatile and efficient constraint logic programming (CLP) system
 	pkgver = 8.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.picat-lang.org/bprolog/index.html
 	arch = x86_64
 	license = unknown
