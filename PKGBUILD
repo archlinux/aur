@@ -2,17 +2,18 @@
 
 pkgname=openarc-unofficial-patches-git
 _pkgname=openarc
-pkgver=1.0.0.Beta3.r24.g0676227
+pkgver=1.0.0.Beta3.r62.g94dbbc2
 pkgrel=2
 _commit=0676227216f69bb52a4da2e52faf1978062b1fd7
 pkgdesc="OpenARC with patches from not-yet-merged PRs - by flowerysong"
 arch=(x86_64)
 url="https://github.com/flowerysong/OpenARC"
 license=('BSD-2-Clause' 'LicenseRef-Sendmail-1.1')
-depends=('sh' 'glibc' 'jansson' 'openssl' 'libbsd')
+depends=('sh' 'glibc' 'jansson' 'openssl' 'libbsd' 'libmilter')
 optdepends=('smtp-server: for using a local mail server'
 	    'bind: required only for signature verification (alternatives available)')
-makedepends=('libmilter' 'git')
+makedepends=('git' 'python-miltertest')
+provides=('openarc')
 conflicts=('openarc' 'openarc-unofficial-patches')
 source=("git+https://github.com/flowerysong/OpenARC.git#branch=main"
         openarc.service
@@ -40,7 +41,7 @@ build() {
   ./configure \
      --prefix=/usr \
      --sbindir=/usr/bin \
-     --sysconfdir="/etc/$pkgname" \
+     --sysconfdir="/etc/$_pkgname" \
      --localstatedir=/var
   make
 }
@@ -63,6 +64,7 @@ package() {
   # license
   mkdir -p "$pkgdir/usr/share/licenses/$_pkgname"
   for f in LICENSE LICENSE.Sendmail; do
-    ln -s ../../doc/$pkgname/$f "$pkgdir/usr/share/licenses/$_pkgname/$f"
+    ln -s $f "$pkgdir/usr/share/licenses/$_pkgname/$f"
   done
+  ln -s "$pkgdir/usr/share/licenses/$_pkgname" "$pkgdir/usr/share/licenses/$pkgname"
 }
