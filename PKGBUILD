@@ -1,4 +1,4 @@
-pkgname='alsa-scarlett-gui-dev'
+pkgname='alsa-scarlett-gui-git'
 _pkgname='alsa-scarlett-gui'
 pkgver=0.4.1.test1.8.g9fa6
 pkgrel=1
