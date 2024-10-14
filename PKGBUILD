@@ -7,7 +7,7 @@
 pkgbase=rtw88-fixed-dkms-git
 pkgname=(rtw88-fixed-dkms-git rtw88-fixed-firmware-git)
 _name=rtw88
-pkgver=r471.4a1ee64
+pkgver=r512.247209b
 pkgrel=1
 pkgdesc='Latest Realtek Wifi 5 drivers'
 arch=('any')
@@ -19,7 +19,7 @@ source=('git+https://github.com/lwfinger/rtw88.git'
         'firmware-path.patch')
 sha256sums=('SKIP'
             '1323e5a73ca52212bd8158852f98eeab9b4cbb7fba106fb3b0e627ce05d89dde'
-            'db60d8bac76bd537b57eb953782df8c8ae08a7c6f3ff5897592ac65a4813b591')
+            '2375b827bae4417b0aebc000c7d8caac47cb89f9f7afd111924c9099b56dc78e')
 
 pkgver() {
     cd "${_name}"

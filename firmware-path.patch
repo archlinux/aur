@@ -1,7 +1,7 @@
-diff --unified -r rtw88.orig/rtw8703b.c rtw88.new/rtw8703b.c
---- rtw88.orig/rtw8703b.c	2024-07-14 02:41:59.588758840 +0000
-+++ rtw88.new/rtw8703b.c	2024-07-14 02:41:52.338361145 +0000
-@@ -2009,7 +2009,7 @@
+diff -r --unified rtw88.orig/rtw8703b.c rtw88.new/rtw8703b.c
+--- rtw88.orig/rtw8703b.c	2024-10-14 03:28:28.996045616 +0000
++++ rtw88.new/rtw8703b.c	2024-10-14 03:29:40.942798097 +0000
+@@ -1955,7 +1955,7 @@
  	.ops = &rtw8703b_ops,
  	.id = RTW_CHIP_TYPE_8703B,
  
@@ -10,7 +10,7 @@ diff --unified -r rtw88.orig/rtw8703b.c rtw88.new/rtw8703b.c
  	.wlan_cpu = RTW_WCPU_11N,
  	.tx_pkt_desc_sz = 40,
  	.tx_buf_desc_sz = 16,
-@@ -2069,7 +2069,7 @@
+@@ -2015,7 +2015,7 @@
  	.iqk_threshold = 8,
  
  	/* WOWLAN firmware exists, but not implemented yet */
@@ -19,7 +19,7 @@ diff --unified -r rtw88.orig/rtw8703b.c rtw88.new/rtw8703b.c
  	.wowlan_stub = NULL,
  	.max_scan_ie_len = IEEE80211_MAX_DATA_LEN,
  
-@@ -2122,8 +2122,8 @@
+@@ -2068,8 +2068,8 @@
  };
  EXPORT_SYMBOL(rtw8703b_hw_spec);
  
@@ -30,10 +30,10 @@ diff --unified -r rtw88.orig/rtw8703b.c rtw88.new/rtw8703b.c
  
  MODULE_AUTHOR("Fiona Klute <fiona.klute@gmx.de>");
  MODULE_DESCRIPTION("Realtek 802.11n wireless 8703b driver");
-diff --unified -r rtw88.orig/rtw8723d.c rtw88.new/rtw8723d.c
---- rtw88.orig/rtw8723d.c	2024-07-14 02:41:59.588758840 +0000
-+++ rtw88.new/rtw8723d.c	2024-07-14 02:41:52.338361145 +0000
-@@ -2155,7 +2155,7 @@
+diff -r --unified rtw88.orig/rtw8723d.c rtw88.new/rtw8723d.c
+--- rtw88.orig/rtw8723d.c	2024-10-14 03:28:28.996045616 +0000
++++ rtw88.new/rtw8723d.c	2024-10-14 03:29:40.952798559 +0000
+@@ -2114,7 +2114,7 @@
  const struct rtw_chip_info rtw8723d_hw_spec = {
  	.ops = &rtw8723d_ops,
  	.id = RTW_CHIP_TYPE_8723D,
@@ -42,7 +42,7 @@ diff --unified -r rtw88.orig/rtw8723d.c rtw88.new/rtw8723d.c
  	.wlan_cpu = RTW_WCPU_11N,
  	.tx_pkt_desc_sz = 40,
  	.tx_buf_desc_sz = 16,
-@@ -2239,7 +2239,7 @@
+@@ -2198,7 +2198,7 @@
  };
  EXPORT_SYMBOL(rtw8723d_hw_spec);
  
@@ -51,42 +51,52 @@ diff --unified -r rtw88.orig/rtw8723d.c rtw88.new/rtw8723d.c
  
  MODULE_AUTHOR("Realtek Corporation");
  MODULE_DESCRIPTION("Realtek 802.11n wireless 8723d driver");
-diff --unified -r rtw88.orig/rtw8821a.c rtw88.new/rtw8821a.c
---- rtw88.orig/rtw8821a.c	2024-07-14 02:41:59.592092356 +0000
-+++ rtw88.new/rtw8821a.c	2024-07-14 02:41:52.338361145 +0000
-@@ -4048,7 +4048,7 @@
- const struct rtw_chip_info rtw8821a_hw_spec = {
- 	.ops = &rtw8821a_ops,
- 	.id = RTW_CHIP_TYPE_8821A,
--	.fw_name = "rtw88/rtw8821a_fw.bin",
-+	.fw_name = "rtw88-fixed/rtw8821a_fw.bin",
- 	.wlan_cpu = RTW_WCPU_11N, ///TODO maybe RTW_WCPU_11N should be renamed to RTW_WCPU_8051 and RTW_WCPU_11AC to RTW_WCPU_3081
- 	.tx_pkt_desc_sz = 40,
- 	.tx_buf_desc_sz = 16,
-@@ -4133,7 +4133,7 @@
+diff -r --unified rtw88.orig/rtw8812a.c rtw88.new/rtw8812a.c
+--- rtw88.orig/rtw8812a.c	2024-10-14 03:28:28.999379113 +0000
++++ rtw88.new/rtw8812a.c	2024-10-14 03:29:40.939464611 +0000
+@@ -1016,7 +1016,7 @@
  const struct rtw_chip_info rtw8812a_hw_spec = {
- 	.ops = &rtw8821a_ops,
+ 	.ops = &rtw8812a_ops,
  	.id = RTW_CHIP_TYPE_8812A,
 -	.fw_name = "rtw88/rtw8812a_fw.bin",
 +	.fw_name = "rtw88-fixed/rtw8812a_fw.bin",
  	.wlan_cpu = RTW_WCPU_11N,
  	.tx_pkt_desc_sz = 40,
  	.tx_buf_desc_sz = 16,
-@@ -4215,8 +4215,8 @@
+@@ -1095,7 +1095,7 @@
  };
  EXPORT_SYMBOL(rtw8812a_hw_spec);
  
--MODULE_FIRMWARE("rtw88/rtw8821a_fw.bin");
 -MODULE_FIRMWARE("rtw88/rtw8812a_fw.bin");
-+MODULE_FIRMWARE("rtw88-fixed/rtw8821a_fw.bin");
 +MODULE_FIRMWARE("rtw88-fixed/rtw8812a_fw.bin");
  
  MODULE_AUTHOR("Realtek Corporation");
- MODULE_DESCRIPTION("Realtek 802.11ac wireless 8821a/8811a/8812a driver");
-diff --unified -r rtw88.orig/rtw8821c.c rtw88.new/rtw8821c.c
---- rtw88.orig/rtw8821c.c	2024-07-14 02:41:59.592092356 +0000
-+++ rtw88.new/rtw8821c.c	2024-07-14 02:41:52.338361145 +0000
-@@ -1992,7 +1992,7 @@
+ MODULE_DESCRIPTION("Realtek 802.11ac wireless 8812a driver");
+diff -r --unified rtw88.orig/rtw8821a.c rtw88.new/rtw8821a.c
+--- rtw88.orig/rtw8821a.c	2024-10-14 03:28:28.999379113 +0000
++++ rtw88.new/rtw8821a.c	2024-10-14 03:29:40.932797636 +0000
+@@ -1110,7 +1110,7 @@
+ const struct rtw_chip_info rtw8821a_hw_spec = {
+ 	.ops = &rtw8821a_ops,
+ 	.id = RTW_CHIP_TYPE_8821A,
+-	.fw_name = "rtw88/rtw8821a_fw.bin",
++	.fw_name = "rtw88-fixed/rtw8821a_fw.bin",
+ 	.wlan_cpu = RTW_WCPU_11N,
+ 	.tx_pkt_desc_sz = 40,
+ 	.tx_buf_desc_sz = 16,
+@@ -1190,7 +1190,7 @@
+ };
+ EXPORT_SYMBOL(rtw8821a_hw_spec);
+ 
+-MODULE_FIRMWARE("rtw88/rtw8821a_fw.bin");
++MODULE_FIRMWARE("rtw88-fixed/rtw8821a_fw.bin");
+ 
+ MODULE_AUTHOR("Realtek Corporation");
+ MODULE_DESCRIPTION("Realtek 802.11ac wireless 8821a/8811a driver");
+diff -r --unified rtw88.orig/rtw8821c.c rtw88.new/rtw8821c.c
+--- rtw88.orig/rtw8821c.c	2024-10-14 03:28:28.999379113 +0000
++++ rtw88.new/rtw8821c.c	2024-10-14 03:29:40.939464611 +0000
+@@ -1951,7 +1951,7 @@
  const struct rtw_chip_info rtw8821c_hw_spec = {
  	.ops = &rtw8821c_ops,
  	.id = RTW_CHIP_TYPE_8821C,
@@ -95,7 +105,7 @@ diff --unified -r rtw88.orig/rtw8821c.c rtw88.new/rtw8821c.c
  	.wlan_cpu = RTW_WCPU_11AC,
  	.tx_pkt_desc_sz = 48,
  	.tx_buf_desc_sz = 16,
-@@ -2074,7 +2074,7 @@
+@@ -2034,7 +2034,7 @@
  };
  EXPORT_SYMBOL(rtw8821c_hw_spec);
  
@@ -104,10 +114,10 @@ diff --unified -r rtw88.orig/rtw8821c.c rtw88.new/rtw8821c.c
  
  MODULE_AUTHOR("Realtek Corporation");
  MODULE_DESCRIPTION("Realtek 802.11ac wireless 8821c driver");
-diff --unified -r rtw88.orig/rtw8822b.c rtw88.new/rtw8822b.c
---- rtw88.orig/rtw8822b.c	2024-07-14 02:41:59.592092356 +0000
-+++ rtw88.new/rtw8822b.c	2024-07-14 02:41:52.341694661 +0000
-@@ -2531,7 +2531,7 @@
+diff -r --unified rtw88.orig/rtw8822b.c rtw88.new/rtw8822b.c
+--- rtw88.orig/rtw8822b.c	2024-10-14 03:28:28.999379113 +0000
++++ rtw88.new/rtw8822b.c	2024-10-14 03:29:40.952798559 +0000
+@@ -2490,7 +2490,7 @@
  const struct rtw_chip_info rtw8822b_hw_spec = {
  	.ops = &rtw8822b_ops,
  	.id = RTW_CHIP_TYPE_8822B,
@@ -116,7 +126,7 @@ diff --unified -r rtw88.orig/rtw8822b.c rtw88.new/rtw8822b.c
  	.wlan_cpu = RTW_WCPU_11AC,
  	.tx_pkt_desc_sz = 48,
  	.tx_buf_desc_sz = 16,
-@@ -2620,7 +2620,7 @@
+@@ -2580,7 +2580,7 @@
  };
  EXPORT_SYMBOL(rtw8822b_hw_spec);
  
@@ -125,10 +135,10 @@ diff --unified -r rtw88.orig/rtw8822b.c rtw88.new/rtw8822b.c
  
  MODULE_AUTHOR("Realtek Corporation");
  MODULE_DESCRIPTION("Realtek 802.11ac wireless 8822b driver");
-diff --unified -r rtw88.orig/rtw8822c.c rtw88.new/rtw8822c.c
---- rtw88.orig/rtw8822c.c	2024-07-14 02:41:59.595425872 +0000
-+++ rtw88.new/rtw8822c.c	2024-07-14 02:41:52.341694661 +0000
-@@ -5349,7 +5349,7 @@
+diff -r --unified rtw88.orig/rtw8822c.c rtw88.new/rtw8822c.c
+--- rtw88.orig/rtw8822c.c	2024-10-14 03:28:29.002712609 +0000
++++ rtw88.new/rtw8822c.c	2024-10-14 03:29:40.942798097 +0000
+@@ -5310,7 +5310,7 @@
  const struct rtw_chip_info rtw8822c_hw_spec = {
  	.ops = &rtw8822c_ops,
  	.id = RTW_CHIP_TYPE_8822C,
@@ -137,7 +147,7 @@ diff --unified -r rtw88.orig/rtw8822c.c rtw88.new/rtw8822c.c
  	.wlan_cpu = RTW_WCPU_11AC,
  	.tx_pkt_desc_sz = 48,
  	.tx_buf_desc_sz = 16,
-@@ -5410,7 +5410,7 @@
+@@ -5372,7 +5372,7 @@
  	.ampdu_density = IEEE80211_HT_MPDU_DENSITY_2,
  
  #ifdef CONFIG_PM
@@ -146,7 +156,7 @@ diff --unified -r rtw88.orig/rtw8822c.c rtw88.new/rtw8822c.c
  	.wowlan_stub = &rtw_wowlan_stub_8822c,
  	.max_sched_scan_ssids = 4,
  #endif
-@@ -5451,8 +5451,8 @@
+@@ -5413,8 +5413,8 @@
  };
  EXPORT_SYMBOL(rtw8822c_hw_spec);
  
