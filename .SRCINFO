@@ -1,17 +1,17 @@
 pkgbase = mockery-bin
-	pkgdesc = A mock code autogenerator for golang
-	pkgver = 2.46.2
+	pkgdesc = A mock code autogenerator for golang.Prebuilt version.
+	pkgver = 2.46.3
 	pkgrel = 1
 	url = https://github.com/vektra/mockery
 	arch = aarch64
 	arch = x86_64
 	license = BSD-3-Clause
-	provides = mockery=2.46.2
+	provides = mockery=2.46.3
 	conflicts = mockery
 	conflicts = golang-mockery
-	source_aarch64 = mockery-2.46.2-aarch64.tar.gz::https://github.com/vektra/mockery/releases/download/v2.46.2/mockery_2.46.2_Linux_arm64.tar.gz
-	sha256sums_aarch64 = 6a91b5733858b0440391f0f1d1d5bf229932e6bde8a1601cd15dba8a70704196
-	source_x86_64 = mockery-2.46.2-x86_64.tar.gz::https://github.com/vektra/mockery/releases/download/v2.46.2/mockery_2.46.2_Linux_x86_64.tar.gz
-	sha256sums_x86_64 = 8563e5e7d59a049a740f3d2df3415b142fe1042f44c46525ccd3a3e7b019a174
+	source_aarch64 = mockery-2.46.3-aarch64.tar.gz::https://github.com/vektra/mockery/releases/download/v2.46.3/mockery_2.46.3_Linux_arm64.tar.gz
+	sha256sums_aarch64 = 030f08380963ec3520adb1f11d7c811a583c498ea933e76d1c189eb8e7caa53a
+	source_x86_64 = mockery-2.46.3-x86_64.tar.gz::https://github.com/vektra/mockery/releases/download/v2.46.3/mockery_2.46.3_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = af9bd810fd0ac4d12fe362d2606f7d38afa74ea782867408243b01d09858cb10
 
 pkgname = mockery-bin
