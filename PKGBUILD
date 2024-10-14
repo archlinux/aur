@@ -2,8 +2,8 @@
 # Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=python-pyttsx3
-pkgver=2.91
-pkgrel=5
+pkgver=2.98
+pkgrel=1
 pkgdesc="Offline text-to-speech synthesis"
 arch=('any')
 url="https://github.com/nateshmbhat/pyttsx3"
@@ -12,7 +12,7 @@ depends=('python')
 optdepends=('espeak')
 makedepends=('python-setuptools' 'python-sphinx')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('d001a057042370a5d2c30dcaa8945bf35fc6d782aad55b8f5edc67ace5217493')
+sha256sums=('d9746a4b8e87f72138cd4a98e7e416b1fb87b73ee456e5b7956565cc195a0107')
 
 build() {
 	cd "pyttsx3-$pkgver"
