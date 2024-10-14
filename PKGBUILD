@@ -2,14 +2,12 @@
 pkgname='pyload-ng'
 _pkgname=pyload_ng
 pkgver=0.5.0b3.dev85
-pkgrel=1
+pkgrel=2
 pkgdesc="The free and open-source Download Manager written in pure Python"
 url="https://pyload.net/"
 license=('AGPL3')
 arch=('any')
-depends=('python-semver' 'python-pycurl' 'python-js2py' 'python-filetype' 'python-cryptography' 'python-bitmath'
-         'python-flask-themes2' 'python-flask-session' 'python-flask-compress' 'python-flask-caching' 'python-cachelib' 'python-flask-babel'
-         'python-cheroot' 'python-setuptools' 'python-certifi')
+depends=(python-dukpy python-werkzeug python-cryptography pyload-ng python-flask-session python-flask-themes2 python-pycurl python-semver python python-certifi python-jinja python-setuptools python-flask python-flask-caching python-filetype python-flask-babel python-flask-compress python-bitmath python-cheroot)
 optdepends=('caffeine: For AntiStandby plugin'
             'python-beautifulsoup4: for XFileSharing plugin'
             'python-slixmpp: for XMPP plugin'
