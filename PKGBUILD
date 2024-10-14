@@ -3,7 +3,7 @@
 
 pkgname=amiberry
 pkgver=8c65d69057c12d6826ac8df300902f3cfb7df233
-pkgrel=1
+pkgrel=2
 epoch=20241010
 pkgdesc="Amiga Emulator for ARM Boards (amd64 build)"
 arch=('x86_64')
@@ -21,7 +21,7 @@ build() {
   cd ${pkgname}
   mkdir build && cd build
   PLATFORM=x86-64 cmake -S ../ -B .
-  make -j12
+  make
 }
 
 package() {
