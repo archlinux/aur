@@ -1,6 +1,6 @@
 pkgname='alsa-scarlett-gui-git'
 _pkgname='alsa-scarlett-gui'
-pkgver=0.4.1.test1.8.g9fa6
+pkgver=0.4.1.test1.6.gabdb
 pkgrel=1
 pkgdesc="GUI for the ALSA controls presented by the Scarlett2 driver, Development version"
 arch=('i686' 'x86_64')
@@ -18,7 +18,7 @@ depends=(
 makedepends=('gcc' 'make' 'git' 'pkgconf' 'sed')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
-source=("git+${url}.git#branch=dev")
+source=("git+${url}.git")
 sha256sums=('SKIP')
 
 pkgver() {
