@@ -2,7 +2,7 @@
 
 pkgbase=groestlcoin
 pkgname=('groestlcoin-daemon' 'groestlcoin-cli' 'groestlcoin-qt' 'groestlcoin-tx' 'groestlcoin-wallet' 'groestlcoin-util')
-pkgver=27.0
+pkgver=28.0
 pkgrel=1
 arch=('x86_64')
 url="https://www.groestlcoin.org/groestlcoin-core-wallet/"
@@ -28,15 +28,15 @@ source=("$pkgbase-$pkgver.tar.gz::https://github.com/Groestlcoin/groestlcoin/rel
         "groestlcoin.tmpfiles"
         "groestlcoin-qt.desktop"
         "groestlcoin-qt.appdata.xml")
-sha256sums=('cf8de03ef104e67aa7c0c1f69fd78e19ea6fa3e8187d890d7916c1c72a3be530'
-            '40c9e0ee5460e363823e3f156643874d39b26f4f54bf259181918005fc61b9b2'
+sha256sums=('4446c49916c6f2c45fcf609270318dc114e166d1c833bb7d0b51d12cb42acba6'
+            'bece6d22a79a9faf2dc836856ce124e7595642f1db091c800bb0792d17f4b327'
             'SKIP'
             '766f1732b72ee105aa4380ab9433bc6e7d957896e0f3d84eaf08202dc7c0fc85'
             '3cc8b772cd5bde500d74ec45c870168834b93b3b69197a8b1aa809d8b9a69d4f'
             '4dc7fe4ae360b2bbd2ffbebab8849417c31145adff2ecdcfbb3bb03835cd1cf7'
             '87f9a2bc6c3a91f7fd9668d84e35e69bdaed221c7d4655d39b54561845424e21')
-b2sums=('46b0ef60a017d037e9d0094540e118fb7ca29d308544dfa735bacdf27113061e5e3e83d2be3eb9ad2a6545c5e743ffc8a173cdb0c7ed11e874662dbff4bddf88'
-        '919f2fc3952df8c5c1408d2ce9233d5f47dff76790bd81ffca750eaef40096e61ecc01e996bb4de27938ed557e8926eb9f1b0e6bec5ee84b129fa42a8163a7a0'
+b2sums=('b6264dd3047678e11b8fc929acc7d9e9588a45c0eabc481f1135fb2b019512da89dcea5306780bb02c2a994fd718858498579a176e265dab30452cd9a47d9c87'
+        '0de0ad8fb579f2081d84f97fd06f86355e0c4f05b48ac6564b3751f0d1f332d780c38524471d4e7333e567bc4ceadc9e20f201b5267ed64aff90d0a05a82a1cd'
         'SKIP'
         'f6bfe677aea28c40794f3c37e48d908215543736c558ef9f3f7ada6cf1d9016200821903c6c676f4841092170cfa64ee8f03f697aea19ea82b78877f9167526b'
         'ebf2151e205daeb14ab5260f204040dcb2bf9969d3e6be8c166abdb74f86ef92a05174cc97f2360c8044c81e8bdfd68a74bf1f114dce8b75e421b4184165a54f'
