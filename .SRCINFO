@@ -12,6 +12,8 @@ pkgbase = prologs
 	optdepends = scryer-prolog: Free ISO Prolog system
 	optdepends = trealla: A compact, efficient Prolog interpreter
 	optdepends = eclipse-clp: Constraint Logic Programming System
+	optdepends = bprolog
+	optdepends = binprolog
 	source = git+https://github.com/hurufu/prolog-all.git
 	sha256sums = SKIP
 

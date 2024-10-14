@@ -14,6 +14,8 @@ optdepends=(
     'scryer-prolog: Free ISO Prolog system'
     'trealla: A compact, efficient Prolog interpreter'
     'eclipse-clp: Constraint Logic Programming System'
+    bprolog
+    binprolog
 )
 source=(git+https://github.com/hurufu/prolog-all.git)
 sha256sums=(SKIP)
