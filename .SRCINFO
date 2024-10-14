@@ -1,0 +1,13 @@
+pkgbase = projog
+	pkgdesc = Prolog interpreter for Java
+	pkgver = 0.10.0
+	pkgrel = 1
+	url = http://www.projog.org/
+	arch = any
+	license = Apache-2.0
+	depends = java-runtime
+	options = !strip
+	source = http://www.projog.org/downloads/projog-0.10.0.zip
+	sha256sums = d064e3b590074126a5c1eb093c7640ac860ef3711ed7a610061d68341cb97b10
+
+pkgname = projog
