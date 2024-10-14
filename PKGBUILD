@@ -2,7 +2,9 @@
 # Co-Maintainer: Aaron J. Graves <linux@ajgraves.com>
 pkgname=tutanota-desktop-bin
 pkgver=246.241008.0
-pkgrel=1
+pkgrel=2
+# branch needs to be one of 'release' or 'hotfix'. Default should be release, but change it to hotfix as upstream does.
+branch="hotfix"
 pkgdesc="The desktop client for Tutanota, the secure e-mail service."
 arch=('x86_64')
 url="https://tuta.com/secure-email"
@@ -16,9 +18,9 @@ depends=(
 makedepends=(
   'openssl'
 )
-source=("${pkgname%-bin}-$pkgver.AppImage::https://github.com/tutao/tutanota/releases/download/${pkgname%-bin}-release-$pkgver/${pkgname%-bin}-linux.AppImage"
+source=("${pkgname%-bin}-$pkgver.AppImage::https://github.com/tutao/tutanota/releases/download/${pkgname%-bin}-$branch-$pkgver/${pkgname%-bin}-linux.AppImage"
         "linux-sig-$pkgver.bin::https://app.tuta.com/desktop/linux-sig.bin"
-        "tutao-pub-$pkgver.pem::https://github.com/tutao/tutanota/raw/${pkgname%-bin}-release-$pkgver/tutao-pub.pem")
+        "tutao-pub-$pkgver.pem::https://github.com/tutao/tutanota/raw/${pkgname%-bin}-$branch-$pkgver/tutao-pub.pem")
 provides=("${pkgname%-bin}")
 conflicts=("${pkgname%-bin}" "${pkgname%-bin}-linux")
 sha512sums=('26fc092ca9e3ba99c4c665e28078818c741036ea0791726c4fe4e0f5a995ddf80f0936e03a13e0d897fadaf5342dadaeeee2239d0d720cc102f17e1129887c88'
