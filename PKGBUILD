@@ -1,18 +1,20 @@
 # Maintainer: peippo <christoph+aur@christophfink.com>
 
 _cranname=gtfsio
-_cranver=1.1.1
+_cranver=1.2.0
 pkgname=r-${_cranname,,}
 pkgdesc="Read and Write General Transit Feed Specification (GTFS) Files"
 url="https://cran.r-project.org/package=${_cranname}"
 license=("MIT")
 pkgver=${_cranver//[:-]/.}
-pkgrel=2
+pkgrel=1
 
 arch=("any")
 depends=(
     "r"
     "r-data.table"
+    "r-fs"
+    "r-jsonlite"
     "r-zip"
 )
 optdepends=(
@@ -27,7 +29,7 @@ checkdepends=(
 )
 
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-b2sums=("60030a53a238da8187ae7f3914ba4f7350e615e949b0ce51c20d4546a5c26aa7d7fd2678ee000f4a665b6e48a65e96f13071ae65dd7fb8d63294519784f37776")
+b2sums=("c69b1db5bf37fe493c53673292a63328f662bbc85e74188f685512b42fe7e596fbe170f460c42a012db423cba77bf83041a5a31b75eb5a235bd9d1d3d0655365")
 
 build() {
     mkdir -p "${srcdir}/build/"
