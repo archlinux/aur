@@ -66,6 +66,9 @@ prepare() {
   # nm -f posix (llvm-nm -f posix)
   sed 's|nm \(.*\)\-f p |nm \1-f posix |' -i third_party/gyp/pylib/gyp/generator/ninja.py
 
+  # disable warning of ANDROID_NDK_HOME.
+  sed -e '/register_toolchains("@androidndk\/\/:all")/d' -i MODULE.bazel
+
   rustup update stable
   cd "${srcdir}/dict-to-mozc/" || exit
   # すだちを優先
