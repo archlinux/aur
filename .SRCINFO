@@ -1,4 +1,4 @@
-pkgbase = yt-dlp-youtube-oauth-git
+pkgbase = yt-dlp-youtube-oauth2-git
 	pkgdesc = Plugin that adds OAuth2 login support to yt-dlp's YouTube extractors
 	pkgver = 2024.9.29.r0.g67ca8d64
 	pkgrel = 1
@@ -13,7 +13,8 @@ pkgbase = yt-dlp-youtube-oauth-git
 	makedepends = python-packaging
 	depends = python
 	depends = yt-dlp
+	provides = yt-dlp-youtube-oauth
 	source = git+https://github.com/coletdjnz/yt-dlp-youtube-oauth2.git
 	sha256sums = SKIP
 
-pkgname = yt-dlp-youtube-oauth-git
+pkgname = yt-dlp-youtube-oauth2-git

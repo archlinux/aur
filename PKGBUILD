@@ -1,6 +1,6 @@
 # Maintainer: Kimiblock Moe
 
-pkgname=yt-dlp-youtube-oauth-git
+pkgname=yt-dlp-youtube-oauth2-git
 
 provides=(yt-dlp-youtube-oauth)
 
