@@ -3,8 +3,8 @@
 # Maintainer: Eden Rose(endlesseden) <eenov1988 "at"  gmail.com >
 _pkgname=stratagus
 pkgname=stratagus-git
-pkgver=3.2.0.2abfb6a66.20220709
-pkgrel=1
+pkgver=3.3.2.90b3e1595.20241014
+pkgrel=2
 pkgdesc="A free cross-platform real-time strategy gaming engine"
 arch=('i686' 'x86_64')
 url="https://github.com/Wargus/stratagus"
@@ -27,8 +27,11 @@ pkgver() {
 }
 
 build() {
-  cd $srcdir
+  cd $srcdir/${pkgname} 
+  git submodule init
+  git submodule update
 
+  cd ..
   cmake ${pkgname} \
   -DCMAKE_BUILD_TYPE=Release \
   -DCMAKE_INSTALL_PREFIX=/usr \
