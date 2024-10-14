@@ -1,20 +1,17 @@
-# Maintainer: Pippo Peppo <abc@gmx.ch>
-# Contributor: Lev Lybin <aur@devtrue.net>
-# Contributor: Nick Østergaard <oe.nick at gmail dot com>
+# Maintainer: Helmut Stult <hst[at]e-mail[dot]de>
 
 pkgname=synology-assistant
-pkgver=7.0.4_50051
+pkgver=7.0.5_50070
+_pkgver=7.0.5-50070
 pkgrel=1
-pkgdesc="Synology Assistant is a desktop utility that searches for Synology servers within the local area network. It allows you to search and connect to your Synology server or set up Wake on LAN (WOL)."
-arch=('i686' 'x86_64')
-url="https://www.synology.com/releaseNote/Assistant"
-license=('unknown')
-install=synology-assistant.install
-depends=('qt5-base' 'libpng12')
-source_x86_64=(https://global.download.synology.com/download/Utility/Assistant/${pkgver//_/-}/Ubuntu/x86_64/synology-assistant_${pkgver//_/-}_amd64.deb)
-source_i686=(https://global.download.synology.com/download/Utility/Assistant/${pkgver//_/-}/Ubuntu/i686/synology-assistant_${pkgver//_/-}_i386.deb)
-md5sums_i686=('e9436dfb9f9786f79a2930c8e22feaf9')
-md5sums_x86_64=('4a9ccd85bd689f68004fd72ca9772861')
+pkgdesc="It helps you set up and install DSM on your DiskStation"
+arch=('x86_64')
+url="https://www.synology.com/en-global/releaseNote/Assistant"
+license=('custom:Synology Linux License Grant')
+install=${pkgname}.install
+depends=('libpng12' 'libxrender' 'libxt' 'libxext' 'fontconfig')
+source=("https://global.download.synology.com/download/Utility/Assistant/${_pkgver}/Ubuntu/${arch}/synology-assistant_${_pkgver}_amd64.deb")
+sha256sums=('48e65e53a3b7f8e7ed7816c353f2b0ba3b2e7583186608c57342fe1264286361')
 
 prepare() {
     cd "${srcdir}"
@@ -25,7 +22,7 @@ package() {
     cp -rp opt "${pkgdir}/opt"
 
     mkdir -p "${pkgdir}/usr/bin"
-    ln -sf /opt/Synology/SynologyAssistant/SynologyAssistant "${pkgdir}/usr/bin/synology-assistant"
+    ln -sf /opt/Synology/SynologyAssistant/SynologyAssistant "${pkgdir}/usr/bin/${pkgname}"
 
-    install -Dm644 usr/share/applications/synology-assistant.desktop "${pkgdir}/usr/share/applications/synology-assistant.desktop"
+    install -Dm644 usr/share/applications/${pkgname}.desktop "${pkgdir}/usr/share/applications/${pkgname}.desktop"
 }
