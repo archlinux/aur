@@ -1,10 +1,10 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=ueli-bin
 _pkgname=Ueli
-pkgver=9.6.1
+pkgver=9.7.0
 _electronversion=32
 pkgrel=1
-pkgdesc="Keystroke launcher for Windows, macOS and Linux"
+pkgdesc="Cross-Platform Keystroke Launcher.Prebuilt version.Use system-wide electron."
 arch=('x86_64')
 url="https://ueli.app/"
 _ghurl="https://github.com/oliverschwendener/ueli"
@@ -19,7 +19,7 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/oliverschwendener/ueli/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('12962adb02226cc5a1809a652f3ebb71dbb034902ac7e06b9ab1b12ab4bda915'
+sha256sums=('32e5dade1db56b90bc0114621adb1a660cef279c83b7f9c5bb707ebf32c73c60'
             '8da6c1a79d367a41aadf313019833f4bb3f2ff55f0da5b522fd058183d2f9106'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 build() {
@@ -36,7 +36,7 @@ build() {
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm644 "${srcdir}/opt/${_pkgname}/resources/app.asar" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
-    cp "${srcdir}/opt/${_pkgname}/resources/app.asar.unpacked" -r "${pkgdir}/usr/lib/${pkgname%-bin}"
+    cp -Pr --no-preserve=ownership "${srcdir}/opt/${_pkgname}/resources/app.asar.unpacked" "${pkgdir}/usr/lib/${pkgname%-bin}"
     install -Dm644 "${srcdir}/usr/share/icons/hicolor/0x0/apps/${pkgname%-bin}.png" -t "${pkgdir}/usr/share/pixmaps"
     install -Dm644 "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
     install -Dm644 "${srcdir}/LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
