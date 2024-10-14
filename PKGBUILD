@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=nvm-desktop
 _pkgname=NVM-Desktop
-pkgver=4.0.0
+pkgver=4.0.1
 _nvmdver="${pkgver}"
 _nodeversion=20
 pkgrel=1
@@ -17,6 +17,7 @@ conflicts=("${pkgname}")
 depends=(
     'webkit2gtk-4.1'
     'gtk3'
+    'libappindicator-gtk3'
 )
 makedepends=(
     'gendesk'
@@ -25,15 +26,17 @@ makedepends=(
     'pnpm'
     'curl'
     'rust'
+    'librsvg'
+    'patchelf'
 )
 source_aarch64=("nvmd-${_nvmdver}-aarch64::${_nvmdurl}/releases/download/v${_nvmdver}/nvmd_linux-arm64")
 source_x86_64=("nvmd-${_nvmdver}-x86_64::${_nvmdurl}/releases/download/v${_nvmdver}/nvmd_linux-x64")
 source=(
     "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
 )
-sha256sums=('b7489fa3bd738f76355b464171ea4d52c20617a3f1547c47542d45349eda0ce1')
-sha256sums_aarch64=('cc116c6913c62fbbe588d82075ea1c6e5afc42546a277882ad9aa6ecc9938323')
-sha256sums_x86_64=('348354c9939249ac0b7b7aedded72c37911cb5b408692d84a5fadd39e691294a')
+sha256sums=('f84442d202a1e2f53ae7315337b96d31b67fd72e422ece8c1b02c112914deeb6')
+sha256sums_aarch64=('adb3df5f6cba4c8d2b8c4d5da479d89ecf5cee01966ad60219c713f8d3f4aea9')
+sha256sums_x86_64=('f9633ceddc14971a6afd108cbaca7d69704c65184715f27c7363a25cc68a3c2d')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
@@ -65,16 +68,14 @@ build() {
         } >> .npmrc
     fi
     NODE_ENV=development    pnpm install
-    NODE_ENV=production     pnpm run tauri build -b deb
+    NODE_ENV=production     pnpm tauri build -b deb
 }
 package() {
-    install -Dm755 "${srcdir}/${pkgname}-${pkgver}/src-tauri/target/release/bundle/deb/${_pkgname//-/ }_${pkgver}_"*/data/usr/bin/"${pkgname}" \
-        -t "${pkgdir}/usr/bin"
-    install -Dm755 "${srcdir}/${pkgname}-${pkgver}/src-tauri/target/release/bundle/deb/${_pkgname//-/ }_${pkgver}_"*/data/usr/lib/"${_pkgname//-/ }"/resources/nvmd \
-        -t "${pkgdir}/usr/lib/${_pkgname//-/ }/resources"
+    _sourcedir="${srcdir}/${pkgname}-${pkgver}/src-tauri/target/release/bundle/deb"
+    install -Dm755 "${_sourcedir}/${_pkgname//-/ }_${pkgver}_"*/data/usr/bin/"${pkgname}" -t "${pkgdir}/usr/bin"
+    install -Dm755 "${_sourcedir}/${_pkgname//-/ }_${pkgver}_"*/data/usr/lib/"${_pkgname//-/ }"/resources/nvmd -t "${pkgdir}/usr/lib/${_pkgname//-/ }/resources"
     install -Dm644 "${srcdir}/${pkgname}-${pkgver}/src-tauri/icons/icon.png" -t "${pkgdir}/usr/lib/${_pkgname//-/ }/icons"
-    install -Dm644 "${srcdir}/${pkgname}-${pkgver}/src-tauri/target/release/bundle/deb/${_pkgname//-/ }_${pkgver}_"*/data/usr/share/applications/"${_pkgname//-/ }".desktop \
-        "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+    install -Dm644 "${_sourcedir}/${_pkgname//-/ }_${pkgver}_"*/data/usr/share/applications/"${_pkgname//-/ }".desktop "${pkgdir}/usr/share/applications/${pkgname}.desktop"
     install -Dm644 "${srcdir}/${pkgname}-${pkgver}/src-tauri/icons/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
     install -Dm644 "${srcdir}/${pkgname}-${pkgver}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
