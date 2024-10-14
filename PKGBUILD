@@ -1,7 +1,7 @@
 # Maintainer: Scott Cheng <aur@chengscott.io>
 pkgname=python-aitemplate-git
 _name="${pkgname%%-git}"
-pkgver=0.3.dev0.r653.gd2dc957b
+pkgver=0.3.dev0.r673.g437b48a1
 pkgrel=1
 pkgdesc='AITemplate is a Python framework which renders neural network into high performance CUDA/HIP C++ code.'
 arch=(any)
