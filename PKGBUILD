@@ -1,7 +1,7 @@
 # Maintainer: bacteriostat <dev dot bacteriostat at aleeas dot com>
 
 pkgname=joplin-beta-appimage
-pkgver=3.1.15
+pkgver=3.1.18
 pkgrel=1
 pkgdesc="The latest beta AppImage of Joplin - a cross-platform note taking and to-do app"
 arch=('x86_64')
