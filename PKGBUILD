@@ -1,8 +1,8 @@
 # Maintainer: devome <evinedeng@hotmail.com>
 
 pkgname=hoarder
-pkgver=0.17.1
-pkgrel=2
+pkgver=0.18.0
+pkgrel=1
 pkgdesc="A self-hostable bookmark-everything app (links, notes and images) with AI-based automatic tagging and full text search"
 arch=("x86_64" "aarch64")
 url="https://github.com/${pkgname}-app/${pkgname}"
@@ -21,7 +21,7 @@ source=("${pkgname}::git+${url}.git#tag=v${pkgver}"
         "${pkgname}-browser.service"
         "${pkgname}-web.service"
         "${pkgname}-workers.service")
-sha256sums=('bae76ba63dc9d4d1a16bf9c8b5bec53877506cb860b7a4da79860a6808e5eb8b'
+sha256sums=('b74fd32cb3ba0695e530cc19dd7321bc4d0d5a887630eeb72db453d76c50dff6'
             '1741afe407c55654462de14b0ec454775668dc42103f20448fc8025f646bf963'
             'bb7cf9d047374376137a9ec5ac5ad653d3569a834de8ccc3e8a6f04a870bc01e'
             '713e248fc61f429a3da627016343d89147dde147f739e51584f7398d11262896'
