@@ -1,0 +1,17 @@
+pkgbase = gambal-git
+	pkgdesc = A tiny graphical tool to monitor Network, CPU and Memory in linux
+	pkgver = 1.4.r0.ge0b2d3d
+	pkgrel = 1
+	url = https://github.com/ashtum/gambal
+	arch = any
+	license = GPL-2.0
+	makedepends = cmake
+	depends = xorg-fonts-misc
+	depends = libx11
+	provides = gambal
+	source = git+https://github.com/ashtum/gambal.git
+	source = build-fix.patch
+	md5sums = SKIP
+	md5sums = 064447eb13ff05e811f2f4b3d00d11fc
+
+pkgname = gambal-git
