@@ -3,7 +3,7 @@
 
 pkgname=wargus
 pkgver=3.3.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Warcraft2 Mod that allows you to play Warcraft2 with the Stratagus engine"
 arch=("i686" "x86_64")
 url="https://github.com/wargus/wargus"
@@ -11,7 +11,6 @@ license=('GPL')
 makedepends=('cmake')
 depends=(
 	"stratagus=$pkgver"
-	'ffmpeg2theora'
 	'cdparanoia'
 	'timidity++'
 )
