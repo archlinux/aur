@@ -13,7 +13,8 @@ source=("git+https://github.com/System64fumo/frog")
 sha256sums=('SKIP')
 
 pkgver() {
-	date -u +"%y.%m.%d"
+	cd "frog"
+	git show -s --format=%cd --date=format:%Y.%m.%d $(git rev-parse HEAD)
 }
 
 build() {
