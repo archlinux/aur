@@ -1,0 +1,14 @@
+pkgbase = swyh-rs-git
+	pkgver = 1.11.6.r15.g033a36e
+	pkgrel = 1
+	url = https://github.com/dheijl/swyh-rs/
+	arch = any
+	license = MIT
+	makedepends = cargo
+	provides = swyh-rs
+	conflicts = swyh-rs
+	options = !lto
+	source = swyh-rs::git+https://github.com/dheijl/swyh-rs#branch=master
+	sha256sums = SKIP
+
+pkgname = swyh-rs-git
