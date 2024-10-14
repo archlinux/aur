@@ -1,0 +1,4 @@
+src/
+pkg/
+hid-ft260/
+*.pkg.tar.zst

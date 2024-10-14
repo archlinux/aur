@@ -1,0 +1,21 @@
+pkgbase = hid-ft260-dkms-git
+	pkgdesc = FTDI FT260 Linux kernel driver with UART Support
+	pkgver = r81.abd3870
+	pkgrel = 1
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = dkms
+	depends = gcc
+	depends = make
+	depends = linux-headers
+	provides = hid-ft260
+	options = !emptydirs
+	source = git+https://github.com/MichaelZaidman/hid-ft260.git
+	source = dkms.conf
+	source = Makefile
+	sha256sums = SKIP
+	sha256sums = ce43c9d910f636f6a401264a5cb7b9acc0c40c9395ff042c3c0a48b1ecd70e83
+	sha256sums = 7155115ed5aa27709688ce9822d3b27627b1f3aafc433fed772c6e5cb4bc05f8
+
+pkgname = hid-ft260-dkms-git
