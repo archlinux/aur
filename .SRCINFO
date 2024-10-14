@@ -1,0 +1,27 @@
+pkgbase = edid-generator-git
+	pkgdesc = Hackerswork to generate an EDID binary file from given Xorg Modelines.
+	pkgver = r30.20231120.476a016
+	pkgrel = 1
+	url = https://github.com/akatrevorjay/edid-generator
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = git
+	depends = bash
+	depends = binutils
+	depends = coreutils
+	depends = dos2unix
+	depends = edid-decode
+	depends = gcc
+	depends = make
+	depends = zsh
+	provides = edid-generator
+	provides = modeline2edid
+	provides = modeline2edid-git=r30.20231120.476a016
+	conflicts = edid-generator
+	conflicts = modeline2edid
+	source = edid-generator::git+https://github.com/akatrevorjay/edid-generator.git
+	source = edid-generator.sh
+	sha256sums = SKIP
+	sha256sums = c6c834ac652500b3fbb55b0bed7308badef0cfeb98e7d2e5990fa1695f79cfd0
+
+pkgname = edid-generator-git
