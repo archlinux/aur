@@ -1,6 +1,6 @@
 # Maintainer: Mopigames <mopigames@proton.me>
 pkgname=betterx-desktop-git
-pkgver=alpha.r11.gb4f9ed9
+pkgver=v1.0.1.alpha.r7.g6ac6640
 pkgrel=1
 pkgdesc="Desktop application for BetterX, enhancing your X browsing experience"
 arch=('x86_64')
@@ -22,7 +22,9 @@ pkgver() {
 
 prepare() {
   cd "$srcdir/BetterX-Desktop"
-  git pull
+  git fetch origin
+  git checkout -B makepkg origin/main
+  git reset --hard origin/main
   rm -rf node_modules
   pnpm install
 }
@@ -43,9 +45,26 @@ package() {
   
   # Install icons
   for size in 16 32 48 64 128 256 512; do
-    install -Dm644 "build/icons/${size}x${size}.png" "$pkgdir/usr/share/icons/hicolor/${size}x${size}/apps/$pkgname.png"
+    if [ -f "build/icons/${size}x${size}.png" ]; then
+      install -Dm644 "build/icons/${size}x${size}.png" "$pkgdir/usr/share/icons/hicolor/${size}x${size}/apps/$pkgname.png"
+    fi
   done
   
   # Install desktop file
-  install -Dm644 "dist/linux-unpacked/$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
+  if [ -f "dist/linux-unpacked/betterx-desktop.desktop" ]; then
+    install -Dm644 "dist/linux-unpacked/betterx-desktop.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
+  elif [ -f "build/$pkgname.desktop" ]; then
+    install -Dm644 "build/$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
+  else
+    echo "Desktop file not found. Creating a basic one."
+    install -Dm644 /dev/null "$pkgdir/usr/share/applications/$pkgname.desktop"
+    cat > "$pkgdir/usr/share/applications/$pkgname.desktop" << EOF
+[Desktop Entry]
+Name=BetterX Desktop
+Exec=betterx-desktop
+Icon=$pkgname
+Type=Application
+Categories=Network;
+EOF
+  fi
 }
