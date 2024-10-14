@@ -2,7 +2,7 @@
 pkgname=xunscore-bin
 _pkgname=Xunscore
 pkgver=1.3.13.03
-pkgrel=2
+pkgrel=3
 pkgdesc='A music notation software, let you easily create and share sheet music. The editor is called "xūn", is hoping it will be a better balance between the Chinese national music'
 arch=('x86_64')
 url="https://www.xunscore.cn"
@@ -40,8 +40,8 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('54adaace209ec36dcdf739a6e5710c002df47c3bab180aa2025721c72d2c1803'
-            '9acb68a74b868579d97d42dd5caee216e5e44ab8f35a8de24a9c5bdb6df1ec9b'
-            '7859b2e1fdb116b0b7f00b0542b22da744895d5ecb060240d053649170a54b21')
+            '860e31598b0ffcf52f67a4389a13832e2b8e72cc75e15025cf5ccde494596bbe'
+            '20acff6b7caae22bc23e515772f7da6802c9fac0313c0ca272282b89c770046f')
 build() {
     sed -e "
         s/@appname@/${pkgname%-bin}/g
