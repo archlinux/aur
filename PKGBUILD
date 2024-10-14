@@ -3,7 +3,7 @@
 _appname=codium
 _pkgname="vs${_appname}"
 pkgname="${_pkgname}-electron-bin"
-pkgver=1.94.2.24284
+pkgver=1.94.2.24286
 _electronversion=30
 pkgrel=1
 pkgdesc="VS Code without MS branding/telemetry/licensing.Prebuilt and System-wide Electron edition."
@@ -47,9 +47,9 @@ source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${_ghurl}/releases/downloa
 sha256sums=('ed289092386002771285e3423f66f49af65ff918e1b667b517d977fa4fe1f057'
             '3ed94f3752e2695f64b6c5e9c40120837f463bfe55f330fd59a285c7d21f4bf2'
             '164bbaffe22f4ad43607f44a114528317c4d63592b88e911abadfa962443ac26')
-sha256sums_aarch64=('260ca05e89ebf19844602d38ce204d006826928471aeb44692845f301d6f245d')
-sha256sums_armv7h=('2d643d1fd59773588298dd5dd28a03ca5d2a62f56e162d023e616eb4814e0044')
-sha256sums_x86_64=('8ad865b90e1543fe615f8c03bf60c04130b2fb7a0599990f48f5743dde84d0aa')
+sha256sums_aarch64=('22452a82ec340b3b012daae0a6fce9012ed6bedecc6915185ed50eb61c22cfa6')
+sha256sums_armv7h=('750d1b695fd93b57c619cef9c49fcae3b458fa5fdcccbbfff6f8fab6467f9695')
+sha256sums_x86_64=('59462e1700d945ad7557af150caeda9ba61782ed9fafa74ea060f519819b9376')
 build() {
     sed -e "
         s/@electronversion@/${_electronversion}/g
@@ -68,7 +68,7 @@ build() {
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm755 "${srcdir}/${pkgname%-bin}.js" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
-    cp -r "${srcdir}/usr/share/${_appname}/resources/app/"* "${pkgdir}/usr/lib/${pkgname%-bin}"
+    cp -Pr --no-preserve=ownership "${srcdir}/usr/share/${_appname}/resources/app/"* "${pkgdir}/usr/lib/${pkgname%-bin}"
     install -Dm644 "${srcdir}/usr/share/appdata/${_appname}.appdata.xml" "${pkgdir}/usr/share/appdata/${pkgname%-bin}.appdata.xml"
     install -Dm644 "${srcdir}/usr/share/applications/${_appname}-url-handler.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}-url-handler.desktop"
     install -Dm644 "${srcdir}/usr/share/applications/${_appname}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
