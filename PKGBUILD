@@ -1,14 +1,14 @@
 # MAINTAINER username227 gfrank227[at]gmail[dot]com
 # MAINTAINER qu1ck anlutsenko[at]gmail[dot]com
 pkgname=trgui-ng-git
-pkgver=r390.6178ade
+pkgver=r411.4bbe756
 pkgrel=1
 pkgdesc='Remote GUI for Transmission torrent daemon'
 url="https://github.com/openscopeproject/TrguiNG"
 arch=('x86_64')
 license=('AGPL-3.0')
 provides=('trgui-ng-git')
-conflicts=('trgui-ng')
+conflicts=('trgui-ng' 'trgui-ng-bin')
 depends=('alsa-lib' 'cairo' 'desktop-file-utils' 'fontconfig' 'gdk-pixbuf2' 'glib2' 'gtk3' 'hicolor-icon-theme' 'libayatana-appindicator' 'libsoup' 'openssl' 'webkit2gtk')
 makedepends=('rust>=1.70.0' 'nodejs>=16.0.0' 'npm' 'git')
 source=("TrguiNG::git+https://github.com/openscopeproject/TrguiNG"
