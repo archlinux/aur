@@ -14,6 +14,7 @@ pkgbase = prologs
 	optdepends = eclipse-clp
 	optdepends = bprolog
 	optdepends = binprolog
+	optdepends = poplog-git
 	source = git+https://github.com/hurufu/prolog-all.git
 	sha256sums = SKIP
 

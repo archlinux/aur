@@ -16,6 +16,7 @@ optdepends=(
     eclipse-clp
     bprolog
     binprolog
+    poplog-git
 )
 source=(git+https://github.com/hurufu/prolog-all.git)
 sha256sums=(SKIP)
