@@ -1,0 +1,17 @@
+pkgbase = krowbar-bin
+	pkgdesc = BSPWM status bar.Prebuilt version.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/bloznelis/krowbar
+	arch = x86_64
+	license = MIT
+	depends = gtk4
+	depends = gdk-pixbuf2
+	provides = krowbar=1.0.0
+	conflicts = krowbar
+	source = krowbar-1.0.0.tar.gz::https://github.com/bloznelis/krowbar/releases/download/1.0.0/krowbar-1.0.0-x86_64-linux-gnu.tar.gz
+	source = LICENSE-1.0.0::https://raw.githubusercontent.com/bloznelis/krowbar/1.0.0/LICENSE
+	sha256sums = 5c39eb5545453ab2120b019c47c6aa95dec6e55b93c9de6732e387e9d79b3d8a
+	sha256sums = d3d911835f6302d517d6e5afdd0200df59f954610876f0e66e427c0ceea194ed
+
+pkgname = krowbar-bin
