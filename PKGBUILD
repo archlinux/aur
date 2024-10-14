@@ -1,7 +1,7 @@
 # Maintainer: Sylvain POULAIN <sylvain.poulain at giscan dot com>
 pkgname=python-segment-geospatial
 _pkgname=segment-geospatial
-pkgver=0.11.5
+pkgver=0.12.0
 pkgrel=1
 pkgdesc="A Python package for segmenting geospatial data with the Segment Anything Model (SAM)"
 arch=('any')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('python' 'python-segment-anything-py' 'python-rasterio' 'python-rioxarray' 'python-scikit-image' 'python-scikit-learn')
 makedepends=('git' 'python-setuptools')
 # Temporary workaround with git version
-source=('git+https://github.com/opengeos/segment-geospatial.git#tag=v0.11.5')
+source=("git+$url.git#tag=v$pkgver")
 #source=("$_pkgname-$pkgver::$url/archive/refs/tags/v$pkgver.zip")
 #sha256sums=('711fc63d58e3b6aff81468fcba583e20c2ead2b501c293912b2aee2e436c222c')
 sha256sums=('SKIP')
