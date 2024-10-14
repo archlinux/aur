@@ -2,7 +2,7 @@
 
 pkgname=cpr
 pkgver=1.11.0
-pkgrel=2
+pkgrel=3
 pkgdesc='C++ Requests: Curl for People, a spiritual port of Python Requests.'
 arch=('i686' 'x86_64')
 url="https://github.com/libcpr/cpr"
