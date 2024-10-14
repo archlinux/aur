@@ -4,10 +4,10 @@
 # Contributor : Mélanie Chauvel (ariasuni) <perso@hack-libre.org>
 pkgname=whalebird-bin
 _pkgname=Whalebird
-pkgver=6.1.6
+pkgver=6.1.7
 _electronversion=31
 pkgrel=1
-pkgdesc="Single-column Fediverse client for desktop.Binary version,use system-wide electron."
+pkgdesc="Single-column Fediverse client for desktop.Prebuilt version.Use system-wide electron."
 arch=('x86_64')
 url="https://whalebird.social/"
 _ghurl="https://github.com/h3poteto/whalebird-desktop"
@@ -21,7 +21,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-amd64.deb"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('ca66c113c1589ca746cae97867583e81b69971e657509dd15e7efb930e555f28'
+sha256sums=('d743244558db8f61e198b33b6e1f3a7cbd98a60ab4f1ed20dd44c09f30cf11b5'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 build() {
     sed -e "
