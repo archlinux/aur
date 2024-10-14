@@ -1,6 +1,6 @@
 # Maintainer: fabillo <fabillo@archlinux.org>
 pkgname="intiface-central-bin"
-pkgver="2.6.2"
+pkgver="2.6.4"
 pkgrel=1
 pkgdesc="Frontend application for the Buttplug Sex Toy Control Library"
 arch=(x86_64)
@@ -11,12 +11,12 @@ provides=('intiface-central')
 conflicts=('intiface-central')
 source=(intiface_central.desktop
         run_intiface_central
-        "$pkgname-$pkgver.zip::$url/releases/download/v$pkgver/intiface-central-v$pkgver-linux-ubuntu-22.04-x64.zip"
+        "$pkgname-$pkgver.zip::$url/releases/download/v$pkgver/intiface-central-v$pkgver-ubuntu-22.04-x64.zip"
         "intiface-engine-flutter-bridge-license.md::https://raw.githubusercontent.com/intiface/intiface-central/v$pkgver/intiface-engine-flutter-bridge/LICENSE.md"
 )
 sha256sums=('SKIP'
             'SKIP'
-            '669093902db80c110a37342639067f7f9c311beddff3b21cfa917c1dd34f8986'
+            'a4b143013cf822f56fcd63d04adeea53edd77c33effd658f573039f7fd345a44'
             'dc655c315ad5be39813e01861af04a2ef2c153e5bf3011df2c1c1275577e8916'
 )
 
@@ -25,7 +25,7 @@ package() {
 	install -Dm644 "intiface_central.desktop" "$pkgdir/usr/share/applications/intiface_central.desktop"
 	install -Dm644 "intiface-engine-flutter-bridge-license.md" "$pkgdir/usr/share/licenses/$pkgname/intiface-engine-flutter-bridge-license.md"
 
-	cd "intiface-central-v$pkgver"
+	cd "intiface-central"
 	install -Dm755 "intiface_central" "$pkgdir/usr/lib/intiface_central/intiface_central"
 	cp -r "data" "$pkgdir/usr/lib/intiface_central/data"
 	cp -r "lib" "$pkgdir/usr/lib/intiface_central/lib"
