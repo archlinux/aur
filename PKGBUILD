@@ -1,6 +1,6 @@
 # Maintainer: Roberto Alsina <roberto.alsina@gmail.com>
 pkgname=sixteen
-pkgver=0.4.0
+pkgver=0.4.2
 pkgrel=1
 pkgdesc="A base16 theme browser"
 arch=('x86_64' 'aarch64')
@@ -10,7 +10,7 @@ makedepends=('crystal' 'shards')
 options=()
 install=install
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ralsina/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=("b124241ee56c2fa6da5ccfe02c9ff5a5dba225ad831c4362e587ae9063cb36c5")
+sha256sums=('19e19f2597f0954dce066e4ac1618c1905084201eda6c19eeb405d9a37cafe2a')
 
 prepare() {
 	cd "$pkgname-$pkgver"
