@@ -1,4 +1,4 @@
-# Maintainer: claymorwan <claymorw@gmail.com>
+# Maintainer: claymorwan <claymorw@gmail.com> <claymorwan@proton.me>
 
 _sourceName="kde_controlcentre"
 _plasmoidName="com.github.prayag2.controlcentre"
