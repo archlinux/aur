@@ -29,16 +29,12 @@ source=("git+$url.git#commit=${_mozc_commit}"
         "bcr::git+https://github.com/bazelbuild/bazel-central-registry.git#commit=${_bcr_commit}"
         https://github.com/fcitx/mozc/pull/61.patch
         git+https://github.com/phoepsilonix/dict-to-mozc.git#commit=${_dict_to_mozc_commit}
-        #"https://www.post.japanpost.jp/zipcode/dl/kogaki/zip/ken_all.zip"
-        #"https://www.post.japanpost.jp/zipcode/dl/jigyosyo/zip/jigyosyo.zip"
         # https://github.com/WorksApplications/SudachiDict
         "http://sudachi.s3-website-ap-northeast-1.amazonaws.com/sudachidict-raw/${_sudachidict_date}/small_lex.zip"
         "http://sudachi.s3-website-ap-northeast-1.amazonaws.com/sudachidict-raw/${_sudachidict_date}/core_lex.zip"
         "http://sudachi.s3-website-ap-northeast-1.amazonaws.com/sudachidict-raw/${_sudachidict_date}/notcore_lex.zip"
         "LICENSE-SudachiDict::https://github.com/WorksApplications/SudachiDict/raw/develop/LEGAL"
         )
-#        https://dumps.wikimedia.org/jawiki/latest/jawiki-latest-all-titles-in-ns0.gz)
-#noextract=(jawiki-latest-all-titles-in-ns0.gz)
 
 sha512sums=('20335ac48f9719143e9c647613a3a8da4e5110bf367d9333f9389f1a456c7340e179a790eec2dadc63f7b428fdd7d52778bd522b809ddd77da49b4d8c0360b55'
             'cbff7e417918d9827ac7399bdf8389bc9eb862db52785fd35a4e4dea210c13925b6ca0b3b5a9079fd14bb0f9e0342f6c097c6934fbf7f1d71a3d044aa6a88ff0'
@@ -70,11 +66,7 @@ prepare() {
   # nm -f posix (llvm-nm -f posix)
   sed 's|nm \(.*\)\-f p |nm \1-f posix |' -i third_party/gyp/pylib/gyp/generator/ninja.py
 
-  # mozc date and version
-  #_date=$(git log -1 --pretty=format:'%as' $_mozc_commit)
-  #sed -i -e "/2.25.4150.102.1/d"  -e "s/2.26.4220.106.1/${pkgver}.${pkgrel}/" -e "s/2021-01-16/${_date}/" src/unix/fcitx5/org.fcitx.Fcitx5.Addon.Mozc.metainfo.xml.in
   rustup update stable
-
   cd "${srcdir}/dict-to-mozc/" || exit
   # すだちを優先
   msg '1. Build the rust program(mozcdict-ext), it may take some time...'
@@ -86,11 +78,7 @@ prepare() {
   cp ${srcdir}/mozc/src/data/dictionary_oss/id.def ./
   ./target/$TARGET/release/dict-to-mozc -s -i ./id.def -f all.csv > all-dict.txt
 
-  #msg '3. Duplicate data will be removed.'
-  #awk -f sudachi/dup.awk all-dict.txt > finish-dict.txt
-
   msg '3. Finally, add the SudachiDict dictionary to the Mozc source.'
-  #cat finish-dict.txt >> "$srcdir/mozc/src/data/dictionary_oss/dictionary00.txt"
   cat all-dict.txt >> "$srcdir/mozc/src/data/dictionary_oss/dictionary00.txt"
   sync
 }
@@ -110,27 +98,18 @@ build() {
   for f in $CFLAGS;do ([[ ! $f =~ _FORTIFY_SOURCE ]]) && BAZEL_COPTS+=" --copt $f";done
   for f in $CXXFLAGS;do ([[ ! $f =~ _FORTIFY_SOURCE ]]) && BAZEL_CXXOPTS+=" --cxxopt $f";done
   BAZEL_LDOPTS=$(echo $LDFLAGS | xargs -n1 echo "--linkopt")
-  #BAZEL_COPTS=$(echo $CFLAGS | xargs -n1 echo "--copt")
-  #BAZEL_CXXOPTS=$(echo $CXXFLAGS | xargs -n1 echo "--cxxopt")
+  BAZEL_COPTS=$(echo $CFLAGS | xargs -n1 echo "--copt")
+  BAZEL_CXXOPTS=$(echo $CXXFLAGS | xargs -n1 echo "--cxxopt")
   
   # The bazel rules have changed, so the cache will be deleted.
   #bazel clean --expunge
 
   if [[ $CC =~ gcc ]];then
-    #bazel build --config oss_linux --compilation_mode opt package unix/fcitx5:fcitx5-mozc.so --cxxopt=-Wno-uninitialized --host_cxxopt=-Wno-uninitialized
     bazel build --registry=file://$srcdir/bcr --config oss_linux --config release_build package unix/fcitx5:fcitx5-mozc.so --cxxopt=-Wno-uninitialized --host_cxxopt=-Wno-uninitialized
-    #bazel build --config oss_linux --compilation_mode opt package unix/fcitx5:fcitx5-mozc.so --linkopt "$LDFLAGS" $BAZEL_COPTS $BAZEL_CXXOPTS \
-    #--copt=-DABSL_MIN_LOG_LEVEL=100 --cxxopt=-DABSL_MIN_LOG_LEVEL=100
   else
-    #bazel build --config oss_linux --compilation_mode opt package unix/fcitx5:fcitx5-mozc.so --linkopt "$LDFLAGS" $BAZEL_COPTS $BAZEL_CXXOPTS
-    #bazel build --config oss_linux --compilation_mode opt package unix/fcitx5:fcitx5-mozc.so $BAZEL_LDOPTS $BAZEL_COPTS $BAZEL_CXXOPTS
     bazel build --registry=file://$srcdir/bcr --config oss_linux --config release_build package unix/fcitx5:fcitx5-mozc.so $BAZEL_LDOPTS $BAZEL_COPTS $BAZEL_CXXOPTS
   fi
   bazel shutdown
-
-  # mozc fcitx5 version
-  #git fetch origin master:remotes/origin/master
-  #source bazel-bin/base/mozc_version.txt && export pkgver="$(printf "%s.%s.%s.%s" "${MAJOR}" "${MINOR}" "${BUILD_OSS}" "${REVISION}")" && sed -e "/2.26.4220.106.1/d" -e "/2.25.4150.102.1/d"  -e "s/release version=\".*\"/release version=\"$pkgver.1\" date=\"$(git log -1 --pretty=format:'%as' -b origin/master)\"/" -i unix/fcitx5/org.fcitx.Fcitx5.Addon.Mozc.metainfo.xml.in
 }
 
 install_mozc-with-jp-dict-common() {
@@ -155,9 +134,6 @@ install_mozc-with-jp-dict-common() {
   install -D -m 644 third_party/japanese_usage_dictionary/LICENSE "$pkgdir/usr/share/licenses/$pkgname/third_party/japanese_usage_dictionary/LICENSE"
   install -D -m 644 third_party/protobuf/third_party/jsoncpp/LICENSE "$pkgdir/usr/share/licenses/$pkgname/third_party/jsoncpp/LICENSE"
   install -D -m 644 third_party/protobuf/LICENSE "$pkgdir/usr/share/licenses/$pkgname/third_party/protobuf/LICENSE"
-  #for dict in "${_dict[@]}"; do
-  #  install -D -m 644 "$srcdir/LICENSE-${dict}" "$pkgdir/usr/share/licenses/$pkgname/data/dictionary_oss/"
-  #done
   install -D -m 644 "$srcdir/LICENSE-SudachiDict" "$pkgdir/usr/share/licenses/$pkgname/data/dictionary_oss/"
   ../scripts/install_server_bazel
 }
