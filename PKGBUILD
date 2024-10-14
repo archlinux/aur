@@ -1,10 +1,10 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=e-search-bin
 _pkgname=eSearch
-pkgver=14.0.2
+pkgver=14.1.0
 _electronversion=31
 pkgrel=1
-pkgdesc="Screenshot,OCR search,translate,search for picture paste the picture on the screen,screen recorder.Use system-wide electron.截屏,离线OCR,搜索翻译,以图搜图,贴图,录屏,滚动截屏."
+pkgdesc="Screenshot,OCR search,translate,search for picture paste the picture on the screen,screen recorder.Prebuilt version.Use system-wide electron.截屏,离线OCR,搜索翻译,以图搜图,贴图,录屏,滚动截屏."
 arch=(
     'aarch64'
     'x86_64'
@@ -33,8 +33,8 @@ source=(
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${_ghurl}/releases/download/${pkgver}/${_pkgname}-${pkgver}-linux-arm64.deb")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${_ghurl}/releases/download/${pkgver}/${_pkgname}-${pkgver}-linux-x64.deb")
 sha256sums=('291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-sha256sums_aarch64=('bce65d8ddd0fe96bc3720c499c5bac97773c510bc55324ab97af213ab6275239')
-sha256sums_x86_64=('110b0b03b7dca6d7ef388c695f65ddde617703417969338e7b7f212a55f10bf4')
+sha256sums_aarch64=('4b3b3ff3f4602ee00e408fe322d345f4cbe15eaf61883127ed99f352d7a309c6')
+sha256sums_x86_64=('3f23672b317afe504ea72970e7505a02ba88687c3e109e3c0654b8860336d9b4')
 build() {
     sed -e "
         s/@electronversion@/${_electronversion}/g
@@ -44,8 +44,10 @@ build() {
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
     " -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
-    sed -i "s/\/opt\/${_pkgname}\/${pkgname%-bin}/${pkgname%-bin}/;s/${_pkgname//S/s}/${pkgname%-bin}/" \
-        "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
+    sed -e "
+        s/\/opt\/${_pkgname}\/${pkgname%-bin}/${pkgname%-bin}/g
+        s/${_pkgname//S/s}/${pkgname%-bin}/g
+    " -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
