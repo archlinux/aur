@@ -23,7 +23,7 @@ source=("https://github.com/MoodleSync/sync-app/releases/download/v$pkgver/$pkgn
         'moodle-sync.desktop')
 noextract=()
 sha256sums=('1fec2b487c1cc89e0ef27abffd21fbfa34a611b77de482541144b7df62b35cde'
-            '5e59c998e23acfb47faa332e75c324f272f427ad43df53c3ebb647f0a8cd1979')
+            '4c51246eb5c5a3548f9e0c74222bbf6bd93ae4fbf93704327bb849ee2e943226')
 
 package() {
     cd "$srcdir"
