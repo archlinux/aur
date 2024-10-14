@@ -1,0 +1,194 @@
+# $Id$
+# shellcheck disable=SC2034,SC2148,SC2154
+# Maintainer: Masato TOYOSHIMA <phoepsolonix at gmail dot com>
+# Contributor: UTUMI Hirosi <utuhiro78 at yahoo dot co dot jp>
+# Contributor: BrLi <brli at chakralinux dot org>
+# Contributor: Nocifer <apmichalopoulos at gmail dot com>
+# Contributor: Felix Yan <felixonmars@gmail.com>
+# Contributor: ponsfoot <cabezon dot hashimoto at gmail dot com>
+
+## Mozc compile option
+_bldtype=Release
+_mozc_commit=0cbb8f18e8df5eb4e110bab850cebc1f57811f16
+_bcr_commit=78837d290757ac27b73013147c515623ff9196c4
+_branch=fcitx
+
+## follow the submodule commits in https://github.com/fcitx/mozc/tree/fcitx/src/third_party
+_abseil_cpp_commit=4447c756
+_breakpad_commit=216cea7b
+_gtest_commit=b514bdc8
+_gyp_commit=9ecf45e3
+_japanese_usage_dictionary_commit=e5b3425
+_protobuf_commit=7cc670c180
+_wil_commit=fc5dbf5
+
+pkgbase=mozc
+pkgname=("ibus-$pkgbase" "fcitx5-$pkgbase" "emacs-$pkgbase")
+pkgver=2.30.5618.102
+pkgrel=1
+arch=('x86_64')
+url="https://github.com/fcitx/mozc"
+license=('Apache-2.0 AND BSD-2-Clause AND BSD-3-Clause AND MIT AND NAIST-2003 AND Unicode-3.0 AND LicenseRef-Okinawa-Dictionary')
+makedepends=('bazel' 'git' 'python' 'libibus' 'fcitx5-qt' 'fcitx5')
+optdepends=('fcitx5-configtool')
+options=(!lto !distcc !ccache)
+source=("git+$url.git#commit=${_mozc_commit}"
+        "bcr::git+https://github.com/bazelbuild/bazel-central-registry.git#commit=${_bcr_commit}"
+        "git+https://github.com/abseil/abseil-cpp.git#commit=${_abseil_cpp_commit}"
+        "git+https://github.com/google/breakpad.git#commit=${_breakpad_commit}"
+        "git+https://github.com/google/googletest.git#commit=${_gtest_commit}"
+        "git+https://github.com/chromium/gyp.git#commit=${_gyp_commit}"
+        "git+https://github.com/hiroyuki-komatsu/japanese-usage-dictionary.git#commit=${_japanese_usage_dictionary_commit}"
+        "git+https://github.com/protocolbuffers/protobuf.git#commit=${_protobuf_commit}"
+        "git+https://github.com/microsoft/wil.git#commit=${_wil_commit}"
+)
+
+sha512sums=('20335ac48f9719143e9c647613a3a8da4e5110bf367d9333f9389f1a456c7340e179a790eec2dadc63f7b428fdd7d52778bd522b809ddd77da49b4d8c0360b55'
+            'cbff7e417918d9827ac7399bdf8389bc9eb862db52785fd35a4e4dea210c13925b6ca0b3b5a9079fd14bb0f9e0342f6c097c6934fbf7f1d71a3d044aa6a88ff0'
+            '83a6fa68645d138af64ddddcfd15da567c4c46f92fb69be6c10bc5989c3aa6ab85776dfb3fcccdc9e7c32ca9f8260be121ceb7d329792d28ec9a66417a903a68'
+            'f69046af8c37a2a8a441a258d5b8677016966cb43d8a3bb48badc78123a885d6179ff77d7885fd6c84130136a1b8931a98d35f9fcce3d03ed31a37a72ece0b9d'
+            '44db7d4a09aa7d36f1fb5a89be2234834a58834c76e445f8e9f7bc5685f6a76005b19fc758842c63641e476fa97c10eb968fa13965312fafca25843181fd025b'
+            'c8ce90c2493c05a78221befc4cbbcfcbe7a0bafb7bfa55403b085bf8c3fd069c4690d1ff59ef9e0e8a813bd3673588eb38e02ad81c42a6dd0be5246f27442169'
+            '91b878735e767ddf6f1fe3de61486c1e78936a0f683855e7c34a21c711f405899d3de369d2ff0a1910d65b1afc8c225d8d8b9398cf98d760f3afcfe42644fca2'
+            'b9fade4c8cfe60915c51433c1acd4b253b947dd2fabe7b70dd53c92cd751322fb007ef68e04d5551315f3bc2f52048fb8b9babf40455309ab7b38d9f3efd348a'
+            '504066a457f77b510f492626c919b6fd7b61f77948bdddef0f7e43ae09bb4bf03cea7000fba91ae0123a94d3b39cac6dfac2010126849afe0a183727fe7b0fc1')
+
+pkgver() {
+  cd "${srcdir}/mozc" || exit
+  source <(grep = src/data/version/mozc_version_template.bzl| tr -d ' ')
+  printf "%s.%s.%s.%s" "$MAJOR" "$MINOR" "$BUILD_OSS" "$((REVISION+2))"
+}
+
+prepare() {
+  cd "$srcdir/mozc/src" || exit
+
+  git submodule init
+  git config submodule.src/third_party/abseil-cpp.url "$srcdir/abseil-cpp"
+  git config submodule.src/third_party/breakpad.url "$srcdir/breakpad"
+  git config submodule.src/third_party/gtest.url "$srcdir/googletest"
+  git config submodule.src/third_party/gyp.url "$srcdir/gyp"
+  git config submodule.src/third_party/japanese_usage_dictionary.url "$srcdir/japanese-usage-dictionary"
+  git config submodule.src/third_party/protobuf.url "$srcdir/protobuf"
+  git config submodule.src/third_party/wil.url "$srcdir/wil"
+  git -c protocol.file.allow=always submodule update
+
+  # use libstdc++ instead of libc++
+  sed '/stdlib=libc++/d;/-lc++/d' -i gyp/common.gypi
+
+  # nm -f posix (llvm-nm -f posix)
+  sed 's|nm \(.*\)\-f p |nm \1-f posix |' -i third_party/gyp/pylib/gyp/generator/ninja.py
+
+  # disable warning of ANDROID_NDK_HOME
+  sed -e '/register_toolchains("@androidndk\/\/:all")/d' -i MODULE.bazel
+}
+
+build() {
+  cd "$srcdir/mozc/src" || exit
+
+  # Fix compatibility with google-glog 0.3.3 (symbol conflict)
+  CFLAGS="${CFLAGS} -fvisibility=hidden"
+  CXXFLAGS="${CXXFLAGS} -fvisibility=hidden"
+
+  # ibus emacs_helper mozc_server fcitx5
+  BAZEL_COPTS=""
+  BAZEL_CXXOPTS=""
+  for f in $CFLAGS;do ([[ ! $f =~ _FORTIFY_SOURCE ]]) && BAZEL_COPTS+=" --copt $f";done
+  for f in $CXXFLAGS;do ([[ ! $f =~ _FORTIFY_SOURCE ]]) && BAZEL_CXXOPTS+=" --cxxopt $f";done
+  BAZEL_LDOPTS=$(echo $LDFLAGS | xargs -n1 echo "--linkopt")
+
+  # The bazel rules have changed, so the cache will be deleted.
+  #bazel clean --expunge
+
+  bazel build --registry=file://$srcdir/bcr --config oss_linux --config release_build package unix/fcitx5:fcitx5-mozc.so --cxxopt=-Wno-uninitialized --host_cxxopt=-Wno-uninitialized $BAZEL_LDOPTS $BAZEL_COPTS $BAZEL_CXXOPTS
+  bazel shutdown
+}
+
+install_mozc-common() {
+  export PREFIX="$pkgdir/usr"
+  export _bldtype
+  cd ${srcdir}/mozc/src || exit
+
+  # Extract license part of mozc
+  head -n 50 data/unicode/JIS0201.TXT > LICENSE.JIS0201
+  head -n 73 data/unicode/JIS0208.TXT > LICENSE.JIS0208
+  head -n 22 data/unicode/jisx0213-2004-std.txt > LICENSE.jisx0213-2004-std
+
+  # BSD-3-Clause
+  sed -n 67,94p data/installer/credits_en.html > Mozc
+  install -Dm644 Mozc "${pkgdir}"/usr/share/licenses/${pkgname}/Mozc
+  # BSD-3-Clause
+  sed -n 317,344p data/installer/credits_en.html > Breakpad
+  install -Dm644 Breakpad "${pkgdir}"/usr/share/licenses/${pkgname}/Breakpad
+  # NAIST-2003
+  sed -n 355,424p data/installer/credits_en.html > IPAdic
+  install -Dm644 IPAdic "${pkgdir}"/usr/share/licenses/${pkgname}/IPAdic
+  # BSD-2-Clause
+  sed -n 435,457p data/installer/credits_en.html > Japanese-Usage-Dictionary
+  install -Dm644 Japanese-Usage-Dictionary "${pkgdir}"/usr/share/licenses/${pkgname}/Japanese-Usage-Dictionary
+  # Public Domain Data
+  sed -n 468,470p data/installer/credits_en.html > Okinawa-Dictionary
+  install -Dm644 Okinawa-Dictionary "${pkgdir}"/usr/share/licenses/${pkgname}/Okinawa-Dictionary
+  # BSD-3-Clause
+  sed -n 481,513p data/installer/credits_en.html > Protocol-Buffers
+  install -Dm644 Protocol-Buffers "${pkgdir}"/usr/share/licenses/${pkgname}/Protocol-Buffers
+  # MIT
+  sed -n 698,704p data/installer/credits_en.html > Tamachi-Phonetic-Kanji-Alphabet
+  install -Dm644 Tamachi-Phonetic-Kanji-Alphabet "${pkgdir}"/usr/share/licenses/${pkgname}/Tamachi-Phonetic-Kanji-Alphabet
+  # MIT
+  sed -n 762,782p data/installer/credits_en.html > Windows-Implementation-Library
+  sed -i -e 's|^[ \t]*||g' Windows-Implementation-Library
+  install -Dm644 Windows-Implementation-Library "${pkgdir}"/usr/share/licenses/${pkgname}/Windows-Implementation-Library
+}
+
+package_fcitx5-mozc() {
+  pkgdesc="Fcitx5 module for Mozc"
+  depends=('fcitx5' 'fcitx5-qt' 'hicolor-icon-theme')
+  provides=('fcitx5-mozc')
+  replaces=('fcitx5-mozc')
+  conflicts=('fcitx-mozc' 'fcitx' 'fcitx-qt5' 'fcitx-qt6' 'ibus-mozc')
+
+  export PREFIX="$pkgdir/usr"
+  export _bldtype
+  cd ${srcdir}/mozc/src || exit
+  install_mozc-common
+  ../scripts/install_server_bazel
+  ../scripts/install_fcitx5_bazel
+  install -D -m 755 bazel-bin/renderer/qt/mozc_renderer      "${pkgdir}/usr/lib/mozc/mozc_renderer"
+}
+
+package_ibus-mozc() {
+  pkgdesc="IBus engine module for Mozc"
+  depends=('ibus>=1.4.1' "qt6-base" 'libibus')
+  replaces=('ibus-mozc')
+  conflicts=('ibus-mozc' 'fcitx' 'fcitx-configtool' 'fcitx-qt5' 'fcitx-qt6' 'fcitx-mozc' 'fcitx5' 'fcitx5-configtool' 'fcitx5-qt' 'fcitx5-mozc')
+
+  export _bldtype
+  cd "${srcdir}/mozc/src" || exit
+  install_mozc-common
+  ../scripts/install_server_bazel
+  sed -i -e "s|0\.0\.0\.0|${pkgver}|g" bazel-bin/unix/ibus/mozc.xml
+  install -D -m 755 bazel-bin/unix/ibus/ibus_mozc         "$pkgdir/usr/lib/ibus-mozc/ibus-engine-mozc"
+  install -D -m 644 bazel-bin/unix/ibus/mozc.xml          "$pkgdir/usr/share/ibus/component/mozc.xml"
+  install -D -m 755 bazel-bin/renderer/qt/mozc_renderer      "${pkgdir}/usr/lib/mozc/mozc_renderer"
+
+  cd bazel-bin/unix || exit
+  unzip -o icons.zip *.svg mozc.png -d tmp
+  cd tmp || exit
+  find . -type f -name "*.svg" | xargs -I{} install -Dm644 "{}" "${pkgdir}/usr/share/ibus-mozc/{}"
+  install -Dm644 mozc.png                         "${pkgdir}"/usr/share/${pkgname}/product_icon.png
+}
+
+package_emacs-mozc() {
+  pkgdesc="Emacs engine module for Mozc with SudachiDict dictionary"
+  license=('BSD-3-Clause')
+  depends=("emacs" 'glibc' 'gcc-libs')
+  replaces=('emacs-mozc')
+  conflicts=('emacs-mozc')
+
+  export _bldtype
+  cd "${srcdir}/mozc/src" || exit
+  install_mozc-common
+  install -Dm755 bazel-bin/unix/emacs/mozc_emacs_helper "$pkgdir/usr/bin/mozc_emacs_helper"
+  install -Dm644 unix/emacs/mozc.el                     "$pkgdir/usr/share/emacs/site-lisp/emacs-mozc/mozc.el"
+}
+
