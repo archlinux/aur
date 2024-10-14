@@ -1,10 +1,10 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=openhome-bin
 _pkgname=OpenHome
-pkgver=0.4.0
+pkgver=0.4.1
 _electronversion=31
 pkgrel=1
-pkgdesc="Application for importing and transferring Pokémon between save files."
+pkgdesc="Application for importing and transferring Pokémon between save files.Prebuilt version.Use system-wide electron."
 arch=(
     'aarch64'
     'x86_64'
@@ -22,8 +22,8 @@ source=(
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_arm64.deb")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb")
 sha256sums=('291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-sha256sums_aarch64=('142e2f3d84d80d290b573e5c6e177343fb58e438e9d65375a1767345edc8e308')
-sha256sums_x86_64=('b124e5410885791a6f6f453a9bfe86954a3e304b8388e69eb110fcf22eaeb6cc')
+sha256sums_aarch64=('c5293d0ac911a1d2fd51e0fa9b554114b29d2b00802e74866861cace4b0d95de')
+sha256sums_x86_64=('97056926d33e599b3326d8995a9ff87a5bbca2ad77d795f6ec117afb2dd00137')
 build() {
     sed -e "
         s/@electronversion@/${_electronversion}/g
