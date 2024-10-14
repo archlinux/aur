@@ -70,7 +70,6 @@ build() {
     icotool -x assets/images/app-icon.ico -o assets/images/app-icon.png
     NODE_ENV=development    pnpm install
     NODE_ENV=production     pnpm run build
-    #NODE_ENV=production     pnpm run package:linux
     NODE_ENV=production     npm exec -c "electron-builder --linux dir -c.electronDist=${electronDist}"
 }
 package() {
