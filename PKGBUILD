@@ -1,7 +1,7 @@
 # Maintainer: Guillaume Meunier <guillaume.meunier@centraliens.net>
 pkgname=wivrn-server
-pkgver=0.19
-pkgrel=2
+pkgver=0.20
+pkgrel=3
 pkgdesc="A wireless Monado-based OpenXR runtime for standalone headsets."
 arch=(x86_64)
 url="https://github.com/WiVRn/WiVRn"
@@ -31,7 +31,8 @@ optdepends=(
 )
 provides=("openxr-runtime")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/WiVRn/WiVRn/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('6f39152d7e94979b3f46aa750ec91b18044580fa00fe46a4c5962284c9f4caae')
+sha256sums=('f7022323384b1b2977a1363f4961ccce6d0afc46addc958d4cafd18f5c4f6cb0')
+install=$pkgname.install
 
 build() {
 	cd "WiVRn-$pkgver"
@@ -51,9 +52,4 @@ build() {
 package() {
 	cd "WiVRn-$pkgver"
 	DESTDIR="$pkgdir" cmake --install build-server
-
-	# Workaround until 0.20 is released
-	rm -r "$pkgdir"/usr/share/applications/
-	rm -r "$pkgdir"/usr/share/icons/
-	rm -r "$pkgdir"/usr/share/metainfo/
 }
