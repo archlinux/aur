@@ -2,7 +2,7 @@
 
 pkgname=touist-jar
 pkgver=3.5.2
-pkgrel=1
+pkgrel=2
 pkgdesc="TouIST, the IDE & Language for Logic"
 arch=("any")
 url="https://www.irit.fr/touist"
@@ -10,13 +10,15 @@ license=('MIT')
 depends=("java-runtime>=8")
 provides=("touist")
 _zipname="TouIST-jar-v$pkgver-linux-x86_64.zip"
-source=("https://github.com/touist/touist/releases/download/v$pkgver/$_zipname" "touist.desktop")
+source=("https://github.com/touist/touist/releases/download/v$pkgver/$_zipname" "touist.desktop" "touist.sh")
 sha256sums=('50599539b19093ca4abdeacf0b56864e67a615e9e140d174d81a789e9c81d60c'
-		'5938c09636d7210ca6147cb412f6f9ec4f05f20f723dcefa60533ada1b46aab0')
+		'd65e08ea175a886d59658d8b21cacab4fa08c2d752287a28446f35650a41b130'
+		'aeb10050eb85420b518a2865bf9e4c5f1ec356bf675a7d227107e3292f99f6f7')
 
 build() {
 	unzip -qo $_zipname
-	unzip -qo touist.jar
+	unzip -qo touist.jar images/logo.png
+	rm -rf touist
 }
 
 package() {
@@ -24,7 +26,7 @@ package() {
 	cp touist.jar $pkgdir/opt/touist/touist.jar
 	cp images/logo.png $pkgdir/opt/touist/touist_icon.png
 	mkdir -p $pkgdir/usr/bin/
-	cp touist $pkgdir/usr/bin/
+	cp touist.sh $pkgdir/usr/bin/
 	mkdir -p $pkgdir/usr/share/applications/
 	cp touist.desktop $pkgdir/usr/share/applications/touist.desktop
 }
