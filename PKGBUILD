@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=Matching
-_pkgver=4.10-14
+_pkgver=4.10-15
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="Multivariate and Propensity Score Matching with Balance Optimization"
 arch=(x86_64)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -17,8 +17,8 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('c7cff83f8723c0f24c2c985a3a776ac7')
-b2sums=('f4a6c20435fcc9b640040fbc2a5943b5ac94bab97c67d0ab5e8b7cfeab9c8a8ca764e756020aa419d7a8dfd3ba0aa45aacf0af5ceedcc2e060bc49347f5facbb')
+md5sums=('e1583843b72a115244267dbaa1a1c4c6')
+b2sums=('404cc7df93450020ff7fc643f4844a4074dea8dd017d37597d1ee6da08fac2625a6fbaeea5b9bcfd2efadb093b2e867eb895f4b39ebbe917d0c1bc0c529fbba8')
 
 build() {
   mkdir build
