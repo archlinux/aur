@@ -5,23 +5,38 @@
 
 pkgname=cpr
 pkgver=1.11.1
-pkgrel=2
+pkgrel=3
 pkgdesc='C++ Requests: Curl for People, a spiritual port of Python Requests.'
 arch=('x86_64')
 url="https://github.com/libcpr/cpr"
 license=('MIT')
 depends=('curl')
-makedepends=('cmake')
+makedepends=('cmake' 'gtest')
 provides=('libcpr.so=1-64')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
 sha256sums=('e84b8ef348f41072609f53aab05bdaab24bf5916c62d99651dfbeaf282a8e0a2')
 
 build() {
 	local _flags=(
-		-DCPR_BUILD_TESTS=OFF
 		-DCPR_USE_SYSTEM_CURL=ON
+		-DCPR_USE_SYSTEM_GTEST=ON
 		-DBUILD_SHARED_LIBS=ON
 	)
+
+	# This depends on makepkg internals, and is probably evil.
+	# However, it seems to be the only way to selectively build tests as of pacman 7.0.0.
+	# The idea is that we will only build tests if they're actually going to be run.
+	# Default to building tests, so that we aren't skipping them if makepkg internals change.
+	if [ "$CHECKFUNC" -eq "0" ];
+	then
+		_flags+=(
+			-DCPR_BUILD_TESTS=OFF
+		)
+	else
+		_flags+=(
+			-DCPR_BUILD_TESTS=ON
+		)
+	fi
 
 	cmake -B build -S "${pkgname}-${pkgver}" \
 		-DCMAKE_BUILD_TYPE=None \
@@ -30,6 +45,10 @@ build() {
 		"${_flags[@]}"
 
 	cmake --build build
+}
+
+check() {
+	ctest --test-dir build
 }
 
 package() {
