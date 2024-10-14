@@ -2,8 +2,8 @@
 # Maintainer: Zach Jacobson <jacobsonzacharym@gmail.com>
 
 pkgname=ttf-noto-emoji-monochrome
-pkgrel=3
-_commit='d5db91a19628f57c31332bb7e6f9ae3465678b4f'
+pkgrel=4
+_commit='24d8485dc7eeda9ec8d08788dfacad75127aebc7'
 pkgver=1.0.0
 pkgdesc='Google Noto Emoji Monochrome font'
 arch=(any)
@@ -16,12 +16,12 @@ source=("NotoEmoji-Bold-${pkgver}.ttf::https://github.com/zjaco13/Noto-Emoji-Mon
 	"NotoEmoji-Regular-${pkgver}.ttf::https://github.com/zjaco13/Noto-Emoji-Monochrome/raw/${_commit}/fonts/NotoEmoji-Regular.ttf"
 	"NotoEmoji-SemiBold-${pkgver}.ttf::https://github.com/zjaco13/Noto-Emoji-Monochrome/raw/${_commit}/fonts/NotoEmoji-SemiBold.ttf"
 	"${pkgname}-${pkgver}-OFL.txt::https://github.com/zjaco13/Noto-Emoji-Monochrome/raw/${_commit}/OFL.txt")
-sha256sums=('11b9d9b7c8782dc974c89a0e2a65e51759df70fe6166fee7e1c110d74c8191c8'
-	'07c5c1a58c9c398063ae18e59f28b3e3662e908a0e8c64dddcd377118d343624'
-	'fcee5bd83cccf20f7b3407498080bf46c43b1393fb5122aaed35f20ee504dd64'
-	'65fc21f6ad86acbe43c29f89ffc0dd77621709a517a50edd1370aa80230cc8fb'
-	'beb8c1f06961cd601eea31bf4aba72f11e37d558af36d59b09ae548780139e65'
-	'7f18ec1ebb6b50e3ed0f74b2c61f25b8d7cd69e43f4de66e991bcfd3c419a8bb')
+sha256sums=('67ee9ce9b80b232a9666b227da712ef3681c4689a41825e63659e989f2e293f5'
+	'5ac83635aa9067fc0573a04ce603c8c0697671d49d895e2855347c905f3fd09f'
+	'c72040a28f6fe23d37c9e898cf6f5cf0d7747d7860f35f846737249006225e75'
+	'b57ed895ae9d09ba7b4b19c343a75cf39aad57156c3450e339d9d11556d7edc1'
+	'051073e9b3bb4d07d5bffd33c0268b17dc5d177664af2cca0d86d794351536a3'
+	'ab2dcc4de7edccb08a7e453bb88dd21bd3035fd5e8c9a2e977368b0ba3992281')
 
 package() {
 	install -dm 755 "${pkgdir}/usr/share/fonts/TTF"
