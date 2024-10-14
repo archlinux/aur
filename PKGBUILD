@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=onlook-git
 _pkgname=Onlook
-pkgver=r273.6e1372e
+pkgver=r283.4b5ef5e
 _electronversion=32
 _nodeversion=20
 pkgrel=1
@@ -73,10 +73,11 @@ build() {
         } >> .npmrc
     fi
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
-    sed -i "s/\/\${version}//g" electron-builder.json5 #;s/'AppImage', 'deb', 'rpm'/'dir'/g" electron-builder.json5
+    sed -i "s/\/\${version}//g;s/\'AppImage\', \'deb\', \'rpm\'/\'dir\'/g" electron-builder.json5
+    npm config set script-shell bash
     NODE_ENV=development    npm install
     NODE_ENV=production     npm run build
-    NODE_ENV=production     npm exec -c "electron-builder --linux dir -c.electronDist=${electronDist} -c.electronVersion=${_electronversion}"
+    NODE_ENV=production     npm exec -c "electron-builder --linux dir -c.electronDist=${electronDist}"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
