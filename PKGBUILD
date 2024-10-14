@@ -1,7 +1,7 @@
 # Maintainer: Tom Zander
 
 pkgname=flowee-pay
-pkgver=2024.10.0
+pkgver=2024.10.1
 options=(!lto)
 pkgrel=1
 pkgdesc="Flowee Payment solution"
@@ -14,7 +14,7 @@ provides=('flowee-pay')
 install=flowee-pay.install
 source=("https://codeberg.org/Flowee/pay/archive/$pkgver.tar.gz"
     "https://flowee.org/products/pay/blockheaders-850000")
-sha256sums=('a823b6d14d73cc56fbcd76fd879bc4aec942e1e5626895fca169b7d071d95fd9'
+sha256sums=('f0a90e2a398417901767853c42e6b3db6ae142e25240a8f1bc536035fb529e9d'
     '4a98c3b655cfd7520b4d4f682d95e3a82e0f03fda4fa687d28f2127205d66047')
 
 build() {
