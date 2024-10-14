@@ -1,10 +1,10 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=atlassify-bin
 _pkgname=Atlassify
-pkgver=1.6.0
+pkgver=1.6.1
 _electronversion=32
 pkgrel=1
-pkgdesc="Atlassian notifications on your menu bar.Prebuild version.Use system-wide electron."
+pkgdesc="Atlassian notifications on your menu bar.Prebuilt version.Use system-wide electron."
 arch=('x86_64')
 url="https://atlassify.io/"
 _ghurl="https://github.com/setchy/atlassify"
@@ -22,7 +22,7 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/setchy/atlassify/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('924a02f59a6c87b99f342d9266f199ed9ce0e3d79db9d90902270a7571e61fd9'
+sha256sums=('0491fb2fef4864f3533ff5296d7cab52e2919791ae6350a4155173174347c748'
             '8f2d641cd26495f3e20d1e09b49e47eb022b94b3a68c6944144aadccb6f123e2'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 build() {
@@ -34,7 +34,10 @@ build() {
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
     " -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
-    sed -i "s/\/opt\/${_pkgname}\/${pkgname%-bin}/${pkgname%-bin}/g;s/Productivity/Productivity;Utility/g" "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
+    sed -e "
+        s/\/opt\/${_pkgname}\/${pkgname%-bin}/${pkgname%-bin}/g
+        s/Productivity/Productivity;Utility/g
+    " -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
