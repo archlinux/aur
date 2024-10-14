@@ -1,6 +1,6 @@
 pkgbase = nvm-desktop-git
 	pkgdesc = A version management desktop client for the Nodejs.
-	pkgver = 4.0.0.r3.g1c3ad6a
+	pkgver = alpha.r0.gde4d587
 	pkgrel = 1
 	url = https://github.com/1111mp/nvm-desktop
 	arch = any
@@ -12,9 +12,12 @@ pkgbase = nvm-desktop-git
 	makedepends = curl
 	makedepends = git
 	makedepends = rust
+	makedepends = librsvg
+	makedepends = patchelf
 	depends = webkit2gtk-4.1
-	depends = openssl
-	provides = nvm-desktop=4.0.0
+	depends = gtk3
+	depends = libappindicator-gtk3
+	provides = nvm-desktop=alpha
 	conflicts = nvm-desktop
 	source = nvm-desktop.git::git+https://github.com/1111mp/nvm-desktop.git
 	source = nvmd.git::git+https://github.com/1111mp/nvmd-command.git

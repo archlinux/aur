@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=nvm-desktop-git
 _pkgname="NVM Desktop"
-pkgver=4.0.0.r3.g1c3ad6a
+pkgver=alpha.r0.gde4d587
 _nodeversion=20
 pkgrel=1
 pkgdesc="A version management desktop client for the Nodejs."
@@ -13,7 +13,8 @@ conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}=${pkgver%.r*}")
 depends=(
     'webkit2gtk-4.1'
-    'openssl'
+    'gtk3'
+    'libappindicator-gtk3'
 )
 makedepends=(
     'gendesk'
@@ -23,6 +24,8 @@ makedepends=(
     'curl'
     'git'
     'rust'
+    'librsvg'
+    'patchelf'
 )
 source=(
     "${pkgname%-git}.git::git+${url}.git"
@@ -75,14 +78,14 @@ build() {
         } >> .npmrc
     fi
     NODE_ENV=development    pnpm install
-    NODE_ENV=production     pnpm run tauri build -b deb
+    NODE_ENV=production     pnpm tauri build -b deb
 }
 package() {
-    install -Dm755 "${srcdir}/${pkgname%-git}.git/src-tauri/target/release/bundle/deb/${_pkgname}_${pkgver%.r*}_"*/data/usr/bin/"${pkgname%-git}" \
-        -t "${pkgdir}/usr/bin"
+    _sourcedir="${srcdir}/${pkgname%-git}.git/src-tauri/target/release/bundle/deb"
+    install -Dm755 "${_sourcedir}/${_pkgname}_"*/data/usr/bin/"${pkgname%-git}" -t "${pkgdir}/usr/bin"
     install -Dm755 -d "${pkgdir}/usr/lib"
-    cp -r "${srcdir}/${pkgname%-git}.git/src-tauri/target/release/bundle/deb/${_pkgname}_${pkgver%.r*}_"*/data/usr/lib/"${_pkgname}" "${pkgdir}/usr/lib"
-    install -Dm644 "${srcdir}/${pkgname%-git}.git/src-tauri/target/release/bundle/deb/${_pkgname}_${pkgver%.r*}_"*/data/usr/share/applications/"${_pkgname}.desktop" \
+    cp -r "${_sourcedir}/${_pkgname}_"*/data/usr/lib/"${_pkgname}" "${pkgdir}/usr/lib"
+    install -Dm644 "${_sourcedir}/${_pkgname}_"*/data/usr/share/applications/"${_pkgname}.desktop" \
         "${pkgdir}/usr/share/applications/${pkgname%-git}.desktop"
     install -Dm644 "${srcdir}/${pkgname%-git}.git/src-tauri/icons/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-git}.png"
     install -Dm644 "${srcdir}/${pkgname%-git}.git/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
