@@ -1,3 +1,4 @@
+# Maintainer: izzqz <v@izzqz.me>
 # Contributor: Brian Bidulock <bidulock@openss7.org>
 # Contributor: Robert Wiklund <robert@wikro.org>
 # Contributor: carstene1ns <arch carsten-teibes de>
