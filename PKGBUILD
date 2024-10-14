@@ -2,7 +2,7 @@
 
 pkgname=touist-jar
 pkgver=3.5.2
-pkgrel=2
+pkgrel=3
 pkgdesc="TouIST, the IDE & Language for Logic"
 arch=("any")
 url="https://www.irit.fr/touist"
@@ -12,7 +12,7 @@ provides=("touist")
 _zipname="TouIST-jar-v$pkgver-linux-x86_64.zip"
 source=("https://github.com/touist/touist/releases/download/v$pkgver/$_zipname" "touist.desktop" "touist.sh")
 sha256sums=('50599539b19093ca4abdeacf0b56864e67a615e9e140d174d81a789e9c81d60c'
-		'd65e08ea175a886d59658d8b21cacab4fa08c2d752287a28446f35650a41b130'
+		'91d2e4fdb18d833c3939ca87682320bae31989fd1ef950117212e591a1d44277'
 		'aeb10050eb85420b518a2865bf9e4c5f1ec356bf675a7d227107e3292f99f6f7')
 
 build() {

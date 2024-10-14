@@ -1,7 +1,7 @@
 pkgbase = touist-jar
 	pkgdesc = TouIST, the IDE & Language for Logic
 	pkgver = 3.5.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.irit.fr/touist
 	arch = any
 	license = MIT
@@ -11,7 +11,7 @@ pkgbase = touist-jar
 	source = touist.desktop
 	source = touist.sh
 	sha256sums = 50599539b19093ca4abdeacf0b56864e67a615e9e140d174d81a789e9c81d60c
-	sha256sums = d65e08ea175a886d59658d8b21cacab4fa08c2d752287a28446f35650a41b130
+	sha256sums = 91d2e4fdb18d833c3939ca87682320bae31989fd1ef950117212e591a1d44277
 	sha256sums = aeb10050eb85420b518a2865bf9e4c5f1ec356bf675a7d227107e3292f99f6f7
 
 pkgname = touist-jar
