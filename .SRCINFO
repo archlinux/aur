@@ -1,6 +1,6 @@
 pkgbase = hardened_malloc
 	pkgdesc = Hardened allocator designed for modern systems
-	pkgver = 12
+	pkgver = 13
 	pkgrel = 1
 	url = https://github.com/GrapheneOS/hardened_malloc
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = hardened_malloc
 	depends = gcc-libs
 	provides = libhardened_malloc.so
 	provides = libhardened_malloc-light.so
-	source = git+https://github.com/GrapheneOS/hardened_malloc#tag=12
-	sha256sums = 0e683c105fe17ccd23060ad3f5f3ce62b989cb80ef8ce95f70efc63bf63974d6
+	source = git+https://github.com/GrapheneOS/hardened_malloc#tag=13
+	sha256sums = 3e48dcfd888b3a871c0d59c6757ab328eb008e1951843c1dc75225432a4bf7db
 
 pkgname = hardened_malloc
