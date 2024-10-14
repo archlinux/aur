@@ -5,12 +5,12 @@ _name=MediathekView
 _pkgname=mediathekview
 pkgname=${_pkgname}-xdg
 pkgver=14.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Access the Mediathek of many German TV stations (store data in XDG_DATA_HOME)"
 arch=(any)
 url="https://github.com/mediathekview/mediathekview"
 license=(GPL-3.0-or-later)
-_java_version=${JAVA_VERSION:-22}
+_java_version=${JAVA_VERSION:-23}
 depends=(
   bash
   hicolor-icon-theme
