@@ -2,13 +2,13 @@
 
 pkgname=libreoffice-extension-coooder
 pkgver=1.1.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Coooder is a syntax highlighting extension for Writer."
 arch=('any')
 url="https://extensions.libreoffice.org/extensions/coooder"
 license=('LGPL2')
 depends=('libreoffice')
-source=("https://extensions.libreoffice.org/extensions/coooder/$pkgver/@@download/file/coooder-$pkgver.oxt")
+source=("https://extensions.libreoffice.org/assets/downloads/z/$pkgname-$pkgver.oxt")
 md5sums=('7b0ad997271539b80303eeb63dbf78a2')
 
 package () {
