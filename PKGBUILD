@@ -2,7 +2,7 @@
 # Contributor: Jan Ypma <jan at ypmania dot nl>
 pkgname=jjazzlab-bin
 pkgver=4.1.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A complete and open application dedicated to backing tracks generation."
 arch=('i686' 'x86_64' 'aarch64')
 url="https://www.jjazzlab.org/"

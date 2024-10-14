@@ -1,7 +1,7 @@
 pkgbase = jjazzlab-bin
 	pkgdesc = A complete and open application dedicated to backing tracks generation.
 	pkgver = 4.1.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.jjazzlab.org/
 	arch = i686
 	arch = x86_64
