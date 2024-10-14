@@ -3,40 +3,41 @@
 # Contributor: Chandler Klüser <chandler.kluser@gmail.com>
 
 pkgname=vircon32-desktop-emulator-git
-pkgver=37500869bac26fbc883baf476d3a5e62fdbb5896
+pkgver=24.8.30.r0.gc83283b
 pkgrel=1
-epoch=20240603
 pkgdesc="Vircon32 Desktop Emulator"
-arch=('x86_64')
-url="https://github.com/vircon32/ComputerSoftware"
-license=('BSD')
-depends=('mesa' 'sdl2' 'sdl2_image' 'openal' 'freealut' 'tinyxml2' 'gtk2')
-makedepends=('glibc' 'git' 'cmake')
-provides=('vircon32-desktop-emulator')
-source=("ComputerSoftware::git+$url.git")
+arch=(x86_64)
+url="http://www.vircon32.com/"
+license=(BSD)
+depends=(mesa sdl2 sdl2_image openal freealut tinyxml2 gtk2)
+makedepends=(glibc git cmake)
+provides=(vircon32-desktop-emulator)
+source=("vircon32::git+https://github.com/vircon32/ComputerSoftware.git")
 sha256sums=('SKIP')
+_commit=c83283bc519bebcba235de30ff16d605b3f0be74
+
+pkgver() {
+  cd vircon32
+  git describe --long --tags --exclude devtools* | sed 's/^emulator-v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
 
 build() {
-  cd ComputerSoftware/DesktopEmulator
-  mkdir build && cd build
-  cmake ..
-  cmake --build .
+  cmake -B build -S vircon32/DesktopEmulator
+  cmake --build build
 }
 
 package() {
-  install -d "${pkgdir}/opt/Vircon32/Emulator"
-  install -d "${pkgdir}/opt/Vircon32/Emulator/Bios"
-  install -d "${pkgdir}/opt/Vircon32/Emulator/Images"
-  install -d "${pkgdir}/usr/share/applications"
-  install -d "${pkgdir}/usr/share/pixmaps"
-  install -d "${pkgdir}/usr/share/icons/hicolor/scalable/apps/"
-  cp -r ComputerSoftware/DesktopEmulator/build/* "${pkgdir}/opt/Vircon32/Emulator"
-  cp ComputerSoftware/DesktopEmulator/Data/Config-Controls.xml "${pkgdir}/opt/Vircon32/Emulator"
-  cp ComputerSoftware/DesktopEmulator/Data/Config-Settings.xml "${pkgdir}/opt/Vircon32/Emulator"
-  cp ComputerSoftware/DesktopEmulator/Data/Bios/StandardBios.v32 "${pkgdir}/opt/Vircon32/Emulator/Bios/StandardBios.v32"
-  cp ComputerSoftware/DesktopEmulator/Data/GuiFont.ttf "${pkgdir}/opt/Vircon32/Emulator"
-  cp -r ComputerSoftware/DesktopEmulator/Data/Images/* "${pkgdir}/opt/Vircon32/Emulator/Images"
-  cp ComputerSoftware/DesktopEmulator/Resources/Linux/Vircon32.desktop "${pkgdir}/usr/share/applications"
-  cp ComputerSoftware/DesktopEmulator/Resources/Linux/Vircon32.svg "${pkgdir}/usr/share/pixmaps"
-  cp ComputerSoftware/DesktopEmulator/Resources/Linux/Vircon32.svg "${pkgdir}/usr/share/icons/hicolor/scalable/apps/"
+  DESTDIR="$pkgdir" cmake --install build
+  install -D vircon32/DesktopEmulator/Data/Readme.txt -t "${pkgdir}/usr/share/licenses/${pkgname}"
+
+  # Adding a Valid Desktop Entry for Vircon32
+  echo "[Desktop Entry]" > "${pkgdir}/usr/share/applications/Vircon32.desktop"
+  echo "Type=Application" >> "${pkgdir}/usr/share/applications/Vircon32.desktop"
+  echo "Name=Vircon32" >> "${pkgdir}/usr/share/applications/Vircon32.desktop"
+  echo "Comment=Vircon32, a 32-bit virtual game console" >> "${pkgdir}/usr/share/applications/Vircon32.desktop"
+  echo "Exec=/usr/local/Vircon32/Emulator/Vircon32" >> "${pkgdir}/usr/share/applications/Vircon32.desktop"
+  echo "Icon=/usr/share/icons/hicolor/scalable/apps/Vircon32.svg" >> "${pkgdir}/usr/share/applications/Vircon32.desktop"
+  echo "Categories=Game;Emulator;" >> "${pkgdir}/usr/share/applications/Vircon32.desktop"
+  echo "Terminal=false" >> "${pkgdir}/usr/share/applications/Vircon32.desktop"
+  echo "Version=24.8.30" >> "${pkgdir}/usr/share/applications/Vircon32.desktop"
 }
