@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=nvm-desktop-bin
 _pkgname=NVM.Desktop
-pkgver=4.0.0
+pkgver=4.0.1
 pkgrel=1
-pkgdesc="Node Version Manager Desktop - A desktop application to manage multiple active node.js versions."
+pkgdesc="Node Version Manager Desktop - A desktop application to manage multiple active node.js versions.Prebuilt version."
 arch=(
     'aarch64'
     'x86_64'
@@ -23,15 +23,15 @@ source=(
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_arm64.deb")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_amd64.deb")
 sha256sums=('67fae9ba39c4a7c4af6bc4c4e25e72b6e8786f064f79107e534e5d8cff2c10c2')
-sha256sums_aarch64=('5fcbaa36ba536b4486316501a11265a4a45dc945ed4fe82706b5351d7c10e489')
-sha256sums_x86_64=('614b61f610d6ffa010a1538108fc8f3691814b6f37758e1fd27866960604b9e4')
+sha256sums_aarch64=('be88c1ec3fbf3f6ee4f4d320bc794217b2609d8aac92016a7fea4068d0a22871')
+sha256sums_x86_64=('599e267a844cf132ec8609d9cc9f338806cf2b5323fd6fd88a178d1a976b55c7')
 build() {
     bsdtar -xf "${srcdir}/data."*
 }
 package() {
     install -Dm755 "${srcdir}/usr/bin/${pkgname%-bin}" -t "${pkgdir}/usr/bin"
-    install -Dm755 "${srcdir}/usr/lib/${_pkgname//./ }/resources/nvmd" -t "${srcdir}/pkgdir/lib/${_pkgname//./ }/resources"
-    install -Dm644 "${srcdir}/usr/lib/${_pkgname//./ }/icons/icon.png" -t "${srcdir}/pkgdir/lib/${_pkgname//./ }/icons"
+    install -Dm755 "${srcdir}/usr/lib/${_pkgname//./ }/resources/nvmd" -t "${pkgdir}/usr/lib/${_pkgname//./ }/resources"
+    install -Dm644 "${srcdir}/usr/lib/${_pkgname//./ }/icons/icon.png" -t "${pkgdir}/usr/lib/${_pkgname//./ }/icons"
     _icon_sizes=(32x32 128x128 256x256@2)
     for _icons in "${_icon_sizes[@]}";do
         install -Dm644 "${srcdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname%-bin}.png" \
