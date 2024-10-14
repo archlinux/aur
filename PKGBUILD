@@ -3,7 +3,7 @@ _pkgname=noi
 pkgname="${_pkgname}-desktop-bin"
 pkgver=0.4.0
 _electronversion=28
-pkgrel=2
+pkgrel=3
 pkgdesc="Power Your World with AI - Explore, Extend, Empower."
 arch=("x86_64")
 url="https://noi.nofwl.com/"
@@ -27,7 +27,7 @@ build() {
 package() {
     install -Dm755 -d "${pkgdir}/usr/"{bin,lib/"${pkgname%-bin}"}
     cp -Pr --no-preserve=ownership "${srcdir}/usr/lib/${_pkgname}/"* "${pkgdir}/usr/lib/${pkgname%-bin}"
-    ln -sf "/usr/lib/${pkgname%-bin}" "${pkgdir}/usr/bin/${pkgname%-bin}"
+    ln -sf "/usr/lib/${pkgname%-bin}/${_pkgname}" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm644 "${srcdir}/usr/share/applications/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
     install -Dm644 "${srcdir}/usr/share/pixmaps/${_pkgname}.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-bin}.png"
     install -Dm644 "${srcdir}/usr/lib/${_pkgname}/LICENSE"* -t "${pkgdir}/usr/share/licenses/${pkgname}"
