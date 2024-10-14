@@ -5,11 +5,11 @@ pkgver=r80.cbd31a1
 pkgrel=1
 epoch=
 pkgdesc="Obfuscate UDP traffic to hide from deep packet inspection"
-arch=(any)
+arch=('x86_64' 'aarch64')
 url="https://github.com/RoliSoft/${_pkgname}"
 license=('GPL')
 groups=()
-depends=('libpcap')
+depends=('libpcap' 'libssl.so=3' 'libcrypto.so=3' 'glibc')
 makedepends=('git' 'gcc' 'make')
 checkdepends=()
 optdepends=()
@@ -20,18 +20,19 @@ backup=()
 options=()
 install=
 changelog=
-source=(git+${url}.git)
+source=(git+${url}.git 'ctypes.patch')
 noextract=()
-md5sums=('SKIP')
+sha256sums=('SKIP'
+            '4eba65b38359124c8d8c6aa9c8b2e91b8b9bf8e6f77f7ca824eebb393e42dd3d')
 validpgpkeys=()
 
-#prepare() {
-#	cd "$pkgname-$pkgver"
-#	patch -p1 -i "$srcdir/$pkgname-$pkgver.patch"
-#}
-
-
 builddir=${_pkgname}
+prepare() {
+    cd "$builddir"
+    patch -p1 -i "$srcdir/ctypes.patch"
+}
+
+
 build() {
     cd "$builddir"
 	make
@@ -48,6 +49,7 @@ check() {
 }
 
 package() {
-	echo $pwd
-#cd "$builddir"
+	cd "$builddir"
+	install -D -m755 tunnel "${pkgdir}/usr/bin/${pkgname/-git/}"
+	install -D -m644 LICENSE.md "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }

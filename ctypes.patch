@@ -1,0 +1,12 @@
+diff --git a/shared.cpp b/shared.cpp
+index 46b4a0c..59d9301 100644
+--- a/shared.cpp
++++ b/shared.cpp
+@@ -2,6 +2,7 @@
+ 
+ #include <stdio.h>
+ #include <stdlib.h>
++#include <ctype.h>
+ #include <unistd.h>
+ #include <string.h>
+ #include <limits.h>
