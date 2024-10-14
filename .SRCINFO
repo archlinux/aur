@@ -1,6 +1,6 @@
 pkgbase = tartrazine
 	pkgdesc = A syntax highlighting tool
-	pkgver = 0.11.0
+	pkgver = 0.11.1
 	pkgrel = 1
 	url = https://github.com/ralsina/tartrazine
 	install = install
@@ -9,7 +9,7 @@ pkgbase = tartrazine
 	license = MIT
 	makedepends = crystal
 	makedepends = shards
-	source = tartrazine-0.11.0.tar.gz::https://github.com/ralsina/tartrazine/archive/refs/tags/v0.11.0.tar.gz
-	sha256sums = 2c8b0d0377082cf2213f5ece91af360734bb16ea02ba73c11f61e0bfd0428782
+	source = tartrazine-0.11.1.tar.gz::https://github.com/ralsina/tartrazine/archive/refs/tags/v0.11.1.tar.gz
+	sha256sums = c3b17949b4994cab65e2ab72cabb258ddf8a11c1f3db150847f664daea392048
 
 pkgname = tartrazine
