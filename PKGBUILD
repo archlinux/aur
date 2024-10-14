@@ -1,44 +1,86 @@
-# Maintainer: Jean Lucas <jean@4ray.co>
-
+# Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
+# Contributor: Jean Lucas <jean@4ray.co>
 pkgname=whalebird-git
-pkgver=2.8.0+r41+g76790c7
+_pkgname=Whalebird
+pkgver=6.1.7.r0.gaada09e
+_electronversion=31
+_nodeversion=20
 pkgrel=1
-pkgdesc='Electron-based Mastodon/Pleroma client (git)'
-arch=(i686 x86_64)
-url=https://whalebird.org
-license=(MIT)
-provides=(whalebird)
-conflicts=(whalebird whalebird-bin)
-makedepends=(git npm)
-source=(git+https://github.com/h3poteto/whalebird-desktop
-        whalebird.desktop)
-sha512sums=('SKIP'
-            '3e5f29fc6db305957b81abc8e4b4679fbd979bbf41ce0c190b19c31a96a3bfe03b624885961ce6d7410716d286c82548b960ebbc1e547c1cacc0b16175eecee2')
-
+pkgdesc="Single-column Fediverse client for desktop."
+arch=('any')
+url="https://whalebird.social/"
+_ghurl="https://github.com/h3poteto/whalebird-desktop"
+license=('GPL-3.0-only')
+provides=("${pkgname%-bin}=${pkgver}")
+conflicts=("${pkgname%-bin}")
+depends=(
+    "electron${_electronversion}"
+)
+makedepends=(
+    'npm'
+    'nvm'
+    'git'
+    'curl'
+    'yarn'
+)
+source=(
+    "${pkgname//-/.}::git+${_ghurl}.git"
+    "${pkgname%-git}.sh"
+)
+sha256sums=('SKIP'
+            '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 pkgver() {
-  cd whalebird-desktop
-  git describe --tags | sed 's#-#+#g;s#+#+r#'
+    cd "${srcdir}/${pkgname//-/.}"
+    set -o pipefail
+    git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/v//g' ||
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
-
+_ensure_local_nvm() {
+    local NVM_DIR="${srcdir}/.nvm"
+    source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
+    nvm install "${_nodeversion}"
+    nvm use "${_nodeversion}"
+}
 build() {
-  cd whalebird-desktop
-  npm install
-  npm run build
-  npx electron-builder --dir
+    sed -e "
+        s/@electronversion@/${_electronversion}/g
+        s/@appname@/${pkgname%-git}/g
+        s/@runname@/app.asar/g
+        s/@cfgdirname@/${pkgname%-git}/g
+        s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
+    " -i "${srcdir}/${pkgname%-git}.sh"
+    _ensure_local_nvm
+    gendesk -q -f -n --pkgname="${pkgname%-git}" --pkgdesc="${pkgdesc}" --categories="Utility" --name="${_pkgname}" --exec="${pkgname%-git} %U"
+    cd "${srcdir}/${pkgname//-/.}"
+    export ELECTRON_SKIP_BINARY_DOWNLOAD=1
+    export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
+    HOME="${srcdir}/.electron-gyp"
+    electronDist="/usr/lib/electron${_electronversion}"
+    mkdir -p "${srcdir}/.electron-gyp"
+    touch "${srcdir}/.electron-gyp/.yarnrc"
+    if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
+        {
+          echo 'npmRegistryServer: "https://registry.npmmirror.com"'
+          echo "cacheFolder: "${srcdir}"/.yarn/cache"
+          echo "globalFolder: "${srcdir}"/.yarn/global"
+        } >> .yarnrc.yml
+        export npm_config_disturl=https://registry.npmmirror.com/-/binary/node/
+        export npm_config_electron_mirror=https://registry.npmmirror.com/-/binary/electron/
+        export npm_config_electron_builder_binaries_mirror=https://registry.npmmirror.com/-/binary/electron-builder-binaries/
+    fi
+    sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
+    NODE_ENV=development    npx yarn install
+    NODE_ENV=production     npx yarn exec nextron build --no-pack
+    NODE_ENV=production     npx yarn exec electron-builder --linux --dir -c.electronDist="${electronDist}"
 }
-
 package() {
-  install -Dm 644 whalebird.desktop -t "$pkgdir"/usr/share/applications
-
-  cd whalebird-desktop/build
-
-  cp -a linux-unpacked "$pkgdir"/usr/share/whalebird
-
-  for i in 16 32 128 256 512; do
-    install -Dm 644 icons/icon.iconset/icon_${i}x${i}.png \
-      "$pkgdir"/usr/share/icons/hicolor/${i}x${i}/apps/whalebird.png
-  done
-
-  mkdir "$pkgdir"/usr/bin
-  ln -s /usr/share/whalebird/whalebird "$pkgdir"/usr/bin/whalebird
+    install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
+    install -Dm644 "${srcdir}/${pkgname//-/.}/dist/linux-"*/resources/app.asar -t "${pkgdir}/usr/lib/${pkgname%-git}"
+    _icon_sizes=(16x16 32x32 128x128 256x256 512x512)
+    for _icons in "${_icon_sizes[@]}";do
+        install -Dm644 "${srcdir}/${pkgname//-/.}/resources/icons/icon.iconset/icon_${_icons}.png" \
+            "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname%-git}.png"
+    done
+    install -Dm644 "${srcdir}/${pkgname%-git}.desktop" -t "${pkgdir}/usr/share/applications"
+    install -Dm644 "${srcdir}/${pkgname//-/.}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
