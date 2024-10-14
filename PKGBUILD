@@ -2,7 +2,7 @@
 # Maintainer: Jonas Lähnemann <jonas at pdi-berlin dot de>
 pkgname=python-diffsims
 pkgshort=diffsims
-pkgver=0.6.0
+pkgver=0.6.1
 pkgrel=1
 pkgdesc="Python library for simulating diffraction."
 arch=('any')
@@ -10,14 +10,14 @@ url="https://diffsims.rtfd.io/"
 license=('GPL3')
 
 depends=('python'
-         'python-diffpy.structure>=3.0.0'
+         'python-diffpy.structure>=3.0.2'
          'python-matplotlib>=3.3'
 	 'python-numba'
-	 'python-numpy>=1.17'
-	 'python-orix>=0.5.0'
+	 'python-numpy>=1.17.3'
+	 'python-orix>=0.12.1'
 	 'python-psutil'
-         'python-scipy'
-	 'python-tqdm'
+         'python-scipy>=1.8'
+	 'python-tqdm>=4.9'
 	 'python-transforms3d'
          )
 
@@ -32,4 +32,4 @@ package() {
   python setup.py install --root="$pkgdir/" --optimize=1
 }
 
-md5sums=('10aff3d45a7e82f807bb3369efe947a4')
+md5sums=('d41a5884e369c8ab058e2a37bc1387f8')
