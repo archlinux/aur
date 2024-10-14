@@ -1,7 +1,7 @@
 # Maintainer: ipochto <ipochto@gmail.com>
 
 pkgname=war1gus-git
-pkgver=3.3.2.r1233.c2a6013_20220811
+pkgver=3.3.2.r1322.1217af5_20241014
 pkgrel=1
 pkgdesc="Warcraft1 Mod that allows you to play Warcraft1 with the Stratagus engine (dev version)"
 arch=("i686" "x86_64")
@@ -35,6 +35,10 @@ pkgver() {
 }
 
 build() {
+  cd ${srcdir}/${pkgname}
+  git submodule init
+  git submodule update
+
   cd ${srcdir}
   cmake ${pkgname} -DCMAKE_INSTALL_PREFIX=/usr -DGAMEDIR=/usr/bin -Bbuild
   make -C build
