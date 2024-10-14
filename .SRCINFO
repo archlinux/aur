@@ -1,0 +1,22 @@
+pkgbase = vircon32-desktop-emulator-git
+	pkgdesc = Vircon32 Desktop Emulator
+	pkgver = 24.8.30.r0.gc83283b
+	pkgrel = 1
+	url = http://www.vircon32.com/
+	arch = x86_64
+	license = BSD
+	makedepends = glibc
+	makedepends = git
+	makedepends = cmake
+	depends = mesa
+	depends = sdl2
+	depends = sdl2_image
+	depends = openal
+	depends = freealut
+	depends = tinyxml2
+	depends = gtk2
+	provides = vircon32-desktop-emulator
+	source = vircon32::git+https://github.com/vircon32/ComputerSoftware.git
+	sha256sums = SKIP
+
+pkgname = vircon32-desktop-emulator-git
