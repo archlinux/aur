@@ -1,0 +1,16 @@
+[Unit]
+Description = qBittorrent-ClientBlocker service (user)
+Wants = network-online.target
+After = qbittorrent-nox@.service qbittorrent-nox.service
+
+[Service]
+Type = simple
+Restart = always
+ExecStartPre = /usr/bin/mkdir -p %E/qbittorrent-clientblocker
+ExecStartPre = /usr/bin/sh -c "if [ ! -f %E/qbittorrent-clientblocker/config.toml ]; then cp /usr/share/qbittorrent-clientblocker/config-user.sample.toml %E/qbittorrent-clientblocker/config.toml; fi"
+ExecStartPre = /usr/bin/sh -c "if [ ! -f %E/qbittorrent-clientblocker/blockList.json ]; then cp /usr/share/qbittorrent-clientblocker/blockList.json %E/qbittorrent-clientblocker/blockList.json; fi"
+ExecStartPre = /usr/bin/sh -c "if [ ! -f %E/qbittorrent-clientblocker/ipBlockList.txt ]; then cp /usr/share/qbittorrent-clientblocker/ipBlockList.txt %E/qbittorrent-clientblocker/ipBlockList.txt; fi"
+ExecStart = /usr/bin/sh -c "cd %E/qbittorrent-clientblocker; /usr/bin/qbittorrent-clientblocker --nochdir -c config.toml"
+
+[Install]
+WantedBy = default.target

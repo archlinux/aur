@@ -1,0 +1,14 @@
+[Unit]
+Description = qBittorrent-ClientBlocker service
+Wants = network-online.target
+After = qbittorrent-nox@.service qbittorrent-nox.service
+
+[Service]
+Type = simple
+Restart = always
+User = qbittorrent-clientblocker
+WorkingDirectory = /etc/qbittorrent-clientblocker
+ExecStart = /usr/bin/qbittorrent-clientblocker --nochdir -c config.toml
+
+[Install]
+WantedBy = multi-user.target
