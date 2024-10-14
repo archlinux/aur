@@ -22,7 +22,7 @@ pkgbase = flowee-pay
 	options = !lto
 	source = https://codeberg.org/Flowee/pay/archive/2024.10.1.tar.gz
 	source = https://flowee.org/products/pay/blockheaders-850000
-	sha256sums = f0a90e2a398417901767853c42e6b3db6ae142e25240a8f1bc536035fb529e9d
+	sha256sums = a304e0cd7ddefc974a21a5ca3112d65ea10c3831a1f0808beea091649c8de7b2
 	sha256sums = 4a98c3b655cfd7520b4d4f682d95e3a82e0f03fda4fa687d28f2127205d66047
 
 pkgname = flowee-pay
