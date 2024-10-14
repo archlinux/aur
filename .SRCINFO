@@ -1,0 +1,14 @@
+pkgbase = tau-prolog
+	pkgdesc = An open source Prolog interpreter in JavaScript
+	pkgver = 0.3.3
+	pkgrel = 1
+	url = http://tau-prolog.org/
+	arch = any
+	license = BSD-3-Clause
+	makedepends = npm
+	noextract = v0.3.3.tar.gz
+	options = !strip
+	source = https://github.com/tau-prolog/tau-prolog/archive/refs/tags/v0.3.3.tar.gz
+	sha256sums = d764eea5e31544970d1c273620741553ec403800ca67c552982b0b12b5630fa1
+
+pkgname = tau-prolog
