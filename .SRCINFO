@@ -8,6 +8,7 @@ pkgbase = steamachievementnotifier-bin
 	makedepends = fuse2
 	makedepends = asar
 	depends = electron32
+	depends = steam
 	provides = steamachievementnotifier=1.9.13
 	conflicts = steamachievementnotifier
 	source = steamachievementnotifier-1.9.13.AppImage::https://github.com/SteamAchievementNotifier/SteamAchievementNotifier/releases/download/1.9.13/SteamAchievementNotifier_V1.9.13.AppImage

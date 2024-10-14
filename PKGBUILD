@@ -14,7 +14,7 @@ provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
     "electron${_electronversion}"
-    #'steam'
+    'steam'
 )
 makedepends=(
     'fuse2'
