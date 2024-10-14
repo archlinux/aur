@@ -1,9 +1,12 @@
 # Maintainer: Andrei Dubovik <andrei at dubovik dot eu>
 pkgname=protonmail-bridge-nokeychain
 provides=("protonmail-bridge")
-conflicts=("protonmail-bridge")
+conflicts=(
+    "protonmail-bridge"
+    "protonmail-bridge-core"
+)
 pkgver=3.14.0
-pkgrel=1
+pkgrel=2
 pkgdesc="An IMAP/SMTP bridge to a ProtonMail account (patched, stores secrets in a file)"
 arch=("x86_64")
 url="https://protonmail.com/bridge/"
