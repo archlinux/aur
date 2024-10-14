@@ -1,14 +1,15 @@
-# Maintainer: Andrew Lin <andrewlin16 at gmail dot com>
-# Previous maintainer: Ian D. Scott <ian@perebruin.com>
+# Maintainer: Sich <little_sich@tuta.io> 
+# Contributor: Andrew Lin <andrewlin16 at gmail dot com> 
+# Contributor: Ian D. Scott <ian@perebruin.com>
 
 pkgname=zxtune-git
-pkgver=r5054.r0.g2d3461378
+pkgver=r5075.r2.g44be56ac0
 pkgrel=1
 pkgdesc="Portable toolkit for ZX-Spectrum music playing"
 arch=('i686' 'x86_64')
 url="http://zxtune.bitbucket.io"
 license=('GPL3')
-depends=('boost-libs' 'gcc-libs' 'qt4' 'zlib')
+depends=('boost-libs' 'zlib' 'qt5-base')
 optdepends=(
 'alsa-lib: for ALSA output support'
 'lame: for conversion to .mp3 format'
@@ -16,7 +17,7 @@ optdepends=(
 'flac: for conversion to .flac format'
 'curl: for accessing data via network schemes'
 )
-makedepends=('git' 'gcc' 'zip' 'boost')
+makedepends=('make' 'boost' 'git' 'gcc')
 provides=('zxtune')
 conflicts=('zxtune-bin')
 options=(!strip !docs !libtool !emptydirs !zipman makeflags)
