@@ -1,0 +1,16 @@
+pkgbase = python-miltertest
+	pkgdesc = A Python milter protocol, mainly to act as an MTA to test milter implementations
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/flowerysong/miltertest
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-hatchling
+	depends = python-pytest
+	source = miltertest-1.0.0.tar.gz::https://files.pythonhosted.org/packages/source/m/miltertest/miltertest-1.0.0.tar.gz
+	sha256sums = fba38009d2966e64abd6092d1e665b3251743c5332508a9c8845b4922016b1cb
+
+pkgname = python-miltertest
