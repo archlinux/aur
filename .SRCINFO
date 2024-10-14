@@ -1,7 +1,7 @@
 pkgbase = cohesion-git
 	pkgdesc = Notion client for Linux
-	pkgver = r173.gda1c1d0
-	pkgrel = 3
+	pkgver = r184.g9b21e70
+	pkgrel = 1
 	url = https://github.com/brunofin/cohesion
 	arch = x86_64
 	license = MIT
