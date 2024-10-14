@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=witsy-git
 _pkgname=Witsy
-pkgver=1.17.1.r1.g780e716
-_electronversion=29
+pkgver=1.18.0.r16.g98de02f
+_electronversion=32
 _nodeversion=20
 pkgrel=1
 pkgdesc="Generative AI desktop application.Use system-wide electron."
@@ -54,16 +54,18 @@ build() {
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
     HOME="${srcdir}/.electron-gyp"
     {
-        echo -e '\n'   
+        echo -e '\n'	
         #echo 'build_from_source=true'
         echo "cache=${srcdir}/.npm_cache"
-        if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
+    } >> .npmrc
+    if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
+        {
             echo 'registry=https://registry.npmmirror.com'
             echo 'disturl=https://registry.npmmirror.com/-/binary/node/'
             echo 'electron_mirror=https://registry.npmmirror.com/-/binary/electron/'
             echo 'electron_builder_binaries_mirror=https://registry.npmmirror.com/-/binary/electron-builder-binaries/'
-        fi
-    } >> .npmrc
+        } >> .npmrc
+    fi
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
     NODE_ENV=development    npm install
     NODE_ENV=production     npm run package
