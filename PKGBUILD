@@ -2,7 +2,7 @@
 pkgname=witsy-bin
 _pkgname=Witsy
 pkgver=1.18.0
-_electronversion=29
+_electronversion=32
 pkgrel=1
 pkgdesc="Generative AI desktop application.Prebuilt version.Use system-wide electron."
 arch=("x86_64")

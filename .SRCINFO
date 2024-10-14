@@ -6,7 +6,7 @@ pkgbase = witsy-bin
 	arch = x86_64
 	license = Apache-2.0
 	makedepends = gendesk
-	depends = electron29
+	depends = electron32
 	provides = witsy=1.18.0
 	conflicts = witsy
 	options = !emptydirs
