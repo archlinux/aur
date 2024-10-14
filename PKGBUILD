@@ -5,8 +5,8 @@
 
 _basename=deskflow
 pkgname=${_basename}-bin
-pkgver=1.17.0.r1
-pkgrel=2
+pkgver=1.17.0
+pkgrel=3
 pkgdesc="Deskflow lets you share one mouse and keyboard between multiple computers (binary version)"
 arch=('x86_64')
 url="https://deskflow.org/"
@@ -34,7 +34,7 @@ optdepends=(
 )
 provides=("$_basename")
 conflicts=("$_basename" 'synergy')
-source=("https://github.com/deskflow/deskflow/releases/download/${pkgver/.r/+r}/deskflow_${pkgver/.r/+r}_fedora-40_amd64.rpm")
+source=("https://github.com/deskflow/deskflow/releases/download/v$pkgver/deskflow_${pkgver}+r1_fedora-40_amd64.rpm")
 sha256sums=('26b78af06f60f18764871c28560620d5f90928b812c62188aeb1fad598b0dba5')
 
 package() {
