@@ -1,13 +1,13 @@
 pkgbase = grpc-csharp-plugin-bin
 	pkgdesc = Pre-compiled grpc_csharp_plugin binary extracted from Grpc.Tools NuGet package
-	pkgver = 2.66.0
+	pkgver = 2.67.0
 	pkgrel = 1
 	url = https://www.nuget.org/packages/Grpc.Tools/
 	arch = x86_64
 	arch = i686
 	arch = aarch64
 	license = Apache
-	source = Grpc.Tools.2.66.0.nupkg::https://www.nuget.org/api/v2/package/Grpc.Tools/2.66.0
-	sha256sums = SKIP
+	source = Grpc.Tools.2.67.0.nupkg::https://www.nuget.org/api/v2/package/Grpc.Tools/2.67.0
+	sha256sums = 9acfe56d6c1bf54b891cd9774f95f6980ba5087850ded122a912d605f518a15d
 
 pkgname = grpc-csharp-plugin-bin
