@@ -12,7 +12,7 @@
 # https://arnon.dk/matching-sm-architectures-arch-and-gencode-for-various-nvidia-cards/
 
 pkgname=ffmpeg-cuda
-pkgver=7.0.0
+pkgver=7.1.0
 pkgrel=1
 epoch=1
 pkgdesc='Complete solution to record, convert and stream audio and video. Includes cuda support.'
