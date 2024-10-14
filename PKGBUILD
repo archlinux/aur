@@ -3,7 +3,7 @@
 _pkgbase=penpot
 pkgname=(penpot penpot-exporter penpot-frontend)
 pkgver=2.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="The open-source design tool for design and code collaboration "
 arch=('x86_64')
 url="https://penpot.app"
@@ -11,29 +11,7 @@ license=('MPL-2.0')
 # penpot is using 19, but archlinux only has 17 and 21. 17 and > 21 doesnt work
 # also jdk is needed and not only jre
 _jdkver="21"
-depends=(
-  "java-environment>=${_jdkver}" "java-environment<=${_jdkver}"
-  'nodejs'
-  'redis'
-  'postgresql'
-  'imagemagick'
-  'poppler'
-  'potrace'
-  'woff2'
-  'fontforge'
-  'rlwrap'
-  'libwebp'
-  'fontconfig'
-  'ghostscript'
-  'netpbm'
-  'potrace'
-)
 makedepends=('clojure' 'git' 'curl' 'npm' 'yarn' 'rsync' 'babashka')
-optdepends=(
-  "python-tabulator: for the penbot-manage script"
-  "sfnt2woff: for uploading own fonts"
-  "chromium: for making the exporter work"
-)
 source=(
   https://github.com/penpot/penpot/archive/refs/tags/$pkgver.tar.gz
   sysusers.conf
@@ -52,13 +30,14 @@ sha256sums=(
   'bc133ba7409921978655c488293ef83f77250fd65cb7d574c3cba9f34ff42523'
   '828087c8fab14fb481b4bd01d92f47e9ecc9c07551a7a873bcfbafd1e3644afb'
   'a95f1029cec7cf408cf19cb97cf235c48f671aa93424c138759ee77e239d1c6a'
-  '865ac061c90c1f64b60af7f1e36938748e2e2bd45e680b429e41dc9db6892bf8'
+  'ee1c7f1566b31ae8666c4444568906db5745a11b01c4ca53eda6b8f508f88e86'
   'f3208349de006fc26119cd9b034958bbfa3c161bfb76a752d43d5b563df6e33d'
   'b759994786bcbba553ba50837c8f222760b344319e81655f32ea6e68097ec02a'
   '29f5cde4d5ba6d73b14d6fd88a0be930c6bcf5eff3512332cba50a30316c6621'
 )
 
 build() {
+  export YARN_CACHE_FOLDER="${srcdir}/.yarn-cache"
   # # build the frontend
   echo "==== BULDING frontend"
   cd "${srcdir}/${_pkgbase}-${pkgver}/frontend"
@@ -92,22 +71,36 @@ build() {
   sed -i s#penpot.jar#/usr/share/java/penpot/backend.jar# target/dist/run.sh
 }
 
-package_penpot-exporter() {
-  npm install -g \
-    --cache "${srcdir}/npm-cache" \
-    --prefix "${pkgdir}/usr" \
-    "${srcdir}/${_pkgbase}-${pkgver}/exporter/target/penpot-exporter.tgz"
-  install -Dm644 penpot-exporter.service "${pkgdir}/usr/lib/systemd/system/penpot-exporter.service"
-}
-
 package_penpot-frontend() {
   install -dm 755 "${pkgdir}/usr/share/webapps/penpot"
+  install -Dm755 penpot-update-flags.sh "${pkgdir}/usr/bin/penpot-update-flags.sh"
   cp -r "${srcdir}/${_pkgbase}-${pkgver}/frontend/target/dist/"* \
     "${pkgdir}/usr/share/webapps/penpot/"
 }
 
 package_penpot() {
   backup=("etc/conf.d/penpot")
+  depends=(
+    "java-environment>=${_jdkver}" "java-environment<=${_jdkver}"
+    'nodejs'
+    'redis'
+    'postgresql'
+    'imagemagick'
+    'poppler'
+    'potrace'
+    'woff2'
+    'fontforge'
+    'rlwrap'
+    'libwebp'
+    'fontconfig'
+    'ghostscript'
+    'netpbm'
+    'potrace'
+  )
+  optdepends=(
+    "python-tabulator: for the penbot-manage script"
+    "sfnt2woff: for uploading own fonts"
+  )
 
   install -Dm644 "${srcdir}/${_pkgbase}-${pkgver}/backend/target/dist/penpot.jar" \
     "${pkgdir}/usr/share/java/penpot/backend.jar"
@@ -116,10 +109,37 @@ package_penpot() {
   install -Dm755 "${srcdir}/${_pkgbase}-${pkgver}/backend/target/dist/manage.py" \
     "${pkgdir}/usr/bin/penpot-manage"
 
-  install -Dm755 penpot-update-flags.sh "${pkgdir}/usr/bin/penpot-update-flags.sh"
   install -Dm644 penpot.conf.d "${pkgdir}/etc/conf.d/penpot"
   install -Dm644 penpot.service "${pkgdir}/usr/lib/systemd/system/penpot.service"
   install -Dm644 sysusers.conf "${pkgdir}/usr/lib/sysusers.d/penpot.conf"
   install -Dm644 penpot.tmpfiles.d "${pkgdir}/usr/lib/tmpfiles.d/penpot.conf"
   install -Dm644 nginx.conf "${pkgdir}/usr/share/penpot/nginx.conf"
+}
+
+package_penpot-exporter() {
+  backup=("etc/conf.d/penpot-exporter")
+  depends=(
+    'nodejs'
+    'redis'
+    'postgresql'
+    'imagemagick'
+    'poppler'
+    'potrace'
+    'woff2'
+    'fontforge'
+    'rlwrap'
+    'libwebp'
+    'fontconfig'
+    'ghostscript'
+    'netpbm'
+    'potrace'
+    "chromium"
+  )
+
+  npm install -g \
+    --cache "${srcdir}/.npm-cache" \
+    --prefix "${pkgdir}/usr" \
+    "${srcdir}/${_pkgbase}-${pkgver}/exporter/target/penpot-exporter.tgz"
+  install -Dm644 penpot-exporter.service "${pkgdir}/usr/lib/systemd/system/penpot-exporter.service"
+  install -Dm644 penpot-exporter.conf.d "${pkgdir}/etc/conf.d/penpot-exporter"
 }

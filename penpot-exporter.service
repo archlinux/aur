@@ -1,5 +1,5 @@
 [Unit]
-Description=penpot backend
+Description=penpot exporter
 After=penpot.service
 After=redis.service
 
