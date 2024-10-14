@@ -3,6 +3,7 @@ pkgbase = libpthread-stubs
 	pkgver = 0.5
 	pkgrel = 1
 	url = https://gitlab.freedesktop.org/xorg/lib/pthread-stubs
+	arch = aarch64
 	arch = i686
 	arch = x86_64
 	license = MIT
