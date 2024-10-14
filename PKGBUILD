@@ -2,7 +2,7 @@
 pkgname=ocat-bin
 _appname=OCAT
 _pkgname=OCAuxiliaryTools
-pkgver=20240003
+pkgver=20240004
 pkgrel=1
 pkgdesc="OpenCore Auxiliary Tools is a GUI-based Configurator for editing config.plist files for Acidanthera's OpenCore Boot Manager.Prebuilt version."
 arch=("x86_64")
@@ -30,7 +30,7 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/ic005k/OCAuxiliaryTools/${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('e882cf0aae77ed35302a0ef76f6a02785f8cfc96db0e9c025008fbbe092a326b'
+sha256sums=('68fef6628ed4c50fabdb9dd1200e93e7ee63dd956a1eb5306f09e1067980e811'
             '3515a1c9e2ce8df51e80f0a03a0ffca92430c7dca6989ff20b16031d676a652b'
             'bafc8570aa7f973b5a662e2d2fa23d8d2fd291fa5d3f0265cbfeaf8e2d82ed76')
 build() {
