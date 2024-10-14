@@ -7,7 +7,7 @@ pkgdesc="A complete and open application dedicated to backing tracks generation.
 arch=('i686' 'x86_64' 'aarch64')
 url="https://www.jjazzlab.org/"
 license=('LGPL-2.1-or-later')
-depends=('java-runtime=17', 'fluidsynth')
+depends=('java-runtime=17' 'fluidsynth')
 source=("https://github.com/jjazzboss/JJazzLab/releases/download/${pkgver}/JJazzLab-${pkgver}-linux-x64.tar.xz" "jjazzlab.desktop")
 sha256sums=('7ba52340c5821a9312d02ad3f708efff1c3e8079b84021512731dd0a3d45b00b'
             '0c11ad2c50439741a43629e551b9134e51b043c8c5250e1f47768dc9b443a034')

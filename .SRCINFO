@@ -7,7 +7,7 @@ pkgbase = jjazzlab-bin
 	arch = x86_64
 	arch = aarch64
 	license = LGPL-2.1-or-later
-	depends = java-runtime=17,
+	depends = java-runtime=17
 	depends = fluidsynth
 	source = https://github.com/jjazzboss/JJazzLab/releases/download/4.1.1/JJazzLab-4.1.1-linux-x64.tar.xz
 	source = jjazzlab.desktop
