@@ -120,8 +120,8 @@ prepare() {
   msg '4. Convert Mecab-ipadic-neologd to Mozc System Dictionary format. It may take some time...'
   ./target/$TARGET/release/dict-to-mozc -n -P 12 -N 10 -i ./id.def -f ${srcdir}/mecab-user-dict-seed.20200910.csv >> all-dict.txt
   msg '5. Duplicate data will be removed.'
-  # 読み、品詞、表記による重複チェック
-  awk 'BEGIN{FS="\t";OFS="\t"}{if (!a[$1,$2,$5]++) {print $0}}' all-dict.txt|sort -u > finish-dict.txt
+  # 読み、品詞ID、右品詞ID、表記による重複チェック
+  awk 'BEGIN{FS="\t";OFS="\t"}{if (!a[$1,$2,$3,$5]++) {print $0}}' all-dict.txt|sort > finish-dict.txt
   msg '6. Finally, add the SudachiDict dictionary to the Mozc source.'
   mkdir -p tmp
   cd tmp
