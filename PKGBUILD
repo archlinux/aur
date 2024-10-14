@@ -2,7 +2,7 @@
 # Maintainer: Jonas Lähnemann <jonas at pdi-berlin dot de>
 pkgname=python-exspy
 pkgshort=exspy
-pkgver=0.2.1
+pkgver=0.3
 pkgrel=1
 pkgdesc="Analysis of EDS and EELS data with HyperSpy"
 arch=('any')
@@ -13,7 +13,7 @@ depends=('python'
          'python-dask'
          'python-hyperspy>=2.0rc0'
          'python-matplotlib'
-         'python-numexpr'
+         'python-numexpr' # speed
          'python-numpy'
          'python-pint'
          'python-pooch'
@@ -38,8 +38,10 @@ optdepends=('python-hyperspy-gui-ipywidgets>=2.0: GUI components for Jupyter' # 
              )
 
 
-makedepends=('python-setuptools'
-             'python-setuptools-scm')
+makedepends=('python-setuptools>=64'
+             'python-setuptools-scm>=8'
+             'python-wheel'
+             )
 
 provides=('exspy')
 
@@ -56,4 +58,4 @@ package() {
   python -m installer --destdir="$pkgdir" dist/*.whl
 }
 
-md5sums=('1401cbc6bf9b73ded770ec4e75c2068c')
+md5sums=('dbac0c579c24d74e0a9fa05a54d178ef')

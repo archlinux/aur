@@ -1,12 +1,13 @@
 pkgbase = python-exspy
 	pkgdesc = Analysis of EDS and EELS data with HyperSpy
-	pkgver = 0.2.1
+	pkgver = 0.3
 	pkgrel = 1
 	url = http://hyperspy.org/exspy
 	arch = any
 	license = GPL3
-	makedepends = python-setuptools
-	makedepends = python-setuptools-scm
+	makedepends = python-setuptools>=64
+	makedepends = python-setuptools-scm>=8
+	makedepends = python-wheel
 	depends = python
 	depends = python-dask
 	depends = python-hyperspy>=2.0rc0
@@ -32,7 +33,7 @@ pkgbase = python-exspy
 	optdepends = python-sphinxcontrib-mermaid: build documentation
 	optdepends = python-sphinxcontrib-towncrier
 	provides = exspy
-	source = https://github.com/hyperspy/exspy/archive/v0.2.1.tar.gz
-	md5sums = 1401cbc6bf9b73ded770ec4e75c2068c
+	source = https://github.com/hyperspy/exspy/archive/v0.3.tar.gz
+	md5sums = dbac0c579c24d74e0a9fa05a54d178ef
 
 pkgname = python-exspy
