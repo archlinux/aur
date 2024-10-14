@@ -2,7 +2,7 @@
 # Contributor: PolpOnline <aur at t0mmy dot anonaddy dot com>
 pkgname=gitify
 _pkgname=Gitify
-pkgver=5.16.0
+pkgver=5.16.1
 _electronversion=32
 _nodeversion=20
 pkgrel=1
@@ -27,7 +27,7 @@ source=(
     "${pkgname}-${pkgver}.tar.gz::${_ghurl}/archive/refs/tags/v${pkgver}.tar.gz"
     "${pkgname}.sh"
 )
-sha256sums=('c609e858ffe817aee14bf4872d1f0957a081fba298f19e7055ab1398ccc76f0f'
+sha256sums=('20af5c206ea749dc766ccba63a8643a79de5ca7e9a739f839a07173904307175'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
@@ -48,6 +48,7 @@ build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
+    electronDist="/usr/lib/electron${_electronversion}"
     HOME="${srcdir}/.electron-gyp"
     {
         echo -e '\n'
@@ -65,15 +66,12 @@ build() {
             echo 'electron_builder_binaries_mirror=https://registry.npmmirror.com/-/binary/electron-builder-binaries/'
         } >> .npmrc
     fi
-    sed -e "
-        s/\"AppImage\", \"deb\", \"rpm\"/\"dir\"/g
-        s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g
-        s/\"menubar\"\: \"9.5.1\"\,/\"menubar\"\: \"9.5.0\"\,/g
-    " -i package.json
+    sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
     icotool -x assets/images/app-icon.ico -o assets/images/app-icon.png
     NODE_ENV=development    pnpm install
     NODE_ENV=production     pnpm run build
-    NODE_ENV=production     pnpm run package:linux
+    #NODE_ENV=production     pnpm run package:linux
+    NODE_ENV=production     npm exec -c "electron-builder --linux dir -c.electronDist=${electronDist}"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
