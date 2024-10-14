@@ -1,6 +1,6 @@
 # Maintainer: Guillaume Meunier <guillaume.meunier@centraliens.net>
 pkgname=wivrn-dashboard
-pkgver=0.19.1
+pkgver=0.20
 pkgrel=1
 pkgdesc="A wireless Monado-based OpenXR runtime for standalone headsets."
 arch=(x86_64)
@@ -12,16 +12,16 @@ depends=(
 	"hicolor-icon-theme"
 	"qt6-base"
 	"wivrn-server"
+	"polkit"
+	"libcap"
 )
 makedepends=("cmake")
 
-# source=("$pkgname-$pkgver.tar.gz::https://github.com/WiVRn/WiVRn/archive/refs/tags/v$pkgver.tar.gz")
-# sha256sums=('2e6e0813b82e97ed3230140764cf935f06208a89f0dd5ac883825ba5c458ee3f')
-source=('wivrn::git+https://github.com/WiVRn/WiVRn.git')
-sha256sums=('SKIP')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/WiVRn/WiVRn/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('f7022323384b1b2977a1363f4961ccce6d0afc46addc958d4cafd18f5c4f6cb0')
 
 build() {
-	cd wivrn
+	cd "WiVRn-$pkgver"
 	cmake -B build-dashboard . -GNinja \
 	-DGIT_DESC=v${pkgver} \
 	-DWIVRN_BUILD_CLIENT=OFF \
@@ -35,6 +35,6 @@ build() {
 }
 
 package() {
-	cd wivrn
+	cd "WiVRn-$pkgver"
 	DESTDIR="$pkgdir" cmake --install build-dashboard
 }
