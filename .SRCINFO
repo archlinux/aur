@@ -1,0 +1,19 @@
+pkgbase = botgem-bin
+	pkgdesc = Your Al-Powered Toolbox for Tomorrow.Prebuilt version.Use system-wide electron.
+	pkgver = 1.5.1
+	pkgrel = 1
+	url = https://botgem.com/
+	arch = x86_64
+	license = MIT
+	makedepends = asar
+	makedepends = gendesk
+	depends = electron22
+	conflicts = botgem
+	source = botgem-1.5.1.appx::https://github.com/gaodeng/ama-discussions/releases/download/v1.5.1/BotGem.1.5.1.appx
+	source = sqlite3-x86_64.tar.gz::https://github.com/TryGhost/node-sqlite3/releases/download/v5.1.7/sqlite3-v5.1.7-napi-v6-linux-x64.tar.gz
+	source = botgem.sh
+	sha256sums = 2c2caaeac6642f2c4cecaccb6915cce3174a47431605c05fd565a6acf764409c
+	sha256sums = 6d1f7a95e5aca90db1fd6a2839380a021d5ee23d46f2d7c520ded094da813fed
+	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
+
+pkgname = botgem-bin
