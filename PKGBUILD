@@ -2,7 +2,7 @@
 pkgname=python-google-ai-generativelanguage
 _name=${pkgname#python-}
 _name=${_name//-/_}
-pkgver=0.6.6
+pkgver=0.6.9
 pkgrel=1
 pkgdesc="Google Ai Generativelanguage API client library"
 arch=(any)
@@ -17,20 +17,17 @@ replaces=()
 backup=()
 options=(!emptydirs)
 install=
-#source=(https://files.pythonhosted.org/packages/source/${_name::1}/${_name//-/_}/${_name//-/_}-$pkgver.tar.gz)
-source=(https://files.pythonhosted.org/packages/28/38/3d717e70a0020cde7bef8ec998ef3c605f208cc77ba93d22450e09f4d4ee/google-ai-generativelanguage-0.6.6.tar.gz)
+source=(https://files.pythonhosted.org/packages/source/${_name::1}/${_name//-/_}/${_name//-/_}-$pkgver.tar.gz)
 
-sha256sums=('1739f035caeeeca5c28f887405eec8690f3372daf79fecf26454a97a4f1733a8')
+sha256sums=('899f1d3a06efa9739f1cd9d2788070178db33c89d4a76f2e8f4da76f649155fa')
 
 build() {
-    #cd "$srcdir/$_name-$pkgver"
-    cd "$srcdir/${_name//_/-}-$pkgver"
+    cd "$srcdir/$_name-$pkgver"
     python -m build --wheel --no-isolation
 }
 
 package() {
-    #cd "$srcdir/$_name-$pkgver"
-    cd "$srcdir/${_name//_/-}-$pkgver"
+    cd "$srcdir/$_name-$pkgver"
     python -m installer --destdir="$pkgdir" dist/*.whl
 }
 
