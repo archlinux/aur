@@ -59,11 +59,16 @@ optdepends=("libfdk-aac: FDK AAC codec support"
             "xdg-desktop-portal: Pipewire capture")
 provides=("obs-studio=$pkgver")
 conflicts=("obs-studio")
-source=("$pkgname::git+https://github.com/obsproject/obs-studio.git#branch=master"
-        "git+https://github.com/Mixer/ftl-sdk.git"
-        "git+https://github.com/obsproject/obs-browser.git"
-        "git+https://github.com/obsproject/obs-websocket.git")
-sha256sums=("SKIP" "SKIP" "SKIP" "SKIP")
+source=(
+  "$pkgname::git+https://github.com/obsproject/obs-studio.git#branch=master"
+  "git+https://github.com/obsproject/obs-browser.git"
+  "git+https://github.com/obsproject/obs-websocket.git"
+)
+sha256sums=(
+  'SKIP'
+  'SKIP'
+  'SKIP'
+)
 
 pkgver() {
   cd "$pkgname"
@@ -77,7 +82,6 @@ prepare() {
   cd "$pkgname"
   gitconf="protocol.file.allow=always"
 
-  git config submodule.plugins/obs-outputs/ftl-sdk.url $srcdir/ftl-sdk
   git config submodule.plugins/obs-browser.url $srcdir/obs-browser
   git config submodule.plugins/obs-websocket.url $srcdir/obs-websocket
   git -c $gitconf submodule update

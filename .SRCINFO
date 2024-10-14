@@ -56,10 +56,8 @@ pkgbase = obs-studio-git
 	provides = obs-studio=30.2.3.r315.gba6a6bf
 	conflicts = obs-studio
 	source = obs-studio-git::git+https://github.com/obsproject/obs-studio.git#branch=master
-	source = git+https://github.com/Mixer/ftl-sdk.git
 	source = git+https://github.com/obsproject/obs-browser.git
 	source = git+https://github.com/obsproject/obs-websocket.git
-	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
