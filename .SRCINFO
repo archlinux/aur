@@ -1,23 +1,26 @@
 pkgbase = etherlab-ethercat
 	pkgver = 1.6.1
-	pkgrel = 4
+	pkgrel = 5
 	url = https://etherlab.org
 	arch = i686
 	arch = x86_64
 	license = GPL2
-	makedepends = linux-headers
 	source = ethercat-1.6.1.tar.bz2::https://gitlab.com/etherlab.org/ethercat/-/releases/1.6.1/downloads/dist-tarballs/ethercat.tar.bz2
 	source = ethercat.sysusers
 	source = 99-EtherCAT.rules
+	source = dkms.conf
 	sha512sums = 2a4970bc79a029dd3effe6d086308aa9691d37a3c6466d6b6f5fe316c603f778941002e417f201afcdb0174fe8fe218a79c6a4e8a485d55daf43de2c3a576005
 	sha512sums = b029d47d10850569f180801fdc6bb2209dc9014649615123fe677416586df1c5a4f0901bcbd2da73b0e48ce752fe2a732272afdbf2445edf9ed4740be1ada7d8
 	sha512sums = b3baca5c546af8d57fe59e30d3acd63310a128fc938436b4a151e12fe2fde75029cf0f47b0ac2edc676e762a4cf7ac308b8229594a5d2c8301a02c0e8f623569
-
-pkgname = etherlab-ethercat
-	pkgdesc = Kernel modules for IgH EtherCAT(R) Master component
-	depends = linux
-	depends = etherlab-ethercat-tools
+	sha512sums = 1b13d1fab22d82b08af2c90535ad4e02f232ff4cadd22a0aea5a7819c857862e64f50daa5445ed512527fa7a3b1d038d6da93046e35182330ec0e7112d908ca9
 
 pkgname = etherlab-ethercat-tools
 	pkgdesc = Tools for IgH EtherCAT(R) Master component
 	backup = etc/ethercat.conf
+
+pkgname = etherlab-ethercat-dkms
+	pkgdesc = Kernel modules for IgH EtherCAT(R) Master component
+	depends = dkms
+	depends = etherlab-ethercat-tools
+	provides = etherlab-ethercat
+	conflicts = etherlab-ethercat

@@ -1,19 +1,24 @@
 # Maintainer: Nicola Fontana <ntd@entidi.it>
-
-pkgname=('etherlab-ethercat' 'etherlab-ethercat-tools')
+# Maintainer: Michał Wojdyła < micwoj9292 at gmail dot com >
+pkgbase='etherlab-ethercat'
+pkgname=('etherlab-ethercat-tools' 'etherlab-ethercat-dkms')
 pkgver=1.6.1
-pkgrel=4
+pkgrel=5
 arch=('i686' 'x86_64')
 url='https://etherlab.org'
 license=('GPL2')
-makedepends=('linux-headers')
 source=("ethercat-$pkgver.tar.bz2::https://gitlab.com/etherlab.org/ethercat/-/releases/$pkgver/downloads/dist-tarballs/ethercat.tar.bz2"
         "ethercat.sysusers"
-        "99-EtherCAT.rules")
+        "99-EtherCAT.rules"
+        "dkms.conf")
 sha512sums=('2a4970bc79a029dd3effe6d086308aa9691d37a3c6466d6b6f5fe316c603f778941002e417f201afcdb0174fe8fe218a79c6a4e8a485d55daf43de2c3a576005'
             'b029d47d10850569f180801fdc6bb2209dc9014649615123fe677416586df1c5a4f0901bcbd2da73b0e48ce752fe2a732272afdbf2445edf9ed4740be1ada7d8'
-            'b3baca5c546af8d57fe59e30d3acd63310a128fc938436b4a151e12fe2fde75029cf0f47b0ac2edc676e762a4cf7ac308b8229594a5d2c8301a02c0e8f623569')
+            'b3baca5c546af8d57fe59e30d3acd63310a128fc938436b4a151e12fe2fde75029cf0f47b0ac2edc676e762a4cf7ac308b8229594a5d2c8301a02c0e8f623569'
+            '1b13d1fab22d82b08af2c90535ad4e02f232ff4cadd22a0aea5a7819c857862e64f50daa5445ed512527fa7a3b1d038d6da93046e35182330ec0e7112d908ca9')
 
+prepare() {
+  cp -r "${srcdir}/ethercat-${pkgver}" "${srcdir}/ethercat-${pkgver}-dkms"
+}
 
 build() {
   cd "ethercat-$pkgver"
@@ -23,9 +28,9 @@ build() {
   ./configure \
     --prefix=/usr --sbindir=/usr/bin --libdir=/usr/lib --sysconfdir=/etc \
     --with-systemdsystemunitdir=/usr/lib/systemd/system \
-    --enable-kernel --enable-generic \
+    --disable-kernel --enable-generic \
     --enable-tool --enable-userlib
-  make all modules
+  make all
 }
 
 check() {
@@ -33,17 +38,19 @@ check() {
   make check
 }
 
-package_etherlab-ethercat() {
+package_etherlab-ethercat-dkms() {
   pkgdesc="Kernel modules for IgH EtherCAT(R) Master component"
-  depends=('linux' 'etherlab-ethercat-tools')
+  depends=('dkms' 'etherlab-ethercat-tools')
+  provides=('etherlab-ethercat')
+  conflicts=('etherlab-ethercat')
 
-  cd "ethercat-$pkgver"
-  # 1. Skip `depmod`: it will be executed automatically
-  #    by pacman hooks on the target OS
-  # 2. By default kernel modules are installed in `/lib`
-  #    but archlinux expects them in `/usr/lib`
-  make cmd_depmod=: INSTALL_MOD_PATH="$pkgdir/usr" modules_install
-  rm -f "$pkgdir"/usr/lib/modules/*/modules.*
+  cd "ethercat-$pkgver-dkms"
+  mkdir -p ${pkgdir}/usr/src/ethercat-dkms-${pkgver}/
+  cp -r ./* ${pkgdir}/usr/src/ethercat-dkms-${pkgver}/
+  cp ${srcdir}/dkms.conf ${pkgdir}/usr/src/ethercat-dkms-${pkgver}
+  # Set version
+  sed -e "s/#MODULE_VERSION#/${pkgver}/" \
+  -i "${pkgdir}"/usr/src/ethercat-dkms-${pkgver}/dkms.conf
 }
 
 package_etherlab-ethercat-tools() {
