@@ -1,12 +1,26 @@
 # Maintainer: Mopigames <mopigames@proton.me>
 pkgname=betterx-desktop-git
-pkgver=v1.0.1.alpha.r7.g6ac6640
+pkgver=v1.0.1.alpha.r8.g6ac6640
 pkgrel=1
 pkgdesc="Desktop application for BetterX, enhancing your X browsing experience"
 arch=('x86_64')
 url="https://github.com/Feur-Inc/BetterX-Desktop"
 license=('GPL-3.0-or-later')
-depends=('electron' 'libxcrypt-compat')
+depends=(
+  'electron'
+  'libxcrypt-compat'
+  'ffmpeg'
+  'icu'
+  'libxss'
+  'libxtst'
+  'libappindicator-gtk3'
+  'nss'
+  'libnotify'
+  'libsecret'
+  'gtk3'
+  'alsa-lib'
+  'libpulse'
+)
 makedepends=('git' 'pnpm' 'ruby' 'ruby-rdoc')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
