@@ -5,7 +5,7 @@
 
 _basename=deskflow
 pkgname=${_basename}-git
-pkgver=1.18.0.r3.g932ca44
+pkgver=1.17.0.r36.g181c34e
 pkgrel=1
 pkgdesc="Deskflow lets you share one mouse and keyboard between multiple computers (git version)"
 arch=('x86_64')
@@ -48,7 +48,7 @@ sha256sums=('SKIP')
 
 pkgver() {
 	cd "$_basename"
-	git describe --long --tags --abbrev=7 | sed 's/-[a-z]*//;s/-[0-9]-g/.g/;s/[-+]/./'
+	git describe --long --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
 }
 
 prepare() {
