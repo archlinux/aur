@@ -3,7 +3,7 @@
 # Source: https://github.com/zancarius/archlinux-pkgbuilds
 
 pkgname=bsdmainutils
-pkgver=12.1.7
+pkgver=12.1.8
 pkgrel=2
 pkgdesc="BSD transitional package containing ncal."
 arch=('any')
@@ -16,7 +16,7 @@ source=(
 depends=(bash libbsd)
 makedepends=(gcc make ncurses patch quilt)
 sha256sums=(
-    '4d3d01e1793a35b1122d0dd00933002c383532d5708916d55594a3a1e9ea0723'
+    '9e3e693b2f8ca4f3f10f0d154dac092e6251f12dc782a069a22a48c92d11bcbf'
     '42cb05d09b0cde67d3e1cfc9bd77885107d517b55969fc252671994ebaca1d8b'
 )
 
