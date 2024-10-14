@@ -2,7 +2,7 @@
 # Reference: PKGBUILD(5)
 
 pkgname=osc-tui-git
-pkgver=r487.4843a6b
+pkgver=r572.9acdbb9
 pkgrel=1
 pkgdesc='Outscale Text User Interface'
 
@@ -24,9 +24,11 @@ sha256sums=("SKIP")
 build() {
 	cd "${srcdir}/osc-tui"
 	git submodule update --init
+	git clone https://github.com/outscale/npyscreen.git
 	cd npyscreen # we use our own fork of npyscreen (oscscreen), not compatible with upstream on
 	python  ./setup.py build
 	cd ..
+	git clone https://github.com/outscale-mgo/osc-diagram.git
 	cd osc-diagram
 	python  ./setup.py build
 	cd ..
