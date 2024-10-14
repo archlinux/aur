@@ -1,0 +1,13 @@
+[Desktop Entry]
+Encoding=UTF-8
+Version=1.0
+Type=Application
+NoDisplay=false
+Exec=java -jar /opt/touist/touist.jar
+Name=TouIST
+Comment=TouIST, Toulouse Integrated Satisfiability Tool
+Terminal=false
+StartupNotify=true
+Icon=/opt/touist/touist_icon.png
+GenericName=TouIST
+
