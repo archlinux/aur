@@ -282,7 +282,7 @@ package() {
   make install DESTDIR="${pkgdir}"
   printf '\n'
 
-  install -dvm775 "${pkgdir}/var/spool/rsyslog"
+  install -dvm770 "${pkgdir}/var/spool/rsyslog"
 
   install -Dvm644 "${srcdir}/${_pkgname}.conf"       "${pkgdir}/etc/${_pkgname}.conf"
   install -Dvm644 "${srcdir}/${_pkgname}.logrotate"  "${pkgdir}/etc/logrotate.d/${_pkgname}"
