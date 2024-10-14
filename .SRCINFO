@@ -1,6 +1,6 @@
 pkgbase = xmcl-launcher
 	pkgdesc = X Minecraft Launcher - A modern Minecraft launcher
-	pkgver = 0.47.4
+	pkgver = 0.47.5
 	pkgrel = 1
 	url = https://xmcl.app/
 	arch = x86_64
@@ -10,9 +10,9 @@ pkgbase = xmcl-launcher
 	optdepends = jre17-openjdk: Recommended Java version for launching version 1.17 and above
 	optdepends = jre22-openjdk: Recommended Java version for launching version 1.20.5+ and above
 	conflicts = xmcl-launcher-bin
-	source = https://github.com/voxelum/x-minecraft-launcher/releases/tag/v0.47.4
+	source = https://github.com/voxelum/x-minecraft-launcher/releases/tag/v0.47.5
 	source = LICENSE::https://raw.githubusercontent.com/Voxelum/x-minecraft-launcher/master/LICENSE
-	sha256sums = 99983834bebc8fa9464938e56497b49985f72c32d115d5cbec3e35dd89950b04
-	sha256sums = 31557521e74398f08a3266f18ac8c8895d73e04d4acc204cd862dede0decb861
+	sha256sums = 958e73e68a15aaa55085d655c688379524010096e5f56d4d30331f6e79c373ae
+	sha256sums = c0fe68666e67680e96ffaaa3b9cb55ac04afef0722a392045366318603fd9b2f
 
 pkgname = xmcl-launcher
