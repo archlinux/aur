@@ -17,6 +17,7 @@ optdepends=(
     bprolog
     binprolog
     poplog-git
+    tuprolog-repl
 )
 source=(git+https://github.com/hurufu/prolog-all.git)
 sha256sums=(SKIP)
