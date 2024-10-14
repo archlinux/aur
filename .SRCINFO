@@ -20,6 +20,7 @@ pkgbase = alsa-scarlett-gui-git
 	depends = cairo
 	depends = openssl
 	provides = alsa-scarlett-gui
+	conflicts = alsa-scarlett-gui
 	source = git+https://github.com/geoffreybennett/alsa-scarlett-gui.git#branch=dev
 	sha256sums = SKIP
 

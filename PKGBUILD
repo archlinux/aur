@@ -17,6 +17,7 @@ depends=(
 )
 makedepends=('gcc' 'make' 'git' 'pkgconf' 'sed')
 provides=("$_pkgname")
+conflicts=("$_pkgname")
 source=("git+${url}.git#branch=dev")
 sha256sums=('SKIP')
 
