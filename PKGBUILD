@@ -4,12 +4,12 @@
 
 pkgname=rr
 pkgver=5.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Record and Replay framework: lightweight recording and deterministic debugging'
 arch=(i686 x86_64 aarch64)
 url='http://rr-project.org/'
 license=('custom')
-depends=('gdb' 'capnproto' 'gcc-libs' 'glibc' 'zlib')
+depends=('gdb' 'capnproto' 'gcc-libs' 'glibc' 'perf' 'zlib')
 optdepends=(
   'python: for rr-collect-symbols.py'
   'bash: for signal-rr-recording.sh'
