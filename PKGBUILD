@@ -4,7 +4,7 @@
 #
 pkgname=python-hyperspy-gui-ipywidgets
 pkginst=hyperspy_gui_ipywidgets
-pkgver=2.0.2
+pkgver=2.0.3
 pkgrel=1
 pkgdesc="ipywidgets (jupyter) GUI elements for HyperSpy" 
 arch=('any')
@@ -14,11 +14,15 @@ license=('GPLv3')
 depends=('python-hyperspy>=2.0'
          'python-ipywidgets>=7.0'
          'python-link-traits'
+         'python-ipympl'
          )
 
 #optdepends=()
 
-makedepends=('python-setuptools')
+makedepends=('python-setuptools>=64'
+             'python-setuptools-scm>=8'
+             'python-wheel'
+             )
 
 replaces=('hyperspy-gui-ipywidgets')
 conflicts=('hyperspy-gui-ipywidgets')
@@ -37,4 +41,4 @@ package() {
   python -m installer --destdir="$pkgdir" dist/*.whl
 }
 
-md5sums=('18a6cf3148099f4e688e90f6de853694')
+md5sums=('819c49760b55b63bcb2008cf4672d515')
