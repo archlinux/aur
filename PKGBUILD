@@ -2,124 +2,122 @@
 #
 # mantainer: Muflone http://www.muflone.com/contacts/english/
 # contributor: Piero Proietti <piero.proietti_at_gmail.com>
-_commit=f000a83d2492fa6220b999d6923ffb1272bfbff4
+
+_commit=4a10b2a21680a8c9f9b01151da2b0cd482fb827e
 pkgname=penguins-eggs
 pkgver=10.0.42
-pkgrel=2
+pkgrel=5
 pkgdesc="A console tool that allows you to remaster your system and redistribute it as live images on USB sticks or via PXE"
 arch=('any')
 url="https://penguins-eggs.net"
 license=('GPL2')
 depends=(
-		'arch-install-scripts'
-		'dosfstools'
-		'erofs-utils'
-		'findutils' 
-		'git'
-		'grub'
-		'jq'
-		'libarchive'
-		'libisoburn'
-		'lsb-release' 
-		'lvm2'
-		'mkinitcpio-archiso'
-		'mkinitcpio-nfs-utils'
-		'mtools'
-		'nbd'
-		'nodejs'
-		'pacman-contrib'
-		'parted'
-		'procps-ng'
-		'pv'
-		'python'
-		'rsync'
-		'squashfs-tools'
-		'sshfs'
-		'xdg-utils' 
-		'bash-completion'
-	)
+ 'arch-install-scripts'
+ 'dosfstools'
+ 'erofs-utils'
+ 'findutils'
+ 'git'
+ 'grub'
+ 'jq'
+ 'libarchive'
+ 'libisoburn'
+ 'lsb-release' 
+ 'lvm2'
+ 'mkinitcpio-archiso'
+ 'mkinitcpio-nfs-utils'
+ 'mtools'
+ 'nbd'
+ 'nodejs'
+ 'pacman-contrib'
+ 'parted'
+ 'procps-ng'
+ 'pv'
+ 'python'
+ 'rsync'
+ 'squashfs-tools'
+ 'sshfs'
+ 'xdg-utils' 
+)
 optdepends=(
-			'bash-completion: eggs autocomplete'
-			'calamares: system installer GUI'
-			'zsh-completions: eggs autocomplete'
-		)
+ 'bash-completion: eggs autocomplete'
+ 'calamares: system installer GUI'
+ 'zsh-completions: eggs autocomplete'
+)
 makedepends=(
-		'pnpm'
-	)
+ 'pnpm'
+)
 
 options=('!strip')
 source=("git+https://github.com/pieroproietti/penguins-eggs.git#commit=$_commit")
 sha256sums=('SKIP')
 
 pkgver() {
-	cd "$srcdir"/"$pkgname"
-	grep 'version' package.json | awk 'NR==1 {print $2 }' | awk -F '"' '{print $2}'
+ cd "$srcdir"/"$pkgname"
+ grep 'version' package.json | awk 'NR==1 {print $2 }' | awk -F '"' '{print $2}'
 }
 
 build() {
-	cd "$srcdir"/"$pkgname"
-	pnpm install
-	pnpm build  
+ cd "$srcdir"/"$pkgname"
+ pnpm install
+ pnpm build  
 }
 
 package() {
-	cd "$srcdir"/"$pkgname"
-	install -Dm644 .oclif.manifest.json package.json -t "$pkgdir/"usr/lib/"$pkgname"
-	cp -r addons \
-		assets \
-		bin \
-		conf \
-		ipxe \
-		dracut \
-		dist \
-		eui \
-		mkinitcpio \
-		mkinitfs \
-		node_modules \
-		scripts \
-		syslinux \
-		"$pkgdir/"usr/lib/"$pkgname/"
+ cd "$srcdir"/"$pkgname"
 
-	# Fix permissions
-	chown root:root "$pkgdir/"usr/lib/"$pkgname/"
+ install -Dm644 .oclif.manifest.json package.json -t "$pkgdir/"usr/lib/"$pkgname"
+ cp -r addons \
+  assets \
+  bin \
+  conf \
+  ipxe \
+  dracut \
+  dist \
+  eui \
+  mkinitcpio \
+  mkinitfs \
+  node_modules \
+  scripts \
+  syslinux \
+  "$pkgdir/"usr/lib/"$pkgname/"
 
-	# Package contains reference to $srcdir
-	# find "$pkgdir/"usr/lib/"$pkgname" -name package.json -print0 | xargs -r -0 sed -i '/_where/d'
+ # Fix permissions
+ chown root:root "$pkgdir/"usr/lib/"$pkgname/"
 
-	# Install documentation
-	install -Dm644 README.md -t "$pkgdir/"usr/share/doc/"$pkgname/"
+ # Install documentation
+ install -Dm644 README.md -t "$pkgdir/"usr/share/doc/"$pkgname/"
 
-	# Install bash-completion files
-	install -d "$pkgdir/"usr/share/bash-completion/completions
-	ln -s /usr/lib/"$pkgname/"scripts/eggs.bash \
-		"$pkgdir/"usr/share/bash-completion/completions/
+ # Install bash-completion files
+ install -d "$pkgdir/"usr/share/bash-completion/completions
+ ln -s /usr/lib/"$pkgname/"scripts/eggs.bash \
+  "$pkgdir/"usr/share/bash-completion/completions/
 
-	# Install zsh-completion files
-	install -d "$pkgdir/"usr/share/zsh/functions/Completion/Zsh/
-	ln -s /usr/lib/"$pkgname/"scripts/_eggs \
-		"$pkgdir/"usr/share/zsh/functions/Completion/Zsh/
+ # Install zsh-completion files
+ install -d "$pkgdir/"usr/share/zsh/functions/Completion/Zsh/
+ ln -s /usr/lib/"$pkgname/"scripts/_eggs \
+  "$pkgdir/"usr/share/zsh/functions/Completion/Zsh/
 
-	# Install man page
-	install -Dm644 manpages/doc/man/eggs.1.gz -t "$pkgdir/"usr/share/man/man1/
+ # Install man page
+ install -Dm644 manpages/doc/man/eggs.1.gz -t "$pkgdir/"usr/share/man/man1/
 
-	# Install desktop file
-	install -Dm644 assets/"$pkgname".desktop -t "$pkgdir/"usr/share/applications/
+ # Install desktop file
+ install -Dm644 assets/"$pkgname".desktop -t "$pkgdir/"usr/share/applications/
 
-	# Install icon
-	install -Dm644 assets/eggs.png -t "$pkgdir/"usr/share/pixmaps/
+ # Install icon
+ install -Dm644 assets/eggs.png -t "$pkgdir/"usr/share/pixmaps/
 
-	# revitalize mom
-	chmod +x "$pkgdir/"usr/lib/"$pkgname/"scripts/mom.sh
+ # revitalize mom
+ chmod +x "$pkgdir/"usr/lib/"$pkgname/"scripts/mom.sh
 
-	# revitalize eui
-	chmod +x "$pkgdir"/usr/lib/"$pkgname/"eui/eui-create-image.sh
-	chmod +x "$pkgdir"/usr/lib/"$pkgname/"eui/eui-start.sh
-	chmod 0400 "$pkgdir"/usr/lib/"$pkgname/"eui/eui-users
+ # revitalize eui
+ chmod +x "$pkgdir"/usr/lib/"$pkgname/"eui/eui-create-image.sh
+ chmod +x "$pkgdir"/usr/lib/"$pkgname/"eui/eui-start.sh
+ chmod 0400 "$pkgdir"/usr/lib/"$pkgname/"eui/eui-users
 
-	# Symlink executable
-	install -d "$pkgdir/"usr/bin
-	ln -s /usr/lib/"$pkgname"/bin/run.js "$pkgdir"/usr/bin/eggs
+ # Symlink executable
+ install -d "$pkgdir/"usr/bin
+ ln -s /usr/lib/"$pkgname"/bin/run.js "$pkgdir"/usr/bin/eggs
 
-	# Symlink to adapt
-	ln -s /usr/lib/"$pkgname/"addons/eggs/adapt/bin/adapt "$pkgdir/"usr/bin/adapt
+ # Symlink to adapt
+ ln -s /usr/lib/"$pkgname/"addons/eggs/adapt/bin/adapt "$pkgdir/"usr/bin/adapt
 }
