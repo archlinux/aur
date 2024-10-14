@@ -7,7 +7,7 @@
 _pkgname=rsyslog
 pkgname="${_pkgname}-nosystemd-git"
 pkgver=8.2408.0+4.r15566.20241014.d02e4733f
-pkgrel=1
+pkgrel=2
 pkgdesc="An enhanced multi-threaded syslogd with a focus on security and reliability. Without systemd dependencies and supprt, latest git checkout."
 _giturl="https://github.com/rsyslog/rsyslog"
 url="http://www.rsyslog.com/"
@@ -281,6 +281,8 @@ package() {
   printf '%s\n' "    > Running 'make install' ..."
   make install DESTDIR="${pkgdir}"
   printf '\n'
+
+  install -dvm755 "${pkgdir}/var/spool/rsyslog"
 
   install -Dvm644 "${srcdir}/${_pkgname}.conf"       "${pkgdir}/etc/${_pkgname}.conf"
   install -Dvm644 "${srcdir}/${_pkgname}.logrotate"  "${pkgdir}/etc/logrotate.d/${_pkgname}"

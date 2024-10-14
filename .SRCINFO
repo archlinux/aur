@@ -1,7 +1,7 @@
 pkgbase = rsyslog-nosystemd-git
 	pkgdesc = An enhanced multi-threaded syslogd with a focus on security and reliability. Without systemd dependencies and supprt, latest git checkout.
 	pkgver = 8.2408.0+4.r15566.20241014.d02e4733f
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.rsyslog.com/
 	arch = x86_64
 	arch = i686
