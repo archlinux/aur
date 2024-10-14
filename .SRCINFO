@@ -1,0 +1,17 @@
+pkgbase = magothy-git
+	pkgver = r104.f5fb92b
+	pkgrel = 1
+	url = https://codeberg.org/serebit/magothy
+	arch = x86_64
+	arch = armv7h
+	arch = aarch64
+	license = Apache-2.0
+	makedepends = cargo
+	makedepends = git
+	depends = lua
+	provides = magothy
+	conflicts = magothy
+	source = magothy-git::git+https://codeberg.org/serebit/magothy.git
+	b2sums = SKIP
+
+pkgname = magothy-git
