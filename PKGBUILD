@@ -1,11 +1,11 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=atlassify-git
 _pkgname=Atlassify
-pkgver=1.1.0.r4.g647e99a
+pkgver=1.6.1.r3.g928ef43
 _electronversion=32
 _nodeversion=20
 pkgrel=1
-pkgdesc="Atlassian notifications on your menu bar."
+pkgdesc="Atlassian notifications on your menu bar.Use system-wide electron."
 arch=('any')
 url="https://atlassify.io/"
 _ghurl="https://github.com/setchy/atlassify"
@@ -55,6 +55,7 @@ build() {
     cd "${srcdir}/${pkgname//-/.}"
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
+    electronDist="/usr/lib/electron${_electronversion}"
     HOME="${srcdir}/.electron-gyp"
     {
         echo -e '\n'
@@ -74,7 +75,7 @@ build() {
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g;s/\"AppImage\", \"deb\", \"rpm\"/\"dir\"/g" package.json
     NODE_ENV=development    pnpm install
     NODE_ENV=production     pnpm run build
-    NODE_ENV=production     pnpm run make:linux
+    NODE_ENV=production     npm exec -c "electron-builder --linux dir -c.electronDist=${electronDist}"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
