@@ -10,18 +10,12 @@ license=('GPL-2.0')
 depends=("xorg-fonts-misc" "libx11")
 makedepends=("cmake")
 provides=("gambal")
-source=("git+$url.git" "build-fix.patch")
-md5sums=('SKIP'
-         '064447eb13ff05e811f2f4b3d00d11fc') #generate with 'makepkg -g'
+source=("git+$url.git")
+md5sums=('SKIP') #generate with 'makepkg -g'
 
 pkgver() {
   cd "$srcdir/$_name"
   git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
-}
-
-prepare() {
-	cd "$srcdir/$_name"
-	patch -p1 -i "$srcdir/build-fix.patch"
 }
 
 build() {
