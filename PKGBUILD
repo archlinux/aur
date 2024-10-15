@@ -1,10 +1,10 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=siyuan-git
-pkgver=3.1.7.r0.gbcb9978
-_electronversion=30
-_nodeversion=18
+pkgver=3.1.9.r0.g738a907
+_electronversion=32
+_nodeversion=20
 pkgrel=1
-pkgdesc="A privacy-first, self-hosted, fully open source personal knowledge management software, written in typescript and golang."
+pkgdesc="A privacy-first, self-hosted, fully open source personal knowledge management software, written in typescript and golang.Use system-wide electron."
 arch=('x86_64')
 url="https://b3log.org/siyuan"
 _ghurl="https://github.com/siyuan-note/siyuan"
@@ -65,7 +65,8 @@ build() {
     export GOMODCACHE="${srcdir}/go/pkg/mod"
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
-    local HOME="${srcdir}/.electron-gyp"
+    electronDist="/usr/lib/electron${_electronversion}"
+    HOME="${srcdir}/.electron-gyp"
     {
         echo -e '\n'
         #echo 'build_from_source=true'
@@ -75,16 +76,15 @@ build() {
         echo "store-dir="${srcdir}"/.pnpm_store"
     } >> .npmrc
     if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
-    {
+        {
             echo 'registry=https://registry.npmmirror.com'
             echo 'disturl=https://registry.npmmirror.com/-/binary/node/'
             echo 'electron_mirror=https://registry.npmmirror.com/-/binary/electron/'
             echo 'electron_builder_binaries_mirror=https://registry.npmmirror.com/-/binary/electron-builder-binaries/'
-    } >> .npmrc
-    go env -w GOPROXY=https://goproxy.cn,direct
+        } >> .npmrc
+        go env -w GOPROXY=https://goproxy.cn,direct
     fi
-    sed -i "/tar.gz/d;/deb/d;s/AppImage/dir/;s/icon.icns/icon.png/g" {electron-builder-linux.yml,electron-builder-linux-arm64.yml}
-    sed -i "s/\"electron\": \"\([^\"]*\)\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
+    sed -i "/build:mobile/d;s/\"electron\": \"\([^\"]*\)\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
     NODE_ENV=development    pnpm install --no-frozen-lockfile
     NODE_ENV=production     pnpm run build
     cd "${srcdir}/${pkgname//-/.}/kernel"
@@ -98,12 +98,12 @@ build() {
             _CFG_FILE=electron-builder-linux.yml
             ;;
     esac
-    NODE_ENV=production npx electron-builder -l --dir --config "${_CFG_FILE}"
+    NODE_ENV=production npm exec -c "electron-builder --linux dir -c.electronDist=${electronDist} --config ${_CFG_FILE} "
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
     install -Dm644 "${srcdir}/${pkgname//-/.}/app/build/linux-"*/resources/pandoc.zip -t "${pkgdir}/usr/lib/${pkgname%-git}"
-    cp -r "${srcdir}/${pkgname//-/.}/app/build/linux-"*/resources/{app,appearance,guide,kernel,stage} "${pkgdir}/usr/lib/${pkgname%-git}"
+    cp -Pr --no-preserve=ownership "${srcdir}/${pkgname//-/.}/app/build/linux-"*/resources/{app,appearance,guide,kernel,stage} "${pkgdir}/usr/lib/${pkgname%-git}"
     install -Dm644 "${srcdir}/${pkgname//-/.}/app/appearance/boot/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-git}.png"
     install -Dm644 "${srcdir}/${pkgname%-git}.desktop" -t "${pkgdir}/usr/share/applications"
 }
