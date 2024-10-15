@@ -7,12 +7,12 @@
 # Contributor: Juergen Hoetzel <juergen@archlinux.org>
 
 pkgname=swi-prolog-git
-pkgver=9.3.13.r0.gd829bc57e
-pkgrel=2
-pkgdesc='Prolog environment (latest git stable version)'
+pkgver=9.3.13.r4.g1a8482417
+pkgrel=1
+pkgdesc='Comprehensive Prolog environment (latest git development version)'
 arch=(x86_64 i686)
 url='http://www.swi-prolog.org/'
-license=('GPL' 'LGPL')
+license=(BSD-2-Clause)
 depends=(gmp readline openssl libarchive gperftools)
 makedepends=('git' 'libxft' 'libjpeg' 'unixodbc' 'libxpm' 'libxinerama')
 optdepends=('unixodbc: for using the odbc4pl library'

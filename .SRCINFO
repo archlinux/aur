@@ -1,12 +1,11 @@
 pkgbase = swi-prolog-git
-	pkgdesc = Prolog environment (latest git stable version)
-	pkgver = 9.3.13.r0.gd829bc57e
-	pkgrel = 2
+	pkgdesc = Comprehensive Prolog environment (latest git development version)
+	pkgver = 9.3.13.r4.g1a8482417
+	pkgrel = 1
 	url = http://www.swi-prolog.org/
 	arch = x86_64
 	arch = i686
-	license = GPL
-	license = LGPL
+	license = BSD-2-Clause
 	makedepends = git
 	makedepends = libxft
 	makedepends = libjpeg
