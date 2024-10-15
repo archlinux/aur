@@ -14,6 +14,7 @@ depends=(
   libastal-battery
   libastal-bluetooth
   libastal-hyprland
+  libastal-io
   libastal-mpris
   libastal-network
   libastal-notifd

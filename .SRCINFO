@@ -11,6 +11,7 @@ pkgbase = libastal-meta
 	depends = libastal-battery
 	depends = libastal-bluetooth
 	depends = libastal-hyprland
+	depends = libastal-io
 	depends = libastal-mpris
 	depends = libastal-network
 	depends = libastal-notifd
