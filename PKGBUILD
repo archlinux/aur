@@ -84,6 +84,7 @@ sha1sums=('SKIP'
           'SKIP'
           'SKIP'
           'SKIP'
+          'SKIP'
           'SKIP')
 _gitname="inkscape.git"
 
@@ -128,6 +129,7 @@ prepare_submodule() {
   git -C "$srcdir/extensions.git" config submodule.other/inkman.url "$srcdir/extension-manager"
   git -C "$srcdir/extensions.git" config submodule.other/clipart.url "$srcdir/inkscape-import-clipart"
   git -C "$srcdir/extensions.git" config submodule.other/extension-xaml.url "$srcdir/extension-xaml"
+  git -C "$srcdir/extensions.git" config submodule.other/extension-afread.url "$srcdir/extension-afdesign"
   git -C "$srcdir/extensions.git" -c protocol.file.allow=always submodule update --init
   git -C "$srcdir/inkscape.git" config submodule.share/extensions.url "$srcdir/extensions"
   git -C "$srcdir/inkscape.git" config submodule.src/3rdparty/2geom.url "$srcdir/lib2geom"
@@ -140,6 +142,7 @@ source+=(
   "extension-manager::git+https://gitlab.com/inkscape/extras/extension-manager"
   "inkscape-import-clipart::git+https://gitlab.com/inkscape/extras/inkscape-import-clipart"
   "extension-xaml::git+https://gitlab.com/inkscape/extras/extension-xaml"
+  "extension-afdesign::git+https://gitlab.com/inkscape/extras/extension-afdesign"
   "extensions.git::git+https://gitlab.com/inkscape/extensions"
   "lib2geom::git+https://gitlab.com/inkscape/lib2geom"
   "themes::git+https://gitlab.com/inkscape/themes"
