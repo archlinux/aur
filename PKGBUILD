@@ -1,7 +1,7 @@
 # Maintainer: kotontrion <kotontrion@tutanota.de>
 pkgname=("libastal-gjs-git")
 pkgver=r439.dcc3870
-pkgrel=1
+pkgrel=2
 pkgdesc="gjs bindings for libstal."
 arch=("x86_64")
 license=(LGPL-2.1-only)
@@ -9,7 +9,7 @@ url="https://github.com/Aylur/astal"
 makedepends=(
   "git"
   "meson")
-depends=("gjs" "libastal-git")
+depends=("gjs" "libastal-git" "libastal-io-git")
 groups=("libastal")
 source=("git+${url}.git")
 sha256sums=("SKIP")
