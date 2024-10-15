@@ -1,9 +1,12 @@
 # Maintainer: Helmut Stult <hst[at]e-mail[dot]de>
+# Contributor: Pippo Peppo <abc@gmx.ch>
+# Contributor: Lev Lybin <aur@devtrue.net>
+# Contributor: Nick Østergaard <oe.nick at gmail dot com>
 
 pkgname=synology-assistant
 pkgver=7.0.5_50070
 _pkgver=7.0.5-50070
-pkgrel=1
+pkgrel=2
 pkgdesc="It helps you set up and install DSM on your DiskStation"
 arch=('x86_64')
 url="https://www.synology.com/en-global/releaseNote/Assistant"
