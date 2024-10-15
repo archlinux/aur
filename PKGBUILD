@@ -1,4 +1,4 @@
-# Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
+# Maintainer: huj13k4n9 <huj13k4n9 at qq dot com>
 pkgname=ttf-vivo-sans
 _pkgname="vivo Sans"
 pkgver=2024.10.15
