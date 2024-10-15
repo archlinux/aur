@@ -38,9 +38,11 @@ if [[ "$SudachiDict_DATE" != "$SUDACHI_DATE" ]];then
 fi
 if [[ "$SudachiDict_DATE" != "$SUDACHI_DATE" ]];then
     sed -i 's|^_sudachidict_date=.*$|_sudachidict_date='"${SudachiDict_DATE}"'|' PKGBUILD*
-    eval $(makepkg -g -p PKGBUILD)
-    ./update_sha512sums.sh PKGBUILD ${sha512sums[@]}
-    ./update_sha512sums.sh PKGBUILD.fcitx ${sha512sums[@]}
+    for f in $(ls PKGBUILD*)
+    do
+        eval $(makepkg -g --noprepare -do -p $f)
+        ./update_sha512sums.sh $f "${sha512sums[@]}"
+    done
     mksrcinfo
     git diff
     git commit -a -m "Update: SudachiDict=$SudachiDict_DATE"
@@ -48,11 +50,11 @@ fi
 if [[ "$COMMIT" != "$FCITX5_MOZC_COMMIT" ]]; then
     sed -i 's|^_mozc_commit=.*$|_mozc_commit='"${FCITX5_MOZC_COMMIT}"'|' PKGBUILD*
     sed -i 's|^_bcr_commit=.*$|_bcr_commit='"${BCR_COMMIT}"'|' PKGBUILD*
-    eval $(makepkg -g -p PKGBUILD)
-    ./update_sha512sums.sh PKGBUILD ${sha512sums[@]}
-    ./update_sha512sums.sh PKGBUILD.fcitx ${sha512sums[@]}
-    makepkg -do --noprepare -p PKGBUILD
-    makepkg -doe --noprepare -p PKGBUILD.fcitx
+    for f in $(ls PKGBUILD*)
+    do
+        eval $(makepkg -g --noprepare -do -p $f)
+        ./update_sha512sums.sh $f "${sha512sums[@]}"
+    done
     mksrcinfo
     git diff
     git commit -a -m "Update: _mozc_commit=$FCITX5_MOZC_COMMIT"
@@ -63,3 +65,4 @@ if [[ "$UPDATED_FLAG" == "1" ]]; then
 else
     echo "No change Detected."
 fi
+./update-submodule.sh

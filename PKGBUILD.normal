@@ -9,8 +9,8 @@
 
 ## Mozc compile option
 _bldtype=Release
-_mozc_commit=0cbb8f18e8df5eb4e110bab850cebc1f57811f16
-_bcr_commit=78837d290757ac27b73013147c515623ff9196c4
+_mozc_commit=14fa37c13f02ac0c81918688c305cb4e1b818fbe
+_bcr_commit=74a25ef00752212bfad1562944cd9834c1ca6d7c
 _branch=fcitx
 
 ## follow the submodule commits in https://github.com/fcitx/mozc/tree/fcitx/src/third_party
@@ -19,13 +19,13 @@ _breakpad_commit=216cea7b
 _gtest_commit=b514bdc8
 _gyp_commit=9ecf45e3
 _japanese_usage_dictionary_commit=e5b3425
-_protobuf_commit=7cc670c180
+_protobuf_commit=7cc670c18
 _wil_commit=fc5dbf5
 
 pkgbase=mozc
 pkgname=("ibus-$pkgbase" "fcitx5-$pkgbase" "emacs-$pkgbase")
 pkgver=2.30.5618.102
-pkgrel=1
+pkgrel=3
 arch=('x86_64')
 url="https://github.com/fcitx/mozc"
 license=('Apache-2.0 AND BSD-2-Clause AND BSD-3-Clause AND MIT AND NAIST-2003 AND Unicode-3.0 AND LicenseRef-Okinawa-Dictionary')
@@ -42,8 +42,8 @@ source=("git+$url.git#commit=${_mozc_commit}"
         "git+https://github.com/microsoft/wil.git#commit=${_wil_commit}"
 )
 
-sha512sums=('20335ac48f9719143e9c647613a3a8da4e5110bf367d9333f9389f1a456c7340e179a790eec2dadc63f7b428fdd7d52778bd522b809ddd77da49b4d8c0360b55'
-            'cbff7e417918d9827ac7399bdf8389bc9eb862db52785fd35a4e4dea210c13925b6ca0b3b5a9079fd14bb0f9e0342f6c097c6934fbf7f1d71a3d044aa6a88ff0'
+sha512sums=('7c9469088be27f98ff6f25558fbaff3ccfeb361a3331b75b3977f351752b3fc389502bd0b460d70ba4368fb02d0401e0452c345138ed165132cf23a1167f3378'
+            '20e1de26abd8fd1650e4f7de42c229d5bba021a3ad4e535cdf9129bb92519f1459d43b919e0da7d0470e56aa3130bdcefa717289e6007fb3be8905fafeea7c53'
             '83a6fa68645d138af64ddddcfd15da567c4c46f92fb69be6c10bc5989c3aa6ab85776dfb3fcccdc9e7c32ca9f8260be121ceb7d329792d28ec9a66417a903a68'
             'f69046af8c37a2a8a441a258d5b8677016966cb43d8a3bb48badc78123a885d6179ff77d7885fd6c84130136a1b8931a98d35f9fcce3d03ed31a37a72ece0b9d'
             '44db7d4a09aa7d36f1fb5a89be2234834a58834c76e445f8e9f7bc5685f6a76005b19fc758842c63641e476fa97c10eb968fa13965312fafca25843181fd025b'

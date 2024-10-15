@@ -1,11 +1,13 @@
 #!/bin/bash
 
 source $PWD/PKGBUILD
-for url in $(echo ${source[@]}|xargs -n1|grep "^git"|sed -e 's/git+//' -e 's/#commit=.*//')
+for url in $(echo ${source[@]}|xargs -n1|grep "^git"|sed -e 's/git+//')
 do
-    d=${url##*/}
-    d=${d%.git}
-    git clone --filter=tree:0 $url $d
-    (cd $d;git worktree add tmp;git worktree remove tmp;git branch -d tmp)
+    DIR=${url##*/}
+    COMMIT=${DIR#*commit=}
+    DIR=${DIR%.git*}
+    URL=${url%.git*}.git
+    git clone --filter=tree:0 $URL $DIR
+    (cd $DIR;git worktree add tmp $COMMIT;git worktree remove tmp)
 done
 
