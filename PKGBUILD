@@ -247,6 +247,7 @@ package_emacs-mozc-with-jp-dict() {
   license=('BSD-3-Clause')
   depends=("emacs" glibc gcc-libs)
   replaces=('emacs-mozc')
+  provides=("emacs-mozc=${pkgver}")
   conflicts=('emacs-mozc')
 
   export _bldtype

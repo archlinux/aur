@@ -148,8 +148,8 @@ package_fcitx-mozc() {
   pkgdesc="Fcitx module for Mozc with SudachiDict dictionary"
   depends=('fcitx' 'fcitx-qt6')
   optdepends=('fcitx-configtool')
-  provides=('fcitx-mozc')
   replaces=('fcitx-mozc')
+  provides=("fcitx-mozc=${pkgver}")
   conflicts=('fcitx-mozc' 'fcitx5-mozc' 'ibus-mozc' fcitx5 fcitx5-qt fcitx5-configtool)
 
   export PREFIX="$pkgdir/usr"

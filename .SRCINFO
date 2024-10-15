@@ -90,5 +90,6 @@ pkgname = emacs-mozc-with-jp-dict
 	depends = emacs
 	depends = glibc
 	depends = gcc-libs
+	provides = emacs-mozc=2.30.5618.102
 	conflicts = emacs-mozc
 	replaces = emacs-mozc
