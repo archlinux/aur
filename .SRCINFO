@@ -1,6 +1,6 @@
 pkgbase = gpu-screen-recorder-git
 	pkgdesc = A shadowplay-like screen recorder for Linux. The fastest screen recorder for Linux
-	pkgver = r850.3e199f2
+	pkgver = r852.19d77b8
 	pkgrel = 1
 	url = https://git.dec05eba.com/gpu-screen-recorder
 	install = gpu-screen-recorder-git.install
@@ -31,7 +31,7 @@ pkgbase = gpu-screen-recorder-git
 	optdepends = linux-firmware: Required to record your screen on Intel Skylake or later iGPUs
 	provides = gpu-screen-recorder
 	conflicts = gpu-screen-recorder
-	source = gpu-screen-recorder-git-r850.3e199f2.tar.gz::https://dec05eba.com/snapshot/gpu-screen-recorder.git.r850.3e199f2.tar.gz
-	sha512sums = 90f0b438fa71b85898e500850a4ff1309bfce4a2bbb212b75badb7646fef1597072f9e7bb0c1e0b30cd170f2345d3e2e8fc0fe97cd08ce69ce887ac36b45ee32
+	source = gpu-screen-recorder-git-r852.19d77b8.tar.gz::https://dec05eba.com/snapshot/gpu-screen-recorder.git.r852.19d77b8.tar.gz
+	sha512sums = b98e62c6d55d3576e6f685a78d3a473f8091940bc31a384d12bd0c3624ab326b0157d8fd2afe64ce3b33ecd195e07db14c4b6f135376b790d8efd348028df164
 
 pkgname = gpu-screen-recorder-git
