@@ -1,10 +1,10 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=shibuya-bin
 _pkgname=SkywardaiChat
-pkgver=0.1.12
+pkgver=0.2.0
 _electronversion=32
 pkgrel=1
-pkgdesc="A project built Electron + React.js, to dig out the potential of cross platform AI completion."
+pkgdesc="A project built Electron + React.js, to dig out the potential of cross platform AI completion.Prebuilt version.Use system-wide electron."
 arch=('x86_64')
 url="https://github.com/SkywardAI/shibuya"
 license=('LicenseRef-unknown')
@@ -21,7 +21,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.AppImage::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}.AppImage"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('e3d23200a3c54be390d613a701aa944fd4c2461f4499707977cbfee8fbc8a754'
+sha256sums=('1b0902dec51b0e8eadb4a7981781da25f71baee045d013901fb6a99c417926bf'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 build() {
     sed -e "
