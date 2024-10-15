@@ -1,12 +1,13 @@
 pkgbase = czkawka-gui-bin
 	pkgdesc = Find and manage duplicate files, empty folders, similar images, and other "lint" (GUI, with HEIF support)
 	pkgver = 8.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/qarmin/czkawka
 	arch = x86_64
 	license = MIT
 	makedepends = gendesk
 	depends = gtk4
+	depends = libheif
 	provides = czkawka-gui
 	conflicts = czkawka-gui
 	source = czkawka-gui-bin-8.0.0::https://github.com/qarmin/czkawka/releases/download/8.0.0/linux_czkawka_gui_heif_libraw
