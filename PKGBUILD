@@ -2,11 +2,11 @@
 _projname="Polyversal"
 _pkgname="$(echo "$_projname" | tr "P" "p")-patcher"
 pkgname="$_pkgname-bin"
-pkgver="2.1.1"
+pkgver=2.1.3
 _pkgver="$(echo "$pkgver" | tr "." "_")"
 _repo="CommitteeOfZero/polyversal-coz-linux-patcher"
 _archive="$_projname-v$_pkgver"
-pkgrel=2
+pkgrel=1
 pkgdesc="The Polyversal Linux Steam Patcher for the Committee of Zero's Science Adventure Steam Patches on Linux"
 arch=("any")
 url="https://github.com/$_repo"
@@ -28,7 +28,7 @@ source=(
   "$_pkgname.svg::https://raw.githubusercontent.com/$_repo/$pkgver/assets/logo-square.svg"
 )
 sha256sums=(
-  "679373ffce46254560a3f76b06310a37fb1dd054acc09961f8f03b1ea1ff1754"
+  "0577797679182b4b3a8f0e9632517723717d68c249458b0961f18be1d91c96de"
   "62f3a79c1446932e1ce1d4a56991113739c7d7c6d8b4a8d9c994b62468229960"
 )
 
