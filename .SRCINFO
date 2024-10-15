@@ -1,6 +1,6 @@
 pkgbase = polycule
 	pkgdesc = A geeky and efficient [matrix] client for power users.
-	pkgver = 0.0.2
+	pkgver = 0.0.3
 	pkgrel = 1
 	url = https://gitlab.com/polycule_client/polycule
 	arch = x86_64
@@ -21,7 +21,7 @@ pkgbase = polycule
 	depends = dbus
 	provides = polycule
 	conflicts = polycule
-	source = polycule-v0.0.2.tar.gz::https://gitlab.com/polycule_client/polycule/-/archive/v0.0.2/polycule-v0.0.2.tar.gz
-	sha256sums = f8f0293bdc47f79d4b24f0d1d902c0a531ce692b76208465dda2bb60cbcbaeb2
+	source = polycule-v0.0.3.tar.gz::https://gitlab.com/polycule_client/polycule/-/archive/v0.0.3/polycule-v0.0.3.tar.gz
+	sha256sums = 435879223227c69b85e3c1a719ddec6b0d8bcd32b8836fcc401da6a967c51078
 
 pkgname = polycule
