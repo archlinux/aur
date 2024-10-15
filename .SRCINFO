@@ -1,0 +1,15 @@
+pkgbase = clipscreen-git
+	pkgdesc = Mirror a portion of your screen to a virtual monitor for easier screen sharing.
+	pkgver = r27.b654271
+	pkgrel = 1
+	url = https://github.com/splitbrain/clipscreen
+	arch = x86_64
+	license = unkown
+	makedepends = git
+	makedepends = libx11
+	provides = clipscreen
+	conflicts = clipscreen
+	source = git+https://github.com/splitbrain/clipscreen
+	sha256sums = SKIP
+
+pkgname = clipscreen-git
