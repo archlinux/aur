@@ -1,0 +1,8 @@
+# We don't really need the binary file.
+*.deb
+*.tar.zst
+*.zst
+
+# Generated when running `makepkg` and building the AUR packages.
+pkg/
+src/
