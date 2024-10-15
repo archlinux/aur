@@ -1,7 +1,7 @@
 pkgbase = coolterm-bin
-	pkgdesc = Simple GUI serial port terminal application (no terminal emulation)
+	pkgdesc = Simple GUI serial port terminal application (no terminal emulation).Prebuilt version.
 	pkgver = 2.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://freeware.the-meiers.org
 	arch = aarch64
 	arch = armv7h
@@ -11,9 +11,10 @@ pkgbase = coolterm-bin
 	depends = gtk3
 	depends = python>=3
 	depends = python-psutil
+	depends = libunwind
 	conflicts = coolterm
 	source = coolterm.sh
-	sha256sums = 806086947b217b6051a76fa8136f6aa78454893467823e0a90d3bf3667bae94a
+	sha256sums = 7256543ea2a5270331c93ddc474347dffc5cbe30e7073770bd23fee3350a7e8d
 	source_aarch64 = coolterm-2.2.0-aarch64.zip::https://freeware.the-meiers.org/CoolTermRaspberryPi64Bit.zip
 	sha256sums_aarch64 = 97bb5da70ef4b6a3efe845b73ebe5caff6b933345599ebb078745fcced82601b
 	source_armv7h = coolterm-2.2.0-armv7h.zip::https://freeware.the-meiers.org/CoolTermRaspberryPi.zip
