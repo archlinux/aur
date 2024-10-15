@@ -1,0 +1,18 @@
+pkgbase = shibuya-bin
+	pkgdesc = A project built Electron + React.js, to dig out the potential of cross platform AI completion.
+	pkgver = 0.1.12
+	pkgrel = 1
+	url = https://github.com/SkywardAI/shibuya
+	arch = x86_64
+	license = LicenseRef-unknown
+	makedepends = fuse2
+	depends = electron32
+	depends = vulkan-icd-loader
+	provides = shibuya=0.1.12
+	conflicts = shibuya
+	source = shibuya-0.1.12.AppImage::https://github.com/SkywardAI/shibuya/releases/download/v0.1.12/SkywardaiChat-0.1.12.AppImage
+	source = shibuya.sh
+	sha256sums = e3d23200a3c54be390d613a701aa944fd4c2461f4499707977cbfee8fbc8a754
+	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
+
+pkgname = shibuya-bin
