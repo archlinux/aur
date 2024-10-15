@@ -1,11 +1,11 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 # Contributor: Xiaozhu1337 <nihaoaheheda@gmail.com>
 pkgname=siyuan
-pkgver=3.1.8
-_electronversion=30
-_nodeversion=18
+pkgver=3.1.9
+_electronversion=32
+_nodeversion=20
 pkgrel=1
-pkgdesc="A privacy-first, self-hosted, fully open source personal knowledge management software, written in typescript and golang."
+pkgdesc="A privacy-first, self-hosted, fully open source personal knowledge management software, written in typescript and golang.Use system-wide electron."
 arch=(
     'aarch64'
     'x86_64'
@@ -28,13 +28,12 @@ makedepends=(
     'npm'
     'go'
     'pnpm'
-    'git'
 )
 source=(
-    "${pkgname}.git::git+${_ghurl}.git#tag=v${pkgver}"
+    "${pkgname}-${pkgver}.tar.gz::${_ghurl}/archive/refs/tags/v${pkgver}.tar.gz"
     "${pkgname}.sh"
 )
-sha256sums=('31715cd9072019e12643f9d37fd87fe26e36c5776b459daf8e8c566df5941de2'
+sha256sums=('afc86ffc7a20dce3f2e9e02173af7f05a79e8335a6001d19efb449f7d9c0b5c7'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
@@ -53,7 +52,7 @@ build() {
     _ensure_local_nvm
     gendesk -q -f -n --pkgname="${pkgname}" --pkgdesc="${pkgdesc}" --categories="Office" --name="${pkgname}" --exec="${pkgname} %U"
     sed "2i\Name[zh_CN]=思源笔记" -i "${srcdir}/${pkgname}.desktop"
-    cd "${srcdir}/${pkgname}.git/app"
+    cd "${srcdir}/${pkgname}-${pkgver}/app"
     export CGO_ENABLED=1
     export GO111MODULE=on
     export GOOS=linux
@@ -61,26 +60,31 @@ build() {
     export GOMODCACHE="${srcdir}/go/pkg/mod"
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
+    electronDist="/usr/lib/electron${_electronversion}"
     HOME="${srcdir}/.electron-gyp"
-    echo -e '\n' >> .npmrc
-    #echo 'build_from_source=true' >> .npmrc
-    echo "cache=${srcdir}/.npm_cache" >> .npmrc
-    if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
     {
-        echo 'registry=https://registry.npmmirror.com'
-        echo 'disturl=https://registry.npmmirror.com/-/binary/node/'
-        echo 'electron_mirror=https://registry.npmmirror.com/-/binary/electron/'
-        echo 'electron_builder_binaries_mirror=https://registry.npmmirror.com/-/binary/electron-builder-binaries/'
+        echo -e '\n'
+        #echo 'build_from_source=true'
+        echo 'link-workspace-packages=true'
+        echo 'fetch-retry-maxtimeout=10000'
+        echo "cache-dir="${srcdir}"/.pnpm_cache"
+        echo "store-dir="${srcdir}"/.pnpm_store"
     } >> .npmrc
-    go env -w GOPROXY=https://goproxy.cn,direct
+    if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
+        {
+            echo 'registry=https://registry.npmmirror.com'
+            echo 'disturl=https://registry.npmmirror.com/-/binary/node/'
+            echo 'electron_mirror=https://registry.npmmirror.com/-/binary/electron/'
+            echo 'electron_builder_binaries_mirror=https://registry.npmmirror.com/-/binary/electron-builder-binaries/'
+        } >> .npmrc
+        go env -w GOPROXY=https://goproxy.cn,direct
     fi
-    sed -i "/tar.gz/d;/deb/d;s/AppImage/dir/;s/icon.icns/icon.png/g" {electron-builder-linux.yml,electron-builder-linux-arm64.yml}
-    sed -i "s/\"electron\": \"\([^\"]*\)\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/" -i package.json
+    sed -i "/build:mobile/d;s/\"electron\": \"\([^\"]*\)\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
     NODE_ENV=development    pnpm install --no-frozen-lockfile
     NODE_ENV=production     pnpm run build
-    cd "${srcdir}/${pkgname}.git/kernel"
+    cd "${srcdir}/${pkgname}-${pkgver}/kernel"
     go build --tags fts5 -o "../app/kernel-linux/SiYuan-Kernel" -v -ldflags "-s -w -X github.com/siyuan-note/siyuan/kernel/util.Mode=prod"
-    cd "${srcdir}/${pkgname}.git/app"
+    cd "${srcdir}/${pkgname}-${pkgver}/app"
     case "${CARCH}" in
         aarch64)
             _CFG_FILE=electron-builder-linux-arm64.yml
@@ -89,12 +93,12 @@ build() {
             _CFG_FILE=electron-builder-linux.yml
             ;;
     esac
-    NODE_ENV=production npx electron-builder -l --dir --config "${_CFG_FILE}"
+    NODE_ENV=production npm exec -c "electron-builder --linux dir -c.electronDist=${electronDist} --config ${_CFG_FILE} "
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
-    install -Dm644 "${srcdir}/${pkgname}.git/app/build/linux-"*/resources/pandoc.zip -t "${pkgdir}/usr/lib/${pkgname}"
-    cp -r "${srcdir}/${pkgname}.git/app/build/linux-"*/resources/{app,appearance,changelogs,guide,kernel,stage} "${pkgdir}/usr/lib/${pkgname}"
-    install -Dm644 "${srcdir}/${pkgname}.git/app/src/assets/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
+    install -Dm644 "${srcdir}/${pkgname}-${pkgver}/app/build/linux-"*/resources/pandoc.zip -t "${pkgdir}/usr/lib/${pkgname}"
+    cp -r "${srcdir}/${pkgname}-${pkgver}/app/build/linux-"*/resources/{app,appearance,changelogs,guide,kernel,stage} "${pkgdir}/usr/lib/${pkgname}"
+    install -Dm644 "${srcdir}/${pkgname}-${pkgver}/app/src/assets/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
     install -Dm644 "${srcdir}/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
 }
