@@ -2,7 +2,7 @@
 
 pkgname=arrayfire
 pkgver=3.9.0
-pkgrel=6
+pkgrel=7
 pkgdesc="High performance software library for parallel computing with an easy-to-use API"
 arch=('x86_64')
 url='https://arrayfire.com'
@@ -72,5 +72,6 @@ package() {
   install -Dm644 LICENSE "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
 
   DESTDIR="${pkgdir}/" ninja -C build install
-  # rm -r "${pkgdir}"/usr/LICENSES
+  rm -r "${pkgdir}"/usr/LICENSES
+  rm -r "${pkgdir}"/usr/etc
 }
