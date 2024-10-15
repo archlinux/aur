@@ -1,12 +1,12 @@
-# Maintainer: 
+# Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
 
 pkgname=openseachest-git
-pkgver=23.03.r1.g03a4576
-pkgrel=2
+pkgver=24.08.1.r28.g42bc2c2
+pkgrel=1
 pkgdesc="Utilities for performing various operations on SATA, SAS, NVMe, and USB storage devices"
-arch=(x86_64 i686 arm armv6h armv7h aarch64)
+arch=(x86_64 i686 armv7h aarch64)
 url="https://github.com/Seagate/openSeaChest"
-license=(MPL2)
+license=(MPL-2.0)
 depends=(glibc)
 makedepends=(git ninja meson)
 provides=(openseachest)
@@ -34,7 +34,7 @@ prepare() {
 
 pkgver() {
   cd openSeaChest
-  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags --abbrev=7 --exclude test* | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
