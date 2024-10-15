@@ -44,7 +44,7 @@ build() {
 	cd "$_pkgname"
 	_srcenv
 	CFLAGS+=' -ffat-lto-objects'
-	export TYPST_VERSION="${pkgver%-g*} (${pkgver#*-g})"
+	export TYPST_VERSION="${pkgver%\.g*} (${pkgver#*\.g})"
 	export GEN_ARTIFACTS=artifacts/
 	export OPENSSL_NO_VENDOR=true
 	cargo build -p typst-cli --frozen --release
