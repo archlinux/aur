@@ -1,6 +1,6 @@
---- a/photutils/datasets/load.py	2022-12-10 03:03:25.000000000 +0800
-+++ b/photutils/datasets/load.py	2022-12-30 22:38:36.700384089 +0800
-@@ -102,8 +102,12 @@
+--- a/photutils/datasets/load.py	2024-10-15 02:27:03.000000000 +0800
++++ b/photutils/datasets/load.py	2024-10-15 10:30:36.770782046 +0800
+@@ -98,8 +98,12 @@
          hdu = load_spitzer_image()
          plt.imshow(hdu.data, origin='lower', vmax=50)
      """
@@ -15,7 +15,7 @@
  
      with fits.open(path) as hdulist:
          data = hdulist[0].data
-@@ -149,8 +153,12 @@
+@@ -145,8 +149,12 @@
          plt.xlim(18.39, 18.05)
          plt.ylim(0.13, 0.30)
      """
@@ -27,10 +27,10 @@
 +    except Exception:  # timeout or not found
 +        path = get_path('spitzer_example_catalog.xml', location='local',
 +                        show_progress=show_progress)
-     table = Table.read(path)
+     return Table.read(path)
  
-     return table
-@@ -216,7 +224,10 @@
+ 
+@@ -210,7 +218,10 @@
          raise ValueError('channel must be 1, 2, 3, or 4')
  
      filepath = f'irac_ch{channel}_flight.fits'
@@ -42,7 +42,7 @@
      with fits.open(path) as hdulist:
          data = hdulist[0].data
          header = hdulist[0].header
-@@ -288,8 +299,12 @@
+@@ -250,8 +261,12 @@
          hdu = load_star_image()
          plt.imshow(hdu.data, origin='lower', interpolation='nearest')
      """
@@ -57,7 +57,7 @@
      with fits.open(path) as hdulist:
          data = hdulist[0].data
          header = hdulist[0].header
-@@ -325,9 +340,14 @@
+@@ -287,9 +302,14 @@
          hdu = load_simulated_hst_star_image()
          plt.imshow(hdu.data, origin='lower', interpolation='nearest')
      """

@@ -1,6 +1,6 @@
 pkgbase = python-photutils
 	pkgdesc = Astropy Affiliated package for image photometry utilities
-	pkgver = 1.13.0
+	pkgver = 2.0.0
 	pkgrel = 1
 	url = http://photutils.readthedocs.io
 	arch = i686
@@ -9,7 +9,9 @@ pkgbase = python-photutils
 	checkdepends = python-pytest-astropy-header
 	checkdepends = python-pytest-doctestplus
 	checkdepends = python-pytest-remotedata
+	checkdepends = python-bottleneck
 	checkdepends = python-matplotlib
+	checkdepends = python-regions
 	checkdepends = python-gwcs
 	makedepends = cython>=3.0.0
 	makedepends = python-setuptools-scm>=6.2
@@ -17,8 +19,11 @@ pkgbase = python-photutils
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-extension-helpers>=1
-	makedepends = python-numpy
+	makedepends = python-numpy>=2.0.0
 	makedepends = python-sphinx-astropy
+	makedepends = python-pydata-sphinx-theme
+	makedepends = python-sphinx-copybutton
+	makedepends = python-sphinx-design
 	makedepends = python-matplotlib
 	makedepends = python-astropy
 	makedepends = python-rasterio
@@ -26,21 +31,22 @@ pkgbase = python-photutils
 	makedepends = python-scikit-image
 	makedepends = python-shapely
 	makedepends = graphviz
-	source = https://files.pythonhosted.org/packages/source/p/photutils/photutils-1.13.0.tar.gz
-	md5sums = 9190bfd23efb189e3aeb47094eb80d4c
+	source = https://files.pythonhosted.org/packages/source/p/photutils/photutils-2.0.0.tar.gz
+	md5sums = d56f64040eb6bdbd2081d1d0c9da4841
 
 pkgname = python-photutils
 	depends = python>=3.10
-	depends = python-numpy>=1.23
-	depends = python-astropy>=5.1
-	optdepends = python-scipy>=1.8: To power a variety of features in several modules (strongly recommended)
-	optdepends = python-scikit-image>=0.20: Used in deblend_sources for deblending segmented sources
-	optdepends = python-matplotlib>=3.5: To power a variety of plotting features (e.g. plotting apertures
-	optdepends = python-gwcs>=0.18: Used in make_gwcs to create a simple celestial gwcs object
+	depends = python-numpy>=1.24
+	depends = python-astropy>=5.3
+	depends = python-scipy>=1.10
+	optdepends = python-scikit-image>=0.20: Required to deblend segmented sources
+	optdepends = python-matplotlib>=3.7: To power a variety of plotting features (e.g. plotting apertures)
+	optdepends = python-gwcs>=0.19: Required in make_gwcs to create a simple celestial gwcs object.
 	optdepends = python-bottleneck: Improves the performance of sigma clipping and other functionality that may require computing statistics on arrays with NaN values
-	optdepends = python-tqdm: Used to display optional progress bars
-	optdepends = python-rasterio: Used for converting source segments into polygon objects
-	optdepends = python-shapley: Used for converting source segments into polygon objects
+	optdepends = python-tqdm: Required to display optional progress bars
+	optdepends = python-rasterio: Required to convert source segments into polygon objects
+	optdepends = python-regions>=0.9: Required to perform aperture photometry using region objects
+	optdepends = python-shapley: Required to convert source segments into polygon objects
 	optdepends = python-photutils-doc: Documentation for python-photutils
 
 pkgname = python-photutils-doc

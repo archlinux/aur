@@ -2,7 +2,7 @@
 pkgbase=python-photutils
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}" "python-${_pyname}-doc")
-pkgver=1.13.0
+pkgver=2.0.0
 #_pkgver=${pkgver/.0}
 pkgrel=1
 pkgdesc="Astropy Affiliated package for image photometry utilities"
@@ -15,8 +15,11 @@ makedepends=('cython>=3.0.0'
              'python-build'
              'python-installer'
              'python-extension-helpers>=1'
-             'python-numpy'
+             'python-numpy>=2.0.0'
              'python-sphinx-astropy'
+             'python-pydata-sphinx-theme'
+             'python-sphinx-copybutton'
+             'python-sphinx-design'
              'python-matplotlib'
              'python-astropy'
              'python-rasterio'
@@ -28,7 +31,9 @@ checkdepends=('python-pytest-astropy-header'
               'python-pytest-doctestplus'
               'python-pytest-remotedata'
 #             'python-pytest-xdist'
+              'python-bottleneck'
               'python-matplotlib'
+              'python-regions'
               'python-gwcs')    # scipy scikit-image shapely rasterio already in makedepends
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
 #source=("https://github.com/astropy/photutils/releases/download/${pkgver}/${_pyname}-${pkgver}.tar.gz")
@@ -44,7 +49,7 @@ source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname
 #       "https://github.com/astropy/photutils-datasets/raw/main/data/spitzer_example_catalog.xml"
 #       "https://github.com/astropy/photutils-datasets/raw/main/data/spitzer_example_image.fits"
 #       'datasets-use-local.patch')
-md5sums=('9190bfd23efb189e3aeb47094eb80d4c')
+md5sums=('d56f64040eb6bdbd2081d1d0c9da4841')
 
 get_pyver() {
     python -c "import sys; print('$1'.join(map(str, sys.version_info[:2])))"
@@ -63,9 +68,11 @@ get_pyver() {
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}
 #   cd ${srcdir}/${_pyname}-${_pkgver}
-    python -m build --wheel --no-isolation --skip-dependency-check
+    python -m build --wheel --no-isolation #--skip-dependency-check
 
     msg "Building Docs"
+    ln -rs ${srcdir}/${_pyname}-${pkgver}/${_pyname/-/_}*egg-info \
+        build/lib.linux-${CARCH}-cpython-$(get_pyver)/${_pyname/-/_}-${pkgver}-py$(get_pyver .).egg-info
     PYTHONPATH="../build/lib.linux-${CARCH}-cpython-$(get_pyver)" make -C docs html
 }
 
@@ -77,15 +84,15 @@ check() {
 }
 
 package_python-photutils() {
-    depends=('python>=3.10' 'python-numpy>=1.23' 'python-astropy>=5.1')
-    optdepends=('python-scipy>=1.8: To power a variety of features in several modules (strongly recommended)'
-                'python-scikit-image>=0.20: Used in deblend_sources for deblending segmented sources'
-                'python-matplotlib>=3.5: To power a variety of plotting features (e.g. plotting apertures'
-                'python-gwcs>=0.18: Used in make_gwcs to create a simple celestial gwcs object'
+    depends=('python>=3.10' 'python-numpy>=1.24' 'python-astropy>=5.3' 'python-scipy>=1.10')
+    optdepends=('python-scikit-image>=0.20: Required to deblend segmented sources'
+                'python-matplotlib>=3.7: To power a variety of plotting features (e.g. plotting apertures)'
+                'python-gwcs>=0.19: Required in make_gwcs to create a simple celestial gwcs object.'
                 'python-bottleneck: Improves the performance of sigma clipping and other functionality that may require computing statistics on arrays with NaN values'
-                'python-tqdm: Used to display optional progress bars'
-                'python-rasterio: Used for converting source segments into polygon objects'
-                'python-shapley: Used for converting source segments into polygon objects'
+                'python-tqdm: Required to display optional progress bars'
+                'python-rasterio: Required to convert source segments into polygon objects'
+                'python-regions>=0.9: Required to perform aperture photometry using region objects'
+                'python-shapley: Required to convert source segments into polygon objects'
                 'python-photutils-doc: Documentation for python-photutils')
     cd ${srcdir}/${_pyname}-${pkgver}
 #   cd ${srcdir}/${_pyname}-${_pkgver}
