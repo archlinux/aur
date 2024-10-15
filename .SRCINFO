@@ -1,0 +1,20 @@
+pkgbase = dogelog
+	pkgdesc = The avant-garde of logic programming
+	pkgver = 1.2.4
+	pkgrel = 1
+	url = https://www.dogelog.ch/
+	arch = any
+	license = custom
+	makedepends = npm
+	options = !strip
+	source = dogelog::git+https://www.dogelog.ch/dogelog/.git
+	sha256sums = SKIP
+
+pkgname = dogelog-node
+	depends = nodejs
+
+pkgname = dogelog-py
+	depends = python
+
+pkgname = dogelog-java
+	depends = java-runtime
