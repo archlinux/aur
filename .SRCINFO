@@ -1,14 +1,15 @@
 pkgbase = intel-thermalmonitor-git
-	pkgdesc = Intel's ThermalMonitor QT5 tool for monitoring thermald
-	pkgver = v1.4.2.r515.g950d6b0
-	pkgrel = 1
+	pkgdesc = Intel's tool to display thermald readings on a graph
+	pkgver = 2.5.8.r7.g5e56d91
+	pkgrel = 2
 	url = https://github.com/intel/thermal_daemon/tree/master/tools/thermal_monitor
 	arch = any
-	license = GPL3
+	license = GPL-3.0-only
 	makedepends = git
 	makedepends = qt5-base
-	source = intel-thermalmonitor-git::git+https://github.com/intel/thermal_daemon.git
+	makedepends = qcustomplot
+	depends = thermald
+	source = git+https://github.com/intel/thermal_daemon.git
 	sha256sums = SKIP
 
 pkgname = intel-thermalmonitor-git
-
