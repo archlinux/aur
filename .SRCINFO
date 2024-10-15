@@ -1,6 +1,6 @@
 pkgbase = sast-evento
 	pkgdesc = An event management system developed and used by NJUPT SAST
-	pkgver = 2.0.55
+	pkgver = 2.0.60
 	pkgrel = 1
 	url = https://github.com/NJUPT-SAST/sast-evento
 	arch = x86_64
@@ -11,7 +11,6 @@ pkgbase = sast-evento
 	makedepends = qt5-base
 	makedepends = qt6-base
 	makedepends = boost
-	makedepends = rust
 	makedepends = nlohmann-json
 	makedepends = spdlog
 	makedepends = liburing

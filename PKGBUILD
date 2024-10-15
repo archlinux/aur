@@ -1,7 +1,7 @@
 # Maintainer: Glucy2 <glucy-2@outlook.com>
 pkgname=sast-evento
 
-pkgver=2.0.55
+pkgver=2.0.60
 pkgrel=1
 pkgdesc='An event management system developed and used by NJUPT SAST'
 license=("${srcdir}/sast-evento/LICENSE")
@@ -63,5 +63,8 @@ build() {
 }
 
 package() {
-    cp -r "${srcdir}"/build/* "${pkgdir}"
+    rm "${srcdir}/build/sast-evento-version.txt"
+    mkdir -p "${pkgdir}/usr/share/licenses/${pkgname}"
+    mv "${srcdir}/build/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    mv "${srcdir}"/build/* "${pkgdir}"
 }
