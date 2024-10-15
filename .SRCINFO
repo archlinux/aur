@@ -1,0 +1,28 @@
+pkgbase = libinput-noaccum
+	pkgdesc = libinput with ACC_V120_THRESHOLD set to 1 for smooth high-resolution scrolling
+	pkgver = 1.26.2
+	pkgrel = 1
+	url = https://gitlab.freedesktop.org/libinput/libinput
+	arch = x86_64
+	license = MIT
+	checkdepends = python-pytest
+	makedepends = gtk4
+	makedepends = meson
+	makedepends = wayland-protocols
+	makedepends = check
+	makedepends = sed
+	depends = mtdev
+	depends = libevdev
+	depends = libwacom
+	depends = systemd-libs
+	depends = glibc
+	optdepends = gtk4: libinput debug-gui
+	optdepends = python-pyudev: libinput measure
+	optdepends = python-libevdev: libinput measure
+	optdepends = python-yaml: used by various tools
+	provides = libinput=1.26.2
+	conflicts = libinput
+	source = https://gitlab.freedesktop.org/libinput/libinput/-/archive/1.26.2/libinput-1.26.2.tar.bz2
+	sha256sums = e2dbbf515905086dc3f8c8536d326e04012f5716b8b047bb3392a17b13ca78ec
+
+pkgname = libinput-noaccum
