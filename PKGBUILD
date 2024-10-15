@@ -8,6 +8,9 @@ pkgdesc="An opinionated language server for Ruby"
 arch=("any")
 depends=(
   ruby
+  ruby-language_server-protocol
+  ruby-prism
+  ruby-rbs
 )
 makedepends=(rubygems)
 url="http://solargraph.org/"
