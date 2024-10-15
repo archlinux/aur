@@ -1,7 +1,7 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
 pkgname="kaskade"
-pkgver=2.3.6
+pkgver=2.3.7
 pkgrel=1
 pkgdesc="A text user interface for Kafka. Interact and consume topics from your terminal in style!"
 arch=('any')
@@ -13,7 +13,7 @@ depends=('python>=3.10' 'python-cloup' 'python-textual'
 makedepends=('python-build' 'python-installer' 'python-poetry-core>=1')
 _pkgsrc="${pkgname}-${pkgver}"
 source=("${_pkgsrc}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('487d60a9e27f5d70e60744159d0c3f8b3f728066c6f96333500838116d64efde')
+sha256sums=('b3ecafc1b5a8e3e131f577a44c61955efaf6198c8123c312e0f7d95b05d903fe')
 
 build () {
   cd "${srcdir}/${_pkgsrc}"
