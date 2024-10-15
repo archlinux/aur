@@ -1,6 +1,6 @@
 pkgbase = s6-man-pages-git
 	pkgdesc = Manual pages for the s6 suite of software
-	pkgver = v2.13.0.0.1.r0.fc8619f
+	pkgver = v2.13.1.0.1.r0.3e6139f
 	pkgrel = 1
 	url = https://git.sr.ht/~flexibeast/s6-man-pages
 	arch = any
