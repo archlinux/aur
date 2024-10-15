@@ -1,6 +1,7 @@
-# Maintainer: Kian Kasad <kian at kasad.com>
+# Maintainer: Lazerbeak12345 <lazerbeak12345 at users dot noreply dot github dot com>
+# Contributor: Kian Kasad <kian at kasad.com>
 pkgname=s6-man-pages-git
-pkgver=v2.13.0.0.1.r0.fc8619f
+pkgver=v2.13.1.0.1.r0.3e6139f
 pkgrel=1
 pkgdesc='Manual pages for the s6 suite of software'
 arch=('any')
