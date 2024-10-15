@@ -6,7 +6,7 @@ pkgdesc='A fast JSON parsing and encoding support for Lua.'
 arch=('x86_64')
 url='https://github.com/openresty/lua-cjson'
 license=('MIT')
-makedepends=('git' 'lua' 'lua53' 'lua52' 'lua51' 'luarocks')
+makedepends=('lua' 'lua53' 'lua52' 'lua51' 'luarocks')
 source=("https://github.com/openresty/$pkgbase/archive/refs/tags/$pkgver.tar.gz")
 sha256sums=('14cac5c7a4520b33449a1fc961344556b8b6a2a2c6b739b0e46e3002e6e605bc')
 
