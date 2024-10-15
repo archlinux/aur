@@ -8,6 +8,6 @@ pkgbase = simplex-desktop-appimage
 	makedepends = fuse2
 	options = !strip
 	options = !debug
-	source = simplex-desktop-x86_64-6.0.5-4e19862768994cda09c76c0684a082476dd7b0c8199ff918e2889b76a6890588c6091c6966fe46d689030b05f47544da434e5ea0dd32c9f628c197b98e414e67ge
+	source = simplex-desktop-x86_64-6.0.5-4e19862768994cda09c76c0684a082476dd7b0c8199ff918e2889b76a6890588c6091c6966fe46d689030b05f47544da434e5ea0dd32c9f628c197b98e414e67.AppImage::https://github.com/simplex-chat/simplex-chat/releases/download/v5.8.2/simplex-desktop-x86_64.AppImage
 	sha512sums = 4e19862768994cda09c76c0684a082476dd7b0c8199ff918e2889b76a6890588c6091c6966fe46d689030b05f47544da434e5ea0dd32c9f628c197b98e414e67
 pkgname = simplex-desktop-appimage
