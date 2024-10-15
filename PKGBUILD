@@ -2,10 +2,10 @@
 _pkgname=antares
 pkgname="${_pkgname}-sql-bin"
 _appname=Antares
-pkgver=0.7.28
+pkgver=0.7.29
 _electronversion=30
 pkgrel=1
-pkgdesc="A modern, fast and productivity driven SQL client with a focus in UX."
+pkgdesc="A modern, fast and productivity driven SQL client with a focus in UX.Prebuilt version.Use system-wide electron."
 arch=(
     "aarch64"
     "armv7h"
@@ -27,27 +27,31 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('7b960bb0bed7d2228b6a8a879558c97906cc041ab14ab1d1089959902f386613'
-            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
-sha256sums_aarch64=('3dbd4789b3f60c9851a26e4c69111ee826c9b39878d529d44db6111aa2fc2634')
-sha256sums_armv7h=('202f4cb2f029a29db36a537393ac2db1f88f7c11a489727ac76df7e1a9b7931f')
-sha256sums_x86_64=('aaeb418049ee13d9cd0ff5e06d0a62ec56e750a777c126b3f1749a4a1b40f347')
+            '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
+sha256sums_aarch64=('b5aa7e1b4f621e57da8420c5182588e7b985fd13d546fdc507fb58e6bf504924')
+sha256sums_armv7h=('d508addb89871824c2ca9ddf9e7c5a0466eca66734cd68b8988c38f2b16ef244')
+sha256sums_x86_64=('e0611a9710a2c65bb9112d13f014ecc909ec36d79df46457272d3f77aed8b203')
 build() {
-    sed -e "s|@electronversion@|${_electronversion}|" \
-        -e "s|@appname@|${pkgname%-bin}|g" \
-        -e "s|@runname@|app.asar|g" \
-        -e "s|@cfgdirname@|${_pkgname}|g" \
-        -e "s|@options@||g" \
-        -i "${srcdir}/${pkgname%-bin}.sh"
+    sed -e "
+        s/@electronversion@/${_electronversion}/g
+        s/@appname@/${pkgname%-bin}/g
+        s/@runname@/app.asar/g
+        s/@cfgdirname@/${_pkgname}/g
+        s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
+    " -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
-    sed "s|/opt/${_appname}/${_pkgname}|${pkgname%-bin}|g;s|Icon=${_pkgname}|Icon=${pkgname%-bin}|g" \
-        -i "${srcdir}/usr/share/applications/${_pkgname}.desktop"
+    sed -e "
+        s/\/opt\/${_appname}\/${_pkgname}/${pkgname%-bin}/g
+        s/Icon=${_pkgname}/Icon=${pkgname%-bin}/g
+    " -i "${srcdir}/usr/share/applications/${_pkgname}.desktop"
 }
 package() {    
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm644 "${srcdir}/opt/${_appname}/resources/app.asar" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
-    cp -r "${srcdir}/opt/${_appname}/resources/app.asar.unpacked" "${pkgdir}/usr/lib/${pkgname%-bin}"
+    cp -Pr --no-preserve=ownership "${srcdir}/opt/${_appname}/resources/app.asar.unpacked" "${pkgdir}/usr/lib/${pkgname%-bin}"
     install -Dm644 "${srcdir}/usr/share/applications/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
-    for _icons in 16x16 32x32 64x64 128x128 256x256;do
+    _icon_sizes=(16x16 32x32 64x64 128x128 256x256)
+    for _icons in "${_icon_sizes[@]}";do
         install -Dm644 "${srcdir}/usr/share/icons/hicolor/${_icons}/apps/${_pkgname}.png" \
             "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname%-bin}.png"
     done
