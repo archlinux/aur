@@ -8,6 +8,7 @@ arch=(any)
 url='https://www.dogelog.ch/'
 license=(custom)
 makedepends=(npm)
+groups=(dogelog)
 options=(!strip)
 source=("$pkgbase::git+https://www.dogelog.ch/dogelog/.git")
 sha256sums=(SKIP)

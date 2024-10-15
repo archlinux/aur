@@ -4,6 +4,7 @@ pkgbase = dogelog
 	pkgrel = 1
 	url = https://www.dogelog.ch/
 	arch = any
+	groups = dogelog
 	license = custom
 	makedepends = npm
 	options = !strip
