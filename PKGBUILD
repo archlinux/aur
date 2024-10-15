@@ -21,15 +21,16 @@ pkgdesc="An Open Source vector graphics editor, using SVG file format, from git 
 url="https://gitlab.com/inkscape"
 license=('GPL' 'LGPL')
 arch=('i686' 'x86_64')
-makedepends=('cmake' 'boost' 'git' 'ninja')
+makedepends=('cmake' 'boost' 'git' 'glib2-devel' 'ninja')
 depends=(
+	'boost-libs'
 	'dbus-glib'
 	'double-conversion'
 	'gc'
 	'gsl'
 	'gspell'
-	'gtkmm3'
-	'gtksourceview4'
+	'gtkmm-4.0'
+	'gtksourceview5'
 	'lcms2'
 	'lib2geom-git'
 	'libcdr'
@@ -40,9 +41,24 @@ depends=(
 	'poppler-glib'
 	'potrace'
 	'python'
+	'python-appdirs'
+	'python-beautifulsoup4'
+	'python-cachecontrol'
+	'python-cssselect'
+	'python-gobject'
 	'python-lxml'
 	'python-numpy'
+	'python-packaging'
+	'python-pillow'
+	'python-pyparsing'
+	'python-pyserial'
+	'python-pytest'
+	'python-requests'
+	'python-tinycss2'
+	'python-typing_extensions'
 	'ttf-font'
+	'libwpg'
+	'libspelling'
 )
 case $BITMAP_BACKEND in
 	imagemagick) depends+=('libmagick6');;
