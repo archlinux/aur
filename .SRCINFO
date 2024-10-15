@@ -1,5 +1,4 @@
 pkgbase = dogelog
-	pkgdesc = The avant-garde of logic programming
 	pkgver = 1.2.4
 	pkgrel = 1
 	url = https://www.dogelog.ch/
@@ -12,10 +11,13 @@ pkgbase = dogelog
 	sha256sums = SKIP
 
 pkgname = dogelog-node
+	pkgdesc = The avant-garde of logic programming (NodeJS backend)
 	depends = nodejs
 
 pkgname = dogelog-py
+	pkgdesc = The avant-garde of logic programming (Python backend)
 	depends = python
 
 pkgname = dogelog-java
+	pkgdesc = The avant-garde of logic programming (Java backend)
 	depends = java-runtime
