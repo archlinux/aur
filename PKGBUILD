@@ -7,7 +7,7 @@ pkgname="${_pkgname}-bin"
 pkgdesc='Maintain your Ledger devices'
 license=('MIT')
 url='https://www.ledger.com/ledger-live'
-pkgver=2.89.0
+pkgver=2.89.1
 pkgrel=1
 arch=('x86_64')
 depends=('gtk3' 'nss' 'alsa-lib' 'ledger-udev')
@@ -17,20 +17,18 @@ conflicts=("${_pkgname}")
 _appimg="ledger-live-desktop-${pkgver}-linux-${arch[0]}.AppImage"
 source=("${_appimg}::https://download.live.ledger.com/${_appimg}"
         "LICENSE-${pkgver}::https://raw.githubusercontent.com/LedgerHQ/ledger-live/%40ledgerhq/live-desktop%40${pkgver}/apps/ledger-live-desktop/LICENSE")
-sha512sums=('abd32a1563d4cbac302b40acc187bf16e890337e8543845f39826cc36694e7fe81a3222b5dd1f5c9da56fd969755c49940cc750c444c3ed35415350762638f83'
+# https://www.ledger.com/ledger-live/lld-signatures
+sha512sums=('c6b3cd7e35e7a714ceb2c23e32ba86d8b7e69e6153fad0027fce73bec8c16dadf50a295ce37ee14ced543c048afd83503b6c6a3d9daf9d9beab56e7843a65d86'
             '915edd51fe7732af57f5a4ca8f4c61c4f435de6357e34ed0733cac8d950d80b3a9e513deac0a3672a07f38ff871a57032a221b3aa27edae8e42cc00586fe3318')
 
 prepare() {
-  # Extract files
   chmod +x "${_appimg}"
   "./${_appimg}" --appimage-extract
 
   cd squashfs-root
-  # Correct .desktop
   sed -e "s/AppRun --no-sandbox/${_pkgbin}/g" -i "${_pkgbin}.desktop"
   sed -e "/X-AppImage-Version/d" -i "${_pkgbin}.desktop"
 
-  # Remove unnecessary files
   rm "AppRun" "resources/app-update.yml"
 }
 
