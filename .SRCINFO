@@ -10,10 +10,10 @@ pkgbase = ddev-edge-bin
 	conflicts = ddev
 	provides = ddev
 	arch = aarch64
-	source_aarch64 = https://github.com/ddev-test/ddev/releases/download/v1.23.5-aaa-testgitpod.20/ddev_linux-arm64.v1.23.5-aaa-testgitpod.20.tar.gz
-	sha256sums_aarch64 = a966d363d28704f7e5d1026e813e4ef58050d410bfceac3526f12ed6df63c977
+	source_aarch64 = https://github.com/ddev-test/ddev/releases/download/v1.23.5-aaa-testgitpod.21/ddev_linux-arm64.v1.23.5-aaa-testgitpod.21.tar.gz
+	sha256sums_aarch64 = 43da3556a7a139e703bfc95152df88b017355396700e84a06bb478f6d2cbe127
 	arch = x86_64
-	source_x86_64 = https://github.com/ddev-test/ddev/releases/download/v1.23.5-aaa-testgitpod.20/ddev_linux-amd64.v1.23.5-aaa-testgitpod.20.tar.gz
-	sha256sums_x86_64 = d23541e3f6759c6929e332468358a9d7732879fb0355b618f05fbe33600e2128
+	source_x86_64 = https://github.com/ddev-test/ddev/releases/download/v1.23.5-aaa-testgitpod.21/ddev_linux-amd64.v1.23.5-aaa-testgitpod.21.tar.gz
+	sha256sums_x86_64 = cf0aa3b448380112283819208c40507fed69fdf7d4bb67df3306251b07d8a235
 	
 pkgname = ddev-edge-bin
