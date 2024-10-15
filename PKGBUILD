@@ -12,8 +12,8 @@ case "${CARCH}" in
         pkgver="${_x86ver}"
         ;;
 esac
-pkgrel=1
-pkgdesc="A multifunctional image processing software.悟空图像是一款多功能图像处理软件"
+pkgrel=2
+pkgdesc="A multifunctional image processing software.Prebuilt version.悟空图像是一款多功能图像处理软件."
 arch=(
     'aarch64'
     'x86_64'
@@ -55,31 +55,35 @@ depends=(
     'xcb-util-wm'
     'qt6-webengine'
     'libspeechd'
+    'qt5-x11extras'
 )
 options=('!strip')
 source_aarch64=("${pkgname%-bin}-${_armver}-aarch64.deb::https://cdn.photosir.cn/package/uos/40408/${_pkgname}_${_armver}-arm64.deb")
 source_x86_64=("${pkgname%-bin}-${_x86ver}-x86_64.deb::https://cdn.photosir.cn/package/uos/40408/${_pkgname}_${_x86ver}-amd64.deb")
 source=("${pkgname%-bin}.sh")
-sha256sums=('51bbd952c6be199b07734243f038670b896b2df74c23d228d583b92aeddf7036')
+sha256sums=('7d749594f8e9bea1f10fd4be5e95a09ebdbb23bc19754ab22d3bb626d5deae64')
 sha256sums_aarch64=('73c4f21148d0231fdbadb8444f5373ea696e2e5201897aa915923e6b7ee91a80')
 sha256sums_x86_64=('c22b81b16da893fe67a2b8d366956f61604c3e7bd16b06bad974492a72626eb8')
 build() {
-    sed -e "s|@appname@|${pkgname%-bin}|g" \
-        -e "s|@runname@|${_appname}|g" \
-        -i "${srcdir}/${pkgname%-bin}.sh"
+    sed -e "
+        s/@appname@/${pkgname%-bin}/g
+        s/@runname@/${_appname}/g
+    " -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
-    sed -e "s|/opt/apps/${_pkgname}/files/himirage.sh|${pkgname%-bin}|g" \
-        -e "s|Icon=${_pkgname}|Icon=${pkgname%-bin}|g" \
-        -e "s|Name=${_pkgname}|Name=${pkgname%-bin}|g" \
-        -i "${srcdir}/opt/apps/${_pkgname}/entries/applications/${_pkgname}.desktop"
+    sed -e "
+        s/\/opt\/apps\/${_pkgname}\/files\/himirage.sh/${pkgname%-bin}/g
+        s/Icon=${_pkgname}/Icon=${pkgname%-bin}/g
+        s/Name=${_pkgname}/Name=${pkgname%-bin}/g
+    " -i "${srcdir}/opt/apps/${_pkgname}/entries/applications/${_pkgname}.desktop"
 }
 package(){
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
-    cp -r "${srcdir}/opt/apps/${_pkgname}/files/"* "${pkgdir}/usr/lib/${pkgname%-bin}"
+    cp -Pr --no-preserve=ownership "${srcdir}/opt/apps/${_pkgname}/files/"* "${pkgdir}/usr/lib/${pkgname%-bin}"
     install -Dm644 "${srcdir}/opt/apps/${_pkgname}/entries/applications/${_pkgname}.desktop" \
         "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
-    for _icons in 16x16 24x24 32x32 48x48 128x128 256x256 512x512;do
+    _icon_sizes=(16x16 24x24 32x32 48x48 128x128 256x256 512x512)
+    for _icons in "${_icon_sizes[@]}";do
         install -Dm644 "${srcdir}/opt/apps/${_pkgname}/entries/icons/hicolor/${_icons}/apps/${_pkgname}.png" \
             "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname%-bin}.png"
     done

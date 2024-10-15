@@ -24,7 +24,7 @@ if [ `id -u` -eq 0 ];then
 	env QTWEBENGINE_DISABLE_SANDBOX=1 exec "${_APPDIR}/@runname@" "$@" || exit $?
     else
 	    echo "You are a common user"
-        cd "${_APPDIR}"
+        cd "${_APPDIR}" || { echo "Failed to change directory to ${_APPDIR}"; exit 1; }
 	    exec "${_RUNNAME}" "$@" || exit $?
     fi
 fi
