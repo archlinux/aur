@@ -1,65 +1,74 @@
 #!/bin/bash
 
-if [[ $# -ne 1 ]]; then
-  echo "usage $0 CONFIG.conf"
+help() {
+  echo "usage $0 [--verbose] CONFIG.conf"
   echo "  see /etc/obfuscation-tunnel/example.conf.example"
+  echo " --verbose - echo to the screen while parsing config file"
   exit 1
+}
+
+if [[ $# -lt 1 ]] || [[ $# -gt 2 ]]; then
+  help
+elif [[ $# -eq 2 ]]; then
+  if [[ "${1,,}" != '--verbose' ]]; then
+    echo "Bad arguments"
+    help
+  fi
+  file="${2}"
+  DEBUG=1
+else
+  file="${1}"
+  unset DEBUG
 fi
 
-if [[ -e ${1} ]]; then
-  LOCAL=''
-  REMOTE=''
-  DISABLE_THREADING=''
-  VERBOSE=''
-  OBFUSCATION=''
-  SOCKS=''
-  MOCK=''
-  DISABLE_THREADING=''
-  VERBOSE=''
-  FAKE_TCP_ENCODING=''
-  USE_PCAP=''
-  FRAGMENT_DNS_ON_60BYTE=''
-  AUTHORITATIVE_DOMAIN=''
-  TLS_NO_VERIFY=''
-  TLS_CA_BUNDLE=''
-  TLS_CERT=''
-  TLS_KEY=''
+if [[ ! -e ${file} ]]; then
+  echo "${file} does not exist"
+  echo
+  help
+else
+
+  echo "Using ${file}"
+
+  [[ -v DEBUG ]] && echo "Printing arguments as they're found"
   while read line; do
     k="${line%=*}"
     v="${line#*=}"
+    if [[ ${k::1} == '#' ]]; then
+      continue
+    fi
+
+	[[ -v DEBUG ]] && echo "  ${k}: ${v}"
+	declare -a args
     case "${k,,}" in
-      local|l) LOCAL="-l ${v}" ;;
-      remote|r) REMOTE="-r ${v}" ;;
-      obfuscation|o) [[ ${v} != '0' ]] && OBFUSCATION="-o ${v}" ;;
-      key|k) KEY="-k ${v}" ;;
-      mock|m)
-        if [[ ${v,,} == "socks5:*" ]]; then
-          SOCKS="-m ${v}"
-        else
-          MOCK="-m ${v}"
-        fi
-        ;;
-      socks|socks5) SOCKS="-m ${v}" ;;
-      nothread|s) [[ ${v} != '0' ]] && DISABLE_THREADING='-s' ;;
-      verbose|v) [[ ${v} != '0' ]] && VERBOSE='-v' ;;
+	  local|l) args+=( -l "${v}" ) ;;
+      remote|r) args+=( -r "${v}" )  ;;
+      obfuscation|o)[[ ${v} != '0' ]] && args+=( -o "${v}" ) ;;
+      key|k) args+=( -k "${v}" ) ;;
+      socks|socks5|mock|m) args+=( -m "${v}" ) ;;
+      nothread|s) [[ ${v} != '0' ]] && args+=( -s ) ;;
+      verbose|v) [[ ${v} != '0' ]] && args+=( -v ) ;;
 
       #TCP options
-      encoding|e) FAKE_TCP_ENCODING="-e ${v}" ;;
+      encoding|e) args+=( -e "${v}" ) ;;
 
-      #ICMP options (-x not supported)
-      pcap|use_pcap|p) USE_PCAP="-p ${v}" ;;
+      #ICMP options
+      pcap|use_pcap|p) args+=( -p "${v}" ) ;;
+      randomid|expectrandomid|e) args+=( -x "${v}" ) ;;
 
       #DNS options
-      fragment|f) [[ ${v} != '0' ]] && FRAGMENT_DNS_ON_60BYTE='-f' ;;
-      domain|d) AUTHORITATIVE_DOMAIN="-d ${v}" ;;
+      fragment|f) [[ ${v} != '0' ]] && args+=( -f ) ;;
+      domain|d) args+=( -d "${v}" ) ;;
 
       #TLS options
-      tls-no-verify) [[ ${v} != '0' ]] && TLS_NO_VERIFY='--tls-no-verify' ;;
-      tls-ca-bundle) TLS_CA_BUNDLE="--tls-ca-bundle ${v}" ;;
-      tls-cert) TLS_CERT="--tls-cert ${v}" ;;
-      tls-key) TLS_KEY="--tls-key ${v}" ;;
+	  tls-no-verify) [[ ${v} != '0' ]] && args+=('--tls-no-verify') ;;
+	  tls-ca-bundle) args+=('--tls-ca-bundle' "${v}") ;;
+	  tls-cert) args+=('--tls-cert' "${v}") ;;
+	  tls-key) args+=('--tls-key' "${v}") ;;
     esac
-  done <<< $( grep '=' ${1} )
+  done <<< "$(grep '=' ${file})"
 
-  /usr/bin/obfuscation-tunnel ${LOCAL} ${REMOTE} ${DISABLE_THREADING} ${VERBOSE} ${OBFUSCATION} ${MOCK} ${SOCKS} ${FAKE_TCP_ENCODING} ${USE_PCAP} ${FRAGMENT_DNS_ON_60BYTE} ${AUTHORITATIVE_DOMAIN} ${TLS_NO_VERIFY} ${TLS_CA_BUNDLE} ${TLS_CERT} ${TLS_KEY}
+  [[ -v DEBUG ]] && echo 'Starting tunnel with the following options:'
+  [[ -v DEBUG ]] && echo '  /usr/bin/obfuscation-tunnel '"${args[@]}"
+
+  /usr/bin/obfuscation-tunnel "${args[@]}"
 fi
