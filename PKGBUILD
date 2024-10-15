@@ -20,7 +20,10 @@ makedepends=(
     'python-wheel'
 )
 checkdepends=('python-pytest')
-provides=($_srcname)
+# angr projects all have the same version and mutually support only that
+# version. So we provide both, the -git package, for other angr related -git
+# packages and the normal package, for packages not requiring a specific version.
+provides=($_srcname $pkgname)
 conflicts=($_srcname)
 license=('BSD-2-Clause')
 source=("$pkgname::git+https://github.com/angr/claripy.git#branch=master")

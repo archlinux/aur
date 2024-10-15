@@ -18,6 +18,7 @@ pkgbase = python-claripy-git
 	depends = python-z3-solver
 	depends = python>=3.10
 	provides = python-claripy
+	provides = python-claripy-git
 	conflicts = python-claripy
 	source = python-claripy-git::git+https://github.com/angr/claripy.git#branch=master
 	b2sums = SKIP
