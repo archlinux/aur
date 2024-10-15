@@ -2,12 +2,12 @@
 _pkgname="Obfuscation-Tunnel"
 pkgname="${_pkgname,,}-git"
 pkgver=r80.cbd31a1
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Obfuscate UDP traffic to hide from deep packet inspection"
 arch=('x86_64' 'aarch64')
 url="https://github.com/RoliSoft/${_pkgname}"
-license=('GPL')
+license=('BSD')
 groups=()
 depends=('libpcap' 'libssl.so=3' 'libcrypto.so=3' 'glibc')
 makedepends=('git' 'gcc' 'make')
@@ -51,5 +51,5 @@ check() {
 package() {
 	cd "$builddir"
 	install -D -m755 tunnel "${pkgdir}/usr/bin/${pkgname/-git/}"
-	install -D -m644 LICENSE.md "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	install -D -m644 LICENSE.md "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 }
