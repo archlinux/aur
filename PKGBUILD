@@ -2,7 +2,7 @@
 
 pkgname=libastal-meta
 pkgver=1
-pkgrel=2
+pkgrel=3
 pkgdesc='libastal meta package, including all libastal services'
 arch=(any)
 url="https://github.com/Aylur/astal"
