@@ -2,7 +2,7 @@
 pkgname=lagrange-bin
 _pkgname=Lagrange
 _appname="fi.skyjake.${_pkgname}"
-pkgver=1.18.2
+pkgver=1.18.3
 pkgrel=1
 pkgdesc="A Beautiful Gemini Client.Prebuilt version."
 arch=(
@@ -35,8 +35,8 @@ source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.AppImage::${_ghurl}/releases/do
 source_armv7h=("${pkgname%-bin}-${pkgver}-armv7h.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-armhf.AppImage")
 sha256sums=('d8dd2acc4ba121ca7da3c899c8c443484ab54526ed5933e34fffae2cedb28fbe'
             '574c9abedf1d4ff7d577a1e180faffeab850eb2aa4eaff000946025787185895')
-sha256sums_armv7h=('05a64724132ba055100625e1c8f4f3d131c7b7f8c78757c39cc2822ec0cc58e0')
-sha256sums_x86_64=('c8b10447abeb576319dd9134ac49c205c6c3cd5ec877c40743f2799a74ee5795')
+sha256sums_armv7h=('d8b7f72cf28f8fe5cae640c3dee2f3ee60a5537a7fda62aa06dd0e0f08c293f0')
+sha256sums_x86_64=('d5fb00ab3e2c398edd06adfad0765b11555d08a1c27436a2d399506172898792')
 build() {
     sed -e "
         s/@appname@/${pkgname%-bin}/g
@@ -50,7 +50,7 @@ build() {
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
-    cp -r "${srcdir}/squashfs-root/usr/"{bin,lib,share} "${pkgdir}/usr/lib/${pkgname%-bin}"
+    cp -Pr --no-preserve=ownership "${srcdir}/squashfs-root/usr/"{bin,lib,share} "${pkgdir}/usr/lib/${pkgname%-bin}"
     install -Dm644 "${srcdir}/squashfs-root/usr/share/icons/hicolor/256x256/apps/${_appname}.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-bin}.png"
     install -Dm644 "${srcdir}/squashfs-root/${_appname}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
     install -Dm644 "${srcdir}/squashfs-root/usr/share/metainfo/${_appname}.appdata.xml" "${pkgdir}/usr/share/metainfo/${pkgname%-bin}.appdata.xml"
