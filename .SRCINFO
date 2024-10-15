@@ -1,6 +1,6 @@
 pkgbase = srware-iron-bin
-	pkgdesc = SRWare Iron Browser is a light-weight browser,based on Chromium
-	pkgver = 126.6400.0
+	pkgdesc = SRWare Iron Browser is a light-weight browser,based on Chromium.Prebuilt version.
+	pkgver = 129.6550.0
 	pkgrel = 1
 	url = https://www.srware.net
 	arch = aarch64
@@ -13,11 +13,11 @@ pkgbase = srware-iron-bin
 	depends = nspr
 	provides = iron
 	conflicts = srware-iron
-	source = LICENSE-126.6400.0.txt::https://www.srware.net/license.txt
+	source = LICENSE-129.6550.0.txt::https://www.srware.net/license.txt
 	sha256sums = a29953afc386e2a9a95906cfa0de4bf58a332260d7199a5f99d3e15db9381022
-	source_aarch64 = srware-iron-126.6400.0-aarch64.deb::https://www.srware.net/downloads/ironarm64.deb
-	sha256sums_aarch64 = 11bae849374f97e7617f0cc97ad6ba77fb2b17a8428b6c24f0f089555a8a7f08
-	source_x86_64 = srware-iron-126.6400.0-x86_64.deb::https://www.srware.net/downloads/iron64.deb
-	sha256sums_x86_64 = 5038b6ee5121a18e7e835421b233e92e6e1f493bd1917a8f5d0f2a35922ba838
+	source_aarch64 = srware-iron-129.6550.0-aarch64.deb::https://www.srware.net/downloads/ironarm64.deb
+	sha256sums_aarch64 = c005f8272babe0ca61ea5f572109360d2aa1d335f6cb83a98b2c2f685c1696a4
+	source_x86_64 = srware-iron-129.6550.0-x86_64.deb::https://www.srware.net/downloads/iron64.deb
+	sha256sums_x86_64 = 10e0d319f73fae140beba0022fa2fb305cc05d7e40ff341d5e3b6d4c26b2cd88
 
 pkgname = srware-iron-bin
