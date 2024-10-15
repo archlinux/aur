@@ -1,10 +1,10 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=recode-converter-bin
-pkgver=2.0.8
+pkgver=2.0.9
 _pkgname=Recode-Converter
-_electronversion=32
+_electronversion=33
 pkgrel=1
-pkgdesc="A simple, modern audio codec converter for video files."
+pkgdesc="A simple, modern audio codec converter for video files.Prebuilt version.Use system-wide electron."
 arch=('x86_64')
 url="https://github.com/murgatt/recode-converter"
 license=('GPL-3.0-or-later')
@@ -20,7 +20,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.AppImage::${url}/releases/download/v${pkgver}/${_pkgname}-Linux-${pkgver}.AppImage"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('11eb2ee81f5c3123de8f5b06086667488c48ab7018a7ac81140d94ea078f4da2'
+sha256sums=('211b8e7528faccf77f0880a932c6aa69234a30fbe2fb0df3926237b01771a998'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 build() {
     sed -e "
@@ -38,7 +38,7 @@ build() {
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm644 "${srcdir}/squashfs-root/resources/app.asar" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
-    cp -r "${srcdir}/squashfs-root/resources/app.asar.unpacked" "${pkgdir}/usr/lib/${pkgname%-bin}"
+    cp -Pr --no-preserve=ownership "${srcdir}/squashfs-root/resources/app.asar.unpacked" "${pkgdir}/usr/lib/${pkgname%-bin}"
     install -Dm644 "${srcdir}/squashfs-root/usr/share/icons/hicolor/1024x1024/apps/${pkgname%-bin}.png" -t "${pkgdir}/usr/share/pixmaps"
     install -Dm644 "${srcdir}/squashfs-root/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
 }
