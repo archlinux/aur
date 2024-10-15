@@ -30,7 +30,6 @@ arch=('x86_64')
 url="https://github.com/fcitx/mozc"
 license=('Apache-2.0 AND BSD-2-Clause AND BSD-3-Clause AND MIT AND NAIST-2003 AND Unicode-3.0 AND LicenseRef-Okinawa-Dictionary')
 makedepends=('bazel' 'git' 'python' 'fcitx-qt6' 'fcitx')
-optdepends=('fcitx-configtool')
 options=(!lto !distcc !ccache)
 source=("git+$url.git#commit=${_mozc_commit}"
         "bcr::git+https://github.com/bazelbuild/bazel-central-registry.git#commit=${_bcr_commit}"
@@ -147,7 +146,8 @@ install_mozc-common() {
 
 package_fcitx-mozc() {
   pkgdesc="Fcitx module for Mozc with SudachiDict dictionary"
-  depends=('fcitx' fcitx-qt6 gcc-libs glibc qt6-base)
+  depends=('fcitx' 'fcitx-qt6')
+  optdepends=('fcitx-configtool')
   provides=('fcitx-mozc')
   replaces=('fcitx-mozc')
   conflicts=('fcitx-mozc' 'fcitx5-mozc' 'ibus-mozc' fcitx5 fcitx5-qt fcitx5-configtool)

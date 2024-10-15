@@ -30,7 +30,6 @@ arch=('x86_64')
 url="https://github.com/fcitx/mozc"
 license=('Apache-2.0 AND BSD-2-Clause AND BSD-3-Clause AND MIT AND NAIST-2003 AND Unicode-3.0 AND LicenseRef-Okinawa-Dictionary')
 makedepends=('bazel' 'git' 'python' 'libibus' 'fcitx5-qt' 'fcitx5')
-optdepends=('fcitx5-configtool')
 options=(!lto !distcc !ccache)
 source=("git+$url.git#commit=${_mozc_commit}"
         "bcr::git+https://github.com/bazelbuild/bazel-central-registry.git#commit=${_bcr_commit}"
@@ -143,6 +142,7 @@ install_mozc-common() {
 package_fcitx5-mozc() {
   pkgdesc="Fcitx5 module for Mozc"
   depends=('fcitx5' 'fcitx5-qt' 'hicolor-icon-theme')
+  optdepends=('fcitx5-configtool')
   provides=('fcitx5-mozc')
   replaces=('fcitx5-mozc')
   conflicts=('fcitx-mozc' 'fcitx' 'fcitx-qt5' 'fcitx-qt6' 'ibus-mozc')

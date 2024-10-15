@@ -45,16 +45,17 @@ source=("git+$url.git#commit=${_mozc_commit}"
         "git+https://github.com/protocolbuffers/protobuf.git#commit=${_protobuf_commit}"
         "git+https://github.com/microsoft/wil.git#commit=${_wil_commit}"
         git+https://github.com/phoepsilonix/dict-to-mozc.git#commit=${_dict_to_mozc_commit}
-        # Neologd-ipadic https://github.com/neologd/mecab-ipadic-neologd
-        https://github.com/phoepsilonix/mecab-ipadic-neologd/raw/refs/heads/master/seed/mecab-user-dict-seed.20200910.csv.xz
-        LICENSE-mecab-ipadic-neologd::https://github.com/neologd/mecab-ipadic-neologd/raw/refs/heads/master/COPYING
-        https://github.com/phoepsilonix/mecab-unidic-neologd/raw/refs/heads/master/seed/mecab-unidic-user-dict-seed.20200910.csv.xz
-        LICENSE-mecab-unidic-neologd::https://github.com/phoepsilonix/mecab-unidic-neologd/raw/refs/heads/master/COPYING
         # https://github.com/WorksApplications/SudachiDict
         "http://sudachi.s3-website-ap-northeast-1.amazonaws.com/sudachidict-raw/${_sudachidict_date}/small_lex.zip"
         "http://sudachi.s3-website-ap-northeast-1.amazonaws.com/sudachidict-raw/${_sudachidict_date}/core_lex.zip"
         "http://sudachi.s3-website-ap-northeast-1.amazonaws.com/sudachidict-raw/${_sudachidict_date}/notcore_lex.zip"
         "LICENSE-SudachiDict::https://github.com/WorksApplications/SudachiDict/raw/develop/LEGAL"
+        # mecab-unidic-neologd https://github.com/neologd/mecab-unidic-neologd
+        https://github.com/phoepsilonix/mecab-unidic-neologd/raw/refs/heads/master/seed/mecab-unidic-user-dict-seed.20200910.csv.xz
+        LICENSE-mecab-unidic-neologd::https://github.com/phoepsilonix/mecab-unidic-neologd/raw/refs/heads/master/COPYING
+        # mecab-ipadic-neologd https://github.com/neologd/mecab-ipadic-neologd
+        https://github.com/phoepsilonix/mecab-ipadic-neologd/raw/refs/heads/master/seed/mecab-user-dict-seed.20200910.csv.xz
+        LICENSE-mecab-ipadic-neologd::https://github.com/neologd/mecab-ipadic-neologd/raw/refs/heads/master/COPYING
         )
 
 sha512sums=('20335ac48f9719143e9c647613a3a8da4e5110bf367d9333f9389f1a456c7340e179a790eec2dadc63f7b428fdd7d52778bd522b809ddd77da49b4d8c0360b55'
@@ -68,14 +69,14 @@ sha512sums=('20335ac48f9719143e9c647613a3a8da4e5110bf367d9333f9389f1a456c7340e17
             'b9fade4c8cfe60915c51433c1acd4b253b947dd2fabe7b70dd53c92cd751322fb007ef68e04d5551315f3bc2f52048fb8b9babf40455309ab7b38d9f3efd348a'
             '504066a457f77b510f492626c919b6fd7b61f77948bdddef0f7e43ae09bb4bf03cea7000fba91ae0123a94d3b39cac6dfac2010126849afe0a183727fe7b0fc1'
             'dd015c0e578bccc715d19e1a6346dd115b430874e410b5357c7754a277942f58f627228f86c55209402898524a6b8722cbecab92e98469b975be1e59b6be3122'
-            '5f3aa91974d7ef5633a013effb7acf729cec7d096b4740ceb9915fe7df10e2e45d0d76ffc2d36f1e16d322e7b3974653601a79b6ada05371de8fc7e80af14644'
-            '77a8c1d76a53627f8680f761f9c996b04e6b609bdb813cb5aedc7f8214d9b5f13aea53788814029f6f1e263c50ecb58feb5999e95d51fe7e4707b6a913d4bbe4'
-            '3bdbda066130043e2e6403a8196a13b78a35313fc8797769eb8f76033349f420c68ac50a3e0604836c2cb577179f3e123af64a4e45aa05d14575f46707383d28'
-            '44b228264547c4628599b5888bd177dc3ddb845094a0acebcd3d7d7665e2cda8861f7210f80f0f40531f46581f565aab3489a6a2ff3aa75c058d552b23ea8d6e'
             '9428d55d2d9603c8bfcd12cc0184415f23af1d09a2d0ebdf0cce694a09638e7cfe0c1241bf1c943427b2fccfea619ca8b2e22db3452d837b416eb31aa224e766'
             'f0a3544dcc99bf8c4cea8ebfd31af827e209f0678997ab55f6eda54f34cad5e148d1bd156417a621665c2068e7371801dc9cf1baa34f2270a99da7055f46d95d'
             '5551cbf4da52bc2eb73841013f98634ac8fcb56e5f6e163c9e640d5b9eaa4eafc2fa72cc20660db012ebdb438f835c2098b77c02c483d3244df901748e3d30fa'
-            '1a5b62c83a08781b44bd73f978a4024d93667df47b1a3f4c179096cbc32f28e803c50dca6b5b7ad20fb788d46797551c36ec1efb7782f4361b695e2e0a6060ca')
+            '1a5b62c83a08781b44bd73f978a4024d93667df47b1a3f4c179096cbc32f28e803c50dca6b5b7ad20fb788d46797551c36ec1efb7782f4361b695e2e0a6060ca'
+            '3bdbda066130043e2e6403a8196a13b78a35313fc8797769eb8f76033349f420c68ac50a3e0604836c2cb577179f3e123af64a4e45aa05d14575f46707383d28'
+            '44b228264547c4628599b5888bd177dc3ddb845094a0acebcd3d7d7665e2cda8861f7210f80f0f40531f46581f565aab3489a6a2ff3aa75c058d552b23ea8d6e'
+            '5f3aa91974d7ef5633a013effb7acf729cec7d096b4740ceb9915fe7df10e2e45d0d76ffc2d36f1e16d322e7b3974653601a79b6ada05371de8fc7e80af14644'
+            '77a8c1d76a53627f8680f761f9c996b04e6b609bdb813cb5aedc7f8214d9b5f13aea53788814029f6f1e263c50ecb58feb5999e95d51fe7e4707b6a913d4bbe4')
 
 pkgver() {
   cd "${srcdir}/mozc" || exit
@@ -206,7 +207,8 @@ install_mozc-with-jp-dict-common() {
 
 package_fcitx-mozc-with-jp-dict() {
   pkgdesc="Fcitx module for Mozc with SudachiDict dictionary"
-  depends=('fcitx' fcitx-qt6 gcc-libs glibc qt6-base)
+  depends=('fcitx' 'fcitx-qt6')
+  optdepends=('fcitx-configtool')
   provides=('fcitx-mozc')
   replaces=('fcitx-mozc')
   conflicts=('fcitx-mozc' 'fcitx5-mozc' 'ibus-mozc' fcitx5 fcitx5-qt fcitx5-configtool)
