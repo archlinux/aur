@@ -1,0 +1,14 @@
+pkgbase = librespot-auth
+	pkgdesc = A simple program for populating a credentials.json via Spotify's zeroconf authentication.
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/dspearson/librespot-auth
+	arch = x86_64
+	license = ISC
+	makedepends = cargo
+	depends = glibc
+	depends = gcc-libs
+	source = https://github.com/dspearson/librespot-auth/archive/refs/tags/v0.1.1.tar.gz
+	sha256sums = ee333c75ba8c9e1f00564a3470a48e64fadc658e2deb1b6a035b13420c2b5df3
+
+pkgname = librespot-auth
