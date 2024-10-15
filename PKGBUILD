@@ -11,25 +11,21 @@
 
 pkgname=lightworks
 lwksver=2023.2
-lwksreldir=2023.2
-lwksbuild=144635
+lwksreldir=$lwksver
+lwksbuild=147988
 pkgver=$lwksver.$lwksbuild
-pkgrel=2
+pkgrel=1
 pkgdesc="Lightworks is a professional video editing suite"
 arch=('x86_64')
 options=('!strip')
 url="http://www.lwks.com/"
 license=('custom')
-depends=('cairo' 'gdk-pixbuf2' 'glib2' 'libjpeg-turbo' 'pango' 'curl' 'gtk3' 'portaudio' 'openssl' 'libgl' 'libtiff' 'libutil-linux' 'ffmpeg' 'glu' 'libedit' 'nvidia-cg-toolkit')
+depends=('cairo' 'gdk-pixbuf2' 'glib2' 'libjpeg-turbo' 'pango' 'curl' 'gtk3' 'portaudio' 'openssl' 'libgl' 'libtiff' 'libutil-linux' 'ffmpeg' 'glu' 'libedit' 'nvidia-cg-toolkit' twolame)
 optdepends=('nvidia-utils: only for nVidia users' 'libc++: only for BlackMagic RAW support (BRAW)' 'libc++abi: only for BlackMagic RAW support (BRAW)')
 conflicts=('lwks-beta')
 replaces=('lwks')
 source=(
     "https://cdn.lwks.com/releases/$lwksreldir/lightworks_${lwksver}_r${lwksbuild}.deb"
-    )
-
-sha512sums=(
-    '99731f7aea6f8eb1299ff387cdd7eb4589e15586733491c166107e0d975852855c99c81475d04898765521a46604a2d7363e1da429234da60256d12cbc32167e'
     )
 
 package() {
@@ -49,3 +45,4 @@ package() {
     chmod a+rw "$pkgdir"/usr/share/lightworks/Preferences
     chmod a+rw "$pkgdir"/usr/share/lightworks/"Audio Mixes"
 }
+sha256sums=('bdc6a4900403254464dd3ab030bc8c1652bd16eedbe7d8b8b27ea7bd00153449')
