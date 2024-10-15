@@ -1,7 +1,7 @@
 pkgbase = csbooks-bin
-	pkgdesc = A smart book management and reading software,also a PDF reader, EPUB reader, MOBI reader and DJVU file reader.
+	pkgdesc = A smart book management and reading software,also a PDF reader, EPUB reader, MOBI reader and DJVU file reader.Prebuilt version.Use system-wide electron.
 	pkgver = 8.2.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://caesiumstudio.com/csbooks/
 	arch = x86_64
 	license = LicenseRef-custom
