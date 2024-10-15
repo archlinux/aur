@@ -2,7 +2,7 @@
 
 pkgname=ruby-lsp
 _gemname=${pkgname}
-pkgver=0.17.5
+pkgver=0.17.6
 pkgrel=1
 pkgdesc="An opinionated language server for Ruby"
 arch=("any")
@@ -18,7 +18,7 @@ noextract=($_gemname-$pkgver.gem)
 license=("MIT")
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
-sha256sums=('ab3d65c33261f49001f78ae3b1d9664c29ecbfc57110ea92d71f7d3c6b605328')
+sha256sums=('1a32724d630fdfbacd74c2928ec78e667c9e9fbf87ec7dd04cd6a6057760b0a8')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
