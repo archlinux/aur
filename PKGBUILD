@@ -6,7 +6,7 @@
 
 pkgname=tupitube
 pkgver=0.2.18
-pkgrel=7
+pkgrel=8
 pkgdesc='Design and authoring tool for digital artists interested in 2D animation'
 arch=('x86_64')
 url='https://tupitube.com/'
