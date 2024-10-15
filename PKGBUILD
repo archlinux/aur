@@ -2,9 +2,9 @@
 _appname=proxy-pin
 pkgname="${_appname//-/}-bin"
 _pkgname=ProxyPin
-pkgver=1.1.3
+pkgver=1.1.4
 pkgrel=1
-pkgdesc="Open source free packet capture tool"
+pkgdesc="Open source free packet capture tool.Prebuilt version."
 arch=('x86_64')
 url="https://github.com/wanghongenpin/network_proxy_flutter"
 _gturl="https://gitee.com/wanghongenpin/network-proxy-flutter"
@@ -19,21 +19,23 @@ source=(
     "${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/V${pkgver}/${_pkgname}-Linux.deb"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('5d052ea3e1daa05def4f8f06aa0febd25b9b0af4dd36f939e93ace5f6e8511d0'
+sha256sums=('ad6463f7d92e13295ff63cea4666e8038018e64703308802b631b45fea0a0c0d'
             '4b46d4c46f133f057b7859149b9e45689638ad849c4f0a8efabf2aacd6bf9142')
 build() {
     sed -e "
-        s/@appname@/${pkgname%-bin}/
-        s/@runname@/${_pkgname}/
+        s/@appname@/${pkgname%-bin}/g
+        s/@runname@/${_pkgname}/g
     " -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
-    sed "s/\/opt\/${pkgname%-bin}\/${_pkgname}/${pkgname%-bin}/;s/\/opt\/${pkgname%-bin}\/data\/flutter_assets\/assets\/icon.png/${pkgname%-bin}/" \
-        -i "${srcdir}/usr/share/applications/${_appname}.desktop"
+    sed -e "
+        s/\/opt\/${pkgname%-bin}\/${_pkgname}/${pkgname%-bin}/g
+        s/\/opt\/${pkgname%-bin}\/data\/flutter_assets\/assets\/icon.png/${pkgname%-bin}/g
+    " -i "${srcdir}/usr/share/applications/${_appname}.desktop"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm755 "${srcdir}/opt/${pkgname%-bin}/${_pkgname}" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
-    cp -r  "${srcdir}/opt/${pkgname%-bin}/"{data,lib} "${pkgdir}/usr/lib/${pkgname%-bin}"
+    cp -Pr --no-preserve=ownership  "${srcdir}/opt/${pkgname%-bin}/"{data,lib} "${pkgdir}/usr/lib/${pkgname%-bin}"
     install -Dm644 "${srcdir}/usr/share/applications/${_appname}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
     install -Dm644 "${srcdir}/opt/${pkgname%-bin}/data/flutter_assets/assets/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-bin}.png"
 }
