@@ -206,7 +206,7 @@ package_fcitx5-mozc-with-jp-dict() {
   pkgdesc="Fcitx5 module for Mozc with SudachiDict dictionary"
   depends=('fcitx5' 'fcitx5-qt' 'hicolor-icon-theme' gcc-libs glibc qt6-base)
   replaces=('fcitx5-mozc')
-  provides=('fcitx5-mozc=${pkgver}')
+  provides=("fcitx5-mozc=${pkgver}")
   conflicts=('fcitx-mozc' 'fcitx5-mozc' 'fcitx' 'fcitx-qt5' 'fcitx-qt6' 'ibus-mozc')
 
   export PREFIX="$pkgdir/usr"
@@ -221,7 +221,7 @@ package_ibus-mozc-with-jp-dict() {
   pkgdesc="IBus engine module for Mozc with SudachiDict dictionary"
   depends=('ibus>=1.4.1' "qt6-base" 'libibus')
   replaces=('ibus-mozc')
-  provides=('ibus-mozc=${pkgver}')
+  provides=("ibus-mozc=${pkgver}")
   conflicts=('ibus-mozc' 'fcitx' 'fcitx-configtool' 'fcitx-qt5' 'fcitx-qt6' 'fcitx-mozc' 'fcitx5' 'fcitx5-configtool' 'fcitx5-qt' 'fcitx5-mozc')
 
   export _bldtype
