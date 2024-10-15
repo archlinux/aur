@@ -14,7 +14,7 @@ _fragment="${FRAGMENT:-#branch=master}"
 : ${BITMAP_BACKEND:=imagemagick} # select imagemagick implementation {imagemagick,graphicsmagick}
 
 pkgname=inkscape-git
-pkgver=1.3.alpha.r987.g07fdc5641e
+pkgver=1.5.0.r581.0d47833dcc
 pkgrel=1
 epoch=5
 pkgdesc="An Open Source vector graphics editor, using SVG file format, from git master"
@@ -103,7 +103,10 @@ prepare() {
 
 pkgver() {
   cd "$_gitname"
-  git describe --long --tags| sed 's/^INKSCAPE_//;s/.*/\L&/;s/\([^-]*-g\)/r\1/;s/[-_]/./g'
+  printf "%d.%d.%d.r%d.%s" \
+    $(grep -Po 'INKSCAPE_VERSION_(MAJOR|MINOR|PATCH)\s+\K\d+' CMakeLists.txt) \
+    $(git rev-list  $(git rev-list --tags --no-walk --max-count=1)..HEAD --count) \
+    $(git rev-parse --short HEAD)
 }
 
 build() {
