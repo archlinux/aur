@@ -1,7 +1,7 @@
 pkgbase = kotatsu-dl-git
 	pkgdesc = Easy-to-use cli manga downloader with a 1k+ sources supported
-	pkgver = 1.0
-	pkgrel = 2
+	pkgver = 0.1
+	pkgrel = 1
 	url = https://github.com/KotatsuApp/kotatsu-dl
 	arch = any
 	license = GPL3
