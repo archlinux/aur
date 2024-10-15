@@ -1,6 +1,6 @@
 # Maintainer: Kimlulz (kimlulz@naver.com)
 
-pkgname=naver-whale-bin
+pkgname=whale-browser
 pkgver=stable
 pkgrel=Rolling_3.27
 pkgdesc='A web browser that possess a lot of similar features as Vivaldi, being a customized pushed browser, multi-tasking browsing called 'Omnitasking', as well as other features such as cloud saves & quick translation'
