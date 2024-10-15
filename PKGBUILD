@@ -1,15 +1,14 @@
 # Maintainer: David Garfias <dgarfiasme at gmail dot com>
 pkgname=libaemu
 pkgver=0.1.2
-pkgrel=2
+pkgrel=3
 pkgdesc="This is an utility library for common functions used in the Android Emulator."
 arch=("x86_64")
 url="https://android.googlesource.com/platform/hardware/google/aemu/"
 license=("Apache-2.0")
 source=('git+https://android.googlesource.com/platform/hardware/google/aemu#tag=v0.1.2-aemu-release')
 sha256sums=('SKIP')
-makedepends=(cmake)
-
+makedepends=(cmake git)
 
 prepare() {
 	cd $srcdir/aemu
