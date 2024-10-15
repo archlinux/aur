@@ -1,20 +1,18 @@
 # Maintainer: Alex Grabowski <hurufu+aur@gmail.com>
 pkgbase=dogelog
 pkgname=(dogelog-node dogelog-py dogelog-java)
-pkgver=1.2.4
+pkgver=1.2.3
 pkgrel=1
 arch=(any)
 url='https://www.dogelog.ch/'
 license=(custom)
-makedepends=(npm)
-groups=(dogelog)
 options=(!strip)
-source=("$pkgbase::git+https://www.dogelog.ch/dogelog/.git")
-sha256sums=(SKIP)
+source=(https://www.dogelog.ch/typtab/rscsrv/docs/50_archive/archive_1_2/dogelog_1_2_3.zip)
+sha256sums=('434bbcbfe7b5cc70a6c55c71633d549a9b4420e48157e8903a9fab33508c3d92')
 
 package_any() {
     install -D --mode=644 -t "$pkgdir/usr/share/licenses/$pkgbase/$1" ../LICENSE
-    install -D --mode=655 -t "$pkgdir/usr/share/$pkgbase" "$pkgbase/$2"
+    install -D --mode=655 -t "$pkgdir/usr/share/$pkgbase" "$2"
 }
 
 package_dogelog-py() {

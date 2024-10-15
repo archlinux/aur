@@ -1,14 +1,12 @@
 pkgbase = dogelog
-	pkgver = 1.2.4
+	pkgver = 1.2.3
 	pkgrel = 1
 	url = https://www.dogelog.ch/
 	arch = any
-	groups = dogelog
 	license = custom
-	makedepends = npm
 	options = !strip
-	source = dogelog::git+https://www.dogelog.ch/dogelog/.git
-	sha256sums = SKIP
+	source = https://www.dogelog.ch/typtab/rscsrv/docs/50_archive/archive_1_2/dogelog_1_2_3.zip
+	sha256sums = 434bbcbfe7b5cc70a6c55c71633d549a9b4420e48157e8903a9fab33508c3d92
 
 pkgname = dogelog-node
 	pkgdesc = The avant-garde of logic programming (NodeJS backend)
