@@ -19,7 +19,9 @@ optdepends=(
     poplog-git
     tuprolog-repl
     tau-prolog
-    dogelog
+    dogelog-py
+    dogelog-node
+    dogelog-java
 )
 source=(git+https://github.com/hurufu/prolog-all.git)
 sha256sums=(SKIP)

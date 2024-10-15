@@ -17,7 +17,9 @@ pkgbase = prologs
 	optdepends = poplog-git
 	optdepends = tuprolog-repl
 	optdepends = tau-prolog
-	optdepends = dogelog
+	optdepends = dogelog-py
+	optdepends = dogelog-node
+	optdepends = dogelog-java
 	source = git+https://github.com/hurufu/prolog-all.git
 	sha256sums = SKIP
 
