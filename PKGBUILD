@@ -5,10 +5,10 @@
 _pkgname=siyuan
 pkgname="${_pkgname}-note-bin"
 _appname=SiYuan
-pkgver=3.1.8
-_electronversion=30
+pkgver=3.1.9
+_electronversion=32
 pkgrel=1
-pkgdesc="A local-first personal knowledge management system.Use system-wide electron."
+pkgdesc="A local-first personal knowledge management system.Prebuilt version.Use system-wide electron."
 arch=(
     'aarch64'
     'x86_64'
@@ -33,8 +33,8 @@ source=(
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-arm64.deb")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux.deb")
 sha256sums=('291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-sha256sums_aarch64=('a24f28948a56b5429a67f6f1175b76bd14e1b9dc182e347cd7a8d727bb41a0b7')
-sha256sums_x86_64=('29a9c0c03c2f8dc3d88983173f5d08056b439a4bd92f6c4e80ae4893ab798045')
+sha256sums_aarch64=('94ad2b02623b4735917ca019fddfd4c52b38517305d9326321fed8fcebba02e8')
+sha256sums_x86_64=('77fe9f7a87921b9ed6ecb597468cc064200fca457f59cd3d88fdda268552b5c2')
 build() {
     sed -e "
         s/@electronversion@/${_electronversion}/g
@@ -44,15 +44,18 @@ build() {
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
     " -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
-    sed "s/\/opt\/${_appname}\/${_pkgname}/${pkgname%-bin}/g;s/Icon=${_pkgname}/Icon=${pkgname%-bin}/g;s/Utility/Office/g" \
-        -i "${srcdir}/usr/share/applications/${_pkgname}.desktop"
-    sed -i "3i\Name[zh_CN]=思源笔记" "${srcdir}/usr/share/applications/${_pkgname}.desktop"
+    sed -e "
+        s/\/opt\/${_appname}\/${_pkgname}/${pkgname%-bin}/g
+        s/Icon=${_pkgname}/Icon=${pkgname%-bin}/g
+        s/Utility/Office/g
+        3i\Name[zh_CN]=思源笔记
+    " -i "${srcdir}/usr/share/applications/${_pkgname}.desktop"
     find "${srcdir}/opt/${_appname}/resources" -type d -exec chmod 755 {} \;
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
-    cp -r "${srcdir}/opt/${_appname}/resources/"* "${pkgdir}/usr/lib/${pkgname%-bin}"
+    cp -Pr --no-preserve=ownership "${srcdir}/opt/${_appname}/resources/"* "${pkgdir}/usr/lib/${pkgname%-bin}"
     _icon_sizes=(16x16 32x32 48x48 64x64 128x128 256x256 512x512)
     for _icons in "${_icon_sizes[@]}";do
         install -Dm644 "${srcdir}/usr/share/icons/hicolor/${_icons}/apps/${_pkgname}.png" \
