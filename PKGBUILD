@@ -3,8 +3,8 @@ _pkgname=noi
 pkgname="${_pkgname}-desktop-bin"
 pkgver=0.4.0
 _electronversion=28
-pkgrel=3
-pkgdesc="Power Your World with AI - Explore, Extend, Empower."
+pkgrel=4
+pkgdesc="Power Your World with AI - Explore, Extend, Empower.Prebuilt version."
 arch=("x86_64")
 url="https://noi.nofwl.com/"
 _ghurl="https://github.com/lencx/Noi"
@@ -31,4 +31,6 @@ package() {
     install -Dm644 "${srcdir}/usr/share/applications/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
     install -Dm644 "${srcdir}/usr/share/pixmaps/${_pkgname}.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-bin}.png"
     install -Dm644 "${srcdir}/usr/lib/${_pkgname}/LICENSE"* -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    chown root:root "${pkgdir}/usr/lib/${pkgname%-bin}/chrome-sandbox"
+    chmod 4755 "${pkgdir}/usr/lib/${pkgname%-bin}/chrome-sandbox"
 }
