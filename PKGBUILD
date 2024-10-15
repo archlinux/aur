@@ -4,6 +4,7 @@ _repo="dheijl/$_pkgname"
 pkgname="$_pkgname-git"
 pkgver=1.11.6.r15.g033a36e
 pkgrel=1
+pkgdesc="Stream What You Hear written in rust, inspired by SWYH."
 arch=(any)
 url=https://github.com/dheijl/swyh-rs/
 license=('MIT')
