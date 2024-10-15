@@ -2,7 +2,7 @@
 pkgname=fooyin-bin
 _pkgname=Fooyin
 _appname="org.${pkgname%-bin}.${pkgname%-bin}"
-pkgver=0.7.3
+pkgver=0.8.0
 pkgrel=1
 pkgdesc="A customisable music player.Binary version."
 arch=('x86_64')
@@ -29,10 +29,10 @@ optdepends=(
 source=(
     "${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}-noble_amd64.deb"
 )
-sha256sums=('84d57d622eb32da34e90414902e03f8cc5b073b74a92b8cdac79e9046085c938')
+sha256sums=('0565ae0f3018841a2b8199ca11e9690460267f308d60417f26cc6341d6f44438')
 build() {
     bsdtar -xf "${srcdir}/data."*
-    sed -i "s/${_appname}/${pkgname%-bin}/g" -i "${srcdir}/usr/share/applications/${_appname}.desktop"
+    sed -i "s/${_appname}/${pkgname%-bin}/g" "${srcdir}/usr/share/applications/${_appname}.desktop"
 }
 package() {
     install -Dm755 "${srcdir}/usr/bin/${pkgname%-bin}" -t "${pkgdir}/usr/bin"
