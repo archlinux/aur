@@ -37,9 +37,9 @@ build() {
 
 package() {
 	# mkdirs
-	mkdir -p ${pkgdir}/bin
+	mkdir -p ${pkgdir}/usr/bin
 	mkdir -p ${pkgdir}/etc/bash_completion.d
 	# copy built files
-	cp -p ${srcdir}/${_pkgname}/build/libs/kotatsu-dl ${pkgdir}/bin/
-	cp -p ${srcdir}/${_pkgname}/build/libs/kotatu-dl-completion.bash ${pkgdir}/etc/bash_completion.d/
+	install -Dm0755 -t ${pkgdir}/usr/bin ${srcdir}/${_pkgname}/build/libs/kotatsu-dl
+	install -Dm0755 -t ${pkgdir}/etc/bash_completion.d ${srcdir}/${_pkgname}/build/libs/kotatu-dl-completion.bash
 }
