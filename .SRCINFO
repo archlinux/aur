@@ -1,0 +1,8 @@
+pkgbase = twingate-installer
+	pkgdesc = Automated installer for the official client
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://twingate.com/
+	arch = x86_64
+
+pkgname = twingate-installer
