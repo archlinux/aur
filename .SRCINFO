@@ -29,7 +29,9 @@ pkgbase = limo-git
 	depends = qt5-base
 	depends = qt5-tools
 	optdepends = doxygen
-	source = limo-git::git+https://github.com/limo-app/limo.git unrar-git::git+https://github.com/aawc/unrar.git io.github.limo_app.limo.svg
+	source = limo-git::git+https://github.com/limo-app/limo.git
+	source = unrar-git::git+https://github.com/aawc/unrar.git
+	source = io.github.limo_app.limo.svg
 	cksums = SKIP SKIP 777140566
 
 pkgname = limo-git
