@@ -1,0 +1,12 @@
+pkgbase = i-use
+	pkgdesc = A script that displays your distribution with flair!
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://aur.archlinux.org/
+	arch = any
+	license = GPL
+	depends = lsb-release
+	source = i-use.sh
+	md5sums = SKIP
+
+pkgname = i-use
