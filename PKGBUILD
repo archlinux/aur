@@ -1,18 +1,22 @@
-# Maintainer: sineptic <sineptic0@gmail.com>
-pkgsubn=vimium
-pkgname=chromium-vimium
-pkgver=2.1.2
+# Maintainer: Helmut Stult <hst[at]e-mail[dot]de>
+
+pkgname=youtube-downloader
+pkgver=3.9.9.96
 pkgrel=1
-pkgdesc="Browser extension that provides keyboard-based navigation (unpacked)"
-arch=('any')
-url="https://github.com/philc/vimium"
-license=('MIT')
-source=("$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('SKIP')
+pkgdesc='YouTube Downloader by MediaHuman'
+arch=('x86_64')
+url="https://www.mediahuman.com/download.html"
+license=('custom')
+depends=('hicolor-icon-theme'
+         'qt5-multimedia'
+         'taglib')
+provide=('youtube-downloader')
+conflicts=('youtube-downloader')
+source=(https://www.mediahuman.com/download/YouTubeDownloader.amd64.deb)
+sha256sums=('192df4544e6a57dcd677ac5f14eed09e903a7cbce8795fe25d36d7e43065055d')
 
 package() {
-    mkdir -p "$pkgdir/usr/share/"
-
-    cd "$pkgsubn-$pkgver"
-    cp -r --no-preserve=ownership . "$pkgdir/usr/share/$pkgname-$pkgver"
+    bsdtar -xf "${srcdir}/data.tar.xz" -C "${pkgdir}/"
+    install -dm755 $pkgdir/usr/bin
+    ln -s /opt/$pkgname/YouTubeDownloader "${pkgdir}/usr/bin/YouTubeDownloader"
 }
