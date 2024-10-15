@@ -2,7 +2,7 @@ pkgname=emercoin-bin
 _pkgname=emercoin
 _githuborg=emercoin
 pkgver='0.8.5'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="Emercoin is a digital currency and blockchain service platform."
 arch=('x86_64')
 provides=('emercoin')
@@ -17,7 +17,7 @@ source_x86_64=("https://github.com/emercoin/emercoin/releases/download/v${pkgver
 "emc48.png"
 "com.emercoin.Emercoin.desktop")
 sha256sums_x86_64=('c4b0f4551956a14e33ebe7f9d88479db3a0b92fd20649b8b4a46f7c69ea68db0'
-                   '9d430f8bc61ce2f7c4e1f4b297065b5b6adad92d7dd4088e9a3bb7ba7751feff'
+                   '362d1f68062adf6716906aff219514bf3936169aefaf444652cfd7da7e58cc23'
                    '9e0832225a161a0c2694890e4d1791eedf943f96556db153e3cd5e40906ef5ed'
                    '99d13ec06eb0d09662632e9eb6309ee38e03162f09513b23747f189602552132'
                    'dfa7a4c2f717bbc29ba4273d65f80e0ee5853379e0632e458ae12df1ace72fcf')
