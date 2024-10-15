@@ -4,7 +4,7 @@
 
 pkgname=typst-git
 _pkgname=${pkgname%-git}
-pkgver=0.10.0.r285.g23ec13718
+pkgver=0.11.0.r446.ge0d809680
 pkgrel=1
 epoch=1
 pkgdesc='A markup-based typesetting system for the sciences'
@@ -16,6 +16,8 @@ depends=(gcc-libs
          glibc)
 makedepends=(cargo
              git)
+optdepends=('otf-libertinus: additional weights and variants for default font'
+            'ttf-linux-libertine: legacy default font prior to v0.12.0')
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
 source=("$_pkgname::git+$_url.git")
