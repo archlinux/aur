@@ -1,7 +1,7 @@
 # Maintainer: mario.valderrama <mv-aur@ransomware.download>
 # Maintainer: matthias.lisin <ml-aur@ransomware.download>
 pkgname=ionosctl
-pkgver=6.7.7
+pkgver=6.7.8
 pkgrel=1
 pkgdesc='IONOS Cloud CLI'
 arch=('x86_64' 'i686' 'aarch64' 'arm' 'armv6h' 'armv7h')
@@ -10,7 +10,7 @@ license=('Apache-2.0')
 depends=('glibc')
 makedepends=('go' 'git')
 source=("$url/archive/v$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('4c0d56ca61afbb9acf8dd9ce825fa6939924b6cc0a011296930c8f86b1380db8')
+sha256sums=('c1df1c8f92ea372887aa6ed04dfd4cc9ba969e7305715ec01a6b3b2d54e9b8c7')
 
 build() {
     _commit=$(bsdcat "$pkgname-$pkgver.tar.gz" | git get-tar-commit-id)
@@ -29,6 +29,8 @@ build() {
     for i in bash zsh fish; do
         ./"$pkgname" completion "$i" >completion."$i"
     done
+    # -f to avoid prompt if target-dir exists
+    ./"$pkgname" man -f --skip-compression --target-dir "$srcdir"/man1
 }
 
 package() {
@@ -37,6 +39,7 @@ package() {
     install -Dm644 completion.bash "$pkgdir"/usr/share/bash-completion/completions/"$pkgname"
     install -Dm644 completion.zsh "$pkgdir"/usr/share/zsh/site-functions/_"$pkgname"
     install -Dm644 completion.fish "$pkgdir"/usr/share/fish/vendor_completions.d/"$pkgname".fish
-    install -dm755 "$pkgdir"/usr/share/doc/"$pkgname"
+    install -dm755 "$pkgdir"/usr/share/doc/"$pkgname" "$pkgdir"/usr/share/man/man1
     cp -a docs -T "$pkgdir"/usr/share/doc/"$pkgname"
+    cp -rvfT "$srcdir"/man1 "$pkgdir"/usr/share/man/man1
 }
