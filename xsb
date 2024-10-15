@@ -1,0 +1,3 @@
+#!/bin/sh
+
+exec /opt/xsb-5.0.0/bin/xsb "$@"

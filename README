@@ -1,0 +1,10 @@
+This package creates a symlink /opt/xsb-5.0.0 *during compilation* on you real
+system! Then it tries to remove when package is ready.
+
+The only verified way to build and install the package is:
+
+    makepkg -srCc
+    pacman -U ./xsb-prolog-5.0-1-x86_64.pkg.tar.xz
+
+Option -i isn't supported, because I have to guarantee removal of /opt/xsb-5.0.0
+symlink. It is done using shell trap.

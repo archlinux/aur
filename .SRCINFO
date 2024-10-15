@@ -1,0 +1,20 @@
+pkgbase = xsb-prolog
+	pkgdesc = Logic Programming and Deductive Database system for Unix and Windows
+	pkgver = 5.0
+	pkgrel = 1
+	url = https://xsb.sourceforge.net/downloads/index.html
+	arch = i686
+	arch = x86_64
+	license = GPL-2.0-only
+	depends = unixodbc
+	depends = mariadb-libs
+	depends = java-environment
+	depends = curl
+	depends = libxml2
+	depends = pcre
+	conflicts = xsb-prolog
+	noextract = XSB-5.0.tar.gz
+	source = https://downloads.sourceforge.net/project/xsb/xsb/5.0%20%28Green%20Tea%29/XSB-5.0.tar.gz
+	sha256sums = 11dcea94709b618c0a7410eb97f7c1f7cbae2531f43f48a338d22b0f405c9cf0
+
+pkgname = xsb-prolog

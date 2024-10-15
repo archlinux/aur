@@ -1,0 +1,22 @@
+From 977a5745644a50651b6ef262bf4e06072130d9cb Mon Sep 17 00:00:00 2001
+From: Aleksy Grabowski <hurufu@gmail.com>
+Date: Tue, 15 Oct 2024 09:45:44 +0200
+Subject: [PATCH] Fix shebang
+
+---
+ build/version.sh | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/build/version.sh b/build/version.sh
+index 037d8c8..c7d9016 100755
+--- a/build/version.sh
++++ b/build/version.sh
+@@ -1,4 +1,4 @@
+-s#! /bin/sh
++#! /bin/sh
+ 
+ # Do not touch xsb_patch_date! It should be updated by SVN (does not currently)
+ xsb_patch_date='$Date$'
+-- 
+2.47.0
+
