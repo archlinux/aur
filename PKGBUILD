@@ -4,8 +4,8 @@ _pkgname=Mubu
 _zhsname="幕布"
 pkgver=4.0.5
 _electronversion=9
-pkgrel=1
-pkgdesc="A mind management tool that combines outline notes and mind maps.一款结合了大纲笔记和思维导图的头脑管理工具(packed from origin exe, use system electron)"
+pkgrel=2
+pkgdesc="A mind management tool that combines outline notes and mind maps.Prebuilt version.Use system-wide electron.一款结合了大纲笔记和思维导图的头脑管理工具(packed from origin exe)"
 arch=('x86_64')
 url="https://mubu.com"
 license=('LicenseRef-custom')
@@ -40,7 +40,7 @@ build() {
     7z x -aoa "${srcdir}/${pkgname%-bin}-${pkgver}.exe"
     install -Dm755 -d "${srcdir}/tmp"
     7z x -aoa "${srcdir}/\$PLUGINSDIR/app-32.7z" -o"${srcdir}/tmp"
-    icotool -i 1 -x "${srcdir}/uninstallerIcn.ico" -o "${srcdir}/${pkgname%-bin}.png"
+    icotool -i 1 -x "${srcdir}/uninstallerIcon.ico" -o "${srcdir}/${pkgname%-bin}.png"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
