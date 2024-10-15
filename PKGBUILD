@@ -5,14 +5,10 @@
 
 _pkgname=zfs
 _git_repo=https://github.com/openzfs/zfs.git
-_git_branch="$(/usr/bin/git ls-remote -h --sort=-v:refname "${_git_repo}" "zfs-*-*" | grep -E '[-](release|staging)$' | head -n 1)"
+_git_branch="$(/usr/bin/git ls-remote -h --sort=-v:refname "${_git_repo}" 'zfs-*-staging' | head -n 1)"
 _git_branch=${_git_branch##*/}
 _staging_ver=${_git_branch#zfs-}
-if [[ ${_staging_ver} == *-staging ]]; then
-    _staging_ver=${_staging_ver%-staging}
-else
-    _staging_ver=${_staging_ver%-release}.0
-fi
+_staging_ver=${_staging_ver%-staging}
 
 if /usr/bin/git ls-remote -t --exit-code "${_git_repo}" "zfs-${_staging_ver}" >/dev/null; then
     _git_branch="tag=zfs-${_staging_ver}"
@@ -21,7 +17,7 @@ else
 fi
 
 pkgname=${_pkgname}-dkms-staging-git
-pkgver=2.3.0pre.rc2.g0409c47fe0
+pkgver=2.2.6.r0.gbaa5031456
 pkgrel=1
 pkgdesc="Kernel modules for the Zettabyte File System (release staging branch)."
 arch=('any')
@@ -66,15 +62,9 @@ prepare() {
 pkgver() {
     cd "${srcdir}/${_pkgname}"
 
-    METAVER=$(grep -F Version: "${srcdir}/${_pkgname}/META" | tr -d '[:space:]')
+    METAVER=$(grep -F Version "${srcdir}/${_pkgname}/META" | tr -d '[:space:]')
     METAVER=${METAVER##*:}
-    if git rev-parse --verify -q zfs-${METAVER} >/dev/null; then
-        printf "%s.r%s.g%s" "${METAVER}" "$(git rev-list zfs-${METAVER}..HEAD --count)" "$(git rev-parse --short HEAD)"
-    else
-        METAREL=$(grep -F Release: "${srcdir}/${_pkgname}/META" | tr -d '[:space:]')
-        METAREL=${METAREL##*:}
-        printf "%spre.%s.g%s" "${METAVER}" "${METAREL}" "$(git rev-parse --short HEAD)"
-    fi
+    printf "%s.r%s.g%s" "${METAVER}" "$(git rev-list zfs-${METAVER}..HEAD --count)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
@@ -88,12 +78,10 @@ build() {
     ./scripts/dkms.mkconf -n ${_pkgname} -v "${pkgver}" -f dkms.conf
     printf '#define\tZFS_META_GITREV "zfs-%s"\n' "${pkgver}" >include/zfs_gitrev.h
 
-    # building against unsupported kernel version
-    sed -i '/^PRE_BUILD=/a\  --enable-linux-experimental' dkms.conf
 }
 
 package() {
-    depends=("zfs-utils>=${pkgver%.*.*}" "zfs-utils<=${_staging_ver}" 'dkms')
+    depends=("zfs-utils>=${pkgver%%.r*}" "zfs-utils<=${_staging_ver}" 'dkms')
 
     cd "${srcdir}/${_pkgname}"
 
@@ -101,5 +89,5 @@ package() {
     install -d "${dkmsdir}"/{config,scripts}
     cp -a configure dkms.conf Makefile.in META ${_pkgname}_config.h.in ${_pkgname}.release.in include/ module/ "${dkmsdir}"/
     cp config/compile config/config.* config/missing config/*sh "${dkmsdir}"/config/
-    cp scripts/dkms.postbuild "${dkmsdir}"/scripts/
+    cp scripts/enum-extract.pl scripts/dkms.postbuild "${dkmsdir}"/scripts/
 }
