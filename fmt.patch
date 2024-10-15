@@ -1,40 +1,32 @@
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index 05e7105..549909e 100644
+index c134892..cdf7327 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -297,14 +297,14 @@ endif()
+@@ -316,7 +316,7 @@ endif()
  
  # This line needs to be updated manually with any new/deleted object files; cmake discourages GLOBbing source files
  add_executable(bolt
 -    modules/fmt/src/format.cc src/main.cxx src/browser.cxx src/browser/app.cxx src/browser/client.cxx
 +    src/main.cxx src/browser.cxx src/browser/app.cxx src/browser/client.cxx
-     ${CLIENT_OS_SPECIFIC} src/browser/resource_handler.cxx src/browser/window_launcher.cxx
+     src/browser/client_posix.cxx src/browser/resource_handler.cxx src/browser/window_launcher.cxx
      ${WINDOW_LAUNCHER_OS_SPECIFIC} src/mime.cxx src/file_manager/directory.cxx client_cmake_gen.cxx
-     ${LIB_IPC_OS_SPECIFIC} ${BOLT_FILE_MANAGER_LAUNCHER_GEN}
- )
- 
- # Various build properties
+     "${LIBRARY_IPC_OS_SPECIFIC}" ${BOLT_FILE_MANAGER_LAUNCHER_GEN} ${BOLT_STUB_INJECT_CXX}
+@@ -331,7 +331,7 @@ endif()
+ if(BOLT_PLUGIN_LIB_NAME)
+     target_compile_definitions(bolt PUBLIC BOLT_LIB_NAME="${BOLT_PLUGIN_LIB_NAME}" BOLT_PLUGINS)
+ endif()
 -target_include_directories(bolt PUBLIC ${CEF_ROOT} modules/fmt/include)
 +target_include_directories(bolt PUBLIC ${CEF_ROOT})
  set_target_properties(bolt PROPERTIES CXX_STANDARD 20 CXX_EXTENSIONS OFF)
  target_link_libraries(bolt PUBLIC libcef_dll_wrapper)
  if(UNIX AND NOT APPLE)
-@@ -359,6 +359,9 @@ else()
-     install(DIRECTORY "${CEF_ROOT}/${CMAKE_BUILD_TYPE}/" "${CEF_ROOT}/Resources/" DESTINATION ${BOLT_CEF_INSTALLDIR}/bolt-launcher USE_SOURCE_PERMISSIONS)
+@@ -358,6 +358,9 @@ elseif(APPLE)
+     # TODO: mac support
  endif()
  
 +find_package(fmt REQUIRED)
 +target_link_libraries(bolt PUBLIC fmt)
 +
- # Build plugin library
- if(NOT BOLT_SKIP_LIBRARIES)
-     # todo: anything other than linux
-@@ -368,7 +371,7 @@ if(NOT BOLT_SKIP_LIBRARIES)
-         modules/spng/spng/spng.c)
-         install(TARGETS ${BOLT_PLUGIN_LIB_NAME} DESTINATION "${BOLT_LIBDIR}")
-     endif()
--    target_include_directories(${BOLT_PLUGIN_LIB_NAME} PUBLIC "${CEF_ROOT}" "${BOLT_LUAJIT_INCLUDE_DIR}" modules/fmt/include)
-+    target_include_directories(${BOLT_PLUGIN_LIB_NAME} PUBLIC "${CEF_ROOT}" "${BOLT_LUAJIT_INCLUDE_DIR}")
-     target_link_libraries(${BOLT_PLUGIN_LIB_NAME} luajit-5.1)
-     target_compile_definitions(bolt PUBLIC BOLT_PLUGINS=1 SPNG_STATIC=1)
-     target_compile_definitions(bolt PUBLIC BOLT_LIB_NAME="${BOLT_PLUGIN_LIB_NAME}")
+ # compilation setting for enabling chromium dev tools
+ if(BOLT_DEV_SHOW_DEVTOOLS)
+     target_compile_definitions(bolt PUBLIC BOLT_DEV_SHOW_DEVTOOLS)
