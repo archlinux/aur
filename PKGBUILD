@@ -5,12 +5,12 @@
 # Contributor: DDoSolitary <DDoSolitary@gmail.com>
 
 pkgname=i2pd-git
-pkgver=2.49.0.r17.gc8ae1504
+pkgver=2.54.0.r14.g7104d334
 pkgrel=1
 pkgdesc='A full-featured C++ implementation of the I2P router (git version)'
 arch=('x86_64')
 url='https://i2pd.website/'
-license=('BSD')
+license=('BSD-3-Clause')
 depends=('boost-libs' 'libminiupnpc.so' 'openssl' 'zlib')
 makedepends=('git' 'cmake' 'boost' 'check')
 provides=('i2pd' 'i2p-router')
@@ -29,7 +29,7 @@ source=('git+https://github.com/PurpleI2P/i2pd.git#branch=openssl'
 sha256sums=('SKIP'
             '2ddf15f1c1cdf5d747a0af667145238023fd126ab00c65f2897cacae935015b1'
             'ed1bde650139731921bf3c8091b3332620404e7700fb9c486a4a806fe34e2d3b'
-            'e98eaa783fcd8e1ab84980f68158e3bb9eb5ec101f26c748946a313152643f11'
+            '805a82f23c244afbdfae0a4f30d1707301bc0e23437f83d1c84f13c33f62ea28'
             '2b84d85d4234eb3b640925d0dd244c8abe3b48bc69c8456629af923de17acf10'
             'cfcb6b07b67aff3e3af12767f4649d88b9320dc71907b6c01b465e5c138cdaa3'
             '88b2e709228049ba11f37863f87de75ab6cde295104852871384337cfdc906a3'
