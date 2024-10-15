@@ -3,7 +3,7 @@
 pkgname=com.qq.weixin.deepin
 _appname=WeChat
 _pkgname="Deepin-${_appname}"
-pkgver=3.9.10deepin2
+pkgver=3.9.10deepin3
 pkgrel=1
 pkgdesc="Deepin Wine WeChat"
 arch=('x86_64')
@@ -31,25 +31,29 @@ source=(
     "LICENSE.html"
     "${pkgname}.sh"
 )
-sha256sums=('dba3a8e6c68b01eebab0a347c77454fce1e8198d8775e26bdae7a7e5abeea05b'
+sha256sums=('c8ec51e378b6c595549b7a686d30fffa09890f843a9a2f75461b4fcfbf7f8b2d'
             'ad20820e5436c46685d4c3c2dadfb7eccf04ecbc9a6e2fb563370cc8901d4d3f'
             '1b8cce1330dddca7b4fd31452052a79e024f9382fffcee0b2c35e515bcb8569b')
 build() {
-    sed -e "s|@bottlename@|${_pkgname}|g" \
-        -e "s|@appver@|${pkgver}|g" \
-        -e "s|@appname@|${_appname}|g" \
-        -e "s|@pkgname@|${pkgname}|g" \
-        -i "${srcdir}/${pkgname}.sh"
+    sed -e "
+        s/@bottlename@/${_pkgname}/g
+        s/@appver@/${pkgver}/g
+        s/@appname@/${_appname}/g
+        s/@pkgname@/${pkgname}/g
+    " -i "${srcdir}/${pkgname}.sh"
     bsdtar -xf "${srcdir}/data."*
     install -Dm755 -d "${srcdir}/tmp"
     7z x -aoa "${srcdir}/opt/apps/${pkgname}/files/files.7z" -o"${srcdir}/tmp"
-    sed '753,756d' -i "${srcdir}/tmp/user.reg"
+    sed -i '753,756d' "${srcdir}/tmp/user.reg"
     7z u "${srcdir}/opt/apps/${pkgname}/files/files.7z" "${srcdir}/tmp/user.reg"
-    sed "s|\"/opt/apps/${pkgname}/files/run.sh\"|${pkgname}|g;s|=chat;|=Network;|g" -i "${srcdir}/opt/apps/${pkgname}/entries/applications/${pkgname}.desktop"
+    sed -e "
+        s/\"\/opt\/apps\/${pkgname}\/files\/run.sh\"/${pkgname}/g
+        s/=chat;/=Network;/g
+    " -i "${srcdir}/opt/apps/${pkgname}/entries/applications/${pkgname}.desktop"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
-    cp -r "${srcdir}/opt" "${pkgdir}"
+    cp -Pr --no-preserve=ownership "${srcdir}/opt" "${pkgdir}"
     install -Dm644 "${srcdir}/opt/apps/${pkgname}/entries/applications/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
     install -Dm644 "${srcdir}/opt/apps/${pkgname}/entries/icons/hicolor/48x48/apps/${pkgname}.svg" -t "${pkgdir}/usr/share/icons/hicolor/scalable/apps"
     install -Dm644 "${srcdir}/LICENSE.html" -t "${pkgdir}/usr/share/licenses/${pkgname}"
