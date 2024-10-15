@@ -1,6 +1,6 @@
 pkgbase = ruby-lsp
 	pkgdesc = An opinionated language server for Ruby
-	pkgver = 0.19.1
+	pkgver = 0.20.0
 	pkgrel = 1
 	url = http://solargraph.org/
 	arch = any
@@ -10,9 +10,9 @@ pkgbase = ruby-lsp
 	depends = ruby-language_server-protocol
 	depends = ruby-prism
 	depends = ruby-rbs
-	noextract = ruby-lsp-0.19.1.gem
+	noextract = ruby-lsp-0.20.0.gem
 	options = !emptydirs
-	source = https://rubygems.org/downloads/ruby-lsp-0.19.1.gem
-	sha256sums = d013f937a6a3e03f19026c5234d7f22f219e45f3fdb39a80a3e816b0a2148ced
+	source = https://rubygems.org/downloads/ruby-lsp-0.20.0.gem
+	sha256sums = b4cf573b333f007d4e4f90b3c7c7652183f2c6673349e5b4e7f70d7c15f92f0e
 
 pkgname = ruby-lsp
