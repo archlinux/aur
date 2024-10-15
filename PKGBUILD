@@ -3,13 +3,13 @@
 
 pkgname=jumpnbump-levels
 pkgver=1.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Additional levels for jump'n'bump."
 url="http://icculus.org/jumpnbump"
 license=('GPL')
 depends=('jumpnbump')
 arch=('any')
-source=('http://mirandir.pagesperso-orange.fr/files/additional-levels.tar.xz')
+source=('http://mirandir.mcollection.free.fr/files/AUR/additional-levels.tar.xz')
 sha256sums=('7b4a647681cea9747700eec733d0db4cce9cdabd6200fef4443608e43582fc88')
 
 package() {
