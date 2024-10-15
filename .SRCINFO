@@ -1,0 +1,13 @@
+pkgbase = gprofng-gui
+	pkgdesc = A full-fledged graphical interface to operate gprofng.
+	pkgver = 1.1
+	pkgrel = 1
+	url = https://www.gnu.org/software/gprofng-gui/
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = java-environment<=21
+	depends = java-runtime<=21
+	source = https://ftp.gnu.org/gnu/gprofng-gui/gprofng-gui-1.1.tar.gz
+	sha256sums = 94fa577b856f00b89a2832771a265e221818b88dc0b36d8bca365efe6f08e12a
+
+pkgname = gprofng-gui
