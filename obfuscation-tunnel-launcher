@@ -59,7 +59,7 @@ if [[ -e ${1} ]]; then
       tls-cert) TLS_CERT="--tls-cert ${v}" ;;
       tls-key) TLS_KEY="--tls-key ${v}" ;;
     esac
-  done < grep '=' ${1}
+  done <<< $( grep '=' ${1} )
 
   /usr/bin/obfuscation-tunnel ${LOCAL} ${REMOTE} ${DISABLE_THREADING} ${VERBOSE} ${OBFUSCATION} ${MOCK} ${SOCKS} ${FAKE_TCP_ENCODING} ${USE_PCAP} ${FRAGMENT_DNS_ON_60BYTE} ${AUTHORITATIVE_DOMAIN} ${TLS_NO_VERIFY} ${TLS_CA_BUNDLE} ${TLS_CERT} ${TLS_KEY}
 fi

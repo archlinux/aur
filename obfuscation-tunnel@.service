@@ -10,7 +10,7 @@ DynamicUser=yes
 PrivateTmp=yes
 NoNewPrivileges=yes
 #AmbientCapabilities=CAP_NET_BIND_SERVICE CAP_NET_ADMIN
-ExecStart=/usr/lib/obfuscation-tunnel-git/obfuscation-tunnel-starter /etc/obfuscation-tunnel/%i.conf
+ExecStart=/usr/lib/obfuscation-tunnel/obfuscation-tunnel-launcher /etc/obfuscation-tunnel/%i.conf
 
 [Install]
 WantedBy=multi-user.target
