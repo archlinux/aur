@@ -1,16 +1,16 @@
 pkgbase = versatiles-bin
 	pkgdesc = A toolbox for converting, checking and serving map tiles in various formats.
 	pkgver = 0.12.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/versatiles-org/versatiles-rs
 	arch = x86_64
 	arch = aarch64
 	license = MIT
 	provides = versatiles
 	conflicts = versatiles
-	source_x86_64 = https://github.com/versatiles-org/versatiles-rs/releases/download/v0.12.8/versatiles-linux-gnu-x86_64.tar.gz
+	source_x86_64 = versatiles-bin-linux-gnu-x86_64-0.12.8.tar.gz::https://github.com/versatiles-org/versatiles-rs/releases/download/v0.12.8/versatiles-linux-gnu-x86_64.tar.gz
 	sha256sums_x86_64 = 7c642a8afe6fd2ddf7aad610218847808e195c548b83e2660b0238bdcf49b65d
-	source_aarch64 = https://github.com/versatiles-org/versatiles-rs/releases/download/v0.12.8/versatiles-linux-gnu-aarch64.tar.gz
+	source_aarch64 = versatiles-bin-linux-gnu-aarch64-0.12.8.tar.gz::https://github.com/versatiles-org/versatiles-rs/releases/download/v0.12.8/versatiles-linux-gnu-aarch64.tar.gz
 	sha256sums_aarch64 = a2bc95c317889a694339295252632e0f599515bb6522881f977fad2b1f5fa1db
 
 pkgname = versatiles-bin
