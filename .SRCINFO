@@ -1,0 +1,14 @@
+pkgbase = riscv64-unknown-elf-toolchain-bin
+	pkgdesc = SiFive Freedom Bare Metal Toolchain
+	pkgver = 2020.12.0
+	pkgrel = 1
+	url = https://github.com/sifive/freedom-tools
+	arch = x86_64
+	license = EPL-1.0
+	conflicts = riscv64-gnu-toolchain-elf-bin
+	options = !strip
+	options = !lto
+	source = https://static.dev.sifive.com/dev-tools/freedom-tools/v2020.12/riscv64-unknown-elf-toolchain-10.2.0-2020.12.8-x86_64-linux-ubuntu14.tar.gz
+	sha512sums = 26b446432bcf9601450870c2959b6e9d67c9d0b7618d7529f7703a38ec30fc00baf6a37417bd291c97d2743807a598c116b364ee69e74f74c860a7de346ea295
+
+pkgname = riscv64-unknown-elf-toolchain-bin
