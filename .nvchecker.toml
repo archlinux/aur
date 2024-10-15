@@ -1,0 +1,5 @@
+[ionosctl-bin]
+source = "github"
+github = "ionos-cloud/ionosctl"
+use_max_tag = true
+prefix = "v"
