@@ -11,6 +11,8 @@ fi
   mkdir -p /$cu_user/Note
   mkdir -p /$cu_user/Bookmark
   mkdir -p /$cu_user/Monitor
+  mkdir -p /$cu_user/trash
+  mkdir -p /$cu_user/data
   chmod 777  -R /$cu_user
   chmod 777  -R /opt/lze-web
   chmod 755 -R /etc/lze-web
