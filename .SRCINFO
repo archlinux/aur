@@ -1,0 +1,21 @@
+pkgbase = libastal-io-git
+	pkgdesc = IO library for libastal
+	pkgver = r438.c84d710
+	pkgrel = 1
+	url = https://github.com/Aylur/astal
+	arch = x86_64
+	groups = libastal
+	license = LGPL-2.1-only
+	makedepends = meson
+	makedepends = git
+	makedepends = gobject-introspection
+	makedepends = vala
+	depends = glib2
+	depends = glibc
+	provides = astal-io
+	provides = libastal-io
+	provides = libastal-io.so=0-64
+	source = git+https://github.com/Aylur/astal.git
+	sha256sums = SKIP
+
+pkgname = libastal-io-git
