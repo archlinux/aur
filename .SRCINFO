@@ -10,6 +10,7 @@ pkgbase = mympc-git
 	depends = zsh
 	depends = mpc
 	depends = mpd
+	depends = python-mpd2
 	provides = mympc
 	conflicts = mympc
 	source = git+https://gitlab.com/teraflops/mympc.git
