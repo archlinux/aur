@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=RcppDate
-_pkgver=0.0.3
+_pkgver=0.0.4
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=9
+pkgrel=1
 pkgdesc="'date' C++ Header Library for Date and Time Functionality"
 arch=(any)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -16,8 +16,8 @@ optdepends=(
   r-rcpp
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('d2a0f19b5f8f836ac0d03a9dc92d85ea')
-b2sums=('d2ee9106762721a8e3ab5607dcbdd7064686cf86bfb64f6295d0bd9d6e3d0cbb5aea7f1c920931253c6d2c0690ed42c755b5a56455d780cfe6eea11293ea0626')
+md5sums=('de2189cc74fe4c948a0e870f1d17dec0')
+b2sums=('6f0ab6006945d8d56719407aca0bf20e1c3994bd87940202f7124c2b42bee51d3ec0dac33550c0c5f201747a277c1608c13bee89a63b218d774fe827e06b7256')
 
 build() {
   mkdir build
