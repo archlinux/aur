@@ -2,7 +2,7 @@
 
 _pkgname="tsukimi"
 pkgname="${_pkgname}-git"
-pkgver=0.13.0.r637.gf5a2162
+pkgver=0.16.2.r767.gd42b2b2
 pkgrel=1
 pkgdesc='A simple third-party Emby client'
 arch=('x86_64')
@@ -34,6 +34,8 @@ pkgver() {
 
 prepare() {
 	cd "${srcdir}/${_pkgname}"
+	git remote update
+	git submodule update --init --recursive
 	cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
@@ -51,7 +53,5 @@ package() {
 	install -Dm 644 -t "${pkgdir}/usr/share/glib-2.0/schemas" "moe.tsuna.tsukimi.gschema.xml"
 	install -Dm 644 -t "${pkgdir}/usr/share/applications/" "${srcdir}/tsukimi.desktop"
 	install -Dm 644 -t "${pkgdir}/usr/share/pixmaps/" "${srcdir}/tsukimi.png"
-
-	# install i18n files
 	cp -r "i18n/locale" "${pkgdir}/usr/share/locale"
 }

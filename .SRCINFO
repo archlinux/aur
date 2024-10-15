@@ -1,6 +1,6 @@
 pkgbase = tsukimi-git
 	pkgdesc = A simple third-party Emby client
-	pkgver = 0.13.0.r637.gf5a2162
+	pkgver = 0.16.2.r767.gd42b2b2
 	pkgrel = 1
 	url = https://github.com/tsukinaha/tsukimi
 	arch = x86_64
