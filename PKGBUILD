@@ -6,7 +6,7 @@
 
 pkgname=tupitube
 pkgver=0.2.18
-pkgrel=6
+pkgrel=7
 pkgdesc='Design and authoring tool for digital artists interested in 2D animation'
 arch=('x86_64')
 url='https://tupitube.com/'
@@ -27,6 +27,7 @@ prepare() {
   sed -i 's|quazip-qt5|quazip1-qt5|' qonf/test.rb
   sed -i 's|/share/pixmaps|/share/icons/hicolor/128x128/apps|' qonf/makefile.rb
   sed -i '/require .os/d' qonf/configure.rb
+  sed -i 's/exists?/exist?/' configure.rb qonf/test.rb
 
   patch -p1 -i ../ffmpeg5.patch # Fix build with FFmpeg 5
 }
