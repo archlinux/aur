@@ -1,0 +1,70 @@
+diff --git a/README.md b/README.md
+index fa6b4f3..fa5b642 100644
+--- a/README.md
++++ b/README.md
+@@ -1,4 +1,4 @@
+-# Obfuscation Tunnel
++# OBFUSCATION-TUNNEL 1
+ 
+ The purpose of this project is two-fold:
+ 
+@@ -8,7 +8,7 @@ The purpose of this project is two-fold:
+ ## Usage
+ 
+ ```
+-usage: ./tunnel -l proto:addr:port -r proto:addr:port [args]
++usage: obfuscation-tunnel -l proto:addr:port -r proto:addr:port [args]
+ arguments:
+ 
+    -l endpoint  Local listening protocol, address and port.
+@@ -80,43 +80,6 @@ Endpoint = 127.0.0.1:2408
+ 
+ Note that while the documentation for this application largely talks in terms of Wireguard examples, the application itself is completely protocol-agnostic, and has nothing to do with Wireguard directly.
+ 
+-## Building
+-
+-To compile and run the application, you must first install the dependencies, which can be done with:
+-
+--   Debian/Ubuntu/Kali:
+-
+-    ```
+-     apt install build-essential libpcap-dev
+-    ```
+-
+--   RHEL/CentOS/Fedora:
+-    
+-    ```
+-     yum install gcc make libpcap-devel
+-    ```
+-
+--   macOS: (with  [Homebrew](http://brew.sh/))
+-    
+-    ```
+-     xcode-select --install && brew install libpcap
+-    ```
+-
+-After the dependencies have been satisfied, you can clone the repository and make it:
+-
+-```
+-git clone https://github.com/RoliSoft/Obfuscation-Tunnel.git
+-cd Obfuscation-Tunnel
+-make
+-```
+-
+-If you wish to build without libpcap:
+-
+-* Skip the installation of the `libpcap` dependency.
+-* Open the `Makefile` file in your editor,
+-* Find the `CXXFLAGS` line (should be the first),
+-* Replace the flags `-DHAVE_PCAP=1 -lpcap` with `-DHAVE_PCAP=0`
+-
+ ## Tunneling VPN traffic
+ 
+ If you are preparing to tunnel VPN traffic, it is very important to make sure that the application can communicate with the default gateway, and once the VPN connects, it will not be redirected to the VPN. If your VPN will try to redirect all traffic (0.0.0.0/0) or the redirected traffic overlaps with the location of the gateway server, you will notice that the connection drops after the initial handshake, once the VPN client sets up the routes and unknowingly hijacks the tunnel's communication.
+@@ -705,4 +668,4 @@ There is no full IPv6 support in the application at this time, only the ICMPv6 t
+ 
+ * Finish full IPv6 support.
+ * ~~Rewrite application to have separate "local server" and "remote client" components, that way the modes of operation are not fused together in one component (e.g. `-m ui6` for UDP-to-ICMPv6) but instead selectable separately (e.g. `-l udp:... -r icmpv6:...`).~~ Done.
+-* ~~Add support for obfuscation methods which can resize the payload, that way encryption headers can be added and there is more flexibility if protocols need to be concealed to look like other protocols.~~ Done.
+\ No newline at end of file
++* ~~Add support for obfuscation methods which can resize the payload, that way encryption headers can be added and there is more flexibility if protocols need to be concealed to look like other protocols.~~ Done.

@@ -10,26 +10,28 @@ url="https://github.com/RoliSoft/${_pkgname}"
 license=('BSD')
 groups=()
 depends=('libpcap' 'libssl.so=3' 'libcrypto.so=3' 'glibc')
-makedepends=('git' 'gcc' 'make')
+makedepends=('git' 'gcc' 'make' 'go-md2man')
 checkdepends=()
 optdepends=()
-provides=('obfuscation-tunnel')
-conflicts=('obfuscation-tunnel')
+provides=("${_pkgname,,}")
+conflicts=("${_pkgname,,}")
 replaces=()
 backup=()
 options=()
 install=
 changelog=
-source=(git+${url}.git 'ctypes.patch')
+source=( git+${url}.git 'ctypes.patch' 'readme-to-manpage.patch' )
 noextract=()
 sha256sums=('SKIP'
-            '4eba65b38359124c8d8c6aa9c8b2e91b8b9bf8e6f77f7ca824eebb393e42dd3d')
+            '4eba65b38359124c8d8c6aa9c8b2e91b8b9bf8e6f77f7ca824eebb393e42dd3d'
+            '1e531bbb3e0f10d98f9ab0ed318ffcead3e1e6f6fad973864e4e3eedaf88d313')
 validpgpkeys=()
 
 builddir=${_pkgname}
 prepare() {
     cd "$builddir"
     patch -p1 -i "$srcdir/ctypes.patch"
+    patch -p1 -i "$srcdir/readme-to-manpage.patch"
 }
 
 
@@ -43,13 +45,11 @@ pkgver(){
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
-check() {
-	echo $pwd
-#cd "$builddir"
-}
-
 package() {
 	cd "$builddir"
-	install -D -m755 tunnel "${pkgdir}/usr/bin/${pkgname/-git/}"
+	install -D -m755 tunnel "${pkgdir}/usr/bin/${_pkgname,,}"
 	install -D -m644 LICENSE.md "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
+
+	mkdir -p "${pkgdir}/usr/share/man/man1/"
+    go-md2man -in README.md | gzip > "${pkgdir}/usr/share/man/man1/${_pkgname,,}.1.gz"
 }
