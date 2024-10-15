@@ -4,16 +4,17 @@
 
 pkgname=typst-git
 _pkgname=${pkgname%-git}
-pkgver=0.11.0.r446.ge0d809680
+pkgver=0.11.0.r446.ge0d80968
 pkgrel=1
 epoch=1
 pkgdesc='A markup-based typesetting system for the sciences'
 arch=(x86_64)
 url="https://$_pkgname.app"
 _url="https://github.com/$_pkgname/$_pkgname"
-license=(Apache)
-depends=(gcc-libs
-         glibc)
+license=(Apache-2.0)
+depends=(gcc-libs # libgcc_s.so
+         glibc # libc.so libm.so
+         openssl libssl.so libcrypto.so)
 makedepends=(cargo
              git)
 optdepends=('otf-libertinus: additional weights and variants for default font'
@@ -30,7 +31,7 @@ prepare() {
 
 pkgver() {
 	cd "$_pkgname"
-	git describe --long --tags |
+	git describe --long --tags --abbrev=8 |
 		sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g;s/rc.\.//'
 }
 
@@ -43,15 +44,16 @@ build() {
 	cd "$_pkgname"
 	_srcenv
 	CFLAGS+=' -ffat-lto-objects'
-	export TYPST_VERSION="${pkgver}"
+	export TYPST_VERSION="${pkgver%-g*} (${pkgver#*-g})"
 	export GEN_ARTIFACTS=artifacts/
-	cargo build -p typst-cli --frozen --release --all-features
+	export OPENSSL_NO_VENDOR=true
+	cargo build -p typst-cli --frozen --release
 }
 
 check() {
 	cd "$_pkgname"
 	_srcenv
-	cargo test --workspace --frozen --all-features
+	cargo test --workspace --frozen
 }
 
 package() {

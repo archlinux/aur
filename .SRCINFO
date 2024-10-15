@@ -1,18 +1,21 @@
 pkgbase = typst-git
 	pkgdesc = A markup-based typesetting system for the sciences
-	pkgver = 0.11.0.r446.ge0d809680
+	pkgver = 0.11.0.r446.ge0d80968
 	pkgrel = 1
 	epoch = 1
 	url = https://typst.app
 	arch = x86_64
-	license = Apache
+	license = Apache-2.0
 	makedepends = cargo
 	makedepends = git
 	depends = gcc-libs
 	depends = glibc
+	depends = openssl
+	depends = libssl.so
+	depends = libcrypto.so
 	optdepends = otf-libertinus: additional weights and variants for default font
 	optdepends = ttf-linux-libertine: legacy default font prior to v0.12.0
-	provides = typst=0.11.0.r446.ge0d809680
+	provides = typst=0.11.0.r446.ge0d80968
 	conflicts = typst
 	source = typst::git+https://github.com/typst/typst.git
 	sha256sums = SKIP
