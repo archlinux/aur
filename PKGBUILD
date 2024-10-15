@@ -3,7 +3,7 @@ pkgbase=libastal-git
 pkgname=("libastal-git"
          "lua-libastal-git" "lua51-${pkgbase}" "lua53-${pkgbase}")
 _pkgname=libastal
-pkgver=r361.ac5f7d2
+pkgver=r439.dcc3870
 pkgrel=1
 pkgdesc="Building blocks for building desktop shells."
 arch=("x86_64")
@@ -14,7 +14,7 @@ makedepends=(
   "wayland" "wayland-protocols"
   "gobject-introspection" "meson" "vala"
   "lua" "lua51" "lua53" "luarocks")
-depends=("glib2" "glibc" "gtk3" "gtk-layer-shell")
+depends=("glib2" "glibc" "gtk3" "gtk-layer-shell" "gdk-pixbuf2" "wayland" "libastal-io")
 groups=("libastal")
 source=("git+${url}.git")
 sha256sums=("SKIP")
@@ -27,20 +27,19 @@ pkgver(){
 }
 
 build() {
-  cd astal/core
+  cd astal/lib/astal/gtk3
   arch-meson build
   meson compile -C build
 }
 
 package_libastal-git() {
-  provides=(libastal libastal.so=0-64)
-  cd astal/core
+  provides=(libastal libastal.so=3-64)
+  cd astal/lib/astal/gtk3
   meson install -C build --destdir "$pkgdir"
 }
 
-
 _package_lua() {
-  cd astal/core/lua
+  cd astal/lang/lua
 	luarocks --lua-version $1 --tree "$pkgdir/usr/" \
 		make --deps-mode none --no-manifest -- "$_rockname"
 }
