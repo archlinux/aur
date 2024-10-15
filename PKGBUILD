@@ -3,11 +3,11 @@ _pkgname=antares
 pkgname="${_pkgname}-sql-git"
 _appname=AntaresSQL
 _flatpakname="it.fabiodistasio.${_appname}"
-pkgver=0.7.28.r6.g3fa0bd3
+pkgver=0.7.29.r0.gd2da8c2
 _electronversion=30
 _nodeversion=20
 pkgrel=1
-pkgdesc="A modern, fast and productivity driven SQL client with a focus in UX."
+pkgdesc="A modern, fast and productivity driven SQL client with a focus in UX.Use system-wide electron."
 arch=('any')
 url="https://antares-sql.app/"
 _ghurl="https://github.com/antares-sql/antares"
@@ -53,32 +53,37 @@ build() {
     " -i "${srcdir}/${pkgname%-git}.sh"
     _ensure_local_nvm
     cd "${srcdir}/${pkgname%-git}.git"
-    #export ELECTRON_SKIP_BINARY_DOWNLOAD=1
+    export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
+    electronDist="/usr/lib/electron${_electronversion}"
     HOME="${srcdir}/.electron-gyp"
     {
         echo -e '\n'	
         #echo 'build_from_source=true'
         echo "cache=${srcdir}/.npm_cache"
-        if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
+    } >> .npmrc
+    if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
+        {
             echo 'registry=https://registry.npmmirror.com'
             echo 'disturl=https://registry.npmmirror.com/-/binary/node/'
             echo 'electron_mirror=https://registry.npmmirror.com/-/binary/electron/'
             echo 'electron_builder_binaries_mirror=https://registry.npmmirror.com/-/binary/electron-builder-binaries/'
-            echo 'sqlite3-binary-site=https://registry.npmmirror.com/mirrors/sqlite3'
-            echo 'node-sqlite3-binary-host-mirror=https://registry.npmmirror.com/mirrors'
-        fi
-    } >> .npmrc
-    sed -i "s/Exec=startantares/Exec=${pkgname%-git} %U/g;s/${_flatpakname}/${pkgname%-git}/g" assets/flatpak/"${_flatpakname}".desktop
+        } >> .npmrc
+    fi
+    sed -e "
+        s/Exec=start${_pkgname}/Exec=${pkgname%-git} %U/g
+        s/${_flatpakname}/${pkgname%-git}/g
+    " -i assets/flatpak/"${_flatpakname}".desktop
     sed -i "s/${_flatpakname}/${pkgname%-git}/g" assets/flatpak/"${_flatpakname}".metainfo.xml
-    sed -i "s/--publish never/-l dir/g;s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
+    sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
     NODE_ENV=development    npm install
-    NODE_ENV=production     npm run build
+    NODE_ENV=production     npm run compile
+    NODE_ENV=production     npm exec -c "electron-builder --linux dir -c.electronDist=${electronDist}"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
     install -Dm644 "${srcdir}/${pkgname%-git}.git/build/linux-"*/resources/app.asar -t "${pkgdir}/usr/lib/${pkgname%-git}"
-    _icon_sizes=(16x16 32x32 48x48 64x64 128x128 256x256)
+    _icon_sizes=(16x16 32x32 64x64 128x128 256x256)
     for _icons in "${_icon_sizes[@]}";do
         install -Dm644 "${srcdir}/${pkgname%-git}.git/assets/linux/${_icons}.png" \
             "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname%-git}.png"
