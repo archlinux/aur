@@ -1,225 +1,146 @@
-# SPDX-License-Identifier: AGPL-3.0
-#
-# Maintainer: Pellegrino Prevete (tallero) <pellegrinoprevete@gmail.com>
-# Maintainer: Truocolo <truocolo@aol.com>
-# Contributor: Ignacy Kuchciński (ignapk) <ignacykuchcinski@gmail.com>
-# Contributor: Simon Gardling <titaniumtown@gmail.com>
-# Contributor: Ricardo Liang (rliang) <ricardoliang@gmail.com>
-# Contributor: Marcell Meszaros (MarsSeed) <marcell.meszaros@runbox.eu>
+#Based on https://gitlab.archlinux.org/archlinux/packaging/packages/gnome-shell/-/raw/main/PKGBUILD
+# Maintainer: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
+# Maintainer: Fabian Bornschein <fabiscafe@archlinux.org>
+# Contributor: Ionut Biru <ibiru@archlinux.org>
+# Contributor: Flamelab <panosfilip@gmail.com
 
-_proj="gnome"
-_ns="GNOME"
-_pkg="shell"
-_Pkg="Shell"
-_pkgname="${_proj}-${_pkg}"
-pkgbase="${_pkgname}-git"
+pkgbase=gnome-shell-git
 pkgname=(
-  "${pkgbase}"
+  gnome-shell-git
+  gnome-shell-docs-git
 )
-pkgver=44.1.r116.gace8676ad
+pkgver=47.0+r28+ge10682200
 pkgrel=1
 epoch=1
 pkgdesc="Next generation desktop shell"
-url="https://wiki.${_proj}.org/Projects/Gnome${_Pkg}"
-arch=(
-  'x86_64'
-  'i686'
-  'pentium4'
-  'aarch64'
-  'armv7h'
-  'armv6l'
-)
-license=(
-  GPL
-)
+url="https://gitlab.gnome.org/GNOME/gnome-shell"
+arch=(x86_64)
+license=(GPL-3.0-or-later)
 depends=(
   accountsservice
+  at-spi2-core
+  bash
+  cairo
+  dconf
+  gcc-libs
   gcr-4
-  "gjs-git>=1.76.0"
-  "${_proj}-autoar"
-  "${_proj}-session"
-  "${_proj}-settings-daemon"
+  gdk-pixbuf2
+  gjs
+  glib2
+  glibc
+  gnome-autoar
+  gnome-desktop-4
+  gnome-session
+  gnome-settings-daemon
+  graphene
   gsettings-desktop-schemas
   gtk4
-  "libadwaita-git>=1.3"
+  hicolor-icon-theme
+  json-glib
+  libadwaita
   libcanberra-pulse
   libgdm
+  libgirepository
+  libglvnd
   libgweather-4
   libibus
+  libical
+  libnm
   libnma-gtk4
+  libpipewire
+  libpulse
   libsecret
   libsoup3
-  "mutter-git>=44.1"
+  libx11
+  libxfixes
+  mutter
+  pango
+  polkit
+  systemd-libs
   unzip
   upower
+  webkitgtk-6.0
 )
 makedepends=(
   asciidoc
   bash-completion
   evolution-data-server
+  gi-docgen
   git
-  "${_proj}-control-center"
+  glib2-devel
+  gnome-keybindings
   gobject-introspection
-  gtk-doc
   meson
+  python-docutils
   sassc
 )
-checkdepends=(
-  appstream-glib
-  python-dbusmock
-  xorg-server-xvfb
-)
-optdepends=(
-  'evolution-data-server: Evolution calendar integration'
-  "${_proj}-bluetooth-3.0: Bluetooth support"
-  "${_proj}-control-center: System settings"
-  "${_proj}-disk-utility: Mount with keyfiles"
-  'gst-plugin-pipewire: Screen recording'
-  'gst-plugins-good: Screen recording'
-  'power-profiles-daemon: Power profile switching'
-  'switcheroo-control: Multi-GPU support'
-)
-groups=(
-  "${_proj}"
-)
-provides=(
-  "${_pkgname}=${pkgver}"
-)
-conflicts=(
-  "${_pkgname}"
-)
-_project_url="https://gitlab.${_proj}.org/${_ns}"
-_repo_url="${_project_url}/${_pkgname}"
-_gvc_repo_url="${_project_url}/lib${_proj}-volume-control"
 source=(
-  "git+${_repo_url}.git"
-  "git+${_gvc_repo_url}.git"
+  # GNOME Shell tags use SSH signatures which makepkg doesnt understand
+  "git+https://gitlab.gnome.org/GNOME/gnome-shell.git"
+  "git+https://gitlab.gnome.org/GNOME/libgnome-volume-control.git#commit=5f9768a2eac29c1ed56f1fbb449a77a3523683b6"
 )
-sha256sums=(
-  'SKIP'
-  'SKIP'
-)
+b2sums=('SKIP'
+        'e31ae379039dfc345e8032f7b9803a59ded075fc52457ba1553276d3031e7025d9304a7f2167a01be2d54c5e121bae00a2824a9c5ccbf926865d0b24520bb053')
 
 pkgver() {
-  local \
-    _pkgver
-  cd \
-    "${_pkgname}" || \
-    exit
-  _pkgver="$( \
-    git \
-      describe \
-        --tags \
-        --long | \
-      sed \
-        's/-/+/g')"
-  _parse_rev \
-    "${_pkgver}"
-}
-
-_parse_ver() {
-  local \
-    _pkgver="${1}" \
-    _out="" \
-    _ver \
-    _rev \
-    _commit
-  _ver="$( \
-    echo \
-      "${_pkgver}" | \
-        awk \
-          -F '+' \
-          '{print $1}')"
-  _rev="$( \
-    echo \
-      "${_pkgver}" | \
-        awk \
-          -F '+' \
-          '{print $2}')"
-  _commit="$( \
-    echo \
-      "${_pkgver}" | \
-        awk \
-          -F '+' \
-          '{print $3}')"
-  _out=${_ver}
-  [[ "${_rev}" != "" ]] && \
-    _out+=".r${_rev}"
-  [[ "${_commit}" != "" ]] && \
-    _out+=".${_commit}"
-  echo \
-    "${_out}"
+  cd gnome-shell
+  git describe --tags | sed 's/[^-]*-g/r&/;s/-/+/g'
 }
 
 prepare() {
-  cd \
-    "${_pkgname}"
-  git \
-    submodule \
-      init
-  git \
-    submodule \
-      set-url \
-        subprojects/gvc \
-        "$srcdir/lib${_proj}-volume-control"
-  git \
-    -c protocol.file.allow=always \
-    submodule \
-      update
+  # Inject gvc
+  ln -s libgnome-volume-control gvc
+
+  cd gnome-shell
 }
 
 build() {
-  local \
-    meson_options=()
-  meson_options=(
+  local meson_options=(
     -D gtk_doc=true
+    -D tests=false
   )
+
   CFLAGS="${CFLAGS/-O2/-O3} -fno-semantic-interposition"
   LDFLAGS+=" -Wl,-Bsymbolic-functions"
-  arch-meson \
-    "${_pkgname}" \
-      build \
-        "${meson_options[@]}"
-  meson \
-    compile \
-     -C \
-     build
+
+  # Inject gvc
+  export MESON_PACKAGE_CACHE_DIR="$srcdir"
+
+  arch-meson gnome-shell build "${meson_options[@]}"
+  meson compile -C build
 }
 
-_check() (
-  export \
-    XDG_RUNTIME_DIR="$PWD/rdir"
-  mkdir \
-    -p \
-    -m 700 \
-    "$XDG_RUNTIME_DIR"
-
-  meson \
-    test \
-      -C \
-        build \
-      --print-errorlogs \
-      -t 3
-)
-
-check() {
-  dbus-run-session \
-    xvfb-run \
-      -s \
-      '-nolisten local +iglx -noreset' \
-    bash \
-      -c \
-        "$(declare -f _check); _check"
-}
-
-package() {
-  depends+=(
-    "libmutter-13.so"
+package_gnome-shell-git() {
+  provides=(gnome-shell)
+  conflicts=(gnome-shell)
+  depends+=(libmutter-16.so)
+  optdepends=(
+    'evolution-data-server: Evolution calendar integration'
+    'gnome-bluetooth-3.0: Bluetooth support'
+    'gnome-control-center: System settings'
+    'gnome-disk-utility: Mount with keyfiles'
+    'gst-plugin-pipewire: Screen recording'
+    'gst-plugins-good: Screen recording'
+    'power-profiles-daemon: Power profile switching'
+    'python-gobject: gnome-shell-test-tool performance tester'
+    'python-simplejson: gnome-shell-test-tool performance tester'
+    'switcheroo-control: Multi-GPU support'
   )
-  meson \
-    install \
-    -C build \
-    --destdir "${pkgdir}"
+  groups=(gnome)
+
+  meson install -C build --destdir "$pkgdir"
+
+  mkdir -p doc/usr/share
+  mv {"$pkgdir",doc}/usr/share/doc
+}
+
+package_gnome-shell-docs-git() {
+  provides=(gnome-shell-docs)
+  conflicts=(gnome-shell-docs)
+  pkgdesc+=" (API documentation)"
+  depends=()
+
+  mv doc/* "$pkgdir"
 }
 
 # vim:set sw=2 sts=-1 et:
