@@ -20,6 +20,7 @@ pkgbase = tt-smi-git
 	depends = python-importlib_resources
 	depends = python-luwen
 	depends = python-linkify-it-py
+	depends = python-tt-tools-common
 	provides = tt-smi
 	source = tt-smi::git+https://github.com/tenstorrent/tt-smi.git
 	sha256sums = SKIP
