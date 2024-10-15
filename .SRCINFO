@@ -1,6 +1,6 @@
 pkgbase = filen-desktop-git
-	pkgdesc = Desktop client including Syncing, Virtual Drive mounting, S3, WebDAV, File Browsing, Chats, Notes, Contacts and more.
-	pkgver = 3.0.21.rc4.r1.gfd0d74c
+	pkgdesc = Desktop client including Syncing, Virtual Drive mounting, S3, WebDAV, File Browsing, Chats, Notes, Contacts and more.Use system-wide electron.
+	pkgver = 3.0.22.rc1.r1.g4e6c407
 	pkgrel = 1
 	url = https://filen.io/
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = filen-desktop-git
 	depends = electron32
 	depends = libjpeg6-turbo
 	depends = giflib
-	provides = filen-desktop=3.0.21.rc4
+	provides = filen-desktop=3.0.22.rc1
 	conflicts = filen-desktop
 	source = filen-desktop.git::git+https://github.com/FilenCloudDienste/filen-desktop
 	source = filen-desktop.sh
