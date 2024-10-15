@@ -1,0 +1,17 @@
+pkgbase = ufw-docker-git
+	pkgdesc = To Fix The Docker and UFW Security Flaw Without Disabling Iptables.
+	pkgver = r150.3d6896c
+	pkgrel = 1
+	url = https://github.com/chaifeng/ufw-docker
+	install = ufw-docker.install
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = git
+	depends = ufw
+	depends = bash
+	provides = ufw-docker
+	conflicts = ufw-docker
+	source = git+https://github.com/chaifeng/ufw-docker.git
+	sha256sums = SKIP
+
+pkgname = ufw-docker-git
