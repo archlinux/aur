@@ -1,93 +1,78 @@
+# Maintainer: Mopigames <mopigames@proton.me>
+
 pkgname=betterx-desktop-git
-pkgver=v1.0.1.alpha.r7.g6ac6640
+_pkgname=BetterX-Desktop
+pkgver=1.0.1.alpha.r7.g6ac6640
 pkgrel=1
-pkgdesc="Desktop application for BetterX, enhancing your X browsing experience"
+pkgdesc="Desktop application for BetterX, enhancing your X-perience"
 arch=('x86_64')
 url="https://github.com/Feur-Inc/BetterX-Desktop"
-license=('GPL-3.0-or-later')
-depends=(
-  'electron'
-  'libxcrypt-compat'
-  'ffmpeg'
-  'icu'
-  'libxss'
-  'libxtst'
-  'libappindicator-gtk3'
-  'nss'
-  'libnotify'
-  'libsecret'
-  'gtk3'
-  'alsa-lib'
-  'libpulse'
-)
-makedepends=('git' 'pnpm' 'ruby' 'ruby-rdoc')
+license=('GPL3')
+depends=('gtk3' 'nss' 'alsa-lib' 'libxss' 'libxtst' 'libnotify' 'electron')
+makedepends=('git' 'pnpm' 'python')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=('git+https://github.com/Feur-Inc/BetterX-Desktop.git')
+source=("git+${url}.git")
 sha256sums=('SKIP')
-options=('!strip' 'staticlibs')
-backup=('usr/bin/betterx-desktop')
+options=('!strip')
 
 pkgver() {
-  cd "$srcdir/BetterX-Desktop"
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  cd "${srcdir}/${_pkgname}"
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//' || echo "1.0.1.alpha.r0.g$(git rev-parse --short HEAD)"
 }
+
 prepare() {
-  cd "$srcdir/BetterX-Desktop"
-  git fetch --tags
-  git checkout -B makepkg origin/main
-  git reset --hard origin/main
-  rm -rf node_modules
+  cd "${srcdir}/${_pkgname}"
   pnpm install
 }
 
 build() {
-  cd "$srcdir/BetterX-Desktop"
+  cd "${srcdir}/${_pkgname}"
   pnpm run build:arch
 }
 
 package() {
-  cd "$srcdir/BetterX-Desktop"
-  install -d "$pkgdir/usr/lib/$pkgname"
-  cp -r dist/linux-unpacked/* "$pkgdir/usr/lib/$pkgname"
+  cd "${srcdir}/${_pkgname}"
   
-  # Ensure libffmpeg.so is copied
-  if [ -f "dist/linux-unpacked/libffmpeg.so" ]; then
-    install -Dm644 "dist/linux-unpacked/libffmpeg.so" "$pkgdir/usr/lib/$pkgname/libffmpeg.so"
-  fi
-  
-  # Create and install the wrapper script
-  cat > "$pkgdir/usr/bin/betterx-desktop" << EOF
-#!/bin/bash
-export LD_LIBRARY_PATH="/usr/lib/$pkgname:\$LD_LIBRARY_PATH"
-exec /usr/lib/$pkgname/betterx-desktop "\$@"
+  # Create directories
+  install -dm755 "${pkgdir}/usr/lib/${pkgname%-git}"
+  install -dm755 "${pkgdir}/usr/bin"
+
+  # Copy app contents
+  cp -r dist/linux-unpacked/* "${pkgdir}/usr/lib/${pkgname%-git}"
+
+  # Create launcher script
+  cat > "${pkgdir}/usr/bin/${pkgname%-git}" << EOF
+#!/bin/sh
+exec electron /usr/lib/${pkgname%-git}/resources/app.asar "\$@"
 EOF
-  chmod 755 "$pkgdir/usr/bin/betterx-desktop"
-  
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-  
-  # Install icons
-  for size in 16 32 48 64 128 256 512; do
-    if [ -f "build/icons/${size}x${size}.png" ]; then
-      install -Dm644 "build/icons/${size}x${size}.png" "$pkgdir/usr/share/icons/hicolor/${size}x${size}/apps/$pkgname.png"
-    fi
-  done
-  
+  chmod 755 "${pkgdir}/usr/bin/${pkgname%-git}"
+
   # Install desktop file
-  if [ -f "dist/linux-unpacked/betterx-desktop.desktop" ]; then
-    install -Dm644 "dist/linux-unpacked/betterx-desktop.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
-  elif [ -f "build/$pkgname.desktop" ]; then
-    install -Dm644 "build/$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
-  else
-    echo "Desktop file not found. Creating a basic one."
-    install -Dm644 /dev/null "$pkgdir/usr/share/applications/$pkgname.desktop"
-    cat > "$pkgdir/usr/share/applications/$pkgname.desktop" << EOF
+  install -Dm644 /dev/null "${pkgdir}/usr/share/applications/${pkgname%-git}.desktop"
+  cat > "${pkgdir}/usr/share/applications/${pkgname%-git}.desktop" << EOF
 [Desktop Entry]
 Name=BetterX Desktop
-Exec=betterx-desktop
-Icon=$pkgname
+Exec=${pkgname%-git}
+Icon=${pkgname%-git}
 Type=Application
 Categories=Network;
 EOF
-  fi
+
+  # Install icon
+  install -Dm644 "src/resources/betterX.png" "${pkgdir}/usr/share/icons/hicolor/512x512/apps/${pkgname%-git}.png"
+
+  # Remove conflicting files if they exist (for upgrades)
+  rm -f "${pkgdir}/usr/share/applications/BetterX-Desktop.desktop"
+  rm -f "${pkgdir}/usr/share/icons/hicolor/512x512/apps/BetterX-Desktop.png"
+}
+
+# Optionally, you can add this function to create a separate debug package
+package_betterx-desktop-git-debug() {
+  pkgdesc="Debugging symbols for ${pkgname%-git}"
+  depends=("${pkgname%-git}=${pkgver}")
+  options=('!strip')
+
+  cd "${srcdir}/${_pkgname}"
+  install -Dm644 dist/linux-unpacked/betterx-desktop.debug "${pkgdir}/usr/lib/debug/usr/lib/${pkgname%-git}/betterx-desktop.debug"
 }
