@@ -6,7 +6,7 @@ _srcname=python-$_pyname
 pkgname=$_srcname-git
 pkgdesc="Architecture-information specific details for the angr project"
 url="https://github.com/angr/archinfo"
-pkgver=9.2.122.r698.b96b1dc
+pkgver=9.2.123.r699.2b7a849
 pkgrel=1
 arch=('any')
 depends=('python>=3.10')
@@ -27,7 +27,10 @@ optdepends=(
     'python-pyvex: Valgrind VEX support'
     'python-unicorn: Unicorn engine support'
 )
-provides=($_srcname)
+# angr projects all have the same version and mutually support only that
+# version. So we provide both, the -git package, for other angr related -git
+# packages and the normal package, for packages not requiring a specific version.
+provides=($_srcname $pkgname)
 conflicts=($_srcname)
 license=('BSD-2-Clause')
 source=("${pkgname}::git+https://github.com/angr/archinfo.git#branch=master")
