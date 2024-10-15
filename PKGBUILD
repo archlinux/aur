@@ -1,37 +1,62 @@
-# Maintainer: Colin Unger <mastakata 3 at yahoo dot com>
+# Maintainer: Manuel Wiesinger <m {you know what belongs here} mmap {and here} at>
+# Contributor: Colin Unger <mastakata 3 at yahoo dot com>
 
-pkgname=python-archinfo-git
+_pyname=archinfo
+_srcname=python-$_pyname
+pkgname=$_srcname-git
 pkgdesc="Architecture-information specific details for the angr project"
 url="https://github.com/angr/archinfo"
-pkgver=8.18.10.25.r308.d3eb03b
+pkgver=9.2.122.r698.b96b1dc
 pkgrel=1
 arch=('any')
-depends=('python')
-makedepends=('git' 'python-setuptools')
-provides=("${pkgname%-git}")
-conflicts=("${pkgname%-git}")
-license=('BSD')
-source=("$pkgname::git+https://github.com/angr/archinfo.git#branch=master")
-md5sums=('SKIP')
+depends=('python>=3.10')
+makedepends=(
+    'git'
+    'python-build'
+    'python-installer'
+    'python-myst-parser'
+    'python-setuptools'
+    'python-sphinx-autodoc-typehints'
+    'python-wheel'
+)
+checkdepends=('python-pytest')
+optdepends=(
+    'python-capstone: Capstone disassembly support'
+    'python-keystone: Keystone assembler support'
+    'python-pypcode: Ghidra SLEIGH support'
+    'python-pyvex: Valgrind VEX support'
+    'python-unicorn: Unicorn engine support'
+)
+provides=($_srcname)
+conflicts=($_srcname)
+license=('BSD-2-Clause')
+source=("${pkgname}::git+https://github.com/angr/archinfo.git#branch=master")
+b2sums=('SKIP')
 
 pkgver() {
-	cd "$srcdir/$pkgname"
+    cd "${srcdir}/${pkgname}"
 
-	regex='[0-9]\+\.[0-9]\+\.[0-9]\+\.[0-9]\+'
-	prefix='ticked version number to'
-	rev_num="$(git rev-list --count HEAD)"
-	version_no="$(git log -n1 --grep "$prefix $regex" --format=tformat:%s | sed "s/$prefix \($regex\)/\1/g")"
-	last_commit="$(git rev-parse --short HEAD)"
-	echo "$version_no.r$rev_num.$last_commit"
+    # Versions are orphaned branches with tags ...
+    version=$(git tag --sort=-version:refname | head -n1 | sed -e 's/v//')
+    rev_num="$(git rev-list --count HEAD)"
+    last_commit="$(git rev-parse --short HEAD)"
+    echo "${version}.r${rev_num}.${last_commit}"
+}
+
+check() {
+    cd "${srcdir}/${pkgname}"
+    PYTHONPATH=$PWD pytest
 }
 
 build() {
-	cd "$srcdir/$pkgname"
-	python setup.py build
+    cd "${srcdir}/${pkgname}"
+    python -m build --wheel --no-isolation
+    make man -C docs
 }
 
 package() {
-	cd "$srcdir/$pkgname"
-	python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
-	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    cd "${srcdir}/${pkgname}"
+    python -m installer --destdir="$pkgdir" dist/*.whl
+    install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -Dm644 docs/_build/man/archinfo.1 -t "${pkgdir}/usr/share/man/man1"
 }

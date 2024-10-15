@@ -1,17 +1,27 @@
 pkgbase = python-archinfo-git
 	pkgdesc = Architecture-information specific details for the angr project
-	pkgver = 8.18.10.25.r308.d3eb03b
+	pkgver = 9.2.122.r698.b96b1dc
 	pkgrel = 1
 	url = https://github.com/angr/archinfo
 	arch = any
-	license = BSD
+	license = BSD-2-Clause
+	checkdepends = python-pytest
 	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-myst-parser
 	makedepends = python-setuptools
-	depends = python
+	makedepends = python-sphinx-autodoc-typehints
+	makedepends = python-wheel
+	depends = python>=3.10
+	optdepends = python-capstone: Capstone disassembly support
+	optdepends = python-keystone: Keystone assembler support
+	optdepends = python-pypcode: Ghidra SLEIGH support
+	optdepends = python-pyvex: Valgrind VEX support
+	optdepends = python-unicorn: Unicorn engine support
 	provides = python-archinfo
 	conflicts = python-archinfo
 	source = python-archinfo-git::git+https://github.com/angr/archinfo.git#branch=master
-	md5sums = SKIP
+	b2sums = SKIP
 
 pkgname = python-archinfo-git
-
