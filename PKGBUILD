@@ -3,9 +3,10 @@
 # PKGBUILD is modified from https://aur.archlinux.org/cgit/aur.git/tree/PKGBUILD?h=siyuan-appimage
 # which is made by vvxxp8 <concatenate[g] the characters[x] in square[b] brackets[1] in[5] order[3] at gmail dot com>
 # had agreement with the author to use the PKGBUILD
+# for change request, PLEASE MAKE A PR ON GITHUB REPO, keep commenting here would be ignored
 
 pkgname=siyuan-bin
-pkgver=3.1.8
+pkgver=3.1.9
 pkgrel=1
 pkgdesc="auto upload to AUR when SiYuan stable release"
 arch=("x86_64")
@@ -32,4 +33,11 @@ package() {
     install -Dm755 ${_pkgname} "${pkgdir}/${_installdir}/siyuan.AppImage"
     install -Dm644 "squashfs-root/resources/stage/icon.png" "${pkgdir}/usr/share/icons/hicolor/512x512/apps/siyuan-bin.png"
     install -Dm644 "squashfs-root/siyuan.desktop" "${pkgdir}/usr/share/applications/siyuan-bin.desktop"
+
+    if [ ! -f "/usr/bin/siyuan" ]; then
+      mkdir -p "/usr/bin"
+      echo '#!/bin/sh' > "/usr/bin/siyuan"
+      echo "exec /siyuan.AppImage" >> "/usr/bin/siyuan"
+      chmod 755 "/usr/bin/siyuan"
+    fi
 }
