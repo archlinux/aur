@@ -1,7 +1,8 @@
 # Maintainer: Roni Hokkanen <roni dot hokkanen at protonmail dot com>
 
 pkgname=zephyr-node-bin
-pkgver=1.1.0
+pkgver=2.0.1
+tagver=2.0.0 # This can be different than pkgver if the Github release tag doesn't match the actual version number of the archives
 pkgrel=1
 pkgdesc="This package provides the Zephyr protocol node software and a cli wallet."
 arch=('x86_64')
@@ -20,8 +21,8 @@ source=(
 
 prepare() {
 	if ! [ -f zephyr-cli-linux-v${pkgver}.zip ]; then
-		echo "Downloading https://github.com/ZephyrProtocol/zephyr/releases/download/v${pkgver}/zephyr-cli-linux-v${pkgver}.zip"
-		curl -LO "https://github.com/ZephyrProtocol/zephyr/releases/download/v${pkgver}/zephyr-cli-linux-v${pkgver}.zip"
+		echo "Downloading https://github.com/ZephyrProtocol/zephyr/releases/download/v${tagver}/zephyr-cli-linux-v${pkgver}.zip"
+		curl -LO "https://github.com/ZephyrProtocol/zephyr/releases/download/v${tagver}/zephyr-cli-linux-v${pkgver}.zip"
 		unzip "./zephyr-cli-linux-v${pkgver}.zip"
 	fi
 }
