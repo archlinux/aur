@@ -7,7 +7,7 @@ pkgdesc="Maintain your Ledger devices"
 _electron='electron32'
 _sha='c41378dc2620c366a46e01b36a1e8af03c8e9e62'
 _short_sha="${_sha::7}"
-pkgver=2.89.0
+pkgver=2.89.1
 pkgrel=1
 arch=('x86_64')
 _gh_owner='LedgerHQ'
@@ -42,7 +42,6 @@ build() {
   pnpm build:lld:deps
   pnpm desktop build
 
-  # Correct .desktop
   sed -e "s/AppRun --no-sandbox/${_appname}/g" -i "apps/${_appname}/dist/__appImage-x64/${_appname}.desktop"
   sed -e "/X-AppImage-Version/d" -i "apps/${_appname}/dist/__appImage-x64/${_appname}.desktop"
 }
