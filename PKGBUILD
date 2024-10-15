@@ -2,7 +2,7 @@
 
 pkgname=youtube-downloader
 pkgver=3.9.9.96
-pkgrel=1
+pkgrel=2
 pkgdesc='YouTube Downloader by MediaHuman'
 arch=('x86_64')
 url="https://www.mediahuman.com/download.html"
