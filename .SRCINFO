@@ -1,0 +1,10 @@
+pkgbase = ttf-windows-fonts
+	pkgdesc = All of the fonts needed for proper Microsoft services with automated installation
+	pkgver = 1.0.0
+	pkgrel = 1
+	arch = any
+	depends = wimlib
+	depends = sudo
+	depends = curl
+
+pkgname = ttf-windows-fonts
