@@ -1,6 +1,5 @@
-# Maintainer: Mopigames <mopigames@proton.me>
 pkgname=betterx-desktop-git
-pkgver=v1.0.1.alpha.r8.g6ac6640
+pkgver=v1.0.1.alpha.r7.g6ac6640
 pkgrel=1
 pkgdesc="Desktop application for BetterX, enhancing your X browsing experience"
 arch=('x86_64')
@@ -33,10 +32,9 @@ pkgver() {
   cd "$srcdir/BetterX-Desktop"
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
-
 prepare() {
   cd "$srcdir/BetterX-Desktop"
-  git fetch origin
+  git fetch --tags
   git checkout -B makepkg origin/main
   git reset --hard origin/main
   rm -rf node_modules
@@ -53,7 +51,18 @@ package() {
   install -d "$pkgdir/usr/lib/$pkgname"
   cp -r dist/linux-unpacked/* "$pkgdir/usr/lib/$pkgname"
   
-  install -Dm755 "$pkgdir/usr/lib/$pkgname/betterx-desktop" "$pkgdir/usr/bin/betterx-desktop"
+  # Ensure libffmpeg.so is copied
+  if [ -f "dist/linux-unpacked/libffmpeg.so" ]; then
+    install -Dm644 "dist/linux-unpacked/libffmpeg.so" "$pkgdir/usr/lib/$pkgname/libffmpeg.so"
+  fi
+  
+  # Create and install the wrapper script
+  cat > "$pkgdir/usr/bin/betterx-desktop" << EOF
+#!/bin/bash
+export LD_LIBRARY_PATH="/usr/lib/$pkgname:\$LD_LIBRARY_PATH"
+exec /usr/lib/$pkgname/betterx-desktop "\$@"
+EOF
+  chmod 755 "$pkgdir/usr/bin/betterx-desktop"
   
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   
