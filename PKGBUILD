@@ -3,8 +3,8 @@ pkgname=filen-desktop-bin
 _pkgname="Filen Desktop"
 pkgver=2.0.24
 _electronversion=21
-pkgrel=1
-pkgdesc="Desktop client including Syncing, Virtual Drive mounting, S3, WebDAV, File Browsing, Chats, Notes, Contacts and more."
+pkgrel=2
+pkgdesc="Desktop client including Syncing, Virtual Drive mounting, S3, WebDAV, File Browsing, Chats, Notes, Contacts and more.Prebuilt version.Use system-wide electron."
 arch=(
     'aarch64'
     'x86_64'
@@ -34,21 +34,21 @@ sha256sums_aarch64=('c1111680459956a3772c96c02c361b3eb3966843677e959503edd55ec76
 sha256sums_x86_64=('e6f927753f55ffcd5f51dcd2f8a4df0233c018ed08251c7c42137104d1bc9e75')
 build() {
     sed -e "
-        s/@electronversion@/${_electronversion}/
-        s/@appname@/${pkgname%-bin}/
-        s/@runname@/app/
-        s/@cfgdirname@/${_pkgname}/
-        s/@options@//
+        s/@electronversion@/${_electronversion}/g
+        s/@appname@/${pkgname%-bin}/g
+        s/@runname@/app/g
+        s/@cfgdirname@/${_pkgname}/g
+        s/@options@//g
     " -i "${srcdir}/${pkgname%-bin}.sh"
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage" --appimage-extract > /dev/null
-    sed -i "s/AppRun --no-sandbox/${pkgname%-bin}/" "${srcdir}/squashfs-root/${pkgname%-bin}.desktop"
+    sed -i "s/AppRun --no-sandbox/${pkgname%-bin}/g" "${srcdir}/squashfs-root/${pkgname%-bin}.desktop"
     find "${srcdir}/squashfs-root/resources" -type d -exec chmod 755 {} \;
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm644 "${srcdir}/squashfs-root/usr/lib/"* -t "${pkgdir}/usr/lib/${pkgname%-bin}/lib"
-    cp -r "${srcdir}/squashfs-root/resources/app" "${pkgdir}/usr/lib/${pkgname%-bin}"
+    cp -Pr --no-preserve=ownership "${srcdir}/squashfs-root/resources/app" "${pkgdir}/usr/lib/${pkgname%-bin}"
     _icon_sizes=(16x16 24x24 32x32 48x48 64x64 128x128 256x256 512x512 1024x1024)
     for _icons in "${_icon_sizes[@]}"; do
         install -Dm644 "${srcdir}/squashfs-root/usr/share/icons/hicolor/${_icons}/apps/${pkgname%-bin}.png" \
