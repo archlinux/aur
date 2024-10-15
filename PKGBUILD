@@ -37,7 +37,12 @@ _package() {
 		--tree="$pkgdir/usr/" \
 		--no-manifest \
 		$1/*.rock
+
 	find "$pkgdir/usr/bin" -type f -execdir sed -i -e "s#$pkgdir##g" {} \;
+	[ ${pkgname%%-*} != lua ] && for f in "$pkgdir/usr/bin"/*; do
+		mv "$f" "$f-$1"
+	done
+
 	install -Dm644 -t "$pkgdir"/usr/share/licenses/$pkgname LICENSE
 }
 package_lua-cjson()   { _package 5.4; }
