@@ -1,13 +1,15 @@
 # Maintainer: Vasiliy Nikitin <nvasya95@gmail.com>
 pkgname=kotatsu-dl-git
 _pkgname=kotatsu-dl
-pkgver=1.0
+pkgver=0.1
 pkgrel=1
-pkgdesc='Manga downloader with a simple gui'
+pkgdesc='Easy-to-use cli manga downloader with a 1k+ sources supported'
 url='https://github.com/KotatsuApp/kotatsu-dl'
 arch=('any')
 license=('GPL3')
-makedepends=(git jdk17-openjdk)
+makedepends=(git)
+depends=('java-runtime-headless>=17')
+optdepends=('bash-completion: bash completion support')
 source=(git+$url.git)
 noextract=("${source[@]##*/}")
 sha256sums=('SKIP')
@@ -22,14 +24,22 @@ pkgver() {
 
 build() {
 	cd "${srcdir}/$_pkgname"
-	./gradlew packageReleaseAppImage
+	./gradlew shadowJar
+	cd "${srcdir}/$_pkgname/build/libs"
+	cat \
+	  <(echo '#!/bin/sh')\
+	  <(echo 'exec java -jar $0 "$@"')\
+	  <(echo 'exit 0')\
+	  kotatsu-dl.jar > kotatsu-dl
+	chmod +x ./kotatsu-dl
+	_KOTATSU_DL_COMPLETE=bash ./kotatsu-dl > ./kotatu-dl-completion.bash
 }
 
 package() {
 	# mkdirs
-	mkdir -p ${pkgdir}/opt/${_pkgname}/
-	mkdir -p ${pkgdir}/usr/share/applications/
+	mkdir -p ${pkgdir}/bin
+	mkdir -p ${pkgdir}/etc/bash_completion.d
 	# copy built files
-	cp -pr ${srcdir}/${_pkgname}/build/compose/binaries/main-release/app/kotatsu-dl/* ${pkgdir}/opt/${_pkgname}
-	cp -p ${srcdir}/${_pkgname}/${_pkgname}.desktop ${pkgdir}/usr/share/applications/${_pkgname}.desktop
+	cp -p ${srcdir}/${_pkgname}/build/libs/kotatsu-dl ${pkgdir}/bin/
+	cp -p ${srcdir}/${_pkgname}/build/libs/kotatu-dl-completion.bash ${pkgdir}/etc/bash_completion.d/
 }
