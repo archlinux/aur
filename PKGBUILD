@@ -4,8 +4,8 @@
 
 pkgname=emercoin-git
 _pkgname=emercoin
-pkgver=0.7.11
-pkgrel=8
+pkgver=0.8.5
+pkgrel=1
 pkgdesc="Digital currency and blockchain service platform"
 arch=('i686' 'x86_64' 'aarch64' 'armv8' 'armv7' 'armv7l' 'armv7h' 'armv6h' 'armhf' 'armel' 'arm')
 url="https://github.com/${_pkgname}/${_pkgname}"
