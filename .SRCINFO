@@ -1,6 +1,8 @@
 pkgbase = libaemu
+	pkgdesc = This is an utility library for common functions used in the Android Emulator.
 	pkgver = 0.1.2
-	pkgrel = 1
+	pkgrel = 2
+	url = https://android.googlesource.com/platform/hardware/google/aemu/
 	arch = x86_64
 	license = Apache-2.0
 	makedepends = cmake
