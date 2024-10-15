@@ -15,7 +15,7 @@ md5sums=('SKIP')
 
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"
-	printf "%s" "$(git describe --long --tags | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
+	printf "%s-%s" "$(git describe --long --tags | sed 's/\([^-]*-\)g/r\1/;s/-/./g')" "$(git rev-parse --short HEAD)"
 }
 
 build() {
