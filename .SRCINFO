@@ -1,0 +1,19 @@
+pkgbase = logitech-k650-fix
+	pkgdesc = Fix(insert key) Logitech K650 keyboard.
+	pkgver = 0.9.1
+	pkgrel = 1
+	url = https://github.com/bokic/logitech-k650-fix
+	arch = x86_64
+	arch = i686
+	arch = pentium4
+	arch = armv7h
+	arch = aarch64
+	license = MIT
+	makedepends = gcc
+	makedepends = cmake
+	makedepends = ninja
+	depends = glibc
+	source = logitech-k650-fix-0.9.1.tar.gz::https://github.com/bokic/logitech-k650-fix/archive/refs/tags/0.9.1.tar.gz
+	sha512sums = 235f96cff4154bcf71928cc86d6a5f0f41ae7a3e5f146e0baa9df324bcf82f95e3945e9d772f3f9856ea870fb3852d866733ac1194d771d0d44eb0d4f1972a9a
+
+pkgname = logitech-k650-fix
