@@ -2,7 +2,7 @@
 
 _pkgbase=nginx
 _commit=dbf76fdd109f
-_libressl_ver=3.9.2
+_libressl_ver=4.0.0
 pkgbase=freenginx-libressl
 pkgname=($pkgbase $pkgbase-src)
 pkgver=1.27.4
@@ -30,7 +30,7 @@ source=("hg+https://freenginx.org/hg/nginx#revision=$_commit"
         "service"
         "logrotate")
 sha256sums=('67fce9093b5b9573fd1eb8d26b273c91087fc97854cfefe65357cc894a0c6aa5'
-            '7b031dac64a59eb6ee3304f7ffb75dad33ab8c9d279c847f92c89fb846068f97'
+            '4d841955f0acc3dfc71d0e3dd35f283af461222350e26843fea9731c0246a1e4'
             'adb4a2b5176be3a3bf39666584f7a0a7f10b1b1aca927c189c1910c789d6d13c'
             'b9af19a75bbeb1434bba66dd1a11295057b387a2cbff4ddf46253133909c311e')
 
