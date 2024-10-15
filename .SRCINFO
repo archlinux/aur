@@ -1,0 +1,14 @@
+pkgbase = eat-terminfo-git
+	pkgdesc = Terminfo files for the eat terminal emulator
+	pkgver = 0.9.4.r5.g3a6f418
+	pkgrel = 1
+	url = https://codeberg.org/akib/emacs-eat.git
+	arch = any
+	license = mit
+	makedepends = git
+	makedepends = ncurses
+	provides = eat-terminfo
+	source = git+https://codeberg.org/akib/emacs-eat.git
+	sha256sums = SKIP
+
+pkgname = eat-terminfo-git
