@@ -1,0 +1,10 @@
+post_install() {
+  USER=peerbanhelper
+  if ! id -u $USER > /dev/null 2>&1; then
+    useradd --system --shell '/usr/bin/nologin' --create-home --home-dir "/var/lib/$USER" $USER
+  fi
+  mkdir -p "/var/lib/$USER/config"
+  chown --recursive $USER:$USER '/etc/peerbanhelper' $_
+  ln -sf '/etc/peerbanhelper/config.yml' "/var/lib/$USER/config/config.yml"
+  ln -sf '/etc/peerbanhelper/profile.yml' "/var/lib/$USER/config/profile.yml"
+}
