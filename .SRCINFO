@@ -1,21 +1,25 @@
 pkgbase = python-claripy-git
 	pkgdesc = An abstraction layer for constraint solvers.
-	pkgver = 8.20.7.27.r2075.d04d9177
+	pkgver = 9.2.123.r2388.bc31f6ad
 	pkgrel = 1
 	url = https://github.com/angr/claripy
 	arch = any
-	license = BSD
+	license = BSD-2-Clause
+	checkdepends = python-pytest
 	makedepends = git
 	makedepends = python-build
 	makedepends = python-installer
+	makedepends = python-myst-parser
+	makedepends = python-sphinx
+	makedepends = python-sphinx-autodoc-typehints
 	makedepends = python-wheel
-	depends = python
 	depends = python-cachetools
-	depends = python-future
+	depends = python-typing_extensions
 	depends = python-z3-solver
+	depends = python>=3.10
 	provides = python-claripy
 	conflicts = python-claripy
 	source = python-claripy-git::git+https://github.com/angr/claripy.git#branch=master
-	md5sums = SKIP
+	b2sums = SKIP
 
 pkgname = python-claripy-git

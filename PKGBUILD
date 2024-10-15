@@ -1,37 +1,56 @@
 # Maintainer: Lance Roy <ldr709@gmail.com>
+# Maintainer: Manuel Wiesinger <m {you know what belongs here} mmap {and here} at>
 
-pkgname=python-claripy-git
+_pyname=claripy
+_srcname=python-$_pyname
+pkgname=$_srcname-git
 pkgdesc="An abstraction layer for constraint solvers."
 url="https://github.com/angr/claripy"
-pkgver=8.20.7.27.r2075.d04d9177
+pkgver=9.2.123.r2388.bc31f6ad
 pkgrel=1
 arch=('any')
-depends=('python' 'python-cachetools' 'python-future' 'python-z3-solver')
-makedepends=('git' 'python-build' 'python-installer' 'python-wheel')
-provides=("${pkgname%-git}")
-conflicts=("${pkgname%-git}")
-license=('BSD')
+depends=('python-cachetools' 'python-typing_extensions' 'python-z3-solver' 'python>=3.10')
+makedepends=(
+    'git'
+    'python-build'
+    'python-installer'
+    'python-myst-parser'
+    'python-sphinx'
+    'python-sphinx-autodoc-typehints'
+    'python-wheel'
+)
+checkdepends=('python-pytest')
+provides=($_srcname)
+conflicts=($_srcname)
+license=('BSD-2-Clause')
 source=("$pkgname::git+https://github.com/angr/claripy.git#branch=master")
-md5sums=('SKIP')
+b2sums=('SKIP')
 
 pkgver() {
-	cd "$srcdir/$pkgname"
+    cd $srcdir/$pkgname
 
-	regex='[0-9]\+\.[0-9]\+\.[0-9]\+\.[0-9]\+'
-	prefix='ticked version number to'
-	rev_num="$(git rev-list --count HEAD)"
-	version_no="$(git log -n1 --grep "$prefix $regex" --format=tformat:%s | sed "s/$prefix \($regex\)/\1/g")"
-	last_commit="$(git rev-parse --short HEAD)"
-	echo "$version_no.r$rev_num.$last_commit"
+    # Versions are orphaned branches with tags ...
+    version=$(git tag --sort=-version:refname | head -n1 | sed -e 's/v//')
+    rev_num="$(git rev-list --count HEAD)"
+    last_commit="$(git rev-parse --short HEAD)"
+    echo "${version}.r${rev_num}.${last_commit}"
+}
+
+check() {
+    cd $srcdir/$pkgname
+    PYTHONPATH=$PWD pytest
 }
 
 build() {
-	cd "$srcdir/$pkgname"
-	python -m build --wheel --no-isolation
+    cd $srcdir/$pkgname
+    python -m build --wheel --no-isolation
+    make man -C docs
 }
 
 package() {
-	cd "$srcdir/$pkgname"
-	python -m installer --destdir="$pkgdir" dist/*.whl
-	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    cd $srcdir/$pkgname
+    python -m installer --destdir="$pkgdir" dist/*.whl
+
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -Dm644 docs/_build/man/claripy.1 -t "${pkgdir}/usr/share/man/man1"
 }
