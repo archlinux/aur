@@ -39,14 +39,18 @@ makedepends=('java-environment>=17'
 
 _git_url=${url}
 _patch_name="lombok_jdk21.patch"
+_patch_name_2="jdk23.patch"
 source=("${_git_url}/archive/${pkgver}.zip"
-        "${_patch_name}")
+        "${_patch_name}"
+        "${_patch_name_2}")
 md5sums=('d3b9246311182e12fc6da5230dfcb173'
-         '60e33c6550b0f342e8e71eb1c90e093c')
+         '60e33c6550b0f342e8e71eb1c90e093c'
+         '81d46e69c54bcc8f81394a756d329eb1')
 
 prepare() {
   cd "${srcdir}/LightZone-${pkgver}/"
   patch -Np1 -i "${srcdir}/${_patch_name}"
+  patch -Np1 -i "${srcdir}/${_patch_name_2}"
 }
 
 build() {

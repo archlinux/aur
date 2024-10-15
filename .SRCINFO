@@ -29,7 +29,9 @@ pkgbase = lightzone
 	conflicts = lightzone-git
 	source = https://github.com/ktgw0316/LightZone//archive/5.0.0beta2.zip
 	source = lombok_jdk21.patch
+	source = jdk23.patch
 	md5sums = d3b9246311182e12fc6da5230dfcb173
 	md5sums = 60e33c6550b0f342e8e71eb1c90e093c
+	md5sums = 81d46e69c54bcc8f81394a756d329eb1
 
 pkgname = lightzone
