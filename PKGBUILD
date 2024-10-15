@@ -18,7 +18,7 @@ source=("README-${pkgver}.md::${_url}/raw/v${pkgver}/README.md"
         "LICENSE.md::https://github.com/appscode/licenses/raw/1.0.0/AppsCode-Community-1.0.0.md")
 source_x86_64=("${_pkgsrc}-x86_64.tar.gz::${_url}/releases/download/v${pkgver}/${_pkgname}-linux-amd64.tar.gz")
 source_aarch64=("${_pkgsrc}-aarch64.tar.gz::${_url}/releases/download/v${pkgver}/${_pkgname}-linux-arm64.tar.gz")
-source_armv7h=("${_pkgsrc}-arm.tar.gz::${_url}/releases/download/v${pkgver}/${_pkgname}-linux-arm.tar.gz")
+source_armv7h=("${_pkgsrc}-armv7h.tar.gz::${_url}/releases/download/v${pkgver}/${_pkgname}-linux-arm.tar.gz")
 sha512sums=('249ab166610634cdb55dd1ee2ad1bfe46905af77e37a6fcd662285cf1784bc71d0981bcea476c06b3679116ed018f42bf8c2d3e01b7c9fd8fe7965efb659b15b'
             '7e3c799dbd2388787c70975914f943fc54cbceb3061c7b70a547c3011a947bd960c976733b90d55eb624ccf440301bcee1f641ef7f9e0eaa29b954b322f3980c')
 sha512sums_x86_64=('86a1c9fc6b6c7f373324cede62ef075bf11dff457e8aa5d91cddb52c35e1179a71f7d7aa458cf6722912857b3b2b197e668c42073585def124d5f40c41209bd1')

@@ -17,7 +17,7 @@ pkgbase = kubectl-dba-bin
 	sha512sums_x86_64 = 86a1c9fc6b6c7f373324cede62ef075bf11dff457e8aa5d91cddb52c35e1179a71f7d7aa458cf6722912857b3b2b197e668c42073585def124d5f40c41209bd1
 	source_aarch64 = kubectl-dba-0.48.1-aarch64.tar.gz::https://github.com/kubedb/cli/releases/download/v0.48.1/kubectl-dba-linux-arm64.tar.gz
 	sha512sums_aarch64 = e3150ddd35a86ea19463c8f4455644711ee23119b2c802d99cc77859ed6cec2734fe5e95364a99a800cf310fdc4ba55db3b24b689097be8d4374807324df64d3
-	source_armv7h = kubectl-dba-0.48.1-arm.tar.gz::https://github.com/kubedb/cli/releases/download/v0.48.1/kubectl-dba-linux-arm.tar.gz
+	source_armv7h = kubectl-dba-0.48.1-armv7h.tar.gz::https://github.com/kubedb/cli/releases/download/v0.48.1/kubectl-dba-linux-arm.tar.gz
 	sha512sums_armv7h = aee0cf95a754bb44ecb1e6122b9b7192080f02028fe8cefdba4b76c0620fc520668f979190a9a353cc55b29842645546f6de851d5ff3d4bcb55e7fc255b642c9
 
 pkgname = kubectl-dba-bin
