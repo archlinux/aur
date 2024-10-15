@@ -3,11 +3,12 @@
 pkgname=python-wandb
 _pkgname=${pkgname#python-}
 pkgver=0.18.3
-pkgrel=1
+pkgrel=2
 pkgdesc='A tool for visualizing and tracking your machine learning experiments'
 arch=('any')
 url='https://wandb.ai'
 license=('MIT')
+options=(!lto)
 depends=(
     'python-click'
     'python-docker-pycreds'
