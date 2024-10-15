@@ -1,6 +1,6 @@
 pkgbase = rpcsx-git
 	pkgdesc = Sony PlayStation 4 emulator
-	pkgver = r582.fe56180
+	pkgver = r600.7d4380b
 	pkgrel = 1
 	url = https://rpcsx.github.io/rpcsx-site/
 	arch = x86_64
@@ -9,6 +9,7 @@ pkgbase = rpcsx-git
 	makedepends = cmake
 	makedepends = git
 	makedepends = libunwind
+	makedepends = nasm
 	makedepends = nlohmann-json
 	makedepends = python
 	makedepends = sox
@@ -18,15 +19,18 @@ pkgbase = rpcsx-git
 	depends = glfw>=3.3
 	depends = glibc
 	optdepends = vulkan-validation-layers: for rpcsx --validate
-	provides = rpcsx=582.fe56180
+	provides = rpcsx=600.7d4380b
 	conflicts = rpcsx
+	options = !lto
 	source = rpcsx::git+https://github.com/RPCSX/rpcsx.git
 	source = rpcsx-LibAtrac9::git+https://github.com/RPCSX/LibAtrac9.git
 	source = rpcsx-SPIRV-Tools::git+https://github.com/RPCSX/SPIRV-Tools.git
 	source = rpcsx-xbyak::git+https://github.com/RPCSX/xbyak.git
+	source = ffmpeg::git+https://git.ffmpeg.org/ffmpeg.git
 	source = glslang::git+https://github.com/KhronosGroup/glslang.git
 	source = SPIRV-Cross::git+https://github.com/KhronosGroup/SPIRV-Cross.git
 	source = SPIRV-Headers::git+https://github.com/KhronosGroup/SPIRV-Headers.git
+	b2sums = SKIP
 	b2sums = SKIP
 	b2sums = SKIP
 	b2sums = SKIP

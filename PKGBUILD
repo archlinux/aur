@@ -1,7 +1,7 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 _pkgname=rpcsx
 pkgname=$_pkgname-git
-pkgver=r582.fe56180
+pkgver=r600.7d4380b
 pkgrel=1
 pkgdesc="Sony PlayStation 4 emulator"
 arch=('x86_64')
@@ -17,6 +17,7 @@ makedepends=(
 	'cmake'
 	'git'
 	'libunwind'
+	'nasm'
 	'nlohmann-json'
 	'python'
 	'sox'
@@ -26,16 +27,19 @@ makedepends=(
 optdepends=('vulkan-validation-layers: for rpcsx --validate')
 provides=("$_pkgname=${pkgver#r}")
 conflicts=("$_pkgname")
+options=('!lto')
 source=(
 	"$_pkgname::git+https://github.com/RPCSX/rpcsx.git"
 	"$_pkgname-LibAtrac9::git+https://github.com/RPCSX/LibAtrac9.git"
 	"$_pkgname-SPIRV-Tools::git+https://github.com/RPCSX/SPIRV-Tools.git"
 	"$_pkgname-xbyak::git+https://github.com/RPCSX/xbyak.git"
+	'ffmpeg::git+https://git.ffmpeg.org/ffmpeg.git'
 	'glslang::git+https://github.com/KhronosGroup/glslang.git'
 	'SPIRV-Cross::git+https://github.com/KhronosGroup/SPIRV-Cross.git'
 	'SPIRV-Headers::git+https://github.com/KhronosGroup/SPIRV-Headers.git'
 )
 b2sums=(
+	'SKIP'
 	'SKIP'
 	'SKIP'
 	'SKIP'
@@ -52,6 +56,7 @@ pkgver() {
 
 prepare() {
 	cd $_pkgname
+	git config submodule.3rdparty/FFmpeg.url ../ffmpeg
 	git config submodule.3rdparty/glslang.url ../glslang
 	git config submodule.3rdparty/LibAtrac9.url ../$_pkgname-LibAtrac9
 	git config submodule.3rdparty/SPIRV-Cross.url ../SPIRV-Cross
@@ -59,7 +64,6 @@ prepare() {
 	git config submodule.3rdparty/SPIRV-Tools.url ../$_pkgname-SPIRV-Tools
 	git config submodule.3rdparty/xbyak.url ../$_pkgname-xbyak
 	git -c protocol.file.allow=always submodule update
-	sed -i '/ffmpeg::/d' rpcsx/CMakeLists.txt
 }
 
 build() {
