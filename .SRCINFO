@@ -1,12 +1,12 @@
 pkgbase = omada-controller
 	pkgdesc = Omada SDN Controller
 	pkgver = 5.14.26.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.tp-link.com/us/support/download/omada-software-controller/#Controller_Software
 	arch = x86_64
 	license = custom
 	makedepends = git
-	depends = java-runtime>=8
+	depends = java-runtime=11
 	depends = java-jsvc
 	depends = curl
 	depends = mongodb>=3

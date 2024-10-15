@@ -3,7 +3,7 @@
 
 pkgname='omada-controller'
 pkgver=5.14.26.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Omada SDN Controller'
 _basepkgname='Omada_SDN_Controller'
 _basepkgpath='upload/software/2024/202407/20240710'
@@ -11,7 +11,7 @@ _baseos='linux_x64'
 arch=('x86_64')
 url='https://www.tp-link.com/us/support/download/omada-software-controller/#Controller_Software'
 license=('custom')
-depends=('java-runtime>=8' 'java-jsvc' 'curl' 'mongodb>=3' 'mongodb<5')
+depends=('java-runtime=11' 'java-jsvc' 'curl' 'mongodb>=3' 'mongodb<5')
 makedepends=('git')
 #provides=('sdn-controller')
 conflicts=('omada-sdn-controller')
@@ -57,6 +57,8 @@ package() {
     for file in properties/*; do
         install -m 644 "${file}" "${BASEDIR}/properties/"
     done
+
+    chown -R omada:omada ${BASEDIR}/properties/
 
     ln -sf /usr/bin/mongod "${BASEDIR}/bin/mongod"
 
