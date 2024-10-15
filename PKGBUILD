@@ -7,9 +7,9 @@ pkgbase="python-${_pkgname}"
 pkgname=("${pkgbase}" "${pkgbase}-opt" "${pkgbase}-cuda" "${pkgbase}-opt-cuda" "${pkgbase}-rocm" "${pkgbase}-opt-rocm")
 # When updating pytorch, also check the compatibility table for torchvision
 # https://github.com/pytorch/vision?tab=readme-ov-file#installation
-pkgver=2.3.1
-_pkgver=2.3.1
-pkgrel=8
+pkgver=2.4.1
+_pkgver=2.4.1
+pkgrel=1
 _pkgdesc='Tensors and Dynamic neural networks in Python with strong GPU acceleration'
 pkgdesc="${_pkgdesc}"
 arch=('x86_64')
@@ -24,17 +24,15 @@ makedepends=('python' 'python-setuptools' 'python-yaml' 'python-numpy' 'cmake' '
              'ninja' 'pkgconfig' 'doxygen' 'vulkan-headers' 'shaderc' 'onednn')
 source=("${_pkgname}::git+https://github.com/pytorch/pytorch.git#tag=v$_pkgver"
         # generated using parse-submodules
-        "${pkgname}-ARM_NEON_2_x86_SSE::git+https://github.com/intel/ARM_NEON_2_x86_SSE.git"
         "${pkgname}-FP16::git+https://github.com/Maratyszcza/FP16.git"
         "${pkgname}-FXdiv::git+https://github.com/Maratyszcza/FXdiv.git"
         "${pkgname}-NNPACK::git+https://github.com/Maratyszcza/NNPACK.git"
         "${pkgname}-PeachPy::git+https://github.com/malfet/PeachPy.git"
-        "${pkgname}-QNNPACK::git+https://github.com/pytorch/QNNPACK"
         "${pkgname}-VulkanMemoryAllocator::git+https://github.com/GPUOpen-LibrariesAndSDKs/VulkanMemoryAllocator.git"
         "${pkgname}-XNNPACK::git+https://github.com/google/XNNPACK.git"
         "${pkgname}-benchmark::git+https://github.com/google/benchmark.git"
+        "${pkgname}-cpp-httplib::git+https://github.com/yhirose/cpp-httplib.git"
         "${pkgname}-cpuinfo::git+https://github.com/pytorch/cpuinfo.git"
-        "${pkgname}-cub::git+https://github.com/NVlabs/cub.git"
         "${pkgname}-cudnn-frontend::git+https://github.com/NVIDIA/cudnn-frontend.git"
         "${pkgname}-cutlass::git+https://github.com/NVIDIA/cutlass.git"
         "${pkgname}-eigen::git+https://gitlab.com/libeigen/eigen.git"
@@ -47,13 +45,11 @@ source=("${_pkgname}::git+https://github.com/pytorch/pytorch.git#tag=v$_pkgver"
         "${pkgname}-gloo::git+https://github.com/facebookincubator/gloo"
         "${pkgname}-googletest::git+https://github.com/google/googletest.git"
         "${pkgname}-ideep::git+https://github.com/intel/ideep"
-        "${pkgname}-ios-cmake::git+https://github.com/Yangqing/ios-cmake.git"
         "${pkgname}-ittapi::git+https://github.com/intel/ittapi.git"
         "${pkgname}-json::git+https://github.com/nlohmann/json.git"
         "${pkgname}-kineto::git+https://github.com/pytorch/kineto"
         "${pkgname}-mimalloc::git+https://github.com/microsoft/mimalloc.git"
         "${pkgname}-nccl::git+https://github.com/NVIDIA/nccl"
-        "${pkgname}-onnx-tensorrt::git+https://github.com/onnx/onnx-tensorrt"
         "${pkgname}-onnx::git+https://github.com/onnx/onnx.git"
         "${pkgname}-opentelemetry-cpp::git+https://github.com/open-telemetry/opentelemetry-cpp.git"
         "${pkgname}-pocketfft::git+https://github.com/mreineck/pocketfft"
@@ -62,9 +58,7 @@ source=("${_pkgname}::git+https://github.com/pytorch/pytorch.git#tag=v$_pkgver"
         "${pkgname}-pthreadpool::git+https://github.com/Maratyszcza/pthreadpool.git"
         "${pkgname}-pybind11::git+https://github.com/pybind/pybind11.git"
         "${pkgname}-sleef::git+https://github.com/shibatch/sleef"
-        "${pkgname}-tbb::git+https://github.com/01org/tbb"
         "${pkgname}-tensorpipe::git+https://github.com/pytorch/tensorpipe.git"
-        "${pkgname}-zstd::git+https://github.com/facebook/zstd.git"
         fix_include_system.patch
         use-system-libuv.patch
         fix-building-for-torchvision.patch
@@ -81,13 +75,7 @@ source=("${_pkgname}::git+https://github.com/pytorch/pytorch.git#tag=v$_pkgver"
         python-pytorch-ffmpeg6.patch
         python-pytorch-aotriton-include.patch
         pytorch-remove-caffe2-binaries.patch)
-b2sums=('f54764fa53423910cf8f1c6115698269aaf819641fc2b592cb10369f052fdd17a7ffec668d9a64066231d74d57d620c979eec147e8a5d96c1726bf442bb4b74f'
-        'SKIP'
-        'SKIP'
-        'SKIP'
-        'SKIP'
-        'SKIP'
-        'SKIP'
+b2sums=('7c05366fa2571f9178de252ab93fbb711b91e006d5e6086d24c9da73a459c335b060af19bd53d2d6bc3ea3dfb02263ddca031be452d257016b5b7890bc7ca676'
         'SKIP'
         'SKIP'
         'SKIP'
@@ -157,12 +145,11 @@ prepare() {
   git config submodule."third_party/NNPACK_deps/FXdiv".url "${srcdir}/${pkgname}"-FXdiv
   git config submodule."third_party/NNPACK_deps/psimd".url "${srcdir}/${pkgname}"-psimd
   git config submodule."third_party/NNPACK_deps/pthreadpool".url "${srcdir}/${pkgname}"-pthreadpool
-  git config submodule."third_party/QNNPACK".url "${srcdir}/${pkgname}"-QNNPACK
   git config submodule."third_party/VulkanMemoryAllocator".url "${srcdir}/${pkgname}"-VulkanMemoryAllocator
   git config submodule."third_party/XNNPACK".url "${srcdir}/${pkgname}"-XNNPACK
   git config submodule."third_party/benchmark".url "${srcdir}/${pkgname}"-benchmark
+  git config submodule."third_party/cpp-httplib".url "${srcdir}/${pkgname}"-cpp-httplib
   git config submodule."third_party/cpuinfo".url "${srcdir}/${pkgname}"-cpuinfo
-  git config submodule."third_party/cub".url "${srcdir}/${pkgname}"-cub
   git config submodule."third_party/cudnn_frontend".url "${srcdir}/${pkgname}"-cudnn-frontend
   git config submodule."third_party/cutlass".url "${srcdir}/${pkgname}"-cutlass
   git config submodule."third_party/eigen".url "${srcdir}/${pkgname}"-eigen
@@ -174,24 +161,19 @@ prepare() {
   git config submodule."third_party/gloo".url "${srcdir}/${pkgname}"-gloo
   git config submodule."third_party/googletest".url "${srcdir}/${pkgname}"-googletest
   git config submodule."third_party/ideep".url "${srcdir}/${pkgname}"-ideep
-  git config submodule."third_party/ios-cmake".url "${srcdir}/${pkgname}"-ios-cmake
   git config submodule."third_party/ittapi".url "${srcdir}/${pkgname}"-ittapi
   git config submodule."third_party/kineto".url "${srcdir}/${pkgname}"-kineto
   git config submodule."third_party/mimalloc".url "${srcdir}/${pkgname}"-mimalloc
   git config submodule."third_party/nccl/nccl".url "${srcdir}/${pkgname}"-nccl
-  git config submodule."third_party/neon2sse".url "${srcdir}/${pkgname}"-ARM_NEON_2_x86_SSE
   git config submodule."third_party/nlohmann".url "${srcdir}/${pkgname}"-json
   git config submodule."third_party/onnx".url "${srcdir}/${pkgname}"-onnx
-  git config submodule."third_party/onnx-tensorrt".url "${srcdir}/${pkgname}"-onnx-tensorrt
   git config submodule."third_party/opentelemetry-cpp".url "${srcdir}/${pkgname}"-opentelemetry-cpp
   git config submodule."third_party/pocketfft".url "${srcdir}/${pkgname}"-pocketfft
   git config submodule."third_party/protobuf".url "${srcdir}/${pkgname}"-protobuf
   git config submodule."third_party/pybind11".url "${srcdir}/${pkgname}"-pybind11
   git config submodule."third_party/python-peachpy".url "${srcdir}/${pkgname}"-PeachPy
   git config submodule."third_party/sleef".url "${srcdir}/${pkgname}"-sleef
-  git config submodule."third_party/tbb".url "${srcdir}/${pkgname}"-tbb
   git config submodule."third_party/tensorpipe".url "${srcdir}/${pkgname}"-tensorpipe
-  git config submodule."third_party/zstd".url "${srcdir}/${pkgname}"-zstd
 
   git -c protocol.file.allow=always submodule update --init --recursive
 
