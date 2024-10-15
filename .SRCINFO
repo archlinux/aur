@@ -1,0 +1,13 @@
+pkgbase = tinty-git
+	pkgdesc = A base16 and base24 color scheme manager
+	pkgver = r194.f00f1fa
+	pkgrel = 1
+	url = https://github.com/tinted-theming/tinty
+	arch = any
+	license = MIT
+	makedepends = rust
+	depends = git
+	source = tinty::git+https://github.com/tinted-theming/tinty.git
+	md5sums = SKIP
+
+pkgname = tinty-git
