@@ -1,6 +1,6 @@
 # Maintainer: Lukas Wölfer (domain is thasky) <aur at [domain] dot one>
 pkgname=diaria-git
-pkgver=0.1.2.r0.ga7fbb14
+pkgver=0.1.3.r0.g6ea823e
 pkgrel=1
 pkgdesc='Diary entry manager'
 url='https://github.com/corrodedHash/diaria'
