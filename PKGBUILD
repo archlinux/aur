@@ -1,7 +1,7 @@
 # Maintainer: David Čuček <observ33r@gmail.com>
 
 pkgname="code-translucent"
-pkgver=1.94.0
+pkgver=1.94.2
 pkgrel=1
 pkgdesc="The Open Source build of Visual Studio Code (vscode) editor with translucent window, official marketplace, unblocked proprietary features and wayland support!"
 
@@ -10,6 +10,7 @@ arch=(
 	"i686"
 	"aarch64"
 	"armv7h"
+	"riscv64"
 )
 
 url="https://github.com/microsoft/vscode"
@@ -41,7 +42,6 @@ makedepends=(
 	"gulp"
 	"npm"
 	"python"
-	"yarn"
 	"nodejs-lts-iron"
 )
 
@@ -74,6 +74,10 @@ case "${CARCH}" in
 	"armv7h")
 		_vscode_arch="arm"
 		;;
+	"riscv64")
+		_vscode_arch="riscv64"
+		;;
+
 	*)
 		_vscode_arch="DUMMY"
 		;;
