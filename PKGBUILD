@@ -5,6 +5,7 @@ pkgver=1.2.3
 pkgrel=1
 arch=(any)
 url='https://www.dogelog.ch/'
+pkgdesc='The avant-garde of logic programming'
 license=(custom)
 options=(!strip)
 source=(https://www.dogelog.ch/typtab/rscsrv/docs/50_archive/archive_1_2/dogelog_1_2_3.zip)
