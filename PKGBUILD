@@ -4,7 +4,7 @@
 
 pkgname=krokiet-bin
 pkgver=8.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Find and manage duplicate files, empty folders, similar images, and other "lint" (Slint GUI of Czkawka, with HEIF support)'
 arch=('x86_64')
 url='https://github.com/qarmin/czkawka'
@@ -12,6 +12,7 @@ license=('MIT')
 provides=('krokiet')
 conflicts=('krokiet')
 makedepends=('gendesk')
+depends=('libheif')
 source=("${pkgname}-${pkgver}::https://github.com/qarmin/czkawka/releases/download/${pkgver}/linux_${pkgname%-bin}_gui_heif_libraw"
         "LICENSE-${pkgver}::https://github.com/qarmin/czkawka/raw/${pkgver}/${pkgname%-bin}/LICENSE"
         "${pkgname}-${pkgver}.png::https://raw.githubusercontent.com/qarmin/czkawka/7.0.0/${pkgname%-bin}/icons/logo.png")
