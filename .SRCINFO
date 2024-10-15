@@ -1,0 +1,19 @@
+pkgbase = diaria-git
+	pkgdesc = Diary entry manager
+	pkgver = 0.1.1.r0.gb3745b1
+	pkgrel = 1
+	url = https://github.com/corrodedHash/diaria
+	arch = x86_64
+	arch = i686
+	license = MIT
+	makedepends = git
+	makedepends = cmake
+	depends = libsodium
+	depends = glibc
+	depends = gcc-libs
+	provides = diaria
+	conflicts = diaria
+	source = diaria-git::git+https://github.com/corrodedHash/diaria#branch=main
+	sha256sums = SKIP
+
+pkgname = diaria-git
