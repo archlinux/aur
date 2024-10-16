@@ -1,7 +1,7 @@
 pkgbase = qt6ct-kde
 	pkgdesc = Qt 6 Configuration Utility, patched to work correctly with KDE applications
 	pkgver = 0.9
-	pkgrel = 8
+	pkgrel = 9
 	url = https://github.com/trialuser02/qt6ct
 	arch = x86_64
 	license = BSD
