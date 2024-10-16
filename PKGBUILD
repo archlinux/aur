@@ -1,22 +1,22 @@
-# Maintainer: vitaliikuzhdin <vitaliikuzhdin@gmail.com>
+# Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
 _binname="gmd"
 pkgname="gomanagedocker"
-pkgver=1.2
+pkgver=1.4
 pkgrel=1
 pkgdesc="A TUI tool to manage docker objects"
-arch=('any')
+arch=('x86_64')
 url="https://github.com/ajayd-san/${pkgname}"
 license=('MIT')
-depends=('glibc' 'docker')
+depends=('docker' 'glibc')
 makedepends=('go')
 _pkgsrc="${pkgname}-${pkgver}"
 source=("${_pkgsrc}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('b09885922ec5bedd659cc336b9e18d46a759c4d2bc56a8132da9aae2f6d6342d')
+sha256sums=('72802f8f00134d57830efefb2d41de0ca78784bf596ae9a210116494a0bc7cd4')
 
 prepare() {
   cd "${srcdir}/${_pkgsrc}"
-  [ -d "build" ] || mkdir "build"
+  mkdir -p "build"
 }
 
 build() {
@@ -29,9 +29,14 @@ build() {
   go build -o "build/${_binname}" .
 }
 
+check() {
+  cd "${srcdir}/${_pkgsrc}"
+  go test ./...
+}
+
 package() {
   cd "${srcdir}/${_pkgsrc}"
   install -Dm755 "build/${_binname}" "${pkgdir}/usr/bin/${_binname}"
   install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${_binname}/README.md"
-  install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${_binname}/LICENSE"
+  install -Dm644 "LICENSE"   "${pkgdir}/usr/share/licenses/${_binname}/LICENSE"
 }
