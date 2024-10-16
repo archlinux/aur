@@ -1,0 +1,14 @@
+pkgbase = gz-cmake4
+	pkgdesc = A set of CMake modules that are used by the C++-based Gazebo projects.
+	pkgver = 4.0.0
+	pkgrel = 1
+	url = https://github.com/gazebosim/gz-cmake
+	arch = any
+	license = Apache
+	makedepends = cmake
+	makedepends = doxygen
+	provides = gz-cmake=4
+	source = https://github.com/gazebosim/gz-cmake/archive/gz-cmake4_4.0.0.tar.gz
+	sha256sums = 397599078406a87611a5cdf728130cf87cae442db387ab794adcbf61da7ea55f
+
+pkgname = gz-cmake4
