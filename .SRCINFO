@@ -1,7 +1,7 @@
 pkgbase = swyh-rs-git
 	pkgdesc = Stream What You Hear written in rust, inspired by SWYH.
 	pkgver = 1.11.6.r15.g033a36e
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/dheijl/swyh-rs/
 	arch = any
 	license = MIT
