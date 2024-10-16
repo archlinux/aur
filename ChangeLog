@@ -980,3 +980,24 @@ Fixes:
 - A problem causing an error during the re-connection of a calendar account with expired credentials has been fixed.
 - We fixed an issue causing the app to crash if a connected Obsidian vault was moved, renamed, or deleted.
 - An issue causing the Obsidian preferences tab not to be accessible for some users has been rectified.
+
+=== Morgen 3.5.10
+New Features:
+- Introducing the Morgen Priority Factor, a new way to hone in on the tasks that need your focus. When looking at a filtered task view, sort tasks by the Morgen Priority Factor to see which tasks we recommend tackling next. Alternatively, you can also now order a filtered task view by due date or priority.
+- day for 5 times") and the LLM will interpret and translate it into a pattern that calendar providers can implement. Not only does this make for an easier way to create the patterns you want, it's more flexible, supports several languages, and can interpret typos.
+
+Improvements:
+- Linear: we added more filtering options for Linear issues, such as Tasks assigned to me or unassigned. Morgen can also now import more issues at once.
+- Google Tasks: assigned tasks from Google Docs in a Google Workspace are now displayed in Morgen.
+- Markdown task titles are now displayed with proper formatting in the event preview widget.
+
+Fixes:
+- CalDAV: an issue causing additional line breaks in event notes has been fixed.
+- A bug causing the wrong display for the month name in the Spanish locale has been fixed.
+- On the event panel, non-editable fields are no longer clickable.
+- A problem preventing the creation of an all-day event on the day daylight savings time changes has been rectified.
+- We fixed an issue that prevented default calendar reminders at "0 minutes before the event".
+- Morgen now ignores free/busy default settings for all-day tasks, which will always be set as free by default.
+- We fixed an issue related to time zone conversion which caused some requests to update due dates of a task when unnecessary.
+- Notion: we fixed a bug that could cause the configuration page to crash.
+- CalDAV: an issue parsing some CalDAV recurring events on mobile has been fixed.
