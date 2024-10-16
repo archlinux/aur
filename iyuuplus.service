@@ -1,5 +1,6 @@
 [Unit]
 Description = IYUU Auto Reseed Plus Daemon.
+Documentation = https://doc.iyuu.cn
 Wants = network-online.target mariadb.service
 After = network-online.target mariadb.service
 
