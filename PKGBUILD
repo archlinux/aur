@@ -11,6 +11,7 @@ depends=('libvips' 'dotnet-runtime-3.1' 'libicu50' 'screen')
 makedepends=('git' 'nvm' 'npm')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
+options=('!strip')
 source=(
   'git+https://github.com/Zagrios/bs-manager.git'
   "${pkgname%-git}.desktop"
