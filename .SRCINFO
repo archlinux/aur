@@ -1,0 +1,12 @@
+pkgbase = jetbrains-resharper-commandlinetools
+	pkgdesc = JetBrains ReSharper Command Line Tools
+	pkgver = 2024.2.6
+	pkgrel = 1
+	url = https://www.jetbrains.com/resharper
+	arch = x86_64
+	license = custom:jetbrains
+	depends = dotnet-sdk
+	source = https://download-cdn.jetbrains.com/resharper/dotUltimate.2024.2.6/JetBrains.ReSharper.CommandLineTools.2024.2.6.zip
+	sha256sums = b71d9d2c4793ef293107d1c01fdaa887179311a9a3b44c81e7f42328b1689447
+
+pkgname = jetbrains-resharper-commandlinetools
