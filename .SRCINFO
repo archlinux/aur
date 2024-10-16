@@ -15,7 +15,7 @@ pkgname = dogelog-node
 
 pkgname = dogelog-py
 	pkgdesc = The avant-garde of logic programming (Python backend)
-	depends = python
+	depends = python3
 
 pkgname = dogelog-java
 	pkgdesc = The avant-garde of logic programming (Java backend)

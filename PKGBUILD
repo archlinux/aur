@@ -18,7 +18,7 @@ package_any() {
 
 package_dogelog-py() {
     pkgdesc='The avant-garde of logic programming (Python backend)'
-    depends=(python)
+    depends=(python3)
     package_any py playerpy/canned/dogelog.py
 }
 
