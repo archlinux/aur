@@ -4,7 +4,7 @@
 # Contributor: haha662 <haha662 at outlook dot com>
 
 _pkgname=bookdown
-_pkgver=0.40
+_pkgver=0.41
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -46,8 +46,8 @@ optdepends=(
   r-xml2
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('e6a4ed6dab410cbd7cb1c8f14cec0609')
-b2sums=('bbd016892fbeda7cd35478f38a7efe5761c28240aae351dcbd0f276623bd5d983cb403c285bde9f7d581494e4136c31a96fce24ca6c6efbfcc17fc02b0ae3424')
+md5sums=('1bbcf09efdfbb126c2448a216480ce5d')
+b2sums=('80f6426c7a08f02fe27d5d4dde4dba6c6ee0626cb8d51a6a0dfc4dfef64f359d28f5c2917b28ad5954a5883573e28e0d436463c9566060f16d175eac649b0301')
 
 build() {
   mkdir build
