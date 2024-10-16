@@ -49,20 +49,20 @@ prepare() {
   cd "${srcdir}"
   mkdir -p "${_pkgsrc}-${CARCH}" "${_epson2_src}-${CARCH}"
 
-  bsdtar -xf "${_pkgsrc}-${CARCH}.tar.gz" --strip-components 2 \
+  bsdtar -xzf "${_pkgsrc}-${CARCH}.tar.gz" --strip-components 2 \
     "iscan-${_product}-bundle-${pkgver}.${_arch_a}.deb/plugins/${pkgname}_${_pkg_plug_ver}_${_arch_b}.deb"
   bsdtar -xf "${pkgname}_${_pkg_plug_ver}_${_arch_b}.deb" "data.tar."*
   bsdtar -xzf "data.tar."* --strip-components 1 -C "${srcdir}/${_pkgsrc}-${CARCH}"
   rm -f "${pkgname}_${_pkg_plug_ver}_${_arch_b}.deb" "data.tar."*
 
-  bsdtar -xf "${_epson2_src}-${CARCH}.tar.gz" --strip-components 2 \
+  bsdtar -xzf "${_epson2_src}-${CARCH}.tar.gz" --strip-components 2 \
     "epsonscan2-bundle-${_scan_ver}.${CARCH}.deb/plugins/epsonscan2-non-free-plugin_${_scan_plug_ver}_${_arch_b}.deb"
   bsdtar -xf "epsonscan2-non-free-plugin_${_scan_plug_ver}_${_arch_b}.deb" "data.tar."*
   bsdtar -xzf "data.tar."* --strip-components 1 -C "${srcdir}/${_epson2_src}-${CARCH}"
   rm -f "epsonscan2-non-free-plugin_${_scan_plug_ver}_${_arch_b}.deb" "data.tar."*
 
-  find "${_pkgsrc}-${CARCH}" "${_epson2_src}-${CARCH}" -name '*.gz' \
-    -exec gzip -fd {} \;
+  find "${_pkgsrc}-${CARCH}" "${_epson2_src}-${CARCH}" -name '*.gz' -exec \
+    gzip -fd {} \;
 }
 
 build() {
@@ -72,7 +72,7 @@ build() {
   mkdir -p "licenses/${pkgname}"
   mv -f "doc/${pkgname}/COPYING"* "licenses/${pkgname}"
 
-  cd "${srcdir}/${_pkgsrc}-${CARCH}/usr/share/iscan"
+  cd "iscan"
   find . -type f -name "*.bin" -exec \
     install -Dm644 "${srcdir}/${_epson2_src}-${CARCH}/usr/share/epsonscan2/{}" . \;
 }
