@@ -1,6 +1,6 @@
 pkgbase = python-dm-haiku
 	pkgdesc = A library for building neural networks in JAX
-	pkgver = 0.0.12
+	pkgver = 0.0.13
 	pkgrel = 1
 	url = https://github.com/deepmind/dm-haiku
 	arch = x86_64
@@ -17,9 +17,9 @@ pkgbase = python-dm-haiku
 	depends = python-typing_extensions
 	depends = python-tabulate
 	optdepends = python-flax: Integration with flax
-	source = dm-haiku-0.0.12.tar.gz::https://github.com/deepmind/dm-haiku/archive/refs/tags/v0.0.12.tar.gz
+	source = dm-haiku-0.0.13.tar.gz::https://github.com/deepmind/dm-haiku/archive/refs/tags/v0.0.13.tar.gz
 	source = python-dm-haiku.diff
-	sha256sums = e3de3e0e1bd779bc315e257594447e278f5cb3750691e554cd1291ab7d01b6b2
-	sha256sums = 8e201685fe23bb3ac20dac9e2d9ae542cbdec071a596fee80db2d522c12bb878
+	sha256sums = 5306ce774c358f3910c6f522cc62fe51d95677f04b608972bcffade907bae748
+	sha256sums = SKIP
 
 pkgname = python-dm-haiku

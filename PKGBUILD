@@ -2,7 +2,7 @@
 
 pkgname='python-dm-haiku'
 _pkgname=${pkgname#python-}
-pkgver=0.0.12
+pkgver=0.0.13
 pkgrel=1
 pkgdesc='A library for building neural networks in JAX'
 arch=('x86_64')
@@ -21,8 +21,8 @@ optdepends=(
 )
 source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/deepmind/${_pkgname}/archive/refs/tags/v${pkgver}.tar.gz"
         'python-dm-haiku.diff')
-sha256sums=('e3de3e0e1bd779bc315e257594447e278f5cb3750691e554cd1291ab7d01b6b2'
-            '8e201685fe23bb3ac20dac9e2d9ae542cbdec071a596fee80db2d522c12bb878')
+sha256sums=('5306ce774c358f3910c6f522cc62fe51d95677f04b608972bcffade907bae748'
+            'SKIP')
 
 prepare() {
     cd "$_pkgname-$pkgver"
