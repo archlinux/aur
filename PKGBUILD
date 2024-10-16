@@ -7,7 +7,7 @@ pkgrel=1
 pkgdesc="A project built Electron + React.js, to dig out the potential of cross platform AI completion.Prebuilt version.Use system-wide electron."
 arch=('x86_64')
 url="https://github.com/SkywardAI/shibuya"
-license=('LicenseRef-unknown')
+license=('Apache-2.0')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
