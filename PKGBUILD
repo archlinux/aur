@@ -22,13 +22,9 @@ _pkgsrc="desktop-1.0.7"
 _pkgext="tar.gz"
 source=(
   "$_pkgname-$pkgver.$_pkgext"::"https://github.com/revoltchat/desktop/archive/v$pkgver.$_pkgext"
-  #"https://raw.githubusercontent.com/revoltchat/desktop/master/LICENSE"
-  #"$pkgname.js"
 )
 sha256sums=(
   '4dcea2c0dac3920ea47e3daf2770d471da7a148e530f1e24df2aed39d45e5485'
-  #'147078bfdb948f3ac5ff0e4bb97bd040b61fef4dd5fb8ff851ef333ff048caf9'
-  #'3a9ae188a92ca0620a0838b32e0ab4a38b1fcca4c313d9a1c933c469f8d60df0'
 )
 
 build() {
