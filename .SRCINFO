@@ -8,7 +8,7 @@ pkgbase = cinny
 	makedepends = npm
 	makedepends = yarn
 	source = cinny-4.2.2.tar.gz::https://github.com/cinnyapp/cinny/archive/refs/tags/v4.2.2.tar.gz
-	sha512sums = ae8e9f3ae731b543b524994657ad47861dc2fd6af2c9a0b5f8edc4a2e62b995d9e018c03b1d3dcf67570d9e5f3caf5454baeea9407e0d6b92a4bfe8df2b7133d
+	sha512sums = 448a17ce708ade6b9e167dfadf56b0b7d4fc292db673d97445f18474f035dec6b629054ca9b11e08d47ec5817e94ff08855566eaa6f7c65934975e9fb2bf8f69
 
 pkgname = cinny-web
 	url = https://github.com/cinnyapp/cinny
