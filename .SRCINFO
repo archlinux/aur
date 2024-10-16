@@ -1,10 +1,12 @@
-pkgbase = flowinity
-	pkgdesc = Flowinity/PrivateUploader Desktop (Binary version)
+pkgbase = flowinity-bin
+	pkgdesc = The dashboard for your digital life. Store and share images, write documents, and talk with your friends. (Binary version)
 	pkgver = 1.0.7
 	pkgrel = 1
 	url = https://flowinity.com
 	arch = x86_64
-	license = GPL
+	license = GPL-3.0-only
+	provides = flowinity
+	conflicts = flowinity
 	source = https://updates.flowinity.com/download/flavor/default/1.0.7/linux_64/flowinity-desktop-1.0.7.tar.gz
 	source = flowinity-desktop.desktop
 	source = flowinity.png
@@ -12,4 +14,4 @@ pkgbase = flowinity
 	sha256sums = c7c22501503c13cfe7132b8677c6fc1c38471cf02516c55c92888d0afc96fcbb
 	sha256sums = 7e1c3148491581e1e73164402acb5dbd61e60c2143292cf6c4b37a31c07a4c9c
 
-pkgname = flowinity
+pkgname = flowinity-bin
