@@ -1,7 +1,7 @@
 # Maintainer: Lukas Wölfer (domain is thasky) <aur at [domain] dot one>
 pkgname=i3-insert-workspace-git
-pkgver=1.3.2.r0.g6cb94c9
-pkgrel=3
+pkgver=1.3.3.r0.g4099c46
+pkgrel=1
 pkgdesc='Insert a new named workspace between two other named workspaces.'
 url='https://github.com/corrodedHash/i3-insert-workspace'
 source=("${pkgname}::git+https://github.com/corrodedHash/${pkgname%-git}#branch=main")
@@ -11,7 +11,7 @@ provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 
 makedepends=('cargo' 'git')
-depends=()
+depends=('gcc-libs' 'glibc')
 optdepends=()
 
 sha256sums=('SKIP')
@@ -47,4 +47,5 @@ check() {
 package() {
   cd "$srcdir/$pkgname"
   install -Dm0755 target/release/i3-insert-workspace "${pkgdir}/usr/bin/i3-insert-workspace"
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }

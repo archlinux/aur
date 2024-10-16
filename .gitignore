@@ -1,0 +1,4 @@
+*.zst
+pkg/
+src/
+i3-insert-workspace-git/
