@@ -1,7 +1,7 @@
 # Maintainer: Nathan Wong, NorthWestWind <wsyn148@gmail.com>
 _pkgname=cls
 pkgname=$_pkgname-rs-git
-pkgver=1.0.1.r0.g4ede68d
+pkgver=1.1.0.r0.gcefd340
 pkgrel=1
 pkgdesc="cls - Command-Line Soundboard written in Rust"
 arch=("i686" "x86_64")
@@ -22,14 +22,14 @@ pkgver() {
 prepare() {
   export RUSTUP_TOOLCHAIN=stable
 	cd "$srcdir/$_pkgname"
-  cargo fetch --target "$(rustc -vV | sed -n 's/host: //p')"
+  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
 	export RUSTUP_TOOLCHAIN=stable
 	export CARGO_TARGET_DIR=target
 	cd "$srcdir/$_pkgname"
-	cargo build --frozen --release --all-features
+	cargo build --locked --frozen --release --all-features
 }
 
 package() {
