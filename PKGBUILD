@@ -2,7 +2,7 @@
 # Maintainer: Jonas Lähnemann <jonas at pdi-berlin dot de>
 pkgname=python-exspy
 pkgshort=exspy
-pkgver=0.3
+pkgver=0.3.1
 pkgrel=1
 pkgdesc="Analysis of EDS and EELS data with HyperSpy"
 arch=('any')
@@ -58,4 +58,4 @@ package() {
   python -m installer --destdir="$pkgdir" dist/*.whl
 }
 
-md5sums=('dbac0c579c24d74e0a9fa05a54d178ef')
+md5sums=('ee1cfb3c28bfd93cf95a9213db38e959')
