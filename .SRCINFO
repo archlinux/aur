@@ -1,0 +1,22 @@
+pkgbase = gz-msgs11
+	pkgdesc = Messages for Gazebo robot simulation.
+	pkgver = 11.0.0
+	pkgrel = 1
+	url = https://github.com/gazebosim/gz-msgs
+	arch = any
+	license = Apache
+	makedepends = cmake
+	makedepends = doxygen
+	makedepends = gz-cmake=4
+	depends = gz-math=8
+	depends = gz-tools=2
+	depends = gz-utils=3
+	depends = protobuf-c
+	depends = protobuf
+	depends = python
+	depends = tinyxml2
+	provides = gz-msgs=11
+	source = https://github.com/gazebosim/gz-msgs/archive/gz-msgs11_11.0.0.tar.gz
+	sha256sums = c7ce37fc78985b72afaef73fca0a64fb144a0aa5f0df099355da51c2cd6350a4
+
+pkgname = gz-msgs11
