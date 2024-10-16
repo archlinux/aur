@@ -1,7 +1,7 @@
 pkgbase = pingu
 	pkgdesc = ping command but with pingu
 	pkgver = 0.0.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/sheepla/pingu
 	arch = x86_64
 	arch = aarch64
@@ -9,7 +9,10 @@ pkgbase = pingu
 	makedepends = go
 	depends = glibc
 	source = pingu-0.0.5.tar.gz::https://github.com/sheepla/pingu/archive/refs/tags/v0.0.5.tar.gz
+	source = 0001-makepkg-Update-golang.org-x-net.patch
 	sha256sums = ee74f29267ec7ea117a65bdead66e7592a68dccb34fa3d2e195ed341116d613f
+	sha256sums = e0dc86d8b05f86f2d2d0a0aaec6b41d7da3510152f126f25d516f530d7f1c3ab
 	b2sums = 63aa1be2deda5b2f07f6fb423a54cc79d045b87618b950b7f5032de38d3b30e5455896fc57186269d2806b0bb6dd22303555feb1f140a88274acf564b6b2c513
+	b2sums = e73d827c79d481e8720f815df65ee09a581763f1c810d4cd0e5afeb3a8c4379453525bacdfd8dd5072f0d97aa137db4941b91e2aa44a2faa6049cefde24453a3
 
 pkgname = pingu
