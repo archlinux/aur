@@ -1,0 +1,25 @@
+pkgbase = gz-common6
+	pkgdesc = Gazebo Common, a component of Gazebo, provides a set of libraries that cover many different use cases.
+	pkgver = 6.0.0
+	pkgrel = 1
+	url = https://github.com/gazebosim/gz-common
+	arch = any
+	license = Apache
+	makedepends = cmake
+	makedepends = doxygen
+	makedepends = gz-cmake=4
+	depends = assimp
+	depends = ffmpeg
+	depends = freeimage
+	depends = gdal
+	depends = glibc
+	depends = gts
+	depends = gz-math=8
+	depends = gz-utils=3
+	depends = tinyxml2
+	depends = util-linux-libs
+	provides = gz-common=6
+	source = https://github.com/gazebosim/gz-common/archive/gz-common6_6.0.0.tar.gz
+	sha256sums = 13eb0ea1cd756c17cf399afacaf4b704dcf9f4f20512e1a4f5504fe4a5bd1f61
+
+pkgname = gz-common6
