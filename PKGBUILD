@@ -1,27 +1,63 @@
-# Maintainer: Anatol Pomozov <anatol.pomozov@gmail.com>
+# Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
+# Contributor: Anatol Pomozov <anatol.pomozov@gmail.com>
 
-_gemname=gobject-introspection
-pkgname=ruby-$_gemname
-pkgver=4.1.2
-pkgrel=2
+_gem=gobject-introspection
+pkgname="ruby-${_gem}"
+pkgver=4.2.2
+pkgrel=1
 pkgdesc='Ruby/GObjectIntrospection is a Ruby binding of GObjectIntrospection.'
 arch=(x86_64)
-url='http://ruby-gnome2.sourceforge.jp/'
-license=(LGPL2.1)
-depends=(ruby gobject-introspection-runtime ruby-glib2=$pkgver)
-makedepends=(gobject-introspection ruby-native-package-installer)
-options=(!emptydirs)
-source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
-noextract=($_gemname-$pkgver.gem)
-sha256sums=('cee2401c83f1f0409e6d25fac7ebbf667d653609246d8d00e79a93143a285509')
+url="https://github.com/ruby-gnome/ruby-gnome"
+license=(LGPL-2.1-only)
+depends=(ruby gobject-introspection gobject-introspection-runtime ruby-glib2 glibc glib2 ruby-cairo-gobject)
+makedepends=(ruby-pkg-config ruby-native-package-installer)
+source=("ruby-gnome-${pkgver}.tar.gz::https://github.com/ruby-gnome/ruby-gnome/archive/refs/tags/${pkgver}.tar.gz")
+sha256sums=('64f2f53e9733e85d1b5c10c684858ff5924a0c7175c344ed01270fc018ea983d')
+
+build() {
+  cd "ruby-gnome-${pkgver}/${_gem}"
+
+local _gemdir="$(gem env gemdir)"
+
+  gem build "${_gem}.gemspec"
+
+  gem install \
+    --local \
+    --verbose \
+    --ignore-dependencies \
+    --no-user-install \
+    --install-dir "tmp_install/${_gemdir}" \
+    --bindir "tmp_install/usr/bin" \
+    "${_gem}-${pkgver}.gem"
+
+  # remove unrepreducible files
+  rm --force --recursive --verbose \
+    "tmp_install/${_gemdir}/cache/" \
+    "tmp_install/${_gemdir}/gems/${_gem}-${pkgver}/vendor/" \
+    "tmp_install/${_gemdir}/doc/${_gem}-${pkgver}/ri/ext/"
+
+  find "tmp_install/${_gemdir}/gems/" \
+    -type f \
+    \( \
+      -iname "*.o" -o \
+      -iname "*.c" -o \
+      -iname "*.so" -o \
+      -iname "*.time" -o \
+      -iname "gem.build_complete" -o \
+      -iname "Makefile" \
+    \) \
+    -delete
+
+  find "tmp_install/${_gemdir}/extensions/" \
+    -type f \
+    \( \
+      -iname "mkmf.log" -o \
+      -iname "gem_make.out" \
+    \) \
+    -delete
+}
 
 package() {
-  local _gemdir="$(ruby -e'puts Gem.default_dir')"
-  local _platform="$(gem env platform | cut -d':' -f2)"
-  local _extension_api_version="$(ruby -e'puts Gem.extension_api_version')"
-  gem install --ignore-dependencies --no-user-install --no-document -i "$pkgdir/$_gemdir" -n "$pkgdir/usr/bin" $_gemname-$pkgver.gem
-  rm "$pkgdir/$_gemdir/cache/$_gemname-$pkgver.gem" \
-      ${pkgdir}/${_gemdir}/gems/${_gemname}-${pkgver}/ext/gobject-introspection/*.o \
-      "${pkgdir}/${_gemdir}/extensions/${_platform}/${_extension_api_version}/${_gemname}-${pkgver}/gem_make.out" \
-      "${pkgdir}/${_gemdir}/gems/${_gemname}-${pkgver}/ext/gobject-introspection/Makefile"
+  cd "ruby-gnome-${pkgver}/${_gem}"
+  cp --archive --verbose tmp_install/* "${pkgdir}"
 }
