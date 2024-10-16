@@ -4,7 +4,7 @@
 
 pkgname=python-tidalapi
 _name=${pkgname#python-}
-pkgver=0.7.6
+pkgver=0.8.0
 pkgrel=1
 pkgdesc='Unofficial API for TIDAL music streaming service.'
 arch=('any')
@@ -13,7 +13,7 @@ license=('LGPL-3.0-only')
 depends=('python-requests' 'python-dateutil' 'python-isodate' 'python-mpegdash')
 makedepends=('python-poetry')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha256sums=('5fa537e13d6c3383fe245a4e7dc23b0a650b7066784825f03f67c51ca8b57161')
+sha256sums=('da0fca3cb790db6475526d724d868d079554203eb9b0636af7ff60f7e023a690')
 
 build() {
 	cd "$_name-$pkgver"
