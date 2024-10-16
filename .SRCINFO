@@ -1,6 +1,6 @@
 pkgbase = air-bin
 	pkgdesc = Live reload for Go apps
-	pkgver = 1.61.0
+	pkgver = 1.61.1
 	pkgrel = 1
 	url = https://github.com/air-verse/air
 	arch = x86_64
@@ -10,11 +10,11 @@ pkgbase = air-bin
 	depends = go
 	provides = air
 	conflicts = air
-	source_x86_64 = air-1.61.0-x86_64.tar.gz::https://github.com/air-verse/air/releases/download/v1.61.0/air_1.61.0_linux_amd64.tar.gz
-	sha256sums_x86_64 = 51ca01350a1343bfbc5e3e6bddfc95375c1b47edbb30e24a302e920f1b293fa0
-	source_i686 = air-1.61.0-i686.tar.gz::https://github.com/air-verse/air/releases/download/v1.61.0/air_1.61.0_linux_386.tar.gz
-	sha256sums_i686 = ffbde1e3bbd238c2a569e65b48be81ddcd54e7054411f49b7474e77ed4bfa5e1
-	source_aarch64 = air-1.61.0-aarch64.tar.gz::https://github.com/air-verse/air/releases/download/v1.61.0/air_1.61.0_linux_arm64.tar.gz
-	sha256sums_aarch64 = 61e4936ba7a7ad1f8a1ee05c57d1e19301241d9e535814a24ad889a2df6b0f78
+	source_x86_64 = air-1.61.1-x86_64.tar.gz::https://github.com/air-verse/air/releases/download/v1.61.1/air_1.61.1_linux_amd64.tar.gz
+	sha256sums_x86_64 = f0689b503e8f245d9114d8db548fba2955de3639b8673d2884cab2d98244c3e6
+	source_i686 = air-1.61.1-i686.tar.gz::https://github.com/air-verse/air/releases/download/v1.61.1/air_1.61.1_linux_386.tar.gz
+	sha256sums_i686 = 6ca2ffb5ba2d5cd0d1d4ca9880f7f1e404033b99d27f17558dd7bb99b28a2ea5
+	source_aarch64 = air-1.61.1-aarch64.tar.gz::https://github.com/air-verse/air/releases/download/v1.61.1/air_1.61.1_linux_arm64.tar.gz
+	sha256sums_aarch64 = 1d694be0f494d6abf9d5f36b12ac4d77255aaaa1a5976f990e9aa200a3a01164
 
 pkgname = air-bin
