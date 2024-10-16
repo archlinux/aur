@@ -1,0 +1,5 @@
+[python-pyodbc]
+source = "github"
+github = "mkleehammer/pyodbc"
+use_latest_release = "true"
+prefix = "python-pyodbc-"
