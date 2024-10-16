@@ -4,9 +4,9 @@ _pkgname="azimuth"
 pkgname="${_pkgname}-snap"
 pkgver=1.0.3
 _commit="b1a6bf7bdd3f2c19b3f3293d43cca05d6ddf264c"
-pkgrel=2
+pkgrel=3
 pkgdesc="A metroidvania with vector graphics"
-arch=('x86_64' 'aarch64' 'armhf')
+arch=('x86_64' 'aarch64' 'armv7h')
 url="https://mdsteele.games/azimuth"
 _url="https://github.com/mdsteele/${_pkgname}"
 license=('GPL-3.0-or-later')
@@ -24,7 +24,7 @@ source=("README-${pkgver}.md::${_url}/raw/${_commit}/README.md"
 # https://askubuntu.com/a/1196449
 source_x86_64=("${_pkgsrc}-x86_64.snap::https://api.snapcraft.io/api/v1/snaps/download/0rVgBoeGw5Noxnc0XGWZiy0nfd3yKw2g_126.snap")
 source_aarch64=("${_pkgsrc}-aarch64.snap::https://api.snapcraft.io/api/v1/snaps/download/0rVgBoeGw5Noxnc0XGWZiy0nfd3yKw2g_124.snap")
-source_armhf=("${_pkgsrc}-armhf.snap::https://api.snapcraft.io/api/v1/snaps/download/0rVgBoeGw5Noxnc0XGWZiy0nfd3yKw2g_127.snap")
+source_armv7h=("${_pkgsrc}-armv7h.snap::https://api.snapcraft.io/api/v1/snaps/download/0rVgBoeGw5Noxnc0XGWZiy0nfd3yKw2g_127.snap")
 b2sums=('4ababca862bd650e6a6354ef29d81c3af05b52dd4e291f430c0912cc2da52cf7bfe51d5cf0333746c3dc87aaecc1f7e62c8270ea9d31950185db24cc99b7d17e'
         'ab7e38fc42fb6686add7393ecc3c7ec622cc0d72d0304ded3e56c2f96dc8433c584520896a30c037affa44461ecccfaf3ffa4a97a7e050e8ed0ec4c592caa45c'
         'cc5ff44a6be3e704fe8ed7c4449b195915a5ddebccfa034b2d9ed498b860c9a31785f702362419ffc7136e743089a743d92a68a4c96b50fc25f23ef47de54501'
@@ -33,13 +33,15 @@ b2sums=('4ababca862bd650e6a6354ef29d81c3af05b52dd4e291f430c0912cc2da52cf7bfe51d5
         '06ddb3297921db0779be520d2e033796fbacaf7955535b9ec652517255ae9a43689f0a1d124e561ad65bb341098f7a243de92ffa1bccb9fc5e34e05f50dbd31e')
 b2sums_x86_64=('0f3fd54f91a553304a6b5c88d0741da68344f4c07f3416181113e57750f9b4cc6b0a95f244db2268fc75feacdf72fd2459dc85de607a0d5fcabaf6482c16848c')
 b2sums_aarch64=('220aaf78c6ecd4b246a16cc056363f4f01f00d93eced95726ce783a3fa216b509e3beb1804ba1629fd8b5c35b712d2ea44513e7e55a8632077ec648794acb65e')
-b2sums_armhf=('c99707893e3223bf2c0b0fe26a0db98850e9622c2a4cd9d9ab52271a9ca9cf9402d184fd54efb953b8e563fe25f3e74dd39c18e0f435d7d812cafe1f6c589b69')
+b2sums_armv7h=('c99707893e3223bf2c0b0fe26a0db98850e9622c2a4cd9d9ab52271a9ca9cf9402d184fd54efb953b8e563fe25f3e74dd39c18e0f435d7d812cafe1f6c589b69')
 
 prepare() {
   cd "${srcdir}"
   unsquashfs -f -d "${srcdir}/${_pkgsrc}-${CARCH}" "${_pkgsrc}-${CARCH}.snap"
+}
 
-  cd "${_pkgsrc}-${CARCH}/meta/gui"
+build() {
+  cd "${srcdir}/${_pkgsrc}-${CARCH}/meta/gui"
   mv -f "syzygy.desktop" "${_pkgname}.desktop"
   sed -i 's|Icon=${SNAP}/meta/gui/azimuth\.png|Icon=azimuth|' "${_pkgname}.desktop"
 }

@@ -1,11 +1,11 @@
 pkgbase = azimuth-snap
 	pkgdesc = A metroidvania with vector graphics
 	pkgver = 1.0.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://mdsteele.games/azimuth
 	arch = x86_64
 	arch = aarch64
-	arch = armhf
+	arch = armv7h
 	license = GPL-3.0-or-later
 	makedepends = squashfs-tools
 	depends = glibc
@@ -30,7 +30,7 @@ pkgbase = azimuth-snap
 	b2sums_x86_64 = 0f3fd54f91a553304a6b5c88d0741da68344f4c07f3416181113e57750f9b4cc6b0a95f244db2268fc75feacdf72fd2459dc85de607a0d5fcabaf6482c16848c
 	source_aarch64 = azimuth-1.0.3-aarch64.snap::https://api.snapcraft.io/api/v1/snaps/download/0rVgBoeGw5Noxnc0XGWZiy0nfd3yKw2g_124.snap
 	b2sums_aarch64 = 220aaf78c6ecd4b246a16cc056363f4f01f00d93eced95726ce783a3fa216b509e3beb1804ba1629fd8b5c35b712d2ea44513e7e55a8632077ec648794acb65e
-	source_armhf = azimuth-1.0.3-armhf.snap::https://api.snapcraft.io/api/v1/snaps/download/0rVgBoeGw5Noxnc0XGWZiy0nfd3yKw2g_127.snap
-	b2sums_armhf = c99707893e3223bf2c0b0fe26a0db98850e9622c2a4cd9d9ab52271a9ca9cf9402d184fd54efb953b8e563fe25f3e74dd39c18e0f435d7d812cafe1f6c589b69
+	source_armv7h = azimuth-1.0.3-armv7h.snap::https://api.snapcraft.io/api/v1/snaps/download/0rVgBoeGw5Noxnc0XGWZiy0nfd3yKw2g_127.snap
+	b2sums_armv7h = c99707893e3223bf2c0b0fe26a0db98850e9622c2a4cd9d9ab52271a9ca9cf9402d184fd54efb953b8e563fe25f3e74dd39c18e0f435d7d812cafe1f6c589b69
 
 pkgname = azimuth-snap
