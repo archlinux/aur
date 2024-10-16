@@ -1,8 +1,9 @@
-# Maintainer: kpcyrd <kpcyrd[at]archlinux[dot]org>
+# Maintainer: prochac <tomas.prochazka5d[at]gmail[dot]com>
+# Contributor: kpcyrd <kpcyrd[at]archlinux[dot]org>
 
 _gitname=vuln
 pkgname=govulncheck-git
-pkgver=0.0.0.r390.g27dd78d2
+pkgver=v1.1.3
 pkgrel=1
 pkgdesc='Database client and tools for the Go vulnerability database'
 url='https://go.googlesource.com/vuln/'
@@ -16,7 +17,13 @@ b2sums=('SKIP')
 
 pkgver() {
   cd ${_gitname}
-  echo 0.0.0.r$(git log --oneline  | wc -l).g$(git describe --always --tags)
+  echo ${pkgver}
+}
+
+prepare() {
+  cd "${srcdir}/${_gitname}"
+  # Checkout the specific tag
+  git checkout "v${pkgver}"
 }
 
 build() {
