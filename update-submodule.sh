@@ -14,7 +14,7 @@ do
     r=${d//-/_}
     CURRENT=$(grep -E "^_${r}_commit" PKGBUILD)
     [[ "$d" == "japanese-usage-dictionary" ]] && d=${d//-/_}
-    LATEST=$(cd tmp/mozc/src/third_party/$d; echo "_${r}_commit="$(git log -1 --pretty=%h))
+    LATEST=$(cd tmp/mozc/src/third_party/$d; git fetch;echo "_${r}_commit="$(git log -1 --pretty=%h))
     echo $CURRENT
     echo $LATEST
     if [[ $CURRENT != $LATEST ]];then
