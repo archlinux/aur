@@ -1,13 +1,14 @@
-# Maintainer: Martin Rys <rys.pw/contact>
+# Maintainer: Martin Rys <https://rys.rs/contact> | Toss a coin on https://rys.rs/donate
 # Previous maintainers:
 #   Shayne Hartford<shayneehartford@gmail.com>
 pkgname=nvflash
-pkgver=5.814
-pkgrel=2
+pkgver=5.821
+pkgrel=1
 pkgdesc="A tool to update the the firmware of Nvidia display adapters."
 url="https://www.techpowerup.com/download/nvidia-nvflash/"
 arch=('x86_64' 'i686' 'aarch64')
 license=('unknown')
+depends=('glibc' 'gcc-libs')
 makedepends=('wget' 'unzip')
 DLAGENTS=("https::/usr/bin/wget --method POST --header 'content-type:\ application/x-www-form-urlencoded' --body-data id=2271&server_id=8 -O %o %u")
 source=("${pkgname}-${pkgver}.zip::https://www.techpowerup.com/download/nvidia-nvflash/")
