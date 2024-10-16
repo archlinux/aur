@@ -2,7 +2,7 @@
 
 _name="raidrive"
 pkgname="${_name}cli"
-pkgver=2024.9.27
+pkgver=2024.9.27.4
 pkgrel=1
 pkgdesc="Use cloud storage services as if they were USB drives on your computer"
 arch=('x86_64' 'aarch64')
@@ -14,8 +14,8 @@ _pkgsrc="${pkgname}-${pkgver}"
 noextract=("${_pkgsrc}-"{x86_64,aarch64}".deb")
 source_x86_64=("${_pkgsrc}-x86_64.deb::https://app.raidrive.com/deb/pool/main/${_name::1}/${_name}/${_name}_${pkgver}-linux_amd64.deb")
 source_aarch64=("${_pkgsrc}-aarch64.deb::https://app.raidrive.com/deb/pool/main/${_name::1}/${_name}/${_name}_${pkgver}-linux_arm64.deb")
-sha256sums_x86_64=('f8b75021f961d8e8b1c51d86d938e4f98c8a6f8ae26f013b6281ee81db7e302e')
-sha256sums_aarch64=('1d0af5dc0b6b21026055981b2f3012fb22d379c212b8fcf8d5af3800f9abd46a')
+sha256sums_x86_64=('0a414f457ac1d259638aa6c67ef829f1d92cdaf6b5caf98acc64a0011617b0ad')
+sha256sums_aarch64=('ca60bda12ace57b699ccb91753a302db3a23502398d04b248c59f861c6d976f1')
 
 prepare() {
   cd "${srcdir}"
