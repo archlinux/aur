@@ -5,9 +5,12 @@ pkgname=jujutsu-git
 _pkgname=jj
 pkgver=0.13.0.r224.g1be82250
 pkgrel=1
-depends=(gcc-libs glibc zlib)
-makedepends=(openssl cargo git)
-options=(!lto)
+depends=(gcc-libs # libgcc_s.so
+    glibc         # libc.so libm.so
+    libgit2 libgit2.so
+    libssh2 libssh2.so)
+# openssh and git are needed for tests
+makedepends=(openssh cargo git)
 arch=(i686 x86_64 armv6h armv7h)
 pkgdesc="Git-compatible VCS that is both simple and powerful"
 url="https://github.com/martinvonz/jj"
@@ -33,8 +36,16 @@ prepare() {
 build() {
     cd "$pkgname"
 
-    export CARGO_TARGET_DIR=target
-    cargo build --frozen --release --all-features
+    export LIBGIT2_NO_VENDOR=1
+    export LIBSSH2_SYS_USE_PKG_CONFIG=1
+
+    CFLAGS+=' -ffat-lto-objects'
+
+    if [[ $(rustc -V) == *"nightly"* ]]; then
+        _features+="backtrace,"
+    fi
+
+    cargo build --frozen --features "${_features:-}" --release --target-dir target
 
     "target/release/$_pkgname" util completion bash >"completions/$_pkgname.bash"
     "target/release/$_pkgname" util completion fish >"completions/$_pkgname.fish"
