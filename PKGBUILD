@@ -7,13 +7,14 @@
 
 pkgname=rubyripper-git
 pkgver=0.8.0rc3.r12.gc19661b
-pkgrel=1
+pkgrel=3
 pkgdesc="Secure audiodisc ripper"
 arch=(any)
 url="https://github.com/bleskodev/rubyripper"
-license=(GPL3)
-depends=(cdparanoia ruby) #ruby-iconv ruby-rexml ruby-gtk3
+license=(GPL-3.0-only)
+depends=(cdparanoia ruby ruby-rexml ruby-gtk3) #ruby-iconv
 makedepends=(git ruby-gettext)
+checkdepends=(ruby-rspec) #ruby-cucumber #ruby-rexml is also a checkdepend
 optdepends=('ruby-gettext: Translations'
             'cd-discid: Gnudb support'
             'lame: MP3 encoding support'
@@ -41,16 +42,21 @@ pkgver() {
 
 build() {
   cd "rubyripper"
-
   ./configure \
     --prefix=/usr \
     --enable-cli \
-    --disable-gtk3 \
+    --enable-gtk3 \
     --enable-lang-all} \
     --ruby="$(ruby -e 'v = RbConfig::CONFIG["vendorlibdir"] ; v["/usr"] = ""; puts v')"
+}
+
+check() {
+  cd "rubyripper"
+  rspec
 }
 
 package() {
   cd "rubyripper"
   make DESTDIR="${pkgdir}" install
+  ln -s /usr/bin/rrip_cli ${pkgdir}/usr/bin/rubyripper
 }
