@@ -1,0 +1,13 @@
+diff --git a/src/multimediaaudioplayer.cc b/src/multimediaaudioplayer.cc
+index 3bf12907..c117c629 100644
+--- a/src/multimediaaudioplayer.cc
++++ b/src/multimediaaudioplayer.cc
+@@ -12,6 +12,8 @@
+   #endif
+   #include "multimediaaudioplayer.hh"
+ 
++  #include <QDebug>
++
+ MultimediaAudioPlayer::MultimediaAudioPlayer()
+   #if ( QT_VERSION < QT_VERSION_CHECK( 6, 0, 0 ) )
+   :
