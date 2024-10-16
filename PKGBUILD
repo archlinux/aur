@@ -1,6 +1,6 @@
 # Maintainer: Penguin <penguin@pcland.co.in>
 pkgname=wikilynx
-pkgver=1.2.0
+pkgver=1.2.5
 pkgrel=0
 #epoch=
 pkgdesc="A simple Qt C++ app to play Wikipedia Speedruns the right way"
