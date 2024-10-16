@@ -4,8 +4,8 @@
 # Contributor: Niels Abspoel <aboe76 (at) Gmail (dot) com>
 
 pkgname=puppetserver
-pkgver=8.6.0
-pkgrel=2
+pkgver=8.6.3
+pkgrel=1
 pkgdesc="Server automation framework and application"
 arch=('any')
 url="https://docs.puppetlabs.com/puppetserver/latest/services_master_puppetserver.html"
@@ -24,26 +24,24 @@ backup=('etc/default/puppetserver'
         'etc/puppetlabs/puppetserver/services.d/ca.cfg')
 install="${pkgname}.install"
 source=("${pkgname}-${pkgver}.tar.gz::https://downloads.puppetlabs.com/puppet/${pkgname}-${pkgver}.tar.gz"
-        "${pkgname}-${pkgver}.tar.gz.asc::https://downloads.puppetlabs.com/puppet/${pkgname}-${pkgver}.tar.gz.asc"
-        'facter-3.14.9.gemspec')
-sha512sums=('e780c78371865e754a3a7fc5343b11f9a0319caf34dcf6ca998295243d1fa2137a617867782878d9bb735c96d5dd1f3e3174898eef240353d3af63eb87cdc4a2'
-            'SKIP'
-            '3341d62606d9426b4f810d873ec93b1c2888032dc5a1eb17afb38382f4f4463489a338d470367e8d129c1103efb9183bb941cc9de56815184f859823c99e91f9')
+        "${pkgname}-${pkgver}.tar.gz.asc::https://downloads.puppetlabs.com/puppet/${pkgname}-${pkgver}.tar.gz.asc")
+sha512sums=('c0b706f4a515e18d264cd00236cc8a417a2b3f90161cc3ab2e8fbb87b172418320a616ec5513287306e4447a9847daf23110853fee35f8c2701b228ed58fef57'
+            'SKIP')
 validpgpkeys=('D6811ED3ADEEB8441AF5AA8F4528B6CD9E61EF26')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
 
-  echo 'hiera-eyaml 3.4.0' >> ext/build-scripts/jruby-gem-list.txt
+  echo 'hiera-eyaml 4.1.0' >> ext/build-scripts/jruby-gem-list.txt
   sed -i 's:sysconfig:default:' ext/redhat/puppetserver.service
   sed -i "s:\[/opt/puppetlabs/puppet/lib/ruby/vendor_ruby\]:\[$( ruby -e \
     'puts RbConfig::CONFIG["vendorlibdir"]' ),$( ruby -e \
-    'puts RbConfig::CONFIG["vendordir"]' )\]:" "ext/config/conf.d/${pkgname}.conf"
+    'puts Gem.default_dir' )/gems/facter-$( facter -v )/lib\]:" \
+    "ext/config/conf.d/${pkgname}.conf"
   sed -i "s:/opt/puppetlabs/puppet/lib/ruby/vendor_gems:$( ruby -e \
     'puts Gem.default_dir' ):" \
     ext/build-scripts/install-vendored-gems.sh
   sed -i 's:#!/opt/.*/ruby:#!/usr/bin/ruby:' ext/cli/ca
-  sed -i 's/\/opt\/puppetlabs\/puppet\/lib\/ruby\/vendor_ruby/\/usr\/lib\/ruby\/vendor_ruby/g' ext/cli_defaults/cli-defaults.sh
 }
 
 package() {
@@ -81,6 +79,4 @@ _app_logdir=${_app_logdir:=/var/log/puppetlabs/${_real_name}}
     install -d "${pkgdir}"/opt/puppetlabs/server/data/puppetserver/jruby-gems
     rm -r "${pkgdir}"/var/run
     sed -i 's/\/var\/run/\/run/g' "${pkgdir}/usr/lib/tmpfiles.d/${pkgname}.conf"
-
-    install -D -m 0644 "${srcdir}/facter-3.14.9.gemspec" "${pkgdir}$( ruby -e 'puts Gem.default_dir' )/specifications/facter-3.14.9.gemspec"
 }
