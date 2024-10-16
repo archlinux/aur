@@ -1,10 +1,10 @@
 # Maintainer: sukanka <su975853527@gmail.com>
 
 _pkgname=coro
-_pkgver=1.0.4
+_pkgver=1.0.5
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=4
+pkgrel=1
 pkgdesc="'Coroutines' for R"
 arch=(any)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -22,8 +22,8 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('d5cadf1ce1e762cba98edc9cf4ceeb3c')
-b2sums=('362385904e2cda2967532e430d0f6ba4ecf5ec5528c2561ead981d2f0ee23502348bca91acb665f7cc2c22ff756ae1b78be7a71d19eb8e2d66252a54dfedf256')
+md5sums=('43de2145fa31d857e57ba72800c114cb')
+b2sums=('b51ce96d1bb2846eee9a6d9f8e81e2b7701caf3ed0a76939a0d600ed7de4ab3d75b8a5fc8c64692f8fa7e8fd918f1b20d5941b9d803489a44a1f9797563ed7ef')
 
 build() {
   mkdir build
