@@ -1,7 +1,7 @@
 pkgbase = nemo-pdf-tools
 	pkgdesc = Tools to work with PDF files from Nemo
 	pkgver = 1.2.9.0extras20.04.03
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.atareao.es/aplicacion/pdf-tools-o-modificar-pdf-en-linux/
 	arch = any
 	license = MIT
@@ -12,11 +12,9 @@ pkgbase = nemo-pdf-tools
 	depends = python-plumbum
 	depends = gtk3
 	depends = poppler
-	depends = python-pypdf2
 	depends = python-sh
 	conflicts = nemo-pdf-tools-git
 	source = nemo-pdf-tools_1.2.9-0extras20.04.03.tar.xz::https://launchpad.net/~atareao/+archive/ubuntu/nemo-extensions/+sourcefiles/nemo-pdf-tools/1.2.9-0extras20.04.03/nemo-pdf-tools_1.2.9-0extras20.04.03.tar.xz
 	sha256sums = 3c3a57162258eddefa27a4557286b0d0ce262ee6f047681f82dd0fbb182e13c4
 
 pkgname = nemo-pdf-tools
-
