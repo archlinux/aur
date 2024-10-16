@@ -1,0 +1,20 @@
+pkgbase = pingu-bin
+	pkgdesc = ping command but with pingu
+	pkgver = 0.0.5
+	pkgrel = 1
+	url = https://github.com/sheepla/pingu
+	arch = x86_64
+	arch = i686
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	provides = pingu
+	conflicts = pingu
+	source_x86_64 = https://github.com/sheepla/pingu/releases/download/v0.0.5/pingu_0.0.5_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = bd446cb4c650725215cb3e59632fc152b36a40aff7c77841bd4c08cf23de6418
+	source_i686 = https://github.com/sheepla/pingu/releases/download/v0.0.5/pingu_0.0.5_Linux_i386.tar.gz
+	sha256sums_i686 = 7220532ea023a777d7ea2e4c90dae7887663e28914813dcf904276769e0dc93e
+	source_aarch64 = https://github.com/sheepla/pingu/releases/download/v0.0.5/pingu_0.0.5_Linux_arm64.tar.gz
+	sha256sums_aarch64 = 4b38e177c305ed387f1643ba10570b5a6e88bc26d9f0111c4b8312de36293cc1
+
+pkgname = pingu-bin
