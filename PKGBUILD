@@ -7,11 +7,11 @@
 
 pkgname=caddy-git
 _pkgname=caddy
-pkgver=20210224.b54fa412
+pkgver=20241015.c6f297998
 pkgrel=1
 pkgdesc='HTTP/2 Web Server with Automatic HTTPS'
 url='https://caddyserver.com/'
-license=('Apache')
+license=('Apache-2.0')
 arch=('x86_64')
 makedepends=('git' 'go')
 source=('git+https://github.com/caddyserver/caddy.git'
