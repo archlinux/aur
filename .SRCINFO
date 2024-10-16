@@ -1,0 +1,23 @@
+pkgbase = sdl3_image-git
+	pkgdesc = Image decoding for many popular formats for Simple Directmedia Layer (Version 3)
+	pkgver = r1552.94d8471
+	pkgrel = 1
+	url = https://github.com/libsdl-org/SDL_image.git
+	arch = x86_64
+	license = zlib
+	depends = sdl3
+	depends = aom
+	depends = dav1d
+	depends = libavif
+	depends = libjpeg
+	depends = libjxl
+	depends = libpng
+	depends = libtiff
+	depends = libwebp
+	depends = zlib
+	provides = sdl3_image
+	conflicts = sdl3_image
+	source = git+https://github.com/libsdl-org/SDL_image
+	sha256sums = SKIP
+
+pkgname = sdl3_image-git
