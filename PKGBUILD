@@ -1,7 +1,7 @@
 # Maintainer: huochenghai <huochenghai@gmail.com>
 _basepkgname="chat-gpt-next-web"
 pkgname=${_basepkgname}-bin
-pkgver="2.14.2"
+pkgver="2.15.5"
 pkgrel=1
 pkgdesc="A cross-platform ChatGPT/Gemini UI (Web / PWA / Linux / Win / MacOS). 一键拥有你自己的跨平台 ChatGPT/Gemini 应用。"
 arch=("x86_64")
@@ -15,7 +15,7 @@ conflicts=("${pkgname}" "${_basepkgname}" "next-chat-bin" "next-chat")
 license=("MIT")
 source=("${pkgname}-${pkgver}.deb::${_githuburl}/releases/download/v${pkgver}/next-chat_${pkgver}_amd64.deb"
     'LICENSE::https://raw.githubusercontent.com/ChatGPTNextWeb/ChatGPT-Next-Web/main/LICENSE')
-sha256sums=('ab39071cfe8d113006c5519972aeb9bca14f60701d0f6f82f21d57228ec393d1'
+sha256sums=('574b1cccc9844389337181d141b2332be6b1fdcea4072ccd192a80a64465b258'
     'edc5ddb0ceb70e4c76021ddb6d17bb8f1bc59b03228bb17a7acfcf8a1b4afd99')
 
 prepare() {
