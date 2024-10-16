@@ -1,19 +1,19 @@
 pkgbase = eggdrop
 	pkgdesc = World's most popular Open Source IRC bot
-	pkgver = 1.9.5
+	pkgver = 1.10.0
 	pkgrel = 1
 	url = https://www.eggheads.org
 	arch = x86_64
-	license = GPL-2.0-only
+	license = GPL-2.0-or-later
 	depends = bash
 	depends = glibc
 	depends = openssl
 	depends = tcl
 	depends = zlib
-	source = https://ftp.eggheads.org/pub/eggdrop/source/1.9/eggdrop-1.9.5.tar.gz
-	source = https://ftp.eggheads.org/pub/eggdrop/source/1.9/eggdrop-1.9.5.tar.gz.asc
+	source = https://ftp.eggheads.org/pub/eggdrop/source/1.10/eggdrop-1.10.0.tar.gz
+	source = https://ftp.eggheads.org/pub/eggdrop/source/1.10/eggdrop-1.10.0.tar.gz.asc
 	validpgpkeys = E01C240484DE7DBE190FE141E7667DE1D1A39AFF
-	b2sums = 80d7b44356f0c5750c276f15412fdb847bc7583c7d1e990735ad4aec1b6bec9822124b089654dfb4dfbd393127804da1019d184d01b867b0dd84ba0342167d94
+	b2sums = 86d8ab27c0ce5ce4525095455420a4172f1bad23e3dd00772a60901ba3050d0db57d52c9cb093be2f3a77f8d8894f868da8876a9ea4533247d76d0b43cb4c9e2
 	b2sums = SKIP
 
 pkgname = eggdrop
