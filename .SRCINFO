@@ -1,17 +1,18 @@
 pkgbase = libdeltachat-git
 	pkgdesc = Deltachat-core written in Rust
-	pkgver = 1.101.0.r6.g960a7f82
-	pkgrel = 1
+	pkgver = 1.147.1.r10.g4efd0d1
+	pkgrel = 2
 	url = https://github.com/deltachat/deltachat-core-rust/
 	arch = x86_64
 	arch = aarch64
-	license = Mozilla Public License, v. 2.0
-	makedepends = rust
+	license = MPL-2.0
+	makedepends = cargo
+	makedepends = cmake
 	makedepends = git
-	depends = sqlcipher
 	provides = libdeltachat
 	conflicts = libdeltachat
-	source = deltachat-core-rust::git+https://github.com/deltachat/deltachat-core-rust.git
+	options = !lto
+	source = git+https://github.com/deltachat/deltachat-core-rust.git
 	sha256sums = SKIP
 
 pkgname = libdeltachat-git
