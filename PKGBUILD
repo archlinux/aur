@@ -9,7 +9,7 @@ url="https://github.com/adtzlr/${_base}"
 license=(GPL-3.0-or-later)
 depends=(python-numpy python-joblib)
 makedepends=(python-build python-installer python-setuptools python-wheel)
-checkdepends=(python-pytest)
+checkdepends=(python-pytest python-scipy)
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
 sha512sums=('039c1529d25842c0fb306ea2778a54777b703fbd09ed9618804352b019a52250e07339a153f81faed11a94ef6e43ec0f65a0891b646012bf34ae91801b03ec14')
 

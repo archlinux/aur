@@ -6,6 +6,7 @@ pkgbase = python-tensortrax
 	arch = any
 	license = GPL-3.0-or-later
 	checkdepends = python-pytest
+	checkdepends = python-scipy
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-setuptools
