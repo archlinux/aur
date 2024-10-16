@@ -1,6 +1,6 @@
 pkgbase = bitwave-bin
 	pkgdesc = A simple media player based on Qt and MPV.
-	pkgver = v1.1.0
+	pkgver = v1.1.1
 	pkgrel = 1
 	url = https://github.com/Reverier-Xu/BitWave
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = bitwave-bin
 	depends = mpv
 	provides = BitWave
 	conflicts = bitwave-git
-	source = https://github.com/Reverier-Xu/BitWave/releases/download/v1.1.0/bitwave-v1.1.0-linux-gnu-x86_64.tar.gz
-	sha256sums = 49f13d0e5f0f6ad4d7c7fe3d85cd290613eee6ea15259d181916c65528763ed2
+	source = https://github.com/Reverier-Xu/BitWave/releases/download/v1.1.1/bitwave-v1.1.1-linux-gnu-x86_64.tar.gz
+	sha256sums = c57f30a6188213cf8f8424db6f7def763ecf630d7cd312165f942eae927ecf6d
 
 pkgname = bitwave-bin
