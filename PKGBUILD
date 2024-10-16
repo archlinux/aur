@@ -3,7 +3,7 @@
 _binname="gmd"
 pkgname="gomanagedocker"
 pkgver=1.4
-pkgrel=1
+pkgrel=2
 pkgdesc="A TUI tool to manage docker objects"
 arch=('x86_64')
 url="https://github.com/ajayd-san/${pkgname}"
@@ -37,6 +37,6 @@ check() {
 package() {
   cd "${srcdir}/${_pkgsrc}"
   install -Dm755 "build/${_binname}" "${pkgdir}/usr/bin/${_binname}"
-  install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${_binname}/README.md"
-  install -Dm644 "LICENSE"   "${pkgdir}/usr/share/licenses/${_binname}/LICENSE"
+  install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+  install -Dm644 "LICENSE"   "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
