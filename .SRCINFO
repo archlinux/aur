@@ -1,0 +1,20 @@
+pkgbase = gfxstream
+	pkgdesc = Graphics Streaming Kit (colloquially known as Gfxstream) is a code generator that makes it easier to serialize and forward graphics API calls from one place to another.
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://android.googlesource.com/platform/hardware/google/gfxstream/
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = meson
+	makedepends = git
+	makedepends = ninja
+	makedepends = clang
+	depends = libaemu
+	depends = mesa
+	depends = glu
+	depends = freeglut
+	depends = libdrm
+	source = git+https://android.googlesource.com/platform/hardware/google/gfxstream#tag=v0.1.2-gfxstream-release
+	sha256sums = SKIP
+
+pkgname = gfxstream
