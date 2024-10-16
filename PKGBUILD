@@ -3,17 +3,17 @@
 # Contributor: Ricardo Leuck <leuck.r at gmail> (original brewtarget-git PKGBUILD)
 
 pkgname=brewtarget
-pkgver=4.0.6
+pkgver=4.0.7
 pkgrel=1
 pkgdesc="Beer calculator compatible with BeerSmith. Generates instructions from the recipe and interactive mash designer."
 url="https://github.com/Brewtarget/brewtarget/"
 arch=('x86_64' 'i686')
 license=('GPL-3.0-or-later AND WTFPL AND (CC-BY-SA-3.0 OR LGPL-3.0-or-later) AND LGPL-2.1-only')
-depends=('qt5-base' 'qt5-multimedia' 'qt5-svg' 'xalan-c' 'xerces-c')
-makedepends=('boost' 'cmake' 'git' 'meson' 'ninja' 'pandoc' 'qt5-tools')
+depends=('qt6-base' 'qt6-multimedia' 'qt6-svg' 'xalan-c' 'xerces-c')
+makedepends=('boost' 'clang' 'cmake' 'git' 'meson' 'ninja' 'pandoc' 'qt6-declarative' 'qt6-tools')
 source=("git+https://github.com/Brewtarget/brewtarget.git#tag=v${pkgver}"
         "git+https://github.com/tristanpenman/valijson.git")
-sha512sums=('ba420ea324319db4425a47f2b92c2ccaba9bb54791916d8b7dcf487084f983e27e77c4037d5f26a75c162a2e7502dc2c0be0d0c31417f2841d121ef211311e06'
+sha512sums=('e1c6b1c03ca871720a04ed37c0d6b3bc8ca8d6242f2a53d28c8008d9f030e1cedef83de87a6748cc93e99b5d4874f4c87deaa42a278ffb8d449615b18f7662eb'
             'SKIP')
 
 prepare() {
@@ -35,6 +35,7 @@ prepare() {
 }
 
 build() {
+  PATH="$PATH:/usr/lib/qt6/bin/" \
   meson setup --prefix=/usr ${pkgname} build
   ninja -C build
 }
