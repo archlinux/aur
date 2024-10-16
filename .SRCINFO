@@ -13,7 +13,7 @@ pkgbase = ytdesk-git
 	makedepends = gcc
 	makedepends = cmake
 	makedepends = curl
-	depends = electron32
+	depends = electron31
 	provides = ytdesk=1.2.5
 	conflicts = ytdesk
 	source = ytdesk.git::git+https://github.com/isaxk/ytdesk.git
