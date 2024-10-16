@@ -2,7 +2,7 @@
 pkgname=fooyin-bin
 _pkgname=Fooyin
 _appname="org.${pkgname%-bin}.${pkgname%-bin}"
-pkgver=0.8.0
+pkgver=0.8.1
 pkgrel=1
 pkgdesc="A customisable music player.Binary version."
 arch=('x86_64')
@@ -15,21 +15,27 @@ depends=(
     'qt6-svg'
     'qt6-tools'
     'alsa-lib'
-    'taglib1'
+    'taglib'
     'ffmpeg'
     'kdsingleapplication'
     'libgme'
     'libarchive'
     'libvgm-player-git'
+    'taglib1'
 )
 optdepends=(
     'sdl2: For the SDL2 audio output plugin'
-    'pipewire: For the PipeWire audio output plugin'
+    'libpipewire: For the PipeWire audio output plugin'
+    'libopenmpt: For the OpenMPT audio input plugin'
+    'libgme: For the GME audio input plugin'
+    'libsndfile: For the GME audio input plugin'
+    'libarchive: For the libarchive archive plugin'
+    'libebur128: For the ReplayGain scanner plugin'
 )
 source=(
     "${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}-noble_amd64.deb"
 )
-sha256sums=('0565ae0f3018841a2b8199ca11e9690460267f308d60417f26cc6341d6f44438')
+sha256sums=('ac887c33283d3d127c008d512695937b7fb42b5797274b8d7a47b8ee9089552a')
 build() {
     bsdtar -xf "${srcdir}/data."*
     sed -i "s/${_appname}/${pkgname%-bin}/g" "${srcdir}/usr/share/applications/${_appname}.desktop"
