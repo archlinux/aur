@@ -2,7 +2,7 @@
 
 _pkgname=uiua
 pkgname=uiua-git
-pkgver=0.13.0.dev.1.r187.g0cb738fc
+pkgver=0.13.0.rc.3.r2.gab8b6d36
 pkgrel=1
 pkgdesc='A stack-based array programming language'
 arch=('aarch64' 'arm' 'armv6h' 'armv7h' 'i686' 'x86_64')
