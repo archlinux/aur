@@ -1,6 +1,6 @@
 pkgbase = upplay
 	pkgdesc = Qt5 based UPnP audio Control point
-	pkgver = 1.7.3
+	pkgver = 1.7.5
 	pkgrel = 1
 	url = https://www.lesbonscomptes.com/upplay/
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = upplay
 	depends = gcc-libs
 	depends = hicolor-icon-theme
 	depends = libupnpp.so
-	source = https://www.lesbonscomptes.com/upplay/downloads/upplay-1.7.3.tar.gz
-	sha256sums = 4064452daf2ee194489a97a3cc63c0764b40d83ba12bb470745dc5c7849f64dc
+	source = https://www.lesbonscomptes.com/upplay/downloads/upplay-1.7.5.tar.gz
+	sha256sums = 5540cff869fe24749115ba40820f3bf88f005de2530d35874ff7d1cc942d7b6c
 
 pkgname = upplay
