@@ -1,7 +1,7 @@
 # Maintainer: Grey Christoforo <first name at last name dot net>
 
 pkgname=sunshine-git
-pkgver=2024.713.205505.r0.g18e7dfb
+pkgver=2024.1015.41553.r0.g6fa6a7d
 pkgrel=1
 pkgdesc="Game Stream server for Moonlight, latest git"
 arch=('x86_64')
@@ -38,9 +38,9 @@ cmake
 ninja
 nodejs
 npm
+cuda
 )
 optdepends=(
-'cuda: NvFBC capture support'
 'libcap'
 'libdrm'
 )
