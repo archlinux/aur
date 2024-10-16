@@ -10,18 +10,18 @@ makedepends=(git cmake python3 libxslt)
 depends=(logrotate libxcrypt-compat)
 provides=('cellframe-node' 'cellframe-node-cli' 'cellframe-node-tool' 'cellframe-node-config')
 replaces=('cellframe-node-debug')
-source=(git+https://gitlab.demlabs.net/cellframe/$pkgname.git#commit=4a8ef2ca49d302aec9d97a3b2739b8ffdb568972
-	cellframe-node.logrotate
-	cellframe-node.service
-	cellframe-node-asan.service
-	cellframe-node-tmpfiles.conf
-	cellframe-node-sysusers.conf)
+source=(git+https://gitlab.demlabs.net/cellframe/$pkgname.git#commit=0320a9f5d59d2414fd3702c843b6ff5db44783fb
+		cellframe-node.logrotate
+		cellframe-node.service
+		cellframe-node-asan.service
+		cellframe-node-tmpfiles.conf
+		cellframe-node-sysusers.conf)
 md5sums=('SKIP'
-	'a10650eb138f6fe0c4bbefa6557ffb4f'
-	'4bf9cc7596903ffa5aba7fa7922d9016'
-	'da837da689d3741cae9366eefc86d9b3'
-	'ac930b427a0805dd9c2c1fabe45048fc'
-	'ecead745d3492224d2a5a2f7d9d561b0')
+		'a10650eb138f6fe0c4bbefa6557ffb4f'
+		'4bf9cc7596903ffa5aba7fa7922d9016'
+		'da837da689d3741cae9366eefc86d9b3'
+		'ac930b427a0805dd9c2c1fabe45048fc'
+		'ecead745d3492224d2a5a2f7d9d561b0')
 options=(!debug !strip)
 install=$pkgname.install
 
