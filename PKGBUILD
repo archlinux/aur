@@ -2,14 +2,14 @@
 
 pkgname=colormc-bin
 pkgver=31
-pkgrel=2
+pkgrel=3
 pkgdesc="A Minecraft Launcher"
 url="https://www.github.com/Coloryr/ColorMC"
 arch=('x86_64')
 packager="colormc"
 license=('Apache 2.0')
-source=('https://github.com/Coloryr/ColorMC/releases/download/a31.2024.10.10/colormc-linux-a31-1-x86_64.pkg.tar.zst')
-sha256sums=('0db7a07a087bf54848044217d985aaddd6d243b80e4fe7dc5dde973ae0c2ec25')
+source=('https://github.com/Coloryr/ColorMC/releases/download/a31.2024.10.16/colormc-linux-a31-1-x86_64.pkg.tar.zst')
+sha256sums=('973604c4474912c092854a40bdef3c7c5a77f8b33a10b84f6b00cc844126da7a')
 OPTIONS=(!strip)
 install=colormc.install
 
