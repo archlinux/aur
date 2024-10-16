@@ -1,7 +1,7 @@
 # Maintainer: Frederik Schwan <freswa at archlinux dot org>
 
 pkgname=perl-http-dav
-pkgver=0.49
+pkgver=0.50
 pkgrel=1
 pkgdesc='A client module for the WebDAV protocol'
 arch=('any')
@@ -9,7 +9,7 @@ license=('PerlArtistic' 'GPL')
 depends=('perl-libwww' 'perl-uri' 'perl-xml-dom')
 url='https://metacpan.org/release/HTTP-DAV'
 source=("https://cpan.metacpan.org/authors/id/C/CO/COSIMO/HTTP-DAV-${pkgver}.tar.gz")
-b2sums=('202a37766a949441417e6e88de02dcb238f811408f16cc86ebb5187f0cd0c8b780e322b3704dbc115225232c1d815cbe9d5fdb8ac7755e222c7eac5357ea0a81')
+b2sums=('eb661803af991c635f60ea913f7da2fcb6b733ba7265201c355dc7700745eace7389e6d9f64e6cbd48f0d8e6ee428e7f3d1ca9c86c56e577b6eafcd16e0d533d')
 
 build() {
   export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
