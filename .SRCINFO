@@ -1,6 +1,6 @@
 pkgbase = cudatext-git
-	pkgdesc = Cross-platform text editor written in Free Pascal
-	pkgver = 1.214.7.0.r0.gb68336f
+	pkgdesc = Text editor written in Free Pascal with Lazarus (Qt6)
+	pkgver = 1.218.0.2.r0.g446e84a
 	pkgrel = 1
 	url = https://github.com/Alexey-T/CudaText
 	arch = x86_64
@@ -12,6 +12,8 @@ pkgbase = cudatext-git
 	depends = qt6pas
 	provides = cudatext
 	conflicts = cudatext
+	options = !strip
+	options = !debug
 	source = git+https://github.com/Alexey-T/ATBinHex-Lazarus
 	source = git+https://github.com/Alexey-T/ATFlatControls
 	source = git+https://github.com/Alexey-T/ATSynEdit

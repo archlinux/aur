@@ -4,14 +4,15 @@
 # https://github.com/Alexey-T/CudaText
 # https://github.com/Alexey-T/CudaText_up
 
+## options
 : ${_widgets=qt6}
 
 ## basic info
 _pkgname="cudatext"
 pkgname="$_pkgname-git"
-pkgver=1.214.7.0.r0.gb68336f
+pkgver=1.218.0.2.r0.g446e84a
 pkgrel=1
-pkgdesc="Cross-platform text editor written in Free Pascal"
+pkgdesc="Text editor written in Free Pascal with Lazarus (${_widgets^})"
 url="https://github.com/Alexey-T/CudaText"
 license=("MPL-2.0")
 arch=('x86_64')
@@ -33,6 +34,8 @@ makedepends=(
 
 provides=("$_pkgname")
 conflicts=("$_pkgname")
+
+options=('!strip' '!debug')
 
 _pkgsrc="CudaText"
 source=(
@@ -74,6 +77,7 @@ _packets=(
   ATSynEdit_Ex/atsynedit_ex/atsynedit_ex_package.lpk
   Python-for-Lazarus/python4lazarus/python4lazarus_package.lpk
   Emmet-Pascal/emmet/emmet_package.lpk
+  "$_pkgsrc/app/cudatext.lpi"
 )
 
 pkgver() {
@@ -96,21 +100,27 @@ Categories=Office;Development;
 END
 
   # modify compiler options
-  for i in ${_packets[@]} "$_pkgsrc/app/cudatext.lpi"; do
+  for i in ${_packets[@]}; do
     xmlstarlet edit --inplace --delete '//Other' "$i"
-    sed -E 's&(</CompilerOptions>)&<Other><CustomOptions Value='\''-O3 -Sa -CX -XX -k"--sort-common --as-needed -z relro -z now"'\''/></Other>\n\1&' \
+    sed -E 's&(</CompilerOptions>)&<Other><CustomOptions Value="-O3 -Sa -CX -XX -k'\''--sort-common --as-needed -z relro -z now'\''"/></Other>\n\1&' \
       -i "$i"
   done
 }
 
 build() (
   mkdir -p build
-  for i in ${_packets[@]} "$_pkgsrc/app/cudatext.lpi"; do
-    lazbuild -B "$i" \
-      --lazarusdir="/usr/lib/lazarus" \
-      --widgetset="$_widgets" \
-      --os=linux --cpu=$ARCH \
-      --primary-config-path=build
+
+  local _laz_opts=(
+    --build-all
+    --cpu="$CARCH"
+    --lazarusdir="/usr/lib/lazarus"
+    --os=linux
+    --primary-config-path=build
+    --widgetset="$_widgets"
+  )
+
+  for i in ${_packets[@]}; do
+    lazbuild "${_laz_opts[@]}" "$i"
   done
 )
 
