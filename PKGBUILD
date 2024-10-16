@@ -8,7 +8,7 @@ pkgver=1.0.20240711
 pkgrel=1
 license=('GPLv2')
 provides=("AMNEZIAWG-MODULE=${pkgver}")
-depends=("linux")
+depends=("linux=$(pacman -Q linux | awk '{print $2}')" "linux-headers=$(pacman -Q linux-headers | awk '{print $2}')")
 _kernel=$(pacman -Q linux | awk '{print $2}' | sed "s,.[a-zA-Z].*,,g")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/amnezia-vpn/amneziawg-linux-kernel-module/archive/refs/tags/v${pkgver}.tar.gz"
         "https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-${_kernel}.tar.xz")
