@@ -2,11 +2,11 @@
 
 pkgname=flowfox-bin
 _pkgname=flowfox
-pkgver=129.0.2
+pkgver=131.0.4
 pkgrel=1
 url=https://github.com/Troplo/ffox
 conflicts=("flowfox")
-_github_rel=firefox-129.0.2.en-US.linux-x86_64-1
+_github_rel=firefox-131.0.4.en-US.linux-x86_64-1
 pkgdesc="Fork of Firefox with minimal changes, including rebinding of default keyboard shortcuts to better match Chromium. Not affiliated with Mozilla. (Binary version)"
 arch=('x86_64' 'i686')
 license=(MPL GPL LGPL)
@@ -55,10 +55,6 @@ source_x86_64=("firefox-$pkgver-x86_64.tar.bz2::$_archive/$_github_rel/firefox-$
 source=($_pkgname.sh
         $_pkgname.desktop
         policies.json)
-sha256sums=('SKIP'
-            'SKIP'
-            'SKIP')
-sha256sums_x86_64=('SKIP')
 
 package() {
   # Create directories
@@ -94,3 +90,7 @@ package() {
   mkdir "$pkgdir"/opt/$_pkgname/distribution
   install -m644 "$srcdir"/policies.json "$pkgdir"/opt/$_pkgname/distribution/
 }
+sha256sums=('c0c1c769c4d0f725a340d567021bb81170a30417aae31af632c62320bcf22f1e'
+            '67bd4db8eb21be88d80dc0df8cdabbea59295784c2614157e963162504324053'
+            '6e1e97053fa272ad282428cf05b8cde07842353e8dfff7210c91c74842a3e71e')
+sha256sums_x86_64=('c80c9e9de74d3486fbc6372b560b386c1604dc8062058b7000710815c0588fcd')
