@@ -2,7 +2,7 @@
 
 _pkgname=humidify
 pkgname="${_pkgname}-git"
-pkgver=2024.08.29
+pkgver=2024.10.15
 pkgrel=1
 pkgdesc="Rain in your terminal"
 url="https://github.com/mazylol/humidify"
