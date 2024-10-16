@@ -1,7 +1,7 @@
 pkgbase = satisfactory-mod-manager
 	pkgdesc = A mod manager for easy installation of mods and modloader for Satisfactory
-	pkgver = 3.0.0
-	pkgrel = 2
+	pkgver = 3.0.1
+	pkgrel = 1
 	url = https://github.com/satisfactorymodding/SatisfactoryModManager
 	arch = x86_64
 	license = GPL3
@@ -14,9 +14,10 @@ pkgbase = satisfactory-mod-manager
 	makedepends = go-task
 	makedepends = pnpm
 	depends = webkit2gtk
-	source = satisfactory-mod-manager-3.0.0.tar.gz::https://github.com/satisfactorymodding/SatisfactoryModManager/archive/v3.0.0.tar.gz
+	depends = gst-plugins-good
+	source = satisfactory-mod-manager-3.0.1.tar.gz::https://github.com/satisfactorymodding/SatisfactoryModManager/archive/v3.0.1.tar.gz
 	source = satisfactory-mod-manager.desktop
-	sha512sums = c7ea1c6f6fdc7c23035a00dad0769f59ad1531394f094f5e885ec8533fc59427b31c1c2981d28d69d3c501b5dc10a9ad14d2bc553291c768b5eb9f2bb6b66882
+	sha512sums = f8afac73d60842ebc886769094a3ed6d7ce77cf0f72497aad424582086f66e8ad62b57521f0a2c4b0eeec6b4757d9425202aab3c83a8951f068e676336231bac
 	sha512sums = 6271ba738cb17a787c33fede390aa86381e22ea3e7ffd44b7bef74f26d4a59c26bb803783ce61feec8d0eb596bd0d5bd5f2ad917fb0a684a091763d8f6ada1fe
 
 pkgname = satisfactory-mod-manager
