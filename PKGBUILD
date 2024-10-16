@@ -1,7 +1,7 @@
 # Maintainer: huochenghai <huochenghai@gmail.com>
 _basepkgname="syncclipboard"
 pkgname=${_basepkgname}-desktop-bin
-pkgver="0.7.6"
+pkgver="0.7.7"
 pkgrel=1
 pkgdesc="跨平台剪贴板同步方案的客户端 / Client of Cross-Platform Cipboard Syncing Solution"
 arch=("x86_64")
@@ -13,7 +13,7 @@ conflicts=("${pkgname}" "${_basepkgname}" "${_basepkgname}-bin" "SyncClipboard.D
 license=("MIT")
 source=("${pkgname}-${pkgver}.AppImage::${_githuburl}/releases/download/v${pkgver}/SyncClipboard-${pkgver}_linux_self-contained.$CARCH.AppImage"
     'LICENSE::https://raw.githubusercontent.com/Jeric-X/SyncClipboard/master/LICENSE')
-sha256sums=('1d92199ed0da1b25a40ea241f3211bf6bd1e6e7c4da65eb3dcf1dcd0af0ce09a'
+sha256sums=('3d62a8da5de5db9f1a63b31fba5db4c91487cbf754ec57ca8af5a086ac6af86c'
     'dfa38ed49c5407a5d8685c935703eb0bf8233db9f8c40700fd9059aff2a7e22f')
 
 package() {
