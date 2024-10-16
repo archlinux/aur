@@ -6,9 +6,9 @@
 # Contributor: Sebastiaan Lokhorst <sebastiaanlokhorst@gmail.com>
 
 pkgname=imagej2
-pkgver=2.15.0
+pkgver=2.16.0
 # _pkgver=${pkgver//_/-}
-pkgrel=3
+pkgrel=1
 pkgdesc='Open scientific N-dimensional image processing
          https://doi.org/10.1186/s12859-017-1934-z'
 arch=('x86_64')
@@ -27,7 +27,7 @@ makedepends=(
 )
 
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/imagej/imagej2/archive/refs/tags/imagej-${pkgver}.tar.gz")
-sha256sums=('d43b3d2fdb29e068943b6a2d10f7bd8d2b6de0791f4d51b9729586d5b8b66b1b')
+sha256sums=('bbd66b3b812f12a42881f26555f66d4e2b61b188f1daf125f95528ff0d89fc7f')
 _M2_REPO=$(mktemp -d)
 
 prepare() {

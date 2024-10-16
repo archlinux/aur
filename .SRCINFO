@@ -1,7 +1,7 @@
 pkgbase = imagej2
 	pkgdesc = Open scientific N-dimensional image processing https://doi.org/10.1186/s12859-017-1934-z
-	pkgver = 2.15.0
-	pkgrel = 3
+	pkgver = 2.16.0
+	pkgrel = 1
 	url = https://imagej.net
 	arch = x86_64
 	license = BSD-2-Clause
@@ -12,7 +12,7 @@ pkgbase = imagej2
 	depends = java-runtime=8
 	depends = sh
 	depends = hicolor-icon-theme
-	source = imagej2-2.15.0.tar.gz::https://github.com/imagej/imagej2/archive/refs/tags/imagej-2.15.0.tar.gz
-	sha256sums = d43b3d2fdb29e068943b6a2d10f7bd8d2b6de0791f4d51b9729586d5b8b66b1b
+	source = imagej2-2.16.0.tar.gz::https://github.com/imagej/imagej2/archive/refs/tags/imagej-2.16.0.tar.gz
+	sha256sums = bbd66b3b812f12a42881f26555f66d4e2b61b188f1daf125f95528ff0d89fc7f
 
 pkgname = imagej2
