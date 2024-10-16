@@ -1,0 +1,34 @@
+pkgbase = gz-sim9
+	pkgdesc = Open source robotics simulator
+	pkgver = 9.0.0
+	pkgrel = 1
+	url = https://github.com/gazebosim/gz-sim
+	arch = any
+	license = Apache
+	makedepends = cmake
+	makedepends = doxygen
+	makedepends = gz-cmake=4
+	makedepends = pybind11
+	makedepends = python
+	depends = eigen
+	depends = gz-common=6
+	depends = gz-fuel-tools=10
+	depends = gz-gui=9
+	depends = gz-math=8
+	depends = gz-msgs=11
+	depends = gz-physics=8
+	depends = gz-plugin=3
+	depends = gz-rendering=9
+	depends = gz-sensors=9
+	depends = gz-transport=14
+	depends = gz-utils=3
+	depends = protobuf
+	depends = qt5-base
+	depends = qt5-quickcontrols2
+	depends = sdformat=15
+	depends = tinyxml2
+	provides = gz-sim=9
+	source = https://github.com/gazebosim/gz-sim/archive/gz-sim9_9.0.0.tar.gz
+	sha256sums = de9815b4b2a19c2c3e30b29a7b312c4949713a317021d4e416c521ceb525c358
+
+pkgname = gz-sim9
