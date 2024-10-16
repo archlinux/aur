@@ -1,10 +1,10 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=hyperamp-bin
 _pkgname=Hyperamp
-pkgver=1.1.10
-_electronversion=32
+pkgver=1.1.11
+_electronversion=33
 pkgrel=1
-pkgdesc="Humble music player"
+pkgdesc="🎛 Humble music player.Prebuilt version.Use system-wide electron."
 arch=(
     'aarch64'
     'armv7h'
@@ -27,25 +27,30 @@ source=(
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-arm64.AppImage")
 source_armv7h=("${pkgname%-bin}-${pkgver}-armv7h.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-armv7l.AppImage")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}.AppImage")
-sha256sums=('2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
-sha256sums_aarch64=('fd501049296dda910d38efde2f519d27e18db749913142109c0c597ce219a88d')
-sha256sums_armv7h=('9dbce4590b2f25577152a25efe96ed0c2294a2c14eaab8e795c6d4492070495a')
-sha256sums_x86_64=('b649c6adaa20457bc7ced2b46c78d324c6b4d4629c157c94de953098a07218cf')
+sha256sums=('291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
+sha256sums_aarch64=('bf3c6d0f64f4dd40dab619b3df65de4b1a82bbacaba81f442f15bdb259ee2ef3')
+sha256sums_armv7h=('b7464b2775210eff270a04f58f68d23691f78067cb1cbbc82f5baa43c345b79c')
+sha256sums_x86_64=('fb45f875d23df0dc898620fbca717b2662306c727ac0e04745aca8dba73a3536')
 build() {
-    sed -e "s|@electronversion@|${_electronversion}|g" \
-        -e "s|@appname@|${pkgname%-bin}|g" \
-        -e "s|@runname@|app.asar|g" \
-        -e "s|@cfgdirname@|${_pkgname}|g" \
-        -e "s|@options@|env ELECTRON_OZONE_PLATFORM_HINT=auto|g" \
-        -i "${srcdir}/${pkgname%-bin}.sh"
+    sed -e "
+        s/@electronversion@/${_electronversion}/g
+        s/@appname@/${pkgname%-bin}/g
+        s/@runname@/app.asar/g
+        s/@cfgdirname@/${_pkgname}/g
+        s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
+    " -i "${srcdir}/${pkgname%-bin}.sh"
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage" --appimage-extract > /dev/null
-    sed "s|AppRun --no-sandbox|${pkgname%-bin}|g;s|Audio|AudioVideo|g" -i "${srcdir}/squashfs-root/${pkgname%-bin}.desktop"
+    sed -e "
+        s/AppRun --no-sandbox/${pkgname%-bin}/g
+        s/Audio/AudioVideo/g
+    " -i "${srcdir}/squashfs-root/${pkgname%-bin}.desktop"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm644 "${srcdir}/squashfs-root/resources/app.asar" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
-    for _icons in 16x16 32x32 48x48 64x64 128x128 256x256 512x512;do
+    _icon_sizes=(16x16 32x32 48x48 64x64 128x128 256x256 512x512)
+    for _icons in "${_icon_sizes[@]}";do
       install -Dm644 "${srcdir}/squashfs-root/usr/share/icons/hicolor/${_icons}/apps/${pkgname%-bin}.png" \
         -t "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps"
     done
