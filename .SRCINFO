@@ -1,0 +1,20 @@
+pkgbase = python-gio-pyio
+	pkgdesc = Library provides Python like IO for Gio
+	pkgver = 0.0.5
+	pkgrel = 1
+	url = https://github.com/cmkohnen/gio_pyio
+	arch = any
+	license = GPL-3.0-only
+	checkdepends = python-pytest
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = glib2
+	depends = python
+	depends = python-gobject
+	source = git+https://github.com/cmkohnen/gio_pyio.git#tag=0.0.5
+	b2sums = a109956e9b6db433d02f8be579570681c6d8c70ef77047f5d13456dd3cd1745c1108588a725d4721a7ac8a6c18f59631a96e8474c581fbdf0d6dece60c8f8806
+
+pkgname = python-gio-pyio
