@@ -1,0 +1,8 @@
+# HDD power saving
+ACTION=="add", SUBSYSTEM=="scsi_host", KERNEL=="host*", ATTR{link_power_management_policy}="med_power_with_dipm"
+
+# PCIe ASPM
+SUBSYSTEM=="pci", ATTR{power/control}="auto"
+
+# wireless power saving
+ACTION=="add", SUBSYSTEM=="net", KERNEL=="wl*", RUN+="/usr/bin/iw dev $name set power_save on"

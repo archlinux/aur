@@ -1,0 +1,5 @@
+post_install () {
+  echo "Don't forget to enable tuned and tuned-ppd services"
+  echo "If you're confused, run the following command:"
+  echo "sudo systemctl enable --now tuned tuned-ppd"
+}

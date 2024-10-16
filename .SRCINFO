@@ -1,0 +1,21 @@
+pkgbase = pmconfig
+	pkgdesc = A set of tweaks for power efficiency picked from the Arch Wiki
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://gitlab.com/Sid127/pmconfig
+	arch = x86_64
+	depends = iw
+	depends = tuned
+	depends = tuned-ppd
+	source = 10-camera-pm.conf
+	source = udev.rules
+	source = tmpfiles.conf
+	source = sysctl.conf
+	source = modprobe.conf
+	sha256sums = 1b1e16daa69a081c8d347825d5c7461736220af49a4a35ba66ba5124a66a09b2
+	sha256sums = b71d8bf9ce407ee0101cb8ecd5b7aa4309d911fa0fca2f22b6c68c3437003bc9
+	sha256sums = 628dec3509ac2a29a0a753c5207d678080bd74c59debca7b7cdf5612101b48cb
+	sha256sums = 5b3891fd227c744dca55ace450f2edcd6d6a885b4c5d80720d0ea3b1103149ec
+	sha256sums = f2fb57c896c14508485b76456348d9ab29e61d9f0760e48ddc8c5db696a9ce71
+
+pkgname = pmconfig
