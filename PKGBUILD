@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=fooyin
 _pkgname=Fooyin
-pkgver=0.8.0
+pkgver=0.8.1
 pkgrel=1
 pkgdesc="A customisable music player"
 arch=('x86_64')
@@ -15,8 +15,6 @@ depends=(
     'taglib'
     'ffmpeg'
     'kdsingleapplication'
-    'libgme'
-    'libarchive'
     'libvgm-player-git'
 )
 makedepends=(
@@ -32,6 +30,7 @@ makedepends=(
     'libebur128'
     'libarchive'
     'libgme'
+    'taglib1'
 )
 optdepends=(
     'sdl2: For the SDL2 audio output plugin'
@@ -45,7 +44,7 @@ optdepends=(
 source=(
     "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
 )
-sha256sums=('e728222bbafdd48ab7c9435cce6240facde5ff0cedb58d000d56fdd28f43bd17')
+sha256sums=('e702389488e19c4c48b1b62bf1b2adf263b818138e3b232a39259057cbcec9c2')
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
     cmake -S . -B build -G Ninja \
