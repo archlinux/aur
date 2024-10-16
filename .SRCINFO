@@ -10,12 +10,8 @@ pkgbase = uiua-git
 	arch = i686
 	arch = x86_64
 	license = MIT
-	makedepends = binaryen
 	makedepends = cargo
 	makedepends = git
-	makedepends = rust-wasm
-	makedepends = trunk
-	makedepends = wasm-bindgen
 	depends = alsa-lib
 	depends = gcc-libs
 	depends = glibc
@@ -26,6 +22,3 @@ pkgbase = uiua-git
 	md5sums = SKIP
 
 pkgname = uiua-git
-
-pkgname = uiua-docs-git
-	pkgdesc = A stack-based array programming language (documentation)
