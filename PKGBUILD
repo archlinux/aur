@@ -2,7 +2,7 @@
 
 _pkgname=libssh2
 pkgname=mingw-w64-${_pkgname}
-pkgver=1.11.0
+pkgver=1.11.1
 pkgrel=1
 pkgdesc="A library implementing the SSH2 protocol as defined by Internet Drafts (mingw-w64)"
 arch=(any)
@@ -13,13 +13,13 @@ depends=('mingw-w64-crt' 'mingw-w64-openssl' 'mingw-w64-zlib')
 #checkdepends=('mingw-w64-wine')
 options=(staticlibs !strip !buildflags)
 source=("$url/download/${_pkgname}-${pkgver}.tar.gz")
-sha256sums=('3736161e41e2693324deb38c26cfdc3efe6209d634ba4258db1cecff6a5ad461')
+sha256sums=('d9ec76cbe34db98eec3539fe2c899d26b0c837cb3eb466a56b0f109cabf658f7')
 
 _srcdir="${_pkgname}-${pkgver}"
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 _flags=( -Wno-dev -DCMAKE_BUILD_TYPE=Release
 	-DCMAKE_CXX_FLAGS_RELEASE='-DNDEBUG'
-	-DBUILD_EXAMPLES=OFF 
+	-DBUILD_EXAMPLES=OFF
 	-DENABLE_ZLIB_COMPRESSION=ON )
 
 build() {
