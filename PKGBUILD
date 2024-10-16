@@ -5,7 +5,7 @@
 # Contributor: Sam Whited <sam@samwhited.com>
 
 pkgname=stripe-cli
-pkgver=1.21.8
+pkgver=1.21.9
 pkgrel=1
 pkgdesc='CLI for Stripe'
 arch=(i686 x86_64 aarch64)
@@ -14,7 +14,7 @@ license=(Apache-2.0)
 depends=(glibc)
 makedepends=(go git)
 source=($pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz)
-b2sums=('394e8236cf4f64bd6d8a3fa72a5efc6a1759b66484835ccfc31447c517e18a85ac26526a020346dddf642c231a03909f77a4db7557473a195db12713984eb105')
+b2sums=('cc087553ca83663a01ff159fd29e92f323f02573c2701058667cdbf2ae05aff5d27a24da1fb1787142befaacdc421c3d4d15828c0ed1e74aff37784dee0e7f57')
 
 prepare() {
   cd $pkgname-$pkgver
