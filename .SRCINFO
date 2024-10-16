@@ -1,6 +1,6 @@
 pkgbase = weylus-community-git
 	pkgdesc = Use your tablet as graphic tablet/touch screen on your computer.
-	pkgver = be2ca4e
+	pkgver = 2024.9.10.gbe2ca4e
 	pkgrel = 1
 	url = https://github.com/electronstudio/WeylusCommunityEdition
 	arch = x86_64
@@ -13,6 +13,8 @@ pkgbase = weylus-community-git
 	makedepends = git
 	makedepends = make
 	makedepends = cmake
+	makedepends = npm
+	makedepends = pnpm
 	depends = libxtst
 	depends = libxcursor
 	depends = libxinerama
@@ -25,9 +27,10 @@ pkgbase = weylus-community-git
 	depends = dbus
 	depends = gst-plugins-base-libs
 	optdepends = gst-plugin-pipewire: Wayland support
-	provides = weylus=be2ca4e
+	provides = weylus=2024.9.10.gbe2ca4e
 	conflicts = weylus
 	conflicts = weylus-bin
+	conflicts = weylus-git
 	options = !debug
 	options = !lto
 	source = weylus::git+https://github.com/electronstudio/WeylusCommunityEdition.git
