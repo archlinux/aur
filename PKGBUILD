@@ -1,6 +1,6 @@
 pkgname=mihomo-party-git
 _pkgname=${pkgname%-git}
-pkgver=1.4.8.r1.g636a59e
+pkgver=1.4.8.r2.g308a141
 pkgrel=1
 pkgdesc="Another Mihomo GUI."
 arch=('x86_64' 'aarch64')
@@ -38,8 +38,8 @@ package() {
     bsdtar -xf mihomo-party-linux-$(jq '.version' $srcdir/${_pkgname}/package.json | tr -d 'v"')*.deb
     bsdtar -xf data.tar.xz -C "${pkgdir}/"
     chmod +x ${pkgdir}/opt/mihomo-party/mihomo-party
-    chmod +x ${pkgdir}/opt/mihomo-party/resources/sidecar/mihomo
-    chmod +x ${pkgdir}/opt/mihomo-party/resources/sidecar/mihomo-alpha
+    chmod +sx ${pkgdir}/opt/mihomo-party/resources/sidecar/mihomo
+    chmod +sx ${pkgdir}/opt/mihomo-party/resources/sidecar/mihomo-alpha
     install -Dm755 "${srcdir}/../${_pkgname}.sh" "${pkgdir}/usr/bin/${_pkgname}"
     sed -i '3s!/opt/mihomo-party/mihomo-party!mihomo-party!' "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
 
