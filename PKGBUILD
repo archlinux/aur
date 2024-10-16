@@ -1,7 +1,7 @@
 # Maintainer: Moritz Bunkus <moritz@bunkus.org>
 
 pkgname=perl-net-amqp-rabbitmq
-pkgver="2.40012"
+pkgver="2.40013"
 pkgrel='1'
 pkgdesc="interact with RabbitMQ over AMQP using librabbitmq"
 arch=("any")
@@ -10,10 +10,8 @@ url="https://metacpan.org/pod/Net::AMQP::RabbitMQ"
 options=(!emptydirs)
 depends=('perl-math-int64>=0.34' 'perl-scalar-list-utils')
 makedepends=('perl-devel-checklib')
-source=("https://cpan.metacpan.org/authors/id/M/MS/MSTEMLE/Net-AMQP-RabbitMQ-${pkgver}.tar.gz"
-       'gcc14.patch')
-sha512sums=('3e29beff8fbcc69276a23aa78c53c5474d44bb62bb26df555a5ff3ef5afa94c4d08b83a4b27d26d79c462b0f9ca60027c2c5448e8d450c31560e3e058234111e'
-            '95de603f5a5a5532b11a5aff4b98c22e8bc25281e5b9eb74c8f2100513551bf641245998b3e51699b989a9a54bb0f957bbb4dc02bef48796f4ff870cc9133d7b')
+source=("https://cpan.metacpan.org/authors/id/M/MS/MSTEMLE/Net-AMQP-RabbitMQ-${pkgver}.tar.gz")
+sha512sums=('05ccef23026a02f9e6e7153e2b08b32809478e098a95376b169c1f1162e6adf3f6c032a30f08e85a59c82ab4c7034b03e7c8b71a023055b3270af12194d6856b')
 
 prepare_environment() {
   export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
@@ -27,7 +25,6 @@ prepare_environment() {
 build() {
   prepare_environment
   /usr/bin/perl Makefile.PL
-  patch -p1 < "$srcdir/gcc14.patch"
   make
 }
 
