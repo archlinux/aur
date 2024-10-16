@@ -1,6 +1,6 @@
 # Maintainer: tee < teeaur at duck dot com >
 pkgname=rill-bin
-pkgver=0.49.1
+pkgver=0.50.0
 pkgrel=1
 pkgdesc="Rill is an operational BI tool that provides fast dashboards that your team will actually use."
 #Rill rethinks BI dashboards with embedded database and instant UX
@@ -10,7 +10,7 @@ license=('Apache')
 provides=('rill')
 conflicts=('rill')
 source=("rill-$pkgver.zip::https://github.com/rilldata/rill/releases/download/v$pkgver/rill_linux_amd64.zip")
-sha256sums=('8303baded19027ca68264b99651943dec93614055698cb6d15fbce191661aa11')
+sha256sums=('45fa6d7873a7b2cd368f37bc57a8618ee7ea8eafb674efa441f604c868db8674')
 
 package() {
     install -Dm0755 rill "$pkgdir/usr/bin/rill"
