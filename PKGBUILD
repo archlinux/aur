@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=postybirb-plus-bin
-pkgver=3.1.48
+pkgver=3.1.49
 _electronversion=19
 pkgrel=1
-pkgdesc="An application that helps artists post art and other multimedia to multiple websites more quickly."
+pkgdesc="An application that helps artists post art and other multimedia to multiple websites more quickly.Prebuilt version.Use system-wide electron."
 arch=('x86_64')
 url="https://www.postybirb-plus.com/"
 _ghurl="https://github.com/mvdicarlo/postybirb-plus"
@@ -24,7 +24,7 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/mvdicarlo/postybirb-plus/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('09de9bb30ad1331792d5a0216f147352a64f00ec0a0201a9c51bd2ba0be50df9'
+sha256sums=('da43051c3873464393423f97988d1aeb490158a5a752db85b0324130b8e3390d'
             'a0b91aa0ffc9564128c6599eac1fc0ba93b8fe477dff6258ef315f0019b5726d'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 build() {
@@ -37,7 +37,7 @@ build() {
     " -i "${srcdir}/${pkgname%-bin}.sh"
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
-    sed -i "s/AppRun --no-sandbox/${pkgname%-bin}/g" -i "${srcdir}/squashfs-root/${pkgname%-bin}.desktop"
+    sed -i "s/AppRun --no-sandbox/${pkgname%-bin}/g" "${srcdir}/squashfs-root/${pkgname%-bin}.desktop"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
