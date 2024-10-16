@@ -1,25 +1,65 @@
-# Maintainer: Nicolas Formichella <stigpro@outlook.fr>
+# Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
+# Contributor: Nicolas Formichella <stigpro@outlook.fr>
 # Contributor: James An <james@jamesan.ca>
 # Contributor: Anatol Pomozov <anatol.pomozov@gmail.com>
 
-pkgname=ruby-gstreamer
-_pkgname=${pkgname#ruby-}
-pkgver=3.4.9
+_gem=gstreamer
+pkgname="ruby-${_gem}"
+pkgver=4.2.2
 pkgrel=1
 pkgdesc='Ruby/GStreamer is a Ruby binding for GStreamer.'
-arch=('any')
-url='http://ruby-gnome2.osdn.jp/'
-license=(LGPL)
-depends=('gstreamer' 'ruby-gobject-introspection')
-makedepends=('ruby-pkg-config')
-options=(!emptydirs)
-source=("https://rubygems.org/downloads/$_pkgname-$pkgver.gem")
-sha512sums=('c34fa35c394f9c290efcc433df5c58e531a5f6a6f253072d955e280b4f685d8a14617afdc7c6a16534a087d9a02cb655b42903561d88715bb01787d788266c22')
-noextract=($_pkgname-$pkgver.gem)
+arch=(any)
+url="https://github.com/ruby-gnome/ruby-gnome"
+license=(LGPL-2.1-only)
+depends=(ruby gstreamer ruby-gobject-introspection ruby-glib2 glibc glib2)
+makedepends=(ruby-pkg-config ruby-native-package-installer)
+source=("ruby-gnome-${pkgver}.tar.gz::https://github.com/ruby-gnome/ruby-gnome/archive/refs/tags/${pkgver}.tar.gz")
+sha256sums=('64f2f53e9733e85d1b5c10c684858ff5924a0c7175c344ed01270fc018ea983d')
+
+build() {
+  cd "ruby-gnome-${pkgver}/${_gem}"
+
+local _gemdir="$(gem env gemdir)"
+
+  gem build "${_gem}.gemspec"
+
+  gem install \
+    --local \
+    --verbose \
+    --ignore-dependencies \
+    --no-user-install \
+    --install-dir "tmp_install/${_gemdir}" \
+    --bindir "tmp_install/usr/bin" \
+    "${_gem}-${pkgver}.gem"
+
+  # remove unrepreducible files
+  rm --force --recursive --verbose \
+    "tmp_install/${_gemdir}/cache/" \
+    "tmp_install/${_gemdir}/gems/${_gem}-${pkgver}/vendor/" \
+    "tmp_install/${_gemdir}/doc/${_gem}-${pkgver}/ri/ext/"
+
+  find "tmp_install/${_gemdir}/gems/" \
+    -type f \
+    \( \
+      -iname "*.o" -o \
+      -iname "*.c" -o \
+      -iname "*.so" -o \
+      -iname "*.time" -o \
+      -iname "gem.build_complete" -o \
+      -iname "Makefile" \
+    \) \
+    -delete
+
+  find "tmp_install/${_gemdir}/extensions/" \
+    -type f \
+    \( \
+      -iname "mkmf.log" -o \
+      -iname "gem_make.out" \
+    \) \
+    -delete
+}
 
 package() {
-  local _gemdir="$(ruby -e'puts Gem.default_dir')"
-  gem install --ignore-dependencies --no-user-install -i "$pkgdir/$_gemdir" -n "$pkgdir/usr/bin" $_pkgname-$pkgver.gem
-  rm "$pkgdir/$_gemdir/cache/$_pkgname-$pkgver.gem"
-  
+  cd "ruby-gnome-${pkgver}/${_gem}"
+  cp --archive --verbose tmp_install/* "${pkgdir}"
 }
