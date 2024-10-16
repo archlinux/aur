@@ -2,7 +2,7 @@
 # Contributor: osch <oliver@luced.de>
 
 pkgname=audacity-local-git
-pkgver=3.5.0.0.r18499
+pkgver=3.7.0.0.r20399
 pkgrel=1
 pkgdesc="Record and edit audio files - Built with mostly system libraries, except for xwWidgets and PortMidi"
 arch=('x86_64')
@@ -24,7 +24,7 @@ provides=(
     vst3-host
     )
 conflicts=("audacity" "catch2")
-source=("git+https://github.com/audacity/audacity.git")
+source=("git+https://github.com/audacity/audacity.git#branch=release-3.7.0")
 sha512sums=('SKIP')
 
 pkgver() {
