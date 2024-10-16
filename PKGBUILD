@@ -1,8 +1,9 @@
 # Maintainer: Nebulosa  <nebulosa2007-at-yandex-dot-ru>
 
 pkgbase=xwayland-run
-pkgver=0.0.3
-pkgrel=2
+pkgver=0.0.4
+pkgrel=1
+pkgdesc="Set of small utilities revolving around running Xwayland"
 pkgname=($pkgbase $pkgbase-cage $pkgbase-gnome-kiosk $pkgbase-kwin $pkgbase-mutter)
 arch=(any)
 url="https://gitlab.freedesktop.org/ofourdan/$pkgbase"
@@ -19,7 +20,7 @@ optdepends=(
 )
 options=(!debug)
 source=($url/-/archive/$pkgver/$pkgbase-$pkgver.tar.gz)
-b2sums=('24217acf433948976a5af2471972fed6734caa3a6266dc5ab50e7039b8a352f1b3000e727463eab03c516eb9b7df9a662105e7b2fb23e6113e68a11f717d1872')
+b2sums=('31eae9fbb1a4f8ce112400ccd2e00e28fa78cb880949ac9b291998dddbe1caeb4eb97dec249189ea6b6ba2cb9e87d9687766815bcba5a2cd4f4ea0fca8b27ca2')
 
 _build_and_install() {
   arch-meson $pkgbase-$pkgver $1 -Dcompositor=$1
@@ -28,32 +29,12 @@ _build_and_install() {
   meson install -C $1 --destdir "$pkgdir"
 }
 
-package_xwayland-run() {
-  pkgdesc="Set of small utilities revolving around running Xwayland (Weston)"
-  optdepends+=('weston: Wayland compositor')
-  _build_and_install weston
-}
-
-package_xwayland-run-cage() {
-  pkgdesc="Set of small utilities revolving around running Xwayland (Cage)"
-  optdepends+=('cage: Wayland compositor')
-  _build_and_install cage
-}
-
-package_xwayland-run-gnome-kiosk() {
-  pkgdesc="Set of small utilities revolving around running Xwayland (Gnome Kiosk)"
-  optdepends+=()
-  _build_and_install gnome-kiosk
-}
-
-package_xwayland-run-kwin() {
-  pkgdesc="Set of small utilities revolving around running Xwayland (KWin)"
-  optdepends+=('kwin: Wayland compositor')
-  _build_and_install kwin
-}
-
-package_xwayland-run-mutter() {
-  pkgdesc="Set of small utilities revolving around running Xwayland (Mutter)"
-  optdepends+=('mutter: Wayland compositor')
-  _build_and_install mutter
-}
+for _p in "${pkgname[@]}"; do
+  _waycom=$([[ "$_p" == "$pkgbase" ]] && echo "weston" || echo "${_p#$pkgbase-}")
+  eval "package_$_p() {
+    $(declare -f "_package${_p#$pkgbase}")
+    pkgdesc+=\" (${_waycom^})\"
+    optdepends+=(\"$_waycom: Wayland compositor\")
+    _build_and_install $_waycom
+  }"
+done
