@@ -1,0 +1,4 @@
+pkg/
+*.zst
+src/
+diaria-git/

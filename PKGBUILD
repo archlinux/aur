@@ -1,6 +1,6 @@
 # Maintainer: Lukas Wölfer (domain is thasky) <aur at [domain] dot one>
 pkgname=diaria-git
-pkgver=0.1.3.r0.g6ea823e
+pkgver=0.1.4.r0.g9e606ba
 pkgrel=1
 pkgdesc='Diary entry manager'
 url='https://github.com/corrodedHash/diaria'
@@ -45,4 +45,5 @@ package() {
   cd "${srcdir}/${pkgname}"
   install -Dm0755 build/diaria "${pkgdir}/usr/bin/diaria"
   install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 "extra/zsh_completions" "${pkgdir}/usr/share/zsh/site-functions/_diaria"
 }
