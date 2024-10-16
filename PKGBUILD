@@ -7,7 +7,7 @@
 
 pkgname=rubyripper
 pkgver=0.8.0rc3
-pkgrel=4
+pkgrel=5
 pkgdesc="Secure audiodisc ripper"
 arch=(any)
 url="https://github.com/bleskodev/rubyripper"
@@ -38,7 +38,7 @@ build() {
   ./configure \
     --prefix=/usr \
     --enable-cli \
-    --disable-gtk3 \
+    --enable-gtk3 \
     --enable-lang-all} \
     --ruby="$(ruby -e 'v = RbConfig::CONFIG["vendorlibdir"] ; v["/usr"] = ""; puts v')"
 }
