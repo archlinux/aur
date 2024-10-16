@@ -11,7 +11,10 @@ makedepends=('python-setuptools')
 license=('MIT')
 provides=("python-${_name}")
 conflicts=("python-${_name}")
-depends=('python')
+depends=(
+  'python' 'python-shtab' 'python-babel' 'python-websockets' 'python-requests-futures' 'python-pygments' 'python-pathvalidate'
+  'python-packaging' 'python-ecdsa' 'python-coloredlogs' 'python-certifi'
+  )
 source=("${_name}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('e88f21d8fc801c185f0e5e69234266c55e6639cb077fdafb571ce7f70183424e')
 
