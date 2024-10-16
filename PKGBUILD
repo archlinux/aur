@@ -3,7 +3,7 @@
 
 pkgname=(cinny-web)
 pkgbase=cinny
-pkgver=4.1.0
+pkgver=4.2.2
 pkgrel=1
 pkgdesc='Yet another matrix client — web version'
 arch=(any)
