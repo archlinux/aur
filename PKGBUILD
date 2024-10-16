@@ -2,7 +2,7 @@
 # Ex-Maintainer: Nixuge
 
 pkgname=modrinth-app-git
-pkgver=0.8.7.r1482.3b8963f
+pkgver=0.8.9.r1503.356a06e
 pkgrel=1
 pkgdesc='An unique, open source launcher that allows you to play your favorite mods, and keep them up to date, all in one neat little package.'
 url='https://modrinth.com/app'
@@ -42,7 +42,7 @@ prepare() {
 
     export CARGO_TARGET_DIR=target
     export RUSTUP_TOOLCHAIN=stable
-    cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+    cargo fetch --target "$CARCH-unknown-linux-gnu"
 
     cd "$srcdir/code/apps/app-frontend"
     export COREPACK_ENABLE_STRICT=0
