@@ -1,5 +1,19 @@
 # Confluent's Python client for Apache Kafka
 
+## v2.6.0
+
+v2.6.0 is a feature release with the following features, fixes and enhancements:
+
+- Added Python 3.13 wheels (#1828).
+- [KIP-848 EA](https://cwiki.apache.org/confluence/display/KAFKA/KIP-848%3A+The+Next+Generation+of+the+Consumer+Rebalance+Protocol): Admin API for listing consumer groups now has an optional filter to return only groups of given types (#1830).
+- [KIP-460](https://cwiki.apache.org/confluence/display/KAFKA/KIP-460%3A+Admin+Leader+Election+RPC) Admin Leader Election RPC (#1818)
+- Added Transactional id resource type for ACL operations (@JohnPreston, #1834).
+
+confluent-kafka-python is based on librdkafka v2.6.0, see the
+[librdkafka release notes](https://github.com/confluentinc/librdkafka/releases/tag/v2.6.0)
+for a complete list of changes, enhancements, fixes and upgrade considerations.
+
+
 ## v2.5.3
 
 v2.5.3 is a maintenance release with the following fixes and enhancements:

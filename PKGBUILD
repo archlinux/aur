@@ -2,14 +2,14 @@
 # Contributor: BigfootACA <bigfoot@classfun.cn>
 
 pkgname=python-confluent-kafka
-pkgver=2.5.3
+pkgver=2.6.0
 pkgrel=2
 pkgdesc="Confluent's Python client for Apache Kafka"
 arch=(x86_64)
 url="https://github.com/confluentinc/confluent-kafka-python"
 license=('Apache-2.0')
 depends=('python'
-         'librdkafka'
+         'librdkafka-git'
          'glibc'
          'python-requests'
          'python-protobuf'
@@ -26,7 +26,7 @@ makedepends=('python-build'
              'python-sphinx_rtd_theme')
 changelog="CHANGELOG.md"
 source=("$pkgname-$pkgver.tar.gz::https://api.github.com/repos/confluentinc/confluent-kafka-python/tarball/refs/tags/v$pkgver")
-b2sums=('12d2ee31567282e35090ed7b15ec81bb40eaf24f0707679d78b0ed9db3ecef399c36ae5688d01dc6436d8b0bac43d0df3f4dc1ee2f0f09805db12d78369b0ffa')
+b2sums=('2eafac4f6cbb77f6abbc1ca323c91ff214f84b64a9e7fb3185718095179fca7c7c93002838e5984d44ef7af99fdd2ce3f2427338f5f2f658e61166064f7aa9dc')
 
 prepare() {
     tar zxvf "$pkgname-$pkgver.tar.gz" --strip-components=1 --one-top-level
