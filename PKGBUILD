@@ -2,7 +2,7 @@
 _base=gotranx
 pkgname=python-${_base}
 pkgdesc="A declarative language describing ordinary differential equations"
-pkgver=1.1.3
+pkgver=1.1.4
 pkgrel=1
 arch=(any)
 url="https://github.com/finsberg/${_base}"
@@ -14,7 +14,7 @@ checkdepends=(python-pytest-cov cmake)
 optdepends=('python-clang-format-docs: for formatter support'
   'python-black: for formatter support')
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('8d3845e25832b414795e970e62530cbd8086292f111da76fdb789dd8a8c591a4c768b7c4c4dae380469d0ad375b38d7c07b40744b9404416a1e2fa91fd238542')
+sha512sums=('8a7a8fb02e3aad57f92987d44b75dbb592cca2c373d05bca8273f195bc254f442c59e05c65d0f5d3b82f7f2dd92db66bb62cb64397e2700b6ac8d0a752d30f8b')
 
 build() {
   cd ${_base}-${pkgver}
@@ -36,4 +36,5 @@ check() {
 package() {
   cd ${_base}-${pkgver}
   PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python -m installer --destdir="${pkgdir}" dist/*.whl
+  install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
