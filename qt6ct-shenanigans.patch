@@ -110,7 +110,7 @@ index c3d7498..9d85f2b 100644
 +target_link_libraries(qt6ct-qtplugin PRIVATE Qt6::WidgetsPrivate Qt6::GuiPrivate Qt6::QuickControls2 KF6::IconThemes qt6ct-common)
  install(TARGETS qt6ct-qtplugin DESTINATION ${PLUGINDIR}/platformthemes)
 diff --git a/src/qt6ct-qtplugin/qt6ctplatformtheme.cpp b/src/qt6ct-qtplugin/qt6ctplatformtheme.cpp
-index 1d13faf..912c206 100644
+index 1d13faf..d9881e6 100644
 --- a/src/qt6ct-qtplugin/qt6ctplatformtheme.cpp
 +++ b/src/qt6ct-qtplugin/qt6ctplatformtheme.cpp
 @@ -41,9 +41,14 @@
@@ -128,7 +128,7 @@ index 1d13faf..912c206 100644
  #include <private/qiconloader_p.h>
  
  #include "qt6ct.h"
-@@ -51,12 +56,18 @@
+@@ -51,28 +56,40 @@
  
  #include <QStringList>
  #include <qpa/qplatformthemefactory_p.h>
@@ -148,7 +148,12 @@ index 1d13faf..912c206 100644
  {
      Qt6CT::initConfig();
      if(QGuiApplication::desktopSettingsAware())
-@@ -66,13 +77,16 @@ Qt6CTPlatformTheme::Qt6CTPlatformTheme()
+     {
+         readSettings();
++        //must be applied before Q_COREAPP_STARTUP_FUNCTION execution
++        if(Qt6CT::isKColorScheme(m_schemePath))
++            qApp->setProperty("KDE_COLOR_SCHEME_PATH", m_schemePath);
+         QMetaObject::invokeMethod(this, "applySettings", Qt::QueuedConnection);
  #ifdef QT_WIDGETS_LIB
          QMetaObject::invokeMethod(this, "createFSWatcher", Qt::QueuedConnection);
  #endif
@@ -166,7 +171,7 @@ index 1d13faf..912c206 100644
  }
  
  Qt6CTPlatformTheme::~Qt6CTPlatformTheme()
-@@ -92,7 +106,7 @@ QPlatformDialogHelper *Qt6CTPlatformTheme::createPlatformDialogHelper(DialogType
+@@ -92,7 +109,7 @@ QPlatformDialogHelper *Qt6CTPlatformTheme::createPlatformDialogHelper(DialogType
  
  const QPalette *Qt6CTPlatformTheme::palette(QPlatformTheme::Palette type) const
  {
@@ -175,7 +180,7 @@ index 1d13faf..912c206 100644
  }
  
  const QFont *Qt6CTPlatformTheme::font(QPlatformTheme::Font type) const
-@@ -146,46 +160,32 @@ QIcon Qt6CTPlatformTheme::fileIcon(const QFileInfo &fileInfo, QPlatformTheme::Ic
+@@ -146,46 +163,32 @@ QIcon Qt6CTPlatformTheme::fileIcon(const QFileInfo &fileInfo, QPlatformTheme::Ic
      return QIcon::fromTheme(type.iconName());
  }
  
@@ -231,7 +236,7 @@ index 1d13faf..912c206 100644
          if(m_userStyleSheet != m_prevStyleSheet)
          {
              // prepend our stylesheet to that of the application
-@@ -207,18 +207,21 @@ void Qt6CTPlatformTheme::applySettings()
+@@ -207,18 +210,21 @@ void Qt6CTPlatformTheme::applySettings()
  #endif
  
      if(m_update)
@@ -261,7 +266,7 @@ index 1d13faf..912c206 100644
      }
  #endif
  
-@@ -248,18 +251,16 @@ void Qt6CTPlatformTheme::updateSettings()
+@@ -248,18 +254,16 @@ void Qt6CTPlatformTheme::updateSettings()
  
  void Qt6CTPlatformTheme::readSettings()
  {
@@ -286,7 +291,7 @@ index 1d13faf..912c206 100644
      m_iconTheme = settings.value("icon_theme").toString();
      //load dialogs
      if(!m_update)
-@@ -277,10 +278,10 @@ void Qt6CTPlatformTheme::readSettings()
+@@ -277,10 +281,10 @@ void Qt6CTPlatformTheme::readSettings()
      settings.endGroup();
  
      settings.beginGroup("Fonts");
@@ -301,7 +306,7 @@ index 1d13faf..912c206 100644
      settings.endGroup();
  
      settings.beginGroup("Interface");
-@@ -336,8 +337,6 @@ void Qt6CTPlatformTheme::readSettings()
+@@ -336,8 +340,6 @@ void Qt6CTPlatformTheme::readSettings()
              QCoreApplication::setAttribute(Qt::AA_ForceRasterWidgets, true);
          else if(!m_isIgnored && forceRasterWidgets == Qt::Unchecked)
              QCoreApplication::setAttribute(Qt::AA_ForceRasterWidgets, false);
@@ -310,7 +315,7 @@ index 1d13faf..912c206 100644
          settings.endGroup();
      }
  }
-@@ -367,3 +366,17 @@ QString Qt6CTPlatformTheme::loadStyleSheets(const QStringList &paths)
+@@ -367,3 +369,17 @@ QString Qt6CTPlatformTheme::loadStyleSheets(const QStringList &paths)
      content.replace(regExp, "\n");
      return content;
  }
