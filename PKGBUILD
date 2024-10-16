@@ -1,5 +1,5 @@
 pkgname=mihomo-party
-pkgver=1.4.8
+pkgver=1.4.9
 pkgrel=1
 pkgdesc="Another Mihomo GUI."
 arch=('x86_64' 'aarch64')
@@ -14,7 +14,7 @@ source=(
     "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
     "${pkgname}.sh"
 )
-sha256sums=("2a48dd153e7426dbc33669d09974d0f56f7aafb21df1685b85524e3f3125c8a3"
+sha256sums=("e72f0304be448460346546ba91c5482ce692b192158d2d861d022968d3a467e1"
 "f8049c1f26d5a92fbcebd7bebbdedbb3eab53422b21cf6127418251ccd061282")
 options=('!lto')
 
@@ -33,8 +33,8 @@ package() {
     bsdtar -xf mihomo-party-linux-${pkgver}*.deb
     bsdtar -xf data.tar.xz -C "${pkgdir}/"
     chmod +x ${pkgdir}/opt/mihomo-party/mihomo-party
-    chmod +x ${pkgdir}/opt/mihomo-party/resources/sidecar/mihomo
-    chmod +x ${pkgdir}/opt/mihomo-party/resources/sidecar/mihomo-alpha
+    chmod +sx ${pkgdir}/opt/mihomo-party/resources/sidecar/mihomo
+    chmod +sx ${pkgdir}/opt/mihomo-party/resources/sidecar/mihomo-alpha
     install -Dm755 "${srcdir}/../${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
     sed -i '3s!/opt/mihomo-party/mihomo-party!mihomo-party!' "${pkgdir}/usr/share/applications/${pkgname}.desktop"
 
