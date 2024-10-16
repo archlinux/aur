@@ -1,51 +1,43 @@
-# Maintainer: Pellegrino Prevete <pellegrinoprevete@gmail.com>
-# Contributor: Fabio Loli <fabio.loli@disroot.org>
+# Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
+# Contributor: Pellegrino Prevete <pellegrinoprevete@gmail.com>
 
-_pkgname=kronos
-pkgname=$_pkgname-git
-pkgver=r.7017.c9e1548ef
-pkgrel=2
-pkgdesc='Sega Saturn emulator'
-arch=('x86_64')
+pkgname=kronos-git
+pkgver=r7559.1844f3c6f
+pkgrel=1
+pkgdesc="Sega Saturn emulator, fork of yabause"
+arch=(x86_64)
 url="https://github.com/FCare/Kronos"
-_repo='https://github.com/FCare/Kronos'
-license=('GPL2')
-provides=('kronos')
-conflicts=('kronos')
-depends=('freeglut'
-	 'glew'
-	 'openal'
-         'qt5-base'
-         'qt5-multimedia'
-	 'sdl2')
-makedepends=('cmake'
-	     'clang')
-source=("${_pkgname}::git+${_repo}")
-md5sums=('SKIP')
+license=(GPL-2.0-or-later)
+depends=(openal qt5-base qt5-multimedia sdl2 libglvnd glibc gcc-libs)
+makedepends=(cmake glu git gcc13)
+provides=(kronos)
+conflicts=(kronos)
+source=("git+https://github.com/FCare/Kronos.git")
+sha256sums=('SKIP')
 
 pkgver() {
-    cd "${_pkgname}"
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
-prepare() {
-    cd "${_pkgname}/yabause"
-    
-    if [[ -d build ]]; then
-        rm -rf build
-    fi
-    mkdir -p build
+  cd Kronos
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-    cd "${_pkgname}/yabause/build"
-    cmake .. \
-      -DCMAKE_INSTALL_PREFIX=/usr \
-      -DYAB_USE_QT5=ON
-    make
+  export CC=/usr/bin/gcc-13 CXX=/usr/bin/g++-13
+  export CFLAGS+=" -Wno-error=format-security"
+  export CXXFLAGS+=" -Wno-error=format-security"
+
+  cmake -B build -S "Kronos/yabause" \
+    -Wno-dev \
+    -DCMAKE_BUILD_TYPE=None \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DYAB_USE_QT5=ON
+
+  cmake --build build
+}
+
+check() {
+  ctest --test-dir build --output-on-failure
 }
 
 package() {
-    cd "${_pkgname}/yabause/build"
-    make DESTDIR="$pkgdir/" install
+  DESTDIR="${pkgdir}" cmake --install build
 }
