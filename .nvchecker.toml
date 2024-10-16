@@ -1,0 +1,4 @@
+[emsdk]
+source = "git"
+git = "https://github.com/emscripten-core/emsdk.git"
+prefix = "v"
