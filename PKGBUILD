@@ -3,7 +3,7 @@
 
 pkgname=jujutsu-git
 _pkgname=jj
-pkgver=0.13.0.r224.g1be82250
+pkgver=0.22.0.r109.gb795bf956
 pkgrel=1
 depends=(gcc-libs # libgcc_s.so
     glibc         # libc.so libm.so
