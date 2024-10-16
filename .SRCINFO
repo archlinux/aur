@@ -1,8 +1,8 @@
 pkgbase = radharc
-	pkgdesc = Adjusts the color temperature of according to the sun's position
-	pkgver = 1.0.1
+	pkgdesc = Adjusts the colour temperature of according to the Sun's position
+	pkgver = 1.0.2
 	pkgrel = 1
-	url = https://github.com/maandree/radharc
+	url = https://codeberg.org/maandree/radharc
 	arch = i686
 	arch = x86_64
 	license = ISC
@@ -11,7 +11,7 @@ pkgbase = radharc
 	makedepends = libred
 	depends = libcoopgamma
 	depends = libred
-	source = radharc-1.0.1.tar.gz::https://github.com/maandree/radharc/archive/1.0.1.tar.gz
-	sha256sums = 248190dbad93f2da390f8e5633f0f6ca9672c8f50807388bd51efc36fb1cd3b7
+	source = radharc-1.0.2.tar.gz::https://codeberg.org/maandree/radharc/archive/1.0.2.tar.gz
+	sha256sums = c208f469293632cfceda52917b8a8beadb85e18141805f653ea998a8b75aff6a
 
 pkgname = radharc
