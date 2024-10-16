@@ -3,8 +3,8 @@
 # Contributor: Seth Girvan <snth@snthhacks.com>
 
 pkgname=librdkafka-git
-pkgver=2.5.3.r0.9416dd8
-pkgrel=2
+pkgver=2.6.0.r3.88604ca
+pkgrel=1
 pkgdesc='The Apache Kafka C/C++ library'
 arch=(x86_64)
 url='https://github.com/confluentinc/librdkafka'
@@ -47,10 +47,4 @@ package() {
     make DESTDIR="$pkgdir" install
     install -vDm644 README.md -t "$pkgdir/usr/share/${pkgname%-git}/"
     install -vDm644 CONFIGURATION.md -t "$pkgdir/usr/share/${pkgname%-git}/"
-    install -vDm644 CONTRIBUTING.md -t "$pkgdir/usr/share/${pkgname%-git}/"
-    install -vDm644 CODE_OF_CONDUCT.md -t "$pkgdir/usr/share/${pkgname%-git}/"
-    for license in $(ls ./LICENSE*);
-    do
-        install -vDm644 "$license" -t "$pkgdir/usr/share/licenses/${pkgname%-git}/"
-    done 
 }
