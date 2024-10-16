@@ -1,6 +1,6 @@
 pkgbase = sui-bin
 	pkgdesc = A next-generation smart contract platform with high throughput, low latency, and an asset-oriented programming model
-	pkgver = 1.34.2
+	pkgver = 1.35.1
 	pkgrel = 1
 	url = https://sui.io
 	arch = x86_64
@@ -17,12 +17,12 @@ pkgbase = sui-bin
 	depends = rust
 	provides = sui
 	conflicts = sui
-	noextract = sui-1.34.2-x86_64.tar.gz
-	source = README-1.34.2.md::https://github.com/MystenLabs/sui/raw/mainnet-v1.34.2/README.md
-	source = LICENSE-1.34.2::https://github.com/MystenLabs/sui/raw/mainnet-v1.34.2/LICENSE
-	b2sums = e6472481a039fbaf462e54ad72ea99549f7d145541647f224107688c61030a8042b4132828e49467ad4ef321221de6590e5e7052bc66685d969565074265ee5d
+	noextract = sui-1.35.1-x86_64.tar.gz
+	source = README-1.35.1.md::https://github.com/MystenLabs/sui/raw/mainnet-v1.35.1/README.md
+	source = LICENSE-1.35.1::https://github.com/MystenLabs/sui/raw/mainnet-v1.35.1/LICENSE
+	b2sums = 7bc970b23c6f45ededef3d736898072b891a6e8bbb03d184db4495ab6f08a6557605866c7238ea5279ef96cbaa0b5fa484ce43ae000d43ff0643102b763fb3c7
 	b2sums = 43452dd4216bba835bff542c02fcd0a80b77fef97a6f1042adcbbbcf312bb856b0707c35b2f1af356e0b4262e501a159f06bf1f947f182d0023cdd4aefbd8a85
-	source_x86_64 = sui-1.34.2-x86_64.tar.gz::https://github.com/MystenLabs/sui/releases/download/mainnet-v1.34.2/sui-mainnet-v1.34.2-ubuntu-x86_64.tgz
-	b2sums_x86_64 = 9d904277a91d484c644053a8114566198924287957c55dab44667b8aa59b25a6b74b7650be36a2ed970a3b028d153bc9329a605a6bc7a3ee140f9df509087a62
+	source_x86_64 = sui-1.35.1-x86_64.tar.gz::https://github.com/MystenLabs/sui/releases/download/mainnet-v1.35.1/sui-mainnet-v1.35.1-ubuntu-x86_64.tgz
+	b2sums_x86_64 = 918dd426220971712e631c23ee27be9116c45cb71cb98d2082aa520a1b3ed5fc3d754fe6b70911f6e0490ff749dc1d27de7e85e8206ca963cd858fe6875b0b96
 
 pkgname = sui-bin
