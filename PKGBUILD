@@ -22,8 +22,8 @@ source=("https://archive.mozilla.org/pub/thunderbird/releases/132.0b4/linux-x86_
         'org.mozilla.thunderbird-beta-bin.desktop'
         'vendor.js')
 sha512sums=('06b70a0ab413dae7adc165297faaf8cde89cd71895bf92f176b7bedf203a25c895a3b07776940f9c3ec8452d2c4ebf32258a6894f7c0827bf1ce20b3210937af'
-            '400cc9442c135a65b7a8d3dd102a1c99baf8fbc08a34e30c84d3dfba30d302f37880e9874981cb600c067e4790ad001ab2ed8a0350a4cae99cb207c2610c3e97 '
-            '400cc9442c135a65b7a8d3dd102a1c99baf8fbc08a34e30c84d3dfba30d302f37880e9874981cb600c067e4790ad001ab2ed8a0350a4cae99cb207c2610c3e97 ')
+            'b42b4b86aa072dca7f9e401c1f0c593396cda45fe56326af997db4042549cf895f1f0682c0d007647cda5200f11c06cef13e006a5973eae2bfa31b86d4d32f79'
+            'aeb444784732267f1b1e87e6084a776f82a1912c4c2637d2cf1de1c135dd9d41d2ef66d2bd3f9cbd3a79fad32d17ea6e2968ba644d5f887cb66ba6c09a2098f5')
 # RC
 if [[ $_build = ? ]]; then
   source[0]="thunderbird-$pkgver.tar.bz2::https://ftp.mozilla.org/pub/thunderbird/candidates/$_major-candidates/build$_build/linux-x86_64/en-US/thunderbird-$_major.tar.bz2"
