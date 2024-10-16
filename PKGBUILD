@@ -1,7 +1,7 @@
 # Maintainer: wyzdwdz <wyzdwdz@gmail.com>
 
 pkgname=mesa-wsl2-git
-pkgdesc="an open-source implementation of the OpenGL specification, git version"
+pkgdesc="an open-source implementation of the OpenGL specification with WSL2 support, git version"
 pkgver=24.3.0_devel.196452.0714fbff8ff.d41d8cd
 pkgrel=1
 arch=('x86_64')
