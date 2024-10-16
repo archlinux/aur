@@ -4,7 +4,7 @@ pkgver=1.1.0.r0.g613ea8c
 _electronversion=31
 _nodeversion=20
 pkgrel=1
-pkgdesc="Yet another super ₛᵢₘₚₗₑ text editor"
+pkgdesc="Yet another super ₛᵢₘₚₗₑ text editor.Use system-wide electron."
 arch=('any')
 url="https://github.com/LuanRoger/yaste"
 license=("MIT")
@@ -58,13 +58,16 @@ build() {
         echo -e '\n'	
         #echo 'build_from_source=true'
         echo "cache=${srcdir}/.npm_cache"
-        if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
+    } >> .npmrc
+    if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
+        {
             echo 'registry=https://registry.npmmirror.com'
             echo 'disturl=https://registry.npmmirror.com/-/binary/node/'
             echo 'electron_mirror=https://registry.npmmirror.com/-/binary/electron/'
             echo 'electron_builder_binaries_mirror=https://registry.npmmirror.com/-/binary/electron-builder-binaries/'
-        fi
-    } >> .npmrc
+        } >> .npmrc
+        sed -i "s/registry.npmjs.org/registry.npmmirror.com/g" package-lock.json
+    fi
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
     NODE_ENV=development    npm install
     NODE_ENV=production     npm run package
