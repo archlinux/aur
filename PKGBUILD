@@ -2,7 +2,7 @@
 # Contributor: Erik Bročko (OM2LT) <erik@brocko.eu>
 
 pkgname=python-csdr-luarvique
-pkgver=0.18.24
+pkgver=0.18.26
 pkgrel=1
 pkgdesc="Python bindings for the csdr library."
 arch=('x86_64' 'aarch64')
