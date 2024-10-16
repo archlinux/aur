@@ -34,6 +34,6 @@ pkgbase = git-cola-git
 	source = git-cola::git+https://github.com/git-cola/git-cola.git
 	source = 0001-Unvendorize-polib.py.patch
 	sha256sums = SKIP
-	sha256sums = e9bf4b8cb0b71cbde53e4be1befa513b3bebb23b3f3bcb8b5447111a24714c6f
+	sha256sums = 8b03cf1cfc283917b6926d9d829d1f48b659c749cf118a357a1e653f1335f831
 
 pkgname = git-cola-git

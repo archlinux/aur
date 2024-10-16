@@ -54,7 +54,7 @@ source=(
   '0001-Unvendorize-polib.py.patch'
 )
 sha256sums=('SKIP'
-            'e9bf4b8cb0b71cbde53e4be1befa513b3bebb23b3f3bcb8b5447111a24714c6f')
+            '8b03cf1cfc283917b6926d9d829d1f48b659c749cf118a357a1e653f1335f831')
 
 pkgver() {
   cd "$_pkgname"
@@ -66,7 +66,7 @@ prepare() {
 
   # Remove vendorized polib.py
   git apply -3 ../0001-Unvendorize-polib.py.patch
-  rm cola/polib.py
+  git rm -rf cola/polib.py extras/polib
 }
 
 build() {
