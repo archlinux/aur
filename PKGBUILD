@@ -1,6 +1,8 @@
 # Maintainer: Rafael Baboni Dominiquini <rafaeldominiquini AT gmail DOT com>
-pkgname=python-multiplex
+
+_exec=mp
 _name=multiplex
+pkgname=python-$_name
 pkgver=0.6.1
 pkgrel=2
 pkgdesc="View output of multiple processes, in parallel, in the console, with an interactive TUI."
