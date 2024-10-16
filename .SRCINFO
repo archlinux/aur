@@ -1,0 +1,23 @@
+pkgbase = gz-transport14
+	pkgdesc = Transport library for component communication based on publication/subscription and service calls.
+	pkgver = 14.0.0
+	pkgrel = 1
+	url = https://github.com/gazebosim/gz-transport
+	arch = any
+	license = Apache
+	makedepends = cmake
+	makedepends = doxygen
+	makedepends = gz-cmake=4
+	makedepends = pybind11
+	makedepends = util-linux-libs
+	depends = cppzmq
+	depends = gz-msgs=11
+	depends = gz-utils=3
+	depends = protobuf-c
+	depends = protobuf
+	depends = zeromq
+	provides = gz-transport=14
+	source = https://github.com/gazebosim/gz-transport/archive/gz-transport14_14.0.0.tar.gz
+	sha256sums = f503b9c7c71f2dff9647c88c872886d4e26bbfff8f8011ebb27fd11cc59c97c0
+
+pkgname = gz-transport14
