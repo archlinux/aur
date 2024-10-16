@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=yank-note-git
-pkgver=3.next.04.r0.gc9788e5
+pkgver=3.next.04.r9.g1ea67d3
 _electronversion=28
 _nodeversion=18
 pkgrel=1
@@ -54,13 +54,15 @@ build() {
     _ensure_local_nvm
     gendesk -q -f -n --pkgname="${pkgname%-git}" --pkgdesc="${pkgdesc}" --categories="Utility" --name="${pkgname%-git}" --exec="${pkgname%-git} %U"
     cd "${srcdir}/${pkgname%-git}.git"
+    electronDist="/usr/lib/electron${_electronversion}"
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
     HOME="${srcdir}/.electron-gyp"
     mkdir -p "${srcdir}/.electron-gyp"
     if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
-        sed "/yarnpkg/d" -i .yarnrc
-        sed "s/github.com/gitdl.cn\/https:\/\/github.com/" -i scripts/{download-pandoc.js,download-plantuml.js}
+        rm -rf .yarnrc
+        sed -i "s/registry.yarnpkg.com/registry.npmmirror.com/g" yarn.lock
+        sed -i "s/github.com/gh.con.sh\/https:\/\/github.com/g" scripts/{download-pandoc.js,download-plantuml.js}
         {
             echo -e '\n'
             echo 'registry "https://registry.npmmirror.com"'
@@ -84,12 +86,12 @@ build() {
     NODE_ENV=production     npx node scripts/download-pandoc.js
     NODE_ENV=production     npx node scripts/download-plantuml.js
     NODE_ENV=production     yarn run build
-    NODE_ENV=production     yarn run electron-builder -l --dir
+    NODE_ENV=production     npm exec -c "electron-builder -l --dir -c.electronDist=${electronDist}"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
     install -Dm644 "${srcdir}/${pkgname%-git}.git/out/linux-"*/resources/app.asar -t "${pkgdir}/usr/lib/${pkgname%-git}"
-    cp -r "${srcdir}/${pkgname%-git}.git/out/linux-"*/resources/app.asar.unpacked "${pkgdir}/usr/lib/${pkgname%-git}"
+    cp -Pr --no-preserve=ownership "${srcdir}/${pkgname%-git}.git/out/linux-"*/resources/app.asar.unpacked "${pkgdir}/usr/lib/${pkgname%-git}"
     install -Dm644 "${srcdir}/${pkgname%-git}.desktop" -t "${pkgdir}/usr/share/applications"
     install -Dm644 "${srcdir}/${pkgname%-git}.git/build/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-git}.png"
     install -Dm644 "${srcdir}/${pkgname%-git}.git/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
