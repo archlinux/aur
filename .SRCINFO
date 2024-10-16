@@ -1,6 +1,6 @@
 pkgbase = edgetx-companion
 	pkgdesc = EEPROM Editor and Simulator for EdgeTX RC radio transmitter firmwares
-	pkgver = 2.10.4
+	pkgver = 2.10.5
 	pkgrel = 1
 	url = https://edgetx.org/
 	arch = x86_64
@@ -37,7 +37,7 @@ pkgbase = edgetx-companion
 	provides = companion
 	conflicts = companion
 	options = !debug
-	source = git+https://github.com/EdgeTX/edgetx.git#tag=v2.10.4
+	source = git+https://github.com/EdgeTX/edgetx.git#tag=v2.10.5
 	source = git+https://github.com/raphaelcoeffic/AccessDenied.git
 	source = git+https://github.com/FreeRTOS/FreeRTOS-Kernel.git
 	source = git+https://github.com/adfernandes/segger-rtt.git
@@ -46,7 +46,7 @@ pkgbase = edgetx-companion
 	source = git+https://github.com/EdgeTX/lvgl.git
 	source = git+https://github.com/nothings/stb.git
 	source = install.patch
-	b2sums = cd3c79ccfd590049a5e703cd4c9e6ddd645ba96571dbb259725134933e9b027ff5d69a55732c8731f91345d3eb25acb613816c2cf5aa692126b0f3cc98fc7885
+	b2sums = 42eaab499620cb2e978c0bb8bf34624f18d05d87f916ee60c3f1684a71e3912a4d4865d28b8cd954a7f1610c919c68bd69e5e2e11004b6c1099772b3487603dc
 	b2sums = SKIP
 	b2sums = SKIP
 	b2sums = SKIP
