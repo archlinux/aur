@@ -2,7 +2,7 @@
 
 _pkgname=iyuuplus
 pkgname="${_pkgname}-git"
-pkgver=20240812.110712
+pkgver=20241015.220947
 pkgrel=1
 pkgdesc="IYUU Auto Reseed Plus"
 arch=("any")
@@ -26,7 +26,10 @@ prepare() {
     cd "${_pkgname}"
     sed -i 's|<button .\+git_pull.\+通过git拉取最新代码.\+</button>||' plugin/admin/app/view/index/dashboard.html
     sed -i "s|current_git_commit()|\"$(git rev-parse --short HEAD)\"|" plugin/admin/app/controller/IndexController.php
-    echo "$(git tag --sort=committerdate | tail -1 | sed 's|v||')" > .version
+    local tag_latest="$(git tag --sort=committerdate | tail -1 | sed 's|v||')"
+    if [[ $(vercmp "$tag_latest" "$(cat .version)") -eq 1 ]]; then
+        echo "$tag_latest" > .version
+    fi
 }
 
 pkgver() {
@@ -47,4 +50,7 @@ package() {
     find . \( -iname ".git*" -o -iname "README.md" \) | sort | while read line; do rm -rf "$line"; done
     find . -type f -exec install -Dm644 {} "${pkgdir}/srv/${_pkgname}/"{} \;
     chmod 755 "${pkgdir}/srv/${_pkgname}/start.php"
+
+    install -dm755 "${pkgdir}/usr/bin"
+    ln -s "/srv/${_pkgname}/start.php"     "${pkgdir}/usr/bin/${_pkgname}"
 }
