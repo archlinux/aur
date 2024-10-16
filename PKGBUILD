@@ -4,8 +4,8 @@
 
 _pkgname=bobcat
 pkgname="lib${_pkgname}"
-pkgver=6.02.02
-pkgrel=2
+pkgver=6.06.02
+pkgrel=1
 pkgdesc="Bobcat (Brokken's Own Base Classes And Templates) library"
 arch=('x86_64')
 url="https://fbb-git.gitlab.io/bobcat/"
@@ -13,7 +13,7 @@ license=('GPL')
 depends=('openssl' 'libx11' 'readline')
 makedepends=('icmake>=9.03.01' 'libmilter' 'yodl')
 source=("https://gitlab.com/fbb-git/${_pkgname}/-/archive/${pkgver}/${_pkgname}-${pkgver}.tar.gz")
-b2sums=('4908fef5685e5402795000fafee7fcb3c42c4cf94571121df7e1afd977961f3d3036393f7140867abb9a019713ddb886053e4900172ef1072944b77444d2b11d')
+b2sums=('d7b8211e1b3f95abc8f85e067976ce4ea630dc15e284bfe6bf4c542d319344307c0086ed0940ac3dddca753a9ddea19e2d23c301590726ee0763c94b72bdfdcd')
 
 build() {
   cd "${srcdir}/${_pkgname}-${pkgver}/${_pkgname}"
