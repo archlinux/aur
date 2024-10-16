@@ -8,7 +8,7 @@
 
 pkgname=home-assistant-git
 pkgdesc='Open source home automation that puts local control and privacy first'
-pkgver=2024.8.2
+pkgver=2024.10.2
 pkgrel=1
 arch=(any)
 url=https://home-assistant.io/
@@ -33,12 +33,12 @@ makedepends=(
   python-setuptools-git
   python-wheel
 )
-_tag=94516de7244ac73549695177a465064ad147884c
+_tag=6952d2420f38a793bbaf1375089d0e611f8e7766
 source=(
   "$pkgname::git+https://github.com/home-assistant/core.git#tag=${_tag}"
   home-assistant-git.service
 )
-b2sums=('32c4b58de1ba10c12addd100d873d973b623c76112d3c4ef3cee878a20b848586c989b313ff3d350a45e96b7cd1b47059daad1a258920949ab3cf4bd7c9a6513'
+b2sums=('e679eaf30a24cc879fa0181916bb1956f2a96f63633c870d97d8c99b91f85e2ce522001840ea3d448c685947199ea3951a83744dccfa8e425bc9dde6026ad50b'
         '289b6d19fa36b8bcea5790da13b83211eb44fcda889a24bf07a2ef70e806b5bb138c8f6387057d153e109a3bdabd0f4009c171fc82e021cdfd43db376704d416')
 
 prepare() {
