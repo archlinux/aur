@@ -2,7 +2,7 @@
 
 pkgname=apipost-bin
 _pkgname=${pkgname%-bin}
-pkgver=8.1.3
+pkgver=8.1.4
 pkgrel=1
 pkgdesc="An API debugging and management tool that supports team collaboration and can generate documents directly."
 arch=('x86_64' 'aarch64')
@@ -14,8 +14,8 @@ source_x86_64=("apipost_linux_x64_${pkgver}.tar.xz::https://www.apipost.cn/dl.ph
 source_aarch64=("apipost_linux_arm64_${pkgver}.tar.xz::https://www.apipost.cn/dl.php?client=LinuxXz&arch=arm64&version=${pkgver}")
 
 sha256sums=('a13dc2b268aabd55bb48fc00171aa740501fe579b875df5f612a721392303854')
-sha256sums_x86_64=('05b82a8d9615fdc808548e3a3d283bf35e48ea70a1de3d0636688b413bf7f31c')
-sha256sums_aarch64=('c7956e0d332f42af81704d89af84a0224074b403d874b88936745c0fdfedd74e')
+sha256sums_x86_64=('f5d394a00e5ded23b9834b4322ff8e5381dc3643fb4a4f0a1c43ea2d44f28294')
+sha256sums_aarch64=('94a6a2f3d608996909aca11b9a53478c58bb20b46e4aece595b0a98ce33abc94')
 
 _pkg() {
   if [ "${CARCH}" = "aarch64" ]; then
