@@ -1,28 +1,63 @@
-# Maintainer: Anatol Pomozov <anatol.pomozov@gmail.com>
+# Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
+# Contributor: Anatol Pomozov <anatol.pomozov@gmail.com>
 # Contributor: Andreas 'Segaja' Schleifer <segaja at archlinux dot org>
 
-_gemname=cairo-gobject
-pkgname=ruby-$_gemname
-pkgver=4.1.2
-pkgrel=2
+_gem=cairo-gobject
+pkgname="ruby-${_gem}"
+pkgver=4.2.2
+pkgrel=1
 pkgdesc='Ruby/CairoGObject is a Ruby binding of cairo-gobject'
 arch=(x86_64)
-url='http://ruby-gnome2.sourceforge.jp/'
-license=(LGPL2.1)
-depends=(ruby ruby-cairo ruby-glib2=$pkgver)
-options=(!emptydirs)
-source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
-noextract=($_gemname-$pkgver.gem)
-sha256sums=('b3fc148c6416a46216045683299e774345c665ab3a1860b0482ff7646e39c0e0')
+url="https://github.com/ruby-gnome/ruby-gnome"
+license=(LGPL-2.1-only)
+depends=(ruby ruby-cairo ruby-glib2 glibc cairo)
+source=("ruby-gnome-${pkgver}.tar.gz::https://github.com/ruby-gnome/ruby-gnome/archive/refs/tags/${pkgver}.tar.gz")
+sha256sums=('64f2f53e9733e85d1b5c10c684858ff5924a0c7175c344ed01270fc018ea983d')
+
+build() {
+  cd "ruby-gnome-${pkgver}/${_gem}"
+
+local _gemdir="$(gem env gemdir)"
+
+  gem build "${_gem}.gemspec"
+
+  gem install \
+    --local \
+    --verbose \
+    --ignore-dependencies \
+    --no-user-install \
+    --install-dir "tmp_install/${_gemdir}" \
+    --bindir "tmp_install/usr/bin" \
+    "${_gem}-${pkgver}.gem"
+
+  # remove unrepreducible files
+  rm --force --recursive --verbose \
+    "tmp_install/${_gemdir}/cache/" \
+    "tmp_install/${_gemdir}/gems/${_gem}-${pkgver}/vendor/" \
+    "tmp_install/${_gemdir}/doc/${_gem}-${pkgver}/ri/ext/"
+
+  find "tmp_install/${_gemdir}/gems/" \
+    -type f \
+    \( \
+      -iname "*.o" -o \
+      -iname "*.c" -o \
+      -iname "*.so" -o \
+      -iname "*.time" -o \
+      -iname "gem.build_complete" -o \
+      -iname "Makefile" \
+    \) \
+    -delete
+
+  find "tmp_install/${_gemdir}/extensions/" \
+    -type f \
+    \( \
+      -iname "mkmf.log" -o \
+      -iname "gem_make.out" \
+    \) \
+    -delete
+}
 
 package() {
-  local _gemdir="$(ruby -e'puts Gem.default_dir')"
-  local _platform="$(gem env platform | cut -d':' -f2)"
-  local _extension_api_version="$(ruby -e'puts Gem.extension_api_version')"
-  gem install --ignore-dependencies --no-user-install --no-document -i "$pkgdir/$_gemdir" -n "$pkgdir/usr/bin" $_gemname-$pkgver.gem
-  rm "$pkgdir/$_gemdir/cache/$_gemname-$pkgver.gem" \
-      "${pkgdir}/${_gemdir}/extensions/${_platform}/${_extension_api_version}/${_gemname}-${pkgver}/gem_make.out" \
-      "${pkgdir}/${_gemdir}/extensions/${_platform}/${_extension_api_version}/${_gemname}-${pkgver}/mkmf.log" \
-      "${pkgdir}/${_gemdir}/gems/${_gemname}-${pkgver}/ext/cairo-gobject/rb-cairo-gobject.o" \
-      "${pkgdir}/${_gemdir}/gems/${_gemname}-${pkgver}/ext/cairo-gobject/Makefile"
+  cd "ruby-gnome-${pkgver}/${_gem}"
+  cp --archive --verbose tmp_install/* "${pkgdir}"
 }
