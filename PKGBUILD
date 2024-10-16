@@ -46,11 +46,8 @@ build() {
 package() {
     cd "${pkgname%-git}"
 
-    local build_dir="release/build/linux-unpacked"
-    local license_dir="$pkgdir/usr/share/licenses/${pkgname%-git}"
-    
     install -d "$pkgdir/opt/${pkgname%-git}"
-    cp -r "$build_dir/". "$pkgdir/opt/${pkgname%-git}/"
+    cp -r "release/build/linux-unpacked/". "$pkgdir/opt/${pkgname%-git}/"
 
     install -Dm644 "$srcdir/bs-manager.desktop" "$pkgdir/usr/share/applications/${pkgname%-git}.desktop"
     install -Dm644 "resources/readme/SVG/icon.svg" "$pkgdir/usr/share/pixmaps/${pkgname%-git}.svg"
