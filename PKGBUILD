@@ -121,6 +121,7 @@ build() {
 
   cmake -B build_dir -S Sunshine -W no-dev -G Ninja \
     -D CMAKE_BUILD_TYPE=None \
+    -D CUDA_FAIL_ON_MISSING=OFF \
     -D SUNSHINE_ENABLE_CUDA=1 \
     -D SUNSHINE_ENABLE_X11=1 \
     -D CMAKE_INSTALL_PREFIX=/usr \
