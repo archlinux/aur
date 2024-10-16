@@ -1,6 +1,6 @@
 # Maintainer: Mika Hyttinen <mika dot hyttinen+arch ät gmail dot com>
 pkgname=cellframe-node
-pkgver=5.3.r3026.4a8ef2c
+pkgver=5.3.r3027.0320a9f
 pkgrel=1
 pkgdesc='Cellframe blockchain node with a powerful SDK'
 arch=('x86_64' 'aarch64')
@@ -10,18 +10,18 @@ makedepends=(git cmake python3 libxslt)
 depends=(logrotate libxcrypt-compat)
 provides=('cellframe-node' 'cellframe-node-cli' 'cellframe-node-tool' 'cellframe-node-config')
 replaces=('cellframe-node-debug')
-source=(git+https://gitlab.demlabs.net/cellframe/$pkgname.git#commit=4a8ef2ca49d302aec9d97a3b2739b8ffdb568972
+source=(git+https://gitlab.demlabs.net/cellframe/$pkgname.git#commit=0320a9f5d59d2414fd3702c843b6ff5db44783fb
 	cellframe-node.logrotate
 	cellframe-node.service
 	cellframe-node-asan.service
 	cellframe-node-tmpfiles.conf
 	cellframe-node-sysusers.conf)
 md5sums=('SKIP'
-	'a10650eb138f6fe0c4bbefa6557ffb4f'
-	'4bf9cc7596903ffa5aba7fa7922d9016'
-	'da837da689d3741cae9366eefc86d9b3'
-	'ac930b427a0805dd9c2c1fabe45048fc'
-	'ecead745d3492224d2a5a2f7d9d561b0')
+         'a10650eb138f6fe0c4bbefa6557ffb4f'
+         '4bf9cc7596903ffa5aba7fa7922d9016'
+         'da837da689d3741cae9366eefc86d9b3'
+         'f2b9e5430150faf706737fd6e6b24bb4'
+         'ecead745d3492224d2a5a2f7d9d561b0')
 options=(!debug !strip)
 install=$pkgname.install
 
@@ -49,7 +49,7 @@ build() {
 	if [ -n "$CELLFRAME_DEBUG" ]; then
 		BUILD_TYPE="Debug"
 	else
-		BUILD_TYPE="None"
+		BUILD_TYPE="RelWithDebInfo"
 	fi
 
 	if [ -n "$CELLFRAME_NO_OPTIMIZATION" ]; then
