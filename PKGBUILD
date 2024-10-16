@@ -49,7 +49,9 @@ build() {
     cargo build --frozen --features "${_features:-}" --release --target-dir target
 
     "target/release/$_pkgname" util completion bash >"completions/$_pkgname.bash"
+    "target/release/$_pkgname" util completion elvish >"completions/$_pkgname.elv"
     "target/release/$_pkgname" util completion fish >"completions/$_pkgname.fish"
+    "target/release/$_pkgname" util completion nushell >"completions/$_pkgname.nu"
     "target/release/$_pkgname" util completion zsh >"completions/_$_pkgname"
 }
 
@@ -69,6 +71,9 @@ package() {
     install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
 
     install -Dm644 -t "$pkgdir/usr/share/bash-completion/completions" "completions/$_pkgname.bash"
+    install -Dm644 -t "$pkgdir/usr/share/elvish/lib/" "completions/$_pkgname.elv"
+    # TODO: Determine install location for nushell completions
+    # install -Dm644 -t "$pkgdir/ ... " "completions/$_pkgname.nu"
     install -Dm644 -t "$pkgdir/usr/share/fish/vendor_completions.d" "completions/$_pkgname.fish"
     install -Dm644 -t "$pkgdir/usr/share/zsh/site-functions" "completions/_$_pkgname"
 }
