@@ -1,6 +1,6 @@
 pkgbase = fotokilof
 	pkgdesc = GUI for ImageMagick
-	pkgver = 5.0.7
+	pkgver = 5.1.0
 	pkgrel = 1
 	url = https://github.com/TeaM-TL/FotoKilof
 	arch = any
@@ -14,11 +14,11 @@ pkgbase = fotokilof
 	depends = python-wand
 	depends = python-ttkbootstrap
 	depends = python-requests
-	depends = python-fclist-cffi
-	source = https://github.com/TeaM-TL/FotoKilof/archive/refs/tags/5.0.7.tar.gz
+	depends = python-findsystemfontsfilename
+	source = https://github.com/TeaM-TL/FotoKilof/archive/refs/tags/5.1.0.tar.gz
 	source = 0001-fix-character-in-setup.py-entrypoint-gui_script.patch
 	source = fotokilof.desktop
-	sha256sums = 944e52b61d7c9175a4e0bb4a229080434e4459eed423f1674294e5f4c6ebbce3
+	sha256sums = bc2296a923f0f9a3506343ade448f5931de94f3779f9c3d23672f2b658d46f28
 	sha256sums = e86029fc9075960ac0819d1958b77c1cee49aca7e842c266e63de1538b28faea
 	sha256sums = 8f6610e5b14c7ecc3d099b6c03ee2ea638b6080d625d4d7ed2e6baa95daaf1c2
 
