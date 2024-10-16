@@ -1,4 +1,5 @@
-# Maintainer:  Eivind Eide <xenofil AT gmail DOT com>
+# Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
+# Contributor: Eivind Eide <xenofil AT gmail DOT com>
 # Contributor: Alexander F Rødseth <xyproto AT archlinux DOT org>
 # Contributor: Maxime Gauduin <alucryd AT gmail DOT com>
 # Contributor: Dave Reisner <dreisner AT archlinux DOT org>
@@ -6,12 +7,14 @@
 
 pkgname=rubyripper
 pkgver=0.8.0rc3
-pkgrel=2
-pkgdesc='Secure audiodisc ripper'
-arch=('any')
-url='https://github.com/bleskodev/rubyripper'
-license=('GPL3')
-depends=('cdparanoia' 'ruby-iconv' 'ruby-rexml' 'ruby-gtk3')
+pkgrel=4
+pkgdesc="Secure audiodisc ripper"
+arch=(any)
+url="https://github.com/bleskodev/rubyripper"
+license=(GPL-3.0-only)
+depends=(cdparanoia ruby ruby-rexml ruby-gtk3) #ruby-iconv
+makedepends=(ruby-gettext)
+checkdepends=(ruby-rspec) #ruby-cucumber #ruby-rexml is also a checkdepend
 optdepends=('ruby-gettext: Translations'
             'cd-discid: Gnudb support'
             'lame: MP3 encoding support'
@@ -32,14 +35,21 @@ sha256sums=('f109ed5455f5a616cbd392c2a71efd59ffa2d207c3c3c3ad41873e20430b80c0')
 
 build() {
   cd "${pkgname}-${pkgver}"
-
-  ./configure --prefix='/usr' --enable-{cli,gtk3,lang-all} \
+  ./configure \
+    --prefix=/usr \
+    --enable-cli \
+    --disable-gtk3 \
+    --enable-lang-all} \
     --ruby="$(ruby -e 'v = RbConfig::CONFIG["vendorlibdir"] ; v["/usr"] = ""; puts v')"
 }
 
-package() {
-
-  make DESTDIR="${pkgdir}" -C "${pkgname}-${pkgver}" install
+check() {
+  cd "${pkgname}-${pkgver}"
+  rspec
 }
 
-# vim: ts=2 sw=2 et:
+package() {
+  cd "${pkgname}-${pkgver}"
+  make DESTDIR="${pkgdir}" install
+  ln -s /usr/bin/rrip_cli ${pkgdir}/usr/bin/rubyripper
+}
