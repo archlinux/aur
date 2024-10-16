@@ -1,6 +1,6 @@
 # Maintainer: Sergey Shatunov <me@aur.rocks>
 pkgname=satisfactory-mod-manager-git
-pkgver=3.0.0.beta.4.r48.gd8a3236
+pkgver=3.0.1.r0.gd90106a
 pkgrel=1
 pkgdesc="A mod manager for easy installation of mods and modloader for Satisfactory"
 arch=(x86_64)
@@ -8,11 +8,12 @@ url="https://github.com/satisfactorymodding/SatisfactoryModManager"
 license=('GPL3')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-makedepends=('git' 'yarn' 'nodejs' 'node-gyp' 'python' 'wails' 'go-task')
+makedepends=('git' 'yarn' 'nodejs' 'node-gyp' 'python' 'wails' 'go-task' 'pnpm')
+depends=('webkit2gtk' 'gst-plugins-good')
 source=("git+https://github.com/satisfactorymodding/SatisfactoryModManager.git"
         "${pkgname%-git}.desktop")
 sha512sums=('SKIP'
-            '0168c97aca896f2f26b250b5644d88a02ceaff5d5fe1c1669cb4ed34f31f9d912d033d801abd368686ee0e81d583b7b6923359bad470fc4af3ae4179aa903c5b')
+            '6271ba738cb17a787c33fede390aa86381e22ea3e7ffd44b7bef74f26d4a59c26bb803783ce61feec8d0eb596bd0d5bd5f2ad917fb0a684a091763d8f6ada1fe')
 
 pkgver() {
     cd "${srcdir}/SatisfactoryModManager"
