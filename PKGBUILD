@@ -2,10 +2,9 @@
 
 pkgname=openarc-unofficial-patches-git
 _pkgname=openarc
-pkgver=1.0.0.Beta3.r62.g94dbbc2
+pkgver=1.0.0rc0.r5.gc6676b9
 pkgrel=2
-_commit=0676227216f69bb52a4da2e52faf1978062b1fd7
-pkgdesc="OpenARC with patches from not-yet-merged PRs - by flowerysong"
+pkgdesc="OpenARC with patches and improvements from not-yet-merged PRs - by flowerysong"
 arch=(x86_64)
 url="https://github.com/flowerysong/OpenARC"
 license=('BSD-2-Clause' 'LicenseRef-Sendmail-1.1')

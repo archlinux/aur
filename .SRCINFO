@@ -1,6 +1,6 @@
 pkgbase = openarc-unofficial-patches-git
-	pkgdesc = OpenARC with patches from not-yet-merged PRs - by flowerysong
-	pkgver = 1.0.0.Beta3.r62.g94dbbc2
+	pkgdesc = OpenARC with patches and improvements from not-yet-merged PRs - by flowerysong
+	pkgver = 1.0.0rc0.r5.gc6676b9
 	pkgrel = 2
 	url = https://github.com/flowerysong/OpenARC
 	arch = x86_64
