@@ -6,9 +6,9 @@ pkgbase = carch
 	arch = x86_64
 	license = Apache-2.0
 	depends = bash
-	source = https://github.com/harilvfs/carch/releases/download/v3.0.3/cxfs
+	source = https://github.com/harilvfs/carch/releases/download/v3.0.3/carch
 	source = https://raw.githubusercontent.com/harilvfs/carch/refs/heads/main/carch.desktop
-	sha256sums = 7656c4f66abad4ad4ccc1a3d7e3158576d85bed611827d38f22bc45dd5c89f77
+	sha256sums = b3fce835610a46d66777bf389c9dd099b12e43ab0db67429f894674f95de0039
 	sha256sums = 2171e7dc0300fced083f4b74548253fe0ff8b40b34ad0446d2c3557245735acc
 
 pkgname = carch

@@ -8,10 +8,10 @@ url="https://harilvfs.github.io/carch/"
 license=('Apache-2.0')
 depends=('bash')
 source=(
-    "https://github.com/harilvfs/carch/releases/download/v3.0.3/cxfs"
+    "https://github.com/harilvfs/carch/releases/download/v3.0.3/carch"
     "https://raw.githubusercontent.com/harilvfs/carch/refs/heads/main/carch.desktop"
 )
-sha256sums=('7656c4f66abad4ad4ccc1a3d7e3158576d85bed611827d38f22bc45dd5c89f77' '2171e7dc0300fced083f4b74548253fe0ff8b40b34ad0446d2c3557245735acc')  
+sha256sums=('b3fce835610a46d66777bf389c9dd099b12e43ab0db67429f894674f95de0039' '2171e7dc0300fced083f4b74548253fe0ff8b40b34ad0446d2c3557245735acc')  
 
 build() {
     
