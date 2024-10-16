@@ -1,0 +1,43 @@
+# Maintainer: Penguin <penguin@pcland.co.in>
+pkgname=wikilynx
+pkgver=1.2.0
+pkgrel=0
+#epoch=
+pkgdesc="A simple Qt C++ app to play Wikipedia Speedruns the right way"
+arch=('any')
+url="https://github.com/flamboyantpenguin/wikiLYNX"
+license=('MIT')
+depends=(
+	'qt6-webengine'
+)
+makedepends=(
+	'cmake'
+	'git'
+	'base-devel'
+)
+#optdepends=()
+conflicts=("${pkgname}")
+provides=("${pkgname}")
+#changelog=
+source=("extras.tar.gz"
+	"https://github.com/flamboyantpenguin/wikiLYNX/archive/refs/tags/v1.2.5.zip"
+	)
+sha256sums=('SKIP' 'SKIP')
+validpgpkeys=()
+
+build() {
+
+	cd "wikiLYNX-${pkgver}/wikiLYNX"
+	cmake .
+	cmake --build .
+
+}
+
+package() {
+		
+	cd "wikiLYNX-${pkgver}/wikiLYNX"
+	install -D "wikiLYNX" "${pkgdir}/usr/bin/wikilynx"
+	install -Dm644 "${srcdir}/wikiLYNX.png" "${pkgdir}/usr/share/pixmaps/wikiLYNX.png"
+	install -Dm644  "${srcdir}/wikilynx.desktop" "${pkgdir}/usr/share/applications/wikilynx.desktop"
+	install -Dm644 "../LICENSE" "${pkgdir}/usr/share/licenses/wikilynx"
+}
