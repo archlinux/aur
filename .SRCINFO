@@ -1,0 +1,28 @@
+pkgbase = gz-launch8
+	pkgdesc = Run and manage programs and plugins.
+	pkgver = 8.0.0
+	pkgrel = 1
+	url = https://github.com/gazebosim/gz-launch
+	arch = any
+	license = Apache
+	makedepends = cmake
+	makedepends = doxygen
+	makedepends = gz-cmake=4
+	makedepends = libwebsockets
+	depends = gz-common=6
+	depends = gz-gui=9
+	depends = gz-math=8
+	depends = gz-msgs=11
+	depends = gz-plugin=3
+	depends = gz-sim=9
+	depends = gz-transport=14
+	depends = gz-utils=3
+	depends = qt5-base
+	depends = qt5-quickcontrols2
+	depends = tinyxml2
+	optdepends = libwebsockets: a websocket server for simulation
+	provides = gz-launch=8
+	source = https://github.com/gazebosim/gz-launch/archive/gz-launch8_8.0.0.tar.gz
+	sha256sums = 75f64c1516b322cd3064284f341bfd83c70d0bdc7c111be67b35c7a6c4bdc1cd
+
+pkgname = gz-launch8
