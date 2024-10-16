@@ -1,8 +1,8 @@
 # Contributor: ordoban <dirk.langer@vvovgonik.de>
 
 pkgname='perl-moox-strictconstructor'
-pkgver='0.011'
-pkgrel='2'
+pkgver='0.012'
+pkgrel='1'
 pkgdesc='Make your Moo-based object constructors blow up on unknown attributes.'
 arch=('any')
 license=('PerlArtistic' 'GPL')
@@ -15,9 +15,9 @@ depends=(
 makedepends=()
 checkdepends=()
 url='https://metacpan.org/pod/MooX::StrictConstructor'
-source=("https://cpan.metacpan.org/authors/id/H/HA/HARTZELL/MooX-StrictConstructor-$pkgver.tar.gz")
-md5sums=('a1e81b0f2362b8f8d1d59c78f3f89455')
-sha512sums=('9f977795ae3c746b8dd65573b8cc8ea69c8fcb13a8cc6725069bcf2479b96ea2954d5531a7c92189c5523218a9e66e431f510956472248c5f0795d952ee58eb1')
+source=("https://cpan.metacpan.org/authors/id/H/HA/HAARG/MooX-StrictConstructor-$pkgver.tar.gz")
+md5sums=('237e663327e67e1bc87b18c51a2df2e1')
+sha512sums=('06147a01d67f1f08777eb1799dadcb7a64de4f951c469f782e6a3b07e75d83665ea48bfed3864d3a274a0a49d1d402e1936d4195bc3e4e5f7d6c68760fee3330')
 _distdir="MooX-StrictConstructor-$pkgver"
 
 build() {
