@@ -1,8 +1,8 @@
 # Maintainer: Dracomage <dracomage at disroot dot org>
 
 pkgname=java21-openjfx-bin
-pkgver=21.0.4
-pkgrel=2
+pkgver=21.0.5
+pkgrel=1
 pkgdesc="Java OpenJFX ${pkgver} client application platform (Gluon build)."
 arch=('x86_64')
 url='https://openjfx.io/'
@@ -14,9 +14,9 @@ options=(!strip)
 source=("https://download2.gluonhq.com/openjfx/${pkgver}/openjfx-${pkgver}_linux-x64_bin-sdk.zip"
         "https://download2.gluonhq.com/openjfx/${pkgver}/openjfx-${pkgver}_linux-x64_bin-jmods.zip"
         "https://download2.gluonhq.com/openjfx/${pkgver}/openjfx-${pkgver}-javadoc.zip")
-sha256sums=('110259a41bbc3c6d9d477b753d3ff7337ee78bc40b06405c40ddb6a68da748d4'
-            '2412d689c724f60c39ea878d8a3bd4c6abfb5d9856cafc1cc8a49e28dc12d221'
-            'c1c3c754ccc3bd1eaf8edb6f7004f9afa69f4d66d417234682a4074aa6558683')
+sha256sums=('e38b24a91b8c8bc20a3631d57cf0504be29df32aaf28bea8a0265d65c0f89965'
+            'bf9ce464329bd3dc4896695b74c01d00602e91e2bff21d1b49908347acd73714'
+            '863868abbdbe85a6f2b996f1676f131a305b9bc598ac98b280f3fcd99225e6da')
 
 _jvmdir=usr/lib/jvm/java-21-openjdk
 
