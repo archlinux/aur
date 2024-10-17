@@ -1,7 +1,7 @@
 # Maintainer: bipin Kumar <kbipinkumar@pm.me>
 
 pkgname=hifiasm
-pkgver=0.19.9
+pkgver=0.20.0
 pkgrel=1
 pkgdesc="Haplotype-resolved de novo assembler for PacBio Hifi reads. https://doi.org/10.1038/s41592-020-01056-5"
 arch=(x86_64)
@@ -12,7 +12,7 @@ source=(
         "$pkgname-$pkgver.tar.gz::"https://github.com/chhylp123/hifiasm/archive/refs/tags/${pkgver}.tar.gz""
         "LDFLAG.patch::"https://patch-diff.githubusercontent.com/raw/chhylp123/hifiasm/pull/484.patch""
         )
-b2sums=('144455148bacb4f438186dd39110fde8b205d0d90c80a780bfca7c0aa1ddbb276b4ff0c97e244ba448aa504de7009541de1e9efbb28cf0f21073ab9c0176d784'
+b2sums=('f1d7c416d6cda235e4ed753612dee7886d3e29f4e499ec5a7c84e65807705da1c9b0c4ccf7c1f7c527e6cf323d833974926f4cf5e8dc2c2cebd150091ad4c045'
         '6fa4df620ac4f10991702edaf155982ad7730d09caf69774403a1843f0668d00c9bdbe1c9c8ba20c56f7b2b214292da8184ed665a8e0812a0aa0119c20ae70fc')
 
 prepare() {
