@@ -1,6 +1,6 @@
 # Maintainer: swearchnick <swearchnick[at]gmail[dot]com>
 pkgname="pdf-xchange"
-pkgver="10.4.2.390"
+pkgver="10.4.3.391"
 pkgrel="1"
 pkgdesc="Feature-rich PDF editor/viewer. Create, view, edit and annotate plus much more."
 license=('Custom')
@@ -19,7 +19,7 @@ _redactpatterns="$_commonfiles/RedactPatterns"
 _tesseract="$_commonfiles/Tesseract"
 
 source=("$pkgname-$pkgver.msi::$_downloadsource/$_x64file")
-sha256sums=('a114ecbb2b6843306e2aba86d042dbdc8e89704d600b20b4936aeb7986f92f8e')
+sha256sums=('c37e587a487a07a0327ccb09e6a6bde3edc40fc20e6e4e9ee624ce413ab8f3f9')
 
 prepare()
 {
@@ -337,6 +337,9 @@ package()
  install -Dm644 "$srcdir/FID_GD_uk_UA" "$pkgdir${_installdir}/$pkgname/${_languages}/GoogleDrive.uk-UA.xcl"
  install -Dm644 "$srcdir/FID_GD_zh_CN" "$pkgdir${_installdir}/$pkgname/${_languages}/GoogleDrive.zh-CN.xcl"
  install -Dm644 "$srcdir/FID_GD_zh_TW" "$pkgdir${_installdir}/$pkgname/${_languages}/GoogleDrive.zh-TW.xcl"
+ install -Dm644 "$srcdir/FID_HTML_az_Latn_AZ" "$pkgdir${_installdir}/$pkgname/${_languages}/Html2Pdf.az-Latn-AZ.xcl"
+ install -Dm644 "$srcdir/FID_HTML_da_DK" "$pkgdir${_installdir}/$pkgname/${_languages}/Html2Pdf.da-DK.xcl"
+ install -Dm644 "$srcdir/FID_HTML_ko_KR" "$pkgdir${_installdir}/$pkgname/${_languages}/Html2Pdf.ko-KR.xcl"
  install -Dm644 "$srcdir/FID_IF_az_Latn_AZ" "$pkgdir${_installdir}/$pkgname/${_languages}/IdentifyForms.az-Latn-AZ.xcl"
  install -Dm644 "$srcdir/FID_IF_ca_ES" "$pkgdir${_installdir}/$pkgname/${_languages}/IdentifyForms.ca-ES.xcl"
  install -Dm644 "$srcdir/FID_IF_cs_CZ" "$pkgdir${_installdir}/$pkgname/${_languages}/IdentifyForms.cs-CZ.xcl"
