@@ -7,7 +7,7 @@
 # Contributor: Ewout van Mansom <ewout@vanmansom.name>
 
 pkgname='ubuntu-wallpapers'
-pkgver=24.04.2
+pkgver=24.10.3
 pkgrel=1
 pkgdesc='The default Wallpapers for Ubuntu'
 arch=('any')
@@ -21,7 +21,7 @@ makedepends=('python-distutils-extra' 'python-setuptools')
 source=(
   "${_pool_url}/${pkgname::1}/${pkgname}/${pkgname}_${pkgver}.orig.tar.gz"
 )
-sha512sums=('18cbf8498d2445350053fe472b7d081ae92df01911f15b5bd96c912f4ebb7dd6a4bfe8f90d25a16aba3f8d317faf1fbe8f381d437e95d669cf0d2dc06c898a28')
+sha512sums=('aef3f0b963a10a1de8a3f1ae48c38be56b05c703aed1c8dba8bf14842c278e20f6027c1e7b166ac757050f6108d0b8e4b32276f1793062d4c85815283d20462a')
 
 package() {
   cd "${pkgname}_${pkgver}.orig"
