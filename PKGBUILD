@@ -3,7 +3,7 @@
 # Contributor: ZhangHua
 
 pkgname=qcm
-pkgver=1.1.0
+pkgver=1.1.2
 pkgrel=1
 pkgdesc="Qt client for netease cloud music"
 arch=('x86_64')
@@ -45,7 +45,7 @@ makedepends=(
 	'ninja')
 provides=("qcm")
 source=("git+https://github.com/hypengw/Qcm.git#tag=v${pkgver}")
-sha256sums=('SKIP')
+sha256sums=('6d753b055606830d90063c30b684ebd63722f590e62de196b3a31e067e785a02')
 conflicts=("qcm")
 
 function prepare() {
