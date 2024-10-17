@@ -3,7 +3,7 @@
 # Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 
 pkgbase=linux-g14
-pkgver=6.11.2.arch1
+pkgver=6.11.4.arch1
 pkgrel=1
 pkgdesc='Linux-g14'
 url="https://gitlab.com/dragonn/linux-g14.git"
@@ -49,6 +49,7 @@ source=(
   0008-amd-tablet-sfh.patch
   0009-asus-nb-wmi-Add-tablet_mode_sw-lid-flip.patch
   0010-asus-nb-wmi-fix-tablet_mode_sw_int.patch
+  0011-Bluetooth-btusb-Add-2-USB-HW-IDs-for-MT7925-0xe118-e.patch
 )
 validpgpkeys=(
   ABAF11C65A2970B130ABE3C479BE3E4300411886  # Linus Torvalds
@@ -56,25 +57,26 @@ validpgpkeys=(
   83BC8889351B5DEBBB68416EB8AC08600F108CDF  # Jan Alexander Steffens (heftig)
 )
 
-sha256sums=('ec9ef7a0b9cebb55940e1ef87a1f9e1004b10456a119dc386bb3e565b0d39c42'
+sha256sums=('bd54b0a0a46574919706698b1411ec48cf2a58345c4d8990e414acc4730e8f55'
             'SKIP'
-            '86e2959cac748ff503f33e40d5994acc3eb5008b9ff9ca2a7e2d264c107a4b24'
+            '07873305e1bc211e16a683dc2557e6a12efa8467a508da7a67985acd97547cdd'
             'SKIP'
-            '6be68246a4abf8c4a71b94f315076b482bf6e99447d4c67a24f8e8b4aadda0eb'
+            '6c4d63503c77465232fe4ed42671261b476bb0bfd1223b1a3da4afcc1cd615fb'
             '3cc13b8e108528bfba5f544e7993af415a3bdaab13fb36285c886a628cd39332'
             '278118011d7a2eeca9971ac97b31bf0c55ab55e99c662ab9ae4717b55819c9a2'
             '2b0ea7b9a06838aa9d689a41f9c802187ce33ea69b3b29f4e945f6752ad0c96b'
-            '83139e91e77a2bd227fa7e53c0109ac4d25b93ee0935cda2e0560960f3b1d929'
+            'ce1952eb4e6a9ed7e6e3bcf809ca2774c8b9f34120d9cb46524f0d27a58bf488'
             '0a7ea482fe20c403788d290826cec42fe395e5a6eab07b88845f8b9a9829998d'
             'ed242f4be3f8eaade2a1d42157c5c6c86281917a08ae43221b088fafdc775ee7'
-            '1ee601b3b5ec5450cd10898542d087b5fd3d5072b7049095b47f9ac7d60aa59c'
+            '40b7c727a41a84ceadab15a50067f213d8959b02157821cfdede7bb138637d6b'
             '4912b1319e46ddd6670147f5e878b4aca8bcfbd7b5c852fe11e434e424666365'
             'a00b952d53df9d3617d93e8fba4146a4d6169ebe79f029b3a55cca68f738d8ea'
             'd673d034fbcd80426fd8d9c6af56537c5fe5b55fe49d74e313474d7fc285ecc1'
             'e41198b29cee4de7a5132d8df606f48c2d0f9c9076fe4230b00a33c7e0b22c71'
             '508f90cbe81a9a145cc540703470f1e6b5d21c7a7b9166d2ce6e56b401262b04'
             '15e912a66e4bbce1cf0450f1dc6610653df29df8dd6d5426f9c1b039490436c8'
-            '444f2d86de8c2177655b01596f939f99c2e7abfa8efad8a509e0a334f42dfa85')
+            '444f2d86de8c2177655b01596f939f99c2e7abfa8efad8a509e0a334f42dfa85'
+            '71ee9262cb7b82c69680c6ee71e3d4b6f1fe46c89a7e2db63343b2d10b847b72')
 
 # notable microarch levels:
 #
