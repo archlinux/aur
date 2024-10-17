@@ -4,13 +4,13 @@
 
 pkgname=libmodbus
 pkgver=3.1.10
-pkgrel=1
+pkgrel=2
 pkgdesc="A Modbus library for Linux, Mac OS X, FreeBSD, QNX and Win32"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://libmodbus.org"
-license=('LGPL')
+license=('LGPL-2.1-only')
 groups=()
-depends=()
+depends=(glibc)
 makedepends=(asciidoc xmlto)
 optdepends=()
 provides=()
