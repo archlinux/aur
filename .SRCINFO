@@ -1,0 +1,20 @@
+pkgbase = amp-bin
+	pkgdesc = A modal text editor for the terminal.
+	pkgver = 0.7.1
+	pkgrel = 1
+	url = https://github.com/jmacdonald/amp
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	provides = amp
+	conflicts = amp
+	source = amp-0.7.1::https://github.com/jmacdonald/amp/releases/download/0.7.1/amp-x86_64-unknown-linux-musl
+	source = LICENSE-0.7.1::https://raw.githubusercontent.com/jmacdonald/amp/0.7.1/LICENSE
+	source = README-0.7.1.md::https://raw.githubusercontent.com/jmacdonald/amp/0.7.1/README.md
+	source = CHANGELOG-0.7.1.md::https://raw.githubusercontent.com/jmacdonald/amp/0.7.1/CHANGELOG.md
+	sha256sums = b9d3a1fcbdc683ce680a7c7f4f36570ba6772329fe02232a517659fecab56db3
+	sha256sums = 3590d46a5adacf8f603aa7566d3a14d4d0cee7acdf8aa1887d7e212372938e89
+	sha256sums = 0f67e01715a86ebbc0acfbd275dc79e8868c1c7942559be1854574e4e5c21ca1
+	sha256sums = a7b2b1e8d74a19ea932d5882303452a215a78a8a6a713270b51bc99ec1a71df2
+
+pkgname = amp-bin
