@@ -1,0 +1,13 @@
+pkgbase = pokemon-colorscripts-go
+	pkgdesc = pokemon-colorscripts rewritten in Go
+	pkgver = 0.0.3
+	pkgrel = 1
+	url = https://github.com/ollyjarvis/pokemon-colorscripts-go
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	depends = glibc
+	source = pokemon-colorscripts-go-0.0.3.tar.gz::https://github.com/ollyjarvis/pokemon-colorscripts-go/archive/refs/tags/v0.0.3.tar.gz
+	sha256sums = 3b9d154e603183fdf0fee877ef9e81bdbbf7d20843ddda7c7a6915f45ce85218
+
+pkgname = pokemon-colorscripts-go
