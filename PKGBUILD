@@ -1,7 +1,7 @@
 # Maintainer: Frederik Schwan <freswa at archlinux dot org>
 
 pkgname=dovecot-xaps-daemon
-pkgver=1.2
+pkgver=1.3
 pkgrel=1
 pkgdesc='iOS Push Email for Dovecot - xaps daemon'
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('custom:MIT')
 makedepends=('go')
 backup=('etc/xapsd/xapsd.yaml')
 source=("https://github.com/freswa/${pkgname}/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
-b2sums=('7cba713f4592910853d0ebf7e48f4c8be1e1e9579b703b0f9dbdc7eba73f5b0045228f951922d1967fa5b91564606cc51feeea61af2f025af4eda84d6e01a99b')
+b2sums=('761824221f80922b006c638ee5c34cf74c232af93deb27a06a5772e0291af3f0cf0b48d04c7e4917cb8cc831607d177c6642536144cde8447f17cdcd69ed16c9')
 
 build() {
   cd ${pkgname}-${pkgver}
