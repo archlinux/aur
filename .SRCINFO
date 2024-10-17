@@ -1,7 +1,7 @@
 pkgbase = zfs-dkms-staging-git
-	pkgdesc = Kernel modules for the Zettabyte File System (release staging branch).
+	pkgdesc = Kernel modules for the Zettabyte File System (release staging branch) with compatibility patches for latest stable kernel.
 	pkgver = 2.2.6.r0.gbaa5031456
-	pkgrel = 1
+	pkgrel = 2
 	url = https://zfsonlinux.org/
 	arch = any
 	groups = zfs-staging-git
@@ -13,8 +13,14 @@ pkgbase = zfs-dkms-staging-git
 	provides = zfs
 	conflicts = zfs-dkms
 	source = zfs::git+https://github.com/openzfs/zfs.git#branch=zfs-2.2.7-staging
+	source = linux610-fix-tracepoints-definitions.patch::https://github.com/openzfs/zfs/commit/90af1e83e8abb89668b82d859940a596b195fe75.patch?full_index=1
+	source = linux610-zfs_log-add-flex-array-fields-to-log-record-structs.patch
+	source = linux610-lua-add-flex-array-field-to-TString-type.patch::https://github.com/openzfs/zfs/commit/c84a37ae93b5f2b32d30bee1cb942627c4c6caab.patch?full_index=1
 	source = 0001-only-build-the-module-in-dkms.conf.patch
 	sha256sums = SKIP
+	sha256sums = 46448a080544be0492d4a4e45af9871f6fc773f49d594fcab8deb5df63b0e5ff
+	sha256sums = 1887592564e682353cd2049b6595c0a1fcfbb662c06feb9757251a8e551eee12
+	sha256sums = 0750502bece069b82189347e6530fb569ace8a708246f2c4ec5c54e221950bcb
 	sha256sums = 8d5c31f883a906ab42776dcda79b6c89f904d8f356ade0dab5491578a6af55a5
 
 pkgname = zfs-dkms-staging-git

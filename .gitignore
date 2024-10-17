@@ -4,3 +4,4 @@
 zfs*.pkg.*
 /*.patch
 !/0001-only-build-the-module-in-dkms.conf.patch
+!/linux610-zfs_log-add-flex-array-fields-to-log-record-structs.patch
