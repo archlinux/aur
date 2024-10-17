@@ -73,8 +73,8 @@ b2sums=('SKIP'
     'SKIP'
     'SKIP')
 
-provides=("$_pkgname")
-conflicts=("$_pkgname")
+provides=("${_pkgname}-legacy")
+conflicts=("${_pkgname}-legacy")
 
 prepare() {
     cd "$srcdir/$_pkgname"

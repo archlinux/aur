@@ -45,8 +45,8 @@ pkgbase = gamescope-sk-legacy
 	depends = xcb-util-errors
 	depends = xcb-util-wm
 	depends = xorg-server-xwayland
-	provides = gamescope
-	conflicts = gamescope
+	provides = gamescope-legacy
+	conflicts = gamescope-legacy
 	source = git+https://github.com/3003n/gamescope.git#tag=3.15.11-sk-2
 	source = git+https://github.com/nothings/stb.git#commit=af1a5bc352164740c1cc1354942b1c6b72eacb8a
 	source = git+https://github.com/Joshua-Ashton/wlroots.git
