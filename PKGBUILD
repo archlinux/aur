@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=follow-git
 _pkgname=Follow
-pkgver=0.0.1.alpha.3.r672.gd8ddffb
+pkgver=0.0.1.alpha.4.r1050.g7c2554d
 _electronversion=32
 _nodeversion=22
 pkgrel=1
@@ -22,6 +22,7 @@ makedepends=(
     'curl'
     'git'
     'pnpm'
+    'python-setuptools'
 )
 source=(
     "${pkgname//-/.}::git+${_ghurl}.git"
@@ -53,23 +54,27 @@ build() {
     gendesk -q -f -n --pkgname="${pkgname%-git}" --pkgdesc="${pkgdesc}" --categories="Utility" --name="${_pkgname}" --exec="${pkgname%-git} %U"
     cd "${srcdir}/${pkgname//-/.}"
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
-    export SYSTEM_ELECTRON_VERSION="32.1.0"
+    export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
     HOME="${srcdir}/.electron-gyp"
     {
+        echo -e '\n'
         #echo 'build_from_source=true'
         echo 'link-workspace-packages=true'
         echo 'fetch-retry-maxtimeout=10000'
         echo "cache-dir="${srcdir}"/.pnpm_cache"
         echo "store-dir="${srcdir}"/.pnpm_store"
-        if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
+    } >> .npmrc
+    if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
+        {
             echo 'registry=https://registry.npmmirror.com'
             echo 'disturl=https://registry.npmmirror.com/-/binary/node/'
             echo 'electron_mirror=https://registry.npmmirror.com/-/binary/electron/'
             echo 'electron_builder_binaries_mirror=https://registry.npmmirror.com/-/binary/electron-builder-binaries/'
-        fi
-    } >> .npmrc
+        } >> .npmrc
+    fi
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g;s/electron-forge make/electron-forge package/g" package.json
     NODE_ENV=development    pnpm install
+    NODE_ENV=production     pnpm run lint:fix
     NODE_ENV=production     pnpm run build
 }
 package() {
