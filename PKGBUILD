@@ -3,9 +3,9 @@ pkgname=map-download-git
 _pkgname=MapDownload
 pkgver=24.9.5.418.r0.gabe25e2
 _electronversion=16
-_nodeversion=18
+_nodeversion=16
 pkgrel=1
-pkgdesc="高德地图,百度地图(包括百度自定义地图),腾讯地图,OpenStreetMap,CartoDb,ArcGIS在线地图,天地图,MapBox的下载"
+pkgdesc="Gaode map, Baidu map (including Baidu custom map), Tencent map,OpenStreetMap,CartoDb,ArcGIS online map, Tianmap,MapBox download.高德地图,百度地图(包括百度自定义地图),腾讯地图,OpenStreetMap,CartoDb,ArcGIS在线地图,天地图,MapBox的下载"
 arch=('any')
 url="https://github.com/Hxy1992/MapDownload"
 license=('MIT')
@@ -24,7 +24,6 @@ makedepends=(
     'git'
     'gcc'
     'cmake'
-    'yarn'
 )
 source=(
     "${pkgname%-git}.git::git+${url}.git"
@@ -55,36 +54,33 @@ build() {
     _ensure_local_nvm
     gendesk -f -n -q --pkgname="${pkgname%-git}" --pkgdesc="${pkgdesc}" --categories="Utility" --name="${_pkgname}" --exec="${pkgname%-git} %U"
     cd "${srcdir}/${pkgname%-git}.git"
+    electronDist="/usr/lib/electron${_electronversion}"
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
     HOME="${srcdir}/.electron-gyp"
-    mkdir -p "${srcdir}/.electron-gyp"
     {
-        if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
-            echo -e '\n'
-            echo 'registry "https://registry.npmmirror.com"'
-            echo 'disturl "https://registry.npmmirror.com/-/binary/node/"'
-            echo 'electron_mirror "https://registry.npmmirror.com/-/binary/electron/"'
-            echo 'electron_builder_binaries_mirror "https://registry.npmmirror.com/-/binary/electron-builder-binaries/"'
-            echo "cacheFolder "${srcdir}"/.yarn/cache"
-            echo "pluginsFolder "${srcdir}"/.yarn/plugins"
-            echo "globalFolder "${srcdir}"/.yarn/global"
-            echo 'useHardlinks true'
-            #echo 'buildFromSource true'
-            echo 'linkWorkspacePackages true'
-            echo 'fetchRetries 3'
-            echo 'fetchRetryTimeout 10000'
-        fi
-    } >> .yarnrc
+        echo -e '\n'	
+        #echo 'build_from_source=true'
+        echo "cache=${srcdir}/.npm_cache"
+    } >> .npmrc
+    if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
+        {
+            echo 'registry=https://registry.npmmirror.com'
+            echo 'disturl=https://registry.npmmirror.com/-/binary/node/'
+            echo 'electron_mirror=https://registry.npmmirror.com/-/binary/electron/'
+            echo 'electron_builder_binaries_mirror=https://registry.npmmirror.com/-/binary/electron-builder-binaries/'
+        } >> .npmrc
+        sed -i "s/registry.npmjs.org/registry.npmmirror.com/g" package-lock.json
+    fi
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
-    NODE_ENV=development    yarn install --cache-folder "${srcdir}/.yarn_cache"
-    NODE_ENV=production     yarn run precompile
-    NODE_ENV=production     yarn run compile
+    NODE_ENV=development    npm install
+    NODE_ENV=production     npm run precompile
+    NODE_ENV=production     npm exec -c "electron-builder --linux dir -c.electronDist=${electronDist} --config .electron-builder.config.js --dir --config.asar=false"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
-    cp -r "${srcdir}/${pkgname%-git}.git/dist/linux-"*/resources/app "${pkgdir}/usr/lib/${pkgname%-bin}"
+    cp -Pr --no-preserve=ownership "${srcdir}/${pkgname%-git}.git/dist/linux-"*/resources/app "${pkgdir}/usr/lib/${pkgname%-bin}"
     install -Dm644 "${srcdir}/${pkgname%-git}.git/buildResources/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-git}.png"
     install -Dm644 "${srcdir}/${pkgname%-git}.desktop" -t "${pkgdir}/usr/share/applications"
     install -Dm644  "${srcdir}/${pkgname%-git}.git/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
