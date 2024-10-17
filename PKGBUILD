@@ -3,7 +3,7 @@
 
 pkgname=thorium-reader-bin
 pkgver=3.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A cross platform desktop reading app, based on the Readium Desktop toolkit"
 arch=('x86_64')
 license=(' BSD-3-Clause')
@@ -15,7 +15,7 @@ source=(
   "${pkgname}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${_filename}"
   ${url}/raw/v${pkgver}/LICENSE
 )
-sha512sums=('ddf4b66d0c8fa6a2c15fcc39751c3e7d25c1e312970f6d8b29aee062575236f1e4cce0fb897d43a8553751cbebc5089301a51267a4e385ab03ff1968e66d4d0e'
+sha512sums=('88057a075f2e96cab50078d2278ac047b4aa7fce704ed67c5bc6287f2e856864aceca4a9faa948ac3c333182dd9d28c1d72895955f10e55b37e54388a389cc18'
             'acb9c8cdd1225dd5e7874b5380cc597adf9cf32dfcebccfd18d13f36f525b56d9319734da28de5ec44a983197f91f2e80231211197b7201e4efe115972aae96a')
 
 package() {
