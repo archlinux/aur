@@ -1,29 +1,31 @@
-# Maintainer: kevku <kevku@gmx.com>
-pkgname='xml-security-c'
-pkgver='2.0.4'
-pkgrel='1'
-pkgdesc='C++ Implementation of W3C security standards for XML'
-arch=('i686' 'x86_64')
-url='http://santuario.apache.org/'
-license=('Apache')
-depends=('xerces-c' 'xalan-c')
-source=("https://dlcdn.apache.org/santuario/c-library/$pkgname-$pkgver.tar.bz2.asc"
-        "https://dlcdn.apache.org/santuario/c-library/$pkgname-$pkgver.tar.bz2")
-sha256sums=('SKIP'
-            'c83ed1b7c0189cce27a49caa81986938e76807bf35597e6056259af30726beca')
+pkgname=xml-security-c
+pkgver=3.0.0
+pkgrel=0
+pkgdesc="Shibboleth Project's C++ implementation of W3C security standards for XML"
+url="https://shibboleth.atlassian.net/wiki/spaces/SP3/pages/2067398783/XML-Security-C"
+arch=(x86_64)
+license=(Apache)
+conflicts=(xml-security-c)
+provides=(xml-security-c=$pkgver)
+depends=(
+  xerces-c
+)
+# Git: https://git.shibboleth.net/git/cpp-xml-security.git
+source=("https://shibboleth.net/downloads/xml-security-c/$pkgver/$pkgname-$pkgver.tar.gz"
+        "https://shibboleth.net/downloads/xml-security-c/$pkgver/$pkgname-$pkgver.tar.gz.asc")
+sha256sums=('5976ba9e72cbb61bd70df3f91d064ffcec8d0b3ba39c5cf4856f96f9efeb9a76'
+            'SKIP')
 validpgpkeys=('DCAA15007BED9DE690CD9523378B845402277962')
 
 build() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
-  ./configure --prefix=/usr \
-    --without-nss \
-    --with-openssl=/usr \
-    --disable-debug \
-    --disable-static
+  cd "$pkgname-$pkgver"
+  ./configure --prefix=/usr --disable-static
   make
 }
 
 package(){
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "$pkgname-$pkgver"
   make DESTDIR="$pkgdir" install
 }
+
+# vim: ts=2:sw=2:et:
