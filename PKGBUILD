@@ -1,7 +1,7 @@
 # Maintainer: vik <vik at divd dot net>
 
 pkgname=filebot-cli
-pkgver=5.1.5
+pkgver=5.1.6
 pkgrel=1
 pkgdesc="The ultimate TV and Movie Renamer"
 arch=('i686' 'x86_64' 'aarch64' 'armv7l' 'armv7h')
@@ -14,7 +14,7 @@ provides=('filebot')
 options=(!strip)
 conflicts=('filebot47' 'filebot')
 source=("https://get.filebot.net/filebot/FileBot_${pkgver}/FileBot_${pkgver}-aur.tar.xz")
-sha256sums=('5ce11f2528e8764bcd09a2c093aee698d2b118d11cfcab7fa128a4003172d330')
+sha256sums=('7b729146cf9f295eb505d789e4c30688626e21aa750f712ae8e85f28de3a91b0')
 
 package() {
     mkdir -p "${pkgdir}/usr/share" "${pkgdir}/usr/bin"
