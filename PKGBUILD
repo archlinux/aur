@@ -1,7 +1,7 @@
 # Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
 
 pkgname=filebrowser
-pkgver=2.31.1
+pkgver=2.31.2
 pkgrel=1
 pkgdesc="Standalone web file manager"
 arch=(x86_64)
@@ -11,7 +11,7 @@ depends=(glibc)
 makedepends=(git go nodejs npm go.rice)
 source=("git+https://github.com/filebrowser/filebrowser.git#tag=v${pkgver}"
         "filebrowser@.service")
-sha512sums=('5931cb56aaa1392980ede82852b786e914dd682c05a6b48b2d7649b295f5f8ba2bc9428028815853eb2b5d6fab789ef892498f1d530a135d5804153a8c507eea'
+sha512sums=('3dd8cf2c8aa3367ea5c5f7c9d8bc03f17647b9bdf9bacd4dfebaa91d2970600a5c6afbd32460898b3dd56eca3c68cf0cf1331cc912a0681ab189e48b6311aaf9'
             '0846815afbb3c5ccbb097a5361461ca0ada69e04246935afb123f4609d09cd61f9e3fe50e3b6698b3e4c1f335cbb0aa3d998cae13b422e2989aad62ed7ce4682')
 options=(emptydirs !lto)
 
