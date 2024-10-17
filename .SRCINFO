@@ -24,8 +24,6 @@ pkgbase = quickshell
 	conflicts = quickshell
 	options = !strip
 	source = git+https://github.com/outfoxxed/quickshell.git
-	source = quickshell-rebuild.hook
-	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = quickshell
