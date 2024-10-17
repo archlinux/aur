@@ -2,7 +2,7 @@
 # Maintainer: YTJVDCM <50657624+YTJVDCM@users.noreply.github.com>
 pkgname=vrc-get
 pkgver=1.8.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Open Source command line client of VRChat Package Manager"
 arch=('x86_64')
 url="https://github.com/anatawa12/vrc-get"
