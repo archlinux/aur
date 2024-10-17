@@ -1,7 +1,7 @@
 pkgbase = obfuscation-tunnel-git
 	pkgdesc = Obfuscate UDP traffic to hide from deep packet inspection
 	pkgver = r80.cbd31a1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/RoliSoft/Obfuscation-Tunnel
 	arch = x86_64
 	arch = aarch64
@@ -19,8 +19,10 @@ pkgbase = obfuscation-tunnel-git
 	source = git+https://github.com/RoliSoft/Obfuscation-Tunnel.git
 	source = ctypes.patch
 	source = readme-to-manpage.patch
+	source = tcp_reuse.patch
 	sha256sums = SKIP
 	sha256sums = 4eba65b38359124c8d8c6aa9c8b2e91b8b9bf8e6f77f7ca824eebb393e42dd3d
 	sha256sums = 1e531bbb3e0f10d98f9ab0ed318ffcead3e1e6f6fad973864e4e3eedaf88d313
+	sha256sums = a3f70b1bacbdce7894f64662674e63986e106ed49e6d4f2747b930df4091ffc1
 
 pkgname = obfuscation-tunnel-git

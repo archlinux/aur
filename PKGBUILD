@@ -2,7 +2,7 @@
 _pkgname="Obfuscation-Tunnel"
 pkgname="${_pkgname,,}-git"
 pkgver=r80.cbd31a1
-pkgrel=2
+pkgrel=3
 epoch=
 pkgdesc="Obfuscate UDP traffic to hide from deep packet inspection"
 arch=('x86_64' 'aarch64')
@@ -20,11 +20,12 @@ backup=()
 options=()
 install=
 changelog=
-source=( git+${url}.git 'ctypes.patch' 'readme-to-manpage.patch' )
+source=( git+${url}.git 'ctypes.patch' 'readme-to-manpage.patch' 'tcp_reuse.patch' )
 noextract=()
 sha256sums=('SKIP'
             '4eba65b38359124c8d8c6aa9c8b2e91b8b9bf8e6f77f7ca824eebb393e42dd3d'
-            '1e531bbb3e0f10d98f9ab0ed318ffcead3e1e6f6fad973864e4e3eedaf88d313')
+            '1e531bbb3e0f10d98f9ab0ed318ffcead3e1e6f6fad973864e4e3eedaf88d313'
+            'a3f70b1bacbdce7894f64662674e63986e106ed49e6d4f2747b930df4091ffc1')
 validpgpkeys=()
 
 builddir=${_pkgname}

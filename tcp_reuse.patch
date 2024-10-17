@@ -1,0 +1,20 @@
+diff --git a/tcp_server.cpp b/tcp_server.cpp
+index fcec36d..57eae40 100644
+--- a/tcp_server.cpp
++++ b/tcp_server.cpp
+@@ -139,6 +139,15 @@ public:
+             return EXIT_FAILURE;
+         }
+ 
++	    const int on = 1;
++	    setsockopt(this->client_fd, SOL_SOCKET, SO_REUSEADDR, (const void*) &on, (socklen_t) sizeof(on));
++        if (setsockopt(this->server_fd, SOL_SOCKET, SO_REUSEADDR, (const void *)&on, (socklen_t) sizeof(on)) <0)
++	        printf("Failed to set REUSEADDR option on TCP listener");
++#if defined(SO_REUSEPORT) && !defined(__linux__)
++        if (setsockopt(this->server_fd, SOL_SOCKET, SO_REUSEPORT, (const void *)&on, (socklen_t) sizeof(on)) <0)
++	        printf("Failed to set REUSEPORT option on TCP listener");
++#endif
++
+         if (bind(this->server_fd, (const struct sockaddr *)&this->local_addr, sizeof(this->local_addr)) < 0)
+         {
+             perror("Bind failed");
