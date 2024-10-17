@@ -4,11 +4,11 @@
 _name=DXconvert
 pkgname=${_name,,}
 pkgver=3.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc='A file conversion and manipulation toolkit for Yamaha FM synth patches'
 arch=(any)
 url='http://dxconvert.martintarenskeen.nl/'
-license=(GPL3)
+license=(GPL-3.0-only)
 depends=(python)
 optdepends=(
   # We can't package castools for our repo, since it has neither a source dist
@@ -16,10 +16,11 @@ optdepends=(
   #'castools: convert Cassette Interface data (DX100/27/21, DX9, TX81Z)'
   'tk: dxconvert and txconvert GUI'
   'zbar: convert patches from QR codes to SysEx'
+  'python-qrcode: convert patches from SysEx to QR codes'
 )
 groups=(pro-audio)
 source=("https://dxconvert.martintarenskeen.nl/$_name-$pkgver.zip")
-sha256sums=('adc3f1d3188e58ae99ab83286b53ad4a8fc077c6e0784dea01ad9f1d163f393d')
+sha256sums=('f67f5833a8b53f03fd052a27996181bc6de1ca2a56775a79561cd348722a7f34')
 
 prepare() {
   cd $_name-$pkgver
@@ -32,8 +33,10 @@ package() {
   local py_major_ver="$(python -c 'import sys; print("%i.%i" % sys.version_info[:2])')"
 
   # install Python package
-  install -Dm644 DXconvert/*.{gif,help,py} \
-    -t "$pkgdir"/usr/lib/python$py_major_ver/site-packages/DXconvert
+  install -Dm644 $_name/*.{gif,help,py} \
+    -t "$pkgdir"/usr/lib/python$py_major_ver/site-packages/$_name
+  python -m compileall -s "$pkgdir" \
+    "$pkgdir"/usr/lib/python$py_major_ver/site-packages/$_name
 
   # install scripts in root dir
   for py in *.py; do
@@ -43,7 +46,7 @@ package() {
   # install scripts in Tools dir
   for tool in Tools/*.py; do
     bn="${tool##*/}"
-    install -Dm755 "$tool" "$pkgdir"/usr/bin/dxconvert-${bn%.py}
+    install -Dm755 "$tool" "$pkgdir"/usr/bin/$pkgname-${bn%.py}
   done
 
   # Install documentation
