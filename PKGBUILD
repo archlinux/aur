@@ -10,7 +10,7 @@ pkgname='dual-root'
 pkgdesc='Dual Root Tools for Managing dual esp systems'
 _gitname='dual-root'
 
-pkgver=2.9.0
+pkgver=3.0.0
 pkgrel=1
 url="https://github.com/gene-git/dual-root"
 
@@ -19,7 +19,8 @@ license=(MIT)
 
 # tomli only needed for python < 3.11
 # To build docs uncomment sphinx/texlive
-depends=('python>3.9' 'efibootmgr' 'util-linux' 'rsync' 'inotify-tools' 'python-tomli'
+depends=('python>3.10' 'efibootmgr' 'util-linux' 'rsync' 'inotify-tools' 'python-tomli'
+         'python-psutil'
         #'python-sphinx' 'texlive-latexextra' # Docs
         )
 makedepends=('git')
