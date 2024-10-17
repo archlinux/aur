@@ -2,7 +2,7 @@
 
 _pkgbase='rcon'
 pkgname="python-${_pkgbase}"
-pkgver=2.4.7
+pkgver=2.4.8
 pkgrel=1
 pkgdesc='Python 3 RCON client library and scripts'
 arch=('any')
@@ -12,7 +12,7 @@ depends=('python' 'python-setuptools')
 optdepends=('python-gobject: for GUI support')
 makedepends=('git' 'python-build' 'python-installer' 'python-setuptools-scm' 'python-wheel')
 source=("${_pkgbase}::git+${url}.git#tag=${pkgver}")
-md5sums=('457cf21712a9cd969598118a475705a2')
+md5sums=('557e28270f9bfd081d124ae926f01b96')
 
 build() {
     cd "${srcdir}/${_pkgbase}"
