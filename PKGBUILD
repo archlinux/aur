@@ -2,10 +2,11 @@ pkgname=log4shib
 pkgver=2.0.1
 pkgrel=1
 pkgdesc="Shibboleth Project's fork of log4cpp"
-url="https://wiki.shibboleth.net/confluence/display/OpenSAML/log4shib"
+url="https://shibboleth.atlassian.net/wiki/spaces/SP3/pages/2067398711/log4shib"
 license=(LGPL2)
 arch=(x86_64)
 depends=(gcc-libs)
+# Git: git+https://git.shibboleth.net/git/cpp-log4shib
 source=("https://shibboleth.net/downloads/log4shib/$pkgver/$pkgname-$pkgver.tar.gz"
         "https://shibboleth.net/downloads/log4shib/$pkgver/$pkgname-$pkgver.tar.gz.asc")
 sha256sums=('aad37f3929bd3d4c16f09831ff109c20ae8c7cb8b577917e3becb12f873f26df'
