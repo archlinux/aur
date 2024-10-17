@@ -1,7 +1,7 @@
 pkgbase = waydroid-image
 	pkgdesc = LineageOS-based Android images for Waydroid
 	pkgver = 18.1_20241012
-	pkgrel = 1
+	pkgrel = 2
 	url = https://waydro.id
 	arch = x86_64
 	arch = i686
