@@ -4,14 +4,14 @@
 # Contributor: Danct12 <danct12 at disroot dot org>
 # Contributor: Bart Ribbers <bribbers at disroot dot org>
 
-_pkgver_images_system="18.1_20241012"
-_pkgver_images_system_x86="18.1_20241012"
-_pkgver_images_system_arm="18.1_20241012"
-_pkgver_images_system_arm64="18.1_20241012"
-_pkgver_images_vendor="18.1_20241012"
-_pkgver_images_vendor_x86="18.1_20241012"
-_pkgver_images_vendor_arm="18.1_20241012"
-_pkgver_images_vendor_arm64="18.1_20241012"
+_pkgver_images_system="18.1-20241012"
+_pkgver_images_system_x86="18.1-20241012"
+_pkgver_images_system_arm="18.1-20241012"
+_pkgver_images_system_arm64="18.1-20241012"
+_pkgver_images_vendor="18.1-20241012"
+_pkgver_images_vendor_x86="18.1-20241012"
+_pkgver_images_vendor_arm="18.1-20241012"
+_pkgver_images_vendor_arm64="18.1-20241012"
 pkgname=waydroid-image
 pkgver="${_pkgver_images_system//-/_}"
 pkgrel=1
