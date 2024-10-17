@@ -1,14 +1,14 @@
 # Maintainer: Jean-Baptiste Delisle <jb dot delisle at pi314 dot noho dot st>
 pkgname='bed-latex'
 pkgver='2.0.0'
-pkgrel=1
+pkgrel=2
 pkgdesc="BEd: Beamer Editor, GUI for LaTeX Beamer presentations."
 url="https://framagit.org/delisle/bed"
 depends=('python>=3.8' 'pyside6' 'python-pymupdf' 'texlive-core' 'texlive-latexextra')
 optdepends=('python-pygments')
 provides=('bed-latex')
 conflicts=('bed-latex')
-makedepends=('python-build' 'python-installer')
+makedepends=('python-build' 'python-installer' 'python-setuptools')
 license=('GPL3')
 arch=('any')
 install="bed.install"

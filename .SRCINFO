@@ -1,13 +1,14 @@
 pkgbase = bed-latex
 	pkgdesc = BEd: Beamer Editor, GUI for LaTeX Beamer presentations.
 	pkgver = 2.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://framagit.org/delisle/bed
 	install = bed.install
 	arch = any
 	license = GPL3
 	makedepends = python-build
 	makedepends = python-installer
+	makedepends = python-setuptools
 	depends = python>=3.8
 	depends = pyside6
 	depends = python-pymupdf
