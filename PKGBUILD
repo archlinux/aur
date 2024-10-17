@@ -10,7 +10,7 @@ license=('MIT')
 depends=(gcc-libs glibc)
 makedepends=(cargo dotnet-sdk)
 # most rust projects that link with native libs can't use lto
-options=(!lto)
+options+=(!lto)
 source=("$pkgname-$pkgver.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('9dbbaa1addf018e139d87678f8669d0b025502be38afd46f8abd736a3784813c')
 
