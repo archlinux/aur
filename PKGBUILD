@@ -40,7 +40,7 @@ package() {
   install -Dm 755 ./cmake_build/bin/wasted ${pkgdir}/usr/bin/${_pkgname}
   mkdir -p ${pkgdir}/usr/share/wasted ${pkgdir}/usr/local/share ${pkgdir}/usr/share/applications
   cp -R "./data" ${pkgdir}/usr/share/wasted/
-  ln -s ${pkgdir}/usr/share/wasted ${pkgdir}/usr/local/share/wasted
+  ln -s /usr/share/wasted ${pkgdir}/usr/local/share/wasted
   cp -R "../wasted-assets/." ${pkgdir}/usr/share/wasted/data/
   install -Dm 644 ./data/wasted_1024.png ${pkgdir}/usr/share/icons/hicolor/scalable/apps/wasted.png
   echo $'[Desktop Entry]\nExec=wasted\nIcon=wasted\nName=Wasted\nPath=\nTerminal=False\nType=Application\nGenericName=A derby-destruction video game with playful visuals\nCategories=Game;\n' > ${pkgdir}/usr/share/applications/wasted.desktop
