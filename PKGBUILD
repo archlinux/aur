@@ -1,11 +1,11 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=upscayl-git
 _pkgname=Upscayl
-pkgver=2.11.5.r30.gddd2865
+pkgver=2.11.5.r31.g39e879f
 pkgrel=1
 _electronversion=27
 _nodeversion=18
-pkgdesc="Free and Open Source AI Image Upscaler for Linux, MacOS and Windows built with Linux-First philosophy."
+pkgdesc="Free and Open Source AI Image Upscaler for Linux, MacOS and Windows built with Linux-First philosophy.Use system-wide electron."
 arch=('x86_64')
 url='https://upscayl.org/'
 _ghurl='https://github.com/upscayl/upscayl'
@@ -54,9 +54,9 @@ build() {
     _ensure_local_nvm
     gendesk -q -f -n --pkgname="${pkgname%-git}" --pkgdesc="${pkgdesc}" --categories="Graphics" --name="${_pkgname}" --exec="${pkgname%-git} %U"
     cd "${srcdir}/${pkgname//-/.}"
+    electronDist="/usr/lib/electron${_electronversion}"
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
-    electronDist="/usr/lib/electron${_electronversion}"
     HOME="${srcdir}/.electron-gyp"
     {
         echo -e '\n'	
@@ -82,7 +82,7 @@ build() {
 package(){
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-git}"
-    cp -r "${srcdir}/${pkgname//-/.}/dist/linux-"*/resources/* "${pkgdir}/usr/lib/${pkgname%-git}"
+    cp -Pr --no-preserve=ownership "${srcdir}/${pkgname//-/.}/dist/linux-"*/resources/* "${pkgdir}/usr/lib/${pkgname%-git}"
     install -Dm644 "${srcdir}/${pkgname//-/.}/build/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-git}.png"
     install -Dm644 "${srcdir}/${pkgname%-git}.desktop" -t "${pkgdir}/usr/share/applications"
     install -Dm644 "${srcdir}/${pkgname//-/.}/flatpak/org.${pkgname%-git}.${_pkgname}.metainfo.xml" "${pkgdir}/usr/share/metainfo/${pkgname%-git}.metainfo.xml"
