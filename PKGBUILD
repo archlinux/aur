@@ -1,12 +1,10 @@
 pkgname=xml-security-c
 pkgver=3.0.0
-pkgrel=0
+pkgrel=1
 pkgdesc="Shibboleth Project's C++ implementation of W3C security standards for XML"
 url="https://shibboleth.atlassian.net/wiki/spaces/SP3/pages/2067398783/XML-Security-C"
 arch=(x86_64)
 license=(Apache)
-conflicts=(xml-security-c)
-provides=(xml-security-c=$pkgver)
 depends=(
   xerces-c
 )

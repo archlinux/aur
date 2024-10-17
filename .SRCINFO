@@ -1,13 +1,11 @@
 pkgbase = xml-security-c
 	pkgdesc = Shibboleth Project's C++ implementation of W3C security standards for XML
 	pkgver = 3.0.0
-	pkgrel = 0
+	pkgrel = 1
 	url = https://shibboleth.atlassian.net/wiki/spaces/SP3/pages/2067398783/XML-Security-C
 	arch = x86_64
 	license = Apache
 	depends = xerces-c
-	provides = xml-security-c=3.0.0
-	conflicts = xml-security-c
 	source = https://shibboleth.net/downloads/xml-security-c/3.0.0/xml-security-c-3.0.0.tar.gz
 	source = https://shibboleth.net/downloads/xml-security-c/3.0.0/xml-security-c-3.0.0.tar.gz.asc
 	validpgpkeys = DCAA15007BED9DE690CD9523378B845402277962
