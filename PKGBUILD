@@ -3,7 +3,7 @@
 # vim:et:ts=2:sw=2
 
 pkgname=bishop
-pkgver=0.2.6
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="Command-line utility for visualizing data using The Drunken Bishop algorithm"
 arch=('x86_64')
@@ -17,7 +17,8 @@ _src="bishop.rs-app_$pkgver"
 _tar="$pkgname.tar.gz"
 
 source=("$_tar"::"https://github.com/AbsurdlySuspicious/bishop.rs/archive/app_$pkgver.tar.gz")
-sha256sums=('bac65134405b1d77774f770600a6add564e6c8436287420577eaec2229c6f804')
+sha256sums=('d9e42a162df51055e51893a75650e2da71b4aaaa201fa72cc1609983f61a3c45')
+
 
 check() {
   cd "$srcdir/$_src"
