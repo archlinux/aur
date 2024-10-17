@@ -1,7 +1,7 @@
 # Maintainer: Alexander Rundberg <alexanderrundberg [at] fastmail [dot] jp>
 # Maintainer: Ryan O'Beirne <ryanobeirne [at] ryanobeirne [dot] com>
 pkgname=pretty-git-prompt
-pkgver=0.2.1
+pkgver=0.2.2
 pkgrel=1
 pkgdesc="Pretty git status for your shell prompt"
 arch=('any')
@@ -9,8 +9,8 @@ url="https://github.com/TomasTomecek/pretty-git-prompt"
 license=('MIT')
 depends=('git')
 makedepends=('rust' 'cmake')
-source=("https://github.com/TomasTomecek/pretty-git-prompt/archive/$pkgver.tar.gz")
-sha256sums=('56e1228209aa1e7d632ad98ca5d044dbf4d7c04d7b2cdea9132c3c3f759df93c')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/TomasTomecek/pretty-git-prompt/archive/$pkgver.tar.gz")
+sha256sums=('189f2c05e8e1a7bb3b68b71b235c156022086b4cefe8a5521cc5182f64835871')
 
 build() {
   cd "$srcdir"/"$pkgname"-"$pkgver"
