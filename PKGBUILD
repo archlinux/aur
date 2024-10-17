@@ -2,18 +2,18 @@
 # Contributor: Bachitter Chahal <bachitterch@pm.me>
 
 pkgname=pscale-cli
-pkgver=0.196.0
+pkgver=0.213.0
 pkgrel=1
 pkgdesc='PlanetScale CLI client'
 arch=(x86_64)
 url='https://github.com/planetscale/cli'
-license=(Apache)
+license=(Apache-2.0)
 depends=(glibc)
 makedepends=(go staticcheck)
 provides=(pscale)
 conflicts=(pscale)
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/planetscale/cli/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('e56e52790b98f40d66a183aaef5eed40d1eedf2413d039058d6c2852412f3723')
+sha256sums=('24aeb925c09a114b0f4e249d4d5107ee361504148db718ff6b1b8a28238287de')
 
 build() {
   cd "cli-${pkgver}/cmd/pscale"
