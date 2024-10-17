@@ -12,7 +12,7 @@ _mirthuser='mirthcon'
 _source=()
 if :; then
   _jsch_libname='jsch'
-  _jsch_oldver='0.2.13' # default crypto settings will cause a lot of connectivity issues from 1.5.4 to this version
+  _jsch_oldver='0.2.18' # default crypto settings will cause a lot of connectivity issues from 1.5.4 to this version
   if :; then
     _JVM='/usr/lib/jvm/java-17-openjdk';  _JRE='jdk17-openjdk' # needed for all functionality of JSCH-0.2.0
     _jsch_pkgver='0.2.20'
@@ -54,7 +54,8 @@ pkgname='mirthconnect'
 #pkgver='4.4.1.b310'
 #pkgver='4.4.2.b326'
 #pkgver='4.5.0.b3012'
-pkgver='4.5.1.b332'
+#pkgver='4.5.1.b332'
+pkgver='4.5.2.b363'
 pkgrel='1'
 pkgdesc='hl7 connector by Nextgen'
 arch=('any')
@@ -86,13 +87,13 @@ source=(
   '0000b-mirth-disable-SSLv2Hello.patch'
   "${_source[@]}"
 )
-md5sums=('9102ba7bc1ef9fb32067eb890524da84'
+md5sums=('47757d532e68dfe06d751db071e15f2f'
          '426de9435b21e90df7ae044510938270'
          'f1b18ae896b93be65a2e9b276f12c16f'
          '65ff6f4ab8d269de92995abcfab610ac'
          'b9e1b8f9395622ba548d7fd07cfd7c26'
          '8486b0728b17e7d181128e4f848abc9b')
-sha256sums=('aa193fb8fa284ba35cd7bd420e041d4c049b8f39420b853ae0c87635bcfcdec6'
+sha256sums=('800f9dd73db3268d180eca46c3ea6ad46cc95c7bbaf5740804a9755600b46e5d'
             '4dc37b7ed9db5c9fcd74f45cd6197f6b631d74d3a30022bda6fda1c5900b7099'
             '254c858572a4949c09726859d3f790d7bee535b8dbea184e4f6679d3b7c3b269'
             'a9a4bcdc66a73779faef3ba1373e67b53bb84056981ae0604cd14ff5c3e58056'
@@ -142,7 +143,11 @@ _jsch_build() {
 
 _jsch_package() {
   pushd "${srcdir}/${_jsch_srcdir}" > /dev/null
-  rm "${pkgdir}/${_mirthhome}/server-lib/${_jsch_libname}-${_jsch_oldver}.jar"
+  if ! rm "${pkgdir}/${_mirthhome}/server-lib/${_jsch_libname}-${_jsch_oldver}.jar"; then
+    cd "${pkgdir}/${_mirthhome}/server-lib/"
+    ls "${_jsch_libname}"*.jar
+    false
+  fi
   install -Dm644 'LICENSE.txt' "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.jcsh"
   if [ "$(vercmp "${_jsch_pkgver}" "0.1.55")" -le 0 ]; then
     cd 'dist/lib'
