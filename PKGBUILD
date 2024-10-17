@@ -27,6 +27,7 @@ package() {
   install -Dm755 "usr/local/share/mympc/get_top_rated_tracks.py" "$pkgdir/usr/local/share/mympc/get_top_rated_tracks.py"
   install -Dm755 "usr/local/share/mympc/add_mood_tag.py" "$pkgdir/usr/local/share/mympc/add_mood_tag.py"
   install -Dm755 "usr/local/share/mympc/tags.sh" "$pkgdir/usr/local/share/mympc/tags.sh"
+  install -Dm644 "usr/local/share/mympc/tags.conf" "$pkgdir/usr/local/share/mympc/tags.conf"
   install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
