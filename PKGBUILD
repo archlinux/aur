@@ -39,7 +39,7 @@ package() {
     mkdir -p "$pkgdir/usr/lib/node_modules/fish-lsp"
 
     rm -r node_modules/@types
-    cp -r node_modules out package.json "$pkgdir/usr/lib/node_modules/fish-lsp"
+    cp -r node_modules out package.json fish_files "$pkgdir/usr/lib/node_modules/fish-lsp"
     # nvim-lspconfig doesn’t work without this symlink
     ln -s /usr/lib/node_modules/fish-lsp/node_modules/@esdmr/tree-sitter-fish/tree-sitter-fish.wasm \
         "$pkgdir/usr/lib/node_modules/fish-lsp/"
