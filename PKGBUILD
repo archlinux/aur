@@ -1,7 +1,8 @@
-# Maintainer: Kubescape Maintainers <cncf hyphen kubescape hyphen maintainers at lists dot cncf dot io>
+# Maintainer: Sven Nobis <aur@sven.to>
+# Previous Maintainer: Kubescape Maintainers <cncf hyphen kubescape hyphen maintainers at lists dot cncf dot io>
 
 pkgname=kubescape
-pkgver=3.0.8
+pkgver=3.0.18
 pkgrel=0
 epoch=0
 pkgdesc="An open-source Kubernetes security platform for your IDE, CI/CD pipelines, and clusters."
@@ -12,12 +13,11 @@ makedepends=('go>=2:1.20.0')
 provides=('kubescape')
 conflicts=('kubescape-bin')
 source=("https://github.com/${pkgname}/${pkgname}/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha512sums=('bd20d1009eb5417b4e9b7bba1548ee7f62f0727006f0f1d377852d0659ea70152ae3b9cf1e0a3e2b770204c3d8fc4853ba940cb007ecb690afc2531af60d38f3'
-  '07d13cfd11396d2c36bc69ef4177e4962596bf92da3604f035a85940f98ae0d3614718b88fc0631c4c7007841a51deebd7da8c570c1c637d9fb5905995837519'
-  '842a648a67ff23ba9e6bf14b706ba9081164866e14000ebf3858442b7046925f05e1dbf00a7d740dc4bf32280e260730e23a9492e817094aa90736ae335ee76e')
+sha512sums=('cc84924a8ac73fe571224b1cb7794ad5320e1fbe1011ef1fb57267807ad9bc05ba3fc9fae9f122e2292f04a962dada7042e3f0f80cb536c26b657d993f2fec1e')
 
 build() {
-  export GOCACHE=${PWD}/cache
+  cd "${pkgname}-${pkgver}"
+  mkdir -p ${PWD}/cache
   go build -buildmode=pie -buildvcs=false -ldflags="-s -w -X github.com/${pkgname}/${pkgname}/v3/core/cautils.BuildNumber=v${pkgver}" -o ${pkgname}
 }
 
