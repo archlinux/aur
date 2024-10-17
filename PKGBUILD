@@ -4,7 +4,7 @@
 # Maintainer: Ľubomír 'the-k' Kučera <lubomir.kucera.jr at gmail.com>
 
 pkgname=cronet
-pkgver=129.0.6668.100
+pkgver=130.0.6723.58
 pkgrel=1
 _manual_clone=0
 _system_abseil=1
@@ -20,15 +20,17 @@ options=('!lto') # Chromium adds its own flags for ThinLTO
 source=(https://commondatastorage.googleapis.com/chromium-browser-official/chromium-$pkgver.tar.xz
         compiler-rt-adjust-paths.patch
         increase-fortify-level.patch
+        abseil-fix-missing-algorithm.patch
         abseil-remove-unused-targets.patch
         disable-logging.patch
         fix-no-matching-strcat.patch
         fix-numeric_limits.patch
         fix-trust-store-segfault.patch
         fix-undeclared-isnan.patch)
-sha256sums=('281daed29a5cb546f6273130035d9980666d2232f356ad95fc06af3c90121bc2'
+sha256sums=('aa296edec7275d19feade5ef32cbe7dfdd41594d4c0c1afd94bbf4d310c38c4e'
             'b3de01b7df227478687d7517f61a777450dca765756002c80c4915f271e2d961'
             'd634d2ce1fc63da7ac41f432b1e84c59b7cceabf19d510848a7cff40c8025342'
+            SKIP
             SKIP
             SKIP
             SKIP
@@ -38,7 +40,7 @@ sha256sums=('281daed29a5cb546f6273130035d9980666d2232f356ad95fc06af3c90121bc2'
 
 if (( _manual_clone )); then
   source[0]=fetch-chromium-release
-  makedepends+=('python-httplib2' 'python-pyparsing' 'python-six')
+  makedepends+=('python-httplib2' 'python-pyparsing' 'python-six' 'npm' 'rsync')
 fi
 
 # Possible replacements are listed in build/linux/unbundle/replace_gn_files.py
@@ -199,6 +201,7 @@ prepare() {
 
   if (( _system_abseil )); then
     # Fixes building with system Abseil
+    patch -p0 -i ../abseil-fix-missing-algorithm.patch
     patch -p0 -i ../abseil-remove-unused-targets.patch
   fi
 
