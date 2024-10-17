@@ -31,10 +31,9 @@ makedepends=(
 
 source=(
 	"git+https://github.com/outfoxxed/quickshell.git"
-	"quickshell-rebuild.hook"
+
 )
 sha256sums=(
-	'SKIP'
 	'SKIP'
 )
 
@@ -57,5 +56,4 @@ package() {
 	cd "${pkgname}"
 	DESTDIR=$pkgdir cmake --install build
 	install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-	install -Dm644 "../quickshell-rebuild.hook" "$pkgdir/usr/share/libalpm/hooks/quickshell-rebuild.hook"
 }
