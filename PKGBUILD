@@ -1,4 +1,5 @@
-# Maintainer: Kubescape Maintainers <cncf hyphen kubescape hyphen maintainers at lists dot cncf dot io>
+# Maintainer: Sven Nobis <aur@sven.to>
+# Previous Maintainer: Kubescape Maintainers <cncf hyphen kubescape hyphen maintainers at lists dot cncf dot io>
 
 pkgname=kubescape
 pkgver=3.0.18
