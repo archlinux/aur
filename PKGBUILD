@@ -7,11 +7,11 @@
 pkgdesc='A simple VTE-based terminal'
 pkgname=termite
 pkgver=16.9
-pkgrel=2
+pkgrel=3
 url=https://github.com/aperezdc/termite
 license=(LGPL-2.1-only)
 depends=(gtk3 pcre2 gnutls vte-common)
-makedepends=(gperf 'meson>=1.0' ninja)
+makedepends=(gperf 'meson>=1.0' ninja glib2-devel)
 arch=(x86_64)
 backup=(etc/xdg/termite/config)
 validpgpkeys=(5AA3BC334FD7E3369E7C77B291C559DBE4C9123B)
