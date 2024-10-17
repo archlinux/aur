@@ -52,7 +52,7 @@ else
       encoding|e) args+=( -e "${v}" ) ;;
 
       #ICMP options
-      pcap|use_pcap|p) args+=( -p "${v}" ) ;;
+      pcap|use-pcap|use_pcap|p) args+=( -p "${v}" ) ;;
       randomid|expectrandomid|e) args+=( -x "${v}" ) ;;
 
       #DNS options
@@ -60,10 +60,10 @@ else
       domain|d) args+=( -d "${v}" ) ;;
 
       #TLS options
-	  tls-no-verify) [[ ${v} != '0' ]] && args+=('--tls-no-verify') ;;
-	  tls-ca-bundle) args+=('--tls-ca-bundle' "${v}") ;;
-	  tls-cert) args+=('--tls-cert' "${v}") ;;
-	  tls-key) args+=('--tls-key' "${v}") ;;
+	  tls_no_verify|tls-no-verify) [[ ${v} != '0' ]] && args+=('--tls-no-verify') ;;
+	  tls_ca_bundle|tls-ca-bundle) args+=(--tls-ca-bundle "${v}") ;;
+	  tls_cert|tls-cert) args+=(--tls-cert "${v}") ;;
+	  tls_key|tls-key) args+=(--tls-key "${v}") ;;
     esac
   done <<< "$(grep '=' ${file})"
 
