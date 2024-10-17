@@ -1,0 +1,17 @@
+pkgbase = python-pyformlang
+	pkgdesc = Python library to manipulate formal grammar
+	pkgver = 1.0.10
+	pkgrel = 1
+	url = python-pyformlang:https://github.com/Aunsiels/pyformlang
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	makedepends = python-setuptools
+	depends = python
+	depends = python-networkx
+	depends = python-numpy
+	depends = python-pydot
+	source = https://files.pythonhosted.org/packages/source/p/pyformlang/pyformlang-1.0.10.tar.gz
+	b2sums = 1d45e1c700a46be39c95043c8a21fc6808d27d230cee83a35079acd39c13f12fd3290bab6d9f2244aab9ac856a906f0b523c992416d8bb94872e5c04134c2fdd
+
+pkgname = python-pyformlang

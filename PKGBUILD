@@ -1,0 +1,32 @@
+# Maintainer: Manuel Wiesinger <m {you know what belongs here} mmap {and here} at>
+
+_pyname=pyformlang
+pkgname=python-$_pyname
+pkgver=1.0.10
+pkgrel=1
+pkgdesc="Python library to manipulate formal grammar"
+arch=('any')
+url="$pkgname:https://github.com/Aunsiels/pyformlang"
+license=('MIT')
+depends=('python' 'python-networkx' 'python-numpy' 'python-pydot')
+makedepends=('python-setuptools')
+checkdepends=('python-pytest')
+source=(https://files.pythonhosted.org/packages/source/${_pyname::1}/$_pyname/$_pyname-$pkgver.tar.gz)
+b2sums=('1d45e1c700a46be39c95043c8a21fc6808d27d230cee83a35079acd39c13f12fd3290bab6d9f2244aab9ac856a906f0b523c992416d8bb94872e5c04134c2fdd')
+
+check() {
+    cd $srcdir/$_pyname-$pkgver
+    PYTHONPATH=$PWD pytest
+}
+
+build() {
+    cd $srcdir/$_pyname-$pkgver
+    python setup.py build
+}
+
+package() {
+    cd $srcdir/$_pyname-$pkgver
+    python setup.py install --root="$pkgdir" --optimize=1
+
+    install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
+}
