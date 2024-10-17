@@ -1,6 +1,6 @@
 pkgbase = chatbox-git
 	pkgdesc = User-friendly Desktop Client App for AI Models/LLMs (GPT, Claude, Gemini, Ollama...).一个 AI 模型桌面客户端，支持 ChatGPT、Claude、Google Gemini、Ollama 等主流模型.
-	pkgver = 0.10.0.r3.gb3171b3
+	pkgver = 0.10.0.r7.g2fba84b
 	pkgrel = 1
 	url = https://chatboxai.app/
 	arch = any
