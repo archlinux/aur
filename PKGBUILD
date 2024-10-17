@@ -1,7 +1,7 @@
 # Maintainer: Entailz <entail-wraps0r at icloud dot com>
 
 pkgname=quickshell
-pkgver=r355.89d04f3
+pkgver=r357.15bd404
 pkgrel=1
 pkgdesc='Simple and flexbile QtQuick based desktop shell toolkit.'
 arch=(x86_64 aarch64)
@@ -46,6 +46,7 @@ build() {
 	cd "${pkgname}"
 	cmake -GNinja -B build \
 		-DCMAKE_BUILD_TYPE="RelWithDebInfo" \
+		-DCMAKE_INSTALL_PREFIX=/usr \
 		-DDISTRIBUTOR="AUR (package: quickshell)" \
 		-DDISTRIBUTOR_DEBUGINFO_AVAILABLE=NO
 
@@ -56,4 +57,5 @@ package() {
 	cd "${pkgname}"
 	DESTDIR=$pkgdir cmake --install build
 	install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	install -Dm644 "../../quickshell-check.hook" "$pkgdir/usr/share/libalpm/hooks/quickshell-check.hook"
 }
