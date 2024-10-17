@@ -1,7 +1,7 @@
 # Contributor: Myt1 <MYT1 @ QQ.com>
 
 pkgname=fcitx5-pinyin-sougou-dict
-pkgver=20241007.r0.g5a277a5
+pkgver=20241018.r0.g21eb30b
 pkgrel=1
 pkgdesc="Fcitx5-pinyin搜狗官网词库全部词量"
 arch=('any')
