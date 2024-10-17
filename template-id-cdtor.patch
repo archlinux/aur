@@ -1,0 +1,13 @@
+diff --git a/thirdparty/filewatch/FileWatch.hpp b/thirdparty/filewatch/FileWatch.hpp
+index 8f4b6092b..375de5f76 100644
+--- a/thirdparty/filewatch/FileWatch.hpp
++++ b/thirdparty/filewatch/FileWatch.hpp
+@@ -126,7 +126,7 @@ namespace filewatch {
+         FileWatch<T>& operator=(const FileWatch<T>& other) = delete;
+ 
+         // Const memeber varibles don't let me implent moves nicely, if moves are really wanted std::unique_ptr should be used and move that.
+-        FileWatch<T>(FileWatch<T>&&) = delete;
++        FileWatch(FileWatch<T>&&) = delete;
+         FileWatch<T>& operator=(FileWatch<T>&&) & = delete;
+ 
+     private:
