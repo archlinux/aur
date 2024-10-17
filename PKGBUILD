@@ -5,9 +5,9 @@
 # Contributor: Frederik “Freso” S. Olesen <freso.dk@gmail.com>
 # Contributor: Maxime Gauduin <alucryd@archlinux.org>
 pkgname=lutris-git
-pkgver=0.5.17.r293.gac72cc3
+pkgver=0.5.17.r382.g9aaed31
 pkgrel=1
-pkgdesc='Open Gaming Platform'
+pkgdesc="Open Gaming Platform"
 arch=('any')
 url="https://lutris.net"
 license=('GPL-3.0-or-later')
@@ -37,15 +37,13 @@ depends=(
   'xdg-utils'
   'xorg-xrandr'
 )
-makedepends=('git' 'meson')
+makedepends=(
+  'git'
+  'meson'
+)
 checkdepends=(
   'appstream-glib'
-#  'fluidsynth'
-#  'pciutils'
-#  'python-nose'
-#  'vulkan-tools'
-#  'xorg-server-xvfb'
-#  'xterm'
+  'python-pytest'
 )
 optdepends=(
   'fluidsynth: For games that have MIDI music'
@@ -93,8 +91,13 @@ build() {
 check() {
   meson test -C build --print-errorlogs
 
-#  cd "${pkgname%-git}"
-#  xvfb-run nosetests
+  cd "${pkgname%-git}"
+
+  # Python tests: Disabled because either they're querying hardware 
+  # or trying to spawn processes
+  pytest \
+    --ignore=tests/test_{api,dialogs,installer}.py \
+    -k "not GetNvidiaDriverInfo and not GetNvidiaGpuInfo and not import_module and not options"
 }
 
 package() {
