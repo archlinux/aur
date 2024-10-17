@@ -1,8 +1,8 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=tasker-permissions-git
-pkgver=0.2.0.r2.ga137604
-pkgrel=3
-_electronversion=30
+pkgver=0.2.0.r4.g29860cb
+pkgrel=2
+_electronversion=33
 pkgdesc="Utility to easily grant Tasker permissions"
 arch=('x86_64')
 url="https://github.com/joaomgcd/Tasker-Permissions"
@@ -11,7 +11,7 @@ depends=('android-tools' "electron${_electronversion}")
 makedepends=('git' 'npm')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=("${pkgname%-git}::git+https://github.com/joaomgcd/Tasker-Permissions.git"
+source=('git+https://github.com/joaomgcd/Tasker-Permissions.git'
         "${pkgname%-git}.desktop"
         "${pkgname%-git}.sh")
 sha256sums=('SKIP'
@@ -19,12 +19,12 @@ sha256sums=('SKIP'
             'ef4aef82872934ce7872ad8d5695b5a8efd2e633bfd5c404ade04ce7309a6a85')
 
 pkgver() {
-  cd "${pkgname%-git}"
+  cd Tasker-Permissions
   git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
-  cd "${pkgname%-git}"
+  cd Tasker-Permissions
   export npm_config_cache="$srcdir/npm_cache"
   npm install
 
@@ -32,7 +32,7 @@ prepare() {
 }
 
 build() {
-  cd "${pkgname%-git}"
+  cd Tasker-Permissions
   electronDist="/usr/lib/electron${_electronversion}"
   electronVer="$(sed s/^v// /usr/lib/electron${_electronversion}/version)"
   export npm_config_cache="$srcdir/npm_cache"
@@ -41,9 +41,9 @@ build() {
 }
 
 package() {
-  cd "${pkgname%-git}"
-  install -d "$pkgdir/usr/lib/${pkgname%-git}/"
-  cp -r dist/linux-unpacked/resources/ "$pkgdir/usr/lib/${pkgname%-git}/"
+  cd Tasker-Permissions
+  install -Dm644 dist/linux-unpacked/resources/app.asar -t \
+    "$pkgdir/usr/lib/${pkgname%-git}/resources/"
 
   # Use system ADB
   install -d "$pkgdir/usr/lib/${pkgname%-git}/bin/linux/"
