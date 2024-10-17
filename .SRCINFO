@@ -1,6 +1,6 @@
 pkgbase = ghostty-git-zen3
 	pkgdesc = Fast, native, feature-rich terminal emulator pushing modern features (Zen 3 optimized)
-	pkgver = r7679.c26d1cb2
+	pkgver = r7724.7b668d3d
 	pkgrel = 1
 	url = https://github.com/ghostty-org/ghostty
 	arch = x86_64
