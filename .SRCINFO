@@ -1,9 +1,10 @@
 pkgbase = python-jaxlib-bin
 	pkgdesc = XLA library for JAX - binary package
 	pkgver = 0.4.34
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/google/jax
 	arch = x86_64
+	arch = aarch64
 	license = Apache
 	makedepends = python-installer
 	makedepends = python-wheel
@@ -15,7 +16,9 @@ pkgbase = python-jaxlib-bin
 	provides = python-jaxlib=0.4.34
 	conflicts = python-jaxlib
 	noextract = jaxlib-0.4.34-cp312-cp312-manylinux2014_x86_64.whl
-	source = https://files.pythonhosted.org/packages/e7/0d/4faf839e3c8ce2a5b615df64427be3e870899c72c0ebfb5859348150aba1/jaxlib-0.4.34-cp312-cp312-manylinux2014_x86_64.whl
-	sha256sums = 48272e9034ff868d4328cf0055a07882fd2be93f59dfb6283af7de491f9d1290
+	source_x86_64 = https://files.pythonhosted.org/packages/cp312/j/jaxlib/jaxlib-0.4.34-cp312-cp312-manylinux2014_x86_64.whl
+	sha256sums_x86_64 = 48272e9034ff868d4328cf0055a07882fd2be93f59dfb6283af7de491f9d1290
+	source_aarch64 = https://files.pythonhosted.org/packages/cp312/j/jaxlib/jaxlib-0.4.34-cp312-cp312-manylinux2014_x86_64.whl
+	sha256sums_aarch64 = 1a30771d85fa77f9ab8f18e63240f455ab3a3f87660ed7b8d5eea6ceecbe5c1e
 
 pkgname = python-jaxlib-bin
