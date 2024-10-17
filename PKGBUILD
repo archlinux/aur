@@ -16,7 +16,7 @@ makedepends=('help2man')
 conflicts=("${_pkgname}")
 provides=("${_pkgname}")
 source=("LICENSE-${pkgver}::${_urlraw}/LICENSE"
-        "README-${pkgver}::${_urlraw}/README.md")
+        "README-${pkgver}.md::${_urlraw}/README.md")
 source_x86_64=("${url}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-linux-x86_64.tar.gz")
 source_i686=("${url}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-linux-i686.tar.gz")
 source_aarch64=("${url}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-linux-arm64.tar.gz")
@@ -38,7 +38,7 @@ package() {
   install -Dm755 "${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
 
   install -Dm644 "LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-  install -Dm644 "README-${pkgver}" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+  install -Dm644 "README-${pkgver}.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 
   install -Dm644 "MAN-${pkgver}.1" "${pkgdir}/usr/share/man/man1/${_pkgname}.1"
   gzip "${pkgdir}/usr/share/man/man1/${_pkgname}.1"
