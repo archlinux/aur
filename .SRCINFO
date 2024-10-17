@@ -1,0 +1,16 @@
+pkgbase = python-unique_log_filter
+	pkgdesc = Simple tool to filter out duplicate lines from a log file
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/twizmwazin/unique_log_filter
+	arch = any
+	license = BSD-2-Clause
+	makedepends = python-setuptools
+	makedepends = python-flit
+	depends = python>=3.7
+	source = https://files.pythonhosted.org/packages/source/u/unique_log_filter/unique_log_filter-0.1.0.tar.gz
+	source = https://github.com/twizmwazin/unique_log_filter/blob/v0.1.0/LICENSE
+	b2sums = 0241050090dc7953164ef69cad358db1d50381aaee4796534cf04b02748975b1c0f497be71e566ad3f1af94dfce2513bfd7fe7dd2b88b638df148843cb96af3e
+	b2sums = d4b38c98c7187173c4b70f3bd654221dd50d36e9e1cf82e4c69f153fd2a6eb32db0beee1f3026dfecf2ab6be84da22b19c09c9cf20416573615d388dd14b0caf
+
+pkgname = python-unique_log_filter
