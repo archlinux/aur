@@ -1,11 +1,14 @@
 # Maintainer: Entailz <entail-wraps0r at icloud dot com>
 
 pkgname=quickshell
-pkgver=r307.79b22af
+pkgver=r355.89d04f3
 pkgrel=1
 pkgdesc='Simple and flexbile QtQuick based desktop shell toolkit.'
 arch=(x86_64 aarch64)
 url='https://github.com/outfoxxed/quickshell'
+conflicts=("quickshell")
+provides=("quickshell=${pkgver%%.r*}")
+options=(!strip)
 license=('GPL')
 depends=(
 	'qt6-declarative'
@@ -28,8 +31,10 @@ makedepends=(
 
 source=(
 	"git+https://github.com/outfoxxed/quickshell.git"
+	"quickshell-rebuild.hook"
 )
 sha256sums=(
+	'SKIP'
 	'SKIP'
 )
 
@@ -40,8 +45,10 @@ pkgver() {
 
 build() {
 	cd "${pkgname}"
-	QTWAYLANDSCANNER="/usr/lib/qt6/qtwaylandscanner" cmake -GNinja -B build \
-		-DCMAKE_BUILD_TYPE="RelWithDebInfo"
+	cmake -GNinja -B build \
+		-DCMAKE_BUILD_TYPE="RelWithDebInfo" \
+		-DDISTRIBUTOR="AUR (package: quickshell)" \
+		-DDISTRIBUTOR_DEBUGINFO_AVAILABLE=NO
 
 	cmake --build build
 }
@@ -49,5 +56,6 @@ build() {
 package() {
 	cd "${pkgname}"
 	DESTDIR=$pkgdir cmake --install build
-	install -Dm0644 -t "{$pkgdir}/usr/share/licenses/${pkgname}" LICENSE
+	install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	install -Dm644 "../quickshell-rebuild.hook" "$pkgdir/usr/share/libalpm/hooks/quickshell-rebuild.hook"
 }

@@ -1,0 +1,9 @@
+[Trigger]
+Operation = Upgrade
+Operation = Install
+Type = Package
+Target = qt6-base
+[Action]
+Description = Rebuild Quickshell
+When = PostTransaction
+Exec = /usr/bin/yay -S --noconfirm --rebuild quickshell
