@@ -1,7 +1,3 @@
-[__config__]
-oldver = "old_ver.json"
-newver = "new_ver.json"
-
 [dockcheck]
 source = "git"
 git = "https://github.com/mag37/dockcheck.git"
