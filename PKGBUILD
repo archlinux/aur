@@ -2,7 +2,7 @@
 
 _pkgbasename=ghostty
 pkgname=${_pkgbasename}-git-zen3
-pkgrel=1
+pkgrel=2
 pkgver=r7724.7b668d3d
 pkgdesc="Fast, native, feature-rich terminal emulator pushing modern features (Zen 3 optimized)"
 arch=('x86_64')
@@ -31,25 +31,29 @@ pkgver() {
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
+prepare() {
+    cd "${srcdir}/${_pkgbasename}"
+    
+    # Modify build.zig to include Zen 3 optimizations
+    sed -i '/const target = b\.standardTargetOptions(.{}/a \
+        if (target.cpu.arch == .x86_64) {\
+            target.cpu_features_add |= std.Target.x86.featureSet(&.{\
+                .@"64bit", .adx, .aes, .avx, .avx2, .bmi, .bmi2, .clflushopt,\
+                .cmov, .cx16, .cx8, .f16c, .fma, .fsgsbase, .fxsr, .lzcnt,\
+                .mmx, .movbe, .nopl, .pclmul, .popcnt, .prfchw, .rdpid,\
+                .rdrnd, .rdseed, .sahf, .sha, .sse, .sse2, .sse3, .sse4_1,\
+                .sse4_2, .ssse3, .vaes, .vpclmulqdq, .wbnoinvd, .xsave,\
+                .xsavec, .xsaveopt, .xsaves,\
+            });\
+        }' build.zig
+}
+
 build() {
     cd "${srcdir}/${_pkgbasename}"
-    zig build \
-      -Dtarget=x86_64-linux-gnu \
-      -Dcpu=znver3 \
-      -Doptimize=ReleaseFast \
-      -Dcpu_features=+adx,+aes,+avx,+avx2,+bmi,+bmi2,+clflushopt,+f16c,+fma,+fsgsbase,+lzcnt,+movbe,+pclmul,+popcnt,+prfchw,+rdpid,+rdrnd,+rdseed,+sha,+sse4a,+vaes,+vpclmulqdq,+wbnoinvd \
-      -Demit-docs \
-      -Dstatic=false
+    zig build -Doptimize=ReleaseFast -Demit-docs -Dstatic=false
 }
 
 package() {
     cd "${srcdir}/${_pkgbasename}"
-    zig build \
-      -Dtarget=x86_64-linux-gnu \
-      -Dcpu=znver3 \
-      -Doptimize=ReleaseFast \
-      -Dcpu_features=+adx,+aes,+avx,+avx2,+bmi,+bmi2,+clflushopt,+f16c,+fma,+fsgsbase,+lzcnt,+movbe,+pclmul,+popcnt,+prfchw,+rdpid,+rdrnd,+rdseed,+sha,+sse4a,+vaes,+vpclmulqdq,+wbnoinvd \
-      -Demit-docs \
-      -Dstatic=false \
-      -p "$pkgdir/usr"
+    zig build -Doptimize=ReleaseFast -Demit-docs -Dstatic=false -p "$pkgdir/usr"
 }
