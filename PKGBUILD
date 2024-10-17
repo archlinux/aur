@@ -3,7 +3,7 @@
 pkgname=probequest
 pkgver=0.8.0
 _tag=6b792d7ca4e45d0b2d433f56d219e839c789e222 # git rev-parse "v${pkgver}"
-pkgrel=1
+pkgrel=2
 pkgdesc="Toolkit allowing to sniff and display the Wi-Fi probe requests passing nearby your wireless interface"
 arch=('any')
 url="https://probequest.skyplabs.net/en/stable/"
@@ -35,11 +35,11 @@ check(){
 }
 
 build() {
-    cd $name-$pkgver
+    cd $pkgname-$pkgver
     python -m build --wheel --no-isolation
 }
 
 package() {
-    cd $name-$pkgver
+    cd $pkgname-$pkgver
     python -m installer --destdir="$pkgdir" dist/*.whl
 }
