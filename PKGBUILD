@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=gopeed-bin
 _pkgname=Gopeed
-pkgver=1.6.0
+pkgver=1.6.1
 pkgrel=1
-pkgdesc="High speed downloader that supports all platforms."
+pkgdesc="High speed downloader that supports all platforms.Prebuilt version."
 arch=('x86_64')
 url="https://gopeed.com/"
 _ghurl="https://github.com/GopeedLab/gopeed"
@@ -21,7 +21,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-linux-amd64.deb"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('73dad625494eaa554e9c57321a032e5b53eaf85b739d70f33a317d411d26beba'
+sha256sums=('b44f8cf88dba9197087a037540fe92dfed8207818fd6ffa3452a14cabacf4541'
             '3b8311438e88f47eb507322a43c7a4156bfebb8c0f6e7b7436ef70842fb4c745')
 build() {
     sed -e "
@@ -33,7 +33,7 @@ build() {
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm755 -d "${pkgdir}/usr/lib"
-    cp -r "${srcdir}/opt/${pkgname%-bin}" "${pkgdir}/usr/lib"
+    cp -Pr --no-preserve=ownership "${srcdir}/opt/${pkgname%-bin}" "${pkgdir}/usr/lib"
     install -Dm644 "${srcdir}/usr/share/icons/hicolor/scalable/apps/${pkgname%-bin}.svg" \
         -t "${pkgdir}/usr/share/icons/hicolor/scalable/apps"
     install -Dm644 "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
