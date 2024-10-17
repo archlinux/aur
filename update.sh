@@ -43,7 +43,7 @@ if [[ "$SudachiDict_DATE" != "$SUDACHI_DATE" ]];then
         eval $(makepkg -g --noprepare -do -p $f)
         ./update_sha512sums.sh $f "${sha512sums[@]}"
     done
-    mksrcinfo
+    #mksrcinfo
     git diff
     git commit -a -m "Update: SudachiDict=$SudachiDict_DATE"
 fi
@@ -55,7 +55,7 @@ if [[ "$COMMIT" != "$FCITX5_MOZC_COMMIT" ]]; then
         eval $(makepkg -g --noprepare -do -p $f)
         ./update_sha512sums.sh $f "${sha512sums[@]}"
     done
-    mksrcinfo
+    #mksrcinfo
     git diff
     git commit -a -m "Update: _mozc_commit=$FCITX5_MOZC_COMMIT"
 fi
