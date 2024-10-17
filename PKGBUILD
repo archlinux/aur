@@ -1,11 +1,11 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 pkgname=paml
 pkgver=4.10.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Phylogenetic analysis by maximum likelihood. https://doi.org/10.1093/molbev/msm088"
 arch=('x86_64')
 url="http://abacus.gene.ucl.ac.uk/software/"
-license=('GPL3')
+license=('GPL-3.0-or-later')
 depends=('glibc')
 makedepends=('make')
 provides=('paml')
@@ -28,7 +28,7 @@ build() {
 	make -f Makefile
 	ls -lF
 	rm *.o
-	mv baseml basemlg codeml pamp evolver yn00 chi2 ../bin
+	mv baseml basemlg codeml pamp mcmctree evolver yn00 chi2 ../bin
 }
 
 package() {
