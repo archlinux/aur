@@ -1,0 +1,12 @@
+--- a/ras-events.c	2024-10-17 08:54:02.735439228 -0400
++++ b/ras-events.c	2024-10-17 08:54:09.928817952 -0400
+@@ -64,7 +64,9 @@
+ 
+ static const struct event_trigger event_triggers[] = {
+ 	{ "mc_event", &mc_event_trigger_setup },
++#ifdef HAVE_MEMORY_FAILURE
+ 	{ "memory_failure_event", &mem_fail_event_trigger_setup },
++#endif
+ };
+ 
+ static int get_debugfs_dir(char *tracing_dir, size_t len)
