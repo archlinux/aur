@@ -1,29 +1,52 @@
 # Maintainer: Manuel Wiesinger <m {you know what belongs here} mmap {and here} at>
 # Contributor: Julian Haas <archlinux at {first name}-{last name} dot de>
 
-pkgname=i3-gnome-pomodoro-git
 _srcname=i3-gnome-pomodoro
-
-pkgver=r92.7fe1895
-pkgrel=3
+pkgname=$_srcname-git
+pkgver=0.1.0.r92.7fe1895
+pkgrel=1
+epoch=1
 pkgdesc="Integrate gnome-pomodoro into i3"
 arch=('any')
 url="https://github.com/kantord/i3-gnome-pomodoro"
 license=('GPL-3.0-or-later')
-
-depends=('python' 'gnome-shell-pomodoro' 'python-click>=6.7' 'python-pydbus>=0.6.0' 'python-i3ipc>=1.3.0' 'python-gobject>=3.32.1')
-makedepends=('git')
+depends=(
+    'gnome-shell-pomodoro'
+    'python'
+    'python-click>=6.7'
+    'python-gobject>=3.32.1'
+    'python-i3ipc>=1.3.0'
+    'python-pydbus>=0.6.0'
+)
+makedepends=(
+    'git'
+    'python-build'
+    'python-installer'
+    'python-poetry'
+    'python-wheel'
+)
+optdepends=('python-blinkstick')
 provides=("$_srcname")
-
-source=("git+${url}.git")
-sha512sums=('SKIP')
+conflicts=("$_srcname")
+source=("$pkgname-$pkgver::git+${url}.git")
+b2sums=('SKIP')
 
 pkgver() {
-	 cd "${srcdir}/${_srcname}/i3_gnome_pomodoro"
-	 printf "r%s.%s\n" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    cd $srcdir/$pkgname-$pkgver
+
+    local _version=$(grep -e ^version pyproject.toml | sed -e 's/^.*"\(.*\)"$/\1/g')
+    local _revision=$(git rev-list --count HEAD)
+    local _commit=$(git rev-parse --short HEAD)
+
+    printf "%s.r%s.%s\n" $_version $_revision $_commit
+}
+
+build() {
+    cd $srcdir/$pkgname-$pkgver
+    python -m build --wheel --no-isolation
 }
 
 package() {
-	cd "${srcdir}/${_srcname}/i3_gnome_pomodoro"
-	install -D -m755 pomodoro_client.py "$pkgdir/usr/bin/i3-gnome-pomodoro"
+    cd $srcdir/$pkgname-$pkgver
+    python -m installer --destdir="$pkgdir" dist/*.whl
 }
