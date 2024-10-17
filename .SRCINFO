@@ -1,13 +1,13 @@
 pkgbase = zeitgeist-dependencies
 	pkgdesc = The language-agnostic dependency checker
-	pkgver = 0.5.3
+	pkgver = 0.5.4
 	pkgrel = 1
 	url = https://github.com/kubernetes-sigs/zeitgeist
 	arch = x86_64
 	license = Apache
 	makedepends = go
 	options = !lto
-	source = zeitgeist-0.5.3.tar.gz::https://github.com/kubernetes-sigs/zeitgeist/archive/v0.5.3.tar.gz
-	sha256sums = 15786344138cbff33a1b24063fcfa194eb80a2d7a65f40584cd38a84e3add53e
+	source = zeitgeist-0.5.4.tar.gz::https://github.com/kubernetes-sigs/zeitgeist/archive/v0.5.4.tar.gz
+	sha256sums = a847254d39ac28e9d2a85cdac1d9fec86af7181211f8b00cd5b3b4a7d5fb15f4
 
 pkgname = zeitgeist-dependencies
