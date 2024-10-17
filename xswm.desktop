@@ -1,0 +1,6 @@
+[Desktop Entry]
+Name=xswm
+Comment=Minimal X-window-manager with only one task. Open every window maximized.
+TryExec=xswm
+Exec=xswm
+Type=Application
