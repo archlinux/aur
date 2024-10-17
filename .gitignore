@@ -1,0 +1,6 @@
+/pkg
+/src
+/hoarder
+*.tar.gz
+*.pkg.tar.*
+*.onnx
