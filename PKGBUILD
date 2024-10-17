@@ -6,7 +6,7 @@ pkgname="${_srcname}-git"
 pkgdesc="Python bindings for Valgrind's VEX IR"
 url="https://github.com/angr/pyvex"
 pkgver=9.2.123.r1130.73519b5
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 depends=('glibc' 'python>=3.10' 'python-bitstring' 'python-cffi')
 makedepends=('git' 'python-build' 'python-installer' 'python-myst-parser' 'python-setuptools' 'python-sphinx-autodoc-typehints' 'python-wheel')
@@ -14,7 +14,7 @@ checkdepends=('python-pytest')
 # angr projects all have the same version and mutually support only that
 # version. So we provide both, the -git package, for other angr related -git
 # packages and the normal package, for packages not requiring a specific version.
-provides=($_srcname $pkgname)
+provides=($_srcname $pkgname 'libpyvex.so')
 conflicts=("${_srcname}")
 license=('BSD-2-Clause')
 source=("$pkgname::git+https://github.com/angr/pyvex.git")
