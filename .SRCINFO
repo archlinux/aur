@@ -1,11 +1,12 @@
 pkgbase = ovn
 	pkgdesc = Open Virtual Network
 	pkgver = 24.09.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ovn-org/ovn
 	arch = x86_64
 	license = Apache
 	makedepends = git
+	makedepends = python
 	depends = openvswitch
 	depends = libxdp
 	depends = numactl

@@ -2,12 +2,12 @@
 
 pkgname=ovn
 pkgver=24.09.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Open Virtual Network'
 license=('Apache')
 arch=('x86_64')
 depends=('openvswitch' 'libxdp' 'numactl' 'libunwind')
-makedepends=('git')
+makedepends=('git' 'python')
 url='https://github.com/ovn-org/ovn'
 source=(
   "git+https://github.com/ovn-org/ovn#tag=v${pkgver}"
