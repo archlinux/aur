@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=EpiDISH
-_pkgver=2.20.0
+_pkgver=2.20.1
 pkgname=r-${_pkgname,,}
-pkgver=2.20.0
+pkgver=2.20.1
 pkgrel=1
 pkgdesc='Epigenetic Dissection of Intra-Sample-Heterogeneity'
 arch=('any')
@@ -27,7 +27,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('383b14c664baa75b3ce14d6192bc61c4f0a161eb58ad546376cd6d6563a9139f')
+sha256sums=('5b5b7393add774304d5d0bc1233a8cae03e6c9467670139b9640ae00c9679a48')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
