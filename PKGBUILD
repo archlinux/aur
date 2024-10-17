@@ -2,15 +2,36 @@
 
 pkgname=meta-package-manager-git
 _pkgname=${pkgname%-git}
-pkgver=5.1.0.r42.g3a916b0
+pkgver=5.18.0.r31.g9a9b59d8
 pkgrel=1
 provides=($_pkgname)
 conflicts=($_pkgname)
 pkgdesc='A wrapper around all package managers (git version)'
 url='https://kdeldycke.github.io/meta-package-manager/'
-makedepends=(python-build python-installer python-wheel python-poetry)
-depends=('python>=3.7' python-boltons python-click python-click-extra python-tabulate python-tomli python-tomli-w python-xmltodict)
+makedepends=(uv)
+depends=(python python-boltons python-click-extra python-cyclonedx-lib python-packageurl python-spdx-tools python-tabulate python-tomli-w python-xmltodict)
 checkdepends=(python-pytest python-pytest-cov python-pytest-randomly python-pytest-xdist)
+optdepends=('apt: support for apt packages'
+            'rust: support for Rust packages'
+            'composer: support for PHP composer packages'
+            'dnf: support for RPM packages'
+            'portage: support for Gentoo packages'
+            'flatpak: support for Flatpak packages'
+            'rubygems: support for Ruby packages'
+            'npm: support for Node.js packages'
+            'opkg: support for OPKG packages'
+            'pacaur: support for AUR packages'
+            'pacman: support for Pacman packages'
+            'paru: support for AUR packages'
+            'python-pip: support for Python packages'
+            'python-pipx: support for Python pipx packages'
+            'snapd: support for Snap packages'
+            'steamcmd: support for Steam games'
+            'uv: support for Python packages'
+            'code: support for VSCode extensions'
+            'yarn: support for Node packages'
+            'yay: support for AUR packages'
+            'zypper: support for RPM packages')
 license=('GPL2')
 arch=('any')
 source=("git+https://github.com/kdeldycke/meta-package-manager.git")
@@ -22,27 +43,13 @@ pkgver() {
 }
 
 build() {
-    # Poetry has a bug where .gitignore files in any parent directory is used in excluding files to build, resulting in an empty package.
-    if [ -e "$srcdir/../.gitignore" ]; then
-        mv "$srcdir/../.gitignore" "$srcdir/../.gitignore.bak"
-        GITIGNORE_MOVED=1
-    fi
     cd "$srcdir/$_pkgname"
-    python -m build --wheel --no-isolation
-    if [ $GITIGNORE_MOVED = 1 ]; then
-        mv "$srcdir/../.gitignore.bak" "$srcdir/../.gitignore"
-    fi
-}
-
-check() {
-    # Pytest does currently not run successfully due to a bug in the tests. Will be uncommented when the bug is fixed.
-    # cd "$srcdir/$_pkgname-$pkgver"
-    # pytest
-    true
+    uv build
 }
 
 package() {
     cd "$srcdir/$_pkgname"
-    python -m installer --destdir="$pkgdir" dist/*.whl
-    install -Dm0644 -t "$pkgdir/usr/share/licenses/$_pkgname/" license
+    uv pip install --system --link-mode=copy --no-deps --prefix="$pkgdir/usr" dist/*.whl
+    rm "$pkgdir/usr/.lock"
+    install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname/" license
 }
