@@ -1,0 +1,4 @@
+[python-tokenizers]
+source = "git"
+git = "https://github.com/huggingface/tokenizers.git"
+prefix = "v"

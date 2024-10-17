@@ -8,7 +8,7 @@
 _module="tokenizers"
 _pkgname="python-$_module"
 pkgname="$_pkgname"
-pkgver=0.20.0
+pkgver=0.20.1
 pkgrel=1
 pkgdesc='Fast State-of-the-Art Tokenizers optimized for Research and Production'
 url="https://github.com/huggingface/tokenizers"
@@ -34,7 +34,7 @@ options=('!lto')
 _pkgsrc="$_module-$pkgver"
 _pkgext="tar.gz"
 source=("$_pkgsrc.$_pkgext"::"$url/archive/refs/tags/v$pkgver.$_pkgext")
-sha256sums=('ea027dbebbca61b28e1a4512eb447e513af3004bd268bcf139b51a384c073cb5')
+sha256sums=('1ac66047e780dae3feb9c6f85dbb95e8861e99d86590969383f871589a3f1ef0')
 
 _rust_env() {
   export CARGO_HOME CARGO_TARGET_DIR RUSTUP_TOOLCHAIN
