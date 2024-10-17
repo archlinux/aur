@@ -2,11 +2,11 @@
 _pkgname=weylus
 pkgname="$_pkgname-community-git"
 pkgver=2024.9.10.gbe2ca4e
-pkgrel=1
+pkgrel=2
 pkgdesc="Use your tablet as graphic tablet/touch screen on your computer."
 arch=("x86_64")
 url="https://github.com/electronstudio/WeylusCommunityEdition"
-license=("AGPL3")
+license=("AGPL-3.0-or-later")
 conflicts=("$_pkgname" "$_pkgname-bin" "$_pkgname-git")
 provides=("$_pkgname=${pkgver/\.r*/}")
 options=(!debug !lto) # Disabled for rust build
