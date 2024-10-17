@@ -9,7 +9,7 @@ pkgbase = pretty-git-prompt-git
 	makedepends = cmake
 	depends = git
 	conflicts = pretty-git-prompt
-	source = git+https://github.com/TomasTomecek/pretty-git-prompt.git
+	source = pretty-git-prompt-git-0.2.1_63967bc.tar.gz::git+https://github.com/TomasTomecek/pretty-git-prompt.git
 	sha256sums = SKIP
 
 pkgname = pretty-git-prompt-git

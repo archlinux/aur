@@ -11,7 +11,7 @@ url="https://github.com/TomasTomecek/pretty-git-prompt"
 license=('MIT')
 depends=('git')
 makedepends=('rust' 'cmake')
-source=("git+https://github.com/TomasTomecek/pretty-git-prompt.git")
+source=("$pkgname-$pkgver.tar.gz::git+https://github.com/TomasTomecek/pretty-git-prompt.git")
 sha256sums=(SKIP)
 
 pkgver() {
