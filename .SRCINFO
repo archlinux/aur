@@ -11,6 +11,7 @@ pkgbase = mympc-git
 	depends = mpc
 	depends = mpd
 	depends = python-mpd2
+	depends = bash
 	provides = mympc
 	conflicts = mympc
 	source = git+https://gitlab.com/teraflops/mympc.git

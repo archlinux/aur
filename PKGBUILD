@@ -7,7 +7,7 @@ pkgdesc="An mpc wrapper with music library zsh completion"
 arch=('any')
 url="https://gitlab.com/teraflops/mympc"
 license=('MIT')
-depends=('zsh' 'mpc' 'mpd' 'python-mpd2')
+depends=('zsh' 'mpc' 'mpd' 'python-mpd2' 'bash')
 makedepends=('git')
 provides=('mympc')
 conflicts=('mympc')
@@ -24,7 +24,8 @@ package() {
   cd "$srcdir/mympc"
   install -Dm644 "usr/local/share/zsh/site-functions/_mympc" "$pkgdir/usr/local/share/zsh/site-functions/_mympc"
   install -Dm755 "usr/local/bin/mympc" "$pkgdir/usr/local/bin/mympc"
-  install -Dm755 "usr/local/bin/get_top_rated_tracks.py" "$pkgdir/usr/local/bin/get_top_rated_tracks.py"
+  install -Dm755 "usr/local/share/mympc/get_top_rated_tracks.py" "$pkgdir/usr/local/share/mympc/get_top_rated_tracks.py"
+  install -Dm755 "usr/local/share/mympc/tags.sh" "$pkgdir/usr/local/share/mympc/tags.sh"
   install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
