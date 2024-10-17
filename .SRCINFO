@@ -1,6 +1,6 @@
 pkgbase = torepe-git
-	pkgdesc = Desktop Tool Application for visual comparing the differences between design and implementation..
-	pkgver = 1.6.3.r15.gc81a0f4
+	pkgdesc = Desktop Tool Application for visual comparing the differences between design and implementation.Use system-wide electron.
+	pkgver = 1.6.3.r19.gf6c4ce3
 	pkgrel = 1
 	url = https://nekobato.github.io/Torepe/
 	arch = any
