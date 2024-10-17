@@ -1,7 +1,7 @@
 # Maintainer: Olivier Michaelis <michaelis.olivier [at] gmail [dot] com>
 
 pkgname=spacectl-bin
-pkgver=v1.4.0 # renovate: datasource=github-releases depName=spacelift-io/spacectl vPrefix=true
+pkgver=v1.6.0 # renovate: datasource=github-releases depName=spacelift-io/spacectl vPrefix=true
 pkgrel=1
 pkgdesc="Spacelift client and CLI"
 arch=('x86_64' 'aarch64')
@@ -11,8 +11,8 @@ license=('MIT')
 source_x86_64=(spacectl-${pkgver}-x86_64::https://github.com/spacelift-io/spacectl/releases/download/${pkgver}/spacectl_${pkgver//v}_linux_amd64.zip)
 source_aarch64=(spacectl-${pkgver}-aarch64::https://github.com/spacelift-io/spacectl/releases/download/${pkgver}/spacectl_${pkgver//v}_linux_arm64.zip)
 
-sha256sums_x86_64=('6a4c6c62de16a65b858b9b2bd46b3c70b94dc6572fce013ca0073ddd26ff1508')
-sha256sums_aarch64=('7ade7ea2b1818b0e5ab8c88683d94236d344239666da3796a87a524e1afd791a')
+sha256sums_x86_64=('265964918ef682b3e2e81b7d557980c1c359fae59570d20602fbd9f352f63cb5')
+sha256sums_aarch64=('cce7cb0175facbbb56ba2cbe1f270da780cac8832c8a97a953038bd85b97468d')
 
 package() {
   unzip -o spacectl-${pkgver}-${arch} spacectl
