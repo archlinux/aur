@@ -2,14 +2,14 @@
 
 pkgname=gz-utils3
 pkgver=3.0.0
-pkgrel=1
+pkgrel=2
 _pkgmaj=${pkgver%%.*}
 _pkgbase=${pkgname::-${#_pkgmaj}}
 pkgdesc="Classes and functions for robot applications."
 arch=('any')
 url="https://github.com/gazebosim/${_pkgbase}"
 license=('Apache')
-depends=('cli11')
+depends=('cli11' 'spdlog')
 makedepends=(
   'cmake'
   'gz-cmake=4'
