@@ -1,7 +1,7 @@
 pkgbase = probequest
 	pkgdesc = Toolkit allowing to sniff and display the Wi-Fi probe requests passing nearby your wireless interface
 	pkgver = 0.8.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://probequest.skyplabs.net/en/stable/
 	arch = any
 	license = GPL-3.0-or-later
@@ -18,11 +18,9 @@ pkgbase = probequest
 	source = probequest-0.8.0::git+https://github.com/SkypLabs/probequest.git#tag=6b792d7ca4e45d0b2d433f56d219e839c789e222?signed
 	source = 0001-Do-not-require-old-setuptools-scm.patch
 	source = 0002-Fix-timezone-dependent-unittest.patch
-	source = pytest.ini
 	validpgpkeys = AA73D4B7CDB8C0546B47F061063BB9E8C569B26A
 	b2sums = a3639126d88a74b77bc503a30287b396acb60c016e2edd68b8509136b6fc4f7b1889e0b8ffee6497fa819ec4d2834872236814d6db6f300038afece42d825d60
 	b2sums = c624bb7592368ba7ac65437fa1f1272c78b65491693c26d0b94be20e71d61561feb55d4b5ce5086fdd1b4ca9c92d0f13b3635e828b101801b2edef4d630301e0
 	b2sums = 017b1cb49a0ff4020c2cfd5f4d92c469e271e7e9604b48ad6b62edbc266f0449b3d609ef1ef2dae7553d7dfcaa14b9f8a75d10077054e86b95ec3614ecb90910
-	b2sums = 6bb2debb9b686a76f0f1f048919eba0055c6a2831a0181aa6d45e4514850601225861756fd2b8b068d2921925db9ef1e374e0a7a3b8ec8e1828a8a6caf2175ae
 
 pkgname = probequest
