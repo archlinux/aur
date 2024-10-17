@@ -1,0 +1,20 @@
+pkgbase = whois-cli-bin
+	pkgdesc = simple command line whois client
+	pkgver = 0.0.5
+	pkgrel = 1
+	url = https://github.com/sheepla/whois-cli
+	arch = x86_64
+	arch = i686
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	provides = whois-cli
+	conflicts = whois-cli
+	source_x86_64 = https://github.com/sheepla/whois-cli/releases/download/v0.0.5/whois-cli_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = d4b5dc9b4b13f7c45d6729de37d082a897372bcbc6f1e8a91d1b6e6d0f7965a9
+	source_i686 = https://github.com/sheepla/whois-cli/releases/download/v0.0.5/whois-cli_Linux_i386.tar.gz
+	sha256sums_i686 = a12e814abd12afa6ff478e714ecadce9dafbfd04fd022dd8418fa929d7d41aa0
+	source_aarch64 = https://github.com/sheepla/whois-cli/releases/download/v0.0.5/whois-cli_Linux_arm64.tar.gz
+	sha256sums_aarch64 = 599670cce5fec30fa096861b828fe80559f372ade6cf27a8506f832474980999
+
+pkgname = whois-cli-bin
