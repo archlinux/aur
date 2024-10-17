@@ -1,11 +1,11 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=pip-player-git
 _pkgname="PiP Player"
-pkgver=1.0.0.r3.g7864b36
+pkgver=1.0.1.r3.g1e5c827
 _electronversion=31
 _nodeversion=20
 pkgrel=1
-pkgdesc="A simple application to play PiP(Picture-in-Picture) with any links that you like."
+pkgdesc="A simple application to play PiP(Picture-in-Picture) with any links that you like.Use system-wide electron."
 arch=('any')
 url="https://github.com/WickyPlays/pip-player"
 license=('MIT')
@@ -54,12 +54,13 @@ build() {
     _ensure_local_nvm
     gendesk -q -f -n --pkgname="${pkgname%-git}" --pkgdesc="${pkgdesc}" --categories="Utility" --name="${pkgname%-git}" --exec="${pkgname%-git} %U"
     cd "${srcdir}/${pkgname%-git}.git"
+    electronDist="/usr/lib/electron${_electronversion}"
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
     HOME="${srcdir}/.electron-gyp"
     mkdir -p "${srcdir}/.electron-gyp"
-    {
-        if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
+    if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
+        {
             echo -e '\n'
             echo 'registry "https://registry.npmmirror.com"'
             echo 'disturl "https://registry.npmmirror.com/-/binary/node/"'
@@ -73,12 +74,16 @@ build() {
             echo 'linkWorkspacePackages true'
             echo 'fetchRetries 3'
             echo 'fetchRetryTimeout 10000'
-        fi
-    } >> .yarnrc
+        } >> .yarnrc
+        sed -i "s/registry.npmjs.org/registry.npmmirror.com/g" yarn.lock
+    fi
     find src -type f -exec sed -i "s/process.resourcesPath/\'\/usr\/lib\/${pkgname%-bin}\'/g" {} \;
-    sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g;/\"AppImage\",/d;s/\"deb\"/\"dir\"/g" package.json
+    touch src/renderer/style.css
+    sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
     NODE_ENV=development    yarn install --cache-folder "${srcdir}/.yarn_cache"
-    NODE_ENV=production     yarn run package
+    NODE_ENV=production     npx ts-node ./.erb/scripts/clean.js dist
+    NODE_ENV=production     npm run build
+    NODE_ENV=production     npm exec -c "electron-builder --linux dir -c.electronDist=${electronDist}"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
