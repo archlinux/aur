@@ -5,7 +5,7 @@ pkgver=2.6.1.r0.g23d47c6
 _electronversion=31
 _nodeversion=20
 pkgrel=1
-pkgdesc="The simple markdown editor."
+pkgdesc="The simple markdown editor.Use system-wide electron."
 arch=('any')
 url="https://mkeditoross.github.io/"
 _ghurl="https://github.com/mkeditorOSS/mkeditor"
@@ -53,6 +53,7 @@ build() {
     _ensure_local_nvm
     gendesk -q -f -n --pkgname="${pkgname%-git}" --pkgdesc="${pkgdesc}" --categories="AudioVideo" --name="${_pkgname}" --exec="${pkgname%-git} %U"
     cd "${srcdir}/${pkgname//-/.}"
+    electronDist="/usr/lib/electron${_electronversion}"
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
     HOME="${srcdir}/.electron-gyp"
@@ -60,18 +61,20 @@ build() {
         echo -e '\n'	
         #echo 'build_from_source=true'
         echo "cache=${srcdir}/.npm_cache"
-        if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
+    } >> .npmrc
+    if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
+        {
             echo 'registry=https://registry.npmmirror.com'
             echo 'disturl=https://registry.npmmirror.com/-/binary/node/'
             echo 'electron_mirror=https://registry.npmmirror.com/-/binary/electron/'
             echo 'electron_builder_binaries_mirror=https://registry.npmmirror.com/-/binary/electron-builder-binaries/'
-        fi
-    } >> .npmrc
+        } >> .npmrc
+        sed -i "s/registry.npmjs.org/registry.npmmirror.com/g" package-lock.json
+    fi
     find src -type f -exec sed -i "s/icon\.ico/icon\.png/g" {} +
     sed -e "
         s/\/\${platform}\/\${arch}//g
         s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g
-        s/\"deb\"/\"dir\"/g
     " -i package.json
     rm -rf dist releases
     NODE_ENV=development    npm install
@@ -79,7 +82,7 @@ build() {
     NODE_ENV=production     npm run build-app
     NODE_ENV=production     npx tsc src/app/*.ts --outDir ./dist/app
     cp src/app/assets/icon.png dist/app/assets/
-    NODE_ENV=production     npm run build-installer
+    NODE_ENV=production     npm exec -c "electron-builder --linux dir -c.electronDist=${electronDist}"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
