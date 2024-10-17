@@ -9,10 +9,11 @@ epoch=0
 url='https://github.com/limo-app/limo/'
 arch=('x86_64')
 license=('GPL3')
-makedepends=('cmake' 'cpr' 'git' 'jsoncpp' 'imagemagick' 'libarchive' 'libloot'
+makedepends=('boost' 'cbindgen' 'cmake' 'cpr' 'git' 'jsoncpp' 'imagemagick' 'libarchive' 'libloot'
              'openssl' 'pugixml' 'qt5-base' 'qt5-svg' 'qt5-tools')
-depends=('cpr' 'jsoncpp' 'libarchive' 'libloot' 'openssl' 'pugixml'
+depends=('boost-libs' 'cpr' 'jsoncpp' 'libarchive' 'libloot' 'openssl' 'pugixml'
          'qt5-base' 'qt5-svg' 'qt5-tools')
+
 optdepends=('doxygen')
 source=("${pkgname}::git+https://github.com/limo-app/limo.git"
         'unrar-git::git+https://github.com/aawc/unrar.git'
