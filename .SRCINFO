@@ -1,0 +1,14 @@
+pkgbase = plymouth-theme-mikuboot-git
+	pkgdesc = A miku boot animation because she is living in my computer.
+	pkgver = r10.ed2e66d
+	pkgrel = 1
+	url = https://gitlab.com/EvysGarden/mikuboot
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = plymouth
+	depends = cantarell-fonts
+	source = plymouth-theme-mikuboot-git::git+https://gitlab.com/EvysGarden/mikuboot
+	sha256sums = SKIP
+
+pkgname = plymouth-theme-mikuboot-git
