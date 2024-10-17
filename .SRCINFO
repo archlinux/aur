@@ -14,6 +14,7 @@ pkgbase = pocketyoutube-git
 	makedepends = curl
 	depends = electron31
 	depends = nodejs
+	depends = python
 	provides = pocketyoutube=1.2.0
 	conflicts = pocketyoutube
 	source = pocketyoutube.git::git+https://github.com/0adri3n/PocketYoutube.git
