@@ -2,7 +2,7 @@
 # Previous maintainer: Derson5
 pkgname=jdownloader2
 pkgver=latest
-pkgrel=20
+pkgrel=21
 pkgdesc='Download manager, written in Java, for one-click hosting sites like Rapidshare and MEGA. Uses its own updater.'
 arch=('any')
 conflicts=()
@@ -41,7 +41,7 @@ sha256sums=('cab5904f226028fdc9384f407ceca34b4305885176fad29b08a2e8b83653a345'
             'ddea1dc41023cfdae4db91a23a86ebf8a6be294ee8ba59307f68f97c839d5f31'
             '1c9949bfeaf3595783eec9501e600cb8c4443e04f72d57c095560fb66dcd53d1'
             'c4301592694b3273ed44814debcc03bf1e4fc85882954f5c03e55508c53c4491'
-            'bbd44ae6066b1e3bd68da6aa5838602bff49c4b0641f5e6b945e9cd51882e5b5'
+            '44a499df472328f9034f9972aad02df0fc27a45ef1bb3e9314576d2fa9fdfcbe'
             '92cfbe543ee1f9e094347dbd9c0c6a59bd52974145f00dbece8ed0da9a828bfa'
             '16d70dfefe6d4d655313ff2784d2d259287d09634236e17a8c0ba00eac136274'
             '69d99b5d27c847eb7d99ea4e49adba2a5ac1cb12ce10eb03d38e524d6f12e234'

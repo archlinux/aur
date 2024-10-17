@@ -3,7 +3,7 @@ Type=Application
 Name=JDownloader
 Icon=jdownloader
 TryExec=JDownloader
-Exec=env _JAVA_AWT_WM_NONREPARENTING=1 JDownloader
+Exec=JDownloader
 Terminal=false
 Categories=Application;Network;
 StartupWMClass=jd-Main
