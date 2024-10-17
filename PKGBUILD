@@ -1,53 +1,41 @@
-# Maintainer: Pellegrino Prevete (tallero) <pellegrinoprevete@gmail.com>
+# Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
+# Contributor: Pellegrino Prevete (tallero) <pellegrinoprevete@gmail.com>
 # Contributor: Igor Dyatlov <dyatlov.igor@protonmail.com>
-# Contributor: Fabio Loli <fabio.loli@disroot.org>
 
-_pkgname=cartridges
-pkgname="${_pkgname}-git"
-pkgver=2.0.6.r0.gc347d9b
+pkgname=cartridges-git
+pkgver=2.10.1.r0.gce584a0
 pkgrel=1
 pkgdesc="A GTK4 + Libadwaita game launcher"
-arch=('any')
-url="https://github.com/kra-mo/${_pkgname}"
-license=('GPL3')
-depends=(
-  'libadwaita'
-  'python-gobject'
-  'python-pillow'
-  'python-pyaml')
-makedepends=(
-  'git'
-  'blueprint-compiler'
-  'meson')
-checkdepends=('appstream-glib')
-optdepends=(
-  "steam: Valve's digital software delivery system"
-  'heroic-games-launcher: Native GOG and Epic Games launcher for Linux'
-  'bottles: Easily manage wine and proton prefix')
-provides=("${_pkgname}")
-conflicts=("${_pkgname}")
-source=(git+${url}.git)
+arch=(any)
+url="https://github.com/kra-mo/cartridges"
+license=(GPL3)
+depends=(gtk4 libadwaita gdk-pixbuf2 gobject-introspection-runtime python python-gobject python-requests python-yaml
+         python-pillow python-urllib3 dconf hicolor-icon-theme)
+makedepends=(git blueprint-compiler meson)
+checkdepends=(appstream-glib)
+optdepends=("steam: Valve's digital software delivery system"
+            'heroic-games-launcher: Native GOG and Epic Games launcher for Linux'
+            'bottles: Easily manage wine and proton prefix')
+provides=(cartridges)
+conflicts=(cartridges)
+source=("git+https://github.com/kra-mo/cartridges.git")
 b2sums=('SKIP')
 
 pkgver() {
-  cd "${_pkgname}"
-  git describe --long --tags | \
-    sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  cd cartridges
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  arch-meson "${_pkgname}" build
+  arch-meson cartridges build -D tiff_compression=jpeg
   meson compile -C build
 }
 
 check() {
-  meson test -C build \
-             --print-errorlogs || :
+  # https://github.com/kra-mo/cartridges/issues/206
+  meson test -C build --print-errorlogs || :
 }
 
 package() {
-  meson install -C build \
-                --destdir "$pkgdir"
+  meson install -C build --destdir "${pkgdir}"
 }
-
-# vim:set sw=2 sts=-1 et:
