@@ -2,14 +2,14 @@
 # Contributor: Wes Jackson <icebal dot 7 at gmail dot com>
 
 pkgname=nfs-ganesha-git
-pkgver=6.dev.13.r0.g7e2b1f378
+pkgver=6.1.r0.ge13bc5dae
 pkgrel=1
 pkgdesc="NFS and 9P protocols in user mode."
 arch=(x86_64 i686 armv7h aarch64)
 url="http://nfs-ganesha.github.io/"
-license=(GPL3)
-depends=(glibc nfsidmap libcap krb5 util-linux-libs e2fsprogs dbus libwbclient jemalloc liburcu acl btrfs-progs)
-makedepends=(cmake git lsb-release doxygen python-sphinx graphviz lsb-release)
+license=(LGPL-3.0-only)
+depends=(glibc gcc-libs nfsidmap libcap krb5 util-linux-libs e2fsprogs dbus libwbclient jemalloc liburcu acl btrfs-progs)
+makedepends=(cmake git lsb-release doxygen python-sphinx graphviz)
 provides=(nfs-ganesha)
 conflicts=(nfs-ganesha)
 source=("git+https://github.com/nfs-ganesha/nfs-ganesha.git"
@@ -46,8 +46,6 @@ build() {
     -DUSE_FSAL_RGW=OFF
 
   cmake --build build
-
-#don't use /usr/libexec/
 }
 
 package() {
