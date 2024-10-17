@@ -2,7 +2,7 @@
 
 _pkgbase='dzdsu'
 pkgname="python-${_pkgbase}"
-pkgver=1.7.14
+pkgver=1.7.15
 pkgrel=1
 pkgdesc='DayZ dedicated server utility.'
 arch=('any')
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('python' 'python-psutil' 'python-setuptools' 'steamcmd')
 makedepends=('git' 'python-build' 'python-installer' 'python-setuptools-scm' 'python-wheel')
 source=("${_pkgbase}::git+${url}.git#tag=${pkgver}")
-md5sums=('60bd11d0404e466e6dccc685aa80840a')
+md5sums=('f30655b40eca86564ae5d254bf19d372')
 
 build() {
     cd "${srcdir}/${_pkgbase}"
