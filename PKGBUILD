@@ -9,7 +9,7 @@ pkgdesc="Fork of Woof! with additional features"
 arch=('x86_64')
 url="https://github.com/fabiangreffrath/woof"
 license=('GPL-2.0-or-later')
-depends=(sdl2 sdl2_net openal libsndfile hicolor-icon-theme glibc)
+depends=(sdl2 sdl2_net alsa-lib openal libsndfile hicolor-icon-theme glibc)
 # FluidSynth is optional, but can not be an optdepends since it gets linked to the built executable
 # Required for high-quality MIDI music, you probably want it.
 depends+=(fluidsynth)
