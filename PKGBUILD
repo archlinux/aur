@@ -1,4 +1,4 @@
-# Maintainer: <teraflops cprieto.ortiz@gmail.com>
+# Maintainer: <teraflops, cprieto.ortiz@gmail.com>
 
 pkgname=mympc-git
 pkgver=r7.99708e5
