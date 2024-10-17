@@ -1,0 +1,65 @@
+From afe30940e6cbf003a545e4b6c4d8e01d6eba14af Mon Sep 17 00:00:00 2001
+From: Christian Nagel <chris.imx@online.de>
+Date: Sat, 7 Sep 2024 12:58:26 +0000
+Subject: [PATCH 1/2] Add command line flag for specifying web dir
+
+---
+ cmd/fmdserver.go | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/cmd/fmdserver.go b/cmd/fmdserver.go
+index 7b0e10c..48a0fc0 100644
+--- a/cmd/fmdserver.go
++++ b/cmd/fmdserver.go
+@@ -613,12 +613,13 @@ func fileExists(filename string) bool {
+ 
+ func main() {
+ 	filesDir := ""
++	webDir := ""
+ 	cwd := get_cwd()
+ 	flag.StringVar(&filesDir, "d", cwd, "Specifiy data directory. Default is the directory of the executable.")
++	flag.StringVar(&webDir, "w", filepath.Join(cwd, WEB_DIR), "Specifiy web directory. Default is the www directory in the directory of the executable.")
+ 	flag.Parse()
+ 	fmt.Println("Init: FMD-Data directory: ", filesDir)
+ 
+-	webDir := filepath.Join(filesDir, WEB_DIR)
+ 	config := load_config(filesDir)
+ 	init_db(filesDir, config)
+ 
+-- 
+GitLab
+
+
+From ba23508f1b2b0ce8a3f4be202f06766acd8b2403 Mon Sep 17 00:00:00 2001
+From: Christian Nagel <chris.imx@online.de>
+Date: Sat, 7 Sep 2024 15:52:13 +0000
+Subject: [PATCH 2/2] Add config dir argument
+
+---
+ cmd/fmdserver.go | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/cmd/fmdserver.go b/cmd/fmdserver.go
+index 48a0fc0..5017f74 100644
+--- a/cmd/fmdserver.go
++++ b/cmd/fmdserver.go
+@@ -614,13 +614,15 @@ func fileExists(filename string) bool {
+ func main() {
+ 	filesDir := ""
+ 	webDir := ""
++	configDir := ""
+ 	cwd := get_cwd()
+ 	flag.StringVar(&filesDir, "d", cwd, "Specifiy data directory. Default is the directory of the executable.")
+ 	flag.StringVar(&webDir, "w", filepath.Join(cwd, WEB_DIR), "Specifiy web directory. Default is the www directory in the directory of the executable.")
++	flag.StringVar(&configDir, "c", cwd, "Specifiy config directory. Default is the directory of the executable.")
+ 	flag.Parse()
+ 	fmt.Println("Init: FMD-Data directory: ", filesDir)
+ 
+-	config := load_config(filesDir)
++	config := load_config(configDir)
+ 	init_db(filesDir, config)
+ 
+ 	fmt.Println("FMD Server ", VERSION)
+-- 
+GitLab
+

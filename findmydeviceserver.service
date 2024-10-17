@@ -1,0 +1,12 @@
+[Unit]
+Description=Official server for the FindMyDevice (FMD) android app
+After=network.target
+
+[Service]
+User=findmydevice
+Group=findmydevice
+ExecStart=/usr/bin/fmdserver -c /etc/fmdserver/ -w /usr/share/webapps/fmdserver/ -d /var/lib/fmdserver/
+Restart=on-abort
+
+[Install]
+WantedBy=multi-user.target

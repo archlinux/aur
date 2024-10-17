@@ -1,0 +1,2 @@
+Z /etc/fmdserver/ 0700 findmydevice findmydevice
+d %S/fmdserver 0700 findmydevice findmydevice
