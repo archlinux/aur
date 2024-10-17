@@ -1,8 +1,8 @@
 pkgbase = mrhlpr-git
 	pkgdesc = merge request helper for postmarketOS maintainers
-	pkgver = r133.336d952
+	pkgver = r150.b067a9f
 	pkgrel = 1
-	url = https://gitlab.com/postmarketOS/mrhlpr
+	url = https://gitlab.postmarketos.org/postmarketOS/mrhlpr
 	arch = any
 	license = GPL-3.0-or-later
 	makedepends = git
@@ -15,7 +15,7 @@ pkgbase = mrhlpr-git
 	optdepends = python-gitlab
 	provides = mrhlpr
 	conflicts = mrhlpr
-	source = git+https://gitlab.com/postmarketOS/mrhlpr.git
+	source = git+https://gitlab.postmarketos.org/postmarketOS/mrhlpr.git
 	sha512sums = SKIP
 
 pkgname = mrhlpr-git
