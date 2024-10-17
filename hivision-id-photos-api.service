@@ -1,0 +1,14 @@
+[Unit]
+Description = HivisionIDPhotos API Service
+Wants = network-online.target
+After = network-online.target
+
+[Service]
+User = hivision-id-photos
+Group = hivision-id-photos
+Restart = on-failure
+EnvironmentFile = -/etc/conf.d/hivision-id-photos-api.env
+ExecStart = /usr/bin/hivision-id-photos-api
+
+[Install]
+WantedBy = multi-user.target
