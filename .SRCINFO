@@ -1,6 +1,6 @@
 pkgbase = mangojuice
 	pkgdesc = A convenient alternative to GOverlay for configuring MangoHud
-	pkgver = 0.7.0
+	pkgver = 0.7.1
 	pkgrel = 1
 	url = https://github.com/radiolamp/mangojuice
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = mangojuice
 	depends = libgee
 	optdepends = vulkan-tools
 	options = !debug
-	source = https://github.com/radiolamp/mangojuice/archive/refs/tags/0.7.0.tar.gz
-	b2sums = 0db3705b925c3668bab8cf684e252add079f2b58b16b6293e2c667d86203defcc933111df0236b0a35207ca83cd7626c0e4601b59076c38cbec32dcedf127e68
+	source = https://github.com/radiolamp/mangojuice/archive/refs/tags/0.7.1.tar.gz
+	b2sums = d10b7204eb5f6e0102ed6a488e41b3266beefebeddb75bd9b5c2456d801376768617a86ca605a3b688958e337c1166bac5848687a0017e2feec2f5209fa2364d
 
 pkgname = mangojuice
