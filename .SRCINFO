@@ -1,0 +1,15 @@
+pkgbase = vlabeler-bin
+	pkgdesc = Open source voice labeling application
+	pkgver = 1.3.1
+	pkgrel = 1
+	url = https://github.com/sdercolin/vlabeler
+	arch = x86_64
+	license = Apache
+	makedepends = java-environment=17
+	depends = java-runtime=17
+	source = https://github.com/sdercolin/vlabeler/releases/download/1.3.1/vlabeler-1.3.1-amd64.deb
+	source = vLabeler.desktop
+	sha256sums = d11850bb5040a5ca8a01bba62c20652caa7b62175b2b3230eb2321db00bd7771
+	sha256sums = cb3e245702507f620545e1d442792427cdbb8a51d2c6f185238e9d3114398b76
+
+pkgname = vlabeler-bin
