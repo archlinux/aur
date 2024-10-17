@@ -1,7 +1,7 @@
 # Maintainer: Cody Wyatt Neiman (xangelix) <neiman@cody.to>
 
 pkgname=kasmvncserver-bin
-pkgver=1.3.1
+pkgver=1.3.2
 pkgrel=1
 pkgdesc="KasmVNC provides remote web-based access to a Desktop or application."
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('aarch64-linux-gnu-gcc>=11' 'ca-certificates-utils' 'libbsd>=0.7.0' 'li
 backup=('etc/kasmvnc/kasmvnc.yaml')
 options=('!strip' '!emptydirs')
 source=("https://github.com/kasmtech/KasmVNC/releases/download/v${pkgver}/kasmvncserver_jammy_${pkgver}_amd64.deb")
-sha512sums=('8ccb4e89c29fb4098fe3b7af14c3f95d34e715e7eaef853013033d509c5e361aaab53c18bd440c8fd8ab423fca22fa9ef421e65a3f824f1e45ce3ceae7de5dcc')
+sha512sums=('80929f01090038cf850dfc3a4a473a6925926f9fcc817f4d698ddee5575a82e8d2e4cba5ffdcb1e14aa7b42f46c42fcb92d2a78e20839738e47f13146a86456a')
 
 package(){
         # Extract package data
