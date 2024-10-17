@@ -1,0 +1,17 @@
+pkgbase = hyprwall
+	pkgdesc = GUI for setting wallpapers with Hyprpaper, written in blazingly fast Rust!
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/nnyyxxxx/hyprwall
+	arch = x86_64
+	license = GPL-2.0
+	makedepends = rustup
+	makedepends = pango
+	depends = glibc
+	depends = gcc-libs
+	depends = gtk4
+	optdepends = hyprland
+	source = hyprwall-0.1.1.tar.gz::https://github.com/nnyyxxxx/hyprwall/archive/refs/tags/v0.1.1.tar.gz
+	sha256sums = abc85360b3d178be538b4deb5cf297e1bf0698be3238fd99ca0467bc8d2f9a7d
+
+pkgname = hyprwall
