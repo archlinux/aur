@@ -1,6 +1,6 @@
 pkgbase = jre17-zulu-bin
 	pkgdesc = Azul Zulu OpenJDK full runtime environment, bin version.
-	pkgver = 17.0.12
+	pkgver = 17.0.13
 	pkgrel = 1
 	url = https://www.azul.com/downloads/
 	install = jre17-zulu-bin.install
@@ -25,10 +25,10 @@ pkgbase = jre17-zulu-bin
 	provides = java-runtime-headless-openjdk=17
 	provides = java-runtime=17
 	provides = java-runtime-openjdk=17
-	source_aarch64 = https://cdn.azul.com/zulu/bin/zulu17.52.17-ca-jre17.0.12-linux_aarch64.tar.gz
-	sha256sums_aarch64 = 02519f848f5b87ca59ead4f5e8f6c8df28d98f392307d9df926d84df97910de7
-	source_i686 = https://cdn.azul.com/zulu/bin/zulu17.52.17-ca-jre17.0.12-linux_i686.tar.gz
-	sha256sums_i686 = 82b92256e7e20fd6cb1f6eae2a9901a5f60d828b48342176bc511614ca5d5f27
-	source_x86_64 = https://cdn.azul.com/zulu/bin/zulu17.52.17-ca-jre17.0.12-linux_x64.tar.gz
-	sha256sums_x86_64 = 3444b27466aa5eab34172a6428de7a9ae57253ec10a2c707d271c48df77ab4d2
+	source_aarch64 = https://cdn.azul.com/zulu/bin/zulu17.54.21-ca-jre17.0.13-linux_aarch64.tar.gz
+	sha256sums_aarch64 = ee0d9b75a5d4126a2758d4af3de893eb09e0207a05c8f29f1615ea2ddb959fc9
+	source_i686 = https://cdn.azul.com/zulu/bin/zulu17.54.21-ca-jre17.0.13-linux_i686.tar.gz
+	sha256sums_i686 = ecfc0bafd03876420d769cfb6084eb4c2e5f2cf2f49f4b6b766ef7ea6b61558b
+	source_x86_64 = https://cdn.azul.com/zulu/bin/zulu17.54.21-ca-jre17.0.13-linux_x64.tar.gz
+	sha256sums_x86_64 = 2d74f026d0d184075ad99de343c6a24bd702eb25d87ce6de5e3ab8df1cd3ef25
 pkgname = jre17-zulu-bin
