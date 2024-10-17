@@ -8,11 +8,9 @@ pkgbase = python-jaxlib-bin
 	license = Apache
 	makedepends = python-installer
 	makedepends = python-wheel
-	depends = python-absl
-	depends = python-flatbuffers
-	depends = python-ml-dtypes
-	depends = python-numpy
-	depends = python-scipy
+	depends = python-ml-dtypes>=0.2.0
+	depends = python-numpy>=1.24
+	depends = python-scipy>=1.10
 	provides = python-jaxlib=0.4.34
 	conflicts = python-jaxlib
 	noextract = jaxlib-0.4.34-cp312-cp312-manylinux2014_x86_64.whl

@@ -10,14 +10,13 @@ url="https://github.com/google/jax"
 license=('Apache')
 provides=(python-jaxlib=${pkgver})
 conflicts=(python-jaxlib)
-depends=('python-absl'
-         'python-flatbuffers'
-         'python-ml-dtypes'
-         'python-numpy'
-         'python-scipy')
+depends=('python-ml-dtypes>=0.2.0'
+         'python-numpy>=1.24'
+         'python-scipy>=1.10' # requiring >=1.11.1 for python 3.12
+	 )
 makedepends=('python-installer' 'python-wheel')
 
-_py=cp312
+_py="cp$(python -c 'from sys import version_info as vi; print(f"{vi.major}{vi.minor}")')"
 _whl=${_name//-/_}-$pkgver-$_py-${_py}-manylinux2014_$CARCH.whl
 
 source_x86_64=("https://files.pythonhosted.org/packages/$_py/${_name::1}/$_name/${_whl}")
