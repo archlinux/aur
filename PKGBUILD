@@ -54,22 +54,11 @@ prepare() {
 }
 
 build() {
-  if [ -d /usr/lib/jvm/java-21-openjdk ]; then
-    export JAVA_HOME=/usr/lib/jvm/java-21-openjdk
-    export MAKEPKG_JAVA_VERSION=21
-  elif [ -d /usr/lib/jvm/java-17-openjdk ]; then
-    export JAVA_HOME=/usr/lib/jvm/java-21-openjdk
-    export MAKEPKG_JAVA_VERSION=17
-  else
-    export JAVA_HOME=/usr/lib/jvm/default
-  fi
-  echo $JAVA_HOME
-
   # https://github.com/Aries85/LightZone/issues/218#issuecomment-357868376
   MAKEFLAGS="-j1"
 
   cd "${srcdir}/LightZone-${pkgver}/"
-  ant -f linux/build.xml jar
+  JAVA_HOME=/usr/lib/jvm/default ant -f linux/build.xml jar
 }
 
 package() {
