@@ -1,8 +1,8 @@
 pkgname=shibboleth-sp
-pkgver=3.4.1
+pkgver=3.5.0
 pkgrel=1
 pkgdesc="Shibboleth SAML2 Service Provider (including Apache mod_shib)"
-url="https://wiki.shibboleth.net/confluence/display/SP3/Home"
+url="https://shibboleth.atlassian.net/wiki/spaces/SP3/overview"
 license=(Apache)
 arch=(x86_64)
 depends=(
@@ -30,13 +30,14 @@ optdepends=(
   "apache: To use mod_shib in Apache."
   "fcgi: To use shibresponder and shibauthorizer in Nginx/Lighttpd."
 )
+# Git: git+https://git.shibboleth.net/git/cpp-sp.git
 source=("https://shibboleth.net/downloads/service-provider/$pkgver/$pkgname-$pkgver.tar.gz"
         "https://shibboleth.net/downloads/service-provider/$pkgver/$pkgname-$pkgver.tar.gz.asc"
         "apache.conf"
         "shibboleth-sp.sysusers"
         "shibboleth-sp.tmpfiles"
         "shibd.service")
-sha256sums=('1d61389ab7d665ee5ac25b8d62543c41f81592118befd153475037221dd83382'
+sha256sums=('ed76aedc3d9935982f743bcc87c505967d0f1f637fe8b5e4b42f3f635d6c2341'
             'SKIP'
             'ba57a546c213e06c8ff79f7de3daf1927a04ba0dd24f90e6343c2783c9a09c56'
             '8df312358f8341b246f08bc8b8691f49b00dd3fe639061aa24f60a5ddb9551db'
