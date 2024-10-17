@@ -1,0 +1,24 @@
+pkgbase = whris-bin
+	pkgdesc = Displays management information for IPs associated with the domain.
+	pkgver = 0.1.48
+	pkgrel = 1
+	url = https://github.com/harakeishi/whris
+	arch = x86_64
+	arch = i686
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	provides = whris
+	conflicts = whris
+	source = LICENSE-0.1.48::https://raw.githubusercontent.com/harakeishi/whris/v0.1.48/LICENSE
+	source = README-0.1.48::https://raw.githubusercontent.com/harakeishi/whris/v0.1.48/README.md
+	sha256sums = 1d6483a11c94d7bc6e331ecd6befbbb69a3344a44266a1a0c76b5441aff0f23d
+	sha256sums = fbf11548081cf20f85ed235eb527c6a0ee215e9fd894bd86482771a552d0f2cd
+	source_x86_64 = https://github.com/harakeishi/whris/releases/download/v0.1.48/whris_0.1.48_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = 81b83d7b1afeda7cd278a21a3ebde1a9d97b2010a37d5cd80bb84cc62699198a
+	source_i686 = https://github.com/harakeishi/whris/releases/download/v0.1.48/whris_0.1.48_Linux_i386.tar.gz
+	sha256sums_i686 = 055bdc180de392b74701436ff321ed66678801b7e1ba75c29b351ae4f01b0b5d
+	source_aarch64 = https://github.com/harakeishi/whris/releases/download/v0.1.48/whris_0.1.48_Linux_arm64.tar.gz
+	sha256sums_aarch64 = 53b9dc5602426c3901bdfe9c4fb4f14c6de0328f8f14275bf777576f5f4e1c0c
+
+pkgname = whris-bin
