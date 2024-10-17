@@ -1,7 +1,7 @@
 # Maintainer: Christopher Arndt <aur at chrisarndt dot de>
 
 pkgname=guitarix.vst
-pkgver=0.3
+pkgver=0.4
 pkgrel=1
 pkgdesc='A versatile (guitar) amplifier VST3 plugin'
 arch=(x86_64)
@@ -37,7 +37,7 @@ optdepends=(
   'gxplugins.lv2: for Guitarix LV2 plugins'
 )
 source=("https://github.com/brummer10/$pkgname/releases/download/v$pkgver/Guitarix.vst3_$pkgver.tar.gz")
-sha256sums=('b1d93f5bc3991fe3253059879be9c7250ec71908afd273237fcea560962361eb')
+sha256sums=('2fc71fb495695a5a98b4c2ee3997eb88803951d039e3231a9cffc721a212e402')
 
 
 build() {
