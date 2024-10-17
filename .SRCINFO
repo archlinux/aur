@@ -1,6 +1,6 @@
 pkgbase = quickemu-git
 	pkgdesc = Quickly create and run optimised Windows, macOS and Linux desktop virtual machines
-	pkgver = 4.9.6.r2.gaeb14a7
+	pkgver = 4.9.6.r35.g84595dc
 	pkgrel = 1
 	url = https://github.com/quickemu-project/quickemu
 	arch = any
