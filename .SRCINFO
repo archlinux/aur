@@ -10,6 +10,7 @@ pkgbase = limo-git
 	arch = i686
 	arch = x86_64
 	license = GPL3
+	makedepends = cmake
 	makedepends = cpr
 	makedepends = git
 	makedepends = jsoncpp

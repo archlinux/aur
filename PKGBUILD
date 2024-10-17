@@ -9,8 +9,8 @@ epoch=0
 url='https://github.com/limo-app/limo/'
 arch=('x86_64')
 license=('GPL3')
-makedepends=('cpr' 'git' 'jsoncpp' 'imagemagick' 'libarchive' 'libloot' 'openssl'
-             'pugixml' 'qt5-base' 'qt5-tools')
+makedepends=('cmake' 'cpr' 'git' 'jsoncpp' 'imagemagick' 'libarchive' 'libloot'
+             'openssl' 'pugixml' 'qt5-base' 'qt5-tools')
 depends=('cpr' 'jsoncpp' 'libarchive' 'libloot' 'openssl' 'pugixml'
          'qt5-base' 'qt5-tools')
 optdepends=('doxygen')
