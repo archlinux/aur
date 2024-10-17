@@ -1,0 +1,19 @@
+pkgbase = python-mtcnn-runtime
+	pkgdesc = Python library for streamlined tracking and management of AI training processes.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/SAKURA-CAT/mtcnn-runtime
+	arch = any
+	license = Apache-2.0
+	makedepends = python-build
+	makedepends = python-hatch-fancy-pypi-readme
+	makedepends = python-hatch-requirements-txt
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python-onnxruntime
+	depends = python-opencv
+	source = mtcnn-runtime-1.0.0.tar.gz::https://files.pythonhosted.org/packages/source/m/mtcnn_runtime/mtcnn_runtime-1.0.0.tar.gz
+	sha256sums = dc48d6566ff0229a028c5074f66989a17ed36ed5e41fe49c973925f8a5043d47
+
+pkgname = python-mtcnn-runtime
