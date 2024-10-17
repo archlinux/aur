@@ -1,9 +1,9 @@
 # vim:ts=2:sw=2:expandtab
 # Maintainer: peelz <peelz.dev+arch@gmail.com>
 
-_commit="3040c2d6dc4659a20893d21f891fcd1bbe24a923"
+_commit="56cf0082b5f4340805f04e100810ee1d2bfa966d"
 pkgname="uwsm"
-pkgver="0.20.0"
+pkgver="0.20.1"
 pkgrel="1"
 pkgdesc="A standalone Wayland session manager"
 url="https://github.com/Vladimir-csp/uwsm"
