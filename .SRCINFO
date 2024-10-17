@@ -1,5 +1,5 @@
 pkgbase = bytebackup-git
-	pkgdesc = A Simple File Backup Utility.
+	pkgdesc = A Simple File Backup Utility.Use system-wide electron.
 	pkgver = 1.0.0.r0.g7645172
 	pkgrel = 1
 	url = https://github.com/muhammadali360/ByteBackup
