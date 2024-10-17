@@ -1,12 +1,13 @@
 pkgbase = spectral-font
 	pkgdesc = Screen-first serif font face
-	pkgver = 2.003
-	pkgrel = 4
+	pkgver = 2.005
+	pkgrel = 1
 	url = https://fonts.google.com/specimen/Spectral
 	arch = any
 	license = OFL-1.1-no-RFN
-	source = https://github.com/productiontype/Spectral/archive/748733e3761fc7985ca9c473996ed121954debf8/spectral-font-2.003.zip
-	sha256sums = 67cd3d1719b0650d8adac5115908882cc63f2ce964ff0fddbf6ec574b933b5b2
+	options = !debug
+	source = https://github.com/productiontype/Spectral/archive/f89366613f7deb4f2f92cd6e0e905311aab6a3cc/spectral-font-2.005.zip
+	sha256sums = 3bdf318d6653daf821ddb957c2d637b4971b17c3b82946472efdad6b805d8b01
 
 pkgname = ttf-spectral
 	conflicts = otf-spectral
