@@ -6,7 +6,7 @@ pkgname=crackmapexec
 _pkgname=CrackMapExec
 pkgver=5.4.0
 _pkgver=5.4.0
-pkgrel=2
+pkgrel=3
 pkgdesc='A swiss army knife for pentesting Windows/Active Directory environments'
 arch=('any')
 url='https://github.com/byt3bl33d3r/CrackMapExec'
@@ -29,6 +29,9 @@ depends=('impacket' 'python' 'python-aardwolf' 'python-aiowinreg'
 	 'python-winsspi' 'python-xmltodict' 'python-zope-event'
 	 'python-zope-interface' 'python-pywerview' 'python-gevent'
 	 'python-neo4j' 'python-aioconsole')
+
+# Was removed in python 3.12, breaking backwards compatibility, re-added here
+depends+=('python-zombie-imp')
 
 makedepends=('python-build' 'python-installer' 'python-poetry')
 source=("${url}/archive/v${_pkgver}.tar.gz")
