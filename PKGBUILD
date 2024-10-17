@@ -1,6 +1,6 @@
 # Maintainer: Sanpi <sanpi+aur@homecomputing.fr>
 pkgname=whyq
-pkgver=0.10.2
+pkgver=0.11.1
 pkgrel=1
 pkgdesc="jq compatible yq implementation in rust"
 url="https://github.com/clux/$pkgname"
@@ -8,7 +8,7 @@ arch=("x86_64")
 license=("Apache")
 depends=("cargo")
 source=("https://github.com/clux/$pkgname/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('8c93edc117e5ac0fa4d3a04d35c007b590071d1d845d353b946a3333a661453c')
+sha256sums=('cb6b8ae61bc3a619b9eb649003dfb08f758e6f6a8c149585d0ddaef1f2a2df55')
 
 prepare()
 {
@@ -28,5 +28,5 @@ package()
 {
     cd "$srcdir/$pkgname-$pkgver"
 
-    install -Dm 755 "target/release/yq" "$pkgdir/usr/bin/yq"
+    install -Dm 755 "target/release/whyq" "$pkgdir/usr/bin/whyq"
 }
