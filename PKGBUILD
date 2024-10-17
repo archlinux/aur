@@ -1,120 +1,117 @@
-# Maintainer: samsapti <sam at sapti dot me>
+# Maintainer:
+# Contributor: samsapti <sam at sapti dot me>
 # Contributor: lsf
 # Contributer: Sam Whited <sam@samwhited.com>
-# Contributor: Roman Kupriyanov <mr.eshua@gmail.com>
 
-pkgname=jitsi-meet-desktop
-pkgver=2024.6.0
+## links
+# https://jitsi.org/jitsi-meet/
+# https://github.com/jitsi/jitsi-meet-electron
+
+## options
+: ${_nodeversion:=18}
+: ${_install_path:=usr/share}
+
+_pkgname="jitsi-meet-desktop"
+pkgname="$_pkgname"
+pkgver=2024.10.0
 pkgrel=1
 pkgdesc="Jitsi Meet desktop application"
-arch=('x86_64' 'aarch64')
-url="https://jitsi.org/jitsi-meet/"
-license=('Apache')
-conflicts=('jitsi-meet-desktop-bin'
-           'jitsi-meet-electron-bin'
-           'jitsi-meet-electron')
-_electron_pkg="electron30"
-depends=('gtk3'
-         'libxss'
-         'nss'
-         "${_electron_pkg}")
-makedepends=('coreutils'
-             'git'
-             'python'
-             'png++'
-             'libxtst'
-             'nvm')
-options=(!strip)
-source=("${pkgname}_${pkgver}.tar.gz::https://github.com/jitsi/jitsi-meet-electron/archive/v${pkgver}.tar.gz"
-        'no_targets.patch'
-        'jitsi-meet-desktop.desktop')
-sha256sums=('10cce8a14c8cf8df220b339ee30131e0a90565c6eeea108e909e7e9b7ddb711c'
-            'ed3a4d4c524611ba66c9f0e28d2da77cb2948c6785367d69b86aa4965dd6bb99'
-            'e2ddfa2d11891c2bb813d8d641e863b4987a4626938035ef6dea17330d436597')
+url="https://github.com/jitsi/jitsi-meet-electron"
+license=('Apache-2.0')
+arch=('any')
 
-case "$CARCH" in
-        aarch64)
-                _electronbuilderarch='arm64'
-                _dist_path="linux-${_electronbuilderarch}-unpacked"
-        ;;
-        *)
-                _electronbuilderarch='x64'
-                _dist_path="linux-unpacked"
-        ;;
-esac
+depends=(
+  'electron'
+)
+makedepends=(
+  'nvm' # AUR
+)
+
+options=('!strip')
+
+_pkgsrc="jitsi-meet-electron-$pkgver"
+_pkgext="tar.gz"
+source=(
+  "$_pkgname-$pkgver.$_pkgext"::"$url/archive/v$pkgver.$_pkgext"
+  'no_targets.patch'
+)
+sha256sums=(
+  'ce82b7b92bc56aff7916c8a123737dbddd7ae0faff2b3d25ae77523aa85c7514'
+  'ed3a4d4c524611ba66c9f0e28d2da77cb2948c6785367d69b86aa4965dd6bb99'
+)
+
+_nvm_env() {
+  export HOME="$SRCDEST/node-home"
+  export NVM_DIR="$SRCDEST/node-nvm"
+
+  export npm_config_cache="${srcdir}/npm_cache"
+
+  source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
+  nvm install $_nodeversion
+  nvm use $_nodeversion
+
+  _electron_dist="/usr/lib/electron"
+  _electron_ver=$(cat $_electron_dist/version)
+}
 
 prepare() {
-  cd jitsi-meet-electron-${pkgver}
-  export npm_config_cache="${srcdir}/npm_cache"
-  _ensure_local_nvm
-  nvm install
+  _nvm_env
 
-  # remove all hardcoded (x64) electron-builder targets
-  # for some reason, it's not enough to explicitely specify the desired (dir)
-  # target when calling electron-builder..
-  patch -Np1 -i ${srcdir}/no_targets.patch
+  cd "$_pkgsrc"
 
-  sed 's#git+ssh://git@github.com#git+https://github.com#g' -i package-lock.json
+  local src
+  for src in "${source[@]}"; do
+    src="${src%%::*}"
+    src="${src##*/}"
+    src="${src%.zst}"
+    if [[ $src == *.patch ]]; then
+      printf '\nApplying patch: %s\n' "$src"
+      patch -Np1 -F100 -i "${srcdir:?}/$src"
+    fi
+  done
+
+  sed -E -e 's&"electron": "[^"]+",&"electron": "^'$_electron_ver'",&' \
+    -e 's#git+ssh://git@github.com#git+https://github.com#g' \
+    -i package-lock.json
+}
+
+build() (
+  _nvm_env
+
+  cd "$_pkgsrc"
 
   npm install
-  # npm audit fix
-}
-
-build() {
-  cd jitsi-meet-electron-${pkgver}
-  export npm_config_cache="${srcdir}/npm_cache"
-  _ensure_local_nvm
-  nvm install
-
-  _electron_dist=/usr/lib/${_electron_pkg}
-  _electron_ver=$(cat ${_electron_dist}/version)
 
   # npm run build
-  # no npx anymore, see https://github.com/electron-userland/electron-builder/issues/6411
   npm exec -c 'webpack --config ./webpack.main.js --mode production'
   npm exec -c 'webpack --config ./webpack.renderer.js --mode production'
-  # npx electron-builder --linux --${_electronbuilderrarch} --dir dist -c.electronDist=${_electron_dist} -c.electronVersion=${_electron_ver}
-  npm exec -c "electron-builder --linux --${_electronbuilderrarch} --dir dist -c.electronDist=${_electron_dist} -c.electronVersion=${_electron_ver}"
-}
+  npm exec -c "electron-builder --linux --dir -c.electronDist=$_electron_dist -c.electronVersion=$_electron_ver"
+)
 
-package() {
-  cd jitsi-meet-electron-${pkgver}/
+package() (
+  cd "$_pkgsrc"
 
-  install -d "${pkgdir}/usr/bin"
-  install -d "${pkgdir}/opt/${pkgname}"
-  cp -r "${srcdir}/jitsi-meet-electron-${pkgver}/dist/${_dist_path}"/resources/* "${pkgdir}/opt/${pkgname}"
+  install -d "$pkgdir/usr/bin"
+  install -d "$pkgdir/$_install_path/$_pkgname"
+  cp -r "dist/linux-unpacked"/resources/* "$pkgdir/$_install_path/$_pkgname"
 
-  install -Dm644 -- resources/icon.png "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
+  install -Dm644 -- resources/icon.png "$pkgdir/usr/share/pixmaps/$_pkgname.png"
 
-
-  cat << EOF > "$pkgdir/usr/bin/$pkgname"
+  install -Dm755 /dev/stdin "$pkgdir/usr/bin/$_pkgname" << END
 #!/bin/sh
+NODE_ENV=production ELECTRON_IS_DEV=false exec electron /$_install_path/$_pkgname/app.asar "\$@"
+END
 
-NODE_ENV=production ELECTRON_IS_DEV=false exec $_electron_pkg /opt/$pkgname/app.asar "\$@"
-EOF
-
-  chmod +x "$pkgdir"/usr/bin/$pkgname
-
-  install -Dm644 "${srcdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
-
-  # # https://wiki.archlinux.org/title/Node.js_package_guidelines#Package_contains_reference_to_$srcdir/$pkgdir
-  # find "$pkgdir" -name package.json -print0 | xargs -r -0 sed -i '/_where/d'
-
-  # local tmppackage="$(mktemp)"
-  # local pkgjson="$pkgdir/usr/lib/node_modules/$pkgname/package.json"
-  # jq '.|=with_entries(select(.key|test("_.+")|not))' "$pkgjson" > "$tmppackage"
-  # mv "$tmppackage" "$pkgjson"
-  # chmod 644 "$pkgjson"
-}
-
-# https://wiki.archlinux.org/title/Node.js_package_guidelines#Using_nvm
-_ensure_local_nvm() {
-    # let's be sure we are starting clean
-    which nvm >/dev/null 2>&1 && nvm deactivate && nvm unload
-    export NVM_DIR="${srcdir}/.nvm"
-
-    # The init script returns 3 if version specified
-    # in ./.nvmrc is not (yet) installed in $NVM_DIR
-    # but nvm itself still gets loaded ok
-    source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
-}
+  install -Dm644 /dev/stdin "$pkgdir/usr/share/applications/$_pkgname.desktop" << END
+[Desktop Entry]
+Name=Jitsi Meet
+Comment=Jitsi Meet Desktop App
+Exec=$_pkgname %U
+Icon=$_pkgname
+Type=Application
+Terminal=false
+MimeType=x-scheme-handler/jitsi-meet;
+StartupWMClass=Jitsi Meet
+Categories=VideoConference;AudioVideo;Audio;Video;Network;
+END
+)

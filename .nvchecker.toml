@@ -1,0 +1,4 @@
+[jitsi-meet-desktop]
+source = "git"
+git = "https://github.com/jitsi/jitsi-meet-electron.git"
+prefix = "v"
