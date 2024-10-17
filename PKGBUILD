@@ -1,6 +1,6 @@
 #Maintainer: Nooberieno <nooberieno.dev@gmail.com>
 pkgname='jura'
-pkgver=4.1
+pkgver=4.2
 pkgrel=4
 epoch=4
 pkgdesc="A lightweight terminal text editor"
@@ -8,7 +8,7 @@ arch=('x86_64')
 url="https://github.com/Nooberieno/jura"
 license=('MIT')
 depends=('glibc')
-makedepends=('git' 'make' 'gcc')
+makedepends=('git' 'gcc')
 changelog='CHANGELOG.md'
 source=("https://github.com/Nooberieno/jura/archive/refs/tags/$pkgver.tar.gz")
 sha256sums=('SKIP')
@@ -16,8 +16,6 @@ sha256sums=('SKIP')
 build() {
 	cd "$srcdir/$pkgname-$pkgver"
 	gcc jura.c -o jura -std=c99
-	rm jura.c
-	rm Makefile
 }
 
 package() {

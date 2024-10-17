@@ -1,14 +1,9 @@
 # Update notes
-merger of the other remaining branches before the big rewrites, check here for more info check the recent discussion here: https://github.com/Nooberieno/jura/discussions/10
+This is a very simple update that adds a single function to the code.  
+That does not mean that this function is not important tho, in fact its really important, it ensures memory safety.  
+The memory safety of jura was tested over a couple months, the latter of which were dedicated to ensuring memory safety
 
-small changes to the configuration file, that stops you from changes the base color and makes the color codes on seperate lines
+# Bug/vulnerability fixes
+Memory leak vulnerability fixed, caused by not freeing pointers in the internal file configuration, this meant that memory blocks could still be reached after the program had been closed
 
-# bug fixes
-fixed a bug that did not allow for Ctrl + g to reach the last line in a file
-
-## What's Changed
-* starting rework on the configuration by @Nooberieno in https://github.com/Nooberieno/jura/pull/11
-* Jura core expansion by @Nooberieno in https://github.com/Nooberieno/jura/pull/12
-
-
-**Full Changelog**: https://github.com/Nooberieno/jura/compare/4.0...4.1
+**Full Changelog**: https://github.com/Nooberieno/jura/compare/4.1...4.2
