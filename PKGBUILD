@@ -1,7 +1,7 @@
 #Maintainer: Shakakibara <aryan.1843@disroot.org>
 
 pkgname='codetantra-sea'
-pkgver=3.0.4
+pkgver=3.0.5
 pkgrel=1
 pkgdesc='Platform for online teaching.'
 arch=('x86_64')
@@ -12,15 +12,15 @@ provides=("${pkgname}")
 conflicts=("${pkgname}")
 source=("https://github.com/ct-code/sea/releases/download/v${pkgver}/${pkgname}_${pkgver}_amd64.deb"
         "sea.sh")
-sha256sums=('5046fef69e13da168e799e0ada91708af851c450606c7b0c0b2a4bbcc43aafd2'
-            'c18de58a189eb3d3e581e2f61c2db911cc988369e2cdef3403c3ead2c8594abd')
+sha256sums=('a9637e1cdf84b0692814fae64719d99263f13abbae2b758b9f9163b3b32729c7'
+            '02f2d0e3bb16c5d370ffd0d680f5f386cf22418c0d89b8fdfb84d142d41b3880')
 
 package() {
       #extract
       tar -xvf 'data.tar.xz' -C "${pkgdir}"
 
       #add firejail to desktop file.
-      sed -i 's/^Exec=.*/Exec=firejail --noprofile \/opt\/codetantra-sea\/codetantra-sea/' "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+      sed -i 's/^Exec=.*/Exec=firejail --nosound --profile=chromium \/opt\/codetantra-sea\/codetantra-sea/' "${pkgdir}/usr/share/applications/${pkgname}.desktop"
 
       #remove the other exec line
       sed -i '/exec/d' "${pkgdir}/usr/share/applications/${pkgname}.desktop"

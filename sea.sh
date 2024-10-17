@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
 
-firejail --noprofile /opt/codetantra-sea/codetantra-sea
+firejail --nosound --profile=chromium /opt/codetantra-sea/codetantra-sea
