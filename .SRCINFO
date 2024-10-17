@@ -1,6 +1,6 @@
 pkgbase = python-dzdsu
 	pkgdesc = DayZ dedicated server utility.
-	pkgver = 1.7.15
+	pkgver = 1.7.16
 	pkgrel = 1
 	url = https://github.com/conqp/dzdsu
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = python-dzdsu
 	depends = python-psutil
 	depends = python-setuptools
 	depends = steamcmd
-	source = dzdsu::git+https://github.com/conqp/dzdsu.git#tag=1.7.15
-	md5sums = f30655b40eca86564ae5d254bf19d372
+	source = dzdsu::git+https://github.com/conqp/dzdsu.git#tag=1.7.16
+	md5sums = 04ce96853e6b6244c065874c425d49d8
 
 pkgname = python-dzdsu
