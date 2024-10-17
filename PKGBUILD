@@ -1,6 +1,6 @@
 # Maintainer: Phillip Schichtel <phillip@schich.tel>
 pkgname=bookman-cockpit
-pkgver=1.16.0
+pkgver=1.16.1
 pkgrel=1
 options=(!strip)
 pkgdesc="Bookman Cockpit"
@@ -17,7 +17,7 @@ source=("installer-${pkgver}.exe::https://cockpit.bookman-gmbh.de/api/java/updat
         "logback.xml"
         "${pkgname}.desktop"
         "${pkgname}.sh")
-sha256sums=('8d12ece9d226bd5b9525ca6cba4a6b61fef8f792e5e77fc055331c2c5c433c50'
+sha256sums=('4630deab6e829b252d816ada0ba2908ad3847d1c0115e0a4e6fad3cc7028de13'
             '5a0bd9ca7d0632eec36d9f3b4980741f70e47511ee070c1da6c7c778ed058106'
             'f2a742dabb4f1ac32867c3ba152355695220e4bd4a7ba032de98e3c5d2ed3309'
             'ef6cf40ff0a46853f2d5308c884e17328a6a36009f5697d5914bfbb720cac261'
