@@ -1,0 +1,16 @@
+pkgbase = beidconnect
+	pkgdesc = native messaging component for DSS signing services
+	pkgver = 2.10.8.gb44810e
+	pkgrel = 1
+	url = https://github.com/Fedict/fts-beidconnect
+	install = beidconnect.install
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = gcc
+	makedepends = make
+	makedepends = pkg-config
+	source = git+https://github.com/Fedict/fts-beidconnect.git
+	sha256sums = SKIP
+
+pkgname = beidconnect
