@@ -1,6 +1,6 @@
 pkgbase = rigsofrods-git
 	pkgdesc = An open source vehicle simulator based on soft-body physics
-	pkgver = 2022.12.r117.gb0fc91954
+	pkgver = 2022.12.r441.gbb73c5201
 	pkgrel = 1
 	url = http://rigsofrods.org
 	arch = i686
@@ -9,27 +9,16 @@ pkgbase = rigsofrods-git
 	makedepends = gcc
 	makedepends = cmake>=2.8
 	makedepends = git
-	depends = curl
-	depends = openssl
-	depends = fmt
-	depends = mygui-ogre
-	depends = ogre
-	depends = ois
-	depends = openal
-	depends = rapidjson>=1.1.0
-	depends = angelscript
-	depends = caelum
-	depends = nvidia-cg-toolkit
-	depends = ogre-pagedgeometry
+	makedepends = conan
 	provides = rigsofrods
 	conflicts = rigsofrods
 	conflicts = rigsofrods-hg
 	conflicts = rigsofrods-noangelscript-git
-	source = git+https://github.com/RigsOfRods/rigs-of-rods.git#branch=aur
+	source = git+https://github.com/RigsOfRods/rigs-of-rods.git
 	source = rigsofrods.png
 	source = RoR.desktop
 	sha512sums = SKIP
 	sha512sums = 1aaf75c5a22d2129e1fe6293689a347cec07c6d3d3b9990810bc6033b7ca9fd2d9f0c169eb27224ddac23a95982824eb36a9f21aa2f5e90dca82d4c8513023fd
-	sha512sums = f4396b67d65f50e1850b36bb1913ee411570a667ce4bf0b83bb96af34c53f7655936c68b9ce001e21fa9b4140e8f78f28620ff133e44f0049c1d601f3c973f71
+	sha512sums = 8d4d8e997e0df2688eafa19655540e6ec87675ec96ba6ebd34a7dc84246374fbdb45747563c39f1b2e9bce800d6978d5b3822a0d6ea278eb72bee09a88c3913a
 
 pkgname = rigsofrods-git
