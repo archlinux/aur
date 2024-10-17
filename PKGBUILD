@@ -2,11 +2,11 @@
 pkgname=turbowarp-desktop-git
 _pkgname=TurboWarp
 _appname="org.turbowarp.${_pkgname}"
-pkgver=1.12.3.r51.g7964b8f
+pkgver=1.12.3.r57.gb036b00
 _electronversion=32
 _nodeversion=20
 pkgrel=1
-pkgdesc="Scratch mod with a compiler to run projects faster, dark mode for your eyes, a bunch of addons to improve the editor, and more."
+pkgdesc="Scratch mod with a compiler to run projects faster, dark mode for your eyes, a bunch of addons to improve the editor, and more.Use system-wide electron."
 arch=("any")
 url="https://desktop.turbowarp.org/"
 _ghurl="https://github.com/TurboWarp/desktop"
@@ -52,32 +52,38 @@ build() {
     " -i "${srcdir}/${pkgname%-git}.sh"
     _ensure_local_nvm
     cd "${srcdir}/${pkgname%-git}.git"
+    electronDist="/usr/lib/electron${_electronversion}"
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
-    export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v / sed 's/v//g')"
+    export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
     HOME="${srcdir}/.electron-gyp"
-    echo -e '\n' >> .npmrc
-    #echo 'build_from_source=true' >> .npmrc
-    echo "cache=${srcdir}/.npm_cache" >> .npmrc
+    {
+        echo -e '\n'	
+        #echo 'build_from_source=true'
+        echo "cache=${srcdir}/.npm_cache"
+    } >> .npmrc
     if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
-        sed -i "s/github.com/gitdl.cn\/https:\/\/github.com/g" .gitmodules
-        sed -i "s/github.com\/TurboWarp\/scratch-gui/gitdl.cn\/https:\/\/github.com\/TurboWarp\/scratch-gui/g" package.json
         {
             echo 'registry=https://registry.npmmirror.com'
             echo 'disturl=https://registry.npmmirror.com/-/binary/node/'
             echo 'electron_mirror=https://registry.npmmirror.com/-/binary/electron/'
             echo 'electron_builder_binaries_mirror=https://registry.npmmirror.com/-/binary/electron-builder-binaries/'
         } >> .npmrc
+        sed -i "s/registry.npmjs.org/registry.npmmirror.com/g" package-lock.json
+        sed -i "s/github.com/gitdl.cn\/https:\/\/github.com/g" .gitmodules
+        sed -i "s/github.com\/TurboWarp\/scratch-gui/gitdl.cn\/https:\/\/github.com\/TurboWarp\/scratch-gui/g" package.json
     fi
-    sed -i "s/\/opt\/${_pkgname}\/${pkgname%-git}/${pkgname%-git}/g;s/${_appname}/${pkgname%-git}/g" \
-        linux-files/"${_appname}.desktop"
-    sed "s/${_appname}/${pkgname%-git}/g" -i linux-files/{"${_appname}.metainfo.xml","${_appname}.mime.xml"}
+    sed -e "
+        s/\/opt\/${_pkgname}\/${pkgname%-git}/${pkgname%-git}/g
+        s/${_appname}/${pkgname%-git}/g
+    " -i linux-files/"${_appname}.desktop"
+    sed -i "s/${_appname}/${pkgname%-git}/g" linux-files/{"${_appname}.metainfo.xml","${_appname}.mime.xml"}
     git submodule init
     git submodule update
     cp .npmrc extensions
-    NODE_ENV=development    npm ci
+    NODE_ENV=development    npm install
     NODE_ENV=production     npm run fetch
     NODE_ENV=production     npm run webpack:prod
-    NODE_ENV=production     npm run electron:package:dir
+    NODE_ENV=production     npm exec -c "electron-builder --linux dir -c.electronDist=${electronDist}"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
