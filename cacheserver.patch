@@ -1,0 +1,19 @@
+--- a/Reflector.py
++++ b/Reflector.py
+@@ -58,7 +58,7 @@
+ DB_SUBPATH = 'extra/os/x86_64/extra.db'
+ 
+ MIRROR_URL_FORMAT = '{0}{1}/os/{2}'
+-MIRRORLIST_ENTRY_FORMAT = "Server = " + MIRROR_URL_FORMAT + "\n"
++MIRRORLIST_ENTRY_FORMAT = "CacheServer = " + MIRROR_URL_FORMAT + "\n"
+ 
+ DEFAULT_CONNECTION_TIMEOUT = 5
+ DEFAULT_DOWNLOAD_TIMEOUT = 5
+@@ -618,6 +618,7 @@
+             )
+         ) + \
+         '\n\n'
++    mirrorlist += "Server = " + MIRROR_URL_FORMAT.format('https://geo.mirror.pkgbuild.com/', '$repo', '$arch') + "\n"
+ 
+     country = None
+ 

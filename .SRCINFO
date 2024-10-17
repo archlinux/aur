@@ -1,5 +1,5 @@
-pkgbase = reflector
-	pkgdesc = A Python 3 module and script to retrieve and filter the latest Pacman mirror list.
+pkgbase = reflector-cacheserver
+	pkgdesc = Patched version of reflector to make use of the cache server support introduced in Pacman 6.1.0.
 	pkgver = 2023
 	pkgrel = 2
 	url = https://xyne.dev/projects/reflector
@@ -11,13 +11,18 @@ pkgbase = reflector
 	makedepends = python-wheel
 	depends = python
 	optdepends = rsync: rate rsync mirrors
+	provides = reflector
+	conflicts = reflector
 	backup = etc/xdg/reflector/reflector.conf
 	source = https://xyne.dev/projects/reflector/src/reflector-2023.tar.xz
 	source = https://xyne.dev/projects/reflector/src/reflector-2023.tar.xz.sig
+	source = cacheserver.patch
 	validpgpkeys = D89FAAEB4CECAFD199A2F5E612C6F735F7A9A519
 	sha512sums = 11aec550c15080695525409f11eae6d4b545df8b37a8e0727de939eefec2b2fa6aa95c5c3500a6c8a940b6060cdaf2526430ed47e01a3c6f098e1b77189eb479
 	sha512sums = SKIP
+	sha512sums = cb9966b0dc9c4f9710972873d3d5030ccb26f1eeca074501046d19039836aa13300e1aa4b976fcebdbdce4737564e5df4e2caa4060f351d169380418aaca2f8c
 	b2sums = 24ee3610eb94e4412bceba40f4763def380028683358cb1016546a4d0bb12eaa69aba4e83b7998ebb74ee6f025f9f342901d076e44302da47d0ed14b727fb9c1
 	b2sums = SKIP
+	b2sums = 5c4a6710b3f094d9ed56e176ed84e75c04cc06bf789dcec7aedd1e691072c63e22d177ff8766e956875ff8648aee0b332d2f2080dcbfeb512900caf5974980ad
 
-pkgname = reflector
+pkgname = reflector-cacheserver
