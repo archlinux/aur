@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 # Contributor: Kevin Maris <aur@kmaris.net>
 pkgname=devbox-bin
-pkgver=0.13.4
+pkgver=0.13.5
 pkgrel=1
 pkgdesc="A command-line tool that lets you easily create isolated shells for development.Written in Go.Prebuilt version."
 arch=(
@@ -23,10 +23,10 @@ source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.tar.gz::${_ghurl}/releases/do
 source_armv7h=("${pkgname%-bin}-${pkgver}-armv7h.tar.gz::${_ghurl}/releases/download/${pkgver}/${pkgname%-bin}_${pkgver}_linux_arm64.tar.gz")
 source_i686=("${pkgname%-bin}-${pkgver}-i686.tar.gz::${_ghurl}/releases/download/${pkgver}/${pkgname%-bin}_${pkgver}_linux_386.tar.gz")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.tar.gz::${_ghurl}/releases/download/${pkgver}/${pkgname%-bin}_${pkgver}_linux_amd64.tar.gz")
-sha256sums_aarch64=('5cf0e6d053d116c05344cd478d558205488fdf58524307fbf61afacf8cbdf2b4')
-sha256sums_armv7h=('5cf0e6d053d116c05344cd478d558205488fdf58524307fbf61afacf8cbdf2b4')
-sha256sums_i686=('99fd65e04b42f8904f4bf863d287aa4d9b7f5f0d2595c7ffff3fadcc470b98af')
-sha256sums_x86_64=('4006637f6e3b7792208f09ee5e72baae743d57b5806655d20b2b26b9adea4edb')
+sha256sums_aarch64=('992a0c44b4c6408956520219dcf2b0b81e680f7bc034d9a85bf1c4941f158484')
+sha256sums_armv7h=('992a0c44b4c6408956520219dcf2b0b81e680f7bc034d9a85bf1c4941f158484')
+sha256sums_i686=('be2875738cd209889f4a8ece2b46c60b366d96d0dd2d85277d9c8eb0cc8da008')
+sha256sums_x86_64=('662ad6ac923225de7cb53a82682812acd4531821bdfc2494c9ac852d961ee0e2')
 build() {
     "${srcdir}/${pkgname%-bin}" completion bash > "${srcdir}/${pkgname%-bin}.bash"
     "${srcdir}/${pkgname%-bin}" completion fish > "${srcdir}/${pkgname%-bin}.fish"
