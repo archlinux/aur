@@ -1,8 +1,8 @@
 pkgbase = android-studio-dummy
 	pkgdesc = The official Android IDE, dummy package
-	pkgver = 2020.3.1
+	pkgver = 2024.2.1.10
 	pkgrel = 1
-	url = http://tools.android.com/
+	url = https://developer.android.com/
 	install = android-studio-dummy.install
 	arch = i686
 	arch = x86_64
@@ -10,18 +10,18 @@ pkgbase = android-studio-dummy
 	makedepends = unzip
 	depends = alsa-lib
 	depends = freetype2
-	depends = java-environment
 	depends = libxrender
 	depends = libxtst
+	depends = which
 	optdepends = gtk2: GTK+ look and feel
 	optdepends = libgl: emulator support
 	optdepends = ncurses5-compat-libs: native debugger support
 	provides = android-studio
 	conflicts = android-studio
 	conflicts = android-studio-beta
-	conflicts = android-studio-dev
 	conflicts = android-studio-canary
+	conflicts = android-studio-dev
 	source = android-studio.desktop::https://aur.archlinux.org/cgit/aur.git/plain/android-studio.desktop?h=android-studio
-	sha1sums = 357845775f3e2eb53c03ba96757c6b1e2c8baeb6
+	sha256sums = 73cd2dde1d0f99aaba5baad1e2b91c834edd5db3c817f6fb78868d102360d3c4
 
 pkgname = android-studio-dummy
