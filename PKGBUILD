@@ -7,9 +7,9 @@ _pkgbase=linux-xanmod
 _major=6.11
 _minor=4
 _branch=6.x
-_xanmodrel=2
+_xanmodrel=1
 _xanmodrev=
-pkgrel=2
+pkgrel=3
 
 pkgbase=${_pkgbase}-linux-bin-${_arch}
 pkgver=${_major}.${_minor}
