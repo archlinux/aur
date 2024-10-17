@@ -2,7 +2,7 @@
 pkgname=dbgate-git
 _pkgname=DbGate
 _debname="org.${pkgname%-git}.${_pkgname}"
-pkgver=5.5.5.r0.g06753ff
+pkgver=5.5.6.premium.beta.8.r0.g50232f9
 _electronversion=30
 _nodeversion=18
 pkgrel=1
@@ -89,10 +89,18 @@ build() {
     NODE_ENV=development    yarn install --cache-folder "${srcdir}/.yarn_cache"
     NODE_ENV=production     yarn fillNativeModulesElectron
     NODE_ENV=production     yarn fillPackagedPlugins
+    NODE_ENV=production     yarn plugins:copydist
     cd "${srcdir}/${pkgname//-/.}/app"
-    sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g;47,56d;s/tar.gz/dir/g" package.json
-    NODE_ENV=development    yarn install --cache-folder "${srcdir}/.yarn_cache" --no-lockfile
+    NODE_ENV=development    yarn install --cache-folder "${srcdir}/.yarn_cache"
+    cd "${srcdir}/${pkgname//-/.}/packages/api"
+    NODE_ENV=development    yarn install --cache-folder "${srcdir}/.yarn_cache"
     NODE_ENV=production     yarn run build
+    cd "${srcdir}/${pkgname//-/.}/packages/web"
+    NODE_ENV=development    yarn install --cache-folder "${srcdir}/.yarn_cache"
+    NODE_ENV=production     yarn run build
+    cd "${srcdir}/${pkgname//-/.}/app"
+    sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
+    NODE_ENV=production     npm exec -c "electron-builder --linux dir -c.electronDist=${electronDist}"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
