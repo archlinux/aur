@@ -1,0 +1,17 @@
+post_install() {
+    echo "Running post-install setup for beidconnect..."
+
+    mkdir -p /etc/chromium/native-messaging-hosts
+    mkdir -p /etc/opt/chrome/native-messaging-hosts
+    mkdir -p /etc/opt/edge/native-messaging-hosts
+    mkdir -p /usr/lib/mozilla/native-messaging-hosts
+    mkdir -p /usr/lib64/mozilla/native-messaging-hosts
+    
+    /usr/bin/beidconnect -setup /usr/bin/ /etc/chromium/native-messaging-hosts/ /usr/lib/mozilla/native-messaging-hosts/
+
+    cp /etc/chromium/native-messaging-hosts/be.bosa.beidconnect.json /etc/opt/chrome/native-messaging-hosts/ | true
+    cp /etc/chromium/native-messaging-hosts/be.bosa.beidconnect.json /etc/opt/edge/native-messaging-hosts/ | true
+    cp /usr/lib/mozilla/native-messaging-hosts/be.bosa.beidconnect.json /usr/lib64/mozilla/native-messaging-hosts/ | true
+
+    echo "beidconnect post-install setup complete."
+}
