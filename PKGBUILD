@@ -35,8 +35,8 @@ sha256sums=(
 
 pkgver() {
     cd "${srcdir}/${_pkgname}"
-    _major=$(cat version.py | grep "major" | sed 's/major = //')
-    _minor=$(cat version.py | grep "minor" | sed 's/minor = //')
+    _major=$(cat version.py | grep "^major" | sed 's/major = //')
+    _minor=$(cat version.py | grep "^minor" | sed 's/minor = //')
     _revision=$(printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)")
     echo "${_major}.${_minor}.${_revision}"
 }
