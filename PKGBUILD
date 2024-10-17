@@ -2,8 +2,8 @@
 
 pkgname=gardenctl-bin
 pkgver=2.8.0
-pkgrel=1
-pkgdesc='gardenctl is a command-line client for the Gardener (verison 2).'
+pkgrel=2
+pkgdesc='gardenctl is a command-line client for the Gardener (version 2).'
 url='https://github.com/gardener/gardenctl-v2'
 license=('Apache-2.0')
 arch=('x86_64')
