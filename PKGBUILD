@@ -1,9 +1,9 @@
-# Maintainer: giver <ryan01234keroro56789@gmail.com>
+# Maintainer: giver <giverc139@gmail.com>
 
 _pyname=angr
 pkgname=python-${_pyname}
-pkgver=9.2.81
-pkgrel=3
+pkgver=9.2.123
+pkgrel=1
 pkgdesc='A powerful and user-friendly binary analysis platform'
 url='https://github.com/angr/angr'
 license=('BSD')
@@ -17,7 +17,7 @@ depends=(
   'python-cachetools'
   'python-capstone'
   'python-cffi'
-  'python-claripy'
+  'python-claripy-git'
   'python-cle'
   'python-dpkt'
   'python-itanium_demangler'
@@ -27,12 +27,14 @@ depends=(
   'python-protobuf'
   'python-psutil'
   'python-pycparser'
+  'python-pyformlang'
   'python-pyvex'
   'python-rich'
   'python-rpyc'
   'python-sortedcontainers'
   'python-sympy'
   'python-unicorn'
+  'python-unique_log_filter'
 )
 makedepends=(
   'gcc'
@@ -43,8 +45,8 @@ makedepends=(
   'python-wheel'
 )
 source=("${url}/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha512sums=('fb4d8beb41804d700a10d99583f72dc3443ac21686d0e3f7314f3aaa1b69f33fca88585865e27730102bf1ca7e2301d4bbce2e65a314ad6b9875c652b8638af3')
-b2sums=('bdaf94faffde85c1fc16b3a145f72e58bbb406e2953c08601abd3b42cb5693ac6d47c17f85b5762d8bdbb3e0689d79600b592fbf7fb1ba373101ea196a5ed8d4')
+sha512sums=('81c962462d73c2f0d5661c2f2da988a082512edd654a74e56545ffd7f7fb6aa5276f60b90db9cf1a34203a753d9dcefb5dd8b53abef79771e81061aa70ca0be5')
+b2sums=('959633077fe04c225049dec5dbcf23e72f6298d93898e28c3ce05103f5ddfea6e6fc97e0daa0441a10994bbe7c7cbd75443fbfd416ba074abc7f12329ef81d5c')
 
 prepare() {
   # we don't support version pinning
