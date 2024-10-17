@@ -4,7 +4,7 @@
 
 _pkgname="telegram-desktop"
 pkgname="$_pkgname-git"
-pkgver=5.5.6.r4.g187c2dd
+pkgver=5.6.3.r0.g754d467
 pkgrel=1
 pkgdesc='Official Telegram Desktop client'
 url="https://github.com/telegramdesktop/tdesktop"
@@ -59,15 +59,6 @@ _source_main() {
   _pkgsrc="$_pkgname"
   source+=("$_pkgsrc"::"git+$url.git")
   sha256sums+=('SKIP')
-
-  _patch_commit='b1060b9deef05a3efaadf61d3e99dafa155710ea'
-  source+=("tg-5.5.5-fix_build_with_cppgir-${_patch_commit::7}.patch"::"https://gitlab.archlinux.org/archlinux/packaging/packages/telegram-desktop/-/raw/$_patch_commit/telegram-desktop-5_5_5-fix_build_with_cppgir.patch")
-  sha256sums+=('ee54bdf8fe67c8fadfffc794763fc62f4c6a15eb535c80ba7b1b74d6ec178882')
-
-  _prepare_main() (
-    cd "$srcdir/$_pkgsrc/cmake/external/glib/cppgir"
-    apply-patch "$srcdir/tg-5.5.5-fix_build_with_cppgir-${_patch_commit::7}.patch"
-  )
 }
 
 _source_telegram_desktop() {
@@ -320,8 +311,6 @@ prepare() {
 
   _prepare_desktop_app_cmake_helpers
   _prepare_mnauw_cppgir
-
-  _prepare_main
 }
 
 pkgver() {
@@ -364,10 +353,6 @@ _build_tg_owt() (
 )
 
 _build_telegram() (
-  # Turns out we're allowed to use the official API key that telegram uses for their snap builds:
-  # https://github.com/telegramdesktop/tdesktop/blob/8fab9167beb2407c1153930ed03a4badd0c2b59f/snap/snapcraft.yaml#L87-L88
-  # Thanks @primeos!
-
   local _cmake_options=(
     -B build
     -S "$_pkgsrc"
