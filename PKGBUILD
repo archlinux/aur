@@ -4,7 +4,7 @@
 _pkgname="redot"
 pkgname=${_pkgname}-git
 pkgver=4.4.r68037.01acc791d7
-pkgrel=1
+pkgrel=2
 pkgdesc="A multi-platform 2D and 3D game engine"
 arch=('i686' 'x86_64')
 _arch=''

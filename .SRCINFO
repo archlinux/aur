@@ -1,7 +1,7 @@
 pkgbase = redot-git
 	pkgdesc = A multi-platform 2D and 3D game engine
 	pkgver = 4.4.r68037.01acc791d7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Redot-Engine/redot-engine
 	arch = i686
 	arch = x86_64
