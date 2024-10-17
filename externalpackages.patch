@@ -1,0 +1,11 @@
+--- src/OpenRV/_build/RV_DEPS_OIIO/src/src/cmake/externalpackages.cmake.orig	2023-05-14 23:21:15.000000000 -0700
++++ src/OpenRV/_build/RV_DEPS_OIIO/src/src/cmake/externalpackages.cmake	2024-10-16 23:02:23.730211998 -0700
+@@ -309,7 +309,7 @@
+ ###########################################################################
+ # fmtlib
+ 
+-option (BUILD_FMT_FORCE "Force local download/build of fmt even if installed" OFF)
++option (BUILD_FMT_FORCE "Force local download/build of fmt even if installed" ON)
+ option (BUILD_MISSING_FMT "Local download/build of fmt if not installed" ON)
+ option (INTERNALIZE_FMT "Copy fmt headers into <install>/include/OpenImageIO/detail/fmt" ON)
+ set (BUILD_FMT_VERSION "9.0.0" CACHE STRING "Preferred fmtlib/fmt version, when downloading/building our own")

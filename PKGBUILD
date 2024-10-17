@@ -1,7 +1,7 @@
 # Maintainer: Robert Zhou <meep dot aur at meepzh dot com>
 
 pkgname=openrv-git
-pkgver=2.1.0.r244.6990de1
+pkgver=2.1.0.r280.dd73ec4
 pkgrel=1
 pkgdesc="aka Open RV, an image and sequence viewer for VFX and animation artists"
 arch=('x86_64')
@@ -25,6 +25,7 @@ source=('git+https://github.com/AcademySoftwareFoundation/OpenRV.git'
         'ocio.patch'
         'ocio_install_yaml-cpp.patch'
         'oiio.patch'
+        'externalpackages.patch'
         'glew-lib64.patch'
         'jpegturbo-lib64.patch'
         'pyside2.patch'
@@ -39,7 +40,8 @@ b2sums=('SKIP'
         'b0049be4ef7ade129682f8ccfb5bbaedf8b20f4459996dcc4d75e86a34a0382d099c6f342aebb997b8fef3ad190e4d3cb937f6e780095a33e66781c3c4eda604'
         '7e8bf6f5e14c51c258c755e1013352ae80725a6cd65223bdffc65282a83ca1d93b16621a0c1af41311ed603ac0f36503a8d930786d04483feda61d32d392b504'
         'f5d463d66fadff1d8d9fc7fadd04f5b723bc24a5530dce916e881e812d5e5d701bcbfbcaff6331ef94612028a82b3275fb309dfee292d12800ba4118ddd8c6eb'
-        '03cd706fb027ee46aaa86c744800190f797da9a879e95c5f6e7ac830c7f4b0cb5bd9e2c66f6924664bb633e4552ba63b9c82cb4318ffea66b44e6b86fd13e59f'
+        '4d6b004ae837a636bdaf3c97ca0e67feab3c9792548f9d515ff6cef8ee854d716703174aa4349905b9ed078a28ebc4a6f41166f855e3d4068d7b9de4555ebdb9'
+        '83132f08eacfa5684d7adbcba60981e53e908025a31b6e39196a13a74a543d346fdcdbc95eb339bfc2c149c100ead760e7d0609afb275481d30a6c190782e8bb'
         'ab830c1bcae5a35a3c3efc7f09776837a5b0b3d53cb7a42db5fad052635e848a79013617c97abdba2ce51fd41a593f8dde216e52e73e0bc3a7f4e608a22d165b'
         '31ae9ab03451ac06771ae3d07d6b07ce86ea38494bea9d25c49940493a2a7e38db5267a5c4043a9811590ca236d3c9735376f4ab2c529b4565c33e57ee2b6448'
         '930f6c7a59a225247678bf7cce1a332547f8b47915bc176a204e3edc09edaa32a6fdf7475750a05c5483e7b813f8f11eb715a0d36efad06dd32cd5f5453ff996'
@@ -78,12 +80,13 @@ prepare() {
   # patch --forward --strip=1 --input="$srcdir/qt5.patch"  # Holdover from trying to use Arch-provided Qt5
   sed -i 's/HAVE_MREMAP 1/HAVE_MREMAP 0/g' src/pub/nedmalloc/malloc.c.h
   sed -i 's/s->pcrc_32_tab = get_crc_table()/s->pcrc_32_tab = (const unsigned long *)get_crc_table()/g' src/pub/minizip/unzip.c
+  sed -i 's/char\* tagList = \&/char\* tagList = \(char\*\)\&/g' src/pub/FTGL/FTVectoriser.cpp
   sed -i 's/"--enable-shared",/"--enable-shared", "ax_cv_c_float_words_bigendian=no",/' src/build/make_python.py
   sed -i 's/"CY2023"/"CY2024"/' cmake/defaults/rv_options.cmake
   sed -i 's/pip install --user/pip install/' rvcmds.sh
   sed -i -E 's/alias (\w+)="(.+)"/\1() { \2; };/' rvcmds.sh  # Allow commands to run in PKGBUILD
   sed -i 's,\\"${CMAKE_GENERATOR}\\","${CMAKE_GENERATOR}",' rvcmds.sh
-  sed -i "s/{WIN_PERL};/{WIN_PERL} "'"'"-DRV_FFMPEG_PATCH_COMMAND_STEP=git cherry-pick -n fef22c87ada4517441701e6e61e062c9f4399c8e"'"'";/" rvcmds.sh
+  sed -i "s/{WIN_PERL};/{WIN_PERL} "'"'"-DRV_FFMPEG_PATCH_COMMAND_STEP=git cherry-pick -n fef22c87ada4517441701e6e61e062c9f4399c8e 03823ac0c6a38bd6ba972539e3203a592579792f 06c2a2c425f22e7dba5cad909737a631cc676e3f 9d675bb60d2542631f37613aa92b7e1144bbeaa1 43b417d516b0fabbec1f02120d948f636b8a018e"'"'";/" rvcmds.sh
   sed -i 's/--target ;/--target $1;/' rvcmds.sh
   sed -i 's/ctest /ctest --exclude-regex ".*(ALSASafe|io_oiio).*" /' rvcmds.sh  # ALSASafe uses Rv::Option, removed OpenVDB from OIIO
   # sed -i 's/--parallel=8/--parallel=1/' rvcmds.sh  # May help with debugging

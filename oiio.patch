@@ -1,7 +1,7 @@
 diff --color --unified --recursive --text '--exclude=.git' '--exclude=generated' '--exclude=build' '--exclude=_build' OpenRV.clean/cmake/dependencies/oiio.cmake OpenRV/cmake/dependencies/oiio.cmake
 --- OpenRV.clean/cmake/dependencies/oiio.cmake	2023-12-08 12:48:32.604745129 -0800
 +++ OpenRV/cmake/dependencies/oiio.cmake	2023-12-08 18:02:11.434107580 -0800
-@@ -15,17 +15,20 @@
+@@ -15,17 +15,22 @@
  INCLUDE(ProcessorCount) # require CMake 3.15+
  PROCESSORCOUNT(_cpu_count)
  
@@ -17,7 +17,9 @@ diff --color --unified --recursive --text '--exclude=.git' '--exclude=generated'
 +    "d118168f2fce857d885b7b0f63ffc739"
 +)
 +SET(_patch_command
-+    sed -i.bak d ${RV_DEPS_BASE_DIR}/${_target}/src/src/openvdb.imageio/CMakeLists.txt
++    sed -i.bak d ${RV_DEPS_BASE_DIR}/${_target}/src/src/openvdb.imageio/CMakeLists.txt &&
++    cd ${PROJECT_SOURCE_DIR} &&
++    patch --forward --strip=2 --input=../externalpackages.patch
  )
  
 -RV_MAKE_STANDARD_LIB_NAME("OpenImageIO_Util" "2.4.6" "SHARED" "${RV_DEBUG_POSTFIX}")
