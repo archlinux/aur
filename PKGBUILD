@@ -1,7 +1,7 @@
 # Maintainer: Christopher Price <pricechrispy at gmail dot com>
 
 pkgname=foomuuri
-pkgver=0.24
+pkgver=0.25
 pkgrel=1
 pkgdesc="Multizone bidirectional nftables firewall"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('GPL-2.0-or-later')
 depends=('python' 'dbus-python' 'python-systemd' 'python-gobject' 'python-requests')
 makedepends=('make' 'flake8' 'python-pylint')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/FoobarOy/foomuuri/archive/v$pkgver.tar.gz")
-sha256sums=('4dc2f18951554018c6d932eef487a331d64baa8324ca66d95e4b125c8754d35e')
+sha256sums=('907e2852fc96aedf2e356397e173340559287db6fcd0658255230668999f270a')
 
 options=()
 
