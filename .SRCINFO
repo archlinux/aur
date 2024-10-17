@@ -1,0 +1,23 @@
+pkgbase = reflector
+	pkgdesc = A Python 3 module and script to retrieve and filter the latest Pacman mirror list.
+	pkgver = 2023
+	pkgrel = 2
+	url = https://xyne.dev/projects/reflector
+	arch = any
+	license = GPL2
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	optdepends = rsync: rate rsync mirrors
+	backup = etc/xdg/reflector/reflector.conf
+	source = https://xyne.dev/projects/reflector/src/reflector-2023.tar.xz
+	source = https://xyne.dev/projects/reflector/src/reflector-2023.tar.xz.sig
+	validpgpkeys = D89FAAEB4CECAFD199A2F5E612C6F735F7A9A519
+	sha512sums = 11aec550c15080695525409f11eae6d4b545df8b37a8e0727de939eefec2b2fa6aa95c5c3500a6c8a940b6060cdaf2526430ed47e01a3c6f098e1b77189eb479
+	sha512sums = SKIP
+	b2sums = 24ee3610eb94e4412bceba40f4763def380028683358cb1016546a4d0bb12eaa69aba4e83b7998ebb74ee6f025f9f342901d076e44302da47d0ed14b727fb9c1
+	b2sums = SKIP
+
+pkgname = reflector
