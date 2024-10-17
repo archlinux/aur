@@ -1,28 +1,17 @@
-pkgbase = obfuscation-tunnel-git
-	pkgdesc = Obfuscate UDP traffic to hide from deep packet inspection
-	pkgver = r80.cbd31a1
-	pkgrel = 3
-	url = https://github.com/RoliSoft/Obfuscation-Tunnel
-	arch = x86_64
-	arch = aarch64
+pkgbase = obfuscation-tunnel-service
+	pkgdesc = Systemd service for Obfuscation-Tunnel
+	pkgver = 0.1.0
+	pkgrel = 1
+	arch = any
 	license = BSD
-	makedepends = git
-	makedepends = gcc
-	makedepends = make
-	makedepends = go-md2man
-	depends = libpcap
-	depends = libssl.so=3
-	depends = libcrypto.so=3
-	depends = glibc
-	provides = obfuscation-tunnel
-	conflicts = obfuscation-tunnel
-	source = git+https://github.com/RoliSoft/Obfuscation-Tunnel.git
-	source = ctypes.patch
-	source = readme-to-manpage.patch
-	source = tcp_reuse.patch
-	sha256sums = SKIP
-	sha256sums = 4eba65b38359124c8d8c6aa9c8b2e91b8b9bf8e6f77f7ca824eebb393e42dd3d
-	sha256sums = 1e531bbb3e0f10d98f9ab0ed318ffcead3e1e6f6fad973864e4e3eedaf88d313
-	sha256sums = a3f70b1bacbdce7894f64662674e63986e106ed49e6d4f2747b930df4091ffc1
+	depends = obfuscation-tunnel
+	depends = bash>=4.0.0
+	depends = systemd
+	source = obfuscation-tunnel@.service
+	source = obfuscation-tunnel-launcher
+	source = example.conf
+	sha256sums = 9cd80d8f2c20909806ee66f88dc8141e90ad15d855a460b029bbd0d82739b2f5
+	sha256sums = 6eb6c7003a63b1a8a1c77500bfb71acf1ca2e8cb57b3f9e491d0a4d4a2d49ea5
+	sha256sums = 665b490dfd185426fb6c30a1ed470e4810ef4d09d137beb636444d364c0b9803
 
-pkgname = obfuscation-tunnel-git
+pkgname = obfuscation-tunnel-service
