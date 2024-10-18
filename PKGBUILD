@@ -2,7 +2,7 @@
 _pkgname='hyprwall'
 pkgname='hyprwall-bin'
 pkgver=0.1.2
-pkgrel=2
+pkgrel=3
 optdepends=('hyprland')
 pkgdesc='GUI for setting wallpapers with Hyprpaper, written in blazingly fast Rust!'
 arch=('x86_64')
@@ -15,8 +15,18 @@ depends=('glibc' 'gcc-libs' 'gtk4')
 optdepends=('hyprpaper' 'swaybg' 'swww' 'wallutils' 'feh')
 conflicts=($_pkgname)
 provides=($_pkgname)
+install="$_pkgname.install"
 
 prepare() {
+    local oldinstall=$(cat "$startdir/$install")
+
+    echo -n "optdepends=(" > "$startdir/$install"
+    for dep in "${optdepends[@]}"; do
+        echo -n "'$dep' " >> "$startdir/$install"
+    done
+
+    echo -e ")\n$oldinstall" >> "$startdir/$install"
+
     echo "Version=$pkgver" >> "$pkgname.desktop"
 }
 
