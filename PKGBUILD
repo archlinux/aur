@@ -5,8 +5,8 @@ _pkgname=Equibop
 pkgdesc="Equibop is a Vesktop fork that gives you the performance of web Discord and the comfort of Discord Desktop, with additional plugins."
 pkgver=2.0.9
 # Reminder for devs: don't forget to update the electron version on equibop.sh
-pkgrel=1
-electron=electron31
+pkgrel=2
+electron=electron33
 arch=('x86_64' 'aarch64')
 url="https://github.com/Equicord/Equibop"
 license=('GPL3')
@@ -22,15 +22,15 @@ conflicts=('equibop-bin')
 source=("$url/archive/refs/tags/v${pkgver}.tar.gz"
         'io.github.equicord.equibop.desktop'
         'equibop.sh')
-sha256sums=('b6ec6474de14ac718a577a2fe2a178800caab3322ba9d58fb6292691dba7324d'
+sha256sums=('0cae52c6e1c107c5e9099396e131c2b02e10868e444d6245bed02d0c21a30503'
             '1e4766362fab2657e6b9a6a0a742518b545a5678f211ba25f7fdd3f5080d48d5'
-            'ae9f22bb24ffe42a14ac59b20e7d48c807aa96272eb2c2c36b93b4aee161d02c')
+            '843ec77a78259b4bd0b6f065bfa07b9f4844b1bcccc5ffbb66639ebb92b60bde')
 
 prepare() {
   cd "$_pkgname-$pkgver"
 
   # Use system's electron
-  sed -i "/linux/s/^/        \"electronDist\": \"\\/usr\\/lib\\/${electron}\",\n/" package.json
+  #  sed -i "/linux/s/^/        \"electronDist\": \"\\/usr\\/lib\\/${electron}\",\n/" package.json
 }
 
 build() {

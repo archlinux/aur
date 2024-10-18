@@ -8,4 +8,4 @@ if [[ -f $XDG_CONFIG_HOME/equibop-flags.conf ]]; then
 fi
 
 # Launch
-exec electron31 /usr/lib/equibop/app.asar $EQUIBOP_USER_FLAGS "$@"
+exec electron33 /usr/lib/equibop/app.asar $EQUIBOP_USER_FLAGS "$@"
