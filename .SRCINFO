@@ -1,0 +1,23 @@
+pkgbase = mautrix-slack
+	pkgdesc = A Matrix-Slack puppeting bridge
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://github.com/mautrix/slack
+	arch = x86_64
+	arch = aarch64
+	license = AGPL-3.0-or-later
+	makedepends = go
+	makedepends = git
+	depends = libolm
+	optdepends = ffmpeg: If you want to send gifs from Matrix
+	backup = etc/mautrix-slack/mautrix-slack.yaml
+	source = mautrix-slack-0.1.2.tar.gz::https://github.com/mautrix/slack/archive/refs/tags/v0.1.2.tar.gz
+	source = sysusers-mautrix-slack.conf
+	source = mautrix-slack.tmpfiles
+	source = mautrix-slack.service
+	sha256sums = a4705b5de91afa827af75f01b1990fe6258e8f0f1c100eec747b81fca53d038a
+	sha256sums = c1e3d2d9a65fa9ced4b35fdad98ec69a21dfee5da9e22e8c76e7821cebc0fa1e
+	sha256sums = dc52d374b0af0af85aa44bc2679edf48e41c2631f684b8df7d2cc591fbadbf96
+	sha256sums = 58bed71d40735df20c01176eafea2e85aa98e2e24c26d2d0adc76652c5b25003
+
+pkgname = mautrix-slack

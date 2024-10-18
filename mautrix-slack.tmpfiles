@@ -1,0 +1,5 @@
+# Override this file with a modified version in /etc/tmpfiles.d/
+d /etc/mautrix-slack 0750 root mautrix-slack
+z /etc/mautrix-slack/* 0640 mautrix-slack mautrix-slack -
+d /var/log/mautrix-slack 0700 mautrix-slack mautrix-slack
+d /var/lib/mautrix-slack 0700 mautrix-slack mautrix-slack
