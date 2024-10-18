@@ -1,7 +1,7 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 _pkgname=shadps4
 pkgname=$_pkgname-git
-pkgver=0.3.0.r194.gf79b7f10
+pkgver=0.3.0.r201.g9814a1b7
 pkgrel=1
 pkgdesc="Sony PlayStation 4 emulator"
 arch=('aarch64' 'x86_64')
@@ -23,6 +23,7 @@ makedepends=(
 	'ffmpeg'
 	'fmt>=10.2'
 	'git'
+	'half>=1.12'
 	'magic_enum>=0.9.6'
 	'qt6-base'
 	'qt6-multimedia'
@@ -50,11 +51,9 @@ source=(
 	"$_pkgname-imgui::git+https://github.com/shadps4-emu/ext-imgui.git"
 	"$_pkgname-sirit::git+https://github.com/shadps4-emu/sirit.git"
 	"$_pkgname-tracy::git+https://github.com/shadps4-emu/tracy.git"
-	"half::git+https://github.com/ROCm/half.git"
 	"zydis::git+https://github.com/zyantific/zydis.git"
 )
 b2sums=(
-	'SKIP'
 	'SKIP'
 	'SKIP'
 	'SKIP'
@@ -72,7 +71,6 @@ prepare() {
 	cd $_pkgname
 	git config submodule.externals/dear_imgui.url ../$_pkgname-imgui
 	git config submodule.externals/discord-rpc.url ../$_pkgname-discord-rpc
-	git config submodule.externals/half.url ../half
 	git config submodule.externals/sirit.url ../$_pkgname-sirit
 	git config submodule.externals/tracy.url ../$_pkgname-tracy
 	git config submodule.externals/zydis.url ../zydis
@@ -84,7 +82,6 @@ build() {
 		-DCMAKE_BUILD_TYPE=Release \
 		-DCMAKE_C_FLAGS_RELEASE="-DNDEBUG" \
 		-DCMAKE_CXX_FLAGS_RELEASE="-DNDEBUG" \
-		-DCMAKE_DISABLE_FIND_PACKAGE_Zydis=ON \
 		-DCMAKE_INSTALL_PREFIX=/usr \
 		-DCMAKE_SKIP_INSTALL_RPATH=ON \
 		-DENABLE_QT_GUI=ON \
