@@ -1,6 +1,6 @@
 pkgbase = smart-office
 	pkgdesc = A desktop client for smart-office.uz
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/khaitbek/smart-office-desktop-app
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = smart-office
 	license = mit
 	options = !strip
 	options = !emptydirs
-	source_x86_64 = https://github.com/khaitbek/smart-office-desktop-app/releases/download/v0.1.0/smart-office_0.1.0_amd64.deb
-	source_aarch64 = https://github.com/khaitbek/smart-office-desktop-app/releases/download/v0.1.0/smart-office_0.1.0_arm64.deb
+	source_x86_64 = https://github.com/khaitbek/smart-office-desktop-app/releases/download/v0.1.1/smart-office_0.1.1_amd64.deb
+	source_aarch64 = https://github.com/khaitbek/smart-office-desktop-app/releases/download/v0.1.1/smart-office_0.1.1_arm64.deb
 
 pkgname = smart-office
