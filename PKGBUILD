@@ -1,21 +1,21 @@
 # Maintainer: Martin Diehl <martin.diehl@kuleuven.be>
 pkgbase=damask
 pkgname=('damask' 'damask-grid' 'damask-mesh' 'python-damask')
-pkgver=3.0.0
-pkgrel=4
+pkgver=3.0.1
+pkgrel=1
 pkgdesc='DAMASK - The Duesseldorf Advanced Material Simulation Kit'
 arch=('x86_64')
 url='https://damask-multiphysics.org'
 license=('AGPL-3.0-or-later')
 makedepends=('cmake' 'python-setuptools'
-             'petsc<3.22' 'hdf5-openmpi' 'fftw-openmpi' 'zlib' 'libfyaml'
+             'petsc<3.23' 'hdf5-openmpi' 'fftw-openmpi' 'zlib' 'libfyaml'
              'python-pandas' 'python-numpy' 'python-scipy' 'python-h5py' 'vtk' 'python-matplotlib' 'python-pyaml')
 optdepends=('paraview: post-processing')
 source=(https://damask-multiphysics.org/download/damask-${pkgver}.tar.xz
        'DAMASK_grid.1'
        'DAMASK_mesh.1')
 
-sha512sums=('f8e2f398c558f90ed4cac8fa60d57bd179a98f1d437ed0b5a5bd9801354cf74f12dba40551dbeabe00ad6e53709bd2daa3b64f759f3170c4766d8795d3f76483'
+sha512sums=('d1cfad44877925be3c497c6decb9c453d5598e9aebbf41641d230467666c25aa88a6cd1af2dc7f1c9abfd958340ddae880edab788d8c7e49d911a732f60b9728'
             '9f0a5afc8c535bca3378082e8b854d15add575b4797711b86eb526547aca8c7436c41fe0704a85a5b62073f227ee8df66ff9c62db2a78c53ed9fb1da489e1ef5'
             '9399544369ca0900664d7b8a5b99e350121715f5990fd50a1f5eee766e65303806fb3b116439547741155ac97918f002703eadbd53a9db55ff8b137cc8c97141')
 
