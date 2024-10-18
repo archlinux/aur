@@ -1,0 +1,26 @@
+pre_install() {
+  :
+}
+
+post_install() {
+  :
+}
+
+pre_upgrade() {
+  systemctl stop yeetd
+}
+
+post_upgrade() {
+  systemctl start yeetd
+}
+
+pre_remove() {
+  systemctl stop yeetd
+}
+
+post_remove() {
+  rm -rf /var/lib/yeet
+  rm -rf /etc/yeet
+  rm -rf /var/tmp/yeet
+  rm -rf /usr/local/yeet
+}

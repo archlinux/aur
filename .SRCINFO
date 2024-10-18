@@ -1,0 +1,19 @@
+pkgbase = yeet-bin
+	pkgdesc = yeet daemon and associated tools
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://yeet.cx/
+	install = yeet.install
+	arch = x86_64
+	arch = aarch64
+	license = BSD3
+	source_x86_64 = https://pkgs.yeet.cx/archlinux/os/x86_64/stable/yeet-0.1.0-1-x86_64.pkg.tar.zst
+	source_x86_64 = https://pkgs.yeet.cx/archlinux/os/x86_64/stable/yeet-0.1.0-1-x86_64.pkg.tar.zst.sig
+	sha256sums_x86_64 = 110c4d819a7180b58af4ca867f7a83cce405f6dc0c02321edb70c96ccc69a71d
+	sha256sums_x86_64 = SKIP
+	source_aarch64 = https://pkgs.yeet.cx/archlinux/os/aarch64/stable/yeet-0.1.0-1-aarch64.pkg.tar.zst
+	source_aarch64 = https://pkgs.yeet.cx/archlinux/os/aarch64/stable/yeet-0.1.0-1-aarch64.pkg.tar.zst.sig
+	sha256sums_aarch64 = aef05e710be360fe212ef94b788eff8b81b0a69b973cbadfbe68d61dd8ee6118
+	sha256sums_aarch64 = SKIP
+
+pkgname = yeet-bin
