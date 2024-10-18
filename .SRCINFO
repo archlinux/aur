@@ -14,6 +14,7 @@ pkgbase = dudenbib
 	depends = libxi
 	depends = libxinerama
 	depends = libxcb
+	depends = xcb-util-cursor
 	noextract = dudenbibliothek6_6.5.2.0_amd64.deb
 	source = https://cdn.duden.de/downloads/proxy/duden_bibliothek-update-6.5/dudenbibliothek6_6.5.2.0_amd64.deb
 	md5sums = 0086cb9b3e39c40fcb858b542af5a3d4
