@@ -2,7 +2,7 @@
 _pkgname='hyprwall'
 pkgname='hyprwall-bin'
 pkgver=0.1.2
-pkgrel=3
+pkgrel=4
 optdepends=('hyprland')
 pkgdesc='GUI for setting wallpapers with Hyprpaper, written in blazingly fast Rust!'
 arch=('x86_64')
