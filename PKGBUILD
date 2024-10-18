@@ -2,9 +2,9 @@
 _pkgname=butterfly
 pkgname="linwood-${_pkgname}-bin"
 _appname="dev.linwood.${_pkgname}"
-pkgver=2.2.0
+pkgver=2.2.1
 pkgrel=1
-pkgdesc="Powerful, minimalistic, cross-platform, opensource note-taking app"
+pkgdesc="Powerful, minimalistic, cross-platform, opensource note-taking app.Prebuilt version."
 arch=("x86_64")
 url="https://docs.butterfly.linwood.dev/"
 _ghurl="https://github.com/LinwoodDev/Butterfly"
@@ -25,7 +25,7 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/LinwoodDev/Butterfly/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('15541e4dd328730efa241217afc094dfb8dcb2e1c7e035c59960be4ee04f68be'
+sha256sums=('f0bd75e0c954d79b54611de4ca2eaf4c6efd121a4df1667ff9706e0dda482fec'
             '8486a10c4393cee1c25392769ddd3b2d6c242d6ec7928e1414efff7dfb2f07ef'
             '3b8311438e88f47eb507322a43c7a4156bfebb8c0f6e7b7436ef70842fb4c745')
 build() {
@@ -40,7 +40,7 @@ build() {
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
-    cp -r "${srcdir}/usr/bin/"* "${pkgdir}/usr/lib/${pkgname%-bin}"
+    cp -Pr --no-preserve=ownership "${srcdir}/usr/bin/"* "${pkgdir}/usr/lib/${pkgname%-bin}"
     install -Dm644 "${srcdir}/usr/share/applications/${_appname}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
     install -Dm644 "${srcdir}/usr/share/icons/hicolor/128x128/apps/${_appname}.png" "${pkgdir}/usr/share/icons/hicolor/128x128/apps/${pkgname%-bin}.png"
     install -Dm644 "${srcdir}/usr/share/icons/hicolor/256x256/apps/${_appname}.png" "${pkgdir}/usr/share/icons/hicolor/256x256/apps/${pkgname%-bin}.png"
