@@ -1,7 +1,8 @@
-# Maintainer: Andreas Born <futur[DOT]andy[AT]googlemail[DOT]com>
+# Maintainer: André Schamschurko <marcrosssaberan[AT]gmail[DOT]com>
+# Contributer: Andreas Born <futur[DOT]andy[AT]googlemail[DOT]com>
 
 pkgname=lrz-syncshare
-pkgver=20.0.100
+pkgver=21.1.100
 pkgrel=1
 pkgdesc="Sync client for the LRZ Sync+Share service"
 url='https://syncandshare.lrz.de/'
@@ -9,8 +10,7 @@ arch=('any')
 license=('custom')
 depends=('desktop-file-utils' 'hicolor-icon-theme' 'java-runtime>=15' 'xdg-utils' 'archlinux-java-run')
 source=("LRZ_Sync_Share_${pkgver}_Linux.tar.gz::https://syncandshare.lrz.de/client_deployment/LRZ_Sync_Share_Latest_Linux.tar.gz")
-sha256sums=('f424221f44f29e6b186e82648c807ec372007692efff14cb44e26756a14c2697')
-
+sha256sums=('31eb499fe97c8cb7d90f5046d351696f845cdb04e8495311a37e07dc708262b4')
 pkgver() {
   cat "${srcdir}/LRZ_Sync_Share/VERSION" | sed -e 's/\s*$//'
 }
