@@ -1,7 +1,7 @@
 pkgbase = nemo-run-with-nvidia-prime-run
-	pkgdesc = Nemo action to run a program with nvidia-prime-run
+	pkgdesc = Nemo action to run a program with prime-run for nvidia-GPUs
 	pkgver = 0.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/schinfo/nemo-run-with-nvidia-prime-run
 	arch = any
 	license = GPL2

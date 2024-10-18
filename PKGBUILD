@@ -2,8 +2,8 @@
 
 pkgname=nemo-run-with-nvidia-prime-run
 pkgver=0.1.0
-pkgrel=1
-pkgdesc="Nemo action to run a program with nvidia-prime-run"
+pkgrel=2
+pkgdesc="Nemo action to run a program with prime-run for nvidia-GPUs"
 arch=('any')
 url="https://github.com/schinfo/${pkgname}"
 license=('GPL2')
