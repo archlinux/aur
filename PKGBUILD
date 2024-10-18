@@ -24,7 +24,6 @@ depends=(
   'numactl'
   'parted'
   'polkit'
-  'yajl'
 )
 makedepends=(
   'bash-completion'

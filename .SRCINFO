@@ -29,7 +29,6 @@ pkgbase = libvirt
 	depends = numactl
 	depends = parted
 	depends = polkit
-	depends = yajl
 	optdepends = dmidecode: DMI system info support
 	optdepends = dnsmasq: required for default NAT/DHCP for guests
 	optdepends = gettext: required for libvirt-guests.service
