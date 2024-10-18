@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=BMA
-_pkgver=3.18.17
+_pkgver=3.18.19
 pkgname=r-${_pkgname,,}
-pkgver=3.18.17
+pkgver=3.18.19
 pkgrel=1
 pkgdesc='Bayesian Model Averaging'
 arch=('x86_64')
@@ -23,7 +23,7 @@ makedepends=(
   gcc-fortran
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('6d8c514fa179f8a48c2105b551a8a08e28ea4375d06150a4b8ab4ccda577daf5')
+sha256sums=('09ead6ec3dc0bcc1de4d47b18b705fd2a7637cd888eec220cbc5b175e8ca8d42')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
