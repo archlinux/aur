@@ -2,7 +2,7 @@
 
 pkgname=deno-init
 pkgver=2.x.x
-pkgrel=1
+pkgrel=2
 pkgdesc="Startup AUR providing the latest deno runtime, then you can upgrade deno using \`deno upgrade\`"
 arch=('x86_64' 'aarch64')
 url="https://deno.com"
@@ -10,10 +10,10 @@ license=(MIT)
 provides=(deno)
 conflicts=(deno)
 
-_target=deno-$CARCH-unknown-linux-gnu
+_target=deno-$CARCH-unknown-linux-gnu.zip
 _baseurl=https://github.com/denoland/deno/releases/latest/download
 source=(
-    $_baseurl/${_target}.zip
+    $_baseurl/${_target}
     $_baseurl/${_target}.sha256sum
 )
 sha256sums=(
