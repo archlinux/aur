@@ -11,9 +11,9 @@
 # Contributor: Marcin Nowak <marcin [dot] j [dot] nowak [at] gmail [dot] com>
 
 pkgname=lightworks-beta
-lwksver=2024.1
+lwksver=2025.1
 lwksreldir=$lwksver
-lwksbuild=147877
+lwksbuild=148127
 pkgver=$lwksver.$lwksbuild
 pkgrel=1
 pkgdesc="Lightworks Beta is the public Beta branch for Lightworks, the professional video editing suite, updated weekly"
@@ -27,7 +27,7 @@ provides=('lightworks')
 conflicts=('lightworks' 'lwks-beta')
 replaces=('lwks-beta')
 source=(
-    "https://cdn.lwks.com/betas/public/lightworks/${lwksver}+Beta+Revision+${lwksbuild}+%281st+October%29/Lightworks-${lwksver}-Beta-${lwksbuild}.deb"
+    "https://cdn.lwks.com/betas/public/lightworks/${lwksver}+Beta+Revision+$lwksbuild+(17th+October)/Lightworks-${lwksver}-Beta-$lwksbuild.deb"
     )
 
 package() {
@@ -47,4 +47,4 @@ package() {
     chmod a+rw "$pkgdir"/usr/share/lightworks/Preferences
     chmod a+rw "$pkgdir"/usr/share/lightworks/"Audio Mixes"
 }
-sha256sums=('eae685e168d1af27594f67138f9d28145713e712f8655fd167b0cebce477e5f1')
+sha256sums=('a961eb4546004fa3122d6526ff9862e64f95d7dbc5b7b8eb5db0512de1256b31')

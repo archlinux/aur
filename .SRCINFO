@@ -1,6 +1,6 @@
 pkgbase = lightworks-beta
 	pkgdesc = Lightworks Beta is the public Beta branch for Lightworks, the professional video editing suite, updated weekly
-	pkgver = 2024.1.147877
+	pkgver = 2025.1.148127
 	pkgrel = 1
 	url = http://www.lwks.com/
 	arch = x86_64
@@ -30,7 +30,7 @@ pkgbase = lightworks-beta
 	conflicts = lwks-beta
 	replaces = lwks-beta
 	options = !strip
-	source = https://cdn.lwks.com/releases/2024.1/lightworks_2024.1_r147877.deb
-   sha256sums = eae685e168d1af27594f67138f9d28145713e712f8655fd167b0cebce477e5f1
+	source = https://cdn.lwks.com/betas/public/lightworks/2025.1+Beta+Revision+148127+(17th+October)/Lightworks-2025.1-Beta-148127.deb
+	sha256sums = a961eb4546004fa3122d6526ff9862e64f95d7dbc5b7b8eb5db0512de1256b31
 
 pkgname = lightworks-beta
