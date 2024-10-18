@@ -1,8 +1,8 @@
 # Maintainer: Andrew Rabert <ar@nullsum.net>
 
 pkgbase=linux-flowx13
-pkgver=6.11.3.arch1
-pkgrel=2
+pkgver=6.11.4.arch1
+pkgrel=1
 pkgdesc='Linux (with patches for the Asus Flow X13)'
 url='https://github.com/archlinux/linux'
 arch=(x86_64)
@@ -43,17 +43,17 @@ validpgpkeys=(
   83BC8889351B5DEBBB68416EB8AC08600F108CDF  # Jan Alexander Steffens (heftig)
 )
 # https://www.kernel.org/pub/linux/kernel/v6.x/sha256sums.asc
-sha256sums=('057263d0afc17d5253794afd3d239ba4da4aa734b22fa36c1665f41b95449b73'
+sha256sums=('bd54b0a0a46574919706698b1411ec48cf2a58345c4d8990e414acc4730e8f55'
             'SKIP'
-            '30683bfd1ee6cfcb9a1491fc52306f94282c252964f88da14e8b21b32af82920'
+            '07873305e1bc211e16a683dc2557e6a12efa8467a508da7a67985acd97547cdd'
             'SKIP'
-            '6c4d63503c77465232fe4ed42671261b476bb0bfd1223b1a3da4afcc1cd615fb'
+            '85d7da72a3bfb175caa71ec26393f32c3ac7457477f53be373a94192392caef6'
             '508f90cbe81a9a145cc540703470f1e6b5d21c7a7b9166d2ce6e56b401262b04')
-b2sums=('69582e4745850f3ec004d87859ac88994e3715ed38cd66aff2633fbcb6c20ca2e3be83417cd2c42c2757ab4e084e622c688799b5ad28e15c391adb2afab79a68'
+b2sums=('0c77f514e29881b27b8bf815a55845b65182a25be006815541c0e843c2bbc0d12ee978d2a418d779d296c361bbba2d78ff58a0c13ae78382552afadb1e43aaec'
         'SKIP'
-        '9d5db395f525fff7a9d87bf6301d907fefa7f864bc7be712a72d17ceefefb6cd09afe19153df43ab5cd4d2c7abce9a1bfe974b909c5f27e4b818fffa29932a73'
+        '8624ab5018ef9144a4e4152ada9ce9b3ba16fd3397afb3a3819b93aa81ba18650f93dd5ec19d973e6a5d103844bbc6499c9c61c2a065e7d53a5b5a3d8a88473a'
         'SKIP'
-        '9ab6e9162c8a443dab748b8a6be946d5b112c617c4192a6219c515c23883e30978838411491c86c08679e559f952e5a6d727f5bacde00e18bbb60004ef0c213f'
+        'bf82c54cf07ed19cb935e0892ea047508d51124e8e88e52fe2511d7b1d5489e93e3a79184fc499ef551991b86aac13cf458e7234d8becfe8c628b60a12c0cb4c'
         'c0090c819342838fbb242f41ee057612ade9c1e564ea250bcd454d57677196a590e392ee6ef0b45d8d9463ab92a8ae3b3668f162c45a8d0e714747235d1cccff')
 
 
