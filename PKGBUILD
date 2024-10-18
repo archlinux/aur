@@ -1,4 +1,5 @@
-# Maintainer: Marcin Nowak <marcin [dot] j [dot] nowak [at] gmail [dot] com>
+# Maintainer: Nick Walsh <nick [dot] walsh [at] lwks [dot] com>
+# Contributor: Marcin Nowak <marcin [dot] j [dot] nowak [at] gmail [dot] com>
 # Contributor: Mateus Rodrigues Costa <charles [dot] costar [at] gmail [dot] com>
 # Contributor: PieterDeBruijn <arch [at] pieterdebruijn [dot] nl [dot] com>
 # Contributor: stjhimy <stjhimy [at] gmail [dot] com>
@@ -14,7 +15,7 @@ lwksver=2023.2
 lwksreldir=$lwksver
 lwksbuild=147988
 pkgver=$lwksver.$lwksbuild
-pkgrel=1
+pkgrel=2
 pkgdesc="Lightworks is a professional video editing suite"
 arch=('x86_64')
 options=('!strip')
