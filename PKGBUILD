@@ -1,7 +1,7 @@
 # Maintainer: Guillaume BOEHM <aur@mail.gboehm.com>
 pkgname=nordzy-hyprcursors
-pkgver=2.0.0
-pkgrel=2
+pkgver=2.1.0
+pkgrel=1
 pkgdesc="Hyprcursor port of https://github.com/alvatip/Nordzy-cursors."
 arch=(any)
 url="https://github.com/guillaumeboehm/Nordzy-hyprcursors"
@@ -12,13 +12,13 @@ source=(
 )
 noextract=("${source[@]##*/}")
 sha256sums=(
-    "8ee943cf92c399cc3453cf39b13050b0115be9af10d5fe6121cecedbbbede70d"
-    "bb3b346514373c699e66115d094310c4bfcbf73b073dfd1efe1e5ccd7ce2cbed"
+    "a8ced4bc9218a6dadee876d0ce4889323c329645d06bea988c45f5ba81a1927e"
+    "52bb20aa1f646d16b9c5b7dec26b94cc33219d0cfc14fbfef186a3a120cb9d12"
 )
 
 package() {
-	install -dm755 "${pkgdir}/usr/share/icons/Nordzy-cursors-hyprcursor"
-	install -dm755 "${pkgdir}/usr/share/icons/Nordzy-cursors-white-hyprcursor"
+	install -dm755 "${pkgdir}/usr/share/icons/Nordzy-hyprcursors"
+	install -dm755 "${pkgdir}/usr/share/icons/Nordzy-hyprcursors-white"
 
 	tar --no-same-owner -zxvf Nordzy-hyprcursors.tar.gz -C "${pkgdir}/usr/share/icons/"
 	tar --no-same-owner -zxvf Nordzy-hyprcursors-white.tar.gz -C "${pkgdir}/usr/share/icons/"
