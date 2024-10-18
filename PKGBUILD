@@ -8,8 +8,8 @@
 # https://github.com/michaellass/AUR
 
 _majorver=17
-_completever=17.0.12
-_updatever=7
+_completever=17.0.13
+_updatever=11
 pkgrel=1
 pkgver=${_completever}.u${_updatever}
 _tag_ver=${_completever}+${_updatever}
@@ -56,7 +56,7 @@ source=(https://github.com/adoptium/temurin${_majorver}-binaries/releases/downlo
         freedesktop-java.desktop
         freedesktop-jconsole.desktop
         freedesktop-jshell.desktop)
-sha256sums=('9d4dd339bf7e6a9dcba8347661603b74c61ab2a5083ae67bf76da6285da8a778'
+sha256sums=('8682892fc02965930b9022c066fa164dd6f458ef4a5dc262016aa28333b30f49'
             'ae076317d93a389cc0c893fd9ec6769ae860c2cc01f8c8bed3f4ee476c73e625'
             'dc278160ca7df32bcfab0a5420c09eaf6f4602d30f57b6c5bedb0f60062c5228'
             'd0913ae3b9f469f8567432b0867222d66f50008c313f5a0882d15994ba19ec01')
