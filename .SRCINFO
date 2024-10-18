@@ -1,7 +1,7 @@
 pkgbase = youdao-dict
 	pkgdesc = YouDao Dictionary
 	pkgver = 6.0.0
-	pkgrel = 9
+	pkgrel = 10
 	url = http://cidian.youdao.com/
 	arch = x86_64
 	license = LicenseRef-custom
@@ -18,7 +18,6 @@ pkgbase = youdao-dict
 	depends = python-pyqt5-webkit
 	depends = gobject-introspection-runtime
 	depends = python-cssselect
-	depends = gstreamer0.10
 	depends = python-pyxdg
 	depends = qt5-webkit
 	depends = qt5-quickcontrols
@@ -39,6 +38,6 @@ pkgbase = youdao-dict
 	source = youdao-dict.sh
 	sha256sums = e56f248c3caf7d0bff9f4f18780d9b258612b490c1c0f332335b8d15471e0dd2
 	sha256sums = a373604e2f43ced0f4e37f7adbbb8719f11b2daf49aec96e1f6d9348027e882c
-	sha256sums = 57a97d391edc1fab4fa3fe2abc2ab518215ce0a51cb94a85875aed759127b622
+	sha256sums = 105c5d6e590ff22fea3f3ed299431078c324b91dff71016e1c2815ba3d54d4d4
 
 pkgname = youdao-dict
