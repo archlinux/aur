@@ -1,12 +1,11 @@
 pkgbase = slacky-git
-	pkgdesc = Slack wrapper for Linux.
+	pkgdesc = Slack wrapper for Linux.Use system-wide electron.
 	pkgver = 0.0.4.r1.g5ada14b
 	pkgrel = 1
 	url = https://github.com/andirsun/Slacky
 	arch = any
 	license = MIT
 	makedepends = npm
-	makedepends = pnpm
 	makedepends = git
 	makedepends = nvm
 	makedepends = gendesk
