@@ -1,7 +1,7 @@
 pkgbase = scrolex-bin
 	pkgdesc = A Horizontally Scrolled PDF Viewer
 	pkgver = 0.1.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/molecule-man/scrolex
 	arch = x86_64
 	license = MIT
