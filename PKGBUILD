@@ -23,7 +23,7 @@ pkgver() {
 
 build(){
   cd "$_pkgname"
-  env CARGO_INCREMENTAL=0 cargo build --release --offline
+  env CARGO_INCREMENTAL=0 cargo build --release --locked
 }
 
 check(){
