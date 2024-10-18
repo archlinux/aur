@@ -1,27 +1,27 @@
 # Maintainers: let <let@notlet.dev>, EnumDev <enumdev@enumerated.dev>
 
 pkgname=stormfetch
-pkgver=5.3.r0.g0fd198d
+pkgver=5.3.r2.gc5e02c0
 pkgrel=1
 pkgdesc='A simple linux fetch program written in go and bash'
 arch=('any')
 url='https://gitlab.com/EnumDev/stormfetch'
 license=('MIT')
 
-makedepends=('go' 'make')
-depends=('bash')
+makedepends=('libx11' 'go' 'make')
+depends=('bash' 'libxcursor' 'libxrandr' 'libxinerama' 'libxi' 'libglvnd')
 
 source=('git+https://gitlab.com/EnumDev/stormfetch')
 sha256sums=('SKIP')
 
 build() {
 	cd "$srcdir/stormfetch"
-        make SYSCONFDIR=/etc
+	make SYSCONFDIR=/etc
 }
 
 package() {
-        cd "$srcdir/stormfetch"
-        make DESTDIR="$pkgdir" PREFIX=/usr SYSCONFDIR=/etc install
+	cd "$srcdir/stormfetch"
+	make DESTDIR="$pkgdir" PREFIX=/usr SYSCONFDIR=/etc install
 	install -Dm644 "$srcdir/stormfetch/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
