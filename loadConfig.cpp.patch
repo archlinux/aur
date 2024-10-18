@@ -1,19 +1,20 @@
 diff --git a/server/loadConfig.cpp b/server/loadConfig.cpp
-index b9d6eac..6c44312 100644
+index b9d6eac..a85735a 100644
 --- a/server/loadConfig.cpp
 +++ b/server/loadConfig.cpp
-@@ -84,8 +84,8 @@ mergePropertyTrees (boost::property_tree::ptree &ptMerged,
+@@ -84,8 +84,9 @@ mergePropertyTrees (boost::property_tree::ptree &ptMerged,
      auto it = ptSecond.begin();
  
      for (; it != ptSecond.end(); ++it) {
 -      boost::property_tree::ptree child = ptMerged.get_child (it->first.data(),
 -                                          boost::property_tree::ptree() );
++      boost::property_tree::ptree default_ptree;
 +      boost::property_tree::ptree child = ptMerged.get_child_optional(it->first.data())
-+                                          .value_or(boost::property_tree::ptree());
++                                          .value_or(default_ptree);
        mergePropertyTrees (child, it->second, level + 1);
  
        ptMerged.erase (it->first.data() );
-@@ -192,7 +192,7 @@ loadModulesConfigFromDir (boost::property_tree::ptree &config,
+@@ -192,7 +193,7 @@ loadModulesConfigFromDir (boost::property_tree::ptree &config,
  
    for ( boost::filesystem::directory_iterator itr ( dir ); itr != end_itr;
          ++itr ) {
@@ -22,7 +23,7 @@ index b9d6eac..6c44312 100644
        const std::string pathStr = itr->path().string();
        try {
          boost::property_tree::ptree moduleConfig;
-@@ -235,7 +235,7 @@ loadModulesConfig (boost::property_tree::ptree &config,
+@@ -235,7 +236,7 @@ loadModulesConfig (boost::property_tree::ptree &config,
  
    for (std::string location : locations) {
      boost::filesystem::path dir (location);

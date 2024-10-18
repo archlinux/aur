@@ -1,7 +1,7 @@
 pkgbase = kurento-media-server
 	pkgdesc = Kurento WebRTC media server
 	pkgver = 6.17.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/Kurento/kurento-media-server
 	arch = x86_64
 	license = apache
