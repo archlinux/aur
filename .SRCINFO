@@ -1,5 +1,5 @@
 pkgbase = note-mark-git
-	pkgdesc = A note-taking desktop app with out-of-the-box markdown support.Perfect for storing markdown notes on your desktop with ease.
+	pkgdesc = A note-taking desktop app with out-of-the-box markdown support.Perfect for storing markdown notes on your desktop with ease.Use system-wide electron.
 	pkgver = r10.2d1d925
 	pkgrel = 1
 	url = https://github.com/AbdulDevHub/NoteMark
@@ -10,6 +10,7 @@ pkgbase = note-mark-git
 	makedepends = nvm
 	makedepends = gendesk
 	makedepends = curl
+	makedepends = pnpm
 	depends = electron28
 	provides = note-mark=r10.2d1d925
 	conflicts = note-mark

@@ -5,7 +5,7 @@ pkgver=r10.2d1d925
 _electronversion=28
 _nodeversion=18
 pkgrel=1
-pkgdesc="A note-taking desktop app with out-of-the-box markdown support.Perfect for storing markdown notes on your desktop with ease."
+pkgdesc="A note-taking desktop app with out-of-the-box markdown support.Perfect for storing markdown notes on your desktop with ease.Use system-wide electron."
 arch=('any')
 url="https://github.com/AbdulDevHub/NoteMark"
 license=("MIT")
@@ -20,6 +20,7 @@ makedepends=(
     'nvm'
     'gendesk'
     'curl'
+    'pnpm'
 )
 source=(
     "${pkgname%-git}.git::git+${url}.git"
@@ -50,31 +51,31 @@ build() {
     _ensure_local_nvm
     gendesk -q -f -n --pkgname="${pkgname%-git}" --pkgdesc="${pkgdesc}" --categories="Office" --name="${_pkgname}" --exec="${pkgname%-git} %U"
     cd "${srcdir}/${pkgname%-git}.git"
+    electronDist="/usr/lib/electron${_electronversion}"
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
     HOME="${srcdir}/.electron-gyp"
-    mkdir -p "${srcdir}/.electron-gyp"
     {
-        if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
-            echo -e '\n'
-            echo 'registry "https://registry.npmmirror.com"'
-            echo 'disturl "https://registry.npmmirror.com/-/binary/node/"'
-            echo 'electron_mirror "https://registry.npmmirror.com/-/binary/electron/"'
-            echo 'electron_builder_binaries_mirror "https://registry.npmmirror.com/-/binary/electron-builder-binaries/"'
-            echo "cacheFolder "${srcdir}"/.yarn/cache"
-            echo "pluginsFolder "${srcdir}"/.yarn/plugins"
-            echo "globalFolder "${srcdir}"/.yarn/global"
-            echo 'useHardlinks true'
-            #echo 'buildFromSource true'
-            echo 'linkWorkspacePackages true'
-            echo 'fetchRetries 3'
-            echo 'fetchRetryTimeout 10000'
-        fi
-    } >> .yarnrc
+        echo -e '\n'
+        #echo 'build_from_source=true'
+        echo 'link-workspace-packages=true'
+        echo 'fetch-retry-maxtimeout=10000'
+        echo "cache-dir="${srcdir}"/.pnpm_cache"
+        echo "store-dir="${srcdir}"/.pnpm_store"
+    } >> .npmrc
+    if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
+        {
+            echo 'registry=https://registry.npmmirror.com'
+            echo 'disturl=https://registry.npmmirror.com/-/binary/node/'
+            echo 'electron_mirror=https://registry.npmmirror.com/-/binary/electron/'
+            echo 'electron_builder_binaries_mirror=https://registry.npmmirror.com/-/binary/electron-builder-binaries/'
+        } >> .npmrc
+    fi
     sed -i 's|\\\\|/|g' src/main/lib/index.ts
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
-    NODE_ENV=development    yarn install --cache-folder "${srcdir}/.yarn_cache" --no-lockfile
-    NODE_ENV=production     yarn run build:unpack
+    NODE_ENV=development    pnpm install
+    NODE_ENV=production     pnpm run build
+    NODE_ENV=production     pnpm -c exec "electron-builder --linux dir -c.electronDist=${electronDist}"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
