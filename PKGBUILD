@@ -2,7 +2,7 @@
 
 pkgname=mutmap
 _name=MutMap
-pkgver=2.3.6
+pkgver=2.3.8
 pkgrel=1
 pkgdesc='Pipeline to identify causative mutations responsible for a phenotype. https://doi.org/10.7717/peerj.13170'
 arch=('x86_64')
@@ -26,7 +26,7 @@ makedepends=(
             )
 options=(!emptydirs)
 source=($_name-$pkgver::"https://github.com/YuSugihara/MutMap/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('74db0af6b2c3c83767d13509a9098ebb5fbb7170455770b056916ba48876ddb7')
+sha256sums=('6a0883ceb4fc0bbd4b19ccc65bcbff349d89d2a8db8732e5ef2e0d8dade5b595')
 
 build() {
   cd "$srcdir/$_name-$pkgver"

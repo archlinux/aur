@@ -1,6 +1,6 @@
 pkgbase = mutmap
 	pkgdesc = Pipeline to identify causative mutations responsible for a phenotype. https://doi.org/10.7717/peerj.13170
-	pkgver = 2.3.6
+	pkgver = 2.3.8
 	pkgrel = 1
 	url = https://github.com/YuSugihara/MutMap
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = mutmap
 	depends = python-pandas
 	depends = python-seaborn
 	options = !emptydirs
-	source = MutMap-2.3.6::https://github.com/YuSugihara/MutMap/archive/refs/tags/v2.3.6.tar.gz
-	sha256sums = 74db0af6b2c3c83767d13509a9098ebb5fbb7170455770b056916ba48876ddb7
+	source = MutMap-2.3.8::https://github.com/YuSugihara/MutMap/archive/refs/tags/v2.3.8.tar.gz
+	sha256sums = 6a0883ceb4fc0bbd4b19ccc65bcbff349d89d2a8db8732e5ef2e0d8dade5b595
 
 pkgname = mutmap
