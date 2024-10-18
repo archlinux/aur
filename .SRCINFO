@@ -1,13 +1,13 @@
 pkgbase = kmodcache
 	pkgdesc = Scripts to make a copy of installed kernel modules, which will be used for on-demand loading from then point on, thus make reboots unnecessary after kernel updates.
-	pkgver = 1.4
+	pkgver = 1.5
 	pkgrel = 1
 	arch = any
 	license = GPL3
 	source = pre-upgrade
 	source = post-upgrade
-	source = kmodcache-pre.hook
-	source = kmodcache-post.hook
+	source = 69-kmodcache-pre.hook
+	source = 72-kmodcache-post.hook
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
