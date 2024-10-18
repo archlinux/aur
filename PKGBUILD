@@ -2,7 +2,7 @@
 _pkgname="Obfuscation-Tunnel"
 pkgname="${_pkgname,,}-git"
 pkgver=r80.cbd31a1
-pkgrel=3
+pkgrel=4
 epoch=
 pkgdesc="Obfuscate UDP traffic to hide from deep packet inspection"
 arch=('x86_64' 'aarch64')
@@ -33,6 +33,7 @@ prepare() {
     cd "$builddir"
     patch -p1 -i "$srcdir/ctypes.patch"
     patch -p1 -i "$srcdir/readme-to-manpage.patch"
+    patch -p1 -i "$srcdir/tcp_reuse.patch"
 }
 
 

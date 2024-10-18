@@ -1,7 +1,7 @@
 pkgbase = obfuscation-tunnel-git
 	pkgdesc = Obfuscate UDP traffic to hide from deep packet inspection
 	pkgver = r80.cbd31a1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/RoliSoft/Obfuscation-Tunnel
 	arch = x86_64
 	arch = aarch64
