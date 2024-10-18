@@ -2,17 +2,13 @@
 _pkgname=sast-evento
 pkgname=${_pkgname}-git
 
-pkgver=2.0.60.1.geb130e6
+pkgver=2.0.74.5.g90c7df7
 pkgrel=1
 pkgdesc='An event management system developed and used by NJUPT SAST (git package)'
 license=("${srcdir}/sast-evento/LICENSE")
 provides=("${_pkgname}")
 conflicts=("${_pkgname}" "${_pkgname}-bin")
 
-_slintver=1.8.0
-
-source_x86_64=("https://github.com/slint-ui/slint/releases/download/v${_slintver}/Slint-cpp-${_slintver}-Linux-x86_64.tar.gz")
-sha256sums_x86_64=('3999bb654437720972f085946549a0ff865b5971784e3ad575b054b73b746f75')
 makedepends=(
     'git'
     'base-devel'
@@ -38,7 +34,8 @@ url="https://github.com/NJUPT-SAST/sast-evento"
 
 pkgver() {
     cd "${srcdir}/sast-evento"
-    git --no-pager describe --tags --exclude "v[0-9]*[._][0-9]*[._][0-9]*-[0-9]*" --always --dirty --long | sed 's/-/./g'
+    git --no-pager describe --tags --exclude "v[0-9]*[._][0-9]*[._][0-9]*-[0-9]*" \
+        --always --dirty --long | sed 's/-/./g'
 }
 
 prepare() {
