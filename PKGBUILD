@@ -1,13 +1,13 @@
 # Maintainer: Adam Perkowski <adas1per@protonmail.com>
 pkgname='hyprwall'
-pkgver=0.1.2
-pkgrel=3
+pkgver=0.1.3
+pkgrel=1
 pkgdesc='GUI for setting wallpapers with Hyprpaper, written in blazingly fast Rust!'
 arch=('x86_64')
 url="https://github.com/nnyyxxxx/$pkgname"
 license=('GPL-2.0')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/nnyyxxxx/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('2f62e9a0d2df61bc6bd33c08bc7f79930f9a940a637a4544f2de1a2cb838d57f')
+sha256sums=('4def00da663d3ec0dcb4f774dc540f7b5df7851aec0eb765712ad6fb6d6f8f51')
 makedepends=('rustup' 'pango')
 depends=('glibc' 'gcc-libs' 'gtk4')
 optdepends=('hyprpaper' 'swaybg' 'swww' 'wallutils' 'feh')
