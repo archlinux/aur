@@ -2,15 +2,39 @@
 
 pkgname=gardenctl-bin
 pkgver=2.8.0
-pkgrel=3
+pkgrel=4
 pkgdesc='gardenctl is a command-line client for the Gardener (version 2).'
 url='https://github.com/gardener/gardenctl-v2'
 license=('Apache-2.0')
 arch=('x86_64')
 provides=('gardenctl')
-source=("gardenctl::https://github.com/gardener/gardenctl-v2/releases/download/v${pkgver}/gardenctl_v2_linux_amd64")
-sha256sums=('71758cee54dc6f8041cd3a59ea84bffff47c409ddddaad4f0059f86836d31fa8')
+conflicts=('gardenctl')
+source=(
+    "gardenctl::https://github.com/gardener/gardenctl-v2/releases/download/v${pkgver}/gardenctl_v2_linux_amd64"
+    "gardenctl-profile.sh")
+sha256sums=('71758cee54dc6f8041cd3a59ea84bffff47c409ddddaad4f0059f86836d31fa8'
+            '1001ebb1a3066132794d914e18a17938c3d06a86e043d1c62bfc62efa5ee4893')
+
+build() {
+    # shell completion
+    local _binary
+    mkdir -vp completions
+    _binary="$srcdir/gardenctl"
+
+    chmod +x $_binary
+    $_binary completion bash > completions/gardenctl
+    $_binary completion zsh > completions/_gardenctl
+    $_binary completion fish > completions/gardenctl.fish
+}
 
 package() {
     install -Dm 755 "$srcdir/gardenctl" "$pkgdir/usr/bin/gardenctl"
+
+    # install completions
+    install -vDm 644 completions/gardenctl -t "$pkgdir/usr/share/bash-completion/completions/"
+    install -vDm 644 completions/_gardenctl -t "$pkgdir/usr/share/zsh/site-functions/"
+    install -vDm 644 completions/gardenctl.fish -t "$pkgdir/usr/share/fish/vendor_completions.d/"
+
+    # install profile script for shell session
+    install -Dm 755 "$srcdir/gardenctl-profile.sh" "$pkgdir/etc/profile.d/gardenctl.sh"
 }
