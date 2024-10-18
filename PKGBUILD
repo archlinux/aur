@@ -2,7 +2,7 @@
 
 pkgname=foxglove-bin
 pkgver=2.15.1
-pkgrel=1
+pkgrel=2
 pkgdesc='An integrated visualization and diagnosis tool for robotics'
 arch=('x86_64' 'aarch64')
 license=('MPL')
@@ -12,8 +12,8 @@ optdepends=()
 provides=('foxglove-studio')
 conflicts=('foxglove-studio')
 replaces=('foxglove-studio-bin')
-source_x86_64=("$pkgname-$pkgver-x86_64.deb::https://get.foxglove.dev/desktop/latest/foxglove-studio-$pkgver-linux-amd64.deb")
-source_aarch64=("$pkgname-$pkgver-aarch64.deb::https://get.foxglove.dev/desktop/latest/foxglove-studio-$pkgver-linux-arm64.deb")
+source_x86_64=("$pkgname-$pkgver-x86_64.deb::https://get.foxglove.dev/desktop/v$pkgver/foxglove-studio-$pkgver-linux-amd64.deb")
+source_aarch64=("$pkgname-$pkgver-aarch64.deb::https://get.foxglove.dev/desktop/v$pkgver/foxglove-studio-$pkgver-linux-arm64.deb")
 sha256sums_x86_64=('68f90bcdb13299ec7f495716fe7ad87231215eb4eae9ed2dbf9f5c4b0cee33dd')
 sha256sums_aarch64=('519be408495f1d0bc7a4bd92e22fdf4648c960df2fc76c68152846ef9ea79c27')
 
