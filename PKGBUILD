@@ -22,8 +22,8 @@ install=gaiasky.install
 changelog=releasenotes.txt
 source=("http://gaia.ari.uni-heidelberg.de/gaiasky/files/releases/${versionstr//_/-}/$pkgname-${versionstr//_/-}.tar.gz")
 noextract=()
-md5sums=("93e0e26ac0596e4d610282af9d3ba87b")
-sha256sums=("c3744a2009bb3c9ad9862122fa0fb0608fec9909568e29741a9f7c5d9de0b9e1")
+md5sums=("5a3b9d485b2c029a4ad16452a737178c")
+sha256sums=("960110fbdcdab407cd7165eb06cad88ce1cb4c5e919c09d4573af7621e80fba3")
 validpgpkeys=()
 
 prepare() {
