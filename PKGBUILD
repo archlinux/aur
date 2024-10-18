@@ -1,7 +1,7 @@
 # Maintainer: Andrii Berezhynskyi <microsolutions_harebrain@aleeas.com>
 pkgname=scrolex-bin
 pkgver=0.1.0
-pkgrel=3
+pkgrel=4
 pkgfullname=scrolex-$pkgver-x86_64-unknown-linux-gnu
 pkgdesc="A Horizontally Scrolled PDF Viewer"
 arch=('x86_64')
