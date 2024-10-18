@@ -1,14 +1,15 @@
-# Maintainer: j.r <j.r@jugendhacker.de>
+# Maintainer: Pranav Sharma <pranav.sharma.ama@gmail.com>
+# Contributor: j.r <j.r@jugendhacker.de>
 # Contributor: Matthew Murray <matt@mattmurr.xyz>
 pkgname=python-validity
 pkgver=0.14
-pkgrel=1
+pkgrel=2
 pkgdesc="Validity fingerprint sensor driver"
 arch=(any)
 license=(MIT)
 depends=(python python-yaml python-pyusb python-cryptography python-dbus python-gobject 
-  innoextract "open-fprintd>=0.6" fprintd-clients)
-makedepends=(python-setuptools)
+  innoextract "open-fprintd>=0.6" fprintd-clients glib2)
+makedepends=(python-setuptools glib2-devel)
 conflicts=($pkgname)
 provides=($pkgname)
 url="https://github.com/uunicorn/${pkgname}"
