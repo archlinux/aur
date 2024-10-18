@@ -1,0 +1,20 @@
+pkgbase = python-code2flow
+	pkgdesc = Visualize your source code as DOT flowcharts
+	pkgver = 2.5.1
+	pkgrel = 1
+	url = https://github.com/scottrogowski/code2flow
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	depends = graphviz
+	optdepends = acorn: javascript support
+	optdepends = ruby-parser: ruby support
+	options = !strip
+	source = https://files.pythonhosted.org/packages/source/c/code2flow/code2flow-2.5.1.tar.gz
+	b2sums = 18ee26a04ee1846901ef922fa4493e90cef4d134948c0642a8e3727369a8db9b6041d97eafdf57c08bb1c977f87e5435ba19591e8c80cf21aaa1b01194f8f418
+
+pkgname = python-code2flow
