@@ -1,8 +1,9 @@
-# Maintainer: Gabriel Rauter <rauter.gabriel@gmail.com>
+# Maintainer: Bjoern Franke <bjo+aur@schafweide.org>
+# Contributor: Gabriel Rauter <rauter.gabriel@gmail.com>
 
 _pkgname=zigpy
 pkgname=python-$_pkgname
-pkgver=0.64.1
+pkgver=0.69.0
 pkgrel=1
 pkgdesc='Library implementation of the Zigbee Home Automation standard'
 url='https://github.com/zigpy/zigpy'
@@ -38,7 +39,7 @@ checkdepends=(
   'python-pytest-timeout'
 )
 source=("$_pkgname-$pkgver.tar.gz::https://github.com/zigpy/zigpy/archive/$pkgver.tar.gz")
-b2sums=('dbdd8397933e34eee796a492fc32715ea0eb4b24ccbd4df4b5657d57ff7bd84153e589a82380850b3f095dfe2cea3457d51d9895296f2e2a8d6a7f2c35af0616')
+b2sums=('7ad5442630113fa8fdd61c6a408776f66363947cc451f8e971c2a39612cafd2c9e7267eb010b366ea9209abcdae770e92ab069d977d752c7738404484d5d0256')
 
 build() {
   cd $_pkgname-$pkgver
