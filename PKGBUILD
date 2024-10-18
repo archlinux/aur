@@ -11,7 +11,7 @@ makedepends=('unzip')
 _pkgrel_x86_64=1
 _pkgrel_aarch64=1
 sha256sums_x86_64=('3bfe92c2791e27b44c82f79109c102f271e4ebe9bc13e2c32b91f9a6efe1ced4')
-sha256sums_aarch64=('73f2887d1a363de3fd494d28a51eab91b9816830e8086b20ab3446cb124ac75b')
+sha256sums_aarch64=('e05242ff3093c95db61f7a49f876134475dd5b8431f2d234be22def9dc8bce09')
 source_x86_64=("https://gitlab.com/linuxbombay/gzdoom/binaries/$pkgver/-/raw/main/gzdoom-$pkgver-x64.tar.xz")
 source_aarch64=("https://gitlab.com/linuxbombay/gzdoom/binaries/$pkgver/-/raw/main/gzdoom-$pkgver-arm64.tar.xz")
 
