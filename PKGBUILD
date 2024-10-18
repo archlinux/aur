@@ -6,7 +6,7 @@
 # Contributor: Jakub Schmidtke <sjakub@gmail.com>
 
 pkgname=firefox-globalmenu
-pkgver=130.0
+pkgver=131.0.3
 pkgrel=1
 pkgdesc="Fast, Private & Safe Web Browser"
 url="https://www.mozilla.org/firefox/"
@@ -48,7 +48,6 @@ makedepends=(
   clang
   diffutils
   imake
-  inetutils
   jack
   lld
   llvm
@@ -78,7 +77,7 @@ options=(
   !lto
   !makeflags
 )
-commit=https://gitlab.archlinux.org/archlinux/packaging/packages/firefox/-/raw/5f693dd48b2346d3e52096fe1dd45c8bf50ce55a
+commit=https://gitlab.archlinux.org/archlinux/packaging/packages/firefox/-/raw/b0e8fdc0b52300ae491e28d6145eab3e33906dc3
 source=(
   https://archive.mozilla.org/pub/firefox/releases/$pkgver/source/firefox-$pkgver.source.tar.xz{,.asc}
   $commit/firefox-symbolic.svg
@@ -90,12 +89,12 @@ validpgpkeys=(
   # https://blog.mozilla.org/security/2023/05/11/updated-gpg-key-for-signing-firefox-releases/
   14F26682D0916CDD81E37B6D61B7B526D98F0353
 )
-sha256sums=('0c12852a502c9ceefc11003416057917466d8788dd8780931ea387b0b137b567'
+sha256sums=('7a7df3f97737453efaa243ca9dbaf95d0f0f833c5dc8afacb5704ee16ef060d0'
             'SKIP'
             'a9b8b4a0a1f4a7b4af77d5fc70c2686d624038909263c795ecc81e0aec7711e9'
             '71fe797430198ac8c00b538dce537284cf526e48be0496698cf5a980d70c16da'
             '58d78ce57b3ee936bc966458d6b20ab142d02a897bbe924b3f26717af0c5bee1')
-b2sums=('9c7dfc43145e442d60f6971806848e4ecd0145713e31105da6bd13a82a50655f5c4095beff4d61505e26e188b60f49b16dc17fb42dc03a9fb9ef509a7010b0ab'
+b2sums=('1d59bb050c4565c3344e7c1159ebd5bc79f050686abbc408c38493c187e3f1960ab1217113e279b170141a004b3a4797e138200a8a5ada8f5ae93eaa337ad8c3'
         'SKIP'
         '63a8dd9d8910f9efb353bed452d8b4b2a2da435857ccee083fc0c557f8c4c1339ca593b463db320f70387a1b63f1a79e709e9d12c69520993e26d85a3d742e34'
         '2c7936949ef922307fb593bd0480a13bde2eab8ae24fc89071d809d6659384705f9b7838b1ae8bc46b98a152ba01fcffad606d4c84796ad9bfaaf20166f0a0fd'
@@ -202,10 +201,6 @@ pref("extensions.autoDisableScopes", 11);
 
 // Enable GNOME Shell search provider
 pref("browser.gnome-search-provider.enabled", true);
-
-// Use our own captive portal detection
-pref("captivedetect.canonicalURL", "http://ping.archlinux.org/nm-check.txt");
-pref("captivedetect.canonicalContent", "NetworkManager is online\\n");
 END
 
   local distini="$pkgdir/usr/lib/firefox/distribution/distribution.ini"
@@ -264,7 +259,7 @@ END
 }
 
 source+=('unity-menubar.patch')
-sha256sums+=('668b265edafa5cf50e2ef7be743b1db66a3173a850c738631905935ba3c82370')
-b2sums+=('3924adb68fe38df9010c47634485bbba79971e0cc206f2c1476eb72a5540cacfc60017290eb6ef6789585709beedda341f7d19e30140e9db7bd9c8b8187663fe')
+sha256sums+=('95e69805c3f83aaf18ac18339289ba4661538c65b92ab93a352cb5bb76131c8a')
+b2sums+=('3576e8f301a59a8d3713984455d9219d4512659e198e132b4acff7ffab0cdb7a0ebbfea68212b68cf5579b841a8a81e1b1ff4755340414430d32c4b7f4481b56')
 provides=(firefox)
 conflicts=(firefox)

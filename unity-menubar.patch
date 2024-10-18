@@ -1,24 +1,3 @@
---- a/browser/base/content/browser.js
-+++ b/browser/base/content/browser.js
-@@ -6466,11 +6466,18 @@ function onViewToolbarsPopupShowing(aEve
-   MozXULElement.insertFTLIfNeeded("browser/toolbarContextMenu.ftl");
-   let firstMenuItem = aInsertPoint || popup.firstElementChild;
-   let toolbarNodes = gNavToolbox.querySelectorAll("toolbar");
-+
-+  let shellShowingMenubar = document.documentElement.getAttribute("shellshowingmenubar") == "true";
-+
-   for (let toolbar of toolbarNodes) {
-     if (!toolbar.hasAttribute("toolbarname")) {
-       continue;
-     }
- 
-+    if (shellShowingMenubar && toolbar.id == "toolbar-menubar") {
-+      continue;
-+    }
-+
-     if (toolbar.id == "PersonalToolbar") {
-       let menu = BookmarkingUI.buildBookmarksToolbarSubmenu(toolbar);
-       popup.insertBefore(menu, firstMenuItem);
 --- a/browser/components/places/content/places.xhtml
 +++ b/browser/components/places/content/places.xhtml
 @@ -165,6 +165,7 @@
