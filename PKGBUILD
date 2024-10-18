@@ -1,6 +1,6 @@
 pkgname=kurento-media-server
 pkgver=6.17.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Kurento WebRTC media server"
 arch=(x86_64)
 url="https://github.com/Kurento/kurento-media-server"
@@ -12,8 +12,9 @@ source=(
     "git+https://github.com/Kurento/kurento-media-server.git#tag=$pkgver"
     'https://raw.githubusercontent.com/vmarkovtsev/DeathHandler/911e4df429a89309b10111d76d232d4a7c2b5485/death_handler.cc'
     'https://raw.githubusercontent.com/vmarkovtsev/DeathHandler/911e4df429a89309b10111d76d232d4a7c2b5485/death_handler.h'
+    loadConfig.cpp.patch
 )
-sha256sums=(SKIP SKIP SKIP)
+sha256sums=(SKIP SKIP SKIP SKIP)
 backup=(
     etc/kurento/kurento.conf.json
     etc/kurento/sdp_pattern.txt
@@ -26,6 +27,7 @@ prepare() {
     cp ../death_handler.cc server/death_handler.cpp
     cp ../death_handler.h server/death_handler.hpp
     ln -s death_handler.hpp server/death_handler.h
+    patch -p1 <"$srcdir/loadConfig.cpp.patch"
 }
 
 build() {
