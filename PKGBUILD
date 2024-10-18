@@ -6,6 +6,16 @@ _pkgname=EdrawProj-3
 pkgver=3.7.0
 pkgrel=1
 arch=('x86_64')
+depends=(
+    curl
+    dbus
+    e2fsprogs
+    expat
+    gcc-libs
+    glib2
+    hicolor-icon-theme
+    krb5
+    zlib)
 options=(!strip)
 conflicts=("edrawproject")
 pkgdesc="可用于甘特图绘制、项目计划、资源分配和预算管理。软件轻巧，功能强大！"
