@@ -4,8 +4,8 @@ _pkgname=Akuse
 pkgver=1.8.0
 _electronversion=26
 _nodeversion=20
-pkgrel=1
-pkgdesc="Simple and easy to use anime streaming desktop app without ads."
+pkgrel=2
+pkgdesc="Simple and easy to use anime streaming desktop app without ads.Use system-wide electron."
 arch=('any')
 url="https://github.com/akuse-app/Akuse"
 license=('GPL-3.0-or-later')
@@ -18,7 +18,6 @@ makedepends=(
     'npm'
     'nvm'
     'curl'
-    'yarn'
 )
 source=(
     "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz"
@@ -45,37 +44,36 @@ build() {
     _ensure_local_nvm
     gendesk -q -f -n --pkgname="${pkgname}" --pkgdesc="${pkgdesc}" --categories="AudioVideo" --name="${_pkgname}" --exec="${pkgname} %U"
     cd "${srcdir}/${pkgname}-${pkgver}"
+    electronDist="/usr/lib/electron${_electronversion}"
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
     HOME="${srcdir}/.electron-gyp"
-    mkdir -p "${srcdir}/.electron-gyp"
     {
-        if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
-            echo -e '\n'
-            echo 'registry "https://registry.npmmirror.com"'
-            echo 'disturl "https://registry.npmmirror.com/-/binary/node/"'
-            echo 'electron_mirror "https://registry.npmmirror.com/-/binary/electron/"'
-            echo 'electron_builder_binaries_mirror "https://registry.npmmirror.com/-/binary/electron-builder-binaries/"'
-            echo "cacheFolder "${srcdir}"/.yarn/cache"
-            echo "pluginsFolder "${srcdir}"/.yarn/plugins"
-            echo "globalFolder "${srcdir}"/.yarn/global"
-            echo 'useHardlinks true'
-            #echo 'buildFromSource true'
-            echo 'linkWorkspacePackages true'
-            echo 'fetchRetries 3'
-            echo 'fetchRetryTimeout 10000'
-        fi
-    } >> .yarnrc
-    find src -type f -exec sed -i "s/process.resourcesPath/\'\/usr\/lib\/${pkgname}\'/g" {} +
-    install -Dm644 "${srcdir}/clientData.js" -t "${srcdir}/${pkgname}-${pkgver}/src/modules"
-    sed -i "s/--linux/-l dir/g;s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
-    NODE_ENV=development    yarn install --cache-folder "${srcdir}/.yarn_cache" --no-lockfile
-    NODE_ENV=production     yarn package:linux
+        echo -e '\n'   
+        #echo 'build_from_source=true'
+        echo "cache=${srcdir}/.npm_cache"
+    } >> .npmrc
+    if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
+        {
+            echo 'registry=https://registry.npmmirror.com'
+            echo 'disturl=https://registry.npmmirror.com/-/binary/node/'
+            echo 'electron_mirror=https://registry.npmmirror.com/-/binary/electron/'
+            echo 'electron_builder_binaries_mirror=https://registry.npmmirror.com/-/binary/electron-builder-binaries/'
+        } >> .npmrc
+        sed -i "s/registry.npmjs.org/registry.npmmirror.com/g" package-lock.json
+    fi
+    find src -type f -exec sed -i "s/process.resourcesPath/\'\/usr\/lib\/${pkgname}\'/g" {} \;
+    install -Dm644 "${srcdir}/clientData.js" -t "${srcdir}/${pkgname//-/.}/src/modules"
+    sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
+    NODE_ENV=development    npm install
+    NODE_ENV=production     npx ts-node ./.erb/scripts/clean.js dist
+    NODE_ENV=production     npm run build
+    NODE_ENV=production     npm exec -c "electron-builder build --linux dir -c.electronDist=${electronDist}"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
     install -Dm644 "${srcdir}/${pkgname}-${pkgver}/release/build/linux-"*/resources/app.asar -t "${pkgdir}/usr/lib/${pkgname}"
-    cp -r "${srcdir}/${pkgname}-${pkgver}/release/build/linux-"*/resources/assets "${pkgdir}/usr/lib/${pkgname}"
+    cp -Pr --no-preserve=ownership "${srcdir}/${pkgname}-${pkgver}/release/build/linux-"*/resources/assets "${pkgdir}/usr/lib/${pkgname}"
     install -Dm644 "${srcdir}/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
     _icon_sizes=(16x16 24x24 32x32 48x48 64x64 96x96 128x128 256x256 512x512 1024x1024)
     for _icons in "${_icon_sizes[@]}";do
