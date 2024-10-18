@@ -2,8 +2,8 @@
 # Contributor: Sainnhe Park <sainnhe@gmail.com>
 pkgname=basedpyright-git
 _pkgname=basedpyright
-pkgver=v1.13.0.r1.g19aa64eeb
-pkgrel=2
+pkgver=v1.19.0.r0.gac556285c
+pkgrel=1
 pkgdesc="Fork of pyright, a static type checker for Python, with various improvements and new features"
 arch=('any')
 url="https://github.com/DetacHead/basedpyright"
@@ -34,7 +34,6 @@ package() {
   python -m installer --destdir="${pkgdir}" dist/*.whl
 
   install -Dm644 README.md "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
-  install -Dm644 CONTRIBUTING.md "${pkgdir}/usr/share/doc/${_pkgname}/CONTRIBUTING.md"
   cp -r docs "${pkgdir}/usr/share/doc/${_pkgname}/docs"
   install -Dm644 LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.txt"
 
