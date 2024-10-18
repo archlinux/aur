@@ -21,7 +21,7 @@ pkgbase = fladder-git
 	source = pubspec.patch
 	sha256sums = SKIP
 	sha256sums = f4e2369afaf38a8e381c9243fad2ca04b8514194c40ec946825d1f4c5539a095
-	sha256sums = 4eb3efc0985cfebc07476cafe545f612a7c93b4f92aa47e90d976355331c6cdd
+	sha256sums = 76f8c52297b4f423dd6767a37b56c30ea3398e16f2e0500911ba01df40635ce1
 	sha256sums = 0b9eb881330da05988178bcc73baf8a3a097c3444d4df9e5dc060c86d3126a3c
 
 pkgname = fladder-git
