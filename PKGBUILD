@@ -1,21 +1,29 @@
-# Maintainer: Moritz Bunkus <moritz@bunkus.org>
+# Maintainer: Asger Hautop Drewsen <asger@tyilo.com>
+# Based on osslsigncode AUR package by Moritz Bunkus <moritz@bunkus.org>
 
-pkgname="osslsigncode"
-pkgver="2.9"
-pkgrel="1"
+pkgname="osslsigncode-git"
+pkgver=r639.db5b4c4
+pkgrel=1
 pkgdesc="OpenSSL based Authenticode signing for PE/MSI/Java CAB files"
 arch=('i686' 'x86_64')
 url="https://github.com/mtrojnar/osslsigncode"
 license=('GPL')
 depends=('curl' 'openssl')
-makedepends=('cmake' 'perl' 'python')
+makedepends=('cmake' 'perl' 'python' 'git')
 checkdepends=('libfaketime')
-source=("https://github.com/mtrojnar/${pkgname}/archive/${pkgver}.tar.gz")
-sha512sums=('c88d3050b0f4af5cf4ec899ac1935cd04833ed8c7690298ab1bf0c00c4e53bf5a4f9ee31940d63e29350a6babf43f212e56aa480a67745b6d715a30a8093e3a6')
+conflicts=('osslsigncode')
+provides=('osslsigncode')
+source=("git+https://github.com/mtrojnar/osslsigncode.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd osslsigncode
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+}
 
 prepare() {
   cmake \
-    -B build -S "$srcdir/osslsigncode-${pkgver}" \
+    -B build -S "$srcdir/osslsigncode" \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr
 }
