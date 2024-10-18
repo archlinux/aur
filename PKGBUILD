@@ -21,7 +21,7 @@ _pkgname=mutter
 pkgname=mutter-performance-unstable
 epoch=1
 pkgver=47.0.r24.g95f9bb2f0
-pkgrel=1
+pkgrel=2
 pkgdesc="A window manager for GNOME | Attempts to improve performances with non-upstreamed merge-requests and frequent stable branch resync"
 url="https://gitlab.gnome.org/GNOME/mutter"
 arch=(x86_64 aarch64)
@@ -104,11 +104,11 @@ source=("git+$url.git#commit=$_commit"
         'mr3751.patch')
 sha256sums=('bfff6a5bc0f4878c195ef65dc1e16cd4a8d08fe37369ea3f0a3fb4fd1da2f151'
             'ba56c003c1c16f1f8e411f6d5213878bcf059d4d39ece100fc414228a1bf22d5'
-            'bf20e8043742aa6e95012da0ba80fb4c9475999a79b16fdccef1027901ee5fc2'
+            '1ee3452c0c99ce577c75b009c7341820f750df042c943577746f77ed074f636c'
             '67943a22cb75df955fc475e5ae101984d87e4a1f51d56be5f50696cc3355a3c4')
 b2sums=('ca45717b56f2871b89f7931da092082ceda46a86dd3a3701734b7acde32b866f7b8c1c9b4efd7b32bb61e5dc17ee077a3e0f59f1a761b8f947e6224ebecc4a38'
         'f989bc2ceb52aad3c6a23c439df3bbc672bc11d561a247d19971d30cc85ed5d42295de40f8e55b13404ed32aa44f12307c9f5b470f2e288d1c9c8329255c43bf'
-        '964e1e22743dabec32f5ddbefe25115179a4c435ad40ea6d014a5e23017399ea3fa849d352edaa0f0aaebdbda98ab9db31ff363d85524b6f8a5a4acb95219a5d'
+        '0a3ea034209828855c0c4c95e024f9d35ef871975a15c5dc7fbe97a63eb13080c72a00815e1d27755680f2eddff760076870f27039cb119ed1906f5cfd9a3a9d'
         'e13742a68cd831827e88ddf1801caca39fa9c77dd8c08a851bc87914f2961119fc1a7643628fc63cad8dedf03533148539a242cca23313c250bd65867ea84d8d')
 
 pkgver() {
@@ -207,7 +207,7 @@ prepare() {
   # Type: 1
   # Status: 2 & 3
   # Comment: Helps GPU frequencies to scale up.
-  #          Included: !4015 !4027 !4060 !4073
+  #          Included: !4015 !4027 !4060
   pick_mr '1441' 'mr1441.patch' 'patch'
 
 }
