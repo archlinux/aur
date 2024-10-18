@@ -1,12 +1,12 @@
 pkgbase = pvs-studio
 	pkgdesc = Static code analyzer for C and C++
 	pkgver = 7.33.85330.89
-	pkgrel = 3
+	pkgrel = 4
 	url = http://www.pvs-studio.com/en/pvs-studio
 	install = pvs-studio.install
 	arch = pentium4
 	arch = x86_64
-	license = unknown
+	license = custom:pvs-studio
 	optdepends = how-to-use-pvs-studio-free: for adding special comments to a source code
 	optdepends = bash-completion: for bash completion
 	optdepends = strace: for analyzing via using strace logs
