@@ -7,7 +7,7 @@
 
 _pkgname=gamescope
 pkgname=gamescope-plus
-pkgver=3.15.11.plus1
+pkgver=3.15.13.plus1
 pkgrel=1
 pkgdesc='SteamOS session compositing window manager with added patches'
 arch=(x86_64)
@@ -43,6 +43,7 @@ depends=(
   libxres
   libxtst
   libxxf86vm
+  luajit
   opengl-driver
   sdl2
   vulkan-icd-loader
@@ -64,8 +65,7 @@ makedepends=(
   wayland-protocols
 )
 
-_tag=7e3acf5bc4fbcdbef9ffa984361bed9595d11365
-source=("git+https://github.com/ChimeraOS/gamescope.git#commit=${_tag}"
+source=("git+https://github.com/ChimeraOS/gamescope.git#commit=${pkgver}"
         "git+https://gitlab.freedesktop.org/emersion/libdisplay-info.git"
         "git+https://github.com/Joshua-Ashton/reshade.git"
         "git+https://github.com/Joshua-Ashton/wlroots.git"
