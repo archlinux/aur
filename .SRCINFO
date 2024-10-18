@@ -1,6 +1,6 @@
 pkgbase = bgm-mpd-git
 	pkgdesc = MPD client to lay music with gaps between tracks, like video game background music
-	pkgver = v1.efe83fc9
+	pkgver = v1.r1.ga899f18
 	pkgrel = 1
 	url = https://git.sr.ht/~nytpu/bgm-mpd
 	arch = x86_64

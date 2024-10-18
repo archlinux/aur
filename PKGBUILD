@@ -2,7 +2,7 @@
 
 _progname=bgm-mpd
 pkgname=bgm-mpd-git
-pkgver=v1.efe83fc9
+pkgver=v1.r1.ga899f18
 pkgrel=1
 pkgdesc="MPD client to lay music with gaps between tracks, like video game background music"
 url='https://git.sr.ht/~nytpu/bgm-mpd'
@@ -21,7 +21,7 @@ pkgver() {
 
 prepare() {
 	cd "${srcdir}/${_progname}"
-	DESTDIR="${pkgdir}" prefix="/usr" ./configure
+	DESTDIR="${pkgdir}" PREFIX="/usr" ./configure
 }
 
 build() {
