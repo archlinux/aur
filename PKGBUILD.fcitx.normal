@@ -10,7 +10,7 @@
 ## Mozc compile option
 _bldtype=Release
 _mozc_commit=815cc6669489fd87c4235fc25245c8d230dad3b2
-_bcr_commit=8443199281ecb52a31f595fe31bfd6b63c528bef
+_bcr_commit=2abb607a3604953ab134f9b49bb5583b2872aed5
 _branch=fcitx
 
 ## follow the submodule commits in https://github.com/fcitx/mozc/tree/fcitx/src/third_party
@@ -33,7 +33,7 @@ makedepends=('bazel' 'git' 'python' 'fcitx-qt6' 'fcitx')
 options=(!lto !distcc !ccache)
 source=("git+$url.git#commit=${_mozc_commit}"
         "bcr::git+https://github.com/bazelbuild/bazel-central-registry.git#commit=${_bcr_commit}"
-        https://github.com/fcitx/mozc/pull/61.patch
+        https://github.com/fcitx/mozc/pull/65.patch
         "git+https://github.com/abseil/abseil-cpp.git#commit=${_abseil_cpp_commit}"
         "git+https://github.com/google/breakpad.git#commit=${_breakpad_commit}"
         "git+https://github.com/google/googletest.git#commit=${_gtest_commit}"
@@ -45,7 +45,7 @@ source=("git+$url.git#commit=${_mozc_commit}"
 
 sha512sums=('2cc3f89a98ab646627cc01743e62af435f2346f9ebda0b38d401f8821415de8992d34e4c4c8f66ad343359713382ddba051d2ab54ee3cb41dd3f5cae658187e2'
             '88b03df875e59785b210179ee374cce15a04849fcb9bd5f228d08f15d6b0497464bdf92faafa17fbf6aa85f9beb0661fd0c8d38cb77e285968010cdf8054ad94'
-            'a0aeb2856d62c71d0c137a687d901098eaa3371b896dbe39e54c36951cbd7d3cfba666ee96d055dba7e8c8384ed17e13597a697707cd960fac320e11f9b7b76c'
+            '08fded5b3696a4ebdfc45ec188ab6d06c9dfbe62ca3df8b1cbc086e869977f9c937e92470d496e8a68cb59ca08eff285ab6af6f8cd42c04c410a713241d2fd6d'
             '83a6fa68645d138af64ddddcfd15da567c4c46f92fb69be6c10bc5989c3aa6ab85776dfb3fcccdc9e7c32ca9f8260be121ceb7d329792d28ec9a66417a903a68'
             'f69046af8c37a2a8a441a258d5b8677016966cb43d8a3bb48badc78123a885d6179ff77d7885fd6c84130136a1b8931a98d35f9fcce3d03ed31a37a72ece0b9d'
             '44db7d4a09aa7d36f1fb5a89be2234834a58834c76e445f8e9f7bc5685f6a76005b19fc758842c63641e476fa97c10eb968fa13965312fafca25843181fd025b'
@@ -61,8 +61,7 @@ pkgver() {
 }
 
 prepare() {
-  cd "$srcdir/mozc/src" || exit
-
+  cd "$srcdir/mozc"
   git submodule init
   git config submodule.src/third_party/abseil-cpp.url "$srcdir/abseil-cpp"
   git config submodule.src/third_party/breakpad.url "$srcdir/breakpad"
@@ -74,7 +73,9 @@ prepare() {
   git -c protocol.file.allow=always submodule update
 
   # PR(pull request)
-  patch -p2 -i ${srcdir}/61.patch
+  patch -p2 -i ${srcdir}/65.patch
+
+  cd "$srcdir/mozc/src"
 
   # use libstdc++ instead of libc++
   sed '/stdlib=libc++/d;/-lc++/d' -i gyp/common.gypi
@@ -157,33 +158,5 @@ package_fcitx-mozc() {
   cd ${srcdir}/mozc/src || exit
   install_mozc-common
   ../scripts/install_server_bazel
-
-  for pofile in unix/fcitx/po/*.po
-  do
-    filename=`basename $pofile`
-    lang=${filename/.po/}
-    mofile=${pofile/.po/.mo}
-    msgfmt $pofile -o $mofile
-    install -D -m 644 "$mofile" "${PREFIX}/share/locale/$lang/LC_MESSAGES/fcitx-mozc.mo"
-    rm -f $mofile
-  done
-
-  #install -D -m 755 "out_linux/${_bldtype}/fcitx-mozc.so" "${PREFIX}/lib/fcitx/fcitx-mozc.so"
-  install -D -m 755 "bazel-bin/unix/fcitx/fcitx-mozc.so" "${PREFIX}/lib/fcitx/fcitx-mozc.so"
-  install -D -m 644 unix/fcitx/fcitx-mozc.conf "${PREFIX}/share/fcitx/addon/fcitx-mozc.conf"
-  install -D -m 644 unix/fcitx/mozc.conf "${PREFIX}/share/fcitx/inputmethod/mozc.conf"
-
-  install -d "${PREFIX}/share/fcitx/mozc/icon"
-  install -D -m 644 data/images/product_icon_32bpp-128.png "${PREFIX}/share/fcitx/mozc/icon/mozc.png"
-  install -D -m 644 ../scripts/icons/ui-alpha_full.png "${PREFIX}/share/fcitx/mozc/icon/mozc-alpha_full.png"
-  install -D -m 644 ../scripts/icons/ui-alpha_half.png "${PREFIX}/share/fcitx/mozc/icon/mozc-alpha_half.png"
-  install -D -m 644 ../scripts/icons/ui-direct.png "${PREFIX}/share/fcitx/mozc/icon/mozc-direct.png"
-  install -D -m 644 ../scripts/icons/ui-hiragana.png "${PREFIX}/share/fcitx/mozc/icon/mozc-hiragana.png"
-  install -D -m 644 ../scripts/icons/ui-katakana_full.png "${PREFIX}/share/fcitx/mozc/icon/mozc-katakana_full.png"
-  install -D -m 644 ../scripts/icons/ui-katakana_half.png "${PREFIX}/share/fcitx/mozc/icon/mozc-katakana_half.png"
-  install -D -m 644 ../scripts/icons/ui-dictionary.png "${PREFIX}/share/fcitx/mozc/icon/mozc-dictionary.png"
-  install -D -m 644 ../scripts/icons/ui-properties.png "${PREFIX}/share/fcitx/mozc/icon/mozc-properties.png"
-  install -D -m 644 ../scripts/icons/ui-tool.png "${PREFIX}/share/fcitx/mozc/icon/mozc-tool.png"
-
-  install -D -m 755 bazel-bin/renderer/qt/mozc_renderer      "${pkgdir}/usr/lib/mozc/mozc_renderer"
+  ../scripts/install_fcitx_bazel
 }

@@ -17,10 +17,12 @@ SUDACHI_DATE=$(grep "^_sudachidict_date" PKGBUILD|cut -f2 -d"=")
 echo $ORIGINAL_REPO
 echo "Latest:"
 echo "Fcitx5     :" $FCITX5_MOZC_COMMIT
+echo "BCR        :" $BCR_COMMIT
 echo "SudachiDict:" $SudachiDict_DATE
 echo
 echo "Current:"
 echo "Fcitx5     :" $COMMIT
+echo "BCR        :" $BCR_CURRENT_COMMIT
 echo "SudachiDict:" $SUDACHI_DATE
 
 UPDATED_FLAG=0

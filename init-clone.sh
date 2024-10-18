@@ -15,7 +15,7 @@ do
     echo $URL
     echo $DIR
     echo $COMMIT
-    git clone --filter=tree:0 $URL $DIR
-    (cd $DIR;git worktree add tmp $COMMIT;git worktree remove tmp)
+    git clone --mirror --filter=tree:0 $URL $DIR
+    (cd $DIR;git fetch ;git worktree add tmp $COMMIT;git worktree remove tmp)
 done
 

@@ -10,7 +10,7 @@
 ## Mozc compile option
 _bldtype=Release
 _mozc_commit=815cc6669489fd87c4235fc25245c8d230dad3b2
-_bcr_commit=8443199281ecb52a31f595fe31bfd6b63c528bef
+_bcr_commit=2abb607a3604953ab134f9b49bb5583b2872aed5
 _branch=fcitx
 
 ## follow the submodule commits in https://github.com/fcitx/mozc/tree/fcitx/src/third_party

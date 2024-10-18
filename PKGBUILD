@@ -10,7 +10,7 @@
 ## Mozc compile option
 _bldtype=Release
 _mozc_commit=815cc6669489fd87c4235fc25245c8d230dad3b2
-_bcr_commit=8443199281ecb52a31f595fe31bfd6b63c528bef
+_bcr_commit=2abb607a3604953ab134f9b49bb5583b2872aed5
 _dict_to_mozc_commit=a78381248ae539db22f62ca0af6c10b9035e5dab
 _branch=fcitx
 # Sudachi Dictionary
@@ -49,12 +49,12 @@ source=("git+$url.git#commit=${_mozc_commit}"
         "http://sudachi.s3-website-ap-northeast-1.amazonaws.com/sudachidict-raw/${_sudachidict_date}/core_lex.zip"
         "http://sudachi.s3-website-ap-northeast-1.amazonaws.com/sudachidict-raw/${_sudachidict_date}/notcore_lex.zip"
         "LICENSE-SudachiDict::https://github.com/WorksApplications/SudachiDict/raw/develop/LEGAL"
-        # mecab-unidic-neologd https://github.com/neologd/mecab-unidic-neologd
+        # MeCab-unidic-Neologd https://github.com/neologd/mecab-unidic-neologd
         https://github.com/phoepsilonix/mecab-unidic-neologd/raw/refs/heads/master/seed/mecab-unidic-user-dict-seed.20200910.csv.xz
-        LICENSE-mecab-unidic-neologd::https://github.com/phoepsilonix/mecab-unidic-neologd/raw/refs/heads/master/COPYING
-        # mecab-ipadic-neologd https://github.com/neologd/mecab-ipadic-neologd
+        LICENSE-MeCab-unidic-Neologd::https://github.com/phoepsilonix/mecab-unidic-neologd/raw/refs/heads/master/COPYING
+        # MeCab-ipadic-Neologd https://github.com/neologd/mecab-ipadic-neologd
         https://github.com/phoepsilonix/mecab-ipadic-neologd/raw/refs/heads/master/seed/mecab-user-dict-seed.20200910.csv.xz
-        LICENSE-mecab-ipadic-neologd::https://github.com/neologd/mecab-ipadic-neologd/raw/refs/heads/master/COPYING
+        LICENSE-MeCab-ipadic-Neologd::https://github.com/neologd/mecab-ipadic-neologd/raw/refs/heads/master/COPYING
         )
 
 sha512sums=('2cc3f89a98ab646627cc01743e62af435f2346f9ebda0b38d401f8821415de8992d34e4c4c8f66ad343359713382ddba051d2ab54ee3cb41dd3f5cae658187e2'
@@ -116,9 +116,9 @@ prepare() {
   cat ${srcdir}/small_lex.csv ${srcdir}/core_lex.csv ${srcdir}/notcore_lex.csv > all.csv
   cp ${srcdir}/mozc/src/data/dictionary_oss/id.def ./
   ./target/$TARGET/release/dict-to-mozc -s -i ./id.def -f all.csv >> all-dict.txt
-  msg '3. Convert Mecab-unidic-neologd to Mozc System Dictionary format. It may take some time...'
+  msg '3. Convert MeCab-unidic-Neologd to Mozc System Dictionary format. It may take some time...'
   ./target/$TARGET/release/dict-to-mozc -n -i ./id.def -f ${srcdir}/mecab-unidic-user-dict-seed.20200910.csv >> all-dict.txt
-  msg '4. Convert Mecab-ipadic-neologd to Mozc System Dictionary format. It may take some time...'
+  msg '4. Convert MeCab-ipadic-Neologd to Mozc System Dictionary format. It may take some time...'
   ./target/$TARGET/release/dict-to-mozc -n -P 12 -N 10 -i ./id.def -f ${srcdir}/mecab-user-dict-seed.20200910.csv >> all-dict.txt
   msg '5. Duplicate data will be removed.'
   # 読み、品詞ID、右品詞ID、表記による重複チェック
@@ -198,13 +198,13 @@ install_mozc-with-jp-dict-common() {
 
   install -d "$pkgdir/usr/share/licenses/$pkgname/data/dictionary_oss/"
   install -D -m 644 "$srcdir/LICENSE-SudachiDict" "$pkgdir/usr/share/licenses/$pkgname/data/dictionary_oss/"
-  install -D -m 644 "$srcdir/LICENSE-mecab-unidic-neologd" "$pkgdir/usr/share/licenses/$pkgname/data/dictionary_oss/"
-  install -D -m 644 "$srcdir/LICENSE-mecab-ipadic-neologd" "$pkgdir/usr/share/licenses/$pkgname/data/dictionary_oss/"
+  install -D -m 644 "$srcdir/LICENSE-MeCab-unidic-Neologd" "$pkgdir/usr/share/licenses/$pkgname/data/dictionary_oss/"
+  install -D -m 644 "$srcdir/LICENSE-MeCab-ipadic-Neologd" "$pkgdir/usr/share/licenses/$pkgname/data/dictionary_oss/"
 
 }
 
 package_fcitx5-mozc-with-jp-dict() {
-  pkgdesc="Fcitx5 Module for Mozc(the Open Source Edition of Google Japanese Input) with SudachiDict and MeCab UniDic Neologd and Mecab IpaDic Neologd"
+  pkgdesc="Fcitx5 Module for Mozc(the Open Source Edition of Google Japanese Input) with SudachiDict and MeCab UniDic Neologd and MeCab IpaDic Neologd"
 
   depends=('fcitx5' 'fcitx5-qt' 'hicolor-icon-theme')
   optdepends=('fcitx5-configtool')
@@ -221,7 +221,7 @@ package_fcitx5-mozc-with-jp-dict() {
 }
 
 package_ibus-mozc-with-jp-dict() {
-  pkgdesc="Ibus engine module for Mozc(the Open Source Edition of Google Japanese Input) with SudachiDict and MeCab UniDic Neologd and Mecab IpaDic Neologd"
+  pkgdesc="Ibus engine module for Mozc(the Open Source Edition of Google Japanese Input) with SudachiDict and MeCab UniDic Neologd and MeCab IpaDic Neologd"
   depends=('ibus>=1.4.1' "qt6-base" 'libibus')
   replaces=('ibus-mozc')
   provides=("ibus-mozc=${pkgver}")
@@ -244,7 +244,7 @@ package_ibus-mozc-with-jp-dict() {
 }
 
 package_emacs-mozc-with-jp-dict() {
-  pkgdesc="Emacs engine module for Mozc with SudachiDict and MeCab UniDic Neologd and Mecab IpaDic Neologd"
+  pkgdesc="Emacs engine module for Mozc with SudachiDict and MeCab UniDic Neologd and MeCab IpaDic Neologd"
   license=('BSD-3-Clause')
   depends=("emacs" glibc gcc-libs)
   replaces=('emacs-mozc')
