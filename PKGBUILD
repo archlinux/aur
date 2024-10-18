@@ -1,8 +1,8 @@
 # Maintainer: Asger Hautop Drewsen <asger@tyilo.com>
 
 pkgname=cosmocc-bin
-pkgver=3.6.2
-pkgrel=2
+pkgver=3.9.4
+pkgrel=1
 pkgdesc="cosmopolitan toolchain: build-once run-anywhere c library"
 arch=('x86_64' 'aarch64')
 url="https://justine.lol/cosmopolitan/index.html"
@@ -17,7 +17,7 @@ source=(
 noextract=(
   "cosmocc-$pkgver.zip"
 )
-sha512sums=('a9686b55db1df16e94ddd8a110eb2ea34f10b684bafabd7a04d0ba329cf3b5b43871e3f77d269428888d4be09642fcf419abe1eac85aa922060847264257107a'
+sha512sums=('89f236f75b8a730270b288a3f47a6e540a0b20cdac85c7a91fd00b666b8447a12d715990c06c0e615f56e539a451643caa6a902008e22c62754d7b3523f15cc0'
             'd2bb2bcf5eee88a16f78849fd42a63a65539611a030815a56b19b27a25d9abe0fe3a0a746a58c00a2e468b917d1689f5a0048ddfb73c351f5f71d0d0a7015271')
 
 package() {
