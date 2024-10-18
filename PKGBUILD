@@ -5,7 +5,7 @@
 pkgbase=upp-nightly
 pkgname=(upp-nightly theide-nightly umk-nightly)
 yearver=2020.1
-pkgver=17225
+pkgver=17435
 pkgrel=1
 pkgdesc="Radical and innovative multiplatform C++ framework (known as U++)"
 arch=('any')
@@ -19,7 +19,7 @@ source=("https://www.ultimatepp.org/downloads/upp-posix-$pkgver.tar.xz")
 prepare() {
   cd "$srcdir/upp"
   ./configure
-  make -f umkMakefile -j 4
+  make -j 4
 }
 
 build() {
@@ -75,4 +75,4 @@ package_upp-nightly() {
   find "$pkgdir/usr/" -type d -print0 | xargs -0 chmod 755
 }
 
-md5sums=('351b6af446b9b8ddde5208b6e9c410ae')
+md5sums=('7428188d080313c2e55e3d922491b66c')
