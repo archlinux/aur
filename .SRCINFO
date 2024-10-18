@@ -42,6 +42,7 @@ pkgname = hivision-id-photos-api
 	pkgdesc = A lightweight and efficient AI ID photos tools (api service)
 	depends = hivision-id-photos
 	depends = python-fastapi
+	depends = uvicorn
 	backup = etc/conf.d/hivision-id-photos-api.env
 
 pkgname = hivision-id-photos-web

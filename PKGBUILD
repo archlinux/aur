@@ -55,7 +55,7 @@ package_hivision-id-photos() {
 
 package_hivision-id-photos-api() {
     pkgdesc+=" (api service)"
-    depends=("${pkgbase}" "python-fastapi")
+    depends=("${pkgbase}" "python-fastapi" "uvicorn")
     backup=("etc/conf.d/${pkgbase}-api.env")
 
     install -Dm755 "${pkgbase}-api.sh"       "${pkgdir}/usr/bin/${pkgbase}-api"
