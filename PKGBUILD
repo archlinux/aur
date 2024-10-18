@@ -2,18 +2,18 @@
 pkgname='alacritty-sixel-git'
 _pkgname="alacritty"
 pkgdesc="A cross-platform, GPU-accelerated terminal emulator"
-pkgver=0.14.0.2368.g53213c62
+pkgver=0.14.0.2427.gc7213774
 pkgrel=1
 epoch=1
 arch=('x86_64')
-url="https://github.com/ayosec/alacrittyl"
+url="https://github.com/ayosec/alacritty"
 license=('Apache-2.0' 'MIT')
 depends=('freetype2' 'fontconfig' 'libxi' 'libxcursor' 'libxkbcommon' 'libxkbcommon-x11' 'libxrandr')
 makedepends=('rust' 'cargo' 'cmake' 'fontconfig' 'ncurses' 'desktop-file-utils' 'gdb' 'libxcb' 'git' 'scdoc')
 checkdepends=('ttf-dejavu') # for monospace fontconfig test
 provides=('alacritty')
 conflicts=('alacritty')
-source=("$_pkgname::git+https://github.com/chrhasse/alacritty-sixel.git")
+source=("$_pkgname::git+https://github.com/ayosec/alacritty.git")
 sha256sums=('SKIP')
 
 pkgver() {
