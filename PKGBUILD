@@ -1,7 +1,7 @@
 # Maintainer: thorko contact@thorko.de
 pkgname=promtail-git
-pkgver=3.2.0
-pkgrel=1
+pkgver=3.2.1
+pkgrel=0
 pkgdesc="Promtail - Logshipper for Loki"
 arch=('x86_64')
 url='https://github.com/grafana/loki'
@@ -12,7 +12,6 @@ sha256sums=('SKIP')
 
 build() {
   cd "$srcdir/$pkgname"
-  git checkout v${pkgver}
   make PROMTAIL_JOURNAL_ENABLED=true promtail
 }
 
