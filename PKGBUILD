@@ -4,7 +4,7 @@
 
 pkgbase=upp
 pkgname=(upp theide umk)
-yearver=2024rc1
+yearver=2024rc1rc1
 pkgver=17417
 pkgrel=1
 pkgdesc="Radical and innovative multiplatform C++ framework (known as U++)"
@@ -19,7 +19,7 @@ source=("http://downloads.sourceforge.net/${pkgbase}/${pkgbase}/${yearver}/upp-p
 prepare() {
   cd "$srcdir/upp"
   ./configure
-  make -j 4
+  make -f umkMakefile -j 4
 }
 
 build() {
@@ -37,7 +37,7 @@ package_theide(){
   # desktop entry
   install -D "$srcdir/upp/uppsrc/ide/theide.desktop" "$pkgdir/usr/share/applications/theide.desktop"
   # icon
-  install -D "$srcdir/upp/uppsrc/ide/theide-48.png" "$pkgdir/usr/share/pixmaps/theide.png"
+  install -D "$srcdir/upp/uppsrc/ide/icon64x64.png" "$pkgdir/usr/share/pixmaps/theide.png"
   # fix permissions
   find "$pkgdir/usr/" -print0 | xargs -0 chown root:root
   find "$pkgdir/usr/" -type f -print0 | xargs -0 chmod 644

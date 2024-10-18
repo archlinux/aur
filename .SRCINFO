@@ -21,7 +21,7 @@ pkgbase = upp
 	options = !makeflags
 	options = emptydirs
 	options = !strip
-	source = http://downloads.sourceforge.net/upp/upp/2024rc1/upp-posix-17417.tar.xz
+	source = http://downloads.sourceforge.net/upp/upp/2024rc1rc1/upp-posix-17417.tar.xz
 	sha256sums = e20418fa3ea03b0b59644899c2d3002f130b209a3e0edeeebee5c6cb91002a3a
 
 pkgname = upp
