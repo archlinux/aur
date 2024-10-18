@@ -2,7 +2,7 @@
 # Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=pywws
-pkgver=24.2.0
+pkgver=24.8.0
 pkgrel=1
 pkgdesc="Python software for USB Wireless WeatherStations"
 arch=('any')
@@ -26,7 +26,7 @@ source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$
         "$pkgname.sysusers"
         "$pkgname.tmpfiles"
         "$pkgname.udev")
-sha256sums=('386f96273c1487408436e2f38e5cea8b6449c90f03a0a921275a801545a7c782'
+sha256sums=('72e01a50f85c35e3ae88c05122cfa36e26f5d6dfa4d214a2b2cd97fecaa83648'
             '295a6d5c213556b587d9c8067257a13333b82bb809dc3a604fb50f3187bc91f5'
             'f65e849c1b1e59384c9a57fd8ccac43722302817a82b25e3479eabf4bf802931'
             '48adb8621d7561de665987d4883568923f73bb90a71d9bc9e9d119e0b71ef047'
