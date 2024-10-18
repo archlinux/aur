@@ -1,3 +1,8 @@
+## Release 1.0.1 on 2024-10-18
+
+- Fix too narrow restrictions of the service which broke downloading new
+  packages in advance with pacman 7.0.0.
+
 ## Release 1.0.0 on 2024-03-15
 
 - Update format and options of the configuration file. `pacautomation.conf` now
