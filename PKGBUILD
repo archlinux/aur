@@ -13,7 +13,9 @@ depends=(
     expat
     gcc-libs
     glib2
+    glibc
     hicolor-icon-theme
+    libssh2
     krb5
     zlib)
 options=(!strip)
