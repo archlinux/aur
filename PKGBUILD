@@ -3,12 +3,24 @@
 
 pkgname=devpod-bin
 pkgver=0.5.21
-pkgrel=1
+pkgrel=2
 pkgdesc="Codespaces but open-source, client-only, and unopinionated - unofficial package"
 arch=('x86_64')
 url="https://github.com/loft-sh/devpod"
 license=('MPL-2.0')
-depends=('fuse2')
+provides=('devpod' 'devpod-cli')
+depends=(
+    'gdk-pixbuf2'
+    'webkit2gtk'
+    'cairo'
+    'glib2'
+    'gtk3'
+    'pango'
+    'hicolor-icon-theme'
+    'gcc-libs'
+    'libsoup'
+    'glibc'
+)
 conflicts=('devpod')
 options=('!strip')
 source=(
