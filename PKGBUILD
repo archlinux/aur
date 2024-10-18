@@ -204,7 +204,8 @@ install_mozc-with-jp-dict-common() {
 }
 
 package_fcitx5-mozc-with-jp-dict() {
-  pkgdesc="Fcitx5 module for Mozc with SudachiDict dictionary"
+  pkgdesc="Fcitx5 Module for Mozc(the Open Source Edition of Google Japanese Input) with SudachiDict and MeCab UniDic Neologd and Mecab IpaDic Neologd"
+
   depends=('fcitx5' 'fcitx5-qt' 'hicolor-icon-theme')
   optdepends=('fcitx5-configtool')
   replaces=('fcitx5-mozc')
@@ -220,7 +221,7 @@ package_fcitx5-mozc-with-jp-dict() {
 }
 
 package_ibus-mozc-with-jp-dict() {
-  pkgdesc="IBus engine module for Mozc with SudachiDict dictionary"
+  pkgdesc="Ibus engine module for Mozc(the Open Source Edition of Google Japanese Input) with SudachiDict and MeCab UniDic Neologd and Mecab IpaDic Neologd"
   depends=('ibus>=1.4.1' "qt6-base" 'libibus')
   replaces=('ibus-mozc')
   provides=("ibus-mozc=${pkgver}")
@@ -243,7 +244,7 @@ package_ibus-mozc-with-jp-dict() {
 }
 
 package_emacs-mozc-with-jp-dict() {
-  pkgdesc="Emacs engine module for Mozc with SudachiDict dictionary"
+  pkgdesc="Emacs engine module for Mozc with SudachiDict and MeCab UniDic Neologd and Mecab IpaDic Neologd"
   license=('BSD-3-Clause')
   depends=("emacs" glibc gcc-libs)
   replaces=('emacs-mozc')

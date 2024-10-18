@@ -140,7 +140,7 @@ install_mozc-common() {
 }
 
 package_fcitx5-mozc() {
-  pkgdesc="Fcitx5 module for Mozc"
+  pkgdesc="Fcitx5 Module for Mozc(the Open Source Edition of Google Japanese Input)"
   depends=('fcitx5' 'fcitx5-qt' 'hicolor-icon-theme')
   optdepends=('fcitx5-configtool')
   replaces=('fcitx5-mozc')
@@ -157,7 +157,7 @@ package_fcitx5-mozc() {
 }
 
 package_ibus-mozc() {
-  pkgdesc="IBus engine module for Mozc"
+  pkgdesc="IBus engine module for Mozc(the Open Source Edition of Google Japanese Input)"
   depends=('ibus>=1.4.1' "qt6-base" 'libibus')
   replaces=('ibus-mozc')
   provides=("ibus-mozc=${pkgver}")
@@ -180,7 +180,7 @@ package_ibus-mozc() {
 }
 
 package_emacs-mozc() {
-  pkgdesc="Emacs engine module for Mozc with SudachiDict dictionary"
+  pkgdesc="Emacs engine module for Mozc(the Open Source Edition of Google Japanese Input)"
   license=('BSD-3-Clause')
   depends=("emacs" 'glibc' 'gcc-libs')
   replaces=('emacs-mozc')
