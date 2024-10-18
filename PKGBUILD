@@ -2,8 +2,8 @@
 
 pkgname=python-wandb
 _pkgname=${pkgname#python-}
-pkgver=0.18.3
-pkgrel=2
+pkgver=0.18.4
+pkgrel=1
 pkgdesc='A tool for visualizing and tracking your machine learning experiments'
 arch=('any')
 url='https://wandb.ai'
@@ -22,7 +22,8 @@ depends=(
     'python-setuptools'
     'python-yaml'
 )
-makedepends=('gcc' 'go' 'python-build' 'python-hatchling' 'python-wheel')
+makedepends=('cargo' 'gcc' 'go' 'python-build' 'python-hatchling'
+             'python-wheel')
 optdepends=(
     'python-moviepy: logging videos'
     'python-numpy: logging multi-dimensional arrays'
@@ -34,7 +35,7 @@ provides=('python-wandb')
 conflicts=('python-wandb-git')
 install="python-wandb.install"
 source=("$pkgname-$pkgver.tar.gz::https://github.com/wandb/wandb/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('20cd7fbd8573a1ce1807ebcc71e217ceffa3b6c1cbf5a7d26551653fba8d054e')
+sha256sums=('b4f49e7d3d96421b4f594ca39be1eab5c897c2134ec6d9fc70602330d6389e91')
 
 build() {
     cd "$_pkgname-$pkgver"
