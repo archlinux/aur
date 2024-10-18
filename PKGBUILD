@@ -4,7 +4,7 @@
 
 pkgname=exif-cleaner-gui-bin
 pkgver=0.2.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A graphical EXIF data cleaner using gtk3"
 url="https://codeberg.org/paulollivier/exif-cleaner-gui"
 license=("AGPL-3.0-or-later")
@@ -13,7 +13,7 @@ provides=("exif-cleaner-gui")
 conflicts=("exif-cleaner-gui")
 depends=("gtk3" "libgexiv2")
 source=("https://codeberg.org/paulollivier/exif-cleaner-gui/releases/download/v$pkgver/exif-cleaner-gui-$pkgver-x86_64.tar.gz")
-sha256sums=("451516284f3ed162aaf4d741d811cb96ab9eff72104fd40969866b8f155b22c6")
+sha256sums=("7b471188e10990612a90f21888530ecc1047fd8bd3f4d900b857d56eaf7fdb55")
 
 package() {
     install -Dm755 exif-cleaner-gui -t "$pkgdir/usr/bin"

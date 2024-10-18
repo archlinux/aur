@@ -10,6 +10,6 @@ pkgbase = exif-cleaner-gui-bin
 	provides = exif-cleaner-gui
 	conflicts = exif-cleaner-gui
 	source = https://codeberg.org/paulollivier/exif-cleaner-gui/releases/download/v0.2.3/exif-cleaner-gui-0.2.3-x86_64.tar.gz
-	sha256sums = 451516284f3ed162aaf4d741d811cb96ab9eff72104fd40969866b8f155b22c6
+	sha256sums = 7b471188e10990612a90f21888530ecc1047fd8bd3f4d900b857d56eaf7fdb55
 
 pkgname = exif-cleaner-gui-bin
