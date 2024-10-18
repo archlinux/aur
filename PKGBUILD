@@ -3,17 +3,13 @@
 
 pkgname=dudenbib
 pkgver=6.5.2
-pkgrel=1	
-arch=('i686' 'x86_64')
+pkgrel=2
+arch=('x86_64')
 pkgdesc="Utility to view books from Duden, Brockhaus and some others"
 url="https://www.duden.de/digitales/duden-bibliothek"
 license=('custom:dudenbib')
 install=duden.install
 depends=('libxmu' 'libxft' 'libxcursor' 'libxrandr' 'gcc-libs' 'libxi' 'libxinerama' 'libxcb')
-
-if [ "$CARCH" = "x86_64" ]; then
-  for i in ${!depends[*]}; do depends[$i]="lib32-"${depends[$i]}; done
-fi
 FILE="dudenbibliothek6_6.5.2.0_amd64.deb"
 source=("https://cdn.duden.de/downloads/proxy/duden_bibliothek-update-6.5/$FILE")
 noextract=("$FILE")
