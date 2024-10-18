@@ -4,8 +4,8 @@
 
 pkgbase=upp
 pkgname=(upp theide umk)
-yearver=2023.2
-pkgver=17045
+yearver=2024rc1
+pkgver=17417
 pkgrel=1
 pkgdesc="Radical and innovative multiplatform C++ framework (known as U++)"
 arch=('any')
@@ -19,7 +19,7 @@ source=("http://downloads.sourceforge.net/${pkgbase}/${pkgbase}/${yearver}/upp-p
 prepare() {
   cd "$srcdir/upp"
   ./configure
-  make -f umkMakefile -j 4
+  make -j 4
 }
 
 build() {
@@ -74,4 +74,4 @@ package_upp() {
   find "$pkgdir/usr/" -type f -print0 | xargs -0 chmod 644
   find "$pkgdir/usr/" -type d -print0 | xargs -0 chmod 755
 }
-sha256sums=('6fb91d6714d7159463778ef9437f14f0a580c420f5556772e4e16aea33e51d17')
+sha256sums=('e20418fa3ea03b0b59644899c2d3002f130b209a3e0edeeebee5c6cb91002a3a')

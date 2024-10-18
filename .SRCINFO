@@ -1,6 +1,6 @@
 pkgbase = upp
 	pkgdesc = Radical and innovative multiplatform C++ framework (known as U++)
-	pkgver = 17045
+	pkgver = 17417
 	pkgrel = 1
 	url = http://www.ultimatepp.org
 	arch = any
@@ -21,8 +21,8 @@ pkgbase = upp
 	options = !makeflags
 	options = emptydirs
 	options = !strip
-	source = http://downloads.sourceforge.net/upp/upp/2023.2/upp-posix-17045.tar.xz
-	sha256sums = 6fb91d6714d7159463778ef9437f14f0a580c420f5556772e4e16aea33e51d17
+	source = http://downloads.sourceforge.net/upp/upp/2024rc1/upp-posix-17417.tar.xz
+	sha256sums = e20418fa3ea03b0b59644899c2d3002f130b209a3e0edeeebee5c6cb91002a3a
 
 pkgname = upp
 	pkgdesc = Radical and innovative multiplatform C++ framework (known as U++)
