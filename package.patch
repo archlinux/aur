@@ -1,0 +1,14 @@
+diff --color --unified --recursive --text rime-frost/lua/aux_code.lua rime-frost-new/lua/aux_code.lua
+--- rime-frost/lua/aux_code.lua	2024-10-17 15:06:34.987178552 +0800
++++ rime-frost-new/lua/aux_code.lua	2024-10-17 15:21:06.655348549 +0800
+@@ -70,8 +70,9 @@
+     local defaultFile = 'moqi_aux_code.txt'
+     local userPath = rime_api.get_user_data_dir() .. "/lua/aux_code/"
+     local fileAbsolutePath = userPath .. txtpath .. ".txt"
++    local fileRelativePath = '/usr/share/rime-data/'
+ 
+-    local file = io.open(fileAbsolutePath, "r") or io.open(userPath .. defaultFile, "r")
++    local file = io.open(fileAbsolutePath, "r") or io.open(userPath .. defaultFile, "r")  or io.open(fileRelativePath .. "/lua/aux_code/moqi_aux_code.txt")
+     if not file then
+         error("Unable to open auxiliary code file.")
+         return {}
