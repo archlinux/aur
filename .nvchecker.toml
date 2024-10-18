@@ -1,0 +1,3 @@
+[ore_algebra]
+source = "git"
+git = "https://github.com/mkauers/ore_algebra.git"
