@@ -1,6 +1,6 @@
 pkgbase = weylus-git
 	pkgdesc = Use your tablet as graphic tablet/touch screen on your computer.
-	pkgver = 0.11.4.r118.g18a584b
+	pkgver = 0.11.4.r126.g8d06299
 	pkgrel = 1
 	url = https://github.com/H-M-H/Weylus
 	arch = x86_64

@@ -2,7 +2,7 @@
 # shellcheck disable=SC2034,SC2148,SC2154
 _pkgname=weylus
 pkgname=weylus-git
-pkgver=0.11.4.r118.g18a584b
+pkgver=0.11.4.r126.g8d06299
 pkgrel=1
 pkgdesc="Use your tablet as graphic tablet/touch screen on your computer."
 arch=("x86_64")
