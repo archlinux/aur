@@ -3,11 +3,11 @@
 # Contributor: TheAssassin
 
 pkgname=appimagelauncher-git
-pkgver=r1257.0013516
+pkgver=r1258.cd87b73
 pkgrel=2
 pkgdesc="A Helper application for running and integrating AppImages."
 arch=(x86_64)
-url="https://assassinate-you.net/tags/appimagelauncher/"
+url="https://github.com/TheAssassin/AppImageLauncher"
 license=(MIT)
 depends=(qt5-base qt5-declarative libappimage
 
@@ -21,6 +21,7 @@ provides=(appimagelauncher)
 conflicts=(appimagelauncher)
 options=(debug !strip)
 source=("git+https://github.com/TheAssassin/AppImageLauncher.git"
+        "appimagelauncher-fix#574.patch::https://github.com/TheAssassin/AppImageLauncher/pull/662/commits/9768162c5ba7c362d07748d8f0fcbb8b95a39cb9.patch"
         "git+https://github.com/AppImageCommunity/AppImageUpdate.git"
         #"git+https://github.com/AppImage/libappimage.git"
         "git+https://github.com/AppImageCommunity/zsync2.git"
@@ -32,6 +33,7 @@ source=("git+https://github.com/TheAssassin/AppImageLauncher.git"
         "git+https://github.com/Taywee/args.git"
         'appimage-binfmt-remove.hook')
 sha256sums=('SKIP'
+            '508adf283f000f6e37c68adcf01555db2b459b8d39c825b3abbeaa678ebdbcd7'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -52,6 +54,8 @@ CFLAGS="$CFLAGS -Wno-deprecated-declarations -Wno-implicit-function-declaration 
 
 prepare() {
   cd AppImageLauncher
+
+  patch -Np1 -i ../appimagelauncher-fix#574.patch
 
   git submodule init
   git config submodule.lib/AppImageUpdate.url "${srcdir}/AppImageUpdate"
