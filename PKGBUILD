@@ -2,7 +2,7 @@
 # Contributor: Elijah Gregg <lovetocode999@ctrl-c.club>
 # Contributor: Alexandros Theodotou <alex@zrythm.org>
 pkgname=zrythm-git
-pkgver=1.0.0.rc.1.r59.g1792598e0
+pkgver=1.0.0.rc.2.r0.g6ce35f2de
 pkgrel=1
 epoch=3
 pkgdesc='a highly automated and intuitive digital audio workstation'
@@ -23,7 +23,7 @@ optdepends=('portaudio: portaudio backend'
 conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}")
 options=('!strip')
-source=("git+https://gitlab.zrythm.org/zrythm/zrythm/")
+source=("git+https://gitlab.zrythm.org/zrythm/zrythm/#branch=v1")
 md5sums=('SKIP')
 
 pkgver() {
