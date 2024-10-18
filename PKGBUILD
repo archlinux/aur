@@ -12,7 +12,7 @@ url="https://github.com/somepaulo/MoreWaita"
 license=(GPL3)
 depends=(adwaita-icon-theme)
 makedepends=(git)
-conflicts=("${pkgname%+git}" "morewaita" "morewaita-git")
+conflicts=("morewaita-icon-theme-git" "morewaita" "morewaita-git")
 replaces=("morewaita")
 source=("git+$url#commit=$_commit")
 md5sums=(SKIP)
