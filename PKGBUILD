@@ -4,7 +4,7 @@
 _name=outline-client
 pkgname=${_name}-appimage
 pkgver=1.13.1
-pkgrel=4
+pkgrel=5
 pkgdesc="The Outline clients use the popular Shadowsocks protocol, and lean on the Cordova and Electron frameworks."
 arch=(x86_64)
 conflicts=('outline-client-appimage-wayland' 'outline-client-appimage-git')
@@ -12,7 +12,7 @@ url="https://getoutline.org"
 license=("Apache License 2.0")
 
 _app_image="Outline-Client_${pkgver}.AppImage"
-source=("${_app_image}::https://s3.amazonaws.com/outline-releases/client/linux/stable/Outline-Client.AppImage"
+source=("${_app_image}::https://s3.amazonaws.com/outline-releases/client/linux/${pkgver}/1/Outline-Client.AppImage"
         "${pkgname}.install")
 options=('!strip' '!debug')
 depends=('fuse2' 'nss')
