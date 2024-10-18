@@ -1,14 +1,23 @@
 #!/bin/bash
 
 set -eu
+shopt -s nullglob dotglob
 
 read cur_osrelease </proc/sys/kernel/osrelease
 
 moddir=/usr/lib/modules/$cur_osrelease
 
-if [ -e "$moddir" ] || [ -L "$moddir" ]; then
-    exit 0
+
+if [ -e "$moddir" ]; then
+    FILES=("$moddir"/*)
+    if [ ${#FILES[@]} == 0 ] || [ ${#FILES[@]} == 1 ] && [ "${FILES[0]}" == "$moddir"/modules.weakdep ]; then
+        rm -rf "$moddir"
+    else
+        exit 0
+    fi
 fi
+
+! [ -L "$moddir" ] || exit 0
 
 [ -e /var/cache/kmods/osrelease ] || exit 0
 
