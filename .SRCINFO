@@ -1,6 +1,6 @@
 pkgbase = zulu-21-bin
 	pkgdesc = Azul Zulu builds of OpenJDK are open source, TCK-tested and certified builds of OpenJDK.
-	pkgver = 21.0.4
+	pkgver = 21.0.5
 	pkgrel = 1
 	url = https://www.azul.com/downloads/
 	install = zulu-21-bin.install
@@ -16,9 +16,9 @@ pkgbase = zulu-21-bin
 	provides = java-runtime-headless-openjdk=21
 	provides = java-runtime=21
 	provides = java-runtime-openjdk=21
-	source_aarch64 = https://cdn.azul.com/zulu/bin/zulu21.36.17-ca-jdk21.0.4-linux_aarch64.tar.gz
-	sha256sums_aarch64 = da3c2d7db33670bcf66532441aeb7f33dcf0d227c8dafe7ce35cee67f6829c4c
-	source_x86_64 = https://cdn.azul.com/zulu/bin/zulu21.36.17-ca-jdk21.0.4-linux_x64.tar.gz
-	sha256sums_x86_64 = 318d0c2ed3c876fb7ea2c952945cdcf7decfb5264ca51aece159e635ac53d544
+	source_aarch64 = https://cdn.azul.com/zulu/bin/zulu21.38.21-ca-jdk21.0.5-linux_aarch64.tar.gz
+	sha256sums_aarch64 = 8bd387315620bb66a84945a51bcebb9016354b557c747e94d4837e68ea4077ec
+	source_x86_64 = https://cdn.azul.com/zulu/bin/zulu21.38.21-ca-jdk21.0.5-linux_x64.tar.gz
+	sha256sums_x86_64 = 5320a33714f58c0104191d244759daa6a6d46819d447347ba9003132e5489d92
 
 pkgname = zulu-21-bin
