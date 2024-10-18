@@ -1,5 +1,5 @@
 pkgname=gzdoom-bin
-pkgver=4.12.2
+pkgver=4.13.0
 pkgrel=1
 pkgdesc='Feature centric port for all Doom engine games'
 arch=('x86_64' 'aarch64')
@@ -10,10 +10,10 @@ conflicts=("gzdoom" "gzdoom-git" "zmusic-bin")
 makedepends=('unzip')
 _pkgrel_x86_64=1
 _pkgrel_aarch64=1
-sha256sums_x86_64=('89f05685395b53e90bfe31f526a8de1fdd2fe42b7379cdb43eb9410d711c4422')
-sha256sums_aarch64=('1f7c4703bc3e324cfb245f3da539349bc058ec307630979514f116649bd82941')
-source_x86_64=("https://gitlab.com/linuxbombay/gzdoom/binaries/$pkgver/-/raw/main/gzdoom-linux-x64.tar.xz")
-source_aarch64=("https://gitlab.com/linuxbombay/gzdoom/binaries/$pkgver/-/raw/main/gzdoom-linux-arm64.tar.xz")
+sha256sums_x86_64=('3bfe92c2791e27b44c82f79109c102f271e4ebe9bc13e2c32b91f9a6efe1ced4')
+sha256sums_aarch64=('73f2887d1a363de3fd494d28a51eab91b9816830e8086b20ab3446cb124ac75b')
+source_x86_64=("https://gitlab.com/linuxbombay/gzdoom/binaries/$pkgver/-/raw/main/gzdoom-$pkgver-x64.tar.xz")
+source_aarch64=("https://gitlab.com/linuxbombay/gzdoom/binaries/$pkgver/-/raw/main/gzdoom-$pkgver-arm64.tar.xz")
 
 package() {
     install -dm755 "$pkgdir/usr/bin"
@@ -23,8 +23,5 @@ package() {
     install -dm755 "$pkgdir/usr/share/doc"
     install -dm755 "$pkgdir/usr/share/applications"
     
-    #Removing uneeded .files
-    rm -rf $srcdir/gzdoom/.*
-    cp -r "$srcdir/gzdoom/." "$pkgdir"
-    cp "$srcdir/gzdoom/usr/share/applications/gzdoom.desktop" "$pkgdir/usr/share/applications"
+    cp -r "$srcdir/usr" "$pkgdir"
 }
