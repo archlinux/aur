@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=before-dawn-bin
 _pkgname="Before Dawn"
-pkgver=0.32.0
+pkgver=0.32.1
 _electronversion=32
 pkgrel=1
 pkgdesc="A desktop screensaver app using web technologies.Prebuilt version.Use system-wide electron."
@@ -25,7 +25,7 @@ source=(
     "LICENSE-${pkgver}.txt::https://raw.githubusercontent.com/muffinista/before-dawn/v${pkgver}/LICENSE.txt"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('3d442a8e3697964ea03ba029d265d7bb90b8a816fd1c735ebb946d8b16190fbe'
+sha256sums=('a1925a621f38d568c80fa042e4dbd942f929ce59b1d0717456bec84d3aa90763'
             '2f9c033e00d3ac09f44d4819c7701eae9c37ca21ca1da29f3488eadc1b3c3c51'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 build() {
