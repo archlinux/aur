@@ -15,9 +15,9 @@ source=("git+https://github.com/Fladder-App/Fladder.git#branch=${BRANCH}"
     "fladder.desktop"
     "pubspec.patch") # Add the patch file to the source
 sha256sums=('SKIP'
-    'f4e2369afaf38a8e381c9243fad2ca04b8514194c40ec946825d1f4c5539a095'
-    '4eb3efc0985cfebc07476cafe545f612a7c93b4f92aa47e90d976355331c6cdd'
-    '0b9eb881330da05988178bcc73baf8a3a097c3444d4df9e5dc060c86d3126a3c')
+            'f4e2369afaf38a8e381c9243fad2ca04b8514194c40ec946825d1f4c5539a095'
+            '76f8c52297b4f423dd6767a37b56c30ea3398e16f2e0500911ba01df40635ce1'
+            '0b9eb881330da05988178bcc73baf8a3a097c3444d4df9e5dc060c86d3126a3c')
 conflicts=('fladder')
 
 # if set, fladder will autoconnect to the given server
@@ -35,7 +35,9 @@ pkgver() {
 
 prepare() {
     cd "$srcdir/$_pkgname"
-    # apply patch
+    # apply patches
+
+    # currently the latest media_kit release has a backscreen bug on linux. replace dependency with git main til next release
     patch -p0 <"${srcdir}/pubspec.patch"
 }
 
@@ -65,8 +67,6 @@ package() {
         [[ -f "$lib" && -n "$(patchelf --print-rpath "$lib")" ]] && patchelf --set-rpath '$ORIGIN' "$lib"
     done
     patchelf --set-rpath '$ORIGIN/lib' "$pkgdir/usr/bin/$_pkgname/Fladder"
-
-    echo $BASE_URL
 
     # set baseurl
     if [ -n "$BASE_URL" ]; then
