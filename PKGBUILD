@@ -8,7 +8,7 @@ arch=('any')
 license=('GPL3')
 depends=()
 makedepends=()
-source=(pre-upgrade post-upgrade kmodcache-pre.hook kmodcache-post.hook)
+source=(pre-upgrade post-upgrade 69-kmodcache-pre.hook 72-kmodcache-post.hook)
 sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP')
 
 package() {
