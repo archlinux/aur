@@ -1,0 +1,26 @@
+pkgbase = fladder-git
+	pkgdesc = Fladder - A Simple Jellyfin Frontend
+	pkgver = r87.2e3107d
+	pkgrel = 1
+	url = https://github.com/Fladder-App/Fladder
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = patchelf
+	makedepends = cmake
+	makedepends = clang
+	makedepends = base-devel
+	makedepends = git
+	makedepends = ninja
+	depends = glibc
+	depends = mpv
+	depends = gtk3
+	source = git+https://github.com/Fladder-App/Fladder.git#branch=develop
+	source = https://gsdview.appspot.com/flutter_infra_release/releases/stable/linux/flutter_linux_3.24.3-stable.tar.xz
+	source = fladder.desktop
+	source = pubspec.patch
+	sha256sums = SKIP
+	sha256sums = f4e2369afaf38a8e381c9243fad2ca04b8514194c40ec946825d1f4c5539a095
+	sha256sums = 4eb3efc0985cfebc07476cafe545f612a7c93b4f92aa47e90d976355331c6cdd
+	sha256sums = 0b9eb881330da05988178bcc73baf8a3a097c3444d4df9e5dc060c86d3126a3c
+
+pkgname = fladder-git
