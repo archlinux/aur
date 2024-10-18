@@ -1,4 +1,4 @@
-# Maintainer: Fabrizio del Tin <fdt@university.pub>
+# Maintainer: Baal Even <devotedmystic@gmail.com>
 # Contributor: Frederic Bezies <fredbezies at gmail dot com>
 # Contributor: Jan Dolinar <dolik.rce@gmail.com>
 
