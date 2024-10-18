@@ -1,4 +1,4 @@
-# Maintainer: Fabrizio del Tin <fdt@university.pub>
+# Maintainer: Baal Even <devotedmystic@gmail.com>
 # Contributor: Brenton Horne <brentonhorne77 at gmail dot com>
 # Contributor: Jan Dolinar <dolik.rce@gmail.com>
 
@@ -19,7 +19,7 @@ source=("https://www.ultimatepp.org/downloads/upp-posix-$pkgver.tar.xz")
 prepare() {
   cd "$srcdir/upp"
   ./configure
-  make -j 4
+  make -f umkMakefile -j 4
 }
 
 build() {
@@ -37,7 +37,7 @@ package_theide-nightly(){
   # desktop entry
   install -D "$srcdir/upp/uppsrc/ide/theide.desktop" "$pkgdir/usr/share/applications/theide.desktop"
   # icon
-  install -D "$srcdir/upp/uppsrc/ide/theide-48.png" "$pkgdir/usr/share/pixmaps/theide.png"
+  install -D "$srcdir/upp/uppsrc/ide/icon64x64.png" "$pkgdir/usr/share/pixmaps/theide.png"
   # fix permissions
   find "$pkgdir/usr/" -print0 | xargs -0 chown root:root
   find "$pkgdir/usr/" -type f -print0 | xargs -0 chmod 644
