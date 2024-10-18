@@ -1,7 +1,7 @@
 #Maintainer: Evert Vorster <evorster@gmail.com>
 pkgname=vegastrike-git
 _pkgname=vegastrike
-pkgver=rev.11522
+pkgver=rev.11559
 pkgrel=1
 pkgdesc="Vega Strike - Upon the Coldest Sea. Space flight and trading simulator with realistic distances"
 arch=('any')
@@ -15,8 +15,12 @@ conflicts=('vegastrike')
 #install=$pkgname.install
 #options=(!makeflags debug !strip)
 
-source=('git+https://github.com/vegastrike/Assets-Production')
-sha1sums=('SKIP')
+source=('git+https://github.com/vegastrike/Assets-Production'
+#	'https://github.com/vegastrike/Assets-Production/pull/128.patch'
+)
+sha1sums=('SKIP'
+#	'SKIP'
+)
 
 pkgver() {
   cd "${srcdir}"/Assets-Production
@@ -27,7 +31,7 @@ prepare(){
 echo "Prepare section"
 #Patches section
 cd ${srcdir}/Assets-Production/
-#git apply ../../19.patch
+#git apply ../../128.patch
 }
 
 
