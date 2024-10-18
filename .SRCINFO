@@ -8,7 +8,7 @@ pkgbase = smart-office
 	license = mit
 	options = !strip
 	options = !emptydirs
-	source_x86_64 = https://github.com/khaitbek/smart-office-desktop-app/releases/download/v0.1.1/smart-office_0.1.1_amd64.deb
-	source_aarch64 = https://github.com/khaitbek/smart-office-desktop-app/releases/download/v0.1.1/smart-office_0.1.1_arm64.deb
+	source_x86_64 = https://github.com/khaitbek/smart-office-desktop-app/releases/download/app-v0.1.1/smart-office_0.1.1_amd64.deb
+	source_aarch64 = https://github.com/khaitbek/smart-office-desktop-app/releases/download/app-v0.1.1/smart-office_0.1.1_arm64.deb
 
 pkgname = smart-office
