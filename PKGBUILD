@@ -1,7 +1,7 @@
 # Submitter: Jonas Malaco <jonas@protocubo.io>
 # Maintainer: Chris Morgan <aur@chrismorgan.info>
 pkgname=cargo-vet
-pkgver=0.9.1
+pkgver=0.10.0
 pkgrel=1
 pkgdesc='Supply-chain security for Rust'
 arch=('x86_64' 'i686' 'aarch64' 'armv7h')
@@ -14,8 +14,8 @@ depends=(
     zlib
 )
 options=(!lto) # see: briansmith/ring#1444 (and #893)
-source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('fd80641841445d6b2ba21db3dc9f9159c0881b6063bf2071647d9a67e57d7073')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/mozilla/cargo-vet/releases/download/v$pkgver/source.tar.gz")
+sha256sums=('6ea308eb97df6356d76335fadf9cd0ab47c49208351ee7c500fc6c47ce204507')
 
 prepare() {
     cd "$pkgname-$pkgver"
