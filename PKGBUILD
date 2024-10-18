@@ -2,7 +2,7 @@
 
 pkgname=stormfetch
 pkgver=5.3.r2.gc5e02c0
-pkgrel=1
+pkgrel=2
 pkgdesc='A simple linux fetch program written in go and bash'
 arch=('any')
 url='https://gitlab.com/EnumDev/stormfetch'
