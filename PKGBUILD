@@ -15,6 +15,7 @@ build() {
         -DBUILD_TESTING=ON \
         -DBUILD_EXAMPLES=OFF \
         -DCMAKE_BUILD_TYPE=None \
+        -DUSE_QT6=on \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -Wno-dev
     make -j -C build
