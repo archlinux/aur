@@ -1,5 +1,5 @@
 pkgbase = electron-devdocs-git
-	pkgdesc = An devdocs desktop client.
+	pkgdesc = An devdocs desktop client.Use system-wide electron.
 	pkgver = 5.2.0.r16.g03b77b7
 	pkgrel = 1
 	url = https://github.com/gengjiawen/electron-devdocs
@@ -10,7 +10,7 @@ pkgbase = electron-devdocs-git
 	makedepends = nvm
 	makedepends = gendesk
 	makedepends = curl
-	makedepends = yarn
+	makedepends = pnpm
 	depends = electron29
 	provides = electron-devdocs=5.2.0
 	conflicts = electron-devdocs
