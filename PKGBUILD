@@ -1,19 +1,19 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
 pkgname="kubectl-dba"
-pkgver=0.48.0
+pkgver=0.48.1
 pkgrel=1
 pkgdesc="kubectl plugin for KubeDB"
-arch=('x86_64' 'aarch64')
+arch=('x86_64' 'aarch64' 'armv7h')
 url="https://kubedb.com"
 _url="https://github.com/kubedb/cli"
 license=('custom:AppsCode-Community-1.0.0')
-makedepends=('git' 'go')
 depends=('glibc')
+makedepends=('git' 'go')
 _pkgsrc="${pkgname}-${pkgver}"
 source=("${_pkgsrc}::git+${_url}.git#tag=v${pkgver}"
         "LICENSE.md::https://github.com/appscode/licenses/raw/1.0.0/AppsCode-Community-1.0.0.md")
-sha256sums=('40581d5b860e53de653729c3693bd9e454c0fe36c24f681623f6f8a68031ab0e'
+sha256sums=('a7402e0e392584d0fbcc468e4385939527bfdd68cf35af1175cdd1c13d1f2e00'
             '98112798ec6560d74223511ed367c2c170a63e5cdf5855dd444009cb3c80b07c')
 
 prepare() {
