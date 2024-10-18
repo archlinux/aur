@@ -1,16 +1,12 @@
 # Maintainer: Glucy2 <glucy-2@outlook.com>
 pkgname=sast-evento
 
-pkgver=2.0.60
+pkgver=2.0.74
 pkgrel=1
 pkgdesc='An event management system developed and used by NJUPT SAST'
 license=("${srcdir}/sast-evento/LICENSE")
 url="https://github.com/NJUPT-SAST/sast-evento"
 conflicts=("${pkgname}-git" "${pkgname}-bin")
-
-_slintver=1.8.0
-source_x86_64=("https://github.com/slint-ui/slint/releases/download/v${_slintver}/Slint-cpp-${_slintver}-Linux-x86_64.tar.gz")
-sha256sums_x86_64=('3999bb654437720972f085946549a0ff865b5971784e3ad575b054b73b746f75')
 
 makedepends=(
     'git'
@@ -54,7 +50,7 @@ prepare() {
     else
         rm -rf "${srcdir}/sast-evento"
         cd "${srcdir}"
-        git clone --recursive https://github.com/NJUPT-SAST/sast-evento.git
+        git clone --recursive -b main https://github.com/NJUPT-SAST/sast-evento.git
     fi
 }
 
@@ -88,7 +84,8 @@ Type=Application
 Categories=Education;
 Terminal=false
 EOF
-    chmod 644 "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+    chmod -R 644 \
+        "${pkgdir}/usr/share/applications/${pkgname}.desktop"
     install -Dm644 "${srcdir}/sast-evento/ui/assets/image/icon/evento.svg" \
         "${pkgdir}/usr/share/icons/hicolor/scalable/apps/sast-evento.svg"
 }

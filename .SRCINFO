@@ -1,6 +1,6 @@
 pkgbase = sast-evento
 	pkgdesc = An event management system developed and used by NJUPT SAST
-	pkgver = 2.0.60
+	pkgver = 2.0.74
 	pkgrel = 1
 	url = https://github.com/NJUPT-SAST/sast-evento
 	arch = x86_64
@@ -26,7 +26,5 @@ pkgbase = sast-evento
 	depends = slint-cpp-bin
 	conflicts = sast-evento-git
 	conflicts = sast-evento-bin
-	source_x86_64 = https://github.com/slint-ui/slint/releases/download/v1.8.0/Slint-cpp-1.8.0-Linux-x86_64.tar.gz
-	sha256sums_x86_64 = 3999bb654437720972f085946549a0ff865b5971784e3ad575b054b73b746f75
 
 pkgname = sast-evento
