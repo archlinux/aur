@@ -7,7 +7,7 @@ pkgrel=1
 pkgdesc="MPD client to lay music with gaps between tracks, like video game background music"
 url='https://git.sr.ht/~nytpu/bgm-mpd'
 arch=('x86_64')
-license=('unknown')
+license=('AGPL-3.0-only')
 depends=('libmpdclient')
 makedepends=('git')
 source=("git+https://git.sr.ht/~nytpu/${_progname}")
@@ -21,6 +21,7 @@ pkgver() {
 
 prepare() {
 	cd "${srcdir}/${_progname}"
+	export CFLAGS LDFLAGS
 	DESTDIR="${pkgdir}" PREFIX="/usr" ./configure
 }
 
