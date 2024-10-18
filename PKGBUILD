@@ -3,28 +3,32 @@
 
 _srcname=virtme-ng
 pkgname=$_srcname-git
-pkgver=1.28.r0.g52b86fc
+pkgver=1.31.r3.gcefbab5
 pkgrel=1
 pkgdesc="A tool that allows to easily and quickly recompile and test a Linux kernel, starting from the source code."
 arch=('x86_64')
 url="https://github.com/arighi/virtme-ng"
 license=('GPL-2.0-only')
 depends=(
+  bash
   busybox
   coreutils
   gcc-libs
   glibc
   python
+  python-argcomplete
   python-argparse-manpage
   python-requests
+  python-setuptools
   qemu
   virtiofsd
 )
 makedepends=(
   cargo
   git
-  python-argcomplete
-  python-setuptools
+  python-build
+  python-installer
+  python-wheel
 )
 provides=('virtme=$pkgver')
 conflicts=('virtme-ng')
@@ -46,10 +50,10 @@ prepare() {
 build() {
     cd "$srcdir/${_srcname}"
     export RUSTUP_TOOLCHAIN=stable
-    BUILD_VIRTME_NG_INIT=1 python setup.py build
+    BUILD_VIRTME_NG_INIT=1 python -m build --wheel --no-isolation
 }
 
 package() {
     cd "$srcdir/$_srcname"
-    python setup.py install --root="$pkgdir/" --optimize=1
+    python -m installer --destdir="$pkgdir" dist/*.whl
 }
