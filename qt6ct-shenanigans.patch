@@ -39,7 +39,7 @@ index f748167..bc883b2 100644
 +target_link_libraries(qt6ct-common PRIVATE Qt6::Gui KF6::ConfigCore KF6::ColorScheme)
  install(TARGETS qt6ct-common DESTINATION ${CMAKE_INSTALL_LIBDIR})
 diff --git a/src/qt6ct-common/qt6ct.cpp b/src/qt6ct-common/qt6ct.cpp
-index d97d4c7..6aa3864 100644
+index d97d4c7..e6d150d 100644
 --- a/src/qt6ct-common/qt6ct.cpp
 +++ b/src/qt6ct-common/qt6ct.cpp
 @@ -34,6 +34,8 @@
@@ -69,35 +69,85 @@ index d97d4c7..6aa3864 100644
      QString tmp = path;
      tmp.replace("~", QStandardPaths::writableLocation(QStandardPaths::HomeLocation));
      if(!tmp.contains("$"))
-@@ -143,8 +149,16 @@ QString Qt6CT::resolvePath(const QString &path)
+@@ -143,9 +149,19 @@ QString Qt6CT::resolvePath(const QString &path)
      return tmp;
  }
  
+-QPalette Qt6CT::loadColorScheme(const QString &filePath, const QPalette &fallback)
 +bool Qt6CT::isKColorScheme(const QString &filePath)
-+{
+ {
+-    QPalette customPalette;
 +    return filePath.toLower().endsWith(".colors");
 +}
 +
- QPalette Qt6CT::loadColorScheme(const QString &filePath, const QPalette &fallback)
- {
++std::optional<QPalette> Qt6CT::loadColorScheme(const QString &filePath)
++{
++    if(filePath.isEmpty())
++        return std::nullopt;
++
 +    if(isKColorScheme(filePath))
 +        return KColorScheme::createApplicationPalette(KSharedConfig::openConfig(filePath));
 +
-     QPalette customPalette;
      QSettings settings(filePath, QSettings::IniFormat);
      settings.beginGroup("ColorScheme");
+     QStringList activeColors = settings.value("active_colors").toStringList();
+@@ -153,7 +169,6 @@ QPalette Qt6CT::loadColorScheme(const QString &filePath, const QPalette &fallbac
+     QStringList disabledColors = settings.value("disabled_colors").toStringList();
+     settings.endGroup();
+ 
+-
+ #if (QT_VERSION >= QT_VERSION_CHECK(6,6,0))
+     if(activeColors.count() == QPalette::Accent)
+         activeColors << activeColors.at(QPalette::Highlight);
+@@ -163,24 +178,19 @@ QPalette Qt6CT::loadColorScheme(const QString &filePath, const QPalette &fallbac
+         disabledColors << disabledColors.at(QPalette::Highlight);
+ #endif
+ 
++    if(activeColors.count() < QPalette::NColorRoles ||
++            inactiveColors.count() < QPalette::NColorRoles ||
++            disabledColors.count() < QPalette::NColorRoles)
++        return std::nullopt;
+ 
+-    if(activeColors.count() >= QPalette::NColorRoles &&
+-            inactiveColors.count() >= QPalette::NColorRoles &&
+-            disabledColors.count() >= QPalette::NColorRoles)
+-    {
+-        for (int i = 0; i < QPalette::NColorRoles; i++)
+-        {
+-            QPalette::ColorRole role = QPalette::ColorRole(i);
+-            customPalette.setColor(QPalette::Active, role, QColor(activeColors.at(i)));
+-            customPalette.setColor(QPalette::Inactive, role, QColor(inactiveColors.at(i)));
+-            customPalette.setColor(QPalette::Disabled, role, QColor(disabledColors.at(i)));
+-        }
+-    }
+-    else
++    QPalette customPalette;
++    for (int i = 0; i < QPalette::NColorRoles; i++)
+     {
+-        customPalette = fallback; //load fallback palette
++        QPalette::ColorRole role = QPalette::ColorRole(i);
++        customPalette.setColor(QPalette::Active, role, QColor(activeColors.at(i)));
++        customPalette.setColor(QPalette::Inactive, role, QColor(inactiveColors.at(i)));
++        customPalette.setColor(QPalette::Disabled, role, QColor(disabledColors.at(i)));
+     }
+-
+     return customPalette;
+ }
+ 
 diff --git a/src/qt6ct-common/qt6ct.h b/src/qt6ct-common/qt6ct.h
-index e01ddd2..bd4cb43 100644
+index e01ddd2..c49c6b9 100644
 --- a/src/qt6ct-common/qt6ct.h
 +++ b/src/qt6ct-common/qt6ct.h
-@@ -67,6 +67,7 @@ public:
+@@ -67,7 +67,8 @@ public:
      static QString userColorSchemePath();
      static QStringList sharedColorSchemePaths();
      static QString resolvePath(const QString &path);
+-    static QPalette loadColorScheme(const QString &filePath, const QPalette &fallback);
 +    static bool isKColorScheme(const QString &filePath);
-     static QPalette loadColorScheme(const QString &filePath, const QPalette &fallback);
++    static std::optional<QPalette> loadColorScheme(const QString &filePath);
  
      static void registerStyleInstance(StyleInstance *instance);
+     static void unregisterStyleInstance(StyleInstance *instance);
 diff --git a/src/qt6ct-qtplugin/CMakeLists.txt b/src/qt6ct-qtplugin/CMakeLists.txt
 index c3d7498..9d85f2b 100644
 --- a/src/qt6ct-qtplugin/CMakeLists.txt
@@ -110,7 +160,7 @@ index c3d7498..9d85f2b 100644
 +target_link_libraries(qt6ct-qtplugin PRIVATE Qt6::WidgetsPrivate Qt6::GuiPrivate Qt6::QuickControls2 KF6::IconThemes qt6ct-common)
  install(TARGETS qt6ct-qtplugin DESTINATION ${PLUGINDIR}/platformthemes)
 diff --git a/src/qt6ct-qtplugin/qt6ctplatformtheme.cpp b/src/qt6ct-qtplugin/qt6ctplatformtheme.cpp
-index 1d13faf..d9881e6 100644
+index 1d13faf..5149327 100644
 --- a/src/qt6ct-qtplugin/qt6ctplatformtheme.cpp
 +++ b/src/qt6ct-qtplugin/qt6ctplatformtheme.cpp
 @@ -41,9 +41,14 @@
@@ -176,7 +226,7 @@ index 1d13faf..d9881e6 100644
  const QPalette *Qt6CTPlatformTheme::palette(QPlatformTheme::Palette type) const
  {
 -    return (m_usePalette && m_palette) ? m_palette.get() : QGenericUnixTheme::palette(type);
-+    return m_palette ? m_palette.get() : QGenericUnixTheme::palette(type);
++    return m_palette ? &*m_palette : QGenericUnixTheme::palette(type);
  }
  
  const QFont *Qt6CTPlatformTheme::font(QPlatformTheme::Font type) const
@@ -266,7 +316,7 @@ index 1d13faf..d9881e6 100644
      }
  #endif
  
-@@ -248,18 +254,16 @@ void Qt6CTPlatformTheme::updateSettings()
+@@ -248,18 +254,14 @@ void Qt6CTPlatformTheme::updateSettings()
  
  void Qt6CTPlatformTheme::readSettings()
  {
@@ -285,13 +335,11 @@ index 1d13faf..d9881e6 100644
 +    m_schemePath = !m_isIgnored && settings.value("custom_palette", false).toBool()
 +        ? Qt6CT::resolvePath(settings.value("color_scheme_path").toString()) //replace environment variables
 +        : QString();
-+    m_palette = !m_schemePath.isEmpty()
-+        ? std::make_unique<QPalette>(Qt6CT::loadColorScheme(m_schemePath, *QPlatformTheme::palette(SystemPalette)))
-+        : nullptr;
++    m_palette = Qt6CT::loadColorScheme(m_schemePath);
      m_iconTheme = settings.value("icon_theme").toString();
      //load dialogs
      if(!m_update)
-@@ -277,10 +281,10 @@ void Qt6CTPlatformTheme::readSettings()
+@@ -277,10 +279,10 @@ void Qt6CTPlatformTheme::readSettings()
      settings.endGroup();
  
      settings.beginGroup("Fonts");
@@ -306,7 +354,7 @@ index 1d13faf..d9881e6 100644
      settings.endGroup();
  
      settings.beginGroup("Interface");
-@@ -336,8 +340,6 @@ void Qt6CTPlatformTheme::readSettings()
+@@ -336,8 +338,6 @@ void Qt6CTPlatformTheme::readSettings()
              QCoreApplication::setAttribute(Qt::AA_ForceRasterWidgets, true);
          else if(!m_isIgnored && forceRasterWidgets == Qt::Unchecked)
              QCoreApplication::setAttribute(Qt::AA_ForceRasterWidgets, false);
@@ -315,7 +363,7 @@ index 1d13faf..d9881e6 100644
          settings.endGroup();
      }
  }
-@@ -367,3 +369,17 @@ QString Qt6CTPlatformTheme::loadStyleSheets(const QStringList &paths)
+@@ -367,3 +367,17 @@ QString Qt6CTPlatformTheme::loadStyleSheets(const QStringList &paths)
      content.replace(regExp, "\n");
      return content;
  }
@@ -334,7 +382,7 @@ index 1d13faf..d9881e6 100644
 +    return QObject::eventFilter(obj, e);
 +}
 diff --git a/src/qt6ct-qtplugin/qt6ctplatformtheme.h b/src/qt6ct-qtplugin/qt6ctplatformtheme.h
-index 6ad245b..f054d25 100644
+index 6ad245b..1e217fc 100644
 --- a/src/qt6ct-qtplugin/qt6ctplatformtheme.h
 +++ b/src/qt6ct-qtplugin/qt6ctplatformtheme.h
 @@ -62,10 +62,13 @@ public:
@@ -352,15 +400,17 @@ index 6ad245b..f054d25 100644
  private slots:
      void applySettings();
  #ifdef QT_WIDGETS_LIB
-@@ -79,7 +82,7 @@ private:
+@@ -79,8 +82,8 @@ private:
      bool hasWidgets();
  #endif
      QString loadStyleSheets(const QStringList &paths);
 -    QString m_style, m_iconTheme, m_userStyleSheet, m_prevStyleSheet;
+-    std::unique_ptr<QPalette> m_palette;
 +    QString m_style, m_schemePath, m_iconTheme, m_userStyleSheet, m_prevStyleSheet;
-     std::unique_ptr<QPalette> m_palette;
++    std::optional<QPalette> m_palette;
      QFont m_generalFont, m_fixedFont;
      int m_doubleClickInterval;
+     int m_cursorFlashTime;
 @@ -88,7 +91,6 @@ private:
      int m_buttonBoxLayout;
      int m_keyboardScheme;
@@ -382,7 +432,7 @@ index fb0e1f7..acd8313 100644
  install(TARGETS qt6ct DESTINATION ${CMAKE_INSTALL_BINDIR})
  install(FILES qt6ct.desktop DESTINATION ${CMAKE_INSTALL_DATADIR}/applications)
 diff --git a/src/qt6ct/appearancepage.cpp b/src/qt6ct/appearancepage.cpp
-index fc154c2..de9753e 100644
+index fc154c2..5285adf 100644
 --- a/src/qt6ct/appearancepage.cpp
 +++ b/src/qt6ct/appearancepage.cpp
 @@ -35,6 +35,8 @@
@@ -415,6 +465,15 @@ index fc154c2..de9753e 100644
  }
  
  void AppearancePage::on_styleComboBox_textActivated(const QString &text)
+@@ -127,7 +134,7 @@ void AppearancePage::on_styleComboBox_textActivated(const QString &text)
+ 
+ void AppearancePage::on_colorSchemeComboBox_activated(int)
+ {
+-    m_customPalette = Qt6CT::loadColorScheme(m_ui->colorSchemeComboBox->currentData().toString(), palette());
++    m_customPalette = Qt6CT::loadColorScheme(m_ui->colorSchemeComboBox->currentData().toString()).value_or(palette());
+     updatePalette();
+ }
+ 
 @@ -303,6 +310,7 @@ void AppearancePage::setPreviewPalette(const QPalette &p)
  
  void AppearancePage::updateActions()
@@ -433,6 +492,15 @@ index fc154c2..de9753e 100644
  
      QDir("/").mkpath(Qt6CT::userColorSchemePath());
      findColorSchemes(Qt6CT::userColorSchemePath());
+@@ -342,7 +349,7 @@ void AppearancePage::readSettings()
+         int index = m_ui->colorSchemeComboBox->findData(colorSchemePath);
+         if(index >= 0)
+             m_ui->colorSchemeComboBox->setCurrentIndex(index);
+-        m_customPalette = Qt6CT::loadColorScheme(m_ui->colorSchemeComboBox->currentData().toString(), palette());
++        m_customPalette = Qt6CT::loadColorScheme(m_ui->colorSchemeComboBox->currentData().toString()).value_or(palette());
+     }
+ 
+     on_styleComboBox_textActivated(m_ui->styleComboBox->currentText());
 @@ -381,11 +388,23 @@ void AppearancePage::findColorSchemes(const QString &path)
  {
      QDir dir(path);
