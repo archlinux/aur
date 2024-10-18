@@ -1,0 +1,11 @@
+post_install() {
+    if ! [[ $(pacman -Qq "${optdepends[@]}") ]] &> /dev/null; then
+        printf "\n\n\033[31mWARNING!\033[0m Install one (or more) of the following backends:\n          "
+
+        for dep in "${optdepends[@]}"; do
+            printf "%s " "$dep"
+        done
+
+        printf "\n\n\n"
+    fi
+}
