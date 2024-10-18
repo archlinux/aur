@@ -2,9 +2,10 @@
 # Contributor: Dušan Simić <dusan.simic1810@gmail.com>
 
 pkgname=morewaita-icon-theme
+_reponame=MoreWaita
 pkgver=47.0
 _commit=1106883adbde1771d50434990cd7b65601ae7d23 # tag/v47
-pkgrel=1
+pkgrel=2
 pkgdesc="An expanded Adwaita-styled companion icon theme with extra icons for popular apps to complement Gnome Shell's original icons. AUR package maintained by upstream developer."
 arch=(any)
 url="https://github.com/somepaulo/MoreWaita"
