@@ -1,6 +1,6 @@
-From c954d8543a47bbe608811e61cb2aff04e17dc975 Mon Sep 17 00:00:00 2001
+From 1f91c70bc6045e2e6c4626f047f13b70b43ae8db Mon Sep 17 00:00:00 2001
 From: Mingi Sung <sungmg@saltyming.net>
-Date: Fri, 18 Oct 2024 21:56:37 +0900
+Date: Fri, 18 Oct 2024 23:35:36 +0900
 Subject: [PATCH] Merge branch 'sungmg-triple-buffering-v4-47' into gnome-47
 
 Use triple buffering if and when the previous frame is running late.
@@ -20,12 +20,11 @@ Commit: 511a502e1a6ff6c88dcb650f1bee8f6eb894d1f6
 Included: https://gitlab.gnome.org/GNOME/mutter/-/merge_requests/4015
 Included: https://gitlab.gnome.org/GNOME/mutter/-/merge_requests/4027
 Included: https://gitlab.gnome.org/GNOME/mutter/-/merge_requests/4060
-Included: https://gitlab.gnome.org/GNOME/mutter/-/merge_requests/4073
 
 Source: https://git.saltyming.net/sungmg/mutter-performance-source
 Signed-off-by: Mingi Sung <sungmg@saltyming.net>
 ---
- clutter/clutter/clutter-frame-clock.c            | 372 ++++++++++++---
+ clutter/clutter/clutter-frame-clock.c            | 372 ++++++++++++++++----
  clutter/clutter/clutter-frame-clock.h            |  11 +-
  clutter/clutter/clutter-frame-private.h          |   1 +
  clutter/clutter/clutter-frame.c                  |  13 +
@@ -33,22 +32,22 @@ Signed-off-by: Mingi Sung <sungmg@saltyming.net>
  clutter/clutter/clutter-stage-view.c             |  11 +-
  cogl/cogl/cogl-onscreen-private.h                |   5 +-
  cogl/cogl/cogl-onscreen.c                        |   8 +
- src/backends/meta-egl.c                          |  96 ++++
- src/backends/meta-egl.h                          |  25 +
+ src/backends/meta-egl.c                          |  71 ++++
+ src/backends/meta-egl.h                          |  18 +
  src/backends/meta-stage-impl.c                   |   2 +
- src/backends/native/meta-drm-buffer-gbm.c        | 188 ++++++--
+ src/backends/native/meta-drm-buffer-gbm.c        | 188 +++++++---
  src/backends/native/meta-drm-buffer-gbm.h        |   6 +
  src/backends/native/meta-frame-native.c          |  31 ++
  src/backends/native/meta-frame-native.h          |   9 +
  src/backends/native/meta-kms.c                   |   9 +
  src/backends/native/meta-kms.h                   |   2 +
- src/backends/native/meta-onscreen-native.c       | 581 +++++++++++++++++++----
+ src/backends/native/meta-onscreen-native.c       | 418 ++++++++++++++++++-----
  src/backends/native/meta-onscreen-native.h       |   2 +
- src/backends/native/meta-renderer-native-gles3.c | 251 ++++++----
- src/backends/native/meta-renderer-native-gles3.h |  17 +-
+ src/backends/native/meta-renderer-native-gles3.c |  54 +--
+ src/backends/native/meta-renderer-native-gles3.h |   2 +-
  src/backends/native/meta-renderer-native.c       |  34 +-
- src/tests/native-kms-render.c                    | 106 ++++-
- 23 files changed, 1460 insertions(+), 327 deletions(-)
+ src/tests/native-kms-render.c                    | 106 ++++--
+ 23 files changed, 1104 insertions(+), 276 deletions(-)
 
 diff --git a/clutter/clutter/clutter-frame-clock.c b/clutter/clutter/clutter-frame-clock.c
 index 0cc1f2eb4a..3418cb86c0 100644
@@ -865,18 +864,10 @@ index 3bcb23307e..cde6da308f 100644
  cogl_onscreen_add_frame_callback (CoglOnscreen *onscreen,
                                    CoglFrameCallback callback,
 diff --git a/src/backends/meta-egl.c b/src/backends/meta-egl.c
-index cc023f705c..9bc73a254b 100644
+index cc023f705c..50da9c4646 100644
 --- a/src/backends/meta-egl.c
 +++ b/src/backends/meta-egl.c
-@@ -26,6 +26,7 @@
- #include <EGL/egl.h>
- #include <EGL/eglext.h>
- #include <EGL/eglmesaext.h>
-+#include <EGL/eglplatform.h>
- #include <gio/gio.h>
- #include <glib.h>
- #include <glib-object.h>
-@@ -44,6 +45,10 @@ struct _MetaEgl
+@@ -44,6 +44,10 @@ struct _MetaEgl
    PFNEGLCREATEIMAGEKHRPROC eglCreateImageKHR;
    PFNEGLDESTROYIMAGEKHRPROC eglDestroyImageKHR;
  
@@ -887,43 +878,7 @@ index cc023f705c..9bc73a254b 100644
    PFNEGLBINDWAYLANDDISPLAYWL eglBindWaylandDisplayWL;
    PFNEGLQUERYWAYLANDBUFFERWL eglQueryWaylandBufferWL;
  
-@@ -72,6 +77,8 @@ struct _MetaEgl
-   PFNEGLQUERYDMABUFMODIFIERSEXTPROC eglQueryDmaBufModifiersEXT;
- 
-   PFNEGLQUERYDISPLAYATTRIBEXTPROC eglQueryDisplayAttribEXT;
-+
-+  PFNEGLQUERYSURFACEPROC eglQuerySurface;
- };
- 
- G_DEFINE_TYPE (MetaEgl, meta_egl, G_TYPE_OBJECT)
-@@ -1143,6 +1150,26 @@ meta_egl_query_dma_buf_modifiers (MetaEgl      *egl,
-   return TRUE;
- }
- 
-+gboolean
-+meta_egl_query_surface (MetaEgl     *egl,
-+                        EGLDisplay   display,
-+                        EGLSurface   surface,
-+                        EGLint       attribute,
-+                        EGLint      *value,
-+                        GError     **error)
-+{
-+  if (!is_egl_proc_valid (egl->eglQuerySurface, error))
-+    return FALSE;
-+
-+  if (!egl->eglQuerySurface (display, surface, attribute, value))
-+    {
-+      set_egl_error (error);
-+      return FALSE;
-+    }
-+
-+  return TRUE;
-+}
-+
- gboolean
- meta_egl_query_display_attrib (MetaEgl     *egl,
-                                EGLDisplay   display,
-@@ -1162,6 +1189,69 @@ meta_egl_query_display_attrib (MetaEgl     *egl,
+@@ -1162,6 +1166,69 @@ meta_egl_query_display_attrib (MetaEgl     *egl,
    return TRUE;
  }
  
@@ -993,7 +948,7 @@ index cc023f705c..9bc73a254b 100644
  #define GET_EGL_PROC_ADDR(proc) \
    egl->proc = (void *) eglGetProcAddress (#proc);
  
-@@ -1175,6 +1265,10 @@ meta_egl_constructed (GObject *object)
+@@ -1175,6 +1242,10 @@ meta_egl_constructed (GObject *object)
    GET_EGL_PROC_ADDR (eglCreateImageKHR);
    GET_EGL_PROC_ADDR (eglDestroyImageKHR);
  
@@ -1004,32 +959,11 @@ index cc023f705c..9bc73a254b 100644
    GET_EGL_PROC_ADDR (eglBindWaylandDisplayWL);
    GET_EGL_PROC_ADDR (eglQueryWaylandBufferWL);
  
-@@ -1203,6 +1297,8 @@ meta_egl_constructed (GObject *object)
-   GET_EGL_PROC_ADDR (eglQueryDmaBufModifiersEXT);
- 
-   GET_EGL_PROC_ADDR (eglQueryDisplayAttribEXT);
-+
-+  GET_EGL_PROC_ADDR (eglQuerySurface);
- }
- 
- #undef GET_EGL_PROC_ADDR
 diff --git a/src/backends/meta-egl.h b/src/backends/meta-egl.h
-index 8b955c90c3..9c8ab779a2 100644
+index 8b955c90c3..af3150c3c9 100644
 --- a/src/backends/meta-egl.h
 +++ b/src/backends/meta-egl.h
-@@ -271,8 +271,33 @@ gboolean meta_egl_query_dma_buf_modifiers (MetaEgl      *egl,
-                                            EGLint       *num_formats,
-                                            GError      **error);
- 
-+gboolean meta_egl_query_surface (MetaEgl     *egl,
-+                                 EGLDisplay   display,
-+                                 EGLSurface   surface,
-+                                 EGLint       attribute,
-+                                 EGLint      *value,
-+                                 GError     **error);
-+
- gboolean meta_egl_query_display_attrib (MetaEgl     *egl,
-                                         EGLDisplay   display,
+@@ -276,3 +276,21 @@ gboolean meta_egl_query_display_attrib (MetaEgl     *egl,
                                          EGLint       attribute,
                                          EGLAttrib   *value,
                                          GError     **error);
@@ -1442,7 +1376,7 @@ index f5ec4c1c3b..77fd62662d 100644
                          MetaKmsFlags   flags,
                          GError       **error);
 diff --git a/src/backends/native/meta-onscreen-native.c b/src/backends/native/meta-onscreen-native.c
-index 021ada3677..d17a9047eb 100644
+index 021ada3677..7be0bf1425 100644
 --- a/src/backends/native/meta-onscreen-native.c
 +++ b/src/backends/native/meta-onscreen-native.c
 @@ -29,6 +29,7 @@
@@ -1453,39 +1387,7 @@ index 021ada3677..d17a9047eb 100644
  #include <drm_fourcc.h>
  
  #include "backends/meta-egl-ext.h"
-@@ -53,6 +54,18 @@
- #include "common/meta-cogl-drm-formats.h"
- #include "common/meta-drm-format-helpers.h"
- 
-+/*
-+  The maximum amount of damage rectangles to maintain. At a certain point there are so many damage rectangles that
-+  individually processing them isn't worth the time they save based on a full redraw, which is determined by this
-+  number.
-+*/
-+#define MAX_DAMAGE_RECTANGLES 16
-+
-+/*
-+  The maximum supported buffer age for secondary GPU surfaces.
-+*/
-+#define MAX_SECONDARY_GPU_BUFFER_AGE 4
-+
- typedef enum _MetaSharedFramebufferImportStatus
- {
-   /* Not tried importing yet. */
-@@ -63,6 +76,12 @@ typedef enum _MetaSharedFramebufferImportStatus
-   META_SHARED_FRAMEBUFFER_IMPORT_STATUS_OK
- } MetaSharedFramebufferImportStatus;
- 
-+typedef struct _MetaOnscreenNativeSecondaryGpuDamageRectangleInfo
-+{
-+  MtkRectangle rectangles[MAX_DAMAGE_RECTANGLES];
-+  int n_rectangles;
-+} MetaOnscreenNativeSecondaryGpuDamageRectangleInfo;
-+
- typedef struct _MetaOnscreenNativeSecondaryGpuState
- {
-   MetaGpuKms *gpu_kms;
-@@ -76,9 +95,11 @@ typedef struct _MetaOnscreenNativeSecondaryGpuState
+@@ -76,7 +77,7 @@ typedef struct _MetaOnscreenNativeSecondaryGpuState
  
    struct {
      MetaDrmBufferDumb *current_dumb_fb;
@@ -1493,12 +1395,8 @@ index 021ada3677..d17a9047eb 100644
 +    MetaDrmBufferDumb *dumb_fbs[3];
    } cpu;
  
-+  MetaOnscreenNativeSecondaryGpuDamageRectangleInfo damage_rectangles[MAX_SECONDARY_GPU_BUFFER_AGE];
-+
    gboolean noted_primary_gpu_copy_ok;
-   gboolean noted_primary_gpu_copy_failed;
-   MetaSharedFramebufferImportStatus import_status;
-@@ -103,6 +124,8 @@ struct _MetaOnscreenNative
+@@ -103,6 +104,8 @@ struct _MetaOnscreenNative
    MetaOnscreenNativeSecondaryGpuState *secondary_gpu_state;
  
    ClutterFrame *presented_frame;
@@ -1507,7 +1405,7 @@ index 021ada3677..d17a9047eb 100644
    ClutterFrame *next_frame;
  
    struct {
-@@ -117,6 +140,9 @@ struct _MetaOnscreenNative
+@@ -117,6 +120,9 @@ struct _MetaOnscreenNative
    } egl;
  #endif
  
@@ -1517,7 +1415,7 @@ index 021ada3677..d17a9047eb 100644
    gboolean frame_sync_requested;
    gboolean frame_sync_enabled;
  
-@@ -138,6 +164,13 @@ G_DEFINE_TYPE (MetaOnscreenNative, meta_onscreen_native,
+@@ -138,6 +144,13 @@ G_DEFINE_TYPE (MetaOnscreenNative, meta_onscreen_native,
  
  static GQuark blit_source_quark = 0;
  
@@ -1531,7 +1429,7 @@ index 021ada3677..d17a9047eb 100644
  static gboolean
  init_secondary_gpu_state (MetaRendererNative  *renderer_native,
                            CoglOnscreen        *onscreen,
-@@ -148,20 +181,20 @@ meta_onscreen_native_swap_drm_fb (CoglOnscreen *onscreen)
+@@ -148,20 +161,20 @@ meta_onscreen_native_swap_drm_fb (CoglOnscreen *onscreen)
  {
    MetaOnscreenNative *onscreen_native = META_ONSCREEN_NATIVE (onscreen);
  
@@ -1556,7 +1454,7 @@ index 021ada3677..d17a9047eb 100644
  }
  
  static void
-@@ -199,7 +232,7 @@ meta_onscreen_native_notify_frame_complete (CoglOnscreen *onscreen)
+@@ -199,7 +212,7 @@ meta_onscreen_native_notify_frame_complete (CoglOnscreen *onscreen)
  
    info = cogl_onscreen_pop_head_frame_info (onscreen);
  
@@ -1565,7 +1463,7 @@ index 021ada3677..d17a9047eb 100644
  
    _cogl_onscreen_notify_frame_sync (onscreen, info);
    _cogl_onscreen_notify_complete (onscreen, info);
-@@ -241,6 +274,7 @@ notify_view_crtc_presented (MetaRendererView *view,
+@@ -241,6 +254,7 @@ notify_view_crtc_presented (MetaRendererView *view,
  
    meta_onscreen_native_notify_frame_complete (onscreen);
    meta_onscreen_native_swap_drm_fb (onscreen);
@@ -1573,7 +1471,7 @@ index 021ada3677..d17a9047eb 100644
  }
  
  static void
-@@ -290,15 +324,13 @@ page_flip_feedback_ready (MetaKmsCrtc *kms_crtc,
+@@ -290,15 +304,13 @@ page_flip_feedback_ready (MetaKmsCrtc *kms_crtc,
    CoglFramebuffer *framebuffer =
      clutter_stage_view_get_onscreen (CLUTTER_STAGE_VIEW (view));
    CoglOnscreen *onscreen = COGL_ONSCREEN (framebuffer);
@@ -1590,7 +1488,7 @@ index 021ada3677..d17a9047eb 100644
  }
  
  static void
-@@ -368,7 +400,8 @@ page_flip_feedback_discarded (MetaKmsCrtc  *kms_crtc,
+@@ -368,7 +380,8 @@ page_flip_feedback_discarded (MetaKmsCrtc  *kms_crtc,
      }
  
    meta_onscreen_native_notify_frame_complete (onscreen);
@@ -1600,7 +1498,7 @@ index 021ada3677..d17a9047eb 100644
  }
  
  static const MetaKmsPageFlipListenerVtable page_flip_listener_vtable = {
-@@ -429,18 +462,36 @@ custom_egl_stream_page_flip (gpointer custom_page_flip_data,
+@@ -429,18 +442,36 @@ custom_egl_stream_page_flip (gpointer custom_page_flip_data,
  }
  #endif /* HAVE_EGL_DEVICE */
  
@@ -1640,7 +1538,7 @@ index 021ada3677..d17a9047eb 100644
  static void
  apply_transform (MetaCrtcKms            *crtc_kms,
                   MetaKmsPlaneAssignment *kms_plane_assignment,
-@@ -517,7 +568,7 @@ meta_onscreen_native_flip_crtc (CoglOnscreen           *onscreen,
+@@ -517,7 +548,7 @@ meta_onscreen_native_flip_crtc (CoglOnscreen           *onscreen,
  {
    MetaOnscreenNative *onscreen_native = META_ONSCREEN_NATIVE (onscreen);
    MetaRendererNative *renderer_native = onscreen_native->renderer_native;
@@ -1649,7 +1547,7 @@ index 021ada3677..d17a9047eb 100644
    MetaFrameNative *frame_native;
    MetaGpuKms *render_gpu = onscreen_native->render_gpu;
    MetaCrtcKms *crtc_kms = META_CRTC_KMS (crtc);
-@@ -533,6 +584,7 @@ meta_onscreen_native_flip_crtc (CoglOnscreen           *onscreen,
+@@ -533,6 +564,7 @@ meta_onscreen_native_flip_crtc (CoglOnscreen           *onscreen,
    COGL_TRACE_BEGIN_SCOPED (MetaOnscreenNativeFlipCrtcs,
                             "Meta::OnscreenNative::flip_crtc()");
  
@@ -1657,7 +1555,7 @@ index 021ada3677..d17a9047eb 100644
    g_return_if_fail (frame);
  
    gpu_kms = META_GPU_KMS (meta_crtc_get_gpu (crtc));
-@@ -595,6 +647,10 @@ meta_onscreen_native_flip_crtc (CoglOnscreen           *onscreen,
+@@ -595,6 +627,10 @@ meta_onscreen_native_flip_crtc (CoglOnscreen           *onscreen,
  #endif
      }
  
@@ -1668,108 +1566,10 @@ index 021ada3677..d17a9047eb 100644
    meta_kms_update_add_page_flip_listener (kms_update,
                                            kms_crtc,
                                            &page_flip_listener_vtable,
-@@ -831,11 +887,94 @@ import_shared_framebuffer (CoglOnscreen                        *onscreen,
-   return imported_buffer;
- }
- 
-+static void
-+push_secondary_gpu_damage_rectangles (MetaOnscreenNativeSecondaryGpuState *secondary_gpu_state,
-+                                      const int                           *rectangles,
-+                                      int                                  n_rectangles)
-+{
-+  int i;
-+
-+  if (n_rectangles > MAX_DAMAGE_RECTANGLES)
-+    n_rectangles = 0;
-+
-+  for (i = MAX_SECONDARY_GPU_BUFFER_AGE - 1; i > 0; --i)
-+    {
-+      if (secondary_gpu_state->damage_rectangles[i - 1].n_rectangles > 0)
-+        memcpy (secondary_gpu_state->damage_rectangles[i].rectangles,
-+                secondary_gpu_state->damage_rectangles[i - 1].rectangles,
-+                secondary_gpu_state->damage_rectangles[i - 1].n_rectangles * sizeof (MtkRectangle));
-+
-+      secondary_gpu_state->damage_rectangles[i].n_rectangles = secondary_gpu_state->damage_rectangles[i - 1].n_rectangles;
-+    }
-+
-+  if (n_rectangles > 0)
-+    memcpy (secondary_gpu_state->damage_rectangles[0].rectangles,
-+            rectangles,
-+            n_rectangles * sizeof (MtkRectangle));
-+
-+  secondary_gpu_state->damage_rectangles[0].n_rectangles = n_rectangles;
-+}
-+
-+static int
-+calculate_secondary_gpu_damage_rectangle_count (MetaOnscreenNativeSecondaryGpuState *secondary_gpu_state,
-+                                                int                                  buffer_age)
-+{
-+  int i;
-+  int union_n_rectangles = 0;
-+
-+  for (i = 0; i <= buffer_age; ++i)
-+    {
-+      /* Everything being damaged in a previous frame means we also need to damage everything now. */
-+      if (secondary_gpu_state->damage_rectangles[i].n_rectangles == 0)
-+        return 0;
-+
-+      union_n_rectangles += secondary_gpu_state->damage_rectangles[i].n_rectangles;
-+    }
-+
-+  return union_n_rectangles;
-+}
-+
-+static int
-+get_secondary_gpu_buffer_age (MetaOnscreenNativeSecondaryGpuState *secondary_gpu_state,
-+                              MetaRendererNativeGpuData           *renderer_gpu_data)
-+{
-+  MetaRendererNative *renderer_native = renderer_gpu_data->renderer_native;
-+  MetaEgl *egl = meta_renderer_native_get_egl (renderer_native);
-+  MetaRenderDevice *render_device;
-+  EGLDisplay egl_display;
-+  int buffer_age;
-+  g_autoptr (GError) error = NULL;
-+
-+  render_device = renderer_gpu_data->render_device;
-+  egl_display = meta_render_device_get_egl_display (render_device);
-+
-+  if (!meta_egl_query_surface (egl, egl_display, secondary_gpu_state->egl_surface, EGL_BUFFER_AGE_EXT, &buffer_age, &error))
-+    {
-+      g_warning ("Failed to query age of surface, ignoring damage rectangles and fully redrawing, "
-+                 "which may cause increased GPU power consumption: %s", error->message);
-+
-+      return 0;
-+    }
-+
-+  if (buffer_age > MAX_SECONDARY_GPU_BUFFER_AGE)
-+    {
-+      g_warning ("Secondary GPU provides buffers of age %i, which is older than supported; "
-+                 "ignoring damage rectangles and fully redrawing which may cause incraesed GPU power consumption",
-+                 buffer_age);
-+
-+      return 0;
-+    }
-+
-+  return buffer_age;
-+}
-+
- static MetaDrmBuffer *
- copy_shared_framebuffer_gpu (CoglOnscreen                         *onscreen,
-                              MetaOnscreenNativeSecondaryGpuState  *secondary_gpu_state,
-                              MetaRendererNativeGpuData            *renderer_gpu_data,
-                              MetaDrmBuffer                        *primary_gpu_fb,
-+                             const int                            *rectangles,
-+                             int                                   n_rectangles,
-                              GError                              **error)
- {
-   MetaRendererNative *renderer_native = renderer_gpu_data->renderer_native;
-@@ -851,12 +990,20 @@ copy_shared_framebuffer_gpu (CoglOnscreen                         *onscreen,
+@@ -851,12 +887,15 @@ copy_shared_framebuffer_gpu (CoglOnscreen                         *onscreen,
    MetaDrmBufferFlags flags;
    MetaDrmBufferGbm *buffer_gbm = NULL;
    struct gbm_bo *bo;
-+  int buffer_age = 0;
-+  int blit_n_rectangles = 0;
-+  MtkRectangle *blit_rectangles = NULL;
 +  EGLSync egl_sync = EGL_NO_SYNC;
 +  g_autofd int sync_fd = -1;
 +  EGLImageKHR egl_image;
@@ -1777,15 +1577,13 @@ index 021ada3677..d17a9047eb 100644
    COGL_TRACE_BEGIN_SCOPED (CopySharedFramebufferSecondaryGpu,
                             "copy_shared_framebuffer_gpu()");
  
-+  push_secondary_gpu_damage_rectangles (secondary_gpu_state, rectangles, n_rectangles);
-+
    if (renderer_gpu_data->secondary.needs_explicit_sync)
 -    cogl_framebuffer_finish (COGL_FRAMEBUFFER (onscreen));
 +    sync_fd = cogl_context_get_latest_sync_fd (cogl_context);
  
    render_device = renderer_gpu_data->render_device;
    egl_display = meta_render_device_get_egl_display (render_device);
-@@ -872,14 +1019,97 @@ copy_shared_framebuffer_gpu (CoglOnscreen                         *onscreen,
+@@ -872,13 +911,51 @@ copy_shared_framebuffer_gpu (CoglOnscreen                         *onscreen,
        goto done;
      }
  
@@ -1829,49 +1627,6 @@ index 021ada3677..d17a9047eb 100644
 +      goto done;
 +    }
 +
-+  buffer_age = get_secondary_gpu_buffer_age (secondary_gpu_state, renderer_gpu_data);
-+  blit_n_rectangles = calculate_secondary_gpu_damage_rectangle_count (secondary_gpu_state, buffer_age);
-+
-+  if (blit_n_rectangles > 0)
-+    {
-+      int i;
-+      int offset = 0;
-+
-+      /* Will tend to overallocate a bit if reduction happens below, but doesn't matter much since it's pretty small. */
-+      blit_rectangles = g_newa (MtkRectangle, blit_n_rectangles);
-+
-+      GHashTable* hash_table = g_hash_table_new (g_str_hash, g_str_equal);
-+
-+      for (i = 0; i <= buffer_age; ++i)
-+        {
-+          int j;
-+
-+          for (j = 0; j < secondary_gpu_state->damage_rectangles[i].n_rectangles; ++j)
-+            {
-+              char hash_table_key[100];
-+
-+              g_snprintf (hash_table_key,
-+                          100,
-+                          "%i_%i_%i_%i",
-+                          secondary_gpu_state->damage_rectangles[i].rectangles[j].x,
-+                          secondary_gpu_state->damage_rectangles[i].rectangles[j].y,
-+                          secondary_gpu_state->damage_rectangles[i].rectangles[j].width,
-+                          secondary_gpu_state->damage_rectangles[i].rectangles[j].height);
-+
-+              if (g_hash_table_lookup_extended (hash_table, hash_table_key, NULL, NULL))
-+                continue;
-+
-+              g_hash_table_insert (hash_table, hash_table_key, NULL);
-+
-+              memcpy (&blit_rectangles[offset++], &secondary_gpu_state->damage_rectangles[i].rectangles[j], sizeof(MtkRectangle));
-+            }
-+        }
-+
-+      g_hash_table_destroy (hash_table);
-+
-+      blit_n_rectangles = offset;
-+    }
-+
    if (!meta_renderer_native_gles3_blit_shared_bo (egl,
                                                    gles3,
                                                    egl_display,
@@ -1879,12 +1634,9 @@ index 021ada3677..d17a9047eb 100644
 -                                                  secondary_gpu_state->egl_surface,
 +                                                  egl_image,
                                                    bo,
-+                                                  blit_rectangles,
-+                                                  blit_n_rectangles,
                                                    error))
      {
-       g_prefix_error (error, "Failed to blit shared framebuffer: ");
-@@ -919,6 +1149,17 @@ copy_shared_framebuffer_gpu (CoglOnscreen                         *onscreen,
+@@ -919,6 +996,17 @@ copy_shared_framebuffer_gpu (CoglOnscreen                         *onscreen,
                             g_object_unref);
  
  done:
@@ -1902,7 +1654,7 @@ index 021ada3677..d17a9047eb 100644
    _cogl_winsys_egl_ensure_current (cogl_display);
  
    return buffer_gbm ? META_DRM_BUFFER (buffer_gbm) : NULL;
-@@ -928,12 +1169,17 @@ static MetaDrmBufferDumb *
+@@ -928,12 +1016,17 @@ static MetaDrmBufferDumb *
  secondary_gpu_get_next_dumb_buffer (MetaOnscreenNativeSecondaryGpuState *secondary_gpu_state)
  {
    MetaDrmBufferDumb *current_dumb_fb;
@@ -1924,37 +1676,7 @@ index 021ada3677..d17a9047eb 100644
  }
  
  static MetaDrmBuffer *
-@@ -1009,10 +1255,8 @@ copy_shared_framebuffer_primary_gpu (CoglOnscreen                        *onscre
-                   error->message);
-       return NULL;
-     }
--  /* Limit the number of individual copies to 16 */
--#define MAX_RECTS 16
- 
--  if (n_rectangles == 0 || n_rectangles > MAX_RECTS)
-+  if (n_rectangles == 0 || n_rectangles > MAX_DAMAGE_RECTANGLES)
-     {
-       if (!cogl_blit_framebuffer (framebuffer, COGL_FRAMEBUFFER (dmabuf_fb),
-                                   0, 0, 0, 0,
-@@ -1177,6 +1421,8 @@ static MetaDrmBuffer *
- acquire_front_buffer (CoglOnscreen   *onscreen,
-                       MetaDrmBuffer  *primary_gpu_fb,
-                       MetaDrmBuffer  *secondary_gpu_fb,
-+                      const int      *rectangles,
-+                      int             n_rectangles,
-                       GError        **error)
- {
-   MetaOnscreenNative *onscreen_native = META_ONSCREEN_NATIVE (onscreen);
-@@ -1222,6 +1468,8 @@ acquire_front_buffer (CoglOnscreen   *onscreen,
-                                           secondary_gpu_state,
-                                           renderer_gpu_data,
-                                           primary_gpu_fb,
-+                                          rectangles,
-+                                          n_rectangles,
-                                           error);
-     }
- 
-@@ -1269,10 +1517,36 @@ swap_buffer_result_feedback (const MetaKmsFeedback *kms_feedback,
+@@ -1269,10 +1362,36 @@ swap_buffer_result_feedback (const MetaKmsFeedback *kms_feedback,
      g_warning ("Page flip failed: %s", error->message);
  
    frame_info = cogl_onscreen_peek_head_frame_info (onscreen);
@@ -1994,7 +1716,7 @@ index 021ada3677..d17a9047eb 100644
  }
  
  static const MetaKmsResultListenerVtable swap_buffer_result_listener_vtable = {
-@@ -1292,35 +1566,37 @@ meta_onscreen_native_swap_buffers_with_damage (CoglOnscreen  *onscreen,
+@@ -1292,35 +1411,37 @@ meta_onscreen_native_swap_buffers_with_damage (CoglOnscreen  *onscreen,
    CoglRendererEGL *cogl_renderer_egl = cogl_renderer->winsys;
    MetaRendererNativeGpuData *renderer_gpu_data = cogl_renderer_egl->platform;
    MetaRendererNative *renderer_native = renderer_gpu_data->renderer_native;
@@ -2044,7 +1766,7 @@ index 021ada3677..d17a9047eb 100644
    secondary_gpu_fb =
      update_secondary_gpu_state_pre_swap_buffers (onscreen,
                                                   rectangles,
-@@ -1334,12 +1610,12 @@ meta_onscreen_native_swap_buffers_with_damage (CoglOnscreen  *onscreen,
+@@ -1334,12 +1455,12 @@ meta_onscreen_native_swap_buffers_with_damage (CoglOnscreen  *onscreen,
        secondary_gpu_data =
          meta_renderer_native_get_gpu_data (renderer_native,
                                             secondary_gpu_state->gpu_kms);
@@ -2061,16 +1783,7 @@ index 021ada3677..d17a9047eb 100644
      cogl_onscreen_egl_maybe_create_timestamp_query (onscreen, frame_info);
  
    parent_class = COGL_ONSCREEN_CLASS (meta_onscreen_native_parent_class);
-@@ -1377,6 +1653,8 @@ meta_onscreen_native_swap_buffers_with_damage (CoglOnscreen  *onscreen,
-       buffer = acquire_front_buffer (onscreen,
-                                      primary_gpu_fb,
-                                      secondary_gpu_fb,
-+                                     rectangles,
-+                                     n_rectangles,
-                                      &error);
-       if (buffer == NULL)
-         {
-@@ -1402,15 +1680,86 @@ meta_onscreen_native_swap_buffers_with_damage (CoglOnscreen  *onscreen,
+@@ -1402,15 +1523,86 @@ meta_onscreen_native_swap_buffers_with_damage (CoglOnscreen  *onscreen,
  #endif
      }
  
@@ -2161,7 +1874,7 @@ index 021ada3677..d17a9047eb 100644
        kms_update = meta_frame_native_ensure_kms_update (frame_native,
                                                          kms_device);
        meta_kms_update_add_result_listener (kms_update,
-@@ -1432,13 +1781,11 @@ meta_onscreen_native_swap_buffers_with_damage (CoglOnscreen  *onscreen,
+@@ -1432,13 +1624,11 @@ meta_onscreen_native_swap_buffers_with_damage (CoglOnscreen  *onscreen,
      {
        meta_renderer_native_queue_power_save_page_flip (renderer_native,
                                                         onscreen);
@@ -2176,7 +1889,7 @@ index 021ada3677..d17a9047eb 100644
  
    switch (renderer_gpu_data->mode)
      {
-@@ -1453,8 +1800,6 @@ meta_onscreen_native_swap_buffers_with_damage (CoglOnscreen  *onscreen,
+@@ -1453,8 +1643,6 @@ meta_onscreen_native_swap_buffers_with_damage (CoglOnscreen  *onscreen,
            kms_update = meta_frame_native_steal_kms_update (frame_native);
            meta_renderer_native_queue_mode_set_update (renderer_native,
                                                        kms_update);
@@ -2185,7 +1898,7 @@ index 021ada3677..d17a9047eb 100644
            return;
          }
        else if (meta_renderer_native_has_pending_mode_set (renderer_native))
-@@ -1468,8 +1813,6 @@ meta_onscreen_native_swap_buffers_with_damage (CoglOnscreen  *onscreen,
+@@ -1468,8 +1656,6 @@ meta_onscreen_native_swap_buffers_with_damage (CoglOnscreen  *onscreen,
  
            meta_frame_native_steal_kms_update (frame_native);
            meta_renderer_native_post_mode_set_updates (renderer_native);
@@ -2194,7 +1907,7 @@ index 021ada3677..d17a9047eb 100644
            return;
          }
        break;
-@@ -1485,8 +1828,6 @@ meta_onscreen_native_swap_buffers_with_damage (CoglOnscreen  *onscreen,
+@@ -1485,8 +1671,6 @@ meta_onscreen_native_swap_buffers_with_damage (CoglOnscreen  *onscreen,
                                                        kms_update);
  
            meta_renderer_native_post_mode_set_updates (renderer_native);
@@ -2203,7 +1916,7 @@ index 021ada3677..d17a9047eb 100644
            return;
          }
        break;
-@@ -1499,17 +1840,17 @@ meta_onscreen_native_swap_buffers_with_damage (CoglOnscreen  *onscreen,
+@@ -1499,17 +1683,17 @@ meta_onscreen_native_swap_buffers_with_damage (CoglOnscreen  *onscreen,
                meta_kms_device_get_path (kms_device));
  
    kms_update = meta_frame_native_steal_kms_update (frame_native);
@@ -2230,7 +1943,7 @@ index 021ada3677..d17a9047eb 100644
  }
  
  gboolean
-@@ -1577,11 +1918,11 @@ scanout_result_feedback (const MetaKmsFeedback *kms_feedback,
+@@ -1577,11 +1761,11 @@ scanout_result_feedback (const MetaKmsFeedback *kms_feedback,
                          G_IO_ERROR_PERMISSION_DENIED))
      {
        ClutterStageView *view = CLUTTER_STAGE_VIEW (onscreen_native->view);
@@ -2246,7 +1959,7 @@ index 021ada3677..d17a9047eb 100644
  
        g_warning ("Direct scanout page flip failed: %s", error->message);
  
-@@ -1594,7 +1935,7 @@ scanout_result_feedback (const MetaKmsFeedback *kms_feedback,
+@@ -1594,7 +1778,7 @@ scanout_result_feedback (const MetaKmsFeedback *kms_feedback,
    frame_info->flags |= COGL_FRAME_INFO_FLAG_SYMBOLIC;
  
    meta_onscreen_native_notify_frame_complete (onscreen);
@@ -2255,7 +1968,7 @@ index 021ada3677..d17a9047eb 100644
  }
  
  static const MetaKmsResultListenerVtable scanout_result_listener_vtable = {
-@@ -1646,13 +1987,24 @@ meta_onscreen_native_direct_scanout (CoglOnscreen   *onscreen,
+@@ -1646,13 +1830,24 @@ meta_onscreen_native_direct_scanout (CoglOnscreen   *onscreen,
        return FALSE;
      }
  
@@ -2282,7 +1995,7 @@ index 021ada3677..d17a9047eb 100644
  
    meta_frame_native_set_scanout (frame_native, scanout);
    meta_frame_native_set_buffer (frame_native,
-@@ -1899,22 +2251,79 @@ meta_onscreen_native_finish_frame (CoglOnscreen *onscreen,
+@@ -1899,22 +2094,79 @@ meta_onscreen_native_finish_frame (CoglOnscreen *onscreen,
    MetaKmsDevice *kms_device = meta_kms_crtc_get_device (kms_crtc);
    MetaFrameNative *frame_native = meta_frame_native_from_frame (frame);
    MetaKmsUpdate *kms_update;
@@ -2370,7 +2083,7 @@ index 021ada3677..d17a9047eb 100644
    meta_kms_update_add_result_listener (kms_update,
                                         &finish_frame_result_listener_vtable,
                                         NULL,
-@@ -1937,7 +2346,17 @@ meta_onscreen_native_finish_frame (CoglOnscreen *onscreen,
+@@ -1937,7 +2189,17 @@ meta_onscreen_native_finish_frame (CoglOnscreen *onscreen,
    meta_kms_update_set_flushing (kms_update, kms_crtc);
    meta_kms_device_post_update (kms_device, kms_update,
                                 META_KMS_UPDATE_FLAG_NONE);
@@ -2389,7 +2102,7 @@ index 021ada3677..d17a9047eb 100644
  }
  
  static gboolean
-@@ -2842,6 +3261,8 @@ meta_onscreen_native_dispose (GObject *object)
+@@ -2842,6 +3104,8 @@ meta_onscreen_native_dispose (GObject *object)
    meta_onscreen_native_detach (onscreen_native);
  
    g_clear_pointer (&onscreen_native->next_frame, clutter_frame_unref);
@@ -2412,263 +2125,17 @@ index 0e1193325a..e30357d19d 100644
                                      MetaRendererView *view);
  
 diff --git a/src/backends/native/meta-renderer-native-gles3.c b/src/backends/native/meta-renderer-native-gles3.c
-index 159e2daef0..4c84b6ddb3 100644
+index 159e2daef0..51a449a96d 100644
 --- a/src/backends/native/meta-renderer-native-gles3.c
 +++ b/src/backends/native/meta-renderer-native-gles3.c
-@@ -196,11 +196,13 @@ ensure_shader_program (ContextData *context_data,
-     "attribute vec2 position;\n"
-     "attribute vec2 texcoord;\n"
-     "varying vec2 v_texcoord;\n"
-+    "uniform float framebuffer_width;\n"
-+    "uniform float framebuffer_height;\n"
-     "\n"
-     "void main()\n"
-     "{\n"
--    "  gl_Position = vec4(position, 0.0, 1.0);\n"
--    "  v_texcoord = texcoord;\n"
-+    "  gl_Position = vec4(position.x / framebuffer_width * 2.0 - 1.0, position.y / framebuffer_height * 2.0 - 1.0, 0.0, 1.0);\n"
-+    "  v_texcoord = vec2(texcoord.x / framebuffer_width, texcoord.y / framebuffer_height);\n"
-     "}\n";
- 
-   static const char fragment_shader_source[] =
-@@ -215,16 +217,8 @@ ensure_shader_program (ContextData *context_data,
-     "  gl_FragColor = texture2D(s_texture, v_texcoord);\n"
-     "}\n";
- 
--  static const GLfloat box[] =
--  { /* position    texcoord */
--    -1.0f, +1.0f, 0.0f, 0.0f,
--    +1.0f, +1.0f, 1.0f, 0.0f,
--    +1.0f, -1.0f, 1.0f, 1.0f,
--    -1.0f, -1.0f, 0.0f, 1.0f,
--  };
-   GLint linked;
-   GLuint vertex_shader, fragment_shader;
--  GLint position_attrib, texcoord_attrib;
-   GLuint shader_program;
- 
-   if (context_data->shader_program)
-@@ -254,23 +248,15 @@ ensure_shader_program (ContextData *context_data,
-     }
- 
-   GLBAS (gles3, glUseProgram, (shader_program));
--
--  position_attrib = glGetAttribLocation (shader_program, "position");
--  GLBAS (gles3, glEnableVertexAttribArray, (position_attrib));
--  GLBAS (gles3, glVertexAttribPointer,
--         (position_attrib, 2, GL_FLOAT, GL_FALSE, 4 * sizeof (GLfloat), box));
--
--  texcoord_attrib = glGetAttribLocation (shader_program, "texcoord");
--  GLBAS (gles3, glEnableVertexAttribArray, (texcoord_attrib));
--  GLBAS (gles3, glVertexAttribPointer,
--         (texcoord_attrib, 2, GL_FLOAT, GL_FALSE, 4 * sizeof (GLfloat), box + 2));
- }
- 
- static void
--blit_egl_image (MetaGles3   *gles3,
--                EGLImageKHR  egl_image,
--                int          width,
--                int          height)
-+blit_egl_image (MetaGles3          *gles3,
-+                EGLImageKHR         egl_image,
-+                int                 width,
-+                int                 height,
-+                const MtkRectangle *rectangles,
-+                int                 n_rectangles)
- {
-   GLuint texture;
-   GLuint framebuffer;
-@@ -301,29 +287,152 @@ blit_egl_image (MetaGles3   *gles3,
-                                          GL_TEXTURE_2D, texture, 0));
- 
-   GLBAS (gles3, glBindFramebuffer, (GL_READ_FRAMEBUFFER, framebuffer));
--  GLBAS (gles3, glBlitFramebuffer, (0, height, width, 0,
--                                    0, 0, width, height,
--                                    GL_COLOR_BUFFER_BIT,
--                                    GL_NEAREST));
-+
-+  if (n_rectangles > 0)
-+    {
-+      int i;
-+
-+      for (i = 0; i < n_rectangles; ++i)
-+        {
-+          GLint x1 = rectangles[i].x;
-+          GLint y1 = height - rectangles[i].y - rectangles[i].height;
-+          GLint src_y1 = rectangles[i].y;
-+          GLint x2 = x1 + rectangles[i].width;
-+          GLint y2 = y1 + rectangles[i].height;
-+          GLint src_y2 = src_y1 + rectangles[i].height;
-+
-+          GLBAS (gles3, glBlitFramebuffer, (x1, src_y2, x2, src_y1,
-+                                            x1, height - rectangles[i].y - rectangles[i].height, x2, y2,
-+                                            GL_COLOR_BUFFER_BIT,
-+                                            GL_NEAREST));
-+        }
-+    }
-+  else
-+    GLBAS (gles3, glBlitFramebuffer, (0, height, width, 0,
-+                                      0, 0, width, height,
-+                                      GL_COLOR_BUFFER_BIT,
-+                                      GL_NEAREST));
-+
- 
-   GLBAS (gles3, glDeleteTextures, (1, &texture));
-   GLBAS (gles3, glDeleteFramebuffers, (1, &framebuffer));
- }
- 
- static void
--paint_egl_image (ContextData *context_data,
--                 MetaGles3   *gles3,
--                 EGLImageKHR  egl_image,
--                 int          width,
--                 int          height)
-+paint_egl_image (ContextData        *context_data,
-+                 MetaGles3          *gles3,
-+                 EGLImageKHR         egl_image,
-+                 int                 width,
-+                 int                 height,
-+                 const MtkRectangle *rectangles,
-+                 int                 n_rectangles)
- {
-+  static const uint triangle_count_per_rectangle = 2;
-+  static const uint vertex_per_triangle = 3;
-+  static const uint values_per_vertex = 4;
-+
-+  const MtkRectangle full_damage_rectangle = {0, 0, width, height};
-+
-+  int i;
-   GLuint texture;
-+  GLint *vertices = NULL;
-+  GLuint vertex_buffer_object;
-+  GLuint vertex_array_object;
-+  GLint position_attrib, texcoord_attrib;
-+  GLint framebuffer_width_uniform, framebuffer_height_uniform;
-+  GLuint components_per_rectangle = triangle_count_per_rectangle * vertex_per_triangle * values_per_vertex;
-+  GLuint size_per_rectangle = components_per_rectangle * sizeof(GLint);
-+  GLuint vertices_size;
-+
-+  if (n_rectangles == 0)
-+    {
-+      n_rectangles = 1;
-+      rectangles = &full_damage_rectangle;
-+    }
-+
-+  vertices_size = n_rectangles * size_per_rectangle;
-+
-+  vertices = g_alloca (vertices_size);
-+
-+  for (i = 0; i < n_rectangles; ++i)
-+    {
-+      const MtkRectangle *rectangle = &rectangles[i];
-+      GLint *rectangle_vertices = &vertices[i * components_per_rectangle];
-+
-+      int reversed_rect_y = height - rectangles[i].y - rectangles[i].height;
-+
-+      GLint x1 = rectangle->x;
-+      GLint y1 = reversed_rect_y;
-+      GLint x2 = rectangle->x + rectangle->width;
-+      GLint y2 = reversed_rect_y + rectangle->height;
-+
-+      GLint u1 = rectangle->x;
-+      GLint v1 = rectangle->y;
-+      GLint u2 = rectangle->x + rectangle->width;
-+      GLint v2 = rectangle->y + rectangle->height;
-+
-+      rectangle_vertices[0] = x1;
-+      rectangle_vertices[1] = y2;
-+      rectangle_vertices[2] = u1;
-+      rectangle_vertices[3] = v1;
-+
-+      rectangle_vertices[4] = x2;
-+      rectangle_vertices[5] = y2;
-+      rectangle_vertices[6] = u2;
-+      rectangle_vertices[7] = v1;
-+
-+      rectangle_vertices[8] = x1;
-+      rectangle_vertices[9] = y1;
-+      rectangle_vertices[10] = u1;
-+      rectangle_vertices[11] = v2;
-+
-+      rectangle_vertices[12] = x1;
-+      rectangle_vertices[13] = y1;
-+      rectangle_vertices[14] = u1;
-+      rectangle_vertices[15] = v2;
-+
-+      rectangle_vertices[16] = x2;
-+      rectangle_vertices[17] = y2;
-+      rectangle_vertices[18] = u2;
-+      rectangle_vertices[19] = v1;
-+
-+      rectangle_vertices[20] = x2;
-+      rectangle_vertices[21] = y1;
-+      rectangle_vertices[22] = u2;
-+      rectangle_vertices[23] = v2;
-+    }
- 
-   meta_gles3_clear_error (gles3);
-   ensure_shader_program (context_data, gles3);
- 
-+  g_return_if_fail (context_data->shader_program);
-+
-   GLBAS (gles3, glViewport, (0, 0, width, height));
- 
-+  GLBAS (gles3, glGenVertexArrays, (1, &vertex_array_object));
-+  GLBAS (gles3, glBindVertexArray, (vertex_array_object));
-+
-+  GLBAS (gles3, glGenBuffers, (1, &vertex_buffer_object));
-+  GLBAS (gles3, glBindBuffer, (GL_ARRAY_BUFFER, vertex_buffer_object));
-+  GLBAS (gles3, glBufferData,
-+         (GL_ARRAY_BUFFER, vertices_size, vertices, GL_DYNAMIC_DRAW));
-+
-+  position_attrib = glGetAttribLocation (context_data->shader_program, "position");
-+  GLBAS (gles3, glEnableVertexAttribArray, (position_attrib));
-+  GLBAS (gles3, glVertexAttribPointer,
-+         (position_attrib, 2, GL_INT, GL_FALSE, 4 * sizeof (GLint), NULL));
-+
-+  texcoord_attrib = glGetAttribLocation (context_data->shader_program, "texcoord");
-+  GLBAS (gles3, glEnableVertexAttribArray, (texcoord_attrib));
-+  GLBAS (gles3, glVertexAttribPointer,
-+         (texcoord_attrib, 2, GL_INT, GL_FALSE, 4 * sizeof (GLint), (void*)(sizeof(GLint) * 2)));
-+
-+  framebuffer_width_uniform = glGetUniformLocation (context_data->shader_program, "framebuffer_width");
-+  GLBAS (gles3, glUniform1f, (framebuffer_width_uniform, width));
-+
-+  framebuffer_height_uniform = glGetUniformLocation (context_data->shader_program, "framebuffer_height");
-+  GLBAS (gles3, glUniform1f, (framebuffer_height_uniform, height));
-+
-   GLBAS (gles3, glActiveTexture, (GL_TEXTURE0));
-   GLBAS (gles3, glGenTextures, (1, &texture));
-   GLBAS (gles3, glBindTexture, (GL_TEXTURE_EXTERNAL_OES, texture));
-@@ -342,31 +451,26 @@ paint_egl_image (ContextData *context_data,
-                                   GL_TEXTURE_WRAP_T,
-                                   GL_CLAMP_TO_EDGE));
- 
--  GLBAS (gles3, glDrawArrays, (GL_TRIANGLE_FAN, 0, 4));
-+  GLBAS (gles3, glDrawArrays, (GL_TRIANGLES, 0, triangle_count_per_rectangle * vertex_per_triangle * n_rectangles));
- 
-   GLBAS (gles3, glDeleteTextures, (1, &texture));
-+  GLBAS (gles3, glDeleteBuffers, (1, &vertex_buffer_object));
-+  GLBAS (gles3, glDeleteVertexArrays, (1, &vertex_array_object));
- }
- 
- gboolean
--meta_renderer_native_gles3_blit_shared_bo (MetaEgl        *egl,
--                                           MetaGles3      *gles3,
--                                           EGLDisplay      egl_display,
--                                           EGLContext      egl_context,
+@@ -352,21 +352,12 @@ meta_renderer_native_gles3_blit_shared_bo (MetaEgl        *egl,
+                                            MetaGles3      *gles3,
+                                            EGLDisplay      egl_display,
+                                            EGLContext      egl_context,
 -                                           EGLSurface      egl_surface,
--                                           struct gbm_bo  *shared_bo,
--                                           GError        **error)
-+meta_renderer_native_gles3_blit_shared_bo (MetaEgl             *egl,
-+                                           MetaGles3           *gles3,
-+                                           EGLDisplay           egl_display,
-+                                           EGLContext           egl_context,
-+                                           EGLImageKHR          egl_image,
-+                                           struct gbm_bo       *shared_bo,
-+                                           const MtkRectangle  *rectangles,
-+                                           int                  n_rectangles,
-+                                           GError             **error)
++                                           EGLImageKHR     egl_image,
+                                            struct gbm_bo  *shared_bo,
+                                            GError        **error)
  {
 -  int shared_bo_fd;
    unsigned int width;
@@ -2684,7 +2151,7 @@ index 159e2daef0..4c84b6ddb3 100644
    GQuark context_data_quark;
    ContextData *context_data;
    gboolean can_blit;
-@@ -390,56 +494,13 @@ meta_renderer_native_gles3_blit_shared_bo (MetaEgl        *egl,
+@@ -390,57 +381,14 @@ meta_renderer_native_gles3_blit_shared_bo (MetaEgl        *egl,
                                gbm_bo_get_format (shared_bo),
                                gbm_bo_get_modifier (shared_bo));
  
@@ -2733,45 +2200,28 @@ index 159e2daef0..4c84b6ddb3 100644
 -    return FALSE;
  
    if (can_blit)
--    blit_egl_image (gles3, egl_image, width, height);
-+    blit_egl_image (gles3, egl_image, width, height, rectangles, n_rectangles);
+     blit_egl_image (gles3, egl_image, width, height);
    else
--    paint_egl_image (context_data, gles3, egl_image, width, height);
--
--  meta_egl_destroy_image (egl, egl_display, egl_image, NULL);
-+    paint_egl_image (context_data, gles3, egl_image, width, height, rectangles, n_rectangles);
+     paint_egl_image (context_data, gles3, egl_image, width, height);
  
+-  meta_egl_destroy_image (egl, egl_display, egl_image, NULL);
+-
    return TRUE;
  }
+ 
 diff --git a/src/backends/native/meta-renderer-native-gles3.h b/src/backends/native/meta-renderer-native-gles3.h
-index f5791a171f..c13ebb9180 100644
+index f5791a171f..6a935c7e6b 100644
 --- a/src/backends/native/meta-renderer-native-gles3.h
 +++ b/src/backends/native/meta-renderer-native-gles3.h
-@@ -25,14 +25,17 @@
- 
- #include "backends/meta-egl.h"
- #include "backends/meta-gles3.h"
-+#include "mtk/mtk.h"
- 
--gboolean meta_renderer_native_gles3_blit_shared_bo (MetaEgl        *egl,
--                                                    MetaGles3      *gles3,
--                                                    EGLDisplay      egl_display,
--                                                    EGLContext      egl_context,
+@@ -30,7 +30,7 @@ gboolean meta_renderer_native_gles3_blit_shared_bo (MetaEgl        *egl,
+                                                     MetaGles3      *gles3,
+                                                     EGLDisplay      egl_display,
+                                                     EGLContext      egl_context,
 -                                                    EGLSurface      egl_surface,
--                                                    struct gbm_bo  *shared_bo,
--                                                    GError        **error);
-+gboolean meta_renderer_native_gles3_blit_shared_bo (MetaEgl             *egl,
-+                                                    MetaGles3           *gles3,
-+                                                    EGLDisplay           egl_display,
-+                                                    EGLContext           egl_context,
-+                                                    EGLImageKHR          egl_image,
-+                                                    struct gbm_bo       *shared_bo,
-+                                                    const MtkRectangle  *rectangles,
-+                                                    int                  n_rectangles,
-+                                                    GError             **error);
++                                                    EGLImageKHR     egl_image,
+                                                     struct gbm_bo  *shared_bo,
+                                                     GError        **error);
  
- void meta_renderer_native_gles3_forget_context (MetaGles3  *gles3,
-                                                 EGLContext  egl_context);
 diff --git a/src/backends/native/meta-renderer-native.c b/src/backends/native/meta-renderer-native.c
 index 7034206bcd..d4ff9e2177 100644
 --- a/src/backends/native/meta-renderer-native.c
