@@ -1,6 +1,6 @@
 pkgbase = lyrica
 	pkgdesc = Linux desktop lyrics widget focused on simplicity and integration.
-	pkgver = 0.10
+	pkgver = 0.11
 	pkgrel = 1
 	url = https://github.com/chiyuki0325/lyrica/
 	arch = x86_64
@@ -21,7 +21,7 @@ pkgbase = lyrica
 	optdepends = python: Run examples/lyrica_obs_plugin.py
 	optdepends = obs-studio: Run examples/lyrica_obs_plugin.py
 	options = !lto
-	source = lyrica-0.10.tar.gz::https://github.com/chiyuki0325/lyrica/archive/refs/tags/v0.10.tar.gz
-	sha256sums = 8fc5f0a9461019404eb0d138fd705d3aa25d199c043fdb2fa7cfd477f6a0e85b
+	source = lyrica-0.11.tar.gz::https://github.com/chiyuki0325/lyrica/archive/refs/tags/v0.11.tar.gz
+	sha256sums = 718f068a7fa740e93354f82b51f649c26ee90c2111afd0896d56e8ae3892064b
 
 pkgname = lyrica

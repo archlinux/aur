@@ -1,5 +1,5 @@
 pkgname=lyrica
-pkgver=0.10
+pkgver=0.11
 pkgrel=1
 pkgdesc="Linux desktop lyrics widget focused on simplicity and integration."
 arch=("x86_64")
@@ -15,7 +15,7 @@ optdepends=(
     "obs-studio: Run examples/lyrica_obs_plugin.py")
 options=("!lto") # Undefined references to ...
 source=("$pkgname-$pkgver.tar.gz::https://github.com/chiyuki0325/lyrica/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('8fc5f0a9461019404eb0d138fd705d3aa25d199c043fdb2fa7cfd477f6a0e85b')
+sha256sums=('718f068a7fa740e93354f82b51f649c26ee90c2111afd0896d56e8ae3892064b')
 
 prepare() {
     cd "$srcdir/$pkgname-$pkgver"
@@ -45,8 +45,9 @@ package() {
     install -d "$plasmoids"
     local plasmoid="$plasmoids/$id"
     cp -a --no-preserve=ownership plasmoid "$plasmoid"
-    install -Dm755 target/release/lyrica "$plasmoid/contents/bin/lyrica"
-	sed -i 's|$HOME/.local|/usr|' "$plasmoid/contents/ui/main.qml"
+    install -Dm755 target/release/lyrica "$pkgdir/usr/bin/lyrica"
+	sed -i "s|bash -c '\$HOME/.local/share/plasma/plasmoids/$id/contents/bin/lyrica'|/usr/bin/lyrica|" \
+	    "$plasmoid/contents/ui/main.qml"
 
     local doc="$pkgdir/usr/share/doc/$pkgname"
     install -d "$doc"
