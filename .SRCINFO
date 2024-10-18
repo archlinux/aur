@@ -1,7 +1,7 @@
 pkgbase = bed-latex
 	pkgdesc = BEd: Beamer Editor, GUI for LaTeX Beamer presentations.
-	pkgver = 2.0.0
-	pkgrel = 3
+	pkgver = 2.0.1
+	pkgrel = 1
 	url = https://framagit.org/delisle/bed
 	install = bed.install
 	arch = any
@@ -18,7 +18,7 @@ pkgbase = bed-latex
 	optdepends = python-pygments
 	provides = bed-latex
 	conflicts = bed-latex
-	source = https://files.pythonhosted.org/packages/source/b/bed-latex/bed_latex-2.0.0.tar.gz
-	sha256sums = e15f73e86cd37823412d758385be89350e98fe2ce8231f7fe470d72d07e2ac87
+	source = https://files.pythonhosted.org/packages/source/b/bed-latex/bed_latex-2.0.1.tar.gz
+	sha256sums = 0fcdb12c31ade01de071b58e7ba9e53aeb861e6cef056cac46efaea2b072c158
 
 pkgname = bed-latex

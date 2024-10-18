@@ -1,7 +1,7 @@
 # Maintainer: Jean-Baptiste Delisle <jb dot delisle at pi314 dot noho dot st>
 pkgname='bed-latex'
-pkgver='2.0.0'
-pkgrel=3
+pkgver='2.0.1'
+pkgrel=1
 pkgdesc="BEd: Beamer Editor, GUI for LaTeX Beamer presentations."
 url="https://framagit.org/delisle/bed"
 depends=('python>=3.8' 'pyside6' 'python-pymupdf' 'texlive-core' 'texlive-latexextra')
@@ -14,7 +14,7 @@ arch=('any')
 install="bed.install"
 module='bed_latex'
 source=("https://files.pythonhosted.org/packages/source/${pkgname:0:1}/${pkgname}/${module}-${pkgver}.tar.gz")
-sha256sums=('e15f73e86cd37823412d758385be89350e98fe2ce8231f7fe470d72d07e2ac87')
+sha256sums=('0fcdb12c31ade01de071b58e7ba9e53aeb861e6cef056cac46efaea2b072c158')
 
 prepare() {
   cd "${srcdir}"
