@@ -1,6 +1,6 @@
 # Maintainer: Adrià Cabello <adro.cc79 at protonmail dot com>
 pkgname=nvidia-omniverse
-pkgver=1.9.11.2724
+pkgver=1.9.13.2760
 pkgrel=1
 pkgdesc="The platform for creating and operating metaverse applications."
 arch=('x86_64')
@@ -37,7 +37,7 @@ depends=("electron"
          "libxcrypt-compat")
 source=("https://install.launcher.omniverse.nvidia.com/installers/omniverse-launcher-linux.AppImage")
 noextract=("$provides-launcher-linux.AppImage")
-md5sums=('4458ca32b35cc6e0b2b40b8801ac39f5')
+md5sums=('d43fbea53c6d4c7a2711a04411a33e2a')
 options=('!strip')
 
 prepare() {
