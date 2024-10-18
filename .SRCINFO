@@ -1,6 +1,6 @@
 pkgbase = overlayed-git
 	pkgdesc = A modern, open-source, and free voice chat overlay for Discord (git version)
-	pkgver = r1006.2b1e7da
+	pkgver = r1014.4e92603
 	pkgrel = 1
 	url = https://overlayed.dev
 	arch = x86_64

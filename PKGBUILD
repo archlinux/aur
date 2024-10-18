@@ -2,7 +2,7 @@
 
 _basename=overlayed
 pkgname=${_basename}-git
-pkgver=r1006.2b1e7da
+pkgver=r1014.4e92603
 pkgrel=1
 pkgdesc="A modern, open-source, and free voice chat overlay for Discord (git version)"
 arch=('x86_64')
@@ -47,6 +47,8 @@ build() {
 
 	_ensure_local_nvm
 	export TURBO_UI=0
+	export CFLAGS="$CFLAGS -ffat-lto-objects" # prevent linker error
+
 	pnpm build:desktop --no-bundle
 }
 
