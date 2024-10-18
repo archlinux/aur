@@ -1,19 +1,20 @@
 # Maintainer: Jan Cholasta <grubber at grubber cz>
 
 pkgname=gzdoom-git
-pkgver=4.13pre+56+g6d8bee9
+pkgver=4.14pre+21+g6e7148b
 pkgrel=1
 pkgdesc='Feature centric port for all Doom engine games (git version)'
 arch=('i686' 'x86_64' 'aarch64')
 url='http://www.zdoom.org/'
 license=('BSD' 'GPL3' 'LGPL3')
-depends=('gtk3'
+depends=('bzip2'
+         'gtk3'
          'hicolor-icon-theme'
          'libgl'
          'libvpx>=1.14'
          'openal'
          'sdl2'
-         'zmusic>=1.1.8')
+         'zmusic>=1.1.14')
 makedepends=('cmake' 'desktop-file-utils' 'git')
 optdepends=('blasphemer-wad: Blasphemer (free Heretic) game data'
             'chexquest3-wad: Chex Quest 3 game data'
@@ -38,10 +39,10 @@ replaces=('gzdoom1-git' 'gzdoom-legacy-git')
 options=(!lto)
 source=('gzdoom::git+https://github.com/coelckers/gzdoom.git'
         'gzdoom.desktop'
-        '0001-Fix-file-paths.patch')
+        '0001-Enforce-file-paths.patch')
 sha256sums=('SKIP'
             '59122e670f72aa2531aff370e7aaab2d886a7642e79e91f27a533d3b4cad4f6d'
-            'a37dde8274e1a9fd511af951da2e362d503ab4be72e79d4843e1ca3a0129549f')
+            'f9b5de60b4636b7de6a4c5434e4a320e145de9fb18e4d5d41334d575cf375811')
 
 pkgver() {
     cd gzdoom
@@ -50,7 +51,7 @@ pkgver() {
 
 prepare() {
     cd gzdoom
-    patch -i "$srcdir"/0001-Fix-file-paths.patch -p 1
+    patch -i "$srcdir"/0001-Enforce-file-paths.patch -p 1
 }
 
 build() {
