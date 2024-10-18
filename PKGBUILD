@@ -4,7 +4,7 @@ pkgver=0.5.19.r0.g5c03391
 _electronversion=30
 _nodeversion=20
 pkgrel=1
-pkgdesc="Light music.轻音乐"
+pkgdesc="Light music.轻音乐.Use system-wide electron."
 arch=('any')
 url="https://simple-music.netlify.app/"
 _ghurl="https://github.com/joey2217/simple-music"
@@ -51,6 +51,7 @@ build() {
     _ensure_local_nvm
     gendesk -q -f -n --pkgname="${pkgname%-git}" --pkgdesc="${pkgdesc}" --categories="AudioVideo" --name="${pkgdesc}" --exec="${pkgname%-git} %U"
     cd "${srcdir}/${pkgname%-git}.git"
+    electronDist="/usr/lib/electron${_electronversion}"
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
     HOME="${srcdir}/.electron-gyp"
@@ -61,16 +62,19 @@ build() {
         echo 'fetch-retry-maxtimeout=10000'
         echo "cache-dir="${srcdir}"/.pnpm_cache"
         echo "store-dir="${srcdir}"/.pnpm_store"
-        if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
+    } >> .npmrc
+    if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
+        {
             echo 'registry=https://registry.npmmirror.com'
             echo 'disturl=https://registry.npmmirror.com/-/binary/node/'
             echo 'electron_mirror=https://registry.npmmirror.com/-/binary/electron/'
             echo 'electron_builder_binaries_mirror=https://registry.npmmirror.com/-/binary/electron-builder-binaries/'
-        fi
-    } >> .npmrc
-    sed -i "s/.cjs\",/.cjs -l dir\",/g;s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
+        } >> .npmrc
+    fi
+    sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
     NODE_ENV=development    pnpm install
-    NODE_ENV=production     pnpm run package
+    NODE_ENV=production     pnpm run build
+    NODE_ENV=production     pnpm -c exec "electron-builder build --linux dir -c.electronDist=${electronDist} -c electron-builder.config.cjs"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
