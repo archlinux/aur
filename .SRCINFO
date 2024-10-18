@@ -8,7 +8,7 @@ pkgbase = carch
 	depends = bash
 	source = https://github.com/harilvfs/carch/releases/download/v3.0.3/carch
 	source = https://raw.githubusercontent.com/harilvfs/carch/refs/heads/main/carch.desktop
-	sha256sums = 9b0992fd4d57ccd2c2771e27e2af35563ca8b10ee193cea82f89abd7e9686614
+	sha256sums = edc67233e754359a69ee502712f46ff7e150d296ab52c54822b931ac81f39bc1
 	sha256sums = 2171e7dc0300fced083f4b74548253fe0ff8b40b34ad0446d2c3557245735acc
 
 pkgname = carch
