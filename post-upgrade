@@ -10,7 +10,7 @@ moddir=/usr/lib/modules/$cur_osrelease
 
 if [ -e "$moddir" ]; then
     FILES=("$moddir"/*)
-    if [ ${#FILES[@]} == 0 ] || [ ${#FILES[@]} == 1 ] && [ "${FILES[0]}" == "$moddir"/modules.weakdep ]; then
+    if [ ${#FILES[@]} == 0 ] || [ ${#FILES[@]} == 1 -a "${FILES[0]}" == "$moddir"/modules.weakdep ]; then
         rm -rf "$moddir"
     else
         exit 0
