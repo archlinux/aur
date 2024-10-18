@@ -2,14 +2,15 @@
 # Contributor: syntheit <daniel@matv.io>
 pkgname=tagspaces
 pkgver=6.0.2
-pkgrel=1
+pkgrel=2
+_nodeversion=20
 _electronversion=32
 pkgdesc="An offline, open source, document manager with tagging support"
 arch=('x86_64')
 url="https://www.tagspaces.org"
 license=('AGPL-3.0-or-later')
 depends=("electron${_electronversion}" 'libnotify' 'libsecret' 'xdg-utils')
-makedepends=('git' 'libxcrypt-compat' 'npm')
+makedepends=('git' 'libxcrypt-compat' 'nvm')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/tagspaces/tagspaces/archive/refs/tags/v$pkgver.tar.gz"
         "$pkgname.desktop"
         "$pkgname.sh")
@@ -17,9 +18,22 @@ sha256sums=('3107087d5dbf70a957bd27a75ce7bf4550423bec6df6c3503c305155fef5a7d0'
             'a548e2b62a61a93d80482ebe43ef11e33e2c2bfef9db641fc583bd5539ac6948'
             '6a0d3ca0f31afdd7587b3dc0ed819f252c350eaeafb17472fe4b7031d4130118')
 
+_ensure_local_nvm() {
+  # let's be sure we are starting clean
+  which nvm >/dev/null 2>&1 && nvm deactivate && nvm unload
+  export NVM_DIR="$srcdir/.nvm"
+
+  # The init script returns 3 if version specified
+  # in ./.nvrc is not (yet) installed in $NVM_DIR
+  # but nvm itself still gets loaded ok
+  source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
+}
+
 prepare() {
   cd "$pkgname-$pkgver"
   export npm_config_cache="$srcdir/npm_cache"
+  _ensure_local_nvm
+  nvm install "${_nodeversion}"
 
   # Modify build target
   sed -i 's/"deb", "tar.gz", "appImage"/"deb"/g' resources/builder.json
@@ -46,6 +60,7 @@ build() {
   electronDist="/usr/lib/electron${_electronversion}"
   electronVer="$(sed s/^v// /usr/lib/electron${_electronversion}/version)"
   export ELECTRON_SKIP_BINARY_DOWNLOAD=1
+   _ensure_local_nvm
   npm run install-ext-node-linux
   npm exec -c "ts-node ./.erb/scripts/clean.js"
   npm run build

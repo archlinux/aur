@@ -1,13 +1,13 @@
 pkgbase = tagspaces
 	pkgdesc = An offline, open source, document manager with tagging support
 	pkgver = 6.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.tagspaces.org
 	arch = x86_64
 	license = AGPL-3.0-or-later
 	makedepends = git
 	makedepends = libxcrypt-compat
-	makedepends = npm
+	makedepends = nvm
 	depends = electron32
 	depends = libnotify
 	depends = libsecret
