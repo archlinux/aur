@@ -2,8 +2,8 @@
 pkgname=python-gpt-command-line
 _name=${pkgname#python-}
 _name=${_name//-/_}
-pkgver=0.2.0
-pkgrel=4
+pkgver=0.2.1
+pkgrel=1
 pkgdesc="Command-line interface for ChatGPT, Claude and Bard"
 arch=(any)
 url="https://github.com/kharvd/gpt-cli"
@@ -18,7 +18,7 @@ backup=()
 options=(!emptydirs)
 install=
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('f804418f0367dc63ad6fd949dcf57bbb94db3b1b0841b457c710750d420c911a')
+sha256sums=('3136d272c92f0de280c75a95d20e2629cdfa700bba96c5fa39eefd9f522d6af1')
 
 build() {
     cd "$srcdir/$_name-$pkgver"
