@@ -3,9 +3,9 @@
 
 pkgbase=litecoin-git
 pkgname=('litecoin-daemon-git' 'litecoin-cli-git' 'litecoin-qt-git' 'litecoin-tx-git')
-git_branch=0.21
-pkgver=0.21.3+0+gcd1660afaf
-pkgrel=3
+_fragment=branch=0.21.4
+pkgver=0.21.3+5+g0d04e754aa
+pkgrel=1
 arch=('x86_64')
 url="http://www.litecoin.org/"
 license=('MIT')
@@ -23,22 +23,25 @@ makedepends=(
   qt5-tools
 )
 source=(
-  "$pkgbase::git+https://github.com/litecoin-project/litecoin.git#branch=$git_branch"
+  "$pkgbase::git+https://github.com/litecoin-project/litecoin.git#$_fragment"
   'litecoin-qt.desktop'
   'litecoind.service'
   'litecoin.sysusers'
   'miniupnpc.patch'
+  '0001-fix-boost-1.84-filesystem-deprecations.patch'
 )
 sha256sums=('SKIP'
             'ec2a2669a50fa96147a1d04cacf1cbc3d63238aee97e3b0df3c6f753080dae96'
             '98f5a1b28fe13b9093fa89cfe56bb84af09ff5f0d6e9ca196ec02d6dd826ca88'
             'a722b958a7e9b3468d902efa6c9804e01d78fdf88ead4252c934aee2b1d800db'
-            '82497ba013364c98e2390f5fc76ad7f67d7757f705347db7b34134e21c3ab089')
+            '82497ba013364c98e2390f5fc76ad7f67d7757f705347db7b34134e21c3ab089'
+            'f9de747281f6003739d9ac736684771b061e9d63f2ea90404c08187595e57619')
 
 
 prepare() {
   cd "$pkgbase"
   git apply ../miniupnpc.patch
+  git apply ../0001-fix-boost-1.84-filesystem-deprecations.patch
   autoreconf -fi
 }
 
