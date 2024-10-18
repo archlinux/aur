@@ -1,6 +1,6 @@
 #Maintainer: Evert Vorster <evorster@gmail.com>
 pkgname=vegastrike-engine-git
-pkgver=rev.15434
+pkgver=rev.15447
 pkgrel=1
 pkgdesc="A spaceflight simulator in massive universe"
 arch=('i686' 'x86_64')
@@ -15,8 +15,12 @@ conflicts=('vegastrike-engine')
 #Options to make debugging easier
 #options=(!makeflags debug !strip)
 
-source=('git+https://github.com/vegastrike/Vega-Strike-Engine-Source')
-sha1sums=('SKIP')
+source=('git+https://github.com/vegastrike/Vega-Strike-Engine-Source'
+#	'https://github.com/vegastrike/Vega-Strike-Engine-Source/pull/889.patch'
+)
+sha1sums=('SKIP'
+#	'SKIP'
+)
 
 pkgver() {
   cd "${srcdir}"/Vega-Strike-Engine-Source
@@ -28,6 +32,7 @@ echo "Prepare section"
 cd "${srcdir}"/Vega-Strike-Engine-Source
 #git revert --no-commit 04f99ab64535fc0146a90ac9e226d71cbbac0095
 #git revert -m 2 --no-commit 59deb3002e69a9f443d6d7ba1bb61c31f898fa7f
+#git apply ../../889.patch
 cd ..
 pwd
 
