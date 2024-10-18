@@ -3,8 +3,8 @@
 ## GPG key: https://greenbone.net/GBCommunitySigningKey.asc
 
 pkgname=gsad
-pkgver=22.12.0
-pkgrel=4
+pkgver=24.0.0
+pkgrel=1
 pkgdesc='server talking to the Greenbone Vulnerability Management daemon (gvmd)'
 arch=('x86_64')
 url="https://github.com/greenbone/gsad"
@@ -26,7 +26,7 @@ source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
         "$pkgname-$pkgver.tar.gz.asc::$url/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz.asc"
         0001-libgcrypt-config.patch
         0002-fix-unit-path.patch)
-sha256sums=('1edb62a5f79e874f36c0b5fc91d19e725fd19d81c53d096ab3e8db21e49b1899'
+sha256sums=('c58acc1df722f0ef833d1ea718e44dc4f23a38ef914977efc306edb698080750'
             'SKIP'
             'e50f1fafd28a7253b55cb621fa036e047fe1412b051f331b58fdaddd9ab2a374'
             'fadbf71ca0659650a8f0316057eb71836e35d9be43de06bcdcfb542ca3ad5a3a')
