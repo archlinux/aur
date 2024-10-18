@@ -1,6 +1,6 @@
 pkgbase = highs
 	pkgdesc = Linear optimization software
-	pkgver = 1.7.2
+	pkgver = 1.8.0
 	pkgrel = 1
 	url = https://github.com/ERGO-Code/HiGHS
 	arch = i686
@@ -9,7 +9,7 @@ pkgbase = highs
 	makedepends = cmake
 	depends = gcc-libs
 	depends = zlib
-	source = https://github.com/ERGO-Code/HiGHS/archive/refs/tags/v1.7.2.tar.gz
-	sha256sums = 5ff96c14ae19592d3568e9ae107624cbaf3409d328fb1a586359f0adf9b34bf7
+	source = https://github.com/ERGO-Code/HiGHS/archive/refs/tags/v1.8.0.tar.gz
+	sha256sums = e184e63101cf19688a02102f58447acc7c021d77eef0d3475ceaceb61f035539
 
 pkgname = highs
