@@ -1,7 +1,7 @@
 pkgbase = udeler
-	pkgdesc = An unofficail desktop application for downloading Udemy Courses.
+	pkgdesc = An unofficail desktop application for downloading Udemy Courses.Use system-wide electron.
 	pkgver = 1.13.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/heliomarpm/udemy-downloader-gui
 	arch = any
 	license = MIT
