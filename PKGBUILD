@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=icalingua++-bin
-pkgver=2.12.22
+pkgver=2.12.23
 _electronversion=22
 pkgrel=1
 pkgdesc="A branch of deleted Icalingua, with limited support.Prebuilt version.Use system-wide electron."
@@ -30,9 +30,9 @@ source=(
 sha256sums=('5743ef3d19be5e41e83c3a1171a807cd0505d7f5d5f9c5abdff8926dccadc6de'
             'b088d20934708c53e50492694efefbf9a9dcb62fefb8d1d4976f36f32f84af86'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-sha256sums_aarch64=('de9b60eaaeeb216edc4eea9311712b7dac85c751fa51dd8ff67cdd96058a6c0b')
-sha256sums_armv7h=('6a17955be905e307477300c5557fda9cbd81e83ed9febc3a7a0a2831899de868')
-sha256sums_x86_64=('751b362109f636b25a4aa2aa2bdbbfd4ab4c81c3e7c984d6c5f8d8b26573aacd')
+sha256sums_aarch64=('1f518a4a8f771e871dba18a54eed763d8b79afa52d314a2802ace7a0a04da18b')
+sha256sums_armv7h=('e38d7e5b4d1c581cbda1bf42b2cbea91a3ff5baabded8fab578afaae46476e5c')
+sha256sums_x86_64=('58c1f1fa548b085ca082ebff41e6a13f1a710a9608f8f4c09002ebb3ab313d15')
 build() {
     sed -e "
         s/@electronversion@/${_electronversion}/g
@@ -41,7 +41,10 @@ build() {
         s/@cfgdirname@/${_pkgname}/g
         s/@options@//g
     " -i "${srcdir}/${pkgname%-bin}.sh"
-    sed -i "s/${pkgname%++-bin}.png/${pkgname%-bin}/;s/Exec=${pkgname%++-bin} %u/Exec=${pkgname%-bin} %U/g" "${srcdir}/${pkgname%-bin}-${pkgver}.desktop"
+    sed -e "
+        s/${pkgname%++-bin}.png/${pkgname%-bin}/g
+        s/Exec=${pkgname%++-bin} %u/Exec=${pkgname%-bin} %U/g
+    " -i "${srcdir}/${pkgname%-bin}-${pkgver}.desktop"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
