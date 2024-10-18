@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=gRain
-_pkgver=1.4.4
+_pkgver=1.4.5
 pkgname=r-${_pkgname,,}
-pkgver=1.4.4
+pkgver=1.4.5
 pkgrel=1
 pkgdesc='Graphical Independence Networks'
 arch=('x86_64')
@@ -25,7 +25,7 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('4a94f9f6efad7e6c9304f67f8b60e378539e31ed1a45d425df21ce4b8f3a4eae')
+sha256sums=('b31b46dab12ca071d67c480ec70106ef05afdc7142f68c0af5c8cff3384d900b')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"

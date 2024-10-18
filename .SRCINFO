@@ -1,6 +1,6 @@
 pkgbase = r-grain
 	pkgdesc = Graphical Independence Networks
-	pkgver = 1.4.4
+	pkgver = 1.4.5
 	pkgrel = 1
 	url = https://cran.r-project.org/package=gRain
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = r-grain
 	optdepends = r-knitr
 	optdepends = r-microbenchmark
 	optdepends = r-testthat
-	source = https://cran.r-project.org/src/contrib/gRain_1.4.4.tar.gz
-	sha256sums = 4a94f9f6efad7e6c9304f67f8b60e378539e31ed1a45d425df21ce4b8f3a4eae
+	source = https://cran.r-project.org/src/contrib/gRain_1.4.5.tar.gz
+	sha256sums = b31b46dab12ca071d67c480ec70106ef05afdc7142f68c0af5c8cff3384d900b
 
 pkgname = r-grain
