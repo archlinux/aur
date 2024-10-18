@@ -11,13 +11,13 @@ source=("git+$url.git")
 md5sums=('SKIP')
 
 build() {
-    /bin/cmake -B build -S nodeeditor \
+    cmake -B build -S nodeeditor \
         -DBUILD_TESTING=ON \
         -DBUILD_EXAMPLES=OFF \
         -DCMAKE_BUILD_TYPE=None \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -Wno-dev
-    make -C build
+    make -j -C build
 }
 
 check() {
