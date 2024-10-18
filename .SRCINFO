@@ -6,9 +6,14 @@ pkgbase = ore_algebra
 	arch = x86_64
 	license = GPL
 	makedepends = cython
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
 	makedepends = python-pkgconfig
+	makedepends = python-setuptools
+	makedepends = python-wheel
 	depends = sagemath
-	source = https://github.com/mkauers/ore_algebra/archive/0.5/ore_algebra-0.5.tar.gz
-	sha256sums = 8a310f124866b718ef28e458750d13f6f1694a6ee0e13abf4db418a0528bef39
+	source = git+https://github.com/mkauers/ore_algebra
+	sha256sums = SKIP
 
 pkgname = ore_algebra

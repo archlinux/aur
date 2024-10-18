@@ -1,4 +1,3 @@
-# $Id: PKGBUILD 126373 2015-01-21 20:31:43Z arojas $
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=ore_algebra
@@ -7,18 +6,24 @@ pkgrel=1
 pkgdesc='An implementation of Ore algebras for Sage'
 arch=(x86_64)
 url='http://www.risc.jku.at/research/combinat/software/ore_algebra/'
-license=(GPL)
+license=(GPL-2.0-only)
 depends=(sagemath)
-makedepends=(cython python-pkgconfig)
-source=(https://github.com/mkauers/ore_algebra/archive/$pkgver/$pkgname-$pkgver.tar.gz)
-sha256sums=('8a310f124866b718ef28e458750d13f6f1694a6ee0e13abf4db418a0528bef39')
+makedepends=(cython
+             git
+             python-build
+             python-installer
+             python-pkgconfig
+             python-setuptools
+             python-wheel)
+source=(git+https://github.com/mkauers/ore_algebra#tag=$pkgver)
+sha256sums=('880ee5826144e3d37042e053d6d094c2e7219adb0623060a98eb3859336fbf00')
 
 build() {
-  cd $pkgname-$pkgver
-  python setup.py build
+  cd $pkgname
+  python -m build --wheel --no-isolation
 }
 
 package() {
-  cd $pkgname-$pkgver
-  python setup.py install --root="$pkgdir" --skip-build --optimize=1
+  cd $pkgname
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
