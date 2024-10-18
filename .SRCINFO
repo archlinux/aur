@@ -1,5 +1,5 @@
 pkgbase = vrc-photo-viewer-git
-	pkgdesc = This photo viewer displays photos based on a database created by VRChatActivityTools.
+	pkgdesc = This photo viewer displays photos based on a database created by VRChatActivityTools.Use system-wide electron.
 	pkgver = 2.1.0.r0.g4ca4b0e
 	pkgrel = 1
 	url = https://github.com/vayacico/vrc-photo-viewer
