@@ -1,11 +1,11 @@
 pkgbase = ttf-vivo-sans
 	pkgdesc = vivo Sans is a global language font led by vivo.
-	pkgver = 2024.10.15
+	pkgver = 2024.10.18
 	pkgrel = 1
 	url = https://www.vivo.com.cn/originos
 	arch = any
 	license = LicenseRef-custom
 	source = vivo Sans.zip::https://h5-pre.vivo.com.cn/pcvivo/OS5-font/vivo%20Sans.zip
-	sha256sums = 5192acc84bc96d017a1a9aaa3be636e1da8561be897ada31e3f14c922d347d56
+	sha256sums = aba516deb1f7dc4da451e443e284cdf888b7ea4ee61158e928a4ffb6c24eaa11
 
 pkgname = ttf-vivo-sans
