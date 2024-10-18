@@ -1,0 +1,15 @@
+diff --git a/src/server/implementation/UUIDGenerator.cpp b/src/server/implementation/UUIDGenerator.cpp
+index ebfbce4e..d54522b9 100644
+--- a/src/server/implementation/UUIDGenerator.cpp
++++ b/src/server/implementation/UUIDGenerator.cpp
+@@ -28,8 +28,8 @@ namespace kurento
+ 
+ class RandomGenerator
+ {
+-  boost::uuids::basic_random_generator<boost::mt19937> gen;
+-  boost::mt19937 ran;
++  boost::uuids::basic_random_generator<std::mt19937> gen;
++  std::mt19937 ran;
+   pid_t pid{};
+ 
+ public:

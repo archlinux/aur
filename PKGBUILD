@@ -1,6 +1,6 @@
 pkgname=kms-core
 pkgver=6.17.0
-pkgrel=5
+pkgrel=6
 pkgdesc="Kurento media server core library"
 arch=(x86_64)
 url="https://github.com/Kurento/kms-core"
@@ -12,8 +12,9 @@ source=(
     kmscore.c.patch
     register-parent-string.patch
     ModuleManager.cpp.patch
+    UUIDGenerator.cpp.patch
 )
-sha256sums=(SKIP SKIP SKIP SKIP)
+sha256sums=(SKIP SKIP SKIP SKIP SKIP)
 backup=(
     etc/kurento/modules/kurento/BaseRtpEndpoint.conf.ini
     etc/kurento/modules/kurento/MediaElement.conf.ini
@@ -26,6 +27,7 @@ prepare() {
     patch -p1 <"$srcdir/kmscore.c.patch"
     patch -p0 <"$srcdir/register-parent-string.patch"
     patch -p1 <"$srcdir/ModuleManager.cpp.patch"
+    patch -p1 <"$srcdir/UUIDGenerator.cpp.patch"
     sed -ri -e 's#gstreamer((-[-a-z]+)?)-1\.5#gstreamer\1-1.0#g' {,*/,*/*/,*/*/*/,*/*/*/*/}CMakeLists.txt
 }
 
