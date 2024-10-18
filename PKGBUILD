@@ -5,7 +5,7 @@ _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}")
 #"python-${_pyname}-doc")
 #pkgname=("${_pname}" "${_pname}-doc")
-pkgver=1.4.2
+pkgver=1.4.3
 pkgrel=1
 pkgdesc="A simple task runner."
 arch=('any')
@@ -29,7 +29,7 @@ checkdepends=('python-pytest'
 #source=("https://github.com/oprypin/mkdocs-section-index/archive/refs/tags/v${pkgver}.tar.gz")
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz"
         "${pkgver}-demo.svg::https://github.com/pawamoy/duty/raw/${pkgver}/demo.svg")
-sha256sums=('b06c0bb5527c19c6add398fc1942c99d3bc2bc66a0db7fc957c20e5e309c240f'
+sha256sums=('92f3955b6d0ce3779b7389daf7f1de5d0cd603fbf56983480b568baedf90edff'
             '4a8b3802ce16ee44950846226fb530397502bdf6ae7157170107f7e777e9d4ed')
 
 #prepare() {
@@ -52,11 +52,11 @@ check() {
 
     mkdir -p dist/lib
     bsdtar -xpf dist/${_pyname//-/_}-${pkgver}-py3-none-any.whl -C dist/lib
-    PYTHONPATH="dist/lib" pytest|| warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count
+    PYTHONPATH="dist/lib" pytest || warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count
 }
 
 package_python-duty() {
-    depends=('python>=3.8' 'python-failprint>1.0.0')
+    depends=('python>=3.9' 'python-failprint>1.0.0')
     optdepends=('python-duty-doc: Documentation for python duty')
     cd ${srcdir}/${_pyname}-${pkgver}
 
