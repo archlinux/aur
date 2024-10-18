@@ -5,11 +5,11 @@ pkgver=3.0.0.beta.13.r3.g5fb693d
 _electronversion=27
 _nodeversion=18
 pkgrel=1
-pkgdesc="Official launcher for all games made by select."
+pkgdesc="Official launcher for all games made by select.Use system-wide electron."
 arch=('any')
 url="https://select-launcher.onrender.com/"
 _ghurl="https://github.com/select-studios/Select-Launcher"
-license=("LicenseRef-CSL")
+license=('LicenseRef-CommerciaStandardLicense')
 conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}=${pkgver%.r*}")
 depends=(
@@ -46,11 +46,12 @@ build() {
         s/@appname@/${pkgname%-git}/g
         s/@runname@/app.asar/g
         s/@cfgdirname@/${_pkgname}/g
-        s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
+        s/@options@//g
     " -i "${srcdir}/${pkgname%-git}.sh"
     _ensure_local_nvm
     gendesk -q -f -n --pkgname="${pkgname%-git}" --pkgdesc="${pkgdesc}" --categories="Game" --name="${_pkgname}" --exec="${pkgname%-git} %U"
     cd "${srcdir}/${pkgname%-git}.git/client"
+    electronDist="/usr/lib/electron${_electronversion}"
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
     HOME="${srcdir}/.electron-gyp"
@@ -58,18 +59,22 @@ build() {
         echo -e '\n'	
         #echo 'build_from_source=true'
         echo "cache=${srcdir}/.npm_cache"
-        if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
+    } >> .npmrc
+    if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
+        {
             echo 'registry=https://registry.npmmirror.com'
             echo 'disturl=https://registry.npmmirror.com/-/binary/node/'
             echo 'electron_mirror=https://registry.npmmirror.com/-/binary/electron/'
             echo 'electron_builder_binaries_mirror=https://registry.npmmirror.com/-/binary/electron-builder-binaries/'
-        fi
-    } >> .npmrc
+        } >> .npmrc
+    fi
     sed -i "s/dark/discord/g" src/components/sidebar/components/signout.sidebar.tsx
-    sed -i "/\*/d;s/\/\${version}//g;s/\"AppImage\", \"deb\"/\"dir\"/g" electron-builder.json5
+    sed -i "/\*/d;s/\/\${version}//g" electron-builder.json5
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
     NODE_ENV=development    npm install
-    NODE_ENV=production     npm run build
+    NODE_ENV=production     npx tsc
+    NODE_ENV=production     npx vite build
+    NODE_ENV=production     npm exec -c "electron-builder --linux dir -c.electronDist=${electronDist}"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
