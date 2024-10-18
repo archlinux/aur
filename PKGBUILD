@@ -5,7 +5,7 @@
 # Contributor: Frederik “Freso” S. Olesen <freso.dk@gmail.com>
 # Contributor: Maxime Gauduin <alucryd@archlinux.org>
 pkgname=lutris-git
-pkgver=0.5.17.r382.g9aaed31
+pkgver=0.5.17.r385.g66d4170
 pkgrel=1
 pkgdesc="Open Gaming Platform"
 arch=('any')
@@ -40,6 +40,7 @@ depends=(
 makedepends=(
   'git'
   'meson'
+  'protobuf'
 )
 checkdepends=(
   'appstream-glib'
@@ -71,8 +72,10 @@ optdepends=(
 )
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=('git+https://github.com/lutris/lutris.git')
-sha256sums=('SKIP')
+source=('git+https://github.com/lutris/lutris.git'
+        'git+https://github.com/bartok765/galaxy_blizzard_plugin.git')
+sha256sums=('SKIP'
+            'SKIP')
 
 pkgver() {
   cd "${pkgname%-git}"
@@ -80,7 +83,10 @@ pkgver() {
 }
 
 prepare() {
-  cd "${pkgname%-git}"
+
+  # Regenerate protos to fix BattleNet plugin
+  protoc --proto_path=galaxy_blizzard_plugin/src --python_out=. product_db.proto
+  cp -f product_db_pb2.py "${pkgname%-git}/${pkgname%-git}/util/battlenet/product_db_pb2.py"
 }
 
 build() {
