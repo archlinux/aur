@@ -1,6 +1,6 @@
 pkgbase = perf-bfd
 	pkgdesc = Linux kernel performance auditing tool (with bfd support)
-	pkgver = 6.6
+	pkgver = 6.11
 	pkgrel = 1
 	url = https://www.kernel.org
 	arch = x86_64
@@ -41,10 +41,11 @@ pkgbase = perf-bfd
 	depends = libtraceevent
 	depends = openssl
 	depends = libsframe.so
+	provides = perf
 	conflicts = perf
 	options = !strip
 	options = !lto
-	source = https://github.com/torvalds/linux/archive/refs/tags/v6.6.tar.gz
-	sha256sums = 9a72c005a62f109f96ee00552502d16c4f06c248e6baba1629506627396ac0a7
+	source = https://github.com/torvalds/linux/archive/refs/tags/v6.11.tar.gz
+	sha256sums = 87eebb4c5d35b5c71e2b1dbdd106be6e6ccc0ee3c3ba0602a3fc4d9d169a6b93
 
 pkgname = perf-bfd
