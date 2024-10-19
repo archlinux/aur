@@ -1,0 +1,18 @@
+pkgbase = libspeechprovider
+	pkgdesc = A utility library for creating Spiel speech providers
+	pkgver = 1.0.3
+	pkgrel = 1
+	url = https://project-spiel.org/libspeechprovider
+	arch = x86_64
+	license = LGPL-2.1-only
+	makedepends = git
+	makedepends = meson
+	makedepends = gobject-introspection
+	makedepends = gi-docgen
+	makedepends = glib2-devel
+	depends = glibc
+	depends = glib2
+	source = git+https://github.com/project-spiel/libspeechprovider.git#tag=SPEECHPROVIDER_1_0_3
+	b2sums = a271e0ad5d3e34787a82420d1d15837953f8347dcd55696b969dfcb94037b7a20df0ce26bbea227a076e7a30c3abb97516ff9d8dbba32e8f5d500d2607aca1d1
+
+pkgname = libspeechprovider
