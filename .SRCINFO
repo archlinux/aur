@@ -1,0 +1,14 @@
+pkgbase = tuxedo-yt6801-dkms-git
+	pkgdesc = Kernel module for Motorcomm YT6801 ethernet controller (DKMS)
+	pkgver = 1.0.29tux0.r0.g6b1a074
+	pkgrel = 1
+	url = https://gitlab.com/tuxedocomputers/development/packages/tuxedo-yt6801
+	arch = x86_64
+	license = GPL-2.0-or-later
+	makedepends = git
+	depends = dkms
+	conflicts = yt6801-dkms
+	source = git+https://gitlab.com/tuxedocomputers/development/packages/tuxedo-yt6801
+	sha256sums = SKIP
+
+pkgname = tuxedo-yt6801-dkms-git
