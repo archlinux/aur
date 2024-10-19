@@ -1,6 +1,6 @@
 pkgbase = cargo-sync-rdme-bin
 	pkgdesc = Cargo subcommand to synchronize README with crate documentation
-	pkgver = 0.3.8
+	pkgver = 0.3.9
 	pkgrel = 1
 	url = https://github.com/gifnksm/cargo-sync-rdme
 	arch = x86_64
@@ -11,9 +11,9 @@ pkgbase = cargo-sync-rdme-bin
 	depends = zlib
 	provides = cargo-sync-rdme
 	conflicts = cargo-sync-rdme
-	source_x86_64 = https://github.com/gifnksm/cargo-sync-rdme/releases/download/v0.3.8/cargo-sync-rdme-v0.3.8-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = 079bef96188f7b7e16b4607eb3a6340a4890bb07293ea22aab6ff75ad24920a5
-	source_aarch64 = https://github.com/gifnksm/cargo-sync-rdme/releases/download/v0.3.8/cargo-sync-rdme-v0.3.8-aarch64-unknown-linux-gnu.tar.gz
-	sha256sums_aarch64 = e4760670dfb68415b7973f682925d09d40548b9ddaeeb316f1f486786c02807c
+	source_x86_64 = https://github.com/gifnksm/cargo-sync-rdme/releases/download/v0.3.9/cargo-sync-rdme-v0.3.9-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = e216b1b11b95a562784b493eba20c7ccd39eb1d7df704257b9822d94a3443b7f
+	source_aarch64 = https://github.com/gifnksm/cargo-sync-rdme/releases/download/v0.3.9/cargo-sync-rdme-v0.3.9-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 7de0b53c8bf505239d925a8e67a52a97e0d9f1147b93635ff20acc3fba78ec99
 
 pkgname = cargo-sync-rdme-bin
