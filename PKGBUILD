@@ -14,6 +14,7 @@ sha256sums=('SKIP')  # Replace with the actual checksum after generating
 build() {
     cd "$srcdir/$pkgname-$pkgver"
     make
+    echo "compilation succesfull"
 }
 
 package() {
