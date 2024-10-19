@@ -1,7 +1,7 @@
 pkgbase = gnome-shell-performance
 	pkgdesc = Next generation desktop shell | Attempts to improve performances with non-upstreamed merge-requests and frequent stable branch resync
-	pkgver = 47.0
-	pkgrel = 2
+	pkgver = 47.1.r1.gf0fe25db6
+	pkgrel = 1
 	epoch = 1
 	url = https://wiki.gnome.org/Projects/GnomeShell
 	arch = x86_64
@@ -37,11 +37,11 @@ pkgbase = gnome-shell-performance
 	depends = mutter
 	depends = unzip
 	depends = upower
-	source = git+https://gitlab.gnome.org/GNOME/gnome-shell.git#commit=957504b1f673cb016e32ccea26bac3a6723d34a1
+	source = git+https://gitlab.gnome.org/GNOME/gnome-shell.git#commit=f0fe25db663ece8f9beb99b31b6524e6332dec93
 	source = git+https://gitlab.gnome.org/GNOME/libgnome-volume-control.git#commit=5f9768a2eac29c1ed56f1fbb449a77a3523683b6
-	sha256sums = 58e67d2a3b0e8dd4074d234d7c67383f5a51c1079c2876eae19c389d423e98b2
+	sha256sums = 6d40a98a9dee39920922e5b821d92ff832176470828e4ff22b5e6ce1355d2982
 	sha256sums = 587319b45ff7d989635aed0c3bd9ef834d6e53ae46788cb6ba083d42d7e63855
-	b2sums = 7c5b48d4ad2c9119bac501dfc99d2e73132a8418dd6d6020778c6a76090faa5489d85bb9ca9bf2908592efba077e14f66a6515e57e1c1b18ba8d22d43ca56d81
+	b2sums = 279b0b007afca919db0bd38a5b751eea3a9bdc4596592b0514c57f5d6bf30d1bd736effd2c2e1e1b699ac0f9fa7b9199c92dbe844a1bec7750aef1b9df24ca1b
 	b2sums = e31ae379039dfc345e8032f7b9803a59ded075fc52457ba1553276d3031e7025d9304a7f2167a01be2d54c5e121bae00a2824a9c5ccbf926865d0b24520bb053
 
 pkgname = gnome-shell-performance
@@ -77,6 +77,6 @@ pkgname = gnome-shell-performance
 	optdepends = python-simplejson: gnome-shell-test-tool performance tester
 	optdepends = switcheroo-control: Multi-GPU support
 	provides = gnome-shell
-	provides = gnome-shell=47.0
-	provides = gnome-shell=1:47.0
+	provides = gnome-shell=47.1.r1.gf0fe25db6
+	provides = gnome-shell=1:47.1.r1.gf0fe25db6
 	conflicts = gnome-shell
