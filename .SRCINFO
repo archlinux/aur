@@ -1,11 +1,10 @@
 pkgbase = otree-bin
 	pkgdesc = Object Tree TUI Viewer
 	pkgver = 0.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/fioncat/otree
 	arch = x86_64
 	license = MIT
-	makedepends = help2man
 	depends = glibc
 	provides = otree
 	conflicts = otree

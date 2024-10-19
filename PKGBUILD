@@ -4,14 +4,13 @@ _pkgauthor=fioncat
 _pkgname=otree
 pkgname=${_pkgname}-bin
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Object Tree TUI Viewer"
 url="https://github.com/${_pkgauthor}/${_pkgname}"
 _urlraw="https://raw.githubusercontent.com/${_pkgauthor}/${_pkgname}/v${pkgver}"
 arch=('x86_64')
 license=('MIT')
 depends=('glibc')
-makedepends=('help2man')
 conflicts=("${_pkgname}")
 provides=("${_pkgname}")
 source=("LICENSE-${pkgver}::${_urlraw}/LICENSE"
@@ -25,13 +24,6 @@ sha256sums=('c7dc85e2deab624457e3f411dd0e6eb9531611c4a11e3028c38e02999f27d94d'
             '04fe2923102965ce3cdf4bc5a29a676db82e5b915569069d0dc3860ae0c3888d')
 sha256sums_x86_64=('eadfc85bca14a13ef30ed4032a85b5d806e69cca1b7e7a45bdeb3b5bb908de16')
 
-build() {
-  cd "${srcdir}/" || exit
-
-  help2man ./${_pkgname} --output "MAN-${pkgver}.1"
-  gzip "MAN-${pkgver}.1"
-}
-
 package() {
   cd "${srcdir}/" || exit
 
@@ -41,6 +33,4 @@ package() {
   install -Dm644 "README-${pkgver}.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
   install -Dm644 "ACTIONS-${pkgver}.md" "${pkgdir}/usr/share/doc/${pkgname}/ACTIONS.md"
   install -Dm644 "CHANGELOG-${pkgver}.md" "${pkgdir}/usr/share/doc/${pkgname}/CHANGELOG.md"
-
-  install -Dm644 "MAN-${pkgver}.1.gz" "${pkgdir}/usr/share/man/man1/${_pkgname}.1.gz"
 }
