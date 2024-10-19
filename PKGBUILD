@@ -2,7 +2,7 @@
 
 _pkgname=ncspot
 pkgname="${_pkgname}-git"
-pkgver=1.20.0
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="Cross-platform ncurses Spotify client written in Rust, inspired by ncmpc and the likes."
 arch=('x86_64')
