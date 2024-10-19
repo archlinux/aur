@@ -1,15 +1,35 @@
-# Maintainer: Luca Weiss <luca (at) z3ntu (dot) xyz>
+# Maintainer: Luca Weiss <aur (at) lucaweiss (dot) eu>
 # Contributor: Fabio 'Lolix' Loli <lolix@disroot.org> -> https://github.com/FabioLolix
 # Contributor: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=elisa-git
-pkgver=24.01.90.r14.g82824891
+pkgver=24.01.90.r369.g0abb9afe
 pkgrel=1
-arch=(x86_64)
 pkgdesc="Simple music player aiming to provide a nice experience for its users"
-url="https://community.kde.org/Elisa"
+url='https://apps.kde.org/elisa/'
+arch=(x86_64)
 license=(LGPL-3.0-or-later)
-depends=(kcolorscheme kconfig kconfigwidgets kcoreaddons kcrash kdbusaddons kfilemetadata ki18n kiconthemes kio kirigami kitemviews kxmlgui qqc2-desktop-style qt6-base qt6-declarative qt6-multimedia)
+depends=(gcc-libs
+         glibc
+         kcolorscheme
+         kconfig
+         kconfigwidgets
+         kcoreaddons
+         kcrash
+         kdbusaddons
+         kfilemetadata
+         ki18n
+         kiconthemes
+         kio
+         kirigami
+         kirigami-addons
+         kitemviews
+         kxmlgui
+         qqc2-desktop-style
+         qt6-base
+         qt6-declarative
+         qt6-multimedia
+         vlc)
 makedepends=(extra-cmake-modules git kdoctools python)
 provides=(elisa)
 conflicts=(elisa)
@@ -23,9 +43,6 @@ pkgver() {
 
 build() {
   cmake -B build -S elisa \
-    -DCMAKE_BUILD_TYPE=None \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_INSTALL_LIBDIR=lib \
     -DBUILD_TESTING=OFF
   cmake --build build
 }
