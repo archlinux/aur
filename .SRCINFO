@@ -1,0 +1,18 @@
+pkgbase = roxide-bin
+	pkgdesc = Manage your git repositories
+	pkgver = 0.17.0
+	pkgrel = 1
+	url = https://github.com/fioncat/roxide
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	provides = roxide
+	conflicts = roxide
+	source = LICENSE-0.17.0::https://raw.githubusercontent.com/fioncat/roxide/v0.17.0/LICENSE
+	source = README-0.17.0.md::https://raw.githubusercontent.com/fioncat/roxide/v0.17.0/README.md
+	sha256sums = c7dc85e2deab624457e3f411dd0e6eb9531611c4a11e3028c38e02999f27d94d
+	sha256sums = 0d682a3581bc5b409f33a1d82df53c991f7d822489d61cca6b9dc0608d112cfa
+	source_x86_64 = https://github.com/fioncat/roxide/releases/download/v0.17.0/roxide-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = f4fcd57a6fc4821ab8742ecb78771efb7083b71efe080419a16f602d82f19f6a
+
+pkgname = roxide-bin
