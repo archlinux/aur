@@ -3,16 +3,16 @@
 
 _gem=glib2
 pkgname="ruby-${_gem}"
-pkgver=4.2.2
-pkgrel=3
+pkgver=4.2.4
+pkgrel=1
 pkgdesc='Ruby/GLib2 is a Ruby binding of GLib-2.x.'
-arch=(x86_64)
+arch=(x86_64 i686 armv7h aarch64)
 url="https://github.com/ruby-gnome/ruby-gnome"
 license=(LGPL-2.1-only)
 depends=(ruby glib2 glibc)
 makedepends=(ruby-pkg-config ruby-native-package-installer)
 source=("ruby-gnome-${pkgver}.tar.gz::https://github.com/ruby-gnome/ruby-gnome/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('64f2f53e9733e85d1b5c10c684858ff5924a0c7175c344ed01270fc018ea983d')
+sha256sums=('37a39e0175f00bedb3fca7791f12f9a0d759231c2d882a8770a7877a0e25cef5')
 
 build() {
   cd "ruby-gnome-${pkgver}/${_gem}"
