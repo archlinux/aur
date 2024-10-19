@@ -3,7 +3,7 @@
 # Contributor:  Eric Biggers <ebiggers3 at gmail dot com>
 
 pkgname=abyss
-pkgver=2.3.9
+pkgver=2.3.10
 pkgrel=1
 pkgdesc="Assembly By Short Sequences - a de novo, parallel, paired-end sequence assembler"
 arch=("i686" "x86_64")
@@ -16,7 +16,7 @@ optdepends=(
   'samtools: for reading SAM files'
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/bcgsc/abyss/archive/$pkgver.tar.gz")
-sha512sums=('0b2e808b6dcbd5d5bcc12aa23fe1d47a6f10b95c90ecbd61e2438e5fa69f488c326c8874e305c75dd1b4e2e632fcfa68eb259894b17a0db65ec4b5eba0440171')
+sha512sums=('7ba8f4e4be74d3ed9a0b6c08e188974b3298bd04a42a1ee706724b221a5bf32fa043ad564be5ded5ddabd4bc3a8412b5e103884bb8cb06f2e99d65fb8d2fba84')
 
 build() {
   cd "${pkgname}-${pkgver}"
