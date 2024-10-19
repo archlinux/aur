@@ -211,13 +211,16 @@ build() {
 
 	# a pig; I build on tmpfs so I dont need its bulk
 	rm -Rf ${_webenginedir}
-  cd ${_build_path}
 
-for i in ${BUILDENV[@]}; do
-	if [[ $i = "ccache" ]]; then
-		additional_args="${additional_args} -DQT_USE_CCACHE=ON"
-	fi
-done
+	rm -Rf build
+	mkdir build
+	cd build
+
+#for i in ${BUILDENV[@]}; do
+#	if [[ $i = "ccache" ]]; then
+#		additional_args="${additional_args} -DQT_USE_CCACHE=ON"
+#	fi
+#done
 
   # Just because you can enable something doesnt mean you should
   # Prepare for breakage in all your Qt derived projects
@@ -318,7 +321,7 @@ package() {
   rm -Rf ${_libspkgdir} ${_libsdebugpkgdir} ${pkgdir}
   mkdir -p ${_libspkgdir} ${_libsdebugpkgdir} ${pkgdir}
 
-  cd "${_build_path}"
+  cd build
   echo "Installing to ${pkgdir}"
   DESTDIR="$pkgdir" cmake --install . | tee ${pkgname}-install.log
   #DESTDIR="$pkgdir" cmake --install . --target install_docs
@@ -374,5 +377,3 @@ package() {
 
   cp configure_line config.summary ${_basepkgdir}
 }
-
-_build_path=${BUILDDIR}/${pkgbase}
