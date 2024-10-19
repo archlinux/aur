@@ -1,7 +1,7 @@
 pkgbase = otf-apple-sf-mono
 	pkgdesc = Apples the San Francisco typeface family. Monospaced variant.
 	pkgver = 18.0d1e1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://developer.apple.com/fonts/
 	arch = any
 	license = custom:apple-restricted-font
