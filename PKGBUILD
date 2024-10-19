@@ -1,4 +1,5 @@
-# Maintainer: Carl Smedstad <carsme@archlinux.org>
+# Maintainer: devome <evinedeng@hotmail.com>
+# Contributor: Carl Smedstad <carsme@archlinux.org>
 # Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 # Contributor: S. Leduc <sebastien@sleduc.fr>
 # Contributor: redfish <redfish@galactica.pw>
@@ -6,111 +7,74 @@
 # Contributor: Nathan Owe <ndowens.aur at gmail dot com>
 # Contributor: G. Richard Bellamy <rbellamy@pteradigm.com>
 
-pkgname=flexget
 _pkgname=Flexget
-pkgver=3.11.45
+pkgname=${_pkgname,,}
+pkgver=3.11.49
 pkgrel=1
-pkgdesc="Multipurpose automation tool for downloading media content from different sources"
+pkgdesc="A multipurpose automation tool for all of your media"
 arch=(any)
-url="https://github.com/flexget/flexget"
+url="https://github.com/$_pkgname/$_pkgname"
 license=(MIT)
 depends=(
-  libnotify
-  python
-  python-apscheduler
-  python-babelfish
-  python-beautifulsoup4
-  python-cherrypy
-  python-cloudscraper
-  python-dateutil
-  python-dnspython
-  python-feedparser
-  python-flask
-  python-flask-compress
-  python-flask-cors
-  python-flask-login
-  python-flask-restx
-  python-gobject
-  python-guessit
-  python-html5lib
-  python-jinja
-  python-jsonschema
-  python-loguru
-  python-lxml
-  python-packaging
-  python-paramiko
-  python-pendulum
-  python-pillow
-  python-psutil
-  python-pynzb
-  python-pyparsing
-  python-pyrss2gen
-  python-pysftp
-  python-rebulk
-  python-referencing
-  python-requests
-  python-rich
-  python-rpyc
-  python-sqlalchemy
-  python-typing_extensions
-  python-werkzeug
-  python-yaml
-  python-zxcvbn
+    python-apscheduler
+    python-certifi
+    python-cherrypy
+    python-feedparser
+    python-flask
+    python-flask-compress
+    python-flask-cors
+    python-flask-login
+    python-flask-restx
+    python-guessit
+    python-html5lib
+    python-loguru
+    python-pendulum
+    python-psutil
+    python-pynzb
+    python-pyparsing
+    python-pyrss2gen
+    python-pyyaml
+    python-requests
+    python-rich
+    python-rpyc
+    python-sqlalchemy
+    python-zstandard
+    python-zxcvbn
 )
-makedepends=(
-  python-build
-  python-installer
-  python-setuptools
-  python-wheel
-)
-checkdepends=(
-  python-boto3
-  python-plexapi
-  python-pytest
-  python-rarfile
-  python-transmissionrpc
-  python-vcrpy
-)
-optdepends=(
-  'python-boto3: SNS output plugin'
-  'python-plexapi: Plex support'
-  'python-rarfile: decompress plugin'
-  'python-transmissionrpc: Transmission support'
-)
-source=(
-  "$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
-  "flexget.service"
-  "flexget@.service"
-)
-sha256sums=(
-  '7db6d023dd94dfce9d08908414eb3c39d888d5363b5ceb26b11e96b48650b8f8'
-  '117de8d5cbe0ac53ecd3be3e579f2cfa62ef186ab36e382f857059380447c5aa'
-  'aceecee5496a34c14c12ed5ad8b97197de32896f358b5aef63a84bf4a419756a'
-)
+makedepends=(python-build python-installer python-setuptools python-wheel)
+optdepends=('python-boto3: SNS output plugin'
+            'python-plexapi: plex support'
+            'python-pysftp: sftp support'
+            'python-subliminal: subtitles support')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
+        "$pkgname.service"
+        "$pkgname@.service"
+        "$pkgname.user.service"
+        "$pkgname.sysusers"
+        "$pkgname.tmpfiles")
+sha256sums=('f9c78bb7f2aee46063831dddcadd4b0825148ce39afef1ac5124f5b1a2f5458a'
+            'b7578417ab5f671def7021133ae68900d82aaa81b5e80a2fec4d85e46eb1f8e9'
+            'b9d354f6095aafe7a29cb8e90239b662a2584903a85fe3770f2b99bb8bdfff4a'
+            '799921777b3714f074deaafbdd241ea7b99a0eccd65931708fd81457286f4f49'
+            '919115d2ce9bdc49161c38897dc4b0b7fe9682c15b3f1a6b2c557a8534af6915'
+            '1d8f4bd2c08a1ace4af492b952c87b91a5e4881b5c01781a3ff483c847e59bfd')
+options=("!strip")
 
 build() {
-  cd $_pkgname-$pkgver
-
-  python -m build --wheel --no-isolation
-}
-
-check() {
-  cd $_pkgname-$pkgver
-
-  # Deselect failing tests - not sure why they fail
-  pytest \
-    --deselect flexget/tests/test_decompress.py::TestExtract::test_delete_rar \
-    --deselect flexget/tests/test_decompress.py::TestExtract::test_rar \
-    --deselect flexget/tests/test_plex_watchlist.py \
-    --deselect flexget/tests/test_yaml_list.py
+    cd "$_pkgname-$pkgver"
+    python dev_tools.py bundle-webui
+    find . -iname "*.js.map" -o -iname "*.css.map" | xargs rm -rf
+    python -m build --wheel --no-isolation
 }
 
 package() {
-  cd $_pkgname-$pkgver
+    install -Dm644 "$pkgname.service"      "$pkgdir/usr/lib/systemd/system/$pkgname.service"
+    install -Dm644 "$pkgname@.service"     "$pkgdir/usr/lib/systemd/system/$pkgname@.service"
+    install -Dm644 "$pkgname.user.service" "$pkgdir/usr/lib/systemd/user/$pkgname.service"
+    install -Dm644 "$pkgname.sysusers"     "$pkgdir/usr/lib/sysusers.d/$pkgname.conf"
+    install -Dm644 "$pkgname.tmpfiles"     "$pkgdir/usr/lib/tmpfiles.d/$pkgname.conf"
 
-  python -m installer --destdir="$pkgdir" dist/*.whl
-  install -Dm644 -t "$pkgdir/usr/lib/systemd/user/" \
-    "$srcdir/flexget.service" \
-    "$srcdir/flexget@.service"
-  install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
+    cd "$_pkgname-$pkgver"
+    install -Dm644 LICENSE                 "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    python -m installer --destdir="$pkgdir" dist/*.whl
 }

@@ -1,11 +1,12 @@
 [Unit]
-Description=FlexGet Daemon
+Description=FlexGet Daemon for %I
+Documentation=https://www.flexget.com
 After=network.target
 
 [Service]
 Type=simple
 RemainAfterExit=yes
-ExecStart=/usr/bin/flexget daemon start
+ExecStart=/usr/bin/flexget daemon start --autoreload-config
 ExecStop=/usr/bin/flexget daemon stop
 ExecReload=/usr/bin/flexget daemon reload
 KillMode=process

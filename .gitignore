@@ -1,7 +1,4 @@
-*
-!.gitignore
-!.nvchecker.toml
-!.SRCINFO
-!PKGBUILD
-!flexget.service
-!flexget@.service
+/src
+/pkg
+*.pkg.tar.*
+*.tar.gz

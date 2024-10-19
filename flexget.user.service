@@ -1,5 +1,5 @@
 [Unit]
-Description=FlexGet Daemon (system)
+Description=FlexGet Daemon (user)
 Documentation=https://www.flexget.com
 After=network.target
 
@@ -10,8 +10,6 @@ ExecStart=/usr/bin/flexget daemon start --autoreload-config
 ExecStop=/usr/bin/flexget daemon stop
 ExecReload=/usr/bin/flexget daemon reload
 KillMode=process
-User=flexget
-WorkingDirectory=/var/lib/flexget
 
 [Install]
-WantedBy=multi-user.target
+WantedBy=default.target
