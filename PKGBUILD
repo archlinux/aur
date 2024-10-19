@@ -112,8 +112,7 @@ fi
 
 # vars
 _local_qt_repo="${local_qt_repo}"
-#_pkgvermajmin="5.15"
-_pkgvermajmin="6.7"
+_pkgvermajmin="6.8"
 _pkgverpatch=".0"
 # {alpha/beta/beta2/rc}
 _dev_suffix=""
@@ -168,12 +167,11 @@ arch=("x86_64")
 url="http://www.chaos-reins.com/qpi/"
 license=("LGPL3" "GPL3")
 optdepends=('qtcreator: Integrated IDE development')
-makedepends=("git" "pkgconfig" "gcc" "gperf" "python" "clang" "cmake" "ninja" "libc++" "pcre" "harfbuzz" "mold")
+makedepends=("git" "pkgconfig" "gcc" "gperf" "python" "clang" "cmake" "ninja" "libc++" "pcre" "harfbuzz" "mold" "litehtml")
 #_provider=http://qt.mirror.constant.com/
 _provider=https://download.qt.io
 source=()
-sha256sums=('bf5089912364f99cf9baf6c109de76a3172eec6267f148c69800575c47f90087')
-conflicts=('litehtml')
+sha256sums=('70f1a87c6ecc6c108dec6e9389e564f8798bd48bec4c596f28d0564c1dbbc2c6')
 
 if ! $_build_from_local_src_tree; then
   source+=("${_provider}/${_release_type}/qt/${_pkgvermajmin}/${_pkgver}/single/${_source_package_name}.tar.xz")
@@ -241,6 +239,7 @@ done
   # pch are massive running out of space on 22GB drive vs 6GB build
 				#-DQT_HOST_PATH=/usr/lib/qt6/bin \
 				#-DQt6HostInfo_DIR=/usr/lib/cmake/Qt6HostInfo \
+								#-DBUILD_WITH_PCH=OFF \
   local _configure_line_fn=configure_line
   local _configure_line="cmake \
                                 -GNinja \
