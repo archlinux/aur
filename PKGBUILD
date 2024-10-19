@@ -3,16 +3,16 @@
 
 _gem=gobject-introspection
 pkgname="ruby-${_gem}"
-pkgver=4.2.2
+pkgver=4.2.4
 pkgrel=1
 pkgdesc='Ruby/GObjectIntrospection is a Ruby binding of GObjectIntrospection.'
-arch=(x86_64)
+arch=(x86_64 i686 armv7h aarch64)
 url="https://github.com/ruby-gnome/ruby-gnome"
 license=(LGPL-2.1-only)
-depends=(ruby gobject-introspection gobject-introspection-runtime ruby-glib2 glibc glib2 ruby-cairo-gobject)
+depends=(ruby ruby-glib2=${pkgver} glibc glib2 libgirepository)
 makedepends=(ruby-pkg-config ruby-native-package-installer)
 source=("ruby-gnome-${pkgver}.tar.gz::https://github.com/ruby-gnome/ruby-gnome/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('64f2f53e9733e85d1b5c10c684858ff5924a0c7175c344ed01270fc018ea983d')
+sha256sums=('37a39e0175f00bedb3fca7791f12f9a0d759231c2d882a8770a7877a0e25cef5')
 
 build() {
   cd "ruby-gnome-${pkgver}/${_gem}"
