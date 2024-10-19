@@ -1,0 +1,14 @@
+pkgbase = popup-translate
+	pkgdesc = Translate any text you select on your Linux Desktop with a keyboard-shortcut (please set in Settings/Keyboard) to your default system-language or English
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/schinfo/popup-translate
+	arch = any
+	license = GPL2
+	depends = translate-shell
+	depends = xclip
+	depends = yad
+	source = https://github.com/schinfo/popup-translate/archive/refs/tags/1.0.0.tar.gz
+	sha256sums = 4c3770f80e269fd1f8db21d55167d74f222fee8759f94ae58adc28b1d57e5196
+
+pkgname = popup-translate
