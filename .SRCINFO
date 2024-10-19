@@ -1,7 +1,7 @@
 pkgbase = electron-cash
 	pkgdesc = Lightweight Bitcoin Cash wallet
 	pkgver = 4.4.1
-	pkgrel = 3
+	pkgrel = 4
 	url = http://www.electroncash.org/
 	arch = any
 	license = MIT
@@ -43,6 +43,7 @@ pkgbase = electron-cash
 	optdepends = python-keepkey: Trezor hardware wallet support
 	optdepends = python-zxing-cpp: QR code reading support
 	optdepends = gst-plugins-good: QR code reading support
+	optdepends = qt5-multimedia: QR code reading support
 	provides = electron-cash
 	conflicts = electron-cash
 	source = electron-cash-4.4.1.tar.gz::https://github.com/Electron-Cash/Electron-Cash/archive/4.4.1.tar.gz

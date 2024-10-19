@@ -9,7 +9,7 @@ pkgname='electron-cash'
 pkgdesc='Lightweight Bitcoin Cash wallet'
 pkgver=4.4.1
 secp256k1ver=0.20.9
-pkgrel=3
+pkgrel=4
 url='http://www.electroncash.org/'
 arch=('any')
 license=('MIT')
@@ -56,6 +56,7 @@ optdepends=(
   'python-keepkey: Trezor hardware wallet support'
   'python-zxing-cpp: QR code reading support'
   'gst-plugins-good: QR code reading support'
+  'qt5-multimedia: QR code reading support'
 )
 provides=("${pkgname}")
 conflicts=("${pkgname}")
