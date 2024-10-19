@@ -10,6 +10,8 @@ pkgbase = bepasty-cli
 	depends = python
 	depends = python-requests
 	depends = python-magic
+	provides = bepasty-cli
+	conflicts = bepasty-cli
 	source = bepasty-cli::git+https://github.com/bepasty/bepasty-client-cli.git
 	md5sums = SKIP
 

@@ -8,6 +8,8 @@ url="https://github.com/bepasty/bepasty-client-cli"
 license=('BSD')
 depends=('python' 'python-requests' 'python-magic')
 makedepends=('git' 'python-setuptools')
+provides=('bepasty-cli')
+conflicts=('bepasty-cli')
 source=("${pkgname}::git+https://github.com/bepasty/bepasty-client-cli.git")
 md5sums=('SKIP')
 
