@@ -11,7 +11,7 @@ pkgname=(
   "${_name}-sycl-f32-git"
   "${_name}-vulkan-git"
 )
-pkgver=b3334.r3.a8db2a9ce
+pkgver=b3943
 pkgrel=1
 pkgdesc="Port of Facebook's LLaMA model in C/C++"
 arch=('armv7h' 'aarch64' 'x86_64')
@@ -144,14 +144,7 @@ build() {
 }
 
 _package() {
-  rm -rf "${pkgdir}/usr/bin/"*
-  cd build/bin/
-  for i in *; do
-    install -Dm755 "${i}" \
-      "${pkgdir}/usr/bin/${_name}-${i}"
-  done
-  mv "${pkgdir}/usr/bin/${_name}-main" \
-    "${pkgdir}/usr/bin/${_name}"
+  DESTDIR="${pkgdir}" cmake --install build
 
   # systemd
   install -D -m644 "${srcdir}/${_name}.conf" \
@@ -159,8 +152,7 @@ _package() {
   install -D -m644 "${srcdir}/${_name}.service" \
     -t "${pkgdir}/usr/lib/systemd/system"
 
-  # it conflicts with whisper.cpp
-  rm -f "${pkgdir}/usr/include/ggml.h"
+  rm "${pkgdir}/usr/include/"ggml*
 }
 
 package_llama.cpp-git() {
@@ -170,7 +162,6 @@ package_llama.cpp-git() {
   provides=("${_name}")
 
   cd "${_name}"
-  DESTDIR="${pkgdir}" cmake --install build
   _package
 }
 
@@ -181,7 +172,6 @@ package_llama.cpp-clblas-git() {
   conflicts=("${_name}")
 
   cd "${_name}-clblas"
-  DESTDIR="${pkgdir}" cmake --install build
   _package
 }
 
@@ -192,7 +182,6 @@ package_llama.cpp-cublas-git() {
   conflicts=("${_name}")
 
   cd "${_name}-clblas"
-  DESTDIR="${pkgdir}" cmake --install build
   _package
 }
 
@@ -203,7 +192,6 @@ package_llama.cpp-hipblas-git() {
   conflicts=("${_name}")
 
   cd "${_name}-hipblas"
-  DESTDIR="${pkgdir}" cmake --install build
   _package
 }
 
@@ -214,7 +202,6 @@ package_llama.cpp-sycl-f16-git() {
   conflicts=("${_name}")
 
   cd "${_name}-sycl-f16"
-  DESTDIR="${pkgdir}" cmake --install build
   _package
 }
 
@@ -225,7 +212,6 @@ package_llama.cpp-sycl-f32-git() {
   conflicts=("${_name}")
 
   cd "${_name}-sycl-f32"
-  DESTDIR="${pkgdir}" cmake --install build
   _package
 }
 
@@ -236,11 +222,10 @@ package_llama.cpp-vulkan-git() {
   conflicts=("${_name}")
 
   cd "${_name}-vulkan"
-  DESTDIR="${pkgdir}" cmake --install build
   _package
 }
 
 sha256sums=('SKIP'
   'SKIP'
   '53fa70cfe40cb8a3ca432590e4f76561df0f129a31b121c9b4b34af0da7c4d87'
-  'c1f25cb01825d951b76fb4747f5bd49a85b9bee8f605b1f43c5e6f12156cf49d')
+  '1fc9d4f0cfa407404acc3859c26c53a79d14f5e5bc72f21084d87dde04e36f20')
