@@ -45,7 +45,7 @@ makedepends=(python-build python-installer python-setuptools python-wheel)
 optdepends=('python-boto3: SNS output plugin'
             'python-plexapi: plex support'
             'python-pysftp: sftp support'
-            'python-subliminal: subtitles support')
+            'subliminal: subtitles support')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
         "$pkgname.service"
         "$pkgname@.service"
