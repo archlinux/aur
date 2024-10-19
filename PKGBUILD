@@ -30,7 +30,7 @@ build() {
 package() {
   cd "${srcdir}/${pkgname}"
   python setup.py install --root="${pkgdir}" --optimize=1
-  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
 # vim:set ts=2 sw=2 et:
