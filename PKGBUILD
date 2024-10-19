@@ -42,6 +42,7 @@ _package() {
   mv "${pkgdir}/usr/bin/${pkgbase}-main" \
     "${pkgdir}/usr/bin/${pkgbase}"
   rm "${pkgdir}/usr/include/"ggml*
+  rm "${pkgdir}/usr/lib/libggml.so"
 
   install -Dm644 LICENSE \
     -t "${pkgdir}/usr/share/licenses/${pkgbase}"
