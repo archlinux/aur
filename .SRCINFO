@@ -1,0 +1,12 @@
+pkgbase = profile-sync-daemon-floorp
+	pkgdesc = Floorp browser support for profile-sync-daemon
+	pkgver = 2024.10.18
+	pkgrel = 1
+	arch = any
+	license = none
+	depends = profile-sync-daemon
+	optdepends = floorp: the target browser
+	source = floorp
+	sha256sums = 65212ed819e483edff062581fc0babdaf2eab718b9153c233a74263af7741d3f
+
+pkgname = profile-sync-daemon-floorp
