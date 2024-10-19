@@ -16,6 +16,8 @@ package(){
 	mv mona.py mona 
 	install -Dm 755 ./mona "$pkgdir/usr/bin/mona"
 	install -Dm 755 ./protocol.json "$pkgdir/usr/share/mona/protocol.json"
+	install -Dm 755 ./project-monalisa.desktop "$pkgdir/usr/share/applications/project-monalisa.desktop"
+	install -Dm 644 ./project_mona.png "$pkgdir/usr/share/pixmaps/project_mona.png"
 	install -Dm 644 ./README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
 	install -Dm 644 ./LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 	sudo pip install -r requirements.txt --break
