@@ -3,7 +3,7 @@
 
 pkgname=assistant
 pkgver=6.0
-pkgrel=4
+pkgrel=5
 _pkg=1089
 pkgdesc='Secure remote access to computers over a local network or over the Internet.'
 arch=('x86_64')
@@ -16,9 +16,7 @@ source=("${url}%D1%81%D0%BA%D0%B0%D1%87%D0%B0%D1%82%D1%8C/Download/${_pkg}")
 md5sums=('1563A25D7B6D671CF6E0BBE4CBAD0754')
 
 package() {
-	# Extract package data
 	tar xf data.tar.gz -C "${pkgdir}"
-
 	install -D -m644 "${pkgdir}/opt/${pkgname}/license/License.rtf" "${pkgdir}/usr/share/licenses/${pkgname}/License.rtf"
-	install -D -m644 "${pkgdir}/opt/${pkgname}/scripts/assistant.desktop" "${pkgdir}/usr/share/applications/remote-${pkgname}.desktop"
+	install -D -m644 "${pkgdir}/opt/${pkgname}/scripts/${pkgname}.desktop" "${pkgdir}/usr/share/applications/remote-${pkgname}.desktop"
 }
