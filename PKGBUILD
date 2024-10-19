@@ -1,23 +1,33 @@
 # Maintainer:  twa022 <twa022 at gmail dot com>
 
 pkgname=streamripper
-pkgver=1.64.6
-pkgrel=4
+epoch=1
+_pkgver=1.64.6
+pkgver=1.64.6+56+a5597af
+pkgrel=1
 pkgdesc="Records and splits streaming mp3 into tracks"
-arch=('x86_64')
-url="http://streamripper.sourceforge.net"
+arch=('x86_64' 'i686' 'aarch64' 'armv7h')
+url="https://streamripper.sourceforge.net"
 license=('GPL')
 depends=('glib2' 'libmad' 'faad2' 'libvorbis')
-source=("https://downloads.sourceforge.net/sourceforge/streamripper/${pkgname}-${pkgver}.tar.gz")
-sha512sums=('8477086d0099f6de861f1c47112476c427073b6e8127bbaaa2dd3e7930fe9a5c6d9b2c68d4a317f1bc0b20c625e665d5c245189049d35468aa83cf51828d4428')
+makedepends=('git')
+_commit='a5597af77b942b97cacb207929043c9aac0b756e'
+source=("git+https://github.com/Magentron/streamripper#commit=${_commit}")
+sha256sums=('be6711fa28351a8f2165cff41b7afd253ccbf910cf342d253c53511a37966e60')
+
+pkgver() {
+  local _rel_commit='6e5f5fecd31f45eacf630443d91eea6f850dcab1'
+  cd "${pkgname}"
+  printf "%s+%s+%s" "${_pkgver}" "$(( `git rev-list --count ${_commit}` - `git rev-list --count ${_rel_commit}` ))" "`git rev-parse --short ${_commit}`"
+}
 
 build() {
-  cd "${pkgname}-${pkgver}"
+  cd "${pkgname}"
   ./configure --prefix=/usr
   make
 }
 
 package() {
-  cd "${pkgname}-${pkgver}"
+  cd "${pkgname}"
   make DESTDIR="$pkgdir" install
 }
