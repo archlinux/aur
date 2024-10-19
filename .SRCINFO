@@ -1,7 +1,7 @@
 pkgbase = nrpe
 	pkgdesc = Nagios Remote Plugin Executor
-	pkgver = 4.1.0
-	pkgrel = 4
+	pkgver = 4.1.1
+	pkgrel = 1
 	url = https://github.com/NagiosEnterprises/nrpe
 	install = nrpe.install
 	arch = x86_64
@@ -11,9 +11,9 @@ pkgbase = nrpe
 	depends = openssl
 	optdepends = monitoring-plugins: common tools for monitoring using nrpe
 	backup = etc/nrpe/nrpe.cfg
-	source = https://github.com/NagiosEnterprises/nrpe/releases/download/nrpe-4.1.0/nrpe-4.1.0.tar.gz
+	source = https://github.com/NagiosEnterprises/nrpe/releases/download/nrpe-4.1.1/nrpe-4.1.1.tar.gz
 	source = nrpe.sysusers
-	sha256sums = a1f14aa8aaf935b576cc55ab5d77b7cb9c920d7702aff44c9d18c4c841ef8ecc
+	sha256sums = 0e716a7d904e0a441be52a0ef82c1138b949bad81c1da93056a81405aabcc0d7
 	sha256sums = 9430d6c7ccf9817f9c66eda8e2126b0b0fdad93fa17dee9227627c35a4101ad3
 
 pkgname = nrpe

@@ -3,8 +3,8 @@
 # Contributor: Dale Blount <dale@archlinux.org>
 
 pkgname=nrpe
-pkgver=4.1.0
-pkgrel=4
+pkgver=4.1.1
+pkgrel=1
 pkgdesc="Nagios Remote Plugin Executor"
 arch=('x86_64')
 license=('GPL-2.0-or-later')
@@ -16,7 +16,7 @@ backup=('etc/nrpe/nrpe.cfg')
 url="https://github.com/NagiosEnterprises/nrpe"
 source=(https://github.com/NagiosEnterprises/nrpe/releases/download/$pkgname-$pkgver/$pkgname-$pkgver.tar.gz
         nrpe.sysusers)
-sha256sums=('a1f14aa8aaf935b576cc55ab5d77b7cb9c920d7702aff44c9d18c4c841ef8ecc'
+sha256sums=('0e716a7d904e0a441be52a0ef82c1138b949bad81c1da93056a81405aabcc0d7'
             '9430d6c7ccf9817f9c66eda8e2126b0b0fdad93fa17dee9227627c35a4101ad3')
 
 build() {
