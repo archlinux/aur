@@ -2,7 +2,7 @@
 # Contributor:
 pkgname=stayfree-desktop
 pkgver=2.7.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Analytics to help you understand and control your pc usage, leading to less distractions and enhanced productivity."
 arch=('x86_64')
 url="https://stayfreeapps.com"
@@ -14,8 +14,11 @@ install=${pkgname}.install
 source_x86_64=("https://github.com/stayfree-app/desktop-releases/releases/download/v$pkgver/stayfree-linux-amd64.deb")
 sha256sums_x86_64=('cbcded00bbebd4f56084e013fe326b6c7db4e9e96a2b8e115f3a94667c1c2b3b')
 package() {
+  # Estrai il file .deb
+  tar -xf "${srcdir}/stayfree-linux-amd64.deb" -C "${srcdir}"
+  
+  # Estrai il contenuto di data.tar.xz (o simile, potrebbe essere data.tar.gz, controlla il contenuto)
+  tar -xf "${srcdir}/data.tar.xz" -C "${pkgdir}"
 
-  # Extract package data
-  tar -xz -f data.tar.gz -C "${pkgdir}"
-
+  # Se hai bisogno di eseguire ulteriori operazioni di configurazione o spostamento file, aggiungile qui
 }
