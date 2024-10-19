@@ -3,32 +3,22 @@
 
 pkgname=assistant
 pkgver=6.0
-pkgrel=2
-_pkg=1091
+pkgrel=4
+_pkg=1089
 pkgdesc='Secure remote access to computers over a local network or over the Internet.'
 arch=('x86_64')
 license=('custom:SAFIB LTD')
 url="https://xn--80akicokc0aablc.xn--p1ai/"
-depends=('bash' 'gtk2' 'gtk-engine-murrine')
+depends=('bash' 'desktop-file-utils' 'gtk2' 'hicolor-icon-theme' 'v4l-utils')
+options=('!strip')
 install=${pkgname}.install
-source=("${url}%D1%81%D0%BA%D0%B0%D1%87%D0%B0%D1%82%D1%8C/Download/${_pkg}"
-	"https://archive.archlinux.org/packages/l/libtiff/libtiff-4.5.0-4-x86_64.pkg.tar.zst")
-md5sums=('46F00F6E81A4E5904C6FEE5D7EACCABB'
-	 'f06d9d5070038b0dc84b0bdfc8cf37b8')
-
-build() {
-
-	# Libtiff, package requires libtiff4.5.0 version
-	tar -xf libtiff-4.5.0-4-x86_64.pkg.tar.zst
-}
-
+source=("${url}%D1%81%D0%BA%D0%B0%D1%87%D0%B0%D1%82%D1%8C/Download/${_pkg}")
+md5sums=('1563A25D7B6D671CF6E0BBE4CBAD0754')
 
 package() {
-	sh "${_pkg}" --tar -xf
-	mkdir ${pkgdir}/opt
-	tar -C ${pkgdir}/opt/ -xvf ${pkgname}.tar.gz
-	cp "${srcdir}/usr/lib/libtiff.so.6.0.0" "${pkgdir}/opt/${pkgname}/lib/libtiff.so.6"
-	install -Dm644 "${pkgdir}/opt/${pkgname}/license/License.rtf" "${pkgname}/usr/share/licenses/${pkgname}/License.rtf"
-#	find "${pkgdir}" -type d -print0 |xargs -0 chmod 755
+	# Extract package data
+	tar xf data.tar.gz -C "${pkgdir}"
 
+	install -D -m644 "${pkgdir}/opt/${pkgname}/license/License.rtf" "${pkgdir}/usr/share/licenses/${pkgname}/License.rtf"
+	install -D -m644 "${pkgdir}/opt/${pkgname}/scripts/assistant.desktop" "${pkgdir}/usr/share/applications/remote-${pkgname}.desktop"
 }
