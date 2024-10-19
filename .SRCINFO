@@ -36,7 +36,7 @@ pkgbase = ruffle-bin
 	sha256sums_x86_64 = f043303d00abda09e5f23823cd9211b16b9448ac81f87b3c609e7158d4ef5920
 	source_aarch64 = ruffle-2024.10.19-arm64.tar.xz::https://gitlab.com/linuxbombay/ruffle-linux/binaries/ruffle-2024.10.19/-/raw/main/ruffle-arm64.tar.xz
 	source_aarch64 = https://gitlab.com/linuxbombay/ruffle-linux/ruffle-packaging/-/archive/1.0.2/ruffle-packaging-1.0.2.tar.bz2
-	sha256sums_aarch64 = a108ed1af0418fb3afc154ff51ed00b157d37587db417b00a68f1fcd1f31fca1
+	sha256sums_aarch64 = 41552ec720f0c8db153ac5ce28a5070d5334941fc305e8c94e6cee9b84d0e7dc
 	sha256sums_aarch64 = f043303d00abda09e5f23823cd9211b16b9448ac81f87b3c609e7158d4ef5920
 
 pkgname = ruffle-bin

@@ -22,7 +22,7 @@ sha256sums_i686=('800128fb369ebb30cf3d9c7e7b48b83d8c8603f273fb46808d8e5444edd2ab
                  'f043303d00abda09e5f23823cd9211b16b9448ac81f87b3c609e7158d4ef5920')
 sha256sums_x86_64=('38b47f48d746800562ae36460c124874e79070284b3f6f9deaf4f9bc45759ce8'
                    'f043303d00abda09e5f23823cd9211b16b9448ac81f87b3c609e7158d4ef5920')
-sha256sums_aarch64=('a108ed1af0418fb3afc154ff51ed00b157d37587db417b00a68f1fcd1f31fca1'
+sha256sums_aarch64=('41552ec720f0c8db153ac5ce28a5070d5334941fc305e8c94e6cee9b84d0e7dc'
                     'f043303d00abda09e5f23823cd9211b16b9448ac81f87b3c609e7158d4ef5920')
 source_x86_64=("ruffle-$pkgver-x64.tar.xz::https://gitlab.com/linuxbombay/ruffle-linux/binaries/ruffle-$pkgver/-/raw/main/ruffle-x64.tar.xz" 
 "https://gitlab.com/linuxbombay/ruffle-linux/ruffle-packaging/-/archive/$scriptver/ruffle-packaging-$scriptver.tar.bz2")
