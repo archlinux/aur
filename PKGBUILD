@@ -1,12 +1,13 @@
 # Maintainer: Randall Winkhart <idgr at tutanota dot com>
 pkgname=mutn
-pkgver=0.2.2
+pkgver=0.2.3
 pkgrel=1
 pkgdesc='A simple, self-hosted, SSH-synchronized password/note manager for the CLI (based on libmutton)'
 arch=('x86_64' 'i686' 'i486' 'pentium4' 'aarch64' 'armv7h' 'riscv64')
 url='https://github.com/rwinkhart/MUTN'
 license=('MIT')
-makedepends=(go util-linux gzip)
+depends=(gnupg)
+makedepends=(go grep gzip)
 optdepends=(
     'wl-clipboard: Wayland clipboard support'
     'xclip: X11 clipboard support'
@@ -24,12 +25,12 @@ build() {
     # determine microarchitecture feature level
     case $CARCH in
         'x86_64')
-            lscpuOutput=$(lscpu | grep Flags)
-            if [ ! -z "$(echo $lscpuOutput | grep avx512f)" ]; then
+            cpuFlags=$(grep -E 'flags\s+:\s' /proc/cpuinfo)
+            if [ ! -z "$(grep 'avx512f' <<< "$cpuFlags")" ]; then
                 export GOAMD64=v4
-            elif [ ! -z "$(echo $lscpuOutput | grep avx2)" ]; then
+            elif [ ! -z "$(grep 'avx2' <<< "$cpuFlags")" ]; then
                 export GOAMD64=v3
-            elif [ ! -z "$(echo $lscpuOutput | grep sse4_2)" ]; then
+            elif [ ! -z "$(grep 'sse4_2' <<< "$cpuFlags")" ]; then
                 export GOAMD64=v2
             else
                 export GOAMD64=v1
