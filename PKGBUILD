@@ -1,6 +1,6 @@
 # Maintainer: Daniel Goß <developer@flashsystems.de>
 pkgname=ukibak
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="Unified Kernel Image backup utitlity"
 arch=('x86_64')
@@ -15,7 +15,7 @@ install=
 changelog=
 source=("$pkgname-$pkgver.tar.gz::https://github.com/FlashSystems/$pkgname/archive/v$pkgver.tar.gz")
 noextract=()
-sha256sums=('ba96810979bcc6c650d1467ca930f9d7ae235a29bc98c2183d4ffebcf1b00304')
+sha256sums=('1f2a7c2ddd7f09e28b1e7de2282e83a5705f8c57acf0534a0f6d00d66e06d9c2')
 
 prepare() {
   cd "$pkgname-$pkgver"
