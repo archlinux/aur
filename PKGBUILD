@@ -9,7 +9,7 @@ pkgname=(
   "${pkgbase}-openvino"
 )
 pkgver=1.7.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Port of OpenAI's Whisper model in C/C++"
 arch=('armv7h' 'aarch64' 'x86_64')
 url="https://github.com/ggerganov/whisper.cpp"
@@ -41,6 +41,8 @@ _package() {
   done
   mv "${pkgdir}/usr/bin/${pkgbase}-main" \
     "${pkgdir}/usr/bin/${pkgbase}"
+  rm "${pkgdir}/usr/include/"ggml*
+
   install -Dm644 LICENSE \
     -t "${pkgdir}/usr/share/licenses/${pkgbase}"
 }
