@@ -1,16 +1,20 @@
 pkgbase = ruby-bump
 	pkgdesc = Bump your gem version file
 	pkgver = 0.10.0
-	pkgrel = 2
+	pkgrel = 5
 	url = https://github.com/gregorym/bump
 	arch = any
 	license = MIT
+	checkdepends = ruby-bundler
+	checkdepends = ruby-byebug
+	checkdepends = ruby-rake
+	checkdepends = ruby-rspec
+	checkdepends = ruby-rubocop
 	makedepends = git
 	makedepends = ruby-rdoc
-	makedepends = rubygems
 	depends = ruby
 	options = !emptydirs
-	source = git+https://github.com/gregorym/bump.git?tag=v0.10.0
+	source = git+https://github.com/gregorym/bump.git#commit=73c206174ca02549d120402b9a007db0d0bc9699
 	sha256sums = SKIP
 
 pkgname = ruby-bump
