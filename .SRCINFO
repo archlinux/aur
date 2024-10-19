@@ -1,6 +1,6 @@
 pkgbase = obs-source-copy
 	pkgdesc = Copy and paste scenes, sources and filters on clipboard
-	pkgver = 0.2.4
+	pkgver = 0.2.5
 	pkgrel = 1
 	url = https://obsproject.com/forum/resources/source-copy.1261/
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = obs-source-copy
 	depends = glibc
 	depends = gcc-libs
 	depends = qt6-base
-	source = obs-source-copy::git+https://github.com/exeldro/obs-source-copy#commit=144c20888ca1caea38f9d6e765fd29d1cc7c94eb
+	source = obs-source-copy::git+https://github.com/exeldro/obs-source-copy#commit=fd8eb2bd045e3d0a1fa012f05061211bfcbf7352
 	sha256sums = SKIP
 
 pkgname = obs-source-copy
