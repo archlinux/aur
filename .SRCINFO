@@ -1,6 +1,6 @@
 pkgbase = python-cyclonedx-lib
 	pkgdesc = Render and read CycloneDX, a lightweight BOM specification document format
-	pkgver = 7.6.2
+	pkgver = 8.0.0
 	pkgrel = 1
 	url = https://github.com/CycloneDX/cyclonedx-python-lib
 	arch = any
@@ -22,7 +22,7 @@ pkgbase = python-cyclonedx-lib
 	conflicts = python-cyclonedx-lib-git
 	options = !debug
 	options = !strip
-	source = cyclonedx-python-lib-7.6.2.tar.gz::https://github.com/CycloneDX/cyclonedx-python-lib/archive/refs/tags/v7.6.2.tar.gz
-	sha512sums = ef1e1dea56a7dd18bfc874f67b9848b9ed17e7f66de1495653cf0d4ac067fa230b8f3e5267efe32e49fcc00c95c3a1e64ab945d3d53472108c5dc2e8b1f6260d
+	source = cyclonedx-python-lib-8.0.0.tar.gz::https://github.com/CycloneDX/cyclonedx-python-lib/archive/refs/tags/v8.0.0.tar.gz
+	sha512sums = d3b595d0c3363fa5811e94a7da54762aae4a0b27e693646276990afb4087b4314772270f6a194c335bafd5860676569340158611e75cb747f67ace367c95eac0
 
 pkgname = python-cyclonedx-lib
