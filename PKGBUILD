@@ -1,39 +1,39 @@
-# Maintainer: Luca Weiss <luca (at) z3ntu (dot) xyz>
+# Maintainer: Luca Weiss <aur (at) lucaweiss (dot) eu>
 
 pkgname=khealthcertificate-git
 _pkgname=khealthcertificate
-pkgver=r16.4b2cf8a
+pkgver=24.01.90.r5.gd469570
 pkgrel=1
 pkgdesc="Handling of digital vaccination, test and recovery certificates"
 arch=(x86_64)
 url="https://invent.kde.org/pim/khealthcertificate"
-license=(LGPL)
+license=(LGPL-2.0-or-later)
 provides=($_pkgname)
 conflicts=($_pkgname)
-# Needs -git versions of KF5 until at least KF5 5.84
-depends=(qt5-declarative kcodecs-git karchive-git)
-makedepends=(git extra-cmake-modules-git)
+depends=(gcc-libs
+         glibc
+         karchive
+         kcodecs
+         ki18n
+         openssl
+         qt6-base
+         zlib)
+makedepends=(git extra-cmake-modules qt6-declarative)
+optdepends=('qt6-declarative: QML bindings')
 source=("git+https://invent.kde.org/pim/khealthcertificate.git")
 sha256sums=('SKIP')
 
 pkgver() {
   cd $_pkgname
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
-prepare() {
-  mkdir -p build
+  git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  cd build
-  cmake ../$_pkgname \
-    -DCMAKE_INSTALL_PREFIX=/usr \
+  cmake -B build -S $_pkgname \
     -DBUILD_TESTING=OFF
-  make
+  cmake --build build
 }
 
 package() {
-  cd build
-  make DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" cmake --install build
 }
