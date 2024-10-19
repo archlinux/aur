@@ -31,9 +31,9 @@ source=(
 )
 
 sha256sums=('SKIP'
-            '60fa088feb4e7f3df7b3e2d5298ae5ba4060ffbfa6990214edbf1f663af286d0'
+            '94ac20d815a7d3236fc03f3355f7c304ca32bb0db215dc933b3617143d207c13'
             '5ca350f037728b8a96ddb434d2a69adfb7da83786486ea3c460163957ee442f9'
-            'af10628342f89cbb99fccd4c4c4eaf2ec7bf1d5da69635b375a322aa5331bed9')
+            'c9827dcdde818937b51cb75ea655f645418ca3e6db0f105619a1c19530ba8955')
 
 pkgver() {
 	cd "$pkgname"
