@@ -2,34 +2,36 @@
 # Contributor: Mattia Borda <mattiagiovanni.borda@icloud.com>
 
 pkgname=furtherance
-pkgver=1.8.3
+pkgver=24.10.3
 pkgrel=1
 pkgdesc="Track your time without being tracked"
 arch=('x86_64')
-url="https://github.com/lakoliu/Furtherance"
+url="https://github.com/unobserved-io/Furtherance"
 license=('GPL-3.0-or-later')
-depends=('cairo'
-         'dbus'
-         'dconf'
-         'gcc-libs'
-         'gdk-pixbuf2'
-         'glib2'
-         'glibc'
-         'graphene'
-         'gtk4'
-         'hicolor-icon-theme'
-         'libadwaita'
-         'pango'
-         'sqlite')
-makedepends=('cargo' 'meson')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/lakoliu/Furtherance/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('2cca9ab2c2b81c0d9ed94673fbf62b3a1ad11c813cd67038c8c5aeb7d87e37dc')
+depends=('fontconfig' 'freetype2' 'gcc-libs' 'glibc' 'hicolor-icon-theme' 'libx11' 'libxss')
+makedepends=('cargo')
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
+sha256sums=('22f1a36adbaedccc5862bf9c21966113920e9db354f304b4b584b4c5d3c1e91e')
+
+prepare() {
+    cd "${pkgname^}-${pkgver}"
+    export RUSTUP_TOOLCHAIN=stable
+    export RUSTFLAGS=''
+    cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+}
 
 build() {
-    arch-meson "${pkgname^}-${pkgver}" build
-    meson compile -C build
+    cd "${pkgname^}-${pkgver}"
+    export RUSTUP_TOOLCHAIN=stable
+    export CARGO_TARGET_DIR=target
+    export CFLAGS="${CFLAGS/-flto=auto/}"
+    cargo build --frozen --release
 }
 
 package() {
-    meson install -C build --destdir "${pkgdir}"
+    cd "${pkgname^}-${pkgver}"
+    install -Dm755 "target/release/${pkgname}" -t "${pkgdir}/usr/bin"
+    install -Dm644 assets/linux/io.unobserved.furtherance.appdata.xml -t "${pkgdir}/usr/share/metainfo"
+    install -Dm644 assets/linux/io.unobserved.furtherance.desktop -t "${pkgdir}/usr/share/applications"
+    install -Dm644 assets/icon/io.unobserved.furtherance.svg -t "${pkgdir}/usr/share/icons/hicolor/scalable/apps"
 }

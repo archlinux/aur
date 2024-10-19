@@ -1,0 +1,5 @@
+[furtherance]
+source = "github"
+github = "unobserved-io/Furtherance"
+use_max_tag = true
+prefix = "v"
