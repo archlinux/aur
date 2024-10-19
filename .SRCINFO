@@ -1,0 +1,24 @@
+pkgbase = corosync-nosystemd-git
+	pkgdesc = Cluster engine for nodal communication systems with additional features for implementing high availability within applications. Without systemd dependency/ support, latest git checkout.
+	pkgver = 3.1.8.r16.g8b9d5e70
+	pkgrel = 1
+	url = http://www.corosync.org/
+	arch = i686
+	arch = x86_64
+	license = BSD-3-Clause
+	makedepends = git
+	depends = nss
+	depends = libstatgrab
+	depends = net-snmp
+	depends = libdbus
+	depends = libqb
+	depends = libcgroup
+	depends = kronosnet
+	provides = corosync=3.1.8
+	provides = corosync-nosystemd=3.1.8
+	provides = corosync-git=3.1.8
+	conflicts = corosync
+	source = corosync-nosystemd-git::git+https://github.com/corosync/corosync.git
+	md5sums = SKIP
+
+pkgname = corosync-nosystemd-git
