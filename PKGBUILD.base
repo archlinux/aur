@@ -5,6 +5,7 @@ _pkgname="thorium-browser"
 
 : ${pkgver:=$(grep -Pom1 '^pkgver=\K\S+' "$startdir"/PKGBUILD)}
 : ${pkgrel:=$(grep -Pom1 '^pkgrel=\K.*' "$startdir"/PKGBUILD)}
+: ${_hash:=SKIP}
 
 eval "$(grep -Pom1 '^pkgdesc=.*' "$startdir"/PKGBUILD)"
 eval "$(grep -Pom1 '^url=.*' "$startdir"/PKGBUILD)"
@@ -20,7 +21,7 @@ _source_main() {
   noextract+=("$_dl_filename")
 
   source=("$_dl_url/$_dl_filename")
-  sha256sums=('5dcea3c3508b9fe6b4990d8663254f6a333a5a4fe0644a9f86ceca5a57444a27')
+  sha256sums=("$_hash")
 }
 
 prepare() {
