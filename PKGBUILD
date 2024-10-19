@@ -1,6 +1,6 @@
-# Maintainer: Chewing_Bever
 # Maintainer: tippfehlr <tippfehlr@tippfehlr.eu>
-# Contributor: Heddxh <g311571057 at gmail dot com>
+# Maintainer: Heddxh <g311571057 at gmail dot com>
+# Contributor: Chewing_Bever
 pkgname=fish-lsp-git
 _pkgname=${pkgname%-git}
 pkgver=r318.ed156da
