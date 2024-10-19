@@ -46,4 +46,4 @@ if [[ "$currentElectronVersion" != "$latestElectronVersion" ]]; then
   git commit -m "chore!: update to electron ${latestElectronVersion}"
 fi
 
-# git push origin master
+git push origin master
