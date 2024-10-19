@@ -1,13 +1,14 @@
 pkgbase = zesarux-bin
 	pkgdesc = Emulator of different Z80-based computers, including ZX Spectrum. Precompiled binary.
 	pkgver = 11.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/chernandezba/zesarux
 	arch = x86_64
 	license = GPL3
 	depends = ncurses
 	optdepends = pulseaudio
 	optdepends = sdl
+	provides = zesarux
 	conflicts = zesarux
 	source = https://github.com/chernandezba/zesarux/releases/download/ZEsarUX-11.0/ZEsarUX_linux-11.0-debian11_x86_64.tar.gz
 	source = Zesarux.desktop

@@ -2,7 +2,7 @@
 # Contributor: Alexey Trifonov <otaku [at] rambler dot ru>
 pkgname=zesarux-bin
 pkgver=11.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Emulator of different Z80-based computers, including ZX Spectrum. Precompiled binary." 
 arch=('x86_64')
 url="https://github.com/chernandezba/zesarux"
@@ -10,6 +10,7 @@ license=('GPL3')
 depends=('ncurses')
 optdepends=('pulseaudio' 'sdl')
 conflicts=('zesarux')
+provides=('zesarux')
 source=("https://github.com/chernandezba/zesarux/releases/download/ZEsarUX-11.0/ZEsarUX_linux-11.0-debian11_x86_64.tar.gz"
         "Zesarux.desktop"
         "zesarux.png")
