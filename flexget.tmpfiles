@@ -1,3 +1,3 @@
 d /var/lib/flexget            0755 flexget flexget -
-f /var/lib/flexget/config.yml 0755 flexget flexget -
+f /var/lib/flexget/config.yml 0644 flexget flexget -
 Z /var/lib/flexget            -    flexget flexget -
