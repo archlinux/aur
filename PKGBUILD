@@ -1,6 +1,6 @@
 # Maintainer: Akash Sil <akashsil420@duck.com>
 pkgname='project-monalisa'
-pkgver=1
+pkgver=1.0
 pkgrel=1
 url='https://github.com/Akash420-oss/project-monalisa'
 pkgdesc="This project allows you to explore networking protocols by sending custom packets, monitoring traffic, and identifying services like SSH, FTP, and Telnet without using traditional commands or tools."
