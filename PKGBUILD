@@ -1,23 +1,28 @@
 # Maintainer: Maxim Baz <$pkgname at maximbaz dot com>
 pkgname=stow-cm
-pkgver=nightly
+_pkgname=stow-cm
+pkgver=stable
 pkgrel=1
 pkgdesc="config manager (gun-stow like)"
 arch=('x86_64')
-url="https://github.com/someoneonsmile/${pkgname}"
+url="https://github.com/someoneonsmile/${_pkgname}"
 license=('GPL2')
 # depends=('coreutils')
 makedepends=()
 conflicts=()
-source=("${pkgname}.tar.gz::https://github.com/someoneonsmile/${pkgname}/releases/download/nightly/${pkgname}-x86_64-unknown-linux-musl.tar.gz")
+source=("${_pkgname}.tar.gz::https://github.com/someoneonsmile/${_pkgname}/releases/download/stable/${_pkgname}-x86_64-unknown-linux-musl.tar.gz")
 sha512sums=('SKIP')
 
 pkgver() {
-  sha256sum ${pkgname}.tar.gz | cut -d ' ' -f 1
+  # sha256sum ${_pkgname}.tar.gz | cut -d ' ' -f 1
+
+  cd "$srcdir/stow-cm-x86_64-unknown-linux-musl/" || exit 1
+  ./stow-cm --version | cut -d ' ' -f2
+  # expr "$(./stow-cm --version)" : '.* \(.*\))'
 }
 
 package() {
-  cd "$srcdir/${pkgname}-x86_64-unknown-linux-musl"
-  install -Dm755 "${pkgname}" "$pkgdir/usr/bin/$pkgname"
-  install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  cd "$srcdir/${_pkgname}-x86_64-unknown-linux-musl"
+  install -Dm755 "${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
+  install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 }
