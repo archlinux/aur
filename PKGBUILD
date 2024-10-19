@@ -1,3 +1,4 @@
+# Maintainer:  dreieck
 # Contributor: twa022 <twa022 at gmail dot com>
 
 _pkgname=openr2
