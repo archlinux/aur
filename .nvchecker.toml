@@ -1,0 +1,5 @@
+[python-formencode]
+source = "github"
+github = "formencode/formencode"
+prefix = "v"
+use_max_tag = true

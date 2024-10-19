@@ -1,0 +1,49 @@
+commit 43edbb5fd007ff352a6b75719aee466ae916dbab
+Author: Oleg Broytman <phd@phdru.name>
+Date:   Fri Nov 10 18:46:03 2023 +0300
+
+    Prepare for Python 3.13 which removes the cgi module (#176)
+
+diff --git a/src/formencode/validators.py b/src/formencode/validators.py
+index f2011b4..6f272b7 100644
+--- a/src/formencode/validators.py
++++ b/src/formencode/validators.py
+@@ -5,7 +5,10 @@
+ Validator/Converters for use with FormEncode.
+ """
+ 
+-import cgi
++try:
++    import cgi
++except ImportError:  # Python >= 3.13
++    cgi = None
+ import re
+ import warnings
+ from encodings import idna
+@@ -1772,7 +1775,7 @@ class FieldStorageUploadConverter(FancyValidator):
+     no upload was given).
+     """
+     def _convert_to_python(self, value, state=None):
+-        if isinstance(value, cgi.FieldStorage):
++        if cgi and isinstance(value, cgi.FieldStorage):
+             if getattr(value, 'filename', None):
+                 return value
+             raise Invalid('invalid', value, state)
+@@ -1780,7 +1783,7 @@ class FieldStorageUploadConverter(FancyValidator):
+             return value
+ 
+     def is_empty(self, value):
+-        if isinstance(value, cgi.FieldStorage):
++        if cgi and isinstance(value, cgi.FieldStorage):
+             return not bool(getattr(value, 'filename', None))
+         return FancyValidator.is_empty(self, value)
+ 
+@@ -1825,7 +1828,7 @@ class FileUploadKeeper(FancyValidator):
+         upload = value.get(self.upload_key)
+         static = value.get(self.static_key, '').strip()
+         filename = content = None
+-        if isinstance(upload, cgi.FieldStorage):
++        if cgi and isinstance(upload, cgi.FieldStorage):
+             filename = upload.filename
+             content = upload.value
+         elif isinstance(upload, str) and upload:
