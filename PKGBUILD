@@ -12,11 +12,10 @@ pkgdesc="Secure audiodisc ripper"
 arch=(any)
 url="https://github.com/bleskodev/rubyripper"
 license=(GPL-3.0-only)
-depends=(cdparanoia ruby ruby-rexml ruby-gtk3) #ruby-iconv
-makedepends=(git ruby-gettext)
+depends=(cdparanoia ruby ruby-rexml ruby-gtk3 ruby-gettext)
+makedepends=(git)
 checkdepends=(ruby-rspec) #ruby-cucumber #ruby-rexml is also a checkdepend
-optdepends=('ruby-gettext: Translations'
-            'cd-discid: Gnudb support'
+optdepends=('cd-discid: Gnudb support'
             'lame: MP3 encoding support'
             'vorbis-tools: Ogg Vorbis encoding support'
             'flac: FLAC encoding support'
