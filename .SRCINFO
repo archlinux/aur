@@ -1,7 +1,7 @@
 pkgbase = stayfree-desktop
 	pkgdesc = Analytics to help you understand and control your pc usage, leading to less distractions and enhanced productivity.
 	pkgver = 2.7.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://stayfreeapps.com
 	install = stayfree-desktop.install
 	arch = x86_64

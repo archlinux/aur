@@ -14,11 +14,7 @@ install=${pkgname}.install
 source_x86_64=("https://github.com/stayfree-app/desktop-releases/releases/download/v$pkgver/stayfree-linux-amd64.deb")
 sha256sums_x86_64=('cbcded00bbebd4f56084e013fe326b6c7db4e9e96a2b8e115f3a94667c1c2b3b')
 package() {
-  # Estrai il file .deb
-  tar -xf "${srcdir}/stayfree-linux-amd64.deb" -C "${srcdir}"
+  bsdtar -xf "${srcdir}/stayfree-linux-amd64.deb" -C "${srcdir}"
   
-  # Estrai il contenuto di data.tar.xz (o simile, potrebbe essere data.tar.gz, controlla il contenuto)
-  tar -xf "${srcdir}/data.tar.xz" -C "${pkgdir}"
-
-  # Se hai bisogno di eseguire ulteriori operazioni di configurazione o spostamento file, aggiungile qui
+  bsdtar -xf "${srcdir}/data.tar.xz" -C "${pkgdir}"
 }
