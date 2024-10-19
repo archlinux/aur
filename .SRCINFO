@@ -1,25 +1,25 @@
 pkgbase = ckmame
 	pkgdesc = check ROM sets for MAME
-	pkgver = 2.0
+	pkgver = 2.1.r9.gb17fffe
 	pkgrel = 1
 	url = https://www.nih.at/ckmame/
 	arch = i686
 	arch = x86_64
-	license = custom
+	license = MIT
 	checkdepends = perl
 	makedepends = cmake
-	depends = zlib
+	makedepends = git
+	depends = glibc
+	depends = gcc-libs
+	depends = zlib>=1.1.2
 	depends = libxml2
-	depends = libzip
+	depends = libzip>=1.8.0
 	depends = sqlite3
-	source = https://www.nih.at/ckmame/ckmame-2.0.tar.xz
-	source = 0000-DatDb.h-optional.patch::https://github.com/nih-at/ckmame/commit/932308538325e7036b8223631a201909064fc036.patch
-	source = 0001-Command.cc-compat-getprogname.patch::https://github.com/nih-at/ckmame/commit/a8fe3862c921e9648342361ccbdfe8eaa785a83b.patch
-	md5sums = 8f1a6b57dd93949ba8516737474bdffe
-	md5sums = 05d2a7aff493450618f7336668da8374
-	md5sums = 92533a4d2ca61abae08e8494c863569e
-	sha256sums = 40dc193c5a3d8163ec9936cc5193d992445f5fe08c854541d864bee53c09816d
-	sha256sums = 035330a5c297e7c5eb5d9ff4d95440843e43bde003ec819e7642e4db7b79635f
-	sha256sums = 9bac9cddc9a30973ffe19d4b51df8d938f924f52af0a726549fa1639713b2016
+	depends = libarchive
+	provides = ckmame=2.1
+	conflicts = ckmame
+	source = git+https://github.com/nih-at/ckmame.git#commit=b17fffe099ebe26759100fc722b66b8b218b287b
+	md5sums = SKIP
+	sha256sums = SKIP
 
 pkgname = ckmame

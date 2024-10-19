@@ -3,16 +3,24 @@
 # Contributor: Krzysztof Wloch <wloszekk@gmail.com>
 # Contributor: demonicmaniac <stormtrooperofdeath@gmx.net>
 
+# Release versions are often broken. We can pull patches from future commits
+# or just use a working commit
+_commit=''
+_commit='#commit=b17fffe099ebe26759100fc722b66b8b218b287b'
+
 set -u
 pkgname='ckmame'
 #pkgname+='-git'
-pkgver=2.0
+pkgver=2.1.r9.gb17fffe
 pkgrel=1
 pkgdesc='check ROM sets for MAME'
 arch=('i686' 'x86_64')
 url='https://www.nih.at/ckmame/'
-license=('custom')
-depends=('zlib' 'libxml2' 'libzip' 'sqlite3')
+#url='
+license=('MIT')
+#license+=('BSD-3-Clause') # not mentioned since 2007
+depends=('glibc' 'gcc-libs' 'zlib>=1.1.2' 'libxml2' 'libzip>=1.8.0' 'sqlite3')
+depends+=('libarchive') # optional, but always available in Arch
 makedepends=('cmake')
 checkdepends=('perl')
 #_verwatch=("${url}" '.*Current version: \([0-9\.]\+\).*' 'f')
@@ -21,23 +29,20 @@ _verwatch=("${url}" "${pkgname}-\([0-9\.]\+\)\.tar\.xz" 'l')
 _srcdir="${pkgname}-${pkgver}"
 source=(
   "${url}${pkgname}-${pkgver}.tar.xz"
-  "0000-DatDb.h-optional.patch::${_giturl}/commit/932308538325e7036b8223631a201909064fc036.patch"
-  "0001-Command.cc-compat-getprogname.patch::${_giturl}/commit/a8fe3862c921e9648342361ccbdfe8eaa785a83b.patch"
+  #"0000-DatDb.h-optional.patch::${_giturl}/commit/932308538325e7036b8223631a201909064fc036.patch"
+  #"0001-Command.cc-compat-getprogname.patch::${_giturl}/commit/a8fe3862c921e9648342361ccbdfe8eaa785a83b.patch"
 )
-md5sums=('8f1a6b57dd93949ba8516737474bdffe'
-         '05d2a7aff493450618f7336668da8374'
-         '92533a4d2ca61abae08e8494c863569e')
-sha256sums=('40dc193c5a3d8163ec9936cc5193d992445f5fe08c854541d864bee53c09816d'
-            '035330a5c297e7c5eb5d9ff4d95440843e43bde003ec819e7642e4db7b79635f'
-            '9bac9cddc9a30973ffe19d4b51df8d938f924f52af0a726549fa1639713b2016')
+md5sums=('9fa3bce66ccefda200ba51fe802db0dc')
+sha256sums=('d62e63f639084484d0fac8f215703b32f6d3c8e16f443d3340b7b54bfa37183a')
 
-if [ "${pkgname%-git}" != "${pkgname}" ]; then
-  source[0]="git+${_giturl}.git"
+if [ "${pkgname%-git}" != "${pkgname}" ] || [ ! -z "${_commit}" ]; then
+  source[0]="git+${_giturl}.git${_commit}"
   md5sums[0]='SKIP'
   sha256sums[0]='SKIP'
   _srcdir="${pkgname%-git}"
+  makedepends+=('git')
   provides=("${_srcdir}=${pkgver%.r*}")
-  conflcts=("${_srcdir}")
+  conflicts=("${_srcdir}")
 pkgver() {
   set -u
   cd "${_srcdir}"
