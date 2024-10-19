@@ -1,7 +1,7 @@
 pkgbase = borg2
 	pkgdesc = Deduplicating backup program with compression and authenticated encryption
-	pkgver = 2.0.0b9
-	pkgrel = 3
+	pkgver = 2.0.0b12
+	pkgrel = 1
 	url = https://github.com/borgbackup/borg
 	arch = x86_64
 	license = BSD-3-Clause
@@ -29,14 +29,15 @@ pkgbase = borg2
 	depends = zstd
 	depends = xxhash
 	depends = libdeflate
+	depends = python-borgstore=0.1.0
 	provides = borg
 	provides = borgbackup
 	conflicts = borg
 	conflicts = borgbackup
-	source = https://github.com/borgbackup/borg/releases/download/2.0.0b9/borgbackup-2.0.0b9.tar.gz
-	source = https://github.com/borgbackup/borg/releases/download/2.0.0b9/borgbackup-2.0.0b9.tar.gz.asc
+	source = https://github.com/borgbackup/borg/releases/download/2.0.0b12/borgbackup-2.0.0b12.tar.gz
+	source = https://github.com/borgbackup/borg/releases/download/2.0.0b12/borgbackup-2.0.0b12.tar.gz.asc
 	validpgpkeys = 6D5BEF9ADD2075805747B70F9F88FB52FAF7B393
-	b2sums = 6a4d98cd7ca56788beae135eb2b1a1bfabe2343387a807d6a4c0a355018189b68b2fd94e8c819dd09e496ade0670b9a05a4b48e03a5815b2b94e6b67b71f69ed
+	b2sums = 95170f410acb6259e5c50491e99c44588961ac7f7ebec3865d7b515a52da885abdadefd72295910bfbcb61049a72ce148dc09ff6fdd43f158c5cbf07b3a88813
 	b2sums = SKIP
 
 pkgname = borg2

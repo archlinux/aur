@@ -7,8 +7,9 @@
 
 pkgname=borg2
 _pkgname=borgbackup
-pkgver=2.0.0b9
-pkgrel=3
+_borgstore_pkgver=0.1.0
+pkgver=2.0.0b12
+pkgrel=1
 pkgdesc='Deduplicating backup program with compression and authenticated encryption'
 url='https://github.com/borgbackup/borg'
 license=('BSD-3-Clause')
@@ -22,6 +23,7 @@ depends=(
 	'zstd'
 	'xxhash'
 	'libdeflate'
+	"python-borgstore=${_borgstore_pkgver}"
 )
 makedepends=(
 	'cython'
@@ -45,8 +47,10 @@ checkdepends=(
 )
 provides=('borg' 'borgbackup')
 conflicts=('borg' 'borgbackup')
-source=("$url/releases/download/$pkgver/$_pkgname-$pkgver.tar.gz"{,.asc})
-b2sums=('6a4d98cd7ca56788beae135eb2b1a1bfabe2343387a807d6a4c0a355018189b68b2fd94e8c819dd09e496ade0670b9a05a4b48e03a5815b2b94e6b67b71f69ed'
+source=(
+	"$url/releases/download/$pkgver/$_pkgname-$pkgver.tar.gz"{,.asc}
+)
+b2sums=('95170f410acb6259e5c50491e99c44588961ac7f7ebec3865d7b515a52da885abdadefd72295910bfbcb61049a72ce148dc09ff6fdd43f158c5cbf07b3a88813'
         'SKIP')
 validpgpkeys=('6D5BEF9ADD2075805747B70F9F88FB52FAF7B393') # Thomas Waldmann <tw@waldmann-edv.de>
 
