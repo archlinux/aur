@@ -3,8 +3,8 @@
 _name=blink
 _pkgname=blink-qt
 pkgname=blink-git
-pkgver=5.6.0.r1580.19f1c2b
-pkgrel=2
+pkgver=5.9.1.r1873.c46c60d
+pkgrel=1
 pkgdesc='Fully featured, easy to use SIP client with a Qt based UI'
 arch=('aarch64' 'x86_64')
 url='https://icanblink.com'
@@ -21,7 +21,6 @@ depends=(
   'libvncserver'
   'python-application'
   'python-eventlib'
-  'python-formencode'
   'python-gevent'
   'python-gmpy2'
   'python-google-api-python-client'
@@ -30,8 +29,8 @@ depends=(
   'python-oauth2client'
   'python-pgpy'
   'python-pyopenssl'
-#  'python-pyqt5' currently python-pyqt5-webkit provides python-pyqt5
-  'python-pyqt5-webkit'
+  'python-pyqt5'
+  'python-pyqt5-webengine'
   'python-requests'
   'python-service-identity'
   'python-sipsimple'
@@ -39,10 +38,11 @@ depends=(
   'python-twisted'
   'python-zope-interface'
   'qt5-svg'
-  'qt5-webkit'
+  'qt5-webchannel'
+  'qt5-webengine'
   )
-conflicts=(blink)
-provides=(blink)
+conflicts=('blink')
+provides=('blink')
 optdepends=('x11vnc: for screen sharing')
 source=("${pkgname}::git+https://github.com/AGProjects/${_pkgname}.git")
 noextract=()
@@ -66,10 +66,8 @@ package() {
   python -m installer --destdir="$pkgdir" dist/*.whl
 
   # license
-  install -Dm644 LICENSE \
-    "${pkgdir}/usr/share/licenses/${_name}/LICENSE"
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${_name}/LICENSE"
 
   # desktop file
-  install -Dm644 "debian/${_name}.desktop" \
-    "${pkgdir}/usr/share/applications/${_name}.desktop"
+  install -Dm644 "debian/${_name}.desktop" "${pkgdir}/usr/share/applications/${_name}.desktop"
 }
