@@ -1,7 +1,7 @@
 pkgbase = ngs-lang-git
 	pkgdesc = NGS: Next Generation Shell (latest commit)
 	pkgver = 0.2.16.r6.g9f5eb49
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://github.com/ngs-lang/ngs
 	arch = x86_64
