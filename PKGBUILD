@@ -16,6 +16,7 @@ arch=(any)
 url="https://github.com/$_pkgname/$_pkgname"
 license=(MIT)
 depends=(
+    $pkgname-webui
     python-apscheduler
     python-certifi
     python-cherrypy
@@ -42,7 +43,8 @@ depends=(
     python-zxcvbn
 )
 makedepends=(python-build python-installer python-setuptools python-wheel)
-optdepends=('python-boto3: SNS output plugin'
+optdepends=('flexget-webui-v1: webui v1'
+            'python-boto3: SNS output plugin'
             'python-plexapi: plex support'
             'python-pysftp: sftp support'
             'subliminal: subtitles support')
@@ -62,12 +64,12 @@ options=("!strip")
 
 build() {
     cd "$_pkgname-$pkgver"
-    python dev_tools.py bundle-webui
-    find . -iname "*.js.map" -o -iname "*.css.map" | xargs rm -rf
     python -m build --wheel --no-isolation
 }
 
 package() {
+    local python_ver=$(python -V | awk '{print $2}')
+
     install -Dm644 "$pkgname.service"      "$pkgdir/usr/lib/systemd/system/$pkgname.service"
     install -Dm644 "$pkgname@.service"     "$pkgdir/usr/lib/systemd/system/$pkgname@.service"
     install -Dm644 "$pkgname.user.service" "$pkgdir/usr/lib/systemd/user/$pkgname.service"
@@ -75,6 +77,8 @@ package() {
     install -Dm644 "$pkgname.tmpfiles"     "$pkgdir/usr/lib/tmpfiles.d/$pkgname.conf"
 
     cd "$_pkgname-$pkgver"
-    install -Dm644 LICENSE                 "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
     python -m installer --destdir="$pkgdir" dist/*.whl
+    install -Dm644 LICENSE                 "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    ln -sf "/usr/share/flexget-webui/v1/app"  "$pkgdir/usr/lib/python${python_ver%.*}/site-packages/$pkgname/ui/v1/app"
+    ln -sf "/usr/share/flexget-webui/v2/dist" "$pkgdir/usr/lib/python${python_ver%.*}/site-packages/$pkgname/ui/v2/dist"
 }
