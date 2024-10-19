@@ -1,50 +1,93 @@
+# -*- sh -*-
+
 # Contributor: Dan Beste <dan.ray.beste@gmail.com>
-# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
+# Comtributor: Stefan Husmann <stefan-husmann@t-online.de>
+#  Maintainer: Klaus Alexander Seiﬆrup <$(echo 0x1fd+d59decfa=40 | tr 0-9+a-f=x ka-i@p-u.l)>
 
 pkgname='ngs-lang-git'
-pkgver=0.2.16.r1.g4dbdd65
+_pkgname="${pkgname/-git}"
+pkgver=0.2.16.r6.g9f5eb49
 pkgrel=1
 epoch=1
-pkgdesc='Next Generation Shell (NGS)'
+pkgdesc='NGS: Next Generation Shell (latest commit)'
 arch=('x86_64')
 url='https://github.com/ngs-lang/ngs'
-license=('GPLv3')
-makedepends=('cmake' 'git' 'pandoc' 'peg' 'uthash')
-provides=("${pkgname/-git}")
-conflicts=("${pkgname/-git}")
+license=('GPL-3.0-or-later')
+makedepends=(
+  'cmake'
+  'git'
+  'pandoc'
+  'peg'
+  'uthash'
+)
+depends=(
+  'gc'
+  'glibc'
+  'json-c'
+  'libffi'
+  'pcre'
+)
+provides=('ngs' "$_pkgname")
+conflicts=('ngs' "$_pkgname")
 source=('git+https://github.com/ngs-lang/ngs.git')
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "${pkgname/-lang-git}"
+  cd 'ngs'
 
   git describe --tags | cut -c2- | sed 's+-+.r+' |tr - .
 }
 
 prepare() {
-  cd "${pkgname/-lang-git}"
+  cd 'ngs'
+
+  sed -i 's@VERSION 3\.0@VERSION 3.5@'                   CMakeLists.txt
+  sed -i 's@^link_directories@#link_directories@g'       CMakeLists.txt
+  sed -i 's@/usr/local/include /opt/homebrew/include@@g' CMakeLists.txt
 
   mkdir -p build
   cd build
-  cmake -DCMAKE_INSTALL_PREFIX="${pkgdir}/usr" ..
+  cmake -DCMAKE_INSTALL_PREFIX="$pkgdir/usr" ..
 }
 
 build() {
-  cd "${pkgname/-lang-git}/build"
+  cd 'ngs/build'
+
+  # RFC-0023
+  # 🔗 https://rfc.archlinux.page/0023-pack-relative-relocs/
+  #
+  # ld(1) says: “Supported for i386 and x86-64.”
+  case "Z${CARCH:-unknown}" in
+    'Zx86_64' | 'Zi386' )
+      export LDFLAGS="$LDFLAGS -Wl,-z,pack-relative-relocs"
+    ;;
+    * ) : pass ;;
+  esac
 
   make
 }
 
 check() {
-  cd "${pkgname/-lang-git}/build"
+  cd 'ngs/build'
 
   ctest || true
 }
 
 package() {
-  cd "${pkgname/-lang-git}/build"
+  cd 'ngs/build'
 
   make install
+
+  install -vDm0644 -t "$pkgdir/usr/share/doc/$pkgname/" \
+    ../{CHANGELOG,readme}.md ../one-liners.txt
+
+  cd "$pkgdir/usr"
+
+  rm -vrf doc
+  mv -v man share/
+  find   "$pkgdir/usr/bin" -type f -exec chmod o-w {} +
+  install -vdm0755 "$pkgdir/usr/share/doc/$pkgname/demo"
+  mv -vf "$pkgdir/usr/bin/"*.ngs "share/doc/$pkgname/demo/"
 }
 
 # vim: ts=2 sw=2 et:
