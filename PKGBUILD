@@ -3,7 +3,7 @@
 pkgbase=whisper.cpp
 pkgname=(
   "${pkgbase}"
-  "${pkgbase}-cublas"
+  "${pkgbase}-cuda"
   "${pkgbase}-clblas"
   # "${pkgbase}-hipblas"
   "${pkgbase}-openvino"
@@ -65,7 +65,7 @@ build() {
     -DWHISPER_CLBLAST=ON
   )
 
-  local _cmake_cublas_args=(
+  local _cmake_cuda_args=(
     "${_cmake_args[@]}"
     -DWHISPER_CUDA=ON
   )
@@ -90,10 +90,10 @@ build() {
   cmake "${_cmake_clblas_args[@]}"
   cmake --build build
 
-  echo "Build ${pkgbase} with CUBlas (NVIDIA CUDA)"
-  cd "${srcdir}/${pkgbase}-cublas"
+  echo "Build ${pkgbase} with cuda (NVIDIA CUDA)"
+  cd "${srcdir}/${pkgbase}-cuda"
   export PATH+=":/opt/cuda/bin"
-  cmake "${_cmake_cublas_args[@]}"
+  cmake "${_cmake_cuda_args[@]}"
   cmake --build build
 
   # echo "Build ${pkgbase} with HIPBlas (AMD ROCm)"
@@ -129,13 +129,13 @@ package_whisper.cpp-clblas() {
   _package
 }
 
-package_whisper.cpp-cublas() {
+package_whisper.cpp-cuda() {
   pkgdesc="$pkgdesc (with NVIDIA CUDA optimizations)"
   depends+=('cuda')
   provides=("${pkgbase}=${pkgver}")
   conflicts=("${pkgbase}")
 
-  cd "${pkgbase}-cublas"
+  cd "${pkgbase}-cuda"
   DESTDIR="${pkgdir}" cmake --install build
   _package
 }
