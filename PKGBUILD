@@ -4,7 +4,7 @@ pkgname=zen-twilight-bin
 _pkgname=zen-twilight
 _realpkgver=twilight
 _desktopname=zen-twilight
-pkgver=2f5062b
+pkgver=c195b1e
 pkgrel=1
 pkgdesc="Unstable Nightly release of the Performance oriented Firefox-based web browser"
 arch=('x86_64' 'i686')
@@ -25,7 +25,7 @@ source=("zen-browser-$_realpkgver.tar.bz2::https://github.com/zen-browser/deskto
         "$_pkgname.sh"
         "$_desktopname.desktop"
         "policies.json")
-sha256sums=('898be27f6bc6ee2771ce4eeb250cef02ef181213d1317b539bdd5078af3780b4'
+sha256sums=('b920fe847189b3ef2328eeee5ec93eeee9ad6a4e81ece9980331952c87eae29d'
             'b26c2221dc9ee8b6041aea31ae7b030bf9de5facc9933109f829559bd1bdb4fb'
             '837bfee0672d9548d92da125e28e05089bbd722f0cf48d6d9765a832c610b32c'
             'f93eb77db526147a8a20744905923a6eda79e2fbcc9f282e2f9228a7a995c798')
