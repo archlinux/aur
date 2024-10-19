@@ -2,7 +2,7 @@
 pkgname=stow-cm
 _pkgname=stow-cm
 pkgver=stable
-pkgrel=1
+pkgrel=2
 pkgdesc="config manager (gun-stow like)"
 arch=('x86_64')
 url="https://github.com/someoneonsmile/${_pkgname}"
@@ -16,8 +16,8 @@ sha512sums=('SKIP')
 pkgver() {
   # sha256sum ${_pkgname}.tar.gz | cut -d ' ' -f 1
 
-  cd "$srcdir/stow-cm-x86_64-unknown-linux-musl/" || exit 1
-  ./stow-cm --version | cut -d ' ' -f2
+  cd "$srcdir/{_pkgname}-x86_64-unknown-linux-musl/" || exit 1
+  ./{_pkgname} --version | cut -d ' ' -f2
   # expr "$(./stow-cm --version)" : '.* \(.*\))'
 }
 
