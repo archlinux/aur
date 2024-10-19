@@ -1,0 +1,18 @@
+pkgbase = csync-bin
+	pkgdesc = Share your clipboard between different devices
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/fioncat/csync
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	provides = csync
+	conflicts = csync
+	source = LICENSE-0.3.0::https://raw.githubusercontent.com/fioncat/csync/v0.3.0/LICENSE
+	source = README-0.3.0.md::https://raw.githubusercontent.com/fioncat/csync/v0.3.0/README.md
+	sha256sums = c7dc85e2deab624457e3f411dd0e6eb9531611c4a11e3028c38e02999f27d94d
+	sha256sums = ea45b99cb322f90785569ae4c7405d17a95203212303ffd61fed93d14aabee08
+	source_x86_64 = https://github.com/fioncat/csync/releases/download/v0.3.0/csync-x86_64-unknown-linux-musl.tar.gz
+	sha256sums_x86_64 = 02760e18dd647598d7b017f89dac744ea983fb593093671396d3215f50890fea
+
+pkgname = csync-bin
