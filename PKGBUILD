@@ -2,8 +2,8 @@
 
 pkgbase=jidugs-appimage
 pkgname=jidugs
-pkgver=1.4.2
-pkgrel=1
+pkgver=1.4.3
+pkgrel=0
 pkgdesc="极度公式 公式一键识别快速转换，几十项技术创新助力，快捷方便！"
 arch=('x86_64')
 url="https://jidugs.wlhex.com/"
@@ -16,17 +16,17 @@ depends=(glibc
     zlib)
 makedepends=()
 backup=()
-options=(!strip)
+options=(!strip !debug)
 install=
-source_x86_64=("${pkgname}-${pkgver}-x86_64.AppImage::https://download.wrste.com/jidugs/极度公式-${pkgver}.AppImage")
-sha256sums_x86_64=('0f1b4ed0bacf908e372ede4d0b25dd465e50b7b6676952001b5276527e11deab')
+source_x86_64=("${pkgname}-${pkgver}-x86_64.AppImage::https://jidugs.wlhex.com/download/极度公式-${pkgver}.AppImage")
+sha256sums_x86_64=('a0d1b7ed6222f564f66a24a16d4cf5d2589aeb00786d8501919ba941291b9201')
 
 _install_path="/opt/appimages"
 
 prepare() {
 
     chmod a+x ${pkgname}-${pkgver}-${CARCH}.AppImage
-    "./${pkgname}-${pkgver}-${CARCH}.AppImage" --appimage-extract > /dev/null
+    "./${pkgname}-${pkgver}-${CARCH}.AppImage" --appimage-extract >/dev/null
     sed 's|AppRun|/opt/appimages/jidugs.AppImage|g' -i "${srcdir}/squashfs-root/jidugspc.desktop"
 }
 
@@ -36,9 +36,9 @@ package() {
     local _icon
     for _icon in 16 32 64 128 256 512 1024; do
         install -Dm0644 "${srcdir}/squashfs-root/usr/share/icons/hicolor/${_icon}x${_icon}/apps/jidugspc.png" \
-                    -t  "${pkgdir}/usr/share/icons/hicolor/${_icon}x${_icon}/apps"
+            -t "${pkgdir}/usr/share/icons/hicolor/${_icon}x${_icon}/apps"
     done
 
     install -Dm644 "${srcdir}/squashfs-root/jidugspc.desktop" -t "${pkgdir}/usr/share/applications"
-#     install -Dm644 "${srcdir}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    #     install -Dm644 "${srcdir}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
