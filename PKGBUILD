@@ -14,7 +14,7 @@ pkgdesc='Linux kernel performance auditing tool (with bfd support)'
 depends=('glibc' 'perl' 'python' 'slang' 'elfutils' 'libunwind' 'binutils' 'numactl' 'audit' 'coreutils' 'glib2' 'xz' 'zlib' 'libelf' 'bash' 'zstd' 'libcap' 'libtraceevent' 'openssl' 'libsframe.so')
 
 source=("https://github.com/torvalds/linux/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('87eebb4c5d35b5c71e2b1dbdd106be6e6ccc0ee3c3ba0602a3fc4d9d169a6b93')
+sha256sums=('0c77f16700b91249489b8c3888f824c0961687b0eff1e88e74aec2b09b9c33bf')
 
 build()
 {
