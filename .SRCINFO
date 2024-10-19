@@ -1,0 +1,22 @@
+pkgbase = libspiel
+	pkgdesc = Speech synthesis client library
+	pkgver = 1.0.3
+	pkgrel = 1
+	url = https://project-spiel.org/libspiel
+	arch = x86_64
+	license = LGPL-2.1-only
+	makedepends = git
+	makedepends = meson
+	makedepends = gobject-introspection
+	makedepends = gi-docgen
+	makedepends = glib2-devel
+	depends = dconf
+	depends = glibc
+	depends = glib2
+	depends = gcc-libs
+	depends = gstreamer
+	depends = gst-plugins-base-libs
+	source = git+https://github.com/project-spiel/libspiel.git#tag=SPIEL_1_0_3
+	b2sums = a7a8e18143c0cdb9b7489ea348e469f2ac77222a19b71128055fd430ef5a9cc9f549bc74bdc77c124540720d03fdf60595afe40ea369ed634fd37d996d5a44d9
+
+pkgname = libspiel
