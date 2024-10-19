@@ -17,7 +17,7 @@ pkgver() {
   # sha256sum ${_pkgname}.tar.gz | cut -d ' ' -f 1
 
   cd "$srcdir/${_pkgname}-x86_64-unknown-linux-musl/" || exit 1
-  ./{_pkgname} --version | cut -d ' ' -f2
+  ./${_pkgname} --version | cut -d ' ' -f2
   # expr "$(./stow-cm --version)" : '.* \(.*\))'
 }
 
