@@ -3,7 +3,7 @@
 _gecko_id='{2d0ade95-bf3c-4868-b877-71ccd038e11b}'
 _plugin_name='hohser'
 pkgname="firefox-extension-${_plugin_name}"
-pkgver=4.4.3
+pkgver=4.5.0
 pkgrel=1
 pkgdesc='Highlight or hide search engine results'
 arch=('any')
@@ -18,13 +18,16 @@ source=(
   "${_plugin_name}-${pkgver}.tar.gz::https://github.com/pistom/hohser/archive/v.${pkgver}.tar.gz"
 )
 
-sha512sums=('d49eb879d0fdd39d36a60bb43de7fbd73697d0a618dc978d4bd07d1196078c655a57904a1541937c2b9aaed9447257d63c44b92fbc1087fc75e55dbed79a5fe0')
+sha512sums=('5c6035a59a50c5098e55ac88489375adee9198c04aa777e951534bd046f9d6e8eeb06bb14642eb95bbe27e2277b884ee85020b7f76d59bcc468b9819cd30f990')
+
+prepare() {
+  cd "${srcdir}/${_plugin_name}-v.${pkgver}"
+  corepack yarn install
+}
 
 build() {
   cd "${srcdir}/${_plugin_name}-v.${pkgver}"
-  set -- /usr/bin/node /usr/bin/yarn
-  "$@" install
-  "$@" build
+  corepack yarn build
 }
 
 package() {
