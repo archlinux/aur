@@ -1,3 +1,0 @@
-[ruby-gtk3]
-source = "gems"
-gems = "gtk3"
