@@ -2,6 +2,7 @@ pkgbase = profile-sync-daemon-floorp
 	pkgdesc = Floorp browser support for profile-sync-daemon
 	pkgver = 2024.10.18
 	pkgrel = 1
+	url = https://github.com/graysky2/profile-sync-daemon/blob/master/contrib/floorp
 	arch = any
 	license = none
 	depends = profile-sync-daemon
