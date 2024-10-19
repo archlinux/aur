@@ -245,20 +245,20 @@ build() {
 								#-DBUILD_WITH_PCH=OFF \
   local _configure_line_fn=configure_line
   local _configure_line="cmake \
-                                -GNinja \
+                -GNinja \
 				-DINPUT_opengl=es2 \
 				-DFEATURE_optimize_full=ON \
 				-DFEATURE_lttng=OFF \
 				-DFEATURE_widgets=OFF \
-                                -DCMAKE_BUILD_TYPE=RelWithDebInfo \
-                                -DFEATURE_separate_debug_info=ON \
-                                -DFEATURE_reduce_exports=ON \
-                                -DFEATURE_reduce_relocations=ON \
-                                -DQT_BUILD_TESTS=OFF \
-                                -DQT_BUILD_EXAMPLES=OFF \
-                                -DCMAKE_INSTALL_PREFIX:PATH=${_installprefix} \
-                                -DBUILD_qtwebengine=OFF \
-                                -DINPUT_linker=mold \
+        	    -DCMAKE_BUILD_TYPE=RelWithDebInfo \
+        	    -DFEATURE_separate_debug_info=ON \
+        	    -DFEATURE_reduce_exports=ON \
+        	    -DFEATURE_reduce_relocations=ON \
+        	    -DQT_BUILD_TESTS=OFF \
+        	    -DQT_BUILD_EXAMPLES=OFF \
+        	    -DCMAKE_INSTALL_PREFIX:PATH=${_installprefix} \
+        	    -DBUILD_qtwebengine=OFF \
+        	    -DINPUT_linker=mold \
 				-DCMAKE_TOOLCHAIN_FILE=${startdir}/toolchain.cmake \
 				${additional_args}
                                 ${_srcdir}
