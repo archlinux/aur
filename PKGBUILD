@@ -1,6 +1,6 @@
 # Maintainer: Navid Yaghoobi <navidys@fedoraproject.org>
 pkgname=prometheus-podman-exporter
-pkgver=1.13.2
+pkgver=1.13.3
 pkgrel=1
 pkgdesc="Prometheus exporter for podman environments exposing containers, pods, images, volumes and networks information."
 arch=(x86_64)
@@ -21,7 +21,7 @@ makedepends=(
 	make
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/containers/prometheus-podman-exporter/archive/v${pkgver}.tar.gz")
-sha256sums=("e1c383288b1063ca6dcc272d7a91fcf063d67fd96d03311bc3dc38ee7e978f08")
+sha256sums=("da32872e633a77635d3036b6b084684293218fcd4a3ad7c246a347238ac27543")
 
 build() {
 	export CGO_CPPFLAGS="${CPPFLAGS}"
