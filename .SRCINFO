@@ -1,7 +1,7 @@
 pkgbase = libiksemel-git
 	pkgdesc = XML parser library mainly designed for Jabber applications. It provides SAX, DOM, and special Jabber stream APIs.
 	pkgver = 1.6.2.r177.20240917.5abdbce
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Zaryob/iksemel
 	arch = i686
 	arch = x86_64
@@ -20,9 +20,15 @@ pkgbase = libiksemel-git
 	depends = openssl>=1.1
 	depends = python>=3.3
 	provides = libiksemel=1.6.2.r177.20240917.5abdbce
+	provides = libiksemel.so
+	provides = libiksemel_openssl.so
+	provides = libjabber.so
 	provides = python-libiksemel=1.6.2.r177.20240917.5abdbce
 	provides = python-libiksemel-git=1.6.2.r177.20240917.5abdbce
 	conflicts = libiksemel
+	conflicts = libiksemel.so
+	conflicts = libiksemel_openssl.so
+	conflicts = libjabber.so
 	conflicts = python-libiksemel
 	source = libiksemel::git+https://github.com/Zaryob/iksemel.git
 	sha256sums = SKIP

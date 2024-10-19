@@ -5,7 +5,7 @@ _gitname="${_pyname}"
 _pkgname="lib${_pyname}"
 pkgname="${_pkgname}-git"
 pkgver=1.6.2.r177.20240917.5abdbce
-pkgrel=1
+pkgrel=2
 pkgdesc="XML parser library mainly designed for Jabber applications. It provides SAX, DOM, and special Jabber stream APIs."
 arch=(
   'i686'
@@ -36,11 +36,17 @@ optdepends=()
 checkdepends=()
 provides=(
   "${_pkgname}=${pkgver}"
+  "libiksemel.so"
+  "libiksemel_openssl.so"
+  "libjabber.so"
   "python-${_pkgname}=${pkgver}"
   "python-${_pkgname}-git=${pkgver}"
 )
 conflicts=(
   "${_pkgname}"
+  "libiksemel.so"
+  "libiksemel_openssl.so"
+  "libjabber.so"
   "python-${_pkgname}"
 )
 
