@@ -12,10 +12,8 @@ license=(LGPL)
 depends=(kconfig5 kcoreaddons5)
 makedepends=(extra-cmake-modules qt5-tools kdoctools5)
 groups=(kf5-aids)
-source=(https://download.kde.org/stable/frameworks/${pkgver%.*}/portingAids/$pkgname-$pkgver.tar.xz{,.sig})
-sha256sums=('e3cf4f848ae51d0489b977ccdb20dc3131d89a076783f336cda4e39e85ba735e'
-            'SKIP')
-validpgpkeys=(53E6B47B45CEA3E0D5B7457758D0EE648A48B3BB) # David Faure <faure@kde.org>
+source=(https://download.kde.org/stable/frameworks/${pkgver%.*}/portingAids/$pkgname-$pkgver.tar.xz)
+sha256sums=('e3cf4f848ae51d0489b977ccdb20dc3131d89a076783f336cda4e39e85ba735e')
 
 build() {
   cmake -B build -S $pkgname-$pkgver \
