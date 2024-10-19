@@ -1,0 +1,14 @@
+pkgbase = davinci-convert
+	pkgdesc = A video converter for Davinci Resolve using FFmpeg
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/tkmxqrdxddd/davinci-video-converter
+	arch = x86_64
+	license = MIT
+	makedepends = gcc
+	makedepends = make
+	depends = ffmpeg
+	source = davinci-convert-1.0.0.tar.gz::https://github.com/tkmxqrdxddd/davinci-video-converter/archive/refs/tags/1.0.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = davinci-convert
