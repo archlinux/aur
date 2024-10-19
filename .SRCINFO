@@ -1,0 +1,22 @@
+pkgbase = python-pyicloud-git
+	pkgdesc = A Python + iCloud wrapper to access iPhone and Calendar data
+	pkgver = r55.d48e9d1
+	pkgrel = 1
+	url = https://github.com/picklepete/pyicloud.git
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python
+	depends = python-requests
+	depends = python-certifi
+	depends = python-keyring
+	depends = python-tzlocal
+	depends = python-keyrings-alt
+	depends = python-click
+	provides = python-pyicloud
+	conflicts = python-pyicloud
+	source = python-pyicloud-git::git+https://github.com/picklepete/pyicloud.git
+	md5sums = SKIP
+
+pkgname = python-pyicloud-git
