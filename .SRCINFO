@@ -1,0 +1,14 @@
+pkgbase = random-gibberish-generator
+	pkgdesc = This is simple CLI tool that can generate strings of random characters and put in file
+	pkgver = 1.2
+	pkgrel = 1
+	url = https://github.com/Mikicrepstudios/random-gibberish-generator
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = gcc
+	depends = make
+	source = git+https://github.com/Mikicrepstudios/random-gibberish-generator.git
+	md5sums = SKIP
+
+pkgname = random-gibberish-generator
