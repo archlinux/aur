@@ -1,14 +1,15 @@
-# Maintainer: Daniel Menelkir (dmenelkir at gmail dot com)
+# Maintainer: Frederic Bezies <fredbezies at gmail dot com>
+# Contributor: Daniel Menelkir (dmenelkir at gmail dot com)
 
 pkgname=fuse-emulator-sdl-git
-pkgver=1.6.0.r76.gd9dc145
-pkgrel=2
+pkgver=1.6.0.r84.g039d7db
+pkgrel=1
 epoch=1
 pkgdesc="ZX Spectrum emulator (SDL GUI)."
 arch=('i686' 'x86_64')
 url="http://fuse-emulator.sourceforge.net/fuse.php"
-license=("GPL")
-depends=('gtk3' "libspectrum-git" 'sdl')
+license=("GPL-2.0-or-later")
+depends=('libspectrum-git' 'sdl12-compat' 'libpng' 'hicolor-icon-theme')
 conflicts=('fuse-emulator' 'fuse-emulator-git' 'fuse-emulator-sdl')
 source=("fuse-emulator::git+https://git.code.sf.net/p/fuse-emulator/fuse"
 		"https://gitlab.com/menelkir/fuseroms/-/archive/0.2/fuseroms-0.2.tar.gz"
