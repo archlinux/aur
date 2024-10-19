@@ -1,8 +1,8 @@
 # Maintainer: witt <1989161762 at qq dot com>
 
 pkgname=eco-paste-beta-bin
-_pkgname="eco-paste"
-pkgver=0.2.0-beta.2
+_pkgname="EcoPaste"
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="内测预览版!!!🎉跨平台的剪贴板管理工具 | Cross-platform clipboard management tool ."
 arch=('any')
@@ -26,7 +26,7 @@ source=(
   "${_pkgname}-${pkgver}_amd64.deb::${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_amd64.deb"
   "LICENSE::https://raw.githubusercontent.com/EcoPasteHub/EcoPaste/refs/heads/master/LICENSE"
 )
-sha256sums=('109841fe2138bba5b40c2976c25233ff11bb0638989da41f4cec79c89bf3f415'
+sha256sums=('1d76de4b65b9ddada6714b9718ab2521e7236e56b298589bd08140a1d0238026'
             'c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4')
 # 修复不能出现短线的问题
 fixver(){
@@ -41,10 +41,10 @@ build() {
 
 package() {
   # binary
-  install -Dm755 "${srcdir}/build/usr/bin/${_pkgname}" -t "${pkgdir}/usr/bin/"
+  install -Dm755 "${srcdir}/build/usr/bin/"* -t "${pkgdir}/usr/bin/"
   
   # desktop 
-  install -Dm644 "${srcdir}/build/usr/share/applications/${_pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
+  install -Dm644 "${srcdir}/build/usr/share/applications/"*.desktop -t "${pkgdir}/usr/share/applications"
 
   # icon
   cd "${srcdir}/build/";
