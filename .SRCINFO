@@ -2,6 +2,7 @@ pkgbase = cpdiff
 	pkgdesc = File difference tool for competitive programming
 	pkgver = 2.0.2
 	pkgrel = 1
+	url = https://github.com/ChrisVilches/cpdiff
 	arch = x86_64
 	license = MIT
 	depends = go
