@@ -1,0 +1,18 @@
+pkgbase = hey-bin
+	pkgdesc = A modern watch command. Time machine and pager.
+	pkgver = 0.1.4
+	pkgrel = 1
+	url = https://github.com/rakyll/hey
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	provides = hey
+	conflicts = hey
+	source = LICENSE-0.1.4::https://raw.githubusercontent.com/rakyll/hey/v0.1.4/LICENSE
+	source = README-0.1.4.md::https://raw.githubusercontent.com/rakyll/hey/v0.1.4/README.md
+	sha256sums = d0bc204f82616d966e412365cc98afa1a8a9a15be07614e4770e84295e7e83ef
+	sha256sums = fc9a136c6c40bfe2ea4a6237e28efde05c96e574361a4ed4e8d33c7499c1e215
+	source_x86_64 = hey-0.1.4::https://hey-release.s3.us-east-2.amazonaws.com/hey_linux_amd64
+	sha256sums_x86_64 = e8d775962833c04940686a3310963341e26de171034fa7a7c934a5ccba4b02c2
+
+pkgname = hey-bin
