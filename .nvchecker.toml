@@ -1,0 +1,3 @@
+[python-sqlobject]
+source = "pypi"
+pypi = "sqlobject"
