@@ -1,17 +1,19 @@
-# Maintainer: Alexey Trifonov <otaku [at] rambler dot ru>
+# Maintainer: Frederic Bezies <fredbezies at gmail dot com>
+# Contributor: Alexey Trifonov <otaku [at] rambler dot ru>
 pkgname=zesarux-bin
-pkgver=10.0
-pkgrel=2
+pkgver=11.0
+pkgrel=1
 pkgdesc="Emulator of different Z80-based computers, including ZX Spectrum. Precompiled binary." 
 arch=('x86_64')
 url="https://github.com/chernandezba/zesarux"
 license=('GPL3')
 depends=('ncurses')
 optdepends=('pulseaudio' 'sdl')
-source=("https://github.com/chernandezba/zesarux/releases/download/ZEsarUX-10.0/ZEsarUX_linux-10.0-debian10_x64.tar.gz"
+conflicts=('zesarux')
+source=("https://github.com/chernandezba/zesarux/releases/download/ZEsarUX-11.0/ZEsarUX_linux-11.0-debian11_x86_64.tar.gz"
         "Zesarux.desktop"
         "zesarux.png")
-sha256sums=('18b24c524067a77c71f79b89e2729819671cc946e2aceb8406f2743d272e42d6'
+sha256sums=('abcc480efddfdcb678a3dd8d0b452acbb45c93d4ef50a9ef389e36038685f216'
             '0059e183e7cfd8daec6f649728ee15a39f2646fe000032b390caa3dfbeb1edb8'
             'fc71caee4fa242c767793c6b6a3b66fb7ee003d7ef32645a5ef48e19e086ddd7')
 package() {
