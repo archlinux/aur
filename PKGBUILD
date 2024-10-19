@@ -23,5 +23,5 @@ build(){
 
 package(){
 	cd "dash-$pkgver"
-	install -Dm755 src/dash "$pkgdir/usr/bin/dash"
+	make DESTDIR="$pkgdir" install
 }
