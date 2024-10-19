@@ -22,6 +22,7 @@ build() {
 }
 package() {
 	bsdtar xf data.tar.gz -C "${pkgdir}"
+	cp "${srcdir}/usr/lib/libtiff.so.6.0.0" "${pkgdir}/opt/${pkgname}/lib/libtiff.so.6"
 	install -D -m644 "${pkgdir}/opt/${pkgname}/license/License.rtf" "${pkgdir}/usr/share/licenses/${pkgname}/License.rtf"
 	install -D -m644 "${pkgdir}/opt/${pkgname}/scripts/${pkgname}.desktop" "${pkgdir}/usr/share/applications/remote-${pkgname}.desktop"
 }
