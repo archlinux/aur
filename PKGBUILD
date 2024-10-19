@@ -28,7 +28,7 @@ source=("zen-browser-$_realpkgver.tar.bz2::https://github.com/zen-browser/deskto
 sha256sums=('SKIP'
             'b26c2221dc9ee8b6041aea31ae7b030bf9de5facc9933109f829559bd1bdb4fb'
             '837bfee0672d9548d92da125e28e05089bbd722f0cf48d6d9765a832c610b32c'
-            '4728b4aaec237d18a6ebf9331005fb1084ecf672075db8d4cdf1a503f3dd0c1e')
+            'f93eb77db526147a8a20744905923a6eda79e2fbcc9f282e2f9228a7a995c798')
 
 package() {
   # Create directories
