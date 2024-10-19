@@ -1,20 +1,22 @@
 pkgbase = ruby-pango
 	pkgdesc = Ruby/Pango is a Ruby binding of pango-1.x.
-	pkgver = 4.2.2
+	pkgver = 4.2.4
 	pkgrel = 1
 	url = https://github.com/ruby-gnome/ruby-gnome
 	arch = x86_64
+	arch = i686
+	arch = armv7h
+	arch = aarch64
 	license = LGPL-2.1-only
 	makedepends = ruby-pkg-config
 	makedepends = ruby-native-package-installer
-	makedepends = ruby-glib2
-	makedepends = ruby-cairo
 	depends = ruby
-	depends = ruby-gobject-introspection
+	depends = ruby-gobject-introspection=4.2.4
+	depends = ruby-cairo-gobject=4.2.4
 	depends = pango
 	depends = glibc
 	depends = glib2
-	source = ruby-gnome-4.2.2.tar.gz::https://github.com/ruby-gnome/ruby-gnome/archive/refs/tags/4.2.2.tar.gz
-	sha256sums = 64f2f53e9733e85d1b5c10c684858ff5924a0c7175c344ed01270fc018ea983d
+	source = ruby-gnome-4.2.4.tar.gz::https://github.com/ruby-gnome/ruby-gnome/archive/refs/tags/4.2.4.tar.gz
+	sha256sums = 37a39e0175f00bedb3fca7791f12f9a0d759231c2d882a8770a7877a0e25cef5
 
 pkgname = ruby-pango
