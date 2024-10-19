@@ -1,0 +1,13 @@
+pkgbase = flexget-webui
+	pkgdesc = The FlexGet Web UI
+	pkgver = 2.0.29
+	pkgrel = 1
+	url = https://github.com/Flexget/webui
+	arch = any
+	license = MIT
+	makedepends = yarn
+	options = !strip
+	source = flexget-webui-2.0.29.tar.gz::https://github.com/Flexget/webui/archive/2.0.29.tar.gz
+	sha256sums = 28151e8574844b5ab826ebbb5200b3171bafe5a91e4d908ea50e0f118946058e
+
+pkgname = flexget-webui
