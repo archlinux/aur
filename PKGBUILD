@@ -5,11 +5,11 @@
 _pkgname="thorium-browser"
 pkgname="$_pkgname-bin"
 pkgbase="$pkgname"
-pkgver=126.0.6478.231
-pkgrel=4
+pkgver=128.0.6613.189
+pkgrel=1
 pkgdesc="Chromium fork focused on high performance and security"
 url="https://github.com/Alex313031/Thorium"
-license=('BSD')
+license=('BSD-3-Clause')
 arch=('i386' 'x86_64' 'x86_64_v2' 'x86_64_v3')
 
 options=('!emptydirs' '!strip' '!debug')
