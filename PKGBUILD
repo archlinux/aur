@@ -13,8 +13,9 @@ sha256sums=('742069dd258cee239030eb2cfe400bdfda9f17cd49574642b04533430761d9c0')
 prepare() {
 	cd "$pkgname-xilinx_v$pkgver" || return 1
   
-  sed -i s=drm/=libdrm/=g src/libdfx.c
+	sed -i s=drm/=libdrm/=g src/libdfx.c
 	cmake -GNinja -Bbuild -DCMAKE_INSTALL_PREFIX=/usr
+	sed -i '$ainstall(TARGETS dfx_app RUNTIME)' apps/CMakeLists.txt
 }
 
 build() {
