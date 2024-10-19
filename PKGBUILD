@@ -123,7 +123,7 @@ prepare() {
   msg '5. Duplicate data will be removed.'
   # 読み、品詞ID、右品詞ID、表記による重複チェック
   awk 'BEGIN{FS="\t";OFS="\t"}{if (!a[$1,$2,$3,$5]++) {print $0}}' all-dict.txt|sort > finish-dict.txt
-  msg '6. Finally, add the SudachiDict dictionary to the Mozc source.'
+  msg '6. Finally, add the SudachiDict, MeCab-unidic-Neologd and MeCab-ipadic-Neologd dictionary to the Mozc source.'
   mkdir -p tmp
   cd tmp
   ROWS=$(echo $(($(wc -l ../finish-dict.txt |cut -f1 -d" ")/10+1)))

@@ -10,12 +10,13 @@ pkgbase = mozc-with-jp-dict
 	makedepends = bazel
 	makedepends = git
 	makedepends = python
+	makedepends = mold
 	makedepends = pkg-config
 	makedepends = libibus
 	makedepends = rustup
 	options = !lto
-	source = git+https://github.com/fcitx/mozc.git#commit=14fa37c13f02ac0c81918688c305cb4e1b818fbe
-	source = bcr::git+https://github.com/bazelbuild/bazel-central-registry.git#commit=74a25ef00752212bfad1562944cd9834c1ca6d7c
+	source = git+https://github.com/fcitx/mozc.git#commit=815cc6669489fd87c4235fc25245c8d230dad3b2
+	source = bcr::git+https://github.com/bazelbuild/bazel-central-registry.git#commit=2abb607a3604953ab134f9b49bb5583b2872aed5
 	source = git+https://github.com/abseil/abseil-cpp.git#commit=4447c756
 	source = git+https://github.com/google/breakpad.git#commit=216cea7b
 	source = git+https://github.com/google/googletest.git#commit=b514bdc8
@@ -29,11 +30,11 @@ pkgbase = mozc-with-jp-dict
 	source = http://sudachi.s3-website-ap-northeast-1.amazonaws.com/sudachidict-raw/20240716/notcore_lex.zip
 	source = LICENSE-SudachiDict::https://github.com/WorksApplications/SudachiDict/raw/develop/LEGAL
 	source = https://github.com/phoepsilonix/mecab-unidic-neologd/raw/refs/heads/master/seed/mecab-unidic-user-dict-seed.20200910.csv.xz
-	source = LICENSE-mecab-unidic-neologd::https://github.com/phoepsilonix/mecab-unidic-neologd/raw/refs/heads/master/COPYING
+	source = LICENSE-MeCab-unidic-Neologd::https://github.com/phoepsilonix/mecab-unidic-neologd/raw/refs/heads/master/COPYING
 	source = https://github.com/phoepsilonix/mecab-ipadic-neologd/raw/refs/heads/master/seed/mecab-user-dict-seed.20200910.csv.xz
-	source = LICENSE-mecab-ipadic-neologd::https://github.com/neologd/mecab-ipadic-neologd/raw/refs/heads/master/COPYING
-	sha512sums = 7c9469088be27f98ff6f25558fbaff3ccfeb361a3331b75b3977f351752b3fc389502bd0b460d70ba4368fb02d0401e0452c345138ed165132cf23a1167f3378
-	sha512sums = 20e1de26abd8fd1650e4f7de42c229d5bba021a3ad4e535cdf9129bb92519f1459d43b919e0da7d0470e56aa3130bdcefa717289e6007fb3be8905fafeea7c53
+	source = LICENSE-MeCab-ipadic-Neologd::https://github.com/neologd/mecab-ipadic-neologd/raw/refs/heads/master/COPYING
+	sha512sums = 2cc3f89a98ab646627cc01743e62af435f2346f9ebda0b38d401f8821415de8992d34e4c4c8f66ad343359713382ddba051d2ab54ee3cb41dd3f5cae658187e2
+	sha512sums = 88b03df875e59785b210179ee374cce15a04849fcb9bd5f228d08f15d6b0497464bdf92faafa17fbf6aa85f9beb0661fd0c8d38cb77e285968010cdf8054ad94
 	sha512sums = 83a6fa68645d138af64ddddcfd15da567c4c46f92fb69be6c10bc5989c3aa6ab85776dfb3fcccdc9e7c32ca9f8260be121ceb7d329792d28ec9a66417a903a68
 	sha512sums = f69046af8c37a2a8a441a258d5b8677016966cb43d8a3bb48badc78123a885d6179ff77d7885fd6c84130136a1b8931a98d35f9fcce3d03ed31a37a72ece0b9d
 	sha512sums = 44db7d4a09aa7d36f1fb5a89be2234834a58834c76e445f8e9f7bc5685f6a76005b19fc758842c63641e476fa97c10eb968fa13965312fafca25843181fd025b
@@ -52,7 +53,7 @@ pkgbase = mozc-with-jp-dict
 	sha512sums = 77a8c1d76a53627f8680f761f9c996b04e6b609bdb813cb5aedc7f8214d9b5f13aea53788814029f6f1e263c50ecb58feb5999e95d51fe7e4707b6a913d4bbe4
 
 pkgname = ibus-mozc-with-jp-dict
-	pkgdesc = IBus engine module for Mozc with SudachiDict dictionary
+	pkgdesc = Ibus engine module for Mozc(the Open Source Edition of Google Japanese Input) with SudachiDict and MeCab UniDic Neologd and MeCab IpaDic Neologd
 	depends = ibus>=1.4.1
 	depends = qt6-base
 	depends = libibus
@@ -70,7 +71,7 @@ pkgname = ibus-mozc-with-jp-dict
 	replaces = ibus-mozc
 
 pkgname = fcitx5-mozc-with-jp-dict
-	pkgdesc = Fcitx5 module for Mozc with SudachiDict dictionary
+	pkgdesc = Fcitx5 Module for Mozc(the Open Source Edition of Google Japanese Input) with SudachiDict and MeCab UniDic Neologd and MeCab IpaDic Neologd
 	depends = fcitx5
 	depends = fcitx5-qt
 	depends = hicolor-icon-theme
@@ -85,7 +86,7 @@ pkgname = fcitx5-mozc-with-jp-dict
 	replaces = fcitx5-mozc
 
 pkgname = emacs-mozc-with-jp-dict
-	pkgdesc = Emacs engine module for Mozc with SudachiDict dictionary
+	pkgdesc = Emacs engine module for Mozc with SudachiDict and MeCab UniDic Neologd and MeCab IpaDic Neologd
 	license = BSD-3-Clause
 	depends = emacs
 	depends = glibc
