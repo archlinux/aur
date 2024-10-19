@@ -5,7 +5,7 @@
 # Contributor: bilibili_xiaok <the_xiaok@qq.com>
 # Contributor: Vova-K <v1mkss.m@gmail.com>
 pkgname=xmcl-launcher
-pkgver=0.47.6
+pkgver=0.47.7
 pkgrel=1
 pkgdesc="X Minecraft Launcher - A modern Minecraft launcher"
 arch=('x86_64' 'aarch64')
@@ -22,8 +22,8 @@ source_x86_64=( "https://github.com/Voxelum/x-minecraft-launcher/releases/downlo
 
 source_aarch64=("https://github.com/Voxelum/x-minecraft-launcher/releases/download/v${pkgver}/xmcl-${pkgver}-arm64.deb")
 
-sha256sums_x86_64=("4091afae7a9216c05963ba428b7e906df0396dceacdc9fe4fcfc50703a4f8e25")
-sha256sums_aarch64=("84d77001cbfdcfcbc651c75f546e97863dc08fb25974f7c2030edc82ab047dc0")
+sha256sums_x86_64=("823be1571061dcbf1749fddc0f3cbc9cceb25f6b601c1397e0a297cd2000f9e4")
+sha256sums_aarch64=("0ebac6f6af92e1480d1f0724539b0c958351dd9133a5350c9af2195a68378782")
 
 package(){
   tar -xvf 'data.tar.xz' -C "${pkgdir}"
