@@ -1,27 +1,27 @@
 # Maintainer: Astro Benzene <universebenzene at sina dot com>
+
 pkgbase=python-radio_beam
-_pname=${pkgbase#python-}
-_pyname=${_pname/_/-}
-pkgname=("python-${_pname}" "python-${_pname}-doc")
-pkgver=0.3.7
+_pyname=${pkgbase#python-}
+#_pyname=${_pname/_/-}
+pkgname=("python-${_pyname}" "python-${_pyname}-doc")
+pkgver=0.3.8
 pkgrel=1
 pkgdesc="Operations for radio astronomy beams with astropy"
 arch=('any')
 url="https://radio-beam.readthedocs.io"
-license=('BSD')
+license=('BSD-3-Clause')
 makedepends=('python-setuptools-scm'
              'python-wheel'
              'python-build'
              'python-installer'
              'python-sphinx-astropy'
+             'python-matplotlib'
              'python-astropy')
 checkdepends=('python-pytest-astropy-header'
               'python-pytest-doctestplus'
-              'python-matplotlib'
-              'python-scipy'
-              'python-six') # astropy already in makedepends
+              'python-scipy') # astropy, matplotlib already in makedepends
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('673cf7295798add8fa95cd86cd3364ee')
+md5sums=('029fc8e68d6e0010bbe2a908ce1018e8')
 
 get_pyver() {
     python -c "import sys; print('$1'.join(map(str, sys.version_info[:2])))"
@@ -44,7 +44,7 @@ check() {
 }
 
 package_python-radio_beam() {
-    depends=('python-astropy' 'python-six' 'python-scipy')
+    depends=('python-astropy' 'python-scipy')
     optdepends=('python-pytest-astropy: For testing'
                 'python-matplotlib: all functions'
                 'python-scipy: all functions'
