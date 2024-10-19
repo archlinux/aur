@@ -15,7 +15,7 @@ install=
 changelog=
 source=("$pkgname-$pkgver.tar.gz::https://github.com/FlashSystems/$pkgname/archive/v$pkgver.tar.gz")
 noextract=()
-sha256sums=('1f2a7c2ddd7f09e28b1e7de2282e83a5705f8c57acf0534a0f6d00d66e06d9c2')
+sha256sums=('6e5021248260f030d5ecaa3e507ef16c69848b386fd5ee3145141dafd6fa8858')
 
 prepare() {
   cd "$pkgname-$pkgver"
