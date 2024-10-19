@@ -1,16 +1,15 @@
 pkgname=cpdiff
-pkgver=2.0.1
+pkgver=2.0.2
 pkgrel=1
 pkgdesc="File difference tool for competitive programming"
 arch=('x86_64')
 license=('MIT')
 depends=('go')
-source=("https://github.com/ChrisVilches/cpdiff/archive/refs/tags/v2.0.1.tar.gz")
+url="https://github.com/ChrisVilches/cpdiff"
+source=("https://github.com/ChrisVilches/cpdiff/archive/refs/tags/v2.0.2.tar.gz")
 sha256sums=('SKIP') # Replace with actual checksum if desired
 
 build() {
-  echo "here:::::::::"
-  echo "$srcdir/$pkgname-$pkgver"
     cd "$srcdir/$pkgname-$pkgver"
     go build -o "$pkgname"
 }
