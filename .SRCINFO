@@ -1,17 +1,26 @@
 pkgbase = kpublictransport-git
-	pkgdesc = Library to assist with accessing public transport timetables and other information
-	pkgver = r1324.4e58cf7
+	pkgdesc = Library to assist with accessing public transport timetables and other data
+	pkgver = 24.01.90.r329.g55dbaaee
 	pkgrel = 1
-	url = https://kontact.kde.org
+	url = https://invent.kde.org/libraries/kpublictransport
 	arch = x86_64
-	license = LGPL
+	license = LGPL-2.0-or-later
 	makedepends = git
+	makedepends = doxygen
 	makedepends = extra-cmake-modules
-	depends = qt5-declarative
+	makedepends = protobuf
+	makedepends = qt6-tools
+	depends = gcc-libs
+	depends = glibc
+	depends = ki18n
+	depends = networkmanager-qt
+	depends = qt6-base
+	depends = qt6-declarative
+	depends = zlib
+	optdepends = kirigami: QML bindings
 	provides = kpublictransport
 	conflicts = kpublictransport
 	source = git+https://invent.kde.org/libraries/kpublictransport.git
 	sha256sums = SKIP
 
 pkgname = kpublictransport-git
-
