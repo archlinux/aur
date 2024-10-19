@@ -1,0 +1,17 @@
+pkgbase = libdfx
+	pkgdesc = a lightweight user-space library that provides APIs for application to configure the PL
+	pkgver = 2024.1
+	pkgrel = 1
+	url = https://github.com/Xilinx/libdfx
+	arch = i686
+	arch = x86_64
+	arch = arm
+	arch = aarch64
+	license = custom
+	makedepends = cmake
+	makedepends = ninja
+	depends = libdrm
+	source = https://github.com/Xilinx/libdfx/archive/xilinx_v2024.1.tar.gz
+	sha256sums = 742069dd258cee239030eb2cfe400bdfda9f17cd49574642b04533430761d9c0
+
+pkgname = libdfx
