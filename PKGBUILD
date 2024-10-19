@@ -1,4 +1,4 @@
-# Maintainer: twa022 <twa022 at gmail dot com>
+# Contributor: twa022 <twa022 at gmail dot com>
 
 _pkgname=openr2
 pkgname=${_pkgname}-git
@@ -32,7 +32,8 @@ build() {
   [ -d build ] && rm -fr build
   mkdir build
   cd build
-  export CFLAGS="-Wno-unused-const-variable"
+  CFLAGS+=" -Wno-unused-const-variable -Wno-address"
+  export CFLAGS
   cmake .. -DCMAKE_INSTALL_PREFIX=/usr
   make
 }
