@@ -8,9 +8,9 @@
 # Contributor: Martin Poljak <martin 'at' poljak 'dot' cz>
 
 pkgname=xnviewmp
-pkgver=1.8.0
-srcrel=2 # Incremented when there is a new release for the same version number
-pkgrel=2
+pkgver=1.8.2
+srcrel=1 # Incremented when there is a new release for the same version number
+pkgrel=1
 pkgdesc="An efficient multimedia viewer, browser and converter."
 url="https://www.xnview.com/en/xnviewmp/"
 
@@ -24,7 +24,7 @@ optdepends=('glib2: support for moving files to trash')
 
 source=("XnViewMP-linux-x64_${pkgver}-rel${srcrel}.tgz::https://download.xnview.com/old_versions/XnView_MP/XnView_MP-${pkgver}-linux-x64.tgz"
         'xnviewmp.desktop')
-sha256sums=('35182740675DDAB0A51AD20E14F31B258A3126BB136B766210D5EEB31EAA5DE3'
+sha256sums=('534E5A0BDF483ED88CFA5A4EA2429DAAAEBB9111C4D8AB133455558486DABAD4'
             'F6B3A4AAA0A55B5F21D9B91AB6F3DA3D6EE077BA7FDD17E7C4AB1C69AD2A9E3A')
 
 package() {
