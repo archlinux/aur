@@ -4,7 +4,7 @@
 
 pkgbase=upp
 pkgname=(upp theide umk)
-yearver=2024rc1rc1
+yearver=2024rc1
 pkgver=17417
 pkgrel=1
 pkgdesc="Radical and innovative multiplatform C++ framework (known as U++)"
