@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=FLAMES
-_pkgver=1.10.0
+_pkgver=1.10.3
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -73,8 +73,8 @@ optdepends=(
   r-xml2
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('b4f8a2b352544fb940fcf3718956872f')
-b2sums=('dfd4f5cc647abf971173b45968ab8862322bbe5b9d5322315abebedc44a748e6cc3e19291ecccda09adf1fe82107a323b697d662543378b78888198a767eaa03')
+md5sums=('25ace98ee5b53939615415685a153947')
+b2sums=('0756518538a3fd8049d0623c04f7278753945a6a18a54de6dd3cfcf3a7baf7d06771db63a64c35b95c51031b223fe22c50bd5d3f1a4a8c7c4c51a13736f60080')
 
 build() {
   mkdir build
