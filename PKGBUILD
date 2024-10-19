@@ -4,7 +4,7 @@
 _slug=FreeSurface
 _name=FreeSurface
 pkgname=vcvrack-freesurface
-pkgver=2.1.3
+pkgver=2.1.4
 pkgrel=1
 pkgdesc='Casual Systems/Free Surface VCV Rack modules'
 arch=(x86_64 aarch64)
@@ -14,7 +14,7 @@ groups=(proaudio vcvrack-plugins)
 depends=(gcc-libs vcvrack)
 makedepends=(simde zstd)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/freesurfacemodules/$_name/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('96add8cc703c05a9c609390c5def3f416f63e331b166b56b3b4d8a9b7af13bea')
+sha256sums=('5da8a8c5d6c580614775e3bc1bdc23e2bbd3b6848034a35e9bee4272846e33b5')
 
 build() {
   cd $_name-$pkgver
