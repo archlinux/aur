@@ -7,7 +7,7 @@
 
 pkgname=conky-lua-nv
 _pkgname=conky
-pkgver=1.21.6
+pkgver=1.21.7
 pkgrel=1
 pkgdesc="Lightweight system monitor for X with lua and nvidia enabled"
 arch=('i686' 'x86_64')
@@ -19,21 +19,20 @@ provides=('conky' 'conky-lua')
 depends=(
   'glibc' 'glib2' 'cairo' 'lua' 'wireless_tools' 'libxdamage' 'libxinerama' 'libxft' 'imlib2'
   'libxml2' 'ncurses' libncursesw.so 'libxnvctrl' libXNVCtrl.so 'systemd-libs' libsystemd.so
-  'libpulse' libpulse.so 'curl' libcurl.so 'fontconfig' 'gcc-libs' 'libx11' 'libxdamage'
-  'pango' 'wayland')
-makedepends=('cmake' 'docbook2x' 'docbook-xsl' 'man-db' 'git' 'catch2'
+  'libpulse' libpulse.so 'curl' libcurl.so 'fontconfig' 'gcc-libs' 'libx11' 'librsvg'
+  'libxfixes' 'libxi' 'libxext' 'pango' 'wayland' 'hicolor-icon-theme' 'alsa-lib')
+makedepends=('cmake' 'docbook2x' 'docbook-xsl' 'man-db' 'git'
              'pandoc' 'python-yaml' 'python-jinja' 'wayland-protocols'
-             'gperf')
+             'gperf' 'catch2-v2')
 optdepends=('nvidia: for NV11 and newer GPUs',
   'nvidia-470xx-dkms: for NVE0 (Maxwell) GPUs',
   'nvidia-390xx-dkms: for NVC0 and GF1XX (Fermi) GPUs'
   'nvidia-340xx-dkms: for NV40 and G70 (Curie) GPUs')
 source=("https://github.com/brndnmtthws/${_pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
-sha1sums=('059335a2b7953bf87940e7b71adc60a413aa14cd')
+sha1sums=('37767f0c325b31935a65492890d1b4b73b8e1321')
 install='conky-lua-nv.install'
 
 prepare() {
-  # disable HSV gradients for now
   cd ${srcdir}/${_pkgname}-${pkgver}
   rm -r tests/catch2
   ln -s /usr/include/catch2 tests
