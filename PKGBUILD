@@ -2,8 +2,8 @@
 
 _pkgname=babelfish
 pkgname=babelfish-fish
-pkgver=1.1.0
-pkgrel=2
+pkgver=1.2.0
+pkgrel=3
 pkgdesc="Translate bash scripts to fish"
 arch=(x86_64)
 url="https://github.com/bouk/babelfish"
@@ -11,7 +11,7 @@ license=("custom:MIT")
 depends=("glibc")
 makedepends=("go")
 source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/bouk/babelfish/archive/refs/tags/v${pkgver}.tar.gz")
-sha512sums=('26090a43f329a33c4e3d757475fbc5cd5ffe18975bf3c2e7a0b8f5f7c036ea23a32a3583f5d53ea91f6997d050305878c97114eda14485964e73f96782fe601b')
+sha512sums=('ad3ed1fd2a680adc89ef74408ac46f0739849df2342382c1302a5de17979ec09c12416aff37abf5ccca4b2df62d80e56a4c11ead60b5944d90e5e71158687b0b')
 
 
 build() {
