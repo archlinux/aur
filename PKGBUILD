@@ -10,38 +10,35 @@
 _name=gajim
 pkgname="$_name-git"
 epoch=1
-pkgver=r21440.e5eef33fd
+pkgver=r21765.2dcd56fcb
 pkgrel=1
 pkgdesc="Jabber/XMPP instant messenger client written in Python with GTK+"
 arch=('any')
 url="https://gajim.org/"
 license=('GPL3')
-depends=('gtk3' 'libsoup' 'python-gobject' 'python-pyopenssl' 'hicolor-icon-theme'
-         'python-pyasn1' 'python-nbxmpp-git' 'python-cairo' 'python-keyring'
-         'python-distro' 'python-css-parser' 'python-precis_i18n' 'python-pillow'
-         'python-omemo-dr' 'gtksourceview4' 'python-qrcode' 'python-sqlalchemy-git'
-         'python-emoji')
-makedepends=('git' 'python-setuptools' 'python-packaging' 'python-wheel' 'python-build'
-            'python-installer')
-optdepends=('python-dbus: for gajim-remote and zeroconf support'
-            'farstream: for video/voice support'
-            'gst-plugins-good: for video/voice support'
-            'gst-plugins-bad: for video/voice support'
-            'gst-plugins-ugly: for video/voice support'
-            'gst-libav: for video/voice support'
-            'gst-python: for video/voice support'
-            'gst-plugin-gtk: for video support'
-            'gsound: for notification sounds'
+depends=('gtk3' 'gtksourceview4' 'python-cairo' 'python-gobject' 'python-keyring' 'python-nbxmpp-git'
+        'python-cryptography' 'python-precis_i18n' 'python-css-parser' 'python-distro' 'hicolor-icon-theme'
+        'python-pillow' 'python-gssapi' 'python-netifaces' 'python-qrcode' 'python-omemo-dr' 'python-packaging'
+        'pango' 'sqlite' 'python-sqlalchemy' 'python-setuptools' 'python-emoji')
+makedepends=('git' 'python-build' 'python-installer' 'python-wheel')
+optdepends=('python-dbus: to have gajim-remote working'
+            'python-sentry_sdk: for Sentry error reporting to dev.gajim.org (users decide whether to send reports or not)'
             'gspell: for spell checking support'
+            'libsecret: for GNOME Keyring or KDE support as password storage'
+            'gupnp-igd: for better NAT traversing'
+            'networkmanager: for network lose detection'
+            'geoclue2: share current location'
+            'gsound: Notification Sounds'
+            'libayatana-appindicator: for App Indicator on Wayland'
+            'farstream: for video and audio calls'
+            'gstreamer: for video and audio calls'
+            'gst-plugins-base: for video and audio calls'
+            'gst-plugins-ugly: for video and audio calls'
+            'gst-libav: for video and audio calls'
+            'gst-plugin-gtk: for video and audio calls'
             'libxss: for idle time checking on X11'
-            'libappindicator-gtk3: to get a tray icon on some desktop environments'
-            'notification-daemon: for desktop notifications'
-            'gnome-keyring: store passwords encrypted in GNOME Keyring'
-            'kded5: store passwords encrypted in KSecretService'
-            'python-crypto: support for E2E encryption'
-            'python-docutils: for RST generator support'
-            'gupnp-igd: for UPnP-IGD support'
-            'geoclue2: for sharing your location')
+            'python-gnupg: encrypting chat messages with OpenPGP'
+            'emoji-font: for emojis support')
 provides=('gajim')
 conflicts=('gajim' 'gajim-hg' 'gajim-svn')
 replaces=('gajim-hg' 'gajim-svn')
@@ -55,12 +52,14 @@ pkgver() {
 
 build() {
   cd $_name
+
+  ./make.py build --dist unix
   python -m build --wheel --no-isolation
-  ./pep517build/build_metadata.py -o dist/metadata
 }
 
 package() {
   cd $_name
+
   python -m installer --destdir="$pkgdir" dist/*.whl
-  ./pep517build/install_metadata.py --prefix="$pkgdir/usr" dist/metadata
+  ./make.py install --dist unix --prefix="${pkgdir}/usr"
 }
