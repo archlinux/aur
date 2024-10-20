@@ -1,17 +1,18 @@
-# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgbase=sniprun
 pkgname=('sniprun' 'neovim-sniprun')
-pkgver=1.2.7
+pkgver=1.3.16
 pkgrel=1
 pkgdesc='Independently run snippets of code'
 arch=('x86_64')
 url="https://github.com/michaelb/sniprun"
 license=('MIT')
 makedepends=('cargo' 'gcc-libs')
+options=(!lto)
 changelog=CHANGELOG.md
 source=("$pkgbase-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('cda4e519c5e200973ab352694c5990ef2dbb69b73ea2211ebe8e3ed4cb9e19ab')
+sha256sums=('8d0048cc38a2da94c1949cbf6b0e1c8992d8f339726873b0967f4dc4e7fa58cb')
 
 prepare() {
 	cd "$pkgbase-$pkgver"
@@ -50,15 +51,15 @@ package_neovim-sniprun() {
 	optdepends=(
 		'bash: Bash snippets support'
 		'coffeescript: CoffeeScript snippets support'
-		'gcc: C/C++ snippets support'
 		'gcc-ada: Limited Ada snippets support'
-		'go: Go snippets support'
+		'gcc: C/C++ snippets support'
 		'ghc: Haskell snippets support'
-		'python3: Python3 snippets support'
+		'go: Go snippets support'
 		'java-environment-openjdk: Java snippets support'
 		'julia: Julia snippets support'
 		'jupyter: Jupyter support'
 		'lua: Lua snippets support'
+		'python3: Python3 snippets support'
 		'r: R snippets support'
 		'ruby: Ruby snippets support'
 		'rust: Rust snippets support'
