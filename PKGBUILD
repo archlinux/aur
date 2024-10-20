@@ -2,11 +2,11 @@
 
 pkgname=ttf-bizin-gothic
 pkgver=0.0.4
-pkgrel=1
+pkgrel=2
 pkgdesc="A composite font of BIZ UD Gothic and Inconsolata"
 arch=(any)
 url="https://github.com/yuru7/bizin-gothic"
-license=(custom:SIL)
+license=('OFL-1.1')
 source=("$url/releases/download/v$pkgver/BizinGothic_v$pkgver.zip"
         "$url/releases/download/v$pkgver/BizinGothicDiscord_v$pkgver.zip"
         "$url/releases/download/v$pkgver/BizinGothicNF_v$pkgver.zip"
