@@ -2,7 +2,7 @@
 pkgname=sane-break
 pkgver=0.4.0
 pkgrel=1
-pkgdesc="A polite and sane break reminder preventing mindless skips."
+pkgdesc="A gentle break reminder that helps you avoid mindlessly skipping breaks."
 arch=('x86_64')
 url="https://github.com/AllanChain/sane-break"
 license=('GPL-3.0-or-later')
