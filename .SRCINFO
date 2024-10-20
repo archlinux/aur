@@ -1,0 +1,23 @@
+pkgbase = stopmotion-git
+	pkgdesc = Stop motion animation creation program
+	pkgver = 0.8.7.r7.g026babc
+	pkgrel = 1
+	url = https://invent.kde.org/multimedia/stopmotion
+	arch = x86_64
+	license = GPL-2.0-or-later
+	makedepends = git
+	makedepends = cmake
+	makedepends = qt5-tools
+	depends = qt5-base
+	depends = qt5-multimedia
+	depends = libarchive
+	depends = libxml2
+	depends = glibc
+	depends = gcc-libs
+	depends = libvorbis
+	provides = stopmotion
+	conflicts = stopmotion
+	source = git+https://invent.kde.org/multimedia/stopmotion.git
+	sha256sums = SKIP
+
+pkgname = stopmotion-git
