@@ -1,6 +1,6 @@
 pkgbase = apx
 	pkgdesc = Package manager with support for multiple sources
-	pkgver = 2.4.3
+	pkgver = 2.4.4
 	pkgrel = 1
 	url = https://github.com/Vanilla-OS/apx
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = apx
 	makedepends = go
 	depends = distrobox
 	depends = glibc
-	source = apx-2.4.3.tar.gz::https://github.com/Vanilla-OS/apx/archive/refs/tags/v2.4.3.tar.gz
-	b2sums = d88430d8ac07aa57ec2d3ec13c4a199252cb05634569579974b3ad6111b8fc7a27fee072fb1c7752b3df3838a2d64872fc5be1c64848fe1def7909170ba4ecb4
+	source = apx-2.4.4.tar.gz::https://github.com/Vanilla-OS/apx/archive/refs/tags/v2.4.4.tar.gz
+	b2sums = f81d3f0715c6ed358ab3056eff537611b8f2ace286785905e27da2f558c945fabe0bb022a268f57909dcdf2e05fb649ba508ef514cbe0b3df42f9b32c0181a65
 
 pkgname = apx
