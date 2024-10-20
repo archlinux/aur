@@ -14,7 +14,7 @@
 pkgname=nodejs-fast-cli
 _npmname=${pkgname/nodejs-/}
 pkgver=4.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Test your download and upload speed using fast.com from Netflix"
 arch=(any)
 url="https://github.com/sindresorhus/fast-cli#readme"
@@ -70,6 +70,7 @@ package() {
   mkdir -p $_npmdir
   cd $_npmdir
   npm install -g --prefix "$pkgdir/usr" $_npmname@$pkgver
+  npm install -g --prefix "$pkgdir/usr" puppeteer
   chown -R root:root "$pkgdir"
 }
 
