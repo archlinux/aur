@@ -1,7 +1,7 @@
 # Maintainer: t4k1t <t4k1t plus aur at protonmail dot com>
 
 pkgname=graveyard
-pkgver=1.1.5
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="Dead simple encryption inspired by tomb"
 arch=('i686' 'x86_64' 'armv7h' 'armv6h' 'aarch64')
@@ -10,7 +10,7 @@ license=('Apache')
 depends=()
 makedepends=('git' 'go')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/BetaPictoris/graveyard/archive/${pkgver}.tar.gz")
-b2sums=('e6634aa045e7869a235556f95e7f730aa20ec9de4359eed9ac7b9ff27877a2dde5af1626803fc5fc66d9b6b0d36120c3795600ad817b6de9ed8489863667ac07')
+b2sums=('c3fdb8bd61121f85ba42d0e894d77f9913f1e021c67e81c934d6c21e9cfb90234641b7bcad1bc0a45d5b02d5d865f1d10b9b6d040f854960d28e811a8adf39d2')
 
 
 prepare() {
@@ -34,6 +34,6 @@ build() {
 package() {
     cd $pkgname-$pkgver
     install -Dm755 build/grave -t "$pkgdir/usr/bin"
-    install -Dm644 readme.md -t "$pkgdir/usr/share/doc/$pkgname"
+    install -Dm644 docs/readme.md -t "$pkgdir/usr/share/doc/$pkgname"
     install -Dm644 license.md -t "$pkgdir/usr/share/licenses/$pkgname"
 }
