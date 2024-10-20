@@ -1,0 +1,27 @@
+pkgbase = aarch64-none-linux-gnu-gcc-bin
+	pkgdesc = The GNU Compiler Collection - cross compiler for ARM64 Linux target
+	pkgver = 13.3
+	pkgrel = 1
+	url = https://developer.arm.com/downloads/-/arm-gnu-toolchain-downloads
+	arch = x86_64
+	license = GPL
+	license = LGPL
+	provides = aarch64-none-linux-gnu-gcc
+	provides = aarch64-none-linux-gnu-gcc-binutils
+	provides = aarch64-none-linux-gnu-gdb
+	conflicts = aarch64-linux-gnu-binutils
+	conflicts = aarch64-linux-gnu-gcc
+	conflicts = aarch64-linux-gnu-gdb
+	conflicts = aarch64-linux-gnu-glibc
+	conflicts = aarch64-linux-gnu-linux-api-headers
+	conflicts = aarch64-none-linux-gnu-gcc-12.3-bin
+	conflicts = aarch64-none-linux-gnu-gcc-10.3-bin
+	conflicts = aarch64-none-linux-gnu-gcc-9.2-bin
+	options = !strip
+	options = !debug
+	options = !emptydirs
+	options = staticlibs
+	source = https://developer.arm.com/-/media/Files/downloads/gnu/13.3.rel1/binrel/arm-gnu-toolchain-13.3.rel1-x86_64-aarch64-none-linux-gnu.tar.xz
+	sha256sums = 322f0b4482fc0d9fa0bb468134841f08d8c554c54ff5aa29a13a7a24bf7e1eb5
+
+pkgname = aarch64-none-linux-gnu-gcc-bin
