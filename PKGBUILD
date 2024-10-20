@@ -1,7 +1,7 @@
 # Maintainer: Diablo (https://github.com/progzone122) (https://t.me/DiabloSat)
 pkgname=warp-gui
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A GUI application based on warp-cli for linux written in Rust"
 arch=('x86_64')
 url="https://github.com/progzone122/warp-cloudflare-gui-rust"
@@ -21,7 +21,7 @@ source=(
   "https://github.com/progzone122/warp-cloudflare-gui-rust/releases/download/$pkgver/warp-gui"
   "https://raw.githubusercontent.com/progzone122/warp-cloudflare-gui-rust/main/warp-gui.desktop"
 )
-sha256sums=('e06d73737e78951ad66fad41ef9866426598883710aba7eb52641005678b1998'
+sha256sums=('3aaff1ea4eeb6aa1ee02e8a03ec914d1d0a2ceb8abc7e72d8f253ed99cbf2566'
             'dbf7470f5ecb686e6ab83f95ffa4ae24736572a7982bf09a61ffabd3580aacec'
 )
 build() {
