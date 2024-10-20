@@ -41,7 +41,7 @@ prepare() {
 
 build() {
   cd "$srcdir/$_pkgname"
-
+  CFLAGS+=" -ffat-lto-objects"
   meson compile -C build
 }
 
