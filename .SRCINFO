@@ -1,15 +1,15 @@
 pkgbase = evilwm
 	pkgdesc = Minimalist but usable window manager for the X Window System
-	pkgver = 1.4.2
+	pkgver = 1.4.3
 	pkgrel = 1
 	url = https://evilwm.sourceforge.net
 	arch = x86_64
 	arch = i686
 	license = custom
 	depends = libxrandr
-	source = https://www.6809.org.uk/evilwm/dl/evilwm-1.4.2.tar.gz
+	source = https://www.6809.org.uk/evilwm/dl/evilwm-1.4.3.tar.gz
 	source = LICENSE
-	sha256sums = 4212d6d90cb005b2cc88814bc8537736b4950ab58264bbb65b8807ac63bdc4b9
+	sha256sums = d5945b20b12c91db2412fac0dbda3fb9c3ec8debb8e1b109838992b2b1bbe5d4
 	sha256sums = 50463448057ce7e65276926e9462f5c8bd5f6c6628f2c42ad0cd8a6373d419e1
 
 pkgname = evilwm
