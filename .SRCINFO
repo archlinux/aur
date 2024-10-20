@@ -1,5 +1,5 @@
 pkgbase = kingler-bin
-	pkgdesc = A brief description of the kingler project
+	pkgdesc = Kingler is a fork of krabby, it print the sprite of pokemon in the terminal + some info
 	pkgver = 0.3.0
 	pkgrel = 1
 	url = http://example.com
