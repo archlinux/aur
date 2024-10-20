@@ -12,6 +12,7 @@ sha256sums=('SKIP')
 
 build() {
   cd "$srcdir/$pkgname"
+  git checkout v${pkgver}
   make PROMTAIL_JOURNAL_ENABLED=true promtail
 }
 
