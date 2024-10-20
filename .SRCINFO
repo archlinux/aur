@@ -1,7 +1,7 @@
 pkgbase = rubyripper-git
 	pkgdesc = Secure audiodisc ripper
 	pkgver = 0.8.0rc3.r12.gc19661b
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/bleskodev/rubyripper
 	arch = any
 	license = GPL-3.0-only
