@@ -2,4 +2,4 @@
 /src
 /picos
 *.tar.gz
-*.pkg.tar.xz
+*.pkg.tar.*
