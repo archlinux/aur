@@ -2,7 +2,7 @@
 # Contributor: Polis Minus <polisminus2247@tuta.io>
 
 pkgname=activate-linux-git
-pkgver=r320.cf8080e
+pkgver=r349.75d0063
 pkgrel=1
 pkgdesc="The 'Activate Windows' watermark ported to Linux with Xlib and cairo in C"
 arch=(x86_64)
@@ -15,7 +15,7 @@ conflicts=(activate-linux)
 source=("git+https://github.com/MrGlockenspiel/activate-linux.git"
         activate-linux.desktop)
 sha256sums=('SKIP'
-            'f1c0aad4d41632002608788cb41e2259de6524b9a2604d6bbcbdd0fb1643af6d')
+            'f62cf9d86c3aca0bc9df07ea33f2a95547c0e25fcc921c34e8bcbfd845930706')
 
 pkgver() {
   cd "activate-linux"
