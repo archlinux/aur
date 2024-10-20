@@ -1,12 +1,12 @@
 # Maintainer: Steffen Klee <steffen dot klee at gmail dot com>
 pkgname='samsung-scantopc'
-pkgver=0.6.0
+pkgver=0.6.1
 pkgrel=1
 pkgdesc="Tool to interact with the \"scan to PC\" option in Samsung MFP."
 arch=('any')
 url="https://github.com/kleest/samsung-scantopc"
 license=('GPL3')
-depends=('python' 'python-sane' 'python-pillow' 'python-pypdf3' 'python-six')
+depends=('python' 'python-sane' 'python-pillow' 'python-pypdf' 'python-six' 'python-pysnmp')
 backup=('etc/samsungScannerServer.conf')
 source=(
     "samsung-scantopc.service"
