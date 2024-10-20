@@ -8,8 +8,6 @@ pkgbase = funzzy
 	makedepends = cargo
 	depends = gcc-libs
 	depends = glibc
-	provides = funzzy
-	conflicts = funzzy
 	source = funzzy-1.4.1.tar.gz::https://github.com/cristianoliveira/funzzy/archive/refs/tags/v1.4.1.tar.gz
 	sha256sums = fd292b4a1b7838571a2183a55fe82fdf47bc2810e4434807abff7e637463df0a
 
