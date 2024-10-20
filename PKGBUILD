@@ -13,9 +13,9 @@ _devenv=false
 _generic_release=false
 
 ## real pkgrel is the eval one
-pkgver=9.19.w93.s858bf97
+pkgver=9.20.w1.s5a1b9d5
 pkgrel=1
-eval pkgrel=2
+eval pkgrel=1
 
 ################################################################################################################################
 ################################################################################################################################
@@ -35,7 +35,7 @@ _enabled_staging=()
 _disabled_staging=(eventfd_synchronization)
 
 ## main AUR version control setting, wine/staging base will be taken from this if custompatches=false (default)
-_patchbase_tag="10-12-2024-7ce580d1-858bf979"
+_patchbase_tag="10-20-2024-3a6e9365-5a1b9d50"
 
 ## to use this, set this to true, create a "custompatches" folder in the top-level PKGBUILD directory, and place your patches there.
 ## the patches from the wine-osu-patches git repo will no longer be applied, but you can copy them to the
@@ -45,8 +45,8 @@ _custompatches=false
 
 ## (with custompatches) uses wine/staging master if empty, uses given commit or tag if set
 ## (without custompatches) ignored and overwritten by upstream commits from patchbase repo
-_desired_wine_commit=7ce580d1fa0bb3acf98edbc4171ddbcd83867db8
-_desired_staging_commit=858bf979a1c177ae7b43a8ea697032e09059d553
+_desired_wine_commit=3a6e9365336304b4d7eb4d66aef959f67361cc1f
+_desired_staging_commit=5a1b9d5093726d82b28433640f7bdecf3829c248
 
 ## (with custompatches) ignore the _desired_wine_commit above and take the wine commit from the "upstream-commit" file in the staging repo
 _use_staging_upstream=false
@@ -134,7 +134,7 @@ noextract=()
 ## don't needlessly add the wine-osu-patches repo if we explicitly specify custom ones
 if ! { [ -d "${_where}"/custompatches ] && [ "${_custompatches}" = "true" ] ; }; then
   source+=("git+https://github.com/whrvt/wine-osu-patches.git#tag=${_patchbase_tag}")
-  sha512sums+=('d2ec7defe267634e21748115c76de366462d6a49aaf067c4dce836bb7354b2627df20f339bf02532356cd6432600c47cc02211165330766d822179c9d1ef2431')
+  sha512sums+=('a47ad27345155478932ff1206ca1ed54152874a36bc399999c2bc326c6175e2be198c9941d83398c33d78afde49b3a304437fbf7a39e4124f0bed655a45f9b12')
 
   if [ "${_custompatches}" = "true" ]; then
     msg2 "WARNING: _custompatches=true but custompatches directory not found. Will be using wine-osu-patches repo."
@@ -190,6 +190,7 @@ makedepends=(autoconf bison ccache perl fontforge flex
   nasm
   attr
   gtk3
+  gst-plugins-base-libs
   ntsync-header
 )
 
@@ -218,7 +219,7 @@ optdepends=(
 )
 
 if [ "${_wow64build}" != "true" ]; then
-  depends+=(lib32-ffmpeg lib32-libxkbcommon libvulkan.so=1-32 lib32-gnutls lib32-libxcomposite lib32-libpulse lib32-fontconfig lib32-lcms2 lib32-libxml2 lib32-libxcursor lib32-libxrandr lib32-libxdamage lib32-libxi lib32-gettext lib32-freetype2 lib32-glu lib32-libsm lib32-gcc-libs lib32-libpcap)
+  depends+=(lib32-ffmpeg lib32-libxkbcommon libvulkan.so=1-32 lib32-gst-plugins-base-libs lib32-gnutls lib32-libxcomposite lib32-libpulse lib32-fontconfig lib32-lcms2 lib32-libxml2 lib32-libxcursor lib32-libxrandr lib32-libxdamage lib32-libxi lib32-gettext lib32-freetype2 lib32-glu lib32-libsm lib32-gcc-libs lib32-libpcap)
   makedepends+=(lib32-wayland lib32-gtk3 lib32-attr lib32-giflib lib32-libpng lib32-libxmu lib32-libxxf86vm lib32-libldap lib32-mpg123 lib32-openal lib32-v4l-utils lib32-alsa-lib lib32-mesa lib32-mesa-libgl lib32-opencl-icd-loader lib32-libxslt lib32-sdl2)
   optdepends+=(lib32-libusb lib32-libxinerama lib32-giflib lib32-libpng lib32-libldap lib32-mpg123 lib32-openal lib32-v4l-utils lib32-alsa-plugins lib32-alsa-lib lib32-libjpeg-turbo lib32-libxcomposite lib32-libxinerama lib32-opencl-icd-loader lib32-libxslt lib32-vkd3d lib32-sdl2)
   if [ "${_use_clang}" = "true" ]; then makedepends+=(lib32-llvm-libs); fi
@@ -601,7 +602,7 @@ build() { _set_vars;
     --disable-winemenubuilder
     --disable-win16
     --with-x
-    --without-gstreamer
+    --with-gstreamer
     --with-ffmpeg
     --with-wayland
     --silent
