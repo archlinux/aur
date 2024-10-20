@@ -10,6 +10,7 @@ pkgbase = fish-lsp-git
 	makedepends = typescript
 	depends = fish
 	depends = nodejs
+	depends = python
 	provides = fish-lsp
 	conflicts = fish-lsp
 	source = fish-lsp-git::git+https://github.com/ndonfris/fish-lsp.git
