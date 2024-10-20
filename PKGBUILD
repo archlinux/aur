@@ -3,7 +3,7 @@
 
 _pkgname=autovpn
 pkgname=${_pkgname}-git
-pkgver=19
+pkgver=28b1a87
 pkgrel=1
 pkgdesc='Easily connect to a VPN in a country of your choice.'
 arch=('x86_64')
@@ -17,15 +17,15 @@ source=('git+https://github.com/DevelopedLogic/autovpn.git')
 md5sums=('SKIP')
 
 pkgver() {
-        cd "$srcdir/${_pkgname}"
-        printf "%s.%s" "$(pkgver)" "$(git rev-parse --short HEAD)"
+  cd "$srcdir/${_pkgname}"
+  printf "%s" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-        cd "$srcdir/${_pkgname}"
-	go mod init autovpn.go &> /dev/null
-	go mod tidy
-        go build -o ${_pkgname}
+	cd "$srcdir/${_pkgname}"
+  go mod init autovpn.go &> /dev/null
+  go mod tidy
+  go build -o ${_pkgname}
 }
 
 package() {
