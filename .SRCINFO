@@ -10,8 +10,8 @@ pkgbase = plasma6-applets-optimus-gpu-switcher-git
 	depends = libplasma
 	depends = plasma5support
 	depends = envycontrol
-	optdepends = notify-send: notification support
-	optdepends = zenity: notification support (only one of the two are required)
+	optdepends = libnotify: notification support
+	optdepends = zenity: support for displaying GTK dialog boxes
 	source = optimus-gpu-switcher::git+https://github.com/enielrodriguez/optimus-gpu-switcher
 	b2sums = SKIP
 
