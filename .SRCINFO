@@ -1,6 +1,6 @@
 pkgbase = autovpn-git
 	pkgdesc = Easily connect to a VPN in a country of your choice using VPN-Gate network.
-	pkgver = 19
+	pkgver = 28b1a87
 	pkgrel = 1
 	url = https://github.com/DevelopedLogic/autovpn.git
 	arch = x86_64
