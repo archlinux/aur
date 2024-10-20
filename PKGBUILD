@@ -1,7 +1,7 @@
 # Maintainer: AnnikaV9 <carrot.moncher@gmail.com>
 
 pkgname=kbuilder
-pkgver=0.3.5
+pkgver=0.3.6
 pkgrel=1
 pkgdesc="Bash script for building custom kernels"
 arch=("x86_64")
@@ -10,7 +10,7 @@ license=("Unlicense")
 provides=("$pkgname")
 depends=("bash" "pacman" "run-parts" "curl" "coreutils" "base-devel")
 source=("$pkgname-$pkgver.tar.gz::$url/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz")
-b2sums=('069d0acc85d8e35a4ad58d67905bc8272bbcaa1826513b676b722e514d9614aabfc278d8275e51ad19653b24b67e64ba6764308f25aeda33dc0dc1bec0f343b7')
+b2sums=('743354f90d7b9d5e7a992ed736e4c1ca7104981148a0dab9da634861b287bf6dd851d0f4e41265d1888ca8935f852c89fa6b9c464e23b2937fd76830a0b2c718')
 
 package() {
   install -Dm755 "$srcdir/$pkgname-$pkgver/kbuilder" "$pkgdir/usr/bin/kbuilder"
