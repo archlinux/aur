@@ -7,7 +7,7 @@ arch=('x86_64')
 url='https://github.com/grafana/loki'
 license=('AGPL-3.0-only')
 makedepends=('git' 'go' 'make')
-source=("${pkgname}::git+https://github.com/grafana/loki.git")
+source=("${pkgname}::git+https://github.com/grafana/loki.git#branch=v${pkgver}")
 sha256sums=('SKIP')
 
 build() {
