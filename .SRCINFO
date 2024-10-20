@@ -1,6 +1,6 @@
 pkgbase = structstore
 	pkgdesc = Structured object storage, dynamically typed, to be shared between processes
-	pkgver = 0.2.0
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://github.com/mertemba/structstore
 	arch = x86_64
