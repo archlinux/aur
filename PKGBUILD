@@ -35,7 +35,7 @@ source=(
 #  modprobed.db
   partial-rog.config::"https://gitlab.com/asus-linux/fedora-kernel/-/raw/rog-6.11/partial-rog.config"
   choose-gcc-optimization.sh
-  more-uarches-for-kernel-6.8+.patch::"https://raw.githubusercontent.com/graysky2/kernel_compiler_patch/refs/heads/master/more-ISA-levels-and-uarches-for-kernel-6.8-rc4%2B.patch"
+  more-uarches-for-kernel-6.8+.patch::"https://raw.githubusercontent.com/graysky2/kernel_compiler_patch/refs/heads/master/more-ISA-levels-and-uarches-for-kernel-6.1.79%2B.patch"
   
   # actual kernel patch series
   0000-asus-patch-series.patch::"https://gitlab.com/asus-linux/fedora-kernel/-/raw/rog-6.11/asus-patch-series.patch"
@@ -64,7 +64,7 @@ sha256sums=('bd54b0a0a46574919706698b1411ec48cf2a58345c4d8990e414acc4730e8f55'
             '6c4d63503c77465232fe4ed42671261b476bb0bfd1223b1a3da4afcc1cd615fb'
             '3cc13b8e108528bfba5f544e7993af415a3bdaab13fb36285c886a628cd39332'
             '278118011d7a2eeca9971ac97b31bf0c55ab55e99c662ab9ae4717b55819c9a2'
-            '2b0ea7b9a06838aa9d689a41f9c802187ce33ea69b3b29f4e945f6752ad0c96b'
+            '48e12a587e3a93e73ca2bba9f3b418d70c0a56592581d2705384a07243c70d61'
             'ce1952eb4e6a9ed7e6e3bcf809ca2774c8b9f34120d9cb46524f0d27a58bf488'
             '0a7ea482fe20c403788d290826cec42fe395e5a6eab07b88845f8b9a9829998d'
             'ed242f4be3f8eaade2a1d42157c5c6c86281917a08ae43221b088fafdc775ee7'
