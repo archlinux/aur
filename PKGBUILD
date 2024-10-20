@@ -26,25 +26,29 @@ pkgname="${pkgbase}"
 #_pkgver='5.60';  _dl='8/0100007658/31';_suffix1='m17n';_suffix2='10'
 #_pkgver='5.70';  _dl='8/0100007658/33';_suffix1='m17n';_suffix2='11'
 #_pkgver='5.70';  _dl='8/0100007658/34';_suffix1='m17n';_suffix2='13'
-_pkgver='5.80';  _dl='8/0100007658/38';_suffix1='m17n';_suffix2='04'
+#_pkgver='5.80';  _dl='8/0100007658/38';_suffix1='m17n';_suffix2='04'
+_pkgver='6.00'; _dl='8/0100007658/42';_suffix1='m17n';_suffix2='08' # more drivers than 8/0100007658/43
+#_pkgver='6.00'; _dl='8/0100007658/43';_suffix1='m17n';_suffix2='03'
 pkgver="${_pkgver}.${_suffix2}"
 pkgrel=1
 pkgdesc='CUPS Canon UFR II LIPSLX CARPS2 printer driver for LBP iR MF ImageCLASS ImageRUNNER Laser Shot i-SENSYS ImagePRESS ADVANCE printers and copiers'
 arch=('x86_64' 'aarch64')
 # Direct links to the download reference go bad on the next version. We want something that will persist for a while.
-url='https://www.canon-europe.com/support/products/imagerunner/imagerunner-1730i.aspx'
+#url='https://www.canon-europe.com/support/products/imagerunner/imagerunner-1730i.aspx'
+url='https://www.canon-europe.com/support/business/products/office-printers/imagerunner/series/imagerunner-1730i.html'
 license=('GPL-2.0-only' 'MIT' 'custom')
 # parts of the code are GPL or MIT licensed, some parts have a custom license
-depends=('libcups' 'glibc' 'gcc-libs' 'libxml2')
+depends=('libcups' 'glibc' 'gcc-libs' 'libxml2' 'glib2')
 optdepends=(
   'libjpeg6-turbo: solves cpu hang on some color imageRUNNER/i-SENSYS LBP devices'
   'jbigkit: solves some cpu hangs'
-  'libjbig-shared: port of debian/fedora specific jbigkit functionality that can prevent cpu hangs on some models'
+  #'libjbig-shared: port of debian/fedora specific jbigkit functionality that can prevent cpu hangs on some models'
   'ghostscript: necessary for printing on some devices'
   'gtk3: for cnsetuputil2'
   'gdk-pixbuf2: for cnsetuputil2'
   'cairo: for cnsetuputil2'
   'pango: for cnsetuputil2'
+  'at-spi2-core: for cnsetuputil2'
 )
 makedepends=('jbigkit' 'gzip' 'gtk3')
 provides=("cnrdrvcups-lb=${_pkgver}")
@@ -52,10 +56,10 @@ conflicts=('cndrvcups-lb' 'cndrvcups-common-lb')
 conflicts+=('cndrvcups-lb-bin' 'cnrdrvcups-lb')
 options=('!emptydirs' '!strip' '!libtool')
 source=(
-  "http://gdlp01.c-wss.com/gds/${_dl}/linux-UFRII-drv-v${_pkgver//\./}-${_suffix1}-${_suffix2}.tar.gz"
+  "https://gdlp01.c-wss.com/gds/${_dl}/linux-UFRII-drv-v${_pkgver//\./}-${_suffix1}-${_suffix2}.tar.gz"
 )
-md5sums=('f21fc68223967a5897ba52fd7942ced7')
-sha512sums=('c040a636223da374d342c915ecee8de5d3689786430ada9da6b2660f6467290cb23ededc02d1509cafbec86fbfe19a5631a68cfb0b4f2cfd8fff6c2a50ea4724')
+md5sums=('55050290d01fe0834af5318c5118f514')
+sha512sums=('0564075a7321e3005ebd6d3d94a1bee1ed811805007fad348dcc6e6b884eb3790dc6183e1fdedcdf4ba63561264d3fa81f38657b4e7a8cfe08954ec1e61990a7')
 
 build() {
   set -u
