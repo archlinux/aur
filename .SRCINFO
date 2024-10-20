@@ -1,0 +1,11 @@
+pkgbase = kingler-bin
+	pkgdesc = A brief description of the kingler project
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = http://example.com
+	arch = x86_64
+	license = MIT
+	source = https://github.com/Luca-Barra/kingler/archive/refs/tags/v0.3.0.tar.gz
+	md5sums = SKIP
+
+pkgname = kingler-bin
