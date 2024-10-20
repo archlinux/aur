@@ -5,11 +5,11 @@ pkgrel=1
 pkgdesc="Suckless second brain"
 arch=('any')
 url="https://github.com/benjaminingreens/org"
-license=('MIT')
+license=('MIT')  
 depends=('python' 'python-pyyaml' 'python-setuptools')
 makedepends=('git')
 source=("git+$url#tag=v$pkgver")
-sha256sums=('SKIP')
+sha256sums=('SKIP')  
 
 build() {
   cd "$srcdir/org"
@@ -18,5 +18,5 @@ build() {
 
 package() {
   cd "$srcdir/org"
-  python setup.py install --root="$pkgdir/" --optimize=1 --prefix=/usr
+  python setup.py install --root="$pkgdir/" --optimize=1
 }
