@@ -8,11 +8,10 @@
 
 ## Mozc compile option
 _bldtype='Release'
-_mozc_commit=ad5c2d3
 _zipcode_rel=202110
 
 # Ut Dictionary
-_utdicdate=20240927
+_utdicdate=20241015
 _dict=(alt-cannadic
   edict2
   jawiki
@@ -24,13 +23,13 @@ _dict=(alt-cannadic
 
 pkgbase=mozc-ut-full
 pkgname=("$pkgbase-common" "ibus-$pkgbase" "fcitx5-$pkgbase" "emacs-$pkgbase")
-pkgver=2.30.5595.102.20240927
+pkgver=2.30.5618.102.20241015
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/fcitx/mozc"
 license=('custom')
 makedepends=('bazel' 'git' 'python' 'python-six' 'pkg-config' 'curl' 'mesa' 'subversion' 'qt6-base' 'clang' 'fcitx5' 'emacs' 'ibus')
-source=(git+https://github.com/fcitx/mozc.git#commit="${_mozc_commit}"
+source=(git+https://github.com/fcitx/mozc.git#commit=815cc6669489fd87c4235fc25245c8d230dad3b2
         # 2023-07-13: osdn.net is unstable due to Amazon
         # "https://osdn.net/projects/ponsfoot-aur/storage/mozc/x-ken-all-${_zipcode_rel}.zip"
         # "https://osdn.net/projects/ponsfoot-aur/storage/mozc/jigyosyo-${_zipcode_rel}.zip"
@@ -50,7 +49,7 @@ noextract=(jawiki-latest-all-titles-in-ns0-${_utdicdate}.gz)
 for dict in "${_dict[@]}"; do
   source+=("mozcdic-ut-${dict}-${_utdicdate}.txt.tar.bz2"::"https://github.com/utuhiro78/mozcdic-ut-${dict}/raw/main/mozcdic-ut-${dict}.txt.tar.bz2")
 done
-sha512sums=('9c60bdf04455ebe1b08455f6eac18d1036322cd17c15cf32e14b73945f2e39d900de799f2da6d3c1c53347fde585cbb92c2a1857b0d318fe1db751b0e41bd0fe'
+sha512sums=('2cc3f89a98ab646627cc01743e62af435f2346f9ebda0b38d401f8821415de8992d34e4c4c8f66ad343359713382ddba051d2ab54ee3cb41dd3f5cae658187e2'
             'dec6479b42ddc1355cd882d17824cd874d8f103ad7767bac3f490f04551059d65b2806fa9e3f39a50ced2ecfdd37b75c9ed4536d9ad3bcef9e8c5ae1ec10e302'
             '606f45d48a9dad0e80a566cab0001910de3c6b2f634ec52c6ef6f44745b55ae8e181b3e3cdf90525a08be1f180eb35900672c90c6ab4f43679a178e863378bbc'
             'SKIP'
@@ -61,14 +60,14 @@ sha512sums=('9c60bdf04455ebe1b08455f6eac18d1036322cd17c15cf32e14b73945f2e39d900d
             'SKIP'
             'SKIP'
             'SKIP'
-            '61ed6c9654b7f4f58323c8220f857dd0fef143a1c0ae8d7349263379eb0a9391f475ffc570ef95769ae90c804e7ba2d91d47ffd68a0ed4937bdfef2753bf40d5'
+            'e7b059f2f31da3a2390d2b867c2380d1c96ddd5287524285c06290c689b936325a0bd9212685a019f3b2860975161396d2989c45c1e5b8cb6167e79fdbda4b66'
             'd69c479c34f70839eb9a78f920b6a6aee1d39aff6ab181bfaa2fd47554697d6e4d92abb9d5bfc45247f0749a128557d1b8a12fa764865a5845d2c59e0f74660e'
-            'd4fb61a5ff34164c3a0d75aef37b7e422388795a017677585c1a1e7df0924345be87caf4e6f58ee2085159122a5524275fb915b875932d2ed53a016bc6137274'
+            '12e76f3a859ca010805a643842e91e699bc0ba61e908250d2c759326166704d62a249fe711c907026f1695001656af52ae81bdda637bcdbb3933c363d844d38b'
             '868769ee8c53450f5dfac4c7681edbdb61d5b9d5f478181ae7cc80a4170b77b640d3a058f1a7adfb8c0bf92cc94584a55b676d49c9ba8a85c2d860380be10e84'
             'c661b168a89fa9f726f62076ed1a51c72ebf8303688f3cff77247bfd34a0fee53a1b5bc35ee2ba05994b53e1f0397cb4a816e5a57eccbd210b0c1f8cc4fa50ab'
-            'b2042fcc88175322dc477a747acc3ff2236fb279107bd882e944eb2e4a6f86b56788992ca3e52dcf7d6a68790de0e9bceaf00b0dea671530af91d5bcb15bf581'
+            'f6229d8c530d5d50390b4478e97a1b9f7c515dbc0a98e01307411c3c77acd5c47c5565e0347f964a80b336905da39aa7079b7fb42bea6b87d311e05dec54281b'
             '377b3db6be9b1415e1507239e4108bb694201fb52d700d8099343ffecbad2f68bcf4e8bf2a61be031dd57e8fab2bbd7b16ae25a700d3ea72ec0d223fbc13804b'
-            '0a238ee7f64af1ef1428aa1c1164aa13663e0e5d657478326606ec203c99932a8548e1fc4468a40124bc46ad2fdb4bd6aaedde6a7cf108a4c549503476a930d4'
+            '6bfffc71e39cf71621ecfaf5e497f2f1edb5d62d39b20f23572c3918f757d222dd4a44760433c45723687f30bf7a3cc7d0a10477e2f078872f0c8175096c9496'
             'f8ccc231e0f247d14c5e523db4b90ca2c5fc216a96a767c1ad0c99b66636cbd020884ff1884af59f19665021f95df9da44ced2a9ea3de9865f1fad79c7194c12')
 
 pkgver() {
