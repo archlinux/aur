@@ -35,21 +35,16 @@ package() {
     echo "Don't know what's that? check link below:"
     echo "https://wiki.archlinux.org/title/Sudo"
     echo "----------------------------------------"
-    echo "提醒：您必须有sudo权限才能继续。"
-    echo "不知道这是什么？请查看以下链接："
-    echo "https://wiki.archlinux.org/title/Sudo_(简体中文)"
-    echo "----------------------------------------"
 
-  
     install -Dm755 ${_pkgname} "${pkgdir}/${_installdir}/siyuan.AppImage"
     install -Dm644 "squashfs-root/resources/stage/icon.png" "${pkgdir}/usr/share/icons/hicolor/512x512/apps/siyuan-bin.png"
     install -Dm644 "squashfs-root/siyuan.desktop" "${pkgdir}/usr/share/applications/siyuan-bin.desktop"
 
-    if [ ! -f "/usr/bin/siyuan" ]; then
-      sudo -k
-      sudo mkdir -p "/usr/bin"
-      sudo bash -c 'echo "#!/bin/sh" > "/usr/bin/siyuan"'
-      sudo bash -c 'echo "exec /opt/appimages/siyuan.AppImage" >> "/usr/bin/siyuan"'
-      sudo chmod 755 "/usr/bin/siyuan"
-    fi
+if [ ! -f "/usr/bin/siyuan" ]; then
+  sudo -k
+  sudo mkdir -p "/usr/bin"
+  sudo bash -c 'echo "#!/bin/sh" > "/usr/bin/siyuan"'
+  sudo bash -c 'echo "exec /opt/appimages/siyuan.AppImage" >> "/usr/bin/siyuan"'
+  sudo chmod 755 "/usr/bin/siyuan"
+fi
 }
