@@ -5,7 +5,7 @@ _pkgauthor=sachaos
 _pkgname=viddy
 pkgname=${_pkgname}-bin
 pkgver=1.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A modern watch command. Time machine and pager.'
 url="https://github.com/${_pkgauthor}/${_pkgname}"
 _urlraw="https://raw.githubusercontent.com/${_pkgauthor}/${_pkgname}/v${pkgver}"
@@ -29,7 +29,7 @@ sha256sums_aarch64=('36298c6371b641725a3c04c0990fc28e2e7dec33ecf19c057f35dab9085
 build() {
   cd "${srcdir}/" || exit
 
-  help2man ./${_pkgname} --output "MAN-${pkgver}.1"
+  help2man ./${_pkgname} --output "MAN-${pkgver}.1" --no-info
 }
 
 package() {
