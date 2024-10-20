@@ -1,22 +1,22 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
 pkgname="posting"
-pkgver=1.13.0
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="The modern API client that lives in your terminal"
 arch=('any')
 url="https://github.com/darrenburns/${pkgname}"
 license=('MIT')
-makedepends=('python-build' 'python-installer' 'python-hatchling')
-# checkdepends=('python-pytest>=8.3.1' 'python-pytest-cov' 'python-pytest-xdist')
-depends=('python>=3.11' 'python-click' 'python-xdg-base-dirs'
-         'python-click-default-group' 'python-httpx' 'python-pyperclip'
-         'python-pydantic' 'python-yaml' 'python-pydantic-settings'
-         'python-dotenv' 'python-textual' 'python-textual-autocomplete' 
-         'python-watchfiles>=0.24' 'python-rich' 'python-typing_extensions')
+makedepends=('python-build' 'python-hatchling' 'python-installer')
+# checkdepends=('python-pytest>=8.3.1' 'python-pytest-cov>=5' 'python-pytest-xdist>=3.6.1')
+depends=('python>=3.11' 'python-click>=8.1.7' 'python-click-default-group>=1.2.4'
+         'python-dotenv>=1.0.1' 'python-httpx>=0.27.2' 'python-pydantic>=2.9.2' 
+         'python-pydantic-settings>=2.4' 'python-pyperclip>=1.9' 'python-rich'
+         'python-textual' 'python-textual-autocomplete' 'python-typing_extensions'
+         'python-watchfiles>=0.24' 'python-xdg-base-dirs>=6.0.1' 'python-yaml>=6.0.2')
 _pkgsrc="${pkgname}-${pkgver}"
 source=("${_pkgsrc}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-sha256sums=('c77f942e1ae14b95ce3f59dd33f1d523bd0da953d0c69e0a66ff6f349765c18e')
+sha256sums=('293b44e479f35dfdcf6e34870ce7ca6d522dd57418b0105bf53e4d8757acfaa1')
 
 # prepare() {
 #   cd "${srcdir}/${_pkgsrc}/src/${pkgname}"
