@@ -1,0 +1,12 @@
+pkgbase = githttptossh
+	pkgdesc = Too lazy to change git remote origin to ssh? Try this
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/Mikicrepstudios/githttpossh
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	source = git+https://github.com/Mikicrepstudios/githttptossh.git
+	md5sums = SKIP
+
+pkgname = githttptossh
