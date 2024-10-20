@@ -2,14 +2,14 @@
 # Contributor: Louis Dalibard <ontake@ontake.dev>
 _pkgbase="ontake-xyosc"
 pkgname="$_pkgbase-git"
-pkgver=r2.gadfc70d
+pkgver=r7.g1a312e5
 pkgrel=1
 pkgdesc="A simple XY-oscilloscope written in Go."
 arch=("x86_64" "armv7h" "aarch64")
 url="https://github.com/make-42/xyosc"
 license=('GPL3')
 groups=()
-depends=('mesa' 'libxi' 'libxcursor' 'libxrandr' 'libxinerama' 'wayland' 'libxkbcommon')
+depends=('mesa' 'libxi' 'libxcursor' 'libxrandr' 'libxinerama' 'wayland' 'libxkbcommon' 'adobe-source-han-sans-jp-fonts')
 makedepends=('go>=1.18' 'git')
 optdepends=()
 provides=("$_pkgbase")

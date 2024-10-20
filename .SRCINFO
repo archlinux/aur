@@ -1,6 +1,6 @@
 pkgbase = ontake-xyosc-git
 	pkgdesc = A simple XY-oscilloscope written in Go.
-	pkgver = r2.gadfc70d
+	pkgver = r7.g1a312e5
 	pkgrel = 1
 	url = https://github.com/make-42/xyosc
 	arch = x86_64
@@ -16,6 +16,7 @@ pkgbase = ontake-xyosc-git
 	depends = libxinerama
 	depends = wayland
 	depends = libxkbcommon
+	depends = adobe-source-han-sans-jp-fonts
 	provides = ontake-xyosc
 	conflicts = ontake-xyosc
 	source = git+https://github.com/make-42/xyosc
