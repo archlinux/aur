@@ -3,7 +3,7 @@
 
 pkgname=babi
 pkgver=1.5.7
-pkgrel=1
+pkgrel=2
 pkgdesc="A text editor, eventually..."
 arch=('any')
 url="https://github.com/asottile/babi"
