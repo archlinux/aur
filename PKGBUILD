@@ -4,32 +4,34 @@
 
 set -u
 _pkgname='littler'
-pkgname="${_pkgname}-git"
-pkgver='0.3.15'
-pkgrel='1'
+pkgname="${_pkgname}"
+pkgname+='-git'
+pkgver=0.3.19.r40.gb1b3b14
+pkgrel=1
 pkgdesc='a hash-bang and simple command line pipe front end for GNU R'
 arch=('i686' 'x86_64')
 #url="http://code.google.com/p/littler"
-url='http://dirk.eddelbuettel.com/code/littler.html'
+url='https://dirk.eddelbuettel.com/code/littler.html'
 #url="https://github.com/eddelbuettel/${_pkgname}"
-license=('GPL')
+license=('GPL-2.0-or-later')
 #groups=('science')
+depends=('glibc')
 makedepends=('make' 'r' 'sh')
 _giturl="https://github.com/eddelbuettel/${_pkgname}"
 source=("${_pkgname}-${pkgver}.tar.gz::${_giturl}/archive/${pkgver}.tar.gz")
 #source=("http://dirk.eddelbuettel.com/code/littler/${pkgname}_${pkgver}.tar.gz")
 #source=("http://http.debian.net/debian/pool/main/l/littler/littler_0.2.3.orig.tar.gz")
-md5sums=('f932b65d3ed38f233e23e348c21bf913')
-sha256sums=('c78908d630cce4932e668014620e634addb330a841138d7143a70f63d55f1c16')
+md5sums=('be4e66891b7295cb81042ae9d4f6a097')
+sha256sums=('be865bba2f06c76486080e4d4bdc2bcf7a01e3b4ed516037d447890b637b7c6a')
 
 if [ "${pkgname%-git}" != "${pkgname}" ]; then # this is easily done with case
   _srcdir="${_pkgname}"
   makedepends+=('git')
-  _vcsprovides=("${pkgname%-git}=${pkgver%%.r*}")
-  _vcsconflicts=("${pkgname%-git}")
-  url="https://github.com/eddelbuettel/${_pkgname}"
-  source=("${_srcdir}::${url//https:/git:}.git")
-  :;sha256sums=('SKIP')
+  #_vcsprovides=("${pkgname%-git}=${pkgver%%.r*}")
+  #_vcsconflicts=("${pkgname%-git}")
+  source=("${_srcdir}::git+${_giturl}.git")
+  md5sums[0]='SKIP'
+  sha256sums[0]='SKIP'
   provides=("${_pkgname}=${pkgver%%.r*}")
   conflicts=("${_pkgname}")
 pkgver() {
@@ -75,7 +77,7 @@ build() {
 
 package() {
   set -u
-  depends=('r' 'sh')
+  depends+=('r' 'sh')
   cd "${_srcdir}"
   #make DESTDIR="${pkgdir}" install
   install -Dpm755 'inst/bin/r' -t "${pkgdir}/usr/bin/"
