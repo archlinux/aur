@@ -1,6 +1,6 @@
 pkgbase = securefs
 	pkgdesc = A filesystem in userspace (FUSE) with transparent encryption and decryption
-	pkgver = 1.0.0
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://github.com/netheril96/securefs
 	arch = x86_64
@@ -18,8 +18,8 @@ pkgbase = securefs
 	depends = protobuf
 	depends = sqlite
 	depends = uni-algo
-	source = git+https://github.com/netheril96/securefs.git?signed#tag=v1.0.0
+	source = git+https://github.com/netheril96/securefs.git?signed#tag=v1.0.1
 	validpgpkeys = 7640E42D45792AEA634188EAB10AE9952D2E33D9
-	sha256sums = 2e6fe604e1e6055f3308a117fbafad63e04bd7178402d181e1b9a30e804d67e0
+	sha256sums = 61e5617002c073071f993f1bc38a79159c08f6c0e13e61aba255fb8b6d664d01
 
 pkgname = securefs

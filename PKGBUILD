@@ -2,7 +2,7 @@
 # Contributor: mrxx <mrxx at cyberhome dot at>
 
 pkgname=securefs
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="A filesystem in userspace (FUSE) with transparent encryption and decryption"
 arch=('x86_64')
@@ -20,7 +20,7 @@ depends=('abseil-cpp'
          'uni-algo')
 makedepends=('cmake' 'git' 'tclap')
 source=("git+${url}.git?signed#tag=v${pkgver}")
-sha256sums=('2e6fe604e1e6055f3308a117fbafad63e04bd7178402d181e1b9a30e804d67e0')
+sha256sums=('61e5617002c073071f993f1bc38a79159c08f6c0e13e61aba255fb8b6d664d01')
 validpgpkeys=('7640E42D45792AEA634188EAB10AE9952D2E33D9') # Siyuan Ren <netheril96@gmail.com>
 
 build() {
