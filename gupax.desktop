@@ -1,0 +1,7 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Gupax
+Exec=/usr/bin/gupax
+Terminal=false
+Icon=/usr/share/gupax/icon@2x.png

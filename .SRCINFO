@@ -1,0 +1,16 @@
+pkgbase = gupax
+	pkgdesc = GUI Uniting P2Pool And XMRig
+	pkgver = 1.3.9
+	pkgrel = 1
+	url = https://github.com/hinto-janai/gupax
+	arch = x86_64
+	license = GPL-3.0
+	makedepends = cargo
+	depends = p2pool
+	depends = xmrig
+	source = git+https://github.com/hinto-janai/gupax#tag=v1.3.9
+	source = gupax.desktop
+	b2sums = SKIP
+	b2sums = d2f13b48123ec84a09aff523baf49a74434c839b88c3f2dbf0841f820194a301d4ffe4569eaff427c2880029fc0a76e4362c0066f2047f31a2dbdf3be96fd369
+
+pkgname = gupax
