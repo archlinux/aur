@@ -3,7 +3,7 @@
 
 pkgname=udev-notify-bzr
 pkgver=r41
-pkgrel=1
+pkgrel=2
 pkgdesc="Visual hardware notifications for Linux. (Bazaar version)"
 arch=('i686' 'x86_64')
 url="https://launchpad.net/udev-notify"
