@@ -2,8 +2,8 @@
 # Contributor: Alexander De Sousa <archaur.xandy21@spamgourmet.com>
 
 pkgname=udev-notify-bzr
-pkgver=r41
-pkgrel=2
+pkgver=42
+pkgrel=1
 pkgdesc="Visual hardware notifications for Linux. (Bazaar version)"
 arch=('i686' 'x86_64')
 url="https://launchpad.net/udev-notify"
@@ -19,7 +19,7 @@ _bzrmod="python3"
 
 pkgver() {
   cd "${_bzrmod}"
-  printf "r%s" "$(bzr revno)"
+  printf "%s" "${pkgver}"
 }
 
 prepare() {
