@@ -1,23 +1,25 @@
-# Maintainer: Invarianz <invarianztheorem [at] web [dot] de>
+# Maintainer: archdub <groknok [at] gmail [dot] com>
+# Contributor: Invarianz <invarianztheorem [at] web [dot] de>
 # Contributor: cmichi <mich [at] elmueller [dot] net>
-#
-# This package provides the latest offical, upstream nvi
-# with multibyte support enabled.
+
+# This package provides the latest snapshot of nvi with multibyte support enabled.
+# This package used to be called "nvi-multibyte-upstream".
 
 pkgname=nvi-multibyte-git
-pkgdesc="Upstream nvi with enabled multibyte support"
+pkgdesc="nvi with multibyte support"
 arch=('x86_64')
 url="git://repo.or.cz/nvi.git"
 license=("BSD")
-conflicts=("nvi")
+conflicts=('nvi' 'nvi-multibyte-upstream')
+provides=('nvi')
 
-_COMMIT="864873d3f353ab3e54040817ec562bd3b346b55f"
+_COMMIT="ec6c4a2d8889319a21893cbaf2cc63d11598fba2"
 source=("http://repo.or.cz/nvi.git/snapshot/$_COMMIT.tar.gz")
-md5sums=('c146491156559ff069e2cfd64c97075c')
+sha512sums=('a3505e209277c6f634176583be8d475b9e9733ba2ecece53c04abd79ef0975f9c458eec1ad7391e0e3ae9610e0348ac398c76156805dbc35bf32d49d3dd190ce')
 
-# the last official release was 1.81.6, but there have been
-# commits since then. Timestamp (yyyymmdd) of latest commit is appended.
-pkgver=1.81.6_20200915
+# The last official release was 1.81.6, but there have been commits since then.
+# Append timestamp (yyyymmdd) of latest commit.
+pkgver=1.81.6_20240912
 pkgrel=1
 _COMMIT_HASH="${_COMMIT:0:7}"
 
