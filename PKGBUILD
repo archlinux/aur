@@ -2,7 +2,7 @@
 # Contributor: Enes Hecan <nshecan@gmail.com>
 
 pkgname=whatsapp-for-linux
-pkgver=1.6.5
+pkgver=1.7.0
 pkgrel=1
 pkgdesc="An unofficial WhatsApp desktop application for linux"
 url=https://github.com/eneshecan/$pkgname
@@ -12,7 +12,7 @@ depends=(gtkmm3 webkit2gtk libayatana-appindicator libcanberra gst-plugins-base 
 makedepends=(cmake git)
 optdepends=('hunspell-en_us: spell-checking')
 source=(git+$url#tag=v$pkgver)
-b2sums=('f7b31f0f61903b5cb53a4d7f0402600e6b37659f11fe66c554388f35030bd7310d96b7a0c62591fbfaae368a7e100561ad40f34892595f452d2933c1f79cff3a')
+b2sums=('1a14e9582654204dea6fe361d8f8e29f1b5b9a5266bfe292f8423df4602364a0c0989c4089ec86ced18c4e292600aa10d8f2b01fa62707c6edfa612aa224d679')
 
 build() {
     cd $pkgname
