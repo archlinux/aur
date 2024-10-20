@@ -1,7 +1,7 @@
 pkgbase = spotify-player
 	pkgdesc = A command driven spotify player.
 	pkgver = 0.19.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/aome510/spotify-player
 	arch = x86_64
 	arch = aarch64
