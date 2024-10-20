@@ -17,6 +17,7 @@ url="https://github.com/$_pkgname/$_pkgname"
 license=(MIT)
 depends=(
     python-apscheduler
+    python-beautifulsoup4
     python-certifi
     python-cherrypy
     python-feedparser
@@ -36,6 +37,7 @@ depends=(
     python-requests
     python-rich
     python-rpyc
+    python-soupsieve
     python-sqlalchemy
     python-zstandard
     python-zxcvbn
