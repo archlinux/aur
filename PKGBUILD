@@ -1,6 +1,6 @@
 # Maintainer: Penguin <penguin@pcland.co.in>
 pkgname=wikilynx
-pkgver=1.2.5
+pkgver=1.2.6
 pkgrel=0
 #epoch=
 pkgdesc="A simple Qt C++ app to play Wikipedia Speedruns the right way"
@@ -20,7 +20,7 @@ conflicts=("${pkgname}")
 provides=("${pkgname}")
 #changelog=
 source=("extras.tar.gz"
-	"https://github.com/flamboyantpenguin/wikiLYNX/archive/refs/tags/v1.2.5.zip"
+	"https://github.com/flamboyantpenguin/wikiLYNX/archive/refs/tags/v1.2.6.zip"
 	)
 sha256sums=('SKIP' 'SKIP')
 validpgpkeys=()
@@ -40,4 +40,7 @@ package() {
 	install -Dm644 "${srcdir}/wikiLYNX.png" "${pkgdir}/usr/share/pixmaps/wikiLYNX.png"
 	install -Dm644  "${srcdir}/wikilynx.desktop" "${pkgdir}/usr/share/applications/wikilynx.desktop"
 	install -Dm644 "../LICENSE" "${pkgdir}/usr/share/licenses/wikilynx"
+	install -Dm644 "../COPYING" "${pkgdir}/usr/share/licenses/wikilynx"
+	install -Dm644 "../docs/license/CourierPrime_OFL.txt" "${pkgdir}/usr/share/licenses/wikilynx"
+	install -Dm644 "../docs/license/NotoSans_OFL.txt" "${pkgdir}/usr/share/licenses/wikilynx"
 }
