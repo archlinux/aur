@@ -1,7 +1,7 @@
 pkgbase = nodejs-fast-cli
 	pkgdesc = Test your download and upload speed using fast.com from Netflix
 	pkgver = 4.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/sindresorhus/fast-cli#readme
 	arch = any
 	license = MIT
