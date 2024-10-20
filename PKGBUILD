@@ -3,7 +3,7 @@
 pkgname=musoq
 _pkgname=Musoq
 _pkgauthor=Puchaczov
-pkgver=0.16.2
+pkgver=0.16.3
 pkgrel=1
 pkgdesc="SQL Swiss Army Knife - Engine for Diverse Data Sources"
 arch=('x86_64' 'aarch64')
@@ -17,8 +17,8 @@ source_x86_64=("${_pkgname}_${pkgver}_${arch[0]}.zip::${_urlcli}/${_pkgname}-lin
 source_aarch64=("${_pkgname}_${pkgver}_${arch[1]}.zip::${_urlcli}/${_pkgname}-linux-arm64.zip")
 sha256sums=('93cc95a3787ded1ff91625612a9d1af9f449e6eaddb804dee030ba21be3450ce'
             'dd1656274ba0c9c7ffbfa4783472c356a744b619e1f15a99245ec31665e89863')
-sha256sums_x86_64=('0e19af6c2bf544892c2d028869115ce445533b2f62111e1472051c5de36b5e1c')
-sha256sums_aarch64=('e272f49119613f4a480922364250493ebdbe91f5f03a38df1181bab3b46bc33f')
+sha256sums_x86_64=('1de5a91efb601f14c19035e4aa84fcb3b44b8870219740de2290c033eba502d7')
+sha256sums_aarch64=('e4d4682c47cb4d09282e9174cd84424e05e111587e90d1d544af1b2d48fd36a2')
 
 package() {
     install -dm755 "${pkgdir}/opt/${pkgname}/"
