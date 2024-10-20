@@ -7,8 +7,8 @@ pkgbase="python-${_pkgname}"
 pkgname=("${pkgbase}" "${pkgbase}-opt" "${pkgbase}-cuda" "${pkgbase}-opt-cuda" "${pkgbase}-rocm" "${pkgbase}-opt-rocm")
 # When updating pytorch, also check the compatibility table for torchvision
 # https://github.com/pytorch/vision?tab=readme-ov-file#installation
-pkgver=2.4.1
-_pkgver=2.4.1
+pkgver=2.5.0
+_pkgver=2.5.0
 pkgrel=1
 _pkgdesc='Tensors and Dynamic neural networks in Python with strong GPU acceleration'
 pkgdesc="${_pkgdesc}"
@@ -27,6 +27,7 @@ source=("${_pkgname}::git+https://github.com/pytorch/pytorch.git#tag=v$_pkgver"
         "${pkgname}-FP16::git+https://github.com/Maratyszcza/FP16.git"
         "${pkgname}-FXdiv::git+https://github.com/Maratyszcza/FXdiv.git"
         "${pkgname}-NNPACK::git+https://github.com/Maratyszcza/NNPACK.git"
+        "${pkgname}-NVTX::git+https://github.com/NVIDIA/NVTX.git"
         "${pkgname}-PeachPy::git+https://github.com/malfet/PeachPy.git"
         "${pkgname}-VulkanMemoryAllocator::git+https://github.com/GPUOpen-LibrariesAndSDKs/VulkanMemoryAllocator.git"
         "${pkgname}-XNNPACK::git+https://github.com/google/XNNPACK.git"
@@ -40,7 +41,6 @@ source=("${_pkgname}::git+https://github.com/pytorch/pytorch.git#tag=v$_pkgver"
         "${pkgname}-fbjni::git+https://github.com/facebookincubator/fbjni.git"
         "${pkgname}-flatbuffers::git+https://github.com/google/flatbuffers.git"
         "${pkgname}-fmt::git+https://github.com/fmtlib/fmt.git"
-        "${pkgname}-foxi::git+https://github.com/houseroad/foxi.git"
         "${pkgname}-gemmlowp::git+https://github.com/google/gemmlowp.git"
         "${pkgname}-gloo::git+https://github.com/facebookincubator/gloo"
         "${pkgname}-googletest::git+https://github.com/google/googletest.git"
@@ -75,7 +75,7 @@ source=("${_pkgname}::git+https://github.com/pytorch/pytorch.git#tag=v$_pkgver"
         python-pytorch-ffmpeg6.patch
         python-pytorch-aotriton-include.patch
         pytorch-remove-caffe2-binaries.patch)
-b2sums=('7c05366fa2571f9178de252ab93fbb711b91e006d5e6086d24c9da73a459c335b060af19bd53d2d6bc3ea3dfb02263ddca031be452d257016b5b7890bc7ca676'
+b2sums=('ce8c81ebb60cc9433c1d8d3d65ed22f87c81290ab6379da199411646c7f8986c5951549a8bc6c657e117f5e0c385d3912466738393cd81a47dfa20579d63fe2c'
         'SKIP'
         'SKIP'
         'SKIP'
@@ -139,12 +139,13 @@ prepare() {
   # generated using parse-submodules
   git submodule init
 
-  git config submodule."android/libs/fbjni".url "${srcdir}/${pkgname}"-fbjni
+    git config submodule."android/libs/fbjni".url "${srcdir}/${pkgname}"-fbjni
   git config submodule."third_party/NNPACK".url "${srcdir}/${pkgname}"-NNPACK
   git config submodule."third_party/NNPACK_deps/FP16".url "${srcdir}/${pkgname}"-FP16
   git config submodule."third_party/NNPACK_deps/FXdiv".url "${srcdir}/${pkgname}"-FXdiv
   git config submodule."third_party/NNPACK_deps/psimd".url "${srcdir}/${pkgname}"-psimd
   git config submodule."third_party/NNPACK_deps/pthreadpool".url "${srcdir}/${pkgname}"-pthreadpool
+  git config submodule."third_party/NVTX".url "${srcdir}/${pkgname}"-NVTX
   git config submodule."third_party/VulkanMemoryAllocator".url "${srcdir}/${pkgname}"-VulkanMemoryAllocator
   git config submodule."third_party/XNNPACK".url "${srcdir}/${pkgname}"-XNNPACK
   git config submodule."third_party/benchmark".url "${srcdir}/${pkgname}"-benchmark
@@ -156,7 +157,6 @@ prepare() {
   git config submodule."third_party/fbgemm".url "${srcdir}/${pkgname}"-fbgemm
   git config submodule."third_party/flatbuffers".url "${srcdir}/${pkgname}"-flatbuffers
   git config submodule."third_party/fmt".url "${srcdir}/${pkgname}"-fmt
-  git config submodule."third_party/foxi".url "${srcdir}/${pkgname}"-foxi
   git config submodule."third_party/gemmlowp/gemmlowp".url "${srcdir}/${pkgname}"-gemmlowp
   git config submodule."third_party/gloo".url "${srcdir}/${pkgname}"-gloo
   git config submodule."third_party/googletest".url "${srcdir}/${pkgname}"-googletest
