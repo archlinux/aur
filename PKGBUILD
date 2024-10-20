@@ -1,12 +1,12 @@
 # Maintainer: celenity <celenity@celenity.dev>
 pkgname=phoenix-policies-no-sync
-pkgver=20240925
+pkgver=20241019
 pkgrel=1
 pkgdesc="Standard Phoenix policies for Mozilla Firefox without Firefox Sync"
 arch=(any)
 license=('GPL3')
 url="https://phoenix.celenity.dev"
-source=("git+https://codeberg.org/celenity/Phoenix.git#commit=237ac032b5d529ddc99e56883488596256cb800e")
+source=("git+https://codeberg.org/celenity/Phoenix.git#commit=efd0b9f51aff77115e1a3e1285139d66cc4f96f8")
 sha512sums=('SKIP')
 
 pkgver() {
