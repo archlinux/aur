@@ -1,13 +1,13 @@
 # Maintainer: steelt <steeltitanium1 at gmail dot com>
 
 pkgname=rvx-builder
-pkgver=3.15.1
+pkgver=3.16.1
 pkgrel=1
 pkgdesc="A NodeJS ReVanced Extended Builder"
 arch=("x86_64")
 url="https://github.com/inotia00/rvx-builder"
 license=("GPL-3.0")
-depends=("nodejs" "jdk-openjdk")
+depends=("nodejs" "java-environment>=17")
 makedepends=("npm")
 optdepends=(
   "android-tools: required only for rooted phones"
@@ -19,7 +19,7 @@ source=(
   "rvx-builder.desktop"
   "rvx-builder.png"
 )
-sha256sums=('1313757ad981f9efba5d032824d2a585ed8fa9dc2a0e18e15052dec376320bbd'
+sha256sums=('ef117be2e3f9a083500fa2d5a2d4f1baa5e5f119a4de03f97da836375b5cac43'
             '3fdb61a644d1b8f9506a932330319b34ed023fe9e3c5712df340cc6ed1e2fc12'
             '8d6e3edae77e734e6539da775a77f52bac3863b870baff2f1631796d304b941e'
             '2b4943f5ada85a5dfb73d8e28d3d14e0f7f4eaa4f4072feca02e3a9b54500406')
