@@ -18,7 +18,7 @@ source=("git+https://github.com/infinytum/libfprint.git#branch=unstable")
 sha256sums=('SKIP')
 
 prepare() {
-  sed -i "common_cflags = cc.get_supported_arguments(\[/a \    '-Wno-incompatible-pointer-types'," ${_pkgdirname}/meson.build
+  sed -i "/common_cflags = cc.get_supported_arguments(\[/a \    '-Wno-incompatible-pointer-types'," ${_pkgdirname}/meson.build
 }
 
 build() {
