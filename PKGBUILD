@@ -10,18 +10,16 @@
 _pkgname=Flexget
 pkgname=${_pkgname,,}
 pkgver=3.11.49
-pkgrel=1
+pkgrel=2
 pkgdesc="A multipurpose automation tool for all of your media"
 arch=(any)
 url="https://github.com/$_pkgname/$_pkgname"
 license=(MIT)
 depends=(
-    $pkgname-webui
     python-apscheduler
     python-certifi
     python-cherrypy
     python-feedparser
-    python-flask
     python-flask-compress
     python-flask-cors
     python-flask-login
@@ -43,11 +41,12 @@ depends=(
     python-zxcvbn
 )
 makedepends=(python-build python-installer python-setuptools python-wheel)
-optdepends=('flexget-webui-v1: webui v1'
-            'python-boto3: SNS output plugin'
-            'python-plexapi: plex support'
-            'python-pysftp: sftp support'
-            'subliminal: subtitles support')
+optdepends=("$pkgname-webui: webui v2"
+            "$pkgname-webui-v1: webui v1"
+            "python-boto3: SNS output plugin"
+            "python-plexapi: plex support"
+            "python-pysftp: sftp support"
+            "subliminal: subtitles support")
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
         "$pkgname.service"
         "$pkgname@.service"
