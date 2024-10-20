@@ -3,7 +3,7 @@
 
 _pkgname=autovpn
 pkgname=${_pkgname}-git
-pkgver=r18.28b1a87
+pkgver=19
 pkgrel=1
 pkgdesc='Easily connect to a VPN in a country of your choice.'
 arch=('x86_64')
@@ -18,7 +18,7 @@ md5sums=('SKIP')
 
 pkgver() {
         cd "$srcdir/${_pkgname}"
-        printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+        printf "%s.%s" "$(pkgver)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
