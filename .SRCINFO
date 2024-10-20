@@ -1,0 +1,24 @@
+pkgbase = ontake-xyosc-git
+	pkgdesc = A simple XY-oscilloscope written in Go.
+	pkgver = r2.gadfc70d
+	pkgrel = 1
+	url = https://github.com/make-42/xyosc
+	arch = x86_64
+	arch = armv7h
+	arch = aarch64
+	license = GPL3
+	makedepends = go>=1.18
+	makedepends = git
+	depends = mesa
+	depends = libxi
+	depends = libxcursor
+	depends = libxrandr
+	depends = libxinerama
+	depends = wayland
+	depends = libxkbcommon
+	provides = ontake-xyosc
+	conflicts = ontake-xyosc
+	source = git+https://github.com/make-42/xyosc
+	md5sums = SKIP
+
+pkgname = ontake-xyosc-git
