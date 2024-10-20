@@ -1,0 +1,18 @@
+pkgbase = sddm-eucalyptus-drop
+	pkgdesc = Some nice eucalyptus-y eye-candy for SDDM!
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://gitlab.com/Matt.Jolly/sddm-eucalyptus-drop
+	install = sddm-eucalyptus-drop.install
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = sddm
+	depends = qt6-5compat
+	depends = qt6-svg
+	provides = sddm-eucalyptus-drop
+	conflicts = sddm-eucalyptus-drop
+	source = sddm-eucalyptus-drop.tar.bz2::https://gitlab.com/Matt.Jolly/sddm-eucalyptus-drop/-/archive/v2.0.0/sddm-eucalyptus-drop-v2.0.0.tar.bz2
+	sha256sums = b4a8b6bac1ecf54d0e44ef168ebca2c99130e3da7e0a4170ceb4d0764ec22937
+
+pkgname = sddm-eucalyptus-drop
