@@ -2,7 +2,7 @@
 
 pkgname=sunshine-beta-bin
 _pkgname=${pkgname%-beta-bin}
-pkgver=2024.1019.24934
+pkgver=2024.1020.30518
 _gittag=v$pkgver
 pkgrel=1
 pkgdesc="A self-hosted game stream host for Moonlight."
@@ -39,7 +39,7 @@ optdepends=('cuda: NvFBC capture support'
 conflicts=(sunshine sunshine-git sunshine-bin)
 makedepends=('patchelf')
 provides=('sunshine')
-sha256sums=('da13cef746be9164dadd17123c89fcc3f7a959aaf61b921240aea0fc3481883e'
+sha256sums=('504a8fa21ab128d960891211c1071946e811694f10efceac295c49f0093aa4c4'
         '3a78c9ceb45dca435d3542c6416b511293743b32c7f384a3689d4addf3653989')
 
 prepare() {
