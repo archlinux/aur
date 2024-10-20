@@ -1,0 +1,31 @@
+--- src/plum-2.5.2/pyproject.toml	2024-07-17 10:24:31.000000000 +0300
++++ pyproject.toml	2024-10-21 02:17:14.153253302 +0300
+@@ -1,5 +1,5 @@
+ [build-system]
+-requires = ["hatchling>=1.8.0", "hatch-vcs"]
++requires = ["hatchling>=1.8.0"]
+ build-backend = "hatchling.build"
+ 
+ [project]
+@@ -15,7 +15,7 @@
+     "Programming Language :: Python :: 3",
+     "Development Status :: 5 - Production/Stable",
+ ]
+-dynamic = ["version"]
++version = "2.5.2"
+ 
+ requires-python = ">=3.8"
+ dependencies = [
+@@ -50,12 +50,6 @@
+ [tool.hatch.build]
+ include = ["plum*"]
+ 
+-[tool.hatch.version]
+-source = "vcs"
+-
+-[tool.hatch.build.hooks.vcs]
+-version-file = "plum/_version.py"
+-
+ # Development tools
+ [tool.coverage.run]
+ branch = true
