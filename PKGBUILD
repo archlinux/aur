@@ -1,6 +1,6 @@
 # Maintainer: Allan Chain <allan-chainatoutlookdotcom>
 pkgname=sane-break
-pkgver=0.3.3
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="A polite and sane break reminder preventing mindless skips."
 arch=('x86_64')
@@ -18,7 +18,7 @@ makedepends=(
   "cmake"
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('952fcb12090d0a8fd8b057d4f660692535bfbfecccd28fe67384ae79b2d997f7')
+sha256sums=('13b6382a2d0cbb4b9908a8624056d16fb325c300faccbeebed891c92e6ffc699')
 
 build() {
   cd "$pkgname-$pkgver"
