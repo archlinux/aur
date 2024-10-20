@@ -2,7 +2,7 @@
 
 pkgname=nvidiactl-git
 _pkgname=${pkgname%-git}
-pkgver=r43.3338a48
+pkgver=r60.a31e801
 pkgrel=1
 pkgdesc='A tool providing dynamic fan speed and power limit adjustments for NVIDIA GPUs, balancing performance and noise. It can optionally be run as a systemd service.'
 arch=('x86_64')
@@ -37,10 +37,9 @@ prepare() {
 build() {
   cd "$srcdir/$_pkgname"
   export CGO_ENABLED=1
-  go build \
+  go build -v \
     -ldflags="-s -w" \
     -gcflags=all="-l -B" \
-    -tags smallpt \
     -trimpath \
     -o build/"$_pkgname" ./cmd/nvidiactl
   upx -qqq build/"$_pkgname"
