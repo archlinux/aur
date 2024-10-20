@@ -5,7 +5,7 @@
 
 pkgname=pmd
 pkgver=7.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Extensible cross-language static code analyzer"
 arch=('any')
 url="https://github.com/pmd/pmd"
@@ -25,7 +25,7 @@ prepare() {
 
 build() {
 	cd "pmd-src-$pkgver"
-	./mvnw clean package
+	./mvnw clean package -T 1C
 }
 
 package() {

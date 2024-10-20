@@ -1,7 +1,7 @@
 pkgbase = pmd
 	pkgdesc = Extensible cross-language static code analyzer
 	pkgver = 7.6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/pmd/pmd
 	arch = any
 	license = BSD
