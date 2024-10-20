@@ -1,40 +1,28 @@
+# Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
 # Contributor: Mark Grimes <mgrimes at peculier dot com>
 # Contributor: Tom Vincent <http://tlvince.com/contact/>
 # Contributor: macxcool
 
 pkgname=stopmotion
-_realname=linuxstopmotion
-pkgver=0.8.5
+pkgver=0.8.7
 pkgrel=1
 arch=(x86_64)
 pkgdesc="Stop motion animation creation program"
-url="http://linuxstopmotion.org/"
-license=(GPL2)
-depends=(hicolor-icon-theme libtar qt5-multimedia)
-makedepends=(git qt5-tools)
-_commit=ed010826d9ae7668d5d477c47a10e4fb1b92ecf8  # tags/0.8.5
-source=($_realname::git+https://git.code.sf.net/p/$_realname/code#tag=$_commit)
-sha256sums=('SKIP')
-
-pkgver() {
-  cd $_realname
-  git describe --tags | sed 's/^v//;s/-/+/g'
-}
-
-prepare() {
-  cd $_realname
-  sed -i 's|/share/icons|/share/icons/hicolor/scalable/apps/|' stopmotion.pro
-}
+url="https://invent.kde.org/multimedia/stopmotion"
+license=(GPL-2.0-or-later)
+depends=(qt5-base qt5-multimedia libarchive libxml2 glibc gcc-libs libvorbis)
+makedepends=(cmake qt5-tools)
+source=("https://invent.kde.org/multimedia/stopmotion/-/archive/${pkgver}/stopmotion-${pkgver}.tar.gz")
+sha256sums=('c121cbcb5a3aa76cdbbef55c3416bd442e5367fc1b36f28c4b937e0d06e91aa1')
 
 build() {
-  cd $_realname
-  qmake PREFIX=/usr stopmotion.pro
-  make
+  cmake -B build -S "stopmotion-${pkgver}" -Wno-dev \
+    -DCMAKE_BUILD_TYPE=None \
+    -DCMAKE_INSTALL_PREFIX=/usr
+
+  cmake --build build
 }
 
 package() {
-  cd $_realname
-  make INSTALL_ROOT="$pkgdir" install
-  install -Dm644 stopmotion.mime "$pkgdir"/usr/share/mime-info/stopmotion.mime
-  install -Dm644 stopmotion.1 "$pkgdir"/usr/share/man/man1/stopmotion.1
+  DESTDIR="${pkgdir}" cmake --install build
 }
