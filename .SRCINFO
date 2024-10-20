@@ -1,6 +1,6 @@
 pkgbase = fakehostname
 	pkgdesc = Run a command and fake your hostname.
-	pkgver = 0.3.0
+	pkgver = 0.3.1
 	pkgrel = 1
 	url = https://github.com/dtcooper/fakehostname
 	arch = i686
@@ -8,7 +8,7 @@ pkgbase = fakehostname
 	arch = aarch64
 	arch = armv7h
 	license = MIT
-	source = fakehostname-0.3.0.tar.gz::https://github.com/dtcooper/fakehostname/archive/refs/tags/0.3.0.tar.gz
-	sha256sums = f5e1cce5d3091bbbe98b4edb411bdcb3dc9737bf8a78391de831bf7650e59bbe
+	source = fakehostname-0.3.1.tar.gz::https://github.com/dtcooper/fakehostname/archive/refs/tags/0.3.1.tar.gz
+	sha256sums = 5422942cf75e9a96a252ed63aa95ecbfc8ba9ec292115b76f929d22a17a5e557
 
 pkgname = fakehostname
