@@ -24,7 +24,7 @@ build() {
   cmake -B build -S $_name-$pkgver \
     -DBUILD_TESTING=OFF \
     -DBUILD_QCH=ON \
-    -DDocBookXSL_DIR=/usr/share/xml/docbook/xsl-stylesheets-1.79.2-nons
+    -DDocBookXSL_DIR=/usr/share/xml/docbook/xsl-stylesheets-nons
   cmake --build build
 }
 
