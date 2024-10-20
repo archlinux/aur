@@ -15,8 +15,8 @@ depends=(
 )
 makedepends=(git)
 optdepends=(
-    'notify-send: notification support'
-    'zenity: notification support (only one of the two are required)'
+    'libnotify: notification support'
+    'zenity: support for displaying GTK dialog boxes'
 )
 conflicts=()
 source=($_gitpkgname::git+https://github.com/enielrodriguez/$_gitpkgname)
