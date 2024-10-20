@@ -1,21 +1,21 @@
 # Maintainer:  Chris Severance aur.severach aATt spamgourmet dott com
+# Contributor: George Rawlinson <grawlinson@archlinux.org>
 # Contributor: Silvio Fricke <silvio.fricke@gmail.com>
 # Contributor: 2ion <dev@2ion.de>
 
 set -u
-pkgname="miller-git"
-#pkgname+='-git'
-pkgver='5.10.2'
-pkgrel='1'
+pkgname=miller
+pkgname+='-git'
+pkgver=6.13.0.r17.g05aa16cfc
+pkgrel=1
 pkgdesc='sed, awk, cut, join, and sort for name-indexed data such as CSV and tabular JSON.'
 arch=('x86_64' 'i686')
 url='https://github.com/johnkerl/miller'
-license=('MIT')
+license=('BSD-2-Clause')
 depends=('glibc')
-makedepends=('make' 'gcc' 'flex' 'ctags' 'valgrind' 'asciidoc' 'autoconf')
-_verwatch=("${url}/releases" ".*/mlr-\([0-9.]\+\)\.tar\.gz.*" 'f') # mlr RSS is filled with everything but releases
-_srcdir="mlr-${pkgver%.r*}"
-source=("${url}/releases/download/v${pkgver%.r*}/mlr-${pkgver%.r*}.tar.gz")
+makedepends=('go' 'git')
+options=('!lto')
+source=("$pkgname::git+$url#tag=v$pkgver")
 #source[0]='https://github.com/johnkerl/miller/archive/master.tar.gz'; _srcdir='miller-master'
 md5sums=('754c6d69ef4bfaa6c16257a2d8301f09')
 sha256sums=('4f41ff06c1fbf524127574663873ba83bb3f4e3eb31e29faf5c2ef3fc6595cb4')
@@ -23,7 +23,7 @@ sha256sums=('4f41ff06c1fbf524127574663873ba83bb3f4e3eb31e29faf5c2ef3fc6595cb4')
 if [ "${pkgname%-git}" != "${pkgname}" ]; then
   md5sums[0]='SKIP'
   sha256sums[0]='SKIP'
-  source[0]="${url//https/git}"
+  source[0]="git+${url}"
   makedepends+=('git')
   conflicts=("${pkgname%-git}")
   provides=("${pkgname%-git}=${pkgver%.r*}")
@@ -40,29 +40,45 @@ pkgver() {
 }
 fi
 
-build() {
-  set -u
+prepare() {
   cd "${_srcdir}"
-  if [ ! -s 'Makefile' ]; then # 2.2.1 and newer
-    autoreconf -fiv
-    ./configure --prefix='/usr'
-  fi
-  if grep -q 'am__is_gnu_make' 'Makefile'; then # 2.2.1 and newer
-    local _nproc="$(nproc)"; _nproc=$((_nproc>8?8:_nproc))
-    nice make -s -j "${_nproc}"
-  else
-    make -s -j1
-  fi
-  set +u
+
+  # download dependencies
+  export GOPATH="${srcdir}"
+  go mod download
+  chmod -R u+w "${GOPATH}/pkg/mod"
+}
+
+build() {
+  cd "${_srcdir}"
+
+  # set Go flags
+  export CGO_CPPFLAGS="${CPPFLAGS}"
+  export CGO_CFLAGS="${CFLAGS}"
+  export CGO_CXXFLAGS="${CXXFLAGS}"
+  export GOPATH="${srcdir}"
+
+  go build -v \
+    -buildmode=pie \
+    -mod=readonly \
+    -modcacherw \
+    -ldflags "-compressdwarf=false \
+    -linkmode external \
+    -extldflags '${LDFLAGS}'" \
+    ./cmd/mlr
 }
 
 package() {
-  set -u
   cd "${_srcdir}"
-  make DESTDIR="${pkgdir}" install
-  if [ -d 'docs' ]; then
-    install -Dpm644 docs/*.1 -t "${pkgdir}/usr/share/man/man1/"
-  fi
-  set +u
+
+  # binary
+  install -vDm755 -t "$pkgdir/usr/bin" mlr
+
+  # documentation
+  install -vDm644 -t "$pkgdir/usr/share/man/man1" man/mlr.1
+  install -vDm644 -t "$pkgdir/usr/share/doc/${pkgname%-git}" README.md
+
+  # license
+  install -vDm644 -t "$pkgdir/usr/share/licenses/${pkgname%-git}" LICENSE.txt
 }
 set +u
