@@ -1,6 +1,7 @@
 /.idea/
 /pkg
 /src
+/cache
 minecraft-launcher-core-node
 x-minecraft-launcher
 xmcl-*.deb
