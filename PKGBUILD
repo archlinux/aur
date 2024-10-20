@@ -3,13 +3,13 @@
 _pkgname=eqk
 pkgname=${_pkgname}-git
 pkgver=r42.56d7309
-pkgrel=1
+pkgrel=2
 pkgdesc="Earthquake Data Fetcher in Go"
 arch=('x86_64')
 url="https://github.com/mpinheir/eqk"
 license=('unknown')
 depends=(glibc)
-makedepends=(go)
+makedepends=(git go)
 source=("${_pkgname}::git+https://github.com/mpinheir/eqk")
 sha256sums=('SKIP')
 
@@ -27,7 +27,7 @@ prepare() {
 }
 
 build() {
-	cd "$_pkgname"
+    cd "$_pkgname"
 
     export CGO_CPPFLAGS="${CPPFLAGS}"
     export CGO_CFLAGS="${CFLAGS}"
@@ -35,7 +35,7 @@ build() {
     export CGO_LDFLAGS="${LDFLAGS}"
     export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
 
-	go build -o build .
+    go build -o build .
 }
 
 package() {
