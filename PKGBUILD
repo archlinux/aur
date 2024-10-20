@@ -19,5 +19,5 @@ sha256sums=('07c308cf0fc7e6e8b2065a12ed7fc07e1de8febb7dc7839d7b7f15dd66584df9'
             '5600024376f572a557870a5eb0afb1e5961636bef4e1e22132025467d0f03333')
 
 package() {
-    install -Dm644 *.onnx -t "${pkgdir}/usr/share/hivision-id-photos/hivision/creator/weights"
+    install -Dm644 *.onnx *.mnn -t "${pkgdir}/usr/share/hivision-id-photos/hivision/creator/weights"
 }
