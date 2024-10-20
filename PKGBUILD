@@ -1,7 +1,7 @@
 # Maintainer: Patrik Bachan <patrikbachan at gmail dot com>
 pkgname=serialplot-hg
 _pkgname=serialplot
-pkgver=877.fadfbeea9d5c
+pkgver=881.6e94a5867d7c
 pkgrel=1
 pkgdesc="Small and simple software for plotting data from serial port in realtime"
 arch=('i686' 'x86_64')
@@ -20,14 +20,13 @@ pkgver() {
 }
 
 build() {
-  cd "$srcdir/$_pkgname"
-  mkdir build
-  cd build
-  cmake -DBUILD_QWT=false -DCMAKE_CXX_FLAGS=-DUPDATE_TYPE_PKGMAN -DCMAKE_INSTALL_PREFIX=/usr ..
-  make
+  cmake -B build -S "${srcdir}/${_pkgname}" \
+        -DBUILD_QWT=false \
+        -DCMAKE_CXX_FLAGS=-DUPDATE_TYPE_PKGMAN \
+        -DCMAKE_INSTALL_PREFIX:PATH='/usr' \
+        -Wno-dev
+  cmake --build build
 }
 package() {
-  cd "$srcdir/$_pkgname"
-  cd build
-  make DESTDIR="${pkgdir}" install
+  DESTDIR="$pkgdir" cmake --install build
 }
