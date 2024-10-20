@@ -16,13 +16,13 @@
 set -u
 _pkgname='cpdf'
 pkgname="${_pkgname}"
-pkgver='2.6.2'
+pkgver='2.7.1'
 pkgrel=1
 pkgdesc='Coherent Graphics ## to manipulate PDF files including merge, encrypt, decrypt, scale, crop, rotate, bookmarks, stamp, logos, page numbers'
 arch=('x86_64' 'i686')
 url='http://community.coherentpdf.com'
-license=('custom')
-depends=("camlpdf>=${pkgver}")
+license=('AGPL-3.0-or-later')
+depends=('glibc' "camlpdf>=${pkgver}")
 makedepends=('ocaml' 'ocaml-findlib')
 #conflicts=('cpdf-bin') # temporary
 options=('!makeflags' 'staticlibs')
@@ -54,8 +54,8 @@ else
   pkgdesc="${pkgdesc//##/cpdf}"
 fi
 unset _srcfile _srcdirname
-md5sums=('d4fc82ac386963f5a0ca5b638fcb8e49')
-sha256sums=('493bb1d739ff5863f02a95139244184d033e24459746f2f565f57c726a2417f6')
+md5sums=('9dc2502c6e97a786cdd1af5e1db5a2e1')
+sha256sums=('18d291de822b1126151b1c39192f8e5d21713dec9b918021fbb2705929d52c0e')
 
 _pkgver_disabled() {
   set -u
