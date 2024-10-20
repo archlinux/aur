@@ -3,9 +3,9 @@
 pkgname=mission-center-git
 _pkgname=${pkgname%-git}
 pkgver=0.6.0.r41.gd78c07d
-pkgrel=1
+pkgrel=2
 pkgdesc="Monitor your CPU, Memory, Disk, Network and GPU usage"
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url="https://gitlab.com/mission-center-devs/${_pkgname}"
 license=('GPL-3.0-or-later')
 depends=('dmidecode' 'libadwaita' 'nvtop')
