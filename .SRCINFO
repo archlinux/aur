@@ -1,6 +1,6 @@
 pkgbase = ungoogled-chromium
 	pkgdesc = A lightweight approach to removing Google web service dependency
-	pkgver = 129.0.6668.100
+	pkgver = 130.0.6723.58
 	pkgrel = 1
 	url = https://github.com/ungoogled-software/ungoogled-chromium
 	arch = x86_64
@@ -54,13 +54,13 @@ pkgbase = ungoogled-chromium
 	optdepends = org.freedesktop.secrets: password storage backend on GNOME / Xfce
 	optdepends = kwallet: support for storing passwords in KWallet on Plasma
 	optdepends = upower: Battery Status API support
-	provides = chromium=129.0.6668.100
-	provides = chromedriver=129.0.6668.100
+	provides = chromium=130.0.6723.58
+	provides = chromedriver=130.0.6723.58
 	conflicts = chromium
 	conflicts = chromedriver
 	options = !lto
-	source = https://commondatastorage.googleapis.com/chromium-browser-official/chromium-129.0.6668.100.tar.xz
-	source = ungoogled-chromium-129.0.6668.100-1.tar.gz::https://github.com/ungoogled-software/ungoogled-chromium/archive/129.0.6668.100-1.tar.gz
+	source = https://commondatastorage.googleapis.com/chromium-browser-official/chromium-130.0.6723.58.tar.xz
+	source = ungoogled-chromium-130.0.6723.58-1.tar.gz::https://github.com/ungoogled-software/ungoogled-chromium/archive/130.0.6723.58-1.tar.gz
 	source = https://github.com/foutrelis/chromium-launcher/archive/v8/chromium-launcher-8.tar.gz
 	source = compiler-rt-adjust-paths.patch
 	source = increase-fortify-level.patch
@@ -70,10 +70,8 @@ pkgbase = ungoogled-chromium
 	source = 0001-ozone-wayland-implement-text_input_manager_v3.patch
 	source = 0001-ozone-wayland-implement-text_input_manager-fixes.patch
 	source = 0001-vaapi-flag-ozone-wayland.patch
-	source = p010-Zero-Copy-for-VA-API-Decoding-for-Vulkan.patch
-	source = add-feature-to-allow-zero-copy-video-formats.patch
-	sha256sums = 281daed29a5cb546f6273130035d9980666d2232f356ad95fc06af3c90121bc2
-	sha256sums = 0d5688bffb7050913a5e0749da1926e551468fd3362c2f9b33912d68a6dccfa9
+	sha256sums = aa296edec7275d19feade5ef32cbe7dfdd41594d4c0c1afd94bbf4d310c38c4e
+	sha256sums = 366cfa97db2fedccc2670c0547d24b820a781e7e1dbccaf39574c167fb257833
 	sha256sums = 213e50f48b67feb4441078d50b0fd431df34323be15be97c55302d3fdac4483a
 	sha256sums = b3de01b7df227478687d7517f61a777450dca765756002c80c4915f271e2d961
 	sha256sums = d634d2ce1fc63da7ac41f432b1e84c59b7cceabf19d510848a7cff40c8025342
@@ -83,7 +81,5 @@ pkgbase = ungoogled-chromium
 	sha256sums = d9974ddb50777be428fd0fa1e01ffe4b587065ba6adefea33678e1b3e25d1285
 	sha256sums = a2da75d0c20529f2d635050e0662941c0820264ea9371eb900b9d90b5968fa6a
 	sha256sums = 9a5594293616e1390462af1f50276ee29fd6075ffab0e3f944f6346cb2eb8aec
-	sha256sums = 40db59162df2b7a2c0387bd620802f15424f637c09ba305b674fc09410ab21d1
-	sha256sums = 713dab4f8c26790c0e4a4c5ce6a9269e90446df5370cc14214a01a363f7afe39
 
 pkgname = ungoogled-chromium
