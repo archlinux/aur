@@ -1,5 +1,5 @@
---- src/plum-2.5.2/pyproject.toml	2024-07-17 10:24:31.000000000 +0300
-+++ pyproject.toml	2024-10-21 02:17:14.153253302 +0300
+--- a/pyproject.toml	2024-07-17 10:24:31.000000000 +0300
++++ b/pyproject.toml	2024-10-21 02:17:14.153253302 +0300
 @@ -1,5 +1,5 @@
  [build-system]
 -requires = ["hatchling>=1.8.0", "hatch-vcs"]
