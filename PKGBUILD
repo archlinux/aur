@@ -1,20 +1,18 @@
-# Maintainer: Bailey Fox <bfox200012@gmail.com>
+# Maintainer: Duje Mihanović <duje.mihanovic@skole.hr>
 
 pkgname=uefitool-ng-git
 _pkgname=uefitool-ng
-_tools=('UEFITool' 'UEFIExtract' 'UEFIFind')
-pkgver=r367.2cbd78f
+pkgver=r629.0030ea9
 pkgrel=1
-pkgdesc='UEFI firmware image viewer and editor and utilities'
+pkgdesc='UEFI firmware image viewer and editor and utilities (new engine)'
 arch=('any')
 url='https://github.com/LongSoft/UEFITool'
-branch='new_engine'
-license=('BSD')
-depends=('qt5-base')
-makedepends=('git' 'qt5-base' 'cmake')
+license=('BSD-2-Clause')
+depends=('qt6-base')
+makedepends=('git' 'qt6-base' 'cmake')
 provides=($_pkgname)
 conflicts=($_pkgname)
-source=("${_pkgname}::git+${url}#branch=${branch}")
+source=("${_pkgname}::git+${url}#branch=new_engine")
 sha256sums=('SKIP')
 
 pkgver() {
@@ -24,20 +22,20 @@ pkgver() {
 
 build() {
   cd "$srcdir/$_pkgname"
-  ./unixbuild.sh --configure
-  for tool in "${_tools[@]}"; do
-    cd "$tool"
-    make
-    cd ..
-  done
+  cmake -B build
+  make -C build
 }
 
 package() {
   cd "$srcdir/$_pkgname"
-  # Tools
-  for tool in "${_tools[@]}"; do
-    install -D -m755 "$tool/$tool" "$pkgdir/usr/bin/${tool,,}-ng"
-  done
+  cmake --install build --prefix "$pkgdir/usr"
+
+  # Coexistence with old engine
+  mv "$pkgdir/usr/bin/uefitool" "$pkgdir/usr/bin/uefitool-ng"
+  mv "$pkgdir/usr/share/applications/uefitool.desktop" "$pkgdir/usr/share/applications/uefitool-ng.desktop"
+  sed -i 's/UEFITool/UEFITool NE/g' "$pkgdir/usr/share/applications/uefitool-ng.desktop"
+  sed -i 's/uefitool/uefitool-ng/g' "$pkgdir/usr/share/applications/uefitool-ng.desktop"
+
   # License
   install -Dm644 LICENSE.md "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
