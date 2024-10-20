@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Station
+Exec=/opt/Station/station-desktop-app %U
+Terminal=false
+Type=Application
+Icon=station-desktop-app
+StartupWMClass=Station
+Comment=Station
+MimeType=x-scheme-handler/station;
+Categories=Network;

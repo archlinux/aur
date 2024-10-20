@@ -1,0 +1,24 @@
+pkgbase = station-desktop-git
+	pkgdesc = Smart browser for busy people. A single place for all of your web applications.
+	pkgver = 3.2.0.r0.g041ff79
+	pkgrel = 1
+	url = https://getstation.com/
+	arch = any
+	license = Apache-2.0
+	makedepends = git
+	makedepends = yarn
+	makedepends = python
+	depends = nss
+	depends = at-spi2-core
+	depends = libcups
+	depends = gtk3
+	depends = alsa-lib
+	provides = station-desktop
+	conflicts = station-desktop
+	conflicts = station-bin
+	source = station-desktop::git+https://github.com/getstation/desktop-app.git
+	source = station-desktop-app.desktop
+	sha256sums = SKIP
+	sha256sums = bf5703422b6cf240d8bca0647c23141052e6ce4e77fdd8ff8c9e19ca61f183d8
+
+pkgname = station-desktop-git
