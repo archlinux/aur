@@ -1,7 +1,7 @@
 # Maintainer: Stephen E. Baker <baker.stephen.e@gmail.com>
 
 pkgname=pacpreview
-pkgver=0.4.0
+pkgver=0.4.1
 pkgrel=1
 makedepends=('rust' 'cargo')
 optdepends=('fzf: use as a search tool')
@@ -10,7 +10,7 @@ pkgdesc="Pacman package info viewer, intended for use with fzf --preview"
 license=('GPL3')
 url='https://github.com/TheCycoONE/pacpreview'
 source=("$pkgname-$pkgver.tar.gz::https://github.com/TheCycoONE/$pkgname/archive/$pkgver.tar.gz")
-md5sums=('76a27acdfeeb7e128d5f9ed2a8409690')
+md5sums=('b805ffdd37bfe5c109000f9d42d46540')
 
 build() {
     cd "$pkgname-$pkgver"
