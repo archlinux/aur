@@ -1,7 +1,7 @@
 # Maintainer: VHSgunzo <vhsgunzo.github.io>
 pkgname='ulexec-bin'
 binname="${pkgname%-bin}"
-pkgver='0.0.5'
+pkgver='0.0.6'
 pkgrel='1'
 pkgdesc='A tool for loading and executing PE on Windows and ELF on Linux from memory'
 arch=("x86_64")
