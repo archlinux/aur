@@ -1,0 +1,4 @@
+[lib32-libarchive]
+source = "git"
+git = "https://github.com/libarchive/libarchive.git"
+prefix = "v"
