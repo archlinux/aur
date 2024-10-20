@@ -3,7 +3,7 @@
 
 pkgname=mkvtoolnix-qt5
 pkgver=81.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Matroska tools (Qt5 version)'
 arch=('x86_64')
 url='https://mkvtoolnix.download/'
@@ -29,6 +29,7 @@ makedepends=(
   'po4a'
   'qt5-multimedia'
   'qt5-svg'
+  'ruby-erb'
   'ruby-rake'
 )
 optdepends=(

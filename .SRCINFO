@@ -1,7 +1,7 @@
 pkgbase = mkvtoolnix-qt5
 	pkgdesc = Matroska tools (Qt5 version)
 	pkgver = 81.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://mkvtoolnix.download/
 	arch = x86_64
 	license = GPL2
@@ -13,6 +13,7 @@ pkgbase = mkvtoolnix-qt5
 	makedepends = po4a
 	makedepends = qt5-multimedia
 	makedepends = qt5-svg
+	makedepends = ruby-erb
 	makedepends = ruby-rake
 	depends = boost-libs
 	depends = cmark
