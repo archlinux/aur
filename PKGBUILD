@@ -1,60 +1,41 @@
-# Maintainer:  <zhaose233@outlook.com>
+# Maintainer: Mark Wagie <mark dot wagie at proton dot me>
+
 pkgname=mission-center-git
-_pkgname=mission-center
-pkgver=r206.2d21e28
+_pkgname=${pkgname%-git}
+pkgver=0.6.0.r41.gd78c07d
 pkgrel=1
 pkgdesc="Monitor your CPU, Memory, Disk, Network and GPU usage"
-arch=('i686' 'x86_64' 'aarch64')
-url="https://gitlab.com/mission-center-devs/mission-center"
-license=('GPL')
-groups=()
-depends=('gtk4'
-	 'libadwaita'
-	 'sqlite'
-	 'gobject-introspection'
-	 'dmidecode')
-makedepends=('meson'
-	     'rust'
-	     'git'
-	     'python-gobject'
-	     'blueprint-compiler')
+arch=('x86_64')
+url="https://gitlab.com/mission-center-devs/${_pkgname}"
+license=('GPL-3.0-or-later')
+depends=('dmidecode' 'libadwaita' 'nvtop')
+makedepends=('git' 'blueprint-compiler' 'cargo' 'meson')
 checkdepends=('appstream-glib')
-
-optdepends=()
-provides=("mission-center")
-conflicts=("mission-center")
-
-source=("git+https://gitlab.com/mission-center-devs/mission-center.git")
-
-md5sums=('SKIP')
+conflicts=("${_pkgname}")
+provides=("${_pkgname}")
+source=("git+${url}.git")
+sha256sums=('SKIP')
+options=('!lto')
 
 pkgver() {
-  cd "$srcdir/$_pkgname"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	cd "${_pkgname}/"
+	git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/v//'
 }
 
 prepare() {
-  cd "$srcdir/$_pkgname"
-
-  meson setup --prefix=/usr build
+	cd "${_pkgname}/"
+	cargo fetch --target "$CARCH-unknown-linux-gnu"
 }
 
 build() {
-  cd "$srcdir/$_pkgname"
-  CFLAGS+=" -ffat-lto-objects"
-  meson compile -C build
+	arch-meson "${_pkgname}/" build
+	meson compile -C build
 }
 
 check() {
-  cd "$srcdir/$_pkgname"
-  
-  meson test -C build --print-errorlogs || :
+	meson test -C build --print-errorlogs || :
 }
 
 package() {
-  cd "$srcdir/$_pkgname"
-
-  meson install -C build --destdir "$pkgdir"
+	meson install -C build --no-rebuild --destdir "${pkgdir}"
 }
-
-# vim:set ts=2 sw=2 et:
