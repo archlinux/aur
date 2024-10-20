@@ -2,7 +2,7 @@
 
 _pkgname=RestrictedPython
 pkgname=python-restrictedpython
-pkgver=7.0
+pkgver=7.4
 pkgrel=1
 pkgdesc="A restricted execution environment for Python to run untrusted code"
 arch=(any)
@@ -12,7 +12,7 @@ depends=("python")
 makedepends=("python" "python-setuptools" "python-installer" "python-build" "python-wheel")
 checkdepends=("python-pytest" "python-pytest-mock")
 source=("https://github.com/zopefoundation/$_pkgname/archive/$pkgver.tar.gz")
-b2sums=('c71a70ce4f71b92d87e2bdab157cba4327227da6f1be226df573c25268cbd1afbde608ffcc5d8deb6cbe063244d7611bc8792c6e17ce495c50c5812527674e2e')
+b2sums=('743899f4385d4a01b8b94a45a0c4bce316c9969d2b0cfb658057ec2e599b7d715116b51aa4d3e8239654e203150863a08a9c38ab790648a15689c0c34128c6fb')
 
 check() {
   cd "$srcdir/$_pkgname-$pkgver"
