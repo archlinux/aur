@@ -1,7 +1,7 @@
 pkgbase = warp-gui
 	pkgdesc = A GUI application based on warp-cli for linux written in Rust
 	pkgver = 0.2.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/progzone122/warp-cloudflare-gui-rust
 	arch = x86_64
 	license = GPL-3.0-or-later
