@@ -5,16 +5,16 @@
 # Contributor: Florian Reimair <office /at/ florianreimair.at>
 
 pkgname=guake-git
-pkgver=3.10.1.gdcbf64c2
+pkgver=3.10.16.gdf9fbbee
 pkgrel=1
 pkgdesc="Top-down terminal for Gnome using gtk3 and vte3"
-arch=('i686' 'x86_64' 'armv7h')
-url="https://github.com/Guake/guake"
-license=('GPL')
-depends=('vte3' 'gtk3' 'python-pbr' 'python-dbus' 'python-yaml' 'python-xdg' 'libutempter' 'libkeybinder3' 'python-cairo' 'python-gobject' 'gettext'
-'gobject-introspection-runtime' 'libwnck3' 'libnotify')
+arch=('any')
+url="https://guake.github.io/"
+license=('GPL-2.0-or-later')
+depends=('libkeybinder3' 'libnotify' 'libutempter' 'libwnck3' 'python-cairo'
+         'python-dbus' 'python-gobject' 'python-pbr' 'vte3' 'python-yaml')
 makedepends=('git' 'python-pip' 'make')
-conflicts=('guake' 'guake-gtk2-git')
+conflicts=('guake')
 provides=('guake')
 source=("git+https://github.com/Guake/guake.git")
 sha512sums=('SKIP')
@@ -24,9 +24,14 @@ pkgver() {
   git describe --tags | sed 's,-,.,g'
 }
 
-package(){
+build(){
   cd "${srcdir}/${pkgname%-git}"
-  cp "${srcdir}/guake/guake/data/guake.template.desktop" "${srcdir}/guake/guake/data/guake.desktop"
-  cp "${srcdir}/guake/guake/data/guake-prefs.template.desktop" "${srcdir}/guake/guake/data/guake-prefs.desktop"
-  make install DESTDIR="$pkgdir" PREFIX="/usr" COMPILE_SCHEMA=1
+  make 
 }
+
+package() {
+  cd "${srcdir}/${pkgname%-git}"
+  sed -i '/-m pip install -r requirements.txt/d' Makefile
+  make DESTDIR="$pkgdir" PREFIX='/usr' COMPILE_SCHEMA=0 install
+}
+
