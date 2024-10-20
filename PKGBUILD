@@ -1,16 +1,46 @@
+# Maintainer: Valentin Batz <valentin.batz+archlinux@posteo.de>
 pkgname=mdns-browser
-pkgver=0.8.12
+pkgver=0.9.0
 pkgrel=1
 pkgdesc="A cross platform mDNS-Browser app written in Rust using tauri and leptos "
 arch=('x86_64')
 url="https://github.com/hrzlgnm/mdns-browser"
-license=('mit')
-depends=('cairo' 'desktop-file-utils' 'gdk-pixbuf2' 'glib2' 'gtk3' 'hicolor-icon-theme' 'libsoup' 'pango' 'webkit2gtk')
-options=('!strip' '!emptydirs')
-install=${pkgname}.install
-source_x86_64=("https://github.com/hrzlgnm/mdns-browser/releases/download/mdns-browser-v$pkgver/mdns-browser_"$pkgver"_amd64.deb")
-sha256sums_x86_64=('6a2a7c2bfd678ed6dc4345d2e17e52aac43f7591c5984c1f634a187a1f3b820a')
-package() {
-	tar -xz -f data.tar.gz -C "${pkgdir}"
+license=('MIT')
+depends=('cairo' 'desktop-file-utils' 'gdk-pixbuf2' 'glib2' 'gtk3' 'hicolor-icon-theme' 'libsoup' 'pango' 'webkit2gtk' 'openssl')
+makedepends=('cargo' 'git' 'file' 'openssl' 'appmenu-gtk-module' 'libappindicator-gtk3' 'librsvg' 'base-devel' 'curl' 'wget' 'rustup' 'dpkg' 'webkit2gtk') options=('!strip' '!emptydirs')
+source=("$pkgname-v$pkgver.tar.gz::https://github.com/hrzlgnm/$pkgname/archive/refs/tags/$pkgname-v$pkgver.tar.gz")
+sha256sums=('4d333cade402336ecb6ad7a0d5848cddccb767eb47aa220ec964caee9be2c0f3')
+_builddir="$pkgname-$pkgname-v$pkgver"
+prepare() {
+    cd "$srcdir/$_builddir" || exit 1
+    export RUSTUP_TOOLCHAIN=stable
+    cargo --locked install trunk --version ^0.21.1
+    cargo --locked install tauri-cli --version ^2.0.3
+    cargo --locked install cargo-auditable --version ^0.6.4
+    rustup toolchain install $RUSTUP_TOOLCHAIN --target wasm32-unknown-unknown --profile minimal --no-self-update
+    cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+    cargo fetch --locked --target wasm32-unknown-unknown
 }
-
+build() {
+    # unfortunately LTOFLGAS auto set by /etc/makepkg.conf break linking as those are added to CFLAGS automatically
+    # building will bail out with something like: undefined reference to `ring_core_0_17_8_OPENSSL_ia32cap_P' when -flto=auto is set
+    cd "$srcdir/$_builddir" || exit 1
+    export CFLAGS="${CFLAGS//-flto=auto//}"
+    cargo --locked --frozen auditable tauri build -b deb
+}
+check() {
+    cd "$srcdir/$_builddir" || exit 1
+    export RUSTUP_TOOLCHAIN=stable
+    cargo test --frozen --all-features
+}
+package() {
+    cd "$srcdir/$_builddir/target/release/bundle/deb" || exit 1
+    dpkg-deb -x -- *.deb here
+    cd here || exit 1
+    install -Dm755 usr/bin/mdns-browser "$pkgdir"/usr/bin/mdns-browser
+    install -Dm644 usr/share/applications/mdns-browser.desktop "$pkgdir"/usr/share/applications/mdns-browser.desktop
+    install -Dm644 usr/share/icons/hicolor/128x128/apps/mdns-browser.png "$pkgdir"/usr/share/icons/hicolor/128x128/apps/mdns-browser.png
+    install -Dm644 usr/share/icons/hicolor/256x256@2/apps/mdns-browser.png "$pkgdir"/usr/share/icons/hicolor/256x256@2/apps/mdns-browser.png
+    install -Dm644 usr/share/icons/hicolor/32x32/apps/mdns-browser.png "$pkgdir"/usr/share/icons/hicolor/32x32/apps/mdns-browser.png
+    install -Dm644 usr/share/licenses/mdns-browser/LICENSE "$pkgdir"/usr/share/licenses/mdns-browser/LICENSE
+}
