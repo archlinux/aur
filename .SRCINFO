@@ -1,6 +1,6 @@
 pkgbase = ttf-vivo-sans
 	pkgdesc = vivo Sans is a global language font led by vivo.
-	pkgver = 2024.10.18
+	pkgver = 2024.10.20
 	pkgrel = 1
 	url = https://www.vivo.com.cn/originos
 	arch = any
