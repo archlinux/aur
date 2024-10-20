@@ -1,6 +1,6 @@
-_cctools_ver=886
-_ld64_ver=264.3.102
-_commit=84ce22dbb22a26ce7f392e9de0ee39c2efe6fd68
+_cctools_ver=1010.6
+_ld64_ver=951.9
+_commit=a2724f04cafe3590fbc3d0beacc37293d83a2177
 _pkgrev=1
 
 pkgname=cctools
@@ -9,9 +9,9 @@ pkgver=${_cctools_ver}+g84ce22d
 pkgrel=1
 arch=(i686 x86_64)
 url="https://github.com/tpoechtrager/cctools-port"
-license=("APSL")
-depends=(llvm)
-makedepends=(gcc-objc git)
+license=("APSL-2.0")
+depends=(gcc-libs glibc libdispatch)
+makedepends=(clang git)
 provides=(x86_64-apple-darwin-binutils)
 conflicts=(x86_64-apple-darwin-binutils)
 source=("git+https://github.com/tpoechtrager/cctools-port.git#commit=${_commit}")
