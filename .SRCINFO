@@ -1,7 +1,7 @@
 pkgbase = wine-osu-spectator
 	pkgdesc = A compatibility layer for running Windows programs, but with osu! specific patches (doesn't conflict with other Wine installations)
-	pkgver = 9.19.w93.s858bf97
-	pkgrel = 2
+	pkgver = 9.20.w1.s5a1b9d5
+	pkgrel = 1
 	url = http://www.winehq.com
 	install = wine.install
 	arch = x86_64
@@ -35,6 +35,7 @@ pkgbase = wine-osu-spectator
 	makedepends = nasm
 	makedepends = attr
 	makedepends = gtk3
+	makedepends = gst-plugins-base-libs
 	makedepends = ntsync-header
 	makedepends = lib32-wayland
 	makedepends = lib32-gtk3
@@ -84,6 +85,7 @@ pkgbase = wine-osu-spectator
 	makedepends = lib32-ffmpeg
 	makedepends = lib32-libxkbcommon
 	makedepends = libvulkan.so=1-32
+	makedepends = lib32-gst-plugins-base-libs
 	makedepends = lib32-gnutls
 	makedepends = lib32-libxcomposite
 	makedepends = lib32-libpulse
@@ -124,6 +126,7 @@ pkgbase = wine-osu-spectator
 	depends = lib32-ffmpeg
 	depends = lib32-libxkbcommon
 	depends = libvulkan.so=1-32
+	depends = lib32-gst-plugins-base-libs
 	depends = lib32-gnutls
 	depends = lib32-libxcomposite
 	depends = lib32-libpulse
@@ -193,9 +196,9 @@ pkgbase = wine-osu-spectator
 	source = Makefile.single
 	source = lto-fixup.patch
 	source = buildiswow64
-	source = wine::git+https://gitlab.winehq.org/wine/wine.git#commit=7ce580d1fa0bb3acf98edbc4171ddbcd83867db8
-	source = wine-staging::git+https://github.com/wine-staging/wine-staging.git#commit=858bf979a1c177ae7b43a8ea697032e09059d553
-	source = git+https://github.com/whrvt/wine-osu-patches.git#tag=10-12-2024-7ce580d1-858bf979
+	source = wine::git+https://gitlab.winehq.org/wine/wine.git#commit=3a6e9365336304b4d7eb4d66aef959f67361cc1f
+	source = wine-staging::git+https://github.com/wine-staging/wine-staging.git#commit=5a1b9d5093726d82b28433640f7bdecf3829c248
+	source = git+https://github.com/whrvt/wine-osu-patches.git#tag=10-20-2024-3a6e9365-5a1b9d50
 	sha512sums = 2d431b8830f783b9973ef3df50606b3dae705dffe3cd6106a7daa3b5ad89eaecd6b0e7da835ebf18985a6f3c9c1c952866f39126e34fb6503935baa91a9e8189
 	sha512sums = 6e54ece7ec7022b3c9d94ad64bdf1017338da16c618966e8baf398e6f18f80f7b0576edf1d1da47ed77b96d577e4cbb2bb0156b0b11c183a0accf22654b0a2bb
 	sha512sums = bdde7ae015d8a98ba55e84b86dc05aca1d4f8de85be7e4bd6187054bfe4ac83b5a20538945b63fb073caab78022141e9545685e4e3698c97ff173cf30859e285
@@ -204,6 +207,6 @@ pkgbase = wine-osu-spectator
 	sha512sums = SKIP
 	sha512sums = SKIP
 	sha512sums = SKIP
-	sha512sums = d2ec7defe267634e21748115c76de366462d6a49aaf067c4dce836bb7354b2627df20f339bf02532356cd6432600c47cc02211165330766d822179c9d1ef2431
+	sha512sums = a47ad27345155478932ff1206ca1ed54152874a36bc399999c2bc326c6175e2be198c9941d83398c33d78afde49b3a304437fbf7a39e4124f0bed655a45f9b12
 
 pkgname = wine-osu-spectator
