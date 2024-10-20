@@ -1,18 +1,18 @@
 pkgbase = devilspie2
 	pkgdesc = A window matching utility, allowing the user to perform scripted actions on windows as they are created.
-	pkgver = 0.44
+	pkgver = 0.45
 	pkgrel = 1
-	url = http://www.nongnu.org/devilspie2/
+	url = https://www.nongnu.org/devilspie2/
 	arch = i686
 	arch = x86_64
-	license = GPL3
+	license = GPL-3.0-or-later
 	depends = lua>=5.1
 	depends = gtk3
 	depends = libwnck3
-	source = http://download.savannah.nongnu.org/releases/devilspie2/devilspie2-0.44.tar.xz
-	source = http://download.savannah.nongnu.org/releases/devilspie2/devilspie2-0.44.tar.xz.sig
+	source = https://download.savannah.nongnu.org/releases/devilspie2/devilspie2_0.45-src.tar.gz
+	source = https://download.savannah.nongnu.org/releases/devilspie2/devilspie2_0.45-src.tar.gz.asc
 	validpgpkeys = A523530DD1E9FDDFAD3D5FCAA9B57A926EF302F5
-	sha256sums = 0a9f1eadd2b22a318163e4180065d495221ba1a43ad2021ea6866cd118042640
+	sha256sums = 6cc55a68ccfd8bb5620f4cd7c9913ef29aba8a9e96648497c5b448fdb97cb034
 	sha256sums = SKIP
 
 pkgname = devilspie2
