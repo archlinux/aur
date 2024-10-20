@@ -3,10 +3,10 @@
 pkgname='webos-tv-cli'
 pkgver='1.12.4_j27'
 __pkgver_sub="${pkgver//_/-}"
-pkgrel=2
+pkgrel=3
 pkgdesc='LG WebOS TV CLI'
 arch=('any')
-url='https://webostv.developer.lge.com/develop/tools/cli-installation'
+url='https://webostv.developer.lge.com/develop/tools/webos-tv-cli-installation'
 license=('custom:LG Software Development Kit License Agreement')
 conflicts=('webos-cli' 'webos-sdk' 'webos-ide' 'webos-cli-minimal')
 source=("local:///webOS TV CLI linux ${__pkgver_sub}.tgz")

@@ -1,8 +1,8 @@
 pkgbase = webos-tv-cli
 	pkgdesc = LG WebOS TV CLI
 	pkgver = 1.12.4_j27
-	pkgrel = 2
-	url = https://webostv.developer.lge.com/develop/tools/cli-installation
+	pkgrel = 3
+	url = https://webostv.developer.lge.com/develop/tools/webos-tv-cli-installation
 	arch = any
 	license = custom:LG Software Development Kit License Agreement
 	conflicts = webos-cli
