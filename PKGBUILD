@@ -1,7 +1,7 @@
 # Maintainer: ghostbuster <ghost_buster+aur@posteo.de>
 _pkgname=Nagstamon
 pkgname=nagstamon
-pkgver=3.16.0
+pkgver=3.16.1
 pkgrel=1
 pkgdesc="Nagios status monitor for the desktop"
 depends=('python-pyqt6' 'qt6-multimedia' 'qt6-svg' 'python-requests' 'python-beautifulsoup4' 'python-keyring' 'python-psutil' 'python-requests-kerberos' 'python-lxml' 'python-dbus' 'python-dateutil' 'python-pysocks' 'python-arrow')
@@ -14,7 +14,7 @@ source=(
         "https://github.com/HenriWahl/Nagstamon/archive/refs/tags/v$pkgver.tar.gz"
 )
 sha256sums=(
-        'cea6b6ff59a487a0afed382e42236af401a54daee61f196905f802069a0a5396'
+        '5d2278feae20fd962584a37294a5db00c7e55760f5a590e44c6ec8734a625602'
 )
 
 package() {

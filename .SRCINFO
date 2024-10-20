@@ -1,6 +1,6 @@
 pkgbase = nagstamon
 	pkgdesc = Nagios status monitor for the desktop
-	pkgver = 3.16.0
+	pkgver = 3.16.1
 	pkgrel = 1
 	url = https://nagstamon.ifw-dresden.de/
 	arch = any
@@ -20,7 +20,7 @@ pkgbase = nagstamon
 	depends = python-pysocks
 	depends = python-arrow
 	optdepends = python-requests-gssapi: Will be used instead of python-requests-kerberos for kerberos auth if present
-	source = https://github.com/HenriWahl/Nagstamon/archive/refs/tags/v3.16.0.tar.gz
-	sha256sums = cea6b6ff59a487a0afed382e42236af401a54daee61f196905f802069a0a5396
+	source = https://github.com/HenriWahl/Nagstamon/archive/refs/tags/v3.16.1.tar.gz
+	sha256sums = 5d2278feae20fd962584a37294a5db00c7e55760f5a590e44c6ec8734a625602
 
 pkgname = nagstamon
