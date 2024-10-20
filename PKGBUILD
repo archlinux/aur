@@ -3,7 +3,7 @@
 set -u
 pkgname='lfanew-git'
 pkgver=0.0.20230825.r12.gc1980df
-pkgrel=1
+pkgrel=2
 pkgdesc='manipulate fat binary programs wrapped inside MS-DOS MZ files'
 arch=('x86_64')
 #url='https://github.com/stsp/lfanew'
@@ -11,6 +11,7 @@ url='https://codeberg.org/tkchia/lfanew'
 license=('MPL-2.0')
 depends=('glibc')
 makedepends=('git')
+#makedepends+=('p7zip' 'dos2unix' 'llvm' 'mingw-w64-gcc') # lfanew/debian/control
 provides=("${pkgname%-git}=${pkgver%.r*}")
 conflicts=("${pkgname%-git}")
 _srcdir='lfanew'
@@ -42,6 +43,8 @@ prepare() {
   done
   #cd ..; cp -pr "${_srcdir}" 'a'; ln -s "${_srcdir}" 'b'; cd "${_srcdir}"; false
   #diff -pNaru5 'a' 'b' > '0000-new.patch'
+
+  sed -e 's:mingw:min_disabled_gw:g' -i 'configure'
 
   set +u
 }

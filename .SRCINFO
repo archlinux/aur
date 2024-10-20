@@ -1,7 +1,7 @@
 pkgbase = lfanew-git
 	pkgdesc = manipulate fat binary programs wrapped inside MS-DOS MZ files
 	pkgver = 0.0.20230825.r12.gc1980df
-	pkgrel = 1
+	pkgrel = 2
 	url = https://codeberg.org/tkchia/lfanew
 	arch = x86_64
 	license = MPL-2.0
