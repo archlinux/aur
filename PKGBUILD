@@ -5,7 +5,7 @@
 # shellcheck disable=SC2034,SC2154
 pkgname=cloudflare-dynamic-dns
 pkgver=4.3.6
-pkgrel=1
+pkgrel=2
 pkgdesc='Updates AAAA records at Cloudflare according to the current IPv6 address'
 url='https://github.com/zebradil/cloudflare-dynamic-dns'
 arch=(any)
@@ -22,11 +22,9 @@ prepare ()
 build () 
 { 
     cd "$pkgname-$pkgver" || exit 1;
-    export CGO_CPPFLAGS="${CPPFLAGS}";
-    export CGO_CFLAGS="${CFLAGS}";
-    export CGO_CXXFLAGS="${CXXFLAGS}";
-    export CGO_LDFLAGS="${LDFLAGS}";
-    export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw";
+    export CGO_ENABLED=0;
+    GOFLAGS="    -buildmode=pie     -trimpath     -ldflags=-linkmode=external     -ldflags=-X=main.version=$pkgver     -ldflags=-X=main.commit=$pkgver     -ldflags=-X=main.date=$(date -Iseconds)     -mod=readonly     -modcacherw";
+    export GOFLAGS;
     go build -o build/$pkgname main.go
 }
 check () 
