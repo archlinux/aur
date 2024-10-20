@@ -1,0 +1,21 @@
+pkgbase = keyvis
+	pkgdesc = A simple and lightweight keystroke visualisation tool
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/d7omdev/keyvis
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = bun
+	makedepends = npm
+	makedepends = typescript
+	depends = gjs
+	depends = gtk4
+	depends = keyd
+	depends = bun
+	provides = keyvis
+	conflicts = keyvis
+	source = git+https://github.com/d7omdev/keyvis.git
+	sha256sums = SKIP
+
+pkgname = keyvis
