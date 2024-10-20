@@ -1,13 +1,13 @@
 # Maintainer: Balazs Ruzsa <ruzsa.balazs@gmail.com>
 pkgname=retro-debugger-git
-pkgver=v0.64.66.r2.186c3da
+pkgver=v0.64.68.r8.4d8f80e
 pkgrel=1
 pkgdesc="Multiplatform debugger APIs host for retro computers: C64 (Vice), Atari800 and NES (NestopiaUE)"
 arch=(x86_64)
 url="https://github.com/slajerek/RetroDebugger"
 license=('custom')
 depends=('sdl2' 'glib2' 'gtk3' 'alsa-lib' 'glew' 'libx11' 'libxcb' 'sndio' 'freetype2' 'zlib')
-makedepends=('git')
+makedepends=('git' 'cmake')
 provides=("${pkgname%-git}")
 source=(
   'RetroDebugger::git+https://github.com/slajerek/RetroDebugger.git'
