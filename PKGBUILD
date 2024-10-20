@@ -1,35 +1,34 @@
-# Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
+# Maintainer: Klimenko Maxim <klimenkomaximsergievich@gmail.com>
 # Contributor: Alexander De Sousa <archaur.xandy21@spamgourmet.com>
 
 pkgname=udev-notify-bzr
-pkgver=40
+pkgver=r41
 pkgrel=1
 pkgdesc="Visual hardware notifications for Linux. (Bazaar version)"
 arch=('i686' 'x86_64')
 url="https://launchpad.net/udev-notify"
 license=('GPL3')
-depends=('python-pyudev'
-         'python-notify2'
-         )
+depends=('libnotify' 'udev' 'python-notify2' 'python-pyudev')
 makedepends=('bzr')
-conflicts=('udev-notify')
-provides=('udev-notify')
-source=('udev-notify::bzr+lp:~i026e/udev-notify/python3')
-sha256sums=('SKIP')
+source=('python3::bzr+lp:~i026e/udev-notify/python3')
+sha1sums=('SKIP')
+conflicts=('udev-notify-bzr')
+provides=('udev-notify-bzr')
+
+_bzrmod="python3"
 
 pkgver() {
-  cd udev-notify
-  echo "$(bzr revno)"
+  cd "${_bzrmod}"
+  printf "r%s" "$(bzr revno)"
 }
 
 prepare() {
+  cd "${_bzrmod}"
+
   # Prepare Makefile
-  sed -e 11d \
-      -e '/debian-package.sh/d' \
-      -e 's|\./build/debian|$(DESTDIR)|g' \
-      -i udev-notify/Makefile
+  sed -e 11d -e '/debian-package.sh/d' -e '/pyudev/d' -e 's|\./build/debian|$(DESTDIR)|g' -i Makefile
 }
 
 package() {
-  make -C udev-notify DESTDIR="${pkgdir}"
+  make -C "${_bzrmod}" DESTDIR="${pkgdir}"
 }
