@@ -1,11 +1,12 @@
 pkgbase = babi
 pkgdesc = A text editor, eventually...
 pkgver = 1.5.7
-pkgrel = 4
+pkgrel = 5
 url = https://github.com/asottile/babi
 arch = any
 license = MIT
-makedepends = python-setuptools python-build
+makedepends = python-setuptools
+makedepends = python-build
 depends = python-onigurumacffi>=0.0.18
 depends = babi-grammars
 depends = python-identify
