@@ -2,12 +2,12 @@
 
 _pkgname=eqk
 pkgname=${_pkgname}-git
-pkgver=r42.56d7309
-pkgrel=2
+pkgver=r43.34b4912
+pkgrel=1
 pkgdesc="Earthquake Data Fetcher in Go"
 arch=('x86_64')
 url="https://github.com/mpinheir/eqk"
-license=('unknown')
+license=('MIT')
 depends=(glibc)
 makedepends=(git go)
 source=("${_pkgname}::git+https://github.com/mpinheir/eqk")
@@ -41,4 +41,5 @@ build() {
 package() {
     cd "$_pkgname"
     install -Dm755 build/$_pkgname "$pkgdir"/usr/bin/$_pkgname
+    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
