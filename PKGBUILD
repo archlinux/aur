@@ -7,8 +7,9 @@ _opt_RAID=0
 set -u
 pkgname='seagate-seachest'
 # Version is numbered according to Basics, formerly the firmware upgrader
-# The package version is the second set of numbers #_#_#, not the fist #.#.#.
-pkgver='3.3.1.3_2_1'
+# The package version is the second set of numbers #_#_#, not the first #.#.#.
+_pkgver='3.6.2-8_0_1'
+pkgver="${_pkgver//-/.}"
 pkgrel=1
 pkgdesc='Seagate SeaChest suite including Basics Configure (sctReadTimer,TLER,writecache) Erase (secure,trim) Firmware (update) Format (setSectorSize) GenericTests Info Lite PowerControl SMART Security, formerly seaflashlin'
 arch=('x86_64')
@@ -22,9 +23,10 @@ depends=('gcc-libs')
 #  makedepends=('unzip')
 #fi
 options=('!strip')
-source=("SeaChestUtilities_${pkgver}.zip::http://support.seagate.com/seachest/SeaChestUtilities.zip")
-md5sums=('deb6bdc43d84e5ccb0284c354f5638e6')
-sha256sums=('6a6afd6767aa00ee43716398585960674c4ddbdb9abdc1640fb63f63e4b48e51')
+source=("SeaChestUtilities_${_pkgver}.zip::https://www.seagate.com/content/dam/seagate/migrated-assets/old-support-files/seachest/SeaChestUtilities.zip") # Linux is contained within the Windows download
+_srcdir='SeaChestUtilities/SeaChestUtilities'
+md5sums=('48272f33765bc77280a8eb1d045b1609')
+sha256sums=('c1408ebd0abf67a83691bc7326a7dea82d4c664902a361406f629d2177e4bcbc')
 
 pkgver_disabled() {
   sed -E -n -e 's/^ SeaChest_Basics Version: ([^ ]+).*$/\1/p' 'SeaChest_Combo_UserGuides.txt' | sed -e 's:-:.:'
@@ -32,6 +34,7 @@ pkgver_disabled() {
 
 prepare() {
   set -u
+  cd "${_srcdir}"
   grep -Fe ' Version:' 'SeaChest_Combo_UserGuides.txt'
   #grep -Fe ' Version:' 'SeaChest_Combo_UserGuides.txt' > "${startdir}/SeaChest.Version.${pkgver}.txt"
   #chmod -R 755 'Linux/Lin64'
@@ -47,6 +50,7 @@ prepare() {
 
 package() {
   set -u
+  cd "${_srcdir}"
   install -Dpm644 'About.SeaChest.txt' -t "${pkgdir}/usr/share/licenses/${pkgname}"
   local _trim
   if [ "${_opt_RAID}" -eq 0 ]; then

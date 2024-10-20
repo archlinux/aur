@@ -1,14 +1,14 @@
 pkgbase = seagate-seachest
 	pkgdesc = Seagate SeaChest suite including Basics Configure (sctReadTimer,TLER,writecache) Erase (secure,trim) Firmware (update) Format (setSectorSize) GenericTests Info Lite PowerControl SMART Security, formerly seaflashlin
-	pkgver = 3.3.1.3_2_1
+	pkgver = 3.6.2.8_0_1
 	pkgrel = 1
 	url = https://www.seagate.com/support/software/seachest/
 	arch = x86_64
 	license = custom
 	depends = gcc-libs
 	options = !strip
-	source = SeaChestUtilities_3.3.1.3_2_1.zip::http://support.seagate.com/seachest/SeaChestUtilities.zip
-	md5sums = deb6bdc43d84e5ccb0284c354f5638e6
-	sha256sums = 6a6afd6767aa00ee43716398585960674c4ddbdb9abdc1640fb63f63e4b48e51
+	source = SeaChestUtilities_3.6.2-8_0_1.zip::https://www.seagate.com/content/dam/seagate/migrated-assets/old-support-files/seachest/SeaChestUtilities.zip
+	md5sums = 48272f33765bc77280a8eb1d045b1609
+	sha256sums = c1408ebd0abf67a83691bc7326a7dea82d4c664902a361406f629d2177e4bcbc
 
 pkgname = seagate-seachest
