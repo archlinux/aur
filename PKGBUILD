@@ -3,11 +3,11 @@
 # Contributor: Mihai Bişog <mihai.bisog@gmail.com>
 
 pkgname=lib32-fmt
-pkgver=10.2.0
+pkgver=11.0.2
 pkgrel=1
 pkgdesc='Open-source formatting library for C++'
 arch=(x86_64)
-url=https://fmt.dev
+url="https://github.com/fmtlib/fmt"
 license=(MIT)
 depends=(fmt lib32-gcc-libs lib32-glibc)
 makedepends=(
@@ -15,15 +15,8 @@ makedepends=(
   git
   ninja
 )
-source=(git+https://github.com/fmtlib/fmt.git#tag=${pkgver}
-        "https://gitlab.archlinux.org/archlinux/packaging/packages/fmt/-/raw/${pkgver}-1/fmt-no-pip-no-virtualenv.patch")
-b2sums=('SKIP'
-        '0bc421afdc4c2527525ce2e21740c9f72e05431394fb4710c1a8fa6d3bb2ee20d0630e2a76ddbac3c0ba27c1ab08f0c8e27d060def1370721b1c94246cbbf0ff')
-
-prepare() {
-  cd fmt
-  patch -Np1 -i ../fmt-no-pip-no-virtualenv.patch
-}
+source=(git+https://github.com/fmtlib/fmt.git#tag=${pkgver})
+b2sums=('18b6d66c2159b2f8bd0baf2e1df7514fde09cf6a25441710d40e386abd9baa49b62859c4d8a71b77f0d1550c32fc62826c95fdacf4397e24cc6ea205a0c50798')
 
 pkgver() {
   cd fmt
