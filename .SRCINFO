@@ -1,6 +1,6 @@
 pkgbase = siyuan-bin
 	pkgdesc = auto upload to AUR when SiYuan stable release
-	pkgver = 3.1.10
+	pkgver = 3.1.9
 	pkgrel = 1
 	url = https://b3log.org/siyuan
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = siyuan-bin
 	noextract = siyuan-3.1.10-linux.AppImage
 	options = !strip
 	options = !debug
-	source = https://github.com/siyuan-note/siyuan/releases/download/v3.1.9/siyuan-3.1.10-linux.AppImage
+	source = https://github.com/siyuan-note/siyuan/releases/download/v3.1.9/siyuan-3.1.9-linux.AppImage
 	sha256sums = SKIP
 
 pkgname = siyuan-bin
