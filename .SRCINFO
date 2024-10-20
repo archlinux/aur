@@ -1,6 +1,6 @@
 pkgbase = python-sel4-deps
 	pkgdesc = metapackage for build dependencies for the seL4 microkernel
-	pkgver = 0.3.1
+	pkgver = 0.5.0
 	pkgrel = 1
 	url = https://sel4.systems/
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = python-sel4-deps
 	depends = python-lxml
 	depends = python-ply
 	depends = python-psutil
-	depends = python-bs4
+	depends = python-beautifulsoup4
 	depends = python-pyelftools
 	depends = python-sh
 	depends = python-pexpect
@@ -24,8 +24,7 @@ pkgbase = python-sel4-deps
 	depends = python-guardonce
 	depends = autopep8
 	depends = python-libarchive-c
-	source = https://files.pythonhosted.org/packages/9a/6a/0794518b4e781b584e3f91d35bb77f31ef9ee1c6c157a42354f6f7a0e547/sel4-deps-0.3.1.tar.gz
-	sha256sums = b9b4a7da5dd9776c47e24dbe6eb3cdc27e7785d7e2e10b5bb78ab3c41ed9b227
+	source = https://files.pythonhosted.org/packages/source/s/sel4-deps/sel4_deps-0.5.0.tar.gz
+	sha256sums = 2348640c1e367af52ca31118c76f2fdbe13340d4c8bee2b979b14f4d02b7d3a7
 
 pkgname = python-sel4-deps
-

@@ -1,8 +1,8 @@
 # Maintainer: Paul Irofti <paul@irofti.net>
 
-_name=sel4-deps
-pkgname="python-$_name"
-pkgver=0.3.1
+_name=sel4_deps
+pkgname="python-${_name/_/-}"
+pkgver=0.5.0
 pkgrel=1
 
 pkgdesc="metapackage for build dependencies for the seL4 microkernel"
@@ -17,7 +17,7 @@ depends=('python'
   'python-lxml'
   'python-ply'
   'python-psutil'
-  'python-bs4'
+  'python-beautifulsoup4'
   'python-pyelftools'
   'python-sh'
   'python-pexpect'
@@ -30,8 +30,8 @@ depends=('python'
   'python-libarchive-c')
 makedepends=('python-setuptools')
 
-source=("https://files.pythonhosted.org/packages/9a/6a/0794518b4e781b584e3f91d35bb77f31ef9ee1c6c157a42354f6f7a0e547/${_name}-${pkgver}.tar.gz")
-sha256sums=('b9b4a7da5dd9776c47e24dbe6eb3cdc27e7785d7e2e10b5bb78ab3c41ed9b227')
+source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name/_/-}/${_name}-${pkgver}.tar.gz")
+sha256sums=('2348640c1e367af52ca31118c76f2fdbe13340d4c8bee2b979b14f4d02b7d3a7')
 
 build() {
   cd "$srcdir/$_name-$pkgver"
