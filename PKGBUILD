@@ -26,7 +26,9 @@ pkgname='kyocera-cups'
 #_pkgver='9.0-0'; _rev='20210527'
 #_pkgver='9.1-0'; _rev='20220203'
 #_pkgver='9.2-0'; _rev='20220928'
-_pkgver='9.3-0'; _rev='20230720'
+#_pkgver='9.3-0'; _rev='20230720'
+_pkgver='9.4-0'; _rev='20240521'
+#https://www.kyoceradocumentsolutions.us/content/download-center-americas/us/drivers/drivers/KyoceraLinuxPackages_20240521_tar_gz.download.gz
 pkgver="${_pkgver//-/.}.${_rev}"
 pkgrel='1'
 pkgdesc='PPD drivers for Kyocera CS ECOSYS FS KM TASKalfa KPDL printers copiers wide format'
@@ -35,8 +37,11 @@ arch=('i686' 'x86_64')
 #url='https://usa.kyoceradocumentsolutions.com/en/products-services/hardware/printers/ecosys-fs-4200dn.html' # (.tar.gz complete PPD list)
 url='https://www.kyoceradocumentsolutions.us/en/support/downloads.html' # select ECOSYS FS-4200dn
 license=('custom')
-depends=('cups')
+depends=('glibc' 'gcc-libs' 'zlib' 'python' 'dbus' 'libcups' 'cups')
 depends+=('python-pypdf3' 'python-reportlab' 'python-setuptools')
+optdepends=(
+  'qt5-base: knmd'
+)
 conflicts=('kyocera-ecosys-m2035dn' 'kyocera-ecosys-p6035cdn')
 options=('!strip')
 #install="${pkgname}.install"
@@ -46,9 +51,9 @@ options=('!strip')
 _srcdir="KyoceraLinuxPackages_${_rev}.tar.gz"
 source=("${_srcdir}::https://www.kyoceradocumentsolutions.us/content/download-center-americas/us/drivers/drivers/${_srcdir//./_}.download.gz")
 #source=("https://www.kyoceradocumentsolutions.us/content/download-center-americas/us/drivers/drivers/Kyocera_Linux_PPD_Ver_${pkgver}.tar.gz")
-md5sums=('581178dc74064d59d395bc5126660e38'
+md5sums=('0c191e9096aeb5004d6e5d583127a543'
          'd3e7d0fe76377b0b058a9fb497cdfafa')
-sha256sums=('55cd5e90851738d7de564138ebcdfca9c255ededafdb3a591ea0fb3d656b8584'
+sha256sums=('7f9f1ca91cef018a6e56f2210d86f16afa00d0bf06b33ac32c875e49dc5439ef'
             'c0ca7dba26542a9b75b51300da289e753cfaa0f43b09c9230041ab5c728b49a4')
 
 source+=('repack.sh')
