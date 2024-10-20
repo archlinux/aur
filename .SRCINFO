@@ -1,5 +1,5 @@
 pkgbase = station-desktop-git
-	pkgdesc = Smart browser for busy people. A single place for all of your web applications.
+	pkgdesc = Smart browser for busy people. A single place for all of your web applications (git version)
 	pkgver = 3.2.0.r0.g041ff79
 	pkgrel = 1
 	url = https://getstation.com/
