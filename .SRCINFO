@@ -11,7 +11,7 @@ pkgbase = spm-arch
 	optdepends = fish: for fish shell integration
 	provides = spm
 	conflicts = spm
-	source = spm-arch-1.0.0.tar.gz::https://github.com/adelmonte/Simple_Package_Manager/archive/refs/tags/v.1.0.0.tar.gz
+	source = spm-arch-1.0.0.tar.gz::https://github.com/adelmonte/Simple_Package_Manager/releases/download/v.1.0.0/spm-1.0.0.tar.gz
 	sha256sums = 1babf186ec12315adec9631185cd502667c807c19ff8de7dc79184def193719c
 
 pkgname = spm-arch

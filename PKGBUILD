@@ -9,11 +9,11 @@ depends=('bash' 'fzf' 'yay')
 optdepends=('fish: for fish shell integration')
 provides=('spm')
 conflicts=('spm')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v.$pkgver.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::$url/releases/download/v.$pkgver/spm-$pkgver.tar.gz")
 sha256sums=('1babf186ec12315adec9631185cd502667c807c19ff8de7dc79184def193719c')
 
 package() {
-    cd "$srcdir/Simple_Package_Manager-v.$pkgver"
+    cd "$srcdir"
     
     # Install main script
     install -Dm755 spm.sh "$pkgdir/usr/bin/spm"
