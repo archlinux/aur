@@ -1,7 +1,7 @@
 # Maintainer: Robert Labudda <contact+aur-pytodotxt@vonshednob.cc>
 _pbasename='pytodotxt'
 pkgname="python-${_pbasename}"
-pkgver='1.5.0'
+pkgver='2.0.0.post1'
 pkgrel='1'
 pkgdesc="Python library for todo.txt task list files"
 url="https://codeberg.org/vonshednob/${_pbasename}/"
@@ -13,7 +13,7 @@ makedepends=('python-setuptools'
              'python-installer'
              'python-wheel')
 source=("https://files.pythonhosted.org/packages/source/${_pbasename::1}/${_pbasename}/${_pbasename}-${pkgver}.tar.gz")
-sha256sums=('99be359438c52e0c4fc007e11a89f5a03af00fc6851a6ba7070dfe0e00189009')
+sha256sums=('bdbdfc17840b18903d37784d1c58c49fdd8127323d9b6234e3992a74eea80310')
 
 build() {
     cd "${_pbasename}-${pkgver}"
