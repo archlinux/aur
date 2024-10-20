@@ -1,5 +1,5 @@
 pkgbase = station-desktop
-	pkgdesc = Smart browser for busy people. A single place for all of your web applications.
+	pkgdesc = Smart browser for busy people. A single place for all of your web applications (stable version)
 	pkgver = 3.2.0
 	pkgrel = 1
 	url = https://getstation.com/
