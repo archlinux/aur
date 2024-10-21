@@ -4,7 +4,7 @@
 pkgname=waveterm
 _pkgname=Wave
 _appname="${_pkgname} Terminal"
-pkgver=0.8.11
+pkgver=0.8.12
 _electronversion=32
 _nodeversion=22
 pkgrel=1
@@ -33,12 +33,13 @@ makedepends=(
     'ruby'
     'go-task'
     'zig'
+    'ruby-bundler'
 )
 source=(
     "${pkgname}-${pkgver}.tar.gz::${_ghurl}/archive/refs/tags/v${pkgver}.tar.gz"
     "${pkgname}.sh"
 )
-sha256sums=('004d0e4e7a2bef83971ffbd54f7feb762e3968f7d34175e3ebc858faa1c493cd'
+sha256sums=('3a23aba67c6b9173689a840c5304c645a376945e0f9b4881da031536acc27f56'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
@@ -97,5 +98,5 @@ package() {
     install -Dm644 "${srcdir}/${pkgname}-${pkgver}/make/linux-"*/resources/app.asar -t "${pkgdir}/usr/lib/${pkgname}"
     cp -r "${srcdir}/${pkgname}-${pkgver}/make/linux-"*/resources/app.asar.unpacked "${pkgdir}/usr/lib/${pkgname}"
     install -Dm644 "${srcdir}/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
-    install -Dm644 "${srcdir}/${pkgname}-${pkgver}/build/appicon.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
+    install -Dm644 "${srcdir}/${pkgname}-${pkgver}/assets/appicon-windows.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
 }
