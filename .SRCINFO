@@ -1,0 +1,15 @@
+pkgbase = sway-new-workspace
+	pkgdesc = A command to create new Sway workspaces
+	pkgver = 0.1.5
+	pkgrel = 1
+	url = https://github.com/nzig/sway-new-workspace
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	depends = gcc-libs
+	depends = glibc
+	optdepends = sway
+	source = sway-new-workspace-0.1.5.tar.gz::https://github.com/nzig/sway-new-workspace/archive/refs/tags/0.1.5.tar.gz
+	sha256sums = f01534ab6013660ec00ba1b0c136dcd5afa866415a239a78e4d91c5e8bdc3a41
+
+pkgname = sway-new-workspace
