@@ -1,7 +1,7 @@
 # Maintainer: atomicfs <https://aur.archlinux.org/account/atomicfs>
 
 pkgname=python-imap-tools
-pkgver=1.7.1
+pkgver=1.7.3
 pkgrel=2
 pkgdesc="Work with email and mailbox by IMAP"
 arch=('any')
@@ -18,7 +18,7 @@ makedepends=(
   'python-wheel'
 )
 source=("${pkgname}::git+${url}#tag=v${pkgver}")
-sha256sums=('SKIP')
+sha256sums=('fe0d2ab6548ba9bbde1f64f6192f65d0911e90fc70295bf00417972b5eac6b4b')
 
 #check() {}
 # WOuld require some setup

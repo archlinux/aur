@@ -1,6 +1,6 @@
 pkgbase = python-imap-tools
 	pkgdesc = Work with email and mailbox by IMAP
-	pkgver = 1.7.1
+	pkgver = 1.7.3
 	pkgrel = 2
 	url = https://github.com/ikvk/imap_tools
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = python-imap-tools
 	makedepends = python-setuptools
 	makedepends = python-wheel
 	depends = python
-	source = python-imap-tools::git+https://github.com/ikvk/imap_tools#tag=v1.7.1
-	sha256sums = SKIP
+	source = python-imap-tools::git+https://github.com/ikvk/imap_tools#tag=v1.7.3
+	sha256sums = fe0d2ab6548ba9bbde1f64f6192f65d0911e90fc70295bf00417972b5eac6b4b
 
 pkgname = python-imap-tools
