@@ -2,7 +2,7 @@
 # Previous Maintainer: Clint Valentine <valentine.clint@gmail.com>
 
 pkgname=centrifuge
-pkgver=1.0.4.1
+pkgver=1.0.4.2
 pkgrel=1
 pkgdesc="Rapid and memory-efficient tool for classification of metagenomic sequences"
 arch=('x86_64')
@@ -28,7 +28,7 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/DaehwanKimLab/centrifug
         'centrifuge_simulate_reads.py.patch'
         'Makefile.patch'
         )
-sha256sums=('638cc6701688bfdf81173d65fa95332139e11b215b2d25c030f8ae873c34e5cc'
+sha256sums=('db142790522a72971c7deda7d22e1f29fce54dbf23afc2e40def9f5a764f4c99'
             'ae9334ddd0cb9b09811969c151350c4e5ee73452fe5d00f01fd7cf23d6573d78'
             'f681bd2fd89429245ff092b689d53c7e119a5f1270a414b8629896fd5ced90f5'
             '12be02a7c3b63679703874b45b6491c81402bac7159859936fe4c78a47632ded'
