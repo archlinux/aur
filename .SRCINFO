@@ -1,19 +1,19 @@
 pkgbase = closure-compiler
 	pkgdesc = A JavaScript checker and optimizer
-	pkgver = v20230228
+	pkgver = v20240317
 	pkgrel = 1
 	url = https://github.com/google/closure-compiler
 	arch = any
 	license = Apache
 	depends = java-runtime
-	noextract = closure-compiler-v20230228.jar
-	source = https://repo.maven.apache.org/maven2/com/google/javascript/closure-compiler/v20230228/closure-compiler-v20230228.jar
-	source = https://raw.githubusercontent.com/google/closure-compiler/v20230228/README.md
-	source = https://raw.githubusercontent.com/google/closure-compiler/v20230228/COPYING
+	noextract = closure-compiler-v20240317.jar
+	source = https://repo.maven.apache.org/maven2/com/google/javascript/closure-compiler/v20240317/closure-compiler-v20240317.jar
+	source = https://raw.githubusercontent.com/google/closure-compiler/v20240317/README.md
+	source = https://raw.githubusercontent.com/google/closure-compiler/v20240317/LICENSE
 	source = closure-compiler
-	sha256sums = 8fa53351d2b7e9769697fed4e323fac2fd216e02d95136ed0f8a1d357f9bc307
-	sha256sums = SKIP
-	sha256sums = SKIP
+	sha256sums = 6b1250ac21c05bdd209dc515d9b6037b30b5555a284dd741ff0591a82848b7ce
+	sha256sums = f2a1671d85bcb9257c87bb98263fa39a937e0fb12924e418e361ac7cd28efe79
+	sha256sums = cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30
 	sha256sums = 3935fadb64cfff482029143a270ba8f952436bd6a6ab0e26151fe0785ce6265d
 
 pkgname = closure-compiler
