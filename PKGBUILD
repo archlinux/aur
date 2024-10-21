@@ -1,11 +1,11 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=musicfree-desktop
-_appname=MusicFreeDesktop
+_pkgname=MusicFreeDesktop
 pkgver=0.0.5
 _electronversion=25
 _nodeversion=18
-pkgrel=1
-pkgdesc="插件化、定制化、无广告的免费音乐播放器"
+pkgrel=2
+pkgdesc="Plug-in, customized, ad-free music player.Prebuilt version.Use system-wide electron.插件化、定制化、无广告的免费音乐播放器"
 arch=('any')
 url="http://musicfree.upup.fun/"
 _ghurl="https://github.com/maotoumao/MusicFreeDesktop"
@@ -25,49 +25,54 @@ makedepends=(
     'gcc'
 )
 source=(
-    "${pkgname%-git}.git::git+${_ghurl}.git#tag=v${pkgver}"
+    "${pkgname}-${pkgver}.tar.gz::${_ghurl}/archive/refs/tags/v${pkgver}.tar.gz"
     "${pkgname}.sh"
 )
-sha256sums=('03b69810cb003cd16cc8f857e9e88286196351d43b507624821665efa933a5d3'
-            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
+sha256sums=('e8ec94e14c56377428523694a94a6b097f748e69c1d9360fb65815807ef1a3ce'
+            '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 _ensure_local_nvm() {
-    export NVM_DIR="${srcdir}/.nvm"
+    local NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
     nvm install "${_nodeversion}"
     nvm use "${_nodeversion}"
 }
 build() {
-    sed -e "s|@electronversion@|${_electronversion}|" \
-        -e "s|@appname@|${pkgname}|g" \
-        -e "s|@runname@|app|g" \
-        -e "s|@cfgdirname@|${_appname%Desktop}|g" \
-        -e "s|@options@||g" \
-        -i "${srcdir}/${pkgname}.sh"
+    sed -e "
+        s/@electronversion@/${_electronversion}/g
+        s/@appname@/${pkgname}/g
+        s/@runname@/app/g
+        s/@cfgdirname@/${_pkgname%Desktop}/g
+        s/@options@//g
+    " -i "${srcdir}/${pkgname}.sh"
     _ensure_local_nvm
-    gendesk -f -q -n --pkgname="${pkgname}" --categories="AudioVideo" --name="${_appname}" --exec="${pkgname} %U"
-    cd "${srcdir}/${pkgname%-git}.git"
-    export npm_config_build_from_source=true
-    export npm_config_cache="${srcdir}/.npm_cache"
+    gendesk -f -q -n --pkgname="${pkgname}" --pkgdesc="${pkgdesc}" --categories="AudioVideo" --name="${_pkgname}" --exec="${pkgname} %U"
+    cd "${srcdir}/${_pkgname}-${pkgver}"
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
-    #export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
-    #export npm_config_target="${SYSTEM_ELECTRON_VERSION}"
-    #export ELECTRONVERSION="${_electronversion}"
+    export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
     HOME="${srcdir}/.electron-gyp"
-    if [ `curl -s ipinfo.io/country | grep CN | wc -l ` -ge 1 ];then
-        export npm_config_registry=https://registry.npmmirror.com
-        export npm_config_disturl=https://registry.npmmirror.com/-/binary/node/
-        export npm_config_electron_mirror=https://registry.npmmirror.com/-/binary/electron/
-        export npm_config_electron_builder_binaries_mirror=https://registry.npmmirror.com/-/binary/electron-builder-binaries/
-    else
-        echo "Your network is OK."
+    {
+        echo -e '\n'	
+        #echo 'build_from_source=true'
+        echo "cache=${srcdir}/.npm_cache"
+    } >> .npmrc
+    if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
+        {
+            echo 'registry=https://registry.npmmirror.com'
+            echo 'disturl=https://registry.npmmirror.com/-/binary/node/'
+            echo 'electron_mirror=https://registry.npmmirror.com/-/binary/electron/'
+            echo 'electron_builder_binaries_mirror=https://registry.npmmirror.com/-/binary/electron-builder-binaries/'
+        } >> .npmrc
+        sed -i "s/registry.npmjs.org/registry.npmmirror.com/g" package-lock.json
     fi
-    NODE_ENV=development npm install
-    NODE_ENV=production npm run package
+    find src -type f -exec sed -i "s/process.resourcesPath/\'\/usr\/lib\/${pkgname}\'/g" {} +
+    sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
+    NODE_ENV=development    npm install
+    NODE_ENV=production     npm run package
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname}"
-    cp -r "${srcdir}/${pkgname%-git}.git/out/${_appname%Desktop}-linux-"*/resources/{app,res} "${pkgdir}/usr/lib/${pkgname}"
-    install -Dm644 "${srcdir}/${pkgname%-git}.git/res/logo.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
+    cp -r "${srcdir}/${_pkgname}-${pkgver}/out/${_pkgname%Desktop}-linux-"*/resources/{app,res} "${pkgdir}/usr/lib/${pkgname}"
+    install -Dm644 "${srcdir}/${_pkgname}-${pkgver}/res/logo.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
     install -Dm644 "${srcdir}/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
 }
