@@ -8,11 +8,12 @@ Type=forking
 ExecStart=/usr/bin/ncam -b
 User=ncam
 ConfigurationDirectory=ncam
+LogsDirectory=ncam
 PrivateTmp=yes
 ProtectHome=yes
-ProtectSystem=strict
+ProtectSystem=yes
 NoNewPrivileges=yes
-ReadWritePaths=-/var/lib/ncam
+AmbientCapabilities=CAP_NET_BIND_SERVICE
 
 [Install]
 WantedBy=multi-user.target
