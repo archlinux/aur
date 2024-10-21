@@ -1,11 +1,12 @@
 pkgbase = perl-moox-aliases
 	pkgdesc = easy aliasing of methods and attributes in Moo
 	pkgver = 0.001006
-	pkgrel = 1
+	pkgrel = 2
 	url = https://metacpan.org/release/MooX-Aliases
 	arch = any
 	license = GPL
 	license = PerlArtistic
+	checkdepends = perl-test-fatal
 	depends = perl
 	depends = perl-class-method-modifiers
 	depends = perl-moo

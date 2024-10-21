@@ -2,7 +2,7 @@
 _dist=MooX-Aliases
 pkgname=perl-moox-aliases
 pkgver=0.001006
-pkgrel=1
+pkgrel=2
 pkgdesc="easy aliasing of methods and attributes in Moo"
 arch=(any)
 url="https://metacpan.org/release/$_dist"
@@ -12,6 +12,9 @@ depends=(
 	perl-class-method-modifiers
 	perl-moo
 	perl-strictures
+)
+checkdepends=(
+	perl-test-fatal
 )
 options=(!emptydirs purge)
 source=("https://cpan.metacpan.org/authors/id/H/HA/HAARG/$_dist-$pkgver.tar.gz")
