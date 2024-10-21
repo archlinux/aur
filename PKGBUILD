@@ -2,11 +2,11 @@
 # Contributor: Sainnhe Park <sainnhe@gmail.com>
 pkgname=basedpyright-git
 _pkgname=basedpyright
-pkgver=v1.19.0.r0.gac556285c
+pkgver=v1.19.0.r3.ge169caf01
 pkgrel=1
 pkgdesc="Fork of pyright, a static type checker for Python, with various improvements and new features"
 arch=('any')
-url="https://github.com/DetacHead/basedpyright"
+url="https://github.com/DetachHead/basedpyright"
 license=('MIT')
 depends=('nodejs' 'python')
 makedepends=('npm' 'python-installer')
