@@ -6,11 +6,11 @@ depends=("qt5-base" "qt5-quickcontrols" "qt5-tools" "syntax-highlighting5")
 makedepends=("extra-cmake-modules")
 pkgdesc="An easy-to-use and aesthetically pleasing text editor for Lingmo OS."
 pkgrel=1
-pkgver=2.0.0
+pkgver=2.0.1
 url="https://lingmo.org"
 license=("GPL")
 source=("https://github.com/LingmoOS/${pkgname}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('d8ac2f6e5e3af0ab841c6141c2d9b2bb1bb32c43367565e330f05adc7b04eb74')
+sha256sums=('defb08cf3a2182511cbb8cdb23c110543b5ce6fbd73e1aa667739057d4d12371')
 
 prepare() {
     cd "${srcdir}/${pkgname}-${pkgver}"

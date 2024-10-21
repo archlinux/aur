@@ -1,6 +1,6 @@
 pkgbase = lingmo-texteditor
 	pkgdesc = An easy-to-use and aesthetically pleasing text editor for Lingmo OS.
-	pkgver = 2.0.0
+	pkgver = 2.0.1
 	pkgrel = 1
 	url = https://lingmo.org
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = lingmo-texteditor
 	depends = qt5-quickcontrols
 	depends = qt5-tools
 	depends = syntax-highlighting5
-	source = https://github.com/LingmoOS/lingmo-texteditor/archive/refs/tags/2.0.0.tar.gz
-	sha256sums = d8ac2f6e5e3af0ab841c6141c2d9b2bb1bb32c43367565e330f05adc7b04eb74
+	source = https://github.com/LingmoOS/lingmo-texteditor/archive/refs/tags/2.0.1.tar.gz
+	sha256sums = defb08cf3a2182511cbb8cdb23c110543b5ce6fbd73e1aa667739057d4d12371
 
 pkgname = lingmo-texteditor
