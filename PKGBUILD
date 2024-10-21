@@ -6,11 +6,11 @@ depends=()
 makedepends=("extra-cmake-modules")
 pkgdesc="Built-in wallpapers for LingmoOS."
 pkgrel=1
-pkgver=2.1.0
+pkgver=2.1.1
 url="https://lingmo.org"
 license=("GPL")
 source=("https://github.com/LingmoOS/${pkgname}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('8d2de5f7b0de81594afb8c8d05e2a853594ff4ce909921d989c41651d93fab89')
+sha256sums=('89b690fcca14e3cd271ddcadebf9465d1f1d9a28e12f80cdb8e3da29dae40a41')
 
 prepare() {
     cd "${srcdir}/${pkgname}-${pkgver}"
