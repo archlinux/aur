@@ -9,8 +9,8 @@ _pkgname=wwwoffle
 pkgname="${_pkgname}-svn"
 epoch=1
 # _pkgver=2.9j
-pkgver=2.9j+svn2256.d20210530
-pkgrel=2
+pkgver=2.9j+svn2258.d20241020
+pkgrel=1
 pkgdesc="Simple caching proxy server with special features (request, recursive fetch, subscription, modify HTML, ...) for use with dial-up internet links. Includes startup scripts for OpenRC, System V init, systemd."
 arch=(
   'arm'
