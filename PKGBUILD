@@ -2,7 +2,7 @@
 pkgname=linutil-bin
 _pkgname=linutil
 pkgver=2024.09.28
-pkgrel=3
+pkgrel=4
 pkgdesc="Chris Titus Tech's Linutil is a distro-agnostic toolbox designed to simplify everyday Linux tasks."
 arch=('x86_64' 'aarch64')
 url="https://github.com/ChrisTitusTech/$_pkgname"
@@ -13,7 +13,7 @@ source_x86_64=("https://github.com/ChrisTitusTech/$_pkgname/releases/download/$p
 source_aarch64=("https://github.com/ChrisTitusTech/$_pkgname/releases/download/$pkgver/$_pkgname-aarch64"
     "https://raw.githubusercontent.com/ChrisTitusTech/$_pkgname/refs/heads/main/$_pkgname.desktop"
     "https://raw.githubusercontent.com/ChrisTitusTech/$_pkgname/refs/heads/main/man/$_pkgname.1")
-depends=('git' 'pacman' 'tree-sitter' 'tree-sitter-bash')
+depends=('git' 'pacman')
 optdepends=('ttf-nerd-fonts-symbols: symbols and icons')
 conflicts=($_pkgname)
 provides=($_pkgname)
