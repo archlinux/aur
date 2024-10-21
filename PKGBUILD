@@ -1,6 +1,6 @@
 pkgname=supermario64-sm64ex-git
 pkgver=20bb444
-pkgrel=1
+pkgrel=2
 scriptver=1.0.2
 rpkgname=supermario64
 _rpkgname=SuperMario64
@@ -15,7 +15,7 @@ sha256sums=('SKIP'
 source=("git+https://github.com/sm64pc/sm64ex.git#commit=$pkgver" "https://gitlab.com/linuxbombay/supermario64/-/archive/$scriptver/supermario64-$scriptver.tar.bz2")
 
 build() {  
-  #yad --width=700 --info --title="SM64 Rom select" --image="info" --text="Please select the SuperMario64 rom to extract the games files, it can be "  --button="OK:1"
+  yad --width=700 --info --title="SM64 Rom select" --image="info" --text="Please select the SuperMario64 rom to extract the games files, it can be "  --button="OK:1"
   selected_rom=$(zenity --file-selection --file-filter="*.n64 *.z64" --title="Select the SM64 ROM")
   cp -r "$selected_rom" "$srcdir/sm64ex/baserom.us.z64"
   cd "$srcdir/sm64ex"
@@ -40,7 +40,7 @@ package() {
 done
     
     # Link to binary
-    ln -s "$pkgdir/usr/share/games/$_rpkgname/$rpkgname" "$pkgdir/usr/bin/$rpkgname"
+    ln -s "/usr/share/games/$_rpkgname/$rpkgname" "$pkgdir/usr/bin/$rpkgname"
 
     # Desktop Entry
     install -Dm644 "$rpkgname.desktop" \

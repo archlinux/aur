@@ -1,7 +1,7 @@
 pkgbase = supermario64-sm64ex-git
 	pkgdesc = PC port of Super Mario 64.
 	pkgver = 20bb444
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/sm64pc/sm64ex
 	arch = x86_64
 	arch = i386
