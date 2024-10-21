@@ -5,7 +5,7 @@ pkgname="${_pkgname}-git"
 _pkgver=latest
 epoch=1
 pkgver=0.7.2+r651.20240424.0.7.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Qt5 application to make conference schedules offline. Able to import schedules in XML format created by the ​PentaBarf (or ​frab) used by ​FOSDEM, ​DebConf, ​Grazer Linuxtage, ​CCC congresses, ​FrOSCon, and ​many others.'
 arch=('i686' 'x86_64')
 url="http://www.toastfreeware.priv.at/confclerk"
@@ -27,9 +27,9 @@ conflicts=("${_pkgname}")
 options=()
 
 source=(
-  "${_pkgname}::git+http://git.toastfreeware.priv.at/toast/confclerk.git"
-  "${_pkgname}-debian::git+http://git.toastfreeware.priv.at/debian/confclerk.git" # Needed for the manpage.
-  #"${_pkgname}.1.gz::http://manpages.ubuntu.com/manpages.gz/zesty/man1/confclerk.1.gz"
+  "${_pkgname}::git+https://git.toastfreeware.priv.at/toast/confclerk.git"
+  "${_pkgname}-debian::git+https://git.toastfreeware.priv.at/debian/confclerk.git" # Needed for the manpage.
+  #"${_pkgname}.1.gz::https://manpages.ubuntu.com/manpages.gz/zesty/man1/confclerk.1.gz"
 )
 
 sha256sums=(
