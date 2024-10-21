@@ -64,7 +64,7 @@ build() {
 
   cd "$srcdir/piper"
   cmake -Bbuild -GNinja \
-    -DPIPER_PHONEMIZE_DIR="$srcdir/piper-phonemize/install" \
+    -DPIPER_PHONEMIZE_DIR="$srcdir/piper-phonemize/install/usr" \
     -Wno-dev
   cmake --build build --config Release
 }
