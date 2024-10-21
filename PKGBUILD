@@ -3,7 +3,7 @@
 
 pkgname=openspace-git
 _pkgname=OpenSpace
-pkgver=v0.20.0.119.g062278b0a0
+pkgver=v0.20.0.145.gfef526652d
 pkgrel=1
 pkgdesc="OpenSpace is an open source, non-commercial, and freely available interactive data visualization software designed to visualize the entire known universe and portray our ongoing efforts to investigate the cosmos"
 arch=('x86_64')
@@ -73,6 +73,8 @@ package() {
 	cp -R "${srcdir}/${_pkgname}/modules/digitaluniverse/shaders"  "$pkgdir/opt/OpenSpace/modules/digitaluniverse"
 	mkdir -p "$pkgdir/opt/OpenSpace/modules/exoplanets/shaders"
 	cp -R "${srcdir}/${_pkgname}/modules/exoplanets/shaders"  "$pkgdir/opt/OpenSpace/modules/exoplanets"
+	mkdir -p "$pkgdir/opt/OpenSpace/modules/exoplanets/scripts"
+	cp -R "${srcdir}/${_pkgname}/modules/exoplanets/scripts"  "$pkgdir/opt/OpenSpace/modules/exoplanets"
 	mkdir -p "$pkgdir/opt/OpenSpace/modules/fieldlines/shaders"
 	cp -R "${srcdir}/${_pkgname}/modules/fieldlines/shaders"  "$pkgdir/opt/OpenSpace/modules/fieldlines"
 	mkdir -p "$pkgdir/opt/OpenSpace/modules/fieldlinessequence/shaders"
