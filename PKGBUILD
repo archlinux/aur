@@ -2,12 +2,12 @@
 _oname='sawja'
 pkgname="ocaml-$_oname"
 pkgver='1.5.12'
-pkgrel=1
+pkgrel=2
 pkgdesc="Provides a high level representation of Java .class files in OCaml"
 arch=('i686' 'x86_64')
 url="https://github.com/javalib-team/sawja/"
 license=('GPL3')
-depends=('ocaml>=4.0.0' 'ocaml-javalib>=2.3.3' 'perl' 'camlp4')
+depends=('ocaml>=4.0.0' 'ocaml-javalib>=2.3.3' 'perl')
 makedepends=('ocaml-findlib')
 options=(!strip)
 source=("https://github.com/javalib-team/$_oname/archive/$pkgver.tar.gz")
