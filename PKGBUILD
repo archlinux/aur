@@ -1,7 +1,7 @@
 # -*- mode: Shell-script; eval: (setq indent-tabs-mode 't); eval: (setq tab-width 4) -*-
 # Maintainer: LuckyTurtleDev [aur at lukas1818 dot de]
 
-_pkgtag=2.0.3 #auto updated by CI
+_pkgtag=2.0.4 #auto updated by CI
 _crate="tauri-cli"
 pkgname="tauri-cli-prerelease"
 pkgver=${_pkgtag/-/_}
@@ -16,7 +16,7 @@ conflicts=('tauri-cli')
 provides=("tauri-cli=$pkgver")
 
 source=("$_crate-$_pkgtag.tar.gz::https://crates.io/api/v1/crates/tauri-cli/$_pkgtag/download")
-sha512sums=('0278e1d0004b4ffab131155e7440060af717a41a5eaf58c1f8a1634bf56b46c56c7bb27574b9d97e4750f160ea90185e978df940486084bb10835b13c7a68219')
+sha512sums=('3ce18f47a1ebbcb84ce973b39e3d04f0a4bec4c5078a210c0a71ad19672711c28270042ae0c625aa27554c93eb0aca4a5a369df6d6808ddbd3b5dd3596922bfa')
 
 # Tier 1 architectures supported by Rust (https://doc.rust-lang.org/nightly/rustc/platform-support.html#tier-1)
 arch=('aarch64' 'i686' 'x86_64')
