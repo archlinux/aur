@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=witsy-bin
 _pkgname=Witsy
-pkgver=1.19.1
+pkgver=1.19.3
 _electronversion=32
 pkgrel=1
 pkgdesc="Generative AI desktop application.Prebuilt version.Use system-wide electron."
@@ -20,11 +20,11 @@ options=(
     '!emptydirs'
 )
 source=(
-    "${pkgname%-bin}-${pkgver}.zip::${url}/releases/download/v${pkgver}/${_pkgname}-linux-x64-${pkgver}.zip"
+    "${pkgname%-bin}-${pkgver}.zip::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-x64.zip"
     "${pkgname%-bin}-${pkgver}.png::https://raw.githubusercontent.com/nbonamy/witsy/v${pkgver}/assets/icon.png"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('7c4615ae00b3187ea390af5084cf437065656ec332aee8ec126946f838735621'
+sha256sums=('94407205151036a2aadcd21f7a66a467b7eaedf6fa2e1525bfd1a3b822b2d4e0'
             '1f290bf14df85930c04881b362b015791a0c94dd491979acfccb0bdcfd35e58e'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 build() {
@@ -40,6 +40,7 @@ build() {
 package() {
    install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
    install -Dm644 "${srcdir}/${_pkgname}-linux-x64/resources/app.asar" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
+   install -Dm644 "${srcdir}/${_pkgname}-linux-x64/resources/"*.png -t "${pkgdir}/usr/lib/${pkgname%-bin}"
    install -Dm644 "${srcdir}/${pkgname%-bin}-${pkgver}.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-bin}.png"
    install -Dm644 "${srcdir}/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
 }
