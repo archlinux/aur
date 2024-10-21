@@ -1,6 +1,6 @@
 # Maintainer: Sean Anderson <seanga2@gmail.com>
 pkgname=tapview
-pkgver=1.10
+pkgver=1.14
 pkgrel=1
 pkgdesc="A tiny viewer/consumer for TAP (Test Anything Protocol)"
 arch=(any)
@@ -9,7 +9,7 @@ license=('custom:MIT0')
 makedepends=(asciidoctor)
 checkdepends=(shellcheck)
 source=("$url/-/archive/$pkgver/$pkgname-$pkgver.tar.bz2")
-sha512sums=('3d661550687fe21e24305a220eab5d9edea8e6ebd17bebbbe1ae900f2964881ee55f8999ff147de70bfa1d399358d3ae91bdc21f25026f6fd91b8a8d8c7943e2')
+sha512sums=('ad1eb6e50430575a1b6e85252b21c5260a3836fcb1924b3e9152a5e4e892eb722d3a7bfd6eadbfa3ded40f73c69dcd17a8226cddaff0136d5f2bf86f718d062f')
 
 build() {
 	cd "$pkgname-$pkgver"
