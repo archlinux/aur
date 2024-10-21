@@ -1,0 +1,15 @@
+pkgbase = ckrs
+	pkgdesc = A lightweight script to monitor system resource usage
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/x45k/ckrs
+	arch = any
+	license = GPL
+	depends = bash
+	depends = nano
+	source = ckrs.sh
+	source = config.conf
+	md5sums = c9a73d768427ca88049c8331fd42fecb
+	md5sums = 6d41aea23a9341eebb1eaf7ab63e0e5f
+
+pkgname = ckrs
