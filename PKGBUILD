@@ -67,7 +67,6 @@ build() {
     -DPIPER_PHONEMIZE_DIR="$srcdir/piper-phonemize/install" \
     -Wno-dev
   cmake --build build --config Release
-  echo 0
 }
 
 package() {
