@@ -9,12 +9,12 @@ depends=(
 makedepends=("extra-cmake-modules")
 pkgdesc="Screenlocker for LingmoOS."
 pkgrel=1
-pkgver=2.0.1
+pkgver=2.0.2
 
 url="https://lingmo.org"
 license=("GPL")
 source=("https://github.com/LingmoOS/${pkgname}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('e863a4826944da69e5aa791a8049a2350a49a1f253b3522d7e1f099d947a3959')
+sha256sums=('eab4ba6593ec273afcc1eb845d7789ba23951b1fc7478ef57426ecec57572699')
 
 prepare() {
     cd "${srcdir}/${pkgname}-${pkgver}"
