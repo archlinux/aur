@@ -7,7 +7,6 @@ pkgbase="python-${_pkgname}"
 pkgname=("${pkgbase}" "${pkgbase}-opt" "${pkgbase}-cuda" "${pkgbase}-opt-cuda" "${pkgbase}-rocm" "${pkgbase}-opt-rocm")
 # When updating pytorch, also check the compatibility table for torchvision
 # https://github.com/pytorch/vision?tab=readme-ov-file#installation
-pkgver=2.5.0
 _pkgver=2.5.0
 pkgrel=1
 _pkgdesc='Tensors and Dynamic neural networks in Python with strong GPU acceleration'
@@ -19,9 +18,11 @@ depends=('google-glog' 'gflags' 'opencv' 'openmp' 'openmpi' 'pybind11' 'python' 
          'python-numpy' 'python-sympy' 'protobuf' 'ffmpeg' 'python-future' 'qt6-base' 'eigen'
          'intel-oneapi-mkl' 'python-typing_extensions' 'numactl' 'python-jinja'
          'python-networkx' 'python-filelock')
+# https://github.com/ROCm/aotriton/blob/main/requirements-dev.txt
+_aotriton_deps=('python-iniconfig' 'python-packaging' 'python-pluggy' 'python-wheel' 'python-tqdm' 'python-textual')
 makedepends=('python' 'python-setuptools' 'python-yaml' 'python-numpy' 'cmake' 'cuda' 'gcc13'
-             'nccl' 'cudnn' 'git' 'rocm-hip-sdk' 'hipblaslt' 'roctracer' 'miopen' 'magma-cuda' 'magma-hip'
-             'ninja' 'pkgconfig' 'doxygen' 'vulkan-headers' 'shaderc' 'onednn')
+             'nccl' 'cudnn' 'git' 'rocm-hip-sdk' 'hipblaslt' 'roctracer' 'miopen-hip' 'magma-cuda' 'magma-hip'
+             'ninja' 'pkgconfig' 'doxygen' 'vulkan-headers' 'shaderc' 'onednn' "${_aotriton_deps[@]}")
 source=("${_pkgname}::git+https://github.com/pytorch/pytorch.git#tag=v$_pkgver"
         # generated using parse-submodules
         "${pkgname}-FP16::git+https://github.com/Maratyszcza/FP16.git"
@@ -63,17 +64,12 @@ source=("${_pkgname}::git+https://github.com/pytorch/pytorch.git#tag=v$_pkgver"
         use-system-libuv.patch
         fix-building-for-torchvision.patch
         87773.patch
-        123377.patch
         disable-werror1.patch
         disable-werror2.patch
         disable-werror4.patch
-        rocblas-batched.patch
-        protobuf-23.patch
         glog-0.7.patch
         pytorch-rocm-jit.patch
         pytorch-missing-iostream.patch
-        python-pytorch-ffmpeg6.patch
-        python-pytorch-aotriton-include.patch
         pytorch-remove-caffe2-binaries.patch)
 b2sums=('ce8c81ebb60cc9433c1d8d3d65ed22f87c81290ab6379da199411646c7f8986c5951549a8bc6c657e117f5e0c385d3912466738393cd81a47dfa20579d63fe2c'
         'SKIP'
@@ -111,22 +107,17 @@ b2sums=('ce8c81ebb60cc9433c1d8d3d65ed22f87c81290ab6379da199411646c7f8986c5951549
         'SKIP'
         'SKIP'
         'SKIP'
-        '77f85808e480bd37dfb5f072d565466ae30a8f827f49ef97591fc2fc03bea54944eb1adeaa4a1e3466518a5640f575eda88d15b4c4d549a6f41f0bf4f2cfb086'
+        '400270990c63a248f9ad298580c9efe8c7757bcec111375ffeb8fbae79d1b855ab8bfd270b7efbccbf442bcdb2a9336e08de8a3e458533b3d7ccffbb6d1d43bc'
         'af8c724ed80898ae3875a295ad6bd4d18d90f8a9124f6cff6d1b2f525bf7806fe61306e739c1f7362fbd8d0e4f8ba57d0e3bf925ea3f7a78a0a98f26722db147'
         'fdea0b815d7750a4233c1d4668593020da017aea43cf4cb63b4c00d0852c7d34f0333e618fcf98b8df2185313a2089b8c2e9fe8ec3cfb0bf693598f9c61461a8'
         '0a8fc110a306e81beeb9ddfb3a1ddfd26aeda5e3f7adfb0f7c9bc3fd999c2dde62e0b407d3eca573097a53fd97329214e30e8767fb38d770197c7ec2b53daf18'
-        'eccdd0cbb50c3d44a12020ad00e17ffc26723218edfebee6dbe4ec83764767a8f1144ebf7f040b7807c600d8ee36b964010f6c3d2a2a7cb7d4dbdcfab614a3c5'
         '844d0b7b39777492a6d456fa845d5399f673b4bb37b62473393449c9ad0c29dca3c33276dc3980f2e766680100335c0acfb69d51781b79575f4da112d9c4018c'
         '985e331b2025e1ca5a4fba5188af0900f1f38bd0fd32c9173deb8bed7358af01e387d4654c7e0389e5f98b6f7cbed053226934d180b8b3b1270bdbbb36fc89b2'
         'eea86bbed0a37e1661035913536456f90e0cd1e687c7e4103011f0688bc8347b6fc2ff82019909c41e7c89ddbc3b80dde641e88abf406f4faebc71b0bb693d25'
-        '232d2aca7cae8da511d1451890f8696d47da72276929ac5731a1a1a481d2a515fa7288bf33730d8ea2c892616551a74ca2439b53de6b1dfee156c30919120741'
-        '738199e7a11940c839a43ac4e3152d84e15b9cde638227d3d87ecb45f82c5e76630a56c49bcfb08e841f92be1b2311f2fad4fafdcc17f5b00b7a8ef6d962f250'
         '20d044c5c80354af5ed63847fa4332e96cbfc32a351788f6458fb92b322de7f64b10c188ff26e4f34e422cfe30e082c3ca23ee3e9094616c142aa53588dd451e'
         'e19fbb32da5a3bdd9d1505b2ba79ff0d765b241da819c96a380a5c871be4f5a78dcad000e01a315d936cfebb7860150f8111e60aed17cbb9337896a0831df0fe'
         '77458fa568692020ae4e437b1ebae6ebbf59f040b3414ba03e32cc829f1befb9f39dde6e0c0525e30d42dd08d482d2f213dd8294a9877476c7d0d6aabb0f08d3'
-        'c17c2d2c085795861cb46974e8e251a0eb576c35a1dd2d75bcb880119bcc800c49bf6bc25c8f671c984b48787b5b919ef946352e299dc13d3ff763ae1bcc33a4'
-        'f22d47070baf40ed05b1a7777102da4b0d78fd9a75618623c6061614d319f8c955c74ee5fd55e23210b84c9ef35aa2838844119f877baf646a3bafff362a698b'
-        '21e9922ed1c0b555316a655067a789ef81a93b173e35446ecd2d06d976d49ad6b4a0aaa7339fd647758e821c15bec7ffda3d6e4804c8e858a888f0171cd2a9cb')
+        '4514a3b50581a35aa11daaf06c8d4b4b04dee9518bb8239667a5ef758660355f9ebf27ef6796d1369fca97c98278d05cab19ed3d8d52790325331113df65182c')
 options=('!lto' '!debug')
 
 get_pyver () {
@@ -200,26 +191,12 @@ prepare() {
   patch -Np1 -d third_party/benchmark -i "${srcdir}/disable-werror2.patch"
   patch -Np1 -i "${srcdir}/disable-werror4.patch"
 
-  # fix https://github.com/pytorch/pytorch/issues/97640
-  patch -Np1 -i "${srcdir}/rocblas-batched.patch"
-
   # protobuf 23 requires C++17
   find -name CMakeLists.txt | xargs sed -e 's|CXX_STANDARD 14|CXX_STANDARD 17|' -e 's|CXX_STANDARD 11|CXX_STANDARD 17|' -i
-  # Promote bool and {u,i}nit8 types to 16 bit as 8 bit types throw an exception in protobuf/abseil,
-  # https://github.com/protocolbuffers/protobuf/blob/92619cdd433c5eed314d6b871060ac2340f52906/src/google/protobuf/repeated_field.h#L122-L129
-  patch -Np1 -i "${srcdir}/protobuf-23.patch"
 
   patch -Np1 -i "${srcdir}/pytorch-missing-iostream.patch"
 
-  # build against ffmpeg 6
-  patch -Np1 -i "${srcdir}/python-pytorch-ffmpeg6.patch"
-
   patch -Np1 -i "${srcdir}/pytorch-remove-caffe2-binaries.patch"
-
-  # cuda 12.4
-  patch -Np1 -i "${srcdir}/123377.patch"
-
-  patch -Np1 -i "${srcdir}/python-pytorch-aotriton-include.patch"
 
   cd "${srcdir}"
 
@@ -275,11 +252,15 @@ _prepare() {
   export OVERRIDE_TORCH_CUDA_ARCH_LIST="${TORCH_CUDA_ARCH_LIST}"
   export ROCM_PATH=/opt/rocm
   export HIP_ROOT_DIR=/opt/rocm
-  export PYTORCH_ROCM_ARCH="gfx906;gfx908;gfx90a;gfx940;gfx941;gfx942;gfx1010;gfx1012;gfx1030;gfx1100;gfx1101;gfx1102"
+  # copied from rocBLAS
+  # https://github.com/ROCm/rocBLAS/blob/9c8a7dfeb3d0a808321541567447b5c1d17cd070/CMakeLists.txt#L114
+  export PYTORCH_ROCM_ARCH="gfx900;gfx906:xnack-;gfx908:xnack-;gfx90a:xnack+;gfx90a:xnack-;gfx940;gfx941;gfx942;gfx1010;gfx1012;gfx1030;gfx1100;gfx1101;gfx1102"
   # Compile source code for supported GPU archs in parallel
   # Use gcc 13 toolchain as ROCm is not compatible with gcc 14.
   export HIPCC_COMPILE_FLAGS_APPEND="-parallel-jobs=$(nproc) --gcc-install-dir=/usr/lib/gcc/x86_64-pc-linux-gnu/13.3.0/"
   export HIPCC_LINK_FLAGS_APPEND="-parallel-jobs=$(nproc)"
+  # Force aotriton to use system deps
+  # export PIP_NO_INDEX=1
 }
 
 build() {
@@ -330,6 +311,9 @@ build() {
 
   cd "${srcdir}/${_pkgname}-rocm"
   echo "Building with rocm and without non-x86-64 optimizations"
+  # -fcf-protection is not supported by HIP, see
+  # https://rocm.docs.amd.com/projects/llvm-project/en/latest/reference/rocmcc.html#support-status-of-other-clang-options
+  CXXFLAGS+=" -fcf-protection=none"
   _prepare
   export USE_CUDA=0
   export USE_CUDNN=0
@@ -425,7 +409,7 @@ package_python-pytorch-opt-cuda() {
 
 package_python-pytorch-rocm() {
   pkgdesc="${_pkgdesc} (with ROCm)"
-  depends+=(rocm-hip-sdk hipblaslt roctracer miopen magma-hip onednn)
+  depends+=(rocm-hip-sdk hipblaslt roctracer miopen-hip magma-hip onednn)
   conflicts=(python-pytorch)
   provides=(python-pytorch=${pkgver})
 
@@ -435,7 +419,7 @@ package_python-pytorch-rocm() {
 
 package_python-pytorch-opt-rocm() {
   pkgdesc="${_pkgdesc} (with ROCm and AVX2 CPU optimizations)"
-  depends+=(rocm-hip-sdk hipblaslt roctracer miopen magma-hip onednn)
+  depends+=(rocm-hip-sdk hipblaslt roctracer miopen-hip magma-hip onednn)
   conflicts=(python-pytorch)
   provides=(python-pytorch=${pkgver} python-pytorch-rocm=${pkgver})
 
