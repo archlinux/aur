@@ -1,10 +1,10 @@
 pkgbase = schildichat-desktop-git
-	pkgdesc = A Matrix client based on Element with a more traditional instant messaging experience
-	pkgver = 1.11.36.sc.3.r0.a1458b1
-	pkgrel = 1
+	pkgdesc = A Matrix client based on Element with a more traditional instant messaging experience. Build of the latest git checkout.
+	pkgver = 1.11.81.sc.0.test.0+3.r503.20241021.a18b08f
+	pkgrel = 2
 	url = https://schildi.chat
 	arch = x86_64
-	license = Apache
+	license = Apache-2.0
 	makedepends = npm
 	makedepends = git
 	makedepends = yarn
@@ -12,16 +12,18 @@ pkgbase = schildichat-desktop-git
 	makedepends = python-setuptools
 	makedepends = rust
 	makedepends = tcl
-	makedepends = electron30
+	makedepends = nodejs>=20
 	makedepends = nvm
 	makedepends = libxcrypt-compat
 	makedepends = asar
 	depends = electron30
 	depends = libsecret
-	provides = schildichat-desktop=1.11.36.sc.3.r0.a1458b1
+	provides = schildichat-desktop=1.11.81.sc.0.test.0+3.r503.20241021.a18b08f
+	provides = schildichat-desktop-custom=1.11.81.sc.0.test.0+3.r503.20241021.a18b08f
+	provides = schildichat-desktop-git=1.11.81.sc.0.test.0+3.r503.20241021.a18b08f
 	conflicts = schildichat-desktop
 	conflicts = schildichat-desktop-bin
-	source = git+https://github.com/SchildiChat/schildichat-desktop.git#branch=sc
+	source = schildichat-desktop::git+https://github.com/SchildiChat/schildichat-desktop.git#branch=lite
 	source = git+https://github.com/SchildiChat/matrix-js-sdk.git
 	source = git+https://github.com/SchildiChat/matrix-react-sdk.git
 	source = git+https://github.com/SchildiChat/element-web.git
