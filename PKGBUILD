@@ -26,7 +26,7 @@ conflicts=(
 optdepends=(
 )
 source=(
-  "${_pkgname}::https://git.savannah.gnu.org/gitweb/?p=gnulib.git;a=blob_plain;f=build-aux/gitlog-to-changelog"
+  "${_pkgname}::https://git.savannah.gnu.org/gitweb/?p=gnulib.git;a=blob_plain;f=build-aux/gitlog-to-changelog" # Yes, this is a single file, not a git repository, that we want to download.
 )
 
 sha256sums=(
@@ -35,7 +35,7 @@ sha256sums=(
 
 pkgver() {
   cd "${srcdir}"
-  perl "./${_pkgname}" --version | awk '{print $3"T"$4}' | tr -d ':-'
+  perl "${_pkgname}" --version | awk '{print $3"T"$4}' | tr -d ':-'
 }
 
 package() {
