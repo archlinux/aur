@@ -1,6 +1,6 @@
 pkgbase = yap-git
 	pkgdesc = Package software with ease
-	pkgver = r73.6b8ec80
+	pkgver = 1.21.r0.0458838
 	pkgrel = 1
 	url = https://github.com/M0Rf30/yap
 	arch = armv6h
@@ -12,10 +12,11 @@ pkgbase = yap-git
 	license = GPL3
 	makedepends = git
 	makedepends = go
+	makedepends = upx
 	depends = glibc
 	optdepends = apk-tools: for alpine experimenting on native host
-	optdepends = dpkg: for deb experimenting on native host
-	optdepends = rpm-tools: for rpm experimenting on native host
+	optdepends = pacman: for arch experimenting on native host
+	options = !strip
 	source = yap::git+https://github.com/M0Rf30/yap
 	sha256sums = SKIP
 
