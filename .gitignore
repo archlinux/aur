@@ -1,0 +1,7 @@
+*.tar.gz
+*.tar.xz
+*.tar.zst
+src/
+pkg/
+astc-encoder-py/
+astc-encoder/
