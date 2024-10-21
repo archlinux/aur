@@ -9,7 +9,7 @@ depends=(
 )
 makedepends=('extra-cmake-modules' 'plasma-framework5' 'kdecoration5')
 pkgdesc="KWin plugin for LingmoOS"
-pkgrel=1
+pkgrel=2
 pkgver=1.2.3
 
 url="https://lingmo.org"
@@ -24,7 +24,7 @@ prepare() {
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver//_/-}/build"
-    cmake -DCMAKE_INSTALL_PREFIX=/usr ..
+    cmake -DCMAKE_PREFIX_PATH=/usr/lib/cmake/plasma5/KDecoration2 -DCMAKE_INSTALL_PREFIX=/usr ..
     make
 }
 package() {

@@ -1,7 +1,7 @@
 pkgbase = lingmo-kwin-plugins
 	pkgdesc = KWin plugin for LingmoOS
 	pkgver = 1.2.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://lingmo.org
 	arch = x86_64
 	license = GPL
