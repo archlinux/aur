@@ -1,7 +1,7 @@
 # Maintainer: Hoream <hoream@qq.com>
 _pkgname="go-musicfox"
 pkgname="${_pkgname}-git"
-pkgver=4.5.3.r23.gd7118ac
+pkgver=4.5.4.r1.g9f04750
 pkgrel=1
 pkgdesc='Command-line Netease Cloud Music written in Go (git version).'
 url='https://github.com/anhoder/go-musicfox'
@@ -10,7 +10,7 @@ arch=('x86_64')
 provides=('musicfox' 'go-musicfox')
 conflicts=('go-musicfox-bin' 'musicfox' 'go-musicfox')
 depends=('flac' 'alsa-lib')
-makedepends=('gcc-objc' 'go' 'git')
+makedepends=('go' 'git')
 source=(${_pkgname}::git+https://github.com/go-musicfox/go-musicfox)
 sha256sums=('SKIP')
 
