@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=nvm-desktop-bin
 _pkgname=NVM.Desktop
-pkgver=4.0.1
+pkgver=4.0.2
 pkgrel=1
 pkgdesc="Node Version Manager Desktop - A desktop application to manage multiple active node.js versions.Prebuilt version."
 arch=(
@@ -23,8 +23,8 @@ source=(
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_arm64.deb")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_amd64.deb")
 sha256sums=('67fae9ba39c4a7c4af6bc4c4e25e72b6e8786f064f79107e534e5d8cff2c10c2')
-sha256sums_aarch64=('be88c1ec3fbf3f6ee4f4d320bc794217b2609d8aac92016a7fea4068d0a22871')
-sha256sums_x86_64=('599e267a844cf132ec8609d9cc9f338806cf2b5323fd6fd88a178d1a976b55c7')
+sha256sums_aarch64=('f68ef656c0824de125e630d7a1cab736ef6d514922c66a54caf6fde71782b2c5')
+sha256sums_x86_64=('f4b9f0d23d65e4aa74ee731a6a92311eab61d540f5699dd5d0b1dc907efc743f')
 build() {
     bsdtar -xf "${srcdir}/data."*
 }
