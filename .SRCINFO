@@ -5,6 +5,7 @@ pkgbase = unshell-git
 	url = https://codeberg.org/coralpink/unshell
 	arch = any
 	license = custom:MIT+NIGGER
+	makedepends = git
 	provides = unshell
 	conflicts = unshell
 	source = git+https://codeberg.org/coralpink/unshell.git

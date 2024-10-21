@@ -11,6 +11,7 @@ license=('custom:MIT+NIGGER')
 md5sums=('SKIP')
 conflicts=('unshell')
 provides=('unshell')
+makedepends=(git)
 
 build() {
     cd "$srcdir/$_pkgname"
