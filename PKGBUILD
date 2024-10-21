@@ -1,10 +1,10 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=escrcpy-bin
 _pkgname=Escrcpy
-pkgver=1.24.2
+pkgver=1.24.3
 _electronversion=29
 pkgrel=1
-pkgdesc="📱 Graphical Scrcpy to display and control Android, devices powered by Electron. - 使用图形化的 Scrcpy 显示和控制您的 Android 设备，由 Electron 驱动。"
+pkgdesc="📱 Graphical Scrcpy to display and control Android, devices powered by Electron.Prebuilt version.Use system-wide electron.使用图形化的 Scrcpy 显示和控制您的 Android 设备，由 Electron 驱动。"
 arch=(
     'aarch64'
     'x86_64'
@@ -26,8 +26,8 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-sha256sums_aarch64=('cbaf361c86dbf18e33d4da31e5939dad8c0f92767631d5668547a42acea0bcd1')
-sha256sums_x86_64=('98fe47a6f4ca420db3c6b6d4663adfde1c67fc3d2cd2b368e07eccb666b7b744')
+sha256sums_aarch64=('a3c9e8d228bac0dcb5c766db91dbd4efd4befff281f70b75fb6887f729306915')
+sha256sums_x86_64=('39146c3ab552e713574f30b26bbcfb8e8481c8a807ac1091fadcf33a3158813a')
 build() {
     sed -e "
         s/@electronversion@/${_electronversion}/
@@ -50,9 +50,10 @@ package() {
     install -Dm644 "${srcdir}/app.asar" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
     install -Dm644 "${srcdir}/opt/${_pkgname}/resources/extra/common/tray/icon.png" \
         -t "${pkgdir}/usr/lib/${pkgname%-bin}/extra/common/tray"
-    cp -r "${srcdir}/opt/${_pkgname}/resources/extra/linux" "${pkgdir}/usr/lib/${pkgname%-bin}/extra"
+    cp -Pr --no-preserve=ownership "${srcdir}/opt/${_pkgname}/resources/extra/linux" "${pkgdir}/usr/lib/${pkgname%-bin}/extra"
     install -Dm644 "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
-    for _icons in 16x16 32x32 48x48 64x64 128x128 256x256 512x512 1024x1024;do
+    _icon_sizes=(16x16 32x32 48x48 64x64 128x128 256x256 512x512 1024x1024)
+    for _icons in "${_icon_sizes[@]}";do
       install -Dm644 "${srcdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname%-bin}.png" \
         -t "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps"
     done
