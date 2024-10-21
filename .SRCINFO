@@ -1,15 +1,24 @@
 pkgbase = micropad
 	pkgdesc = A powerful note-taking app that helps you organise + take notes without restrictions.
 	pkgver = 4.5.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://getmicropad.com
 	install = micropad.install
 	arch = x86_64
 	license = MPL2
-	depends = electron31>=31.4.0
+	depends = c-ares
+	depends = gconf
+	depends = gtk3
+	depends = http-parser
+	depends = libevent
+	depends = libvpx
+	depends = libxslt
+	depends = libxss
+	depends = minizip
+	depends = nss
+	depends = re2
+	depends = snappy
 	source = https://github.com/MicroPad/MicroPad-Electron/releases/download/v4.5.1/micropad-4.5.1.pacman
-	source = micropad-bin
 	sha256sums = 702bb7b54860d2997c469be4ca8c56ca0397d48907cfde230ef6a0cd12962fe4
-	sha256sums = 7ab508fb119862f930f571cde97a7ad02862f8a7b8720dd306d1a89703db2949
 
 pkgname = micropad
