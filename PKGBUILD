@@ -1,9 +1,10 @@
 # Maintainer: Danny Waser (Waser Technologies) <waser@waser.tech>
 # Maintainer: AlphaJack <alphajack at tuta dot io>
+# Maintainer: Actionless Loveless <actionless DOT loveless PLUS aur AT gmail MF com>
 
 pkgname="python-tts"
 pkgver=0.22.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Coqui deep learning toolkit for Text-to-Speech, battle-tested in research and production"
 url="https://github.com/coqui-ai/TTS"
 license=("MPL2")
@@ -28,24 +29,24 @@ depends=("cython0"
          "python-packaging"
          "python-flask"
          "python-pysbd"
-         )
+         "python-coqui-trainer"
+         "python-coqpit"
+         "python-gruut"
+         "python-jieba"
+         "pypinyin"
+         "python-jamo-git"
+         "python-bangla"
+         "python-bnnumerizer"
+         "python-bnunicodenormalizer"
+)
 makedepends=("python-build" "python-installer" "python-wheel")
 optdepends=("python-umap-learn: for notebooks"
             "python-pandas: for notebooks"
             "python-matplotlib: for training"
-            "python-coqui-trainer: for training"
-            "python-coqpit: for configuration"
-            "python-gruut: for german, spanish, french"
-            "python-jieba: for chinese"
-            "pypinyin: for chinese"
             "python-mecab: for japanese"
             "python-unidic-lite: for japanese"
-            "python-jamo-git: for korean"
             "python-nltk: for korean"
             #"python-g2pkk: for korean"
-            #"python-bangla: for bangla"
-            #"python-bnnumerizer: for bangla"
-            #"python-bnunicodenormalizer: for bangla"
             #"python-k_diffusion: for tortoise"
             "python-einops: for tortoise"
             "python-transformers: for tortoise"
@@ -57,7 +58,7 @@ b2sums=('4331e54b2fe1909c0b0e0ad358318f2e1006bc2709a79b66a63abb94e5360026cc1806b
 prepare(){
  # remove hardcoded versions
  sed -i "TTS-$pkgver/setup.py" \
-     -e "s|3.11|4.0|g"
+     -e "s|3.12|4.0|g"
  sed -i "TTS-$pkgver/requirements.txt" \
      -re "s|cython==[0-9]+\.[0-9]+\.[0-9]+|cython|g" \
      -re "s|numpy==[0-9]+\.[0-9]+\.[0-9]+|numpy|g"
