@@ -3,7 +3,7 @@
 # Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 
 pkgbase=linux-g14
-pkgver=6.11.4.arch1
+pkgver=6.11.4.arch2
 pkgrel=1
 pkgdesc='Linux-g14'
 url="https://gitlab.com/dragonn/linux-g14.git"
@@ -35,7 +35,7 @@ source=(
 #  modprobed.db
   partial-rog.config::"https://gitlab.com/asus-linux/fedora-kernel/-/raw/rog-6.11/partial-rog.config"
   choose-gcc-optimization.sh
-  more-uarches-for-kernel-6.8+.patch::"https://raw.githubusercontent.com/graysky2/kernel_compiler_patch/refs/heads/master/more-ISA-levels-and-uarches-for-kernel-6.1.79%2B.patch"
+  more-uarches-for-kernel-6.1+.patch::"https://raw.githubusercontent.com/graysky2/kernel_compiler_patch/refs/heads/master/more-ISA-levels-and-uarches-for-kernel-6.1.79%2B.patch"
   
   # actual kernel patch series
   0000-asus-patch-series.patch::"https://gitlab.com/asus-linux/fedora-kernel/-/raw/rog-6.11/asus-patch-series.patch"
@@ -59,7 +59,7 @@ validpgpkeys=(
 
 sha256sums=('bd54b0a0a46574919706698b1411ec48cf2a58345c4d8990e414acc4730e8f55'
             'SKIP'
-            '07873305e1bc211e16a683dc2557e6a12efa8467a508da7a67985acd97547cdd'
+            '1293db74393f4a5b8de91f41927e73abe224c26df92ac183ac723899d8c2fab4'
             'SKIP'
             '6c4d63503c77465232fe4ed42671261b476bb0bfd1223b1a3da4afcc1cd615fb'
             '3cc13b8e108528bfba5f544e7993af415a3bdaab13fb36285c886a628cd39332'
