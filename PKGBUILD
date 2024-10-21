@@ -1,8 +1,8 @@
 # Maintainer: Laura Demkowicz-Duffy <dev at demkowiczduffy.co.uk>
 pkgname=savilerow-bin
 _pkgname=savilerow
-pkgver=1.10.0
-pkgrel=3
+pkgver=1.10.1
+pkgrel=1
 pkgdesc="A modelling assistant for Constraint Programming"
 arch=('x86_64')
 url="https://www-users.york.ac.uk/peter.nightingale/savilerow"
@@ -11,8 +11,13 @@ depends=(java-runtime bash)
 provides=(savilerow)
 source=("$pkgname-$pkgver.tar.gz::$url/$_pkgname-$pkgver-linux.tgz"
 	"savilerow.sh")
-sha256sums=('3eedd957803ca783ef2e3a075408b4b029594a388ea0ae29c57651cc26c8836b'
+sha256sums=('9cf16ed296824a9f222743fa30b056b00938c58e51c6db449d6d7444f41fdcc5'
             'fac0443361d1aac54d72f7773707854fe598da654077ff36096cb6d8fc951cb1')
+
+build() {
+	cd $_pkgname-$pkgver-linux
+	strip bin/*
+}
 
 package() {
 	install -Dm0755 "savilerow.sh" "$pkgdir/usr/bin/savilerow"
@@ -26,8 +31,8 @@ package() {
 
 	_licensedir="$pkgdir/usr/share/licenses/$pkgname"
 	install -Dm 0644 COPYING "$_licensedir/COPYING"
-	install -Dm 0644 LICENSES/cadical/LICENSE "$_licensedir/vendored/cadical.txt"
 	install -Dm 0644 LICENSES/chuffed/LICENSE "$_licensedir/vendored/chuffed.txt"
+	install -Dm 0644 LICENSES/kissat/LICENSE "$_licensedir/vendored/kissat.txt"
 	install -Dm 0644 LICENSES/minion/LICENSE.txt "$_licensedir/vendored/minion.txt"
 	ln -sr "$_licensedir" "$pkgdir/usr/share/licenses/$_pkgname"
 }
