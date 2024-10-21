@@ -1,8 +1,8 @@
 {
-    "provider_mapping": [
-        {
-            "prefix": "/",
-            "uri": "file:///var/lib/asgi-webdav"
-        }
-    ]
+  "provider_mapping": [
+    {
+      "prefix": "/",
+      "uri": "file:///var/lib/asgi-webdav"
+    }
+  ]
 }
