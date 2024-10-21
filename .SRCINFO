@@ -1,15 +1,15 @@
 pkgbase = redocly
 	pkgdesc = Redocly CLI toolbox with rich validation and bundling features
-	pkgver = 1.25.3
+	pkgver = 1.25.8
 	pkgrel = 1
 	url = https://github.com/Redocly/redoc
 	arch = any
 	license = MIT
 	makedepends = npm
 	depends = nodejs
-	noextract = redocly-1.25.3.tar.gz
+	noextract = redocly-1.25.8.tar.gz
 	options = !strip
-	source = redocly-1.25.3.tar.gz::https://registry.npmjs.org/@redocly/cli/-/cli-1.25.3.tgz
-	sha256sums = ac8078a17ba75bf3f21eab7f9a18d64a5aadd53fe9c2fe0669b35dc39ab62fd1
+	source = redocly-1.25.8.tar.gz::https://registry.npmjs.org/@redocly/cli/-/cli-1.25.8.tgz
+	sha256sums = a9aa66b39dfe36ad22d2b7dcbae02d22321a6d7f15c19f115756eeaa32b47cd3
 
 pkgname = redocly
