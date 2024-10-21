@@ -1,0 +1,7 @@
+# Specify filepatterns you want git to ignore.
+*
+!PKGBUILD
+!xe-linux-distribution.service
+!.SRCINFO
+!.gitignore
+!*.patch

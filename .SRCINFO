@@ -1,0 +1,24 @@
+pkgbase = xe-guest-utilities-xcp-ng-git
+	pkgdesc = XenServer Tools, XCP-NG fork version, built from git
+	pkgver = v7.21.0.r52.gbf10940
+	pkgrel = 1
+	url = https://github.com/xcp-ng/xe-guest-utilities
+	arch = x86_64
+	license = BSD
+	makedepends = go-pie
+	depends = lsb-release
+	conflicts = xe-guest-utilities
+	source = xe-guest-utilities::git+https://github.com/xcp-ng/xe-guest-utilities.git#branch=7.30.0-8.2
+	source = 0001-imports.patch
+	source = xe-linux-distribution.service
+	sha256sums = SKIP
+	sha256sums = 5dc2d7aeeab582d78ff76accf5cfd303fa5806bb4b54ba00610a45770cf803fc
+	sha256sums = a5f725a26140fb4e2d3ec60c32be78ab224a6cc1f7f176fafa65529175b7d731
+
+pkgname = xe-guest-utilities-xcp-ng-git
+	depends = xenstore-xcp-ng
+	depends = bash
+	conflicts = xe-guest-utilities
+
+pkgname = xenstore-xcp-ng-git
+	conflicts = xenstore

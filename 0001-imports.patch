@@ -1,0 +1,79 @@
+diff --git a/Makefile b/Makefile
+index 1806f0d..41e2e27 100644
+--- a/Makefile
++++ b/Makefile
+@@ -77,10 +77,6 @@ $(DISTDIR)/$(PACKAGE)_$(VERSION)-$(RELEASE)_$(ARCH).tgz: $(OBJECTS)
+ 
+ $(OBJECTDIR)/xe-daemon: $(XE_DAEMON_SOURCES:%=$(GOBUILDDIR)/%)
+ 	$(info ***** Build xe-daemon ******)
+-	(cd $(VENDORDIR) && ln -sfn ../../build/gobuild/guestmetric guestmetric)
+-	(cd $(VENDORDIR) && ln -sfn ../../build/gobuild/syslog syslog)
+-	(cd $(VENDORDIR) && ln -sfn ../../build/gobuild/system system)
+-	(cd $(VENDORDIR) && ln -sfn ../../build/gobuild/xenstoreclient xenstoreclient)
+ 	mkdir -p $(OBJECTDIR)
+ 	$(GO_BUILD) $(GO_FLAGS) -o $@ $<
+ 
+@@ -88,10 +84,6 @@ $(OBJECTDIR)/xenstore: $(XENSTORE_SOURCES:%=$(GOBUILDDIR)/%)
+ 	$(info ***** Build xenstore ******)
+ 	mkdir -p $(OBJECTDIR)
+ 	$(GO_BUILD) $(GO_FLAGS) -o $@ $<
+-	(cd $(VENDORDIR) && ln -sfn ../../guestmetric guestmetric)
+-	(cd $(VENDORDIR) && ln -sfn ../../syslog syslog)
+-	(cd $(VENDORDIR) && ln -sfn ../../system system)
+-	(cd $(VENDORDIR) && ln -sfn ../../xenstoreclient xenstoreclient)
+ 
+ $(GOBUILDDIR)/%: $(REPO)/%
+ 	$(info ****** Replace product version for: [$<] *****)
+diff --git a/guestmetric/guestmetric_linux.go b/guestmetric/guestmetric_linux.go
+index 507694f..1f6f057 100644
+--- a/guestmetric/guestmetric_linux.go
++++ b/guestmetric/guestmetric_linux.go
+@@ -10,7 +10,8 @@ import (
+ 	"sort"
+ 	"strconv"
+ 	"strings"
+-	xenstoreclient "xe-guest-utilities/xenstoreclient"
++
++	xenstoreclient "github.com/xenserver/xe-guest-utilities/xenstoreclient"
+ )
+ 
+ type Collector struct {
+diff --git a/xe-daemon/xe-daemon.go b/xe-daemon/xe-daemon.go
+index d8891c4..d6c6410 100644
+--- a/xe-daemon/xe-daemon.go
++++ b/xe-daemon/xe-daemon.go
+@@ -11,10 +11,11 @@ import (
+ 	"strconv"
+ 	"syscall"
+ 	"time"
+-	guestmetric "xe-guest-utilities/guestmetric"
+-	syslog "xe-guest-utilities/syslog"
+-	system "xe-guest-utilities/system"
+-	xenstoreclient "xe-guest-utilities/xenstoreclient"
++
++	guestmetric "github.com/xenserver/xe-guest-utilities/guestmetric"
++	syslog "github.com/xenserver/xe-guest-utilities/syslog"
++	system "github.com/xenserver/xe-guest-utilities/system"
++	xenstoreclient "github.com/xenserver/xe-guest-utilities/xenstoreclient"
+ )
+ 
+ const (
+diff --git a/xenstore/xenstore.go b/xenstore/xenstore.go
+index a2efcfb..7669af7 100644
+--- a/xenstore/xenstore.go
++++ b/xenstore/xenstore.go
+@@ -3,11 +3,12 @@ package main
+ import (
+ 	"errors"
+ 	"fmt"
+-	"golang.org/x/sys/unix"
+ 	"os"
+ 	"strconv"
+ 	"strings"
+-	xenstoreclient "xe-guest-utilities/xenstoreclient"
++
++	xenstoreclient "github.com/xenserver/xe-guest-utilities/xenstoreclient"
++	"golang.org/x/sys/unix"
+ )
+ 
+ func die(format string, a ...interface{}) {

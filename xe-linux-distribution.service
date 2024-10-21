@@ -1,0 +1,8 @@
+[Unit]
+Description=Linux Guest Agent
+
+[Service]
+ExecStart=/usr/bin/xe-daemon
+
+[Install]
+WantedBy=multi-user.target
