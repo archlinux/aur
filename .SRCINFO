@@ -1,0 +1,15 @@
+pkgbase = ttf-dina-remastered-nerd-font
+	pkgdesc = Dina Font TTF Remastered Nerd Fonts
+	pkgver = 20241020
+	pkgrel = 1
+	url = https://github.com/ryanoasis/nerd-fonts
+	arch = any
+	license = custom
+	makedepends = fontforge
+	makedepends = python
+	makedepends = ttf-dina-remastered
+	makedepends = unzip
+	source = https://github.com/ryanoasis/nerd-fonts/releases/download/v3.2.1/FontPatcher.zip
+	sha256sums = SKIP
+
+pkgname = ttf-dina-remastered-nerd-font
