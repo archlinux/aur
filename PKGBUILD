@@ -1,5 +1,5 @@
 pkgname=flexbv-bin
-pkgver=5.0373
+pkgver=5.0388
 pkgrel=1
 pkgdesc="FlexBV Free Professional Boardview"
 arch=('x86_64')
@@ -19,7 +19,7 @@ gendesk
 source=("${pkgname}-${pkgver}.tar.gz::https://pldaniels.com/flexbv5/free/FlexBVFree-${pkgver}-linux.tar.gz"
 	"${pkgname}-icon-${pkgver}.svg::https://pldaniels.com/flexbv5/assets/flexbv-free-icon.svg"
 	LICENSE.txt)
-sha256sums=('9d9ef206edaf0f00e03abf489ee567381bdaac6192e40eb73b15477ddc857d22'
+sha256sums=('3f6b68782b6eab3ffb60249287db0b78264f48e13a0a04877a7bc341b869b160'
             'e19c10e335eb9ba4278317c5f0f07f25e9051f0bcd3b6bb0fb85b3b2ee73124e'
             '12f5872b4bfed1620dd57e213ac2dd18b9fe02753ef70ebc89f10b6d72244e23')
 
