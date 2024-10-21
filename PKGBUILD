@@ -28,7 +28,7 @@ source=(
     "https://gh.api.99988866.xyz/https://github.com/obgnail/typora_plugin/archive/refs/tags/${typora_plugin_ver}.tar.gz")
 
 typora_sum=da7714d8a2ef228d1df13bf2a6862f3be3fad51238657e8ee48350380267ecfed29b391e0c66653e3b4322e3dada02d2bea6e1041f5230988358645ea0cf4b28
-typora_plugin_sum=
+typora_plugin_sum=1048d27522191ba022be186a204792c8f31a6bbccbebde8a45f5b8681c1543276ef6698114536f471a57eb6e9ab3f3f25b0440f8ca972190a7017134ef3aa854
 sha512sums=(
     $typora_sum
     'de9c883c63f3ea35bd551c8761e605f8e1a3468943e000abcbf94bb0c5cbb5f0f6c7fa4d49ab39c177f167e0e3d0b061c861bf828627b4a34f7f1589119c3d04'
