@@ -4,7 +4,7 @@
 pkgname=simple-stateful-firewall
 pkgver=0.0.15
 pkgrel=1
-pkgdesc="Simple Stateful Firewall. (GitHub version)"
+pkgdesc="Simple Stateful Firewall. For personal computers or you can change this by yourself"
 arch=('i686' 'x86_64')
 url="https://github.com/asciiscry3r/simple-stateful-firewall"
 license=('GPL2')
