@@ -1,6 +1,6 @@
 pkgbase = sonicthehedgehog2
 	pkgdesc = Sonic the Hedgehog 2 game powered by the rsdkv4 engine.
-	pkgver = 1.0.2
+	pkgver = 1.0.3
 	pkgrel = 1
 	url = https://gitlab.com/linuxbombay/sonicthehedgehog2
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = sonicthehedgehog2
 	depends = sdl2
 	depends = unzip
 	depends = yad
-	source = https://gitlab.com/linuxbombay/sonicthehedgehog2/-/archive/1.0.2-1/sonicthehedgehog2-1.0.2-1.tar.bz2
-	sha256sums = 8c119dd65746c8ae1a6fc43beb9b3f9a7277bb9837b28a13aac0e5a32a3f85ae
+	source = https://gitlab.com/linuxbombay/sonicthehedgehog2/-/archive/1.0.3/sonicthehedgehog2-1.0.3.tar.bz2
+	sha256sums = 2918db8ac15f8c42d82dcc08336018a8fcba1671785f1cd95da3f7b0b0987166
 
 pkgname = sonicthehedgehog2
