@@ -1,0 +1,19 @@
+pkgbase = mkdocs-table-reader-plugin
+	pkgdesc = MkDocs plugin to directly insert tables from files into markdown.
+	pkgver = 3.1.0
+	pkgrel = 1
+	url = https://github.com/timvink/mkdocs-table-reader-plugin
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	depends = mkdocs>=1.0
+	depends = python-pandas>=1.1
+	depends = python-tabulate>=0.8.7
+	depends = python-yaml>=5.4.1
+	provides = mkdocs-table-reader-plugin
+	conflicts = mkdocs-table-reader-plugin-git
+	source = https://files.pythonhosted.org/packages/source/m/mkdocs_table_reader_plugin/mkdocs_table_reader_plugin-3.1.0.tar.gz
+	sha256sums = eb15688ee8c0cd1a842f506f18973b87be22bd7baa5e2e551089de6b7f9ec25b
+
+pkgname = mkdocs-table-reader-plugin
