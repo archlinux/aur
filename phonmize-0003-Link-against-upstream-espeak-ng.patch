@@ -1,0 +1,174 @@
+From 013e42bec9f96a3dcf4c9bfb43f97f65cfba0754 Mon Sep 17 00:00:00 2001
+From: leso-kn <info@lesosoftware.com>
+Date: Tue, 8 Aug 2023 13:42:07 +0200
+Subject: [PATCH 3/4] Link against upstream espeak-ng
+
+---
+ CMakeLists.txt    | 53 +++--------------------------------------------
+ src/phonemize.cpp | 30 ++++++++++++++++-----------
+ 2 files changed, 21 insertions(+), 62 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index f41b282..beebb77 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -37,31 +37,7 @@ set_target_properties(piper_phonemize PROPERTIES
+ 
+ find_package(PkgConfig)
+ pkg_check_modules(ONNXRUNTIME REQUIRED libonnxruntime)
+-
+-# ---- espeak-ng ---
+-
+-if(NOT DEFINED ESPEAK_NG_DIR)
+-    set(ESPEAK_NG_DIR "${CMAKE_CURRENT_BINARY_DIR}/ei")
+-
+-    include(ExternalProject)
+-    ExternalProject_Add(
+-        espeak_ng_external
+-        PREFIX "${CMAKE_CURRENT_BINARY_DIR}/e"
+-        URL "https://github.com/rhasspy/espeak-ng/archive/0f65aa301e0d6bae5e172cc74197d32a6182200f.zip"
+-        CMAKE_ARGS -DCMAKE_INSTALL_PREFIX:PATH=${ESPEAK_NG_DIR}
+-        CMAKE_ARGS -DUSE_ASYNC:BOOL=OFF
+-        CMAKE_ARGS -DBUILD_SHARED_LIBS:BOOL=ON
+-        CMAKE_ARGS -DUSE_MBROLA:BOOL=OFF
+-        CMAKE_ARGS -DUSE_LIBSONIC:BOOL=OFF
+-        CMAKE_ARGS -DUSE_LIBPCAUDIO:BOOL=OFF
+-        CMAKE_ARGS -DUSE_KLATT:BOOL=OFF
+-        CMAKE_ARGS -DUSE_SPEECHPLAYER:BOOL=OFF
+-        CMAKE_ARGS -DEXTRA_cmn:BOOL=ON
+-        CMAKE_ARGS -DEXTRA_ru:BOOL=ON
+-        CMAKE_ARGS -DCMAKE_C_FLAGS="-D_FILE_OFFSET_BITS=64"
+-    )
+-    add_dependencies(piper_phonemize espeak_ng_external)
+-endif()
++pkg_check_modules(ESPEAK_NG REQUIRED espeak-ng<2)
+ 
+ 
+ # ---- Declare library ----
+@@ -69,13 +45,11 @@ endif()
+ target_include_directories(
+     piper_phonemize PUBLIC
+     "$<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/src>"
+-    ${ESPEAK_NG_DIR}/include
+     ${ONNXRUNTIME_INCLUDE_DIRS}
+ )
+ 
+ target_link_directories(
+     piper_phonemize PUBLIC
+-    ${ESPEAK_NG_DIR}/lib
+     ${ONNXRUNTIME_LIBRARY_DIRS}
+ )
+ 
+@@ -100,12 +74,6 @@ target_compile_features(piper_phonemize_exe PUBLIC cxx_std_17)
+ target_include_directories(
+     piper_phonemize_exe PUBLIC
+     "$<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/src>"
+-    ${ESPEAK_NG_DIR}/include
+-)
+-
+-target_link_directories(
+-    piper_phonemize_exe PUBLIC
+-    ${ESPEAK_NG_DIR}/lib
+ )
+ 
+ target_link_libraries(piper_phonemize_exe PUBLIC
+@@ -128,12 +96,12 @@ target_compile_features(test_piper_phonemize PUBLIC cxx_std_17)
+ target_include_directories(
+     test_piper_phonemize PUBLIC
+     "$<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/src>"
+-    ${ESPEAK_NG_DIR}/include
++    ${ONNXRUNTIME_INCLUDE_DIRS}
+ )
+ 
+ target_link_directories(
+     test_piper_phonemize PUBLIC
+-    ${ESPEAK_NG_DIR}/lib
++    ${ONNXRUNTIME_LIBRARY_DIRS}
+ )
+ 
+ target_link_libraries(test_piper_phonemize PUBLIC
+@@ -163,18 +131,3 @@ install(
+ install(
+     FILES ${CMAKE_SOURCE_DIR}/etc/libtashkeel_model.ort
+     TYPE DATA)
+-
+-# Dependencies
+-install(
+-    DIRECTORY ${ESPEAK_NG_DIR}/
+-    DESTINATION ${CMAKE_INSTALL_PREFIX})
+-
+-if(NOT USE_SYSTEM_ONNXRUNTIME)
+-    install(
+-        DIRECTORY ${ONNXRUNTIME_DIR}/include/
+-        DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
+-
+-    install(
+-        DIRECTORY ${ONNXRUNTIME_DIR}/lib/
+-        DESTINATION ${CMAKE_INSTALL_LIBDIR})
+-endif()
+diff --git a/src/phonemize.cpp b/src/phonemize.cpp
+index c920a95..cefe1b5 100644
+--- a/src/phonemize.cpp
++++ b/src/phonemize.cpp
+@@ -36,14 +36,21 @@ phonemize_eSpeak(std::string text, eSpeakPhonemeConfig &config,
+ 
+   std::vector<Phoneme> *sentencePhonemes = nullptr;
+   const char *inputTextPointer = textCopy.c_str();
+-  int terminator = 0;
+ 
+   while (inputTextPointer != NULL) {
+-    // Modified espeak-ng API to get access to clause terminator
+-    std::string clausePhonemes(espeak_TextToPhonemesWithTerminator(
++    int terminator = 0;
++    std::string clausePhonemes(espeak_TextToPhonemes(
+         (const void **)&inputTextPointer,
+         /*textmode*/ espeakCHARS_AUTO,
+-        /*phonememode = IPA*/ 0x02, &terminator));
++        /*phonememode = IPA*/ 0x02));
++
++    const char *remainingTextPointer = inputTextPointer ? inputTextPointer : textCopy.c_str()+textCopy.length()+1;
++    for (size_t i = -2; remainingTextPointer+i > textCopy.c_str(); i--) {
++      if ((remainingTextPointer[i]) != ' ') {
++        terminator = remainingTextPointer[i];
++        break;
++      }
++    }
+ 
+     // Decompose, e.g. "ç" -> "c" + "̧"
+     auto phonemesNorm = una::norm::to_nfd_utf8(clausePhonemes);
+@@ -106,25 +113,24 @@ phonemize_eSpeak(std::string text, eSpeakPhonemeConfig &config,
+     }
+ 
+     // Add appropriate punctuation depending on terminator type
+-    int punctuation = terminator & 0x000FFFFF;
+-    if (punctuation == CLAUSE_PERIOD) {
++    if (terminator == '.') {
+       sentencePhonemes->push_back(config.period);
+-    } else if (punctuation == CLAUSE_QUESTION) {
++    } else if (terminator == '?') {
+       sentencePhonemes->push_back(config.question);
+-    } else if (punctuation == CLAUSE_EXCLAMATION) {
++    } else if (terminator == '!') {
+       sentencePhonemes->push_back(config.exclamation);
+-    } else if (punctuation == CLAUSE_COMMA) {
++    } else if (terminator == ',') {
+       sentencePhonemes->push_back(config.comma);
+       sentencePhonemes->push_back(config.space);
+-    } else if (punctuation == CLAUSE_COLON) {
++    } else if (terminator == ':') {
+       sentencePhonemes->push_back(config.colon);
+       sentencePhonemes->push_back(config.space);
+-    } else if (punctuation == CLAUSE_SEMICOLON) {
++    } else if (terminator == ';') {
+       sentencePhonemes->push_back(config.semicolon);
+       sentencePhonemes->push_back(config.space);
+     }
+ 
+-    if ((terminator & CLAUSE_TYPE_SENTENCE) == CLAUSE_TYPE_SENTENCE) {
++    if (terminator == '.' || terminator == '?' || terminator == '!') {
+       // End of sentence
+       sentencePhonemes = nullptr;
+     }
+-- 
+2.47.0
+

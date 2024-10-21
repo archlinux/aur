@@ -1,0 +1,41 @@
+From e9798acc8044a3deef4a2c2ff97f98aa915b6374 Mon Sep 17 00:00:00 2001
+From: memchr <memchr@proton.me>
+Date: Mon, 21 Oct 2024 07:17:43 +0000
+Subject: [PATCH 3/3] handle arg parsing error gracefully
+
+---
+ src/cpp/main.cpp | 11 ++++++++++-
+ 1 file changed, 10 insertions(+), 1 deletion(-)
+
+diff --git a/src/cpp/main.cpp b/src/cpp/main.cpp
+index bd75006..27d648f 100644
+--- a/src/cpp/main.cpp
++++ b/src/cpp/main.cpp
+@@ -101,7 +101,12 @@ int main(int argc, char *argv[]) {
+   spdlog::set_default_logger(spdlog::stderr_color_st("piper"));
+ 
+   RunConfig runConfig;
+-  parseArgs(argc, argv, runConfig);
++  try {
++    parseArgs(argc, argv, runConfig);
++  } catch (const std::runtime_error& e) {
++    std::cerr << e.what() << std::endl;
++    return EXIT_FAILURE;
++  }
+ 
+ #ifdef _WIN32
+   // Required on Windows to show IPA symbols
+@@ -540,6 +545,10 @@ void parseArgs(int argc, char *argv[], RunConfig &runConfig) {
+     }
+   }
+ 
++  if (runConfig.modelPath.empty()) {
++	  throw runtime_error("Model file is not provided");
++  }
++
+   // Verify model file exists
+   ifstream modelFile(runConfig.modelPath.c_str(), ios::binary);
+   if (!modelFile.good()) {
+-- 
+2.47.0
+
