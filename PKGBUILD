@@ -2,7 +2,7 @@
 # Contributor: JD Horelick <jdhore1@gmail.com>
 # Contributor: Alad Wenter <alad@linuxbbq.org>
 pkgname=cowdancer
-pkgver=0.89
+pkgver=0.90
 pkgrel=1
 pkgdesc="Copy-on-write wrapper for pbuilder"
 arch=('i686' 'x86_64')
@@ -18,7 +18,7 @@ optdepends=('qemu: if you want to use qemubuilder'
 source=(http://httpredir.debian.org/debian/pool/main/c/$pkgname/${pkgname}_${pkgver}.tar.xz
         series
 	makedev_glibc_fix.patch)
-sha256sums=('9c55432561b67e493bd48eba131ed871cd6c30e64537496af48cc2ae47bd5be3'
+sha256sums=('4fbd0c6e2eafb98ef454eb8255611e42d48d151f49edf2e1f276686e0efd3b5f'
             'c7345323ff3cf9f3e7f7339319f06b14a001dd75fc7720ad4e58ae99db2a62ea'
             'ef983677d8218b3301f194129d9b97f39abf9a4463aa5b6da7b4c376b5b20ed1')
 
