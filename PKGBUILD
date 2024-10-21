@@ -1,8 +1,8 @@
 # Maintainer: Jat <chat@jat.email>
 
 pkgname=corplink-bin
-pkgver=2.2.25
-_pkgrel=r4432_7945e8
+pkgver=3.0.16
+_pkgrel=r4659_fb1fd4
 pkgrel=1
 pkgdesc="Linux client of Feilian (veCorpLink) from Bytedance."
 arch=('x86_64')
@@ -13,7 +13,7 @@ optdepends=('networkmanager: NetworkManager integration')
 options=('!strip' '!emptydirs')
 install=${pkgname}.install
 source=("https://cdn.isealsuite.com/linux/FeiLian_Linux_amd64_v${pkgver}_$_pkgrel.deb")
-sha512sums=('cd424b9a4aea18e13a7a7c97d19bd39402a401194c01a1a44c45d3930bea963441fd8d7841568857a005759bc1b90a1e895b04bd0f3ac9518b3a8cd5cd5e3261')
+sha512sums=('36303fa7941c8896b29b84c5dafd80a6edccb900427267098336b7d452e68d5c89e44a63d48b0569a29a6b249d9ee732be95cf40d989fe7388d569e52e86362f')
 
 package() {
   # Extract package data
@@ -23,7 +23,7 @@ package() {
   cd "${pkgdir}"
   mkdir -p usr/bin usr/lib/systemd/system
   ln -s /opt/Corplink/Corplink usr/bin/corplink
-  mv "${pkgdir}"/opt/Corplink/corplink.service usr/lib/systemd/system/corplink.service
+  mv "${pkgdir}"/opt/apps/com.volcengine.feilian/files/corplink.service usr/lib/systemd/system/corplink.service
 
   rm -r usr/local
 }
