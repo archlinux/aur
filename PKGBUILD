@@ -14,8 +14,7 @@ sha256sums=('SKIP'
             '5fb557fa69070490b737efde294ecaa9a04bd9fca66290ee638c63f15a3a2ace')
 source=("git+https://github.com/sm64pc/sm64ex.git#commit=$pkgver" "https://gitlab.com/linuxbombay/supermario64/-/archive/$scriptver/supermario64-$scriptver.tar.bz2")
 
-build() {  
-  yad --width=700 --info --title="SM64 Rom select" --image="info" --text="Please select the SuperMario64 rom to extract the games files, it can be "  --button="OK:1"
+build() {
   selected_rom=$(zenity --file-selection --file-filter="*.n64 *.z64" --title="Select the SM64 ROM")
   cp -r "$selected_rom" "$srcdir/sm64ex/baserom.us.z64"
   cd "$srcdir/sm64ex"
