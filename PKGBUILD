@@ -2,7 +2,7 @@
 _appname=doc-kit
 pkgname="${_appname//-/}-bin"
 _pkgname=DocKit
-pkgver=0.4.7
+pkgver=0.4.8
 pkgrel=1
 pkgdesc="GUI clients for elasticsearch, opensearch and etc.Prebuilt version."
 arch=('x86_64')
@@ -18,7 +18,7 @@ depends=(
 source=(
     "${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_amd64.deb"
 )
-sha256sums=('ed2b9dd48f2691e606d696c9a0b8b6434207fc30021375697998307308a2ac89')
+sha256sums=('f82ba2aa36016a621320fe3dcfe60f6304ff42ce025e5c510112b6e3e567964c')
 build() { 
     bsdtar -xf "${srcdir}/data."*
     sed -i "s/${_appname}/${pkgname%-bin}/g" "${srcdir}/usr/share/applications/${_appname}.desktop"
