@@ -2,8 +2,8 @@
 
 _pkgname=capstone
 pkgname=mingw-w64-${_pkgname}
-pkgver=4.0.2
-pkgrel=2
+pkgver=5.0.3
+pkgrel=1
 pkgdesc="Lightweight multi-platform, multi-architecture disassembly framework (mingw-w64)"
 arch=(any)
 depends=(mingw-w64-crt)
@@ -12,7 +12,7 @@ options=(staticlibs !buildflags !strip)
 license=(BSD)
 url="https://www.capstone-engine.org/"
 source=("https://github.com/aquynh/${_pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=('7c81d798022f81e7507f1a60d6817f63aa76e489aa4e7055255f21a22f5e526a')
+sha256sums=('3970c63ca1f8755f2c8e69b41432b710ff634f1b45ee4e5351defec4ec8e1753')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
