@@ -1,5 +1,5 @@
 pkgbase = spm-arch
-	pkgdesc = Simple Package Manager Wrapper for Arch Linux
+	pkgdesc = Simple FZF Package Manager Wrapper for Arch Linux
 	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://github.com/adelmonte/Simple_Package_Manager
