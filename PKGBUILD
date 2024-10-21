@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=parmigene
-_pkgver=1.1.0
+_pkgver=1.1.1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=7
+pkgrel=1
 pkgdesc="Parallel Mutual Information Estimation for Gene Network Reconstruction"
 arch=(x86_64)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -13,8 +13,8 @@ depends=(
   r
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('b4e0213cf464ca63b6dc51f3133c975a')
-b2sums=('f4122c712bed369e60bb9771b2a0225c6a09bb0bcae66f8435e98415406029b7459738c07ac0e457e8841e37690778f8f6dece376893531bb372662653039ab0')
+md5sums=('fd9175d28d1efdab627d98c080095b4a')
+b2sums=('fe80cc9c98780187fab4dedeb9918a78d6dc8bc1dc77d6e419cda5260b82e55b9eaa20b0ad83c84f1d891c84d45683ac76a1d81d36981f792496a18c16e80b4e')
 
 build() {
   mkdir build
