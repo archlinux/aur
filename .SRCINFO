@@ -1,6 +1,6 @@
 pkgbase = lingmo-terminal
 	pkgdesc = Terminal emulator using LingmoUI as interface style on LingmoOS.
-	pkgver = 1.9.9
+	pkgver = 2.0.0
 	pkgrel = 1
 	url = https://lingmo.org
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = lingmo-terminal
 	depends = qt5-tools
 	depends = qt5-graphicaleffects
 	depends = lingmoui
-	source = https://github.com/LingmoOS/lingmo-terminal/archive/refs/tags/1.9.9.tar.gz
-	sha256sums = eed57d86d3d299a3ff264f6a0fa0fe477468240465146ebe681757c8fd016a6c
+	source = https://github.com/LingmoOS/lingmo-terminal/archive/refs/tags/2.0.0.tar.gz
+	sha256sums = 262ed8f325de3ceb48b1bd0e6e2324b9bb9006e30f47799e476f79c44c4c3ec5
 
 pkgname = lingmo-terminal
