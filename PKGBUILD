@@ -3,7 +3,7 @@
 
 pkgname='frr'
 pkgver='10.1.1'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='FRRouting (quagga fork) supports BGP, OSPF, ISIS, RIP, PIM, LDP, BFD, VRRP, NHRP and EIGRP'
 arch=('x86_64' 'aarch64' 'armv7h')
 url="https://frrouting.org"
@@ -21,10 +21,14 @@ backup=("etc/${pkgname}/${pkgname}.conf"
 	"etc/${pkgname}/vtysh.conf")
 source=("https://github.com/FRRouting/${pkgname}/archive/${pkgname}-${pkgver}.tar.gz"
         "https://gitlab.com/redhat/centos-stream/rpms/${pkgname}/-/raw/c10s/${pkgname}-tmpfiles.conf"
-        "https://gitlab.com/redhat/centos-stream/rpms/${pkgname}/-/raw/c10s/${pkgname}-sysusers.conf")
+        "https://gitlab.com/redhat/centos-stream/rpms/${pkgname}/-/raw/c10s/${pkgname}-sysusers.conf"
+        "https://patch-diff.githubusercontent.com/raw/FRRouting/${pkgname}/pull/16907.patch"
+        "https://patch-diff.githubusercontent.com/raw/FRRouting/${pkgname}/pull/17160.patch")
 sha256sums=('76004c312de3348b6164f6ae15db4c0cf0f504945f8c69aed871c0b4dcedfa29'
             'edd7b01b11f2be66bb6b4531496d1eaf6536add9f4b549c659b27f5a32cdc512'
-            'c6f5a54402aa5f11e21dac3bd0e6cdeadfbf7937e9b34775b5fd368a9ca96fa4')
+            'c6f5a54402aa5f11e21dac3bd0e6cdeadfbf7937e9b34775b5fd368a9ca96fa4'
+            'dff006e53101e292254a6a6599a77489de6eedccaf79de778f5461b8d6cf1d45'
+            '25e8013253d0cf581e825bdc7b19a9a109fcee850cae1dd49dc6b7477d4c50bb')
 
 prepare() {
   # Systemd use /run, not the /var/run
@@ -44,6 +48,11 @@ prepare() {
     "tools/${pkgname}-reload.py"
   sed -i -e 's|frr_libstatedir="\\${localstatedir}/lib/frr"|frr_libstatedir="\\${localstatedir}/frr/lib"|g' \
     "configure.ac"
+
+  # Allow lua imports ('io', 'strings', etc)
+  patch -p1 -i "../16907.patch"
+  # Write to config `zebra on-rib-process script` command
+  patch -p1 -i "../17160.patch"
 
   autoreconf -fvi
   LUA_INCLUDE="-I /usr/include/lua5.3" ./configure \

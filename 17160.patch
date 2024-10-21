@@ -1,0 +1,73 @@
+From 1fe1f8d87c4ab46ae18536a2418c05ae5fd95185 Mon Sep 17 00:00:00 2001
+From: Donatas Abraitis <donatas@opensourcerouting.org>
+Date: Fri, 18 Oct 2024 15:36:52 +0300
+Subject: [PATCH] lib, zebra: Keep `zebra on-rib-process script` in frr.conf
+
+After the change:
+
+```
+$ grep on-rib-process /etc/frr/frr.conf
+zebra on-rib-process script script4
+
+$ systemctl restart frr
+
+$ vtysh -c 'show run' | grep on-rib-process
+zebra on-rib-process script script4
+```
+
+Signed-off-by: Donatas Abraitis <donatas@opensourcerouting.org>
+---
+ lib/frrscript.c   | 10 ++++++++++
+ lib/frrscript.h   |  2 ++
+ zebra/zebra_vty.c |  4 ++++
+ 3 files changed, 16 insertions(+)
+
+diff --git a/lib/frrscript.c b/lib/frrscript.c
+index dbae31b66685..06460b014d8c 100644
+--- a/lib/frrscript.c
++++ b/lib/frrscript.c
+@@ -27,6 +27,16 @@ struct frrscript_names_head frrscript_names_hash;
+ 
+ void _lua_decode_noop(lua_State *L, ...) {}
+ 
++void frrscript_names_config_write(struct vty *vty)
++{
++	struct frrscript_names_entry *lua_script_entry;
++
++	frr_each (frrscript_names, &frrscript_names_hash, lua_script_entry)
++		if (lua_script_entry->script_name[0] != '\0')
++			vty_out(vty, "zebra on-rib-process script %s\n",
++				lua_script_entry->script_name);
++}
++
+ /*
+  * Wrapper for frrscript_names_add
+  * Use this to register hook calls when a daemon starts up
+diff --git a/lib/frrscript.h b/lib/frrscript.h
+index ce313a1b63a8..75ac53c6092a 100644
+--- a/lib/frrscript.h
++++ b/lib/frrscript.h
+@@ -44,6 +44,8 @@ struct frrscript_names_entry {
+ 
+ extern struct frrscript_names_head frrscript_names_hash;
+ 
++extern void frrscript_names_config_write(struct vty *vty);
++
+ int frrscript_names_hash_cmp(const struct frrscript_names_entry *snhe1,
+ 			     const struct frrscript_names_entry *snhe2);
+ uint32_t frrscript_names_hash_key(const struct frrscript_names_entry *snhe);
+diff --git a/zebra/zebra_vty.c b/zebra/zebra_vty.c
+index 3bf20ff42e7c..303146c292d3 100644
+--- a/zebra/zebra_vty.c
++++ b/zebra/zebra_vty.c
+@@ -3802,6 +3802,10 @@ static int config_write_protocol(struct vty *vty)
+ 	if (!zebra_nhg_recursive_use_backups())
+ 		vty_out(vty, "no zebra nexthop resolve-via-backup\n");
+ 
++#ifdef HAVE_SCRIPTING
++	frrscript_names_config_write(vty);
++#endif
++
+ 	if (rnh_get_hide_backups())
+ 		vty_out(vty, "ip nht hide-backup-events\n");
+ 

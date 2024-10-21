@@ -1,0 +1,84 @@
+From 4b0f4f96ac8aa714c5fdd576d11f31156cc42543 Mon Sep 17 00:00:00 2001
+From: Donatas Abraitis <donatas@opensourcerouting.org>
+Date: Tue, 24 Sep 2024 13:13:50 +0300
+Subject: [PATCH 1/2] lib: Load built-in Lua functions
+
+We can't use even `string()` function because built-in functions are not
+loaded.
+
+Testing with:
+
+```
+$ cat /etc/frr/scripts/zebra.lua
+function on_rib_process_dplane_results(ctx)
+	log.warn(string.upper("testas"))
+	return {}
+end
+```
+
+This results to "TESTAS" in the logs.
+
+Signed-off-by: Donatas Abraitis <donatas@opensourcerouting.org>
+---
+ lib/frrscript.c | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/lib/frrscript.c b/lib/frrscript.c
+index acdd1df67b4d..dbae31b66685 100644
+--- a/lib/frrscript.c
++++ b/lib/frrscript.c
+@@ -348,6 +348,9 @@ int frrscript_load(struct frrscript *fs, const char *function_name,
+ 	/* Set up the Lua script */
+ 	lua_State *L = luaL_newstate();
+ 
++	/* Load basic built-in Lua functions, e.g. ipairs, string, etc. */
++	luaL_openlibs(L);
++
+ 	frrlua_export_logging(L);
+ 
+ 	char script_name[MAXPATHLEN];
+
+From 623fb6d99648ac4e4275f3c95327671b124811b6 Mon Sep 17 00:00:00 2001
+From: Donatas Abraitis <donatas@opensourcerouting.org>
+Date: Tue, 24 Sep 2024 13:27:43 +0300
+Subject: [PATCH 2/2] tests: Check if built-in Lua functions are working
+
+Signed-off-by: Donatas Abraitis <donatas@opensourcerouting.org>
+---
+ tests/lib/test_frrlua.c | 16 ++++++++++++++++
+ 1 file changed, 16 insertions(+)
+
+diff --git a/tests/lib/test_frrlua.c b/tests/lib/test_frrlua.c
+index 2760a273bddd..4aa8c8a8c396 100644
+--- a/tests/lib/test_frrlua.c
++++ b/tests/lib/test_frrlua.c
+@@ -13,6 +13,8 @@ static void test_encode_decode(void)
+ {
+ 	lua_State *L = luaL_newstate();
+ 
++	luaL_openlibs(L);
++
+ 	int a = 123;
+ 	int b = a;
+ 
+@@ -99,6 +101,20 @@ static void test_encode_decode(void)
+ 	lua_decode_sockunion(L, -1, &su_a);
+ 	assert(sockunion_cmp(&su_a, &su_b) == 0);
+ 	assert(lua_gettop(L) == 0);
++
++	/* Test if built-in functions (string() in this case) are working */
++	const char *result;
++
++	lua_getglobal(L, "string");
++	lua_getfield(L, -1, "upper");
++	lua_pushstring(L, "testas");
++	lua_pcall(L, 1, 1, 0);
++
++	result = lua_tostring(L, -1);
++	assert(strmatch(result, "TESTAS"));
++	lua_pop(L, 1);
++	lua_close(L);
++	/* End of built-in functions test */
+ }
+ 
+ int main(int argc, char **argv)
