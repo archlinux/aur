@@ -1,0 +1,17 @@
+pkgbase = wasistlos-appimage
+	pkgdesc = An unofficial WhatsApp desktop application for Linux.
+	pkgver = 1.7.0
+	pkgrel = 1
+	url = https://github.com/xeco23/WasIstLos
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = fuse2
+	depends = glibc
+	depends = zlib
+	provides = wasistlos=1.7.0
+	conflicts = wasistlos
+	options = !strip
+	source = wasistlos-1.7.0.AppImage::https://github.com/xeco23/WasIstLos/releases/download/v1.7.0/wasistlos-1.7.0-x86_64.AppImage
+	sha256sums = 1256cf508426dc943c479ce2ef366a48a33165413e8f21e6a9ea579cd7184b0e
+
+pkgname = wasistlos-appimage
