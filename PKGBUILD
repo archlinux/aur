@@ -2,7 +2,7 @@
 
 pkgname=amdguid-glow-bin
 pkgver=1.0.13
-pkgrel=2
+pkgrel=3
 pkgdesc="AMDGPU temperature and fan speed monitoring tool"
 url="https://github.com/Eraden/amdgpud"
 license=('MIT' 'Apache-2.0')
@@ -14,7 +14,6 @@ depends=('amdfand')
 makedepends=('unzip')
 optdepends=('amdmond' 'amdvold')
 provides=('amdguid-glow' 'amdguid')
-conflicts=('amdguid-glow' 'amdguid')
 
 build() {
     cd $srcdir/
