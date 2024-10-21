@@ -1,6 +1,6 @@
 # Maintainer: Sean Anderson <seanga2@gmail.com>
 pkgname=uclibc-ng
-pkgver=1.0.44
+pkgver=1.0.50
 pkgrel=1
 epoch=
 pkgdesc="A C library for embedded Linux"
@@ -23,7 +23,7 @@ source=(
 	"https://downloads.uclibc-ng.org/releases/$pkgver/uClibc-ng-$pkgver.tar.xz"
 )
 noextract=()
-sha512sums=('46ec105ed74131c4e37c0b5277177afedaecbec464a8942f4fffbdca1be09bbdde9762e622dfc5b9216a652bf50efef0a6d7126c37974d4c8156011a736d555b')
+sha512sums=('a478cbef1160f12a5ff7453f7b6f9c9d8df49c1421b660cb8e9e2a3b792a662ad0793dc9cec7c00490628f46eaadbe9ec578dd8ea86fc27b0069d1f075422612')
 
 prepare() {
 	cd "uClibc-ng-$pkgver"
