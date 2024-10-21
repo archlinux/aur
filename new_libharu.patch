@@ -1,0 +1,25 @@
+diff -Nru mathgl-8.0.2.orig/src/prc.cpp mathgl-8.0.2/src/prc.cpp
+--- mathgl-8.0.2.orig/src/prc.cpp	2024-10-02 14:37:11.000000000 +0400
++++ mathgl-8.0.2/src/prc.cpp	2024-10-22 00:48:27.244083983 +0400
+@@ -36,6 +36,7 @@
+ #include <hpdf.h>
+ #include <hpdf_u3d.h>
+ #include <hpdf_annotation.h>
++#include <hpdf_version.h>
+ #endif // MGL_HAVE_PDF
+ 
+ 
+@@ -959,7 +960,12 @@
+ 		HPDF_U3D_SetDefault3DView(u3d, "DefaultView");
+ 
+ 		//	Create annotation
+-		annot = HPDF_Page_Create3DAnnot (page, rect, u3d );
++                annot
++#if HPDF_VERSION_ID >= 20400
++                      = HPDF_Page_Create3DAnnot (page, rect, HPDF_FALSE, HPDF_FALSE, u3d, NULL);
++#else
++                      = HPDF_Page_Create3DAnnot (page, rect, u3d);
++#endif
+ //		annot = HPDF_Page_Create3DAnnot (page, rect, 0, 0, u3d, 0 );	for the new version ???
+ 
+ 		//  Enable toolbar
