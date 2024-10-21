@@ -2,7 +2,7 @@
 
 pkgname=libshv-git
 _gitname=libshv
-pkgver=r2479.5786abd1
+pkgver=r2841.f6fb5f5e
 pkgrel=1
 pkgdesc='An RPC framework build around the ChainPack packing schema'
 url='https://github.com/silicon-heaven/libshv'
@@ -31,8 +31,7 @@ build() {
 	cmake -S "$srcdir/$_gitname" -B "$srcdir/build" \
 	-DCMAKE_INSTALL_PREFIX=/usr \
 	-DLIBSHV_USE_LOCAL_NECROLOG=ON \
-	-DWITH_LDAP=ON \
-	-DWITH_CLI_EXAMPLES=ON
+	-DLIBSHV_WITH_ALL=ON
 
 	cmake --build "$srcdir/build"
 }
