@@ -8,8 +8,17 @@ pkgrel=1
 pkgdesc="Desktop app for clickup.com"
 arch=('x86_64')
 url="https://clickup.com"
-license=('custom')
-depends=('gtk3' 'libindicator-gtk2' 'libxkbfile' 'dbus-glib' 'alsa-lib' 'libdbusmenu-gtk2' 'nss')
+license=('CustomLicense')
+depends=(
+	'alsa-lib'
+	'dbus-glib'
+	'gtk3'
+	'libdbusmenu-gtk2'
+	'libindicator-gtk2'
+	'libsecret'
+	'libxkbfile'
+	'nss'
+)
 makedepends=('sed')
 options=('!strip')
 
