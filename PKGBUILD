@@ -2,50 +2,47 @@
 # Contributor: gitlab.archlinux.org/archlinux/packaging/packages/linuxwave
 
 pkgname=linuxwave-git
-pkgver=0.1.5.r7.rgc091885
+pkgver=0.2.0.r1.rg8c67bf7
 pkgrel=1
 pkgdesc="Generate music from the entropy of Linux (latest commit)"
 url="https://github.com/orhun/linuxwave"
 license=('MIT')
 arch=('aarch64' 'arm' 'i386' 'riscv64' 'x86_64')
-makedepends=('clang15' 'git' 'lld<=15.0.7' 'zig<=0.10.1')
+makedepends=('clang' 'git' 'lld' 'zig')
 provides=("linuxwave")
 conflicts=("linuxwave")
-source=("git+$url"
-        "git+https://github.com/Hejsil/zig-clap.git#commit=749c43f1f846adc950a5920ed61b40cbc3ec2c54")
-sha256sums=('SKIP'
-            'SKIP')
+source=("git+$url")
+sha256sums=('SKIP')
 
 pkgver() {
   cd linuxwave
   git describe --long --tags | sed 's/^v//;s/-/.r/g'
 }
 
-prepare() {
-  rm -d linuxwave/libs/zig-clap
-  ln -s "$srcdir/zig-clap" "linuxwave/libs"
-}
-
 build() {
-  export ZIG_LOCAL_CACHE_DIR="$srcdir/ZIG_CACHE"
   cd linuxwave
   DESTDIR="build" zig build \
+    --summary all \
+    --global-cache-dir ../zig-global-cache \
     --prefix /usr \
     --search-prefix /usr \
-    -Dtarget=native-linux.5.15-gnu \
+    --release=safe \
+    -Dtarget=native-linux.6.1-gnu.2.38 \
     -Dcpu=baseline \
-    -Drelease-safe \
-    -Dpie=true \
-    -Drelro=true
+    -Dpie=true
 }
 
 check() {
-  export ZIG_LOCAL_CACHE_DIR="$srcdir/ZIG_CACHE"
   cd linuxwave
   zig build test \
-    -Dtarget=native-linux.5.15-gnu \
+    --summary all \
+    --global-cache-dir ../zig-global-cache \
+    --prefix /usr \
+    --search-prefix /usr \
+    --release=safe \
+    -Dtarget=native-linux.6.1-gnu.2.38 \
     -Dcpu=baseline \
-    -Drelease-safe
+    -Dpie=true
 }
 
 package() {
