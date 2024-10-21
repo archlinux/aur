@@ -199,17 +199,20 @@ Index: qt5ct/src/qt5ct-qtplugin/qt5ctplatformtheme.cpp
  Q_LOGGING_CATEGORY(lqt5ct, "qt5ct", QtWarningMsg)
  
  //QT_QPA_PLATFORMTHEME=qt5ct
-@@ -73,6 +77,9 @@
+@@ -73,6 +77,12 @@
          QMetaObject::invokeMethod(this, "createFSWatcher", Qt::QueuedConnection);
  #endif
          QGuiApplication::setFont(m_generalFont);
-+        //don't override the value explicitly set by the user
-+        if(QQuickStyle::name().isEmpty() || QQuickStyle::name() == QLatin1String("Fusion"))
-+            QQuickStyle::setStyle(QLatin1String("org.kde.desktop"));
++#ifdef QT_WIDGETS_LIB
++        if(hasWidgets())
++            //don't override the value explicitly set by the user
++            if(QQuickStyle::name().isEmpty() || QQuickStyle::name() == QLatin1String("Fusion"))
++                QQuickStyle::setStyle(QLatin1String("org.kde.desktop"));
++#endif
      }
      qCDebug(lqt5ct) << "using qt5ct plugin";
  #ifdef QT_WIDGETS_LIB
-@@ -79,6 +86,7 @@
+@@ -79,6 +89,7 @@
      if(!QStyleFactory::keys().contains("qt5ct-style"))
          qCCritical(lqt5ct) << "unable to find qt5ct proxy style";
  #endif
@@ -217,7 +220,7 @@ Index: qt5ct/src/qt5ct-qtplugin/qt5ctplatformtheme.cpp
  }
  
  Qt5CTPlatformTheme::~Qt5CTPlatformTheme()
-@@ -185,6 +193,11 @@
+@@ -185,6 +196,11 @@
  }
  #endif
  
@@ -229,7 +232,7 @@ Index: qt5ct/src/qt5ct-qtplugin/qt5ctplatformtheme.cpp
  void Qt5CTPlatformTheme::applySettings()
  {
      if(!QGuiApplication::desktopSettingsAware() || m_isIgnored)
-@@ -204,6 +217,9 @@
+@@ -204,6 +220,9 @@
          }
      }
  
@@ -239,7 +242,7 @@ Index: qt5ct/src/qt5ct-qtplugin/qt5ctplatformtheme.cpp
  #ifdef QT_WIDGETS_LIB
      if(hasWidgets())
      {
-@@ -285,6 +301,7 @@
+@@ -285,6 +304,7 @@
  
  void Qt5CTPlatformTheme::readSettings()
  {
@@ -247,7 +250,7 @@ Index: qt5ct/src/qt5ct-qtplugin/qt5ctplatformtheme.cpp
      if(m_palette)
      {
          delete m_palette;
-@@ -299,6 +316,7 @@
+@@ -299,6 +319,7 @@
      if(!schemePath.isEmpty() && settings.value("custom_palette", false).toBool())
      {
          schemePath = Qt5CT::resolvePath(schemePath); //replace environment variables
@@ -255,7 +258,7 @@ Index: qt5ct/src/qt5ct-qtplugin/qt5ctplatformtheme.cpp
          m_palette = new QPalette(Qt5CT::loadColorScheme(schemePath, *QPlatformTheme::palette(SystemPalette)));
      }
      m_iconTheme = settings.value("icon_theme").toString();
-@@ -414,3 +432,17 @@
+@@ -414,3 +435,17 @@
      content.replace(regExp, "\n");
      return content;
  }
