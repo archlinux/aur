@@ -1,10 +1,10 @@
 # Maintainer: Guillaume BOEHM <aur@mail.gboehm.com>
 pkgname=nordzy-hyprcursors
 pkgver=2.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Hyprcursors from https://github.com/guillaumeboehm/Nordzy-cursors."
 arch=(any)
-url="https://github.com/guillaumeboehm/Nordzy-hyprcursors"
+url="https://github.com/guillaumeboehm/Nordzy-cursors"
 license=('GPL3')
 source=(
     "Nordzy-hyprcursors_${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/Nordzy-hyprcursors.tar.gz"
