@@ -1,6 +1,6 @@
 pkgbase = open-stage-control-bin
 	pkgdesc = A libre desktop OSC bi-directional control surface application
-	pkgver = 1.27.0
+	pkgver = 1.27.1
 	pkgrel = 1
 	url = http://openstagecontrol.ammd.net/
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = open-stage-control-bin
 	optdepends = python-rtmidi: send and receive MIDI messages
 	provides = open-stage-control
 	conflicts = open-stage-control
-	source = https://github.com/jean-emmanuel/open-stage-control/releases/download/v1.27.0/open-stage-control_1.27.0_linux-x64.zip
-	sha256sums = 6ea35b0cd81c8f58024f3713e6920bcdff1f122b95012cf99bfb1ccfb2d860a6
+	source = https://github.com/jean-emmanuel/open-stage-control/releases/download/v1.27.1/open-stage-control_1.27.1_linux-x64.zip
+	sha256sums = 1139c446301f1fb68d690eb3d82475f0ee4cc5f8c4d123ffe2de20fea9f9fc9d
 
 pkgname = open-stage-control-bin
