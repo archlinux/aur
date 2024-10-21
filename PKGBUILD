@@ -2,7 +2,7 @@
 
 pkgname=live-photo-conv
 pkgver=0.1.4
-pkgrel=1
+pkgrel=2
 pkgdesc="A cross-platform tool to process live photos of Google Android"
 url="https://github.com/wszqkzqk/$pkgname"
 arch=(x86_64)
@@ -17,6 +17,13 @@ depends=(
 makedepends=(
     vala
     meson
+)
+optdepends=(
+    "ffmpeg: FFmpeg backend to convert internal video of a live photo to static pictures"
+    "libavif: Load .avif"
+    "libheif: Load .heif, .heic, and .avif"
+    "libjxl: Load .jxl"
+    "webp-pixbuf-loader: Load .webp"
 )
 source=("git+https://github.com/wszqkzqk/$pkgname.git#tag=${pkgver}")
 sha256sums=('4e79a84e4ee4aea4902a643a70ade9d8a5b256beb0d575cb435ee734b21d16db')
