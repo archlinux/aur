@@ -24,7 +24,7 @@ makedepends=(
     'cmake'
     'curl'
     'python-setuptools'
-    'yarn'
+    'pnpm'
 )
 source=(
     "${pkgname//-/.}::git+${_ghurl}.git"
