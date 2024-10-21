@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=markflowy-bin
 _pkgname=MarkFlowy
-pkgver=0.15.0
+pkgver=0.16.0
 pkgrel=1
-pkgdesc="Modern markdown editor application, Build fast and efficient workflows."
+pkgdesc="Modern markdown editor application, Build fast and efficient workflows.Use system-wide electron."
 arch=("x86_64")
 url="https://markflowy.vercel.app/"
 _ghurl="https://github.com/drl990114/MarkFlowy"
@@ -17,7 +17,7 @@ depends=(
 source=(
     "${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_linux_${CARCH}.deb"
 )
-sha256sums=('6aedb53b44c02f368b966680104c49a2bcd248868d5b284c7d33b1250277bdc2')
+sha256sums=('a6b840cb917671acdb59f11168c3a11ede7680e055cf3f34cf4c39d7813bb624')
 build() {
     bsdtar -xf "${srcdir}/data."*
 }
