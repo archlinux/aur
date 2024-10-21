@@ -12,7 +12,7 @@ pkgbase = simple-stateful-firewall
 	conflicts = simple-stateful-firewall
 	options = !strip
 	options = !emptydirs
-	source = "https://github.com/asciiscry3r/simple-stateful-firewall"
+	source = https://github.com/asciiscry3r/simple-stateful-firewall
 	sha256sums = SKIP
 
 pkgname = simple-stateful-firewall
