@@ -1,10 +1,10 @@
 pkgname=archlinux-studio-utils
-pkgver=r29.db84ab8
+pkgver=r34.d1710d2
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/usrmusicman/ArchLinuxStudioUtils"
 license=('EULA')
-depends=('pipewire' 'pipewire-jack')
+depends=('cpupower' 'pipewire' 'pipewire-jack')
 optdepnds=('ardour: Professional-grade digital audio workstation'
           'carla: Audio Plugin Host'
           'kdialog: A utility for displaying dialog boxes from shell scripts'

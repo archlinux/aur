@@ -1,11 +1,12 @@
 pkgbase = archlinux-studio-utils
 	pkgdesc = Pipewire and AV application control
-	pkgver = r29.db84ab8
+	pkgver = r34.d1710d2
 	pkgrel = 1
 	url = https://github.com/usrmusicman/ArchLinuxStudioUtils
 	arch = x86_64
 	license = EULA
 	makedepends = git
+	depends = cpupower
 	depends = pipewire
 	depends = pipewire-jack
 	provides = archlinux-studio-utils-cpufreq-scaling
