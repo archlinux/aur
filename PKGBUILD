@@ -1,6 +1,6 @@
 pkgname=ray_translate
-pkgver="beta"
-pkgrel=1
+pkgver="stable"
+pkgrel=2
 pkgdesc="A simple raycast like translator from prompt."
 arch=('x86_64')
 license=('MIT')
