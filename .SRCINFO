@@ -1,6 +1,6 @@
 pkgbase = responsively-git
 	pkgdesc = A modified web browser that helps in responsive web development. A web developer's must have dev-tool.Use system-wide electron.
-	pkgver = 1.15.0.r0.g6e7c23a
+	pkgver = 1.15.0.r23.g080b2e2
 	pkgrel = 1
 	url = https://responsively.app/
 	arch = any
