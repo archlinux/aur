@@ -1,19 +1,17 @@
 pkgbase = hddfancontrol
 	pkgdesc = Regulate fan speed according to hard drive temperature
-	pkgver = 1.6.2
+	pkgver = 2.0.0.b0
 	pkgrel = 1
 	url = https://github.com/desbma/hddfancontrol
-	arch = any
-	license = GPL3
-	makedepends = python-setuptools
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = cargo
+	depends = gcc-libs
 	depends = hddtemp
 	depends = hdparm
-	depends = python
-	depends = python-daemon
-	optdepends = smartmontools: for alternative temperature probing using smartctl
-	replaces = python-hddfancontrol
+	depends = smartmontools
 	backup = etc/conf.d/hddfancontrol
-	source = hddfancontrol-1.6.2.tar.gz::https://github.com/desbma/hddfancontrol/archive/1.6.2.tar.gz
-	sha512sums = 1b974682e1a617049b1fbb6a3a9983e8f0e2c607284862468cb61e065cc2d3c52ca3a92c1d3fc2a02b5b9501e0a345b40f6a2a60c675889a40e4115890080e59
+	source = hddfancontrol-2.0.0.b0.tar.gz::https://github.com/desbma/hddfancontrol/archive/2.0.0.b0.tar.gz
+	sha512sums = 7dfd0f4d5f17341ef522f68a0dc41b956347e3996445a7d4e1649193ed962db988717092adaab71a52dbeb428c4db08f27b868760ceeb7e580bd31493d27e785
 
 pkgname = hddfancontrol
