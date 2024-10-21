@@ -1,7 +1,7 @@
 # Maintainer: Vladislav Titov <vtitov at gmx dot com>
 _pkgname=acreom
 pkgname=acreom-bin
-pkgver=1.20.1
+pkgver=1.20.2
 _appimage=acreom-$pkgver.AppImage
 pkgrel=1
 pkgdesc="A powerful knowledge base integrated with time management running on local markdown files"
@@ -13,7 +13,7 @@ conflicts=('acreom')
 options+=('!strip')
 source=("$url/releases/download/v$pkgver/$_appimage")
 noextract=($_appimage)
-sha256sums=('ed013f6ac991e0802ca41b258e6c7f1cd8d4722a1309fce94f599266a095c2be')
+sha256sums=('a97ce4be03fbb7ca235b9c4f474825f4e4daf34929c9584c7f1d592bb9032c2f')
 
 prepare() {
 	chmod +x ${_appimage}
