@@ -6,7 +6,7 @@ pkgname=github-desktop-git
 _pkgname="GitHub Desktop"
 pkgver=release.2.9.10.r5034.gf22512c
 _electronversion=30
-_nodeversion=20.11.0
+_nodeversion=20
 pkgrel=1
 pkgdesc="GUI for managing Git and GitHub.Use system-wide electron."
 arch=(
@@ -88,13 +88,14 @@ build() {
             echo 'fetchRetries 3'
             echo 'fetchRetryTimeout 10000'
         } >> .yarnrc
+        sed -i "s/registry.yarnpkg.com/registry.npmmirror.com/g" yarn.lock app/yarn.lock
         cp .yarnrc app/
     fi
     rm -rf dist node_mudules out
 	#sed -i "/compile:prod/s/4096/4096 --openssl-legacy-provider/g" package.json
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
     #sed -i "s/AppImage/dir/g" script/electron-builder-linux.yml
-    NODE_ENV=development    yarn install --cache-folder "${srcdir}/.yarn_cache" --no-lockfile
+    NODE_ENV=development    yarn install --cache-folder "${srcdir}/.yarn_cache"
     NODE_ENV=production     yarn run build:prod
 }
 package() {
