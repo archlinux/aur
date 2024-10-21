@@ -1,32 +1,41 @@
-# Maintainer: Maximilian Stahlberg <maximilian.stahlberg tu-berlin de>
+# Maintainer: Maximilian Stahlberg <maximilian.stahlberg tuhh de>
 
-pkgname=python-swiglpk
-pkgver=5.0.8
+_name=swiglpk
+pkgname="python-${_name}"
+pkgver=5.0.10
 pkgrel=1
-pkgdesc='A Python interface to the GLPK optimization solver.'
-arch=('any')
+pkgdesc='A Python interface to the GLPK optimization solver'
+arch=(any)
 url='https://github.com/biosustain/swiglpk'
-license=('GPL3')
-depends=('python' 'glpk')
-makedepends=('swig' 'python-setuptools')
-conflicts=('python-swiglpk-git')
+license=(GPL-3.0-or-later)
+depends=(python glpk)
+makedepends=(swig python-setuptools python-build python-installer python-wheel)
+#checkdepends=(python-nose) # FIXME
+conflicts=(python-swiglpk-git)
 source=("https://github.com/biosustain/swiglpk/archive/${pkgver}.tar.gz")
-md5sums=('4b165b315762e121f0d28803b7423106')
+sha256sums=('4df7cc42ed2ea83f389577e77272c607503bb92b3bab769c86fc78bfc32cbab7')
 
 build() {
-	cd "${srcdir}/swiglpk-${pkgver}"
-	python setup.py build
+    cd "${_name}-${pkgver}"
+    python -m build --wheel --no-isolation
 }
 
-check() {
-	_arch="linux-$(uname -m)"
-	_pymajver="$(python -V | awk '{print $2}' | awk -F. '{print $1$2}')"
+check(){
+    cd "${_name}-${pkgver}"
 
-	cd "${srcdir}/swiglpk-${pkgver}/build/lib.${_arch}-cpython-${_pymajver}"
-	python -Bc "import swiglpk"
+    local python_version=$(python -c 'import sys; print("".join(map(str, sys.version_info[:2])))')
+    local python_path="${PWD}/build/lib.linux-${CARCH}-cpython-${python_version}"
+
+    if [ ! -d "${python_path}" ]; then
+	echo "${python_path} does not exist"
+	exit 1
+    fi
+
+    # FIXME: Unclear how to run tests; see https://github.com/opencobra/swiglpk/issues/108.
+    #PYTHONPATH="${python_path}" nosetests
 }
 
 package() {
-	cd "${srcdir}/swiglpk-${pkgver}"
-	python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
+    cd "${_name}-${pkgver}"
+    python -m installer --destdir="${pkgdir}" dist/*.whl
 }
