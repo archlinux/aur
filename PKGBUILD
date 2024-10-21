@@ -9,11 +9,11 @@ depends=(
 makedepends=("extra-cmake-modules")
 pkgdesc="The status bar for LingmoOS."
 pkgrel=1
-pkgver=2.0.0
+pkgver=2.0.1
 url="https://lingmo.org"
 license=("GPL")
 source=("https://github.com/LingmoOS/${pkgname}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('06655741c454cee4728c2cf3e34ca76678eed4af86a620945767de970f0d89ca')
+sha256sums=('e45b66368435be76cfc1b4c5d9049bc8d61c0b3cada743e5bfc351f0d4f1786d')
 
 prepare() {
     cd "${srcdir}/${pkgname}-${pkgver}"
