@@ -68,17 +68,7 @@ Index: qt5ct/src/qt5ct/appearancepage.cpp
      if(m_ui->colorSchemeComboBox->count() == 0 ||
              !QFileInfo(m_ui->colorSchemeComboBox->currentData().toString()).isWritable())
      {
-@@ -324,8 +327,7 @@
-     m_ui->styleComboBox->setCurrentText(style);
- 
-     m_ui->customPaletteButton->setChecked(settings.value("custom_palette", false).toBool());
--    QString colorSchemePath = settings.value("color_scheme_path").toString();
--    colorSchemePath = Qt5CT::resolvePath(colorSchemePath); //replace environment variables
-+    QString colorSchemePath = Qt5CT::resolvePath(settings.value("color_scheme_path").toString()); //replace environment variables
- 
-     QDir("/").mkpath(Qt5CT::userColorSchemePath());
-     findColorSchemes(Qt5CT::userColorSchemePath());
-@@ -378,11 +380,23 @@
+@@ -378,11 +381,19 @@
  {
      QDir dir(path);
      dir.setFilter(QDir::Files);
@@ -88,17 +78,13 @@ Index: qt5ct/src/qt5ct/appearancepage.cpp
      for(const QFileInfo &info : dir.entryInfoList())
      {
 -        m_ui->colorSchemeComboBox->addItem(info.baseName(), info.filePath());
-+        QString name;
++        QString name = info.baseName();
 +        QString path = info.filePath();
 +        if(Qt5CT::isKColorScheme(path))
 +        {
 +            KSharedConfigPtr config = KSharedConfig::openConfig(path, KConfig::SimpleConfig);
 +            KConfigGroup group(config, "General");
-+            name = group.readEntry("Name", info.baseName()) + " (KColorScheme)";
-+        }
-+        else
-+        {
-+            name = info.baseName();
++            name = group.readEntry("Name", name) + " (KColorScheme)";
 +        }
 +        m_ui->colorSchemeComboBox->addItem(name, path);
      }
@@ -149,17 +135,7 @@ Index: qt5ct/src/qt5ct-common/qt5ct.cpp
      }
      paths << QLatin1String(QT5CT_DATADIR"/qt5ct/colors");
      paths.removeDuplicates();
-@@ -121,6 +124,9 @@
- 
- QString Qt5CT::resolvePath(const QString &path)
- {
-+    if(path.isEmpty())
-+        return path;
-+
-     QString tmp = path;
-     tmp.replace("~", QStandardPaths::writableLocation(QStandardPaths::HomeLocation));
-     if(!tmp.contains("$"))
-@@ -140,8 +146,15 @@
+@@ -140,8 +143,16 @@
      return tmp;
  }
  
@@ -172,6 +148,7 @@ Index: qt5ct/src/qt5ct-common/qt5ct.cpp
  {
 +    if(isKColorScheme(filePath))
 +        return KColorScheme::createApplicationPalette(KSharedConfig::openConfig(filePath));
++
      QPalette customPalette;
      QSettings settings(filePath, QSettings::IniFormat);
      settings.beginGroup("ColorScheme");
@@ -262,25 +239,23 @@ Index: qt5ct/src/qt5ct-qtplugin/qt5ctplatformtheme.cpp
  #ifdef QT_WIDGETS_LIB
      if(hasWidgets())
      {
-@@ -295,12 +311,11 @@
+@@ -285,6 +301,7 @@
  
-     settings.beginGroup("Appearance");
-     m_style = settings.value("style", "Fusion").toString();
--    QString schemePath = settings.value("color_scheme_path").toString();
--    if(!schemePath.isEmpty() && settings.value("custom_palette", false).toBool())
--    {
--        schemePath = Qt5CT::resolvePath(schemePath); //replace environment variables
--        m_palette = new QPalette(Qt5CT::loadColorScheme(schemePath, *QPlatformTheme::palette(SystemPalette)));
--    }
-+    m_schemePath = settings.value("custom_palette", false).toBool()
-+        ? Qt5CT::resolvePath(settings.value("color_scheme_path").toString()) //replace environment variables
-+        : QString();
-+    if(!m_schemePath.isEmpty())
-+        m_palette = new QPalette(Qt5CT::loadColorScheme(m_schemePath, *QPlatformTheme::palette(SystemPalette)));
+ void Qt5CTPlatformTheme::readSettings()
+ {
++    m_schemePath.clear();
+     if(m_palette)
+     {
+         delete m_palette;
+@@ -299,6 +316,7 @@
+     if(!schemePath.isEmpty() && settings.value("custom_palette", false).toBool())
+     {
+         schemePath = Qt5CT::resolvePath(schemePath); //replace environment variables
++        m_schemePath = schemePath;
+         m_palette = new QPalette(Qt5CT::loadColorScheme(schemePath, *QPlatformTheme::palette(SystemPalette)));
+     }
      m_iconTheme = settings.value("icon_theme").toString();
-     //load dialogs
-     if(!m_update)
-@@ -414,3 +429,17 @@
+@@ -414,3 +432,17 @@
      content.replace(regExp, "\n");
      return content;
  }
