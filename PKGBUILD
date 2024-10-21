@@ -1,6 +1,6 @@
 # Maintainer: Sean Anderson <seanga2@gmail.com>
 pkgname=pg_ivm
-pkgver=1.7
+pkgver=1.9
 pkgrel=1
 pkgdesc="IVM (Incremental View Maintenance) implementation as a PostgreSQL extension "
 arch=(x86_64)
@@ -10,7 +10,7 @@ groups=()
 depends=(postgresql)
 changelog=
 source=("https://github.com/sraoss/pg_ivm/archive/refs/tags/v$pkgver.tar.gz")
-sha512sums=('44ffd78177d33169294fd8fac99358e0429c23fed88c3af59a4e4007a14bc38adad1985464d38006ac093ad1abd3db9e90db61d834529ae11713d56c6d206afd')
+sha512sums=('4e2b1b0d0d2b3e35ee44f121c376432abfc8cd76aed44d9416008b4d1dc7345e0e06b8bb5cd150706b93bbb3e6fd8f46edae45cd640ae32998e319195da6ede0')
 
 prepare() {
 	cd "$pkgname-$pkgver"
