@@ -1,6 +1,6 @@
 # Maintainer: Cyril Waechter <cyril[at]biminsight[dot]ch>
 pkgname=ifcopenshell
-pkgver=0.8.1_alpha2410181312
+pkgver=0.8.1_alpha2410210627
 _vername=bonsai
 pkgrel=1
 pkgdesc="Open source IFC library and geometry engine. Provides static libraries, python3 wrapper and blender addon."
@@ -64,7 +64,7 @@ source=("https://github.com/IfcOpenShell/IfcOpenShell/archive/refs/tags/${_verna
   "git+https://github.com/IfcOpenShell/ifc-to-cityjson.git"
   "bpypolyskel-1.1.2.tar.gz::https://github.com/prochitecture/bpypolyskel/archive/refs/tags/v1.1.2.tar.gz"
 
-  "001-libsvgfill.patch::https://github.com/sukanka/svgfill/commit/af69c5c.patch"
+  "001-libsvgfill.patch::https://github.com/sukanka/svgfill/commit/47a6016.patch"
   "002-fix-for-cgal6.0.patch::https://github.com/sukanka/IfcOpenShell/commit/02c9034.patch"
   "003-skip-install-python-package-only-install-wrapper.patch::https://github.com/sukanka/IfcOpenShell/commit/725d509.patch"
   "004-add-shared-libs.patch::https://github.com/sukanka/IfcOpenShell/commit/0a6ff03.patch"
@@ -72,12 +72,12 @@ source=("https://github.com/IfcOpenShell/IfcOpenShell/archive/refs/tags/${_verna
   "006-fix-rpath.patch::https://github.com/sukanka/IfcOpenShell/commit/96b6f8d.patch"
 
 )
-sha256sums=('808e1254dee02fe34b8e46ba8c30ee212ab798bbf8e0a5b1c992f6bbdc28c217'
+sha256sums=('afdca4ec52dc1ead7618c94838ce4e2d76c8c20393b5a96f0f8efbac183ac0b7'
             'SKIP'
             'SKIP'
             'SKIP'
             'f000262395449808c32e10664468ec2acd2a22e04b202037f15e03611506cfc5'
-            'c673bc7a6e6cdb7288577c9a98fa864ebf5d5800ae948b5fd41165004e29d992'
+            '1651288a6a618b018277e1b3417502e1a6965a51b557e60d9f1eae4fda768da3'
             'ed53b683ccf6ca7e114558a3c75cdc97fe5e4935712ce7c7499738dd39edaea7'
             'b18d6a595985e066e070373c2f8a6e8c9a18666ce46156cdc532d29292da85e5'
             '8604fb3c0f733839435e2d6c91b2b5abaa5198ad3f034121fa10145ac9763919'
