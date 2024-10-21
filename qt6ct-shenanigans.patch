@@ -199,7 +199,7 @@ index f3e9ef6..a05a9b7 100644
  
  OTHER_FILES += qt6ct.json
 diff --git a/src/qt6ct-qtplugin/qt6ctplatformtheme.cpp b/src/qt6ct-qtplugin/qt6ctplatformtheme.cpp
-index 1d13faf..6dee280 100644
+index 1d13faf..6cfd7f9 100644
 --- a/src/qt6ct-qtplugin/qt6ctplatformtheme.cpp
 +++ b/src/qt6ct-qtplugin/qt6ctplatformtheme.cpp
 @@ -41,38 +41,59 @@
@@ -262,7 +262,7 @@ index 1d13faf..6dee280 100644
      if(!QStyleFactory::keys().contains("qt6ct-style"))
          qCCritical(lqt6ct) << "unable to find qt6ct proxy style";
  #endif
-+	QCoreApplication::instance()->installEventFilter(this);
++    QCoreApplication::instance()->installEventFilter(this);
  }
  
  Qt6CTPlatformTheme::~Qt6CTPlatformTheme()
@@ -440,7 +440,7 @@ index 1d13faf..6dee280 100644
 +    return QObject::eventFilter(obj, e);
 +}
 diff --git a/src/qt6ct-qtplugin/qt6ctplatformtheme.h b/src/qt6ct-qtplugin/qt6ctplatformtheme.h
-index 6ad245b..ad96643 100644
+index 6ad245b..50ca519 100644
 --- a/src/qt6ct-qtplugin/qt6ctplatformtheme.h
 +++ b/src/qt6ct-qtplugin/qt6ctplatformtheme.h
 @@ -62,16 +62,19 @@ public:
@@ -455,7 +455,7 @@ index 6ad245b..ad96643 100644
      //virtual QString standardButtonText(int button) const;
  
 +protected:
-+	bool eventFilter(QObject *obj, QEvent *e) override;
++    bool eventFilter(QObject *obj, QEvent *e) override;
 +
  private slots:
      void applySettings();
