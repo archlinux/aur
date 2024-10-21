@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=pritunl-client-bin
-pkgver=1.3.3883.60
+pkgver=1.3.4056.37
 pkgrel=1
-pkgdesc="Pritunl OpenVPN client"
+pkgdesc="Pritunl OpenVPN client.Written in GO.Prebuilt version."
 arch=('x86_64')
 url="https://client.pritunl.com/"
 _ghurl="https://github.com/pritunl/pritunl-client-electron"
@@ -16,10 +16,10 @@ depends=(
     'openvpn'
 )
 source=(
-    "${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/${pkgver}/${pkgname%-bin}_${pkgver}-0ubuntu1.xenial_amd64.deb"
+    "${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/${pkgver}/${pkgname%-bin}_${pkgver}-0ubuntu1.noble_amd64.deb"
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/pritunl/pritunl-client-electron/${pkgver}/LICENSE"
 )
-sha256sums=('a0aa3eec8c3e371bdea3745a181fc5220c41592cf57cd4d09ff1295fe5fe5dc8'
+sha256sums=('2c0f8381b260346b39b9917f6088685df36b46d4599bdcd8028a9db9cbae97c8'
             '6b09590452456242b5970ac0c3bc9a5a9db1792ce4465d5e8cea1d7ba4080cda')
 build() {
     bsdtar -xf "${srcdir}/data."*
