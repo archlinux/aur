@@ -6,11 +6,11 @@ depends=("qt5-tools" "qt5-quickcontrols2")
 makedepends=("extra-cmake-modules")
 pkgdesc="A simple calculator."
 pkgrel=1
-pkgver=0.6.1
+pkgver=0.6.2
 url="https://lingmo.org"
 license=("GPL")
 source=("https://github.com/LingmoOS/${pkgname}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('b0de29daeb1028dfbdf56619f88c464fb4273beade471f0d9896a0736e10c4ad')
+sha256sums=('a0a1d22cb41ed3a26318e373003602ccf7ade740391f7d32714315bf5120eff0')
 
 prepare() {
     cd "${srcdir}/${pkgname}-${pkgver}"
