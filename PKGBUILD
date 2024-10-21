@@ -5,7 +5,7 @@ pkgver=2.4.0.r0.g61113ea
 _electronversion=29
 _nodeversion=20
 pkgrel=1
-pkgdesc="Public Development Preview of the OWN3D Desktop App"
+pkgdesc="Public Development Preview of the OWN3D Desktop App.Use system-wide electron."
 arch=('any')
 url="https://www.own3d.pro/"
 _ghurl="https://github.com/own3d/desktop"
@@ -57,7 +57,6 @@ build() {
     HOME="${srcdir}/.electron-gyp"
     mkdir -p "${srcdir}/.electron-gyp"
     if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
-        sed -i "s/registry.yarnpkg.com/registry.npmmirror.com/g" yarn.lock
         {
             echo -e '\n'
             echo 'registry "https://registry.npmmirror.com"'
@@ -75,7 +74,7 @@ build() {
         } >> .yarnrc
     fi
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
-    NODE_ENV=development yarn install --cache-folder "${srcdir}/.yarn_cache"
+    NODE_ENV=development    yarn install --cache-folder "${srcdir}/.yarn_cache"
     NODE_ENV=production     yarn run package
 }
 package() {
