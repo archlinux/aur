@@ -179,10 +179,10 @@ index 37c91ef..4855652 100644
 +    return QStandardPaths::writableLocation(QStandardPaths::DesktopLocation);
  }
 diff --git a/src/main.cpp b/src/main.cpp
-index a252cac..736957d 100644
+index a252cac..1620f89 100644
 --- a/src/main.cpp
 +++ b/src/main.cpp
-@@ -9,7 +9,7 @@
+@@ -9,10 +9,11 @@
  #include "connectioncontroller.h"
  
  void kill_threads( void );
@@ -191,6 +191,10 @@ index a252cac..736957d 100644
  
  qint32 main(qint32 argc, char *argv[])
  {
++    QApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
+     QApplication a(argc, argv);
+     MainWindow w(0, true);
+ 
 diff --git a/src/widgetnews.cpp b/src/widgetnews.cpp
 index afa44f6..ceb036c 100644
 --- a/src/widgetnews.cpp
