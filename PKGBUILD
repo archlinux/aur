@@ -2,10 +2,10 @@
 _appname=music-player
 pkgname="moebits-${_appname}-bin"
 _pkgname="Moebits Music Player"
-pkgver=0.3.0
+pkgver=0.3.1
 _electronversion=28
 pkgrel=1
-pkgdesc="A music player with real-time pitch shifting, time stretching, and reversing effects."
+pkgdesc="A music player with real-time pitch shifting, time stretching, and reversing effects.Prebuilt version.Use system-wide electron."
 arch=('x86_64')
 url="https://musicplayer.moe/"
 _ghurl="https://github.com/Moebits/Music-Player"
@@ -24,7 +24,7 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/Moebits/Music-Player/v${pkgver}/license.txt"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('ee5e38ab754d0d9a2421db483a9ff82ad094f1962d27d38a9fde506ba716b718'
+sha256sums=('12d8f71918047ff4ef4f4edb166c9305f22d42279381233b2ebded0f3a455157'
             '8946c49d9a63a62f5621f114027b2842ee914bd237590f2a5496d4b044c95af9'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 build() {
@@ -48,7 +48,7 @@ build() {
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm644 "${srcdir}/squashfs-root/resources/app.asar" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
-    cp "${srcdir}/squashfs-root/resources/app.asar.unpacked" -r "${pkgdir}/usr/lib/${pkgname%-bin}"
+    cp -Pr --no-preserve=ownership "${srcdir}/squashfs-root/resources/app.asar.unpacked" "${pkgdir}/usr/lib/${pkgname%-bin}"
     install -Dm644 "${srcdir}/squashfs-root/usr/lib/"* -t "${pkgdir}/usr/lib/${pkgname%-bin}/lib"
     install -Dm644 "${srcdir}/squashfs-root/usr/share/icons/hicolor/0x0/apps/${_appname}.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-bin}"
     install -Dm644 "${srcdir}/squashfs-root/${_appname}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
