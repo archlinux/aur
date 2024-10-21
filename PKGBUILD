@@ -3,7 +3,7 @@
 # Contributor: Sebastian Bøe <sebastianbooe at gmail dot com>
 
 pkgname=chisel
-pkgver=6.0.0
+pkgver=6.3.0
 pkgrel=2
 pkgdesc='Constructing Hardware in a Scala Embedded Language'
 arch=('any')
@@ -25,7 +25,7 @@ source=(
 	"https://github.com/chipsalliance/chisel/archive/refs/tags/v${pkgver}.tar.gz"
 	"chisel.patch"
 )
-sha256sums=('24edc6c7bf50ffab648eb90d600d50bd572eb9c33177a78242dd7bd9a2521251'
+sha256sums=('fe8fe151db667b4c93f73392b762d174140d7710a45e9bac000d9d4539136cb8'
             '77c48cd298c9a0311b26bba156e081560bd50c0bf220beb5d095405eeb5ae894')
 
 prepare() {
