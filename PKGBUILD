@@ -6,7 +6,7 @@
 pkgname=openocd_riscv-git
 pkgver=v0.9.0.r4033.g058dfa50d
 pkgrel=1
-pkgdesc='Fork of OpenOCD that has RISC-V support (by SpinalHDL)'
+pkgdesc='Fork of OpenOCD that has RISC-V support (by SpinalHDL for jtag_tcp support used by VexRiscv)'
 arch=('x86_64')
 url='https://github.com/SpinalHDL/openocd_riscv-git'
 license=('GPL')
