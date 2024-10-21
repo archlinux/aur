@@ -1,6 +1,6 @@
 # Maintainer: Stephan Raabe <mail@ml4w.com>
 pkgname='ml4w-hyprland-git'
-pkgver=2.9.6.3.r24.g204e4ae
+pkgver=2.9.6.3.r32.gf627be0
 pkgrel=1
 pkgdesc="The ML4W Dotfiles for Hyprland - An advanced and full-featured configuration for the dynamic tiling window manager Hyprland including an easy to use installation script for Arch based Linux distributions. "
 arch=(any)
@@ -22,13 +22,11 @@ depends=(
     "kitty"
     "dunst"
     "libnotify" 
-    "starship"
     "figlet" 
     "vlc" 
     "eza" 
     "brightnessctl"
     "gum"
-    "man-pages"
     "python-pip" 
     "python-pywal"
     "python-gobject"
@@ -54,10 +52,7 @@ depends=(
     "rofi-wayland"
     "fastfetch"
     "blueman"
-    "pinta"
     "cliphist"
-    "nautilus"
-    "nautilus-open-any-terminal"
     "gnome-text-editor"
     # Fonts
     "noto-fonts" 
