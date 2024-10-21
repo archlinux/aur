@@ -1,7 +1,7 @@
 # Maintainer: Carl Smedstad <carsme@archlinux.org>
 
 pkgname=srgn
-pkgver=0.13.2
+pkgver=0.13.3
 pkgrel=1
 pkgdesc="A code surgeon for precise text and code transplantation"
 url="https://github.com/alexpovel/srgn"
@@ -14,7 +14,7 @@ depends=(
 makedepends=(cargo)
 options=(!lto)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/srgn-v$pkgver.tar.gz")
-sha256sums=('cf7fea4756104cd9d955feb4dc07f62f2636e1b23a287394eb55116d2ea5dbd0')
+sha256sums=('cdddd6d0ec47a80ea28fc7eb411e1723e355e08ffad0369436d9f192d96382d0')
 
 prepare() {
   cd $pkgname-srgn-v$pkgver

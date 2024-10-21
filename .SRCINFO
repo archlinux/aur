@@ -1,6 +1,6 @@
 pkgbase = srgn
 	pkgdesc = A code surgeon for precise text and code transplantation
-	pkgver = 0.13.2
+	pkgver = 0.13.3
 	pkgrel = 1
 	url = https://github.com/alexpovel/srgn
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = srgn
 	depends = gcc-libs
 	depends = glibc
 	options = !lto
-	source = srgn-0.13.2.tar.gz::https://github.com/alexpovel/srgn/archive/srgn-v0.13.2.tar.gz
-	sha256sums = cf7fea4756104cd9d955feb4dc07f62f2636e1b23a287394eb55116d2ea5dbd0
+	source = srgn-0.13.3.tar.gz::https://github.com/alexpovel/srgn/archive/srgn-v0.13.3.tar.gz
+	sha256sums = cdddd6d0ec47a80ea28fc7eb411e1723e355e08ffad0369436d9f192d96382d0
 
 pkgname = srgn
