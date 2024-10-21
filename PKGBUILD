@@ -50,20 +50,24 @@ prepare() {
       sed -i "s/if(${pattern}_FOUND)/if(false)/g" ./companion/src/CMakeLists.txt
   done
   
-  declare -A submodules=(
-    ["$_pkgbase/radio/src/thirdparty/"]="AccessDenied FreeRTOS-Kernel Segger_RTT"
-    ["$_pkgbase/radio/src/thirdparty/FreeRTOS/portable/ThirdParty/"]="FreeRTOS-Kernel-Community-Supported-Ports FreeRTOS-Kernel-Partner-Supported-Ports"
-    ["$_pkgbase/radio/src/thirdparty/libopenui/thirdparty/"]="lvgl stb"
-  )
+  cd "$_pkgbase/radio/src/thirdparty/"
+  git submodule init
+  git config submodule.AccessDenied.url $srcdir/AccessDenied
+  git config submodule.FreeRTOS-Kernel.url $srcdir/FreeRTOS-Kernel
+  git config submodule.Segger_RTT.url $srcdir/Segger_RTT
+  git submodule update --init
 
-  for path in "${!submodules[@]}"; do
-    cd $path
-    git submodule init
-    for module in ${submodules[$path]}; do
-      git config submodule.$module.url $srcdir/$module
-    done
-    git submodule update --init
-  done
+  cd "$_pkgbase/radio/src/thirdparty/FreeRTOS/portable/ThirdParty/"
+  git submodule init
+  git config submodule.FreeRTOS-Kernel-Community-Supported-Ports.url $srcdir/FreeRTOS-Kernel-Community-Supported-Ports
+  git config submodule.FreeRTOS-Kernel-Partner-Supported-Ports.url $srcdir/FreeRTOS-Kernel-Partner-Supported-Ports
+  git submodule update --init
+
+  cd "$_pkgbase/radio/src/thirdparty/libopenui/thirdparty/"
+  git submodule init
+  git config submodule.lvgl.url $srcdir/lvgl
+  git config submodule.stb.url $srcdir/stb
+  git submodule update --init
 }
 
 build() {
