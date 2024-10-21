@@ -8,7 +8,7 @@ _pkgver_forkawesome=1.2.0
 _reponame_forkawesome=Fork-Awesome-$_pkgver_forkawesome
 pkgname=mingw-w64-qtforkawesome
 _name=${pkgname#mingw-w64-}
-pkgver=0.2.1
+pkgver=0.2.2
 pkgrel=1
 arch=('any')
 pkgdesc='Library that bundles ForkAwesome for use within Qt applications (mingw-w64)'
@@ -23,7 +23,7 @@ makedepends=('mingw-w64-gcc' 'mingw-w64-cmake' 'mingw-w64-qtutilities' 'mingw-w6
 url="https://github.com/Martchus/${_reponame}"
 source=("${_name}-${pkgver}.tar.gz::https://github.com/Martchus/${_reponame}/archive/v${pkgver}.tar.gz"
         "${_reponame_forkawesome}::https://github.com/ForkAwesome/Fork-Awesome/archive/refs/tags/${_pkgver_forkawesome}.tar.gz")
-sha256sums=('acdd529efe6237a755d67863af219e09be3dbc380b964cb4e45b91dd1540b5a5'
+sha256sums=('7025664ab187cfb43ffb20e321534b6b5d9e16d2cd0dc8b5c62aecca1a81fa65'
             '23fba5f191f204e0414c547bf4c9b10fd7ca42c151260e8f64698449a75fbdb3')
 options=(!buildflags staticlibs !strip !emptydirs)
 
