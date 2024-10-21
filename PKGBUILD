@@ -18,7 +18,7 @@ source=("$pkgname::git+https://github.com/fairbird/NCam.git"
         'ncam.service'
         'ncam.sysusers')
 b2sums=('SKIP'
-        '8c06c8c22090b5c9ece7fa72af78e05ac79d41e3df7697901f530e844b6bca3d8c73fd6a80584a1640504d410edbff32d88cdeac8db35f88cf321e3f7c6d2bb0'
+        'd6963810aa162367324fcbe01a021bb5bd60f4d37b7caa946630dceb23fa9f9ec342763f40a2a146a10d1c509db793f80e5824ad9777532781a1fe55ed13288b'
         '3956ad1798949ad13710e446929e7c5bd344b080d38d7f08ad38df6199e19f5d1878651d64614651a851dce57610b478273535fd9f3b3680a6dbe87a835e3ecc')
 
 pkgver() {
