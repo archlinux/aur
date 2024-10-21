@@ -1,0 +1,21 @@
+post_install() {
+  # SUID chrome-sandbox for Electron 5+
+  chmod 4755 '/opt/TradingView/chrome-sandbox' || true
+
+  # Update mime and desktop databases
+  update-mime-database /usr/share/mime || true
+  update-desktop-database /usr/share/applications || true
+}
+
+post_upgrade() {
+  post_install
+}
+
+post_remove() {
+  # Delete the link to the binary
+  rm -f '/usr/bin/tradingview'
+
+  # Update mime and desktop databases
+  update-mime-database /usr/share/mime || true
+  update-desktop-database /usr/share/applications || true
+}

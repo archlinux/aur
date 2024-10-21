@@ -1,45 +1,26 @@
-# Maintainer: sukanka <su975853527 at gmail.com>
-pkgname=tradingview-bin
-_pkgname=tradingview
-pkgver=1.0.17
-_snapver=28
-_electron=electron20
-pkgrel=2
-pkgdesc="Track all markets"
+# Maintainer: SINTES stahlbergindustries@gmail.com
+# This package is in no way affiliated with or endorsed by Tradingview. The package maintainer is in no way affiliated with Tradingview.
+_basepkgname=tradingview
+pkgname=${_basepkgname}-bin
+pkgver=2.9.3
+pkgrel=1
+epoch=1
+pkgdesc="My port of the Tradingview deb desktop app to Archlinux"
 arch=('x86_64')
 url="https://www.tradingview.com/desktop/"
-license=('unknown')
-depends=("${_electron}" 'libsecret')
-provides=(${_pkgname})
-makedepends=('squashfs-tools')
-source=("${_pkgname}-${pkgver}.snap::https://api.snapcraft.io/api/v1/snaps/download/nJdITJ6ZJxdvfu8Ch7n5kH5P99ClzBYV_${_snapver}.snap"
-${_pkgname}.sh
-)
-sha512sums=('d6023bdf8b062788e202d0553b681d2be818b9b92b6384418c958419e534935025f78c663464829d4898c3e8417233e0feeef93c9544aca7c024362e6baee073'
-            '77475260093aa86dba3cb682c2964d9b390c7a1ba2ef967388beb2aef45c83bf45e1cbaaa19ed2193aedfaeea55fe4be6779477f3983314cc910753f11d67603')
-
-
-## run these to get the source URL and the version, require jq
-
-# curl -H 'X-Ubuntu-Series: 16' https://api.snapcraft.io/api/v1/snaps/details/tradingview | jq '.download_url' -r
-
-# curl -H 'X-Ubuntu-Series: 16' https://api.snapcraft.io/api/v1/snaps/details/tradingview | jq '.version' -r
-
-prepare() {
-  cd $srcdir
-  sed -i "s|@ELECTRON@|${_electron}|g" ${_pkgname}.sh
-  unsquashfs -f "${_pkgname}-${pkgver}.snap" resources/app.asar \
-      resources/app.asar.unpacked \
-     /meta/gui/${_pkgname}.desktop \
-     /meta/gui/icon.png
-  sed "s|\${SNAP}/meta/gui/icon.png|${_pkgname}|g" -i squashfs-root/meta/gui/${_pkgname}.desktop
-}
-
+license=('custom:Proprietary')
+depends=('gtk3' 'libnotify' 'nss' 'libxss' 'libxtst' 'xdg-utils' 'at-spi2-core' 'util-linux' 'libsecret')
+install=$pkgname.install
+source=("https://tvd-packages.tradingview.com/ubuntu/stable/latest/jammy/${_basepkgname}_amd64.deb")
+sha256sums=('b9a89be0e29b49150af6cf32732aec184b425f472f3db28180dd3e744392c1d5')
 package() {
-  cd $srcdir/squashfs-root
-  install -Dm0644 meta/gui/${_pkgname}.desktop	$pkgdir/usr/share/applications/${_pkgname}.desktop
-  install -Dm0644 meta/gui/icon.png				$pkgdir/usr/share/icons/hicolor/512x512/apps/${_pkgname}.png
-  install -Dm0755 resources/app.asar			$pkgdir/usr/lib/${_pkgname}/app.asar
-  install -Dm755 $srcdir/${_pkgname}.sh         $pkgdir/usr/bin/${_pkgname}
-  cp -rf resources/app.asar.unpacked            $pkgdir/usr/lib/${_pkgname}/
+  echo "  -> Extracting the data.tar.xz"
+  bsdtar -xf data.tar.xz -C "$pkgdir/"
+  # Remove Debian-specific files
+  rm -f "$pkgdir"/{control.tar.gz,data.tar.xz,debian-binary}
+  # Ensure proper permissions for the main executable
+  chmod 755 "$pkgdir/opt/TradingView/${_basepkgname}"
+  # Create symlink for the binary
+  mkdir -p "$pkgdir/usr/bin"
+  ln -sf "/opt/TradingView/${_basepkgname}" "$pkgdir/usr/bin/${_basepkgname}"
 }
