@@ -216,7 +216,7 @@ Index: qt5ct/src/qt5ct-qtplugin/qt5ctplatformtheme.cpp
      if(!QStyleFactory::keys().contains("qt5ct-style"))
          qCCritical(lqt5ct) << "unable to find qt5ct proxy style";
  #endif
-+	QCoreApplication::instance()->installEventFilter(this);
++    QCoreApplication::instance()->installEventFilter(this);
  }
  
  Qt5CTPlatformTheme::~Qt5CTPlatformTheme()
@@ -290,7 +290,7 @@ Index: qt5ct/src/qt5ct-qtplugin/qt5ctplatformtheme.h
      //virtual QString standardButtonText(int button) const;
  
 +protected:
-+	bool eventFilter(QObject *obj, QEvent *e) override;
++    bool eventFilter(QObject *obj, QEvent *e) override;
 +
  private slots:
      void applySettings();
