@@ -1,7 +1,7 @@
 # Maintainer: Sushil Khatri <esinkei at protonmail dot com>
 # Contributor: Anton Kudelin <kudelin at protonmail dot com>
 pkgname=quantum-espresso
-pkgver=7.3.1
+pkgver=7.4
 pkgrel=2
 pkgdesc="A suite of codes for electronic-structure calculations and modeling"
 arch=("x86_64")
@@ -11,7 +11,7 @@ depends=('openmpi' 'glibc' 'libgfortran.so' 'blas-openblas' 'fftw')
 makedepends=('gcc-fortran' 'cmake' 'gcc')
 checkdepends=('python')
 source=("https://gitlab.com/QEF/q-e/-/archive/qe-${pkgver}/q-e-qe-${pkgver}.tar.gz")
-sha256sums=('2c58b8fadfe4177de5a8b69eba447db5e623420b070dea6fd26c1533b081d844')
+sha256sums=('b15dcfe25f4fbf15ccd34c1194021e90996393478226e601d876f7dea481d104')
 
 build() {
   cd "$srcdir/q-e-qe-${pkgver}"
