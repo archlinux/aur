@@ -15,8 +15,8 @@ pkgbase = mozc-with-jp-dict
 	makedepends = libibus
 	makedepends = rustup
 	options = !lto
-	source = git+https://github.com/fcitx/mozc.git#commit=815cc6669489fd87c4235fc25245c8d230dad3b2
-	source = bcr::git+https://github.com/bazelbuild/bazel-central-registry.git#commit=2abb607a3604953ab134f9b49bb5583b2872aed5
+	source = git+https://github.com/fcitx/mozc.git#commit=1dcab4b269a6dffb6d17ec5fc76c85f10ebbd86d
+	source = bcr::git+https://github.com/bazelbuild/bazel-central-registry.git#commit=ef34e6bfad5a6ab54080ddcc83a4d65849855e3a
 	source = git+https://github.com/abseil/abseil-cpp.git#commit=4447c756
 	source = git+https://github.com/google/breakpad.git#commit=216cea7b
 	source = git+https://github.com/google/googletest.git#commit=b514bdc8
@@ -33,8 +33,8 @@ pkgbase = mozc-with-jp-dict
 	source = LICENSE-MeCab-unidic-Neologd::https://github.com/phoepsilonix/mecab-unidic-neologd/raw/refs/heads/master/COPYING
 	source = https://github.com/phoepsilonix/mecab-ipadic-neologd/raw/refs/heads/master/seed/mecab-user-dict-seed.20200910.csv.xz
 	source = LICENSE-MeCab-ipadic-Neologd::https://github.com/neologd/mecab-ipadic-neologd/raw/refs/heads/master/COPYING
-	sha512sums = 2cc3f89a98ab646627cc01743e62af435f2346f9ebda0b38d401f8821415de8992d34e4c4c8f66ad343359713382ddba051d2ab54ee3cb41dd3f5cae658187e2
-	sha512sums = c0202c2d44854c19ea586fa00c825cdf0e93e5151c3b20c08b93a423f1b98cfe4cbe5a677ef963031d5eda73054b30c5072d77c4166c453c8a156dfca527defb
+	sha512sums = 394ab6702f3677018993b3cfdc692902f63cbc08d4f4036f24a71de4b72d2028cd5fae20e26618bffe44ca2bf2d82a99370bf1f19c2f3655ccc489ec3b967c5a
+	sha512sums = 4f0aeb150569308f8ebedccff553217f18e50a7e1b968a7bc4e0f374c8a88e7f62800098d1bf062877b77acd311018c882d00eb53c49025f95a58ac22298d457
 	sha512sums = 83a6fa68645d138af64ddddcfd15da567c4c46f92fb69be6c10bc5989c3aa6ab85776dfb3fcccdc9e7c32ca9f8260be121ceb7d329792d28ec9a66417a903a68
 	sha512sums = f69046af8c37a2a8a441a258d5b8677016966cb43d8a3bb48badc78123a885d6179ff77d7885fd6c84130136a1b8931a98d35f9fcce3d03ed31a37a72ece0b9d
 	sha512sums = 44db7d4a09aa7d36f1fb5a89be2234834a58834c76e445f8e9f7bc5685f6a76005b19fc758842c63641e476fa97c10eb968fa13965312fafca25843181fd025b
