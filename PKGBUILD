@@ -7,15 +7,15 @@ depends=(
     'kdecoration' 'kguiaddons' 'kcoreaddons' 'kconfigwidgets'
     'kwindowsystem' 'kwayland'
 )
-makedepends=('extra-cmake-modules' 'plasma-framework5')
+makedepends=('extra-cmake-modules' 'plasma-framework5' 'kdecoration5')
 pkgdesc="KWin plugin for LingmoOS"
-pkgrel=2
-pkgver=1.2.0_1
+pkgrel=1
+pkgver=1.2.3
 
 url="https://lingmo.org"
 license=("GPL")
-source=("https://github.com/LingmoOS/${pkgname}/archive/refs/tags/${pkgver//_/-}.tar.gz")
-sha256sums=('7480345374769d6d81cd59c2443c49b18863f6c22ae454a9600a5e6b17729362')
+source=("https://github.com/LingmoOS/${pkgname}/archive/refs/tags/${pkgver}.tar.gz")
+sha256sums=('67e505f36490bd9853c0a0c3dc660677da813105f13dd16e57a0856fc5ab5d76')
 
 prepare() {
     cd "${srcdir}/${pkgname}-${pkgver//_/-}"
