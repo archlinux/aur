@@ -2,7 +2,7 @@
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-text-xslate'
-pkgver='3.3.9'
+pkgver='3.5.9'
 pkgrel='1'
 pkgdesc="Scalable template engine for Perl5"
 arch=('any')
