@@ -1,11 +1,13 @@
 pkgbase = unshell-git
 	pkgdesc = A utility for splitting input into shell-like tokens
-	pkgver = 0.9.0
+	pkgver = 0.10.0.r0.g5650b72
 	pkgrel = 1
 	url = https://codeberg.org/coralpink/unshell
 	arch = any
 	license = custom:MIT+NIGGER
-	source = unshell-git-0.9.0::git+https://codeberg.org/coralpink/unshell.git#tag=0.9.0
+	provides = unshell
+	conflicts = unshell
+	source = git+https://codeberg.org/coralpink/unshell.git
 	md5sums = SKIP
 
 pkgname = unshell-git
