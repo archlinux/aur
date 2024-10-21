@@ -1,0 +1,18 @@
+pkgbase = simple-stateful-firewall
+	pkgdesc = "Simple Stateful Firewall. (GitHub version)"
+	pkgver = 0.0.15
+	pkgrel = 1
+	url = "https://github.com/asciiscry3r/simple-stateful-firewall"
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	depends = iptables
+	optdepends = "opensnitch: Web Application Firewall, but please disable his embedded system firewall"
+	provides = simple-stateful-firewall
+	conflicts = simple-stateful-firewall
+	options = !strip
+	options = !emptydirs
+	source = "https://github.com/asciiscry3r/simple-stateful-firewall"
+	sha256sums = SKIP
+
+pkgname = simple-stateful-firewall
