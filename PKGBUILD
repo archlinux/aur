@@ -1,11 +1,11 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=chatbox-git
 _pkgname=Chatbox
-pkgver=0.10.0.r7.g2fba84b
+pkgver=0.10.1.r0.g778f8ae
 _electronversion=22
 _nodeversion=20
 pkgrel=1
-pkgdesc="User-friendly Desktop Client App for AI Models/LLMs (GPT, Claude, Gemini, Ollama...).一个 AI 模型桌面客户端，支持 ChatGPT、Claude、Google Gemini、Ollama 等主流模型."
+pkgdesc="User-friendly Desktop Client App for AI Models/LLMs (GPT, Claude, Gemini, Ollama...).Use system-wide electron.一个 AI 模型桌面客户端，支持 ChatGPT、Claude、Google Gemini、Ollama 等主流模型."
 arch=('any')
 url="https://chatboxai.app/"
 _ghurl="https://github.com/Bin-Huang/chatbox"
