@@ -5,7 +5,7 @@ pkgname="${_pkgname}"
 _pkgver=1.7.4
 # epoch=0
 pkgver="${_pkgver}"
-pkgrel=5
+pkgrel=6
 pkgdesc="Create portable, self-containing Linux executables: Creates from dynamically linked executables and all it's libraries one file. Note: Does not play well with VDSO, which most modern kernels have activated."
 arch=('i386' 'i486' 'i586' 'i686' 'x86_64')
 url="http://statifier.sourceforge.net/"
@@ -51,7 +51,7 @@ build() {
   _unpackeddir="${srcdir}/${_pkgname}-${_pkgver}"
   cd "${_unpackeddir}"
 
-  make || make
+  make -j1 || make -j1 || make -j1
 }
 
 package() {
