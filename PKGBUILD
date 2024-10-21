@@ -12,8 +12,7 @@ makedepends=(git)
 source=(git+https://github.com/zshoals/Dina-Font-TTF-Remastered#commit=$_commit)
 sha256sums=('SKIP')
 
-package_ttf-dina-remastered() {
+package() {
   cd Dina-Font-TTF-Remastered
   install -Dm644 Fonts/*.tt[fc] -t "$pkgdir"/usr/share/fonts/TTF
 }
-
