@@ -1,16 +1,16 @@
 # Maintainer: Guillaume BOEHM <aur@mail.gboehm.com>
 pkgname=nordzy-hyprcursors
-pkgver=2.2.0
+pkgver=2.3.0
 pkgrel=1
-pkgdesc="Hyprcursor port of https://github.com/alvatip/Nordzy-cursors."
+pkgdesc="Hyprcursors from https://github.com/guillaumeboehm/Nordzy-cursors."
 arch=(any)
 url="https://github.com/guillaumeboehm/Nordzy-hyprcursors"
 license=('GPL3')
 source=(
-    "Nordzy-hyprcursors_${pkgver}.tar.gz::${url}/releases/download/${pkgver}/Nordzy-hyprcursors.tar.gz"
-    "Nordzy-hyprcursors-white_${pkgver}.tar.gz::${url}/releases/download/${pkgver}/Nordzy-hyprcursors-white.tar.gz"
-    "Nordzy-hyprcursors-lefthand_${pkgver}.tar.gz::${url}/releases/download/${pkgver}/Nordzy-hyprcursors-lefthand.tar.gz"
-    "Nordzy-hyprcursors-white-lefthand_${pkgver}.tar.gz::${url}/releases/download/${pkgver}/Nordzy-hyprcursors-white-lefthand.tar.gz"
+    "Nordzy-hyprcursors_${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/Nordzy-hyprcursors.tar.gz"
+    "Nordzy-hyprcursors-white_${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/Nordzy-hyprcursors-white.tar.gz"
+    "Nordzy-hyprcursors-lefthand_${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/Nordzy-hyprcursors-lefthand.tar.gz"
+    "Nordzy-hyprcursors-white-lefthand_${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/Nordzy-hyprcursors-white-lefthand.tar.gz"
 )
 noextract=("${source[@]##*/}")
 sha256sums=(
