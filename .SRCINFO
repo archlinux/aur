@@ -1,0 +1,17 @@
+pkgbase = perl-version
+	pkgdesc = Perl extension for Version Objects
+	pkgver = 0.9933
+	pkgrel = 1
+	url = https://metacpan.org/dist/version
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	depends = perl
+	depends = perl-scalar-list-utils
+	depends = perl-text-balanced
+	options = !emptydirs
+	options = purge
+	source = https://cpan.metacpan.org/authors/id/L/LE/LEONT/version-0.9933.tar.gz
+	sha512sums = cfb991c03da6240949a926c7cfac0fa61ff31cc6340e10c5b4d485188c4b53e34dbaadadeae7bcc6808bfb48a794d89cb0210fafb8c7a176cd7c8c3b7160ac97
+
+pkgname = perl-version
