@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=amap
-_pkgver=0.8-19.1
+_pkgver=0.8-20
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -19,8 +19,8 @@ optdepends=(
   r-biobase
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('fcf7a268489e3eb708733728b0c8cbeb')
-b2sums=('cc65626f2491a05c856262073aec4e90ae58e0535186ff4a5c0e0b6239084e7fa22a2e9b961a00f7f39681ad151b99724bbf8b014079cfac5dab0b98119b2154')
+md5sums=('ad7d821e24f7814d3895f7ccb88e3892')
+b2sums=('fac82a09d88b5839a0311d55086769295bd3e988a85df8d1e678dda7f1617892a58218153fb7ea49abee9bdc15aaef4d9f32a6f8c9d898b86ddaee6c11829cc9')
 
 build() {
   mkdir build
