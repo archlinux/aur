@@ -2,7 +2,7 @@
 
 pkgname=python-imap-tools
 pkgver=1.7.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Work with email and mailbox by IMAP"
 arch=('any')
 url="https://github.com/ikvk/imap_tools"
@@ -30,5 +30,5 @@ build() {
 
 package() {
   cd "${srcdir}/${pkgname}"
-  python -m installer --destdir="${pkgdir}" dist/*.whl
+  python -m installer --destdir="${pkgdir}" dist/*${pkgver}*.whl
 }
