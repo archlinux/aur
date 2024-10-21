@@ -1,10 +1,10 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=akuse
 _pkgname=Akuse
-pkgver=1.8.0
+pkgver=1.9.0
 _electronversion=26
 _nodeversion=20
-pkgrel=2
+pkgrel=1
 pkgdesc="Simple and easy to use anime streaming desktop app without ads.Use system-wide electron."
 arch=('any')
 url="https://github.com/akuse-app/Akuse"
@@ -24,7 +24,7 @@ source=(
     "clientData.js"
     "${pkgname}.sh"
 )
-sha256sums=('a1bd7edbeb0e334d2dc4ed1dda284a12cb14c856eba0504a88d9d0d6fa7ebb7d'
+sha256sums=('8f8e5bbb6f98203b6fc16cead1ca5573e29fd09ce03e93d404122ef672ac2e58'
             '091d0d9b3a06579647ed4c1989d7edff13754cec34fcdbb7fbc24529bd01ed48'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 _ensure_local_nvm() {
