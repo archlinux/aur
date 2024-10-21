@@ -1,6 +1,6 @@
 pkgbase = lingmo-dock
 	pkgdesc = The dock component of LingmoOS, which relies on LingmoUI.
-	pkgver = 2.0.2
+	pkgver = 2.0.3
 	pkgrel = 1
 	url = https://lingmo.org
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = lingmo-dock
 	depends = qt5-x11extras
 	depends = qt5-tools
 	depends = lingmoui
-	source = https://github.com/LingmoOS/lingmo-dock/archive/refs/tags/2.0.2.tar.gz
-	sha256sums = 3b07175e2f24c4579041dd30f725a39d8135a873c0b661405a9dde2fcdd395f3
+	source = https://github.com/LingmoOS/lingmo-dock/archive/refs/tags/2.0.3.tar.gz
+	sha256sums = 9fa03a701698dde9b916ec9d422426dada6c759041d37cc86c7a06ffc1f8a1d7
 
 pkgname = lingmo-dock
