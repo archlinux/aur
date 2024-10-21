@@ -2,7 +2,7 @@
 
 _name=pytantan
 pkgname=python-${_name}
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 pkgdesc="Cython bindings and Python interface to Tantan, a fast method for identifying repeats in DNA and protein sequences."
 url="https://github.com/althonos/pytantan"
@@ -11,7 +11,7 @@ license=("GPL-3.0-or-later")
 depends=('python' 'python-scoring-matrices')
 makedepends=('cython' 'python-build' 'python-installer' 'cmake' 'ninja' 'python-scikit-build-core')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=(ae6292a0590774be7863328d974ef276b1f76e254e12ad1eb97949c2f9362945)
+sha256sums=(b1f8addeeb7955a1a7ca57f08415bcc7a36f95f30d23d477f6075d2cce025c4a)
 
 build() {
     cd "${srcdir}/${_name}-${pkgver}"
