@@ -1,6 +1,6 @@
 pkgbase = python-sentence-transformers
 	pkgdesc = Multilingual text embeddings
-	pkgver = 3.2.0
+	pkgver = 3.2.1
 	pkgrel = 1
 	url = https://github.com/UKPLab/sentence-transformers
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = python-sentence-transformers
 	depends = python-scipy
 	depends = python-huggingface-hub
 	depends = python-pillow
-	source = sentence-transformers-3.2.0.tar.gz::https://github.com/UKPLab/sentence-transformers/archive/v3.2.0.tar.gz
-	sha512sums = 5c0a6dc41840c2bf4ab2415bf907b35465266498397b0075dba0cec1afe6a58a49b6680d9c0f86e69eb404a264c64a20e00b0e6fee0d7dc8dd796fd7288c22e4
+	source = sentence-transformers-3.2.1.tar.gz::https://github.com/UKPLab/sentence-transformers/archive/v3.2.1.tar.gz
+	sha512sums = 27565fa2307f05e33869a386e28ff9e9f38cf32cdab04e12ccda3f68c4d3ca322305104fa10e441a2e2a2a5a86e17264e773ce4a28d7b117c786ffc1a14120f8
 
 pkgname = python-sentence-transformers
