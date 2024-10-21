@@ -2,7 +2,7 @@
 _pkgname=Nagstamon
 pkgname=nagstamon
 pkgver=3.16.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Nagios status monitor for the desktop"
 depends=('python-pyqt6' 'qt6-multimedia' 'qt6-svg' 'python-requests' 'python-beautifulsoup4' 'python-keyring' 'python-psutil' 'python-requests-kerberos' 'python-lxml' 'python-dbus' 'python-dateutil' 'python-pysocks' 'python-arrow')
 optdepends=('python-requests-gssapi: Will be used instead of python-requests-kerberos for kerberos auth if present')
@@ -14,7 +14,7 @@ source=(
         "https://github.com/HenriWahl/Nagstamon/archive/refs/tags/v$pkgver.tar.gz"
 )
 sha256sums=(
-        '5d2278feae20fd962584a37294a5db00c7e55760f5a590e44c6ec8734a625602'
+        '7c31d28d4d5b1f3adf59052fe93ca7ba7244916e10b7c9c48ee4bd2db6a9aef3'
 )
 
 package() {
