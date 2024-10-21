@@ -1,0 +1,17 @@
+pkgbase = openocd_riscv-git
+	pkgdesc = Fork of OpenOCD that has RISC-V support (by SpinalHDL)
+	pkgver = v0.9.0.r4033.g058dfa50d
+	pkgrel = 1
+	url = https://github.com/SpinalHDL/openocd_riscv-git
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = automake>=1.11
+	makedepends = autoconf
+	makedepends = libtool
+	depends = libftdi
+	depends = hidapi
+	source = openocd_riscv-git::git+https://github.com/SpinalHDL/openocd_riscv.git
+	sha1sums = SKIP
+
+pkgname = openocd_riscv-git
