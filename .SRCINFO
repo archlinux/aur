@@ -1,6 +1,6 @@
 pkgbase = lingmo-screenshots
 	pkgdesc = Screenshot tool for LingmoOS.
-	pkgver = 1.9.9
+	pkgver = 2.0.0
 	pkgrel = 1
 	url = https://lingmo.org
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = lingmo-screenshots
 	makedepends = extra-cmake-modules
 	depends = qt5-quickcontrols2
 	depends = qt5-tools
-	source = https://github.com/LingmoOS/lingmo-screenshots/archive/refs/tags/1.9.9.tar.gz
-	sha256sums = 752792ed7ca476608ee1b505a4cb2c4bc8349b7e5c0a1207ac6455cc71d71b5e
+	source = https://github.com/LingmoOS/lingmo-screenshots/archive/refs/tags/2.0.0.tar.gz
+	sha256sums = caf3593f9db3b3551aef8339bd3edfc146be466b62907e16c085afa950986962
 
 pkgname = lingmo-screenshots

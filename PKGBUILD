@@ -6,11 +6,11 @@ depends=("qt5-quickcontrols2" "qt5-tools")
 makedepends=("extra-cmake-modules")
 pkgdesc="Screenshot tool for LingmoOS."
 pkgrel=1
-pkgver=1.9.9
+pkgver=2.0.0
 url="https://lingmo.org"
 license=("GPL")
 source=("https://github.com/LingmoOS/${pkgname}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('752792ed7ca476608ee1b505a4cb2c4bc8349b7e5c0a1207ac6455cc71d71b5e')
+sha256sums=('caf3593f9db3b3551aef8339bd3edfc146be466b62907e16c085afa950986962')
 
 prepare() {
     cd "${srcdir}/${pkgname}-${pkgver}"
