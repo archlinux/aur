@@ -1,0 +1,15 @@
+pkgbase = ray_translate
+	pkgdesc = A simple raycast like translator from prompt.
+	pkgver = beta
+	pkgrel = 1
+	arch = x86_64
+	license = MIT
+	makedepends = rust
+	makedepends = cargo
+	depends = rust
+	depends = cargo
+	depends = translate-shell
+	source = ray_translate-beta.tar.gz::https://github.com/veaquer/ray_translate/archive/refs/tags/beta.tar.gz
+	sha256sums = 6b86423e62cf70ce34d2ca39dea824ad09e023f1a9bad6d79e703658082f9fe0
+
+pkgname = ray_translate
