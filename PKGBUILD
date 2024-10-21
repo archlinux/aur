@@ -4,7 +4,7 @@
 
 pkgname=tcl84
 pkgver=8.4.20
-pkgrel=1
+pkgrel=2
 pkgdesc="The Tcl scripting language, 8.4 series"
 arch=('x86_64')
 url="http://tcl.sourceforge.net/"
@@ -21,6 +21,8 @@ build() {
 	rm -rf ${srcdir}/tcl${pkgver}/pkgs/sqlite3*
 
 	autoreconf
+	export ac_cv_func_strtod=yes
+	export tcl_cv_strtod_buggy=1
 	./configure --prefix=/usr --mandir=/usr/share/man --enable-threads --enable-64bit \
                 --includedir=/usr/include/tcl8.4
 	
