@@ -20,9 +20,10 @@ depends=(
   'python-texture2ddecoder'
   'python-etcpak-git'
   'python-tabulate'
+  'python-astc-encoder-py-git'
 )
 checkdepends=('python-pytest' 'python-pytest-cov')
-makedepends=('git')
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel' 'git')
 
 source=("git+https://github.com/K0lb3/UnityPy.git")
 md5sums=('SKIP')
@@ -41,6 +42,6 @@ check() {
 package() {
   cd UnityPy
   python setup.py install --root="$pkgdir/" --prefix=/usr --optimize=1
-  install -Dm 644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-  install -Dm 644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README"
+  install -Dm0644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm0644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README"
 }
