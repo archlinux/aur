@@ -9,6 +9,7 @@ pkgbase = python-lsp-ruff
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
+	makedepends = python-setuptools
 	depends = python-lsp-server
 	depends = python-ruff>=0.2.0
 	depends = python-cattrs
