@@ -12,6 +12,6 @@ pkgbase = spm-arch
 	provides = spm
 	conflicts = spm
 	source = spm-arch-1.0.0.tar.gz::https://github.com/adelmonte/Simple_Package_Manager/releases/download/v.1.0.0/spm-1.0.0.tar.gz
-	sha256sums = 1babf186ec12315adec9631185cd502667c807c19ff8de7dc79184def193719c
+	sha256sums = f65ba39920f7e0f9cdb344cc369abb29b308788057637aa0936763f7c6081c24
 
 pkgname = spm-arch
