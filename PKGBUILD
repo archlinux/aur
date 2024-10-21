@@ -2,8 +2,8 @@
 # Maintainer: Ista Zahn <istazahn@gmail.com>
 
 pkgname=glueviz
-pkgver=1.2.0
-pkgrel=2
+pkgver=1.3.0
+pkgrel=1
 pkgdesc="Meta-package for glue and plugin packages"
 arch=('any')
 url="http://glueviz.org"
@@ -12,7 +12,7 @@ depends=('python-glue-core>=1.13.0' 'python-glue-qt>=0.1.0' 'python-glue-vispy-v
 makedepends=('python-setuptools-scm')
 optdepends=('glueviz-doc: Documentation for Glueviz')
 source=("https://files.pythonhosted.org/packages/source/${pkgname:0:1}/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('795ddeef13b8f0392d9de5a318ee1a5b03ddfa6eada51986465e2a4b1549e372')
+sha256sums=('0b8ccbc4d6c331ea64b80eca66573517ad4fcfb37535fdf2ddd1ef1692f47cee')
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
