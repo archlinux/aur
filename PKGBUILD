@@ -2,9 +2,9 @@
 pkgname=saber-bin
 _appname="com.adilhanney.${pkgname%-bin}"
 _pkgname=Saber
-pkgver=0.25.0
+pkgver=0.25.1
 pkgrel=1
-pkgdesc="The cross-platform open-source app built for handwriting."
+pkgdesc="The cross-platform open-source app built for handwriting.Prebuilt version."
 arch=(
     'aarch64'
     'x86_64'
@@ -19,6 +19,7 @@ depends=(
     'gstreamer'
     'gst-plugins-base-libs'
     'webkit2gtk-4.1'
+    'libxmu'
 )
 options=('!strip')
 noextract=("${pkgname%-bin}-${pkgver}-${CARCH}.tar.gz")
@@ -27,7 +28,7 @@ source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.tar.gz::${url}/releases/downloa
 source=("${pkgname%-bin}.sh")
 sha256sums=('3b8311438e88f47eb507322a43c7a4156bfebb8c0f6e7b7436ef70842fb4c745')
 sha256sums_aarch64=('ae2a64bed462bbe74201c20b74a489b15ea18ac8bb1fbbc2e04af0678d1cab82')
-sha256sums_x86_64=('5b959c8ee995bcd142ab85561881c23f8cce65eb8d4362572b95610df6b832eb')
+sha256sums_x86_64=('03250ced09ba373c26c2fb690f721331c6aa39c42876ef8d0ea0bcbb679f3744')
 build() {
     sed -e "
         s/@appname@/${pkgname%-bin}/g
@@ -41,7 +42,7 @@ build() {
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
-    cp -r "${srcdir}/usr" "${pkgdir}"
+    cp -Pr --no-preserve=ownership "${srcdir}/usr" "${pkgdir}"
     install -Dm644 "${srcdir}/usr/lib/${pkgname%-bin}/share/icons/hicolor/scalable/apps/${_appname}.svg" \
         "${pkgdir}/usr/share/hicolor/scalable/apps/${pkgname%-bin}.svg"
     install -Dm644 "${srcdir}/usr/lib/${pkgname%-bin}/share/applications/${_appname}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
