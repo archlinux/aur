@@ -1,6 +1,6 @@
 pkgbase = archlinux-studio-utils
 	pkgdesc = Pipewire and AV application control
-	pkgver = r34.d1710d2
+	pkgver = r36.994330b
 	pkgrel = 1
 	url = https://github.com/usrmusicman/ArchLinuxStudioUtils
 	arch = x86_64

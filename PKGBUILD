@@ -1,15 +1,11 @@
 pkgname=archlinux-studio-utils
-pkgver=r34.d1710d2
+pkgver=r36.994330b
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/usrmusicman/ArchLinuxStudioUtils"
 license=('EULA')
 depends=('cpupower' 'pipewire' 'pipewire-jack')
-optdepnds=('ardour: Professional-grade digital audio workstation'
-          'carla: Audio Plugin Host'
-          'kdialog: A utility for displaying dialog boxes from shell scripts'
-          'qtractor: Audio/MIDI multitrack sequencer'
-          'reaper: A complete digital audio production application for computers'
+optdepnds=('kdialog: A utility for displaying dialog boxes from shell scripts'
           'zenity: Display graphical dialog boxes from shell scripts')
 provides=('archlinux-studio-utils-cpufreq-scaling' 'archlinux-studio-utils-pipewire')
 conflicts=('archlinux-studio-utils-cpufreq-scaling' 'archlinux-studio-utils-pipewire')
