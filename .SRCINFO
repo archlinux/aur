@@ -11,7 +11,7 @@ pkgbase = fastlane
 	options = !emptydirs
 	source = https://rubygems.org/downloads/fastlane-2.225.0.gem
 	source = fastlane
-	sha256sums = aad7f1a0ef3855edfc618500794810417d66d6d240d23f26a3c22a1bda5ce3b2
+	sha256sums = e43c1356d75ce6526c719b1b4590d0d82e9048249f6bb4322fb003783ddc470b
 	sha256sums = feb1a15a8120dd3de709d73287fd4a754dbbfb05fa839f4927b3b7d6ea9b5ee3
 
 pkgname = fastlane
