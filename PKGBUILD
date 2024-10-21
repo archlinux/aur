@@ -6,7 +6,7 @@
 # Contributor: Drew DeVault
 
 _pkgbase=nginx
-_commit=b394d44cfa7e5c2d48a174d06f4b899b6cfd3ccf
+_commit=f45c2707ea1bf6fde3bd0c045cc4a63cdc4a966a
 _libressl_ver=4.0.0
 pkgbase=nginx-quic-libressl
 pkgname=($pkgbase $pkgbase-src)
@@ -35,7 +35,7 @@ source=("git+https://github.com/nginx/nginx.git#commit=${_commit}"
         "https://cdn.openbsd.org/pub/OpenBSD/LibreSSL/libressl-${_libressl_ver}.tar.gz"
         "service"
         "logrotate")
-sha512sums=('a13a878dbeb4d224415d319ba9fa70aeb1a11d70562ba23d68696d27aa2499d9f18885a8084f13800d3c888154d978ef806004519b61a8982f9458f0bfe81e56'
+sha512sums=('bacc8432c31086de4fca7dba6d9555e6a1611588515f25e44b5a05fa1dab78ab6431aa1d8549f66073e38b32cf58bfa471e90aa46e0b903e43e8129180650cfa'
             'b5ec6d1f4e3842ecb487f9a67d86db658d05cbe8cd3fcba61172affa8c65c5d0823aa244065a7233f06c669d04a5a36517c02a2d99d2f2da3c4df729ac243b37'
             'ca7d8666177d31b6c4924e9ab44ddf3d5b596b51da04d38da002830b03bd176d49354bbdd2a496617d57f44111ad59833296af87d03ffe3fca6b99327a7b4c3c'
             '8fc2d0d1c4d14b80b82f158adb508bdd65428862cd6197c7b443d4612d0a225b82a4cae8fc76ab49560c97f0bf56427b3f4abc0a598abfa9b25cdd30d1f15a30')
