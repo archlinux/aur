@@ -2,8 +2,8 @@
 
 _pkgbasename=ghostty
 pkgname=${_pkgbasename}-git-zen3
-pkgrel=2
-pkgver=r7724.7b668d3d
+pkgrel=1
+pkgver=r7757.1134a9cb
 pkgdesc="Fast, native, feature-rich terminal emulator pushing modern features (Zen 3 optimized)"
 arch=('x86_64')
 url="https://github.com/ghostty-org/${_pkgbasename}"
