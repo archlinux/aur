@@ -282,7 +282,7 @@ Index: qt5ct/src/qt5ct-qtplugin/qt5ctplatformtheme.h
      //                               QPlatformTheme::IconOptions iconOptions = 0) const;
  
 -    //virtual QIconEngine *createIconEngine(const QString &iconName) const;
-+    virtual QIconEngine *createIconEngine(const QString &iconName) const;
++    virtual QIconEngine *createIconEngine(const QString &iconName) const override;
      //virtual QList<QKeySequence> keyBindings(QKeySequence::StandardKey key) const;
      //virtual QString standardButtonText(int button) const;
  
