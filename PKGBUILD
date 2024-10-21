@@ -2,14 +2,15 @@
 # Contributor: Gereon Schomber
 # Contributor: Martin F. Schumann
 
+_naclsdkver=10 # If not correct, cmake will make a download.
 pkgname=unvanquished
-pkgver=0.54.1
+pkgver=0.55.0
 pkgrel=1
-pkgdesc='A team-based, fast-paced, fps/rts hybrid game which pits aliens against humans.'
-arch=('x86_64' 'aarch64')
+pkgdesc='A team-based, fast-paced, fps/rts hybrid game that pits aliens against humans'
+arch=(x86_64 aarch64)
 url='https://www.unvanquished.net'
-license=('GPL3')
-makedepends=('cmake')
+license=(GPL-3.0-or-later)
+makedepends=(cmake)
 depends=("unvanquished-data>=${pkgver}"
          'zlib' 'gmp' 'nettle' 'geoip' 'curl' 'sdl2' 'glew' 'libpng'
          'libjpeg-turbo' 'libwebp>=0.2.0' 'freetype2' 'openal' 'libogg'
@@ -23,7 +24,6 @@ backup=('etc/conf.d/unvanquished.conf'
         'etc/unvanquished/maprotation.cfg')
 install=unvanquished.install
 
-# Shorthand strings.
 _archive="archive/refs/tags/unvanquished/${pkgver}.tar.gz"
 _suffix="unvanquished-${pkgver}"
 _unvanquished="Unvanquished-${_suffix}"
@@ -31,12 +31,7 @@ _daemon="Daemon-${_suffix}"
 _breakpad="breakpad-${_suffix}"
 _crunch="crunch-${_suffix}"
 _recast="recastnavigation-${_suffix}"
-
-# NaCL SDK is a buildtime dependency of Dæmon.
-# NOTE: Due to enormous compile times, we use a binary distribution.
-_naclsdk_base_ver=6
-_naclsdk_ver="linux64-${_naclsdk_base_ver}"
-_naclsdk="${_naclsdk_ver}"
+_naclsdkname="linux-amd64-default_${_naclsdkver}"
 
 source=("unvanquished.install"
         "unvanquished.sh"
@@ -49,20 +44,20 @@ source=("unvanquished.install"
         "breakpad_${pkgver}.tar.gz::https://github.com/DaemonEngine/breakpad/${_archive}"
         "crunch_${pkgver}.tar.gz::https://github.com/DaemonEngine/crunch/${_archive}"
         "recastnavigation_${pkgver}.tar.gz::https://github.com/DaemonEngine/recastnavigation/${_archive}"
-        "naclsdk_${_naclsdk_ver}.tar.bz2::https://dl.unvanquished.net/deps/${_naclsdk_ver}.tar.bz2")
+        "naclsdk_${_naclsdkver}.tar.xz::https://dl.unvanquished.net/deps/${_naclsdkname}.tar.xz")
 
-md5sums=('6d9430b5b06b93a43a1cb79e14637f0b'
-         '8d89d015e13f39f1849dfa40146dbfb6'
-         '705d8ad238356cd8fc97f63060f9b2e9'
-         'fd69458c8aa7fa8e71cea6a5993fdcbc'
-         'b3c672d4dae710f9049389e422c8ba65'
-         'acf733d3389af8806edc54c872212e53'
-         '4f7d88a6444772ff0e7f9856c1372df7'
-         '0e9dad7ed07df4362ea3ca24aac2d967'
-         'c18e3b35b02838acb1cc188e91aa9561'
-         'c1c2fc7ed403b59ecaa6e2e80c42c6cd'
-         '201c1787017deae864017e123360eaec'
-         '8e3e08ca8797e45e8dc01cdadf938676')
+sha256sums=('b6eb6d2f0a45512cb4b67245fc1454c6d8a2d4ea83ce203c06dcacc51ec411fd'
+            '010e1c64a97a33612f88a11c7621cf69d02119732e151e230bc1fa985757eed7'
+            '0eafaf9e5ed488bc91dcff7eb5f9917765f61583d23daba37bfc1035b1e1af24'
+            '562a0c185dfed2b2dee6135a399b18eff0d5bc5380f19a89ba15fc63b6e2827f'
+            '0b0bc478ad6e61dd17fdeb3265a6321d0ca2719eca7bbb432a4b4a497c58a7b0'
+            '44df664e8737fd543818cebc1e506a33e724fc3fb73eee46813ec3648eff64a0'
+            '4d0040bfab0580c3cbe853ba811608c95cea7c5568df0a7460e4ed2347d4faf0'
+            '21dfb47095b77b61bf99d7770ce103f279dd4fb7ae67fe5dbb9e4c2037433055'
+            '23a87324ca425c4e6f72346527d1d204c3ee233d2ec341b1acfb9bf40ab9a732'
+            'e2b9f11c84e24a694984517d4df6556410f1a439f583b048a4300dde52d66cb7'
+            '6d40f052edaef2bec805fe25b09875d7387450d959895a5c41980b2075b60f8c'
+            '819c6671c85391fd567769144f060a36a73b5a605becb653613b27e96b2dd89d')
 
 # The prepare function mimics the git submodule dance.
 prepare() {
@@ -85,13 +80,13 @@ prepare() {
 	ln -sfr "${_crunch}"             "${_daemon}/libs/crunch"
 
 	# Link the NaCL SDK in the Dæmon source tree.
-	ln -sfr "${_naclsdk}"            "${_daemon}/external_deps/${_naclsdk}"
+	ln -sfr "${_naclsdkname}"        "${_daemon}/external_deps/${_naclsdkname}"
 
-	# Work around a compilation failure.
-        sed -i '/#include "common\/using_std_string.h"/a #include <cstring>' \
-		"./breakpad-${_suffix}/src/client/linux/handler/minidump_descriptor.h"
-        sed -i '/#include <cstring>/a #include <cstdint>' \
-		"./breakpad-${_suffix}/src/client/linux/handler/minidump_descriptor.h"
+	# HACK: Fix unintended cmake-enforced hardening.
+	#       This clashes with the setting in makepkg.conf (producing warnings).
+	#       See https://github.com/DaemonEngine/Daemon/issues/1380.
+	sed -i 's/(USE_HARDENING OR NOT MINGW)/(USE_HARDENING AND NOT MINGW)/' \
+		"${_daemon}/cmake/DaemonFlags.cmake"
 }
 
 build() {
