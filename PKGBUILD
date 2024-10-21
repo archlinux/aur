@@ -1,6 +1,6 @@
 # Maintainer: Sean Anderson <seanga2@gmail.com>
 pkgname=mmdebstrap
-pkgver=1.4.3
+pkgver=1.5.3
 pkgrel=1
 epoch=
 pkgdesc="create a Debian chroot"
@@ -26,7 +26,7 @@ install=
 changelog=
 source=("$url/archive/$pkgver.tar.gz")
 noextract=()
-sha256sums=('d3b1222eae141a11c15f95895c408d60db7002e635b60149c0016b8b578c0784')
+sha256sums=('a8d9a13189dbeb664672a9c8a4ab8357b800cf9753fef40c4224d2807320a450')
 validpgpkeys=()
 
 prepare() {
