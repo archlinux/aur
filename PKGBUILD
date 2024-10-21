@@ -4,7 +4,7 @@
 pkgname=python-visca-over-ip
 gitname="VISCA-IP-Controller"
 pkgver=0.4.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Python code for controlling PTZ cameras using VISCA commands over a local network."
 arch=('any')
 url="https://github.com/misterhay/VISCA-IP-Controller/"
@@ -18,12 +18,15 @@ source=(VISCA-IP-Controller::git+https://github.com/misterhay/VISCA-IP-Controlle
 sha512sums=('SKIP')
 
 build() {
-    cd "$gitname-$pkgver"
+    # cd "$gitname-$pkgver"
+    cd "$srcdir/$gitname"
+    pwd
     python setup.py build
 }
 
 package() {
-    cd "$gitname-$pkgver"
+    # cd "$gitname-$pkgver"
+    cd "$srcdir/$gitname"
     python setup.py install --root="$pkgdir" --optimize=1
     install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
 }
