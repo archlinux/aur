@@ -1,0 +1,15 @@
+pkgbase = nsxiv-demon
+	pkgdesc = A build of nsxiv which looks better.
+	pkgver = 5.0.r1049.c216a40
+	pkgrel = 1
+	url = https://github.com/demonkingswarn/nsxiv.git
+	install = nsxiv-demon.install
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	provides = nsxiv
+	conflicts = nsxiv
+	source = git+https://github.com/demonkingswarn/nsxiv.git
+	md5sums = SKIP
+
+pkgname = nsxiv-demon
