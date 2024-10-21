@@ -1,6 +1,6 @@
 # Maintainer: Simeon Schaub <simeondavidschaub99@gmail.com>
 pkgname=juliaup
-pkgver=1.17.5
+pkgver=1.17.9
 pkgrel=1
 pkgdesc="An experimental Julia version manager"
 arch=('x86_64' 'x86' 'aarch64')
@@ -13,7 +13,7 @@ optdepends=()
 provides=('julia')
 conflicts=('julia' 'julia-bin')
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
-md5sums=('6bd32682477b0a19421f359ebcaa928f')
+md5sums=('883ef2acd98ff162d02c1f289b276ae8')
 options=(!lto) # ref https://github.com/briansmith/ring/issues/1444
 
 build() {
