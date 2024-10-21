@@ -2,7 +2,7 @@
 
 _pkgname="deck"
 pkgname="${_pkgname}-bin"
-pkgver=1.40.3
+pkgver=1.41.0
 pkgrel=1
 pkgdesc="Configuration management and drift detection for Kong and Kong Enterprise"
 arch=('x86_64' 'aarch64')
@@ -13,8 +13,8 @@ conflicts=("${_pkgname}")
 _pkgsrc="${_pkgname}-${pkgver}"
 source_x86_64=("${_pkgsrc}-x86_64.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_linux_amd64.tar.gz")
 source_aarch64=("${_pkgsrc}-aarch64.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_linux_arm64.tar.gz")
-b2sums_x86_64=('6a36dd653cac9952177f5c9818f2b6952fe945131201bade093d64f2d5406ddbf12f49a9bfd772678694ba0d2c032ea851f6ebf2acd6e76e4610b1b1d23b56c4')
-b2sums_aarch64=('1aa10457919c93ce7bb17fe9d002c060e637ea055f8a2bd95b286fb622489de2431fd83be6ec9b6f944afda4bb293b7c77842c973546e1b3df860dc8b9216975')
+b2sums_x86_64=('5ff5a22b4e06f59184174949fa32336afde8eb4d91288061d602511651d2d37232cdaa6bb5a044014f1ec1c458d26ba69f5e5c615ccf01c8634e5b753c78d2af')
+b2sums_aarch64=('70273c2221dfa670facf457668885a33c16605bd722b5db70dd8ac92d0d0d16367fd8a59bdc8e6ce76bf42aa78ef6a66a47b7ade2f340313ab6ab9d6498254ba')
 
 package() {
   cd "${srcdir}"
