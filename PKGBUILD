@@ -74,6 +74,6 @@ package() {
   install -D -m644 LICENSE.md "${pkgdir}/usr/share/licenses/${pkgname}/piper-phonemize.LICENSE.md"
 
   cd "$srcdir/piper"
-  install -D --strip -m755 build/piper "${pkgdir}/usr/bin/piper"
+  install -D --strip -m755 build/piper "${pkgdir}/usr/bin/piper-tts"
   install -D -m644 LICENSE.md "${pkgdir}/usr/share/licenses/${pkgname}/piper.LICENSE.md"
 }
