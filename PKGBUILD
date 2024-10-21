@@ -2,7 +2,7 @@
 
 pkgname=live-photo-conv
 pkgver=0.1.4
-pkgrel=4
+pkgrel=5
 pkgdesc="A cross-platform tool to process live photos of Google Android"
 url="https://github.com/wszqkzqk/$pkgname"
 arch=('x86_64' 'aarch64' 'riscv64' 'loong64')
@@ -30,13 +30,13 @@ sha256sums=('4e79a84e4ee4aea4902a643a70ade9d8a5b256beb0d575cb435ee734b21d16db')
 
 build() {
     arch-meson "${pkgname}" build
-	meson compile -C build
+    meson compile -C build
 }
 
 check() {
-	meson test -C build
+    meson test -C build
 }
 
 package() {
-	meson install -C build --destdir "${pkgdir}"
+    meson install -C build --destdir "${pkgdir}"
 }
