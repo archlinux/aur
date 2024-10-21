@@ -5,7 +5,7 @@ _mayaver=2024
 _mayaminor=2
 
 pkgname=maya-usd-bin
-pkgver=0.29.0
+pkgver=0.30.0
 pkgrel=1
 pkgdesc='Autodesk Maya Universal Scene Description Plugin'
 arch=('x86_64')
@@ -17,7 +17,7 @@ conflicts=('maya-usd')
 
 DLAGENTS+=('manual::/usr/bin/echo \ \ Note: Please download the package manually from the official website')
 source=("https://github.com/Autodesk/maya-usd/releases/download/v${pkgver}/MayaUSD_${pkgver}_Maya$_mayaver.${_mayaminor}_Linux.run")
-b2sums=('5eb638553254dcff283612d0822db5af87e2438eef19b5b810e67ab1bc15912399774d7e8189fbe0874d123ed2616ff96d21902e54f3d53a91fd4449a8e14495')
+b2sums=('f394b988120f6d18bc809e481b62ae475399636b9383a64ba13173e8f111795fc734833557600e64864b384fb91c41af20972703fd3b6090e0b0ed5f15fecd5a')
 
 options=(!strip)
 
