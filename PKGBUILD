@@ -2,10 +2,10 @@
 
 pkgname=live-photo-conv
 pkgver=0.1.4
-pkgrel=3
+pkgrel=4
 pkgdesc="A cross-platform tool to process live photos of Google Android"
 url="https://github.com/wszqkzqk/$pkgname"
-arch=(x86_64)
+arch=('x86_64' 'aarch64' 'riscv64' 'loong64')
 license=(LGPL-2.1-or-later)
 depends=(
     glib2
