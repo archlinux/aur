@@ -1,37 +1,75 @@
-# Maintainer: Wes Jackson < icebal dot 7 at gmail dot com >
-# Contributor: Tom < reztho at archlinux dot org >
+# Maintainer: Manuel Hüsers <aur@huesers.de>
+# Contributor: Wes Jackson <icebal dot 7 at gmail dot com>
+# Contributor: Iwan Timmer <irtimmer@gmail.com>
+# Contributor: Timothée Ravier <tim at siosm dot fr>
+# Contributor: Tom <reztho at archlinux dot org>
 
-pkgname=tuned-git
-pkgver=2.10.0.r75.g26db89d
-pkgrel=4
+_pkgbase=tuned
+pkgbase="${_pkgbase}-git"
+pkgname=("${_pkgbase}-git" "${_pkgbase}-ppd-git")
+pkgver=2.24.0.r6.g35eed3c
+pkgrel=1
 pkgdesc='Daemon that performs monitoring and adaptive configuration of devices in the system'
 arch=('any')
-url='https://github.com/redhat-performance/tuned'
-license=('GPL')
-depends=('ethtool' 'python-configobj' 'python-pyudev' 'python-gobject' 'python-decorator' 'python-dbus' 'python-schedutils' 'python-linux-procfs' 'perf' 'hdparm' 'polkit' 'hicolor-icon-theme')
-optdepends=('virt-what' 'systemtap' 'python-dmidecode' 'x86_energy_perf_policy')
-makedepends=('git' 'desktop-file-utils')
-provides=('tuned')
-backup=('etc/tuned/active_profile')
-install="${pkgname/-git}.install"
-source=("${pkgname}::git://github.com/redhat-performance/tuned")
-sha256sums=('SKIP')
+url="https://github.com/redhat-performance/${_pkgbase}"
+license=('GPL-2.0-or-later')
+depends=('dbus-glib' 'ethtool' 'gawk' 'hdparm' 'polkit' 'python-configobj'
+	'python-dbus' 'python-gobject' 'python-linux-procfs' 'python-perf'
+	'python-pyudev')
+makedepends=('desktop-file-utils' 'git')
+source=("git+${url}.git")
+sha512sums=('SKIP')
 
 pkgver() {
-  cd ${pkgname}
-  local ver=$(git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g')
-  printf "%s\n" "${ver:1}"
+	cd "${_pkgbase}"
+	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/^v//g;s/-/./g'
 }
 
-package() {
-  cd ${pkgname}
+prepare() {
+	cd "${_pkgbase}"
+	mv libexec lib
 
-  make DESTDIR="${pkgdir}" install
-
-  mv "${pkgdir}"/usr/sbin/* "${pkgdir}"/usr/bin/
-  mv "${pkgdir}"/usr/libexec/tuned/* "${pkgdir}"/usr/lib/tuned/
-  rm -r "${pkgdir}"/run "${pkgdir}"/usr/sbin "${pkgdir}"/usr/libexec
-  install -Dm 0644 "${srcdir}"/${pkgname}/tuned.service "${pkgdir}"/usr/lib/systemd/system/tuned.service
+	sed -i 's|/libexec/|/lib/|g' Makefile
+	sed -i 's|/sbin/|/bin/|g' Makefile tuned.service tuned-gui.py tuned-gui.desktop tuned/ppd/tuned-ppd.service
+	sed -i 's|install-ppd: install$|install-ppd: install-dirs|' Makefile
 }
 
-# vim:set ts=2 sw=2 et:
+package_tuned-git() {
+	optdepends=('virt-what: virtual machine detection'
+		'systemtap: detailed system monitoring'
+		'tuned-ppd: power-profiles-daemon api translation'
+		'wireless_tools: wireless device power management')
+	provides=("${_pkgbase}")
+	conflicts=("${_pkgbase}")
+	backup=('etc/tuned/active_profile'
+		'etc/tuned/bootcmdline'
+		'etc/tuned/cpu-partitioning-powersave-variables.conf'
+		'etc/tuned/cpu-partitioning-variables.conf'
+		'etc/tuned/post_loaded_profile'
+		'etc/tuned/profile_mode'
+		'etc/tuned/realtime-variables.conf'
+		'etc/tuned/realtime-virtual-guest-variables.conf'
+		'etc/tuned/realtime-virtual-host-variables.conf'
+		'etc/tuned/tuned-main.conf')
+
+	cd "${_pkgbase}"
+
+	make DESTDIR="${pkgdir}" install
+	rm -rv "${pkgdir}"/{run,var}
+
+	python -m compileall -d /usr/lib "${pkgdir}/usr/lib"
+	python -O -m compileall -d /usr/lib "${pkgdir}/usr/lib"
+}
+
+package_tuned-ppd-git() {
+	pkgdesc='Daemon that allows applications to easily transition to TuneD from power-profiles-daemon (PPD)'
+	depends=("${_pkgbase}")
+	provides=("${_pkgbase}-ppd" 'power-profiles-daemon')
+	conflicts=("${_pkgbase}-ppd" 'power-profiles-daemon')
+	backup=('etc/tuned/ppd.conf')
+	options=('!emptydirs')
+
+	cd "${_pkgbase}"
+
+	make DESTDIR="${pkgdir}" install-ppd
+}
