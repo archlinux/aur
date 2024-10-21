@@ -1,6 +1,6 @@
 pkgname=sonicthehedgehog
 _pkgname=SonicTheHedgehog
-pkgver=1.0.0
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="Sonic the Hedgehog game powered by the rsdkv4 engine."
 arch=('x86_64' 'aarch64' 'i686')
@@ -8,8 +8,8 @@ url="https://gitlab.com/linuxbombay/sonicthehedgehog"
 license=('GPL')
 depends=('rsdkv4-bin' 'libogg' 'libvorbis' 'wget' 'sdl2' 'unzip' 'yad')
 makedepends=('unzip')
-source=("https://gitlab.com/linuxbombay/sonicthehedgehog/-/archive/$pkgver-$pkgrel/sonicthehedgehog-$pkgver-$pkgrel.tar")
-sha256sums=('84976089f69e93393d111c49dc6691b50e3a10aced722f661cee0358ae060d7e')
+source=("https://gitlab.com/linuxbombay/sonicthehedgehog/-/archive/$pkgver/sonicthehedgehog-$pkgver.tar")
+sha256sums=('ecdfdb6f523dbda9b21aa31a4f048063b8a1bc21f092dd8497f44803088c7c3f')
 
 package() {
     install -dm755 "$pkgdir/usr/bin"
@@ -17,25 +17,14 @@ package() {
     install -dm755 "$pkgdir/usr/share/pixmaps"
 
     # Packaging files
-    
-    # Check if Data.rsdk exists so it doesn't redownload the file when it doesn't need to.
-    FILE="/usr/share/games/$_pkgname/Data.rsdk"
-     if test -f "$FILE"
-    then
-        echo "$FILE exists skipping download."
-        cp -r "/usr/share/games/$_pkgname/Data.rsdk" "$pkgdir/usr/share/games/$_pkgname"
-    else
-        echo "$FILE does not exist, Starting download.."
-        cd $srcdir/$pkgname-$pkgver-$pkgrel
-        wget "https://archive.org/download/data_20231229_202312/Data.rsdk"
-    fi    
-    cd $srcdir/$pkgname-$pkgver-$pkgrel
-    cp "$srcdir/$pkgname-$pkgver-$pkgrel/sonic.sh" "$pkgdir/usr/bin/sonic"
+       
+    cd $srcdir/$pkgname-$pkgver
+    cp "$srcdir/$pkgname-$pkgver/sonic.sh" "$pkgdir/usr/bin/sonic"
     cp -r ./ "$pkgdir/usr/share/games/$_pkgname"
     cp sonic.png "$pkgdir/usr/share/pixmaps"
 
     # Desktop Entry
-    install -Dm644 "$srcdir/$pkgname-$pkgver-$pkgrel/$_pkgname.desktop" \
+    install -Dm644 "$srcdir/$pkgname-$pkgver/$_pkgname.desktop" \
     "$pkgdir/usr/share/applications/$_pkgname.desktop"
     sed -i s%/usr/share%/opt% "$pkgdir/usr/share/applications/$_pkgname.desktop"
 }
