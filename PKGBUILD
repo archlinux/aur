@@ -2,7 +2,7 @@
 
 _pkgname=eqk
 pkgname=${_pkgname}-git
-pkgver=r43.34b4912
+pkgver=1.0.0.r0.ga3dec55
 pkgrel=1
 pkgdesc="Earthquake Data Fetcher in Go"
 arch=('x86_64')
@@ -16,7 +16,7 @@ sha256sums=('SKIP')
 pkgver() {
     cd "$_pkgname"
     ( set -o pipefail
-        git describe --long --abbrev=7 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+        git describe --long --tags --abbrev=7 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
         printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
     )
 }

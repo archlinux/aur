@@ -1,6 +1,6 @@
 pkgbase = eqk-git
 	pkgdesc = Earthquake Data Fetcher in Go
-	pkgver = r43.34b4912
+	pkgver = 1.0.0.r0.ga3dec55
 	pkgrel = 1
 	url = https://github.com/mpinheir/eqk
 	arch = x86_64
