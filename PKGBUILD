@@ -12,8 +12,7 @@ depends=('alsa-lib' 'gcc-libs' 'glibc')
 makedepends=('cargo' 'git')
 provides=("uiua=${pkgver}")
 conflicts=('uiua')
-_commit='0cb738fcbd44b33481fab84cc2fbe8a2c2fc44dd'
-source=("${_pkgname}::git+https://github.com/uiua-lang/uiua#commit=${_commit}")
+source=("${_pkgname}::git+https://github.com/uiua-lang/uiua")
 md5sums=('SKIP')
 options=(!lto)
 

@@ -18,7 +18,7 @@ pkgbase = uiua-git
 	provides = uiua=0.13.0.rc.3.r2.gab8b6d36
 	conflicts = uiua
 	options = !lto
-	source = uiua::git+https://github.com/uiua-lang/uiua#commit=0cb738fcbd44b33481fab84cc2fbe8a2c2fc44dd
+	source = uiua::git+https://github.com/uiua-lang/uiua
 	md5sums = SKIP
 
 pkgname = uiua-git
