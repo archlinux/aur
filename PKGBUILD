@@ -118,12 +118,12 @@
 ### BUILD OPTIONS END
 
 # Kernel version
-_kernel_major=6.10
-_kernel_minor=12
+_kernel_major=6.11
+_kernel_minor=4
 # Clear Linux patches version
-_clr=12-1467
+_clr=3-1472
 # kernel_compiler_patch version
-_kernelcompilerpatch="20240221.2"
+_kernelcompilerpatch="20241001"
 # Source directory names
 _src_linux=linux-${_kernel_major}
 _src_clr=${_kernel_major}.${_clr}
@@ -131,7 +131,7 @@ _src_clr=${_kernel_major}.${_clr}
 # Package information
 pkgbase=linux-clear-cjktty-zfs
 pkgver=${_kernel_major}.${_kernel_minor}
-pkgrel=1
+pkgrel=0
 pkgdesc="Clear Linux内核,带有zfs和cjktty并开启kexec"
 arch=("x86_64")
 url="https://github.com/clearlinux-pkgs/linux"
@@ -141,15 +141,15 @@ makedepends=("bc" "cpio" "gettext" "git" "libelf" "pahole" "perl" "python" "tar"
 options=("!strip" "!debug")
 [[ "${_debug}" == "y" ]] && options=("!strip")
 source=(
-  #"https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-${_kernel_major}.tar.xz"
-  "https://github.com/a15355447898a/linux-acer/releases/download/6.10/linux-6.10.tar.xz"
+  "https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-${_kernel_major}.tar.xz"
+  #"https://github.com/a15355447898a/linux-acer/releases/download/6.10/linux-6.10.tar.xz"
   "https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-${_kernel_major}.tar.sign"
   "https://cdn.kernel.org/pub/linux/kernel/v6.x/patch-${_kernel_major}.${_kernel_minor}.xz"
   "cl-linux::git+https://github.com/clearlinux-pkgs/linux.git#tag=${_src_clr}"
   "more-uarches-${_kernelcompilerpatch}.tar.gz::https://github.com/graysky2/kernel_compiler_patch/archive/${_kernelcompilerpatch}.tar.gz"
   #"git+https://github.com/openzfs/zfs.git#branch=zfs-2.2-release"
   #"git+https://github.com/openzfs/zfs.git"
-  "git+https://github.com/openzfs/zfs.git#tag=zfs-2.3.0-rc1"
+  "git+https://github.com/openzfs/zfs.git#tag=zfs-2.3.0-rc2"
   "0001-cjktty.patch::https://github.com/bigshans/cjktty-patches/raw/master/v6.x/cjktty-6.9.patch"
   "0002-cjktty-32.patch::https://github.com/bigshans/cjktty-patches/raw/master/cjktty-add-cjk32x32-font-data.patch"
 )
@@ -319,7 +319,7 @@ prepare() {
     # Patch with kernel_compiler_patch patches
     # This must be executed after olddefconfig
     # to allow for the next section to run.
-    patch -Np1 -i "$srcdir/kernel_compiler_patch-$_kernelcompilerpatch/more-uarches-for-kernel-6.8-rc4+.patch"
+    patch -Np1 -i "$srcdir/kernel_compiler_patch-$_kernelcompilerpatch/more-ISA-levels-and-uarches-for-kernel-6.8-rc4+.patch"
     
     # Set subarch automatically
     [[ -n "${_subarch}" ]] && yes "${_subarch}" | make ${BUILD_FLAGS[*]} oldconfig
@@ -478,15 +478,19 @@ for _p in "${pkgname[@]}"; do
     _package${_p#$pkgbase}
   }"
 done
+
+# Taken from https://www.kernel.org/signature.html
 validpgpkeys=(
   "ABAF11C65A2970B130ABE3C479BE3E4300411886"  # Linus Torvalds
   "647F28654894E3BD457199BE38DBBDC86092693E"  # Greg Kroah-Hartman
+  "E27E5D8A3403A2EF66873BBCDEA66FF797772CDC"  # Sasha Levin
+  "AC2B29BD34A6AFDDB3F68F35E7BFC8EC95861109"  # Ben Hutchings
 )
-sha256sums=("9c00b10afafbe4a6aba5bd8a0ff3efd3f98c5c0ed23883c7d6b357bf04edf8eb"
+sha256sums=("55d2c6c025ebc27810c748d66325dd5bc601e8d32f8581d9e77673529bdacb2e"
             "SKIP"
-            "85994d53de093fff217962232b49629b6c5607eae03fa4e234fed740a16ff665"
+            "d0c22d3f7a5ea64938cb8a003e6f6ad3226a0dab855e89fa0fff3578946c9498"
             "SKIP"
-            "1d3ac3e581cbc5108f882fcdc75d74f7f069654c71bad65febe5ba15a7a3a14f"
+            "3c0a38110cc21dca6b6efec03ce82ed24f473da190354cf740b5ecd6f6589aa7"
             'SKIP'
             'SKIP'
             'SKIP')
