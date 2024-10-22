@@ -15,7 +15,7 @@ sha256sums=('0322fee24872b713e1e495070e6b7b1fca468bed19f48bcf7a1397ffdf701e9a')
 
 prepare() {
   cd "${_pkgname}-$pkgver"
-  # The pinned version of swift-log causes a crash
+  # The pinned version of swift-log causes a crash (https://github.com/vapor/toolbox/issues/430)
   swift package update swift-log
 }
 
