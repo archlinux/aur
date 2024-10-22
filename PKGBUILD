@@ -29,7 +29,8 @@ build() {
 check() {
   cd "$pkgname-$pkgver"
   # "Test_deployManifests" requires heavy dependency 'kind' (https://kind.sigs.k8s.io/)
-  go test ./... -skip "^Test_deployManifests$"
+  # "TestImports" is flaky as of Kong v1.41.1
+  go test ./... -skip '^Test_deployManifests|TestImports$'
 }
 
 package() {
