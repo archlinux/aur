@@ -12,8 +12,7 @@ depends=('gcc-libs' 'glibc')
 makedepends=('cargo' 'git')
 provides=("wasynth=${pkgver}")
 conflicts=('wasynth')
-_commit='27f34987341ec1837d3ff911f3e583647920af16'
-source=("${_pkgname}::git+${url}#commit=${_commit}")
+source=("${_pkgname}::git+${url}")
 md5sums=('SKIP')
 
 pkgver() {
