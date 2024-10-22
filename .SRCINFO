@@ -1,19 +1,19 @@
 pkgbase = restfox-bin
 	pkgdesc = Offline-First Minimalistic HTTP & Socket Testing Client for the Web & Desktop.Prebuilt version.Use system-wide electron.
-	pkgver = 0.28.0
+	pkgver = 0.29.0
 	pkgrel = 1
 	url = https://restfox.dev
 	arch = x86_64
 	license = MIT
 	depends = electron29
 	depends = nodejs
-	provides = restfox=0.28.0
+	provides = restfox=0.29.0
 	conflicts = restfox
 	options = !emptydirs
-	source = restfox-0.28.0.deb::https://github.com/flawiddsouza/Restfox/releases/download/v0.28.0/restfox_0.28.0_amd64.deb
-	source = LICENSE-0.28.0::https://raw.githubusercontent.com/flawiddsouza/Restfox/v0.28.0/LICENSE
+	source = restfox-0.29.0.deb::https://github.com/flawiddsouza/Restfox/releases/download/v0.29.0/restfox_0.29.0_amd64.deb
+	source = LICENSE-0.29.0::https://raw.githubusercontent.com/flawiddsouza/Restfox/v0.29.0/LICENSE
 	source = restfox.sh
-	sha256sums = e0af005a9057091ddf2180c36f111ec1612e5319eafb4643f2a91a0287faa412
+	sha256sums = 22e5434b69eff39d1c42ef503801b3c4aa578a4eeb26389ca20163ab32520585
 	sha256sums = 82601c8ed24f59528b28c23a2fb309f9743dffc860ba06ce8d253e1ed8959a16
 	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
 
