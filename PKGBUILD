@@ -30,7 +30,7 @@ build() {
 package() {
 	cd "$pkgname"
 	install -D -m 755 -t "${pkgdir}/usr/bin/" "target/release/$_pkgname"
-	install -D -m 755 -t "${pkgdir}/usr/share/licenses/${_pkgname}/" "LICENSE-MIT"
-	install -D -m 755 -t "${pkgdir}/usr/share/licenses/${_pkgname}/" "LICENSE-APACHE"
+	install -D -m 644 -t "${pkgdir}/usr/share/licenses/${_pkgname}/" "LICENSE-MIT"
+	install -D -m 644 -t "${pkgdir}/usr/share/licenses/${_pkgname}/" "LICENSE-APACHE"
 
 }
