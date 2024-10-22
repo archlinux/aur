@@ -3,13 +3,13 @@
 pkgname=uefitool-ng-git
 _pkgname=uefitool-ng
 pkgver=r629.0030ea9
-pkgrel=1
+pkgrel=2
 pkgdesc='UEFI firmware image viewer and editor and utilities (new engine)'
-arch=('any')
+arch=('x86_64' 'i686')
 url='https://github.com/LongSoft/UEFITool'
 license=('BSD-2-Clause')
-depends=('qt6-base')
-makedepends=('git' 'qt6-base' 'cmake')
+depends=('qt6-base' 'hicolor-icon-theme' 'glibc' 'gcc-libs')
+makedepends=('git' 'cmake')
 provides=($_pkgname)
 conflicts=($_pkgname)
 source=("${_pkgname}::git+${url}#branch=new_engine")

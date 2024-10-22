@@ -1,14 +1,17 @@
 pkgbase = uefitool-ng-git
 	pkgdesc = UEFI firmware image viewer and editor and utilities (new engine)
 	pkgver = r629.0030ea9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/LongSoft/UEFITool
-	arch = any
+	arch = x86_64
+	arch = i686
 	license = BSD-2-Clause
 	makedepends = git
-	makedepends = qt6-base
 	makedepends = cmake
 	depends = qt6-base
+	depends = hicolor-icon-theme
+	depends = glibc
+	depends = gcc-libs
 	provides = uefitool-ng
 	conflicts = uefitool-ng
 	source = uefitool-ng::git+https://github.com/LongSoft/UEFITool#branch=new_engine
