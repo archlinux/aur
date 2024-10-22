@@ -32,6 +32,7 @@ pkgbase = libvips-notiff
 	optdepends = openslide: for openslide module
 	optdepends = poppler-glib: for poppler module
 	optdepends = libjxl: for jxl module
+	provides = libvips=8.15.3
 	conflicts = libvips
 	source = https://github.com/libvips/libvips/releases/download/v8.15.3/vips-8.15.3.tar.xz
 	sha512sums = 7ebeacef00939dff6a03f346e1d7498c9cc6ff84aff3a273dae57ae0b2332cb1da59a94ada1b68d86578af5540c1671badd636f0916e48cc7011b9141f99fc1e
