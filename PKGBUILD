@@ -9,7 +9,7 @@ pkgname=(
   gnome-shell-git
   gnome-shell-docs-git
 )
-pkgver=47.0+r28+ge10682200
+pkgver=47.0+r60+g50434f013
 pkgrel=1
 epoch=1
 pkgdesc="Next generation desktop shell"
@@ -144,3 +144,5 @@ package_gnome-shell-docs-git() {
 }
 
 # vim:set sw=2 sts=-1 et:
+
+
