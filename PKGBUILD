@@ -3,7 +3,7 @@
 
 pkgname=python-ginga
 _pyname=${pkgname#python-}
-pkgver=5.1.0
+pkgver=5.2.0
 pkgrel=1
 pkgdesc="A viewer for astronomical data FITS (Flexible Image Transport System) files."
 arch=('any')
@@ -15,17 +15,18 @@ makedepends=('python-setuptools-scm'
              'python-installer')
 checkdepends=('python-pytest-astropy-header'
               'python-photutils'
+              'python-puremagic'
               'python-regions'
-              'python-astlib'
-              'python-starlink-pyast')  # pillow <- matplotlib, scipy required by astlib
+              'python-astlib')  # pillow <- matplotlib, scipy required by astlib
+#             'python-starlink-pyast'
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('ff19fe6445cbd9b012af3d685a764024')
+md5sums=('a488be9ed17f13289c4082b48a9e1fd8')
 
-prepare() {
-    cd ${srcdir}/${_pyname}-${pkgver}
-
-    sed -i "/ignore:distutils/a \	ignore:the imp module is deprecated:DeprecationWarning" setup.cfg
-}
+#prepare() {
+#    cd ${srcdir}/${_pyname}-${pkgver}
+#
+#    sed -i "/ignore:distutils/a \	ignore:the imp module is deprecated:DeprecationWarning" setup.cfg
+#}
 
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}
@@ -43,12 +44,13 @@ package() {
     depends=('python-astropy>=5.0'
              'python-qtpy>=2.0.1'
              'python-pillow>=9.2'
+             'python-puremagic>=1.28'
              'python-yaml>=6.0'
              'python-tomli>=2.0.1'
              'python-packaging>=23.1'
              'hicolor-icon-theme')
     optdepends=('python-scipy>=0.18.1: required by Pick, some built-in auto cuts algorithms used when you load an image'
-                'python-matplotlib>=3.4: required by Pick, Cuts, Histogram, LineProfile'
+                'python-matplotlib>=3.8: required by Pick, Cuts, Histogram, LineProfile'
                 'python-magic>=0.4.15: aids in identifying files when opening them'
                 'python-opencv>=4.5.4.58: speeds up rotation, mosaicing and some transformations'
                 'python-exifread>=2.3.2: recommended'
