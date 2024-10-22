@@ -2,9 +2,9 @@
 pkgname=panelcleaner
 _module='PanelCleaner'
 _pkgname_pypi='pcleaner'
-pkgver='2.9.2'
+pkgver='2.9.3'
 # Sometimes I need to issue a hotfix to the pypi package without updating other releases, so pkgver is the official version.
-_pypiver='2.9.2'
+_pypiver='2.9.3'
 pkgrel=2
 pkgdesc="An AI-powered tool to clean manga panels. Provides both a CLI (pcleaner) and GUI (Qt-based)"
 url="https://github.com/VoxelCubes/PanelCleaner"
