@@ -2,8 +2,8 @@
 pkgname=fooyin
 _pkgname=Fooyin
 pkgver=0.8.1
-pkgrel=1
-pkgdesc="A customisable music player"
+pkgrel=2
+pkgdesc="A customisable music player."
 arch=('x86_64')
 url="https://github.com/ludouzi/fooyin"
 license=('GPL-3.0-only')
@@ -30,7 +30,6 @@ makedepends=(
     'libebur128'
     'libarchive'
     'libgme'
-    'taglib1'
 )
 optdepends=(
     'sdl2: For the SDL2 audio output plugin'

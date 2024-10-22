@@ -1,7 +1,7 @@
 pkgbase = fooyin
-	pkgdesc = A customisable music player
+	pkgdesc = A customisable music player.
 	pkgver = 0.8.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ludouzi/fooyin
 	arch = x86_64
 	license = GPL-3.0-only
@@ -17,7 +17,6 @@ pkgbase = fooyin
 	makedepends = libebur128
 	makedepends = libarchive
 	makedepends = libgme
-	makedepends = taglib1
 	depends = qt6-base
 	depends = qt6-svg
 	depends = qt6-tools
