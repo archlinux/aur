@@ -1,0 +1,21 @@
+pkgbase = woomer
+	pkgdesc = Zoomer application for Wayland inspired by tsoding's boomer
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/coffeeispower/woomer
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = clang
+	makedepends = cmake
+	makedepends = compiler-rt
+	makedepends = pkgconf
+	makedepends = wayland
+	depends = gcc-libs
+	depends = glfw
+	depends = glibc
+	source = woomer-0.1.0.tar.gz::https://github.com/coffeeispower/woomer/archive/refs/tags/0.1.0.tar.gz
+	sha256sums = 0e53ca0576c71a5931e75a45e734f2acacc0592260a06316b4b5a82a19faadac
+
+pkgname = woomer
