@@ -11,7 +11,7 @@ pkgbase = rofi-ttv-git
 	depends = rofi
 	depends = youtube-dl
 	depends = mpv
-	depends = gnu-netcat
+	depends = nmap
 	source = rofi-ttv::git+https://github.com/loiccoyle/rofi-ttv.git
 	md5sums = SKIP
 
