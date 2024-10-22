@@ -1,7 +1,7 @@
 # Maintainer: dhruvasambrani <dhruvasambrani19 at gmail>
 
 pkgname=juliaup-bin
-pkgver="1.17.4"
+pkgver="1.17.9"
 pkgrel=1
 pkgdesc="An experimental Julia version manager"
 arch=('x86_64' 'aarch64' 'i686')
@@ -29,6 +29,6 @@ package() {
 }
 
 
-sha256sums_x86_64=('7d25f9cd8b296b4f274d58e3a413f342b595fb7e43ac5c2d2851a8e96abaf521')
-sha256sums_aarch64=('2ed05bbb7091090bd8bacc95e4382d0ade17fe814f98f95781d88d6efcdb310a')
-sha256sums_i686=('4ff97c735630a40126651553c2a2983abad381ca33cd79991b268dd433194b40')
+sha256sums_x86_64=('7fcd2a459a7b5b381aa1f299b5f729618660ea58bc6509854a2e42365824e09e')
+sha256sums_aarch64=('8b9762b21bad98e2c71f38be9cd6a32c51963713f78e9b661efb1879f574d434')
+sha256sums_i686=('a5f8e9561c3aad2446d883aaa7b2a6a3f9f838a47a02f97a73b5e097519edb04')
