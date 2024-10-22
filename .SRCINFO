@@ -1,7 +1,7 @@
 pkgbase = mdns-browser
 	pkgdesc = A cross platform mDNS-Browser app written in Rust using tauri and leptos
 	pkgver = 0.9.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/hrzlgnm/mdns-browser
 	arch = x86_64
 	license = MIT
@@ -16,7 +16,6 @@ pkgbase = mdns-browser
 	makedepends = curl
 	makedepends = wget
 	makedepends = rustup
-	makedepends = dpkg
 	makedepends = webkit2gtk-4.1
 	depends = cairo
 	depends = desktop-file-utils
