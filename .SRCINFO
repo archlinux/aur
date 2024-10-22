@@ -1,5 +1,5 @@
 pkgbase = httptoolkit-git
-	pkgdesc = A beautiful, cross-platform & open-source HTTP(S) proxy, analyzer and client.
+	pkgdesc = A beautiful, cross-platform & open-source HTTP(S) proxy, analyzer and client.Use system-wide electron.
 	pkgver = 1.19.0.r0.g66e6875
 	pkgrel = 1
 	url = https://httptoolkit.com/
