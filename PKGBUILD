@@ -3,8 +3,8 @@ pkgname=jan-bin
 _pkgname=Jan
 pkgver=0.5.6
 _electronversion=30
-pkgrel=1
-pkgdesc="Run AI on your own PC"
+pkgrel=2
+pkgdesc="Run AI on your own PC.Prebuilt version.Use system-wide electron."
 arch=("x86_64")
 url="https://jan.ai/"
 _ghurl="https://github.com/janhq/jan"
@@ -34,7 +34,7 @@ build() {
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm644 "${srcdir}/opt/${_pkgname}/resources/app.asar" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
-    cp -r "${srcdir}/opt/${_pkgname}/resources/app.asar.unpacked" "${pkgdir}/usr/lib/${pkgname%-bin}"
+    cp -Pr --no-preserve=ownership "${srcdir}/opt/${_pkgname}/resources/app.asar.unpacked" "${pkgdir}/usr/lib/${pkgname%-bin}"
     install -Dm644 "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
     install -Dm644 "${srcdir}/usr/share/icons/hicolor/512x512/apps/${pkgname%-bin}.png" -t "${pkgdir}/usr/share/pixmaps"
 }
