@@ -13,5 +13,5 @@ source=("https://files.pythonhosted.org/packages/96/5e/15d4f900dd7772c19bad53e98
 sha256sums=('ed0838c8db6a2873a1415e94b39ef1e282e1a9d4eb625b31c6dca158d49d9cd4')
 
 package() {
-    python -m installer --destdir="${pkgdir}" *.whl
+    python -m installer --destdir="${pkgdir}" scikit_learn_intelex-2024.7.0-py310-none-manylinux1_x86_64.whl
 }
