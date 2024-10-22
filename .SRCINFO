@@ -1,7 +1,7 @@
 pkgbase = photoprism-tensorflow-nvidia-jetson-bin
 	pkgdesc = PhotoPrism Tensorflow 1.15 with NVIDIA jetson nano support
 	pkgver = 1.15.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/tensorflow/tensorflow
 	arch = aarch64
 	license = Apache-2.0
