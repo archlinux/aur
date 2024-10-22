@@ -1,5 +1,5 @@
 pkgbase = realm-studio-git
-	pkgdesc = A tool, any developer or system administrator would use when building and maintaining their app built on the Realm Mobile Platform.
+	pkgdesc = A tool,any developer or system administrator would use when building and maintaining their app built on the Realm Mobile Platform.Use system-wide electron.
 	pkgver = 15.2.1.r1.gb501e04
 	pkgrel = 1
 	url = https://realm.io/products/realm-studio/
