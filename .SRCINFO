@@ -1,0 +1,21 @@
+pkgbase = tre-command-bin
+	pkgdesc = Tree command, improved.
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/dduan/tre
+	arch = x86_64
+	license = MIT
+	makedepends = help2man
+	depends = glibc
+	provides = tre
+	conflicts = tre-command
+	source = LICENSE-0.4.0::https://raw.githubusercontent.com/dduan/tre/v0.4.0/LICENSE.md
+	source = README-0.4.0.md::https://raw.githubusercontent.com/dduan/tre/v0.4.0/README.md
+	source = CHANGELOG-0.4.0.md::https://raw.githubusercontent.com/dduan/tre/v0.4.0/CHANGELOG.md
+	sha256sums = ebad6b24258198516794d838ac82db718e9466c1c73f408ab42038daf3cc7b58
+	sha256sums = 46123f59ab74e57f0c235f37a8ba81a5de054c7b4cc0942cbccb3022343e99f7
+	sha256sums = a75df6375e94f00941b64889bb4037778e908b2f8af6ce7d622f366c5f7963dc
+	source_x86_64 = https://github.com/dduan/tre/releases/download/v0.4.0/tre-v0.4.0-x86_64-unknown-linux-musl.tar.gz
+	sha256sums_x86_64 = 47b6b20db6cba7114628c024d00ca842ea9ea9eeb1678facd2468fe60b266bac
+
+pkgname = tre-command-bin
