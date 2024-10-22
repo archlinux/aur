@@ -1,126 +1,33 @@
-From 4ccfadff8a5686678061da87f6c7c66966859d45 Mon Sep 17 00:00:00 2001
-From: Michael Burch <me@michaelburch.net>
-Date: Sun, 1 Sep 2024 04:28:47 +0000
-Subject: [PATCH] Bluetooth: btusb: Add 2 USB HW IDs for MT7925 (0xe118/e)
+From 6776a5f529d966bb9af7e1fd96fb9b7f5804263a Mon Sep 17 00:00:00 2001
+From: Jiande Lu <jiande.lu@mediatek.com>
+Date: Mon, 16 Sep 2024 11:22:28 +0800
+Subject: [PATCH] Bluetooth: btusb: Add USB HW IDs for MT7920/MT7925
 
-Add 2 USB HW IDs for MT7925 (0xe118/e) to ensure proper recognition.
+Add HW IDs for wireless module. These HW IDs are extracted from
+Windows driver inf file and the test for card bring up successful.
 
-These HW IDs are extracted from Windows driver inf file:
-https://dlcdnets.asus.com/pub/ASUS/nb/Image/Driver/Bluetooth/39389/Bluetooth_DCH_MediaTek_B_V1.1037.0.433Sub2_39389.exe?model=H7606WV
-
-Patch has been tested successfully on an Asus ProArt P16 model H7606WV.
-Controller is recognized devices pair successfully.
-
-Signed-off-by: Michael Burch <me@michaelburch.net>
-Signed-off-by: Luiz Augusto von Dentz <luiz.von.dentz@intel.com>
+Signed-off-by: Jiande Lu <jiande.lu@mediatek.com>
 ---
- drivers/bluetooth/btusb.c     |  6 ++++++
- drivers/pci/vgaarb.c          | 23 ++++++++++++++++-------
- sound/pci/hda/patch_realtek.c |  2 +-
- 3 files changed, 23 insertions(+), 8 deletions(-)
+ drivers/bluetooth/btusb.c | 6 ++++++
+ 1 file changed, 6 insertions(+)
 
 diff --git a/drivers/bluetooth/btusb.c b/drivers/bluetooth/btusb.c
-index 1ec71a2fb63e..cca4f5077854 100644
+index 93dbeb8b348d..8523539657a2 100644
 --- a/drivers/bluetooth/btusb.c
 +++ b/drivers/bluetooth/btusb.c
-@@ -690,6 +690,12 @@ static const struct usb_device_id quirks_table[] = {
+@@ -692,6 +692,12 @@ static const struct usb_device_id quirks_table[] = {
  	{ USB_DEVICE(0x0489, 0xe113), .driver_info = BTUSB_MEDIATEK |
  						     BTUSB_WIDEBAND_SPEECH |
  						     BTUSB_VALID_LE_STATES },
 +	{ USB_DEVICE(0x0489, 0xe118), .driver_info = BTUSB_MEDIATEK |
-+						     BTUSB_WIDEBAND_SPEECH |
-+						     BTUSB_VALID_LE_STATES },
++		              BTUSB_WIDEBAND_SPEECH |
++		              BTUSB_VALID_LE_STATES },
 +	{ USB_DEVICE(0x0489, 0xe11e), .driver_info = BTUSB_MEDIATEK |
-+						     BTUSB_WIDEBAND_SPEECH |
-+						     BTUSB_VALID_LE_STATES },
++									BTUSB_WIDEBAND_SPEECH |
++									BTUSB_VALID_LE_STATES },
  	{ USB_DEVICE(0x13d3, 0x3602), .driver_info = BTUSB_MEDIATEK |
  						     BTUSB_WIDEBAND_SPEECH |
  						     BTUSB_VALID_LE_STATES },
-diff --git a/drivers/pci/vgaarb.c b/drivers/pci/vgaarb.c
-index 78748e8d2dba..6acb23f48468 100644
---- a/drivers/pci/vgaarb.c
-+++ b/drivers/pci/vgaarb.c
-@@ -620,9 +620,11 @@ static bool vga_is_boot_device(struct vga_device *vgadev)
- 	 * We always prefer a firmware default device, so if we've already
- 	 * found one, there's no need to consider vgadev.
- 	 */
--	if (boot_vga && boot_vga->is_firmware_default)
--		return false;
-+	if (boot_vga && boot_vga->is_firmware_default){
-+	pr_info("boot_vga->is_firmware_default: %d", boot_vga->is_firmware_default);
-+	return false;}
- 
-+	pr_info("vga_is_firmware_default(pdev): %d", vga_is_firmware_default(pdev));
- 	if (vga_is_firmware_default(pdev)) {
- 		vgadev->is_firmware_default = true;
- 		return true;
-@@ -638,11 +640,14 @@ static bool vga_is_boot_device(struct vga_device *vgadev)
- 	 * vgadev is no better.
- 	 */
- 	if (boot_vga &&
--	    (boot_vga->owns & VGA_RSRC_LEGACY_MASK) == VGA_RSRC_LEGACY_MASK)
--		return false;
-+	    (boot_vga->owns & VGA_RSRC_LEGACY_MASK) == VGA_RSRC_LEGACY_MASK){
-+		pr_info("(boot_vga->owns & VGA_RSRC_LEGACY_MASK) == VGA_RSRC_LEGACY_MASK): %d", (boot_vga->owns & VGA_RSRC_LEGACY_MASK) == VGA_RSRC_LEGACY_MASK);
-+						return false;}
- 
--	if ((vgadev->owns & VGA_RSRC_LEGACY_MASK) == VGA_RSRC_LEGACY_MASK)
-+	if ((vgadev->owns & VGA_RSRC_LEGACY_MASK) == VGA_RSRC_LEGACY_MASK){
-+		pr_info("(vgadev->owns & VGA_RSRC_LEGACY_MASK) == VGA_RSRC_LEGACY_MASK): %d", (vgadev->owns & VGA_RSRC_LEGACY_MASK) == VGA_RSRC_LEGACY_MASK);
- 		return true;
-+	}
- 
- 	/*
- 	 * If we haven't found a legacy VGA device, accept a non-legacy
-@@ -651,6 +656,7 @@ static bool vga_is_boot_device(struct vga_device *vgadev)
- 	 * use legacy VGA resources.  Prefer an integrated GPU over others.
- 	 */
- 	pci_read_config_word(pdev, PCI_COMMAND, &cmd);
-+	pr_info("cmd & (PCI_COMMAND_IO | PCI_COMMAND_MEMORY): %d", cmd & (PCI_COMMAND_IO | PCI_COMMAND_MEMORY));
- 	if (cmd & (PCI_COMMAND_IO | PCI_COMMAND_MEMORY)) {
- 
- 		/*
-@@ -659,6 +665,7 @@ static bool vga_is_boot_device(struct vga_device *vgadev)
- 		 * there are more, we use the *last* because that was the
- 		 * previous behavior.
- 		 */
-+		pr_info("vga_arb_integrated_gpu(&pdev->dev): %d", vga_arb_integrated_gpu(&pdev->dev));
- 		if (vga_arb_integrated_gpu(&pdev->dev))
- 			return true;
- 
-@@ -669,8 +676,9 @@ static bool vga_is_boot_device(struct vga_device *vgadev)
- 		if (boot_vga) {
- 			pci_read_config_word(boot_vga->pdev, PCI_COMMAND,
- 					     &boot_cmd);
--			if (boot_cmd & (PCI_COMMAND_IO | PCI_COMMAND_MEMORY))
--				return false;
-+			if (boot_cmd & (PCI_COMMAND_IO | PCI_COMMAND_MEMORY)){
-+				pr_info("boot_cmd & (PCI_COMMAND_IO | PCI_COMMAND_MEMORY): %d", boot_cmd & (PCI_COMMAND_IO | PCI_COMMAND_MEMORY));
-+				return false;}
- 		}
- 		return true;
- 	}
-@@ -679,6 +687,7 @@ static bool vga_is_boot_device(struct vga_device *vgadev)
- 	 * Vgadev has neither IO nor MEM enabled.  If we haven't found any
- 	 * other VGA devices, it is the best candidate so far.
- 	 */
-+	pr_info("end-of-func: boot_vga: %d", boot_vga);
- 	if (!boot_vga)
- 		return true;
- 
-diff --git a/sound/pci/hda/patch_realtek.c b/sound/pci/hda/patch_realtek.c
-index 41e1119877b3..19b0bae074b6 100644
---- a/sound/pci/hda/patch_realtek.c
-+++ b/sound/pci/hda/patch_realtek.c
-@@ -10507,7 +10507,7 @@ static const struct snd_pci_quirk alc269_fixup_tbl[] = {
- 	SND_PCI_QUIRK(0x1043, 0x1e51, "ASUS Zephyrus M15", ALC294_FIXUP_ASUS_GU502_PINS),
- 	SND_PCI_QUIRK(0x1043, 0x1e5e, "ASUS ROG Strix G513", ALC294_FIXUP_ASUS_G513_PINS),
- 	SND_PCI_QUIRK(0x1043, 0x1e63, "ASUS H7606W", ALC285_FIXUP_CS35L56_I2C_2),
--	SND_PCI_QUIRK(0x1043, 0x1e83, "ASUS GA605W", ALC285_FIXUP_CS35L56_I2C_2),
-+	SND_PCI_QUIRK(0x1043, 0x1e83, "ASUS GA605W", ALC285_FIXUP_ASUS_GA403U_HEADSET_MIC),
- 	SND_PCI_QUIRK(0x1043, 0x1e8e, "ASUS Zephyrus G15", ALC289_FIXUP_ASUS_GA401),
- 	SND_PCI_QUIRK(0x1043, 0x1ed3, "ASUS HN7306W", ALC287_FIXUP_CS35L41_I2C_2),
- 	SND_PCI_QUIRK(0x1043, 0x1ee2, "ASUS UM6702RA/RC", ALC287_FIXUP_CS35L41_I2C_2),
 -- 
-2.46.2
+2.47.0
 
