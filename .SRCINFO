@@ -1,0 +1,12 @@
+pkgbase = vapor-toolbox
+	pkgdesc = A command line tool for the Vapor web framework
+	pkgver = 18.7.5
+	pkgrel = 1
+	url = https://github.com/vapor/toolbox
+	arch = x86_64
+	license = MIT
+	depends = swift-language
+	source = toolbox-18.7.5.tar.gz::https://github.com/vapor/toolbox/archive/refs/tags/18.7.5.tar.gz
+	sha256sums = 0322fee24872b713e1e495070e6b7b1fca468bed19f48bcf7a1397ffdf701e9a
+
+pkgname = vapor-toolbox
