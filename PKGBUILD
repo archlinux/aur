@@ -1,5 +1,8 @@
+# Maintainer: Wagner Skellington <kelson dot glint at gmail dot com>
+# Contributor: Junker
+
 pkgname=nom
-pkgver=2.1.1
+pkgver=2.6.1
 pkgrel=1
 pkgdesc='RSS reader for the terminal'
 arch=('x86_64' 'aarch64')
@@ -7,7 +10,7 @@ url='https://github.com/guyfedwards/nom'
 license=('GPL-3')
 makedepends=('go')
 source=("$url/archive/v$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('9b4b2e7ceafa938ea1ee0dcaa7c6270b6af90e9c64492ac4d2e6e453b0e14cca')
+sha256sums=('cf6e37fa9d81150bf6767571f37a8504e70ddd2d2a39a31df5e7fb31f61fb35e')
 
 build() {
   cd "$pkgname-$pkgver"
