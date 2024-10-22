@@ -3,7 +3,7 @@
 
 pkgname=python-port-for
 _pkgname=${pkgname#python-}
-pkgver=0.7.3
+pkgver=0.7.4
 pkgrel=1
 pkgdesc="Command-line utility and a python library that helps with local TCP ports managment"
 arch=(any)
@@ -18,7 +18,7 @@ makedepends=(
 )
 checkdepends=(python-pytest)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('c19259a6a898195062307f5ea07fc3ca577166f87dc493a72e9bd74f236c43a3')
+sha256sums=('1d0c175479947ebcdaf7fb91d9c9ccce04914f065459f7150e93f3919ebc182c')
 
 build() {
   cd "$_pkgname-$pkgver"
