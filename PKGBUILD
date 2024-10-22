@@ -8,7 +8,7 @@
 readonly _pkgname="cake_wallet"
 
 pkgname="cake-wallet-bin"
-pkgver="4.19.5"
+pkgver="4.20.1"
 pkgrel="1"
 pkgdesc="A noncustodial multi-currency wallet."
 arch=("x86_64")
@@ -18,8 +18,8 @@ depends=("at-spi2-core" "cairo" "fontconfig" "gcc-libs" "gdk-pixbuf2" "glib2" "g
 source=("${pkgname}-v${pkgver}-release.tar.xz::${url}/releases/download/v${pkgver}/Cake_Wallet_v${pkgver}_Linux.tar.xz"
     "${pkgname}-v${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
     "${pkgname}.desktop")
-sha512sums=("d89658305dd79b47205149abd2e32cab6a1559d6247e634f683440e607ef20ea9d8d372a79f7c1889dc6e8c6611bfd3b7e8a951be713665d902137e68a786462"
-    "5b14ba81c879aa88a60ceb262024d4edd0f45ec56e2a7b0e218716656d0aa28ba8fb0996d82363b674e0a011656b37f9538df5ed7eec28ebeeb563765f7e11d1"
+sha512sums=("035f2254690bfdee24e95399090c79b72c1fc6f7c3558dff66301d93eb33e2c5dafff89cea177143d7a5580132bcad2fbc54207c4b134092fdcd70d9ed4a34c2"
+    "e997bff630b5480c4ce1b9ef461b495c20bb7788ab239f3d20d9c8b09413a368ddc0d16e74d52733acf7c57a16cdd973d3b2ace89ed4b4f2501f78456308ca1f"
     "5c023a15f0e6b6df6ca50192642c07b16697921bfe55fc657b0388123fb8cfc6dd90c6302fc417a2907d9c063084557b94df31617dc416bdc10041ad42359437")
 
 package()
