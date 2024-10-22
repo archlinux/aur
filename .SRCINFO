@@ -11,6 +11,7 @@ pkgbase = upscayl-git
 	makedepends = elfutils
 	makedepends = curl
 	makedepends = gcc
+	makedepends = gendesk
 	depends = electron27
 	depends = vulkan-icd-loader
 	depends = nodejs

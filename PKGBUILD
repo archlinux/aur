@@ -24,6 +24,7 @@ makedepends=(
     'elfutils'
     'curl'
     'gcc'
+    'gendesk'
 )
 source=(
     "${pkgname//-/.}::git+${_ghurl}.git"
