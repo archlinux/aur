@@ -1,6 +1,6 @@
 pkgbase = buttercup-desktop-git
-	pkgdesc = Cross-Platform Passwords & Secrets Vault
-	pkgver = 2.28.1.r0.gfc6b2fa
+	pkgdesc = 🔑 Cross-Platform Passwords & Secrets Vault.Use system-wide electron.
+	pkgver = 2.28.1.r2.g48f9e20
 	pkgrel = 1
 	url = https://buttercup.pw/
 	arch = aarch64
