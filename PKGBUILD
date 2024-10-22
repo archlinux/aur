@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=ttkmusicplayer-bin
 _pkgname=TTKMusicPlayer
-pkgver=4.0.0.0
+pkgver=4.1.1.0
 pkgrel=1
-pkgdesc="TTKMusicPlayer that imitation Kugou music, the music player uses of qmmp core library based on Qt for windows and linux.(支持网易云音乐、酷我音乐、酷狗音乐)"
+pkgdesc="TTKMusicPlayer that imitation Kugou music, the music player uses of qmmp core library based on Qt.Prebuilt version.(支持网易云音乐、酷我音乐、酷狗音乐)"
 arch=('x86_64')
 url="https://github.com/Greedysky/TTKMusicPlayer"
 license=(
@@ -31,27 +31,28 @@ source=(
     "${pkgname%-bin}.desktop"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('288126b33bd1c781564b1a51878d512d373036f385d9c905216056b0b9a15de4'
-            'd806a04be77d11023e74c59d2d854d4320f41e1d6ed39e2443c764861f4386d6'
-            '1637474c3eedf557db89fc2c0cf0e1ee70ee0df5e2fdabc8898fc121415aab47')
+sha256sums=('fbad39a5640c68635236921253ad064767c7ba3524d03bbcc037d228141110f2'
+            '26293cbcc216f141d1ec7346c225d13a14f689b4b1ab81e37da73f279082214d'
+            '47c425909880e36e68f338a022b066e2a4f2f51ab4ab575532e54eca2520f779')
 build() {
-    sed -e "s|@appname@|${pkgname%-bin}|" \
-        -e "s|@runname@|${_pkgname}|g" \
-        -e "s|@pkgver@|${pkgver}|g" \
-        -i "${srcdir}/${pkgname%-bin}.sh"
-    install -Dm755 -d "${srcdir}/opt/${pkgname%-bin}"
-    7z x -aoa "${srcdir}/${pkgname%-bin}-${pkgver}.7z" -o"${srcdir}/opt/${pkgname%-bin}"
-    rm -rf "${srcdir}/opt/${pkgname%-bin}/Downloads"
-    find "${srcdir}/opt/${pkgname%-bin}" -type f -exec chmod 644 {} \;
-    find "${srcdir}/opt/${pkgname%-bin}" -type d -exec chmod 755 {} \;
-    find "${srcdir}/opt/${pkgname%-bin}" -type f -name "TTK*" -exec chmod 755 {} \;
-    chmod 755 "${srcdir}/opt/${pkgname%-bin}/${pkgver}/QtWebEngineProcess"
-    sed "s|${_pkgname}.desktop|${pkgname%-bin}.desktop|g" -i "${srcdir}/opt/${pkgname%-bin}/deploy/share/appdata/${pkgname%-bin}.appdata.xml"
+    sed -e "
+        s/@appname@/${pkgname%-bin}/g
+        s/@runname@/${_pkgname}/g
+        s/@pkgver@/${pkgver}/g
+    " -i "${srcdir}/${pkgname%-bin}.sh"
+    install -Dm755 -d "${srcdir}/usr/lib/${pkgname%-bin}"
+    7z x -aoa "${srcdir}/${pkgname%-bin}-${pkgver}.7z" -o"${srcdir}/usr/lib/${pkgname%-bin}"
+    rm -rf "${srcdir}/usr/lib/${pkgname%-bin}/Downloads"
+    find "${srcdir}/usr/lib/${pkgname%-bin}" -type f -exec chmod 644 {} \;
+    find "${srcdir}/usr/lib/${pkgname%-bin}" -type d -exec chmod 755 {} \;
+    find "${srcdir}/usr/lib/${pkgname%-bin}" -type f -name "TTK*" -exec chmod 755 {} \;
+    chmod 755 "${srcdir}/usr/lib/${pkgname%-bin}/${pkgver}/QtWebEngineProcess"
+    sed -i "s/${_pkgname}.desktop/${pkgname%-bin}.desktop/g" "${srcdir}/usr/lib/${pkgname%-bin}/deploy/share/appdata/${pkgname%-bin}.appdata.xml"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
-    cp -r "${srcdir}/opt" "${pkgdir}"
+    cp -Pr --no-preserve=ownership "${srcdir}/usr/lib" "${pkgdir}/usr"
     install -Dm644 "${srcdir}/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
-    install -Dm644 "${srcdir}/opt/${pkgname%-bin}/deploy/share/pixmaps/${pkgname%-bin}.png" -t "${pkgdir}/usr/share/pixmaps"
-    install -Dm644 "${srcdir}/opt/${pkgname%-bin}/deploy/share/appdata/${pkgname%-bin}.appdata.xml" -t "${pkgdir}/usr/share/appdata"
+    install -Dm644 "${srcdir}/usr/lib/${pkgname%-bin}/deploy/share/pixmaps/${pkgname%-bin}.png" -t "${pkgdir}/usr/share/pixmaps"
+    install -Dm644 "${srcdir}/usr/lib/${pkgname%-bin}/deploy/share/appdata/${pkgname%-bin}.appdata.xml" -t "${pkgdir}/usr/share/appdata"
 }

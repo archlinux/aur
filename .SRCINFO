@@ -1,6 +1,6 @@
 pkgbase = ttkmusicplayer-bin
-	pkgdesc = TTKMusicPlayer that imitation Kugou music, the music player uses of qmmp core library based on Qt for windows and linux.(支持网易云音乐、酷我音乐、酷狗音乐)
-	pkgver = 4.0.0.0
+	pkgdesc = TTKMusicPlayer that imitation Kugou music, the music player uses of qmmp core library based on Qt.Prebuilt version.(支持网易云音乐、酷我音乐、酷狗音乐)
+	pkgver = 4.1.1.0
 	pkgrel = 1
 	url = https://github.com/Greedysky/TTKMusicPlayer
 	arch = x86_64
@@ -14,15 +14,15 @@ pkgbase = ttkmusicplayer-bin
 	depends = alsa-lib
 	depends = qt5-declarative
 	depends = openssl-1.0
-	provides = ttkmusicplayer=4.0.0.0
+	provides = ttkmusicplayer=4.1.1.0
 	conflicts = ttkmusicplayer
-	noextract = ttkmusicplayer-4.0.0.0.7z
+	noextract = ttkmusicplayer-4.1.1.0.7z
 	options = !strip
-	source = ttkmusicplayer-4.0.0.0.7z::https://github.com/Greedysky/TTKMusicPlayer/releases/download/4.0.0.0/ttkmusicplayer-linux-x64.7z
+	source = ttkmusicplayer-4.1.1.0.7z::https://github.com/Greedysky/TTKMusicPlayer/releases/download/4.1.1.0/ttkmusicplayer-linux-x64.7z
 	source = ttkmusicplayer.desktop
 	source = ttkmusicplayer.sh
-	sha256sums = 288126b33bd1c781564b1a51878d512d373036f385d9c905216056b0b9a15de4
-	sha256sums = d806a04be77d11023e74c59d2d854d4320f41e1d6ed39e2443c764861f4386d6
-	sha256sums = 1637474c3eedf557db89fc2c0cf0e1ee70ee0df5e2fdabc8898fc121415aab47
+	sha256sums = fbad39a5640c68635236921253ad064767c7ba3524d03bbcc037d228141110f2
+	sha256sums = 26293cbcc216f141d1ec7346c225d13a14f689b4b1ab81e37da73f279082214d
+	sha256sums = 47c425909880e36e68f338a022b066e2a4f2f51ab4ab575532e54eca2520f779
 
 pkgname = ttkmusicplayer-bin
