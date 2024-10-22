@@ -1,7 +1,7 @@
 pkgbase = hare-toml-git
 	pkgdesc = TOML implementation for Hare
 	pkgver = 0.1.2.r4.gef9afe0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://codeberg.org/lunacb/hare-toml
 	arch = any
 	license = MIT
