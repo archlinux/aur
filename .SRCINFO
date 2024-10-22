@@ -1,0 +1,19 @@
+pkgbase = shadowsocks-yamux-plugin-git
+	pkgdesc = A shadowsocks SIP003 (SIP003u) Plugin with connection multiplexor in YAMUX protocol
+	pkgver = 0.0.0
+	pkgrel = 1
+	url = https://github.com/zonyitoo/shadowsocks-yamux-plugin
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	depends = gcc-libs
+	depends = glibc
+	provides = shadowsocks-yamux-plugin=0.0.0
+	conflicts = shadowsocks-yamux-plugin
+	options = !lto
+	source = shadowsocks-yamux-plugin::git+https://github.com/zonyitoo/shadowsocks-yamux-plugin.git
+	sha256sums = SKIP
+
+pkgname = shadowsocks-yamux-plugin-git
