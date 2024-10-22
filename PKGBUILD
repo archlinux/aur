@@ -1,6 +1,6 @@
 # Maintainer: Alexander Pohl <alex at ahpohl dot com>
 pkgname=libsunspec
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 epoch=
 pkgdesc="A C++ library for SunSpec compatible inverters, meters and batteries" 
@@ -35,6 +35,4 @@ package() {
   install -Dm644 README.md "$pkgdir"/usr/share/doc/$pkgname/README.md
   install -Dm644 CHANGELOG.md "$pkgdir"/usr/share/doc/$pkgname/CHANGELOG.md
   install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
-  install -d "$pkgdir"/usr/include/$pkgname
-  install -Dm644 include/* "$pkgdir"/usr/include/$pkgname
 }
