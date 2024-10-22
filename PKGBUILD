@@ -1,27 +1,21 @@
 # Maintainer: atomicfs <https://aur.archlinux.org/account/atomicfs>
 
 pkgname=mdbook-katex
-pkgver=0.5.9
+pkgver=0.9.0
 pkgrel=1
 pkgdesc="A preprocessor for mdbook to render LaTeX equations in HTML"
 url="https://github.com/lzanini/mdbook-katex"
 arch=('x86_64')
 license=('MIT')
-makedepends=(
-  'rust'
-  'cargo'
+makedepends=()
+depends=(
+  'mdbook'
 )
-source=("${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('4c74634469703ef7d4c3a61de6c77b56936bcb33b90b62ad52325e3a66dfaf58')
-
-build() {
-  cd "${pkgname}-${pkgver}"
-  cargo update quick-js --precise 0.4.0
-  cargo build --release
-}
+source=("${url}/releases/download/${pkgver}-binaries/${pkgname}-v${pkgver}-x86_64-unknown-linux-gnu.tar.gz")
+sha256sums=('0b705e423bebd1f792f00a0d3f8d835f6c00ad921d620ce9d62d4fb91cea8cb9')
 
 package() {
-  cd "${pkgname}-${pkgver}"
-  install -Dm 755 "target/release/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
+  cd "${srcdir}"
+  install -Dm 755 "${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
 }
 
