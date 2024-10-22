@@ -1,6 +1,6 @@
 pkgbase = slimevr-cli-git
 	pkgdesc = A SlimeVR command line interface to send commands to the slimevr server. Sending commands like Full-Reset and Yaw-Reset.
-	pkgver = r7.5d71eda
+	pkgver = r9.a0454f9
 	pkgrel = 1
 	url = https://github.com/lemonxah/slimevr-cli
 	arch = x86_64

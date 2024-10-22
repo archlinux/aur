@@ -1,7 +1,7 @@
 # Maintainer: Your Name <lemon.xah@gmail.com>
 _pkgname=slimevr-cli
 pkgname=$_pkgname-git
-pkgver=r7.5d71eda
+pkgver=r9.a0454f9
 pkgrel=1
 pkgdesc="A SlimeVR command line interface to send commands to the slimevr server. Sending commands like Full-Reset and Yaw-Reset."
 arch=('x86_64' 'i686')
