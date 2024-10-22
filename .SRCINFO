@@ -1,6 +1,6 @@
 pkgbase = phoenix-policies
 	pkgdesc = Standard Phoenix policies for Mozilla Firefox
-	pkgver = 20241019
+	pkgver = 20241022
 	pkgrel = 1
 	url = https://phoenix.celenity.dev
 	arch = any
