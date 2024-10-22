@@ -1,7 +1,7 @@
 # Maintainer: Paul <pb.orzel@proton.me>
 pkgname=amdgpu_top-git
 _pkgname=amdgpu_top
-pkgver=0.3.0.r1.g8a76130
+pkgver=0.9.2.r15.g70f4130
 pkgrel=1
 pkgdesc="Tool that shows AMD GPU utilization"
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
@@ -22,17 +22,14 @@ sha256sums=(SKIP)
 
 pkgver() {
   cd "$_pkgname"
-  ( set -o pipefail
-    git describe --long --abbrev=7 2>/dev/null | sed 's/^[^0-9]\(.*\)/\1/;s/\([^-]*-g\)/r\1/;s/-/./g' ||
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
-  )
+  git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
     cd "$srcdir/$_pkgname"
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
-    cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+    cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {

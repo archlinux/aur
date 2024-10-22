@@ -1,6 +1,6 @@
 pkgbase = amdgpu_top-git
 	pkgdesc = Tool that shows AMD GPU utilization
-	pkgver = 0.3.0.r1.g8a76130
+	pkgver = 0.9.2.r15.g70f4130
 	pkgrel = 1
 	url = https://github.com/Umio-Yasuno/amdgpu_top
 	arch = i686
