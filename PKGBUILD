@@ -8,12 +8,12 @@ depends=(
 )
 makedepends=("extra-cmake-modules")
 pkgdesc="Terminal emulator using LingmoUI as interface style on LingmoOS."
-pkgrel=1
+pkgrel=2
 pkgver=2.0.0
 url="https://lingmo.org"
 license=("GPL")
 source=("https://github.com/LingmoOS/${pkgname}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('262ed8f325de3ceb48b1bd0e6e2324b9bb9006e30f47799e476f79c44c4c3ec5')
+sha256sums=('c32a7677d1ea88048ef27a50485d2271d0a4150136bdb77e999d368fda8b701a')
 
 prepare() {
     cd "${srcdir}/${pkgname}-${pkgver}"
