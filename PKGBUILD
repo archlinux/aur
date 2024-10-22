@@ -4,8 +4,8 @@ _pkgname=Inkdown
 pkgver=1.1.0
 _electronversion=29
 _nodeversion=18
-pkgrel=1
-pkgdesc="A WYSIWYG Markdown editor, improve reading and editing experience. and generate your Markdown files into online documents in the easiest and fastest way."
+pkgrel=2
+pkgdesc="A WYSIWYG Markdown editor, improve reading and editing experience. and generate your Markdown files into online documents in the easiest and fastest way.Use system-wide electron."
 arch=('any')
 url="https://www.inkdown.me/"
 _ghurl="https://github.com/1943time/inkdown"
@@ -20,7 +20,6 @@ makedepends=(
     'npm'
     'nvm'
     'curl'
-    'git'
 )
 source=(
     "${pkgname}-${pkgver}::${_ghurl}/archive/refs/tags/v${pkgver}.tar.gz"
@@ -67,12 +66,12 @@ build() {
     fi
     NODE_ENV=development    pnpm install --no-frozen-lockfile
     NODE_ENV=development    pnpm run build
-    NODE_ENV=production     npm exec -c "electron-builder --linux dir -c.electronDist=${electronDist} -c.electronVersion=${_electronversion}"
+    NODE_ENV=production     pnpm -c exec "electron-builder --linux dir -c.electronDist=${electronDist} -c.electronVersion=${_electronversion}"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
     install -Dm644 "${srcdir}/${pkgname}-${pkgver}/dist/linux-"*/resources/app.asar -t "${pkgdir}/usr/lib/${pkgname}"
-    cp -r  "${srcdir}/${pkgname}-${pkgver}/dist/linux-"*/resources/app.asar.unpacked "${pkgdir}/usr/lib/${pkgname}"
+    cp -Pr --no-preserve=ownership  "${srcdir}/${pkgname}-${pkgver}/dist/linux-"*/resources/app.asar.unpacked "${pkgdir}/usr/lib/${pkgname}"
     install -Dm644 "${srcdir}/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
     install -Dm644 "${srcdir}/${pkgname}-${pkgver}/resources/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-bin}.png"
     install -Dm644  "${srcdir}/${pkgname}-${pkgver}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"

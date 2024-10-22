@@ -1,7 +1,7 @@
 pkgbase = inkdown
-	pkgdesc = A WYSIWYG Markdown editor, improve reading and editing experience. and generate your Markdown files into online documents in the easiest and fastest way.
+	pkgdesc = A WYSIWYG Markdown editor, improve reading and editing experience. and generate your Markdown files into online documents in the easiest and fastest way.Use system-wide electron.
 	pkgver = 1.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.inkdown.me/
 	arch = any
 	license = AGPL-3.0-only
@@ -10,7 +10,6 @@ pkgbase = inkdown
 	makedepends = npm
 	makedepends = nvm
 	makedepends = curl
-	makedepends = git
 	depends = electron29
 	conflicts = inkdown
 	source = inkdown-1.1.0::https://github.com/1943time/inkdown/archive/refs/tags/v1.1.0.tar.gz
