@@ -1,14 +1,14 @@
 pkgbase = python-visca-over-ip
 	pkgdesc = Python code for controlling PTZ cameras using VISCA commands over a local network.
-	pkgver = 0.4.1
-	pkgrel = 5
+	pkgver = 0.5.0
+	pkgrel = 1
 	url = https://github.com/misterhay/VISCA-IP-Controller/
 	arch = any
 	license = Custom
 	makedepends = git
 	makedepends = python-setuptools
 	provides = python-visca-over-ip
-	source = VISCA-IP-Controller::git+https://github.com/misterhay/VISCA-IP-Controller.git#commit=d2ef661
-	sha512sums = SKIP
+	source = python-visca-over-ip-0.5.0.tar.gz::https://github.com/misterhay/VISCA-IP-Controller/archive/refs/tags/v0.5.0.tar.gz
+	sha512sums = 0fa84bcd14d4a52daf4e2b70cc59776e58f54d737fa94eba915e2c38fb0f7ef7953e8d2380febe9f80812b0dd7a4ae6ca2c7bdfb6568c781fca9caa4d68073b9
 
 pkgname = python-visca-over-ip
