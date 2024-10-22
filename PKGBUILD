@@ -1,6 +1,6 @@
 pkgname=gpt4all-chat
 pkgver=3.4.2
-pkgrel=1
+pkgrel=2
 pkgdesc="run open-source LLMs anywhere"
 arch=("x86_64")
 url="https://gpt4all.io"
@@ -17,7 +17,7 @@ source=(
     "001-change-binary-name.diff"
     "002-install-and-load-localdocs-model-more-standardly.diff"
     "003-prefer-system-qxlsx.diff"
-    "004-fix-build-with-qt-6.8.0.diff"
+    "004-fix-build-with-qt-6.8.0.diff::https://github.com/nomic-ai/gpt4all/pull/3121.diff"
 )
 declare -rAg _modules_name_map=(
     [gpt4all-backend/deps/llama.cpp-mainline]=https://github.com/nomic-ai/llama.cpp/archive/b3b5c0571eda3065035a7f25f7b84640b159d821.tar.gz
@@ -92,7 +92,7 @@ sha256sums=('5866769e6bb10718e9a70df9522a6a9120598791edeade207a3098186502fd12'
             'ebc6a571e828e8b31b390172374fe3667e719f6de286860934c6f6d6bfc293d3'
             'b348d6b9228316e4611186df0558f032a25ffa20334e68a91a09e07ce84db77a'
             'fc65cd3d25929bd6adc2087116cdd1f623b3271eac07f7893b1f641f218c9cce'
-            '466d02a37963b9fe0c8c04fe77831b0cc66fc17a9d111942c10e871c54067cdc'
+            '944aa9d716adddb9619ad8c87f1ea5f0d8125111fa9bbfe5e2918c80de2b7d85'
             'a91f4770ff9c39f4d72e339c379f566b3bbb359fa66122d85fc0bae3dde7abc7'
             '5f151fe3d71bb7b719eb50ed4bdedfde9c92d9d21c7eea172eec177b9875eff5'
             'b16fc2ee15a1df76e0459df32905285c94fb59135595ccbff2095167c3c865a1'
