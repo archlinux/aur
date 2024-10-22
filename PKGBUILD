@@ -1,9 +1,9 @@
-# Maintainer: Carl Smedstad <carl.smedstad at protonmail dot com>
+# Maintainer: Carl Smedstad <carsme@archlinux.org>
 
 pkgname=python-mirakuru
-_name=${pkgname#python-}
-pkgver=2.5.2
-pkgrel=4
+_pkgname=${pkgname#python-}
+pkgver=2.5.3
+pkgrel=1
 pkgdesc="Start your subprocess and wait for a clear indication that it's running"
 arch=(any)
 url="https://github.com/ClearcodeHQ/mirakuru"
@@ -23,11 +23,10 @@ checkdepends=(
   python-daemon
   python-pytest
 )
+source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
+sha256sums=('f736d029c6716d3326a2f5178dc68344e41719a8a25237f55eb6579487791bcf')
 
-source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('41f01aae0fae2535292d9c6ac3f9f3980f5f96924c41d4d5f9687918788ff6c5')
-
-_archive="$_name-$pkgver"
+_archive="$_pkgname-$pkgver"
 
 build() {
   cd "$_archive"
