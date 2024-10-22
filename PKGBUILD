@@ -1,7 +1,7 @@
-# Maintainer: Vianney le Clément <vleclement AT gmail·com>
+# Maintainer: Vianney le Clément <code AT quartic·eu>
 _pkgname=jbig2enc
 pkgname=$_pkgname-git
-pkgver=0.29.1.gea6a40a
+pkgver=0.29.20.gc0141bf
 pkgrel=1
 pkgdesc="A JBIG2 image encoder"
 arch=('i686' 'x86_64')
@@ -18,11 +18,6 @@ md5sums=('SKIP')
 pkgver() {
   cd "$srcdir/$_pkgname"
   git describe --tags | sed 's/-/./g'
-}
-
-prepare() {
-  cd "$srcdir/$_pkgname"
-  sed -i 's@^#!/usr/bin/python$@#!/usr/bin/env python2@' pdf.py
 }
 
 build() {
