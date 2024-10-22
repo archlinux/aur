@@ -9,16 +9,16 @@
 # Contributor: David Fuhr <david.fuhr@web.de>
 
 pkgname=oracle-sqldeveloper
-pkgver=23.1.1.345.2114
+pkgver=24.3.0.284.2209
 pkgrel=1
 pkgdesc="A graphical tool for database development"
 arch=("any")
 url="https://www.oracle.com/tools/downloads/sqldev-downloads.html"
 license=("custom:OTN")
-depends=("bash" "freetype2" "java-environment=11")
+depends=("bash" "freetype2" "java-environment=17")
 optdepends=(
   "ksh"
-  "java11-openjfx: Required to run the application with JDK11"
+  "java17-openjfx: Required to run the application with JDK17"
 )
 install="${pkgname}.install"
 source=(
@@ -29,21 +29,21 @@ source=(
   "java_home.patch"
 )
 md5sums=(
-  "dc13da11f837a5f9c64187f52afb1ffe"
+  "9134de7858ff9a4891224ad34ec77ee1"
   "1d17d18e10ab85dead0770e8840273b3"
   "26c1dc933a9ab58a4245f4f351717645"
   "71a4092467209c160d0f34abbc08e049"
   "f732d162c751dc096bbe0e0f96b78754"
 )
 sha1sums=(
-  "b320870ca846858e5abfc3b3e010fc5e9040dd05"
+  "3da3652bce6dac2bc947d51717c8920860f747e3"
   "056bef8e3caa25e62c1395346c34f8a83c532aa8"
   "f33177179a2c6ea8b3fa8db5465dc36cf4317b1b"
   "524dfbd8baf17e348d529a831abf639029c56c7b"
   "f78dd599d2804dedabccf6e1746aa9bb27c2b7ee"
 )
 sha256sums=(
-  "ae84622086392ab29d235aa5c9cadfef976f5b1453a0c301a007f74c005d92e5"
+  "fd931ea992a99f3330bd4dcaa6ae07d99366c7b07c7e4f6bba8ff131e9641dd2"
   "bd028a137c83ab3698a562e9a7ec4006fb396178ab4a6ebdbaa60c75b5c0974c"
   "43b16049fbf85740767c45f0387a7c5e6118b8876509a8f0bb621ed0b5576a25"
   "7b3a6fd8a1ade4427382ee36dc28432655902a0a68547b29c5ce089bd85fe3de"
