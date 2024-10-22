@@ -1,0 +1,5 @@
+[nzbhydra2]
+source = "github"
+github = "theotherp/nzbhydra2"
+prefix = "v"
+use_latest_release = true
