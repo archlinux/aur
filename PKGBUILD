@@ -1,12 +1,12 @@
 # Maintainer: K4YT3X <aur@k4yt3x.com>
 pkgname=video2x-git
-pkgver=r840.ecbc512
+pkgver=r850.58ea9e4
 pkgrel=1
 pkgdesc="A machine learning-based lossless video super resolution framework"
 arch=('x86_64')
 url="https://github.com/k4yt3x/video2x"
 license=('AGPL3')
-depends=('ffmpeg' 'ncnn' 'vulkan-driver')
+depends=('ffmpeg' 'ncnn' 'vulkan-driver' 'opencv' 'spdlog')
 makedepends=('git' 'cmake' 'make' 'clang' 'pkgconf' 'vulkan-headers' 'openmp')
 source=("git+${url}.git")
 b2sums=('SKIP')
@@ -25,7 +25,7 @@ build() {
     cd "$srcdir/${pkgname%-git}"
     cmake -B build -S . -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++
-    cmake --build build --config Release --parallel $(nproc)
+    cmake --build build --config Release --parallel
 }
 
 package() {
