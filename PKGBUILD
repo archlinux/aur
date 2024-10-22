@@ -5,8 +5,8 @@
 
 pkgname=spotify-dev
 _pkgname=spotify
-pkgver=1.2.42.290
-_commit=g242057a2
+pkgver=1.2.48.405
+_commit=gf2c48e6f
 pkgrel=1
 pkgdesc='A proprietary music streaming service'
 arch=('x86_64')
@@ -18,7 +18,6 @@ depends=('alsa-lib'
 	'libayatana-appindicator'
 	'libcurl-gnutls'
 	'libdbusmenu-glib'
-	'libglvnd'
 	'libice'
 	'libsm'
 	'nss'
@@ -35,7 +34,7 @@ source=("${_pkgname}-Release::http://repository.spotify.com/dists/testing/Releas
 	"${_pkgname}-${CARCH}-Packages::http://repository.spotify.com/dists/testing/non-free/binary-amd64/Packages"
 	'LICENSE')
 sha512sums=('SKIP'
-	'9b73788835fd590dd0e47b634605b93637bc935c760ae40e7f5062d2417b67f7e31c040dd60edd801d4a3b642a126c99f1f49c8a731fafbeb0cc5a1e5b436052'
+	'caeacfe07b2151caba41a5c879f064b9dcc8ebe38233f4c411833a9086864c6863aca41456c2f40a0af52c829a4b74e2ade5d09be931aaa92cb1538bf23d786c'
 	'SKIP'
 	'2e16f7c7b09e9ecefaa11ab38eb7a792c62ae6f33d95ab1ff46d68995316324d8c5287b0d9ce142d1cf15158e61f594e930260abb8155467af8bc25779960615')
 
@@ -76,7 +75,7 @@ package() {
     install -d -m 755 "${_pkgopt}/locales"
 
     # Install files in rootdir
-    for _rfile in $(find "${_srcshare}" -maxdepth 1 -type f -name "*.pak" -o -name "*.dat" -o -name "*.bin" -o -name "libcef.so" -o -name "*.json"); do
+    for _rfile in $(find "${_srcshare}" -maxdepth 1 -type f -name "*.pak" -o -name "*.dat" -o -name "*.bin" -o -name "libcef.so" -o -name "libGLESv2.so" -o -name "libEGL.so"); do
         install -D -m 644 "${_rfile}" "${_pkgopt}"
     done
 
