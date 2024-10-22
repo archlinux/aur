@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=pedax-bin
-pkgver=6.63.0
-_subver=159
+pkgver=6.63.1
+_subver=160
 pkgrel=1
-pkgdesc="Reversi Board with edax, which is the strongest reversi engine."
+pkgdesc="Reversi Board with edax, which is the strongest reversi engine.Prebuilt version."
 arch=("x86_64")
 url="https://sensuikan1973.github.io/pedax/"
 _ghurl="https://github.com/sensuikan1973/pedax"
@@ -21,12 +21,12 @@ source=(
     "${pkgname%-bin}-${pkgver}.zip::${_ghurl}/releases/download/${pkgver}%2B${_subver}/${pkgname%-bin}-ubuntu-latest.zip"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('3866f97162ed05038d7b5204e03f12116d9523efe96b2f1012706b86430637a6'
+sha256sums=('ea182b8380b96e37e8a25d552613b33b44f11eb5f4dcfa683fe6577374e1a5d8'
             '3b8311438e88f47eb507322a43c7a4156bfebb8c0f6e7b7436ef70842fb4c745')
 build() {
     sed -e "
-        s/@appname@/${pkgname%-bin}/
-        s/@runname@/${pkgname%-bin}/
+        s/@appname@/${pkgname%-bin}/g
+        s/@runname@/${pkgname%-bin}/g
     " -i "${srcdir}/${pkgname%-bin}.sh"
     install -Dm755 -d "${srcdir}/usr/lib/${pkgname%-bin}"
     bsdtar -xf "${srcdir}/${pkgname%-bin}-${pkgver}.zip" -C "${srcdir}/usr/lib/${pkgname%-bin}"
