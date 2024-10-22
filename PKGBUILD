@@ -1,13 +1,13 @@
 # Maintainer: Valentin Batz <valentin.batz+archlinux@posteo.de>
 pkgname=mdns-browser
 pkgver=0.9.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A cross platform mDNS-Browser app written in Rust using tauri and leptos "
 arch=('x86_64')
 url="https://github.com/hrzlgnm/mdns-browser"
 license=('MIT')
-depends=('cairo' 'desktop-file-utils' 'gdk-pixbuf2' 'glib2' 'gtk3' 'hicolor-icon-theme' 'libsoup' 'pango' 'webkit2gtk' 'openssl')
-makedepends=('cargo' 'git' 'file' 'openssl' 'appmenu-gtk-module' 'libappindicator-gtk3' 'librsvg' 'base-devel' 'curl' 'wget' 'rustup' 'dpkg' 'webkit2gtk') options=('!strip' '!emptydirs')
+depends=('cairo' 'desktop-file-utils' 'gdk-pixbuf2' 'glib2' 'gtk3' 'hicolor-icon-theme' 'libsoup' 'pango' 'webkit2gtk-4.1' 'openssl')
+makedepends=('cargo' 'git' 'file' 'openssl' 'appmenu-gtk-module' 'libappindicator-gtk3' 'librsvg' 'base-devel' 'curl' 'wget' 'rustup' 'dpkg' 'webkit2gtk-4.1') options=('!strip' '!emptydirs')
 source=("$pkgname-v$pkgver.tar.gz::https://github.com/hrzlgnm/$pkgname/archive/refs/tags/$pkgname-v$pkgver.tar.gz")
 sha256sums=('4d333cade402336ecb6ad7a0d5848cddccb767eb47aa220ec964caee9be2c0f3')
 _builddir="$pkgname-$pkgname-v$pkgver"
@@ -22,9 +22,9 @@ prepare() {
     cargo fetch --locked --target wasm32-unknown-unknown
 }
 build() {
-    # unfortunately LTOFLGAS auto set by /etc/makepkg.conf break linking as those are added to CFLAGS automatically
-    # building will bail out with something like: undefined reference to `ring_core_0_17_8_OPENSSL_ia32cap_P' when -flto=auto is set
     cd "$srcdir/$_builddir" || exit 1
+    # unfortunately LTOFLAGS -flto=auto set by /etc/makepkg.conf break linking as those are added to CFLAGS automatically
+    # building will bail out with something like: undefined reference to `ring_core_0_17_8_OPENSSL_ia32cap_P' when -flto=auto is set
     export CFLAGS="${CFLAGS//-flto=auto//}"
     cargo --locked --frozen auditable tauri build -b deb
 }
