@@ -3,7 +3,7 @@
 _pkgname=wechat-devtools
 
 pkgname="${_pkgname}"-appimage
-pkgver=1.06.2402040
+pkgver=1.06.2407120-1
 pkgrel=1
 pkgdesc="The development tools for wechat projects"
 arch=(x86_64)
@@ -21,7 +21,7 @@ source_x86_64=(
 )
 noextract=("${_appimage}")
 sha256sums_x86_64=(
-    'bdb29a9813cd1bd7b3a72ff0a2ed4b8122c93e64b937ebb6f3edb4b38f61faed'
+    'fdb9fb8506f803b47dbeb936efc2045421b8dc06285f9a586a79cbba7c9b5c66'
     '9c1b202e6bae3e0f9ee49abc304fa7ec245e9531822bf1f095f8a5579000d645'
 )
 
