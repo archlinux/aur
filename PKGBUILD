@@ -5,7 +5,7 @@ _pkg_arch=x86
 _android_arch=x86
 _android_platform_arch=arch-x86
 _pkgname=openssl
-_pkgver=3.3.2
+_pkgver=3.4.0
 
 pkgname=android-$_pkg_arch-$_pkgname
 # use a pacman compatible version scheme
@@ -21,7 +21,7 @@ makedepends=('android-environment' 'android-sdk-build-tools')
 conflicts=("android-$_pkgname-$_android_arch")
 replaces=("android-$_pkgname-$_android_arch")
 source=("https://github.com/openssl/openssl/releases/download/openssl-${pkgver}/openssl-${pkgver}.tar.gz"{,.asc})
-sha256sums=('2e8a40b01979afe8be0bbfb3de5dc1c6709fedb46d6c89c10da114ab5fc3d281'
+sha256sums=('e15dda82fe2fe8139dc2ac21a36d4ca01d5313c75f99f46c4e8a27709b7294bf'
             'SKIP')
 validpgpkeys=('EFC0A467D613CB83C7ED6D30D894E2CE8B3D79F5'
               'BA5473A2B0587B07FB27CF2D216094DFD0CB81EF')
