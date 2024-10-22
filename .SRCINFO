@@ -1,0 +1,12 @@
+pkgbase = intel-mlc
+	pkgdesc = Intel® Memory Latency Checker (Intel® MLC) is a tool used to measure memory latencies and b/w, and how they change with increasing load on the system.
+	pkgver = v3.11b
+	pkgrel = 1
+	url = https://www.intel.com/content/www/us/en/developer/articles/tool/intelr-memory-latency-checker.html
+	install = intel-mlc.install
+	arch = x86_64
+	license = LicenseRef-custom
+	source = https://downloadmirror.intel.com/834254/mlc_v3.11b.tgz
+	sha256sums = 5d5abd27d145af59d564c9c53938301a08205f075b9bd41f2f92b4c8efeb2824
+
+pkgname = intel-mlc

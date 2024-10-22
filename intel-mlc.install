@@ -1,0 +1,6 @@
+post_install() {
+    echo ""
+    echo "MSR driver (not part of the install package) should be loaded."
+    echo "This can typically be done with 'modprobe msr' command if it is not already included."
+    echo ""
+}
