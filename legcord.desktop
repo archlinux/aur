@@ -1,0 +1,8 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Legcord
+Comment=Discord client with builtin client mod & theme support.
+Exec=legcord
+Icon=legcord
+Categories=Internet;Network;InstantMessaging;
