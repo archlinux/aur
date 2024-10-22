@@ -18,7 +18,7 @@
 
 pkgname=mutter-x11-scaling
 pkgver=47.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Window manager and compositor for GNOME with X11 fractional scaling patch"
 url="https://gitlab.gnome.org/GNOME/mutter"
 arch=(x86_64)
@@ -94,11 +94,11 @@ source=(
   # Mutter tags use SSH signatures which makepkg doesn't understand
   "git+$url.git#tag=${pkgver/[a-z]/.&}"
   "git+https://gitlab.gnome.org/GNOME/gvdb.git#commit=b54bc5da25127ef416858a3ad92e57159ff565b3"
-  "https://raw.githubusercontent.com/puxplaying/mutter-x11-scaling/aed8483038e275d3f74287b0c0fce883efec1cc0/x11-Add-support-for-fractional-scaling-using-Randr.patch"
+  "https://raw.githubusercontent.com/puxplaying/mutter-x11-scaling/ba70d29f5d6b2dc6333fe2728ab056b12161bac9/x11-Add-support-for-fractional-scaling-using-Randr.patch"
 )
 b2sums=('c9899ea626a1df7d60bc8852b915aa51b88ccbffd924b683d14cb9c38992c949f29572630fec233c538ac3a67166be660878ce9019410bb11dfa481f5e003af9'
         'f989bc2ceb52aad3c6a23c439df3bbc672bc11d561a247d19971d30cc85ed5d42295de40f8e55b13404ed32aa44f12307c9f5b470f2e288d1c9c8329255c43bf'
-        'fafdc76076a6589e4cf188fe62a8e74c7df71cccff5cfb931d3afd7b1d147ac855a5f8351a4278ae24cd4e20b4e09147c822b64fedd779aa9b276c90645b13e2')
+        'e64825f246d344a9226b3473d4368b8e27cc1348508342c82de3553581eb45d46505fdbf099c6fc7257ad2e65b20589d1bd8bb7965f7f7a7d4cc0cf5c8fa8ff6')
 
 prepare() {
   cd mutter
