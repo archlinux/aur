@@ -6,7 +6,7 @@
 # for change request, PLEASE MAKE A PR ON GITHUB REPO, keep commenting here would be ignored
 
 pkgname=siyuan-bin
-pkgver=3.1.9
+pkgver=3.1.10
 pkgrel=1
 pkgdesc="auto upload to AUR when SiYuan stable release"
 arch=("x86_64")
@@ -30,21 +30,7 @@ prepare() {
 }
 
 package() {
-    echo "----------------------------------------"
-    echo "Note: You have to have sudo permission to proceed."
-    echo "Don't know what's that? check link below:"
-    echo "https://wiki.archlinux.org/title/Sudo"
-    echo "----------------------------------------"
-
     install -Dm755 ${_pkgname} "${pkgdir}/${_installdir}/siyuan.AppImage"
     install -Dm644 "squashfs-root/resources/stage/icon.png" "${pkgdir}/usr/share/icons/hicolor/512x512/apps/siyuan-bin.png"
     install -Dm644 "squashfs-root/siyuan.desktop" "${pkgdir}/usr/share/applications/siyuan-bin.desktop"
-
-if [ ! -f "/usr/bin/siyuan" ]; then
-  sudo -k
-  sudo mkdir -p "/usr/bin"
-  sudo bash -c 'echo "#!/bin/sh" > "/usr/bin/siyuan"'
-  sudo bash -c 'echo "exec /opt/appimages/siyuan.AppImage" >> "/usr/bin/siyuan"'
-  sudo chmod 755 "/usr/bin/siyuan"
-fi
 }
