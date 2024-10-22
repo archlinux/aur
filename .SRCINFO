@@ -1,0 +1,18 @@
+pkgbase = whatsapp-linux-desktop
+	pkgdesc = An unofficial WhatsApp Linux Desktop application
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/sayedulsayem/whatsapp-linux-desktop
+	arch = x86_64
+	license = MIT
+	depends = electron
+	depends = libxss
+	depends = nss
+	depends = libxtst
+	depends = libnotify
+	depends = libappindicator-gtk3
+	conflicts = whatsapp-linux-desktop-bin
+	source = whatsapp-linux-desktop-1.0.1.tar.gz::https://github.com/sayedulsayem/whatsapp-linux-desktop/releases/download/v1.0.1/whatsapp-linux-desktop-1.0.1-x64.tar.gz
+	sha256sums = 2bf6a499162a91af524597e977c366c9c28432a6f2712f0ced7acf45fae51581
+
+pkgname = whatsapp-linux-desktop
