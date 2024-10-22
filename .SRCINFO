@@ -1,0 +1,14 @@
+pkgbase = yoaur
+	pkgdesc = An AUR helper written in C++
+	pkgver = 1.2.2
+	pkgrel = 1
+	epoch = 3
+	url = https://github.com/thedenzellight/yo
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = base-devel
+	makedepends = cmake
+	provides = yo
+
+pkgname = yoaur
