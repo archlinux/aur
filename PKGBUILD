@@ -14,7 +14,7 @@ prepare() {
 }
 
 build() {
-	cd $pkgname
+	cd yo
 	mkdir -p build
 	cd build
 	cmake ..
