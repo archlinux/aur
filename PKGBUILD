@@ -3,10 +3,10 @@
 
 _pkgname='ferdium'
 pkgname="ferdium-nightly"
-_electron='electron32'
-_electronpackage='electron32'
+_electron='electron33'
+_electronpackage='electron33'
 pkgver=6.7.8.nightly.11
-pkgrel=1
+pkgrel=2
 pkgdesc='A messaging browser that allows you to combine your favorite messaging services into one application (git build from latest nightly release).'
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url="https://ferdium.org/"
