@@ -1,8 +1,8 @@
 # Maintainer: Alex Tharp <alex at toastercup dot io>
 pkgname=coolvlviewer-bin
-pkgver=1.32.2.16
+pkgver=1.32.2.19
 pkgrel=1
-pkgdesc="A third-party viewer for Second Life and OpenSim grids."
+pkgdesc="A third-party viewer for Second Life and OpenSim grids"
 url="http://sldev.free.fr"
 license=('GPL-2.0-only')
 depends=(
@@ -49,8 +49,8 @@ source=(
   "coolvlviewer.launcher"
 )
 sha1sums=(
-  'b3e96470f0b7bf73e8659af50b780a96b4a83839'
-  '6336a03697c321495c3c9aacc57274b4a054f08a'
+  '99ce4d409889fdc4d032535b5b8a7026fff6d44e'
+  '314763ee16ca2e2224c402ec18bf5b24157ce8b8'
   '3ef1284a00a4437e4c34f809311ee0672604ef04'
 )
 
@@ -58,26 +58,14 @@ build() {
   cd $srcdir
   chmod +x CoolVLViewer-${pkgver}-Linux-x86_64-Setup
 
-  # Run the installer
   ./CoolVLViewer-${pkgver}-Linux-x86_64-Setup --mode silent --destination $srcdir/coolvlviewer/
 }
 
 package() {
-  # Install Desktop File
-  install -D -m644 $srcdir/coolvlviewer.desktop \
-    $pkgdir/usr/share/applications/coolvlviewer.desktop
-
-  # Install Icon File
-  install -D -m755 $srcdir/coolvlviewer/cvlv_icon.png \
-    $pkgdir/usr/share/pixmaps/clvl_icon.png
-
-  # Install Launcher
-  install -D -m755 $srcdir/coolvlviewer.launcher \
-    $pkgdir/usr/bin/coolvlviewer
-
-  # Install License
-  install -D -m644 $srcdir/coolvlviewer/licenses.txt \
-    $pkgdir/usr/share/licenses/$pkgname/LISENSE
+  install -D -m755 $srcdir/coolvlviewer.launcher $pkgdir/usr/bin/coolvlviewer
+  install -D -m644 $srcdir/coolvlviewer.desktop $pkgdir/usr/share/applications/coolvlviewer.desktop
+  install -D -m755 $srcdir/coolvlviewer/cvlv_icon.png $pkgdir/usr/share/pixmaps/clvl_icon.png
+  install -D -m644 $srcdir/coolvlviewer/licenses.txt $pkgdir/usr/share/licenses/$pkgname/LICENSE
 
   # Move Data to Destination Directory
   install -d $pkgdir/opt/
