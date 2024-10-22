@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=gemini-desktop-git
 _pkgname="Google Gemini Desktop"
-pkgver=1.0.5.r2.gd6d17f2
+pkgver=1.0.6.r3.g61bc3c9
 _electronversion=32
 _nodeversion=20
 pkgrel=1
@@ -77,4 +77,5 @@ package() {
     install -Dm644 "${srcdir}/${pkgname%-git}.git/build/linux-"*/resources/app.asar -t "${pkgdir}/usr/lib/${pkgname%-git}"
     install -Dm644 "${srcdir}/${pkgname%-git}.git/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-git}.png"
     install -Dm644 "${srcdir}/${pkgname%-git}.desktop" -t "${pkgdir}/usr/share/applications"
+    install -Dm644 "${srcdir}/${pkgname%-git}.git/package.json" "${pkgdir}/usr/share/licenses/${pkgname}"
 }
