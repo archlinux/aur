@@ -3,7 +3,7 @@
 # Contributor: robertfoster
 
 pkgname=rtpengine
-pkgver=12.5.1.13
+pkgver=13.0.1.1
 pkgrel=1
 pkgdesc='The Sipwise media proxy for Kamailio'
 url="https://github.com/sipwise/rtpengine"
@@ -58,7 +58,7 @@ backup=(
 )
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/sipwise/rtpengine/archive/refs/tags/mr${pkgver}.tar.gz"
         'rtpengine.sysusers')
-sha256sums=('e9f87aa0ecf380fa62fef02bab1f5ef42a43aff5ffdcd42e64fc820ef2953b20'
+sha256sums=('08cb86be04b611fb2dce81b674ce5e9a02f94dc232c8f280fdd3817f4ef3596a'
             'ea1580fbf7372309533e56d2a33714dc4d58311429ba60bf25b1bddee5ff7231')
 
 package() {
