@@ -1,4 +1,4 @@
-change-id = 127866
+change-id = 129295
 
 [llvm]
 targets = "X86"
@@ -29,6 +29,7 @@ codegen-units-std = 1
 channel = "stable"
 dist-src = false
 lld = true
+llvm-bitcode-linker = false
 deny-warnings = false
 
 [target.x86_64-unknown-linux-gnu]
@@ -56,3 +57,4 @@ crt-static = true
 
 [dist]
 compression-formats = ["gz"]
+compression-profile = "fast"
