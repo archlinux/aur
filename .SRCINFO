@@ -1,0 +1,24 @@
+pkgbase = nostrmo
+	pkgdesc = A flutter nostr client for Android, IOS, MacOS, Windows, Web and Linux
+	pkgver = 2.9.1
+	pkgrel = 1
+	url = https://github.com/haorendashu/nostrmo
+	arch = x86_64
+	license = GPL3
+	makedepends = flutter-tool
+	makedepends = flutter-devel
+	makedepends = flutter-sky-engine-google-bin
+	makedepends = flutter-target-linux
+	makedepends = gendesk
+	makedepends = git
+	depends = sqlite
+	depends = mpv
+	provides = nostrmo
+	source = git+https://github.com/haorendashu/nostrmo.git#tag=2.9.1
+	source = pubspec.patch
+	sha256sums = SKIP
+	sha256sums = 49378776207de0745ff0a4eb74d07682b3c18c6d363552d4d509359d522746fa
+	sha512sums = SKIP
+	sha512sums = c14b92f08c6c9b18e7523487df89cecc4602251f84311c45f33149bf75496338d312fbf32823aaa939dc84eccc3635ca52160c9fc86bdcb28bb535b973c3abdf
+
+pkgname = nostrmo
