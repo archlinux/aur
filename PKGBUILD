@@ -1,5 +1,5 @@
 pkgname=calcure
-pkgver=3.0.1
+pkgver=3.1
 pkgrel=1
 pkgdesc='Modern TUI calendar and task manager'
 arch=('any')
@@ -8,7 +8,7 @@ license=('MIT')
 depends=('python-holidays' 'python-jdatetime' 'python-icalendar' 'python-taskw')
 makedepends=('python-build' 'python-installer' 'python-wheel' )
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz")
-sha256sums=('70fcd3bc07f5801200d861f4f03ff8ceb139c0683f6e2318a2bde8e4bdc959c9')
+sha256sums=('ca305f8319eef697f8aacd315897072f462bc1c604bfcb694144bddadca1bb03')
 
 build() {
 	cd $pkgname-$pkgver
