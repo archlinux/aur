@@ -1,6 +1,6 @@
 pkgbase = inkdown-git
-	pkgdesc = A WYSIWYG Markdown editor, improve reading and editing experience.
-	pkgver = 1.1.0.r1.g2d182e4
+	pkgdesc = A WYSIWYG Markdown editor, improve reading and editing experience. and generate your Markdown files into online documents in the easiest and fastest way.Use system-wide electron.
+	pkgver = 1.1.0.r2.g5ce1846
 	pkgrel = 1
 	url = https://github.com/1943time/inkdown
 	arch = any
