@@ -12,7 +12,6 @@ pkgbase = beekeeper-studio-git
 	makedepends = gendesk
 	makedepends = gcc
 	makedepends = cmake
-	makedepends = jq
 	depends = electron31
 	source = beekeeper-studio.git::git+https://github.com/beekeeper-studio/beekeeper-studio.git
 	source = beekeeper-studio.sh

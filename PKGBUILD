@@ -21,7 +21,6 @@ makedepends=(
     'gendesk'
     'gcc'
     'cmake'
-    'jq'
 )
 source=(
     "${pkgname%-git}.git::git+${_ghurl}.git"
