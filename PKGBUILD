@@ -2,7 +2,7 @@
 
 _pkgname=shadowsocks-yamux-plugin
 pkgname=shadowsocks-yamux-plugin-git
-pkgver=0.0.0
+pkgver=r23.3a6cccd
 pkgrel=1
 pkgdesc="A shadowsocks SIP003 (SIP003u) Plugin with connection multiplexor in YAMUX protocol"
 arch=('x86_64' 'aarch64')
@@ -43,8 +43,8 @@ build() {
 
 package() {
     cd "${srcdir}/${_pkgname}"
-    install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}/"
+    install -Dm0644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}/"
     cd target/release
-    install -Dm755 yamux-plugin-local -t "${pkgdir}/usr/bin/"
-    install -Dm755 yamux-plugin-server -t "${pkgdir}/usr/bin/"
+    install -Dm0755 yamux-plugin-local -t "${pkgdir}/usr/bin/"
+    install -Dm0755 yamux-plugin-server -t "${pkgdir}/usr/bin/"
 }
