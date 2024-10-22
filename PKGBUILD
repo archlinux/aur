@@ -1,7 +1,7 @@
 # Maintainer: Paul <pb.orzel@proton.me>
 pkgname=amdgpu_top
 pkgver=0.9.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Tool that shows AMD GPU utilization"
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
 url="https://github.com/Umio-Yasuno/amdgpu_top"
@@ -18,7 +18,7 @@ prepare() {
 	cd "$srcdir/$pkgname-$pkgver"
 	export RUSTUP_TOOLCHAIN=stable
 	export CARGO_TARGET_DIR=target
-	cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+	cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
