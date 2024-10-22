@@ -8,8 +8,8 @@ arch=('x86_64')
 url="https://shamela.ws/page/download"
 license=('custom')
 depends=('wine' 'winetricks' 'bash')
-source=('shamela4.tar.xz::https://archive.org/download/shamela4.tar/shamela4.tar.xz')
-sha256sums=('f0dc9456e84682174949cd5d157e30517b1918a44e33fbebc50d7b1e16356aad')
+source=('database.tar.xz::https://github.com/dzwdev/shamela/raw/4dd2022cb5eb634235f32606276bea28a4021c6c/database.tar.xz''shamela4_x64.tar.xz::https://github.com/dzwdev/shamela/raw/4dd2022cb5eb634235f32606276bea28a4021c6c/shamela4_x64.tar.xz')
+sha256sums=('9fd7f3675fe04fc8f1b771eb70843a632b3eed9f8640e7e8d77770dd2d612b16''f4e08e85ef0409fa12c397533108290fce578298ecee4e7709c548b6850841ff')
 
 package() {
     mkdir -p "${pkgdir}/usr/share/${pkgname}"
