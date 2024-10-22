@@ -9,7 +9,7 @@ pkgname=(
   "${pkgbase}-sycl-f16"
   "${pkgbase}-sycl-f32"
 )
-pkgver=2.21.1
+pkgver=2.22.1
 pkgrel=1
 pkgdesc="Free, Open Source OpenAI alternative. Self-hosted, community-driven and local-first"
 arch=('x86_64')
@@ -164,7 +164,7 @@ package_local-ai-sycl-f32() {
   _package
 }
 
-sha256sums=('11526b3e582c464f6796fd8db959d4ee64f401b2f8eee461562aa193e951e448'
+sha256sums=('154c32325bd1edf5fc08fdcd85c337ab6615393e2834c896fb27dbeb13e52322'
   '095c6f530c0c2f864d7aa1c22b88e111b1adc54c85e3510156dcc5b6675de00c'
   '90e042d0f5885b63a6aa4db7f87d6b931956f6c9b022407593466f61f6973312'
   '97ba21355c50ec658e220bc0558f506227b3dc77cc51f343b6f5657b0d77a19b'
