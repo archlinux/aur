@@ -1,0 +1,16 @@
+pkgbase = python-daal4py
+	pkgdesc = daal4py is a Convenient Python API to the Intel® oneAPI Data Analytics Library (oneDAL)
+	pkgver = 2024.7.0
+	pkgrel = 1
+	url = https://github.com/IntelPython/daal4py
+	arch = any
+	license = custom:Apache Software License
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	depends = python-daal
+	source = https://files.pythonhosted.org/packages/b7/5e/0ff67fb72fc1dec29540a3bd6ebd6569010883143239649a09e185409f66/daal4py-2024.7.0-py310-none-manylinux1_x86_64.whl
+	sha256sums = d29477f5eb5811fe9fff8acacb8ca79615601c4a32ba7cfd5e950274c1675524
+
+pkgname = python-daal4py
