@@ -1,0 +1,4 @@
+[ttf-twemoji-git]
+source = "git"
+git = "https://github.com/jdecked/twemoji.git"
+prefix = "v"

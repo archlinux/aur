@@ -1,6 +1,6 @@
 pkgbase = ttf-twemoji-git
 	pkgdesc = Unicode emoji color OpenType-SVG font
-	pkgver = 15.1.0.r5.ga6909cf5
+	pkgver = 15.1.0.r6.g0dfa4d0
 	pkgrel = 1
 	url = https://github.com/jdecked/twemoji
 	arch = any
@@ -22,10 +22,12 @@ pkgbase = ttf-twemoji-git
 	conflicts = ttf-twemoji
 	conflicts = ttf-twemoji-color
 	source = jdecked.twemoji::git+https://github.com/jdecked/twemoji.git
-	source = git+https://github.com/13rac1/twemoji-color-font.git
-	source = git+https://github.com/13rac1/scfbuild.git
+	source = 13rac1.twemoji-color-font::git+https://github.com/13rac1/twemoji-color-font.git
+	source = 13rac1.scfbuild::git+https://github.com/13rac1/scfbuild.git
+	source = 0001-fix-make-parallelism.patch
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
+	sha256sums = 5c92883010449928703763f82b1287cdb348862bf08d88c73f103389a626ece0
 
 pkgname = ttf-twemoji-git

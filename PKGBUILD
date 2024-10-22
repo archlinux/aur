@@ -3,7 +3,7 @@
 _fontname="twemoji"
 _pkgname="ttf-$_fontname"
 pkgname="$_pkgname-git"
-pkgver=15.1.0.r5.ga6909cf5
+pkgver=15.1.0.r6.g0dfa4d0
 pkgrel=1
 pkgdesc="Unicode emoji color OpenType-SVG font"
 url="https://github.com/jdecked/twemoji"
@@ -33,43 +33,46 @@ conflicts=(
   'ttf-twemoji-color'
 )
 
+_pkgsrc="jdecked.twemoji"
+_pkgsrc_tcf="13rac1.twemoji-color-font"
+_pkgsrc_scf="13rac1.scfbuild"
 source=(
-  'jdecked.twemoji'::'git+https://github.com/jdecked/twemoji.git'
-  'git+https://github.com/13rac1/twemoji-color-font.git'
-  'git+https://github.com/13rac1/scfbuild.git'
+  "$_pkgsrc"::"git+https://github.com/jdecked/twemoji.git"
+  "$_pkgsrc_tcf"::"git+https://github.com/13rac1/twemoji-color-font.git"
+  "13rac1.scfbuild"::"git+https://github.com/13rac1/scfbuild.git"
+  '0001-fix-make-parallelism.patch'
 )
 sha256sums=(
   'SKIP'
   'SKIP'
   'SKIP'
+  '5c92883010449928703763f82b1287cdb348862bf08d88c73f103389a626ece0'
 )
 
 pkgver() {
-  cd "jdecked.twemoji"
+  cd "$_pkgsrc"
   git describe --long --tags --abbrev=7 --exclude='*[a-zA-Z][a-zA-Z]*' \
     | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
 prepare() {
-  cd "twemoji-color-font"
-  ln -s "$srcdir/scfbuild" SCFBuild
+  cd "$_pkgsrc_tcf"
+  ln -s "$srcdir/$_pkgsrc_scf" SCFBuild
 
   rm -r "assets/twemoji-svg"
-  mv "$srcdir/jdecked.twemoji/assets/svg" "assets/twemoji-svg"
+  mv "$srcdir/$_pkgsrc/assets/svg" "assets/twemoji-svg"
 
-  sed -E -e 's&^(\s*)convert &\1magick &' \
-    -e 's/package: regular-package linux-package deb-package macos-package windows-package/package: linux-package/' \
-    -i Makefile
+  patch -Np1 -i '../0001-fix-make-parallelism.patch'
 }
 
 build() {
-  cd "twemoji-color-font"
+  cd "$_pkgsrc_tcf"
   sed -E 's&^(\s*VERSION :=) [0-9\.]+$&\1 '"${pkgver%%.r*}"'&' -i Makefile
-  make
+  make -j8
 }
 
 package() {
-  cd "twemoji-color-font/build/TwitterColorEmoji-SVGinOT-Linux-${pkgver%%.r*}"
+  cd "$_pkgsrc_tcf/build/TwitterColorEmoji-SVGinOT-Linux-${pkgver%%.r*}"
   install -Dm644 "TwitterColorEmoji-SVGinOT.ttf" -t "$pkgdir/usr/share/fonts/TTF/"
   install -Dm644 LICENSE* -t "$pkgdir/usr/share/licenses/$pkgname/"
 }

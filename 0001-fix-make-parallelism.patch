@@ -1,0 +1,57 @@
+--- a/Makefile
++++ b/Makefile
+@@ -60,7 +60,7 @@
+ 	cp ../twemoji/assets/svg/* assets/twemoji-svg/
+ 
+ # Create the operating system specific packages
+-package: regular-package linux-package deb-package macos-package windows-package
++package: linux-package
+ 
+ regular-package: $(REGULAR_FONT)
+ 	rm -f $(REGULAR_PACKAGE).zip
+@@ -72,14 +72,15 @@
+ 	7z a -tzip -mx=9 $(REGULAR_PACKAGE).zip ./$(REGULAR_PACKAGE)
+ 
+ linux-package: $(REGULAR_FONT)
+-	rm -f build/$(LINUX_PACKAGE).tar.gz
+-	rm -rf build/$(LINUX_PACKAGE)
+-	mkdir build/$(LINUX_PACKAGE)
+-	cp $(REGULAR_FONT) build/$(LINUX_PACKAGE)
+-	cp LICENSE* build/$(LINUX_PACKAGE)
+-	cp README.md build/$(LINUX_PACKAGE)
+-	cp -R linux/* build/$(LINUX_PACKAGE)
+-	tar zcvf build/$(LINUX_PACKAGE).tar.gz -C build $(LINUX_PACKAGE)
++	rm -f build/$(LINUX_PACKAGE).tar.gz && \
++	rm -rf build/$(LINUX_PACKAGE) && \
++	mkdir build/$(LINUX_PACKAGE) && \
++	cp $(REGULAR_FONT) build/$(LINUX_PACKAGE) && \
++	cp LICENSE* build/$(LINUX_PACKAGE) && \
++	cp README.md build/$(LINUX_PACKAGE) && \
++	cp -R linux/* build/$(LINUX_PACKAGE) && \
++	tar zcvf build/$(LINUX_PACKAGE).tar.gz -C build $(LINUX_PACKAGE) && \
++	:
+ 
+ deb-package: linux-package
+ 	rm -rf build/$(DEB_PACKAGE)-$(VERSION)
+@@ -125,13 +126,14 @@
+ # 3. Make the BMP into a Edge Detected PGM with mkbitmap
+ # 4. Make the PGM into a black SVG trace with potrace
+ build/svg-bw/%.svg: build/staging/%.svg | build/svg-bw
+-	inkscape -w 1000 -h 1000 $(INKSCAPE_EXPORT_FLAGS) $(TMP)/$(*F).png $<
+-	convert $(TMP)/$(*F).png -gravity center -extent 1066x1066 $(TMP)/$(*F).bmp
+-	rm $(TMP)/$(*F).png
+-	mkbitmap -g -s 1 -f 10 -o $(TMP)/$(*F).pgm $(TMP)/$(*F).bmp
+-	rm $(TMP)/$(*F).bmp
+-	potrace --flat -s --height 2048pt --width 2048pt -o $@ $(TMP)/$(*F).pgm
+-	rm $(TMP)/$(*F).pgm
++	inkscape -w 1000 -h 1000 $(INKSCAPE_EXPORT_FLAGS) $(TMP)/$(*F).png $< && \
++	magick $(TMP)/$(*F).png -gravity center -extent 1066x1066 $(TMP)/$(*F).bmp && \
++	rm $(TMP)/$(*F).png && \
++	mkbitmap -g -s 1 -f 10 -o $(TMP)/$(*F).pgm $(TMP)/$(*F).bmp && \
++	rm $(TMP)/$(*F).bmp && \
++	potrace --flat -s --height 2048pt --width 2048pt -o $@ $(TMP)/$(*F).pgm && \
++	rm $(TMP)/$(*F).pgm && \
++	:
+ 
+ # Optimize/clean the color SVG files
+ build/svg-color/%.svg: build/staging/%.svg | build/svg-color
