@@ -1,7 +1,7 @@
 # Maintainer: D7OM <hello@d7om.dev>
 
 pkgname=keyvis
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="A simple and lightweight keystroke visualisation tool"
 arch=('any')
@@ -49,31 +49,15 @@ package() {
     cat >"${pkgdir}/usr/bin/keyvis" <<EOF
 #!/usr/bin/env bash
 
-gjs -m /usr/lib/keyvis/main.js "\$@"
+if [ \$# -eq 0 ]; then
+    gjs -m /usr/lib/keyvis/main.js > /dev/null 2>&1 &
+else
+    gjs -m /usr/lib/keyvis/main.js "\$@"
+fi
 EOF
 
     # Ensure the keyvis script is executable
     chmod 755 "${pkgdir}/usr/bin/keyvis"
-
-    # Create and install the keyvis-kill executable script
-    cat >"${pkgdir}/usr/bin/keyvis-kill" <<EOF
-#!/usr/bin/env bash
-
-# Kill existing instances of keyvis
-pids=\$(pgrep -f keyvis)
-
-if [ -n "\$pids" ]; then
-    echo "Killing existing instances of keyvis with PIDs: \$pids"
-    for pid in \$pids; do
-        kill -9 "\$pid"
-    done
-else
-    echo "No running instance of keyvis found."
-fi
-EOF
-
-    # Ensure the keyvis-kill script is executable
-    chmod 755 "${pkgdir}/usr/bin/keyvis-kill"
 
     # Add a shebang to the JavaScript file for easier execution
     echo "#!/usr/bin/env gjs" | cat - "${pkgdir}/usr/lib/keyvis/main.js" >temp && mv temp "${pkgdir}/usr/lib/keyvis/main.js"
