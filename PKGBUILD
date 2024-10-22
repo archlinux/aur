@@ -13,7 +13,7 @@
 # Orginally based on a Debian Squeeze package
 
 pkgname=zoneminder
-pkgver=1.36.34
+pkgver=1.36.35
 pkgrel=1
 pkgdesc='A full-featured, open source, state-of-the-art video surveillance software system'
 arch=('any')
@@ -56,17 +56,15 @@ source=("https://github.com/ZoneMinder/zoneminder/archive/refs/tags/${pkgver}.ta
         'zoneminder-nginx.conf'
         'zoneminder-httpd.conf'
         'zoneminder-php.ini'
-        'fcgiwrap-multiwatch.service'
-        'ffmpeg-7.0.patch')
-sha256sums=('d8a30b3a6420baf0861d9afa3e94bc39e0cfa0b38cf1eb55a2ad122ef8024e73'
+        'fcgiwrap-multiwatch.service')
+sha256sums=('c3636ded4e0e5c5c62535c55153371212a379dbb1aed8c911bd6287721c3d49a'
             'dbd231e97b950c698f0f501d6a53c7291c9985e766b09e3afe00cfe69a969f44'
             '55be29e1eccb44d4ad0db8b23c37cec50f5341f8e498583d472ed1f0493876e3'
             'fad0f1646f65f1518dfde3390e6c907319bc67b61f2e04f5d5ac4144ab61131d'
             '92803838896f045612cdb88807763ff446f38f8bb136712429daeb2e3848fa0f'
             '62a3a907f48441cc40743d5b6957c727e90a34b310c6cad4b5344c91a8971e67'
             '8e1131dd6bf3796f5bcc9422c96ef77388d7ab0d8e8fc17f6b8dd1e8acc2442a'
-            'e95f9bef77aef647dd633bd9ad75dc099b6d7184684e133f2f20702de83a6260'
-            'd9dc9ba1c706d462d4cfd7be906e22500b4fc50413a2fb562458f3d488ef4e69')
+            'e95f9bef77aef647dd633bd9ad75dc099b6d7184684e133f2f20702de83a6260')
 
 prepare () {
     cd ${pkgname}-${pkgver}
@@ -77,9 +75,6 @@ prepare () {
     # Tweak the systemd service file
     sed -i 's|After=network.target mysqld.service httpd.service|After=network.target mysqld.service httpd.service nginx.service|g' misc/${pkgname}.service.in
     sed -i 's|Requires=mysqld.service httpd.service|Wants=mysqld.service httpd.service nginx.service|g' misc/${pkgname}.service.in
-
-    # Fix for FFmpeg 7.0 (provided by @shella)
-    patch -Np1 <../ffmpeg-7.0.patch
 
     # Move third-party plugins into place
     mv ../CakePHP-Enum-Behavior-1.0-zm/* web/api/app/Plugin/CakePHP-Enum-Behavior
