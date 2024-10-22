@@ -1,7 +1,7 @@
 # Maintainer: Mahor Foruzesh <mahor1221 at gmail dot com>
 
 pkgname=rye-bin
-pkgver=0.41.0
+pkgver=0.42.0
 pkgrel=1
 pkgdesc="An experimental alternative to poetry, pip, pipenv, venv, virtualenv, pdm, hatch, …"
 arch=('x86_64')
@@ -18,8 +18,8 @@ provides=(rye)
 conflicts=(rye)
 source=("rye-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
 source_x86_64=("rye-$pkgver-x86_64-linux.gz::$url/releases/download/$pkgver/rye-x86_64-linux.gz")
-sha256sums=('d3a73f7ce2b837dff7fd81928f12cfd1a2d701efc810b5f0d902ae10ca4354b6')
-sha256sums_x86_64=('db3b57fe48c0704b537c0d1e7028d15d06d5357271d96c8cd8b5fa98cffc7b46')
+sha256sums=('71b61b8ef6b2aa1c9633b18e72d2f2b06fd3f47264cf276bc7f65e4ec0b1c7af')
+sha256sums_x86_64=('1233f41f951d1122c1ffed3dbe7b0b101793ddf0d3df635adcf7bd757ac7ccbc')
 
 package() {
   install -Dm755 "rye-$pkgver-x86_64-linux" "$pkgdir/usr/bin/rye"
