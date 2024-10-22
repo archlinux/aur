@@ -8,14 +8,13 @@ _pkgbase=tuned
 pkgbase="${_pkgbase}-git"
 pkgname=("${_pkgbase}-git" "${_pkgbase}-ppd-git")
 pkgver=2.24.0.r6.g35eed3c
-pkgrel=1
+pkgrel=2
 pkgdesc='Daemon that performs monitoring and adaptive configuration of devices in the system'
 arch=('any')
 url="https://github.com/redhat-performance/${_pkgbase}"
 license=('GPL-2.0-or-later')
-depends=('dbus-glib' 'ethtool' 'gawk' 'hdparm' 'polkit' 'python-configobj'
-	'python-dbus' 'python-gobject' 'python-linux-procfs' 'python-perf'
-	'python-pyudev')
+depends=('ethtool' 'gawk' 'hdparm' 'polkit' 'perf' 'python-configobj'
+	'python-dbus' 'python-gobject' 'python-linux-procfs' 'python-pyudev')
 makedepends=('desktop-file-utils' 'git')
 source=("git+${url}.git")
 sha512sums=('SKIP')
@@ -35,10 +34,11 @@ prepare() {
 }
 
 package_tuned-git() {
-	optdepends=('virt-what: virtual machine detection'
-		'systemtap: detailed system monitoring'
+	optdepends=('virt-what: Virtual machine detection'
+		'systemtap: Detailed system monitoring'
 		'tuned-ppd: power-profiles-daemon api translation'
-		'wireless_tools: wireless device power management')
+		'wireless_tools: Wireless device power management'
+		'x86_energy_perf_policy: Energy Performance Bias (EPB) support')
 	provides=("${_pkgbase}")
 	conflicts=("${_pkgbase}")
 	backup=('etc/tuned/active_profile'
