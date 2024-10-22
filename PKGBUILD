@@ -1,3 +1,4 @@
+# Maintainer: matthewq337 <matt at mattquintanilla dot xyz>
 pkgname=calcure
 pkgver=3.1
 pkgrel=1
