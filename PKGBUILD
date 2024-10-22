@@ -1,7 +1,7 @@
 # Maintainer: D. Can Celasun <can[at]dcc[dot]im>
 pkgname=cloudquery-cli
 pkgver=6.10.0
-pkgrel=1
+pkgrel=2
 pkgdesc=" The open source high performance ELT framework powered by Apache Arrow"
 arch=('x86_64' 'aarch64')
 url="https://github.com/cloudquery/cloudquery"
@@ -26,6 +26,6 @@ build() {
 
 package() {
   install -d "${pkgdir}/usr/bin"
-  install -Dm 755 "${srcdir}/${pkgname}-v${pkgver}/cli/cli" "${pkgdir}/usr/bin/${pkgname}"
+  install -Dm 755 "${srcdir}/${pkgname}-v${pkgver}/cli/cli" "${pkgdir}/usr/bin/cloudquery"
 }
 

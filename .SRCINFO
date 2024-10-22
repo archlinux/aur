@@ -1,7 +1,7 @@
 pkgbase = cloudquery-cli
 	pkgdesc = The open source high performance ELT framework powered by Apache Arrow
 	pkgver = 6.10.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/cloudquery/cloudquery
 	arch = x86_64
 	arch = aarch64
