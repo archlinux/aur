@@ -3,18 +3,19 @@
 pkgname=python-bflb-crypto-plus
 _name=bflb_crypto_plus
 pkgver=1.0
-pkgrel=1
+pkgrel=3
 epoch=
 pkgdesc="PyCryptoPlus is an extension to the Python Crypto module (www.pycrypto.org)."
 arch=('any')
 url="https://pypi.org/project/bflb-crypto-plus"
 license=('LGPL-3.0-or-later')
 groups=()
-_pydeps=(
-    )
+# _pydeps=(
+#     )
 depends=(
     python
-    "${_pydeps[@]/#/python-}")
+    #     "${_pydeps[@]/#/python-}"
+)
 _pymakedeps=(
     build
     installer
