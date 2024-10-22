@@ -1,6 +1,6 @@
 pkgbase = webtorrent-desktop-git
-	pkgdesc = Streaming torrent client.
-	pkgver = 0.24.0.r380.g61b7681
+	pkgdesc = Streaming torrent client.Use system-wide electron.
+	pkgver = 0.24.0.r388.gfcee401
 	pkgrel = 1
 	url = https://webtorrent.io/desktop
 	arch = aarch64
@@ -17,6 +17,6 @@ pkgbase = webtorrent-desktop-git
 	source = webtorrent-desktop.git::git+https://github.com/webtorrent/webtorrent-desktop.git
 	source = webtorrent-desktop.sh
 	sha256sums = SKIP
-	sha256sums = 2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051
+	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
 
 pkgname = webtorrent-desktop-git
