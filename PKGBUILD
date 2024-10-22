@@ -1,28 +1,35 @@
-# Maintainer: Atom Long <atom0815@gmail.com>
-
+# Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
+# Contributor: Atom Long <atom0815@gmail.com>
 pkgname=electron-builder
-pkgver=23.6.0
+pkgver=25.1.8
+# 可以通过 npm search electron-builder来确定版本
 pkgrel=1
 pkgdesc="A complete solution to package and build a ready for distribution Electron app with “auto update” support out of the box"
 arch=(any)
 url="https://www.electron.build/"
-license=(MIT)
-depends=(nodejs)
-makedepends=(npm)
-source=("${pkgname}-${pkgver}.tgz::http://registry.npmjs.org/${pkgname}/-/${pkgname#nodejs-}-${pkgver}.tgz")
+license=('MIT')
+depends=(
+    'nodejs'
+    'python'
+    'python-setuptools'
+)
+makedepends=(
+    'npm'
+)
+options=(
+    '!strip'
+)
+source=("${pkgname}-${pkgver}.tgz::http://registry.npmmirror.com/${pkgname}/-/${pkgname#nodejs-}-${pkgver}.tgz")
 noextract=("${pkgname}-${pkgver}.tgz")
-sha256sums=("1740bec188d25af49dc5cda3828105fd6bd84f075e4dd1d3eb74c1ef6e4280a0")
-
+sha256sums=('282c970e66603e92f0adf47df94a5b42f3dd771bbb100e1e9f3f9dba4bb768b2')
 package() {
-  # copied from: nodejs-nativefier
-  npm install -g --cache "${srcdir}/npm-cache" --prefix "${pkgdir}/usr" "${srcdir}/${pkgname}-${pkgver}.tgz"
-
-  # Fixing permissions
-  find "$pkgdir"/usr -type d -exec chmod 755 {} +
-
-  # npm gives ownership of ALL FILES to build user
-  # https://bugs.archlinux.org/task/63396
-  chown -R root:root "${pkgdir}"
-
-  install -Dm644 "$pkgdir/usr/lib/node_modules/${pkgname#nodejs-}/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    HOME="${srcdir}/.electron-gyp"
+    {
+      echo -e '\n'  
+      #echo 'build_from_source=true'
+      echo "cache=${srcdir}/.npm_cache"
+    } >> npmrc
+    npm install -g --prefix "${pkgdir}/usr" "${srcdir}/${pkgname}-${pkgver}.tgz"
+    find "${pkgdir}"/usr -type d -exec chmod 755 {} +
+    install -Dm644 "${pkgdir}/usr/lib/node_modules/${pkgname#nodejs-}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
