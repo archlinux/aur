@@ -1,0 +1,16 @@
+[Unit]
+Description = Metube Daemon (user).
+Wants = network-online.target
+After = network-online.target
+
+[Service]
+Restart = on-failure
+Environment = DOWNLOAD_DIR="%h"
+Environment = STATE_DIR="%C/metube"
+EnvironmentFile = -%E/metube/metube.env
+ExecStartPre = /usr/bin/sh -c "/usr/bin/mkdir -p %E/metube %C/metube"
+ExecStartPre = /usr/bin/sh -c "if [ ! -f %E/metube/metube.env ]; then /usr/bin/cp /usr/share/metube/metube.env.example %E/metube/metube.env; fi"
+ExecStart = /usr/bin/metube
+
+[Install]
+WantedBy = default.target
