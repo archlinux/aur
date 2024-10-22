@@ -13,5 +13,5 @@ source=("https://files.pythonhosted.org/packages/b7/5e/0ff67fb72fc1dec29540a3bd6
 sha256sums=('d29477f5eb5811fe9fff8acacb8ca79615601c4a32ba7cfd5e950274c1675524')\
 
 package() {
-    python -m installer --destdir="${pkgdir}" *.whl
+    python -m installer --destdir="${pkgdir}" daal4py-2024.7.0-py310-none-manylinux1_x86_64.whl
 }
