@@ -1,8 +1,14 @@
 # Maintainer:
 
+: ${CARGO_HOME:=$SRCDEST/cargo-home}
+: ${CARGO_TARGET_DIR:=target}
+: ${RUSTUP_TOOLCHAIN:=stable}
+
+export CARGO_HOME CARGO_TARGET_DIR RUSTUP_TOOLCHAIN
+
 _pkgname="mozillavpn"
 pkgname="$_pkgname-git"
-pkgver=2.23.1.r103.gedf3406
+pkgver=2.24.3.r263.g304d0ff
 pkgrel=1
 pkgdesc="Fast, secure, and easy to use VPN from the makers of Firefox"
 url="https://github.com/mozilla-mobile/mozilla-vpn-client"
@@ -10,21 +16,11 @@ license=('MPL-2.0')
 arch=('x86_64')
 
 depends=(
-  'dbus'
-  'freetype2'
   'hicolor-icon-theme'
-  'libtiff'
-  'libxcb'
-  'libxdmcp'
-  'libxmu'
-  'libxrender'
-  'polkit'
+  'libsecret'
   'qt6-5compat'
-  'qt6-charts'
   'qt6-declarative'
-  'qt6-imageformats'
   'qt6-networkauth'
-  'qt6-shadertools'
   'qt6-svg'
   'qt6-websockets'
   'wireguard-tools'
@@ -46,6 +42,8 @@ optdepends=(
   'qt6-wayland: for Wayland support'
 )
 
+options=('!lto')
+
 install="$_pkgname.install"
 
 provides=("$_pkgname=${pkgver%%.r*}")
@@ -65,7 +63,7 @@ _source_mozillavpn() {
     #'kdab.android_openssl'::'git+https://github.com/KDAB/android_openssl.git'
     'mozilla-l10n.mozilla-vpn-client-l10n'::'git+https://github.com/mozilla-l10n/mozilla-vpn-client-l10n.git'
     'mozilla.glean'::'git+https://github.com/mozilla/glean.git'
-    'wireguard.wireguard-apple'::'git+https://github.com/WireGuard/wireguard-apple.git'
+    #'mozilla.wireguard-apple'::'git+https://github.com/mozilla/wireguard-apple.git'
     'wireguard.wireguard-go'::'git+https://github.com/WireGuard/wireguard-go.git'
     'wireguard.wireguard-tools'::'git+https://github.com/WireGuard/wireguard-tools.git'
   )
@@ -75,7 +73,22 @@ _source_mozillavpn() {
     'SKIP'
     'SKIP'
     'SKIP'
-    'SKIP'
+  )
+
+  _prepare_mozillavpn() (
+    cd "$srcdir/$_pkgsrc"
+    local _submodules=(
+      #'adjust.android_sdk'::'3rdparty/adjust-android-sdk'
+      #'adjust.ios_sdk'::'3rdparty/adjust-ios-sdk'
+      'getsentry.sentry-native'::'3rdparty/sentry'
+      #'kdab.android_openssl'::'3rdparty/openSSL'
+      'mozilla-l10n.mozilla-vpn-client-l10n'::'3rdparty/i18n'
+      'mozilla.glean'::'3rdparty/glean'
+      #'mozilla.wireguard-apple'::'3rdparty/wireguard-apple'
+      'wireguard.wireguard-go'::'3rdparty/wireguard-go'
+      'wireguard.wireguard-tools'::'3rdparty/wireguard-tools'
+    )
+    _submodule_update
   )
 }
 
@@ -92,43 +105,20 @@ _source_getsentry_sentry_native() {
     'SKIP'
     'SKIP'
   )
-}
 
-_prepare_mozillavpn() (
-  cd "$srcdir/$_pkgsrc"
-  local _submodules=(
-    #'adjust.android_sdk'::'3rdparty/adjust-android-sdk'
-    #'adjust.ios_sdk'::'3rdparty/adjust-ios-sdk'
-    'getsentry.sentry-native'::'3rdparty/sentry'
-    #'kdab.android_openssl'::'3rdparty/openSSL'
-    'mozilla-l10n.mozilla-vpn-client-l10n'::'3rdparty/i18n'
-    'mozilla.glean'::'3rdparty/glean'
-    'wireguard.wireguard-apple'::'3rdparty/wireguard-apple'
-    'wireguard.wireguard-go'::'3rdparty/wireguard-go'
-    'wireguard.wireguard-tools'::'3rdparty/wireguard-tools'
+  _prepare_getsentry_sentry_native() (
+    cd "$srcdir/$_pkgsrc"
+    cd "3rdparty/sentry"
+    local _submodules=(
+      'chromium.googlesource.com.linux-syscall-support'::'external/third_party/lss'
+      'getsentry.breakpad'::'external/breakpad'
+      'getsentry.crashpad'::'external/crashpad'
+      'getsentry.libunwindstack-ndk'::'external/libunwindstack-ndk'
+    )
+
+    git checkout master
+    _submodule_update
   )
-  _submodule_update
-)
-
-_prepare_getsentry_sentry_native() (
-  cd "$srcdir/$_pkgsrc"
-  cd "3rdparty/sentry"
-  local _submodules=(
-    'chromium.googlesource.com.linux-syscall-support'::'external/third_party/lss'
-    'getsentry.breakpad'::'external/breakpad'
-    'getsentry.crashpad'::'external/crashpad'
-    'getsentry.libunwindstack-ndk'::'external/libunwindstack-ndk'
-  )
-  _submodule_update
-)
-
-_cargo_env() {
-  : ${CARGO_HOME:=$SRCDEST/cargo-home}
-  export CARGO_HOME
-  export RUSTUP_TOOLCHAIN=stable
-  export CARGO_TARGET_DIR=target
-
-  CFLAGS+=" -ffat-lto-objects"
 }
 
 _source_main
@@ -149,8 +139,6 @@ prepare() {
   _prepare_mozillavpn
   _prepare_getsentry_sentry_native
 
-  _cargo_env
-
   cd "$_pkgsrc"
   cargo update
   cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
@@ -169,8 +157,6 @@ pkgver() {
 }
 
 build() {
-  _cargo_env
-
   local _cmake_options=(
     -B build
     -S "$_pkgsrc"

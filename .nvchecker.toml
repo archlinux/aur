@@ -1,0 +1,4 @@
+[mozillavpn-git]
+source = "git"
+git = "https://github.com/mozilla-mobile/mozilla-vpn-client.git"
+prefix = "v"
