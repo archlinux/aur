@@ -1,7 +1,7 @@
 pkgbase = factorio-space-age-experimental
 	pkgdesc = A 2D game about building and maintaining factories (experimental branch w/ Space Age expansion).
 	pkgver = 2.0.9
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.factorio.com/
 	arch = x86_64
 	license = custom: commercial
@@ -11,6 +11,7 @@ pkgbase = factorio-space-age-experimental
 	depends = libxrandr
 	depends = libxinerama
 	depends = mesa
+	provides = factorio
 	provides = factorio-experimental
 	conflicts = factorio
 	conflicts = factorio-demo

@@ -5,12 +5,12 @@
 
 pkgname=factorio-space-age-experimental
 pkgver=2.0.9
-pkgrel=1
+pkgrel=2
 pkgdesc="A 2D game about building and maintaining factories (experimental branch w/ Space Age expansion)."
 arch=('x86_64')
 url="http://www.factorio.com/"
 license=('custom: commercial')
-provides=('factorio-experimental')
+provides=('factorio' 'factorio-experimental')
 conflicts=('factorio' 'factorio-demo' 'factorio-experimental' 'factorio-headless')
 depends=('libxcursor' 'alsa-lib' 'libxrandr' 'libxinerama' 'mesa')
 makedepends=('jq')
