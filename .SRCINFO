@@ -1,17 +1,17 @@
 pkgbase = rusthound-ce-git
 	pkgdesc = BloodHoundCE collector tool written in Rust.
-	pkgver = c4e8eb3
+	pkgver = b212f11
 	pkgrel = 1
-	url = https://github.com/NH-RED-TEAM/RustHound
+	url = https://github.com/g0h4n/RustHound-CE
 	arch = any
 	license = MIT
 	makedepends = git
 	makedepends = cargo
 	makedepends = clang
 	makedepends = rustup
-	provides = rusthound
-	conflicts = rusthound
-	source = rusthound::git+https://github.com/NH-RED-TEAM/RustHound.git#branch=v2
+	provides = rusthound-ce
+	conflicts = rusthound-ce
+	source = rusthound-ce::git+https://github.com/g0h4n/RustHound-CE.git
 	sha256sums = SKIP
 
 pkgname = rusthound-ce-git

@@ -1,16 +1,16 @@
 # Maintainer: coldBug <coldbug@e.mail.de>
 pkgname=rusthound-ce-git
-_pkgname=${pkgname%-ce-git}
-pkgver=c4e8eb3
+_pkgname=${pkgname%-git}
+pkgver=b212f11
 pkgrel=1
 pkgdesc="BloodHoundCE collector tool written in Rust."
 arch=('any')
-url="https://github.com/NH-RED-TEAM/RustHound"
+url="https://github.com/g0h4n/RustHound-CE"
 license=("MIT")
 makedepends=("git" "cargo" "clang" "rustup")
 provides=(${_pkgname})
 conflicts=(${_pkgname})
-source=("${_pkgname}::git+${url}.git#branch=v2")
+source=("${_pkgname}::git+${url}.git")
 sha256sums=('SKIP')
 
 pkgver() {
