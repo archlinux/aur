@@ -2,11 +2,11 @@
 
 pkgname=pacmixer
 pkgver=0.6.4
-pkgrel=1
+pkgrel=2
 pkgdesc="alsamixer alike for PulseAudio."
 arch=('i686' 'x86_64' 'armv7h')
 url="https://github.com/KenjiTakahashi/pacmixer"
-license=('GPL3')
+license=('GPL-3.0-or-later')
 depends=(
     'ncurses'
     'libpulse'
@@ -17,7 +17,7 @@ makedepends=(
     'gnustep-make'
     'ninja'
 )
-source=("https://github.com/KenjiTakahashi/${pkgname}/archive/${pkgver}.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/KenjiTakahashi/${pkgname}/archive/${pkgver}.tar.gz")
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
