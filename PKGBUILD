@@ -2,8 +2,8 @@
 
 _pkgname=photoprism-tensorflow
 pkgname="${_pkgname}-cpu-bin"
-pkgver="1.15.2"
-pkgrel=1
+pkgver=1.15.2
+pkgrel=2
 provides=("${_pkgname}" "tensorflow115")
 conflicts=("${_pkgname}" "tensorflow115")
 replaces=("tensorflow115")
@@ -20,9 +20,6 @@ sha256sums_armv7h=("a7685f592fb6491610d001154678a28cec77ca1f8710cac12f77ac02ea2a
 
 prepare() {
     case $CARCH in
-        x86_64|aarch64)
-            mv include/tensorflow/c/LICENSE LICENSE
-            ;;
         armv7h)
             mv -f "lib/libtensorflow.so.${pkgver}" lib/libtensorflow.so
             mv -f "lib/libtensorflow_framework.so.${pkgver}" lib/libtensorflow_framework.so
@@ -31,8 +28,6 @@ prepare() {
 }
 
 package() {
-    install -Dm644 *"LICENSE"* -t "${pkgdir}/usr/share/licenses/${pkgname}"
-    find include -type f -exec install -Dm644 {} "${pkgdir}/usr/"{} \;
     for so in libtensorflow.so libtensorflow_framework.so; do
         install -Dm755 "lib/${so}"  "${pkgdir}/usr/lib/${_pkgname}/${so}.${pkgver}"
         ln -s "${so}.${pkgver}"     "${pkgdir}/usr/lib/${_pkgname}/${so}.${pkgver%.*}"
