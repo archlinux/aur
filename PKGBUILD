@@ -10,7 +10,7 @@ depends=('spotify')
 makedepends=('cargo')
 optdepends=('libnotify: Allows the `now-playing` notification to be shown')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('13ed13b7fe73a110350968313206ed3b07994330734571760254547744d35dfe')
+sha256sums=('4d83afe787a34c10cbbdf4846c841d018cad6c6a6757ffefe048b922ce187c80')
 
 prepare() {
   cd "$pkgname-$pkgver"
