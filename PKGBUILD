@@ -1,8 +1,8 @@
 # Maintainer: Pantelis Panayiotou <p.panayiotou@gmail.com>
 
 pkgname=qman-git
-pkgver=nightly
-pkgrel=7
+pkgver=1.0.0
+pkgrel=1
 pkgdesc="A more modern manual page viewer for our terminals"
 
 arch=('x86_64')
