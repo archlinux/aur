@@ -1,6 +1,6 @@
 pkgbase = python-pyfastani
 	pkgdesc = Cython bindings and Python interface to FastANI, a method for fast whole-genome similarity estimation
-	pkgver = 0.5.1
+	pkgver = 0.6.0
 	pkgrel = 1
 	url = https://github.com/althonos/pyfastani
 	arch = i686
@@ -11,12 +11,14 @@ pkgbase = python-pyfastani
 	arch = armv7h
 	arch = aarch64
 	license = MIT
-	makedepends = python-setuptools
 	makedepends = cython
 	makedepends = python-build
 	makedepends = python-installer
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = python-scikit-build-core
 	depends = python
-	source = https://files.pythonhosted.org/packages/source/p/pyfastani/pyfastani-0.5.1.tar.gz
-	sha256sums = ad6c28303290a2389c29ed20db8266bbc4bf89a5b1bf64a7514d1bc9c6ba2d92
+	source = https://files.pythonhosted.org/packages/source/p/pyfastani/pyfastani-0.6.0.tar.gz
+	sha256sums = 255e890d3ee6bbd051bb94d71a5245703b254be1ff2b5dc6789d28b715ec5fa9
 
 pkgname = python-pyfastani
