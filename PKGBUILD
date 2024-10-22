@@ -1,7 +1,7 @@
 # Maintainer: Wilken Gottwalt <wilken dot gottwalt at posteo dot net>
 
 pkgname=gnoga
-pkgver=1.6a
+pkgver=2.2a
 pkgrel=1
 pkgdesc="Ada native GUI framework similar to the Electron framework"
 arch=('x86_64')
@@ -10,15 +10,11 @@ license=('GPL3')
 depends=('libgpr')
 makedepends=(gcc-ada gprbuild gprtools libgpr)
 provides=('gnoga')
-source=(https://downloads.sourceforge.net/project/gnoga/gnoga-${pkgver}.zip
-        fix-object-subtype-not-statically-matching-designated-subtype.patch)
-sha256sums=('5eca4c8de6b59c6b6c51a22310b1e4175afe62c893604955e9014c4ed8e79148'
-            '3365d77edb6cee4c915d437905af1bb8ab4304c8db69ad089c7cadb30662ce34')
+source=(https://downloads.sourceforge.net/project/gnoga/gnoga-${pkgver}.zip)
+sha256sums=('0f8d6b592885827a12436e3b495534e4b28badb0255a3d279d42ce80063b945f')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-
-  patch -Np1 -i "${srcdir}"/fix-*
 
   make -j1 BUILD_MODE=Release all
 }

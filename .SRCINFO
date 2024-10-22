@@ -1,6 +1,6 @@
 pkgbase = gnoga
 	pkgdesc = Ada native GUI framework similar to the Electron framework
-	pkgver = 1.6a
+	pkgver = 2.2a
 	pkgrel = 1
 	url = http://www.gnoga.com/
 	arch = x86_64
@@ -11,9 +11,7 @@ pkgbase = gnoga
 	makedepends = libgpr
 	depends = libgpr
 	provides = gnoga
-	source = https://downloads.sourceforge.net/project/gnoga/gnoga-1.6a.zip
-	source = fix-object-subtype-not-statically-matching-designated-subtype.patch
-	sha256sums = 5eca4c8de6b59c6b6c51a22310b1e4175afe62c893604955e9014c4ed8e79148
-	sha256sums = 3365d77edb6cee4c915d437905af1bb8ab4304c8db69ad089c7cadb30662ce34
+	source = https://downloads.sourceforge.net/project/gnoga/gnoga-2.2a.zip
+	sha256sums = 0f8d6b592885827a12436e3b495534e4b28badb0255a3d279d42ce80063b945f
 
 pkgname = gnoga
