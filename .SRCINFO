@@ -1,6 +1,6 @@
 pkgbase = firefox-nightly-i18n-oc
 	pkgdesc = Occitan language pack for Firefox Nightly
-	pkgver = 133.0a1.20241020.211110
+	pkgver = 133.0a1.20241021.171737
 	pkgrel = 1
 	url = https://www.mozilla.org/firefox/
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = firefox-nightly-i18n-oc
 	license = GPL
 	license = LGPL
 	depends = firefox-nightly
-	noextract = firefox-nightly-i18n-oc-133.0a1.20241020.211110.xpi
-	source = firefox-nightly-i18n-oc-133.0a1.20241020.211110.xpi::https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/linux-x86_64/xpi/firefox-133.0a1.oc.langpack.xpi
-	sha256sums = 56edc5b25cc97ac4d0cd92d165a13979b4c646f74b476ffb296c32ca9ec6b3c7
+	noextract = firefox-nightly-i18n-oc-133.0a1.20241021.171737.xpi
+	source = firefox-nightly-i18n-oc-133.0a1.20241021.171737.xpi::https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/linux-x86_64/xpi/firefox-133.0a1.oc.langpack.xpi
+	sha256sums = 0a093863d1f78e6a9106168c4069c92fcd7a7dd68540cf9db54de8e4cce33a20
 
 pkgname = firefox-nightly-i18n-oc
