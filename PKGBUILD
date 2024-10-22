@@ -2,7 +2,7 @@
 
 _pkgname="tsukimi"
 pkgname="${_pkgname}-bin"
-pkgver=0.16.4
+pkgver=0.16.5
 pkgrel=1
 pkgdesc='A simple third-party Emby client'
 arch=('x86_64')
@@ -21,7 +21,7 @@ makedepends=(
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/tsukinaha/tsukimi/releases/download/v${pkgver}/tsukimi-x86_64-linux.tar.gz"
 	"tsukimi.desktop"
 	"tsukimi.png")
-sha256sums=('8c780b9442b4848ac46dad08648e6cc2abde64dc79899ef4b1fcefe409d0a277'
+sha256sums=('bfeda016f8857e958a31398f6561eda4e10407255b4cb3f0a56cd5ed6a8ad16f'
 	'd12dc777bbb05ed92d75f8d36e453b651e12596ead6e297386419a24d051a0a3'
 	'04a712d60bbf5cc8873af24fb8ff76b47f27ef77ba45c7901fb7d3cd26dd6893')
 
