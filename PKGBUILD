@@ -3,30 +3,20 @@
 # Contributor: honzor 
 
 pkgname=libmodbus
-pkgver=3.1.10
-pkgrel=2
+pkgver=3.1.11
+pkgrel=1
 pkgdesc="A Modbus library for Linux, Mac OS X, FreeBSD, QNX and Win32"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://libmodbus.org"
 license=('LGPL-2.1-only')
-groups=()
 depends=(glibc)
 makedepends=(asciidoc xmlto)
-optdepends=()
-provides=()
-conflicts=()
-replaces=()
-backup=()
 options=(!libtool)
-install=
 source=(https://github.com/stephane/libmodbus/releases/download/v$pkgver/libmodbus-$pkgver.tar.gz)
-md5sums=('fc0ebd18c30c290f1241ec49e84d4ca6')
-noextract=()
-
+sha256sums=('15b4b2e0f68122c2da9b195de5c330489a9c97d40b4a95d2822378dc14d780e7')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
-  autoreconf --install --symlink --force
   ./configure --prefix=/usr
   make
 }
