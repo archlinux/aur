@@ -1,6 +1,6 @@
 pkgbase = python-thinc
 	pkgdesc = Practical Machine Learning for NLP
-	pkgver = 8.3.0
+	pkgver = 9.1.1
 	pkgrel = 1
 	url = https://github.com/explosion/thinc
 	arch = x86_64
@@ -25,7 +25,7 @@ pkgbase = python-thinc
 	optdepends = python-cupy
 	optdepends = python-pytorch
 	optdepends = python-tensorflow
-	source = python-thinc-8.3.0.tar.gz::https://files.pythonhosted.org/packages/source/t/thinc/thinc-8.3.0.tar.gz
-	sha256sums = eb3bed54f5c00ec9addaaa208c51ccfa059483d73140cd515aa33373715c6e59
+	source = python-thinc-9.1.1.tar.gz::https://files.pythonhosted.org/packages/source/t/thinc/thinc-9.1.1.tar.gz
+	sha256sums = 21fae2986d7777a6f050b9046dc9eab11852f1c9a997dcc9032f3ecc22784a4a
 
 pkgname = python-thinc
