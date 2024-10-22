@@ -6,6 +6,7 @@ pkgbase = mp3splt-bin
 	arch = x86_64
 	arch = i686
 	license = GPL-2.0-or-later
+	makedepends = gzip
 	depends = glibc
 	depends = libmp3splt>=0.9.2
 	provides = mp3splt

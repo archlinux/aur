@@ -9,6 +9,7 @@ arch=('x86_64' 'i686')
 url="https://mp3splt.sourceforge.net"
 license=('GPL-2.0-or-later')
 depends=('glibc' 'libmp3splt>=0.9.2')
+makedepends=('gzip')
 provides=("${_pkgname}" 'oggsplt' 'flacsplt')
 conflicts=("${_pkgname}")
 _pkgsrc="${_pkgname}-${pkgver}"
