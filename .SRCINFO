@@ -1,6 +1,6 @@
 pkgbase = gzdoom
 	pkgdesc = Feature centric port for all Doom engine games
-	pkgver = 4.13.0
+	pkgver = 4.13.1
 	pkgrel = 1
 	url = http://www.zdoom.org/
 	arch = i686
@@ -37,7 +37,7 @@ pkgbase = gzdoom
 	replaces = gzdoom1
 	replaces = gzdoom-legacy
 	options = !lto
-	source = gzdoom::git+https://github.com/coelckers/gzdoom.git#tag=g4.13.0
+	source = gzdoom::git+https://github.com/coelckers/gzdoom.git#tag=g4.13.1
 	source = gzdoom.desktop
 	source = 0001-Fix-file-paths.patch
 	sha256sums = f5a5874dff2a65ac4aa6c8f0f71b194ed52f7b9e4ed4fba587fe5750caf14585
