@@ -1,12 +1,12 @@
 pkgbase = tlsx
 	pkgdesc = Fast and configurable TLS grabber focused on TLS based data collection
-	pkgver = 1.1.7
+	pkgver = 1.1.8
 	pkgrel = 1
 	url = https://github.com/projectdiscovery/tlsx
 	arch = x86_64
 	license = MIT
 	makedepends = go
-	source = tlsx-1.1.7.tar.gz::https://github.com/projectdiscovery/tlsx/archive/refs/tags/v1.1.7.tar.gz
-	sha256sums = 2fdf4a46bed59595566a532f3bc30c758a892668a0409e7f5b54320d6235c68d
+	source = tlsx-1.1.8.tar.gz::https://github.com/projectdiscovery/tlsx/archive/refs/tags/v1.1.8.tar.gz
+	sha256sums = 272330eb814dc79d367b18c9aa5033a507f9214616d97ac4c1b2f75054767504
 
 pkgname = tlsx
