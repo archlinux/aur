@@ -1,7 +1,7 @@
 pkgbase = shamela
 	pkgdesc = المكتبة الشاملة، A digital library which enables you to download, read and search arabic books.
 	pkgver = 4
-	pkgrel = 3
+	pkgrel = 4
 	url = https://shamela.ws/page/download
 	arch = x86_64
 	license = custom

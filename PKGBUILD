@@ -2,7 +2,7 @@
 # Maintainer: dj.zak <dz.wbdev@gmail.com>
 pkgname=shamela
 pkgver=4
-pkgrel=3
+pkgrel=4
 pkgdesc="المكتبة الشاملة، A digital library which enables you to download, read and search arabic books."
 arch=('x86_64')
 url="https://shamela.ws/page/download"
