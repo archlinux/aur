@@ -18,7 +18,7 @@ pkgname=(
   gnome-keybindings-x11-scaling
 )
 _pkgname=gnome-control-center
-pkgver=47.0.1
+pkgver=47.1
 pkgrel=1
 pkgdesc="GNOME's main interface to configure various aspects of the desktop with X11 fractional scaling patch"
 url="https://gitlab.gnome.org/GNOME/gnome-control-center"
@@ -97,7 +97,7 @@ source=(
   "https://raw.githubusercontent.com/puxplaying/gnome-control-center-x11-scaling/c3a04acf0cd0f9f48c938c6b34b391d9aedb2b58/display-Allow-fractional-scaling-to-be-enabled.patch"
   "https://raw.githubusercontent.com/puxplaying/gnome-control-center-x11-scaling/c3a04acf0cd0f9f48c938c6b34b391d9aedb2b58/display-Support-UI-scaled-logical-monitor-mode.patch"
 )
-b2sums=('de797bde5a3cc251af96d71a4d75ec8ca34c087fcc3ffcc06a4f0f46b374142626e4cea92abd0a10a61f5db78a3723511c5ff84d064d4ae17722665e13a8a7eb'
+b2sums=('33746aab2e11dd208414e1391363ee4db02270092fa228801feb5f59261357356f638fe77a0b6733ebeac5904c3632ce374d6384ab7d2396cbe58d931cdb1710'
         'SKIP'
         '0fc82f11faf20ab9b6190d86a4051c36b6a6dffd9aa4e887ad0911fdb6d9d27b6db1d6eed987d0851c71d030b915412aa81e617f47c39aadb78066b1704d9d0a'
         '85002082e967f63284a1b95a0f2dc19590a46c1711ebf6ed934094a85a4a1b20c1336e9b6e9a0e37b5235bbe217ee0b6851a06bcc1e282242a0676b9080a0eac')
