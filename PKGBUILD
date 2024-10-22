@@ -5,7 +5,7 @@
 # Contributor: Jonas Heinrich <onny@project-insanity.org>
 
 pkgname='sejda-desktop'
-pkgver=7.7.4
+pkgver=7.7.5
 pkgrel=1
 license=('LicenseRef-EULA')
 pkgdesc='PDF editor'
@@ -13,9 +13,9 @@ arch=('x86_64')
 depends=(libxcb libxfixes nspr alsa-lib libcups at-spi2-core libxrandr libdrm libxrender pango nss libxcomposite cairo libxdamage libxkbcommon mesa gtk3)
 depends+=(libx11 glibc bash expat libxext libxtst dbus libxi gcc-libs glib2)
 url='http://www.sejda.com/desktop'
-source=("https://downloads.sejda-cdn.com/sejda-desktop_7.7.4_amd64.deb")
-md5sums=('2b7950ce803af32df9031ed209517eb0')
-sha512sums=('a632548dd2798d2e911acec7dcd632f2848e38620143728705907d4271c8c56c1f6797e64a709668f7bcf0ca0e7b899b760de003a13618969d4d8fbfd23f5a2a')
+source=("https://downloads.sejda-cdn.com/sejda-desktop_7.7.5_amd64.deb")
+md5sums=('f2b840d0b2a0fa3184fc79d5e88562eb')
+sha512sums=('d6c0c4788f7953a0bb9a162c589716ebab3eba8e4f809bf9c458a62a6d1a30f0092bcd817d65abe3b6e97fce006bd9e6eabef745fcb212aeea8d50da338953f6')
 options=('!strip')
 
 prepare() {
