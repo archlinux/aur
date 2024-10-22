@@ -1,4 +1,4 @@
-# Maintainer: Your Name <lemon.xah@gmail.com>
+# Maintainer: Ryno Kotze <lemon.xah@gmail.com>
 _pkgname=slimevr-cli
 pkgname=$_pkgname-git
 pkgver=r9.a0454f9
