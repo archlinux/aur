@@ -2,7 +2,7 @@
 
 _name=pytest-shell-utilities
 pkgname=python-pytest-shell-utilities
-pkgver=1.9.6
+pkgver=1.9.7
 pkgrel=1
 pkgdesc="Pytest plugin providing fixtures and code to help with running shell commands on tests"
 arch=(any)
@@ -28,8 +28,8 @@ makedepends=(
 )
 checkdepends=(python-pytest-subtests)
 source=($pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz)
-sha256sums=('184383cc1de2c1fd26d42f165ee50cacb3566f3b6f295cedabdd21e1f07d5a93')
-b2sums=('95c701ffd7b43356f3369d2bab3a8a6aee116b51dd2b78a9fe0e2defe6d86910c69222074ffbd23f6f6aa21f04613f168b9635b481f6b1646f8d8eaf707c9e5e')
+sha256sums=('a175b0c1a907a4f97f2b6a014c56bf1199e15058a1588f23bece6cc060621b03')
+b2sums=('f74fdfc24acd521313b2cc98bfcaaf916ff649a88b10c642edb8af785f7c473fbc97d80badec5e7da5b27a6394c6c16e6c354e8261cdfa94cb48ef3eb7174940')
 
 build() {
   cd $_name-$pkgver
