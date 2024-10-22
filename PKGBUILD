@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=siyuan-git
-pkgver=3.1.9.r0.g738a907
+pkgver=3.1.10.r0.g1d0d065
 _electronversion=32
 _nodeversion=20
 pkgrel=1
@@ -74,6 +74,7 @@ build() {
         echo 'fetch-retry-maxtimeout=10000'
         echo "cache-dir="${srcdir}"/.pnpm_cache"
         echo "store-dir="${srcdir}"/.pnpm_store"
+        echo "shamefully-hoist=true"
     } >> .npmrc
     if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
         {
@@ -98,7 +99,7 @@ build() {
             _CFG_FILE=electron-builder-linux.yml
             ;;
     esac
-    NODE_ENV=production npm exec -c "electron-builder --linux dir -c.electronDist=${electronDist} --config ${_CFG_FILE} "
+    NODE_ENV=production pnpm -c exec "electron-builder --linux dir -c.electronDist=${electronDist} --config ${_CFG_FILE} "
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
