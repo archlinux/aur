@@ -6,7 +6,7 @@ pkgname=dingtalk-bin
 _pkgname=dingtalk
 _pkgname2=com.alibabainc.dingtalk
 pkgver=7.6.15.4101801
-pkgrel=1
+pkgrel=2
 pkgdesc="钉钉"
 arch=("x86_64")
 url="https://www.dingtalk.com/"
@@ -34,7 +34,7 @@ source=("service-terms-zh"
 
 sha512sums=('b83d493ed68be0f5a6b851fd93d819bb3a6e62feeb71a5bef10bad24b5ea8f3cf09deea4f31ed727449888a6eae1be99fa9cf263bc921cb8bb2958e2f37a7d64'
             'c8570ec4cd978e26ac622a83db053a0555324752f5000dc5b3cd680d782138e8ef856f09ec9b7850e04e1faa1e39de94dabeb16fbfbe0fd44af43247b30e8b2f'
-            '963f23a36b9a25bb7e89a59b9f108886c08e9cdfc42e065a45040a96b848fc2b778a9e31d8c0013d2cb4b167e83eb9362accd5428f1b7ccd1062c2aea2ee22a9'
+            'b2493e7bddc2d701204899bcd82930f97779eec23485870c64665c525b9faca382a3c0e9e9c1bd18f8fa8157ea408943e542de56dc3410388e78f30732511f5c'
             '5f05f90704526fbd16371f6f9deaa171a3cac25a103b21daba72a3028ab7cdf9b566a3ac7842c6ce88d30cc29fe0c8b989c77aa36daab73793a827a1a0d6c775')
 sha512sums_x86_64=('1f00e75b3ec8f416daf64e46484117f1bae8aaf4dfcf08cd953d96b4af283dd074400c96bab38ba9ace7a446f24044356c23bbbac78403e0ea24bb65590d831a')
 
