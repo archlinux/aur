@@ -2,13 +2,13 @@
 # Contributor: blue_lizard lizard@blue.dyn-o-saur.com
 
 pkgname=mmv
-pkgver=2.7
+pkgver=2.9.1
 pkgrel=1
 pkgdesc="multiple move files"
 source=(
   https://github.com/rrthomas/mmv/releases/download/v${pkgver}/mmv-${pkgver}.tar.gz
 )
-sha256sums=('11346686634000e22aa909e08d9d450237c4b61062779935cbd81df78efad72d')
+sha256sums=('7d18332e62a3ffb021121bd1bbad1e93183f36318206899bdf909a473275f3d0')
 
 url="https://github.com/rrthomas/mmv"
 license=(GPL-2.0-or-later)
@@ -31,8 +31,4 @@ package(){
   mkdir -p "${pkgdir}/usr/share/man/man1"
   make DESTDIR="${pkgdir}" install
   chmod 644 "${pkgdir}/usr/share/man/man1/mmv.1"
-  cd "${pkgdir}/usr/share/man/man1/"
-  ln -s mmv.1 mcp.1
-  ln -s mmv.1 mad.1
-  ln -s mmv.1 mln.1
 }
