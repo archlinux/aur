@@ -12,8 +12,7 @@ depends=('hare')
 makedepends=('git')
 provides=("hare-toml=${pkgver}")
 conflicts=('hare-toml')
-_commit='ef9afe03bb75da2861c3a8c48ec38fa4d84e2379'
-source=("git+${url}#commit=${_commit}")
+source=("git+${url}")
 md5sums=('SKIP')
 
 pkgver() {
