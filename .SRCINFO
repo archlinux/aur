@@ -1,13 +1,13 @@
 pkgbase=hey-duck
     pkgdesc = Contact DuckDuckGo AI chat from your terminal
-    pkgver = 0.1.2
+    pkgver = 0.2.0
     pkgrel = 1
     url = https://git.blek.codes/blek/hey
     arch = any
     license = GPL3-only
     makedepends = rust
     makedepends = cargo
-    source = https://git.blek.codes/blek/hey/archive/0.1.2.tar.gz
-    sha256sums = a022a9e2186e75d4a768eefb4b098ce9fbfb2d11df27c77b399d058e031e703b
+    source = https://git.blek.codes/blek/hey/archive/0.2.0.tar.gz
+    sha256sums = 949a20c534241c21cd0b02d81e20946d42c9c92165abf75944faecd918c4124c
 
 pkgname=hey-duck
