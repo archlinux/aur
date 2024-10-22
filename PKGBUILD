@@ -3,7 +3,7 @@
 _pkgname=wechat-devtools
 
 pkgname="${_pkgname}"-appimage
-pkgver=1.06.2407120-1
+pkgver=1.06.2407120
 pkgrel=1
 pkgdesc="The development tools for wechat projects"
 arch=(x86_64)
