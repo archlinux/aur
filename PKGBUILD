@@ -1,6 +1,6 @@
 # Maintainer: celenity <celenity@celenity.dev>
 pkgname=phoenix-policies-no-sync
-pkgver=20241019
+pkgver=20241022
 pkgrel=1
 pkgdesc="Standard Phoenix policies for Mozilla Firefox without Firefox Sync"
 arch=(any)
@@ -14,5 +14,5 @@ pkgver() {
 }
 
 package() {
-    install -Dm644 "$srcdir/Phoenix/policies/Linux/No-Sync/policies.json" "$pkgdir/usr/lib/firefox/distribution/policies.json"
+    install -Dm644 "$srcdir/Phoenix/policies/Linux/No-Sync/policies.json" "$pkgdir/etc/firefox/policies/policies.json"
 }
