@@ -1,16 +1,16 @@
 # Maintainer: LordMZTE <lord@mzte.de>
 pkgname=skim-fzf-dropin
-pkgver=1.1
+pkgver=1.2
 pkgrel=1
 pkgdesc="A dropin fzf replacement using skim"
 arch=('any')
 license=('GPL')
-depends=('bash' 'skim')
+depends=('skim')
 provides=('fzf')
 conflicts=('fzf')
 source=("fzf" "fzf-tmux")
-sha256sums=('768768f7973499ca0c5f006434a222c3da782b8ca37e571843b1b7cb6e260e33'
-            '7ca86ae0e007abdaa1b8a7954fd6d303f991aea2f0033612b16623111bb76833')
+sha256sums=('17067d15d3a96543bcba2269e708414c5573c388de9721ecf07d0c2b35a8d3be'
+            '4997c6a699425d891063dd6761eea91429fe42a132a6a677e67861593e2945a3')
 
 package() {
     install -Dm755 fzf "${pkgdir}/usr/bin/fzf"
