@@ -1,7 +1,7 @@
 # Maintainer: hexchain <i at hexchain dot org>
 
 pkgname=pcm
-pkgver=202405
+pkgver=202409
 pkgrel=1
 pkgdesc="Processor Counter Monitor"
 url="https://github.com/intel/pcm"
@@ -12,8 +12,10 @@ makedepends=('cmake' 'git' 'ninja')
 source=(
     "$pkgname::git+$url#tag=$pkgver"
     "simdjson::git+https://github.com/simdjson/simdjson.git"
+    "perfmon::git+https://github.com/intel/perfmon.git"
 )
-b2sums=('aa0c3d0b69c46a9098899fd8ef93962029309bcbd99a5a511fd079e3e0f055c1afa0ae2e988637fd13a25ee533189dcae3d12cd689d6578582d0a2707844e21c'
+b2sums=('3da732646dc8bfb8f5da1212f43491d36227229febe32a58448984675d988c5274c3275aa94aec1a1f8e09052bd5c69a9bea2116a63be53d530fee5f3096e008'
+        'SKIP'
         'SKIP')
 
 prepare() {
@@ -21,15 +23,23 @@ prepare() {
 
     git submodule init
     git config submodule.src/simdjson.url "$srcdir/simdjson"
+    git config submodule.perfmon.url "$srcdir/perfmon"
     git -c protocol.file.allow=always submodule update
+
+    sed -i \
+        -e 's/-D_FORTIFY_SOURCE=.//' \
+        -e '/set(LINUX_SYSTEMD_UNITDIR/c set(LINUX_SYSTEMD_UNITDIR "${CMAKE_INSTALL_LIBDIR}/systemd/system")' \
+        "CMakeLists.txt"
 }
 
 build() {
     cd "$srcdir"
 
-    sed -i 's/-D_FORTIFY_SOURCE=1//' "$pkgname/CMakeLists.txt"
-
-    cmake -B build -G Ninja "$pkgname" -DCMAKE_INSTALL_SBINDIR=bin
+    cmake -B build -G Ninja "$pkgname" \
+        -DCMAKE_INSTALL_SBINDIR=bin \
+        -DCMAKE_INSTALL_PREFIX=/usr \
+        -DPCM_NO_ASAN=ON \
+        -DLINUX_SYSTEMD=ON
     cmake --build build
 }
 

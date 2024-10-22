@@ -1,6 +1,6 @@
 pkgbase = pcm
 	pkgdesc = Processor Counter Monitor
-	pkgver = 202405
+	pkgver = 202409
 	pkgrel = 1
 	url = https://github.com/intel/pcm
 	arch = x86_64
@@ -11,9 +11,11 @@ pkgbase = pcm
 	depends = bash
 	depends = gcc-libs
 	depends = glibc
-	source = pcm::git+https://github.com/intel/pcm#tag=202405
+	source = pcm::git+https://github.com/intel/pcm#tag=202409
 	source = simdjson::git+https://github.com/simdjson/simdjson.git
-	b2sums = aa0c3d0b69c46a9098899fd8ef93962029309bcbd99a5a511fd079e3e0f055c1afa0ae2e988637fd13a25ee533189dcae3d12cd689d6578582d0a2707844e21c
+	source = perfmon::git+https://github.com/intel/perfmon.git
+	b2sums = 3da732646dc8bfb8f5da1212f43491d36227229febe32a58448984675d988c5274c3275aa94aec1a1f8e09052bd5c69a9bea2116a63be53d530fee5f3096e008
+	b2sums = SKIP
 	b2sums = SKIP
 
 pkgname = pcm
