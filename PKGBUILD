@@ -2,7 +2,7 @@
 
 pkgname=eco-paste-beta-bin
 _pkgname="EcoPaste"
-pkgver=0.2.0
+pkgver=0.3.0-beta.1
 pkgrel=1
 pkgdesc="内测预览版!!!🎉跨平台的剪贴板管理工具 | Cross-platform clipboard management tool ."
 arch=('any')
@@ -26,7 +26,7 @@ source=(
   "${_pkgname}-${pkgver}_amd64.deb::${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_amd64.deb"
   "LICENSE::https://raw.githubusercontent.com/EcoPasteHub/EcoPaste/refs/heads/master/LICENSE"
 )
-sha256sums=('1d76de4b65b9ddada6714b9718ab2521e7236e56b298589bd08140a1d0238026'
+sha256sums=('51f80d220ebbe7d3408e99f423343cb6afb09b71ac1eab0d350668224dc85c6d'
             'c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4')
 # 修复不能出现短线的问题
 fixver(){
