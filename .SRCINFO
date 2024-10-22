@@ -1,0 +1,20 @@
+pkgbase = gosu
+	pkgdesc = Simple Go-based setuid+setgid+setgroups+exec
+	pkgver = 1.17
+	pkgrel = 1
+	url = https://github.com/tianon/gosu
+	arch = i686
+	arch = pentium4
+	arch = x86_64
+	arch = arm
+	arch = armv7h
+	arch = armv6h
+	arch = aarch64
+	arch = riscv64
+	license = Apache-2.0
+	makedepends = go
+	source = gosu-1.17.tar.gz::https://github.com/tianon/gosu/archive/refs/tags/1.17.tar.gz
+	validpgpkeys = B42F6819007F00F88E364FD4036A9C25BF357DD4
+	sha256sums = d984938705b81b90468a9f471adfdffeffaebd9deeac752d3e3a6060425b5d0d
+
+pkgname = gosu
