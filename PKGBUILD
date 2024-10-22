@@ -8,6 +8,8 @@ url="https://github.com/k4yt3x/video2x"
 license=('AGPL3')
 depends=('ffmpeg' 'ncnn' 'vulkan-driver' 'opencv' 'spdlog')
 makedepends=('git' 'cmake' 'make' 'clang' 'pkgconf' 'vulkan-headers' 'openmp')
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
 source=("git+${url}.git")
 b2sums=('SKIP')
 
