@@ -10,14 +10,19 @@
 # Based on community/clementine PKGBUILD
 
 pkgname=clementine-git
-pkgver=1.4.0rc1.r901.g7b678f26e.14.gc93b4e114
+pkgver=1.4.1.r10.gefe886e0a.0.gefe886e0a
 pkgrel=2
 pkgdesc='A modern music player and library organizer'
-url='http://www.clementine-player.org/'
-license=(GPL)
 arch=(x86_64)
+url="https://github.com/clementine-player/Clementine"
+license=(GPL-3.0-or-later)
 depends=(chromaprint gst-plugins-base-libs libcdio libgpod liblastfm-qt5 libmtp libmygpo-qt5
-         protobuf qt5-x11extras projectm alsa-lib libpulse crypto++ hicolor-icon-theme)
+         protobuf qt5-x11extras projectm alsa-lib libpulse hicolor-icon-theme
+
+         # namcap implicit depends
+         zlib glib2 sqlite libx11 gstreamer glibc gcc-libs abseil-cpp qt5-base fftw
+
+         libprotobuf.so)
 makedepends=(boost cmake git qt5-tools sparsehash)
 optdepends=(
   'gst-plugins-base: "Base" plugin libraries'
@@ -34,17 +39,24 @@ sha256sums=('SKIP')
 pkgver() {
   cd Clementine
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
-  #git describe --long --tags --exclude 1.4.0rc1-* | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
+  # fail with talib 2.0 https://github.com/clementine-player/Clementine/issues/7313
+
   export LDFLAGS="-Wl,--copy-dt-needed-entries"
-  cmake -B build -S Clementine -Wno-dev \
-    -DCMAKE_CXX_FLAGS="-fpermissive" \
-    -DCMAKE_CXX_STANDARD=17 \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DUSE_SYSTEM_PROJECTM=ON \
+
+  local _flags=(
+    -DCMAKE_CXX_FLAGS="-fpermissive"
+    -DCMAKE_CXX_STANDARD=17
+    -DUSE_SYSTEM_PROJECTM=ON
     -DUSE_SYSTEM_TAGLIB=OFF
+  )
+
+  cmake -B build -S Clementine -Wno-dev \
+    -DCMAKE_BUILD_TYPE=None \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    "${_flags[@]}"
 
   cmake --build build
 }
