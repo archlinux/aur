@@ -7,7 +7,7 @@ arch=(x86_64)
 url="https://github.com/epfl-lara/stainless"
 license=('Apache-2.0')
 groups=()
-depends=(java-runtime)
+depends=('java-runtime>=11')
 makedepends=(git sbt)
 optdepends=('z3: for using as a solver backend' 'cvc4: for using as a solver backend')
 provides=("${pkgname%-*}")
@@ -23,6 +23,11 @@ md5sums=('SKIP')
 pkgver() {
 	cd "$srcdir/${pkgname%-*}"
 	printf "%s" "$(git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
+}
+
+prepare() {
+	cd "$srcdir/${pkgname%-*}"
+	git submodule update --init --recursive
 }
 
 build() {
