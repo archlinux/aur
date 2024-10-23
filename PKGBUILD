@@ -34,7 +34,7 @@ build() {
 	cd "$srcdir/${pkgname%-*}"
 	sbt assembly
 	SCALA_VER="$(grep "val stainlessScalaVersion = " build.sbt | awk '{gsub(/"/, "", $4); print $4}')"
-	cp "./frontends/dotty/target/scala-$SCALA_VER/stainless-dotty-assembly-$(git describe --long --abbrev=7 | sed 's/v//g').jar" stainless.jar
+	cp "./frontends/dotty/target/scala-$SCALA_VER/stainless-dotty-assembly-$(git describe).jar" stainless.jar
 	touch stainless
 	chmod +x stainless
 	echo "#!/bin/sh" > stainless
