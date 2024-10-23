@@ -23,11 +23,6 @@ pkgver() {
     )
 }
 
-prepare() {
-    cd "$srcdir/$_pkgname"
-
-}
-
 build() {
     cd "$srcdir/$_pkgname"
     export CARGO_TARGET_DIR=target
