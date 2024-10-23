@@ -3,7 +3,7 @@
 
 pkgname=castle-engine-git
 pkgver=v7.0.alpha.1.r16494.f39aec48a
-pkgrel=1
+pkgrel=1.1
 pkgdesc="Cross-platform (desktop, mobile, console) 3D and 2D game engine using modern Object Pascal"
 arch=(x86_64)
 url="https://castle-engine.io/"
@@ -21,9 +21,9 @@ pkgver() {
 build() {
           # Build tools
           cd castle-engine
-          make cleanall tools
+          make clean tools
           tools/build-tool/castle-engine --project tools/castle-editor compile
-          make cleanall
+          make clean
 }
 
 package() {
