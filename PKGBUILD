@@ -2,13 +2,13 @@
 
 pkgname=openarc-unofficial-patches-git
 _pkgname=openarc
-pkgver=1.0.0rc0.r5.gc6676b9
-pkgrel=2
+pkgver=1.0.0.r20.ga67e393
+pkgrel=3
 pkgdesc="OpenARC with patches and improvements from not-yet-merged PRs - by flowerysong"
 arch=(x86_64)
 url="https://github.com/flowerysong/OpenARC"
 license=('BSD-2-Clause' 'LicenseRef-Sendmail-1.1')
-depends=('sh' 'glibc' 'jansson' 'openssl' 'libbsd' 'libmilter')
+depends=('sh' 'glibc' 'jansson' 'openssl' 'libbsd' 'libmilter' 'libidn2')
 optdepends=('smtp-server: for using a local mail server'
 	    'bind: required only for signature verification (alternatives available)')
 makedepends=('git' 'python-miltertest')

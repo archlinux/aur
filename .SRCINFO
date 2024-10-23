@@ -1,7 +1,7 @@
 pkgbase = openarc-unofficial-patches-git
 	pkgdesc = OpenARC with patches and improvements from not-yet-merged PRs - by flowerysong
-	pkgver = 1.0.0rc0.r5.gc6676b9
-	pkgrel = 2
+	pkgver = 1.0.0.r20.ga67e393
+	pkgrel = 3
 	url = https://github.com/flowerysong/OpenARC
 	arch = x86_64
 	license = BSD-2-Clause
@@ -14,6 +14,7 @@ pkgbase = openarc-unofficial-patches-git
 	depends = openssl
 	depends = libbsd
 	depends = libmilter
+	depends = libidn2
 	optdepends = smtp-server: for using a local mail server
 	optdepends = bind: required only for signature verification (alternatives available)
 	provides = openarc
