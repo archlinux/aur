@@ -2,21 +2,20 @@
 # Contributor Yigit Dallilar  <yigit.dallilar@gmail.com>
 
 pkgname=cdsclient
-pkgver=3.84
-pkgrel=2
+pkgver=4.07
+pkgrel=1
 pkgdesc="a set of C and csh routines o query some databases located at CDS or on mirrors over the network"
 url="https://vizier.cds.unistra.fr/vizier/doc/cdsclient.html"
 arch=("x86_64")
-license=("GPL3")
-depends=("glibc")
-optdepends=("sh" "tcsh")
+license=("GPL-3.0-only")
+depends=("glibc" "python" "sh" "tcsh")
 source=(
   "${pkgname}-${pkgver}.tar.gz::http://cdsarc.cds.unistra.fr/ftp/pub/sw/cdsclient.tar.gz"
   "${pkgname}-${pkgver}.patch"
 )
 sha512sums=(
-  "2d7abf0079189b9dd19cb8919061445fd19ea9f7dfd54e8ceee26b743218cf62ab00eba0147abe82d9294223927f04b4cc3328620dfc9184a7049f8d515b29e4"
-  "d51aac0fc5f578aa2e09a4b59fe71cfd5e3b08ca19f4913ffe73e120e2e0bc1eb3eca56ade221f98605d3a47b7b0cfcf2f49d74921127ac404eda208897acfb5"
+  "9f1aeabf3714ba5c972c1da4cbbfc903635b511f2cf5ad6b53a9234cf3cfba74a06ba70d1d961620eaa57dfee7027479467689e9e03ceb032448281e6542cc9e"
+  "291ce57bb7ee92bc02fdc88ccdb4697357b8698ede4fd3d93f1907db54433eea6e8c5c60ff2470be1daec21a216ef77f62fd7f7eb793ecac3330b6d16ee4affd"
 )
 
 prepare() {
@@ -26,7 +25,6 @@ prepare() {
 
 build() {
   cd "$srcdir/${pkgname}-${pkgver}"
-  export LDFLAGS="-Wl,-z,now" 
   ./configure --prefix=/usr
   make
 }

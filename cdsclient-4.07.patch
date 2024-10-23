@@ -1,8 +1,7 @@
-Nur in cdsclient-3.84: Makefile.
-diff -u cdsclient-old/Makefile.in cdsclient-3.84/Makefile.in
---- cdsclient-old/Makefile.in	2023-05-18 10:27:33.845020500 +0200
-+++ cdsclient-3.84/Makefile.in	2023-05-18 12:36:14.924629092 +0200
-@@ -41,7 +41,8 @@
+diff -u cdsclient-4.07_old/Makefile.in cdsclient-4.07/Makefile.in
+--- cdsclient-4.07_old/Makefile.in	2024-10-22 14:52:43.000000000 +0200
++++ cdsclient-4.07/Makefile.in	2024-10-23 10:16:47.291874276 +0200
+@@ -42,7 +42,8 @@
  LIBDIR  = $(PREFIX)/lib
  BINDIR  = $(PREFIX)/bin
  SHSDIR  = $(PREFIX)/bin
@@ -12,7 +11,7 @@ diff -u cdsclient-old/Makefile.in cdsclient-3.84/Makefile.in
  ###########
  # NOTE: The definition below is required only on SOLARIS
  #       Comment the following line if required
-@@ -65,7 +66,7 @@
+@@ -66,7 +67,7 @@
  CFLAGS = $(C_OPT) $(DEBUG) $(SYS) -I.
  
  # FILES		--------------------------------
@@ -21,16 +20,25 @@ diff -u cdsclient-old/Makefile.in cdsclient-3.84/Makefile.in
  EXPORT_COMPIL=@EXPORT_COMPIL@
  EXPORT_INIT=@EXPORT_INIT@
  EXPORT_CVS_OPT=@EXPORT_CVS_OPT@
-@@ -121,7 +122,7 @@
+@@ -103,7 +104,7 @@
+ # RULES		--------------------------------
+ .SUFFIXES: .o .c 
+ .c.o:
+-	$(CC) $(CFLAGS) -c $<
++	$(CC) -fhardened $(CFLAGS) -c $<
+ 
+ # DEPENDENCIES	--------------------------------
+ 
+@@ -122,7 +123,7 @@
  #		rm -f $$f; ln finducac2 $$f; done
  
  aclient: aclient.o $(OBJ)
 -	$(CC) $@.o $(OBJ) $(LIBSYS) -o $@
-+	$(CC) -Wl,-z,now $@.o $(OBJ) $(LIBSYS) -o $@
++	$(CC) -fhardened $@.o $(OBJ) $(LIBSYS) -o $@
  	$(STRIP) $@
  
  wwwget: wwwget.c
-@@ -138,7 +139,7 @@
+@@ -139,7 +140,7 @@
  
  install_man: $(MAN)
  	if [ -d $(MANDIR) ]; then echo $(MANDIR) exists; \
@@ -39,7 +47,7 @@ diff -u cdsclient-old/Makefile.in cdsclient-3.84/Makefile.in
  	for f in $(MAN); do \
  	    e=`echo $$f | cut -d. -f2`;  \
  	    if [ -d $(MANDIR)/man$$e ] ; then echo $(MANDIR)/man$$e exists ; \
-@@ -147,15 +148,15 @@
+@@ -148,15 +149,15 @@
  	done
  
  install_h: $(INC)
@@ -58,7 +66,7 @@ diff -u cdsclient-old/Makefile.in cdsclient-3.84/Makefile.in
  	ractools=""; test -r $(RACatCDS) && ractools=$(RACatCDS)/*; \
          test -z "$$ractools" || ls -l $$ractools; \
  	cdsutil="$(SHSatCDS)"; test -z "$(atCDS)" && cdsutil=""; \
-@@ -163,6 +164,8 @@
+@@ -164,6 +165,8 @@
  	for f in $$ractools; do chmod 755 $(SHSDIR)/`basename $$f`; done
  
  install_info:
