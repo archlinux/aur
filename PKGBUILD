@@ -1,8 +1,8 @@
 # Maintainers: let <let@notlet.dev>, EnumDev <enumdev@enumerated.dev>
 
 pkgname=stormfetch
-pkgver=5.3.r2.gc5e02c0
-pkgrel=2
+pkgver=5.4.r0.g76974ee
+pkgrel=1
 pkgdesc='A simple linux fetch program written in go and bash'
 arch=('any')
 url='https://gitlab.com/EnumDev/stormfetch'
