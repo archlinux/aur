@@ -12,6 +12,7 @@ pkgbase = augustus-git
 	depends = sdl2_mixer
 	depends = glibc
 	provides = augustus
+	conflicts = augustus
 	conflicts = augustus-game
 	replaces = augustus-game
 	source = git+https://github.com/Keriew/augustus.git
