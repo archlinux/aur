@@ -28,7 +28,7 @@ build() {
     -trimpath \
     -mod=readonly \
     -modcacherw \
-    -ldflags="-s -w $LDEXTRA -extldflags $LDFLAGS" \
+    -ldflags="-linkmode=external -s -w $LDEXTRA -extldflags \"${LDFLAGS}\"" \
     -o $pkgname
 }
 
