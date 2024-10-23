@@ -1,0 +1,14 @@
+pkgbase = semblance-git
+	pkgdesc = Produce disassembly and other information from exectable files
+	pkgver = r200.e87c0b0
+	pkgrel = 1
+	url = https://gitlab.winehq.org/zfigura/semblance
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = git
+	provides = semblance
+	conflicts = semblance
+	source = git+https://gitlab.winehq.org/zfigura/semblance.git
+	sha256sums = SKIP
+
+pkgname = semblance-git
