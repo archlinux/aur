@@ -25,6 +25,7 @@ build() {
   LDEXTRA="-X \"main.redressVersion=v$pkgver\" -X \"main.goreVersion=$GOREVER\" -X \"main.compilerVersion=$GOVER\""
 
   go build \
+    -buildmode=pie \
     -trimpath \
     -mod=readonly \
     -modcacherw \
