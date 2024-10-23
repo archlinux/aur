@@ -2,7 +2,7 @@
 # Maintainer: wheaney <wayne at xronlinux dot com>
 _pkgbase=breezy-desktop
 pkgname="${_pkgbase}"-gnome-git
-pkgver=0.11.2
+pkgver=1.1.5
 pkgrel=1
 pkgdesc="Breezy GNOME - XR desktop"
 arch=('x86_64' 'aarch64')
@@ -10,7 +10,7 @@ url="https://github.com/wheaney/breezy-desktop"
 license=('GPL-3.0')
 makedepends=('ninja' 'meson' 'librsvg')
 depends=('gtk4' 'python' 'python-pydbus' 'python-yaml' 'gnome-shell>=45.0' 'xr-driver-git')
-source=("git+${url}#commit=v0.11.2")
+source=("git+${url}#commit=1a2dc2357309a2edf92c5c9bc60f7e068dd92881")
 md5sums=(SKIP)
 
 _uuid="breezydesktop@xronlinux.com"
@@ -40,8 +40,8 @@ build() {
     unlink gnome/src/textures/calibrating.png
     cp modules/sombrero/calibrating.png gnome/src/textures/
 
-    unlink gnome/src/IMUAdjust.frag
-    cp modules/sombrero/IMUAdjust.frag gnome/src/
+    unlink gnome/src/Sombrero.frag
+    cp modules/sombrero/Sombrero.frag gnome/src/
 
     # create icon
     rsvg-convert ui/data/icons/hicolor/scalable/apps/com.xronlinux.BreezyDesktop.svg -w 64 -h 64 -o ui/data/icons/hicolor/com.xronlinux.BreezyDesktop_64.png
@@ -60,14 +60,15 @@ package() {
     # copy binaries
     install -d "${pkgdir}"/usr/local/share/breezydesktop/breezydesktop/
     cp -r ${_pkgbase}/ui/src/*.py "${pkgdir}"/usr/local/share/breezydesktop/breezydesktop/
-    cp -r ${_pkgbase}/ui/po "${pkgdir}"/usr/local/share/breezydesktop/breezydesktop/
+    install -d "${pkgdir}"/usr/local/share/locale/
+    cp -r ${_pkgbase}/ui/po/mo/* "${pkgdir}"/usr/local/share/locale/
     install -Dm755 ${_pkgbase}/ui/modules/PyXRLinuxDriverIPC/xrdriveripc.py "${pkgdir}"/usr/local/share/breezydesktop/breezydesktop/xrdriveripc.py
 
     install -Dm755 ${_pkgbase}/ui/build/src/breezydesktop "${pkgdir}"/usr/bin/breezydesktop
 
     install -Dm755 ${_pkgbase}/ui/build/src/breezydesktop.gresource "${pkgdir}"/usr/local/share/breezydesktop/breezydesktop.gresource
     install -Dm755 ${_pkgbase}/ui/build/data/com.xronlinux.BreezyDesktop.desktop "${pkgdir}"/usr/share/applications/com.xronlinux.BreezyDesktop.desktop
-    sed -i '/Exec/c\Exec=env LOCALE_DIR=/usr/local/share/breezydesktop/breezydesktop/po breezydesktop --skip-verification' "${pkgdir}"/usr/share/applications/com.xronlinux.BreezyDesktop.desktop
+    sed -i '/Exec/c\Exec=env APPDIR=/usr/local/share breezydesktop --skip-verification' "${pkgdir}"/usr/share/applications/com.xronlinux.BreezyDesktop.desktop
 
     install -Dm755 ${_pkgbase}/ui/data/icons/hicolor/com.xronlinux.BreezyDesktop_64.png "${pkgdir}"/usr/share/icons/hicolor/64x64/apps/com.xronlinux.BreezyDesktop.png
     install -Dm755 ${_pkgbase}/ui/data/icons/hicolor/com.xronlinux.BreezyDesktop_128.png "${pkgdir}"/usr/share/icons/hicolor/128x128/apps/com.xronlinux.BreezyDesktop.png
