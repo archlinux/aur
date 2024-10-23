@@ -1,7 +1,7 @@
 pkgbase = cflow
 	pkgdesc = A C program flow analyzer
 	pkgver = 1.7
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.gnu.org/software/cflow/
 	arch = i686
 	arch = x86_64
