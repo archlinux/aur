@@ -1,6 +1,6 @@
 pkgbase = ml4w-hyprland-git
 	pkgdesc = The ML4W Dotfiles for Hyprland - An advanced and full-featured configuration for the dynamic tiling window manager Hyprland including an easy to use installation script for Arch based Linux distributions.
-	pkgver = 2.9.6.3.r41.g39f3b70
+	pkgver = 2.9.6.3.r61.g58f53c9
 	pkgrel = 1
 	url = https://github.com/mylinuxforwork/dotfiles
 	arch = any
@@ -28,6 +28,9 @@ pkgbase = ml4w-hyprland-git
 	depends = hyprpaper
 	depends = hyprlock
 	depends = hypridle
+	depends = noto-fonts
+	depends = dolphin
+	depends = wofi
 	depends = xdg-desktop-portal
 	depends = xdg-desktop-portal-hyprland
 	depends = libnotify
