@@ -5,7 +5,6 @@ pkgbase = figma-linux-git
 	url = https://github.com/Figma-Linux/figma-linux
 	arch = any
 	license = GPL-2.0-only
-	makedepends = gendesk
 	makedepends = git
 	makedepends = nvm
 	makedepends = npm
