@@ -1,7 +1,7 @@
 # Maintainer: Pierre Choffet <peuc@wanadoo.fr>
 
 pkgname=return-to-the-roots-git
-pkgver=v0.9.5.21.g0537322eb
+pkgver=v0.9.5.471.gd5c666512
 pkgrel=1
 pkgdesc="Free/libre implementation of The Settlers II game engine"
 arch=("x86_64")
@@ -10,7 +10,7 @@ license=("GPL3")
 makedepends=("cmake" "git" "boost" "mesa" "sdl_mixer" "sdl2_mixer" "curl" "lua53" "miniupnpc" "libsamplerate")
 depends=("boost-libs" "libgl" "sdl_mixer" "sdl2_mixer" "miniupnpc" "lua53" "libsamplerate")
 optdepends=("siedler2-data")
-conflicts=("return-to-the-roots" "s25rttr" "s25rttr-nightly-bin")
+conflicts=("return-to-the-roots" "s25rttr" "s25rttr-nightly-bin" "return-to-the-roots-maps-git")
 provides=("return-to-the-roots" "s25rttr")
 install="return-to-the-roots.install"
 changelog="ChangeLog"
@@ -26,9 +26,11 @@ source=("git+https://github.com/Return-To-The-Roots/s25client.git"
         "git+https://github.com/Return-To-The-Roots/s25edit.git"
         "git+https://github.com/Return-To-The-Roots/s25update.git"
         "git+https://github.com/Return-To-The-Roots/version.git"
-        "git+https://github.com/mat007/turtle.git"
+	"git+https://github.com/Return-To-The-Roots/s25maps.git"
+	"git+https://github.com/mat007/turtle.git"
         "rttr.sh" "return-to-the-roots.install")
 sha256sums=('SKIP'
+            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -64,6 +66,7 @@ prepare() {
 	git config submodule.s25edit.url $srcdir/s25edit
 	git config submodule.s25update.url $srcdir/s25update
 	git config submodule.version.url $srcdir/version
+	git config submodule.s25maps.url $srcdir/s25maps
 	git config submodule.contrib/turtle.url $srcdir/turtle
 
 	# Get modules
@@ -100,6 +103,9 @@ package() {
 	# Get additional files
 	mkdir -p ${pkgdir}/usr/share/applications
 	cp "${srcdir}/s25client/tools/release/debian/s25rttr.desktop" "${pkgdir}/usr/share/applications/"
+
+	# Copy maps
+	find "${srcdir}/s25maps/" -mindepth 1 -maxdepth 1 -type d -exec cp -R '{}' "${pkgdir}/usr/share/s25rttr/RTTR/MAPS/" \;
 
 	mkdir -p ${pkgdir}/usr/share/pixmaps
 	cp "${srcdir}/s25client/tools/release/debian/s25rttr.png" "${pkgdir}/usr/share/pixmaps/"
