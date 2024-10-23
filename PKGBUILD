@@ -45,25 +45,25 @@ build() {
     " -i "${srcdir}/${pkgname}.sh"
     _ensure_local_nvm
     gendesk -q -f -n --pkgname="${pkgname}" --pkgdesc="${pkgdesc}" --categories="Network" --name="${_pkgname}" --exec="${pkgname} %U"
-    cd "${srcdir}/${pkgname}.git"
+    cd "${srcdir}/${pkgname}-${pkgver//_/-}"
     electronDist="/usr/lib/electron${_electronversion}"
-  export ELECTRON_SKIP_BINARY_DOWNLOAD=1
-  export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
-  HOME="${srcdir}/.electron-gyp"
-  {
-    echo -e '\n'	
-    #echo 'build_from_source=true'
-    echo "cache=${srcdir}/.npm_cache"
-  } >> .npmrc
-  if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
+    export ELECTRON_SKIP_BINARY_DOWNLOAD=1
+    export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
+    HOME="${srcdir}/.electron-gyp"
     {
-      echo 'registry=https://registry.npmmirror.com'
-      echo 'disturl=https://registry.npmmirror.com/-/binary/node/'
-      echo 'electron_mirror=https://registry.npmmirror.com/-/binary/electron/'
-      echo 'electron_builder_binaries_mirror=https://registry.npmmirror.com/-/binary/electron-builder-binaries/'
+      echo -e '\n'	
+      #echo 'build_from_source=true'
+      echo "cache=${srcdir}/.npm_cache"
     } >> .npmrc
-    find ./ -type f -name "package-lock.json" -exec sed -i "s/registry.npmjs.org/registry.npmmirror.com/g" {} +
-  fi
+    if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
+      {
+        echo 'registry=https://registry.npmmirror.com'
+        echo 'disturl=https://registry.npmmirror.com/-/binary/node/'
+        echo 'electron_mirror=https://registry.npmmirror.com/-/binary/electron/'
+        echo 'electron_builder_binaries_mirror=https://registry.npmmirror.com/-/binary/electron-builder-binaries/'
+      } >> .npmrc
+      find ./ -type f -name "package-lock.json" -exec sed -i "s/registry.npmjs.org/registry.npmmirror.com/g" {} +
+    fi
     sed -e "
       /--no-force-async-hooks-checks/d
       /ELECTRON_DISABLE_SANDBOX/d
@@ -74,8 +74,8 @@ build() {
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
-    install -Dm644 "${srcdir}/${pkgname}.git/dist/linux-"*/resources/app.asar -t "${pkgdir}/usr/lib/${pkgname}"
-    cp -Pr --no-preserve=ownership "${srcdir}/${pkgname}.git/dist/linux-"*/resources/icon "${pkgdir}/usr/lib/${pkgname}"
-    install -Dm644 "${srcdir}/${pkgname}.git/build/icons/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
+    install -Dm644 "${srcdir}/${pkgname}-${pkgver//_/-}/dist/linux-"*/resources/app.asar -t "${pkgdir}/usr/lib/${pkgname}"
+    cp -Pr --no-preserve=ownership "${srcdir}/${pkgname}-${pkgver//_/-}/dist/linux-"*/resources/icon "${pkgdir}/usr/lib/${pkgname}"
+    install -Dm644 "${srcdir}/${pkgname}-${pkgver//_/-}/build/icons/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
     install -Dm644 "${srcdir}/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
 }
