@@ -1,0 +1,23 @@
+--- dsf.c	2024-10-22 18:57:50.887352903 +0200
++++ dsf.c	2024-10-22 18:56:34.459920868 +0200
+@@ -265,7 +265,8 @@
+ 	    lsx_writedw(ft, dsf->chan_num) ||
+ 	    lsx_writedw(ft, dsf->sfreq) ||
+ 	    lsx_writedw(ft, dsf->bps) ||
+-	    lsx_writeqw(ft, dsf->scount ? dsf->scount : SOX_UNKNOWN_LEN) ||
++		// lsx_writeqw(ft, dsf->scount) ||
++	    lsx_writeqw(ft, dsf->scount ? dsf->scount : UINT64_MAX) ||
+ 	    lsx_writedw(ft, dsf->block_size) ||
+ 	    lsx_writedw(ft, 0) || /* reserved */
+ 	    lsx_writedw(ft, DATA_TAG) ||
+
+--- sox_sample_test.h	2024-10-22 19:06:24.527681296 +0200
++++ sox_sample_test.h	2024-10-23 11:07:57.668143730 +0200
+@@ -20,6 +20,7 @@
+ #endif
+ #include <assert.h>
+ #include "sox.h"
++#include <math.h>
+ 
+ #define TEST_UINT(bits) \
+   uint##bits = 0; \

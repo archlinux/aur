@@ -2,9 +2,9 @@
  
 pkgname=sox-dsd-git
 pkgver=14.4.2.r69.g0be259ea
-pkgrel=4
+pkgrel=5
 pkgdesc="SoX Resampler library dsd fork"
-arch=('i686' 'x86_64' 'aarch64')
+arch=('i686' 'x86_64' 'x86_64_v3' 'x86_64_v4' 'aarch64')
 license=('GPL' 'LGPL')
 depends=('libltdl' 'file' 'libsndfile' 'libpng' 'lame' 'opencore-amr' 'gsm')
 makedepends=('libao' 'libmad' 'libid3tag' 'wavpack' 'libpulse' 'opusfile' 'autoconf')
@@ -24,6 +24,13 @@ pkgver() {
   cd "$pkgname"
   git describe --long --tags | sed 's/^sox.//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
+
+prepare() {
+  cd "$pkgname"/src
+  echo "$pkgname"/src
+  patch < ../../../stream.patch
+}
+
 
 build() {
  cd $pkgname
