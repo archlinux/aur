@@ -1,0 +1,11 @@
+--- wttr-cli/src/wttr	2024-10-23 00:13:27.000000000 -0300
++++ wttr-cli/src/wttr	2024-10-23 00:14:49.109718047 -0300
+@@ -14,7 +14,7 @@
+ #Update 1.53: add a parameters '-t' current forecast and '-n' current weather
+ #Update 1.54: spell check and added some optional parameters for -help, -today, -now
+ 
+-wttr_ver="1.54_2021-09-03" #define script version
++wttr_ver="1.55" #define script version
+ 
+ GITHUB_REPO_URL="https://github.com/cblte/bash-script-wttr"
+ URL="https://wttr.in/"
