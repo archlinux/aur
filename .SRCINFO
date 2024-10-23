@@ -1,12 +1,12 @@
 pkgbase = vdo
 	pkgdesc = Userspace tools for managing VDO volumes
-	pkgver = 8.3.0.71
+	pkgver = 8.3.0.72
 	pkgrel = 1
 	url = https://github.com/dm-vdo/vdo
 	arch = x86_64
 	license = GPL-2.0-or-later
 	depends = device-mapper
-	source = vdo-8.3.0.71.tar.gz::https://github.com/dm-vdo/vdo/archive/8.3.0.71.tar.gz
-	sha256sums = d4f2f82180850e5e30a03adc44d669f348ffcfaaf0d4a8a066e5214562d5fdcd
+	source = vdo-8.3.0.72.tar.gz::https://github.com/dm-vdo/vdo/archive/8.3.0.72.tar.gz
+	sha256sums = 0be32e6c0b95548965b620af2d40532b88f326e992b6fbb740a9e27f977caafb
 
 pkgname = vdo
