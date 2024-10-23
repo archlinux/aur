@@ -1,0 +1,24 @@
+pkgbase = spectraview2-bin
+	pkgdesc = Profiling and color management tool for NEC monitors
+	pkgver = 1.1.38
+	pkgrel = 2
+	url = https://www.sharpnecdisplays.us/support-and-services/spectraviewii/4
+	arch = x86_64
+	license = LicenseRef-proprietary
+	makedepends = gendesk
+	depends = fontconfig
+	depends = freetype2
+	depends = libice
+	depends = libsm
+	depends = libudev0-shim
+	depends = libusb-compat
+	depends = libxrandr
+	depends = libxrender
+	depends = libxxf86vm
+	conflicts = spectraview2
+	source = http://www.necds-engineering.com/spectraview/NEC_SpectraView_Linux_x64_1.1.38_multilanguage.tar.gz
+	source = spectraview2.png
+	sha512sums = 0dc6e3352dfde3d53d7cadd4eb5b4ff90d913cc14da407e998ff11cc61cea0588b69a700a7f8ff4c7d1369d8774e4665751bd2a3f70b07153c15f447da2a80e1
+	sha512sums = e2f2b7fe1b82b5ca3a422cb3cf30b20f006a27d36fed21d19847147f85e93a10b3e8cbc8930e31f0b1f62a5a643866a0d0071bac61d448d64b9ae3ea1c805312
+
+pkgname = spectraview2-bin
