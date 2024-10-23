@@ -1,7 +1,7 @@
 pkgbase = medit-full
 	pkgdesc = Medit with the python bindings restored
 	pkgver = 1.2.0
-	pkgrel = 3
+	pkgrel = 4
 	url = http://mooedit.sourceforge.net
 	install = medit.install
 	arch = i686
@@ -10,7 +10,7 @@ pkgbase = medit-full
 	makedepends = pkg-config
 	makedepends = perl-xml-parser
 	makedepends = intltool
-	makedepends = gcc-objc
+	makedepends = glib2-devel
 	makedepends = python
 	depends = pygtk
 	depends = libxml2

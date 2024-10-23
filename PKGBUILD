@@ -2,7 +2,7 @@
 
 pkgname=medit-full
 pkgver=1.2.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Medit with the python bindings restored"
 arch=('i686' 'x86_64')
 url="http://mooedit.sourceforge.net"
@@ -10,7 +10,7 @@ options=('!emptydirs')
 license=('GPL')
 depends=('pygtk' 'libxml2' 'pcre' 'libsm' 'python2' 'gtk2' 'gcc-libs')
 optdepends=('ctags' 'vte: terminal emulator')
-makedepends=('pkg-config' 'perl-xml-parser' 'intltool' 'gcc-objc' 'python')
+makedepends=('pkg-config' 'perl-xml-parser' 'intltool' 'glib2-devel' 'python')
 conflicts=('medit')
 replaces=('medit')
 provides=('medit')
@@ -20,6 +20,7 @@ source=(http://downloads.sourceforge.net/mooedit/medit-${pkgver}.tar.bz2)
 build() {
   cd "$srcdir"/medit-$pkgver
   export PYTHON=/usr/bin/python2
+  export CFLAGS="$CFLAGS -Wno-error=incompatible-pointer-types"
   ./configure --prefix=/usr --with-python --enable-moo-module --enable-shared
   make
 }
