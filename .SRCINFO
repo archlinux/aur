@@ -11,8 +11,8 @@ pkgbase = whalebird-git
 	makedepends = curl
 	makedepends = yarn
 	depends = electron31
-	provides = whalebird-git=6.1.7.r0.gaada09e
-	conflicts = whalebird-git
+	provides = whalebird=6.1.7.r0.gaada09e
+	conflicts = whalebird
 	source = whalebird.git::git+https://github.com/h3poteto/whalebird-desktop.git
 	source = whalebird.sh
 	sha256sums = SKIP

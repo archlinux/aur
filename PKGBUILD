@@ -11,8 +11,8 @@ arch=('any')
 url="https://whalebird.social/"
 _ghurl="https://github.com/h3poteto/whalebird-desktop"
 license=('GPL-3.0-only')
-provides=("${pkgname%-bin}=${pkgver}")
-conflicts=("${pkgname%-bin}")
+provides=("${pkgname%-git}=${pkgver}")
+conflicts=("${pkgname%-git}")
 depends=(
     "electron${_electronversion}"
 )
@@ -52,26 +52,29 @@ build() {
     _ensure_local_nvm
     gendesk -q -f -n --pkgname="${pkgname%-git}" --pkgdesc="${pkgdesc}" --categories="Utility" --name="${_pkgname}" --exec="${pkgname%-git} %U"
     cd "${srcdir}/${pkgname//-/.}"
+    electronDist="/usr/lib/electron${_electronversion}"
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
     HOME="${srcdir}/.electron-gyp"
-    electronDist="/usr/lib/electron${_electronversion}"
     mkdir -p "${srcdir}/.electron-gyp"
     touch "${srcdir}/.electron-gyp/.yarnrc"
-    if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
+        if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
         {
-          echo 'npmRegistryServer: "https://registry.npmmirror.com"'
-          echo "cacheFolder: "${srcdir}"/.yarn/cache"
-          echo "globalFolder: "${srcdir}"/.yarn/global"
+            echo 'npmRegistryServer: "https://registry.npmmirror.com"'
+            echo "cacheFolder: "${srcdir}"/.yarn/cache"
+            echo "globalFolder: "${srcdir}"/.yarn/global"
         } >> .yarnrc.yml
         export npm_config_disturl=https://registry.npmmirror.com/-/binary/node/
         export npm_config_electron_mirror=https://registry.npmmirror.com/-/binary/electron/
         export npm_config_electron_builder_binaries_mirror=https://registry.npmmirror.com/-/binary/electron-builder-binaries/
     fi
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
-    NODE_ENV=development    npx yarn install
-    NODE_ENV=production     npx yarn exec nextron build --no-pack
-    NODE_ENV=production     npx yarn exec electron-builder --linux --dir -c.electronDist="${electronDist}"
+    _yarnver=`grep "yarn@" package.json | awk '{print $2}' | sed "s/\"//g;s/yarn@//g;s/,//g"`
+    corepack enable yarn
+    echo y | yarn version "${_yarnver}"
+    NODE_ENV=development    yarn install
+    NODE_ENV=production     yarn nextron build --no-pack
+    NODE_ENV=production     yarn electron-builder --linux dir -c.electronDist="${electronDist}"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
