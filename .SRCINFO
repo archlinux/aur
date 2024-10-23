@@ -1,0 +1,16 @@
+pkgbase = capter
+	pkgdesc = A simple cross-platform screenshot tool
+	pkgver = 2.1.0
+	pkgrel = 1
+	arch = x86_64
+	depends = gtk3
+	depends = xdotool
+	depends = libayatana-appindicator
+	depends = libxcb
+	depends = libxrandr
+	depends = dbus
+	options = !lto
+	source = capter-2.1.0.tar.gz::https://github.com/decipher3114/Capter/releases/latest/download/Capter_2.1.0_x86_64.tar.gz
+	sha512sums = SKIP
+
+pkgname = capter
