@@ -82,7 +82,7 @@ log = logging.getLogger(__name__)
 __absfile__ = op.abspath(__file__).rstrip('c')
 
 
-__version__ = '3.15.1'
+__version__ = '3.15.2'
 """Installer script version number. This must be updated
 whenever a new version of the installer script is released.
 """
@@ -695,9 +695,18 @@ def clean_environ():
 
     All FSL and conda related variables are removed.
     """
+
+    blacklist = [
+        '*FSL*',
+        '*CONDA*',
+        '*MAMBA*',
+        '*PYTHON*',
+        '*PYVENV*'
+    ]
+
     env = os.environ.copy()
     for v in list(env.keys()):
-        if any(('FSL' in v, 'CONDA' in v, 'MAMBA' in v, 'PYTHON' in v)):
+        if match_any(v, blacklist) is not None:
             env.pop(v)
     return env
 
