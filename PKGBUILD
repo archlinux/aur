@@ -1,6 +1,7 @@
 #Based on https://gitlab.archlinux.org/archlinux/packaging/packages/gnome-shell/-/raw/main/PKGBUILD
-# Maintainer: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
-# Maintainer: Fabian Bornschein <fabiscafe@archlinux.org>
+# Maintainer: envolution
+# Contributor: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
+# Contributor: Fabian Bornschein <fabiscafe@archlinux.org>
 # Contributor: Ionut Biru <ibiru@archlinux.org>
 # Contributor: Flamelab <panosfilip@gmail.com
 
@@ -9,10 +10,10 @@ pkgname=(
   gnome-shell-git
   gnome-shell-docs-git
 )
-pkgver=47.0+r60+g50434f013
+pkgver=47.0+r62+g7c6e28628
 pkgrel=1
 epoch=1
-pkgdesc="Next generation desktop shell"
+pkgdesc="Next generation desktop shell - git latest"
 url="https://gitlab.gnome.org/GNOME/gnome-shell"
 arch=(x86_64)
 license=(GPL-3.0-or-later)
@@ -53,7 +54,7 @@ depends=(
   libsoup3
   libx11
   libxfixes
-  mutter
+  mutter-git #we need mutter-clutter 16, currently only 15 in base mutter
   pango
   polkit
   systemd-libs
@@ -82,7 +83,7 @@ source=(
 b2sums=('SKIP'
         'e31ae379039dfc345e8032f7b9803a59ded075fc52457ba1553276d3031e7025d9304a7f2167a01be2d54c5e121bae00a2824a9c5ccbf926865d0b24520bb053')
 
-pkgver() {
+ pkgver() {
   cd gnome-shell
   git describe --tags | sed 's/[^-]*-g/r&/;s/-/+/g'
 }
@@ -90,7 +91,6 @@ pkgver() {
 prepare() {
   # Inject gvc
   ln -s libgnome-volume-control gvc
-
   cd gnome-shell
 }
 
