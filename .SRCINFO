@@ -1,7 +1,7 @@
 pkgbase = python-aiohttp-apispec-git
 	pkgdesc = Build and document REST APIs with aiohttp and apispec (git version)
 	pkgver = 3.0.0b2.r8.ge37d587
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/maximdanilchenko/aiohttp-apispec
 	arch = any
 	license = MIT
@@ -11,7 +11,7 @@ pkgbase = python-aiohttp-apispec-git
 	depends = python-apispec
 	depends = python-jinja
 	depends = python-webargs
-	provides = python-aiohttp-apispec
+	provides = python-aiohttp-apispec=3.0.0b2.r8.ge37d587
 	conflicts = python-aiohttp-apispec
 	source = python-aiohttp-apispec-git::git+https://github.com/maximdanilchenko/aiohttp-apispec.git
 	sha512sums = SKIP
