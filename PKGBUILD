@@ -1,7 +1,7 @@
 # Maintainer: loathingkernel <loathingkernel _a_ gmail _d_ com>
 
 pkgname=umu-launcher
-pkgver=1.1.2
+pkgver=1.1.3
 pkgrel=1
 pkgdesc="This is the Unified Launcher for Windows Games on Linux, to run Proton with fixes outside of Steam"
 arch=('x86_64')
@@ -78,4 +78,4 @@ package() {
   make DESTDIR="$pkgdir" install
 }
 
-sha256sums=('80cec22e281ca2061912cd06aee26728d92fe8fae157f8392d81c1b5c61045f2')
+sha256sums=('14561329686b0fe4b9950841c50bf67b9419384dc25b0449064cece467a03209')
