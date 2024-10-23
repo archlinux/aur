@@ -16,6 +16,7 @@ pkgbase = tdx-bin
 	depends = at-spi2-core
 	depends = libxtst
 	depends = libnss_nis
+	depends = zenity
 	source = tdx-bin-7.64-1-x86_64.deb::https://data.tdx.com.cn/kylin/com.tdx.tdxcfv_7.64_amd64.deb
 	sha256sums = 22aff03c4b26fb67c2c049056f785d6fb56cd855fc3171dbb65a99ab9cfd4454
 

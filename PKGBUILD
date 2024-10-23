@@ -21,6 +21,7 @@ depends=(
     at-spi2-core
     libxtst
     libnss_nis
+    zenity
 )
 
 #source_x86_64=("${pkgname}-${pkgver}-${pkgrel}-x86_64.deb::https://data.tdx.com.cn/kylin/com.tdx.tdxcfv_${pkgver}_amd64.deb")
