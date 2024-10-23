@@ -2,8 +2,8 @@
 
 pkgbase=bitwuzla
 pkgname=("${pkgbase}" "${pkgbase}-doc")
-pkgver=0.5.0
-pkgrel=2
+pkgver=0.6.0
+pkgrel=1
 pkgdesc='SMT solver for the theories of fixed-size bit-vectors, floating-point arithmetic, arrays and uninterpreted functions and their combinations'
 arch=('x86_64')
 url='https://bitwuzla.github.io'
@@ -18,6 +18,7 @@ makedepends=(
     'cmake'
     'cython'
     'doxygen'
+    'git' # Version string gets generated from git
     'gtest' # Needed even with --nocheck
     'meson>=0.64'
     'ninja'
@@ -39,7 +40,7 @@ provides=(
     'libbitwuzlabb.so'
     'libbitwuzlals.so'
     'libbitwuzla.so')
-b2sums=('7fa955bc4a086860f4882e173c5ceb27e03ce0ea1c6cb4561e941af3f7945a258b817dc3cd240241e5b999415c6c41aca41f642d5447611ffd490ed74a489061'
+b2sums=('7622c7bda5601cc6ecd0e24abb4c37329d372c28ab5e2e95bc8def03e1412f9ce4ac6d0cfa9eb6726fe42016d5c011099cea53793eccab4722cd766c4cc2ad3f'
         '0ebea6754d4fc270c268d4088af9bcb93596fe5ec7b1065f83d39e5c56eef93d567592443ec0a460a34bf5829b5b54f2c9971644f6fbbebbf9c43a1b440ac54d'
         '7728ab77cb234b4427e7cf493817a24bf97440304efb4fc4300125ec470a0bf15430b4416d3c5fdea51dc91441640d05995ed4a08d4c628f97f4d4dc08538d7e')
 options=('!lto')
