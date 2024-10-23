@@ -3,12 +3,13 @@
 
 pkgname=xq
 pkgver=1.2.5
-pkgrel=1
+pkgrel=2
 pkgdesc='Command-line XML and HTML beautifier and content extractor'
 arch=('x86_64')
 url='https://github.com/sibprogrammer/xq'
 license=('MIT')
 makedepends=('go')
+conflicts=('yq')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('9432a992d2f0ab82a7350da6317e27f835713c340177518dd08581bd0e918365')
 
