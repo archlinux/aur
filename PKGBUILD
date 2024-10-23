@@ -6,7 +6,7 @@
 
 pkgname=rambox-pro-bin
 _pkgname=rambox
-pkgver=2.4.0
+pkgver=2.4.1
 pkgrel=1
 pkgdesc='Workspace browser to manage many web applications in one place'
 arch=('x86_64')
@@ -25,34 +25,36 @@ conflicts=('rambox' 'rambox-bin' 'rambox-pro-bin-beta')
 #    html2text --body-width=80 file.html | awk '/^# .*EULA/,/^## If/ { print }' | head -n -1
 # 5. Update the timestamp in step #2.
 source=("${_pkgname}-EULA"
-"${_pkgname}-${pkgver}.deb::https://github.com/ramboxapp/download/releases/download/v${pkgver}/Rambox-${pkgver}-linux-x64.deb")
+  "${_pkgname}-${pkgver}.deb::https://github.com/ramboxapp/download/releases/download/v${pkgver}/Rambox-${pkgver}-linux-x64.deb")
 
 sha256sums=(
-    '0c94e0c1690afe9414a7ead793bb63417da16b143209d3fed8999370a237d137'
-    '17a1ab982ae0165fc7f83436b44ad89402ac3995410e0aca0aca081add3b7825'
+  # eula sum
+  '0c94e0c1690afe9414a7ead793bb63417da16b143209d3fed8999370a237d137'
+  # deb file sum
+  '554316ce93c134dc072092d3c76127a89c5e7fa09b3dc7a69d1e4eae24934ad4'
 )
 
 build() {
-    rm -rf "${srcdir}/root"
-    mkdir -p "${srcdir}/root"
-    bsdtar -xf 'data.tar.xz' -C "${srcdir}/root"
+  rm -rf "${srcdir}/root"
+  mkdir -p "${srcdir}/root"
+  bsdtar -xf 'data.tar.xz' -C "${srcdir}/root"
 }
 
 package() {
-    install -d -m 0755 \
-        "${pkgdir}/opt/${_pkgname}" \
-        "${pkgdir}/usr/bin" \
-        "${pkgdir}/usr/share/applications" \
-        "${pkgdir}/usr/share/icons" \
-        "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -d -m 0755 \
+    "${pkgdir}/opt/${_pkgname}" \
+    "${pkgdir}/usr/bin" \
+    "${pkgdir}/usr/share/applications" \
+    "${pkgdir}/usr/share/icons" \
+    "${pkgdir}/usr/share/licenses/${pkgname}"
 
-    cp -rp "${srcdir}/root/opt/Rambox/." "${pkgdir}/opt/${_pkgname}/."
-    cp -rp "${srcdir}/root/usr/share/icons/." "${pkgdir}/usr/share/icons/."
+  cp -rp "${srcdir}/root/opt/Rambox/." "${pkgdir}/opt/${_pkgname}/."
+  cp -rp "${srcdir}/root/usr/share/icons/." "${pkgdir}/usr/share/icons/."
 
-    install -m 0644 "${srcdir}/${_pkgname}-EULA" "${pkgdir}/usr/share/licenses/${pkgname}/EULA"
-    install -m 0644 "${srcdir}/root/usr/share/applications/${_pkgname}.desktop" \
-        "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
+  install -m 0644 "${srcdir}/${_pkgname}-EULA" "${pkgdir}/usr/share/licenses/${pkgname}/EULA"
+  install -m 0644 "${srcdir}/root/usr/share/applications/${_pkgname}.desktop" \
+    "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
 
-    ln -s "/opt/${_pkgname}/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
-    sed -i "s~/opt/Rambox/~/opt/${_pkgname}/~g" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
+  ln -s "/opt/${_pkgname}/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
+  sed -i "s~/opt/Rambox/~/opt/${_pkgname}/~g" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
 }
