@@ -1,5 +1,5 @@
 pkgname=website-stalker-bin
-pkgver=0.24.2
+pkgver=0.25.0
 pkgrel=1
 pkgdesc="Track changes on websites via git"
 arch=('x86_64' 'aarch64' 'armv6h' 'armv7h' 'riscv64')
@@ -16,11 +16,11 @@ source_armv6h=("$url/releases/download/v${pkgver}/${pkgname/-bin/}-v${pkgver}-ar
 source_armv7h=("$url/releases/download/v${pkgver}/${pkgname/-bin/}-v${pkgver}-armv7-unknown-linux-gnueabihf.tar.gz")
 source_riscv64=("$url/releases/download/v${pkgver}/${pkgname/-bin/}-v${pkgver}-riscv64gc-unknown-linux-gnu.tar.gz")
 
-sha256sums_x86_64=('b73eb586861a962774adc0ada0615cf43d619287b15b1ac383688e1bf90318be')
-sha256sums_aarch64=('b74f1c01559bafb57023c18cfaf583ed5fbbc35020db774b0f18fc094dbca012')
-sha256sums_armv6h=('20ae81e9fd57178f3da8034186ff069c121d9ca8f46376ac90951d5742018305')
-sha256sums_armv7h=('25b8b40cd7282d31a2116f95def79970c722f8d253910602454c90cbd3d95e39')
-sha256sums_riscv64=('30d1d40cec1af97fbc6180a2a04cd6918fcce272d56e97fbd33e1eddb5781b38')
+sha256sums_x86_64=('a5ba101d0396f6a83b140980d72b15eeb4960153602707888059690ec48ebd16')
+sha256sums_aarch64=('14daf106dba26dc947b352eff67749ca07b8909d6b25730cf099aaad2dead552')
+sha256sums_armv6h=('b0c14bbf8b385730878e4cf5fbfb9f0e7898fc0cb2927fbece7800e383784eaa')
+sha256sums_armv7h=('cf1b08a14942fad457a31221cb77311da972188742cd4be63fd1a32229b5f93c')
+sha256sums_riscv64=('be3a9d031da32247ac4bed8146e867880be87a007e1dbd957af793258d985b85')
 
 check() {
 	eval "./website-stalker --help"
