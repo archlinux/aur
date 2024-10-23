@@ -1,6 +1,6 @@
 pkgbase = jdk8-perf
 	pkgdesc = Java SE Subscription Enterprise Performance Pack is a runtime that delivers the performance of the JDK 17 Java Virtual Machine (JVM) to a Java SE 8 runtime.
-	pkgver = 8.0.421
+	pkgver = 8.0.431
 	pkgrel = 1
 	url = https://www.oracle.com/java/technologies/downloads/#jepp
 	install = jdk8-perf.install
@@ -21,9 +21,9 @@ pkgbase = jdk8-perf
 	provides = java-runtime-openjdk=8
 	source = jdk8-perf.install
 	sha256sums = 08d898aa1f737aea0a16d14735d381904fcb4912cbd0b88f427243117899eb49
-	source_x86_64 = local://jdk-8u421-perf-linux-x64.tar.gz
-	sha256sums_x86_64 = 796666f8071202d85ad5d8013845d36045fd69b44135ebbeb76dffced3724c00
-	source_aarch64 = local://jdk-8u421-perf-linux-aarch64.tar.gz
-	sha256sums_aarch64 = d7c8d8b59b9104293618a05ec202900492e965529a2f622ef3a29723a8c15b4c
+	source_x86_64 = local://jdk-8u431-perf-linux-x64.tar.gz
+	sha256sums_x86_64 = a610bfcb300beee600ecfc46dc74a6d3a8a00e7bde0fe1be32598c6040b9849a
+	source_aarch64 = local://jdk-8u431-perf-linux-aarch64.tar.gz
+	sha256sums_aarch64 = 3dee9147941b5afdf81db3b5a826db026aebaa6de9181f1d401ecfdfe07a090c
 
 pkgname = jdk8-perf

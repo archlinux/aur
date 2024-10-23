@@ -4,7 +4,7 @@
 _java_ver=8
 _jdkname="java-${_java_ver}-jdk-perf"
 pkgname="jdk8-perf"
-pkgver="${_java_ver}.0.421"
+pkgver="${_java_ver}.0.431"
 pkgrel=1
 pkgdesc='Java SE Subscription Enterprise Performance Pack is a runtime that delivers the performance of the JDK 17 Java Virtual Machine (JVM) to a Java SE 8 runtime.'
 arch=('x86_64' 'aarch64')
@@ -27,13 +27,13 @@ provides=(
   "java-runtime-openjdk=$_java_ver"
 )
 install="$pkgname.install"
-source_aarch64=("local://jdk-8u421-perf-linux-aarch64.tar.gz")
-source_x86_64=("local://jdk-8u421-perf-linux-x64.tar.gz")
+source_aarch64=("local://jdk-8u431-perf-linux-aarch64.tar.gz")
+source_x86_64=("local://jdk-8u431-perf-linux-x64.tar.gz")
 source=("${pkgname}.install")
 #https://cdn.azul.com/zing-zvm/${_zulu_build}/zing${_zulu_build}-3-jdk${pkgver}-linux_x64.tar.gz
 #https://cdn.azul.com/zing-zvm/ZVM23.03.0.0/zing23.03.0.0-3-jdk8.0.362-linux_x64.tar.gz
-sha256sums_aarch64=('d7c8d8b59b9104293618a05ec202900492e965529a2f622ef3a29723a8c15b4c')
-sha256sums_x86_64=('796666f8071202d85ad5d8013845d36045fd69b44135ebbeb76dffced3724c00')
+sha256sums_aarch64=('3dee9147941b5afdf81db3b5a826db026aebaa6de9181f1d401ecfdfe07a090c')
+sha256sums_x86_64=('a610bfcb300beee600ecfc46dc74a6d3a8a00e7bde0fe1be32598c6040b9849a')
 sha256sums=('08d898aa1f737aea0a16d14735d381904fcb4912cbd0b88f427243117899eb49')
 _jvmdir="/usr/lib/jvm/${_jdkname}"
 
@@ -59,10 +59,10 @@ _conf_files=(
 package() {
   if [ "${CARCH}" = "aarch64" ]; then
     _conf_files+=('aarch64/jvm.cfg')
-    cd "$srcdir/jdk1.8.0_421"
+    cd "$srcdir/jdk1.8.0_431"
   else
     _conf_files+=('amd64/jvm.cfg')
-    cd "$srcdir/jdk1.8.0_421"
+    cd "$srcdir/jdk1.8.0_431"
   fi
 
   install -dm 755 "${pkgdir}/${_jvmdir}"
