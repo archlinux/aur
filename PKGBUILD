@@ -4,7 +4,7 @@ _pkgname=MS-365-Electron
 pkgver=2.0.0
 _electronversion=30
 _nodeversion=22
-pkgrel=2
+pkgrel=3
 pkgdesc="Unofficial Microsoft 365 Web Desktop Wrapper made with Electron.Use system-wide electron."
 arch=('any')
 url="https://agam778.github.io/MS-365-Electron"
@@ -45,20 +45,28 @@ build() {
     _ensure_local_nvm
     gendesk -q -f -n --pkgname="${pkgname}" --pkgdesc="${pkgdesc}" --categories="Office" --name="${_pkgname}" --exec="${pkgname} %U"
     cd "${srcdir}/${_pkgname}-${pkgver}"
-    #export ELECTRON_SKIP_BINARY_DOWNLOAD=1
+    electronDist="/usr/lib/electron${_electronversion}"
+    export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
     HOME="${srcdir}/.electron-gyp"
     mkdir -p "${srcdir}/.electron-gyp"
-    touch "${srcdir}/.electron-gyp/.yarnrc"
-        if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
+    if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
         {
-            echo 'npmRegistryServer: "https://registry.npmmirror.com"'
-            echo "cacheFolder: "${srcdir}"/.yarn/cache"
-            echo "globalFolder: "${srcdir}"/.yarn/global"
-        } >> .yarnrc.yml
-        export npm_config_disturl=https://registry.npmmirror.com/-/binary/node/
-        export npm_config_electron_mirror=https://registry.npmmirror.com/-/binary/electron/
-        export npm_config_electron_builder_binaries_mirror=https://registry.npmmirror.com/-/binary/electron-builder-binaries/
+            echo -e '\n'
+            echo 'registry "https://registry.npmmirror.com"'
+            echo 'disturl "https://registry.npmmirror.com/-/binary/node/"'
+            echo 'electron_mirror "https://registry.npmmirror.com/-/binary/electron/"'
+            echo 'electron_builder_binaries_mirror "https://registry.npmmirror.com/-/binary/electron-builder-binaries/"'
+            echo "cacheFolder "${srcdir}"/.yarn/cache"
+            echo "pluginsFolder "${srcdir}"/.yarn/plugins"
+            echo "globalFolder "${srcdir}"/.yarn/global"
+            echo 'useHardlinks true'
+            #echo 'buildFromSource true'
+            echo 'linkWorkspacePackages true'
+            echo 'fetchRetries 3'
+            echo 'fetchRetryTimeout 10000'
+        } >> .yarnrc
+        find ./ -type f -name "yarn.lock" -exec sed -i "s/registry.yarnpkg.com/registry.npmmirror.com/g" {} +
     fi
     sed -i "s/\/assets\/icons\/png\/1024x1024.png/..\/assets\/icons\/png\/1024x1024.png/g" -i app/main.js
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
@@ -66,7 +74,7 @@ build() {
     corepack enable yarn
     echo y | yarn version "${_yarnver}"
     NODE_ENV=development    yarn install
-    NODE_ENV=production     yarn run pack
+    NODE_ENV=production     yarn electron-builder --linux dir -c.electronDist="${electronDist}"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"

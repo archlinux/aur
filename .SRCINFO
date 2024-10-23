@@ -1,7 +1,7 @@
 pkgbase = ms-365-electron
 	pkgdesc = Unofficial Microsoft 365 Web Desktop Wrapper made with Electron.Use system-wide electron.
 	pkgver = 2.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://agam778.github.io/MS-365-Electron
 	arch = any
 	license = MIT
