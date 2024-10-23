@@ -1,6 +1,6 @@
 pkgbase = pacman-stable-fancy-progress
 	pkgdesc = pacman, but patched to selectively have FiraCode's progressbar on supported terminals
-	pkgver = 7.0.0.r0.g138cbae5
+	pkgver = 7.0.0.r3.g77361331
 	pkgrel = 1
 	url = https://www.archlinux.org/pacman/
 	arch = i686
@@ -9,7 +9,7 @@ pkgbase = pacman-stable-fancy-progress
 	arch = armv6h
 	arch = armv7h
 	arch = aarch64
-	license = SPDX
+	license = GPL-2.0-or-later
 	checkdepends = python
 	checkdepends = fakechroot
 	makedepends = git
@@ -31,7 +31,7 @@ pkgbase = pacman-stable-fancy-progress
 	options = debug
 	backup = etc/pacman.conf
 	backup = etc/makepkg.conf
-	source = git+https://gitlab.archlinux.org/pacman/pacman.git#tag=v7.0.0
+	source = git+https://gitlab.archlinux.org/pacman/pacman.git#branch=release/7.0.x
 	source = pacman.conf.i686
 	source = pacman.conf.x86_64
 	source = pacman.conf.arm
