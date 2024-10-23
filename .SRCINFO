@@ -1,7 +1,7 @@
 pkgbase = ferdium-nightly-bin
 	pkgdesc = A messaging browser that allows you to combine your favorite messaging services into one application (nightly binary release).
 	pkgver = 6.7.8.nightly.12
-	pkgrel = 3
+	pkgrel = 1
 	url = https://ferdium.org
 	arch = x86_64
 	arch = armv7l
@@ -34,11 +34,11 @@ pkgbase = ferdium-nightly-bin
 	conflicts = ferdium-electron
 	options = !strip
 	options = !debug
-	source_x86_64 = ferdium-nightly-bin-6.7.8-nightly.12-3-amd64.zip::https://github.com/ferdium/ferdium-app/releases/download/v6.7.8-nightly.12/Ferdium-linux-6.7.8-nightly.12-amd64.deb
+	source_x86_64 = ferdium-nightly-bin-6.7.8-nightly.12-1-amd64.zip::https://github.com/ferdium/ferdium-app/releases/download/v6.7.8-nightly.12/Ferdium-linux-6.7.8-nightly.12-amd64.deb
 	sha512sums_x86_64 = c8bacdbe76602c8f512c11e546c506968ac86c6d17911ac7321d67623378f31b941f9719516bf6b17ec931ff7776b99b14dc42b2da8db4651776839fc2928d93
-	source_armv7l = ferdium-nightly-bin-6.7.8-nightly.12-3-armv7l.zip::https://github.com/ferdium/ferdium-app/releases/download/v6.7.8-nightly.12/Ferdium-linux-6.7.8-nightly.12-armv7l.deb
+	source_armv7l = ferdium-nightly-bin-6.7.8-nightly.12-1-armv7l.zip::https://github.com/ferdium/ferdium-app/releases/download/v6.7.8-nightly.12/Ferdium-linux-6.7.8-nightly.12-armv7l.deb
 	sha512sums_armv7l = a34329166d5e15f71498f5e0358fac6854e18c0fd33452c3ace0a8555e4eb69478318af94a9075846ef693c6d670eee2fd4eb76af39484a6ea979699f00fac6f
-	source_aarch64 = ferdium-nightly-bin-6.7.8-nightly.12-3-arm64.zip::https://github.com/ferdium/ferdium-app/releases/download/v6.7.8-nightly.12/Ferdium-linux-6.7.8-nightly.12-arm64.deb
+	source_aarch64 = ferdium-nightly-bin-6.7.8-nightly.12-1-arm64.zip::https://github.com/ferdium/ferdium-app/releases/download/v6.7.8-nightly.12/Ferdium-linux-6.7.8-nightly.12-arm64.deb
 	sha512sums_aarch64 = 5144afed131ae85c92b28f36f8790881a649b83817a3e4aa78e94991512f23ca9154ce6e21ec0ca6c3cbebf485e4841460af96121c5fb68cd9e9dbcb7bc0a894
 
 pkgname = ferdium-nightly-bin
