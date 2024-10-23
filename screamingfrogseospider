@@ -1,0 +1,27 @@
+#!/bin/bash
+
+JAR="/usr/share/screamingfrogseospider/ScreamingFrogSEOSpider.jar"
+JAVA_PATH="/usr/share/screamingfrogseospider/jre/bin/java"
+
+FILE=$HOME/.screamingfrogseospider
+if [ ! -f $FILE ]; then
+    if [ $(uname -m) == 'x86_64' ]; then
+        echo "-Xmx2g" >> $FILE
+    else
+        echo "-Xmx1024M" >> $FILE
+    fi
+fi
+
+unset _JAVA_OPTIONS
+JVM_ARGS=`cat $FILE`
+
+exec ${JAVA_PATH} \
+    $JVM_ARGS \
+    -XX:+UseG1GC \
+    -XX:+UseStringDeduplication \
+    -enableassertions \
+    -XX:ErrorFile=$HOME/.ScreamingFrogSEOSpider/hs_err_pid%p.log \
+    -Djava.net.preferIPv4Stack=true \
+    -Dscreamingfrog.platform=deb \
+    -jar $JAR \
+    "$@"
