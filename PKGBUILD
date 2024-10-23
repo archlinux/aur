@@ -2,7 +2,7 @@
 # Contributor: Ista Zahn <istazahn@gmail.com>
 ## Based on miniconda3 aur package by Ashwin Vishn Immae, Martin Wimpress and Jingbei Li
 pkgname=mambaforge
-pkgver=24.7.1.0
+pkgver=24.9.0.0
 _pkgver=${pkgver%.*}-${pkgver##*.}
 pkgrel=1
 pkgdesc="Conda and Mamba package managers configured to use conda-forge"
@@ -14,9 +14,9 @@ source_x86_64=(${url}/releases/download/${_pkgver}/Mambaforge-${_pkgver}-Linux-x
 source_aarch64=(${url}/releases/download/${_pkgver}/Mambaforge-${_pkgver}-Linux-aarch64.sh)
 source_powerpc64le=(${url}/releases/download/${_pkgver}/Mambaforge-${_pkgver}-Linux-ppc64le.sh)
 options=(!strip libtool staticlibs)
-sha256sums_x86_64=('e72ecc1f1b170ee804da298e54ed616ce82543ce84a8b83f63cb0ada2e4bfa50')
-sha256sums_aarch64=('09221afebba644eabccb5a83a92ba7e1bf88ff17171f80f77f95aa81cad225cc')
-sha256sums_powerpc64le=('1ba05b444bea703097054a25aee2ebb7b04236632791f08f28db82491e005b52')
+sha256sums_x86_64=('77fb505f6266ffa1b5d59604cf6ba25948627e908928cbff148813957b1c28af')
+sha256sums_aarch64=('2d83f58793e9e303746747a683833aec5b9178fb1a313a3f9a56df2d319e23a5')
+sha256sums_powerpc64le=('cc083e40b1891611b26b0f63b5df3422cb4f8e1a29204f55caea514ead528eb2')
 install="${pkgname}.install"
 
 package() {
