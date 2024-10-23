@@ -1,7 +1,7 @@
 # Maintainer: Carl Smedstad <carsme@archlinux.org>
 
 pkgname=codechecker
-pkgver=6.24.0
+pkgver=6.24.2
 pkgrel=1
 pkgdesc="Analyzer tooling, defect database and viewer extension for the Clang Static Analyzer and Clang Tidy"
 arch=(x86_64)
@@ -26,7 +26,7 @@ source=(
   "fix-ldflags.patch"
 )
 sha256sums=(
-  'ace06dae55bb3c292d522cddc90f630532e9d4bee93a5d58865ce41f2d451795'
+  'c3a4bbb3987f0271fb2dbce6141147996e20d1bd52b4565824d20a76077c194c'
   'e59cb4d96642ccea7c3536e020b3961c1717bc65983424ced48b0ae1b1a3871a'
 )
 
