@@ -5,7 +5,7 @@ pkgver=1.4.r1.gf07e2cd
 _electronversion=27
 _nodeversion=18
 pkgrel=1
-pkgdesc="This Image Stitcher was specifically built to stitch images in a horizontal layout one after the other from left to right. Primarily used for stitching multiple seperate images of a single scratch together."
+pkgdesc="This Image Stitcher was specifically built to stitch images in a horizontal layout one after the other from left to right. Primarily used for stitching multiple seperate images of a single scratch together.Use system-wide electron."
 arch=('any')
 url="https://github.com/DevanshuSawant/image-stitching-electron-app"
 license=('MIT')
@@ -67,6 +67,7 @@ build() {
             echo 'electron_mirror=https://registry.npmmirror.com/-/binary/electron/'
             echo 'electron_builder_binaries_mirror=https://registry.npmmirror.com/-/binary/electron-builder-binaries/'
         } >> .npmrc
+        find ./ -type f -name "package-lock.json" -exec sed -i "s/registry.npmjs.org/registry.npmmirror.com/g" {} +
     fi
     sed -i "s/\/\/ asar/asar/g" forge.config.js
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
