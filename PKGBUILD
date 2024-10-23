@@ -1,6 +1,6 @@
 # Maintainer: Lukas Wölfer (domain is thasky) <aur at [domain] dot one>
 pkgname=diaria-git
-pkgver=0.1.4.r0.g9e606ba
+pkgver=0.1.5.r7.g52f7dec
 pkgrel=1
 pkgdesc='Diary entry manager'
 url='https://github.com/corrodedHash/diaria'
@@ -31,7 +31,7 @@ prepare() {
 build () {
   cd "${srcdir}/${pkgname}"
 
-  cmake --build build/
+  cmake --build build/ --parallel `nproc --all`
 }
 
 check() {
