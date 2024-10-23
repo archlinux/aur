@@ -1,13 +1,13 @@
 pkgbase = savvy
 	pkgdesc = Command line tool for savvy services services
-	pkgver = 0.16.0
+	pkgver = 0.17.1
 	pkgrel = 1
 	url = https://getsavvy.so
 	arch = x86_64
 	license = MIT
 	provides = savvy
 	conflicts = savvy-git
-	source = savvy::https://github.com/getsavvyinc/savvy-cli/releases/download/0.16.0/savvy_linux_x86_64
-	sha256sums = 043910a31e68edba91df60c6ee9af46e5e2af47931ee463f7b86f695ded775c8
+	source = savvy::https://github.com/getsavvyinc/savvy-cli/releases/download/0.17.1/savvy_linux_x86_64
+	sha256sums = 2f62dc8670ff2f23227501cd541010f6818030abb9673fdf778ebbacc8be2d4f
 
 pkgname = savvy

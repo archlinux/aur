@@ -1,7 +1,7 @@
 # Maintainer: Blallo <blallo@autistici.org>
 
 pkgname="savvy"
-pkgver="0.16.0"
+pkgver="0.17.1"
 pkgrel="1"
 pkgdesc="Command line tool for savvy services services"
 arch=("x86_64")
@@ -11,7 +11,7 @@ depends=()
 provides=("savvy")
 conflicts=("savvy-git")
 source=("savvy::https://github.com/getsavvyinc/savvy-cli/releases/download/${pkgver}/savvy_linux_x86_64")
-sha256sums=('043910a31e68edba91df60c6ee9af46e5e2af47931ee463f7b86f695ded775c8')
+sha256sums=('2f62dc8670ff2f23227501cd541010f6818030abb9673fdf778ebbacc8be2d4f')
 
 prepare() {
     mkdir -p completions
