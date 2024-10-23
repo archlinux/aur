@@ -1,19 +1,19 @@
 pkgbase = devkitty
-	pkgdesc = Swiss army knife for developers
+	pkgdesc = Swiss army knife for developers.Use system-wide electron.
 	pkgver = 2.11.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://devkitty.app/
 	arch = any
 	license = MIT
 	makedepends = gendesk
 	makedepends = npm
 	makedepends = nvm
-	makedepends = git
+	makedepends = curl
 	depends = electron31
 	conflicts = devkitty
-	source = devkitty.git::git+https://github.com/egor-xyz/devkitty.git#tag=v2.11.1
+	source = devkitty-2.11.1.tar.gz::https://github.com/egor-xyz/devkitty/archive/refs/tags/v2.11.1.tar.gz
 	source = devkitty.sh
-	sha256sums = c45ce04e3b7ffb1fe5b883874b401cec47d95661cd0da3d80f31bf1402f539c4
+	sha256sums = 11f0c1b74cfd2d7cc709c6a4bc49d567306ed83f50f58ccaa96c24ad1ac4045b
 	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
 
 pkgname = devkitty
