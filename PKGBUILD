@@ -2,7 +2,7 @@
 # Maintainer: Michalis Kamburelis (michalis) <michalis@castle-engine.io>
 
 pkgname=castle-engine-git
-pkgver=v7.0.alpha.1.r16494.f39aec48a
+pkgver=v7.0.alpha.3.9a5133f
 pkgrel=1.1
 pkgdesc="Cross-platform (desktop, mobile, console) 3D and 2D game engine using modern Object Pascal"
 arch=(x86_64)
