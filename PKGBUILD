@@ -18,7 +18,7 @@ md5sums=('5cacd198a3156c157a482aeab368e9a1'
 source=(factorio.desktop LICENSE)
 options=(!strip)
 _url=https://www.factorio.com/get-download/${pkgver}/alpha/linux64
-_gamepkg=factorio_alpha_x64_${pkgver}.tar.xz
+_gamepkg=factorio_linux_${pkgver}.tar.xz
 
 build() {
   msg "You need a full copy of this game in order to install it"
