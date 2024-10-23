@@ -1,0 +1,17 @@
+--- efisc2022.desktop.orig	2023-12-12 11:37:12.000000000 +0100
++++ efisc2022.desktop	2024-01-25 20:52:19.864060801 +0100
+@@ -1,12 +1,12 @@
+ [Desktop Entry]
+ Version=1.0
+ Terminal=false
+-Icon=/usr/share/efisc2022/efisc2022.png
++Icon=/usr/share/icons/hicolor/64x64/apps/efisc2022.png
+ Type=Application
+ StartupNotify=false
+ StartupWMClass=efisc2022
+ Categories=Office;
+-Exec=/usr/share/efisc2022/efisc2022.sh %U
++Exec=/usr/bin/efisc2022 %U
+ MimeType=application/efisc2022;
+ Name=eFisc2022
+ GenericName=eFisc2022

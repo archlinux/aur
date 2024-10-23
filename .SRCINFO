@@ -1,0 +1,20 @@
+pkgbase = efisc2022-bin
+	pkgdesc = Software des Kantons Thurgau für die Steuererklärung 2022
+	pkgver = 1.1.1_27
+	pkgrel = 1
+	url = https://steuerverwaltung.tg.ch/hilfsmittel/efisc-steuererklaerungssoftware/download-efisc2022.html/14104
+	install = efisc2022.install
+	arch = x86_64
+	license = unknown
+	depends = hicolor-icon-theme
+	depends = sh
+	source = https://efisc.kttg.ch/update/eFisc/2022/efisc2022-1.1.1-27.x86_64.rpm
+	source = efisc2022.sh.patch
+	source = efisc2022_desktop.patch
+	source = sanitycheck.patch
+	sha256sums = 68788d8e633962c87538d586e8db4b611b91278fa3ff14e7d3b1b98d478836b9
+	sha256sums = 0c1b44b7def9ae9fd542fde64074437076c149f26d5d4298d6270de86eab16fa
+	sha256sums = 5b2b4978da80ac1ef53c71f98569b93759ecfe84f4e48d3df8735192ba4140a5
+	sha256sums = 0fcaad4f1ae57e33d4067b806773c1f4184964ba3897ac8b4454674439a00442
+
+pkgname = efisc2022-bin
