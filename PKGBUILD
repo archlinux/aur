@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=brisk-bin
 _pkgname=Brisk
-pkgver=1.4.6
+pkgver=2.0.0
 pkgrel=1
-pkgdesc="Fast, multithreaded, cross-platform download manager"
+pkgdesc="Fast, multithreaded, cross-platform download manager.Prebuilt version."
 arch=('x86_64')
 url="https://github.com/AminBhst/brisk"
 license=('GPL-3.0-only')
@@ -12,28 +12,31 @@ conflicts=("${pkgname%-bin}")
 depends=(
     'gtk3'
     'libkeybinder3'
-    'libappindicator-gtk3'
+    'libayatana-indicator'
+    'ayatana-ido'
+    'libayatana-appindicator'
 )
 makedepends=(
     'gendesk'
 )
 source=(
-    "${pkgname%-bin}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-linux-${CARCH}.tar.gz"
+    "${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-linux-x86_64.deb"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('20fe31d0479635f20fad3abeb61efd14c8b7b1359508079e5c73475bd4db3b86'
-            '840eb0ad528d294064aa09b2b6df7a0e4a800249f43305c756cf78bee627fe1d')
+sha256sums=('6256f36a753b89cb7701a7d15144aa9c5e06923c593742f394500e354dd80e71'
+            '3b8311438e88f47eb507322a43c7a4156bfebb8c0f6e7b7436ef70842fb4c745')
 build() {
-    sed -e "s|@appname@|${pkgname%-bin}|g" \
-        -e "s|@runname@|${pkgname%-bin}|g" \
-        -i "${srcdir}/${pkgname%-bin}.sh"
-    install -Dm755 -d "${srcdir}/opt/${pkgname%-bin}"
-    mv "${srcdir}/${_pkgname}-v${pkgver}-linux-${CARCH}/"* "${srcdir}/opt/${pkgname%-bin}"
-    gendesk -f -n -q --pkgname="${pkgname%-bin}" --pkgdesc="${pkgdesc}" --categories="Network" --name="${_pkgname}" --exec="${pkgname%-bin} %U"
+    sed -e "
+        s/@appname@/${pkgname%-bin}/g
+        s/@runname@/${pkgname%-bin}/g
+    " -i "${srcdir}/${pkgname%-bin}.sh"
+    bsdtar -xf "${srcdir}/data."*
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
-    cp -r "${srcdir}/opt" "${pkgdir}"
-    install -Dm644 "${srcdir}/opt/${pkgname%-bin}/data/flutter_assets/assets/icons/logo.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-bin}.png"
-    install -Dm644 "${srcdir}/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
+    install -Dm755 -d "${pkgdir}/usr/lib"
+    cp -Pr --no-preserve=ownership "${srcdir}/usr/share/${pkgname%-bin}" "${pkgdir}/usr/lib"
+    install -Dm644 "${srcdir}/usr/share/icons/hicolor/128x128/apps/${pkgname%-bin}.png" -t "${pkgdir}/usr/share/icons/hicolor/128x128/apps"
+    install -Dm644 "${srcdir}/usr/share/icons/hicolor/256x256/apps/${pkgname%-bin}.png" -t "${pkgdir}/usr/share/icons/hicolor/256x256/apps"
+    install -Dm644 "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
 }

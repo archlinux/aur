@@ -1,6 +1,6 @@
 pkgbase = brisk-bin
-	pkgdesc = Fast, multithreaded, cross-platform download manager
-	pkgver = 1.4.6
+	pkgdesc = Fast, multithreaded, cross-platform download manager.Prebuilt version.
+	pkgver = 2.0.0
 	pkgrel = 1
 	url = https://github.com/AminBhst/brisk
 	arch = x86_64
@@ -8,12 +8,14 @@ pkgbase = brisk-bin
 	makedepends = gendesk
 	depends = gtk3
 	depends = libkeybinder3
-	depends = libappindicator-gtk3
-	provides = brisk=1.4.6
+	depends = libayatana-indicator
+	depends = ayatana-ido
+	depends = libayatana-appindicator
+	provides = brisk=2.0.0
 	conflicts = brisk
-	source = brisk-1.4.6.tar.gz::https://github.com/AminBhst/brisk/releases/download/v1.4.6/Brisk-v1.4.6-linux-x86_64.tar.gz
+	source = brisk-2.0.0.deb::https://github.com/AminBhst/brisk/releases/download/v2.0.0/Brisk-v2.0.0-linux-x86_64.deb
 	source = brisk.sh
-	sha256sums = 20fe31d0479635f20fad3abeb61efd14c8b7b1359508079e5c73475bd4db3b86
-	sha256sums = 840eb0ad528d294064aa09b2b6df7a0e4a800249f43305c756cf78bee627fe1d
+	sha256sums = 6256f36a753b89cb7701a7d15144aa9c5e06923c593742f394500e354dd80e71
+	sha256sums = 3b8311438e88f47eb507322a43c7a4156bfebb8c0f6e7b7436ef70842fb4c745
 
 pkgname = brisk-bin
