@@ -6,7 +6,7 @@ pkgver=0.2.2.alpha.r32.gd2f1652
 _electronversion=23
 _nodeversion=18
 pkgrel=1
-pkgdesc="A fast and lightweight web browser made with electron and react that allows you to navigate the Internet with ease."
+pkgdesc="A fast and lightweight web browser made with electron and react that allows you to navigate the Internet with ease.Use system-wide electron."
 arch=(
     'aarch64'
     'armv7h'
@@ -27,6 +27,7 @@ makedepends=(
     'git'
     'npm'
     'nvm'
+    'curl'
 )
 source=(
     "${pkgname%-git}.git::git+${_ghurl}.git"
@@ -57,9 +58,9 @@ build() {
     _ensure_local_nvm
     gendesk -q -f -n --categories="Network" --pkgname="${pkgname%-git}" --pkgdesc="${pkgdesc}" --name="${_pkgname}" --exec="${pkgname%-git} %U"
     cd "${srcdir}/${pkgname%-git}.git"
+    electronDist="/usr/lib/electron${_electronversion}"
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
-    electronDist="/usr/lib/electron${_electronversion}"
     HOME="${srcdir}/.electron-gyp"
     {
         echo -e '\n'	
@@ -73,18 +74,20 @@ build() {
             echo 'electron_mirror=https://registry.npmmirror.com/-/binary/electron/'
             echo 'electron_builder_binaries_mirror=https://registry.npmmirror.com/-/binary/electron-builder-binaries/'
         } >> .npmrc
+        find ./ -type f -name "package-lock.json" -exec sed -i "s/registry.npmjs.org/registry.npmmirror.com/g" {} +
     fi
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
     sed "s/https\:\/\/www.google.fr\//about\:blank/g" -i src/App.js
     NODE_ENV=development    npm install
     NODE_ENV=production     npm run build
-    NODE_ENV=production     npm exec -c "electron-builder --linux dir -c.electronDist=${electronDist} -c.electronVersion=${_electronversion} -c.extraMetadata.main=build/electron.js"
+    NODE_ENV=production     npm exec -c "electron-builder --linux dir -c.electronDist=${electronDist} -c.extraMetadata.main=build/electron.js"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
     install -Dm644 "${srcdir}/${pkgname%-git}.git/dist/linux-"*/resources/app.asar -t "${pkgdir}/usr/lib/${pkgname%-git}"
-    cp -r "${srcdir}/${pkgname%-git}.git/dist/linux-"*/resources/{app.asar.unpacked,public} "${pkgdir}/usr/lib/${pkgname%-git}"
-    for _icons in 32x32 64x64 256x256 512x512 1024x1024;do
+    cp -Pr --no-preserve=ownership "${srcdir}/${pkgname%-git}.git/dist/linux-"*/resources/{app.asar.unpacked,public} "${pkgdir}/usr/lib/${pkgname%-git}"
+    _icon_sizes=(32x32 64x64 256x256 512x512 1024x1024)
+    for _icons in "${_icon_sizes[@]}";do
         install -Dm644 "${srcdir}/${pkgname%-git}.git/public/icons/${_icons}.png" \
             "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname%-bin}.png"
     done
