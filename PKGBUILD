@@ -1,24 +1,27 @@
-# $Id: PKGBUILD 40906 2011-03-01 14:45:04Z andrea $
-# Maintainer: Daniel J Griffiths <ghost1227@archlinux.us>
-# Contributor: Adam 'battlemidget' Stokes <adam.stokes@gmail.com> 
+# Maintainer: Mike Pento <mpento@darkforge.net>
 
 pkgname=libast
 pkgver=0.7
-pkgrel=3
+pkgrel=4
 pkgdesc="The Library of Assorted Spiffy Things."
 arch=('i686' 'x86_64')
-url="http://eterm.sourceforge.net"
+url="https://github.com/mej/libast"
 license=('BSD')
 depends=('imlib2' 'pcre' 'libsm')
 options=('!libtool')
-source=(http://www.eterm.org/download/${pkgname}-${pkgver}.tar.gz LICENSE.txt)
-md5sums=('a9ec3b2da317f35869316e6d9571d296'
-         '97071898559acc4f900ceb6cb9579492')
+source=(https://github.com/mej/libast/archive/refs/tags/${pkgver}.tar.gz LICENSE.txt snprintf.patch)
+md5sums=('a3e13cc80ffeff4b345fd8aa73e44bda'
+         '97071898559acc4f900ceb6cb9579492'
+	 'bff8084e2829e63a47b00d9e06366e24')
 
 build() {
 	cd ${srcdir}/${pkgname}-${pkgver}
 
-	./configure --prefix=/usr --with-x
+	# hack of a patch for snprintf.c includes
+	patch --verbose src/snprintf.c < ../../snprintf.patch
+
+	# args pass through to configure
+	./autogen.sh --prefix=/usr --with-x
 	make
 }
 

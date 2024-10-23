@@ -1,8 +1,8 @@
 pkgbase = libast
 	pkgdesc = The Library of Assorted Spiffy Things.
 	pkgver = 0.7
-	pkgrel = 3
-	url = http://eterm.sourceforge.net
+	pkgrel = 4
+	url = https://github.com/mej/libast
 	arch = i686
 	arch = x86_64
 	license = BSD
@@ -10,10 +10,11 @@ pkgbase = libast
 	depends = pcre
 	depends = libsm
 	options = !libtool
-	source = http://www.eterm.org/download/libast-0.7.tar.gz
+	source = https://github.com/mej/libast/archive/refs/tags/0.7.tar.gz
 	source = LICENSE.txt
-	md5sums = a9ec3b2da317f35869316e6d9571d296
+	source = snprintf.patch
+	md5sums = a3e13cc80ffeff4b345fd8aa73e44bda
 	md5sums = 97071898559acc4f900ceb6cb9579492
+	md5sums = bff8084e2829e63a47b00d9e06366e24
 
 pkgname = libast
-
