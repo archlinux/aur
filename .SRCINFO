@@ -1,6 +1,6 @@
 pkgbase = ueli-git
 	pkgdesc = Cross-Platform Keystroke Launcher.Use system-wide electron.
-	pkgver = 9.7.0.r0.gfa359bd
+	pkgver = 9.8.0.r0.g9c867b4
 	pkgrel = 1
 	url = https://ueli.app/
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = ueli-git
 	makedepends = nvm
 	makedepends = git
 	makedepends = curl
-	depends = electron32
+	depends = electron33
 	source = ueli.git::git+https://github.com/oliverschwendener/ueli.git
 	source = ueli.sh
 	sha256sums = SKIP
