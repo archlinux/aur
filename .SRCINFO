@@ -8,7 +8,6 @@ pkgbase = kega-fusion
 	arch = x86_64
 	license = custom
 	makedepends = upx
-	makedepends = ucl
 	depends = alsa-lib
 	depends = glu
 	depends = libsm
