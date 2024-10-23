@@ -1,7 +1,7 @@
 # Maintainer: Sven Nobis <aur@sven.to>
 
 pkgname=gardenctl-bin
-pkgver=2.8.0
+pkgver=2.9.0
 pkgrel=4
 pkgdesc='gardenctl is a command-line client for the Gardener (version 2).'
 url='https://github.com/gardener/gardenctl-v2'
