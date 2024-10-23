@@ -1,6 +1,6 @@
 pkgbase = libxfce4windowing-devel
 	pkgdesc = Windowing concept abstraction library for X11 and Wayland (Development version)
-	pkgver = 4.19.7
+	pkgver = 4.19.8
 	pkgrel = 1
 	url = https://docs.xfce.org/xfce/libxfce4windowing/start
 	arch = i686
@@ -18,9 +18,9 @@ pkgbase = libxfce4windowing-devel
 	depends = libwnck3
 	depends = wayland
 	depends = libdisplay-info
-	provides = libxfce4windowing=4.19.7
+	provides = libxfce4windowing=4.19.8
 	conflicts = libxfce4windowing
-	source = https://archive.xfce.org/src/xfce/libxfce4windowing/4.19/libxfce4windowing-4.19.7.tar.bz2
-	sha256sums = eab7ae625e6dda2608fa63a4b3df96b2a192de6ae8980e77bfe43a4749c707a4
+	source = https://archive.xfce.org/src/xfce/libxfce4windowing/4.19/libxfce4windowing-4.19.8.tar.bz2
+	sha256sums = 91fb791b454e633ca01318c640314b3d9604e55938e8877abea5b4373d683f40
 
 pkgname = libxfce4windowing-devel

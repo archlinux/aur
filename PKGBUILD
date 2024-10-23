@@ -2,7 +2,7 @@
 
 _pkgname=libxfce4windowing
 pkgname=${_pkgname}-devel
-pkgver=4.19.7
+pkgver=4.19.8
 pkgrel=1
 pkgdesc="Windowing concept abstraction library for X11 and Wayland (Development version)"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
@@ -14,7 +14,7 @@ makedepends=('meson' 'xfce4-dev-tools>=4.19.2' 'gtk-doc' 'gobject-introspection'
 provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}")
 source=("https://archive.xfce.org/src/xfce/${_pkgname}/${pkgver%.*}/${_pkgname}-${pkgver}.tar.bz2")
-sha256sums=('eab7ae625e6dda2608fa63a4b3df96b2a192de6ae8980e77bfe43a4749c707a4')
+sha256sums=('91fb791b454e633ca01318c640314b3d9604e55938e8877abea5b4373d683f40')
 
 build() {
   local meson_options=(
