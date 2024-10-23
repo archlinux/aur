@@ -2,16 +2,16 @@
 
 _name=qtico
 pkgname=python-$_name
-pkgver=0.1
-pkgrel=5
+pkgver=0.2
+pkgrel=1
 pkgdesc='Tools for using cross-platform Qt icon themes'
 arch=(any)
 url="https://github.com/flying-sheep/$_name"
-license=(GPL3)
-depends=(python python-pyqt5)
+license=(GPL-3.0)
+depends=(python python-qtpy)
 makedepends=(python-flit-core python-build python-installer python-wheel)
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('d8d604a85a024fae69ba38149387be0df77ad6e6d4987737527804457a7af429')
+sha256sums=('c10a33df2ffbcceda605660d815b9030c5f759afa5329722192d7aa8f0ec8c09')
 
 build() {
 	cd "$_name-$pkgver"
