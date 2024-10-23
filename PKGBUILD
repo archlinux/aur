@@ -1,9 +1,9 @@
 # Maintainer: kokononine <nine_9@outlook.jp>
 pkgname=ugee-tablet
-pkgver=4.2.4
-_pkgver_sub1=20240517
-_pkgver_sub2=240410
-pkgrel=2
+pkgver=4.3.4
+_pkgver_sub1=20240820
+_pkgver_sub2=40704
+pkgrel=1
 pkgdesc='Ugee Tablet Driver(version 4.x)'
 url='https://www.ugee.com.cn/download/'
 source=("https://download.ugee.com.cn/upload/download/$_pkgver_sub1/ugeeTablet-$pkgver-$_pkgver_sub2.tar.gz")

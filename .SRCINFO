@@ -1,12 +1,12 @@
 pkgbase = ugee-tablet
 	pkgdesc = Ugee Tablet Driver(version 4.x)
-	pkgver = 4.2.4
-	pkgrel = 2
+	pkgver = 4.3.4
+	pkgrel = 1
 	url = https://www.ugee.com.cn/download/
 	install = PKGBUILD
 	arch = x86_64
 	license = custom: commercial
-	source = https://download.ugee.com.cn/upload/download/20240517/ugeeTablet-4.2.4-240410.tar.gz
+	source = https://download.ugee.com.cn/upload/download/20240820/ugeeTablet-4.3.4-40704.tar.gz
 	sha256sums = 1f0682870be28e964798dc8083c762878a0ed430931706b2f58103c4fef840db
 
 pkgname = ugee-tablet
