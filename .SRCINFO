@@ -1,7 +1,7 @@
 pkgbase = viking-ssh
 	pkgdesc = Simple way to manage your remote machines and SSH keys
-	pkgver = 0.1.0
-	pkgrel = 1
+	pkgver = 0.2.1
+	pkgrel = 2
 	url = https://github.com/d3witt/viking
 	arch = i686
 	arch = x86_64

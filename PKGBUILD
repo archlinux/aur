@@ -2,8 +2,8 @@
 
 # 'viking' conflicts with extra/viking
 pkgname=viking-ssh
-pkgver=0.1.0
-pkgrel=1
+pkgver=0.2.1
+pkgrel=2
 pkgdesc='Simple way to manage your remote machines and SSH keys'
 url='https://github.com/d3witt/viking'
 arch=(i686 x86_64 aarch64 riscv64)
@@ -11,7 +11,8 @@ license=(MIT)
 makedepends=(go)
 depends=(glibc)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('a2b86d496f7348840f6038c1448ec7816c68bc33202ab8976ba7218ecc1c88bb')
+sha256sums=('1d201609dae92055f236bc57306ec177c0ef1ad20553aab8281d4deb0ff5ae84')
+binname=viking
 
 prepare() {
   cd "viking-$pkgver"
@@ -27,18 +28,18 @@ build() {
   export GOFLAGS='-buildmode=pie -trimpath -mod=readonly -modcacherw'
 
   cd "viking-$pkgver"
-  go build -o $pkgname
+  go build -o $binname
 }
 
 package() {
   cd "viking-$pkgver"
 
-  install -Dm755 $pkgname \
-    "$pkgdir/usr/bin/$pkgname" # conflict with extra/viking
+  install -Dm755 $binname \
+    "$pkgdir/usr/bin/$binname" # conflict with extra/viking
 
   install -Dm644 LICENSE \
-    -t "$pkgdir/usr/share/licenses/$pkgname/"
+    -t "$pkgdir/usr/share/licenses/$binname/"
 
   install -Dm644 README.md \
-    -t "$pkgdir/usr/share/doc/$pkgname/"
+    -t "$pkgdir/usr/share/doc/$binname/"
 }
