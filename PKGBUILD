@@ -8,7 +8,7 @@
 
 pkgname=google-breakpad
 pkgver=v2023.06.01
-pkgrel=2
+pkgrel=3
 _lssver=v2024.02.01
 pkgdesc="An open-source multi-platform crash reporting system"
 arch=('i686' 'x86_64' 'armv7h')
@@ -20,10 +20,12 @@ options=('staticlibs' '!strip')
 conflicts=('google-breakpad-git')
 provides=('google-breakpad')
 source=("${pkgname}-${pkgver}.tar.gz::https://chromium.googlesource.com/breakpad/breakpad/+archive/refs/tags/${pkgver}.tar.gz"
-        "lss-${_lssver}.tar.gz::https://chromium.googlesource.com/linux-syscall-support/+archive/refs/tags/${_lssver}.tar.gz")
+        "lss-${_lssver}.tar.gz::https://chromium.googlesource.com/linux-syscall-support/+archive/refs/tags/${_lssver}.tar.gz"
+        "find_if.patch")
 noextract=("lss-${_lssver}.tar.gz")
 sha256sums=('SKIP'
-            'SKIP')
+            'SKIP'
+            '0744d7e2238d7e4a4a284e1508ee0ebc81a1ffccdd0c92dd7851a2e87d78ea23')
 
 prepare() {
 mkdir -p src/third_party/lss

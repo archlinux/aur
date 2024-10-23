@@ -16,7 +16,9 @@ pkgbase = google-breakpad
 	options = !strip
 	source = google-breakpad-v2023.06.01.tar.gz::https://chromium.googlesource.com/breakpad/breakpad/+archive/refs/tags/v2023.06.01.tar.gz
 	source = lss-v2024.02.01.tar.gz::https://chromium.googlesource.com/linux-syscall-support/+archive/refs/tags/v2024.02.01.tar.gz
+        source = find_if.patch
 	sha256sums = SKIP
 	sha256sums = SKIP
+        sha256sums = 0744d7e2238d7e4a4a284e1508ee0ebc81a1ffccdd0c92dd7851a2e87d78ea23
 
 pkgname = google-breakpad
