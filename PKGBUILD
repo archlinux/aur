@@ -2,7 +2,7 @@
 # Contributor: Florian Ziegler <zieglerflorian fastmail fm>
 
 pkgname=grml2usb
-pkgver=0.19.2
+pkgver=0.19.3
 pkgrel=1
 pkgdesc="Installs one or multiple grml ISOs on an USB device - contains grml2iso"
 arch=(x86_64)
@@ -52,4 +52,4 @@ package() {
 	install -D -m 644 mbr/mbrldr ${pkgdir}/usr/share/grml2usb/mbr/mbrldr
 }
 
-sha256sums=('b557fbd22d00dd045db544023badeeb344b2a59b91ee2147e76fb25723cc656a')
+sha256sums=('f2601962473bed3a63191dfe42609dfe9c29d7e4967959509afc94d3c602b8f0')
