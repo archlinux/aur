@@ -5,7 +5,7 @@ _pkgname=GrinPlusPlus
 _appname="Grin++"
 pkgver=1.2.9
 _electronversion=11
-pkgrel=1
+pkgrel=2
 pkgdesc='A C++ Grin Node & Wallet For Linux.Prebuilt version.Use system-wide electron.'
 arch=('x86_64')
 url="https://grinplusplus.github.io"
@@ -26,8 +26,10 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/GrinPlusPlus/GrinPlusPlus/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-options=('!strip')
-sha256sums=('f6a37dac534e1969d758709d4015c50f28d47799cc52cbe9259577755def7f45'
+options=(
+    '!strip'
+)
+sha256sums=('300440ca4965175a35c30899cac7e105c93957c7d19fe608c24fb99c48e910f9'
             'a5e9383c3cb97aa3034e5e4bf1c94a71db0c59b3a7ec1fbf198232fb9dcc5e53'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 build() {
