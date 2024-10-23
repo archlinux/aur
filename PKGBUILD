@@ -13,5 +13,5 @@ source=("https://files.pythonhosted.org/packages/17/5c/49bb24be8b8ee7ac1416bcc53
 sha256sums=('4bcc7a2a4bd24eb9e1ae39a35839b226ecff681c22380d769d187a6f69587691')
 
 package() {
-    python -m installer --destdir="${pkgdir}" daal-2024.7.0-py2.py3-none-manylinux1_x86_64.whl
+    python -m installer --destdir="${pkgdir}" *.whl
 }
