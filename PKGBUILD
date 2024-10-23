@@ -4,8 +4,8 @@
 # Contributor: mickael9 <mickael9@gmail.com>
 
 pkgname=factorio-dl
-pkgver=0.2.3
-pkgrel=2
+pkgver=0.3.0
+pkgrel=1
 pkgdesc="Factorio downloader script for UNIX(-like) systems"
 arch=('any')
 license=('custom:BSD')
