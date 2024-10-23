@@ -1,0 +1,4 @@
+[cflow]
+source = 'regex'
+url = 'https://ftp.gnu.org/gnu/cflow/'
+regex = 'cflow-([\d.]+)\.[a-z]'
