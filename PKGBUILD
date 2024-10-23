@@ -5,13 +5,13 @@ pkgver='2024.7.0'
 pkgrel=1
 pkgdesc="Intel(R) Extension for Scikit-learn is a seamless way to speed up your Scikit-learn application."
 url="https://github.com/intel/scikit-learn-intelex"
-depends=('python' 'python-daal' 'python-scikit-learn')
+depends=('python' 'python-daal4py' 'python-scikit-learn')
 makedepends=('python-build' 'python-installer' 'python-wheel')
 license=('custom:Apache Software License')
 arch=('any')
-source=("https://files.pythonhosted.org/packages/96/5e/15d4f900dd7772c19bad53e98c7204fbd5f504f6db369efb3b40376f50ac/scikit_learn_intelex-2024.7.0-py310-none-manylinux1_x86_64.whl")
-sha256sums=('ed0838c8db6a2873a1415e94b39ef1e282e1a9d4eb625b31c6dca158d49d9cd4')
+source=("https://files.pythonhosted.org/packages/70/6f/87863804ef1a6ac9fca0778c234017d5179956f4fee77466dff200aaf35a/scikit_learn_intelex-2024.7.0-py312-none-manylinux1_x86_64.whl")
+sha256sums=('40259b3ab8c9171b9e777c2bdbcf317489020d3252d80e6e514351e893e1bc7a')
 
 package() {
-    python -m installer --destdir="${pkgdir}" scikit_learn_intelex-2024.7.0-py310-none-manylinux1_x86_64.whl
+    python -m installer --destdir="${pkgdir}" scikit_learn_intelex-2024.7.0-py312-none-manylinux1_x86_64.whl
 }
