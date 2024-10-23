@@ -40,6 +40,7 @@ if [[ "$SudachiDict_DATE" != "$SUDACHI_DATE" ]];then
 fi
 if [[ "$SudachiDict_DATE" != "$SUDACHI_DATE" ]];then
     sed -i 's|^_sudachidict_date=.*$|_sudachidict_date='"${SudachiDict_DATE}"'|' PKGBUILD*
+    rm -f *_lex.zip
     for f in $(ls PKGBUILD*)
     do
         eval $(makepkg -g --noprepare -do -p $f)
