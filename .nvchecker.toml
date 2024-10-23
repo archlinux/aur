@@ -1,0 +1,4 @@
+[gh-dash]
+source = "git"
+git = "https://github.com/dlvhdr/gh-dash.git"
+prefix = "v"
