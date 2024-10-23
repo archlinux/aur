@@ -11,19 +11,19 @@ _bldtype='Release'
 _zipcode_rel=202110
 
 # Ut Dictionary
-_utdicdate=20241015
+_utdicdate=20241022
 _dict=(alt-cannadic
-  edict2
-  jawiki
-  neologd
-  personal-names
-  place-names
-  skk-jisyo
-  sudachidict)
+       edict2
+       jawiki
+       neologd
+       personal-names
+       place-names
+       skk-jisyo
+       sudachidict)
 
 pkgbase=mozc-ut-full
 pkgname=("$pkgbase-common" "ibus-$pkgbase" "fcitx5-$pkgbase" "emacs-$pkgbase")
-pkgver=2.30.5618.102.20241015
+pkgver=2.30.5618.102.20241022
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/fcitx/mozc"
@@ -61,12 +61,12 @@ sha512sums=('2cc3f89a98ab646627cc01743e62af435f2346f9ebda0b38d401f8821415de8992d
             'SKIP'
             'SKIP'
             'e7b059f2f31da3a2390d2b867c2380d1c96ddd5287524285c06290c689b936325a0bd9212685a019f3b2860975161396d2989c45c1e5b8cb6167e79fdbda4b66'
-            'd69c479c34f70839eb9a78f920b6a6aee1d39aff6ab181bfaa2fd47554697d6e4d92abb9d5bfc45247f0749a128557d1b8a12fa764865a5845d2c59e0f74660e'
+            '3df5b09bed5a14cb1ea2de55dde5e129896355e564235710f9be0f276ac2b58802ef6d04fbc65a25223d17c9a4133a5ed78bbfe5d50b76018982f507e29bc906'
             '12e76f3a859ca010805a643842e91e699bc0ba61e908250d2c759326166704d62a249fe711c907026f1695001656af52ae81bdda637bcdbb3933c363d844d38b'
-            '868769ee8c53450f5dfac4c7681edbdb61d5b9d5f478181ae7cc80a4170b77b640d3a058f1a7adfb8c0bf92cc94584a55b676d49c9ba8a85c2d860380be10e84'
-            'c661b168a89fa9f726f62076ed1a51c72ebf8303688f3cff77247bfd34a0fee53a1b5bc35ee2ba05994b53e1f0397cb4a816e5a57eccbd210b0c1f8cc4fa50ab'
+            'f2855f4bc7bff66800bc484db8ea422abae9571b8500967260b2ba2127dc6c4248b4078f2ed6c6be35c1eae76d2c2c394b3b2eeb57a9bc06b2ad83360dcebc84'
+            'a1b3b646ad9d935628ad0c5ae98b7e851cb0d96e2fa581e4625ec6750a778ee3811e1be1522cc9978c4bf3ecff6a2fdc8f12fa52699adc1d15aa12c5a9711873'
             'f6229d8c530d5d50390b4478e97a1b9f7c515dbc0a98e01307411c3c77acd5c47c5565e0347f964a80b336905da39aa7079b7fb42bea6b87d311e05dec54281b'
-            '377b3db6be9b1415e1507239e4108bb694201fb52d700d8099343ffecbad2f68bcf4e8bf2a61be031dd57e8fab2bbd7b16ae25a700d3ea72ec0d223fbc13804b'
+            'b8c5fbd9b98bc88e197bfee8aaba17743ce0e605564a2d26c1498cdfe1941001e837f9bb0ec094c603e612a9001e5042172774f571b1fd7fafb2a4d38fdcb2ec'
             '6bfffc71e39cf71621ecfaf5e497f2f1edb5d62d39b20f23572c3918f757d222dd4a44760433c45723687f30bf7a3cc7d0a10477e2f078872f0c8175096c9496'
             'f8ccc231e0f247d14c5e523db4b90ca2c5fc216a96a767c1ad0c99b66636cbd020884ff1884af59f19665021f95df9da44ced2a9ea3de9865f1fad79c7194c12')
 
