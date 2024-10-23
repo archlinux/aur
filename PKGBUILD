@@ -2,7 +2,7 @@
 # Archlinux package contributor is Dimadenisjuk <dimadenisjuk@yandex.ru>
 pkgname=('cryptsetup-deluks')
 pkgver=0.2BETA
-pkgrel=3
+pkgrel=4
 epoch=
 pkgdesc="Cryptsetup version with 'Deniable encryption' support"
 arch=('any')
@@ -13,14 +13,14 @@ depends=('device-mapper' 'libdevmapper.so' 'openssl' 'popt' 'libutil-linux'
 makedepends=('util-linux' 'git')
 checkdepends=()
 optdepends=()
-provides=('cryptsetup' 'libcryptsetup.so=12-64' 'cryptsetup-deluks')
-conflicts=('cryptsetup')
+provides=('cryptsetup-deluks')
+conflicts=()
 replaces=()
 backup=()
 options=()
 install=
 changelog=
-source=("git+https://github.com/kriswebdev/cryptsetup-deluks")
+source=("git+https://github.com/dimadenisjuk/cryptsetup-deluks")
 noextract=()
 md5sums=('SKIP')
 validpgpkeys=()
@@ -47,7 +47,11 @@ check() {
 package() {
 	cd "$pkgname"
 	# needs to change binary directory from /usr/sbin to /usr/bin
-	make DESTDIR="$pkgdir/" install
-	ln -s $pkgdir/usr/lib/libcryptsetup.so $pkgdir/usr/lib/libcryptsetup.so.12
+	make DESTDIR="$pkgdir/opt/cryptsetup-deluks/" install
+	mv "$pkgdir/opt/cryptsetup-deluks/usr/"* "$pkgdir/opt/cryptsetup-deluks/"
 	echo "see https://github.com/kriswebdev/cryptsetup-deluks/wiki/System-encryption for more information."
+	mkdir -p "$pkgdir/usr/bin/"
+	echo '#!/bin/bash' > "$pkgdir/usr/bin/cryptsetup-deluks"
+	echo 'LD_LIBRARY_PATH=/opt/cryptsetup-deluks/lib/:$LD_LIBRARY_PATH /opt/cryptsetup-deluks/bin/cryptsetup' >> "$pkgdir/usr/bin/cryptsetup-deluks"
+	chmod 755 "$pkgdir/usr/bin/cryptsetup-deluks"
 }

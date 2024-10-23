@@ -16,11 +16,9 @@ pkgbase = cryptsetup-deluks
 	depends = libjson-c.so
 	depends = argon2
 	depends = libargon2.so
-	provides = cryptsetup
-	provides = libcryptsetup.so=12-64
 	provides = cryptsetup-deluks
-	conflicts = cryptsetup
-	source = git+https://github.com/kriswebdev/cryptsetup-deluks
+	conflicts = 
+	source = git+https://github.com/dimadenisjuk/cryptsetup-deluks
 	md5sums = SKIP
 
 pkgname = cryptsetup-deluks
