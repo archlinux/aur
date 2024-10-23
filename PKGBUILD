@@ -3,7 +3,7 @@
 pkgname=com.qq.weixin.deepin
 _appname=WeChat
 _pkgname="Deepin-${_appname}"
-pkgver=3.9.10deepin3
+pkgver=3.9.10deepin6
 pkgrel=1
 pkgdesc="Deepin Wine WeChat"
 arch=('x86_64')
@@ -31,7 +31,7 @@ source=(
     "LICENSE.html"
     "${pkgname}.sh"
 )
-sha256sums=('c8ec51e378b6c595549b7a686d30fffa09890f843a9a2f75461b4fcfbf7f8b2d'
+sha256sums=('04e582b3eb79392f9ffced5acb63c0f4a6d65d1a1e6e86cc079d6884e11539a2'
             'ad20820e5436c46685d4c3c2dadfb7eccf04ecbc9a6e2fb563370cc8901d4d3f'
             '1b8cce1330dddca7b4fd31452052a79e024f9382fffcee0b2c35e515bcb8569b')
 build() {
