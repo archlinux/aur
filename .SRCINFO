@@ -1,5 +1,5 @@
 pkgbase = sonusmix-git
-	pkgdesc = Fladder - A Simple Jellyfin Frontend
+	pkgdesc = Next-gen Pipewire audio routing tool
 	pkgver = r185.66e5ca1
 	pkgrel = 1
 	url = https://codeberg.org/sonusmix/sonusmix
