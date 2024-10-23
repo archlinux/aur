@@ -1,5 +1,5 @@
-pkgname="term-owo-git"   
-pkgver=1.2
+pkgname="term-owo-git"
+pkgver=1.3
 pkgrel=1
 pkgdesc="A simple C++ program that owofies text"
 url="https://git.alfieking.dev/acetheking987/term-owo-cpp"
@@ -12,8 +12,7 @@ md5sums=('SKIP')
 
 build() {
     cd "$srcdir/term-owo-cpp"
-    cmake . -B build
-    cd build && make
+    make dirs build_unix
 }
 
 package() {
