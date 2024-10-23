@@ -11,6 +11,10 @@ license=(GPL-3.0-or-later)
 groups=(pro-audio)
 depends=(
   alsa-lib
+  gcc-libs
+  glibc
+  libglvnd
+  qt5-base
   qt5-script
 )
 makedepends=(qt5-tools)
