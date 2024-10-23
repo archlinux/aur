@@ -4,7 +4,7 @@
 
 pkgname=factorio
 pkgver=2.0.9
-pkgrel=1
+pkgrel=2
 pkgdesc="A 2D game about building and maintaining factories (stable branch)."
 arch=('x86_64')
 url="http://www.factorio.com/"
@@ -17,7 +17,7 @@ source=(factorio.desktop
 sha256sums=('5f62aa7763f9ad367a051371bc16f3c174022bb3380eb221ba06bac395bf9815'
             'ed3853194ab2573fdc0fbc18c7edd291f8df066b3e26c47cfa5edb1317679a97')
 _url=https://factorio.com/get-download/${pkgver}/alpha/linux64
-_gamepkg=factorio_linux_x64_${pkgver}.tar.xz
+_gamepkg=factorio_linux_${pkgver}.tar.xz
 
 build() {
   msg "You need a full copy of this game in order to install it"
