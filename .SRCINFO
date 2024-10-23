@@ -1,6 +1,6 @@
 pkgbase = c3-bin
 	pkgdesc = A TUI to-do list that uses and extends calcurse format to have tree-like dependencies.
-	pkgver = 1.6.0
+	pkgver = 1.7.0
 	pkgrel = 1
 	url = https://github.com/nimaaskarian/c3
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = c3-bin
 	optdepends = potato-c: pomodoro timer module
 	provides = c3
 	conflicts = c3
-	source = c3-bin::https://github.com/nimaaskarian/c3/releases/download/1.6.0/c3.x86.linux
-	md5sums = 7b287e313d46af88926a6f338e0c5ccf
+	source = c3-bin::https://github.com/nimaaskarian/c3/releases/download/1.7.0/c3.x86.linux
+	md5sums = 12f095140d5794a36b774cef1a4246c0
 
 pkgname = c3-bin
