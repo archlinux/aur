@@ -32,23 +32,20 @@ _dir=$_name-$_ver
 
 prepare() {
   patch -Np1 -d $_dir -i ../$pkgname-0.9.20b-qt5.patch
-
-  mv -v $_name-${pkgver/b/-b} $pkgname-$pkgver
-  cd $pkgname-$pkgver
-  patch -Np1 -i "$srcdir/privacy.patch"
-  patch -Np1 -i "$srcdir/desktop.patch"
-  patch -Np1 -i "$srcdir/fix_spelling_errors.patch"
-  patch -Np1 -i "$srcdir/fix_paths.patch"
+  patch -Np1 -d $_dir -i ../privacy.patch
+  patch -Np1 -d $_dir -i ../desktop.patch
+  patch -Np1 -d $_dir -i ../fix_spelling_errors.patch
+  patch -Np1 -d $_dir -i ../fix_paths.patch
 }
 
 build() {
-  cd $pkgname-$pkgver
+  cd $_dir
   PREFIX="/usr" qmake-qt5
   make
 }
 
 package() {
-  cd $pkgname-$pkgver
+  cd $_dir
   make INSTALL_ROOT="$pkgdir/" install
   # examples, patches and tools
   install -d 755 "$pkgdir/usr/share/$pkgname/"
