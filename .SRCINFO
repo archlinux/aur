@@ -1,7 +1,7 @@
-pkgbase = cnijfilter-ts7450series
-	pkgdesc = Canon IJ Printer Driver for Linux for Pixma 7450 series and other based on 6.10 version
-	pkgver = 6.10
-	pkgrel = 2
+pkgbase = cnijfilter-ts7640series
+	pkgdesc = Canon IJ Printer Driver for Linux for GX1040 or Pixma TS7640i series and other (GX1040,GX1050,GX2040,GX2050,GX5540,GX5550,PIXMA TS7640i,PIXMA TS7650i,PIXMA TS7740i,PIXMA TS7750i,PIXMA TS8750,PIXMA TS8751) based on 6.70a version
+	pkgver = 6.70
+	pkgrel = 1
 	url = https://www.canon.com.au/home-printers
 	arch = i686
 	arch = x86_64
@@ -18,9 +18,10 @@ pkgbase = cnijfilter-ts7450series
 	conflicts = cnijfilter
 	conflicts = cnijfilter-mg3600
 	conflicts = cnijfilter2
-	source = https://gdlp01.c-wss.com/gds/1/0100010921/01/cnijfilter2-source-6.10-1.tar.gz
+	conflicts = cnijfilter-ts7450series
+	source = https://gdlp01.c-wss.com/gds/7/0100012137/01/cnijfilter2-source-6.70-1.tar.gz
 	source = keytext.c.patch
-	md5sums = 207715a8b1fd0f727670a87ac46ce46d
-	md5sums = 4384f5e566f0c88055f51727419d6945
+	md5sums = eace124513c5b692210cea43d529834e
+	md5sums = dafa6c1d2df6c1bba71dce55be4e4703
 
-pkgname = cnijfilter-ts7450series
+pkgname = cnijfilter-ts7640series
