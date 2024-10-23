@@ -2,7 +2,7 @@
 # Contributor: sixpindin <sixpindin@gmail.com>
 pkgname=omnisharp-roslyn
 pkgver=1.39.12
-pkgrel=1
+pkgrel=2
 pkgdesc="OmniSharp server (STDIO) based on Roslyn workspaces"
 arch=('x86_64')
 url="https://github.com/OmniSharp/omnisharp-roslyn"
@@ -37,6 +37,13 @@ prepare() {
 
     # use absolute path to global dotnet exe
     sed -i "s|? \"dotnet\"|? \"$(command -v dotnet)\"|" scripts/common.cake
+
+    # https://github.com/advisories/GHSA-qj66-m88j-hmgj
+    sed -i '/"Microsoft.Extensions.Caching.Memory"/s/$(MicrosoftExtensionPackageVersion)/8.0.1/' Directory.Packages.props
+    sed -i '/"Microsoft.Extensions.Options"/s/$(MicrosoftExtensionPackageVersion)/8.0.2/' Directory.Packages.props
+
+    # https://github.com/advisories/GHSA-8g4q-xg66-9fp4
+    sed -i '/"System.Text.Json"/s/8.0.4/8.0.5/' Directory.Packages.props
 
     export DOTNET_NOLOGO=1
 
