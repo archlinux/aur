@@ -1,10 +1,10 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=autocut-client
-pkgver=0.1.7
+pkgver=0.1.10
 _electronversion=21
 _nodeversion=18
-pkgrel=8
-pkgdesc="Quickly generate video subtitles and edit the video by selecting subtitle clips"
+pkgrel=1
+pkgdesc="Quickly generate video subtitles and edit the video by selecting subtitle clips.Use system-wide electron."
 arch=('any')
 url="https://github.com/zcf0508/autocut-client"
 license=('MIT')
@@ -26,45 +26,54 @@ source=(
     "${pkgname%-bin}.desktop"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('77a48faf1b5ec1fa9e017584ec634d340c87ca5f574fcca9768cbbea56a830ce'
+sha256sums=('001fb464727c9cf0229b242efb861e2845cc75f345c9806c7708324ec0d4bb51'
             '6852367fb600dcd0df84202fb0a6222af4ec2ec71479bb2ad74a2fe0b5d2f8ea'
             '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 _ensure_local_nvm() {
-    export NVM_DIR="${srcdir}/.nvm"
+    local NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
     nvm install "${_nodeversion}"
     nvm use "${_nodeversion}"
 }
 build() {
-    sed -e "s|@electronversion@|${_electronversion}|" \
-        -e "s|@appname@|${pkgname}|g" \
-        -e "s|@runname@|app.asar|g" \
-        -e "s|@cfgdirname@|${pkgname}|g" \
-        -e "s|@options@||g" \
-        -i "${srcdir}/${pkgname}.sh"
+    sed -e "
+        s/@electronversion@/${_electronversion}/g
+        s/@appname@/${pkgname}/g
+        s/@runname@/app.asar/g
+        s/@cfgdirname@/${pkgname}/g
+        s/@options@//g
+    " -i "${srcdir}/${pkgname}.sh"
     _ensure_local_nvm
     cd "${srcdir}/${pkgname}.git"
-    export npm_config_build_from_source=true
+    electronDist="/usr/lib/electron${_electronversion}"
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
-    export ELECTRONVERSION="${_electronversion}"
     HOME="${srcdir}/.electron-gyp"
-    pnpm config set store-dir "${srcdir}/.pnpm_store"
-    pnpm config set cache-dir "${srcdir}/.pnpm_cache"
-    pnpm config set link-workspace-packages true
-    if [ `curl -s ipinfo.io/country | grep CN | wc -l ` -ge 1 ];then
-        export npm_config_registry=https://registry.npmmirror.com
-        export npm_config_disturl=https://registry.npmmirror.com/-/binary/node/
-        export npm_config_electron_mirror=https://registry.npmmirror.com/-/binary/electron/
-        export npm_config_electron_builder_binaries_mirror=https://registry.npmmirror.com/-/binary/electron-builder-binaries/
-    else
-        echo "Your network is OK."
+    {
+        echo -e '\n'
+        #echo 'build_from_source=true'
+        echo 'link-workspace-packages=true'
+        echo 'fetch-retry-maxtimeout=10000'
+        echo "cache-dir="${srcdir}"/.pnpm_cache"
+        echo "store-dir="${srcdir}"/.pnpm_store"
+        echo "shamefully-hoist=true"
+        echo "shell-emulator=true"
+        echo "virtual-store-dir-max-length=80"
+    } >> .npmrc
+    if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
+        {
+            echo 'registry=https://registry.npmmirror.com'
+            echo 'disturl=https://registry.npmmirror.com/-/binary/node/'
+            echo 'electron_mirror=https://registry.npmmirror.com/-/binary/electron/'
+            echo 'electron_builder_binaries_mirror=https://registry.npmmirror.com/-/binary/electron-builder-binaries/'
+        } >> .npmrc
     fi
-    sed "s|electron-builder\",|electron-builder -l --dir\",|g;s|\"electron\": \"\^21.1.0\",|\"electron\": \"${SYSTEM_ELECTRON_VERSION}\",|g" \
-        -i package.json
-    sed "s|\/v\${version}||g" -i electron-builder.json5
+    sed -i "s/\/v\${version}//g" electron-builder.json5
+    sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
     NODE_ENV=development    pnpm install
-    NODE_ENV=production     pnpm run build
+    NODE_ENV=production     pnpm vue-tsc --noEmit
+    NODE_ENV=production     pnpm vite build
+    NODE_ENV=production     pnpm -c exec "electron-builder --linux dir -c.electronDist=${electronDist}"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
