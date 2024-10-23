@@ -9,7 +9,7 @@ pkgver=17.0
 pkgrel=1
 pkgdesc="A cross platform C/C++/PHP and Node.js IDE written in C++"
 arch=(x86_64)
-url="https://www.codelite.org/"
+url="https://codelite.org/"
 license=(GPL2)
 depends=(webkit2gtk gtk3 gcc-libs
         libtiff5
