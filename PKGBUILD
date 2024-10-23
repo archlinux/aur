@@ -2,7 +2,7 @@
 pkgname=ugee-tablet
 pkgver=4.3.4
 _pkgver_sub1=20240820
-_pkgver_sub2=40704
+_pkgver_sub2=240704
 pkgrel=1
 pkgdesc='Ugee Tablet Driver(version 4.x)'
 url='https://www.ugee.com.cn/download/'
