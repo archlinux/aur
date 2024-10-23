@@ -1,0 +1,14 @@
+[Unit]
+Description = Gcopy backend
+Wants = network-online.target
+After = network-online.target
+
+[Service]
+User = gcopy
+Restart = on-failure
+EnvironmentFile = -/etc/gcopy/gcopy.env
+ExecStart = /usr/bin/gcopy $APPEND_ARGS
+TimeoutStopSec = 5
+
+[Install]
+WantedBy = multi-user.target

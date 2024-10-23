@@ -1,0 +1,14 @@
+[Unit]
+Description = Gcopy frontend
+Wants = network-online.target
+After = network-online.target gcopy.service
+
+[Service]
+User = gcopy
+Restart = on-failure
+EnvironmentFile = -/etc/gcopy/gcopy-web.env
+ExecStart = /usr/bin/node /usr/share/gcopy-web/server.js
+TimeoutStopSec = 5
+
+[Install]
+WantedBy = multi-user.target
