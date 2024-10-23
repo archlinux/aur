@@ -2,7 +2,7 @@
 
 _pkgname=ashell
 pkgname="${_pkgname}"
-pkgver=0.1.3
+pkgver=0.1.4
 pkgrel=1
 pkgdesc="A ready to go Wayland status bar for Hyprland"
 _git="https://github.com/MalpenZibo/${_pkgname}.git#tag=${pkgver}"
@@ -11,9 +11,9 @@ license=("MIT")
 provides=("${_pkgname}")
 conflicts=("${_pkgname}-git")
 makedepends=(
-  "cargo" 
-  "git" 
-  "wayland-protocols" 
+  "cargo"
+  "git"
+  "wayland-protocols"
   "clang"
 )
 depends=(
