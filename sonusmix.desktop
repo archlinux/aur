@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=sonusmix
+Comment=Next-gen Pipewire audio routing tool
+Exec=sonusmix
+Icon=sonusmix
+Terminal=false
+Categories=AudioVideo;Audio;Mixer;System;Utility;
+StartupNotify=true
+StartupWMClass=sonusmix

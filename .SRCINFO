@@ -1,0 +1,19 @@
+pkgbase = sonusmix-git
+	pkgdesc = Fladder - A Simple Jellyfin Frontend
+	pkgver = r185.66e5ca1
+	pkgrel = 1
+	url = https://codeberg.org/sonusmix/sonusmix
+	arch = x86_64
+	license = MPL-2.0
+	makedepends = clang
+	makedepends = cargo
+	makedepends = git
+	depends = pipewire
+	depends = gtk4
+	conflicts = sonusmix
+	source = git+https://codeberg.org/sonusmix/sonusmix
+	source = sonusmix.desktop
+	sha256sums = SKIP
+	sha256sums = cf3059786a8e6d62f72979954ef6e9730575ec3d2ec1dcd5ddae78f043765f9a
+
+pkgname = sonusmix-git
