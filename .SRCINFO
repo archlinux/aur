@@ -1,0 +1,15 @@
+pkgbase = nodejs-chokidar-cli
+	pkgdesc = Run multiple commands concurrently
+	pkgver = 3.0.0
+	pkgrel = 2
+	url = https://github.com/open-cli-tools/concurrently
+	arch = any
+	license = MIT
+	makedepends = npm
+	depends = nodejs
+	provides = chokidar
+	noextract = chokidar-cli-3.0.0.tgz
+	source = http://registry.npmjs.org/chokidar-cli/-/chokidar-cli-3.0.0.tgz
+	sha256sums = 3649e72e2e9b1080bdf07426b29d3f7b6a2db5e16bb0b456d4fe6325a5bd1ab3
+
+pkgname = nodejs-chokidar-cli
