@@ -1,14 +1,14 @@
 # Maintainer: David Cooper <david@dtcooper.com>
 
 pkgname=fakehostname
-pkgver=0.3.1
+pkgver=0.3.2
 pkgrel=1
 pkgdesc="Run a command and fake your hostname."
 arch=('i686' 'x86_64' 'aarch64' 'armv7h')
 license=('MIT')
 url="https://github.com/dtcooper/fakehostname"
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/dtcooper/${pkgname}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('5422942cf75e9a96a252ed63aa95ecbfc8ba9ec292115b76f929d22a17a5e557')
+sha256sums=('b25e04b409d69bd5319ce1ad55888e9ac6ece68a943d62d8209dee26faf072da')
 
 package() {
   cd "${pkgname}-${pkgver}"
