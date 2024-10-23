@@ -83,7 +83,7 @@ source=(
 b2sums=('SKIP'
         'e31ae379039dfc345e8032f7b9803a59ded075fc52457ba1553276d3031e7025d9304a7f2167a01be2d54c5e121bae00a2824a9c5ccbf926865d0b24520bb053')
 
- pkgver() {
+pkgver() {
   cd gnome-shell
   git describe --tags | sed 's/[^-]*-g/r&/;s/-/+/g'
 }
