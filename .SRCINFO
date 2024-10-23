@@ -1,15 +1,17 @@
 pkgbase = youtube-downloader-bin
 	pkgdesc = YouTube Downloader by MediaHuman
 	pkgver = 3.9.9.96
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.mediahuman.com/download.html
 	arch = x86_64
-	license = custom
+	license = LicenseRef-custom
 	depends = hicolor-icon-theme
 	depends = qt5-multimedia
-	depends = taglib
+	depends = qt5-webengine
+	depends = qt5-declarative
+	depends = taglib1
 	conflicts = youtube-downloader
-	source = https://www.mediahuman.com/download/YouTubeDownloader.amd64.deb
-	sha256sums = 192df4544e6a57dcd677ac5f14eed09e903a7cbce8795fe25d36d7e43065055d
+	source_x86_64 = youtube-downloader-bin-2024-10-24-01.amd64.deb::https://www.mediahuman.com/download/YouTubeDownloader.amd64.deb
+	sha256sums_x86_64 = 192df4544e6a57dcd677ac5f14eed09e903a7cbce8795fe25d36d7e43065055d
 
 pkgname = youtube-downloader-bin

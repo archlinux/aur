@@ -3,21 +3,31 @@
 pkgname=youtube-downloader-bin
 _pkgname=youtube-downloader
 pkgver=3.9.9.96
-pkgrel=1
+pkgrel=2
 pkgdesc='YouTube Downloader by MediaHuman'
 arch=('x86_64')
 url="https://www.mediahuman.com/download.html"
-license=('custom')
+license=('LicenseRef-custom')
 depends=('hicolor-icon-theme'
          'qt5-multimedia'
-         'taglib')
+         'qt5-webengine'
+         'qt5-declarative'
+         'taglib1')
 provide=('youtube-downloader')
 conflicts=('youtube-downloader')
-source=(https://www.mediahuman.com/download/YouTubeDownloader.amd64.deb)
-sha256sums=('192df4544e6a57dcd677ac5f14eed09e903a7cbce8795fe25d36d7e43065055d')
+source_x86_64=("${pkgname}-$(date +%F-%H).amd64.deb::https://www.mediahuman.com/download/YouTubeDownloader.amd64.deb")
+sha256sums_x86_64=('192df4544e6a57dcd677ac5f14eed09e903a7cbce8795fe25d36d7e43065055d')
+
+pkgver() {
+  bsdtar -xf control.tar.xz -C .
+  actpkgverlong="$(cat "control" | grep "Version: ")"
+  actpkgver=${actpkgverlong##*: }
+  echo "$actpkgver"
+}
 
 package() {
-    bsdtar -xf "${srcdir}/data.tar.xz" -C "${pkgdir}/"
-    install -dm755 $pkgdir/usr/bin
-    ln -s /opt/$_pkgname/YouTubeDownloader "${pkgdir}/usr/bin/YouTubeDownloader"
+  bsdtar -xf data.tar.xz -C ${pkgdir}/
+  install -D "${pkgdir}/usr/share/doc/${_pkgname}/copyright" -t "${pkgdir}/usr/share/licenses/${pkgname}/"
+  install -dm755 $pkgdir/usr/bin
+  ln -s /opt/$_pkgname/YouTubeDownloader "${pkgdir}/usr/bin/YouTubeDownloader"
 }
