@@ -1,8 +1,8 @@
 # Maintainer: BartSte bartsteensma@outlook.com
 
 pkgname=fzf-help
-pkgver=2.1.2
-pkgrel=2
+pkgver=2.3.0
+pkgrel=1
 pkgdesc="Use fzf to select command line options from --help"
 arch=('any')
 url="https://github.com/BartSte/fzf-help"
