@@ -1,7 +1,7 @@
 # Maintainer: Carlos Aznarán <caznaranl@uni.pe>
 _base=CTGAN
 pkgname=python-${_base,,}
-pkgver=0.10.1
+pkgver=0.10.2
 pkgrel=1
 pkgdesc="Create tabular synthetic data using a conditional GAN"
 arch=(x86_64)
@@ -11,7 +11,7 @@ depends=(python-pytorch python-rdt python-tqdm)
 makedepends=(python-build python-installer python-setuptools python-wheel)
 checkdepends=(python-pytest)
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('1a5986c336ec668d78f51d1fbdcb7cb919fbe94081ca091559849743afceb625a054199830e94a5d66d2119fc75b87557573bde1175757f4fd3a0ca46553fcd4')
+sha512sums=('9bf4861e9e5bbd6608960d89002deefd13937a26c073dca7bb9b3ef457c5ba250e13fa71b76e74b1df9ebca3034c4caf7a0ca3305ffff842c63fc807aae1d038')
 
 build() {
   cd ${_base}-${pkgver}
