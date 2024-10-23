@@ -1,10 +1,10 @@
 # Maintainer: Nathan Reiner <nathan@nathanreiner.xyz>
 pkgname=webtray-git
-pkgver=8e7551e
+pkgver=70af992
 pkgrel=1
 pkgdesc="Attach Web-Applications to Tray"
 arch=(x86_64)
-_tag=8e7551e9fe64012b3c7ca3f643fb780d9b30dbd9
+_tag=70af99261098e1dc951e192d44cee880cfe872ab
 url="https://git.nathanreiner.xyz/webtray"
 license=('GPL')
 groups=()
@@ -20,7 +20,7 @@ install=
 changelog=
 source=(git+${url}#tag=${_tag})
 noextract=()
-sha256sums=('8f30cbafcd6da1919ee142ac41fb961f065a6ce8081e8811823c4978b3d1738d')
+sha256sums=('45ab062b3caac9690d6a52852b85ac5fee44c098e7638d6b6d3161e42ae7028f')
 
 build() {
   cd "webtray"
