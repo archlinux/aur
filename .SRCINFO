@@ -1,0 +1,20 @@
+pkgbase = augustus-git
+	pkgdesc = An enhanced re-implementation of Caesar III (Original copy required)
+	pkgver = 4.0.0.r415.gb47ce83
+	pkgrel = 1
+	url = https://github.com/Keriew/augustus
+	arch = x86_64
+	arch = i686
+	license = AGPL-3.0-only
+	makedepends = git
+	makedepends = cmake
+	depends = sdl2
+	depends = sdl2_mixer
+	depends = glibc
+	provides = augustus
+	conflicts = augustus-game
+	replaces = augustus-game
+	source = git+https://github.com/Keriew/augustus.git
+	sha256sums = SKIP
+
+pkgname = augustus-git
