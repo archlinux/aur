@@ -1,9 +1,8 @@
-# Author: Christoph Brill <aur@christophbrill.de>
+# Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dor com>
 
 _npmname=concurrently
-
 pkgname=nodejs-concurrently
-pkgver=8.2.1
+pkgver=9.0.1
 pkgrel=1
 pkgdesc="Run multiple commands concurrently"
 arch=(any)
@@ -13,7 +12,7 @@ depends=('nodejs')
 makedepends=('npm')
 source=(http://registry.npmjs.org/$_npmname/-/$_npmname-$pkgver.tgz)
 noextract=($_npmname-$pkgver.tgz)
-sha256sums=('e02f99dc2aee4fe71e240290b7927e0f814c6a45aba6e601d435d4663ac819f1')
+sha256sums=('c9f5d8cfb813ab049e1e01f10719832049b6f00e4df3658da27590f43f185fb9')
 
 package() {
 	npm install -g --user root --prefix "$pkgdir/usr" "$srcdir/$_npmname-$pkgver.tgz"
@@ -24,4 +23,3 @@ package() {
 	# Fix permissions
 	find "$pkgdir/usr" -type d -exec chmod 755 {} \;
 }
-
