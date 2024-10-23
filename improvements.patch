@@ -1,0 +1,264 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 5d3e0a5..0b31632 100755
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -20,7 +20,7 @@
+ endif()
+ 
+ 
+-set(target ts)
++set(target tsp)
+ 
+ set(TASK_SPOOLER_SOURCES
+         client.c
+@@ -53,7 +53,7 @@
+ add_executable(makeman man.c)
+ 
+ if(TASK_SPOOLER_COMPILE_CUDA)
+-  if(${CMAKE_VERSION} VERSION_LESS "3.17.0") 
++  if(${CMAKE_VERSION} VERSION_LESS "3.17.0")
+     find_package(CUDA REQUIRED)
+ 
+     # Do what the new package does
+@@ -85,7 +85,7 @@
+ 
+ # install
+ install(CODE "execute_process(COMMAND install -c -d /usr/local/bin)")
+-install(CODE "execute_process(COMMAND install -c ts /usr/local/bin)")
++install(CODE "execute_process(COMMAND install -c tsp /usr/local/bin)")
+ install(CODE "execute_process(COMMAND ./makeman)")
+ install(CODE "execute_process(COMMAND install -c -d /usr/local/share/man/man1)")
+-install(CODE "execute_process(COMMAND install -c -m 644 ts.1 /usr/local/share/man/man1)")
++install(CODE "execute_process(COMMAND install -c -m 644 tsp.1 /usr/local/share/man/man1)")
+diff --git a/Makefile b/Makefile
+index 5b8ecaa..6d6c033 100755
+--- a/Makefile
++++ b/Makefile
+@@ -19,9 +19,9 @@ OBJECTS=main.o \
+ 	info.o \
+ 	env.o \
+ 	tail.o \
+ 	cjson/cJSON.o
+-TARGET=ts
++TARGET=tsp
+ INSTALL=install -c
+ 
+ GIT_REPO=$(shell git rev-parse --is-inside-work-tree)
+ 
+@@ -68,20 +68,20 @@ ifeq ($(GIT_REPO), true)
+ 	$(CC) $(CFLAGS) -DTS_VERSION=$${GIT_VERSION} man.c -o makeman
+ endif
+ 
+ clean:
+-	rm -f *.o cjson/*.o $(TARGET) makeman ts.1
++	rm -f *.o cjson/*.o $(TARGET) makeman tsp.1
+ 
+ install: $(TARGET)
+ 	$(INSTALL) -d $(PREFIX)/bin
+-	$(INSTALL) ts $(PREFIX)/bin
++	$(INSTALL) tsp $(PREFIX)/bin
+ 	$(INSTALL) -d $(PREFIX)/share/man/man1
+ 	./makeman
+ 	$(INSTALL) -m 644 $(TARGET).1 $(PREFIX)/share/man/man1
+ 
+ install-local: $(TARGET)
+ 	$(INSTALL) -d $(PREFIX_LOCAL)/bin
+-	$(INSTALL) ts $(PREFIX_LOCAL)/bin
++	$(INSTALL) tsp $(PREFIX_LOCAL)/bin
+ 	$(INSTALL) -d $(PREFIX_LOCAL)/.local/share/man/man1
+ 	./makeman
+ 	$(INSTALL) -m 644 $(TARGET).1 $(PREFIX_LOCAL)/.local/share/man/man1
+ 
+diff --git a/client.c b/client.c
+index 8fd26b8..ee3d097 100755
+--- a/client.c
++++ b/client.c
+@@ -201,10 +201,10 @@ void c_wait_server_lines() {
+ void c_list_jobs() {
+     struct Msg m = default_msg();
+ 
+     m.type = LIST;
+-    m.u.term_width = term_width;
+-    m.u.list_format = command_line.list_format;
++    m.u.list.term_width = term_width;
++    m.u.list.list_format = command_line.list_format;
+     send_msg(server_socket, &m);
+ }
+ 
+ void c_list_gpu_jobs() {
+diff --git a/execute.c b/execute.c
+index 84eeda9..0f1f902 100755
+--- a/execute.c
++++ b/execute.c
+@@ -135,8 +135,15 @@ static void run_gzip(int fd_out, int fd_in) {
+             close(fd_out);
+     }
+ }
+ 
++static void put_job_id_env() {
++    const int jobid_len = 18;
++    char ts_jobid[jobid_len];
++    snprintf(ts_jobid, jobid_len, "TS_JOBID=%d", command_line.jobid);
++    putenv(ts_jobid);
++}
++
+ static void run_child(int fd_send_filename, char* tmpdir) {
+     char *outfname;
+     char errfname[sizeof outfname + 2]; /* .e */
+     int namesize;
+@@ -232,8 +239,9 @@ static void run_child(int fd_send_filename, char* tmpdir) {
+     /* We create a new session, so we can kill process groups as:
+          kill -- -`ts -p` */
+     setsid();
+     putenv("PYTHONUNBUFFERED=1");
++    put_job_id_env();   /* let child process know that it has been run from us */
+     execvp(command_line.command.array[0], command_line.command.array);
+ }
+ 
+ int run_job(struct Result *res) {
+diff --git a/gpu.c b/gpu.c
+index fb277a9..2437155 100755
+--- a/gpu.c
++++ b/gpu.c
+@@ -8,8 +8,9 @@
+ 
+ #include "main.h"
+ 
+ #define TS_VISIBLE_DEVICES "TS_VISIBLE_DEVICES"
++#define TS_FREE_PERCENTAGE "TS_FREE_PERCENTAGE"
+ 
+ static int free_percentage = 90;
+ static int num_total_gpus;
+ static int *used_gpus = 0;
+@@ -21,8 +22,19 @@ static void set_cuda_env() {
+ 
+ void initGPU() {
+     unsigned int nDevices;
+     nvmlReturn_t result;
++    char *str;
++
++    // read TS_FREE_PERCENTAGE
++    str = getenv(TS_FREE_PERCENTAGE);
++    if (str != NULL) {
++        int value;
++        value = abs(atoi(str));
++        if (value > 0 && value < 100) {
++            free_percentage = value;
++        }
++    }
+ 
+     set_cuda_env();
+     result = nvmlInit();
+     if (NVML_SUCCESS != result)
+diff --git a/jobs.c b/jobs.c
+index 86f78b9..82182d4 100755
+--- a/jobs.c
++++ b/jobs.c
+@@ -1173,8 +1173,11 @@ void s_job_info(int s, int jobid) {
+         fd_nprintf(s, 100, "]&& ");
+     }
+     write(s, p->command, strlen(p->command));
+     fd_nprintf(s, 100, "\n");
++    if (p->label) {
++        fd_nprintf(s, 100, "Label: %s\n", p->label);
++    }
+     fd_nprintf(s, 100, "Slots required: %i\n", p->num_slots);
+ #ifndef CPU
+     fd_nprintf(s, 100, "GPUs required: %d\n", p->num_gpus);
+     fd_nprintf(s, 100, "GPU IDs: %s\n", ints_to_chars(
+diff --git a/main.c b/main.c
+index 1195e63..2605035 100755
+--- a/main.c
++++ b/main.c
+@@ -46,9 +46,9 @@ static void default_command_line() {
+     command_line.should_go_background = 1;
+     command_line.should_keep_finished = 1;
+     command_line.gzip = 0;
+     command_line.send_output_by_mail = 0;
+-    command_line.label = 0;
++    command_line.label = getenv("USER");
+     command_line.depend_on = NULL; /* -1 means depend on previous */
+     command_line.max_slots = 1;
+     command_line.wait_enqueuing = 1;
+     command_line.stderr_apart = 0;
+diff --git a/main.h b/main.h
+index 491b879..a01e912 100755
+--- a/main.h
++++ b/main.h
+@@ -192,10 +192,12 @@ struct Msg {
+         int max_slots;
+         int version;
+         int count_running;
+         char *label;
+-        int term_width;
+-        enum ListFormat list_format;
++        struct {
++            int term_width;
++            enum ListFormat list_format;
++        } list;
+     } u;
+ };
+ 
+ struct Procinfo {
+@@ -546,5 +548,5 @@ void setFreePercentage(int percent);
+ 
+ int getFreePercentage();
+ 
+ void cleanupGpu();
+-#endif
+\ No newline at end of file
++#endif
+diff --git a/man.c b/man.c
+index 7375497..61100a8 100644
+--- a/man.c
++++ b/man.c
+@@ -6,9 +6,9 @@
+ #include <stdio.h>
+ #include <time.h>
+ 
+ int main() {
+-    FILE *f = fopen("ts.1", "w");
++    FILE *f = fopen("tsp.1", "w");
+     time_t T = time(NULL);
+     struct tm tm = *localtime(&T);
+     if (f == NULL)
+     {
+diff --git a/server.c b/server.c
+index 89fd322..8cf3e77 100755
+--- a/server.c
++++ b/server.c
+@@ -6,8 +6,9 @@
+ */
+ #include <sys/types.h>
+ #include <sys/socket.h>
+ #include <sys/select.h>
++#include <sys/stat.h>
+ 
+ #ifdef linux
+ 
+ #include <sys/time.h>
+@@ -195,8 +196,11 @@ void server_main(int notify_fd, char *_path) {
+     res = listen(ls, 0);
+     if (res == -1)
+         error("Error listening.");
+ 
++    // chmod ug+rwx
++    chmod(addr.sun_path, S_IRWXU|S_IRWXG);
++
+     install_sigterm_handler();
+ 
+     set_default_maxslots();
+ 
+@@ -411,10 +415,10 @@ client_read(int index) {
+         case KILL_ALL:
+             s_kill_all_jobs(s);
+             break;
+         case LIST:
+-            term_width = m.u.term_width;
+-            s_list(s, m.u.list_format);
++            term_width = m.u.list.term_width;
++            s_list(s, m.u.list.list_format);
+             /* We must actively close, meaning End of Lines */
+             close(s);
+             remove_connection(index);
+             break;

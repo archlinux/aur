@@ -1,0 +1,37 @@
+# Maintainer: Jonathan Neidel <aur@jneidel.com>
+# Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dor com>
+
+_binname=tsp
+_modifier=cpu
+_app_name=task-spooler
+pkgname=${_app_name}-${_modifier}
+pkgver=2.0.0
+pkgrel=1
+pkgdesc="Queue up tasks from the shell for batch execution"
+arch=('x86_64' 'armv7h' 'aarch64')
+url="https://justanhduc.github.io/2021/02/03/Task-Spooler.html"
+license=('GPL-2.0')
+makedepends=('make')
+conflicts=("${_app_name}" "${_app_name}-gpu")
+provides=("${_binname}")
+source=(https://github.com/justanhduc/task-spooler/archive/refs/tags/v${pkgver}.tar.gz
+        improvements.patch)
+sha256sums=('ffffa86f95071e837af619e23fb4a037432b0b079d872d58dc530883d1d33557'
+            '66d699e6d9fc1cdb41d77ceca73067af3700d478666d05eaab7ad6e5eed7e698')
+
+prepare() {
+  patch -d ${_app_name}-${pkgver} < improvements.patch
+}
+
+build() {
+  cd ${_app_name}-${pkgver} || exit
+
+  make cpu
+}
+
+package() {
+  install -Dm644 ${_app_name}-${pkgver}/README.md -t "${pkgdir}/usr/share/doc/${pkgname}"
+  install -Dm644 ${_app_name}-${pkgver}/CHANGELOG.md -t "${pkgdir}/usr/share/doc/${pkgname}"
+
+  make -C ${_app_name}-${pkgver} PREFIX="${pkgdir}/usr" install
+}

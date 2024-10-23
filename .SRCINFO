@@ -1,0 +1,19 @@
+pkgbase = task-spooler-cpu
+	pkgdesc = Queue up tasks from the shell for batch execution
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://justanhduc.github.io/2021/02/03/Task-Spooler.html
+	arch = x86_64
+	arch = armv7h
+	arch = aarch64
+	license = GPL-2.0
+	makedepends = make
+	provides = tsp
+	conflicts = task-spooler
+	conflicts = task-spooler-gpu
+	source = https://github.com/justanhduc/task-spooler/archive/refs/tags/v2.0.0.tar.gz
+	source = improvements.patch
+	sha256sums = ffffa86f95071e837af619e23fb4a037432b0b079d872d58dc530883d1d33557
+	sha256sums = 66d699e6d9fc1cdb41d77ceca73067af3700d478666d05eaab7ad6e5eed7e698
+
+pkgname = task-spooler-cpu
