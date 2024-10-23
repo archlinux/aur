@@ -1,6 +1,6 @@
 pkgbase = minecraft-server
 	pkgdesc = Minecraft server unit files, script, and jar
-	pkgver = 1.21.2
+	pkgver = 1.21.3
 	pkgrel = 1
 	url = https://minecraft.net/
 	install = minecraft-server.install
@@ -16,11 +16,11 @@ pkgbase = minecraft-server
 	optdepends = netcat: required in order to suspend an idle server
 	conflicts = minecraft-server-systemd
 	conflicts = minecraft-canary
-	noextract = minecraft_server.1.21.2.jar
+	noextract = minecraft_server.1.21.3.jar
 	backup = etc/conf.d/minecraft
-	source = minecraft_server.1.21.2n7bf95409.jar::https://launcher.mojang.com/v1/objects/7bf95409b0d9b5388bfea3704ec92012d273c14c/server.jar
+	source = minecraft_server.1.21.3n45810d23.jar::https://launcher.mojang.com/v1/objects/45810d238246d90e811d896f87b14695b7fb6839/server.jar
 	source = minecraft-server-1.0.4.tar.gz::https://github.com/Edenhofer/minecraft-server/archive/refs/tags/v1.0.4.tar.gz
-	sha512sums = c3a5de52179668c768b450201f428d2de3d74cba7d7f9346cb832427e54af0d632564271ed31ee38bac77b96a1fa2338dcf8624c2d783aad0869f72ea7da2da7
+	sha512sums = 278a27c668716057cf60695fd8c037d7da4d0a24b0972da5ebab04ecda8ab3ed08bcc2a02f4078f823c9635bac55821d9948650af59870e94548420b27fc9e7d
 	sha512sums = dd4d68ca061c97a1e3cb5c0bb68439f7d8d45b15092344f3c4dbd4f7f39fef433d566670ad440970061007d93055183b570c7bf98f09c111ecdf8ab0f208f556
 
 pkgname = minecraft-server
