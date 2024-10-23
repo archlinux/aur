@@ -8,13 +8,18 @@ arch=(x86_64)
 url="https://www.iannix.org/"
 license=(GPL)
 groups=(pro-audio)
-depends=(alsa-lib qt5-script)
+depends=(
+  alsa-lib
+  qt5-script
+)
 makedepends=(qt5-tools)
-source=($pkgname-$pkgver.tar.gz::https://github.com/buzzinglight/${pkgname}/archive/v${pkgver/b/-b}.tar.gz
-        desktop.patch
-        fix_paths.patch
-        fix_spelling_errors.patch
-        privacy.patch)
+source=(
+  $pkgname-$pkgver.tar.gz::https://github.com/buzzinglight/${pkgname}/archive/v${pkgver/b/-b}.tar.gz
+  desktop.patch
+  fix_paths.patch
+  fix_spelling_errors.patch
+  privacy.patch
+)
 sha512sums=('9c46250bce9550abc4ece11720616f217513aefd62a7144f7aebdaf2e11b938dc2a551d066b748089bafffd8f7d9659e8b79f6318e250e522cf608f861951c90'
             '4f869a73813fc37106203aed9b3938ae6f5f53cad7322f71fba44a047c32ab93f8b4fdef65804b1f63f7f26781e2505672b553ee7c9baddb82f01bdc36f870f3'
             'ec8bffcea7468e3a41a9f110f9a7a2e875b20015db35e884d47e6a21f6d90a87d560e6ed3e73aeacdf9ac98f7cff28d1e8d1ccba1130b2a569a47a416149353a'
