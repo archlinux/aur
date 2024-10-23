@@ -3,8 +3,8 @@
 # Contributor: Sebastien Duthil <duthils@free.fr>
 
 pkgname=factorio
-pkgver=2.0.8
-pkgrel=2
+pkgver=2.0.9
+pkgrel=1
 pkgdesc="A 2D game about building and maintaining factories (stable branch)."
 arch=('x86_64')
 url="http://www.factorio.com/"
