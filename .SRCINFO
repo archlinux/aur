@@ -1,13 +1,13 @@
 pkgbase = botsay
 	pkgdesc = Like cowsay, but with randomly generated ASCII robots and color support
-	pkgver = 1.3.0
+	pkgver = 1.4.1
 	pkgrel = 1
 	url = https://github.com/xyproto/botsay
 	arch = x86_64
 	license = BSD-3-Clause
 	makedepends = git
 	makedepends = go
-	source = git+https://github.com/xyproto/botsay#commit=45b7b43255a7cc76631682d195cf9c5f19aa5f91
-	b2sums = SKIP
+	source = git+https://github.com/xyproto/botsay#tag=v1.4.1
+	b2sums = 9db66aa6bf8d31b557f1d3fbfadb18b22362088988fec89b0bcc9385429f8c1fc344241191b81a67e7770c7d36926225732511f8d9f29af3011d0bdf02265f3f
 
 pkgname = botsay
