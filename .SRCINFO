@@ -1,17 +1,17 @@
 pkgbase = follow-bin
 	pkgdesc = 🧡 Next generation information browser.This software is all about allowing you to follow your favorite websites, blogs, social media accounts, podcasts and notifications in one place. Prebuilt version.Use system-wide electron.
-	pkgver = 0.0.1_alpha.21
+	pkgver = 0.1.0_beta.0
 	pkgrel = 1
 	url = https://follow.is/
 	arch = x86_64
 	license = GPL-3.0-only
 	makedepends = fuse2
 	depends = electron32
-	provides = follow=0.0.1_alpha.21
+	provides = follow=0.1.0_beta.0
 	conflicts = follow
-	source = follow-0.0.1_alpha.21.AppImage::https://github.com/RSSNext/follow/releases/download/v0.0.1-alpha.21/Follow-0.0.1-alpha.21-linux-x64.AppImage
+	source = follow-0.1.0_beta.0.AppImage::https://github.com/RSSNext/follow/releases/download/v0.1.0-beta.0/Follow-0.1.0-beta.0-linux-x64.AppImage
 	source = follow.sh
-	sha256sums = fc3cde60f072714544922802d9eb4325f14c1849847c1f31e9801bbcf4ef1920
+	sha256sums = cf21ad17bed23b6d71200f9494498e7e11d85d88f6b7f176dbd7994e34e90466
 	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
 
 pkgname = follow-bin
