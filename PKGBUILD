@@ -3,7 +3,7 @@
 # Contributor: witchymary
 
 pkgname=aegisub-arch1t3cht-git
-pkgver=3.2.2.r1189.e8ebb103a
+pkgver=3.2.2.r1193.74ed5a691
 pkgrel=1
 pkgdesc="A general-purpose subtitle editor with ASS/SSA support (arch1t3cht fork)"
 arch=('x86_64')
@@ -37,7 +37,7 @@ optdepends=('vapoursynth: VapourSynth source support'
             'vapoursynth-plugin-wwxd: VapourSynth plugin for keyframe generation'
             'vapoursynth-plugin-scxvid: VapourSynth plugin for keyframe generation')
 source=("${pkgname}::git+https://github.com/arch1t3cht/Aegisub.git#branch=feature"
-        "${pkgname}-bestsource::git+https://github.com/vapoursynth/bestsource.git#tag=R4"
+        "${pkgname}-bestsource::git+https://github.com/vapoursynth/bestsource.git#tag=R8"
         "${pkgname}-libp2p::git+https://bitbucket.org/the-sekrit-twc/libp2p.git#commit=1e3818bd7277165819f659d410873fe5dab37af6"
         "${pkgname}-avisynth::git+https://github.com/AviSynth/AviSynthPlus.git#tag=v3.7.2"
         "${pkgname}-vapoursynth::git+https://github.com/vapoursynth/vapoursynth.git#tag=R59"
@@ -47,7 +47,7 @@ source=("${pkgname}::git+https://github.com/arch1t3cht/Aegisub.git#branch=featur
 noextract=("${pkgname}-gtest-1.8.1.zip"
            "${pkgname}-gtest-1.8.1-1-wrap.zip")
 sha256sums=('SKIP'
-            '5974525134da931526b09b0d1cc0348bd57f8bc760b204458ee664e057811bb9'
+            '2d09633a025b6b792b453d1394753b4d63b842bdd3d444fa8fffd3414e19faf1'
             'e7a3c026a9021dc3cb33fa949d8c2aa90c256a36d3a198abed3e11ade87de1d5'
             '5e3a79b7269b04f199b1e84fa87042d426391f11b4721d4d1e2d6256234c5507'
             '08803fc79758494671af1029e9178c73e717393a745075a45337d56dfa1aad6c'
