@@ -2,8 +2,8 @@
 
 pkgname=openarc-unofficial-patches-git
 _pkgname=openarc
-pkgver=1.0.0.r20.ga67e393
-pkgrel=3
+pkgver=1.0.0.r30.gf298e7b
+pkgrel=4
 pkgdesc="OpenARC with patches and improvements from not-yet-merged PRs - by flowerysong"
 arch=(x86_64)
 url="https://github.com/flowerysong/OpenARC"
@@ -41,7 +41,8 @@ build() {
      --prefix=/usr \
      --sbindir=/usr/bin \
      --sysconfdir="/etc/$_pkgname" \
-     --localstatedir=/var
+     --localstatedir=/var \
+     --disable-static
   make
 }
 
