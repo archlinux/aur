@@ -1,0 +1,11 @@
+pkgbase = stegfs
+	pkgdesc = Cryptsetup version with 'Deniable encryption' support
+	pkgver = 2015.08.1
+	pkgrel = 1
+	arch = any
+	license = GPL
+	provides = stegfs
+	source = git+https://github.com/albinoloverats/stegfs#commit=5b2ae87
+	md5sums = SKIP
+
+pkgname = stegfs
