@@ -16,19 +16,19 @@ b2sums=('0d015f66a1cdeb5119d09c6a81231414362bb5a130d744a4532f3eac7de54f05472716a
 validpgpkeys=('325F650C4C2B6AD58807327A3602B07F55D0C732')
 
 check() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
-  make check
+    cd "${srcdir}/${pkgname}-${pkgver}"
+    make check
 }
 
 build() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
-  ./configure \
-    --prefix=/usr \
-    --sysconfdir=/etc
-  make
+    cd "${srcdir}/${pkgname}-${pkgver}"
+    ./configure \
+	--prefix=/usr \
+	--sysconfdir=/etc
+    make
 }
 
 package() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
-  make DESTDIR="${pkgdir}" install
+    cd "${srcdir}/${pkgname}-${pkgver}"
+    make DESTDIR="${pkgdir}" install
 }
