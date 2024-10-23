@@ -1,6 +1,6 @@
 # Maintainer: Kemel Zaidan <kemelzaidan@gmail.com>
 pkgname=gitnr
-pkgver=0.1.3
+pkgver=0.2.2
 pkgrel=1
 makedepends=('rust' 'cargo' 'wget')
 depends=('glibc' 'gcc-libs' 'openssl')
