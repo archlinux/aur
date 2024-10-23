@@ -1,5 +1,5 @@
 pkgbase = cinematic-git
-	pkgdesc = Gorgeous desktop movie collections
+	pkgdesc = Gorgeous desktop movie collections.Use system-wide electron.
 	pkgver = 3.1.0.r0.gf1324ec
 	pkgrel = 1
 	url = http://gh.lacymorrow.com/cinematic/
@@ -10,6 +10,7 @@ pkgbase = cinematic-git
 	makedepends = nvm
 	makedepends = npm
 	makedepends = curl
+	makedepends = pnpm
 	depends = electron27
 	provides = cinematic=3.1.0
 	conflicts = cinematic
