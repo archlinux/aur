@@ -4,7 +4,7 @@
 
 pkgname=lunacy-bin
 _pkgname=lunacy
-pkgver=10.0.1
+pkgver=10.5
 pkgrel=1
 pkgdesc="Free design software that keeps your flow with AI tools and built-in graphics"
 arch=('x86_64')
@@ -17,7 +17,7 @@ source=(lunacy-mimetype.xml)
 source_x86_64=(lunacy_x86_64_${pkgver}.deb::https://lcdn.icons8.com/setup/Lunacy_${pkgver}.deb)
 
 sha256sums=('0c6ff2c10a75e19f3051c22b6002a78033a7508ad4bb5d234e85cdad22b0f4d0')
-sha256sums_x86_64=('ae80ff6cabf5376b2bbbfb59e999752760326359a08f6b2c0766b8da4c013473')
+sha256sums_x86_64=('8543d514e345c9eeb81f44007b96455741d17400260972da3088defc6adf92d4')
 
 package() {
   #echo "  -> Extracting the data.tar.xz..."
