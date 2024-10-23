@@ -2,7 +2,7 @@
 
 _plug=resize2
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=r16.4fb7511
+pkgver=r17.6a23fe4
 pkgrel=1
 pkgdesc="Plugin for VapourSynth: ${_plug} (GIT version)"
 arch=('x86_64')
@@ -12,7 +12,7 @@ depends=('vapoursynth' 'zimg')
 makedepends=('git' 'meson' 'ninja')
 provides=("vapoursynth-plugin-${_plug}")
 conflicts=("vapoursynth-plugin-${_plug}")
-source=("${_plug}::git+https://github.com/Jaded-Encoding-Thaumaturgy/vapoursynth-resize2.git"
+source=("${_plug}::git+https://github.com/Jaded-Encoding-Thaumaturgy/vapoursynth-resize2.git#commit=6a23fe401b971a5f86c25c64622b899835fd4c03"
   "zimg::git+https://bitbucket.org/the-sekrit-twc/zimg.git"
 )
 sha256sums=('SKIP' 'SKIP')
