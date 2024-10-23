@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=autocut-client
-pkgver=0.1.10
+pkgver=0.1.12
 _electronversion=21
 _nodeversion=18
 pkgrel=1
@@ -17,18 +17,17 @@ depends=(
 makedepends=(
     'npm'
     'nvm'
-    'git'
     'curl'
     'pnpm'
 )
 source=(
-    "${pkgname}.git::git+${url}.git#tag=v${pkgver}"
-    "${pkgname%-bin}.desktop"
-    "${pkgname%-bin}.sh"
+    "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
+    "${pkgname}.desktop"
+    "${pkgname}.sh"
 )
-sha256sums=('001fb464727c9cf0229b242efb861e2845cc75f345c9806c7708324ec0d4bb51'
+sha256sums=('387477f1fb7bb9b10e79956bc6e38023e75ed82661bb862f68fa2f35d3edae35'
             '6852367fb600dcd0df84202fb0a6222af4ec2ec71479bb2ad74a2fe0b5d2f8ea'
-            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
+            '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
@@ -44,7 +43,7 @@ build() {
         s/@options@//g
     " -i "${srcdir}/${pkgname}.sh"
     _ensure_local_nvm
-    cd "${srcdir}/${pkgname}.git"
+    cd "${srcdir}/${pkgname}-${pkgver}"
     electronDist="/usr/lib/electron${_electronversion}"
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
@@ -76,9 +75,9 @@ build() {
     NODE_ENV=production     pnpm -c exec "electron-builder --linux dir -c.electronDist=${electronDist}"
 }
 package() {
-    install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
-    install -Dm644 "${srcdir}/${pkgname}.git/release/linux-"*/resources/app.asar -t "${pkgdir}/usr/lib/${pkgname}"
-    install -Dm644 "${srcdir}/${pkgname}.git/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
-    install -Dm644 "${srcdir}/${pkgname}.git/dist/node.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
+    install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname}"
+    install -Dm644 "${srcdir}/${pkgname}-${pkgver}/release/linux-"*/resources/app.asar -t "${pkgdir}/usr/lib/${pkgname}"
+    install -Dm644 "${srcdir}/${pkgname}-${pkgver}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -Dm644 "${srcdir}/${pkgname}-${pkgver}/dist/node.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
     install -Dm644 "${srcdir}/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
 }
