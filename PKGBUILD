@@ -55,13 +55,13 @@ build() {
     _ensure_local_nvm
     gendesk -q -f -n --pkgname="${pkgname%-git}" --pkgdesc="${pkgdesc}" --categories="Graphics" -name="${pkgname%-git}" --exec="${pkgname%-git} %U"
     cd "${srcdir}/${pkgname%-git}.git"
+    electronDist="/usr/lib/electron${_electronversion}"
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
     HOME="${srcdir}/.electron-gyp"
     mkdir -p "${srcdir}/.electron-gyp"
     if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
-        sed -i "s/github.com/github.moeyy.xyz\/https:\/\/github.com/g" .gitmodules
-        {        
+        {
             echo -e '\n'
             echo 'registry "https://registry.npmmirror.com"'
             echo 'disturl "https://registry.npmmirror.com/-/binary/node/"'
@@ -76,13 +76,14 @@ build() {
             echo 'fetchRetries 3'
             echo 'fetchRetryTimeout 10000'
         } >> .yarnrc
+        sed -i "s/github.com/github.moeyy.xyz\/https:\/\/github.com/g" .gitmodules
+        find ./ -type f -name "yarn.lock" -exec sed -i "s/registry.npmjs.org/registry.npmmirror.com/g" {} +
     fi
-    sed -i "s/--publish always/--publish never/g;s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" -i package.json
-    sed -i "48,60d;s/\"target\": \"AppImage\", \"arch\": \[/\"target\": \"dir\"/g" -i electron-builder-linux-mac.json
+    sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
     git submodule update --depth=1 --init --recursive
     NODE_ENV=development    yarn install --cache-folder "${srcdir}/.yarn_cache" --no-lockfile
     NODE_ENV=development    yarn run sync
-    NODE_ENV=production     yarn run release-linux
+    NODE_ENV=production     yarn electron-builder --linux dir -c.electronDist="${electronDist}" --config electron-builder-linux-mac.json
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
