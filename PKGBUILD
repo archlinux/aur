@@ -1,11 +1,11 @@
 # Maintainer: Kimiblock Zhou <pn3535 at icloud dot com>
 pkgname=stapxs-qq-lite-bin
 _pkgname="Stapxs QQ Lite"
-pkgver=2.9.1
+pkgver=2.9.2
 _electronversion=27
 pkgrel=1
 epoch=
-pkgdesc="一个兼容 oicq-http 的非官方网页版 QQ 客户端, 使用 Vue 重制的全新版本."
+pkgdesc="A compatible OneBot protocol unofficial version of the web QQ client, electron client.Prebuilt version.Use system-wide electron.一个兼容 oicq-http 的非官方网页版 QQ 客户端, 使用 Vue 重制的全新版本."
 arch=(
     'aarch64'
     'x86_64'
@@ -24,8 +24,8 @@ source=(
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_arm64.deb")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb")
 sha256sums=('291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-sha256sums_aarch64=('d000da572a1aeed2e87620fce4b96c2cacfb59fae8472f6ffa756a52ef0bef53')
-sha256sums_x86_64=('d56d0fcc76f512c7055de9abd122542748928518a6d20779dc47b759c83e694f')
+sha256sums_aarch64=('d1d84f656bb28565d8d7b501218fc35cd48c8cdf005c1a57222ad0e1fda755bc')
+sha256sums_x86_64=('3f55a1ddab73e00f6cc52c432cbd62f67d3784fbee483ce98cd3794c1a2d0b06')
 build() {
     sed -e "
         s/@electronversion@/${_electronversion}/g
