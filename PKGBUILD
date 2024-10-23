@@ -11,7 +11,7 @@ pkgrel=1
 _branch=1.2.0
 pkgdesc="A lightweight secure server providing multi-user, multi-client
  access to task data"
-url='https://gothenburgbitfactory.org/projects/taskd.html'
+url='https://gothenburgbitfactory.org/taskd/'
 license=('MIT')
 
 install=taskd.install
