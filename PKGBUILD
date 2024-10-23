@@ -3,13 +3,13 @@
 
 pkgname=python-confluent-kafka
 pkgver=2.6.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Confluent's Python client for Apache Kafka"
 arch=(x86_64)
 url="https://github.com/confluentinc/confluent-kafka-python"
 license=('Apache-2.0')
 depends=('python'
-         'librdkafka-git'
+         'librdkafka'
          'glibc'
          'python-requests'
          'python-protobuf'
