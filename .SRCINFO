@@ -1,17 +1,17 @@
 pkgbase = pritunl-client-bin
 	pkgdesc = Pritunl OpenVPN client.Written in GO.Prebuilt version.
-	pkgver = 1.3.4058.0
+	pkgver = 1.3.4059.45
 	pkgrel = 1
 	url = https://client.pritunl.com/
 	arch = x86_64
 	license = LicenseRef-custom
 	depends = openvpn
-	provides = pritunl-client=1.3.4058.0
+	provides = pritunl-client=1.3.4059.45
 	conflicts = pritunl-client
 	conflicts = pritunl-client-electron
-	source = pritunl-client-1.3.4058.0.deb::https://github.com/pritunl/pritunl-client-electron/releases/download/1.3.4058.0/pritunl-client_1.3.4058.0-0ubuntu1.noble_amd64.deb
-	source = LICENSE-1.3.4058.0::https://raw.githubusercontent.com/pritunl/pritunl-client-electron/1.3.4058.0/LICENSE
-	sha256sums = eb2debc540fda0c69e03058d7f7c7719619ab4e139d0366ec6f5b35236dff269
+	source = pritunl-client-1.3.4059.45.deb::https://github.com/pritunl/pritunl-client-electron/releases/download/1.3.4059.45/pritunl-client_1.3.4059.45-0ubuntu1.noble_amd64.deb
+	source = LICENSE-1.3.4059.45::https://raw.githubusercontent.com/pritunl/pritunl-client-electron/1.3.4059.45/LICENSE
+	sha256sums = 5f7dfcb828a5d66a996f17fdb19cc11c5088c4ea5c0c694558f234fb3e34f9f4
 	sha256sums = 6b09590452456242b5970ac0c3bc9a5a9db1792ce4465d5e8cea1d7ba4080cda
 
 pkgname = pritunl-client-bin
