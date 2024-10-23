@@ -1,5 +1,5 @@
 pkgname=cadna_c
-pkgver=3.1.11
+pkgver=3.1.12
 pkgrel=1
 pkgdesc="Control of Accuracy and Debugging for Numerical Applications"
 arch=('i686' 'x86_64')
@@ -9,21 +9,23 @@ depends=('gcc-libs' 'openmpi' 'gcc-fortran')
 makedepends=()
 # README says to not build in parallel (and indeed, parallel build fails)
 options=(!makeflags)
-source=("http://cadna.lip6.fr/Download_Dir/${pkgname}-${pkgver}.tar.gz")
+# Renamed with _half suffix since 3.1.12
+_pkgname=cadna_c_half
+source=("http://cadna.lip6.fr/Download_Dir/${_pkgname}-${pkgver}.tar.gz")
 
 prepare() {
-        cd ${pkgname}-${pkgver}
+        cd ${_pkgname}-${pkgver}
 
         ./configure --prefix=/usr --enable-fortran
 }
 
 build() {
-        cd ${pkgname}-${pkgver}
+        cd ${_pkgname}-${pkgver}
         make
 }
 
 check() {
-        cd ${pkgname}-${pkgver}
+        cd ${_pkgname}-${pkgver}
 
         # Temporarily install just for building tests
         _test_install=$(realpath _install)
@@ -63,11 +65,7 @@ check() {
                         _BINS="exampleOPENMP1 exampleOPENMP1_cad"
                         ;;
                   examplesFortran_mpi)
-                        # The example is in Fortran so built with mpif90 but it links
-                        # against the Fortran Cadna library that includes MPI bindings that
-                        # were built with mpic++, hence add the C++ MPI lib manually.
-                        _LIBS="-lmpi_cxx"
-
+                        _LIBS=""
                         _LAUNCH="mpirun -np 4" # num procs required by tests
                         _BINS="exampleMPI1Reduce_cad exampleMPI1Reduce_float_cad
                                exampleMPI1SendRecv exampleMPI1SendRecv_float
@@ -91,8 +89,8 @@ check() {
 }
 
 package() {
-        cd ${pkgname}-${pkgver}
+        cd ${_pkgname}-${pkgver}
         make install DESTDIR="$pkgdir"
 }
 
-sha256sums=('b1efd33a2ef4ef9a1b3dafd5110acd566b1113d5d948b1701d38740131bd76af')
+sha256sums=('a25f6b7563c865ecc40088880d41756a6b21e4e84a1d217aee1e2894d93e2f1c')
