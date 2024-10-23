@@ -1,7 +1,7 @@
 pkgbase = python-uinput
 	pkgdesc = Pythonic API to Linux uinput kernel module
 	pkgver = 1.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/pyinput/python-uinput.git
 	arch = x86_64
 	arch = aarch64
@@ -10,6 +10,7 @@ pkgbase = python-uinput
 	makedepends = python-installer
 	makedepends = python-wheel
 	makedepends = python-setuptools
+	makedepends = git
 	depends = python
 	depends = glibc
 	depends = systemd-libs

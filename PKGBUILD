@@ -4,14 +4,14 @@
 
 pkgname=python-uinput
 pkgver=1.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Pythonic API to Linux uinput kernel module'
 arch=('x86_64' 'aarch64')
 url='https://github.com/pyinput/python-uinput.git'
 license=('GPLv3')
 
 depends=('python' 'glibc' 'systemd-libs')
-makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools')
+makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools' 'git')
 options=('!emptydirs')
 
 source=("git+https://github.com/pyinput/python-uinput.git#tag=$pkgver")
