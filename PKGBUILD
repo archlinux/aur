@@ -1,7 +1,7 @@
 # Maintainer: Felix Pehla <s6fepehl@uni-bonn.de>
 
 pkgname=alpha_tui
-pkgver=1.7.0
+pkgver=1.8.0
 pkgrel=1
 pkgdesc="A TUI for interpreting and debugging programs written in alpha-notation"
 arch=('x86_64')
@@ -18,7 +18,7 @@ checkdepends=(
   'cargo'
 )
 source=($pkgname-$pkgver.tar.gz::https://github.com/LMH01/$pkgname/archive/v$pkgver.tar.gz)
-sha256sums=('2018f29c60251c6c90c03430a5cb3b872814495ba432dfdfbbf4bb7a3bdd6407')
+sha256sums=('5c95865f419266bbd9182ea26d74a592fbdd043a22b93bc02f4124c4f6f0337c')
 
 prepare() {
   cd "$pkgname-$pkgver"
