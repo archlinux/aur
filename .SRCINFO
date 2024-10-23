@@ -1,0 +1,36 @@
+pkgbase = r-discrim
+	pkgdesc = Model Wrappers for Discriminant Analysis
+	pkgver = 1.0.1
+	pkgrel = 5
+	url = https://cran.r-project.org/package=discrim
+	arch = any
+	license = MIT
+	checkdepends = r-testthat
+	depends = r-dials
+	depends = r-rlang
+	depends = r-stats
+	depends = r-tibble
+	depends = r-withr
+	optdepends = r-covr
+	optdepends = r-dplyr
+	optdepends = r-earth
+	optdepends = r-ggplot2
+	optdepends = r-glue
+	optdepends = r-klar
+	optdepends = r-knitr
+	optdepends = r-mass
+	optdepends = r-mda
+	optdepends = r-mlbench
+	optdepends = r-modeldata
+	optdepends = r-naivebayes
+	optdepends = r-rmarkdown
+	optdepends = r-sda
+	optdepends = r-sparsediscrim
+	optdepends = r-spelling
+	optdepends = r-testthat
+	optdepends = r-xml2
+	source = https://cran.r-project.org/src/contrib/discrim_1.0.1.tar.gz
+	md5sums = fe754dce7c856aa74fe16c98a9499e45
+	b2sums = c6d6be50b85f39ea25f165d6b15e66f076a7484c09d3c9035f895d59dee7468cba48654fd4aa42c6db2da2862e9d143f11cc0de9f111863ae3f1e93eeb54468e
+
+pkgname = r-discrim
