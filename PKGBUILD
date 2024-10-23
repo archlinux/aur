@@ -1,13 +1,13 @@
 # Maintainer: Wraient <rushikeshwastaken@gmail.com>
 pkgname='curd'
-pkgver=0.0.1
-pkgrel=6
+pkgver=v0.0.2
+pkgrel=1
 pkgdesc="Watch anime in CLI with AniList Tracking, Discord RPC, Intro/Outro/Filler/Recap Skipping, etc."
 arch=("x86_64")
 url="https://github.com/Wraient/curd"
 license=('GPL')
 depends=('mpv')
-source=("curd::https://github.com/Wraient/curd/releases/download/${pkgver}/curd")
+source=("curd::https://github.com/Wraient/curd/releases/latest/download/curd")
 sha256sums=('SKIP')
 
 pkgver() {
