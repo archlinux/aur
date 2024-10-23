@@ -70,8 +70,4 @@ main() {
     cleanup
 }
 
-case "${1:-}" in
-    build) main ;;
-    clean) cleanup ;;
-    *) echo "Usage: ./updater [build|clean]"; exit 1 ;;
-esac
+main
