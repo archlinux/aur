@@ -1,4 +1,6 @@
-# Maintainer: Fredy García <frealgagu at gmail dot com>
+# Maintainer:  Malek Camilo <malek.camilo@gmail.com>
+# Contributor: Matt Parnell <parwok@gmail.com>
+# Contributor: Fredy García <frealgagu@gmail.com>
 # Contributor: Yan Doroshenko <yandoroshenko@protonmail.com>
 # Contributor: G. Richard Bellamy <rbellamy@pteradigm.com>
 # Contributor: Hugo Osvaldo Barrera <hugo@barrera.io>
@@ -22,7 +24,7 @@ optdepends=(
 )
 install="${pkgname}.install"
 source=(
-  "manual://${pkgname#oracle-}-${pkgver}-no-jre.zip"
+  "https://download.oracle.com/otn_software/java/sqldeveloper/${pkgname#oracle-}-${pkgver}-no-jre.zip"
   "${pkgname}.desktop"
   "${pkgname}.sh"
   "LICENSE"

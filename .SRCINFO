@@ -11,7 +11,7 @@ pkgbase = oracle-sqldeveloper
 	depends = java-environment=17
 	optdepends = ksh
 	optdepends = java17-openjfx: Required to run the application with JDK17
-	source = manual://sqldeveloper-24.3.0.284.2209-no-jre.zip
+	source = https://download.oracle.com/otn_software/java/sqldeveloper/sqldeveloper-24.3.0.284.2209-no-jre.zip
 	source = oracle-sqldeveloper.desktop
 	source = oracle-sqldeveloper.sh
 	source = LICENSE
