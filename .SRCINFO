@@ -1,6 +1,6 @@
 pkgbase = create-tauri-app
 	pkgdesc = Rapidly scaffold out a new tauri app project.
-	pkgver = 4.5.2
+	pkgver = 4.5.3
 	pkgrel = 1
 	url = https://crates.io/crates/create-tauri-app
 	arch = aarch64
@@ -10,7 +10,7 @@ pkgbase = create-tauri-app
 	license = MIT
 	makedepends = cargo
 	depends = tauri-cli
-	source = create-tauri-app-4.5.2.tar.gz::https://crates.io/api/v1/crates/create-tauri-app/4.5.2/download
-	sha512sums = 56806dd83f99a2f51d23338b9b0742ec1caaed053dd93509f40abd8d8de03e7be115c3e77de89982b4e40e62b9fa4fcf1cbd78ce5583ef4846de662b19abc847
+	source = create-tauri-app-4.5.3.tar.gz::https://crates.io/api/v1/crates/create-tauri-app/4.5.3/download
+	sha512sums = 8bd8bc0a0d5364f6d183c7224f148da53da9e12556e01bc555ab5cdb697b98a3fec83521f6d480feeadacba1cc5bb7f27c170dd616aff4360b856f254769b0bd
 
 pkgname = create-tauri-app
