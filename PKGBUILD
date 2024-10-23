@@ -6,7 +6,7 @@ pkgrel=3
 pkgdesc="A graphical open-source sequencer, based on Iannis Xenakis works, for digital art"
 arch=(x86_64)
 url="https://www.iannix.org/"
-license=(GPL)
+license=(GPL-3.0-or-later)
 groups=(pro-audio)
 depends=(
   alsa-lib

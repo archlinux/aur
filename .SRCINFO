@@ -5,7 +5,7 @@ pkgbase = iannix
 	url = https://www.iannix.org/
 	arch = x86_64
 	groups = pro-audio
-	license = GPL
+	license = GPL-3.0-or-later
 	makedepends = qt5-tools
 	depends = alsa-lib
 	depends = qt5-script
@@ -21,4 +21,3 @@ pkgbase = iannix
 	sha512sums = fb4a64ac67ddf79ba7e9caaefebb570fcdfcb8321a77de62a37759f241036ac45c6dbde26907880f19bfef784417eec13b8b8c5bebfdb25c30bd5a2d50d1b00e
 
 pkgname = iannix
-
