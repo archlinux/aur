@@ -1,0 +1,3 @@
+[i3-gnome-pomodoro]
+source = "pypi"
+pypi = "i3_gnome_pomodoro"
