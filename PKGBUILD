@@ -2,9 +2,9 @@
 _pkgname=slimjet
 pkgname="${_pkgname}-beta-bin"
 _appname="flashpeak-${_pkgname}"
-pkgver=44.0.2.0
-_libffmpegver=0.92.0
-pkgrel=2
+pkgver=44.0.5.0
+_libffmpegver=0.93.0
+pkgrel=1
 pkgdesc="Fast, smart and powerful browser based on Blink"
 arch=('x86_64')
 url="https://www.slimjet.com"
@@ -39,8 +39,8 @@ source=(
     "${pkgname%-bin}-${pkgver}_amd64.deb::${_dlurl}/beta/${_pkgname}_amd64.deb"
     "libffmpeg-${_libffmpegver}.zip::${_libffmpegverurl}/releases/download/${_libffmpegver}/${_libffmpegver}-linux-x64.zip"
 )
-sha256sums=('4f77edf99e8defd6a0cd0c085293a600eead1eb578e664af13ec15a3106bd3b6'
-            'd18d26f701991aa1fbf0b4cf496c3e3824efc5dea49888ee63349a7a9c2df7f2')
+sha256sums=('bf4f816dd91e41bd3e834c2b7a7a108c0b8867dc71dfc03562713ff1b81dfbb0'
+            'f0572867da4dfc52ae9f742ea0548a2ab78a09f8fcb69d888244620da8d3e66b')
 build() {
     bsdtar -xf "${srcdir}/data."*
     bsdtar -xf "${srcdir}/control."*
@@ -48,10 +48,10 @@ build() {
     find "${srcdir}" -type f -name ".gitkeep" -exec rm -rf {} \;
 }
 package() {
-    cp -Pr --no-preserve=ownership "${srcdir}/opt" "${pkgdir}"
-    install -Dm755 -d "${pkgdir}/usr/bin"
-    ln -sf "/opt/${_pkgname}/${_appname}" "${pkgdir}/usr/bin/${_appname}"
-    install -Dm644 "${srcdir}/libffmpeg.so" -t "${pkgdir}/opt/${_pkgname}"
+    install -Dm755 -d "${pkgdir}/usr/"{bin,lib/"${pkgname%-bin}"}
+    cp -Pr --no-preserve=ownership "${srcdir}/opt/${_pkgname}/"* "${pkgdir}/usr/lib/${pkgname%-bin}"
+    ln -sf "/usr/lib/${pkgname%-bin}/${_appname}" "${pkgdir}/usr/bin/${_appname}"
+    install -Dm644 "${srcdir}/libffmpeg.so" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
     install -Dm644 "${srcdir}/copyright" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     install -Dm644 "${srcdir}/usr/share/applications/${_pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
     install -Dm644 "${srcdir}/usr/share/gnome-control-center/default-apps/${_pkgname}.xml" -t "${pkgdir}/usr/share/gnome-control-center/default-apps".
