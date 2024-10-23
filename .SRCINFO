@@ -1,0 +1,15 @@
+pkgbase = demonos-core-fonts
+	pkgdesc = The fonts installed in demonos.
+	pkgver = 1.r.
+	pkgrel = 1
+	url = https://github.com/demonkingswarn/dotfiles.git
+	install = demonos-core-fonts.install
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = fontconfig
+	provides = demonos-core-fonts
+	source = git+https://github.com/demonkingswarn/dotfiles.git
+	md5sums = SKIP
+
+pkgname = demonos-core-fonts
