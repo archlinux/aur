@@ -1,0 +1,21 @@
+pkgbase = pinac-workspace-git
+	pkgdesc = OpenSource & Cross-Platform alternative of "Copilot for Windows".Use system-wide electron.
+	pkgver = 2.0.9.r35.gfd8bd96
+	pkgrel = 1
+	url = https://github.com/pinacai/PINAC_Workspace
+	arch = any
+	license = GPL-3.0-only
+	makedepends = gendesk
+	makedepends = npm
+	makedepends = nvm
+	makedepends = curl
+	makedepends = git
+	depends = electron30
+	provides = pinac-workspace=2.0.9
+	conflicts = pinac-workspace
+	source = pinac-workspace.git::git+https://github.com/pinacai/PINAC_Workspace.git
+	source = pinac-workspace.sh
+	sha256sums = SKIP
+	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
+
+pkgname = pinac-workspace-git
