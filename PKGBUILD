@@ -2,19 +2,19 @@
 
 pkgname=ayugram-desktop
 pkgver=5.6.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Desktop Telegram client with good customization and Ghost mode."
 arch=("x86_64")
 url="https://github.com/AyuGram/AyuGramDesktop"
 license=("GPL-3.0-only")
 depends=(
     "hunspell" "ffmpeg" "hicolor-icon-theme" "lz4" "minizip" "openal"
-    "qt6-base" "qt6-declarative" "qt6-svg" "qt6-wayland" "xxhash" "ada"
-    "rnnoise" "libpipewire" "libxtst" "libxrandr"
-    "openssl" "protobuf" "glib2" "kcoreaddons" "openh264"
-    "xcb-util-keysyms" "libjpeg" "libvpx" "opus" "zlib" "glibc" "gcc-libs" "libxcb" "libxext" "libxfixes" "libx11"
-    "libxcomposite" "jemalloc" "libxdamage" "abseil-cpp" "libdispatch"
+    "qt6-imageformats" "qt6-svg" "qt6-wayland" "xxhash" "ada"
+    "rnnoise" "pipewire" "libxtst" "libxrandr" "libxcomposite" "libxdamage" "abseil-cpp" "libdispatch"
+    "openssl" "protobuf" "glib2" "libsigc++-3.0" "kcoreaddons" "openh264"
     # libtgvoip nimf rlottie in aur
+    # Ayugram reverted that change https://github.com/telegramdesktop/tdesktop/commit/960761ef37fb7db57c40df6211164ae002f1063a
+    "jemalloc"
 )
 makedepends=(
     "cmake" "python" "range-v3" "tl-expected" "microsoft-gsl" "meson"
