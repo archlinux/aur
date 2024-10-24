@@ -2,14 +2,14 @@
 
 pkgname=perl-alien-proj
 _dist=Alien-proj
-pkgver=1.28
+pkgver=1.29
 pkgrel=1
 pkgdesc='Compile the Proj library'
 license=('GPL-1.0-or-later OR Artistic-1.0-Perl')
 
 url="https://metacpan.org/release/$_dist"
 source=("$pkgname-$pkgver.tar.gz::https://cpan.metacpan.org/authors/id/S/SL/SLAFFAN/$_dist-$pkgver.tar.gz")
-sha256sums=('422bf9028493cce969d2c60d2650f4a3b5381686381180ec21ee08b4ff438b03')
+sha256sums=('ffa35acf28fdf35d9ea493767dc8cc51740a3ad8f3b78812bffe2bdbff4be54a')
 
 arch=(any)
 depends=(
