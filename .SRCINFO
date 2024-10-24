@@ -1,0 +1,17 @@
+pkgbase = python-stringzilla
+	pkgdesc = SIMD-accelerated string search, sort, hashes, fingerprints, & edit distances
+	pkgver = 3.10.5
+	pkgrel = 1
+	url = https://github.com/ashvardanian/StringZilla
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = glibc
+	depends = python
+	source = StringZilla-3.10.5.tar.gz::https://github.com/ashvardanian/StringZilla/archive/refs/tags/v3.10.5.tar.gz
+	sha512sums = a97ed147be78164b01e61ff4aeae8efb8eba23204edf48ed7701786cbc85b8c6d09f1802aa3cf0f65ca140bdccb4e8c3518a56b2b910466fc8d040f2b0293716
+
+pkgname = python-stringzilla
