@@ -7,11 +7,11 @@
 
 pkgname=caddy-git
 _pkgname=caddy
-pkgver=20240727.976469ca0
-pkgrel=1
+pkgver=20241015.c6f297998
+pkgrel=2
 pkgdesc='HTTP/2 Web Server with Automatic HTTPS'
 url='https://caddyserver.com/'
-license=('Apache')
+license=('Apache-2.0')
 arch=('x86_64')
 makedepends=('git' 'go')
 source=('git+https://github.com/caddyserver/caddy.git'
@@ -33,6 +33,10 @@ pkgver() {
 
 build() {
 	cd "${srcdir}/caddy/cmd/caddy"
+
+	git revert --no-commit a211c656f12bcab73df0de114f2b6100ee5a0fe4 # panic: close of closed channel
+	git revert --no-commit c6f2979986d87d7236b132c687c8887c92248dd8 # depends on the above
+
 	export CGO_CPPFLAGS="${CPPFLAGS}"
 	export CGO_CFLAGS="${CFLAGS}"
 	export CGO_CXXFLAGS="${CXXFLAGS}"

@@ -1,10 +1,10 @@
 pkgbase = caddy-git
 	pkgdesc = HTTP/2 Web Server with Automatic HTTPS
-	pkgver = 20240727.976469ca0
-	pkgrel = 1
+	pkgver = 20241015.c6f297998
+	pkgrel = 2
 	url = https://caddyserver.com/
 	arch = x86_64
-	license = Apache
+	license = Apache-2.0
 	makedepends = git
 	makedepends = go
 	provides = caddy
