@@ -1,5 +1,5 @@
 pkgname=hyprswitch
-pkgver=2.1.3
+pkgver=2.1.4
 pkgrel=1
 pkgdesc="A CLI/GUI that allows switching between windows in Hyprland"
 arch=('any')
@@ -25,4 +25,4 @@ build() {
 package() {
     install -Dm0755 -t "$pkgdir/usr/bin/" "$pkgname-$pkgver/target/release/$pkgname"
 }
-sha256sums=('8a4cca422411aabce08546f66c4ed04de39339a1e69efeb91785ddc6edf3e2e0')
+sha256sums=('d8d45914a51284f8c18bb07eeb8aab38876fd4eb3f0827cbd117886e360b5273')
