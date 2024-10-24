@@ -1,10 +1,17 @@
 pkgbase = python-cle-git
 	pkgdesc = A binary loader in Python
-	pkgver = 9.2.123.r1636.ef680fa
+	pkgver = 9.2.124.r1638.fe38470
 	pkgrel = 1
 	url = https://github.com/angr/cle
 	arch = any
 	license = BSD-2-Clause
+	checkdepends = python-pytest
+	checkdepends = python-minidump
+	checkdepends = python-pyxbe
+	checkdepends = python-arpy
+	checkdepends = python-claripy
+	checkdepends = python-pyaxmlparser
+	checkdepends = python-cart
 	makedepends = git
 	makedepends = python-build
 	makedepends = python-installer
@@ -13,13 +20,14 @@ pkgbase = python-cle-git
 	makedepends = python-sphinx-autodoc-typehints
 	makedepends = python-wheel
 	depends = python-archinfo-git
-	depends = python-claripy-git
 	depends = python-pefile
 	depends = python-pyelftools
 	depends = python-pyvex-git
 	depends = python-sortedcontainers
 	depends = python>=3.10
 	optdepends = python-arpy: ar file format
+	optdepends = python-cart: CaRT file format
+	optdepends = python-claripy-git: Symbolic constraints
 	optdepends = python-minidump: Microsoft Minidump
 	optdepends = python-pyaxmlparser: Android APK
 	optdepends = python-pypcode: Disassembly and IR translation using Ghidra SLEIGH
@@ -30,6 +38,8 @@ pkgbase = python-cle-git
 	provides = python-cle-git
 	conflicts = python-cle
 	source = python-cle-git::git+https://github.com/angr/cle.git#branch=master
+	source = angr-binaries.git::git+https://github.com/angr/binaries.git#branch=master
+	b2sums = SKIP
 	b2sums = SKIP
 
 pkgname = python-cle-git

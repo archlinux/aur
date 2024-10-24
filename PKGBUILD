@@ -5,12 +5,11 @@ _srcname=python-cle
 pkgname=$_srcname-git
 pkgdesc="A binary loader in Python"
 url="https://github.com/angr/cle"
-pkgver=9.2.123.r1636.ef680fa
+pkgver=9.2.124.r1638.fe38470
 pkgrel=1
 arch=('any')
 depends=(
-    "python-archinfo-git"
-    "python-claripy-git"
+    'python-archinfo-git'
     'python-pefile'
     'python-pyelftools'
     'python-pyvex-git'
@@ -26,8 +25,19 @@ makedepends=(
     'python-sphinx-autodoc-typehints'
     'python-wheel'
 )
+checkdepends=(
+    'python-pytest'
+    'python-minidump'
+    'python-pyxbe'
+    'python-arpy'
+    'python-claripy'
+    'python-pyaxmlparser'
+    'python-cart'
+)
 optdepends=(
     'python-arpy: ar file format'
+    'python-cart:  CaRT file format'
+    'python-claripy-git: Symbolic constraints'
     'python-minidump: Microsoft Minidump'
     'python-pyaxmlparser: Android APK'
     'python-pypcode: Disassembly and IR translation using Ghidra SLEIGH'
@@ -40,7 +50,6 @@ optdepends=(
 
     #  There are no packages for
     # 'python-pyxdia: Microsoft Program database (PDB)'
-    # 'python-cart:  CaRT file format'
 )
 # angr projects all have the same version and mutually support only that
 # version. So we provide both, the -git package, for other angr related -git
@@ -48,8 +57,15 @@ optdepends=(
 provides=($_srcname $pkgname)
 conflicts=($_srcname)
 license=('BSD-2-Clause')
-source=("$pkgname::git+https://github.com/angr/cle.git#branch=master")
-b2sums=('SKIP')
+source=(
+    "$pkgname::git+https://github.com/angr/cle.git#branch=master"
+    "angr-binaries.git::git+https://github.com/angr/binaries.git#branch=master"
+)
+b2sums=('SKIP' 'SKIP')
+
+prepare() {
+    ln -s angr-binaries.git binaries
+}
 
 pkgver() {
     cd $srcdir/$pkgname
@@ -65,6 +81,11 @@ build() {
     cd $srcdir/$pkgname
     python -m build --wheel --no-isolation
     make man -C docs
+}
+
+check() {
+    cd $srcdir/$pkgname
+    PYTHONPATH=build/lib pytest
 }
 
 package() {
