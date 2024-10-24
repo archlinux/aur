@@ -1,8 +1,8 @@
 # Maintainer:  Greg Minshall <minshall at umich dot edu>
 pkgname=regexy
 pkgver=0.4.4
-pkgrel=1
-pkgdesc="produce a JSON representation of pacman \"-S\" and/or \"-Q\" databases"
+pkgrel=2
+pkgdesc="curses program to play with regular expressions"
 arch=(any)
 url="https://sr.ht/~minshall/regexy/"
 license=('MIT')

@@ -1,7 +1,7 @@
 pkgbase = regexy
-	pkgdesc = produce a JSON representation of pacman "-S" and/or "-Q" databases
+	pkgdesc = curses program to play with regular expressions
 	pkgver = 0.4.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://sr.ht/~minshall/regexy/
 	arch = any
 	license = MIT
