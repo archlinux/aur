@@ -1,0 +1,13 @@
+pkgbase = phomo-git
+	pkgdesc = CLI utility to make photo mosaics
+	pkgver = r111.69664eb
+	pkgrel = 1
+	url = https://github.com/loiccoyle/phomo-rs
+	arch = any
+	license = MIT
+	makedepends = rust
+	depends = git
+	source = phomo::git+https://github.com/loiccoyle/phomo-rs.git
+	sha256sums = SKIP
+
+pkgname = phomo-git
