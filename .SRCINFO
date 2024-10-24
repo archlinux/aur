@@ -1,7 +1,7 @@
 pkgbase = mullvad-vpn
 	pkgdesc = The Mullvad VPN client app for desktop
-	pkgver = 2024.5
-	pkgrel = 2
+	pkgver = 2024.6
+	pkgrel = 1
 	url = https://www.mullvad.net
 	install = mullvad-vpn.install
 	arch = x86_64
@@ -18,20 +18,20 @@ pkgbase = mullvad-vpn
 	depends = libnftnl
 	depends = libnotify
 	depends = nss
-	source = git+https://github.com/mullvad/mullvadvpn-app.git#tag=2024.5?signed
-	source = git+https://github.com/mullvad/mullvadvpn-app-binaries.git#commit=b0c37cecd9b671d2480a7dc9636da93d76e2b14c?signed
-	source = git+https://github.com/mullvad/wireguard-go.git#commit=de174ac6de2934dc82d9b8301c17de87cbd575f3?signed
-	source = git+https://github.com/mullvad/maybenot.git#commit=#commit=b06094e81701782d28cd2312f58e0654109d04ce
+	source = git+https://github.com/mullvad/mullvadvpn-app.git#tag=2024.6?signed
+	source = git+https://github.com/mullvad/mullvadvpn-app-binaries.git#commit=049d5d3bc0c86c29c20f2073460186a83c1d7094?signed
+	source = git+https://github.com/mullvad/wireguard-go.git#commit=b1cf09a982bba6f6c63fadc956d88e8c2326d05e?signed
+	source = git+https://github.com/mullvad/maybenot.git
 	source = no-rpm.diff
 	source = no-publish.diff
 	source = mullvad-vpn.sh
 	validpgpkeys = 225E40C8F1C8DEB7977ABF59F293063FECE2E8ED
 	validpgpkeys = 8339C7D2942EB854E3F27CE5AEE9DECFD582E984
 	validpgpkeys = 1D0026CBD1F1858DF8DB54DFCB87E2B919A6454C
-	sha256sums = ff4e411afde87d3f156de5085a2b17dff04fa109a015db2347a7632f3f652d1a
-	sha256sums = 3e4b6d2f867809a02b286a5614f17a42d037a41a6c6247dbf51051a305242291
-	sha256sums = 754e618ff2dbe9dfcb36f5492bcef9ffd180a45b5fde12969e433e42eb72b37a
-	sha256sums = 905d2c0b697cb594babdf4e84066f3bdf666ab5d889642b002a1390f52fc7cf8
+	sha256sums = 7ad95452f0dce762cd6f4ca75867c174104adfcb3150b9dd2d3515f008322377
+	sha256sums = 2f7ff0d5c2c5bab63b9babc6c91d921ef9965413b0b92996be8c9fd5a9c0d862
+	sha256sums = a65a9a650066e653f50871c17758ddc8a4ecfa6fbb9684035855d6f0d8a655a4
+	sha256sums = SKIP
 	sha256sums = ea35edffea2cbbb05586abce19581fdd9f133801ed47e6af30fa64a29c5cf116
 	sha256sums = 968967efff8e9588f15c382825b609cf89d54c47e0632e92e9ef2354aa46f31b
 	sha256sums = 2262346cb57deb187fe32a88ccd873dab669598889269088e749197c6e88954f
