@@ -1,6 +1,6 @@
 pkgbase = hardinfo2
 	pkgdesc = System Information and Benchmark for Linux Systems.
-	pkgver = 2.1.17
+	pkgver = 2.2.1
 	pkgrel = 1
 	url = https://www.hardinfo2.org
 	install = hardinfo2.install
@@ -26,7 +26,7 @@ pkgbase = hardinfo2
 	optdepends = xorg-xrandr: read monitor setup
 	provides = hardinfo
 	conflicts = hardinfo
-	source = hardinfo2-2.1.17.tar.gz::https://github.com/hardinfo2/hardinfo2/archive/refs/tags/release-2.1.17.tar.gz
-	sha256sums = 48275986d1cbfeb363a2ed5cad9b280d5e0a40636a10480b8aca3e86a8272687
+	source = hardinfo2-2.2.1.tar.gz::https://github.com/hardinfo2/hardinfo2/archive/refs/tags/release-2.2.1.tar.gz
+	sha256sums = 9ef59817fd24dc81057edeb34cda26c86ca19feb54f87bf1b97d846e585b8abf
 
 pkgname = hardinfo2
