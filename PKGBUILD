@@ -1,7 +1,7 @@
 # Maintainer: Lev Levitsky <levlev at mail.ru>
 pkgname=comet-ms-bin
 pkgver=2024.02.0
-pkgrel=4
+pkgrel=1
 pkgdesc="Comet: an open source tandem mass spectrometry (MS/MS) sequence database search tool"
 arch=('x86_64')
 url="https://github.com/UWPR/Comet"
