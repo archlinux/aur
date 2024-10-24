@@ -1,8 +1,8 @@
-# Maintainer: Bruce Zhang <zttt183525594@gmail.com>
+# Maintainer: Quintin Scherrer <quintinscherrer@gmail.com>
 pkgname=python-quamash
 _pkgname=Quamash
 pkgver=0.6.1
-pkgrel=7
+pkgrel=8
 pkgdesc="Implementation of the asyncio (PEP 3156) event-loop with Qt"
 arch=('any')
 url="https://github.com/harvimt/quamash"
@@ -11,7 +11,6 @@ depends=('python')
 makedepends=('python-setuptools' 'icu' 'python-pyqt5' 'qt5-base')
 optdepends=(
   'python-pyqt5: PyQt5 implementation' 
-  'python-pyside: PySide implementation'
 )
 source=(
   "https://files.pythonhosted.org/packages/01/1e/cf6f3c38cee61ed04fea58667f673adc67d6412eba0b3327dbb5732c1177/$_pkgname-$pkgver.tar.gz" 
