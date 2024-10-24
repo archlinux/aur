@@ -1,18 +1,26 @@
-# Maintainer: LordMZTE <lord@mzte.de>
+# -*- sh -*-
+
+#  Maintainer: Klaus Alexander Seiﬆrup <$(echo 0x1fd+d59decfa=40 | tr 0-9+a-f=x ka-i@p-u.l)>
+# Contributor: LordMZTE <lord@mzte.de>
+
 pkgname=skim-fzf-dropin
 pkgver=1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A dropin fzf replacement using skim"
+url='https://aur.archlinux.org/packages/skim-fzf-dropin'
 arch=('any')
-license=('GPL')
-depends=('skim')
+license=('GPL-3.0-or-later')  # SPDX-License-Identifier: GPL-3.0-or-later
+depends=('sh' 'skim')
 provides=('fzf')
 conflicts=('fzf')
-source=("fzf" "fzf-tmux")
-sha256sums=('17067d15d3a96543bcba2269e708414c5573c388de9721ecf07d0c2b35a8d3be'
-            '4997c6a699425d891063dd6761eea91429fe42a132a6a677e67861593e2945a3')
+source=('fzf' 'fzf-tmux')
+sha256sums=(
+  '658b1a6d03ab747dc0ff46259e919c44209fbc2fe110aa0b0fb398075ef412c6'
+  '8668e55bc2cf0874c872b71349a6c086a4eb77c303e264ae8e12bb374ab44fb6'
+)
 
 package() {
-    install -Dm755 fzf "${pkgdir}/usr/bin/fzf"
-    install -Dm755 fzf-tmux "${pkgdir}/usr/bin/fzf-tmux"
+  install -vDm0755 -t "$pkgdir/usr/bin" fzf{,-tmux}
 }
+
+# eof

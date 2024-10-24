@@ -1,2 +1,2 @@
-#!/usr/bin/sh
-/usr/bin/sk "$@"
+#!/bin/sh
+exec /usr/bin/sk "$@"
