@@ -4,7 +4,7 @@
 # Contributor: DrZaius <lou at fakeoutdoorsman.com>
 
 pkgname=ffmpeg-git
-pkgver=7.2.r117413.g73b3344edd
+pkgver=7.2.r117638.g153a6dc8fa
 pkgrel=1
 pkgdesc='Complete solution to record, convert and stream audio and video (git version)'
 arch=('x86_64')
@@ -108,17 +108,14 @@ provides=('libavcodec.so' 'libavdevice.so' 'libavfilter.so' 'libavformat.so'
 conflicts=('ffmpeg')
 source=('git+https://git.ffmpeg.org/ffmpeg.git'
         '040-ffmpeg-add-av_stream_get_first_dts-for-chromium.patch'
-        '050-ffmpeg-fix-segfault-with-avisynthplus.patch'
-        '060-ffmpeg-fix-nvidia-vulkan-decoding-segfault.patch')
+        '050-ffmpeg-fix-segfault-with-avisynthplus.patch')
 sha256sums=('SKIP'
             '4ce15cce0b78a6b6f0124a7474ca00a31205310f7230f4603b47b597ab2e640d'
-            '26419f819d1f3e4d0534995b73d05a8195bc7c892b74c37c3880085af027515b'
-            'd2b8da8f468cb24cdd47e4a779d84622b5f564f47c6e3ecf79625dcbdaf8b383')
+            '26419f819d1f3e4d0534995b73d05a8195bc7c892b74c37c3880085af027515b')
 
 prepare() {
     patch -d ffmpeg -Np1 -i "${srcdir}/040-ffmpeg-add-av_stream_get_first_dts-for-chromium.patch"
     patch -d ffmpeg -Np1 -i "${srcdir}/050-ffmpeg-fix-segfault-with-avisynthplus.patch"
-    patch -d ffmpeg -Np1 -i "${srcdir}/060-ffmpeg-fix-nvidia-vulkan-decoding-segfault.patch"
 }
 
 pkgver() {
