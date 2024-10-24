@@ -6,21 +6,21 @@
 set -u
 _pkgname='progress'
 pkgname="${_pkgname}-git"
-pkgver=0.14.r0.gee9d5c0
+pkgver=0.17.r0.g208422a
 pkgrel=1
 _srcdir="${_pkgname}"
 pkgdesc='Shows running coreutils basic commands and displays stats'
 arch=('i686' 'x86_64')
 url="https://github.com/Xfennec/${_pkgname}"
-license=('GPL3')
-depends=('ncurses')
+license=('GPL-3.0-or-later')
+depends=('glibc' 'ncurses')
 makedepends=('gcc' 'make')
 makedepends+=('git')
 provides=("${_pkgname}=${pkgver%%.r*}" 'cv')
 conflicts=("${_pkgname}" 'cv')
 replaces=('cv')
 _verwatch=("${url}/releases" "${url#*github.com}/archive/v\(.*\)\.tar\.gz" 'l')
-source=("${_srcdir}::${url//https:/git:}")
+source=("${_srcdir}::git+${url}")
 sha256sums=('SKIP')
 
 pkgver() {
