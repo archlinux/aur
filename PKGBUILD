@@ -3,7 +3,7 @@
 pkgname=quartodoc
 pkgver=0.8.1
 pkgrel=1
-pkgdesc="generate Python package API reference documentation using Markdown and Quarto"
+pkgdesc="Generate Python package API reference documentation using Markdown and Quarto"
 arch=('any')
 url='https://machow.github.io/quartodoc'
 license=('MIT')
