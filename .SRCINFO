@@ -1,0 +1,18 @@
+pkgbase = grv-bin
+	pkgdesc = terminal interface for viewing git repositories
+	pkgver = 0.3.2
+	pkgrel = 1
+	url = https://github.com/rgburke/grv
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	provides = grv
+	conflicts = grv
+	source = LICENSE-0.3.2::https://raw.githubusercontent.com/rgburke/grv/v0.3.2/LICENSE
+	source = README-0.3.2.md::https://raw.githubusercontent.com/rgburke/grv/v0.3.2/README.md
+	sha256sums = 8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903
+	sha256sums = 89e95df5c222ae69d862284a7866bc45e3af5544ee6a7e7f2c5c73a98319bb7f
+	source_x86_64 = grv-0.3.2::https://github.com/rgburke/grv/releases/download/v0.3.2/grv_v0.3.2_linux64
+	sha256sums_x86_64 = 3ebdd7254179caef14fc4be5e0d08da9d18b3102216fb92102b930d912a457e6
+
+pkgname = grv-bin
