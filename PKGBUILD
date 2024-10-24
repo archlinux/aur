@@ -18,7 +18,7 @@ install=cs-firewall-bouncer.install
 source=(
     "$pkgbase-$pkgver.tar.gz::https://github.com/crowdsecurity/cs-firewall-bouncer/archive/v${pkgver}/${pkgbase}-linux-amd64.tar.gz"
 )
-sha256sums=('e4f6ed09fd9ce74117c2bc3db950326304cc741e1f6f532583d35b73a42dbad9')
+sha256sums=('c34963f0680ae296ae974d8f6444a2d1e2dd7617e7b05d4ad85c320529eec5f5')
 
 prepare() {
     cd "$pkgbase-v$pkgver"
