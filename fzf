@@ -1,2 +1,4 @@
 #!/bin/sh
-exec /usr/bin/sk "$@"
+_me="${0##*/}"
+exec "/usr/bin/sk${_me#fzf}" "$@"
+# eof

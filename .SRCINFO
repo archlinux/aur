@@ -1,7 +1,7 @@
 pkgbase = skim-fzf-dropin
 	pkgdesc = A dropin fzf replacement using skim
-	pkgver = 1.2
-	pkgrel = 2
+	pkgver = 1.3
+	pkgrel = 1
 	url = https://aur.archlinux.org/packages/skim-fzf-dropin
 	arch = any
 	license = GPL-3.0-or-later
@@ -10,8 +10,6 @@ pkgbase = skim-fzf-dropin
 	provides = fzf
 	conflicts = fzf
 	source = fzf
-	source = fzf-tmux
-	sha256sums = 658b1a6d03ab747dc0ff46259e919c44209fbc2fe110aa0b0fb398075ef412c6
-	sha256sums = 8668e55bc2cf0874c872b71349a6c086a4eb77c303e264ae8e12bb374ab44fb6
+	sha256sums = 74960b3bde46a2c59c201e67010e61dac1fabf062de9ea1cf0e85b45ab11672a
 
 pkgname = skim-fzf-dropin
