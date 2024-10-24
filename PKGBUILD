@@ -4,7 +4,7 @@
 pkgname="odoo-nightly"
 _pkgname="odoo"
 pkgver=17.0
-pkgrel=15
+pkgrel=16
 pkgdesc="Odoo. Open Source Apps To Grow Your Business."
 url="https://odoo.com/"
 arch=("any")
@@ -12,7 +12,7 @@ license=("LGPL-3.0-only")
 conflicts=("openerp" "odoo" "odoo-17")
 replaces=("openerp" "odoo" "odoo-17")
 depends=("postgresql"
-         "wkhtmltopdf"
+         "wkhtmltopdf-static"
          "python310")
 source=("https://nightly.odoo.com/$pkgver/nightly/src/${_pkgname}_$pkgver.latest.tar.gz"
         "odoo.conf"
