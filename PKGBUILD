@@ -2,13 +2,13 @@
 # Co-Maintainer: soloturn <soloturn@gmail.com>
 pkgname=cosmic-edit-git
 pkgver=1.0.0.alpha.2.r23.g5b0d05d
-pkgrel=1
+pkgrel=2
 pkgdesc="Text editor for the COSMIC desktop"
 arch=('x86_64')
 url="https://github.com/pop-os/cosmic-edit"
 license=('GPL-3.0-or-later')
 depends=(
-#  'cosmic-icons-git'
+  'cosmic-icons-git'
   'libxkbcommon'
   'wayland'
 )
