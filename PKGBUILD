@@ -1,6 +1,6 @@
 # Maintainer: XDR <xxdr@duck.com>
 pkgname="xfetch-bin"
-pkgver=3.0.1
+pkgver=3.0.2
 pkgrel=1
 pkgdesc="Lightweight Linux fetch written in Rust."
 arch=('x86_64')
@@ -12,7 +12,7 @@ source=(
 	"https://codeberg.org/XDR/xFetch/raw/branch/master/LICENSE"
 )
 sha256sums=(
-	'699377dac68dc3c1c43a22e7261c00a2e10f0b0e8a01d4c768ba24ba2aadeacb'
+	'541662961354c4d0bde69f045a7c44d1adad43bbe05dde7b9686189ed793f8ac'
 	'SKIP'
 )
 
