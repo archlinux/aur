@@ -18,7 +18,7 @@ source=("${pkgbase}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz
 sha256sums=('68bdde069acd3a525dbbf77303ebd34ac271b199a3d555cda6968179fd519d7b'
             '1b47cd9ba854ec53df8de892c906cf74a687f237ca141b200aada620316200ee'
             'e0a382959b7ab55c45743506113aab6d94427d68dacdfd971cc8ba2b484d954c'
-            '4e14407219fda092d705fe5d2c370441049089335ea308842786aa666a9a1094'
+            '1fbb6961942c7c1f9e8876613d10356608e84e00914ac9acf7b134a4366b350b'
             'f052954e81b58a02e429eef3e19a54b53a900c2ad2a3e251ecaa9b783367f2f5'
             'f4cebdaa1dc7e571b53fbbc48651af3d657cb7dd5c0e39e353a2646a9ccf1cb0')
 options=("!strip")
