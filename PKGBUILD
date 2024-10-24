@@ -2,7 +2,7 @@
 pkgname=wikilynx
 pkgver=1.2.7
 pkgrel=0
-#epoch=
+epoch=1
 pkgdesc="A simple Qt C++ app to play Wikipedia Speedruns the right way"
 arch=('any')
 url="https://github.com/flamboyantpenguin/wikiLYNX"
