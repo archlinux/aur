@@ -5,9 +5,10 @@ pkgrel=1
 pkgdesc="A tool to create bootable USB drives for Unraid"
 url="https://unraid.net"
 arch=('x86_64')
-license=('custom:unraid-usb-creator')
+license=('custom')
 depends=(glibc  curl  hicolor-icon-theme  libarchive  openssl  qt5-base qt5-declarative  qt5-quickcontrols2  qt5-svg  zlib)
 optional=(udisks2)
+provides=(unraid-usb-creator)
 source=(
     "https://releases.unraid.net/dl/stable/usb-creator.deb"
 )
@@ -21,5 +22,7 @@ prepare() {
 }
 package (){
     echo "Packing Unraid USB Creator..."
-    cp -r "${srcdir}/usr" "${pkgdir}/"  
+    cp -r "${srcdir}/usr" "${pkgdir}/"
+    mkdir -p "$pkgdir/usr/share/licenses/$pkgname"
+    install -Dm644 ${srcdir}/usr/share/doc/unraid-usb-creator/copyright "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
