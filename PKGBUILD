@@ -2,9 +2,9 @@ _pkgname=follow
 _Pkgname=Follow
 _disname=Follow
 major_version=0
-minor_version=0
-patch_version=1
-phase='alpha.21'
+minor_version=1
+patch_version=0
+phase='beta.0'
 
 pkgname="${_pkgname}"-appimage
 pkgver="${major_version}.${minor_version}.${patch_version}_${phase}"
@@ -17,10 +17,10 @@ options=('!strip' '!debug')
 depends=('zlib' 'hicolor-icon-theme' 'fuse2')
 provides=('follow')
 
-source_x86_64=("${_Pkgname}-${major_version}.${minor_version}.${patch_version}${phase}-linux-amd64.AppImage::https://github.com/RSSNext/follow/releases/download/v${major_version}.${minor_version}.${patch_version}-${phase}/${_Pkgname}-${major_version}.${minor_version}.${patch_version}-${phase}-linux-x64.AppImage")
-sha256sums_x86_64=('fc3cde60f072714544922802d9eb4325f14c1849847c1f31e9801bbcf4ef1920')
+source_x86_64=("${_Pkgname}-${major_version}.${minor_version}.${patch_version}_${phase}-linux-amd64.AppImage::https://github.com/RSSNext/follow/releases/download/v${major_version}.${minor_version}.${patch_version}-${phase}/${_Pkgname}-${major_version}.${minor_version}.${patch_version}-${phase}-linux-x64.AppImage")
+sha256sums_x86_64=('cf21ad17bed23b6d71200f9494498e7e11d85d88f6b7f176dbd7994e34e90466')
 
-_appimage="${_Pkgname}-${major_version}.${minor_version}.${patch_version}${phase}-linux-amd64.AppImage"
+_appimage="${_Pkgname}-${major_version}.${minor_version}.${patch_version}_${phase}-linux-amd64.AppImage"
 noextract=("${_appimage}")
 
 prepare() {
