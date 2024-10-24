@@ -2,9 +2,9 @@
 pkgname=bilibili
 pkgver=1.14.2_1
 _electronversion=21
-_nodeversion=16
-pkgrel=1
-pkgdesc="基于哔哩哔哩官方客户端移植的Linux版本 支持漫游"
+_nodeversion=18
+pkgrel=2
+pkgdesc="Linux version based on Beilai official client porting supports roaming.Use system-wide electron.基于哔哩哔哩官方客户端移植的Linux版本,支持漫游"
 arch=(
     'aarch64'
     'x86_64'
@@ -28,13 +28,13 @@ makedepends=(
     'curl'
     'npm'
     'nvm'
-    'git'
+    'pnpm'
 )
 source=(
-    "${pkgname}.git::git+${url}.git#tag=v${pkgver//_/-}"
+    "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver//_/-}.tar.gz"
     "${pkgname}.sh"
 )
-sha256sums=('ca9b118b6283e8da1fd1780005e0505e34a8b6fc27cc15361329cf610d59589d'
+sha256sums=('4e3255523b296c5c1478521c4bb45872bc2fe5dd7bfbfe3b038cebd99fb55179'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
@@ -51,34 +51,51 @@ build() {
         s/@options@//g
     " -i "${srcdir}/${pkgname}.sh"
     _ensure_local_nvm
-    cd "${srcdir}/${pkgname}.git"
+    cd "${srcdir}/${pkgname}-linux-${pkgver//_/-}"
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
     HOME="${srcdir}/.electron-gyp"
     {
-        echo -e '\n'	
+        echo -e '\n'
         #echo 'build_from_source=true'
-        echo "cache=${srcdir}/.npm_cache"
-        if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
-            echo 'registry=https://registry.npmmirror.com'
-            echo 'disturl=https://registry.npmmirror.com/-/binary/node/'
-            echo 'electron_mirror=https://registry.npmmirror.com/-/binary/electron/'
-            echo 'electron_builder_binaries_mirror=https://registry.npmmirror.com/-/binary/electron-builder-binaries/'
-        fi
+        echo 'hoist=true'
+        echo 'link-workspace-packages=true'
+        echo 'fetch-retry-maxtimeout=10000'
+        echo "cache-dir="${srcdir}"/.pnpm_cache"
+        echo "store-dir="${srcdir}"/.pnpm_store"
+        echo "shamefully-hoist=true"
+        echo "shell-emulator=true"
+        echo "virtual-store-dir-max-length=80"
+        echo "auto-install-peers=false"
+        echo "strict-peer-dependencies=false"
+        echo "color=auto"
+        echo "engine-strict=false"
     } >> .npmrc
-    sed -i "/npm install/i\cp ${srcdir}\/${pkgname}.git/.npmrc .\/" tools/fix-other.sh
-    NODE_ENV=development npm install
-    sh "tools/setup-${pkgname}"
+    if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
+        {
+        echo 'registry=https://registry.npmmirror.com'
+        echo 'disturl=https://registry.npmmirror.com/-/binary/node/'
+        echo 'node-mirror=https://registry.npmmirror.com/-/binary/node/'
+        echo 'electron_mirror=https://cdn.npmmirror.com/binaries/electron/'
+        echo 'electron_builder_binaries_mirror=https://npmmirror.com/mirrors/electron-builder-binaries/'
+        } >> .npmrc
+    fi
+    sed -i "s/\"electronVersion\": \"[^\"]*\"/\"electronVersion\": \"${SYSTEM_ELECTRON_VERSION}\"/g" conf/build.json
+    NODE_ENV=development    pnpm install
+    sh tools/update-bilibili
+    sh tools/fix-other.sh
+    sh tools/area-unlimit.sh
+    mv tmp/bili/resources/* app
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
-    install -Dm644 "${srcdir}/${pkgname}.git/app/app.asar" -t "${pkgdir}/usr/lib/${pkgname}"
-    cp -r "${srcdir}/${pkgname}.git/app/extensions" "${pkgdir}/usr/lib/${pkgname}"
-    install -Dm644 "${srcdir}/${pkgname}.git/res/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
+    install -Dm644 "${srcdir}/${pkgname}-linux-${pkgver//_/-}/app/app.asar" -t "${pkgdir}/usr/lib/${pkgname}"
+    cp -Pr --no-preserve=ownership "${srcdir}/${pkgname}-linux-${pkgver//_/-}/app/extensions" "${pkgdir}/usr/lib/${pkgname}"
+    install -Dm644 "${srcdir}/${pkgname}-linux-${pkgver//_/-}/res/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
     _icon_sizes=(16x16 24x24 32x32 48x48 64x64 96x96 128x128 256x256 512x512 1024x1024)
     for _icons in "${_icon_sizes[@]}";do
-        install -Dm644 "${srcdir}/${pkgname}.git/res/icons/${_icons}.png" \
+        install -Dm644 "${srcdir}/${pkgname}-linux-${pkgver//_/-}/res/icons/${_icons}.png" \
             "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname}.png"
     done
-    install -Dm644  "${srcdir}/${pkgname}.git/license" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -Dm644  "${srcdir}/${pkgname}-linux-${pkgver//_/-}/license" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
