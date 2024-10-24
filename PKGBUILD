@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=cosmic-icons-git
-pkgver=1.0.0.alpha.1.r0.gf93dcdf
+pkgver=1.0.0.alpha.2.r2.g3fdc217
 pkgrel=1
 pkgdesc="System76 Cosmic icon theme"
 arch=('any')

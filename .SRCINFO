@@ -1,6 +1,6 @@
 pkgbase = cosmic-icons-git
 	pkgdesc = System76 Cosmic icon theme
-	pkgver = 1.0.0.alpha.1.r0.gf93dcdf
+	pkgver = 1.0.0.alpha.2.r2.g3fdc217
 	pkgrel = 1
 	url = https://github.com/pop-os/cosmic-icons
 	arch = any
