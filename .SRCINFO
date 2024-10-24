@@ -1,6 +1,6 @@
 pkgbase = mapshot-bin
 	pkgdesc = Tool to export Factorio saves as zoomable HTML maps (binary release)
-	pkgver = 0.0.22
+	pkgver = 0.0.23
 	pkgrel = 1
 	url = https://github.com/Palats/mapshot
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = mapshot-bin
 	optdepends = factorio: The game in some form is required for rendering maps
 	provides = mapshot
 	conflicts = mapshot
-	source = mapshot-0.0.22::https://github.com/Palats/mapshot/releases/download/0.0.22/mapshot-linux
-	sha256sums = 8d636b26791f1fc91cfda73d74bf97f22219d43dc7a6766b4eca91d8c1c418ff
+	source = mapshot-0.0.23::https://github.com/Palats/mapshot/releases/download/0.0.23/mapshot-linux
+	sha256sums = 0c69742a4212b3828217a953405c50e50c9f69fd5c49117ce7946dd0ed30bad4
 
 pkgname = mapshot-bin
