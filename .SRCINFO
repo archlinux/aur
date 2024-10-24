@@ -1,7 +1,7 @@
 pkgbase = caddy-git
 	pkgdesc = HTTP/2 Web Server with Automatic HTTPS
-	pkgver = 20241015.c6f297998
-	pkgrel = 2
+	pkgver = 20241022.eaaa2e587
+	pkgrel = 1
 	url = https://caddyserver.com/
 	arch = x86_64
 	license = Apache-2.0
