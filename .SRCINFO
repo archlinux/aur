@@ -1,7 +1,7 @@
 pkgbase = quartodoc
 	pkgdesc = Generate Python package API reference documentation using Markdown and Quarto
 	pkgver = 0.8.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://machow.github.io/quartodoc
 	arch = any
 	license = MIT

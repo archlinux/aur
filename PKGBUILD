@@ -2,7 +2,7 @@
 
 pkgname=quartodoc
 pkgver=0.8.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Generate Python package API reference documentation using Markdown and Quarto"
 arch=('any')
 url='https://machow.github.io/quartodoc'
@@ -51,4 +51,7 @@ package() {
     cd $pkgname-$pkgver
     python -m installer --destdir="$pkgdir" dist/*.whl
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+
+    local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
+    rm -rf "$pkgdir/$site_packages/$pkgname/tests"
 }
