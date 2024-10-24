@@ -2,7 +2,7 @@
 _pkgname=mosdns
 pkgname=${_pkgname}-bin
 pkgver=5.3.3
-pkgrel=1
+pkgrel=2
 pkgdesc="一个 DNS 转发器"
 arch=('x86_64')
 url="https://github.com/IrineSistiana/mosdns/"
@@ -17,7 +17,7 @@ source=(
 )
 
 sha256sums=('ba56429521679e4c72de800addbfd95cc0cf9073f740a52dda6ce78c7f9350b5'
-            '8bb851c5413e0e25e18e9d912a35b1500b54531ea961d4fc6cc8416173311c17'
+            '85736cfb34acaa55d423122b75bcd39433a82f06e5e92195a0e6bb745d275452'
             'e6bc5034452123491e3901e2741183d528a29b00f1c01d6bbbb204549fee7306'
             '73c47567934255c4030ab06798a602989c257c187cf0c00132fbc839c902b096')
 
