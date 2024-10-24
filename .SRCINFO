@@ -1,19 +1,28 @@
 pkgbase = gtypist
-	pkgdesc = universal typing tutor
+	pkgdesc = Universal typing tutor
 	pkgver = 2.9.5
-	pkgrel = 7
+	pkgrel = 8
 	url = http://www.gnu.org/software/gtypist/gtypist.html
 	arch = x86_64
-	license = GPL3
+	license = GPL-3.0-or-later
+	makedepends = help2man
+	depends = glibc
 	depends = ncurses
 	depends = perl
-	source = https://ftp.gnu.org/gnu/gtypist/gtypist-2.9.5.tar.gz
-	source = https://ftp.gnu.org/gnu/gtypist/gtypist-2.9.5.tar.gz.sig
-	source = ncurses.patch
+	source = gtypist-2.9.5.tar.gz::https://ftp.gnu.org/gnu/gtypist/gtypist-2.9.5.tar.gz
+	source = gtypist-2.9.5.tar.gz.sig::https://ftp.gnu.org/gnu/gtypist/gtypist-2.9.5.tar.gz.sig
+	source = gtypist_fix_spelling.patch::https://sources.debian.org/data/main/g/gtypist/2.9.5-4/debian/patches/802270_spelling_errors.patch
+	source = gtypist_fix_vim_support.patch::https://sources.debian.org/data/main/g/gtypist/2.9.5-4/debian/patches/220581_gtypist_vim_support.patch
+	source = gtypist_fix_manpages.patch::https://sources.debian.org/data/main/g/gtypist/2.9.5-4/debian/patches/fix_manual_page_issues.patch
+	source = gtypist_fix_implicit_function_declaration.patch::https://sources.debian.org/data/main/g/gtypist/2.9.5-4/debian/patches/1066641-fix-implicit-function-declarations.patch
+	source = gtypist_fix_ncurses.patch
 	validpgpkeys = F8F09C0B79F90A20F953FB1CA6D813D8C94AFA52
 	sha256sums = 4059be9585683bbb84757dd4bbafa8ff4ecda2ed9eecd4e7594365843f05a266
 	sha256sums = SKIP
+	sha256sums = 0ce69a946b6e5867c2ed2a00cc056b3c2f5e66b4fbe8d9ff4d580bd0a5d75364
+	sha256sums = ff3627b471942e4deaec789f627830e8d5a436a5cac0271d5cdd65b70e952e63
+	sha256sums = f1b5912377548f91ee887ec1f29ee630154c4274b79d458a1a7d10ddc2bd39c4
+	sha256sums = bfe901464519877a737246e195a7e04b2d961a4f3b5b8ef6d59fa1740b8eeafa
 	sha256sums = c4d7b942aafb2e9262683083662328f770565ce71c0ca11d3e99065a60925945
 
 pkgname = gtypist
-
