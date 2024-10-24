@@ -1,7 +1,7 @@
 # Maintainer:  Greg Minshall <minshall at umich dot edu>
 pkgname=csvedepli
 pkgver=0.2.6
-pkgrel=1
+pkgrel=2
 pkgdesc="grep- and sed-like programs for .csv files"
 arch=(any)
 url="https://sr.ht/~minshall/csvedepli/"
