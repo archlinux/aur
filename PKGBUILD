@@ -13,7 +13,8 @@ optdepends=('gst-plugin-pipewire: required for recorder service'
             'gst-plugins-good: required for recorder service'
             'gst-plugins-ugly: required for recorder service'
             'networkmanager: required for network service'
-            'dart-sass: SASS/SCSS compilation support')
+            'dart-sass: SASS/SCSS compilation support'
+            'upower: required for UPower Service')
             
 conflicts=('ignis')
 source=("git+${url}")

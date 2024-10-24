@@ -24,6 +24,7 @@ pkgbase = ignis-git
 	optdepends = gst-plugins-ugly: required for recorder service
 	optdepends = networkmanager: required for network service
 	optdepends = dart-sass: SASS/SCSS compilation support
+	optdepends = upower: required for UPower Service
 	conflicts = ignis
 	source = git+https://github.com/linkfrg/ignis
 	sha256sums = SKIP
