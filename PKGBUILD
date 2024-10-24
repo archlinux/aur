@@ -21,7 +21,7 @@ pkgver() {
 
 build() {
   cd "$srcdir/${pkgname%-git}"
-  make
+  make CFLAGS+=-Wno-implicit-int
 }
 
 package() {
