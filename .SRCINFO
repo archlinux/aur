@@ -1,0 +1,15 @@
+pkgbase = lunawp
+	pkgdesc = a tool that changes your wallpaper if your workspace changes
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/nodeluna/lunawp
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = gcc
+	makedepends = make
+	depends = swww 
+	source = git+https://github.com/nodeluna/lunawp
+	sha256sums = SKIP
+
+pkgname = lunawp
