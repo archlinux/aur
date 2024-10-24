@@ -20,11 +20,12 @@ provides=("$_sourceName")
 build() {
   cd "$_sourceName"
   cargo build --release
+  chmod +x ./target/release/elisa_rpc
 }
 
 package() {
-  #install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
-  install -Dm644 "$_sourceName/target/release/elisa_rpc" -t "$pkgdir/usr/bin"
+  install -Dm644 "$_sourceName/LICENSE" -t "$pkgdir/usr/share/licenses/$pkgname/"
+  install -Dm644 "$_sourceName/target/release/$_exeName" -t "$pkgdir/usr/bin"
 
   install -Dm0644 /dev/stdin "$pkgdir/usr/share/applications/$_sourceName.desktop" << EOF
 [Desktop Entry]
@@ -33,7 +34,4 @@ Exec=/usr/bin/${_exeName}
 Terminal=false
 X-Autostart-enabled=true
 EOF
-  
-  cd "$pkgdir/usr/bin"
-  chmod +x $_exeName
 }
