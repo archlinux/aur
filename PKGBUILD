@@ -6,14 +6,14 @@
 
 pkgname=worldofpadman
 pkgver=1.6.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Cartoon-style multiplayer first-person shooter"
 arch=('x86_64')
 url="https://worldofpadman.net/en/"
 license=('GPL' 'custom')
 depends=('curl' 'libogg' 'libvorbis' 'mesa' 'openal' 'sdl')
 makedepends=('unzip')
-source=('wop-162-full-unified-zip::https://www.moddb.com/downloads/mirror/224119/124/c8b8bcc423fdfe661e190f8fbf433bad'
+source=('wop-162-full-unified.zip::https://www.moddb.com/downloads/mirror/224119/130/60cb38913665ad2c5d2f79ee3fdb2fd5'
         'worldofpadman.desktop')
 
 _gamedir="/usr/share/$pkgname"
