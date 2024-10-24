@@ -1,0 +1,3 @@
+[paddlepaddle-bin]
+source = "pypi"
+pypi = "paddlepaddle"
