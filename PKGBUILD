@@ -1,17 +1,18 @@
 # Maintainer: Nebulosa  <nebulosa2007-at-yandex-dot-ru>
 
 pkgname=gsconnect-git
-pkgver=57.r22.g97a1287
+pkgver=58.r0.gab119d9
 pkgrel=1
 pkgdesc="KDE Connect implementation. CLI usage without Gnome environment"
 arch=(x86_64)
 url="https://github.com/GSConnect/gnome-shell-extension-${pkgname%-git}"
-license=('GPL-2.0-or-later OR MPL-2.0 OR GPL-3.0-only')
+license=('CC-BY-4.0 OR CC-BY-SA-3.0 OR CC0-1.0 OR GPL-2.0-or-later OR MPL-2.0')
 depends=(
   dbus
   dconf
   gjs
   glib2
+  glibc
   gobject-introspection
   hicolor-icon-theme
   libpulse
@@ -47,11 +48,9 @@ source=(
   ${pkgname%-git}.service
   gvc::git+https://github.com/JingMatrix/gvc.git
 )
-b2sums=(
-  'SKIP'
-  'ecd31b50393dbbf23b5f33d16d11573200ce28fd818b99e3f54f269287c505b724fc55f0135809c679629842448b29f7986bed309baa6193aaf1211f144171b4'
-  'SKIP'
-)
+b2sums=('SKIP'
+        'ecd31b50393dbbf23b5f33d16d11573200ce28fd818b99e3f54f269287c505b724fc55f0135809c679629842448b29f7986bed309baa6193aaf1211f144171b4'
+        'SKIP')
 
 pkgver() {
   git -C ${pkgname%-git} describe --long --abbrev=7 --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
