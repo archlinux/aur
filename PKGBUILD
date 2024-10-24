@@ -2,13 +2,14 @@
 
 pkgname=chiaki-ng-git
 _gitname=chiaki-ng
-pkgver=1.8.0.r3.g4da73a3
+pkgver=1.9.0.r78.gc5246b05
 pkgrel=1
 pkgdesc="Unofficial PlayStation 4 remote play client"
 arch=(i686 x86_64)
 url="https://streetpea.github.io/chiaki-ng/"
 license=('LicenseRef-AGPL-3.0-only-OpenSSL')
 depends=(
+        'curl'
         'ffmpeg'
         'fftw'
         'gcc-libs'
@@ -55,22 +56,23 @@ pkgver() {
 prepare() {
   cd ${_gitname}
   mkdir build
+  # Remove curl submodule
+  git rm third-party/curl
+  # Fix curl lib name
+  sed -i 's:libcurl_shared:libcurl:' lib/CMakeLists.txt
+  # Initialize remaining submodules
   git submodule update --init
 }
 
 build() {
   cd ${_gitname}/build
-  cmake .. -DCMAKE_INSTALL_PREFIX="/usr" -DCMAKE_BUILD_TYPE="None"
+  cmake .. -DCMAKE_INSTALL_PREFIX="/usr" -DCMAKE_BUILD_TYPE="None" -DCHIAKI_USE_SYSTEM_CURL="ON"
   make
 }
 
 package() {
   cd ${_gitname}/build
   make DESTDIR="${pkgdir}" install
-
-  # Remove conflicting curl binary + static lib
-  # NOTE: can be removed if/when websocket support is added to [core]/curl
-  rm "${pkgdir}"/usr/{lib/libcurl.a,bin/curl}
 
   install -dm755 "${pkgdir}/usr/share/licenses/${pkgname}/"
   for lic in ../LICENSES/*; do

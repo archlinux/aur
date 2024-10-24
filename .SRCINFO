@@ -1,6 +1,6 @@
 pkgbase = chiaki-ng-git
 	pkgdesc = Unofficial PlayStation 4 remote play client
-	pkgver = 1.8.0.r3.g4da73a3
+	pkgver = 1.9.0.r78.gc5246b05
 	pkgrel = 1
 	url = https://streetpea.github.io/chiaki-ng/
 	arch = i686
@@ -10,6 +10,7 @@ pkgbase = chiaki-ng-git
 	makedepends = cmake
 	makedepends = python-protobuf
 	makedepends = python-setuptools
+	depends = curl
 	depends = ffmpeg
 	depends = fftw
 	depends = gcc-libs
