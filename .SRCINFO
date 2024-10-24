@@ -1,7 +1,7 @@
 pkgbase = cosmic-edit-git
 	pkgdesc = Text editor for the COSMIC desktop
-	pkgver = 1.0.0.alpha.2.r0.g96b2a19
-	pkgrel = 2
+	pkgver = 1.0.0.alpha.2.r23.g5b0d05d
+	pkgrel = 1
 	url = https://github.com/pop-os/cosmic-edit
 	arch = x86_64
 	license = GPL-3.0-or-later
@@ -10,7 +10,6 @@ pkgbase = cosmic-edit-git
 	makedepends = git-lfs
 	makedepends = just
 	makedepends = mold
-	depends = cosmic-icons-git
 	depends = libxkbcommon
 	depends = wayland
 	provides = cosmic-edit
@@ -20,6 +19,6 @@ pkgbase = cosmic-edit-git
 	source = git+https://github.com/pop-os/cosmic-edit.git
 	source = lto.patch
 	sha256sums = SKIP
-	sha256sums = 723a47503b7b44faa3857a1513ae1e1808c08dc6d0fb4c95d667a1925442419c
+	sha256sums = 1f8c56fbceea1921eabb764e184709c29607cd2f53a55638d24d0fc2c6f7ac28
 
 pkgname = cosmic-edit-git

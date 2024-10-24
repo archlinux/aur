@@ -11,10 +11,4 @@ diff '--color=auto' -rupN cosmic-edit.orig/Cargo.toml cosmic-edit/Cargo.toml
  [profile.release-with-debug]
  inherits = "release"
  debug = true
-@@ -70,4 +73,4 @@ filetime = { git = "https://github.com/j
- # [patch.'https://github.com/pop-os/libcosmic']
- # libcosmic = { path = "../libcosmic" }
- # cosmic-config = { path = "../libcosmic/cosmic-config" }
--# cosmic-theme = { path = "../libcosmic/cosmic-theme" }
-\ No newline at end of file
-+# cosmic-theme = { path = "../libcosmic/cosmic-theme" }
+
