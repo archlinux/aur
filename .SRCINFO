@@ -9,6 +9,7 @@ pkgbase = faugus-launcher-git
 	depends = python
 	depends = python-gobject
 	depends = python-requests
+	depends = python-pillow
 	depends = umu-launcher
 	depends = imagemagick
 	depends = icoextract
