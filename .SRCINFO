@@ -1,6 +1,6 @@
 pkgbase = netbird-ui
 	pkgdesc = Official GUI for the Netbird client
-	pkgver = 0.30.2
+	pkgver = 0.30.3
 	pkgrel = 1
 	url = https://netbird.io
 	arch = i686
@@ -34,7 +34,7 @@ pkgbase = netbird-ui
 	depends = netbird
 	depends = pango
 	depends = zlib
-	source = netbird-ui-0.30.2.tar.gz::https://github.com/netbirdio/netbird/archive/refs/tags/v0.30.2.tar.gz
-	sha256sums = 4d27fed679da342b3f50c3aa5feda3342de761cb038a31b9337c4db7f50445d3
+	source = netbird-ui-0.30.3.tar.gz::https://github.com/netbirdio/netbird/archive/refs/tags/v0.30.3.tar.gz
+	sha256sums = 21cd8ed88ac0f284be11deb70cfe8afbafcba9d888e50bda9fa8f45d87b28dba
 
 pkgname = netbird-ui
