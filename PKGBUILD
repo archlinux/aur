@@ -2,8 +2,8 @@
 _pkgname=nexus_wallet
 pkgname="${_pkgname//_/-}-bin"
 _appname="Nexus Wallet"
-pkgver=3.1.3
-pkgrel=2
+pkgver=3.1.4
+pkgrel=1
 pkgdesc="The official Logical and Interface layers of the Nexus Software Stack.Prebuilt version."
 arch=('x86_64')
 url="https://crypto.nexus.io/wallet"
@@ -20,7 +20,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-Linux-${pkgver}.deb"
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/Nexusoft/NexusInterface/v${pkgver}/LICENSE"
 )
-sha256sums=('6dd7328b27712b5e16815e2788d269e1595f6b9551c4cbd00df1f4408aca857e'
+sha256sums=('435e28b07eb9c9c5ee34245a54ac2b090a150213d6bdda85e2b139b68c9ff782'
             'e7ee68282295100c6be4565152cb535d43086d2354760a8f006f1e980e0a3bb5')
 build() {
     bsdtar -xf "${srcdir}/data."*
@@ -29,6 +29,9 @@ build() {
         s/P2P/Network/g
         s/${_pkgname}/${pkgname%-bin}/g
     " -i "${srcdir}/usr/share/applications/${_pkgname}.desktop"
+    asar e "${srcdir}/opt/${_appname}/resources/app.asar" "${srcdir}/app.asar.unpacked"
+sed 's|f,"..","resources"|f,"..","..","nexus-wallet"|g' -i "${srcdir}/app.asar.unpacked/build/main.prod.js"
+asar p "${srcdir}/app.asar.unpacked" "${srcdir}/app.asar"
 }
 package() {
     install -Dm755 -d "${pkgdir}/"{opt/"${pkgname%-bin}",usr/bin}
