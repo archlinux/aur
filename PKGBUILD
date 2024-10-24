@@ -14,7 +14,7 @@ unset _pkgtype
 # basic info
 _pkgname=flycast
 pkgname="$_pkgname${_pkgtype:-}"
-pkgver=2.3.2.r185.gb468c9b
+pkgver=2.4.r0.g8108e63
 pkgrel=1
 pkgdesc='Sega Dreamcast, Naomi, and Atomiswave emulator'
 url="https://github.com/flyinghead/flycast"
@@ -42,7 +42,7 @@ if [[ "${_build_clang::1}" == "t" ]]; then
 fi
 
 _source_main() {
-  provides+=("$_pkgname=$pkgver")
+  provides+=("$_pkgname")
   conflicts+=("$_pkgname")
 
   _pkgsrc="$_pkgname"
@@ -139,14 +139,16 @@ pkgver() {
 
 build() {
   if [[ "${_build_clang::1}" == "t" ]]; then
-    export CC=clang
-    export CXX=clang++
-    export LDFLAGS+=" -fuse-ld=lld"
+    export CC CXX LDFLAGS
+    CC=clang
+    CXX=clang++
+    LDFLAGS="${LDFLAGS//-fuse-ld=*/} -fuse-ld=lld"
   fi
 
   if [[ "${_build_avx::1}" == "t" ]]; then
-    export CFLAGS="$(echo "$CFLAGS" | sed -E 's@(\s*-(march|mtune)=\S+\s*)@ @g;s@\s*-O[0-9]\s*@ @g;s@\s+@ @g') -march=x86-64-v3 -mtune=generic -O3"
-    export CXXFLAGS="$(echo "$CXXFLAGS" | sed -E 's@(\s*-(march|mtune)=\S+\s*)@ @g;s@\s*-O[0-9]\s*@ @g;s@\s+@ @g') -march=x86-64-v3 -mtune=generic -O3"
+    export CFLAGS CXXFLAGS
+    CFLAGS="$(echo "$CFLAGS" | sed -E 's@(\s*-(march|mtune)=\S+\s*)@ @g;s@\s*-O[0-9]\s*@ @g;s@\s+@ @g') -march=x86-64-v3 -mtune=generic -O3"
+    CXXFLAGS="$(echo "$CXXFLAGS" | sed -E 's@(\s*-(march|mtune)=\S+\s*)@ @g;s@\s*-O[0-9]\s*@ @g;s@\s+@ @g') -march=x86-64-v3 -mtune=generic -O3"
   fi
 
   local _cmake_options=(

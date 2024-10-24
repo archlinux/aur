@@ -1,0 +1,4 @@
+[flycast-git]
+source = "git"
+git = "https://github.com/flyinghead/flycast.git"
+prefix = "v"
