@@ -1,0 +1,22 @@
+pkgbase = unraid-usb-creator-bin
+	pkgdesc = A tool to create bootable USB drives for Unraid
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://unraid.net
+	arch = x86_64
+	license = custom:unraid-usb-creator
+	depends = glibc
+	depends = curl
+	depends = hicolor-icon-theme
+	depends = libarchive
+	depends = openssl
+	depends = qt5-base
+	depends = qt5-declarative
+	depends = qt5-quickcontrols2
+	depends = qt5-svg
+	depends = zlib
+	source = https://releases.unraid.net/dl/stable/usb-creator.deb
+	sha256sums = 197d55819c9a54085b31c94f8c3f8d395a1f4c8ceff794a606ce5aee3a0f9248
+	sha512sums = 83d43788ca4082c91e06fcb0fe24453364ef9b0dab832286bbbfd93bcb7f0e6e0ae7553a5b07aa4fc910471d2bc5a6bb3f6b53b83a6c393dfe2b46aa2e19537f
+
+pkgname = unraid-usb-creator-bin
