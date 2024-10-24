@@ -1,6 +1,6 @@
 pkgbase = paddlepaddle-bin
 	pkgdesc = Parallel Distributed Deep Learning
-	pkgver = 2.6.1
+	pkgver = 2.6.2
 	pkgrel = 1
 	url = https://paddlepaddle.org.cn
 	arch = x86_64
@@ -14,9 +14,9 @@ pkgbase = paddlepaddle-bin
 	depends = python-opt_einsum
 	depends = python-protobuf
 	depends = perl
-	provides = paddlepaddle=2.6.1
+	provides = paddlepaddle=2.6.2
 	conflicts = paddlepaddle
-	source = https://pypi.org/packages/cp311/p/paddlepaddle/paddlepaddle-2.6.1-cp311-cp311-manylinux1_x86_64.whl
-	sha256sums = a71106f146a5f4555f8fdcb8568add21e8604797d5b5e8527fa06c070494c1f5
+	source = https://pypi.org/packages/cp312/p/paddlepaddle/paddlepaddle-2.6.2-cp312-cp312-manylinux1_x86_64.whl
+	sha256sums = 1aab2186d24402060f690a850acb21e014282b01882bcc1442f5f387dd012a50
 
 pkgname = paddlepaddle-bin
