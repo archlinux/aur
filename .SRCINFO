@@ -1,13 +1,12 @@
 pkgbase = multi-gitter-bin
 	pkgdesc = Update multiple repositories in with one command
 	pkgver = 0.53.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/lindell/multi-gitter
 	arch = x86_64
 	arch = i686
 	arch = aarch64
 	license = MIT
-	makedepends = help2man
 	depends = glibc
 	provides = multi-gitter
 	conflicts = multi-gitter

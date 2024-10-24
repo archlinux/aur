@@ -4,14 +4,13 @@ _pkgauthor=lindell
 _pkgname=multi-gitter
 pkgname=${_pkgname}-bin
 pkgver=0.53.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Update multiple repositories in with one command'
 url="https://github.com/${_pkgauthor}/${_pkgname}"
 _urlraw="https://raw.githubusercontent.com/${_pkgauthor}/${_pkgname}/v${pkgver}"
 arch=('x86_64' 'i686' 'aarch64')
 license=('MIT')
 depends=('glibc')
-makedepends=('help2man')
 conflicts=("${_pkgname}")
 provides=("${_pkgname}")
 source=("LICENSE-${pkgver}::${_urlraw}/LICENSE"
@@ -33,12 +32,6 @@ sha256sums_x86_64=('5a8e07f37df6d9b7249c0edc3af59eb225310a308443dd241b735eb329ca
 sha256sums_i686=('4ca0d0521681f8c3667da42c857c31838d609f8bfc2b04429393ece7007b11ef')
 sha256sums_aarch64=('d323d1e363ac5bdeb452c2d336763369fcf13522f51139fd73c10b9b17122357')
 
-build() {
-  cd "${srcdir}/" || exit
-
-  help2man ./${_pkgname} --output "MAN-${pkgver}.1" --no-info
-}
-
 package() {
   cd "${srcdir}/" || exit
 
@@ -46,7 +39,4 @@ package() {
 
   install -Dm644 "LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   install -Dm644 "README-${pkgver}.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
-
-  install -Dm644 "MAN-${pkgver}.1" "${pkgdir}/usr/share/man/man1/${_pkgname}.1"
-  gzip "${pkgdir}/usr/share/man/man1/${_pkgname}.1"
 }
