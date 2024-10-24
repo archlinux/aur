@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=atlassify-git
 _pkgname=Atlassify
-pkgver=1.6.1.r3.g928ef43
-_electronversion=32
+pkgver=1.7.0.r2.g6635195
+_electronversion=33
 _nodeversion=20
 pkgrel=1
 pkgdesc="Atlassian notifications on your menu bar.Use system-wide electron."
@@ -53,9 +53,9 @@ build() {
     _ensure_local_nvm
     gendesk -q -f -n --pkgname="${pkgname%-git}" --pkgdesc="${pkgdesc}" --categories="Development" --name="${_pkgname}" --exec="${pkgname%-git} %U"
     cd "${srcdir}/${pkgname//-/.}"
+    electronDist="/usr/lib/electron${_electronversion}"
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
-    electronDist="/usr/lib/electron${_electronversion}"
     HOME="${srcdir}/.electron-gyp"
     {
         echo -e '\n'
@@ -64,18 +64,24 @@ build() {
         echo 'fetch-retry-maxtimeout=10000'
         echo "cache-dir="${srcdir}"/.pnpm_cache"
         echo "store-dir="${srcdir}"/.pnpm_store"
-        if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
-            echo 'registry=https://registry.npmmirror.com'
-            echo 'disturl=https://registry.npmmirror.com/-/binary/node/'
-            echo 'electron_mirror=https://registry.npmmirror.com/-/binary/electron/'
-            echo 'electron_builder_binaries_mirror=https://registry.npmmirror.com/-/binary/electron-builder-binaries/'
-        fi
+        echo "shamefully-hoist=true"
+        echo "virtual-store-dir-max-length=80"
     } >> .npmrc
+    if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
+        {
+        echo 'registry=https://registry.npmmirror.com'
+        echo 'disturl=https://registry.npmmirror.com/-/binary/node/'
+        echo 'node-mirror=https://registry.npmmirror.com/-/binary/node/'
+        echo 'electron_mirror=https://cdn.npmmirror.com/binaries/electron/'
+        echo 'electron_builder_binaries_mirror=https://npmmirror.com/mirrors/electron-builder-binaries/'
+        } >> .npmrc
+    fi
     icotool -i 9 -x assets/images/app-icon.ico -o assets/images/app-icon.png
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g;s/\"AppImage\", \"deb\", \"rpm\"/\"dir\"/g" package.json
     NODE_ENV=development    pnpm install
     NODE_ENV=production     pnpm run build
-    NODE_ENV=production     npm exec -c "electron-builder --linux dir -c.electronDist=${electronDist}"
+    NODE_ENV=development    pnpm prepare:remove-source-maps
+    NODE_ENV=production     pnpm -c exec "electron-builder --linux dir -c.electronDist=${electronDist}"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
