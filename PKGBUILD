@@ -1,10 +1,10 @@
-# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
-# Contributor: Michal Krenek (Mikos) <m.krenek@gmail.com>
+# Maintainer: Quintin Scherrer <quitninscherrer@gmail.com>
+
 
 pkgname=python-pyrtlsdr-git
 _pkg=pyrtlsdr
-pkgver=0.2.93.r0.g7a854dc
-pkgrel=1
+pkgver=0.3.0
+pkgrel=2
 pkgdesc='A Python wrapper for librtlsdr'
 arch=('any')
 url='https://github.com/pyrtlsdr/pyrtlsdr'
