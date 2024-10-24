@@ -1,6 +1,6 @@
 # Maintainer: decipher3114 <decipher3114@gmail.com>
 pkgname="capter"
-pkgver=v2.2.1
+pkgver=v2.2.2
 pkgrel=1
 pkgdesc="A simple cross-platform screenshot tool made in rust"
 arch=("x86_64")
