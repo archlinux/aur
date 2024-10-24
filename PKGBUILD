@@ -2,8 +2,8 @@
 # Maintainer: Angelo Theodorou <encelo at gmail dot com>
 
 pkgname=tracy-x11
-pkgver=0.11.0
-pkgrel=3
+pkgver=0.11.1
+pkgrel=1
 pkgdesc="Real-time, nanosecond resolution frame profiler"
 arch=('i686' 'x86_64')
 url="https://github.com/wolfpld/tracy"
@@ -26,10 +26,8 @@ build() {
   make -C capture/build
   cmake -S csvexport -B csvexport/build -D CMAKE_BUILD_TYPE=Release -D DOWNLOAD_CAPSTONE=OFF
   make -C csvexport/build
-  cmake -S import-chrome -B import-chrome/build -D CMAKE_BUILD_TYPE=Release -D DOWNLOAD_CAPSTONE=OFF
-  make -C import-chrome/build
-  cmake -S import-fuchsia -B import-fuchsia/build -D CMAKE_BUILD_TYPE=Release -D DOWNLOAD_CAPSTONE=OFF
-  make -C import-fuchsia/build
+  cmake -S import -B import/build -D CMAKE_BUILD_TYPE=Release -D DOWNLOAD_CAPSTONE=OFF
+  make -C import/build
   cmake -S profiler -B profiler/build -D CMAKE_BUILD_TYPE=Release -D DOWNLOAD_CAPSTONE=OFF -D LEGACY=ON
   make -C profiler/build
   cmake -S update -B update/build -D CMAKE_BUILD_TYPE=Release -D DOWNLOAD_CAPSTONE=OFF
@@ -41,8 +39,8 @@ package() {
   install -Dm644 build/libTracyClient.a $pkgdir/usr/lib/libTracyClient.a
   install -Dm755 capture/build/tracy-capture $pkgdir/usr/bin/tracy-capture
   install -Dm755 csvexport/build/tracy-csvexport $pkgdir/usr/bin/tracy-csvexport
-  install -Dm755 import-chrome/build/tracy-import-chrome $pkgdir/usr/bin/tracy-import-chrome
-  install -Dm755 import-fuchsia/build/tracy-import-fuchsia $pkgdir/usr/bin/tracy-import-fuchsia
+  install -Dm755 import/build/tracy-import-chrome $pkgdir/usr/bin/tracy-import-chrome
+  install -Dm755 import/build/tracy-import-fuchsia $pkgdir/usr/bin/tracy-import-fuchsia
   install -Dm755 profiler/build/tracy-profiler $pkgdir/usr/bin/tracy
   install -Dm755 update/build/tracy-update $pkgdir/usr/bin/tracy-update
 
