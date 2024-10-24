@@ -7,6 +7,7 @@ pkgbase = python-podman
 	license = Apache
 	makedepends = python-setuptools
 	depends = python
+	depends = python-requests
 	provides = python-podman-py
 	source = https://github.com/containers/podman-py/archive/refs/tags/v5.2.0.tar.gz
 	sha256sums = 4e4a66a451073348fe6f1ef97a3237242ce868dbcb1d8ac4643773cbb210a294

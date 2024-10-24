@@ -9,7 +9,7 @@ url="https://github.com/containers/podman-py"
 license=('Apache')
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('4e4a66a451073348fe6f1ef97a3237242ce868dbcb1d8ac4643773cbb210a294')
-depends=('python')
+depends=('python' 'python-requests')
 makedepends=('python-setuptools')
 provides=('python-podman-py')
 
