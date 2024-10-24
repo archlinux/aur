@@ -2,7 +2,7 @@
 
 pkgname=gsconnect
 pkgver=58
-pkgrel=1
+pkgrel=2
 pkgdesc="KDE Connect implementation. CLI usage without Gnome environment"
 arch=(x86_64)
 url="https://github.com/GSConnect/gnome-shell-extension-$pkgname"

@@ -1,10 +1,10 @@
 pkgbase = gsconnect
 	pkgdesc = KDE Connect implementation. CLI usage without Gnome environment
 	pkgver = 58
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/GSConnect/gnome-shell-extension-gsconnect
 	arch = x86_64
-	license = GPL-2.0-or-later OR MPL-2.0 OR GPL-3.0-only
+	license = CC-BY-4.0 OR CC-BY-SA-3.0 OR CC0-1.0 OR GPL-2.0-or-later OR MPL-2.0
 	makedepends = appstream
 	makedepends = desktop-file-utils
 	makedepends = eslint
