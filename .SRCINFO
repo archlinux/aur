@@ -1,6 +1,6 @@
 pkgbase = yass-proxy-qt5
 	pkgdesc = lightweight http/socks proxy
-	pkgver = 1.15.1
+	pkgver = 1.15.2
 	pkgrel = 1
 	url = https://github.com/Chilledheart/yass
 	arch = x86_64
@@ -27,7 +27,7 @@ pkgbase = yass-proxy-qt5
 	optdepends = qt5-wayland
 	provides = yass-proxy
 	conflicts = yass-proxy-git
-	source = https://github.com/Chilledheart/yass/releases/download/1.15.1/yass-1.15.1.tar.zst
-	sha256sums = 06c8aa456f8916aec50ec6ea1b5a54f6a96cd59a2b45698206db6dd8cbdda658
+	source = https://github.com/Chilledheart/yass/releases/download/1.15.2/yass-1.15.2.tar.zst
+	sha256sums = df159fd93b432655dde13252db513f5303e0ac49aa8104945badd5c5a00ace14
 
 pkgname = yass-proxy-qt5
