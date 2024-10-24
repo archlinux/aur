@@ -21,7 +21,7 @@ install=
 changelog=
 source=( 'obfuscation-tunnel@.service' 'obfuscation-tunnel-launcher' 'example.conf' )
 noextract=()
-sha256sums=('9cd80d8f2c20909806ee66f88dc8141e90ad15d855a460b029bbd0d82739b2f5'
+sha256sums=('b4f8da406617d483bdc483a7b71302e585c8f5488b0d81144641b9280020a1a9'
             '6eb6c7003a63b1a8a1c77500bfb71acf1ca2e8cb57b3f9e491d0a4d4a2d49ea5'
             '665b490dfd185426fb6c30a1ed470e4810ef4d09d137beb636444d364c0b9803')
 validpgpkeys=()

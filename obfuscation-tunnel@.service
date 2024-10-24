@@ -6,6 +6,7 @@ Wants=network-online.target
 
 [Service]
 Type=simple
+Restart=on-failure
 DynamicUser=yes
 PrivateTmp=yes
 NoNewPrivileges=yes
