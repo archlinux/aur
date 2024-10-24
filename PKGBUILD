@@ -35,7 +35,7 @@ build() {
 
 package() {
 		
-	cd "wikiLYNX-${pkgver}/wikiLYNX"
+	cd "wikilynx-${pkgver}/wikiLYNX"
 	install -D "wikiLYNX" "${pkgdir}/usr/bin/wikilynx"
 	install -Dm644 "${srcdir}/wikiLYNX.png" "${pkgdir}/usr/share/pixmaps/wikiLYNX.png"
 	install -Dm644  "${srcdir}/wikilynx.desktop" "${pkgdir}/usr/share/applications/wikilynx.desktop"
