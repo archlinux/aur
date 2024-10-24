@@ -2,10 +2,10 @@
 
 pkgname=python-customtkinter-git
 pkgver=r583.10f34d2
-pkgrel=1
-pkgdesc="Python bindings for the FMOD Ex sound library"
+pkgrel=2
+pkgdesc="A modern and customizable python UI-library based on Tkinter."
 arch=('x86_64')
-url="A modern and customizable python UI-library based on Tkinter."
+url="https://github.com/TomSchimansky/CustomTkinter"
 license=('MIT')
 depends=('python'
          'tk'
@@ -31,6 +31,6 @@ build() {
 package() {
   cd CustomTkinter
   python -m installer --destdir="$pkgdir" dist/*.whl
-  install -Dm 644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-  install -Dm 644 Readme.md "${pkgdir}/usr/share/doc/${pkgname}/README" 
+  install -Dm0644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm0644 Readme.md "${pkgdir}/usr/share/doc/${pkgname}/README" 
 }
