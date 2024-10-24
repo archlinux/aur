@@ -1,13 +1,16 @@
 pkgbase = jupyter_latex_envs
 	pkgdesc = Jupyter notebook extension which supports (some) LaTeX environments within markdown cells
 	pkgver = 1.4.6
-	pkgrel = 2
-	url = https://github.com/ipython-contrib/
+	pkgrel = 3
+	url = https://github.com/jfbercher/jupyter_latex_envs
 	arch = any
-	license = BSD
-	depends = python
+	license = BSD-3-Clause
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
 	depends = jupyter-notebook
-	source = https://files.pythonhosted.org/packages/source/j/jupyter-latex_envs/jupyter_latex_envs-1.4.6.tar.gz
-	sha256sums = 070a31eb2dc488bba983915879a7c2939247bf5c3b669b398bdb36a9b5343872
+	source = https://pypi.org/packages/source/j/jupyter_latex_envs/jupyter_latex_envs-1.4.6.tar.gz
+	sha512sums = 66c13b9c5f467ed86c49fc267d8f073849aa4e97ee931cf32fdbf37489a4610db0d8d715552fe7668eb1a97ffe1e0160724e7eb5f4c0a1ad4d60922b4f416ac5
 
 pkgname = jupyter_latex_envs
