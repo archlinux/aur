@@ -9,7 +9,7 @@ url="https://codeberg.org/sonusmix/sonusmix"
 license=('MPL-2.0')
 depends=('pipewire' 'gtk4')
 makedepends=('clang' 'cargo' 'git')
-source=("git+https://codeberg.org/sonusmix/sonusmix" "sonusmix.desktop") # Add the patch file to the source
+source=("git+https://codeberg.org/sonusmix/sonusmix" "sonusmix.desktop")
 sha256sums=('SKIP'
     'cf3059786a8e6d62f72979954ef6e9730575ec3d2ec1dcd5ddae78f043765f9a')
 conflicts=('sonusmix')
