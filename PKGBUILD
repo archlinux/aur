@@ -5,7 +5,7 @@ pkgname=(
 #  'ctranslate2-docs'
 )
 pkgbase=ctranslate2
-pkgver=4.4.0
+pkgver=4.5.0
 pkgrel=1
 pkgdesc="A C++ and Python library for efficient inference with Transformer models."
 arch=('x86_64')
@@ -19,7 +19,7 @@ makedepends=(
   'git'
   'intel-oneapi-mkl'
   'onednn'
-#  'openblas'
+  'openblas'
   'pybind11'
   'python-build'
   'python-installer'
@@ -46,7 +46,7 @@ source=("git+https://github.com/OpenNMT/CTranslate2.git#tag=v$pkgver"
         'git+https://github.com/google/ruy.git'
         'git+https://github.com/pytorch/cpuinfo.git'
         'git+https://github.com/NVIDIA/cub.git')
-sha256sums=('ac011b4e73b6015cd2f9a1ff3a02cf3988369479d4415b8c2cc4194e066f3f1d'
+sha256sums=('914dc8abc9f3ef75ae74e5673e8a99fca85a4d7036ba708e0c6569ec7511f4ec'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -84,18 +84,16 @@ build() {
   # hard dependency if enabled, however convolution layers will not be supported on
   # GPU if CUDA is enabled without it
 
-  ## WITH_OPENBLAS='ON'
-  # Enabling both WITH_DNNL and WITH_OPENBLAS is broken
-  # https://github.com/OpenNMT/CTranslate2/issues/1294
-
   cmake -B build -S CTranslate2 \
     -DCMAKE_C_COMPILER='gcc-13' \
     -DCMAKE_CXX_COMPILER='g++-13' \
     -DCMAKE_BUILD_TYPE='Release' \
     -DCMAKE_INSTALL_PREFIX='/usr' \
     -DOPENMP_RUNTIME='COMP' \
-    -DWITH_MKL='ON' \
-    -DWITH_DNNL='ON' \
+    -DWITH_MKL='OFF' \
+    -DWITH_DNNL='OFF' \
+    -DWITH_OPENBLAS='ON' \
+    -DOPENBLAS_INCLUDE_DIR='/usr/include/openblas' \
     -DWITH_RUY='ON' \
     -DWITH_CUDA='ON' \
     -DCUDA_DYNAMIC_LOADING='ON' \
