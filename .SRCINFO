@@ -1,0 +1,13 @@
+pkgbase = througha
+	pkgdesc = Run commands through a proxy
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/nakidai/througha
+	arch = x86_64
+	license = 0BSD
+	makedepends = gcc
+	depends = glibc
+	source = througha-1.0.0::https://github.com/nakidai/througha/archive/v1.0.0.tar.gz
+	sha256sums = 70f134e62af012892948558d3bbbf2afbbd75fe415b3945864afc3238c0531ab
+
+pkgname = througha
