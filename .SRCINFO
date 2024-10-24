@@ -1,6 +1,6 @@
 pkgbase = mcpelauncher-ui
 	pkgdesc = Minecraft: PE Linux launcher UI
-	pkgver = 1.1.0
+	pkgver = 1.1.1
 	pkgrel = 1
 	url = https://github.com/minecraft-linux/mcpelauncher-ui-manifest
 	arch = x86_64
@@ -28,7 +28,7 @@ pkgbase = mcpelauncher-ui
 	depends = gcc-libs
 	depends = openssl
 	optdepends = mcpelauncher-msa-ui-qt: Microsoft authentication for version before 1.16.1X
-	source = git+https://github.com/minecraft-linux/mcpelauncher-ui-manifest.git#tag=v1.1.0-qt6
+	source = git+https://github.com/minecraft-linux/mcpelauncher-ui-manifest.git#tag=v1.1.1-qt6
 	source = git+https://github.com/MCMrARM/axml-parser.git
 	source = git+https://github.com/minecraft-linux/file-util.git
 	source = google-play-api::git+https://github.com/minecraft-linux/Google-Play-API.git
