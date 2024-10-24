@@ -2,7 +2,7 @@
 
 pkgbase=gcopy
 pkgname=("${pkgbase}" "${pkgbase}-web")
-pkgver=1.4.2
+pkgver=1.4.3
 pkgrel=1
 pkgdesc="A clipboard synchronization service for different devices that can synchronize text, screenshots, and files"
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64' 'riscv64')
@@ -15,7 +15,7 @@ source=("${pkgbase}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz
         "${pkgbase}.env"
         "${pkgbase}.service"
         "${pkgbase}.sysusers")
-sha256sums=('68bdde069acd3a525dbbf77303ebd34ac271b199a3d555cda6968179fd519d7b'
+sha256sums=('d56ff04ee330140bc7aa97b6c67e0c33bd217aa6a16597c4d3ea8bf878081870'
             '1b47cd9ba854ec53df8de892c906cf74a687f237ca141b200aada620316200ee'
             'e0a382959b7ab55c45743506113aab6d94427d68dacdfd971cc8ba2b484d954c'
             '1fbb6961942c7c1f9e8876613d10356608e84e00914ac9acf7b134a4366b350b'
@@ -30,6 +30,7 @@ build() {
     npm --prefix=frontend run build
     rm frontend/.env.production frontend/.next/standalone/.env.production
     grep -rl "${srcdir}/${pkgbase}-${pkgver}/frontend" frontend/.next | xargs -I {} sed -i "s|${srcdir}/${pkgbase}-${pkgver}/frontend|/usr/share/${pkgbase}-web|g" {}
+    sed -i "s|3375|3000|g" deploy/nginx-example.conf
 
     go build -trimpath -ldflags="-s -w -X ${url//https:\/\//}/pkg/version.version=${pkgver}" -o "${pkgbase}" ./cmd
 }
