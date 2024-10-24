@@ -4,7 +4,7 @@
 
 pkgbase=mcpelauncher-linux
 pkgname=('mcpelauncher-linux' 'lib32-mcpelauncher-linux')
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="Minecraft: Pocket Edition launcher for Linux"
 arch=('x86_64')
@@ -52,7 +52,7 @@ source=(
   'git+https://github.com/minecraft-linux/android_core'
 )
 
-sha256sums=('f68d204eecf6a97893dbaaad40c088579b040f7f2a28896fabc39cb9723c1ac5'
+sha256sums=('7b6790a70856eb1d32e7d20722898639f8ae90fc8a9242b8f37b972b7499076b'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -128,33 +128,33 @@ prepare() {
 }
 
 build() {
-	export CXXFLAGS=$(echo $CXXFLAGS | sed 's/-Wp,-D_FORTIFY_SOURCE=3//g')
-	export CXXFLAGS+="$CXXFLAGS -flto=thin"
-	export CFLAGS+="$CFLAGS -flto=thin"
-  cmake -S mcpelauncher-manifest \
-    -DCMAKE_C_COMPILER=clang \
-    -DCMAKE_CXX_COMPILER=clang++ \
-    -B build -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_BUILD_TYPE=None \
-    -DENABLE_DEV_PATHS=OFF \
-    -Wno-dev
+	CXXFLAGS=$(echo $CXXFLAGS | sed 's/-Wp,-D_FORTIFY_SOURCE=3//g')
+	CXXFLAGS+="$CXXFLAGS -flto=thin"
+	CFLAGS+="$CFLAGS -flto=thin"
+	_args=(
+	-S mcpelauncher-manifest
+	-DCMAKE_INSTALL_PREFIX=/usr
+	-DCMAKE_C_COMPILER=clang
+	-DCMAKE_CXX_COMPILER=clang++
+	-DCMAKE_BUILD_TYPE=None
+	-DENABLE_DEV_PATHS=OFF
+	-Wno-dev
+	)
+	cmake -B build "${_args[@]}"
+	cmake --build build
 
-  PKG_CONFIG_PATH="/usr/lib32/pkgconfig" cmake -S mcpelauncher-manifest \
-  -DCMAKE_C_COMPILER=clang \
-  -DCMAKE_CXX_COMPILER=clang++ \
-  -B build32 -DCMAKE_INSTALL_PREFIX=/usr \
-  -DCMAKE_BUILD_TYPE=None \
-  -DENABLE_DEV_PATHS=OFF \
-  -DCMAKE_C_FLAGS="$CFLAGS -m32" \
-  -DCMAKE_CXX_FLAGS="$CXXFLAGS -m32" \
-  -DCMAKE_EXE_LINKER_FLAGS="$LDFLAGS -m32" \
-  -DENABLE_QT_ERROR_UI=OFF \
-  -DENABLE_ERROR_WINDOW=OFF \
-  -DBUILD_WEBVIEW=OFF \
-  -Wno-dev
-
-  cmake --build build
-  PKG_CONFIG_PATH="/usr/lib32/pkgconfig" cmake --build build32
+	_args+=(
+	-DCMAKE_C_FLAGS="$CFLAGS -m32"
+	-DCMAKE_CXX_FLAGS="$CXXFLAGS -m32"
+	-DCMAKE_EXE_LINKER_FLAGS="$LDFLAGS -m32"
+	-DENABLE_QT_ERROR_UI=OFF
+	-DENABLE_ERROR_WINDOW=OFF
+	-DBUILD_WEBVIEW=OFF
+	)
+	PKG_CONFIG_PATH="/usr/lib32/pkgconfig" \
+	cmake -B build32 "${_args[@]}"
+	PKG_CONFIG_PATH="/usr/lib32/pkgconfig" \
+	cmake --build build32
 }
 
 package_mcpelauncher-linux() {
