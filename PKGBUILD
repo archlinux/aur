@@ -1,5 +1,5 @@
 pkgname=python-tree-sitter
-pkgver=0.23.0
+pkgver=0.23.2
 pkgrel=1
 pkgdesc='Python bindings to the tree-sitter parsing library'
 arch=('x86_64')
@@ -20,7 +20,7 @@ source=(
   'LICENSE'
 )
 sha256sums=(
-  '4c0d186f262a6b186e155a327150064abbf02b5659f7bc580eb965374025f2c2'
+  '66bae8dd47f1fed7bdef816115146d3a41c39b5c482d7bad36d9ba1def088450'
   SKIP
 )
 
