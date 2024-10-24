@@ -1,4 +1,4 @@
-# Maintainer: Moraxyc <arch@qaq.li>
+# Maintainer: Moraxyc <i@qaq.li>
 
 pkgname=artalk-bin
 _pkgname=${pkgname%-bin}
