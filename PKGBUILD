@@ -1,7 +1,7 @@
 # Maintainer: Nikolay Korotkiy <sikmir@gmail.com>
 _orgname=fabioz
 pkgname=mu-repo
-pkgver=1.8.2
+pkgver=1.9.0
 _tagname=${pkgname//-/_}_${pkgver//./_}
 pkgrel=1
 pkgdesc="Tool to help in dealing with multiple git repositories"
@@ -12,7 +12,7 @@ depends=('python')
 provides=("${pkgname}=${pkgver}")
 conflicts=(${pkgname}-git)
 source=("https://github.com/${_orgname}/${pkgname}/archive/${_tagname}.tar.gz")
-sha256sums=('86d15f3862c52ecd07b74389b7120b299f7fe4c7368fb40e31f993684bf079c9')
+sha256sums=('5de4aae542a83f408f518485d10819e99f62e658b107db6919ce73197c834296')
 
 package() {
   cd "${srcdir}/${pkgname}-${_tagname}"
