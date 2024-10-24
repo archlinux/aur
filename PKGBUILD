@@ -13,8 +13,8 @@
 ## Contributor: Philip Abernethy <chais.z3r0@gmail.com>
 ## Contributor: sowieso <sowieso@dukun.de>
 
-_ver="1.21.1_1.0.1_0.16.7-0"
-_minecraft_ver_latest="1.21.1"
+_ver="1.21.3_1.0.1_0.16.7-1"
+_minecraft_ver_latest="1.21.3"
 
 IFS="-" read -ra _ver_temp <<<"$_ver"
 IFS="_" read -ra _pkgver_temp <<<"${_ver_temp[0]}"
@@ -46,7 +46,7 @@ pkgdesc="Minecraft Fabric server unit files, script and jar"
 arch=("any")
 url="https://fabricmc.net"
 license=("Apache")
-depends=("java-runtime-headless>=17" "tmux" "sudo" "bash" "awk" "sed")
+depends=("java-runtime-headless>=21" "tmux" "sudo" "bash" "awk" "sed")
 optdepends=("tar: required in order to create world backups"
 	"netcat: required in order to suspend an idle server")
 provides=("fabric-server=${pkgver}")
