@@ -1,17 +1,18 @@
 # Maintainer: Nebulosa  <nebulosa2007-at-yandex-dot-ru>
 
 pkgname=gsconnect
-pkgver=57
-pkgrel=4
+pkgver=58
+pkgrel=1
 pkgdesc="KDE Connect implementation. CLI usage without Gnome environment"
 arch=(x86_64)
 url="https://github.com/GSConnect/gnome-shell-extension-$pkgname"
-license=('GPL-2.0-or-later OR MPL-2.0 OR GPL-3.0-only')
+license=('CC-BY-4.0 OR CC-BY-SA-3.0 OR CC0-1.0 OR GPL-2.0-or-later OR MPL-2.0')
 depends=(
   dbus
   dconf
   gjs
   glib2
+  glibc
   gobject-introspection
   hicolor-icon-theme
   libpulse
@@ -46,11 +47,9 @@ source=(
   $pkgname.service
   gvc::git+https://github.com/JingMatrix/gvc.git
 )
-b2sums=(
-  'ca3df3335d6f3d204bfad714b096d5777e6578aa643d0b88b4dafadde8d7118a3480ec31d55b1abf9e96a616e76aa8e91503df8f8c5cc7307abcf7fc20f6f005'
-  'ecd31b50393dbbf23b5f33d16d11573200ce28fd818b99e3f54f269287c505b724fc55f0135809c679629842448b29f7986bed309baa6193aaf1211f144171b4'
-  'SKIP'
-)
+b2sums=('c39e6d82792b9e612d68fc98460b801b51ed8087a94d8eee949ff99a15f058d08842e4b4a3f22050c61ee0d71f1e58aa2574efd9fe685e267afb90492793bce1'
+        'ecd31b50393dbbf23b5f33d16d11573200ce28fd818b99e3f54f269287c505b724fc55f0135809c679629842448b29f7986bed309baa6193aaf1211f144171b4'
+        'SKIP')
 
 build() {
   local meson_options=(
