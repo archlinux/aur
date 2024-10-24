@@ -2,7 +2,7 @@
 
 pkgname='gcg'
 pkgver=1.7.8
-pkgrel=1
+pkgrel=2
 pkgdesc='A GitHub Changelog Generator. '
 url='https://github.com/ldez/gcg'
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
@@ -12,8 +12,8 @@ provides=("${pkgname}")
 depends=()
 makedepends=()
 
-_basedownloadurl="${url}/releases/download/${pkgver}"
-_basearchive="${pkgname}_${pkgver}_linux"
+_basedownloadurl="${url}/releases/download/v${pkgver}"
+_basearchive="${pkgname}_v${pkgver}_linux"
 
 source_x86_64=("${_basedownloadurl}/${_basearchive}_amd64.tar.gz")
 sha256sums_x86_64=('e2cd77550bed8890066e2a0eb6f8ad43f5c4400b7e71bff6b027460a603a3128')
