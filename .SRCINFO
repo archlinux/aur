@@ -1,14 +1,17 @@
 pkgbase = python-simple-websocket
 	pkgdesc = Simple WebSocket server and client for Python.
-	pkgver = 1.0.0
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://blog.miguelgrinberg.com/
 	arch = any
 	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
 	makedepends = python-setuptools
 	depends = python
 	depends = python-wsproto
-	source = https://github.com/miguelgrinberg/simple-websocket/archive/refs/tags/v1.0.0.tar.gz
-	sha256sums = fb99a26c97146c806fa6fd3e074fb4d0e84d6706c45e6c728b80188b6eddd26c
+	source = https://github.com/miguelgrinberg/simple-websocket/archive/refs/tags/v1.1.0.tar.gz
+	sha256sums = ad8dc86dee3d05d70a686892a8864ec7fa797397785d59ede6aa7183475a681b
 
 pkgname = python-simple-websocket
