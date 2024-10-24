@@ -1,5 +1,5 @@
 pkgbase = genshin-fps-unlock-git
-	pkgdesc = unlocks the 60 fps cap
+	pkgdesc = Unlocks the 60 fps cap in Genshin Impact
 	pkgver = v3.3.0.r7.g36c8b72
 	pkgrel = 1
 	url = https://github.com/34736384/genshin-fps-unlock
