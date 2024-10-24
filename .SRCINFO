@@ -1,0 +1,24 @@
+pkgbase = gitomatic-bin
+	pkgdesc = A tool to monitor git repositories and automatically pull & push changes
+	pkgver = 0.2
+	pkgrel = 1
+	url = https://github.com/muesli/gitomatic
+	arch = x86_64
+	arch = i686
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	provides = gitomatic
+	conflicts = gitomatic
+	source = LICENSE-0.2::https://raw.githubusercontent.com/muesli/gitomatic/v0.2/LICENSE
+	source = README-0.2.md::https://raw.githubusercontent.com/muesli/gitomatic/v0.2/README.md
+	sha256sums = 233e8cf9a812999ccee4d3edb270b0f11ab3539658e680bcb873604915ca5038
+	sha256sums = 350bde2a70227391dbe60a77adef7847ef8b68c73e2704bb0d22118986d4ddd4
+	source_x86_64 = https://github.com/muesli/gitomatic/releases/download/v0.2/gitomatic_0.2_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = 86c6235718918a5499245a6797fcc11352f518053e8e81ab1fc119b835f66517
+	source_i686 = https://github.com/muesli/gitomatic/releases/download/v0.2/gitomatic_0.2_Linux_i386.tar.gz
+	sha256sums_i686 = 67dc248bbd4112f015b1695fec709d6511de833c0dbb510493347a84e226a8fb
+	source_aarch64 = https://github.com/muesli/gitomatic/releases/download/v0.2/gitomatic_0.2_Linux_arm64.tar.gz
+	sha256sums_aarch64 = 3bc45bd5afd03938ecc97ea40b103db7b7c72873350cd9759ce6fc4058e0176e
+
+pkgname = gitomatic-bin
