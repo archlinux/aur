@@ -2,7 +2,7 @@
 pkgname=(crowdsec-firewall-bouncer-{iptables,nftables})
 pkgbase=crowdsec-firewall-bouncer
 pkgver=0.0.31
-pkgrel=1
+pkgrel=2
 pkgdesc="Crowdsec bouncer written in golang for firewalls"
 arch=('x86_64')
 url="https://doc.crowdsec.net/docs/bouncers/firewall/"

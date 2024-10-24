@@ -1,7 +1,7 @@
 pkgbase = crowdsec-firewall-bouncer
 	pkgdesc = Crowdsec bouncer written in golang for firewalls
 	pkgver = 0.0.31
-	pkgrel = 1
+	pkgrel = 2
 	url = https://doc.crowdsec.net/docs/bouncers/firewall/
 	install = cs-firewall-bouncer.install
 	arch = x86_64
