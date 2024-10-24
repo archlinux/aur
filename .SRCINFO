@@ -1,7 +1,7 @@
 pkgbase = python-albucore
 	pkgdesc = A high-performance image processing library designed to optimize and extend the Albumentations library with specialized functions for advanced image transformations
 	pkgver = 0.0.19
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/albumentations-team/albucore
 	arch = any
 	license = MIT
@@ -11,6 +11,7 @@ pkgbase = python-albucore
 	makedepends = python-wheel
 	depends = python-numpy
 	depends = python-opencv
+	depends = python-stringzilla
 	source = albucore-0.0.19.tar.gz::https://github.com/albumentations-team/albucore/archive/refs/tags/0.0.19.tar.gz
 	sha512sums = e5b7474efcf5b33996541b943488c634a3072b472521db92743f3ba5648d2f4a73668dd4ddd51d4b093f8908064a2841364396bee983a3ad4a06246ecdab1c62
 

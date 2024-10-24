@@ -3,7 +3,7 @@
 _pkgname=albucore
 pkgname=python-albucore
 pkgver=0.0.19
-pkgrel=1
+pkgrel=2
 pkgdesc='A high-performance image processing library designed to optimize and extend the Albumentations library with specialized functions for advanced image transformations'
 arch=('any')
 url='https://github.com/albumentations-team/albucore'
@@ -11,6 +11,7 @@ license=('MIT')
 depends=(
   python-numpy
   python-opencv
+  python-stringzilla
 )
 makedepends=(
   python-build
@@ -29,5 +30,6 @@ build() {
 package() {
   cd "${_pkgname}-${pkgver}"
   python -m installer --destdir="${pkgdir}" dist/*.whl
+  install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
 # vim:set ts=2 sw=2 et:
