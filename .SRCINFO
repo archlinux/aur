@@ -1,6 +1,6 @@
 pkgbase = capter
 	pkgdesc = A simple cross-platform screenshot tool made in rust
-	pkgver = v2.2.1
+	pkgver = v2.2.2
 	pkgrel = 1
 	url = https://github.com/decipher3114/capter
 	arch = x86_64
