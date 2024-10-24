@@ -1,0 +1,5 @@
+[sabnzbd]
+source = "github"
+github = "sabnzbd/sabnzbd"
+prefix = "v"
+use_latest_release = true
