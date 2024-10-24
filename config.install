@@ -1,0 +1,4 @@
+post_install() {
+	echo "To be able to configure the unlocker without superuser rights,"
+	echo "consider adding yourself to games group: usermod -a -G games"
+}
