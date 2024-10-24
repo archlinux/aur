@@ -34,7 +34,7 @@ prepare() {
 package() {
     cd "$srcdir"
 
-    install -Dm0755 -t "$pkgdir/usr/bin/" "$_pkgname-$pkgver"
+    install -Dm0755 "$_pkgname-$pkgver" "$pkgdir/usr/bin/$_pkgname"
     install -Dm644 "$_pkgname.svg" "$pkgdir/usr/share/icons/$_pkgname.svg"
     install -Dm644 "$_pkgname.desktop" "$pkgdir/usr/share/applications/$_pkgname.desktop"
 }
