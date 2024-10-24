@@ -1,0 +1,4 @@
+[rtl-sdr]
+source = "git"
+git = "https://github.com/rtlsdrblog/rtl-sdr-blog"
+prefix = "v"

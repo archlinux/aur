@@ -1,0 +1,26 @@
+pkgbase = rtl-sdr-blog
+	pkgdesc = Modified Osmocom drivers with enhancements for RTL-SDR Blog V3 and V4 units.
+	pkgver = 1.3.6
+	pkgrel = 1
+	epoch = 1
+	url = https://github.com/rtlsdrblog/rtl-sdr-blog
+	install = rtl-sdr-blog.install
+	arch = x86_64
+	license = GPL-2.0-only
+	makedepends = git
+	makedepends = cmake
+	depends = glibc
+	depends = libusb
+	provides = rtl-sdr
+	conflicts = rtl-sdr
+	conflicts = rtl-sdr-git
+	conflicts = rtl-sdr-librtlsdr-git
+	conflicts = rtl-sdr-blog-git
+	source = rtl-sdr-blog::git+https://github.com/rtlsdrblog/rtl-sdr-blog#tag=v1.3.6
+	source = fix-udev-directory.patch
+	source = rtl-sdr-blog.sysusers
+	sha512sums = bbaf2c605c8fe47197cb012bddc3e7f43cdc64d9e0e59b08f09383a60c74d6227426d276ad450b21f0b37bbfcbdecc55a6a126783fb0bd87fc7c6ffafb2cc057
+	sha512sums = 196c87cf3ccc2fb01cf44c3c3dd035268411c5d06c1d5b880f8b43946cea96b92b1c1478e2b9053f65a23c8d5734a76b0dbae2077bde48f285b26b2188336054
+	sha512sums = 121661a5f4bce17dd5abb72c26bb2015bc0a86b65ae78758bace9fa8b1b19ccb2736ed3f3bddea0c940cacfbbba89301071abe65ec9c386f679314591469378c
+
+pkgname = rtl-sdr-blog

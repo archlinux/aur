@@ -1,0 +1,5 @@
+*.tar.gz
+rtl-sdr-blog-*.pkg.*
+pkg/
+src/
+rtl-sdr-blog/
