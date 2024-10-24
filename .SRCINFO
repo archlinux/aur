@@ -1,5 +1,5 @@
 pkgbase = hyprwall
-	pkgdesc = GUI for setting wallpapers with Hyprpaper, written in blazingly fast Rust!
+	pkgdesc = GUI for setting wallpapers on Wayland (multiple backends). Written in blazingly fast Rust!
 	pkgver = 0.1.4
 	pkgrel = 1
 	url = https://github.com/nnyyxxxx/hyprwall

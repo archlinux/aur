@@ -2,7 +2,7 @@
 pkgname='hyprwall'
 pkgver=0.1.4
 pkgrel=1
-pkgdesc='GUI for setting wallpapers with Hyprpaper, written in blazingly fast Rust!'
+pkgdesc='GUI for setting wallpapers on Wayland (multiple backends). Written in blazingly fast Rust!'
 arch=('x86_64')
 url="https://github.com/nnyyxxxx/$pkgname"
 license=('GPL-2.0')
