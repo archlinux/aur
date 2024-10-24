@@ -29,7 +29,7 @@ build() {
     npm --prefix=frontend install
     npm --prefix=frontend run build
     rm frontend/.env.production frontend/.next/standalone/.env.production
-    grep -rl "${srcdir}/${pkgbase}-${pkgver}/frontend" frontend/.next | xargs -I {} sed -i "s|${srcdir}/${pkgbase}-${pkgver}/frontend||g" {}
+    grep -rl "${srcdir}/${pkgbase}-${pkgver}/frontend" frontend/.next | xargs -I {} sed -i "s|${srcdir}/${pkgbase}-${pkgver}/frontend|/usr/share/${pkgbase}-web|g" {}
 
     go build -trimpath -ldflags="-s -w -X ${url//https:\/\//}/pkg/version.version=${pkgver}" -o "${pkgbase}" ./cmd
 }
