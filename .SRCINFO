@@ -1,7 +1,7 @@
 pkgbase = crowdsec-bin
 	pkgdesc = The open-source and participative security solution offering crowdsourced protection against malicious IPs and access to the most advanced real-world CTI
 	pkgver = 1.6.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/crowdsecurity/crowdsec
 	install = crowdsec-bin.install
 	arch = any
@@ -18,7 +18,7 @@ pkgbase = crowdsec-bin
 	backup = etc/crowdsec/config.yaml
 	backup = etc/crowdsec/local_api_credentials.yaml
 	backup = etc/crowdsec/online_api_credentials.yaml
-	source = crowdsec-bin-v1.6.3.tgz::https://github.com/crowdsecurity/crowdsec/releases/download/v1.6.3/crowdsec-release.tgz
+	source = crowdsec-bin-v1.6.3.tgz::https://github.com/crowdsecurity/crowdsec/archive/v1.6.3/crowdsec-release.tar.gz
 	source = crowdsec-bin.install
 	source = crowdsec.sysusers
 	sha256sums = 36d78b9c0c908fb009e75346245eda07bf129fdecb8efbb275a1853f3da35086

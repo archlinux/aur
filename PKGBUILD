@@ -4,7 +4,7 @@
 
 pkgname=crowdsec-bin
 pkgver=1.6.3
-pkgrel=1
+pkgrel=2
 pkgdesc="The open-source and participative security solution offering crowdsourced protection against malicious IPs and access to the most advanced real-world CTI"
 arch=('any')
 url="https://github.com/crowdsecurity/crowdsec"
@@ -31,7 +31,7 @@ backup=(
   etc/crowdsec/online_api_credentials.yaml
 )
 source=(
-  "$pkgname-v${pkgver}.tgz"::https://github.com/crowdsecurity/crowdsec/releases/download/v${pkgver}/crowdsec-release.tgz
+  "$pkgname-v${pkgver}.tgz"::$url/archive/v${pkgver}/crowdsec-release.tar.gz
   crowdsec-bin.install
   crowdsec.sysusers
 )
