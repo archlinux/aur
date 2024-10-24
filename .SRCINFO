@@ -1,18 +1,17 @@
 pkgbase = regexy
 	pkgdesc = produce a JSON representation of pacman "-S" and/or "-Q" databases
-	pkgver = 0.2.6
+	pkgver = 0.4.4
 	pkgrel = 1
 	url = https://sr.ht/~minshall/regexy/
 	arch = any
 	license = MIT
-	checkdepends = cram
+	makedepends = asciidoctor
 	makedepends = emacs
 	makedepends = gawk
 	makedepends = gengetopt
 	makedepends = git
-	makedepends = sed
 	depends = glibc
-	source = git+https://git.sr.ht/~minshall/regexy#tag=64f48212490d1297252f35efdf837ac4a1f314c0?signed
+	source = git+https://git.sr.ht/~minshall/regexy#tag=2e0cac308d2be7838af79f6b26328a0363f56b76?signed
 	validpgpkeys = BB68C8D3A3D23B9B398FB50AC397C74C54A9EC4F
 	sha256sums = SKIP
 

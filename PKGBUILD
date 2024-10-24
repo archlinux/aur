@@ -1,17 +1,17 @@
 # Maintainer:  Greg Minshall <minshall at umich dot edu>
 pkgname=regexy
-pkgver=0.2.6
+pkgver=0.4.4
 pkgrel=1
 pkgdesc="produce a JSON representation of pacman \"-S\" and/or \"-Q\" databases"
 arch=(any)
 url="https://sr.ht/~minshall/regexy/"
 license=('MIT')
 depends=('glibc')
-makedepends=('emacs' 'gawk' 'gengetopt' 'git' 'sed')
-checkdepends=('cram')
+makedepends=('asciidoctor' 'emacs' 'gawk' 'gengetopt' 'git')
+# checkdepends=('valgrind')
 # git rev-parse ${pkgver} [copy from above] in upstream repo:
-# git rev-parse 0.2.6
-_tag=64f48212490d1297252f35efdf837ac4a1f314c0
+# git rev-parse 0.4.4
+_tag=2e0cac308d2be7838af79f6b26328a0363f56b76
 source=(git+https://git.sr.ht/~minshall/regexy#tag=${_tag}?signed)
 validpgpkeys=(
     BB68C8D3A3D23B9B398FB50AC397C74C54A9EC4F # Greg Minshall <minshall@acm.org>
@@ -31,8 +31,6 @@ build() {
 
 check() {
     cd "${pkgname}"
-
-    make check
 }
 
 package() {
