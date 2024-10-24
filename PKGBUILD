@@ -2,7 +2,7 @@
 # Contributor: acxz <akashpatel2008 at yahoo dot com>
 _base=ray
 pkgname=python-${_base}
-pkgver=2.37.0
+pkgver=2.38.0
 pkgrel=1
 pkgdesc="A fast and simple framework for building and running distributed
 applications"
@@ -39,7 +39,7 @@ optdepends=('python-pandas: for ray[data, tune, rllib]'
 )
 conflicts=(mesa-demos)
 source=(${_base}-${_base}-${pkgver}.tar.gz::${url}/archive/${_base}-${pkgver}.tar.gz)
-sha512sums=('b6748ad7ee85c0f2fa708e2caa1d5c31e58cf68b09c25876f538e3270959ced1b10af8c2fb77c0e549e6347861f912c37468049ca9ba057101fbf784f096a1ce')
+sha512sums=('f0fa4f89d9458b8577a3f67d6a3c0ab12b3515607459ef37f652b39d52510ad03a1ccdb6227cc182095a225b98929f3b455388e5fad77522a0bc35bc45c8e61f')
 
 # prepare() {
 #   sed -i '/    runtime_env_agent_pip_packages/,+11 s/^/#/' ${_base}-${_base}-${pkgver}/python/setup.py
