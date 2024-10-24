@@ -1,12 +1,25 @@
 pkgbase = gitbatch-bin
 	pkgdesc = A TUI to manage your git repositories in one place
-	pkgver = 0.5.0
+	pkgver = 0.6.1
 	pkgrel = 1
 	url = https://github.com/isacikgoz/gitbatch
 	arch = x86_64
+	arch = i686
+	arch = aarch64
 	license = MIT
-	source_x86_64 = https://github.com/isacikgoz/gitbatch/releases/download/v0.5.0/gitbatch_0.5.0_linux_amd64.tar.gz
-	sha512sums_x86_64 = 4fa68ee5ccd1d886d509966af6ff0c888f8ca292b07e4696772edead648382575479ba47e0707c9f31530546c9c05a5ba371f5522b8118e885c8a9a3b02ee232
+	makedepends = help2man
+	depends = glibc
+	provides = gitbatch
+	conflicts = gitbatch
+	source = LICENSE-0.6.1::https://raw.githubusercontent.com/isacikgoz/gitbatch/v0.6.1/LICENSE
+	source = README-0.6.1.md::https://raw.githubusercontent.com/isacikgoz/gitbatch/v0.6.1/README.md
+	sha512sums = e29c0d311892210f824716f36eb619db5e39be734ab5202c76c18908e9d3ec3cf541b4e9d8b04e7ade0cdfe10bf331a79890fe815d09ce7facd793168f288256
+	sha512sums = f98b3ef21f688be6751dfc71f4aa89a5bac1c3011887756e8cdeb47d00f4987d400fbc1b4667128f7211b882d576e6f8863411e9d7ebed06e4d4eb3125f5853c
+	source_x86_64 = https://github.com/isacikgoz/gitbatch/releases/download/v0.6.1/gitbatch_0.6.1_linux_amd64.tar.gz
+	sha512sums_x86_64 = cc6132565484647607ff8a9760ace512d777b7aac418684a2aa97310afb8dc08d4799908ac3feb1b0cc760e32e7bf502c4bbdc642e3db871c629649f3b316efc
+	source_i686 = https://github.com/isacikgoz/gitbatch/releases/download/v0.6.1/gitbatch_0.6.1_linux_386.tar.gz
+	sha512sums_i686 = 5a4c3fdf08ccca03e9c2e07b0a32863645cb53e359d6f6af30cea183d8bfa22add6d136c8f8a0bff57dcaa5434f9f70400650901774468c6271b6ddbb4382b5c
+	source_aarch64 = https://github.com/isacikgoz/gitbatch/releases/download/v0.6.1/gitbatch_0.6.1_linux_arm64.tar.gz
+	sha512sums_aarch64 = 501ebe46b0b7725e8230c5af5e2237c350919367d6d26091cc456bc0af0a46a61f63fd416089ca784f9e2a7a8850cc4017830400050a0796dfffe1e567203e41
 
 pkgname = gitbatch-bin
-
