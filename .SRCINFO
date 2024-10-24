@@ -1,6 +1,6 @@
 pkgbase = castblock-git
 	pkgdesc = CastBlock skips integrated youtube sponsors on all chromecasts on the network.
-	pkgver = 51.243e756
+	pkgver = 101.9f9b57c
 	pkgrel = 1
 	url = https://github.com/erdnaxeli/castblock
 	arch = any
@@ -12,6 +12,8 @@ pkgbase = castblock-git
 	provides = castblock
 	conflicts = castblock
 	source = castblock::git+https://github.com/erdnaxeli/castblock.git#branch=main
+	source = update-ameba.patch
 	sha512sums = SKIP
+	sha512sums = 160156a0b2cbb3a5804baf46f4f181714bbaf407408b3acc8905883119b8469fa506f8c96f62701a43dd532ff5cea0af31a2d5449cea8e5d3dda01a10eb1bd7a
 
 pkgname = castblock-git
