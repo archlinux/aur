@@ -1,16 +1,14 @@
 pkgbase = lightwrite
-	pkgdesc = Lightwrite is a simple sdl2 based text-editor.
+	pkgdesc = Little text editor made with SDL2 in C.
 	pkgver = 0.1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/tim-tm/lightwrite
 	arch = x86_64
 	license = MIT
-	makedepends = make
-	makedepends = gcc
 	depends = glibc
 	depends = sdl2
 	depends = sdl2_ttf
-	source = lightwrite-0.1.0::https://github.com/tim-tm/lightwrite/releases/download/v0.1.0/lightwrite-0.1.0.tar.gz
-	sha512sums = e55b75a1046288ff7648fd097c908bcea4e3bcc1941ca349df9e6a8a0a77682a68a6cc9c8443b156cede81d6f7b83e861ac2684cf58f6de6963b4324e2c7adf5
+	source = lightwrite-0.1.0.tar.gz::https://github.com/tim-tm/lightwrite/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = e9bcea027bd7f64d19d1d8115fc96564bf3f2c80970c61e603ad5c4175e4273a
 
 pkgname = lightwrite
