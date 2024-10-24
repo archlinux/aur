@@ -2,7 +2,7 @@
 pkgname=csvedepli
 pkgver=0.2.6
 pkgrel=1
-pkgdesc="produce a JSON representation of pacman \"-S\" and/or \"-Q\" databases"
+pkgdesc="grep- and sed-like programs for .csv files"
 arch=(any)
 url="https://sr.ht/~minshall/csvedepli/"
 license=('MIT')
