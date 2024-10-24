@@ -22,6 +22,6 @@ prepare() {
 package() {
     cd "$srcdir"
 
-    install -Dm0755 -t "$pkgdir/usr/bin/$_pkgname" "$_pkgname-$pkgver"
+    install -Dm0755 "$_pkgname-$pkgver" "$pkgdir/usr/bin/$_pkgname"
     install -Dm644 "$_pkgname.desktop" "$pkgdir/usr/share/applications/$_pkgname.desktop"
 }
