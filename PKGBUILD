@@ -1,9 +1,9 @@
-# Maintainer: Eddie Ringle <eddie@ringle.io>
-# based on https://aur.archlinux.org/packages/brother-mfc-l2713dw/
-pkgname="brother-mfc-l2750dw"
-pkgver="4.0.0"
+# Maintainer: Alex Parrill <alex.parrill@col32.net>
+# based on https://aur.archlinux.org/packages/brother-mfc-l2750dw/
+pkgname="brother-hl-l2420dw"
+pkgver="4.1.0"
 pkgrel=1
-pkgdesc="LPR and CUPS driver for the Brother MFC-l2750DW"
+pkgdesc="LPR and CUPS driver for the Brother HL-L2420DW"
 url="http://solutions.brother.com/linux/en_us/"
 arch=("i686" "x86_64")
 license=("custom:brother commercial license")
@@ -11,14 +11,14 @@ depends=("cups")
 depends_x86_64=("lib32-glibc")
 install="$pkgname.install"
 source=(
-	"http://download.brother.com/welcome/dlf103529/mfcl2750dwpdrv-$pkgver-$pkgrel.i386.rpm"
+  "https://download.brother.com/welcome/dlf105956/hll2420dwpdrv-$pkgver-$pkgrel.i386.rpm"
 )
-md5sums=(
-	"74e8e59060d8038bfb9090091354bf09"
+sha512sums=(
+	"ef4405db411afc861cbb3e2f677677a74ae263b7222bc49c53e2a7a4373b65a9a0c4844cfd4eb680fa5a32a4a93cce5842c79612587292e2713f4b813ef90b11"
 )
 
 package() {
-	_model="MFCL2750DW"
+	_model="HLL2420DW"
   # using /usr/share instead of /opt
   mkdir -p "$pkgdir/usr/share"
   cp -R "$srcdir/opt/brother" "$pkgdir/usr/share"
@@ -39,7 +39,4 @@ package() {
   # a couple architecture-specific symlinks
   ln -s "/usr/share/brother/Printers/$_model/lpd/$CARCH/brprintconflsr3" "$pkgdir/usr/share/brother/Printers/$_model/lpd/"
   ln -s "/usr/share/brother/Printers/$_model/lpd/$CARCH/rawtobr3" "$pkgdir/usr/share/brother/Printers/$_model/lpd/"
-
-  # symlink for inf because it tries to execute it there
-  ln -s "/usr/share/brother/Printers/$_model/inf" "$pkgdir/usr/share/brother/Printers/$_model/lpd/"
 }
