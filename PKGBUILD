@@ -3,14 +3,15 @@
 _name=paddleocr
 pkgname=${_name}-git
 pkgdesc="Awesome multilingual OCR toolkits based on PaddlePaddle"
-pkgver=r5997.013870d9
+pkgver=2.8.0.r112.g661cda12
 pkgrel=1
-arch=('any')
+arch=(any)
 url="https://github.com/PaddlePaddle/${_name}"
-license=('Apache2')
+license=(Apache-2.0)
 depends=(python-shapely python-scikit-image python-imgaug python-pyclipper
-  python-lmdb python-tqdm visualdl python-opencv python-lxml python-premailer
-  python-openpyxl python-attrdict python-pymupdf paddlepaddle)
+  python-lmdb python-tqdm visualdl python-opencv python-rapidfuzz cython
+  python-pillow python-yaml python-docx python-beautifulsoup4 python-fonttools
+  python-fire python-requests python-albucore python-albumentations paddlepaddle)
 makedepends=(python-build python-installer python-setuptools python-wheel git)
 provides=(${_name})
 conflicts=(${_name})
@@ -24,7 +25,7 @@ prepare() {
 
 pkgver() {
   cd ${_name}
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
