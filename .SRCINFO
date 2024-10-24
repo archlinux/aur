@@ -14,7 +14,7 @@ pkgbase = clash-verge-rev-alpha-bin
 	conflicts = clash-verge-rev-git
 	conflicts = clash-verge
 	conflicts = clash-verge-bin
-	source_x86_64 = clash-verge-rev-2.0.0-x86_64.deb::https://github.com/clash-verge-rev/clash-verge-rev/releases/download/alpha/Clash.Verge_2.0.0_amd64.deb
+	source_x86_64 = clash-verge-rev-2.0.0-x86_64.deb::https://github.com/clash-verge-rev/clash-verge-rev/releases/download/alpha/Clash.Verge_2.0.0-rc.3_amd64.deb
 	sha512sums_x86_64 = SKIP
 
 pkgname = clash-verge-rev-alpha-bin
