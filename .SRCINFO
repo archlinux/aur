@@ -1,7 +1,7 @@
 pkgbase = jetbrains-resharper-commandlinetools
 	pkgdesc = JetBrains ReSharper Command Line Tools
 	pkgver = 2024.2.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.jetbrains.com/resharper
 	arch = x86_64
 	license = custom:jetbrains
