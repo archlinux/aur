@@ -1,8 +1,9 @@
+# Maintainer: Michał Wojdyła < micwoj9292 at gmail dot com >
 # Contributor: Henry-Joseph Audéoud <h.audeoud+aur@gmail.com>
 
 pkgname=ruby-unicode-name
 _name="${pkgname#ruby-}"
-pkgver=1.13.0
+pkgver=1.13.3
 pkgrel=1
 pkgdesc='[Unicode 15.1.0] Returns the name, aliases, or label of a Unicode code point'
 arch=(any)
@@ -12,7 +13,7 @@ depends=(ruby 'ruby-unicode-types')
 options=(!emptydirs)
 source=("https://rubygems.org/downloads/${_name}-${pkgver}.gem")
 noextract=("${_name}-${pkgver}.gem")
-sha256sums=(0ead83d8794c3b53307008df84d640a74af7d361582fe5e7b1b37b56f1c5e706)
+sha256sums=(cd3c3d68604a4db1f385bdb5c674d2cdddf1d39eaf60ebc0c71b92c8a6df7abd)
 
 package() {
     local _gemdir="$(ruby -e'puts Gem.default_dir')"
