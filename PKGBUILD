@@ -1,7 +1,7 @@
 # Maintainer: Steffen Klee <steffen dot klee at gmail dot com>
 pkgname='samsung-scantopc'
 pkgver=0.6.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Tool to interact with the \"scan to PC\" option in Samsung MFP."
 arch=('any')
 url="https://github.com/kleest/samsung-scantopc"

@@ -1,7 +1,7 @@
 pkgbase = samsung-scantopc
 	pkgdesc = Tool to interact with the "scan to PC" option in Samsung MFP.
 	pkgver = 0.6.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/kleest/samsung-scantopc
 	arch = any
 	license = GPL3
