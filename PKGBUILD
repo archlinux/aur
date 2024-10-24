@@ -3,7 +3,7 @@
 pkgname=mpdcovergrabber-git
 pkgver=0.r7.99708e5
 pkgrel=1
-pkgdesc="User service that fetches album covers for the currently playing song in MPD and saves to the music directory."
+pkgdesc="A user service that fetches album covers for the currently playing song in MPD and saves them to the music directory"
 arch=('any')
 url="https://gitlab.com/teraflops/mpdcovergrabber"
 license=('BSD')
