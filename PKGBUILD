@@ -1,8 +1,8 @@
-# Maintainer: Sir-Photch < sir-photch at posteo dot me >
+# Maintainer: Sir-Photch < aur@liebender.dev >
 
 _pkgname=libsgm
 pkgname=libsgm-git
-pkgver=3.1.0.r0.g5ec81db
+pkgver=3.1.0.r4.ge4c669b
 pkgrel=1
 pkgdesc="Stereo Semi Global Matching by cuda"
 url="https://github.com/fixstars/libSGM"
@@ -14,8 +14,8 @@ makedepends=(git)
 provides=(libsgm)
 source=("$_pkgname::git+$url.git"
 	"git+https://github.com/google/googletest.git")
-sha256sums=(SKIP
-	    SKIP)
+sha256sums=('SKIP'
+            'SKIP')
 
 pkgver() {
 	cd $_pkgname
@@ -53,7 +53,7 @@ package() {
 	DESTDIR="$pkgdir" cmake --install build
 
 	mkdir -p "$pkgdir/usr/lib/cmake/$_pkgname"
-	mv "$pkgdir/usr/FindLibSGM.cmake" "$pkgdir/usr/lib/cmake/$_pkgname"
+	mv "$pkgdir/usr/FindLibSGM.cmake" "$pkgdir/usr/lib/cmake/$_pkgname/LibSGMConfig.cmake"
 
 	install -Dm 644 "$srcdir/$_pkgname/LICENSE" -t "$pkgdir/usr/share/licenses/$_pkgname"
 	install -Dm 644 "$srcdir/$_pkgname/README"{.jp.md,.md} -t "$pkgdir/usr/share/doc/$_pkgname"

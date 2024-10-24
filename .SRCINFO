@@ -1,6 +1,6 @@
 pkgbase = libsgm-git
 	pkgdesc = Stereo Semi Global Matching by cuda
-	pkgver = 3.1.0.r0.g5ec81db
+	pkgver = 3.1.0.r4.ge4c669b
 	pkgrel = 1
 	url = https://github.com/fixstars/libSGM
 	arch = x86_64
