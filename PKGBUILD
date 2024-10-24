@@ -2,7 +2,7 @@
 pkgname=(crowdsec-firewall-bouncer-{iptables,nftables})
 pkgbase=crowdsec-firewall-bouncer
 pkgver=0.0.31
-pkgrel=0
+pkgrel=1
 pkgdesc="Crowdsec bouncer written in golang for firewalls"
 arch=('x86_64')
 url="https://doc.crowdsec.net/docs/bouncers/firewall/"
@@ -16,7 +16,7 @@ conflicts=(cs-firewall-bouncer)
 backup=(etc/crowdsec/bouncers/crowdsec-firewall-bouncer.yaml)
 install=cs-firewall-bouncer.install
 source=(
-    "$pkgbase-$pkgver.tar.gz::https://github.com/crowdsecurity/cs-firewall-bouncer/archives/v${pkgver}/${pkgbase}-linux-amd64.tgz"
+    "$pkgbase-$pkgver.tar.gz::https://github.com/crowdsecurity/cs-firewall-bouncer/archive/v${pkgver}/${pkgbase}-linux-amd64.tar.gz"
 )
 sha256sums=('e4f6ed09fd9ce74117c2bc3db950326304cc741e1f6f532583d35b73a42dbad9')
 
