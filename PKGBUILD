@@ -1,7 +1,7 @@
 # Maintainer: Alan Barros de Oliveira <alanbarros@protonmail.com>
 pkgname=timepatrol-git
 _pkgname=timepatrol
-pkgver=r170.74e9fa5
+pkgver=r171.33ab478
 pkgrel=1
 pkgdesc="BTRFS snapshots manager and rollback tool"
 arch=(any)
