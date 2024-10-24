@@ -3,8 +3,8 @@
 
 pkgname=webfontkitgenerator
 pkgnamehyphenated=webfont-kit-generator
-pkgver=1.1.1
-pkgrel=2
+pkgver=1.2.0
+pkgrel=1
 pkgdesc='Create @font-face kits easily'
 arch=('any')
 url='https://github.com/rafaelmardojai/webfontkitgenerator'
@@ -12,7 +12,7 @@ license=('GPL3')
 depends=('gtk4' 'gtksourceview5' 'gst-python' 'libadwaita' 'python-fonttools' 'python-brotli')
 makedepends=('appstream-glib' 'meson' 'git' 'pkgconf' 'blueprint-compiler')
 source=("$url/archive/$pkgver/$pkgnamehyphenated-$pkgver.tar.gz")
-sha256sums=('8d85f35e9c6a144d0584185fb528e7d03b24b35530cd66d09496ceb71d5c05bd')
+sha256sums=('9e84c3d3f14b7b79bd9128828db21f4b8688036755dca4aaa24836fd2ca837c2')
 
 build() {
   arch-meson $pkgnamehyphenated-$pkgver build
