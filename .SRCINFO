@@ -1,8 +1,8 @@
 pkgbase = python-customtkinter-git
-        pkgdesc = Python bindings for the FMOD Ex sound library
+        pkgdesc = A modern and customizable python UI-library based on Tkinter.
         pkgver = r583.10f34d2
-        pkgrel = 1
-        url = A modern and customizable python UI-library based on Tkinter.
+        pkgrel = 2
+        url = https://github.com/TomSchimansky/CustomTkinter
         arch = x86_64
         license = MIT
         makedepends = python-build
