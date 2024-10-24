@@ -1,0 +1,10 @@
+--- a/muttprint	2024-10-24 19:44:54.893781212 +1300
++++ b/muttprint	2024-10-24 19:45:14.780443098 +1300
+@@ -47,7 +47,6 @@
+ use Text::Wrap;
+ use File::Temp qw(tempdir);
+ use File::Temp qw(tempfile);
+-use File::Spec qw(tmpdir);
+ use File::stat qw(stat);
+ use utf8;
+ 
