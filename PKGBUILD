@@ -2,12 +2,12 @@
 _pkgname='hyprgui'
 pkgname='hyprgui-bin'
 pkgver=0.1.4
-pkgrel=1
+pkgrel=2
 pkgdesc='GUI for configuring Hyprland, written in blazingly fast Rust!'
 arch=('x86_64')
 url='https://github.com/nnyyxxxx/hyprgui'
 license=('GPL-2.0')
-source=("https://github.com/nnyyxxxx/$_pkgname/releases/download/v$pkgver/$_pkgname"
+source=("$_pkgname-$pkgver::https://github.com/nnyyxxxx/$_pkgname/releases/download/v$pkgver/$_pkgname"
     "https://raw.githubusercontent.com/nnyyxxxx/$_pkgname/refs/tags/v$pkgver/$_pkgname.desktop")
 sha256sums=('dd170e55322db56f3fd5069118f48f7eb2eecf94ce094a10e3bddd9a8ab03441' 'SKIP')
 depends=('glibc' 'gcc-libs' 'gtk4')
@@ -22,6 +22,6 @@ prepare() {
 package() {
     cd "$srcdir"
 
-    install -Dm0755 -t "$pkgdir/usr/bin/" "$_pkgname"
+    install -Dm0755 -t "$pkgdir/usr/bin/$_pkgname" "$_pkgname-$pkgver"
     install -Dm644 "$_pkgname.desktop" "$pkgdir/usr/share/applications/$_pkgname.desktop"
 }
