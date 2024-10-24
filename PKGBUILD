@@ -13,7 +13,7 @@ unset _pkgtype
 # basic info
 _pkgname=flycast
 pkgname="$_pkgname${_pkgtype:-}"
-pkgver=2.3.2
+pkgver=2.4
 pkgrel=1
 pkgdesc='Sega Dreamcast, Naomi, and Atomiswave emulator'
 url="https://github.com/flyinghead/flycast"
@@ -28,6 +28,7 @@ depends=(
 makedepends=(
   'cmake'
   'git'
+  'ninja'
   'python'
 )
 
@@ -39,24 +40,28 @@ if [[ "${_build_clang::1}" == "t" ]]; then
   )
 fi
 
-_source_flycast() {
+_source_main() {
   _pkgsrc="$_pkgname"
   source=(
     "$_pkgsrc"::"git+$url.git#tag=v$pkgver"
-    'breakpad-disable.patch'
   )
   sha256sums=(
-    '40bfce628692596b0be0d8dcc1fcbc76b37dbed68587235f43803c479ba706e8'
-    '0a6a9c7bc3ba1fc3ca9bdd3134e722f6db73f2a222990e49cabae8fb687c0beb'
+    'f92414666d141e744273086eb68145c5e418387719af1a874fbde6e4cbeb84f9'
   )
+}
 
+_source_flycast() {
   source+=(
+    'bylaws.libadrenotools'::'git+https://github.com/bylaws/libadrenotools.git'
     'flyinghead.mingw-breakpad'::'git+https://github.com/flyinghead/mingw-breakpad.git'
+    'google.googletest'::'git+https://github.com/google/googletest.git'
     'google.oboe'::'git+https://github.com/google/oboe.git'
     'gpuopen-librariesandsdks.vulkanmemoryallocator'::'git+https://github.com/GPUOpen-LibrariesAndSDKs/VulkanMemoryAllocator.git'
+    'harmonytf.discord-rpc'::'git+https://github.com/harmonytf/discord-rpc.git'
     'khronosgroup.glslang'::'git+https://github.com/KhronosGroup/glslang.git'
     'khronosgroup.vulkan-headers'::'git+https://github.com/KhronosGroup/Vulkan-Headers.git'
     'libsdl-org.sdl'::'git+https://github.com/libsdl-org/SDL.git'
+    'retroachievements.rcheevos'::'git+https://github.com/RetroAchievements/rcheevos.git'
     'rtissera.libchdr'::'git+https://github.com/rtissera/libchdr.git'
     'vinniefalco.luabridge'::'git+https://github.com/vinniefalco/LuaBridge.git'
     'vkedwardli.spout2'::'git+https://github.com/vkedwardli/Spout2.git'
@@ -73,18 +78,26 @@ _source_flycast() {
     'SKIP'
     'SKIP'
     'SKIP'
+    'SKIP'
+    'SKIP'
+    'SKIP'
+    'SKIP'
   )
 }
 
 _prepare_flycast() (
   cd "$srcdir/$_pkgsrc"
   local _submodules=(
+    'bylaws.libadrenotools'::'core/deps/libadrenotools'
     'flyinghead.mingw-breakpad'::'core/deps/breakpad'
+    'google.googletest'::'core/deps/googletest'
     'google.oboe'::'core/deps/oboe'
     'gpuopen-librariesandsdks.vulkanmemoryallocator'::'core/deps/VulkanMemoryAllocator'
+    'harmonytf.discord-rpc'::'core/deps/discord-rpc'
     'khronosgroup.glslang'::'core/deps/glslang'
     'khronosgroup.vulkan-headers'::'core/deps/Vulkan-Headers'
     'libsdl-org.sdl'::'core/deps/SDL'
+    'retroachievements.rcheevos'::'core/deps/rcheevos'
     'rtissera.libchdr'::'core/deps/libchdr'
     'vinniefalco.luabridge'::'core/deps/luabridge'
     'vkedwardli.spout2'::'core/deps/Spout'
@@ -92,6 +105,9 @@ _prepare_flycast() (
   )
   _submodule_update
 )
+
+_source_main
+_source_flycast
 
 prepare() {
   _submodule_update() {
@@ -113,30 +129,31 @@ prepare() {
   }
 
   _prepare_flycast
-
-  cd "$_pkgsrc"
-  apply-patch "$srcdir/breakpad-disable.patch"
 }
 
 build() {
-  local _cmake_options=(
-    -B build
-    -S "$_pkgsrc"
-    -DCMAKE_INSTALL_PREFIX='/usr'
-    -DCMAKE_BUILD_TYPE=Release
-    -Wno-dev
-  )
-
   if [[ "${_build_clang::1}" == "t" ]]; then
-    export CC=clang
-    export CXX=clang++
-    export LDFLAGS+=" -fuse-ld=lld"
+    export CC CXX LDFLAGS
+    CC=clang
+    CXX=clang++
+    LDFLAGS="${LDFLAGS//-fuse-ld=*/} -fuse-ld=lld"
   fi
 
   if [[ "${_build_avx::1}" == "t" ]]; then
-    export CFLAGS="$(echo "$CFLAGS" | sed -E 's@(\s*-(march|mtune)=\S+\s*)@ @g;s@\s*-O[0-9]\s*@ @g;s@\s+@ @g') -march=x86-64-v3 -mtune=generic -O3"
-    export CXXFLAGS="$(echo "$CXXFLAGS" | sed -E 's@(\s*-(march|mtune)=\S+\s*)@ @g;s@\s*-O[0-9]\s*@ @g;s@\s+@ @g') -march=x86-64-v3 -mtune=generic -O3"
+    export CFLAGS CXXFLAGS
+    CFLAGS="$(echo "$CFLAGS" | sed -E 's@(\s*-(march|mtune)=\S+\s*)@ @g;s@\s*-O[0-9]\s*@ @g;s@\s+@ @g') -march=x86-64-v3 -mtune=generic -O3"
+    CXXFLAGS="$(echo "$CXXFLAGS" | sed -E 's@(\s*-(march|mtune)=\S+\s*)@ @g;s@\s*-O[0-9]\s*@ @g;s@\s+@ @g') -march=x86-64-v3 -mtune=generic -O3"
   fi
+
+  local _cmake_options=(
+    -B build
+    -S "$_pkgsrc"
+    -G Ninja
+    -DCMAKE_BUILD_TYPE=Release
+    -DCMAKE_INSTALL_PREFIX='/usr'
+    -DUSE_BREAKPAD=OFF
+    -Wno-dev
+  )
 
   cmake "${_cmake_options[@]}"
   cmake --build build
@@ -149,5 +166,3 @@ package() {
 
   DESTDIR="$pkgdir" cmake --install build
 }
-
-_source_flycast
