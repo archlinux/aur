@@ -28,7 +28,7 @@ _opt_build=0
 
 set -u
 pkgname='openmeetings'
-_pkgver='6.3.0'
+_pkgver='7.2.0'
 pkgver="${_pkgver//-/.}"
 pkgrel='1'
 #pkgdesc='Multi-Language Cross-Platform Customizable Web-Conferencing and Collaboration'
@@ -73,8 +73,8 @@ else
   noextract=("${_srzgz}")
 fi
 #_verwatch=("https://archive.apache.org/dist/${pkgname}/" "\([0-9\.]\+\)/" 'l')
-md5sums=('44fcbeea70c67f671120e14ce8de0d63')
-sha256sums=('e909c0291e75359e1b5e23f9427e2e5108524867747c22a18a49981e7ab2917d')
+md5sums=('e86c460057ac59ee1b781f9503906a61')
+sha256sums=('deca7f222cf0bf5c56f2c7c5ee89cf76cb896925665a8db058f19bfaafc71aaa')
 
 #PKGEXT='.pkg.tar.gz'
 

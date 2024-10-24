@@ -1,6 +1,6 @@
 pkgbase = openmeetings
 	pkgdesc = Provides video conferencing, instant messaging, white board, collaborative document editing and other groupware tools. It uses API functions of Media Server for Remoting and Streaming (Red5 or Kurento)
-	pkgver = 6.3.0
+	pkgver = 7.2.0
 	pkgrel = 1
 	url = http://openmeetings.apache.org/
 	install = openmeetings.install
@@ -27,15 +27,15 @@ pkgbase = openmeetings
 	optdepends = docker
 	optdepends = kurento-media-server
 	optdepends = kms-elements
-	noextract = apache-openmeetings-6.3.0.tar.gz
+	noextract = apache-openmeetings-7.2.0.tar.gz
 	options = !strip
 	backup = opt/openmeetings/webapps/openmeetings/WEB-INF/classes/META-INF/persistence.xml
 	backup = opt/openmeetings/webapps/openmeetings/WEB-INF/classes/org/apache/openmeetings/web/room/VideoSettings.html
 	backup = opt/openmeetings/conf/server.xml
 	backup = opt/openmeetings/conf/context.xml
 	backup = opt/openmeetings/conf/logging.properties
-	source = https://www.apache.org/dist/openmeetings/6.3.0/bin/apache-openmeetings-6.3.0.tar.gz
-	md5sums = 44fcbeea70c67f671120e14ce8de0d63
-	sha256sums = e909c0291e75359e1b5e23f9427e2e5108524867747c22a18a49981e7ab2917d
+	source = https://www.apache.org/dist/openmeetings/7.2.0/bin/apache-openmeetings-7.2.0.tar.gz
+	md5sums = e86c460057ac59ee1b781f9503906a61
+	sha256sums = deca7f222cf0bf5c56f2c7c5ee89cf76cb896925665a8db058f19bfaafc71aaa
 
 pkgname = openmeetings
