@@ -1,6 +1,6 @@
 pkgbase = mcy-nightly
 	pkgdesc = Mutation Cover with Yosys
-	pkgver = 20241023_yosys_0.46
+	pkgver = 20241024_yosys_0.46
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/YosysHQ/mcy
