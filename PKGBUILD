@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=memisc
-_pkgver=0.99.31.8
+_pkgver=0.99.31.8.1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -20,8 +20,8 @@ optdepends=(
   r-sandwich
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('50e3492635686382d2f2dc6ae39d92a7')
-b2sums=('cc06788e9626dd2479b70d47ab9c28c8662694235cfe45750b56116fed424f2f9ad90c3bafeb0664a0a57ba86694adbac6f9be1f0d0e5fa3ccedeb4fa9a6d567')
+md5sums=('c2ca580fc2d0372d13dab6a90c2ca749')
+b2sums=('2fdd4a583bd905790ab474f4e0fd301255c1b83c1c4bc43d9aa8d55540dcf66bb4991329e9567acd54802cfd54633801e63d41876b5630af6cd774c0b2dfef3f')
 
 build() {
   mkdir build
