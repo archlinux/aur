@@ -24,7 +24,7 @@ _dict=(alt-cannadic
 pkgbase=mozc-ut-full
 pkgname=("$pkgbase-common" "ibus-$pkgbase" "fcitx5-$pkgbase" "emacs-$pkgbase")
 pkgver=2.30.5618.102.20241022
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://github.com/fcitx/mozc"
 license=('custom')
@@ -60,7 +60,7 @@ sha512sums=('2cc3f89a98ab646627cc01743e62af435f2346f9ebda0b38d401f8821415de8992d
             'SKIP'
             'SKIP'
             'SKIP'
-            'e7b059f2f31da3a2390d2b867c2380d1c96ddd5287524285c06290c689b936325a0bd9212685a019f3b2860975161396d2989c45c1e5b8cb6167e79fdbda4b66'
+            '192b46b6437eff5f1a77f946798acc9780d51db2b0693a5dc4650a5b5dee2166512ad8ca79511cd091894149be4d646472f5a4340d4a63fab7ed52c99a9bae37'
             '3df5b09bed5a14cb1ea2de55dde5e129896355e564235710f9be0f276ac2b58802ef6d04fbc65a25223d17c9a4133a5ed78bbfe5d50b76018982f507e29bc906'
             '12e76f3a859ca010805a643842e91e699bc0ba61e908250d2c759326166704d62a249fe711c907026f1695001656af52ae81bdda637bcdbb3933c363d844d38b'
             'f2855f4bc7bff66800bc484db8ea422abae9571b8500967260b2ba2127dc6c4248b4078f2ed6c6be35c1eae76d2c2c394b3b2eeb57a9bc06b2ad83360dcebc84'
