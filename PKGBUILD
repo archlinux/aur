@@ -1,0 +1,27 @@
+# Maintainer: Your Name <your.email@example.com>
+pkgname=boring
+pkgver=0.4.1
+pkgrel=1
+pkgdesc="A boring project"
+arch=('x86_64')
+url="https://github.com/alebeck/boring"
+license=('MIT')
+depends=('go')
+
+source=("$pkgname::git+$url.git#tag=$pkgver")
+md5sums=('SKIP')
+
+build() {
+  cd "$srcdir/$pkgname"
+  export GOPATH="$srcdir/go"
+  mkdir -p "$GOPATH"
+  go build -o ./bin/boring ./cmd/boring
+}
+
+package() {
+  cd "$srcdir/$pkgname"
+  install -Dm755 "./bin/boring" "$pkgdir/usr/bin/boring"
+}
+
+# No checksums are used, as requested
+

@@ -1,0 +1,12 @@
+pkgbase = boring
+	pkgdesc = A boring project
+	pkgver = 0.4.1
+	pkgrel = 1
+	url = https://github.com/alebeck/boring
+	arch = x86_64
+	license = MIT
+	depends = go
+	source = boring::git+https://github.com/alebeck/boring.git#tag=0.4.1
+	md5sums = SKIP
+
+pkgname = boring
