@@ -1,6 +1,6 @@
 pkgbase = crow-translate
 	pkgdesc = Application that allows you to translate and speak text
-	pkgver = 3.0.0
+	pkgver = 3.1.0
 	pkgrel = 1
 	url = https://apps.kde.org/crowtranslate/
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = crow-translate
 	depends = gst-plugins-good
 	depends = openssl
 	depends = tesseract
-	source = https://download.kde.org/stable/crow-translate/3.0.0/crow-translate-v3.0.0.tar.gz
-	sha256sums = 978edc8e9a2faba79126e4c3538bc391de8e29b97b98ea1acc0a99e713ad08b6
+	source = https://download.kde.org/stable/crow-translate/3.1.0/crow-translate-v3.1.0.tar.gz
+	sha256sums = 8cafa4a812079020839beaf0b133e08be6e47d6ffa1cf90f3417efdc7589c7a1
 
 pkgname = crow-translate
