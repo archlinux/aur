@@ -1,16 +1,17 @@
 # Maintainer: Adam Perkowski <adas1per@protonmail.com>
 _pkgname='hyprwall'
 pkgname='hyprwall-bin'
-pkgver=0.1.3
+pkgver=0.1.4
 pkgrel=1
 optdepends=('hyprland')
 pkgdesc='GUI for setting wallpapers with Hyprpaper, written in blazingly fast Rust!'
 arch=('x86_64')
 url="https://github.com/nnyyxxxx/$_pkgname"
 license=('GPL-2.0')
-source=("https://github.com/nnyyxxxx/$_pkgname/releases/download/v$pkgver/$_pkgname"
+source=("$_pkgname-$pkgver::https://github.com/nnyyxxxx/$_pkgname/releases/download/v$pkgver/$_pkgname"
+    "https://raw.githubusercontent.com/nnyyxxxx/$_pkgname/refs/tags/v$pkgver/$_pkgname.svg"
     "https://raw.githubusercontent.com/nnyyxxxx/$_pkgname/refs/tags/v$pkgver/$_pkgname.desktop")
-sha256sums=('5115243e88180cbbe2f0feb4e4750d82098b27724ec7fcba7f51695d13775f25' 'SKIP')
+sha256sums=('4460502bb5f08b27d675d73e245b33ee02dd9757df9111cb8fe84bc14f778fa0' 'SKIP' 'SKIP')
 depends=('glibc' 'gcc-libs' 'gtk4')
 optdepends=('hyprpaper' 'swaybg' 'swww' 'wallutils' 'feh')
 conflicts=($_pkgname)
@@ -33,6 +34,7 @@ prepare() {
 package() {
     cd "$srcdir"
 
-    install -Dm0755 -t "$pkgdir/usr/bin/" "$_pkgname"
+    install -Dm0755 -t "$pkgdir/usr/bin/" "$_pkgname-$pkgver"
+    install -Dm644 "$_pkgname.svg" "$pkgdir/usr/share/icons/$_pkgname.svg"
     install -Dm644 "$_pkgname.desktop" "$pkgdir/usr/share/applications/$_pkgname.desktop"
 }
