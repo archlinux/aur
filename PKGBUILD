@@ -34,6 +34,7 @@ prepare() {
 
 build() {
 	cd idevicerestore
+	export LIBS="-lm"
 	./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var
 	#sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool # not needed anymore (libtool honors $LDFLAGS now)
 	make
