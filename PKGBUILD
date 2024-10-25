@@ -3,7 +3,7 @@
 pkgbase=python-drizzle
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}" "python-${_pyname}-doc")
-pkgver=1.15.3
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="A package for combining dithered images into a single image"
 arch=('i686' 'x86_64')
@@ -15,12 +15,13 @@ makedepends=('python-setuptools-scm>=3.4'
              'python-installer'
              'python-numpy>=2.0.0'
              'python-sphinx-automodapi'
-             'python-astropy'
+             'python-pytest-doctestplus'
              'graphviz')
-checkdepends=('python-pytest')   # astropy already in makedepends
+checkdepends=('python-pytest'
+              'python-astropy')
 #source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
 source=("https://github.com/spacetelescope/drizzle/archive/refs/tags/${pkgver}.tar.gz")
-md5sums=('c08b323ce63e4091ac797de512df8de1')
+md5sums=('be01291867ab1d174082f82f74c5582e')
 
 get_pyver() {
     python -c "import sys; print('$1'.join(map(str, sys.version_info[:2])))"
@@ -32,7 +33,7 @@ prepare() {
 
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}
-    python -m build --wheel --no-isolation --skip-dependency-check
+    python -m build --wheel --no-isolation #--skip-dependency-check
 
     msg "Building Docs"
     PYTHONPATH="../build/lib.linux-${CARCH}-cpython-$(get_pyver)" make -C docs html
