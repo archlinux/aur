@@ -1,0 +1,15 @@
+[Desktop Entry]
+Type=Application
+Name=SyncClipboard
+Icon=syncclipboard
+Comment=A Clibpoard Syncing Tool
+Comment[CN]=剪贴板同步工具
+Exec=env LANG=en_US.UTF-8 /usr/bin/syncclipboard-desktop
+TryExec=/usr/bin/syncclipboard-desktop
+NoDisplay=false
+X-AppImage-Integrate=true
+Terminal=false
+Categories=Utility
+StartupWMClass=SyncClipboard.Desktop.Default
+MimeType=
+Keywords=

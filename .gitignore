@@ -1,0 +1,6 @@
+/pkg
+/src
+/syncclipboard
+*.tar.gz
+*.txt
+*.pkg.tar.*
