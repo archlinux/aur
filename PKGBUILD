@@ -35,5 +35,5 @@ package() {
 	cd qBittorrent-Enhanced-Edition-release-$pkgver
 
 	DESTDIR="$pkgdir" cmake --install build
-	install -Dm644 COPYING -t "$pkgdir"/usr/share/licenses/$pkgname/COPYING
+	install -Dm644 COPYING "$pkgdir"/usr/share/licenses/$pkgname/COPYING
 }
