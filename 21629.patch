@@ -1,0 +1,105 @@
+From 3cf5a50883352ce3fff009c70ae9a81ef6d65f62 Mon Sep 17 00:00:00 2001
+From: Gustas <gustas.kazukauskas@gmail.com>
+Date: Mon, 21 Oct 2024 11:26:32 +0300
+Subject: [PATCH] Replace modcontent
+
+---
+ packaging/functions.sh            | 3 ++-
+ packaging/linux/buildpackage.sh   | 2 +-
+ packaging/macos/buildpackage.sh   | 8 ++++++--
+ packaging/windows/OpenRA.nsi      | 5 ++++-
+ packaging/windows/buildpackage.sh | 2 +-
+ 5 files changed, 14 insertions(+), 6 deletions(-)
+
+diff --git a/packaging/functions.sh b/packaging/functions.sh
+index b346d0e78db6..010e767c0925 100755
+--- a/packaging/functions.sh
++++ b/packaging/functions.sh
+@@ -123,7 +123,8 @@ install_data() (
+ 		if [ "${MOD_ID}" = "ra" ] || [ "${MOD_ID}" = "cnc" ] || [ "${MOD_ID}" = "d2k" ]; then
+ 			echo "Installing mod ${MOD_ID} to ${DEST_PATH}"
+ 			cp -r "${SRC_PATH}/mods/${MOD_ID}" "${DEST_PATH}/mods/"
+-			cp -r "${SRC_PATH}/mods/modcontent" "${DEST_PATH}/mods/"
++			cp -r "${SRC_PATH}/mods/common-content" "${DEST_PATH}/mods/"
++			cp -r "${SRC_PATH}/mods/${MOD_ID}-content" "${DEST_PATH}/mods/"
+ 		fi
+ 
+ 		shift
+diff --git a/packaging/linux/buildpackage.sh b/packaging/linux/buildpackage.sh
+index d52667d4f6f6..faf74e2f768a 100755
+--- a/packaging/linux/buildpackage.sh
++++ b/packaging/linux/buildpackage.sh
+@@ -70,7 +70,7 @@ build_appimage() {
+ 	install_assemblies "${SRCDIR}" "${APPDIR}/usr/lib/openra" "linux-x64" "net6" "True" "True" "${IS_D2K}"
+ 	install_data "${SRCDIR}" "${APPDIR}/usr/lib/openra" "${MOD_ID}"
+ 	set_engine_version "${TAG}" "${APPDIR}/usr/lib/openra"
+-	set_mod_version "${TAG}" "${APPDIR}/usr/lib/openra/mods/${MOD_ID}/mod.yaml" "${APPDIR}/usr/lib/openra/mods/modcontent/mod.yaml"
++	set_mod_version "${TAG}" "${APPDIR}/usr/lib/openra/mods/${MOD_ID}/mod.yaml" "${APPDIR}/usr/lib/openra/mods/${MOD_ID}-content/mod.yaml"
+ 
+ 	# Add launcher and icons
+ 	sed "s/{MODID}/${MOD_ID}/g" AppRun.in | sed "s/{MODNAME}/${DISPLAY_NAME}/g" > "${APPDIR}/AppRun"
+diff --git a/packaging/macos/buildpackage.sh b/packaging/macos/buildpackage.sh
+index 7a06b9b62e1e..7d2847c7bb9a 100755
+--- a/packaging/macos/buildpackage.sh
++++ b/packaging/macos/buildpackage.sh
+@@ -9,7 +9,7 @@
+ #                                       Generate using `base64 certificate.p12 | pbcopy`
+ #   MACOS_DEVELOPER_CERTIFICATE_PASSWORD: password to unlock the MACOS_DEVELOPER_CERTIFICATE_BASE64 certificate
+ #
+-# The applicaton bundles will be notarized if the following environment variables are defined:
++# The application bundles will be notarized if the following environment variables are defined:
+ #   MACOS_DEVELOPER_USERNAME: Email address for the developer account
+ #   MACOS_DEVELOPER_PASSWORD: App-specific password for the developer account
+ #
+@@ -81,7 +81,7 @@ build_app() {
+ 
+ 	install_data "${SRCDIR}" "${LAUNCHER_RESOURCES_DIR}" "${MOD_ID}"
+ 	set_engine_version "${TAG}" "${LAUNCHER_RESOURCES_DIR}"
+-	set_mod_version "${TAG}" "${LAUNCHER_RESOURCES_DIR}/mods/${MOD_ID}/mod.yaml" "${LAUNCHER_RESOURCES_DIR}/mods/modcontent/mod.yaml"
++	set_mod_version "${TAG}" "${LAUNCHER_RESOURCES_DIR}/mods/${MOD_ID}/mod.yaml" "${LAUNCHER_RESOURCES_DIR}/mods/${MOD_ID}-content/mod.yaml"
+ 
+ 	# Assemble multi-resolution icon
+ 	mkdir "${MOD_ID}.iconset"
+@@ -149,6 +149,10 @@ build_app "${TEMPLATE_DIR}" "${BUILTDIR}/OpenRA - Dune 2000.app" "d2k" "Dune 200
+ rm -rf "${TEMPLATE_DIR}"
+ 
+ echo "Packaging disk image"
++if hdiutil info | grep -q "/Volumes/OpenRA"; then
++  echo "Some process is stealing our resources! /Volumes/OpenRA is already mounted!"
++fi
++
+ hdiutil create "build.dmg" -format UDRW -volname "OpenRA" -fs HFS+ -srcfolder build
+ DMG_DEVICE=$(hdiutil attach -readwrite -noverify -noautoopen "build.dmg" | egrep '^/dev/' | sed 1q | awk '{print $1}')
+ sleep 2
+diff --git a/packaging/windows/OpenRA.nsi b/packaging/windows/OpenRA.nsi
+index b45180828135..f55a27f9584d 100644
+--- a/packaging/windows/OpenRA.nsi
++++ b/packaging/windows/OpenRA.nsi
+@@ -122,10 +122,13 @@ Section "Game" GAME
+ 	RMDir /r "$INSTDIR\mods"
+ 	SetOutPath "$INSTDIR\mods"
+ 	File /r "${SRCDIR}\mods\common"
++	File /r "${SRCDIR}\mods\common-content"
+ 	File /r "${SRCDIR}\mods\cnc"
++	File /r "${SRCDIR}\mods\cnc-content"
+ 	File /r "${SRCDIR}\mods\d2k"
++	File /r "${SRCDIR}\mods\d2k-content"
+ 	File /r "${SRCDIR}\mods\ra"
+-	File /r "${SRCDIR}\mods\modcontent"
++	File /r "${SRCDIR}\mods\ra-content"
+ 
+ 	SetOutPath "$INSTDIR"
+ 	File "${SRCDIR}\*.exe"
+diff --git a/packaging/windows/buildpackage.sh b/packaging/windows/buildpackage.sh
+index 004fa19ebe72..caf2375410c8 100755
+--- a/packaging/windows/buildpackage.sh
++++ b/packaging/windows/buildpackage.sh
+@@ -78,7 +78,7 @@ function build_platform()
+ 	install_assemblies "${SRCDIR}" "${BUILTDIR}" "win-${PLATFORM}" "net6" "False" "True" "True"
+ 	install_data "${SRCDIR}" "${BUILTDIR}" "cnc" "d2k" "ra"
+ 	set_engine_version "${TAG}" "${BUILTDIR}"
+-	set_mod_version "${TAG}" "${BUILTDIR}/mods/cnc/mod.yaml" "${BUILTDIR}/mods/d2k/mod.yaml" "${BUILTDIR}/mods/ra/mod.yaml"  "${BUILTDIR}/mods/modcontent/mod.yaml"
++	set_mod_version "${TAG}" "${BUILTDIR}/mods/cnc/mod.yaml" "${BUILTDIR}/mods/d2k/mod.yaml" "${BUILTDIR}/mods/ra/mod.yaml" "${BUILTDIR}/mods/cnc-content/mod.yaml" "${BUILTDIR}/mods/d2k-content/mod.yaml" "${BUILTDIR}/mods/ra-content/mod.yaml"
+ 
+ 	echo "Compiling Windows launchers (${PLATFORM})"
+ 	makelauncher "RedAlert" "Red Alert" "ra" "${PLATFORM}"

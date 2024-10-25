@@ -1,7 +1,7 @@
 # Maintainer: Brenton Horne <brentonhorne77@gmail.com>
 
 pkgname=openra-wts-git
-pkgver=29586.git.bf64339
+pkgver=30181.git.b62c883
 pkgrel=1
 pkgdesc="OpenRA built from latest git commit and with the experimental Tiberian Sun mod included."
 arch=('x86_64')
@@ -14,9 +14,11 @@ makedepends=('git' 'unzip' 'mono-msbuild')
 conflicts=('openra' 'openra-bleed' 'openra-git')
 options=(!strip)
 source=("git+https://github.com/OpenRA/OpenRA.git"
+"https://github.com/OpenRA/OpenRA/pull/21629.patch"
 "https://raw.githubusercontent.com/wiki/OpenRA/OpenRA/Changelog.md")
 sha256sums=('SKIP'
-            '47eba0cbd69f2fccc68295b8d5b05e316b5ba92092c9e097b66fe7d75ccf0129')
+            'SKIP'
+            'SKIP')
 
 pkgver() {
     cd $srcdir/OpenRA
@@ -27,6 +29,11 @@ pkgver() {
     printf "$version"
 }
 
+prepare() {
+	cd $srcdir/OpenRA
+	patch -Np1 -i $srcdir/21629.patch
+}
+
 build() {
     cd $srcdir/OpenRA
     make all RUNTIME=mono DEBUG=false TARGETPLATFORM=unix-generic
@@ -35,8 +42,11 @@ build() {
 package() {
     cd $srcdir/OpenRA
     mkdir -p $pkgdir/usr/lib/openra
+    echo "Running install make command..."
     make prefix=/usr DESTDIR="$pkgdir" install DEBUG=false RUNTIME=mono
+    echo "Running install-linux-shortcuts make command..."
     make prefix=/usr DESTDIR="$pkgdir" install-linux-shortcuts DEBUG=false   
+    echo "Running install-linux-appdata make command..."
     make prefix=/usr DESTDIR="$pkgdir" install-linux-appdata DEBUG=false
     cp -r mods/ts $pkgdir/usr/lib/openra/mods
     cp $pkgdir/usr/bin/openra-ra $pkgdir/usr/bin/openra-ts
