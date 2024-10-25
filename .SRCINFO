@@ -1,6 +1,6 @@
 pkgbase = chsrc-git
 	pkgdesc = A cli tool to change source for every software on every platform
-	pkgver = 20241025.r895.c6a0801
+	pkgver = 20241026.r896.a225786
 	pkgrel = 1
 	url = https://github.com/RubyMetric/chsrc
 	arch = x86_64
