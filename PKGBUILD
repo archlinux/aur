@@ -2,7 +2,7 @@
 pkgname=filegdb-api
 _pkgname=FileGDB_API
 pkgver=1.5.1
-pkgrel=4
+pkgrel=5
 pkgdesc="ESRI File Geodatabase (FileGDB) API"
 arch=('i686' 'x86_64')
 url="https://github.com/Esri/file-geodatabase-api"
@@ -22,6 +22,7 @@ esac
 
 prepare() {
     cd $srcdir
+    rm -rf $pkgname/
     mv ${_pkgname}-* $pkgname
 }
 
@@ -67,9 +68,9 @@ package() {
     mkdir -p $pkgdir/usr/{lib,share/{doc,licenses}/$pkgname}
     mkdir -p $pkgdir/usr/include/${pkgname}/
 
-    install -Dm644 $srcdir/${pkgname}/lib/* "$pkgdir/usr/lib/"
-    rm $pkgdir/usr/lib/libstdc++.so*
-    install -Dm644 $srcdir/${pkgname}/include/* "$pkgdir/usr/include/$pkgname"
+    rm -r $srcdir/${pkgname}/lib/libstdc++.so*
+    install -Dm755 $srcdir/${pkgname}/lib/* "$pkgdir/usr/lib/"
+    install -Dm755 $srcdir/${pkgname}/include/* "$pkgdir/usr/include/$pkgname"
 
     cp -r $srcdir/${pkgname}/doc/html "$pkgdir/usr/share/doc/$pkgname/"
 
