@@ -1,10 +1,10 @@
-# Maintainer:
+# Maintainer: Nicholas Wang <me@nicho1as.wang>
 # Contributor: Charles L <charles@crwl.org>
 # Contributor: Sanpi <sanpi+aur@homecomputing.fr>
 
 _pkgname="emsdk"
 pkgname="$_pkgname"
-pkgver=3.1.69
+pkgver=3.1.70
 pkgrel=1
 pkgdesc='The Emscripten SDK'
 url="https://github.com/emscripten-core/emsdk"
@@ -21,9 +21,7 @@ _pkgext="tar.gz"
 source=(
   "$_pkgsrc.$_pkgext"::"https://github.com/emscripten-core/emsdk/archive/${pkgver}.$_pkgext"
 )
-sha256sums=(
-  '7fbf610accce016f8b05196c254cc92162c07571979fbd0b6e5a4c50fded157c'
-)
+sha256sums=('5aa3fcdfbc3812419e9c73a5147ca9f9fdda897e05f24161813df14b35fcd7a5')
 
 package() {
   install -Dm755 /dev/stdin "$pkgdir/usr/bin/emsdk" << END
