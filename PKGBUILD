@@ -1,15 +1,15 @@
 # Maintainer: Jjohn Regan <john@jrjrtech.com>
 
 pkgname=libgme-git
-pkgver=r215.013d467
+pkgver=r382.cb2c1cc
 pkgrel=1
 pkgdesc="Video game music file emulation/playback library (git version)"
-url="https://bitbucket.org/mpyne/game-music-emu"
+url="https://github.com/libgme/game-music-emu"
 license=('LGPL')
 arch=('x86_64')
-depends=('gcc-libs' 'libunrar')
+depends=('gcc-libs' 'glibc' 'zlib')
 makedepends=('cmake' 'git')
-source=('game-music-emu::git+https://bitbucket.org/mpyne/game-music-emu.git')
+source=('game-music-emu::git+https://github.com/libgme/game-music-emu.git')
 sha256sums=('SKIP')
 
 provides=('libgme')
@@ -29,7 +29,9 @@ build() {
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DBUILD_SHARED_LIBS=ON \
-    -DENABLE_UBSAN=OFF
+    -DENABLE_UBSAN=OFF \
+    -DGME_ZLIB=ON \
+    -DGME_BUILD_EXAMPLES=OFF
   make
 }
 
