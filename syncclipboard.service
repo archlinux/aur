@@ -1,0 +1,13 @@
+[Unit]
+Description = SyncClipboard Server
+Wants = network-online.target
+After = network-online.target
+
+[Service]
+User = syncclipboard
+Restart = on-failure
+WorkingDirectory = /var/lib/syncclipboard
+ExecStart = /usr/bin/syncclipboard-server --contentRoot /var/lib/syncclipboard
+
+[Install]
+WantedBy = multi-user.target

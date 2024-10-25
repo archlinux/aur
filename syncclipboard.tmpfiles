@@ -1,0 +1,4 @@
+d  /var/lib/syncclipboard                              0755 syncclipboard syncclipboard - -
+L+ /var/lib/syncclipboard/appsettings.json             -    syncclipboard syncclipboard - /etc/syncclipboard/appsettings.json
+L+ /var/lib/syncclipboard/appsettings.Development.json -    syncclipboard syncclipboard - /etc/syncclipboard/appsettings.Development.json
+Z  /var/lib/syncclipboard                              -    syncclipboard syncclipboard - -
