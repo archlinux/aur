@@ -6,14 +6,15 @@
 # Test if login works: https://iamapps.belgium.be/tma/
 
 pkgname=eid-mw
-pkgver=5.1.19
+pkgver=5.1.20
+_pkgverlong=5.1.20.1.gb3056f4d
 pkgrel=1
 pkgdesc="The Belgian e-ID (electronic identity card) viewer and Firefox extension"
 arch=("x86_64")
 url="https://eid.belgium.be/"
 license=("LGPL-3.0-only")
-depends=("gtk3" "libproxy" "curl" "libbsd")
-makedepends=("autoconf-archive" "pcsclite")
+depends=("gtk3" "libproxy" "curl" "p11-kit" "libassuan" "openssl" "libgpg-error" "libxml2")
+makedepends=("autoconf-archive" "pcsclite" "libtool" "libbsd")
 optdepends=(
     "firefox: Extension for Belgian eid"
     "acsccid: ACS CCID smart card readers"
@@ -21,31 +22,28 @@ optdepends=(
     "pcsc-tools: PC/SC smartcard tools"
 )
 source=(
-    "https://dist.eid.belgium.be/continuous/sources/$pkgname-$pkgver-v$pkgver.tar.gz"
-    "https://dist.eid.belgium.be/continuous/sources/$pkgname-$pkgver-v$pkgver.tar.gz.asc"
+    "https://dist.eid.belgium.be/continuous/sources/$pkgname-$pkgver-v${_pkgverlong}.tar.gz"
+    "https://dist.eid.belgium.be/continuous/sources/$pkgname-$pkgver-v${_pkgverlong}.tar.gz.asc"
 )
-sha256sums=('fc38d298cd2295f1db0043c8c80f53370fa3ee319041831d67b9b4ee593c141f'
+sha256sums=('b4c0bb1517900de1ed80b8612faf56a60b66da73eb7a57edbba37bf8450083ad'
             'SKIP')
 #    Upstream only signs the "continuous releases" of the software, so that is the version
 #    we are using.. 
 #    The following key is taken from https://files.eid.belgium.be/info.html.
 validpgpkeys=("D95426E309C0492990D8E8E2824A5E0010A04D46")
 
-#prepare() {
-#    # This optional autoreconf command could help prevent malware. Uncomment if wanted.
-     # The makedepends "autoconf-archive" is required for this.
-#    cd "${pkgname}-${pkgver}-v${pkgver}"
-#    NOCONFIGURE=1 autoreconf -vfi
-#}
-
 build() {
-    cd "$pkgname-$pkgver-v$pkgver"
+    cd "$pkgname-$pkgver-v$_pkgverlong"
     sed -i "s/c_rehash/openssl rehash/g" plugins_tools/eid-viewer/Makefile.in
-    SSL_PREFIX=/usr ./configure --prefix=/usr --libexecdir=/usr/bin --sysconfdir=/etc
+    SSL_PREFIX=/usr ./configure \
+	--prefix=/usr \
+	--libexecdir=/usr/bin \
+	--sysconfdir=/etc \
+	--disable-static
     make
 }
 
 package() {
-    cd "$pkgname-$pkgver-v$pkgver"
+    cd "$pkgname-$pkgver-v$_pkgverlong"
     make install DESTDIR="$pkgdir"
 }
