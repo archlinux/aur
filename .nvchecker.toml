@@ -1,0 +1,7 @@
+[google-chrome-canary]
+source = "apt"
+mirror = "https://dl.google.com/linux/chrome/deb/"
+pkg = "google-chrome-canary"
+suite = "stable"
+repo = "main"
+strip_release = true
