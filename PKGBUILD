@@ -2,14 +2,23 @@
 
 pkgbase=mounriver-studio-community-bin
 pkgname=(${pkgbase})
-pkgver=170
+pkgver=180
 pkgrel=1
 arch=('x86_64')
 url='http://www.mounriver.com/'
 license=('GPL2' 'GPL3' 'custom')
 provides=('MounRiver-Studio-Community-Linux' ${pkgname%-bin})
 conflicts=(${pkgname%-bin})
-depends=()
+depends=(
+    #     gcc-libs
+    #     glib2
+    #     glibc
+    #     libsecret
+    #     java-runtime
+    #     perl
+    #     python
+    #     zlib
+)
 makedepends=('tar')
 optdepends=('ch34x-dkms-git: CH341SER driver with fixed bug'
     'i2c-ch341-dkms: CH341 USB-I2C adapter driver'
@@ -20,7 +29,7 @@ optdepends=('ch34x-dkms-git: CH341SER driver with fixed bug'
     'ch343ser-dkms: USB serial driver for ch342/ch343/ch344/ch347/ch347f/ch9101/ch9102/ch9103/ch9104, etc (dkms).'
     'wchisp: WCH ISP Tool in Rust')
 source=("${pkgbase}-${pkgver}.tar.xz::http://file.mounriver.com/upgrade/MounRiver_Studio_Community_Linux_x64_V${pkgver}.tar.xz")
-sha256sums=('e1c5a2b61e21f4b9a696a37f95aaeb6ccc97b276b88a691400cf9da4d621efb0')
+sha256sums=('bc7cdf4d8e704c33accc1f4afb6d35f1595c073535ae65e6f5adb4a8ac299222')
 options=('!strip')
 noextract=(${pkgbase}-${pkgver}.tar.xz)
 
@@ -34,29 +43,37 @@ prepare() {
 package_mounriver-studio-community-bin() {
     pkgdesc="为 Eclipse 平台爱好者提供的一款 RISC-V 内核芯片集成开发环境，支持 WCH 系列 MCU 的工程模板、代码编译、下载、调试等功能。 "
     depends=('bash'
-             'libftdi-compat'
-             'libusb'
-             'hidapi'
-             'libusb-compat'
-             'libudev.so')
+        'libftdi-compat'
+        'libusb'
+        'hidapi'
+        'libusb-compat'
+        'libudev.so'
+        gcc-libs
+        glib2
+        glibc
+        libsecret
+        java-runtime
+        perl
+        python
+        zlib)
     install -dm0755 "${pkgdir}/opt/wch/${pkgname%-bin}/"
     cp -a "${srcdir}"/MRS_Community/* "${pkgdir}/opt/wch/${pkgname%-bin}"
     install -Dm0644 "${srcdir}/beforeinstall/50-wch.rules" "${pkgdir}/usr/lib/udev/rules.d/50-wch-community.rules"
     install -Dm0644 "${srcdir}/beforeinstall/60-openocd.rules" "${pkgdir}/usr/lib/udev/rules.d/60-openocd-wch-community.rules"
 
-    install -Dm0755 /dev/stdin "${pkgdir}/usr/bin/openocd-wch-community-arm" << EOF
+    install -Dm0755 /dev/stdin "${pkgdir}/usr/bin/openocd-wch-community-arm" <<EOF
 #!/bin/env bash
 exec /opt/wch/${pkgname%-bin}/toolchain/OpenOCD/bin/openocd -f /opt/wch/${pkgname%-bin}/toolchain/OpenOCD/bin/wch-arm.cfg "\$@"
 
 EOF
 
-    install -Dm0755 /dev/stdin "${pkgdir}/usr/bin/openocd-wch-community-riscv" << EOF
+    install -Dm0755 /dev/stdin "${pkgdir}/usr/bin/openocd-wch-community-riscv" <<EOF
 #!/bin/env bash
 exec /opt/wch/${pkgname%-bin}/toolchain/OpenOCD/bin/openocd -f /opt/wch/${pkgname%-bin}/toolchain/OpenOCD/bin//wch-riscv.cfg "\$@"
 
 EOF
 
-    install -Dm0644 /dev/stdin "${pkgdir}/etc/profile.d/${pkgname%-bin}.sh" << EOF
+    install -Dm0644 /dev/stdin "${pkgdir}/etc/profile.d/${pkgname%-bin}.sh" <<EOF
 #!/bin/sh
 [ -d /opt/wch/${pkgname%-bin}/toolchain/arm-none-eabi-gcc/bin/ ] && append_path '/opt/wch/${pkgname%-bin}/toolchain/arm-none-eabi-gcc/bin/'
 [ -d /opt/wch/${pkgname%-bin}/toolchain/RISC-V\ Embedded\ GCC/bin/ ] && append_path '/opt/wch/${pkgname%-bin}/toolchain/RISC-V\ Embedded GCC/bin/'
