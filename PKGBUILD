@@ -1,4 +1,4 @@
-# Maintainer: Lonny Wong <lonnywong@qq.com>
+# Maintainer: devome <evinedeng@hotmail.com>
 
 _netver=6.0
 _reponame=SyncClipboard
@@ -61,7 +61,7 @@ build() {
 package() {
     local zipfile="build/linux/output/${_reponame}-${pkgver}-${pkgrel}.linux-x64.zip"
 
-    install -Dm644 "${_pkgname}.desktop"          "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
+    install -Dm644 "${_pkgname}.desktop"         "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
 
     cd "${_pkgname}"
     for res in 16 32 48 64 128 256 512; do
