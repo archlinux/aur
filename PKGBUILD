@@ -3,7 +3,7 @@
 # Contributor: Mateusz Kaczanowski <kaczanowski.mateusz@gmail.com>
 pkgbase='vim-git'
 pkgname=('vim-git')
-pkgver=.
+pkgver=r20350.de79f9129a
 pkgrel=1
 pkgdesc="VIM: Vi IMproved"
 arch=('i686' 'x86_64')
