@@ -1,0 +1,3 @@
+[python-icoextract]
+source = "git"
+git = "https://github.com/jlu5/icoextract.git"
