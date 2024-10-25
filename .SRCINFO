@@ -11,6 +11,7 @@ pkgbase = qman-git
 	makedepends = python-cogapp
 	depends = ncurses
 	depends = libinih
+	depends = zlib
 	source = qman-git::git+https://github.com/plp13/qman.git
 	sha256sums = SKIP
 
