@@ -1,0 +1,25 @@
+pkgbase = materialious-bin
+	pkgdesc = Modern material design for Invidious
+	pkgver = 1.6.16
+	pkgrel = 1
+	url = https://github.com/Materialious/Materialious
+	arch = x86_64
+	license = AGPL3
+	makedepends = libarchive
+	depends = at-spi2-core
+	depends = gtk3
+	depends = libnotify
+	depends = libsecret
+	depends = libxss
+	depends = libxtst
+	depends = nss
+	depends = util-linux-libs
+	depends = xdg-utils
+	optdepends = libappindicator-gtk3
+	provides = materialious
+	conflicts = materialious-git
+	options = !debug
+	source = https://github.com/Materialious/Materialious/releases/download/1.6.16/Materialious_1.6.16_amd64.deb
+	sha512sums = 7d9171e2925bd1268a668cf858c7d48523cc3edfe7c13203ae2a42164f55c006b91e42b1788172949b0849c2707f798f8f70bc9b8093658a73858a09a998f75d
+
+pkgname = materialious-bin
