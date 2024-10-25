@@ -8,6 +8,7 @@ pkgbase = rofi-file-browser-extended-patched
 	makedepends = git
 	makedepends = cmake
 	makedepends = make
+	makedepends = rofi
 	provides = rofi-file-browser-extended
 	conflicts = rofi-file-browser-extended-git
 	source = git+https://github.com/DemonKingSwarn/rofi-file-browser-extended
