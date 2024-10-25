@@ -20,6 +20,8 @@ pkgbase = android-x86-64-qt6-sensors
 	options = staticlibs
 	options = !emptydirs
 	source = https://download.qt.io/official_releases/qt/6.8/6.8.0/submodules/qtsensors-everywhere-src-6.8.0.tar.xz
+	source = 0001-Fix-build-for-Android.patch
 	sha256sums = 723544c5fa05fab75d53d66186a7ce83fb2f6f9a770ce796306992e983dde679
+	sha256sums = f45924027fc035d20db631012e787dbb3ee2c80f641a0a0b75231519800ef1b3
 
 pkgname = android-x86-64-qt6-sensors
