@@ -2,10 +2,10 @@
 pkgname=redis-viewer-bin
 _pkgname=redisviewer
 _appname="Redis Viewer"
-pkgver=2.4.5
+pkgver=2.4.9
 _electronversion=28
 pkgrel=1
-pkgdesc="A Redis visualization client tool that pursues ultimate performance, minimalist layout, efficient interaction, cross platform, and supports deserialization of Java bytecode."
+pkgdesc="A Redis visualization client tool that pursues ultimate performance, minimalist layout, efficient interaction, cross platform, and supports deserialization of Java bytecode.Prebuilt version.Use system-wide electron."
 arch=('x86_64')
 url="https://github.com/redisviewer/RedisViewer"
 license=('LicenseRef-unknown')
@@ -18,20 +18,22 @@ source=(
     "${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${_appname// /.}-${pkgver}-linux.deb"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('9dbb7aa0bffce90849104905d663b0c4bddde23b9d1964645d29af48164ad5c6'
-            '41b6d61dffef064762b3eec3dfeca7a3e1f57cbcb6dce9a6940c06797a0eae9d')
+sha256sums=('55431ea67066b5f32c5dcda0743060907e751876a8242189463bf81e8945ae9b'
+            '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 build() {
-    sed -e "s|@electronversion@|${_electronversion}|g" \
-        -e "s|@appname@|${pkgname%-bin}|g" \
-        -e "s|@runname@|app.asar|g" \
-        -e "s|@cfgdirname@|${_pkgname}|g" \
-        -e "s|@options@|env ELECTRON_OZONE_PLATFORM_HINT=auto|g" \
-        -i "${srcdir}/${pkgname%-bin}.sh"
+    sed -e "
+        s/@electronversion@/${_electronversion}/g
+        s/@appname@/${pkgname%-bin}/g
+        s/@runname@/app.asar/g
+        s/@cfgdirname@/${_pkgname}/g
+        s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
+    " -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
-    sed -e "s|\"/opt/${_appname}/${_pkgname}\"|${pkgname%-bin}|g" \
-        -e "s|Utility|Development|g" \
-        -e "s|@options@|env ELECTRON_OZONE_PLATFORM_HINT=auto|g" \
-        -i "${srcdir}/usr/share/applications/${_pkgname}.desktop"
+    sed -e "
+        s/\"\/opt\/${_appname}\/${_pkgname}\"/${pkgname%-bin}/g
+        s/Icon=${_pkgname}/Icon=${pkgname%-bin}/g
+        s/Utility/Development/g
+    " -i "${srcdir}/usr/share/applications/${_pkgname}.desktop"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
