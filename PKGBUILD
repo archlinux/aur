@@ -1,10 +1,10 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=ferrum-bin
 _pkgname=Ferrum
-pkgver=0.19.0
+pkgver=0.19.1
 _electronversion=28
 pkgrel=1
-pkgdesc="Music library app for Mac, Linux and Windows"
+pkgdesc="Music library app.Prebuilt version.Use system-wide electron."
 arch=('x86_64')
 url="https://github.com/probablykasper/ferrum"
 license=('LicenseRef-unknown')
@@ -14,10 +14,10 @@ depends=(
     "electron${_electronversion}"
 )
 source=(
-    "${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-linux-amd64.deb"
+    "${pkgname%-bin}-${pkgver}.rpm::${url}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-linux-${CARCH}.rpm"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('e137eb086f684b2b9a6a4d9eb0f4eaec3d03d1e4125826cde692e2f1d9b67c2d'
+sha256sums=('029019d3cf3cc1f14d302afedf06ccdfba45cdfb658ab7ba055fa9fb1a94bb80'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 build() {
     sed -e "
@@ -27,7 +27,6 @@ build() {
         s/@cfgdirname@/space.kasper.${pkgname%-bin}/g
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
     " -i "${srcdir}/${pkgname%-bin}.sh"
-    bsdtar -xf "${srcdir}/data."*
     sed -e "
         s/\/opt\/${_pkgname}\/${pkgname%-bin}/${pkgname%-bin}/g
         s/Audio/AudioVideo/g
