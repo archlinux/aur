@@ -1,7 +1,7 @@
 pkgbase = fsolauncher
-	pkgdesc = Official FreeSO Launcher made with Electron
+	pkgdesc = Official FreeSO Launcher made with Electron.Use system-wide electron.
 	pkgver = 1.12.1_prod.24
-	pkgrel = 1
+	pkgrel = 2
 	url = https://beta.freeso.org/
 	arch = aarch64
 	arch = x86_64
