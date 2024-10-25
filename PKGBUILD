@@ -5,8 +5,8 @@
 # Mantainer: Lorenzo Ferrillo <lorenzofer at live dot it>
 
 pkgname=lib32-x265
-pkgver=3.5
-pkgrel=2
+pkgver=3.6
+pkgrel=1
 pkgdesc='Open Source H265/HEVC video encoder. 32bit libraries.'
 arch=('x86_64')
 url='https://bitbucket.org/multicoreware/x265_git'
