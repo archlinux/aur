@@ -1,45 +1,41 @@
 # Maintainer: Matthew Blankenbehler <spectrino3d@gmail.com>
+# Maintainer: Marius Žukaitis <marius.zukaitis@gmail.com>
 
 _pkgname=satisfactory-mod-manager
 
 pkgname="${_pkgname}"-appimage
-pkgver=2.9.3
+pkgver=3.0.3
 pkgrel=1
 pkgdesc="Satisfactory Mod Manager (appimage)"
 arch=('x86_64')
 url="https://github.com/satisfactorymodding/SatisfactoryModManager"
 license=('GPL3')
-depends=('zlib' 'hicolor-icon-theme')
+depends=('zlib' 'hicolor-icon-theme' 'fuse2')
 options=(!strip)
-_appimage="${pkgname}.AppImage"
-source_x86_64=("${_appimage}::https://github.com/satisfactorymodding/SatisfactoryModManager/releases/download/v${pkgver}/${_pkgname}.AppImage"
-               "https://raw.githubusercontent.com/satisfactorymodding/SatisfactoryModManager/v${pkgver}/LICENSE"
-              )
+_appimage="SatisfactoryModManager_linux_amd64.AppImage"
+source=("https://github.com/satisfactorymodding/SatisfactoryModManager/releases/download/v${pkgver}/${_appimage}"
+        "https://raw.githubusercontent.com/satisfactorymodding/SatisfactoryModManager/v${pkgver}/LICENSE")
 noextract=("${_appimage}")
-sha256sums_x86_64=('2881dd7dd99bdb287bd1eeae4af246db89b98e3c0cc359c006188d06f10f7a04'
-                   '3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986')
-conflicts=('satisfactory-mod-manager')
+sha256sums=('3cdf48a866522e0ba0e9880080d28c9925f456580119cfc08f562a90f1ea2d16'
+            '3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986')
+conflicts=('satisfactory-mod-manager' 'satisfactory-mod-manager-git')
 prepare() {
     chmod +x "${_appimage}"
     ./"${_appimage}" --appimage-extract
-}
 
-build() {
     # Adjust .desktop so it will work outside of AppImage container
-    sed -i -E "s|Exec=AppRun|Exec=env DESKTOPINTEGRATION=false /usr/bin/${_pkgname}|"\
-        "squashfs-root/satisfactory-mod-manager-gui.desktop"
-    # Fix permissions; .AppImage permissions are 700 for all directories
-    chmod -R a-x+rX squashfs-root/usr
+    sed -i -E "s|Exec=SatisfactoryModManager|Exec=env DESKTOPINTEGRATION=false /usr/bin/${_pkgname}|"\
+        "squashfs-root/SatisfactoryModManager.desktop"
 }
 
 package() {
     # AppImage
-    install -Dm755 "${srcdir}/${_appimage}" "${pkgdir}/opt/${pkgname}/${pkgname}.AppImage"
+    install -Dm755 "${srcdir}/${_appimage}" "${pkgdir}/opt/${pkgname}/${_appimage}"
     install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/opt/${pkgname}/LICENSE"
 
     # Desktop file
-    install -Dm644 "${srcdir}/squashfs-root/satisfactory-mod-manager-gui.desktop"\
-            "${pkgdir}/usr/share/applications/satisfactory-mod-manager-gui.desktop"
+    install -Dm644 "${srcdir}/squashfs-root/SatisfactoryModManager.desktop"\
+            "${pkgdir}/usr/share/applications/SatisfactoryModManager.desktop"
 
     # Icon images
     install -dm755 "${pkgdir}/usr/share/"
@@ -47,7 +43,7 @@ package() {
 
     # Symlink executable
     install -dm755 "${pkgdir}/usr/bin"
-    ln -s "/opt/${pkgname}/${pkgname}.AppImage" "${pkgdir}/usr/bin/${_pkgname}"
+    ln -s "/opt/${pkgname}/${_appimage}" "${pkgdir}/usr/bin/${_pkgname}"
 
     # Symlink license
     install -dm755 "${pkgdir}/usr/share/licenses/${pkgname}/"
