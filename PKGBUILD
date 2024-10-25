@@ -1,21 +1,21 @@
 # Maintainer: Trizen <echo dHJpemVuQHByb3Rvbm1haWwuY29tCg== | base64 -d>
 
 pkgname=clyrics
-pkgver=0.16
+pkgver=0.17
 pkgrel=1
 
 pkgdesc="An extensible lyrics fetcher, with daemon support for cmus and mocp."
 url="https://github.com/trizen/clyrics"
 
 arch=('any')
-license=('GPL3')
+license=('GPL-3.0-or-later')
 
 depends=('perl-www-mechanize' 'perl-io-html' 'perl-lwp-protocol-https')
 optdepends=('moc: daemon support for moc player'
             'cmus: daemon support for cmus player')
 
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/trizen/${pkgname}/archive/${pkgver}.tar.gz")
-b2sums=('9fd413fbaa59600061d800bab5efc5c1f7e8f5656f7a18e5dc2c48a678c55419a7ad132c0e58d79d1d6b1cff4202e7530b505b32255353f99d284f4d7c9a388b')
+b2sums=('130b622349e04bcb4b9f896fbc89f12c409e15b7e3777c4ca4747cba45582ffd5b753d18afed5757a4fce2929c3b34a5d39189fb6cdd87bcea4fc89bb0542048')
 install='readme.install'
 
 package() {
