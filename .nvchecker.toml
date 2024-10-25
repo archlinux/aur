@@ -1,0 +1,4 @@
+[river-git]
+source = "git"
+git = "https://github.com/riverwm/river.git"
+prefix = "v"

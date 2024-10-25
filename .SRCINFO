@@ -1,7 +1,7 @@
 pkgbase = river-git
 	pkgdesc = Dynamic tiling wayland compositor
-	pkgver = 0.2.6.r285.g12de175
-	pkgrel = 1
+	pkgver = 0.3.5.r31.g1b5dd21
+	pkgrel = 2
 	url = https://codeberg.org/river/river
 	arch = x86_64
 	license = GPL-3.0-only

@@ -17,8 +17,8 @@ unset _pkgtype
 # basic info
 _pkgname="river"
 pkgname="$_pkgname${_pkgtype:-}"
-pkgver=0.2.6.r285.g12de175
-pkgrel=1
+pkgver=0.3.5.r31.g1b5dd21
+pkgrel=2
 pkgdesc='Dynamic tiling wayland compositor'
 url='https://codeberg.org/river/river'
 license=('GPL-3.0-only')
@@ -89,6 +89,9 @@ package() {
   local _zig_options=(
     --prefix '/usr'
     -Doptimize=ReleaseSafe
+    -Dcpu=baseline
+    -Dtarget=x86_64-linux-gnu
+    -Dpie
   )
 
   [[ "${_build_xwayland::1}" == "t" ]] && _zig_options+=(-Dxwayland)
