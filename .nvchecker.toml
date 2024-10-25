@@ -1,0 +1,5 @@
+[tautulli]
+source = "github"
+github = "Tautulli/Tautulli"
+prefix = "v"
+use_latest_release = true
