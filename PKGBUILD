@@ -1,7 +1,7 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
 pkgname="ipsw"
-pkgver=3.1.549
+pkgver=3.1.554
 pkgrel=1
 pkgdesc="iOS/macOS Research Swiss Army Knife"
 arch=('x86_64')
@@ -10,10 +10,10 @@ license=('MIT')
 depends=('glibc')
 makedepends=('git' 'go')
 backup=("etc/${pkgname}.conf")
-# validpgpkeys=('9F1581FE95BD6E63C45205DD5A95D762E23EC861') # blacktop <blacktop@users.noreply.github.com> (https://github.com/blacktop.gpg)
 _pkgsrc="${pkgname}-${pkgver}"
 source=("${_pkgsrc}::git+${url}.git#tag=v${pkgver}") # ?signed
-b2sums=('cda2d525f5497bbd759d5d254e1290efbba03128df12d35bdbe5478f98c5c1fb879173d8a8754dd2ac4082fa0e7c66b8258bc1c46d39365a360765a0c1f91d0d')
+b2sums=('fc4ee4b6bbb389517e229b53e5786cbd7aec267053df17cd569b8d5e96ee97ab9079968fa1a77b917b4042cc13277ef96eee6cabe84f8bda72108a4a9bc4a9b8')
+# validpgpkeys=('9F1581FE95BD6E63C45205DD5A95D762E23EC861') # blacktop <blacktop@users.noreply.github.com> (https://github.com/blacktop.gpg)
 
 prepare() {
   cd "${srcdir}/${_pkgsrc}"

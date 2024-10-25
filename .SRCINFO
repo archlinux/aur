@@ -1,6 +1,6 @@
 pkgbase = ipsw
 	pkgdesc = iOS/macOS Research Swiss Army Knife
-	pkgver = 3.1.549
+	pkgver = 3.1.554
 	pkgrel = 1
 	url = https://github.com/blacktop/ipsw
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = ipsw
 	makedepends = go
 	depends = glibc
 	backup = etc/ipsw.conf
-	source = ipsw-3.1.549::git+https://github.com/blacktop/ipsw.git#tag=v3.1.549
-	b2sums = cda2d525f5497bbd759d5d254e1290efbba03128df12d35bdbe5478f98c5c1fb879173d8a8754dd2ac4082fa0e7c66b8258bc1c46d39365a360765a0c1f91d0d
+	source = ipsw-3.1.554::git+https://github.com/blacktop/ipsw.git#tag=v3.1.554
+	b2sums = fc4ee4b6bbb389517e229b53e5786cbd7aec267053df17cd569b8d5e96ee97ab9079968fa1a77b917b4042cc13277ef96eee6cabe84f8bda72108a4a9bc4a9b8
 
 pkgname = ipsw
