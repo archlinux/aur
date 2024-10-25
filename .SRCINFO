@@ -1,0 +1,14 @@
+pkgbase = asterisk-lts-22
+	pkgdesc = A complete PBX solution - LTS release 22 version
+	pkgver = 22.0.0
+	pkgrel = 1
+	url = https://www.asterisk.org
+	arch = x86_64
+	arch = i686
+	arch = aarch64
+	arch = armv7h
+	license = GPL
+	depends = asterisk>=22
+	depends = asterisk<23
+
+pkgname = asterisk-lts-22
