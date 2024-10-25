@@ -1,6 +1,6 @@
 # Maintainer: Mikicrep <mikicrepcontact@gmail.com>
 pkgname=random-gibberish-generator
-pkgver=1.2
+pkgver=1.3
 pkgrel=1
 pkgdesc="This is simple CLI tool that can generate strings of random characters and put in file"
 arch=('x86_64')
