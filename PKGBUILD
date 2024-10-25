@@ -1,6 +1,6 @@
 # Maintainer: Alexander Pohl <alex at ahpohl dot com>
 pkgname=libsunspec
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 epoch=
 pkgdesc="A C++ library for SunSpec compatible inverters, meters and batteries" 
@@ -8,7 +8,7 @@ arch=('i686' 'x86_64' 'aarch64' 'armv7h')
 url="https://ahpohl.github.io/libsunspec/"
 license=('GPL3')
 groups=()
-depends=('libmodbus')
+depends=('libmodbus>=3.1.11')
 makedepends=('git')
 checkdepends=()
 optdepends=()
