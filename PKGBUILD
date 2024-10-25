@@ -1,7 +1,7 @@
 # Maintainer: Simon Keimer <dc0sk at secure dot mailbox dot org>
 pkgname=AntScope2
 pkgver=1.2.6
-pkgrel=1
+pkgrel=2
 epoch=0
 pkgdesc="The AntScope2 software is designed to support various models of RigExpert antenna analyzers under various operating systems. It is commonly used in the hamradio community. Based os Qt5."
 arch=('x86_64' 'i686')
