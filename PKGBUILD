@@ -1,4 +1,4 @@
-# Maintainer: Sam A. Horvath-Hunt <hello@samhh.com>
+# Maintainer: Adam Perkowski <adas1per@protonmail.com>
 
 _pkgname=tiny
 pkgname=$_pkgname-bin
