@@ -1,13 +1,13 @@
 # Maintainer: Benjamin Stürz <benni@stuerz.xyz>
 pkgname=fuse-ufs
-pkgver=0.3.0
+pkgver=0.4.3
 pkgrel=1
 pkgdesc="FUSE implementation of FreeBSD's UFSv2"
 arch=(x86_64)
 url="https://github.com/realchonk/fuse-ufs"
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/realchonk/fuse-ufs/archive/refs/tags/${pkgver}.tar.gz")
 license=('BSD-2-Clause')
-sha256sums=('3646983348c848e8270acadcf606e239265829e2904984a4ecfe84d4db90a71e')
+sha256sums=('937915f823c5872a97974743299396bc17bc50d2e45b86b8bcbed4cb825bcb0a')
 makedepends=('cargo')
 depends=('fuse3')
 
