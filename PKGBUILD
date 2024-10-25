@@ -4,7 +4,7 @@
 _pkgname='insomnia'
 _upkgname='Insomnia'
 pkgname="${_pkgname}-bin"
-pkgver=10.1.0
+pkgver=10.1.1
 pkgrel=1
 epoch=1
 pkgdesc='API Client and Design Platform for GraphQL and REST'
@@ -19,7 +19,7 @@ provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 source=("${_url_source}/releases/download/core@${pkgver}/${_upkgname}.Core-${pkgver}.deb"
         "${_url_source}/raw/core@${pkgver}/LICENSE")
-sha256sums=('44b2b5ba222909f64a4729dd5e29958b3b4e2678d06528a892d7bcaf42aa0b5c'
+sha256sums=('9cfe86e495b3a97b4de24566e4db8474870af1308808ee1446a1d690a77edbf2'
             '4197d1eeea274289901dc8b68e16f538ceb535ce1ff592f6895c0a7439908ca2')
 package() {
   tar -xvf 'data.tar.xz' -C "${pkgdir}"
