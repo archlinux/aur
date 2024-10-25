@@ -1,0 +1,18 @@
+pkgbase = treeland-protocols-git
+	pkgdesc = treeland protocol xml files
+	pkgver = 0.4.r0.g75efb88
+	pkgrel = 1
+	url = https://github.com/linuxdeepin/treeland-protocols
+	arch = x86_64
+	arch = aarch64
+	groups = deepin-git
+	license = LGPL3
+	makedepends = git
+	makedepends = cmake
+	makedepends = ninja
+	provides = treeland-protocols
+	conflicts = treeland-protocols
+	source = git+https://github.com/linuxdeepin/treeland-protocols.git
+	sha512sums = SKIP
+
+pkgname = treeland-protocols-git
