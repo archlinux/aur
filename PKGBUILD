@@ -1,7 +1,7 @@
 # Maintainer: Leo <i@setuid0.dev>
 
 pkgname=qbittorrent-enhanced-nox
-pkgver=4.6.7.10
+pkgver=5.0.0.10
 pkgrel=1
 epoch=
 pkgdesc="A bittorrent client powered by C++, Qt and the good libtorrent library (Enhanced Edition), w/o GUI"
@@ -28,7 +28,7 @@ source=(
 )
 noextract=()
 sha256sums=(
-	'5e4daa8afc25b7951bbe01b4c763f37fa0cf402a4aed0bc1ac6d8beb6c680281'
+	'86529633c8036a7d3c791b50dcb8683ac103711c1a8c0c414ee8f1beb61d9d71'
 	'SKIP'
 	'SKIP'
 	'SKIP'
@@ -39,7 +39,6 @@ build() {
 
 	cmake -B build -S . \
 		-DCMAKE_INSTALL_PREFIX=/usr \
-		-DQT6=ON \
 		-DGUI=OFF \
 		-DSYSTEMD=OFF
 	cmake --build build
