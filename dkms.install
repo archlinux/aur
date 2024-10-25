@@ -1,0 +1,13 @@
+#!/bin/bash
+
+# arg 1:  the new package version
+# arg 2:  the old package version
+post_upgrade() {
+  if (( "$(vercmp $2 '2.2.0.3+git151023-2')" < 0 )); then
+    echo '===> dkms systemd startup service has been removed'
+    echo '===> modules building is now handled by alpm hooks at install time'
+    echo '===> startup modules loading must be done via modules-load.d'
+  fi
+}
+
+# vim:set ts=2 sw=2 ft=sh et:

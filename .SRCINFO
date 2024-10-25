@@ -1,0 +1,36 @@
+pkgbase = dkms-git
+	pkgdesc = Dynamic Kernel Modules System (upstream Git version)
+	pkgver = 3.1.1.r3.g8a8a9d1
+	pkgrel = 1
+	url = https://github.com/dell/dkms
+	install = dkms.install
+	arch = any
+	license = GPL-2.0-or-later
+	makedepends = git
+	depends = bash
+	depends = coreutils
+	depends = gawk
+	depends = gcc
+	depends = kmod
+	depends = make
+	depends = patch
+	depends = sed
+	optdepends = linux-headers: build modules against the Arch kernel
+	optdepends = linux-lts-headers: build modules against the LTS kernel
+	optdepends = linux-zen-headers: build modules against the ZEN kernel
+	optdepends = linux-hardened-headers: build modules against the HARDENED kernel
+	provides = dkms=3.1.1.r3.g8a8a9d1
+	conflicts = dkms
+	backup = etc/dkms/framework.conf
+	source = git+https://github.com/dell/dkms.git
+	source = hook.install
+	source = hook.remove
+	source = hook.upgrade
+	source = hook.sh
+	sha256sums = SKIP
+	sha256sums = da2dd53bdb427c3ffbe793fd05f898d8a0545e6dbd346c85fad1717b0f838c62
+	sha256sums = 497422e72b2f10a71caae40c44a07b215425d393acb365700e38944e09f9a554
+	sha256sums = cc04280e8eb095f4950f5e3c6b2997fbc8d5862d79c5ae29d5943b8ac204d0d4
+	sha256sums = c1b4a4e2e4e0e0e59ee0887403e79d60b209f3878dbbec6612573f13b90cce01
+
+pkgname = dkms-git
