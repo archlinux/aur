@@ -1,6 +1,6 @@
 pkgbase = java-openjdk-ea-bin
 	pkgdesc = Java OpenJDK 24 Early-Access Build
-	pkgver = 24b20
+	pkgver = 24b21
 	pkgrel = 1
 	url = https://jdk.java.net/24
 	arch = x86_64
@@ -20,7 +20,7 @@ pkgbase = java-openjdk-ea-bin
 	provides = java-runtime-openjdk=24
 	provides = java-runtime-headless=24
 	provides = java-runtime-headless-openjdk=24
-	source = https://download.java.net/java/early_access/jdk24/20/GPL/openjdk-24-ea+20_linux-x64_bin.tar.gz
-	sha256sums = b7a84616949bac4a00a9a96d771f6595e7fed371c0a5a54139285311e4c0b367
+	source = https://download.java.net/java/early_access/jdk24/21/GPL/openjdk-24-ea+21_linux-x64_bin.tar.gz
+	sha256sums = c67029681a2f1c745c3a73366080881b2d349b4ffb9ce6a4e1e4b2c423555c5c
 
 pkgname = java-openjdk-ea-bin
