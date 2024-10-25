@@ -3,7 +3,7 @@
 # Contributor: Ernesto Castellotti <mail@ernestocastellotti.it>
 
 pkgname=boosteroid
-pkgver=1.9.7
+pkgver=1.9.8
 pkgrel=1
 pkgdesc="Boosteroid client desktop"
 arch=('x86_64')
@@ -16,7 +16,7 @@ makedepends=("binutils" "tar" "coreutils" "wget")
 DLAGENTS=("https::/usr/bin/curl -A 'Mozilla' -fLC - --retry 3 --retry-delay 3 -o %o %u")
 
 source=("https://boosteroid.com/linux/installer/boosteroid-install-x64.deb")
-md5sums=("0c74c084971cc1f10147b6af89709a18")
+md5sums=("a5ad12536bc95e70ae8baf3e80cb34fa")
 prepare() {
   cd "$srcdir"
   msg2 "Decompressing Debian package..."
