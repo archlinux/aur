@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=shibuya-bin
 _pkgname=Shibuya
-pkgver=0.2.7
+pkgver=0.2.8
 _electronversion=32
 pkgrel=1
 pkgdesc="A project built Electron + React.js, to dig out the potential of cross platform AI completion.Prebuilt version.Use system-wide electron."
@@ -21,7 +21,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.AppImage::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}.AppImage"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('da5d2d9b98ad20bf3db97b1f0fb5ebfa5197aeef96683cad771d02d7cbef23c5'
+sha256sums=('94097279c1125a124e654e078388d2cc7fd87f01dc98d01b1acdcd70790d1801'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 build() {
     sed -e "
