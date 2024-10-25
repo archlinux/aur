@@ -20,6 +20,6 @@ pkgbase = python-msgspec
 	optdepends = python-tomli: for TOML support
 	optdepends = python-yaml: for YAML support
 	source = git+https://github.com/jcrist/msgspec.git#commit=9ed5e0d4f6e47e6f520835605bb647f234e7f6f3
-	sha256sums = 89d22370c834872112030e7cc84f2aaad1525ad72db43f6d2dbdb316f1a1d3cb
+	sha256sums = SKIP
 
 pkgname = python-msgspec

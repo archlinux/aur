@@ -33,7 +33,7 @@ optdepends=(
   'python-yaml: for YAML support'
 )
 source=("git+$url.git#commit=$_commit")
-sha256sums=('89d22370c834872112030e7cc84f2aaad1525ad72db43f6d2dbdb316f1a1d3cb')
+sha256sums=('SKIP')
 
 pkgver() {
   cd "$_pkgname"
