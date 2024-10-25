@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=segmented
-_pkgver=2.1-2
+_pkgver=2.1-3
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -13,8 +13,8 @@ depends=(
   r
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('4dc76a641455476fb92dcd1c9fa78c64')
-b2sums=('708a9b31c46b9bd38522215674172bcbfdcf63e011c30a56dd5c430ba27a1eb35e92a463bb5eed84854b15df80fdd18ea3ccd9503f09e8be19527b751ea49922')
+md5sums=('785c5a7b2869a037723aff66d278410a')
+b2sums=('0f20019b2b53cb420c880eab1bf26834ab6b9201f71681210ee38e83a2ec0a77bfb4c386be088958a430304ccc2754381371d8bb0e01583221649db93e10902a')
 
 build() {
   mkdir build
