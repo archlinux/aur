@@ -1,11 +1,13 @@
 pkgbase = xss
 	pkgdesc = A collection of small programs to compose your own screensaver or screenlocker
 	pkgver = 1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/9wm/xss
-	arch = i686
 	arch = x86_64
-	license = GPL3
+	arch = i686
+	license = GPL-3.0-or-later
+	depends = glibc
+	depends = libx11
 	depends = libxss
 	source = xss-1.0.tar.gz::https://github.com/9wm/xss/archive/1.0.tar.gz
 	sha256sums = 1791ab3f75279d264c3711b32db00535218f361213d6bc6ab428030524cf13fb
