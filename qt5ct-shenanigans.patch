@@ -232,17 +232,19 @@ Index: qt5ct/src/qt5ct-qtplugin/qt5ctplatformtheme.cpp
  void Qt5CTPlatformTheme::applySettings()
  {
      if(!QGuiApplication::desktopSettingsAware() || m_isIgnored)
-@@ -204,6 +220,9 @@
+@@ -204,6 +220,11 @@
          }
      }
  
 +    if(Qt5CT::isKColorScheme(m_schemePath))
 +        qApp->setProperty("KDE_COLOR_SCHEME_PATH", m_schemePath);
++    else if(m_update)
++        qApp->setProperty("KDE_COLOR_SCHEME_PATH", QVariant());
 +
  #ifdef QT_WIDGETS_LIB
      if(hasWidgets())
      {
-@@ -285,6 +304,7 @@
+@@ -285,6 +306,7 @@
  
  void Qt5CTPlatformTheme::readSettings()
  {
@@ -250,7 +252,7 @@ Index: qt5ct/src/qt5ct-qtplugin/qt5ctplatformtheme.cpp
      if(m_palette)
      {
          delete m_palette;
-@@ -299,6 +319,7 @@
+@@ -299,6 +321,7 @@
      if(!schemePath.isEmpty() && settings.value("custom_palette", false).toBool())
      {
          schemePath = Qt5CT::resolvePath(schemePath); //replace environment variables
@@ -258,7 +260,7 @@ Index: qt5ct/src/qt5ct-qtplugin/qt5ctplatformtheme.cpp
          m_palette = new QPalette(Qt5CT::loadColorScheme(schemePath, *QPlatformTheme::palette(SystemPalette)));
      }
      m_iconTheme = settings.value("icon_theme").toString();
-@@ -414,3 +435,17 @@
+@@ -414,3 +437,17 @@
      content.replace(regExp, "\n");
      return content;
  }
