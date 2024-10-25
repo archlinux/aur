@@ -2,7 +2,7 @@
 
 pkgname=sunshine-beta-bin
 _pkgname=${pkgname%-beta-bin}
-pkgver=2024.1021.153031
+pkgver=2024.1025.12635
 _gittag=v$pkgver
 pkgrel=1
 pkgdesc="A self-hosted game stream host for Moonlight."
