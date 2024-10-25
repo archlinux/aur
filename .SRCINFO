@@ -1,6 +1,6 @@
 pkgbase = follow-git
 	pkgdesc = 🧡 Next generation information browser.This software is all about allowing you to follow your favorite websites, blogs, social media accounts, podcasts and notifications in one place.
-	pkgver = 0.0.1.alpha.4.r1050.g7c2554d
+	pkgver = 0.0.1.alpha.4.r1244.g6edbf10
 	pkgrel = 1
 	url = https://follow.is/
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = follow-git
 	makedepends = git
 	makedepends = pnpm
 	makedepends = python-setuptools
-	depends = electron32
+	depends = electron33
 	conflicts = follow
 	source = follow.git::git+https://github.com/RSSNext/follow.git
 	source = follow.sh

@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=follow-git
 _pkgname=Follow
-pkgver=0.0.1.alpha.4.r1050.g7c2554d
-_electronversion=32
+pkgver=0.0.1.alpha.4.r1244.g6edbf10
+_electronversion=33
 _nodeversion=22
 pkgrel=1
 pkgdesc="🧡 Next generation information browser.This software is all about allowing you to follow your favorite websites, blogs, social media accounts, podcasts and notifications in one place. "
@@ -72,10 +72,11 @@ build() {
             echo 'electron_builder_binaries_mirror=https://registry.npmmirror.com/-/binary/electron-builder-binaries/'
         } >> .npmrc
     fi
-    sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g;s/electron-forge make/electron-forge package/g" package.json
+    sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
     NODE_ENV=development    pnpm install
     NODE_ENV=production     pnpm run lint:fix
-    NODE_ENV=production     pnpm run build
+    NODE_ENV=production     pnpm electron-vite build
+    NODE_ENV=production     pnpm electron-forge package
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
