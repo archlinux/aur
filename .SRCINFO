@@ -1,0 +1,14 @@
+pkgbase = clipboard-go
+	pkgdesc = Share clipboard between 💻Linux & 📱iOS
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/Xarth-Mai/Clipboard-Go
+	arch = any
+	license = MPL2
+	makedepends = go
+	depends = xclip
+	backup = etc/clipboard-go/config.json
+	source = clipboard-go-1.0.1.tar.gz::https://github.com/Xarth-Mai/Clipboard-Go/archive/refs/tags/v1.0.1.tar.gz
+	sha256sums = cebe7263d7484e60caffc8c2e0356b73dd8dec5932cb877f35278a14baa06b26
+
+pkgname = clipboard-go
