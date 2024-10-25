@@ -3,14 +3,14 @@
 
 _pkgname=clyrics
 pkgname=$_pkgname-git
-pkgver=0.16.r0.g49845eb
+pkgver=0.17.r0.gf23fc20
 pkgrel=1
 
 pkgdesc="An extensible lyrics fetcher, with daemon support for cmus and mocp."
 url="https://github.com/trizen/clyrics"
 
 arch=('any')
-license=('GPL3')
+license=('GPL-3.0-or-later')
 
 depends=('perl-www-mechanize' 'perl-io-html' 'perl-lwp-protocol-https')
 makedepends=('git')
