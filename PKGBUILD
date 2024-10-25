@@ -2,7 +2,7 @@
 
 pkgname=dde-shell-git
 _pkgname=dde-shell
-pkgver=0.0.28.r4.gc54759f
+pkgver=0.0.43.r81.gb3f342c0
 pkgrel=1
 pkgdesc='New DDE shell'
 arch=('x86_64' 'aarch64')
@@ -26,6 +26,8 @@ makedepends=('git'
              'cmake'
              'ninja'
              'deepin-tray-loader'
+             'deepin-application-manager'
+             'treeland-protocols'
 )
 conflicts=('dde-shell' 'deepin-shell')
 provides=('dde-shell' 'deepin-shell')
