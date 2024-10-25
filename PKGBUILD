@@ -9,11 +9,8 @@ url="https://gitlab.com/sfcgal/pysfcgal"
 license=('MIT')
 depends=('python' 'sfcgal')
 makedepends=('git' 'python-setuptools')
-# Temporary workaround with git version
-#source=("git+$url.git#tag=v$pkgver")
 source=("$_pkgname-$pkgver.tar.gz::$url/-/archive/v$pkgver/$_pkgname-v$pkgver.tar.gz")
 sha256sums=('fad4832d0264b1d20dc5425366d6dbc6321efac88298ff7bd0ea7a796738488f')
-#sha256sums=('SKIP')
 
 build() {
   cd "$srcdir/$_pkgname-v$pkgver"
