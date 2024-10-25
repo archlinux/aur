@@ -33,7 +33,7 @@ build() {
 }
 
 package() {
-    local _binary="/usr/share/${_pkgname}/server/${_reponame}.Server"
+    local _binary="/usr/lib/${_pkgname}/server/${_reponame}.Server"
 
     install -Dm644 "${_pkgname}.service"  "${pkgdir}/usr/lib/systemd/system/${_pkgname}.service"
     install -Dm644 "${_pkgname}.sysusers" "${pkgdir}/usr/lib/sysusers.d/${_pkgname}.conf"
@@ -43,7 +43,7 @@ package() {
     install -Dm644 *.md docs/*.md      -t "${pkgdir}/usr/share/doc/${pkgname}"
     install -Dm644 LICENSE                "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     install -Dm644 appsettings*.json   -t "${pkgdir}/etc/${_pkgname}"
-    install -dm755 "${pkgdir}/usr/bin"    "${pkgdir}/usr/share/${_pkgname}"
-    cp -r --preserve=mode server          "${pkgdir}/usr/share/${_pkgname}/server"
+    install -dm755 "${pkgdir}/usr/bin"    "${pkgdir}/usr/lib/${_pkgname}"
+    cp -r --preserve=mode server          "${pkgdir}/usr/lib/${_pkgname}/server"
     ln -sf "${_binary}"                   "${pkgdir}/usr/bin/${pkgname}"
 }
