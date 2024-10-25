@@ -14,11 +14,9 @@ makedepends=('git' 'unzip' 'mono-msbuild')
 conflicts=('openra' 'openra-bleed' 'openra-git')
 options=(!strip)
 source=("git+https://github.com/OpenRA/OpenRA.git"
-"https://github.com/OpenRA/OpenRA/pull/21629.patch"
-"https://raw.githubusercontent.com/wiki/OpenRA/OpenRA/Changelog.md")
+"https://github.com/OpenRA/OpenRA/pull/21629.patch")
 sha256sums=('SKIP'
-            '3a2912b4d1b82c6ed3401bcd988e26b6a69c37ebbb4b5d97c65a5ee7bc47cb8d'
-            '47eba0cbd69f2fccc68295b8d5b05e316b5ba92092c9e097b66fe7d75ccf0129')
+            '3a2912b4d1b82c6ed3401bcd988e26b6a69c37ebbb4b5d97c65a5ee7bc47cb8d')
 
 pkgver() {
     cd $srcdir/OpenRA
