@@ -3,7 +3,7 @@
 
 _pkgname=magic-wormhole.rs
 pkgname=wormhole-rs
-pkgver=0.7.2
+pkgver=0.7.3
 pkgrel=0
 pkgdesc='Rust implementation of Magic Wormhole, with new features and enhancements'
 arch=(x86_64)
@@ -13,7 +13,7 @@ depends=(libxcb)
 makedepends=(cargo)
 _archive="$_pkgname-$pkgver"
 source=("$url/archive/$pkgver/$_archive.tar.gz")
-sha256sums=('4a05dbf56688d6226d9094b783ccea7563207484bb81eb04393c09d163ce4791')
+sha256sums=('f787a31113af560fcfea4ef2d6096f860253450ce2207d436edb83bf6be2b1e1')
 
 prepare() {
   cd "$_archive"
