@@ -1,7 +1,7 @@
 # Maintainer: Stefan Tatschner <stefan@rumpelsepp.org>
 
 pkgname=gallia
-pkgver=1.5.0
+pkgver=1.9.0
 pkgrel=1
 pkgdesc='Extendable Pentesting Framework'
 arch=(any)
@@ -22,10 +22,13 @@ depends=(
 	"python-pydantic"
 	"python-exitcode"
 	"python-platformdirs"
+	"python-httpx"
+	"python-psutil"
+	"python-construct"
 )
 makedepends=("python-poetry" "python-build" "python-installer" "git")
 source=("https://github.com/Fraunhofer-AISEC/gallia/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('9f29786b536c735f142bde1bdc2b5fe15ab691626079524d1929f91c90675d40')
+sha256sums=('e66d2bc412aefa3786438b7026c9d2aa00a5a810db98bbecfcbc176ee61edcd3')
 
 build() {
 	cd "$pkgname-$pkgver"
