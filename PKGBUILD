@@ -18,7 +18,7 @@ unset _pkgtype
 _pkgname="river"
 pkgname="$_pkgname${_pkgtype:-}"
 pkgver=0.3.5.r31.g1b5dd21
-pkgrel=2
+pkgrel=3
 pkgdesc='Dynamic tiling wayland compositor'
 url='https://codeberg.org/river/river'
 license=('GPL-3.0-only')
@@ -26,16 +26,17 @@ arch=('x86_64')
 
 depends=(
   'libevdev'
+  'libinput'
   'libxkbcommon'
   'mesa'
   'pixman'
   'wayland'
-  'wayland-protocols'
   'wlroots'
 )
 makedepends=(
   'git'
   'scdoc'
+  'wayland-protocols'
   'zig'
 )
 optdepends=(
@@ -84,22 +85,28 @@ pkgver() {
   printf '%s.r%s.g%s' "${_version:?}" "${_revision:?}" "${_hash:?}"
 }
 
-package() {
-  cd "$_pkgsrc"
+build() {
   local _zig_options=(
-    --prefix '/usr'
-    -Doptimize=ReleaseSafe
+    --summary all
+    --prefix /usr
+    --search-prefix /usr
+    --global-cache-dir ../zig-global-cache
+    --system ../zig-global-cache/p
+    -Dtarget=native-linux.6.1-gnu.2.38
     -Dcpu=baseline
-    -Dtarget=x86_64-linux-gnu
     -Dpie
+    -Doptimize=ReleaseSafe
   )
 
   [[ "${_build_xwayland::1}" == "t" ]] && _zig_options+=(-Dxwayland)
 
-  DESTDIR="$pkgdir" zig build "${_zig_options[@]}"
+  cd "$_pkgsrc"
+  DESTDIR="build" zig build "${_zig_options[@]}"
+}
 
-  install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
-  install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
+package() {
+  cd "$_pkgsrc"
+  cp --reflink=auto -a build/* "$pkgdir"
   install -Dm644 contrib/river.desktop -t "$pkgdir/usr/share/wayland-sessions/"
 
   install -d "$pkgdir/usr/share/$_pkgname"
