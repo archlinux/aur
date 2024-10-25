@@ -2,7 +2,7 @@
 # Contributor: Lionel Hernou <lionel.hernou@gmail.com>
 
 pkgname=netradiant-custom
-pkgver=20240723
+pkgver=20241023
 pkgrel=1
 pkgdesc="The open-source, cross-platform level editor for id Tech based games (NetRadiant fork)"
 arch=('x86_64')
@@ -13,7 +13,7 @@ makedepends=('git' 'unzip' 'wget')
 optdepends=('xorg-xwayland: required to use the application on a Wayland session'
             'subversion: optional makedepend to fetch some gamepacks when using alternative DOWNLOAD_GAMEPACKS values')
 provides=('h2data' 'mbspc' 'q2map' 'q3map2' 'qdata3')
-source=('git+https://github.com/Garux/netradiant-custom.git#commit=7ff91956b280f5c2def0e3865e48bfc58461d0a9'
+source=('git+https://github.com/Garux/netradiant-custom.git#commit=35ea55f93a34554948a4036e22677960414cecb9'
         'netradiant-custom.desktop')
 sha256sums=('SKIP'
             'c9f21fbacdd2024e417234e986790fca67daeb391a91b590abb68b440e0df648')
@@ -22,8 +22,8 @@ build () {
 	cd "${srcdir}/${pkgname}/"
 
 	# Possible values for DOWNLOAD_GAMEPACKS are:
-	# "yes" (free gamepacks only, downloaded from different locations)
-	# "all" (free & proprietary gamepacks, downloaded from different locations)
+	# "yes" (free gamepacks only, downloaded from their respective sources)
+	# "all" (free & proprietary gamepacks, downloaded from their respective sources)
 	# "allinone" (free & proprietary gamepacks downloaded from a single archive, provided by the NRC maintainer)
 	# "no"
  	# The "subversion" optdepend is needed when using the first 2 values
