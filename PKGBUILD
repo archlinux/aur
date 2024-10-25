@@ -17,8 +17,8 @@ unset _pkgtype
 # basic info
 _pkgname="river"
 pkgname="$_pkgname${_pkgtype:-}"
-pkgver=0.2.6.r285.g12de175
-pkgrel=1
+pkgver=0.3.5.r31.g1b5dd21
+pkgrel=3
 pkgdesc='Dynamic tiling wayland compositor'
 url='https://codeberg.org/river/river'
 license=('GPL-3.0-only')
@@ -26,16 +26,17 @@ arch=('x86_64')
 
 depends=(
   'libevdev'
+  'libinput'
   'libxkbcommon'
   'mesa'
   'pixman'
   'wayland'
-  'wayland-protocols'
   'wlroots'
 )
 makedepends=(
   'git'
   'scdoc'
+  'wayland-protocols'
   'zig'
 )
 optdepends=(
@@ -47,31 +48,15 @@ optdepends=(
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 
-options=('!strip')
-
 _pkgsrc="$_pkgname"
-source=(
-  'git+https://github.com/riverwm/river.git'
-  'git+https://github.com/ifreund/zig-pixman.git'
-  'git+https://github.com/ifreund/zig-wayland.git'
-  'git+https://github.com/swaywm/zig-wlroots.git'
-  'git+https://github.com/ifreund/zig-xkbcommon.git'
-)
-sha256sums=(
-  'SKIP'
-  'SKIP'
-  'SKIP'
-  'SKIP'
-  'SKIP'
-)
+source=('git+https://github.com/riverwm/river.git')
+sha256sums=('SKIP')
 
 prepare() {
-  cd "$_pkgsrc"
-  git submodule init
-  for dep in pixman wayland wlroots xkbcommon; do
-    git config "submodule.deps/zig-$dep.url" "$srcdir/zig-$dep"
+  # PACKAGING.md -> build.zig.zon
+  for i in $(grep '\.url' "$_pkgsrc"/build.zig.zon | sed -E 's&^.* = "(\S+)".*$&\1&'); do
+    zig fetch --global-cache-dir ./zig-global-cache "$i"
   done
-  git -c protocol.file.allow=always submodule update
 }
 
 pkgver() {
@@ -84,19 +69,28 @@ pkgver() {
   printf '%s.r%s.g%s' "${_version:?}" "${_revision:?}" "${_hash:?}"
 }
 
-package() {
-  cd "$_pkgsrc"
+build() {
   local _zig_options=(
-    --prefix '/usr'
+    --summary all
+    --prefix /usr
+    --search-prefix /usr
+    --global-cache-dir ../zig-global-cache
+    --system ../zig-global-cache/p
+    -Dtarget=native-linux.6.1-gnu.2.38
+    -Dcpu=baseline
+    -Dpie
     -Doptimize=ReleaseSafe
   )
 
   [[ "${_build_xwayland::1}" == "t" ]] && _zig_options+=(-Dxwayland)
 
-  DESTDIR="$pkgdir" zig build "${_zig_options[@]}"
+  cd "$_pkgsrc"
+  DESTDIR="build" zig build "${_zig_options[@]}"
+}
 
-  install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
-  install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
+package() {
+  cd "$_pkgsrc"
+  cp --reflink=auto -a build/* "$pkgdir"
   install -Dm644 contrib/river.desktop -t "$pkgdir/usr/share/wayland-sessions/"
 
   install -d "$pkgdir/usr/share/$_pkgname"
