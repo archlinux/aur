@@ -1,7 +1,7 @@
 # Maintainer: Simon Keimer <dc0sk at secure dot mailbox dot org>
 pkgname=AntScope2
 pkgver=1.2.6
-pkgrel=2
+pkgrel=3
 epoch=0
 pkgdesc="The AntScope2 software is designed to support various models of RigExpert antenna analyzers under various operating systems. It is commonly used in the hamradio community. Based os Qt5."
 arch=('x86_64' 'i686')
@@ -40,8 +40,6 @@ check() {
 
 package() {
 	cd "${srcdir}/${pkgname}/build/release"
- 	pwd
- 	ls
 #	install -Dm755 AntScope2 $pkgdir/usr/bin/AntScope2
 
 
@@ -49,8 +47,6 @@ package() {
 #	[ -L "${pkgdir}"/usr/bin/AntScope2 ] || ln -s "${pkgdir}/usr/share/antscope2/AntScope2 ${pkgdir}/usr/local/bin/AntScope2"
 
 	cd "${srcdir}/${pkgname}"
-	pwd
-	ls
 	[ -d "${pkgdir}"/usr/share/antscope2/Resources ] || mkdir -p "${pkgdir}"/usr/share/antscope2/Resources
 	install -Dm644 cables.txt "${pkgdir}"/usr/share/antscope2/Resources/cables.txt
 	install -Dm644 itu-regions.txt "${pkgdir}"usr/share/antscope2/Resources/itu-regions.txt
@@ -67,8 +63,6 @@ package() {
 	install -Dm644 LICENSE.txt "${pkgdir}"/usr/local/share/antscope2/LICENSE.txt
 
 	cd "${srcdir}"
-	pwd
-	ls
 	install -Dm644 99-rigexpert.rules "${pkgdir}"/etc/udev/rules.d/99-rigexpert.rules
 	install -Dm644 antscope2.desktop "${pkgdir}"/usr/share/applications/antscope2.desktop
 

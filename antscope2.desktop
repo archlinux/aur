@@ -1,0 +1,12 @@
+[Desktop Entry]
+Name=AntScope2
+GenericName=AntScope2
+Comment=RigExpert Antenna Analyzers
+Exec=AntScope2
+Icon=/usr/share/antscope2/icons/AntScope2.icns
+Terminal=false
+Type=Application
+Categories=HamRadio
+Keywords=Ham;Radio;Analyzer;Antenna;RigExpert
+Path=
+StartupNotify=false
