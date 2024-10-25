@@ -1,6 +1,6 @@
 # Maintainer: izzqz <v@izzqz.me>
 pkgname=rip2-git
-pkgver=0.9.0
+pkgver=r577.76e6604
 pkgrel=1
 pkgdesc="A safe and ergonomic alternative to rm"
 arch=('i686' 'x86_64')
@@ -14,23 +14,29 @@ optdepends=(
 )
 depends=()
 conflicts=('rip')
-source=("$pkgname-$pkgver::git+https://github.com/MilesCranmer/rip2")
+source=("$pkgname::git+https://github.com/MilesCranmer/rip2")
 sha1sums=('SKIP')
 
+pkgver() {
+	cd "$srcdir/$pkgname"
+
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
 build() {
-  cd "$pkgname-$pkgver"
+  cd "$pkgname"
 
   cargo build --release --locked --all-features
 }
 
 check() {
-  cd "$pkgname-$pkgver"
+  cd "$pkgname"
 
   cargo test --release --locked --all-features
 }
 
 package() {
-  cd "$pkgname-$pkgver"
+  cd "$pkgname"
 
   install -Dm755 "target/release/rip" "$pkgdir/usr/bin/rip"
 
