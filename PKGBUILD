@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=follow
 _pkgname=Follow
-pkgver=0.0.1_alpha.19
-_electronversion=32
+pkgver=0.1.0_beta.0
+_electronversion=33
 _nodeversion=22
 pkgrel=1
 pkgdesc="🧡 Next generation information browser.This software is all about allowing you to follow your favorite websites, blogs, social media accounts, podcasts and notifications in one place. "
@@ -24,7 +24,7 @@ source=(
     "${pkgname}-${pkgver}::${_ghurl}/archive/refs/tags/v${pkgver//_/-}.tar.gz"
     "${pkgname}.sh"
 )
-sha256sums=('b5986169395faad8ecdf7d10bb9a2bdfb9de816d707f15637f1b3dd4431e5694'
+sha256sums=('525bb444fce5d58eb391ea9b2ba7670a427c0780fc7ccdcc963e181c0688d358'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
@@ -44,24 +44,31 @@ build() {
     gendesk -q -f -n --pkgname="${pkgname}" --pkgdesc="${pkgdesc}" --categories="Utility" --name="${_pkgname}" --exec="${pkgname} %U"
     cd "${srcdir}/${_pkgname}-${pkgver//_/-}"
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
-    export SYSTEM_ELECTRON_VERSION="32.1.0"
+    export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
     HOME="${srcdir}/.electron-gyp"
     {
+        echo -e '\n'
         #echo 'build_from_source=true'
         echo 'link-workspace-packages=true'
         echo 'fetch-retry-maxtimeout=10000'
         echo "cache-dir="${srcdir}"/.pnpm_cache"
         echo "store-dir="${srcdir}"/.pnpm_store"
-        if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
-            echo 'registry=https://registry.npmmirror.com'
-            echo 'disturl=https://registry.npmmirror.com/-/binary/node/'
-            echo 'electron_mirror=https://registry.npmmirror.com/-/binary/electron/'
-            echo 'electron_builder_binaries_mirror=https://registry.npmmirror.com/-/binary/electron-builder-binaries/'
-        fi
+        echo "shamefully-hoist=true"
+        echo "virtual-store-dir-max-length=80"
     } >> .npmrc
-    sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g;s/electron-forge make/electron-forge package/g" package.json
+    if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
+        {
+        echo 'registry=https://registry.npmmirror.com'
+        echo 'disturl=https://registry.npmmirror.com/-/binary/node/'
+        echo 'node-mirror=https://registry.npmmirror.com/-/binary/node/'
+        echo 'electron_mirror=https://cdn.npmmirror.com/binaries/electron/'
+        echo 'electron_builder_binaries_mirror=https://npmmirror.com/mirrors/electron-builder-binaries/'
+        } >> .npmrc
+    fi
+    sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
     NODE_ENV=development    pnpm install
-    NODE_ENV=production     pnpm run build
+    NODE_ENV=production     pnpm electron-vite build
+    NODE_ENV=production     pnpm electron-forge package
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
