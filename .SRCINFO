@@ -1,0 +1,19 @@
+pkgbase = fclones-gui-bin
+	pkgdesc = Interactive duplicate file finder and remover
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/decipher3114/capter
+	arch = x86_64
+	license = MIT
+	makedepends = tar
+	makedepends = gendesk
+	depends = gtk4
+	depends = libadwaita
+	provides = fclones-gui
+	conflicts = fclones-gui
+	source = https://github.com/pkolaczk/fclones-gui/releases/download/v0.2.0/fclones-gui_0.2.0_amd64.deb
+	source = fclones-gui.png
+	sha256sums = db6c00d9d053bea06fcf95b759c8065d81571d768bc61ecdad1051f721ce91e8
+	sha256sums = 291749f22cb7903244a2a2f0e49ef0c1b5e7a10277fff41e502ba403e622c4a2
+
+pkgname = fclones-gui-bin
