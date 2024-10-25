@@ -5,7 +5,7 @@
 
 _basever=2.0.0.main
 pkgname=mypaint-git
-pkgver=2.0.0.main.r6214.ad795c76
+pkgver=2.0.0.main.r6225.00483b9e
 pkgrel=1
 pkgdesc="Simple drawing & painting program that works well with graphics tablets (git)."
 arch=('i686' 'x86_64')
@@ -46,4 +46,4 @@ package() {
 }
 
 sha256sums=('SKIP'
-            '34dec9df2e005de9fae6c6352f49835a1d41e515c6131ed1df8c9e27ee3c9d1d')
+            '53b5959262452a2611f2e733b48c5c7a610ea84b0b05f4a85e83d0857d79b85a')
