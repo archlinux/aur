@@ -1,4 +1,4 @@
-# Maintainer: Lonny Wong <lonnywong@qq.com>
+# Maintainer: devome <evinedeng@hotmail.com>
 
 _netver=6.0
 _reponame=SyncClipboard
