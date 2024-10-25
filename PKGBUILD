@@ -55,7 +55,7 @@ build() {
 
 package() {
     local _source="src/${_reponame}.Desktop.Default/bin/${_dotnet_cpu}/Release/net${_dotnet_ver}/linux-${_dotnet_cpu}/publish"
-    local _binary="/usr/share/${_pkgname}/desktop/${_reponame}.Desktop.Default"
+    local _binary="/usr/lib/${_pkgname}/desktop/${_reponame}.Desktop.Default"
 
     install -Dm644 "${_pkgname}.desktop"         "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
 
@@ -66,9 +66,9 @@ package() {
     install -Dm644 build/linux/icons/icon.svg    "${pkgdir}/usr/share/icons/hicolor/symbolic/apps/${_pkgname}.svg"
     install -Dm644 LICENSE                       "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     install -Dm644 *.md docs/*.md             -t "${pkgdir}/usr/share/doc/${pkgname}"
-    install -dm755                               "${pkgdir}/usr/share/${_pkgname}" \
+    install -dm755                               "${pkgdir}/usr/lib/${_pkgname}" \
                                                  "${pkgdir}/usr/share/licenses/${pkgname}" \
                                                  "${pkgdir}/usr/bin"
-    cp -r --preserve=mode "${_source}"           "${pkgdir}/usr/share/${_pkgname}/desktop"
+    cp -r --preserve=mode "${_source}"           "${pkgdir}/usr/lib/${_pkgname}/desktop"
     ln -sf "${_binary}"                          "${pkgdir}/usr/bin/${pkgname}"
 }
