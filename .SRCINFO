@@ -1,0 +1,12 @@
+pkgbase = ttf-illinois-mono-git
+	pkgdesc = Monospace font based on Lexend
+	pkgver = r115.g67c38f5
+	pkgrel = 1
+	url = https://github.com/MadSimple/illinois-mono
+	arch = any
+	license = OFL-1.1
+	makedepends = git
+	source = git+https://github.com/MadSimple/illinois-mono.git
+	sha256sums = SKIP
+
+pkgname = ttf-illinois-mono-git
