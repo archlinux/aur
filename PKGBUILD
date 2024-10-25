@@ -2,7 +2,7 @@
 # Maintainer: Mikhail Babynichev <i@kotrik.ru>
 
 pkgname=tosu
-pkgver=3.5.1
+pkgver=3.5.2
 pkgrel=1
 pkgdesc="Eponymous software for reading osu! memory"
 arch=(x86_64)
@@ -22,7 +22,7 @@ changelog=
 source=("https://github.com/kotrikd/${pkgname}/releases/download/v${pkgver}/${pkgname}-linux-v${pkgver}.zip"
 	"tosu-bin.sh"        
 )
-sha256sums=("bab7068cd817501693fa0e7cbde826c459f40458808639367fbea7d65d73f007"
+sha256sums=("2f8ac8130bcc5b666ee32888357744e8656e81f35cc7640e74a56f0c2a7e67d4"
 	"16e77f6a192094be77ce1ecc9322e7296b57532851672d15f07bc82132cdfc21"
 )
 validpgpkeys=()
