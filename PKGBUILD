@@ -6,13 +6,13 @@ pkgver=10985.5e5a98d7d
 pkgrel=1
 pkgdesc="VIM: Vi IMproved"
 arch=('i686' 'x86_64')
-url="http://github.com/vim/vim"
+url="https://www.vim.org/"
 license=('GPL')
-depends=('gpm' 'ruby' 'lua' 'python2' 'python' 'acl')
+depends=('gpm' 'ruby' 'lua'  'python' 'acl')
 optdepends=()
 backup=()
 options=()
-source=("git://github.com/vim/vim.git")
+source=("git+https//github.com/vim/vim.git")
 md5sums=('SKIP')
 
 pkgver() {
@@ -75,8 +75,8 @@ package_vim-git-runtime() {
 }
 
 package_vim-git() {
-  provides=('vim')
-  conflicts=('vim')
+  provides=('vim' 'vim-plugin-runtime' 'xdd')
+  conflicts=('vim' 'gvim')
   cd "$srcdir/vim"
 
   make -j1 VIMRCLOC=/etc DESTDIR="${pkgdir}" install

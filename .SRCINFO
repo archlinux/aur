@@ -2,22 +2,24 @@ pkgbase = vim-git
 	pkgdesc = VIM: Vi IMproved
 	pkgver = 10985.5e5a98d7d
 	pkgrel = 1
-	url = http://github.com/vim/vim
+	url = https://www.vim.org/
 	arch = i686
 	arch = x86_64
 	license = GPL
 	depends = gpm
 	depends = ruby
 	depends = lua
-	depends = python2
 	depends = python
 	depends = acl
-	source = git://github.com/vim/vim.git
+	source = git+https//github.com/vim/vim.git
 	md5sums = SKIP
 
 pkgname = vim-git
 	provides = vim
+	provides = vim-plugin-runtime
+	provides = xdd
 	conflicts = vim
+	conflicts = gvim
 
 pkgname = vim-git-runtime
 	pkgdesc = VIM: Vi IMproved (shared runtime)
@@ -27,4 +29,3 @@ pkgname = vim-git-runtime
 	provides = vim-runtime
 	conflicts = vim-runtime
 	backup = etc/vimrc
-
