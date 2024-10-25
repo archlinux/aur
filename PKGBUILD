@@ -3,8 +3,8 @@
 
 _name=mido
 pkgname=python-$_name
-pkgver=1.3.2
-pkgrel=2
+pkgver=1.3.3
+pkgrel=1
 pkgdesc='A Python library for working with MIDI messages and ports'
 url='https://mido.readthedocs.io/'
 arch=(any)
@@ -16,7 +16,7 @@ optdepends=(
 )
 license=(MIT)
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('3aea28b6ed730f737d5b12da3578debe9dc50058fa370fe9ceded9189b67c348')
+sha256sums=('1aecb30b7f282404f17e43768cbf74a6a31bf22b3b783bdd117a1ce9d22cb74c')
 
 build() {
   cd $_name-$pkgver
