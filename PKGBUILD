@@ -2,8 +2,8 @@
 
 pkgbase=mounriver-studio-toolchain-bin
 pkgname=($pkgbase mounriver-studio-toolchain-openocd-bin mounriver-studio-toolchain-riscv-gcc-bin mounriver-studio-toolchain-riscv-gcc12-bin)
-pkgver=1.91
-pkgrel=0
+pkgver=1.92
+pkgrel=1
 arch=('x86_64')
 url='http://www.mounriver.com/'
 license=('GPL2' 'GPL3' 'custom')
@@ -18,13 +18,13 @@ optdepends=('ch34x-dkms-git: CH341SER driver with fixed bug'
     'ch343ser-dkms: USB serial driver for ch342/ch343/ch344/ch347/ch347f/ch9101/ch9102/ch9103/ch9104, etc (dkms).'
     'wchisp: WCH ISP Tool in Rust')
 source=("${pkgbase}-${pkgver}.tar.xz::http://file.mounriver.com/tools/MRS_Toolchain_Linux_x64_V${pkgver}.tar.xz")
-sha256sums=('162a57a466e322ceab162edeaa0f4be521f9e3e8502a62bbcdca8fafc8a19a5d')
+sha256sums=('33e0dd7581a2eea25bc5d1aa2c31f5c8b316e543b954d84f9e1ffc5999e93fea')
 options=('!strip')
 noextract=(${pkgbase}-${pkgver}.tar.xz)
 
-_install(){
-     find ${@: 2} -type f -exec install -Dm$1 {}  ${pkgdir}/opt/wch/${pkgname%-bin}/{} \;
-} 
+_install() {
+    find ${@:2} -type f -exec install -Dm$1 {} ${pkgdir}/opt/wch/${pkgname%-bin}/{} \;
+}
 
 prepare() {
     tar -xf "${srcdir}/${pkgbase}-${pkgver}.tar.xz" --strip-components=1 -C "${srcdir}/"
@@ -37,12 +37,13 @@ package_mounriver-studio-toolchain-bin() {
 
 package_mounriver-studio-toolchain-openocd-bin() {
     depends=('bash'
-             'libftdi-compat'
-             'libusb'
-             'hidapi'
-             'libusb-compat'
-             'libudev.so'
-             'libjaylink.so')
+        'glibc'
+        'libftdi-compat'
+        'libusb'
+        'hidapi'
+        'libusb-compat'
+        'libudev.so'
+        'libjaylink.so')
 
     pkgdesc="MRS Toolchain OpenOCD supports erasure, programming, verification and debugging of the chip."
 
@@ -54,13 +55,13 @@ package_mounriver-studio-toolchain-openocd-bin() {
     install -Dm0644 "${srcdir}/beforeinstall/50-wch.rules" "${pkgdir}/usr/lib/udev/rules.d/50-wch.rules"
     install -Dm0644 "${srcdir}/beforeinstall/60-openocd.rules" "${pkgdir}/usr/lib/udev/rules.d/60-openocd-wch.rules"
 
-    install -Dm0755 /dev/stdin "${pkgdir}/usr/bin/openocd-wch-arm" << EOF
+    install -Dm0755 /dev/stdin "${pkgdir}/usr/bin/openocd-wch-arm" <<EOF
 #!/bin/env bash
 exec /opt/wch/${pkgname%-bin}/bin/openocd -f /opt/wch/${pkgname%-bin}/bin/wch-arm.cfg "\$@"
 
 EOF
 
-    install -Dm0755 /dev/stdin "${pkgdir}/usr/bin/openocd-wch-riscv" << EOF
+    install -Dm0755 /dev/stdin "${pkgdir}/usr/bin/openocd-wch-riscv" <<EOF
 #!/bin/env bash
 exec /opt/wch/${pkgname%-bin}/bin/openocd -f /opt/wch/${pkgname%-bin}/bin/wch-riscv.cfg "\$@"
 
@@ -69,11 +70,13 @@ EOF
 
 package_mounriver-studio-toolchain-riscv-gcc-bin() {
     pkgdesc="MRS Toolchain Support for RISC-V assembly and GNU C compilation, link operation."
-    depends=('bash')
+    depends=('bash'
+        'glibc'
+        'python')
     install -dm0755 "${pkgdir}/opt/wch/${pkgname%-bin}"
     cp -a "${srcdir}"/RISC-V_Embedded_GCC/* "${pkgdir}/opt/wch/${pkgname%-bin}"
 
-    install -Dm0644 /dev/stdin "${pkgdir}/etc/profile.d/${pkgname%-bin}.sh" << EOF
+    install -Dm0644 /dev/stdin "${pkgdir}/etc/profile.d/${pkgname%-bin}.sh" <<EOF
 #!/bin/sh
 [ -d /opt/wch/${pkgname%-bin}/bin ] && append_path '/opt/wch/${pkgname%-bin}/bin'
 
@@ -83,11 +86,13 @@ EOF
 
 package_mounriver-studio-toolchain-riscv-gcc12-bin() {
     pkgdesc="MRS Toolchain Support for RISC-V assembly and GNU C compilation, link operation."
-    depends=('bash')
+    depends=('bash'
+        'glibc'
+        'python')
     install -dm0755 "${pkgdir}/opt/wch/${pkgname%-bin}"
     cp -a "${srcdir}"/RISC-V_Embedded_GCC12/* "${pkgdir}/opt/wch/${pkgname%-bin}"
 
-    install -Dm0644 /dev/stdin "${pkgdir}/etc/profile.d/${pkgname%-bin}.sh" << EOF
+    install -Dm0644 /dev/stdin "${pkgdir}/etc/profile.d/${pkgname%-bin}.sh" <<EOF
 #!/bin/sh
 [ -d /opt/wch/${pkgname%-bin}/bin ] && append_path '/opt/wch/${pkgname%-bin}/bin'
 
