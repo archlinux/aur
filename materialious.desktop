@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Materialious
+Exec=/opt/Materialious/materialious %U
+Terminal=false
+Type=Application
+Icon=materialious
+StartupWMClass=Materialious
+Comment=Modern material design for Invidious.
+Categories=AudioVideo;
