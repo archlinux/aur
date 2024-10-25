@@ -25,4 +25,4 @@ else
     systemctl start postgresql
 fi
 # Launch Karaoke Mugen
-exec electron29 /usr/lib/karaokemugen/app.asar "$@"
+exec electron /usr/lib/karaokemugen/app.asar "$@"

@@ -1,7 +1,7 @@
 pkgbase = karaokemugen-git
 	pkgdesc = Karaoke playlist manager/player app used in parties or events.
-	pkgver = 5.0.33.r3920.g732e604a0
-	pkgrel = 3
+	pkgver = 5.0.33.r4223.gc69cc5400
+	pkgrel = 1
 	url = https://mugen.karaokes.moe/
 	install = karaokemugen.install
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = karaokemugen-git
 	depends = mpv
 	depends = ffmpeg
 	depends = postgresql
-	depends = electron29
+	depends = electron
 	depends = patch
 	optdepends = sudo: for using karaokemugen-install script
 	provides = karaokemugen
@@ -30,7 +30,7 @@ pkgbase = karaokemugen-git
 	md5sums = SKIP
 	md5sums = SKIP
 	md5sums = 2548b70d012d3992526c8d5b1d9bac3d
-	md5sums = 31d8f86f4b4420ef9c83c1af31a45424
+	md5sums = 55557823030b7824a85a55469e119cb4
 	md5sums = 5e9a33a42fef7572b7e0fa504c586f32
 	md5sums = fae5d3e631e9ec8391655b31f586b74b
 

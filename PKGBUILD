@@ -1,13 +1,13 @@
 # Maintainer: leonekmi <usingarchbtw@leonekmi.fr>
 pkgname=karaokemugen-git
-pkgver=5.0.33.r3920.g732e604a0
-pkgrel=3
+pkgver=5.0.33.r4223.gc69cc5400
+pkgrel=1
 pkgdesc="Karaoke playlist manager/player app used in parties or events."
 arch=('x86_64')
 url="https://mugen.karaokes.moe/"
 license=('MIT')
 groups=()
-depends=('mpv' 'ffmpeg' 'postgresql' 'electron29' 'patch')
+depends=('mpv' 'ffmpeg' 'postgresql' 'electron' 'patch')
 makedepends=('git' 'npm' 'typescript' 'yarn' 'nodejs')
 optdepends=('sudo: for using karaokemugen-install script')
 provides=("${pkgname%-git}")
@@ -28,7 +28,7 @@ md5sums=('SKIP'
          'SKIP'
          'SKIP'
          '2548b70d012d3992526c8d5b1d9bac3d'
-         '31d8f86f4b4420ef9c83c1af31a45424'
+         '55557823030b7824a85a55469e119cb4'
          '5e9a33a42fef7572b7e0fa504c586f32'
          'fae5d3e631e9ec8391655b31f586b74b')
 
@@ -60,8 +60,8 @@ build() {
 
     # Build and package with electron-builder
     export NODE_ENV='production'
-    electronDist=$(dirname $(realpath $(which electron29)))
-    electronVer=$(electron29 --version | tail -c +2)
+    electronDist=$(dirname $(realpath $(which electron)))
+    electronVer=$(electron --version | tail -c +2)
 
     yarn packer
 }
