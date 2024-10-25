@@ -1,7 +1,7 @@
 # Maintainer: Nathan Wong, NorthWestWind <wsyn148@gmail.com>
 _pkgname=cls
 pkgname=$_pkgname-rs
-pkgver=1.1.0
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="cls - Command-Line Soundboard written in Rust"
 arch=("i686" "x86_64")
@@ -12,7 +12,7 @@ makedepends=("cargo")
 replaces=("cls-soundboard")
 conflicts=("cls-rs-git" "cls-rs-bin")
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=("49eafa710096ebfcfe6f24cf7a8635f37675cc89383d2147c49979b1e3465153")
+sha256sums=("cad4e10738d8f92ac5bdac1e6ce5ced6a1248c13818d3ec8999321a9f5f8cde9")
 
 prepare() {
   export RUSTUP_TOOLCHAIN=stable
