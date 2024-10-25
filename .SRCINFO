@@ -1,6 +1,6 @@
 pkgbase = python-photutils
 	pkgdesc = Astropy Affiliated package for image photometry utilities
-	pkgver = 2.0.1
+	pkgver = 2.0.2
 	pkgrel = 1
 	url = http://photutils.readthedocs.io
 	arch = i686
@@ -10,7 +10,6 @@ pkgbase = python-photutils
 	checkdepends = python-pytest-doctestplus
 	checkdepends = python-pytest-remotedata
 	checkdepends = python-bottleneck
-	checkdepends = python-matplotlib
 	checkdepends = python-regions
 	checkdepends = python-gwcs
 	makedepends = cython>=3.0.0
@@ -31,8 +30,8 @@ pkgbase = python-photutils
 	makedepends = python-scikit-image
 	makedepends = python-shapely
 	makedepends = graphviz
-	source = https://files.pythonhosted.org/packages/source/p/photutils/photutils-2.0.1.tar.gz
-	md5sums = 317b4131dbd1187d6ee00c09626e272a
+	source = https://files.pythonhosted.org/packages/source/p/photutils/photutils-2.0.2.tar.gz
+	md5sums = 8185da749187ccee58057bca04ec6500
 
 pkgname = python-photutils
 	depends = python>=3.10
@@ -46,7 +45,7 @@ pkgname = python-photutils
 	optdepends = python-tqdm: Required to display optional progress bars
 	optdepends = python-rasterio: Required to convert source segments into polygon objects
 	optdepends = python-regions>=0.9: Required to perform aperture photometry using region objects
-	optdepends = python-shapley: Required to convert source segments into polygon objects
+	optdepends = python-shapely: Required to convert source segments into polygon objects
 	optdepends = python-photutils-doc: Documentation for python-photutils
 
 pkgname = python-photutils-doc

@@ -1,8 +1,9 @@
 # Maintainer: Astro Benzene <universebenzene at sina dot com>
+
 pkgbase=python-photutils
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}" "python-${_pyname}-doc")
-pkgver=2.0.1
+pkgver=2.0.2
 #_pkgver=${pkgver/.0}
 pkgrel=1
 pkgdesc="Astropy Affiliated package for image photometry utilities"
@@ -32,9 +33,8 @@ checkdepends=('python-pytest-astropy-header'
               'python-pytest-remotedata'
 #             'python-pytest-xdist'
               'python-bottleneck'
-              'python-matplotlib'
               'python-regions'
-              'python-gwcs')    # scipy scikit-image shapely rasterio already in makedepends
+              'python-gwcs')    # scipy matplotlib <- scikit-image shapely rasterio already in makedepends
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
 #source=("https://github.com/astropy/photutils/releases/download/${pkgver}/${_pyname}-${pkgver}.tar.gz")
 #source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${_pkgver}.tar.gz")
@@ -49,7 +49,7 @@ source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname
 #       "https://github.com/astropy/photutils-datasets/raw/main/data/spitzer_example_catalog.xml"
 #       "https://github.com/astropy/photutils-datasets/raw/main/data/spitzer_example_image.fits"
 #       'datasets-use-local.patch')
-md5sums=('317b4131dbd1187d6ee00c09626e272a')
+md5sums=('8185da749187ccee58057bca04ec6500')
 
 get_pyver() {
     python -c "import sys; print('$1'.join(map(str, sys.version_info[:2])))"
@@ -92,7 +92,7 @@ package_python-photutils() {
                 'python-tqdm: Required to display optional progress bars'
                 'python-rasterio: Required to convert source segments into polygon objects'
                 'python-regions>=0.9: Required to perform aperture photometry using region objects'
-                'python-shapley: Required to convert source segments into polygon objects'
+                'python-shapely: Required to convert source segments into polygon objects'
                 'python-photutils-doc: Documentation for python-photutils')
     cd ${srcdir}/${_pyname}-${pkgver}
 #   cd ${srcdir}/${_pyname}-${_pkgver}
