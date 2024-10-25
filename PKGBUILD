@@ -1,19 +1,20 @@
-# Maintainer: Josh King <josh@throneless.tech>
+# Maintainer: Quentin Michaud <mh4ckt3mh4ckt1c4s@archlinux.org>
 # Contributor: Josh King <josh@throneless.tech>
 
 pkgname="rke2-bin"
-pkgver="1.25.9+rke2r1"
+pkgver="1.30.5+rke2r1"
 pkgrel="1"
 pkgdesc="Rancher's next-generation Kubernetes distribution"
 url="https://rke2.io"
-license=("Apache")
+license=("Apache-2.0")
 arch=("x86_64")
-conflicts=("rke2-git")
-depends=("bash" "nm-cloud-setup")
+provides=("rke2")
+conflicts=("rke2")
 
-source_x86_64=(
-    "${pkgname}-${pkgver}-${CARCH}.tar.gz::https://github.com/rancher/rke2/releases/download/v${pkgver}/rke2.linux-amd64.tar.gz"
+source=(
+    "${pkgname}-${pkgver}-x86_64.tar.gz::https://github.com/rancher/rke2/releases/download/v${pkgver}/rke2.linux-amd64.tar.gz"
 )
+b2sums=('554cf79128dd8fc93668a207e0c7d7d39c4bfbfea308220da89c6dcb6646fd92cd3e8a136ea89760fee1a5fb33dd812902b9e1e69a3de12329bb6095800d6dce')
 
 prepare() {
     sed -i -e 's/\/usr\/local/\/usr/g' -e 's/\/sbin/\/usr\/bin/g' $srcdir/lib/systemd/system/rke2-agent.service
@@ -32,4 +33,3 @@ package() {
     install -Dm 644 $srcdir/share/rke2/LICENSE.txt $pkgdir/usr/share/rke2/LICENSE.txt
     install -Dm 644 $srcdir/share/rke2/rke2-cis-sysctl.conf $pkgdir/usr/share/rke2/rke2-cis-sysctl.conf
 }
-sha256sums_x86_64=('b09b1e65ad3275f900453507739375c25ec4491043a6b9302edf15c156291515')
