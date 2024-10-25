@@ -4,8 +4,8 @@ _pkgname=GhostChat
 pkgver=3.3.0
 _electronversion=32
 _nodeversion=20
-pkgrel=1
-pkgdesc="A standalone, multi-platform Twitch.tv， Kick.com chat as an overlay on windowed/windowed full-screen applications"
+pkgrel=2
+pkgdesc="A standalone, multi-platform Twitch.tv， Kick.com chat as an overlay on windowed/windowed full-screen applications.Use system-wide electron."
 arch=('any')
 url="https://github.com/Enubia/ghost-chat"
 license=('Zlib')
@@ -27,7 +27,7 @@ source=(
 sha256sums=('c20582abaa907854579ef40cf19a21cf69b3cdc6a13cf5414c9ed8fa9d8e1ac7'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 _ensure_local_nvm() {
-    export NVM_DIR="${srcdir}/.nvm"
+    local NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
     nvm install "${_nodeversion}"
     nvm use "${_nodeversion}"
@@ -43,27 +43,33 @@ build() {
     _ensure_local_nvm
     gendesk -f -n -q --pkgname="${pkgname}" --pkgdesc="${pkgdesc}" --categories="Utility" --name="${_pkgname}" --exec="${pkgname} %U"
     cd "${srcdir}/${pkgname}-${pkgver}"
+    electronDist="/usr/lib/electron${_electronversion}"
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
     HOME="${srcdir}/.electron-gyp"
     {
+        echo -e '\n'
         #echo 'build_from_source=true'
         echo 'link-workspace-packages=true'
         echo 'fetch-retry-maxtimeout=10000'
         echo "cache-dir="${srcdir}"/.pnpm_cache"
         echo "store-dir="${srcdir}"/.pnpm_store"
-        if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
+    } >> .npmrc
+    if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
+        sed -i "/npmjs/d" .npmrc
+        {
             echo 'registry=https://registry.npmmirror.com'
             echo 'disturl=https://registry.npmmirror.com/-/binary/node/'
             echo 'electron_mirror=https://registry.npmmirror.com/-/binary/electron/'
             echo 'electron_builder_binaries_mirror=https://registry.npmmirror.com/-/binary/electron-builder-binaries/'
-        fi
-    } >> .npmrc
-    sed -i "s/out\/release\/\${version}/release/g;s/\/\/ //;s/AppImage/dir/g" electron-builder.config.cjs
+        } >> .npmrc
+    fi
+    sed -i "s/out\/release\/\${version}/release/g" electron-builder.config.cjs
     cp public/icons/icon-512x125.png public/icons/icon-512x512.png
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
-    NODE_ENV=development    pnpm install --no-lockfile
-    NODE_ENV=production     pnpm run release
+    NODE_ENV=development    pnpm install
+    NODE_ENV=production     pnpm run build
+    NODE_ENV=production     pnpm -c exec "electron-builder --linux dir -c.electronDist=${electronDist} --config electron-builder.config.cjs"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"

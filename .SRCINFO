@@ -1,7 +1,7 @@
 pkgbase = ghost-chat
-	pkgdesc = A standalone, multi-platform Twitch.tv， Kick.com chat as an overlay on windowed/windowed full-screen applications
+	pkgdesc = A standalone, multi-platform Twitch.tv， Kick.com chat as an overlay on windowed/windowed full-screen applications.Use system-wide electron.
 	pkgver = 3.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Enubia/ghost-chat
 	arch = any
 	license = Zlib
