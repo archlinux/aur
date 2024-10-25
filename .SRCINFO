@@ -1,22 +1,22 @@
 pkgbase = youtube-music-for-desktop-bin
-	pkgdesc = Unofficial Youtube Music Desktop App, with LastFM support.
-	pkgver = 0.12.17
+	pkgdesc = Unofficial Youtube Music Desktop App, with LastFM support.Prebuilt version.Use system-wide electron.
+	pkgver = 0.13.0
 	pkgrel = 1
 	url = https://youtube-music.app/
 	arch = aarch64
 	arch = x86_64
 	license = CC0-1.0
 	makedepends = fuse2
-	depends = electron20
-	provides = youtube-music-for-desktop=0.12.17
+	depends = electron32
+	provides = youtube-music-for-desktop=0.13.0
 	conflicts = youtube-music-for-desktop
-	source = LICENSE-0.12.17::https://raw.githubusercontent.com/Venipa/ytmdesktop2/v0.12.17/LICENSE
+	source = LICENSE-0.13.0::https://raw.githubusercontent.com/Venipa/ytmdesktop2/v0.13.0/LICENSE
 	source = youtube-music-for-desktop.sh
 	sha256sums = 33c4de6d76721945c9346b3b1024fe56f2fbb6bebbb0e761656232520a6defa6
 	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
-	source_aarch64 = youtube-music-for-desktop-0.12.17-aarch64.AppImage::https://github.com/Venipa/ytmdesktop2/releases/download/v0.12.17/YouTube-Music-for-Desktop-0.12.17-arm64.AppImage
-	sha256sums_aarch64 = cbea5a28938fe5782abffa2c79b92e66c6af03fc3eb6d14f987c6259d799c9c0
-	source_x86_64 = youtube-music-for-desktop-0.12.17-x86_64.AppImage::https://github.com/Venipa/ytmdesktop2/releases/download/v0.12.17/YouTube-Music-for-Desktop-0.12.17.AppImage
-	sha256sums_x86_64 = 7d26839d4a258c198f592da4df303fcd488e4b476b0d96d8941f205932cdd054
+	source_aarch64 = youtube-music-for-desktop-0.13.0-aarch64.AppImage::https://github.com/Venipa/ytmdesktop2/releases/download/v0.13.0/YouTube-Music-for-Desktop-0.13.0-arm64.AppImage
+	sha256sums_aarch64 = 3e2825151311fc69dbf6cb2a409de73e6d1ed59609d41a143c022202f2008295
+	source_x86_64 = youtube-music-for-desktop-0.13.0-x86_64.AppImage::https://github.com/Venipa/ytmdesktop2/releases/download/v0.13.0/YouTube-Music-for-Desktop-0.13.0.AppImage
+	sha256sums_x86_64 = cfa8b27e08f458d5a6da79ddb1229352c816c286013a812235d4e207ba4c2551
 
 pkgname = youtube-music-for-desktop-bin
