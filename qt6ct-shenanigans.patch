@@ -199,7 +199,7 @@ index f3e9ef6..a05a9b7 100644
  
  OTHER_FILES += qt6ct.json
 diff --git a/src/qt6ct-qtplugin/qt6ctplatformtheme.cpp b/src/qt6ct-qtplugin/qt6ctplatformtheme.cpp
-index 1d13faf..6cfd7f9 100644
+index 1d13faf..f9a209d 100644
 --- a/src/qt6ct-qtplugin/qt6ctplatformtheme.cpp
 +++ b/src/qt6ct-qtplugin/qt6ctplatformtheme.cpp
 @@ -41,38 +41,59 @@
@@ -275,7 +275,7 @@ index 1d13faf..6cfd7f9 100644
  }
  
  const QFont *Qt6CTPlatformTheme::font(QPlatformTheme::Font type) const
-@@ -146,46 +167,34 @@ QIcon Qt6CTPlatformTheme::fileIcon(const QFileInfo &fileInfo, QPlatformTheme::Ic
+@@ -146,46 +167,36 @@ QIcon Qt6CTPlatformTheme::fileIcon(const QFileInfo &fileInfo, QPlatformTheme::Ic
      return QIcon::fromTheme(type.iconName());
  }
  
@@ -308,6 +308,8 @@ index 1d13faf..6cfd7f9 100644
 -    QGuiApplication::setFont(m_generalFont); //apply font
 +    if(Qt6CT::isKColorScheme(m_schemePath))
 +        qApp->setProperty("KDE_COLOR_SCHEME_PATH", m_schemePath);
++    else if(m_update)
++        qApp->setProperty("KDE_COLOR_SCHEME_PATH", QVariant());
  
  #ifdef QT_WIDGETS_LIB
      if(hasWidgets())
@@ -333,7 +335,7 @@ index 1d13faf..6cfd7f9 100644
          if(m_userStyleSheet != m_prevStyleSheet)
          {
              // prepend our stylesheet to that of the application
-@@ -207,25 +216,27 @@ void Qt6CTPlatformTheme::applySettings()
+@@ -207,25 +218,27 @@ void Qt6CTPlatformTheme::applySettings()
  #endif
  
      if(m_update)
@@ -370,7 +372,7 @@ index 1d13faf..6cfd7f9 100644
  void Qt6CTPlatformTheme::createFSWatcher()
  {
      QFileSystemWatcher *watcher = new QFileSystemWatcher(this);
-@@ -244,22 +255,17 @@ void Qt6CTPlatformTheme::updateSettings()
+@@ -244,22 +257,17 @@ void Qt6CTPlatformTheme::updateSettings()
      readSettings();
      applySettings();
  }
@@ -397,7 +399,7 @@ index 1d13faf..6cfd7f9 100644
      m_iconTheme = settings.value("icon_theme").toString();
      //load dialogs
      if(!m_update)
-@@ -277,10 +283,10 @@ void Qt6CTPlatformTheme::readSettings()
+@@ -277,10 +285,10 @@ void Qt6CTPlatformTheme::readSettings()
      settings.endGroup();
  
      settings.beginGroup("Fonts");
@@ -412,7 +414,7 @@ index 1d13faf..6cfd7f9 100644
      settings.endGroup();
  
      settings.beginGroup("Interface");
-@@ -336,8 +342,6 @@ void Qt6CTPlatformTheme::readSettings()
+@@ -336,8 +344,6 @@ void Qt6CTPlatformTheme::readSettings()
              QCoreApplication::setAttribute(Qt::AA_ForceRasterWidgets, true);
          else if(!m_isIgnored && forceRasterWidgets == Qt::Unchecked)
              QCoreApplication::setAttribute(Qt::AA_ForceRasterWidgets, false);
@@ -421,7 +423,7 @@ index 1d13faf..6cfd7f9 100644
          settings.endGroup();
      }
  }
-@@ -367,3 +371,17 @@ QString Qt6CTPlatformTheme::loadStyleSheets(const QStringList &paths)
+@@ -367,3 +373,17 @@ QString Qt6CTPlatformTheme::loadStyleSheets(const QStringList &paths)
      content.replace(regExp, "\n");
      return content;
  }
