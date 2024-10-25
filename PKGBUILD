@@ -4,9 +4,9 @@
 pkgname=waveterm
 _pkgname=Wave
 _appname="${_pkgname} Terminal"
-pkgver=0.8.12
-_electronversion=32
-_nodeversion=22
+pkgver=0.8.13
+_electronversion=33
+_nodeversion=20
 pkgrel=1
 pkgdesc="An open-source, cross-platform terminal for seamless workflows.Use system-wide electron."
 arch=(
@@ -39,7 +39,7 @@ source=(
     "${pkgname}-${pkgver}.tar.gz::${_ghurl}/archive/refs/tags/v${pkgver}.tar.gz"
     "${pkgname}.sh"
 )
-sha256sums=('3a23aba67c6b9173689a840c5304c645a376945e0f9b4881da031536acc27f56'
+sha256sums=('13d3f2b7f978cdfe60fd85d271aacf972c444dfb5c26a25b7c4ec0077a91ded7'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
@@ -58,6 +58,7 @@ build() {
     _ensure_local_nvm
     gendesk -f -n -q --pkgname="${pkgname}" --pkgdesc="${pkgdesc}" --categories="Utility" --name="${_appname}" --exec="${pkgname} %U"
     cd "${srcdir}/${pkgname}-${pkgver}"
+    electronDist="/usr/lib/electron${_electronversion}"
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
     export CGO_ENABLED=1
@@ -82,21 +83,25 @@ build() {
         bundle config mirror.https://rubygems.org https://mirrors.aliyun.com/rubygems
     fi
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
-    sed -i "s/build\/icons.icns/build\/appicon.png/g;s/\"zip\", \"deb\", \"rpm\", \"AppImage\", \"pacman\"/\"dir\"/g" electron-builder.config.cjs
-    sed -i "/- build:server:macos/d;/- build:server:windows/d" Taskfile.yml
-    sed -i "138,145d" Taskfile.yml
-    sed -i "122,129d" Taskfile.yml
+    sed -i "s/build\/icons.icns/build\/appicon.png/g" electron-builder.config.cjs
+    sed -e "
+        /- build:server:macos/d
+        /- build:server:windows/d
+        s/ && yarn electron-builder -c electron-builder.config.cjs -p never//g
+    " -i Taskfile.yml
+    sed -i "139,146d;123,130d" Taskfile.yml
     gem install fpm
     _yarnver=`grep "yarn@" package.json | awk '{print $2}' | sed "s/\"//g;s/yarn@//g;s/,//g"`
     corepack enable yarn
     echo y | yarn version "${_yarnver}"
     NODE_ENV=development    yarn install
     NODE_ENV=production     go-task package
+    NODE_ENV=production     yarn electron-builder --linux dir -c.electronDist="${electronDist}" -c electron-builder.config.cjs
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
     install -Dm644 "${srcdir}/${pkgname}-${pkgver}/make/linux-"*/resources/app.asar -t "${pkgdir}/usr/lib/${pkgname}"
-    cp -r "${srcdir}/${pkgname}-${pkgver}/make/linux-"*/resources/app.asar.unpacked "${pkgdir}/usr/lib/${pkgname}"
+    cp -Pr --no-preserve=ownership "${srcdir}/${pkgname}-${pkgver}/make/linux-"*/resources/app.asar.unpacked "${pkgdir}/usr/lib/${pkgname}"
     install -Dm644 "${srcdir}/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
     install -Dm644 "${srcdir}/${pkgname}-${pkgver}/assets/appicon-windows.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
 }
