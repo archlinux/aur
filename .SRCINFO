@@ -1,6 +1,6 @@
 pkgbase = froniusd
 	pkgdesc = Read data from a Fronius inverter
-	pkgver = 0.1.1
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://github.com/ahpohl/froniusd
 	arch = i686
@@ -9,19 +9,20 @@ pkgbase = froniusd
 	arch = aarch64
 	license = MIT
 	depends = mosquitto
-	depends = libsunspec
-	depends = libmodbus
+	depends = libsunspec>=0.1.3
+	depends = libmodbus>=3.1.11
 	optdepends = nodejs-node-red
 	optdepends = postgresql
 	optdepends = timescaledb
 	optdepends = pg_cron
 	optdepends = grafana-bin
-	backup = etc/froniusd.conf
-	source = froniusd-0.1.1::git+https://github.com/ahpohl/froniusd.git#tag=v0.1.1
+	backup = etc/froniusd/froniusd.conf
+	backup = etc/froniusd/docker-compose.yaml
+	source = froniusd-0.1.2::git+https://github.com/ahpohl/froniusd.git#tag=v0.1.2
 	source = sysusers_froniusd.conf
 	source = froniusd.service
-	sha256sums = SKIP
+	sha256sums = e06bde59e13232849d80ccbff11ac6d41208ae7b0354b32fde9bea7e3719d1fa
 	sha256sums = 8c96a8c940a94b8b86312873ad93a2f2a01a2e1e9dbc52b074b04375189dc26b
-	sha256sums = 42e303760645ac8a393bda720304373abf3ce652f4c755d4a37f58a77447ba2f
+	sha256sums = c7e4c04a984a3ea49991c4bf5cf4dac26fa9b2e9eda1a801d20c57e5941d2bfd
 
 pkgname = froniusd
