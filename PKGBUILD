@@ -3,7 +3,7 @@
 # Note: After installation must me enabled service 'sudo systemctl enable --now vpnagentd.service'
 pkgname=cisco-secure-client
 pkgver=5.1.6.103
-pkgrel=2
+pkgrel=1
 pkgdesc='Cisco AnyConnect Secure Mobility Client'
 url='https://www.cisco.com/site/us/en/products/security/secure-client/index.html'
 arch=('x86_64')
