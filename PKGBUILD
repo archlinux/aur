@@ -3,8 +3,8 @@ pkgname=snippet-notes
 pkgver=0.4.4
 _electronversion=22
 _nodeversion=18
-pkgrel=3
-pkgdesc="A local note-taking software with quick recording and enhanced search capabilities.效能笔记，一款快速记录及搜索功能增强的本地笔记记录软件."
+pkgrel=4
+pkgdesc="A local note-taking software with quick recording and enhanced search capabilities.Use system-wide electron.效能笔记,一款快速记录及搜索功能增强的本地笔记记录软件."
 arch=('any')
 url="https://github.com/xunxun10/snippet-notes"
 license=('MIT')
@@ -17,57 +17,60 @@ makedepends=(
     'gendesk'
     'nvm'
     'npm'
-    'git'
     'cmake'
     'gcc'
     'curl'
 )
 source=(
-    "${pkgname}.git::git+${url}.git#tag=${pkgver}"
+    "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz"
     "${pkgname}.sh"
 )
-sha256sums=('c92993c2bf2d098f254912352693c893f0e494518bf0d3476603b98621f5faa8'
-            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
+sha256sums=('069784dbe330fbb5f8df44726173fdbe127ad86d45f4de0180120fbbe2167a13'
+            '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 _ensure_local_nvm() {
-    export NVM_DIR="${srcdir}/.nvm"
+    local NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
     nvm install "${_nodeversion}"
     nvm use "${_nodeversion}"
 }
 build() {
-    sed -e "s|@electronversion@|${_electronversion}|" \
-        -e "s|@appname@|${pkgname}|g" \
-        -e "s|@runname@|app.asar|g" \
-        -e "s|@cfgdirname@|${_pkgname}|g" \
-        -e "s|@options@||g" \
-        -i "${srcdir}/${pkgname}.sh"
+    sed -e "
+        s/@electronversion@/${_electronversion}/g
+        s/@appname@/${pkgname}/g
+        s/@runname@/app.asar/g
+        s/@cfgdirname@/${_pkgname}/g
+        s/@options@//g
+    " -i "${srcdir}/${pkgname}.sh"
     _ensure_local_nvm
     gendesk -q -f -n --pkgname="${pkgname}" --pkgdesc="${pkgdesc}" --categories="Utility" --name="${pkgname}" --exec="${pkgname} %U"
-    cd "${srcdir}/${pkgname}.git"
-    export npm_config_build_from_source=true
-    export npm_config_cache="${srcdir}/.npm_cache"
-    #export ELECTRON_SKIP_BINARY_DOWNLOAD=1
-    #export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
-    #export npm_config_target="${SYSTEM_ELECTRON_VERSION}"
-    #export ELECTRONVERSION="${_electronversion}"
+    cd "${srcdir}/${pkgname}-${pkgver}"
+    electronDist="/usr/lib/electron${_electronversion}"
+    export ELECTRON_SKIP_BINARY_DOWNLOAD=1
+    export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
     HOME="${srcdir}/.electron-gyp"
-    if [ `curl -s ipinfo.io/country | grep CN | wc -l ` -ge 1 ];then
-        export npm_config_registry=https://registry.npmmirror.com
-        export npm_config_disturl=https://registry.npmmirror.com/-/binary/node/
-        export npm_config_electron_mirror=https://registry.npmmirror.com/-/binary/electron/
-        export npm_config_electron_builder_binaries_mirror=https://registry.npmmirror.com/-/binary/electron-builder-binaries/
-    else
-        echo "Your network is OK."
+    {
+        echo -e '\n'	
+        #echo 'build_from_source=true'
+        echo "cache=${srcdir}/.npm_cache"
+    } >> .npmrc
+    if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
+        {
+            echo 'registry=https://registry.npmmirror.com'
+            #echo 'disturl=https://registry.npmmirror.com/-/binary/node/'
+            echo 'electron_mirror=https://registry.npmmirror.com/-/binary/electron/'
+            echo 'electron_builder_binaries_mirror=https://registry.npmmirror.com/-/binary/electron-builder-binaries/'
+        } >> .npmrc
+        find ./ -type f -name "package-lock.json" -exec sed -i "s/registry.npmjs.org/registry.npmmirror.com/g" {} +
     fi
-    sed "s|--win --x64|-l --dir|g" -i package.json
-    NODE_ENV=development npm install
-    NODE_ENV=production npm run dist
+    sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
+    NODE_ENV=development    npm install
+    NODE_ENV=production     npm exec -c "electron-builder --linux dir -c.electronDist=${electronDist}"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
-    install -Dm644 "${srcdir}/${pkgname}.git/dist/linux-"*/resources/app.asar -t "${pkgdir}/usr/lib/${pkgname}"
-    cp -r "${srcdir}/${pkgname}.git/dist/linux-"*/resources/app.asar.unpacked "${pkgdir}/usr/lib/${pkgname}"
-    install -Dm644 "${srcdir}/${pkgname}.git/res/img/${pkgname//es/e}.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
+    install -Dm644 "${srcdir}/${pkgname}-${pkgver}/dist/linux-"*/resources/app.asar -t "${pkgdir}/usr/lib/${pkgname}"
+    cp -Pr --no-preserve=ownership "${srcdir}/${pkgname}-${pkgver}/dist/linux-"*/resources/app.asar.unpacked "${pkgdir}/usr/lib/${pkgname}"
+    install -Dm644 "${srcdir}/${pkgname}-${pkgver}/res/img/${pkgname//es/e}.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
     install -Dm644 "${srcdir}/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
-    install -Dm644 "${srcdir}/${pkgname}.git/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -Dm644 "${srcdir}/${pkgname}-${pkgver}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
