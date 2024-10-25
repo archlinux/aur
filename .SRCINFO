@@ -1,6 +1,6 @@
 pkgbase = godotpcktool
 	pkgdesc = A standalone executable for unpacking and packing Godot .pck files
-	pkgver = 1.8
+	pkgver = 2.0
 	pkgrel = 1
 	url = https://github.com/hhyyrylainen/GodotPckTool
 	arch = x86_64
@@ -8,8 +8,11 @@ pkgbase = godotpcktool
 	makedepends = cmake
 	makedepends = cxxopts
 	makedepends = nlohmann-json
+	makedepends = git
 	depends = glibc
-	source = godotpcktool-1.8.tar.gz::https://github.com/hhyyrylainen/GodotPckTool/archive/refs/tags/v1.8.tar.gz
-	sha256sums = dad9ace4ffadc3137c992faa72edf1659cb6d5629b6ab1c496cc705e62d2bb7f
+	source = godotpcktool-2.0.tar.gz::https://github.com/hhyyrylainen/GodotPckTool/archive/refs/tags/v2.0.tar.gz
+	source = git+https://github.com/CommanderBubble/MD5#commit=552ad5a446a6b22c21e8c7856cfe967e10d5b364
+	sha256sums = 22237e0077c30eafc8524dc1b9bca084b235cdcaade7417abc633110bbd0586e
+	sha256sums = 642c45efc1ee2a233249ba26b0bcc9f0300c7d033e176249e675ac215bc1b8f0
 
 pkgname = godotpcktool
