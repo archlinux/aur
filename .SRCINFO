@@ -1,7 +1,7 @@
 pkgbase = gamma-launcher
 	pkgdesc = S.T.A.L.K.E.R GAMMA launcher for Linux
-	pkgver = 1.7
-	pkgrel = 3
+	pkgver = 2.0
+	pkgrel = 0
 	url = https://github.com/Mord3rca/gamma-launcher
 	arch = x86_64
 	license = GPL
