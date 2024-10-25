@@ -1,22 +1,21 @@
 pkgbase = ffbox
-	pkgdesc = An user-friendly ffmpeg GUI.一个多媒体转码百宝箱/一个 FFmpeg 的套壳
+	pkgdesc = An user-friendly ffmpeg GUI.Use system-wide electron.一个多媒体转码百宝箱/一个 FFmpeg 的套壳
 	pkgver = 4.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/ttqftech/FFBox
 	arch = x86_64
 	license = LicenseRef-custom
 	makedepends = gendesk
 	makedepends = npm
 	makedepends = nvm
-	makedepends = git
 	makedepends = curl
 	depends = electron24
 	depends = ffmpeg
 	depends = nodejs
 	conflicts = ffbox
-	source = ffbox.git::git+https://github.com/ttqftech/FFBox.git#tag=v4.2
+	source = ffbox-4.2.tar.gz::https://github.com/ttqftech/FFBox/archive/refs/tags/v4.2.tar.gz
 	source = ffbox.sh
-	sha256sums = 260ee465e30394e1fd9d42bab63994b99efc39ca342e96307a4ac7a844aecec1
+	sha256sums = 5a11202652e5aaf62dbe0872604630703c5015b5d8f4aa02bd1b4abb2083baa6
 	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
 
 pkgname = ffbox
