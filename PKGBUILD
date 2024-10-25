@@ -7,7 +7,7 @@ _appname="${_pkgname} Terminal"
 pkgver=0.8.13
 _electronversion=33
 _nodeversion=20
-pkgrel=1
+pkgrel=2
 pkgdesc="An open-source, cross-platform terminal for seamless workflows.Use system-wide electron."
 arch=(
     'aarch64'
@@ -103,5 +103,9 @@ package() {
     install -Dm644 "${srcdir}/${pkgname}-${pkgver}/make/linux-"*/resources/app.asar -t "${pkgdir}/usr/lib/${pkgname}"
     cp -Pr --no-preserve=ownership "${srcdir}/${pkgname}-${pkgver}/make/linux-"*/resources/app.asar.unpacked "${pkgdir}/usr/lib/${pkgname}"
     install -Dm644 "${srcdir}/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
-    install -Dm644 "${srcdir}/${pkgname}-${pkgver}/assets/appicon-windows.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
+    _icon_sizes=(16x16 32x32 128x128 256x256 512x512)
+    for _icons in "${_icon_sizes[@]}";do
+        install -Dm644 "${srcdir}/${pkgname}-${pkgver}/build/icons/${_icons}.png" \
+            "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname%-git}.png"
+    done
 }
