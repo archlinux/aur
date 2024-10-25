@@ -3,13 +3,13 @@
 
 pkgname=polkit-explorer-git
 _pkgname=${pkgname%-git}
-pkgver=15.fac8d70
-pkgrel=4
+pkgver=22.3ad139b
+pkgrel=5
 pkgdesc='Present PolicyKit information in a human-readable form.'
 arch=('any')
 url="https://github.com/scarygliders/${_pkgname}"
 license=('ISC')
-depends=('python-pyqt5' 'python-lxml')
+depends=('pyside6' 'python-lxml')
 makedepends=('git')
 conflicts=('polkit-explorer')
 provides=('polkit-explorer')
