@@ -1,6 +1,6 @@
 pkgbase = wormhole-rs-bin
 	pkgdesc = Rust implementation of Magic Wormhole, with new features and enhancements
-	pkgver = 0.7.2
+	pkgver = 0.7.3
 	pkgrel = 1
 	url = https://github.com/magic-wormhole/magic-wormhole.rs
 	arch = x86_64
@@ -10,9 +10,9 @@ pkgbase = wormhole-rs-bin
 	provides = magic-wormhole
 	provides = wormhole-rs
 	conflicts = wormhole-rs
-	source = https://raw.githubusercontent.com/magic-wormhole/magic-wormhole.rs/0.7.2/LICENSE
+	source = https://raw.githubusercontent.com/magic-wormhole/magic-wormhole.rs/0.7.3/LICENSE
 	sha256sums = 6fc9e709ccbfe0d77fbffa2427a983282be2eb88e47b1cdb49f21a83b4d1e665
-	source_x86_64 = wormhole-rs-bin-0.7.2-x86_64.tar.gz::https://github.com/magic-wormhole/magic-wormhole.rs/releases/download/0.7.2/magic-wormhole-cli-x86_64-unknown-linux-gnu.tgz
-	sha256sums_x86_64 = 3975d57c7a6e3185525edb7fa60a381cc4956621dd0fc6f7830fae6a048c4aac
+	source_x86_64 = wormhole-rs-bin-0.7.3-x86_64.tar.gz::https://github.com/magic-wormhole/magic-wormhole.rs/releases/download/0.7.3/magic-wormhole-cli-x86_64-unknown-linux-gnu.tgz
+	sha256sums_x86_64 = 1401347c12c8ebc70f253864bea5e2829ce6e093bb381559cc95c470e8425f3b
 
 pkgname = wormhole-rs-bin
