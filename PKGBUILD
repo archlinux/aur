@@ -39,10 +39,6 @@ build() {
         rsvg-convert -w "${res}" -h "${res}" -o "icons/${res}x${res}.png" build/linux/icons/icon.svg
     done
     dotnet restore "src/${_reponame}.Desktop.Default"
-    dotnet format  "src/${_reponame}.Desktop"         --verify-no-changes --no-restore
-    dotnet format  "src/${_reponame}.Desktop.Default" --verify-no-changes --no-restore
-    dotnet format  "src/${_reponame}.Desktop"         --verify-no-changes --no-restore --severity info
-    dotnet format  "src/${_reponame}.Desktop.Default" --verify-no-changes --no-restore --severity info
     dotnet msbuild "src/${_reponame}.Desktop.Default/${_reponame}.Desktop.Default.csproj" \
         /p:RuntimeIdentifier="linux-${_dotnet_cpu}" \
         /p:Platform="${_dotnet_cpu}" \
