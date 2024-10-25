@@ -4,13 +4,13 @@ _appprefix="/opt"
 _appdataprefix="/var/opt"
 
 pkgname=open-webui
-pkgver=0.3.32
-pkgrel=2
+pkgver=0.3.33
+pkgrel=1
 pkgdesc="Web UI and OpenAI API for various LLM runners, including Ollama"
 arch=('any')
 url="https://github.com/open-webui/open-webui"
 license=('MIT')
-depends=('python')
+depends=('python' 'nodejs-lts-iron')
 makedepends=('npm')
 conflicts=('open-webui-git')
 source=("${pkgname}-${pkgver}.tar.gz"::"${url}/archive/refs/tags/v${pkgver}.tar.gz"
@@ -18,13 +18,14 @@ source=("${pkgname}-${pkgver}.tar.gz"::"${url}/archive/refs/tags/v${pkgver}.tar.
     "open-webui.conf")
 
 install="${pkgname}.install"
-sha1sums=('9d3cfd310c8a5c428ba531ef5bc6c4460a4c7a4a'
+sha1sums=('9f590698bec3cbd85031ca614b7eed9f3c1aa1c4'
           '9b789adb8d91f15ece2187af4aec810847d4b0b2'
           'fb015c224b9529988823f0e24d65ab4a004d30c0')
 options=(!strip !debug)
 
 build() {
     cd "${pkgname}-${pkgver}"
+    export NODE_OPTIONS="--max_old_space_size=4096"
     npm install
     npm run format
     npm run i18n:parse
@@ -33,6 +34,7 @@ build() {
 
 test() {
     cd "${pkgname}-${pkgver}"
+    export NODE_OPTIONS="--max_old_space_size=4096"
     npm run test:frontend
 }
 
