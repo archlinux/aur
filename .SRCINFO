@@ -1,7 +1,7 @@
 pkgbase = mcpelauncher-ui
 	pkgdesc = Minecraft: PE Linux launcher UI
 	pkgver = 1.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/minecraft-linux/mcpelauncher-ui-manifest
 	arch = x86_64
 	license = GPL-3.0-only
@@ -27,6 +27,7 @@ pkgbase = mcpelauncher-ui
 	depends = qt6-webchannel
 	depends = gcc-libs
 	depends = openssl
+	depends = hicolor-icon-theme
 	optdepends = mcpelauncher-msa-ui-qt: Microsoft authentication for version before 1.16.1X
 	source = git+https://github.com/minecraft-linux/mcpelauncher-ui-manifest.git#tag=v1.1.1-qt6
 	source = git+https://github.com/MCMrARM/axml-parser.git
