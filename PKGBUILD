@@ -1,10 +1,10 @@
 # Maintainer: Alexander Pohl <alex at ahpohl dot com>
 pkgname=libabbaurora
-pkgver=0.2.1
+pkgver=0.2.2
 pkgrel=1
 epoch=
 pkgdesc="A C++ library for the ABB Aurora protocol used by inverters and other devices" 
-arch=('i686' 'x86_64' 'aarch64' 'armv6h' 'armv7h')
+arch=('i686' 'x86_64' 'aarch64' 'armv7h')
 url="https://ahpohl.github.io/libabbaurora/"
 license=('GPL3')
 groups=()
@@ -34,8 +34,4 @@ package() {
   make DESTDIR="$pkgdir" PREFIX=/usr install
   install -Dm644 README.md "$pkgdir"/usr/share/doc/$pkgname/README.md
   install -Dm644 LICENSE "$pkgdir"/usr/share/doc/$pkgname/LICENSE
-  install -Dm644 include/ABBAurora.h "$pkgdir"/usr/include/libabbaurora/ABBAurora.h
-  install -Dm644 include/ABBAuroraEnums.h "$pkgdir"/usr/include/libabbaurora/ABBAuroraEnums.h
-  install -Dm644 include/ABBAuroraSerial.h "$pkgdir"/usr/include/libabbaurora/ABBAuroraSerial.h
-  install -Dm644 include/ABBAuroraStrings.h "$pkgdir"/usr/include/libabbaurora/ABBAuroraStrings.h
 }
