@@ -1,4 +1,4 @@
-# Maintainer: Your Name <your_email@example.com>
+# Maintainer: Xarth <g@lzzz.ink>
 pkgname=clipboard-go
 pkgver=1.0.1
 pkgrel=1
