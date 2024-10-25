@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=jan-bin
 _pkgname=Jan
-pkgver=0.5.6
+pkgver=0.5.7
 _electronversion=30
-pkgrel=2
+pkgrel=1
 pkgdesc="Run AI on your own PC.Prebuilt version.Use system-wide electron."
 arch=("x86_64")
 url="https://jan.ai/"
@@ -18,7 +18,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-linux-amd64-${pkgver}.deb"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('b9835d56ccfa3b6af3712dd3ef3c3ab6955a69dbea16874e22b099a531e373d4'
+sha256sums=('52184fee5a7d2b55ad5f55e55577229cd838d21988325ce47785eb8b3062649f'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 build() {
     sed -e "
