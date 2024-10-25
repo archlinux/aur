@@ -1,0 +1,12 @@
+pkgbase = micron-storage-executive-cli
+	pkgdesc = Micron Storage Executive Command Line (msecli) for configuring and managing Micron SSDs
+	pkgver = 10.01.012024.00
+	pkgrel = 1
+	url = https://www.micron.com/sales-support/downloads/software-drivers/storage-executive-software#cli
+	arch = x86_64
+	makedepends = bitrock-unpacker
+	source = https://www.micron.com/content/dam/micron/global/public/products/software/storage-executive-software/msecli/msecli-linux.run
+	md5sums = 56296e2c2400c4e5f2849f594d5e3690
+	sha1sums = 9336123d36fde94019fb83d65af2a307e3208266
+
+pkgname = micron-storage-executive-cli
