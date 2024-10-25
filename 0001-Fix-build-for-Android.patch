@@ -1,0 +1,26 @@
+From 31a50fddc918fad2a2428e5f0fbb68c7974e38f5 Mon Sep 17 00:00:00 2001
+From: Martchus <martchus@gmx.net>
+Date: Fri, 25 Oct 2024 19:26:46 +0200
+Subject: [PATCH] Fix build for Android
+
+See https://bugreports.qt.io/browse/QTBUG-128167
+---
+ src/plugins/sensors/android/sensormanager.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/plugins/sensors/android/sensormanager.cpp b/src/plugins/sensors/android/sensormanager.cpp
+index 755b6109..32a51721 100644
+--- a/src/plugins/sensors/android/sensormanager.cpp
++++ b/src/plugins/sensors/android/sensormanager.cpp
+@@ -90,7 +90,7 @@ void SensorManager::run()
+     m_looper = ALooper_prepare(0);
+     m_waitForStart.release();
+     do {
+-        if (ALooper_pollAll(5 /*ms*/, nullptr, nullptr, nullptr) == ALOOPER_POLL_TIMEOUT)
++        if (ALooper_pollOnce(5 /*ms*/, nullptr, nullptr, nullptr) == ALOOPER_POLL_TIMEOUT)
+             QThread::yieldCurrentThread();
+     } while (!m_quit.loadRelaxed());
+ }
+-- 
+2.47.0
+
