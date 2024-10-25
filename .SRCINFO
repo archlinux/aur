@@ -1,0 +1,16 @@
+pkgbase = rofi-file-browser-extended-patched
+	pkgdesc = Use rofi to quickly open files.
+	pkgver = 5.0.r2.258f02e
+	pkgrel = 1
+	url = https://github.com/DemonKingSwarn/rofi-file-browser-extended
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = cmake
+	makedepends = make
+	provides = rofi-file-browser-extended
+	conflicts = rofi-file-browser-extended-git
+	source = git+https://github.com/DemonKingSwarn/rofi-file-browser-extended
+	md5sums = SKIP
+
+pkgname = rofi-file-browser-extended-patched
