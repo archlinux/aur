@@ -1,7 +1,7 @@
 pkgbase = live-photo-conv
 	pkgdesc = A cross-platform tool to process live photos of Google Android
 	pkgver = 0.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/wszqkzqk/live-photo-conv
 	arch = x86_64
 	arch = aarch64

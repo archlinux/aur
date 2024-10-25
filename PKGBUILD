@@ -2,7 +2,7 @@
 
 pkgname=live-photo-conv
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A cross-platform tool to process live photos of Google Android"
 url="https://github.com/wszqkzqk/${pkgname}"
 arch=('x86_64' 'aarch64' 'riscv64' 'loong64')
@@ -41,4 +41,5 @@ check() {
 
 package() {
     meson install -C build --destdir "${pkgdir}"
+    install -Dm644 "${pkgname}/COPYING" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
