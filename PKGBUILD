@@ -1,8 +1,8 @@
 # Maintainer: KokaKiwi <kokakiwi+aur at kokakiwi dot net>
 
 pkgname=nix-melt
-pkgver=0.1.2
-pkgrel=2
+pkgver=0.1.3
+pkgrel=1
 pkgdesc='A ranger-like flake.lock viewer'
 url='https://github.com/nix-community/nix-melt'
 license=('MPL2')
@@ -10,8 +10,8 @@ arch=('x86_64' 'i686' 'arm' 'aarch64')
 depends=('gcc-libs')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/nix-community/nix-melt/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('acfb4fd25d5b72dc34e7d793cacd5fec8a0ddd695fa8d05a17f7674024e0d5c3')
-b2sums=('eb6c61a67a55122b147870ddc4b6e62bfad0354e4db6b5b5ed6ebe9f5125af891db88295398fae832f7dd7e9ac05d90cbb37cc6799fd3a1db3f1ca430636c5b9')
+sha256sums=('21eb7508e310a78451450e1853b3a46b2d407f72845a7ab1c343520cbe03512c')
+b2sums=('e441f6091525a20188dd7023f1b5542db51115f309b0b97683d3d98f47369c304e0c25566cbdc8bef5a3e1fe35f49f3547c9fd25fef8f944ca7becea66d4d390')
 
 case $CARCH in
   x86_64|i686|aarch64)
