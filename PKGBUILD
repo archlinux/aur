@@ -1,7 +1,8 @@
 # Maintainer: Idares <idares at seznam dot cz>
+# Contributor: Rhinoceros <https://aur.archlinux.org/account/rhinoceros>
 
 pkgname=nagios
-pkgver=4.5.6
+pkgver=4.5.7
 pkgrel=1
 pkgdesc="Nagios is an open source host, service and network monitoring program."
 license=('GPL')
@@ -71,8 +72,8 @@ package() {
 
 }
 
-md5sums=('b653f53fff2a42c5d956ba47f47ceb90'
+md5sums=('19a4f892653fb6f5d6041d8830a0d959'
          'e11fa7de430ed858269f82e179fc87ca')
-sha1sums=('8c31a993aa704212e2f0869269e7eb0632199cf7'
+sha1sums=('f68e8b2ade49b336c4a06eaf9c896af6c37e450d'
           '04008cee208226e60b099550bd9ec7dc78cb1457')
 
