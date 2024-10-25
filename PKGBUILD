@@ -48,31 +48,15 @@ optdepends=(
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 
-options=('!strip')
-
 _pkgsrc="$_pkgname"
-source=(
-  'git+https://github.com/riverwm/river.git'
-  'git+https://github.com/ifreund/zig-pixman.git'
-  'git+https://github.com/ifreund/zig-wayland.git'
-  'git+https://github.com/swaywm/zig-wlroots.git'
-  'git+https://github.com/ifreund/zig-xkbcommon.git'
-)
-sha256sums=(
-  'SKIP'
-  'SKIP'
-  'SKIP'
-  'SKIP'
-  'SKIP'
-)
+source=('git+https://github.com/riverwm/river.git')
+sha256sums=('SKIP')
 
 prepare() {
-  cd "$_pkgsrc"
-  git submodule init
-  for dep in pixman wayland wlroots xkbcommon; do
-    git config "submodule.deps/zig-$dep.url" "$srcdir/zig-$dep"
+  # PACKAGING.md -> build.zig.zon
+  for i in $(grep '\.url' "$_pkgsrc"/build.zig.zon | sed -E 's&^.* = "(\S+)".*$&\1&'); do
+    zig fetch --global-cache-dir ./zig-global-cache "$i"
   done
-  git -c protocol.file.allow=always submodule update
 }
 
 pkgver() {

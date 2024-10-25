@@ -20,16 +20,7 @@ pkgbase = river-git
 	optdepends = polkit: access seat through systemd-logind
 	provides = river
 	conflicts = river
-	options = !strip
 	source = git+https://github.com/riverwm/river.git
-	source = git+https://github.com/ifreund/zig-pixman.git
-	source = git+https://github.com/ifreund/zig-wayland.git
-	source = git+https://github.com/swaywm/zig-wlroots.git
-	source = git+https://github.com/ifreund/zig-xkbcommon.git
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = river-git
