@@ -1,7 +1,7 @@
 pkgbase = qman-git
 	pkgdesc = A more modern manual page viewer for our terminals
 	pkgver = 1.0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/plp13/qman
 	arch = x86_64
 	license = BSD-2-CLAUSE
