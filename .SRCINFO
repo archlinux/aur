@@ -11,7 +11,7 @@ pkgbase = vim-git
 	depends = lua
 	depends = python
 	depends = acl
-	source = git+https//github.com/vim/vim.git
+	source = git+https://github.com/vim/vim.git
 	md5sums = SKIP
 
 pkgname = vim-git

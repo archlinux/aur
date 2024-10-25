@@ -12,7 +12,7 @@ depends=('gpm' 'ruby' 'lua'  'python' 'acl')
 optdepends=()
 backup=()
 options=()
-source=("git+https//github.com/vim/vim.git")
+source=("git+https://github.com/vim/vim.git")
 md5sums=('SKIP')
 
 pkgver() {
