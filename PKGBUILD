@@ -3,7 +3,7 @@
 
 _appname=files_retention
 pkgname=nextcloud-app-files_retention
-pkgver=1.18.0
+pkgver=1.19.0
 pkgrel=1
 pkgdesc="Nextcloud app to delete files after a specified amount of days"
 arch=('any')
@@ -12,7 +12,7 @@ license=('AGPL3')
 makedepends=('npm' 'yq' 'rsync')
 groups=('nextcloud-apps')
 source=("${_appname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha512sums=('bcaa34801dabc25e66abc1a977cd69f1f023ba018c7fcbf02d799c8950f51cb846c0c14390f343db0ffb6735eb2608f80f1896cec394e0e23e5a9e82920422c2')
+sha512sums=('d8144ad6f59e7b915c160448b5cdcb15ece3bc34812d370291957241a63d891813131d2444165a153379c0dfde2b446e64a6b6bed514f825c4fe64d9cce88d09')
 
 # Boilerplate nextcloud version calculation adopted from other packages
 _get_nextcloud_versions() {
