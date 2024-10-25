@@ -1,0 +1,19 @@
+pkgbase = python-creart-git
+        pkgdesc = a universal, extensible class instantiation helper.
+        pkgver = r17.7fa2f7f
+        pkgrel = 1
+        url = https://github.com/GraiaProject/creart
+        arch = x86_64
+        license = MIT
+        makedepends = python-build
+        makedepends = python-installer
+        makedepends = python-setuptools
+        makedepends = python-wheel
+        makedepends = git
+        depends = python-importlib-metadata
+        provides = python-creart
+        conflicts = python-creart
+        source = git+https://github.com/GraiaProject/creart.git
+        md5sums = SKIP
+
+pkgname = python-creart-git
