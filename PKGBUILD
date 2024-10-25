@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=znote-bin
-pkgver=2.6.6
+pkgver=2.6.7
 _electronversion=28
 pkgrel=1
-pkgdesc="A Beautiful markdown editor inspired by Jupyter."
+pkgdesc="A Beautiful markdown editor inspired by Jupyter.Prebuilt version.Use system-wide electron."
 arch=(
     'aarch64'
     'x86_64'
@@ -27,8 +27,8 @@ source=(
 )
 sha256sums=('7b17d24dfab6a4a35a7cad5d004f78efdb3fae09416aa486975b2b3f119936a1'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-sha256sums_aarch64=('2c651c06230932c2615d2a9671fa854153d2b901b6d6ebdcdd4baef29ec365ae')
-sha256sums_x86_64=('d5420efdd0f635d5248da04a917be02702f0d6f7c6939cb72ac5650951edf752')
+sha256sums_aarch64=('43f75fc2b756198f4b1bd7ccdb32bcbb4d4a67f2fcb9108bae0d8b35e8e6c658')
+sha256sums_x86_64=('921404ec10fff4dd5924bebded1a0af2d5585cf946bc2c76da0aabff2a46c3bb')
 build() {
     sed -e "
         s/@electronversion@/${_electronversion}/g
@@ -45,7 +45,7 @@ build() {
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm644 "${srcdir}/squashfs-root/resources/app.asar" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
-    cp -r "${srcdir}/squashfs-root/resources/app.asar.unpacked" "${pkgdir}/usr/lib/${pkgname%-bin}"
+    cp -Pr --no-preserve=ownership "${srcdir}/squashfs-root/resources/app.asar.unpacked" "${pkgdir}/usr/lib/${pkgname%-bin}"
     _icon_sizes=(8x8 32x32 64x64 128x128 256x256)
     for _icons in "${_icon_sizes[@]}";do
         install -Dm644 "${srcdir}/squashfs-root/usr/share/icons/hicolor/${_icons}/apps/${pkgname%-bin}.png" \
