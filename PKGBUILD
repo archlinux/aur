@@ -1,5 +1,5 @@
 # Maintainer: Simon Keimer <dc0sk at secure dot mailbox dot org>
-pkgname=AntScope2
+pkgname=antscope2
 pkgver=1.2.6
 pkgrel=3
 epoch=0

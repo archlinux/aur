@@ -1,4 +1,4 @@
-pkgbase = AntScope2
+pkgbase = antscope2
 	pkgdesc = The AntScope2 software is designed to support various models of RigExpert antenna analyzers under various operating systems. It is commonly used in the hamradio community. Based os Qt5.
 	pkgver = 1.2.6
 	pkgrel = 3
@@ -15,4 +15,4 @@ pkgbase = AntScope2
 	sha256sums = SKIP
 	sha256sums = SKIP
 
-pkgname = AntScope2
+pkgname = antscope2
