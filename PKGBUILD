@@ -1,10 +1,10 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=spacemesh-bin
 _pkgname=Spacemesh
-pkgver=1.7.4
+pkgver=1.7.6
 _electronversion=25
 pkgrel=1
-pkgdesc="Spacemesh App (Smesher + Wallet). Use system-wide electron."
+pkgdesc="Spacemesh App (Smesher + Wallet).Prebuilt version.Use system-wide electron."
 arch=(
     'aarch64'
     'x86_64'
@@ -25,15 +25,15 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-sha256sums_aarch64=('c881e24490672fd44dfbcefef739fd8926b9c62c5a4a9e4b72d0c89a3c374e76')
-sha256sums_x86_64=('5e324bad264600866fdb86f00a8df1b42fa9f1d9671b62c33a0fa26fbab76139')
+sha256sums_aarch64=('d0d7f7b178761a4b2b82fb51729b10dd2ab86beb860e145d12bc2904c76bc1ba')
+sha256sums_x86_64=('df92a1d788d23891a048970dea60b18f64a0bb564872a2ed2abca4a146c65823')
 build() {
     sed -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-bin}/g
         s/@runname@/app.asar/g
         s/@cfgdirname@/${_pkgname}/g
-        s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
+        s/@options@//g
     " -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
     sed -e "
@@ -44,8 +44,8 @@ build() {
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm644 "${srcdir}/opt/${_pkgname}/resources/app.asar" -t "${pkgdir}/usr/lib/${pkgname%-bin}/resources"
-    cp -r "${srcdir}/opt/${_pkgname}/resources/resources" "${pkgdir}/usr/lib/${pkgname%-bin}/resources"
-    cp -r "${srcdir}/opt/${_pkgname}/node" "${pkgdir}/usr/lib/${pkgname%-bin}"
+    cp -Pr --no-preserve=ownership "${srcdir}/opt/${_pkgname}/resources/resources" "${pkgdir}/usr/lib/${pkgname%-bin}/resources"
+    cp -Pr --no-preserve=ownership "${srcdir}/opt/${_pkgname}/node" "${pkgdir}/usr/lib/${pkgname%-bin}"
     install -Dm644 "${srcdir}/usr/share/applications/${pkgname%-bin}_app.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
     _icon_sizes=(16x16 32x32 48x48 64x64 128x128 256x256 512x512 1024x1024)
     for _icons in "${_icon_sizes[@]}";do
