@@ -1,6 +1,6 @@
 pkgbase = vim-git
 	pkgdesc = VIM: Vi IMproved
-	pkgver = 10985.5e5a98d7d
+	pkgver = .
 	pkgrel = 1
 	url = https://www.vim.org/
 	arch = i686
@@ -20,12 +20,3 @@ pkgname = vim-git
 	provides = xdd
 	conflicts = vim
 	conflicts = gvim
-
-pkgname = vim-git-runtime
-	pkgdesc = VIM: Vi IMproved (shared runtime)
-	optdepends = sh: support for some tools and macros
-	optdepends = python: demoserver example tool
-	optdepends = gawk: mve tools upport
-	provides = vim-runtime
-	conflicts = vim-runtime
-	backup = etc/vimrc
