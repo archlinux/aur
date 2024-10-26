@@ -2,8 +2,8 @@
 # Contributor: Talebian <talebian@sovietunion.xyz>
 
 pkgname=bottles-git
-pkgver=51.14.r0.g6ac4156a
-pkgrel=1
+pkgver=51.15.r0.ge93cd189
+pkgrel=2
 epoch=2
 pkgdesc="Easily manage wineprefix using environments"
 arch=(any)
@@ -13,7 +13,6 @@ depends=(
   blueprint-compiler
   cabextract
   dconf
-  fvs
   gtk4
   gtksourceview5
   hicolor-icon-theme
@@ -27,6 +26,7 @@ depends=(
   patool
   python
   python-chardet
+  python-fvs
   python-gobject
   python-markdown
   python-orjson
