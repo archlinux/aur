@@ -1,7 +1,7 @@
 # Maintainer: Nova King <technobaboo@proton.me>
 
 _clientname="gravity"
-pkgdesc="Virtual annotation pen for Stardust XR"
+pkgdesc="Command line spatial offset launcher that ensures Stardust XR connection"
 
 pkgname="stardust-xr-$_clientname"
 pkgver="0.1.0"
