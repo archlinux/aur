@@ -1,0 +1,13 @@
+pkgbase = kara-git
+	pkgdesc = KDE Plasma Pager Applet
+	pkgver = r22.3154447
+	pkgrel = 1
+	url = https://github.com/dhruv8sh/kara
+	install = install.sh
+	arch = any
+	license = GPL-3.0
+	makedepends = git
+	source = git+https://github.com/dhruv8sh/kara.git
+	sha256sums = SKIP
+
+pkgname = kara-git
