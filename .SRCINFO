@@ -13,6 +13,7 @@ pkgbase = bepasty-cli
 	provides = bepasty-cli
 	conflicts = bepasty-cli
 	source = bepasty-cli::git+https://github.com/bepasty/bepasty-client-cli.git
+	validpgpkeys = 463C26699946E6129B90A9E2CE7B6A8F1708ED21
 	md5sums = SKIP
 
 pkgname = bepasty-cli
