@@ -27,6 +27,7 @@ package() {
     mkdir -pv $pkgdir/opt/SkEditor
     mkdir -pv $pkgdir/usr/bin
 
+    cp -fr SkEditor.ico "$pkgdir/opt/SkEditor"
     cp -fr bin/Release/net8.0/linux-x64/publish/* "$pkgdir/opt/SkEditor"
 
     chmod +x $pkgdir/opt/SkEditor/SkEditor
