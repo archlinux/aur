@@ -14,7 +14,7 @@ sha1sums=('6874ffecf25eafe72c531e919c4d2f65fd857a86'
 	  'deca13c7d6d184dad73cab08abce96386978dd6e')
 
 package() {
-	cd "$pkgname-$pkgver"
+	cd "$pkgname-$pkgver" || exit 1
 
 	patch -p1 -i "$srcdir/defaults.patch"
 
