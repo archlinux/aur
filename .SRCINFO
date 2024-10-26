@@ -1,6 +1,6 @@
-pkgbase = skeditor
+pkgbase = skeditor-git
 	pkgdesc = SkEditor
-	pkgver = 2.8.1
+	pkgver = auto.ver
 	pkgrel = 1
 	url = https://github.com/SkEditorTeam/SkEditor
 	arch = x86_64
@@ -9,4 +9,4 @@ pkgbase = skeditor
 	source = git+https://github.com/SkEditorTeam/SkEditor#branch=main
 	md5sums = SKIP
 
-pkgname = skeditor
+pkgname = skeditor-git

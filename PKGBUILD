@@ -1,6 +1,6 @@
 
-pkgname=skeditor
-pkgver=2.8.1  # Wartość początkowa; zostanie nadpisana automatycznie
+pkgname=skeditor-git
+pkgver=auto.ver  # Wartość początkowa; zostanie nadpisana automatycznie
 pkgrel=1
 pkgdesc="SkEditor"
 arch=('x86_64')
