@@ -2,26 +2,26 @@
 # Contributor: Alexander F. Rødseth <xyproto@archlinux.org>
 
 pkgname=python-bayesian-optimization
-pkgver=1.4.3
+pkgver=2.0.0
 pkgrel=1
 pkgdesc='Bayesian global optimization with gaussian processes'
 arch=(any)
 url='https://github.com/fmfn/BayesianOptimization'
 license=(MIT)
 depends=(python-numpy python-scikit-learn python-scipy)
-makedepends=(git python-setuptools)
+makedepends=(git python-poetry)
 source=("git+$url#tag=v$pkgver")
-md5sums=('f464d19fa837773478109e1a0a858ce0')
+md5sums=('938ce4a0c06517c5e946e87ebe1e4abb')
 
 build() {
   cd BayesianOptimization
-  python setup.py build
+  python -m build --wheel --no-isolation
 }
 
 package() {
   cd BayesianOptimization
 
-  python setup.py install --root="$pkgdir" --optimize=1
+  python -m installer --destdir="$pkgdir" dist/*.whl
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
