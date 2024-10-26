@@ -11,7 +11,7 @@ depends=('alsa-lib')
 makedepends=('cargo' 'base-devel')
 source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate")
 sha256sums=('7a9a895c2720f33fc77134cac459f2325a4ba1568cc4148e50bd15432818bce1')
-# Workarond for Ring bug https://github.com/briansmith/ring/issues/1444
+# Workaround for Ring bug https://github.com/briansmith/ring/issues/1444
 # More info: https://gitlab.archlinux.org/archlinux/packaging/packages/pacman/-/issues/20
 options=(!lto)
 
