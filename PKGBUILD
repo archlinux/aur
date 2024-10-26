@@ -3,7 +3,7 @@
 
 _pkgname=valhalla
 pkgname=$_pkgname
-pkgver=3.5.0
+pkgver=3.5.1
 pkgrel=1
 pkgdesc="Routing engine for OpenStreetMap."
 arch=('x86_64')
