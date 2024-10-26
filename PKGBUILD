@@ -5,7 +5,7 @@
 
 pkgname=forkgram-bin
 _pkgname=forkgram
-pkgver=5.6.3
+pkgver=5.6.4
 pkgrel=1
 pkgdesc="Forkgram is the fork of the official Telegram Desktop application - Static binary"
 arch=(x86_64)
@@ -37,8 +37,8 @@ source=(
 
 
 # Checksums
-sha256sums=('968de2fc6f7d6bc198fc70e373bc34a2805b58ddf845ead27c79fdc0b0aeb67d'
-            '84a582c3bfd209b85727cfa88bfdea794e4bb6b60c6a449a411e105c5e1bd9f1'
+sha256sums=('a228986e4650886db65767cba016cc71bc33b38977a03af572f2cb4f53d476e6'
+            '75ce3ba1386180543d56731803a1505b40b8205e2c09165f14c1b45c767d8f4b'
             '9fd7d8ce9c4246ed414ddf15c2a19f6df1a749c1e6cb23ac1aac2fc0e6152fe7'
             '13c5b79d31f123ba4da10d57f93e11bf9490c78476dc44758a9d58f6b4488f0a'
             '371dfd02eb3f9a5e69d0a6dd81d931bfc9fdf749cf4700c9c8def82bf0452701'
@@ -64,6 +64,7 @@ package() {
 
 	# Remove RPATH informations
 	chrpath --delete "$pkgdir/usr/bin/Forkgram"
+	mv "$pkgdir/usr/bin/Forkgram" "$pkgdir/usr/bin/forkgram"
 
 	# Desktop launcher
 	install -Dm644 "$srcdir/${pkgname}.desktop" "$pkgdir/usr/share/applications/${pkgname}.desktop"
