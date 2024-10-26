@@ -1,5 +1,5 @@
 pkgname=skeditor-git
-pkgver=auto.ver
+pkgver=2.8.1
 pkgrel=1
 pkgdesc="SkEditor"
 arch=('x86_64')
