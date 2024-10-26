@@ -1,7 +1,7 @@
 # Maintainer: Eike Baran <eikebaran89@gmail.com>
 pkgname=jdigitalsimulator
 pkgrname=JDigitalSimulator
-pkgver=2.2.0
+pkgver=2.5.2
 pkgrel=1
 pkgdesc="JDigitalSimulator is a platform independent open source Electronic Design Automation software entirely written in Java by Kristian Kraljic."
 arch=('any')
@@ -12,7 +12,7 @@ makedepends=('maven')
 #changelog="$srcdir/$pkgrname-$pkgver/CHANGELOG.md"
 #source=("https://github.com/kristian/$pkgrname/releases/download/$pkgver/jds-$pkgver.zip")
 source=("https://github.com/kristian/$pkgrname/archive/refs/tags/$pkgver.zip")
-md5sums=('0ee1ae6195ebdc1099c03033260d7265')
+md5sums=('3836f557ba50c36ee98364734f55df65')
 
 build() {
   cd "$srcdir/$pkgrname-$pkgver"
