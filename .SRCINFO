@@ -1,7 +1,7 @@
 pkgbase = hyprwall-bin
 	pkgdesc = GUI for setting wallpapers on Wayland (multiple backends). Written in blazingly fast Rust!
-	pkgver = 0.1.4
-	pkgrel = 2
+	pkgver = 0.1.5
+	pkgrel = 1
 	url = https://github.com/nnyyxxxx/hyprwall
 	install = hyprwall.install
 	arch = x86_64
@@ -16,10 +16,12 @@ pkgbase = hyprwall-bin
 	optdepends = feh
 	provides = hyprwall
 	conflicts = hyprwall
-	source = hyprwall-0.1.4::https://github.com/nnyyxxxx/hyprwall/releases/download/v0.1.4/hyprwall
-	source = https://raw.githubusercontent.com/nnyyxxxx/hyprwall/refs/tags/v0.1.4/hyprwall.svg
-	source = https://raw.githubusercontent.com/nnyyxxxx/hyprwall/refs/tags/v0.1.4/hyprwall.desktop
-	sha256sums = ee0b1eaaf3ffd9fbf5996b6008e27d2e9dbcf789252e3cfa0c1e97d3fd168f77
+	source = hyprwall-0.1.5::https://github.com/nnyyxxxx/hyprwall/releases/download/v0.1.5/hyprwall
+	source = https://raw.githubusercontent.com/nnyyxxxx/hyprwall/refs/tags/v0.1.5/man/hyprwall.1
+	source = https://raw.githubusercontent.com/nnyyxxxx/hyprwall/refs/tags/v0.1.5/hyprwall.svg
+	source = https://raw.githubusercontent.com/nnyyxxxx/hyprwall/refs/tags/v0.1.5/hyprwall.desktop
+	sha256sums = c28915266c1d03d3109af69c15fa7887bdff0383a07e6f77ebe036ca9a4ec355
+	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 
