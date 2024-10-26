@@ -1,0 +1,19 @@
+pkgbase = deepcool-digital-linux-git
+	pkgdesc = Linux version for the DeepCool Digital Windows software.
+	pkgver = r48.d80f346
+	pkgrel = 1
+	url = https://github.com/Nortank12/deepcool-digital-linux
+	arch = x86_64
+	license = GPLv3
+	makedepends = git
+	makedepends = cargo
+	provides = deepcool-digital-linux
+	conflicts = deepcool-digital-linux
+	source = git+https://github.com/Nortank12/deepcool-digital-linux.git
+	source = 99-deepcool-digital.rules
+	source = deepcool-digital.service
+	sha256sums = SKIP
+	sha256sums = a9936287d7c802ac51c72ec706ef8833c484c29821510c76e5ccfb712d5485f1
+	sha256sums = 6dc7fa065d44ee45e6150e184182e84399e5a41fba1385767404c521b4843268
+
+pkgname = deepcool-digital-linux-git
