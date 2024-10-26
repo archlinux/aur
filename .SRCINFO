@@ -14,7 +14,7 @@ pkgbase = nvenc
 	source = git+https://github.com/rigaya/NVEnc.git#tag=7.71
 	source = git+https://github.com/tplgy/cppcodec.git
 	source = ldflags-adjustments.patch
-	sha256sums = 5b7e46f29acb8270af1657c331fe5bfd6d891e1f29337da598559c9f17849554
+	sha256sums = 6499bdaaeb3275426b0824e10b2b93c6b7d6ece70ef8c61c4fb8c62a31c069d3
 	sha256sums = SKIP
 	sha256sums = 9032a642a66219efe9413cee1cb371ca3f46de254c6b50f3605df3f385ec53a5
 
