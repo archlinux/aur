@@ -17,6 +17,11 @@ pkgver() {
     grep -oP '(?<=<Version>)[0-9.]+(?=</Version>)' SkEditor.csproj
 }
 
+prepare() {
+    cd "$srcdir/SkEditor/SkEditor"
+    dotnet restore
+}
+
 build() {
     cd "$srcdir/SkEditor/SkEditor"
     dotnet publish -c Release -r linux-x64 -p:PublishSingleFile=false -p:PublishReadyToRun=true --no-self-contained --nologo -v q --property WarningLevel=0 /clp:ErrorsOnly /p:DebugType=None /p:DebugSymbols=false
