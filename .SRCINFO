@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-json-c
 	pkgdesc = A JSON implementation in C (mingw-w64)
-	pkgver = 0.17
+	pkgver = 0.18
 	pkgrel = 1
 	url = https://github.com/json-c/json-c/wiki
 	arch = any
@@ -10,9 +10,9 @@ pkgbase = mingw-w64-json-c
 	options = !strip
 	options = !buildflags
 	options = staticlibs
-	source = https://github.com/json-c/json-c/archive/json-c-0.17.tar.gz
+	source = https://github.com/json-c/json-c/archive/json-c-0.18-20240915.tar.gz
 	source = 001-install-private-header.patch
-	sha256sums = fc1b9ed57f4cda51c52ec9b3b012f6973bd8d80fb70f363c5ca2754342389eb1
+	sha256sums = 3112c1f25d39eca661fe3fc663431e130cc6e2f900c081738317fba49d29e298
 	sha256sums = ac8c5c306bae8fc098c1420c78eab9c9d026f874614f24466987af5f30c70b20
 
 pkgname = mingw-w64-json-c
