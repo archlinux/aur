@@ -15,15 +15,15 @@ for _svc in "${_services[@]}"; do
   _svc_packages+=("python-mypy-boto3-$_svc")
 done
 _boto3_version=1.35.36    ## NOTE: This should match the version of the python-boto3 package to avoid API mis-match
-_mypy_boto3_builder_version=8.1.3
+_mypy_boto3_builder_version=8.1.4
 
 pkgname=python-boto3-stubs
 pkgver=${_boto3_version}
-pkgrel=1
+pkgrel=2
 pkgdesc='Type annotations and code completion for (some) boto3 components (Essentials+Requested)'
 arch=('any')
 url="https://pypi.org/project/boto3-stubs"
-makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-pip')
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-pip' 'python-typing_extensions')
 depends=('python-boto3' 'python-botocore-stubs')
 license=('MIT')
 
