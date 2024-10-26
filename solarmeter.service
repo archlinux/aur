@@ -1,10 +1,9 @@
 [Unit]
 Description=Solarmeter
 After=syslog.target
-#Wants=mosquitto.service
 
 [Service]
-ExecStart=/usr/bin/solarmeter -c /etc/solarmeter.conf
+ExecStart=/usr/bin/solarmeter -c /etc/solarmeter/solarmeter.conf
 User=solarmeter
 Group=solarmeter
 NoNewPrivileges=yes

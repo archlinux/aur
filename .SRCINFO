@@ -1,7 +1,7 @@
 pkgbase = solarmeter
 	pkgdesc = Read energy from ABB Aurora inverter
-	pkgver = 0.1.4
-	pkgrel = 2
+	pkgver = 0.1.5
+	pkgrel = 1
 	url = https://github.com/ahpohl/solarmeter
 	arch = i686
 	arch = x86_64
@@ -15,12 +15,13 @@ pkgbase = solarmeter
 	optdepends = timescaledb
 	optdepends = pg_cron
 	optdepends = grafana-bin
-	backup = etc/solarmeter.conf
-	source = solarmeter-0.1.4::git+https://github.com/ahpohl/solarmeter.git#tag=v0.1.4
+	backup = etc/solarmeter/solarmeter.conf
+	backup = etc/solarmeter/docker-compose.yaml
+	source = solarmeter-0.1.5::git+https://github.com/ahpohl/solarmeter.git#tag=v0.1.5
 	source = sysusers_solarmeter.conf
 	source = solarmeter.service
 	sha256sums = SKIP
 	sha256sums = 8c96a8c940a94b8b86312873ad93a2f2a01a2e1e9dbc52b074b04375189dc26b
-	sha256sums = ef15bca1c644b05db7f2e593d17a5b741a5dd329e8d17c72c5a51f1c8a808797
+	sha256sums = fdc5e20bdac099839ffe6353c8f023d7afc1be4843a281daf5f8c3a9dafb166d
 
 pkgname = solarmeter
