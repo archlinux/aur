@@ -1,0 +1,20 @@
+pkgbase = stardust-xr-non-spatial-input
+	pkgdesc = Get your 2D input into Stardust XR and spatialize it
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/StardustXR/non-spatial-input
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	depends = glibc
+	depends = gcc-libs
+	depends = systemd-libs
+	depends = libinput
+	depends = libxkbcommon
+	depends = libxkbcommon-x11
+	source = git+https://github.com/StardustXR/non-spatial-input.git
+	sha256sums = SKIP
+
+pkgname = stardust-xr-non-spatial-input
