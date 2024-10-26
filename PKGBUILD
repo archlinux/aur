@@ -30,6 +30,7 @@ prepare() {
     git checkout "${_commit}"
     cp -f "src/${_reponame}.Desktop/Changes.md" Changes.md
     cp -f build/linux/icons/icon.svg            icon.svg
+    rm -rf builddir &>/dev/null
 }
 
 build() {
