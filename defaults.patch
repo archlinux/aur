@@ -1,0 +1,33 @@
+From a472cdbd27fa06b0e17e8c966251b03962e06982 Mon Sep 17 00:00:00 2001
+From: Felipe Contreras <felipe.contreras@gmail.com>
+Date: Sun, 26 Feb 2023 08:08:56 -0600
+Subject: [PATCH] defaults: use Arch Linux values
+
+Signed-off-by: Felipe Contreras <felipe.contreras@gmail.com>
+---
+ defaults.yml | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/defaults.yml b/defaults.yml
+index 49d7493..e25c252 100644
+--- a/defaults.yml
++++ b/defaults.yml
+@@ -112,11 +112,11 @@ settings:
+     "/Net/DoubleClickTime": 400
+     "/Net/EnableEventSounds": false
+     "/Net/EnableInputFeedbackSounds": false
+-    "/Net/IconThemeName": null
++    "/Net/IconThemeName": elementary
+     "/Net/SoundThemeName": default
+-    "/Net/ThemeName": null
+-    "/Xft/Antialias": -1
+-    "/Xft/HintStyle": hintnone
++    "/Net/ThemeName": Adwaita
++    "/Xft/Antialias": 1
++    "/Xft/HintStyle": hintfull
+     "/Xft/Hinting": -1
+     "/Xft/RGBA": none
+   xfwm4:
+-- 
+2.47.0
+

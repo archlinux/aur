@@ -9,6 +9,8 @@ pkgbase = xfce-config-helper
 	depends = ruby
 	depends = ruby-dbus
 	source = https://github.com/felipec/xfce-config-helper/archive/v1.1.tar.gz
+	source = defaults.patch
 	sha1sums = 6874ffecf25eafe72c531e919c4d2f65fd857a86
+	sha1sums = deca13c7d6d184dad73cab08abce96386978dd6e
 
 pkgname = xfce-config-helper
