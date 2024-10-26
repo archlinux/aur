@@ -31,6 +31,7 @@ package() {
     
     mkdir -p "$pkgdir/opt/SkEditor"
     mkdir -p "$pkgdir/usr/bin"
+    mkdir -p "$pkgdir/usr/share/applications"
 
     cp -fr SkEditor.ico "$pkgdir/opt/SkEditor"
     cp -fr bin/Release/net8.0/linux-x64/publish/* "$pkgdir/opt/SkEditor"
@@ -42,5 +43,5 @@ package() {
     version=$(grep -oP '(?<=<Version>)[0-9.]+(?=</Version>)' SkEditor.csproj)
     sed -i "s/^Version=.*/Version=${version}/" "SkEditor.desktop"
 
-    install -Dm644 "SkEditor.desktop" "$pkgdir/usr/share/applications/SkEditor.desktop"
+    cp -fr SkEditor.desktop "$pkgdir/usr/share/applications"
 }
