@@ -1,7 +1,7 @@
 pkgbase = qt-installer-framework
 	pkgdesc = The Qt Installer Framework used for the Qt SDK installer
 	pkgver = 4.8.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://qt-project.org/wiki/Qt-Installer-Framework
 	arch = x86_64
 	license = GFDL-1.3-only
@@ -14,9 +14,11 @@ pkgbase = qt-installer-framework
 	options = !lto
 	source = qt-installer-framework-4.8.1.tar.gz::https://github.com/qtproject/installer-framework/archive/4.8.1.tar.gz
 	source = qt6_7.patch::https://github.com/qtproject/installer-framework/commit/0b1103b41db101d2a509e1bdf5385b29410e41e9.patch
+	source = qt6_8.patch::https://github.com/qtproject/installer-framework/commit/d24e8c20ea263e4528f11553a4dfbd93433b203e.patch
 	source = core5compat.patch
 	sha256sums = cab2fa4d5f04298cfe4f63b9721bb389d1efb0fa7333a0ed0795b4ff51108978
 	sha256sums = 7e1961f741f0de55b01d568b57a3f4a25841c774b6eb293866272e048d73412a
+	sha256sums = 586e80274375ace226476ecc8014a8391d9ac1fc70d9e382fb1b25582e815fb8
 	sha256sums = e6013877697814051f1e1483d106da05b612ac24d9b43c868764f77d91b91b20
 
 pkgname = qt-installer-framework
