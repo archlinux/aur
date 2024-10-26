@@ -1,0 +1,17 @@
+pkgbase = quad-bin
+	pkgdesc = High-performance file compressor that utilizes an advanced LZ-based compression algorithm
+	pkgver = 1.12
+	pkgrel = 1
+	url = https://quad.sourceforge.net
+	arch = x86_64
+	arch = i686
+	license = LGPL-2.1-or-later
+	depends = glibc
+	noextract = quad-1.12-x86_64.tar.gz
+	noextract = quad-1.12-i686.tar.gz
+	source_x86_64 = quad-1.12-x86_64.tar.gz::https://downloads.sourceforge.net/sourceforge/quad/quad-1.12-linux_amd64.tar.gz
+	sha256sums_x86_64 = 01f94e39f85284e2e1f955f85287c74e5396088f99d50006794ea520c936d562
+	source_i686 = quad-1.12-i686.tar.gz::https://downloads.sourceforge.net/sourceforge/quad/quad-1.12-linux_i486.tar.gz
+	sha256sums_i686 = b6f5f8db02a47cf7741b8bc95ce0fd9bb5f36e3df083dc4006cd8c05d2323ac5
+
+pkgname = quad-bin
