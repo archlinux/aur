@@ -3,7 +3,7 @@
 pkgname=openarc-unofficial-patches
 _pkgname=openarc
 pkgver=1.0.0
-pkgrel=6
+pkgrel=7
 pkgdesc="OpenARC with patches from not-yet-merged PRs - by flowerysong"
 arch=(x86_64)
 url="https://github.com/flowerysong/OpenARC"
@@ -18,6 +18,7 @@ source=("https://github.com/flowerysong/OpenARC/releases/download/v${pkgver}/${_
         openarc.service
         openarc.sysusers
         openarc.tmpfiles)
+backup=('etc/openarc/openarc.conf')
 sha256sums=('d8c0fa7d9f4ee37260f3132ec30eb9f19b097de93dbdf67c088278d38e738948'
             'd438b4a2e0ab5b247938213da7e8062fa5865e750e4f89d41471311edc163022'
             '31c399c0e3a69bb845b033ab5c0ad92d44cacb0fd58e0113cd1901e75900515e'
@@ -34,7 +35,7 @@ build() {
   ./configure \
      --prefix=/usr \
      --sbindir=/usr/bin \
-     --sysconfdir="/etc/$pkgname" \
+     --sysconfdir="/etc/_pkgname" \
      --localstatedir=/var \
      --disable-static
   make
