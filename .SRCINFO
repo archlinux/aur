@@ -1,6 +1,6 @@
 pkgbase = mockoon-git
 	pkgdesc = The easiest and quickest way to run mock APIs locally. No remote deployment, no account required, open source.Use system-wide electron.
-	pkgver = 8.4.0.r36.gc36425a
+	pkgver = 9.0.0.r1.g8795b5e
 	pkgrel = 1
 	url = https://mockoon.com/
 	arch = aarch64
@@ -13,8 +13,8 @@ pkgbase = mockoon-git
 	makedepends = nvm
 	makedepends = curl
 	makedepends = cmake
-	depends = electron29
-	provides = mockoon=8.4.0
+	depends = electron33
+	provides = mockoon=9.0.0
 	conflicts = mockoon
 	source = mockoon.git::git+https://github.com/mockoon/mockoon.git
 	source = mockoon.sh

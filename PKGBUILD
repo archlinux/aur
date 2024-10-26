@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=mockoon-git
-pkgver=8.4.0.r36.gc36425a
-_electronversion=29
+pkgver=9.0.0.r1.g8795b5e
+_electronversion=33
 _nodeversion=18
 pkgrel=1
 pkgdesc="The easiest and quickest way to run mock APIs locally. No remote deployment, no account required, open source.Use system-wide electron."
@@ -67,20 +67,19 @@ build() {
     if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
         {
             echo 'registry=https://registry.npmmirror.com'
-            echo 'disturl=https://registry.npmmirror.com/-/binary/node/'
             echo 'electron_mirror=https://registry.npmmirror.com/-/binary/electron/'
             echo 'electron_builder_binaries_mirror=https://registry.npmmirror.com/-/binary/electron-builder-binaries/'
         } >> .npmrc
-        echo packages/{cli,cloud,commons,commons-server,desktop,serverkess} | xargs -n 1 cp .npmrc
         find ./ -type f -name "package-lock.json" -exec sed -i "s/registry.npmjs.org/registry.npmmirror.com/g" {} +
+        echo packages/{cli,cloud,commons,commons-server,desktop,serverless} | xargs -n 1 cp .npmrc
     fi
-    sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g;/package:linux/d" packages/desktop/package.json
-    sed -i "47i\    \"package:linux\": \"npm run clean-packages && electron-builder --linux dir -c.electronDist=${electronDist} --config ./build-configs/electron-builder.linux.js\"," \
-        packages/desktop/package.json
     NODE_ENV=development    npm run bootstrap
     NODE_ENV=production     npm run build:libs
     NODE_ENV=production     npm run build:desktop:prod
-    NODE_ENV=production     npm run package:desktop:linux
+    cd "${srcdir}/${pkgname//-/.}/packages/desktop"
+    sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
+    NODE_ENV=production     npm run clean-packages
+    NODE_ENV=production     npm exec -c "electron-builder --linux dir -c.electronDist=${electronDist} --config ./build-configs/electron-builder.linux.js"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
