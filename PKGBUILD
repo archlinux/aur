@@ -2,7 +2,7 @@
 # Contributor: Alexander F. Rødseth <xyproto@archlinux.org>
 
 pkgname=python-nevergrad
-pkgver=1.0.2
+pkgver=1.0.5
 pkgrel=1
 pkgdesc='Gradient-free optimization'
 arch=('any')
@@ -14,7 +14,7 @@ depends=('mypy' 'python-bayesian-optimization' 'python-cma' 'python-coverage'
          'python-pyproj')
 makedepends=('git' 'python-setuptools' 'python-pytest')
 source=("git+$url#tag=$pkgver")
-md5sums=('5aebbd24699e9552426f8b226dc96991')
+md5sums=('aecae1ae4453d68944dc6088ea20ab01')
 
 build() {
   cd nevergrad

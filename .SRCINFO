@@ -1,6 +1,6 @@
 pkgbase = python-nevergrad
 	pkgdesc = Gradient-free optimization
-	pkgver = 1.0.2
+	pkgver = 1.0.5
 	pkgrel = 1
 	url = https://github.com/facebookresearch/nevergrad
 	arch = any
@@ -19,7 +19,7 @@ pkgbase = python-nevergrad
 	depends = python-numpy
 	depends = python-pandas
 	depends = python-pyproj
-	source = git+https://github.com/facebookresearch/nevergrad#tag=1.0.2
-	md5sums = 5aebbd24699e9552426f8b226dc96991
+	source = git+https://github.com/facebookresearch/nevergrad#tag=1.0.5
+	md5sums = aecae1ae4453d68944dc6088ea20ab01
 
 pkgname = python-nevergrad
