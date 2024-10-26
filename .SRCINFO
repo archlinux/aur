@@ -1,0 +1,18 @@
+pkgbase = stardust-xr-telescope
+	pkgdesc = See the stars! Simple Stardust XR overlay setup.
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/StardustXR/telescope
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = bash
+	depends = stardust-xr-server
+	depends = stardust-xr-gravity
+	depends = stardust-xr-black-hole
+	depends = stardust-xr-protostar
+	depends = xwayland-satellite
+	source = git+https://github.com/StardustXR/telescope.git
+	sha256sums = SKIP
+
+pkgname = stardust-xr-telescope
