@@ -1,6 +1,6 @@
 pkgbase = doas
-	pkgdesc = A port of OpenBSD's doas(1), an alternative to sudo(1)
-	pkgver = 6.3p6
+	pkgdesc = A port of OpenBSD's doas (an alternative to sudo) which runs on FreeBSD, Linux, NetBSD, and illumos
+	pkgver = 6.3p12
 	pkgrel = 1
 	url = https://github.com/slicer69/doas
 	install = doas.install
@@ -16,10 +16,10 @@ pkgbase = doas
 	conflicts = opendoas-git
 	backup = etc/doas.conf
 	backup = etc/pam.d/doas
-	source = doas-6.3p6.tar.gz::https://github.com/slicer69/doas/archive/6.3p6.tar.gz
+	source = doas-6.3p12.tar.gz::https://github.com/slicer69/doas/archive/6.3p12.tar.gz
 	source = doas-pam
 	source = doas.conf
-	sha256sums = aa6f5d686942d9148506634e7b84af561af2564b689a287434023b1f272c064a
+	sha256sums = e4f37745345c12d4e0c8c03c8237791729cf047dbd7b2455f8de60e2f82ac1b0
 	sha256sums = b064704fb3448c3511904c3963b0e167ecf6274aea48afb9c42d452447dfd042
 	sha256sums = 1f28802fad6ae0eaa5b94bb8d945ada923631ddfb7ae63e934962dbe41774976
 
