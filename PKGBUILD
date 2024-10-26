@@ -1,4 +1,3 @@
-
 pkgname=skeditor-git
 pkgver=auto.ver
 pkgrel=1
@@ -9,8 +8,8 @@ license=('MIT')
 depends=('dotnet-runtime>=8.0')
 makedepends=('dotnet-sdk')
 
-source=("git+https://github.com/SkEditorTeam/SkEditor#branch=main")
-md5sums=('SKIP')
+source=("git+https://github.com/SkEditorTeam/SkEditor#branch=main" "skeditor.desktop")
+md5sums=('SKIP' 'SKIP')
 
 pkgver() {
     cd "$srcdir/SkEditor/SkEditor"
@@ -30,13 +29,18 @@ build() {
 package() {
     cd "$srcdir/SkEditor/SkEditor"
     
-    mkdir -p $pkgdir/opt/SkEditor
-    mkdir -p $pkgdir/usr/bin
+    mkdir -p "$pkgdir/opt/SkEditor"
+    mkdir -p "$pkgdir/usr/bin"
 
     cp -fr SkEditor.ico "$pkgdir/opt/SkEditor"
     cp -fr bin/Release/net8.0/linux-x64/publish/* "$pkgdir/opt/SkEditor"
 
-    chmod +x $pkgdir/opt/SkEditor/SkEditor
+    chmod +x "$pkgdir/opt/SkEditor/SkEditor"
 
     ln -sf "$pkgdir/opt/SkEditor/SkEditor" "$pkgdir/usr/bin/SkEditor"
+
+    version=$(grep -oP '(?<=<Version>)[0-9.]+(?=</Version>)' SkEditor.csproj)
+    sed -i "s/^Version=.*/Version=${version}/" "SkEditor.desktop"
+
+    install -Dm644 "skeditor.desktop" "$pkgdir/usr/share/applications/skeditor.desktop"
 }

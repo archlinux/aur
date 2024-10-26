@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=
+Type=Application
+Name=SkEditor
+Exec=/opt/SkEditor/SkEditor %F
+Icon=/opt/SkEditor/SkEditor.ico
+Terminal=false
+Categories=TextEditor;Development;Utility;
+StartupNotify=true
