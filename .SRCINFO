@@ -1,13 +1,14 @@
 pkgbase = quad
 	pkgdesc = High-performance file compressor that utilizes an advanced LZ-based compression algorithm
 	pkgver = 1.12
-	pkgrel = 6
-	url = http://quad.sourceforge.net
-	arch = i686
+	pkgrel = 7
+	url = https://quad.sourceforge.net
 	arch = x86_64
-	license = LGPL
-	depends = gcc-libs
-	source = https://sourceforge.net/projects/quad/files/QUAD/1.12/quad112src.zip
+	arch = i686
+	license = LGPL-2.1-or-later
+	depends = glibc
+	noextract = quad-1.12.zip
+	source = quad-1.12.zip::https://downloads.sourceforge.net/sourceforge/quad/quad112src.zip
 	sha256sums = 67e008e1ee6c164e711ababbbbddc0848e137b2fe73923f08c7b8b96bdff8c70
 
 pkgname = quad
