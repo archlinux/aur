@@ -1,25 +1,36 @@
-pkgbase = qt5-wasm
-	pkgdesc = A cross-platform application and UI framework for WebAssembly (No multithreading)
-	pkgver = 5.15.2
-	pkgrel = 2
+pkgbase = qt6-wasm
+	pkgdesc = A cross-platform application and UI framework for WebAssembly
+	pkgver = 6.8.0
+	pkgrel = 0
 	url = https://www.qt.io
-	install = qt5-wasm.install
+	install = qt6-wasm.install
 	arch = x86_64
 	groups = qt-wasm
-	groups = qt5-wasm
+	groups = qt6-wasm
 	license = GPL3
 	license = LGPL3
 	license = FDL
 	license = custom
+	makedepends = git
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = qt6-base=6.8.0
+	makedepends = qt6-shadertools=6.8.0
+	makedepends = qt6-declarative=6.8.0
+	makedepends = qt6-quick3d=6.8.0
+	makedepends = qt6-tools=6.8.0
+	makedepends = qt6-remoteobjects=6.8.0
+	makedepends = qt6-scxml=6.8.0
 	depends = python
-	options = !strip
-	source = https://download.qt.io/official_releases/qt/5.15/5.15.2/single/qt-everywhere-src-5.15.2.tar.xz
-	source = git+https://github.com/emscripten-core/emsdk.git#tag=2.0.29
+	options = strip
+	options = staticlibs
+	options = !buildflags
+	options = !makeflags
+	source = https://download.qt.io/official_releases/qt/6.8/6.8.0/single/qt-everywhere-src-6.8.0.tar.xz
+	source = git+https://github.com/emscripten-core/emsdk.git#tag=3.1.70
 	source = qtwasm_env.sh
-	source = qtbase-5.15.2-gcc11.patch
-	sha256sums = 3a530d1b243b5dec00bc54937455471aaa3e56849d2593edb8ded07228202240
-	sha256sums = SKIP
-	sha256sums = c124915abf2de106429de9a6bb8907961a662808331933b448b048e5cd215f32
-	sha256sums = a8f2650fba0ba63b6ed7e37ca3ac857314808fa83fc035f343f2cc764c4a8567
+	sha256sums = 70f1a87c6ecc6c108dec6e9389e564f8798bd48bec4c596f28d0564c1dbbc2c6
+	sha256sums = 7203278cf1aad49b6ecdeb43f7f95dfd470906cfd0d285c1d91387ffb465e697
+	sha256sums = 9dba88f1628175272c2509a7d823155ae35021a45532240c19941fa681ebb865
 
-pkgname = qt5-wasm
+pkgname = qt6-wasm
