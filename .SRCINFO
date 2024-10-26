@@ -21,6 +21,6 @@ pkgbase = hdtv
 	conflicts = hdtv
 	options = !emptydirs
 	source = https://github.com/janmayer/hdtv/archive/v24.10.tar.gz
-	sha256sums = d6b772c11d7bfcba537a446f600f175a9a32411606f83103465c178101f2d596
+	sha256sums = e54093917e5037efc747e8fc164d105f61f5e334fd65d0194bbed8b0a753b6e0
 
 pkgname = hdtv

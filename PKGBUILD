@@ -9,28 +9,28 @@ license=('GPL')
 conflicts=('hdtv')
 provides=('hdtv')
 depends=('glibc'
-         'libx11'
-         'python'
-         'root'
-         'python-matplotlib'
-         'python-prompt_toolkit'
-         'python-setuptools'
-         'python-scipy'
-         'python-traitlets'
-         'python-uncertainties')
+  'libx11'
+  'python'
+  'root'
+  'python-matplotlib'
+  'python-prompt_toolkit'
+  'python-setuptools'
+  'python-scipy'
+  'python-traitlets'
+  'python-uncertainties')
 makedepends=('python-docutils')
 #checkdepends=('python-pytest')
 options=(!emptydirs)
 source=("${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('d6b772c11d7bfcba537a446f600f175a9a32411606f83103465c178101f2d596')
+sha256sums=('e54093917e5037efc747e8fc164d105f61f5e334fd65d0194bbed8b0a753b6e0')
 
 build() {
-    cd "${srcdir}/${pkgname}-${pkgver}/doc/guide"
-    make || return 1
+  cd "${srcdir}/${pkgname}-${pkgver}/doc/guide"
+  make || return 1
 }
 
 package() {
-    cd "${srcdir}/${pkgname}-${pkgver}"
-    python setup.py install --root="${pkgdir}/" --optimize=1
-    install -Dm 0644 license.md "${pkgdir}/usr/share/licenses/${pkgname}/license.md"
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  python setup.py install --root="${pkgdir}/" --optimize=1
+  install -Dm 0644 license.md "${pkgdir}/usr/share/licenses/${pkgname}/license.md"
 }
