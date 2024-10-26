@@ -2,8 +2,8 @@
 
 pkgname=kfoldersync
 pkgver=3.4.1
-pkgrel=6
-pkgrel_=7.87
+pkgrel=2
+pkgrel_=7.93
 pkgdesc="Folder synchronization and backup tool for KDE"
 arch=('x86_64')
 url="https://store.kde.org/p/1127677"
@@ -15,7 +15,7 @@ source=("https://download.opensuse.org/repositories/home:/ecsos:/Backup/openSUSE
         "https://download.opensuse.org/repositories/home:/ecsos:/Backup/openSUSE_Tumbleweed/noarch/${pkgname}-lang-${pkgver}-${pkgrel_}.noarch.rpm"
         "${pkgname}.install")
 install=${pkgname}.install
-md5sums=('a4d0f64c572d7e39b6ddc708d973419d' 'd4ee86bc7bfec96befb678c2c84d9d97' '262fc1597fb332894d1367f510a7f39b')
+md5sums=('8556e299bdd8b29db1cabc24460b7b6b' 'f420ca8a5cdddff1b36697dd9ac51346' '262fc1597fb332894d1367f510a7f39b')
 
 build()
 {
