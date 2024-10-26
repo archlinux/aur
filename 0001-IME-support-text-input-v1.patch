@@ -1,4 +1,4 @@
-From e11bce133d21723bea4aae292f32796c9296596f Mon Sep 17 00:00:00 2001
+From 6c994dd8fb48b4791f71a9970ddddce632dae247 Mon Sep 17 00:00:00 2001
 From: tokyo4j <hrak1529@gmail.com>
 Date: Fri, 23 Feb 2024 03:57:01 +0900
 Subject: [PATCH] IME: support text-input-v1
@@ -22,7 +22,7 @@ index 189f51f1..6a5e95f0 100644
  
  	struct wl_listener enable;
 diff --git a/protocols/meson.build b/protocols/meson.build
-index 0ee40bf4..d8f670d1 100644
+index 711a9ec1..712f5701 100644
 --- a/protocols/meson.build
 +++ b/protocols/meson.build
 @@ -21,6 +21,7 @@ server_protocols = [
@@ -30,9 +30,9 @@ index 0ee40bf4..d8f670d1 100644
  	wl_protocol_dir / 'staging/xwayland-shell/xwayland-shell-v1.xml',
  	wl_protocol_dir / 'staging/tearing-control/tearing-control-v1.xml',
 +	wl_protocol_dir / 'unstable/text-input/text-input-unstable-v1.xml',
+ 	'cosmic-workspace-unstable-v1.xml',
  	'wlr-layer-shell-unstable-v1.xml',
  	'wlr-input-inhibitor-unstable-v1.xml',
- 	'wlr-output-power-management-unstable-v1.xml',
 diff --git a/src/input/ime.c b/src/input/ime.c
 index c09ef948..592bd9b2 100644
 --- a/src/input/ime.c
@@ -429,5 +429,5 @@ index c09ef948..592bd9b2 100644
  }
  
 -- 
-2.46.0
+2.47.0
 
