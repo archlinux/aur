@@ -26,8 +26,8 @@ validpgpkeys=()
 
 package() {
 	cd $srcdir
-        sudo mkdir -p $pkgdir/usr/share/java/guessthenumber
-        sudo mkdir -p $pkgdir/usr/bin
-        sudo cp guessthenumber.jar $pkgdir/usr/share/java/guessthenumber/
-        sudo cp guessthenumber $pkgdir/usr/bin/
+    mkdir -p $pkgdir/usr/share/java/guessthenumber
+    mkdir -p $pkgdir/usr/bin
+    cp guessthenumber.jar $pkgdir/usr/share/java/guessthenumber/
+    cp guessthenumber $pkgdir/usr/bin/
 }
