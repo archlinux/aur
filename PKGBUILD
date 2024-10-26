@@ -11,7 +11,7 @@ arch=("x86_64" "aarch64")
 url="https://github.com/Jeric-X/${_reponame}"
 license=("MIT")
 depends=("aspnet-runtime-${_dotnet_ver}" "fontconfig" "libxinerama" "libxt" "libxtst")
-makedepends=("dotnet-sdk-${_dotnet_ver}" "fuse2" "git" "librsvg" "unzip")
+makedepends=("dotnet-sdk-${_dotnet_ver}" "git" "librsvg")
 source=("${_pkgname}::git+${url}.git"
         "${_pkgname}-${pkgver}.txt::${url}.Desktop/raw/refs/tags/v${pkgver}/version.txt"
         "${_pkgname}.desktop")
