@@ -2,7 +2,7 @@
 
 _name=qics
 pkgname="python-${_name}"
-pkgver=0.1.1
+pkgver=1.0.0
 pkgrel=1
 pkgdesc='The quantum information conic solver'
 arch=(any)
@@ -10,12 +10,18 @@ url='https://qics.readthedocs.io'
 license=(MIT)
 depends=(python-numpy python-scipy python-numba)
 makedepends=(python-setuptools python-build python-installer python-wheel)
+checkdepends=(python-pytest)
 source=("https://github.com/kerry-he/qics/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('79ca219778e9b2ae3f067cc4600bdf14d201703564564ec0121d753847ba06f9')
+sha256sums=('962e34efd6822dcd4c77dc468ed75dcfd412544d0aede354e18ed63ceb02afc3')
 
 build() {
     cd "${_name}-${pkgver}"
     python -m build --wheel --no-isolation
+}
+
+check() {
+    cd "${_name}-${pkgver}"
+    pytest
 }
 
 package() {
