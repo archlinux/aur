@@ -13,7 +13,7 @@
 pkgbase=bcompare
 pkgname=('bcompare' 'bcompare-kde6' 'bcompare-kde5' 'bcompare-kde4' 'bcompare-nautilus' 'bcompare-thunar' 'bcompare-cinnamon' 'bcompare-mate')
 pkgver=5.0.3.30258
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url='https://www.scootersoftware.com'
 license=('custom')
@@ -129,7 +129,7 @@ package_bcompare-kde5() {
   # Set up service menus
   msg2 "Packaging KDE Plasma 5 service menus..."
   cd "${srcdir}/install/lib/beyondcompare/ext"
-  install -m 755 -D -t "${pkgdir}/usr/lib/qt5/plugins/kf5/kfileitemaction" bcompare_ext_kde5.amd64.so
+  install -m 755 -D -t "${pkgdir}/usr/lib/qt/plugins/kf5/kfileitemaction" bcompare_ext_kde5.amd64.so
   msg2 "Done!"
 }
 
