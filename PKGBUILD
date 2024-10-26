@@ -1,6 +1,6 @@
 # Maintainer: Stanisław Jasiewicz <stjasiewicz@protonmail.com>
 pkgname=neverwinter.nim-bin
-pkgver=1.8.0
+pkgver=2.0.1
 pkgrel=1
 pkgdesc="A nim-lang library and utility collection to read and write data files used by Neverwinter Nights 1"
 arch=('any')
@@ -9,7 +9,7 @@ license=('MIT')
 conflicts=('neverwinter.nim')
 provides=('neverwinter.nim')
 source=("https://github.com/niv/neverwinter.nim/releases/download/$pkgver/neverwinter.linux.amd64.zip")
-md5sums=('022ec1e8433ae79d26c3f599c8ab1a4c')
+md5sums=('3083bcfcc2db018f9f54322526f56c23')
 
 package() {
     install -Dm 755 "nwn_twoda" -t "$pkgdir/usr/bin"
@@ -32,4 +32,8 @@ package() {
     install -Dm 755 "nwn_erf" -t "$pkgdir/usr/bin"
     install -Dm 755 "nwn_compressedbuf" -t "$pkgdir/usr/bin"
     install -Dm 755 "nwn_asm" -t "$pkgdir/usr/bin"
+    install -Dm 755 "nwn_nwsync_write" -t "$pkgdir/usr/bin"
+    install -Dm 755 "nwn_nwsync_fetch" -t "$pkgdir/usr/bin"
+    install -Dm 755 "nwn_nwsync_print" -t "$pkgdir/usr/bin"
+    install -Dm 755 "nwn_nwsync_prune" -t "$pkgdir/usr/bin"
 }
