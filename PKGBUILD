@@ -27,9 +27,15 @@ build() {
 
     rm -rf server appsettings* &>/dev/null
     dotnet restore "src/${_reponame}.Server"
-    dotnet publish "src/${_reponame}.Server/${_reponame}.Server.csproj" --configuration Release --no-restore
-    mv "src/${_reponame}.Server/bin/Release/net${_dotnet_ver}/publish" server
-    mv server/appsettings* .
+    dotnet publish "src/${_reponame}.Server/${_reponame}.Server.csproj" \
+        --no-restore \
+        --configuration Release \
+        --framework "net${_dotnet_ver}" \
+        --self-contained false \
+        --output builddir \
+        -p:DebugSymbols=false \
+        -p:DebugType=none
+    mv builddir/appsettings* .
 }
 
 package() {
@@ -44,6 +50,6 @@ package() {
     install -Dm644 LICENSE                "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     install -Dm644 appsettings*.json   -t "${pkgdir}/etc/${_pkgname}"
     install -dm755 "${pkgdir}/usr/bin"    "${pkgdir}/usr/lib/${_pkgname}"
-    cp -r --preserve=mode server          "${pkgdir}/usr/lib/${_pkgname}/server"
+    cp -r --preserve=mode builddir        "${pkgdir}/usr/lib/${_pkgname}/server"
     ln -sf "${_binary}"                   "${pkgdir}/usr/bin/${pkgname}"
 }
