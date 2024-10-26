@@ -1,0 +1,15 @@
+pkgbase = laptop-support-cli-git
+	pkgdesc = Command line tool to laptop-support protocol compatible services
+	pkgver = 0.0.0
+	pkgrel = 1
+	url = https://github.com/petitstrawberry/laptop-support-cli
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = glibc
+	provides = laptop-support-cli
+	conflicts = laptop-support-cli
+	source = git+https://github.com/petitstrawberry/laptop-support-cli.git
+	sha256sums = SKIP
+
+pkgname = laptop-support-cli-git
