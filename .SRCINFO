@@ -1,0 +1,35 @@
+pkgbase = kmix-kf6-git
+	pkgdesc = KDE volume control program
+	pkgver = _r2761.g5b617eb8
+	pkgrel = 1
+	url = https://apps.kde.org/kmix/
+	arch = x86_64
+	groups = kde-applications
+	groups = kde-multimedia
+	license = GPL-2.0-or-later
+	license = LGPL-2.0-or-later
+	makedepends = extra-cmake-modules
+	makedepends = kdoctools
+	depends = alsa-lib
+	depends = gcc-libs
+	depends = glibc
+	depends = kconfig
+	depends = kconfigwidgets
+	depends = kcoreaddons
+	depends = kcrash
+	depends = kdbusaddons
+	depends = kglobalaccel
+	depends = ki18n
+	depends = knotifications
+	depends = kwidgetsaddons
+	depends = kwindowsystem
+	depends = libcanberra
+	depends = libpulse
+	depends = qt6-base
+	depends = kxmlgui
+	depends = sh
+	depends = solid
+	source = git+https://github.com/KDE/kmix.git#branch=kf6
+	sha256sums = SKIP
+
+pkgname = kmix-kf6-git
