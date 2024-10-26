@@ -6,8 +6,8 @@
 # Test if login works: https://iamapps.belgium.be/tma/
 
 pkgname=eid-mw
-pkgver=5.1.20
-_pkgverlong=5.1.20.1.gb3056f4d
+pkgver=5.1.21
+#_pkgverlong=5.1.20.1.gb3056f4d
 pkgrel=1
 pkgdesc="The Belgian e-ID (electronic identity card) viewer and Firefox extension"
 arch=("x86_64")
@@ -22,10 +22,10 @@ optdepends=(
     "pcsc-tools: PC/SC smartcard tools"
 )
 source=(
-    "https://dist.eid.belgium.be/continuous/sources/$pkgname-$pkgver-v${_pkgverlong}.tar.gz"
-    "https://dist.eid.belgium.be/continuous/sources/$pkgname-$pkgver-v${_pkgverlong}.tar.gz.asc"
+    "https://dist.eid.belgium.be/continuous/sources/$pkgname-$pkgver-v${pkgver}.tar.gz"
+    "https://dist.eid.belgium.be/continuous/sources/$pkgname-$pkgver-v${pkgver}.tar.gz.asc"
 )
-sha256sums=('b4c0bb1517900de1ed80b8612faf56a60b66da73eb7a57edbba37bf8450083ad'
+sha256sums=('2d2a362d47516779d11b6160c31cbc015399292ffa34e97b310880990188295c'
             'SKIP')
 #    Upstream only signs the "continuous releases" of the software, so that is the version
 #    we are using.. 
@@ -33,7 +33,7 @@ sha256sums=('b4c0bb1517900de1ed80b8612faf56a60b66da73eb7a57edbba37bf8450083ad'
 validpgpkeys=("D95426E309C0492990D8E8E2824A5E0010A04D46")
 
 build() {
-    cd "$pkgname-$pkgver-v$_pkgverlong"
+    cd "$pkgname-$pkgver-v$pkgver"
     sed -i "s/c_rehash/openssl rehash/g" plugins_tools/eid-viewer/Makefile.in
     SSL_PREFIX=/usr ./configure \
 	--prefix=/usr \
@@ -44,6 +44,6 @@ build() {
 }
 
 package() {
-    cd "$pkgname-$pkgver-v$_pkgverlong"
+    cd "$pkgname-$pkgver-v$pkgver"
     make install DESTDIR="$pkgdir"
 }

@@ -1,6 +1,6 @@
 pkgbase = eid-mw
 	pkgdesc = The Belgian e-ID (electronic identity card) viewer and Firefox extension
-	pkgver = 5.1.20
+	pkgver = 5.1.21
 	pkgrel = 1
 	url = https://eid.belgium.be/
 	arch = x86_64
@@ -21,10 +21,10 @@ pkgbase = eid-mw
 	optdepends = acsccid: ACS CCID smart card readers
 	optdepends = ccid: Needed for Belgian Digipass 870
 	optdepends = pcsc-tools: PC/SC smartcard tools
-	source = https://dist.eid.belgium.be/continuous/sources/eid-mw-5.1.20-v5.1.20.1.gb3056f4d.tar.gz
-	source = https://dist.eid.belgium.be/continuous/sources/eid-mw-5.1.20-v5.1.20.1.gb3056f4d.tar.gz.asc
+	source = https://dist.eid.belgium.be/continuous/sources/eid-mw-5.1.21-v5.1.21.tar.gz
+	source = https://dist.eid.belgium.be/continuous/sources/eid-mw-5.1.21-v5.1.21.tar.gz.asc
 	validpgpkeys = D95426E309C0492990D8E8E2824A5E0010A04D46
-	sha256sums = b4c0bb1517900de1ed80b8612faf56a60b66da73eb7a57edbba37bf8450083ad
+	sha256sums = 2d2a362d47516779d11b6160c31cbc015399292ffa34e97b310880990188295c
 	sha256sums = SKIP
 
 pkgname = eid-mw
