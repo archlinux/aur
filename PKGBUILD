@@ -2,14 +2,14 @@
 
 pkgname=silentdragonpaper
 pkgver=0.1.4
-pkgrel=1
+pkgrel=2
 pkgdesc="HUSH paper wallet generator"
 url="https://git.hush.is/hush/SilentDragonPaper"
 arch=('x86_64')
-license=('GPL3')
+license=('GPL-3.0-or-later')
 makedepends=('rust')
 source=("$url/archive/v$pkgver.tar.gz")
-sha512sums=('738a535b3ee71d90488dcb235328797c4809769adbeb95d2f108633b65229efe1ff2b2a655407d1690b87ca62d97eb096e4f15667c7b2a9340c4b275d70fd782')
+sha512sums=('512f687e46466a35a6bb83a571f8c88f535359fd644ceefe972326721c714df1a05fefc88127998d0d0644de60ee2a772bb558ee22b76f5193f2a56dea58ad75')
 
 build() {
   tar xzvf v$pkgver.tar.gz
