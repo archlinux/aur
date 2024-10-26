@@ -28,15 +28,15 @@ prepare() {
 
     cd "${_pkgname}"
     git checkout "${_commit}"
-    mv "src/${_reponame}.Desktop/Changes.md" .
+    cp -f "src/${_reponame}.Desktop/Changes.md" Changes.md
+    cp -f build/linux/icons/icon.svg            icon.svg
 }
 
 build() {
     cd "${_pkgname}"
 
-    mkdir -p icons
     for res in 16 32 48 64 128 256 512; do
-        rsvg-convert -w "${res}" -h "${res}" -o "icons/${res}x${res}.png" build/linux/icons/icon.svg
+        rsvg-convert -w "${res}" -h "${res}" -o "${res}x${res}.png" icon.svg
     done
     dotnet restore "src/${_reponame}.Desktop.Default"
     dotnet msbuild "src/${_reponame}.Desktop.Default/${_reponame}.Desktop.Default.csproj" \
@@ -53,18 +53,16 @@ package() {
     local _source="src/${_reponame}.Desktop.Default/bin/${_dotnet_cpu}/Release/net${_dotnet_ver}/linux-${_dotnet_cpu}/publish"
     local _binary="/usr/lib/${_pkgname}/desktop/${_reponame}.Desktop.Default"
 
-    install -Dm644 "${_pkgname}.desktop"         "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
+    install -Dm644 "${_pkgname}.desktop"   "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
 
     cd "${_pkgname}"
+    install -Dm644 icon.svg                "${pkgdir}/usr/share/icons/hicolor/symbolic/apps/${_pkgname}.svg"
+    install -Dm644 LICENSE                 "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -Dm644 *.md docs/*.md       -t "${pkgdir}/usr/share/doc/${pkgname}"
+    install -dm755 "${pkgdir}/usr/bin"     "${pkgdir}/usr/lib/${_pkgname}"
+    cp -r --preserve=mode "${_source}"     "${pkgdir}/usr/lib/${_pkgname}/desktop"
+    ln -sf "${_binary}"                    "${pkgdir}/usr/bin/${pkgname}"
     for res in 16 32 48 64 128 256 512; do
-        install -Dm644 "icons/${res}x${res}.png" "${pkgdir}/usr/share/icons/hicolor/${res}x${res}/apps/${_pkgname}.png"
+        install -Dm644 "${res}x${res}.png" "${pkgdir}/usr/share/icons/hicolor/${res}x${res}/apps/${_pkgname}.png"
     done
-    install -Dm644 build/linux/icons/icon.svg    "${pkgdir}/usr/share/icons/hicolor/symbolic/apps/${_pkgname}.svg"
-    install -Dm644 LICENSE                       "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-    install -Dm644 *.md docs/*.md             -t "${pkgdir}/usr/share/doc/${pkgname}"
-    install -dm755                               "${pkgdir}/usr/lib/${_pkgname}" \
-                                                 "${pkgdir}/usr/share/licenses/${pkgname}" \
-                                                 "${pkgdir}/usr/bin"
-    cp -r --preserve=mode "${_source}"           "${pkgdir}/usr/lib/${_pkgname}/desktop"
-    ln -sf "${_binary}"                          "${pkgdir}/usr/bin/${pkgname}"
 }
