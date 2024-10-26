@@ -12,7 +12,6 @@ provides=('bepasty-cli')
 conflicts=('bepasty-cli')
 source=("${pkgname}::git+https://github.com/bepasty/bepasty-client-cli.git")
 md5sums=('SKIP')
-validpgpkeys=('463C26699946E6129B90A9E2CE7B6A8F1708ED21')
 pkgver() {
   cd "${srcdir}/${pkgname}"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
