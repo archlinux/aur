@@ -7,14 +7,13 @@ pkgver=0.2.3
 # upstream version
 _pkgver=0.2.3
 _release_tag=nym-vpn-app-v0.2.3
-pkgrel=1
+pkgrel=2
 pkgdesc='NymVPN desktop client'
 arch=('x86_64')
 url='https://github.com/nymtech/nym-vpn-client'
 license=('GPL-3.0-only')
-depends=('gcc-libs' 'bash' 'cairo' 'gtk3' 'webkit2gtk-4.1' 'gdk-pixbuf2' 'glib2' 'openssl' 'libsoup3')
+depends=('gcc-libs' 'bash' 'cairo' 'gtk3' 'webkit2gtk-4.1' 'gdk-pixbuf2' 'glib2' 'openssl' 'libsoup3' 'nym-vpnd')
 makedepends=('rust' 'cargo' 'protobuf' 'npm')
-optdepends=('nym-vpnd: NymVPN daemon as a systemd service')
 provides=('nym-vpn-app')
 conflicts=('nymvpn-x' 'nym-vpn-app')
 options=(!debug)

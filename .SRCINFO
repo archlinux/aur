@@ -1,7 +1,7 @@
 pkgbase = nym-vpn-app
 	pkgdesc = NymVPN desktop client
 	pkgver = 0.2.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/nymtech/nym-vpn-client
 	arch = x86_64
 	license = GPL-3.0-only
@@ -18,7 +18,7 @@ pkgbase = nym-vpn-app
 	depends = glib2
 	depends = openssl
 	depends = libsoup3
-	optdepends = nym-vpnd: NymVPN daemon as a systemd service
+	depends = nym-vpnd
 	provides = nym-vpn-app
 	conflicts = nymvpn-x
 	conflicts = nym-vpn-app
