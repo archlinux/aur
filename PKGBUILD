@@ -1,10 +1,10 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=swarm-desktop
 _pkgname="Swarm Desktop"
-pkgver=0.43.1
+pkgver=0.43.2
 _electronversion=18
 _nodeversion=18
-pkgrel=2
+pkgrel=1
 pkgdesc="Electron Desktop app that helps you easily spin up and manage Swarm node.Use system-wide electron."
 arch=(
     'aarch64'
@@ -23,13 +23,13 @@ makedepends=(
     'npm'
     'nvm'
     'curl'
-    'git'
+    'python-setuptools'
 )
 source=(
     "${pkgname}-${pkgver}.tar.gz::${_ghurl}/archive/refs/tags/v${pkgver}.tar.gz"
     "${pkgname}.sh"
 )
-sha256sums=('67c11b5690203e6256ac1f267f2aba5318c328b71957c736603fe34d67d79a62'
+sha256sums=('15e4ae23d2df4cac6b04dc10f9817fc12861240c437dab1f07523eda0a7ddb65'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
