@@ -11,7 +11,7 @@ makedepends=('git' 'python-setuptools' 'meson' 'ninja')
 provides=("${pkgname}")
 conflicts=("${pkgname}")
 source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('740e68417459167aec734b60e9840e51b1bf5517eb7a8e69c4502afd28bc5433')
+sha256sums=('9552fd00f07614ce3380009cd944794d5464362a1418d5ec30a4e88c7d06cfd1')
 
 build() {
   cd "$srcdir/${pkgname}-${pkgver}"

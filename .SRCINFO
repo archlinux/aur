@@ -1,6 +1,6 @@
 pkgbase = waydroid-helper
 	pkgdesc = A GUI application for Waydroid configuration and extension installation
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/ayasa520/waydroid-helper
 	arch = any
@@ -22,7 +22,7 @@ pkgbase = waydroid-helper
 	depends = python-aiofiles
 	provides = waydroid-helper
 	conflicts = waydroid-helper
-	source = https://github.com/ayasa520/waydroid-helper/archive/refs/tags/v0.1.0.tar.gz
-	sha256sums = 532d9149b33c2b51a21e06e871f1267445d1a3fb98cabbd0996c1f881fbfc020
+	source = https://github.com/ayasa520/waydroid-helper/archive/refs/tags/v0.1.1.tar.gz
+	sha256sums = 9552fd00f07614ce3380009cd944794d5464362a1418d5ec30a4e88c7d06cfd1
 
 pkgname = waydroid-helper
