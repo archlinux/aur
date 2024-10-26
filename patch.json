@@ -323,6 +323,7 @@
 			"resolvers"
 		],
 		"ms-python.python": [
+			"codeActionAI",
 			"contribEditorContentMenu",
 			"quickPickSortByLabel",
 			"portsAttributes",
@@ -331,7 +332,8 @@
 			"terminalDataWriteEvent",
 			"terminalExecuteCommandEvent",
 			"contribIssueReporter",
-			"notebookReplDocument"
+			"notebookReplDocument",
+			"notebookVariableProvider"
 		],
 		"ms-dotnettools.dotnet-interactive-vscode": [
 			"notebookMessaging"
@@ -480,7 +482,8 @@
 			"documentFiltersExclusive",
 			"chatParticipantPrivate",
 			"lmTools",
-			"contribDebugCreateConfiguration"
+			"contribDebugCreateConfiguration",
+			"inlineEdit"
 		],
 		"GitHub.remotehub": [
 			"contribRemoteHelp",
@@ -539,6 +542,7 @@
 			"terminalDataWriteEvent"
 		],
 		"ms-azuretools.vscode-azure-github-copilot": [
+			"contribChatParticipantDetection",
 			"lmTools"
 		],
 		"ms-vscode.anycode": [
@@ -571,6 +575,9 @@
 		"TeamsDevApp.ms-teams-vscode-extension": [
 			"chatParticipantAdditions",
 			"languageModelSystem"
+		],
+		"ms-toolsai.datawrangler": [
+			"lmTools"
 		]
 	},
 	"tasConfig": {
