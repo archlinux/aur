@@ -1,0 +1,15 @@
+pkgbase = stardust-xr-protostar
+	pkgdesc = Prototype app launchers for Stardust XR
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/StardustXR/protostar
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = rust-musl
+	makedepends = cargo
+	makedepends = git
+	source = git+https://github.com/StardustXR/protostar.git
+	sha256sums = SKIP
+
+pkgname = stardust-xr-protostar
