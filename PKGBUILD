@@ -39,18 +39,17 @@ build() {
         rsvg-convert -w "${res}" -h "${res}" -o "${res}x${res}.png" icon.svg
     done
     dotnet restore "src/${_reponame}.Desktop.Default"
-    dotnet msbuild "src/${_reponame}.Desktop.Default/${_reponame}.Desktop.Default.csproj" \
-        /p:RuntimeIdentifier="linux-${_dotnet_cpu}" \
-        /p:Platform="${_dotnet_cpu}" \
-        /p:SelfContained=false \
-        /p:OutDir=desktop \
-        /p:Configuration=Release \
-        /t:Publish \
-        /v:m
+    dotnet publish "src/${_reponame}.Desktop.Default/${_reponame}.Desktop.Default.csproj" \
+        --no-restore \
+        --configuration Release \
+        --framework "net${_dotnet_ver}" \
+        --self-contained false \
+        --output builddir \
+        --runtime "linux-${_dotnet_cpu}" \
+        -p:DebugSymbols=false
 }
 
 package() {
-    local _source="src/${_reponame}.Desktop.Default/bin/${_dotnet_cpu}/Release/net${_dotnet_ver}/linux-${_dotnet_cpu}/publish"
     local _binary="/usr/lib/${_pkgname}/desktop/${_reponame}.Desktop.Default"
 
     install -Dm644 "${_pkgname}.desktop"   "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
@@ -60,7 +59,7 @@ package() {
     install -Dm644 LICENSE                 "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     install -Dm644 *.md docs/*.md       -t "${pkgdir}/usr/share/doc/${pkgname}"
     install -dm755 "${pkgdir}/usr/bin"     "${pkgdir}/usr/lib/${_pkgname}"
-    cp -r --preserve=mode "${_source}"     "${pkgdir}/usr/lib/${_pkgname}/desktop"
+    cp -r --preserve=mode "builddir"       "${pkgdir}/usr/lib/${_pkgname}/desktop"
     ln -sf "${_binary}"                    "${pkgdir}/usr/bin/${pkgname}"
     for res in 16 32 48 64 128 256 512; do
         install -Dm644 "${res}x${res}.png" "${pkgdir}/usr/share/icons/hicolor/${res}x${res}/apps/${_pkgname}.png"
