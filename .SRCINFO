@@ -1,5 +1,5 @@
 pkgbase = mympc-git
-	pkgdesc = An mpc wrapper with music library zsh completion and advanced tagging features.
+	pkgdesc = An mpc wrapper with music library zsh completion and advanced tagging features
 	pkgver = r7.99708e5
 	pkgrel = 1
 	url = https://gitlab.com/teraflops/mympc
