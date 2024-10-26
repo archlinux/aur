@@ -1,5 +1,5 @@
 pkgbase = buildbot
-	pkgver = 3.11.9
+	pkgver = 4.0.4
 	pkgrel = 1
 	url = https://buildbot.net
 	arch = any
@@ -18,6 +18,9 @@ pkgbase = buildbot
 	checkdepends = python-markdown
 	checkdepends = openssh
 	checkdepends = chromium
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
 	makedepends = python-twisted
 	makedepends = python-jinja
 	makedepends = python-msgpack
@@ -31,7 +34,6 @@ pkgbase = buildbot
 	makedepends = python-yaml
 	makedepends = python-croniter
 	makedepends = python-unidiff
-	makedepends = python-importlib_resources
 	makedepends = python-packaging
 	makedepends = python-graphql-core
 	makedepends = python-hvac
@@ -40,22 +42,21 @@ pkgbase = buildbot
 	makedepends = python-pypugjs
 	makedepends = python-aiohttp
 	makedepends = python-setuptools
-	makedepends = python-six
 	makedepends = python-sphinx-jinja
 	makedepends = python-sphinx_rtd_theme
 	makedepends = git
 	makedepends = yarn
-	source = git+https://github.com/buildbot/buildbot.git?signed#tag=v3.11.9
+	source = git+https://github.com/buildbot/buildbot.git?signed#tag=v4.0.4
 	source = git+https://github.com/buildbot/buildbot-contrib.git#commit=cc230791dcd4717830d4dcb62843c0a19bdf3262
 	source = disable-flaky-tests.diff
 	validpgpkeys = FD0004A26EADFE43A4C3F249C6F7AE200374452D
-	sha256sums = d8aa460adb20b5c263fb5170da4ac4d7ca23d13f34971f6926db3d6b095ca3ab
+	sha256sums = 76a6f0a3f1cbb6f000e3ec040b4a271b0c9ce17e020da7ff36218ec0c20cbf49
 	sha256sums = 2f8747848b96d9e31a66d3becd62d36dcbdd349e5381a8bd2558da7c1f2faddb
 	sha256sums = 175cb41a707a278b0a7c0864304a00459d6e2dee16cd5ddbc28a6dc90abfd3fc
 
 pkgname = buildbot
 	pkgdesc = The Continuous Integration Framework
-	depends = buildbot-common=3.11.9-1
+	depends = buildbot-common=4.0.4-1
 	depends = python
 	depends = python-twisted
 	depends = python-jinja
@@ -70,7 +71,6 @@ pkgname = buildbot
 	depends = python-yaml
 	depends = python-croniter
 	depends = python-unidiff
-	depends = python-importlib_resources
 	depends = python-packaging
 	optdepends = python-pyopenssl: to use SSL/TLS in mail or IRC notifiers
 	optdepends = pass: to use SecretInPass provider
@@ -96,10 +96,9 @@ pkgname = buildbot
 
 pkgname = buildbot-worker
 	pkgdesc = Buildbot worker daemon
-	depends = buildbot-common=3.11.9-1
+	depends = buildbot-common=4.0.4-1
 	depends = python
 	depends = python-twisted
-	depends = python-six
 	depends = python-autobahn
 	depends = python-msgpack
 	depends = python-zope-interface
@@ -114,70 +113,41 @@ pkgname = buildbot-common
 pkgname = python-buildbot-www
 	pkgdesc = Buildbot UI
 	depends = python
-	depends = buildbot=3.11.9-1
+	depends = buildbot=4.0.4-1
 	optdepends = python-buildbot-waterfall-view
 	optdepends = python-buildbot-console-view
 	optdepends = python-buildbot-grid-view
 	optdepends = python-buildbot-badges
 
-pkgname = python-buildbot-www-react
-	pkgdesc = React-based Buildbot UI (experimental)
-	depends = python
-	depends = buildbot=3.11.9-1
-	optdepends = python-buildbot-react-waterfall-view
-	optdepends = python-buildbot-react-console-view
-	optdepends = python-buildbot-react-grid-view
-
 pkgname = python-buildbot-waterfall-view
 	pkgdesc = Buildbot Waterfall View plugin
-	depends = buildbot=3.11.9-1
-	depends = python-buildbot-www=3.11.9-1
+	depends = buildbot=4.0.4-1
+	depends = python-buildbot-www=4.0.4-1
 
 pkgname = python-buildbot-console-view
 	pkgdesc = Buildbot Console View plugin
-	depends = buildbot=3.11.9-1
-	depends = python-buildbot-www=3.11.9-1
+	depends = buildbot=4.0.4-1
+	depends = python-buildbot-www=4.0.4-1
 
 pkgname = python-buildbot-grid-view
 	pkgdesc = Buildbot Grid View plugin
-	depends = buildbot=3.11.9-1
-	depends = python-buildbot-www=3.11.9-1
+	depends = buildbot=4.0.4-1
+	depends = python-buildbot-www=4.0.4-1
 
 pkgname = python-buildbot-wsgi-dashboards
 	pkgdesc = Buildbot plugin to integrate flask or bottle dashboards to buildbot UI
-	depends = buildbot=3.11.9-1
-	depends = python-buildbot-www=3.11.9-1
+	depends = buildbot=4.0.4-1
+	depends = python-buildbot-www=4.0.4-1
 	depends = python-twisted
 
 pkgname = python-buildbot-badges
 	pkgdesc = Buildbot badges
 	depends = python
-	depends = buildbot=3.11.9-1
-	depends = python-buildbot-www=3.11.9-1
+	depends = buildbot=4.0.4-1
+	depends = python-buildbot-www=4.0.4-1
 	depends = python-klein
 	depends = python-cairosvg
 	depends = python-cairocffi
 	depends = python-jinja
 	depends = python-twisted
 	optdepends = ttf-dejavu: the default font for rendering badges as PNGs
-
-pkgname = python-buildbot-react-waterfall-view
-	pkgdesc = Buildbot Waterfall View plugin (React)
-	depends = buildbot=3.11.9-1
-	depends = python-buildbot-www-react=3.11.9-1
-
-pkgname = python-buildbot-react-console-view
-	pkgdesc = Buildbot Console View plugin (React)
-	depends = buildbot=3.11.9-1
-	depends = python-buildbot-www-react=3.11.9-1
-
-pkgname = python-buildbot-react-grid-view
-	pkgdesc = Buildbot Grid View plugin (React)
-	depends = buildbot=3.11.9-1
-	depends = python-buildbot-www-react=3.11.9-1
-
-pkgname = python-buildbot-react-wsgi-dashboards
-	pkgdesc = Buildbot plugin to integrate flask or bottle dashboards to buildbot UI (React)
-	depends = buildbot=3.11.9-1
-	depends = python-buildbot-www-react=3.11.9-1
-	depends = python-twisted
