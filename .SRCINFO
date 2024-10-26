@@ -1,0 +1,15 @@
+pkgbase = rustybrain
+	pkgdesc = A CLI based Task Management App for Archlinux
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/sricharanandra/rustybrain
+	arch = x86_64
+	license = Apache
+	makedepends = rust
+	makedepends = cargo
+	depends = rust
+	depends = cargo
+	source = rustybrain-0.1.0.tar.gz::https://github.com/sricharanandra/rustybrain/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = rustybrain
