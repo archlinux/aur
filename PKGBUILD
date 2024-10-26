@@ -40,7 +40,7 @@ sha256sums=('70f1a87c6ecc6c108dec6e9389e564f8798bd48bec4c596f28d0564c1dbbc2c6'
             '7203278cf1aad49b6ecdeb43f7f95dfd470906cfd0d285c1d91387ffb465e697'
             '9dba88f1628175272c2509a7d823155ae35021a45532240c19941fa681ebb865')
 
-options=('strip' 'staticlibs' '!buildflags' '!makeflags')
+options=('!strip' 'staticlibs' '!buildflags' '!makeflags')
 
 _opt=/opt/qt6-wasm
 
@@ -66,7 +66,7 @@ build() {
     -nomake tests -nomake examples \
     -no-warnings-are-errors \
     -qt-host-path /usr \
-    -platform wasm-emscripten \
+    -xplatform wasm-emscripten \
     -feature-thread \
     -feature-wasm-exceptions \
     -prefix "${_opt}"
@@ -96,16 +96,16 @@ package() {
     -exec sed -i -e '/^QMAKE_PRL_BUILD_DIR/d' {} \;
 
   ## emsdk
-#  cp -a ${srcdir}/emsdk ${pkgdir}${_opt}/
-#  cd ${pkgdir}${_opt}/emsdk
-#  rm -rf .git .circleci .gitignore
-#  sed -i "s|${srcdir}|${_opt}|" .emscripten_sanity_wasm
-#  sed -i "s|${srcdir}|${_opt}|" upstream/emscripten/cache/is_vanilla.txt
-#  sed -i "s|qt6emsdk|${pkgname}-emsdk|" emsdk.py
-#  find . -type d -name "__pycache__" -prune -exec rm -rf {} \;
-#  find . -type d -exec chmod 755 {} \;
-#  find . -type f -executable -exec chmod 755 {} \;
-#  find . -type f -not -executable -exec chmod 644 {} \;
+  cp -a ${srcdir}/emsdk ${pkgdir}${_opt}/
+  cd ${pkgdir}${_opt}/emsdk
+  rm -rf .git .circleci .gitignore
+  sed -i "s|${srcdir}|${_opt}|" .emscripten_sanity_wasm
+  sed -i "s|${srcdir}|${_opt}|" upstream/emscripten/cache/is_vanilla.txt
+  sed -i "s|qt6emsdk|${pkgname}-emsdk|" emsdk.py
+  find . -type d -name "__pycache__" -prune -exec rm -rf {} \;
+  find . -type d -exec chmod 755 {} \;
+  find . -type f -executable -exec chmod 755 {} \;
+  find . -type f -not -executable -exec chmod 644 {} \;
 
   ## env
 #  cp ${srcdir}/qtwasm_env.sh ${pkgdir}${_opt}/
