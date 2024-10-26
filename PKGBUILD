@@ -1,6 +1,6 @@
 # Maintainer: Philipp A. <flying-sheep@web.de>
 pkgname=terrafirma
-pkgver=3.1.12
+pkgver=3.1.13
 pkgrel=1
 pkgdesc='Mapping for Terraria'
 arch=(x86_64 aarch64 armv7h)
@@ -12,7 +12,7 @@ source=(
 	"$pkgname-$pkgver.tar.gz::https://github.com/mrkite/TerraFirma/archive/$pkgver.tar.gz"
 	"fix-install-paths.patch::https://github.com/mrkite/TerraFirma/commit/6d2c535440f5a8104d0cb4ae2a7ead8c472fde77.patch"
 )
-sha256sums=('074342b7f3862ce0d2ebe1c876b94b5688f7ab053110519ef6d02ad4755a7469'
+sha256sums=('fd09c8015d6540eb7be7356d4708c93a76279e679d6ad2e13d1acb412f5e5de6'
             'e5a4458f577031b4a65f595038ba765243bf86de2d59982e6e5d2a769e861ebb')
 
 prepare() {
