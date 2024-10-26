@@ -1,0 +1,17 @@
+pkgbase = chim-bin
+	pkgdesc = Cross-platform binary shims with optional remote fetching
+	pkgver = 1.1.2
+	pkgrel = 1
+	url = https://github.com/jdx/chim
+	arch = x86_64
+	arch = i686
+	arch = aarch64
+	license = MIT
+	provides = chim
+	conflicts = chim
+	source_x86_64 = https://github.com/jdx/chim/releases/download/v1.1.2/chim-v1.1.2-linux-x64.tar.xz
+	sha512sums_x86_64 = 765973e3cc820b9fd216be365a8e6b280fd46b5bc6184fcc71e3774b4bc9fc8e433a6628de662984337818a6af3a4ac7e0da870c0e2e73872fa7885506b4d779
+	source_aarch64 = https://github.com/jdx/chim/releases/download/v1.1.2/chim-v1.1.2-linux-arm64.tar.xz
+	sha512sums_aarch64 = e8ccf40417972f93161363cc00855d2e2456d0650a878b74bbb7bc40bcccf4e896e7ea8a2cd09335c818f68176ef4f3628acf7f937f26a28bb044865129b4a1a
+
+pkgname = chim-bin
