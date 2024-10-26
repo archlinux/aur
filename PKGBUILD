@@ -2,16 +2,16 @@
 
 pkgname=hush-lightwalletd
 _name='lightwalletd'
-pkgver=0.1.3
+pkgver=0.2.0
 pkgrel=1
 pkgdesc='HUSH Lightwallet daemon for running SDL servers'
 url='https://git.hush.is/hush/lightwalletd'
 arch=('x86_64')
-license=('GPL3')
+license=('GPL-3.0-or-later')
 makedepends=('go')
 provides=('lightwalletd')
 source=("$url/archive/v$pkgver.tar.gz")
-sha512sums=('6c0a59aa09e07c2fc808cea35b9712d55a805e7e22e577ec616bafd59a2484c5976a64d73c4a1293ac3bcdc0c1b94a015b40e407cad53a039db533b47b9211d2')
+sha512sums=('8a9baf9241449caccd3b753f15fd20c37fb5b4a58e89fa8d07d52fb52ef3470dd1a3951dac725ed33ab17173c6a4b944c169debf1b02d8432180e6dc42655343')
 
 build() {
   cd "$_name"
