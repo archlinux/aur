@@ -45,5 +45,5 @@ package() {
     version=$(grep -oP '(?<=<Version>)[0-9.]+(?=</Version>)' SkEditor.csproj)
     sed -i "s/^Version=.*/Version=${version}/" "SkEditor.desktop"
 
-    cp -fr SkEditor.desktop "$pkgdir/usr/share/applications"
+    install -Dm644 SkEditor.desktop "$pkgdir/usr/share/applications/SkEditor.desktop"
 }
