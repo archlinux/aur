@@ -1,0 +1,26 @@
+pkgbase = glabels-qt-barcode
+	pkgdesc = gLabels (Qt) 3.99 Now with GNU barcode 0.99 support.
+	pkgver = 3.99.564
+	pkgrel = 10
+	url = https://github.com/jimevins/glabels-qt
+	arch = x86_64
+	license = GPL3
+	makedepends = qt5-tools
+	makedepends = git
+	makedepends = cmake
+	depends = qt5-base
+	depends = qt5-svg
+	depends = qt5-translations
+	optdepends = zint
+	provides = glabels-qt
+	conflicts = glabels-qt
+	source = https://github.com/jimevins/glabels-qt/archive/refs/tags/glabels-3.99-master564.tar.gz
+	source = ftp://ftp.gnu.org/gnu/barcode/barcode-0.99.tar.xz
+	source = https://github.com/jimevins/glabels-qt/pull/186.patch
+	source = glabels_gnubarcode_0.99.patch
+	sha256sums = 22806961037edf9a419ef7c7b00c8c9c8d230bdfa4267c40aa3ee9bc7160bdd4
+	sha256sums = e87ecf6421573e17ce35879db8328617795258650831affd025fba42f155cdc6
+	sha256sums = aac48198fdfc501734e8854c19c9c1686f8278d692f28ccc527580ae4fd0ab90
+	sha256sums = 741622933382c5d21737eccca536b40ba6811c42c440819de57900b7ce9e4aeb
+
+pkgname = glabels-qt-barcode

@@ -1,0 +1,22 @@
+diff --git a/cmake/Modules/FindGnuBarcode.cmake b/cmake/Modules/FindGnuBarcode.cmake
+index 01ca230..f75cafc 100644
+--- a/cmake/Modules/FindGnuBarcode.cmake
++++ b/cmake/Modules/FindGnuBarcode.cmake
+@@ -9,7 +9,7 @@
+ 
+ set (GNUBARCODE_DEFINITIONS "")
+ 
+-find_path (GNUBARCODE_INCLUDE_DIR NAMES barcode.h PATH_SUFFIXES barcode)
++find_path (GNUBARCODE_INCLUDE_DIR NAMES barcode.h config.h PATH_SUFFIXES barcode)
+ 
+ find_library (GNUBARCODE_LIBRARY NAMES barcode )
+ 
+@@ -34,7 +34,7 @@ if (GNUBARCODE_LIBRARY AND GNUBARCODE_INCLUDE_DIR)
+ endif ()
+ 
+ if (GNUBARCODE_INCLUDE_DIR AND EXISTS "${GNUBARCODE_INCLUDE_DIR}/barcode.h")
+-  file (STRINGS "${GNUBARCODE_INCLUDE_DIR}/barcode.h" BARCODE_H REGEX "^#define BARCODE_VERSION *\"[^\"]*\"")
++  file (STRINGS "${GNUBARCODE_INCLUDE_DIR}/config.h" BARCODE_H REGEX "^#define PACKAGE_VERSION *\"[^\"]*\"")
+   string (REGEX REPLACE "^.*VERSION *\"([^\"]*)\"" "\\1" GNUBARCODE_VERSION_STRING "${BARCODE_H}")
+ endif()
+ 
