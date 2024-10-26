@@ -15,7 +15,6 @@ source=("git+$url.git")
 sha256sums=('SKIP')
 install="$pkgname.install"
 
-# Especifica las claves públicas válidas para verificar las firmas
 validpgpkeys=('463C26699946E6129B90A9E2CE7B6A8F1708ED21')
 
 pkgver() {
@@ -30,11 +29,9 @@ pkgver() {
 prepare() {
   cd "$srcdir/mympc"
 
-  # Verificar que la etiqueta está firmada correctamente
   git fetch --tags --force
   git checkout "v$pkgver" || exit 1
 
-  # Verificar la firma de la etiqueta
   git tag -v "v$pkgver" || exit 1
 }
 
