@@ -1,0 +1,22 @@
+pkgbase = mympc
+	pkgdesc = An mpc wrapper with music library zsh completion and advanced tagging features
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://gitlab.com/teraflops/mympc
+	install = mympc.install
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = gnupg
+	depends = zsh
+	depends = mpc
+	depends = mpd
+	depends = python-mpd2
+	depends = bash
+	provides = mympc
+	conflicts = mympc
+	source = git+https://gitlab.com/teraflops/mympc.git#tag=v1.0.0?signed
+	validpgpkeys = 463C26699946E6129B90A9E2CE7B6A8F1708ED21
+	sha256sums = SKIP
+
+pkgname = mympc
