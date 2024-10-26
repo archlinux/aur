@@ -1,6 +1,6 @@
 pkgbase = xfce-config-helper
 	pkgdesc = Tools to help manage Xfce configurations
-	pkgver = 1.0
+	pkgver = 1.1
 	pkgrel = 1
 	url = https://github.com/felipec/xfce-config-helper
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = xfce-config-helper
 	makedepends = git
 	depends = ruby
 	depends = ruby-dbus
-	source = https://github.com/felipec/xfce-config-helper/archive/v1.0.tar.gz
-	sha1sums = a3bfcefbd615419df6c97f71582c1a979ec8fef0
+	source = https://github.com/felipec/xfce-config-helper/archive/v1.1.tar.gz
+	sha1sums = 6874ffecf25eafe72c531e919c4d2f65fd857a86
 
 pkgname = xfce-config-helper

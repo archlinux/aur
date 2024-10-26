@@ -1,7 +1,7 @@
 # Maintainer: Felipe Contreras <felipe.contreras@gmail.com>
 
 pkgname=xfce-config-helper
-pkgver=1.0
+pkgver=1.1
 pkgrel=1
 pkgdesc='Tools to help manage Xfce configurations'
 depends=('ruby' 'ruby-dbus')
@@ -10,7 +10,7 @@ arch=('any')
 license=('ISC')
 makedepends=('git')
 source=("${url}/archive/v${pkgver}.tar.gz")
-sha1sums=('656b6e5bd76d5eb89658a5a57ee3aff00a04cbca')
+sha1sums=('6874ffecf25eafe72c531e919c4d2f65fd857a86')
 
 package() {
 	cd "$pkgname-$pkgver"
