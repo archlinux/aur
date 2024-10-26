@@ -504,7 +504,7 @@
 		"GitHub.copilot": {
 			"onFileOpen": [
 				{
-					"pathGlob": "{**/*.ts,**/*.tsx,**/*.js,**/*.py,**/*.go,**/*.rb}"
+					"pathGlob": "{**/*.ts,**/*.tsx,**/*.js,**/*.jsx,**/*.py,**/*.go,**/*.rb,**/*.html,**/*.css,**/*.php,**/*.cpp,**/*.vue,**/*.c,**/*.sql,**/*.java,**/*.cs,**/*.rs,**/*.dart,**/*.ps,**/*.ps1,**/*.tex}"
 				}
 			],
 			"onSettingsEditorOpen": {
