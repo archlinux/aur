@@ -1,15 +1,15 @@
 pkgbase = gost-v3-bin
 	pkgdesc = GO Simple Tunnel - A simple security tunnel
-	pkgver = 3.0.0.20241020
+	pkgver = 3.0.0.20241022
 	pkgrel = 1
 	url = https://gost.run/en/
 	arch = x86_64
 	arch = i386
 	license = MIT
-	provides = gost-v3-bin=3.0.0.20241020
+	provides = gost-v3-bin=3.0.0.20241022
 	conflicts = gost
-	source_x86_64 = https://github.com/go-gost/gost/releases/download/v3.0.0-nightly.20241020/gost_3.0.0-nightly.20241020_linux_amd64.tar.gz
-	sha256sums_x86_64 = 6b87a8013993598e97e3405086cf1046b4e178e4e21e953f1e69ece426a455f1
-	source_i386 = https://github.com/go-gost/gost/releases/download/v3.0.0-nightly.20241020/gost_3.0.0-nightly.20241020_linux_386.tar.gz
+	source_x86_64 = https://github.com/go-gost/gost/releases/download/v3.0.0-nightly.20241022/gost_3.0.0-nightly.20241022_linux_amd64.tar.gz
+	sha256sums_x86_64 = 2fe72f304d7c97933759cdf9e7831e5b9577d87fe3426b5ac69f3b99035032da
+	source_i386 = https://github.com/go-gost/gost/releases/download/v3.0.0-nightly.20241022/gost_3.0.0-nightly.20241022_linux_386.tar.gz
 
 pkgname = gost-v3-bin
