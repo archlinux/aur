@@ -83,7 +83,7 @@ build() {
 package() {
   ## qt
   cd ${srcdir}/${_qt}/build-wasm
-  cmake --install ${srcdir}/${_qt}/build-wasm --prefix=${pkgdir}
+  cmake --install ${srcdir}/${_qt}/build-wasm --prefix=${pkgdir}{$_opt}
 
 #  for module in $_modules; do
 #    cd $module
