@@ -5,7 +5,7 @@
 # Maintainer: Martin Blumenstingl <martin.blumenstingl@googlemail.com>
 
 pkgname=kmix-kf6-git
-pkgver=_r2761.g5b617eb8
+pkgver=r2761.5b617eb
 pkgrel=1
 pkgdesc='KDE volume control program'
 url='https://apps.kde.org/kmix/'
@@ -39,8 +39,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd ${pkgname%-kf6-git}
-  _ver="$(grep -m1 "project(Okteta VERSION" CMakeLists.txt | cut -d ' ' -f3 | tr -d ')' | tr - .)"
-  echo "${_ver}_r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
 build() {
