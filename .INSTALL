@@ -1,0 +1,9 @@
+post_install () {
+	[ -L /usr/bin/AntScope2 ] || ln -s /usr/share/antscope2-git/AntScope2 /usr/bin/AntScope2
+	echo ln -s /usr/share/antscope2-git/AntScope2 /usr/bin/AntScope2
+}
+
+post_remove () {
+	[ -L /usr/bin/AntScope2 ] && rm /usr/bin/AntScope2
+	echo rm /usr/bin/AntScope2
+}
