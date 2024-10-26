@@ -7,12 +7,12 @@ pkgver=0.2.3
 # upstream version
 _pkgver=0.2.3
 _release_tag=nym-vpn-app-v0.2.3
-pkgrel=2
+pkgrel=3
 pkgdesc='NymVPN desktop client'
 arch=('x86_64')
 url='https://github.com/nymtech/nym-vpn-client'
 license=('GPL-3.0-only')
-depends=()
+depends=('gcc-libs' 'bash' 'cairo' 'gtk3' 'webkit2gtk-4.1' 'gdk-pixbuf2' 'glib2' 'openssl' 'libsoup3' 'nym-vpnd')
 makedepends=()
 provides=('nym-vpn-app')
 conflicts=('nymvpn-x' 'nym-vpn-app')
@@ -28,7 +28,6 @@ sha256sums=(
     'c15b6028f25ea931c9bedf2b5600f91d6f94f15066afdbd7f789c770ea250e06')
 
 package() {
-  depends=('gcc-libs' 'bash' 'cairo' 'gtk3' 'webkit2gtk-4.1' 'gdk-pixbuf2' 'glib2' 'openssl' 'libsoup3' 'nym-vpnd')
   install -Dm755 "nym-vpn_${_pkgver}_linux_x64" "$pkgdir/usr/bin/nym-vpn-app"
   install -Dm755 "nym-vpn-wrapper.sh" "$pkgdir/usr/bin/nym-vpn-wrapper.sh"
   install -Dm644 "nym-vpn.desktop"    "$pkgdir/usr/share/applications/nym-vpn.desktop"
