@@ -3,7 +3,7 @@ Description=Fronius SunSpec energy meter
 After=network.target
 
 [Service]
-ExecStart=/usr/bin/froniusd -c /etc/froniusd.conf
+ExecStart=/usr/bin/froniusd -c /etc/froniusd/froniusd.conf
 User=solarmeter
 Group=solarmeter
 NoNewPrivileges=yes
