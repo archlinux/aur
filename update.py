@@ -38,7 +38,7 @@ def fetch_product_json(version: str):
     os.remove("code.tgz")
 
 
-def update_package(version: str):
+def update_package():
     """Update the package"""
     with open("./product.json", "r") as product_file:
         product_data = json.load(product_file)
@@ -56,4 +56,4 @@ def update_package(version: str):
 
 version = sys.argv[1]
 fetch_product_json(version)
-update_package(version)
+update_package()
