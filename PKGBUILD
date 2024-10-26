@@ -1,25 +1,32 @@
-# Maintainer: Tim Yang <protonmail = timdyang>
-
+# Maintainer: Mark Wagie <mark dot wagie at proton dot me>
+# Contributor: Tim Yang <protonmail = timdyang>
 pkgname=gnome-shell-extension-x11gestures
 _uuid=x11gestures@joseexposito.github.io
-pkgver=17
+pkgver=24
 pkgrel=1
 pkgdesc="Enable GNOME Shell multi-touch gestures on X11"
-arch=(any)
-url=https://github.com/JoseExposito/$pkgname
-license=(GPL)
-depends=(gnome-shell touchegg)
-install=$pkgname.install
-source=($_uuid-$pkgver.zip::https://github.com/JoseExposito/$pkgname/releases/download/$pkgver/$_uuid.zip)
-noextract=($_uuid-$pkgver.zip)
-sha256sums=(f4a1ecd14406b31300536f20bc33e7f1746a05f40b5609b80382ba0b44b50b27)
+arch=('any')
+url="https://github.com/JoseExposito/gnome-shell-extension-x11gestures"
+license=('GPL-2.0-or-later')
+depends=('gnome-shell' 'touchegg')
+makedepends=('git')
+source=("git+https://github.com/JoseExposito/gnome-shell-extension-x11gestures.git#tag=$pkgver")
+sha256sums=('e7c85eef996cdacf84f97679f24ca9c0fe68e75cd05b75b6013b1f4d4e4b1e15')
+
+build() {
+  cd "$pkgname"
+  gnome-extensions pack \
+    --extra-source=src/ \
+    --force
+}
 
 package() {
-    bsdtar -xf "$srcdir"/$_uuid-$pkgver.zip \
-        -C "$pkgdir" \
-        -s ":^:usr/share/gnome-shell/extensions/$_uuid/:"
+  cd "$pkgname"
+  install -d "$pkgdir/usr/share/gnome-shell/extensions/${_uuid}"
+  bsdtar -xvf "${_uuid}.shell-extension.zip" -C \
+    "$pkgdir/usr/share/gnome-shell/extensions/${_uuid}/" --no-same-owner
 
-    rm -f "$pkgdir"/usr/share/gnome-shell/extensions/$_uuid/COPY*
-    find "$pkgdir" -type d -exec chmod 755 '{}' +
-    find "$pkgdir" -type f -exec chmod 644 '{}' +
+  install -Dm644 schemas/org.gnome.shell.extensions.x11gestures.gschema.xml -t \
+    "$pkgdir/usr/share/glib-2.0/schemas/"
+  rm -r "$pkgdir/usr/share/gnome-shell/extensions/${_uuid}/schemas/"
 }
