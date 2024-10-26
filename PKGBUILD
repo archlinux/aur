@@ -9,9 +9,9 @@
 
 ## Mozc compile option
 _bldtype=Release
-_mozc_commit=667bdf8963d0035c541b62fe59590f52d225fa67
-_bcr_commit=86a25f730aacfdeefd4d1e671dff5b5ee17c34bb
-_dict_to_mozc_commit=d736d8c7d4a7a75e9b23b50f7a5c6d4e188d24f7
+_mozc_commit=3db6e34452a4e230b8548a69b6d76548eec90bae
+_bcr_commit=4f4bad8f463685498cf9e0a4ba45ffe9e290a853
+_dict_to_mozc_commit=c9b7de2e5b74be3b23ad7fec83f7b643716ead73
 _branch=fcitx
 # Sudachi Dictionary
 _sudachidict_date=20241021
@@ -28,7 +28,7 @@ _wil_commit=fc5dbf5
 pkgbase=mozc-with-jp-dict
 pkgname=("ibus-$pkgbase" "fcitx5-$pkgbase" "emacs-$pkgbase")
 pkgver=2.30.5618.102
-pkgrel=7
+pkgrel=8
 arch=('x86_64')
 url="https://github.com/fcitx/mozc"
 license=('Apache-2.0 AND BSD-2-Clause AND BSD-3-Clause AND MIT AND NAIST-2003 AND Unicode-3.0 AND LicenseRef-Okinawa-Dictionary')
@@ -57,8 +57,8 @@ source=("git+$url.git#commit=${_mozc_commit}"
         LICENSE-MeCab-ipadic-Neologd::https://github.com/neologd/mecab-ipadic-neologd/raw/refs/heads/master/COPYING
         )
 
-sha512sums=('388e5e1331cb3325f2c46a022244df9d0160ed531f5de3fe39394383367ec770ae40c6f00099dc3ea67dd3108c00ae16a9bf56f97cb4893cd2767e3370d93735'
-            'c01cae8e5b013f6b9ac693ec7fac54c21ee3cbd86cfa3e7c328fd4c9d3df23f30634b2df1d041b829a3a52efa51f6f8c75ecd8b6ba989cf66cfbc8e3c53162af'
+sha512sums=('fa16390b7ba5fe777e0326efcbe42dc2ebc8e62ddc7df94387bf0d7c26f290bab80175d63e74e9b6660db661594026a98d673763c654e48ac47dad25119de2d5'
+            '80ef897afb0450e16e67ee4131715500a64987cdb5093f9b68920038edb329216cf35df2c71b3ddec2b53728eb5867b8cbb09ca9d3505a32e032cbeef1f77571'
             '83a6fa68645d138af64ddddcfd15da567c4c46f92fb69be6c10bc5989c3aa6ab85776dfb3fcccdc9e7c32ca9f8260be121ceb7d329792d28ec9a66417a903a68'
             'f69046af8c37a2a8a441a258d5b8677016966cb43d8a3bb48badc78123a885d6179ff77d7885fd6c84130136a1b8931a98d35f9fcce3d03ed31a37a72ece0b9d'
             '44db7d4a09aa7d36f1fb5a89be2234834a58834c76e445f8e9f7bc5685f6a76005b19fc758842c63641e476fa97c10eb968fa13965312fafca25843181fd025b'
@@ -66,7 +66,7 @@ sha512sums=('388e5e1331cb3325f2c46a022244df9d0160ed531f5de3fe39394383367ec770ae4
             '91b878735e767ddf6f1fe3de61486c1e78936a0f683855e7c34a21c711f405899d3de369d2ff0a1910d65b1afc8c225d8d8b9398cf98d760f3afcfe42644fca2'
             'b9fade4c8cfe60915c51433c1acd4b253b947dd2fabe7b70dd53c92cd751322fb007ef68e04d5551315f3bc2f52048fb8b9babf40455309ab7b38d9f3efd348a'
             '504066a457f77b510f492626c919b6fd7b61f77948bdddef0f7e43ae09bb4bf03cea7000fba91ae0123a94d3b39cac6dfac2010126849afe0a183727fe7b0fc1'
-            '0ce54cc35f532e9d963aadaf98bcac1338b0a7d58db3c840cf84ddccd70c19c963ff4dafe39d8822eab1887a893867ac7622c4a543ad34c170540ecf4ed07bf6'
+            '0a6b54309360b2c86aabbd7570d4677c60eb803020787eb1719da1668804ee5f5d7a354c0ea7750c51f24d78bc096f00087c49bee927fa4ba24d07a0bfae6fe7'
             '807b68f18e0f9093ccca368fcd4a209a0723167be7aa48e04217f053bc0911399f3bb86b95cb118e64bb9f53f5242c9c51bcff14f81d94ed68db2448c9386b32'
             'f3ea37e785d604d614b8fa27bf03d1b669240b7c28c293d953a3ac40b6faff56893b42f8e082ccc7723edb5b27a4613a99343477a34fc76afd458912025555e9'
             '384a8c55e928323a4a6b3f83a6845199c67cd3766ca586ea936c41aeb6728020b2430daeb88de3cc19413b6111db5971552f8a538826d3718ab33b7281226ff8'

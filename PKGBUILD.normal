@@ -9,8 +9,8 @@
 
 ## Mozc compile option
 _bldtype=Release
-_mozc_commit=667bdf8963d0035c541b62fe59590f52d225fa67
-_bcr_commit=86a25f730aacfdeefd4d1e671dff5b5ee17c34bb
+_mozc_commit=3db6e34452a4e230b8548a69b6d76548eec90bae
+_bcr_commit=4f4bad8f463685498cf9e0a4ba45ffe9e290a853
 _branch=fcitx
 
 ## follow the submodule commits in https://github.com/fcitx/mozc/tree/fcitx/src/third_party
@@ -25,7 +25,7 @@ _wil_commit=fc5dbf5
 pkgbase=mozc
 pkgname=("ibus-$pkgbase" "fcitx5-$pkgbase" "emacs-$pkgbase")
 pkgver=2.30.5618.102
-pkgrel=4
+pkgrel=5
 arch=('x86_64')
 url="https://github.com/fcitx/mozc"
 license=('Apache-2.0 AND BSD-2-Clause AND BSD-3-Clause AND MIT AND NAIST-2003 AND Unicode-3.0 AND LicenseRef-Okinawa-Dictionary')
@@ -42,8 +42,8 @@ source=("git+$url.git#commit=${_mozc_commit}"
         "git+https://github.com/microsoft/wil.git#commit=${_wil_commit}"
 )
 
-sha512sums=('388e5e1331cb3325f2c46a022244df9d0160ed531f5de3fe39394383367ec770ae40c6f00099dc3ea67dd3108c00ae16a9bf56f97cb4893cd2767e3370d93735'
-            'c01cae8e5b013f6b9ac693ec7fac54c21ee3cbd86cfa3e7c328fd4c9d3df23f30634b2df1d041b829a3a52efa51f6f8c75ecd8b6ba989cf66cfbc8e3c53162af'
+sha512sums=('fa16390b7ba5fe777e0326efcbe42dc2ebc8e62ddc7df94387bf0d7c26f290bab80175d63e74e9b6660db661594026a98d673763c654e48ac47dad25119de2d5'
+            '80ef897afb0450e16e67ee4131715500a64987cdb5093f9b68920038edb329216cf35df2c71b3ddec2b53728eb5867b8cbb09ca9d3505a32e032cbeef1f77571'
             '83a6fa68645d138af64ddddcfd15da567c4c46f92fb69be6c10bc5989c3aa6ab85776dfb3fcccdc9e7c32ca9f8260be121ceb7d329792d28ec9a66417a903a68'
             'f69046af8c37a2a8a441a258d5b8677016966cb43d8a3bb48badc78123a885d6179ff77d7885fd6c84130136a1b8931a98d35f9fcce3d03ed31a37a72ece0b9d'
             '44db7d4a09aa7d36f1fb5a89be2234834a58834c76e445f8e9f7bc5685f6a76005b19fc758842c63641e476fa97c10eb968fa13965312fafca25843181fd025b'
@@ -97,7 +97,6 @@ build() {
   #bazel clean --expunge
 
   # ibus emacs_helper mozc_server fcitx5
-  echo bazel build --registry=file://$srcdir/bcr --config oss_linux --config release_build package unix/fcitx5:fcitx5-mozc.so --cxxopt=-Wno-uninitialized --host_cxxopt=-Wno-uninitialized $BAZEL_LDOPTS $BAZEL_COPTS $BAZEL_CXXOPTS
   bazel build --registry=file://$srcdir/bcr --config oss_linux --config release_build package unix/fcitx5:fcitx5-mozc.so --cxxopt=-Wno-uninitialized --host_cxxopt=-Wno-uninitialized $BAZEL_LDOPTS $BAZEL_COPTS $BAZEL_CXXOPTS
   bazel shutdown
 }
