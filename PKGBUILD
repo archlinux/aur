@@ -1,14 +1,14 @@
 # Maintainer: devcoons <io.devcoons.com>
 pkgname=jlock-encryption
-pkgver=0.0.1
+pkgver=0.0.2
 pkgrel=1
 pkgdesc="A file encryption tool using AES encryption"
 arch=('x86_64')
 url="https://github.com/devcoons/jlock-encryption"
 license=('GPL')
 depends=('openssl') 
-source=("jlock-encryption-0.0.1.tar.gz::https://github.com/devcoons/jlock-encryption/archive/refs/tags/v0.0.1.tar.gz")
-sha256sums=('413815df70a8defd92bf224777b4e2ef090ee0026387726f726ce1bf21c792b2')
+source=("jlock-encryption-0.0.2.tar.gz::https://github.com/devcoons/jlock-encryption/archive/refs/tags/v0.0.2.tar.gz")
+sha256sums=('90fb7764ed88cb33099bee4ee0a101b7453e6cb33c99c90adbb8f19e62958ee8')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
