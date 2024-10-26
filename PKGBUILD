@@ -8,6 +8,8 @@ arch=('x86_64' 'armv7h')
 url="https://www.behringer.com/downloads.html"
 license=('custom:MUSIC Group End User License Agreement')
 depends=('alsa-lib' 'freetype2' 'libcurl-gnutls' 'libglvnd' 'libxext')
+pkgbase=wingedit
+
 
 source_x86_64=("https://mediadl.musictribe.com/download/software/behringer/WING/EDIT/Wing-Edit_LINUX_${pkgver}.tar.gz"
                "wingedit.png"
