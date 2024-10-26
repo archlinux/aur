@@ -1,12 +1,13 @@
 
 pkgname=skeditor-git
-pkgver=auto.ver  # Wartość początkowa; zostanie nadpisana automatycznie
+pkgver=auto.ver
 pkgrel=1
 pkgdesc="SkEditor"
 arch=('x86_64')
 url="https://github.com/SkEditorTeam/SkEditor"
 license=('MIT')
 depends=('dotnet-runtime>=8.0')
+makedepends=('dotnet-sdk')
 
 source=("git+https://github.com/SkEditorTeam/SkEditor#branch=main")
 md5sums=('SKIP')
