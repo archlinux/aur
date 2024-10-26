@@ -5,7 +5,7 @@
 _dotnet_ver=8.0
 pkgname=imewlconverter
 pkgver=3.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="一款开源免费的输入法词库转换程序"
 arch=('x86_64' 'armv7h' 'aarch64')
 url="https://github.com/studyzy/${pkgname}"
@@ -21,20 +21,26 @@ sha256sums=('b52bed95de6b3f435ba9d2df8016e82282f0ea2ecccc1d8fecab55d70d403f70')
 prepare() {
     cd "${pkgname}-${pkgver}"
     sed -i -E "s|<Version>.+</Version>|<Version>${pkgver}</Version>|" src/ImeWlConverterCmd/ImeWlConverterCmd.csproj
-    rm docker.md
 }
 
 build() {
     cd "${pkgname}-${pkgver}"
-    dotnet build --configuration Release ./src/ImeWlConverterCmd
-    mv "src/ImeWlConverterCmd/bin/Release/net${_dotnet_ver}/"*.txt .
+    dotnet publish "src/ImeWlConverterCmd" \
+        --configuration Release \
+        --framework "net${_dotnet_ver}" \
+        --self-contained false \
+        --output builddir \
+        -p:DebugSymbols=false \
+        -p:DebugType=none
+    mv builddir/Readme.txt CHANGELOG.txt
 }
 
 package() {
-    cd "${pkgname}-${pkgver}"
-    install -Dm644 *.md *.txt -t "${pkgdir}/usr/share/doc/${pkgname}"
-    install -dm755 "${pkgdir}/usr/bin"
-    cp --preserve=mode -r "src/ImeWlConverterCmd/bin/Release/net${_dotnet_ver}" "${pkgdir}/usr/share/${pkgname}"
-    ln -s "/usr/share/${pkgname}/ImeWlConverterCmd" "${pkgdir}/usr/bin/${pkgname}"
-}
+    local _binary="/usr/lib/${pkgname}/ImeWlConverterCmd"
 
+    cd "${pkgname}-${pkgver}"
+    install -Dm644 README.md *.txt  -t "${pkgdir}/usr/share/doc/${pkgname}"
+    install -dm755 "${pkgdir}/usr/bin" "${pkgdir}/usr/lib"
+    cp --preserve=mode -r "builddir"   "${pkgdir}/usr/lib/${pkgname}"
+    ln -sf "${_binary}"                "${pkgdir}/usr/bin/${pkgname}"
+}
