@@ -1,7 +1,7 @@
 pkgbase = libsstv
 	pkgdesc = SSTV encoder/decoder C library
 	pkgver = 0.9.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/rimio/libsstv
 	arch = x86_64
 	license = MIT
@@ -11,6 +11,8 @@ pkgbase = libsstv
 	depends = libsndfile
 	options = staticlibs
 	source = https://github.com/rimio/libsstv/archive/v0.9.0.tar.gz
+	source = fix-build.patch
 	md5sums = 6a5ee8b62757157429cc5d0cedf1ed61
+	md5sums = 9ee99327c5cdef8cd350f9f055ea96c2
 
 pkgname = libsstv

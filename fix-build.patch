@@ -1,0 +1,21 @@
+commit ca25e0d2b7dc9d5a06be22b9b02747209abb04a3
+Author: Vasile Vilvoiu <vasi@vilvoiu.ro>
+Date:   Fri Oct 25 21:08:26 2024 +0300
+
+    Fix build.
+    
+    Set ImageMagick definitions in makefile.
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index ceee308..cc4201f 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -60,6 +60,8 @@ install (TARGETS ${PROJECT_NAME}_static)
+ # Tools (C++ compiler)
+ if (BUILD_TOOLS)
+     # Dependencies
++    add_definitions(-DMAGICKCORE_QUANTUM_DEPTH=16)
++    add_definitions(-DMAGICKCORE_HDRI_ENABLE=0)
+     find_library(SNDFILE sndfile)
+     find_package(ImageMagick COMPONENTS Magick++)
+ 
