@@ -1,0 +1,15 @@
+pkgbase = blackboard
+	pkgdesc = BlackBoard Circuit Designer is intended for the hobby enthusiast and should help building prototypes on so called breadboards easily.
+	pkgver = 2.0.0.2
+	pkgrel = 1
+	url = https://github.com/mpue/blackboard
+	arch = any
+	license = GPL3
+	makedepends = ant
+	depends = java-runtime>=11
+	source = https://github.com/mpue/blackboard/archive/refs/tags/2.0.0.2.zip
+	source = https://raw.githubusercontent.com/mpue/blackboard/e425ce563d3a2a69b0103faa0c6dad44d1504948/build.xml
+	md5sums = b6abc4fa95c067bf8cb36adf75583aed
+	md5sums = 74bb7018e58e76a51d09961a885924e5
+
+pkgname = blackboard
