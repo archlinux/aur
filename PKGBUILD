@@ -2,7 +2,7 @@
 # Maintainer: coolapso <coolapso@coolapso.tech>
 
 pkgname='megophone-bin'
-pkgver=1.0.1
+pkgver=1.1.0
 pkgrel=1
 pkgdesc='post to multiple social networks simultaneously from your CLI'
 url='https://github.com/coolapso/megophone'
@@ -11,14 +11,14 @@ license=('MIT')
 provides=('megophone')
 conflicts=('megophone')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/coolapso/megophone/releases/download/v1.0.1/megophone_1.0.1_linux_arm64.tar.gz")
-sha256sums_aarch64=('7b371992b1f4aec385f9e9d0b3ebd7deae682acedb3571b7303f5653295019eb')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/coolapso/megophone/releases/download/v1.1.0/megophone_1.1.0_linux_arm64.tar.gz")
+sha256sums_aarch64=('3651a04e7b0b1465e5e0da3e6f994a72537448836cef6db5be21f695c80083e7')
 
-source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/coolapso/megophone/releases/download/v1.0.1/megophone_1.0.1_linux_386.tar.gz")
-sha256sums_i686=('b5fa5cbd81b99bd80e2b87c3d409fc92d63191d4722faac9d3ebee460cdb3d68')
+source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/coolapso/megophone/releases/download/v1.1.0/megophone_1.1.0_linux_386.tar.gz")
+sha256sums_i686=('159597889f15831bd6e8288e865367dcd82ea2871e86541e9a3a374ad8f6cb32')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/coolapso/megophone/releases/download/v1.0.1/megophone_1.0.1_linux_amd64.tar.gz")
-sha256sums_x86_64=('67019a44093e81fd0eb583ba8b9d0e5492b88d34138a37dab3d64f21aceb64a5')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/coolapso/megophone/releases/download/v1.1.0/megophone_1.1.0_linux_amd64.tar.gz")
+sha256sums_x86_64=('f0d95d257b7f2ea156e9f0d5de0163669c5e3bdee6338cf9be1008378a73954f')
 
 package() {
   install -Dm755 "./megophone" "${pkgdir}/usr/bin/megophone"
