@@ -1,0 +1,7 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Name=BlackBoard
+Exec=sh /opt/blackboard/Linux_Start.sh
+Icon=blackboard
+Type=Application
+Categories=Science;Education;ComputerScience;Engineering
