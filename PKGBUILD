@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=touche
-pkgver=2.0.12
-pkgrel=2
+pkgver=2.0.14
+pkgrel=1
 _nodeversion=18
 pkgdesc="The desktop application to configure Touchégg "
 arch=('x86_64')
@@ -10,9 +10,9 @@ license=('GPL-3.0-or-later')
 depends=('gjs' 'libadwaita' 'touchegg')
 makedepends=('gobject-introspection' 'meson' 'nvm')
 checkdepends=('appstream-glib')
-provides=('libtouche.so')
+provides=('libtouche.so=0')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('7d0919aa1bd571783564358756405682fd883c5f6db07b01308d551adf947605')
+sha256sums=('1342ac70d60c21e4dbacd63f6fcd45cbe8206bb92f4bfb8185f71136fe22d63e')
 
 _ensure_local_nvm() {
   # let's be sure we are starting clean
@@ -29,6 +29,9 @@ prepare() {
   cd "$pkgname-$pkgver"
   _ensure_local_nvm
   nvm install "${_nodeversion}"
+
+  # https://archlinux.org/todo/legacy-path-for-metainfo-files/
+  sed -i "s/('datadir'), 'appdata')/('datadir'), 'metainfo')/g" data/meson.build
 }
 
 build() {
