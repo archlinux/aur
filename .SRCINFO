@@ -1,6 +1,6 @@
 pkgbase = gossa
 	pkgdesc = a fast and simple multimedia fileserver
-	pkgver = 1.0.0
+	pkgver = 1.1.2
 	pkgrel = 1
 	url = https://github.com/pldubouilh/gossa
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = gossa
 	depends = glibc
 	provides = gossa
 	conflicts = gossa-bin
-	source = gossa-1.0.0::git+https://github.com/pldubouilh/gossa#tag=v1.0.0
+	source = gossa-1.1.2::git+https://github.com/pldubouilh/gossa#tag=v1.1.2
 	sha256sums = SKIP
 
 pkgname = gossa

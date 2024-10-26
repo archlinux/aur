@@ -2,7 +2,7 @@
 
 pkgname=gossa
 pkgdesc="a fast and simple multimedia fileserver"
-pkgver=1.0.0
+pkgver=1.1.2
 pkgrel=1
 arch=('x86_64' 'armv7h' 'aarch64')
 license=('MIT')
@@ -13,11 +13,6 @@ depends=('glibc')
 makedepends=('git' 'go')
 source=("${pkgname}-${pkgver}::git+https://github.com/pldubouilh/gossa#tag=v${pkgver}")
 sha256sums=('SKIP')
-
-prepare() {
-  cd ${pkgname}-${pkgver}
-  git submodule update --init --recursive
-}
 
 build() {
   cd ${pkgname}-${pkgver}
