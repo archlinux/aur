@@ -8,7 +8,7 @@
 
 # Maintainer: petitstrawberry <petitstrawberry.dev@gmail.com>
 pkgname=laptop-support-cli-git # '-bzr', '-git', '-hg' or '-svn'
-pkgver=0.0.0
+pkgver=1.0.0.r0.6668833
 pkgrel=1
 pkgdesc="Command line tool to laptop-support protocol compatible services"
 arch=('any')
@@ -16,7 +16,7 @@ url="https://github.com/petitstrawberry/laptop-support-cli"
 license=('MIT')
 groups=()
 depends=('glibc')
-makedepends=('git') # 'bzr', 'git', 'mercurial' or 'subversion'
+makedepends=('git' 'rust') # 'bzr', 'git', 'mercurial' or 'subversion'
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 replaces=()
