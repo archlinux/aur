@@ -1,7 +1,7 @@
 pkgbase = lightly-qt6
 	pkgdesc = Bali10050's fork of Lightly (A modern style for qt applications)
 	pkgver = 0.5.4
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Bali10050/lightly
 	arch = x86_64
 	arch = aarch64
