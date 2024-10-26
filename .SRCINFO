@@ -1,7 +1,7 @@
 pkgbase = antscope2
 	pkgdesc = Visualization tool for RigExpert antenna analyzers
 	pkgver = 1.2.6
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/rigexpert/AntScope2
 	arch = x86_64
 	license = MIT

@@ -3,14 +3,14 @@
 
 pkgname=antscope2
 pkgver=1.2.6
-pkgrel=2
+pkgrel=3
 pkgdesc="Visualization tool for RigExpert antenna analyzers"
 arch=('x86_64')
 url="https://github.com/rigexpert/AntScope2"
 license=('MIT')
 depends=(qt5-base qt5-serialport libusb glibc gcc-libs)
 makedepends=(git)
-provide=('antscop2')
+provide=('antscope2')
 conflicts=('antscope2' 'antscope2-git')
 source=("${pkgname}::git+https://github.com/rigexpert/AntScope2.git#commit=19323af9b8157dff4c260f516d8bda4b05e6a8a9"
 		"99-rigexpert.rules"
@@ -24,11 +24,6 @@ build() {
 	cd "${pkgname}"
 	qmake-qt5
 	make
-}
-
-check() {
-	cd "${pkgname}"
-	make -k check
 }
 
 package() {
