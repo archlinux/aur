@@ -8,8 +8,8 @@ url="https://github.com/felipec/$pkgname"
 arch=('any')
 license=('MIT')
 makedepends=('git')
-source=("$pkgname::git+$url.git#tag=v$pkgver")
-sha256sums=('SKIP')
+source=("${url}/archive/v${pkgver}.tar.gz")
+sha1sums=('0f2ff4359bdec0362ed53a916e70e567abaa6078')
 
 package() {
 	cd $pkgname &&
