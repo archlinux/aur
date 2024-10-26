@@ -18,7 +18,7 @@
 _pkgname="rstudio-desktop"
 pkgname="$_pkgname"
 pkgver=2024.09.0.375
-pkgrel=7
+pkgrel=8
 pkgdesc="A powerful and productive integrated development environment (IDE) for R programming language"
 url="https://github.com/rstudio/rstudio"
 license=('AGPL-3.0-only')
@@ -44,7 +44,7 @@ makedepends=(
   'jdk11-openjdk'
   'libcups'
   'ninja'
-  'npm'
+  'nvm' # AUR
   'openssl'
   'pam'
   'python'
@@ -86,14 +86,24 @@ sha256sums=(
 
 _nvm_env() {
   export HOME="$SRCDEST/node-home"
+  export NVM_DIR="$SRCDEST/node-nvm"
+
+  # set up nvm
+  source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
+  nvm install $_nodeversion
+  nvm use $_nodeversion
+
+  _npm_path="$(which npm | sed -E 's&/[^/]+$&&')"
+  export RSTUDIO_NODE_VERSION=$(echo "$_npm_path" | sed -E 's&^\S+/v([0-9\.]+)/\S+$&\1&')
 }
 
 prepare() (
   _nvm_env
+  #npm install yarn
 
   cd "$_pkgsrc"
   # Do not use outdated version name of pandoc
-  sed -i '/PANDOC_VERSION/s/2.18/current/' "cmake/globals.cmake"
+  sed -E -e '/PANDOC_VERSION/s/2.[0-9]+/current/' -i "cmake/globals.cmake"
 
   # Suppress _FORTIFY_SOURCE mismatch warnings
   sed -i 's/D_FORTIFY_SOURCE=2/D_FORTIFY_SOURCE=3/' "src/cpp/CMakeLists.txt"
@@ -101,6 +111,9 @@ prepare() (
   # fix npm/node paths
   sed -E -e 's&set\(RSTUDIO_NODE_PATH .*\)&set(RSTUDIO_NODE_PATH "/usr/bin")&' \
     -i cmake/globals.cmake
+
+  install -dm755 "$srcdir/$_pkgsrc/dependencies/common/node"
+  ln -sfT "$NVM_DIR/versions/node/v$RSTUDIO_NODE_VERSION" "$srcdir/$_pkgsrc/dependencies/common/node/${RSTUDIO_NODE_VERSION}-patched"
 
   sed -E -e 's&^external-node-path=.*$&external-node-path=/usr/bin/node&' \
     -i src/cpp/conf/rsession-dev.conf
@@ -118,8 +131,8 @@ prepare() (
     -e 's&"\S+/common/node/\S+/bin/yarn"&"/usr/bin/yarn"&' \
     -i src/gwt/build.xml
 
-  sed -E -e 's&PATHS "/opt/rstudio-tools/dependencies/common/node/\$\{RSTUDIO_NODE_VERSION\}"&PATHS "/usr"&' \
-    -e 's&"\S+CMAKE_CURRENT_LIST_DIR\S+/dependencies/common/node/\S+"&"/usr"&g' \
+  sed -E -e 's&PATHS "/opt/rstudio-tools/dependencies/common/node/\$\{RSTUDIO_NODE_VERSION\}"&PATHS "'"${_npm_path}"'"&' \
+    -e 's&"\S+CMAKE_CURRENT_LIST_DIR\S+/dependencies/common/node/\S+"&"'"${_npm_path}"'"&g' \
     -e 's&set\(RSTUDIO_NODE_VERSION "[0-9\.]+"\)&set(RSTUDIO_NODE_VERSION "Current")&' \
     -i src/node/CMakeNodeTools.txt
 
@@ -260,10 +273,35 @@ build() (
 )
 
 package() {
-  # Install the program
   DESTDIR="$pkgdir" cmake --install build
 
-  # Symlink main binary
-  install -d "${pkgdir}/usr/bin"
-  ln -s "/usr/lib/rstudio/rstudio" "$pkgdir/usr/bin/rstudio"
+  install -Dm755 /dev/stdin "${pkgdir}/usr/bin/rstudio" << END
+#!/usr/bin/env bash
+
+# See following script for potentially useful flags.
+# https://github.com/ozankiratli/dotfiles/blob/master/.config/sway/scripts/rstudio-wayland
+
+: \${XDG_CONFIG_HOME:=\$HOME/.config}
+
+flags_file="\$XDG_CONFIG_HOME/rstudio-flags.conf"
+
+lines=()
+if [[ -f "\${flags_file}" ]]; then
+  mapfile -t lines < "\${flags_file}"
+fi
+
+flags=()
+for line in "\${lines[@]}"; do
+  if [[ ! "\${line}" =~ ^[[:space:]]*#.* ]] && [[ -n "\${line}" ]]; then
+    flags+=("\${line}")
+  fi
+done
+
+: \${ELECTRON_IS_DEV:=0}
+export ELECTRON_IS_DEV
+: \${ELECTRON_FORCE_IS_PACKAGED:=true}
+export ELECTRON_FORCE_IS_PACKAGED
+
+exec /usr/lib/rstudio/rstudio "\${flags[@]}" "\$@"
+END
 }

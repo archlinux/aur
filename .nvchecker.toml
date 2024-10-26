@@ -2,5 +2,5 @@
 source = "git"
 git = "https://github.com/rstudio/rstudio.git"
 prefix = "v"
-from_pattern = '\+\S+'
-to_pattern = ''
+from_pattern = '\+'
+to_pattern = '.'
