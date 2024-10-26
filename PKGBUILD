@@ -3,7 +3,7 @@
 pkgname=openarc-unofficial-patches-git
 _pkgname=openarc
 pkgver=1.0.0.r30.gf298e7b
-pkgrel=4
+pkgrel=5
 pkgdesc="OpenARC with patches and improvements from not-yet-merged PRs - by flowerysong"
 arch=(x86_64)
 url="https://github.com/flowerysong/OpenARC"
@@ -18,6 +18,7 @@ source=("git+https://github.com/flowerysong/OpenARC.git#branch=main"
         openarc.service
         openarc.sysusers
         openarc.tmpfiles)
+backup=('etc/openarc/openarc.conf')
 sha256sums=('SKIP'
             'd438b4a2e0ab5b247938213da7e8062fa5865e750e4f89d41471311edc163022'
             '31c399c0e3a69bb845b033ab5c0ad92d44cacb0fd58e0113cd1901e75900515e'

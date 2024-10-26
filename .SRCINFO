@@ -1,7 +1,7 @@
 pkgbase = openarc-unofficial-patches-git
 	pkgdesc = OpenARC with patches and improvements from not-yet-merged PRs - by flowerysong
 	pkgver = 1.0.0.r30.gf298e7b
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/flowerysong/OpenARC
 	arch = x86_64
 	license = BSD-2-Clause
@@ -20,6 +20,7 @@ pkgbase = openarc-unofficial-patches-git
 	provides = openarc
 	conflicts = openarc
 	conflicts = openarc-unofficial-patches
+	backup = etc/openarc/openarc.conf
 	source = git+https://github.com/flowerysong/OpenARC.git#branch=main
 	source = openarc.service
 	source = openarc.sysusers
