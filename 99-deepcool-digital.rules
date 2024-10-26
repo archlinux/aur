@@ -1,0 +1,5 @@
+# Intel RAPL energy usage file
+ACTION=="add", SUBSYSTEM=="powercap", KERNEL=="intel-rapl:0", RUN+="/bin/chmod 444 /sys/class/powercap/intel-rapl/intel-rapl:0/energy_uj"
+
+# DeepCool HID raw devices
+SUBSYSTEM=="hidraw", ATTRS{idVendor}=="3633", MODE="0666"

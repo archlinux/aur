@@ -1,0 +1,8 @@
+[Unit]
+Description=DeepCool Digital
+
+[Service]
+ExecStart=/usr/sbin/deepcool-digital-linux
+
+[Install]
+WantedBy=multi-user.target
