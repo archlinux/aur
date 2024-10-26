@@ -1,0 +1,14 @@
+pkgbase = xmos_dfu-git
+	pkgdesc = CLI DFU utility for XMOS based JDS Labs USB Devices
+	pkgver = r63.51ef375
+	pkgrel = 1
+	url = https://github.com/jdslabs/xmos_dfu
+	arch = x86_64
+	license = LicenseRef-Modified-MIT
+	makedepends = git
+	provides = xmos_dfu
+	conflicts = xmos_dfu
+	source = xmos_dfu::git+https://github.com/jdslabs/xmos_dfu.git
+	sha512sums = SKIP
+
+pkgname = xmos_dfu-git
