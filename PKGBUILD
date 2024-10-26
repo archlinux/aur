@@ -19,11 +19,11 @@ _mypy_boto3_builder_version=8.1.4
 
 pkgname=python-boto3-stubs
 pkgver=${_boto3_version}
-pkgrel=2
+pkgrel=3
 pkgdesc='Type annotations and code completion for (some) boto3 components (Essentials+Requested)'
 arch=('any')
 url="https://pypi.org/project/boto3-stubs"
-makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-pip' 'python-typing_extensions')
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-pip')
 depends=('python-boto3' 'python-botocore-stubs')
 license=('MIT')
 
