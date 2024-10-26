@@ -1,6 +1,6 @@
 pkgbase = python-accesser
 	pkgdesc = A tool for solving SNI RST
-	pkgver = 0.9.5
+	pkgver = 0.10.0
 	pkgrel = 3
 	url = https://github.com/URenko/Accesser
 	arch = any
@@ -24,9 +24,9 @@ pkgbase = python-accesser
 	conflicts = python-accesser-git
 	backup = etc/accesser/pac
 	backup = etc/accesser/config.toml
-	source = https://files.pythonhosted.org/packages/source/a/accesser/accesser-0.9.5.tar.gz
+	source = https://files.pythonhosted.org/packages/source/a/accesser/accesser-0.10.0.tar.gz
 	source = accesser.service
-	sha256sums = 51cab930eac102abe0de50029d5f8fa121a814d051b67272cd50562dfdab46ed
-	sha256sums = 867bf31096eff1f35b4e7c2b60ad15f6fbe7df1264bcc9c8162d07d185cf22e7
+	sha256sums = b11965b1a52adf1fc55e313f08d6a38f224c21a4597833a04c3fe1f784cd4691
+	sha256sums = f943fdd6f112eb32a5630c60383470bcb344db66d0a116cdcbcc22f533815690
 
 pkgname = python-accesser
