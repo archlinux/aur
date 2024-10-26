@@ -1,23 +1,41 @@
 # Maintainer: <teraflops, cprieto.ortiz@gmail.com>
 
 pkgname=mympc-git
-pkgver=r7.99708e5
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="An mpc wrapper with music library zsh completion and advanced tagging features"
 arch=('any')
 url="https://gitlab.com/teraflops/mympc"
 license=('MIT')
 depends=('zsh' 'mpc' 'mpd' 'python-mpd2' 'bash')
-makedepends=('git')
+makedepends=('git' 'gnupg')  # Asegúrate de incluir gnupg para la verificación
 provides=('mympc')
 conflicts=('mympc')
 source=("git+$url.git")
 sha256sums=('SKIP')
 install="$pkgname.install"
 
+# Especifica las claves públicas válidas para verificar las firmas
+validpgpkeys=('463C26699946E6129B90A9E2CE7B6A8F1708ED21')
+
 pkgver() {
   cd "$srcdir/mympc"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  # Obtener la última etiqueta anotada
+  local latest_tag
+  latest_tag=$(git describe --tags --abbrev=0)
+  # Extraer la versión de la etiqueta (asumiendo formato vX.Y.Z)
+  echo "${latest_tag#v}"
+}
+
+prepare() {
+  cd "$srcdir/mympc"
+
+  # Verificar que la etiqueta está firmada correctamente
+  git fetch --tags --force
+  git checkout "v$pkgver" || exit 1
+
+  # Verificar la firma de la etiqueta
+  git tag -v "v$pkgver" || exit 1
 }
 
 package() {
