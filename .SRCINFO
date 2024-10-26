@@ -1,6 +1,6 @@
 pkgbase = flow-cli-bin
 	pkgdesc = A command-line interface that provides useful utilities for building Flow applications
-	pkgver = 2.0.8
+	pkgver = 2.0.9
 	pkgrel = 1
 	url = https://docs.onflow.org/flow-cli
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = flow-cli-bin
 	depends = glibc
 	provides = flow-cli
 	conflicts = flow-cli
-	source_x86_64 = flow-cli-2.0.8-x86_64.tar.gz::https://github.com/onflow/flow-cli/releases/download/v2.0.8/flow-cli-v2.0.8-linux-amd64.tar.gz
-	b2sums_x86_64 = 54410c4c64bdf5f49973749950453af144501ae3c068415472c56123312cd512462d8cef077a627c46dcb9557528d37bb49d53c5e568bbfeaadbe8f4e856eeec
-	source_aarch64 = flow-cli-2.0.8-aarch64.tar.gz::https://github.com/onflow/flow-cli/releases/download/v2.0.8/flow-cli-v2.0.8-linux-arm64.tar.gz
-	b2sums_aarch64 = 73d766430ea6befeb616084dbb65e619bca8e2d5bf7d13ed9308b3f2af42a1f11819c258fee878aa9462c4e09d3543f6d16ba02ae2c331ce1baf7c1c1ff3d817
+	source_x86_64 = flow-cli-2.0.9-x86_64.tar.gz::https://github.com/onflow/flow-cli/releases/download/v2.0.9/flow-cli-v2.0.9-linux-amd64.tar.gz
+	b2sums_x86_64 = 0d991f9e675bc70dfa9f4ac22ca44815b685f89bda1bd241e9c7ad84cadbe85b7b1b75717c7097ccc25757279874a015a06637f95d04227606e375e1fa63889c
+	source_aarch64 = flow-cli-2.0.9-aarch64.tar.gz::https://github.com/onflow/flow-cli/releases/download/v2.0.9/flow-cli-v2.0.9-linux-arm64.tar.gz
+	b2sums_aarch64 = 44a90f11ad511ab8e3382a34c969c6beaa650cbd54f0c017861576df8cb3ae9cb8b1608ec7810ffce7ee4210c5fc841e958321a9d5ba52bd0eff8c50f1fe8373
 
 pkgname = flow-cli-bin
