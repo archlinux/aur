@@ -4,7 +4,7 @@
 # Maintainer: TTsdzb <ttsdzb at outlook dot com>
 
 pkgname=hmcl-bin
-_ver=3.5.9.258
+_ver=3.5.9.259
 pkgver=${_ver}
 pkgrel=1
 pkgdesc="A Minecraft Launcher which is multi-functional, cross-platform and popular."
@@ -23,7 +23,7 @@ sha256sums=('9a561081f8f3ece3da114afd4f6d90565ca0e04716eef4ea88c6b4306566ae9b'
             'ebbb213b2e21321af6b1825740b2b8f66e70a922a4427e90fa21a2c998b39b34'
             'd4e56ae2e8c0d991dba01ef3124ef4d38918825f58728338a8bab5e78319306a'
             '3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986'
-            'ca0276be11d766e603516a266d0f76d8437b66e5b59d36d87f8a30864dcf33fe')
+            'a8dc2d6798c60d4206eeba4cfef20da30aa645e9faf86170c75c866f445b166f')
 
 noextract=("${pkgname}-${pkgver}.jar")
 
