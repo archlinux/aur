@@ -1,7 +1,7 @@
 pkgbase = giada-bin
-	pkgdesc = An open source, minimalistic and hardcore music production tool. Designed for DJs, live performers and electronic musicians.
-	pkgver = 1.0.0
-	pkgrel = 3
+	pkgdesc = An open source, minimalistic and hardcore music production tool. Designed for DJs, live performers and electronic musicians.Prebuilt version.
+	pkgver = 1.1.0
+	pkgrel = 1
 	url = https://www.giadamusic.com
 	arch = x86_64
 	license = GPL-3.0-only
@@ -10,11 +10,11 @@ pkgbase = giada-bin
 	depends = libx11
 	depends = freetype2
 	depends = fontconfig
-	provides = giada=1.0.0
+	provides = giada=1.1.0
 	conflicts = giada
-	source = giada-1.0.0.AppImage::https://www.giadamusic.com/data/Giada-1.0.0-x86_64.AppImage
+	source = giada-1.1.0.AppImage::https://www.giadamusic.com/data/Giada-1.1.0-x86_64.AppImage
 	source = giada.sh
-	sha256sums = b013c85663e9582c1fb3652b45159d2f3474af8dac80899056074a7355e192df
-	sha256sums = b4f8131b6f1e324043ae56a154990dfa8ebbc7a63e85af7d0a98a88f1b308379
+	sha256sums = e32630cce2dbba317c5864ed1474077d5fe2c73183e81f8d6b5129d17e4fd896
+	sha256sums = 574c9abedf1d4ff7d577a1e180faffeab850eb2aa4eaff000946025787185895
 
 pkgname = giada-bin
