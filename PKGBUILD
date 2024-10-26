@@ -8,8 +8,8 @@ license=('MIT')
 depends=('dotnet-runtime>=8.0')
 makedepends=('dotnet-sdk')
 
-source=("git+https://github.com/SkEditorTeam/SkEditor#branch=main" "skeditor.desktop")
-md5sums=('SKIP' 'SKIP')
+source=("git+https://github.com/SkEditorTeam/SkEditor#branch=main")
+md5sums=('SKIP' )
 
 pkgver() {
     cd "$srcdir/SkEditor/SkEditor"
