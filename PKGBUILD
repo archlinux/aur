@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=follow
 _pkgname=Follow
-pkgver=0.1.0_beta.0
+pkgver=0.1.1_beta.0
 _electronversion=33
 _nodeversion=22
 pkgrel=1
@@ -19,12 +19,13 @@ makedepends=(
     'gendesk'
     'curl'
     'pnpm'
+    'python-setuptools'
 )
 source=(
     "${pkgname}-${pkgver}::${_ghurl}/archive/refs/tags/v${pkgver//_/-}.tar.gz"
     "${pkgname}.sh"
 )
-sha256sums=('525bb444fce5d58eb391ea9b2ba7670a427c0780fc7ccdcc963e181c0688d358'
+sha256sums=('6fe0a498648b380ad0ea6317703fd401c428b8aef275622c77eeb4e5a19575aa'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
@@ -59,8 +60,6 @@ build() {
     if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
         {
         echo 'registry=https://registry.npmmirror.com'
-        echo 'disturl=https://registry.npmmirror.com/-/binary/node/'
-        echo 'node-mirror=https://registry.npmmirror.com/-/binary/node/'
         echo 'electron_mirror=https://cdn.npmmirror.com/binaries/electron/'
         echo 'electron_builder_binaries_mirror=https://npmmirror.com/mirrors/electron-builder-binaries/'
         } >> .npmrc
