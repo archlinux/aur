@@ -3,8 +3,8 @@ pkgname=opencomic
 _pkgname=OpenComic
 pkgver=1.3.1
 _electronversion=31
-_nodeversion=22
-pkgrel=1
+_nodeversion=20
+pkgrel=2
 pkgdesc="Comic and Manga reader, written with Node.js and using Electron"
 arch=(
     'aarch64'
@@ -16,6 +16,8 @@ conflicts=("${pkgname}")
 depends=(    
     "electron${_electronversion}"
     'java-runtime'
+    'libvips'
+    'python'
 )
 makedepends=(
     'gendesk'
@@ -49,6 +51,7 @@ build() {
     _ensure_local_nvm
     gendesk -q -f -n --pkgname="${pkgname}" --pkgdesc="${pkgdesc}" --categories="Graphics" --name="${_pkgname}" --exec="${pkgname} %U"
     cd "${srcdir}/${_pkgname}-${pkgver}"
+    electronDist="/usr/lib/electron${_electronversion}"
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
     HOME="${srcdir}/.electron-gyp"
@@ -56,23 +59,26 @@ build() {
         echo -e '\n'	
         #echo 'build_from_source=true'
         echo "cache=${srcdir}/.npm_cache"
-        if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
+    } >> .npmrc
+    if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
+        {
             echo 'registry=https://registry.npmmirror.com'
-            echo 'disturl=https://registry.npmmirror.com/-/binary/node/'
             echo 'electron_mirror=https://registry.npmmirror.com/-/binary/electron/'
             echo 'electron_builder_binaries_mirror=https://registry.npmmirror.com/-/binary/electron-builder-binaries/'
-        fi
-    } >> .npmrc
-    sed -i "s/--x64 --linux deb rpm AppImage 7z/-l --dir/g;s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
+        } >> .npmrc
+        find ./ -type f -name "package-lock.json" -exec sed -i "s/registry.npmjs.org/registry.npmmirror.com/g" {} +
+    fi
+    sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
     npm cache clean --force
+    NODE_ENV=development    npm add -D node-addon-api
     NODE_ENV=development    npm install
-    #NODE_ENV=development    npm install -D node-gyp@9.4.1 cpu-features@0.0.10
-    NODE_ENV=production     npm run build-linux
+    NODE_ENV=production     npm run prebuild-start
+    NODE_ENV=production     npm exec -c "electron-builder --linux dir -c.electronDist=${electronDist}"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
     install -Dm644 "${srcdir}/${_pkgname}-${pkgver}/dist/linux-"*/resources/app.asar -t "${pkgdir}/usr/lib/${pkgname}"
-    cp -r "${srcdir}/${_pkgname}-${pkgver}/dist/linux-"*/resources/{app.asar.unpacked,app-update.yml} "${pkgdir}/usr/lib/${pkgname}"
+    cp -Pr --no-preserve=ownership "${srcdir}/${_pkgname}-${pkgver}/dist/linux-"*/resources/{app.asar.unpacked,app-update.yml} "${pkgdir}/usr/lib/${pkgname}"
     _icon_sizes=(16x16 32x32 48x48 64x64 128x128 256x256)
     for _icons in "${_icon_sizes[@]}";do
         install -Dm644 "${srcdir}/${_pkgname}-${pkgver}/images/icons/${_icons}.png" \

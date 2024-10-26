@@ -1,7 +1,7 @@
 pkgbase = opencomic
 	pkgdesc = Comic and Manga reader, written with Node.js and using Electron
 	pkgver = 1.3.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ollm/OpenComic
 	arch = aarch64
 	arch = x86_64
@@ -15,6 +15,8 @@ pkgbase = opencomic
 	makedepends = cmake
 	depends = electron31
 	depends = java-runtime
+	depends = libvips
+	depends = python
 	conflicts = opencomic
 	source = opencomic-1.3.1.tar.gz::https://github.com/ollm/OpenComic/archive/refs/tags/v1.3.1.tar.gz
 	source = opencomic.sh
