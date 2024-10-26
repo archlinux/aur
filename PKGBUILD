@@ -3,7 +3,7 @@
 
 pkgname=pixelorama
 pkgver=1.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A free & open-source 2D sprite editor"
 arch=('x86_64')
 url="https://orama-interactive.itch.io/pixelorama"
@@ -59,7 +59,7 @@ prepare() {
 build() {
   cd "${srcdir}/${pkgname^}-${pkgver}"
   mkdir -p build
-  godot --export-release "Linux/X11 $(getconf LONG_BIT)-bit" --display-driver headless --path . project.godot build/${pkgname}
+  godot --export-release "Linux $(getconf LONG_BIT)-bit" --display-driver headless --path . project.godot build/${pkgname}
 }
     
 package() {
