@@ -2,7 +2,7 @@
 pkgname=boring
 pkgver=0.4.1
 pkgrel=1
-pkgdesc="A boring project"
+pkgdesc="The \`boring\` SSH tunnel manager"
 arch=('x86_64')
 url="https://github.com/alebeck/boring"
 license=('MIT')
