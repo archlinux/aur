@@ -1,8 +1,8 @@
 # Maintainer: tam1m <tbacc plus aur at pm dot me>
 pkgname=sonusmix-git
 _pkgname=sonusmix
-pkgver=r185.66e5ca1
-pkgrel=2
+pkgver=r195.7369dab
+pkgrel=1
 pkgdesc="Next-gen Pipewire audio routing tool"
 arch=('x86_64')
 url="https://codeberg.org/sonusmix/sonusmix"
@@ -11,7 +11,7 @@ depends=('pipewire' 'gtk4')
 makedepends=('clang' 'cargo' 'git')
 source=("git+https://codeberg.org/sonusmix/sonusmix" "sonusmix.desktop")
 sha256sums=('SKIP'
-    'cf3059786a8e6d62f72979954ef6e9730575ec3d2ec1dcd5ddae78f043765f9a')
+    '25bd717926a2f427dc8ed113d4f3ccb50bc36e7bab82a3911a6d2acd5457a8bd')
 conflicts=('sonusmix')
 
 pkgver() {
@@ -32,12 +32,13 @@ build() {
 package() {
     cd "$srcdir"
 
-    install -dm755 "$pkgdir/usr/share/icons"
     install -dm755 "$pkgdir/usr/share/applications"
     install -dm755 "$pkgdir/usr/share/licenses/${_pkgname}"
+    install -dm755 "$pkgdir/usr/share/icons/hicolor/scalable/apps/"
 
     install -Dm755 "$_pkgname/target/release/$_pkgname" "$pkgdir/usr/bin/$_pkgname"
-    install -Dm644 "$_pkgname/assets/sonusmix.svg" "$pkgdir/usr/share/icons/"
     install -Dm644 "$_pkgname.desktop" "$pkgdir/usr/share/applications/"
-    install -Dm644 "$_pkgname/LICENSE" "$pkgdir/usr/share/licenses/${_pkgname}/"
+    install -Dm644 "$_pkgname/LICENSE" "$pkgdir/usr/share/licenses/$_pkgname/"
+    install -Dm644 "$_pkgname/assets/sonusmix.svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/org.sonusmix.Sonusmix.svg"
+
 }

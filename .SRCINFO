@@ -1,6 +1,6 @@
 pkgbase = sonusmix-git
 	pkgdesc = Next-gen Pipewire audio routing tool
-	pkgver = r185.66e5ca1
+	pkgver = r195.7369dab
 	pkgrel = 1
 	url = https://codeberg.org/sonusmix/sonusmix
 	arch = x86_64
@@ -14,6 +14,6 @@ pkgbase = sonusmix-git
 	source = git+https://codeberg.org/sonusmix/sonusmix
 	source = sonusmix.desktop
 	sha256sums = SKIP
-	sha256sums = cf3059786a8e6d62f72979954ef6e9730575ec3d2ec1dcd5ddae78f043765f9a
+	sha256sums = 25bd717926a2f427dc8ed113d4f3ccb50bc36e7bab82a3911a6d2acd5457a8bd
 
 pkgname = sonusmix-git
