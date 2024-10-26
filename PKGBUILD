@@ -3,7 +3,7 @@
 
 pkgname=antscope2
 pkgver=1.2.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Visualization tool for RigExpert antenna analyzers"
 arch=('x86_64')
 url="https://github.com/rigexpert/AntScope2"
@@ -11,7 +11,7 @@ license=('MIT')
 depends=(qt5-base qt5-serialport libusb glibc gcc-libs)
 makedepends=(git)
 provide=('antscop2')
-conflicts=('antscope2-git')
+conflicts=('antscope2' 'antscope2-git')
 source=("${pkgname}::git+https://github.com/rigexpert/AntScope2.git#commit=19323af9b8157dff4c260f516d8bda4b05e6a8a9"
 		"99-rigexpert.rules"
 		"antscope2.desktop")
@@ -32,27 +32,32 @@ check() {
 }
 
 package() {
-	cd "${pkgname}/build/release"
-
-	install -Dm755 AntScope2 "${pkgdir}/usr/bin/AntScope2"
-
 	cd "${srcdir}/${pkgname}"
 	[ -d "${pkgdir}"/usr/share/antscope2/Resources ] || mkdir -p "${pkgdir}"/usr/share/antscope2/Resources
-	install -Dm644 cables.txt "${pkgdir}"/usr/share/antscope2/Resources/cables.txt
-	install -Dm644 itu-regions.txt "${pkgdir}"usr/share/antscope2/Resources/itu-regions.txt
-	install -Dm644 itu-regions-defaults.txt "${pkgdir}"/usr/share/antscope2/Resources/itu-regions-defaults.txt
-	install -Dm644 Calibration/cal_load.s1p "${pkgdir}"/usr/share/antscope2/cal_load.s1p
-	install -Dm644 Calibration/cal_open.s1p "${pkgdir}"/usr/share/antscope2/cal_open.s1p
-	install -Dm644 Calibration/cal_short.s1p "${pkgdir}"/usr/share/antscope2/cal_short.s1p
-
 	[ -d "${pkgdir}"/usr/share/antscope2/icons ] || mkdir -p "${pkgdir}"/usr/share/antscope2/icons
-	install -Dm644 AntScope2.icns "${pkgdir}"/usr/share/antscope2/icons/AntScope2.icns
-	install -Dm644 AntScope2.ico "${pkgdir}"/usr/share/antscope2/icons/AntScope2.ico
-	install -Dm644 AntScope2.png "${pkgdir}"/usr/share/antscope2/icons/AntScope2.png
+	[ -d "${pkgdir}"/usr/bin ] || mkdir -p "${pkgdir}"/usr/bin
+
+	cd "${srcdir}/${pkgname}/build/release"
+	install -Dm755 AntScope2 -t "${pkgdir}/usr/share/antscope2"
+
+	cd "${pkgdir}/usr/share/antscope2/"
+	ln -sf "/usr/share/antscope2/AntScope2" "${pkgdir}/usr/bin"
+
+	cd "${srcdir}/${pkgname}"
+	install -Dm644 cables.txt -t "${pkgdir}"/usr/share/antscope2/Resources
+	install -Dm644 itu-regions.txt -t "${pkgdir}"/usr/share/antscope2/Resources
+	install -Dm644 itu-regions-defaults.txt -t "${pkgdir}"/usr/share/antscope2/Resources
+	install -Dm644 Calibration/cal_load.s1p -t "${pkgdir}"/usr/share/antscope2
+	install -Dm644 Calibration/cal_open.s1p -t "${pkgdir}"/usr/share/antscope2
+	install -Dm644 Calibration/cal_short.s1p -t "${pkgdir}"/usr/share/antscope2
+
+	install -Dm644 AntScope2.icns -t "${pkgdir}"/usr/share/antscope2/icons
+	install -Dm644 AntScope2.ico -t "${pkgdir}"/usr/share/antscope2/icons
+	install -Dm644 AntScope2.png -t "${pkgdir}"/usr/share/antscope2/icons
 
 	install -Dm644 LICENSE.txt -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 
 	cd "${srcdir}"
-	install -Dm644 99-rigexpert.rules "${pkgdir}"/etc/udev/rules.d/99-rigexpert.rules
-	install -Dm644 antscope2.desktop "${pkgdir}"/usr/share/applications/antscope2.desktop
+	install -Dm644 99-rigexpert.rules -t "${pkgdir}"/etc/udev/rules.d
+	install -Dm644 antscope2.desktop -t "${pkgdir}"/usr/share/applications
 }

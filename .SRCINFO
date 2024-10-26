@@ -1,7 +1,7 @@
 pkgbase = antscope2
 	pkgdesc = Visualization tool for RigExpert antenna analyzers
 	pkgver = 1.2.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/rigexpert/AntScope2
 	arch = x86_64
 	license = MIT
@@ -11,6 +11,7 @@ pkgbase = antscope2
 	depends = libusb
 	depends = glibc
 	depends = gcc-libs
+	conflicts = antscope2
 	conflicts = antscope2-git
 	source = antscope2::git+https://github.com/rigexpert/AntScope2.git#commit=19323af9b8157dff4c260f516d8bda4b05e6a8a9
 	source = 99-rigexpert.rules
