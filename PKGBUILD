@@ -17,7 +17,7 @@
 ## basic info
 _pkgname="rstudio-desktop"
 pkgname="$_pkgname-git"
-pkgver=2024.09.0.r181.g37e8dd3
+pkgver=2024.09.0.r269.g3bda5e5
 pkgrel=1
 pkgdesc="A powerful and productive integrated development environment (IDE) for R programming language"
 url="https://github.com/rstudio/rstudio"
@@ -25,8 +25,14 @@ license=('AGPL-3.0-only')
 arch=('x86_64')
 
 depends=(
+  'boost-libs'
+  'dbus'
+  'hicolor-icon-theme'
   'hunspell-en_US'
+  'libcups'
   'mathjax2'
+  'nspr'
+  'nss'
   'pandoc'
   'r'
 )
@@ -48,9 +54,10 @@ makedepends=(
 )
 optdepends=(
   'git: for git support'
-  'subversion: for subversion support'
+  'nodejs: for copilot support'
   'openssh-askpass: for a git ssh access'
   'quarto: for Quarto projects support'
+  'subversion: for subversion support'
 )
 
 if [[ "${_quarto::1}" == "t" ]]; then
@@ -69,14 +76,12 @@ source=(
   "$_pkgsrc"::"git+https://github.com/rstudio/rstudio.git"
   "quarto"::"git+https://github.com/quarto-dev/quarto.git#branch=${_quarto_branch}"
   "soci-$_sociver.tar.gz"::"https://github.com/SOCI/soci/archive/refs/tags/v${_sociver}.tar.gz"
-  '0003-fix_boost_186.patch'
 )
 
 sha256sums=(
   'SKIP'
   'SKIP'
   '4b1ff9c8545c5d802fbe06ee6cd2886630e5c03bf740e269bb625b45cf934928'
-  '7b3384fc7349a69e866ef0db21f196a2cafa3a9e2fb7f1edaead773b991dac72'
 )
 
 pkgver() {
@@ -100,29 +105,41 @@ _nvm_env() {
 
 prepare() (
   _nvm_env
-  npm install yarn
+  #npm install yarn
 
   cd "$_pkgsrc"
   # Do not use outdated version name of pandoc
-  sed -i '/PANDOC_VERSION/s/2.18/current/' "cmake/globals.cmake"
+  sed -E -e '/PANDOC_VERSION/s/2.[0-9]+/current/' -i "cmake/globals.cmake"
 
   # Suppress _FORTIFY_SOURCE mismatch warnings
   sed -i 's/D_FORTIFY_SOURCE=2/D_FORTIFY_SOURCE=3/' "src/cpp/CMakeLists.txt"
 
   # fix npm/node paths
+  sed -E -e 's&set\(RSTUDIO_NODE_PATH .*\)&set(RSTUDIO_NODE_PATH "/usr/bin")&' \
+    -i cmake/globals.cmake
+
   install -dm755 "$srcdir/$_pkgsrc/dependencies/common/node"
   ln -sfT "$NVM_DIR/versions/node/v$RSTUDIO_NODE_VERSION" "$srcdir/$_pkgsrc/dependencies/common/node/${RSTUDIO_NODE_VERSION}-patched"
 
-  sed -E -e 's&PATHS "/opt/rstudio-tools/dependencies/common/node/\$\{RSTUDIO_NODE_VERSION\}"&PATHS "'"${_npm_path}"'"&' \
-    -i src/node/CMakeNodeTools.txt
+  sed -E -e 's&^external-node-path=.*$&external-node-path=/usr/bin/node&' \
+    -i src/cpp/conf/rsession-dev.conf
 
-  sed -E -e 's&(common/node)/([0-9\.]+)-(patched)&\1/'"${RSTUDIO_NODE_VERSION}"'-\3&' \
-    -i src/cpp/conf/rsession-dev.conf src/cpp/session/SessionOptions.cpp
+  sed -E -e 's&DIRECTORY "\$\{RSTUDIO_DEPENDENCIES_DIR\}/common/node/\$\{RSTUDIO_INSTALLED_NODE_VERSION\}-patched/"&DIRECTORY "/usr"&' \
+    -e 's&(# install node)&\1\nif(FALSE)&' \
+    -e 's&(# install quarto)&endif()\n\1&' \
+    -i src/cpp/session/CMakeLists.txt
 
-  sed -E -e '/"node\.version"/s&value="[0-9\.]+"&value="'"${RSTUDIO_NODE_VERSION}"'"&' \
+  sed -E -e 's&"\S+/common/node/\S+"&"/usr"&' \
+    -i src/cpp/session/SessionOptions.cpp
+
+  sed -E -e '/"node\.version"/s&value="[0-9\.]+"&value="Current"&' \
+    -e '/"node\.dir"/s&value="\S+"&value="/usr"&' \
+    -e 's&"\S+/common/node/\S+/bin/yarn"&"/usr/bin/yarn"&' \
     -i src/gwt/build.xml
 
-  sed -E -e 's&set\(RSTUDIO_NODE_VERSION "[0-9\.]+"\)&set(RSTUDIO_NODE_VERSION "'"${RSTUDIO_NODE_VERSION}"'")&' \
+  sed -E -e 's&PATHS "/opt/rstudio-tools/dependencies/common/node/\$\{RSTUDIO_NODE_VERSION\}"&PATHS "'"${_npm_path}"'"&' \
+    -e 's&"\S+CMAKE_CURRENT_LIST_DIR\S+/dependencies/common/node/\S+"&"'"${_npm_path}"'"&g' \
+    -e 's&set\(RSTUDIO_NODE_VERSION "[0-9\.]+"\)&set(RSTUDIO_NODE_VERSION "Current")&' \
     -i src/node/CMakeNodeTools.txt
 
   # fix os-release path
@@ -130,7 +147,8 @@ prepare() (
     -i cmake/modules/OsRelease.cmake
 
   # fix boost 1.86 incompatibility
-  patch -p1 -i "$srcdir/0003-fix_boost_186.patch"
+  sed -E -e 's&return afterResponse_;&return (bool)afterResponse_;&' \
+    -i src/cpp/core/json/JsonRpc.cpp
 
   cd "$srcdir/$_pkgsrc/dependencies/common"
   install -d pandoc/${_pandocver}
@@ -250,9 +268,8 @@ build() (
     -DRSTUDIO_TARGET=Electron
     -DRSTUDIO_USE_SYSTEM_BOOST=YES
     -DRSTUDIO_USE_SYSTEM_SOCI=NO
-    -DRSTUDIO_USE_SYSTEM_NODE=YES
-    -DRSTUDIO_NODE_VERSION="$RSTUDIO_NODE_VERSION"
-    -DRSTUDIO_INSTALLED_NODE_VERSION="$RSTUDIO_NODE_VERSION"
+    -DRSTUDIO_NODE_VERSION="Current"
+    -DRSTUDIO_INSTALLED_NODE_VERSION="Current"
     -DQUARTO_ENABLED=${_quarto}
     -DBUILD_TESTING=OFF
     -Wno-dev
@@ -262,10 +279,35 @@ build() (
 )
 
 package() {
-  # Install the program
-  DESTDIR="${pkgdir}" cmake --install build
+  DESTDIR="$pkgdir" cmake --install build
 
-  # Symlink main binary
-  install -d "${pkgdir}/usr/bin"
-  ln -s "/usr/lib/rstudio/rstudio" "$pkgdir/usr/bin/rstudio"
+  install -Dm755 /dev/stdin "${pkgdir}/usr/bin/rstudio" << END
+#!/usr/bin/env bash
+
+# See following script for potentially useful flags.
+# https://github.com/ozankiratli/dotfiles/blob/master/.config/sway/scripts/rstudio-wayland
+
+: \${XDG_CONFIG_HOME:=\$HOME/.config}
+
+flags_file="\$XDG_CONFIG_HOME/rstudio-flags.conf"
+
+lines=()
+if [[ -f "\${flags_file}" ]]; then
+  mapfile -t lines < "\${flags_file}"
+fi
+
+flags=()
+for line in "\${lines[@]}"; do
+  if [[ ! "\${line}" =~ ^[[:space:]]*#.* ]] && [[ -n "\${line}" ]]; then
+    flags+=("\${line}")
+  fi
+done
+
+: \${ELECTRON_IS_DEV:=0}
+export ELECTRON_IS_DEV
+: \${ELECTRON_FORCE_IS_PACKAGED:=true}
+export ELECTRON_FORCE_IS_PACKAGED
+
+exec /usr/lib/rstudio/rstudio "\${flags[@]}" "\$@"
+END
 }
