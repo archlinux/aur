@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=ferrum-bin
 _pkgname=Ferrum
-pkgver=0.19.1
+pkgver=0.19.2
 _electronversion=28
 pkgrel=1
 pkgdesc="Music library app.Prebuilt version.Use system-wide electron."
@@ -17,7 +17,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.rpm::${url}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-linux-${CARCH}.rpm"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('029019d3cf3cc1f14d302afedf06ccdfba45cdfb658ab7ba055fa9fb1a94bb80'
+sha256sums=('645f78846039c26ec9bb6188f65ac8b8ba28ffedfe661070bf4de69122571e7a'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 build() {
     sed -e "
