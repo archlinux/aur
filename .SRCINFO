@@ -1,6 +1,6 @@
 pkgbase = peazip-qt-bin
 	pkgdesc = PeaZip file manager and archiver (binary release)
-	pkgver = 9.9.1
+	pkgver = 10.0.0
 	pkgrel = 1
 	url = https://github.com/peazip/PeaZip
 	arch = x86_64
@@ -20,7 +20,7 @@ pkgbase = peazip-qt-bin
 	provides = peazip
 	conflicts = peazip
 	options = !emptydirs
-	source = https://github.com/peazip/PeaZip/releases/download/9.9.1/peazip-9.9.1.LINUX.Qt5-1.x86_64.rpm
-	sha256sums = 22c95f0d4d13302b9d966d0efa1b35fa27fd264cdde777e3c14e917e30cc50fb
+	source = https://github.com/peazip/PeaZip/releases/download/10.0.0/peazip-10.0.0.LINUX.Qt5-1.x86_64.rpm
+	sha256sums = 280263319a020c5b1c7a3a11fd61bdfee5226f8f5ff677f76b58e25a3f6726a2
 
 pkgname = peazip-qt-bin
