@@ -1,6 +1,6 @@
 # Maintainer: Rikka <ayasa0520@gmail.com>
 pkgname=waydroid-helper
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="A GUI application for Waydroid configuration and extension installation"
 arch=('any')
@@ -11,7 +11,7 @@ makedepends=('git' 'python-setuptools' 'meson' 'ninja')
 provides=("${pkgname}")
 conflicts=("${pkgname}")
 source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('532d9149b33c2b51a21e06e871f1267445d1a3fb98cabbd0996c1f881fbfc020')
+sha256sums=('740e68417459167aec734b60e9840e51b1bf5517eb7a8e69c4502afd28bc5433')
 
 build() {
   cd "$srcdir/${pkgname}-${pkgver}"
