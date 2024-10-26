@@ -40,6 +40,8 @@ package() {
 
     ln -sf "$pkgdir/opt/SkEditor/SkEditor" "$pkgdir/usr/bin/SkEditor"
 
+    wget https://gist.github.com/FixeQyt/d1dfa9b3bb6e49eb017908c009cc78cd/raw -O SkEditor.desktop
+
     version=$(grep -oP '(?<=<Version>)[0-9.]+(?=</Version>)' SkEditor.csproj)
     sed -i "s/^Version=.*/Version=${version}/" "SkEditor.desktop"
 
