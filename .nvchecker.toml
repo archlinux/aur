@@ -1,0 +1,5 @@
+[peazip]
+source = "github"
+github = "peazip/PeaZip"
+prefix = "v"
+use_latest_release = "true"

@@ -2,13 +2,12 @@
 
 ## options
 : ${_widgets=qt6}
-: ${_commit=34fa5f9e778111c22dc1e72c6c0a0fff8233831c} # 9.9.1
+: ${_commit=2a48cd1421634f2fdd4ab83bf4e4a5933effcbf0} # 10.0.0
 
-## basic info
 _pkgname="peazip"
 pkgname="$_pkgname"
-pkgver=9.9.1
-pkgrel=2
+pkgver=10.0.0
+pkgrel=1
 pkgdesc="Cross-platform file and archive manager (${_widgets^})"
 url="https://github.com/peazip/PeaZip"
 license=('LGPL-3.0-or-later')
@@ -47,7 +46,7 @@ _packets=(
 
 prepare() {
   # support qt6
-  sed -E -e 's&IFDEF LCLQT5&IF DEFINED(LCLQT5) OR DEFINED(LCLQT6)&' -i "$_pkgsrc/peazip-sources/dev/peach.pas"
+  sed -E -e 's&IFDEF LCLQT5&IF DEFINED(LCLQT5) OR DEFINED(LCLQT6)&g' -i "$_pkgsrc/peazip-sources/dev/peach.pas"
 
   # modify compiler options
   for i in ${_packets[@]}; do
@@ -55,12 +54,6 @@ prepare() {
     sed -E 's&(</CompilerOptions>)&<Other><CustomOptions Value='\''-O3 -Sa -CX -XX -k"--sort-common --as-needed -z relro -z now"'\''/></Other>\n\1&' \
       -i "$i"
   done
-}
-
-_pkgver() {
-  cd "$_pkgsrc"
-  git describe --long --tags --abbrev=7 --exclude='*[a-zA-Z][a-zA-Z]*' \
-    | sed -E 's/^[^0-9]*//;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
 build() {
