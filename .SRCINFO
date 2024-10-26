@@ -1,6 +1,6 @@
 pkgbase = r-mlr3learners
 	pkgdesc = Recommended Learners for 'mlr3'
-	pkgver = 0.7.0
+	pkgver = 0.8.0
 	pkgrel = 1
 	url = https://cran.r-project.org/package=mlr3learners
 	arch = any
@@ -26,7 +26,7 @@ pkgbase = r-mlr3learners
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
 	optdepends = r-xgboost
-	source = https://cran.r-project.org/src/contrib/mlr3learners_0.7.0.tar.gz
-	sha256sums = 622305e93c645af9f67be2553816960e5f6a7bdcd7909c2aa8bdbb8e6bed6e6a
+	source = https://cran.r-project.org/src/contrib/mlr3learners_0.8.0.tar.gz
+	sha256sums = 9f985834ed467df65518bbf189d08daf3b0c9004e53b349de1741404833af153
 
 pkgname = r-mlr3learners
