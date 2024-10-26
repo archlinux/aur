@@ -1,0 +1,27 @@
+pkgbase = stardust-xr-server
+	pkgdesc = Usable Linux display server that reinvents human-computer interaction for all kinds of XR
+	pkgver = 0.45.1
+	pkgrel = 1
+	url = https://github.com/StardustXR/server
+	arch = x86_64
+	license = GPL-2.0-or-later
+	makedepends = git
+	makedepends = cargo
+	makedepends = cmake
+	makedepends = pkg-config
+	depends = libgl
+	depends = libegl
+	depends = mesa
+	depends = libx11
+	depends = libxfixes
+	depends = fontconfig
+	depends = libxkbcommon
+	depends = libglvnd
+	provides = stardust-server
+	options = !lto
+	options = !debug
+	options = !strip
+	source = git+https://github.com/StardustXR/server.git
+	sha256sums = SKIP
+
+pkgname = stardust-xr-server
