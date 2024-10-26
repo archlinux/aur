@@ -5,6 +5,7 @@ pkgbase = skeditor-git
 	url = https://github.com/SkEditorTeam/SkEditor
 	arch = x86_64
 	license = MIT
+	makedepends = dotnet-sdk
 	depends = dotnet-runtime>=8.0
 	source = git+https://github.com/SkEditorTeam/SkEditor#branch=main
 	md5sums = SKIP
