@@ -1,6 +1,6 @@
 # Maintainer: Nova King <technobaboo@proton.me>
 
-_clientname="comet"
+_clientname="gravity"
 pkgdesc="Virtual annotation pen for Stardust XR"
 
 pkgname="stardust-xr-$_clientname"
