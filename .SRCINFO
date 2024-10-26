@@ -1,0 +1,22 @@
+pkgbase = frame0
+	pkgdesc = A Balsamiq-alternative wireframming tool for modern apps
+	pkgver = 1.0.0~beta.3
+	pkgrel = 1
+	url = https://frame0.app
+	arch = x86_64
+	license = custom
+	depends = gtk3
+	depends = nss
+	depends = libnotify
+	depends = libxtst
+	depends = xdg-utils
+	depends = at-spi2-core
+	depends = libdrm
+	depends = mesa
+	depends = libxcb
+	depends = glib2
+	optdepends = pulseaudio
+	source = https://files.frame0.app/releases/linux/x64/frame0_1.0.0~beta.3_amd64.deb
+	sha256sums = fc5f1227eaaf0257d92ef8d8275c27a1688c410962926c06b4cf25cf03a94fd3
+
+pkgname = frame0
