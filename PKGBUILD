@@ -1,37 +1,39 @@
 # Maintainer: Nova King <technobaboo@proton.me>
 
-pkgname="comet"
+_clientname="comet"
+pkgdesc="Virtual annotation pen for Stardust XR"
+
+pkgname="stardust-xr-$_clientname"
 pkgver="0.1.0"
 pkgrel="1"
-pkgdesc="Virtual annotation pen for Stardust XR"
-arch=('x86_64')
-url="https://github.com/StardustXR/comet"
-license=('MIT')
+arch=("x86_64" "aarch64")
+url="https://github.com/StardustXR/$_clientname"
+license=("MIT")
 depends=()
 makedepends=(
-	'rust-musl'
-    'cargo'
-    'git'
+	"rust-musl"
+	"cargo"
+	"git"
 )
 source=(
-    "git+https://github.com/StardustXR/comet.git"
+    "git+https://github.com/StardustXR/$_clientname.git"
 )
-sha256sums=('SKIP')
+sha256sums=("SKIP")
 OPTIONS=(strip lto !debug)
 
 prepare() {
-    cd "$srcdir/$pkgname"
+    cd "$srcdir/$_clientname"
     cargo fetch --frozen --target "$CARCH-unknown-linux-musl"
 }
 
 build() {
-    cd "$srcdir/$pkgname"
+    cd "$srcdir/$_clientname"
     cargo build --locked --release --target "$CARCH-unknown-linux-musl"
 }
 
 package() {
-    cd "$srcdir/$pkgname"
-    install -Dm755 "target/x86_64-unknown-linux-musl/release/$pkgname" "$pkgdir/usr/bin/$pkgname"
+    cd "$srcdir/$_clientname"
+    install -Dm755 "target/$CARCH-unknown-linux-musl/release/$_clientname" "$pkgdir/usr/bin/$_clientname"
     install -Dm644 \
 		LICENSE \
 		"$pkgdir/usr/share/licenses/$pkgname/LICENSE"
