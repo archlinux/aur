@@ -1,26 +1,26 @@
-## Maintainer: Adi Prasetya <t.me/adiwastaken>
+## Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
+## Contributor: Adi Prasetya <t.me/adiwastaken>
 
 pkgname=mcpelauncher-appimage
 _pkgname=${pkgname/appimage/ui-qt}
-_pkgver=1.0.0-798
+_pkgver=1.1.1-802
 pkgver="${_pkgver/-/.}"
-pkgrel=3
+pkgrel=1
 pkgdesc="Minecraft Bedrock Launcher for Linux"
 arch=("x86_64" "armv7h" "aarch64")
 url="https://github.com/minecraft-linux/appimage-builder"
 license=('GPL-3.0-only' 'MIT')
-depends=()
+depends=(glibc gcc-libs)
 makedepends=('desktop-file-utils')
 optdepends=('zenity: custom skin picker')
-provides=(mcpelauncher-client mcpelauncher-ui)
-conflicts=(mcpelauncher-client mcpelauncher-ui)
+conflicts=(mcpelauncher-linux mcpelauncher-ui)
 options=(!strip)
 source_x86_64=("mcpelauncher-x86_64-v${pkgver}.AppImage::$url/releases/download/v${_pkgver}/Minecraft_Bedrock_Launcher-x86_64-v${pkgver}.AppImage")
 source_armv7h=("mcpelauncher-armv7h-v${pkgver}.AppImage::$url/releases/download/v${_pkgver}/Minecraft_Bedrock_Launcher-armhf-v${pkgver}.AppImage")
 source_aarch64=("mcpelauncher-aarch64-v${pkgver}.AppImage::$url/releases/download/v${_pkgver}/Minecraft_Bedrock_Launcher-arm64-v${pkgver}.AppImage")
-sha512sums_x86_64=('5f9cb98dd4c7a7a286ca224546b7b8a8f6474859c4a87951ebe54befbde42ba18778eac2fafc4bca4523de21ba3d120476bd4904589e10b1650e4ff5a773fe82')
-sha512sums_armv7h=('bfab2dab83d03c93b70c3444262fa815f3b11a23876a741869a851fdea4fa70ac32fccc077e05562c43fc08de18b34c92360bd10c4a53d0b48d6c21284fed8ab')
-sha512sums_aarch64=('ccbde22b9f45e6e30a128029827073342a76e087d3bfce7f5abba7b0d4aecf79d2c83a1197368efab7a53dfcb1fb44399e6c2468273d15455ce7e1c31fb9e143')
+sha512sums_x86_64=('29a34d48b06df0683ff0c99e00fb653385ce715a326a490d968331b2bd6133212d23ef3d22548a4569afcfaa41233ab8cc09b684729a79cb3263d1f355e9a5ad')
+sha512sums_armv7h=('b1c6167f31b7005169ac2e8d4f98fe78844645e90cfe79105ac03b2e5d867eefbfe199ef90d07bb557db82129a3d2d63e72728add5974adb935ea800a02e2a45')
+sha512sums_aarch64=('b59cf0cf182a1bb9092c696443f5255f6e172779dc137163aed21c22b86e41cfbb74a50b1f2b7de2c0bbb3a6fcee434b26441f429fa10953fca24c1e9bf54a81')
 _fileName="mcpelauncher-${CARCH}-v${pkgver}.AppImage"
 _desktopFile="usr/share/applications/mcpelauncher-ui-qt.desktop"
 _scalableIcon="usr/share/icons/hicolor/scalable/apps/mcpelauncher-ui-qt.svg"
