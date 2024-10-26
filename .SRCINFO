@@ -1,5 +1,5 @@
 pkgbase = bepasty-cli
-	pkgdesc = CLI client for bepasty-server
+	pkgdesc = CLI client for bepasty-server.
 	pkgver = r55.d48e9d1
 	pkgrel = 1
 	url = https://github.com/bepasty/bepasty-client-cli

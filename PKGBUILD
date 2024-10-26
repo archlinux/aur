@@ -2,7 +2,7 @@
 pkgname=bepasty-cli
 pkgver=r55.d48e9d1
 pkgrel=1
-pkgdesc="CLI client for bepasty-server"
+pkgdesc="CLI client for bepasty-server."
 arch=('any')
 url="https://github.com/bepasty/bepasty-client-cli"
 license=('BSD')
