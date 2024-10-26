@@ -39,6 +39,7 @@ sha256sums=('b11965b1a52adf1fc55e313f08d6a38f224c21a4597833a04c3fe1f784cd4691'
 backup=(
     'etc/accesser/pac'
     'etc/accesser/config.toml'
+    'etc/accesser/rules.toml'
 )
 
 build() {
@@ -47,10 +48,11 @@ build() {
 }
 
 package() {
-    cd ${srcdir}/$_name-$pkgver
+    pushd ${srcdir}/$_name-$pkgver
     python -m installer --destdir="$pkgdir" dist/*.whl
     install -Dm644 "accesser/pac" "${pkgdir}/etc/accesser/pac"
     install -Dm644 "accesser/config.toml" "${pkgdir}/etc/accesser/config.toml"
-    cd ..
+    install -Dm644 "accesser/rules.toml" "${pkgdir}/etc/accesser/rules.toml"
+    popd
     install -Dm644 "accesser.service" "${pkgdir}/usr/lib/systemd/system/accesser.service"
 }
