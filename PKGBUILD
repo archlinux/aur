@@ -2,21 +2,22 @@
 
 pkgname=backblaze-b2
 _pkgname=b2
-pkgver=4.0.3
-pkgrel=3
+pkgver=4.1.0
+pkgrel=1
 pkgdesc='Backblaze B2 Command Line Client'
 url='https://github.com/Backblaze/B2_Command_Line_Tool'
 depends=('python'
          'python-annotated-types>=0.5.0'
          'python-argcomplete>=2'
          'python-arrow>=1.0.2'
-         'python-b2sdk>=2.4.1'
+         'python-b2sdk>=2.5.0'
          'python-docutils>=0.19'
          'python-class-registry>=4.0.5'
          'python-rst2ansi=0.1.5'
          'python-tabulate>=0.8.10'
          'python-tqdm>=4.65.0'
          'python-platformdirs>=3.11.0'
+         'python-pydantic>=2.0.1'
         )
 makedepends=('python-build'
              'python-installer'
@@ -29,7 +30,7 @@ license=('MIT')
 arch=('any')
 
 source=("https://github.com/Backblaze/B2_Command_Line_Tool/releases/download/v${pkgver}/${_pkgname}-${pkgver}.tar.gz")
-sha256sums=('f4e3f1c82c9762f889bb2dd6690d4f3d1d5696888fe772bc986d475caf6186d2')
+sha256sums=('d452506b8e2932fc348eec53166b7694b449e2bbc26750dacf74bad4f4ea980a')
 
 build() {
     cd ${srcdir}/${_pkgname}-${pkgver}
