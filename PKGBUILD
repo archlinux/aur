@@ -25,7 +25,7 @@ sha256sums=('86ec9ad907d2432d3250a95794147e8b6e639d80e27ed023b2d8913388212992'
 build() {
     cd "${_reponame}-${pkgver}"
 
-    rm -rf server appsettings* &>/dev/null
+    rm -rf builddir appsettings* &>/dev/null
     dotnet restore "src/${_reponame}.Server"
     dotnet publish "src/${_reponame}.Server/${_reponame}.Server.csproj" \
         --no-restore \
