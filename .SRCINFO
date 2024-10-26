@@ -1,7 +1,7 @@
 pkgbase = onepage
 	pkgdesc = OnePage is a simple web application that serves a single page, allowing users to edit content in Markdown format and view it rendered as HTML
-	pkgver = 0.0.3
-	pkgrel = 3
+	pkgver = 0.0.4
+	pkgrel = 1
 	url = https://github.com/maveonair/onepage
 	arch = x86_64
 	arch = aarch64
