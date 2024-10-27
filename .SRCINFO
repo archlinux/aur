@@ -1,6 +1,6 @@
 pkgbase = php-imap
 	pkgdesc = PHP extension for imap (excluded from official php packages)
-	pkgver = 8.3.8
+	pkgver = 8.3.13
 	pkgrel = 1
 	url = https://www.php.net/
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = php-imap
 	depends = php
 	depends = c-client
 	depends = libxcrypt
-	source = https://php.net/distributions/php-8.3.8.tar.xz
-	sha256sums = aea358b56186f943c2bbd350c9005b9359133d47e954cfc561385319ae5bb8d7
+	source = https://php.net/distributions/php-8.3.13.tar.xz
+	sha256sums = 89adb978cca209124fe53fd6327bc4966ca21213a7fa2e9504f854e340873018
 
 pkgname = php-imap
