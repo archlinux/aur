@@ -1,13 +1,13 @@
 #Maintainer: Simon Eriksson <simon.eriksson.1187+aur AT gmail.com>
 
 pkgname=('libdragon-git' 'libdragon-tools-git')
-pkgver=r610.6fbe02fa
+pkgver=r833.7581432e0
 pkgrel=1
 url="http://www.dragonminded.com/n64dev/libdragon"
 arch=('x86_64')
 license=('custom:UNLICENSE')
 makedepends=('git')
-depends=('libpng' 'mips64-elf-gcc' 'mips64-elf-newlib')
+depends=('mips64-elf-gcc' 'mips64-elf-newlib')
 source=("git+https://github.com/DragonMinded/libdragon.git#branch=trunk")
 sha256sums=('SKIP')
 

@@ -1,11 +1,10 @@
 pkgbase = libdragon-git
-	pkgver = r610.6fbe02fa
+	pkgver = r832.535d75170
 	pkgrel = 1
 	url = http://www.dragonminded.com/n64dev/libdragon
 	arch = x86_64
 	license = custom:UNLICENSE
 	makedepends = git
-	depends = libpng
 	depends = mips64-elf-gcc
 	depends = mips64-elf-newlib
 	source = git+https://github.com/DragonMinded/libdragon.git#branch=trunk
