@@ -1,6 +1,6 @@
 # Maintainer: Stephan Raabe <mail@ml4w.com>
 pkgname='ml4w-hyprland'
-pkgver=2.9.6.3
+pkgver=2.9.6.4
 pkgrel=1
 pkgdesc="The ML4W Dotfiles for Hyprland - An advanced and full-featured configuration for the dynamic tiling window manager Hyprland including an easy to use installation script for Arch based Linux distributions. "
 arch=(any)
@@ -8,86 +8,38 @@ url="https://github.com/mylinuxforwork/dotfiles"
 license=('GPL')
 options=(!strip)
 depends=(
-    # System
-    "rsync"
-    "htop"
     "pacman-contrib"
+    "wget"
+    "zip"
+    "unzip"
+    "gum"
+    "rsync"
+    "git"
+    "figlet"
+    "stow"
     "sed"
     "vim"
-    "neovim"
+    "xdg-user-dirs"
+    "man-pages"
+    "networkmanager"
+    "pipewire"
+    "wireplumber"
     "bluez"
     "bluez-utils"
-    "wget"
-    "unzip"
-    "alacritty" 
-    "dunst" 
-    "starship"
-    "figlet" 
-    "vlc" 
-    "eza" 
-    "brightnessctl"
-    "gum"
-    "man-pages"
-    "python-pip" 
-    "python-pywal"
-    "python-gobject"
-    "xarchiver"
-    "zip"
-    "fuse2"
-    "gtk4"
-    "libadwaita"
-    "xdg-desktop-portal"
-    "imagemagick"
-    "guvcview"
-    "jq"
-    "pavucontrol" 
-    "polkit-gnome"
-    "gvfs"
-    "xdg-user-dirs"
-    "xclip"
-    "aylurs-gtk-shell"
-    # Apps
-    "wlogout"
-    "nwg-look"
-    "waypaper"
-    "rofi-wayland"
-    "fastfetch"
-    "blueman"
-    "pinta"
-    "cliphist"
-    "nautilus"
-    "nautilus-open-any-terminal"
-    "gnome-text-editor"
-    # Fonts
-    "noto-fonts" 
-    "otf-font-awesome" 
-    "ttf-fira-sans" 
-    "ttf-fira-code" 
-    "ttf-firacode-nerd" 
-    # Themes
-    "papirus-icon-theme"
-    "bibata-cursor-theme" 
-    # Hyprland
     "hyprland"
     "hyprpaper"
     "hyprlock"
     "hypridle"
-    "hyprshade"
+    "noto-fonts"
+    "dolphin"
+    "wofi"
+    "xdg-desktop-portal"
     "xdg-desktop-portal-hyprland" 
-    # Network
-    "nm-connection-editor"
-    "networkmanager"
-    "network-manager-applet"
-    "qt6ct"
-    "stow"
-    "zsh"
-    "fzf"
-    "zsh-completions"
-    "waybar" 
-    # Screenshot
-    "grim" 
-    "slurp"
-    "grimblast-git"
+    "libnotify" 
+    "dunst"
+    "kitty"
+    "qt5-wayland" 
+    "qt6-wayland"
 )
 
 conflicts=('ml4w-hyprland-git')
@@ -113,5 +65,13 @@ package() {
 
     # doc
     install -Dm 755 ${srcdir}/dotfiles-${pkgver}/README.md ${pkgdir}/usr/share/doc/${pkgname}/README.md
+
+    # message
+    echo
+    echo ":: ML4W Dotfiles for Hyprland"
+    echo ":: --------------------------"
+    echo ":: Please execute the command ml4w-hyprland-setup when the installation of the packages is complete."
+    echo ":: You can start Hyprland already with command Hyprland or from your display manager."
+    echo
 
 }
