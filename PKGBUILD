@@ -12,9 +12,9 @@ enable_scangear=0
 
 pkgname=canon-pixma-mp240-complete
 pkgver=3.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Complete standalone driver set (printing and scanning) for Canon Pixma MP240 series"
-url='http://www.canon-europe.com/Support/Consumer_Products/products/Fax__Multifunctionals/InkJet/PIXMA_MP_series/PIXMA_MP240.aspx'
+url='https://www.canon-europe.com/Support/Consumer_Products/products/Fax__Multifunctionals/InkJet/PIXMA_MP_series/PIXMA_MP240.aspx'
 arch=('i686' 'x86_64')
 license=('custom')
 if [ "${CARCH}" = 'x86_64' ]; then
@@ -25,7 +25,7 @@ fi
 
 if [ ${enable_scangear} = 1 ]; then
 
-  makedepends=('sed')
+makedepends=('sed' 'libarchive')
 
   if [ "${CARCH}" = 'x86_64' ]; then
     depends+=('lib32-gimp')
@@ -34,7 +34,9 @@ if [ ${enable_scangear} = 1 ]; then
   fi
 fi
 
-source=('http://files.canon-europe.com/files/soft31325/Software/MP240_debian_drivers.tar'
+
+
+source=('https://web.archive.org/web/20191204161011if_/https://files.canon-europe.com/files/soft31325/Software/MP240_debian_drivers.tar'
         'canon-pixma-mp240-complete.license'
         'canon-pixma-mp240-complete-scangear.desktop'
         'canon-pixma-mp240-complete-scangear-icon.svg')
