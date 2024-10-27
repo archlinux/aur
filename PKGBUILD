@@ -2,8 +2,8 @@
 
 pkgname=python-iptvtools
 _name=iptvtools
-pkgver=0.2.11
-pkgrel=5
+pkgver=0.2.12
+pkgrel=1
 pkgdesc="Provides iptv-filter script tool to maintain IPTV lists."
 arch=('any')
 url="https://github.com/huxuan/iptvtools"
@@ -24,11 +24,11 @@ makedepends=(
 )
 optdepends=('ffmpeg: filter by stream information, e.g., resolution/height')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha256sums=('e27777bea615c653229b7f76f08ed964e7ba50a49b2b8d4c1e3b671a72bd9f0d')
+sha256sums=('3f35c67989b1ec822839add3c1e646b7e8eb0975ed2b04058ba697fdde500ccd')
 
 build() {
   cd "${_name}-${pkgver}"
-  python -m build --wheel --no-isolation
+  python -m build --wheel --skip-dependency-check --no-isolation
 }
 
 package() {
