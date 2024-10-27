@@ -7,7 +7,7 @@ _pkgtype="-git"
 _gitname="gtk"
 _pkgname="gtk4"
 pkgbase="$_pkgname${_pkgtype:-}"
-pkgver=4.15.1.r336.gf4509a6
+pkgver=4.16.2.r438.ge37f9ba
 pkgrel=1
 pkgdesc="GObject-based multi-platform GUI toolkit"
 url="https://gitlab.gnome.org/GNOME/gtk"
@@ -48,6 +48,7 @@ depends=(
   wayland
 )
 makedepends=(
+  gi-docgen
   git
   glib2-devel
   gobject-introspection
@@ -60,6 +61,8 @@ makedepends=(
   wayland-protocols
 )
 checkdepends=(weston)
+
+options=('!lto')
 
 _pkgsrc="$_gitname"
 source=(
@@ -81,6 +84,8 @@ pkgver() {
 }
 
 prepare() {
+  # Allow -fcf-protection to work
+  # https://gitlab.gnome.org/GNOME/gtk/-/issues/6153
   sed -E -e 's&^(\s*can_use_objcopy_for_resources) = \S+$&\1 = false&' \
     -i "$_pkgsrc/meson.build"
 }
@@ -90,6 +95,7 @@ build() {
     -D broadway-backend=true
     -D cloudproviders=enabled
     -D colord=enabled
+    -D documentation=true
     -D man-pages=true
     -D tracker=enabled
   )
@@ -97,6 +103,25 @@ build() {
   CFLAGS+=" -DG_DISABLE_CAST_CHECKS"
   arch-meson "$_pkgsrc" build "${meson_options[@]}"
   meson compile -C build
+
+  meson install -C build --destdir "$srcdir/fakeinstall"
+
+  cd fakeinstall
+
+  # demos
+  _pick demo usr/bin/gtk4-{demo,demo-application,node-editor,print-editor,widget-factory}
+  _pick demo usr/share/applications/org.gtk.{Demo4,PrintEditor4,WidgetFactory4,gtk4.NodeEditor}.desktop
+  _pick demo usr/share/glib-2.0/schemas/org.gtk.Demo4.gschema.xml
+  _pick demo usr/share/icons/hicolor/*/apps/org.gtk.{Demo4,PrintEditor4,WidgetFactory4,gtk4.NodeEditor}[-.]*
+  _pick demo usr/share/man/man1/gtk4-{demo,demo-application,node-editor,widget-factory}.1
+  _pick demo usr/share/metainfo/org.gtk.{Demo4,PrintEditor4,WidgetFactory4,gtk4.NodeEditor}.appdata.xml
+
+  # docs
+  _pick docs usr/share/doc
+
+  # Built by GTK 4, shared with GTK 3
+  _pick guic usr/bin/gtk4-update-icon-cache
+  _pick guic usr/share/man/man1/gtk4-update-icon-cache.1
 }
 
 check() (
@@ -125,13 +150,13 @@ _pick() {
 _package_gtk4() {
   depends+=(gtk-update-icon-cache)
   optdepends=('evince: Default print preview command')
-  provides+=(
+  provides=(
     gtk4
     libgtk-4.so
   )
-  conflicts+=(gtk4)
+  conflicts=(gtk4)
 
-  meson install -C build --destdir "$pkgdir"
+  mv fakeinstall/* "$pkgdir"
 
   install -Dm644 /dev/stdin "$pkgdir/usr/share/gtk-4.0/settings.ini" << END
 [Settings]
@@ -142,26 +167,42 @@ END
 
   install -Dt "$pkgdir/usr/share/libalpm/hooks" -m644 gtk4-querymodules.hook
   install -D gtk4-querymodules.script "$pkgdir/usr/share/libalpm/scripts/gtk4-querymodules"
+}
 
-  cd "$pkgdir"
+_package_gtk4-demos() {
+  pkgdesc+=" (demo applications)"
+  depends=(
+    cairo
+    dconf
+    gdk-pixbuf2
+    graphene
+    gtk4
+    harfbuzz
+    hicolor-icon-theme
+    libepoxy
+    librsvg
+    pango
+  )
+  provides=(gtk4-demos)
+  conflicts=(gtk4-demos)
 
-  _pick demo usr/bin/gtk4-{demo,demo-application,icon-browser,node-editor,print-editor,widget-factory}
-  _pick demo usr/share/applications/org.gtk.{Demo4,IconBrowser4,PrintEditor4,WidgetFactory4,gtk4.NodeEditor}.desktop
-  _pick demo usr/share/glib-2.0/schemas/org.gtk.Demo4.gschema.xml
-  _pick demo usr/share/icons/hicolor/*/apps/org.gtk.{Demo4,IconBrowser4,PrintEditor4,WidgetFactory4,gtk4.NodeEditor}[-.]*
-  _pick demo usr/share/man/man1/gtk4-{demo,demo-application,icon-browser,node-editor,widget-factory}.1
-  _pick demo usr/share/metainfo/org.gtk.{Demo4,IconBrowser4,PrintEditor4,WidgetFactory4,gtk4.NodeEditor}.appdata.xml
+  mv demo/* "$pkgdir"
+}
 
-  # Built by GTK 4, shared with GTK 3
-  _pick guic usr/bin/gtk4-update-icon-cache
-  _pick guic usr/share/man/man1/gtk4-update-icon-cache.1
+_package_gtk4-docs() {
+  pkgdesc+=" (documentation)"
+  depends=()
+  provides=(gtk4-docs)
+  conflicts=(gtk4-docs)
+
+  mv docs/* "$pkgdir"
 }
 
 _package_gtk-update-icon-cache() {
   pkgdesc="GTK icon cache updater"
   depends=(gdk-pixbuf2 librsvg hicolor-icon-theme)
-  provides+=(gtk-update-icon-cache)
-  conflicts+=(gtk-update-icon-cache)
+  provides=(gtk-update-icon-cache)
+  conflicts=(gtk-update-icon-cache)
 
   mv guic/* "$pkgdir"
   ln -s gtk4-update-icon-cache "$pkgdir/usr/bin/gtk-update-icon-cache"
@@ -173,6 +214,8 @@ _package_gtk-update-icon-cache() {
 
 pkgname=(
   "gtk4${_pkgtype:-}"
+  "gtk4-demos${_pkgtype:-}"
+  #"gtk4-docs${_pkgtype:-}"
   "gtk-update-icon-cache${_pkgtype:-}"
 )
 
