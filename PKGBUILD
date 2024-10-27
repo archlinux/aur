@@ -1,4 +1,5 @@
-# Maintainer: Jan Cholasta <grubber at grubber cz>
+# Maintainer: envolution
+# Contributor: Jan Cholasta <grubber at grubber cz>
 
 pkgname=slade
 pkgver=3.2.6
