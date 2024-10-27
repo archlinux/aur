@@ -2,7 +2,7 @@
 
 _pkgname="funzzy"
 pkgname="${_pkgname}-bin"
-pkgver=1.4.1
+pkgver=1.5.0
 pkgrel=1
 pkgdesc="A lightweight generic purpose file watcher"
 arch=('x86_64')
@@ -16,9 +16,9 @@ noextract=("${_pkgsrc}-x86_64.tar.gz")
 source=("README-${pkgver}.md::${url}/raw/v${pkgver}/README.md"
         "LICENSE-${pkgver}::${url}/raw/v${pkgver}/LICENSE")
 source_x86_64=("${_pkgsrc}-x86_64.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-x86_64-unknown-linux-gnu.tar.gz")
-sha256sums=('aeb499fecbbffb85e7a123fc439536d74a59f1d8efbf4305b563adc2b24a42d8'
+sha256sums=('915cf73aad93ba3ae5add4e76803b030c1de18c4e93afe37a3eadb9737c22da5'
             '06d192e34ed1d62acb191604c71067f6b40bda375e44f92b953bdb0ad7c524db')
-sha256sums_x86_64=('365141ccd5c40e2a590802fc3f58737a7076a7733bd9aefde60273cd57b42dbc')
+sha256sums_x86_64=('6ffce42e64b8c0a3da272eb654ba82273e045454d5f3d3c8e4633840e470a6b9')
 
 prepare() {
   cd "${srcdir}"
