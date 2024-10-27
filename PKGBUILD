@@ -1,6 +1,6 @@
 # Maintainer: Alexander Pohl <alex at ahpohl dot com>
 pkgname=smartmeter
-pkgver=0.3.7
+pkgver=0.3.8
 pkgrel=1
 epoch=
 pkgdesc="Read energy utility meter with IR dongle"
@@ -15,7 +15,8 @@ optdepends=('nodejs-node-red' 'postgresql' 'timescaledb' 'pg_cron' 'grafana-bin'
 provides=()
 conflicts=()
 replaces=()
-backup=('etc/smartmeter.conf')
+backup=("etc/smartmeter/smartmeter.conf"
+        "etc/smartmeter/docker-compose.yaml")
 options=(!strip)
 install=
 changelog=
@@ -23,9 +24,9 @@ source=("$pkgname-$pkgver::git+https://github.com/ahpohl/smartmeter.git#tag=v${p
         "sysusers_smartmeter.conf"
         "smartmeter.service")
 noextract=()
-sha256sums=('SKIP'
+sha256sums=('6114f1e4e6c5cd27a2a522ff191a20e56c1041b84009624e8456a2f1b7d9b27e'
             'c5de1caa62617c8a3287a342ec868e00c8a808647f71bef3a606521d76ac318f'
-            '2b728599a08a22e7e66c0340707f522c3d093e50b8d87f7f224f2b352ca9cfd2')
+            '625c1f130758a596f3115cf0ae9f7317d323fcd0a7245f950e07cfb2fc574cb4')
 validpgpkeys=()
 
 build() {
@@ -34,17 +35,17 @@ build() {
 }
 
 package() {
-	cd "$pkgname-$pkgver"
-	make DESTDIR="$pkgdir" PREFIX="/usr" install
-	install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+  cd "$pkgname-$pkgver"
+  make DESTDIR="$pkgdir" PREFIX="/usr" install
+  install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
   install -Dm644 README.md "$pkgdir"/usr/share/doc/$pkgname/README.md
   install -Dm644 CHANGELOG.md "$pkgdir"/usr/share/doc/$pkgname/CHANGELOG.md
-  install -Dm644 "$srcdir"/sysusers_smartmeter.conf "$pkgdir"/usr/lib/sysusers.d/smartmeter.conf
-  install -Dm644 "$srcdir"/smartmeter.service "$pkgdir"/usr/lib/systemd/system/smartmeter.service
-  install -Dm644 resources/config/smartmeter_example.conf "$pkgdir"/etc/smartmeter.conf
-  install -Dm644 resources/config/smartmeter_example.conf "$pkgdir"/usr/share/smartmeter/config/smartmeter_example.conf
-  install -d "$pkgdir"/usr/share/smartmeter/postgres
-  install -Dm644 resources/postgres/*.sql "$pkgdir"/usr/share/smartmeter/postgres
-  install -Dm644 resources/nodejs/node-red-flow.json "$pkgdir"/usr/share/smartmeter/nodejs/node-red-flow.json
-  install -Dm644 resources/grafana/grafana-dashboard.json "$pkgdir"/usr/share/smartmeter/grafana/grafana-dashboard.json
+  install -Dm644 "$srcdir"/sysusers_$pkgname.conf "$pkgdir"/usr/lib/sysusers.d/$pkgname.conf
+  install -Dm644 "$srcdir"/$pkgname.service "$pkgdir"/usr/lib/systemd/system/$pkgname.service
+  install -d "$pkgdir"/etc/$pkgname
+  install -Dm644 resources/config/${pkgname}_example.conf "$pkgdir"/etc/$pkgname/$pkgname.conf
+  install -Dm644 Dockerfile "$pkgdir"/etc/$pkgname/Dockerfile
+  install -Dm644 docker-compose.yaml "$pkgdir"/etc/$pkgname/docker-compose.yaml
+  install -d "$pkgdir"/usr/share/$pkgname
+  cp -r resources/* "$pkgdir"/usr/share/$pkgname/
 }

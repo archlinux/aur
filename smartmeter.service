@@ -3,7 +3,7 @@ Description=Smartmeter
 After=network.target
 
 [Service]
-ExecStart=/usr/bin/smartmeter -c /etc/smartmeter.conf
+ExecStart=/usr/bin/smartmeter -c /etc/smartmeter/smartmeter.conf
 User=smartmeter
 Group=smartmeter
 NoNewPrivileges=yes

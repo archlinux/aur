@@ -1,6 +1,6 @@
 pkgbase = smartmeter
 	pkgdesc = Read energy utility meter with IR dongle
-	pkgver = 0.3.7
+	pkgver = 0.3.8
 	pkgrel = 1
 	url = https://github.com/ahpohl/smartmeter
 	arch = i686
@@ -15,12 +15,13 @@ pkgbase = smartmeter
 	optdepends = pg_cron
 	optdepends = grafana-bin
 	options = !strip
-	backup = etc/smartmeter.conf
-	source = smartmeter-0.3.7::git+https://github.com/ahpohl/smartmeter.git#tag=v0.3.7
+	backup = etc/smartmeter/smartmeter.conf
+	backup = etc/smartmeter/docker-compose.yaml
+	source = smartmeter-0.3.8::git+https://github.com/ahpohl/smartmeter.git#tag=v0.3.8
 	source = sysusers_smartmeter.conf
 	source = smartmeter.service
-	sha256sums = SKIP
+	sha256sums = 6114f1e4e6c5cd27a2a522ff191a20e56c1041b84009624e8456a2f1b7d9b27e
 	sha256sums = c5de1caa62617c8a3287a342ec868e00c8a808647f71bef3a606521d76ac318f
-	sha256sums = 2b728599a08a22e7e66c0340707f522c3d093e50b8d87f7f224f2b352ca9cfd2
+	sha256sums = 625c1f130758a596f3115cf0ae9f7317d323fcd0a7245f950e07cfb2fc574cb4
 
 pkgname = smartmeter
