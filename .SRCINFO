@@ -1,0 +1,24 @@
+pkgbase = upscayl-ncnn
+	pkgdesc = Fork of the NCNN implementation of Real-ESRGAN
+	pkgver = 20240601.103425
+	pkgrel = 2
+	url = https://github.com/upscayl/upscayl-ncnn
+	arch = x86_64
+	license = AGPL-3.0-only
+	makedepends = git
+	makedepends = cmake
+	makedepends = vulkan-headers
+	makedepends = glslang
+	makedepends = shaderc
+	depends = libwebp
+	depends = gcc-libs
+	depends = glibc
+	depends = ncnn
+	source = git+https://github.com/upscayl/upscayl-ncnn.git#tag=20240601-103425
+	source = cmake.patch
+	source = https://github.com/xinntao/Real-ESRGAN/releases/download/v0.2.5.0/realesrgan-ncnn-vulkan-20220424-ubuntu.zip
+	b2sums = ad38145faafb1fe03e7ffec0bcd72da1b4f274a6eeaeba1e70981a1a30384e46543c2c23040e87842caa66bd35f3434f6bb9469e885211f5684ce765de4ec93d
+	b2sums = f3460741da1310ba91193d16fd3d170e4b3244accd0eb451cde37f6a77cd6bc1da086ae62ae7ad943b08d23107ce67e6483941db0b9edbfdcea05217bcb98c47
+	b2sums = c16c05c343501272f5b4df6db7e7f8c592c4f8c8170ca0a0181c4433d1889ddea702d65fc134013bdaca302eeeab6e5b6d6fbad407adb7a2afa0acbefd6f4eca
+
+pkgname = upscayl-ncnn
