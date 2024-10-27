@@ -1,5 +1,6 @@
-# Maintainer: Filipe Laíns (FFY00) <lains@archlinux.org>
-# Maintainer: Caleb Maclennan <caleb@alerque.com>
+# Maintainer: envolution
+# Contributor: Filipe Laíns (FFY00) <lains@archlinux.org>
+# Contributor: Caleb Maclennan <caleb@alerque.com>
 # Contributor: nfnty <arch@nfnty.se>
 
 pkgname=shotcut-git
