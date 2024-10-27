@@ -6,13 +6,13 @@
 # https://github.com/gyroflow/gyroflow
 
 ## options
-: ${_commit=41005c8c15a8143f58e2abf38830103a742416af} # 1.5.4.r338
+: ${_commit=4b284ad1f22b3b7f8b1c51921442ff54599b12ef} # 1.6.0
 
 ## basic info
 _pkgname="gyroflow"
 pkgname="$_pkgname"
-pkgver=1.5.4
-pkgrel=2
+pkgver=1.6.0
+pkgrel=1
 pkgdesc="Video stabilization using gyroscope data"
 url="https://github.com/gyroflow/gyroflow"
 license=("GPL-3.0-or-later")
@@ -38,10 +38,7 @@ optdepends=(
   'intel-media-driver: VAAPI video acceleration for Intel GPU'
 )
 
-provides=("$_pkgname=${pkgver%%.r*}")
-conflicts=("$_pkgname")
-
-options=(!lto)
+options=('!lto')
 
 _pkgsrc="$_pkgname"
 source=("$_pkgsrc"::"git+$url.git#commit=$_commit")

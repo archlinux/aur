@@ -1,0 +1,4 @@
+[gyroflow]
+source = "git"
+git = "https://github.com/gyroflow/gyroflow.git"
+prefix = "v"
