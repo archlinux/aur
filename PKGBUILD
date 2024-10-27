@@ -1,7 +1,7 @@
 # Maintainer: tippfehlr <tippfehlr@tippfehlr.eu>
 
 pkgname=shq
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc='shell queue'
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
@@ -9,7 +9,7 @@ url="https://codeberg.org/tippfehlr/$pkgname"
 license=('MIT')
 makedepends=('go' 'git')
 source=("git+$url#tag=v$pkgver")
-sha512sums=('cfc6862d3f215ff53abf51bda019b8a87e321ad11960fb05a9d8b440982f5e5589387d3757a3b12724dab97d2957edf7d8c0a5d6411123806d70b3dfbe882e45')
+sha512sums=('a94887d365ae8c171718a1ae8d397cb615fe2fc303fbd896ba910e2af73d2ef12ea5132d278f98e8a4669433c3f6696fa42a7f4d5a8245b682e8268a981f3eda')
 
 prepare() {
     cd "$pkgname"
