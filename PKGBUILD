@@ -3,7 +3,7 @@
 
 pkgname=limo-git
 pkgdesc='A simple Qt based mod manager.'
-pkgver=r57.6eda51d
+pkgver=r60.f5e28e8
 pkgrel=1
 epoch=0
 url='https://github.com/limo-app/limo/'
@@ -38,9 +38,8 @@ build() {
   cmake -DCMAKE_BUILD_TYPE=Release -S . -B build
   cmake --build build -j$(nproc)
   cd build && make || return
-  which doxygen &>/dev/null
-  DOXYGEN_FOUND=$?
-  if [[ ${DOXYGEN_FOUND} -eq 0 ]]; then
+  DOXYGEN_DETECTED=$(which doxygen 2>/dev/null || true)
+  if [[ -n ${DOXYGEN_DETECTED} ]]; then
     cd ..
     doxygen src/lmm_Doxyfile
   fi
