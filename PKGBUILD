@@ -1,62 +1,51 @@
-# shellcheck disable=SC2034,SC2154,SC2164
-pkgname=('shotcut-git')
-_srcname='shotcut'
-pkgdesc='Video editor'
-pkgver='r4252'
-pkgrel='1'
-arch=('i686' 'x86_64')
-url='https://github.com/mltframework/shotcut'
+# Maintainer: Filipe Laíns (FFY00) <lains@archlinux.org>
+# Maintainer: Caleb Maclennan <caleb@alerque.com>
+# Contributor: nfnty <arch@nfnty.se>
+
+pkgname=shotcut-git
+pkgdesc='Cross-platform Qt based Video Editor - Git latest'
+pkgver=24.09
+pkgrel=1
+arch=('x86_64')
+url='https://www.shotcut.org'
 license=('GPL3')
-
-depends=(
-    'qt5-base'
-    'qt5-declarative'
-    'qt5-graphicaleffects'
-    'qt5-multimedia'
-    'qt5-quickcontrols'
-    'qt5-webkit'
-    'qt5-websockets'
-    'qt5-x11extras'
-    'mlt-git'
-    'movit'
-    'ffmpeg'
-    'libx264'
-    'libvpx'
-    'lame'
-    'frei0r-plugins'
-    'ladspa'
-)
-makedepends=('git' 'qt5-tools')
-provides=("${pkgname[0]%-git}")
-conflicts=("${pkgname[0]%-git}")
-
-source=("${_srcname}::git+${url}.git")
+depends=('qt6-base' 'qt6-declarative' 'qt6-imageformats' 'qt6-multimedia' 'qt6-translations'
+         'mlt' 'movit' 'ffmpeg' 'libx264' 'libvpx' 'lame' 'frei0r-plugins' 'ladspa' 'qt6-charts')
+optdepends=('swh-plugins: Several audio filters')
+makedepends=('qt6-tools' 'git' 'cmake' 'ninja' 'clang')
+source=("git+https://github.com/mltframework/shotcut.git")
 sha512sums=('SKIP')
 
-pkgver() {
-    cd "${srcdir}/${_srcname}"
-
-    printf 'r%s.%s.%s\n' \
-        "$( git rev-list --count 'HEAD' )" \
-        "$( git log --max-count='1' --pretty='format:%ct' )" \
-        "$( git rev-parse --short 'HEAD' )"
+prepare() {
+  cd shotcut
+  sed -e 's|${Qt6_LUPDATE_EXECUTABLE}|/usr/lib/qt6/bin/lupdate|' -i translations/CMakeLists.txt
 }
 
 build() {
-    cd "${srcdir}/${_srcname}"
+  cd shotcut
+  compile_version=$(echo $pkgver | sed 's/v\([0-9.]*\).*/\1/')
 
-    qmake PREFIX='/usr' \
-        QMAKE_CFLAGS_RELEASE="${CFLAGS}" \
-        QMAKE_CXXFLAGS_RELEASE="${CXXFLAGS}" \
-        SHOTCUT_VERSION="${pkgver}"
-    make
+  # https://github.com/mltframework/shotcut/issues/1275
+  export CXXFLAGS+=" -DSHOTCUT_NOUPGRADE"
 
-    cd translations
-    lrelease ./*.ts
+  cmake \
+    -Bbuild \
+    -GNinja \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DSHOTCUT_VERSION=$compile_version
+  cmake --build build --verbose
+}
+
+pkgver() {
+  cd shotcut
+  git describe --tags | sed 's/[^-]*-g/r&/;s/-/+/g'
 }
 
 package() {
-    cd "${srcdir}/${_srcname}"
+  cd shotcut
 
-    make INSTALL_ROOT="${pkgdir}" install
+  DESTDIR="${pkgdir}" cmake --install build
 }
+
+# vim:set ft=sh sw=2 sts=2 et:
