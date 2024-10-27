@@ -1,7 +1,7 @@
 pkgbase = upscaler
 	pkgdesc = Upscale and enhance images
 	pkgver = 1.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.gnome.org/World/Upscaler
 	arch = any
 	license = GPL-3.0-only
@@ -10,14 +10,14 @@ pkgbase = upscaler
 	makedepends = blueprint-compiler
 	makedepends = meson
 	depends = libadwaita
-	depends = python-cffi
 	depends = python-gobject
+	depends = python-pillow
 	depends = python-vulkan
-	depends = realesrgan-ncnn-vulkan
+	depends = upscayl-ncnn
 	depends = python
 	depends = gtk4
 	depends = pango
-	depends = gobject-introspection-runtime
+	depends = glib2
 	source = git+https://gitlab.gnome.org/World/Upscaler.git#tag=1.4.0
 	b2sums = 5dfe53bf0e8278077a97c1cec68e191b4afc68d7a833917b82f311510a8f4af307ec0da4d2e84c15d0eeb1bd60e5c2f46ed5d2a2eea78618a5fc4ad785129bbc
 
