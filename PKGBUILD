@@ -1,7 +1,7 @@
 # Maintainer: termuellinator
 
 pkgname=lug-helper
-pkgver=3.0.1
+pkgver=3.2
 pkgrel=1
 epoch=1
 pkgdesc="Star Citizen's Linux Users Group Helper Script"
@@ -17,7 +17,7 @@ source=(
     'lug-helper.desktop'
 )
 sha256sums=(
-    '1d0933108a88221214682bc680c2c47d21cad6850c3fa4ae8e7d51d9c40330f4'
+    '203bf9a5aa5b957bc80507681f8be6fdd410c004e146326fe1d57ec302d9ccc5'
     'c3cedb70924c42a47ac9ff7e6455403432c41e3320bee752e6158330158f62a0'
 )
 
