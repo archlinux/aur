@@ -18,7 +18,7 @@ conflicts=(python3-graph-tool)
 replaces=(python3-graph-tool)
 options=(!libtool)
 source=("https://downloads.skewed.de/graph-tool/graph-tool-$pkgver.tar.bz2")
-sha256sums=('9aeffaaf5528f37e994f1b882f751db0abee533f87d45658f58dd96c404ad0b4')
+sha256sums=('52a254942e75ed3070dea70e692ae101877bbef1009e43ec62fe1806a8de0154')
 prepare() {
   cd "$srcdir/graph-tool-$pkgver"
   # disable assertions which lead to runtime performance degradation
