@@ -15,7 +15,7 @@ _qt="qt-everywhere-src-${_qtver}"
 _modules="qt3d qt5compat qtactiveqt qtbase qtcharts qtcoap qtconnectivity qtdatavis3d qtdeclarative qtdoc qtgraphs qtgrpc qthttpserver qtimageformats qtlanguageserver qtlocation qtlottie qtmqtt qtmultimedia qtnetworkauth qtopcua qtpositioning qtquick3d qtquick3dphysics qtquickeffectmaker qtquicktimeline qtremoteobjects qtscxml qtsensors qtserialbus qtserialport qtshadertools qtspeech qtsvg qttools qttranslations qtvirtualkeyboard qtwayland qtwebchannel qtwebengine qtwebsockets qtwebview"
 
 pkgver=${_qtver/-/}
-pkgrel=0
+pkgrel=1
 arch=('x86_64')
 url='https://www.qt.io'
 license=('GPL3' 'LGPL3' 'FDL' 'custom')
@@ -92,15 +92,21 @@ package() {
   install -Dm644 ${srcdir}/${_qt}/LICENSES/* -t ${pkgdir}/usr/share/licenses/$pkgname
 
   # Drop QMAKE_PRL_BUILD_DIR because reference the build dir
-  find "${pkgdir}${_opt}/" -type f -name '*.prl' \
+  find "${pkgdir}/${_opt}/" -type f -name '*.prl' \
     -exec sed -i -e '/^QMAKE_PRL_BUILD_DIR/d' {} \;
+
+  find ${pkgdir}/${_opt} -type f -name 'lib*.so' -exec strip -g --strip-unneeded {} \;
+  find ${pkgdir}/${_opt} -type f -name 'lib*.a' -exec strip -g {} \;
+  find ${pkgdir}/${_opt} -type f -name '*.pri' -exec sed -i -e '/${srcdir}\/${_qt}\/build-wasm/d' {} \;
+  find ${pkgdir}/${_opt} -type f -name '*.cmake' -exec sed -i -e '/${srcdir}\/${_qt}\/build-wasm/d' {} \;
+
 
   ## emsdk
   cp -a ${srcdir}/emsdk ${pkgdir}${_opt}/
   cd ${pkgdir}${_opt}/emsdk
   rm -rf .git .circleci .gitignore
-  sed -i "s|${srcdir}|${_opt}|" .emscripten_sanity_wasm
-  sed -i "s|${srcdir}|${_opt}|" upstream/emscripten/cache/is_vanilla.txt
+  sed -i "s|${srcdir}|${_opt}|" upstream/emscripten/cache/sanity.txt
+#  sed -i "s|${srcdir}|${_opt}|" upstream/emscripten/cache/is_vanilla.txt
   sed -i "s|qt6emsdk|${pkgname}-emsdk|" emsdk.py
   find . -type d -name "__pycache__" -prune -exec rm -rf {} \;
   find . -type d -exec chmod 755 {} \;
