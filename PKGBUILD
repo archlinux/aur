@@ -6,21 +6,19 @@
 # Contributor: Alexander Rødseth <rodseth@gmail.com>
 
 pkgname=cinelerra-cv
-pkgver=2.3+380+gbbcaf2fa
+pkgver=2.3+457+gc95830fc
 pkgrel=1
 epoch=2
 pkgdesc="Professional video editing and compositing environment - Community version"
 arch=(x86_64)
 url="https://github.com/cinelerra-gg/cinelerra-cv/"
-license=(GPL)
+license=(GPL-2.0-only)
 depends=(e2fsprogs libavc1394 libiec61883 libxv
          libtiff mjpegtools fftw a52dec glu
          ffmpeg faad2 faac openexr libxft)
-makedepends=(git automake nasm mesa intltool gcc9)
-source=("git+https://github.com/cinelerra-gg/cinelerra-cv.git#commit=bbcaf2fa70d6acb0ab764e853d50e6aa04e16496")
-sha512sums=('SKIP')
-
-export CC=/usr/bin/gcc-9 CXX=/usr/bin/g++-9
+makedepends=(git automake nasm mesa intltool)
+source=("git+https://github.com/cinelerra-cv-team/cinelerra-cv.git#commit=c95830fc2e9910f484aa5e170e7af255bc77b60b")
+sha512sums=('1e37dd596ec429eca0196bd4c57779df33234e547a01d6101df97a0953fd3408a33c3b2922e08f626c309957dd4a7ab2936bc3d22416da4c576fd554176a4a48')
 
 pkgver() {
   cd "${pkgname}"
@@ -33,12 +31,14 @@ prepare() {
 }
 
 build() {
+  export CFLAGS+="  -Wno-incompatible-pointer-types"
+  export CXXFLAGS+="  -Wno-incompatible-pointer-types"
+
   cd "${pkgname}"
   # disable mmx due to improper use of registers in asm
   # - possibly a new problem since gcc 4.9
   ./configure pkg_config='pkg-config --static' \
     --prefix=/usr \
-    --with-buildinfo=git \
     --enable-opengl \
     --disable-mmx \
     --disable-esd
