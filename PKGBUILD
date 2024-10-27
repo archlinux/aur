@@ -143,6 +143,4 @@ package_gnome-shell-docs-git() {
   mv doc/* "$pkgdir"
 }
 
-# vim:set sw=2 sts=-1 et:
-
-
+# vim: ts=2 sw=2 et:
