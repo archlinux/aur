@@ -2,7 +2,7 @@
 
 pkgname=shq-git
 _pkgname=${pkgname%-git}
-pkgver=v0.1.0.r7.g05cdb4e
+pkgver=0.1.0.r7.g05cdb4e
 pkgrel=1
 pkgdesc='shell queue'
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
@@ -16,7 +16,7 @@ sha512sums=('SKIP')
 
 pkgver() {
     cd "$srcdir/$_pkgname"
-    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g' | cut -c 2-
 }
 
 prepare() {
