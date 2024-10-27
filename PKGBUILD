@@ -1,19 +1,19 @@
 # Maintainer:
 
-## useful links
+## links
 # https://github.com/winft/como
 # https://github.com/winft/theseus-ship
 # https://github.com/winft/wrapland
 
 # options
-: ${_pkgver_como:=0.2.0}
-: ${_pkgver_wlroots=0.17}
+: ${_pkgver_como:=0.3.0}
+: ${_pkgver_wlroots=} # 0.18
 
 # basic info
 _pkgname="theseus-ship"
 pkgname="$_pkgname"
-pkgver=6.1.0
-pkgrel=2
+pkgver=6.2.0
+pkgrel=1
 pkgdesc="Wayland and X11 Compositor for the KDE Plasma desktop (formerly kwinft)"
 url="https://github.com/winft/theseus-ship"
 license=("LGPL-2.1-only")
@@ -52,15 +52,12 @@ depends=(
 )
 makedepends=(
   breeze
-  clang
   extra-cmake-modules
   git
   kdeclarative
   kdoctools
   knotifications
   kxmlgui
-  lld
-  llvm
   microsoft-gsl
   ninja
   xorg-xwayland
@@ -70,15 +67,13 @@ optdepends=(
 )
 
 provides=(
-  "como=$_pkgver_como"
   "kwin=$pkgver"
   "kwinft=$pkgver"
   "theseus-ship=$pkgver"
 )
 conflicts=(
-  "como"
   "kwin"
-  #"kwinft"
+  "kwinft"
   "theseus-ship"
 )
 
@@ -92,8 +87,8 @@ source=(
   "$_pkgsrc_theseus.$_pkgext"::"https://github.com/winft/theseus-ship/archive/refs/tags/v$pkgver.$_pkgext"
 )
 sha256sums=(
-  '24a43c5cb49760eb89f0414aa03f0007441fb2b8ef934e9ccb39af01646a27a9'
-  'dd3bb31644636e4d3e855df36b4467b20312184ac2b5462594c211107f36824c'
+  '5a4c9b531bd2ccdad2a262e83f94d8cf585b6422280f5963cb5c6cc432ae031a'
+  '1f3567a4b1dd1a69046fe8669d624f4245733a72354025f127e732f4600fde18'
 )
 
 prepare() {
@@ -101,17 +96,7 @@ prepare() {
     -i "$_pkgsrc_como/como/render/backend/wlroots/texture_update.h"
 }
 
-build() {
-  export CC CXX LDFLAGS
-  CC=clang
-  CXX=clang++
-  LDFLAGS+=" -fuse-ld=lld"
-
-  local _cmake_options _wlroots_include _wlroots_library
-  _wlroots_include="$(pacman -Ql wlroots$_pkgver_wlroots | grep -m1 /usr/include/wlroots | cut -d' ' -f2)"
-  _wlroots_library="$(pacman -Ql wlroots$_pkgver_wlroots | grep -m1 /usr/lib/libwlroots | cut -d' ' -f2)"
-
-  # como
+_build_como() {
   _cmake_options=(
     -B build_como
     -S "$_pkgsrc_como"
@@ -123,6 +108,7 @@ build() {
     -Dwlroots_INCLUDE_DIRS="$_wlroots_include"
     -Dwlroots_LIBRARIES="$_wlroots_library"
     -Dwlroots_VERSION="$_pkgver_wlroots"
+    -DCMAKE_SKIP_RPATH=ON
     -DBUILD_TESTING=OFF
     -Wno-dev
   )
@@ -130,8 +116,9 @@ build() {
   cmake "${_cmake_options[@]}"
   cmake --build build_como
   DESTDIR="$srcdir/fakeinstall" cmake --install build_como
+}
 
-  # theseus-ship
+_build_theseus() {
   _cmake_options=(
     -B build_theseus
     -S "$_pkgsrc_theseus"
@@ -145,6 +132,7 @@ build() {
     -Dwlroots_VERSION="$_pkgver_wlroots"
     -Dcomo_DIR="$srcdir/fakeinstall/usr/lib/cmake/como"
     -DKWinDBusInterface_DIR="$srcdir/fakeinstall/usr/lib/cmake/KWinDBusInterface"
+    -DCMAKE_SKIP_RPATH=ON
     -DBUILD_TESTING=OFF
     -Wno-dev
   )
@@ -152,6 +140,15 @@ build() {
   cmake "${_cmake_options[@]}"
   cmake --build build_theseus
   DESTDIR="$srcdir/fakeinstall" cmake --install build_theseus
+}
+
+build() {
+  local _cmake_options _wlroots_include _wlroots_library
+  _wlroots_include="$(pacman -Ql wlroots$_pkgver_wlroots | grep -m1 /usr/include/wlroots | cut -d' ' -f2)"
+  _wlroots_library="$(pacman -Ql wlroots$_pkgver_wlroots | grep -m1 /usr/lib/libwlroots | cut -d' ' -f2)"
+
+  _build_como
+  _build_theseus
 }
 
 package() {
