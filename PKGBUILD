@@ -2,7 +2,7 @@
 # Contributor: royrocks <royrocks13@gmail.com>
 
 pkgname=tuxpaint-stamps
-pkgver=2024.01.29
+pkgver=2024.10.25
 pkgrel=1
 pkgdesc='Additional stamps for Tux Paint'
 arch=('any')
@@ -11,7 +11,7 @@ license=('GPL-2.0-only')
 optdepends=('tuxpaint')
 options=('!strip')
 source=("https://downloads.sourceforge.net/tuxpaint/$pkgname-$pkgver.tar.gz")
-sha256sums=('1b0271f6da9a5fb23adb7b494183b9de289a02966d62c4cb430da9b4120594a9')
+sha256sums=('5441a113a57cbf5e00e7a6a4ee75e1daeac3c963b3baac84fea7b168e07876a7')
 
 build() {
   make -C "$pkgname-$pkgver" PREFIX=/usr
