@@ -1,6 +1,6 @@
 pkgbase = firefox-nightly-i18n-sv-se
 	pkgdesc = Swedish language pack for Firefox Nightly
-	pkgver = 133.0a1.20241026.092643
+	pkgver = 133.0a1.20241026.210540
 	pkgrel = 1
 	url = https://www.mozilla.org/firefox/
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = firefox-nightly-i18n-sv-se
 	license = GPL
 	license = LGPL
 	depends = firefox-nightly
-	noextract = firefox-nightly-i18n-sv-SE-133.0a1.20241026.092643.xpi
-	source = firefox-nightly-i18n-sv-SE-133.0a1.20241026.092643.xpi::https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/linux-x86_64/xpi/firefox-133.0a1.sv-SE.langpack.xpi
-	sha256sums = 7d564eb457a6594b1292b67829c9496aa431b949571b8a1059747c7a38b9079e
+	noextract = firefox-nightly-i18n-sv-SE-133.0a1.20241026.210540.xpi
+	source = firefox-nightly-i18n-sv-SE-133.0a1.20241026.210540.xpi::https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/linux-x86_64/xpi/firefox-133.0a1.sv-SE.langpack.xpi
+	sha256sums = 88be73adab4369b471d9a2758aa9101482185136720e66a07a623eaef05e8a6b
 
 pkgname = firefox-nightly-i18n-sv-se
