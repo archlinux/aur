@@ -3,7 +3,7 @@
 # Contributor: Timo Kramer <fw minus aur at timokramer dot de>
 pkgname=mullvad-vpn-cli
 pkgver=2024.6
-pkgrel=1
+pkgrel=2
 pkgdesc="The Mullvad VPN CLI client"
 arch=('x86_64')
 url="https://www.mullvad.net"
@@ -15,16 +15,16 @@ conflicts=("${pkgname%-*}")
 install="${pkgname%-*}.install"
 _ab_commit=049d5d3bc0c86c29c20f2073460186a83c1d7094
 _wg_commit=b1cf09a982bba6f6c63fadc956d88e8c2326d05e
-_mn_commit=7254d70ea92e59778a99611999e4ed88a4aa821b  ## commit does not exist
+#_mn_commit=7254d70ea92e59778a99611999e4ed88a4aa821b  ## commit does not exist
+_mn_commit=b06094e81701782d28cd2312f58e0654109d04ce
 source=("git+https://github.com/mullvad/mullvadvpn-app.git#tag=$pkgver?signed"
         "git+https://github.com/mullvad/mullvadvpn-app-binaries.git#commit=${_ab_commit}?signed"
         "git+https://github.com/mullvad/wireguard-go.git#commit=${_wg_commit}?signed"
-#        "git+https://github.com/mullvad/maybenot.git#commit=${_mn_commit}"
-        "git+https://github.com/mullvad/maybenot.git")
+        "git+https://github.com/mullvad/maybenot.git#commit=${_mn_commit}")
 sha256sums=('7ad95452f0dce762cd6f4ca75867c174104adfcb3150b9dd2d3515f008322377'
             '2f7ff0d5c2c5bab63b9babc6c91d921ef9965413b0b92996be8c9fd5a9c0d862'
             'a65a9a650066e653f50871c17758ddc8a4ecfa6fbb9684035855d6f0d8a655a4'
-            'SKIP')
+            '905d2c0b697cb594babdf4e84066f3bdf666ab5d889642b002a1390f52fc7cf8')
 validpgpkeys=('225E40C8F1C8DEB7977ABF59F293063FECE2E8ED' # Linus Färnstrand <linus@mullvad.net>
               '8339C7D2942EB854E3F27CE5AEE9DECFD582E984' # David Lönnhager (code signing) <david.l@mullvad.net>
               '1D0026CBD1F1858DF8DB54DFCB87E2B919A6454C' # Oskar Nyberg <oskar@mullvad.net>
