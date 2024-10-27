@@ -1,0 +1,31 @@
+From 7264836612592c0e8fe084cee053f2fc68ecb035 Mon Sep 17 00:00:00 2001
+From: Vagrant Cascadian <vagrant@reproducible-builds.org>
+Date: Fri, 25 Feb 2022 03:00:05 +0000
+Subject: [PATCH] cmake/QtBuildInternalsExtra.cmake.in: Patch out embedded
+ build path.
+
+The original build path should not be needed in the shipped package,
+and causes reproducibility issues when built in different paths.
+
+https://reproducible-builds.org/docs/build-path/
+---
+ cmake/QtBuildInternalsExtra.cmake.in | 3 ---
+ 1 file changed, 3 deletions(-)
+
+diff --git a/cmake/QtBuildInternalsExtra.cmake.in b/cmake/QtBuildInternalsExtra.cmake.in
+index cbd70b1..23b2391 100644
+--- a/cmake/QtBuildInternalsExtra.cmake.in
++++ b/cmake/QtBuildInternalsExtra.cmake.in
+@@ -53,9 +53,6 @@ endif()
+ set(QT_WILL_INSTALL @QT_WILL_INSTALL@ CACHE BOOL
+     "Boolean indicating if doing a Qt prefix build (vs non-prefix build)." FORCE)
+ 
+-set(QT_SOURCE_TREE "@QT_SOURCE_TREE@" CACHE PATH
+-"A path to the source tree of the previously configured QtBase project." FORCE)
+-
+ # Propagate decision of building tests and examples to other repositories.
+ set(QT_BUILD_TESTS @QT_BUILD_TESTS@ CACHE BOOL "Build the testing tree.")
+ set(QT_BUILD_EXAMPLES @QT_BUILD_EXAMPLES@ CACHE BOOL "Build Qt examples")
+-- 
+2.35.1
+

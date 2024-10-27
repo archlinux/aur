@@ -35,7 +35,12 @@ groups=('qt-wasm' 'qt6-wasm')
 install=$pkgname.install
 source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/single/${_qt}.tar.xz"
         "git+https://github.com/emscripten-core/emsdk.git#tag=${_emsdk}"
-        'qtwasm_env.sh')
+        'qtwasm_env.sh'
+        '')
+# patch from https://groups.google.com/g/linux.debian.bugs.dist/c/2_3NYGo4faE?pli=1
+# https://17797152399858172281.googlegroups.com/attach/12036d62e8f2a/0001-cmake-QtBuildInternalsExtra.cmake.in-Patch-out-embed.patch?part=0.0.1&view=1&view=1&vt=ANaJVrE9sl_mZ0X1hLMbYFWN-vllz3OwGD8lcLaPm6Du2jY-KE_-YabjHUIqtXqMhx7Lk1j0x_sYmC5j4kJNK1BH32jMeEEpR3jXxh10v5-kl7hFkK22Hy0
+
+
 sha256sums=('70f1a87c6ecc6c108dec6e9389e564f8798bd48bec4c596f28d0564c1dbbc2c6'
             '7203278cf1aad49b6ecdeb43f7f95dfd470906cfd0d285c1d91387ffb465e697'
             '9dba88f1628175272c2509a7d823155ae35021a45532240c19941fa681ebb865')
@@ -43,6 +48,11 @@ sha256sums=('70f1a87c6ecc6c108dec6e9389e564f8798bd48bec4c596f28d0564c1dbbc2c6'
 options=('!strip' 'staticlibs' '!buildflags' '!makeflags')
 
 _opt=/opt/qt6-wasm
+
+prepare() {
+  
+
+}
 
 build() {
   # emsdk
@@ -95,10 +105,10 @@ package() {
   find "${pkgdir}/${_opt}/" -type f -name '*.prl' \
     -exec sed -i -e '/^QMAKE_PRL_BUILD_DIR/d' {} \;
 
-  find ${pkgdir}/${_opt} -type f -name 'lib*.so' -exec strip -g --strip-unneeded {} \;
-  find ${pkgdir}/${_opt} -type f -name 'lib*.a' -exec strip -g {} \;
-  find ${pkgdir}/${_opt} -type f -name '*.pri' -exec sed -i -e '/${srcdir}\/${_qt}\/build-wasm/d' {} \;
-  find ${pkgdir}/${_opt} -type f -name '*.cmake' -exec sed -i -e '/${srcdir}\/${_qt}\/build-wasm/d' {} \;
+  find ${pkgdir}/${_opt} -type f -name 'lib*.so' -exec emstrip --strip-debug --strip-unneeded {} \;
+  find ${pkgdir}/${_opt} -type f -name 'lib*.a' -exec emstrip --strip-debug {} \;
+  find ${pkgdir}/${_opt} -type f -name '*.pri' -exec sed -i -e '/${srcdir}${_qt}\/build-wasm/d' {} \;
+  find ${pkgdir}/${_opt} -type f -name '*.cmake' -exec sed -i -e '/${srcdir}${_qt}\/build-wasm/d' {} \;
 
 
   ## emsdk
