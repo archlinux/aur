@@ -5,7 +5,7 @@ _appdataprefix="/var/opt"
 
 pkgname=open-webui
 pkgver=0.3.35
-pkgrel=1
+pkgrel=2
 pkgdesc="Web UI and OpenAI API for various LLM runners, including Ollama"
 arch=('any')
 url="https://github.com/open-webui/open-webui"
@@ -32,7 +32,7 @@ build() {
     npm run build
 }
 
-test() {
+check() {
     cd "${pkgname}-${pkgver}"
     export NODE_OPTIONS="--max_old_space_size=4096"
     npm run test:frontend
