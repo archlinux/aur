@@ -6,10 +6,13 @@ pkgbase = python-llvmcpy-git
 	arch = any
 	license = MIT
 	makedepends = git
-	depends = python
-	depends = python-cffi
-	depends = python-pycparser
+	makedepends = python-setuptools
 	depends = llvm
+	depends = python
+	depends = python-appdirs
+	depends = python-cffi
+	depends = python-packaging
+	depends = python-pycparser
 	provides = python-llvmcpy
 	conflicts = python-llvmcpy
 	replaces = python-llvmcpy
@@ -17,4 +20,3 @@ pkgbase = python-llvmcpy-git
 	sha512sums = SKIP
 
 pkgname = python-llvmcpy-git
-
