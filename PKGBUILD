@@ -1,5 +1,5 @@
 pkgname=easyaudiosync
-pkgver=1.1.1
+pkgver=1.1.2
 pkgrel=1
 epoch=0
 pkgdesc="Audio library syncing and conversion utility"
@@ -11,17 +11,10 @@ makedepends=(cmake qt6-tools)
 provides=(easyaudiosync)
 source=(
   https://github.com/complexlogic/EasyAudioSync/releases/download/v${pkgver}/easyaudiosync-${pkgver}-source.tar.xz
-  001-fix-qt-translation.patch
 )
 sha256sums=(
-  a70e346b592429c48b4580f9be2d32bb345ab85e3d63d0eacfb3eab2001e0a97
-  cf5b19a0017f87b7d1443dfa8b813a3e379172a452aa43d09833e31cabe537c3
+  134a53d8a46c09f9f4744bcbe6f15cf07a01fd4081091fe3bf8a280a871401f5
 )
-
-prepare() {
-    cd "${srcdir}/${pkgname}-${pkgver}"
-    patch -p1 --input="${srcdir}/001-fix-qt-translation.patch"
-}
 
 build() {
     cmake -B build -S "${pkgname}-${pkgver}" \

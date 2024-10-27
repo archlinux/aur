@@ -1,6 +1,6 @@
 pkgbase = easyaudiosync
 	pkgdesc = Audio library syncing and conversion utility
-	pkgver = 1.1.1
+	pkgver = 1.1.2
 	pkgrel = 1
 	epoch = 0
 	url = https://github.com/complexlogic/EasyAudioSync
@@ -18,9 +18,7 @@ pkgbase = easyaudiosync
 	depends = spdlog
 	depends = fmt
 	provides = easyaudiosync
-	source = https://github.com/complexlogic/EasyAudioSync/releases/download/v1.1.1/easyaudiosync-1.1.1-source.tar.xz
-	source = 001-fix-qt-translation.patch
-	sha256sums = a70e346b592429c48b4580f9be2d32bb345ab85e3d63d0eacfb3eab2001e0a97
-	sha256sums = cf5b19a0017f87b7d1443dfa8b813a3e379172a452aa43d09833e31cabe537c3
+	source = https://github.com/complexlogic/EasyAudioSync/releases/download/v1.1.2/easyaudiosync-1.1.2-source.tar.xz
+	sha256sums = 134a53d8a46c09f9f4744bcbe6f15cf07a01fd4081091fe3bf8a280a871401f5
 
 pkgname = easyaudiosync
