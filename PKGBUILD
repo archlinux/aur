@@ -21,6 +21,7 @@ sha256sums=('b52bed95de6b3f435ba9d2df8016e82282f0ea2ecccc1d8fecab55d70d403f70')
 prepare() {
     cd "${pkgname}-${pkgver}"
     sed -i -E "s|<Version>.+</Version>|<Version>${pkgver}</Version>|" src/ImeWlConverterCmd/ImeWlConverterCmd.csproj
+    sed -i "s|dotnet ImeWlConverterCmd.dll|${pkgname}|g" src/ImeWlConverterCmd/Program.cs
 }
 
 build() {
@@ -40,7 +41,8 @@ package() {
 
     cd "${pkgname}-${pkgver}"
     install -Dm644 README.md *.txt  -t "${pkgdir}/usr/share/doc/${pkgname}"
-    install -dm755 "${pkgdir}/usr/bin" "${pkgdir}/usr/lib"
-    cp --preserve=mode -r "builddir"   "${pkgdir}/usr/lib/${pkgname}"
-    ln -sf "${_binary}"                "${pkgdir}/usr/bin/${pkgname}"
+    install -Dm644 builddir/*       -t "${pkgdir}/usr/lib/${pkgname}"
+    install -dm755                     "${pkgdir}/usr/bin"
+    ln -sf  "${_binary}"               "${pkgdir}/usr/bin/${pkgname}"
+    chmod 755 "${pkgdir}/${_binary}"
 }
