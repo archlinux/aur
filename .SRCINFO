@@ -52,4 +52,3 @@ pkgbase = zdoom
 	makedepends_i686 = nasm
 
 pkgname = zdoom
-

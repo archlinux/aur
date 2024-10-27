@@ -84,3 +84,5 @@ package() {
     desktop-file-install "$srcdir"/zdoom.desktop --dir="$pkgdir"/usr/share/applications
     install zdoom.xpm -D -m 644 "$pkgdir"/usr/share/icons/hicolor/48x48/apps/zdoom.xpm
 }
+
+# vim: ts=2 sw=2 et:
