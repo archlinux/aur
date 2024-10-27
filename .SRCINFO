@@ -1,26 +1,23 @@
 pkgbase = kdisplay
 	pkgdesc = Display management app and daemon (kwinft)
-	pkgver = 6.1.0
+	pkgver = 6.2.0
 	pkgrel = 1
 	url = https://github.com/winft/kdisplay
 	arch = x86_64
 	arch = aarch64
 	license = LGPL-2.1-only
-	makedepends = clang
 	makedepends = extra-cmake-modules
 	makedepends = git
-	makedepends = lld
-	makedepends = llvm
 	makedepends = ninja
+	depends = disman
 	depends = kdeclarative
 	depends = layer-shell-qt
 	depends = libplasma
 	depends = plasma5support
 	depends = qt6-sensors
-	depends = disman
-	provides = kscreen=6.1.0
+	provides = kscreen=6.2.0
 	conflicts = kscreen
-	source = kdisplay-6.1.0.tar.gz::https://github.com/winft/kdisplay/archive/refs/tags/v6.1.0.tar.gz
-	sha256sums = e118e8240ee0f1e2e212ddf123b89e46169f293f8c37c5ec06b1556425ab8032
+	source = kdisplay-6.2.0.tar.gz::https://github.com/winft/kdisplay/archive/refs/tags/v6.2.0.tar.gz
+	sha256sums = 27831dab267a565200be3045acd1276dac5191149c9e67e2e8d8295a7baa43ca
 
 pkgname = kdisplay

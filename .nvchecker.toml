@@ -1,0 +1,5 @@
+[kdisplay]
+source = "github"
+github = "winft/kdisplay"
+prefix = "v"
+use_latest_release = "true"
