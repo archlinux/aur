@@ -3,16 +3,26 @@
 
 pkgname=ocaml-extlib
 pkgver=1.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Extends the OCaml standard library"
 arch=('i686' 'x86_64' 'armv7h')
 url="https://github.com/ygrek/ocaml-extlib"
 license=('LGPL')
 depends=('ocaml')
 makedepends=('ocaml-findlib' 'cppo')
-source=("$pkgname-$pkgver.tar.gz"::"https://github.com/ygrek/ocaml-extlib/archive/${pkgver}.tar.gz")
+source=(
+  "$pkgname-$pkgver.tar.gz"::"https://github.com/ygrek/ocaml-extlib/archive/${pkgver}.tar.gz"
+  "0001-Fix-and-improve-documentation-77.patch"
+)
 options=('staticlibs')
-sha256sums=('6d7ab4ff5bbbc228496ba0311e1899a8ca1096699e438d01beb2c67ae1135c5d')
+sha256sums=('6d7ab4ff5bbbc228496ba0311e1899a8ca1096699e438d01beb2c67ae1135c5d'
+            '2e27fb7f3a4b5c5ca666aafd514ac926fbcd8ed5eb52aaa54eea07917f82c187')
+
+prepare() {
+  cd ocaml-extlib-${pkgver}
+
+  patch -p1 < "${srcdir}/0001-Fix-and-improve-documentation-77.patch"
+}
 
 build() {
   cd ocaml-extlib-${pkgver}

@@ -1,0 +1,789 @@
+From 4c54a4a54d4f4b1efadb1ae75a2ef9215ac6dbf2 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Antonin=20D=C3=A9cimo?= <antonin.decimo@gmail.com>
+Date: Tue, 15 Oct 2024 22:16:15 +0200
+Subject: [PATCH] Fix and improve documentation (#77)
+
+---
+ README.md          | 28 +++++++++++++-------------
+ src/IO.mli         | 16 +++++++--------
+ src/dllist.mli     | 10 +++++-----
+ src/dynArray.ml    |  2 +-
+ src/dynArray.mli   | 18 ++++++++---------
+ src/enum.mli       | 10 +++++-----
+ src/extArray.mli   | 12 ++++++------
+ src/extHashtbl.mli |  6 +++---
+ src/extLib.ml      |  2 +-
+ src/extList.mli    | 49 +++++++++++++++++++++++-----------------------
+ src/extString.mli  |  6 +++---
+ src/optParse.ml    |  2 +-
+ src/optParse.mli   | 34 ++++++++++++++++----------------
+ src/option.mli     |  4 ++--
+ src/refList.mli    |  2 +-
+ 15 files changed, 100 insertions(+), 101 deletions(-)
+
+diff --git a/README.md b/README.md
+index 1f15ae6..ca1e296 100644
+--- a/README.md
++++ b/README.md
+@@ -5,20 +5,20 @@ OCaml Extended standard Library - ExtLib
+ [![Build](https://github.com/ygrek/ocaml-extlib/actions/workflows/workflow.yml/badge.svg)](https://github.com/ygrek/ocaml-extlib/actions/workflows/workflow.yml)
+ 
+ ```
+- * This library is free software; you can redistribute it and/or
+- * modify it under the terms of the GNU Lesser General Public
+- * License as published by the Free Software Foundation; either
+- * version 2.1 of the License, or (at your option) any later version,,
+- * with the special exception on linking described in file LICENSE.
+- *
+- * This library is distributed in the hope that it will be useful,
+- * but WITHOUT ANY WARRANTY; without even the implied warranty of
+- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+- * Lesser General Public License for more details.
+- *
+- * You should have received a copy of the GNU Lesser General Public
+- * License along with this library; if not, write to the Free Software
+- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
++This library is free software; you can redistribute it and/or
++modify it under the terms of the GNU Lesser General Public
++License as published by the Free Software Foundation; either
++version 2.1 of the License, or (at your option) any later version,,
++with the special exception on linking described in file LICENSE.
++
++This library is distributed in the hope that it will be useful,
++but WITHOUT ANY WARRANTY; without even the implied warranty of
++MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
++Lesser General Public License for more details.
++
++You should have received a copy of the GNU Lesser General Public
++License along with this library; if not, write to the Free Software
++Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+ ```
+ 
+ What is ExtLib ?
+diff --git a/src/IO.mli b/src/IO.mli
+index 53e2cc4..50d9cbf 100644
+--- a/src/IO.mli
++++ b/src/IO.mli
+@@ -43,7 +43,7 @@ exception Input_closed
+ exception Output_closed
+ (** This exception is raised when reading on a closed output. *)
+ 
+-(** {6 Standard API} *)
++(** {1 Standard API} *)
+ 
+ val read : input -> char
+ (** Read a single char from an input or raise [No_more_input] if
+@@ -75,7 +75,7 @@ val input : input -> Bytes.t -> int -> int -> int
+ val really_input : input -> Bytes.t -> int -> int -> int
+ (** [really_input i b p l] reads exactly [l] characters from the given input,
+   storing them in the buffer [b], starting at position [p]. For consistency with
+-  {!IO.input} it returns [l]. Raises [No_more_input] if at [l] characters are
++  {!val:IO.input} it returns [l]. Raises [No_more_input] if at [l] characters are
+   not available. Raises [Invalid_argument] if [p] and [l] do not designate a
+   valid subsequence of [b]. *)
+ 
+@@ -99,7 +99,7 @@ val output : 'a output -> Bytes.t -> int -> int -> int
+ val really_output : 'a output -> Bytes.t -> int -> int -> int
+ (** [really_output o b p l] writes exactly [l] characters from byte sequence [b] onto
+   the the output, starting with the character at offset [p]. For consistency with
+-  {!IO.output} it returns [l]. Raises [Invalid_argument] if [p] and [l] do not
++  {!val:IO.output} it returns [l]. Raises [Invalid_argument] if [p] and [l] do not
+   designate a valid subsequence of [b]. *)
+ 
+ val flush : 'a output -> unit
+@@ -109,7 +109,7 @@ val close_out : 'a output -> 'a
+ (** Close the output and return its accumulator data.
+   It can no longer be written. *)
+ 
+-(** {6 Creation of IO Inputs/Outputs} *)
++(** {1 Creation of IO Inputs/Outputs} *)
+ 
+ val input_string : string -> input
+ (** Create an input that will read from a string. *)
+@@ -155,7 +155,7 @@ val create_out :
+   flush:(unit -> unit) -> close:(unit -> 'a) -> 'a output
+ (** Fully create an output by giving all the needed functions. *)
+ 
+-(** {6 Utilities} *)
++(** {1 Utilities} *)
+ 
+ val scanf : input -> ('a, 'b, 'c, 'd) Scanf.scanner
+ (** The scanf function works for any input. *)
+@@ -182,7 +182,7 @@ external cast_output : 'a output -> unit output = "%identity"
+ (** You can safely transform any output to an unit output in a safe way
+   by using this function. *)
+ 
+-(** {6 Binary files API}
++(** {1 Binary files API}
+ 
+   Here is some API useful for working with binary files, in particular
+   binary files generated by C applications. By default, encoding of
+@@ -298,7 +298,7 @@ sig
+ 
+ end
+ 
+-(** {6 Bits API}
++(** {1 Bits API}
+ 
+   This enable you to read and write from an IO bit-by-bit or several bits
+   at the same time.
+@@ -328,7 +328,7 @@ val flush_bits : out_bits -> unit
+ val drop_bits : in_bits -> unit
+ (** Drop up to 7 buffered bits and restart to next input character. *)
+ 
+-(** {6 Generic IO Object Wrappers}
++(** {1 Generic IO Object Wrappers}
+ 
+   Theses OO Wrappers have been written to provide easy support of ExtLib
+   IO by external librairies. If you want your library to support ExtLib
+diff --git a/src/dllist.mli b/src/dllist.mli
+index 0e0990e..f4a45f9 100644
+--- a/src/dllist.mli
++++ b/src/dllist.mli
+@@ -29,7 +29,7 @@ type 'a node_t (* abstract *)
+ 
+ exception Empty
+ 
+-(** {6 node functions } *)
++(** {1 node functions } *)
+ 
+ (** Creates a node.  This is an O(1) operation. *)
+ val create : 'a -> 'a node_t
+@@ -105,7 +105,7 @@ val set : 'a node_t -> 'a -> unit
+ (** Given a node, get the next element in the list after the node.  
+ 
+     The list is circular, so the last node of the list returns the first 
+-    node of the list as it's next node.
++    node of the list as its next node.
+     
+     This is an O(1) operation.
+ *)
+@@ -114,7 +114,7 @@ val next : 'a node_t -> 'a node_t
+ (** Given a node, get the previous element in the list before the node.
+  
+     The list is circular, so the first node of the list returns the
+-    last element of the list as it's previous node.
++    last element of the list as its previous node.
+ 
+     This is an O(1) operation.
+ *)
+@@ -150,7 +150,7 @@ val fold_right : ('a -> 'b -> 'b) -> 'a node_t -> 'b -> 'b
+ val map : ('a -> 'b) -> 'a node_t -> 'b node_t
+ 
+ 
+-(** {6 list conversion } *)
++(** {1 list conversion } *)
+ 
+ (** Converts a dllist to a normal list.  This is an O(N) operation. *)
+ val to_list : 'a node_t -> 'a list
+@@ -161,7 +161,7 @@ val to_list : 'a node_t -> 'a list
+ val of_list : 'a list -> 'a node_t
+ 
+ 
+-(** {6 enums } *)
++(** {1 enums } *)
+ 
+ (** Create an enum of the list.
+     Note that modifying the list while the enum exists will have undefined
+diff --git a/src/dynArray.ml b/src/dynArray.ml
+index 02c3f49..28e1eae 100644
+--- a/src/dynArray.ml
++++ b/src/dynArray.ml
+@@ -1,5 +1,5 @@
+ (*
+- * DynArray - Resizeable Ocaml arrays
++ * DynArray - Resizeable OCaml arrays
+  * Copyright (C) 2003 Brian Hurt
+  * Copyright (C) 2003 Nicolas Cannasse
+  *
+diff --git a/src/dynArray.mli b/src/dynArray.mli
+index 31996e0..2acba0e 100644
+--- a/src/dynArray.mli
++++ b/src/dynArray.mli
+@@ -1,5 +1,5 @@
+ (*
+- * DynArray - Resizeable Ocaml arrays
++ * DynArray - Resizeable OCaml arrays
+  * Copyright (C) 2003 Brian Hurt
+  * Copyright (C) 2003 Nicolas Cannasse
+  *
+@@ -35,7 +35,7 @@ exception Invalid_arg of int * string * string
+   contains the parameter name that made the operation fail.
+ *)
+ 
+-(** {6 Array creation} *)
++(** {1 Array creation} *)
+ 
+ val create : unit -> 'a t
+ (** [create()] returns a new empty dynamic array. *)
+@@ -48,7 +48,7 @@ val init : int -> (int -> 'a) -> 'a t
+ (** [init n f] returns an array of [n] elements filled with values
+   returned by [f 0 , f 1, ... f (n-1)]. *)
+ 
+-(** {6 Array manipulation functions} *)
++(** {1 Array manipulation functions} *)
+ 
+ val empty : 'a t -> bool
+ (** Return true if the number of elements in the array is 0. *)
+@@ -104,7 +104,7 @@ val blit : 'a t -> int -> 'a t -> int -> int -> unit
+ val compact : 'a t -> unit
+ (** [compact darr] ensures that the space allocated by the array is minimal.*)
+ 
+-(** {6 Array copy and conversion} *)
++(** {1 Array copy and conversion} *)
+ 
+ val to_list : 'a t -> 'a list
+ (** [to_list darr] returns the elements of [darr] in order as a list. *)
+@@ -135,7 +135,7 @@ val sub : 'a t -> int -> int -> 'a t
+ (** [sub darr start len] returns an array holding the subset of [len]
+   elements from [darr] starting with the element at index [idx]. *)
+ 
+-(** {6 Array functional support} *)
++(** {1 Array functional support} *)
+ 
+ val iter : ('a -> unit) -> 'a t -> unit
+ (** [iter f darr] calls the function [f] on every element of [darr].  It
+@@ -172,7 +172,7 @@ val index_of : ('a -> bool) -> 'a t -> int
+ 
+ val filter : ('a -> bool) -> 'a t -> unit
+ 
+-(** {6 Array resizers} *)
++(** {1 Array resizers} *)
+ 
+ type resizer_t = currslots:int -> oldlength:int -> newlength:int -> int
+ (** The type of a resizer function.
+@@ -260,11 +260,11 @@ val step_resizer : int -> resizer_t
+ 
+   The resizer returned by [step_resizer step] returns the smallest
+   multiple of [step] larger than [newlength] if [currslots] is less
+-  then [newlength]-[step] or greater than [newlength].
++  then [newlength-step] or greater than [newlength].
+ 
+   For example, to make an darray with a step of 10, a length
+   of len, and a null of null, you would do:
+-  [make] ~resizer:([step_resizer] 10) len null
++  [make ~resizer:(step_resizer 10) len null]
+ *)
+ 
+ val conservative_exponential_resizer : resizer_t
+@@ -275,7 +275,7 @@ val conservative_exponential_resizer : resizer_t
+   than that, it acts like [exponential_resizer].
+ *)
+ 
+-(** {6 Unsafe operations} **)
++(** {1 Unsafe operations} *)
+ 
+ val unsafe_get : 'a t -> int -> 'a
+ val unsafe_set : 'a t -> int -> 'a -> unit
+diff --git a/src/enum.mli b/src/enum.mli
+index 1f0fd84..0ce200a 100644
+--- a/src/enum.mli
++++ b/src/enum.mli
+@@ -30,7 +30,7 @@
+ 
+ type 'a t
+ 
+-(** {6 Final functions}
++(** {1 Final functions}
+ 
+  These functions consume the enumeration until
+  it ends or an exception is raised by the first
+@@ -66,7 +66,7 @@ val foldi : (int -> 'a -> 'b -> 'b) -> 'b -> 'a t -> 'b
+ 
+ val fold2i : (int -> 'a -> 'b -> 'c -> 'c) -> 'c -> 'a t -> 'b t -> 'c
+ 
+-(** {6 Useful functions} *)
++(** {1 Useful functions} *)
+ 
+ val find : ('a -> bool) -> 'a t -> 'a
+ (** [find f e] returns the first element [x] of [e] such that [f x] returns
+@@ -110,7 +110,7 @@ val force : 'a t -> unit
+   of enumerated elements is constructed and [e] will now enumerate over
+   that data structure. *)
+ 
+-(** {6 Lazy constructors}
++(** {1 Lazy constructors}
+ 
+  These functions are lazy which means that they will create a new modified
+  enumeration without actually enumerating any element until they are asked
+@@ -143,7 +143,7 @@ val concat : 'a t t -> 'a t
+ (** [concat e] returns an enumeration over all elements of all enumerations
+  of [e]. *)
+ 
+-(** {6 Constructors} 
++(** {1 Constructors} 
+ 
+  In this section the word {i shall} denotes a semantic
+  requirement. The correct operation
+@@ -188,7 +188,7 @@ val init : int -> (int -> 'a) -> 'a t
+ (** [init n f] creates a new enumeration over elements
+   [f 0, f 1, ..., f (n-1)] *)
+ 
+-(** {6 Counting} *)
++(** {1 Counting} *)
+ 
+ val count : 'a t -> int
+ (** [count e] returns the number of remaining elements in [e] without
+diff --git a/src/extArray.mli b/src/extArray.mli
+index e43f37f..971ebb1 100644
+--- a/src/extArray.mli
++++ b/src/extArray.mli
+@@ -30,7 +30,7 @@ sig
+ 
+   type 'a t = 'a array
+ 
+-  (** {6 New functions} *)
++  (** {1 New functions} *)
+   val rev : 'a array -> 'a array
+     (** Array reversal. *)
+ 
+@@ -100,7 +100,7 @@ sig
+   elements of [a] that do not satisfy [p].
+   The order of the elements in the input array is preserved. *)
+ 
+-  (** {6 Enumerations} *)
++  (** {1 Enumerations} *)
+ 
+   val enum : 'a array -> 'a Enum.t
+     (** Returns an enumeration of the elements of an array. *)
+@@ -108,7 +108,7 @@ sig
+   val of_enum : 'a Enum.t -> 'a array
+     (** Build an array from an enumeration. *)
+ 
+-  (** {6 Compatibility functions} *)
++  (** {1 Compatibility functions} *)
+ 
+   (** These functions are reimplemented in extlib when they are missing from the stdlib *)
+ 
+@@ -142,10 +142,10 @@ sig
+   (** Same as {!Array.exists}, but for a two-argument predicate.
+      @raise Invalid_argument if the two arrays have different lengths. *)
+ 
+-  (** {6 Old functions} *)
++  (** {1 Old functions} *)
+ 
+-  (** These functions are already part of the Ocaml standard library
+-      and have not been modified. Please refer to the Ocaml Manual for
++  (** These functions are already part of the OCaml standard library
++      and have not been modified. Please refer to the OCaml Manual for
+       documentation. *)
+ 
+   external length : 'a array -> int = "%array_length"
+diff --git a/src/extHashtbl.mli b/src/extHashtbl.mli
+index a093bd3..f2023bc 100644
+--- a/src/extHashtbl.mli
++++ b/src/extHashtbl.mli
+@@ -27,7 +27,7 @@ module Hashtbl :
+   type ('a,'b) t = ('a,'b) Hashtbl.t
+   (** The type of a hashtable. *)
+ 
+-  (** {6 New Functions} *)
++  (** {1 New Functions} *)
+ 
+   val exists : ('a,'b) t -> 'a -> bool
+   (** [exists h k] returns true is at least one item with key [k] is
+@@ -90,9 +90,9 @@ module Hashtbl :
+   val filter_map_inplace : ('a -> 'b -> 'b option) -> ('a, 'b) t -> unit
+ #endif
+ 
+-  (** {6 Older Functions} *)
++  (** {1 Older Functions} *)
+ 
+-  (** Please refer to the Ocaml Manual for documentation of these
++  (** Please refer to the OCaml Manual for documentation of these
+     functions. *)
+ 
+   val create : ?random:bool -> int -> ('a, 'b) t
+diff --git a/src/extLib.ml b/src/extLib.ml
+index 92c02d6..aeefffd 100644
+--- a/src/extLib.ml
++++ b/src/extLib.ml
+@@ -23,7 +23,7 @@
+   
+   Since ExtLib is provided for namespace convenience for
+   users who wants to keep the usage of the original
+-  Ocaml Standard Library, no MLI CMI nor documentation will
++  OCaml Standard Library, no MLI CMI nor documentation will
+   be provided for this module.
+ 
+   Users can simply do an "open ExtLib" to import all Ext*
+diff --git a/src/extList.mli b/src/extList.mli
+index 9d1dd20..daa2158 100644
+--- a/src/extList.mli
++++ b/src/extList.mli
+@@ -36,19 +36,18 @@ module List :
+     = [] | (::) of 'a * 'a list
+ #endif
+ 
+-  (** {6 New functions} *)
++  (** {1 New functions} *)
+ 
+   val init : int -> (int -> 'a) -> 'a list
+   (** Similar to [Array.init], [init n f] returns the list containing
+-   the results of (f 0),(f 1).... (f (n-1)).
+-   Raise [Invalid_arg "ExtList.init"] if n < 0.
+-   Uses stdlib implementation in OCaml 4.06.0 and newer.
++   the results of [(f 0); (f 1); ...; (f (n-1))].
++   Raise [Invalid_arg "ExtList.init"] if [n < 0].
++   Uses {!Stdlib.List.init} implementation since OCaml 4.06.
+   *)
+ 
+   val make : int -> 'a -> 'a list
+-    (** Similar to [String.make], [make n x] returns a
+-      * list containing [n] elements [x].
+-          *)
++  (** Similar to [String.make], [make n x] returns a list containing
++   [n] elements [x]. *)
+ 
+   val first : 'a list -> 'a
+   (** Returns the first element of the list, or raise [Empty_list] if
+@@ -59,21 +58,21 @@ module List :
+    the list is empty. This function takes linear time. *)
+ 
+   val iteri : (int -> 'a -> unit) -> 'a list -> unit
+-  (** [iteri f l] will call [(f 0 a0);(f 1 a1) ... (f n an)] where
++  (** [iteri f l] calls [(f 0 a0); (f 1 a1); ...; (f n an)] where
+    [a0..an] are the elements of the list [l]. *)
+ 
+   val mapi : (int -> 'a -> 'b) -> 'a list -> 'b list
+-  (** [mapi f l] will build the list containing
+-   [(f 0 a0);(f 1 a1) ... (f n an)] where [a0..an] are the elements of
++  (** [mapi f l] builds the list containing
++   [(f 0 a0); (f 1 a1) ... (f n an)] where [a0..an] are the elements of
+    the list [l]. *)
+ 
+   val rfind : ('a -> bool) -> 'a list -> 'a
+   (** [rfind p l] returns the last element [x] of [l] such as [p x] returns
+-   [true] or raises [Not_found] if such element as not been found. *)
++   [true] or raises [Not_found] if such element has not been found. *)
+ 
+   val find_exc : ('a -> bool) -> exn -> 'a list -> 'a
+   (** [find_exc p e l] returns the first element of [l] such as [p x]
+-   returns [true] or raises [e] if such element as not been found. *)
++   returns [true] or raises [e] if such element has not been found. *)
+ 
+   val findi : (int -> 'a -> bool) -> 'a list -> (int * 'a)
+   (** [findi p e l] returns the first element [ai] of [l] along with its
+@@ -82,10 +81,10 @@ module List :
+ 
+   val unique : ?cmp:('a -> 'a -> bool) -> 'a list -> 'a list
+   (** [unique cmp l] returns the list [l] without any duplicate element.
+-   Default comparator ( = ) is used if no comparison function specified. *)
++   Default comparator [( = )] is used if no comparison function specified. *)
+ 
+   val filter_map : ('a -> 'b option) -> 'a list -> 'b list
+-  (** [filter_map f l] call [(f a0) (f a1).... (f an)] where [a0..an] are
++  (** [filter_map f l] calls [(f a0); (f a1); ...; (f an)] where [a0..an] are
+    the elements of [l]. It returns the list of elements [bi] such as
+    [f ai = Some bi] (when [f] returns [None], the corresponding element of
+    [l] is discarded). *)
+@@ -100,10 +99,10 @@ module List :
+   *)
+ 
+   val find_map_opt : ('a -> 'b option) -> 'a list -> 'b option
+-  (** same as find_map_exn but returning option *)
++  (** same as {!find_map_exn} but returning [option] *)
+ 
+   val find_map : ('a -> 'b option) -> 'a list -> 'b option
+-  (** same as find_map_opt *)
++  (** same as {!find_map_opt} *)
+ 
+   val split_nth : int -> 'a list -> 'a list * 'a list
+   (** [split_nth n l] returns two lists [l1] and [l2], [l1] containing the
+@@ -149,7 +148,7 @@ module List :
+     (** [dropwhile f xs] returns the list [xs] with the first
+         elements satisfying the predicate [f] dropped. *)
+ 
+-  (** {6 Enum functions} *)
++  (** {1 Enum functions} *)
+ 
+   (** Enumerations are important in ExtLib, they are a good way to work with
+    abstract enumeration of elements, regardless if they are located in a list,
+@@ -161,7 +160,7 @@ module List :
+   val of_enum : 'a Enum.t -> 'a list
+   (** Build a list from an enumeration. *)
+ 
+-  (** {6 Compatibility functions} *)
++  (** {1 Compatibility functions} *)
+ 
+   val cons : 'a -> 'a list -> 'a list
+ 
+@@ -174,7 +173,7 @@ module List :
+   val compare_lengths : 'a list -> 'b list -> int
+   val compare_length_with : 'a list -> int -> int
+ 
+-  (** {6 Modified functions} *)
++  (** {1 Modified functions} *)
+ 
+   (** Some minor modifications have been made to the specification of some
+    functions, especially concerning exceptions raised. *)
+@@ -209,7 +208,7 @@ module List :
+   val combine : 'a list -> 'b list -> ('a * 'b) list
+ 
+ 
+-  (** {6 Improved functions} *)
++  (** {1 Improved functions} *)
+ 
+   (** The following functions have the same behavior as the [List]
+     module ones but are tail-recursive. That means they will not
+@@ -235,10 +234,10 @@ module List :
+   val find_all : ('a -> bool) -> 'a list -> 'a list
+   val partition : ('a -> bool) -> 'a list -> 'a list * 'a list
+ 
+-  (** {6 Older functions} *)
++  (** {1 Older functions} *)
+ 
+-  (** These functions are already part of the Ocaml standard library
+-    and have not been modified. Please refer to the Ocaml Manual for
++  (** These functions are already part of the OCaml standard library
++    and have not been modified. Please refer to the OCaml Manual for
+     documentation. *)
+ 
+   val length : 'a list -> int
+@@ -318,7 +317,7 @@ val compare : ('a -> 'a -> int) -> 'a list -> 'a list -> int
+     different lengths.
+ *)
+ 
+-  (** {6 Exceptions} *)
++  (** {1 Exceptions} *)
+ 
+   exception Empty_list
+   (** [Empty_list] is raised when an operation applied on an empty list
+@@ -336,4 +335,4 @@ val compare : ('a -> 'a -> int) -> 'a list -> 'a list -> int
+ end
+ 
+ val ( @ ) : 'a list -> 'a list -> 'a list
+-(** the new implementation for ( @ ) operator, see [List.append]. *)
++(** the new implementation for [( @ )] operator, see {!List.append}. *)
+diff --git a/src/extString.mli b/src/extString.mli
+index 1206b4c..a8e3e56 100644
+--- a/src/extString.mli
++++ b/src/extString.mli
+@@ -28,7 +28,7 @@ module String :
+   val empty: string
+   (** The empty string. *)
+ 
+-  (** {6 New Functions} *)
++  (** {1 New Functions} *)
+ 
+   val init : int -> (int -> char) -> string
+   (** [init l f] returns the string of length [l] with the chars
+@@ -165,7 +165,7 @@ module String :
+       (Note that it is different from {!strip} defaults). *)
+ 
+ 
+-  (** {6 Compatibility Functions} *)
++  (** {1 Compatibility Functions} *)
+ 
+   val uppercase_ascii : string -> string
+   val lowercase_ascii : string -> string
+@@ -175,7 +175,7 @@ module String :
+   val split_on_char : char -> string -> string list
+ 
+ 
+-  (** {6 Older Functions} *)
++  (** {1 Older Functions} *)
+ 
+   (** Please refer to the OCaml Manual for documentation of these
+       functions. *)
+diff --git a/src/optParse.ml b/src/optParse.ml
+index 4ec1274..c10621c 100644
+--- a/src/optParse.ml
++++ b/src/optParse.ml
+@@ -3,7 +3,7 @@
+  * Copyright (C) 2004 Bardur Arantsson
+  *
+  * Heavily influenced by the optparse.py module from the Python
+- * standard library, but with lots of adaptation to the 'Ocaml Way'
++ * standard library, but with lots of adaptation to the 'OCaml Way'
+  *
+  *
+  * This library is free software; you can redistribute it and/or
+diff --git a/src/optParse.mli b/src/optParse.mli
+index 00a45a2..8b3852b 100644
+--- a/src/optParse.mli
++++ b/src/optParse.mli
+@@ -3,7 +3,7 @@
+  * Copyright (C) 2004 Bardur Arantsson
+  *
+  * Heavily influenced by the optparse.py module from the Python
+- * standard library, but with lots of adaptation to the 'Ocaml Way'
++ * standard library, but with lots of adaptation to the 'OCaml Way'
+  *
+  *
+  * This library is free software; you can redistribute it and/or
+@@ -30,7 +30,7 @@
+ module Opt :
+   sig
+ 
+-    (** {6 Exceptions} *)
++    (** {1 Exceptions} *)
+ 
+     exception No_value
+     (** [No_value] gets raised by {!OptParse.Opt.get} when an option
+@@ -52,7 +52,7 @@ module Opt :
+       attempt to catch it. *)
+ 
+ 
+-    (** {6 Types} *)
++    (** {1 Types} *)
+ 
+     type 'a t = {
+       option_set : string -> string list -> unit;
+@@ -93,7 +93,7 @@ module Opt :
+     *)
+ 
+ 
+-    (** {6 Option value retrieval} *)
++    (** {1 Option value retrieval} *)
+ 
+     val get : 'a t -> 'a
+     (** Get the value of an option.
+@@ -126,7 +126,7 @@ module Opt :
+ 
+ 
+ 
+-    (** {6 Option creation} *)
++    (** {1 Option creation} *)
+ 
+     val value_option :
+       string -> 'a option -> (string -> 'a) -> (exn -> string -> string) ->
+@@ -171,7 +171,7 @@ module Opt :
+ module StdOpt :
+   sig
+ 
+-    (** {6 Flag options} *)
++    (** {1 Flag options} *)
+ 
+     val store_const : ?default: 'a -> 'a -> 'a Opt.t
+     (** [store_const ?default const] returns a flag option which
+@@ -208,7 +208,7 @@ module StdOpt :
+     (** Exactly identical to [count_option ~dest:dest ~increment:(-1) ()]. *)
+ 
+ 
+-    (** {6 Value options} *)
++    (** {1 Value options} *)
+ 
+     val int_option : ?default: int -> ?metavar: string -> unit -> int Opt.t
+     (** [int_option ?default ?metavar ()] returns an option which takes
+@@ -225,7 +225,7 @@ module StdOpt :
+     (** See {!OptParse.StdOpt.int_option}. *)
+ 
+ 
+-    (** {6 Callback options} *)
++    (** {1 Callback options} *)
+ 
+     val int_callback : ?metavar: string -> (int -> unit) -> unit Opt.t
+     (** [int_callback ?metavar f] returns an option which takes a single
+@@ -239,7 +239,7 @@ module StdOpt :
+     (** See {!OptParse.StdOpt.int_callback}. *)
+ 
+ 
+-    (** {6 Special options} *)
++    (** {1 Special options} *)
+ 
+     val help_option : unit -> 'a Opt.t
+     (** [help_option ()] returns the standard help option which
+@@ -276,7 +276,7 @@ module Formatter :
+       string supplied by the user.  *)
+ 
+ 
+-    (** {6 Standard formatters} *)
++    (** {1 Standard formatters} *)
+ 
+ 
+     val indented_formatter :
+@@ -310,7 +310,7 @@ module Formatter :
+       the options. *)
+ 
+ 
+-    (** {6 Low-level formatting} *)
++    (** {1 Low-level formatting} *)
+ 
+ 
+     val wrap : ?initial_indent: int -> ?subsequent_indent: int ->
+@@ -342,7 +342,7 @@ module Formatter :
+ module OptParser :
+   sig
+ 
+-    (** {6 Exceptions} *)
++    (** {1 Exceptions} *)
+ 
+ 
+     exception Option_conflict of string
+@@ -353,7 +353,7 @@ module OptParser :
+       conflicting option names. *)
+ 
+ 
+-    (** {6 Types} *)
++    (** {1 Types} *)
+ 
+ 
+     type t
+@@ -363,7 +363,7 @@ module OptParser :
+     (** The type of an option group. *)
+ 
+ 
+-    (** {6 Option parser creation} *)
++    (** {1 Option parser creation} *)
+ 
+     val make : ?usage: string -> ?status: int -> ?description: string -> ?version: string ->
+       ?suppress_usage: bool -> ?suppress_help: bool -> ?prog: string ->
+@@ -390,7 +390,7 @@ module OptParser :
+       causes [version] to be printed to the standard output and the
+       program to exit.
+ 
+-      @param description: description of the main purpose of the
++      @param description description of the main purpose of the
+       program.
+ 
+       @return the new option parser.
+@@ -441,7 +441,7 @@ module OptParser :
+ 
+     *)
+ 
+-    (** {6 Output and error handling} *)
++    (** {1 Output and error handling} *)
+ 
+     val error : t -> ?chn: out_channel -> ?status: int -> string -> 'a
+     (** Display an error message and exit the program. The error
+@@ -454,7 +454,7 @@ module OptParser :
+       [Pervasives.stdout]) and return. *)
+ 
+ 
+-    (** {6 Option parsing} *)
++    (** {1 Option parsing} *)
+ 
+     val parse : t -> ?first: int -> ?last: int -> string array -> string list
+     (** Parse arguments as if the arguments [args.(first)],
+diff --git a/src/option.mli b/src/option.mli
+index ada369e..3421854 100644
+--- a/src/option.mli
++++ b/src/option.mli
+@@ -20,8 +20,8 @@
+ 
+ (** Functions for the option type.
+ 
+-    Options are an Ocaml standard type that can be either [None] (undefined)
+-  or [Some x] where x can be any value. Options are widely used in Ocaml
++    Options are an OCaml standard type that can be either [None] (undefined)
++  or [Some x] where x can be any value. Options are widely used in OCaml
+   to represent undefined values (a little like NULL in C, but in a type
+   and memory safe way). This module adds some functions for working with
+   options.
+diff --git a/src/refList.mli b/src/refList.mli
+index e2c0b5f..8903167 100644
+--- a/src/refList.mli
++++ b/src/refList.mli
+@@ -100,7 +100,7 @@ val tl : 'a t -> 'a t
+ val rev : 'a t -> unit
+ (** Reverses the ref list - O(n) *)
+ 
+-(** {6 Functional Operations} *)
++(** {1 Functional Operations} *)
+ 
+ val iter : ('a -> unit) -> 'a t -> unit
+ (** Apply the given function to all elements of the
+-- 
+2.37.1
+

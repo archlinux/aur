@@ -1,7 +1,7 @@
 pkgbase = ocaml-extlib
 	pkgdesc = Extends the OCaml standard library
 	pkgver = 1.8.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ygrek/ocaml-extlib
 	arch = i686
 	arch = x86_64
@@ -12,6 +12,8 @@ pkgbase = ocaml-extlib
 	depends = ocaml
 	options = staticlibs
 	source = ocaml-extlib-1.8.0.tar.gz::https://github.com/ygrek/ocaml-extlib/archive/1.8.0.tar.gz
+	source = 0001-Fix-and-improve-documentation-77.patch
 	sha256sums = 6d7ab4ff5bbbc228496ba0311e1899a8ca1096699e438d01beb2c67ae1135c5d
+	sha256sums = 2e27fb7f3a4b5c5ca666aafd514ac926fbcd8ed5eb52aaa54eea07917f82c187
 
 pkgname = ocaml-extlib
