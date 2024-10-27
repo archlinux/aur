@@ -12,7 +12,7 @@ depends=(
     'webkit2gtk-4.1'
 )
 
-source=("jhentai.deb::https://github.com/jiangtian616/JHenTai/releases/download/v8.0.5%2B266/JHenTai-8.0.5+266-Linux-amd64.deb")
+source=("jhentai-${pkgver}.deb::https://github.com/jiangtian616/JHenTai/releases/download/v8.0.5%2B266/JHenTai-8.0.5+266-Linux-amd64.deb")
 sha512sums=('e509ce4dbbff8487c38979d36a695c5defb2b511930f2e8e3b5f3efecd38ff4f01c821e410b0b478b548046068a3e45041360813560478feb702301354377d6f')
 
 prepare() {
