@@ -1,6 +1,6 @@
 pkgbase = edbrowse-git
 	pkgdesc = A line-oriented editor, browser and mail client.
-	pkgver = 3.8.5.r189.g9a6c8a74
+	pkgver = 3.8.10.r15.g1c6e8631
 	pkgrel = 1
 	url = http://edbrowse.org/
 	arch = i686
