@@ -1,6 +1,6 @@
 pkgbase = nvenc
 	pkgdesc = NVIDIA Video Codec based command line encoder
-	pkgver = 7.71
+	pkgver = 7.72
 	pkgrel = 2
 	url = https://github.com/rigaya/NVEnc
 	arch = x86_64
@@ -12,13 +12,11 @@ pkgbase = nvenc
 	depends = libass
 	depends = vapoursynth
 	depends = libdovi
-	source = git+https://github.com/rigaya/NVEnc.git#tag=7.71
+	source = git+https://github.com/rigaya/NVEnc.git#tag=7.72
 	source = git+https://github.com/tplgy/cppcodec.git
 	source = ldflags-adjustments.patch
-	source = support-system-libdovi.patch
-	sha256sums = 6499bdaaeb3275426b0824e10b2b93c6b7d6ece70ef8c61c4fb8c62a31c069d3
+	sha256sums = 9b146d4fe3b104c03c839411c026481e2931e909932d0d98e241d875251a8df7
 	sha256sums = SKIP
 	sha256sums = 9032a642a66219efe9413cee1cb371ca3f46de254c6b50f3605df3f385ec53a5
-	sha256sums = 89141a2e80edc6fa11de6d116d9d4577c5b8864ebcf59fcf68ddbde34c369a6b
 
 pkgname = nvenc
