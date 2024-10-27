@@ -2,7 +2,7 @@
 
 pkgname=neovim-tokyonight
 _pkg=tokyonight.nvim
-pkgver=3.0.1
+pkgver=4.9.0
 pkgrel=1
 pkgdesc="Dark and light theme ported from VSCode's TokyoNight"
 arch=('any')
@@ -14,7 +14,7 @@ provides=('neovim-airline-tokyonight' 'neovim-lightline-tokyonight' 'neovim-lual
 conflicts=('neovim-airline-tokyonight' 'neovim-lightline-tokyonight' 'neovim-lualine-tokyonight')
 install="$pkgname.install"
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('e0908490436ae819c6ee332c688050f5b3525056e6e8beea4c5ea3e4e0e5d455')
+sha256sums=('6b93bbd20a553c39b83ab9ab81fc299872023c8369434745629c9b7573920aa2')
 
 package() {
 	local dirs=(autoload colors doc lua)
