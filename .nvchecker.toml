@@ -1,0 +1,5 @@
+[wrapland]
+source = "github"
+github = "winft/wrapland"
+prefix = "v"
+use_latest_release = "true"

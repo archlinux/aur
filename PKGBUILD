@@ -2,7 +2,7 @@
 
 _pkgname="wrapland"
 pkgname="$_pkgname"
-pkgver=0.601.0
+pkgver=0.602.0
 pkgrel=1
 pkgdesc='Qt/C++ library wrapping libwayland (kwinft)'
 url="https://github.com/winft/wrapland"
@@ -28,10 +28,8 @@ makedepends=(
 
 _pkgsrc="$_pkgname-$pkgver"
 _pkgext="tar.gz"
-source=(
-  "$_pkgsrc.$_pkgext"::"$url/archive/refs/tags/v$pkgver.$_pkgext"
-)
-sha256sums=('46b39f09c3fb8f3effb21955d75f26ea6f79d50f516f7116453c3bc4a3a5eb8b')
+source=("$_pkgsrc.$_pkgext"::"$url/archive/refs/tags/v$pkgver.$_pkgext")
+sha256sums=('553f655cc82dd82b2015f28d41e22b0f51a5d6dff6cf4605b589a2a2bee74b6a')
 
 build() {
   export CC=clang
