@@ -3,8 +3,8 @@ _godot=4.3
 _system_godot=true
 
 pkgname=thrive
-pkgver=0.7.0
-pkgrel=5
+pkgver=0.7.1
+pkgrel=1
 pkgdesc="the evolution game Thrive."
 arch=("x86_64" "aarch64")
 url="https://revolutionarygamesstudio.com/"
@@ -19,6 +19,7 @@ source=(
     "git+https://github.com/Revolutionary-Games/RevolutionaryGamesCommon.git"
     "git+https://github.com/jrouwe/JoltPhysics.git"
     "git+https://github.com/cameron314/concurrentqueue.git"
+    "git+https://github.com/godotengine/godot-cpp.git"
     "godot-mono-export-templates-$_godot.zip::$_godot_repo/$_godot-stable/Godot_v$_godot-stable_mono_export_templates.tpz"
 )
 if "$_system_godot"
@@ -29,7 +30,8 @@ else
     source_aarch64+=("godot-$_godot-aarch64.zip::$_godot_repo/$_godot-stable/Godot_v$_godot-stable_mono_linux_arm64.zip")
 fi
 
-sha256sums=('daecbb2c5f3c4cc5fa56d79dc7c61eaf01e6f71de7e2478395c2939e45060fba'
+sha256sums=('35817b933489968b15f236bcfd50ff43c7df7ec5e2c622221f84ad35533f246f'
+            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -97,10 +99,23 @@ build(){
     # -fno-rtti is required because JoltPhysics is built with it
     # Building libthrive_native without this may results that
     # undefined symbol: _ZTIN3JPH20JobSystemWithBarrierE
-    CFALGS+=" -DNDEBUG -fno-rtti"
-    CXXFLAGS+=" -DNDEBUG -fno-rtti"
+    CFALGS+=" -DNDEBUG"
+    CXXFLAGS+=" -DNDEBUG"
 
+    if ! "$_system_godot" && ! command -v godot-mono > /dev/null
+    then
+        export PATH="$PATH:$HOME/.local/bin"
+    fi
+
+    echo "Generating godot GDExtension contents..."
+    mkdir gdextension
+    cd gdextension
+    godot-mono --headless --dump-extension-api --dump-gdextension-interface
+    cd ..
+    
     echo "Building ThriveNative without AVX support..."
+    mkdir cmake-build.thrive_native
+    ln -sfv ../gdextension cmake-build.thrive_native/api
     cmake -B cmake-build.thrive_native -G Ninja \
         -DCMAKE_INSTALL_PREFIX="$srcdir/Thrive/native_libs" \
         -DCMAKE_BUILD_TYPE=None \
@@ -112,6 +127,8 @@ build(){
     cmake --install cmake-build.thrive_native
 
     echo "Building ThriveNative with AVX support..."
+    mkdir cmake-build.thrive_native.avx
+    ln -sfv ../gdextension cmake-build.thrive_native.avx/api
     cmake -B cmake-build.thrive_native.avx -G Ninja \
         -DCMAKE_INSTALL_PREFIX="$srcdir/Thrive/native_libs" \
         -DCMAKE_BUILD_TYPE=None \
@@ -122,11 +139,10 @@ build(){
     cmake --build cmake-build.thrive_native.avx
     cmake --install cmake-build.thrive_native.avx
 
+    echo "Copying built native libraries..."
+    cp -r native_libs/release/lib/. lib
+    
     echo "Running godot-mono to export game..."
-    if ! "$_system_godot" && ! command -v godot-mono > /dev/null
-    then
-        export PATH="$PATH:$HOME/.local/bin"
-    fi
     mkdir -p dist
     godot-mono --headless --build-solutions --quit-after 2
     godot-mono --headless --export-release "Linux/X11" dist/Thrive
