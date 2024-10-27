@@ -2,10 +2,10 @@
 # Contributor: Lapis Apple <laple@pd2.ink>
 # Contributor: 9r0k <tanyawei1991@gmail.com>
 pkgname=com.kugou.spark
-pkgver=10.2.46spark6
+pkgver=11.0.82spark7
 pkgrel=1
 pkgdesc="Kugou Music Client from Spark Store"
-arch=('i686' 'x86_64')
+arch=('any')
 _arch=all
 url="https://www.kugou.com/"
 license=('unknown')
@@ -14,7 +14,6 @@ depends=(
   'deepin-wine6-stable'
   'hicolor-icon-theme'
   'spark-dwine-helper'
-  # 'wine'
   'xdg-utils'
   'xdotool'
 )
@@ -23,16 +22,16 @@ optdepends=(
   'wqy-zenhei: Recommended font'
 )
 # install=kugou.install
-_mirror="https://cdn.d.store.deepinos.org.cn"
-# _mirror="https://mirrors.sdu.edu.cn/spark-store-repository"		# SDU mirror, sometimes outdated
+# _mirror="https://cdn.d.store.deepinos.org.cn"  # main server
+_mirror="https://mirrors.sdu.edu.cn/spark-store-repository"		# SDU mirror, sometimes outdated
 source=("${_mirror}/store/music/${pkgname}/${pkgname}_${pkgver}_${_arch}.deb")
-sha512sums=('dd8bf4558565e1c98fcc8dcd328cdbd186fb1109567d9d4ee965e442bce321d01f0e4fb3bfba0a767323c8410e698f0acaffb02aef300d8e19c2ea7c09b52f9a')
+sha512sums=('3dc426d8d0f4b5d0c7870aca0b18074c23a70b176e91e060b32ce6c121e29de54cfdf47ebcc101f515138190d3b07f512baaef7a98ff05f22b95a0fa85c73a65')
 
 package() {
 	cd "${pkgdir}"
 	bsdtar -xpvf "${srcdir}/data.tar.xz"
-  # sed -i 's/"deepin-wine6-stable"/"wine"/' opt/apps/${pkgname}/files/start.sh
   mkdir -p usr
   mv opt/apps/${pkgname}/entries usr/share
   rm opt/apps/com.kugou.spark/info
+  chmod -R g-w .
 }

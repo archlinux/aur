@@ -1,10 +1,9 @@
 pkgbase = com.kugou.spark
 	pkgdesc = Kugou Music Client from Spark Store
-	pkgver = 10.2.46spark6
+	pkgver = 11.0.82spark7
 	pkgrel = 1
 	url = https://www.kugou.com/
-	arch = i686
-	arch = x86_64
+	arch = any
 	license = unknown
 	depends = bash
 	depends = deepin-wine6-stable
@@ -14,7 +13,7 @@ pkgbase = com.kugou.spark
 	depends = xdotool
 	optdepends = wqy-microhei: Recommended font
 	optdepends = wqy-zenhei: Recommended font
-	source = https://cdn.d.store.deepinos.org.cn/store/music/com.kugou.spark/com.kugou.spark_10.2.46spark6_all.deb
-	sha512sums = dd8bf4558565e1c98fcc8dcd328cdbd186fb1109567d9d4ee965e442bce321d01f0e4fb3bfba0a767323c8410e698f0acaffb02aef300d8e19c2ea7c09b52f9a
+	source = https://mirrors.sdu.edu.cn/spark-store-repository/store/music/com.kugou.spark/com.kugou.spark_11.0.82spark7_all.deb
+	sha512sums = 3dc426d8d0f4b5d0c7870aca0b18074c23a70b176e91e060b32ce6c121e29de54cfdf47ebcc101f515138190d3b07f512baaef7a98ff05f22b95a0fa85c73a65
 
 pkgname = com.kugou.spark
