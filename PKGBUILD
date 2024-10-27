@@ -1,7 +1,7 @@
 # Maintainer: Amini Allight <amini dot allight at protonmail dot com>
 
 pkgname=npdfr
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc='A command-line PDF reader prioritizing fast searches'
 arch=('x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
