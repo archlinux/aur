@@ -1,7 +1,7 @@
 pkgbase = tuxpaint
 	pkgdesc = Drawing program designed for young children
-	pkgver = 0.9.32
-	pkgrel = 2
+	pkgver = 0.9.34
+	pkgrel = 1
 	url = https://tuxpaint.org/
 	arch = x86_64
 	license = GPL-2.0-only
@@ -31,7 +31,7 @@ pkgbase = tuxpaint
 	optdepends = fontforge: zh_tw doc generator script
 	optdepends = bash: for tp-magic-config, tuxpaint-import, zh_tw doc generator scripts
 	backup = etc/tuxpaint/tuxpaint.conf
-	source = https://downloads.sourceforge.net/sourceforge/tuxpaint/tuxpaint-0.9.32.tar.gz
-	sha256sums = 09cce22241481dc1360fc4bc5d4da1d31815d7a2563b9e9fa217a672ba974bf2
+	source = https://downloads.sourceforge.net/sourceforge/tuxpaint/tuxpaint-0.9.34.tar.gz
+	sha256sums = b761df5ed386a9e04a6809ab3e0cbf2126f10b770527cb2b5f190ff5e370ed03
 
 pkgname = tuxpaint

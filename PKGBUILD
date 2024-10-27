@@ -4,8 +4,8 @@
 # Contributor: royrocks <royrocks13@gmail.com>
 
 pkgname=tuxpaint
-pkgver=0.9.32
-pkgrel=2
+pkgver=0.9.34
+pkgrel=1
 pkgdesc='Drawing program designed for young children'
 arch=('x86_64')
 url='https://tuxpaint.org/'
@@ -21,7 +21,7 @@ optdepends=('tuxpaint-stamps: more stamps'
             'fontforge: zh_tw doc generator script'
             'bash: for tp-magic-config, tuxpaint-import, zh_tw doc generator scripts')
 source=("https://downloads.sourceforge.net/sourceforge/tuxpaint/$pkgname-$pkgver.tar.gz")
-sha256sums=('09cce22241481dc1360fc4bc5d4da1d31815d7a2563b9e9fa217a672ba974bf2')
+sha256sums=('b761df5ed386a9e04a6809ab3e0cbf2126f10b770527cb2b5f190ff5e370ed03')
 
 prepare() {
   cd "$pkgname-$pkgver"
@@ -50,7 +50,7 @@ package() {
     install
 
   # bash completions
-  mv "$pkgdir/usr/share/bash-completion/completions/tuxpaint-completion.bash" \
+  mv "$pkgdir/usr/share/bash-completion/completions/010_tuxpaint-completion.bash" \
     "$pkgdir/usr/share/bash-completion/completions/tuxpaint"
 
   # docs
