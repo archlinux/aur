@@ -1,5 +1,6 @@
 # $Id$
-# Maintainer: zer0def <zer0def@github>
+# Maintainer: denkijin <denkijin at gmail>
+# Contributor: zer0def <zer0def@github>
 # Contributor: Kaushal M <kshlmster cat gmail dog com>
 # Contributor: Stefan Zwanenburg <stefan cat zwanenburg dog info>
 
@@ -10,7 +11,7 @@ pkgname=(
   linux-kata-bin
   #kata-containers-static
 )
-pkgver="2.3.3"
+pkgver="3.1.0"
 _pkgver=${pkgver/\~/-}
 pkgrel=1
 pkgdesc="Lightweight virtual machines for containers (version 2, binary packaging)"
@@ -19,9 +20,9 @@ url="https://katacontainers.io"
 license=('Apache')
 
 source=("https://github.com/kata-containers/kata-containers/releases/download/${_pkgver}/kata-static-${_pkgver}-${CARCH}.tar.xz")
-sha512sums=(47976d7533794c7ba19123ea995e1fc4cb56c11f4ee4b46b0ad332b8eeca62a339e61b0ef30764b69ab00633f1fc396033dd1b911aa11d335fe9a3a12ee94123)
-b2sums=(    aec0d4dfa246b953afba6e23aac6022725f817c07f5691cd83757947b7e84b0602ebdac07ccfa2337211513dd3d9761991b92205b78880dd28fcd5a879dae403)
-b3sums=(    9f01aa881995dbbc98a056be0cc97ec986d81ce90d75bee5cc90aaf431b668b1)
+sha512sums=('c9afb85baa1beb8b8cad47899d3b2b692a680811b25305ff9526e78a8ab4f9458865367798f2a63b247b41f5c23197c87d59a5ad42be38f676077a1b52e399db')
+b2sums=('4523863b53bb9515eae4ada31be427b2468c92b366daa03b8d5d8f963ca517f0d68a61879d1f06c2f1b11aeb841f14bc02292b26f7ab1e3b9549e61894f42313')
+b3sums=(9f01aa881995dbbc98a056be0cc97ec986d81ce90d75bee5cc90aaf431b668b1)
 
 package_kata-runtime-bin() {
   optdepends=(
@@ -39,7 +40,7 @@ package_kata-runtime-bin() {
     ${srcdir}/opt/kata/bin/containerd-shim-kata-v2 \
     ${srcdir}/opt/kata/bin/kata-runtime \
     ${srcdir}/opt/kata/bin/kata-collect-data.sh
-  install -D -m 0755 ${srcdir}/opt/kata/libexec/kata-containers/kata-netmon ${pkgdir}/usr/lib/kata-containers/kata-netmon
+  install -D -m 0755 ${srcdir}/opt/kata/bin/kata-monitor ${pkgdir}/usr/lib/kata-containers/kata-monitor
   install -D -m 0644 ${srcdir}/opt/kata/share/bash-completion/completions/kata-runtime ${pkgdir}/usr/share/bash-completion/completions/kata-runtime
   install -D -m 0644 -t ${pkgdir}/usr/share/defaults/kata-containers ${srcdir}/opt/kata/share/defaults/kata-containers/*.toml
   #install -D -m 0644 ${srcdir}/opt/kata/share/kata-qemu/qemu/pvh.bin ${pkgdir}/usr/share/qemu/pvh.bin
@@ -47,7 +48,7 @@ package_kata-runtime-bin() {
   sed -i -e "s;/opt/kata;/usr;" -e 's/libexec/lib/' -e 's/kata-qemu/qemu/' -e 's/qemu-lite/qemu/' -e 's/qemu-vanilla/qemu/' ${pkgdir}/usr/share/defaults/kata-containers/*.toml ${pkgdir}/usr/bin/kata-collect-data.sh
 }
 
-package_kata-containers-image-bin(){
+package_kata-containers-image-bin() {
   conflicts=('kata2-containers-image')
   provides=('kata-containers-image' 'kata2-containers-image')
   install -Dm644 -t "${pkgdir}/usr/share/kata-containers/" \
@@ -58,7 +59,7 @@ package_kata-containers-image-bin(){
   ln -s kata-alpine-*.initrd kata-containers-initrd.img
 }
 
-package_linux-kata-bin(){
+package_linux-kata-bin() {
   provides=('linux-kata' 'kata-linux-container' 'kata2-linux-container')
   conflicts=('linux-kata' 'kata-linux-container' 'kata2-linux-container' 'linux-kata1' 'kata1-linux-container')
   install -Dm644 -t "${pkgdir}/usr/share/kata-containers/" \
@@ -68,6 +69,6 @@ package_linux-kata-bin(){
     ${srcdir}/opt/kata/share/kata-containers/config-*
 }
 
-package_kata-containers-static(){
+package_kata-containers-static() {
   cp -dr --no-preserve='ownership' "${srcdir}/opt" "${pkgdir}/opt"
 }
