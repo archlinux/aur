@@ -1,6 +1,6 @@
 pkgbase = zulu11-fx-bin
 	pkgdesc = Azul Zulu Builds of OpenJDK With OpenJFX are open source, TCK-tested and certified builds of OpenJDK.
-	pkgver = 11.0.24
+	pkgver = 11.0.25
 	pkgrel = 1
 	url = https://www.azul.com/downloads/
 	install = zulu11-fx-bin.install
@@ -18,7 +18,7 @@ pkgbase = zulu11-fx-bin
 	provides = java-openjfx=11
 	conflicts = zulu-11-bin
 	options = !debug
-	source_x86_64 = https://cdn.azul.com/zulu/bin/zulu11.74.15-ca-fx-jdk11.0.24-linux_x64.tar.gz
-	sha256sums_x86_64 = 78fd81083efbb919ae91de3cfa90e5225868b3d4632fd558c7cb6941dab6b8da
+	source_x86_64 = https://cdn.azul.com/zulu/bin/zulu11.76.21-ca-fx-jdk11.0.25-linux_x64.tar.gz
+	sha256sums_x86_64 = f6647bceb1d35462caac87bd98a3c480c2086692720c9d32d8b5f84b24c35b7c
 
 pkgname = zulu11-fx-bin
