@@ -2,8 +2,8 @@
 # Contributor: Sven-Hendrik Haase <sh@lutzhaase.com>
 # Contributor: otreblan <otreblain@gmail.com>
 pkgname=mingw-w64-sfml-static
-pkgver=2.6.0
-pkgrel=3
+pkgver=2.6.1
+pkgrel=4
 pkgdesc="A simple, fast, cross-platform, and object-oriented multimedia API (mingw-w64)"
 arch=(any)
 url="https://www.sfml-dev.org"
@@ -14,7 +14,7 @@ conflicts=(mingw-w64-sfml)
 provides=(mingw-w64-sfml)
 options=(staticlibs !strip !buildflags)
 source=("https://github.com/SFML/SFML/archive/${pkgver}.tar.gz")
-md5sums=('cb866afcd46a2febcc44ad375d5644f4')
+md5sums=('dbcd89cd92fa17050a9a1205207bd025')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
