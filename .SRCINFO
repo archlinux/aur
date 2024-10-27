@@ -1,7 +1,7 @@
 pkgbase = openbrf
 	pkgdesc = Mount&Blade resource editor by Marco Tarini.
 	pkgver = 0.0.82e
-	pkgrel = 1
+	pkgrel = 2
 	url = https://forums.taleworlds.com/index.php?topic=72279.0
 	install = openbrf.install
 	arch = i686
@@ -10,12 +10,9 @@ pkgbase = openbrf
 	makedepends = icoutils
 	makedepends = git
 	makedepends = coreutils
-	depends = qt5-base
-	depends = glew
+	depends = qt6-base
 	depends = glu
-	source = git+https://github.com/cfcohen/openbrf
-	source = git+https://github.com/cnr-isti-vclab/vcglib#tag=v1.0.1
-	md5sums = SKIP
+	source = git+https://github.com/Swyter/openbrf-redux
 	md5sums = SKIP
 
 pkgname = openbrf
