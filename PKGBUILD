@@ -1,7 +1,7 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
 pkgname="funzzy"
-pkgver=1.4.1
+pkgver=1.5.0
 pkgrel=1
 pkgdesc="A lightweight generic purpose file watcher"
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('gcc-libs' 'glibc')
 makedepends=('cargo')
 _pkgsrc="${pkgname}-${pkgver}"
 source=("${_pkgsrc}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('fd292b4a1b7838571a2183a55fe82fdf47bc2810e4434807abff7e637463df0a')
+sha256sums=('9c98ff08a611a8c3fc9eedd5bc56ecdc9fbd7ec5630d020cd1aa7426524df3d3')
 
 prepare() {
   cd "${srcdir}/${_pkgsrc}"
