@@ -6,6 +6,7 @@ pkgbase = python-enocean-git
 	arch = any
 	license = MIT
 	makedepends = git
+	makedepends = python-setuptools
 	depends = python
 	depends = python-beautifulsoup4
 	depends = python-pyserial
