@@ -12,10 +12,10 @@ https://reproducible-builds.org/docs/build-path/
  cmake/QtBuildInternalsExtra.cmake.in | 3 ---
  1 file changed, 3 deletions(-)
 
-diff --git a/cmake/QtBuildInternalsExtra.cmake.in b/cmake/QtBuildInternalsExtra.cmake.in
+diff --git a/qtbase/cmake/QtBuildInternalsExtra.cmake.in b/qtbase/cmake/QtBuildInternalsExtra.cmake.in
 index cbd70b1..23b2391 100644
---- a/cmake/QtBuildInternalsExtra.cmake.in
-+++ b/cmake/QtBuildInternalsExtra.cmake.in
+--- a/qtbase/cmake/QtBuildInternalsExtra.cmake.in
++++ b/qtbase/cmake/QtBuildInternalsExtra.cmake.in
 @@ -53,9 +53,6 @@ endif()
  set(QT_WILL_INSTALL @QT_WILL_INSTALL@ CACHE BOOL
      "Boolean indicating if doing a Qt prefix build (vs non-prefix build)." FORCE)

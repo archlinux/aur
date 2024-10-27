@@ -11,11 +11,10 @@ _qt="qt-everywhere-src-${_qtver}"
 
 #_modules="qtbase qtdeclarative qtquickcontrols2 qtwebsockets qtsvg"
 #_modules="qtbase,qtdeclarative,qtquickcontrols2,qtwebsockets,qtsvg"
-
-_modules="qt3d qt5compat qtactiveqt qtbase qtcharts qtcoap qtconnectivity qtdatavis3d qtdeclarative qtdoc qtgraphs qtgrpc qthttpserver qtimageformats qtlanguageserver qtlocation qtlottie qtmqtt qtmultimedia qtnetworkauth qtopcua qtpositioning qtquick3d qtquick3dphysics qtquickeffectmaker qtquicktimeline qtremoteobjects qtscxml qtsensors qtserialbus qtserialport qtshadertools qtspeech qtsvg qttools qttranslations qtvirtualkeyboard qtwayland qtwebchannel qtwebengine qtwebsockets qtwebview"
+#_modules="qt3d qt5compat qtactiveqt qtbase qtcharts qtcoap qtconnectivity qtdatavis3d qtdeclarative qtdoc qtgraphs qtgrpc qthttpserver qtimageformats qtlanguageserver qtlocation qtlottie qtmqtt qtmultimedia qtnetworkauth qtopcua qtpositioning qtquick3d qtquick3dphysics qtquickeffectmaker qtquicktimeline qtremoteobjects qtscxml qtsensors qtserialbus qtserialport qtshadertools qtspeech qtsvg qttools qttranslations qtvirtualkeyboard qtwayland qtwebchannel qtwebengine qtwebsockets qtwebview"
 
 pkgver=${_qtver/-/}
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url='https://www.qt.io'
 license=('GPL3' 'LGPL3' 'FDL' 'custom')
@@ -36,28 +35,37 @@ install=$pkgname.install
 source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/single/${_qt}.tar.xz"
         "git+https://github.com/emscripten-core/emsdk.git#tag=${_emsdk}"
         'qtwasm_env.sh'
-        '')
+        '0001-cmake-QtBuildInternalsExtra.cmake.in-Patch-out-embed.patch')
+
 # patch from https://groups.google.com/g/linux.debian.bugs.dist/c/2_3NYGo4faE?pli=1
 # https://17797152399858172281.googlegroups.com/attach/12036d62e8f2a/0001-cmake-QtBuildInternalsExtra.cmake.in-Patch-out-embed.patch?part=0.0.1&view=1&view=1&vt=ANaJVrE9sl_mZ0X1hLMbYFWN-vllz3OwGD8lcLaPm6Du2jY-KE_-YabjHUIqtXqMhx7Lk1j0x_sYmC5j4kJNK1BH32jMeEEpR3jXxh10v5-kl7hFkK22Hy0
 
 
 sha256sums=('70f1a87c6ecc6c108dec6e9389e564f8798bd48bec4c596f28d0564c1dbbc2c6'
             '7203278cf1aad49b6ecdeb43f7f95dfd470906cfd0d285c1d91387ffb465e697'
-            '9dba88f1628175272c2509a7d823155ae35021a45532240c19941fa681ebb865')
+            '9dba88f1628175272c2509a7d823155ae35021a45532240c19941fa681ebb865'
+            '8617181969f97d1a245295ad62537c64267f0a4646ff832cd55b37282f4f4ad9')
 
 options=('!strip' 'staticlibs' '!buildflags' '!makeflags')
 
 _opt=/opt/qt6-wasm
 
-prepare() {
-  
+prepare () {
+  echo "${srcdir}/emsdk"
+  cd ${srcdir}/${_qt}
 
+  # apply patches; further descriptions can be found in patch files itself
+  for patch in "$srcdir/"*.patch; do
+    msg2 "Applying patch $patch"
+    patch -p1 -i "$patch"
+  done
 }
+
+
 
 build() {
   # emsdk
   cd ${srcdir}/emsdk
-  #touch .emscripten # embedded for the build only
   ./emsdk install $_emsdkver
   ./emsdk activate $_emsdkver
   source ${srcdir}/emsdk/emsdk_env.sh
@@ -80,11 +88,6 @@ build() {
     -feature-thread \
     -feature-wasm-exceptions \
     -prefix "${_opt}"
-#    -skip qtwayland \
-#    -skip qtwebengine \
-#    -skip qtwebview \
-#    -skip qtwebchannel \
-#    -skip qtactiveqt
 
   cd ${srcdir}/${_qt}/build-wasm
   cmake --build ${srcdir}/${_qt}/build-wasm
@@ -95,10 +98,6 @@ package() {
   cd ${srcdir}/${_qt}/build-wasm
   cmake --install ${srcdir}/${_qt}/build-wasm --prefix=${pkgdir}${_opt}
 
-#  for module in $_modules; do
-#    cd $module
-#    cd ..
-#  done
   install -Dm644 ${srcdir}/${_qt}/LICENSES/* -t ${pkgdir}/usr/share/licenses/$pkgname
 
   # Drop QMAKE_PRL_BUILD_DIR because reference the build dir
@@ -107,9 +106,11 @@ package() {
 
   find ${pkgdir}/${_opt} -type f -name 'lib*.so' -exec emstrip --strip-debug --strip-unneeded {} \;
   find ${pkgdir}/${_opt} -type f -name 'lib*.a' -exec emstrip --strip-debug {} \;
-  find ${pkgdir}/${_opt} -type f -name '*.pri' -exec sed -i -e '/${srcdir}${_qt}\/build-wasm/d' {} \;
-  find ${pkgdir}/${_opt} -type f -name '*.cmake' -exec sed -i -e '/${srcdir}${_qt}\/build-wasm/d' {} \;
-
+  find ${pkgdir}/${_opt} -type f -name '*.prl' -exec sed -i "s|${srcdir}/${_qt}/build-wasm/qtbase|${_opt}|g" {} \;
+  find ${pkgdir}/${_opt} -type f -name '*.pri' -exec sed -i "s|${srcdir}/${_qt}/build-wasm/qtbase|${_opt}|g" {} \;
+  find ${pkgdir}/${_opt} -type f -name '*.pri' -exec sed -i "s|${srcdir}/${_qt}/build-wasm||g" {} \;
+  find ${pkgdir}/${_opt} -type f -name '*.cmake' -exec sed -i -e "s|${srcdir}/${_qt}/build-wasm||g" {} \;
+  find ${pkgdir}/${_opt} -type f -name '*.cmake' -exec sed -i "s|${srcdir}/emsdk|${_opt}/emsdk|g" {} \;
 
   ## emsdk
   cp -a ${srcdir}/emsdk ${pkgdir}${_opt}/
@@ -124,6 +125,6 @@ package() {
   find . -type f -not -executable -exec chmod 644 {} \;
 
   ## env
-#  cp ${srcdir}/qtwasm_env.sh ${pkgdir}${_opt}/
-#  sed -i "s/EMSDKVER/$_emsdkver/" ${pkgdir}${_opt}/qtwasm_env.sh
+  cp ${srcdir}/qtwasm_env.sh ${pkgdir}${_opt}/
+  sed -i "s/EMSDKVER/$_emsdkver/" ${pkgdir}${_opt}/qtwasm_env.sh
 }
