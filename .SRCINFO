@@ -1,0 +1,18 @@
+pkgbase = vinecopulib-git
+	pkgdesc = C++ vine copula library
+	pkgver = r616.23a6ce46
+	pkgrel = 1
+	url = https://github.com/vinecopulib-git/vinecopulib-git
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	depends = cmake
+	depends = eigen
+	depends = boost
+	depends = libwdm
+	provides = libvinecopulib-git.so
+	provides = vinecopulib
+	source = git+https://github.com/vinecopulib/vinecopulib.git#branch=dev
+	sha256sums = SKIP
+
+pkgname = vinecopulib-git
