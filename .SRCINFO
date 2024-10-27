@@ -1,0 +1,15 @@
+pkgbase = metapac-bin
+	pkgdesc = multi-backend declarative package manager
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/ripytide/metapac
+	arch = x86_64
+	license = GPL-3.0-or-later
+	provides = metapac
+	conflicts = metapac
+	options = !debug
+	options = !lto
+	source = https://github.com/ripytide/metapac/releases/download/v0.2.0/metapac-x86_64-unknown-linux-gnu.tar.xz
+	sha256sums = 2f47cd4d48ccbf3115ec17ce671635a290d16552d7e4c1408a3b675b8faf9dbe
+
+pkgname = metapac-bin
