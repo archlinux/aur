@@ -1,4 +1,5 @@
-# Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
+# Maintainer:
+# Contributor: HurricanePootis <hurricanepootis@protonmail.com>
 # Contributor: Marco Rubin <marco.rubin@protonmail.com>
 
 ## options
@@ -9,10 +10,10 @@ fi
 ## basic info
 _pkgname="ryujinx"
 pkgname="$_pkgname"
-pkgver=1.1.1403
+pkgver=1.2.59
 pkgrel=1
 pkgdesc="Experimental Nintendo Switch Emulator written in C#"
-url="https://git.naxdy.org/Mirror/Ryujinx/"
+url="https://github.com/GreemDev/Ryujinx"
 license=('MIT')
 arch=('x86_64')
 
@@ -23,16 +24,15 @@ depends=(
 makedepends=(
   'desktop-file-utils'
   'dotnet-sdk-bin' # aur/dotnet-core-bin
-  'jq'
 )
 
 options=('!strip' '!debug' 'emptydirs')
 install="$_pkgname.install"
 
 _source_ryujinx() {
-  _pkgsrc="ryujinx"
+  _pkgsrc="Ryujinx-$_pkgver"
   _pkgext="tar.gz"
-  source=("$_pkgname-$_pkgver.$_pkgext"::"$url/archive/$_pkgver.$_pkgext")
+  source=("${_pkgsrc,}.$_pkgext"::"$url/archive/$_pkgver.$_pkgext")
   sha256sums=('SKIP')
 }
 
@@ -55,14 +55,11 @@ build() {
     --self-contained true
     -p:DebugType=none
     -p:ExtraDefineConstants=DISABLE_UPDATER
-    -p:Version=${pkgver%%.r*}
+    -p:Version="$pkgver"
   )
 
   echo "Building AVA Interface..."
   dotnet publish "${_args[@]}" -o publish_ava src/Ryujinx
-
-  echo "Building GTK3 Interface..."
-  dotnet publish "${_args[@]}" -o publish_gtk src/Ryujinx.Gtk3
 
   echo "Building SDL2 Headless..."
   dotnet publish "${_args[@]}" -o publish_sdl src/Ryujinx.Headless.SDL2
@@ -77,13 +74,11 @@ package() {
   # program
   install -dm755 "$pkgdir/opt/ryujinx"
   cp -a --update=none --reflink=auto publish_ava/* "$pkgdir/opt/ryujinx/"
-  cp -a --update=none --reflink=auto publish_gtk/* "$pkgdir/opt/ryujinx/"
   cp -a --update=none --reflink=auto publish_sdl/* "$pkgdir/opt/ryujinx/"
 
   # symlinks
   install -dm755 "$pkgdir/usr/bin"
   ln -s "/opt/ryujinx/Ryujinx" "$pkgdir/usr/bin/ryujinx"
-  ln -s "/opt/ryujinx/Ryujinx.Gtk3" "$pkgdir/usr/bin/ryujinx.gtk"
   ln -s "/opt/ryujinx/Ryujinx.Headless.SDL2" "$pkgdir/usr/bin/ryujinx.sdl"
 
   # .desktop
@@ -102,7 +97,6 @@ package() {
   find "$pkgdir" -type d -exec chmod 755 {} \;
   find "$pkgdir" -type f -exec chmod 644 {} \;
   chmod 755 "$pkgdir/opt/ryujinx/Ryujinx"
-  chmod 755 "$pkgdir/opt/ryujinx/Ryujinx.Gtk3"
   chmod 755 "$pkgdir/opt/ryujinx/Ryujinx.Headless.SDL2"
   chmod 755 "$pkgdir/opt/ryujinx/Ryujinx.sh"
 
@@ -115,17 +109,18 @@ package() {
 }
 
 _update_version() {
-  : ${_pkgver:=${pkgver%%.r*}}
+  : ${_pkgver:=$pkgver}
 
   if [[ "${_autoupdate::1}" != "t" ]]; then
     return
   fi
 
-  local _response=$(curl -Ssf "https://git.naxdy.org/api/v1/repos/Mirror/Ryujinx/tags?page=1&limit=1")
+  local _response=$(curl -Ssf "$url/releases.atom")
   local _tag=$(
     printf '%s' "$_response" \
-      | jq '.[] | .name' \
-      | sed 's/"//g'
+      | grep '"https://.*/releases/tag/.*"' \
+      | sed -E 's@^.*/releases/tag/(.*)".*$@\1@' \
+      | grep -Ev '[a-z]{2}' | sort -rV | head -1
   )
   local _pkgver_new="${_tag#v}"
 
@@ -134,5 +129,6 @@ _update_version() {
     _pkgver="${_pkgver_new:?}"
   fi
 }
+
 _update_version
 _source_ryujinx
