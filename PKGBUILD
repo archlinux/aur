@@ -1,7 +1,7 @@
 # Maintainer: George Rawlinson <grawlinson@archlinux.org>
 
 pkgname=python-autodocsumm
-pkgver=0.2.13
+pkgver=0.2.14
 pkgrel=1
 pkgdesc='Extending your autodoc API docs with a summary'
 arch=('any')
@@ -22,7 +22,7 @@ makedepends=(
 )
 _commit='7009e5ec0de58ac2675269829ca602447113d6e2'
 source=("$pkgname::git+$url#tag=v$pkgver")
-b2sums=('d0e8285a27fe63179903670a3845c06b6e3701a5947ad04871764457c7c056e98540191c397eff9918609941e7916fb30c88502ff57d28cb435e2d8aaced10a4')
+b2sums=('c0346df7aecefdb26ec0dc90863781cd790a35c2bacbcf6c915aafa1ec410c1f7753074e67cf21bc2f3bd33fe5958fe3ec4992a98fae140604b6a6f7c7b54d88')
 
 build() {
   cd "$pkgname"
@@ -33,5 +33,5 @@ build() {
 package() {
   cd "$pkgname"
 
-  python -m installer --destdir="$pkgdir" dist/*.whl
+  python -m installer --destdir="$pkgdir" dist/autodocsumm-$pkgver-*.whl
 }
