@@ -7,8 +7,8 @@ pkgdesc="YouTube Music client with a focus on customisation of colours and song 
 arch=("x86_64")
 url="https://github.com/toasterofbread/spmp"
 license=("GPL-3.0-only")
-depends=("mpv" "libayatana-appindicator" "jre22-openjdk")
-makedepends=("jdk22-openjdk" "jre21-openjdk")
+depends=("mpv" "libayatana-appindicator" "jdk-openjdk")
+makedepends=("jdk-openjdk" "jdk21-openjdk")
 
 source=("https://github.com/toasterofbread/spmp/archive/refs/tags/v${_ver}.tar.gz")
 sha256sums=("4a8f0cc041a9035389b4624a138074a63b33f9e1f5ff5e9b2fb0f9697f706505")
@@ -16,8 +16,10 @@ sha256sums=("4a8f0cc041a9035389b4624a138074a63b33f9e1f5ff5e9b2fb0f9697f706505")
 build() {
     cd "$srcdir/${pkgname}-${_ver}"
 
+    JDK_LATEST=$(archlinux-java status | grep -oP 'java-\d+-openjdk' | sort -V | tail -n 1)
+
     export JAVA_21_HOME=/usr/lib/jvm/java-21-openjdk/
-    export JAVA_22_HOME=/usr/lib/jvm/java-22-openjdk/
+    export JAVA_22_HOME=/usr/lib/jvm/$JDK_LATEST/
     export JAVA_HOME=$JAVA_22_HOME
     export GRADLE_USER_HOME="$srcdir/.gradle"
 
