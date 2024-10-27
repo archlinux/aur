@@ -1,6 +1,6 @@
 pkgbase = qgis-ltr
 	pkgdesc = Geographic Information System (GIS); Long Term Release
-	pkgver = 3.34.11
+	pkgver = 3.34.12
 	pkgrel = 1
 	url = https://qgis.org/
 	arch = x86_64
@@ -47,9 +47,9 @@ pkgbase = qgis-ltr
 	depends = draco
 	optdepends = fcgi: Map server
 	optdepends = gpsbabel: GPS Tools plugin
-	provides = qgis=3.34.11
+	provides = qgis=3.34.12
 	conflicts = qgis
-	source = https://qgis.org/downloads/qgis-3.34.11.tar.bz2
-	sha256sums = f092f57c7565beb4003ddce294d12cb5d6835ca3518371b7f506b05b9880b423
+	source = https://qgis.org/downloads/qgis-3.34.12.tar.bz2
+	sha256sums = 1e52ad2454fd8806b03fb112be9f046a5e17bb72a9665ed0a0ca79e6d3c692b8
 
 pkgname = qgis-ltr
