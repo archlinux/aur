@@ -26,7 +26,7 @@ build() {
   cd shotcut
   compile_version=$(echo $pkgver | sed 's/v\([0-9.]*\).*/\1/')
 
-  # https://github.com/mltframework/shotcut/issues/1275
+  #  https://github.com/mltframework/shotcut/issues/1275
   export CXXFLAGS+=" -DSHOTCUT_NOUPGRADE"
 
   cmake \
@@ -49,4 +49,4 @@ package() {
   DESTDIR="${pkgdir}" cmake --install build
 }
 
-# vim:set ft=sh sw=2 sts=2 et:
+# vim: ts=2 sw=2 et:
