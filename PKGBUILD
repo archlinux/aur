@@ -10,7 +10,7 @@ pkgver=23.5.0.24.07
 _pkgver_vendor_suffix=
 _urlver=2350000
 _unzippath=instantclient_23_5
-pkgrel=1
+pkgrel=2
 pkgdesc="Additional support for XA, Internationalization, and RowSet operations under JDBC"
 arch=('x86_64')
 url="https://www.oracle.com/at/database/technologies/instant-client/downloads.html"
@@ -24,8 +24,9 @@ md5sums=('aee2639b45799e1061233de7e022df43')
 sha256sums=('8e7b97fbddda86ccdb122a4690001ba10eddfc746fab34ae19d4944d3cb298d9')
 
 package() {
-	local basedir="$srcdir/${_unzippath}"
+	cd "$srcdir/${_unzippath}"
 	install -d "$pkgdir/usr/lib"
-	install -m 755 -t "$pkgdir/usr/lib" "$basedir/"*.so
-	install -m 644 -t "$pkgdir/usr/lib" "$basedir/"*.jar
+	install -m 755 -t "$pkgdir/usr/lib" *.so
+	install -m 644 -t "$pkgdir/usr/lib" *.jar
+	install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" *LICENSE
 }
