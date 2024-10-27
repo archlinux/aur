@@ -16,13 +16,20 @@ replaces=()
 backup=()
 options=()
 install=
-source=("${_name}::git+https://github.com/kipe/enocean.git")
+source=("${_name}::git+https://github.com/kipe/enocean.git"
+	"https://github.com/kipe/enocean/pull/138.patch")
 noextract=()
-sha512sums=('SKIP')
+sha512sums=('SKIP'
+            '3c1585ce10832788b79776c5f1dd255b364a7d5763a91e05295e005c2ec8ad26e2cf6456b801cf77762cf0a2e975871a9f3a71904fef134496fd21537dc41a24')
 
 pkgver() {
 	cd "$srcdir/${_name}"
 	printf "%s" "$(git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
+}
+
+prepare() {
+	cd "$srcdir/${_name}"
+	patch -Np1 -i "../138.patch"
 }
 
 build() {

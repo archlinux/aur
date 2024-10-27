@@ -5,3 +5,6 @@
 
 # repository
 /enocean
+
+# patches that are downloaded as source files
+138.patch
