@@ -1,11 +1,12 @@
 pkgbase = gpu-screen-recorder-ui
 	pkgdesc = A fullscreen overlay UI for GPU Screen Recorder in the style of ShadowPlay. X11 only.
 	pkgver = r74.c6b5ff0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://git.dec05eba.com/gpu-screen-recorder-ui
 	arch = x86_64
 	license = GPL-3.0-only
 	makedepends = meson
+	depends = gpu-screen-recorder-notification
 	depends = libglvnd
 	depends = libx11
 	depends = libxrandr
