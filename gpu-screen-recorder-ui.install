@@ -1,0 +1,3 @@
+post_install() {
+    echo "You can start the overlay UI at system startup by running 'systemctl enable --now --user gpu-screen-recorder-ui'"
+}
