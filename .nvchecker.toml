@@ -1,0 +1,3 @@
+[python-colorthief]
+source = "git"
+git = "https://github.com/fengsp/color-thief-py.git"
