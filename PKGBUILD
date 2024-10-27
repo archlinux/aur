@@ -1,32 +1,36 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=krename-git
-pkgver=5.0.60.r778.17aacf9
+pkgver=5.0.60.r863.00fc8b0
 pkgrel=1
 pkgdesc="A very powerful batch file renamer for KDE. (GIT Version)"
 arch=('x86_64')
 url='https://apps.kde.org/krename'
-license=('GPL')
+license=(
+  'BSD-3-Clause'
+  'CC0-1.0'
+  'GPL-2.0-only'
+  'GPL-2.0-or-later'
+)
 depends=(
   'gcc-libs' # 'libgcc_s.so' 'libstdc++.so'
   'glibc' # 'libc.so'
-  'karchive5' # 'libKF5Archive.so'
-  'kcompletion5' # 'libKF5Completion.so'
-  'kconfig5' # 'libKF5ConfigCore.so'
-  'kcoreaddons5' # 'libKF5CoreAddons.so'
-  'kcrash5' # 'libKF5Crash.so'
-  'ki18n5' # 'libKF5I18n.so'
-  'kio5' # 'libKF5KIOCore.so' 'libKF5KIOFileWidgets.so' 'libKF5KIOWidgets.so'
-  'kitemviews5' # 'libKF5ItemViews.so'
-  'kjobwidgets5' # 'libKF5JobWidgets.so'
-  'kservice5' # 'libKF5Service.so'
-  'kwidgetsaddons5' # 'libKF5WidgetsAddons.so'
-  'kxmlgui5' # 'libKF5XmlGui.so'
+  'karchive' # 'libKF6Archive.so'
+  'kcompletion' # 'libKF6Completion.so'
+  'kconfig' # 'libKF6ConfigCore.so'
+  'kcoreaddons' # 'libKF6CoreAddons.so'
+  'kcrash' # 'libKF6Crash.so'
+  'ki18n' # 'libKF6I18n.so'
+  'kio' # 'libKF6KIOWidgets.so' 'libKF6KIOGui.so', 'libKF6KIOCore.so' 'libKF6KIOFileWidgets.so'
+  'kitemviews' # 'libKF6ItemViews.so'
+  'kwidgetsaddons' # 'libKF6WidgetsAddons.so'
+  'kxmlgui' # 'libKF6XmlGui.so'
   'exiv2' 'libexiv2.so'
   'freetype2' 'libfreetype.so'
   'podofo' 'libpodofo.so'
-  'qt5-base' # 'libQt5Core.so' 'libQt5Gui.so' 'libQt5Widgets.so' 'libQt5Xml.so'
-  'qt5-declarative' # 'libQt5Qml.so'
+  'qt6-base' # 'libQt6Core.so' 'libQt6Gui.so' 'libQt6Widgets.so' 'libQt6Xml.so'
+  'qt6-declarative' # 'libQt5Qml.so'
+  'qt6-5compat' # 'libQt6Core5Compat.so'
   'taglib' # 'libtag.so'
   'hicolor-icon-theme'
 )
@@ -34,13 +38,17 @@ makedepends=(
   'git'
   'extra-cmake-modules'
   'python'
-  'kdoctools5'
+  'kdoctools'
 )
 checkdepends=('appstream')
 provides=('krename')
 conflicts=('krename')
-source=('git+https://invent.kde.org/utilities/krename.git')
-sha256sums=('SKIP')
+source=(
+  'git+https://invent.kde.org/utilities/krename.git'
+)
+sha256sums=(
+  'SKIP'
+)
 options=('debug')
 
 pkgver() {
@@ -55,7 +63,8 @@ build() {
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DKDE_INSTALL_LIBDIR=lib \
     -DKDE_INSTALL_USE_QT_SYS_PATHS=ON \
-    -DBUILD_TESTING=ON
+    -DBUILD_TESTING=ON \
+    -DBUILD_WITH_QT6=ON
 
   cmake --build build
 }
@@ -66,4 +75,6 @@ check() {
 
 package() {
   DESTDIR="${pkgdir}" cmake --install build
+
+  install -Dm644 krename/LICENSES/BSD-3-Clause.txt "${pkgdir}/usr/share/licenses/${pkgname}/BSD-3-Clause.txt"
 }
