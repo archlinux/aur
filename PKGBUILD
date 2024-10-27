@@ -2,7 +2,7 @@
 pkgname=python-simpleeval
 _name=${pkgname#python-}
 pkgver=1.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A simple, safe single expression evaluator library."
 arch=(any)
 url="https://github.com/danthedeckie/simpleeval"
@@ -18,7 +18,7 @@ source=(
 	"https://raw.githubusercontent.com/danthedeckie/simpleeval/${pkgver}/LICENCE"
 )
 sha256sums=('f3d259deeb751d34c63e56747bab384efad63a2dbdb4f130281c42279788ac3c'
-            '91efc982fa45add893fa80ec3ab1524f31e50a1386adba1424ddcf432359850a')
+            '108ef479fcaf974040cb70b56230ccb7586db3f36962450d1a2452f149f8569a')
 
 prepare() {
 	cd "${_name}-${pkgver}"
