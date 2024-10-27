@@ -1,0 +1,18 @@
+pkgbase = nautilus-copy-file-contents-git
+	pkgdesc = Nautilus extension for copying the contents of the entire file
+	pkgver = r3.b51e7b6
+	pkgrel = 1
+	url = https://github.com/EuCaue/nautilus-extension-copy-file-contents
+	arch = any
+	license = GPL-3.0-only
+	makedepends = git
+	makedepends = sed
+	depends = python-nautilus
+	depends = python-gobject
+	depends = libnautilus-extension
+	provides = nautilus-copy-file-contents
+	conflicts = nautilus-copy-file-contents
+	source = git+https://github.com/EuCaue/nautilus-extension-copy-file-contents.git
+	sha256sums = SKIP
+
+pkgname = nautilus-copy-file-contents-git
