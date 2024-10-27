@@ -1,6 +1,6 @@
 pkgbase = redict-rc
 	pkgdesc = A distributed key/value database (release candidate)
-	pkgver = 7.3.0
+	pkgver = 7.3.1
 	pkgrel = 1
 	url = https://codeberg.org/redict/redict
 	arch = x86_64
@@ -17,14 +17,14 @@ pkgbase = redict-rc
 	conflicts = redict-db-git
 	backup = etc/redict/redict.conf
 	backup = etc/redict/sentinel.conf
-	source = git+https://codeberg.org/redict/redict.git#tag=7.3.0
+	source = git+https://codeberg.org/redict/redict.git#tag=7.3.1
 	source = redict.service
 	source = redict-sentinel.service
 	source = redict.sysusers
 	source = redict.tmpfiles
 	source = redict.conf-sane-defaults.patch
 	source = redict-5.0-use-system-jemalloc.patch
-	sha512sums = SKIP
+	sha512sums = 15bd7533cbee0c51f21c80e2ec4714c9a4f9b59deb289b7dea59ac69ef55332b3f4e9b3636853e0a32201796a332959b86c4e7b901506caab7e74a8b63aea3e6
 	sha512sums = bafdd8d5bb16eb651e6dbed2fbd85c8a2264e5063cdc590add10f79879cb0e3dd3ea65635cb0f2502b272b9ad08704461ebec2523eb5263130ae01b1e5fc6983
 	sha512sums = b72ee96c78e9c2e760f8241f109c7c91ebf0d5ba699af7e05e28e0f4eab8864e43673fca074a11730223e22b93f109c9739ea92f429332f7dc37ae8d6d7ad691
 	sha512sums = 94556abeb7eba84d428130e9a0848865ddfa354e7652ec7a1a1d9ad4100a95fea92ce2be55abcf98b1ae176cc204d475e43294bb901c7aee3fa6cefbd759c8be
