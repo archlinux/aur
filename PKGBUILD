@@ -1,10 +1,8 @@
 # Maintainer: Sam Whited <sam@samwhited.com>
 
 pkgname="communique"
-# Temporarily pin to a specific commit. We'll tag a v0.0.1 release soon.
-_commit=10dc75050cf8f09bb9d27e0d53e5c10937de54bc
-pkgver="v0.0.0_${_commit}"
-pkgrel=4
+pkgver="0.0.1"
+pkgrel=1
 pkgdesc='A TUI instant messaging client compatible with the Jabber network and XMPP.'
 url="https://codeberg.org/mellium/communique-tui/"
 license=('BSD-2-Clause')
@@ -13,16 +11,33 @@ makedepends=(
 	'go'
 	'make'
 )
-source=("${pkgname}.zip::https://codeberg.org/mellium/communique-tui/archive/${_commit}.zip")
-sha256sums=('67dac66ce6cf4fb118f1b16f05e42d6abaef79e3c12246c354c75c9f8e819362')
+install=".install"
+source=("${pkgname}_v${pkgver}.zip::https://codeberg.org/mellium/communique-tui/archive/v${pkgver}.zip")
+sha256sums=('250efeafa34597fd430fce6efc46bfda6f669415960f00d526d4df69bbe9f237')
 
 build() {
 	cd ${pkgname}-tui || exit
-	make
+	export CGO_CPPFLAGS="${CPPFLAGS}"
+	export CGO_CFLAGS="${CFLAGS}"
+	export CGO_CXXFLAGS="${CXXFLAGS}"
+	export CGO_LDFLAGS="${LDFLAGS}"
+	export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
+	make VERSION="v${pkgver}-arch${pkgrel}"
+}
+
+check() {
+	cd ${pkgname}-tui || exit
+	export CGO_CPPFLAGS="${CPPFLAGS}"
+	export CGO_CFLAGS="${CFLAGS}"
+	export CGO_CXXFLAGS="${CXXFLAGS}"
+	export CGO_LDFLAGS="${LDFLAGS}"
+	export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
+	go test ./...
 }
 
 package() {
     cd ${pkgname}-tui || exit
 		make DESTDIR="$pkgdir" PREFIX=/usr install
+		install -Dm644 communiqué.toml.example "${pkgdir}/usr/share/factory/etc/communiqué/communiqué.toml"
 		install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }

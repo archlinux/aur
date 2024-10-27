@@ -1,0 +1,9 @@
+#!/bin/sh
+
+post_install() {
+	echo "---"
+	echo "To configure the client copy the example config file from"
+	echo "/usr/share/factory/etc/communiqué/communiqué.toml to the local config"
+	echo "directory, normally \$XDG_CONFIG_HOME/communiqué or ~/.config/communiqué."
+	echo "---"
+}
