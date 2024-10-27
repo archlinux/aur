@@ -2,12 +2,12 @@
 
 pkgname=lug-helper
 pkgver=3.2
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="Star Citizen's Linux Users Group Helper Script"
 arch=('any')
-depends=('bash' 'coreutils' 'curl' 'findutils')
-optdepends=('zenity' 'polkit')
+depends=('bash' 'coreutils' 'curl' 'findutils' 'wine' 'winetricks')
+optdepends=('zenity' 'polkit' 'lutris')
 provides=('lug-helper')
 conflicts=('lug-helper')
 url="https://github.com/starcitizen-lug/lug-helper"
