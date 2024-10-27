@@ -1,0 +1,9 @@
+post_install() {
+  echo "The i915 kernel module will be available on reboot."
+  echo "Copy /usr/lib/tmpfiles.d/i915-set-sriov-numvfs.conf to /etc/tmpfiles.d and change the argument to the number of VFs you want to enable on boot"
+  echo "Please refer to https://github.com/strongtz/i915-sriov-dkms/blob/master/README.md to set kernel parameters."
+}
+
+post_remove() {
+  echo "The i915 kernel module will be removed on reboot."
+}
