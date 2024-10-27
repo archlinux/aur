@@ -1,14 +1,14 @@
 #Maintainer: Simon Eriksson <simon.eriksson.1187+aur AT gmail.com>
 
 pkgname=('libdragon-unstable-git' 'libdragon-tools-unstable-git')
-pkgver=r1920.9e6017f2
+pkgver=r3710.4cb25cda0
 pkgrel=1
 url="http://www.dragonminded.com/n64dev/libdragon"
 arch=('x86_64')
 license=('custom:UNLICENSE')
 makedepends=('git')
-depends=('libpng' 'mips64-elf-gcc' 'mips64-elf-newlib')
-source=("git+https://github.com/DragonMinded/libdragon.git#branch=unstable")
+depends=('mips64-elf-gcc' 'mips64-elf-newlib')
+source=("git+https://github.com/DragonMinded/libdragon.git#branch=preview")
 sha256sums=('SKIP')
 
 pkgver() {
