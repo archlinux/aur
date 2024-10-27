@@ -2,11 +2,11 @@
 # Contributor: David Birks <david at tellus dot space>
 # Contributor: Jeff Henson <jeff at henson dot io>
 pkgname=mullvad-vpn-beta
-_pkgver=2024.6
-_channel=stable
+_pkgver=2024.7
+_channel=beta
 _rel=1
-#pkgver=${_pkgver}.${_channel}${_rel}  # beta
-pkgver=${_pkgver}.${_channel}  # stable
+pkgver=${_pkgver}.${_channel}${_rel}  # beta
+#pkgver=${_pkgver}.${_channel}  # stable
 pkgrel=1
 _nodeversion=20
 pkgdesc="The Mullvad VPN client app for desktop (beta channel)"
@@ -20,22 +20,22 @@ conflicts=("${pkgname%-beta}")
 install="${pkgname%-beta}.install"
 _ab_commit=049d5d3bc0c86c29c20f2073460186a83c1d7094
 _wg_commit=b1cf09a982bba6f6c63fadc956d88e8c2326d05e
-_mn_commit=7254d70ea92e59778a99611999e4ed88a4aa821b  ## commit does not exist
+#_mn_commit=7254d70ea92e59778a99611999e4ed88a4aa821b  ## commit does not exist
+_mn_commit=b06094e81701782d28cd2312f58e0654109d04ce
 source=(
-#  "git+https://github.com/mullvad/mullvadvpn-app.git#tag=${_pkgver}-${_channel}${_rel}?signed"  # beta
-  "git+https://github.com/mullvad/mullvadvpn-app.git#tag=${_pkgver}?signed"  # stable
+  "git+https://github.com/mullvad/mullvadvpn-app.git#tag=${_pkgver}-${_channel}${_rel}?signed"  # beta
+#  "git+https://github.com/mullvad/mullvadvpn-app.git#tag=${_pkgver}?signed"  # stable
   "git+https://github.com/mullvad/mullvadvpn-app-binaries.git#commit=${_ab_commit}?signed"
   "git+https://github.com/mullvad/wireguard-go.git#commit=${_wg_commit}?signed"
-#  "git+https://github.com/mullvad/maybenot.git#commit=${_mn_commit}"
-  "git+https://github.com/mullvad/maybenot.git"
+  "git+https://github.com/mullvad/maybenot.git#commit=${_mn_commit}"
   'no-rpm.diff'
   'no-publish.diff'
   "${pkgname%-beta}.sh"
 )
-sha256sums=('7ad95452f0dce762cd6f4ca75867c174104adfcb3150b9dd2d3515f008322377'
+sha256sums=('e87d991a2168374e1e68206e8663eb70dbc9ea60b9b273f5813a133ae6e0e059'
             '2f7ff0d5c2c5bab63b9babc6c91d921ef9965413b0b92996be8c9fd5a9c0d862'
-            'SKIP'
-            'SKIP'
+            'a65a9a650066e653f50871c17758ddc8a4ecfa6fbb9684035855d6f0d8a655a4'
+            '905d2c0b697cb594babdf4e84066f3bdf666ab5d889642b002a1390f52fc7cf8'
             'ea35edffea2cbbb05586abce19581fdd9f133801ed47e6af30fa64a29c5cf116'
             '968967efff8e9588f15c382825b609cf89d54c47e0632e92e9ef2354aa46f31b'
             '2262346cb57deb187fe32a88ccd873dab669598889269088e749197c6e88954f')
