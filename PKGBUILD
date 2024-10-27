@@ -6,37 +6,43 @@
 # Contributor: Alexander Rødseth <rodseth@gmail.com>
 
 pkgname=cinelerra-cv-git
-pkgver=2.3.r385.g7d0e8ede
-pkgrel=2
+pkgver=2.3.r457.gc95830fc
+pkgrel=1
 pkgdesc="Professional video editing and compositing environment - Community version"
 arch=(x86_64)
 url="https://github.com/cinelerra-cv-team/cinelerra-cv/"
-license=(GPL)
-depends=(e2fsprogs libavc1394 libiec61883 libxv
+license=(GPL-2.0-only)
+depends=(libavc1394 libiec61883 libxv
          libtiff mjpegtools fftw a52dec glu
-         ffmpeg faad2 faac openexr libxft)
-makedepends=(git automake nasm mesa intltool gcc9)
+         faad2 faac openexr libxft
+
+         # namcap implicit depends
+         glibc gcc-libs
+         libdv libxxf86vm bzip2 lame zlib util-linux-libs libvorbis x264 libsndfile libxext libglvnd libx11
+         libogg libraw1394 libjpeg-turbo libtheora libpng alsa-lib
+)
+makedepends=(git automake nasm mesa intltool)
 provides=(cinelerra-cv)
 conflicts=(cinelerra-cv)
-source=("${pkgname}::git+https://github.com/cinelerra-cv-team/cinelerra-cv.git"
-        "https://github.com/cinelerra-cv-team/cinelerra-cv/pull/2/commits/71fb05327d17a76d5735416a48d6175a6bac235a.patch")
-sha512sums=('SKIP'
-            'ffd8300125fae98109d297905e000f5a91762df21f15de36968ad103419e08cfef5c701ecd9c1ed716f7637b9156a6668b9da597754483665d1091af99d28827')
+source=("git+https://github.com/cinelerra-cv-team/cinelerra-cv.git")
+sha512sums=('SKIP')
+#options=(!lto)
 
-export CC=/usr/bin/gcc-9 CXX=/usr/bin/g++-9
 pkgver() {
-  cd "${pkgname}"
+  cd cinelerra-cv
   git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
-  cd "${pkgname}"
-#  patch -Np1 -i ../71fb05327d17a76d5735416a48d6175a6bac235a.patch
+  cd "${srcdir}/cinelerra-cv"
   ./autogen.sh
 }
 
 build() {
-  cd "${pkgname}"
+  export CFLAGS+="  -Wno-incompatible-pointer-types"
+  export CXXFLAGS+="  -Wno-incompatible-pointer-types"
+
+  cd cinelerra-cv
   # disable mmx due to improper use of registers in asm
   # - possibly a new problem since gcc 4.9
   ./configure pkg_config='pkg-config --static' \
@@ -49,7 +55,7 @@ build() {
 }
 
 package() {
-  cd "${pkgname}"
+  cd cinelerra-cv
   make DESTDIR="$pkgdir" install
   install -t "${pkgdir}/usr/share/doc/${pkgname}" \
     -vDm644 {AUTHORS,ChangeLog,NEWS,README.BUILD,TODO}
