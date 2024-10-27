@@ -14,7 +14,7 @@ pkgbase = mympc-git
 	depends = bash
 	provides = mympc
 	conflicts = mympc
-	source = git+https://gitlab.com/teraflops/mympc.git
+	source = git+https://gitlab.com/teraflops/mympc.git#branch=main
 	sha256sums = SKIP
 
 pkgname = mympc-git

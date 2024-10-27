@@ -11,7 +11,7 @@ depends=('zsh' 'mpc' 'mpd' 'python-mpd2' 'bash')
 makedepends=('git')
 provides=('mympc')
 conflicts=('mympc')
-source=("git+$url.git")
+source=("git+$url.git#branch=main")
 sha256sums=('SKIP')
 install="$pkgname.install"
 
@@ -30,4 +30,5 @@ package() {
   install -Dm644 "usr/local/share/mympc/tags.conf" "$pkgdir/usr/local/share/mympc/tags.conf"
   install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
+
 
