@@ -9,13 +9,18 @@ arch=(i686 x86_64 armv7h)
 url="https://www.musicpd.org/"
 license=(GPL)
 depends=(flac fmt icu libmpdclient liburing libpipewire systemd-libs zlib)
-makedepends=(boost meson python-sphinx systemd)
+makedepends=(boost git meson python-sphinx systemd)
 provides=("${_pkgname}=${pkgver}")
 conflicts=(${_pkgname})
-source=("${url}/download/${_pkgname}/${pkgver:0:4}/${_pkgname}-${pkgver}.tar.xz"{,.sig})
-sha512sums=(12329dbd0c1994c1bd95b88ce2a62a4c1d691b655e9e4fac7e9ef7066d0be3422b26fad3ea6ca144ba9b21add0a7c492c4f74fd2b68a1539bff2e0d2714db709 SKIP)
-b2sums=(78036078b850afab900b5d50e44ce83cbbf900369f5028d4177fdbfc4128dd3c35c59a773528a1fcfcc0179d0e579566b827fe87ef780a88082dc3b7f70cd5e7 SKIP)
+source=(${_pkgname}::git+https://github.com/MusicPlayerDaemon/MPD.git#tag=v${pkgver}?signed)
+sha512sums=(bce2314087725e709e5936f9e5e74ac1b4713cb3402aecf75ebc81d7eb7cab0237a6dfc90ba71672ffe60593a9c627b918c44c79e4f081b1b8987dbc2c029e17)
+b2sums=(c48d421ed44e13026ae880f62e03577b8a9dbf23e05adb217f5cfbc5702a7a66d08c353e9d85784203e0e511d23037836dad3053b9a82748c46f1b9d5a5d17a0)
 validpgpkeys=(0392335A78083894A4301C43236E8A58C6DB4512) # Max Kellermann <max@musicpd.org>
+
+prepare() {
+  cd ${_pkgname}
+  git -c user.name=builduser -c user.email=builduser@build.archlinux.org cherry-pick 1402869715e3efca87942d79c3173a6b21a6925d
+}
 
 build() {
   local _meson_options=(
@@ -105,13 +110,13 @@ build() {
     -D b_ndebug=true
   )
 
-  arch-meson "${_meson_options[@]}" build ${_pkgname}-${pkgver}
+  arch-meson "${_meson_options[@]}" build ${_pkgname}
   ninja -C build
 }
 
 package() {
     DESTDIR="${pkgdir}" ninja -C build install
-    install -vDm644 ${_pkgname}-${pkgver}/doc/mpdconf.example -t "${pkgdir}"/usr/share/doc/mpd/
+    install -vDm644 ${_pkgname}/doc/mpdconf.example -t "${pkgdir}"/usr/share/doc/mpd/
     # Remove system services and clean user one
     rm -vrf "${pkgdir}"/usr/lib/systemd/system/
     sed -e 's/After=network.target /After=/g' -e 's/AF_INET AF_INET6 AF_UNIX AF_NETLINK/AF_UNIX/g' -i "${pkgdir}"/usr/lib/systemd/user/mpd.service
