@@ -1,7 +1,7 @@
 # Maintainer: Yamashiro <dev cosmicheron com>
 
 pkgname="yquake2remaster"
-pkgver=8.42RR9
+pkgver=8.42RR10
 pkgrel=1
 pkgdesc='Experimental fork of Yamagi Quake II to add support for Quake II Enhanced/Remaster(ed)'
 url="https://github.com/yquake2/${pkgname}"
@@ -18,7 +18,7 @@ source=(
     "${pkgname}-xatrix.desktop"
 )
 sha512sums=(
-    'fb726bd04fa053a7c858b1436e8824a9e540abaeccb6ddfb580c3f4ecec86e30d6f8201e68d5cd8eaf66624dbabe8deda1c4a7ac2df88c43d5f4a4f96272daa6'
+    'd8aeef7ddca9ccc18e0cfad2c49d3c9c194a517f9552e1efc1d9bd4431484ad3184a4762675db477714fab9d2f9a1e656dc601249f4bf2189fdfb0f188bfcd98'
     'a26969f36ce9fe9a8a487ab53e74af1c2938edc6f68361b2c4a94c24878e0e21886c982f07ac3e4188cb37f5f2cba29cdead796c5a969da64470ef21938d1588'
     'c8d6ce61704e89bfef5e73cd2e6ec12ae5688f81f0c85c7935e5e3758f0f3442ee027db8a9abeb67018052a8992f28e42c734fb11e756606ed7a20238c7e4273'
     '2893839aa7974c53a9ce5dd02dab59da66f2f9e42c9504223becf05f935c90efcb973c92dcb33eeac629a692e42f80c5904cd4f279c7cd4be792e07bb11f6ec0'
