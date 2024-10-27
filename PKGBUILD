@@ -1,0 +1,26 @@
+# Maintainer: Doridian <archlinux at doridian dot net>
+
+pkgname=dimland-git
+pkgver=r36.3934c32
+pkgrel=1
+pkgdesc='Wayland screen dimmer'
+arch=('any')
+url='https://github.com/keifufu/dimland.git'
+license=('MIT')
+makedepends=('git' 'cargo')
+source=("${pkgname}::git+https://github.com/keifufu/dimland.git")
+sha256sums=('SKIP')
+
+pkgver() {
+  cd "${pkgname}"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+package() {
+  cd "${srcdir}/${pkgname}"
+  cargo build --release
+  mkdir -p "${pkgdir}/usr/bin"
+  cp target/release/dimland "${pkgdir}/usr/bin/dimland"
+}
+
+# vim:set ts=2 sw=2 et:
