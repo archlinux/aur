@@ -2,7 +2,7 @@
 
 pkgname=ttf-fustat
 pkgver=1.008
-pkgrel=1
+pkgrel=2
 pkgdesc="Fustat Font-Family"
 arch=('any')
 url="https://github.com/Kief-Type-Foundry/Fustat"

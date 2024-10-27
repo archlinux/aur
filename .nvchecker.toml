@@ -1,0 +1,3 @@
+[ttf-fustat]
+source = "git"
+git = "https://github.com/Kief-Type-Foundry/Fustat"
