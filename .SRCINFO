@@ -1,0 +1,11 @@
+pkgbase = ttf-fustat
+	pkgdesc = Fustat Font-Family
+	pkgver = 1.008
+	pkgrel = 1
+	url = https://github.com/Kief-Type-Foundry/Fustat
+	arch = any
+	license = OFL-1.1
+	source = https://github.com/Kief-Type-Foundry/Fustat/releases/download/v1.008/Fustat-v1.008.zip
+	sha256sums = b33b92c8c3066a0ece83de425453b7022684db959aa24e0ddc31608bfc32d94e
+
+pkgname = ttf-fustat
