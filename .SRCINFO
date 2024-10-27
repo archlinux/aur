@@ -1,20 +1,20 @@
 pkgbase = mcaselector
 	pkgdesc = An external tool to export or delete selected chunks and regions from a world save of Minecraft Java Edition.
-	pkgver = 2.4.1
-	pkgrel = 2
+	pkgver = 2.4.2
+	pkgrel = 1
 	url = https://github.com/Querz/mcaselector
 	arch = any
 	license = MIT
 	depends = java-runtime-openjdk>=21
 	depends = java-openjfx>=21
 	depends = bash
-	noextract = mcaselector-2.4.1.jar
+	noextract = mcaselector-2.4.2.jar
 	options = !strip
-	source = mcaselector-2.4.1.jar::https://github.com/Querz/mcaselector/releases/download/2.4.1/mcaselector-2.4.1.jar
+	source = mcaselector-2.4.2.jar::https://github.com/Querz/mcaselector/releases/download/2.4.2/mcaselector-2.4.2.jar
 	source = mcaselector.desktop
 	source = mcaselector.png
 	source = mcaselector
-	sha256sums = e1cce4a7bf9a91910fbe760b3051abaab84161a7c35710e8d62419630bda0111
+	sha256sums = dcaab7be4062cf7039b5448b36a0c7369a209c5d90f47854f165f07515717d21
 	sha256sums = 9f97cb7dbdfe2a5871223e7b529d0a621ac342120b53120eaf9d55c5ef9b5b4d
 	sha256sums = 8d572c0109cce3f4f4477fa964ff05908fa80536bef3099be783200e04e13931
 	sha256sums = 6637f93b8bfa69be65a0d9ae4efdbd09de3dae25742c24ec3d6126cf4847909a
