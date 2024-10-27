@@ -1,0 +1,16 @@
+pkgbase = shq
+	pkgdesc = shell queue
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://codeberg.org/tippfehlr/shq
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	arch = aarch64
+	license = MIT
+	makedepends = go
+	makedepends = git
+	source = git+https://codeberg.org/tippfehlr/shq#tag=v0.1.0
+	sha512sums = cfc6862d3f215ff53abf51bda019b8a87e321ad11960fb05a9d8b440982f5e5589387d3757a3b12724dab97d2957edf7d8c0a5d6411123806d70b3dfbe882e45
+
+pkgname = shq
