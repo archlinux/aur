@@ -2,16 +2,16 @@
 
 pkgbase=neovim-zenbones
 pkgname=('neovim-zenbones' 'vim-zenbones' 'neovim-zenbones-extras')
-pkgver=4.2.0
+pkgver=4.3.5
 pkgrel=1
-_commit=bbc8f49
+_commit=006f15a
 pkgdesc="Contrast-focused Neovim colorscheme"
 arch=('any')
 url="https://github.com/mcchrish/zenbones.nvim"
 license=('MIT')
 makedepends=('git')
 source=("$pkgbase::git+$url#commit=$_commit?signed")
-sha256sums=('b632e41a5440274f717a40d589e989c8ad7222417448ce99c1ffba7c7eddd4b4')
+sha256sums=('e10c03e00020c58067496df060abe639b14cdeca1e8a4fd81c5109c44a6c340f')
 validpgpkeys=('968479A1AFF927E37D1A566BB5690EEEBB952194')
 
 package_neovim-zenbones() {
