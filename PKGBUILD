@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc='Lightweight Kubernetes'
 arch=(x86_64)
 url='https://k3s.io'
-license=(Apache)
+license=(Apache-2.0)
 makedepends=(
   git podman
   # these are (some of) the tools that are installed into the "builder"
