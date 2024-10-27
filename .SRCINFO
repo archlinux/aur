@@ -1,0 +1,15 @@
+pkgbase = nvidia-patch-git
+	pkgdesc = apply nvidia-patch by keylase automatically, unlock nvfbc and nvenc limit
+	pkgver = r1083.ac0afeb
+	pkgrel = 1
+	url = https://github.com/keylase/nvidia-patch
+	arch = x86_64
+	license = unknown
+	makedepends = git
+	depends = nvidia-utils
+	provides = nvidia-patch
+	conflicts = nvidia-patch
+	source = git+https://github.com/keylase/nvidia-patch.git
+	sha1sums = SKIP
+
+pkgname = nvidia-patch-git
