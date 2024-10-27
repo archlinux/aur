@@ -1,6 +1,6 @@
 pkgbase = python-griffe-inherited-docstrings
 	pkgdesc = Griffe extension for inheriting docstrings.
-	pkgver = 1.0.1
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://mkdocstrings.github.io/griffe-inherited-docstrings
 	arch = any
@@ -10,8 +10,8 @@ pkgbase = python-griffe-inherited-docstrings
 	makedepends = python-pdm-backend
 	makedepends = python-build
 	makedepends = python-installer
-	source = https://files.pythonhosted.org/packages/source/g/griffe_inherited_docstrings/griffe_inherited_docstrings-1.0.1.tar.gz
-	md5sums = 880f6065576829e2efdf66773117eaf1
+	source = https://files.pythonhosted.org/packages/source/g/griffe_inherited_docstrings/griffe_inherited_docstrings-1.1.0.tar.gz
+	md5sums = a5f6aa4f2bb62e2c8fd53ef2be8afc75
 
 pkgname = python-griffe-inherited-docstrings
 	depends = python-griffe>=0.49

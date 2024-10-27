@@ -5,7 +5,7 @@ _pname=${pkgbase#python-}
 _pyname=${_pname//-/_}
 pkgname=("python-${_pname}")
 #"python-${_pname}-doc")
-pkgver=1.0.1
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="Griffe extension for inheriting docstrings."
 arch=('any')
@@ -15,10 +15,9 @@ makedepends=('python-pdm-backend'
              'python-build'
              'python-installer')
 checkdepends=('python-pytest'
-              'python-griffe'
-              )
+              'python-griffe')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('880f6065576829e2efdf66773117eaf1')
+md5sums=('a5f6aa4f2bb62e2c8fd53ef2be8afc75')
 
 #prepare() {
 #    cd ${srcdir}/${_pyname}-${pkgver}
@@ -41,7 +40,7 @@ check() {
 
     mkdir -p dist/lib
     bsdtar -xpf dist/${_pyname//-/_}-${pkgver}-py3-none-any.whl -C dist/lib
-    PYTHONPATH="dist/lib" pytest || warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count
+    PYTHONPATH="dist/lib" pytest || warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count #
 }
 
 package_python-griffe-inherited-docstrings() {
