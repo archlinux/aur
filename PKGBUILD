@@ -3,7 +3,7 @@
 _pkgname="wrapland"
 pkgname="$_pkgname"
 pkgver=0.602.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Qt/C++ library wrapping libwayland (kwinft)'
 url="https://github.com/winft/wrapland"
 license=('LGPL-2.1-only')
@@ -15,12 +15,9 @@ depends=(
   wayland
 )
 makedepends=(
-  clang
   doxygen
   extra-cmake-modules
   git
-  lld
-  llvm
   microsoft-gsl
   ninja
   wayland-protocols
@@ -32,10 +29,6 @@ source=("$_pkgsrc.$_pkgext"::"$url/archive/refs/tags/v$pkgver.$_pkgext")
 sha256sums=('553f655cc82dd82b2015f28d41e22b0f51a5d6dff6cf4605b589a2a2bee74b6a')
 
 build() {
-  export CC=clang
-  export CXX=clang++
-  export LDFLAGS+=" -fuse-ld=lld"
-
   local _cmake_options=(
     -B build
     -S "$_pkgsrc"
