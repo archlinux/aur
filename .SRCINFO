@@ -1,6 +1,6 @@
 pkgbase = dbeaver-ce-bin
 	pkgdesc = Free universal SQL Client for developers and database administrators (community edition)
-	pkgver = 24.1.2
+	pkgver = 24.2.3
 	pkgrel = 1
 	url = https://dbeaver.io/
 	install = dbeaver.install
@@ -19,16 +19,14 @@ pkgbase = dbeaver-ce-bin
 	provides = dbeaver-plugin-sshj-lib
 	conflicts = dbeaver-plugin-sshj-lib
 	conflicts = dbeaver
-	source = dbeaver-ce-24.1.2.linux.gtk.x86_64-nojdk.tar.gz::https://github.com/dbeaver/dbeaver/releases/download/24.1.2/dbeaver-ce-24.1.2-linux.gtk.x86_64-nojdk.tar.gz
+	source = dbeaver-ce-24.2.3.linux.gtk.x86_64-nojdk.tar.gz::https://github.com/dbeaver/dbeaver/releases/download/24.2.3/dbeaver-ce-24.2.3-linux.gtk.x86_64-nojdk.tar.gz
 	source = io.dbeaver.DBeaver.desktop
 	source = dbeaver.sh
-	source = dbeaver.profile.gz
 	source = dbeaver.hook
 	source = dbeaver.install
-	sha256sums = 4d0665e53100004782fbf74ae05ee76f23ce53762e5e178bc2b158ffc786b680
+	sha256sums = 4ef0e9a047276414bc3918201702ccf34157b09f045cabd148f527f95b4d4e4f
 	sha256sums = 9480a7d08f680e10c399db070c5a04cbabf282442602a2ef83d1159fe7c3e88b
 	sha256sums = 406a2980806c394670e88b1ae70134900be376c2ea4a4216610591cc8b557526
-	sha256sums = 1863e74bdcf22b7328e6e8487cbebff7d5360e34bde85c1dd226b168b4737034
 	sha256sums = f8b763ca210bfa4d9a4e407b656ba4f5d1bf2f3f54c67044f7a4dd0c3625fc22
 	sha256sums = f8d65dd933049b587a5815ea75a30ef944300b812df383ca1c2dcd68280bc7ab
 
