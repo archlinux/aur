@@ -8,7 +8,7 @@ url="https://www.bunkus.org/videotools/mkvtoolnix"
 license=('GPL')
 groups=()
 depends=('libmatroska' 'expat' 'flac' 'libvorbis' 'file' 'boost-libs' 'lzo' 'wxgtk' 'xdg-utils' 'desktop-file-utils' 'qt5-base' 'libogg' 'zlib' 'curl' 'libxkbcommon-x11')
-makedepends=('libmatroska' 'flac' 'libvorbis' 'file' 'wxgtk'
+makedepends=('libmatroska' 'flac' 'libvorbis' 'file' 'wxgtk' 'ruby-erb'
              'boost-libs' 'lzo' 'xdg-utils' 'boost' 'ruby' 'git' 'libxslt' 'po4a' 'docbook-xsl'
 	     'cmark' 'rake' 'qt5-multimedia')
 
