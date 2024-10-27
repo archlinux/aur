@@ -2,7 +2,7 @@
 
 pkgname=firebase-tools-bin
 pkgver=13.23.0
-pkgrel=1
+pkgrel=2
 pkgdesc=" The Firebase Command Line Tools (bundled official standalone binary)"
 arch=('x86_64')
 url="https://github.com/firebase/firebase-tools"
@@ -20,7 +20,7 @@ source=(
     "LICENSE-13.23.0::https://github.com/firebase/firebase-tools/raw/v13.23.0/LICENSE"
     )
 md5sums=(
-    '9d1ead73e678fa2f51a70a933b0bf017'
+    '432f6c1260f569b251a781b4cd34b12f'
     '6ea8f4d1de9a164d33ffe95483a58af4'
     )
 
