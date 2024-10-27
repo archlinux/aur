@@ -1,6 +1,6 @@
 pkgbase = python-diffusers
 	pkgdesc = Pretrained diffusion models for image and audio generation in PyTorch
-	pkgver = 0.30.3
+	pkgver = 0.31.0
 	pkgrel = 1
 	url = https://github.com/huggingface/diffusers
 	arch = any
@@ -17,10 +17,13 @@ pkgbase = python-diffusers
 	depends = python-regex
 	depends = python-requests
 	depends = python-safetensors
-	optdepends = python-tensorflow: TensorFlow support
-	optdepends = python-pytorch: PyTorch support
+	optdepends = python-accelerate: multi-GPU and TPU training support
+	optdepends = python-datasets: datasets and data loading
 	optdepends = python-flax: JAX/FLAX support
-	source = diffusers-0.30.3.tar.gz::https://github.com/huggingface/diffusers/archive/refs/tags/v0.30.3.tar.gz
-	sha256sums = 5ff41f57178a5ad54fdff89b3b5b053fd66c740d904d076acd9599be5d04fb1c
+	optdepends = python-peft: parameter efficient fine-tunning
+	optdepends = python-pytorch: PyTorch support
+	optdepends = python-tensorflow: TensorFlow support
+	source = diffusers-0.31.0.tar.gz::https://github.com/huggingface/diffusers/archive/refs/tags/v0.31.0.tar.gz
+	sha256sums = 31c4e402f6d29e6b2741c8cad87f0b5307393ffabc5bbe843824c182b3408989
 
 pkgname = python-diffusers
