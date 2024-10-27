@@ -2,7 +2,7 @@
 
 _pkgname="disman"
 pkgname="$_pkgname"
-pkgver=0.601.0
+pkgver=0.602.0
 pkgrel=1
 pkgdesc='Qt/C++ display management library (kwinft)'
 url="https://github.com/winft/disman"
@@ -13,9 +13,7 @@ depends=(
   kcoreaddons
   kwayland
   qt6-base
-
-  # AUR
-  wrapland
+  wrapland # AUR
 )
 makedepends=(
   extra-cmake-modules
@@ -27,7 +25,7 @@ makedepends=(
 _pkgsrc="$_pkgname-$pkgver"
 _pkgext="tar.gz"
 source=("$_pkgsrc.$_pkgext"::"$url/archive/refs/tags/v$pkgver.$_pkgext")
-sha256sums=('5c8277d50660b59ba731e0a9052521702b65717b72a298cf0ec37bfa8d5d8cc4')
+sha256sums=('52b0ad142d5b127b0fccc4ac0574381eb116f108391d8c3af7e1cd6d9c687602')
 
 prepare() {
   sed -E \

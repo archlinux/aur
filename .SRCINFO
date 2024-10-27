@@ -1,6 +1,6 @@
 pkgbase = disman
 	pkgdesc = Qt/C++ display management library (kwinft)
-	pkgver = 0.601.0
+	pkgver = 0.602.0
 	pkgrel = 1
 	url = https://github.com/winft/disman
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = disman
 	depends = kwayland
 	depends = qt6-base
 	depends = wrapland
-	source = disman-0.601.0.tar.gz::https://github.com/winft/disman/archive/refs/tags/v0.601.0.tar.gz
-	sha256sums = 5c8277d50660b59ba731e0a9052521702b65717b72a298cf0ec37bfa8d5d8cc4
+	source = disman-0.602.0.tar.gz::https://github.com/winft/disman/archive/refs/tags/v0.602.0.tar.gz
+	sha256sums = 52b0ad142d5b127b0fccc4ac0574381eb116f108391d8c3af7e1cd6d9c687602
 
 pkgname = disman
