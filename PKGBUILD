@@ -3,7 +3,7 @@ _pkgname=SpaceCadetPinball-bin
 rpkgname=spacecadetpinball
 _rpkgname=SpaceCadetPinball
 pkgver=2.1.0
-pkgrel=1
+pkgrel=2
 scriptver=1.0.0
 _pkgrel_x86_64=1
 _pkgrel_i386=1
@@ -13,7 +13,7 @@ pkgdesc='Reverse engineered port of "3D Pinball for Windows – Space Cadet" to 
 arch=('pentium4' 'i386' 'i686' 'x86_64' 'aarch64')
 url="https://gitlab.com/linuxbombay/spacecadetpinball"
 license=('GPL')
-depends=('wget' 'unzip' 'yad')
+depends=('sdl2' 'sdl2_mixer' 'wget' 'unzip' 'yad')
 makedepends=('unzip')
 sha256sums_i386=('22691f50626242e88f2a7c7165774271b3fa96cdfa39bc9edaa1cd615eb3b411'
                  'c8942dc85637f4a1b3a5bda00be247dbcb6f7047487649f9f532079bf6e0952d')

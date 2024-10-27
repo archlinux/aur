@@ -1,7 +1,7 @@
 pkgbase = spacecadetpinball-bin
 	pkgdesc = Reverse engineered port of "3D Pinball for Windows – Space Cadet" to Linux
 	pkgver = 2.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/linuxbombay/spacecadetpinball
 	arch = pentium4
 	arch = i386
@@ -10,6 +10,8 @@ pkgbase = spacecadetpinball-bin
 	arch = aarch64
 	license = GPL
 	makedepends = unzip
+	depends = sdl2
+	depends = sdl2_mixer
 	depends = wget
 	depends = unzip
 	depends = yad
