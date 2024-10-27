@@ -1,3 +1,7 @@
+2024-10-27
+	upstream update: 3.54.0 -> 3.54.1
+	fix translations
+
 2024-09-17
 	upstream upgrade: 3.52.2 -> 3.54.0
 	remove python-packaging from makedepends

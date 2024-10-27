@@ -1,4 +1,4 @@
-From 6edc912f33e257d822c5736b9f802feb277795a3 Mon Sep 17 00:00:00 2001
+From af6d34650b190b73c14e3c5acd22f82a4faa0d23 Mon Sep 17 00:00:00 2001
 From: Debarshi Ray <debarshir@gnome.org>
 Date: Mon, 12 May 2014 14:57:18 +0200
 Subject: [PATCH 1/4] Restore transparency
@@ -234,10 +234,10 @@ index 36eb7ce7..a41d2de2 100644
    uuid_unparse (u, uuidstr);
    priv->uuid = g_strdup (uuidstr);
 -- 
-2.46.0
+2.47.0
 
 
-From 43111337ab901365c63604696583f11554ca4fb1 Mon Sep 17 00:00:00 2001
+From d64d4febb7afb40b53806dab66214ac34ff815d4 Mon Sep 17 00:00:00 2001
 From: Lars Uebernickel <lars.uebernickel@canonical.com>
 Date: Wed, 28 May 2014 14:11:02 +0200
 Subject: [PATCH 2/4] window: Make the drawing robust across all themes
@@ -296,10 +296,10 @@ index a41d2de2..11d93419 100644
    widget_class->screen_changed = terminal_window_screen_changed;
    widget_class->style_updated = terminal_window_style_updated;
 -- 
-2.46.0
+2.47.0
 
 
-From 03665d6d042967553169fd6178735a0987296f40 Mon Sep 17 00:00:00 2001
+From c3690b628bcd233db5bb715ec722868b334521b3 Mon Sep 17 00:00:00 2001
 From: "Owen W. Taylor" <otaylor@fishsoup.net>
 Date: Fri, 13 Nov 2015 15:16:42 +0100
 Subject: [PATCH 3/4] screen, window: Extra padding around transparent
@@ -431,108 +431,108 @@ index 11d93419..61857bfe 100644
  
    return GTK_WIDGET_CLASS (terminal_window_parent_class)->draw (widget, cr);
 -- 
-2.46.0
+2.47.0
 
 
-From 49c335ddd82275ffd7c0e9b4b7219fcd087495fd Mon Sep 17 00:00:00 2001
+From 9e2b40e0bd6f75985282e683a47fa489b322049f Mon Sep 17 00:00:00 2001
 From: Debarshi Ray <debarshir@gnome.org>
 Date: Tue, 17 Feb 2015 17:06:17 +0100
 Subject: [PATCH 4/4] Restore translations for setting a title and transparency
 
 ---
- po/am.po          |   8 +-
- po/an.po          |  12 +-
- po/ar.po          |  16 +-
- po/as.po          |  16 +-
- po/ast.po         |   8 +-
- po/az.po          |   8 +-
- po/be.po          |   3 +
- po/be@latin.po    |   8 +-
- po/bg.po          |   9 +
- po/bn.po          |   8 +-
- po/bn_IN.po       |  11 +-
- po/br.po          |   6 +-
- po/bs.po          |  10 +
- po/ca.po          |  12 +
- po/ca@valencia.po |  12 +
- po/cs.po          |  12 +-
- po/cy.po          |   8 +-
- po/da.po          |  12 +
- po/de.po          |  12 +
- po/dz.po          |   8 +-
- po/el.po          |  15 +-
- po/en@shaw.po     |   8 +-
- po/en_CA.po       |   8 +-
- po/en_GB.po       |  16 +-
- po/eo.po          |   8 +-
- po/es.po          |  16 +-
- po/et.po          |   3 +
- po/eu.po          |  12 +
- po/fa.po          |  18 +-
- po/fi.po          |  12 +
- po/fr.po          |  24 ++
- po/fur.po         |  11 +-
- po/ga.po          |   3 +
- po/gl.po          |  15 +-
- po/gu.po          |  16 +-
- po/he.po          |  16 +-
- po/hi.po          |  17 +-
- po/hr.po          |  10 +
- po/hu.po          |  12 +
- po/hy.po          |   8 +-
- po/id.po          |  12 +
- po/it.po          |  12 +
- po/ja.po          |  12 +
- po/ka.po          |   5 +
- po/kk.po          |  12 +
- po/km.po          |   4 +-
- po/kn.po          |  15 +-
- po/ko.po          |  12 +
- po/ku.po          |   8 +-
- po/lt.po          |  12 +
- po/lv.po          |  16 ++
- po/mai.po         |   8 +-
- po/mg.po          |   8 +-
- po/mk.po          |   8 +-
- po/ml.po          |   3 +
- po/mn.po          |   8 +-
- po/mr.po          |  16 +-
- po/ms.po          |   4 +-
- po/nb.po          |  12 +
- po/nds.po         |   8 +-
- po/ne.po          |  11 +-
- po/nl.po          |  12 +
- po/nn.po          |   8 +-
- po/oc.po          |  12 +-
- po/or.po          |   4 +-
- po/pa.po          |  23 +-
- po/ps.po          |   8 +-
- po/pt.po          |  16 +-
- po/pt_BR.po       |  12 +
- po/ro.po          |   4 +-
- po/ru.po          |  16 ++
- po/rw.po          |   3 +-
- po/si.po          |   8 +-
- po/sk.po          |  12 +
- po/sl.po          | 559 +---------------------------------------------
- po/sq.po          |   8 +-
- po/sr.po          |  22 +-
- po/sr@latin.po    |  22 +-
- po/sv.po          |  12 +
- po/ta.po          |  27 ++-
- po/te.po          |  27 ++-
- po/tg.po          |  16 +-
- po/th.po          |  20 +-
- po/tr.po          |  12 +
- po/ug.po          |   4 +-
- po/uk.po          |  15 ++
- po/vi.po          |  15 +-
- po/wa.po          |  12 +-
- po/xh.po          |  12 +-
- po/zh_CN.po       |  15 +-
- po/zh_HK.po       |  15 +-
- po/zh_TW.po       |  15 +-
- 92 files changed, 734 insertions(+), 885 deletions(-)
+ po/am.po          |  8 ++++----
+ po/an.po          | 12 ++++++------
+ po/ar.po          | 16 ++++++++--------
+ po/as.po          | 16 ++++++++--------
+ po/ast.po         |  8 ++++----
+ po/az.po          |  8 ++++----
+ po/be.po          |  3 +++
+ po/be@latin.po    |  8 ++++----
+ po/bg.po          |  9 +++++++++
+ po/bn.po          |  8 ++++----
+ po/bn_IN.po       | 11 +++++++----
+ po/br.po          |  6 +++---
+ po/bs.po          | 10 ++++++++++
+ po/ca.po          | 12 ++++++++++++
+ po/ca@valencia.po | 12 ++++++++++++
+ po/cs.po          | 12 ++++++++++--
+ po/cy.po          |  8 ++++----
+ po/da.po          | 12 ++++++++++++
+ po/de.po          | 12 ++++++++++++
+ po/dz.po          |  8 ++++----
+ po/el.po          | 15 +++++++++------
+ po/en@shaw.po     |  8 ++++----
+ po/en_CA.po       |  8 ++++----
+ po/en_GB.po       | 16 ++++++++--------
+ po/eo.po          |  8 ++++----
+ po/es.po          | 16 ++++++++--------
+ po/et.po          |  3 +++
+ po/eu.po          | 12 ++++++++++++
+ po/fa.po          | 18 ++++++++++++------
+ po/fi.po          | 12 ++++++++++++
+ po/fr.po          | 24 ++++++++++++++++++++++++
+ po/fur.po         | 11 +++++++++--
+ po/ga.po          |  3 +++
+ po/gl.po          | 15 +++++++++------
+ po/gu.po          | 16 ++++++++--------
+ po/he.po          | 16 ++++++++--------
+ po/hi.po          | 17 ++++++++---------
+ po/hr.po          | 10 ++++++++++
+ po/hu.po          | 12 ++++++++++++
+ po/hy.po          |  8 ++++----
+ po/id.po          | 12 ++++++++++++
+ po/it.po          | 12 ++++++++++++
+ po/ja.po          | 12 ++++++++++++
+ po/ka.po          |  5 +++++
+ po/kk.po          | 12 ++++++++++++
+ po/km.po          |  4 ++--
+ po/kn.po          | 15 +++++++++------
+ po/ko.po          | 12 ++++++++++++
+ po/ku.po          |  8 ++++----
+ po/lt.po          | 12 ++++++++++++
+ po/lv.po          | 16 ++++++++++++++++
+ po/mai.po         |  8 ++++----
+ po/mg.po          |  8 ++++----
+ po/mk.po          |  8 ++++----
+ po/ml.po          |  3 +++
+ po/mn.po          |  8 ++++----
+ po/mr.po          | 16 ++++++++--------
+ po/ms.po          |  4 ++--
+ po/nb.po          | 12 ++++++++++++
+ po/nds.po         |  8 ++++----
+ po/ne.po          | 11 +++++++----
+ po/nl.po          | 12 ++++++++++++
+ po/nn.po          |  8 ++++----
+ po/oc.po          | 12 ++++++------
+ po/or.po          |  4 ++--
+ po/pa.po          | 23 +++++++++++------------
+ po/ps.po          |  8 ++++----
+ po/pt.po          | 16 ++++++++--------
+ po/pt_BR.po       | 12 ++++++++++++
+ po/ro.po          |  4 ++--
+ po/ru.po          | 16 ++++++++++++++++
+ po/rw.po          |  3 +--
+ po/si.po          |  8 ++++----
+ po/sk.po          | 12 ++++++++++++
+ po/sl.po          | 12 ++++++++++++
+ po/sq.po          |  8 ++++----
+ po/sr.po          | 22 ++++++++++++----------
+ po/sr@latin.po    | 22 ++++++++++++----------
+ po/sv.po          | 12 ++++++++++++
+ po/ta.po          | 27 +++++++++++++--------------
+ po/te.po          | 27 +++++++++++++--------------
+ po/tg.po          | 16 ++++++++--------
+ po/th.po          | 20 ++++++++++----------
+ po/tr.po          | 12 ++++++++++++
+ po/ug.po          |  4 ++--
+ po/uk.po          | 15 +++++++++++++++
+ po/vi.po          | 15 +++++++++------
+ po/wa.po          | 12 ++++++------
+ po/xh.po          | 12 ++++++------
+ po/zh_CN.po       | 15 +++++++++------
+ po/zh_HK.po       | 15 +++++++++------
+ po/zh_TW.po       | 15 +++++++++------
+ 92 files changed, 738 insertions(+), 334 deletions(-)
 
 diff --git a/po/am.po b/po/am.po
 index 3445d96d..ee992f07 100644
@@ -734,13 +734,13 @@ index 586c1e4d..4bd84679 100644
  #: ../src/gnome-terminal.glade2.h:103
  msgid "_Update login records when command is launched"
 diff --git a/po/be.po b/po/be.po
-index 298ec2d6..50f46093 100644
+index 75b26123..1a1620a1 100644
 --- a/po/be.po
 +++ b/po/be.po
-@@ -2635,3 +2635,6 @@ msgstr "_Закрыць акно"
- 
- #~ msgid "Current Locale"
- #~ msgstr "Дзейная лакальнасць"
+@@ -2533,3 +2533,6 @@ msgstr "_Закрыць акно"
+ #, c-format
+ msgid "Failed to parse arguments: %s\n"
+ msgstr "Не ўдалося разабраць аргументы: %s\n"
 +
 +msgid "Transparent background"
 +msgstr "Празрысты фон"
@@ -929,10 +929,10 @@ index a6e8fb42..c9ed8508 100644
 +msgid "Set Title"
 +msgstr "Estableix el títol"
 diff --git a/po/cs.po b/po/cs.po
-index 8f3d7dcc..65f5da9c 100644
+index 9cf70a75..3cec4465 100644
 --- a/po/cs.po
 +++ b/po/cs.po
-@@ -2484,6 +2484,14 @@ msgstr "Selhala analýza argumentů: %s\n"
+@@ -2555,6 +2555,14 @@ msgstr "Selhala analýza argumentů: %s\n"
  
  #~ msgid "Armenian"
  #~ msgstr "Arménské"
@@ -2321,10 +2321,10 @@ index b25a2cb4..3855b2f3 100644
  #: ../src/profile-preferences.glade.h:70
  msgid "_Update login records when command is launched"
 diff --git a/po/pt.po b/po/pt.po
-index e2e65775..b9a3981b 100644
+index 0db6f389..5a7de508 100644
 --- a/po/pt.po
 +++ b/po/pt.po
-@@ -2874,11 +2874,11 @@ msgstr "Falha ao processar argumentos: %s\n"
+@@ -2950,11 +2950,11 @@ msgstr "Falha ao processar argumentos: %s\n"
  #~ msgid "Default size:"
  #~ msgstr "Tamanho predefinido:"
  
@@ -2340,7 +2340,7 @@ index e2e65775..b9a3981b 100644
  
  #~ msgid "Title and Command"
  #~ msgstr "Título e comando"
-@@ -2886,8 +2886,8 @@ msgstr "Falha ao processar argumentos: %s\n"
+@@ -2962,8 +2962,8 @@ msgstr "Falha ao processar argumentos: %s\n"
  #~ msgid "_Unlimited"
  #~ msgstr "_Ilimitado"
  
@@ -2351,7 +2351,7 @@ index e2e65775..b9a3981b 100644
  
  #~ msgid "Current Locale"
  #~ msgstr "Configuração Regional Atual"
-@@ -3642,8 +3642,8 @@ msgstr "Falha ao processar argumentos: %s\n"
+@@ -3718,8 +3718,8 @@ msgstr "Falha ao processar argumentos: %s\n"
  #~ msgid "Background image _scrolls"
  #~ msgstr "Imagem de fundo _rola"
  
@@ -2363,13 +2363,13 @@ index e2e65775..b9a3981b 100644
  #~ msgid "S_hade transparent or image background:"
  #~ msgstr "Transparente som_breado ou imagem de fundo:"
 diff --git a/po/pt_BR.po b/po/pt_BR.po
-index 4fac562a..117f63bb 100644
+index 68b4cd90..e6d7ed43 100644
 --- a/po/pt_BR.po
 +++ b/po/pt_BR.po
-@@ -2423,3 +2423,15 @@ msgstr "_Fechar janela"
- #, c-format
- msgid "Failed to parse arguments: %s\n"
- msgstr "Falha ao analisar os argumentos: %s\n"
+@@ -2575,3 +2575,15 @@ msgstr "Falha ao analisar os argumentos: %s\n"
+ #~ msgctxt "theme variant"
+ #~ msgid "Dark"
+ #~ msgstr "Escuro"
 +
 +msgid "Title"
 +msgstr "Título"
@@ -2398,10 +2398,10 @@ index 627aea90..14d04172 100644
  #~ msgid "_Unlimited"
  #~ msgstr "_Neliminat"
 diff --git a/po/ru.po b/po/ru.po
-index 038243fb..143aa084 100644
+index f977d040..3db81cd6 100644
 --- a/po/ru.po
 +++ b/po/ru.po
-@@ -2781,3 +2781,19 @@ msgstr "Не удалось разобрать аргументы: %s\n"
+@@ -2853,3 +2853,19 @@ msgstr "Не удалось разобрать аргументы: %s\n"
  
  #~ msgid "_Add or Remove…"
  #~ msgstr "_Добавить или удалить…"
@@ -2489,573 +2489,23 @@ index e6745075..20d303c8 100644
 +msgid "Set Title"
 +msgstr "Nastaviť titulok"
 diff --git a/po/sl.po b/po/sl.po
-index eeb90d91..e49a4879 100644
+index 2c328cd5..fd918111 100644
 --- a/po/sl.po
 +++ b/po/sl.po
-@@ -2462,557 +2462,14 @@ msgstr "_Zapri okno"
+@@ -2520,3 +2520,15 @@ msgstr "_Zapri okno"
+ #, c-format
  msgid "Failed to parse arguments: %s\n"
  msgstr "Napaka med razčlenjevanjem argumentov: %s\n"
- 
--#~ msgid "org.gnome.Terminal"
--#~ msgstr "org.gnome.Terminal"
++
 +msgid "Title"
 +msgstr "Naslov"
- 
--#~ msgid "Armenian"
--#~ msgstr "Armenski"
++ 
 +msgid "_Title:"
 +msgstr "_Naziv:"
- 
--#~ msgid "Georgian"
--#~ msgstr "Gruzijski"
++ 
 +msgid "Set Title"
 +msgstr "Določitev naziva okna"
- 
--#~ msgid "Whether to allow bold text"
--#~ msgstr "Ali naj se dovoli krepko besedilo"
--
--#~ msgid "If true, allow applications in the terminal to make text boldface."
--#~ msgstr ""
--#~ "Izbrana možnost omogoča, da programi izpišejo krepko oblikovano besedilo"
--
--#~ msgid "Hindi"
--#~ msgstr "Hindujski"
--
--#~ msgid "Persian"
--#~ msgstr "Perzijski"
--
--#~ msgid "Gujarati"
--#~ msgstr "Gujaratski"
--
--#~ msgid "Gurmukhi"
--#~ msgstr "Gurmukijski"
--
--#~ msgid "Icelandic"
--#~ msgstr "Islandski"
--
--#~ msgid "Set _Character Encoding"
--#~ msgstr "Določi nabor _znakov"
--
--#~ msgid "Move Tab _Left"
--#~ msgstr "Premakni zavihek _levo"
--
--#~ msgid "Move Tab _Right"
--#~ msgstr "Premakni zavihek _desno"
--
--#~ msgid "_Detach Tab"
--#~ msgstr "_Odpni zavihek"
--
--#~ msgid "Whether to show menubar in new windows/tabs"
--#~ msgstr "Ali naj bo v novih oknih ali zavihkih vidna menijska vrstica"
--
--#~ msgid "True if the menubar should be shown in new window"
--#~ msgstr ""
--#~ "Izbrana možnost določa, da bo v novih oknih prikazana menijska vrstica"
--
--#~ msgid "_Quit"
--#~ msgstr "_Končaj"
--
--#~ msgid "Unnamed"
--#~ msgstr "Neimenovan"
--
--#~ msgid "Open in _Midnight Commander"
--#~ msgstr "Odpri s programom _Midnight Commander"
--
--#~ msgid ""
--#~ "Open the currently selected folder in the terminal file manager Midnight "
--#~ "Commander"
--#~ msgstr ""
--#~ "Odpri trenutno izbrano mapo v terminalu s programom Midnight Commander"
--
--#~ msgid ""
--#~ "Open the currently open folder in the terminal file manager Midnight "
--#~ "Commander"
--#~ msgstr ""
--#~ "Odpri trenutno odprto mapo v terminalu s programom Midnight Commander"
--
--#~ msgid "Open _Midnight Commander"
--#~ msgstr "Odpri program _Midnight Commander"
--
--#~ msgid "Open the terminal file manager Midnight Commander"
--#~ msgstr "V terminalu odpri program Midnight Commander"
--
--#~ msgid "Verbose output"
--#~ msgstr "Podroben izpis"
--
--#~ msgid "Output options:"
--#~ msgstr "Možnosti izpisa:"
--
--#~ msgid "Show output options"
--#~ msgstr "Prikaže možnosti odvoda"
--
--#~ msgid "“%s” is not a valid application ID"
--#~ msgstr "»%s« ni veljaven ID programa"
--
--#~ msgid "Server application ID"
--#~ msgstr "ID programa strežnika"
--
--#~ msgid "ID"
--#~ msgstr "ID"
--
--#~ msgid "Show completions"
--#~ msgstr "Pokaži dopolnjevanje"
--
--#~ msgid "Global options:"
--#~ msgstr "Splošne možnosti:"
--
--#~ msgid "Show global options"
--#~ msgstr "Pokaže splošne možnosti"
--
--#~ msgid "FD passing of stdin is not supported"
--#~ msgstr "Sklic FD na standardni vhod ni podprt"
--
--#~ msgid "FD passing of stdout is not supported"
--#~ msgstr "Sklic FD na standardni izhod ni podprt"
--
--#~ msgid "FD passing of stderr is not supported"
--#~ msgstr "Sklic FD na standardno napako ni podprt"
--
--#~ msgid "Invalid argument “%s” to --fd option"
--#~ msgstr "Neveljaven argument »%s« za možnost --fd"
--
--#~ msgid "Forward stdin"
--#~ msgstr "Posreduj standardni vhod"
--
--#~ msgid "Forward stdout"
--#~ msgstr "Posreduj standardni izhod"
--
--#~ msgid "Forward stderr"
--#~ msgstr "Posreduj standardno napako"
--
--#~ msgid "Exec options:"
--#~ msgstr "Možnosti izvajanja:"
--
--#~ msgid "Show exec options"
--#~ msgstr "Prikaže možnosti izvajanja"
--
--#~ msgid "Maximise the window"
--#~ msgstr "Razpni okno"
--
--#~ msgid "Window options:"
--#~ msgstr "Možnosti okna:"
--
--#~ msgid "Show window options"
--#~ msgstr "Pokaži možnosti okna"
--
--#~ msgid "Zoom value “%s” is outside allowed range"
--#~ msgstr "Vrednost približanja »%s« je izven veljavnega območja"
--
--#~ msgid "UUID"
--#~ msgstr "UUID"
--
--#~ msgid "Terminal options:"
--#~ msgstr "Možnosti terminala:"
--
--#~ msgid "Processing options:"
--#~ msgstr "Možnosti opravil:"
--
--#~ msgid "Show processing options"
--#~ msgstr "Prikaže možnosti opravil"
--
--#~ msgid "Missing argument"
--#~ msgstr "Manjka argument"
--
--#~ msgid "Unknown command “%s”"
--#~ msgstr "Neznan ukaz »%s«"
--
--#~ msgid "“%s” needs the command to run as arguments after “--”"
--#~ msgstr "»%s« zahteva ukaz za zagon ukaza kot argument za '--'"
--
--#~ msgid "Extraneous arguments after “--”"
--#~ msgstr "Dodatni argument za » -- «"
--
--#~ msgid "GTerminal"
--#~ msgstr "GTerminal"
--
--#~ msgid "Error processing arguments: %s\n"
--#~ msgstr "Napaka med obdelavo argumentov: %s\n"
--
--#~ msgid "Keyboard shortcut to create a new profile"
--#~ msgstr "Tipkovna bližnjica za ustvarjanje novega profila"
--
--#~ msgid "Keyboard shortcut to open the current profile’s Preferences dialog"
--#~ msgstr "Tipkovna bližnjica za odpiranje pogovornega okna lastnosti profila"
--
--#~ msgid "List of available encodings"
--#~ msgstr "Seznam razpoložljivih znakovnih naborov"
--
--#~ msgid ""
--#~ "A subset of possible encodings are presented in the Encoding submenu. "
--#~ "This is a list of encodings to appear there."
--#~ msgstr ""
--#~ "Podrejeni izbor razpoložljivih naborov znakov je prikazan v podmeniju "
--#~ "kodiranja. Seznam je prikazan spodaj."
--
--#~ msgid "_Profile used when launching a new terminal:"
--#~ msgstr "Profil, ki naj se _uporabi ob zagonu novega terminala:"
--
--#~ msgid "E_ncodings shown in menu:"
--#~ msgstr "Nabori _prikazani v meniju:"
--
--#~ msgid "Profile Editor"
--#~ msgstr "Urejevalnik profilov"
--
--#~ msgid "_Profile name:"
--#~ msgstr "Ime _profila:"
--
--#~ msgid "_Rewrap on resize"
--#~ msgstr "_Samodejno prelomi"
--
--#~ msgid ""
--#~ "<b>Note:</b> Terminal applications have these colors available to them."
--#~ msgstr "<b>Opomba:</b> programi terminala imajo na voljo te barve."
--
--#~ msgid ""
--#~ "<b>Note:</b> These options may cause some applications to behave "
--#~ "incorrectly.  They are only here to allow you to work around certain "
--#~ "applications and operating systems that expect different terminal "
--#~ "behavior."
--#~ msgstr ""
--#~ "<b>Opomba:</b> Te možnosti lahko vplivajo na nepravilno delovanje "
--#~ "nekaterih programov. Tu so le zato, da lahko delate z določenimi programi "
--#~ "in operacijskimi sistemi, ki pričakujejo drugačno delovanje terminala."
--
--#~ msgid "New Terminal in New Tab"
--#~ msgstr "Nov terminal v novem zavihku"
--
--#~ msgid "New Terminal in New Window"
--#~ msgstr "Nov terminal v novem oknu"
--
--#~ msgid "Close All Terminals"
--#~ msgstr "Zapri vsa okna terminala"
--
--#~ msgid "Clear Find Highlight"
--#~ msgstr "Počisti poudarjanje iskanja"
--
--#~ msgid "Detach Terminal"
--#~ msgstr "Odpni terminal"
--
--#~ msgid "User Defined"
--#~ msgstr "Prikrojeno"
--
--#~ msgid "Click button to choose profile"
--#~ msgstr "Kliknite gumb za izbiro profila"
--
--#~ msgid "Profile list"
--#~ msgstr "Seznam profilov"
--
--#~ msgid "Show"
--#~ msgstr "Pokaži"
--
--#~ msgid "_Encoding"
--#~ msgstr "_Nabor znakov"
--
--#~ msgid "_Profile Preferences"
--#~ msgstr "_Možnosti profila"
--
--#~ msgid "Switch to this tab"
--#~ msgstr "Preklopi na ta zavihek"
--
--#~ msgid "_%u. %s"
--#~ msgstr "_%u. %s"
--
--#~ msgid "_%c. %s"
--#~ msgstr "_%c. %s"
--
--#~ msgid "Open _Terminal"
--#~ msgstr "Odpri _terminal"
--
--#~ msgid "Open Ta_b"
--#~ msgstr "Odpri za_vihek"
--
--#~ msgid "New _Profile"
--#~ msgstr "Nov _profil"
--
--#~ msgid "_Close All Terminals"
--#~ msgstr "_Zapri vsa okna terminala"
--
--#~ msgid "Pre_ferences"
--#~ msgstr "_Možnosti"
--
--#~ msgid "Find Ne_xt"
--#~ msgstr "Najdi _naslednje"
--
--#~ msgid "Find Pre_vious"
--#~ msgstr "Najdi _predhodne"
--
--#~ msgid "Go to _Line…"
--#~ msgstr "Skoči v _vrstico ..."
--
--#~ msgid "_Incremental Search…"
--#~ msgstr "_Postopno iskanje ..."
--
--#~ msgid "_Add or Remove…"
--#~ msgstr "_Dodaj ali odstrani ..."
--
--#~ msgid "_Next Terminal"
--#~ msgstr "_Naslednji terminal"
--
--#~ msgid ""
--#~ "Default color of bold text in the terminal, as a color specification (can "
--#~ "be HTML-style hex digits, or a color name such as \"red\"). This is "
--#~ "ignored if bold_color_same_as_fg is true."
--#~ msgstr ""
--#~ "Privzeta barva krepkega besedila terminala. Določena je lahko kot HTML, "
--#~ "šestnajstiško ali pa z imenom (\"red\" za rdečo). Možnost je prezrta "
--#~ "kadar barva krepkega besedila enaka običajnemu besedilu."
--
--#~ msgid "_Custom font"
--#~ msgstr "Pisava po _meri"
--
--#~ msgid "_Text color:"
--#~ msgstr "Barva _besedila:"
--
--#~ msgid "_Background color:"
--#~ msgstr "Barva _ozadja:"
--
--#~ msgid "_Same as text color"
--#~ msgstr "Enako barvi _besedila"
--
--#~ msgid "Bol_d color:"
--#~ msgstr "Barva krepkega besedila:"
--
--#~ msgid "Search _backwards"
--#~ msgstr "Poišči _nazaj"
--
--#~ msgid ""
--#~ "Possible values are \"close\" to close the terminal, and \"restart\" to "
--#~ "restart the command."
--#~ msgstr ""
--#~ "Mogoče vrednosti so \"close\" (zapri) za zapiranje terminala in "
--#~ "\"restart\" (ponovni zagon) za vnovičen zagon ukaza."
--
--#~ msgid "shell;prompt;command;commandline;"
--#~ msgstr "lupina;ukaz;ukazna vrstica;terminal;"
--
--#~ msgid ""
--#~ "If true, the system login records utmp and wtmp will be updated when the "
--#~ "command inside the terminal is launched."
--#~ msgstr ""
--#~ "Izbrana možnost omogoča, da bosta prijavna zapisa utmp in wtmp "
--#~ "posodobljena, ko se bo zagnal ukaz znotraj terminala."
--
--#~ msgid "_Update login records when command is launched"
--#~ msgstr "Posodobi prijavne zapise, ko je _ukaz zagnan"
--
--#~ msgid "Unknown completion request for \"%s\""
--#~ msgstr "Neznana zahteva za dokončanje \"%s\""
--
--#~ msgid "Missing command"
--#~ msgstr "Manjka ukaz"
--
--#~ msgid "Whether to use a dark theme variant"
--#~ msgstr "Ali naj se uporabi temna tema okna"
--
--#~ msgid "Use _dark theme variant"
--#~ msgstr "Uporabi _temno temo"
--
--#~ msgid "Set the terminal title"
--#~ msgstr "Nastavi naziv terminala"
--
--#~ msgid "_Use the system fixed width font"
--#~ msgstr "_Uporabi sistemsko pisavo določene širine"
--
--#~ msgid "_Font:"
--#~ msgstr "_Pisava:"
--
--#~ msgid "_Unlimited"
--#~ msgstr "_Neomejeno"
--
--#~ msgid ""
--#~ "Commands:\n"
--#~ "  help    Shows this information\n"
--#~ "  run     Create a new terminal running the specified command\n"
--#~ "  shell   Create a new terminal running the user shell\n"
--#~ "\n"
--#~ "Use \"%s COMMAND --help\" to get help on each command.\n"
--#~ msgstr ""
--#~ "Ukazi:\n"
--#~ "  help    Pokaže podrobnosti pomoči\n"
--#~ "  run     Ustvari nov terminalno okno z izvedenim določenim ukazom\n"
--#~ "  shell   Ustvari nov terminalno okno z uporabniško lupino\n"
--#~ "\n"
--#~ "Uporaba \"%s UKAZ --help\" za več podrobnosti o ukazu.\n"
--
--#~ msgid "Be quiet"
--#~ msgstr "Brez sporočanja"
--
--#~ msgid "GNOME Terminal Client"
--#~ msgstr "Terminalski odjemalec GNOME"
--
--#~ msgid "Show server options"
--#~ msgstr "Pokaže možnosti strežnika"
--
--#~ msgctxt "title"
--#~ msgid "'Terminal'"
--#~ msgstr "'Terminal'"
--
--#~ msgid "Title for terminal"
--#~ msgstr "Naziv terminala"
--
--#~ msgid ""
--#~ "Title to display for the terminal window or tab. This title may be "
--#~ "replaced by or combined with the title set by the application inside the "
--#~ "terminal, depending on the title_mode setting."
--#~ msgstr ""
--#~ "Naziv, ki naj bo prikazan v zavihku ali oknu terminala. Naziv lahko "
--#~ "spremeni program zagnan znotraj terminala, to pa določa ključ title_mode."
--
--#~ msgid "Characters that are considered \"part of a word\""
--#~ msgstr "Znaki, ki pripadajo besedam"
--
--#~ msgid ""
--#~ "When selecting text by word, sequences of these characters are considered "
--#~ "single words. Ranges can be given as \"A-Z\". Literal hyphen (not "
--#~ "expressing a range) should be the first character given."
--#~ msgstr ""
--#~ "Kadar se izbira besedilo po besedi, se nize teh znakov obravnava kot dele "
--#~ "besede. Lahko so podani intervali v obliki \"A-Z\". Pomišljaj, ki ne "
--#~ "predstavlja intervala, mora biti prvi podani znak."
--
--#~ msgid "Whether to use custom terminal size for new windows"
--#~ msgstr "Ali naj se za nova okna uporabi privzeta velikost terminalnega okna"
--
--#~ msgid ""
--#~ "If true, newly created terminal windows will have custom size specified "
--#~ "by default_size_columns and default_size_rows."
--#~ msgstr ""
--#~ "Izbrana možnost omogoča, da bo pri novo ustvarjenem terminalu privzeto "
--#~ "uporabljena velikost po meri s podatki privzete velikosti stolpcev in "
--#~ "vrstic."
--
--#~ msgid "Default size:"
--#~ msgstr "Privzeta velikost:"
--
--#~ msgid "Title"
--#~ msgstr "Naslov"
--
--#~ msgid "_Title:"
--#~ msgstr "_Naziv:"
--
--#~ msgid "Title and Command"
--#~ msgstr "Naziv in ukaz"
--
--#~ msgid "Set Title"
--#~ msgstr "Določitev naziva okna"
--
--#~ msgid "Current Locale"
--#~ msgstr "Trenutne jezikovne nastavitve"
--
--#~ msgid "Visible only when necessary"
--#~ msgstr "Vidno po potrebi"
--
--#~ msgid "Hidden"
--#~ msgstr "Skrito"
--
--#~ msgid "_About Terminal"
--#~ msgstr "_O programu"
--
--#~ msgid "What to do with dynamic title"
--#~ msgstr "Kaj narediti z dinamičnim nazivom"
--
--#~ msgid ""
--#~ "If the application in the terminal sets the title (most typically people "
--#~ "have their shell set up to do this), the dynamically-set title can erase "
--#~ "the configured title, go before it, go after it, or replace it. The "
--#~ "possible values are \"replace\", \"before\", \"after\", and \"ignore\"."
--#~ msgstr ""
--#~ "V primeru, da program nastavi naziv terminala (to je običajna nastavitev) "
--#~ "lahko dinamično izbran naziv izbriše prej določeno nastavitev naziva, je "
--#~ "postavljen pred njim, za njim, ali pa ga zamenja. Možne vrednosti so "
--#~ "\"replace\" (zamenjaj), \"before\" (pred), \"after\" (za) in "
--#~ "\"ignore\" (prezri)."
--
--#~ msgid "When terminal commands set their o_wn titles:"
--#~ msgstr "Ko terminalski ukazi določajo lastne naslove:"
--
--#~ msgid "The shortcut key “%s” is already bound to the “%s” action"
--#~ msgstr "Tipkovna bližnjica  “%s” je že povezana z dejanjem “%s”"
--
--#~ msgid "_Input Methods"
--#~ msgstr "_Načini vnosa"
--
--#~ msgid "Keyboard shortcut to switch to tab 1"
--#~ msgstr "Tipkovna bližnjica za preklop na zavihek 1"
--
--#~ msgid "Keyboard shortcut to switch to tab 2"
--#~ msgstr "Tipkovna bližnjica za preklop na zavihek 2"
--
--#~ msgid "Keyboard shortcut to switch to tab 3"
--#~ msgstr "Tipkovna bližnjica za preklop na zavihek 3"
--
--#~ msgid "Keyboard shortcut to switch to tab 4"
--#~ msgstr "Tipkovna bližnjica za preklop na zavihek 4"
--
--#~ msgid "Keyboard shortcut to switch to tab 5"
--#~ msgstr "Tipkovna bližnjica za preklop na zavihek 5"
--
--#~ msgid "Keyboard shortcut to switch to tab 6"
--#~ msgstr "Tipkovna bližnjica za preklop na zavihek 6"
--
--#~ msgid "Keyboard shortcut to switch to tab 7"
--#~ msgstr "Tipkovna bližnjica za preklop na zavihek 7"
--
--#~ msgid "Keyboard shortcut to switch to tab 8"
--#~ msgstr "Tipkovna bližnjica za preklop na zavihek 8"
--
--#~ msgid "Keyboard shortcut to switch to tab 9"
--#~ msgstr "Tipkovna bližnjica za preklop na zavihek 9"
--
--#~ msgid "Keyboard shortcut to switch to tab 10"
--#~ msgstr "Tipkovna bližnjica za preklop na zavihek 10"
--
--#~ msgid "Keyboard shortcut to switch to tab 11"
--#~ msgstr "Tipkovna bližnjica za preklop na zavihek 11"
--
--#~ msgid "Keyboard shortcut to switch to tab 12"
--#~ msgstr "Tipkovna bližnjica za preklop na zavihek 12"
--
--#~ msgid "Switch to Tab 3"
--#~ msgstr "Preklopi na zavihek 3"
--
--#~ msgid "Switch to Tab 4"
--#~ msgstr "Preklopi na zavihek 4"
--
--#~ msgid "Switch to Tab 5"
--#~ msgstr "Preklopi na zavihek 5"
--
--#~ msgid "Switch to Tab 6"
--#~ msgstr "Preklopi na zavihek 6"
--
--#~ msgid "Switch to Tab 7"
--#~ msgstr "Preklopi na zavihek 7"
--
--#~ msgid "Switch to Tab 8"
--#~ msgstr "Preklopi na zavihek 8"
--
--#~ msgid "Switch to Tab 9"
--#~ msgstr "Preklopi na zavihek 9"
--
--#~ msgid "Switch to Tab 10"
--#~ msgstr "Preklopi na zavihek 10"
--
--#~ msgid "Switch to Tab 11"
--#~ msgstr "Preklopi na zavihek 11"
--
--#~ msgid "Switch to Tab 12"
--#~ msgstr "Preklopi na zavihek 12"
--
--#~ msgid "Keybindings"
--#~ msgstr "Tipkovne bližnjice"
--
--#~ msgid "Foreground, Background, Bold and Underline"
--#~ msgstr "Pisava, ozadje, krepko in podčrtano besedilo"
--
--#~ msgid "New _Profile…"
--#~ msgstr "Nov _profil ..."
--
--#~ msgid "_Profile Preferences…"
--#~ msgstr "Možnosti _profila ..."
++
 +msgid "Transparent background"
 +msgstr "Prosojno ozadje"
 diff --git a/po/sq.po b/po/sq.po
@@ -3189,10 +2639,10 @@ index 45dbad07..852c47cc 100644
 +msgid "Transparent background"
 +msgstr "Providna pozadina"
 diff --git a/po/sv.po b/po/sv.po
-index ce79cba7..03420a66 100644
+index 0d129cfc..ee846826 100644
 --- a/po/sv.po
 +++ b/po/sv.po
-@@ -2810,5 +2810,17 @@ msgstr "Misslyckades med att tolka argument: %s\n"
+@@ -2885,5 +2885,17 @@ msgstr "Misslyckades med att tolka argument: %s\n"
  #~ msgid "Unknown completion request for \"%s\""
  #~ msgstr "Okänd kompletteringsbegäran för \"%s\""
  
@@ -3460,10 +2910,10 @@ index 313f76b9..be608976 100644
  #~ msgid ""
  #~ "You already have a profile called “%s”. Do you want to create another "
 diff --git a/po/uk.po b/po/uk.po
-index 6484716b..de2b483d 100644
+index f9b251e3..f1832aa9 100644
 --- a/po/uk.po
 +++ b/po/uk.po
-@@ -2491,3 +2491,18 @@ msgstr "Не вдається визначити аргументи: %s\n"
+@@ -2573,3 +2573,18 @@ msgstr "Не вдається визначити аргументи: %s\n"
  
  #~ msgid "Georgian"
  #~ msgstr "Грузинське"
@@ -3601,10 +3051,10 @@ index cb78ec67..a4f3b4dd 100644
  #: ../src/terminal-window.c:986
  msgid "Set _Character Encoding"
 diff --git a/po/zh_CN.po b/po/zh_CN.po
-index f68c7ce5..a3be00e1 100644
+index 9ec7923f..3a80cd5e 100644
 --- a/po/zh_CN.po
 +++ b/po/zh_CN.po
-@@ -2805,17 +2805,17 @@ msgstr "无法处理参数：%s\n"
+@@ -2877,17 +2877,17 @@ msgstr "无法处理参数：%s\n"
  #~ msgid "Default size:"
  #~ msgstr "默认大小："
  
@@ -3628,7 +3078,7 @@ index f68c7ce5..a3be00e1 100644
  
  #~ msgid "Current Locale"
  #~ msgstr "当前区域"
-@@ -2928,3 +2928,6 @@ msgstr "无法处理参数：%s\n"
+@@ -3000,3 +3000,6 @@ msgstr "无法处理参数：%s\n"
  
  #~ msgid "_Find..."
  #~ msgstr "查找(_F)..."
@@ -3706,5 +3156,5 @@ index d692f648..4bdaac8a 100644
 +msgid "Transparent background"
 +msgstr "透明背景"
 -- 
-2.46.0
+2.47.0
 
