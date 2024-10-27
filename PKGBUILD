@@ -2,7 +2,7 @@
 
 pkgname=python-llvmcpy-git
 _pkgname=python-llvmcpy
-pkgver=r13.679d2c1
+pkgver=r47.9b7e56f
 pkgrel=1
 pkgdesc="Python bindings for LLVM auto-generated from the LLVM-C API "
 arch=(any)

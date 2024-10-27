@@ -1,6 +1,6 @@
 pkgbase = python-llvmcpy-git
 	pkgdesc = Python bindings for LLVM auto-generated from the LLVM-C API
-	pkgver = r13.679d2c1
+	pkgver = r47.9b7e56f
 	pkgrel = 1
 	url = https://rev.ng/llvmcpy
 	arch = any
