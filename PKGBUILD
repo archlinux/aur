@@ -6,6 +6,8 @@ pkgdesc="A fast, local neural text to speech system"
 arch=(x86_64 aarch64)
 url="https://github.com/rhasspy/piper"
 license=('MIT')
+conflicts=('piper-tts-bin')
+provides=("piper-tts")
 depends=(
   onnxruntime
   espeak-ng
