@@ -1,8 +1,8 @@
 # Maintainer: Alexey Trifonov <otaku [at] rambler dot ru>
 # Contributor: Tesx <tesfabpel@gmail.com>
-pkgname=goxel-voxel-editor
+pkgname='goxel-voxel-editor'
 pkgver=0.15.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Open Source 3D voxel editor for Mac, Windows and Linux. Release version."
 arch=('i686' 'x86_64')
 conflicts=('goxel')
@@ -31,7 +31,7 @@ build() {
 package() {
 	install -Dm644 goxel.desktop "$pkgdir/usr/share/applications/goxel.desktop"
 
-	cd $goxel-$pkgver
+	cd goxel-$pkgver
 	install -Dm644 icon.png "$pkgdir/usr/share/icons/goxel.png"
 	install -Dm755 goxel "$pkgdir/usr/bin/goxel"
 }
