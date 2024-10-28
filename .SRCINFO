@@ -1,7 +1,7 @@
 pkgbase = wine-osu-spectator-wow64
 	pkgdesc = A compatibility layer for running Windows programs, but with osu! specific patches (doesn't conflict with other Wine installations) (WoW64 version)
 	pkgver = 9.20.w105.s78bd3f0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.winehq.com
 	install = wine-wow64.install
 	arch = x86_64
