@@ -2,7 +2,7 @@
 
 pkgname=qemu-3dfx
 pkgver=8.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="MESA GL/3Dfx Glide pass-through for QEMU"
 arch=("x86_64")
 url="https://github.com/kjliew/qemu-3dfx"
@@ -86,7 +86,7 @@ makedepends=(
                                 "zstd"
 )
 provides=("qemu-3dfx")
-conflicts=("qemu-3dfx" "qemu-3dfx-arch")
+conflicts=("qemu-3dfx")
 source=(
                 "git+https://github.com/kjliew/qemu-3dfx.git"
                 "https://download.qemu.org/qemu-${pkgver}.tar.xz"
@@ -143,8 +143,9 @@ build() {
     rm -r ./wrapfx/lib* ./wrapfx/Makefile
     cp -r ../mesa/build/* ./wrapgl/
     rm -r ./wrapgl/Makefile
-    echo $(git rev-parse HEAD) > commit\ id.txt
-    mkisofs -JR -V 3DFX-WRAPPERS -o ../wrappers.iso ../iso
+    echo $(git rev-parse HEAD) | sed 's/$'"/`echo \\\r`/" > commit\ id.txt
+    cat ../texts/readme_nodx.txt | sed 's/$'"/`echo \\\r`/" > license.txt
+    mkisofs -o ../wrappers.iso ../iso
 }
 package() {
 	install -Dm644 "$srcdir"/"$pkgname"/LICENSE "$pkgdir"/usr/share/licenses/"$pkgname"/LICENSE

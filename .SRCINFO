@@ -1,7 +1,7 @@
 pkgbase = qemu-3dfx
 	pkgdesc = MESA GL/3Dfx Glide pass-through for QEMU
 	pkgver = 8.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/kjliew/qemu-3dfx
 	arch = x86_64
 	license = GPL-2.0
@@ -84,7 +84,6 @@ pkgbase = qemu-3dfx
 	depends = seabios
 	provides = qemu-3dfx
 	conflicts = qemu-3dfx
-	conflicts = qemu-3dfx-arch
 	noextract = qemu-8.2.1.tar.xz
 	noextract = djgpp-linux64-gcc1220.tar.bz2
 	noextract = ow-snapshot.tar.xz
