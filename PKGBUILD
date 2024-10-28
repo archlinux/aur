@@ -2,7 +2,7 @@
 
 pkgname=sourcegit-bin
 _name=${pkgname%-bin}
-pkgver=8.35
+pkgver=8.36
 pkgrel=1
 pkgdesc="GUI client for GIT users"
 arch=('x86_64')
@@ -16,7 +16,7 @@ makedepends=('desktop-file-utils')
 _debrev=1
 source=("https://github.com/sourcegit-scm/sourcegit/releases/download/v${pkgver}/${_name}_${pkgver}-${_debrev}_amd64.deb"
         "https://raw.githubusercontent.com/sourcegit-scm/sourcegit/v${pkgver}/LICENSE")
-sha256sums=('636a8d5f88f694dc7cb06f2ee44b33f280a8ab2fcd98f25f2c06a2c3e97b90ee'
+sha256sums=('ec76811eb2a7e4b7c2d166e5252abc2e70c376a33aca0dd4e83ef8e489b7382f'
             '6cef41c8a297f46faafe40016ffcce9d968b3722048b81cd768fdbaa1be02ca1')
 
 prepare() {
