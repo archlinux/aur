@@ -2,19 +2,19 @@
 # Contributor: kccat <kg.kg.gl+aur at gmail dot com>
 
 pkgname=ttf-opposans
-pkgver=20231130
+pkgver=20241023
 pkgrel=1
 pkgdesc="OPPO Sans"
 arch=('any')
 license=('custom')
-url='https://www.coloros.com/article/A00000050/'
+url='https://open.oppomobile.com/new/developmentDoc/info?id=13223'
 
-source=("https://coloros-website-cn.allawnfs.com/font/OPPOSans3.0.zip")
+source=("https://openfs.oppomobile.com/open/oop/202410/18/62d51f494591f1a9040d83b597745911.zip")
 
-sha256sums=('4ade22c51d034682c466cec99d8fad941b2541879d4f9dfab17d7187bb6b6a0e')
+sha256sums=('f8bef382e209a4965fe589efdb72fd6bef45a9b4fdb494e20ffa16b31cd364d5')
 
 package() {
-	cd "${srcdir}/231130 品牌字体 OPPO Sans 3.0/中文简体+西文 Simplified Chinese+Cyrillic/ttf(优先安装 ttf 格式 preferred）"
-	install -dm755 "$pkgdir/usr/share/fonts/TTF"
-	install -Dm644 *.ttf "$pkgdir/usr/share/fonts/TTF"
+	cd "$srcdir/OPPO_Sans_4.0"
+	install -Dm644 "OPPO Sans 4.0.ttf" "$pkgdir/usr/share/fonts/TTF/OPPO_Sans_4.0.ttf"
+	install -Dm644 "OPPO Sans 4.0 License Notice.txt" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
