@@ -2,90 +2,37 @@
 # Maintainer: Matthias Eberlein
 pkgname=youtube-to-mp3
 pkgver=3.9.9.96
-pkgrel=3
+pkgrel=4
 epoch=
-pkgdesc="YouTube to Mp3 converter\nDownloads audio from YouTube or Vimeo and saves it to mp3 or m4a format to listen to locally"
-arch=('i386' 'x86_64')
-url="https://www.mediahuman.com/youtube-to-mp3-converter/"
-license=('custom')
-groups=()
+pkgdesc="Downloads audio from YouTube or Vimeo and saves it to mp3 or m4a format to listen to locally"
+arch=(x86_64 i686)
+url="https://www.mediahuman.com/download.html"
+license=(LicenseRef-custom)
 depends=(
 	'hicolor-icon-theme>=0.17-1'
 	'qt5-multimedia>=5.14.1-1'
-	'qt5-webkit>=5.212.0alpha4-1'
+	'qt5-webengine'
+	'qt5-declarative'
 	'taglib1>=1.13.1-2'
-	)
-makedepends=()
-checkdepends=()
-optdepends=()
-provides=()
-conflicts=()
-replaces=()
-backup=()
-options=()
-install=
-changelog=
-source_i386=("${pkgname}-${pkgver}.deb::https://www.mediahuman.com/de/download/YouTubeToMP3.i386.deb")
-source_x86_64=("${pkgname}-${pkgver}.deb::https://www.mediahuman.com/de/download/YouTubeToMP3.amd64.deb")
-noextract=()
-md5sums_i386=("1b366db15c58d01c583f60c5c4ea3380")
-md5sums_x86_64=("2d4957857ab66113eba35c38f98b2d24")
-validpgpkeys=()
-
-prepare() {
-	##Starting Point: src dir with already extracted .deb package
-	echo "Preparing the installation.."
-	if [ ! -d "$pkgname-$pkgver" ]; then
-		mkdir "$pkgname-$pkgver"
-	else
-		echo "Skipping creating subdirectory '$pkgname-$pkgver': Directory already exists."
-	fi
-	tar -xf "data.tar.xz" -C "${pkgname}-${pkgver}"
-	tar -xf "control.tar.xz" -C "${pkgname}-${pkgver}"
-}
+)
+provide=('youtube-to-mp3')
+conflicts=('youtube-to-mp3')
+source_i686=("${pkgname}-$(date +%F-%H).i386.deb::https://www.mediahuman.com/de/download/YouTubeToMP3.i386.deb")
+source_x86_64=("${pkgname}-$(date +%F-%H).amd64.deb::https://www.mediahuman.com/de/download/YouTubeToMP3.amd64.deb")
+md5sums_i686=("SKIP")
+md5sums_x86_64=("SKIP")
 
 pkgver() {
-	cd "$pkgname-$pkgver"
-	actualpackagename="$(cat "control" | grep "Package:")"
-	if [[ ! "$actualpackagename" =~ .*"$pkgname" ]]; then
-		echo "Package name changed. Please inform the Maintainer."
-		exit -1
-	fi
-	actpkgverlong="$(cat "control" | grep "Version:")"
-	actpkgver=${actpkgverlong##*: }
-	if [[ ! "$actpkgverlong" == *"$pkgver" ]]; then
-		cd ..
-		mv "$pkgname-$pkgver.deb" "$pkgname-$actpkgver.deb"
-		if [ -d "$pkgname-$actpkgver" ]; then
-			rm -R "$pkgname-$actpkgver"
-		fi
-		mv -T "$pkgname-$pkgver" "$pkgname-$actpkgver"
-
-		cd ..
-		mv "$pkgname-$pkgver.deb" "$pkgname-$actpkgver.deb"
-	fi
-	echo "$actpkgver"
+	bsdtar -xf control.tar.xz -C .
+  actpkgverlong="$(cat 'control' | grep 'Version: ')"
+  actpkgver=${actpkgverlong##*: }
+  echo "$actpkgver"
 }
 
 package() {
-	## We still start in the src dir
-	cd "$pkgname-$pkgver"
+	bsdtar -xf data.tar.xz -C ${pkgdir}/
+  install -D "${pkgdir}/usr/share/doc/${pkgname}/copyright" -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 
-	# Copy the binaries and application to their destination in /pkg as root folder
-	cp -r -i "usr" "$pkgdir/"
-	cp -r -i "opt" "$pkgdir/"
-	cp "usr/share/doc/youtube-to-mp3/copyright" "$pkgdir/LICENSE"
-	# Add symbolic link in /usr/bin
-	mkdir -p "${pkgdir}/usr/bin"
-	ln -s "/opt/youtube-to-mp3/YouTubeToMP3" "${pkgdir}/usr/bin/youtube-to-mp3"
-
-
-	# Remove .deb packages
-	cd ../..
-	echo "Cleaning up old unneeded .deb file.."
-	rm "$pkgname-$pkgver.deb"
-
-	# install the license
-	echo "PKGDIR: $pkgdir"
-	install -Dm644 "$pkgdir/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  mkdir -p "${pkgdir}/usr/bin"
+  ln -s "/opt/youtube-to-mp3/YouTubeToMP3" "${pkgdir}/usr/bin/youtube-to-mp3"
 }
