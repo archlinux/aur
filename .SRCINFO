@@ -1,7 +1,7 @@
 pkgbase = mlkit-bin
 	pkgdesc = Standard ML Compiler and Toolkit
 	pkgver = 4.7.12
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.elsman.com/mlkit/
 	arch = x86_64
 	license = GPL2

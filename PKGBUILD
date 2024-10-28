@@ -2,7 +2,7 @@
 
 pkgname=mlkit-bin
 pkgver=4.7.12
-pkgrel=1
+pkgrel=2
 pkgdesc='Standard ML Compiler and Toolkit'
 url='http://www.elsman.com/mlkit/'
 license=('GPL2')
@@ -20,5 +20,5 @@ package() {
   mkdir -p "$pkgdir/usr/local/etc/mlkit/"
   mkdir -p "$pkgdir/usr/local/etc/smltojs/"
   echo "SML_LIB /usr/lib/mlkit" > "$pkgdir/usr/local/etc/mlkit/mlb-path-map"
-  echo "SML_LIB /usr/local/lib/smltojs" > "$pkgdir/usr/local/etc/smltojs/mlb-path-map"
+  echo "SML_LIB /usr/lib/smltojs" > "$pkgdir/usr/local/etc/smltojs/mlb-path-map"
 }
