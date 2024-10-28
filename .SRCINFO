@@ -1,7 +1,7 @@
 pkgbase = libpamac-aur
 	pkgdesc = Pamac package manager library based on libalpm
-	pkgver = 11.6.4
-	pkgrel = 6
+	pkgver = 11.7.0
+	pkgrel = 1
 	url = https://github.com/manjaro/libpamac/
 	install = pamac.install
 	arch = i686
@@ -35,21 +35,17 @@ pkgbase = libpamac-aur
 	depends = git
 	provides = libpamac.so=11
 	provides = libpamac-appstream.so=11
-	provides = libpamac=11.6.4
+	provides = libpamac=11.7.0
 	conflicts = libpamac
 	conflicts = libpamac-all
 	options = !emptydirs
 	options = !strip
 	backup = etc/pamac.conf
-	source = libpamac-11.6.4-6.zip::https://github.com/manjaro/libpamac//archive/14212835ca50c3cb90aac0eed88e07b764dcba0e.zip
+	source = libpamac-11.7.0-1.zip::https://github.com/manjaro/libpamac//archive/49bfde599ed00c127869a2797b5bb26e28e11c2a.zip
 	source = fix-appstream-data.sh
 	source = fix-appstream-data.hook
-	source = 0001-flatpak_trans_run.patch
-	source = 0002-flatpak_runtime.patch
-	sha256sums = 19b80dd064e913713cce45aa8e05350a851f4e1489a95d3ce0169a5fc7042ff3
+	sha256sums = 6191f2cf6955a0041fbf72449efe000803cc2a81654a6da96653e27fc9d08452
 	sha256sums = 6e0c25f0fcb0076ce78845b037e32925fcc3f1cd1670062c48ed35f564a10244
 	sha256sums = b5236af02c25cd7de4b2c9c2d0f064dac3c2f54da5cc72bf72fc6236a34bd9c4
-	sha256sums = e90cb38ce31fac5eae86b73dfd94936f920b50f260afd4979b7cc7f62ca93bae
-	sha256sums = 06fcfece7de3ebebacaab895e62eac842e521e73868679394adf6171d3e43514
 
 pkgname = libpamac-aur
