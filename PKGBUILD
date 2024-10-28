@@ -1,7 +1,7 @@
 # Maintainer: Stephan Raabe <mail@ml4w.com>
 pkgname='ml4w-hyprland'
 pkgver=2.9.6.4
-pkgrel=2
+pkgrel=3
 pkgdesc="The ML4W Dotfiles for Hyprland - An advanced and full-featured configuration for the dynamic tiling window manager Hyprland including an easy to use installation script for Arch based Linux distributions. "
 arch=(any)
 url="https://github.com/mylinuxforwork/dotfiles"
@@ -29,8 +29,6 @@ depends=(
     "hyprlock"
     "hypridle"
     "noto-fonts"
-    "dolphin"
-    "wofi"
     "xdg-desktop-portal"
     "xdg-desktop-portal-hyprland" 
     "libnotify" 
