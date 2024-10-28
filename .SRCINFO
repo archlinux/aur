@@ -1,7 +1,7 @@
 pkgbase = os-prober-btrfs
 	pkgdesc = Utility to detect other OSes with various patches to support btrfs and other fixes
 	pkgver = 1.83
-	pkgrel = 1
+	pkgrel = 2
 	url = https://joeyh.name/code/os-prober/
 	arch = x86_64
 	license = GPL-3.0-or-later

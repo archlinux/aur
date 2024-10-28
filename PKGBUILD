@@ -7,7 +7,7 @@
 pkgname=os-prober-btrfs
 _pkgname=os-prober
 pkgver=1.83
-pkgrel=1
+pkgrel=2
 pkgdesc='Utility to detect other OSes with various patches to support btrfs and other fixes'
 url='https://joeyh.name/code/os-prober/'
 arch=('x86_64')
