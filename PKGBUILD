@@ -1,8 +1,8 @@
 # Maintainer: Patrizio Bekerle <patrizio at bekerle dot com>
 
 pkgname=qownnotes
-pkgver=24.10.2
-tag="a70d443ac1fd13c5e77ec3c5a321509beae138aa"
+pkgver=24.10.3
+tag="ecec4c5f6cf196b6ef3e2a9700bfa9a8af42cd0a"
 pkgrel=1
 pkgdesc="Plain-text file markdown note taking with Nextcloud/ownCloud integration"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
@@ -12,7 +12,7 @@ groups=('qownnotes')
 depends=('qt5-base' 'qt5-svg' 'qt5-declarative' 'openssl' 'qt5-websockets' 'qt5-x11extras' 'aspell')
 makedepends=('qt5-tools')
 source=("https://github.com/pbek/QOwnNotes/releases/download/v${pkgver}/qownnotes-${pkgver}.tar.xz")
-sha256sums=('3495139f5e28cbfd56ace15f5830e4305f93653ff3db79290559da744bb064c0')
+sha256sums=('b7259a561e61f54e2295aa3f25dc33f3ce9d97719e733f1178d25263f4474371')
 
 prepare() {
     cd "${pkgname}-${pkgver}"
