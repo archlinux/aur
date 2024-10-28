@@ -1,11 +1,11 @@
-# Maintainer: Sergej Pupykin <pupykin.s+arch@gmail.com>
-# Maintainer: Giovanni Scafora <linuxmania@gmail.com>
+# Maintainer: envolution
+# Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
+# Contributor: Giovanni Scafora <linuxmania@gmail.com>
 # Contributor: simo <simo@archlinux.org>
 
 pkgname=xcircuit
 pkgver=3.10.30
-_pkgver=3.10
-pkgrel=2
+pkgrel=3
 pkgdesc="A program for drawing publishable-quality electrical circuit schematic diagrams"
 arch=('x86_64')
 url="http://opencircuitdesign.com/xcircuit"
@@ -42,6 +42,7 @@ build() {
 }
 
 package() {
+  _pkgver=${pkgver%.*}
   cd "$srcdir"
   install -Dm0644 xcircuit.desktop "$pkgdir/usr/share/applications/xcircuit.desktop"
   cd "$pkgname-$pkgver"

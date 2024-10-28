@@ -1,7 +1,7 @@
 pkgbase = xcircuit
 	pkgdesc = A program for drawing publishable-quality electrical circuit schematic diagrams
 	pkgver = 3.10.30
-	pkgrel = 2
+	pkgrel = 3
 	url = http://opencircuitdesign.com/xcircuit
 	arch = x86_64
 	license = GPL2
