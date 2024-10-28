@@ -1,7 +1,7 @@
 # Maintainer: Alexey Trifonov <otaku [at] rambler dot ru>
 # Contributor: Tesx <tesfabpel@gmail.com>
 pkgname=goxel-voxel-editor-git
-pkgver=0.10.6.r2.e6dcae92
+pkgver=0.15.1.r17.a7f498f4
 pkgrel=1
 pkgdesc="Open Source 3D voxel editor for Mac, Windows and Linux. Git version."
 arch=('i686' 'x86_64')
@@ -16,10 +16,8 @@ source=(
 	"git+https://github.com/guillaumechereau/goxel.git"
     "goxel.desktop"
 )
-sha256sums=(
-	'SKIP'
-	'9b29df7405a9593396bc7ea810dc2871cce7c4ee474c1fa56d32f56c2ca2d921'
-)
+sha256sums=('SKIP'
+            '9b29df7405a9593396bc7ea810dc2871cce7c4ee474c1fa56d32f56c2ca2d921')
 
 _gitname=goxel
 
@@ -42,7 +40,9 @@ build() {
 package() {
 	install -Dm644 goxel.desktop "$pkgdir/usr/share/applications/goxel.desktop"
 	install -Dm644 goxel/icon.png "$pkgdir/usr/share/icons/goxel.png"
-	
+
 	cd $_gitname
 	install -Dm755 goxel "$pkgdir/usr/bin/goxel"
 }
+
+# vim: ts=2 sw=2 et:
