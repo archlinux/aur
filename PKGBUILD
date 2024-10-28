@@ -3,7 +3,7 @@
 
 pkgname=ids-peak-ueyetl
 pkgdesc="IDS peak is a modern, free software development kit for all USB3 Vision and GigE Vision compliant industrial cameras from any manufacturer. (Version with uEye transport layer)"
-pkgver=2.7.0
+pkgver=2.9.0
 pkgrel=1
 provides=(ids-peak)
 conflicts=(ids-peak)
@@ -13,13 +13,13 @@ url="https://en.ids-imaging.com/ids-peak.html"
 depends=('libusb' 'qt5-base' 'qt5-multimedia' 'hicolor-icon-theme')
 optdepends=('ueyed: IDS uEye camera deamon (USB and ethernet)')
 
-_dir="ids-peak-with-ueyetl_$pkgver.0-16268_amd64"
+_dir="ids-peak-with-ueyetl_$pkgver.0-48_amd64"
 source=(
 	"https://de.ids-imaging.com/files/downloads/ids-peak/software/linux-desktop/$_dir.tgz"
 	"ids-peak.rules"
 	"ids-peak-sysusers.conf"
 )
-sha512sums=('4dbba55074b14585ee9f76f56d278dc696d7a1f96e719e15fb43bcd7b832c48468328cbf39468a89968479d7dec4fe529d64d20ac3e9b6c481506baa1f67eb73'
+sha512sums=('fd0ffc25699d4fe6baf672640057009a9151d6a65d9cc839f569768977dc83906598b08b9f6a75bc2ee657626f3435b20719621140bb45941e9f587a73567b0c'
             'c92de0fa8f5c95ae95a715f70b6dfedb86a566eb80a9b090bb604785837e39ef40e3896d5e8f1f9271647958b87e4cef42dc0ed3a14cc4a1dd77c560d1ad5c4b'
             '05b961501a56b1827986aabc2a5ea8320b711fb0089615b212711814906c52af51205f04ffd9df436510362b185911797176bb6ed71bec4e35db8b1cd4d1f408')
 
