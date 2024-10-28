@@ -35,33 +35,29 @@ arch=('x86_64')
 url="http://www.gnu.org/software/emacs/emacs.html"
 license=('GPL3')
 depends=(
-  cairo
-  gmp
-  gnutls
-  hicolor-icon-theme
-  jansson
-  lcms2
   acl
   alsa-lib
+  cairo
   dbus
   fontconfig
   freetype2
   gdk-pixbuf2
   giflib
   glib2
+  gmp
+  gnutls
   gpm
   harfbuzz
+  hicolor-icon-theme
+  jansson
+  lcms2
   libice
   libjpeg-turbo
-  ncurses
   libotf
   libpng
   librsvg
   libsm
-  sqlite
-  systemd-libs
   libtiff
-  tree-sitter
   libwebp
   libx11
   libxcb
@@ -77,6 +73,10 @@ depends=(
   libxrender
   libxt
   m17n-lib
+  ncurses
+  sqlite
+  systemd-libs
+  tree-sitter
   xaw3d
   xcb-util
   zlib
