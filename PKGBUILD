@@ -8,7 +8,7 @@
 pkgname=mathics
 _pkgname=Mathics3
 pkgver=7.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A general-purpose computer algebra system."
 arch=('any')
 url="https://mathics.org/"
@@ -31,6 +31,7 @@ build() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
   # Temporarily lower required setuptools version until it gets updated
   sed -i 's/setuptools>=70.0.0/setuptools>=69.0.0/g' pyproject.toml
+  sed -i 's/sympy>=1.11,<1.13/sympy>=1.11,<1.14/g' pyproject.toml
   python -m build --wheel --no-isolation
 }
 
