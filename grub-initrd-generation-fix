@@ -1,6 +1,0 @@
-#!/bin/bash
-
-sed -i /etc/grub.d/30_os-prober \
-    -e "s|\(echo \${LINUX} \| cut -d ':' -f 5\)\`|\1 \| tr '^' ' '\`|" \
-    -e 's|LINITRD="${LINITRD#/boot}"$|LINITRD=$(echo "$LINITRD" \| sed -e "s\|/boot/\|/\|g")|'  # remove /boot
- 
