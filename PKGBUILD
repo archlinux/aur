@@ -3,7 +3,7 @@
 _pkgname=icu
 pkgname=icu73
 pkgver=73.2
-pkgrel=4
+pkgrel=5
 pkgdesc='International Components for Unicode library (version 73)'
 arch=('x86_64')
 url="https://icu.unicode.org/"
