@@ -1,10 +1,10 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=thoughts-bin
 _zhsname="思绪思维导图"
-pkgver=0.11.2
+pkgver=0.12.1
 _electronversion=23
 pkgrel=1
-pkgdesc="A relatively powerful web mind map.一个还算强大的Web思维导图."
+pkgdesc="A relatively powerful web mind map.Prebuilt version.Use system-wide electron.一个还算强大的Web思维导图."
 arch=(
     'aarch64'
     'armv7h'
@@ -27,9 +27,9 @@ source_armv7h=("${pkgname%-bin}-${pkgver}-armv7h.deb::${_ghurl}/releases/downloa
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${_ghurl}/releases/download/electron-${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb")
 sha256sums=('8a19b651678a6a644640524d984ed89d0b9a78c662545715218a05130c7329c7'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-sha256sums_aarch64=('ef91b7cf238e1e96a5407267329b4ba56a6b9c3eebcdaaee95de4be939a17221')
-sha256sums_armv7h=('a9127a1910a3e3ada89221f4b5ee127232057589956fd766898de266931a9641')
-sha256sums_x86_64=('bcaa154b24aa732554b4fbb692cc48aa3e7a3078f442a852641f684bf4720244')
+sha256sums_aarch64=('c682f466769794dfdf88ff4a720f16fc3e54e1598a4c515955e9436e23694de5')
+sha256sums_armv7h=('18d381ac3f226160b3f7ee13c50094053c97012435ccebce2f8f884c5fe2f449')
+sha256sums_x86_64=('96e980ca1766834e901535a77005ef51b94e7c27677ce546e6b647edbf5b9984')
 build() {
     sed -e "
         s/@electronversion@/${_electronversion}/g
