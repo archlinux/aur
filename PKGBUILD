@@ -13,16 +13,16 @@ conflicts=('owobot')
 backup=('etc/owobot/config.toml')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://gitea.elara.ws/owobot/owobot/releases/download/v0.0.9/owobot_0.0.9_linux_arm64.tar.gz")
-sha256sums_aarch64=('34e2589629aa67b41cea18fa16c4bebfabcb95711133085729d7c3bc69ff237d')
+sha256sums_aarch64=('5b98b42d2f9b4ef3032269fe6d2c9c9b2af2098d1e8960d4e0f39d773f352beb')
 
 source_armv6h=("${pkgname}_${pkgver}_armv6h.tar.gz::https://gitea.elara.ws/owobot/owobot/releases/download/v0.0.9/owobot_0.0.9_linux_armv6.tar.gz")
-sha256sums_armv6h=('a703d261af60490ccf9527f9e97a040f438dc8cb16f297410187aaa5a78d92a8')
+sha256sums_armv6h=('e5039b3e6d0f4def3901df36cc9808daa849d6dffc9634a2beda9b2b5841a91a')
 
 source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://gitea.elara.ws/owobot/owobot/releases/download/v0.0.9/owobot_0.0.9_linux_386.tar.gz")
-sha256sums_i686=('a523aa47f696a9c558e92545a99188030f9fd5f1f97a52d76e01038a68af40d7')
+sha256sums_i686=('442600386fd4d4d52fb91bfa31bab723814bd7d49890b94e4cf576c6b500e239')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://gitea.elara.ws/owobot/owobot/releases/download/v0.0.9/owobot_0.0.9_linux_amd64.tar.gz")
-sha256sums_x86_64=('82ecba996af91d02f4a408a25bfb566c1d2f87e4da307dafee7eb9999a4d1d4c')
+sha256sums_x86_64=('e607d17288e050e8b41d3ed77340964b69abef386dbc98ea3b89f387a19aded7')
 
 package() {
   # binaries
