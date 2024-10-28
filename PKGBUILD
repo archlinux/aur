@@ -1,7 +1,7 @@
 # Maintainer: NObodyGX <nobodygx@163.com>
 
 pkgname=asciibox
-pkgver=0.8.5
+pkgver=0.9.0
 pkgrel=1
 arch=('x86_64')
 pkgdesc='An auxiliary tool to simplify write svgbob and asciidoc'
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('rust' 'gtk4' 'libadwaita')
 makedepends=('git' 'meson' 'ninja' 'cargo')
 source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('e59b9a607d57b6a93c856a552889929b5d8bcbb212b4e7ec24ad83a24014a3dc')
+sha256sums=('ea64ace6c65a1de673c6d05d369d444256a2ee4fa5bde808976312ec4eb0be73')
 
 prepare() {
     cd "$srcdir/${pkgname}-${pkgver}"
