@@ -1,0 +1,17 @@
+
+post_install() {
+	if [ `sed -n "/^omada/p" /etc/passwd` ]
+		then
+			echo "User omada already exists"
+		else
+			sudo useradd omada
+			echo "User omada has beed created"
+	fi
+	sudo chown omada:omada -R /var/lib/omada-controller
+	sudo chown omada:omada -R /opt/omada-controller
+	sudo sed -i 's/-root/-omada/g' /opt/omada-controller/bin/control.sh
+}
+
+post_remove() {
+	sudo rm -Rf /opt/omada-controller
+}
