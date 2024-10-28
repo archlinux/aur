@@ -41,31 +41,28 @@ depends=(
   hicolor-icon-theme
   jansson
   lcms2
-  libacl.so
-  libasound.so
-  libdbus-1.so
-  libfontconfig.so
-  libfreetype.so
-  libgdk_pixbuf-2.0.so
-  libgif.so
-  libgio-2.0.so
-  libglib-2.0.so
-  libgobject-2.0.so
-  libgpm.so
-  libharfbuzz.so
+  acl
+  alsa-lib
+  dbus
+  fontconfig
+  freetype2
+  gdk-pixbuf2
+  giflib
+  glib2
+  gpm
+  harfbuzz
   libice
-  libjpeg.so
-  libncursesw.so
+  libjpeg-turbo
+  ncurses
   libotf
   libpng
-  librsvg-2.so
+  librsvg
   libsm
-  sqlite libsqlite3.so
-  libsystemd.so
-  libtiff.so
-  libtree-sitter.so
-  #libwebp.so
-  libwebpdemux.so
+  sqlite
+  systemd-libs
+  libtiff
+  tree-sitter
+  libwebp
   libx11
   libxcb
   libxcomposite
@@ -73,7 +70,7 @@ depends=(
   libxfixes
   libxi
   libxinerama
-  libxml2.so
+  libxml2
   libxmu
   libxpm
   libxrandr
