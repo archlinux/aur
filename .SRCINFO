@@ -1,7 +1,7 @@
 pkgbase = apostrophe
 	pkgdesc = A distraction free Markdown editor
 	pkgver = 3.2
-	pkgrel = 3
+	pkgrel = 4
 	url = https://gitlab.gnome.org/World/apostrophe
 	arch = x86_64
 	license = GPL-3.0-only
@@ -17,7 +17,7 @@ pkgbase = apostrophe
 	depends = libadwaita
 	depends = webkitgtk-6.0
 	depends = libspelling
-	depends = gtksourceview5-apostrophe
+	depends = gtksourceview5
 	depends = dconf
 	depends = pango
 	depends = gdk-pixbuf2
