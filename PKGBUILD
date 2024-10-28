@@ -1,10 +1,10 @@
 # Maintainer: envolution
-#
+
 pkgname='goxel-voxel-editor-bin'
 _pkgname='goxel'
 appname='goxel'
 pkgver=0.15.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Open Source 3D voxel editor for Mac, Windows and Linux. Release version."
 arch=('i686' 'x86_64')
 conflicts=('goxel')
