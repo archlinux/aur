@@ -1,6 +1,5 @@
 _baseurl='https://github.com/ggerganov/whisper.cpp'
 _model='large-v2'
-_model_url='https://huggingface.co/ggerganov/whisper.cpp/resolve/main/ggml-large-v2.bin'
 _model_sha1sum='9a423fe4d40c82774b6af34115b8b935f34152246eb19e80e376071d3f999487'
 _pkgbase='whisper.cpp-model'
 replaces=('whisper.cpp-model-large')
