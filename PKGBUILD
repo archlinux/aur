@@ -3,7 +3,7 @@
 # Contributor: Tom <reztho at archlinux dot us>
 
 pkgname=pdfsam
-pkgver=5.2.8
+pkgver=5.2.9
 pkgrel=1
 pkgdesc="A free open source tool to split and merge pdf documents"
 arch=('any')
@@ -13,7 +13,7 @@ depends=('hicolor-icon-theme' 'java-runtime=21' 'sh' 'archlinux-java-run')
 makedepends=('desktop-file-utils' 'gendesk')
 source=("https://github.com/torakiki/${pkgname}/releases/download/v${pkgver}/${pkgname}-${pkgver}-linux.tar.gz"
         "pdfsam")
-sha512sums=('ffea10bd9f248732d51c791a74defffd0025ab190881fd7116626e92de4f4e2f900aeb0c2bb98bd7566c847b223aa3f54eb0667fbc1daa630bd50ecdef4da9c6'
+sha512sums=('4e29edf5c6002a62938746496867a0efd3ef08a355adff8e9a9596979d11c855ed34d5f99c91221b7c110ef1fb4f4132a9ed10ce1de534f83b1d1fb3a3acb22d'
             '700700b8ad4fb44f6eb1aaff35ede7ac53729c0dce39f23467159b14aadd28705cf5c547c6b8871ecd4afebc1fb479eafdbdad68b95c0114e26438961abf8209')
 noextract=("${pkgname}-${pkgver}-linux.tar.gz")
 
