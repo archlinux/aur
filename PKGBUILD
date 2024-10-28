@@ -1,11 +1,11 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=ai-gate
 _pkgname="AI Gate"
-pkgver=2.0.0
-_electronversion=22
-_nodeversion=18
-pkgrel=3
-pkgdesc="Brings ChatGPT, Bard, Perplexity and Claude together as collection for your convenience. NO API key needed.Use system-wide electron."
+pkgver=3.0.0
+_electronversion=33
+_nodeversion=20
+pkgrel=1
+pkgdesc="ChatGPT + Google Gemini (Bard) + Perplexity AI+ Claude AI = Ai Gate. NO API key needed.Use system-wide electron."
 arch=('any')
 url="https://github.com/inulute/ai-gate"
 license=('MIT')
@@ -23,7 +23,7 @@ source=(
     "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
     "${pkgname}.sh"
 )
-sha256sums=('ef3f784cd6db482e6cc76cbb76bbb91828c8c07607886884f59db9735b47754f'
+sha256sums=('58509735de1afbb5534e908484b1f3bbf11df6b5784fb6ea5111dc6af64dc99e'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
@@ -68,6 +68,6 @@ package() {
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
     install -Dm644 "${srcdir}/${pkgname}-${pkgver}/release-builds/linux-"*/resources/app.asar -t "${pkgdir}/usr/lib/${pkgname}"
     install -Dm644 "${srcdir}/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
-    install -Dm644 "${srcdir}/${pkgname}-${pkgver}/assets/icons/png/${pkgname//-/}1.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
+    install -Dm644 "${srcdir}/${pkgname}-${pkgver}/icons/png/favicon.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
     install -Dm644 "${srcdir}/${pkgname}-${pkgver}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
