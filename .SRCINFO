@@ -1,6 +1,6 @@
 pkgbase = buildbot
 	pkgver = 4.0.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://buildbot.net
 	arch = any
 	license = GPL-2.0-only
@@ -56,7 +56,7 @@ pkgbase = buildbot
 
 pkgname = buildbot
 	pkgdesc = The Continuous Integration Framework
-	depends = buildbot-common=4.0.4-1
+	depends = buildbot-common=4.0.4-2
 	depends = python
 	depends = python-twisted
 	depends = python-jinja
@@ -96,7 +96,7 @@ pkgname = buildbot
 
 pkgname = buildbot-worker
 	pkgdesc = Buildbot worker daemon
-	depends = buildbot-common=4.0.4-1
+	depends = buildbot-common=4.0.4-2
 	depends = python
 	depends = python-twisted
 	depends = python-autobahn
@@ -113,41 +113,70 @@ pkgname = buildbot-common
 pkgname = python-buildbot-www
 	pkgdesc = Buildbot UI
 	depends = python
-	depends = buildbot=4.0.4-1
+	depends = buildbot=4.0.4-2
 	optdepends = python-buildbot-waterfall-view
 	optdepends = python-buildbot-console-view
 	optdepends = python-buildbot-grid-view
 	optdepends = python-buildbot-badges
 
+pkgname = python-buildbot-www-react
+	pkgdesc = React-based Buildbot UI (experimental)
+	depends = python
+	depends = buildbot=4.0.4-2
+	optdepends = python-buildbot-react-waterfall-view
+	optdepends = python-buildbot-react-console-view
+	optdepends = python-buildbot-react-grid-view
+
 pkgname = python-buildbot-waterfall-view
 	pkgdesc = Buildbot Waterfall View plugin
-	depends = buildbot=4.0.4-1
-	depends = python-buildbot-www=4.0.4-1
+	depends = buildbot=4.0.4-2
+	depends = python-buildbot-www=4.0.4-2
 
 pkgname = python-buildbot-console-view
 	pkgdesc = Buildbot Console View plugin
-	depends = buildbot=4.0.4-1
-	depends = python-buildbot-www=4.0.4-1
+	depends = buildbot=4.0.4-2
+	depends = python-buildbot-www=4.0.4-2
 
 pkgname = python-buildbot-grid-view
 	pkgdesc = Buildbot Grid View plugin
-	depends = buildbot=4.0.4-1
-	depends = python-buildbot-www=4.0.4-1
+	depends = buildbot=4.0.4-2
+	depends = python-buildbot-www=4.0.4-2
 
 pkgname = python-buildbot-wsgi-dashboards
 	pkgdesc = Buildbot plugin to integrate flask or bottle dashboards to buildbot UI
-	depends = buildbot=4.0.4-1
-	depends = python-buildbot-www=4.0.4-1
+	depends = buildbot=4.0.4-2
+	depends = python-buildbot-www=4.0.4-2
 	depends = python-twisted
 
 pkgname = python-buildbot-badges
 	pkgdesc = Buildbot badges
 	depends = python
-	depends = buildbot=4.0.4-1
-	depends = python-buildbot-www=4.0.4-1
+	depends = buildbot=4.0.4-2
+	depends = python-buildbot-www=4.0.4-2
 	depends = python-klein
 	depends = python-cairosvg
 	depends = python-cairocffi
 	depends = python-jinja
 	depends = python-twisted
 	optdepends = ttf-dejavu: the default font for rendering badges as PNGs
+
+pkgname = python-buildbot-react-waterfall-view
+	pkgdesc = Buildbot Waterfall View plugin (React)
+	depends = buildbot=4.0.4-2
+	depends = python-buildbot-www-react=4.0.4-2
+
+pkgname = python-buildbot-react-console-view
+	pkgdesc = Buildbot Console View plugin (React)
+	depends = buildbot=4.0.4-2
+	depends = python-buildbot-www-react=4.0.4-2
+
+pkgname = python-buildbot-react-grid-view
+	pkgdesc = Buildbot Grid View plugin (React)
+	depends = buildbot=4.0.4-2
+	depends = python-buildbot-www-react=4.0.4-2
+
+pkgname = python-buildbot-react-wsgi-dashboards
+	pkgdesc = Buildbot plugin to integrate flask or bottle dashboards to buildbot UI (React)
+	depends = buildbot=4.0.4-2
+	depends = python-buildbot-www-react=4.0.4-2
+	depends = python-twisted

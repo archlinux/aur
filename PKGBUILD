@@ -5,14 +5,17 @@
 
 pkgbase=buildbot
 pkgname=(buildbot buildbot-worker buildbot-docs buildbot-common
-         python-buildbot-www
+         python-buildbot-www python-buildbot-www-react
          python-buildbot-waterfall-view
          python-buildbot-console-view python-buildbot-grid-view
-         python-buildbot-wsgi-dashboards python-buildbot-badges)
+         python-buildbot-wsgi-dashboards python-buildbot-badges
+         python-buildbot-react-waterfall-view
+         python-buildbot-react-console-view python-buildbot-react-grid-view
+         python-buildbot-react-wsgi-dashboards)
 # https://github.com/buildbot/buildbot/releases
 pkgver=4.0.4
 _bb_contrib_commit=cc230791dcd4717830d4dcb62843c0a19bdf3262
-pkgrel=1
+pkgrel=2
 arch=(any)
 url='https://buildbot.net'
 # https://github.com/buildbot/buildbot/blob/v3.10.1/master/setup.py says GPLv2, and does not mention "any later version"
@@ -44,7 +47,8 @@ validpgpkeys=(
 
 # Some WWW modules are not tested by upstream, see https://github.com/buildbot/buildbot/blob/v4.0.3/Makefile#L30
 _buildbot_www_modules_with_tests=(base waterfall_view console_view)
-_buildbot_www_modules=(${_buildbot_www_modules_with_tests[@]} grid_view wsgi_dashboards badges)
+_buildbot_www_react_modules_with_tests=(react-base react-waterfall_view react-console_view)
+_buildbot_www_modules=(${_buildbot_www_modules_with_tests[@]} ${_buildbot_www_react_modules_with_tests[@]} grid_view wsgi_dashboards react-grid_view react-wsgi_dashboards badges)
 
 prepare() {
   cd buildbot
@@ -129,6 +133,12 @@ check() {
   export CHROME_BIN=/usr/bin/chromium
 
   for module in ${_buildbot_www_modules_with_tests[@]}
+  do
+    cd "$srcdir"/buildbot/www/$module
+    yarn run test
+  done
+
+  for module in ${_buildbot_www_react_modules_with_tests[@]}
   do
     cd "$srcdir"/buildbot/www/$module
     yarn run test
@@ -224,6 +234,19 @@ package_python-buildbot-www() {
   python -m installer --destdir="$pkgdir" dist/*.whl
 }
 
+package_python-buildbot-www-react() {
+  pkgdesc='React-based Buildbot UI (experimental)'
+  depends=(python buildbot=$pkgver-$pkgrel)
+  optdepends=(
+    'python-buildbot-react-waterfall-view'
+    'python-buildbot-react-console-view'
+    'python-buildbot-react-grid-view'
+  )
+
+  cd buildbot/www/react-base
+  python -m installer --destdir="$pkgdir" dist/*.whl
+}
+
 package_python-buildbot-waterfall-view() {
   pkgdesc='Buildbot Waterfall View plugin'
   depends=(buildbot=$pkgver-$pkgrel python-buildbot-www=$pkgver-$pkgrel)
@@ -265,5 +288,37 @@ package_python-buildbot-badges() {
   )
 
   cd buildbot/www/badges
+  python -m installer --destdir="$pkgdir" dist/*.whl
+}
+
+package_python-buildbot-react-waterfall-view() {
+pkgdesc='Buildbot Waterfall View plugin (React)'
+  depends=(buildbot=$pkgver-$pkgrel python-buildbot-www-react=$pkgver-$pkgrel)
+
+  cd buildbot/www/react-waterfall_view
+  python -m installer --destdir="$pkgdir" dist/*.whl
+}
+
+package_python-buildbot-react-console-view() {
+pkgdesc='Buildbot Console View plugin (React)'
+  depends=(buildbot=$pkgver-$pkgrel python-buildbot-www-react=$pkgver-$pkgrel)
+
+  cd buildbot/www/react-console_view
+  python -m installer --destdir="$pkgdir" dist/*.whl
+}
+
+package_python-buildbot-react-grid-view() {
+  pkgdesc='Buildbot Grid View plugin (React)'
+  depends=(buildbot=$pkgver-$pkgrel python-buildbot-www-react=$pkgver-$pkgrel)
+
+  cd buildbot/www/react-grid_view
+  python -m installer --destdir="$pkgdir" dist/*.whl
+}
+
+package_python-buildbot-react-wsgi-dashboards() {
+  pkgdesc='Buildbot plugin to integrate flask or bottle dashboards to buildbot UI (React)'
+  depends=(buildbot=$pkgver-$pkgrel python-buildbot-www-react=$pkgver-$pkgrel python-twisted)
+
+  cd buildbot/www/react-wsgi_dashboards
   python -m installer --destdir="$pkgdir" dist/*.whl
 }
