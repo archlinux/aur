@@ -7,6 +7,7 @@ pkgbase = ubertooth
 	arch = i686
 	license = GPL
 	makedepends = cmake
+	makedepends = python-distutils-extra
 	depends = bluez-libs
 	depends = libbtbb>=2018.12.R1
 	depends = libusb

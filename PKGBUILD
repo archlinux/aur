@@ -8,7 +8,7 @@ arch=('x86_64' 'i686')
 license=('GPL')
 depends=('bluez-libs' 'libbtbb>=2018.12.R1' 'libusb' 'libpcap' 'python-numpy' 'python-pyusb')
 optdepends=('qt5-declarative' 'python-pyside2' 'python-qtpy')
-makedepends=('cmake')
+makedepends=('cmake' 'python-distutils-extra')
 source=("https://github.com/greatscottgadgets/ubertooth/releases/download/${_pkgver}/ubertooth-${_pkgver}.tar.xz")
 sha256sums=('93a4ce7af8eddcc299d65aff8dd3a0455293022f7fea4738b286353f833bf986')
 
