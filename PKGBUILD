@@ -2,7 +2,7 @@
 
 # shellcheck disable=all
 pkgname=alacritty-theme-switcher
-pkgver=0.1.4
+pkgver=0.1.5
 pkgrel=2
 epoch=0
 pkgdesc="Easily switch between color themes for Alacritty"
