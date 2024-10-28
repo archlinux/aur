@@ -1,0 +1,14 @@
+pkgbase = mlkit-bin
+	pkgdesc = Standard ML Compiler and Toolkit
+	pkgver = 4.7.12
+	pkgrel = 1
+	url = http://www.elsman.com/mlkit/
+	arch = x86_64
+	license = GPL2
+	depends = gmp
+	provides = mlkit
+	conflicts = mlkit
+	source = https://github.com/melsman/mlkit/releases/download/v4.7.12/mlkit-bin-dist-linux.tgz
+	sha256sums = 7c297ce5e8b45631700579c7fa128842bd02d8a93ec2672ab8fcd98ad743b3ce
+
+pkgname = mlkit-bin
