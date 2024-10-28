@@ -7,7 +7,7 @@
 _pkgname="peazip"
 pkgname="$_pkgname"
 pkgver=10.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Cross-platform file and archive manager (${_widgets^})"
 url="https://github.com/peazip/PeaZip"
 license=('LGPL-3.0-or-later')
@@ -48,6 +48,20 @@ prepare() {
   # support qt6
   sed -E -e 's&IFDEF LCLQT5&IF DEFINED(LCLQT5) OR DEFINED(LCLQT6)&g' -i "$_pkgsrc/peazip-sources/dev/peach.pas"
 
+  # use system binaries
+  sed -E -e 's&(\bHSYSBIN\b\s*)=\s*[0-9];&\1= 2;&' \
+    -i "$_pkgsrc/peazip-sources/dev/peach.pas"
+
+  # set p7zip version to 17.05
+  sed -E -e '/IFDEF LINUX/s/syntaxlevel7z:=[0-9]+/syntaxlevel7z:=3/' \
+    -i "$_pkgsrc/peazip-sources/dev/peach.pas"
+
+  # set paths
+  sed -E \
+    -e 's&(\bHBINPATH\b\s*)=\s*'\'\'';&\1= '\''/usr/bin'\'';&' \
+    -e 's&(\bHSHAREPATH\b\s*)=\s*'\'\'';&\1= '\'"/usr/share/$_pkgname"\'';&' \
+    -i "$_pkgsrc/peazip-sources/dev/peach.pas"
+
   # modify compiler options
   for i in ${_packets[@]}; do
     xmlstarlet edit --inplace --delete '//Other' "$i"
@@ -81,36 +95,28 @@ package() {
   )
   depends+=('hicolor-icon-theme')
 
-  # binary
-  install -Dm755 "$_pkgsrc/peazip-sources/dev/peazip" "$pkgdir/usr/lib/peazip/peazip"
-  install -Dm755 "$_pkgsrc/peazip-sources/dev/pea" "$pkgdir/usr/lib/peazip/pea"
+  local _current_path
 
-  # icon
-  cd "$srcdir/$_pkgsrc/peazip-sources/res/share/icons"
-  install -Dm644 peazip_{7z,rar,zip}.png -t "${pkgdir}/usr/share/icons/hicolor/256x256/mimetypes"
-  install -Dm644 peazip_{add,extract,browse,convert}.png -t "${pkgdir}/usr/share/icons/hicolor/256x256/actions"
+  # binaries
+  _current_path="$_pkgsrc/peazip-sources/dev"
+  install -Dm755 "$_current_path/peazip" "$pkgdir/usr/bin/peazip"
+  install -Dm755 "$_current_path/pea" "$pkgdir/usr/bin/pea"
 
-  # desktop
-  cd "$srcdir/$_pkgsrc/peazip-sources/res/share/batch/freedesktop_integration"
-  install -Dm644 peazip.png -t "${pkgdir}/usr/share/icons/hicolor/256x256/apps"
-  install -Dm644 peazip.desktop -t "$pkgdir/usr/share/applications"
+  # icons
+  _current_path="$_pkgsrc/peazip-sources/res/share/icons"
+  install -Dm644 "$_current_path"/peazip_{7z,rar,zip}.png -t "$pkgdir/usr/share/icons/hicolor/256x256/mimetypes"
+  install -Dm644 "$_current_path"/peazip_{add,extract,browse,convert}.png -t "$pkgdir/usr/share/icons/hicolor/256x256/actions"
+
+  # launcher
+  _current_path="$_pkgsrc/peazip-sources/res/share/batch/freedesktop_integration"
+  install -Dm644 "$_current_path"/peazip.png -t "${pkgdir}/usr/share/icons/hicolor/256x256/apps"
+  install -Dm644 "$_current_path"/peazip.desktop -t "$pkgdir/usr/share/applications"
 
   # res
-  cd "$srcdir/$_pkgsrc/peazip-sources/res/share"
-  install -d "$pkgdir/usr/share/peazip"
-  cp -r icons lang themes "$pkgdir/usr/share/peazip/"
-  install -d "$pkgdir/usr/lib/peazip/res"
-  ln -sf /usr/share/peazip "$pkgdir/usr/lib/peazip/res/share"
+  _current_path="$_pkgsrc/peazip-sources/res/share"
+  install -dm755 "$pkgdir/usr/share/$_pkgname"
+  cp --reflink=auto -a "$_current_path"/{icons,lang,themes} "$pkgdir/usr/share/$_pkgname/"
 
-  # 3rdparty binary
-  local _dir _file
-  for _file in 7z/7z brotli/brotli unace/unace upx/upx zstd/zstd; do
-    _dir="$(dirname $_file)"
-    install -dm755 "$pkgdir/usr/lib/peazip/res/bin/$_dir/"
-    ln -sf "/usr/bin/$_dir" "$pkgdir/usr/lib/peazip/res/bin/$_file"
-  done
-
-  install -d "$pkgdir"/usr/bin/
-  ln -sf /usr/lib/peazip/peazip "$pkgdir/usr/bin/peazip"
-  ln -sf /usr/lib/peazip/pea "$pkgdir/usr/bin/pea"
+  # permissions
+  chmod -R u+rwX,go+rX,go-w "$pkgdir/"
 }
