@@ -23,7 +23,21 @@ provides=()
 _model_file="ggml-${_model}.bin"
 _model_path="/usr/share/$pkgname/${_model_file}"
 
-source=("$_model_url")
+__model_url() {
+    local model=$1
+    # copied from https://github.com/ggerganov/whisper.cpp/raw/master/models/download-ggml-model.sh
+    local src="https://huggingface.co/ggerganov/whisper.cpp"
+    local pfx="resolve/main/ggml"
+    if echo "$model" | grep -q "tdrz"; then
+        local src="https://huggingface.co/akashmjn/tinydiarize-whisper.cpp"
+        local pfx="resolve/main/ggml"
+    fi
+
+    echo $src/$pfx-"$model".bin
+
+}
+
+source=("$_model_file::$(__model_url $_model)")
 sha1sums=("$_model_sha1sum")
 
 
