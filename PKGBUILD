@@ -1,15 +1,14 @@
-# Maintainer: Shivanshu <87352198+totoro-ghost@users.noreply.github.com>
-# Contributor: Nobody <nobody@example.com>
+# Maintainer: D3vil0p3r <vozaanthony [at] gmail [dot] com>
 
 pkgname=sddm-astronaut-theme
-pkgver=26.48ea0a7
+pkgver=34.8993670
 pkgrel=1
-pkgdesc="Modern looking sddm qt6 theme"
-arch=("any")
-url="https://github.com/Keyitdev/sddm-astronaut-theme"
-license=("LGPL3")
+pkgdesc='Modern looking sddm qt6 theme.'
+arch=('any')
+url='https://github.com/Keyitdev/sddm-astronaut-theme'
+license=('LGPL3')
 depends=('sddm' 'qt6-5compat' 'qt6-declarative' 'qt6-svg')
-makedepends=("git")
+makedepends=('git')
 source=("git+https://github.com/Keyitdev/sddm-astronaut-theme")
 md5sums=("SKIP")
 
