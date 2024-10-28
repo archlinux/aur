@@ -86,6 +86,7 @@ optdepends=(
 )
 conflicts=(emacs)
 provides=("emacs=$_pkgver_major")
+options=(!strip)
 validpgpkeys=('17E90D521672C04631B1183EE78DAE0F3115E06B'  # Eli Zaretskii <eliz@gnu.org>
               'CEA1DE21AB108493CC9C65742E82323B8F4353EE') # Stefan Kangas <stefankangas@gmail.com>
 _source_url_prefix="ftp://ftp.gnu.org/gnu/emacs"
