@@ -3,7 +3,7 @@
 
 pkgname=ttf-inconsolata-g
 pkgver=20090213
-pkgrel=4
+pkgrel=5
 pkgdesc="Monospace font for pretty code listings and for the terminal modified by Leonardo Maffi http://www.fantascienza.net/leonardo/)"
 arch=('any')
 url='http://www.fantascienza.net/leonardo/'
