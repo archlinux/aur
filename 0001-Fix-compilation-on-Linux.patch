@@ -1,0 +1,124 @@
+From 34f04251b2db9cbd317bcd979a5e2e6e73b5e76c Mon Sep 17 00:00:00 2001
+From: Aleksy Grabowski <hurufu@gmail.com>
+Date: Tue, 29 Oct 2024 20:47:26 +0100
+Subject: [PATCH] Fix compilation on Linux
+
+---
+ Makefile  | 21 +++++++++++----------
+ config.h  |  4 +++-
+ main.c    |  3 +++
+ process.c |  1 +
+ symbol.c  |  5 ++++-
+ 5 files changed, 22 insertions(+), 12 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index 664a0ea..23f48ec 100644
+--- a/Makefile
++++ b/Makefile
+@@ -1,23 +1,24 @@
+ INCDIR=.
+ INC=-I$(INCDIR)
+-# change to -DSYSV for System V
+-DFLAGS=-DBSD4_2
+-CFLAGS=-g $(INC) $(DFLAGS)
+-HDRS=ptags.h config.h 
++CFLAGS+=$(INC) -DSYSV
++HDRS=ptags.h config.h
+ OBJS=main.o process.o symbol.o
+ BIN=ptags
+-FINAL=/usr/local/bin/ptags
+-MAN=/usr/man/manl/ptags.l
++DESTDIR=$(PWD)/root
++FINAL=$(DESTDIR)/usr/bin/ptags
++MAN=$(DESTDIR)/usr/share/man/man1/ptags.1
+ SRCS=READ_ME ptags.L Makefile $(HDRS) $(OBJS:.o=.c) tags TestFiles TestFiles/*
+ 
+ $(BIN):	$(OBJS)
+-	cc $(CFLAGS) -o $(BIN) $(OBJS)
++	$(LINK.o) -o $@ $^
+ 
+-install: $(BIN) $(MAN)
+-	install -s $(BIN) $(FINAL)
++.PHONY: install
++install: $(FINAL) $(MAN)
+ 
++$(FINAL): $(BIN)
++	install -D -m755 $< $@
+ $(MAN): ptags.L
+-	cp ptags.L $(MAN)
++	install -D -m644 $< $@
+ 
+ shar: $(SRCS)
+ 	shar -c -v $(SRCS) > ptags.shar
+diff --git a/config.h b/config.h
+index 47ac05e..1a391af 100644
+--- a/config.h
++++ b/config.h
+@@ -31,8 +31,10 @@
+ 
+ #if SYSV
+ #    define INDEX	strchr
+-#else BSD4_2
++#elif BSD4_2
+ #    define INDEX	index
++#else
++#    error
+ #endif
+ 
+ /*
+diff --git a/main.c b/main.c
+index 5e778b4..4dfb8bd 100644
+--- a/main.c
++++ b/main.c
+@@ -1,4 +1,6 @@
+ #include <stdio.h>
++#include <stdlib.h>
++#include <unistd.h>
+ #include <sys/param.h>
+ #include <sys/stat.h>
+ #include "ptags.h"
+@@ -48,6 +50,7 @@ global	FILE	*tags;			/* pointer to the tags file */
+ 
+ local	void	usage();		/* displays usage and EXITS */
+ 
++int
+ main(argc, argv)
+ int argc;
+ char *argv[];
+diff --git a/process.c b/process.c
+index 2b09dc3..ae1ab79 100644
+--- a/process.c
++++ b/process.c
+@@ -1,5 +1,6 @@
+ #include <stdio.h>
+ #include <ctype.h>
++#include <stdlib.h>
+ #include "config.h"
+ #include "ptags.h"
+ 
+diff --git a/symbol.c b/symbol.c
+index ac7d719..01208e3 100644
+--- a/symbol.c
++++ b/symbol.c
+@@ -1,6 +1,10 @@
+ #include <stdio.h>
++#include <string.h>
+ #include "ptags.h"
+ 
++
++static	SYMBOL	*new_sym();
++
+ /*
+  * ptags - creates entries in a tags file for Prolog predicates
+  * 
+@@ -47,7 +51,6 @@ install(name, file)
+ char *name;				/* predicate name */
+ char *file;				/* name of file where pred is defined */
+ {
+-	extern	SYMBOL	*new_sym();
+ 	extern	char	*strcpy();
+ 	SYMBOL *sym;
+ 
+-- 
+2.47.0
+

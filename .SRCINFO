@@ -1,0 +1,14 @@
+pkgbase = prolog-tags
+	pkgdesc = Create tags file for Prolog sources
+	pkgver = 1
+	pkgrel = 1
+	url = https://www.cs.cmu.edu/afs/cs/project/ai-repository/ai/lang/prolog/util/ptags/0.html
+	arch = i686
+	arch = x86_64
+	license = unknown
+	conflicts = ptags
+	conflicts = ptags-git
+	source = https://www.cs.cmu.edu/afs/cs/project/ai-repository/ai/lang/prolog/util/ptags/ptags.tgz
+	sha256sums = 7b568cee8a8b37c9a9171754c379818bfe08cc6c202bc1fb7e0294c43ced2ab4
+
+pkgname = prolog-tags
