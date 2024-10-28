@@ -46,6 +46,7 @@ post_upgrade() {
 	sudo ln -s /var/lib/omada-controller/data /opt/omada-controller
 	sudo ln -s /var/lib/omada-controller/logs /opt/omada-controller
 	sudo ln -s /var/lib/omada-controller/work /opt/omada-controller
+	sudo chown omada:omada -R /opt/omada-controller
 	sudo systemctl daemon-reload
 	sudo systemctl start omada-controller
 }
