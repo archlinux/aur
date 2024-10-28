@@ -1,14 +1,15 @@
 # Maintainer: Nebulosa <nebulosa2007-at-yandex-dot-ru>
 
 pkgname=rdrview
-pkgver=0.1.2
-pkgrel=3
+pkgver=0.1.3
+pkgrel=1
 pkgdesc="Firefox Reader View as a command line tool"
 arch=(x86_64)
 url="https://github.com/eafer/$pkgname"
 license=(Apache-2.0)
 depends=(
   curl
+  glibc
   libseccomp
   libxml2
 )
@@ -27,7 +28,7 @@ options=(!debug)
 source=(
   $url/archive/v$pkgver/$pkgname-$pkgver.tar.gz
 )
-b2sums=('6d46824cc2ce76337bf3ed05631e5d04b8985d8abdf3c64642e32e33a181e3afaacbca70d54059aef6fc207672065ecc9cd8247b064610ef4116c96f98a6f60a')
+b2sums=('563b61c7dc14832aa809cbf00c62f3771d2d497b946cdaa5f9ca17d8bfb741c43bd885bbd1a3fdefed5beedf6039013066a8957e0a518833f1ac8c33725d582e')
 
 prepare(){
   cd $pkgname-$pkgver
