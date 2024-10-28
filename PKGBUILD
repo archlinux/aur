@@ -3,7 +3,7 @@
 # This PKGBUILD is forked from https://aur.archlinux.org/packages/tableplus due to lack of updating.
 
 pkgname=tableplus-bin
-pkgver=0.1.254
+pkgver=0.1.256
 pkgrel=1
 pkgdesc='Modern, native, and friendly GUI tool for relational databases (Alpha)'
 arch=('x86_64' 'aarch64')
@@ -17,8 +17,8 @@ source_aarch64=("tableplus_${pkgver}_${pkgrel}_arm64.deb::https://deb.tableplus.
 
 sha256sums=('76f924b1ebad5309ccf0dd7f3fe3d1b57ff3088b208a603900b0e240fdb5debb'
             '83620b08e325418947f0007ecca7b981a988bfdac3f466db165f9262d1c0e5f4')
-sha256sums_x86_64=('882d148c37ad567bac931080c0b6f94931b5e60a245b438a27fee9ec74c51e0b')
-sha256sums_aarch64=('e47e1eec33847f37b9cd903da8c5e2e80bf957493925ceaa61f19ccc39b6c2c8')
+sha256sums_x86_64=('8e0fa415a86b9f11d61959743b19564f7c920b90eb3696c0072a7482780cfa90')
+sha256sums_aarch64=('1aa6c741e791ea9efdd995fa594f37bfb98a0eeb8bfdf66a3a5847757ccf1455')
 
 prepare() {
     tar -xf "${srcdir}/data.tar.zst"
