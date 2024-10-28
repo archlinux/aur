@@ -29,43 +29,36 @@ JIT="YES"         # Enable native just-in-time compilation with libgccjit availa
 pkgname=emacs-lucid-nativecomp
 pkgver=29.4
 _pkgver_major=${pkgver/.*}
-pkgrel=2
+pkgrel=3
 pkgdesc="The extensible, customizable, self-documenting real-time display editor (Lucid toolkit version with native compilation)"
 arch=('x86_64')
 url="http://www.gnu.org/software/emacs/emacs.html"
 license=('GPL3')
 depends=(
+  acl
+  alsa-lib
   cairo
+  dbus
+  fontconfig
+  freetype2
+  gdk-pixbuf2
+  giflib
+  glib2
   gmp
   gnutls
+  gpm
+  harfbuzz
   hicolor-icon-theme
   jansson
   lcms2
-  libacl.so
-  libasound.so
-  libdbus-1.so
-  libfontconfig.so
-  libfreetype.so
-  libgdk_pixbuf-2.0.so
-  libgif.so
-  libgio-2.0.so
-  libglib-2.0.so
-  libgobject-2.0.so
-  libgpm.so
-  libharfbuzz.so
   libice
-  libjpeg.so
-  libncursesw.so
+  libjpeg-turbo
   libotf
   libpng
-  librsvg-2.so
+  librsvg
   libsm
-  sqlite libsqlite3.so
-  libsystemd.so
-  libtiff.so
-  libtree-sitter.so
-  #libwebp.so
-  libwebpdemux.so
+  libtiff
+  libwebp
   libx11
   libxcb
   libxcomposite
@@ -73,13 +66,17 @@ depends=(
   libxfixes
   libxi
   libxinerama
-  libxml2.so
+  libxml2
   libxmu
   libxpm
   libxrandr
   libxrender
   libxt
   m17n-lib
+  ncurses
+  sqlite
+  systemd-libs
+  tree-sitter
   xaw3d
   xcb-util
   zlib
@@ -89,6 +86,7 @@ optdepends=(
 )
 conflicts=(emacs)
 provides=("emacs=$_pkgver_major")
+options=(!strip)
 validpgpkeys=('17E90D521672C04631B1183EE78DAE0F3115E06B'  # Eli Zaretskii <eliz@gnu.org>
               'CEA1DE21AB108493CC9C65742E82323B8F4353EE') # Stefan Kangas <stefankangas@gmail.com>
 _source_url_prefix="ftp://ftp.gnu.org/gnu/emacs"
