@@ -1,6 +1,5 @@
 _baseurl='https://github.com/ggerganov/whisper.cpp'
 _model='small.en'
-_model_url='https://huggingface.co/ggerganov/whisper.cpp/resolve/main/ggml-small.en.bin'
 _model_sha1sum='c6138d6d58ecc8322097e0f987c32f1be8bb0a18532a3f88f734d1bbf9c41e5d'
 _pkgbase='whisper.cpp-model'
 # Maintainer: Hauke Rehfeld <aur@haukerehfeld.de>
