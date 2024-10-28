@@ -1,7 +1,7 @@
 # Maintainer: Margret Riegert <margret at eowyn dot net>
 
 pkgname=crystal-nightly
-pkgver=20241027
+pkgver=20241028
 pkgrel=1
 
 pkgdesc="The Crystal Programming Language, nightly binaries"
