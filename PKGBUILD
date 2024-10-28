@@ -1,6 +1,5 @@
 _baseurl='https://github.com/ggerganov/whisper.cpp'
 _model='small.en-tdrz'
-_model_url='https://huggingface.co/akashmjn/tinydiarize-whisper.cpp/resolve/main/ggml-small.en-tdrz.bin'
 _model_sha1sum='ceac3ec06d1d98ef71aec665283564631055fd6129b79d8e1be4f9cc33cc54b4'
 _pkgbase='whisper.cpp-model'
 # Maintainer: Hauke Rehfeld <aur@haukerehfeld.de>
