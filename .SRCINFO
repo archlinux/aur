@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-libgit2
 	pkgdesc = A portable, pure C implementation of the Git core methods (mingw-w64)
-	pkgver = 1.8.1
+	pkgver = 1.8.3
 	pkgrel = 1
 	url = https://github.com/libgit2/libgit2
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = mingw-w64-libgit2
 	options = staticlibs
 	options = !buildflags
 	options = !strip
-	source = https://github.com/libgit2/libgit2/archive/v1.8.1.tar.gz
-	sha256sums = 8c1eaf0cf07cba0e9021920bfba9502140220786ed5d8a8ec6c7ad9174522f8e
+	source = https://github.com/libgit2/libgit2/archive/v1.8.3.tar.gz
+	sha256sums = 868810a5508d41dd7033d41bdc55312561f3f916d64f5b7be92bc1ff4dcae02a
 
 pkgname = mingw-w64-libgit2
