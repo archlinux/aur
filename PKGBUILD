@@ -7,8 +7,8 @@ _pkgtype="-git"
 _gitname="gtk"
 _pkgname="gtk4"
 pkgbase="$_pkgname${_pkgtype:-}"
-pkgver=4.16.2.r438.ge37f9ba
-pkgrel=2
+pkgver=4.16.3.r424.ge37f9ba
+pkgrel=1
 pkgdesc="GObject-based multi-platform GUI toolkit"
 url="https://gitlab.gnome.org/GNOME/gtk"
 license=('LGPL-2.1-or-later')
@@ -80,7 +80,12 @@ sha256sums=(
 
 pkgver() {
   cd "$_pkgsrc"
-  git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  local _tag _version _revision _hash
+  _tag=$(git tag | grep -E '^[0-9].*' | sort -rV | head -1)
+  _version="${_tag:?}"
+  _revision=$(git rev-list --count --cherry-pick "$_tag"...HEAD)
+  _hash=$(git rev-parse --short=7 HEAD)
+  printf '%s.r%s.g%s' "${_version:?}" "${_revision:?}" "${_hash:?}"
 }
 
 prepare() {

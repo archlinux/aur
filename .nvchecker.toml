@@ -1,0 +1,4 @@
+[gtk4-git]
+source = "git"
+git = "https://gitlab.gnome.org/GNOME/gtk.git"
+prefix = "v"
