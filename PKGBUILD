@@ -2,8 +2,8 @@
 
 pkgbase=platformio-core
 pkgname=('platformio-core' 'platformio-core-udev')
-pkgver=6.1.15
-pkgrel=2
+pkgver=6.1.16
+pkgrel=1
 pkgdesc='An open source ecosystem for IoT development'
 arch=('any')
 url='https://platformio.org'
@@ -38,8 +38,8 @@ optdepends=(
   'python-shellingham: for shell completions'
 )
 source=("$pkgbase::git+https://github.com/platformio/platformio-core#tag=v$pkgver")
-sha512sums=('cdf4b9568d13e85f6dd4295467a7a08184db923d6a730df3d9bdee2eb4a06bf283ddf2fc2adafb5e4e4839903f8ad0c4d9e2f52e4f511672df4cb23e82e2c98f')
-b2sums=('88f5483d05afd86a57c75ca197784a961bf88b179bbe04d6c89fbdd047988687d628620f81a69b4abb95e9e2c1a9fd1e465c710f0c3c9decc610de4a3ed6298d')
+sha512sums=('efb0092f834bee9dea2a1035017329fc91281101cf7510e7855d428e569447f445eca683412406f16114dfd3e8969011d152201eae9fa405ae45c888a7ff6b56')
+b2sums=('137cbb4a469408eb10c48fb95cdda626cd2e27c462fe49a59b71d9d920b1fcb6cf9e10d2a4f22b1f93c86f59ceb2e01e190bbcb727f2267c9d8b11243589230f')
 
 build() {
   cd "$pkgbase"
