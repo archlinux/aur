@@ -1,6 +1,6 @@
 pkgbase = hyperkeys-bin
-	pkgdesc = Unleash you keyboard shorcuts.Use system-wide electron.
-	pkgver = 1.3.1
+	pkgdesc = Unleash you keyboard shorcuts.Prebuilt version.Use system-wide electron.
+	pkgver = 1.3.2
 	pkgrel = 1
 	url = https://hyperkeys.xureilab.com/
 	arch = x86_64
@@ -12,13 +12,13 @@ pkgbase = hyperkeys-bin
 	depends = libdbusmenu-glib
 	depends = xdotool
 	depends = libxmu
-	provides = hyperkeys=1.3.1
+	provides = hyperkeys=1.3.2
 	conflicts = hyperkeys
 	options = !emptydirs
 	options = !strip
-	source = hyperkeys-1.3.1.AppImage::https://github.com/xurei/hyperkeys/releases/download/v1.3.1/HyperKeys-1.3.1.AppImage
+	source = hyperkeys-1.3.2.AppImage::https://github.com/xurei/hyperkeys/releases/download/v1.3.2/HyperKeys-1.3.2.AppImage
 	source = hyperkeys.sh
-	sha256sums = 187d6d3dd1574e259e92bc47402c421ff7fd31750b2848e885231e18ab88be0b
+	sha256sums = e4e1309700aefa3be903c6a48c33cddfd443f55e4f3df046eb27ab773bec1be9
 	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
 
 pkgname = hyperkeys-bin

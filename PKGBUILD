@@ -2,10 +2,10 @@
 # Contributor:  Dimitris Kiziridis <ragouel at outlook dot com>
 pkgname=hyperkeys-bin
 _pkgname=HyperKeys
-pkgver=1.3.1
+pkgver=1.3.2
 _electronversion=26
 pkgrel=1
-pkgdesc="Unleash you keyboard shorcuts.Use system-wide electron."
+pkgdesc="Unleash you keyboard shorcuts.Prebuilt version.Use system-wide electron."
 arch=('x86_64')
 url="https://hyperkeys.xureilab.com/"
 _ghurl="https://github.com/xurei/hyperkeys"
@@ -31,7 +31,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}.AppImage"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('187d6d3dd1574e259e92bc47402c421ff7fd31750b2848e885231e18ab88be0b'
+sha256sums=('e4e1309700aefa3be903c6a48c33cddfd443f55e4f3df046eb27ab773bec1be9'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 build() {
     sed -e "
