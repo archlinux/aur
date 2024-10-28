@@ -1,0 +1,16 @@
+pkgbase = python-sshconf-git
+	pkgdesc = SSH configuration reading and modification library in Python
+	pkgver = 0.2.7.r5.gb53f00b
+	pkgrel = 1
+	url = https://github.com/sorend/sshconf
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-flit-core
+	depends = python
+	source = git+https://github.com/sorend/sshconf.git
+	sha256sums = SKIP
+
+pkgname = python-sshconf-git
