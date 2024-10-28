@@ -13,7 +13,7 @@ _devenv=false
 _generic_release=false
 
 ## real pkgrel is the eval one
-pkgver=9.20.w1.s5a1b9d5
+pkgver=9.20.w105.s78bd3f0
 pkgrel=1
 eval pkgrel=1
 
@@ -32,10 +32,10 @@ _enabled_staging=()
 
 ## if all staging patches are to be applied, what (array of) patches to omit?
 ## e.g. "Compiler_Warnings user32-. . ."
-_disabled_staging=(eventfd_synchronization)
+_disabled_staging=(eventfd_synchronization) # added manually from proton
 
 ## main AUR version control setting, wine/staging base will be taken from this if custompatches=false (default)
-_patchbase_tag="10-20-2024-3a6e9365-5a1b9d50"
+_patchbase_tag="10-27-2024-3a736901-78bd3f0c"
 
 ## to use this, set this to true, create a "custompatches" folder in the top-level PKGBUILD directory, and place your patches there.
 ## the patches from the wine-osu-patches git repo will no longer be applied, but you can copy them to the
@@ -45,8 +45,8 @@ _custompatches=false
 
 ## (with custompatches) uses wine/staging master if empty, uses given commit or tag if set
 ## (without custompatches) ignored and overwritten by upstream commits from patchbase repo
-_desired_wine_commit=3a6e9365336304b4d7eb4d66aef959f67361cc1f
-_desired_staging_commit=5a1b9d5093726d82b28433640f7bdecf3829c248
+_desired_wine_commit=3a736901cdd588ba7fbb4318e5f5069793268a01
+_desired_staging_commit=78bd3f0c6d0beb781b87dd9d54fd186e8f7628ef
 
 ## (with custompatches) ignore the _desired_wine_commit above and take the wine commit from the "upstream-commit" file in the staging repo
 _use_staging_upstream=false
@@ -134,7 +134,7 @@ noextract=()
 ## don't needlessly add the wine-osu-patches repo if we explicitly specify custom ones
 if ! { [ -d "${_where}"/custompatches ] && [ "${_custompatches}" = "true" ] ; }; then
   source+=("git+https://github.com/whrvt/wine-osu-patches.git#tag=${_patchbase_tag}")
-  sha512sums+=('a47ad27345155478932ff1206ca1ed54152874a36bc399999c2bc326c6175e2be198c9941d83398c33d78afde49b3a304437fbf7a39e4124f0bed655a45f9b12')
+  sha512sums+=('8364443322bea87adafa861cdfd45862d6a15592a1f351bc69f0f6154d9dbd69d45515ce313c8b38dfaae392af3438e03e40b9e92bfda5ba4b8774340c9d5701')
 
   if [ "${_custompatches}" = "true" ]; then
     msg2 "WARNING: _custompatches=true but custompatches directory not found. Will be using wine-osu-patches repo."
@@ -164,6 +164,9 @@ depends=(
   libpulse
   bash
   ffmpeg
+  gst-plugins-base-libs
+  gst-plugins-good
+  gst-libav
 )
 
 makedepends=(autoconf bison ccache perl fontforge flex
@@ -190,8 +193,7 @@ makedepends=(autoconf bison ccache perl fontforge flex
   nasm
   attr
   gtk3
-  gst-plugins-base-libs
-  ntsync-header
+#  ntsync-header
 )
 
 optdepends=(
@@ -219,9 +221,9 @@ optdepends=(
 )
 
 if [ "${_wow64build}" != "true" ]; then
-  depends+=(lib32-ffmpeg lib32-libxkbcommon libvulkan.so=1-32 lib32-gst-plugins-base-libs lib32-gnutls lib32-libxcomposite lib32-libpulse lib32-fontconfig lib32-lcms2 lib32-libxml2 lib32-libxcursor lib32-libxrandr lib32-libxdamage lib32-libxi lib32-gettext lib32-freetype2 lib32-glu lib32-libsm lib32-gcc-libs lib32-libpcap)
+  depends+=(lib32-ffmpeg lib32-libxkbcommon libvulkan.so=1-32 lib32-gst-plugins-base-libs lib32-gst-plugins-good lib32-gnutls lib32-libxcomposite lib32-libpulse lib32-fontconfig lib32-lcms2 lib32-libxml2 lib32-libxcursor lib32-libxrandr lib32-libxdamage lib32-libxi lib32-gettext lib32-freetype2 lib32-glu lib32-libsm lib32-gcc-libs lib32-libpcap)
   makedepends+=(lib32-wayland lib32-gtk3 lib32-attr lib32-giflib lib32-libpng lib32-libxmu lib32-libxxf86vm lib32-libldap lib32-mpg123 lib32-openal lib32-v4l-utils lib32-alsa-lib lib32-mesa lib32-mesa-libgl lib32-opencl-icd-loader lib32-libxslt lib32-sdl2)
-  optdepends+=(lib32-libusb lib32-libxinerama lib32-giflib lib32-libpng lib32-libldap lib32-mpg123 lib32-openal lib32-v4l-utils lib32-alsa-plugins lib32-alsa-lib lib32-libjpeg-turbo lib32-libxcomposite lib32-libxinerama lib32-opencl-icd-loader lib32-libxslt lib32-vkd3d lib32-sdl2)
+  optdepends+=(lib32-gst-libav lib32-libusb lib32-libxinerama lib32-giflib lib32-libpng lib32-libldap lib32-mpg123 lib32-openal lib32-v4l-utils lib32-alsa-plugins lib32-alsa-lib lib32-libjpeg-turbo lib32-libxcomposite lib32-libxinerama lib32-opencl-icd-loader lib32-libxslt lib32-vkd3d lib32-sdl2)
   if [ "${_use_clang}" = "true" ]; then makedepends+=(lib32-llvm-libs); fi
 fi
 
@@ -290,7 +292,7 @@ else # remove llvm-mingw paths from externally set PATH
 fi
 
 makedepends=("${makedepends[@]}" "${depends[@]}")
-depends+=(ntsync-dkms) # "temporary" anyways...
+#depends+=(NTSYNC-MODULE)
 
 pkgver() {
   _pkgver=$(git -C "${srcdir}"/"${pkgname}" describe --tags --abbrev=0 | cut -f2 -d'-')
@@ -354,7 +356,7 @@ _set_vars64() {
 
 _set_vars32() {
   ## lib32 fsync doesn't compile with clang due to undefined atomic ops otherwise (ntdll.so)
-  # if [ "${_use_clang}" = "true" ]; then export I386_LIBS="-latomic"; fi
+  if [ "${_use_clang}" = "true" ] || [ "${_use_clang}" = "bundled" ]; then export I386_LIBS="-latomic"; fi
 
   _common_64_cflags=""
   _common_32_cflags=""
@@ -471,13 +473,9 @@ prepare() { _set_vars;
 
   _enabled_staging=("${_enabled_staging[@]:-"--all"}")
 
-  #exit
-
   if [ "${_use_staging}" != "false" ]; then
     msg2 "Applying staging patches"
     printf "\nApplying staging patches\n\n" >> "${_where}"/patchlog.txt
-
-    ## wip-ish, but shellcheck doesn't complain :^)
 
     if [ "${_use_staging_upstream}" != "true" ] && find "${_patchdir}"/staging-overrides -name "*spatch" -print0 -quit | grep . >/dev/null; then
       for override in "${_patchdir}"/staging-overrides/*; do
@@ -502,7 +500,7 @@ prepare() { _set_vars;
 
   patchlist=()
 
-  if [ "${_use_clang}" != "true" ]; then patchlist+=("${srcdir}"/lto-fixup.patch); fi
+  if [ "${_use_clang}" != "true" ] && [ "${_use_clang}" != "bundled" ]; then patchlist+=("${srcdir}"/lto-fixup.patch); fi
 
   mapfile -t patchlist_tmp < <(find "${_patchdir}" -type f -regex ".*\.patch" | LC_ALL=C sort -f)
 
@@ -524,15 +522,15 @@ prepare() { _set_vars;
   git add --all &>/dev/null || true
   git commit --allow-empty -m "makepkg" &>/dev/null || true
 
-  tools/make_makefiles
   # ./dlls/winevulkan/make_vulkan # don't really need dx12 support for this package...
   tools/make_requests
   if [ -e tools/make_specfiles ]; then
     tools/make_specfiles
   fi
+  tools/make_makefiles
 
   _prep_ccache
-  autoreconf -fiv
+  autoreconf -fi
 
   if [ "${_devenv}" = "true" ]; then
     _confcachedir="${_where}"/.confcaches
