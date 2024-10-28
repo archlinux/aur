@@ -2,7 +2,7 @@
 
 pkgname='omada-controller-rxy'
 pkgver=5.14.32.2
-pkgrel=3
+pkgrel=4
 pkgdesc='Omada SDN Controller'
 _basepkgname='Omada_SDN_Controller'
 _basepkgpath='upload/software/2024/202410/20241015'

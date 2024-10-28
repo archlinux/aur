@@ -1,3 +1,12 @@
+pre_install() {
+        if [ `sed -n "/^omada/p" /etc/passwd` ]
+                then
+                        echo "User omada already exists"
+                else
+                        sudo useradd omada
+                        echo "User omada has beed created"
+        fi
+}
 
 post_install() {
 	if [ `sed -n "/^omada/p" /etc/passwd` ]
@@ -11,14 +20,26 @@ post_install() {
 	sudo chown omada:omada -R /opt/omada-controller
 	sudo sed -i 's/-root/-omada/g' /opt/omada-controller/bin/control.sh
 	sudo systemctl enable omada-controller
+	
 }
 
 pre_remove() {
+	sudo systemctl stop omada-controller
 	sudo systemctl disable omada-controller
 }
 
 post_remove() {
-	sudo rm -Rf /opt/omada-controller
+	sudo rm -Rf /opt/omada-controller/bin
+	sudo rm -Rf /opt/omada-controller/lib
+	sudo rm -Rf /opt/omada-controller/logs
+	sudo rm -Rf /opt/omada-controller/properties
 }
 
+pre_upgrade() {
+	sudo systemctl stop omada-controller
+}
+
+post_upgrade() {
+	sudo systemctl start omada-controller
+}
 
