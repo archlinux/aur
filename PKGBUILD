@@ -1,11 +1,11 @@
-# Maintainer: Igor Dyatlov <dyatlov.igor@protonmail.com>
+# Maintainer: D3vil0p3r <vozaanthony [at] gmail [dot] com>
 
 pkgname=gnome-shell-extension-fly-pie-git
-pkgver=24.r17.g131c429
+pkgver=27.r2.g5851123
 pkgrel=1
-pkgdesc="Fly-Pie is an innovative marking menu written as a GNOME Shell extension"
+pkgdesc='Fly-Pie is an innovative marking menu written as a GNOME Shell extension.'
 arch=('any')
-url="https://github.com/Schneegans/Fly-Pie"
+url='https://github.com/Schneegans/Fly-Pie'
 license=('MIT')
 depends=('gnome-shell')
 makedepends=('git' 'zip')
@@ -28,6 +28,7 @@ build() {
 
 package() {
   cd "${pkgname%-git}"
+
   _uuid='flypie@schneegans.github.com'
   
   install -d "$pkgdir/usr/share/gnome-shell/extensions/$_uuid"
