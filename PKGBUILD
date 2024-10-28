@@ -1,7 +1,7 @@
 # Maintainer: JackMacWindows <jackmacwindowslinux@gmail.com>
 pkgname=craftos-pc-ccemux
 pkgver=2.8.3
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="CCEmuX plugin wrapper for CraftOS-PC, providing the ccemux API for compatibility with CCEmuX-enhanced programs."
 arch=('x86_64' 'i386' 'armv7l' 'aarch64')
