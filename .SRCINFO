@@ -1,6 +1,6 @@
 pkgbase = dolphin-emu-debugfast-git
 	pkgdesc = A Gamecube and Wii emulator
-	pkgver = 2407.r258.g27c7101
+	pkgver = 2409.r247.gaa8226f
 	pkgrel = 1
 	url = https://github.com/dolphin-emu/dolphin
 	arch = x86_64
@@ -49,7 +49,7 @@ pkgbase = dolphin-emu-debugfast-git
 	conflicts = dolphin-emu-tool
 	options = !emptydirs
 	options = !lto
-	source = dolphin-emu::git+https://github.com/dolphin-emu/dolphin.git
+	source = dolphin-emu::git+https://github.com/dolphin-emu/dolphin.git#branch=master
 	source = cyan4973.xxhash::git+https://github.com/Cyan4973/xxHash.git
 	source = epezent.implot::git+https://github.com/epezent/implot.git
 	source = gpuopen-librariesandsdks.vulkanmemoryallocator::git+https://github.com/GPUOpen-LibrariesAndSDKs/VulkanMemoryAllocator.git
