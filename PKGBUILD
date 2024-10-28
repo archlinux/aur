@@ -1,5 +1,5 @@
 pkgname=improve-imgsli
-pkgver=1.0.1
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="Image comparison tool with magnifying glass feature"
 arch=('any')
@@ -8,7 +8,7 @@ license=('MIT')
 depends=('python' 'python-pillow' 'python-pyqt5')
 makedepends=('python-setuptools')
 source=("$pkgname-$pkgver.zip::https://github.com/Loganavter/Improve-ImgSLI/archive/refs/heads/main.zip")
-sha256sums=('574ee6f8dacce74fe590113cb7d1a95f296efe620134b6378faeb4431743701a')
+sha256sums=('d020af5bb0d0e2a85f095827c6ed0bc636949f6b7a49c0dd43f6d598ac8649f4')
 
 prepare() {
     # Create .desktop file
