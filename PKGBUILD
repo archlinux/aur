@@ -2,16 +2,16 @@
 
 pkgname=python-recordclass
 _pkgname=recordclass
-pkgver=0.21.1
-pkgrel=2
+pkgver=0.22.1
+pkgrel=1
 pkgdesc="Mutable variant of namedtuple"
 arch=('any')
 url="https://pypi.org/project/recordclass"
 license=('MIT')
-depends=('python' 'cython')
+depends=('python')
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools')
 source=("${pkgname}-${pkgver}.tar.gz::https://pypi.io/packages/source/${_pkgname:0:1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
-sha256sums=('fa2343dc24ef457f5f1c09e34fccada2d9074f582287f9fedb195bfbc1a9af92')
+sha256sums=('80a4c79270edb8fb55bcb96bec0159a292b485c997e2f33b38fdc9e8d6c0c315')
 
 build(){
   cd "${_pkgname}-${pkgver}"
