@@ -1,7 +1,7 @@
 pkgbase = mathics
 	pkgdesc = A general-purpose computer algebra system.
 	pkgver = 7.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://mathics.org/
 	arch = any
 	license = GPL3
@@ -21,11 +21,11 @@ pkgbase = mathics
 	depends = cython
 	depends = python-recordclass
 	depends = python-pillow
-	depends = python-scikit-image
 	optdepends = python-ipywidgets: For Manipulate
 	optdepends = python-lxml: for HTML parsing used in builtin/fileformats/html
 	optdepends = python-psutil: SystemMemory and MemoryAvailable
 	optdepends = python-pyocr: Used for TextRecognize
+	optdepends = python-scikit-image>=0.17: FindMinimum can use this; used by Image as well
 	optdepends = python-unidecode: Used in Transliterate
 	optdepends = python-wordcloud: Used in builtin/image.py by WordCloud
 	source = mathics-7.0.0.tar.gz::https://github.com/Mathics3/mathics-core/releases/download/7.0.0/Mathics3-7.0.0.tar.gz
