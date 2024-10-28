@@ -1,11 +1,13 @@
 pkgbase = curd
 	pkgdesc = Watch anime in CLI with AniList Tracking, Discord RPC, Intro/Outro/Filler/Recap Skipping, etc.
-	pkgver = v0.0.2
-	pkgrel = 2
+	pkgver = v0.0.7
+	pkgrel = 1
 	url = https://github.com/Wraient/curd
 	arch = x86_64
 	license = GPL
 	depends = mpv
+	depends = rofi
+	depends = ueberzug
 	source = curd::https://github.com/Wraient/curd/releases/latest/download/curd
 	sha256sums = SKIP
 
