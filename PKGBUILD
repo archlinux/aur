@@ -11,7 +11,7 @@ license=('custom:icu')
 conflicts=('icu73-bin')
 depends=('gcc-libs' 'sh')
 makedepends=('python' 'clang' 'make' 'patch')
-provides=(libicu{data,i18n,io,test,tu,uc}.so)
+provides=(libicu{data,i18n,io,test,tu,uc}.so=73)
 source=("ICU-22512.patch"
         "https://github.com/unicode-org/icu/releases/download/release-${pkgver//./-}/icu4c-${pkgver//./_}-src.tgz")
 sha512sums=('4323b585827cc2a5ad8fea39e036c5537b4a20bf67959fba185a56f72fb54c54fab89a78602801ed7586a4d7cb9c10f32e72dc386440a99d87105309345d7904'
