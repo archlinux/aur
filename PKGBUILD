@@ -2,20 +2,19 @@
 
 pkgname=kde-builder-git
 _basename="${pkgname%-git}"
-pkgver=r74.f2392fe
+pkgver=r404.96dc07a
 pkgrel=1
 pkgdesc="A tool to build KDE software"
 url="https://invent.kde.org/sdk/kde-builder"
 arch=("any")
 license=("GPL")
-depends=("git" "dbus-python" "python-overrides" "python-promise" "python-yaml" "python-setproctitle")
+depends=("git" "dbus-python" "python-yaml" "python-setproctitle")
 
 optdepends=(
   "python-pytest: testing support"
-  "python-type-enforced: ensure annotated types correspond the real types - for developers"
 )
 
-source=("git+https://invent.kde.org/ashark/kde-builder.git")
+source=("git+https://invent.kde.org/sdk/kde-builder.git")
 sha256sums=("SKIP")
 
 pkgver() {
