@@ -1,0 +1,20 @@
+pkgbase = goxel-voxel-editor
+	pkgdesc = Open Source 3D voxel editor for Mac, Windows and Linux. Release version.
+	pkgver = 0.15.1
+	pkgrel = 2
+	url = https://goxel.xyz/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = scons
+	makedepends = pkg-config
+	depends = glfw
+	depends = gtk3
+	provides = goxel
+	conflicts = goxel
+	source = https://github.com/guillaumechereau/goxel/archive/refs/tags/v0.15.1.tar.gz
+	source = goxel.desktop
+	sha256sums = 01c9601ac9d8d38e29d3adff4b79a26c2b9fea4c2d2cb1d134471e499f8c4a84
+	sha256sums = 9b29df7405a9593396bc7ea810dc2871cce7c4ee474c1fa56d32f56c2ca2d921
+
+pkgname = goxel-voxel-editor
