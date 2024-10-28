@@ -6,7 +6,7 @@ pkgbase = whisper.cpp-model-small.en-tdrz
 	arch = i686
 	arch = x86_64
 	license = MIT
-	source = https://huggingface.co/akashmjn/tinydiarize-whisper.cpp/resolve/main/ggml-small.en-tdrz.bin
+	source = ggml-small.en-tdrz.bin::https://huggingface.co/akashmjn/tinydiarize-whisper.cpp/resolve/main/ggml-small.en-tdrz.bin
 	sha1sums = ceac3ec06d1d98ef71aec665283564631055fd6129b79d8e1be4f9cc33cc54b4
 
 pkgname = whisper.cpp-model-small.en-tdrz
