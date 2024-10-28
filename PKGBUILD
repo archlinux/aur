@@ -1,4 +1,4 @@
-# Mostly a copy of linux-firmware PKGBUILD by Thomas Bächler <thomas@archlinux.org>
+# Mostly a copy of linux-firmware PKGBUILD by Tobias Powalowski <tpowa@archlinux.org>
 # Maintainer: Victor Dmitriev <mrvvitek@gmail.com>
 # Contributor: xduugu
 
@@ -6,20 +6,33 @@ pkgbase=linux-firmware-git
 pkgname=(linux-firmware-whence-git linux-firmware-git amd-ucode-git
          linux-firmware-{nfp,mellanox,marvell,qcom,liquidio,qlogic,bnx2x}-git
 )
-pkgver=20240312.3b128b60
+pkgver=20241022.e1d95775
 pkgrel=1
 pkgdesc="Firmware files for Linux"
 url="https://gitlab.com/kernel-firmware/linux-firmware"
-license=('GPL2' 'GPL3' 'custom')
+license=(
+  GPL-2.0-only
+  GPL-2.0-or-later
+  GPL-3.0-only
+  custom
+)
 arch=('any')
-makedepends=('git' 'rdfind')
-options=(!strip)
+makedepends=(
+  git
+  rdfind
+  python
+)
+options=(
+  !strip
+  !debug
+)
 #source=("${pkgbase}::git+${url}.git?signed")
 # NOTE: upstream doesn't sign most commits anymore, but still signs all tags.
 # Packages in the official repos package tags.
 # You can check signatures with the following commands:
 #git log --format=raw --show-signature main
 #git tag -v $(git tag)
+# NOTE: upstream still signs tags, but now git doesn't check the signature
 source=("${pkgbase}::git+${url}.git")
 sha256sums=('SKIP')
 validpgpkeys=('4CDE8575E547BF835FE15807A31B6BD72486CFD6') # Josh Boyer <jwboyer@fedoraproject.org>
@@ -178,5 +191,3 @@ package_linux-firmware-bnx2x-git() {
 
   mv -v linux-firmware-bnx2x/* "${pkgdir}"
 }
-
-# vim:set sw=2 et:
