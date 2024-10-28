@@ -2,7 +2,7 @@
 _base=pdbp
 pkgname=python-${_base}
 pkgdesc="A drop-in replacement for pdb and pdbpp"
-pkgver=1.5.4
+pkgver=1.6.0
 pkgrel=1
 arch=(any)
 url="https://github.com/mdmintz/${_base}"
@@ -10,7 +10,7 @@ license=(PSF-2.0)
 depends=(python-pygments python-tabcompleter)
 makedepends=(python-build python-installer python-setuptools python-wheel)
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('008da11900963aa02a54c52cdb8dfa4d47cdbfbe73f2320dde6ed933d341c803740517fdf28f9217b49c905973e20e79bc37e13922a9275b671e61737044db58')
+sha512sums=('123459aa2775c87153e8d9fafc0d4c97618dfc87d0dca5e38d3f90dc18390cfc7df7858954b04c444719ddd19ec4d781e0c97dce78c7cfb9aaf17205ff2821e1')
 
 build() {
   cd ${_base}-${pkgver}
