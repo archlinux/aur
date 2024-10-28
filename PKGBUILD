@@ -2,7 +2,7 @@
 
 _pkgname="zrepl"
 pkgname="$_pkgname-git"
-pkgver=0.6.1.r15.g9c63736
+pkgver=0.6.1.r39.g2923009
 pkgrel=1
 pkgdesc="One-stop ZFS backup & replication solution"
 url="https://github.com/zrepl/zrepl"
@@ -56,7 +56,7 @@ package() {
   install -Dm644 "$_pkgsrc/LICENSE" -t "$pkgdir/usr/share/licenses/$pkgname/"
 
   install -dm755 "$pkgdir/usr/share/$_pkgname/samples"
-  cp --reflink=auto -a "$_pkgsrc"/config/samples/* "$pkgdir/usr/share/$_pkgname/samples/"
+  cp --reflink=auto -a "$_pkgsrc"/internal/config/samples/* "$pkgdir/usr/share/$_pkgname/samples/"
 
   install -dm755 "$pkgdir/usr/share/zsh/site-functions"
   "$pkgdir/usr/bin/$_pkgname" gencompletion zsh "$pkgdir/usr/share/zsh/site-functions/_zrepl"

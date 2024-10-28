@@ -1,0 +1,4 @@
+[zrepl-git]
+source = "git"
+git = "https://github.com/zrepl/zrepl.git"
+prefix = "v"
