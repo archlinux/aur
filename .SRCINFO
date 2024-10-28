@@ -1,6 +1,6 @@
 pkgbase = obs-ndi
-	pkgdesc = Network A/V in OBS Studio with NewTek's NDI technology
-	pkgver = 4.14.1
+	pkgdesc = NDI integration for OBS Studio
+	pkgver = 6.0.0
 	pkgrel = 1
 	url = https://github.com/DistroAV/DistroAV
 	install = obs-ndi.install
@@ -12,9 +12,11 @@ pkgbase = obs-ndi
 	depends = obs-studio
 	depends = sndio
 	provides = obs-ndi
+	provides = distroav
 	conflicts = obs-ndi-bin
 	conflicts = obs-ndi-git
-	source = obs-ndi-4.14.1.tar.gz::https://github.com/DistroAV/DistroAV/archive/4.14.1.tar.gz
-	sha256sums = ae0f4bdd66212e1d9315b2b42e2930d9ccec220f204703ff9ca0b7f34997b70d
+	conflicts = distroav-git
+	source = obs-ndi-6.0.0.tar.gz::https://github.com/DistroAV/DistroAV/archive/6.0.0.tar.gz
+	sha256sums = 413d92d663dc58b38b450fc9588ded92c80076180b3628f824e2b53cbbc1cbaa
 
 pkgname = obs-ndi
