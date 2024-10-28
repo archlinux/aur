@@ -1,10 +1,11 @@
 # Maintainer: Antonio Voza <vozaanthony {at} gmail {dot} com>
+
 pkgname=cyberchef-electron
-pkgver=10.6.0
+pkgver=10.19.4
 pkgrel=1
-pkgdesc="The Cyber Swiss Army Knife (unofficial Electron wrapper)"
+pkgdesc='The Cyber Swiss Army Knife (unofficial Electron wrapper).'
 arch=('any')
-url="https://github.com/gchq/CyberChef"
+url='https://github.com/gchq/CyberChef'
 license=('Apache')
 depends=('electron')
 makedepends=('unzip')
@@ -16,7 +17,7 @@ source=("https://github.com/gchq/CyberChef/releases/download/v${pkgver}/CyberChe
         "prompt.js"
         "cyberchef.sh"
         "cyberchef.desktop")
-sha512sums=('80338ea57b28e94cdb7f10f6664eee0ffecb04fdfeabc0a319dd94141a44f6a888350f180976b387dcac92eca08a1c8f450fb8072ff5c726681af4ec7f1cc34b'
+sha512sums=('e548e341f30b4a9e8d9b1df69a276b95f1c8f3b69a7ce7c7d9b6ea06a21521dcc030e3121662d9524e45fbaad866dbc1eda21b248c77292a368903b8f8190a0a'
             'd4515b4a2a12818553e29e371b8aedb61758cc33b12be325b6bb4d85e7ee87650d09752fa100df8ee68ce335c620b91e7ffd4d55ff4e4428f57af42845ef39c9'
             '7aa13db4949172532c390d4fab49361a3b0af91b2d18c1db61cf2d6581e34455c1068ad7278ff86b37f72528dcf72b39937b6744695d60b8273c70bc0c377240'
             '76a975d237bfc000ed601ed22c5629eaf7fdc072ee1e4ce6b186007f0311e813a1fb453797fa499648641d7612908cbdfa8a49a0e06a18b9c3b35a0aae21a3a1'
@@ -29,7 +30,9 @@ noextract=("CyberChef_v${pkgver}.zip")
 prepare() {
     unzip -o "CyberChef_v${pkgver}.zip" -d "CyberChef_v${pkgver}"
     cd "${srcdir}/CyberChef_v${pkgver}"
+
     mv "CyberChef_v${pkgver}.html" "index.html"
+
     cat << EOF > package.json
 {
     "name": "$pkgname",
@@ -42,6 +45,7 @@ EOF
 
 package() {
     cd "${srcdir}/CyberChef_v${pkgver}"
+
     mkdir -p "${pkgdir}/usr/lib/${pkgname}"
     cp -r * "${pkgdir}/usr/lib/${pkgname}"
     install -Dm644 "${srcdir}/main.js" "${pkgdir}/usr/lib/${pkgname}/main.js"
