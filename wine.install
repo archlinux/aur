@@ -13,8 +13,8 @@ post_upgrade() {
 }
 
 inform_patches() {
-  echo "For optimal performance, please make sure your system has the ntsync module properly set up and loaded."
-  echo "'wine: using fast synchronization.' will be printed when starting wine if it is working correctly."
+  echo "Remember to export WINEESYNC=1 to use Esync or WINEFSYNC=1 to use Fsync"
+  echo "Set WINE_DISABLE_GLCHILD_HACK=1 to disable the hack that improves performance in osu!, but breaks the editor"
   echo ""
   echo "Please be aware winepulse.drv will negotiate the lowest possible period size with your audio server"
   echo "This will result in a 2.7ms period size with pipewire-pulse, as pulse.min.req = 128/48000 by default"
