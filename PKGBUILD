@@ -1,4 +1,4 @@
-pkgname=illogical-impulse-oneui4-icons-git
+pkgname=illogical-impulse-oneui4-icons
 _pkgname=OneUI4-Icons
 pkgver=r64.9ba2190
 pkgrel=1
