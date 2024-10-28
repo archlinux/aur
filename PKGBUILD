@@ -4,14 +4,14 @@ _zhname="五笔码表助手"
 pkgver=1.28
 _electronversion=24
 _nodeversion=18
-pkgrel=1
-pkgdesc="五笔码表助手 for Rime ( Windows、macOS、Ubuntu ) 基于 electron 开发."
+pkgrel=2
+pkgdesc="Five-stroke code assistant for Rime based on electron development.五笔码表助手 for Rime,基于 electron 开发."
 arch=("x86_64")
 url="https://github.com/KyleBing/wubi-dict-editor"
 license=('GPL-3.0-only')
 conflicts=("${pkgname}")
 depends=(
-    'ibus-rime'
+    #'ibus-rime'
     "electron${_electronversion}"
     'nodejs'
 )
@@ -22,64 +22,70 @@ makedepends=(
     'gendesk'
     'libicns'
     'curl'
-    'git'
 )
 options=(
     '!emptydirs'
 )
 source=(
-    "${pkgname}.git::git+${url}.git#tag=v${pkgver}"
+    "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
     "${pkgname}.sh"
 )
-sha256sums=('7fbb03c1fbd51e270b5a7fd47d49e4ee0855b783fe32e2f5414f4091a165fa5e'
-            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
+sha256sums=('2112e865f6093fae701c5973f18ded3b3e7a17642d69bad62744358e56488eca'
+            '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 _ensure_local_nvm() {
-    export NVM_DIR="${srcdir}/.nvm"
+    local NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
     nvm install "${_nodeversion}"
     nvm use "${_nodeversion}"
 }
 build() {
-    sed -e "s|@electronversion@|${_electronversion}|" \
-        -e "s|@appname@|${pkgname}|g" \
-        -e "s|@runname@|app|g" \
-        -e "s|@cfgdirname@|${pkgname}|g" \
-        -e "s|@options@||g" \
-        -i "${srcdir}/${pkgname}.sh"
+    sed -e "
+        s/@electronversion@/${_electronversion}/g
+        s/@appname@/${pkgname}/g
+        s/@runname@/app/g
+        s/@cfgdirname@/${pkgname}/g
+        s/@options@//g
+    " -i "${srcdir}/${pkgname}.sh"
     _ensure_local_nvm
     gendesk -q -f -n --pkgname="${pkgname}" --pkgdesc="${pkgdesc}" --categories="Utility" --name="${pkgname}" --genericname="${_zhname} for Rime" --exec="${pkgname} %U"
     sed "3i\Name[zh_CN]=${_zhname}" -i "${srcdir}/${pkgname}.desktop"
-    cd "${srcdir}/${pkgname}.git"
-    export npm_config_build_from_source=true
+    cd "${srcdir}/${pkgname}-${pkgver}"
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
-    #export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
-    #export npm_config_target="${SYSTEM_ELECTRON_VERSION}"
-    #export ELECTRONVERSION="${_electronversion}"
+    export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
     HOME="${srcdir}/.electron-gyp"
     mkdir -p "${srcdir}/.electron-gyp"
-    touch "${srcdir}/.electron-gyp/.yarnrc"
-    if [ `curl -s ipinfo.io/country | grep CN | wc -l ` -ge 1 ];then
-        export npm_config_registry=https://registry.npmmirror.com
-        export npm_config_disturl=https://registry.npmmirror.com/-/binary/node/
-        export npm_config_electron_mirror=https://registry.npmmirror.com/-/binary/electron/
-        export npm_config_electron_builder_binaries_mirror=https://registry.npmmirror.com/-/binary/electron-builder-binaries/
-    else
-        echo "Your network is OK."
+    if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
+        {
+            echo -e '\n'
+            echo 'registry "https://registry.npmmirror.com"'
+            echo 'electron_mirror "https://registry.npmmirror.com/-/binary/electron/"'
+            echo 'electron_builder_binaries_mirror "https://registry.npmmirror.com/-/binary/electron-builder-binaries/"'
+            echo "cacheFolder "${srcdir}"/.yarn/cache"
+            echo "pluginsFolder "${srcdir}"/.yarn/plugins"
+            echo "globalFolder "${srcdir}"/.yarn/global"
+            echo 'useHardlinks true'
+            #echo 'buildFromSource true'
+            echo 'linkWorkspacePackages true'
+            echo 'fetchRetries 3'
+            echo 'fetchRetryTimeout 10000'
+        } >> .yarnrc
+        find ./ -type f -name "yarn.lock" -exec sed -i "s/registry.yarnpkg.com/registry.npmmirror.com/g" {} +
     fi
     icns2png  -d 32 -x assets/img/appIcon/appIcon.icns -o assets/img/appIcon/
     cp assets/img/appIcon/appIcon_16x16x32.png assets/img/appIcon/appicon.png
-    sed "s|appIcon\/appicon.ico|img\/appIcon\/appicon.png|g" -i main.js
-    NODE_ENV=development yarn install --cache-folder "${srcdir}/.yarn_cache"
-    NODE_ENV=production yarn run package
+    sed -i "s/appIcon\/appicon\ico/img\/appIcon\/appicon\.png/g" -i main.js
+    NODE_ENV=development    yarn install --cache-folder "${srcdir}/.yarn_cache"
+    NODE_ENV=production     yarn run package
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname}"
-    cp -r "${srcdir}/${pkgname}.git/out/${_zhname}-linux-x64/resources/app" "${pkgdir}/usr/lib/${pkgname}"
-    for _icons in 16x16 32x32 256x256 512x512 1024x1024;do
-        install -Dm644 "${srcdir}/${pkgname}.git/assets/img/appIcon/appIcon_${_icons}x32.png" \
+    cp -Pr --no-preserve=ownership "${srcdir}/${pkgname}-${pkgver}/out/${_zhname}-linux-x64/resources/app" "${pkgdir}/usr/lib/${pkgname}"
+    _icon_sizes=(16x16 32x32 256x256 512x512 1024x1024)
+    for _icons in "${_icon_sizes[@]}";do
+        install -Dm644 "${srcdir}/${pkgname}-${pkgver}/assets/img/appIcon/appIcon_${_icons}x32.png" \
             "${pkgdir}/usr/share/icons/hicolor/${_icons}/app/${pkgname}.png"
     done
     install -Dm644 "${srcdir}/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
-    install -Dm644 "${srcdir}/${pkgname}.git/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -Dm644 "${srcdir}/${pkgname}-${pkgver}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
