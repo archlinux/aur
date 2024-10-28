@@ -1,0 +1,32 @@
+# Maintainer: Kirill Zhumarin <kirill.zhumarin@gmail.com>
+pkgname=elf2vkp-git
+pkgver=v1.0.0
+pkgrel=1
+pkgdesc='Tool for converting .elf to .vkp patches.'
+arch=(any)
+url='https://github.com/siemens-mobile-hacks/elf2vkp'
+license=(MIT)
+depends=()
+makedepends=(cmake)
+source=(git+https://github.com/siemens-mobile-hacks/elf2vkp)
+sha256sums=('SKIP')
+
+prepare() {
+	cd "elf2vkp"
+	git submodule init
+	git submodule update
+}
+
+build() {
+	cmake -B build -S elf2vkp
+	cmake --build build
+}
+
+package() {
+	DESTDIR="$pkgdir" cmake --install build
+}
+
+pkgver() {
+	cd "elf2vkp"
+	git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
