@@ -1,0 +1,12 @@
+pkgbase = illogical-impulse-oneui4-icons-git
+	pkgdesc = A fork of mjkim0727/OneUI4-Icons for illogical-impulse dotfiles.
+	pkgver = r64.9ba2190
+	pkgrel = 1
+	url = https://github.com/end-4/OneUI4-Icons
+	arch = x86_64
+	license = GPL3
+	options = !strip
+	source = git+https://github.com/end-4/OneUI4-Icons.git
+	sha256sums = SKIP
+
+pkgname = illogical-impulse-oneui4-icons-git
