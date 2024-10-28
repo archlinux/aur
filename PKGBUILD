@@ -1,6 +1,6 @@
 # Maintainer: pkg_maintainer <archlinuxpackagemaintainer@gmail.com>
 pkgname=tplay-git
-pkgver=0.4.4.r151.6ba7355
+pkgver=v0.5.0.r11.g44745fb
 pkgrel=1
 epoch=
 pkgdesc="A terminal ASCII media player. View images, gifs, videos, webcam, YouTube, etc.. directly in the terminal as ASCII art."
@@ -8,7 +8,7 @@ arch=('x86_64')
 url="https://github.com/maxcurzi/tplay.git"
 license=('MIT')
 groups=()
-depends=(yt-dlp opencv clang mpv ffmpeg)
+depends=(yt-dlp opencv clang mpv ffmpeg mold)
 makedepends=(git)
 checkdepends=()
 optdepends=()
@@ -26,17 +26,21 @@ validpgpkeys=()
 
 pkgver() {
 	cd tplay
-	printf "0.4.4.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
 	cd tplay
+    # temporary fixes to resolve build failure until the PR https://github.com/maxcurzi/tplay/pull/46 gets resolved.
+	sed -i "s/opencv = { version = \"0\.84\.4\"/opencv = { version = \"0\.93\.1\"/g" Cargo.toml
+	sed -i "s/ffmpeg-next = \"6\.0\"/ffmpeg-next = \"7\.1\.0\"/g" Cargo.toml
+
 	if [[ $(mpv --version | grep "mpv" | cut -d " " -f2 | cut -d "-" -f1 | cut -b 1-4) = '0.35' ]]; then
-		cargo build -r --features="mpv_0_35" --no-default-features
+		mold -run cargo build -r --features="mpv_0_35" --no-default-features
 	elif [[ $(mpv --version | grep "mpv" | cut -d " " -f2 | cut -d "-" -f1 | cut -b 1-4) = '0.34' ]]; then
-		cargo build -r --features="mpv_0_34" --no-default-features
+		mold -run cargo build -r --features="mpv_0_34" --no-default-features
 	else
-		cargo build -r --features="rodio_audio" --no-default-features
+		mold -run cargo build -r --features="rodio_audio" --no-default-features
 	fi
 }
 
