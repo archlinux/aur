@@ -1,17 +1,17 @@
 pkgbase = neanes-bin
 	pkgdesc = A free and open source scorewriter for notating Byzantine chant in Byzantine notation.Prebuilt version.Use system-wide electron.
-	pkgver = 0.4.53
+	pkgver = 0.4.55
 	pkgrel = 1
 	url = https://danielgarthur.github.io/neanes/
 	arch = x86_64
 	license = GPL-3.0-only
 	makedepends = fuse2
-	depends = electron32
-	provides = neanes=0.4.53
+	depends = electron33
+	provides = neanes=0.4.55
 	conflicts = neanes
-	source = neanes-0.4.53.AppImage::https://github.com/neanes/neanes/releases/download/v0.4.53/Neanes-0.4.53.AppImage
+	source = neanes-0.4.55.AppImage::https://github.com/neanes/neanes/releases/download/v0.4.55/Neanes-0.4.55.AppImage
 	source = neanes.sh
-	sha256sums = 29de04531048ff03b708d46b078c46391086fd94a8261aedfec2b56b6c21ca5f
+	sha256sums = 1a0e4ed93c604f8e2ea757fa01706dda515f37b0c58b41837f83d314e0834f70
 	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
 
 pkgname = neanes-bin
