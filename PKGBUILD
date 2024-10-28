@@ -19,8 +19,13 @@ sha256sums=('d0172cb70dec29c8b82e7c9317be0c7e2809a4c9e5711095fd34ba0d756c82cd'
             'f7232af27f88d2ca36c46abebc272976b8e9aa91c7b00c1ae6635c53f09746c6'
             '7c237bd42f38cd224b9d2fe2d09c6c1539bc52cd92cecf25a270cf0f52a18a33')
 
+prepare() {
+  sed -i -E "s|Icon=QDiskInfo|Icon=qdiskinfo|g" QDiskInfo.desktop
+  sed -i -E "s|Exec=QDiskInfo|Exec=qdiskinfo|g" QDiskInfo.desktop
+}
+
 package() {
-  install -Dm644 QDiskInfo.desktop "$pkgdir/usr/share/applicationsqdiskinfo.desktop"
+  install -Dm644 QDiskInfo.desktop "$pkgdir/usr/share/applications/qdiskinfo.desktop"
   install -Dm644 QDiskInfo.png "$pkgdir/usr/share/icons/hicolor/scalable/apps/qdiskinfo.png"
   install -Dm644 QDiskInfo.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/qdiskinfo.svg"
   install -Dm755 QDiskInfo-Qt6-libc "$pkgdir/usr/bin/qdiskinfo"
