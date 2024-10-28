@@ -1,6 +1,6 @@
 pkgbase = obs-ndi-git
 	pkgdesc = Network A/V in OBS Studio with NewTek's NDI technology
-	pkgver = 4.14.1.r0.g120d421
+	pkgver = 6.0.0.r0.g9871ed6
 	pkgrel = 1
 	url = https://github.com/DistroAV/DistroAV
 	install = obs-ndi.install

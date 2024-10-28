@@ -3,7 +3,7 @@
 _newpkgname=DistroAV
 pkgname=obs-ndi-git
 _pkgname=obs-ndi
-pkgver=4.14.1.r0.g120d421
+pkgver=6.0.0.r0.g9871ed6
 pkgrel=1
 pkgdesc="Network A/V in OBS Studio with NewTek's NDI technology"
 arch=('x86_64')
@@ -25,17 +25,17 @@ pkgver() {
 build() {
     cd ${_newpkgname}
 
-    cmake -B build -DCMAKE_INSTALL_PREFIX=/usr -DENABLE_FRONTEND_API=ON -DENABLE_QT=ON
+    cmake -B build -DCMAKE_INSTALL_PREFIX=/usr -DENABLE_FRONTEND_API=ON -DENABLE_QT=ON --compile-no-warning-as-error
     cmake --build build
 }
 
 package() {
     cd ${_newpkgname}
 
-    install -Dm755 build/obs-ndi.so ${pkgdir}/usr/lib/obs-plugins/obs-ndi.so
+    install -Dm755 build/distroav.so ${pkgdir}/usr/lib/obs-plugins/distroav.so
 
-    install -d ${pkgdir}/usr/share/obs/obs-plugins/obs-ndi/locale
-    cp -a data/locale/* ${pkgdir}/usr/share/obs/obs-plugins/obs-ndi/locale
+    install -d ${pkgdir}/usr/share/obs/obs-plugins/distroav/locale
+    cp -a data/locale/* ${pkgdir}/usr/share/obs/obs-plugins/distroav/locale
 
-    install -Dm644 LICENSE ${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE
+    install -Dm644 LICENSE ${pkgdir}/usr/share/licenses/distroav/LICENSE
 }
