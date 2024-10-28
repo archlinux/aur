@@ -2,14 +2,14 @@
 # Contributor: Johannes Dewender  arch at JonnyJD dot net
 pkgname=indicator-keylock
 pkgver=3.1.0
-pkgrel=3
+pkgrel=4
 pkgdesc="An indicator that displays the status of the keyboard lock keys"
 arch=('x86_64' 'i686')
 url="https://launchpad.net/indicator-keylock/"
 license=('GPL3')
 depends=('gconf' 'libappindicator-gtk3' 'libunique3' 'libnotify' 'libx11'
 	'desktop-file-utils' 'gtk-update-icon-cache')
-makedepends=()
+makedepends=('intltool')
 optdepends=('notification-daemon: for notificiations')
 backup=()
 options=()
