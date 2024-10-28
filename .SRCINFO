@@ -1,6 +1,6 @@
 pkgbase = python-quantlib
 	pkgdesc = QuantLib wrappers to Python
-	pkgver = 1.35
+	pkgver = 1.36
 	pkgrel = 1
 	url = http://quantlib.org
 	arch = x86_64
@@ -8,11 +8,12 @@ pkgbase = python-quantlib
 	makedepends = clang
 	makedepends = boost
 	makedepends = python-setuptools
-	depends = quantlib>=1.35
+	makedepends = python-tox
+	depends = quantlib>=1.36
 	depends = python
 	depends = openmp
 	options = !libtool
-	source = https://github.com/lballabio/QuantLib-SWIG/releases/download/v1.35/QuantLib-SWIG-1.35.tar.gz
-	sha256sums = 2c12058b9e9e4641dc685a2c817c2262e1477339c55df98b3c6d5ac253d41486
+	source = https://github.com/lballabio/QuantLib-SWIG/releases/download/v1.36/QuantLib-SWIG-1.36.tar.gz
+	sha256sums = 8b0d5536701ff1b5752d635c7610e639f4a52de99cd9d91aa01cf9073d80953e
 
 pkgname = python-quantlib

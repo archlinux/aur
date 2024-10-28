@@ -3,16 +3,16 @@
 
 pkgname=python-quantlib
 _pkgname=QuantLib-SWIG
-pkgver=1.35
+pkgver=1.36
 pkgrel=1
 pkgdesc="QuantLib wrappers to Python"
 arch=(x86_64)
 url="http://quantlib.org"
 license=(BSD-3-Clause)
 depends=("quantlib>=$pkgver" python openmp)
-makedepends=(clang boost python-setuptools)
+makedepends=(clang boost python-setuptools python-tox)
 source=(https://github.com/lballabio/$_pkgname/releases/download/v$pkgver/$_pkgname-$pkgver.tar.gz)
-sha256sums=("2c12058b9e9e4641dc685a2c817c2262e1477339c55df98b3c6d5ac253d41486")
+sha256sums=("8b0d5536701ff1b5752d635c7610e639f4a52de99cd9d91aa01cf9073d80953e")
 options=(!libtool)
 
 prepare() {
@@ -39,9 +39,10 @@ check() {
 
 package() {
   cd "$srcdir/$_pkgname-$pkgver"
-  sed -i "s#setup.py install#setup.py install --root=\"${pkgdir}\"#g" \
-    Python/Makefile
-  make -C Python install
+  python -m installer \
+    --destdir="$pkgdir" \
+    --compile-bytecode=2 \
+    Python/dist/*.whl
 
   install -Dm755 LICENSE.TXT -t \
     "$pkgdir/usr/share/licenses/$pkgname/LICENSE.TXT"
