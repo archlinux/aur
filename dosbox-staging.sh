@@ -1,6 +1,6 @@
 #!/bin/bash
 set -o pipefail
-_APPDIR=/opt/@appname@
+_APPDIR=/usr/lib/@appname@
 _RUNNAME="${_APPDIR}/@runname@"
 export PATH="${_APPDIR}:${PATH}"
 case "${XDG_SESSION_TYPE}" in
@@ -11,5 +11,5 @@ case "${XDG_SESSION_TYPE}" in
         _ARGS="WAYLAND_DISPLAY=x11"
     ;;
 esac
-cd "${_APPDIR}"
+cd "${_APPDIR}" || { echo "Failed to change directory to ${_APPDIR}"; exit 1; }
 exec env "${_ARGS}" "${_RUNNAME}" "$@" || exit $?
