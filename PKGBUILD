@@ -1,29 +1,31 @@
-# Maintainer: maz-1 <ohmygod19993@gmail.com>
+# Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
+# Contributor: maz-1 <ohmygod19993@gmail.com>
+
 pkgname=deadbeef-optimfrog-git
-_gitname=deadbeef-optimfrog
-pkgver=20151108.g07c8965
+pkgver=r3.1811839
 pkgrel=1
+epoch=1
 pkgdesc="OptimFROG input plugin for DeaDBeeF "
-arch=('i686' 'x86_64')
+arch=(x86_64 i686)
 url="https://github.com/cspiegel/deadbeef-optimfrog"
-license=('custom')
-depends=('deadbeef' 'optimfrog')
-source=('git+https://github.com/cspiegel/deadbeef-optimfrog.git')
-md5sums=('SKIP')
+license=(BSD-2-Clause)
+depends=(deadbeef optimfrog)
+makedepends=(git)
+source=("git+https://github.com/cspiegel/deadbeef-optimfrog.git")
+sha256sums=('SKIP')
 
 pkgver() {
-	cd "$srcdir/$_gitname"
-	echo "$(git show -s --format="%ci"|grep -oP '\d{4}-\d{2}-\d{2}'|sed 's:-::g').g$(git describe --always)"
+  cd "deadbeef-optimfrog"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-
 build() {
-  cd "${srcdir}/$_gitname"
+  cd "deadbeef-optimfrog"
   make
 }
 
 package() {
-  cd "${srcdir}/$_gitname"
-
+  cd "deadbeef-optimfrog"
   install -Dm 755 cas_ofr.so "$pkgdir/usr/lib/deadbeef/cas_ofr.so"
+  install -D copyright.c -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
