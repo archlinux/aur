@@ -1,7 +1,7 @@
 # Maintainer: bacteriostat <dev dot bacteriostat at aleeas dot com>
 
 pkgname=joplin-beta-appimage
-pkgver=3.1.18
+pkgver=3.1.20
 pkgrel=2
 pkgdesc="The latest beta AppImage of Joplin - a cross-platform note taking and to-do app"
 arch=('x86_64')
@@ -15,7 +15,7 @@ source=(
   ${url}/releases/download/v${pkgver}/Joplin-${pkgver}.AppImage
   ${url}/raw/v${pkgver}/LICENSE
 )
-sha512sums=('a27533cceafd99368373d81cc708524164147718d7f7e27039a64256b3219614f40ab9dd9a20db0f99e4a81094cd8bd39f83c25a42c76c1c70ee43c739169fb9'
+sha512sums=('f078d7df5c3733b54aa6d35a8f77b4c4edc06149deebae0bd97d398721afde69f841f7d039e4d069642aa8c461366c26561a978934c9be232464dfc4501332b2'
             '2f9d3c5993a0d35c37ca4ae4c638de8009f39aab7d9a5e8721d44abcba21a180bf039a7607954c9ab61ef49ec3e9a4ec96630b60ee16610f6ff4018a1f490edb')
 _filename="Joplin-${pkgver}.AppImage"
 _squashfs_desktop_file="@joplinapp-desktop.desktop"
