@@ -1,6 +1,6 @@
 pkgbase = siki
 	pkgdesc = An Electrom-based application for browsing and posting to message boards
-	pkgver = 0.32.1
+	pkgver = 0.32.2
 	pkgrel = 1
 	url = https://sikiapp.net
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = siki
 	depends = zlib
 	depends = hicolor-icon-theme
 	depends = fuse2
-	noextract = siki-0.32.1.AppImage
+	noextract = siki-0.32.2.AppImage
 	options = !strip
-	source = siki-0.32.1.AppImage::https://sikiapp.net/archives/0.32.1/Siki-0.32.1.AppImage
-	sha512sums = 9b680239cc268c50496f28b43da91b7286878ec4a6224137078ddf1af6de584b34dd52442a937ba4dff204052a52c6defaad4982894903862f74dc5dc7ce44fd
+	source = siki-0.32.2.AppImage::https://sikiapp.net/archives/0.32.2/Siki-0.32.2.AppImage
+	sha512sums = 5bdab19cf254c1338ca8cde62d6e08859b2c038cc0d8c0e297284eb0c89346ea7e8758ceab84f5a676b64a514eadd9d3fa704078c5b595b944d425212df092de
 
 pkgname = siki
