@@ -1,4 +1,4 @@
-# Maintainer: Roberto Rodriguez prfiredragon@gmail.com
+# Maintainer: robertxy <prfiredragon at gmail dot com>
 
 pkgname='omada-controller-rxy'
 pkgver=5.14.32.2
