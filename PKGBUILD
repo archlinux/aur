@@ -11,6 +11,7 @@ provides=("gear")
 conflicts=("gear")
 source=(https://get.gear.rs/gear-v${pkgver}-x86_64-unknown-linux-gnu.tar.xz)
 sha256sums=('009476a3f6e96ba688bd8a0b5a78b09effa1340b46c05cd8287f8899347a2e1c')
+options=('!debug')
 
 package() {
     install -Dm755 "${srcdir}/gear" "${pkgdir}/usr/bin/gear"
