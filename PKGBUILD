@@ -1,11 +1,12 @@
-# Maintainer: David Garfias <dgarfiasme@gmail.com> 
+# Maintainer: envolution
+# Contributor: David Garfias <dgarfiasme@gmail.com> 
 # Contributor: ffcc <ffercc at gmail dot com>
 # Contributor: George Eleftheriou <eleftg>
 # Contributor: Marcel Hasler <mahasler at gmail dot com>
 
 pkgname=scilab-bin
 _pkgname=${pkgname%-bin}
-pkgver=2024.1.0
+pkgver=2025.0.0
 pkgrel=1
 pkgdesc="A software package for numerical computation, providing a powerful computing environment for engineering and scientific applications."
 arch=("x86_64")
@@ -18,7 +19,7 @@ provides=('scilab')
 options=(!strip)
 # From Scilab downloads page (https://www.scilab.org/download/)
 source=("https://www.scilab.org/download/${pkgver}/${_pkgname}-${pkgver}.bin.x86_64-linux-gnu.tar.xz")
-sha256sums=("0eeddf0ce260dd1dc6a38a044d11447f5f48faaf4400ab83db3ab7d706aa1751")
+sha256sums=('f74e47a63a4d5a7ba927bfdf9745e3ede3c3a5e3158b4d8e9c4c8879ac0d771c')
 
 package() {
   install -d "${pkgdir}/opt"
@@ -35,3 +36,5 @@ package() {
     ln -s "${instdir}/opt/scilab/bin/${_executable}" "${pkgdir}/usr/bin/${_executable}"
   done
 }
+
+# vim: ts=2 sw=2 et:

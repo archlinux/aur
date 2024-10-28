@@ -1,6 +1,6 @@
 pkgbase = scilab-bin
 	pkgdesc = A software package for numerical computation, providing a powerful computing environment for engineering and scientific applications.
-	pkgver = 2024.1.0
+	pkgver = 2025.0.0
 	pkgrel = 1
 	url = https://www.scilab.org
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = scilab-bin
 	conflicts = scilab
 	conflicts = scilab-git
 	options = !strip
-	source = https://www.scilab.org/download/2024.1.0/scilab-2024.1.0.bin.x86_64-linux-gnu.tar.xz
-	sha256sums = 0eeddf0ce260dd1dc6a38a044d11447f5f48faaf4400ab83db3ab7d706aa1751
+	source = https://www.scilab.org/download/2025.0.0/scilab-2025.0.0.bin.x86_64-linux-gnu.tar.xz
+	sha256sums = f74e47a63a4d5a7ba927bfdf9745e3ede3c3a5e3158b4d8e9c4c8879ac0d771c
 
 pkgname = scilab-bin
