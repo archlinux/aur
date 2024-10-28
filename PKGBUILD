@@ -1,6 +1,6 @@
-# Maintainer: Yorick Peterse <aur@yorickpeterse.com>
+# Maintainer: Yorick Peterse
 pkgname=git-clogs
-pkgver=0.3.0
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="Generate a changelog from Git commits containing trailers"
 url="https://github.com/yorickpeterse/clogs"
@@ -12,7 +12,7 @@ provides=(clogs)
 conflicts=()
 options=(strip !docs !libtool !staticlibs)
 source=("https://github.com/yorickpeterse/clogs/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('23951c1453dfa6379588a95ea05cba9284bdb9ceb32a60be187c466e77ee1672')
+sha256sums=('510513a51e1350019f65ceb25ec5271b644afd5a1ad422a709b00a7e059280b3')
 
 build() {
     cd "clogs-${pkgver}"
