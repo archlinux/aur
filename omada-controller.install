@@ -40,6 +40,13 @@ pre_upgrade() {
 }
 
 post_upgrade() {
+	sudo rm -rf opt/omada-controller/data
+	sudo rm -rf /opt/omada-controller/logs
+	sudo rm -rf /opt/omada-controller/work
+	sudo ln -s /var/lib/omada-controller/data /opt/omada-controller
+	sudo ln -s /var/lib/omada-controller/logs /opt/omada-controller
+	sudo ln -s /var/lib/omada-controller/work /opt/omada-controller
+	sudo systemctl daemon-reload
 	sudo systemctl start omada-controller
 }
 

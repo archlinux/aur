@@ -1,7 +1,7 @@
 pkgbase = omada-controller-rxy
 	pkgdesc = Omada SDN Controller
 	pkgver = 5.14.32.2
-	pkgrel = 4
+	pkgrel = 5
 	url = https://www.tp-link.com/us/support/download/omada-software-controller/#Controller_Software
 	install = omada-controller.install
 	arch = x86_64
