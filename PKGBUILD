@@ -1,12 +1,14 @@
+# Maintainer: Jesse R Codling <codling at umich dot edu>
+
 pkgname=aocl-libflame
 pkgver=5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="High-performance object-based library for DLA computations, AOCL branding"
 arch=('x86_64')
 url="https://github.com/amd/libflame"
 license=('custom')
 depends=('gcc-libs' 'aocl-utils' 'aocl-blis')
-makedepends=('gcc-fortran' 'python' 'cmake')
+makedepends=('gcc-fortran' 'python' 'cmake' 'ninja')
 provides=('lapack' 'lapacke')
 conflicts=('lapack' 'lapacke')
 _lapackver=3
@@ -20,7 +22,7 @@ prepare() {
     CXXFLAGS=${CXXFLAGS/-march=x86-64/}
     AOCL_ROOT=/
 
-    cmake -B newbuild \
+    cmake -B newbuild -G Ninja\
         -DENABLE_AMD_FLAGS=ON \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DENABLE_AOCL_BLAS=ON \
@@ -51,8 +53,8 @@ build() {
 # }
 
 package() {
-    cd "$srcdir/libflame-$pkgver"
-    DESTDIR="$pkgdir" cmake --install newbuild 
+    cd "$srcdir/libflame-$pkgver"/newbuild
+    DESTDIR="$pkgdir" ninja install
 
     ln -s /usr/lib/libflame.so $pkgdir/usr/lib/liblapack.so
     ln -s /usr/lib/libflame.so $pkgdir/usr/lib/liblapack.so.3

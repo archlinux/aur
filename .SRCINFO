@@ -1,13 +1,14 @@
 pkgbase = aocl-libflame
 	pkgdesc = High-performance object-based library for DLA computations, AOCL branding
 	pkgver = 5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/amd/libflame
 	arch = x86_64
 	license = custom
 	makedepends = gcc-fortran
 	makedepends = python
 	makedepends = cmake
+	makedepends = ninja
 	depends = gcc-libs
 	depends = aocl-utils
 	depends = aocl-blis
