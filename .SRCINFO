@@ -1,0 +1,29 @@
+pkgbase = tiny3d-n64-git
+	pkgver = r136.662a099
+	pkgrel = 1
+	url = https://github.com/HailToDodongo/tiny3d
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = libdragon-unstable-git
+	source = git+https://github.com/HailToDodongo/tiny3d
+	sha256sums = SKIP
+
+pkgname = tiny3d-n64-git
+	pkgdesc = 3D ucode/library for the N64 using libdragon
+	arch = any
+	depends = libdragon-unstable-git
+	provides = tiny3d-n64
+	conflicts = tiny3d-n64
+	options = !buildflags
+	options = !strip
+	options = !debug
+
+pkgname = tiny3d-n64-gltf-importer-git
+	pkgdesc = glTF model importer for the N64 and Tiny3D library
+	arch = i686
+	arch = x86_64
+	depends = gcc-libs
+	provides = tiny3d-n64-gltf-importer
+	conflicts = tiny3d-n64-gltf-importer
+	options = 
