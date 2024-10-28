@@ -7,11 +7,13 @@ if [ -z "$_srcinfo" ] && [ -z "$_pkgver" ]; then
   : ${_autoupdate:=true}
 fi
 
+: ${_install_path:=usr/lib}
+
 ## basic info
 _pkgname="ryujinx"
 pkgname="$_pkgname"
 pkgver=1.2.59
-pkgrel=1
+pkgrel=2
 pkgdesc="Experimental Nintendo Switch Emulator written in C#"
 url="https://github.com/GreemDev/Ryujinx"
 license=('MIT')
@@ -26,8 +28,7 @@ makedepends=(
   'dotnet-sdk-bin' # aur/dotnet-core-bin
 )
 
-options=('!strip' '!debug' 'emptydirs')
-install="$_pkgname.install"
+options=('!strip' '!debug')
 
 _source_ryujinx() {
   _pkgsrc="Ryujinx-$_pkgver"
@@ -40,13 +41,9 @@ pkgver() {
   echo "${_pkgver:?}"
 }
 
-build() {
-  cd "$_pkgsrc"
-
+build() (
+  export HOME="$SRCDEST/nuget-home"
   export DOTNET_CLI_TELEMETRY_OPTOUT=1
-
-  dotnet clean
-  dotnet nuget locals all -c
 
   local _args=(
     -c Release
@@ -59,49 +56,47 @@ build() {
   )
 
   echo "Building AVA Interface..."
-  dotnet publish "${_args[@]}" -o publish_ava src/Ryujinx
+  dotnet publish "${_args[@]}" -o publish_ava "$_pkgsrc/src/Ryujinx"
 
   echo "Building SDL2 Headless..."
-  dotnet publish "${_args[@]}" -o publish_sdl src/Ryujinx.Headless.SDL2
+  dotnet publish "${_args[@]}" -o publish_sdl "$_pkgsrc/src/Ryujinx.Headless.SDL2"
 
   echo "Shutting down dotnet build server in background."
   (timeout -k 45 30 dotnet build-server shutdown) > /dev/null 2>&1 &
-}
+)
 
 package() {
-  cd "$_pkgsrc"
-
   # program
-  install -dm755 "$pkgdir/opt/ryujinx"
-  cp -a --update=none --reflink=auto publish_ava/* "$pkgdir/opt/ryujinx/"
-  cp -a --update=none --reflink=auto publish_sdl/* "$pkgdir/opt/ryujinx/"
+  install -dm755 "$pkgdir/$_install_path/ryujinx"
+  cp -a --update=none --reflink=auto publish_ava/* "$pkgdir/$_install_path/ryujinx/"
+  cp -a --update=none --reflink=auto publish_sdl/* "$pkgdir/$_install_path/ryujinx/"
 
   # symlinks
   install -dm755 "$pkgdir/usr/bin"
-  ln -s "/opt/ryujinx/Ryujinx" "$pkgdir/usr/bin/ryujinx"
-  ln -s "/opt/ryujinx/Ryujinx.Headless.SDL2" "$pkgdir/usr/bin/ryujinx.sdl"
+  ln -s "/$_install_path/ryujinx/Ryujinx" "$pkgdir/usr/bin/ryujinx"
+  ln -s "/$_install_path/ryujinx/Ryujinx.Headless.SDL2" "$pkgdir/usr/bin/ryujinx.sdl"
 
   # .desktop
-  install -Dm644 distribution/linux/Ryujinx.desktop "$pkgdir/usr/share/applications/ryujinx.desktop"
+  install -Dm644 "$_pkgsrc"/distribution/linux/Ryujinx.desktop "$pkgdir/usr/share/applications/ryujinx.desktop"
 
   # icon
-  install -Dm644 distribution/misc/Logo.svg "$pkgdir/usr/share/pixmaps/ryujinx.svg"
+  install -Dm644 "$_pkgsrc"/distribution/misc/Logo.svg "$pkgdir/usr/share/pixmaps/ryujinx.svg"
 
   # mimetype
-  install -Dm644 distribution/linux/mime/Ryujinx.xml "$pkgdir/usr/share/mime/packages/ryujinx.xml"
+  install -Dm644 "$_pkgsrc"/distribution/linux/mime/Ryujinx.xml "$pkgdir/usr/share/mime/packages/ryujinx.xml"
 
   # license
-  install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 "$_pkgsrc"/LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
   # fix permissions
   find "$pkgdir" -type d -exec chmod 755 {} \;
   find "$pkgdir" -type f -exec chmod 644 {} \;
-  chmod 755 "$pkgdir/opt/ryujinx/Ryujinx"
-  chmod 755 "$pkgdir/opt/ryujinx/Ryujinx.Headless.SDL2"
-  chmod 755 "$pkgdir/opt/ryujinx/Ryujinx.sh"
+  chmod 755 "$pkgdir/$_install_path/ryujinx/Ryujinx"
+  chmod 755 "$pkgdir/$_install_path/ryujinx/Ryujinx.Headless.SDL2"
+  chmod 755 "$pkgdir/$_install_path/ryujinx/Ryujinx.sh"
 
   # writable log directory
-  install -dm777 "$pkgdir/opt/ryujinx/Logs"
+  install -dm777 "$pkgdir/$_install_path/ryujinx/Logs"
 
   # fix desktop file
   desktop-file-edit --set-key="Exec" --set-value="ryujinx %f" "$pkgdir/usr/share/applications/ryujinx.desktop"
