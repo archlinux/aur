@@ -1,15 +1,15 @@
 # Maintainer: Alexander Lessacher <cc69222@gmail.com>
 pkgname="dfcgen-gtk"
-pkgver=0.5
-pkgrel=0
+pkgver=0.6
+pkgrel=1
 pkgdesc="A free tool for the design of time-discrete (digital) filters/systems."
 arch=("x86_64" "i686")
-url="http://www.dfcgen.de/"
+url="http://dfcgen.rho62.de/"
 license=('GPLv2')
-depends=('gtk2' 'gsl')
+depends=('gtk3' 'gsl')
 provides=(dfcgen-gtk)
-source=("http://www.dfcgen.de/$pkgname/$pkgname-$pkgver.tar.gz")
-sha512sums=("5d1f807a8894d6fc8acab40e0132281d4b961dd3403fbdcda4f9a3cd0130ae0289b897d29d3a231bf1cfa21039d2b842a6389feaece4996aae7470f8ce923929")
+source=("http://dfcgen.rho62.de/${pkgname}3/${pkgname}_$pkgver-$pkgrel.tar.gz")
+sha512sums=("e85781bc28af088c3a7f69d82d0f70af78e30dcde2a076492634597b1a2a27ea924ee621ddb8225c8d62b0e3f30841ce17ab67306559e4d351cf4c63bf3d8fe9")
 
 build(){
 	cd "${srcdir}/$pkgname-$pkgver"
