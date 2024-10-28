@@ -10,6 +10,7 @@ pkgbase = python-scikit-sparse
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-setuptools
+	makedepends = python-wheel
 	depends = python-scipy
 	depends = suitesparse
 	source = https://pypi.python.org/packages/source/s/scikit_sparse/scikit_sparse-0.4.15.tar.gz
