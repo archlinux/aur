@@ -5,9 +5,10 @@ pkgver=1.0.0
 pkgrel=1
 pkgdesc="All of the fonts needed for proper Microsoft services with automated installation"
 arch=('any')
-depends=('wimlib' 'sudo' 'curl')
+depends=('wimlib' 'sudo' 'curl' 'udftools')
 
 prepare() {
+    sudo echo Downloading Windows...
     curl -s "https://api.gravesoft.dev/msdl/proxy?product_id=3113&sku_id=18480" | grep -o '<a href="[^"]*">' | cut -d'"' -f2 > url.txt
     curl -o fonts.iso -# $(cat url.txt)
 
