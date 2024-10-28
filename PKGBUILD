@@ -2,7 +2,7 @@
 
 _pkgname="monocle"
 pkgname="${_pkgname}-bin"
-pkgver=0.6.1
+pkgver=0.6.2
 pkgrel=1
 pkgdesc="See through all BGP data with a monocle"
 arch=('x86_64' 'aarch64')
@@ -18,8 +18,8 @@ source_x86_64=("${_pkgsrc}-x86_64.tar.gz::${url}/releases/download/v${pkgver}/${
 source_aarch64=("${_pkgsrc}-aarch64.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}-aarch64-unknown-linux-gnu.tar.gz")
 sha256sums=('28ae217d3e04c30e7c0c99bdc5b90231075aabe2edafb1cd1203858fba0604df'
             '2f7fe2af03db380114c5894a77181791be23b2cb12035669dfb38c09c47e104c')
-sha256sums_x86_64=('2c88193fcf93006f01a43b2feb08a55d955bdb53d596f1e2db9bf6a4ada5b0de')
-sha256sums_aarch64=('ad5a25c89e11288369d8aa0e787588f18336d73650bafb5392099802ce73d2fc')
+sha256sums_x86_64=('bbfb58b1f28de20d7edb2d9ee36a770464626e8ca06b6b4ad6ddb3d44e710f3c')
+sha256sums_aarch64=('5d2dea1d9ee2c4fd0262c5ad42b9b470b27314127f345ac45420563a0a78bcc7')
 
 package() {
   cd "${srcdir}"
