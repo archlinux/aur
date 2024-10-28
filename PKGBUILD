@@ -1,19 +1,21 @@
-# Maintainer: Ryan Delaney <ryan.patrick.delaney@protonmail.com>
+# Maintainer: envolution
+# Contributor: Ryan Delaney <ryan.patrick.delaney@protonmail.com>
 
 pkgname=ttf-inconsolata-g
 pkgver=20090213
 pkgrel=4
-conflicts=('ttf-inconsolata-g')
-provides=('ttf-inconsolata-g')
-pkgdesc="Monospace font for pretty code listings and for the terminal modified by Leonardo Maffi (http://www.fantascienza.net/leonardo/)"
-url="http://levien.com/type/myfonts/inconsolata.html"
-license=('unknown')
-depends=()
-source=('http://www.fantascienza.net/leonardo/ar/inconsolatag/inconsolata-g_font.zip')
-install=ttf-inconsolata-g.install
+pkgdesc="Monospace font for pretty code listings and for the terminal modified by Leonardo Maffi http://www.fantascienza.net/leonardo/)"
 arch=('any')
-md5sums=('c36e53cb9022f8096fb78a0aae00cbb0')
+url='http://www.fantascienza.net/leonardo/'
+license=('OFL-1.1')
+source=("https://github.com/envolution/inconsolata-g/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('3affd875b720421d9755e548422c40d80d13ff3a2f215db30b4918fb922e718b')
 
-package() {
-    install -Dm644 $srcdir/Inconsolata-g.ttf $pkgdir/usr/share/fonts/TTF/ttf-inconsolata-g.ttf
+package(){
+  cd inconsolata-g-${pkgver}
+  install -Dm644 'inconsolata-g.otf' "${pkgdir}/usr/local/share/fonts/otf/inconsolata-g/inconsolata-g.otf"
+  install -Dm644 'inconsolata-g.ttf' "${pkgdir}/usr/local/share/fonts/ttf/inconsolata-g/inconsolata-g.ttf"
+  install -Dm644 'license.txt' "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
+
+# vim: ts=2 sw=2 et:
