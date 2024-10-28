@@ -1,7 +1,7 @@
 pkgbase = python-wat-git
 	pkgdesc = WAT Inspector: Deep inspection of Python objects (latest commit)
-	pkgver = 0.4.0.r0.g135572e
-	pkgrel = 2
+	pkgver = 0.4.2.r1.gcf3f5aa
+	pkgrel = 1
 	url = https://github.com/igrek51/wat
 	arch = any
 	license = MIT
