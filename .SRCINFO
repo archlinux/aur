@@ -1,6 +1,6 @@
 pkgbase = megasync-bin
 	pkgdesc = Easy automated syncing between your computers and your MEGA cloud drive
-	pkgver = 5.5.0
+	pkgver = 5.6.0
 	pkgrel = 1
 	url = https://mega.nz/#sync
 	arch = x86_64
@@ -25,10 +25,10 @@ pkgbase = megasync-bin
 	depends = qt5-quickcontrols2
 	depends = qt5-quickcontrols
 	optdepends = sni-qt: fix systray issue on KDE and LXQt
-	provides = megasync=5.5.0
+	provides = megasync=5.6.0
 	conflicts = megasync
 	conflicts = megatools
-	source = https://mega.nz/linux/repo/Arch_Extra/x86_64/megasync-5.5.0-1-x86_64.pkg.tar.zst
-	sha256sums = 8bb880b66a88da0970248e137790aa075036b21c04a591315d9e0749fe353f29
+	source = https://mega.nz/linux/repo/Arch_Extra/x86_64/megasync-5.6.0-1-x86_64.pkg.tar.zst
+	sha256sums = 469454dd3f2f7e1b6fc81a0e871f0edbbd8e0a88df528b57088e58e0a640ad97
 
 pkgname = megasync-bin
