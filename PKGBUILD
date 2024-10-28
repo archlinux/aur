@@ -7,6 +7,7 @@ url="https://github.com/honjow/enhanced-osk-gnome-ext.git"
 license=("GPL")
 source=("git+$url#branch=gnome46")
 md5sums=('SKIP')
+makedepends=("git")
 _uuid="enhancedosk@cass00.github.io"
 
 pkgver() {

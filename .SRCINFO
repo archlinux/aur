@@ -5,6 +5,7 @@ pkgbase = gnome-shell-extension-enhanced-osk-git
 	url = https://github.com/honjow/enhanced-osk-gnome-ext.git
 	arch = any
 	license = GPL
+	makedepends = git
 	source = git+https://github.com/honjow/enhanced-osk-gnome-ext.git#branch=gnome46
 	md5sums = SKIP
 
