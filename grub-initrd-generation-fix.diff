@@ -1,0 +1,45 @@
+diff --git a/grub-initrd-generation-fix b/grub-initrd-generation-fix
+new file mode 100755
+index 000000000000..b2898a31842b
+--- /dev/null
++++ b/grub-initrd-generation-fix
+@@ -0,0 +1,39 @@
++#!/bin/bash
++
++30_os-prober() {
++    local file=/etc/grub.d/30_os-prober  # from package 'grub'
++
++    sed -i $file \
++        -e "s|\(echo \${LINUX} \| cut -d ':' -f 5\)\`|\1 \| tr '^' ' '\`|" \
++        -e 's|LINITRD="${LINITRD#/boot}"$|LINITRD=$(echo "$LINITRD" \| sed -e "s\|/boot/\|/\|g")|'  # remove /boot
++}
++
++40grub2() {
++    local file=/usr/lib/linux-boot-probes/mounted/40grub2  # from package 'os-prober'
++
++        # use all (but first) parameters:
++        local c1='s|initrd="$(echo "$2"|shift; initrd="$(echo "$@"|'
++
++        # add prefix /boot:
++        local c2='s|initrd="/boot$initrd"|initrd=$(echo "$initrd" \| sed -e "s\|^/\|/boot/\|" -e "s\| /\| /boot/\|g")|'
++
++        sed -i $file -e "$c1" -e "$c2"
++
++
++}
++
++Main()
++{
++    local hookname="$1"
++
++    case "$hookname" in
++        30_os-prober) 30_os-prober ;;
++        40grub2) 40grub2 ;;
++        "")          30_os-prober
++                     40grub2
++                     ;;
++    esac
++}
++
++Main "$@"
++ 

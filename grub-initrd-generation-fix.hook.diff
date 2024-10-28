@@ -1,0 +1,19 @@
+diff --git a/grub-initrd-generation-fix.hook b/grub-initrd-generation-fix.hook
+new file mode 100644
+index 000000000000..f8bbd9d36043
+--- /dev/null
++++ b/grub-initrd-generation-fix.hook
+@@ -0,0 +1,13 @@
++[Trigger]
++Operation = Install
++Operation = Upgrade
++Type = Package
++Target = grub
++Target = grub-silent
++Target = os-prober
++Target = os-prober-btrfs
++
++[Action]
++Description = Fix 'grub' and 'os-prober' after upgrading either of them....
++When = PostTransaction
++Exec = /usr/share/libalpm/scripts/grub-initrd-generation-fix
