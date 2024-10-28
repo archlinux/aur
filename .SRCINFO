@@ -1,6 +1,6 @@
 pkgbase = biblestudytools-git
 	pkgdesc = An ncurses client to biblestudytools.com
-	pkgver = 0.1.0.r0.g5619fb9
+	pkgver = 0.1.0.r38.g58794b6
 	pkgrel = 1
 	url = https://github.com/kevr/biblestudytools
 	arch = i686
@@ -17,6 +17,7 @@ pkgbase = biblestudytools-git
 	depends = python
 	depends = python-requests
 	depends = python-lxml
+	optdepends = wl-clipboard
 	conflicts = biblestudytools
 	source = git+https://github.com/kevr/biblestudytools
 	sha256sums = SKIP
