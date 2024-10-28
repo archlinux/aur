@@ -4,12 +4,12 @@
 # Contributor: carstene1ns <arch carsten-teibes.de>
 
 pkgname=mbedtls-dtls
-pkgver=3.5.0
+pkgver=3.6.2
 pkgrel=1
 pkgdesc='An open source, portable, easy to use, readable and flexible TLS library (with DTLS support)'
 arch=(x86_64)
 url=https://tls.mbed.org
-license=(Apache)
+license=(Apache-2.0)
 depends=(
   glibc
   sh
@@ -31,12 +31,20 @@ provides=(
 replaces=(polarssl)
 conflicts=(polarssl mbedtls)
 options=(staticlibs)
-_tag=1ec69067fa1351427f904362c1221b31538c8b57
-source=(git+https://github.com/ARMmbed/mbedtls.git#tag=${_tag})
-b2sums=(SKIP)
+_tag=107ea89daaefb9867ea9121002fbbdf926780e98
+source=(
+  git+https://github.com/Mbed-TLS/mbedtls.git#tag=${_tag}
+  git+http://github.com/Mbed-TLS/mbedtls-framework.git
+)
+b2sums=('a42a5365f4caffa754d57c9a2867eae855f6b084af60d137490d78433e86e556143274c46b4c40cdd2d6eed8c024d4da0ebc0f221b7b59a9dd36ed575874e98c'
+        'SKIP')
 
 prepare() {
   cd mbedtls
+  git submodule init framework
+  git config submodule.framework.url "${srcdir}/mbedtls-framework"
+  git -c protocol.file.allow=always submodule update framework
+  scripts/config.py set MBEDTLS_HAVE_SSE2
   scripts/config.py set MBEDTLS_THREADING_C
   scripts/config.py set MBEDTLS_THREADING_PTHREAD
   scripts/config.py set MBEDTLS_SSL_DTLS_SRTP
