@@ -1,7 +1,7 @@
 # Maintainer: Guillaume Horel <guillaume.horel@gmail.com>
 pkgname='python-blp'
 _pkgname='blp'
-pkgver=0.0.2
+pkgver=0.0.3
 pkgrel=1
 pkgdesc='Pythonic interface for Bloomberg Open API'
 url='https://github.com/matthewgilbert/blp'
@@ -12,7 +12,7 @@ optdepends=()
 license=('Apache-2.0')
 arch=('any')
 source=("https://files.pythonhosted.org/packages/source/${_pkgname:0:1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
-sha256sums=('094c09b05fb006769f48309588f4200d593299b58566d03e6a188c16296cd98f')
+sha256sums=('b025e9f58c47ef383132b9718e463de6c1274b61773c52f2b4cb9f340b9ee62f')
 
 build() {
     cd "${_pkgname}-${pkgver}"
