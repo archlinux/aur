@@ -1,7 +1,7 @@
 # Maintainer: Emily Maré (emileet) <emileet@plsnobully.me>
 
 _pkgname=DistroAV
-pkgname=obs-ndi
+pkgname=distroav
 pkgver=6.0.0
 pkgrel=1
 pkgdesc="NDI integration for OBS Studio"
@@ -26,10 +26,10 @@ build() {
 package() {
     cd ${_pkgname}-${pkgver}
 
-    install -Dm755 build/distroav.so ${pkgdir}/usr/lib/obs-plugins/distroav.so
+    install -Dm755 build/${pkgname}.so ${pkgdir}/usr/lib/obs-plugins/${pkgname}.so
 
-    install -d ${pkgdir}/usr/share/obs/obs-plugins/distroav/locale
-    cp -a data/locale/* ${pkgdir}/usr/share/obs/obs-plugins/distroav/locale
+    install -d ${pkgdir}/usr/share/obs/obs-plugins/${pkgname}/locale
+    cp -a data/locale/* ${pkgdir}/usr/share/obs/obs-plugins/${pkgname}/locale
 
-    install -Dm644 LICENSE ${pkgdir}/usr/share/licenses/distroav/LICENSE
+    install -Dm644 LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
 }
