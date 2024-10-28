@@ -1,7 +1,7 @@
 pkgbase = gtk4-git
 	pkgdesc = GObject-based multi-platform GUI toolkit
 	pkgver = 4.16.2.r438.ge37f9ba
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.gnome.org/GNOME/gtk
 	arch = x86_64
 	license = LGPL-2.1-or-later
@@ -45,7 +45,7 @@ pkgbase = gtk4-git
 	depends = libxkbcommon
 	depends = libxrandr
 	depends = pango
-	depends = tracker3
+	depends = tinysparql
 	depends = vulkan-icd-loader
 	depends = wayland
 	options = !lto
@@ -89,12 +89,12 @@ pkgname = gtk4-git
 	depends = libxkbcommon
 	depends = libxrandr
 	depends = pango
-	depends = tracker3
+	depends = tinysparql
 	depends = vulkan-icd-loader
 	depends = wayland
 	depends = gtk-update-icon-cache
 	optdepends = evince: Default print preview command
-	provides = gtk4
+	provides = gtk4=1:4.16.2
 	provides = libgtk-4.so
 	conflicts = gtk4
 
@@ -110,7 +110,7 @@ pkgname = gtk4-demos-git
 	depends = libepoxy
 	depends = librsvg
 	depends = pango
-	provides = gtk4-demos
+	provides = gtk4-demos=1:4.16.2
 	conflicts = gtk4-demos
 
 pkgname = gtk-update-icon-cache-git
@@ -118,5 +118,5 @@ pkgname = gtk-update-icon-cache-git
 	depends = gdk-pixbuf2
 	depends = librsvg
 	depends = hicolor-icon-theme
-	provides = gtk-update-icon-cache
+	provides = gtk-update-icon-cache=1:4.16.2
 	conflicts = gtk-update-icon-cache

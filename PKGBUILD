@@ -8,7 +8,7 @@ _gitname="gtk"
 _pkgname="gtk4"
 pkgbase="$_pkgname${_pkgtype:-}"
 pkgver=4.16.2.r438.ge37f9ba
-pkgrel=1
+pkgrel=2
 pkgdesc="GObject-based multi-platform GUI toolkit"
 url="https://gitlab.gnome.org/GNOME/gtk"
 license=('LGPL-2.1-or-later')
@@ -43,7 +43,7 @@ depends=(
   libxkbcommon
   libxrandr
   pango
-  tracker3
+  tinysparql
   vulkan-icd-loader
   wayland
 )
@@ -151,10 +151,10 @@ _package_gtk4() {
   depends+=(gtk-update-icon-cache)
   optdepends=('evince: Default print preview command')
   provides=(
-    gtk4
-    libgtk-4.so
+    "gtk4=1:${pkgver%%.r*}"
+    'libgtk-4.so'
   )
-  conflicts=(gtk4)
+  conflicts=('gtk4')
 
   mv fakeinstall/* "$pkgdir"
 
@@ -183,8 +183,8 @@ _package_gtk4-demos() {
     librsvg
     pango
   )
-  provides=(gtk4-demos)
-  conflicts=(gtk4-demos)
+  provides=("gtk4-demos=1:${pkgver%%.r*}")
+  conflicts=('gtk4-demos')
 
   mv demo/* "$pkgdir"
 }
@@ -192,8 +192,8 @@ _package_gtk4-demos() {
 _package_gtk4-docs() {
   pkgdesc+=" (documentation)"
   depends=()
-  provides=(gtk4-docs)
-  conflicts=(gtk4-docs)
+  provides=("gtk4-docs=1:${pkgver%%.r*}")
+  conflicts=('gtk4-docs')
 
   mv docs/* "$pkgdir"
 }
@@ -201,8 +201,8 @@ _package_gtk4-docs() {
 _package_gtk-update-icon-cache() {
   pkgdesc="GTK icon cache updater"
   depends=(gdk-pixbuf2 librsvg hicolor-icon-theme)
-  provides=(gtk-update-icon-cache)
-  conflicts=(gtk-update-icon-cache)
+  provides=("gtk-update-icon-cache=1:${pkgver%%.r*}")
+  conflicts=('gtk-update-icon-cache')
 
   mv guic/* "$pkgdir"
   ln -s gtk4-update-icon-cache "$pkgdir/usr/bin/gtk-update-icon-cache"
