@@ -31,7 +31,10 @@ pkgver() {
 
 build() {
 	cd tplay
-    # temporary fixes to resolve build failure until the PR https://github.com/maxcurzi/tplay/pull/46 gets resolved.
+	# Improve the app performance by building it against the current cpu architecture.
+	export RUSTFLAGS="-C target-cpu=native"
+
+	# temporary fixes to resolve build failure until the PR https://github.com/maxcurzi/tplay/pull/46 gets resolved.
 	sed -i "s/opencv = { version = \"0\.84\.4\"/opencv = { version = \"0\.93\.1\"/g" Cargo.toml
 	sed -i "s/ffmpeg-next = \"6\.0\"/ffmpeg-next = \"7\.1\.0\"/g" Cargo.toml
 
