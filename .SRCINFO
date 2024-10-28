@@ -1,0 +1,24 @@
+pkgbase = qdiskinfo-bin
+	pkgdesc = Frontend for smartctl providing a user experience similar to CrystalDiskInfo (binary release)
+	pkgver = 0.3
+	pkgrel = 1
+	url = https://github.com/edisionnano/QDiskInfo
+	arch = x86_64
+	license = GPL-3.0-or-later
+	depends = hicolor-icon-theme
+	depends = polkit
+	depends = qt6-base
+	depends = qt6-svg
+	depends = smartmontools
+	provides = qdiskinfo
+	conflicts = qdiskinfo
+	source = https://github.com/edisionnano/QDiskInfo/releases/download/0.3/QDiskInfo-Qt6-libc
+	source = https://github.com/edisionnano/QDiskInfo/raw/refs/tags/0.3/dist/QDiskInfo.desktop
+	source = https://github.com/edisionnano/QDiskInfo/raw/refs/tags/0.3/dist/QDiskInfo.svg
+	source = https://github.com/edisionnano/QDiskInfo/raw/fc9a25551ad4380d6dce988c0513e85b5fa2fd71/dist/QDiskInfo.png
+	sha256sums = d0172cb70dec29c8b82e7c9317be0c7e2809a4c9e5711095fd34ba0d756c82cd
+	sha256sums = 0c5a2436b6777f7871466d85dcc4ce880b597ec112c79991c9cf6a59a428895b
+	sha256sums = f7232af27f88d2ca36c46abebc272976b8e9aa91c7b00c1ae6635c53f09746c6
+	sha256sums = 7c237bd42f38cd224b9d2fe2d09c6c1539bc52cd92cecf25a270cf0f52a18a33
+
+pkgname = qdiskinfo-bin
