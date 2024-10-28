@@ -1,12 +1,11 @@
-# Maintainer:
-# Contributor: parham < parham at tuta dot io >
+# Maintainer: D3vil0p3r <vozaanthony[at]gmail[dot]com>
 
-_pkgname="gnome-shell-extension-arc-menu"
+_pkgname=gnome-shell-extension-arc-menu
 pkgname="$_pkgname-git"
-pkgver=57.r5.g9b7e160
-pkgrel=2
-pkgdesc="Application menu extension for GNOME Shell"
-url="https://gitlab.com/arcmenu/ArcMenu"
+pkgver=62.r0.g446c923
+pkgrel=1
+pkgdesc='Application menu extension for GNOME Shell.'
+url='https://gitlab.com/arcmenu/ArcMenu'
 license=('GPL-2.0-or-later')
 arch=('any')
 
@@ -30,16 +29,19 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "$_pkgsrc"
+
   git describe --long --tags --abbrev=7 --exclude='*[a-zA-Z][a-zA-Z]*' \
     | sed -E 's/^[^0-9]*//;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
 build() {
   cd "$_pkgsrc"
+
   make
 }
 
 package() {
   cd "$_pkgsrc"
+
   make DESTDIR="$pkgdir" install
 }
