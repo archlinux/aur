@@ -1,6 +1,6 @@
 pkgbase = tidb-bin
 	pkgdesc = A distributed NewSQL database compatible with MySQL protocol
-	pkgver = 8.1.0
+	pkgver = 8.3.0
 	pkgrel = 1
 	url = https://github.com/pingcap/tidb
 	arch = x86_64
@@ -15,9 +15,9 @@ pkgbase = tidb-bin
 	backup = etc/tidb/tidb.toml
 	backup = etc/tikv/tikv.toml
 	backup = etc/pd/pd.toml
-	source = https://tiup-mirrors.pingcap.com/tidb-v8.1.0-linux-amd64.tar.gz
-	source = https://tiup-mirrors.pingcap.com/tikv-v8.1.0-linux-amd64.tar.gz
-	source = https://tiup-mirrors.pingcap.com/pd-v8.1.0-linux-amd64.tar.gz
+	source = https://tiup-mirrors.pingcap.com/tidb-v8.3.0-linux-amd64.tar.gz
+	source = https://tiup-mirrors.pingcap.com/tikv-v8.3.0-linux-amd64.tar.gz
+	source = https://tiup-mirrors.pingcap.com/pd-v8.3.0-linux-amd64.tar.gz
 	source = pd.service
 	source = tidb.service
 	source = tikv.service
@@ -30,9 +30,9 @@ pkgbase = tidb-bin
 	source = pd.toml
 	source = tidb.toml
 	source = tikv.toml
-	sha256sums = adcd25595b002075ab3d742ddcbe5b3a029024739df575f96450af8045b44662
-	sha256sums = e65c3f967e932256bb8eee731abd5d6a89b3eb5ca3e13415e13d9cb13dc291e5
-	sha256sums = f215c2a63c97bdd0f221b5cba9fd803bd4d80a0c9d3796eed0e194a9447b6218
+	sha256sums = 0b3a0309c1401ab70a7ed72e3e89fb4fb5703255647ff4052c480cd539ba624a
+	sha256sums = 0cb97f0e5a0ba58b916c4ade5eac869e7433a1734fe07123733bdb3c7aa2be69
+	sha256sums = db531d044f3461ccc43a13f451cb1163c6e6ef68ecdb6c4f5bf5b5aeba1f2d81
 	sha256sums = b03d12f2f8d6eb2e9d654d6258ca39000225cdf1418840f7e35081631bc4d924
 	sha256sums = 22318c19bb89ff5a0852df5186cc1496214cd49f2264192413a326d1e8c93dc9
 	sha256sums = 870b8eaf83bc0d22b05b0f3a7890660e483cf77bb1d84bc50ad04fb23068cd8c
@@ -48,6 +48,6 @@ pkgbase = tidb-bin
 
 pkgname = tidb-bin
 	install = tidb.install
-	provides = tidb-server=8.1.0
-	provides = tikv-server=8.1.0
-	provides = pd-server=8.1.0
+	provides = tidb-server=8.3.0
+	provides = tikv-server=8.3.0
+	provides = pd-server=8.3.0
