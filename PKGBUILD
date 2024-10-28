@@ -1,12 +1,12 @@
 # Maintainer: D3vil0p3r <vozaanthony[at]gmail[dot]com>
 
 pkgname=plasma5-applets-bigsur-inlinebattery
-pkgver=14.70890f2
+pkgver=16.85a2a99
 pkgrel=1
-pkgdesc="Improved Mac-like Inline Battery Plasmoid for KDE."
-arch=(any)
-url="https://github.com/Fausto-Korpsvart/mcOS-BS-Inline-Battery"
-license=(CC-BY)
+pkgdesc='Improved Mac-like Inline Battery Plasmoid for KDE.'
+arch=('any')
+url='https://github.com/Fausto-Korpsvart/mcOS-BS-Inline-Battery'
+license=('CC-BY')
 depends=('plasma-workspace')
 makedepends=('git')
 source=("$pkgname::git+$url.git")

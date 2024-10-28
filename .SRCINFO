@@ -1,6 +1,6 @@
 pkgbase = plasma5-applets-bigsur-inlinebattery
 	pkgdesc = Improved Mac-like Inline Battery Plasmoid for KDE.
-	pkgver = 14.70890f2
+	pkgver = 16.85a2a99
 	pkgrel = 1
 	url = https://github.com/Fausto-Korpsvart/mcOS-BS-Inline-Battery
 	arch = any
