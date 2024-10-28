@@ -3,7 +3,7 @@
 _pkgname=3dtk
 pkgname="$_pkgname-svn"
 pkgver=r2403
-pkgrel=1
+pkgrel=2
 pkgdesc='3D Toolkit with algorithms and methods to process 3D point clouds'
 url='https://slam6d.sourceforge.io'
 license=(GPL-3.0-only)
@@ -72,6 +72,7 @@ package() {
 	
 	# toolkit ships many binaries with generic names. 
 	# thus putting them into /opt
+	rm bin/test_*
 	install -Dm 755 bin/* -t "$pkgdir/opt/$_pkgname"
 
 	install -Dm 644 README.* -t "$pkgdir/usr/share/doc/$_pkgname"

@@ -1,7 +1,7 @@
 pkgbase = 3dtk-svn
 	pkgdesc = 3D Toolkit with algorithms and methods to process 3D point clouds
 	pkgver = r2403
-	pkgrel = 1
+	pkgrel = 2
 	url = https://slam6d.sourceforge.io
 	arch = x86_64
 	license = GPL-3.0-only
