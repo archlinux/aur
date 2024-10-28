@@ -6,7 +6,7 @@ pkgbase = whisper.cpp-model-base
 	arch = i686
 	arch = x86_64
 	license = MIT
-	source = https://huggingface.co/ggerganov/whisper.cpp/resolve/main/ggml-base.bin
+	source = ggml-base.bin::https://huggingface.co/ggerganov/whisper.cpp/resolve/main/ggml-base.bin
 	sha1sums = SKIP
 
 pkgname = whisper.cpp-model-base
