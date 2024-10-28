@@ -6,7 +6,7 @@ pkgbase = whisper.cpp-model-small.en-q5_1
 	arch = i686
 	arch = x86_64
 	license = MIT
-	source = https://huggingface.co/ggerganov/whisper.cpp/resolve/main/ggml-small.en-q5_1.bin
+	source = ggml-small.en-q5_1.bin::https://huggingface.co/ggerganov/whisper.cpp/resolve/main/ggml-small.en-q5_1.bin
 	sha1sums = bfdff4894dcb76bbf647d56263ea2a96645423f1669176f4844a1bf8e478ad30
 
 pkgname = whisper.cpp-model-small.en-q5_1
