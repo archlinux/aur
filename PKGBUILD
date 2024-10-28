@@ -16,7 +16,7 @@ unset _pkgtype
 # basic info
 _pkgname="dolphin-emu-primehack"
 pkgname="$_pkgname${_pkgtype:-}"
-pkgver=1.1.5.r10.g6074f6c
+pkgver=1.2.1.r10.g6f42403
 pkgrel=1
 pkgdesc='A Gamecube and Wii emulator with mouselook controls'
 url="https://github.com/xiota/dolphin-primehack"
@@ -42,7 +42,7 @@ depends=(
 
   ## optional
   bzip2
-  cubeb
+  cubeb # AUR
   curl
   fmt
   hidapi
@@ -90,7 +90,7 @@ _source_main() {
   conflicts=("$_pkgname")
 
   _pkgsrc="xiota.primehack"
-  source=("$_pkgsrc"::"git+$url.git#branch=${_branch:-master}")
+  source=("$_pkgsrc"::"git+$url.git#branch=${_branch:-wip}")
   sha256sums=('SKIP')
 
   pkgver() {
@@ -191,9 +191,14 @@ prepare() {
 build() {
   # Fix version string
   local _pkgver=$(pkgver)
-  sed -Ez \
-    -e 's@\n\s+execute_process\([^\(\)]+\bdescribe [^\(\)]*--dirty\b[^\(\)]+\)@\n\nset(DOLPHIN_WC_DESCRIBE "'"${_pkgver:?}"'")@' \
-    -i "$srcdir/$_pkgsrc/CMake/ScmRevGen.cmake"
+  install /dev/stdin "$srcdir/$_pkgsrc/Source/Core/Common/scmrev.h.in" << END
+#define SCM_REV_STR "\${DOLPHIN_WC_REVISION}"
+#define SCM_DESC_STR "${_pkgver:?}"
+#define SCM_BRANCH_STR "${_branch:-wip}"
+#define SCM_COMMITS_AHEAD_MASTER 0
+#define SCM_DISTRIBUTOR_STR "aur.archlinux.org"
+#define SCM_UPDATE_TRACK_STR ""
+END
 
   local _cmake_options=(
     -B build
@@ -201,7 +206,6 @@ build() {
     -G Ninja
     -DCMAKE_BUILD_TYPE=None
     -DCMAKE_INSTALL_PREFIX='/usr'
-    -DDISTRIBUTOR='aur.archlinux.org'
 
     -DENABLE_AUTOUPDATE=OFF
     # -DENABLE_ANALYTICS=OFF # default:Opt-in
@@ -211,7 +215,6 @@ build() {
     -DUSE_SYSTEM_LIBMGBA=OFF
     -DUSE_SYSTEM_MINIZIP=OFF
     -DUSE_SYSTEM_XXHASH=OFF
-    -DUSE_SYSTEM_ZLIB=OFF
     -DENABLE_TESTS=OFF
     -Wno-dev
   )
