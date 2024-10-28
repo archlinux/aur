@@ -2,7 +2,7 @@
 pkgname=drawio-desktop-appimage
 _pkgname=drawio
 pkgver=24.7.17
-pkgrel=1
+pkgrel=2
 pkgdesc="Diagram drawing application built on web technology"
 arch=('x86_64' 'aarch64')
 url="https://www.diagrams.net/"
@@ -10,7 +10,7 @@ _githuburl="https://github.com/jgraph/drawio-desktop"
 license=('Apache2')
 options=(!strip)
 conflicts=(drawio-desktop)
-depends=('zlib' 'hicolor-icon-theme')
+depends=('zlib' 'hicolor-icon-theme' 'glibc' 'fuse2')
 _install_path=/opt/${pkgname}
 source_x86_64=("${_pkgname}-${pkgver}.AppImage::${_githuburl}/releases/download/v${pkgver}/${_pkgname}-x86_64-${pkgver}.AppImage")
 sha1sums_x86_64=('d844203becbecc9fa8e9fc590565b10bebd66cec')

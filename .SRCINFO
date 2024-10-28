@@ -1,13 +1,15 @@
 pkgbase = drawio-desktop-appimage
 	pkgdesc = Diagram drawing application built on web technology
 	pkgver = 24.7.17
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.diagrams.net/
 	arch = x86_64
 	arch = aarch64
 	license = Apache2
 	depends = zlib
 	depends = hicolor-icon-theme
+	depends = glibc
+	depends = fuse2
 	conflicts = drawio-desktop
 	options = !strip
 	source_x86_64 = drawio-24.7.17.AppImage::https://github.com/jgraph/drawio-desktop/releases/download/v24.7.17/drawio-x86_64-24.7.17.AppImage
