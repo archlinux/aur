@@ -1,11 +1,11 @@
 pkgbase = polkit-consolekit
 	pkgdesc = PolicyKit with ConsoleKit support for non-systemd systems
-	pkgver = 124
-	pkgrel = 2
-	url = https://gitlab.freedesktop.org/polkit/polkit
+	pkgver = 125
+	pkgrel = 1
+	url = https://github.com/polkit-org/polkit
 	arch = i686
 	arch = x86_64
-	license = LGPL
+	license = LGPL-2.0-or-later
 	makedepends = meson
 	makedepends = gtk-doc
 	makedepends = gobject-introspection
@@ -14,15 +14,15 @@ pkgbase = polkit-consolekit
 	depends = pam
 	depends = expat
 	depends = duktape
-	provides = polkit=124
+	provides = polkit=125
 	provides = libpolkit-agent-1.so
 	provides = libpolkit-gobject-1.so
 	conflicts = polkit
 	options = !libtool
-	source = https://gitlab.freedesktop.org/polkit/polkit/-/archive/124/polkit-124.tar.gz
+	source = https://github.com/polkit-org/polkit/archive/refs/tags/125.tar.gz
 	source = polkit.conf
 	source = 99-consolekit.rules
-	sha256sums = 72457d96a0538fd03a3ca96a6bf9b7faf82184d4d67c793eb759168e4fd49e20
+	sha256sums = ea5cd6e6e2afa6bad938ee770bf0c2cd9317910f37956faeba2869adcf3747d1
 	sha256sums = f12f590cf5ad621710f75a40b5af88e186d3a0a17d682a8bbe03b833525a3a39
 	sha256sums = c7f887e1a8429106b43e8e81849c731e18b3055ef5e9ce0d44706ec23e9ef99e
 

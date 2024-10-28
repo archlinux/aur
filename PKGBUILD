@@ -6,12 +6,12 @@
 # Contributor: Jan de Groot <jgc@archlinux.org>
 
 pkgname=polkit-consolekit
-pkgver=124
-pkgrel=2
+pkgver=125
+pkgrel=1
 pkgdesc="PolicyKit with ConsoleKit support for non-systemd systems"
 arch=('i686' 'x86_64')
-license=('LGPL')
-url="https://gitlab.freedesktop.org/polkit/polkit"
+license=('LGPL-2.0-or-later')
+url="https://github.com/polkit-org/polkit"
 depends=('glib2' 'pam' 'expat' 'duktape')
 makedepends=('meson' 'gtk-doc' 'gobject-introspection' 'glib2-devel')
 provides=(
@@ -20,12 +20,12 @@ provides=(
 )
 conflicts=('polkit')
 options=('!libtool')
-source=(https://gitlab.freedesktop.org/polkit/polkit/-/archive/$pkgver/polkit-$pkgver.tar.gz
+source=($url/archive/refs/tags/$pkgver.tar.gz
         polkit.conf
         99-consolekit.rules)
-sha256sums=('72457d96a0538fd03a3ca96a6bf9b7faf82184d4d67c793eb759168e4fd49e20'
-           'f12f590cf5ad621710f75a40b5af88e186d3a0a17d682a8bbe03b833525a3a39'
-           'c7f887e1a8429106b43e8e81849c731e18b3055ef5e9ce0d44706ec23e9ef99e')
+sha256sums=('ea5cd6e6e2afa6bad938ee770bf0c2cd9317910f37956faeba2869adcf3747d1'
+            'f12f590cf5ad621710f75a40b5af88e186d3a0a17d682a8bbe03b833525a3a39'
+            'c7f887e1a8429106b43e8e81849c731e18b3055ef5e9ce0d44706ec23e9ef99e')
 
 build() {
   meson polkit-$pkgver build -D systemdsystemunitdir=foo \
