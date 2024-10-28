@@ -18,6 +18,7 @@ pkgbase = input-remapper-git
 	depends = python-pydantic
 	depends = python-cairo
 	depends = python-packaging
+	depends = python-psutil
 	optdepends = xorg-xmodmap: symbol names matching the keyboard layout
 	provides = input-remapper
 	conflicts = key-mapper
