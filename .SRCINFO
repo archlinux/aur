@@ -6,7 +6,7 @@ pkgbase = whisper.cpp-model-large-v1
 	arch = i686
 	arch = x86_64
 	license = MIT
-	source = https://huggingface.co/ggerganov/whisper.cpp/resolve/main/ggml-large-v1.bin
+	source = ggml-large-v1.bin::https://huggingface.co/ggerganov/whisper.cpp/resolve/main/ggml-large-v1.bin
 	sha1sums = 7d99f41a10525d0206bddadd86760181fa920438b6b33237e3118ff6c83bb53d
 
 pkgname = whisper.cpp-model-large-v1
