@@ -4,10 +4,10 @@ _appname="GitHub Desktop"
 pkgname="${_pkgname}-zh-bin"
 pkgver=3.4.3_linux1
 #_zhpkgver="${pkgver%_linux2}"
-_zhpkgver=3.4.6
+_zhpkgver=3.4.8
 _electronversion=30
-pkgrel=4
-pkgdesc="GUI for managing Git and GitHub.Chinese SC Version.Github Desktop 汉化版.Use system-wide electron."
+pkgrel=5
+pkgdesc="GUI for managing Git and GitHub.Chinese SC Version.Use system-wide electron.Github Desktop 汉化版."
 arch=(
     'aarch64'
     'armv7h'
@@ -38,7 +38,7 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/shiftkey/desktop/release-${pkgver//_/-}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('05ff0d2e416c87f72ad25e52d24494247afdbd49d003125d9e2a474aaac28704'
+sha256sums=('e38ea0b3d5a0fa5368a70d76b630dc62ad3a9a4ba1243a7bc25996f6f0aceb86'
             '891d678cd6aa67c0712f663b5fee690f24d11d360795300814f7bf2eb91ba530'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 sha256sums_aarch64=('da070a8379dda95cceb6c2a331fde7d33d56feee31de647e334435d34c6cfb22')
@@ -64,7 +64,7 @@ build() {
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
-    cp -r "${srcdir}/usr/lib/${_pkgname}/resources/app" "${pkgdir}/usr/lib/${pkgname%-bin}"
+    cp -Pr --no-preserve=ownership "${srcdir}/usr/lib/${_pkgname}/resources/app" "${pkgdir}/usr/lib/${pkgname%-bin}"
     install -Dm644 "${srcdir}/usr/share/applications/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
     install -Dm644 "${srcdir}/LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     _icon_sizes=(32x32 64x64 128x128 256x256 512x512 1024x1024)
