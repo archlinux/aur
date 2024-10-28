@@ -1,18 +1,18 @@
 pkgbase = datomic
-	pkgdesc = A database of flexible,time-based facts,supporting queries and joins,with elastic scalability,and ACID transactions
-	pkgver = 1.0.7187
-	pkgrel = 2
+	pkgdesc = A database of flexible, time-based facts, supporting queries and joins, with elastic scalability and ACID transactions.
+	pkgver = 1.0.7260
+	pkgrel = 1
 	url = https://www.datomic.com/
 	install = datomic.install
 	arch = any
 	license = APACHE
 	depends = java-environment
 	options = !strip
-	source = datomic-1.0.7187.zip::https://datomic-pro-downloads.s3.amazonaws.com/1.0.7187/datomic-pro-1.0.7187.zip
+	source = datomic-1.0.7260.zip::https://datomic-pro-downloads.s3.amazonaws.com/1.0.7260/datomic-pro-1.0.7260.zip
 	source = transactor.properties
 	source = datomic.service
-	md5sums = 1107dc89c3bc0896a02458d34a875143
-	md5sums = a34e9e7a0e4b0fade06ba8200c4bd530
-	md5sums = 45c1fbdb988afd06295b6c90d7bcd819
+	sha256sums = e2f6f891fe3e335927264e709a33365acd2e400fe776f7de5711e531e2ea4e3c
+	sha256sums = e622f80994c4c21e52d59f8724d06fc6672c25479224619d3cc172df32fe31de
+	sha256sums = b173efbd9d8ba8059fd8fbca2fdba3dc936f9f9ada51f6cf017424d2f590ebdc
 
 pkgname = datomic
