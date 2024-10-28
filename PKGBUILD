@@ -29,7 +29,7 @@ validpgpkeys=()
 prepare() {
     cp -R "craftos2-lua-$pkgver"/* "craftos2-$pkgver/craftos2-lua/"
 	cd "craftos2-$pkgver"
-	make -C craftos2-lua linux
+	make -C craftos2-lua linux MYCFLAGS=-Wno-error=incompatible-pointer-types
 }
 
 build() {
