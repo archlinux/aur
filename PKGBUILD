@@ -1,4 +1,5 @@
-# Maintainer: Carl Smedstad <carl.smedstad at protonmail dot com>
+# Maintainer: envolution
+# Contributor: Carl Smedstad <carl.smedstad at protonmail dot com>
 # Contributor: Eli Schwartz <eschwartz@archlinux.org>
 # Contributor: Guillaume Brogi <gui-gui at netcourrier dot com>
 
@@ -42,3 +43,4 @@ package() {
 
   install -Dm644 LICENSE "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
 }
+# vim: ts=2 sw=2 et:
