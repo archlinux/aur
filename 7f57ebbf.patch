@@ -1,0 +1,71 @@
+From 7f57ebbf602713156be73a226cd067581e5021a5 Mon Sep 17 00:00:00 2001
+From: east <w1031791815@gmail.com>
+Date: Tue, 12 Oct 2021 17:46:55 +0800
+Subject: [PATCH]  fix format not a string literal and no format arguments
+ [-Werror=format-security]
+
+---
+ svg.c         | 6 +++---
+ tclxcircuit.c | 8 ++++----
+ 2 files changed, 7 insertions(+), 7 deletions(-)
+
+diff --git a/svg.c b/svg.c
+index 53e9825..7788dfe 100644
+--- a/svg.c
++++ b/svg.c
+@@ -1133,12 +1133,12 @@ int xctcl_svg(ClientData clientData, Tcl_Interp *interp,
+ 
+    if (locobjc >= 2) {
+       /* If there is a non-option argument, use it for the output filename */
+-      sprintf(filename, Tcl_GetString(objv[1]));
++      sprintf(filename, "%s", Tcl_GetString(objv[1]));
+    }
+    else if (xobjs.pagelist[areawin->page]->pageinst->thisobject->name == NULL)
+-      sprintf(filename, xobjs.pagelist[areawin->page]->filename);
++      sprintf(filename, "%s", xobjs.pagelist[areawin->page]->filename);
+    else
+-      sprintf(filename, xobjs.pagelist[areawin->page]->pageinst->thisobject->name);
++      sprintf(filename, "%s",  xobjs.pagelist[areawin->page]->pageinst->thisobject->name);
+ 
+    pptr = strrchr(filename, '.');
+    if (pptr != NULL)
+diff --git a/tclxcircuit.c b/tclxcircuit.c
+index a487c02..ea0751d 100644
+--- a/tclxcircuit.c
++++ b/tclxcircuit.c
+@@ -3877,7 +3877,7 @@ int xctcl_object(ClientData clientData, Tcl_Interp *interp,
+       case NameIdx:
+ 	 if (nidx == 1 || areawin->selects == 0) {
+ 	    if (objc == 3) {
+-	       sprintf(thisinst->thisobject->name, Tcl_GetString(objv[nidx + 2]));
++	       sprintf(thisinst->thisobject->name, "%s", Tcl_GetString(objv[nidx + 2]));
+ 	       checkname(thisinst->thisobject);
+ 	    }
+ 	    Tcl_AppendElement(interp, thisinst->thisobject->name);
+@@ -7404,7 +7404,7 @@ int xctcl_page(ClientData clientData, Tcl_Interp *interp,
+ 
+       case LoadIdx:
+ 	 TechReplaceSave();
+-	 sprintf(_STR2, Tcl_GetString(objv[2 + nidx]));
++	 sprintf(_STR2, "%s", Tcl_GetString(objv[2 + nidx]));
+ 	 for (i = 3 + nidx; i < objc; i++) {
+ 	    argv = Tcl_GetString(objv[i]);
+ 	    if ((*argv == '-') && !strncmp(argv, "-repl", 5)) {
+@@ -7490,7 +7490,7 @@ int xctcl_page(ClientData clientData, Tcl_Interp *interp,
+ 
+ 	 switch (importtype) {
+ 	    case XCircuitIdx:
+-	       sprintf(_STR2, Tcl_GetString(objv[3 + nidx]));
++	       sprintf(_STR2, "%s", Tcl_GetString(objv[3 + nidx]));
+ 	       for (i = 4; i < objc; i++) {
+ 		  strcat(_STR2, ",");
+ 		  strcat(_STR2, Tcl_GetString(objv[i + nidx]));
+@@ -7507,7 +7507,7 @@ int xctcl_page(ClientData clientData, Tcl_Interp *interp,
+ 		  Tcl_SetObjResult(interp, objPtr);
+ 		  return XcTagCallback(interp, objc, objv);
+ 	       }
+-	       sprintf(_STR2, Tcl_GetString(objv[3 + nidx]));
++	       sprintf(_STR2, "%s", Tcl_GetString(objv[3 + nidx]));
+ 	       if (savepage != pageno) newpage(pageno);
+ 	       loadbackground();
+ 	       if (savepage != pageno) newpage(savepage);

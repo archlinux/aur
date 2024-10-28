@@ -15,15 +15,19 @@ makedepends=('chrpath' 'imagemagick')
 source=("http://opencircuitdesign.com/xcircuit/archive/$pkgname-$pkgver.tgz"
         "xcircuit.desktop"
         "http://opencircuitdesign.com/xcircuit/xcicon_sm.gif"
-         https://github.com/RTimothyEdwards/XCircuit/commit/7f57ebbf.patch)
+        7f57ebbf.patch
+        0001-Declare-UDrawXAt-in-prototypes.h.patch
+        )
 sha256sums=('b2f63cba605e79cc2a08714bf3888f7be7174384ed724db3c70f8bf25c36f554'
             '3c29f55ee6196b554d6fc5791f29ac7cab2fecc184c699e80ee265be0b609456'
             '8e7b132d9803443e6f3ae65ed1990362a5a977e7856b1e54f2edf8cd4a3d7259'
-            '5f56153f37fa7764148e498e17542388fa4fe6a3ba3af3c4f87f370cf41c4973')
+            '5f56153f37fa7764148e498e17542388fa4fe6a3ba3af3c4f87f370cf41c4973'
+            '657fc92268c570bdf10b2d1fdf1072f3d292dca534c6b2f43176445707555f4b')
 
 prepare() {
   cd $pkgname-$pkgver
   patch -p1 < ../7f57ebbf.patch # Fix build with -Wformat-security
+  patch -p1 < ../0001-Declare-UDrawXAt-in-prototypes.h.patch
 }
 
 build() {
