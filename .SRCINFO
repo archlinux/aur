@@ -1,0 +1,17 @@
+pkgbase = python-rio-cogeo
+	pkgdesc = Cloud Optimized GeoTIFF creation and validation plugin for rasterio
+	pkgver = 5.3.6
+	pkgrel = 1
+	url = https://github.com/cogeotiff/rio-cogeo
+	arch = any
+	license = BSD-3
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python-rasterio
+	depends = python-morecantile
+	depends = python-pydantic
+	depends = python-click
+	source = rio-cogeo-5.3.6.tar.gz::https://github.com/cogeotiff/rio-cogeo/archive/refs/tags/5.3.6.tar.gz
+	sha256sums = f0f8fb3f84d9f8b95f8b5f2225eb061defddd7932d022e174969c14ae9c9bbe1
+
+pkgname = python-rio-cogeo
