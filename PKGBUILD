@@ -10,24 +10,17 @@ license=('MIT')
 depends=('glibc')
 makedepends=('git' 'go')
 options=('!lto')
-_commit='d16838c89887a1a5efd6856f043ccb43c9391ce0'
 source=(
-  "$pkgname::git+$url.git#commit=$_commit"
+  "$pkgname::git+$url.git#tag=v$pkgver"
   'go.mod'
   'go.sum'
 )
-sha512sums=('SKIP'
-            '2851262e88d4c0ed1f265c33171e4e7467023e3285eb763b870c16cff940d9c4c269eaf844f2c84867dba164ba2af8aeec0e2b5e304db47f31f6e7060a2d0b43'
-            'e176d6c70f32a6ead1f5826ab784ee4007458a1ecb2c72d54f36e4637c8083f60c759dcc48071681f8a04285a6031170609ddef4c1429527e59a5812de457197')
-b2sums=('SKIP'
-        '203b9b58242acddb6b3bda3f85c18720eff765a2ecf842fc68b8e977892ecc37c91c808982a4ee2fcfde271e6d884d6b31f128c2776783c715bd60dbd908b750'
-        '0532b55eec0c94b37b22a282604b3013104ecdcf0cac6a8f53f67182790298612a25061f733f0bc10d9882480306700d21ea42f70c882893dea452ff7fbd27ca')
-
-pkgver() {
-  cd "$pkgname"
-
-  git describe --tags | sed 's/^v//'
-}
+sha512sums=('1b0b8a84bc9d0e3a180e63157a4c3db22e4d3e732fbb0ec1676850d8f41fcca6b0425ef6f4bc3386432eae73e8ee566cbdab5078c69981d920d4172d74dbba35'
+            'c0adcfe1e60ac679559d8081aea72a9859e3b63f0d1a5784ffce4ed1c32c8bd63c968b1861e66837538758cecfc41340be026aaa3681a5870a686cce9dc337d7'
+            'fa2d7db48ce8cb4f58dc2943b72732b98e27cdbda769cd19ad873d1d4eedb798b235ae164cb52543394a0a7e7b3592751cae4977e07a5a791ede903f2c990cce')
+b2sums=('b4b1dc04936fe2122e37069f01509f273edbf4657b8079568d597deb69570ee9d0bf786b3a525987baba8f8832b7c816bdf54728213b98ef9b2c519a1f6f6882'
+        '12fd4d272ba0e2ecc8bb2404504df4dbe77df4a6e8914e82e2fa33a219ef76cfb5e0584b0721a91f83ecf4956af2b2d5f57855fc0fca9a9094fdf77de69f06b1'
+        '02cb72cf051f56aab962591a805113f7f57425d42402a0686143e5323c9545436fa2c416df92eff3851e2e5d89edcbb647c76931c330717e0176e24dbebf958d')
 
 prepare() {
   cd "$pkgname"
@@ -63,7 +56,7 @@ build() {
     -buildmode=pie \
     -mod=readonly \
     -modcacherw \
-    -ldflags "-linkmode external -extldflags ${LDFLAGS}" \
+    -ldflags "-linkmode external -extldflags '${LDFLAGS}'" \
     .
 }
 
