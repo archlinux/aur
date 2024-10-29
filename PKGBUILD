@@ -1,7 +1,7 @@
 # Maintainer: Evan Dunbar <evdunbar _ protonmail _ com>
 # Maintainer: Luke Street <luke@street.dev>
 pkgname="objdiff"
-pkgver=2.3.2
+pkgver=2.3.4
 pkgrel=1
 pkgdesc="A local diffing tool for decompilation projects"
 arch=("x86_64")
@@ -14,7 +14,7 @@ depends=(
 makedepends=("cargo")
 conflicts=("$pkgname")
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-b2sums=('643d3ae53bb7e00b4263f4cdba987d95eb41c8a7e8932ab3237b57be7b8e0fdb8f084f1d776f72ff6402cae41b8688dd5fc985cfdd155011ae176fc06ca0dea6')
+b2sums=('ecad3ebc3ee616cdb1bd799fa10abe745bbd4a52e1e8d4ebace9df214e1d5d76a365f32ce93581b0893d853a7abad796bf0b93f69687224537b8fab07d87b00d')
 
 prepare () {
     cd "$srcdir/$pkgname-$pkgver"
