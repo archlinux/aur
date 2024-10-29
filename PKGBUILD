@@ -2,9 +2,8 @@
 # Contributor: Ciro Scognamiglio <ciro.scognamiglio88 at gmail dot com>
 
 pkgname='bzr-player'
-_pkgname='BZR Player'
 pkgver='2.0.74'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='Audio player supporting a wide types of multi-platform exotic file formats'
 arch=('i686' 'x86_64')
 url="http://bzrplayer.blazer.nu"
@@ -16,7 +15,7 @@ options=(!strip)
 _zip="BZR-Player-$pkgver.zip"
 _setup="bzr2_setup.sh"
 _mimes="x-bzr-player.xml"
-source=("$_zip::http://bzrplayer.blazer.nu/getFile.php?id=${pkgver}"
+source=("$_zip::https://github.com/aargirakis/BZRPlayer/releases/download/${pkgver}/BZR-Player-${pkgver}.zip"
   "$pkgname.sh"
   "https://raw.githubusercontent.com/aargirakis/BZRPlayer/refs/heads/main/src/inst/$_setup"
   "https://raw.githubusercontent.com/aargirakis/BZRPlayer/refs/heads/main/src/inst/$_mimes")
@@ -40,7 +39,7 @@ prepare() {
   desktop_entry_mime_types="${desktop_entry_mime_types%?}"
 
   gendesk -n -f --pkgname "$pkgname" --pkgdesc "$pkgdesc" \
-    --name="$_pkgname" \
+    --name="BZR Player" \
     --genericname='Audio player' \
     --exec="/usr/bin/$pkgname.sh %U" \
     --icon="$pkgname" \
