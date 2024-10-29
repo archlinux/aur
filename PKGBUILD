@@ -26,7 +26,7 @@ pkgver() {
 
 build() {
  cd "${_gitname}"
- rm -rf *test*
+ rm -rf ./*test*
  rm -rf examples
 }
 
