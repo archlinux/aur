@@ -1,10 +1,10 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 _pkgname=ente
 pkgname="${_pkgname}-desktop-bin"
-pkgver=1.7.5
-_electronversion=30
+pkgver=1.7.6
+_electronversion=33
 pkgrel=1
-pkgdesc="Desktop app for ente Photos"
+pkgdesc="Desktop app for ente Photos.Prebuilt version.Use system-wide electron."
 arch=(
     'aarch64'
     'x86_64'
@@ -25,8 +25,8 @@ source=("${pkgname%-bin}.sh")
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.pacman::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-aarch64.pacman")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.pacman::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-x64.pacman")
 sha256sums=('291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-sha256sums_aarch64=('b8201c27978b5f43a10e754af8a1ac4f4fb8c9c0ac400431e442c8174f0ff29d')
-sha256sums_x86_64=('c0e9dac039cb95dbf27f72be5273a250b0862c881876b03d5c0b25978aa64d82')
+sha256sums_aarch64=('4ef7bea1de8f6cf43dabe56193cd7cc21e518a7c694342a65a5797c6e03f530a')
+sha256sums_x86_64=('9817524f04d009e462b6d90f1a3feb277285865de39f883c3acb2d3b3d8b12bc')
 build() {
     sed -e "
         s/@electronversion@/${_electronversion}/g
@@ -49,7 +49,7 @@ package() {
     install -Dm644 "${srcdir}/app.asar" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
     install -Dm755 "${srcdir}/opt/${_pkgname}/resources/image-magick" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
     install -Dm644 "${srcdir}/opt/${_pkgname}/resources/"{*.png,*.icns,*.plist} -t "${pkgdir}/usr/lib/${pkgname%-bin}"
-    cp -r "${srcdir}/opt/${_pkgname}/resources/app.asar.unpacked" "${pkgdir}/usr/lib/${pkgname%-bin}"
+    cp -Pr --no-preserve=ownership "${srcdir}/opt/${_pkgname}/resources/app.asar.unpacked" "${pkgdir}/usr/lib/${pkgname%-bin}"
     install -Dm644 "${srcdir}/usr/share/applications/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
     _icon_sizes=(16x16 32x32 48x48 64x64 128x128 256x256 512x512)
     for _icons in "${_icon_sizes[@]}";do
