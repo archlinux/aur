@@ -1,10 +1,10 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 _pkgname=tailchat
 pkgname="${_pkgname}-desktop"
-pkgver=1.11.7
+pkgver=1.11.8
 _electronversion=18
 _nodeversion=16
-pkgrel=2
+pkgrel=1
 pkgdesc="Next generation noIM application in your own workspace, not only another Slack/Discord/Rocket.chat.Use system-wide electron."
 arch=('any')
 url="https://tailchat.msgbyte.com/"
@@ -18,7 +18,7 @@ makedepends=(
     'gendesk'
     'npm'
     'nvm'
-    'yarn'
+    'pnpm'
     'gcc'
     'cmake'
     'curl'
@@ -27,7 +27,7 @@ source=(
     "${pkgname}-${pkgver}.tar.gz::${_ghurl}/archive/refs/tags/v${pkgver}.tar.gz"
     "${pkgname}.sh"
 )
-sha256sums=('5b7b8e42947ae04c150b48c965489c779ecd2b4e0005f83f0033efeff6b72b41'
+sha256sums=('92a3881cc7287d2fe8d24d351eec9deba7e267cf2c2131ee3cf731ef59596990'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
