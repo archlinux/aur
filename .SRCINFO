@@ -11,7 +11,7 @@ pkgbase = youtube-to-mp3-bin
 	depends = qt5-declarative
 	depends = taglib1
 	conflicts = youtube-to-mp3
-	source_x86_64 = youtube-to-mp3-bin-2024-10-24-01.amd64.deb::https://www.mediahuman.com/download/YouTubeToMP3.amd64.deb
-	sha256sums_x86_64 = bba6310f28d2fc15c2d241442cd5a71278d501d61ec16eeda47c4942eaf037c5
+	source_x86_64 = youtube-to-mp3-bin-2024-10-29-10.amd64.deb::https://www.mediahuman.com/download/YouTubeToMP3.amd64.deb
+	sha256sums_x86_64 = 52bde36e6cbab3d0fcf7f7f6690e9b7572674be6012f094ada833c3d3e956d69
 
 pkgname = youtube-to-mp3-bin

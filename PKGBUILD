@@ -16,7 +16,7 @@ depends=('hicolor-icon-theme'
 provide=('youtube-to-mp3')
 conflicts=('youtube-to-mp3')
 source_x86_64=("${pkgname}-$(date +%F-%H).amd64.deb::https://www.mediahuman.com/download/YouTubeToMP3.amd64.deb")
-sha256sums_x86_64=('bba6310f28d2fc15c2d241442cd5a71278d501d61ec16eeda47c4942eaf037c5')
+sha256sums_x86_64=('52bde36e6cbab3d0fcf7f7f6690e9b7572674be6012f094ada833c3d3e956d69')
 
 pkgver() {
   bsdtar -xf control.tar.xz -C .
