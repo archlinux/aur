@@ -1,0 +1,27 @@
+pkgbase = onscripter-en-galladite27
+	pkgdesc = modern fork of onscripter-en, an opensource nscript interpreter
+	pkgver = 2024_07_21
+	pkgrel = 1
+	url = https://github.com/Galladite27/ONScripter-EN
+	install = onscripter-en.install
+	arch = x86_64
+	license = GPL-2.0-or-later
+	license = OFL-1.1
+	depends = sdl_ttf
+	depends = sdl12-compat
+	depends = sdl_image
+	depends = libvorbis
+	depends = sdl_mixer
+	depends = libx11
+	depends = bzip2
+	depends = smpeg0
+	depends = freetype2
+	provides = onscripter-en
+	conflicts = onscripter-en-git
+	noextract = genjyuugothic-x-20150607.zip
+	source = https://github.com/Galladite27/ONScripter-EN/archive/refs/tags/2024-07-21.tar.gz
+	source = https://ftp.iij.ad.jp/pub/osdn.jp/users/8/8644/genjyuugothic-x-20150607.zip
+	sha256sums = af61fac4833b717b4175b6a66969cf8ef4fc97f89b6255b0dcecac2bc9daec28
+	sha256sums = e4a0ea11b8155056ad2b678c8501b2e76dd99b8c8eb5363d396fe7c3079201b3
+
+pkgname = onscripter-en-galladite27
