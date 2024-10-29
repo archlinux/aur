@@ -2,7 +2,7 @@
 # Contributor: Dimitris Kiziridis <ragouel at outlook dot com>
 pkgname=ludusavi
 _app_id="com.github.mtkennerly.$pkgname"
-pkgver=0.25.0
+pkgver=0.26.0
 pkgrel=1
 pkgdesc="Backup tool for PC game saves"
 arch=('x86_64')
@@ -29,8 +29,8 @@ optdepends=(
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
         "$url/releases/download/v$pkgver/$pkgname-v$pkgver-legal.zip")
-sha256sums=('26fbbed72a8314fa3c25b3cd4434988952c78cd21e22fb0dd041ca1a9cfed988'
-            'defe971723d004ebd5257c9b13221fe02cc5093c07403379770bce0992e0b273')
+sha256sums=('87b7fc9010429e43f4173062ecb4beada7789855e113c914b3f605549e5f3c27'
+            '7343768b6ecd1a957f7bdf85d50c4260252fe8b7eb371d4c3fbfc115b331b2eb')
 
 prepare() {
   cd "$pkgname-$pkgver"
