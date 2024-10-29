@@ -1,13 +1,13 @@
 # Maintainer: a <a@tuxpa.in>
 pkgname="potatoe"
-pkgver=0.0.13
+pkgver=0.0.14
 pkgrel=1
 epoch=1
 pkgdesc="Prints a potatoe with a DQ quote. Configurable!"
 arch=("x86_64" "amd64")
 url="https://github.com/elee1766/potatoe"
 license=('GPL')
-depends=(lua)
+depends=(luajit)
 source=(
   "https://raw.githubusercontent.com/elee1766/potatoe/v${pkgver}/potatoe"
   "https://raw.githubusercontent.com/elee1766/potatoe/v${pkgver}/quotes.txt"
