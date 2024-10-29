@@ -3,11 +3,16 @@
 _pkgname=pot
 pkgname="${_pkgname}-translation-git"
 _debname="com.${_pkgname}_app.${_pkgname}"
-pkgver=3.0.5.r31.gb483f2f
+pkgver=3.0.6.r0.ge78c963
 _nodeversion=21
 pkgrel=1
-pkgdesc="一个跨平台的划词翻译软件 | A cross-platform software for text translation."
-arch=('x86_64')
+pkgdesc="A cross-platform software for text translation.一个跨平台的划词翻译软件"
+arch=(
+    'aarch64'
+    'armv7h'
+    'i686'
+    'x86_64'
+)
 url="https://pot.pylogmon.com/"
 _ghurl="https://github.com/pot-app/pot-desktop"
 license=('GPL-3.0-only')
@@ -56,8 +61,6 @@ build() {
     sed -i "s/@runname@/${_pkgname}/" "${srcdir}/${pkgname%-git}.sh"
     _ensure_local_nvm
     cd "${srcdir}/${pkgname%-git}.git"
-    export ELECTRON_SKIP_BINARY_DOWNLOAD=1
-    export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
     export CARGO_HOME="${srcdir}/.cargo"
     HOME="${srcdir}/.electron-gyp"
     {
@@ -67,25 +70,26 @@ build() {
         echo 'fetch-retry-maxtimeout=10000'
         echo "cache-dir="${srcdir}"/.pnpm_cache"
         echo "store-dir="${srcdir}"/.pnpm_store"
+        echo "shamefully-hoist=true"
+        echo "virtual-store-dir-max-length=80"
     } >> .npmrc
     if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
         export RUSTUP_DIST_SERVER=https://mirrors.ustc.edu.cn/rust-static
 	    export RUSTUP_UPDATE_ROOT=https://mirrors.ustc.edu.cn/rust-static/rustup
         {
-            echo 'registry=https://registry.npmmirror.com'
-            echo 'disturl=https://registry.npmmirror.com/-/binary/node/'
+        echo 'registry=https://registry.npmmirror.com'
         } >> .npmrc
     fi
-    find src-tauri -type f -name "*.json" -exec sed -i "s/icon.ico/icon.png/" {} \;
-    sed -i "s/#openssl/openssl={version=\"0.10\",features=[\"vendored\"]}/" src-tauri/Cargo.toml
+    find src-tauri -type f -name "*.json" -exec sed -i "s/icon\.ico/icon\.png/g" {} \;
+    sed -i "s/#openssl/openssl={version=\"0.10\",features=[\"vendored\"]}/g" src-tauri/Cargo.toml
     NODE_ENV=development    pnpm install --force
     NODE_ENV=production     pnpm tauri build -b deb
     sed -i "s/${_debname}/${pkgname%-git}/" "${_debname}.metainfo.xml"
     sed -e "
-        s/Exec=${_pkgname}/Exec=${pkgname%-git}/
-        s/Icon=${_pkgname}/Icon=${pkgname%-git}/
-        s/Name=${_pkgname}/Name=${pkgname%-git}/
-        s/Comment=Pot App/Comment=${pkgdesc}/
+        s/Exec=${_pkgname}/Exec=${pkgname%-git}/g
+        s/Icon=${_pkgname}/Icon=${pkgname%-git}/g
+        s/Name=${_pkgname}/Name=${pkgname%-git}/g
+        s/Comment=Pot App/Comment=${pkgdesc}/g
     " -i "src-tauri/target/release/bundle/deb/${_pkgname}_${pkgver%.r*}_amd64/data/usr/share/applications/${_pkgname}.desktop"
 }
 package() {
