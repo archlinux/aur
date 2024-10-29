@@ -1,10 +1,10 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=apifox-bin
 _pkgname=Apifox
-pkgver=2.6.23
+pkgver=2.6.26
 _electronversion=22
 pkgrel=1
-pkgdesc="Apifox=Postman+Swagger+Mock+JMeter.API 文档、API 调试、API Mock、API 自动化测试"
+pkgdesc="Apifox=Postman+Swagger+Mock+JMeter.Prebuilt version.API 文档、API 调试、API Mock、API 自动化测试"
 arch=(
     'aarch64'
     'x86_64'
@@ -29,8 +29,8 @@ source=(
     "LICENSE.html"
 )
 sha256sums=('3884df6451dd5aaadc867c2b6882a7feabccb10c7e1df98e48e9fe2414c9fe19')
-sha256sums_aarch64=('7b8108d1c9e7c53e983f4f8337def0b2ecde9da3cda8eb914dd6e52f5e2da5e1')
-sha256sums_x86_64=('febe61c68f55c73e931ec1820df7c87e4485d4b003fc71f1d904ea8c75b02c75')
+sha256sums_aarch64=('8b1008caa3014ce33b8fde91664bedee368a4e590e77190034c63b5a85df045d')
+sha256sums_x86_64=('61fdeec5ec18683ba03ae93fe41e0bf333883c358b145a8f1304d68ce3a121ff')
 build() {
     "${srcdir}/${_pkgname}"*.AppImage --appimage-extract > /dev/null
     sed -i "s/AppRun --no-sandbox/${pkgname%-bin}/g" "${srcdir}/squashfs-root/${pkgname%-bin}.desktop"
