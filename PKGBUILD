@@ -1,13 +1,13 @@
 # Maintainer: Adam Perkowski <adas1per@protonmail.com>
 pkgname='hyprwall'
-pkgver=0.1.6
+pkgver=0.1.7
 pkgrel=1
 pkgdesc='GUI for setting wallpapers on Wayland (multiple backends). Written in blazingly fast Rust!'
 arch=('x86_64')
 url="https://github.com/nnyyxxxx/$pkgname"
 license=('GPL-2.0')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/nnyyxxxx/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('04e4b1d86dd093adae94c53797d59d2331ed6e79bd2a7cdfe854866b3a6b6513')
+sha256sums=('864108813909b4846fca8b6c97a9935c14d6774f549b2d18def1f7292ea1ebbb')
 makedepends=('rustup' 'pango')
 depends=('glibc' 'gcc-libs' 'gtk4')
 optdepends=('hyprpaper' 'swaybg' 'swww' 'wallutils' 'feh')
