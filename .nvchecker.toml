@@ -1,0 +1,4 @@
+[snappymail]
+source = "git"
+git = "https://github.com/the-djmaze/snappymail.git"
+prefix = "v"
