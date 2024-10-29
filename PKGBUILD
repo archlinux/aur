@@ -4,52 +4,49 @@
 # Maintainer: Pablo Lezaeta <prflr88@gmail.com>
 
 pkgname=aacskeys
-pkgver="0.4.0e"
+pkgver="0.4.0f"
+_origpkgver="0.4.0e"
 _dmover="dmo7"
-pkgrel=7.5
+pkgrel=8
 pkgdesc="A library and program to retrieve decryption keys for HD discs"
 arch=("i686" "x86_64")
 url="http://cyberside.net.ee/ripping/BD_DeviceKeys"
 license=('custom:Public Domain')
 depends=("openssl-1.0")
-makedepends=("java-environment" "premake")
-source=("https://archive.deb-multimedia.org/pool/main/a/${pkgname}/${pkgname}_${pkgver}.orig.tar.gz"
-	"https://archive.deb-multimedia.org/pool/main/a/${pkgname}/${pkgname}_${pkgver}-${_dmover}.diff.gz")
+makedepends=("java-environment" "premake3")
+source=("https://archive.deb-multimedia.org/pool/main/a/${pkgname}/${pkgname}_${_origpkgver}.orig.tar.gz"
+	      "https://archive.deb-multimedia.org/pool/main/a/${pkgname}/${pkgname}_${_origpkgver}-${_dmover}.diff.gz"
+        "aacskeys-0.4.0f.patch")
 sha1sums=('8790f0d4098d6bc83304ad2136cc9681374df83a'
-          '481c737983332a4a38aab0b292ba0cd958bb629c')
+          '481c737983332a4a38aab0b292ba0cd958bb629c'
+          'dca9a9cb6bdd4cf6c4f7cbef1be3556728166117')
 
 prepare() {
-  zcat ${pkgname}_${pkgver}-${_dmover}.diff.gz > ${srcdir}/${pkgname}_${pkgver}-${_dmover}.diff
-  cd "${srcdir}/${pkgname}-${pkgver}"
-  patch -Np1 -i "${srcdir}/${pkgname}_${pkgver}-${_dmover}.diff"
+  zcat ${pkgname}_${_origpkgver}-${_dmover}.diff.gz > ${srcdir}/${pkgname}_${_origpkgver}-${_dmover}.diff
+  cd "${srcdir}/${pkgname}-${_origpkgver}"
+  patch -Np1 -i "${srcdir}/${pkgname}_${_origpkgver}-${_dmover}.diff"
+  patch -Np1 -i ../aacskeys-0.4.0f.patch
 
   # Make sure use resent premake
   sed -i 's|/usr/local/ssl/include|/usr/include|' premake.lua
   sed -i 's|/usr/local/ssl/lib|/usr/lib|' premake.lua
-  sed -i 's|/usr/lib/jvm/java-6-sun/include|$JAVA_HOME/include|' premake.lua
+  sed -i "s|/usr/lib/jvm/java-6-sun/include|/usr/lib/jvm/$(archlinux-java get)/include|" premake.lua
 
   # Can't build with openssl 1.1 so use openssl-1.0 instead... a patch's welcome
   sed -i 's|OPENSSL_INCLUDE = "/usr/include"|OPENSSL_INCLUDE = "/usr/include/openssl-1.0"|' premake.lua
   sed -i 's|OPENSSL_LIB = "/usr/lib"|OPENSSL_LIB = "/usr/lib/openssl-1.0"|' premake.lua
   sed -i 's|/usr/local/ssl/include|/usr/include/openssl-1.0|' *.make
   sed -i 's|/usr/local/ssl/lib|/usr/lib/openssl-1.0|' *.make
-
-  # Can run with modern premake
-  sed -i 's|@premake|@premake4|' Makefile
 }
 
 build() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
-  
-  # Ensure that openssl-1.0 is really used
-  CPPFLAGS+=" -I/usr/include/openssl-1.0" \
-  LDFLAGS+=" -L/usr/lib/openssl-1.0" \
+  cd "${srcdir}/${pkgname}-${_origpkgver}"
 
-  make OPENSSL_INCLUDE="/usr/include/openssl-1.0/" OPENSSL_LIB="/usr/lib/openssl-1.0/"
+  make
 }
 
 package() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}/${pkgname}-${_origpkgver}"
 
   # Install lib
   mkdir -p "${pkgdir}/usr/lib"
@@ -67,7 +64,7 @@ package() {
   cp -v ./debian/HostKeyCertificate_PS3.txt "${pkgdir}/usr/share/${pkgname}/HostKeyCertificate.txt"
   cp -v ./debian/ProcessingDeviceKeysSimple.txt "${pkgdir}/usr/share/${pkgname}/"
 
-  # Author just say is public domain on upstream user forum thread once but later 
+  # Author just say is public domain on upstream user forum thread once but later
   # 	it went MiA so no full license or ammend exist for the next maintainer
   #	who update it more and neither for the last one responsible of this version.
   #install -D -m644 "${srcdir}/license" "${pkgdir}/usr/share/licenses/${pkgbase}/license"
