@@ -1,0 +1,18 @@
+pkgbase = jm-desktop-bin
+	pkgdesc = A jm comic desktop app by react + electron.Prebuilt version.Use system-wide electron.一个禁漫的第三方客户端
+	pkgver = 1.5.0
+	pkgrel = 1
+	url = https://github.com/Dedicatus546/jm-desktop
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = fuse2
+	depends = nss
+	depends = alsa-lib
+	depends = nspr
+	depends = gtk3
+	provides = jm-desktop=1.5.0
+	conflicts = jm-desktop
+	source = jm-desktop-1.5.0.AppImage::https://github.com/Dedicatus546/jm-desktop/releases/download/v1.5.0/jm-desktop-Linux-1.5.0.AppImage
+	sha256sums = 5624e01ee80eecaa545ce9832ab4f0686016a3faf7f5b2f44561ae439279941d
+
+pkgname = jm-desktop-bin
