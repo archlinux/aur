@@ -4,7 +4,7 @@
 pkgname='simplex-chat-bin'
 _pkgname="${pkgname%%-bin}"
 epoch=1
-pkgver=6.1.0
+pkgver=6.1.1
 pkgrel=1
 pkgdesc='A 100% private-by-design chat platform for the command-line (pre-compiled)'
 arch=('x86_64')
@@ -22,7 +22,7 @@ source=(
   'simplex-chat.desktop'
 )
 sha512sums=(
-  '003dbcb012a2788b6aa580c0f668ee55f7a03eb925d2b5cef31de0b38f76c1c2818a8cc9e00a72e70c04b05524ef629909d2f22f2251ccbd246d496c28be44aa'
+  'da1daba3fe79d6d91e9296bdc535025d7c3a89df35d06ca1697659fb5138d08d5c3bb365c394b670229481eb46595b2ba2a8826a2f84ce837ba0d4958378423d'
   'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP'
 )
 license=('AGPL-3.0-or-later')  # SPDX-License-Identifier: AGPL-3.0-or-later
