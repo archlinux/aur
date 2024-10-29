@@ -1,0 +1,23 @@
+pkgbase = webp-converter-git
+	pkgdesc = A batch of jpg, png format images converted to webp format tool.一款批量将 jpg、png 格式图像转换为 webp 格式的工具
+	pkgver = 1.0.0.r2.gce5d96c
+	pkgrel = 1
+	url = https://github.com/HarrisonWang/webp-converter
+	arch = any
+	license = MIT
+	makedepends = gendesk
+	makedepends = npm
+	makedepends = nvm
+	makedepends = git
+	makedepends = curl
+	makedepends = gcc
+	depends = electron33
+	depends = libvips
+	provides = webp-converter=1.0.0
+	conflicts = webp-converter
+	source = webp-converter.git::git+https://github.com/HarrisonWang/webp-converter
+	source = webp-converter.sh
+	sha256sums = SKIP
+	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
+
+pkgname = webp-converter-git
