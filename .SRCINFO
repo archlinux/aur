@@ -1,18 +1,18 @@
 pkgbase = riff-bin
 	pkgdesc = A diff filter highlighting which line parts have changed
-	pkgver = 3.3.4
-	pkgrel = 2
+	pkgver = 3.3.6
+	pkgrel = 1
 	url = https://github.com/walles/riff
 	arch = x86_64
 	license = MIT
 	makedepends = help2man
 	provides = riff
 	conflicts = riff
-	source = https://github.com/walles/riff/releases/download/3.3.4/riff-3.3.4-x86_64-linux
-	source = LICENSE_3.3.4::https://raw.githubusercontent.com/walles/riff/3.3.4/LICENSE
-	source = README_3.3.4::https://raw.githubusercontent.com/walles/riff/3.3.4/README.md
-	sha256sums = 4f312b96554196e91fdd628d9b4aefb8791b80b9e0c627a1991a3e2fac0e498a
+	source = https://github.com/walles/riff/releases/download/3.3.6/riff-3.3.6-x86_64-linux
+	source = LICENSE_3.3.6::https://raw.githubusercontent.com/walles/riff/3.3.6/LICENSE
+	source = README_3.3.6::https://raw.githubusercontent.com/walles/riff/3.3.6/README.md
+	sha256sums = 19da0365648b1f973b4f5b79138c1e780b8833af373a13cd2498bffe368db08f
 	sha256sums = 8fe11bd57802035aa8be7cb7382edd1e5f7e53cc6d2ca078271b59b1f94bde26
-	sha256sums = c06f03e7de583b8191549d3e70171afe2804d06d3e22f0139c530478eed5bc4b
+	sha256sums = 9d9d78d18ca3aac694d162a2a3f3a719c74f6ba105a33ffc0170c8ad0719a8f6
 
 pkgname = riff-bin

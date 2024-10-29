@@ -3,8 +3,8 @@
 _pkgauthor=walles
 _pkgname=riff
 pkgname=${_pkgname}-bin
-pkgver=3.3.4
-pkgrel=2
+pkgver=3.3.6
+pkgrel=1
 pkgdesc='A diff filter highlighting which line parts have changed'
 url="https://github.com/${_pkgauthor}/${_pkgname}"
 _urlraw="https://raw.githubusercontent.com/${_pkgauthor}/${_pkgname}/${pkgver}"
@@ -16,9 +16,9 @@ provides=("${_pkgname}")
 source=("${url}/releases/download/${pkgver}/${_pkgname}-${pkgver}-x86_64-linux"
         "LICENSE_${pkgver}::${_urlraw}/LICENSE"
         "README_${pkgver}::${_urlraw}/README.md")
-sha256sums=('4f312b96554196e91fdd628d9b4aefb8791b80b9e0c627a1991a3e2fac0e498a'
+sha256sums=('19da0365648b1f973b4f5b79138c1e780b8833af373a13cd2498bffe368db08f'
             '8fe11bd57802035aa8be7cb7382edd1e5f7e53cc6d2ca078271b59b1f94bde26'
-            'c06f03e7de583b8191549d3e70171afe2804d06d3e22f0139c530478eed5bc4b')
+            '9d9d78d18ca3aac694d162a2a3f3a719c74f6ba105a33ffc0170c8ad0719a8f6')
 
 
 build() {
@@ -27,7 +27,8 @@ build() {
   mv ${_pkgname}-${pkgver}-x86_64-linux ${_pkgname}
   chmod +x ${_pkgname}
 
-  help2man ${_pkgname} --output "MAN-${pkgver}.1"
+  help2man ${_pkgname} --output "MAN-${pkgver}.1" --no-info
+  gzip "MAN-${pkgver}.1"
 }
 
 package() {
@@ -38,6 +39,5 @@ package() {
   install -Dm644 "LICENSE_${pkgver}" "${pkgdir}/usr/share/licenses/$pkgname/LICENSE"
   install -Dm644 "README_${pkgver}" "$pkgdir/usr/share/doc/$pkgname/README.md"
 
-  install -Dm644 "MAN-${pkgver}.1" "${pkgdir}/usr/share/man/man1/${_pkgname}.1"
-  gzip "${pkgdir}/usr/share/man/man1/${_pkgname}.1"
+  install -Dm644 "MAN-${pkgver}.1.gz" "${pkgdir}/usr/share/man/man1/${_pkgname}.1"
 }
