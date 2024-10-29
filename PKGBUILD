@@ -6,11 +6,14 @@ pkgrel=1
 pkgdesc="Highly customizable and fast system information fetch program (with GUI mode)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/Toni500github/customfetch"
-license=('GPL3')
+license=('BSD-3-Clause')
 depends=('gtk3' 'gtkmm3')
 makedepends=('base-devel')
 optdepends=(
-	"ttf-liberation: Font to be used for GUI (recommended)"
+        "ttf-liberation: Font to be used for GUI (recommended)"
+        "wayland-client: Library for getting the Wayland compositor faster"
+        "dconf: Alternative to the slow gsettings command"
+        "libxfce4util: Query XFCE4 version faster"
 )
 conflicts=('customfetch' 'customfetch-gui' 'customfetch-git' 'customfetch-bin' 'customfetch-gui-bin')
 source=("git+${url}.git")
