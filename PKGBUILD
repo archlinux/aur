@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=hollama-bin
 _pkgname=Hollama
-pkgver=0.19.0
+pkgver=0.20.0
 _electronversion=31
 pkgrel=1
 pkgdesc="A minimal web-UI for talking to Ollama servers.Prebuilt version.Use system-wide electron."
@@ -27,7 +27,7 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/fmaclen/hollama/${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('f13b801df78d31f1b8356b75adc461496217ba573bd142f79f0c3554c38bf58b'
+sha256sums=('c0211d1a6c7ec0f1a80c9021bda2f12665d9a43da12f0642998266f16c3f7ddb'
             '9e4e274319c0c5716601c69a701adce095b2248d7d314c2b4b1973f0ad4c4a20'
             '03ecf7aebc7db58685a433f3a0a126e1ac5329fb8a72f3af981957363a6362e6'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
