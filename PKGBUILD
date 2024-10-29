@@ -1,7 +1,7 @@
 # Maintainer: Carl Smedstad <carsme@archlinux.org>
 
 pkgname=tbls
-pkgver=1.78.1
+pkgver=1.79.0
 pkgrel=1
 pkgdesc="CI-Friendly tool for documenting a database"
 arch=(x86_64)
@@ -10,7 +10,7 @@ license=(MIT)
 makedepends=(go)
 depends=(glibc)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('0a2685cec98ff43487fee3443acd179cddc7dadf1a47c08e6a6df38c9195c2b9')
+sha256sums=('32d01d26bd4ffedef397ffe30588d43961a134bcae87ff97cfe9a5973be68f84')
 
 prepare() {
   cd $pkgname-$pkgver
