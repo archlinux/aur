@@ -1,6 +1,6 @@
 # Maintainer: Lukas Wölfer (domain is thasky) <aur at [domain] dot one>
 pkgname=diaria-git
-pkgver=0.1.5.r7.g52f7dec
+pkgver=0.2.0.r0.gefe59b9
 pkgrel=1
 pkgdesc='Diary entry manager'
 url='https://github.com/corrodedHash/diaria'
@@ -11,7 +11,8 @@ provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 
 makedepends=('git' 'cmake')
-depends=('libsodium' 'glibc' 'gcc-libs')
+checkdepends=('python-pytest')
+depends=('libsodium' 'glibc' 'gcc-libs' 'xz')
 optdepends=()
 
 sha256sums=('SKIP')
@@ -35,10 +36,9 @@ build () {
 }
 
 check() {
-  # cd "$srcdir/$pkgname"
-  # cargo test --frozen
-
-  echo No tests
+  cd "${srcdir}/${pkgname}"
+  cd test/end_to_end
+  DIARIA="../../build/diaria" pytest
 }
 
 package() {

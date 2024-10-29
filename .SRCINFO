@@ -1,16 +1,18 @@
 pkgbase = diaria-git
 	pkgdesc = Diary entry manager
-	pkgver = 0.1.5.r7.g52f7dec
+	pkgver = 0.2.0.r0.gefe59b9
 	pkgrel = 1
 	url = https://github.com/corrodedHash/diaria
 	arch = x86_64
 	arch = i686
 	license = MIT
+	checkdepends = python-pytest
 	makedepends = git
 	makedepends = cmake
 	depends = libsodium
 	depends = glibc
 	depends = gcc-libs
+	depends = xz
 	provides = diaria
 	conflicts = diaria
 	source = diaria-git::git+https://github.com/corrodedHash/diaria#branch=main
