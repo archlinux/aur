@@ -4,5 +4,6 @@
 !.gitignore
 !PKGBUILD
 !.SRCINFO
+!mts-link.changelog
 !.nvchecker.toml
 !mts-link.desktop

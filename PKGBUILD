@@ -7,6 +7,7 @@ pkgdesc='MTS Link desktop application based on Electron and React'
 arch=(x86_64)
 url='https://mts-link.ru'
 license=(custom:proprietary)
+changelog=${pkgname}.changelog
 depends=(
   alsa-lib
   at-spi2-core
