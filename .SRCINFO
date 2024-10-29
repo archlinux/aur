@@ -1,7 +1,7 @@
 pkgbase = ocaml-lwt
 	pkgdesc = A library for cooperative threads in OCaml
-	pkgver = 5.7.0
-	pkgrel = 2
+	pkgver = 5.8.0
+	pkgrel = 1
 	url = https://github.com/ocsigen/lwt
 	arch = x86_64
 	arch = aarch64
@@ -9,14 +9,15 @@ pkgbase = ocaml-lwt
 	checkdepends = ocaml-ppx_let
 	makedepends = cppo>=1.1.0
 	depends = libev
-	depends = dune>=1.8.0
+	depends = dune>=1.12.0
 	depends = ocaml>=4.08.0
+	depends = ocaml-findlib>=1.7.3
 	depends = ocaml-ocplib-endian
 	depends = ocaml-ppxlib>=0.16.0
 	depends = ocaml-react>=1.0.0
 	depends = zstd
 	options = !strip
-	source = ocaml-lwt-5.7.0.tar.gz::https://github.com/ocsigen/lwt/archive/5.7.0.tar.gz
-	b2sums = e1b401c70b7722b266085c0493ab4e081aeb58cdf0e3569f677ee3b66edb1b4dda9afd115143315562f301a80bf8efbb09ced3f09f641adcac01fe44b3670cdc
+	source = ocaml-lwt-5.8.0.tar.gz::https://github.com/ocsigen/lwt/archive/5.8.0.tar.gz
+	b2sums = af98757256e5a8195549e89cb789b17789f51d09715bc48f2ae13cfadf8eeb7e5d0713ff55629835555062f21ef3d6844a2d3f9645dbd3904a608ff22e969010
 
 pkgname = ocaml-lwt
