@@ -1,4 +1,7 @@
-src/
-pkg/
-bitwarden-bin-*
-Bitwarden-*
+# Ignore everything
+*
+
+# But not these files...
+!.gitignore
+!PKGBUILD
+!.SRCINFO

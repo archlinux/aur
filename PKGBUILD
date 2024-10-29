@@ -1,29 +1,29 @@
-# Maintainer: Posi <posi1981@gmail.com>
-
+# Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=bitwarden-bin
-pkgver=1.28.2
+pkgver=2024.10.2
 pkgrel=1
 pkgdesc="A secure and free password manager for all of your devices."
 arch=('x86_64')
 url="https://bitwarden.com"
-license=('GPL')
-depends=('alsa-lib' 'libnotify' 'libsecret' 'libxss' 'libxtst' 'nspr' 'nss')
-conflicts=('bitwarden')
-provides=('bitwarden')
-options=('!strip' '!emptydirs')
-source=("https://github.com/bitwarden/desktop/releases/download/v${pkgver}/Bitwarden-${pkgver}-amd64.deb")
-sha512sums=('7538565c55638d7d416a3a03f4f579b5cc5cc23d11b8f1b637616c3860415f81066e2e344752c5cbe445ffe0523854cff3a06b589b03185f0b58872a81f7073b')
+license=('GPL-3.0-or-later')
+depends=(
+  'alsa-lib'
+  'libnotify'
+  'libsecret'
+  'org.freedesktop.secrets'
+  'libxtst'
+  'libxss'
+  'libnss_nis'
+  'nss'
+)
+provides=("${pkgname%-bin}")
+conflicts=("${pkgname%-bin}")
+source=("https://github.com/bitwarden/clients/releases/download/desktop-v$pkgver/Bitwarden-$pkgver-amd64.deb")
+sha512sums=('101caa53e5a2bd50a9ade0d60a4e3b1a420c1d41891028115b8ffead5a8911f6e34f549231eeec6f522a61014f97556640384913587bc522435cfa7570f18aa0')
 
-package(){
+package() {
+	bsdtar xf data.tar.xz -C "$pkgdir"
 
-	# Extract package data
-	tar xf data.tar.xz -C "${pkgdir}"
-
-	# Symlink
-	install -d "${pkgdir}/usr/bin"
-	ln -s "/opt/Bitwarden/bitwarden" "${pkgdir}/usr/bin/bitwarden"
-
-	chown root:root $pkgdir/opt/Bitwarden/chrome-sandbox
-	chmod 4755 $pkgdir/opt/Bitwarden/chrome-sandbox
+	install -d "$pkgdir/usr/bin"
+	ln -s "/opt/Bitwarden/${pkgname%-bin}" "$pkgdir/usr/bin/${pkgname%-bin}"
 }
-
