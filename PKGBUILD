@@ -4,7 +4,7 @@
 _pkgname=autorandr
 pkgname="$_pkgname-git"
 pkgver=1.15.r3.g770dc86
-pkgrel=1
+pkgrel=2
 pkgdesc="Auto-detect connected display hardware and load appropiate X11 setup using xrandr"
 arch=(any)
 url="https://github.com/phillipberndt/$_pkgname"
@@ -15,7 +15,6 @@ optdepends=(
 	"pm-utils: For changing autorandr profile on thaw/resume"
 	"xorg-xdpyinfo: For detecting the primary XRandR output"
 	"bash-completion: auto-completion for autorandr in Bash"
-	"fish-completion: auto-completion for autorandr in fish"
 	"zsh-completions: auto-completion for autorandr in ZSH"
 )
 provides=("$_pkgname")
