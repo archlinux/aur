@@ -3,7 +3,7 @@
 _pkgname="qogir-cursor-theme"
 pkgname="${_pkgname}-git"
 gitname="Qogir-icon-theme"
-pkgver=r292.91880625
+pkgver=r297.0b909051
 pkgrel=1
 pkgdesc="An x-cursor theme inspired by Qogir theme and based on capitaine-cursors"
 arch=("any")
@@ -23,9 +23,9 @@ package() {
   install -d "${pkgdir}/usr/share/icons/"
   cd "${srcdir}/${gitname}/src/cursors/"
   cp -r dist/ ${pkgdir}/usr/share/icons/Qogir-cursors/
-  cp -r dist-dark/ ${pkgdir}/usr/share/icons/Qogir-white-cursors/
-  cp -r dist-ubuntu/ ${pkgdir}/usr/share/icons/Qogir-ubuntu-cursors/
-  cp -r dist-ubuntu-dark/ ${pkgdir}/usr/share/icons/Qogir-ubuntu-white-cursors/
-  cp -r dist-manjaro/ ${pkgdir}/usr/share/icons/Qogir-manjaro-cursors/
-  cp -r dist-manjaro-dark/ ${pkgdir}/usr/share/icons/Qogir-manjaro-white-cursors/
+  cp -r dist-Dark/ ${pkgdir}/usr/share/icons/Qogir-white-cursors/
+  cp -r dist-Ubuntu/ ${pkgdir}/usr/share/icons/Qogir-Ubuntu-cursors/
+  cp -r dist-Ubuntu-Dark/ ${pkgdir}/usr/share/icons/Qogir-Ubuntu-white-cursors/
+  cp -r dist-Manjaro/ ${pkgdir}/usr/share/icons/Qogir-Manjaro-cursors/
+  cp -r dist-Manjaro-Dark/ ${pkgdir}/usr/share/icons/Qogir-Manjaro-white-cursors/
 }
