@@ -1,12 +1,13 @@
 pkgbase = pure-maps
 	pkgdesc = Display vector and raster maps, places, routes, etc.
-	pkgver = 3.3.0
+	pkgver = 3.4.0
 	pkgrel = 1
 	url = https://github.com/rinigus/pure-maps
 	arch = x86_64
 	license = GPL-3.0-or-later
 	makedepends = cmake
 	makedepends = git
+	makedepends = ninja
 	makedepends = qt5-tools
 	depends = kirigami2
 	depends = python-lxml
@@ -17,9 +18,8 @@ pkgbase = pure-maps
 	depends = qt5-quickcontrols2
 	depends = qt5-sensors
 	depends = mapbox-gl-qml
-	depends = nemo-qml-plugin-dbus
 	depends = s2geometry
-	source = pure-maps::git+https://github.com/rinigus/pure-maps.git#tag=3.3.0
+	source = pure-maps::git+https://github.com/rinigus/pure-maps.git#commit=b594d2f5c480686a2b7df15eb565df3c2f51adff
 	source = rinigus.geomag::git+https://github.com/rinigus/geomag.git
 	source = tkrajina.gpxpy::git+https://github.com/tkrajina/gpxpy.git
 	source = heremaps.flexible-polyline::git+https://github.com/heremaps/flexible-polyline.git
@@ -38,6 +38,5 @@ pkgname = pure-maps
 	depends = qt5-quickcontrols2
 	depends = qt5-sensors
 	depends = mapbox-gl-qml
-	depends = nemo-qml-plugin-dbus
 	depends = s2geometry
 	depends = hicolor-icon-theme

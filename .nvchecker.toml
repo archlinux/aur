@@ -1,0 +1,4 @@
+[pure-maps]
+source = "git"
+git = "https://github.com/rinigus/pure-maps.git"
+prefix = "v"

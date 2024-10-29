@@ -1,89 +1,51 @@
 # Maintainer:
 # Contributor: éclairevoyant
 
-## useful links
+## links
 # https://rinigus.github.io/pure-maps
 # https://github.com/rinigus/pure-maps
 
 ## options
-: ${_build_git:=false}
-
-unset _pkgtype
-[[ "${_build_git::1}" == "t" ]] && _pkgtype+="-git"
+: ${_commit:=b594d2f5c480686a2b7df15eb565df3c2f51adff} # 3.4.0
 
 ## basic info
 _pkgname="pure-maps"
-pkgname="$_pkgname${_pkgtype:-}"
-pkgver=3.3.0
+pkgname="$_pkgname"
+pkgver=3.4.0
 pkgrel=1
 pkgdesc="Display vector and raster maps, places, routes, etc."
 url="https://github.com/rinigus/pure-maps"
 license=('GPL-3.0-or-later')
 arch=('x86_64')
 
-# main package
-_main_package() {
-  depends=(
-    kirigami2
-    python-lxml
-    python-pyotherside
-    qt5-declarative
-    qt5-location
-    qt5-multimedia
-    qt5-quickcontrols2
-    qt5-sensors
+depends=(
+  'kirigami2'
+  'python-lxml'
+  'python-pyotherside'
+  'qt5-declarative'
+  'qt5-location'
+  'qt5-multimedia'
+  'qt5-quickcontrols2'
+  'qt5-sensors'
 
-    # AUR
-    mapbox-gl-qml
-      # maplibre-native
-    nemo-qml-plugin-dbus
-    s2geometry
-  )
-  makedepends=(
-    'cmake'
-    'git'
-    'qt5-tools'
-  )
+  ## AUR
+  # maplibre-native
+  'mapbox-gl-qml'
+  's2geometry'
+)
+makedepends=(
+  'cmake'
+  'git'
+  'ninja'
+  'qt5-tools'
+)
 
-  if [ "${_build_git::1}" != "t" ] ; then
-    _main_stable
-  else
-    _main_git
-  fi
-
-  _source_pure_maps
-}
-
-# stable package
-_main_stable() {
-  : ${_pkgver:=${pkgver%%.r*}}
-
+_source_main() {
   _pkgsrc="$_pkgname"
-  source+=("$_pkgsrc"::"git+$url.git#tag=$_pkgver")
-  sha256sums+=('SKIP')
-
-  pkgver() {
-    echo "${_pkgver:?}"
-  }
+  source=("$_pkgsrc"::"git+$url.git#commit=$_commit")
+  sha256sums=('SKIP')
 }
 
-# git package
-_main_git() {
-  provides+=("$_pkgname=${pkgver%%.r*}")
-  conflicts+=("$_pkgname")
-
-  _pkgsrc="$_pkgname"
-  source+=("$_pkgsrc"::"git+$url.git")
-  sha256sums+=('SKIP')
-
-  pkgver() {
-    cd "$_pkgsrc"
-    git describe --long --tags --abbrev=7 --exclude='*[a-zA-Z][a-zA-Z]*' \
-      | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
-  }
-}
-
-# submodules
 _source_pure_maps() {
   source+=(
     'rinigus.geomag'::'git+https://github.com/rinigus/geomag.git'
@@ -98,23 +60,25 @@ _source_pure_maps() {
 
   _prepare_pure_maps() (
     cd "$_pkgsrc"
-    local -A _submodules=(
-      ['rinigus.geomag']='thirdparty/geomag'
-      ['tkrajina.gpxpy']='thirdparty/gpxpy'
-      ['heremaps.flexible-polyline']='thirdparty/flexible-polyline'
+    local _submodules=(
+      'rinigus.geomag'::'thirdparty/geomag'
+      'tkrajina.gpxpy'::'thirdparty/gpxpy'
+      'heremaps.flexible-polyline'::'thirdparty/flexible-polyline'
     )
     _submodule_update
   )
 }
 
-# common functions
+_source_main
+_source_pure_maps
+
 prepare() {
   _submodule_update() {
-    local key;
-    for key in ${!_submodules[@]} ; do
-      git submodule init "${_submodules[${key}]}"
-      git submodule set-url "${_submodules[${key}]}" "${srcdir}/${key}"
-      git -c protocol.file.allow=always submodule update "${_submodules[${key}]}"
+    local _module
+    for _module in "${_submodules[@]}"; do
+      git submodule init "${_module##*::}"
+      git submodule set-url "${_module##*::}" "$srcdir/${_module%::*}"
+      git -c protocol.file.allow=always submodule update "${_module##*::}"
     done
   }
 
@@ -125,17 +89,15 @@ build() {
   local _cmake_options=(
     -B build
     -S "$_pkgsrc"
+    -G Ninja
     -DCMAKE_BUILD_TYPE=None
     -DCMAKE_INSTALL_PREFIX='/usr'
     -DCMAKE_INSTALL_LIBDIR='lib'
-
-    -Wno-dev
-
+    -DCMAKE_CXX_STANDARD=17
     -DUSE_BUNDLED_GEOCLUE2=ON
     -DUSE_BUNDLED_GEOMAG=ON
     -DUSE_BUNDLED_GPXPY=ON
-
-    -DCMAKE_CXX_STANDARD=17
+    -Wno-dev
   )
 
   cmake "${_cmake_options[@]}"
@@ -149,6 +111,3 @@ package() {
 
   DESTDIR="$pkgdir" cmake --install build
 }
-
-# execute
-_main_package
