@@ -1,0 +1,10 @@
+pkgbase = marmite
+	pkgdesc = Markdown makes sites - A Static Site Generator for Blogs
+	pkgver = 0.1.7
+	pkgrel = 1
+	url = https://rochacbruno.github.io/marmite/
+	arch = x86_64
+	source = marmite-0.1.7.tar.gz::https://github.com/rochacbruno/marmite/archive/refs/tags/0.1.7.tar.gz
+	sha512sums = 085aec23062f4e1024ff36a18e2343d325b1fd9ea13e8ff69db9d742db789e7f35750fc79e09ef49f54904f4d254bf5cf24a1ccefc3da4d7979b41e600fbdf09
+
+pkgname = marmite
