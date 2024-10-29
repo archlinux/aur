@@ -2,17 +2,17 @@
 
 pkgname=spotify-player-full
 _pkgname=spotify-player
-pkgver=0.19.1
+pkgver=0.20.0
 pkgrel=1
 pkgdesc="A command driven spotify player with all options enabled"
 arch=('x86_64' 'aarch64' 'armv7h')
 url="https://github.com/aome510/spotify-player"
 license=('MIT')
-depends=('alsa-lib' 'openssl' 'dbus' 'libsixel')
+depends=('openssl' 'dbus' 'libsixel' 'libpulse' 'glibc' 'gcc-libs')
 conflicts=("${_pkgname}" "${pkgname}-git")
 makedepends=('cargo')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/aome510/spotify-player/archive/v${pkgver}.tar.gz")
-sha512sums=('a9b753e7f956874597c6c0e47a5c9366be0d07b7f7d27c424d24e464edeaba4add862c5d82bac0c32932e9525efbe8501422ef574adb5e7400052964f7687d2c')
+sha512sums=('61b34efaa86c7fe4a4f8068b7b18f6480061834b33a32eefb8ce0531810bc33950285cc052454c27edd0e73704ebd34d1f6a4e5467d555dc041f90453de55384')
 options=('!lto')
 
 build() {
@@ -28,5 +28,5 @@ package() {
 	cd "${_pkgname}-${pkgver}"
 
 	install -Dm755 target/release/spotify_player -t "${pkgdir}/usr/bin"
-	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
+	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
