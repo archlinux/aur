@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Three Minutes To Eight
+Comment=Pixel art adventure game. The protagonist is destined to meet their demise at precisely 07:57 PM
+Exec=three-minutes-to-eight
+Icon=gog-three-minutes-to-eight
+Type=Application
+Terminal=false
+StartupNotify=true
+Categories=Game;
+Encoding=UTF-8

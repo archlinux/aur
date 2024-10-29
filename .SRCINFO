@@ -1,0 +1,27 @@
+pkgbase = gog-three-minutes-to-eight
+	pkgdesc = Pixel art adventure game. The protagonist is destined to meet their demise at precisely 07:57 PM. GOG version.
+	pkgver = 0.6.3.68965
+	pkgrel = 1
+	url = https://www.gog.com/en/game/three_minutes_to_eight
+	arch = x86_64
+	license = LicenseRef-eula
+	makedepends = lgogdownloader
+	depends = bash
+	depends = cairo
+	depends = gcc-libs
+	depends = gdk-pixbuf2
+	depends = glib2
+	depends = glibc
+	depends = gtk2
+	depends = pango
+	depends = zlib
+	options = !debug
+	options = !strip
+	source = three-minutes-to-eight_0.6.3_(68965).sh::gogdownloader://three_minutes_to_eight/en3installer0
+	source = gog-three-minutes-to-eight.desktop
+	source = three-minutes-to-eight.bash
+	sha512sums = c3973de0bcf7b7537369efc370e60f95a0dab6c3952ee14812e9efc6925f12cbcf3f3f6d216fd34a0356c132ad7e798b11a2a079a3ffe5da7959fdc77d205786
+	sha512sums = 91f35ceadb9568afdcee982547cca0d91d1edc2ff8c3a3e5386e2a3abb7214795756554609b60970d684463cd105e9c4199831a3d55c751b72df5610ab96dec4
+	sha512sums = dccd0e0148268d55f2e1e80f343e36d3e58fe2f893f9fd3c499bbbf703841b16787c63d650114aed0c5255532a54d81620ab613e7ff34f647ebdc51827a5c4c4
+
+pkgname = gog-three-minutes-to-eight
