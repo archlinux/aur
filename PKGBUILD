@@ -12,7 +12,7 @@ depends=("plymouth")
 install="plymouth-theme-$_themename.install"
 makedepends=("git")
 source=("git+$url.git")
-md5sums=("SKIP")
+v=('SKIP')
 
 package(){
   cd "${srcdir}/russia-theme-plymouth"
