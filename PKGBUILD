@@ -31,7 +31,7 @@ build() {
 }
 
 package() {
- mkdir -p "${pkgdir}/usr/share/openscad/libraries/${_gitname}/"
+ mkdir -p "${pkgdir}/usr/share/openscad/libraries/${_gitname}"
 
  cd "${_gitname}"
 
