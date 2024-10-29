@@ -1,6 +1,6 @@
 pkgbase = blender-bin
 	pkgdesc = A fully integrated 3D graphics creation suite (with packaged libraries and python3.11)
-	pkgver = 4.2.1
+	pkgver = 4.2.3
 	pkgrel = 1
 	url = https://blender.org
 	install = blender-bin.install
@@ -45,7 +45,7 @@ pkgbase = blender-bin
 	optdepends = rocm-hip-runtime: HIP renderer AMD support
 	provides = blender
 	conflicts = blender
-	source = https://download.blender.org/release/Blender4.2/blender-4.2.1-linux-x64.tar.xz
-	sha256sums = be0fbaa0c1e52d4552023220b4c67351efbb707cac49bb381fcbee2182447005
+	source = https://download.blender.org/release/Blender4.2/blender-4.2.3-linux-x64.tar.xz
+	sha256sums = 3a64efd1982465395abab4259b4091d5c8c56054c7267e9633e4f702a71ea3f4
 
 pkgname = blender-bin

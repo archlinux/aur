@@ -1,6 +1,6 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=blender-bin
-pkgver=4.2.1
+pkgver=4.2.3
 pkgrel=1
 pkgdesc="A fully integrated 3D graphics creation suite (with packaged libraries and python3.11)"
 arch=('x86_64')
@@ -47,7 +47,7 @@ provides=('blender')
 conflicts=('blender')
 install=$pkgname.install
 source=("https://download.blender.org/release/Blender${pkgver:0:3}/blender-${pkgver}-linux-x64.tar.xz")
-sha256sums=('be0fbaa0c1e52d4552023220b4c67351efbb707cac49bb381fcbee2182447005')
+sha256sums=('3a64efd1982465395abab4259b4091d5c8c56054c7267e9633e4f702a71ea3f4')
 validpgpkeys=()
 
 package() {
@@ -72,6 +72,6 @@ package() {
 	install -Dm755 blender-launcher "$pkgdir/usr/bin/blender"
 	install -Dm755 blender-softwaregl "$pkgdir/usr/bin/blender-softwaregl"
 	ln -s "/usr/lib/$pkgname/blender-thumbnailer" "$pkgdir/usr/bin/blender-thumbnailer"
-	sed -i 's/\$(dirname \$(readlink -f "\$0"))/\/usr\/lib\/blender-bin/g' "$pkgdir/usr/bin/blender"
+	sed -i 's/\$(dirname "\$(readlink -f "\$0")")/\/usr\/lib\/blender-bin/g' "$pkgdir/usr/bin/blender"
 	sed -i 's/BF_DIST_BIN=\$(dirname "\$0")/BF_DIST_BIN=\/usr\/lib\/blender-bin/g' "$pkgdir/usr/bin/blender-softwaregl"
 }
