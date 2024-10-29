@@ -1,0 +1,189 @@
+From 8986a688252a72bf55d0032120818a65fb15073a Mon Sep 17 00:00:00 2001
+From: "Ramir \"Ramir0\" Sultanov" <ramir0.sultanov@gmail.com>
+Date: Thu, 19 Sep 2024 13:03:12 +0300
+Subject: [PATCH 1/2] Add compatibility with protobuf 28
+
+Signed-off-by: Ramir Sultanov <ramir0.sultanov@gmail.com>
+---
+ include/gz/transport/RepHandler.hh          | 46 ++++++++++++++++++++-
+ include/gz/transport/SubscriptionHandler.hh | 24 ++++++++++-
+ 2 files changed, 68 insertions(+), 2 deletions(-)
+
+diff --git a/include/gz/transport/RepHandler.hh b/include/gz/transport/RepHandler.hh
+index eb2e9d7c1..0ae1e6340 100644
+--- a/include/gz/transport/RepHandler.hh
++++ b/include/gz/transport/RepHandler.hh
+@@ -141,7 +141,51 @@ namespace gz
+           return false;
+         }
+ 
+-#if GOOGLE_PROTOBUF_VERSION >= 4022000
++#if GOOGLE_PROTOBUF_VERSION >= 5028000
++        const auto msgReq =
++          google::protobuf::DynamicCastMessage<Req>(&_msgReq);
++        auto msgRep =
++          google::protobuf::DynamicCastMessage<Rep>(&_msgRep);
++
++        // Verify the dynamically casted messages are valid
++        if (msgReq == nullptr || msgRep == nullptr)
++        {
++          if (msgReq == nullptr)
++          {
++            if (_msgReq.GetDescriptor() != nullptr)
++            {
++              std::cerr << "RepHandler::RunLocalCallback() error: "
++                        << "Failed to cast the request of the type "
++                        << _msgReq.GetDescriptor()->full_name()
++                        << " to the specified type" << '\n';
++            }
++            else
++            {
++              std::cerr << "RepHandler::RunLocalCallback() error: "
++                        << "Failed to cast the request of an unknown type"
++                        << " to the specified type" << '\n';
++            }
++          }
++          if (msgRep == nullptr)
++          {
++            if (_msgRep.GetDescriptor() != nullptr)
++            {
++              std::cerr << "RepHandler::RunLocalCallback() error: "
++                        << "Failed to cast the response of the type "
++                        << _msgRep.GetDescriptor()->full_name()
++                        << " to the specified type" << '\n';
++            }
++            else
++            {
++              std::cerr << "RepHandler::RunLocalCallback() error: "
++                        << "Failed to cast the response of an unknown type"
++                        << " to the specified type" << '\n';
++            }
++          }
++          std::cerr.flush();
++          return false;
++        }
++#elif GOOGLE_PROTOBUF_VERSION >= 4022000
+         auto msgReq =
+           google::protobuf::internal::DownCast<const Req*>(&_msgReq);
+         auto msgRep = google::protobuf::internal::DownCast<Rep*>(&_msgRep);
+diff --git a/include/gz/transport/SubscriptionHandler.hh b/include/gz/transport/SubscriptionHandler.hh
+index 6119e100e..e85eacc16 100644
+--- a/include/gz/transport/SubscriptionHandler.hh
++++ b/include/gz/transport/SubscriptionHandler.hh
+@@ -214,7 +214,29 @@ namespace gz
+         if (!this->UpdateThrottling())
+           return true;
+ 
+-#if GOOGLE_PROTOBUF_VERSION >= 4022000
++#if GOOGLE_PROTOBUF_VERSION >= 5028000
++        auto msgPtr = google::protobuf::DynamicCastMessage<T>(&_msg);
++
++        // Verify the dynamically casted message is valid
++        if (msgPtr == nullptr)
++        {
++          if (_msg.GetDescriptor() != nullptr)
++          {
++            std::cerr << "SubscriptionHandler::RunLocalCallback() error: "
++                      << "Failed to cast the message of the type "
++                      << _msg.GetDescriptor()->full_name()
++                      << " to the specified type" << '\n';
++          }
++          else
++          {
++            std::cerr << "SubscriptionHandler::RunLocalCallback() error: "
++                      << "Failed to cast the message of an unknown type"
++                      << " to the specified type" << '\n';
++          }
++          std::cerr.flush();
++          return false;
++        }
++#elif GOOGLE_PROTOBUF_VERSION >= 4022000
+         auto msgPtr = google::protobuf::internal::DownCast<const T*>(&_msg);
+ #elif GOOGLE_PROTOBUF_VERSION >= 3000000
+         auto msgPtr = google::protobuf::down_cast<const T*>(&_msg);
+
+From ff01a7f5bf40eee4a8d451dc7e8baf9a703186b6 Mon Sep 17 00:00:00 2001
+From: Ramir Sultanov <ramir0.sultanov@gmail.com>
+Date: Sat, 26 Oct 2024 14:08:01 +0300
+Subject: [PATCH 2/2] Add message verification after message down casts
+
+Signed-off-by: Ramir Sultanov <ramir0.sultanov@gmail.com>
+---
+ include/gz/transport/RepHandler.hh          | 24 ++++++++++-----------
+ include/gz/transport/SubscriptionHandler.hh | 14 ++++++------
+ 2 files changed, 19 insertions(+), 19 deletions(-)
+
+diff --git a/include/gz/transport/RepHandler.hh b/include/gz/transport/RepHandler.hh
+index 0ae1e6340..ad5329f88 100644
+--- a/include/gz/transport/RepHandler.hh
++++ b/include/gz/transport/RepHandler.hh
+@@ -146,6 +146,18 @@ namespace gz
+           google::protobuf::DynamicCastMessage<Req>(&_msgReq);
+         auto msgRep =
+           google::protobuf::DynamicCastMessage<Rep>(&_msgRep);
++#elif GOOGLE_PROTOBUF_VERSION >= 4022000
++        auto msgReq =
++          google::protobuf::internal::DownCast<const Req*>(&_msgReq);
++        auto msgRep = google::protobuf::internal::DownCast<Rep*>(&_msgRep);
++#elif GOOGLE_PROTOBUF_VERSION > 2999999
++        auto msgReq = google::protobuf::down_cast<const Req*>(&_msgReq);
++        auto msgRep = google::protobuf::down_cast<Rep*>(&_msgRep);
++#else
++        auto msgReq =
++          google::protobuf::internal::down_cast<const Req*>(&_msgReq);
++        auto msgRep = google::protobuf::internal::down_cast<Rep*>(&_msgRep);
++#endif
+ 
+         // Verify the dynamically casted messages are valid
+         if (msgReq == nullptr || msgRep == nullptr)
+@@ -185,18 +197,6 @@ namespace gz
+           std::cerr.flush();
+           return false;
+         }
+-#elif GOOGLE_PROTOBUF_VERSION >= 4022000
+-        auto msgReq =
+-          google::protobuf::internal::DownCast<const Req*>(&_msgReq);
+-        auto msgRep = google::protobuf::internal::DownCast<Rep*>(&_msgRep);
+-#elif GOOGLE_PROTOBUF_VERSION > 2999999
+-        auto msgReq = google::protobuf::down_cast<const Req*>(&_msgReq);
+-        auto msgRep = google::protobuf::down_cast<Rep*>(&_msgRep);
+-#else
+-        auto msgReq =
+-          google::protobuf::internal::down_cast<const Req*>(&_msgReq);
+-        auto msgRep = google::protobuf::internal::down_cast<Rep*>(&_msgRep);
+-#endif
+ 
+         return this->cb(*msgReq, *msgRep);
+       }
+diff --git a/include/gz/transport/SubscriptionHandler.hh b/include/gz/transport/SubscriptionHandler.hh
+index e85eacc16..ed705ad92 100644
+--- a/include/gz/transport/SubscriptionHandler.hh
++++ b/include/gz/transport/SubscriptionHandler.hh
+@@ -216,6 +216,13 @@ namespace gz
+ 
+ #if GOOGLE_PROTOBUF_VERSION >= 5028000
+         auto msgPtr = google::protobuf::DynamicCastMessage<T>(&_msg);
++#elif GOOGLE_PROTOBUF_VERSION >= 4022000
++        auto msgPtr = google::protobuf::internal::DownCast<const T*>(&_msg);
++#elif GOOGLE_PROTOBUF_VERSION >= 3000000
++        auto msgPtr = google::protobuf::down_cast<const T*>(&_msg);
++#else
++        auto msgPtr = google::protobuf::internal::down_cast<const T*>(&_msg);
++#endif
+ 
+         // Verify the dynamically casted message is valid
+         if (msgPtr == nullptr)
+@@ -236,13 +243,6 @@ namespace gz
+           std::cerr.flush();
+           return false;
+         }
+-#elif GOOGLE_PROTOBUF_VERSION >= 4022000
+-        auto msgPtr = google::protobuf::internal::DownCast<const T*>(&_msg);
+-#elif GOOGLE_PROTOBUF_VERSION >= 3000000
+-        auto msgPtr = google::protobuf::down_cast<const T*>(&_msg);
+-#else
+-        auto msgPtr = google::protobuf::internal::down_cast<const T*>(&_msg);
+-#endif
+ 
+         this->cb(*msgPtr, _info);
+         return true;
