@@ -5,9 +5,8 @@ pkgver=1.2.6
 pkgrel=1
 pkgdesc='MTS Link desktop application based on Electron and React'
 arch=(x86_64)
-groups=(mts)
 url='https://mts-link.ru'
-license=(custom)
+license=(custom:proprietary)
 depends=(
   alsa-lib
   at-spi2-core
