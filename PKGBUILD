@@ -45,6 +45,6 @@ package() {
 
     install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/$pkgname"
     install -Dm644 "man/$pkgname.1" "$pkgdir/usr/share/man/man1/$pkgname.1"
-    install -Dm644 "$pkgname.svg" "$pkgdir/usr/share/icons/$pkgname.svg"
+    install -Dm644 "$pkgname.png" "$pkgdir/usr/share/icons/$pkgname.png"
     install -Dm644 "$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
 }
