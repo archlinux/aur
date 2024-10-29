@@ -28,14 +28,13 @@ fi
 }
 
 post_install() {
-
 appDir=/usr/lib/pentablet
 confPath=$appDir/conf/xppen
 libPath=$appDir/lib
 platPath=$appDir/platforms
 AppName=PenTablet
 exeShell="PenTablet.sh"
-RuleDir="/lib/udev/rules.d"
+RuleDir="/usr/lib/udev/rules.d"
 ruleName="10-xp-pen.rules"
 DesktopDir=/usr/share/applications
 AppIconDir=/usr/share/icons/hicolor/256x256/apps
@@ -43,48 +42,49 @@ AutoStartDir=/etc/xdg/autostart
 appDesktopName=xppentablet.desktop
 appIconName=xppentablet.png
 
-chmod +0444 $AutoStartDir/$appDesktopName
 chmod +0444 $DesktopDir/$appDesktopName
 chmod +0555 $AppIconDir/$appIconName
-
 chmod +0555 $appDir/$AppName
 chmod +0755 $appDir/$exeShell
 chmod +0666 $appDir/resource.rcc
-
-#Moved to package() script to avoid warnings during installation/updates
-#chmod +0777 $confPath
-#chmod +0777 $libPath
-#chmod +0777 $platPath
-
 chmod +0666 $confPath/config.xml
 chmod +0666 $confPath/language.ini
 chmod +0666 $confPath/name_config.ini
 
-#No longer required, according to the new driver scripts
-#chmod +0666 $libPath/libicudata.so.56
-#chmod +0666 $libPath/libicui18n.so.56
-#chmod +0666 $libPath/libicuuc.so.56
-#chmod +0666 $libPath/libQt5Core.so.5
-#chmod +0666 $libPath/libQt5DBus.so.5
-#chmod +0666 $libPath/libQt5Gui.so.5
-#chmod +0666 $libPath/libQt5Network.so.5
-#chmod +0666 $libPath/libQt5Widgets.so.5
-#chmod +0666 $libPath/libQt5X11Extras.so.5
-#chmod +0666 $libPath/libQt5XcbQpa.so.5
-#chmod +0666 $libPath/libQt5Xml.so.5
+# Checking and applying the udev rule 
+if [ -f "$RuleDir/$ruleName" ]; then
+	udevadm control --reload-rules && udevadm trigger
+fi
 
-#chmod +0666 $platPath/libqxcb.so
-
+# Add locfile
 lockfile="/tmp/qtsingleapp-Pentab-9c9b-lockfile"
 touch $lockfile
 chmod +0666 $lockfile
 
-if [ -f "/etc/xdg/autostart/pentablet.desktop" ]; then
-	rm /etc/xdg/autostart/ugee-pentablet.desktop
+#Removing autostart scripts as the systemd service is now used.
+if [ -f "/etc/xdg/autostart/pentablet.desktop" ] || [ -f "/etc/xdg/autostart/xppentablet.desktop" ]; then
+	rm -f /etc/xdg/autostart/ugee-pentablet.desktop;
+	rm -f /etc/xdg/autostart/pentablet.desktop;
+	rm -f /etc/xdg/autostart/xppentablet.desktop
 fi
 
-echo "Installation successful!"
-echo "If you are installing for the first time, please use it after restart."
+#Reload daemon
+systemctl daemon-reload 
+
+cat <<EOF
+
+********************"
+installation successful!
+
+to restart the xp-pen driver, please run:
+systemctl --user restart xppenlinux.service
+
+if you want the driver to autostart, please run:
+systemctl --user enable xppenlinux.service
+
+********************"
+
+EOF
 
 }
 pre_upgrade() {
@@ -95,8 +95,11 @@ post_install
 }
 pre_remove () {
  pre_install
+#Remove lockfile
  lockfile="/tmp/qtsingleapp-Pentab-9c9b-lockfile"
  rm $lockfile
+ #Remove service
+ systemctl --global disable xppenlinux.service
  }
  post_remove(){
  echo "Uninstall succeeded."

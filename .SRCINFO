@@ -1,14 +1,15 @@
 pkgbase = xppenlinux-v3
 	pkgdesc = XP-Pen (Official) Linux utility for legacy XPPen Tablets
 	pkgver = 3.4.9
-	pkgrel = 231023
+	pkgrel = 240607
 	epoch = 0
 	url = https://www.xp-pen.com/download/index.html
 	install = xppenlinux-v3.install
 	arch = x86_64
 	license = custom
 	conflicts = xp-pen-tablet
-	source = XPPenLinux3.4.9-231023.tar.gz::https://www.xp-pen.com/download/file/id/1936/pid/1016/ext/gz.html
-	sha512sums = 3732abdb444ae6ee0ff585b8fadb750761f194936054c392a3cf0e93f59468acedff79e864f6e751aac2b398e0ba6d951b55048ffe11bcb68c5b690062adf441
+	conflicts = xppenlinux3
+	source = XPPenLinux3.4.9-240607.tar.gz::https://www.xp-pen.com/download/file/id/2901/pid/68/ext/gz.html
+	sha512sums = 40598c05d5ada0bd7a874b943e7819d6ffd0ef79d77e7433f814cfdc885846cc49276e1162e082bfe03f76b17f095323abfb8d5108f444cd30a685a0e0826ca4
 
 pkgname = xppenlinux-v3
