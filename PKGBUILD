@@ -6,9 +6,14 @@ pkgrel=1
 pkgdesc="Highly customizable and fast system information fetch program"
 arch=('x86_64' 'aarch64')
 url="https://github.com/Toni500github/customfetch"
-license=('GPL3')
+license=('BSD-3-Clause')
 #depends=() # some of them are in the "base" meta-package anyway so basically no extra depends
 makedepends=('base-devel')
+optdepends=(
+	'wayland-client: Library for getting the Wayland compositor faster'
+	'dconf: Alternative to the slow gsettings command'
+	'libxfce4util: Query XFCE4 version faster'
+)
 conflicts=('customfetch-gui-git' 'customfetch-gui' 'customfetch' 'customfetch-bin' 'customfetch-gui-bin')
 source=("git+${url}.git")
 sha256sums=("SKIP")
