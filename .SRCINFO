@@ -1,0 +1,16 @@
+pkgbase = snooze
+	pkgdesc = Run a command at a particular time
+	pkgver = 0.5
+	pkgrel = 1
+	url = https://github.com/leahneukirchen/snooze
+	arch = x86_64
+	arch = aarch64
+	license = CC0
+	makedepends = git
+	makedepends = make
+	makedepends = gcc
+	provides = snooze
+	source = https://github.com/leahneukirchen/snooze/archive/refs/tags/v0.5.tar.gz
+	sha256sums = d63fde85d9333188bed5996baabd833eaa00842ce117443ffbf8719c094be414
+
+pkgname = snooze
