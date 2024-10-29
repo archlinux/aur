@@ -1,6 +1,6 @@
 pkgbase = cambalache-git
 	pkgdesc = A new RAD tool for Gtk 4 and 3 (Git version)
-	pkgver = 0.91.3.r0.g4915f19
+	pkgver = 0.92.0.r33.g17000fc
 	pkgrel = 1
 	url = https://gitlab.gnome.org/jpu/cambalache
 	arch = x86_64
@@ -9,6 +9,7 @@ pkgbase = cambalache-git
 	makedepends = gobject-introspection
 	makedepends = meson
 	makedepends = ninja
+	makedepends = wayland-protocols
 	depends = cairo
 	depends = dconf
 	depends = gdk-pixbuf2
@@ -29,7 +30,7 @@ pkgbase = cambalache-git
 	depends = webkit2gtk-4.1
 	depends = webkitgtk-6.0
 	depends = wlroots>=0.18.0
-	provides = cambalache=0.91.3.r0.g4915f19
+	provides = cambalache=0.92.0.r33.g17000fc
 	conflicts = cambalache
 	source = git+https://gitlab.gnome.org/jpu/cambalache.git
 	sha512sums = SKIP

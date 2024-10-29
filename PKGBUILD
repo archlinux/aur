@@ -4,7 +4,7 @@
 
 _pkgname=cambalache
 pkgname=cambalache-git
-pkgver=0.91.3.r0.g4915f19
+pkgver=0.92.0.r33.g17000fc
 pkgrel=1
 pkgdesc="A new RAD tool for Gtk 4 and 3 (Git version)"
 url="https://gitlab.gnome.org/jpu/cambalache"
@@ -14,7 +14,7 @@ depends=('cairo' 'dconf' 'gdk-pixbuf2' 'glib2' 'gtk3' 'gtk4' 'gtksourceview5'
          'hicolor-icon-theme' 'libadwaita' 'libhandy' 'libxkbcommon' 'pango'
          'pixman' 'python' 'python-gobject' 'python-lxml' 'wayland' 'webkit2gtk-4.1'
          'webkitgtk-6.0' 'wlroots>=0.18.0')
-makedepends=('git' 'gobject-introspection' 'meson' 'ninja')
+makedepends=('git' 'gobject-introspection' 'meson' 'ninja' 'wayland-protocols')
 conflicts=("${_pkgname}")
 provides=("${_pkgname}=${pkgver}")
 source=("git+${url}.git")
@@ -23,7 +23,8 @@ sha512sums=('SKIP')
 prepare() {
   # Use project's Casilda dependency
   # (This is likely the best solution until other programs start to use it)
-  meson subprojects download casilda --source="${_pkgname}"
+  meson subprojects download casilda --sourcedir="${_pkgname}"
+  meson subprojects update casilda --sourcedir="${_pkgname}"
 }
 
 pkgver() {
@@ -32,7 +33,7 @@ pkgver() {
 }
 
 build() {
-  arch-meson "${_pkgname}" build
+  arch-meson "${_pkgname}" build --reconfigure --force-fallback-for=casilda
 
   meson compile -C build
 }
