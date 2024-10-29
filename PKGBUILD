@@ -5,7 +5,7 @@
 pkgname=github-desktop-git
 _pkgname="GitHub Desktop"
 pkgver=release.2.9.10.r5034.gf22512c
-_electronversion=30
+_electronversion=32
 _nodeversion=20
 pkgrel=1
 pkgdesc="GUI for managing Git and GitHub.Use system-wide electron."
@@ -31,7 +31,6 @@ makedepends=(
     'nvm'
     'gendesk'
     'gcc'
-    'cmake'
 )
 source=(
     "${pkgname%-git}.git::git+${url}.git"
@@ -62,21 +61,15 @@ build() {
     _ensure_local_nvm
     gendesk -q -f -n --pkgname="${pkgname%-git}" --pkgdesc="${pkgdesc}" --categories="Utility" --name="${_pkgname}" --exec="${pkgname%-git} %U"
     cd "${srcdir}/${pkgname%-git}.git"
-    find ./ -type f \( -name ".yarnrc" -o -name ".npmrc" \) -exec rm -rf {} +
+    electronDist="/usr/lib/electron${_electronversion}"
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
     HOME="${srcdir}/.electron-gyp"
     mkdir -p "${srcdir}/.electron-gyp"
     if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
-        sed -i "s/github.com/github.moeyy.xyz\/https:\/\/github.com/g" .gitmodules
-        {
-            echo '[url "https://github.moeyy.xyz/https://github.com/"]'
-            echo '    insteadof = https://github.com/'
-        } >> .gitconfig
         {
             echo -e '\n'
             echo 'registry "https://registry.npmmirror.com"'
-            echo 'disturl "https://registry.npmmirror.com/-/binary/node/"'
             echo 'electron_mirror "https://registry.npmmirror.com/-/binary/electron/"'
             echo 'electron_builder_binaries_mirror "https://registry.npmmirror.com/-/binary/electron-builder-binaries/"'
             echo "cacheFolder "${srcdir}"/.yarn/cache"
@@ -88,20 +81,21 @@ build() {
             echo 'fetchRetries 3'
             echo 'fetchRetryTimeout 10000'
         } >> .yarnrc
-        sed -i "s/registry.yarnpkg.com/registry.npmmirror.com/g" yarn.lock app/yarn.lock
-        cp .yarnrc app/
+        find ./ -type f -name "yarn.lock" -exec sed -i "s/registry.yarnpkg.com/registry.npmmirror.com/g" {} +
+        find ./ -type f -exec sed -i "s/registry.npmjs.org/registry.npmmirror.com/g" {} +
+        echo app vendor/windows-argv-parser | xargs -n 1 cp .yarnrc
     fi
     rm -rf dist node_mudules out
-	#sed -i "/compile:prod/s/4096/4096 --openssl-legacy-provider/g" package.json
+	sed -i "/compile:prod/s/4096/4096 --openssl-legacy-provider/g" package.json
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
-    #sed -i "s/AppImage/dir/g" script/electron-builder-linux.yml
-    NODE_ENV=development    yarn install --cache-folder "${srcdir}/.yarn_cache"
+    sed -i "s/AppImage/dir/g" script/electron-builder-linux.yml
+    NODE_ENV=development    yarn install --cache-folder "${srcdir}/.yarn_cache" --no-lockfile
     NODE_ENV=production     yarn run build:prod
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-git}"
-    cp -r "${srcdir}/${pkgname%-git}.git/dist/${pkgname%-git}-linux-"*/resources/app "${pkgdir}/usr/lib/${pkgname%-git}"
+    cp -Pr --no-preserve=ownership "${srcdir}/${pkgname%-git}.git/dist/${pkgname%-git}-linux-"*/resources/app "${pkgdir}/usr/lib/${pkgname%-git}"
     _icon_sizes=(32x32 64x64 128x128 256x256 512x512 1024x1024)
     for _icons in "${_icon_sizes[@]}";do
         install -Dm644 "${srcdir}/${pkgname%-git}.git/app/static/linux/logos/${_icons}.png" \
