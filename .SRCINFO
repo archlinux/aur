@@ -1,6 +1,6 @@
 pkgbase = power-options-webview
 	pkgdesc = A Web Renderer frontend for Power Options, a blazingly fast power management solution.
-	pkgver = 1.2.1
+	pkgver = 1.2.2
 	pkgrel = 1
 	url = https://github.com/thealexdev23/power-options
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = power-options-webview
 	depends = xdotool
 	provides = power-options-webview
 	conflicts = power-options-webview-git
-	source = power-options-webview-1.2.1.tar.gz::https://github.com/thealexdev23/power-options/archive/v1.2.1.tar.gz
-	sha256sums = d97399d42e5596253238d79aa652387a93208138c412d80e83d09597c899d28d
+	source = power-options-webview-1.2.2.tar.gz::https://github.com/thealexdev23/power-options/archive/v1.2.2.tar.gz
+	sha256sums = dedfed512b073560fece67d167b7f4f04b4649d33cfdafc4bd84a6cea9234daf
 
 pkgname = power-options-webview
