@@ -3,7 +3,7 @@
 pkgbase=cloud-fs-bin
 pkgname=clouddrive
 pkgver=0.7.21
-pkgrel=3
+pkgrel=4
 epoch=2
 pkgdesc="CloudDrive - Unlocking the Unlimited Possibilities of Cloud Storage"
 arch=('x86_64' 'aarch64')
@@ -52,7 +52,7 @@ package() {
 #!/usr/bin/env bash
 
 LOCAL_ROOT_PATH="/media/clouddrive"
-MAX_QSP_115=4.5
+MAX_QSP_115=2.5
 
 cd /opt/clouddrive
 ./clouddrive
