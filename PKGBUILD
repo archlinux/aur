@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=serial-studio-bin
-_pkgname=SerialStudio
-pkgver=2.0.0
-pkgrel=2
-pkgdesc="Multi-purpose serial data visualization & processing program"
+_pkgname=Serial-Studio
+pkgver=3.0.0
+pkgrel=1
+pkgdesc="Multi-purpose serial data visualization & processing program.Prebuilt version."
 arch=('x86_64')
 url="https://serial-studio.github.io/"
 _ghurl="https://github.com/Serial-Studio/Serial-Studio"
@@ -12,7 +12,7 @@ provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
     'e2fsprogs'
-    'libp11-kit'
+    'qt6-positioning'
     'gmp'
     'libglvnd'
     'qt6-declarative'
@@ -27,21 +27,20 @@ source=(
     "LICENSE-${pkgver}.md::https://raw.githubusercontent.com/Serial-Studio/Serial-Studio/v${pkgver}/LICENSE.md"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('b6291c283caa460ce7ef50a5b127665455be19a101353c57b5a01643f85708d3'
-            '2bd1d916e395ee261da269285a9cb803e6f594b0cb97b50e01b43e0911004d17'
-            'd9e86db13e3b69cde31e0458132bf50532c45ab12f03935f2fe9abc257f228ed')
+sha256sums=('16e1d369152f87969480f6aad52a9b5faf934876d0b0e3cc69f3a722f21f8800'
+            'd2d20f56865ebe59a1a3ce0843cee2808f0c69f7a2ba2b9f7808f1d2df331586'
+            '2a39e193905c92b426b83c70095b30ce7df9900c60f7c2e29ab2a2973eded130')
 build() {
     sed -e "s|@appname@|${pkgname%-bin}|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
-    sed "s|Exec=${pkgname%-bin}|Exec=${pkgname%-bin} %U|g" -i "${srcdir}/squashfs-root/${pkgname%-bin}.desktop"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
-    cp -r "${srcdir}/squashfs-root/usr/"{bin,lib,plugins,qml,translations} "${pkgdir}/usr/lib/${pkgname%-bin}"
-    install -Dm644 "${srcdir}/squashfs-root/usr/share/icons/hicolor/512x512/apps/${pkgname%-bin}.png" -t "${pkgdir}/usr/share/pixmaps"
+    cp -Pr --no-preserve=ownership "${srcdir}/squashfs-root/usr/"{bin,lib,plugins,qml,translations} "${pkgdir}/usr/lib/${pkgname%-bin}"
+    install -Dm644 "${srcdir}/squashfs-root/usr/share/icons/hicolor/256x256/apps/${pkgname%-bin}.png" -t "${pkgdir}/usr/share/pixmaps"
     install -Dm644 "${srcdir}/squashfs-root/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
     install -Dm644 "${srcdir}/LICENSE-${pkgver}.md" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.md"
 }

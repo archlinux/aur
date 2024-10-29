@@ -1,25 +1,25 @@
 pkgbase = serial-studio-bin
-	pkgdesc = Multi-purpose serial data visualization & processing program
-	pkgver = 2.0.0
-	pkgrel = 2
+	pkgdesc = Multi-purpose serial data visualization & processing program.Prebuilt version.
+	pkgver = 3.0.0
+	pkgrel = 1
 	url = https://serial-studio.github.io/
 	arch = x86_64
 	license = LicenseRef-custom
 	makedepends = fuse2
 	depends = e2fsprogs
-	depends = libp11-kit
+	depends = qt6-positioning
 	depends = gmp
 	depends = libglvnd
 	depends = qt6-declarative
 	depends = libgpg-error
-	provides = serial-studio=2.0.0
+	provides = serial-studio=3.0.0
 	conflicts = serial-studio
 	options = !strip
-	source = serial-studio-2.0.0.AppImage::https://github.com/Serial-Studio/Serial-Studio/releases/download/v2.0.0/SerialStudio-2.0.0-Linux.AppImage
-	source = LICENSE-2.0.0.md::https://raw.githubusercontent.com/Serial-Studio/Serial-Studio/v2.0.0/LICENSE.md
+	source = serial-studio-3.0.0.AppImage::https://github.com/Serial-Studio/Serial-Studio/releases/download/v3.0.0/Serial-Studio-3.0.0-Linux.AppImage
+	source = LICENSE-3.0.0.md::https://raw.githubusercontent.com/Serial-Studio/Serial-Studio/v3.0.0/LICENSE.md
 	source = serial-studio.sh
-	sha256sums = b6291c283caa460ce7ef50a5b127665455be19a101353c57b5a01643f85708d3
-	sha256sums = 2bd1d916e395ee261da269285a9cb803e6f594b0cb97b50e01b43e0911004d17
-	sha256sums = d9e86db13e3b69cde31e0458132bf50532c45ab12f03935f2fe9abc257f228ed
+	sha256sums = 16e1d369152f87969480f6aad52a9b5faf934876d0b0e3cc69f3a722f21f8800
+	sha256sums = d2d20f56865ebe59a1a3ce0843cee2808f0c69f7a2ba2b9f7808f1d2df331586
+	sha256sums = 2a39e193905c92b426b83c70095b30ce7df9900c60f7c2e29ab2a2973eded130
 
 pkgname = serial-studio-bin
