@@ -1,13 +1,13 @@
 pkgbase = kube-score
 	pkgdesc = Kubernetes object analysis with recommendations for improved reliability and security
-	pkgver = 1.18.0
+	pkgver = 1.19.0
 	pkgrel = 1
 	url = https://github.com/zegl/kube-score
 	arch = x86_64
 	license = MIT
 	makedepends = go
 	depends = glibc
-	source = kube-score-1.18.0.tar.gz::https://github.com/zegl/kube-score/archive/refs/tags/v1.18.0.tar.gz
-	sha256sums = 5709c2ccb4a8589ca28287a1740555b00b3c3df9f61ef77ea32e7cbf631961e7
+	source = kube-score-1.19.0.tar.gz::https://github.com/zegl/kube-score/archive/v1.19.0.tar.gz
+	sha256sums = cf2bf6372e7ec29a91bd38611d7bede4b75e073a564adbb7b7fbb1c3e4ff7f7a
 
 pkgname = kube-score
