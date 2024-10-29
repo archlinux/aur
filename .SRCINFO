@@ -1,12 +1,13 @@
 pkgbase = pure-maps-git
 	pkgdesc = Display vector and raster maps, places, routes, etc.
-	pkgver = 3.3.0.r0.g1b577ea
+	pkgver = 3.4.0.r0.gb594d2f
 	pkgrel = 1
 	url = https://github.com/rinigus/pure-maps
 	arch = x86_64
 	license = GPL-3.0-or-later
 	makedepends = cmake
 	makedepends = git
+	makedepends = ninja
 	makedepends = qt5-tools
 	depends = kirigami2
 	depends = python-lxml
@@ -17,9 +18,8 @@ pkgbase = pure-maps-git
 	depends = qt5-quickcontrols2
 	depends = qt5-sensors
 	depends = mapbox-gl-qml
-	depends = nemo-qml-plugin-dbus
 	depends = s2geometry
-	provides = pure-maps=3.3.0
+	provides = pure-maps=3.4.0
 	conflicts = pure-maps
 	source = pure-maps::git+https://github.com/rinigus/pure-maps.git
 	source = rinigus.geomag::git+https://github.com/rinigus/geomag.git
@@ -40,6 +40,5 @@ pkgname = pure-maps-git
 	depends = qt5-quickcontrols2
 	depends = qt5-sensors
 	depends = mapbox-gl-qml
-	depends = nemo-qml-plugin-dbus
 	depends = s2geometry
 	depends = hicolor-icon-theme
