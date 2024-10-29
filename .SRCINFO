@@ -1,7 +1,7 @@
 pkgbase = openfreebuds
 	pkgdesc = Manager for HUAWEI FreeBuds
 	pkgver = 0.14.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://mmk.pw/en/openfreebuds
 	arch = any
 	license = GPLv3

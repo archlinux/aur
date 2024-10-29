@@ -1,7 +1,7 @@
 # Maintainer: MelianMiko <melianmiko@gmail.com>
 pkgname=openfreebuds
 pkgver=0.14.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Manager for HUAWEI FreeBuds"
 arch=(any)
 url="https://mmk.pw/en/openfreebuds"
@@ -13,6 +13,13 @@ md5sums=('SKIP')
 
 build() {
 	cd "$pkgname-$pkgver/"
+
+	# someone forgot to make pyuic6 executable in python-pyqt6////
+	mkdir -p .bin
+	cp /usr/bin/pyuic6 .bin/
+	chmod +x .bin/pyuic6
+	export PATH="$PWD/.bin:$PATH"
+
 	bash ./scripts/make_qt_parts.sh
 	poetry build
 }
