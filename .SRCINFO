@@ -17,6 +17,12 @@ pkgbase = python-great-tables
 	makedepends = python-installer
 	makedepends = python-setuptools-scm
 	makedepends = python-wheel
+	makedepends = jupyter-nbclient
+	makedepends = jupyter-nbformat
+	makedepends = python-pyarrow
+	makedepends = python-pydantic
+	makedepends = quarto
+	makedepends = quartodoc
 	depends = ipython
 	depends = python-babel>=2.13.1
 	depends = python-commonmark>=0.9.1
@@ -34,3 +40,8 @@ pkgbase = python-great-tables
 	b2sums = 6d7fcdb2175e22fe0b2d3c480f92199a2d2a590e0f0642e87c9c9aa7b2d8bcef99f8e320b0cb08494cd1721bbc025a096d2e25900bc13e59cccca39f6f8c53f3
 
 pkgname = python-great-tables
+
+pkgname = python-great-tables-docs
+	pkgdesc = HTML Documentation for
+	arch = any
+	depends = 

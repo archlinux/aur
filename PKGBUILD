@@ -1,7 +1,8 @@
 # Maintainer: Manuel Wiesinger <m {you know what belongs here} mmap {and here} at>
 
 _name=great-tables
-pkgname="python-${_name}"
+pkgbase=python-$_name
+pkgname=($pkgbase $pkgbase-docs)
 pkgver=0.13.0
 # setup-tools-scm doesn't get the dependencies right from the tarball sources
 # https://wiki.archlinux.org/title/Talk:Python_package_guidelines#Prefer_VCS_source_for_setuptools-scm_and_friends
@@ -17,6 +18,14 @@ makedepends=(
     'python-installer'
     'python-setuptools-scm'
     'python-wheel'
+
+    # -docs
+    'jupyter-nbclient'
+    'jupyter-nbformat'
+    'python-pyarrow'
+    'python-pydantic'
+    'quarto'
+    'quartodoc'
 )
 depends=(
     'ipython'
@@ -46,7 +55,7 @@ source=("$pkgname-$pkgver::git+https://github.com/posit-dev/great-tables.git#tag
 b2sums=('6d7fcdb2175e22fe0b2d3c480f92199a2d2a590e0f0642e87c9c9aa7b2d8bcef99f8e320b0cb08494cd1721bbc025a096d2e25900bc13e59cccca39f6f8c53f3')
 
 check() {
-    cd $pkgname-$pkgver
+    cd $srcdir/$pkgbase-$pkgver
 
     # Skipped tests :
     #   shiny: There is no package
@@ -55,13 +64,27 @@ check() {
 }
 
 build() {
-    cd $pkgname-$pkgver
+    cd $srcdir/$pkgbase-$pkgver
     python -m build --wheel --skip-dependency-check --no-isolation
+
+    PYTHONPATH=$srcdir/$pkgbase-$pkgver make docs-build
 }
 
-package() {
-    cd $pkgname-$pkgver
+package_python-great-tables() {
+    cd $srcdir/$pkgbase-$pkgver
 
     python -m installer --destdir="$pkgdir" dist/*.whl
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+}
+
+package_python-great-tables-docs() {
+    pkgdesc="HTML Documentation for ${basename}"
+    arch=('any')
+    depends=()
+
+    cd $srcdir/$pkgbase-$pkgver
+    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+
+    cd $srcdir/$pkgbase-$pkgver/docs/_site
+    find . -exec install -Dm644 {} "${pkgdir}/usr/share/doc/${pkgbase}/html/{}" \;
 }
