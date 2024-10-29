@@ -1,7 +1,7 @@
 # Maintainer: Alexander Karpukhin <thealexdev23@gmail.com>
 
 pkgname=power-options-gtk
-pkgver=1.2.1
+pkgver=1.2.2
 pkgrel=1
 pkgdesc="A gtk frontend for Power Options, a blazingly fast power management solution."
 arch=('x86_64')
@@ -15,7 +15,7 @@ provides=('power-options-gtk')
 conflicts=('power-options-gtk-git' 'tlp' 'auto-cpufreq' 'power-profiles-daemon' 'cpupower-gui')
 
 source=("$pkgname-$pkgver.tar.gz::https://github.com/thealexdev23/power-options/archive/v$pkgver.tar.gz")
-sha256sums=('d97399d42e5596253238d79aa652387a93208138c412d80e83d09597c899d28d')
+sha256sums=('dedfed512b073560fece67d167b7f4f04b4649d33cfdafc4bd84a6cea9234daf')
 
 prepare() {
   export RUSTUP_TOOLCHAIN=stable
