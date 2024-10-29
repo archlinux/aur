@@ -1,4 +1,5 @@
-# Maintainer: AndyRTR <andyrtr@archlinux.org>
+# Maintainer: envolution
+# Contributor: AndyRTR <andyrtr@archlinux.org>
 # Contributor: Gerhard Brauer <gerbra@archlinux.de>
 # Contributor: Richard Murri <admin@richardmurri.com>
 
@@ -46,7 +47,9 @@ build() {
 }
 
 package() {
-  
+
   cd ${pkgbase}-${pkgver}
   make PREFIX=/usr DESTDIR="$pkgdir" install_client install_man
 }
+
+# vim: ts=2 sw=2 et:
