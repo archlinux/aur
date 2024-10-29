@@ -1,76 +1,49 @@
 # Maintainer:
 
-# options
-#: ${_gcc_version:=12}
+## options
 : ${_qt_version:=5}
 
-: ${_build_git:=true}
-
-unset _pkgtype
-[[ "${_build_git::1}" == "t" ]] && _pkgtype+="-git"
-
-# basic info
-_pkgname=maplibre-native
-pkgname="$_pkgname${_pkgtype:-}"
-pkgver=2.1.0.r59.g38dde09
+## basic info
+_pkgname="maplibre-native"
+pkgname="$_pkgname-git"
+pkgver=3.0.0.r0.gd929c78
 pkgrel=1
 pkgdesc="C++ library that powers customizable vector maps in native applications"
 url="https://github.com/maplibre/maplibre-native-qt"
 arch=("x86_64" "aarch64")
 license=(
+  # core library
   'BSD-2-Clause'
-  'GPL-2.0-only'
-  'GPL-3.0-only'
+
+  ## QML bindings (pick one)
+  #'GPL-2.0-only'
+  #'GPL-3.0-only'
   'LGPL-3.0-only'
+
+  # examples
   'MIT'
 )
 
-# main package
-_main_package() {
-  depends=(
-    "qt${_qt_version:-5}-base"
-    "qt${_qt_version:-5}-location"
-  )
-  makedepends=(
-    "gcc${_gcc_version:-}"
+depends=(
+  "qt${_qt_version:-5}-base"
+  "qt${_qt_version:-5}-location"
+)
+makedepends=(
+  'cmake'
+  'git'
+  'glfw'
+  'libwebp'
+)
 
-    'cmake'
-    'git'
-    'glfw'
-    'libwebp'
-  )
+provides=("$_pkgname")
+conflicts=("$_pkgname")
 
-  provides=("$_pkgname")
-  conflicts=("$_pkgname")
-
+_source_main() {
   _pkgsrc="maplibre.maplibre-native-qt"
-  source+=("$_pkgsrc"::"git+$url.git")
-  sha256sums+=('SKIP')
-
-  _source_maplibre_native_qt
-  _source_maplibre_native
-
-  ## maplibre_native submodules
-  _source_mapbox_earcut_hpp
-  _source_mapbox_eternal
-  _source_mapbox_polylabel
-  _source_mapbox_vector_tile
-  _source_mapbox_wagyu
-  _source_maplibre_maplibre_native_base
-
-  ## maplibre_native_base submodules
-  _source_mapbox_geojson_hpp
-  _source_mapbox_geojson_vt_cpp
-  _source_mapbox_supercluster_hpp
-  _source_mapbox_variant
-  _source_mourner_kdbush_hpp
-  _source_tencent_rapidjson
-
-  ## vector_tile submodules
-  #_source_mapbox_mvt_fixtures
+  source=("$_pkgsrc"::"git+$url.git")
+  sha256sums=('SKIP')
 }
 
-# submodules
 _source_maplibre_native_qt() {
   source+=(
     'jothepro.doxygen-awesome-css'::'git+https://github.com/jothepro/doxygen-awesome-css.git'
@@ -83,9 +56,9 @@ _source_maplibre_native_qt() {
 
   _prepare_maplibre_native_qt() (
     cd "$srcdir/$_pkgsrc"
-    local -A _submodules=(
-      ['jothepro.doxygen-awesome-css']='docs/doxygen-awesome-css'
-      ['maplibre.maplibre-native']='vendor/maplibre-native'
+    local _submodules=(
+      'jothepro.doxygen-awesome-css'::'docs/doxygen-awesome-css'
+      'maplibre.maplibre-native'::'vendor/maplibre-native'
     )
     _submodule_update
   )
@@ -136,25 +109,25 @@ _source_maplibre_native() {
   _prepare_maplibre_native() (
     cd "$srcdir/$_pkgsrc"
     cd 'vendor/maplibre-native'
-    local -A _submodules=(
-      ['google.benchmark']='vendor/benchmark'
-      ['google.googletest']='vendor/googletest'
-      #['jothepro.doxygen-awesome-css']='docs/doxygen/doxygen-awesome-css'
-      ['mapbox.earcut.hpp']='vendor/earcut.hpp'
-      ['mapbox.eternal']='vendor/eternal'
-      ['mapbox.mapbox-gestures-android']='platform/android/vendor/mapbox-gestures-android'
-      ['mapbox.polylabel']='vendor/polylabel'
-      ['mapbox.protozero']='vendor/protozero'
-      ['mapbox.vector-tile']='vendor/vector-tile'
-      ['mapbox.wagyu']='vendor/wagyu'
-      ['maplibre.maplibre-gl-native-boost']='vendor/boost'
-      ['maplibre.maplibre-java']='platform/android/vendor/maplibre-java'
-      ['maplibre.maplibre-native-base']='vendor/mapbox-base'
-      #['martinus.unordered_dense']='vendor/unordered_dense'
-      #['microsoft.vcpkg']='platform/windows/vendor/vcpkg'
-      ['okdshin.unique_resource']='vendor/unique_resource'
-      ['yhirose.cpp-httplib']='vendor/cpp-httplib'
-      ['ziparchive']='vendor/zip-archive'
+    local _submodules=(
+      'google.benchmark'::'vendor/benchmark'
+      'google.googletest'::'vendor/googletest'
+      #'jothepro.doxygen-awesome-css'::'docs/doxygen/doxygen-awesome-css'
+      'mapbox.earcut.hpp'::'vendor/earcut.hpp'
+      'mapbox.eternal'::'vendor/eternal'
+      'mapbox.mapbox-gestures-android'::'platform/android/vendor/mapbox-gestures-android'
+      'mapbox.polylabel'::'vendor/polylabel'
+      'mapbox.protozero'::'vendor/protozero'
+      'mapbox.vector-tile'::'vendor/vector-tile'
+      'mapbox.wagyu'::'vendor/wagyu'
+      'maplibre.maplibre-gl-native-boost'::'vendor/boost'
+      'maplibre.maplibre-java'::'platform/android/vendor/maplibre-java'
+      'maplibre.maplibre-native-base'::'vendor/mapbox-base'
+      #'martinus.unordered_dense'::'vendor/unordered_dense'
+      #'microsoft.vcpkg'::'platform/windows/vendor/vcpkg'
+      'okdshin.unique_resource'::'vendor/unique_resource'
+      'yhirose.cpp-httplib'::'vendor/cpp-httplib'
+      'ziparchive'::'vendor/zip-archive'
     )
     _submodule_update
   )
@@ -172,8 +145,8 @@ _source_mapbox_earcut_hpp() {
     cd "$srcdir/$_pkgsrc"
     cd 'vendor/maplibre-native'
     cd 'vendor/earcut.hpp'
-    local -A _submodules=(
-      ['glfw']='glfw'
+    local _submodules=(
+      'glfw'::'glfw'
     )
     _submodule_update
   )
@@ -191,8 +164,8 @@ _source_mapbox_eternal() {
     cd "$srcdir/$_pkgsrc"
     cd 'vendor/maplibre-native'
     cd 'vendor/eternal'
-    local -A _submodules=(
-      ['google.benchmark']='vendor/benchmark'
+    local _submodules=(
+      'google.benchmark'::'vendor/benchmark'
     )
     _submodule_update
   )
@@ -210,8 +183,8 @@ _source_mapbox_polylabel() {
     cd "$srcdir/$_pkgsrc"
     cd 'vendor/maplibre-native'
     cd 'vendor/polylabel'
-    local -A _submodules=(
-      ['mapbox.mason']='.mason'
+    local _submodules=(
+      'mapbox.mason'::'.mason'
     )
     _submodule_update
   )
@@ -231,9 +204,9 @@ _source_mapbox_vector_tile() {
     cd "$srcdir/$_pkgsrc"
     cd 'vendor/maplibre-native'
     cd 'vendor/vector-tile'
-    local -A _submodules=(
-      ['mapbox.mvt-fixtures']='test/mvt-fixtures'
-      ['mapbox.mvt-bench-fixtures']='bench/mvt-bench-fixtures'
+    local _submodules=(
+      'mapbox.mvt-fixtures'::'test/mvt-fixtures'
+      'mapbox.mvt-bench-fixtures'::'bench/mvt-bench-fixtures'
     )
     _submodule_update
   )
@@ -251,8 +224,8 @@ _source_mapbox_wagyu() {
     cd "$srcdir/$_pkgsrc"
     cd 'vendor/maplibre-native'
     cd 'vendor/wagyu'
-    local -A _submodules=(
-      ['mapnik.geometry-test-data']='tests/geometry-test-data'
+    local _submodules=(
+      'mapnik.geometry-test-data'::'tests/geometry-test-data'
     )
     _submodule_update
   )
@@ -300,23 +273,23 @@ _source_maplibre_maplibre_native_base() {
     cd "$srcdir/$_pkgsrc"
     cd 'vendor/maplibre-native'
     cd 'vendor/mapbox-base'
-    local -A _submodules=(
-      ['google.googletest']='extras/googletest'
-      ['gulrak.filesystem']='extras/filesystem'
-      ['mapbox.cheap-ruler-cpp']='deps/cheap-ruler-cpp'
-      ['mapbox.geojson-vt-cpp']='deps/geojson-vt-cpp'
-      ['mapbox.geojson.hpp']='deps/geojson.hpp'
-      ['mapbox.geometry.hpp']='deps/geometry.hpp'
-      ['mapbox.jni.hpp']='deps/jni.hpp'
-      ['mapbox.optional']='deps/optional'
-      ['mapbox.pixelmatch-cpp']='deps/pixelmatch-cpp'
-      ['mapbox.shelf-pack-cpp']='deps/shelf-pack-cpp'
-      ['mapbox.supercluster.hpp']='deps/supercluster.hpp'
-      ['mapbox.variant']='deps/variant'
-      ['martinmoene.expected-lite']='extras/expected-lite'
-      ['mourner.kdbush.hpp']='extras/kdbush.hpp'
-      ['taywee.args']='extras/args'
-      ['tencent.rapidjson']='extras/rapidjson'
+    local _submodules=(
+      'google.googletest'::'extras/googletest'
+      'gulrak.filesystem'::'extras/filesystem'
+      'mapbox.cheap-ruler-cpp'::'deps/cheap-ruler-cpp'
+      'mapbox.geojson-vt-cpp'::'deps/geojson-vt-cpp'
+      'mapbox.geojson.hpp'::'deps/geojson.hpp'
+      'mapbox.geometry.hpp'::'deps/geometry.hpp'
+      'mapbox.jni.hpp'::'deps/jni.hpp'
+      'mapbox.optional'::'deps/optional'
+      'mapbox.pixelmatch-cpp'::'deps/pixelmatch-cpp'
+      'mapbox.shelf-pack-cpp'::'deps/shelf-pack-cpp'
+      'mapbox.supercluster.hpp'::'deps/supercluster.hpp'
+      'mapbox.variant'::'deps/variant'
+      'martinmoene.expected-lite'::'extras/expected-lite'
+      'mourner.kdbush.hpp'::'extras/kdbush.hpp'
+      'taywee.args'::'extras/args'
+      'tencent.rapidjson'::'extras/rapidjson'
     )
     _submodule_update
   )
@@ -335,8 +308,8 @@ _source_mapbox_geojson_vt_cpp() {
     cd 'vendor/maplibre-native'
     cd 'vendor/mapbox-base'
     cd 'deps/geojson-vt-cpp'
-    local -A _submodules=(
-      ['mapbox.mason']='.mason'
+    local _submodules=(
+      'mapbox.mason'::'.mason'
     )
     _submodule_update
   )
@@ -355,8 +328,8 @@ _source_mapbox_geojson_hpp() {
     cd 'vendor/maplibre-native'
     cd 'vendor/mapbox-base'
     cd 'deps/geojson.hpp'
-    local -A _submodules=(
-      ['mapbox.mason']='.mason'
+    local _submodules=(
+      'mapbox.mason'::'.mason'
     )
     _submodule_update
   )
@@ -375,8 +348,8 @@ _source_mapbox_supercluster_hpp() {
     cd 'vendor/maplibre-native'
     cd 'vendor/mapbox-base'
     cd 'deps/supercluster.hpp'
-    local -A _submodules=(
-      ['mapbox.mason']='.mason'
+    local _submodules=(
+      'mapbox.mason'::'.mason'
     )
     _submodule_update
   )
@@ -395,8 +368,8 @@ _source_mapbox_variant() {
     cd 'vendor/maplibre-native'
     cd 'vendor/mapbox-base'
     cd 'deps/variant'
-    local -A _submodules=(
-      ['mapbox.mason']='.mason'
+    local _submodules=(
+      'mapbox.mason'::'.mason'
     )
     _submodule_update
   )
@@ -415,8 +388,8 @@ _source_mourner_kdbush_hpp() {
     cd 'vendor/maplibre-native'
     cd 'vendor/mapbox-base'
     cd 'extras/kdbush.hpp'
-    local -A _submodules=(
-      ['mapbox.mason']='.mason'
+    local _submodules=(
+      'mapbox.mason'::'.mason'
     )
     _submodule_update
   )
@@ -435,8 +408,8 @@ _source_tencent_rapidjson() {
     cd 'vendor/maplibre-native'
     cd 'vendor/mapbox-base'
     cd 'extras/rapidjson'
-    local -A _submodules=(
-      ['google.googletest']='thirdparty/gtest'
+    local _submodules=(
+      'google.googletest'::'thirdparty/gtest'
     )
     _submodule_update
   )
@@ -455,22 +428,44 @@ _source_mapbox_mvt_fixtures() {
     cd 'vendor/maplibre-native'
     cd 'vendor/vector-tile'
     cd 'test/mvt-fixtures'
-    local -A _submodules=(
-      ['mapbox.vector-tile-spec']='vector-tile-spec'
+    local _submodules=(
+      'mapbox.vector-tile-spec'::'vector-tile-spec'
     )
     _submodule_update
   )
 }
 
-# common functions
+_source_main
+
+_source_maplibre_native_qt
+_source_maplibre_native
+
+## maplibre_native submodules
+_source_mapbox_earcut_hpp
+_source_mapbox_eternal
+_source_mapbox_polylabel
+_source_mapbox_vector_tile
+_source_mapbox_wagyu
+_source_maplibre_maplibre_native_base
+
+## maplibre_native_base submodules
+_source_mapbox_geojson_hpp
+_source_mapbox_geojson_vt_cpp
+_source_mapbox_supercluster_hpp
+_source_mapbox_variant
+_source_mourner_kdbush_hpp
+_source_tencent_rapidjson
+
+## vector_tile submodules
+#_source_mapbox_mvt_fixtures
+
 prepare() {
   _submodule_update() {
-    local key;
-    for key in ${!_submodules[@]} ; do
-      git submodule init "${_submodules[${key}]}"
-      git submodule set-url "${_submodules[${key}]}" "${srcdir}/${key}"
-      git -c protocol.file.allow=always submodule update "${_submodules[${key}]}"
-      echo
+    local _module
+    for _module in "${_submodules[@]}"; do
+      git submodule init "${_module##*::}"
+      git submodule set-url "${_module##*::}" "$srcdir/${_module%::*}"
+      git -c protocol.file.allow=always submodule update "${_module##*::}"
     done
   }
 
@@ -504,11 +499,6 @@ pkgver() (
 )
 
 build() {
-  export CC="gcc${_gcc_version:+-$_gcc_version}"
-  export CXX="g++${_gcc_version:+-$_gcc_version}"
-
-  export LDFLAGS+="-Wl,--copy-dt-needed-entries"
-
   local _cmake_options=(
     -B build
     -S "$_pkgsrc"
@@ -526,7 +516,8 @@ package() {
   DESTDIR="$pkgdir" cmake --install build
   install -Dm644 "$_pkgsrc/LICENSES"/*.txt -t "$pkgdir/usr/share/licenses/$pkgname/"
 
-  install -Dm644 /dev/stdin "$pkgdir/usr/share/licenses/$pkgname/LICENSE" <<'END'
+  # from readme
+  install -Dm644 /dev/stdin "$pkgdir/usr/share/licenses/$pkgname/LICENSE" << 'END'
 Copyright (C) 2023 MapLibre contributors
 
 The core library may be used under 2-Clause BSD License.
@@ -539,6 +530,3 @@ Each file contains corresponding license information with SPDX license identifie
 to clarify how it can be used.
 END
 }
-
-# execute
-_main_package

@@ -1,0 +1,4 @@
+[maplibre-native-git]
+source = "git"
+git = "https://github.com/maplibre/maplibre-native-qt.git"
+prefix = "v"

@@ -1,16 +1,13 @@
 pkgbase = maplibre-native-git
 	pkgdesc = C++ library that powers customizable vector maps in native applications
-	pkgver = 2.1.0.r59.g38dde09
+	pkgver = 3.0.0.r0.gd929c78
 	pkgrel = 1
 	url = https://github.com/maplibre/maplibre-native-qt
 	arch = x86_64
 	arch = aarch64
 	license = BSD-2-Clause
-	license = GPL-2.0-only
-	license = GPL-3.0-only
 	license = LGPL-3.0-only
 	license = MIT
-	makedepends = gcc
 	makedepends = cmake
 	makedepends = git
 	makedepends = glfw
