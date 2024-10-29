@@ -1,14 +1,14 @@
 pkgbase = dict-freedict-eng-rus
 	pkgdesc = English -> Russian dictionary for dictd et al. from FreeDict.org
-	pkgver = 0.3.1
+	pkgver = 2024.10.10
 	pkgrel = 1
 	url = https://freedict.org/
 	install = dict-freedict-eng-rus.install
 	arch = any
-	license = GPL-2.0-or-later
+	license = CC-BY-SA-3.0
 	makedepends = freedict-tools
 	optdepends = dictd: dict client and server
-	source = https://download.freedict.org/dictionaries/eng-rus/0.3.1/freedict-eng-rus-0.3.1.src.tar.xz
-	sha512sums = 21bd584c5330d4aa8df87eff36c5367cffc5087794c770420aeafe7966dbaae2512c7f528af62804ebf283cdeedbb7d6ca85b7d4852c2e3dd08ca10a66222527
+	source = https://download.freedict.org/dictionaries/eng-rus/2024.10.10/freedict-eng-rus-2024.10.10.src.tar.xz
+	sha512sums = bfb68bd4fce32785a73e504d827599360963d801757b55d527994eb54cbaeb295d5d43738d295a4be12bfe8584a29ade2283a8a6b11ca8c655614b5e32a44511
 
 pkgname = dict-freedict-eng-rus
