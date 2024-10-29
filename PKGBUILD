@@ -4,7 +4,7 @@ _pkgname=Altus
 pkgver=5.4.0
 _electronversion=28
 _nodeversion=18
-pkgrel=1
+pkgrel=2
 pkgdesc="Desktop client for WhatsApp Web with themes, notifications and multiple account support.Use system-wide electron."
 arch=('any')
 url="https://github.com/amanharwara/altus"
@@ -42,7 +42,7 @@ build() {
     sed -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname}/g
-        s/@runname@/app.asar/g
+        s/@runname@/app/g
         s/@cfgdirname@/${_pkgname}/g
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
     " -i "${srcdir}/${pkgname}.sh"
