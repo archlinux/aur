@@ -1,4 +1,5 @@
 # Maintainer: Kiri <kiri@vern.cc>
+# Contributor: Guoyi Zhang <myname@malacology.net>
 # Contributor: Henrik Grimler <henrik@grimler.se>
 # Contributor: Pelle Windestam <pelle@windestam.se>
 # Contributor: Felix Golatofski <contact@xdfr.de>
@@ -8,7 +9,7 @@
 pkgname=imagej2
 pkgver=2.16.0
 # _pkgver=${pkgver//_/-}
-pkgrel=1
+pkgrel=2
 pkgdesc='Open scientific N-dimensional image processing
          https://doi.org/10.1186/s12859-017-1934-z'
 arch=('x86_64')
@@ -34,7 +35,7 @@ prepare() {
   cd ${srcdir}
   echo 'Creating desktop file'
   gendesk -f -n --pkgname ${pkgname} \
-    --pkgdesc "${pkgdesc}" \
+    --pkgdesc "Open scientific N-dimensional image processing" \
     --categories=Science \
     --icon "${pkgname}" \
     --exec "${pkgname} %f"
