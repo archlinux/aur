@@ -11,5 +11,5 @@ if [ -d "${gBinPath}/OFDPlugin" ]; then
 else	
 	gInstallPath="${_APPDIR}/Reader_Pro"
 fi
-cd "${_APPDIR}"
+cd "${_APPDIR}" || { echo "Failed to change directory to ${_APPDIR}"; exit 1; }
 exec "${_RUNNAME}" "$@" || exit $?

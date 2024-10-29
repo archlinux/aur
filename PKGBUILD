@@ -4,20 +4,20 @@ pkgname="${_officalname}-bin"
 _pkgname=SuwellReader
 _appname="cn.${_officalname//-/.}"
 pkgver=3.0.22.0916
-pkgrel=8
-pkgdesc="OFD Reader Professional 3.0 From Suwell .LTD"
+pkgrel=9
+pkgdesc="OFD Reader Professional 3.0 From Suwell .LTD. Prebuilt version."
 provides=("${pkgname%-bin}")
 conflicts=("${pkgname%-bin}")
 arch=('x86_64')
 url="https://www.suwell.cn/"
 _downurl="https://com-store-packages.uniontech.com"
-license=('LicenseRef-Proprietary')
+license=('LicenseRef-custom')
 depends=(
     'gtk2'
     'libpng12'
     'glu'
     'libjpeg6-turbo'
-    'gstreamer0.10'
+    'gstreamer'
     'libice'
     'libxt'
     'libsm'
@@ -31,23 +31,24 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('69e56165f999ca8a168d64d0e22180755c67091b700fca1e339910580b127d1f'
-            '60ac90aadd05a48336e83bc030eca8fd4cb1c4b0458d062587b8dc23c61a5677')
+            '2144461f37fe70f8ba576fbcf33ba7cc8179d133295a58519aa51c0ff5a48d2b')
 build() {
-    sed -e "s|@appname@|${pkgname%-bin}|g" \
-        -e "s|@runname@|${_pkgname}|g" \
-        -i "${srcdir}/${pkgname%-bin}.sh"
+    sed -e "
+        s/@appname@/${pkgname%-bin}/g
+        s/@runname@/${_pkgname}/g
+    " -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
-    sed -e "s|/usr/bin/${_officalname//-/}|${pkgname%-bin}|g" \
-        -e '/Icon=/d' \
-        -e '/serverice/d' \
-        -e '/^#/d' \
-        -e "10i Icon=${pkgname%-bin}" \
-        -i "${srcdir}/usr/share/applications/${_appname}.desktop"
+    sed -e "
+        s/\/usr\/bin\/${_officalname//-/}/${pkgname%-bin}/g
+        /serverice/d
+        /^#/d
+        s/\/opt\/apps\/${_appname}\/entries\/icons\/hicolor\/256x256\/mimetypes\/${_appname}.app-x-${_officalname//-/}.png/${pkgname%-bin}/g
+    " -i "${srcdir}/usr/share/applications/${_appname}.desktop"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
-    cp -r "${srcdir}/opt/apps/${_appname}/files/bin/suwell/"* "${pkgdir}/usr/lib/${pkgname%-bin}"
+    cp -Pr --no-preserve=ownership "${srcdir}/opt/apps/${_appname}/files/bin/suwell/"* "${pkgdir}/usr/lib/${pkgname%-bin}"
     install -Dm644 "${srcdir}/usr/share/applications/${_appname}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
     install -Dm644 "${srcdir}/usr/share/fonts/cesi_font/"*.ttf -t "${pkgdir}/usr/share/fonts/cesi-font"
     install -Dm644 "${srcdir}/usr/share/mime/packages/"*.xml -t "${pkgdir}/usr/share/mime/packages"
