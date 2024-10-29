@@ -1,0 +1,22 @@
+pkgbase = libastal-cava-git
+	pkgdesc = Audio visaulization library using cava.
+	pkgver = r501.078dc04
+	pkgrel = 1
+	url = https://github.com/Aylur/astal
+	arch = x86_64
+	groups = libastal
+	license = LGPL-2.1-only
+	makedepends = meson
+	makedepends = git
+	makedepends = gobject-introspection
+	makedepends = vala
+	depends = glib2
+	depends = glibc
+	depends = libcava
+	provides = astal-cava
+	provides = libastal-cava
+	provides = libastal-cava.so=0-64
+	source = git+https://github.com/Aylur/astal.git#branch=feat/cava
+	sha256sums = SKIP
+
+pkgname = libastal-cava-git
