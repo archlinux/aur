@@ -1,7 +1,7 @@
 # Maintainer: Nebulosa  <nebulosa2007-at-yandex-dot-ru>
 
 pkgname=xwayland-satellite
-pkgver=0.4
+pkgver=0.5
 pkgrel=1
 pkgdesc="Xwayland outside your Wayland"
 arch=(x86_64)
@@ -20,10 +20,11 @@ makedepends=(
 )
 options=(!debug)
 source=($url/archive/v$pkgver/$pkgname-$pkgver.tar.gz)
-b2sums=('f0f983a7fd33454c81e52acf00a9fc6b1b93b9380751db02045eb525622bd2540ed01ef202c04076876d07dcd16f87fcabd618fb7fbdc29d19651bcfca5345b0')
+b2sums=('b2ab19629c2b9d099af2c2dfa81a215acb1bc0ddc6a98574a05791cdcfeb980301c33657e4f5bbc4b64c30bc08e49e8f5fcb5fd82f8103d7dc1d25f10a20b5dc')
 
 prepare() {
   cd $pkgname-$pkgver
+  sed -i 's|ExecStart=/usr/local|ExecStart=/usr|' resources/$pkgname.service
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_HOME="$srcdir"/.cargo
   cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
@@ -35,9 +36,11 @@ build() {
   export CARGO_HOME="$srcdir"/.cargo
   export RUSTFLAGS="--remap-path-prefix=$srcdir=/"
   export CARGO_TARGET_DIR=target
-  cargo build --frozen --release
+  cargo build --frozen --release -F systemd
 }
 
 package() {
-  install -vDm755 $pkgname-$pkgver/target/release/$pkgname -t "$pkgdir"/usr/bin/
+  cd $pkgname-$pkgver
+  install -vDm755 target/release/$pkgname    -t "$pkgdir"/usr/bin/
+  install -vDm644 resources/$pkgname.service -t "$pkgdir"/usr/lib/systemd/system/
 }
