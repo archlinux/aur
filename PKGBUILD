@@ -10,7 +10,7 @@ pkgname=(
   gnome-shell-git
   gnome-shell-docs-git
 )
-pkgver=47.0+r60+g50434f013
+pkgver=47.0+r65+gbab37d328
 pkgrel=1
 epoch=1
 pkgdesc="Next generation desktop shell - git latest"
