@@ -2,7 +2,7 @@
 
 pkgname=gnome-shell-extension-nightthemeswitcher-git
 pkgver=78.r0.gddae070
-pkgrel=1
+pkgrel=2
 pkgdesc="Automatically toggle your light and dark themes variants"
 arch=('any')
 url="https://gitlab.com/rmnvgr/nightthemeswitcher-gnome-shell-extension"
@@ -37,14 +37,13 @@ build() {
 }
 
 package() {
+    cd "$srcdir/${pkgname%-git}"
     local uuid
     local schema
     local destdir
     uuid=$(grep -Po '(?<=UUID = \x27)[^\x27]*' meson.build)
     schema=$(grep -Po '(?<=DNS = \x27)[^\x27]*' meson.build).gschema.xml
     destdir="$pkgdir/usr/share/gnome-shell/extensions/$uuid"
-
-    cd "$srcdir/${pkgname%-git}"
     meson install -C build --destdir "$pkgdir"
 
     install -Dm0644 "$destdir/schemas/$schema" \
