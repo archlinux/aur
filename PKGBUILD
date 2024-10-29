@@ -1,10 +1,10 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=everytime
 _pkgname=Everytime
-pkgver=1.1.5
-_electronversion=28
-_nodeversion=20
-pkgrel=6
+pkgver=1.1.6
+_electronversion=33
+_nodeversion=22
+pkgrel=1
 pkgdesc="Time zones are hard. Everytime makes them easy!Use system-wide electron."
 arch=(
     'aarch64'
@@ -32,7 +32,7 @@ source=(
     "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
     "${pkgname}.sh"
 )
-sha256sums=('3e3cf144b6614fa9bbe3a1d8cf319fbbc0c9ca56d2fbd90400585655d14f3eda'
+sha256sums=('b350284dc5d557b8980d1e04ab204a4875655475c77bc89f9ccfb48d623eb170'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
@@ -51,7 +51,6 @@ build() {
     _ensure_local_nvm
     gendesk -q -f -n --pkgname="${pkgname}" --pkgdesc="${pkgdesc}" --categories="Utility" --name="${_pkgname}" --exec="${pkgname} %U"
     cd "${srcdir}/${pkgname}-${pkgver}"
-    electronDist="/usr/lib/electron${_electronversion}"
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
     HOME="${srcdir}/.electron-gyp"
