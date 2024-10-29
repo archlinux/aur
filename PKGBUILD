@@ -5,20 +5,20 @@ ENABLE_FAKE_GNOME_SOFTWARE=0
 
 pkgname=pamac-aur
 pkgver=11.7.2
-pkgrel=1
+pkgrel=2
 _pkgfixver=$pkgver
-_pkgfixvercli=11.6.0
-_pkgrelcli=5
+_pkgfixvercli=11.7.0
+
 
 _commit='71ced277e5931ccea2433ece291430481a2694ee'
-_commitcli='3985c4d7e95312f79bb2a7f33766912c329f4697'
+_commitcli='035e66944ce8633b6362b45ced879f00ba00a09b'
 sha256sums=('ca2995fd9605bf9841cfcf8c6e642932e7fe5016c42eeea21ead6bd2a6d97226'
-            '95b192d8bc71764e50f73394b068e78159d2b1d976a2ae22f943c51cfdd7b9ca')
+            '98e605a67cf0a72ef74c8521c2ab85aaddb1d95ad075b14fc27bd3165b859694')
 
 pkgdesc="A Gtk frontend, Package Manager based on libalpm with AUR and Appstream support"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/manjaro/pamac"
-urlcli="https://gitlab.manjaro.org/applications/pamac-cli"
+urlcli="https://github.com/manjaro/pamac-cli"
 license=('GPL-3.0-or-later')
 depends=('libnotify' 'libhandy' 'libadwaita' 'gtk4' 'desktop-file-utils' 'libpamac-aur>=11.7' 'gnutls>=3.4' 'git')
 
@@ -26,11 +26,11 @@ optdepends=('polkit-gnome: needed for authentification in Cinnamon, Gnome'
             'lxsession: needed for authentification in Xfce, LXDE etc.')
 makedepends=('gettext' 'itstool' 'vala' 'meson' 'ninja' 'gobject-introspection' 'xorgproto' 'asciidoc' 'git' 'systemd')
 conflicts=('pamac' 'pamac-tray-appindicator' 'pamac-cli')
-provides=("pamac=$_pkgfixver-$pkgrel" "pamac-cli=$_pkgfixvercli-$_pkgrelcli")
+provides=("pamac=$_pkgfixver-$pkgrel" "pamac-cli=$_pkgfixvercli-$pkgrel")
 options=(!emptydirs !strip)
 install=pamac.install
 source=("pamac-$_pkgfixver-$pkgrel.zip::$url/archive/$_commit.zip"
-        "pamac-cli-$_pkgfixvercli-$_pkgrelcli.tar.gz::$urlcli/-/archive/$_commitcli/pamac-cli-$_commitcli.tar.gz")
+        "pamac-cli-$_pkgfixvercli-$pkgrel.zip::$urlcli/archive/$_commitcli.zip")
 
 define_meson=''
 if [ "${ENABLE_FAKE_GNOME_SOFTWARE}" = 1 ]; then
