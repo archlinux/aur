@@ -4,15 +4,15 @@ _pkgauthor=pvolok
 _pkgname=mprocs
 pkgname=${_pkgname}-bin
 pkgver=0.7.1
-pkgrel=4
+pkgrel=5
 pkgdesc="Run multiple commands in parallel"
 arch=('x86_64' 'aarch64')
 url="https://github.com/${_pkgauthor}/${_pkgname}"
 _urlraw="https://raw.githubusercontent.com/${_pkgauthor}/${_pkgname}/v${pkgver}"
 license=('MIT')
 
-provides=("${pkgname}")
-conflicts=("${pkgname}")
+provides=("${_pkgname}")
+conflicts=("${_pkgname}")
 makedepends=('help2man')
 
 source=("LICENSE-${pkgver}::${_urlraw}/LICENSE"
@@ -28,7 +28,9 @@ sha256sums_aarch64=('8fc7a23caebe03a68cee54aea428b4f7d45a6305ba9377b0800db277128
 
 
 build() {
-	help2man ./${_pkgname} --no-info --output "MAN-${pkgver}.1"
+	help2man ${_pkgname} --no-info --output "MAN-${pkgver}.1" --no-info
+
+	gzip "MAN-${pkgver}.1"
 }
 
 package() {
@@ -41,6 +43,5 @@ package() {
 	install -Dm644 "README-${pkgver}" "$pkgdir/usr/share/doc/$pkgname/README.md"
 	install -Dm644 "CHANGELOG-${pkgver}" "$pkgdir/usr/share/doc/$pkgname/CHANGELOG.md"
 
-	install -Dm644 "MAN-${pkgver}.1" "${pkgdir}/usr/share/man/man1/${_pkgname}.1"
-	gzip "${pkgdir}/usr/share/man/man1/${_pkgname}.1"
+	install -Dm644 "MAN-${pkgver}.1.gz" "${pkgdir}/usr/share/man/man1/${_pkgname}.1.gz"
 }

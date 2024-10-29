@@ -1,14 +1,14 @@
 pkgbase = mprocs-bin
 	pkgdesc = Run multiple commands in parallel
 	pkgver = 0.7.1
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/pvolok/mprocs
 	arch = x86_64
 	arch = aarch64
 	license = MIT
 	makedepends = help2man
-	provides = mprocs-bin
-	conflicts = mprocs-bin
+	provides = mprocs
+	conflicts = mprocs
 	source = LICENSE-0.7.1::https://raw.githubusercontent.com/pvolok/mprocs/v0.7.1/LICENSE
 	source = README-0.7.1::https://raw.githubusercontent.com/pvolok/mprocs/v0.7.1/README.md
 	source = CHANGELOG-0.7.1::https://raw.githubusercontent.com/pvolok/mprocs/v0.7.1/CHANGELOG.md
