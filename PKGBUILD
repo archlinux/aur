@@ -3,7 +3,7 @@
 # Contributor: Alexandros Theodotou <alex@zrythm.org>
 pkgname=zrythm-git
 pkgver=1.0.0.rc.2.r0.g6ce35f2de
-pkgrel=1
+pkgrel=2
 epoch=3
 pkgdesc='a highly automated and intuitive digital audio workstation'
 arch=('x86_64' 'i686')
@@ -14,7 +14,7 @@ depends=('lilv' 'libx11' 'libsndfile' 'libsamplerate' 'alsa-lib' 'fftw'
          'xxhash' 'vamp-plugin-sdk' 'carla-git' 'gtk4' 'guile' 'libadwaita' 'gtksourceview5' 'pcre' 'libpulse' 'curl' 'libaudec' 'json-glib' 'libcyaml' 'reproc' 'libpanel' 'boost' 'lsp-dsp-lib' 'zstd' 'zix' 'yyjson' 'magic_enum')
 makedepends=('python' 'gettext' 'sed' 'python-sphinx-intl'
              'meson' 'ninja' 'help2man' 'python-sphinx'
-             'ladspa' 'lv2' 'cmake' 'sassc')
+             'ladspa' 'lv2' 'cmake' 'sassc' 'glib2-devel')
 optdepends=('portaudio: portaudio backend'
             'qt5-base: for embedding qt5 plugin UIs'
             'jack: for jack backend'

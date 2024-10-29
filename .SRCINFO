@@ -1,7 +1,7 @@
 pkgbase = zrythm-git
 	pkgdesc = a highly automated and intuitive digital audio workstation
 	pkgver = 1.0.0.rc.2.r0.g6ce35f2de
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 3
 	url = https://www.zrythm.org
 	arch = x86_64
@@ -19,6 +19,7 @@ pkgbase = zrythm-git
 	makedepends = lv2
 	makedepends = cmake
 	makedepends = sassc
+	makedepends = glib2-devel
 	depends = lilv
 	depends = libx11
 	depends = libsndfile
