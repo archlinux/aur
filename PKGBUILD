@@ -1,9 +1,9 @@
 # Maintainer: Michael Picht <mipi@fsfe.org>
 
 _pkgorg=gitlab.com/mipimipi
-pkgname=otr-git
 _pkgname=otr
-pkgver=0.11.3
+pkgname=${_pkgname}-git
+pkgver=0.11.5
 pkgrel=1
 pkgdesc="Decode and cut video files from Online TV Recorder (OTR)"
 arch=(
