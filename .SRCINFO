@@ -1,6 +1,6 @@
 pkgbase = firefox-esr-globalmenu
-	pkgdesc = Standalone web browser from mozilla.org, Extended Support Release. (With appmenu patch from Ubuntu)
-	pkgver = 115.14.0
+	pkgdesc = Fast, Private & Safe Web Browser, Extended Support Release. (with appmenu patch)
+	pkgver = 128.4.0
 	pkgrel = 1
 	url = https://www.mozilla.org/en-US/firefox/enterprise/
 	install = firefox-esr.install
@@ -40,42 +40,19 @@ pkgbase = firefox-esr-globalmenu
 	optdepends = hunspell-en_US: Spell checking, American English
 	optdepends = libnotify: Notification integration
 	optdepends = networkmanager: Location detection via available WiFi networks
-	optdepends = pulseaudio: Audio support
 	optdepends = speech-dispatcher: Text-to-Speech
 	optdepends = xdg-desktop-portal: Screensharing with Wayland
-	provides = firefox-esr=115.14.0
+	provides = firefox-esr=128.4.0
 	conflicts = firefox-esr
 	options = !emptydirs
 	options = !lto
 	options = !makeflags
-	source = https://archive.mozilla.org/pub/firefox/releases/115.14.0esr/source/firefox-115.14.0esr.source.tar.xz
-	source = https://archive.mozilla.org/pub/firefox/releases/115.14.0esr/source/firefox-115.14.0esr.source.tar.xz.asc
-	source = D187418.patch::https://phabricator.services.mozilla.com/D187418?download=true
-	source = D187749.patch::https://phabricator.services.mozilla.com/D187749?download=true
-	source = D208884.patch::https://phabricator.services.mozilla.com/D208884?download=true
-	source = D194781.patch::https://phabricator.services.mozilla.com/D194781?download=true
-	source = D205839.patch::https://phabricator.services.mozilla.com/D205839?download=true
-	source = 9e96d1447f6c.patch::https://hg.mozilla.org/mozilla-central/raw-rev/9e96d1447f6c
-	source = c4d6ad7c5e44.patch::https://hg.mozilla.org/mozilla-central/raw-rev/c4d6ad7c5e44
-	source = ea780120e917.patch::https://hg.mozilla.org/mozilla-central/raw-rev/ea780120e917
-	source = rust-1.78.0.patch::https://gitlab.archlinux.org/archlinux/packaging/packages/thunderbird/-/raw/1eb123764e21a3c3788240be5ca63e13d36e2b6b/0033-bmo-1882209-update-crates-for-rust-1.78-stripped-patch-from-bugs.freebsd.org-bug278834.patch
-	source = llvm18.patch::https://github.com/pld-linux/thunderbird/raw/1b415245f46e2d8667ee0448bfeb1ff3a0ad67ee/llvm18.patch
-	source = feature-unity-menubar-m-c.patch::https://github.com/Betterbird/thunderbird-patches/raw/83819e9a1df8e8e4221c3e5bce5d35492611d5ca/115/features/feature-unity-menubar-m-c.patch
-	source = fis-csd-global-menu.patch::https://github.com/hawkeye116477/waterfox-deb-rpm-arch-AppImage/raw/7e9b3f679ebf55a8dbbd52dad692167fe6ff14fb/waterfox-kde/patches/fis-csd-global-menu.patch
+	source = https://archive.mozilla.org/pub/firefox/releases/128.4.0esr/source/firefox-128.4.0esr.source.tar.xz
+	source = https://archive.mozilla.org/pub/firefox/releases/128.4.0esr/source/firefox-128.4.0esr.source.tar.xz.asc
+	source = unity-menubar.patch
 	validpgpkeys = 14F26682D0916CDD81E37B6D61B7B526D98F0353
-	sha1sums = 7ecbc5b05fc5671ffd79b54275d4375b30818fcc
+	sha1sums = 63976b5ea27d03ca8b6230435fb62fb74265cafc
 	sha1sums = SKIP
-	sha1sums = b3ccca02959d94ef2a5db8f140ff96a2cd9724ef
-	sha1sums = 559ce09fee54c849ea4da2bf881da37f5fc0cac9
-	sha1sums = 0ab2fac39fc6b10eb4aa3c40435fe0d83cb73a1b
-	sha1sums = 4e39ef39439bc397215c94a73dcf1660a1023258
-	sha1sums = c50399b3d9b241e938c86f07e455a730bbe0416a
-	sha1sums = eb757775d705b86a55b1da16f8fb3263d76eccfc
-	sha1sums = 1029fe0d467adb991f2cc155f290fdd04844bba2
-	sha1sums = aedcae99a93ab718463cf5cc529331e9d0d4ff35
-	sha1sums = 659db072059db04bfc27ac4659912f6fb5e842aa
-	sha1sums = 55a2d38af72d013c4ace8b633fd9a96b48d9fcfb
-	sha1sums = 0b5cb49417c6666fe9c1ff8ea6b5f0bfacac24d0
-	sha1sums = 801ec02b5dce0ddae3610b84241d2528717afa5c
+	sha1sums = 9788a6edefd4d34d25788f2914eb3b096690d2b7
 
 pkgname = firefox-esr-globalmenu

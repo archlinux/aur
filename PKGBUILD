@@ -9,10 +9,10 @@ _ff_theme=official
 
 _pkgname=firefox-esr
 pkgname=firefox-esr-globalmenu
-pkgver=115.14.0
+pkgver=128.4.0
 pkgrel=1
 _ff_srcname="firefox-$pkgver"
-pkgdesc="Standalone web browser from mozilla.org, Extended Support Release. (With appmenu patch from Ubuntu)"
+pkgdesc="Fast, Private & Safe Web Browser, Extended Support Release. (with appmenu patch)"
 url="https://www.mozilla.org/en-US/firefox/enterprise/"
 install="$_pkgname.install"
 arch=(x86_64)
@@ -56,7 +56,6 @@ optdepends=(
 	'hunspell-en_US: Spell checking, American English'
 	'libnotify: Notification integration'
 	'networkmanager: Location detection via available WiFi networks'
-	'pulseaudio: Audio support'
 	'speech-dispatcher: Text-to-Speech'
 	'xdg-desktop-portal: Screensharing with Wayland')
 options=(
@@ -65,18 +64,7 @@ options=(
 	!makeflags)
 source=(
 	"https://archive.mozilla.org/pub/firefox/releases/${pkgver}esr/source/firefox-${pkgver}esr.source.tar.xz"{,.asc}
-	"D187418.patch::https://phabricator.services.mozilla.com/D187418?download=true" # Tooltip only when focusd
-	"D187749.patch::https://phabricator.services.mozilla.com/D187749?download=true" # Tooltip only when focusd
-	"D208884.patch::https://phabricator.services.mozilla.com/D208884?download=true" # Unbreak distutils
-	"D194781.patch::https://phabricator.services.mozilla.com/D194781?download=true" # Unbreak distutils
-	"D205839.patch::https://phabricator.services.mozilla.com/D205839?download=true" # Unbreak distutils
-	"9e96d1447f6c.patch::https://hg.mozilla.org/mozilla-central/raw-rev/9e96d1447f6c" #MOZ Bug 1873379
-	"c4d6ad7c5e44.patch::https://hg.mozilla.org/mozilla-central/raw-rev/c4d6ad7c5e44" #MOZ Bug 1841919
-	"ea780120e917.patch::https://hg.mozilla.org/mozilla-central/raw-rev/ea780120e917" #MOZ Bug 1841919
-	"rust-1.78.0.patch::https://gitlab.archlinux.org/archlinux/packaging/packages/thunderbird/-/raw/1eb123764e21a3c3788240be5ca63e13d36e2b6b/0033-bmo-1882209-update-crates-for-rust-1.78-stripped-patch-from-bugs.freebsd.org-bug278834.patch" # BSD Bug 278834
-	"llvm18.patch::https://github.com/pld-linux/thunderbird/raw/1b415245f46e2d8667ee0448bfeb1ff3a0ad67ee/llvm18.patch" # BSD Bug 278989
-	"feature-unity-menubar-m-c.patch::https://github.com/Betterbird/thunderbird-patches/raw/83819e9a1df8e8e4221c3e5bce5d35492611d5ca/115/features/feature-unity-menubar-m-c.patch"
-	"fis-csd-global-menu.patch::https://github.com/hawkeye116477/waterfox-deb-rpm-arch-AppImage/raw/7e9b3f679ebf55a8dbbd52dad692167fe6ff14fb/waterfox-kde/patches/fis-csd-global-menu.patch")
+	"unity-menubar.patch")
 validpgpkeys=(
 	# Mozilla Software Releases <release@mozilla.com>
 	# https://blog.mozilla.org/security/2023/05/11/updated-gpg-key-for-signing-firefox-releases/
@@ -87,12 +75,6 @@ validpgpkeys=(
 # get your own set of keys. Feel free to contact foutrelis@archlinux.org for
 # more information.
 _google_api_key=AIzaSyDwr302FpOSkGRpLlUpPThNTDPbXcIn_FM
-
-# Mozilla API keys (see https://location.services.mozilla.com/api)
-# Note: These are for Arch Linux use ONLY. For your own distribution, please
-# get your own set of keys. Feel free to contact heftig@archlinux.org for
-# more information.
-_mozilla_api_key=e05d56db0a694edc8b5aaebda3f2db6a
 
 prepare() {
 	if ! mkdir mozbuild; then
@@ -110,7 +92,6 @@ prepare() {
 	done
 
 	echo -n "$_google_api_key" >google-api-key
-	echo -n "$_mozilla_api_key" >mozilla-api-key
 
 	cat >../mozconfig <<-END
 		ac_add_options --enable-application=browser
@@ -139,7 +120,6 @@ prepare() {
 		# Keys
 		ac_add_options --with-google-location-service-api-keyfile=${PWD@Q}/google-api-key
 		ac_add_options --with-google-safebrowsing-api-keyfile=${PWD@Q}/google-api-key
-		ac_add_options --with-mozilla-api-keyfile=${PWD@Q}/mozilla-api-key
 
 		# System libraries
 		ac_add_options --with-system-nspr
@@ -170,10 +150,7 @@ fi
 build() {
 	cd "$_ff_srcname"
 
-	# The correct Rust version for thunderbird 115 is 1.70.0
-	# packed_simd no longer builds with 1.78.0, but patched
 	export RUSTUP_TOOLCHAIN=1.78
-
 	export MACH_BUILD_PYTHON_NATIVE_PACKAGE_SOURCE=none
 	export MOZBUILD_STATE_PATH="$srcdir/mozbuild"
 	export MOZ_NOSPAM=1
@@ -184,40 +161,17 @@ build() {
 	CFLAGS="${CFLAGS/_FORTIFY_SOURCE=3/_FORTIFY_SOURCE=2}"
 	CXXFLAGS="${CXXFLAGS/_FORTIFY_SOURCE=3/_FORTIFY_SOURCE=2}"
 
+	# Breaks compilation since https://bugzilla.mozilla.org/show_bug.cgi?id=1896066
+	CFLAGS="${CFLAGS/-fexceptions/}"
+	CXXFLAGS="${CXXFLAGS/-fexceptions/}"
+
 	# LTO needs more open files
 	ulimit -n 4096
 
-	# Do 3-tier PGO
-	echo "Building instrumented browser..."
 	cat >.mozconfig ../mozconfig - <<-END
-		ac_add_options --enable-profile-generate=cross
+		ac_add_options --enable-lto=cross,thin
 	END
-	./mach build
-
-	echo "Profiling instrumented browser..."
-
-	./mach package
-	LLVM_PROFDATA=llvm-profdata JARLOG_FILE="$PWD/jarlog" \
-		xvfb-run -s "-screen 0 1920x1080x24 -nolisten local" \
-			./mach python build/pgo/profileserver.py
-
-	stat -c "Profile data found (%s bytes)" merged.profdata
-	test -s merged.profdata
-
-	stat -c "Jar log found (%s bytes)" jarlog
-	test -s jarlog
-
-	echo "Removing instrumented browser..."
-	./mach clobber
-
-	echo "Building optimized browser..."
-	cat >.mozconfig ../mozconfig - <<-END
-		ac_add_options --enable-lto=cross
-		ac_add_options --enable-profile-use=cross
-		ac_add_options --with-pgo-profile-path=${PWD@Q}/merged.profdata
-		ac_add_options --with-pgo-jarlog=${PWD@Q}/jarlog
-	END
-	./mach build # && echo "Building symbol archive..." & ./mach buildsymbols
+	./mach build --priority normal
 }
 
 package() {
@@ -289,7 +243,7 @@ package() {
 
 	install -Dvm644 browser/branding/$_ff_theme/content/about-logo.svg \
 		"$pkgdir/usr/share/icons/hicolor/scalable/apps/$desktopid.svg"
-	install -Dvm644 browser/branding/$_ff_theme/content/about-logo.svg \
+	install -Dvm644 taskcluster/docker/firefox-flatpak/firefox-symbolic.svg \
 		"$pkgdir/usr/share/icons/hicolor/symbolic/apps/$desktopid-symbolic.svg"
 
 	# Use system certificates
@@ -299,15 +253,23 @@ package() {
 
 	# Search Providers
 	install -Dvm644 /dev/stdin \
+	"$pkgdir/usr/share/dbus-1/services/org.mozilla.${_pkgname//-/_}.SearchProvider.service" < <(\
+		sed -e "s|org\.mozilla\.firefox|org\.mozilla\.${_pkgname//-/_}|" \
+			-e "s|/usr/bin/firefox|/usr/bin/$_pkgname|" \
+			browser/components/shell/search-provider-files/org.mozilla.firefox.SearchProvider.service\
+	)
+	install -Dvm644 /dev/stdin \
 	"$pkgdir/usr/share/gnome-shell/search-providers/$desktopid.search-provider.ini" < <(\
-		sed "s|firefox.desktop|$desktopid.desktop|" \
-			browser/components/shell/search-provider-files/firefox-search-provider.ini\
+		sed -e "s|firefox|${_pkgname//-/_}|g" \
+			-e "s|${_pkgname//-/_}.desktop|$desktopid.desktop|" \
+			browser/components/shell/search-provider-files/org.mozilla.firefox.search-provider.ini\
 	)
 
 	# Metainfo
 	install -Dvm644 /dev/stdin "$pkgdir/usr/share/metainfo/$desktopid.metainfo.xml" < <(\
 		VERSION=$pkgver DATE=$(date +%Y-%m-%d) envsubst < <(\
-			sed "s|org.mozilla.firefox|$desktopid|g" \
+			sed -e "s|org.mozilla.firefox|$desktopid|g" \
+				-e "s|<name>Firefox</name>|<name>$_ff_displayname</name>|" \
 				taskcluster/docker/firefox-flatpak/org.mozilla.firefox.appdata.xml.in)\
 	)
 
@@ -316,7 +278,7 @@ package() {
 		#!/usr/bin/env sh
 		export MOZ_APP_LAUNCHER="\$0" # Used for determine whether firefox is default browser
 		export MOZ_DESKTOP_FILE_NAME=$desktopid # https://bugzilla.mozilla.org/show_bug.cgi?id=1438051
-		exec /usr/lib/$_pkgname/$_pkgname "\$@"
+		exec /usr/lib/$_pkgname/$_pkgname --name $desktopid "\$@"
 
 	END
 
@@ -324,7 +286,7 @@ package() {
 	install -Dvm755 /dev/stdin "$pkgdir/usr/share/applications/$desktopid.desktop" < <(\
 		sed -e "/^Name.*=/s|Firefox|$_ff_displayname|g" \
 			-e "s|Exec=firefox|Exec=/usr/bin/$_pkgname|g" \
-			-e "s|Icon=org.mozilla.firefox|Icon=$desktopid|g" \
+			-e "s|Icon=org\.mozilla\.firefox|Icon=$desktopid|g" \
 			-e "s|StartupWMClass=firefox|StartupWMClass=$_pkgname|" \
 			taskcluster/docker/firefox-flatpak/org.mozilla.firefox.desktop\
 	)
@@ -334,19 +296,8 @@ package() {
 	ln -srfv "$pkgdir/usr/lib/$_pkgname/$_pkgname" "$pkgdir/usr/lib/$_pkgname/$_pkgname-bin"
 }
 
-sha1sums=('7ecbc5b05fc5671ffd79b54275d4375b30818fcc'
+sha1sums=('63976b5ea27d03ca8b6230435fb62fb74265cafc'
           'SKIP'
-          'b3ccca02959d94ef2a5db8f140ff96a2cd9724ef'
-          '559ce09fee54c849ea4da2bf881da37f5fc0cac9'
-          '0ab2fac39fc6b10eb4aa3c40435fe0d83cb73a1b'
-          '4e39ef39439bc397215c94a73dcf1660a1023258'
-          'c50399b3d9b241e938c86f07e455a730bbe0416a'
-          'eb757775d705b86a55b1da16f8fb3263d76eccfc'
-          '1029fe0d467adb991f2cc155f290fdd04844bba2'
-          'aedcae99a93ab718463cf5cc529331e9d0d4ff35'
-          '659db072059db04bfc27ac4659912f6fb5e842aa'
-          '55a2d38af72d013c4ace8b633fd9a96b48d9fcfb'
-          '0b5cb49417c6666fe9c1ff8ea6b5f0bfacac24d0'
-          '801ec02b5dce0ddae3610b84241d2528717afa5c')
+          '9788a6edefd4d34d25788f2914eb3b096690d2b7')
 
 # vim:set sw=2 sts=-1 et:

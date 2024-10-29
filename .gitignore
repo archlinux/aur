@@ -3,5 +3,5 @@
 !.gitignore
 !.SRCINFO
 !PKGBUILD
-!upload-symbol-archive
 !*.install
+!*.patch
