@@ -4,10 +4,10 @@
 pkgname=waveterm
 _pkgname=Wave
 _appname="${_pkgname} Terminal"
-pkgver=0.8.13
+pkgver=0.9.0
 _electronversion=33
 _nodeversion=20
-pkgrel=2
+pkgrel=1
 pkgdesc="An open-source, cross-platform terminal for seamless workflows.Use system-wide electron."
 arch=(
     'aarch64'
@@ -24,7 +24,7 @@ makedepends=(
     'gcc'
     'gendesk'
     'npm'
-    'go>=1.18'
+    'go'
     'curl'
     'gcc'
     'zip'
@@ -34,12 +34,14 @@ makedepends=(
     'go-task'
     'zig'
     'ruby-bundler'
+    'libarchive'
+    'openjpeg2'
 )
 source=(
     "${pkgname}-${pkgver}.tar.gz::${_ghurl}/archive/refs/tags/v${pkgver}.tar.gz"
     "${pkgname}.sh"
 )
-sha256sums=('13d3f2b7f978cdfe60fd85d271aacf972c444dfb5c26a25b7c4ec0077a91ded7'
+sha256sums=('c813253fdcc29798e6aa2cbf085b0f7b43762d29ed0000157cbad38cca478207'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
