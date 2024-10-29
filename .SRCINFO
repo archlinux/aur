@@ -1,0 +1,21 @@
+pkgbase = ls-lint-bin
+	pkgdesc = An extremely fast directory and filename linter
+	pkgver = 2.2.3
+	pkgrel = 1
+	url = https://github.com/loeffel-io/ls-lint
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	provides = ls-lint
+	conflicts = ls-lint
+	source = LICENSE-2.2.3::https://raw.githubusercontent.com/loeffel-io/ls-lint/v2.2.3/LICENSE
+	source = README-2.2.3.md::https://raw.githubusercontent.com/loeffel-io/ls-lint/v2.2.3/README.md
+	sha256sums = 864e3ef166eb372f1e6b333539a8fad3a9df57463bb41aae14e0aba6d6f4bd33
+	sha256sums = d62b15b4a1f83131043e60b25b8910d44e94cd608b6c11ee9df0abc8b38526f2
+	source_x86_64 = https://github.com/loeffel-io/ls-lint/releases/download/v2.2.3/ls-lint-linux-amd64.tar.gz
+	sha256sums_x86_64 = 877df1d0ffc9f5b15ad21191fb67fd77fcb4812a9469dfd8c83ec17e857da6e6
+	source_aarch64 = https://github.com/loeffel-io/ls-lint/releases/download/v2.2.3/ls-lint-linux-arm64.tar.gz
+	sha256sums_aarch64 = f22f481d17b893758b338de0e5ccc191e029020caa7bc388d1d805d5f77115a8
+
+pkgname = ls-lint-bin
