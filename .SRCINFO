@@ -1,7 +1,7 @@
 pkgbase = python-great-tables
 	pkgdesc = Make awesome display tables using Python
 	pkgver = 0.13.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://posit-dev.github.io/great-tables/
 	arch = any
 	license = MIT
