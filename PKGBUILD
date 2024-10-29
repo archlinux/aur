@@ -1,8 +1,8 @@
 # Maintainer: haxibami <contact at haxibami dot net>
 
 pkgname=ctrld-bin
-pkgver=1.3.9
-pkgrel=2
+pkgver=1.3.10
+pkgrel=1
 pkgdesc="A highly configurable, multi-protocol DNS forwarding proxy"
 arch=('x86_64')
 url="https://github.com/Control-D-Inc/ctrld"
@@ -14,12 +14,12 @@ source=(
   "ctrld.service"
   "ctrld.toml"
 )
-sha256sums=('43948a2122bbb98b73ee0eaaa32ba770e363c124571792ed31faa26848a8748b'
+sha256sums=('cacd26054090f719075e942e02997fc110e4b5f286d83be54db6f6fa6542104a'
   '0b1dd36bc9706f88949de821d84604cbc9a2534cd2f627ef5303bfc962af72cd'
   '40328c166a329b47072593998170544084725a47e20989be242bbc137d91cd0a')
 
 package() {
-  cd "$srcdir/dist/ctrld_${pkgver}_linux_amd64"
+  cd "${srcdir}/dist/ctrld_${pkgver}_linux_amd64"
   install -Dm755 ctrld "${pkgdir}/usr/bin/ctrld"
   install -Dm644 "${srcdir}/ctrld.service" "${pkgdir}/usr/lib/systemd/system/ctrld.service"
   install -Dm644 "${srcdir}/ctrld.toml" "${pkgdir}/etc/controld/ctrld.toml"
