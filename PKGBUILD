@@ -1,6 +1,6 @@
 # Maintainer:
 
-## useful urls
+## links
 # https://www.lazarus-ide.org/
 # https://gitlab.com/freepascal.org/lazarus/lazarus
 # https://www.freepascal.org/docs-html/user/usersu15.html
@@ -22,7 +22,7 @@ unset _pkgtype
 ## basic info
 _pkgbase="lazarus"
 pkgbase="$_pkgbase${_pkgtype:-}"
-pkgver=3.4.r1807.g258a7a4
+pkgver=3.6.r3182.g41e0703
 pkgrel=1
 pkgdesc='Delphi-like IDE for FreePascal'
 url="https://gitlab.com/freepascal.org/lazarus/lazarus"
@@ -32,7 +32,7 @@ license=(
   'GPL-2.0-only'
 
   # synedit
-  'Apache-2.0'
+  'MPL-2.0'
 
   # component library
   'LGPL-2.0-only'
@@ -110,6 +110,8 @@ _package_lazarus() {
   rm -r "$pkgdir"/usr/lib/lazarus/install
 
   _package_licenses
+
+  chmod -R u+rwX,go+rX,go-w "$pkgdir/"
 }
 
 _package_platform() {
@@ -132,6 +134,8 @@ _package_platform() {
   install -Dm644 images/ide_icon48x48.png "$pkgdir"/usr/share/pixmaps/lazarus.png
 
   _package_licenses
+
+  chmod -R u+rwX,go+rX,go-w "$pkgdir/"
 }
 
 _package_licenses() {
@@ -142,7 +146,7 @@ _package_licenses() {
 build() {
   cd "$_pkgsrc"
 
-  local _fpc_options=(-O3 "-k'--sort-common --as-needed  -z relro -z now'")
+  local _fpc_options=(-O3 '-k"-O1 --sort-common --as-needed -z relro -z now -z pack-relative-relocs"')
 
   if [[ "${_debug::1}" == "t" ]]; then
     _fpc_options+=(-gl -gw)
@@ -198,8 +202,8 @@ for _p in "${pkgname[@]}"; do
         depends=('fpc' 'fpc-src' 'gdb')
         optdepends=(
           'perl: to run some scripts in the tools directory'
-          'gtk2: to compile gtk2 apps'
-          'gtk3: to compile gtk3 apps'
+          'gtk2: to compile GTK2 apps'
+          'gtk3: to compile GTK3 apps'
           'qt5pas: to compile Qt5 apps'
           'qt6pas: to compile Qt6 apps'
         )
