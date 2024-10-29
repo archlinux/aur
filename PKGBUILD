@@ -3,7 +3,7 @@
 # Contributor: Jan de Groot <jgc@archlinux.org>
 
 pkgname=xorg-server-bug865-issue1578
-pkgver=21.1.13
+pkgver=21.1.14
 pkgrel=1
 arch=('x86_64')
 license=('LicenseRef-Adobe-Display-PostScript'
@@ -32,7 +32,7 @@ makedepends=('xorgproto' 'pixman' 'libx11' 'mesa' 'mesa-libgl' 'xtrans'
              'libxshmfence' 'libunwind' 'systemd' 'meson' 'git')
 source=(xorg-server::git+https://gitlab.freedesktop.org/xorg/xserver.git#tag=xorg-server-${pkgver}
         freedesktop-bug-865.patch)
-sha512sums=('8893b7e236ffb2001d75df98af6480548bc2f5c129d2df1e377730d26c0f0d6a6faf0bed5266a3f8cce9d07560efe90081b8a8d0a3b527330874fb33deb1ba3e'
+sha512sums=('bdfdab4374174af9a49d4c25ea456e867a2e30a7795b751a77c946df0560c9418ba1313f58196393901d82ec8b0f44c3d2550f435001f84052299d9fc3184b26'
             'c3b541c7ac95c94f682577cacedc06e79427003a870cde844056a7662087873b59dc06933552bb867b16fc0387f8a061672df780454769f26aa3e53b13a94edf')
 
 prepare() {
