@@ -9,8 +9,8 @@
 
 ## Mozc compile option
 _bldtype=Release
-_mozc_commit=3db6e34452a4e230b8548a69b6d76548eec90bae
-_bcr_commit=4f4bad8f463685498cf9e0a4ba45ffe9e290a853
+_mozc_commit=03e70410762024a1ff975c3c99579ee9d5cf6f92
+_bcr_commit=0075ee41ff2c1a15ce66b615aefeb28bada211ef
 _dict_to_mozc_commit=c9b7de2e5b74be3b23ad7fec83f7b643716ead73
 _branch=fcitx
 # Sudachi Dictionary
@@ -36,8 +36,7 @@ makedepends=('fcitx' 'fcitx-qt6' 'bazel' 'git' 'python' 'mold' 'libibus' 'rustup
 options=(!lto)
 source=("git+$url.git#commit=${_mozc_commit}"
         "bcr::git+https://github.com/bazelbuild/bazel-central-registry.git#commit=${_bcr_commit}"
-        "build-script.patch::https://github.com/fcitx/mozc/pull/68/commits/314934e6fd29bd61cae8fa7dd97c07c95e07e912.patch"
-        "bazel-build.patch::https://github.com/google/mozc/pull/1095/commits/b5e4538360613f83f28d83e2d6d26dcc355e05f0.patch"
+        "build-script.patch::https://github.com/fcitx/mozc/commit/83c68ed46093deb037b6c9368d55da7e7a0ec181.patch"
         "git+https://github.com/abseil/abseil-cpp.git#commit=${_abseil_cpp_commit}"
         "git+https://github.com/google/breakpad.git#commit=${_breakpad_commit}"
         "git+https://github.com/google/googletest.git#commit=${_gtest_commit}"
@@ -59,10 +58,9 @@ source=("git+$url.git#commit=${_mozc_commit}"
         LICENSE-MeCab-ipadic-Neologd::https://github.com/neologd/mecab-ipadic-neologd/raw/refs/heads/master/COPYING
         )
 
-sha512sums=('fa16390b7ba5fe777e0326efcbe42dc2ebc8e62ddc7df94387bf0d7c26f290bab80175d63e74e9b6660db661594026a98d673763c654e48ac47dad25119de2d5'
-            '80ef897afb0450e16e67ee4131715500a64987cdb5093f9b68920038edb329216cf35df2c71b3ddec2b53728eb5867b8cbb09ca9d3505a32e032cbeef1f77571'
-            'ebf15d63c33be91c2fe32ff09388c788848fe3d8d1c2f475a485c8ffa0dd3df7fbd3bee960507c8128af159e9cf7a7ca32f001472f88749f61951c4bc8db83c0'
-            'd6fc4344894d07fb424c8865ec051c89e1e75a34d5b8ff9f4582921fd23fdab8bfd084b64736226ca6ab56da6cdea8434dbdaee249c20cfe68f7badc6d9d182a'
+sha512sums=('d1dd9b429932506492960078425467845c6360e6dbd549f297f96a2ef7cf591bf7f5609f8cb77ee1dd2ef49fe3294a40eeea00086b8bcdec037d9f1c0988a60c'
+            '7d8f64fd4ffab329a9ca8838c9a9a750c04549605e60e1e0205059025539a85e53ba0ed557d3581366bc361417c95059a6b9540e8c09f42f10490960e80ba099'
+            'e077c843dc717f7e9add0a135762ffe7c3117316f59e504d75764c49a0c06967e54217d3a2fbd7afd3bc118e9ade743746c69af6accbabc4dc5786ce43dba54c'
             '83a6fa68645d138af64ddddcfd15da567c4c46f92fb69be6c10bc5989c3aa6ab85776dfb3fcccdc9e7c32ca9f8260be121ceb7d329792d28ec9a66417a903a68'
             'f69046af8c37a2a8a441a258d5b8677016966cb43d8a3bb48badc78123a885d6179ff77d7885fd6c84130136a1b8931a98d35f9fcce3d03ed31a37a72ece0b9d'
             '44db7d4a09aa7d36f1fb5a89be2234834a58834c76e445f8e9f7bc5685f6a76005b19fc758842c63641e476fa97c10eb968fa13965312fafca25843181fd025b'
@@ -98,9 +96,8 @@ prepare() {
   git config submodule.src/third_party/wil.url "$srcdir/wil"
   git -c protocol.file.allow=always submodule update
 
-  # PR(pull request) google#1095 for bazel build
+  # PR(pull request) #68 for bazel build
   patch -p1 -i ${srcdir}/build-script.patch
-  patch -p1 -i ${srcdir}/bazel-build.patch
 
   cd "$srcdir/mozc/src"
 
