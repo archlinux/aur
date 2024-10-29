@@ -18,24 +18,25 @@ install="openscad-${_gitname}-git.install"
 
 pkgver() {
   cd "${_gitname}"
-  ( set -o pipefail
-    git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
-    printf 'r%s.%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-  )
+    ( set -o pipefail
+      git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+      printf 'r%s.%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    )
 }
 
 build() {
- cd "${_gitname}"
- rm -rf ./*test*
- rm -rf examples
+  cd "${_gitname}"
+  rm -rf ./*test*
+  rm -rf examples
 }
 
 package() {
- mkdir -p "${pkgdir}/usr/share/openscad/libraries/${_gitname}"
 
- cd "${_gitname}"
+  mkdir -p "${pkgdir}/usr/share/openscad/libraries/${_gitname}"
 
- find . -type f -name '*.scad' -exec install -Dm 744 '{}' "$pkgdir/usr/share/openscad/libraries/${_gitname}/{}" \;
+  cd "${_gitname}"
+
+  find . -type f -name '*.scad' -exec install -Dm 744 '{}' "$pkgdir/usr/share/openscad/libraries/${_gitname}/{}" \;
 }
 
 # vim: ts=2 sw=2 et:
