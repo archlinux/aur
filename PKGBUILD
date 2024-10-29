@@ -1,21 +1,21 @@
 #Maintainer: Bhoppi Chaw <bhoppi#outlook,com>
 
 pkgname=ffx264
-pkgver=4.2.0
+pkgver=4.2.1
 pkgrel=1
-pkgdesc='a small yet quite capable shell script for encoding video files to the H.264 video format using ffmpeg and libx264.'
+pkgdesc='Small script to encode to H.264/AVC video using FFmpeg and libx264'
 arch=(any)
 url='https://ffx264.teambelgium.net/'
-license=(GPL2)
+license=(GPL-2.0-or-later)
 depends=(ffmpeg bc)
 optdepends=(
-    'mplayer: for crop preview only'
-    'gpac: for mp4/mov cover art only'
+  'mplayer: for crop preview'
+  'gpac: for MP4 cover art'
 )
 source=("https://downloads.sourceforge.net/project/$pkgname/$pkgname-$pkgver.tar.gz")
-sha256sums=('0fceb8be2e098069f61cb5bc9a83b845e121d98807869771c8e27ff65a030d8e')
+sha256sums=('596cd0e8a08472bffe20636e94766170ec78a7a6f9a09b85410a7945713a3f84')
 
 package() {
-    cd $pkgname-$pkgver
-    make install PREFIX="$pkgdir"/usr
+  cd $pkgname-$pkgver
+  make install PREFIX="$pkgdir"/usr
 }
