@@ -4,7 +4,7 @@
 
 pkgname=gromacs
 pkgver=2024.3
-pkgrel=2
+pkgrel=3
 pkgdesc='A versatile package to perform molecular dynamics, i.e. simulate the Newtonian equations of motion for systems with hundreds to millions of particles.'
 url='http://www.gromacs.org/'
 license=("LGPL")
@@ -42,10 +42,10 @@ build() {
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_INSTALL_LIBDIR=lib \
         -DGMX_DOUBLE=ON \
-        #-DGMX_BUILD_OWN_FFTW=ON \
-  # For AVX2 and AVX512 support, uncomment the previous line
         -DGMX_HWLOC=ON \
         -DREGRESSIONTEST_DOWNLOAD=ON
+        # For AVX2 and AVX512 support, add the following line
+        #-DGMX_BUILD_OWN_FFTW=ON 
   make
 
   msg2 "Building the single precision files"
@@ -53,12 +53,12 @@ build() {
   cmake ../gromacs-v${pkgver}/ \
         -DCMAKE_INSTALL_PREFIX=/usr/ \
         -DCMAKE_INSTALL_LIBDIR=lib \
-        #-DGMX_BUILD_OWN_FFTW=ON \
-  # For AVX2 and AVX512 support, uncomment the previous line
         -DGMX_HWLOC=ON \
-        -DREGRESSIONTEST_DOWNLOAD=ON \
+        -DREGRESSIONTEST_DOWNLOAD=ON
+        # For GPU acceleration support, add the following line and pick one of: OFF, CUDA, OpenCL, SYCL
         #-DGMX_GPU=CUDA
-  # For GPU acceleration support, uncomment the previous line and pick one: OFF, CUDA, OpenCL, SYCL
+        # For AVX2 and AVX512 support, add the following line
+        #-DGMX_BUILD_OWN_FFTW=ON
   make
 }
 
