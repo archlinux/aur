@@ -1,7 +1,7 @@
 # Maintainer: cyber-luna <cyber-luna@tuta.io>
 
 pkgname='lunawp'
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="a tool that changes your wallpaper if your workspace changes"
 arch=('any')
