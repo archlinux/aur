@@ -1,7 +1,7 @@
 pkgbase = regexy
 	pkgdesc = curses program to play with regular expressions
-	pkgver = 0.4.4
-	pkgrel = 2
+	pkgver = 0.4.5
+	pkgrel = 1
 	url = https://sr.ht/~minshall/regexy/
 	arch = any
 	license = MIT
@@ -11,7 +11,7 @@ pkgbase = regexy
 	makedepends = gengetopt
 	makedepends = git
 	depends = glibc
-	source = git+https://git.sr.ht/~minshall/regexy#tag=2e0cac308d2be7838af79f6b26328a0363f56b76?signed
+	source = git+https://git.sr.ht/~minshall/regexy#tag=c6a77ead38cfc244a99240ec80b54cc3b46df8c3?signed
 	validpgpkeys = BB68C8D3A3D23B9B398FB50AC397C74C54A9EC4F
 	sha256sums = SKIP
 
