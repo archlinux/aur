@@ -1,7 +1,7 @@
 pkgbase = plymouth-theme-russia
 	pkgdesc = Russia coat of arms splash screen for plymouth
 	pkgver = 1.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://notabug.org/Thr0TT1e/russia-theme-plymouth
 	install = plymouth-theme-russia.install
 	arch = any

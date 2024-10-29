@@ -3,7 +3,7 @@
 _themename=russia
 pkgname=plymouth-theme-$_themename
 pkgver=1.0
-pkgrel=4
+pkgrel=5
 pkgdesc="Russia coat of arms splash screen for plymouth"
 arch=("any")
 url=https://notabug.org/Thr0TT1e/russia-theme-plymouth
@@ -22,6 +22,6 @@ package(){
     install -Dm644 $N "${_themedir}/$N"
   done
 
-  #install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 ../../LICENSE "${pkgdir}/usr/share/licenses/$pkgname/LICENSE"
   install -Dm644 ../../README.md "${pkgdir}/usr/share/doc/$pkgname/README.md"
 }
