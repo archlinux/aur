@@ -4,13 +4,13 @@
 # Contributor: Ivan Semkin (ivan at semkin dot ru)
 # Contributor: Martin Weinelt <hexa@darmstadt.ccc.de>
 
-## useful links
+## links
 # https://matrix.org/
 # https://github.com/quotient-im/Quaternion
 
 _pkgname="quaternion"
 pkgname="$_pkgname-git"
-pkgver=0.0.96.1.r6.g85997fb
+pkgver=0.0.96.1.r13.g53b33fd
 pkgrel=1
 pkgdesc='Qt-based IM client for the Matrix protocol'
 url="https://github.com/quotient-im/Quaternion"
@@ -18,6 +18,7 @@ license=('GPL-3.0-or-later' 'LGPL-2.1-or-later')
 arch=('aarch64' 'i686' 'x86_64')
 
 depends=(
+  libolm
   qt6-declarative
   qt6-multimedia
   qtkeychain-qt6
@@ -26,6 +27,7 @@ makedepends=(
   clang
   cmake
   git
+  ninja
   qt6-tools
 )
 
@@ -34,9 +36,9 @@ conflicts=("$_pkgname")
 
 _pkgsrc="$_pkgname"
 source=(
-  "$_pkgsrc"::"git+https://github.com/quotient-im/Quaternion"
+  "$_pkgsrc"::"git+$url.git"
 
-  # submodules for quoternion
+  # submodules for quaternion
   "libquotient"::'git+https://github.com/quotient-im/libQuotient'
 
   # submodules for libquotient
@@ -56,7 +58,7 @@ pkgver() {
     | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-_prepare_submodules_quoternion() (
+_prepare_quaternion() (
   cd "$_pkgsrc"
   local _submodules=(
     'libquotient'::'lib'
@@ -64,7 +66,7 @@ _prepare_submodules_quoternion() (
   _submodule_update
 )
 
-_prepare_submodules_libquotient() (
+_prepare_libquotient() (
   cd "$_pkgsrc/lib"
   local _submodules=(
     'doxygen-awesome-css'::'doxygen-awesome-css'
@@ -83,18 +85,21 @@ prepare() {
     done
   }
 
-  _prepare_submodules_quoternion
-  _prepare_submodules_libquotient
+  _prepare_quaternion
+  _prepare_libquotient
 }
 
 build() {
   local _cmake_options=(
     -B build
     -S "$_pkgsrc"
+    -G Ninja
     -DCMAKE_INSTALL_PREFIX="/usr"
-    -DCMAKE_BUILD_TYPE=Release
-    -DUSE_INTREE_LIBQMC=ON
+    -DCMAKE_BUILD_TYPE=None
     -DBUILD_WITH_QT6=ON
+    -DUSE_INTREE_LIBQMC=ON
+    -DBUILD_TESTING=OFF
+    -Wno-dev
   )
 
   cmake "${_cmake_options[@]}"
