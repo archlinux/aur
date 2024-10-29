@@ -25,3 +25,4 @@ package() {
     mkdir -p "$pkgdir/usr/bin"
     cp zvm "$pkgdir/usr/bin"
 }
+md5sums=('8ed29138649d648ecea0575f0f8299c9')
