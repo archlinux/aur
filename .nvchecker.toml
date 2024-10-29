@@ -1,0 +1,118 @@
+[__config__]
+oldver = "old_ver.json"
+newver = "new_ver.json"
+
+[Basmalah]
+name = "Basmala"
+source = "regex"
+url = "https://fonts.qurancomplex.gov.sa/basmala-font"
+regex = "الإصدار: \\d+\\.\\d+"
+encoding = "utf-8"
+
+[HafsNastaleeq]
+source = "regex"
+url = "https://fonts.qurancomplex.gov.sa/nastaleeq-reading"
+regex = "الإصدار: \\d+\\.\\d+"
+encoding = "utf-8"
+
+[KufiExt]
+source = "regex"
+url = "https://fonts.qurancomplex.gov.sa/kufi-font-extend/"
+regex = "الإصدار: \\d+\\.\\d+"
+encoding = "utf-8"
+
+[KufiSty]
+source = "regex"
+url = "https://fonts.qurancomplex.gov.sa/kufi-font/"
+regex = "الإصدار: \\d+\\.\\d+"
+encoding = "utf-8"
+
+[An]
+source = "regex"
+url = "https://fonts.qurancomplex.gov.sa/smartdevices-font-light"
+regex = "رقم: \\d+\\.\\d+"
+encoding = "utf-8"
+
+[Dot]
+source = "regex"
+url = "https://fonts.qurancomplex.gov.sa/naskh-dotted-font"
+regex = "رقم: \\d+\\.\\d+"
+encoding = "utf-8"
+
+[KSA]
+source = "regex"
+url = "https://fonts.qurancomplex.gov.sa/ksa-font"
+regex = "الإصدار: \\d+\\.\\d+"
+encoding = "utf-8"
+
+[Outlined]
+source = "regex"
+url = "https://fonts.qurancomplex.gov.sa/naskh-outline-font"
+regex = "رقم: \\d+\\.\\d+"
+encoding = "utf-8"
+
+[Shadatain]
+source = "regex"
+url = "https://fonts.qurancomplex.gov.sa/shahadtain-font"
+regex = "الإصدار: \\d+\\.\\d+"
+encoding = "utf-8"
+
+[Symbols]
+source = "regex"
+url = "https://fonts.qurancomplex.gov.sa/symbols-font"
+regex = "الإصدار: \\d+\\.\\d+"
+encoding = "utf-8"
+
+[UthmanTN]
+source = "regex"
+url = "https://fonts.qurancomplex.gov.sa/nashkh-font/"
+regex = "رقم: \\d+"
+encoding = "utf-8"
+
+[UthmanTS]
+source = "regex"
+url = "https://fonts.qurancomplex.gov.sa/naskh-sndhi-regular"
+regex = "رقم: \\d+"
+encoding = "utf-8"
+
+[Douri]
+source = "regex"
+url = "https://fonts.qurancomplex.gov.sa/douri-reading"
+regex = "الإصدار: \\d+\\.\\d+"
+encoding = "utf-8"
+
+[Hafs]
+source = "regex"
+url = "https://fonts.qurancomplex.gov.sa/hafs-reading"
+regex = "الإصدار: \\d+\\.\\d+"
+encoding = "utf-8"
+
+[Qaloun]
+source = "regex"
+url = "https://fonts.qurancomplex.gov.sa/qaloun-reading"
+regex = "الإصدار: \\d+\\.\\d+"
+encoding = "utf-8"
+
+[Shouba]
+source = "regex"
+url = "https://fonts.qurancomplex.gov.sa/shouba-reading"
+regex = "الإصدار: \\d+\\.\\d+"
+encoding = "utf-8"
+
+[Sousi]
+source = "regex"
+url = "https://fonts.qurancomplex.gov.sa/sousi-reading"
+regex = "الإصدار: \\d+\\.\\d+"
+encoding = "utf-8"
+
+[Warsh]
+source = "regex"
+url = "https://fonts.qurancomplex.gov.sa/warsh-reading"
+regex = "الإصدار: \\d+\\.\\d+"
+encoding = "utf-8"
+
+[Zakhrfa]
+source = "regex"
+url = "https://fonts.qurancomplex.gov.sa/zakhrfa-font"
+regex = "رقم: \\d+"
+encoding = "utf-8"

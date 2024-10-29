@@ -1,57 +1,76 @@
 # Maintainer: Munzir Taha <munzirtaha@gmail.com>
+
 pkgname=ttf-qurancomplex-fonts
-pkgver=20240101
-pkgrel=2
+pkgver=20241029
+pkgrel=1
 pkgdesc="Arabic fonts by King Fahd Glorious Quran Printing Complex in al-Madinah al-Munawwarah"
 arch=('any')
 url="http://fonts.qurancomplex.gov.sa"
 license=('custom')
-source=(https://fonts.qurancomplex.gov.sa/wp02/wp-content/uploads/2018/10/Basmalah-Ver01.zip
-        https://fonts.qurancomplex.gov.sa/wp-content/uploads/2018/n-06/HafsNastaleeq%20Ver10.zip
-        https://fonts.qurancomplex.gov.sa/wp02/wp-content/uploads/2023/03/KFGQPC%20KufiExtV11.ttf
-        https://fonts.qurancomplex.gov.sa/wp02/wp-content/uploads/2023/03/KFGQPC%20KufiStyV13.ttf
-        https://fonts.qurancomplex.gov.sa/wp02/wp-content/uploads/2022/06/KFGQPC-An.zip
-        https://fonts.qurancomplex.gov.sa/wp-content/uploads/2014/07/KFGQPC-Dot-Font.zip
-        https://fonts.qurancomplex.gov.sa/wp02/wp-content/uploads/2022/06/KFGQPC-KSA.zip
-        https://fonts.qurancomplex.gov.sa/wp-content/uploads/2011/06/Outlinedv001.zip
-        https://fonts.qurancomplex.gov.sa/wp02/wp-content/uploads/2018/10/Shadatain-Ver01.zip
-        https://fonts.qurancomplex.gov.sa/download/Symbols1_Ver02.otf
-        https://fonts.qurancomplex.gov.sa/wp02/wp-content/uploads/2022/04/UthmanicBazzi_V20.zip
-        https://fonts.qurancomplex.gov.sa/wp02/wp-content/uploads/2022/04/UthmanicDouri_V20.zip
-        https://fonts.qurancomplex.gov.sa/wp02/wp-content/uploads/2024/01/UthmanicHafs_v22.zip
-        https://fonts.qurancomplex.gov.sa/wp02/wp-content/uploads/2022/04/UthmanicQaloun_V21.zip
-        https://fonts.qurancomplex.gov.sa/wp02/wp-content/uploads/2022/04/UthmanicQunbul_V20.zip
-        https://fonts.qurancomplex.gov.sa/wp02/wp-content/uploads/2022/04/UthmanicShuba_V20.zip
-        https://fonts.qurancomplex.gov.sa/wp02/wp-content/uploads/2022/04/UthmanicSousi_V20.zip
-        https://fonts.qurancomplex.gov.sa/wp02/wp-content/uploads/2022/04/UthmanicWarsh_V21.zip
-        https://fonts.qurancomplex.gov.sa/wp02/wp-content/uploads/2022/06/UthmanTN_v2-0.zip
-        https://fonts.qurancomplex.gov.sa/wp02/wp-content/uploads/2022/12/UthmanTSVer1.zip
-        https://fonts.qurancomplex.gov.sa/wp02/wp-content/uploads/2024/01/Zakhrfa.zip)
-sha256sums=('e696b4e60ba24e921954ad15d7209d0322641f0e52d956b3e8606ea5b3501c77'
-            '56543ae78f1792b6b8911ba57dd70fb542a311ac0339b1f85563ff446d021442'
-            'de03a1d293cd1bfaf278d1e5a582f6d8442e5490b0cd9d9ba6a5ee8907ceda0f'
-            'd70f7363228e3768fbe6ea7e935aee5a9503b1d5a87eee58835b7f8c36115728'
-            'e6ea593fe3ec86ea3b1abfdae0b841aacd0f86cf23322dc072e92d6bf626610c'
-            '7c54efa8de84c31c4a561f19148965b72624a1d87e74eb922220acc8ea5e9f7a'
-            '6805a6148378cd12fc41b35c9ca0e38ac12908c9b77e1a3d6886b923eee9e63c'
-            '9a164f89ce1340e9abae210a19b4f9a90b13647dd40f84a0aef900073e49f957'
-            'df5caf68ef0ecb26a858681eda23b35a1ca18d58df43651744eb16ff1a7bc2c1'
-            '3f7746014ff9e4124882e66b4f0e2c11629bbc99f3c42be4ea324988f7572809'
-            'b85cd72fda6f52c08cd5ecadeebfe9f08a5e0d986eecb318e7295f3318feaf66'
-            '89fe6773ada1a8c153d24005453fa8c183bc33919887664c102e5a9c9c2c5e67'
-            'b5cf0666441aabd5ff2be4993934e6f2a57d00b6b89afcdf708cd70288671b23'
-            '3fbad683024289c7a4d0913ea3967f467ca4e34ec0dd069c60ece0a621c8a5d5'
-            'd33a35f7c9c6e416579d810e88c8ab9bfa7d72ff0a78e48e23fac48ae7b81d62'
-            '2bdbe2b0aaf340156c09f3d60a0cb8a331533902131d1f3738b65af9e0e9964a'
-            'c06cefb2993ab801bb319819a99200598a335cb0200603020493666a8543e722'
-            '45ee1b4f531060aeaca63e426f8ed3fcb8bcc991b0a0ea788d29bbb557b2e5f5'
-            'ef8c1380137e0c08fdec906fba7b74fdad273df9320d0ca4371dd2b52bdd9b36'
-            '1e973f3a2b65698e3862f806849fe547738a02e86f7afd15a180c96c7912a2e5'
-            'f03bc312c21bb94424e074c8b31e524aa4569827a25bc552a5eb9d2b5de2a96c')
+source=(https://fonts.qurancomplex.gov.sa/wp-content/uploads/2022/12/BasmalahVer01.otf
+        https://fonts.qurancomplex.gov.sa/wp-content/uploads/2022/11/HafsNastaleeq-Ver10.zip
+        https://fonts.qurancomplex.gov.sa/wp-content/uploads/fonts/KFGQPC-KufiExtV14.ttf
+        https://fonts.qurancomplex.gov.sa/wp-content/uploads/fonts/KFGQPC-KufiStyV14.ttf
+        https://fonts.qurancomplex.gov.sa/wp-content/uploads/2022/12/KFGQPCAnBold.ttf
+        https://fonts.qurancomplex.gov.sa/wp-content/uploads/2022/12/KFGQPCAnExtra.ttf
+        https://fonts.qurancomplex.gov.sa/wp-content/uploads/2022/12/KFGQPCAnLight.ttf
+        https://fonts.qurancomplex.gov.sa/wp-content/uploads/2022/12/KFGQPCAnRegular.ttf
+        https://fonts.qurancomplex.gov.sa/wp-content/uploads/2022/12/KFGQPCDotFont.otf
+        https://fonts.qurancomplex.gov.sa/wp-content/uploads/2022/12/KSAExtra.ttf
+        https://fonts.qurancomplex.gov.sa/wp-content/uploads/2022/12/KSAHeading.ttf
+        https://fonts.qurancomplex.gov.sa/wp-content/uploads/2022/12/KSAHeavy.ttf
+        https://fonts.qurancomplex.gov.sa/wp-content/uploads/2022/12/KSARegular.ttf
+        https://fonts.qurancomplex.gov.sa/wp-content/uploads/2022/12/KSARegular_B.ttf
+        https://fonts.qurancomplex.gov.sa/wp-content/uploads/2022/12/Outlinedv001.otf
+        https://fonts.qurancomplex.gov.sa/wp-content/uploads/2022/12/ShadatainVer01.otf
+        https://fonts.qurancomplex.gov.sa/wp-content/uploads/2022/12/Symbols1_Ver02.otf
+        https://fonts.qurancomplex.gov.sa/wp-content/uploads/2022/12/UthmanTNB_v2-0.ttf
+        https://fonts.qurancomplex.gov.sa/wp-content/uploads/2022/12/UthmanTN_v2-0.ttf
+        https://fonts.qurancomplex.gov.sa/wp-content/uploads/2022/12/UthmanTSBVer1.ttf
+        https://fonts.qurancomplex.gov.sa/wp-content/uploads/2022/12/UthmanTSVer1.ttf
+        https://fonts.qurancomplex.gov.sa/wp-content/uploads/2022/11/UthmanicDouri_V20.zip
+        https://fonts.qurancomplex.gov.sa/wp-content/uploads/fonts/UthmanicHafs_v22.zip
+        https://fonts.qurancomplex.gov.sa/wp-content/uploads/2022/11/UthmanicQaloun_V21.zip
+        https://fonts.qurancomplex.gov.sa/wp-content/uploads/2022/11/UthmanicShuba_V20.zip
+        https://fonts.qurancomplex.gov.sa/wp-content/uploads/2022/11/UthmanicSousi_V20.zip
+        https://fonts.qurancomplex.gov.sa/wp-content/uploads/2022/11/UthmanicWarsh_V21.zip
+        https://fonts.qurancomplex.gov.sa/wp-content/uploads/2022/12/Zakhrfa.ttf
+        https://fonts.qurancomplex.gov.sa/wp-content/uploads/2022/12/ZakhrfaBlk.ttf
+        https://fonts.qurancomplex.gov.sa/wp-content/uploads/2022/12/ZakhrfaOutline.ttf)
+b2sums=('78e890512aa3e67e71878766727cca66d8f2a05647f5843d264f62f2c3191f8c91aeece6aadb7cee31b4595cc8005006c80e1bdafc22b091ccfca5227c561bf0'
+        '381b32f0a472b2996960db943fb1ebc216e8d6c9478e8fe5dcc8e91508847defc525b36eecb37bbaedbbfcf1d62dd6d052159299eaa9ff71afbb2429459b7c1d'
+        'b0a439f888c669912077028da1add75b737043ff1fdfb70a2422cdd1454e032a08d2d4b54588bfbecd79d289d9b16234e9c2b91c2464be6569acf9662873c8f6'
+        '9cd5d8f07f816701d6e79f7a70cdbad88b97ecd6a1b2976186e21180f30d88656a076d6629b31b6b37e6a9b875a8567e63bda56a62d349a2f482e9b712323c7c'
+        'aa828ab33a8a3bf36857343ddc043d5561b10fd57e18e77ba03a3c32eb6ee757c840558ddcce1a4b5d22a20e744c35e8beb36b58da3f9577c351c83917525b1d'
+        'a0385a090c9b9592d4d5927dd266b5742a4ef5cc68f2aee741b8fc6b871dddc3e3f14849d9f22a9b3c78f2e4587f4731815b0de1e6f7cd0bc5cbb74aa0560928'
+        '23de5eb061adf6c6a2ca07630440018f8f38e266f6afd752a7c48c5f030c49d9a7a485d9efecddf512451d2058fc59008571f79582d826f592e1e61024280771'
+        '11782b2329f321d2511e3b4a9b7a945d6219a1897c37b7c1747f5afbd08592a3be7049157590ad0378ab650b40871b7ba14ea8b905113d4747c7ff813cef3da1'
+        '001e7238b7379ee4242a8264ef5df5116efe826afe0318fdea434a5c34f92c0615ebd3b31a59e4be2041e3ee69e39a0d0a0e957c8ebcec6c27d29e8073804b58'
+        'c8cffc12bcbf03e0abe5dc017084dd4ec877e2f788e387b0f6b2c8bb3fcee52182bf2effc70ca5c9824e0c5cd7c8cf41f802087494264c5c1fb582c928a259a4'
+        '0f5660bdab7bc8fbc7e770162b340ffcbcd10d2c7f6cd73edf738ba0b2dcb0d3c2c54f6b33b348f11e7a63a4a41d589e9b37778ffa0ddbcc8d110f1adc355984'
+        'c0e5ee5fbd54a86360b4cf0085205712fc06ea05d20550bd593be14aed3f2e6ac3c0c4fc8b20555608bb84c9eb17748d6a21cb51b608659f0c7be29d0b0314ab'
+        '42b7120ee16a48bf8f0a6929f7ebb284977ac6ccd28dcb09082000a5e98ebc9705b41392bafdfe9b871eff606a52c55191bc7f13ea10a6e197ea815d7478a02e'
+        'd8ff0aacefd8eebfbda808025bdf4a8c740dcff8c46e1b46fffdc946172d067f7db9f360af1789bca1c2f31631274d861adc5ee33c5f727a3c61148d6bbe9649'
+        '7804366caacc4c221e83f45417099d2df212ff154dc1bb85bba58bdf0bc174e8ecf7bae7af45d3e8d069338aa57b4e0129c015e33f11ee5a91a0fe49efb6a801'
+        'd8d595443fbeca95a22907c5acc032aea3baac890980f1840fad7cf40b4e1fc8cea0e031ded039c2290b5d4ae385daf773d1a20077b166a9f8e4e4dda4bf0e5c'
+        '23fb5f6c39ba16c94dbc66d17d3da03cda57c9658ae94fb70a68d389eb8d9c0d2e4deee8f585004c9b416b5b5ddd474503449c083b33508c8d246bfa2557f4a5'
+        'e69ffd1314f0ba8f68a27cd1fe0fed9f06f06153dcfeebfa7c2819ea2c95f30cf7c0326378e69bf490527d35dfea803ba3e1d890b6ad5a3ad73a92ea192431b2'
+        'd9b3febf7e1fdac94bdff19eb2c6e5d058e3a7439c98fc3a687ad1e7a9cb30f20f533a31b41bb252a4de9a371c961e27be5709153199413bda4398f572a271d9'
+        'e37176a69e248702084036598a03ea3f6bfee0e17ce6d9c9e033770c5d11f8a27af4000ceaae05fae09fc9728e8f6122412c89505cd3cbd6872770a71a55ca22'
+        'd7d7065b62fc516065b6062da3bffaa12bac8069b01edeb9a9a87194aa0367b928c1ba199893a550aaec7e7686d3c0bf646a6c0fe82a97c754ad6a8ef4accedc'
+        '55ee96456ed4603b3864f2a767af489bdf849add8b3e4266729b62141e53c2a7b43b50a5c2b161eababc63fac8e968dafe7c757bca2b438a371e0dbdbb33b979'
+        '705e194d923e6d0cc181ec8c6f9f552698ef7950d37aa3b82bbcac4d78256eedef1292ac4c280518bc7cba4907845867c9364daab01eee7130e8a1372a2345a6'
+        '37733800c929e411ab81bc07cd3f09fa931af45581b9e4224e64d3e23bbd011316269cbbe4c9f44e38c78b90235fc78b5334c85918d5c6c473e2cba13245459e'
+        '25a70c8a314fdc8e48e3a7879e3855ed9633f5392985668de0a27dbe078db30ac8efb4927d48c08e95a32bd5a93ee7cbc8eb3902dc0b184e3332ec3cbe396efb'
+        'fbe7ae8da3b26d4b5f6c73dfeccc9d7f64616b607abad63371c8b23e25865da1730b4bbe50393bcb6960c0bf8dc9af217466e10eada9cb1a3a74e732554ef3c0'
+        '505e98eb69517902ec0b31aa426678bd40106c9a22f09d470c7542af2e687ac1604889662e9cb229e7ff705b9d463c9f38d487fb88c7e6ab58c5fb9ab3465f65'
+        '24bd06e2c109486e9dc82602b63df39bca2c1b56f310babfd4c01955d56ed113e9fa7a5003c0fc3ee88b88e0bf3cba6e29d73b8d616a01ff5c32e55e84ec50a1'
+        '736f12e42c8ae567437c43b3d6f0c6279097a369e41aa7abe87332136f2eb1e020bc9e2b1319ec07117d21e2bc4db19d1a8cf62d160e0453c99077aad466675f'
+        'acf04a55765257a09f8b238d35741ea3799037898ff7ddb73db46852c99b50191b3b1ce7903bb809fbf5434cd94902ee25a21839963d0831bc0561e8d5b297bd')
 
 package() {
   cd "$srcdir"
   shopt -s globstar
   install -Dvm644 **/*.[ot]tf -t "$pkgdir/usr/share/fonts/qurancomplex"
-  install -Dvm644 **/*.doc **/*.docx -t "$pkgdir/usr/share/doc/$pkgname"
+  install -Dvm644 **/*.doc{x,} -t "$pkgdir/usr/share/doc/$pkgname"
 }
