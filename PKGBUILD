@@ -1,8 +1,8 @@
-# Maintainer: Your Name <youremail@domain.com>
+# Maintainer: lifespirit <life@crabs.pro>
 
 pkgname=pict-rs
-pkgver=0.5.0.alpha.8
-pkgrel=2
+pkgver=0.5.16
+pkgrel=1
 pkgdesc='A simple image hosting service'
 arch=('x86_64')
 url='https://git.asonix.dog/asonix/pict-rs'
@@ -16,7 +16,7 @@ depends=(
 )
 makedepends=('git' 'rust' 'protobuf')
 options=('!lto')
-_commit='f22188759997fd5152c672e639902f4465a8308e'
+_commit='31049d3922c9ec4207a8da02d6f1e4714f17dee8'
 source=("$pkgname::git+$url#commit=$_commit")
 b2sums=('SKIP')
 
