@@ -37,6 +37,6 @@ package() {
 
     install -Dm0755 "$_pkgname-$pkgver" "$pkgdir/usr/bin/$_pkgname"
     install -Dm644 "$_pkgname.1" "$pkgdir/usr/share/man/man1/$_pkgname.1"
-    install -Dm644 "$_pkgname.svg" "$pkgdir/usr/share/icons/$_pkgname.svg"
+    install -Dm644 "$_pkgname.png" "$pkgdir/usr/share/icons/$_pkgname.png"
     install -Dm644 "$_pkgname.desktop" "$pkgdir/usr/share/applications/$_pkgname.desktop"
 }
