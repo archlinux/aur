@@ -1,13 +1,12 @@
 pkgbase = fotema
 	pkgdesc = Photo gallery for Linux
-	pkgver = 1.15.2
+	pkgver = 1.16.0
 	pkgrel = 1
 	url = https://github.com/blissd/fotema
 	arch = x86_64
 	license = CC0-1.0 AND CC-BY-2.0 AND CC-BY-4.0 AND CC-BY-NC-SA-4.0 AND CC-BY-SA-4.0 AND GFDL-1.3-or-later AND GPL-3.0-or-later AND MIT
 	makedepends = cargo
 	makedepends = clang
-	makedepends = gtk3
 	makedepends = meson
 	makedepends = mold
 	depends = ffmpeg
@@ -17,7 +16,7 @@ pkgbase = fotema
 	depends = libshumate
 	depends = onnxruntime
 	depends = opencv
-	source = fotema-1.15.2.tar.gz::https://github.com/blissd/fotema/archive/refs/tags/v1.15.2.tar.gz
-	sha256sums = d63e4892ce93393ad45dd5ac8eb3d55f2c2e5f7690987e8219533e4542ea0214
+	source = fotema-1.16.0.tar.gz::https://github.com/blissd/fotema/archive/refs/tags/v1.16.0.tar.gz
+	sha256sums = b2b2d68515181c26d79f4e39439e7c8fd9cf67bf8a6824404db22a0c9f401765
 
 pkgname = fotema
