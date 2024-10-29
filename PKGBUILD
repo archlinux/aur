@@ -1,11 +1,11 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 # Contributor: Zaoqi
 pkgname=electerm
-pkgver=1.40.18
+pkgver=1.40.20
 _electronversion=26
-_nodeversion=18
+_nodeversion=20
 pkgrel=1
-pkgdesc="Terminal/ssh/telnet/serialport/sftp client."
+pkgdesc="Terminal/ssh/telnet/serialport/sftp client.Use system-wide electron."
 arch=(
     'aarch64'
     'armv7h'
@@ -17,8 +17,6 @@ license=('MIT')
 conflicts=("${pkgname}")
 depends=(
     "electron${_electronversion}"
-    'python'
-    'java-runtime'
 )
 makedepends=(
     'npm'
@@ -26,14 +24,14 @@ makedepends=(
     'gendesk'
     'python-setuptools'
     'gcc'
-    'pnpm'
     'curl'
+    'yarn'
 )
 source=(
-    "${pkgname}-${pkgver}::${_ghurl}/archive/refs/tags/v${pkgver}.tar.gz"
+    "${pkgname}-${pkgver}.tar.gz::${_ghurl}/archive/refs/tags/v${pkgver}.tar.gz"
     "${pkgname}.sh"
 )
-sha256sums=('e2d0560ad678c444af327e578766f4429b776259a0da8911ebaaa86f9761e8a1'
+sha256sums=('cac53ffa52e7d1177c96197d07ad733d179ac86db6ed89258c9a51183056d0b8'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
@@ -52,32 +50,35 @@ build() {
     _ensure_local_nvm
     gendesk -q -f -n --pkgname="${pkgname}" --pkgdesc="${pkgdesc}" --categories="System" --name="${pkgname}" --exec="${pkgname} %U"
     cd "${srcdir}/${pkgname}-${pkgver}"
+    install -Dm755 -d .git/hooks/pre-push
+    rm -rf package-lock.json
+    electronDist="/usr/lib/electron${_electronversion}"
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
-    electronDist="/usr/lib/electron${_electronversion}"
     HOME="${srcdir}/.electron-gyp"
-    {
-        echo -e '\n'
-        #echo 'build_from_source=true'
-        echo 'link-workspace-packages=true'
-        echo 'fetch-retry-maxtimeout=10000'
-        echo "cache-dir="${srcdir}"/.pnpm_cache"
-        echo "store-dir="${srcdir}"/.pnpm_store"
-    } >> .npmrc
+    mkdir -p "${srcdir}/.electron-gyp"
     if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
         {
-            echo 'registry=https://registry.npmmirror.com'
-            echo 'disturl=https://registry.npmmirror.com/-/binary/node/'
-            echo 'electron_mirror=https://registry.npmmirror.com/-/binary/electron/'
-            echo 'electron_builder_binaries_mirror=https://registry.npmmirror.com/-/binary/electron-builder-binaries/'
-        } >> .npmrc
+            echo -e '\n'
+            echo 'registry "https://registry.npmmirror.com"'
+            echo 'electron_mirror "https://registry.npmmirror.com/-/binary/electron/"'
+            echo 'electron_builder_binaries_mirror "https://registry.npmmirror.com/-/binary/electron-builder-binaries/"'
+            echo "cacheFolder "${srcdir}"/.yarn/cache"
+            echo "pluginsFolder "${srcdir}"/.yarn/plugins"
+            echo "globalFolder "${srcdir}"/.yarn/global"
+            echo 'useHardlinks true'
+            #echo 'buildFromSource true'
+            echo 'linkWorkspacePackages true'
+            echo 'fetchRetries 3'
+            echo 'fetchRetryTimeout 10000'
+        } >> .yarnrc
+        find ./ -type f -name "yarn.lock" -exec sed -i "s/registry.yarnpkg.com/registry.npmmirror.com/g" {} +
     fi
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
-    NODE_ENV=development    pnpm install
-    NODE_ENV=development    pnpm add -D glob
-    NODE_ENV=production     pnpm run prepare-build
-    NODE_ENV=production     npm exec node build/bin/build-common
-    NODE_ENV=production     npm exec -c "electron-builder --linux dir -c.electronDist=${electronDist} -c.electronVersion=${electronVer}"
+    NODE_ENV=development    yarn install --cache-folder "${srcdir}/.yarn_cache"
+    NODE_ENV=production     yarn run prepare-build
+    NODE_ENV=production     yarn node build/bin/build-common
+    NODE_ENV=production     yarn electron-builder --linux dir -c.electronDist="${electronDist}" --config
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
