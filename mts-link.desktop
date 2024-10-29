@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=MTS Link
+Exec="/opt/mts-link/mts-link" %U
+Terminal=false
+Type=Application
+Icon=mts-link
+StartupWMClass=MTS Link
+Encoding=UTF-8
+MimeType=x-scheme-handler/wbnr;
+Comment=MTS Link desktop application based on Electron and React
+Categories=Office;VideoConference;

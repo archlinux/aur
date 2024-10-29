@@ -1,0 +1,3 @@
+[mts-link]
+source = "cmd"
+cmd = '''wget -qO- https://apps.webinar.ru/desktop/latest-linux.yml | yq -r .version'''
