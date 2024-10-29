@@ -1,21 +1,21 @@
 #Maintainer: Bhoppi Chaw <bhoppi#outlook,com>
 
 pkgname=ffxvid
-pkgver=1.8.0
+pkgver=1.8.1
 pkgrel=1
-pkgdesc='a small yet quite capable shell script for encoding video files to the MPEG4 Part 2/Xvid video format using ffmpeg.'
+pkgdesc='Small script to encode to Xvid video using FFmpeg'
 arch=(any)
 url='https://ffxvid.teambelgium.net/'
-license=(GPL2)
+license=(GPL-2.0-or-later)
 depends=(ffmpeg bc)
 optdepends=(
-    'mplayer: for crop preview only'
-    'gpac: for mp4/mov cover art only'
+  'mplayer: for crop preview'
+  'gpac: for MP4 cover art'
 )
 source=("https://downloads.sourceforge.net/project/$pkgname/$pkgname-$pkgver.tar.gz")
-sha256sums=('8f173e2faf3d9ea1462d54f409e47dedcf594fe40399626c1df1274bc8a09099')
+sha256sums=('b90bd0500309f581c0161e23f77d67b373aa22c9219ddafc63aab6145a5297ab')
 
 package() {
-    cd $pkgname-$pkgver
-    make install PREFIX="$pkgdir"/usr
+  cd $pkgname-$pkgver
+  make install PREFIX="$pkgdir"/usr
 }
