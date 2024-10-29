@@ -3,7 +3,7 @@
 # Contributor: Gerald Morrison <gerald.gm.morrison@gmail.com>
 
 pkgname=ocm-cli
-pkgver=0.16.2
+pkgver=0.17.0
 pkgrel=1
 pkgdesc='Open Component Model (OCM) Command Line Client'
 arch=('x86_64')
@@ -11,7 +11,7 @@ url='https://github.com/open-component-model/ocm'
 license=('Apache-2.0')
 source=("https://github.com/open-component-model/ocm/releases/download/v${pkgver}/ocm-${pkgver}-linux-amd64.tar.gz")
 noextract=()
-b2sums=('286a8ea78489eb6df41cd3d69e2d3ecfac3c9efaa3c5c8434d588460ede9a67387857186bf34f2d140691828b2c29322d3ab72fb3450b1d1a4ae54315105199b')
+b2sums=('a3937daae984c499dc39e693192d7bbe6ecb9d4552e51f3e4e076685e181484e9b82620b5ca577f1f4fdf7a48a40a4f71e8d2a8d9ddd7f4cb8518b25d6cf6403')
 
 build() {
   ocm completion bash > ocm-bash-completion
