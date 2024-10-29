@@ -1,5 +1,5 @@
 # Maintainer: Alessio Artoni <alessio@artoni.org>
-# Submitter: K1412 <FD.K1412@openaliasbox.org>
+# Contributor: K1412 <FD.K1412@openaliasbox.org>
 pkgname=schema2ldif
 pkgver=1.3
 pkgrel=2
