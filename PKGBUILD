@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=moneydance-bin
 _pkgname=Moneydance
-pkgver=2024.1
+pkgver=2024.2
 pkgrel=1
 pkgdesc="An easy to use and full-featured personal finance app that doesn't compromise your privacy. "
 arch=('x86_64')
@@ -11,6 +11,11 @@ provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
     'alsa-lib'
+    'libx11'
+    'libxext'
+    'libxi'
+    'libxtst'
+    'libxrender'
 )
 makedepends=(
     'gendesk'
@@ -18,14 +23,14 @@ makedepends=(
 source=(
     "${pkgname%-bin}-${pkgver}.deb::https://infinitekind.com/stabledl/current/${pkgname%-bin}_linux_amd64.deb"
 )
-sha256sums=('330b72c2cca5ad4736efa125473776db2e4a870a33899ebb38ed7736c3cf6ba9')
+sha256sums=('1a2cd66885320b08d191b0b4cb28b47e5fb56124268cf991b23f521b6980f734')
 build() {
     bsdtar -xf "${srcdir}/data."*
     gendesk -q -f -n --pkgname="${pkgname%-bin}" --pkgdesc="${pkgdesc}" --categories="Finance;Utility" --name="${_pkgname}" --exec="${pkgname%-bin}"
 }
 package() {
     install -Dm755 -d "${pkgdir}/usr/"{lib/"${pkgname%-bin}",bin}
-    cp -r "${srcdir}/opt/${_pkgname}/"* "${pkgdir}/usr/lib/${pkgname%-bin}"
+    cp -Pr --no-preserve=ownership "${srcdir}/opt/${_pkgname}/"* "${pkgdir}/usr/lib/${pkgname%-bin}"
     ln -sf "/usr/lib/${pkgname%-bin}/${_pkgname}" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm644 "${srcdir}/opt/${_pkgname}/resources/license.txt" -t "${pkgdir}/usr/share/licenses/${pkgname}"
     for _icons in 32x32 128x128 512x512;do
