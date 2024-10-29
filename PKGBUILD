@@ -2,7 +2,7 @@
 pkgname=wikilynx
 pkgver=1.2.7
 pkgrel=0
-epoch=1
+epoch=2
 pkgdesc="A simple Qt C++ app to play Wikipedia Speedruns the right way"
 arch=('any')
 url="https://github.com/flamboyantpenguin/wikiLYNX"
@@ -39,10 +39,10 @@ package() {
 	install -D "wikiLYNX" "${pkgdir}/usr/bin/wikilynx"
 	install -Dm644 "${srcdir}/wikiLYNX.png" "${pkgdir}/usr/share/pixmaps/wikiLYNX.png"
 	install -Dm644  "${srcdir}/wikilynx.desktop" "${pkgdir}/usr/share/applications/wikilynx.desktop"
-	install -Dm644 "../LICENSE" "${pkgdir}/usr/share/licenses/wikilynx"
-	install -Dm644 "../COPYING" "${pkgdir}/usr/share/licenses/wikilynx"
-	install -Dm644 "../COPYING.QtWebEngine" "${pkgdir}/usr/share/licenses/wikilynx"
-	install -Dm644 "../docs/license/CourierPrime_OFL.txt" "${pkgdir}/usr/share/licenses/wikilynx"
-	install -Dm644 "../docs/license/NotoSans_OFL.txt" "${pkgdir}/usr/share/licenses/wikilynx"
+	install -Dm644 "../LICENSE" "${pkgdir}/usr/share/licenses/wikilynx/LICENSE"
+	install -Dm644 "../COPYING" "${pkgdir}/usr/share/licenses/wikilynx/COPYING"
+	install -Dm644 "../COPYING.QtWebEngine" "${pkgdir}/usr/share/licenses/wikilynx/COPYING.QtWebEngine"
+	install -Dm644 "../docs/license/CourierPrime_OFL.txt" "${pkgdir}/usr/share/licenses/wikilynx/CourierPrime_OFL.txt"
+	install -Dm644 "../docs/license/NotoSans_OFL.txt" "${pkgdir}/usr/share/licenses/wikilynx/NotoSans_OFL.txt"
 
 }
