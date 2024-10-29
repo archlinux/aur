@@ -1,0 +1,16 @@
+pkgbase = python-ruamel.yaml.string
+	pkgdesc = Adds a method dump_to_string (and its equivalent dumps) to the ruamel.yaml.YAML instance that returns the document as a Python string.
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://sourceforge.net/p/ruamel-yaml-string
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python-ruamel-yaml
+	source = https://files.pythonhosted.org/packages/source/r/ruamel.yaml.string/ruamel.yaml.string-0.1.1.tar.gz
+	sha256sums = 7a7aedcc055d45c004d38b756f58474ebefb106851f4ce56ce58415709784350
+
+pkgname = python-ruamel.yaml.string
