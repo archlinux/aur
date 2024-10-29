@@ -5,12 +5,15 @@ pkgbase = customfetch-bin
 	url = https://github.com/Toni500github/customfetch
 	arch = x86_64
 	arch = aarch64
-	license = GPL3
+	license = BSD-3-Clause
+	optdepends = wayland-client: Library for getting the Wayland compositor faster
+	optdepends = dconf: Alternative to the slow gsettings command
+	optdepends = libxfce4util: Query XFCE4 version faster
 	conflicts = customfetch-gui-git
 	conflicts = customfetch-gui
 	conflicts = customfetch-git
 	conflicts = customfetch-gui-bin
 	source = https://github.com/Toni500github/customfetch/releases/download/v0.10.0/customfetch-v0.10.0.tar.gz
-	sha256sums = 19e8ae229928ecafc9d2f99e6b1490472c51d32b3c108e6ee5363eb8cfff233c
+	sha256sums = 25d9211b82d52688452ec63b27a93a66065cc87aa9cce510fc3a4e93ec850d79
 
 pkgname = customfetch-bin
