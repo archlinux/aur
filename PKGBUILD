@@ -1,6 +1,6 @@
 # Maintainer: thepasto <thepasto@gmail.com>
 pkgname=kodi-addon-pvr-iptvsimple
-pkgver=21.9.3
+pkgver=21.9.4
 pkgrel=1
 pkgdesc='IPTV Simple PVR client addon for Kodi'
 _koditarget=Omega
@@ -14,7 +14,7 @@ makedepends=('cmake' 'kodi-platform' 'kodi-dev' 'pugixml')
 conflicts=('kodi-addon-pvr-iptvsimple-git');
 depends=('kodi')
 source=("https://github.com/kodi-pvr/${_gitname}/archive/${pkgver}-${_koditarget}.tar.gz")
-sha256sums=('fd0d4cbcf2d20f85e197d33d7f46e6ab2a4de692a04cfade872aace45bd5b742')
+sha256sums=('d64e3c2f9c421f6617d56befd3574d4e9a495b68b94ee2b3e0d38781efece7be')
 
 #prepare() {
     #cd xbmc-${_kodiver}-${_koditarget}
