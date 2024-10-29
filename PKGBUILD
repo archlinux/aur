@@ -15,21 +15,21 @@ source=("git+https://github.com/justinmdickey/goplaying.git")
 md5sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/${pkgname%-git}"
+  cd "${pkgname%-git}"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-  cd "$srcdir/${pkgname%-git}"
+  cd "${pkgname%-git}"
   go build -v -o goplaying .
 }
 
-package() {
-  cd "$srcdir/${pkgname%-git}"
-  install -Dm755 goplaying "$pkgdir/usr/bin/goplaying"
-}
-
-# Optional: Include necessary docs, like LICENSE if relevant
 install_license() {
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+}
+
+package() {
+  cd "${pkgname%-git}"
+  install -Dm755 goplaying "$pkgdir/usr/bin/goplaying"
+  install_license
 }
