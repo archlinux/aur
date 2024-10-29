@@ -1,6 +1,6 @@
 pkgname=openmodelica
 pkgver=1.24.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Open-source Modelica-based modeling and simulation environment"
 url="https://www.openmodelica.org"
 _giturl="https://github.com/OpenModelica/OpenModelica.git"
@@ -16,6 +16,9 @@ prepare() {
   cd "${pkgname}"
   git remote set-url origin ${_giturl}
   git submodule update --force --init --recursive
+
+  # Library index file //.openmodelica/libraries/index.json doesn't exist
+  curl -L https://github.com/OpenModelica/OpenModelica/pull/13078.patch | patch -p1
 }
 
 build() {
