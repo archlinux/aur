@@ -1,6 +1,6 @@
 pkgbase = inko
 	pkgdesc = A language for building concurrent software with confidence
-	pkgver = 0.17.0
+	pkgver = 0.17.1
 	pkgrel = 1
 	url = https://inko-lang.org
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = inko
 	provides = inko
 	conflicts = inko-git
 	options = !lto
-	source = https://releases.inko-lang.org/0.17.0.tar.gz
-	sha256sums = d97e1b898fd3de946dab5559c587cab0bcf7f3df40a43266d5b9e0a14f03202a
+	source = https://releases.inko-lang.org/0.17.1.tar.gz
+	sha256sums = 752c1881b7029f76f7a900ace23fbc5b81e1ceebea214c7f998c03284fd92dba
 
 pkgname = inko
