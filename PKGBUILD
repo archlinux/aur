@@ -7,13 +7,13 @@ pkgrel=1
 pkgdesc='Lightweight CalDAV+CardDAV server'
 url='http://sabre.io/baikal/'
 arch=('any')
-license=('GPL')
+license=(GPL-3.0-only)
 depends=('php')
 optdepends=('sqlite: Database' 'mariadb: Alternate database' 'php-sqlite: To use the sqlite backend')
 source=("https://github.com/fruux/Baikal/releases/download/$pkgver/baikal-$pkgver.zip"
         'baikal.install')
 sha512sums=('e544ed39047788bf001c81a44eb69a3db30a871253cb6bf12b54d5d476eaadc63d723192d41b67f2cf908a72d4c722def03d853df68b7fd464a4093e08ed0f19'
-            '4e28980100ce9fc820a6c40a9cd528a90d62997ac18fb4ea353d8eaba58b320f9c653ba9b066036ff598f1d5a0aafb49ba444f9187c0d3616cbe6fa45222ca3f')
+            'bd49f46a35ec6921ca4c20dc00122bdace237ebf37b4add00b21217bdacd5a622a6bcfe310cb79b9780c45384492a305716700f4bca55e043d804af714bbdaf1')
 options=('!strip')
 install=baikal.install
 
