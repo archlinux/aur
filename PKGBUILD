@@ -1,6 +1,7 @@
-# Maintainer: Y7n05h < echo WTduMDVoQHk3bjA1aC5kZXY= | base64 -d >
+# Maintainer: gilcu3
+# Previous Maintainer: Y7n05h < echo WTduMDVoQHk3bjA1aC5kZXY= | base64 -d >
 pkgname=ecapture
-pkgver=0.7.6
+pkgver=0.8.8
 pkgrel=1
 pkgdesc="capture SSL/TLS text content without CA cert using eBPF"
 arch=("x86_64" "aarch64")
@@ -9,23 +10,22 @@ license=("Apache")
 depends=("glibc")
 makedepends=("clang" "go" "bpf" "git")
 source=("${pkgname}::git+${url}#tag=v${pkgver}")
-sha256sums=('aa1b47084d8d10ec55fd70d46134850a104882840648c3471e3dc930f6d66e77')
+sha256sums=('6a1075ec402e4d88fca07023f5970203daf97414f9865b149efc83f9297d3138')
 prepare() {
 	cd "$pkgname"
-	sed -i 's/-w -s/-compressdwarf=false -linkmode external -extldflags \\"\$\{LDFLAGS\}\\"/g' Makefile
+	# sed -i 's/-w -s/-compressdwarf=false -linkmode external -extldflags \\"\$\{LDFLAGS\}\\"/g' Makefile
 }
 build() {
 	cd "$pkgname"
+    export CGO_CPPFLAGS="${CPPFLAGS}"
+    export CGO_CFLAGS="${CFLAGS}"
+    export CGO_CXXFLAGS="${CXXFLAGS}"
+    export CGO_LDFLAGS="${LDFLAGS}"
+    export GOPATH="${srcdir}"
+    export GOFLAGS="-buildmode=pie -mod=readonly -modcacherw"
 	make
 }
 package() {
 	cd "$pkgname"
-	export CGO_CPPFLAGS="${CPPFLAGS}"
-	export CGO_CFLAGS="${CFLAGS}"
-	export CGO_CXXFLAGS="${CXXFLAGS}"
-	export CGO_LDFLAGS="${LDFLAGS}"
-	export GOPATH="${srcdir}"
-	export GOFLAGS="-buildmode=pie -mod=readonly -modcacherw"
-	make
 	install -Dm755 "bin/$pkgname" -t "$pkgdir/usr/bin"
 }
