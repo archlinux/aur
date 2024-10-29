@@ -20,5 +20,5 @@ package() {
     install -Dm755 "${srcdir}"/goto-v${pkgver%b*}/gg-lin "${pkgdir}"/usr/bin/${_pkgname}
     ln -s /usr/bin/${_pkgname} "${pkgdir}"/usr/bin/${_pkgname_link}
 
-    install -Dm644 LICENSE "${pkgdir}"/usr/share/licenses/${_pkgname}/LICENSE.txt
+    install -Dm644 "${srcdir}"/LICENSE "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE.txt
 }
