@@ -1,0 +1,23 @@
+pkgbase = rainbow-bridge-git
+	pkgdesc = end-to-end file synchronization.Use system-wide electron.
+	pkgver = r19.b8692d4
+	pkgrel = 1
+	url = https://github.com/zhaogongchengsi/rainbow-bridge
+	arch = any
+	license = LicenseRef-unknown
+	makedepends = gendesk
+	makedepends = npm
+	makedepends = nvm
+	makedepends = git
+	makedepends = curl
+	makedepends = pnpm
+	makedepends = gcc
+	depends = electron31
+	provides = rainbow-bridge=r19.b8692d4
+	conflicts = rainbow-bridge
+	source = rainbow-bridge.git::git+https://github.com/zhaogongchengsi/rainbow-bridge
+	source = rainbow-bridge.sh
+	sha256sums = SKIP
+	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
+
+pkgname = rainbow-bridge-git
