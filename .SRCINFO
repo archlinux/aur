@@ -5,7 +5,6 @@ pkgbase = ed-odyssey-materials-helper-bin
 	url = https://github.com/jixxed/ed-odyssey-materials-helper
 	arch = x86_64
 	license = custom
-	depends =
 	source = https://github.com/jixxed/ed-odyssey-materials-helper/releases/download/2.113/Elite.Dangerous.Odyssey.Materials.Helper-2.113.portable.linux.zip
 	source = ed-odyssey-materials-helper-bin.desktop
 	source = icon.png
