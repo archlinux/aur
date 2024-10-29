@@ -1,7 +1,7 @@
 # Maintainer: Toni500 <tonino512@linuxmail.org>
 pkgname="customfetch-gui-bin"
 _pkgname="customfetch"
-pkgver=0.9.3
+pkgver=0.10.0
 pkgrel=1
 pkgdesc="Highly customizable and fast system information fetch program (With GUI mode) (Binary files)"
 arch=('x86_64' 'aarch64')
