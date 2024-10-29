@@ -2,8 +2,8 @@
 
 _themename=russia
 pkgname=plymouth-theme-$_themename
-pkgver=1.0
-pkgrel=5
+pkgver=1.0.1
+pkgrel=1
 pkgdesc="Russia coat of arms splash screen for plymouth"
 arch=("any")
 url=https://notabug.org/Thr0TT1e/russia-theme-plymouth
@@ -12,7 +12,7 @@ depends=("plymouth")
 install="plymouth-theme-$_themename.install"
 makedepends=("git")
 source=("git+$url.git")
-v=('SKIP')
+sha512sums=('SKIP')
 
 package(){
   cd "${srcdir}/russia-theme-plymouth"
