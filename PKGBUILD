@@ -2,7 +2,7 @@
 
 pkgname=libastal-meta
 pkgver=1
-pkgrel=3
+pkgrel=4
 pkgdesc='libastal meta package, including all libastal services'
 arch=(any)
 url="https://github.com/Aylur/astal"
@@ -13,6 +13,7 @@ depends=(
   libastal-auth
   libastal-battery
   libastal-bluetooth
+  libastal-cava
   libastal-hyprland
   libastal-io
   libastal-mpris
