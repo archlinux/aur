@@ -1,0 +1,15 @@
+pkgbase = nodejs-dummy
+	pkgdesc = dummy package for nodejs, npm, yarn, pnpm and all packages provided, for use with node version managers like volta
+	pkgver = 0.0.0
+	pkgrel = 1
+	url = https://aur.archlinux.org/packages/nodejs-dummy
+	arch = any
+	license = GPL-3.0-or-later
+	provides = npm
+	provides = yarn
+	provides = pnpm
+	provides = nodejs
+	provides = node-gyp
+	provides = nodejs-nopt
+
+pkgname = nodejs-dummy
