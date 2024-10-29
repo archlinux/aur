@@ -1,10 +1,10 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 # Co-Maintainer: Aaron J. Graves <linux@ajgraves.com>
 pkgname=tutanota-desktop-bin
-pkgver=246.241008.0
-pkgrel=2
+pkgver=250.241025.0
+pkgrel=1
 # branch needs to be one of 'release' or 'hotfix'. Default should be release, but change it to hotfix as upstream does.
-branch="hotfix"
+branch="release"
 pkgdesc="The desktop client for Tutanota, the secure e-mail service."
 arch=('x86_64')
 url="https://tuta.com/secure-email"
@@ -23,8 +23,8 @@ source=("${pkgname%-bin}-$pkgver.AppImage::https://github.com/tutao/tutanota/rel
         "tutao-pub-$pkgver.pem::https://github.com/tutao/tutanota/raw/${pkgname%-bin}-$branch-$pkgver/tutao-pub.pem")
 provides=("${pkgname%-bin}")
 conflicts=("${pkgname%-bin}" "${pkgname%-bin}-linux")
-sha512sums=('26fc092ca9e3ba99c4c665e28078818c741036ea0791726c4fe4e0f5a995ddf80f0936e03a13e0d897fadaf5342dadaeeee2239d0d720cc102f17e1129887c88'
-            '59b3de4dca99c2fe980a6389e57367a0025f5c3732a7aeadf2e6ec8feb802e51fecdd9e10d5231dfa95acf0ec302ab45b5752d17cfde7212c89c063db5594670'
+sha512sums=('925d85ddaaee784fea9142c996c5b590a2375922dba86b70a87d4a6b6515b1ac9d1d432624fd98775cfc521d4bcf24c71532a8a0d2f77bf155f7a3804f460084'
+            'e34ce7a08613c7b45210e62e2922a349ad9202949b01cd8e35e12c0d0aebd30b4d5a451d62b57b3c844082717b91fe7e0e08d8f2c0705c75b93117d58dbb0099'
             '7c6cf9f1074c08b4d38567ced95159c0809af025efe01b0163d9bb5107daabfa873064255186c071a7dc3a9177ccd0c1b2fcc8b085bdbff234965a6710b3ae45')
 
 prepare() {
