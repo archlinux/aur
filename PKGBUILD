@@ -7,7 +7,7 @@ pkgrel=4
 pkgdesc="Russia coat of arms splash screen for plymouth"
 arch=("any")
 url=https://notabug.org/Thr0TT1e/russia-theme-plymouth
-license=("GPLv2")
+license=("LGPLv3")
 depends=("plymouth")
 install="plymouth-theme-$_themename.install"
 makedepends=("git")
@@ -22,8 +22,6 @@ package(){
     install -Dm644 $N "${_themedir}/$N"
   done
 
-  pwd
-  exa
   #install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/$pkgname/LICENSE"
-  install -Dm644 README.md "${pkgdir}/usr/share/doc/$pkgname/README.md"
+  install -Dm644 ../../README.md "${pkgdir}/usr/share/doc/$pkgname/README.md"
 }
