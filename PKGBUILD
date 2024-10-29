@@ -3,8 +3,8 @@
 _base=umap
 pkgname=python-${_base}-learn
 pkgdesc="Uniform Manifold Approximation and Projection"
-pkgver=0.5.6
-pkgrel=2
+pkgver=0.5.7
+pkgrel=1
 arch=(any)
 url="https://github.com/lmcinnes/${_base}"
 license=(BSD-3-Clause)
@@ -22,7 +22,7 @@ checkdepends=(python-pytest) # python-tensorflow python-nose
 #   'python-tensorflow: for '
 #   'python-tensorflow-probability: for ')
 source=(${_base}-release-${pkgver}.tar.gz::${url}/archive/release-${pkgver}.tar.gz)
-sha512sums=('b8dfa55eb43368ce905f4f291b7de3a67ffd470dcabf93b298a2509df72d32bde084b7be309a156f428c5723252c0e2356558ee391ec4e9b62505305b332817f')
+sha512sums=('84bdee369953daf07ec03c20f091d372ba2719859d315c76d32d52e95c7feff868131997238cc61e96bc639f2e45188bd4c2590933ada7ac382eaa8484d351c9')
 
 build() {
   cd ${_base}-release-${pkgver}
