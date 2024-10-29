@@ -7,10 +7,10 @@
 # Contributor: Christian Finnberg <christian@finnberg.net>
 pkgname=notesnook
 _pkgname=Notesnook
-pkgver=3.0.18
+pkgver=3.0.19
 _electronversion=30
 _nodeversion=20
-pkgrel=3
+pkgrel=1
 pkgdesc="A fully open source & end-to-end encrypted note taking alternative to Evernote.Use system-wide electron."
 arch=(
     'aarch64'
@@ -39,7 +39,7 @@ source=(
     "${pkgname}.desktop"
     "${pkgname}.sh"
 )
-sha256sums=('89d8fdc8ff72573fa1945f742e67aca379334ad47c8c3410a2d930ab4bde7f17'
+sha256sums=('c1a33f2b1f89441778635f70f331ced6c301efdc86ffd2ee9320ac6625d067ef'
             '102a538ee9432310d854842a578cd3371df0431b4db617479de66aa45b5f2440'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 _ensure_local_nvm() {
