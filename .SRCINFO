@@ -1,20 +1,23 @@
 pkgbase = autorandr-git
 	pkgdesc = Auto-detect connected display hardware and load appropiate X11 setup using xrandr
-	pkgver = 1.13.3.r8.g65a2b31
+	pkgver = 1.15.r3.g770dc86
 	pkgrel = 1
 	url = https://github.com/phillipberndt/autorandr
 	arch = any
-	license = GPL3
+	license = GPL-3.0-only
 	makedepends = desktop-file-utils
 	makedepends = git
 	depends = python
 	depends = xorg-xrandr
 	optdepends = pm-utils: For changing autorandr profile on thaw/resume
-	optdepends = python2: For using autorandr_monitor
 	optdepends = xorg-xdpyinfo: For detecting the primary XRandR output
+	optdepends = bash-completion: auto-completion for autorandr in Bash
+	optdepends = fish-completion: auto-completion for autorandr in fish
+	optdepends = zsh-completions: auto-completion for autorandr in ZSH
 	provides = autorandr
 	conflicts = autorandr
 	source = git+https://github.com/phillipberndt/autorandr.git
+	sha512sums = SKIP
 	b2sums = SKIP
 
 pkgname = autorandr-git
