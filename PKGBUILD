@@ -7,7 +7,7 @@ pkgdesc="Official Bitrix24 client for Linux."
 arch=("x86_64")
 url="https://www.bitrix24.com/applications.php"
 source=("https://dl.bitrix24.com/b24/bitrix24_desktop.rpm")
-md5sums=('a9eab0f06f5def69a33d6de05f3d8f3b')
+md5sums=('75ea7e2657978989a7aaf3c45f1b0c53')
 depends=(
    'gtk3'
    'libnotify'
