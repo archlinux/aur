@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Trans Neuronica
+Comment=Puzzle game about making connections both figuratively and literally
+Exec=trans-neuronica
+Icon=gog-trans-neuronica
+Type=Application
+Terminal=false
+StartupNotify=true
+Categories=Game;
+Encoding=UTF-8
