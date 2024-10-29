@@ -1,8 +1,8 @@
 # Contributor: Kyle Keen <keenerd@gmail.com>
 
 pkgname=hyperrogue
-pkgver=v13.0v
-pkgrel=1
+pkgver=v13.0r
+pkgrel=2
 pkgdesc="You are a lone outsider in a strange, non-Euclidean hyperbolic world"
 arch=('i686' 'x86_64')
 url="http://www.roguetemple.com/z/hyper.php"
@@ -10,7 +10,7 @@ license=('GPL2')
 depends=('sdl_gfx' 'sdl_ttf' 'sdl_mixer' 'mesa' 'ttf-dejavu')
 makedepends=('glu' 'glew')
 source=("hyperrogue-$pkgver.tgz::https://github.com/zenorogue/hyperrogue/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('e02a4ada30c9167be9de723a46e83c45b0d2f0f37150dc5fcdef206b21e28303')
+sha256sums=('10c2c5f439e41b5735973e36b76202d81485e8dee0d19a23d3c8e80e6751b62d')
 
 build() {
     cd "$srcdir/$pkgname-${pkgver:1}"
