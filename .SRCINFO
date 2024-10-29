@@ -1,6 +1,6 @@
 pkgbase = typora-free-with-plugin
 	pkgdesc = A minimal markdown editor and reader(free version).With obgnail/typora_plugin plugins.
-	pkgver = 1.11.12
+	pkgver = 1.11.13
 	pkgrel = 1
 	url = https://typora.io/
 	arch = aarch64
@@ -10,15 +10,15 @@ pkgbase = typora-free-with-plugin
 	depends = nspr
 	depends = nss
 	depends = alsa-lib
-	provides = typora=1.11.12
+	provides = typora=1.11.13
 	conflicts = typora-free-with-plugin
 	conflicts = typora
 	conflicts = typora-free
 	conflicts = typora-cn
 	conflicts = typora-free-cn
 	conflicts = typora-electron
-	source = typora-plugin-1.11.12.tar.gz::https://github.com/obgnail/typora_plugin/archive/refs/tags/1.11.12.tar.gz
-	sha256sums = 375c87d019fc18264e5195d9ceb708f9f914c9f38508351653412c87b3f8f037
+	source = typora-plugin-1.11.13.tar.gz::https://github.com/obgnail/typora_plugin/archive/refs/tags/1.11.13.tar.gz
+	sha256sums = 485a314c871267743bf260703d36c40a117fa59e234069587977fa2a484224d9
 	source_aarch64 = typora-free-with-plugin-0.11.18-aarch64.deb::https://github.com/wyf9661/typora-free/releases/download/v0.11.18/typora_0.11.18_arm64.deb
 	sha256sums_aarch64 = 12ad46732c4da7d9414701c584fee942baf83b89165563f18ba03d859eb59ad8
 	source_x86_64 = typora-free-with-plugin-0.11.18-x86_64.deb::https://github.com/wyf9661/typora-free/releases/download/v0.11.18/typora_0.11.18_amd64.deb
