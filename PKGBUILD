@@ -5,13 +5,13 @@
 
 pkgname=k2pdfopt
 pkgver=2.55
-pkgrel=2
+pkgrel=3
 pkgdesc='Tool for optimizing PDF/DJVU files for mobile e-readers and smartphones.'
 arch=('i686' 'x86_64')
 url='http://www.willus.com/k2pdfopt'
 license=('GPL3')
 makedepends=('cmake')
-depends=('libpng' 'libjpeg-turbo' 'djvulibre' 'libmupdf')
+depends=('libpng' 'libjpeg-turbo' 'djvulibre' 'libmupdf' 'mujs')
 optdepends=('ghostscript: PostScript support'
             'jasper: JPEG 2000 bitmap support'
             'gsl: polynomial fit for spline interpolation feature'
