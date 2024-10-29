@@ -2,13 +2,14 @@
 # Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 # Contributor: Caltlgin Stsodaat <contact@fossdaily.xyz>
 pkgname=authpass-bin
-pkgver=1.9.11
-_subver=2007
-pkgrel=3
+pkgver=1.9.12
+_subver=2031
+pkgrel=1
 pkgdesc='Password Manager based on Flutter for all platforms. Keepass 2.x (kdbx 3.x) compatible.'
 arch=('x86_64')
 url="https://authpass.app/"
 _ghurl="https://github.com/authpass/authpass"
+_dlurl="https://authpass-data.codeux.design/data/artifacts"
 license=('GPL-3.0-only')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
@@ -18,23 +19,26 @@ depends=(
     'libkeybinder3'
 )
 source=(
-    "${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-linux-${pkgver}_${_subver}.deb"
+    "${pkgname%-bin}-${pkgver}.deb::${_dlurl}/${pkgname%-bin}-linux-${pkgver}_${_subver}.deb"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('f464b6d5610de4c9d17cbbb5906625c272e8c5ac0ebf8e45b2a3007bbc9c246b'
-            '2ce176a5c3aec15df075bb898c0c82f8a10c51fee35c24a5c0c795775a4b05f9')
+sha256sums=('dc704989ee2a82038db8b69def6715d92d7f42aacbeedb616bac47be5fac3da0'
+            '97155fcff09b03405209fd5bb1f341d0d0d92e83ca9cf96c219d19214456e9b1')
 build() {
-    sed -e "s|@appname@|${pkgname%-bin}|g" \
-        -e "s|@runname@|${pkgname%-bin}|g" \
-        -i "${srcdir}/${pkgname%-bin}.sh"
+    sed -e "
+        s/@appname@/${pkgname%-bin}/g
+        s/@runname@/${pkgname%-bin}/g
+    " -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
-    sed "s|/opt/${pkgname%-bin}/icon.svg|${pkgname%-bin}|g;s|Network|Network;Utility|g" \
-      -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
+    sed -e "
+        s/\/opt\/${pkgname%-bin}\/icon\.svg/${pkgname%-bin}/g
+        s/Network/Network;Utility/g
+    " -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm755 -d "${pkgdir}/usr/lib"
-    cp -r "${srcdir}/opt/${pkgname%-bin}" "${pkgdir}/usr/lib"
+    cp -Pr --no-preserve=ownership "${srcdir}/opt/${pkgname%-bin}" "${pkgdir}/usr/lib"
     install -Dm644 "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
     install -Dm644 "${srcdir}/opt/${pkgname%-bin}/icon.svg" "${pkgdir}/usr/share/hicolor/scalable/apps/${pkgname%-bin}"
 }
