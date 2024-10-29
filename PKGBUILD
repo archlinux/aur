@@ -4,10 +4,10 @@
 # Contributor: franciscod <demartino.francisco@gmail.com>
 
 pkgname=simulide
-pkgver=1.1.0_SR0
+pkgver=1.1.0_SR1
 _version_branch=1.1.0
 _realver=${pkgver//_/-}
-_rev=1913
+_rev=2005
 pkgrel=1
 pkgdesc="Real time electronic circuit simulator (supports PIC, AVR and Arduino microcontrollers)."
 arch=("x86_64")
