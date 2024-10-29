@@ -2,8 +2,8 @@ post_install() {
     mv -f /usr/include/linux/ntsync.h /usr/share/ntsync/ntsync.h_orig
     cp -a /usr/share/ntsync/ntsync.h /usr/include/linux
 
-    echo -e "\033[1;33mThe ntsync module needs to be loaded manually the first time!"
-    echo -e "\033[1;34mIt should load automatically after a reboot\033[0m"
+    echo -e ":: The ntsync module needs to be loaded manually the first time!"
+    echo -e "   It should load automatically after a reboot."
 }
 
 post_upgrade() {
