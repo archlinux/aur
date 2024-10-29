@@ -1,0 +1,16 @@
+pkgbase = babel-tool
+	pkgdesc = Treaty of Babel Interactive Fiction analysis tool
+	pkgver = 0.7a
+	pkgrel = 1
+	url = https://github.com/iftechfoundation/babel-tool
+	arch = x86_64
+	license = CC-BY-4.0
+	provides = babel
+	conflicts = babel-tool-git
+	replaces = ifbabel
+	source = https://github.com/iftechfoundation/babel-tool/archive/refs/tags/v0.7a.tar.gz
+	source = https://babel.ifarchive.org/babel.md
+	sha256sums = 132aa81e0bea1a4568404eb06807c9c8c309fb6a3aea91047463b99d3b9a736c
+	sha256sums = 0cd003474dbb21eaa218948606ff9beed7328571779b7ac22331a81d48f41ae4
+
+pkgname = babel-tool
