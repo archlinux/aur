@@ -11,6 +11,12 @@ license=('MIT')
 depends=(
     "electron${_electronversion}"
 )
+makedepends=(
+    'npm'
+    'nvm'
+    'git'
+    'curl'
+)
 source=(
     "${pkgname//-/.}::git+${url}.git"
     "${pkgname%-git}.sh"
