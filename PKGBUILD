@@ -2,7 +2,7 @@
 # Contributor: Jakob Gahde <j5lx@fmail.co.uk>
 _projectname='ppx_expect'
 pkgname="ocaml-$_projectname"
-pkgver='0.17.1'
+pkgver='0.17.2'
 pkgrel='1'
 epoch='1'
 pkgdesc='Cram like framework for OCaml'
@@ -13,7 +13,7 @@ depends=('ocaml>=5.1.0' 'ocaml-base>=0.17.0' 'ocaml-js_of_ocaml>=5.8.0' 'ocaml-p
 makedepends=('dune>=3.11.0')
 options=('!strip')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-b2sums=('e34349a7788caa547a3764fbbbf67c82d75f8bd9d732e5fa13e4df18349c8d1071c3553b14961aa45568a1d3d076bb2cb85e9179619897b46df57ecc122bf91a')
+b2sums=('4f9937cfd52f966ea8cfbd5626e315f12e3a461df1a2e840d185515a5b11789c3ee9b19778850254b9bc7e2b8b114f694d48f73f498c123f8d2a7d3c30a17736')
 
 _sourcedirectory="$_projectname-$pkgver"
 
