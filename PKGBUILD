@@ -2,13 +2,13 @@
 # Contributor: agp
 # Contributor: Johannes Löthberg
 pkgname=pacutils-git
-pkgver=0.11.1.r9.gc14c4e1
+pkgver=0.15.0
 pkgrel=1
 pkgdesc='Helper tools for libalpm'
 url='https://github.com/andrewgregory/pacutils'
 arch=('x86_64')
 depends=('pacman')
-makedepends=('git')
+makedepends=('git' 'perl')
 conflicts=('pacutils')
 provides=("pacutils")
 license=('MIT')
