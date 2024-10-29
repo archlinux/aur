@@ -2,7 +2,7 @@
 # Co-maintainer: Edu4rdSHL <edu4rdshl@protonmail.com>
 pkgname=waveterm-git
 _pkgname=Wave
-pkgver=0.8.13.r2.gd66380d
+pkgver=0.9.0.r0.gb56d154
 _electronversion=32
 _nodeversion=22
 pkgrel=1
@@ -22,7 +22,7 @@ makedepends=(
     'npm'
     'yarn'
     'git'
-    'go>=1.18'
+    'go'
     'ruby'
     'go-task'
     'cmake'
@@ -30,6 +30,8 @@ makedepends=(
     'nvm'
     'curl'
     'zig'
+    'libarchive'
+    'openjpeg2'
 )
 source=(
     "${pkgname//-/.}::git+${_ghurl}.git"

@@ -1,6 +1,6 @@
 pkgbase = waveterm-git
 	pkgdesc = An open-source, cross-platform terminal for seamless workflows.Use system-wide electron.
-	pkgver = 0.8.13.r2.gd66380d
+	pkgver = 0.9.0.r0.gb56d154
 	pkgrel = 1
 	url = https://www.waveterm.dev/
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = waveterm-git
 	makedepends = npm
 	makedepends = yarn
 	makedepends = git
-	makedepends = go>=1.18
+	makedepends = go
 	makedepends = ruby
 	makedepends = go-task
 	makedepends = cmake
@@ -18,8 +18,10 @@ pkgbase = waveterm-git
 	makedepends = nvm
 	makedepends = curl
 	makedepends = zig
+	makedepends = libarchive
+	makedepends = openjpeg2
 	depends = electron32
-	provides = waveterm=0.8.13.r2.gd66380d
+	provides = waveterm=0.9.0.r0.gb56d154
 	conflicts = waveterm
 	source = waveterm.git::git+https://github.com/wavetermdev/waveterm.git
 	source = waveterm.sh
