@@ -1,4 +1,4 @@
-# Mantainer: Thr0TT1e <info@noble24.ru>
+# Maintainer: Thr0TT1e <info@noble24.ru>
 
 _themename=russia
 pkgname=plymouth-theme-$_themename
