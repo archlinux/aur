@@ -1,7 +1,7 @@
 pkgbase = microenc
-	pkgdesc = Small Script to encode dir with audio files to other formats using FFmpeg
+	pkgdesc = Small script to encode dir with audios to other formats using FFmpeg
 	pkgver = 3.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://microenc.sourceforge.io/
 	arch = any
 	license = GPL-2.0-or-later
