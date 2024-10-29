@@ -1,6 +1,6 @@
 pkgbase = iotas
 	pkgdesc = Simple note taking
-	pkgver = 0.9.3
+	pkgver = 0.9.4
 	pkgrel = 1
 	url = https://gitlab.gnome.org/World/iotas
 	arch = any
@@ -15,8 +15,8 @@ pkgbase = iotas
 	optdepends = hspell: hebrew spell check.
 	optdepends = nuspell: spell check, depends on hunspell dictionary.
 	optdepends = hunspell: spell check.
-	source = https://gitlab.gnome.org/World/iotas/-/archive/0.9.3/iotas-0.9.3.tar.gz
-	b2sums = d78d797f187a2b00b110eb1d0a5404ff2dfcc5f7de17b1c19fec1bc755c796c7d010bc918581bfdf62e13e4353a8e37a34694a464a750470ab8ca2da508d6973
+	source = https://gitlab.gnome.org/World/iotas/-/archive/0.9.4/iotas-0.9.4.tar.gz
+	b2sums = 70c5fb5ba0bd6b9e9faa64436d9c661436c7d0905853793f4e35c803e6e01cd9a3a7f66138204cb88c8091a2517729221570b740810256d75009b62f425d9301
 
 pkgname = iotas
 	depends = libadwaita
