@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=devtoolbox
-pkgver=1.1.1
-pkgrel=2
+pkgver=1.2
+pkgrel=1
 pkgdesc="Development tools at your fingertips"
 arch=('any')
 url="https://github.com/aleiepure/devtoolbox"
@@ -29,7 +29,9 @@ depends=(
   'python-python-lorem'
   'python-pytz'
   'python-qrcode'
-  'python-ruamel-yaml'
+  'python-rcssmin'
+  'python-rjsmin'
+  'python-ruamel.yaml.string'
   'python-sqlparse'
   'python-textstat'
   'python-tzlocal'
@@ -41,11 +43,8 @@ makedepends=(
   'git'
   'meson'
 )
-checkdepends=(
-  'appstream-glib'
-)
 source=("git+https://github.com/aleiepure/devtoolbox#tag=v$pkgver")
-sha256sums=('987aa3d16fbd02f5b5ac3b249673f3f5b6806be076a782be04078dea1e9fb30b')
+sha256sums=('6a95c415827cc7b9720360b0bdc943094cb04541a5e68fc6ecc3e9499ccebdaf')
 
 build() {
   arch-meson "$pkgname" build

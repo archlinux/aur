@@ -1,11 +1,10 @@
 pkgbase = devtoolbox
 	pkgdesc = Development tools at your fingertips
-	pkgver = 1.1.1
-	pkgrel = 2
+	pkgver = 1.2
+	pkgrel = 1
 	url = https://github.com/aleiepure/devtoolbox
 	arch = any
 	license = CC0-1.0 AND GPL-3.0-or-later AND LGPL-3.0-or-later AND MIT AND Unlicense
-	checkdepends = appstream-glib
 	makedepends = blueprint-compiler
 	makedepends = git
 	makedepends = meson
@@ -31,13 +30,15 @@ pkgbase = devtoolbox
 	depends = python-python-lorem
 	depends = python-pytz
 	depends = python-qrcode
-	depends = python-ruamel-yaml
+	depends = python-rcssmin
+	depends = python-rjsmin
+	depends = python-ruamel.yaml.string
 	depends = python-sqlparse
 	depends = python-textstat
 	depends = python-tzlocal
 	depends = python-uuid6
 	depends = webkitgtk-6.0
-	source = git+https://github.com/aleiepure/devtoolbox#tag=v1.1.1
-	sha256sums = 987aa3d16fbd02f5b5ac3b249673f3f5b6806be076a782be04078dea1e9fb30b
+	source = git+https://github.com/aleiepure/devtoolbox#tag=v1.2
+	sha256sums = 6a95c415827cc7b9720360b0bdc943094cb04541a5e68fc6ecc3e9499ccebdaf
 
 pkgname = devtoolbox
