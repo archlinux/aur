@@ -1,8 +1,9 @@
-# Maintainer: TheAifam5 <theaifam5@gmail.com>
+# Maintainer: envolution
+# Contributor: TheAifam5 <theaifam5@gmail.com>
 
 pkgname='openscad-nopscadlib-git'
 _gitname='nopscadlib'
-pkgver=r151.6f93b6a
+pkgver=r1549.70fd7fb
 pkgrel=1
 pkgdesc='Library of parts modelled in OpenSCAD and a framework for making projects.'
 url='https://github.com/nophead/NopSCADlib'
@@ -37,3 +38,4 @@ package() {
  find . -type f -name '*.scad' -exec install -Dm 744 '{}' "$pkgdir/usr/share/openscad/libraries/${_gitname}/{}" \;
 }
 
+# vim: ts=2 sw=2 et:

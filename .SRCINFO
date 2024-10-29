@@ -12,4 +12,3 @@ pkgbase = openscad-nopscadlib-git
 	sha512sums = SKIP
 
 pkgname = openscad-nopscadlib-git
-
