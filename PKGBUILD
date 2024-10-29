@@ -2,7 +2,7 @@
 
 pkgname=previewqt
 pkgver=3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple application for previewing all kinds of files, from images to videos, from documents to archives."
 arch=('x86_64')
 url="http://previewqt.org/"
