@@ -7,7 +7,7 @@
 
 pkgname=dolphin-meld
 _pkgname=dolphin
-pkgver=24.05.2
+pkgver=24.08.2
 pkgrel=1
 pkgdesc='KDE File Manager, using Meld rather than Kompare'
 arch=(x86_64)
@@ -45,7 +45,6 @@ depends=(baloo
          kwindowsystem
          kxmlgui
          phonon-qt6
-         plasma-activities
          qt6-base
          solid)
 makedepends=(extra-cmake-modules
@@ -54,14 +53,14 @@ optdepends=('ffmpegthumbs: video thumbnails'
             'kde-cli-tools: for editing file type options'
             'kdegraphics-thumbnailers: PDF and PS thumbnails'
             'kdenetwork-filesharing: samba usershare properties menu'
-            'kio-admin: for managing files as administrator' 
+            'kio-admin: for managing files as administrator'
             'konsole: terminal panel'
             'purpose: share context menu')
 groups=(kde-applications
         kde-system)
 source=(https://download.kde.org/stable/release-service/$pkgver/src/$_pkgname-$pkgver.tar.xz{,.sig}
         dolphin-meld.patch)
-sha256sums=('5f850a4fd7f463f93e05c1b162be55f7d4360cca2189b446fa296ceef35f3567'
+sha256sums=('551516270762b71a53502e42cae22106642e1253e22720632a805250434145b1'
             'SKIP'
             'a69abda1bd78cbaf3eb92ed645637fce1ea04a3528c90e22ab2abbdd809a0b15')
 validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
