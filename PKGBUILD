@@ -12,7 +12,7 @@ _pkgname=zen-browser
 _realpkgver=1.0.1-a.14
 _desktopname=zen-alpha
 pkgver=1.0.1.a.14
-pkgrel=1
+pkgrel=2
 pkgdesc="Performance oriented Firefox-based web browser - Utilizes AVX2 for better performance"
 arch=('x86_64' 'i686')
 url="https://github.com/zen-browser/desktop"
@@ -21,7 +21,7 @@ depends=(gtk3 libxt mime-types dbus-glib nss ttf-font systemd)
 optdepends=('ffmpeg: H264/AAC/MP3 decoding'
             'networkmanager: Location detection via available WiFi networks'
             'libnotify: Notification integration'
-            'pulseaudio: Audio support'
+            'pulse-native-provider: Audio support'
             'speech-dispatcher: Text-to-Speech'
             'hunspell-en_US: Spell checking, American English')
 options=(!strip)
