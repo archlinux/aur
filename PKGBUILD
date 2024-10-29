@@ -1,35 +1,37 @@
 # Maintainer: Nebulosa  <nebulosa2007-at-yandex-dot-ru>
 
 pkgname=byedpi-bin
-pkgver=0.14.1
-pkgrel=2
+pkgver=0.15
+pkgrel=1
 pkgdesc="A simple and fast software designed to bypass Deep Packet Inspection"
-arch=(aarch64 armv6h armv7h x86_64)
+arch=(aarch64 armv6 armv7l i686 x86_64)
 url="https://github.com/hufrea/${pkgname%-bin}"
 license=(MIT)
 provides=(${pkgname%-bin})
 conflicts=(${pkgname%-bin})
 options=(!debug)
 backup=(etc/${pkgname%-bin}.conf)
-source=(
-  $url/raw/main/dist/linux/${pkgname%-bin}.{conf,service}
-  $url/raw/main/LICENSE
-)
+source=(        $url/archive/v$pkgver/$pkgname-$pkgver.tar.gz)
 source_aarch64=($url/releases/download/v$pkgver/${pkgname%-bin}-${pkgver:2}-aarch64.tar.gz)
-source_armv6h=( $url/releases/download/v$pkgver/${pkgname%-bin}-${pkgver:2}-armv6.tar.gz)
-source_armv7h=( $url/releases/download/v$pkgver/${pkgname%-bin}-${pkgver:2}-armv7l.tar.gz)
+source_armv6=(  $url/releases/download/v$pkgver/${pkgname%-bin}-${pkgver:2}-armv6.tar.gz)
+source_armv7l=( $url/releases/download/v$pkgver/${pkgname%-bin}-${pkgver:2}-armv7l.tar.gz)
+source_i686=(   $url/releases/download/v$pkgver/${pkgname%-bin}-${pkgver:2}-i686.tar.gz)
 source_x86_64=( $url/releases/download/v$pkgver/${pkgname%-bin}-${pkgver:2}-x86_64.tar.gz)
-b2sums=('a00ad63914d0af3a6e44a968e8dba9af7051db841a4db913f2534d45b5122ade8974444ccdc612e0562d3bf3a9cb9fb868f453db29c8c6cc6a770793c826cc3f'
-        '639fc319c8273d0c727fd8805b271cb4a415ef1df29f261369d86a836ae2a0dd00d34b51298fc06fd41a3957e144277a1a2508fefebfaee60dd5813b6242e871'
-        'dd51700e972d759a2297bddc15455477a9574b98174e48c6c89236999fb028c09b8eff8a67067bc49e1a8830e43c7a6d76c4c5c644716562818b02320463e1aa')
-b2sums_aarch64=('438626ba039a13d3927a361a44175f969e5764b3985ab89a10d5b24e1b4e88e2b28c37bd0d1414a768e8f3351a54938332a8c4b7619acf7cf8b74fc0be972bc4')
-b2sums_armv6h=('079e6ddf5f3c18a97db9920d028a025480ec6a88b2038d82ae6c53d9bbe19534ef14cd59a5ab252059ee6b6635ce86fda1858de5274a97d7dbdab422f0f3acb6')
-b2sums_armv7h=('18b6259d33a99c4037ce96513c728aff293856c64c0fc27c7e84fe5fe4061aa7c5b0bcb3e15993d4afc8c25a71b7457857a0c698908077bb4a27a12a5b7ff9ec')
-b2sums_x86_64=('8481b30a025b8ae884e7933f214f44c67c11ececc0c970072b8f9183ddbb5c3745a39fa181daae2fd9aa2044577ba62e7188fe0df0224825b47ff1ff6b198f47')
+b2sums=(        'adceb3106c16d8aefe2040d8f12d9118107b23d2eac57f4a295f7800b655e889e6507f8800d1f0cc46e1365df2c987c764c68f6ab3df9a0dee3a226746e195c7')
+b2sums_aarch64=('0a587705056cfbb66e021caa44b3bb2bafdef35667b9bcbc746bf711e7d08904980e6a4afed19e395117338bb4c5b06020c5155d3156093962fdfbdc123e510b')
+b2sums_armv6=(  '7d8d4dc473494aa898b2166e267123f8eebd201bc4c2a48b6044d06aa35340ffa0093ee9db949e5e10b9c218d53ba6af1843cb2aaaa9332904b53599216b0bfa')
+b2sums_armv7l=( 'c4d036c489b3f7253409c24bb1b037a6bc7bf4badbe143b7574d4eece838c0d6ca654c0465da5fd44b061f9d6d7a2e20df3ad9ae66f108f62700454593226cae')
+b2sums_i686=(   '2be9e1135dac636bcf23ace8a652e0c4cc1183d3bc737ea7fddf9cbed8af1eaf02a7bc3e6e844835dfb32f6d4ffbf33796d32fb776bb10556fb10dbd57b285c1')
+b2sums_x86_64=( '11188ec066385c28f581a17a1a63a08882812abc8cd0a92a6bc65b5afd6de9e4a3022f3e493e41f287fb205fcdf613a40b0a86231e9f6c99f9368b26e3184b5a')
+
+prepare() {
+  sed -i 's|ExecStart=ciadpi|ExecStart=/usr/bin/ciadpi|' ${pkgname%-bin}-$pkgver/dist/linux/${pkgname%-bin}.service  
+}
 
 package() {
-  install -vDm644 ${pkgname%-bin}.conf    -t "$pkgdir"/etc/
-  install -vDm755 ciadpi-*                   "$pkgdir"/usr/bin/ciadpi
-  install -vDm644 ${pkgname%-bin}.service -t "$pkgdir"/usr/lib/systemd/system/
-  install -vDm644 LICENSE                 -t "$pkgdir"/usr/share/licenses/$pkgname/
+  install -vDm755 ciadpi-$CARCH                         "$pkgdir"/usr/bin/ciadpi
+  cd ${pkgname%-bin}-$pkgver
+  install -vDm644 dist/linux/${pkgname%-bin}.conf    -t "$pkgdir"/etc/
+  install -vDm644 dist/linux/${pkgname%-bin}.service -t "$pkgdir"/usr/lib/systemd/system/
+  install -vDm644 LICENSE                            -t "$pkgdir"/usr/share/licenses/$pkgname/
 }
