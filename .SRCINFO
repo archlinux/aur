@@ -1,7 +1,7 @@
 pkgbase = corplink-bin
 	pkgdesc = Linux client of Feilian (veCorpLink) from Bytedance.
 	pkgver = 3.0.16
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.volcengine.com/product/feilian
 	install = corplink-bin.install
 	arch = x86_64

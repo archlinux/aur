@@ -3,7 +3,7 @@
 pkgname=corplink-bin
 pkgver=3.0.16
 _pkgrel=r4659_fb1fd4
-pkgrel=1
+pkgrel=2
 pkgdesc="Linux client of Feilian (veCorpLink) from Bytedance."
 arch=('x86_64')
 url="https://www.volcengine.com/product/feilian"
@@ -17,12 +17,12 @@ sha512sums=('36303fa7941c8896b29b84c5dafd80a6edccb900427267098336b7d452e68d5c89e
 
 package() {
   # Extract package data
-  tar xpvf "${srcdir}/data.tar.xz" --xattrs-include='*' --numeric-owner -C "${pkgdir}"
+  tar xpvf "${srcdir}/data.tar.xz" --xattrs-include='*' --no-same-owner -C "${pkgdir}"
 
   # Fix directory structure differences
   cd "${pkgdir}"
   mkdir -p usr/bin usr/lib/systemd/system
-  ln -s /opt/Corplink/Corplink usr/bin/corplink
+  ln -s "${pkgdir}"/opt/apps/com.volcengine.feilian/files/corplink usr/bin/corplink
   mv "${pkgdir}"/opt/apps/com.volcengine.feilian/files/corplink.service usr/lib/systemd/system/corplink.service
 
   rm -r usr/local
