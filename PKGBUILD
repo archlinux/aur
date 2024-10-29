@@ -1,7 +1,7 @@
 # Maintainer: Agustin Cisneros <agustincc@tutanota.com>
 
 pkgname=ticktick
-pkgver=6.0.0
+pkgver=6.0.10
 pkgrel=1
 pkgdesc='Official desktop application for Linux'
 arch=('x86_64' 'aarch64')
@@ -15,8 +15,8 @@ source_x86_64=("${pkgname}-${pkgver}-amd64.deb::https://d2atcrkye2ik4e.cloudfron
 source_aarch64=("${pkgname}-${pkgver}-arm64.deb::https://d2atcrkye2ik4e.cloudfront.net/download/linux/linux_deb_arm64/${pkgname}-${pkgver}-arm64.deb")
 sha256sums=('b060ec7e9919707fe70c0c65f1c307d65c1f4ad84b5640e7dbeb2dd06e246637'
             '2d866fcb749c30d931fa96cc1578869b3fa9fc61a5c5f30e0316ddb00abb5814')
-sha256sums_x86_64=('ca8b2427bbf4460459d7a82cf54635c5ffcfba72e81643462a654c90f2433e63')
-sha256sums_aarch64=('6b45a9018adc9aefc2aef024888bc51234978a3ee53226ece3634fd08db1f586')
+sha256sums_x86_64=('fd26902456b3f2abae164e1b2e646bbdf629ab20cd4d5fdd241ac0269393e12e')
+sha256sums_aarch64=('ab81612337cb424b2bf72c499bcf2e77b68dd21051baa81daaa155b6a42a6dcd')
 
 package() {
   tar -xf data.tar.xz -C "${pkgdir}"
