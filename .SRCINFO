@@ -1,7 +1,7 @@
 pkgbase = bzr-player
 	pkgdesc = Audio player supporting a wide types of multi-platform exotic file formats
-	pkgver = 2.0.73
-	pkgrel = 4
+	pkgver = 2.0.74
+	pkgrel = 1
 	url = http://bzrplayer.blazer.nu
 	arch = i686
 	arch = x86_64
@@ -11,13 +11,13 @@ pkgbase = bzr-player
 	depends = wine
 	depends = hicolor-icon-theme
 	optdepends = lib32-pipewire: PipeWire audio driver
-	noextract = BZR-Player-2.0.73.zip
+	noextract = BZR-Player-2.0.74.zip
 	options = !strip
-	source = BZR-Player-2.0.73.zip::http://bzrplayer.blazer.nu/getFile.php?id=2.0.73
+	source = BZR-Player-2.0.74.zip::http://bzrplayer.blazer.nu/getFile.php?id=2.0.74
 	source = bzr-player.sh
-	source = https://raw.githubusercontent.com/aargirakis/BZRPlayer/cmake/src/inst/bzr2_setup.sh
-	source = https://raw.githubusercontent.com/aargirakis/BZRPlayer/cmake/src/inst/x-bzr-player.xml
-	sha256sums = 9f373c73e882c06fcfd68ab37af79851f79fa63f8ae2af032c2251c80c33e9ef
+	source = https://raw.githubusercontent.com/aargirakis/BZRPlayer/refs/heads/main/src/inst/bzr2_setup.sh
+	source = https://raw.githubusercontent.com/aargirakis/BZRPlayer/refs/heads/main/src/inst/x-bzr-player.xml
+	sha256sums = df94081478e87e7bdd16564cf6217cab5f48220f82b8f03ccfac66ea5f482f38
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
