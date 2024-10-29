@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-svt-av1
 	pkgdesc = AV1-compliant software encoder/decoder library (mingw-w64)
-	pkgver = 2.2.1
+	pkgver = 2.3.0
 	pkgrel = 1
 	url = https://gitlab.com/AOMediaCodec/SVT-AV1
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = mingw-w64-svt-av1
 	options = !strip
 	options = !buildflags
 	options = staticlibs
-	source = svt-av1-2.2.1.tar.gz::https://gitlab.com/AOMediaCodec/SVT-AV1/-/archive/v2.2.1/SVT-AV1-v2.2.1.tar.bz2
-	sha256sums = 3fd002b88816506f84b6d624659be5cbadb4cdf5a11258a5cbc6bfc488c82d01
+	source = svt-av1-2.3.0.tar.gz::https://gitlab.com/AOMediaCodec/SVT-AV1/-/archive/v2.3.0/SVT-AV1-v2.3.0.tar.bz2
+	sha256sums = f65358499f572a47d6b076dda73681a8162b02c0b619a551bc2d62ead8ee719a
 
 pkgname = mingw-w64-svt-av1
