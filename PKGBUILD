@@ -1,4 +1,5 @@
-# Maintainer: Audun-Marius Gangstø <audun@gangsto.org>
+# Maintainer: envolution
+# Contributor: Audun-Marius Gangstø <audun@gangsto.org>
 pkgname=wpunix
 pkgver=3.0
 pkgrel=1
@@ -9,7 +10,7 @@ url="https://github.com/taviso/wpunix"
 license=('unknown')
 groups=()
 depends=("lib32-ncurses")
-makedepends=('cpio' 'gcc' 'binutils' 'xz' 'patchelf' 'rpmextract')
+makedepends=('cpio' 'gcc' 'binutils' 'xz' 'patchelf' 'rpmextract' 'wget')
 checkdepends=()
 optdepends=()
 provides=('wp')
@@ -21,24 +22,22 @@ install=
 changelog=
 source=("${pkgname}::git+https://github.com/taviso/wpunix.git"
         "https://archive.org/download/corel-wpunix-8/COREL_WPUNIX_1.iso"
-        "https://archive.download.redhat.com/pub/redhat/linux/5.2/en/os/i386/RedHat/RPMS/libc-5.3.12-27.i386.rpm"
-        "https://archive.download.redhat.com/pub/redhat/linux/5.2/en/os/i386/RedHat/RPMS/glibc-2.0.7-29.i386.rpm"
+        "https://legacy.redhat.com/pub/redhat/linux/5.2/en/os/i386/RedHat/RPMS/libc-5.3.12-27.i386.rpm"
+        "https://legacy.redhat.com/pub/redhat/linux/5.2/en/os/i386/RedHat/RPMS/glibc-2.0.7-29.i386.rpm"
         "arch-rpmextract.patch"
 )
 noextract=(
     'COREL_WPUNIX_1.iso'
 )
-md5sums=(
-    'SKIP'
-    '036d10f279aecc61704b214e7bd58a6d'
-    '914d5d1a67a5a38971a0ff39fbbf6a42'
-    'fc800085ce2c253660886a10efc1aed1'
-    'c06660a90d039890407036de3fd50ece'
-    )
+md5sums=('SKIP'
+         '036d10f279aecc61704b214e7bd58a6d'
+         '914d5d1a67a5a38971a0ff39fbbf6a42'
+         'fc800085ce2c253660886a10efc1aed1'
+         'c06660a90d039890407036de3fd50ece')
 validpgpkeys=()
 
 prepare() {
-    
+
     cp COREL_WPUNIX_1.iso "$pkgname"/
 
     cp glibc-2.0.7-29.i386.rpm libc-5.3.12-27.i386.rpm "$pkgname"/
