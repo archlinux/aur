@@ -1,6 +1,6 @@
 pkgbase = johnnydep
 	pkgdesc = Display dependency tree of Python distribution
-	pkgver = 1.20.5
+	pkgver = 1.20.6
 	pkgrel = 1
 	url = https://github.com/wimglenn/johnnydep
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = johnnydep
 	depends = python-packaging
 	depends = python-wheel
 	options = !emptydirs
-	source = johnnydep-src-1.20.5.tar.gz::https://github.com/wimglenn/johnnydep/archive/v1.20.5.tar.gz
-	sha256sums = f2ff31da327edb71a9e3da213003109a93acdfe20a5b3e202001a50c55845020
+	source = johnnydep-src-1.20.6.tar.gz::https://github.com/wimglenn/johnnydep/archive/v1.20.6.tar.gz
+	sha256sums = 50b3bf1a0cdc43b4efdd4dbd4ee19bca7570ab2c1f68912c78486cde0ba601b6
 
 pkgname = johnnydep
