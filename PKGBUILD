@@ -2,16 +2,18 @@
 # Contributor: Alexey Andreyev <aa13q@ya.ru>
 # Contributor: Aleksandar Trifunović <akstrfn at gmail dot com>
 # Contributor: Ivan Semkin <ivan at semkin dot ru>
-# Contributor: Martin Weinelt <hexa at darmstadt dot ccc dot de>
 
-## useful links
+## links
 # https://matrix.org/
 # https://github.com/quotient-im/Quaternion
+
+## options
+: ${_commit:=b8ccb715ecbc8214bc2d13ee794f8722327984dc} # 0.0.96.1
 
 _pkgname="quaternion"
 pkgname="$_pkgname"
 pkgver=0.0.96.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Qt-based IM client for the Matrix protocol'
 url="https://github.com/quotient-im/Quaternion"
 license=('GPL-3.0-or-later' 'LGPL-2.1-or-later')
@@ -27,14 +29,15 @@ makedepends=(
   clang
   cmake
   git
+  ninja
   qt6-tools
 )
 
 _pkgsrc="$_pkgname"
 source=(
-  "$_pkgsrc"::"git+https://github.com/quotient-im/Quaternion#tag=$pkgver"
+  "$_pkgsrc"::"git+$url.git#commit=$_commit"
 
-  # submodules for quoternion
+  # submodules for quaternion
   "libquotient"::'git+https://github.com/quotient-im/libQuotient'
 )
 sha256sums=(
@@ -42,7 +45,7 @@ sha256sums=(
   'SKIP'
 )
 
-_prepare_submodules_quoternion() (
+_prepare_quaternion() (
   cd "$_pkgsrc"
   local _submodules=(
     'libquotient'::'lib'
@@ -60,17 +63,20 @@ prepare() {
     done
   }
 
-  _prepare_submodules_quoternion
+  _prepare_quaternion
 }
 
 build() {
   local _cmake_options=(
     -B build
     -S "$_pkgsrc"
+    -G Ninja
     -DCMAKE_INSTALL_PREFIX="/usr"
-    -DCMAKE_BUILD_TYPE=Release
-    -DUSE_INTREE_LIBQMC=ON
+    -DCMAKE_BUILD_TYPE=None
     -DBUILD_WITH_QT6=ON
+    -DUSE_INTREE_LIBQMC=ON
+    -DBUILD_TESTING=OFF
+    -Wno-dev
   )
 
   cmake "${_cmake_options[@]}"
