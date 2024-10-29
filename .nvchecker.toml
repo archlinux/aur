@@ -1,0 +1,4 @@
+[python-bytecode]
+source = "github"
+github = "MatthieuDartiailh/bytecode"
+use_latest_release = "true"

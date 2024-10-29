@@ -3,7 +3,7 @@
 # Contributor: Leon <aur@adigitoleo.dissimulo.com>
 _base=bytecode
 pkgname=python-${_base}
-pkgver=0.15.1
+pkgver=0.16.0
 pkgrel=1
 pkgdesc="Python module to generate and modify bytecode"
 arch=(any)
@@ -13,7 +13,7 @@ depends=(python)
 makedepends=(python-build python-installer python-setuptools python-wheel)
 checkdepends=(python-pytest)
 source=(https://pypi.org/packages/source/${_base::1}/${_base}/${_base}-${pkgver}.tar.gz)
-sha512sums=('52656a6b0b7f3325efc1da14ec8524faefb1c8606eb31e637f1cb11889afc9246e97652a5526ad42e9b13cabab8f9a3ad596c50ace5cb98d08b774c89e1c1c03')
+sha512sums=('2afd880ffdee0eb2d4b2d6597e80542593cadba53524472984529a4a3bb4af6a0b0635e835d60018bb622414b528ce7b317db214179ecf6ac04d2c10861c569b')
 
 build() {
   cd ${_base}-${pkgver}
