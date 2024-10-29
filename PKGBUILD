@@ -5,10 +5,10 @@
 set -u
 pkgname=networkminer
 pkgver=2.9
-pkgrel=1
+pkgrel=2
 pkgdesc='A Network Forensic Analysis Tool for advanced Network Traffic Analysis, sniffer and packet analyzer'
 arch=('any')
-url='http://www.netresec.com/'
+url='https://www.netresec.com/?page=NetworkMiner'
 license=('GPL2')
 depends=('mono')
 _srcname="NetworkMiner_${pkgver//\./-}"
@@ -19,7 +19,6 @@ package() {
   set -u
   install -d "${pkgdir}/opt/"
   mv "${srcdir}/${_srcname}" "${pkgdir}/opt/NetworkMiner"
-  #chmod +x "${pkgdir}/opt/NetworkMiner/NetworkMiner.exe"
   chmod -R go+w "${pkgdir}/opt/NetworkMiner/AssembledFiles/" "${pkgdir}/opt/NetworkMiner/Captures/"
 
   # Launcher
