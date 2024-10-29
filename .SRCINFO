@@ -1,7 +1,7 @@
 pkgbase = gz-rendering7
 	pkgdesc = C++ library designed to provide an abstraction for different rendering engines.
 	pkgver = 7.4.2
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/gazebosim/gz-rendering
 	arch = any
 	license = Apache

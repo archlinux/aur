@@ -2,7 +2,7 @@
 
 pkgname=gz-rendering7
 pkgver=7.4.2
-pkgrel=4
+pkgrel=5
 _pkgmaj=${pkgver%%.*}
 _pkgbase=${pkgname::-${#_pkgmaj}}
 pkgdesc="C++ library designed to provide an abstraction for different rendering engines."
