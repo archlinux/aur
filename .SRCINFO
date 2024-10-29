@@ -1,12 +1,13 @@
 pkgbase = mprocs
 	pkgdesc = Run multiple commands in parallel
 	pkgver = 0.7.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/pvolok/mprocs
 	arch = x86_64
 	arch = aarch64
 	license = MIT
 	makedepends = rust
+	makedepends = gzip
 	makedepends = help2man
 	provides = mprocs
 	source = https://github.com/pvolok/mprocs/archive/refs/tags/v0.7.1.tar.gz
