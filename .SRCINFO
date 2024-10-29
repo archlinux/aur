@@ -1,14 +1,13 @@
 pkgbase = nautilus-nutstore
-	pkgdesc = Nutstore integration for Nautilus.
-	pkgver = 6.3.0
-	pkgrel = 2
+	pkgdesc = Nutstore integration for Nautilus
+	pkgver = 6.3.6
+	pkgrel = 1
 	url = https://www.jianguoyun.com/
 	arch = x86_64
-	license = CCPL:by-nd
-	license = GPL2
+	license = CC-BY-ND-3.0 AND GPL-2.0-or-later
 	depends = libnautilus-extension
 	depends = nutstore
 	source = https://www.jianguoyun.com/static/exe/installer/nutstore_linux_src_installer.tar.gz
-	sha256sums = 752a6da615d88d4768a38b586c65324d4fa48a6fe721ed6e724704350f3b5f73
+	sha256sums = 6bc613f69736839e0641815c7f2fe8b4ae26621caa58e0e693ecb3b2a7b464d9
 
 pkgname = nautilus-nutstore
