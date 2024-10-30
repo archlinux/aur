@@ -1,0 +1,6 @@
+navio-*.pkg.tar.zst
+navio-*.zip
+navio-*.log
+PKGBUILD-namcap.log
+pkg/
+src/

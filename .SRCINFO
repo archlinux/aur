@@ -1,0 +1,34 @@
+pkgbase = navio
+	pkgdesc = A digital platform that accompanies Macmillan Education’s English language courses for young learners
+	pkgver = 2.13.5492
+	pkgrel = 1
+	url = https://lms-api-prod-navio.macmillan.education/PBF/apps
+	arch = x86_64
+	license = custom
+	depends = alsa-lib
+	depends = cairo
+	depends = gcc-libs
+	depends = gdk-pixbuf2
+	depends = glib2
+	depends = glibc
+	depends = gtk2
+	depends = libcups
+	depends = libgdiplus
+	depends = librsvg
+	depends = libx11
+	depends = libxinerama
+	depends = libxslt
+	depends = libxss
+	depends = mono
+	depends = nspr
+	depends = nss
+	depends = sqlite
+	depends = unixodbc
+	source = navio-2.13.5492.zip::https://lms-api-prod-navio.macmillan.education/ACEApi/PdfExport/downloadapp?environmentId=Linux64Bit_1404
+	source = navio.desktop
+	source = LICENSE
+	sha256sums = 2663b282fdda27a775eea1f2a7d3abfdebddffa047916caa7b8573755dff2440
+	sha256sums = 701446fe566d31ca485fbc4e2c6a9b9063ab8ae4b3d832f85009077661b52856
+	sha256sums = df577fcc17403eb242e5e180488cfdb19226df44582ce86729e42f75586049b8
+
+pkgname = navio

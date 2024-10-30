@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Navio
+Comment=A platform that supports Macmillan Education's English language courses
+Exec=/opt/Navio/Navio
+Icon=/opt/Navio/Navio_Data/Resources/UnityPlayer.png
+Terminal=false
+Categories=Education;Game;Amusement;Languages;KidsGame;
