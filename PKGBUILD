@@ -11,7 +11,7 @@ depends=("webkit2gtk")
 makedepends=("git" "jq" "go" "nodejs" "pnpm")
 provides=("quatracker")
 conflicts=("quatracker")
-source=("$pkgname::git+$url.git")
+source=("git+$url.git")
 md5sums=("SKIP")
 
 pkgver() {

@@ -13,7 +13,7 @@ pkgbase = quatracker-git
 	depends = webkit2gtk
 	provides = quatracker
 	conflicts = quatracker
-	source = quatracker-git::git+https://github.com/Cyan903/Quatracker.git
+	source = git+https://github.com/Cyan903/Quatracker.git
 	md5sums = SKIP
 
 pkgname = quatracker-git
