@@ -1,11 +1,12 @@
 pkgbase = memory-game
+	pkgdesc = A fun memory game, written in C++.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/rotstein007/Memory
+	arch = x86_64
+	license = MIT
+	depends = gtk4
+	depends = gcc
+	source = git+https://github.com/rotstein007/Memory.git
+
 pkgname = memory-game
-pkgdesc = A fun memory game implemented in C++
-pkgver = 1.0.0
-pkgrel = 1
-arch = x86_64
-url = https://github.com/rotstein007/Memory
-license = MIT
-makedepends = cmake
-source = git+https://github.com/rotstein007/Memory.git
-sha256sums = SKIP
