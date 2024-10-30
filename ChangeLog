@@ -1001,3 +1001,14 @@ Fixes:
 - We fixed an issue related to time zone conversion which caused some requests to update due dates of a task when unnecessary.
 - Notion: we fixed a bug that could cause the configuration page to crash.
 - CalDAV: an issue parsing some CalDAV recurring events on mobile has been fixed.
+
+=== Morgen 3.5.11
+Improvements:
+- We improved the reliability of the LLM model that powers the recurrence patterns of events and scheduled tasks.
+
+Fixes:
+- We fixed a bug that caused calendar names to revert to older versions when an account was reconnected.
+- The Event detail panel sometimes moved unexpectedly after a videoconferencing link was added to event Notes. This has been fixed.
+- An issue that could cause Morgen to crash with some Regional formats (e.g. Arabic) has been fixed.
+- An issue that could cause duplicate task creation with some Regional formats (e.g. Korean) has been rectified.
+
