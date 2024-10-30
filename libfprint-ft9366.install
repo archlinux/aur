@@ -1,0 +1,144 @@
+post_install() {
+
+
+
+
+	if [ "$1" = "configure" -o "$1" = "upgrade" ] && command -V udevadm >/dev/null 2>&1; then
+		# apply udev rules at package installation, see
+		# <http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=683863#27>
+		# adds stuff there
+		udevadm trigger --action=add --attr-match=idVendor=147e --attr-match=idProduct=2016
+		udevadm trigger --action=add --attr-match=idVendor=147e --attr-match=idProduct=2020
+		udevadm trigger --action=add --attr-match=idVendor=138a --attr-match=idProduct=0010
+		udevadm trigger --action=add --attr-match=idVendor=138a --attr-match=idProduct=0011
+		udevadm trigger --action=add --attr-match=idVendor=138a --attr-match=idProduct=0015
+		udevadm trigger --action=add --attr-match=idVendor=138a --attr-match=idProduct=0017
+		udevadm trigger --action=add --attr-match=idVendor=138a --attr-match=idProduct=0018
+		udevadm trigger --action=add --attr-match=idVendor=08ff --attr-match=idProduct=5731
+		udevadm trigger --action=add --attr-match=idVendor=5501 --attr-match=idProduct=08ff
+		udevadm trigger --action=add --attr-match=idVendor=08ff --attr-match=idProduct=1600
+		udevadm trigger --action=add --attr-match=idVendor=08ff --attr-match=idProduct=1660
+		udevadm trigger --action=add --attr-match=idVendor=08ff --attr-match=idProduct=1680
+		udevadm trigger --action=add --attr-match=idVendor=08ff --attr-match=idProduct=1681
+		udevadm trigger --action=add --attr-match=idVendor=08ff --attr-match=idProduct=1682
+		udevadm trigger --action=add --attr-match=idVendor=08ff --attr-match=idProduct=1683
+		udevadm trigger --action=add --attr-match=idVendor=08ff --attr-match=idProduct=1684
+		udevadm trigger --action=add --attr-match=idVendor=08ff --attr-match=idProduct=1685
+		udevadm trigger --action=add --attr-match=idVendor=08ff --attr-match=idProduct=1686
+		udevadm trigger --action=add --attr-match=idVendor=08ff --attr-match=idProduct=1687
+		udevadm trigger --action=add --attr-match=idVendor=08ff --attr-match=idProduct=1688
+		udevadm trigger --action=add --attr-match=idVendor=08ff --attr-match=idProduct=1689
+		udevadm trigger --action=add --attr-match=idVendor=08ff --attr-match=idProduct=168a
+		udevadm trigger --action=add --attr-match=idVendor=08ff --attr-match=idProduct=168b
+		udevadm trigger --action=add --attr-match=idVendor=08ff --attr-match=idProduct=168c
+		udevadm trigger --action=add --attr-match=idVendor=08ff --attr-match=idProduct=168d
+		udevadm trigger --action=add --attr-match=idVendor=08ff --attr-match=idProduct=168e
+		udevadm trigger --action=add --attr-match=idVendor=08ff --attr-match=idProduct=168f
+		udevadm trigger --action=add --attr-match=idVendor=08ff --attr-match=idProduct=2660
+		udevadm trigger --action=add --attr-match=idVendor=08ff --attr-match=idProduct=2680
+		udevadm trigger --action=add --attr-match=idVendor=08ff --attr-match=idProduct=2681
+		udevadm trigger --action=add --attr-match=idVendor=08ff --attr-match=idProduct=2682
+		udevadm trigger --action=add --attr-match=idVendor=08ff --attr-match=idProduct=2683
+		udevadm trigger --action=add --attr-match=idVendor=08ff --attr-match=idProduct=2684
+		udevadm trigger --action=add --attr-match=idVendor=08ff --attr-match=idProduct=2685
+		udevadm trigger --action=add --attr-match=idVendor=08ff --attr-match=idProduct=2686
+		udevadm trigger --action=add --attr-match=idVendor=08ff --attr-match=idProduct=2687
+		udevadm trigger --action=add --attr-match=idVendor=08ff --attr-match=idProduct=2688
+		udevadm trigger --action=add --attr-match=idVendor=08ff --attr-match=idProduct=2689
+		udevadm trigger --action=add --attr-match=idVendor=08ff --attr-match=idProduct=268a
+		udevadm trigger --action=add --attr-match=idVendor=08ff --attr-match=idProduct=268b
+		udevadm trigger --action=add --attr-match=idVendor=08ff --attr-match=idProduct=268c
+		udevadm trigger --action=add --attr-match=idVendor=08ff --attr-match=idProduct=268d
+		udevadm trigger --action=add --attr-match=idVendor=08ff --attr-match=idProduct=268e
+		udevadm trigger --action=add --attr-match=idVendor=08ff --attr-match=idProduct=268f
+		udevadm trigger --action=add --attr-match=idVendor=08ff --attr-match=idProduct=2691
+		udevadm trigger --action=add --attr-match=idVendor=08ff --attr-match=idProduct=2500
+		udevadm trigger --action=add --attr-match=idVendor=08ff --attr-match=idProduct=2580
+		udevadm trigger --action=add --attr-match=idVendor=08ff --attr-match=idProduct=2550
+		udevadm trigger --action=add --attr-match=idVendor=08ff --attr-match=idProduct=2810
+		udevadm trigger --action=add --attr-match=idVendor=138a --attr-match=idProduct=0001
+		udevadm trigger --action=add --attr-match=idVendor=138a --attr-match=idProduct=0005
+		udevadm trigger --action=add --attr-match=idVendor=138a --attr-match=idProduct=0008
+		udevadm trigger --action=add --attr-match=idVendor=138a --attr-match=idProduct=0050
+		udevadm trigger --action=add --attr-match=idVendor=1c7a --attr-match=idProduct=0603
+		udevadm trigger --action=add --attr-match=idVendor=061a --attr-match=idProduct=0110
+		udevadm trigger --action=add --attr-match=idVendor=06cb --attr-match=idProduct=00bd
+		udevadm trigger --action=add --attr-match=idVendor=04f3 --attr-match=idProduct=0903
+		udevadm trigger --action=add --attr-match=idVendor=04f3 --attr-match=idProduct=0907
+		udevadm trigger --action=add --attr-match=idVendor=04f3 --attr-match=idProduct=0c01
+		udevadm trigger --action=add --attr-match=idVendor=04f3 --attr-match=idProduct=0c02
+		udevadm trigger --action=add --attr-match=idVendor=04f3 --attr-match=idProduct=0c03
+		udevadm trigger --action=add --attr-match=idVendor=04f3 --attr-match=idProduct=0c04
+		udevadm trigger --action=add --attr-match=idVendor=04f3 --attr-match=idProduct=0c05
+		udevadm trigger --action=add --attr-match=idVendor=04f3 --attr-match=idProduct=0c06
+		udevadm trigger --action=add --attr-match=idVendor=04f3 --attr-match=idProduct=0c07
+		udevadm trigger --action=add --attr-match=idVendor=04f3 --attr-match=idProduct=0c08
+		udevadm trigger --action=add --attr-match=idVendor=04f3 --attr-match=idProduct=0c09
+		udevadm trigger --action=add --attr-match=idVendor=04f3 --attr-match=idProduct=0c0a
+		udevadm trigger --action=add --attr-match=idVendor=04f3 --attr-match=idProduct=0c0b
+		udevadm trigger --action=add --attr-match=idVendor=04f3 --attr-match=idProduct=0c0c
+		udevadm trigger --action=add --attr-match=idVendor=04f3 --attr-match=idProduct=0c0d
+		udevadm trigger --action=add --attr-match=idVendor=04f3 --attr-match=idProduct=0c0e
+		udevadm trigger --action=add --attr-match=idVendor=04f3 --attr-match=idProduct=0c0f
+		udevadm trigger --action=add --attr-match=idVendor=04f3 --attr-match=idProduct=0c10
+		udevadm trigger --action=add --attr-match=idVendor=04f3 --attr-match=idProduct=0c11
+		udevadm trigger --action=add --attr-match=idVendor=04f3 --attr-match=idProduct=0c12
+		udevadm trigger --action=add --attr-match=idVendor=04f3 --attr-match=idProduct=0c13
+		udevadm trigger --action=add --attr-match=idVendor=04f3 --attr-match=idProduct=0c14
+		udevadm trigger --action=add --attr-match=idVendor=04f3 --attr-match=idProduct=0c15
+		udevadm trigger --action=add --attr-match=idVendor=04f3 --attr-match=idProduct=0c16
+		udevadm trigger --action=add --attr-match=idVendor=04f3 --attr-match=idProduct=0c17
+		udevadm trigger --action=add --attr-match=idVendor=04f3 --attr-match=idProduct=0c18
+		udevadm trigger --action=add --attr-match=idVendor=04f3 --attr-match=idProduct=0c19
+		udevadm trigger --action=add --attr-match=idVendor=04f3 --attr-match=idProduct=0c1a
+		udevadm trigger --action=add --attr-match=idVendor=04f3 --attr-match=idProduct=0c1b
+		udevadm trigger --action=add --attr-match=idVendor=04f3 --attr-match=idProduct=0c1c
+		udevadm trigger --action=add --attr-match=idVendor=04f3 --attr-match=idProduct=0c1d
+		udevadm trigger --action=add --attr-match=idVendor=04f3 --attr-match=idProduct=0c1e
+		udevadm trigger --action=add --attr-match=idVendor=04f3 --attr-match=idProduct=0c1f
+		udevadm trigger --action=add --attr-match=idVendor=04f3 --attr-match=idProduct=0c20
+		udevadm trigger --action=add --attr-match=idVendor=04f3 --attr-match=idProduct=0c21
+		udevadm trigger --action=add --attr-match=idVendor=04f3 --attr-match=idProduct=0c22
+		udevadm trigger --action=add --attr-match=idVendor=04f3 --attr-match=idProduct=0c23
+		udevadm trigger --action=add --attr-match=idVendor=04f3 --attr-match=idProduct=0c24
+		udevadm trigger --action=add --attr-match=idVendor=04f3 --attr-match=idProduct=0c25
+		udevadm trigger --action=add --attr-match=idVendor=04f3 --attr-match=idProduct=0c26
+		udevadm trigger --action=add --attr-match=idVendor=04f3 --attr-match=idProduct=0c27
+		udevadm trigger --action=add --attr-match=idVendor=04f3 --attr-match=idProduct=0c28
+		udevadm trigger --action=add --attr-match=idVendor=04f3 --attr-match=idProduct=0c29
+		udevadm trigger --action=add --attr-match=idVendor=04f3 --attr-match=idProduct=0c2a
+		udevadm trigger --action=add --attr-match=idVendor=04f3 --attr-match=idProduct=0c2b
+		udevadm trigger --action=add --attr-match=idVendor=04f3 --attr-match=idProduct=0c2c
+		udevadm trigger --action=add --attr-match=idVendor=04f3 --attr-match=idProduct=0c2d
+		udevadm trigger --action=add --attr-match=idVendor=04f3 --attr-match=idProduct=0c2e
+		udevadm trigger --action=add --attr-match=idVendor=04f3 --attr-match=idProduct=0c2f
+		udevadm trigger --action=add --attr-match=idVendor=04f3 --attr-match=idProduct=0c30
+		udevadm trigger --action=add --attr-match=idVendor=04f3 --attr-match=idProduct=0c31
+		udevadm trigger --action=add --attr-match=idVendor=04f3 --attr-match=idProduct=0c32
+		udevadm trigger --action=add --attr-match=idVendor=04f3 --attr-match=idProduct=0c33
+		udevadm trigger --action=add --attr-match=idVendor=04f3 --attr-match=idProduct=0c42
+		udevadm trigger --action=add --attr-match=idVendor=045e --attr-match=idProduct=00bb
+		udevadm trigger --action=add --attr-match=idVendor=045e --attr-match=idProduct=00bc
+		udevadm trigger --action=add --attr-match=idVendor=045e --attr-match=idProduct=00bd
+		udevadm trigger --action=add --attr-match=idVendor=045e --attr-match=idProduct=00ca
+		udevadm trigger --action=add --attr-match=idVendor=05ba --attr-match=idProduct=0007
+		udevadm trigger --action=add --attr-match=idVendor=05ba --attr-match=idProduct=0008
+		udevadm trigger --action=add --attr-match=idVendor=05ba --attr-match=idProduct=000a
+		udevadm trigger --action=add --attr-match=idVendor=0483 --attr-match=idProduct=2015
+		udevadm trigger --action=add --attr-match=idVendor=147e --attr-match=idProduct=3001
+		udevadm trigger --action=add --attr-match=idVendor=147e --attr-match=idProduct=1000
+		udevadm trigger --action=add --attr-match=idVendor=147e --attr-match=idProduct=1001
+		udevadm trigger --action=add --attr-match=idVendor=0483 --attr-match=idProduct=2016
+		udevadm trigger --action=add --attr-match=idVendor=138a --attr-match=idProduct=0090
+		udevadm trigger --action=add --attr-match=idVendor=138a --attr-match=idProduct=0091
+		udevadm trigger --action=add --attr-match=idVendor=138a --attr-match=idProduct=0094
+		udevadm trigger --action=add --attr-match=idVendor=138a --attr-match=idProduct=0097
+		udevadm trigger --action=add --attr-match=idVendor=2808 --attr-match=idProduct=9338
+		udevadm trigger --action=add --attr-match=idVendor=2808 --attr-match=idProduct=9348
+	fi
+
+}
+
+post_upgrade() {
+	post_install
+}
