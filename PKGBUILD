@@ -10,7 +10,9 @@ arch=('any')
 url="https://pypi.org/project/yoctools/"
 license=('BSD-2-Clause')
 groups=()
-depends=('python')
+depends=(
+    scons
+    'python')
 makedepends=(python-build
     python-installer
     python-setuptools

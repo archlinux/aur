@@ -9,6 +9,7 @@ pkgbase = yoctools
 	makedepends = python-installer
 	makedepends = python-setuptools
 	makedepends = python-wheel
+	depends = scons
 	depends = python
 	source = yoctools-2.0.95.tar.gz::https://files.pythonhosted.org/packages/source/y/yoctools/yoctools-2.0.95.tar.gz
 	sha256sums = 03f8880d4c6aa41dac500906f79ae7525425deca45b392a8c39a855aaecce43c
