@@ -1,0 +1,92 @@
+diff --git a/sdk/modules/base/cpp/include/metavision/sdk/base/utils/object_pool.h b/sdk/modules/base/cpp/include/metavision/sdk/base/utils/object_pool.h
+index 765989e..572b3dd 100644
+--- a/sdk/modules/base/cpp/include/metavision/sdk/base/utils/object_pool.h
++++ b/sdk/modules/base/cpp/include/metavision/sdk/base/utils/object_pool.h
+@@ -16,6 +16,7 @@
+ #include <stack>
+ #include <memory>
+ #include <mutex>
++#include <stdexcept>
+ #include <type_traits>
+ #include <exception>
+ 
+diff --git a/sdk/modules/core/cpp/apps/metavision_player/src/main.cpp b/sdk/modules/core/cpp/apps/metavision_player/src/main.cpp
+index 60c7fa9..e96673f 100644
+--- a/sdk/modules/core/cpp/apps/metavision_player/src/main.cpp
++++ b/sdk/modules/core/cpp/apps/metavision_player/src/main.cpp
+@@ -97,15 +97,15 @@ bool parse_command_line(int argc, const char *argv[], Parameters &app_params) {
+     }
+ 
+     // Check extension of provided output files
+-    if (boost::filesystem::extension(app_params.out_bias_file) != ".bias") {
++    if (boost::filesystem::path(app_params.out_bias_file).extension() != ".bias") {
+         MV_LOG_ERROR() << "Wrong extension for provided output bias file: supported extension is '.bias'";
+         return false;
+     }
+-    if (boost::filesystem::extension(app_params.out_png_file) != ".png") {
++    if (boost::filesystem::path(app_params.out_png_file).extension() != ".png") {
+         MV_LOG_ERROR() << "Wrong extension for provided output PNG file: supported extension is '.png'";
+         return false;
+     }
+-    if (boost::filesystem::extension(app_params.out_avi_file) != ".avi") {
++    if (boost::filesystem::path(app_params.out_avi_file).extension() != ".avi") {
+         MV_LOG_ERROR() << "Wrong extension for provided output AVI file: supported extension is '.avi'";
+         return false;
+     }
+diff --git a/sdk/modules/driver/cpp/src/biases.cpp b/sdk/modules/driver/cpp/src/biases.cpp
+index 581ada6..146f13d 100644
+--- a/sdk/modules/driver/cpp/src/biases.cpp
++++ b/sdk/modules/driver/cpp/src/biases.cpp
+@@ -30,7 +30,7 @@ Biases::~Biases() {}
+ 
+ void Biases::set_from_file(const std::string &biases_filename) {
+     // Check extension
+-    const auto extension = boost::filesystem::extension(biases_filename);
++    const auto extension = boost::filesystem::path(biases_filename).extension().string();
+     if (extension != ".bias") {
+         throw CameraException(CameraErrorCode::WrongExtension,
+                               "For bias file '" + biases_filename +
+@@ -99,7 +99,7 @@ void Biases::set_from_file(const std::string &biases_filename) {
+ }
+ 
+ void Biases::save_to_file(const std::string &dest_file) const {
+-    const auto extension = boost::filesystem::extension(dest_file);
++    const auto extension = boost::filesystem::path(dest_file).extension().string();
+     if (extension != ".bias") {
+         throw CameraException(CameraErrorCode::WrongExtension,
+                               "For bias file '" + dest_file +
+diff --git a/sdk/modules/driver/cpp/src/camera.cpp b/sdk/modules/driver/cpp/src/camera.cpp
+index 983c8b6..6bc9f18 100644
+--- a/sdk/modules/driver/cpp/src/camera.cpp
++++ b/sdk/modules/driver/cpp/src/camera.cpp
+@@ -151,7 +151,7 @@ void Camera::Private::open_raw_file(const std::string &rawfile, const Future::Ra
+         throw CameraException(CameraErrorCode::NotARegularFile);
+     }
+ 
+-    if (boost::filesystem::extension(rawfile) != ".raw") {
++    if (boost::filesystem::path(rawfile).extension().string() != ".raw") {
+         throw CameraException(CameraErrorCode::WrongExtension,
+                               "Expected .raw as extension for the provided input file " + rawfile + ".");
+     }
+@@ -346,7 +346,7 @@ void Camera::Private::start_recording(const std::string &rawfile_path) {
+     check_events_stream_instance();
+ 
+     stop_recording();
+-    std::string base_path = boost::filesystem::change_extension(rawfile_path, "").string();
++    std::string base_path = boost::filesystem::path(rawfile_path).replace_extension("").string();
+ 
+     // Log biases
+     if (biases_) {
+diff --git a/utils/cpp/profiling/include/metavision/utils/profiling/utils/chrome_tracing_events.h b/utils/cpp/profiling/include/metavision/utils/profiling/utils/chrome_tracing_events.h
+index a5462fa..eb1abe0 100644
+--- a/utils/cpp/profiling/include/metavision/utils/profiling/utils/chrome_tracing_events.h
++++ b/utils/cpp/profiling/include/metavision/utils/profiling/utils/chrome_tracing_events.h
+@@ -9,6 +9,8 @@
+ #ifndef METAVISION_UTILS_PROFILING_CHROME_TRACING_EVENTS_H
+ #define METAVISION_UTILS_PROFILING_CHROME_TRACING_EVENTS_H
+ 
++#include <cstdint>
++
+ #include "metavision/utils/profiling/utils/chrome_tracing_constants.h"
+ 
+ namespace Profiling {
