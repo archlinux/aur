@@ -9,11 +9,14 @@ pkgbase = hamclock-huge
 	arch = armv7h
 	arch = aarch64
 	license = MIT
+	makedepends = patch
 	depends = libx11
 	depends = libxcb
 	provides = hamclock
 	conflicts = hamclock
 	source = https://github.com/fang64/hamclock/archive/refs/tags/v4.09.tar.gz
+	source = no-libgpio.patch
 	sha256sums = 83cd29794b8af1a6dd210e8003379700a56556c8c8b697ed49fc346f75bc0ec5
+	sha256sums = 2ce4e64ba5583c533eef3f885854e3bd7fd544f85bc35a92248d19b9a59c7c65
 
 pkgname = hamclock-huge
