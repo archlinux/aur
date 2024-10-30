@@ -2,7 +2,7 @@
 
 _name=owega
 pkgname="python-$_name"
-pkgver=5.16.0
+pkgver=5.16.1
 pkgrel=1
 pkgdesc="TUI / CLI interface for conversing with GPT models (from OpenAI)"
 arch=('any')
@@ -27,7 +27,7 @@ optdepends=(
     'python-tiktoken: better token estimation'
 )
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-b2sums=('3434b2ac356d2d1d42de957795b54e3e8f41c64dbcb11498c4e449f024d874701860e986ba1f7f2d4444a08789b49d46e89098c08c526e1984dadbbd7edfa947')
+b2sums=('fa8eb84627ff79d771cc6bbb50180569d840e6dc9b036abf48edadc51c2965203498ef29f3a44efab634e45f86b9c8a5b9c5f4c0d1c6821d29e96605b9b56cc6')
 
 build() {
     cd "$srcdir/$_name-$pkgver"
