@@ -28,4 +28,3 @@ package() {
 	cd "$_name-$pkgver"
 	python -m installer --destdir="$pkgdir" dist/*.whl
 }
-
