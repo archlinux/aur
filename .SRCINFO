@@ -6,6 +6,7 @@ pkgbase = dwl-git
 	arch = x86_64
 	license = GPL
 	makedepends = git
+	makedepends = make
 	makedepends = wayland-protocols
 	depends = wlroots-git
 	optdepends = xorg-xwayland: for XWayland support
