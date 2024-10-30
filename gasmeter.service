@@ -3,7 +3,7 @@ Description=Gasmeter
 After=network.target
 
 [Service]
-ExecStart=/usr/bin/gasmeter -c /etc/gasmeter.conf
+ExecStart=/usr/bin/gasmeter -c /etc/gasmeter/gasmeter.conf
 User=gasmeter
 Group=gasmeter
 NoNewPrivileges=yes

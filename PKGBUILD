@@ -1,7 +1,7 @@
 # Maintainer: Alexander Pohl <alex at ahpohl dot com>
 pkgname=gasmeter
-pkgver=0.5.3
-pkgrel=2
+pkgver=0.5.4
+pkgrel=1
 epoch=
 pkgdesc="Analog gasmeter readout with an IR dongle"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
@@ -9,13 +9,14 @@ url="https://github.com/ahpohl/gasmeter"
 license=('MIT')
 groups=()
 depends=('mosquitto')
-makedepends=('avr-gcc' 'avr-libc')
+makedepends=('git' 'avr-gcc' 'avr-libc')
 checkdepends=()
-optdepends=('nodejs-node-red' 'postgresql' 'timescaledb' 'pg_cron' 'grafana-bin' 'avrdude')
+optdepends=('nodejs-node-red' 'postgresql' 'timescaledb' 'pg_cron' 'grafana-bin' 'avrdude' 'gnuplot')
 provides=()
 conflicts=()
 replaces=()
-backup=('etc/gasmeter.conf')
+backup=("etc/gasmeter/gasmeter.conf"
+        "etc/gasmeter/docker-compose.yaml")
 options=()
 install=
 changelog=
@@ -23,34 +24,29 @@ source=("$pkgname-$pkgver::git+https://github.com/ahpohl/gasmeter.git#tag=v${pkg
         "sysusers_gasmeter.conf"
         "gasmeter.service")
 noextract=()
-sha256sums=('SKIP'
+sha256sums=('1f85e9b765afd7a6342f6320b040c0f5d19d5f812e8464bbe502e181bb146315'
             '48f1ce02fdc6b8aa46ac4bcd3d782642e69f0b717a0b8121748329ae02ff831e'
-            '0093fc28e75c23c229bc32cd9cdf3d97642ddaa417818d3bbf95411f718a1af2')
+            '26f98848587822c4a707742b7706d71ac123ce1535baf1a80502472f5bdcf191')
 validpgpkeys=()
 
 build() {
 	cd "$pkgname-$pkgver"
-  make
-  cd resources/firmware
-  make
+  make firmware
 }
 
 package() {
-	cd "$pkgname-$pkgver"
-	make DESTDIR="$pkgdir" PREFIX="/usr" install
-	install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+  cd "$pkgname-$pkgver"
+  make DESTDIR="$pkgdir" PREFIX="/usr" install
+  install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
   install -Dm644 README.md "$pkgdir"/usr/share/doc/$pkgname/README.md
   install -Dm644 CHANGELOG.md "$pkgdir"/usr/share/doc/$pkgname/CHANGELOG.md
-  install -Dm644 "$srcdir"/sysusers_gasmeter.conf "$pkgdir"/usr/lib/sysusers.d/gasmeter.conf
-  install -Dm644 "$srcdir"/gasmeter.service "$pkgdir"/usr/lib/systemd/system/gasmeter.service
-  install -Dm644 resources/config/gasmeter_example.conf "$pkgdir"/etc/gasmeter.conf
-  install -Dm644 resources/config/gasmeter_example.conf "$pkgdir"/usr/share/gasmeter/config/gasmeter_example.conf
-  
-  install -d "$pkgdir"/usr/share/gasmeter/postgres
-  install -Dm644 resources/postgres/*.sql "$pkgdir"/usr/share/gasmeter/postgres
-  install -Dm644 resources/nodejs/node-red-flow.json "$pkgdir"/usr/share/gasmeter/nodejs/node-red-flow.json
-  install -Dm644 resources/grafana/grafana-dashboard.json "$pkgdir"/usr/share/gasmeter/grafana/grafana-dashboard.json
-  install -d "$pkgdir"/usr/share/gasmeter/firmware
-  install -Dm644 resources/firmware/bootloader/optiboot_atmega328.hex "$pkgdir"/usr/share/gasmeter/firmware/optiboot_atmega328.hex
-  install -Dm644 resources/firmware/build/gasmeter.hex "$pkgdir"/usr/share/gasmeter/firmware/gasmeter.hex
+  install -Dm644 "$srcdir"/sysusers_$pkgname.conf "$pkgdir"/usr/lib/sysusers.d/$pkgname.conf
+  install -Dm644 "$srcdir"/$pkgname.service "$pkgdir"/usr/lib/systemd/system/$pkgname.service
+  install -d "$pkgdir"/etc/$pkgname
+  install -Dm644 resources/config/${pkgname}_example.conf "$pkgdir"/etc/$pkgname/$pkgname.conf
+  install -Dm644 Dockerfile "$pkgdir"/etc/$pkgname/Dockerfile
+  install -Dm644 docker-compose.yaml "$pkgdir"/etc/$pkgname/docker-compose.yaml
+  install -d "$pkgdir"/usr/share/$pkgname
+  rm resources/firmware/build/*.o resources/firmware/build/*.elf
+  cp -r resources/* "$pkgdir"/usr/share/$pkgname
 }
