@@ -1,0 +1,32 @@
+pkgbase = louvre-devel-git
+	pkgdesc = A high-performance C++ library designed for building Wayland compositors with a strong emphasis on ease of development.
+	pkgver = 2.9.0.1.r7.gee157b9
+	pkgrel = 1
+	url = https://github.com/CuarzoSoftware/Louvre
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = meson
+	makedepends = ninja
+	depends = libsrm-devel-git
+	depends = wayland
+	depends = libglvnd
+	depends = libxcursor
+	depends = libxkbcommon
+	depends = pixman
+	depends = libdrm
+	depends = mesa
+	depends = libinput
+	depends = seatd
+	depends = glibc
+	depends = freeimage
+	depends = fontconfig
+	depends = freetype2
+	depends = icu
+	depends = systemd-libs
+	provides = louvre
+	conflicts = louvre
+	source = git+https://github.com/CuarzoSoftware/Louvre.git#branch=devel
+	sha256sums = SKIP
+
+pkgname = louvre-devel-git
