@@ -4,8 +4,8 @@
 # Contributor: Avi H.D. <strykar@hotmail.com>
 
 pkgname=routeconverter
-pkgver=3.0
-pkgrel=3
+pkgver=3.1
+pkgrel=1
 pkgdesc="A free tool to edit and convert routes, tracks and waypoints"
 arch=('i686' 'x86_64')
 url="http://www.routeconverter.de/en"
@@ -23,8 +23,8 @@ source=(routeconverter
 sha256sums=('0a4dca96f3f02c274714192765eaacfb1ceb53f628150fd0c73e00bf2ce7f6d5'
             '30ed02e7180c85c0448a257a4b7d40de554b084faadeb899dead72e4e2cdc741'
             '0237729d3fb3fdb7462fb1f9064175135f7406a9fb0ec2206986ab9f668b4078'
-            '0dc7a28b9230169c08bb0a13038557a202cb113903832cabb4eedb3396318950'
-            '8fc9b319ae2cfe80aeae7c24787ddafc788eb08687ec7e5f58a730b9c271501f')
+            '10c9d279e9254324245812456661e6e7c45b3c94eb850c76aad3b4ad74dae070'
+            '9e818cdd5c2ff0eec458c9ea86472d03b83207e4a8e69672cdf6ad8edd0a379e')
 
 noextract=(RouteConverterCmdLine-${pkgver}.jar
            RouteConverterLinux-${pkgver}.jar)
