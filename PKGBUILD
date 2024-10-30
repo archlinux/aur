@@ -6,11 +6,12 @@
 
 pkgname=papi
 pkgver=7.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Performance Application Programming Interface"
 arch=('x86_64' 'i686')
 url="http://icl.cs.utk.edu/${pkgname}"
 license=('BSD')
+options=('staticlibs')
 depends=('glibc' 'gcc-fortran')
 source=("http://icl.cs.utk.edu/projects/${pkgname}/downloads/${pkgname}-${pkgver}.tar.gz"
         'alderlakex-support.patch')
