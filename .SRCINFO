@@ -1,6 +1,6 @@
 pkgbase = mullvad-vpn-beta-bin
 	pkgdesc = The Mullvad VPN client app for desktop (beta channel)
-	pkgver = 2024.7.beta1
+	pkgver = 2024.7.stable
 	pkgrel = 1
 	url = https://www.mullvad.net
 	install = mullvad-vpn.install
@@ -18,13 +18,13 @@ pkgbase = mullvad-vpn-beta-bin
 	source = mullvad-vpn.sh
 	validpgpkeys = A1198702FC3E0A09A9AE5B75D5A1D4F266DE8DDF
 	sha256sums = a59c29f07b4eab9af56f0e8be42bae0d83726f5185e88de0c5a48f4098c3c0a4
-	source_x86_64 = https://github.com/mullvad/mullvadvpn-app/releases/download/2024.7-beta1/MullvadVPN-2024.7-beta1_amd64.deb
-	source_x86_64 = https://github.com/mullvad/mullvadvpn-app/releases/download/2024.7-beta1/MullvadVPN-2024.7-beta1_amd64.deb.asc
-	sha256sums_x86_64 = f2a5f78dc3cfbf987a040cd63c90829c7382d5fbe4685ed7885482d71e316281
+	source_x86_64 = https://github.com/mullvad/mullvadvpn-app/releases/download/2024.7/MullvadVPN-2024.7_amd64.deb
+	source_x86_64 = https://github.com/mullvad/mullvadvpn-app/releases/download/2024.7/MullvadVPN-2024.7_amd64.deb.asc
+	sha256sums_x86_64 = 97ab96acecccce7f1b179899cdf6bfc5f7cb22f00fb0268bc337113d15b7b74a
 	sha256sums_x86_64 = SKIP
-	source_aarch64 = https://github.com/mullvad/mullvadvpn-app/releases/download/2024.7-beta1/MullvadVPN-2024.7-beta1_arm64.deb
-	source_aarch64 = https://github.com/mullvad/mullvadvpn-app/releases/download/2024.7-beta1/MullvadVPN-2024.7-beta1_arm64.deb.asc
-	sha256sums_aarch64 = 5028395206c46621ef301e88922d86f9597795646464305c1eb330e0b4c0d9b5
+	source_aarch64 = https://github.com/mullvad/mullvadvpn-app/releases/download/2024.7/MullvadVPN-2024.7_arm64.deb
+	source_aarch64 = https://github.com/mullvad/mullvadvpn-app/releases/download/2024.7/MullvadVPN-2024.7_arm64.deb.asc
+	sha256sums_aarch64 = fd12d38e19221fd59d60ee7a9e39f14322749d2680abf6b0ae49b436172d1596
 	sha256sums_aarch64 = SKIP
 
 pkgname = mullvad-vpn-beta-bin
