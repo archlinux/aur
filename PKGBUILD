@@ -2,7 +2,7 @@
 
 pkgname=redsea-git
 _pkgname=redsea
-pkgver=v0.21.r0.g5dcbec1
+pkgver=v1.0.1.r18.g2d2700a
 pkgrel=1
 pkgdesc="RDS decoder for the command line "
 arch=(x86_64 aarch64)
@@ -10,8 +10,8 @@ url="https://github.com/windytan/redsea"
 license=(MIT)
 provides=('redsea')
 conflicts=('redsea')
-depends=('glibc' 'gcc-libs' 'libsndfile' 'liquid-dsp')
-makedepends=('git')
+depends=('glibc' 'gcc-libs' 'libsndfile' 'liquid-dsp' 'nlohmann-json')
+makedepends=('git' 'meson' 'catch2')
 source=(
   "$pkgname"::git+https://github.com/windytan/$_pkgname.git
 )
@@ -28,14 +28,13 @@ pkgver() {
 
 build() {
   cd $pkgname
-  ./autogen.sh
-  ./configure --prefix=/usr
-  make
+  meson setup --prefix /usr build
+  meson compile -C build
 }
 
 package() {
   cd $pkgname
-  make DESTDIR="$pkgdir" install
+  DESTDIR=$pkgdir meson install -C build
 
   install -vDm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
