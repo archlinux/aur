@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=e-search-bin
 _pkgname=eSearch
-pkgver=14.1.6
+pkgver=14.1.7
 _electronversion=31
 pkgrel=1
 pkgdesc="Screenshot,OCR search,translate,search for picture paste the picture on the screen,screen recorder.Prebuilt version.Use system-wide electron.截屏,离线OCR,搜索翻译,以图搜图,贴图,录屏,滚动截屏."
@@ -30,11 +30,11 @@ options=(
 source=(
     "${pkgname%-bin}.sh"
 )
-source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${_ghurl}/releases/download/${pkgver}/${_pkgname}-${pkgver}-linux-arm64.deb")
-source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${_ghurl}/releases/download/${pkgver}/${_pkgname}-${pkgver}-linux-x64.deb")
+source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::${_ghurl}/releases/download/${pkgver}/${_pkgname}-${pkgver}-linux-arm64.rpm")
+source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${_ghurl}/releases/download/${pkgver}/${_pkgname}-${pkgver}-linux-x64.rpm")
 sha256sums=('291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-sha256sums_aarch64=('c998c6e29131d8179a66198171d022210e472683d48bbb9f0b655fbad5f0b8a0')
-sha256sums_x86_64=('541cd20e84e1a05a7af77118b100b45cc7d7481a7475bd03dd21c321ec0d6f87')
+sha256sums_aarch64=('269a3440aaf917d66c453e60f2cda2fa5d75c9fe4e7dfbea264602b65f97ccac')
+sha256sums_x86_64=('d9983af13780a04f4f9a73613695f691efe7204bf485f272953bc4675aace9c9')
 build() {
     sed -e "
         s/@electronversion@/${_electronversion}/g
@@ -43,7 +43,6 @@ build() {
         s/@cfgdirname@/${_pkgname}/g
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
     " -i "${srcdir}/${pkgname%-bin}.sh"
-    bsdtar -xf "${srcdir}/data."*
     sed -e "
         s/\/opt\/${_pkgname}\/${pkgname%-bin}/${pkgname%-bin}/g
         s/${_pkgname//S/s}/${pkgname%-bin}/g
