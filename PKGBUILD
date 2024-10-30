@@ -1,7 +1,7 @@
 # Maintainer: Lev Levitsky <levlev at mail.ru>
 _name=ThermoRawFileParser
 pkgname=$(echo "${_name}" | tr '[:upper:]' '[:lower:]')-bin
-pkgver=1.4.4
+pkgver=1.4.5
 pkgrel=1
 epoch=
 pkgdesc="Thermo RAW file parser that runs on Linux with mono"
@@ -14,7 +14,7 @@ _download_name="${_name}-${pkgver}-${pkgrel}.zip"
 source=("${_download_name}::${url}/releases/download/v${pkgver}/${_name}${pkgver}.zip"
         "${_name}")
 noextract=("${_download_name}")
-md5sums=('1cdb56722f30a2741832a25063b03276'
+md5sums=('2de687ac30f6c2f3d57fa94675f5804e'
          '2d0b284fb357649ccc85e2774f48408e')
 
 prepare() {
