@@ -4,7 +4,7 @@
 
 pkgname=python-libmamba
 pkgver=2.0.0
-_srcver=2024.09.25 
+_srcver=2024.09.25
 _name=mamba-$_srcver
 pkgrel=2
 pkgdesc="The fast cross-platform package manager"
@@ -75,6 +75,6 @@ package() {
 
   cd "$srcdir/$_name/libmambapy"
   python -m installer --destdir="$pkgdir" dist/*.whl
- 
+
   install -Dm 644 LICENSE $pkgdir/usr/share/licenses/${pkgname}/LICENSE.txt
 }
