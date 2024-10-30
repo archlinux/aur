@@ -2,13 +2,13 @@
 
 pkgname=keyshift
 pkgver=1.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Keyshift - keyboard remapping utility for Linux"
 arch=('any')
 url="https://github.com/hirak99/$pkgname"
 license=('Apache')
 depends=()
-makedepends=('boost')
+makedepends=('boost' 'catch2')
 source=(
   "$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
   "git+https://github.com/kerukuro/digestpp.git"
