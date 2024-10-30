@@ -1,7 +1,7 @@
 # Maintainer: Cyan903 <cyanp0515 at gmail dot com>
 
 pkgname="quatracker-git"
-pkgver=1
+pkgver=r77.cae8ba6
 pkgrel=2
 pkgdesc="A score tracker for the rhythm game Quaver."
 arch=("x86_64")

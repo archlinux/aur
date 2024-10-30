@@ -1,6 +1,6 @@
 pkgbase = quatracker-git
 	pkgdesc = A score tracker for the rhythm game Quaver.
-	pkgver = 1
+	pkgver = r77.cae8ba6
 	pkgrel = 2
 	url = https://github.com/Cyan903/Quatracker
 	arch = x86_64
