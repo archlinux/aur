@@ -3,7 +3,7 @@
 pkgname=corplink-bin
 pkgver=3.0.16
 _pkgrel=r4659_fb1fd4
-pkgrel=2
+pkgrel=3
 pkgdesc="Linux client of Feilian (veCorpLink) from Bytedance."
 arch=('x86_64')
 url="https://www.volcengine.com/product/feilian"
@@ -22,7 +22,7 @@ package() {
   # Fix directory structure differences
   cd "${pkgdir}"
   mkdir -p usr/bin usr/lib/systemd/system
-  ln -s "${pkgdir}"/opt/apps/com.volcengine.feilian/files/corplink usr/bin/corplink
+  ln -s /opt/apps/com.volcengine.feilian/files/corplink usr/bin/corplink
   mv "${pkgdir}"/opt/apps/com.volcengine.feilian/files/corplink.service usr/lib/systemd/system/corplink.service
 
   rm -r usr/local
