@@ -23,7 +23,7 @@ prepare() {
 		cp -f "$srcdir/config.h" config.h
 	fi
 	# Uncomment to compile with XWayland support
-	#sed -i -e '/-DXWAYLAND/s/^#//' config.mk
+	sed -i -e '/-DXWAYLAND/s/^#//' config.mk
 }
 
 pkgver() {
