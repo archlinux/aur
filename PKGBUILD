@@ -1,7 +1,7 @@
 # Maintainer: Stipe Kotarac <stipe@kotarac.net>
 
 pkgname=jay-git
-pkgver=r1032.437c6b05
+pkgver=r1070.388a4d1c
 pkgrel=1
 pkgdesc='A Wayland Compositor'
 arch=('x86_64')
@@ -29,7 +29,7 @@ optdepends=(
 )
 makedepends=(
   git
-  rust
+  'rust>=1.84.0'
   shaderc
 )
 options=(!lto)
