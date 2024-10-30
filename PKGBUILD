@@ -12,12 +12,12 @@
 
 : ${_ver_clang=}
 : ${RUSTUP_TOOLCHAIN:=stable}
-: ${_commit=55670e9533ecde7d0280a6ca162c6e2f53daf714} # 11.19.1
+: ${_commit=ac9a0a720cccdf2e823b31f6fb30ae0d52441e62} # 11.20.0
 
 ## basic info
 _pkgname="floorp"
 pkgname="$_pkgname"
-pkgver=11.19.1
+pkgver=11.20.0
 pkgrel=1
 pkgdesc="Firefox-based web browser focused on performance and customizability"
 url="https://github.com/Floorp-Projects/Floorp"
@@ -25,7 +25,7 @@ arch=('x86_64')
 license=('MPL-2.0')
 
 depends=(
-  dbus-glib
+  dbus
   ffmpeg
   gtk3
   libevent
@@ -448,12 +448,12 @@ Version=2
 END
 
   # Replace duplicate binary
-  ln -sf "/usr/bin/$_pkgname" "$pkgdir/usr/lib/$_pkgname/$_pkgname-bin"
+  ln -srf "$pkgdir/usr/bin/$_pkgname" "$pkgdir/usr/lib/$_pkgname/$_pkgname-bin"
 
   # Use system certificates
   local nssckbi="$pkgdir/usr/lib/$_pkgname/libnssckbi.so"
   if [[ -e "$nssckbi" ]]; then
-    ln -sf "/usr/lib/libnssckbi.so" "$nssckbi"
+    ln -srf "$pkgdir/usr/lib/libnssckbi.so" "$nssckbi"
   fi
 
   # desktop file
