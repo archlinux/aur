@@ -19,8 +19,8 @@ build() {
 }
 
 package() {
-    cd "$srcdir/$pkgname/build"
+    cd "$srcdir/Memory/build"  # Korrigiertes Verzeichnis
     install -Dm755 Memory "$pkgdir/usr/bin/Memory"  # Installation der ausführbaren Datei
-    install -Dm644 MemoryGame.desktop "$pkgdir/usr/share/applications/MemoryGame.desktop"
-    install -Dm644 MemoryGame.png "$pkgdir/usr/share/icons/hicolor/128x128/apps/MemoryGame.png"
+    install -Dm644 ../MemoryGame.desktop "$pkgdir/usr/share/applications/MemoryGame.desktop"
+    install -Dm644 ../MemoryGame.png "$pkgdir/usr/share/icons/hicolor/128x128/apps/MemoryGame.png"
 }
