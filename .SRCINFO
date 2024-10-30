@@ -1,6 +1,6 @@
 pkgbase = flclash-bin
 	pkgdesc = A multi-platform proxy client based on ClashMeta,simple and easy to use, open-source and ad-free.
-	pkgver = 0.8.64
+	pkgver = 0.8.66
 	pkgrel = 1
 	url = https://github.com/chen08209/FlClash
 	install = flclash.install
@@ -26,7 +26,7 @@ pkgbase = flclash-bin
 	optdepends = libkeybinder3: Multimedia key support under non Gnome setups
 	conflicts = flclash-git
 	conflicts = flclash
-	source = flclash-0.8.64.deb::https://github.com/chen08209/FlClash/releases/download/v0.8.64/flclash-0.8.64-linux-amd64.deb
-	sha256sums = 86beed655710bea4a62a492ba1d02c15511401db878c3301f7e38680d64d941b
+	source = flclash-0.8.66.deb::https://github.com/chen08209/FlClash/releases/download/v0.8.66/flclash-0.8.66-linux-amd64.deb
+	sha256sums = 221462603670b5b15ec0b5534cdcbea2751432df65dbebb53d984e9bbddb4ef8
 
 pkgname = flclash-bin
