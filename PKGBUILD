@@ -2,7 +2,7 @@
 
 pkgname=keyshift
 pkgver=1.0.2
-pkgrel=2
+pkgrel=1
 pkgdesc="Keyshift - keyboard remapping utility for Linux"
 arch=('any')
 url="https://github.com/hirak99/$pkgname"
@@ -17,7 +17,7 @@ md5sums=(
   'c371aeb2ce31060cf0c64dc1d32ba249'
   'SKIP'
 )
-install="$pkgname".install
+options=(!debug)
 
 # For -git, I think we may be able to use something like below.
 # See this post for some info: https://bbs.archlinux.org/viewtopic.php?id=300329
@@ -26,7 +26,7 @@ install="$pkgname".install
 #   repo="."
 #   git -C $repo submodule init
 #   git -C $repo config submodule.src/thirdparty/digestpp.url "file://$srcdir/digestpp"
-# 
+#
 #   git submodule update
 # }
 
