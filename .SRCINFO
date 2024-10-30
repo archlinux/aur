@@ -1,6 +1,6 @@
 pkgbase = oxen-core-bin
 	pkgdesc = OXEN core for cryptocurrency based on Monero (Loki)
-	pkgver = 10.4.1
+	pkgver = 10.6.0
 	pkgrel = 1
 	url = https://github.com/oxen-io/oxen-core
 	arch = x86_64
@@ -11,9 +11,9 @@ pkgbase = oxen-core-bin
 	provides = oxen-core
 	conflicts = oxen-core
 	conflicts = loki-core-git
-	source = https://github.com/oxen-io/oxen-core/releases/download/v10.4.1/oxen-linux-x86_64-10.4.1.tar.xz
+	source = https://github.com/oxen-io/oxen-core/releases/download/v10.6.0/oxen-linux-x86_64-10.6.0.tar.xz
 	source = https://raw.githubusercontent.com/oxen-io/oxen-core/dev/LICENSE
-	sha256sums = 58b920a3514afcb2b04511b92942fed838017f59b43e7203e8dbc670d9bf6a41
+	sha256sums = e89e0ad67d59f1aa797bc43f1fa18f08344eee7778067ec2f3b67ca87480a62d
 	sha256sums = 11075d9b10225bbaa5d77801888ab15aa13bef9e53a3fea442eb9f2f02ae818b
 
 pkgname = oxen-core-bin
