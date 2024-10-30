@@ -1,14 +1,13 @@
 pkgbase = cask
 	pkgdesc = Project management tool for Emacs
-	pkgver = 0.8.8
+	pkgver = 0.9.0
 	pkgrel = 1
 	url = https://github.com/cask/cask
 	arch = any
 	license = GPL
 	depends = emacs
 	depends = python
-	source = https://github.com/cask/cask/archive/v0.8.8.tar.gz
-	sha256sums = 94f99d4161dedda3024312dc6b929be6319aff593a6d31f1cf4f2845ae6ca5c6
+	source = https://github.com/cask/cask/archive/v0.9.0.tar.gz
+	sha256sums = 5db17efe3a91d36f457e70f097cba5ed5de505971894bf2ec839c38d8c2dd120
 
 pkgname = cask
-
