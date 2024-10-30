@@ -6,7 +6,7 @@ pkgdesc="Simple, hackable dynamic tiling Wayland compositor (dwm for Wayland)"
 arch=('x86_64')
 url="https://codeberg.org/dwl/dwl"
 license=('GPL')
-depends=('wlroots>=0.17')
+depends=('wlroots-git')
 makedepends=('git' 'wayland-protocols')
 optdepends=('xorg-xwayland: for XWayland support')
 provides=("${pkgname%-git}")
