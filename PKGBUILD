@@ -1,6 +1,6 @@
 # Maintainer: elParaguayo <elparaguayocode at gmail dot com>
 pkgname=qtile-extras
-pkgver=0.28.1
+pkgver=0.29.0
 pkgrel=1
 provides=("$pkgname")
 conflicts=("$pkgname")
