@@ -7,10 +7,10 @@
 
 pkgname=gcc-ada-debug
 
-pkgver=12.2.1
+pkgver=14.2.1
 # Don't forget to update version in ada-strippers !
 
-_commit=abaa8f9cc4c06dcdae13a33be9253762861d8657
+_commit=ab884fffe3fc82a710bea66ad651720d71c938b8
 # Don't forget to update _commit !
 
 _majorver=${pkgver%%.*}
@@ -60,8 +60,8 @@ sha256sums=('SKIP'
             'de48736f6e4153f03d0a5d38ceb6c6fdb7f054e8f47ddd6af0a3dbf14f27b931'
             '2513c6d9984dd0a2058557bf00f06d8d5181734e41dcfe07be7ed86f2959622a'
             '1773f5137f08ac1f48f0f7297e324d5d868d55201c03068670ee4602babdef2f'
-            'ee1e0086894e0d65125dd88a1666434b5defacdc0ff691427fd9b9ae3c4e8ba6'
-            'b340af39b91d10a6bf15ac795ada5a509e4b0f993ef6f4415bb504fc0fcc76ba')
+            '7e9305e07200e316640720fc2b4cbd947b74e499e9d520001184c132bec74f6f'
+            '13d6e287b0ca731cb9651d0554a7a6cd07efe6b10be200671a5bdfafca404150')
 
 prepare() {
   [[ ! -d gcc ]] && ln -s gcc-${pkgver/+/-} gcc

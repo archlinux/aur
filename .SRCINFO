@@ -1,6 +1,6 @@
 pkgbase = gcc-ada-debug
 	pkgdesc = Ada front-end for GCC (GNAT) with an unstripped runtime for effective debugging with gdb
-	pkgver = 12.2.1
+	pkgver = 14.2.1
 	pkgrel = 1
 	url = https://gcc.gnu.org
 	arch = x86_64
@@ -29,7 +29,7 @@ pkgbase = gcc-ada-debug
 	options = !emptydirs
 	options = !lto
 	options = debug
-	source = git+https://sourceware.org/git/gcc.git#commit=abaa8f9cc4c06dcdae13a33be9253762861d8657
+	source = git+https://sourceware.org/git/gcc.git#commit=ab884fffe3fc82a710bea66ad651720d71c938b8
 	source = c89
 	source = c99
 	source = gcc-ada-repro.patch
@@ -43,8 +43,8 @@ pkgbase = gcc-ada-debug
 	sha256sums = de48736f6e4153f03d0a5d38ceb6c6fdb7f054e8f47ddd6af0a3dbf14f27b931
 	sha256sums = 2513c6d9984dd0a2058557bf00f06d8d5181734e41dcfe07be7ed86f2959622a
 	sha256sums = 1773f5137f08ac1f48f0f7297e324d5d868d55201c03068670ee4602babdef2f
-	sha256sums = ee1e0086894e0d65125dd88a1666434b5defacdc0ff691427fd9b9ae3c4e8ba6
-	sha256sums = b340af39b91d10a6bf15ac795ada5a509e4b0f993ef6f4415bb504fc0fcc76ba
+	sha256sums = 7e9305e07200e316640720fc2b4cbd947b74e499e9d520001184c132bec74f6f
+	sha256sums = 13d6e287b0ca731cb9651d0554a7a6cd07efe6b10be200671a5bdfafca404150
 
 pkgname = gcc-ada-debug
 	depends = gcc
