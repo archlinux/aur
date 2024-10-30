@@ -1,13 +1,12 @@
 pkgbase = hare-json
 	pkgdesc = JSON support for Hare
-	pkgver = r34.ba8506a
+	pkgver = 0.24.2
 	pkgrel = 1
 	url = https://git.sr.ht/~sircmpwn/hare-json
 	arch = any
-	license = MPL2
-	makedepends = git
+	license = MPL-2.0
 	depends = hare
-	source = hare-json::git+https://git.sr.ht/~sircmpwn/hare-json#commit=ba8506a2b67aeb53018ae1ed2c031cf89f41f0ec
-	b2sums = SKIP
+	source = hare-json-0.24.2.tar.gz::https://git.sr.ht/~sircmpwn/hare-json/archive/0.24.2.tar.gz
+	b2sums = 5c82ceaf96ac8f01c14c718203888d354cefa17e7de862f28ddcb675a199fdaf802076abb67ec31ac299090fda3392cc527290bfa1eb7b1f745a5d8a7891b648
 
 pkgname = hare-json

@@ -1,26 +1,18 @@
-# Maintainer: George Rawlinson <grawlinson@archlinux.org>
+# Maintainer: Conrad Hoffmann <ch@bitfehler.net>
 
 pkgname=hare-json
-pkgver=r34.ba8506a
+pkgver=0.24.2
 pkgrel=1
 pkgdesc='JSON support for Hare'
 arch=('any')
 url='https://git.sr.ht/~sircmpwn/hare-json'
-license=('MPL2')
+license=('MPL-2.0')
 depends=('hare')
-makedepends=('git')
-_commit='ba8506a2b67aeb53018ae1ed2c031cf89f41f0ec'
-source=("$pkgname::git+$url#commit=$_commit")
-b2sums=('SKIP')
-
-pkgver() {
-  cd "$pkgname"
-
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
+source=("$pkgname-$pkgver.tar.gz::https://git.sr.ht/~sircmpwn/${pkgname}/archive/${pkgver}.tar.gz")
+b2sums=('5c82ceaf96ac8f01c14c718203888d354cefa17e7de862f28ddcb675a199fdaf802076abb67ec31ac299090fda3392cc527290bfa1eb7b1f745a5d8a7891b648')
 
 check() {
-  cd "$pkgname"
+  cd "$pkgname-$pkgver"
 
   # remove '-Wl,' prefix if present, since it is only required when
   # the linker is invoked indirectly. Keeping it will cause the linker to
@@ -31,7 +23,7 @@ check() {
 }
 
 package() {
-  cd "$pkgname"
+  cd "$pkgname-$pkgver"
 
   make DESTDIR="$pkgdir" PREFIX=/usr install
 }
