@@ -2,7 +2,7 @@
 
 _base='systemdunitparser'
 pkgname="python-$_base"
-pkgver=0.2
+pkgver=0.3
 pkgrel=1
 pkgdesc='Parser for systemd unit files'
 url='https://github.com/sgallagher/systemdunitparser'
@@ -14,7 +14,7 @@ makedepends=(
 )
 provides=("${pkgname}=${pkgver}")
 source=("${url}/archive/${pkgver}.tar.gz")
-sha512sums=('d2cfce480fcb67dd6026f9c7b3ba4733d541c04fee4e9afdfb7cca48573a467039ef9d23f29be283de762e1b39366979e0b14a9626079f88a929f417f6cceb23')
+sha512sums=('ecf69c53da1309c8dc11b7f235361c3421a7a2028ed0180c46f593e9880940e23485e9fab6b96df1542dedecc3ed3b986777e003e890d5aed65ae70eca9cf00c')
 
 build() {
   cd "${srcdir}/${_base}-${pkgver}"
