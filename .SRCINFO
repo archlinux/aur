@@ -8,5 +8,6 @@ pkgbase = memory-game
 	depends = gtk4
 	depends = gcc
 	source = git+https://github.com/rotstein007/Memory.git
+	sha256sums = SKIP
 
 pkgname = memory-game

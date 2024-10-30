@@ -8,6 +8,7 @@ url="https://github.com/rotstein007/Memory"  # Aktualisiert auf Ihren GitHub-Lin
 license=('MIT')
 depends=('gtk4' 'gcc')  # Abhängigkeiten
 source=("git+https://github.com/rotstein007/Memory.git")
+sha256sums=('SKIP')
 
 build() {
     cd "$srcdir/$pkgname"
