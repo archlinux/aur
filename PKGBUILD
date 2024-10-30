@@ -1,10 +1,10 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=onekey-wallet-bin
 _pkgname=OneKey-Wallet
-pkgver=5.2.3
+pkgver=5.3.0
 _electronversion=27
 pkgrel=1
-pkgdesc="Secure, open source and community driven crypto wallet runs on all platforms and trusted by millions."
+pkgdesc="Secure, open source and community driven crypto wallet runs on all platforms and trusted by millions.Prebuilt version.Use system-wide electron."
 arch=(
     'aarch64'
     'x86_64'
@@ -31,8 +31,8 @@ source=(
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-arm64.AppImage")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-x86_64.AppImage")
 sha256sums=('291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-sha256sums_aarch64=('ad095a7afd6853835546b821be8f78c3cc9f503b13bf4bb51b3112907754cc26')
-sha256sums_x86_64=('496d39c34c7bbd22c73c5982de22254cd0f17476046c35b386973574a370b0b7')
+sha256sums_aarch64=('690b2b3e50bcf38bb6d918b56c4a0ffbaf1e4845474a87b07c873532ea7e149a')
+sha256sums_x86_64=('42c682b6fb1de9cc0b94f03e5b5d178cb8d442c1f5b8c87d24fb2638714011ca')
 build() {
     sed -e "
         s/@electronversion@/${_electronversion}/g
@@ -52,7 +52,7 @@ build() {
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm644 "${srcdir}/app.asar" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
-    cp -r "${srcdir}/squashfs-root/resources/"{bin,static} "${pkgdir}/usr/lib/${pkgname%-bin}"
+    cp -Pr --no-preserve=ownership "${srcdir}/squashfs-root/resources/"{bin,static} "${pkgdir}/usr/lib/${pkgname%-bin}"
     install -Dm644 "${srcdir}/squashfs-root/usr/share/icons/hicolor/0x0/apps/${pkgname%-bin}.png" -t "${pkgdir}/usr/share/pixmaps"
     install -Dm644 "${srcdir}/squashfs-root/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
 }
