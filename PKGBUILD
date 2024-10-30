@@ -8,7 +8,7 @@
 set -u
 pkgname='libreswan'
 #pkgname+='-git'
-pkgver='5.0'
+pkgver='5.1'
 pkgrel='1'
 pkgdesc='IPsec implementation with IKEv1 and IKEv2 keying protocols'
 arch=('i686' 'x86_64')
@@ -30,9 +30,9 @@ source=(
   "https://download.libreswan.org/${pkgname}-${pkgver%%.r*}.tar.gz"
   'tmpfiles.conf'
 )
-md5sums=('185392cd6037bcc2eb9fde75423e550d'
+md5sums=('cce2b7071ba4e02dc8cd76a887f433e5'
          '77399a739ee99f8bc54837684d7c39d5')
-sha256sums=('10bc0adc90b9e981a30dfefba7daff200841ecb9910f9d671f137ffc1414286a'
+sha256sums=('1cee9d412c89799eb8bf7114500d5c14e0143e9546056163eebe3960e7f4637c'
             '78265c690d58228c3bcc1a8793456172c39d493d268e9d9b1816288d0a47f573')
 
 if [ "${pkgname%-git}" != "${pkgname}" ]; then
