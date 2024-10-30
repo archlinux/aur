@@ -1,4 +1,4 @@
-# Maintainer:
+# Maintainer: a821 at mail dot de
 # Contributor: Felix Yan <felixonmars@archlinux.org>
 # Contributor: FFY00 <filipe.lains@gmail.com>
 # Contributor: Simon 'ALSimon' Gilliot <simon@gilliot.fr>
@@ -6,7 +6,7 @@
 # Contributor: Dobroslaw Kijowski
 
 pkgname=mitmproxy-git
-pkgver=10.3.1.r38.gf77327634
+pkgver=11.0.2.r6.g3819467b0
 pkgrel=1
 pkgdesc='SSL-capable man-in-the-middle HTTP proxy'
 arch=('any')
@@ -24,7 +24,7 @@ depends=(
   'python-hyperframe'
   'python-kaitaistruct'
   'python-ldap3'
-  'python-mitmproxy-rs'
+  'python-mitmproxy-rs-git'
   'python-msgpack'
   'python-passlib'
   'python-protobuf'
@@ -45,7 +45,6 @@ checkdepends=(
   'python-hypothesis'
   'python-parver'
   'python-pytest-asyncio'
-  'python-pytest-cov'
   'python-pytest-timeout'
 )
 conflicts=('mitmproxy')
