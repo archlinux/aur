@@ -3,13 +3,14 @@
 
 pkgname=fmodengine
 pkgver=2.02.24
-pkgrel=2
+pkgrel=3
 pkgdesc="FMOD Engine API and tools."
 arch=('x86_64')
 url="https://www.fmod.com/"
 license=('custom')
 makedepends=('jq')
 depends=('glibc')
+options=('!strip')
 _filename="fmodstudioapi${pkgver//./}linux.tar.gz"
 _sha256="118d82791746344e8d909b79b679453d33003810fce3a99c4aa2da1acce00c71"
 
