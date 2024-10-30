@@ -28,6 +28,7 @@ package() {
        cp -r $srcdir/XPPenLinux${pkgver}-${pkgrel}/App/* $pkgdir
        cp -r $pkgdir/lib/* $pkgdir/usr/lib
        rm -r $pkgdir/lib
+       chmod +0777 ${pkgdir}/usr/lib/pentablet/conf/xppen
        #Licence  information
        install -Dm0644 $pkgdir/usr/lib/pentablet/doc/EULA $pkgdir/usr/share/licenses/${pkgname}/LICENSE
        #Using systemd user service instead of mandatory autostart
