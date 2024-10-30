@@ -1,0 +1,12 @@
+diff -urN connector-x-0.3.3-orig/connectorx/Cargo.toml connector-x-0.3.3/connectorx/Cargo.toml
+--- connector-x-0.3.3-orig/connectorx/Cargo.toml	2024-10-28 15:31:54.091472817 -0400
++++ connector-x-0.3.3/connectorx/Cargo.toml	2024-10-28 15:18:29.804584859 -0400
+@@ -58,7 +58,7 @@
+ j4rs = {version = "0.15", optional = true}
+ datafusion = {version = "31", optional = true}
+ prusto = {version = "0.5.1", optional = true}
+-serde = {optional = true}
++serde = {optional = true, version = "1"}
+ 
+ [lib]
+ crate-type = ["cdylib", "rlib"]
