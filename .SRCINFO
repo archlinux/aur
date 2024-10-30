@@ -8,6 +8,6 @@ pkgbase = whisper.cpp-model-large-v2
 	license = MIT
 	replaces = whisper.cpp-model-large
 	source = ggml-large-v2.bin::https://huggingface.co/ggerganov/whisper.cpp/resolve/main/ggml-large-v2.bin
-	sha1sums = 9a423fe4d40c82774b6af34115b8b935f34152246eb19e80e376071d3f999487
+	sha256sums = 9a423fe4d40c82774b6af34115b8b935f34152246eb19e80e376071d3f999487
 
 pkgname = whisper.cpp-model-large-v2
