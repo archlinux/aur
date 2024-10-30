@@ -1,7 +1,7 @@
 # Maintainer: yms_hi <yms_hi@Outlook.com>
 pkgname=('cangjie-beta-bin' 'cangjie-beta-tools-bin' 'cangjie-beta-runtime-bin')
 pkgver="0.53.13"
-pkgrel=2
+pkgrel=3
 epoch=
 arch=('x86_64' 'aarch64')
 pkgdesc='Cangjie(Beta Channel)'
@@ -18,9 +18,9 @@ backup=()
 options=()
 install=
 changelog=
-source_x86_64=("Cangjie-$pkgver-linux-$CARCH.tar.gz::https://cangjie-lang.cn/v1/files/auth/downLoad?nsId=142267&fileName=Cangjie-0.53.13-linux_x64.tar.gz&objectKey=6719f1eb3af6947e3c6af327")
+source_x86_64=("Cangjie-$pkgver-linux-amd64.tar.gz::https://cangjie-lang.cn/v1/files/auth/downLoad?nsId=142267&fileName=Cangjie-0.53.13-linux_x64.tar.gz&objectKey=6719f1eb3af6947e3c6af327")
 sha256sums_x86_64=('B3C0087DB26005F6316767FD7CCBFC40F721CFD2D092F94BF39A621C7D91FBBB')
-source_aarch64=("Cangjie-$pkgver-linux-$CARCH.tar.gz::https://cangjie-lang.cn/v1/files/auth/downLoad?nsId=142267&fileName=Cangjie-0.53.13-linux_aarch64.tar.gz&objectKey=6719f1ec3af6947e3c6af328")
+source_aarch64=("Cangjie-$pkgver-linux-aarch64.tar.gz::https://cangjie-lang.cn/v1/files/auth/downLoad?nsId=142267&fileName=Cangjie-0.53.13-linux_aarch64.tar.gz&objectKey=6719f1ec3af6947e3c6af328")
 sha256sums_aarch64=('9B4027B6FB4DFFC34D98B26AAE30F51329A32EE423B7ADC1D35349AAEC74FF9A')
 noextract=()
 validpgpkeys=()
@@ -53,8 +53,7 @@ package_cangjie-beta-runtime-bin(){
 package_cangjie-beta-bin() {
         pkgdesc="Cangjie compiler(Beta Channel)"
         provides=("cangjie-bin=$pkgver")
-        depends=("cangjie-beta-runtime=$pkgver" 'openssl>=3.0.7')
-        optdepends=('cangjie-llvm: backend')
+        depends=("cangjie-beta-runtime-bin=$pkgver" 'openssl>=3.0.7')
         conflicts=('cangjie-bin')
         cd "$srcdir/cangjie"
         install -d "$pkgdir/opt/cangjie/bin" "$pkgdir/opt/cangjie/lib/" "$pkgdir/opt/cangjie/modules/"

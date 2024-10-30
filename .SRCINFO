@@ -1,22 +1,21 @@
 pkgbase = cangjie-beta
 	pkgdesc = Cangjie(Beta Channel)
 	pkgver = 0.53.13
-	pkgrel = 2
+	pkgrel = 3
 	url = https://cangjie-lang.cn/
 	arch = x86_64
 	arch = aarch64
 	groups = cangjie-beta-full
 	license = unknown
-	source_x86_64 = Cangjie-0.53.13-linux-x86_64.tar.gz::https://cangjie-lang.cn/v1/files/auth/downLoad?nsId=142267&fileName=Cangjie-0.53.13-linux_x64.tar.gz&objectKey=6719f1eb3af6947e3c6af327
+	source_x86_64 = Cangjie-0.53.13-linux-amd64.tar.gz::https://cangjie-lang.cn/v1/files/auth/downLoad?nsId=142267&fileName=Cangjie-0.53.13-linux_x64.tar.gz&objectKey=6719f1eb3af6947e3c6af327
 	sha256sums_x86_64 = B3C0087DB26005F6316767FD7CCBFC40F721CFD2D092F94BF39A621C7D91FBBB
-	source_aarch64 = Cangjie-0.53.13-linux-x86_64.tar.gz::https://cangjie-lang.cn/v1/files/auth/downLoad?nsId=142267&fileName=Cangjie-0.53.13-linux_aarch64.tar.gz&objectKey=6719f1ec3af6947e3c6af328
+	source_aarch64 = Cangjie-0.53.13-linux-aarch64.tar.gz::https://cangjie-lang.cn/v1/files/auth/downLoad?nsId=142267&fileName=Cangjie-0.53.13-linux_aarch64.tar.gz&objectKey=6719f1ec3af6947e3c6af328
 	sha256sums_aarch64 = 9B4027B6FB4DFFC34D98B26AAE30F51329A32EE423B7ADC1D35349AAEC74FF9A
 
 pkgname = cangjie-beta-bin
 	pkgdesc = Cangjie compiler(Beta Channel)
-	depends = cangjie-beta-runtime=0.53.13
+	depends = cangjie-beta-runtime-bin=0.53.13
 	depends = openssl>=3.0.7
-	optdepends = cangjie-llvm: backend
 	provides = cangjie-bin=0.53.13
 	conflicts = cangjie-bin
 
