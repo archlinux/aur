@@ -1,7 +1,7 @@
 # Maintainer: loathingkernel <loathingkernel _a_ gmail _d_ com>
 
 pkgname=proton-ge-custom
-_srctag=GE-Proton9-15
+_srctag=GE-Proton9-16
 _commit=
 pkgver=${_srctag//-/.}
 _geckover=2.47.4
@@ -97,7 +97,6 @@ source=(
     0005-AUR-Strip-binaries-early.patch
     0006-AUR-Fix-hwnd-redefinition.patch
     0007-AUR-Disable-incompatible-pointer-types-in-Wine-GCC-1.patch
-    0008-AUR-Fix-calling-make-requests-where-it-shouldn-t-be-.patch
 )
 noextract=(
     wine-gecko-${_geckover}-{x86,x86_64}.tar.xz
@@ -174,7 +173,6 @@ prepare() {
     patch -p1 -i "$srcdir"/0005-AUR-Strip-binaries-early.patch
     patch -p1 -i "$srcdir"/0006-AUR-Fix-hwnd-redefinition.patch
     patch -p1 -i "$srcdir"/0007-AUR-Disable-incompatible-pointer-types-in-Wine-GCC-1.patch
-    patch -p1 -i "$srcdir"/0008-AUR-Fix-calling-make-requests-where-it-shouldn-t-be-.patch
 }
 
 build() {
@@ -262,16 +260,15 @@ package() {
         $(find "$_monodir" -iname "*x86_64.dll" -or -iname "*x86_64.exe")
 }
 
-sha256sums=('907cead744a7dafbf6be27cdd0a4e990d9d50a40be0a55c3c1a37ebf3e28d0ff'
+sha256sums=('b6a65e3609f4d0ead3ab2c432cbc0216efc2c30ba64d5fac503549c5bbe12c55'
             '2cfc8d5c948602e21eff8a78613e1826f2d033df9672cace87fed56e8310afb6'
             'fd88fc7e537d058d7a8abf0c1ebc90c574892a466de86706a26d254710a82814'
             'c23deb9e3217a574f242b78d74cb94c4948a37d1f2715941b803a02e535854a6'
             'a5cfd3090ebf7fb694bce573ef87b300b86f61204987ecbd068a2fe5079b7e6e'
-            '126770120d3b6b269079769de7ae29cfd54782fde28e7a0e36102665eb0a67dd'
-            '62230516752cc45023e10488e9d9dfbd14a94a3218ae78ac096830d2bddc70df'
-            '8c1e56b38b72efa7572cd4e6a81713b469174c7644966da184906ce1e8bac3c9'
-            '49441bb3ca95d0fa9b38fb07a31253586734d02b0c05d7d4b1533b54aa13cc75'
-            '22c6564be5644c8f60381230b6cf27be3636539e6f557b22d615f70b0b98f87b'
-            '1d094251962659373fbda2c37986b482aa43ec9c31ebf5365125359eab4a4888'
-            'd5a285d99820037f9a4230122ef0b774730aa32e9b45b5b9dcddfc023089cdbe'
-            'd5a41c018634563e0acae6d3797356b67868d8354e2c022d482c3f6ad468ceaa')
+            '8e223b2a8d0d7dc7254b5015f9f7996a6de12f00aa4b372351ba27f5f29f4cc7'
+            'cd04e33c6cda8ac8e9c38f75021d1a24d3f06bece25ffdf10a4c51951bf37148'
+            '982b015d94f1c42184ffdffc0d6182da39a438acb00bc539866172a4fc0da598'
+            'ecdb4b73137271296fe2990be084ee1da8cfac47dfb9e8d7c25061b196f6dd52'
+            '788a037948752dc3a862ff73f8488c0591018c5c2f20a085bad6e12c56100e87'
+            '66c9be3b761a78e2229fddea42c32fa943f188e07c2971ef89edea8e5b135d13'
+            '3e81486846f782233d15d3229694cc6bd65c22a2ff7e82eeb2c9fcafd59e99ae')
