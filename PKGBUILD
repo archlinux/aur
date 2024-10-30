@@ -1,8 +1,9 @@
+# Maintainer: Jah Way <jahway603 at protonmail dot com>
+# Previous Maintainer: Tun Win Naing <tunwn.mdy@gmail.com>
 # Contributor: Andrew Rabert <draje@nullsum.net>
-# Maintainer: Tun Win Naing <tunwn.mdy@gmail.com>
 
 pkgname=tamzen-font
-pkgver=1.11.5
+pkgver=1.11.6
 pkgrel=1
 pkgdesc="Bitmapped programming font, based on Tamsyn (powerline, bitmap, ttf, vconsole font)"
 arch=('any')
@@ -11,7 +12,7 @@ license=('custom')
 depends=('fontconfig' 'xorg-fonts-encodings' 'xorg-font-utils')
 install=tamzen-font.install
 source=("https://github.com/sunaku/tamzen-font/archive/Tamzen-${pkgver}.tar.gz")
-sha256sums=('78d39f481bcb1011ea6c2f80259c4f2cd08147f9948f4d19e42c418c23b8518d')
+sha256sums=('f35173177f9407bb78e48a93169f1981ae5c945d51fef6e4eeae85c1c9192577')
 
 _srcname="tamzen-font-Tamzen-${pkgver}"
 
