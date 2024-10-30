@@ -1,0 +1,35 @@
+pkgbase = ogre-next2
+	pkgdesc = Scene-oriented, flexible 3D engine written in C++
+	pkgver = 2.3.3
+	pkgrel = 1
+	url = http://www.ogre3d.org
+	install = ogre-next2.install
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = doxygen
+	makedepends = graphviz
+	makedepends = ttf-dejavu
+	makedepends = mesa
+	makedepends = ninja
+	makedepends = cppunit
+	makedepends = vulkan-headers
+	makedepends = shaderc
+	depends = freetype2
+	depends = libxaw
+	depends = libxrandr
+	depends = rapidjson
+	depends = zziplib
+	depends = sdl2
+	depends = glu
+	depends = tinyxml
+	depends = zlib
+	depends = openvr
+	provides = ogre-next=2.3.3
+	conflicts = ogre-next
+	source = ogre-next2-2.3.3.tar.gz::https://github.com/OGRECave/ogre-next/archive/v2.3.3.tar.gz
+	source = mesa-gl3.patch::https://github.com/OGRECave/ogre-next/pull/469.patch
+	sha512sums = 52ed2d2a3375c0d35f0dc695b986514484ad1d47966c5c18351d3b09913123b2487b9729738c6b8b1219c1a992a8c8509a2303e097a6eb26497e152a14d48830
+	sha512sums = f0d772bebdac21a4b513f399a5cc1eb64401f00b669f3f872db2f8255e58a5ebf7390e0a850516aff48e6786215a48275df275b7a8c6a4c8928a37a4f0df4b5c
+
+pkgname = ogre-next2
