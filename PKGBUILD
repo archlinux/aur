@@ -2,7 +2,7 @@
 
 _pkgname=tux
 pkgname=${_pkgname}-git
-pkgver=r299.2ec09b2
+pkgver=r329.5bc252c
 pkgrel=1
 pkgdesc='A 3D platform game featuring the famous Linux mascot.'
 arch=('x86_64')
@@ -22,9 +22,7 @@ pkgver() {
 
 build() {
   cd "${srcdir}/${pkgname}"
-  rm -f Dry
-  ln -s /opt/dry/ Dry
-  qmake Tux.pro "DATADIR=/usr/share"
+  DRY_HOME=/opt/dry qmake Tux.pro "DATADIR=/usr/share"
   make
 }
 

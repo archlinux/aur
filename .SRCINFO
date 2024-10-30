@@ -1,6 +1,6 @@
 pkgbase = tux-git
 	pkgdesc = A 3D platform game featuring the famous Linux mascot.
-	pkgver = r299.2ec09b2
+	pkgver = r329.5bc252c
 	pkgrel = 1
 	url = https://gitlab.com/luckeyproductions/games/tux
 	arch = x86_64
