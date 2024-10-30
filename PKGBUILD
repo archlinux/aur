@@ -5,13 +5,13 @@ pkgname=asoundconf
 epoch=1
 pkgver=1.2
 _commit=55cdf2e78b7f28ee1808346e5d4e32f7e95618dc # 1.2
-pkgrel=8
+pkgrel=9
 pkgdesc="utility to read and change the user's ALSA library configuration"
 arch=('any')
 url="https://bitbucket.org/stativ/asoundconf"
 license=('GPL')
 depends=('python')
-makedepends=('git' 'python-build' 'python-installer' 'python-wheel')
+makedepends=('git' 'python-build' 'python-installer' 'python-wheel' 'python-setuptools')
 optdepends=('python-gobject: asoundconf-gtk GUI'
             'gtk3: for GUI')
 source=("git+https://bitbucket.org/stativ/asoundconf.git#commit=$_commit"
