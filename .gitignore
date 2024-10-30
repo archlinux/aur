@@ -1,7 +1,10 @@
 # makepkg files
 pkg/
 src/
-*.xz
+*.tar.xz
+*.tar.zst
+
+*.log
 
 # source files
 pyquante2

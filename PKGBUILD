@@ -1,20 +1,27 @@
 # Maintainer: Eric Berquist <eric DOT berquist AT gmail DOT com>
 
 _name=pyquante2
-pkgbase=python-${_name}-git
-pkgname=(python-${_name}-git python2-${_name}-git)
-pkgver=r548.4b05475
+pkgname=python-${_name}-git
+pkgver=r596.fa02f54
 pkgrel=1
 pkgdesc="Python Quantum Chemistry Reloaded. This is a rewrite of the standard PyQuante program to clean up things that have been nagging me. (git version)"
 arch=("i686" "x86_64")
-url="https://github.com/rpmuller/${_name}"
+url="https://github.com/rpmuller/pyquante2"
 license=("BSD")
-depends=("python" "python2" "python-numpy" "python2-numpy" "cython" "cython2")
-makedepends=("git")
-provides=("python-pyquante2" "python2-pyquante2")
-conflicts=("python-pyquante2" "python2-pyquante2")
-source=("git+https://github.com/rpmuller/${_name}")
-md5sums=('SKIP')
+depends=("python" "python-numpy" "python-setuptools")
+makedepends=("cython"
+             "git"
+             "python-build"
+             "python-installer"
+             "python-setuptools"
+             "python-wheel")
+checkdepends=("python-pytest")
+provides=("python-pyquante2")
+conflicts=("python-pyquante2")
+source=("git+https://github.com/rpmuller/${_name}"
+        "cython.patch")
+sha256sums=('SKIP'
+            'c356b30444728453426f4c2c759d34c6aba1928deec86355c8d2d08160ed1c55')
 
 pkgver() {
   cd "${srcdir}/${_name}"
@@ -23,20 +30,31 @@ pkgver() {
          "$(git rev-parse --short HEAD)"
 }
 
-package_python-pyquante2-git() {
-  depends=("python" "python-numpy" "cython")
-  provides=("python-pyquante2")
-  conflicts=("python-pyquante2")
+prepare() {
+  git -C "${srcdir}/${_name}" clean -dfx
 
   cd "${srcdir}/${_name}"
-  python setup.py install --root="${pkgdir}" --optimize=1
+
+  patch -p0 -i ../cython.patch
 }
 
-package_python2-pyquante2-git() {
-  depends=("python2" "python2-numpy" "cython2")
-  provides=("python2-pyquante2")
-  conflicts=("python2-pyquante2")
-
+build() {
   cd "${srcdir}/${_name}"
-  python2 setup.py install --root="${pkgdir}" --optimize=1
+
+  python -m build --wheel --no-isolation
 }
+
+package() {
+  cd "${srcdir}/${_name}"
+
+  python -m installer --destdir="${pkgdir}" dist/*.whl
+  install -D -m644 LICENSE "${pkgdir}"/usr/share/licenses/"${pkgname}"/LICENSE
+}
+
+# check() {
+#   cd "${srcdir}/${_name}"
+
+#   # local python_version=$(python -c 'import sys; print("".join(map(str, sys.version_info[:2])))')
+#   # PYTHONPATH="${PWD}/build/lib.linux-${CARCH}-cpython-${python_version}" python -m pytest
+#   python -m pytest
+# }

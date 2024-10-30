@@ -1,0 +1,415 @@
+diff --git .gitignore .gitignore
+index 8f3f097..e6cdf4b 100644
+--- .gitignore
++++ .gitignore
+@@ -9,6 +9,6 @@ profile.out
+ *.png
+ *.vtk
+ prof
++dist/
+ docs/_build
+-cython/cbecke.c
+ pyquante2.egg-info/
+diff --git MANIFEST.in MANIFEST.in
+new file mode 100644
+index 0000000..3547e38
+--- /dev/null
++++ MANIFEST.in
+@@ -0,0 +1,3 @@
++graft cython
++global-exclude *.html
++global-exclude *.py[cod]
+diff --git cython/crys.c cython/crys.c
+index bebed9e..c2e56cf 100644
+--- cython/crys.c
++++ cython/crys.c
+@@ -30,7 +30,10 @@
+ #define M_PI 3.14159265358979323846
+ #endif
+ 
+-static double contr_coulomb(int lena,double *aexps,double *acoefs,double *anorms,
++static double roots[MAXROOTS],weights[MAXROOTS],G[MAXROOTS][MAXROOTS];
++static double B00,B1,B1p,C,Cp;
++
++double contr_coulomb(int lena,double *aexps,double *acoefs,double *anorms,
+ 		     double xa,double ya,double za,int la,int ma,int na,
+ 		     int lenb,double *bexps,double *bcoefs,double *bnorms,
+ 		     double xb,double yb,double zb,int lb,int mb,int nb,
+@@ -52,7 +55,7 @@ static double contr_coulomb(int lena,double *aexps,double *acoefs,double *anorms
+   return val;
+ }
+     
+-static double coulomb_repulsion(double xa,double ya,double za,double norma,
++double coulomb_repulsion(double xa,double ya,double za,double norma,
+ 			 int la,int ma,int na,double alphaa,
+ 			 double xb,double yb,double zb,double normb,
+ 			 int lb,int mb,int nb,double alphab,
+@@ -95,7 +98,7 @@ static double coulomb_repulsion(double xa,double ya,double za,double norma,
+   return 2*sqrt(rho/M_PI)*norma*normb*normc*normd*sum; /* ABD eq 5 & 9 */
+ }
+ 
+-static void Roots(int n, double X){
++void Roots(int n, double X){
+   if (n <= 3)
+     Root123(n,X);
+   else if (n==4) 
+@@ -108,7 +111,7 @@ static void Roots(int n, double X){
+ }
+ 
+ 
+-static void Root123(int n, double X){
++void Root123(int n, double X){
+ 
+   double R12, PIE4, R22, W22, R13, R23, W23, R33, W33;
+   double RT1=0,RT2=0,RT3=0,WW1=0,WW2=0,WW3=0;
+@@ -565,7 +568,7 @@ static void Root123(int n, double X){
+   return;
+ }
+ 
+-static void Root4(double X){
++void Root4(double X){
+   double R14,PIE4,R24,W24,R34,W34,R44,W44;
+   double RT1=0,RT2=0,RT3=0,RT4=0,WW1=0,WW2=0,WW3=0,WW4=0;
+   double Y,E;
+@@ -931,7 +934,7 @@ static void Root4(double X){
+   return;
+ }
+ 
+-static void Root5(double X){
++void Root5(double X){
+   double R15,PIE4,R25,W25,R35,W35,R45,W45,R55,W55;
+   double RT1=0,RT2=0,RT3=0,RT4=0,RT5=0,
+     WW1=0,WW2=0,WW3=0,WW4=0,WW5=0;
+@@ -1436,12 +1439,12 @@ static void Root5(double X){
+   return;
+ }
+ 
+-static void Root6(int n,double X){
++void Root6(int n,double X){
+   printf("crys.c:Root6 not implemented yet\n");
+   return ;
+ }
+ 
+-static double Int1d(double t,int ix,int jx,int kx, int lx,
++double Int1d(double t,int ix,int jx,int kx, int lx,
+ 	     double xi,double xj, double xk,double xl,
+ 	     double alphai,double alphaj,double alphak,double alphal){
+   double Ix;
+@@ -1451,7 +1454,7 @@ static double Int1d(double t,int ix,int jx,int kx, int lx,
+   return Ix;
+ }
+ 
+-static void RecurFactors(double t,double A,double B,
++void RecurFactors(double t,double A,double B,
+ 		  double Px,double Qx,double xi,double xk){
+   /* ABD eqs 12-14 */
+   double fff;
+@@ -1464,7 +1467,7 @@ static void RecurFactors(double t,double A,double B,
+   return;
+ }
+ 
+-static void RecurFactorsGamess(double t,double A,double B,
++void RecurFactorsGamess(double t,double A,double B,
+ 			double Px,double Qx,double xi,double xk){
+   /* Analogous versions taken from Gamess source code */
+   double fff;
+@@ -1477,7 +1480,7 @@ static void RecurFactorsGamess(double t,double A,double B,
+   return;
+ }
+ 
+-static void Recur(double t, int i, int j, int k, int l,
++void Recur(double t, int i, int j, int k, int l,
+ 	   double xi, double xj, double xk, double xl,
+ 	   double alphai, double alphaj, double alphak, double alphal){
+   /* Form G(n,m)=I(n,0,m,0) intermediate values for a Rys polynomial */
+@@ -1514,7 +1517,7 @@ static void Recur(double t, int i, int j, int k, int l,
+     return;
+ }
+ 
+-static double Shift(int i, int j, int k, int l, double xij, double xkl){
++double Shift(int i, int j, int k, int l, double xij, double xkl){
+   /* Compute and  output I(i,j,k,l) from I(i+j,0,k+l,0) (G) */
+   /*  xij = xi-xj, xkl = xk-xl */
+ 
+@@ -1532,19 +1535,18 @@ static double Shift(int i, int j, int k, int l, double xij, double xkl){
+ }
+ 
+ /* Util functions: */
+-static double product_center_1D(double alphaa, double xa, 
++double product_center_1D(double alphaa, double xa, 
+ 			 double alphab, double xb){
+   return (alphaa*xa+alphab*xb)/(alphaa+alphab);
+ }
+ 
+-static double dist2(double x1, double y1, double z1, double x2, double y2, double z2){
++double dist2(double x1, double y1, double z1, double x2, double y2, double z2){
+   return (x1-x2)*(x1-x2)+(y1-y2)*(y1-y2)+(z1-z2)*(z1-z2);
+ }
+ 
+-static int binomial(int a, int b){return fact(a)/(fact(b)*fact(a-b));}
++int binomial(int a, int b){return fact(a)/(fact(b)*fact(a-b));}
+ 
+-static int fact(int n){
++int fact(int n){
+   if (n <= 1) return 1;
+   return n*fact(n-1);
+ }
+-
+diff --git cython/crys.h cython/crys.h
+index 78832f4..0ffd954 100644
+--- cython/crys.h
++++ cython/crys.h
+@@ -10,10 +10,8 @@
+  *
+  **************************************************************************/
+ #define MAXROOTS 20
+-static double roots[MAXROOTS],weights[MAXROOTS],G[MAXROOTS][MAXROOTS];
+-static double B00,B1,B1p,C,Cp;
+ 
+-static double contr_coulomb(int lena,double *aexps,double *acoefs,double *anorms,
++double contr_coulomb(int lena,double *aexps,double *acoefs,double *anorms,
+ 		     double xa,double ya,double za,int la,int ma,int na,
+ 		     int lenb,double *bexps,double *bcoefs,double *bnorms,
+ 		     double xb,double yb,double zb,int lb,int mb,int nb,
+@@ -22,7 +20,7 @@ static double contr_coulomb(int lena,double *aexps,double *acoefs,double *anorms
+ 		     int lend,double *dexps,double *dcoefs,double *dnorms,
+ 		     double xd,double yd,double zd,int ld,int md,int nd);
+ 
+-static double coulomb_repulsion(double xa,double ya,double za,double norma,
++double coulomb_repulsion(double xa,double ya,double za,double norma,
+ 			 int la,int ma,int na,double alphaa,
+ 			 double xb,double yb,double zb,double normb,
+ 			 int lb,int mb,int nb,double alphab,
+@@ -31,34 +29,33 @@ static double coulomb_repulsion(double xa,double ya,double za,double norma,
+ 			 double xd,double yd,double zd,double normd,
+ 			 int ld,int md,int nd,double alphad);
+ 
+-static void Roots(int n, double X);
+-static void Root123(int n, double X);
+-static void Root4(double X);
+-static void Root5(double X);
+-static void Root6(int n,double X);
+-static double Int1d(double t,int ix,int jx,int kx, int lx,
++void Roots(int n, double X);
++void Root123(int n, double X);
++void Root4(double X);
++void Root5(double X);
++void Root6(int n,double X);
++double Int1d(double t,int ix,int jx,int kx, int lx,
+ 	     double xi,double xj, double xk,double xl,
+ 	     double alphai,double alphaj,double alphak,double alphal);
+ 
+-static void RecurFactors(double t,double A,double B,
++void RecurFactors(double t,double A,double B,
+ 		  double Px,double Qx,double xi,double xk);
+ 
+-static void RecurFactorsGamess(double t,double A,double B,
++void RecurFactorsGamess(double t,double A,double B,
+ 			double Px,double Qx,double xi,double xk);
+ 
+-static void Recur(double t, int i, int j, int k, int l,
++void Recur(double t, int i, int j, int k, int l,
+ 	   double xi, double xj, double xk, double xl,
+ 	   double alphai, double alphaj, double alphak, double alphal);
+ 
+-static double Shift(int i, int j, int k, int l, double xij, double xkl);
++double Shift(int i, int j, int k, int l, double xij, double xkl);
+ 
+-static double product_center_1D(double alphaa, double xa, 
++double product_center_1D(double alphaa, double xa, 
+ 				double alphab, double xb);
+ 
+ // These look like duplicates. Have to figure out a better place to put
+ // these in both the python and C versions:
+-static double dist2(double x1, double y1, double z1, 
++double dist2(double x1, double y1, double z1, 
+ 		    double x2, double y2, double z2);
+-static int binomial(int a, int b);
+-static int fact(int n);
+-
++int binomial(int a, int b);
++int fact(int n);
+diff --git pyproject.toml pyproject.toml
+index 51b2b11..c8a953b 100644
+--- pyproject.toml
++++ pyproject.toml
+@@ -1,5 +1,6 @@
+ [build-system]
+ requires = [
++    "cython>=3.0.11",
+     "numpy",
+     "setuptools>=61.0",
+ ]
+diff --git pyquante2/grid/grid.py pyquante2/grid/grid.py
+index 2382a63..a0a5324 100644
+--- pyquante2/grid/grid.py
++++ pyquante2/grid/grid.py
+@@ -9,8 +9,9 @@ from pyquante2.grid.atomic_grid import atomic_grid
+ 
+ try:
+     from pyquante2.cbecke import becke_reweight_atoms
+-except:
+-    print("Couldn't find cython becke routine")
++except ImportError:
++    import sys
++    print("Couldn't find cython becke routine", file=sys.stderr)
+     from pyquante2.grid.becke import becke_reweight_atoms
+ 
+ 
+diff --git pyquante2/ints/integrals.py pyquante2/ints/integrals.py
+index f56dd9d..ce1c1ac 100644
+--- pyquante2/ints/integrals.py
++++ pyquante2/ints/integrals.py
+@@ -4,13 +4,15 @@ General module for integral generation and access.
+ try:
+     from pyquante2.cints.hgp import ERI
+ except:
+-    print("Couldn't find cython int routine")
++    import sys
++    print("Couldn't find cython int routine", file=sys.stderr)
+     from pyquante2.ints.hgp import ERI
+ 
+ try:
+     from pyquante2.cints.one import S,T,V
+ except:
+-    print("Couldn't find cython int routine")
++    import sys
++    print("Couldn't find cython int routine", file=sys.stderr)
+     from pyquante2.ints.one import S,T,V
+ 
+ from pyquante2.utils import pairs
+diff --git setup.py setup.py
+index aec62a1..99c35cb 100644
+--- setup.py
++++ setup.py
+@@ -1,52 +1,81 @@
++import os.path
++import sys
++from os import getenv
+ from pathlib import Path
+ from setuptools import setup
+ from setuptools.extension import Extension
++from setuptools.command.build_ext import build_ext
++
++import numpy as np
++
++CYTHON_DISABLED = getenv("PYQUANTE_CYTHON_DISABLED", "False").lower() in (
++    "true",
++    "1",
++    "t",
++)
+ 
+ try:
+     from Cython.Build import cythonize
++
++    FILE_EXT = "pyx"
++    CYTHON_AVAILABLE = True
++    print("Cython available")
+ except ImportError:
+     FILE_EXT = "c"
+-    USE_CYTHON = False
+-else:
+-    import numpy as np
++    CYTHON_AVAILABLE = False
++    print("Cython not available")
+ 
+-    FILE_EXT = "pyx"
++if CYTHON_AVAILABLE and not CYTHON_DISABLED:
++    print("Cython available and requested")
+     USE_CYTHON = True
++else:
++    USE_CYTHON = False
+ 
+ 
+ _NUMPY_MACROS = [("NPY_NO_DEPRECATED_API", "NPY_1_7_API_VERSION")]
+ ext_modules = [
+     Extension(
+         "pyquante2.cints.one",
+-        [f"cython/cone_wrap.{FILE_EXT}", "cython/cints.c"],
++        [
++            os.path.join("cython", f"cone_wrap.{FILE_EXT}"),
++            os.path.join("cython", "cints.c"),
++        ],
+         define_macros=_NUMPY_MACROS,
+     ),
+     Extension(
+         "pyquante2.cints.two",
+-        [f"cython/ctwo_wrap.{FILE_EXT}", "cython/cints.c"],
++        [
++            os.path.join("cython", f"ctwo_wrap.{FILE_EXT}"),
++            os.path.join("cython", "cints.c"),
++        ],
+         define_macros=_NUMPY_MACROS,
+     ),
+     Extension(
+         "pyquante2.cints.hgp",
+-        [f"cython/chgp_wrap.{FILE_EXT}", "cython/chgp.c", "cython/cints.c"],
++        [
++            os.path.join("cython", f"chgp_wrap.{FILE_EXT}"),
++            os.path.join("cython", "chgp.c"),
++            os.path.join("cython", "cints.c"),
++        ],
+         define_macros=_NUMPY_MACROS,
+     ),
+     Extension(
+         "pyquante2.cints.rys",
+-        [f"cython/crys_wrap.{FILE_EXT}", "cython/crys.c"],
++        [
++            os.path.join("cython", f"crys_wrap.{FILE_EXT}"),
++            os.path.join("cython", "crys.c"),
++        ],
+         define_macros=_NUMPY_MACROS,
+     ),
++    Extension(
++        "pyquante2.cbecke",
++        [os.path.join("cython", f"cbecke.{FILE_EXT}")],
++        define_macros=_NUMPY_MACROS,
++        include_dirs=[np.get_include()],
++    ),
+ ]
+ 
+ if USE_CYTHON:
+-    ext_modules.append(
+-        Extension(
+-            "pyquante2.cbecke",
+-            ["cython/cbecke.pyx"],
+-            define_macros=_NUMPY_MACROS,
+-            include_dirs=[np.get_include()],
+-        )
+-    )
+     ext_modules = cythonize(ext_modules, annotate=True)
+ 
+ # Make intermediate directories so that `setup.py build_ext -i` works.
+@@ -56,7 +85,32 @@ for ext_module in ext_modules:
+     path = _PWD.joinpath(*ext_module.name.split(".")[:-1])
+     path.mkdir(parents=True, exist_ok=True)
+ 
++
++class optional_build_ext(build_ext):
++    """build_ext that allows installation to continue if Extensions can't be built.
++
++    This is useful for when there is code logic that will instead route to a
++    pure Python implementation.
++    """
++
++    def build_extension(self, ext):
++        self.couldnt_build = False
++        try:
++            super().build_extension(ext)
++        except:
++            self.couldnt_build = True
++            print(
++                "Couldn't compile extension, will fall back to pure Python implementations",
++                file=sys.stderr,
++            )
++
++    def copy_extensions_to_source(self):
++        if not self.couldnt_build:
++            super().copy_extensions_to_source()
++
++
+ setup(
+     name="pyquante2",
+     ext_modules=ext_modules,
++    cmdclass={"build_ext": optional_build_ext},
+ )
