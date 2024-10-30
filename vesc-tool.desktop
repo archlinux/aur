@@ -1,0 +1,9 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Name=VESC Tool
+Comment=VESC ESC configuration tool
+Exec=/usr/bin/vesc_tool
+Terminal=false
+Type=Application
+Icon=vesc-tool
+Categories=Education;Development;
