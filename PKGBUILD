@@ -2,7 +2,7 @@
 
 pkgname=texmacs-guile3-git
 _pkgname=texmacs
-pkgver=2.1.4_r13451.4c6097b19
+pkgver=2.1.4_r13455.75ff83898
 pkgrel=1
 pkgdesc="Free scientific text editor, inspired by TeX and GNU Emacs. WYSIWYG
 editor and CAS-interface. Pulled from github.com/hammerfunctor/texmacs"
@@ -17,9 +17,10 @@ optdepends=('transfig: convert images using fig2ps'
             'aspell: spell checking'
             'inkscape: svg convertion')
 makedepends=('ghostscript' 'cmake' 'git' 'gcc')
-source=("${_pkgname}::git+https://github.com/hammerfunctor/texmacs")
+_commit=75ff838984008e545b07f7c4d21cf25f1ff77137
+source=("${_pkgname}::git+https://github.com/hammerfunctor/texmacs#commit=$_commit")
 sha256sums=('SKIP')
-options=('!emptydirs' '!strip')
+options=('!emptydirs')
 provides=('texmacs')
 conflicts=('texmacs')
 LANG=C
@@ -41,6 +42,10 @@ prepare() {
   # replace function (... start end . delta) by (range-list*-1 start end . delta) to supress warning
   for f in $(grep -l "(\\.\\.\\." $(find . -iname "*.scm")); do
     sed -i -e "s/(\\.\\.\\./(range-list*-1/" $f
+  done
+
+  for f in ../../*.patch; do
+    git apply < $f
   done
 }
 
