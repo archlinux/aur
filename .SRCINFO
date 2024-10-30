@@ -1,0 +1,32 @@
+pkgbase = vesc-tool
+	pkgdesc = VESC ESC graphical configuration tool
+	pkgver = 6.05
+	pkgrel = 1
+	epoch = 1
+	url = https://vesc-project.com/vesc_tool
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	arch = armv6h
+	license = GPL3
+	makedepends = git
+	makedepends = mold
+	depends = qt5-base
+	depends = qt5-connectivity
+	depends = qt5-quickcontrols2
+	depends = qt5-serialport
+	depends = qt5-location
+	depends = qt5-gamepad
+	depends = qt5-serialbus
+	depends = qt5-svg
+	conflicts = vesc_tool-git
+	options = !debug
+	source = vesc-tool::git+https://github.com/vedderb/vesc_tool.git#branch=release_6_05
+	source = aur-build-qmake.patch
+	source = vesc-tool.desktop
+	sha256sums = SKIP
+	sha256sums = c2f39c4ae80a0dc1a376727c36052d1df30ef117ab29bb64a1ef56a78755bc6a
+	sha256sums = a0d31826279e900ab614744afad1a26b849440c298d8a5e6e318df554beebdde
+
+pkgname = vesc-tool
