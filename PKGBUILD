@@ -15,17 +15,17 @@ source=("git+$url.git")
 md5sums=("SKIP")
 
 pkgver() {
-	cd "$srcdir/${pkgname%-VCS}"
+	cd "$srcdir/Quatracker"
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-	cd "$srcdir/${pkgname%-VCS}"
+	cd "$srcdir/Quatracker"
 	make build-linux
 }
 
 package() {
-	cd "$srcdir/${pkgname%-VCS}"
+	cd "$srcdir/Quatracker"
 
 	install -Dm755 "./build/bin/$(jq --raw-output '.outputfilename' wails.json)" "$pkgdir/usr/bin/quatracker"
 	install -Dm644 "./README.md" "$pkgdir/usr/share/doc/$pkgname/README"
