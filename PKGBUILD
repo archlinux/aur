@@ -1,5 +1,6 @@
-# Maintainer: Alessandro Marchioro <alessandro.marchioro1998@gmail.com>
-# Co-Maintainer: Darvin Delgado <dnmodder at gmail dot com>
+# Maintainer: username227 <gfrank227 [at] gmail [dot] com>
+# Contributor: Alessandro Marchioro <alessandro.marchioro1998@gmail.com>
+# Contributor: Darvin Delgado <dnmodder at gmail dot com>
 _sdkver=8.0.302
 pkgname=ryujinx-git
 pkgver=r3524.4f06c343a
