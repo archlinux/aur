@@ -11,7 +11,7 @@ source=("git+https://github.com/rotstein007/Memory.git")
 sha256sums=('SKIP')
 
 build() {
-    cd "$srcdir/$pkgname"
+    cd "$srcdir/Memory"
     mkdir -p build
     cd build
     cmake ..  # cmake Optionen
@@ -24,4 +24,3 @@ package() {
     install -Dm644 MemoryGame.desktop "$pkgdir/usr/share/applications/MemoryGame.desktop"
     install -Dm644 MemoryGame.png "$pkgdir/usr/share/icons/hicolor/128x128/apps/MemoryGame.png"
 }
-
