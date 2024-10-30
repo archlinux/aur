@@ -1,0 +1,20 @@
+pkgbase = libfprint-ft9366
+	pkgdesc = Proprietary driver for the Focaltech fingerprint reader 2808:a658, which is used on various ASUS Vivobooks
+	pkgver = 1.94.4
+	pkgrel = 1
+	url = https://github.com/ftfpteams/RTS5811-FT9366-fingerprint-linux-driver-with-VID-2808-and-PID-a658
+	install = libfprint-ft9366.install
+	arch = x86_64
+	depends = glib2>=2.56
+	depends = libgusb>=0.3.0
+	depends = nss>=3.13.4
+	depends = pixman>=0.30.0
+	provides = libfprint-2.so
+	provides = libfprint
+	conflicts = libfprint
+	options = !strip
+	options = !emptydirs
+	source = https://github.com/ftfpteams/RTS5811-FT9366-fingerprint-linux-driver-with-VID-2808-and-PID-a658/raw/refs/heads/main/libfprint-2-2_1.94.4+tod1-0ubuntu1~22.04.2_amd64_rts5811.deb
+	sha512sums = 9d8a98884ffe02c4871cac668e46038727a70fe0c0f4fbc9477a785612e6f0f567173eebaea83f78e9248a0a59a5ac5fef192546da997a6b43d6e1ba4dc90afb
+
+pkgname = libfprint-ft9366
