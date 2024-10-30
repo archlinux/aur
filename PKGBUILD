@@ -1,15 +1,16 @@
 # Maintainer: Lev Lybin <lev.lybin@gmail.com>
+# Maintainer: Marcus Kida <reinigt.chintz.0n@icloud.com>
 # Contributor: Lev Lybin <lev.lybin@gmail.com>
 
 pkgname=connectiq-sdk-manager
-pkgver=7.1.1
+pkgver=7.3.1
 pkgrel=1
 pkgdesc="Garmin Connect IQ SDK Manager"
 arch=('x86_64')
 url="https://developer.garmin.com/connect-iq/sdk/"
 license=('MIT')
 source=(https://developer.garmin.com/downloads/connect-iq/sdk-manager/connectiq-sdk-manager-linux.zip)
-sha256sums=('34c9d5754813e44739734ebf3b17e6189aee3bca6dd4c339b37f02e975aebcfe')
+sha256sums=('dc6d736b95d3058906b8082b31112322220eedba073eafcbf30f6cf6c8d39d89')
 package() {
     cd "$srcdir"
 

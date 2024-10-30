@@ -1,11 +1,11 @@
 pkgbase = connectiq-sdk-manager
 	pkgdesc = Garmin Connect IQ SDK Manager
-	pkgver = 7.1.1
+	pkgver = 7.3.1
 	pkgrel = 1
 	url = https://developer.garmin.com/connect-iq/sdk/
 	arch = x86_64
 	license = MIT
 	source = https://developer.garmin.com/downloads/connect-iq/sdk-manager/connectiq-sdk-manager-linux.zip
-	sha256sums = 34c9d5754813e44739734ebf3b17e6189aee3bca6dd4c339b37f02e975aebcfe
+	sha256sums = dc6d736b95d3058906b8082b31112322220eedba073eafcbf30f6cf6c8d39d89
 
 pkgname = connectiq-sdk-manager
