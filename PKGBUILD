@@ -1,5 +1,4 @@
 pkgname=vesc-tool
-epoch=1
 pkgver=6.05
 _pkgver=6_05
 pkgrel=1
