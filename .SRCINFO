@@ -1,7 +1,7 @@
 pkgbase = xwayland-satellite
 	pkgdesc = Xwayland outside your Wayland
 	pkgver = 0.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Supreeeme/xwayland-satellite
 	arch = x86_64
 	license = MPL-2.0

@@ -2,7 +2,7 @@
 
 pkgname=xwayland-satellite
 pkgver=0.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Xwayland outside your Wayland"
 arch=(x86_64)
 url="https://github.com/Supreeeme/$pkgname"
@@ -42,5 +42,5 @@ build() {
 package() {
   cd $pkgname-$pkgver
   install -vDm755 target/release/$pkgname    -t "$pkgdir"/usr/bin/
-  install -vDm644 resources/$pkgname.service -t "$pkgdir"/usr/lib/systemd/system/
+  install -vDm644 resources/$pkgname.service -t "$pkgdir"/usr/lib/systemd/user/
 }
