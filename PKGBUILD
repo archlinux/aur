@@ -20,7 +20,7 @@ license=(GPL2)
 source=("$_pkgname-$pkgver.bin::${url}/releases/download/v${pkgver}/gallery-dl.bin"
   "$_pkgname-$pkgver.bin.sig::${url}/releases/download/v${pkgver}/gallery-dl.bin.sig")
 validpgpkeys=('3E09F5908333DD83DBDCE7375680CA389D365A88')
-sha512sums=('16bf96f8ef3c08a2a4330e35af66176da49dfd0857a2634f1ac3f7542610f6f9253160d8fcbc81a72d825f503c53cab5f60c7c87a70a18f85b707693e827da71'
+sha512sums=('3eb0b38eda45d25286ebf5122b2818785e29a07499e6c4f1d9176edf92f398790d5e7e43923b8b07f279317d2267afd7e27df02d80ab28c77965f5969b79cea0'
             'SKIP')
 
 package() {
