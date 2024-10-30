@@ -1,7 +1,7 @@
 pkgbase = libfprint-goodix-60c2
 	pkgdesc = Library for fingerprint readers
-	pkgver = 1.94.7
-	pkgrel = 2
+	pkgver = 1.94.8
+	pkgrel = 1
 	url = https://fprint.freedesktop.org/
 	arch = x86_64
 	license = LGPL-2.1-or-later
@@ -24,10 +24,10 @@ pkgbase = libfprint-goodix-60c2
 	provides = libfprint
 	provides = libfprint-2.so
 	conflicts = libfprint
-	source = libfprint-goodix-60c2::git+https://gitlab.freedesktop.org/libfprint/libfprint.git?signed#tag=v1.94.7
+	source = libfprint-goodix-60c2::git+https://gitlab.freedesktop.org/libfprint/libfprint.git?signed#tag=v1.94.8
 	source = enable-goodix-60c2.patch
 	validpgpkeys = D4C501DA48EB797A081750939449C2F50996635F
-	b2sums = 9859f976227452dc3ea9f8fbde9022809214a4eed0c994d8cb5330d0d7d7fbf19baf066518a72c8345ae01b0f34b7e32b135a4494a48db17bc6186b571f41fe6
+	b2sums = 594b70dae6bb52c479ff8ba09966b63c97d327361412e1fc472e96a82cb0343147f09bf30cfcba4e2549076e1b628e7ae52743d564eb2d2ba94054dc79947887
 	b2sums = 7cf36a276e05dc8e5c1615762ca531beb47e15f870b9231132621c7ad163445fbf1c9efb4a362b48029603aa744a37b8306330fc6e7271e606a9e14a38d4f861
 
 pkgname = libfprint-goodix-60c2
