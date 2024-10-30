@@ -1,10 +1,11 @@
 pkgbase = fmodengine
-        pkgdesc = FMOD Engine API and tools
+        pkgdesc = FMOD Engine API and tools.
         pkgver = 2.02.24
-        pkgrel = 1
+        pkgrel = 2
         url = https://www.fmod.com/
         arch = x86_64
         license = custom
+        makedepends = jq
         depends = glibc
 
 pkgname = fmodengine
