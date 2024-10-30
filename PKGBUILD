@@ -1,18 +1,18 @@
 # Maintainer: yifwon <wyf9661 at gmail dot com>
 pkgbase=sylixos-cross-compiler-toolchain
 pkgname=('sylixos-cross-compiler-toolchain' 'sylixos-cross-compiler-lcsproxy' 'sylixos-cross-compiler-senseshield')
-pkgver=0.3.0
-_lcsproxy_ver=1.0.5
-_senseshield_ver=2.5.0.59543
+pkgver=0.4.0
+_lcsproxy_ver=1.0.6
+_senseshield_ver=2.7.0.66418
 pkgrel=1
 pkgdesc="cross compile toolchain to build objects running on sylixos"
 arch=('x86_64')
-url="http://10.7.0.200:9000/RealEvo-IDE/realevo-linux-tools-$pkgver.tar.gz"
+url="http://10.7.0.200:9000/RealEvo-IDE/realevo-linux-tools-v$pkgver.tar.gz"
 license=('custom')
 options=(!strip)
 depends=('systemd')
 source_x86_64=("realevo-linux-tools-$pkgver.tar.gz"::$url)
-sha1sums_x86_64=('8a2c5bd4bfc3059757d2d9764bec7e68f52d6950')
+sha1sums_x86_64=('0f49a875637aa2ee3b8d53c124ca7d66ce88c900')
 
 package_sylixos-cross-compiler-toolchain() {
     _install_dir="opt/sylixos"
@@ -36,6 +36,6 @@ package_sylixos-cross-compiler-lcsproxy() {
 }
 
 package_sylixos-cross-compiler-senseshield() {
-    ar x ${srcdir}/realevo-linux-tools/senseshield-${_senseshield_ver}-amd64.deb
+    ar x ${srcdir}/realevo-linux-tools/senseshield-lcc-${_senseshield_ver}-amd64.deb
     tar --no-same-owner --no-same-permissions -xavf data.tar.xz -C ${pkgdir}
 }
