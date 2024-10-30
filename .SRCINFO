@@ -1,0 +1,13 @@
+pkgbase = flick
+	pkgdesc = Watch shows CLI with playback tracking
+	pkgver = v0.0.1
+	pkgrel = 1
+	url = https://github.com/Wraient/flick
+	arch = x86_64
+	license = GPL
+	depends = mpv
+	depends = rofi
+	source = flick::https://github.com/Wraient/flick/releases/latest/download/flick
+	sha256sums = SKIP
+
+pkgname = flick
