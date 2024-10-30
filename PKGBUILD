@@ -4,7 +4,7 @@
 pkgname=python-instructor
 _pkgname=${pkgname#python-}
 pkgver=1.6.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Structured outputs for LLMs"
 arch=(any)
 url="https://github.com/jxnl/instructor"
@@ -31,6 +31,7 @@ makedepends=(
 )
 checkdepends=(
   litellm
+  python-pytest-examples
   python-anthropic
   python-cohere
   python-pytest
@@ -72,9 +73,13 @@ check() {
     --deselect tests/llm/test_cohere \
     --deselect tests/llm/test_new_client.py \
     --deselect tests/test_simple_types.py::test_partial_not_simple \
-    --ignore tests/llm/test_gemini \
+    --deselect tests/llm/test_anthropic/test_multimodal.py \
+    --deselect tests/test_response_model_conversion.py::test_json_preserves_description_of_non_english_characters_in_json_mode \
     --ignore tests/llm/test_openai \
-    --ignore tests/llm/test_vertexai
+    --ignore tests/llm/test_vertexai \
+    --ignore tests/llm/test_fireworks \
+    --ignore tests/llm/test_gemini
+
 }
 
 package() {

@@ -1,11 +1,12 @@
 pkgbase = python-instructor
 	pkgdesc = Structured outputs for LLMs
 	pkgver = 1.6.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/jxnl/instructor
 	arch = any
 	license = MIT
 	checkdepends = litellm
+	checkdepends = python-pytest-examples
 	checkdepends = python-anthropic
 	checkdepends = python-cohere
 	checkdepends = python-pytest
