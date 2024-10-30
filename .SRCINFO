@@ -11,4 +11,3 @@ pkgbase = python-headerparser
 	sha256sums = 75857316449cdad212a3ba5c7b3b3177e45dd86e1f83b003f0b6b5108f14766e
 
 pkgname = python-headerparser
-
