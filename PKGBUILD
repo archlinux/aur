@@ -1,8 +1,9 @@
-# Maintainer: Carl Smedstad <carsme@archlinux.org>
+# Maintainer: envolution
+# Contributor: Carl Smedstad <carsme@archlinux.org>
 
 pkgname=python-cohere
 _pkgname=cohere-python
-pkgver=5.8.0
+pkgver=5.11.2
 pkgrel=1
 pkgdesc="Python Library for Accessing the Cohere API"
 arch=(any)
