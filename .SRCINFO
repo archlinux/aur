@@ -1,0 +1,19 @@
+pkgbase = python-pytest-reraise
+	pkgdesc = Make multi-threaded pytest test cases fail when they should
+	pkgver = 2.1.2
+	pkgrel = 1
+	url = https://github.com/bjoluc/pytest-reraise
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-poetry-core
+	makedepends = python-wheel
+	depends = python
+	depends = python-pytest
+	source = https://pypi.org/packages/source/p/pytest-reraise/pytest-reraise-2.1.2.tar.gz
+	source = https://github.com/bjoluc/pytest-reraise/blob/main/license
+	sha256sums = 5ab59bd0e2028be095289e6dfc9e36cc0b56936465278f3223e81bea0f2d1c70
+	sha256sums = e8456e96cda53dc5e59c221c985f147c3cea1e1033796ebbb19027fbf44dc541
+
+pkgname = python-pytest-reraise
