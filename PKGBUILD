@@ -14,13 +14,13 @@ sha256sums=('SKIP')
 prepare() {
   cd "$_pkgbase"
   cd mcfg_2
-  bash setup.bash
+  bash scripts/setup.bash
 }
 
 build() {
   cd "$_pkgbase"
   cd mcfg_2
-  bash build.bash
+  bash scripts/build.bash
 }
 
 package() {
