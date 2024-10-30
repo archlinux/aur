@@ -8,7 +8,7 @@
 
 _pkgname="freerdp"
 pkgname="$_pkgname-git"
-pkgver=3.7.0.r148.gd02a30e
+pkgver=3.9.0.r94.ga7638bb
 pkgrel=1
 pkgdesc="Free implementation of the Remote Desktop Protocol (RDP)"
 url="https://github.com/FreeRDP/FreeRDP"
@@ -16,63 +16,56 @@ license=('Apache-2.0')
 arch=('i686' 'x86_64')
 
 depends=(
+  fuse3
   libcups
   libx11
   libxcursor
-  libxext
   libxdamage
+  libxext
   libxfixes
-  libxkbcommon
   libxi
   libxinerama
+  libxkbcommon
   libxkbfile
   libxrandr
   libxrender
   libxtst
   pcsclite
-  wayland
-
-  libasound.so     # alsa-lib
-  libavcodec.so    # ffmpeg
-  libavutil.so     # ffmpeg
-  libcrypto.so     # openssl
-  libicuuc.so      # icu
-  libjpeg.so       # libjpeg-turbo
-  libpam.so        # pam
-  libpulse.so      # libpulse
-  libssl.so        # openssl
-  libswresample.so # ffmpeg
-  libswscale.so    # ffmpeg
-  libsystemd.so    # systemd-libs
-  libusb-1.0.so    # libusb
-
-  # git
-  cjson
-  fuse3
   pkcs11-helper
   sdl2_ttf
-  webkit2gtk
+  wayland
 )
 makedepends=(
+  alsa-lib
   cmake
-  docbook-xsl
+  e2fsprogs
+  ffmpeg
   git
+  icu
+  json-c
   krb5
+  libjpeg-turbo
+  libpng
+  libpulse
+  libusb
+  libwebp
   ninja
-  xmlto
-  xorgproto
+  openssl
+  pam
+  zlib
 )
 
+_libver=${pkgver/.*/}
 provides=(
   "$_pkgname=2:${pkgver%.r*}"
-  libfreerdp2.so
-  libfreerdp-client2.so
-  libfreerdp-server2
-  libfreerdp-shadow2.so
-  libfreerdp-shadow-subsystem2.so
-  libwinpr2.so
-  libwinpr-tools2.so
-  libuwac0.so
+  libfreerdp$_libver.so
+  libfreerdp-client$_libver.so
+  libfreerdp-server$_libver
+  libfreerdp-server-proxy$_libver.so
+  libfreerdp-shadow$_libver.so
+  libfreerdp-shadow-subsystem$_libver.so
+  libwinpr$_libver.so
+  libwinpr-tools$_libver.so
 )
 conflicts=("$_pkgname")
 
@@ -86,20 +79,35 @@ pkgver() {
     | sed -E 's/^[^0-9]*//;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
+prepare() {
+  # allow None build type
+  sed -E -e '/SUPPORTED_BUILD_TYPES/s/Debug/None/' -i "$_pkgsrc/cmake/CommonConfigOptions.cmake"
+}
+
 build() {
   local _cmake_options=(
     -B build
     -S "$_pkgsrc"
     -G Ninja
-    -DCMAKE_INSTALL_PREFIX='/usr'
     -DCMAKE_BUILD_TYPE=None
+    -DCMAKE_INSTALL_PREFIX='/usr'
+    -DCMAKE_INSTALL_LIBDIR='lib'
+    -DCMAKE_SKIP_INSTALL_RPATH=ON
     -DCHANNEL_URBDRC_CLIENT=ON
-    -DPROXY_PLUGINDIR="/usr/lib/freerdp2/server/proxy/plugins"
+    -DPROXY_PLUGINDIR="/usr/lib/$_pkgname/server/proxy/plugins"
+    -DRDTK_FORCE_STATIC_BUILD=ON # prevent file conflicts with freerdp2
+    -DUWAC_FORCE_STATIC_BUILD=ON # prevent file conflicts with freerdp2
+    -DWINPR_UTILS_IMAGE_JPEG=ON
+    -DWINPR_UTILS_IMAGE_PNG=ON
+    -DWINPR_UTILS_IMAGE_WEBP=ON
+    -DWITH_ALSA=ON
+    -DWITH_BINARY_VERSIONING=ON # prevent file conflicts with freerdp2
     -DWITH_CHANNELS=ON
     -DWITH_CLIENT_CHANNELS=ON
     -DWITH_CUPS=ON
     -DWITH_DSP_FFMPEG=ON
     -DWITH_FFMPEG=ON
+    -DWITH_FUSE=ON
     -DWITH_ICU=ON
     -DWITH_JPEG=ON
     -DWITH_PCSC=ON
@@ -107,8 +115,11 @@ build() {
     -DWITH_SERVER=ON
     -DWITH_SERVER_CHANNELS=ON
     -DWITH_SWSCALE=ON
+    -DWITH_SYSTEMD=ON
     -DWITH_WAYLAND=ON
+    -DWITH_WINPR_TOOLS=ON
     -DWITH_X11=ON
+    -DBUILD_TESTING=OFF
     -Wno-dev
   )
 
@@ -121,5 +132,22 @@ check() {
 }
 
 package() {
+  depends+=(
+    alsa-lib libasound.so
+    e2fsprogs libcom_err.so
+    ffmpeg libavcodec.so libavutil.so libswresample.so libswscale.so
+    icu libicuuc.so
+    json-c libjson-c.so
+    krb5 libk5crypto.so libkrb5.so
+    libjpeg-turbo libjpeg.so
+    libpng libpng16.so
+    libpulse libpulse.so
+    libusb libusb-1.0.so
+    libwebp libwebp.so
+    openssl libcrypto.so libssl.so
+    pam libpam.so
+    zlib libz.so
+  )
+
   DESTDIR="$pkgdir" cmake --install build
 }
