@@ -1,19 +1,18 @@
 # Maintainer: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
 # Contributor: David Wu <xdavidwuph@gmail.com>
 # Contributor: Felix Golatofski <contact@xdfr.de>
-# Contributor: M A <morealaz at gmail dot com>
 # Contributor: Mariell Hoversholm <proximyst at proximyst dot com>
 # Contributor: Schrodinger Zhu <i at zhuyi dot fan>
 # Contributor: Davide Depau <davide at depau dot eu>
 
 pkgname=jdk-openj9-bin
-_jdkver=21
+_jdkver=23
 _jdkminor=0
-_jdkpatch=2
-_jdksubpatch=1
+_jdkpatch=0
+_jdksubpatch=0
 _jdkfullver=${_jdkver}.${_jdkminor}.${_jdkpatch} #.${_jdksubpatch}
-_openj9ver=0.43.0
-_buildvershort=13
+_openj9ver=0.47.0
+_buildvershort=37
 _buildver=${_buildvershort}_openj9-${_openj9ver}
 pkgver=${_jdkfullver}b${_buildver//-/_}
 pkgrel=1
@@ -32,16 +31,16 @@ provides=(
 )
 conflicts=("jdk${_jdkver}-openj9-bin" "jdk${_jdkver}-openj9")
 options=(!strip)
-source=("https://github.com/ibmruntimes/semeru${_jdkver}-binaries/releases/download/jdk-${_jdkfullver}%2B${_buildver}/ibm-semeru-open-jdk_x64_linux_${_jdkfullver}_${_buildver}.tar.gz")
+source=("https://github.com/ibmruntimes/semeru${_jdkver}-binaries/releases/download/jdk-${_jdkver}%2B${_buildver}/ibm-semeru-open-jdk_x64_linux_${_jdkver}_${_buildver}.tar.gz")
 
-sha256sums=('7a7a186a7a48537519917331ec91d9180b961dcc7ea0f627a23fa369edab6f16')
+sha256sums=('95e1116a38567fa5b1799045f05d95bd23f419ff5c0baa2100d88f113a2cb48b')
 
 _jvmdir=usr/lib/jvm/java-${_jdkver}-j9
 
 package() {
   # Install
   install -d "${pkgdir}/${_jvmdir}"
-  cd jdk-${_jdkfullver}+${_buildvershort}
+  cd jdk-${_jdkver}+${_buildvershort}
   cp -a bin include jmods lib release "${pkgdir}/${_jvmdir}/"
   # Link JKS keystore from ca-certificates-utils
   rm -f "${pkgdir}/${_jvmdir}/lib/security/cacerts"
