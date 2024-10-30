@@ -1,6 +1,6 @@
 pkgbase = prolog-tags
 	pkgdesc = Create tags file for Prolog sources
-	pkgver = 1
+	pkgver = 19890305
 	pkgrel = 1
 	url = https://www.cs.cmu.edu/afs/cs/project/ai-repository/ai/lang/prolog/util/ptags/0.html
 	arch = i686

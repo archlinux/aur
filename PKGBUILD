@@ -1,6 +1,6 @@
 # Maintainer: Aleks Grabowski <hurufu+aur@gmail.com>
 pkgname=prolog-tags
-pkgver=1
+pkgver=19890305
 pkgrel=1
 pkgdesc='Create tags file for Prolog sources'
 arch=(i686 x86_64)
