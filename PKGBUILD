@@ -1,8 +1,9 @@
-# Maintainer: Carl Smedstad <carsme@archlinux.org>
+# Maintainer: envolution
+# Contributor: Carl Smedstad <carsme@archlinux.org>
 
 pkgname=python-instructor
 _pkgname=${pkgname#python-}
-pkgver=1.3.7
+pkgver=1.6.3
 pkgrel=1
 pkgdesc="Structured outputs for LLMs"
 arch=(any)
