@@ -22,7 +22,8 @@ prepare() {
 	if [ -s "$srcdir/config.h" ]; then
 		cp -f "$srcdir/config.h" config.h
 	fi
-	# Uncomment to compile with XWayland support
+	# Comment the line below to compile without
+	# XWayland support
 	sed -i -e '/-DXWAYLAND/s/^#//' config.mk
 }
 
