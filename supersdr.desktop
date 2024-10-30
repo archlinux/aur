@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=SuperSDR
+Comment=An advanced KiwiSDR client with CAT transceiver integration
+Path=/opt/supersdr
+Exec=/opt/supersdr/supersdr.py
+Icon=supersdr
+Terminal=false
+Categories=HamRadio;Utility
