@@ -1,7 +1,7 @@
 pkgbase = qsv-bin
 	pkgdesc = CSVs sliced, diced & analyzed. Quicksilver (qsv) is a fork of the popular xsv utility
 	pkgver = 0.137.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jqnatividad/qsv
 	arch = x86_64
 	license = MIT
@@ -21,6 +21,6 @@ pkgbase = qsv-bin
 	sha256sums = 863a2aec8fe95e7884e4d0d5b5b2bcdac74c6883adae4083cc8d9ac41ba1481f
 	sha256sums = b9d470142074c6586c90658ba0708b549b161d88276a885de911bb1963f04b5f
 	source_x86_64 = https://github.com/jqnatividad/qsv/releases/download/0.137.0/qsv-0.137.0-x86_64-unknown-linux-gnu.zip
-	sha256sums_x86_64 = 02263441fb5d49eb9782b51d26abb8721488301218de0f0aaa53fdf4ed227314
+	sha256sums_x86_64 = 931c31713a4a0cbd15c5078399abead7aba4a1eb19743580981c2f72f88028c7
 
 pkgname = qsv-bin
