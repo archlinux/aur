@@ -1,6 +1,6 @@
 # Maintainer: Devin J. Pohly <djpohly+arch@gmail.com>
 pkgname=dwl-git
-pkgver=0.5.r93.c2e7350
+pkgver=0.8.dev.r46.8424576
 pkgrel=1
 pkgdesc="Simple, hackable dynamic tiling Wayland compositor (dwm for Wayland)"
 arch=('x86_64')
