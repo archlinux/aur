@@ -2,7 +2,7 @@
 # Co-maintainer: xrtxn <mihok.martin@protonmail.com>
 # Contributor: Alexandre `Zopieux` Macabies <web+aur@zopieux.com>
 pkgname=ffdec-bin
-pkgver=21.1.1
+pkgver=21.1.3
 pkgrel=1
 pkgdesc="Open source Flash SWF decompiler and editor"
 arch=('any')
@@ -16,7 +16,7 @@ source=("${pkgname%-bin}_${pkgver}.zip::https://github.com/jindrapetrik/jpexs-de
         ${pkgname%-bin}-java8
         ${pkgname%-bin}.desktop
         ${pkgname%-bin}.png)
-md5sums=('019e956d1073f4e30c27128283af2e72'
+md5sums=('5cec4e653aa128e62bb7414871daef05'
          '21b247c479b500fffdd0f1b306237b50'
          'b548b3503cae1f8948b44bec1d658e53'
          '1630ed36db9aadb2325b8ad9eb00f2de'
