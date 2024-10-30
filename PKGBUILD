@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=sticky-notes
-pkgver=0.2.5
-pkgrel=2
+pkgver=0.2.6
+pkgrel=1
 pkgdesc="A simple sticky notes app"
 arch=('any')
 url="https://github.com/vixalien/sticky"
@@ -18,7 +18,7 @@ makedepends=(
 )
 source=("git+https://github.com/vixalien/sticky.git#tag=v$pkgver"
         'git+https://gitlab.gnome.org/BrainBlasted/gi-typescript-definitions.git')
-sha256sums=('84f0b795f8fec590407dcbf932225c03aa747ad340cf705e1af1693d7cb87ac8'
+sha256sums=('59b83ce854580cedda5b2ac9e7ed52a3904dca713329fb0c10abc2ba95b3031d'
             'SKIP')
 
 prepare() {
@@ -26,9 +26,6 @@ prepare() {
   git submodule init
   git config submodule.gi-types.url "$srcdir/gi-typescript-definitions"
   git -c protocol.file.allow=always submodule update
-
-  # Correct version:
-  sed -i "s/0.2.1/$pkgver/g" meson.build
 }
 
 build() {
@@ -40,7 +37,7 @@ build() {
 }
 
 check() {
-  meson test -C build --print-errorlogs || :
+  meson test -C build --print-errorlogs
 }
 
 package() {
