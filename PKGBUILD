@@ -43,7 +43,7 @@ package_ch9344ser-dkms-git() {
 obj-m := ch9344.o
 
 KVER ?= \$(shell uname -r)
-KDIR ?= /lib/modules/$(KVER)/build
+KDIR ?= /lib/modules/\$(KVER)/build
 VERSION ?= \$(shell cat VERSION)
 SRC_DIR=\$(shell pwd)
 
