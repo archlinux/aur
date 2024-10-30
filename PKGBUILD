@@ -2,7 +2,7 @@
 # Contributor: Mattia Borda <mattiagiovanni.borda@icloud.com>
 
 pkgname=furtherance
-pkgver=24.10.3
+pkgver=24.10.5
 pkgrel=1
 pkgdesc="Track your time without being tracked"
 arch=('x86_64')
@@ -10,13 +10,13 @@ url="https://github.com/unobserved-io/Furtherance"
 license=('GPL-3.0-or-later')
 depends=('fontconfig' 'freetype2' 'gcc-libs' 'glibc' 'hicolor-icon-theme' 'libx11' 'libxss')
 makedepends=('cargo')
+options=('!lto')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('22f1a36adbaedccc5862bf9c21966113920e9db354f304b4b584b4c5d3c1e91e')
+sha256sums=('c665617e373401615d1dbc3cbed5d6a3e0dea01d1dd274cad264417741558e06')
 
 prepare() {
     cd "${pkgname^}-${pkgver}"
     export RUSTUP_TOOLCHAIN=stable
-    export RUSTFLAGS=''
     cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
@@ -24,7 +24,6 @@ build() {
     cd "${pkgname^}-${pkgver}"
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
-    export CFLAGS="${CFLAGS/-flto=auto/}"
     cargo build --frozen --release
 }
 
