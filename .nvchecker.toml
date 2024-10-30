@@ -1,5 +1,5 @@
 [python-niapy]
 source = "github"
 github = "NiaOrg/NiaPy"
-use_latest_release = "true"
+use_max_tag = "true"
 prefix = "v"
