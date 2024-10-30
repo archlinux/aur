@@ -57,109 +57,129 @@ mkdir -p "$HOME/.local/share/fonts"
 mkdir -p "$HOME/tmp"
 
 # List of available fonts using release page names
-fonts="
-0xProto
-3270
-Agave
-AnonymousPro
-Arimo
-AurulentSansMono
-BigBlueTerminal
-BitstreamVeraSansMono
-CascadiaCode
-CascadiaMono
-CodeNewRoman
-ComicShannsMono
-CommitMono
-Cousine
-D2Coding
-DaddyTimeMono
-DejaVuSansMono
-DroidSansMono
-EnvyCodeR
-FantasqueSansMono
-FiraCode
-FiraMono
-GeistMono
-Go-Mono
-Gohu
-Hack
-Hasklig
-HeavyData
-Hermit
-iA-Writer
-IBMPlexMono
-Inconsolata
-InconsolataGo
-InconsolataLGC
-IntelOneMono
-Iosevka
-IosevkaTerm
-IosevkaTermSlab
-JetBrainsMono
-Lekton
-LiberationMono
-Lilex
-MartianMono
-Meslo
-Monaspace
-Monofur
-Monoid
-Mononoki
-MPlus
-NerdFontsSymbolsOnly
-Noto
-OpenDyslexic
-Overpass
-ProFont
-ProggyClean
-Recursive
-RobotoMono
-ShareTechMono
-SourceCodePro
-SpaceMono
-Terminus
-Tinos
-Ubuntu
-UbuntuMono
-UbuntuSans
-VictorMono
-ZedMono
-"
+fonts=(
+"0xProto"
+"3270"
+"Agave"
+"AnonymousPro"
+"Arimo"
+"AurulentSansMono"
+"BigBlueTerminal"
+"BitstreamVeraSansMono"
+"CascadiaCode"
+"CascadiaMono"
+"CodeNewRoman"
+"ComicShannsMono"
+"CommitMono"
+"Cousine"
+"D2Coding"
+"DaddyTimeMono"
+"DejaVuSansMono"
+"DroidSansMono"
+"FantasqueSansMono"
+"FiraCode"
+"FiraMono"
+"GeistMono"
+"Go-Mono"
+"Gohu"
+"Hack"
+"Hasklig"
+"Hermit"
+"iA-Writer"
+"IBMPlexMono"
+"Inconsolata"
+"InconsolataGo"
+"InconsolataLGC"
+"IntelOneMono"
+"Iosevka"
+"IosevkaTerm"
+"IosevkaTermSlab"
+"JetBrainsMono"
+"Lekton"
+"LiberationMono"
+"Lilex"
+"MartianMono"
+"Meslo"
+"Monaspace"
+"Monofur"
+"Monoid"
+"Mononoki"
+"MPlus"
+"NerdFontsSymbolsOnly"
+"Noto"
+"OpenDyslexic"
+"Overpass"
+"ProFont"
+"ProggyClean"
+"Recursive"
+"RobotoMono"
+"ShareTechMono"
+"SourceCodePro"
+"SpaceMono"
+"Terminus"
+"Tinos"
+"Ubuntu"
+"UbuntuMono"
+"UbuntuSans"
+"VictorMono"
+"ZedMono"
+)
 
-# Format the font list into three columns, adjusting for variable lengths
-format_fonts_into_columns() {
-    printf "%b\n" "$fonts" | nl -w 2 -s '. ' | awk '{printf "%-35s", $0; if(NR % 3 == 0) print "";}'
+# Display menu of available fonts in multiple columns based on terminal width
+print_fonts_in_columns() {
+    cols=$(tput cols)
+    items_per_col=20
+    total_fonts=${#fonts[@]}
+    columns=$((total_fonts / items_per_col))
+    if ((total_fonts % items_per_col != 0)); then
+        columns=$((columns + 1))
+    fi
+
+    for ((i=0; i<items_per_col; i++)); do
+        for ((j=0; j<columns; j++)); do
+            idx=$((i + j * items_per_col))
+            if ((idx < total_fonts)); then
+                printf "%-30s" "$((idx + 1)). ${fonts[idx]}"
+            fi
+        done
+        echo
+    done
 }
 
-# Display menu of available fonts in three columns
-printf "%b\n" '\033[0;32mSelect fonts to install (separate with spaces):\033[0m'
+# Display the font list
+printf "%b\n" '\033[0;32mSelect fonts to install (separate with spaces, or enter "all" to install all fonts):\033[0m'
 printf "%b\n" "---------------------------------------------"
-format_fonts_into_columns
+print_fonts_in_columns
 printf "%b\n" "---------------------------------------------"
 
 # Prompt user to select fonts and validate input
 while true; do
-    printf "%b\n" '\033[0;36mEnter the numbers of the fonts to install (e.g., "1 2 3"): \033[0m'
+    printf "%b\n" '\033[0;36mEnter the numbers of the fonts to install (e.g., "1 2 3") or type "all" to install all fonts: \033[0m'
     read -r font_selection
 
-    # Check if user has made a selection
-    if [ -n "$font_selection" ]; then
-        break  # Exit loop if input is not empty
+    # Check if user selected "all"
+    if [ "$font_selection" == "all" ]; then
+        selected_fonts=("${fonts[@]}")  # Set all fonts
+        break
+    elif [ -n "$font_selection" ]; then
+        selected_fonts=()
+        for selection in $font_selection; do
+            font_index=$((selection - 1))  # Adjust for zero-based indexing
+            if ((font_index >= 0 && font_index < total_fonts)); then
+                selected_fonts+=("${fonts[font_index]}")
+            else
+                printf "%b\n" '\033[0;31mInvalid selection: '"$selection"'\033[0m'
+                continue 2
+            fi
+        done
+        break  # Exit loop if input is valid
     else
         printf "%b\n" '\033[0;31mPlease select at least one font.\033[0m'
     fi
 done
 
 # Download and install selected fonts
-for selection in $font_selection; do
-    font_index=$((selection))  # Get the user input number
-    font_index=$((font_index + 1))  # Increment by 1 for the correct index
-    font=$(printf "%b\n" "$fonts" | sed -n "${font_index}p")  # Get the font based on adjusted index
-    if [ -z "$font" ]; then
-        printf "%b\n" '\033[0;31mInvalid selection: '"$selection"'\033[0m'
-        continue
-    fi
+for font in "${selected_fonts[@]}"; do
     printf "%b\n" '\033[0;34mDownloading and installing '"$font"'\033[0m'
     font_name=$(printf "%b\n" "$font" | awk '{print $1}')
     curl -sSLo "$HOME/tmp/$font_name.zip" "https://github.com/ryanoasis/nerd-fonts/releases/latest/download/$font_name.zip"
