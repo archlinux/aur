@@ -2,7 +2,7 @@
 # Contributor: Pavel Merzlyakov <pavel.merzlyakov@gmail.com>
 _base=allure
 pkgname=${_base}-commandline
-pkgver=2.31.0
+pkgver=2.32.0
 pkgrel=1
 pkgdesc="A flexible, lightweight multi-language test reporting tool"
 arch=(i686 x86_64)
@@ -11,7 +11,7 @@ url="https://github.com/${_base}-framework/${_base}2"
 depends=(jdk17-openjdk)
 source=(${url}/releases/download/${pkgver}/${_base}-${pkgver}.tgz
   ${_base})
-sha512sums=('2dfbf23fe0cb23cf871dfe8f65bb21cf0b0835861d4fd60d5559a6e21a10a5c47455f63088883c6205f13a7fc4bc2cf20026af076e5706d1318fed6a125b0099'
+sha512sums=('ccba3b98ecead0a56144124751adcffa7185b835d39c97591477510e8fd98c015634bb4f2705c3340cfede3ab278a8c5f6abb05f2c37c0aea294f150062d1de3'
             'd1c50028f8ba9d791d113314cec71c5174a69e1e9136c1d22bfb58e844d20f7c15c1917184e827bbdfbd25ffd7a0fc5259004e57da331f54948f25e310927ad5')
 
 package() {
