@@ -10,13 +10,15 @@
 : ${_build_pgo_reuse:=try}
 : ${_build_pgo_xvfb:=false}
 
+: ${_build_fix_ref:=false}
+
 : ${_ver_clang=}
 : ${RUSTUP_TOOLCHAIN:=stable}
 
 ## basic info
 _pkgname="midori"
 pkgname="$_pkgname-git"
-pkgver=11.4.r5.g1ff9155
+pkgver=11.4.1.r100.g38bb05d
 pkgrel=1
 pkgdesc="Web browser based on Floorp"
 url="https://github.com/goastian/midori-desktop"
@@ -24,7 +26,7 @@ arch=('x86_64')
 license=('MPL-2.0')
 
 depends=(
-  dbus-glib
+  dbus
   ffmpeg
   gtk3
   libevent
@@ -160,7 +162,11 @@ prepare() {
     for _module in "${_submodules[@]}"; do
       git submodule init "${_module##*::}"
       git submodule set-url "${_module##*::}" "$srcdir/${_module%::*}"
-      git -c protocol.file.allow=always submodule update "${_module##*::}"
+      if [ "${_build_fix_ref::1}" = "t" ]; then
+        git -C "$srcdir/${_module%::*}" checkout -f HEAD
+      else
+        git -c protocol.file.allow=always submodule update "${_module##*::}"
+      fi
     done
   }
 
