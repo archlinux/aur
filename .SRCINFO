@@ -1,0 +1,20 @@
+pkgbase = pharmaspot-git
+	pkgdesc = A cross-platform Point of Sale system designed for pharmacies and built to streamline operations and enhance customer service.Use system-wide electron.
+	pkgver = 1.4.4.r2.g2049a24
+	pkgrel = 1
+	url = https://www.patternsdigital.com/pharmaspot
+	arch = any
+	license = MIT
+	makedepends = npm
+	makedepends = nvm
+	makedepends = git
+	makedepends = curl
+	depends = electron22
+	provides = pharmaspot=1.4.4
+	conflicts = pharmaspot
+	source = pharmaspot.git::git+https://github.com/drkNsubuga/PharmaSpot.git
+	source = pharmaspot.sh
+	sha256sums = SKIP
+	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
+
+pkgname = pharmaspot-git
