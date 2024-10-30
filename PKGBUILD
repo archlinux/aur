@@ -1,6 +1,6 @@
 pkgname=libmcfg_2-git
-pkgver=0.2.0
-pkgrel=1
+pkgver=0.4.0
+pkgrel=2
 arch=(x86_64)
 url="https://github.com/FelixEcker/mcfg_2"
 license=(BSD-3-Clause)
