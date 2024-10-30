@@ -22,7 +22,7 @@ pkgbase = vesc-tool
 	conflicts = vesc_tool-git
 	options = !debug
 	source = vesc-tool::git+https://github.com/vedderb/vesc_tool.git#branch=release_6_05
-	source = aur-build-qmake.patch
+	source = vesc-tool.patch
 	source = vesc-tool.desktop
 	sha256sums = SKIP
 	sha256sums = c2f39c4ae80a0dc1a376727c36052d1df30ef117ab29bb64a1ef56a78755bc6a

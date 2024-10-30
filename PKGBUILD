@@ -10,7 +10,7 @@ depends=('qt5-base' 'qt5-connectivity' 'qt5-quickcontrols2' 'qt5-serialport' 'qt
 makedepends=('git' 'mold')
 conflicts=('vesc_tool-git')
 source=("$pkgname"::"git+https://github.com/vedderb/vesc_tool.git#branch=release_$_pkgver"
-        'aur-build-qmake.patch'
+        'vesc-tool.patch'
         'vesc-tool.desktop')
 sha256sums=('SKIP'
             'c2f39c4ae80a0dc1a376727c36052d1df30ef117ab29bb64a1ef56a78755bc6a'
@@ -19,7 +19,7 @@ options=(!debug)
 
 prepare() {
     cd "${srcdir}/${pkgname}"
-    patch -i "${srcdir}"/aur-build-qmake.patch || exit 1
+    patch -i "${srcdir}"/vesc-tool.patch || exit 1
 }
 
 build() {
