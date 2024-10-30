@@ -5,7 +5,7 @@
 
 pkgname=firefox-syncstorage
 _pkgname=syncstorage-rs
-pkgver=0.17.11
+pkgver=0.17.12
 pkgrel=1
 pkgdesc='Sync storage server with built-in token server for running a self-hosted firefox sync server'
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
@@ -18,7 +18,7 @@ options=('!lto')
 install="${pkgname}.install"
 source=("https://github.com/mozilla-services/${_pkgname}/archive/${pkgver}/${_pkgname}-${pkgver}.tar.gz"
 	"${pkgname}.service")
-sha512sums=('6bad9636d3893c38da9b73b7000cf287fc4f837632811a8f1bf8b5ef1d723e151bade9a8641e2ce1f8bd7fceda1251d57a71f1a6e2b8d6040177ebf876380a3e'
+sha512sums=('3fa5b587626554172f5b356eac5b3eff74b16abd8189996331f02e5237b5df1e9496fb64eed425fadc843f652c1f36b7b3d8f5a3d831e49852f58188763fbe54'
             '4c5fbb99160613ba3fb0fedce97f04f63b92699fe79c6edd899d4ec5f297c5a98c0c211df3eb9a6579c12c57f4c63513747ed8944a60fc76e32f1e0c0f5e3a95')
 backup=("etc/${pkgname}.toml")
 
