@@ -1,8 +1,9 @@
-# Maintainer: David Runge <dvzrv@archlinux.org>
+# Maintainer: Arnaud Renevier <arno@renevier.net>
+# Contributor: David Runge <dvzrv@archlinux.org>
 
 _name=nvim-treesitter
 pkgname=neovim-nvim-treesitter
-pkgver=0.9.2
+pkgver=0.9.3
 pkgrel=1
 pkgdesc="Nvim Treesitter configurations and abstraction layer"
 arch=(any)
@@ -17,8 +18,8 @@ depends=(
 )
 install=$pkgname.install
 source=($url/archive/v$pkgver/$pkgname-v$pkgver.tar.gz)
-sha512sums=('f772c62d12e2b8299e33e6f8f4977b742e3e425585013bdc31a61d5e619fc697b4aba8b304e84124f59a5762ce4c416129328433aaf689ee1fc0f7f2d8a75a1d')
-b2sums=('4b74a8832898047c5de7b8f580fcca33f36ad95866825f2ba7fd1e06c4127ac6e235dc862952ed0a791e986337b79ac4f9ce41d9a0bbb4d2f52c07b849838306')
+sha512sums=('ee18f9e68f6432d93ee5231807366fcbdf42424b885e16164c864b6849b0142c275387e503b92079f4f8158b534dfd074795d976b42957cc7c12f22978ed9f4b')
+b2sums=('a371afce27daf1cfeddfcf7cb10df8cfa307bb61605b59fe59a597b309cb7a32eeea1c1160a14f9adbdbeffca96ce63e33cccfc0ca7eff7942593732dfcccc2a')
 
 package() {
   local dirs=(autoload doc lua plugin queries)
