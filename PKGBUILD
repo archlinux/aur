@@ -1,9 +1,10 @@
-# Maintainer: HelloImWar <helloimwar at proton dot me>
+# Maintainer: Atte Lautanala <atte@lautana.la>
+# Contributor: HelloImWar <helloimwar at proton dot me>
 
 pkgname=neovim-autopairs-git
 _pkgname="${pkgname%-git}"
-pkgver=r323.g31042a5
-pkgrel=2
+pkgver=r402.gee297f2
+pkgrel=1
 pkgdesc="autopairs for neovim written by lua"
 arch=('any')
 url="https://github.com/windwp/nvim-autopairs"
