@@ -3,7 +3,7 @@
 
 _name=plotnine
 pkgname=python-$_name
-pkgver=0.13.6
+pkgver=0.14.0
 pkgrel=1
 pkgdesc='A grammar of graphics for python'
 arch=(any)
@@ -11,12 +11,12 @@ url="https://github.com/has2k1/$_name"
 license=('MIT')
 depends=(
 	python
-	'python-matplotlib>=3.7.0'
-	'python-pandas>=2.1.0'
-	'python-mizani>=0.11.0'
-	'python-numpy>=1.23.0'
-	'python-scipy>=1.7.0'
-	'python-statsmodels>=0.14.0'
+	python-matplotlib
+	python-pandas
+	python-mizani
+	python-numpy
+	python-scipy
+	python-statsmodels
 )
 optdepends=(
 	'python-adjusttext: Library to avoid/minimize text overlaps in plots'
@@ -39,7 +39,7 @@ checkdepends=(
 	python-geopandas
 )
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha256sums=('3c8c8f958c295345140230ea29803488f83aba9b5a8d0b1b2eb3eaefbf0a06b8')
+sha256sums=('377f40eec2b4c43fa9208853f98b6f1489845e1219dcbfdd5aad73460da6146e')
 
 build() {
 	cd "${_name}-${pkgver}"

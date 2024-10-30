@@ -1,6 +1,6 @@
 pkgbase = python-plotnine
 	pkgdesc = A grammar of graphics for python
-	pkgver = 0.13.6
+	pkgver = 0.14.0
 	pkgrel = 1
 	url = https://github.com/has2k1/plotnine
 	arch = any
@@ -15,18 +15,18 @@ pkgbase = python-plotnine
 	makedepends = python-setuptools
 	makedepends = python-setuptools-scm
 	depends = python
-	depends = python-matplotlib>=3.7.0
-	depends = python-pandas>=2.1.0
-	depends = python-mizani>=0.11.0
-	depends = python-numpy>=1.23.0
-	depends = python-scipy>=1.7.0
-	depends = python-statsmodels>=0.14.0
+	depends = python-matplotlib
+	depends = python-pandas
+	depends = python-mizani
+	depends = python-numpy
+	depends = python-scipy
+	depends = python-statsmodels
 	optdepends = python-adjusttext: Library to avoid/minimize text overlaps in plots
 	optdepends = python-geopandas: Geospatial data support
 	optdepends = python-scikit-learn: gaussian process smoothing, kernel density implementation
 	optdepends = python-scikit-misc: loess smoothing
 	optdepends = python-shapely: Manipulation and analysis of geometric objects in the Cartesian plane
-	source = https://files.pythonhosted.org/packages/source/p/plotnine/plotnine-0.13.6.tar.gz
-	sha256sums = 3c8c8f958c295345140230ea29803488f83aba9b5a8d0b1b2eb3eaefbf0a06b8
+	source = https://files.pythonhosted.org/packages/source/p/plotnine/plotnine-0.14.0.tar.gz
+	sha256sums = 377f40eec2b4c43fa9208853f98b6f1489845e1219dcbfdd5aad73460da6146e
 
 pkgname = python-plotnine
