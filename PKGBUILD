@@ -5,27 +5,26 @@
 # Contributor: Tom Newsom <Jeepster@gmx.co.uk>
 # Contributor: Jorge Barroso <jorge.barroso.11 at gmail dot com>
 pkgname=pinball
-pkgver=0.3.20201218
-pkgrel=4
+pkgver=0.3.20230219
+pkgrel=1
 pkgdesc="The Emilia Pinball Project strives to fulfil your needs for a great pinball game in Linux"
 arch=('x86_64')
 url="http://pinball.sourceforge.net/"
-license=('GPL2')
-depends=('sdl_mixer' 'sdl_image' 'mesa' 'libtool')
+license=('GPL-2.0-or-later')
+depends=('libglvnd' 'sdl2' 'sdl2_mixer' 'sdl2_image' 'libtool')
 install=pinball.install
-source=("https://github.com/adoptware/pinball/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('61981c192630f3c99865dc3b3d095df94e97ede9d7df0e8d8601eb39eef54c6d')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/adoptware/${pkgname}/archive/refs/tags/${pkgver}.tar.gz")
+sha256sums=('c2d8ffb595536282a613c534cb53b80cb1aa6f55f40213d4152e3bb0d6899af8')
 options=(libtool)
 
 build() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "$pkgname-$pkgver"
   ./bootstrap
   ./configure --prefix=/usr
   make
 }
 
 package() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "$pkgname-$pkgver"
   make DESTDIR="${pkgdir}" install
-  libtool --finish "${pkgdir}"/usr/lib/pinball
 }
