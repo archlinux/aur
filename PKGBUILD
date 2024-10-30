@@ -3,19 +3,25 @@
 
 pkgname=fmodengine
 pkgver=2.02.24
-pkgrel=1
-pkgdesc="FMOD Engine API and tools"
+pkgrel=2
+pkgdesc="FMOD Engine API and tools."
 arch=('x86_64')
 url="https://www.fmod.com/"
 license=('custom')
+makedepends=('jq')
 depends=('glibc')
-_filename=fmodstudioapi$(echo "${pkgver}" | sed 's/\.//g')linux.tar.gz
+_filename="fmodstudioapi${pkgver//./}linux.tar.gz"
+_sha256="118d82791746344e8d909b79b679453d33003810fce3a99c4aa2da1acce00c71"
 
 build() {
-    echo "Downloading FMOD Engine requires an FMOD.com account"
     local file="${SRCDEST}/${_filename}"
-    local username=$FMOD_LOGIN
-    local password=$FMOD_PASSWORD
+    local sha256="$(sha256sum "$file" 2>/dev/null | awk '{print $1}')" || true
+    # Only use _sha256 to skip re-downloading, not used in general as an integrity check.
+    if test "$sha256" = "${_sha256:-}" ; then return 0 ; fi
+
+    echo "Downloading FMOD Engine requires an FMOD.com account"
+    local username="${FMOD_LOGIN:-}"
+    local password="${FMOD_PASSWORD:-}"
     local token
     local completed=0
 
@@ -89,7 +95,10 @@ package() {
     ln -s "/opt/$pkgname/bin/fsbank_gui" "${pkgdir}/usr/bin/fsbank_gui"
 
     install -d "${pkgdir}/usr/lib/$pkgname"
-    ln -s "/opt/$pkgname/api/core/lib/${arch}"/*.so "${pkgdir}/usr/lib/$pkgname"
-    ln -s "/opt/$pkgname/api/fsbank/lib/${arch}"/*.so "${pkgdir}/usr/lib/$pkgname"
-    ln -s "/opt/$pkgname/api/studio/lib/${arch}"/*.so "${pkgdir}/usr/lib/$pkgname"
+    local i d
+    for d in core fsbank studio ; do
+        for i in "$pkgdir/opt/$pkgname/api/$d/lib/$CARCH/"*.so ; do
+            ln -s "/opt/$pkgname/api/$d/lib/$CARCH/$(basename "$i")" "$pkgdir/usr/lib/$pkgname"
+        done
+    done
 }
