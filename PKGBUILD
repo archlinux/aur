@@ -1,8 +1,8 @@
 # Contributor: ml <>
 # Maintainer: Nogweii <packages@nogweii.net>
 pkgname=sonobuoy
-pkgver=0.57.1
-pkgrel=2
+pkgver=0.57.2
+pkgrel=1
 pkgdesc='Diagnostic tool for Kubernetes clusters'
 arch=('x86_64')
 url='https://github.com/vmware-tanzu/sonobuoy'
@@ -13,14 +13,14 @@ optdepends=(
   'kubectl: advanced workflows')
 makedepends=('go' 'git' 'libarchive' 'make')
 source=("$url/archive/v$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('c4a3a7c000678176851b6d2a296644a1ae23a3df307afe69cb33832b7ec2ed44')
-sha512sums=('90f6ca5191db72166e952a51148fa943068792f53f81a2887e4fe88cb1f4573c081265d42fb07749bc0b6f08b9f194d789352327363ff2f2da587ca14115a722')
-b2sums=('6bd2dfdbb15677748771ae0582cd7af0dead6078b238e9cd62c8662cbec642e772d6362971df7c19438b7f3f383d90cea549ef157b9acad7d95af3b98bd79795')
+sha256sums=('8cc661fefbc959262991d4cc4076577e428d10b08aa0682ec32a5ff0bca56e07')
+sha512sums=('cebcdc01131a81dd0ee6e420213eddfdeaf736cc3e728307f4757c410546c01704150e4a580e0e95f0393934d0d1d930c48756e3582156050c5d250dc9007123')
+b2sums=('6f518c694c71e64f0579063b74090a72ad406e98cd596722ce10f6cffeab61f0173cfdbd5386e520a67aca8a11b55701646d99cfe0606c44dfcb206a0943968e')
 
 build() {
   local _commit _defines
   _commit=$(bsdcat "$pkgname-$pkgver.tar.gz" | git get-tar-commit-id)
-  cd "$pkgname-$pkgver"
+  cd "${srcdir}/$pkgname-$pkgver" || exit
   export CGO_ENABLED=1
   export CGO_LDFLAGS="$LDFLAGS"
   export CGO_CFLAGS="$CFLAGS"
@@ -35,17 +35,17 @@ build() {
 }
 
 check() {
-  cd "${pkgname}-${pkgver}"
+  cd "${srcdir}/${pkgname}-${pkgver}" || exit
 
   go test -v ./...
 }
 
 package() {
-  cd "$pkgname-$pkgver"
+  cd "${srcdir}/$pkgname-$pkgver" || exit
   install --verbose -Dm755 "$pkgname" -t "$pkgdir/usr/bin"
 
-  install --verbose -dp --mode=0644 "$pkgdir/usr/share/docs/$pkgname/"
-  mv "site/content/docs/v$pkgver" "$pkgdir/usr/share/docs/$pkgname"
+  install --verbose -dp --mode=0644 "$pkgdir/usr/share/docs/"
+  mv -v "site/content/docs/main/" "$pkgdir/usr/share/docs/$pkgname"
 
   "${pkgdir}/usr/bin/sonobuoy" completion bash | install --verbose -D --mode=0644 /dev/stdin "${pkgdir}/usr/share/bash-completion/completions/sonobuoy"
   "${pkgdir}/usr/bin/sonobuoy" completion fish | install --verbose -D --mode=0644 /dev/stdin "${pkgdir}/usr/share/fish/vendor_completions.d/sonobuoy.fish"
