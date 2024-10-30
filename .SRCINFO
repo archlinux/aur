@@ -1,7 +1,7 @@
-pkgbase = cangjie-beta-bin
+pkgbase = cangjie-beta
 	pkgdesc = Cangjie(Beta Channel)
 	pkgver = 0.53.13
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cangjie-lang.cn/
 	arch = x86_64
 	arch = aarch64

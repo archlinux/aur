@@ -1,7 +1,7 @@
 # Maintainer: yms_hi <yms_hi@Outlook.com>
 pkgname=('cangjie-beta-bin' 'cangjie-beta-tools-bin' 'cangjie-beta-runtime-bin')
 pkgver="0.53.13"
-pkgrel=1
+pkgrel=2
 epoch=
 arch=('x86_64' 'aarch64')
 pkgdesc='Cangjie(Beta Channel)'
@@ -22,7 +22,6 @@ source_x86_64=("Cangjie-$pkgver-linux-$CARCH.tar.gz::https://cangjie-lang.cn/v1/
 sha256sums_x86_64=('B3C0087DB26005F6316767FD7CCBFC40F721CFD2D092F94BF39A621C7D91FBBB')
 source_aarch64=("Cangjie-$pkgver-linux-$CARCH.tar.gz::https://cangjie-lang.cn/v1/files/auth/downLoad?nsId=142267&fileName=Cangjie-0.53.13-linux_aarch64.tar.gz&objectKey=6719f1ec3af6947e3c6af328")
 sha256sums_aarch64=('9B4027B6FB4DFFC34D98B26AAE30F51329A32EE423B7ADC1D35349AAEC74FF9A')
-# source=("Cangjie-$pkgver-linux-$CARCH.tar.gz")
 noextract=()
 validpgpkeys=()
 
