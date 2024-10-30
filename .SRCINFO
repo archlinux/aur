@@ -1,0 +1,13 @@
+pkgbase = keyshift
+	pkgdesc = Keyshift - keyboard remapping utility for Linux
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/hirak99/keyshift
+	install = keyshift.install
+	arch = any
+	license = Apache
+	makedepends = boost
+	source = keyshift-1.0.1.tar.gz::https://github.com/hirak99/keyshift/archive/refs/tags/v1.0.1.tar.gz
+	md5sums = f7156cc0d7fefa0a8d5d373e37f22d0f
+
+pkgname = keyshift
