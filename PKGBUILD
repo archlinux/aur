@@ -1,6 +1,6 @@
 _baseurl='https://github.com/ggerganov/whisper.cpp'
 _model='medium.en'
-_model_sha1sum='cc37e93478338ec7700281a7ac30a10128929eb8f427dda2e865faa8f6da4356'
+_model_sha256sum='cc37e93478338ec7700281a7ac30a10128929eb8f427dda2e865faa8f6da4356'
 _pkgbase='whisper.cpp-model'
 # Maintainer: Hauke Rehfeld <aur@haukerehfeld.de>
 pkgname="${_pkgbase}-${_model}"
@@ -36,7 +36,7 @@ __model_url() {
 }
 
 source=("$_model_file::$(__model_url $_model)")
-sha1sums=("$_model_sha1sum")
+sha256sums=("$_model_sha256sum")
 
 
 package() {
