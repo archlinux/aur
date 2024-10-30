@@ -1,0 +1,14 @@
+pkgbase = dot-manager
+	pkgdesc = CLI Utility for easy dotfile management
+	pkgver = 0.2.2
+	pkgrel = 1
+	url = https://github.com/WithoutAName25/DotManager
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	depends = gcc-libs
+	depends = glibc
+	source = dot-manager-0.2.2.tar.gz::https://github.com/WithoutAName25/DotManager/archive/refs/tags/v0.2.2.tar.gz
+	sha256sums = ce49db7d3f3daea05fd837003ece23b3fd0dd5defce019839c857f43439de25e
+
+pkgname = dot-manager
