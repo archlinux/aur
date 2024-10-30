@@ -13,6 +13,7 @@ url="http://icl.cs.utk.edu/${pkgname}"
 license=('BSD')
 options=('staticlibs')
 depends=('glibc' 'gcc-fortran')
+optdepends=('python')
 source=("http://icl.cs.utk.edu/projects/${pkgname}/downloads/${pkgname}-${pkgver}.tar.gz"
         'alderlakex-support.patch')
 sha512sums=('6e427505b9237a2165dee8c198708a26f4b366ca31a424340206d29c56d04b13405d20a734f311a1f18cbbbc1b940eb5c93535cd734b0c796459623e93624219'

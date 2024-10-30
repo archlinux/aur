@@ -8,6 +8,7 @@ pkgbase = papi
 	license = BSD
 	depends = glibc
 	depends = gcc-fortran
+	optdepends = python
 	options = staticlibs
 	source = http://icl.cs.utk.edu/projects/papi/downloads/papi-7.1.0.tar.gz
 	source = alderlakex-support.patch
