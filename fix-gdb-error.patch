@@ -1,0 +1,100 @@
+From f8080edefd60c8740915f922cf8a4352e6658174 Mon Sep 17 00:00:00 2001
+From: Shulhan <m.shulhan@gmail.com>
+Date: Sat, 13 Jul 2024 12:18:04 +0700
+Subject: [PATCH] [release-branch.go1.23] runtime: fix TestGdbAutotmpTypes on
+ gdb version 15
+
+On Arch Linux with gdb version 15.1, the test for TestGdbAutotmpTypes print
+the following output,
+
+----
+~/src/go/src/runtime
+$ go test -run=TestGdbAutotmpTypes -v
+=== RUN   TestGdbAutotmpTypes
+=== PAUSE TestGdbAutotmpTypes
+=== CONT  TestGdbAutotmpTypes
+    runtime-gdb_test.go:78: gdb version 15.1
+    runtime-gdb_test.go:570: gdb output:
+        Loading Go Runtime support.
+        Target 'exec' cannot support this command.
+        Breakpoint 1 at 0x46e416: file /tmp/TestGdbAutotmpTypes750485513/001/main.go, line 8.
+
+        This GDB supports auto-downloading debuginfo from the following URLs:
+          <https://debuginfod.archlinux.org>
+        Enable debuginfod for this session? (y or [n]) [answered N; input not from terminal]
+        Debuginfod has been disabled.
+        To make this setting permanent, add 'set debuginfod enabled off' to .gdbinit.
+        [New LWP 355373]
+        [New LWP 355374]
+        [New LWP 355375]
+        [New LWP 355376]
+
+        Thread 1 "a.exe" hit Breakpoint 1, main.main () at /tmp/TestGdbAutotmpTypes750485513/001/main.go:8
+        8       func main() {
+        9               var iface interface{} = map[string]astruct{}
+        All types matching regular expression "astruct":
+
+        File runtime:
+                []main.astruct
+                bucket<string,main.astruct>
+                hash<string,main.astruct>
+                main.astruct
+                typedef hash<string,main.astruct> * map[string]main.astruct;
+                typedef noalg.[8]main.astruct noalg.[8]main.astruct;
+                noalg.map.bucket[string]main.astruct
+    runtime-gdb_test.go:587: could not find []main.astruct; in 'info typrs astruct' output
+!!! FAIL
+exit status 1
+FAIL    runtime 0.273s
+$
+----
+
+In the back trace for "File runtime", each output lines does not end with
+";" anymore, while in test we check the string with it.
+
+While at it, print the expected string with "%q" instead of "%s" for
+better error message.
+
+For #67089
+Fixes #69746
+
+Change-Id: If6019ee68c0d8e495c920f98568741462c7d0fd0
+Reviewed-on: https://go-review.googlesource.com/c/go/+/598135
+Reviewed-by: David Chase <drchase@google.com>
+Reviewed-by: Meng Zhuo <mengzhuo1203@gmail.com>
+LUCI-TryBot-Result: Go LUCI <golang-scoped@luci-project-accounts.iam.gserviceaccount.com>
+Reviewed-by: Michael Pratt <mpratt@google.com>
+(cherry picked from commit ff695ca2e3ea37dcb688d470e86ed64849c61f2e)
+Reviewed-on: https://go-review.googlesource.com/c/go/+/617455
+Reviewed-by: Michael Knyszek <mknyszek@google.com>
+Auto-Submit: Michael Knyszek <mknyszek@google.com>
+---
+ src/runtime/runtime-gdb_test.go | 12 ++++++------
+ 1 file changed, 6 insertions(+), 6 deletions(-)
+
+diff --git a/src/runtime/runtime-gdb_test.go b/src/runtime/runtime-gdb_test.go
+index 5defe2f615eaa..14561330bbf28 100644
+--- a/src/runtime/runtime-gdb_test.go
++++ b/src/runtime/runtime-gdb_test.go
+@@ -575,15 +575,15 @@ func TestGdbAutotmpTypes(t *testing.T) {
+ 
+ 	// Check that the backtrace matches the source code.
+ 	types := []string{
+-		"[]main.astruct;",
+-		"bucket<string,main.astruct>;",
+-		"hash<string,main.astruct>;",
+-		"main.astruct;",
+-		"hash<string,main.astruct> * map[string]main.astruct;",
++		"[]main.astruct",
++		"bucket<string,main.astruct>",
++		"hash<string,main.astruct>",
++		"main.astruct",
++		"hash<string,main.astruct> * map[string]main.astruct",
+ 	}
+ 	for _, name := range types {
+ 		if !strings.Contains(sgot, name) {
+-			t.Fatalf("could not find %s in 'info typrs astruct' output", name)
++			t.Fatalf("could not find %q in 'info typrs astruct' output", name)
+ 		}
+ 	}
+ }
