@@ -1,7 +1,7 @@
 # Maintainer: munsternet <munsternet at ik dot me>
 _pkgname=trackaudio
 pkgname=trackaudio-git
-pkgver=1.1.0.beta.10.r1.g9cf8503
+pkgver=1.3.0.beta.3.r9.g5ba0441
 pkgrel=1
 pkgdesc="Next-generation cross-platform Audio-For-VATSIM ATC Client"
 arch=(x86_64 aarch64)
@@ -34,6 +34,7 @@ prepare() {
   cd "$_pkgname"
   git submodule update --init --remote backend/vcpkg
   git submodule update --init --remote backend/extern/afv-native
+  cd backend/extern/afv-native && git checkout unicom2
 }
 
 build() {
