@@ -1,7 +1,7 @@
 pkgbase = deskflow-bin
 	pkgdesc = Deskflow lets you share one mouse and keyboard between multiple computers (binary version)
 	pkgver = 1.17.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://deskflow.org/
 	arch = x86_64
 	license = GPL-2.0
@@ -13,7 +13,7 @@ pkgbase = deskflow-bin
 	depends = libxinerama
 	depends = libxrandr
 	depends = libei
-	depends = libportal=0.6
+	depends = libportal
 	depends = qt6-base
 	depends = gdk-pixbuf2
 	depends = pugixml
@@ -22,7 +22,7 @@ pkgbase = deskflow-bin
 	provides = deskflow
 	conflicts = deskflow
 	conflicts = synergy
-	source = https://github.com/deskflow/deskflow/releases/download/v1.17.0/deskflow_1.17.0+r1_fedora-40_amd64.rpm
-	sha256sums = 26b78af06f60f18764871c28560620d5f90928b812c62188aeb1fad598b0dba5
+	source = https://github.com/deskflow/deskflow/releases/download/v1.17.0/deskflow-1.17.0.0-2_fedora_40_amd64.rpm
+	sha256sums = 35600106827fb24dce0efdc28f252a79fa45ad7108945cd8a0e7f719e5cc4767
 
 pkgname = deskflow-bin
