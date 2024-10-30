@@ -85,6 +85,6 @@ package_python-great-tables-docs() {
     cd $srcdir/$pkgbase-$pkgver
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
-    cd $srcdir/$pkgbase-$pkgver/docs/_site
-    find . -exec install -Dm644 {} "${pkgdir}/usr/share/doc/${pkgbase}/html/{}" \;
+    cd docs/_site
+    find . -type f -exec install -Dm644 {} "${pkgdir}/usr/share/doc/${pkgbase}/html/{}" \;
 }
