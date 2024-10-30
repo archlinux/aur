@@ -1,7 +1,7 @@
 # Maintainer: Arnab Bose <hirak99+arch@gmail.com>
 
 pkgname=keyshift
-pkgver=1.0.3
+pkgver=1.0.4
 pkgrel=1
 pkgdesc="Keyshift - keyboard remapping utility for Linux"
 arch=('any')
@@ -14,7 +14,7 @@ source=(
   "git+https://github.com/kerukuro/digestpp.git"
 )
 md5sums=(
-  'fb9ee55d448df8adf5fb2784362a9cd5'
+  'a096f9b5c66f3ea738af79eeb946ba19'
   'SKIP'
 )
 options=(!debug)
