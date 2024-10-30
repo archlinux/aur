@@ -1,7 +1,7 @@
 pkgbase = forkgram-bin
 	pkgdesc = Forkgram is the fork of the official Telegram Desktop application - Static binary
 	pkgver = 5.6.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Forkgram/tdesktop
 	install = forkgram-bin.install
 	arch = x86_64
