@@ -1,0 +1,16 @@
+diff -ura hamclock-4.09.orig/ESPHamClock/ArduinoLib.h hamclock-4.09.new/ESPHamClock/ArduinoLib.h
+--- hamclock-4.09.orig/ESPHamClock/ArduinoLib.h	2024-10-29 20:08:51.218914054 -0400
++++ hamclock-4.09.new/ESPHamClock/ArduinoLib.h	2024-10-29 20:09:29.876325075 -0400
+@@ -62,9 +62,9 @@
+   #elif defined(_IS_LINUX)
+     // be prepared for either gpiod or legacy broadcom memory map interface
+     #if __has_include(<gpiod.h>)
+-        #include <gpiod.hpp>
+-        #define _NATIVE_GPIO_LINUX              // set for either GPIOD or GPIOBC
+-        #define _NATIVE_GPIOD_LINUX             // gpiod is sufficiently mature to use
++        // #include <gpiod.hpp>
++        // #define _NATIVE_GPIO_LINUX              // set for either GPIOD or GPIOBC
++        // #define _NATIVE_GPIOD_LINUX             // gpiod is sufficiently mature to use
+     #endif
+     #if __has_include(<pigpio.h>)
+         #if !defined(_NATIVE_GPIO_LINUX)
