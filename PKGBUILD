@@ -2,16 +2,16 @@
 # Co-Maintainer: Darvin Delgado <dnmodder at gmail dot com>
 _sdkver=8.0.302
 pkgname=ryujinx-git
-pkgver=r3366.1a0a351a1
+pkgver=r3524.4f06c343a
 pkgrel=1
 pkgdesc="Experimental Nintendo Switch Emulator written in C#"
 arch=(x86_64)
-url="https://github.com/Ryujinx/Ryujinx"
+url="https://github.com/GreemDev/Ryujinx"
 license=('MIT')
 depends=('sh' 'glibc' 'zlib' 'hicolor-icon-theme' 'gcc-libs' 'libx11' 'fontconfig')
 makedepends=('git' 'desktop-file-utils')
-provides=(Ryujinx)
-conflicts=(Ryujinx)
+provides=(ryujinx)
+conflicts=(ryujinx)
 install=ryujinx.install
 source=(
 	"git+$url"
