@@ -4,9 +4,8 @@ pkgdesc = A fun memory game implemented in C++
 pkgver = 1.0.0
 pkgrel = 1
 arch = x86_64
-url = https://github.com/rotstein007/Memory  # Aktualisiert auf Ihren GitHub-Link
+url = https://github.com/rotstein007/Memory
 license = MIT
 makedepends = cmake
-source = PKGBUILD
+source = git+https://github.com/rotstein007/Memory.git
 sha256sums = SKIP
-
