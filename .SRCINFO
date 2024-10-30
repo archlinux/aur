@@ -1,6 +1,6 @@
 pkgbase = axonops-workbench-bin
-	pkgdesc = A desktop application built for Cassandra DB developers and DBAs
-	pkgver = 1.0.0_beta7
+	pkgdesc = A desktop application built for Cassandra DB developers and DBAs.Prebuilt version.Use system-wide electron.
+	pkgver = 0.9.0
 	pkgrel = 1
 	url = https://axonops.com/
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = axonops-workbench-bin
 	depends = libsecret
 	conflicts = axonops-workbench
 	options = !emptydirs
-	source = axonops-workbench-1.0.0_beta7.deb::https://github.com/axonops/axonops-workbench-cassandra/releases/download/v1.0.0-beta7/AxonOps.Workbench-1.0.0-beta7-linux-amd64.deb
+	source = axonops-workbench-0.9.0.rpm::https://github.com/axonops/axonops-workbench-cassandra/releases/download/v0.9.0/AxonOps.Workbench-0.9.0-linux-x86_64.rpm
 	source = axonops-workbench.sh
-	sha256sums = af3bfeec7f762553b0cc3d07423d2c13e4a8fe8ef8b1a29eb93ecbc8cf75f940
+	sha256sums = 8f80653c9533cef7a07897b832fd6d18e065203f48894fc548723411044ef9bf
 	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
 
 pkgname = axonops-workbench-bin
