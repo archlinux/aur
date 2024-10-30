@@ -1,0 +1,4 @@
+[cloudflare-warp-bin]
+source = "regex"
+url = "https://pkg.cloudflareclient.com/dists/noble/main/binary-amd64/Packages"
+regex = 'Version: (\d+\.\d+\.\d+)'
