@@ -42,11 +42,10 @@ prepare() {
 	sed -i "s/tft.print (F(\"You're up to date\!\"));"'/tft.print(F("Updates disabled for AUR")); tft.setCursor (tft.width()\/8, tft.height()\/3+40); tft.print(F("If this build is outdated by more than a few days,")); tft.setCursor (tft.width()\/8, tft.height()\/3+80); tft.print(F("please email fang64@gmail.com.")); wdDelay(2000);/g' ESPHamClock.ino
 	sed -i 's/bool found_newer = false;/return false;bool found_newer;/g' OTAupdate.cpp
 
-  # Patch Routine to prevent libgpio issues hamclock was built to support libgpio 1.x not anything post libgpio 2.x
+  # Patch Routine to prevent libgpio issues hamclock was built to support libgpio 1.x not anything post libgpio 2.x.
   # Discussed with Elwood just going to disable support until an alternative is implemented in hamclock.
   cd ..
   patch -Np1 -i ../no-libgpio.patch
-
 }
 
 build() {
