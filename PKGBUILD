@@ -43,7 +43,7 @@ optdepends=(
   # 'python-google-generativeai: support for Google Gemini models'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('a277b8f1046b47a465132b6666ddd90f24493bb62767f334fc0a6a2ca2b4fb45')
+sha256sums=('4f1b7a1d4d6573bd921c9c12192b0dbcee8a17b8a1c76a089e433d8b09e9932f')
 
 _archive="$_pkgname-$pkgver"
 
