@@ -1,4 +1,4 @@
-# Maintainer: Atte Lautanala <atte@lautana.la>
+# Contributor: Atte Lautanala <atte@lautana.la>
 pkgname=pyonji
 pkgver=0.1.0
 pkgrel=1
