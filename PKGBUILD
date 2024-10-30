@@ -4,10 +4,10 @@
 # Contributor: David Manouchehri <d@32t.ca>
 
 pkgname=dropbox
-pkgver=210.4.4854
+pkgver=211.4.6008
 pkgrel=1
 pkgdesc="A free service that lets you bring your photos, docs, and videos anywhere and share them easily."
-arch=("x86_64")
+arch=("i686" "x86_64")
 url="https://www.dropbox.com"
 license=(custom)
 depends=("libsm" "libxslt" "libxmu" "libxdamage" "libxrender" "libxxf86vm" "libxcomposite" "fontconfig" "dbus")
@@ -24,15 +24,18 @@ options=('!strip')
 source=("DropboxGlyph_Blue.svg"
         "terms.txt"
         "dropbox.service"
-        "dropbox@.service"
-        "https://edge.dropboxstatic.com/dbx-releng/client/dropbox-lnx.x86_64-$pkgver.tar.gz"{,.asc})
+        "dropbox@.service")
+source_x86_64=("https://edge.dropboxstatic.com/dbx-releng/client/dropbox-lnx.x86_64-$pkgver.tar.gz"{,.asc})
+source_i686=("https://clientupdates.dropboxstatic.com/dbx-releng/client/dropbox-lnx.x86-205.4.5765.tar.gz"{,.asc})
 
 sha256sums=('9ba76205ec5838db85d822f23cfd7e2112fd2757e8031d8374709f102143c548'
             '46364021c9d63e228de58584a09eaf5bd47a5d2080586eae98935357faebfc5f'
             '6c67a9c8c95c08fafafd2f1d828074b13e3347b05d2e4f4bf4e62746115d7477'
-            '98581e65a91ae1f19ed42edcdaaa52e102298b5da0d71b50089393d364474d3d'
-            'ec2ee411a295ab1f559243ad267899f7b4b7405d97641374909ab0fd4b310fd0'
-            'SKIP')
+            '98581e65a91ae1f19ed42edcdaaa52e102298b5da0d71b50089393d364474d3d')
+sha256sums_i686=('b603528915347e734b56162dabf1ce3dfbfef60bc2546f0e9c9388193b2ae3f1'
+                 'SKIP')
+sha256sums_x86_64=('9da3615ea1ff2df2cec877ff807175582f66a83754c5537bb3383f74fea1890b'
+                   'SKIP')
 # The PGP key fingerprint should match the one on https://www.dropbox.com/help/desktop-web/linux-commands
 validpgpkeys=(
   '1C61A2656FB57B7E4DE0F4C1FC918B335044912E'  # Dropbox Automatic Signing Key <linux@dropbox.com>
