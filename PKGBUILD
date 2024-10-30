@@ -1,7 +1,7 @@
 # Maintainer: Salvatore Cirasa < info at cirasa dot dev >
 pkgname=pairdrop-cli
 _binname=pairdrop
-pkgver=1.10.8
+pkgver=1.10.10
 pkgrel=1
 pkgdesc="File sharing on your local network that works on all platforms."
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ license=('GPLv3')
 # depends=('')
 archive="pairdrop-cli"
 source=("https://github.com/schlagmichdoch/PairDrop/releases/download/v${pkgver}/${archive}.zip")
-sha512sums=('d3677f775607aae8483a13a009e367656ff832515b482b6444db462ef3ee4a081f07e7123cda24306207000e290ad31abdf1bca368f87b3bba09b2881da8adf0')
+sha512sums=('a1ac835bc4981b309369fdb18baab53f6c1c2350b0a180afe87d9567691ff4c8a207bd457c1f445876ea58dd2b8f2df80fce245abb4234839f4e49f1310ed3b1')
 
 package() {
   mkdir -p "$srcdir/${pkgname}"
