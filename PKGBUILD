@@ -1,48 +1,37 @@
-# Maintainer: George Rawlinson <grawlinson@archlinux.org>
+# Maintainer: Conrad Hoffmann <ch@bitfehler.net>
 
 pkgname=hare-ssh
-pkgver=r85.7664482
+pkgver=0.24.2
 pkgrel=1
 pkgdesc='SSH library for Hare'
 arch=('any')
 url='https://git.sr.ht/~sircmpwn/hare-ssh'
-license=('MPL2')
+license=('MPL-2.0')
 depends=('hare')
-makedepends=('git')
-_commit='76644828c55f803ae14aee6319fa603888dcdf67'
-source=("$pkgname::git+$url#commit=$_commit")
-md5sums=('SKIP')
-
-pkgver() {
-  cd "$pkgname"
-
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
+source=("$pkgname-$pkgver.tar.gz::https://git.sr.ht/~sircmpwn/${pkgname}/archive/${pkgver}.tar.gz")
+sha256sums=('1274b69d2ee1f2eae5ebcd2746364597d20e91693b6202eb31c1e5482426a1d2')
 
 prepare() {
-  cd "$pkgname"
+  cd "$pkgname-$pkgver"
 
   sed \
     -i Makefile \
     -e 's/install -m644/cp -vr/g'
 }
 
+check() {
+  cd "$pkgname-$pkgver"
 
-# 1 test failed:
-# format::ssh::decodersaprivate: Assertion failed: /build/hare-ssh/src/hare-ssh/format/ssh/+test/rsakeys.ha:23:1
-#check() {
-#  cd "$pkgname"
-#
-#  # remove '-Wl,' prefix if present, since it is only required when
-#  # the linker is invoked indirectly. Keeping it will cause the linker to
-#  # fail.
-#  export LDFLAGS=${LDFLAGS#"-Wl,"}
-#
-#  make check
-#}
+  # remove '-Wl,' prefix if present, since it is only required when
+  # the linker is invoked indirectly. Keeping it will cause the linker to
+  # fail.
+  export LDFLAGS=${LDFLAGS#"-Wl,"}
+
+  make check
+}
 
 package() {
-  cd "$pkgname"
+  cd "$pkgname-$pkgver"
 
   make DESTDIR="$pkgdir" PREFIX=/usr install
 }
