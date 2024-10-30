@@ -2,8 +2,8 @@
 # Contributor: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
 
 pkgname=trisquel-gtk-theme
-pkgver=8.0
-pkgrel=1
+pkgver=9.0
+pkgrel=4
 pkgdesc='A GTK2, GTK3, Metacity, XFWM4, and Unity theme from Trisquel.'
 url='http://trisquel.info'
 arch=('any')
@@ -11,9 +11,9 @@ license=('GPL3')
 optdepends=('gdk-pixbuf2: gtk2 theme support'
 			'gtk-engine-murrine: gtk2 theme support'
 			'gtk-engine-unico: gtk3 theme support')
-source=("http://archive.trisquel.info/trisquel/pool/main/t/${pkgname}/${pkgname}_${pkgver}.tar.gz")
-sha512sums=('0fc769380eba9f58603e5b3f13b5e6a62a570bb66e96ab614cb670fdb3d6c81974c9419c0c4a6f382425e42d61e7190938278f84552eaa52898029e31702be5c')
+source=("http://archive.trisquel.info/trisquel/pool/main/t/${pkgname}/${pkgname}_${pkgver}-${pkgrel}.tar.gz")
+sha512sums=('17bbb8f8768aff3d4a75ba111bd05a02a19652d8eb953e66fae49f46c726a4822ee951ea8ceac2054bba96de2770ebce358f1258bf952bf3d124f2aedf9aa2cf')
 
 package() {
-	cp -a ${srcdir}/${pkgname}/data/usr ${pkgdir}/
+	cp -a ${srcdir}/${pkgname}-${pkgver}/data/usr ${pkgdir}/
 }
