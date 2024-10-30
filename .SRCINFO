@@ -1,6 +1,6 @@
 pkgbase = xswm-git
 	pkgdesc = Minimal X-window-manager with only one task. Open every window maximized.
-	pkgver = 1
+	pkgver = r159.d53f38b
 	pkgrel = 1
 	url = https://github.com/astier/xswm
 	arch = x86_64

@@ -1,7 +1,7 @@
 # Maintainer: Cyan903 <cyanp0515 at gmail dot com>
 
 pkgname="xswm-git"
-pkgver=1
+pkgver=r159.d53f38b
 pkgrel=1
 pkgdesc="Minimal X-window-manager with only one task. Open every window maximized."
 arch=("x86_64")
