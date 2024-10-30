@@ -2,7 +2,7 @@
 
 pkgname="quatracker-git"
 pkgver=1
-pkgrel=1
+pkgrel=2
 pkgdesc="A score tracker for the rhythm game Quaver."
 arch=("x86_64")
 url="https://github.com/Cyan903/Quatracker"
