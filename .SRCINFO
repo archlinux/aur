@@ -13,4 +13,3 @@ pkgbase = python-alembic-autogenerate-enums
 	sha256sums = adb49909c864a263f92bf7b99752d5c4b2f496617cccb5cfc689af9c72235ff9
 
 pkgname = python-alembic-autogenerate-enums
-
