@@ -1,7 +1,7 @@
 # Maintainer: Rotstein
 pkgname=memory-game
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A fun memory game, written in C++."
 arch=('x86_64')
 url="https://github.com/rotstein007/Memory"  # Aktualisiert auf Ihren GitHub-Link
