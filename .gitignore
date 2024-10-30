@@ -5,5 +5,5 @@
 !.INSTALL
 !.gitignore
 !.gitattributes
-#/src/
-#/pkg/
+/src/
+/pkg/
