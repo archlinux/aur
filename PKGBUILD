@@ -2,7 +2,7 @@
 
 pkgname=keyshift
 pkgver=1.0.2
-pkgrel=1
+pkgrel=4
 pkgdesc="Keyshift - keyboard remapping utility for Linux"
 arch=('any')
 url="https://github.com/hirak99/$pkgname"
@@ -45,6 +45,6 @@ package() {
   cd "$pkgname"-"$pkgver"
   ./build.sh
 
-  install -Dm 755 ./build/keyshift "$pkgdir"/usr/local/bin/keyshift
+  install -Dm 755 ./build/keyshift "$pkgdir"/usr/bin/keyshift
 }
 

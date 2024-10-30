@@ -1,7 +1,7 @@
 pkgbase = keyshift
 	pkgdesc = Keyshift - keyboard remapping utility for Linux
 	pkgver = 1.0.2
-	pkgrel = 1
+	pkgrel = 4
 	url = https://github.com/hirak99/keyshift
 	arch = any
 	license = Apache
