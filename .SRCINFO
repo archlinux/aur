@@ -1,6 +1,6 @@
 pkgbase = python-pyodm
 	pkgdesc = A Python SDK for adding aerial image processing capabilities to your applications. NodeODM
-	pkgver = 1.5.11
+	pkgver = 1.5.12
 	pkgrel = 1
 	url = https://github.com/OpenDroneMap/PyODM
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = python-pyodm
 	depends = python-requests
 	depends = python-requests-toolbelt
 	depends = python-urllib3
-	source = pyodm-1.5.11.tar.gz::https://github.com/OpenDroneMap/PyODM/archive/a01b7f8710e1182f4db04c4d507b333dc3dd9e53.tar.gz
-	sha256sums = 9670b8ad36ef6c5f8fc22172d1eb21839d914fad115ff9997f5a2679a25a5469
+	source = PyODM-1.5.12.tar.gz::https://github.com/OpenDroneMap/PyODM/archive/refs/tags/v1.5.12.tar.gz
+	sha256sums = 3c82461c63ee9e9f0ea9c2e8ee8c0e90b7d21e47172c1b935372b68a42125f97
 
 pkgname = python-pyodm
