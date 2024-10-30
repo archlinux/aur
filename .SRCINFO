@@ -1,7 +1,7 @@
 pkgbase = go-sylixos
 	pkgdesc = Core compiler tools for the Go programming language
 	pkgver = 1.23.2.r60492.gb9ec27f7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/go-sylixos
 	arch = x86_64
 	license = BSD-3-Clause
@@ -11,7 +11,7 @@ pkgbase = go-sylixos
 	conflicts = go
 	options = !strip
 	options = staticlibs
-	source = git+https://github.com/go-sylixos/go.git#tag=sylixos-release-branch.go1.23
+	source = git+https://github.com/go-sylixos/go.git#branch=sylixos-release-branch.go1.23
 	sha256sums = SKIP
 
 pkgname = go-sylixos
