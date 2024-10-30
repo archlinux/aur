@@ -1,7 +1,7 @@
 # Maintainer: Hu Butui <hot123tea123@gmail.com>
 
 _pkgname=parameters
-_pkgver=0.22.2
+_pkgver=0.23.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -28,6 +28,7 @@ optdepends=(
   r-brglm2
   r-brms
   r-broom
+  r-broom.mixed
   r-caic4
   r-car
   r-cardata
@@ -39,6 +40,7 @@ optdepends=(
   r-coxme
   r-cplm
   r-dbscan
+  r-distributional
   r-domir
   r-drc
   r-drr
@@ -114,6 +116,7 @@ optdepends=(
   r-rcppeigen
   r-rmarkdown
   r-rms
+  r-rstan
   r-rstanarm
   r-sandwich
   r-see
@@ -128,13 +131,13 @@ optdepends=(
   r-truncreg
   r-vdiffr
   r-vgam
-  r-withr
   r-weightit
+  r-withr
   r-wrs2
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('96e60ac9475ed4c7d5f76c328ead2534')
-b2sums=('4048e7376ce2404f16dff144dafe274d4c03fa229e376a43ef1a804e190b2ab2ef1eefa3cb954e23eaa2d98a3c737024ad9381970bc40f8017bb22865749f220')
+md5sums=('7d2432da58a5cdc02f1ee6a02d382e48')
+b2sums=('fa49e460939deab779716c34cc99a51f750ebcdda36c48c990a99d7098f7537416803c779ac0b86b58922f31aa238faf1eb894b1477a45cf814992b7302a8417')
 
 build() {
   mkdir build
