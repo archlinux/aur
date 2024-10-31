@@ -1,6 +1,6 @@
 pkgbase = r-flowviz
 	pkgdesc = Visualization for flow cytometry
-	pkgver = 1.68.0
+	pkgver = 1.70.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/flowViz
 	arch = any
@@ -18,7 +18,7 @@ pkgbase = r-flowviz
 	optdepends = r-markdown
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/flowViz_1.68.0.tar.gz
-	sha256sums = f2ff410723412bbf079482b95bd3bce9d6141ca55db9998a124f22a3ddd4e4c7
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/flowViz_1.70.0.tar.gz
+	sha256sums = dcb4be0d2f50b9fea0700d9d46f4bedd1b512644e586f3aad52567ad7ee9b8fa
 
 pkgname = r-flowviz
