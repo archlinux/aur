@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=dStruct
-_pkgver=1.10.0
+_pkgver=1.12.0
 pkgname=r-${_pkgname,,}
-pkgver=1.10.0
+pkgver=1.12.0
 pkgrel=1
 pkgdesc='Identifying differentially reactive regions from RNA structurome profiling data'
 arch=('any')
@@ -27,7 +27,7 @@ optdepends=(
   r-tidyverse
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('07b663e1fea445583010a25ec39305cbc96ba51dc4907f91d04b3ba363f69090')
+sha256sums=('fdf7f09a47d906dd261d8a6bb4f3ddc72d428e9e423a6b715c8823e94aa74475')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
