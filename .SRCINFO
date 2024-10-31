@@ -1,6 +1,6 @@
 pkgbase = r-piano
 	pkgdesc = Platform for integrative analysis of omics data
-	pkgver = 2.20.0
+	pkgver = 2.22.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/piano
 	arch = any
@@ -34,7 +34,7 @@ pkgbase = r-piano
 	optdepends = r-rsbml
 	optdepends = r-snowfall
 	optdepends = r-yeast2.db
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/piano_2.20.0.tar.gz
-	sha256sums = 3c36203ff30e605c05ff997f17fa7e8bce477f234d21c0040407fece2747266c
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/piano_2.22.0.tar.gz
+	sha256sums = 0487ffa55d7c2ce8ed07ea5b357c7ef46c076b5ada860b96f681bd53967efd0c
 
 pkgname = r-piano
