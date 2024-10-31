@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=BufferedMatrix
-_pkgver=1.68.0
+_pkgver=1.70.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -13,8 +13,8 @@ depends=(
   r
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('80e3a61d324852f817825a909dda1a61')
-b2sums=('567858668f12d89b07d55d711c7a3193f94c01edfd2bd8386a30b9a8e80bb4a5230131b0f24c6ddabca8aaa10622dbd31ecc1d546ae4ccb9b09fdc858a464d8a')
+md5sums=('f6e6592cef55d8c83e92b5fa3e2ea41d')
+b2sums=('65312c3e40c6da5cc4660014a90f683a6ba9682f9e07a99e8c14deee55fc17dad87f393e9cd4ed160b25141aa40256229c7848dbb4df931a2422d05cd9b99dc9')
 
 build() {
   mkdir build
