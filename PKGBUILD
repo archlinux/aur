@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=agilp
-_pkgver=3.36.0
+_pkgver=3.38.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -13,8 +13,8 @@ depends=(
   r
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('dacbb8ba794a46ebb78d2a5066e6661d')
-b2sums=('c8533d9383d8c77e82d4a87ceaa9fe6d8ffc10faab9de54ad9f28d72d5a7f1c6efca9b4529a773f13705e7e63f32f3e73d3e545246f427b3fbf69728e58d5d0e')
+md5sums=('dbf0be42e3149d23acd29c60631252ca')
+b2sums=('2e6c449d3619106e54ec1e6b7cfc6b61eb35be17b6c86ba6129b15e9bc13970fb47d440a9fbc654ac852b97b399c1c0ad0b471da358d6d623165ae8393773740')
 
 build() {
   mkdir build
