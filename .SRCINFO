@@ -1,6 +1,6 @@
 pkgbase = r-tin
 	pkgdesc = Transcriptome instability analysis
-	pkgver = 1.36.0
+	pkgver = 1.38.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/TIN
 	arch = any
@@ -17,7 +17,7 @@ pkgbase = r-tin
 	optdepends = r-biocgenerics
 	optdepends = r-knitr
 	optdepends = r-runit
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/TIN_1.36.0.tar.gz
-	sha256sums = 977b484a11caa0f639d948b00456d848f2d5d6e11493bc56d4514d2d7df1b519
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/TIN_1.38.0.tar.gz
+	sha256sums = 1abfe6a4f80f5c916dcd65271d2d26df1dda176e7dca6a44e91fcd42d79a7cab
 
 pkgname = r-tin
