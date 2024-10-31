@@ -1,6 +1,6 @@
 pkgbase = r-scthi
 	pkgdesc = Indentification of significantly activated ligand-receptor interactions across clusters of cells from single-cell RNA sequencing data
-	pkgver = 1.16.0
+	pkgver = 1.18.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/scTHI
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = r-scthi
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-scthi.data
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/scTHI_1.16.0.tar.gz
-	sha256sums = 01d5e3eef4f9fc98f8b71d640d7ff9fe62cd5985babb6dc4d8f88949a00b335d
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/scTHI_1.18.0.tar.gz
+	sha256sums = 61397184e1f3baec89ef1ae82b987dcb7a9b5e1680fe89a14c974976a8a3799c
 
 pkgname = r-scthi
