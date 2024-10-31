@@ -3,14 +3,14 @@
 
 pkgname=rudesktop
 pkgver=2.7.692
-pkgrel=3
+pkgrel=4
 arch=('x86_64')
 pkgdesc="Ru-Desktop client for home use"
 url="https://rudesktop.ru/downloads/"
 license=('custom')
 source=("https://rudesktop.ru/download/rudesktop-amd64.deb")
-sha256sums=('7c44d2a4ec74ce5a2c0f076352dbbbdd146ab8c41fa9c72d4d51f06857a011c9')
-depends=(python-six glib2 python-xlib libxinerama python gdk-pixbuf2 libxcb gcc-libs hicolor-icon-theme glibc cairo libpulse python-evdev pango libxkbcommon libxtst util-linux-libs libxfixes gtk3)
+sha256sums=('4b4c62db205f47bfedab40e84c08a9320b8f239e9654e0b1c2623bfe468dceab')
+depends=(python-six glib2 python-xlib libxinerama python gdk-pixbuf2 libxcb gcc-libs hicolor-icon-theme glibc cairo libpulse python-evdev pango libxkbcommon libxtst util-linux-libs libxfixes gtk4)
 
 prepare() {
   cd "${srcdir}"
