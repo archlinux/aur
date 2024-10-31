@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=cycle
-_pkgver=1.58.0
+_pkgver=1.60.0
 pkgname=r-${_pkgname,,}
-pkgver=1.58.0
+pkgver=1.60.0
 pkgrel=1
 pkgdesc='Significance of periodic expression pattern in time-series data'
 arch=('any')
@@ -15,7 +15,7 @@ depends=(
   r-mfuzz
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('cbb7e1cd63d9739b73ce27543d497cb221d75e882cc07c5c937e95eebb95124a')
+sha256sums=('ebcb9f737d8afabc92dc7fab10e18ac2de2b8835ec4007e400a42ea64674e0b8')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
