@@ -1,6 +1,6 @@
 pkgbase = r-pcamethods
 	pkgdesc = A collection of PCA methods
-	pkgver = 1.96.0
+	pkgver = 1.98.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/pcaMethods
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = r-pcamethods
 	optdepends = r-ggplot2
 	optdepends = r-lattice
 	optdepends = r-matrixstats
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/pcaMethods_1.96.0.tar.gz
-	sha256sums = f15662bdd30fa86cde65a7a2bc17cbc271a80cca4953133d2c89867c6b0738c3
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/pcaMethods_1.98.0.tar.gz
+	sha256sums = f2a8c70372683d7ea979132764149c2c24bc7b492e5798fe7499546e4e57e90a
 
 pkgname = r-pcamethods
