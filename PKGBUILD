@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=metapone
-_pkgver=1.10.0
+_pkgver=1.12.0
 pkgname=r-${_pkgname,,}
-pkgver=1.10.0
+pkgver=1.12.0
 pkgrel=1
 pkgdesc='Conducts pathway test of metabolomics data using a weighted permutation test'
 arch=('any')
@@ -24,7 +24,7 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('07f63bc11ffe68ad2e4eb758b2e21882487e9b7a7dc6204a14909452dccdb474')
+sha256sums=('b0d97889d03742a7789846806a5c6ce28e2aac4306bc0089a36df26aa4491ad6')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
