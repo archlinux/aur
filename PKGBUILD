@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=scShapes
-_pkgver=1.10.0
+_pkgver=1.12.0
 pkgname=r-${_pkgname,,}
-pkgver=1.10.0
+pkgver=1.12.0
 pkgrel=1
 pkgdesc='A Statistical Framework for Modeling and Identifying Differential Distributions in Single-cell RNA-sequencing Data'
 arch=('x86_64')
@@ -24,7 +24,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('3c2f86ce752331a465d279df2847f3e86c0968fc1126ea85d6d0d4f738226900')
+sha256sums=('5e9f6809d81125c53782f9933e0d2873c8695447b7840b9e361dbc4fd6cad9a8')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
