@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=monocle
-_pkgver=2.32.0
+_pkgver=2.34.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -46,8 +46,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('f33d42592765d11736e33103ef476b1f')
-b2sums=('ebf9126a13bb42b8392df8f5db3130c71d44b8629f9d94d2cb7456b0ac2009f58556ceaf985ed8379d3ced26e72cda11c826c494d65e3169a5a3b4db13dd1599')
+md5sums=('6be2330eb42a8c8c4692d96aac05fb3d')
+b2sums=('886cc75defa53571aebb287b26a2ead75df8b88a4516846e89d87ea0f58199c781cee1563c84ac8a6b09873f4658d02ec6ac38a4840fba351f3a19a84fde66c1')
 
 build() {
   mkdir build
