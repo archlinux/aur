@@ -2,9 +2,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=flowClust
-_pkgver=3.42.0
+_pkgver=3.44.0
 pkgname=r-${_pkgname,,}
-pkgver=3.42.0
+pkgver=3.44.0
 pkgrel=1
 pkgdesc='Clustering for Flow Cytometry'
 arch=('x86_64')
@@ -28,7 +28,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('cd6ea594f5cdb962b054b5fda12e49a28a7af24377cff4203d726d0b82fd52fe')
+sha256sums=('2333d80a796cd633caf2db2ccd2ba045e14d805dd0fcfa312f760b341fdb2952')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
