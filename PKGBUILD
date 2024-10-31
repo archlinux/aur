@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=MsBackendSql
-_pkgver=1.4.0
+_pkgver=1.6.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -39,8 +39,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('61490d42add2d10ce6af94e1bd84200d')
-b2sums=('e729bdd38cad17af96196e26481fec2caeb555d4d529d956fcdac2851481c80a46141e8829ef038791b89cf7c6fc36dbe61c262fce43bd652e251e40e37c51ee')
+md5sums=('8c744daa8fc956b4c7c99e1e4998f5db')
+b2sums=('b619f3afa94b010ef4972a884958d46f2814b21e2beea2923dd212a31e0448281aa4c86857e124698c3cee2fe86ae50c3a12df35c13a5845fe1613fb0a14440d')
 
 build() {
   mkdir build
