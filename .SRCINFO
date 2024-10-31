@@ -1,6 +1,6 @@
 pkgbase = r-annotationfilter
 	pkgdesc = Facilities for Filtering Bioconductor Annotation Resources
-	pkgver = 1.28.0
+	pkgver = 1.30.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/AnnotationFilter
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = r-annotationfilter
 	optdepends = r-rmarkdown
 	optdepends = r-rsqlite
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/AnnotationFilter_1.28.0.tar.gz
-	sha256sums = 805c593c97cc38a1f52b429fd0c903fffd5cd98f7e40f9e4c23535427541b5e9
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/AnnotationFilter_1.30.0.tar.gz
+	sha256sums = b6b8c84c44a1e1d4f72508606faf3e8e966ee0d5076a91d9cab1a4de3a73eea8
 
 pkgname = r-annotationfilter
