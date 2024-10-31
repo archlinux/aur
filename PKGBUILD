@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=BiGGR
-_pkgver=1.40.0
+_pkgver=1.42.0
 pkgname=r-${_pkgname,,}
-pkgver=1.40.0
+pkgver=1.42.0
 pkgrel=1
 pkgdesc='Constraint based modeling in R using metabolic reconstruction databases'
 arch=('any')
@@ -19,7 +19,7 @@ depends=(
   r-stringr
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('3f3c3e846a4e0d3e63c9f35645ea80cb1fd8e7afa0abc96530fde5514e9245c9')
+sha256sums=('ac15160e77bc6c14af4fce03cba6a84b821b5e801c9a39a4585451ea67ff6a7f')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
