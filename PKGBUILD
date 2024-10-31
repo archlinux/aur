@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=chopsticks
-_pkgver=1.70.0
+_pkgver=1.72.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -16,8 +16,8 @@ optdepends=(
   r-hexbin
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('aed0c8fe67ee97b7a68fa22f8ab3b7d9')
-b2sums=('4b20e85fd3f09162c75de07098a1da3eeeea9997beeed868c9406a460d5d3619c3546cedc4181034b02d1e03a9f4618a213352a3a3128092a9dcfc37e8d5ef7b')
+md5sums=('7b4d334f96e86d4b6e90f5177710fe3e')
+b2sums=('373a9a03da25c5e959da98825f5cd250fb169fe6c9498222bfed70550cacbd94e77293d7ace236e3210fd6fb5486d74a7bffe1c89fe9d8823499839f1d403b6b')
 
 build() {
   mkdir build
