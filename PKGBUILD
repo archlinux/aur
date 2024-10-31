@@ -1,7 +1,7 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
 pkgname="nak"
-pkgver=0.7.8
+pkgver=0.7.9
 pkgrel=1
 pkgdesc="A command line tool for doing all things nostr"
 arch=('x86_64' 'aarch64' 'riscv64')
@@ -11,7 +11,7 @@ depends=('glibc')
 makedepends=('go')
 _pkgsrc="${pkgname}-${pkgver}"
 source=("${_pkgsrc}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-b2sums=('5affe2a788f74036e5c4af3781a8359189062f914e31eb8117b99b7b136b0c27b76ec278d4eb648c0e68abd884f15ddce9574a14ec957f26984d33b57afc1a2a')
+b2sums=('e8bea798ae689daf71ce1e56746e5fbdca23083a29ed4632dfd0d042d0f9869debd31a8f091f66fa1bf19c43cdb0c18b3b08b654d36276a526a6c4b6032d3810')
 
 prepare() {
   cd "${srcdir}/${_pkgsrc}"
