@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=ANF
-_pkgver=1.26.0
+_pkgver=1.28.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -22,8 +22,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('6d580b642d07ce626bd10306d7b62115')
-b2sums=('c22db13eb245854aed7f1ca0cb21e42f21346a12e01aca5a6a593d744e8aaf6bafac817992c6ec5c68a874877cdd4f2cfdbd58cdd983cd21bff7cdb1ce36bd24')
+md5sums=('9f597355f1b3399b66316f456272f316')
+b2sums=('4b5890d5eb72ee9c180ebfea6b0ffe9567471a95308bb08e204c588ec6818879d5c95c469a7cc16dd8e62514b960ae602c789f172bc812c4e1532d3dac02c676')
 
 build() {
   mkdir build
