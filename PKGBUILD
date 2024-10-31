@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=seqLogo
-_pkgver=1.70.0
+_pkgver=1.72.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -19,8 +19,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('2632a70bbc1d1b088fbe5748d5377778')
-b2sums=('0e2a25b64b5c82b09e1d8eb43bec98603e1afab2e737a86577082e6a533c61e25d3ecca75b1aa4d8988173e30c02f6962d941be7385d058de3fad5ed42515fdf')
+md5sums=('a4abef9336767a981efc4395fa831aea')
+b2sums=('4016a42214eb97998f14940e0c1778e2791ff090761f3787ad0c6f13ab32971eb96aadbb8b80a8c34b3f79eed2e64bc3f9cc577600be531a7e3e56ee2eb366ee')
 
 build() {
   mkdir build
