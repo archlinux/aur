@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=bladderbatch
-_pkgver=1.42.0
+_pkgver=1.43.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -13,8 +13,8 @@ depends=(
   r-biobase
 )
 source=("https://bioconductor.org/packages/release/data/experiment/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('46e326c3d371551aeda16e9edd9a63db')
-b2sums=('68d8cf442d52274571c9ba8ee0918f9cfe6fc43780da324e451965ac75237477f26c8c1579185e64ca3b787a9ccf03abbe64a86329e15120fcc33a3b6dcaa664')
+md5sums=('01f7ca582633c3146149eb86652299b5')
+b2sums=('bb0c9934b4017fec7bc4094ca03aa86d85073b9585140e61841a4d0bc751e10ffbe3d11e67c08e2d095874f6f3eb05819a2636659c74e12b347163cf5fc445e8')
 
 build() {
   mkdir build
