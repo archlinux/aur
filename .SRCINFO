@@ -1,6 +1,6 @@
 pkgbase = r-gmicr
 	pkgdesc = Combines WGCNA and xCell readouts with bayesian network learrning to generate a Gene-Module Immune-Cell network (GMIC)
-	pkgver = 1.18.0
+	pkgver = 1.20.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/GmicR
 	arch = any
@@ -26,7 +26,7 @@ pkgbase = r-gmicr
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/GmicR_1.18.0.tar.gz
-	sha256sums = f018b70807d9daec55e0afa5050af90d3a2f8b3d94ddfa51872edf1c8425f6a7
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/GmicR_1.20.0.tar.gz
+	sha256sums = d8f4af6719fd9b768128e03163700cbdad7cd50c7a1abee0ab23bc9553773a41
 
 pkgname = r-gmicr
