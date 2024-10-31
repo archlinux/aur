@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=gtrellis
-_pkgver=1.36.0
+_pkgver=1.38.0
 pkgname=r-${_pkgname,,}
-pkgver=1.36.0
+pkgver=1.38.0
 pkgrel=1
 pkgdesc='Genome Level Trellis Layout'
 arch=('any')
@@ -29,7 +29,7 @@ optdepends=(
   r-tiff
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('58a0ccbddd6eb554c8b76d30098a7dca279faf8d6b518933c42671d6e5959ae2')
+sha256sums=('ff20b7f149e76a2cb4eef19e2d75bfa991cc4245d3c78ca5f9102016b342c9b1')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
