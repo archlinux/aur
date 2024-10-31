@@ -2,7 +2,7 @@
 
 _pkgname="osdctl"
 pkgname="${_pkgname}-bin"
-pkgver=0.37.0
+pkgver=0.38.0
 pkgrel=1
 pkgdesc="CLI for the OSD utilities"
 arch=('x86_64' 'aarch64')
@@ -13,8 +13,8 @@ conflicts=("${_pkgname}")
 _pkgsrc="${_pkgname}-${pkgver}"
 source_x86_64=("${_pkgsrc}-x86_64.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_Linux_x86_64.tar.gz")
 source_aarch64=("${_pkgsrc}-aarch64.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_Linux_arm64.tar.gz")
-sha256sums_x86_64=('610277c6881581dd6a81b14245a071227b9e24f282718c6479941913f2b1c215')
-sha256sums_aarch64=('faad8fe22bae54b066756ca2e96afebc6b27154e7e6f12c8bfb8602b5f08c970')
+sha256sums_x86_64=('2f548ac28db95e75b947c1d38fc7982dbcf11133f70988eaeea6f8d461a5dd5d')
+sha256sums_aarch64=('7365b08633adf92051f7d3446e4ca9bd064935a0fc386086a601d3dff274c8b2')
 
 prepare() {
   cd "${srcdir}"
