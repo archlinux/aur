@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=les
-_pkgver=1.54.0
+_pkgver=1.56.0
 pkgname=r-${_pkgname,,}
-pkgver=1.54.0
+pkgver=1.56.0
 pkgrel=1
 pkgdesc='Identifying Differential Effects in Tiling Microarray Data'
 arch=('any')
@@ -21,7 +21,7 @@ optdepends=(
   r-parallel
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('a303139178afd4a6a0b629eef70f57522ad8cc0af8adba6fcf67290376cb4db7')
+sha256sums=('10a4fadc0d98f76a05bd5654a37ab751866f956302b3a97d3b4c9ffb27a0bb1b')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
