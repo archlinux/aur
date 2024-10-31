@@ -1,6 +1,6 @@
 pkgbase = r-emdomics
 	pkgdesc = Earth Mover's Distance for Differential Analysis of Genomics Data
-	pkgver = 2.34.0
+	pkgver = 2.36.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/EMDomics
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = r-emdomics
 	depends = r-matrixstats
 	depends = r-preprocesscore
 	optdepends = r-knitr
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/EMDomics_2.34.0.tar.gz
-	sha256sums = f920c88651b87e37c49727078c1b35639be069bde137ba550289eb67838aca53
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/EMDomics_2.36.0.tar.gz
+	sha256sums = 60d42615bc36e21402fccf40175100927da296cc9bb9563f9e78bcbd81c750c1
 
 pkgname = r-emdomics
