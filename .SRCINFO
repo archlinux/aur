@@ -1,6 +1,6 @@
 pkgbase = r-tigre
 	pkgdesc = Transcription factor Inference through Gaussian process Reconstruction of Expression
-	pkgver = 1.58.0
+	pkgver = 1.60.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/tigre
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = r-tigre
 	optdepends = r-drosgenome1.db
 	optdepends = r-lumi
 	optdepends = r-puma
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/tigre_1.58.0.tar.gz
-	sha256sums = 9d3f4abdbf2239125f9366cca8e1a7b93919e4a45621b951d6ed937ad48baebd
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/tigre_1.60.0.tar.gz
+	sha256sums = eec1ad0b1bfd0c0b37f411e31bf81b5d3b1079869b770b80b56362ac75561950
 
 pkgname = r-tigre
