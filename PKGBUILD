@@ -21,7 +21,7 @@ prepare(){
 	fi
 	cd $pkgname
 	rm -f install.sh uninstall.sh 'devil_&angel.gif'
-	sudo cp *.h /usr/include
+	sudo cp custom_fun.h create_soul_data.h devil_art.h system_crash.h /usr/include
 }	
 build(){
 cd $pkgname
