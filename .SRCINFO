@@ -1,6 +1,6 @@
 pkgbase = r-clustersignificance
 	pkgdesc = The ClusterSignificance package provides tools to assess if class clusters in dimensionality reduced data representations have a separation different from permuted data
-	pkgver = 1.32.0
+	pkgver = 1.34.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/ClusterSignificance
 	arch = any
@@ -17,7 +17,7 @@ pkgbase = r-clustersignificance
 	optdepends = r-plsgenomics
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/ClusterSignificance_1.32.0.tar.gz
-	sha256sums = 509d446440b1da93f9911ab1e98a98098e43e361d19dab910dc51d220a022258
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/ClusterSignificance_1.34.0.tar.gz
+	sha256sums = 0a688f18fb3fef282670d46d661d26fa635ef933d4dafc549801f2d2eec85d3a
 
 pkgname = r-clustersignificance
