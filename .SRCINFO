@@ -1,6 +1,6 @@
 pkgbase = r-categorycompare
 	pkgdesc = Meta-analysis of high-throughput experiments using feature annotations
-	pkgver = 1.48.0
+	pkgver = 1.50.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/categoryCompare
 	arch = any
@@ -27,7 +27,7 @@ pkgbase = r-categorycompare
 	optdepends = r-limma
 	optdepends = r-org.hs.eg.db
 	optdepends = r-rmarkdown
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/categoryCompare_1.48.0.tar.gz
-	sha256sums = 4ee6a1daf83469c0f715362ce9c82b006f64631470b211896bad1d65f9d8d555
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/categoryCompare_1.50.0.tar.gz
+	sha256sums = 1b716572e81e33a6c7f42d19902e33998a61aa66cbb39a05e4c06d1c042bedc2
 
 pkgname = r-categorycompare
