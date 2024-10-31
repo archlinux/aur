@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=openPrimeR
-_pkgver=1.26.0
+_pkgver=1.28.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -46,8 +46,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('3e0311e1cbc408d29c99c0caf12cff31')
-b2sums=('e207a7e9f278723676fe0bc707017977f54f30d0e45b14b3ab31924aca5cf457dbf37dc713ee4c7b16ea574fdc5b0d45a5e0423c95bffd08b54e08bdc5723363')
+md5sums=('fb47d3362b75d0f8561bcfaa9e06b370')
+b2sums=('848454c6befddf9968351ef1e65d77fafa4d77d18018a9d4e7be1467bf45b9b8bc2840174883feb193e7bd5b83a470e479a4de67eb1667f03f4ecdc12889d2b5')
 
 build() {
   mkdir build
