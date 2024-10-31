@@ -1,6 +1,6 @@
 pkgbase = r-siggenes
 	pkgdesc = Multiple Testing using SAM and Efron's Empirical Bayes Approaches
-	pkgver = 1.78.0
+	pkgver = 1.80.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/siggenes
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = r-siggenes
 	optdepends = r-annotate
 	optdepends = r-genefilter
 	optdepends = r-kernsmooth
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/siggenes_1.78.0.tar.gz
-	sha256sums = d53e262aed40e60c4de944583367f84065ca4ea284135e7a0af9378170839648
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/siggenes_1.80.0.tar.gz
+	sha256sums = 07e78f47532d57978157d390eb3e5e756b766ee7f89f72c376fc49fa2af13e35
 
 pkgname = r-siggenes
