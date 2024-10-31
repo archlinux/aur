@@ -3,7 +3,7 @@
 _pkgbasename=ghostty
 pkgname=${_pkgbasename}-git-zen3
 pkgrel=1
-pkgver=r7809.582b8d03
+pkgver=r7854.9bc9ea27
 pkgdesc="Fast, native, feature-rich terminal emulator pushing modern features (Zen 3 optimized)"
 arch=('x86_64')
 url="https://github.com/ghostty-org/${_pkgbasename}"
@@ -50,10 +50,11 @@ prepare() {
 
 build() {
     cd "${srcdir}/${_pkgbasename}"
-    zig build -Doptimize=ReleaseFast -Demit-docs
+    ZIG_GLOBAL_CACHE_DIR="${srcdir}/tmp" ./nix/build-support/fetch-zig-cache.sh
+    zig build --system "${srcdir}/tmp/p" -Doptimize=ReleaseFast -Demit-docs
 }
 
 package() {
     cd "${srcdir}/${_pkgbasename}"
-    zig build -Doptimize=ReleaseFast -Demit-docs -p "$pkgdir/usr"
+    zig build -p "${pkgdir}"/usr --system "${srcdir}/tmp/p" -Doptimize=ReleaseFast -Demit-docs
 }
