@@ -1,0 +1,18 @@
+pkgbase = mediadeepa
+	pkgdesc = Audio/video medias and streams deep analyser
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://gh.mexm.media/mediadeepa/
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = maven
+	depends = bash
+	depends = ffmpeg>=5
+	depends = java-runtime>=21
+	source = git::git+https://github.com/mediaexmachina/mediadeepa#commit=101641763e2dd20ed0e4d1cb0226009fc5f32b6e
+	source = mediadeepa
+	sha256sums = SKIP
+	sha256sums = cc15cbaec42a15e92fc8202d07068c49c5e26d0e07d168f0731c364587c36995
+
+pkgname = mediadeepa
