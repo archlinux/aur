@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=ABSSeq
-_pkgver=1.58.0
+_pkgver=1.60.0
 pkgname=r-${_pkgname,,}
-pkgver=1.58.0
+pkgver=1.60.0
 pkgrel=1
 pkgdesc='ABSSeq: a new RNA-Seq analysis method based on modelling absolute expression differences'
 arch=('any')
@@ -18,7 +18,7 @@ optdepends=(
   r-edger
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('5f72aa2cad2fdb95a3a5a253ee40fa931a7dadce4ad23ae8839cf45200170b7f')
+sha256sums=('84bda01584a4851e5991bd35170d12303342db2f7ccbd61865eb89b6f3bcde0b')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
