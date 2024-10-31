@@ -1,6 +1,6 @@
 pkgbase = r-demuxmix
 	pkgdesc = Demultiplexing oligo-barcoded scRNA-seq data using regression mixture models
-	pkgver = 1.6.0
+	pkgver = 1.8.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/demuxmix
 	arch = any
@@ -15,8 +15,8 @@ pkgbase = r-demuxmix
 	optdepends = r-reshape2
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/demuxmix_1.6.0.tar.gz
-	md5sums = 09881e788c3d6b79b7be4e57b43787cd
-	b2sums = b6400e874374f7dab14c42fca607ce569d7883beeb855807eb7abea7d798f9635a8dfbf63c413ba2cef4ab84231e65e0a99ea3eb67df9dbad25dcd1f65b7bfc7
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/demuxmix_1.8.0.tar.gz
+	md5sums = c0fd77abf91ae084a776a415876a3bea
+	b2sums = 08f757f9bd35b4f231f09792edabbe6b046bc89decb57cddfe6648fd367d545057bd261338f5ee0cfef8bad143f6b27015daa6f14db74afa6d9d26c7508a68f1
 
 pkgname = r-demuxmix
