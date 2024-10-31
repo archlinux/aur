@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=projectR
-_pkgver=1.20.0
+_pkgver=1.22.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -42,8 +42,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('7dbc988526df54d7c87f57bcb7dbaa76')
-b2sums=('a935579429e123158a655fe406e2a0e2ba9102eb4660ea8ef09ca7916e5f4239ce13a03280f7cb9bc21650a837fdbeda3f7dd35626483d67d88d75a1b66a19c9')
+md5sums=('31626fd24bbeeaaf849ed5487f363a39')
+b2sums=('7df15f28ef490b51570cf8ec2ebdbecd015cc9024827b7ca89cff0d546658e3c832fb6e4c2b39d393f6c1f7ed37a29a8b11532f08189e52fd8c43e52146fac91')
 
 build() {
   mkdir build
