@@ -1,6 +1,6 @@
 pkgbase = r-rprimer
 	pkgdesc = Design Degenerate Oligos from a Multiple DNA Sequence Alignment
-	pkgver = 1.8.0
+	pkgver = 1.10.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/rprimer
 	arch = any
@@ -25,8 +25,8 @@ pkgbase = r-rprimer
 	optdepends = r-rmarkdown
 	optdepends = r-styler
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/rprimer_1.8.0.tar.gz
-	md5sums = c497fc1f0ef518894e2a96958d778853
-	b2sums = 42357d993a121be0d9954535674df7bc94bef08b0847114848411537fcf5ac340e339b931c7eb1aa9548b7cf97c7f95afa93e7157530a3b56aa7d30f55c165c9
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/rprimer_1.10.0.tar.gz
+	md5sums = 644134f1fa3fa1f38156cbbae27ef3f4
+	b2sums = 6c647b5343ada02523f99a07242af19f0c441998f3924dd3230b31745ae98471b53de96a4bcfc0494d35d3908f332b940071f3e3435695167e8a89bb16cbe2f5
 
 pkgname = r-rprimer
