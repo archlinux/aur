@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=DEGraph
-_pkgver=1.56.0
+_pkgver=1.58.0
 pkgname=r-${_pkgname,,}
-pkgver=1.56.0
+pkgver=1.58.0
 pkgrel=1
 pkgdesc='Two-sample tests on a graph'
 arch=('any')
@@ -34,7 +34,7 @@ optdepends=(
   r-rrcov
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('a98a8752fe5760f11d21dc890bf6d2ff4a225b8a7f1feed3009f2e12fd34b05f')
+sha256sums=('a06a7dadcd280cd89544815064d271659578198d631411c0217874994953ee35')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
