@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=TnT
-_pkgver=1.26.3
+_pkgver=1.28.0
 pkgname=r-${_pkgname,,}
-pkgver=1.26.3
+pkgver=1.28.0
 pkgrel=1
 pkgdesc='Interactive Visualization for Genomic Features'
 arch=('any')
@@ -29,7 +29,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('0b8ebb47986dea692e49fd60e926058a90123ac30eb9ddacfa9ee4a29e98cd66')
+sha256sums=('e9a40d57fdf8a2c546c427cb269234f3ddb29ca20a2dd95e7c99f9e9eddc21d7')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
