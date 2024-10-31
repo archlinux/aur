@@ -1,7 +1,7 @@
 pkgbase = python-plum-dispatch
 	pkgdesc = Multiple dispatch in Python
 	pkgver = 2.5.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/beartype/plum
 	arch = any
 	license = Apache
@@ -11,6 +11,7 @@ pkgbase = python-plum-dispatch
 	makedepends = python-wheel
 	depends = python-beartype
 	depends = python-rich
+	conflicts = python-plum
 	source = python-plum-dispatch-2.5.2.tar.gz::https://github.com/beartype/plum/archive/refs/tags/v2.5.2.tar.gz
 	source = python-plum-dispatch.diff
 	sha256sums = bc688e208e550a5ca5531f876302b1621c2f6b7979e4fe573a5c9a80739aed99

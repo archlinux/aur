@@ -3,12 +3,13 @@
 pkgname=python-plum-dispatch
 _pkgname=${pkgname#python-}
 pkgver=2.5.2
-pkgrel=2
+pkgrel=3
 pkgdesc='Multiple dispatch in Python'
 arch=('any')
 url='https://github.com/beartype/plum'
 license=('Apache')
 groups=()
+conflicts=('python-plum')
 depends=('python-beartype' 'python-rich')
 makedepends=('python-build' 'python-hatchling' 'python-installer'
              'python-wheel')
