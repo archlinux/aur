@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=PCAN
-_pkgver=1.32.0
+_pkgver=1.34.0
 pkgname=r-${_pkgname,,}
-pkgver=1.32.0
+pkgver=1.34.0
 pkgrel=1
 pkgdesc='Phenotype Consensus ANalysis (PCAN)'
 arch=('any')
@@ -21,7 +21,7 @@ optdepends=(
   r-stringdb
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('67d134f1cc72ef17d66f71f4240415b3ff458b26067337eb8dd39552f7e65cc5')
+sha256sums=('196d4179bd36eb75123ce89db160b5bd9930afd00acdbcb681da78e6d28122bd')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
