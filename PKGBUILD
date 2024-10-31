@@ -2,7 +2,7 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=NCIgraph
-_pkgver=1.52.0
+_pkgver=1.54.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -21,8 +21,8 @@ optdepends=(
   r-rgraphviz
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('021d036814a43d0ea32bb44f12f330a7')
-b2sums=('93452b77c5e96ef8e199098686d46258c08db6bbe9749e19ef0e4271b1f8915ed4590c9a1008a186ce9f039e74586f66b500997a127ae19e59c45e0639097ba6')
+md5sums=('39ef54003713b1eddd5262eee4628033')
+b2sums=('9fe4459a463a7a32c166176e47ac3432c6a7021545fd4bc3fd235af47c8227984d4485e5fea4ab8d03f3608661db7a7b19452b9b89cb1a18017de7a71b5ea87c')
 
 build() {
   mkdir build
