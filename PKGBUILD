@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=elephicon
-pkgver=3.0.5
-_electronversion=29
+pkgver=3.1.0
+_electronversion=33
 _nodeversion=20
-pkgrel=2
+pkgrel=1
 pkgdesc="A GUI wrapper for png2icons, generates Apple ICNS and Microsoft ICO files from PNG files.Use system-wide electron."
 arch=('any')
 url="https://github.com/sprout2000/elephicon"
@@ -21,9 +21,11 @@ makedepends=(
 )
 source=(
     "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
+    "electron-builder.yml"
     "${pkgname}.sh"
 )
-sha256sums=('c237e54cbb28bc33f0701233b508579a6623515b0c0f4951b70369c450d99ebd'
+sha256sums=('0764d84f9add6c4a0520613a77b47896967694bc7e4f226f6859026ad0eeb926'
+            '23cd7406b9fe2418b8793cc896cc80c4ab06c9c233c58ca2b032eac2e03f0131'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
@@ -36,7 +38,7 @@ build() {
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname}/g
         s/@runname@/app.asar/g
-        s/@cfgdirname@/${pkgname}/g
+        s/@cfgdirname@/${_pkgname}/g
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
     " -i "${srcdir}/${pkgname}.sh"
     _ensure_local_nvm
@@ -55,22 +57,19 @@ build() {
         {
             echo 'registry=https://registry.npmmirror.com'
             echo 'disturl=https://registry.npmmirror.com/-/binary/node/'
-            echo 'electron_mirror=https://registry.npmmirror.com/-/binary/electron/'
+            echo 'electron_mirror=https://registry.npmmirror.com/-/binary/electron/v'
             echo 'electron_builder_binaries_mirror=https://registry.npmmirror.com/-/binary/electron-builder-binaries/'
         } >> .npmrc
         find ./ -type f -name "package-lock.json" -exec sed -i "s/registry.npmjs.org/registry.npmmirror.com/g" {} +
     fi
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
-    sed -i "s/linux\.icns/icon\.png/g;s/AppImage/dir/g" -i scripts/builder.ts
     NODE_ENV=development    npm install
     NODE_ENV=production     npm run build
-    NODE_ENV=production     npm run package
+    NODE_ENV=production     npm exec -c "electron-builder build --linux dir -c.electronDist=${electronDist} --config ${srcdir}/electron-builder.yml"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
     install -Dm644 "${srcdir}/${pkgname}-${pkgver}/release/linux-"*/resources/app.asar -t "${pkgdir}/usr/lib/${pkgname}"
-    install -Dm644 "${srcdir}/${pkgname}-${pkgver}/release/linux-"*/resources/app.asar.unpacked/dist/images/icon.png \
-        -t "${pkgdir}/usr/lib/${pkgname}/app.asar.unpacked/dist/images"
     install -Dm644 "${srcdir}/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
     install -Dm644 "${srcdir}/${pkgname}-${pkgver}/assets/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
     install -Dm644 "${srcdir}/${pkgname}-${pkgver}/LICENSE.md" -t "${pkgdir}/usr/share/licenses/${pkgname}"
