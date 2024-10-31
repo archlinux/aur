@@ -1,14 +1,14 @@
 pkgbase = r-annotationtools
 	pkgdesc = Annotate microarrays and perform cross-species gene expression analyses using flat file databases
-	pkgver = 1.78.0
+	pkgver = 1.80.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/annotationTools
 	arch = any
 	license = GPL-2.0-or-later
 	depends = r-biobase
 	optdepends = r-biocstyle
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/annotationTools_1.78.0.tar.gz
-	md5sums = be285a6910e43e06c34d4abe65ba121d
-	b2sums = b50339aa8eb18a75d1c0f0e80665b0b71ed115fbd4c34eaa013cc5bd68a30ce326d81a004ecbf8229f6110ee8a8d6a6d1e4fa0847ebf958b4ad9fd0bb372a184
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/annotationTools_1.80.0.tar.gz
+	md5sums = 54e53adce6ba517f69348253baeac061
+	b2sums = ecc09ca963273401ef7171358fab03224da8879eaf13411741c2cca383aa074b3d69a60736b2cf36426e1bba8e42f02dc31b2d5e250629dc54fa0da7d757bed5
 
 pkgname = r-annotationtools
