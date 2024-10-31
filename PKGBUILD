@@ -4,7 +4,7 @@
 
 _name=vagrant-vmware-utility
 
-pkgname=vagrant-vmware-utility-bin
+pkgname=${_name}-bin
 pkgver=1.0.23
 pkgrel=1
 pkgdesc="Plugin for vagrant vmware provider."
@@ -13,6 +13,8 @@ url="https://www.vagrantup.com/vmware/"
 license=('MPL-2.0')
 depends=('vagrant' 'bash')
 makedepends=('libarchive')
+provides=("${_name}")
+conflicts=("${_name}")
 source=("https://releases.hashicorp.com/${_name}/${pkgver}/${_name}-${pkgver}-1.${arch}.rpm")
 install=${_name}.install
 b2sums=('ca257ee27dd86a32942a44d3aa32c7a18f4abf549d5fa1f1b14978269b81cb329eded6cce6fe3b18ac812bec35cc296713a117ce1984271d0eb0dd01df53d2e9')

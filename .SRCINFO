@@ -9,6 +9,8 @@ pkgbase = vagrant-vmware-utility-bin
 	makedepends = libarchive
 	depends = vagrant
 	depends = bash
+	provides = vagrant-vmware-utility
+	conflicts = vagrant-vmware-utility
 	source = https://releases.hashicorp.com/vagrant-vmware-utility/1.0.23/vagrant-vmware-utility-1.0.23-1.x86_64.rpm
 	b2sums = ca257ee27dd86a32942a44d3aa32c7a18f4abf549d5fa1f1b14978269b81cb329eded6cce6fe3b18ac812bec35cc296713a117ce1984271d0eb0dd01df53d2e9
 
