@@ -1,6 +1,6 @@
 pkgbase = r-genomictuples
 	pkgdesc = Representation and Manipulation of Genomic Tuples
-	pkgver = 1.38.0
+	pkgver = 1.40.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/GenomicTuples
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = r-genomictuples
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/GenomicTuples_1.38.0.tar.gz
-	sha256sums = 4a7b846c5eec446bd44486c34ce642ff61d40118f307b0ecaa4e2805acf63612
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/GenomicTuples_1.40.0.tar.gz
+	sha256sums = 11588fc69b386fda5ce3754fd47b4fa3901c14176f068b0adc138721d8a4183b
 
 pkgname = r-genomictuples
