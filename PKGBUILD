@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=RLMM
-_pkgver=1.66.0
+_pkgver=1.68.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -13,8 +13,8 @@ depends=(
   r
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('71d1f3a4ac2afea8676d9e39f75b16c3')
-b2sums=('04bdbf17860330412c9a6acabe24744a2044ff24a8f2e35afd617a4042ffaabc196c9699810cd01091668d5ae2c866270480fc3ec1dab90dd4e137dc416333ca')
+md5sums=('7f8b6b4bd9eb1d640055893d283d6b0a')
+b2sums=('17325dde5fbbe072a60b4d4819b3bf064105e05ff592573a8316551c3a78f22591444d8a61a0527d870b9b70ecd8faec57b0b995a9600908e0b472c4a0529e9b')
 
 build() {
   mkdir build
