@@ -2,7 +2,7 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=SAIGEgds
-_pkgver=2.4.1
+_pkgver=2.6.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -35,8 +35,8 @@ optdepends=(
   r-snprelate
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('cd2e11f69f56d804b5fcc6b6e8c35f4f')
-b2sums=('488e3dd86acf45b556d7de74fd6517ca6440c495d9414be0aa1ad12aa69181d7dc646fb577a1c7a5c1b2f779276b876cc138fb04f18971ef1d073220b17665c7')
+md5sums=('6b3e2939d8ff51b9b7199227dabd6c73')
+b2sums=('653679fe32c15e2c8a631d3fdbb2b59f95af7ead5783cf3c97f5196d354f640b3c57a70e1aa72a8507463c9f0581bb5b08621c367b6f4cef2faeaabf5b601877')
 
 build() {
   mkdir build
