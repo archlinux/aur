@@ -1,6 +1,6 @@
 pkgbase = r-viper
 	pkgdesc = Virtual Inference of Protein-activity by Enriched Regulon analysis
-	pkgver = 1.38.0
+	pkgver = 1.40.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/viper
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = r-viper
 	depends = r-e1071
 	depends = r-mixtools
 	optdepends = r-bcellviper
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/viper_1.38.0.tar.gz
-	sha256sums = d3337738b5b1b9574519f1e02d4e19991fa4d867113c1a1b6aab991217359401
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/viper_1.40.0.tar.gz
+	sha256sums = 67012bbc39e9aa1baf19ca547085d8d18f1abf6cff8b4228b2c47bcea1d94057
 
 pkgname = r-viper
