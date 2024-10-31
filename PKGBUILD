@@ -1,7 +1,7 @@
  # Maintainer: Kruemmelbande  (kai.scheufen@gmail.com)
 # Contributor: Kruemmelbande
 pkgname=slimevr-beta-bin
-pkgver=0.13.1.rc2
+pkgver=0.13.1.rc3
 pkgrel=1
 pkgdesc="SlimeVR FBT software beta version"
 arch=( 'x86_64')
@@ -12,9 +12,9 @@ depends=('gst-plugins-good' 'cairo' 'desktop-file-utils' 'gdk-pixbuf2' 'glib2' '
 options=('!strip' '!emptydirs')
 install=${pkgname}.install
 
-source_x86_64=("https://github.com/SlimeVR/SlimeVR-Server/releases/download/v0.13.1-rc.2/SlimeVR-amd64.deb")
+source_x86_64=("https://github.com/SlimeVR/SlimeVR-Server/releases/download/v0.13.1-rc.3/SlimeVR-amd64.deb")
 
-sha512sums_x86_64=('b855da3ba8388aa00ad2e19445fc803e7ae22dd9534e414b9da86cc697781604809e8c25e760bfef9db82ddf2dc0d76694af214ef81601ffd6bf6a0e676bfbdc')
+sha512sums_x86_64=('519662a0678ca970f2f52cfc6b4a89764182d4cba8c8ca296a31f2294c71430d8db13d2e699914e8dc643ddcdbd402f97d196be0c9daea98792715110062af0c')
 
 package(){
 

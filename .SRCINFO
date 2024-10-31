@@ -1,6 +1,6 @@
 pkgbase = slimevr-beta-bin
 	pkgdesc = SlimeVR FBT software beta version
-	pkgver = 0.13.1.rc2
+	pkgver = 0.13.1.rc3
 	pkgrel = 1
 	url = https://github.com/SlimeVR/SlimeVR-Server/
 	install = slimevr-beta-bin.install
@@ -19,7 +19,7 @@ pkgbase = slimevr-beta-bin
 	depends = webkit2gtk-4.1
 	options = !strip
 	options = !emptydirs
-	source_x86_64 = https://github.com/SlimeVR/SlimeVR-Server/releases/download/v0.13.1-rc.2/SlimeVR-amd64.deb
-	sha512sums_x86_64 = b855da3ba8388aa00ad2e19445fc803e7ae22dd9534e414b9da86cc697781604809e8c25e760bfef9db82ddf2dc0d76694af214ef81601ffd6bf6a0e676bfbdc
+	source_x86_64 = https://github.com/SlimeVR/SlimeVR-Server/releases/download/v0.13.1-rc.3/SlimeVR-amd64.deb
+	sha512sums_x86_64 = 519662a0678ca970f2f52cfc6b4a89764182d4cba8c8ca296a31f2294c71430d8db13d2e699914e8dc643ddcdbd402f97d196be0c9daea98792715110062af0c
 
 pkgname = slimevr-beta-bin
