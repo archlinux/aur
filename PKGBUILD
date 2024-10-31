@@ -8,19 +8,12 @@ pkgrel=1
 pkgdesc='Plasma 6 Plugin useful to open new windows on the monitor that has the mouse cursor'
 arch=(any)
 url="https://github.com/${_gitowner}/${_gitname}"
-license=('GPL-3.0-only')
-#groups=()
-#depends=()
 makedepends=('git' 'sed') # 'bzr', 'git', 'mercurial' or 'subversion'
 provides=("${pkgname%-git}" "$_gitname")
 conflicts=("${pkgname%-git}" "$_gitname")
-#replaces=()
-#backup=()
-#options=()
 install="${pkgname%-git}.install"
 _gitsrc="${_gitowner}.${_gitname}"
 source=("${_gitsrc}::git+${url}")
-#noextract=()
 sha256sums=('SKIP')
 
 pkgver() {
