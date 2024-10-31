@@ -8,7 +8,7 @@ User = lobe-chat
 Group = lobe-chat
 EnvironmentFile = /etc/default/lobe-chat
 WorkingDirectory = /usr/share/lobe-chat
-ExecStart = /usr/share/lobe-chat-launch.sh
+ExecStart = /usr/share/lobe-chat/lobe-chat-launch.sh
 
 [Install]
 WantedBy = multi-user.target
