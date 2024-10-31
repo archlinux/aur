@@ -1,6 +1,6 @@
 pkgbase = r-manor
 	pkgdesc = CGH Micro-Array NORmalization
-	pkgver = 1.76.0
+	pkgver = 1.78.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/MANOR
 	arch = x86_64
@@ -9,11 +9,11 @@ pkgbase = r-manor
 	optdepends = r-bookdown
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/MANOR_1.76.0.tar.gz
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/MANOR_1.78.0.tar.gz
 	source = MANOR-fix-build.patch::https://github.com/pneuvial/MANOR/pull/4.patch
-	md5sums = e872fc4e6c62e53001c914f880e22b33
+	md5sums = 24220ee4180315752bbfef71dcaae920
 	md5sums = ecb77c1d613977effbc8aa1c27fce89a
-	b2sums = 0c62048642bd8619b773eb35e61abe7b037f04fdc5507ebd869f08a3a9019fd9d76aeba43b375ddc961ecfc5f76b2b3aadf0107b730611448f88ada16b7b4349
+	b2sums = ea27c0e65ae10ac1c89db007522165265ed23beaea43080a2a2815d27995fab34bdfd6162a3d14e814c0249cfaa6f83a95c130035b43cbcc1025424e77fef23e
 	b2sums = 1b6770bb700ce4451769eaba495da581056ffbcc8554205400ad0d4246c487ecf9e8c7d0c2152badefa22fb273175467a0bad664da858cf8c6f6d9f8bc707ec5
 
 pkgname = r-manor
