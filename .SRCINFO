@@ -1,0 +1,13 @@
+pkgbase = fcitx5-pinyin-sougou-dict-git
+	pkgdesc = Fcitx5-pinyin搜狗官网词库全部词量
+	pkgver = 20241031.r1.geeb5373
+	pkgrel = 1
+	url = https://pinyin.sogou.com/dict/
+	arch = any
+	license = custom
+	makedepends = libime
+	makedepends = git
+	source = git+https://github.com/maoyaotang12/sougouscel.git
+	sha512sums = SKIP
+
+pkgname = fcitx5-pinyin-sougou-dict-git
