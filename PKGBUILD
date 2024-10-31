@@ -15,20 +15,23 @@ sha256sums=("ce49db7d3f3daea05fd837003ece23b3fd0dd5defce019839c857f43439de25e")
 prepare() {
   cd "$srcdir/$_repo-$pkgver"
 
-  cargo fetch --locked --target "$(rustc -vV | sed -n 's|host: ||p')"
+  export RUSTUP_TOOLCHAIN=stable
+  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
-build () {
+build() {
   cd "$srcdir/$_repo-$pkgver"
 
-  cargo build --frozen --release --target-dir target
+  export RUSTUP_TOOLCHAIN=stable
+  export CARGO_TARGET_DIR=target
+  cargo build --frozen --release --all-features
 }
 
 package() {
   cd "$srcdir/$_repo-$pkgver"
 
-  install -Dm755 target/release/dot-manager "${pkgdir}/usr/bin/dot-manager"
+  install -Dm755 target/release/dot-manager "$pkgdir/usr/bin/dot-manager"
 
-  install -Dm644 LICENSE ${pkgdir}/usr/share/licenses/$pkgname/LICENSE
+  install -Dm644 LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
 }
 
