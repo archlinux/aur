@@ -3,9 +3,9 @@
 # Contributor: Ivelin Velkov <ivelin dot velkov at gmail dot com>
 
 pkgname=teams-for-linux-git
-pkgver=1.1.8.r0.g23897f7
+pkgver=1.11.3.r0.gb411431
 pkgrel=1
-pkgdesc="Unofficial Microsoft Teams client for Linux using system electron (develop branch)."
+pkgdesc="Unofficial Microsoft Teams client for Linux using system electron (main branch)."
 arch=("aarch64" "armv7h" "i686" "x86_64")
 url="https://github.com/IsmaelMartinez/${pkgname%-git}"
 license=("GPL3")
@@ -14,7 +14,7 @@ provides=("teams-for-linux")
 depends=("gtk3" "libxss" "nss" "electron")
 makedepends=("git" "nodejs>15" "node-gyp" "python3" "yarn")
 source=(
-  "${pkgname%-git}::git+https://github.com/IsmaelMartinez/${pkgname%-git}#branch=develop"
+  "${pkgname%-git}::git+https://github.com/IsmaelMartinez/${pkgname%-git}#branch=main"
   "${pkgname%-git}.desktop"
   "${pkgname%-git}.sh"
 )
