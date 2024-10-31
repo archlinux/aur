@@ -1,6 +1,6 @@
 pkgbase = r-onlinefdr
 	pkgdesc = Online error control
-	pkgver = 2.12.0
+	pkgver = 2.14.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/onlineFDR
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = r-onlinefdr
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/onlineFDR_2.12.0.tar.gz
-	sha256sums = d07e9a5d41c67e8530251a081604cc586d2aab1d18b4de1e3fabb620d6cc3bea
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/onlineFDR_2.14.0.tar.gz
+	sha256sums = b866cf4b0bbf9e0494685f95b5c8952db4c9718d6e9be7bcb1c1f0f70ceb524d
 
 pkgname = r-onlinefdr
