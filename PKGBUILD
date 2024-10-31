@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=metaCCA
-_pkgver=1.32.0
+_pkgver=1.34.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -16,8 +16,8 @@ optdepends=(
   r-knitr
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('5a43b77a40cb126095f94ee767231d82')
-b2sums=('5c54a54c0f91b16c8d1eb1b4f3f398e26921e28e65c57b2412df6b7d16fb8efdb04f30b28b69a3c2b71341a7340bcb12ea3e4cd8b21150fe05b36d234d66787b')
+md5sums=('61e5e91a9b098d14828dd5a786499da1')
+b2sums=('e1b37730a3f8d3b14f5d41732030a3662d04fb8e8fdae8459e05cf405b32d35963dd8ccb99ab3cbe45132d8ba66c7ed296be4fb86dff92020eab279270a2d716')
 
 build() {
   mkdir build
