@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=PADOG
-_pkgver=1.46.0
+_pkgver=1.48.0
 pkgname=r-${_pkgname,,}
-pkgver=1.46.0
+pkgver=1.48.0
 pkgrel=1
 pkgdesc='Pathway Analysis with Down-weighting of Overlapping Genes (PADOG)'
 arch=('any')
@@ -27,7 +27,7 @@ optdepends=(
   r-parallel
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('7a3ecdd016cdd2f18e25bdae0fcc380c71deaea3ca777bc81762ddf8b6ffa866')
+sha256sums=('d0746a09b0ae592a73bdd388f08f2980d80faf9e0f23244fa4935e577fb47a69')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
