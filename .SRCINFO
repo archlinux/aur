@@ -1,6 +1,6 @@
 pkgbase = r-eds
 	pkgdesc = eds: Low-level reader for Alevin EDS format
-	pkgver = 1.6.0
+	pkgver = 1.8.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/eds
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = r-eds
 	optdepends = r-knitr
 	optdepends = r-testthat
 	optdepends = r-tximportdata
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/eds_1.6.0.tar.gz
-	sha256sums = 84e361db16de6a258e1eae1f97fbc3e5a58c3c0c7119cca2d8a17c78fa2bcd00
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/eds_1.8.0.tar.gz
+	sha256sums = 124f3f0b0107a1d67040f7cccead1c0041e4bbbc11a02305052715321e3f452d
 
 pkgname = r-eds
