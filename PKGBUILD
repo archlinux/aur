@@ -1,33 +1,30 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=salvage-bin
 _pkgname=Salvage
-pkgver=2.0.0
+pkgver=2.3.0
 pkgrel=1
-pkgdesc="Copy files comfortably and automate your backups."
+pkgdesc="Copy files comfortably and automate your backups.Prebuilt version"
 arch=('x86_64')
 url="https://github.com/RenanSui/salvage"
 license=('MIT')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
-    'webkit2gtk'
-    'libsoup'
+    'webkit2gtk-4.1'
 )
 source=(
-    "${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/app-v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb"
-    "LICENSE-${pkgver}::https://raw.githubusercontent.com/RenanSui/salvage/main/LICENSE"
+    "${pkgname%-bin}-${pkgver}.rpm::${url}/releases/download/${pkgver}/${_pkgname}-${pkgver}-1.${CARCH}.rpm"
 )
-sha256sums=('e9aa9fc167d4c888209c942fee3844a032c146d068687b7f5dc034f946a77a2e'
-            '4142643d16339ecf5a03a14940a2e28f78f3914b2eab0de4430d0a44ae1777c1')
-build() {
-    bsdtar -xf "${srcdir}/data."*
-}
+sha256sums=('beeabcaea3e7661241344c97087aef5f8b5d0cdf8bffb623c49f8d8adf04cfa2')
 package() {
-    install -Dm755 "${srcdir}/usr/bin/${pkgname%-bin}" -t "${pkgdir}/usr/bin"
-    install -Dm644 "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
+    sed -e "
+        s/Exec=${_pkgname}/Exec=${pkgname%-bin}/g
+        s/Icon=${_pkgname}/Icon=${pkgname%-bin}/g
+    " -i "${srcdir}/usr/share/applications/${_pkgname}.desktop"
+    install -Dm755 "${srcdir}/usr/bin/${_pkgname}" "${pkgdir}/usr/bin/${pkgname%-bin}"
+    install -Dm644 "${srcdir}/usr/share/applications/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
     for _icons in 32x32 128x128 256x256@2;do
-        install -Dm644 "${srcdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname%-bin}.png" \
-            -t "${pkgdir}/usr/share/icons/hicolor/${_icons//@2}/apps"
+        install -Dm644 "${srcdir}/usr/share/icons/hicolor/${_icons}/apps/${_pkgname}.png" \
+            -t "${pkgdir}/usr/share/icons/hicolor/${_icons//@2}/apps/${pkgname%-bin}.png"
     done
-    install -Dm644 "${srcdir}/LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }

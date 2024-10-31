@@ -1,17 +1,14 @@
 pkgbase = salvage-bin
-	pkgdesc = Copy files comfortably and automate your backups.
-	pkgver = 2.0.0
+	pkgdesc = Copy files comfortably and automate your backups.Prebuilt version
+	pkgver = 2.3.0
 	pkgrel = 1
 	url = https://github.com/RenanSui/salvage
 	arch = x86_64
 	license = MIT
-	depends = webkit2gtk
-	depends = libsoup
-	provides = salvage=2.0.0
+	depends = webkit2gtk-4.1
+	provides = salvage=2.3.0
 	conflicts = salvage
-	source = salvage-2.0.0.deb::https://github.com/RenanSui/salvage/releases/download/app-v2.0.0/salvage_2.0.0_amd64.deb
-	source = LICENSE-2.0.0::https://raw.githubusercontent.com/RenanSui/salvage/main/LICENSE
-	sha256sums = e9aa9fc167d4c888209c942fee3844a032c146d068687b7f5dc034f946a77a2e
-	sha256sums = 4142643d16339ecf5a03a14940a2e28f78f3914b2eab0de4430d0a44ae1777c1
+	source = salvage-2.3.0.rpm::https://github.com/RenanSui/salvage/releases/download/2.3.0/Salvage-2.3.0-1.x86_64.rpm
+	sha256sums = beeabcaea3e7661241344c97087aef5f8b5d0cdf8bffb623c49f8d8adf04cfa2
 
 pkgname = salvage-bin
