@@ -1,4 +1,4 @@
-# Maintainer: itstenchy
+# Maintainer: Jack Tench <jack at jtench dot co dot uk>
 pkgname=minilaunch-git
 _pkgname=minilaunch
 pkgver=0.1.0
