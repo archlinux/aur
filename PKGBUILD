@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=clusterStab
-_pkgver=1.76.0
+_pkgver=1.78.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -17,8 +17,8 @@ optdepends=(
   r-genefilter
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('3ff23e703f8ddac256c67de44947d217')
-b2sums=('59408b971dde8dd1353b4581080ecc5bc4e9184d820c392e4f38aa8d36797c8caaa44a13a69d6237773e58a4f0e578169b19850ef0bd1a4b28d5fde157ba2dec')
+md5sums=('f29f89a3b89fd713ff41e7adb8f18af2')
+b2sums=('ddd673ba5c4a743c0e9c9209254796d276db5d31526243ad22552ae0a3f64d3b8e7328395eff392db6c59e666a1ecaef02c36925e3f3101cef7417dba5ed9e52')
 
 build() {
   mkdir build
