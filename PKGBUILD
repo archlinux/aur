@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=synapsis
-_pkgver=1.10.0
+_pkgver=1.12.0
 pkgname=r-${_pkgname,,}
-pkgver=1.10.0
+pkgver=1.12.0
 pkgrel=1
 pkgdesc='An R package to automate the analysis of double-strand break repair during meiosis'
 arch=('any')
@@ -22,7 +22,7 @@ optdepends=(
   r-tidyverse
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('7402ced858e11cd83ed62e4acc103facf9e3a3f617faf42b37ff46bbe7535770')
+sha256sums=('e64caf992fdc7b6475f45902490bf017210c548fed0a116c9b1b713f8e221622')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
