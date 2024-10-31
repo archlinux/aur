@@ -1,7 +1,7 @@
 pkgbase = perl-debug-adapter
 	pkgdesc = Debug Adapter Protocol server for Perl
 	pkgver = 1.0.10
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Nihilus118/perl-debug-adapter
 	arch = any
 	license = MIT
@@ -10,6 +10,6 @@ pkgbase = perl-debug-adapter
 	depends = perl-padwalker
 	depends = sh
 	source = perl-debug-adapter-1.0.10.tar.gz::https://github.com/Nihilus118/perl-debug-adapter/archive/refs/tags/1.0.10.tar.gz
-	sha256sums = 9d1e8e02a3a01457a14426b0751ffc1df36165cec4564d6a205037c4142a0b3b
+	sha256sums = f31fb0ea827520d9592de6eeaac8aac9f6485b352b9f5b9c76b7e28a1a593ceb
 
 pkgname = perl-debug-adapter
