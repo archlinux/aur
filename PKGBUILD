@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=GSEAmining
-_pkgver=1.14.0
+_pkgver=1.16.0
 pkgname=r-${_pkgname,,}
-pkgver=1.14.0
+pkgver=1.16.0
 pkgrel=1
 pkgdesc='Make Biological Sense of Gene Set Enrichment Analysis Outputs'
 arch=('any')
@@ -30,7 +30,7 @@ optdepends=(
   r-tm
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('46eaa4e45c1efdaf0cb006669d759ec558d67503d380f5e8c045585ca2acfbe3')
+sha256sums=('65e2a2dbd14cf0522f4fd6a50aa5c31ba190bf15f1a9153172b789e30f22b4b9')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
