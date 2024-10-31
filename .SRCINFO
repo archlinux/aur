@@ -1,6 +1,6 @@
 pkgbase = r-mipp
 	pkgdesc = Misclassification Penalized Posterior Classification
-	pkgver = 1.76.0
+	pkgver = 1.78.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/MiPP
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = r-mipp
 	depends = r
 	depends = r-biobase
 	depends = r-e1071
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/MiPP_1.76.0.tar.gz
-	sha256sums = 37c967c316859ad6806e78c70ae8de385d3bf48e8dce1890196a2d7ce624938b
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/MiPP_1.78.0.tar.gz
+	sha256sums = 722a652fdbe82b87c790d72b8abf1cb2de8641ff5d5bea59c855f7f32df9cce4
 
 pkgname = r-mipp
