@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=GenProSeq
-_pkgver=1.8.0
+_pkgver=1.10.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -30,8 +30,8 @@ optdepends=(
   r-vaexprs
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('d55315036a35caebbdb1ca166ef24a7f')
-b2sums=('4cee99be25d4fa0745343c90254824e7ff57288ad352c431c5803eabaaaea92b89e2d95c20a59dcab5a8bd7f26f5b96313c9a6ac0ace143b2e5f2027a2bedf6c')
+md5sums=('a32d030b971c3014f578dd24c9ca4858')
+b2sums=('fc0a2c8b495802a8f9085d1ddb184bb316dd611843534a7bc79012a240982654d8ab1f346ebf0aba753b714d49481d6a38fcd31e28e11721405fd79166347f31')
 
 build() {
   mkdir build
