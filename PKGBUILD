@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=flowPlots
-_pkgver=1.52.0
+_pkgver=1.54.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -16,8 +16,8 @@ optdepends=(
   r-vcd
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('eaf054a88a3ee9f422690f0b223d70e3')
-b2sums=('1d60d1d8c3d681228d163b7506dcea9185bfa9e0529b36b92128cce035b29cf2a1d5a4c21a77aea9ee8559f2f64d79fb1dc596bea6868014e529c17a4ed2a9ec')
+md5sums=('807698c9a81aec5ad37757a55f41eee9')
+b2sums=('b673e43f34decb2ff53e7a9c3a374a5b1d718ff30d6ba26f6c14470726e294b7cb5db6a49b0caba3cd9886d3453df09588b2765a0e7e58244e2fb5e021977d26')
 
 build() {
   mkdir build
