@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=Rsubread
-_pkgver=2.18.0
+_pkgver=2.20.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -14,8 +14,8 @@ depends=(
   zlib
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('e89748afba3c2245eeeacf0b3bf6c5e2')
-b2sums=('a483b35cb299cfc6b8aee011a8608fcf86a393bce3424033e6651495d31283350562ca62730f6dcc9161695ee489382430ff563e17935c5bba451b6e5ee8649c')
+md5sums=('ff51de2d85704503bda2039364d50130')
+b2sums=('9e4f60b131bf18002e980fdc387d8ab9bb166fd24bcf4730c33ddd4971b5df65882be5e74f1e7f054dad2b39e3677316ca66a627ad816f2c4f973e3a99568ae1')
 
 build() {
   mkdir build
