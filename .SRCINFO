@@ -1,6 +1,6 @@
 pkgbase = emacs29-lucid-native-comp-git
-	pkgdesc = GNU Emacs. Development emacs29 release branch.
-	pkgver = 29.0.91.165166
+	pkgdesc = GNU Emacs (29) - Developement, Build Lucid Native Comp.
+	pkgver = 29.4.50.1675ca
 	pkgrel = 1
 	url = http://www.gnu.org/software/emacs/
 	install = emacs-git.install
