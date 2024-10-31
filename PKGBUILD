@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=multtest
-_pkgver=2.60.0
+_pkgver=2.62.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -17,8 +17,8 @@ optdepends=(
   r-snow
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('c84ca66c69c21ec6449a36205b1af93b')
-b2sums=('3ae6e0f1c5cc7dd8935c2a574d2108203c1b8845128ae206e602cdf451881fdda08fd997c5b3e823eac05671017d8995c39df40a67e5de9d3f124ae43c636d1d')
+md5sums=('ea043ffe972fb0592853ebe0496666c9')
+b2sums=('578f484cc5eff4c66d92819c023e125d7d276587bb9b8f4570a040b13e2f6f96e34fabc8f31007095bc18d584aba82eb4fad6eb92b0e5c411b9020a28b088a27')
 
 build() {
   mkdir build
