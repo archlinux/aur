@@ -1,6 +1,6 @@
 pkgbase = r-mirage
 	pkgdesc = MiRNA Ranking by Gene Expression
-	pkgver = 1.46.0
+	pkgver = 1.48.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/MiRaGE
 	arch = any
@@ -23,7 +23,7 @@ pkgbase = r-mirage
 	optdepends = r-iranges
 	optdepends = r-mirnatarget
 	optdepends = r-seqinr
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/MiRaGE_1.46.0.tar.gz
-	sha256sums = e1ed8b39a12c3d67f6d6b46d8163d233bed0107adf47c92486b40a9870ce839d
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/MiRaGE_1.48.0.tar.gz
+	sha256sums = 351cfa6634cf3e907adfb3f9dd6d3765964bb402ffa4021aa1cf2dc030bd7e01
 
 pkgname = r-mirage
