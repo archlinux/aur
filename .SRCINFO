@@ -1,6 +1,6 @@
 pkgbase = r-globaltest
 	pkgdesc = Testing Groups of Covariates/Features for Association with a Response Variable, with Applications to Gene Set Testing
-	pkgver = 5.58.0
+	pkgver = 5.60.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/globaltest
 	arch = any
@@ -24,7 +24,7 @@ pkgbase = r-globaltest
 	optdepends = r-rgraphviz
 	optdepends = r-rpart
 	optdepends = r-vsn
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/globaltest_5.58.0.tar.gz
-	sha256sums = 85242a695aab61081a39a75bff818ecc783d21dc78cd6b808e2ba6cb64d0fbb2
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/globaltest_5.60.0.tar.gz
+	sha256sums = 591a005d89be9259c4b941e60091002de64b3337408464aa893f6f3fad1726be
 
 pkgname = r-globaltest

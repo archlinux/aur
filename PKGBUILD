@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=globaltest
-_pkgver=5.58.0
+_pkgver=5.60.0
 pkgname=r-${_pkgname,,}
-pkgver=5.58.0
+pkgver=5.60.0
 pkgrel=1
 pkgdesc='Testing Groups of Covariates/Features for Association with a Response Variable, with Applications to Gene Set Testing'
 arch=('any')
@@ -33,7 +33,7 @@ optdepends=(
   r-vsn
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('85242a695aab61081a39a75bff818ecc783d21dc78cd6b808e2ba6cb64d0fbb2')
+sha256sums=('591a005d89be9259c4b941e60091002de64b3337408464aa893f6f3fad1726be')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
