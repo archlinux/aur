@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=SamSPECTRAL
-_pkgver=1.58.0
+_pkgver=1.60.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -13,8 +13,8 @@ depends=(
   r
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('0b6001c74d4939cbe9410955f5c8fc44')
-b2sums=('baf318f139cbfa95742f57d3725c5ff5e70617a3ffb984b70e3d1ec4ce07851b0fd544c2078538330dc2fb4a2cae11fd9cdef4130cc3ccb439095c0069350bd4')
+md5sums=('dc3da48feb16c796c61a290b9e10708f')
+b2sums=('6af1c95c1600738afbd53adf5380e6cd80af3b7e19521c9607cd6897d78ec8f1861aca530b2804a24c4bcae1750319b80ec1101d1d9b28a95766d73439213a2e')
 
 build() {
   mkdir build
