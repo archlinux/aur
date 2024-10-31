@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=CINdex
-_pkgver=1.32.0
+_pkgver=1.34.0
 pkgname=r-${_pkgname,,}
-pkgver=1.32.0
+pkgver=1.34.0
 pkgrel=1
 pkgdesc='Chromosome Instability Index'
 arch=('any')
@@ -41,7 +41,7 @@ optdepends=(
   r-txdb.hsapiens.ucsc.hg18.knowngene
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('513c002396433d10eb29f1fcefeeb217fd4b266b5ac74322eb9fb797d902f8b1')
+sha256sums=('77df38a1dc0a0c52f415a589965d7533c619b7e5d1ef86fb1321ad94d031484f')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"

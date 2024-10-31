@@ -1,6 +1,6 @@
 pkgbase = r-cindex
 	pkgdesc = Chromosome Instability Index
-	pkgver = 1.32.0
+	pkgver = 1.34.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/CINdex
 	arch = any
@@ -32,7 +32,7 @@ pkgbase = r-cindex
 	optdepends = r-runit
 	optdepends = r-testthat
 	optdepends = r-txdb.hsapiens.ucsc.hg18.knowngene
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/CINdex_1.32.0.tar.gz
-	sha256sums = 513c002396433d10eb29f1fcefeeb217fd4b266b5ac74322eb9fb797d902f8b1
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/CINdex_1.34.0.tar.gz
+	sha256sums = 77df38a1dc0a0c52f415a589965d7533c619b7e5d1ef86fb1321ad94d031484f
 
 pkgname = r-cindex
