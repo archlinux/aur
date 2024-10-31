@@ -1,6 +1,6 @@
 pkgbase = r-gsri
 	pkgdesc = Gene Set Regulation Index
-	pkgver = 2.52.0
+	pkgver = 2.54.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/GSRI
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = r-gsri
 	optdepends = r-hgu95av2.db
 	optdepends = r-limma
 	optdepends = r-parallel
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/GSRI_2.52.0.tar.gz
-	sha256sums = 781250567a5496774ef798f5059c5069428763e4b8de659354c87e00230b192d
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/GSRI_2.54.0.tar.gz
+	sha256sums = bc0f8278715130561ec0fbdf560e901eb5b279ecb84ced8ce3fae11976e500d0
 
 pkgname = r-gsri
