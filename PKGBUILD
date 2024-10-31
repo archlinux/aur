@@ -2,7 +2,7 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=mosbi
-_pkgver=1.10.0
+_pkgver=1.12.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -36,8 +36,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('e081b5b11f8be56cf80e304755e38fa0')
-b2sums=('054befd6c8787bbc68bcd26623476a0466e2a6b7a352e1622acc60dd988da2b4d78bfe4d1edbfbd33112be9847ea7c8681b83bc8a992bea44d7e627135c75abd')
+md5sums=('1e4037cfe8ee2351fcb55e3079b8804c')
+b2sums=('677f31faf180ca686e1e9af9356c35d89153cdbd5183c8dcf74be557203472a443d0b47095a5dff520256da4fa7426d9c3405461c2d4449d96e43940b7d70f30')
 
 build() {
   mkdir build
