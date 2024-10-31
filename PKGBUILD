@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=lapmix
-_pkgver=1.70.0
+_pkgver=1.72.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -13,8 +13,8 @@ depends=(
   r-biobase
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('ea437861e671ec21638fa10ffa4ae5e9')
-b2sums=('72c1cc4865ffd87c50810d91f5bad00e5ec926053a04c04ad5806769cb30d650eb06c8d9317c2b78e933d3c222685e84f5194f2bdfac44523eb5ab76f2167117')
+md5sums=('c7c5fb52d888b23a23ba4049137cab60')
+b2sums=('368f2fc45706a6c77c07481d1e54d9759390198caa2f702eb1315626869ce5c117dc7313d687915efe70248650f5b116d63d19af67808d06b4a7160c33a2f064')
 
 build() {
   mkdir build
