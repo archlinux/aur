@@ -1,6 +1,6 @@
 pkgbase = r-pandar
 	pkgdesc = PANDA Algorithm
-	pkgver = 1.36.0
+	pkgver = 1.38.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/pandaR
 	arch = any
@@ -17,7 +17,7 @@ pkgbase = r-pandar
 	depends = r-runit
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/pandaR_1.36.0.tar.gz
-	sha256sums = 42ae75c03dca48cb451603b56e7fadd5110369115577b50669244d5bba4efeb1
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/pandaR_1.38.0.tar.gz
+	sha256sums = 7f167454f9e6a2aecb666e68662f61151585ad2143ca339d11b833848e00871f
 
 pkgname = r-pandar
