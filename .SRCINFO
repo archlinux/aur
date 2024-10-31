@@ -1,6 +1,6 @@
 pkgbase = r-rfastp
 	pkgdesc = An Ultra-Fast and All-in-One Fastq Preprocessor (Quality Control, Adapter, low quality and polyX trimming) and UMI Sequence Parsing).
-	pkgver = 1.14.0
+	pkgver = 1.16.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/Rfastp
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = r-rfastp
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/Rfastp_1.14.0.tar.gz
-	sha256sums = 5e5b188ca0db69cec34900f413e2ecb3cc3bdabdab1d9d064e116d8b40fd62fe
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/Rfastp_1.16.0.tar.gz
+	sha256sums = 8bd92e0335f49ada2269216583e68e14608c3ca0a6cf159bee52add163c449dd
 
 pkgname = r-rfastp
