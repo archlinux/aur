@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=RCyjs
-_pkgver=2.26.1
+_pkgver=2.28.0
 pkgname=r-${_pkgname,,}
-pkgver=2.26.1
+pkgver=2.28.0
 pkgrel=1
 pkgdesc='Display and manipulate graphs in cytoscape.js'
 arch=('any')
@@ -24,7 +24,7 @@ optdepends=(
   r-runit
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('5083d02d6efccfac012cafe59701db867e3375f856e5dfa8d2561f9ad99df82a')
+sha256sums=('7c989e32d1a757cba76f2bb13d4efb3c2dfe7cf2fa86628fe00a725878352c8d')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
