@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=R4RNA
-_pkgver=1.32.0
+_pkgver=1.34.0
 pkgname=r-${_pkgname,,}
-pkgver=1.32.0
+pkgver=1.34.0
 pkgrel=1
 pkgdesc='An R package for RNA visualization and analysis'
 arch=('any')
@@ -14,7 +14,7 @@ depends=(
   r-biostrings
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('a18fc4c99f57b96661dd344e561e447286428a8796216ccad19cfe10dab3ee32')
+sha256sums=('0cff1c728feed78aa59f2397cc0478ebe79b614810d0521f1cad09bd8bcc143c')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
