@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=similaRpeak
-_pkgver=1.36.0
+_pkgver=1.38.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -23,8 +23,8 @@ optdepends=(
   r-runit
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('2186454c92931fd6ec881ccbe0c6482e')
-b2sums=('3279bde03879f1394e9ae1d078565f14769b4e2d2beeb63024f702b9f2d2ace5dbf1edceaaa44adfdde3ccfc70fb2b80a9539eff633c80cb86ca88b11d807f7f')
+md5sums=('326a9c389d85c0e026cad982ae4aa5cd')
+b2sums=('c4220459e73550c91b52907bd63e5aec9ede7fa884dcd29dd0034a74d938c4dfec1536c2a1fbd3d050d14553411cfb869a420bdca7bc5b3457918a385c777a7a')
 
 build() {
   mkdir build
