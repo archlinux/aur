@@ -1,7 +1,7 @@
 pkgbase = ruyi
 	pkgdesc = RuyiSDK Package Manager
 	pkgver = 0.20.0
-	pkgrel = 1
+	pkgrel = 3
 	url = https://github.com/ruyisdk/ruyi
 	arch = any
 	license = Apache-2.0
@@ -19,6 +19,7 @@ pkgbase = ruyi
 	depends = python-rich
 	depends = python-semver
 	depends = python-tomlkit
+	depends = python-typing_extensions
 	depends = python-yaml
 	depends = sh
 	optdepends = android-tools: fastboot support
