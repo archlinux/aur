@@ -1,7 +1,7 @@
 # Maintainer: Byron Torres <b@torresjrjr.com>
 
 pkgname=himitsu-ssh
-pkgver='0.2'
+pkgver='0.4'
 pkgrel=1
 pkgdesc='Himitsu integration for SSH'
 arch=(x86_64)
@@ -16,20 +16,24 @@ source=(
 	'hissh-agent.service'
 )
 sha256sums=(
-	'5878abdb312467067cd77fd1f3edec8163abf877b7411d363b3d92a67a462dc1'
+	'57ba2368561afbffe63bfae1b9e531b1a72ba6673a6df1d69b02c67d206e72ff'
 	'cff7c70946d9d06f06588e3a3b8c833eb67204a7c936f3f77ee3c8b18974a2ff'
 )
 
 build() {
 	cd "$srcdir/$_extracted"
 	export LDFLAGS=${LDFLAGS#'-Wl,'}
-	make
+	export HAREPATH='/usr/src/hare/stdlib:/usr/src/hare/third-party'
+	make HARE=/usr/bin/hare SCDOC=/usr/bin/scdoc
 }
 
-check() {
-	cd "$srcdir/$_extracted"
-	make check
-}
+## v0.4 has no "@test"s
+#check() {
+#
+#	cd "$srcdir/$_extracted"
+#	export HAREPATH='/usr/src/hare/stdlib:/usr/src/hare/third-party'
+#	make HARE=/usr/bin/hare SCDOC=/usr/bin/scdoc check
+#}
 
 package() {
 	cd "$srcdir/$_extracted"
