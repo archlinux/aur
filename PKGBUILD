@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=SIAMCAT
-_pkgver=2.8.0
+_pkgver=2.10.0
 pkgname=r-${_pkgname,,}
-pkgver=2.8.0
+pkgver=2.10.0
 pkgrel=1
 pkgdesc='Statistical Inference of Associations between Microbial Communities And host phenoTypes'
 arch=('any')
@@ -42,7 +42,7 @@ optdepends=(
   r-tidyverse
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('50039caa0a7691e07ae948bf66903f90482a5be805fd2fc545d93c57d2e08902')
+sha256sums=('3fc79baae7fa1daf399bf3aacb94df5285647a6c0278b750a77a6cdd1997f58f')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
