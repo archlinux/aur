@@ -3,36 +3,51 @@
 # Contributor: Bader <Bad3r@pm.me>
 # Contributor: @pychuang (logseq-desktop-git)
 
-# avoid cluttering user home, while allowing data to be cached
-export HOME="$SRCDEST/node-home"
-export XDG_CACHE_HOME="$HOME/.cache"
-export XDG_CONFIG_HOME="$HOME/.config"
-export XDG_DATA_HOME="$HoME/.local/share"
+## options
+: ${_nodeversion:=18}
+: ${_install_path:=usr/lib}
 
-# basic info
 _pkgname="logseq-desktop"
 pkgname="$_pkgname"
 pkgver=0.10.9
-pkgrel=1
+pkgrel=2
 pkgdesc="Privacy-first, open-source platform for knowledge sharing and management"
 url="https://github.com/logseq/logseq"
 license=('AGPL-3.0-or-later')
 arch=('x86_64')
 
 depends=(
+  alsa-lib
+  at-spi2-core
+  cairo
+  curl
   dbus
   expat
   glib2
+  gtk3
+  libcups
+  libdrm
+  libx11
+  libxcb
+  libxcomposite
+  libxdamage
+  libxext
+  libxfixes
+  libxkbcommon
+  libxrandr
+  mesa
+  nodejs
   nspr
   nss
+  pango
+  perl
 )
 makedepends=(
   clojure
   git
-  nodejs
-  npm
+  nvm # AUR
+  patchelf
   python-setuptools
-  yarn
 )
 
 install="$pkgname.install"
@@ -46,8 +61,29 @@ sha256sums=(
   '9fe98bbeb4355c1ad3ea5b3776f02455ee86b8157f74dd53bb9b3367df31403a'
 )
 
-prepare() {
+_nvm_env() {
+  # avoid cluttering user home, while allowing data to be cached
+  export HOME="$SRCDEST/node-home"
+  export XDG_CACHE_HOME="$HOME/.cache"
+  export XDG_CONFIG_HOME="$HOME/.config"
+  export XDG_DATA_HOME="$HOME/.local/share"
+
+  export NVM_DIR="$SRCDEST/node-nvm"
+
+  #  export SYSTEM_ELECTRON_VERSION=$(< "/usr/lib/electron${_electron_version:-}/version")
+  #  export ELECTRONVERSION=${SYSTEM_ELECTRON_VERSION%%.*}
+
+  # set up nvm
+  source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
+  nvm install $_nodeversion
+  nvm use $_nodeversion
+}
+
+prepare() (
+  _nvm_env
+
   cd "$_pkgsrc"
+  npm install -g yarn
 
   # download required js modules
   yarn install
@@ -60,11 +96,13 @@ prepare() {
   yarn install
 
   # go back to the top-level folder and download clojure dependencies
-  cd "${srcdir}/$_pkgsrc"
+  cd ".."
   clojure -P -M:cljs
-}
+)
 
-build() {
+build() (
+  _nvm_env
+
   cd "$_pkgsrc"
 
   # build
@@ -73,39 +111,49 @@ build() {
   # packaging javescript files to an executable
   cd "static"
   yarn electron-forge package
-}
+)
 
 package() {
-  # copy files
-  install -dm755 "$pkgdir/opt/$_pkgname"
-  cp --reflink=auto -a -r -u "$_pkgsrc/static/out/Logseq-linux-x64"/* "$pkgdir/opt/$_pkgname"
+  local _out_path="$_pkgsrc/static/out/Logseq-linux-x64"
+  for i in "$_out_path"/resources/app/node_modules/dugite/git/libexec/git-core/*; do
+    if [ "$(patchelf --print-rpath "$i" 2> /dev/null)" = "/tmp/build/curl/lib" ]; then
+      patchelf --remove-rpath "$i"
+    fi
+  done
 
-  # executable
-  install -Dm755 /dev/stdin "$pkgdir/usr/bin/logseq" << 'EOF'
-#!/usr/bin/env sh
-set -e
+  install -dm755 "$pkgdir/$_install_path/$_pkgname"
+  cp --reflink=auto -a -r -u "$_out_path"/* "$pkgdir/$_install_path/$_pkgname"
 
-APPDIR="/opt/logseq-desktop"
-_ELECTRON="${APPDIR}/Logseq"
+  install -Dm755 /dev/stdin "$pkgdir/usr/bin/logseq" << END
+#!/usr/bin/bash
 
-_FLAGS_FILE="${XDG_CONFIG_HOME:-$HOME/.config}/logseq-flags.conf"
-if [ -r "$_FLAGS_FILE" ]; then
-    _USER_FLAGS="$(cat "$_FLAGS_FILE")"
+flags_file="\${XDG_CONFIG_HOME:-\$HOME/.config}/logseq-flags.conf"
+
+lines=()
+if [[ -f "\${flags_file}" ]]; then
+    mapfile -t lines < "\${flags_file}"
 fi
 
-if [[ $EUID -ne 0 ]] || [[ $ELECTRON_RUN_AS_NODE ]]; then
-    exec ${_ELECTRON} $_USER_FLAGS "$@"
-else
-    exec ${_ELECTRON} --no-sandbox $_USER_FLAGS "$@"
-fi
-EOF
+flags=()
+for line in "\${lines[@]}"; do
+    if [[ ! "\${line}" =~ ^[[:space:]]*#.* ]] && [[ -n "\${line}" ]]; then
+        flags+=("\${line}")
+    fi
+done
 
-  # copy xdg desktop files
+: \${ELECTRON_IS_DEV:=0}
+export ELECTRON_IS_DEV
+: \${ELECTRON_FORCE_IS_PACKAGED:=true}
+export ELECTRON_FORCE_IS_PACKAGED
+
+exec "/$_install_path/$_pkgname/Logseq""\${flags[@]}" "\$@"
+END
+
   install -Dm644 /dev/stdin "$pkgdir/usr/share/applications/$_pkgname.desktop" << END
 [Desktop Entry]
 Type=Application
 Name=Logseq
-Comment=Privacy-first, open-source platform for knowledge sharing and management
+Comment=$pkgdesc
 Exec=logseq %u
 Icon=logseq
 Terminal=false
