@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=epistasisGA
-_pkgver=1.6.0
+_pkgver=1.8.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -38,8 +38,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('c5d3006f0c36ed266bbd740651f435dc')
-b2sums=('19c820b23ba592069040d55bcd75230a13996935fd949bd39b593ff699fb5a34bad8ca8d6aad86b23a5eb14b1b44e81cbac8567727a886e4c1d1aba8a655d466')
+md5sums=('becb50c407ab48cee495562d867da943')
+b2sums=('c6334267658f0f93e1926d83bc8842a7f8f97ae8c4b801e2dd3788b55f487355bd2f40689f54d6df7b0e6823cabbb1de52e674bf1aecf42ed387a96212bd2c73')
 
 build() {
   mkdir build
