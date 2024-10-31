@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=OmaDB
-_pkgver=2.20.0
+_pkgver=2.22.0
 pkgname=r-${_pkgname,,}
-pkgver=2.20.0
+pkgver=2.22.0
 pkgrel=1
 pkgdesc='R wrapper for the OMA REST API'
 arch=('any')
@@ -26,7 +26,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('eb8427bc0d4abe6f89f144ca3b695734299862390a4fe64d1deb0185bdc27024')
+sha256sums=('53fae8cd1434e61952c71a2ef1818049ed32796da3a87cadcf8e75cbc226e1eb')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
