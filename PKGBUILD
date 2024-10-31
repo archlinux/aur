@@ -2,7 +2,7 @@
 # Maintainer:  Radu Potop <radu at wooptoo dot com>
 
 pkgname=(zoho-cliq zoho-cliq-upstream-electron)
-pkgver=1.7.3
+pkgver=1.7.4
 pkgrel=1
 pkgdesc='Zoho Cliq communication software'
 arch=('x86_64')
@@ -54,4 +54,4 @@ package_zoho-cliq-upstream-electron() {
     chmod +x "${pkgdir}/opt/Cliq/cliq"
 }
 
-sha256sums=('dfa83827bf70977ffc908f101a22472e33e7c73dbe92b3e61f271d32ffaeab55')
+sha256sums=('ccf2caa9962961318f995ee93bafd97bc248e146c220b3db429b556a18c4ae51')
