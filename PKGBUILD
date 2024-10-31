@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=splots
-_pkgver=1.70.0
+_pkgver=1.72.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -22,8 +22,8 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('b3b91694471d0f4384d3e57940236085')
-b2sums=('bea22087003f9213ecd9e81c2e0a305ce2774d84ee89bc0f38c33f43d2d0f39b5a4d34b5deb0c5f7b82a94a0bca91d39a133ac7e283b86d246b8a560367a6b0a')
+md5sums=('392b3bdf03e72c4ae1e0d619340917df')
+b2sums=('fcdb7e2c121d581674827f4fc0127764c1ac3fa18e5d5e097c3896b5adef5717d83a8b55bcc42e022584b1ea23964689ecd203dbb859bf44fa012460b7186a03')
 
 build() {
   mkdir build
