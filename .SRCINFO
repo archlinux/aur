@@ -1,16 +1,16 @@
 pkgbase = udeler-bin
 	pkgdesc = Unofficail binary installer for heliomarpm's fork of udeler
-	pkgver = 1.12.9
+	pkgver = 1.13.2
 	pkgrel = 2
 	url = https://github.com/heliomarpm/udemy-downloader-gui
 	arch = x86_64
 	license = MIT
 	depends = imagemagick
 	options = !strip
-	source = https://github.com/heliomarpm/udemy-downloader-gui/releases/download/v1.12.9/Udeler_Setup-v1.12.9_linux-x86_64.AppImage
+	source = https://github.com/heliomarpm/udemy-downloader-gui/releases/download/v1.13.2/Udeler_Setup-v1.13.2_linux-x86_64.AppImage
 	source = udeler.desktop
 	source = udeler.png
-	sha512sums = e2d9bd98e36c00c8023b1bd80b247fe2f30b23d1bcad6bd35be65dd090958e70a069c84b6760979a9b1ffe7180c7b189fc70ac3b5353c85e07079f0a5df97507
+	sha512sums = 9754c626c724a41653c85fdd3070765191bccc5c36bd80dbb29c68c6c5d4c6420f7e48deed15a36f58be0806cfeecc3fe2bc77b2d71e44b1af71658fd362fa4a
 	sha512sums = 9a0a9155c244ed077a2d115fd4ef55b013051265a4d1c774b6f65ac6f961d3ac16575730dbd9da7407944406ab8277fc01174688deed110dc7ebeb8ea36e3b32
 	sha512sums = 9adfeaec0edb10c0dd08140ef037a7919d3dce714b2a6802919936c7fcf3837cfa15e8a8068dd3302f59c8af584d91402303962aa3c1a7a08902102d8da12e6c
 
