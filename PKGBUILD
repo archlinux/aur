@@ -1,7 +1,7 @@
 # Maintainer: yuf <yuf at yufarch dot com>
 
 pkgname='siki'
-pkgver=0.32.2
+pkgver=0.32.3
 pkgrel=1
 pkgdesc='An Electrom-based application for browsing and posting to message boards'
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('zlib' 'hicolor-icon-theme' 'fuse2')
 options=(!strip)
 source=("${pkgname}-${pkgver}.AppImage::${url}/archives/${pkgver}/Siki-${pkgver}.AppImage")
 noextract=("${pkgname}-${pkgver}.AppImage")
-sha512sums=('5bdab19cf254c1338ca8cde62d6e08859b2c038cc0d8c0e297284eb0c89346ea7e8758ceab84f5a676b64a514eadd9d3fa704078c5b595b944d425212df092de')
+sha512sums=('10d49dae18e4f23cd35146b13809d0d0ecd8a7f17f1d169c0b40773b930f13bd4785183e124bdc13bae88ade7ec4da3f1b9b7adaac8a39bc1d3d0656d9bede1a')
 
 prepare () {
   cd "${srcdir}"
