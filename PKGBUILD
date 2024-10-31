@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=MethPed
-_pkgver=1.32.0
+_pkgver=1.34.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -20,8 +20,8 @@ optdepends=(
   r-markdown
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('bc972ab3fb55451ebda07d6605de5a3f')
-b2sums=('b1c291c5ad01a137da312767e4f08c9d903e04281713e3abf67a7641a7b9a0d045015127ab5925d67c873293a0b44736bce199601b56cebf43da7058ad4715f5')
+md5sums=('181fbe7f9413884ea5adac4fe74f1f99')
+b2sums=('6fb0de7ac8ebd8dd7c6df23184a5f3038ad3fd2d2b0988e98670ba4540af0c324c351f04d2b5927387da6c2f86420e3c682949261b140f56055b437d234c51c6')
 
 build() {
   mkdir build
