@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=rRDP
-_pkgver=1.38.0
+_pkgver=1.40.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -20,8 +20,8 @@ optdepends=(
   r-rrdpdata
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('c5a717da1389a34ff60abbaafe0c2e95')
-b2sums=('d789e17be4dc87fe772643c0f33ecd2dbb7a452883cd4a5662d2446281e8df9c35ea9525e070f166c8b61962a1bbe66cd0bf80c80e235edaafde161905915833')
+md5sums=('2dc3e7d6baa2781859dbf38bc08ecbc5')
+b2sums=('e3aea8488a4fa12a04147e7e5056f0efd3fc01097c1a81aaddea998f6878aad176a81f3a4a026cde6fe68af5bba4b67692446dcfe028a404df84afcbc2da596b')
 
 build() {
   mkdir build
