@@ -2,7 +2,6 @@
 pkgname='kwin-scripts-open-window-on-active-screen-git'
 _gitname='p6-owac'
 _gitowner='MagiusCHE'
-pkgname='kwin-scripts-open-window-on-active-screen-git'
 pkgver=0.1.a.r0.gace1c1e
 pkgrel=1
 pkgdesc='Plasma 6 Plugin useful to open new windows on the monitor that has the mouse cursor'
