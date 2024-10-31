@@ -1,4 +1,4 @@
-pkgbase = fcitx5-pinyin-sougou-dict-git
+pkgbase = fcitx5-pinyin-sougou-dict
 	pkgdesc = Fcitx5-pinyin搜狗官网词库全部词量
 	pkgver = 20241031
 	pkgrel = 1
@@ -10,4 +10,4 @@ pkgbase = fcitx5-pinyin-sougou-dict-git
 	source = git+https://github.com/maoyaotang12/sougouscel.git
 	sha512sums = SKIP
 
-pkgname = fcitx5-pinyin-sougou-dict-git
+pkgname = fcitx5-pinyin-sougou-dict
