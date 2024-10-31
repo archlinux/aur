@@ -1,7 +1,7 @@
 pkgbase = lobe-chat
 	pkgdesc = An open-source, modern-design LLMs/AI chat framework
 	pkgver = 1.26.17
-	pkgrel = 7
+	pkgrel = 8
 	url = https://github.com/lobehub/lobe-chat
 	arch = x86_64
 	arch = aarch64

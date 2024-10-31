@@ -3,7 +3,7 @@
 
 pkgname=lobe-chat
 pkgver=1.26.17
-pkgrel=7
+pkgrel=8
 pkgdesc="An open-source, modern-design LLMs/AI chat framework"
 arch=("x86_64" "aarch64")
 url="https://github.com/lobehub/${pkgname}"
@@ -70,7 +70,8 @@ package() {
     install -Dm644 README*.md           -t "${pkgdir}/usr/share/doc/${pkgname}/"
     install -Dm644 .nvmrc               -t "${pkgdir}/usr/share/${pkgname}/"
 
-    cp -r --preserve=mode .next/standalone/ "${pkgdir}/usr/share/${pkgname}/"
+    shopt -s dotglob
+    cp -r --preserve=mode .next/standalone/* "${pkgdir}/usr/share/${pkgname}/"
 
     mkdir -p "${pkgdir}/usr/share/${pkgname}/.next"
     cp -r --preserve=mode .next/static     "${pkgdir}/usr/share/${pkgname}/.next/"
