@@ -3,10 +3,10 @@
 _appname=nuclear
 pkgname="${_appname}-player"
 _pkgname="Nuclear Player"
-pkgver=0.6.39
+pkgver=0.6.40
 _electronversion=12
 _nodeversion=20
-pkgrel=2
+pkgrel=1
 pkgdesc="A free, multiplatform music player app that streams from multiple sources.Use system-wide electron."
 arch=('any')
 url="http://nuclear.gumblert.tech/"
@@ -19,7 +19,6 @@ makedepends=(
     'gendesk'
     'npm'
     'nvm'
-    'cmake'
     'gcc'
     'curl'
     'rust'
@@ -28,7 +27,7 @@ source=(
     "${pkgname}-${pkgver}.tar.gz::${_ghurl}/archive/refs/tags/v${pkgver}.tar.gz"
     "${pkgname}.sh"
 )
-sha256sums=('150f098de406055f6269fe82ddab3a772df6928d00480ce8d444a21a8610f2a9'
+sha256sums=('2343530f7c6ed405bd07d2a14fc7d5cfcf2452fbde99498f6cec41d0f03f44eb'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
@@ -50,6 +49,7 @@ build() {
     electronDist="/usr/lib/electron${_electronversion}"
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
+    export CARGO_HOME="${srcdir}/.cargo"
     HOME="${srcdir}/.electron-gyp"
     {
         echo -e '\n'	
@@ -57,6 +57,8 @@ build() {
         echo "cache=${srcdir}/.npm_cache"
     } >> .npmrc
     if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
+        export RUSTUP_DIST_SERVER=https://mirrors.ustc.edu.cn/rust-static
+        export RUSTUP_UPDATE_ROOT=https://mirrors.ustc.edu.cn/rust-static/rustup
         {
             echo 'registry=https://registry.npmmirror.com'
             echo 'electron_mirror=https://registry.npmmirror.com/-/binary/electron/'
