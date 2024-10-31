@@ -1,6 +1,6 @@
 pkgbase = r-cbpmanager
 	pkgdesc = Generate, manage, and edit data and metadata files suitable for the import in cBioPortal for Cancer Genomics
-	pkgver = 1.12.0
+	pkgver = 1.14.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/cbpManager
 	arch = any
@@ -27,7 +27,7 @@ pkgbase = r-cbpmanager
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/cbpManager_1.12.0.tar.gz
-	sha256sums = 24ccd65e1c29411887bbb380cada144bb69e3cb9c36d0bf5b7816dbf6cedb4c5
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/cbpManager_1.14.0.tar.gz
+	sha256sums = 180ceeaeae9b3693548178e48091593d085b71fe26122a4b873f1e7dd48bad8f
 
 pkgname = r-cbpmanager
