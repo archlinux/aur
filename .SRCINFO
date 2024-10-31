@@ -1,6 +1,6 @@
 pkgbase = r-rhdf5
 	pkgdesc = R Interface to HDF5
-	pkgver = 2.48.0
+	pkgver = 2.50.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/rhdf5
 	arch = x86_64
@@ -20,8 +20,8 @@ pkgbase = r-rhdf5
 	optdepends = r-mockery
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/rhdf5_2.48.0.tar.gz
-	md5sums = c5ed00dbade32b03ccd37f110970ad3e
-	b2sums = cb1857d4d9b54d409cece482b7a39e25885565ab212b6692cf8155873a87d8dc587a545e634adbe3e1f12534ab354abb790ed76bb310d825abe62fd2a9395332
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/rhdf5_2.50.0.tar.gz
+	md5sums = 3b8b33f3ee9a260cceefab2911d1cd63
+	b2sums = 2f32066125ea27a7eae61ad858aab486e050978e4a43afd337c919dda0967e0f05c42371784a48130acb2d9bafefc272125444ee573d6829541636912c05164d
 
 pkgname = r-rhdf5
