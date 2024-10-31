@@ -10,7 +10,7 @@
 
 _pkgname=gamescope
 pkgname=${_pkgname}-git
-pkgver=3.14.28.r0.g4ccc6647
+pkgver=3.15.9.r21.g7dd1bcd9
 pkgrel=1
 pkgdesc='SteamOS session compositing window manager'
 arch=(x86_64)
@@ -40,6 +40,7 @@ depends=(
     libxres
     libxtst
     libxxf86vm
+    luajit
     seatd
     sdl2
     vulkan-icd-loader
@@ -141,7 +142,7 @@ package() {
 
     install -d "$pkgdir"/usr/share/gamescope/reshade
     cp -r "$srcdir"/GamescopeShaders/* "$pkgdir"/usr/share/gamescope/reshade/
-    chmod -R 655 "$pkgdir"/usr/share/gamescope
+    chmod -R 644 "$pkgdir"/usr/share/gamescope
 
     meson install -C build --skip-subprojects --destdir="${pkgdir}"
 
