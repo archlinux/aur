@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=profileScoreDist
-_pkgver=1.32.0
+_pkgver=1.34.0
 pkgname=r-${_pkgname,,}
-pkgver=1.32.0
+pkgver=1.34.0
 pkgrel=1
 pkgdesc='Profile score distributions'
 arch=('x86_64')
@@ -20,7 +20,7 @@ optdepends=(
   r-motifdb
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('27069e0b02a80930783940e4f5e331ed95bb46ece40aa7816fd16dc6a298c269')
+sha256sums=('ca9b8781c32f0c402dfdf46e9d1e53f37da5f9f5db16da15a5a3c7febeea1ea7')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
