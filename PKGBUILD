@@ -2,7 +2,7 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=depmap
-_pkgver=1.18.0
+_pkgver=1.19.1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -32,8 +32,8 @@ optdepends=(
   r-viridis
 )
 source=("https://bioconductor.org/packages/release/data/experiment/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('8f93f6ebcf4bf2cd9dd10856d55eaf6c')
-b2sums=('932d209e0b9a000ebe132580fb82b15586bffdfc2202381363a2ae996fee4478e177a02bcc953998bf841758e835afb77b4b895e2ec7af1ce94a47a1fcc7a4aa')
+md5sums=('a8a7f9249e5a6faf5554b00b5858ed51')
+b2sums=('86c21d2067af1609005848227d4d069b7647fdf605788c103fd45006c99d67265b37e6e19455ce8cf2dd4478f137549bf154b9389943697857789d432c715785')
 
 build() {
   mkdir build
