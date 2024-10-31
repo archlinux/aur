@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=flowMeans
-_pkgver=1.64.0
+_pkgver=1.66.0
 pkgname=r-${_pkgname,,}
-pkgver=1.64.0
+pkgver=1.66.0
 pkgrel=1
 pkgdesc='Non-parametric Flow Cytometry Data Gating'
 arch=('any')
@@ -17,7 +17,7 @@ depends=(
   r-rrcov
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('bad21e3c0a4b2744b23e5a0173e0be986d3a317531bbebf81239481c0e1e772e')
+sha256sums=('61ddc26143e93e6b5dc89b62f552468cdd20371561d82576cb598bca420ff3e9')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
