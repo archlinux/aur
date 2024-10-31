@@ -1,0 +1,14 @@
+diff -aurN newlib-4.4.0.20231231/newlib/libc/machine/m68k/memset.S newlib-4.4.0.20231231-palm/newlib/libc/machine/m68k/memset.S
+--- newlib-4.4.0.20231231/newlib/libc/machine/m68k/memset.S	2024-01-01 00:00:18.000000000 +0700
++++ newlib-4.4.0.20231231-palm/newlib/libc/machine/m68k/memset.S	2024-10-31 19:17:32.565899950 +0700
+@@ -42,8 +42,8 @@
+ |
+ SYM(memset):
+ 	move.l	4(sp),a0	| dest ptr
+-	move.l	8(sp),d0	| value
+-	move.l	12(sp),d1	| len
++	move.w	8(sp),d0	| value
++	move.l	10(sp),d1	| len
+ 	cmp.l	#16,d1
+ 	blo	.Lbset		| below, byte fills
+ 	|

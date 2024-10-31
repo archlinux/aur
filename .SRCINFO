@@ -1,0 +1,20 @@
+pkgbase = m68k-palmos-newlib
+	pkgdesc = C library for bare metal systems (m68k-palmos).
+	pkgver = 4.3.0
+	pkgrel = 3
+	url = https://sourceware.org/newlib/
+	arch = any
+	groups = devel
+	license = BSD
+	makedepends = m68k-palmos-gcc-bootstrap>=4.3.0
+	depends = m68k-palmos-binutils
+	options = !makeflags
+	options = !strip
+	options = staticlibs
+	options = !libtool
+	source = ftp://sourceware.org/pub/newlib/newlib-4.3.0.20230120.tar.gz
+	source = palm.patch
+	sha512sums = 4a06309d36c2255fef8fc8f2d133cafa850f1ed2eddfb27b5d45f5d16af69e0fca829a0b4c9b34af4ed3a28c6fcc929761e0ee823a4229f35c2853d432b5e7ef
+	sha512sums = a2543c0919b2366058e265f30c4803426200eb25fa4817591273b899780661b1be2475044274f15f9675c9e3711ac4ca82740dfde7389a441afb51565fb9214f
+
+pkgname = m68k-palmos-newlib
