@@ -1,6 +1,6 @@
 pkgbase = r-category
 	pkgdesc = Category Analysis
-	pkgver = 2.70.0
+	pkgver = 2.72.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/Category
 	arch = any
@@ -30,7 +30,7 @@ pkgbase = r-category
 	optdepends = r-rgraphviz
 	optdepends = r-runit
 	optdepends = r-xtable
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/Category_2.70.0.tar.gz
-	sha256sums = 9cb2c5ff698299d8d16eaf7c4150966f79650e652836227ba71b2f9d11345f5d
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/Category_2.72.0.tar.gz
+	sha256sums = 62f2b2da396ff5eb7d67edd60830045587bebc9c0bca3371c302709da6cbc568
 
 pkgname = r-category
