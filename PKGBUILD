@@ -3,7 +3,7 @@
 _pkgname="redot"
 pkgname=${_pkgname}-bin
 pkgver=4.3.beta.2
-pkgrel=5
+pkgrel=6
 pkgdesc="A multi-platform 2D and 3D game engine"
 arch=('x86_64')
 url="https://github.com/Redot-Engine/redot-engine"
@@ -21,9 +21,9 @@ package() {
     cp ../icon.png ${srcdir}
     cp ../LICENSE.txt ${srcdir}
 	cd "$srcdir"
-	 install -Dm644 Redot.desktop ${pkgdir}/usr/share/applications/Redot.desktop
-	 install -Dm644 icon.png ${pkgdir}/usr/share/pixmaps/Redot.png
-     install -D -m755 Redot_v4.3-beta.2_linux.${arch} ${pkgdir}/usr/bin/redot
-     install -D -m644 LICENSE.txt ${pkgdir}/usr/share/licenses/"${pkgname}"/LICENSE
+	install -Dm644 Redot.desktop ${pkgdir}/usr/share/applications/Redot.desktop
+	install -Dm644 icon.png ${pkgdir}/usr/share/pixmaps/Redot.png
+    install -D -m755 Redot_v4.3-beta.2_linux.${arch} ${pkgdir}/usr/bin/redot
+    install -D -m644 LICENSE.txt ${pkgdir}/usr/share/licenses/"${pkgname}"/LICENSE
 }
 
