@@ -16,6 +16,9 @@ build() {
   export GOPATH="$srcdir/go"
   mkdir -p "$GOPATH"
   go build -o ./bin/boring ./cmd/boring
+
+  # go leaves a read-only directory which breaks yay. Remove it
+  go clean -modcache
 }
 
 package() {
