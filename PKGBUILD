@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=ddCt
-_pkgver=1.60.0
+_pkgver=1.62.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -20,8 +20,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('31e82a9d515c53d746d23e4644d77fac')
-b2sums=('37f77d0c4efa6598f089b245f06943c712fda442817b3a351ae27a6d0def1d45e9d4074541be855c39a4cd56f423d1d982c072c02d6b04923ea8c1a1efa06d92')
+md5sums=('e85c726d144ee68358302cdcc536abc9')
+b2sums=('9dfb956b09e59aa753410fa0e63c2de5d064eb3230ff173a65d5c590bfd942fa3540a32d4684909ff115c68bf8994367c6aa37eda8b45e9202c98693b6c7c81e')
 
 build() {
   mkdir build
