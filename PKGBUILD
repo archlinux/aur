@@ -3,7 +3,7 @@
 
 pkgname=lobe-chat
 pkgver=1.26.17
-pkgrel=1
+pkgrel=2
 pkgdesc="An open-source, modern-design LLMs/AI chat framework"
 arch=("x86_64" "aarch64")
 url="https://github.com/lobehub/${pkgname}"
@@ -13,13 +13,15 @@ makedepends=("npm" "pnpm")
 optdepends=("ollama: ollama backend")
 backup=("etc/default/${pkgname}")
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
+        "${pkgname}-launch.sh"
         "${pkgname}.env"
         "${pkgname}.service"
         "${pkgname}.sysusers"
         "${pkgname}.tmpfiles")
 sha256sums=('d1bb26be4d88e22be1337252059948ddfb1bc6a54bff00fe37aa1aebab8b299c'
+            '31425770cc37294fe223755f33a1dde387250f36d25e36d47d46de0962f3f8e5'
             '43143b06b5418e718fafa404999f6f1266a8f11c7427d93b81a23a2a0b348595'
-            '7a6e39b716ebdc2df882b82301a8eb92f5b8ec625ad7a2ba3d4dae7a9f04f55b'
+            '63cdf4bba7eb618989bc872b2b8c4ed379abfb32698f98d73df7bc4cbf85866a'
             'b370a660e91eacd7fee44691ff8de4446f4c8f36634a2d96a2f982b5fea9a0a6'
             '2e5323c4dc10d815cf3ffcee0fb9fa33dba5c95b2c28055e4c5b4f551bdc5049')
 
@@ -55,13 +57,13 @@ build() {
 }
 
 package() {
+    mkdir -p "${pkgdir}/usr/share/${pkgname}/.nvm"
+    install -Dm755 "${pkgname}-launch.sh"   "${pkgdir}/usr/share/${pkgname}"
     install -Dm644 "${pkgname}.env"        "${pkgdir}/etc/default/${pkgname}"
     install -Dm644 "${pkgname}.service"    "${pkgdir}/usr/lib/systemd/system/${pkgname}.service"
     install -Dm644 "${pkgname}.sysusers"   "${pkgdir}/usr/lib/sysusers.d/${pkgname}.conf"
     install -Dm644 "${pkgname}.tmpfiles"   "${pkgdir}/usr/lib/tmpfiles.d/${pkgname}.conf"
 
-
-    mkdir -p "${pkgdir}/usr/share/${pkgname}/.nvm"
     cp -r --preserve=mode .nvm             "${pkgdir}/usr/share/${pkgname}/"
 
     cd "${pkgname}-${pkgver}"

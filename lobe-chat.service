@@ -8,9 +8,7 @@ User = lobe-chat
 Group = lobe-chat
 EnvironmentFile = /etc/default/lobe-chat
 WorkingDirectory = /usr/share/lobe-chat
-ExecStart = NVM_DIR="/usr/share/lobe-chat/.nvm" \
-                source /usr/share/nvm/init-nvm.sh && \
-                nvm use && node standalone/server.js
+ExecStart = /usr/share/lobe-chat-launch.sh
 
 [Install]
 WantedBy = multi-user.target
