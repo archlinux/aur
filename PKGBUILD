@@ -1,6 +1,6 @@
 pkgname=kdocker
 _pkgname=KDocker
-pkgver=6.1
+pkgver=6.2
 pkgrel=1
 pkgdesc="An application to help you dock any application into the system tray"
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ license=('GPL2')
 depends=('qt6-base')
 makedepends=('cmake' 'ninja' 'perl' 'pod2man' 'gcc')
 source=(https://github.com/user-none/KDocker/archive/${pkgver}.tar.gz)
-sha256sums=('0377cffb2071568c2980b70c798da3d5c2823a74acee9c526e69843a720e81a7')
+sha256sums=('575ca18ba7121fdfcb109e5b962e5ef3aaf8e85307edcaff3790a5e0c13d73da')
 
 build() {
     cd "$srcdir/$_pkgname-$pkgver"
