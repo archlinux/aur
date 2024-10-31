@@ -1,14 +1,14 @@
 # Maintainer: Peter Klotz <peter.klotz99@gmail.com>
 pkgname=uex
-pkgver=21.00.0.0
-pkgrel=2
+pkgver=23.0.0.21
+pkgrel=1
 pkgdesc="UltraEdit is a powerful text editor."
 arch=('x86_64')
 url="http://www.ultraedit.com/products/uex.html"
-license=('custom')
-depends=('desktop-file-utils' 'webkit2gtk' 'libjpeg' 'libjpeg6' 'libpng' 'libsm')
-source=(https://downloads.ultraedit.com/main/ue/linux/tar/uex_${pkgver}_amd64.tar.gz)
-sha256sums=('b88def7d1965cffa26531f895ee9940f89f5072901e7325555911df42f2498df')
+license=('LicenseRef-UltraEditCustomLicense')
+depends=('cairo' 'desktop-file-utils' 'fontconfig' 'gdk-pixbuf2' 'glib2' 'glibc' 'gcc-libs' 'gtk3' 'libjpeg' 'libjpeg6' 'libnghttp2' 'libpng' 'libsm' 'libtiff' 'libx11' 'pango' 'webkit2gtk-4.1' 'zstd')
+source=(https://downloads.ultraedit.com/main/ue/linux/ubuntu/24.04/uex_${pkgver}_amd64.tar.gz)
+sha256sums=('884509b01fee0df22f89709057dbb9ec94a35872af2655598ec44c6bff69310e')
 DLAGENTS=('https::/usr/bin/curl -fLC - --user-agent Lynx --retry 3 --retry-delay 3 -o %o %u')
 
 package() {
