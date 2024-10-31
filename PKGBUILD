@@ -12,7 +12,7 @@
 
 pkgname=fjordlauncherunlocked
 pkgver=9.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Prism Launcher fork with support for alternative auth servers"
 arch=('i686' 'x86_64' 'aarch64')
 url='https://github.com/hero-persson/FjordLauncherUnlocked'
@@ -33,6 +33,8 @@ depends=(
   tomlplusplus
   cmark
 )
+provides=('fjordlauncher')
+conflicts=('fjordlauncher')
 makedepends=(cmake extra-cmake-modules git jdk17-openjdk scdoc ghc-filesystem gamemode)
 optdepends=('glfw: to use system GLFW libraries'
             'openal: to use system OpenAL libraries'

@@ -1,7 +1,7 @@
 pkgbase = fjordlauncherunlocked
 	pkgdesc = Prism Launcher fork with support for alternative auth servers
 	pkgver = 9.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/hero-persson/FjordLauncherUnlocked
 	arch = i686
 	arch = x86_64
@@ -33,6 +33,8 @@ pkgbase = fjordlauncherunlocked
 	optdepends = visualvm: Profiling support
 	optdepends = xorg-xrandr: for older minecraft versions
 	optdepends = flite: minecraft voice narration
+	provides = fjordlauncher
+	conflicts = fjordlauncher
 	source = https://github.com/hero-persson/FjordLauncherUnlocked/releases/download/9.1.0/FjordLauncher-9.1.0.tar.gz
 	source = lionshead.license
 	source = batch.license
