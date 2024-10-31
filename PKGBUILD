@@ -3,7 +3,7 @@
 # Contributor: Nick B <Shirakawasuna at gmail _dot_com>
 
 _pkgname=annotate
-_pkgver=1.82.0
+_pkgver=1.84.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -42,8 +42,8 @@ optdepends=(
   r-tkwidgets
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('3360e99f514042ac90eae8ff68e77e47')
-b2sums=('34dfc32b111da2f801f2e1867d9c62488be3fa6da7e0c2e1a7df05e617b9f113ee333061f291cb601906e1a75b6d3b5a8cc947fc9d43d4423a751e813f38a1a7')
+md5sums=('b23b95c735b6e0dc9306a9a1b4a032f3')
+b2sums=('259de24b422990dd3d620ac8068273385ecfc51f39d3b12e3132c4adfc9aebfd21a9c9a6ddadb758bbad37c937d4c4b46f468e66b1f651491b7684d7a69bb4c4')
 
 build() {
   mkdir build
