@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=ccdata
-_pkgver=1.30.0
+_pkgver=1.31.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -13,8 +13,8 @@ depends=(
   r
 )
 source=("https://bioconductor.org/packages/release/data/experiment/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('77723d6588851996bcf44c010a61fb80')
-b2sums=('b8872973e9655e6e3ca61b7c57da370389f898efeeb312c65bb8e81de2e58d25a27970ae35f5889a46bedebdd310ebf6a5d965f538a539e28636cc5468ceba2e')
+md5sums=('5307a7ad3c259c74795d9e45cc006d16')
+b2sums=('b7f8f2c78c39b37d89a02ac3bf8f846ea214d1e9bb27db9f6899ca159bf30d3897e0f4132fee3a73bd6cb19cc404e1fe116685d9cec8cad8cf3b03cec021aff2')
 
 build() {
   mkdir build
