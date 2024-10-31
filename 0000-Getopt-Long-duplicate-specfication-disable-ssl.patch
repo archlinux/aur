@@ -1,7 +1,7 @@
 diff -pNaru5 a/smtp-cli b/smtp-cli
 --- a/smtp-cli	2019-10-16 03:38:09.000000000 -0400
-+++ b/smtp-cli	2024-10-31 14:50:41.834786513 -0400
-@@ -160,11 +160,15 @@ GetOptions (
++++ b/smtp-cli	2024-10-31 15:51:40.483700188 -0400
+@@ -160,14 +160,17 @@ GetOptions (
  	'auth-cram-md5' => \$use_cram_md5,
  	'disable-ehlo' => sub { $ehlo_ok = 0; },
  	'force-ehlo' => sub { $ehlo_ok = 2; },
@@ -10,11 +10,14 @@ diff -pNaru5 a/smtp-cli b/smtp-cli
 -	'disable-starttls|disable-tls|disable-ssl' =>
 +# New versions of GetOpt::Long do not allow multiple use of command line options
 +# Duplicate specification "disable-ssl" for option "disable-ssl"
-+# Besides, disabling SSL should not disable TLS which has separate options to disable
 +#	'disable-starttls|disable-tls|disable-ssl' =>
 +	'disable-starttls|disable-tls' =>
  		sub { $starttls_ok = 0; },
  	'ssl' => sub { $ssl = 1 },
- 	'disable-ssl' => sub { $ssl = 0 },
+-	'disable-ssl' => sub { $ssl = 0 },
++	'disable-ssl' => sub { $ssl = 0; $starttls_ok = 0 },
  	'mail-from=s' => \$mail_from,
  	'rcpt-to=s' => \@rcpt_to,
+ 	'from=s' => \$from,
+ 	'to=s' => \@to,
+ 	'cc=s' => \@cc,

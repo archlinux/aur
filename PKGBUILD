@@ -4,12 +4,22 @@
 set -u
 pkgname='smtp-cli'
 pkgver='3.10'
-pkgrel='2'
+pkgrel='3'
 pkgdesc='Perl based command line SMTP client'
 arch=('any')
 url='http://www.logix.cz/michal/devel/smtp-cli'
 license=('GPL')
-depends=('perl' 'perl-io-socket-ssl' 'perl-io-socket-inet6' 'perl-mime-lite' 'perl-file-type' 'perl-term-readkey' 'perl-digest-hmac' 'perl-email-date-format')
+depends=('perl' 'perl-io-socket-ssl' 'perl-net-ssleay' 'perl-io-socket-inet6' 'perl-mime-lite' 'perl-file-type' 'perl-term-readkey' 'perl-digest-hmac' 'perl-email-date-format')
+optdepends=(
+  #'perl-io-socket-ssl: SSL'
+  #'perl-net-ssleay: STARTTLS TLS'
+  #'perl-io-socket-inet6: ipv6'
+  #'perl-mime-lite: attachments'
+  #'perl-file-type: identify files, alternate to perl-file-libmagic'
+  #'perl-file-libmagic: identify files, alternate to perl-file-type'
+  #'perl-term-readkey: password from terminal'
+  'perl-net-dns: resolving recipient MX record'
+)
 #source=("http://www.logix.cz/michal/devel/smtp-cli/${pkgname}-${pkgver}")
 _giturl="https://github.com/mludvig/${pkgname}"
 _verwatch=("${_giturl}/releases.atom" '\s\+<title>v\([0-9\.]\+\)</title>.*' 'f')
@@ -20,9 +30,9 @@ options=('!strip')
 _srcdir="${pkgname}-${pkgver}"
 source=("${_srcdir}.tar.gz::https://github.com/mludvig/smtp-cli/archive/v${pkgver}.tar.gz" "${_patches[@]}")
 md5sums=('ab5c30778cc2a93f7faf549edc4fcaa3'
-         '9e359564e3eae449b823db576e094494')
+         'a41ab9223eda25fd5fce5d0949920ee5')
 sha256sums=('334c48a1c1c3b2a9418f98ce1ac15080cff50aab55618bbac95090e7f39ff71f'
-            '627a81e6782f905df84aaf5f8f708d03998a06a265655fa36e256cc168218e0d')
+            '73fd7db8ad085c0977df932043af04bb9b865fa23030d0b2b35a5e3701ee87ea')
 
 prepare() {
   set -u
