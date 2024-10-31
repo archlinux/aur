@@ -1,13 +1,14 @@
 # Maintainer: Zacharias Knudsen <z@chari.as>
 pkgname=puma-dev-git
-pkgver=v0.18.3.r0.gdb9ec15
-pkgrel=2
-pkgdesc="A tool to manage rack apps in development with puma "
+pkgver=0.18.3.r0.gdb9ec15
+pkgrel=1
+pkgdesc="A tool to manage rack apps in development with puma"
 arch=('x86_64')
 url="https://github.com/puma/puma-dev"
 license=('BSD-3-Clause')
 depends=('authbind')
-makedepends=('go')
+conflicts=('puma-dev')
+makedepends=('git' 'go')
 provides=('puma-dev')
 install=puma-dev-git.install
 source=("$pkgname::git+$url"
@@ -17,7 +18,7 @@ md5sums=('SKIP'
 
 pkgver() {
   cd "$pkgname"
-  git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare(){
