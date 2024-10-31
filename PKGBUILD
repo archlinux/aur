@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=biodbChebi
-_pkgver=1.10.0
+_pkgver=1.12.0
 pkgname=r-${_pkgname,,}
-pkgver=1.10.0
+pkgver=1.12.0
 pkgrel=1
 pkgdesc='biodbChebi, a library for connecting to the ChEBI Database'
 arch=('any')
@@ -24,7 +24,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('09047000c5864ff75021151a7b96c03cf33fb36e0e5f4b2932aaf4b07db675f0')
+sha256sums=('cf6a363e9572fe2abe0a5178dec34972bb21055d082cfb9009864d090cdd6183')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
