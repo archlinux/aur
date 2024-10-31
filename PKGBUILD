@@ -1,4 +1,4 @@
-# Maintainer : ybenel <ybenel@ybenel.cf>
+# Maintainer : ybenel <root@ybenel.xyz>
 # Contributor: xiliuya <xiliuya@163.com>
 # Contributor: Pedro A. López-Valencia <https://aur.archlinux.org/users/vorbote>
 
@@ -110,9 +110,9 @@ pkgname="emacs29-nox-native-comp-git"
 else
   pkgname="emacs29-lucid-native-comp-git"
 fi
-pkgver=29.0.91.165166
+pkgver=29.4.50.1675ca
 pkgrel=1
-pkgdesc="GNU Emacs. Development emacs29 release branch."
+pkgdesc="GNU Emacs (29) - Developement, Build Lucid Native Comp."
 arch=('x86_64')
 url="http://www.gnu.org/software/emacs/"
 license=('GPL3')
@@ -390,7 +390,7 @@ _conf+=('--program-transform-name=s/\([ec]tags\)/\1.emacs/')
 
 ################################################################################
 
-  ../configure "${_conf[@]}"
+  # ../configure "${_conf[@]}"
 
   # Using "make" instead of "make bootstrap" enables incremental
   # compiling. Less time recompiling. Yay! But you may
