@@ -1,0 +1,14 @@
+pkgbase = minilaunch-git
+	pkgdesc = A TUI game launcher.
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/JackTench/minilaunch
+	arch = x86_64
+	license = GPL3
+	makedepends = cargo
+	depends = rust
+	depends = cargo
+	source = minilaunch::git+https://github.com/JackTench/minilaunch.git
+	sha256sums = SKIP
+
+pkgname = minilaunch-git
