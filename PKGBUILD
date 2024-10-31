@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=rqubic
-_pkgver=1.50.0
+_pkgver=1.52.0
 pkgname=r-${_pkgname,,}
-pkgver=1.50.0
+pkgver=1.52.0
 pkgrel=1
 pkgdesc='Qualitative biclustering algorithm for expression data analysis in R'
 arch=('x86_64')
@@ -19,7 +19,7 @@ optdepends=(
   r-rcolorbrewer
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('e22acae4442d21919be1d5cd3c808cf4b4f95731cf9391633afda084dc8920c3')
+sha256sums=('0f5680eaa2331ab7f00b1be4c5b6d24b612b77ff450a90c3db1799a1b60ddda3')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
