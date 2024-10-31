@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=SPEM
-_pkgver=1.44.0
+_pkgver=1.46.0
 pkgname=r-${_pkgname,,}
-pkgver=1.44.0
+pkgver=1.46.0
 pkgrel=1
 pkgdesc='S-system parameter estimation method'
 arch=('any')
@@ -15,7 +15,7 @@ depends=(
   r-rsolnp
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('e7410f8abcc89b0db5792865e2a05a356ffa7ad7b415ee715803538efae64f7b')
+sha256sums=('2a26f8bb0e69d1f07b0a66d27e53e82b1860565435c72d8dd6bff0e8b4705278')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
