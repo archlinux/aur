@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=swfdr
-_pkgver=1.30.0
+_pkgver=1.32.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -23,8 +23,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('29d7cd565b5a558e9a6af0da0fa84e18')
-b2sums=('5afa9b7eda0c02dbc5bb20f6b2d69682b770e72fbe767a8c21eb29bdf9f0872e6ef174c929d3f866fe8f7fd3daf673bdc33d45f1fe0c67ec3e068a4972be850d')
+md5sums=('df5515b6f5248314e0bf2b3d9796a675')
+b2sums=('ee48d0951279f735082b1dcef84180ba9edc504fd9cec768b480e26a062efcec49f03991119f94b4f440a00f40a45cb735122259ba66ea5ffbf1f2468d66affb')
 
 build() {
   mkdir build
