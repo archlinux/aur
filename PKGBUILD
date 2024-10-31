@@ -1,7 +1,7 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
 pkgname="crc"
-pkgver=2.42.0
+pkgver=2.43.0
 pkgrel=1
 pkgdesc="Manage local OpenShift 4.x cluster, optimized for testing and development purposes"
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('glibc' 'gpgme' 'firewalld' 'libvirt' 'networkmanager' 'qemu-base')
 makedepends=('git' 'go')
 _pkgsrc="${pkgname}-${pkgver}"
 source=("${_pkgsrc}::git+${url}#tag=v${pkgver}")
-sha256sums=('d4b76c09a5daf6e462c474aae69f0e5945941760a2c695ef841a9b6fb58ab847')
+sha256sums=('dfa09c423f994eebe0876157a24490f8a88fe9f5ab3e88e11d8e69e13ad11ae2')
 
 prepare() {
   cd "${srcdir}/${_pkgsrc}"
