@@ -1,8 +1,8 @@
-# Contributor: Anonymous
+# Contributor: CpanBot <cpanbot at sch bme hu>
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-dist-zilla-plugin-test-perl-critic'
-pkgver='3.001'
+pkgver='3.004'
 pkgrel='1'
 pkgdesc="Tests to check your code against best practices"
 arch=('any')
@@ -10,12 +10,11 @@ license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
 depends=('perl-data-section>=0.004' 'perl-dist-zilla>=0' 'perl-moose>=0' 'perl-sub-exporter-formethods>=0' 'perl-namespace-autoclean>=0' 'perl>=5.008')
 makedepends=()
-checkdepends=('perl-test-perl-critic>=0')
 url='https://metacpan.org/release/Dist-Zilla-Plugin-Test-Perl-Critic'
-source=('http://search.cpan.org/CPAN/authors/id/E/ET/ETHER/Dist-Zilla-Plugin-Test-Perl-Critic-3.001.tar.gz')
-md5sums=('a47ab06215e27a49db553fe885594c77')
-sha512sums=('848c00dfabea61984c056fd16fff29a3b53aef3b46f2533ab5b6dcd0c8e0fb38984f307523e1d735825c4289cd58312c36ca5455d4a18848f278c2933ad7ce84')
-_distdir="Dist-Zilla-Plugin-Test-Perl-Critic-3.001"
+source=('http://search.cpan.org/CPAN/authors/id/E/ET/ETHER/Dist-Zilla-Plugin-Test-Perl-Critic-3.004.tar.gz')
+md5sums=('840e4c90ef2039b7a804191612222524')
+sha512sums=('c71e8cd7dc552a3b5564657319d3b5e4bee2f53238d7ef8ab06b495b65f82ba120042061681386c46dbb373f0106e5aa578afa0fdf0bf9245b9da3ca75f7dd57')
+_distdir="Dist-Zilla-Plugin-Test-Perl-Critic-3.004"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
