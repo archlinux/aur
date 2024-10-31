@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=gpls
-_pkgver=1.76.0
+_pkgver=1.78.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -13,8 +13,8 @@ depends=(
   r
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('f96edbb21515f81e81359eb7107e6b0d')
-b2sums=('efb8ac48b221b4e2feb2f32cf5028b60ad18c7f259ce3158b611527c647c2d6a977123cedd6f95f781f4f0b3bf3519cf9a2591abe8db8f92f3a9a92f7e16b120')
+md5sums=('00ede3e4a045b572128e573d7fbbf945')
+b2sums=('57d943d7171b4054cb0ae02d3fd36c5f3bab8e9511e686ab00b6615833601582a89d1db5af2fe4cc0afa50e75c15186a7d21fee304c1dc3284b5f867e999b8ee')
 
 build() {
   mkdir build
