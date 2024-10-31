@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=scanMiR
-_pkgver=1.10.0
+_pkgver=1.12.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -30,8 +30,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('1539e336dcb43018479f7661a71ee7fc')
-b2sums=('7abcdb6ade1aa89edb49464500d408282ce57558e1c0c54eaf9f1b77e27078ba4044dbdae28dffda0c5513bdc4bed0ab290ab07bc7d58972afe5db76e93546fc')
+md5sums=('0462c08dd1520af82e09351a0605a521')
+b2sums=('cc3a623744d26337a2a81acbc9b3f395ed1d8b3008e6c18debfa004a644583ce6f05bd2880af536b6fb368723ccc87357d974ec003e2afb6d6ede551a52f477a')
 
 build() {
   mkdir build
