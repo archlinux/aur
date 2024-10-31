@@ -1,6 +1,6 @@
 pkgbase = r-rebook
 	pkgdesc = Re-using Content in Bioconductor Books
-	pkgver = 1.14.0
+	pkgver = 1.16.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/rebook
 	arch = any
@@ -23,7 +23,7 @@ pkgbase = r-rebook
 	optdepends = r-testthat
 	optdepends = r-xml
 	optdepends = r-yaml
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/rebook_1.14.0.tar.gz
-	sha256sums = d35a38f8ef914fca9f731d05f13728e4d4ab011d7278bfc8a6f00a8350e6a96c
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/rebook_1.16.0.tar.gz
+	sha256sums = 5297c35fa4826e3307d41f9b8bae87637ce4797f3a150b96541f33961bbf87de
 
 pkgname = r-rebook
