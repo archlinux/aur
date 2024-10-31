@@ -1,6 +1,6 @@
 pkgbase = r-ccplotr
 	pkgdesc = Plots For Visualising Cell-Cell Interactions
-	pkgver = 1.2.0
+	pkgver = 1.4.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/CCPlotR
 	arch = any
@@ -29,8 +29,8 @@ pkgbase = r-ccplotr
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/CCPlotR_1.2.0.tar.gz
-	md5sums = 6b5d02b8f9e4e121e4ce989c420fb3fd
-	b2sums = f3fae039e9a2f9c9b6f53a443ee1134be62738bd9772cfcd1218f18ad2b4b9ee0c0ebdf96dc60935219d22d91b2caa21b414da275473af39617e41b93aedc417
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/CCPlotR_1.4.0.tar.gz
+	md5sums = 568a1409688bbdcbd8041e911f45147e
+	b2sums = 7f924a651dd5d866cae8afb5ab136b5829cd48f70eaa7aae5b0759975d998cb2c401ed005a3aa43a3f320cc04b858e466efe264764a12687f6816ee738853494
 
 pkgname = r-ccplotr
