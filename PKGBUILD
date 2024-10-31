@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=bioDist
-_pkgver=1.76.0
+_pkgver=1.78.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -16,8 +16,8 @@ optdepends=(
   r-locfit
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('eeb9dd18ea8a222dddbfe9a95721ecd7')
-b2sums=('51f9c302d13ff8d70e21ed427c18b3392df781161aff123b9b9dd0c20127c530da98a1779e72d8043b27e3508b2c6db314185e7e1df593f8be6aa32bbef4dc03')
+md5sums=('85ab92d68c01525dc662ffc42dc68aed')
+b2sums=('d9e3de35f5c0ae30e5149b8a555ab985b8038f6ea8de98df1637ccfd583a0f83418fafd14f8660c3881618c2ae9f9ac6c2fe6d156e23b619d9f79c1de659e9ee')
 
 build() {
   mkdir build
