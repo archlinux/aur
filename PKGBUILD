@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=RCASPAR
-_pkgver=1.50.0
+_pkgver=1.52.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -13,8 +13,8 @@ depends=(
   r
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('6b2c3541ba369b2f778123fe94d42843')
-b2sums=('b4c12551cfd4c16534f447a71957437fdf1adb70c6d8fa7e9786b5272ee1df390d7d402d1a73cc4703e288bfa90bf1d9c29e35e9490806fbef980bebbb20b3be')
+md5sums=('d6b29f80f202d281b777aea72b3e55b5')
+b2sums=('59c0cdacf1159275b184f5f943bd63798242a64bdc4e913a00c2661a3664950cf1f3df199f34c068110e32e32e7539c10620d4e053aecbe620c18a0e9e8588ce')
 
 build() {
   mkdir build
