@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=biodbNcbi
-_pkgver=1.8.0
+_pkgver=1.10.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -29,8 +29,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('83f5f6c17da2dd16afca62673ad19868')
-b2sums=('b738f0ea3d3b03d415bc8fe7fa2493f68793bd11f35946ab20185d4e0181a1d75c31f0827465f1d8c791b1eecca3d5f622b844d10cc7a4d3de8a28b045f3c69d')
+md5sums=('c17c1f48c74070ec3e73b877f580c4c9')
+b2sums=('4716425dd8575686ee1f8c4205c7d931de31d6d47301731a9e99f3b1d232d0b38f49c2cfdd40c0b30783993bae5a9b9422f9a93a0ac07297e6fbf3b313d0b4dc')
 
 build() {
   mkdir build
