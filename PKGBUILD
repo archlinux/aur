@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=bcSeq
-_pkgver=1.26.0
+_pkgver=1.28.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -17,8 +17,8 @@ optdepends=(
   r-knitr
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('13a48c59465b31ccad0386d0d0c8e131')
-b2sums=('60c93a6886a8648744e75d5c8d03b973d545122cdded6f56533e93be3512083204c36ff2d28b4ff9f268d9a38785f4f9bde23b5f6884151c4a351504cd94ca4a')
+md5sums=('8628fcba235199af4969c5fa6912e8db')
+b2sums=('d82e32aed8e831fcd441f6969c41fa643c53077f99da496688ab7330eb18413977fb4f97e50bce542a09308598f9702e5c314f594dcd95d73495d0e7bce6d43f')
 
 build() {
   mkdir build
