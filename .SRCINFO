@@ -1,6 +1,6 @@
 pkgbase = r-confess
 	pkgdesc = Cell OrderiNg by FluorEScence Signal
-	pkgver = 1.32.0
+	pkgver = 1.34.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/CONFESS
 	arch = any
@@ -34,7 +34,7 @@ pkgbase = r-confess
 	optdepends = r-confessdata
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/CONFESS_1.32.0.tar.gz
-	sha256sums = b4a5e9994fa4b310b59c510af1a8ee6f0e5dc1c8a7965e08230f154dcdb7a792
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/CONFESS_1.34.0.tar.gz
+	sha256sums = 11595c90356204a6556b4906eec07ef5496b399d6e56662806a40abca603a941
 
 pkgname = r-confess
