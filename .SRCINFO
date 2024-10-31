@@ -1,6 +1,6 @@
 pkgbase = r-msbackendmsp
 	pkgdesc = Mass Spectrometry Data Backend for NIST msp Files
-	pkgver = 1.8.0
+	pkgver = 1.10.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/MsBackendMsp
 	arch = any
@@ -17,8 +17,8 @@ pkgbase = r-msbackendmsp
 	optdepends = r-rmarkdown
 	optdepends = r-roxygen2
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/MsBackendMsp_1.8.0.tar.gz
-	md5sums = 0c1449c171d9dbb52f4a1f3815716b86
-	b2sums = 0c395932dfbccac200fbb1a2e54bac293de9513a052e19b4bb11a5bc0d770030f0146c1787729b76517a991274ecab4c9236b36a8be1cda73a878fbf85b60230
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/MsBackendMsp_1.10.0.tar.gz
+	md5sums = cd1d33e6c98c6cc2900a0e3dbf857275
+	b2sums = c6a70bcd2d3dbb0b3fd7d082450f4492587d9814558b5f0fee27bed05f46ea28136bc235448b690b11dde858fce8610249ebd7b60098b236c92a6bdf63fb0246
 
 pkgname = r-msbackendmsp
