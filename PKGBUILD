@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=sangerseqR
-_pkgver=1.40.0
+_pkgver=1.42.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -22,8 +22,8 @@ optdepends=(
   r-runit
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('4b6cafc5a64664ca11dbfe993135d09f')
-b2sums=('637da8c7726e88eeaf72b305e98e6a6cec142f0b17d10e28d08883a1ddffca040e784e2e64642944f1cfa42ba59f7b65814c63bf553a75297048bd36a28ad7b5')
+md5sums=('f23125bae93ccaf24462cf34eb3aa323')
+b2sums=('5a13d18cc7c31b75fe221c2ed86eabcda68b06a7542ad1920f6b5872e087627f0af07902db0af0006fdcb28718cd4241ca640344b5d35d7dc354ecd7a30beaf3')
 
 build() {
   mkdir build
