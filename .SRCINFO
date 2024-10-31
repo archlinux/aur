@@ -1,6 +1,6 @@
 pkgbase = r-cfdnakit
 	pkgdesc = Fragmen-length analysis package from high-throughput sequencing of cell-free DNA (cfDNA)
-	pkgver = 1.2.0
+	pkgver = 1.4.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/cfdnakit
 	arch = any
@@ -21,8 +21,8 @@ pkgbase = r-cfdnakit
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-roxygen2
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/cfdnakit_1.2.0.tar.gz
-	md5sums = b84860776e53665c77040c606cdb5db7
-	b2sums = 9ad50008c2f884c6470929d6c3bc6fa5b9a38f6fd21290de533836b1e2c4e1bdb8d500df00f4249213d9fe135e4e93ab9073c14c500e5b2a907c38c7c42eeefd
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/cfdnakit_1.4.0.tar.gz
+	md5sums = 5c2b321346a514f4aa3043afc450fd63
+	b2sums = 396553337a234d5ce04765e3632f7d9b81723bf3543ba80fc81111c527574ed343eca233be6dfbfe9ec8588acd30a705fedec47304f5a1fccf8fc1bfc69ec4ec
 
 pkgname = r-cfdnakit
