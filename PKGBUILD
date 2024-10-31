@@ -5,8 +5,8 @@
 # Maintainer: Lee Chong Yew ramchyld -at- gmail -dot- com
 
 pkgname=topal
-pkgver=82
-pkgrel=2
+pkgver=84
+pkgrel=1
 pkgdesc="Topal is a glue program that links GnuPG and Alpine"
 arch=("i686" "x86_64")
 url="https://zircon.org.uk/topal/"

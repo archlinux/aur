@@ -2,8 +2,8 @@
 # Wed Jan  4 10:48:04 UTC 2017
 pkgbase = topal
 	pkgdesc = Topal is a glue program that links GnuPG and Alpine
-	pkgver = 82
-	pkgrel = 2
+	pkgver = 84
+	pkgrel = 1
 	url=https://zircon.org.uk/topal/
 	install = topal.install
 	arch = i686
