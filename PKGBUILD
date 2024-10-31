@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=CFAssay
-_pkgver=1.38.0
+_pkgver=1.40.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -13,8 +13,8 @@ depends=(
   r
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('3ac657b11869bc24931964ca248360be')
-b2sums=('288ccd12f97e2eacd6897c4545fd62f69edc796ca31517c6a69546f166ec2c83e883a0211e4e19277fa7714dbaa20d1c8a5d1a9efb4bd59ac05031be3f622f82')
+md5sums=('c001af8be528138722ca47779f942cab')
+b2sums=('f1cde51c6af73e2326594ce7054c3b399fce97da7938de6bbb4697e560cf3e330cb1b078ee7fac5626409ef34c1e83aa91fcf997e3592456fd4cb865c1172f68')
 
 build() {
   mkdir build
