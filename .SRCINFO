@@ -1,6 +1,6 @@
 pkgbase = r-cordon
 	pkgdesc = Codon Usage Analysis and Prediction of Gene Expressivity
-	pkgver = 1.22.0
+	pkgver = 1.24.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/coRdon
 	arch = any
@@ -17,7 +17,7 @@ pkgbase = r-cordon
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/coRdon_1.22.0.tar.gz
-	sha256sums = 86cf0b5e8489e12fd4e2c4cabbf5ac5ac206d4f819656febd007b1bda3eb577f
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/coRdon_1.24.0.tar.gz
+	sha256sums = a893b9d689b5c0c2c6c5c5de1d5435158cf97d1ca83d01add17aa55542cef712
 
 pkgname = r-cordon
