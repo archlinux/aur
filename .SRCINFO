@@ -1,16 +1,17 @@
 pkgbase = deepl-electron
 	pkgdesc = Electron wrapper for DeepL Translator
-	pkgver = 1.0.0
-	pkgrel = 2
-	url = https://github.com/litongjava/electron-deepl-translator
+	pkgver = 1.5.0
+	pkgrel = 1
+	url = https://github.com/kumakichi/Deepl-linux-electron
 	arch = any
 	license = MIT
 	depends = npm
-	source = https://github.com/litongjava/electron-deepl-translator/archive/refs/tags/v1.0.0.tar.gz
+	depends = yarn
+	source = https://github.com/kumakichi/Deepl-linux-electron/archive/refs/tags/v1.5.0.tar.gz
 	source = deepl-electron.desktop
 	source = deepl-electron.svg
-	sha512sums = 2ef435ee5093ab575a90888192927fe8b7fdac7d01501a585c5e6a68bed31310aee1e9c5fda16e2e0f907ed0afa4d095428189be318a88f066e84182486c4df4
-	sha512sums = e2ede41e9d5f80a179324c0285bcde5555adce61daf16bdd800132664a5591a7de1d6b522aa315aac3c2ab26e254b09f100a2e281bba4f8d9b3c67833465d27f
+	sha512sums = 0507b017a3618b444e42b6988c9d8d803008e80ca5fcdfbee8b92b468b1d0f702172718c6208771abc44141296054a5967c5fcff9f5bd37311ff5c5f6917231d
+	sha512sums = 6314ef96cd0f9ea4e472605de64886e680eeed325bbf76634268062342275848d37d4e0882b26ab2ecccb23ec5bcff3a97bcc46494bbd783bea5885d088b6960
 	sha512sums = 216020d3f7325e717113ac85729cbbf99286c26124b2f7e422271867870a96eeb35548b91a1aee89cd8ff1102c526fe8fb1842ef408b18801673d17d418b8595
 
 pkgname = deepl-electron
