@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=geneRecommender
-_pkgver=1.76.0
+_pkgver=1.78.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -13,8 +13,8 @@ depends=(
   r-biobase
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('fb32cf0e702e117ab4bb122b8fdc60f8')
-b2sums=('618da31529b1b0a7fd6c73824c9a7a109200da13cc51d994bec7d3dd89e62c20984f97b1e29f4f5ab9cabcb1d6838df7b8465eb967c11cd84af37aca05fa011c')
+md5sums=('8e6c386e1aaa70a6b04cda30cc0cbf92')
+b2sums=('be5bbee94d38e5eca74780f24472d0aeb48d8166d1bbc482defdaa73533bc7caf96c8ed234ad4afd69f79b4cd3a5e21753696fd31d246792c9b0898c95bd5721')
 
 build() {
   mkdir build
