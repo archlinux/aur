@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=miRcomp
-_pkgver=1.34.0
+_pkgver=1.36.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -22,8 +22,8 @@ optdepends=(
   r-shiny
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('b78817cc16a243c02adbe66bae6e61f1')
-b2sums=('f17693eac5e6e4042bb250f96992e94b12b1828649de1c0ec3074ff2ef79354188607b5d152a50a9b65ec808035ae6b5092a7c9a752283fede2fe3c6bdfb202c')
+md5sums=('f2dc7026533a1b60c30f91180486bdf4')
+b2sums=('3192c73731adb972eaf997a4effe3a123d3e7c2b25360ed152fdea6ad7764e804b1d2f7911c7389f5afa99cab06597898c7a8c1e66317a3cb7cfb33cadd91b89')
 
 build() {
   mkdir build
