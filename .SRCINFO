@@ -1,6 +1,6 @@
 pkgbase = r-birewire
 	pkgdesc = High-performing routines for the randomization of a bipartite graph (or a binary event matrix), undirected and directed signed graph preserving degree distribution (or marginal totals)
-	pkgver = 3.36.0
+	pkgver = 3.38.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/BiRewire
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = r-birewire
 	depends = r-slam
 	optdepends = r-biocgenerics
 	optdepends = r-runit
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/BiRewire_3.36.0.tar.gz
-	sha256sums = a7c6c58df2d44d99419fdaf8a3c05958224997e2cf92ea954032c5630d9e70d0
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/BiRewire_3.38.0.tar.gz
+	sha256sums = e841cae9a4c1f9ba1ca9fa89f4fd686a256e3866e03d9c9750ed42aa44db0314
 
 pkgname = r-birewire
