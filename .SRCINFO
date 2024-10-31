@@ -1,6 +1,6 @@
 pkgbase = tableplus-bin
 	pkgdesc = Modern, native, and friendly GUI tool for relational databases (Alpha)
-	pkgver = 0.1.256
+	pkgver = 0.1.258
 	pkgrel = 1
 	url = https://tableplus.com/
 	arch = x86_64
@@ -14,9 +14,9 @@ pkgbase = tableplus-bin
 	source = tableplus.desktop
 	sha256sums = 76f924b1ebad5309ccf0dd7f3fe3d1b57ff3088b208a603900b0e240fdb5debb
 	sha256sums = 83620b08e325418947f0007ecca7b981a988bfdac3f466db165f9262d1c0e5f4
-	source_x86_64 = tableplus_0.1.256_1_amd64.deb::https://deb.tableplus.com/debian/22/pool/main/t/tableplus/tableplus_0.1.256_amd64.deb
-	sha256sums_x86_64 = 8e0fa415a86b9f11d61959743b19564f7c920b90eb3696c0072a7482780cfa90
-	source_aarch64 = tableplus_0.1.256_1_arm64.deb::https://deb.tableplus.com/debian/22-arm/pool/main/t/tableplus/tableplus_0.1.256_arm64.deb
-	sha256sums_aarch64 = 1aa6c741e791ea9efdd995fa594f37bfb98a0eeb8bfdf66a3a5847757ccf1455
+	source_x86_64 = tableplus_0.1.258_1_amd64.deb::https://deb.tableplus.com/debian/22/pool/main/t/tableplus/tableplus_0.1.258_amd64.deb
+	sha256sums_x86_64 = 2ea32f7dc78ab68db29fa1c0419b6819a2301c632e5ec1c7b8832a0bb7982deb
+	source_aarch64 = tableplus_0.1.258_1_arm64.deb::https://deb.tableplus.com/debian/22-arm/pool/main/t/tableplus/tableplus_0.1.258_arm64.deb
+	sha256sums_aarch64 = 797e899f2d40bf0a1dffa29a870573fe7509fc97a8d7bd42710a135150ffcf37
 
 pkgname = tableplus-bin
