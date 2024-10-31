@@ -1,0 +1,35 @@
+pkgbase = curl-impersonate-lexiforest-bin
+	pkgdesc = Special build of curl that can impersonate browsers (lexiforest's fork)
+	pkgver = 0.8.0
+	pkgrel = 1
+	url = https://github.com/lexiforest/curl-impersonate
+	arch = x86_64
+	arch = i686
+	arch = aarch64
+	arch = armv7h
+	license = MIT
+	depends = ca-certificates
+	depends = zstd
+	depends = nss
+	source_x86_64 = curl-impersonate_x86_64.tar.gz::https://github.com/lexiforest/curl-impersonate/releases/download/v0.8.0/curl-impersonate-v0.8.0.x86_64-linux-gnu.tar.gz
+	source_x86_64 = libcurl-impersonate_x86_64.tar.gz::https://github.com/lexiforest/curl-impersonate/releases/download/v0.8.0/libcurl-impersonate-v0.8.0.x86_64-linux-gnu.tar.gz
+	sha256sums_x86_64 = 0344b24d4dc078ecd98659621ce0bf2b89184f444e1962b85a7a58d3c7bb3cdc
+	sha256sums_x86_64 = 9df90fd15bb49a1a374eeb56d07018dd89e3d45958efb7166dc8564654cd282d
+	source_i686 = curl-impersonate_i686.tar.gz::https://github.com/lexiforest/curl-impersonate/releases/download/v0.8.0/curl-impersonate-v0.8.0.i386-linux-gnu.tar.gz
+	source_i686 = libcurl-impersonate_i686.tar.gz::https://github.com/lexiforest/curl-impersonate/releases/download/v0.8.0/libcurl-impersonate-v0.8.0.i386-linux-gnu.tar.gz
+	sha256sums_i686 = 36517c47ce0b8b6c95e1313be10199e40720560a89e897db1376c103db90402b
+	sha256sums_i686 = 0caf1a14c456bf85c2409e52933473a46d8b2508dc26f6ebb0337abd14d6b506
+	source_aarch64 = curl-impersonate_aarch64.tar.gz::https://github.com/lexiforest/curl-impersonate/releases/download/v0.8.0/curl-impersonate-v0.8.0.aarch64-linux-gnu.tar.gz
+	source_aarch64 = libcurl-impersonate_aarch64.tar.gz::https://github.com/lexiforest/curl-impersonate/releases/download/v0.8.0/libcurl-impersonate-v0.8.0.aarch64-linux-gnu.tar.gz
+	sha256sums_aarch64 = 78757d5607b741b5fa850e411e6b990825420272266d388e15ccb0e067bc2ba9
+	sha256sums_aarch64 = d1930207c6f0bdce79963b8dfdfd87189aad2294e200f17d8335a5fc2dbe9ca3
+	source_armv7h = curl-impersonate_armv7h.tar.gz::https://github.com/lexiforest/curl-impersonate/releases/download/v0.8.0/curl-impersonate-v0.8.0.arm-linux-gnueabihf.tar.gz
+	source_armv7h = libcurl-impersonate_armv7h.tar.gz::https://github.com/lexiforest/curl-impersonate/releases/download/v0.8.0/libcurl-impersonate-v0.8.0.arm-linux-gnueabihf.tar.gz
+	sha256sums_armv7h = 7e5d01e277d52a6c064603bbf7a1e45b64267ab9a1bc7ad308c7064552e951e5
+	sha256sums_armv7h = ff53d1f5693978dec3a0a863413819cdb99eaf8a67a8df55f3ca05702c6656f1
+
+pkgname = curl-impersonate-lexiforest-bin
+	provides = curl-impersonate-chrome
+
+pkgname = libcurl-impersonate-lexiforest-bin
+	provides = libcurl-impersonate-chrome
