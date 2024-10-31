@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=IsoCorrectoRGUI
-_pkgver=1.21.0
+_pkgver=1.22.0
 pkgname=r-${_pkgname,,}
-pkgver=1.21.0
+pkgver=1.22.0
 pkgrel=1
 pkgdesc='Graphical User Interface for IsoCorrectoR'
 arch=('any')
@@ -22,7 +22,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('9d150c6b036321966bb8de7918483f75a9d49e746e5e84b60ecc80b8cc3f7ac8')
+sha256sums=('4336739f5f988d6b0ccce6726789fc8e88366364efe3830de3f7a67c756019ab')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
