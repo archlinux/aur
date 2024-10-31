@@ -1,6 +1,6 @@
 pkgbase = r-hierinf
 	pkgdesc = Hierarchical Inference
-	pkgver = 1.22.0
+	pkgver = 1.24.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/hierinf
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = r-hierinf
 	optdepends = r-knitr
 	optdepends = r-mass
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/hierinf_1.22.0.tar.gz
-	sha256sums = 9c54f7f04e2c0d9249eeb0678345dc80a6873530976dcb5db7e90b5f268fb7f4
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/hierinf_1.24.0.tar.gz
+	sha256sums = 7f1b99f1bc73f68a58acdbb86d05deea18156aaf762306696b0f4f92ec8077b8
 
 pkgname = r-hierinf
