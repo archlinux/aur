@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=globalSeq
-_pkgver=1.32.0
+_pkgver=1.34.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -19,8 +19,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('e224351b3766635f16cb83113ee142e1')
-b2sums=('f0981ae91f61b421e227d4177082621ef91817c4ded06e12ae782c865d73538671999f2419fa2442f6bfa8c6d6ce4b5ebbd6eee5a4d85b250f7975b7fda963e4')
+md5sums=('65ec70596f293b700433848c14244e81')
+b2sums=('3121a9a13c693f29f919fa998a4921d7de64651c2c521e37b1e1af38029f6d8606a2a0930628fdbe1f3130cfb6c0749fc030503be3153987611f87409c8bd9c6')
 
 build() {
   mkdir build
