@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=redisinsight-git
 _pkgname="Redis Insight"
-pkgver=2.58.0.r61.ged28a1d
+pkgver=2.60.0.r1.gc045afa
 _electronversion=31
 _nodeversion=20
 pkgrel=1
@@ -26,7 +26,6 @@ makedepends=(
     'nvm'
     'gendesk'
     'gcc'
-    'cmake'
     'curl'
 )
 source=(
@@ -46,18 +45,18 @@ _ensure_local_nvm() {
     nvm use "${_nodeversion}"
 }
 build() {
+    _ensure_local_nvm
     gendesk -q -f -n --pkgname="${pkgname%-git}" --pkgdesc="${pkgdesc}" --categories="Development" --name="${_pkgname}" --exec="${pkgname%-git} --no-sandbox %U"
     cd "${srcdir}/${pkgname//-/.}"
-    _ensure_local_nvm
+    electronDist="/usr/lib/electron${_electronversion}"
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
     HOME="${srcdir}/.electron-gyp"
     mkdir -p "${srcdir}/.electron-gyp"
     if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
-        {        
+        {
             echo -e '\n'
             echo 'registry "https://registry.npmmirror.com"'
-            echo 'disturl "https://registry.npmmirror.com/-/binary/node/"'
             echo 'electron_mirror "https://registry.npmmirror.com/-/binary/electron/"'
             echo 'electron_builder_binaries_mirror "https://registry.npmmirror.com/-/binary/electron-builder-binaries/"'
             echo "cacheFolder "${srcdir}"/.yarn/cache"
@@ -69,14 +68,11 @@ build() {
             echo 'fetchRetries 3'
             echo 'fetchRetryTimeout 10000'
         } >> .yarnrc
-        echo "${pkgname%-git}" "${pkgname%-git}/"{api,ui} | xargs -n 1 cp .yarnrc
+        echo "${pkgname%-git}/"{./,api,ui} tests/e2 | xargs -n 1 cp .yarnrc
         find ./ -type f -name "yarn.lock" -exec sed -i "s/registry.yarnpkg.com/registry.npmmirror.com/g" {} +
     fi
-    find "${pkgname%-git}" -type f -exec sed -i "s/process.resourcesPath/\'\/usr\/lib\/${pkgname%-git}\'/g" {} +
-    sed -e "
-        s/electron-builder build -p never/electron-builder build -l dir/g
-        s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g
-    " -i package.json
+    #find "${pkgname%-git}" -type f -exec sed -i "s/process.resourcesPath/\'\/usr\/lib\/${pkgname%-git}\'/g" {} +
+    sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" -i package.json
     yarn cache clean
     NODE_ENV=development    yarn --cwd "${pkgname%-git}" add -D "redisinsight-plugin-sdk" "react-json-tree" "@antv/x6" "@antv/x6-react-shape" "plotly.js-dist-min" "@antv/hierarchy"
     NODE_ENV=development    yarn install --cache-folder "${srcdir}/.yarn_cache"
@@ -85,7 +81,9 @@ build() {
     NODE_ENV=production     yarn run build:ui
     NODE_ENV=production     yarn run build:statics
     NODE_ENV=production     yarn run build:api
-    NODE_ENV=production     yarn run package:prod
+    NODE_ENV=production     yarn ts-node ./scripts/prebuild.js dist
+    NODE_ENV=production     yarn run build:prod
+    NODE_ENV=production     yarn electron-builder --linux dir -c.electronDist="${electronDist}"
 }
 package() {
     install -Dm755 -d "${pkgdir}/usr/"{bin,lib/"${pkgname%-git}"}
