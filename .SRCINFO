@@ -1,0 +1,10 @@
+pkgbase = gopass-symlinks
+	pkgdesc = Runs gopass if pass is called
+	pkgver = 0
+	pkgrel = 1
+	arch = any
+	depends = gopass
+	provides = pass
+	conflicts = pass
+
+pkgname = gopass-symlinks
