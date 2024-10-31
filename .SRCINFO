@@ -1,0 +1,18 @@
+pkgbase = python-evalidate
+	pkgdesc = Safe and fast evaluation of untrusted user-supplied python expressions
+	pkgver = 2.0.2
+	pkgrel = 1
+	url = https://github.com/yaroslaff/evalidate
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	source = git+https://github.com/yaroslaff/evalidate#tag=v2.0.2
+	sha256sums = d5837fed00018e7cae14b1266f21751cd8f74c9f4bb37d4581e1ceeb54d6f318
+
+pkgname = python-evalidate

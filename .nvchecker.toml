@@ -1,0 +1,5 @@
+[python-evalidate]
+source = "git"
+git = "https://github.com/yaroslaff/evalidate"
+use_max_tag = true
+prefix = "v"
