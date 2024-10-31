@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=RBGL
-_pkgver=1.80.0
+_pkgver=1.82.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -24,8 +24,8 @@ optdepends=(
   r-xml
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('4435d73b22433772930414d001b733da')
-b2sums=('b99272866517ed028b28797a897d53b7d68dba00a62c61d88aab565c88af74b368556240c68114a9319b64fed19e7dd0f6fd1a1d6d4766b16565b303155ce5db')
+md5sums=('3c15ded2511af5c004e3e541d1a243f8')
+b2sums=('d0450f19e0a30b2a08c177cce9a13bb500b264f43218855941a48cc26a67a8d67be5dcefa2e857cf391a68772242bd3e4886696e9cf9baf5ed62fbd86061628e')
 
 build() {
   mkdir build
