@@ -1,6 +1,6 @@
 pkgbase = r-sseq
 	pkgdesc = Shrinkage estimation of dispersion in Negative Binomial models for RNA-seq experiments with small sample size
-	pkgver = 1.42.0
+	pkgver = 1.44.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/sSeq
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = r-sseq
 	depends = r
 	depends = r-catools
 	depends = r-rcolorbrewer
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/sSeq_1.42.0.tar.gz
-	sha256sums = 5109f51ff42a2cea20913fa1529b30d539d1f1af68319d875bbc3d8d49f99223
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/sSeq_1.44.0.tar.gz
+	sha256sums = 9e65a7ba8986718941b2f58586df6d54bb34fe300c3321f43f6b2a600c340507
 
 pkgname = r-sseq
