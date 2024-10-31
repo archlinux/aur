@@ -1,6 +1,6 @@
 pkgbase = r-mapscape
 	pkgdesc = mapscape
-	pkgver = 1.28.0
+	pkgver = 1.30.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/mapscape
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = r-mapscape
 	depends = r-stringr
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/mapscape_1.28.0.tar.gz
-	sha256sums = 4cd1fc1c046eff8456acdae2902af658597532eb615484a7ffae849053b5e3f5
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/mapscape_1.30.0.tar.gz
+	sha256sums = bef5701232227a563bd11dbad0570644e32291d05ce1893793123d4587558051
 
 pkgname = r-mapscape
