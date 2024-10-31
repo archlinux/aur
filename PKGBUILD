@@ -4,8 +4,8 @@
 
 pkgname=ncspot-ncurses
 _pkgname=ncspot
-pkgver=1.2.0
-pkgrel=2
+pkgver=1.2.1
+pkgrel=1
 pkgdesc='Cross-platform ncurses Spotify client written in Rust, inspired by ncmpc and the likes'
 arch=('x86_64')
 url="https://github.com/hrkfdn/ncspot"
@@ -13,9 +13,10 @@ license=('BSD-2-Clause')
 provides=('ncspot')
 conflicts=('ncspot' 'ncspot-git' 'ncspot-bin')
 depends=('openssl' 'libpulse' 'libxcb' 'dbus' 'hicolor-icon-theme' 'gcc-libs' 'glibc' 'ncurses')
-makedepends=('cargo' 'python' 'pkgconf' 'pandoc-cli')
+makedepends=('cargo' 'python' 'pkgconf' 'ueberzug' 'pandoc-cli')
+optdepends=('ueberzug: display album art in terminal (X11 and wayland using ueberzugpp)')
 source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/hrkfdn/ncspot/archive/v${pkgver}.tar.gz")
-b2sums=('0e3e13af59ce75d544f148f085fc73b45843c0fd83a32a0cee4593e2e6f492c25600af2fded9db4386fe61c8da5c2c9e23d6d07a9e8a4d4cdec8d14ee42c9ef0')
+b2sums=('032d58508f86164fcdac9929bdf01b7fa5f51926c042d9d87f06f1bfd7436be885d0a48ff3b52bb403f2805a6df504d400cf4a64e955754eae8dd19c2cc581c9')
 options=('!lto')
 
 prepare() {
@@ -27,7 +28,7 @@ build() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
-  cargo build --frozen --release --no-default-features --features "share_clipboard pulseaudio_backend mpris notify ncurses_backend"
+  cargo build --frozen --release --no-default-features --features "share_clipboard pulseaudio_backend mpris notify cover ncurses_backend"
   # generate docs
   pandoc README.md -t man -s --columns=500 | grep -vE "\[IMAGE:|Click to show/hide" > ncspot.1
 }
