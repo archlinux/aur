@@ -1,6 +1,6 @@
 pkgbase = r-tpp2d
 	pkgdesc = Detection of ligand-protein interactions from 2D thermal profiles (DLPTP)
-	pkgver = 1.20.0
+	pkgver = 1.22.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/TPP2D
 	arch = any
@@ -20,7 +20,7 @@ pkgbase = r-tpp2d
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/TPP2D_1.20.0.tar.gz
-	sha256sums = 1ef071c1840734cf4f89d49758bbcca78f0cc7b1ecfb230ef11774695a7f2ee5
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/TPP2D_1.22.0.tar.gz
+	sha256sums = 11c864b78e7a2156b6ab931b5cedff3ad9bcbf4fc79c2b9116b6dc8431444340
 
 pkgname = r-tpp2d
