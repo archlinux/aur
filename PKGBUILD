@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=BiocStyle
-_pkgver=2.32.1
+_pkgver=2.34.0
 pkgname=r-${_pkgname,,}
-pkgver=2.32.1
+pkgver=2.34.0
 pkgrel=1
 pkgdesc='Standard styles for vignettes and other Bioconductor documents'
 arch=('any')
@@ -23,7 +23,7 @@ optdepends=(
   r-runit
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('79ceb7377b7fa27ad4f9c7de99034682c89e44afa857730a37e22052aab016d4')
+sha256sums=('dde3450b0551c353bb15a92ac68931e3da6f04050448f7bbf87587ae4779cdd8')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
