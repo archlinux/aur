@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=sigsquared
-_pkgver=1.36.0
+_pkgver=1.38.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -17,8 +17,8 @@ optdepends=(
   r-runit
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('ff5d423d1734ced1e2b7c5fbf6ae6445')
-b2sums=('1b9d10baa40506ead64930580edecc46d13a49cb875875d4047c49a4361997226f659d37d9893d2d9c140f88d42a7b5d95d6ae7a3caa7a225d5f8012b3558480')
+md5sums=('e1807436779fc908917dacd8f237ef81')
+b2sums=('079507ace475889c54b511be269fc885e24e3d454b7d373dbea50c1270018c90920993bae5c6b7f48e01a85a848e5aa732b991654bcfb0929ba431ca5e7ff28e')
 
 build() {
   mkdir build
