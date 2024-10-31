@@ -2,9 +2,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=chromDraw
-_pkgver=2.34.0
+_pkgver=2.36.0
 pkgname=r-${_pkgname,,}
-pkgver=2.34.0
+pkgver=2.36.0
 pkgrel=1
 pkgdesc='chromDraw is a R package for drawing the schemes of karyotypes in the linear and circular fashion.'
 arch=('x86_64')
@@ -16,7 +16,7 @@ depends=(
   r-rcpp
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('88c6dbfcd7a60e9ca898ef5413fb05794a17b48a02dcc5d7551bb609d11ce3e4')
+sha256sums=('4b71a337c2ee8e24dc97f88ad9d31014877dd358d914d1d84e16b3062ca31149')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
