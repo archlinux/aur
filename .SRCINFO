@@ -1,6 +1,6 @@
 pkgbase = r-hypergraph
 	pkgdesc = A package providing hypergraph data structures
-	pkgver = 1.76.0
+	pkgver = 1.78.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/hypergraph
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = r-hypergraph
 	depends = r-graph
 	optdepends = r-biocgenerics
 	optdepends = r-runit
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/hypergraph_1.76.0.tar.gz
-	md5sums = 3d5aae4ceef88088a1649abe9094e098
-	b2sums = 7e30117e7b0cb407330e136af847aa4238827aacd49640b190c81dd2e2ca858344f14d35b88775c459c03d3647a0bf1458f9301e448b6f5bfad599e6469d74c3
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/hypergraph_1.78.0.tar.gz
+	md5sums = 664ea291a51db1bed4d8433759c6a43a
+	b2sums = 5d6447e80a04580f9480a79763462d84728d1167637aa86a6195a980508bb244c951e923700e5d36c52f4a0ad2cb85161073613020c13f3c2d5977f7df4620f0
 
 pkgname = r-hypergraph
