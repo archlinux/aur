@@ -1,17 +1,17 @@
 pkgbase = altitude-metrix-wallet-bin
-	pkgdesc = The Metrix wallet https://metrixcoin.com.
-	pkgver = 3.4.1
+	pkgdesc = The Metrix wallet https://metrixcoin.com.Prebuilt version.Use system-wide electron.
+	pkgver = 3.4.2
 	pkgrel = 1
 	url = https://github.com/TheLindaProjectInc/Altitude
 	arch = x86_64
 	license = GPL-3.0-only
 	makedepends = fuse2
-	depends = electron32
-	provides = altitude-metrix-wallet=3.4.1
+	depends = electron33
+	provides = altitude-metrix-wallet=3.4.2
 	conflicts = altitude-metrix-wallet
-	source = altitude-metrix-wallet-3.4.1.AppImage::https://github.com/TheLindaProjectInc/Altitude/releases/download/3.4.1/Altitude-Metrix-Wallet-linux-x64.AppImage
+	source = altitude-metrix-wallet-3.4.2.AppImage::https://github.com/TheLindaProjectInc/Altitude/releases/download/3.4.2/Altitude-Metrix-Wallet-linux-x64.AppImage
 	source = altitude-metrix-wallet.sh
-	sha256sums = 782b08c179eb8ab53242569dae230bed2b988c7d7ed59b4ee00c791978579700
+	sha256sums = 1c59b375c5fdbb5d462e38f17eea8ccaa479a706b16d775f8b29ea59d9eac1ca
 	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
 
 pkgname = altitude-metrix-wallet-bin

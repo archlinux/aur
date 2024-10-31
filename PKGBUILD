@@ -1,10 +1,10 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=altitude-metrix-wallet-bin
 _appname=Altitude-Metrix-Wallet
-pkgver=3.4.1
-_electronversion=32
+pkgver=3.4.2
+_electronversion=33
 pkgrel=1
-pkgdesc="The Metrix wallet https://metrixcoin.com."
+pkgdesc="The Metrix wallet https://metrixcoin.com.Prebuilt version.Use system-wide electron."
 arch=('x86_64')
 url="https://github.com/TheLindaProjectInc/Altitude"
 license=('GPL-3.0-only')
@@ -20,7 +20,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.AppImage::${url}/releases/download/${pkgver}/${_appname}-linux-x64.AppImage"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('782b08c179eb8ab53242569dae230bed2b988c7d7ed59b4ee00c791978579700'
+sha256sums=('1c59b375c5fdbb5d462e38f17eea8ccaa479a706b16d775f8b29ea59d9eac1ca'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 build() {
     sed -e "
