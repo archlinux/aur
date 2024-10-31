@@ -1,0 +1,3 @@
+[cargo-lock]
+source = "cratesio"
+cratesio = "cargo-lock"
