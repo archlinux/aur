@@ -1,0 +1,25 @@
+pkgbase = updo-bin
+	pkgdesc = Uptime monitoring CLI tool with alerting and advanced settings
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://github.com/Owloops/updo
+	arch = x86_64
+	arch = i686
+	arch = aarch64
+	license = MIT
+	makedepends = help2man
+	depends = glibc
+	provides = updo
+	conflicts = updo
+	source = LICENSE-0.1.2::https://raw.githubusercontent.com/Owloops/updo/v0.1.2/LICENSE
+	source = README-0.1.2.md::https://raw.githubusercontent.com/Owloops/updo/v0.1.2/README.md
+	sha256sums = c4bb03bd6f1bc39a9a068700598796514a826d115a8a10c5d3fb9593ccbda18e
+	sha256sums = c8264975c2c803809388782793db25dbfda1f202649dc700a08cbd36ce994dcd
+	source_x86_64 = https://github.com/Owloops/updo/releases/download/v0.1.2/updo_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = 0c99b464962f57b9e04397074489e6b7593dde41faba32b1bd46c4b02372be53
+	source_i686 = https://github.com/Owloops/updo/releases/download/v0.1.2/updo_Linux_i386.tar.gz
+	sha256sums_i686 = b5df85dff4abaa6d2cf930ea4a392344d0c48cceb2582ff10f113e41505ba97c
+	source_aarch64 = https://github.com/Owloops/updo/releases/download/v0.1.2/updo_Linux_arm64.tar.gz
+	sha256sums_aarch64 = 2c8083421241f6017b11dc8f58532a0785b3db00da3539a1dc79f8b307d05d65
+
+pkgname = updo-bin
