@@ -2,7 +2,7 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=biodbHmdb
-_pkgver=1.10.1
+_pkgver=1.12.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -33,8 +33,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('8037d11754cc83f4d292fb2996ae51e7')
-b2sums=('bbcc8837e533f2ff60101f70882ee18b6c00acd274fdfe3a2f717fe2209a04a0d982b94a5341e43186ca50fe00b5e8250ade6b85d2829cb4ff999db022ddc435')
+md5sums=('0333d0ac49b6de03426e7709fa2ca1ac')
+b2sums=('e78c2a009f2538957d661dacf408dd9c42844768def6bc24f62e8cbb0b11e056f9154af6a1fab50f2402e60dac9f48fb9d203fbf0ec9d978eefc50c021cc69be')
 
 build() {
   mkdir build
