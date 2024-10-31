@@ -2,7 +2,7 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=lfa
-_pkgver=2.4.0
+_pkgver=2.6.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -27,8 +27,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('4f54705d71db2f4fd6f58715193ab518')
-b2sums=('87613ea0441ce64daa19ae3c5a1f08a65be369b11b08f083e143a9163e9abc3c012be7fce9e89b56b4feda92a209f6ca80f650eb3953c2883c4f953a9a2241d0')
+md5sums=('8cc986c57b3ea73343d7dba9e2e687ab')
+b2sums=('18ff9f0c13f0d1a4d87aef6e5a6dd26286a5f48d762ea6da785dd75c41c0e6aac30db64c9af48f63f89abd9352d7c192456f905b80cff5ddecc52499e1f34ab6')
 
 build() {
   mkdir build
