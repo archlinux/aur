@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=Doscheda
-_pkgver=1.26.0
+_pkgver=1.27.0
 pkgname=r-${_pkgname,,}
-pkgver=1.26.0
+pkgver=1.27.0
 pkgrel=1
 pkgdesc='A DownStream Chemo-Proteomics Analysis Pipeline'
 arch=('any')
@@ -37,7 +37,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('7478fcaf6b5ed3bebaa9d99dd5ca5ae7f9da32a91f12a4938393234fa6d70c47')
+sha256sums=('21ac2d4b71a36cc336d45fe28edddfe26e72c0d02b6e31bbe7b235623650258f')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
