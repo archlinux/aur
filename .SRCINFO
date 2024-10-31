@@ -1,6 +1,6 @@
 pkgbase = r-cqn
 	pkgdesc = Conditional quantile normalization
-	pkgver = 1.50.0
+	pkgver = 1.52.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/cqn
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = r-cqn
 	depends = r-quantreg
 	optdepends = r-edger
 	optdepends = r-scales
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/cqn_1.50.0.tar.gz
-	sha256sums = 7622dfdab88ca552da2b0ce646d63733cad93b5a285a34ea5afb5293ccbf4ebe
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/cqn_1.52.0.tar.gz
+	sha256sums = 496dc8d424e54fff5edcd12ce1b823ce5f79039d0183efcd0e515f91b67217c7
 
 pkgname = r-cqn
