@@ -7,7 +7,7 @@ pkgdesc="Electron wrapper for DeepL Translator"
 arch=(any)
 url="https://github.com/kumakichi/Deepl-linux-electron"
 license=("MIT")
-depends=("npm" "yarn")
+makedepends=("yarn")
 source=(
     "https://github.com/kumakichi/Deepl-linux-electron/archive/refs/tags/v1.5.0.tar.gz"
     "deepl-electron.desktop"
