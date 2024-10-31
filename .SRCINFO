@@ -1,7 +1,7 @@
 pkgbase = deepl-electron
 	pkgdesc = Electron wrapper for DeepL Translator
 	pkgver = 1.5.0
-	pkgrel = 2
+	pkgrel = 4
 	url = https://github.com/kumakichi/Deepl-linux-electron
 	arch = any
 	license = MIT
