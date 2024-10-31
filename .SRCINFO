@@ -4,11 +4,15 @@ pkgbase = python-pyscroll
 	pkgrel = 1
 	url = https://github.com/bitcraft/pyscroll
 	arch = any
-	license = LGPL3
+	license = GPL-3.0-only
 	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
 	makedepends = python-setuptools
 	depends = python-pygame
+	provides = python-pyscroll
+	conflicts = python-pyscroll
 	source = git+https://github.com/bitcraft/pyscroll.git#commit=da826cd81abd48de8929601b07f39d4375b9c33e
-	md5sums = SKIP
+	sha256sums = SKIP
 
 pkgname = python-pyscroll
