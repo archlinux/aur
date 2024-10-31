@@ -1,6 +1,6 @@
 pkgbase = links-g-directfb
-	pkgdesc = A text WWW browser, similar to Lynx (with directfb, X and fb graphics)
-	pkgver = 2.29
+	pkgdesc = A text WWW browser, similar to Lynx (with directfb, X and fb graphics. This version also supports SVGALIB)
+	pkgver = 2.30
 	pkgrel = 1
 	url = http://links.twibright.com/
 	arch = i686
