@@ -1,19 +1,15 @@
-pkgbase = pkgbase
-	pkgdesc = Open-source YANG API in C and CLI (yangcli) and server (netconfd)
-	pkgver = latest
+pkgbase = ideapad-laptop-tb-dkms
+	pkgdesc = The IdeaPad ACPI Extras kernel modules for ThinkBook 2024 NoteBooks (DKMS)
+	pkgver = r2.5e4dab4
 	pkgrel = 1
-	url = https://github.com/vlvassilev/yuma123
-	arch = x86_64
-	license = BSD
-	depends = git
-	depends = autoconf
-	depends = automake
-	depends = libtool
-	depends = make
-	depends = gcc
-	provides = yuma123
-	conflicts = yuma123
-	source = git+https://github.com/vlvassilev/yuma123
+	url = https://github.com/ferstar/ideapad-laptop-tb
+	arch = any
+	license = GPL2
+	makedepends = git
+	depends = dkms
+	provides = ideapad-laptop-tb=r2.5e4dab4
+	conflicts = ideapad-laptop-tb
+	source = git+https://github.com/ferstar/ideapad-laptop-tb
 	sha256sums = SKIP
 
-pkgname = yuma123-git
+pkgname = ideapad-laptop-tb-dkms
