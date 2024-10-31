@@ -1,6 +1,6 @@
 pkgbase = gamescope-git
 	pkgdesc = SteamOS session compositing window manager
-	pkgver = 3.14.28.r0.g4ccc6647
+	pkgver = 3.15.9.r21.g7dd1bcd9
 	pkgrel = 1
 	url = https://github.com/ValveSoftware/gamescope
 	arch = x86_64
@@ -36,6 +36,7 @@ pkgbase = gamescope-git
 	depends = libxres
 	depends = libxtst
 	depends = libxxf86vm
+	depends = luajit
 	depends = seatd
 	depends = sdl2
 	depends = vulkan-icd-loader
