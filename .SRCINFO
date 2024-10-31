@@ -1,6 +1,6 @@
 pkgbase = linux-mainline-um5606
 	pkgdesc = Linux Mainline with patches for the Asus UM5606(WA) laptop
-	pkgver = 6.12rc4
+	pkgver = 6.12rc5
 	pkgrel = 1
 	url = https://kernel.org/
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = linux-mainline-um5606
 	makedepends = xz
 	options = !debug
 	options = !strip
-	source = linux-mainline::git+https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git#tag=v6.12-rc4
+	source = linux-mainline::git+https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git#tag=v6.12-rc5
 	source = config
 	source = npu.patch
 	source = hetero.patch
