@@ -1,6 +1,6 @@
 pkgbase = r-gep2pep
 	pkgdesc = Creation and Analysis of Pathway Expression Profiles (PEPs)
-	pkgver = 1.24.0
+	pkgver = 1.26.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/gep2pep
 	arch = any
@@ -18,7 +18,7 @@ pkgbase = r-gep2pep
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
 	optdepends = r-writexls
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/gep2pep_1.24.0.tar.gz
-	sha256sums = 072db5192887ea494c46c0e99bf3ded209eb03333443d30033bdfa42cf1c15c5
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/gep2pep_1.26.0.tar.gz
+	sha256sums = c40957272483fd1ddec165f1303a090174fe8cb8d32fc8a801b11b7f4547d2d9
 
 pkgname = r-gep2pep
