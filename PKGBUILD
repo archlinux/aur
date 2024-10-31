@@ -2,8 +2,8 @@
 
 _pkgname="redot"
 pkgname=${_pkgname}-bin
-pkgver=4.4.dev
-pkgrel=3
+pkgver=4.3.beta.2
+pkgrel=4
 pkgdesc="A multi-platform 2D and 3D game engine"
 arch=('x86_64')
 url="https://github.com/Redot-Engine/redot-engine"
@@ -13,14 +13,14 @@ depends=(embree3 freetype2 graphite harfbuzz harfbuzz-icu libglvnd libspeechd
     libxinerama libxrandr mbedtls2 miniupnpc pcre2)
 optdepends=('pipewire-alsa: for audio support'
     'pipewire-pulse: for audio support')
-source=("https://github.com/decryptedchaos/redot-aur-bin/raw/refs/heads/main/redot-engine-4.4dev3.tar.gz")
-sha256sums=('2af87873cc526fd7e3b4f1a3b31beea2eb9e49e670a1bdd09dbdd62cc5e6312d')
+source=("https://github.com/Redot-Engine/redot-engine/releases/download/redot-4.3-beta.2/Redot_v4.3-beta.2_linux.x86_64.zip")
+sha256sums=('05fc1b5306bfb9f8e77f3d093d9897247a44b4cd2c540275acad9fc223e1bd5c')
 
 package() {
 	cd "$srcdir"
 	 install -Dm644 Redot.desktop ${pkgdir}/usr/share/applications/Redot.desktop
 	 install -Dm644 icon.png ${pkgdir}/usr/share/pixmaps/Redot.png
-     install -D -m755 redot.linuxbsd.editor.${arch} ${pkgdir}/usr/bin/redot44
+     install -D -m755 redot.linuxbsd.editor.${arch} ${pkgdir}/usr/bin/redot
      install -D -m644 LICENSE.txt ${pkgdir}/usr/share/licenses/"${pkgname}"/LICENSE
 }
 
