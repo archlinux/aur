@@ -1,0 +1,19 @@
+pkgbase = cosmic-idle-git
+	pkgdesc = Cosmic idle daemon
+	pkgver = r38.08c1cf3
+	pkgrel = 1
+	url = https://github.com/pop-os/cosmic-idle
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-or-later
+	makedepends = cargo
+	makedepends = git
+	makedepends = just
+	depends = libxkbcommon
+	depends = wayland
+	provides = cosmic-idle
+	conflicts = cosmic-idle
+	source = git+https://github.com/pop-os/cosmic-idle.git
+	sha256sums = SKIP
+
+pkgname = cosmic-idle-git
