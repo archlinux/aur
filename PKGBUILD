@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=omada
-_pkgver=1.6.0
+_pkgver=1.8.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -31,8 +31,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('6f2b574eef1d352e074a064d77b6bf45')
-b2sums=('37b754cf1ba17f21df3432e85f7dfa114c621b89b8e599194cf7f2c49a399c8c4e50713958eba571eba45e7ee1e53e0f2cbaa7dc155d9aeef89a79321150a50c')
+md5sums=('c0ddb89b287d5c6efd9788f289e5710b')
+b2sums=('35ae321c31c35b4afba2dedd2b465daba861cb5623f1a16fdc38aac71f2ae9cb2d213845b540db54d0439f6795fc3658ffaf3d010826fb89077513578edd4a82')
 
 build() {
   mkdir build
