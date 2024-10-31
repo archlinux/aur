@@ -1,6 +1,6 @@
 pkgbase = r-deqms
 	pkgdesc = a tool to perform statistical analysis of differential protein expression for quantitative proteomics data.
-	pkgver = 1.22.0
+	pkgver = 1.24.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/DEqMS
 	arch = any
@@ -20,7 +20,7 @@ pkgbase = r-deqms
 	optdepends = r-reshape2
 	optdepends = r-rmarkdown
 	optdepends = r-utils
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/DEqMS_1.22.0.tar.gz
-	sha256sums = 542400f6463644dffb4869d1fb5b5649cbeb405655b67e3b9ad31abf7ff6313a
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/DEqMS_1.24.0.tar.gz
+	sha256sums = b19bb1a57f2b8949de7b446b4dee006d719c1fcdfb5dd29ee63c12a34e951bf8
 
 pkgname = r-deqms
