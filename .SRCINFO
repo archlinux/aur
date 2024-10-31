@@ -1,6 +1,6 @@
 pkgbase = r-kcsmart
 	pkgdesc = Multi sample aCGH analysis package using kernel convolution
-	pkgver = 2.62.0
+	pkgver = 2.64.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/KCsmart
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = r-kcsmart
 	depends = r-siggenes
 	optdepends = r-biobase
 	optdepends = r-cghbase
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/KCsmart_2.62.0.tar.gz
-	sha256sums = a41a56128e215a30c7cba5083eb0954506dd60b2715dacf91098b5e4cb9d8861
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/KCsmart_2.64.0.tar.gz
+	sha256sums = 05eeaed0657d712cc0b55bf3ff5f31c252c3ad9ce100b12630d7213ce9ded919
 
 pkgname = r-kcsmart
