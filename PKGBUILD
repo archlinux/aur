@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=rBiopaxParser
-_pkgver=2.44.0
+_pkgver=2.46.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -23,8 +23,8 @@ optdepends=(
   r-runit
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('6fd1213633f5788fd1a26d7dad1cd5b0')
-b2sums=('954bd2a35cd8a34b7cdb07a844150584868b1125a16a1cceb218d9595beff14c74f07379dd12fb13c6a2efd05eeb176570b5764c2f37e9f33eb8d42c6cfde504')
+md5sums=('8d29fadf37c6f8a0d5dbdd683db3e540')
+b2sums=('a95d0d3af9e4466711cfb3625e0914495700008c11d8f535e6fbb14a88ed5e94e0b9fe610f1785bfc57ad91336788df0ad49c48201c9b963c16f72f04cfdef9f')
 
 build() {
   mkdir build
