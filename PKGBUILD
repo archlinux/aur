@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=rain
-_pkgver=1.38.0
+_pkgver=1.40.0
 pkgname=r-${_pkgname,,}
-pkgver=1.38.0
+pkgver=1.40.0
 pkgrel=1
 pkgdesc='Rhythmicity Analysis Incorporating Non-parametric Methods'
 arch=('any')
@@ -19,7 +19,7 @@ optdepends=(
   r-lattice
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('8023fc74e3d2b87c5bfbbbbddba4a507d7f5f46e05a11873dbccf1c8222e5071')
+sha256sums=('fcb474d76359afd1e041ff8cb26e473f8f50be86cf0beedf8e9b6cf179b5a618')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
