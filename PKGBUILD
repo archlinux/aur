@@ -4,7 +4,7 @@
 
 _pkgname="telegram-desktop"
 pkgname="$_pkgname-git"
-pkgver=5.6.3.r0.g754d467
+pkgver=5.7.0.r1.g1ca1f0f
 pkgrel=1
 pkgdesc='Official Telegram Desktop client'
 url="https://github.com/telegramdesktop/tdesktop"
@@ -63,7 +63,7 @@ _source_main() {
 
 _source_telegram_desktop() {
   source+=(
-    'apple.swift-corelibs-libdispatch'::'git+https://github.com/apple/swift-corelibs-libdispatch.git'
+    #'apple.swift-corelibs-libdispatch'::'git+https://github.com/apple/swift-corelibs-libdispatch.git'
     'cyan4973.xxhash'::'git+https://github.com/Cyan4973/xxHash.git'
     'desktop-app.cmake_helpers'::'git+https://github.com/desktop-app/cmake_helpers.git'
     'desktop-app.codegen'::'git+https://github.com/desktop-app/codegen.git'
@@ -87,10 +87,10 @@ _source_telegram_desktop() {
     'google.cld3'::'git+https://github.com/google/cld3.git'
     'hamonikr.nimf'::'git+https://github.com/hamonikr/nimf.git'
     'hime-ime.hime'::'git+https://github.com/hime-ime/hime.git'
-    'hunspell'::'git+https://github.com/hunspell/hunspell.git'
+    #'hunspell'::'git+https://github.com/hunspell/hunspell.git'
     #'jemalloc'::'git+https://github.com/jemalloc/jemalloc.git'
-    'kde.kcoreaddons'::'git+https://github.com/KDE/kcoreaddons.git'
-    'kde.kimageformats'::'git+https://github.com/KDE/kimageformats.git'
+    #'kde.kcoreaddons'::'git+https://github.com/KDE/kcoreaddons.git'
+    #'kde.kimageformats'::'git+https://github.com/KDE/kimageformats.git'
     'lz4'::'git+https://github.com/lz4/lz4.git'
     'nayuki.qr-code-generator'::'git+https://github.com/nayuki/QR-Code-generator.git'
     'tartanllama.expected'::'git+https://github.com/TartanLlama/expected.git'
@@ -100,10 +100,10 @@ _source_telegram_desktop() {
   sha256sums+=(
     #'SKIP'
     #'SKIP'
-    'SKIP'
-    'SKIP'
-    'SKIP'
-    'SKIP'
+    #'SKIP'
+    #'SKIP'
+    #'SKIP'
+    #'SKIP'
     'SKIP'
     'SKIP'
     'SKIP'
@@ -136,7 +136,7 @@ _source_telegram_desktop() {
   _prepare_telegram_desktop() (
     cd "$srcdir/$_pkgsrc"
     local _submodules=(
-      'apple.swift-corelibs-libdispatch'::'Telegram/ThirdParty/dispatch'
+      #'apple.swift-corelibs-libdispatch'::'Telegram/ThirdParty/dispatch'
       'cyan4973.xxhash'::'Telegram/ThirdParty/xxHash'
       'desktop-app.cmake_helpers'::'cmake'
       'desktop-app.codegen'::'Telegram/codegen'
@@ -160,10 +160,10 @@ _source_telegram_desktop() {
       'google.cld3'::'Telegram/ThirdParty/cld3'
       'hamonikr.nimf'::'Telegram/ThirdParty/nimf'
       'hime-ime.hime'::'Telegram/ThirdParty/hime'
-      'hunspell'::'Telegram/ThirdParty/hunspell'
+      #'hunspell'::'Telegram/ThirdParty/hunspell'
       #'jemalloc'::'Telegram/ThirdParty/jemalloc'
-      'kde.kcoreaddons'::'Telegram/ThirdParty/kcoreaddons'
-      'kde.kimageformats'::'Telegram/ThirdParty/kimageformats'
+      #'kde.kcoreaddons'::'Telegram/ThirdParty/kcoreaddons'
+      #'kde.kimageformats'::'Telegram/ThirdParty/kimageformats'
       'lz4'::'Telegram/ThirdParty/lz4'
       'nayuki.qr-code-generator'::'Telegram/ThirdParty/QR'
       'tartanllama.expected'::'Telegram/ThirdParty/expected'
@@ -245,14 +245,11 @@ _source_tg_owt() {
   _pkgsrc_tgowt="telegram-tg_owt"
   source+=(
     "$_pkgsrc_tgowt"::"git+https://github.com/desktop-app/tg_owt.git"
-    libtg_owt_ffmpeg7.patch::https://patch-diff.githubusercontent.com/raw/desktop-app/tg_owt/pull/128.patch
   )
   sha256sums+=(
     'SKIP'
-    'SKIP'
   )
 
-  # submodules - tg_owt
   source+=(
     'abseil.abseil-cpp'::'git+https://github.com/abseil/abseil-cpp.git'
     'chromiumsrc.libyuv'::'git+https://gitlab.com/chromiumsrc/libyuv.git'
@@ -275,8 +272,6 @@ _source_tg_owt() {
       'google.crc32c'::'src/third_party/crc32c/src'
     )
     _submodule_update
-
-    apply-patch "../libtg_owt_ffmpeg7.patch"
   )
 }
 
@@ -290,11 +285,6 @@ _source_mnauw_cppgir
 _source_tg_owt
 
 prepare() {
-  apply-patch() {
-    printf '\nApplying patch %s\n' "$1"
-    patch -Np1 -F100 -i "$1"
-  }
-
   _submodule_update() {
     local _module
     for _module in "${_submodules[@]}"; do
