@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=unyo-bin
 _pkgname=Unyo
-pkgver=0.6.6
+pkgver=0.6.7
 pkgrel=1
 pkgdesc="🐙 Anime streaming and Manga reader desktop app without ads.Prebuilt version."
 arch=("x86_64")
@@ -22,7 +22,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.zip::${url}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-linux.zip"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('e15d245b7d047b27f4f6f3f3b45a1a02f74a397f7026c512419893f2e160b8ba'
+sha256sums=('8f258c9f88bc17f1093134eb3dbce07d5621b83a079e2d3c5e7db9a2c3722f32'
             '3b8311438e88f47eb507322a43c7a4156bfebb8c0f6e7b7436ef70842fb4c745')
 build() {
     sed -e "

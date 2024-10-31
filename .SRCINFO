@@ -1,6 +1,6 @@
 pkgbase = unyo-bin
 	pkgdesc = 🐙 Anime streaming and Manga reader desktop app without ads.Prebuilt version.
-	pkgver = 0.6.6
+	pkgver = 0.6.7
 	pkgrel = 1
 	url = https://github.com/K3vinb5/Unyo
 	arch = x86_64
@@ -10,11 +10,11 @@ pkgbase = unyo-bin
 	depends = alsa-lib
 	depends = java-runtime
 	depends = libpulse
-	provides = unyo=0.6.6
+	provides = unyo=0.6.7
 	conflicts = unyo
-	source = unyo-0.6.6.zip::https://github.com/K3vinb5/Unyo/releases/download/v0.6.6/Unyo-v0.6.6-linux.zip
+	source = unyo-0.6.7.zip::https://github.com/K3vinb5/Unyo/releases/download/v0.6.7/Unyo-v0.6.7-linux.zip
 	source = unyo.sh
-	sha256sums = e15d245b7d047b27f4f6f3f3b45a1a02f74a397f7026c512419893f2e160b8ba
+	sha256sums = 8f258c9f88bc17f1093134eb3dbce07d5621b83a079e2d3c5e7db9a2c3722f32
 	sha256sums = 3b8311438e88f47eb507322a43c7a4156bfebb8c0f6e7b7436ef70842fb4c745
 
 pkgname = unyo-bin
