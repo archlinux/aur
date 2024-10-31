@@ -1,19 +1,19 @@
 pkgbase = imgbrd-grabber-bin
 	pkgdesc = Unofficial binary installer for ImgBrd Grabber
-	pkgver = 7.12.1
+	pkgver = 7.12.2
 	pkgrel = 2
 	url = https://github.com/Bionus/imgbrd-grabber
 	arch = x86_64
 	license = Apache-2.0 License
-	depends = qt5-multimedia
-	depends = qt5-declarative
+	depends = qt6-multimedia
+	depends = qt6-declarative
 	depends = nodejs
-	depends = qt5-networkauth
-	depends = qt5-base
+	depends = qt6-networkauth
+	depends = qt6-base
 	depends = krb5
 	conflicts = imgbrd-grabber-git
 	options = !strip
-	source = 7.12.1.tar.gz::https://github.com/Bionus/imgbrd-grabber/releases/download/v7.12.1/Grabber_v7.12.1.tar.gz
+	source = 7.12.2.tar.gz::https://github.com/Bionus/imgbrd-grabber/releases/download/v7.12.2/Grabber_v7.12.2.tar.gz
 	sha1sums = SKIP
 
 pkgname = imgbrd-grabber-bin
