@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=mdqc
-_pkgver=1.66.0
+_pkgver=1.68.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -13,8 +13,8 @@ depends=(
   r
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('4fbe014cdc20e42527d2719a0bdfe54e')
-b2sums=('433dd60c3d9546e839cad5ba7f3cf3d61342508f73268b46325f3b8c3cc5e3794a1b272bd4c00a64af677372d26f62bb04b41ecc14d48f7e8610cad7f404e751')
+md5sums=('f277ca29f77be3efbbc0ed040ca57c5c')
+b2sums=('1f5dedf53cf1e00e7fb7230b334f7323696b1701948e27193a7b0457dfcce2a0cbf0fdde06218c052bf15ea4b7498d3c1fb3d09e05bb6750e613671e5fa6bd70')
 
 build() {
   mkdir build
