@@ -3,7 +3,7 @@
 
 pkgname=lobe-chat
 pkgver=1.26.17
-pkgrel=6
+pkgrel=7
 pkgdesc="An open-source, modern-design LLMs/AI chat framework"
 arch=("x86_64" "aarch64")
 url="https://github.com/lobehub/${pkgname}"
@@ -70,10 +70,12 @@ package() {
     install -Dm644 README*.md           -t "${pkgdir}/usr/share/doc/${pkgname}/"
     install -Dm644 .nvmrc               -t "${pkgdir}/usr/share/${pkgname}/"
 
-    cp -r --preserve=mode .next/standalone "${pkgdir}/usr/share/${pkgname}/"
-    cp -r --preserve=mode .next/static     "${pkgdir}/usr/share/${pkgname}/"
+    cp -r --preserve=mode .next/standalone/ "${pkgdir}/usr/share/${pkgname}/"
+
+    mkdir -p "${pkgdir}/usr/share/${pkgname}/.next"
+    cp -r --preserve=mode .next/static     "${pkgdir}/usr/share/${pkgname}/.next/"
     cp -r --preserve=mode public           "${pkgdir}/usr/share/${pkgname}/"
 
-    mkdir -p "${pkgdir}/var/lib/${pkgname}/standalone"
-    ln -s "/var/lib/${pkgname}/standalone/.next"      "${pkgdir}/usr/share/${pkgname}/standalone/.next"
+    mkdir -p "${pkgdir}/var/lib/${pkgname}/cache"
+    ln -s "/var/lib/${pkgname}/cache"      "${pkgdir}/usr/share/${pkgname}/.next/cache"
 }
