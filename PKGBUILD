@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=AnVILBilling
-_pkgver=1.14.0
+_pkgver=1.16.0
 pkgname=r-${_pkgname,,}
-pkgver=1.14.0
+pkgver=1.16.0
 pkgrel=1
 pkgdesc='Provide functions to retrieve and report on usage expenses in NHGRI AnVIL (anvilproject.org).'
 arch=('any')
@@ -29,7 +29,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('ce4b94c6871ca40fee13260dfe1c917f1aa99e7e45201d5ce7211f0acefd057c')
+sha256sums=('26b42f0835b690a75acc4b6806f5751c321bb7ba9923f3a7f4d68660034ef2bc')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
