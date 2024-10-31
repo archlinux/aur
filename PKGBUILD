@@ -2,7 +2,7 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=interactiveDisplay
-_pkgver=1.42.0
+_pkgver=1.44.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -41,9 +41,9 @@ optdepends=(
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz"
         "fix-install.patch")
-md5sums=('a58ec02cc262479f0fde58e20f8e9506'
+md5sums=('1632e8f269ab0ca57340fa46eb5ce2bd'
          'f3e9aa31acfa87ff679676bd8e433bf8')
-b2sums=('fc5a0b2215780ab9fa95add14035a6c55f4df046034ea09842f60ae17e88563bf357fb4dd9c046cf8059154067c238560818f8deb1f88363eb7450382993dc4e'
+b2sums=('157932f80d2a27612bba13d08d86effbef0e2268bc8483c21853c605efc5a9c3ea1ea5b7d8b66a2c26908df46a08028b9a23958a6bc58d398200a04f5359f955'
         'c0347a4e255e6123aa5a418b9432f001afee872b963a4b4b4cc9b38c3015718bd7944118e87dcc5b9f8f9ce9c85bcb3b49c0fef17d2293e2460a7eda2a98844b')
 
 prepare() {
