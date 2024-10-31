@@ -39,7 +39,7 @@ optdepends=('cuda: NvFBC capture support'
 conflicts=(sunshine sunshine-git sunshine-bin)
 makedepends=('patchelf')
 provides=('sunshine')
-sha256sums=('4a11c93d041ebc6a2f09a7688ebb1e1f3608d6211fd896b4c0d4215879b082d'
+sha256sums=('4a11c93d041ebc6a2f09a7688ebb1e1f3608d6211fd896b4c0d4215879b082da'
         '3a78c9ceb45dca435d3542c6416b511293743b32c7f384a3689d4addf3653989')
 
 prepare() {
