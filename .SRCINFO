@@ -1,6 +1,6 @@
 pkgbase = r-uniprot.ws
 	pkgdesc = R Interface to UniProt Web Services
-	pkgver = 2.44.0
+	pkgver = 2.46.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/UniProt.ws
 	arch = any
@@ -20,7 +20,7 @@ pkgbase = r-uniprot.ws
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-runit
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/UniProt.ws_2.44.0.tar.gz
-	sha256sums = a8bf5c66fc66d1f1072fd81fca82af8ea8c0218cb93a1f5e7ccf2aa527bc8bed
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/UniProt.ws_2.46.0.tar.gz
+	sha256sums = d8fa8405d95bd31e1cfc3e74065cebd40d7bdf208fdbb6a98433126b7ef1f168
 
 pkgname = r-uniprot.ws
