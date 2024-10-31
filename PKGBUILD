@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=LEA
-_pkgver=3.16.0
+_pkgver=3.18.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -17,8 +17,8 @@ optdepends=(
   r-knitr
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('4319a3f1282203dfa38952fc4203d152')
-b2sums=('36351d44547ced22f023e4d151b5761fb6b8a3c931e3686e237768a79628ec02e9ae4ff0b2461fad34d5ff4786c155090ea2bbddc3cbe9a9083d3d6980e474ee')
+md5sums=('dc3a581a78477d4910e29a0f94d81c31')
+b2sums=('1fc769295b131e8583fa478b80b0edb7a421f5ef8b0ad5e9d86d2a230ce573c033dbe32541093f9cd7aeb0bdf431f884ad06eefd546bee4c668fd6345dabb4f3')
 
 build() {
   mkdir build
