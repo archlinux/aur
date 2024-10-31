@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=maCorrPlot
-_pkgver=1.74.0
+_pkgver=1.76.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -13,8 +13,8 @@ depends=(
   r
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('dc6c309a837df351ed949f877ec6f720')
-b2sums=('9140554da12c88e5aa7493b2d6bd6f429143a1b2794ab3a2990d4aa5292c9189322a5b6e31ef6874b75724a8215c4090192fc74b441608a10b7779c4267bc8eb')
+md5sums=('131553e83d70b83c6770f29d77850e8d')
+b2sums=('a63de31a959a91b7f2fac78288a81927fc2b4e47a95ed9f453cd9a878892446172ae55cb717457fdd6ab5d18d3a6482cf57b0c7780807e89be15d1637897e978')
 
 build() {
   mkdir build
