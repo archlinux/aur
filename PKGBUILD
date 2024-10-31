@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=lmdme
-_pkgver=1.47.0
+_pkgver=1.48.0
 pkgname=r-${_pkgname,,}
-pkgver=1.47.0
+pkgver=1.48.0
 pkgrel=1
 pkgdesc='Linear Model decomposition for Designed Multivariate Experiments'
 arch=('any')
@@ -19,7 +19,7 @@ optdepends=(
   r-parallel
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('8cabc9fc18bf14b139ca75f9c287a76819c22940dfd5a98292d94be3f2c5fb3a')
+sha256sums=('baf457e8bf62a43846205826fe6360468470c1bf2baeeec2be138ef1de9ee0e9')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
