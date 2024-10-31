@@ -2,7 +2,7 @@
 
 _pkgname=libheif
 pkgname=mingw-w64-${_pkgname}
-pkgver=1.18.2
+pkgver=1.19.0
 pkgrel=1
 pkgdesc='HEIF file format decoder and encoder (mingw-w64)'
 url='https://github.com/strukturag/libheif'
@@ -26,18 +26,15 @@ makedepends=('mingw-w64-cmake' 'ninja')
 arch=('any')
 options=(!strip !buildflags staticlibs)
 optdepends=()
-sha256sums=('c2bf75ff61250fcdcb831f0d5d9d06808205d9ee3dd0749ef7a7c6f85dd30dc9'
-            '58d309d8da8793d4e5df18df566d7ab5b681fd858d10abdc8dd29b616d1987eb')
-source=(
-	"$_pkgname-$pkgver.tar.gz::https://github.com/strukturag/${_pkgname}/archive/v${pkgver}.tar.gz"
-	"https://github.com/strukturag/${_pkgname}/commit/83a5ad207facdc14b09065151a527db60637fd14.patch")
+sha256sums=('c6526a33ffda3567b708a762bd9977f5586011a94feeb36f967971cfade12363')
+source=("$_pkgname-$pkgver.tar.gz::https://github.com/strukturag/${_pkgname}/archive/v${pkgver}.tar.gz")
 
 _srcdir="${_pkgname}-${pkgver}"
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 _flags=(
 	-Wno-dev
 	-DCMAKE_BUILD_TYPE=Release
-	-DCMAKE_CXX_FLAGS_RELEASE='-DNDEBUG'
+	-DCMAKE_CXX_FLAGS_RELEASE='-DNDEBUG -Wno-error=stringop-overflow'
 	-DWITH_RAV1E=ON
 	-DWITH_RAV1E_PLUGIN=OFF
 	-DWITH_SvtEnc=ON # Only supported on 64 bits platforms
@@ -64,8 +61,6 @@ EOF
 	) > 'cmake/modules/FindRAV1E.cmake'
 
   sed -i 's/${${varName}_INCLUDE_DIR}/${${varName}_INCLUDE_DIRS}/' 'libheif/plugins/CMakeLists.txt'
-
-  patch -p1 -i "${srcdir}/83a5ad207facdc14b09065151a527db60637fd14.patch"
 }
 
 build() {
