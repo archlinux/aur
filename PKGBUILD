@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=RGMQLlib
-_pkgver=1.24.0
+_pkgver=1.25.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -18,8 +18,8 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://bioconductor.org/packages/release/data/experiment/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('fd89eebe085adb6eae527f4e5ce92188')
-b2sums=('93da28fdf8ab0d0cd43303974d7429eefac77448d2aa9e81b8b849b5473f00a07cc34831a3f06658056598f5db98b416c9d854eb44117df7101948652dc4e56a')
+md5sums=('80e368beff19d7b1b9f207b8c8cc6833')
+b2sums=('830babc571fa47695b520bbcf770e6754095bb9234ba248a7b51d536d583ce4aa0a45a8b18bfa4c3c2dafa5b9aaad6b8132faf6323f2344d1bd4bf8482983441')
 
 build() {
   mkdir build
