@@ -2,8 +2,8 @@
 # Contributor: linzeen
 pkgname=lze-web
 makedepends=('tar')
-pkgver=5.0
-pkgrel=1
+pkgver=7.0
+pkgrel=0
 pkgdesc="lze-web"
 arch=('x86_64')
 license=('PGP')

@@ -1,7 +1,7 @@
 pkgbase = lze-web
 	pkgdesc = lze-web
-	pkgver = 5.0
-	pkgrel = 1
+	pkgver = 7.0
+	pkgrel = 0
 	install = lze-web.install
 	arch = x86_64
 	license = PGP
