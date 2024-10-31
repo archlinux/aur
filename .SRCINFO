@@ -1,6 +1,6 @@
 pkgbase = vifm-git
 	pkgdesc = Ncurses based file manager with vi like keybindings
-	pkgver = 0.13.r308.g83f9c94fd
+	pkgver = 0.13.r599.g579dccd1e
 	pkgrel = 1
 	url = http://vifm.info/
 	arch = i686
