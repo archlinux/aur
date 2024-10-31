@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=snpStats
-_pkgver=1.54.0
+_pkgver=1.56.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -18,8 +18,8 @@ optdepends=(
   r-hexbin
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('4ed1cf60dc91e290409a06971522b57e')
-b2sums=('7f2f698dab78a41264fd08c96e0e32fe45b03d921ce4864d11db40f2b454590d9dfb9afa7fb8361f14d6813ea2729cfe89d1ae7b2c9f50a9a373acd06da07631')
+md5sums=('b473e5e0c8c7fa0ebc3353eb23acede3')
+b2sums=('82c100b76c68c5e9641016538c31f73e767cc05d385bec60b14aea8e958eb8d0233578421a879856a771525fa060133e19bfdb3b53b1d34e6a196ce58243a82a')
 
 build() {
   mkdir build
