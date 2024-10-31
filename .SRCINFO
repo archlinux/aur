@@ -1,6 +1,6 @@
 pkgbase = acter-bin
 	pkgdesc = Casual Community Organizing
-	pkgver = 1.24.10240
+	pkgver = 1.24.10310
 	pkgrel = 1
 	url = https://acter.global
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = acter-bin
 	depends = xdg-user-dirs
 	depends = libayatana-appindicator
 	conflicts = acter-nightly-bin
-	source = https://github.com/acterglobal/a3/releases/download/v1.24.10240/acter-linux-x64-1.24.10240.tar.bz2
-	md5sums = ce23312a9a0604c60436f5b30a55fffa
+	source = https://github.com/acterglobal/a3/releases/download/v1.24.10310/acter-linux-x64-1.24.10310.tar.bz2
+	md5sums = c3b6ae29cb3500eea8da8c909427a4f9
 
 pkgname = acter-bin
