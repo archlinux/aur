@@ -1,7 +1,7 @@
 # Maintainer: Adrià Arrufat <swiftscythe@gmail.com>
 
 pkgname=superhtml
-pkgver=0.5.0
+pkgver=0.5.1
 pkgrel=1
 pkgdesc="HTML Language Server & Templating Language Library"
 arch=('x86_64' 'aarch64' 'i686')
@@ -9,7 +9,7 @@ url="https://github.com/kristoff-it/$pkgname"
 license=('MIT')
 makedepends=('git' 'zig')
 source=("https://github.com/kristoff-it/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('e9710922a14514f3bc465b56367eb7e35b86a12dfc89c67c282eb9259d03ad35')
+sha256sums=('10b8d4a67ba682799c56fa6ca6b96a324709ffafb7d4df615010c64faee9d913')
 
 build() {
 	cd "$srcdir/$pkgname-${pkgver}"

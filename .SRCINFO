@@ -1,6 +1,6 @@
 pkgbase = superhtml
 	pkgdesc = HTML Language Server & Templating Language Library
-	pkgver = 0.5.0
+	pkgver = 0.5.1
 	pkgrel = 1
 	url = https://github.com/kristoff-it/superhtml
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = superhtml
 	license = MIT
 	makedepends = git
 	makedepends = zig
-	source = https://github.com/kristoff-it/superhtml/archive/refs/tags/v0.5.0.tar.gz
-	sha256sums = e9710922a14514f3bc465b56367eb7e35b86a12dfc89c67c282eb9259d03ad35
+	source = https://github.com/kristoff-it/superhtml/archive/refs/tags/v0.5.1.tar.gz
+	sha256sums = 10b8d4a67ba682799c56fa6ca6b96a324709ffafb7d4df615010c64faee9d913
 
 pkgname = superhtml
