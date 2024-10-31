@@ -1,14 +1,15 @@
-# Maintainer: devome <evinedeng@hotmail.com>
+# Maintainer: envolution
+# Contributor: devome <evinedeng@hotmail.com>
 
 pkgname=lobe-chat
-pkgver=1.19.2
+pkgver=1.26.17
 pkgrel=1
 pkgdesc="An open-source, modern-design LLMs/AI chat framework"
 arch=("x86_64" "aarch64")
 url="https://github.com/lobehub/${pkgname}"
 license=('Apache-2.0')
-depends=("nodejs")
-makedepends=("pnpm")
+depends=("nodejs" "nvm")
+makedepends=("npm" "pnpm")
 optdepends=("ollama: ollama backend")
 backup=("etc/default/${pkgname}")
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
@@ -16,24 +17,35 @@ source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz
         "${pkgname}.service"
         "${pkgname}.sysusers"
         "${pkgname}.tmpfiles")
-sha256sums=('23e85753d030756b2b35881ff2510e79b0db201001260d376bd5db09134c9c24'
+sha256sums=('d1bb26be4d88e22be1337252059948ddfb1bc6a54bff00fe37aa1aebab8b299c'
             '43143b06b5418e718fafa404999f6f1266a8f11c7427d93b81a23a2a0b348595'
-            '2dd8de2018bce82b092ac5fd70ad1ed09537a685270dcef0e2811cf1692c5382'
+            '7a6e39b716ebdc2df882b82301a8eb92f5b8ec625ad7a2ba3d4dae7a9f04f55b'
             'b370a660e91eacd7fee44691ff8de4446f4c8f36634a2d96a2f982b5fea9a0a6'
             '2e5323c4dc10d815cf3ffcee0fb9fa33dba5c95b2c28055e4c5b4f551bdc5049')
+
+_ensure_local_nvm() {
+    export NVM_DIR="${srcdir}/.nvm"
+    source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
+    nvm install
+    nvm use
+    echo "in _ensure nvm dir = ${NVM_DIR}"
+}
 
 build() {
     export COREPACK_ENABLE_STRICT=0
     export NEXT_TELEMETRY_DISABLED=1
+    export NODE_OPTIONS='--max-old-space-size=8192'
     export PUPPETEER_SKIP_DOWNLOAD="true"
 
     # build web
     cd "${pkgname}-${pkgver}"
+    _ensure_local_nvm
+    echo "in build() nvm dir = ${NVM_DIR}"
     pnpm install --cache "${srcdir}/npm-cache"
-    pnpm run build:docker
+    npm run build:docker
 
     # delete map file
-    find .next/standalone -type f -iname "*.map" | xargs rm -rf
+    find .next/standalone -type f -iname "*.map" -delete
 
     # fix path
     grep -rl "${srcdir}/${pkgname}-${pkgver}" .next | xargs -I {} sed -i "s|${srcdir}/${pkgname}-${pkgver}|/usr/share/${pkgname}|g" "{}"
@@ -48,12 +60,18 @@ package() {
     install -Dm644 "${pkgname}.sysusers"   "${pkgdir}/usr/lib/sysusers.d/${pkgname}.conf"
     install -Dm644 "${pkgname}.tmpfiles"   "${pkgdir}/usr/lib/tmpfiles.d/${pkgname}.conf"
 
+
+    mkdir -p "${pkgdir}/usr/share/${pkgname}/.nvm"
+    cp -r --preserve=mode .nvm             "${pkgdir}/usr/share/${pkgname}/"
+
     cd "${pkgname}-${pkgver}"
-    install -Dm644 README*.md           -t "${pkgdir}/usr/share/doc/${pkgname}"
+    install -Dm644 README*.md           -t "${pkgdir}/usr/share/doc/${pkgname}/"
+    install -Dm644 .nvmrc               -t "${pkgdir}/usr/share/${pkgname}/"
 
-    cp -r --preserve=mode .next/standalone "${pkgdir}/usr/share/${pkgname}"
-    cp -r --preserve=mode .next/static     "${pkgdir}/usr/share/${pkgname}/.next/static"
-    cp -r --preserve=mode public           "${pkgdir}/usr/share/${pkgname}/public"
+    cp -r --preserve=mode .next/standalone "${pkgdir}/usr/share/${pkgname}/"
+    cp -r --preserve=mode .next/static     "${pkgdir}/usr/share/${pkgname}/"
+    cp -r --preserve=mode public           "${pkgdir}/usr/share/${pkgname}/"
 
+    mkdir -p "${pkgdir}/usr/share/${pkgname}/.next"
     ln -s "/var/lib/${pkgname}/cache"      "${pkgdir}/usr/share/${pkgname}/.next/cache"
 }
