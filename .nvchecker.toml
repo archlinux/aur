@@ -1,0 +1,8 @@
+[lib32-mpg123]
+source = "httpheader"
+url = "https://sourceforge.net/projects/mpg123/files/latest/download"
+regex = "mpg123-(.*)\\.tar.bz2"
+
+#source = "regex"
+#url = "https://www.mpg123.de/"
+#regex = 'Releasing mpg123 version (\d+\.\d+\.\d+)'
