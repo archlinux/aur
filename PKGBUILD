@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=DTA
-_pkgver=2.50.0
+_pkgver=2.52.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -14,8 +14,8 @@ depends=(
   r-scatterplot3d
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('4f1d124015e4ebcc7a9ada8b7c981292')
-b2sums=('8d472723d48c5214c0a9c5bd3d0f63cd53a7c65d053751b34944aa918ae5332c483da18fd50dbec1d17985c11f10804b86fb7fa3bd7461d00e30235b9b66b45f')
+md5sums=('80978164209532213255a996f4b91b67')
+b2sums=('ebc1bb1c5c1f4c78ef3bf9da1e42fbbd1055eaedd2c91d482d374866af45a92d60f825bbe499d2d3a2293dd605477dedb5c585dbd124b45416db6384dfb585b0')
 
 build() {
   mkdir build
