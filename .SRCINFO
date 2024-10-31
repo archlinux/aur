@@ -1,6 +1,6 @@
 pkgbase = r-alphabeta
 	pkgdesc = Computational inference of epimutation rates and spectra from high-throughput DNA methylation data in plants
-	pkgver = 1.18.0
+	pkgver = 1.20.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/AlphaBeta
 	arch = any
@@ -18,7 +18,7 @@ pkgbase = r-alphabeta
 	depends = r-stringr
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/AlphaBeta_1.18.0.tar.gz
-	sha256sums = 653963c416c14a07efe787376d9fb1e70e24d06904a6cbde45dd1c23b8f352a4
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/AlphaBeta_1.20.0.tar.gz
+	sha256sums = f991208b7b593fe8df93ea3d9b007080c5445a986f051a8e4573b5a23a1ace7f
 
 pkgname = r-alphabeta
