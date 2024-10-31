@@ -7,7 +7,7 @@
 _pkgname="peazip"
 pkgname="$_pkgname"
 pkgver=10.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Cross-platform file and archive manager (${_widgets^})"
 url="https://github.com/peazip/PeaZip"
 license=('LGPL-3.0-or-later')
@@ -56,10 +56,10 @@ prepare() {
   sed -E -e '/IFDEF LINUX/s/syntaxlevel7z:=[0-9]+/syntaxlevel7z:=3/' \
     -i "$_pkgsrc/peazip-sources/dev/peach.pas"
 
-  # set paths
+  # set paths, needs trailing slash
   sed -E \
-    -e 's&(\bHBINPATH\b\s*)=\s*'\'\'';&\1= '\''/usr/bin'\'';&' \
-    -e 's&(\bHSHAREPATH\b\s*)=\s*'\'\'';&\1= '\'"/usr/share/$_pkgname"\'';&' \
+    -e 's&(\bHBINPATH\b\s*)=\s*'\'\'';&\1= '\''/usr/bin/'\'';&' \
+    -e 's&(\bHSHAREPATH\b\s*)=\s*'\'\'';&\1= '\'"/usr/share/$_pkgname/"\'';&' \
     -i "$_pkgsrc/peazip-sources/dev/peach.pas"
 
   # modify compiler options
