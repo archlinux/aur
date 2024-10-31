@@ -1,6 +1,6 @@
 pkgbase = r-hyperdraw
 	pkgdesc = Visualizing Hypergaphs
-	pkgver = 1.56.0
+	pkgver = 1.58.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/hyperdraw
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = r-hyperdraw
 	depends = r-hypergraph
 	depends = r-rgraphviz
 	depends = graphviz
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/hyperdraw_1.56.0.tar.gz
-	sha256sums = e5c57a7b740d7ff3e8e4f7c2dadf6a945d45ae86d61d5a09e6afe09d64e49d80
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/hyperdraw_1.58.0.tar.gz
+	sha256sums = 296b35fe6419b5c19220dfeacc72aabb13f083625280b160a55446a6597c285d
 
 pkgname = r-hyperdraw
