@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=GWASTools
-_pkgver=1.50.0
+_pkgver=1.52.0
 pkgname=r-${_pkgname,,}
-pkgver=1.50.0
+pkgver=1.52.0
 pkgrel=1
 pkgdesc='Tools for Genome Wide Association Studies'
 arch=('any')
@@ -40,7 +40,7 @@ optdepends=(
   r-variantannotation
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('84db4b6f555a88585d64ef4c8c423ed8e1d808fe7c8994760e1a24a6b8d87804')
+sha256sums=('c4cb6dc31476d56c9f25089aa78e298563e2f2d45b04ea1c8ad733510a839989')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
