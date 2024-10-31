@@ -1,6 +1,6 @@
 pkgbase = r-subseq
 	pkgdesc = Subsampling of high-throughput sequencing count data
-	pkgver = 1.34.0
+	pkgver = 1.36.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/subSeq
 	arch = any
@@ -20,7 +20,7 @@ pkgbase = r-subseq
 	optdepends = r-knitr
 	optdepends = r-limma
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/subSeq_1.34.0.tar.gz
-	sha256sums = 6af2a584468bb3c1df778ca4aecb8478520101a2bdbbaf44eaf430aa16e0b2dd
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/subSeq_1.36.0.tar.gz
+	sha256sums = 5cb74cd7af4760f04efea024625029f74367912ec085b92db2a45113e065ceef
 
 pkgname = r-subseq
