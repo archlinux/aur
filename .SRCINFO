@@ -1,6 +1,6 @@
 pkgbase = r-rnbeads.hg19
 	pkgdesc = RnBeads.hg19
-	pkgver = 1.36.0
+	pkgver = 1.37.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/RnBeads.hg19
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = r-rnbeads.hg19
 	depends = r
 	depends = r-genomicranges
 	optdepends = r-rnbeads
-	source = https://bioconductor.org/packages/release/data/experiment/src/contrib/RnBeads.hg19_1.36.0.tar.gz
-	sha256sums = c991085a2420b01c075b1f3a27645ed4c7a3b8e11b5c9efa52e6c4b4ffb0c77a
+	source = https://bioconductor.org/packages/release/data/experiment/src/contrib/RnBeads.hg19_1.37.0.tar.gz
+	sha256sums = 1423b50568825c8e09db8ebe018766bd5c2e601e65a75370044c9babbabec9c6
 
 pkgname = r-rnbeads.hg19
