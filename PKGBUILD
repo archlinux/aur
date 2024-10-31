@@ -21,12 +21,14 @@ backup=('etc/mongodb-compass.conf')
 source=(
 	"$pkgname-$pkgver.tar.gz::https://github.com/mongodb-js/compass/archive/v$_pkgver.tar.gz"
 	'update-dependencies.diff'
+	'update-dependencies-beta.diff'
 	'hadron-build-ffmpeg.diff'
 	'fix-argv.diff'
 	'mongodb-compass.conf'
 )
 b2sums=('f7b879c98378d862c7812d960c33b43e483c8142e9ae82d8b7ba40d8e3d0b0d6bc6f78a26996f2434edfbf90374c796e3a9d777c674fdf7059f2cadd6f789324'
         '3347d8004a45449e748c34b4113a2f304505780cf52ec36d38d535d9656587ebc55b2d7a9e48b6ad237e32b6c1f8010d87227b45e878777895bb824b5a2c36c4'
+        'aeeceb0865f15d04d425d6a06d36298ee6996bb54038cf4b0d1802a76800f924acd11c36b9af59f53cf081786356fc7969263918c6fdb970012a82d3588e4adc'
         '1b58f95bece4036c96ff6424aaa8a0469d1a45dae1a2bff391d08ef2799bf83810f7d13d1a8c81a5d7abd1c19c4d78bf27b5af4c5b1356947c54d724cc3a92fc'
         '2a07533bbd4697e8ad0e29402867662cc9d817dfbcfcde8bfa2e4e06f8df3c7d036822b8b33b49cb1d29a8b2c126c5a3381c6b2283e2732e4ca2943bd06bed68'
         '42535bfc10db335d685fad29aade1d091554a321fb4032b72db5699a450c6d701f630c45bb0d4cf9f456e77e3263a5aed49e843516cd3016d1a837ac5f1e6fec')
@@ -40,7 +42,11 @@ prepare() {
 	sed -i '/husky install/d' 'package.json'
 
 	# Set npm overrides for various dependencies
-	patch --forward -p1 < "$srcdir/update-dependencies.diff"
+	if [[ "$_target" =~ -beta$ ]]; then
+		patch --forward -p1 < "$srcdir/update-dependencies-beta.diff"
+	else
+		patch --forward -p1 < "$srcdir/update-dependencies.diff"
+	fi
 
 	# Set system Electron version for ABI compatibility
 	sed -i "s|%%ELECTRON_VERSION%%|$(cat "/usr/lib/$_electronpkg/version")|g" 'package.json'
