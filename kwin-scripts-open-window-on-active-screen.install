@@ -1,0 +1,23 @@
+BLUE='\033[0;34m'
+NC='\033[0m'
+post_install() {
+	echo -e "$BLUE"
+	echo 'To enable go to'
+	echo 'System Settings > Window Management > KWin Scripts > Open Window on Active Screen'
+	echo 'or run:'	
+	echo 'kwriteconfig6 --file kwinrc --group Plugins --key openwindowonactivescreenEnabled true && qdbus6 org.kde.KWin /KWin reconfigure'
+	echo -e "$NC"
+}
+
+post_remove() {
+	echo -e "$BLUE"
+	echo 'To clean the config you might want to run:'
+	echo 'kwriteconfig6 --file kwinrc --group Plugins --key openwindowonactivescreenEnabled --delete && qdbus6 org.kde.KWin /KWin reconfigure'
+	echo 'Then run:'
+	echo 'kwin_x11 --replace &'
+	echo 'or'
+	echo 'kwin_wayland --replace &'
+	echo 'or'
+	echo 'logout & log back in to ensure uninstall changes.'
+	echo -e "$NC"
+}

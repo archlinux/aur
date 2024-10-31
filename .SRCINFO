@@ -1,0 +1,18 @@
+pkgbase = kwin-scripts-open-window-on-active-screen-git
+	pkgdesc = Plasma 6 Plugin useful to open new windows on the monitor that has the mouse cursor
+	pkgver = 0.1.a.r0.gace1c1e
+	pkgrel = 1
+	url = https://github.com/MagiusCHE/p6-owac
+	install = kwin-scripts-open-window-on-active-screen.install
+	arch = any
+	license = GPL-3.0-only
+	makedepends = git
+	makedepends = sed
+	provides = kwin-scripts-open-window-on-active-screen
+	provides = p6-owac
+	conflicts = kwin-scripts-open-window-on-active-screen
+	conflicts = p6-owac
+	source = MagiusCHE.p6-owac::git+https://github.com/MagiusCHE/p6-owac
+	sha256sums = SKIP
+
+pkgname = kwin-scripts-open-window-on-active-screen-git
