@@ -2,7 +2,7 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=RProtoBufLib
-_pkgver=2.16.0
+_pkgver=2.18.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -20,9 +20,9 @@ optdepends=(
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz"
         "system-protobuf.patch")
-md5sums=('8e59daa7fa7a8c9a9e319154f5793d37'
+md5sums=('7de7917bb81b2f16b83661795e3f13bd'
          'b86808f8853c60a736e5d47f89c7dddc')
-b2sums=('f7bf380b8b4b2c44f186310be830f49f78a58a99a8ddff71b70ae627ef06b87d73a55f2939da653068766ee1b9d620c41b7d5b4c7ebb0c01f635584aa52b07b7'
+b2sums=('55535d12461a13b2882faa240faf3ad6813b00186f6fa27fb32d0cecfd65da1f5e66e35c30b114d183ff46fa419b96bcaf19ea3e93889167f275ab95c631b7ba'
         '573c657def792c4441dd6c3d8adc507489598a9fe79ad4ae1f6727a47fba061d287d859910b56caa64d96381d018403861a7f7769d7b232ac8c0fbbf0ce1798e')
 
 prepare() {
