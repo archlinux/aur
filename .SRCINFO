@@ -1,6 +1,6 @@
 pkgbase = r-easyreporting
 	pkgdesc = Helps creating report for improving Reproducible Computational Research
-	pkgver = 1.16.0
+	pkgver = 1.18.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/easyreporting
 	arch = any
@@ -17,7 +17,7 @@ pkgbase = r-easyreporting
 	optdepends = r-limma
 	optdepends = r-readxl
 	optdepends = r-statmod
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/easyreporting_1.16.0.tar.gz
-	sha256sums = 9299a0656fbaea185ea933f7f9dd9ac40e4d751905add033481df132d6e69e5a
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/easyreporting_1.18.0.tar.gz
+	sha256sums = f5b3f8f69777900c412d8b9946071b3e717869126e4cc3e139f5da1bdb9b5e2c
 
 pkgname = r-easyreporting

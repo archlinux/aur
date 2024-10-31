@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=easyreporting
-_pkgver=1.16.0
+_pkgver=1.18.0
 pkgname=r-${_pkgname,,}
-pkgver=1.16.0
+pkgver=1.18.0
 pkgrel=1
 pkgdesc='Helps creating report for improving Reproducible Computational Research'
 arch=('any')
@@ -26,7 +26,7 @@ optdepends=(
   r-statmod
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('9299a0656fbaea185ea933f7f9dd9ac40e4d751905add033481df132d6e69e5a')
+sha256sums=('f5b3f8f69777900c412d8b9946071b3e717869126e4cc3e139f5da1bdb9b5e2c')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
