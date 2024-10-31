@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=antiProfiles
-_pkgver=1.44.0
+_pkgver=1.46.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -18,8 +18,8 @@ optdepends=(
   r-rcolorbrewer
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('88087570597d3b4dd093f8f39ab39d16')
-b2sums=('30b66c1ca76e3ee525ec323a50af552f13e59d256ad4fdd68f4d306ebf4ff5990bd021a0b9b4a9f927215ca35a4c985c36cdb6c5ab1167615348764343a04eba')
+md5sums=('64a8a17ea0a8452fe4b9b8ee33789d3a')
+b2sums=('2d86d29975ad660053e4bb0eda0c4cb8d9bbc51a2c9d504b3f080eea05737da63dff8b844522967d49890e7b9a00f370d0437cfe623fddcf0c3db9b5992bd771')
 
 build() {
   mkdir build
