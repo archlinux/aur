@@ -1,6 +1,6 @@
 pkgbase = ps7_libps2000a
 	pkgdesc = Library for PicoScope 2000a series in PicoScope 7
-	pkgver = 2.1.139_5r6031
+	pkgver = 2.2.147_5r6515
 	pkgrel = 1
 	url = https://labs.picotech.com/picoscope7/debian/pool/main/libp/libps2000a/
 	install = ps7_libps2000a.install
@@ -9,7 +9,7 @@ pkgbase = ps7_libps2000a
 	depends = libusb
 	conflicts = ps7b_libps2000a
 	options = !strip
-	source = https://labs.picotech.com/picoscope7/debian/pool/main/libp/libps2000a/libps2000a_2.1.139-5r6031_amd64.deb
-	md5sums = 30a9f8384854a4f913c7b9b428b11f35
+	source = https://labs.picotech.com/picoscope7/debian/pool/main/libp/libps2000a/libps2000a_2.2.147-5r6515_amd64.deb
+	md5sums = 8e70885bd7e63ac4456afb56f6d1917d
 
 pkgname = ps7_libps2000a
