@@ -1,5 +1,5 @@
 # Maintainer: Ali Molaei <ali dot molaei at protonmail dot com>
-# Co-Maintainer: Mark Wagie <mark dot wagie at proton dot me>
+# Contributor: Mark Wagie <mark dot wagie at proton dot me>
 # Contributor: Samuel Walladge <samuel at swalladge dot net>
 pkgname=tagspaces-bin
 pkgver=6.0.2
