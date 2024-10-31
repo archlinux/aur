@@ -1,6 +1,6 @@
 pkgbase = r-fella
 	pkgdesc = Interpretation and enrichment for metabolomics data
-	pkgver = 1.24.0
+	pkgver = 1.26.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/FELLA
 	arch = any
@@ -22,7 +22,7 @@ pkgbase = r-fella
 	optdepends = r-shiny
 	optdepends = r-testthat
 	optdepends = r-visnetwork
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/FELLA_1.24.0.tar.gz
-	sha256sums = 31253479ff2a6916c99dcabb657665b4e39c9e0c4d970e016751d5f31d2d6be5
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/FELLA_1.26.0.tar.gz
+	sha256sums = 54e09c44278f02e92f6b1dc70f09a80d8439f0f222878107765c7fbeed22e4e4
 
 pkgname = r-fella
