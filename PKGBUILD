@@ -2,9 +2,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=sparsenetgls
-_pkgver=1.22.0
+_pkgver=1.24.0
 pkgname=r-${_pkgname,,}
-pkgver=1.22.0
+pkgver=1.24.0
 pkgrel=1
 pkgdesc='Using Gaussian graphical structue learning estimation in generalized least squared regression for multivariate normal regression'
 arch=('any')
@@ -24,7 +24,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('0b4f93c994f52b94419fb2d421dfa1a3a020542cfc573a9031fd679135fe18f5')
+sha256sums=('ad8b782c0580c5687b71a9963010ce12b3f9ea060a8a3f8f4c0567e55237ea5d')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
