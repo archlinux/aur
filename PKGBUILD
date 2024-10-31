@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=gatom
-_pkgver=1.2.0
+_pkgver=1.4.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -45,8 +45,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('e3861da00bd8a76677fbef482690690c')
-b2sums=('505051b52915ac697fbedeeb315d93af2a23cb3379219b52eff918cad86987cb8965f7ac46c8fed66cd8188530a9d2da3a1f231983e9222a546abc6bcef8305c')
+md5sums=('53c7f36266f15eca255e6c6ef3c83cc1')
+b2sums=('0e489b46cc5027022075e747fd5ee047351cf50400904c2e2a3ab4bdccd433a0d22dc438d2b95532ab7366c1233205372dcba427282a98ec8679efc901320d82')
 
 build() {
   mkdir build
