@@ -1,6 +1,6 @@
 pkgbase = r-mslp
 	pkgdesc = Predict synthetic lethal partners of tumour mutations
-	pkgver = 1.6.0
+	pkgver = 1.8.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/mslp
 	arch = any
@@ -22,8 +22,8 @@ pkgbase = r-mslp
 	optdepends = r-rmarkdown
 	optdepends = r-roxygen2
 	optdepends = r-tinytest
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/mslp_1.6.0.tar.gz
-	md5sums = 77a5b63f5921f90e6e6d7daa777bb0df
-	b2sums = 0ab77c4b4bd2959091e662e5fef8e2e8ea97fbf79c995cd2c378f8c81f23c3af113907d471671f8e572766c0e8b0efd7e5ca4c1056af384dbc73b76f6ce4907a
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/mslp_1.8.0.tar.gz
+	md5sums = d1daaf0f5a6170eed32cc5462d94ee47
+	b2sums = c0d0bd0dac33da70ec91c571e8394d1b9c8de73ee73cf44c297fde51dc47a833a5bf5c638befbbe794365e731b00f9552352a278abbbe180ca5fa21c115593e9
 
 pkgname = r-mslp
