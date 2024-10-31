@@ -1,6 +1,6 @@
 pkgbase = r-cellscape
 	pkgdesc = Explores single cell copy number profiles in the context of a single cell tree
-	pkgver = 1.28.0
+	pkgver = 1.30.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/cellscape
 	arch = any
@@ -13,8 +13,8 @@ pkgbase = r-cellscape
 	depends = r-stringr
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/cellscape_1.28.0.tar.gz
-	md5sums = 885d45707813e1796ded7803bf64331c
-	b2sums = c0427d99b02d5b8834c9c7734ed1ee40c79b660e5c993129dffcd7ed104aa4c5881a212616cd13f3c43798cceb206c906821a07fbe734ed33398aa63b518b464
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/cellscape_1.30.0.tar.gz
+	md5sums = 9dc56beae183f99fae4f3da0c4f63e3e
+	b2sums = 9477f5d7a493b1d9991a5d8c0f36d252986a0277dd31862955eb2e23d037217e89779b886ed94271fde167bc4679015278ba49de65489249e18c19a3af67fb42
 
 pkgname = r-cellscape
