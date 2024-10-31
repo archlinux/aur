@@ -5,7 +5,7 @@ _ver=1.13.2
 _tag=
 
 pkgver=${_ver}
-pkgrel=2
+pkgrel=1
 pkgdesc="Unofficail binary installer for heliomarpm's fork of udeler"
 arch=("x86_64")
 url="https://github.com/heliomarpm/udemy-downloader-gui"
@@ -44,6 +44,6 @@ package(){
     for _size in "192x192" "128x128" "96x96" "64x64" "48x48" "32x32" "24x24" "22x22" "20x20" "16x16" "8x8"
     do
         install -dm755 "${pkgdir}/usr/share/icons/hicolor/${_size}/apps"
-        convert "${srcdir}/udeler.png" -resize "${_size}" "${pkgdir}/usr/share/icons/hicolor/${_size}/apps/udeler.png"
+        magick "${srcdir}/udeler.png" -resize "${_size}" "${pkgdir}/usr/share/icons/hicolor/${_size}/apps/udeler.png"
     done
 }
