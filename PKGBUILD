@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=stepNorm
-_pkgver=1.76.0
+_pkgver=1.78.0
 pkgname=r-${_pkgname,,}
-pkgver=1.76.0
+pkgver=1.78.0
 pkgrel=1
 pkgdesc='Stepwise normalization functions for cDNA microarrays'
 arch=('any')
@@ -14,7 +14,7 @@ depends=(
   r-marray
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('1fc29bf234462f2c86cca06ffe58686ee419cd5011aa84f944fc2fcb198665a3')
+sha256sums=('781e629e58b0c60334a5befc3a84499fca80b9ebc7d3275f78c30c18413a6bd1')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
