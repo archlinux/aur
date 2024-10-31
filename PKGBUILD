@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=PLPE
-_pkgver=1.64.0
+_pkgver=1.66.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -14,8 +14,8 @@ depends=(
   r-lpe
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('e85184a43fa18098e2371b6596fd9743')
-b2sums=('1ea8b7e89c2f94f9003e8f0df0871235c485ef1fe18a89ff8ab21c10c4ff06cdb35f4b6b19a162bf2d14284eb330f2dee7825d60390e188aa3022412b88412f8')
+md5sums=('9daa2dbc4eb9ee37c4c3d91c9c343754')
+b2sums=('3694db4a10f407dd249ed256916d78db8de1c1aea892e6e312f12f5f43e3489e04755c59b0d5aeb5c7a350689793edde9635c5c96cf2b9462899880b6df2272e')
 
 build() {
   mkdir build
