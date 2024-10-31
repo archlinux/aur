@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=BADER
-_pkgver=1.42.0
+_pkgver=1.44.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -16,8 +16,8 @@ optdepends=(
   r-pasilla
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('aaf447ad9ca8128a96dc20e04a346154')
-b2sums=('79fd30a9b935c2d86ee58d37c2ca3f25b69e664192767da43ca96f74c418651c344489c3c1fca17e20bda42603736b251e8e6e355e91ed83c93d92097624a6bc')
+md5sums=('c36f487fbf82133999f70537d6627ae4')
+b2sums=('1c61e01e36137bbd339c4edfe91c22ac198e197a7194f01de3c24a170f13b325999990fabb4f212e694dbca0ed206881ffd1088723bcbf7188b215efbc885299')
 
 build() {
   mkdir build
