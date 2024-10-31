@@ -1,6 +1,6 @@
 pkgbase = handbrake-llvm-optimized
 	pkgver = 1.8.2.r2.g1b09b55fa
-	pkgrel = 1
+	pkgrel = 2
 	url = https://handbrake.fr/
 	arch = x86_64
 	license = GPL
