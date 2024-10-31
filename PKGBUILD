@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=CCPROMISE
-_pkgver=1.30.0
+_pkgver=1.32.0
 pkgname=r-${_pkgname,,}
-pkgver=1.30.0
+pkgver=1.32.0
 pkgrel=1
 pkgdesc='PROMISE analysis with Canonical Correlation for Two Forms of High Dimensional Genetic Data'
 arch=('any')
@@ -17,7 +17,7 @@ depends=(
   r-promise
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('b115bc7cae526b7b45d84ff8de1cd763191321cbbad246413d0991fc3eaa2c62')
+sha256sums=('8f5b51ea36a99150bc9bca88ade9b4de67042fa0a24822ac7ec0261386912615')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
