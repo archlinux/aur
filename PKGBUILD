@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=fastLiquidAssociation
-_pkgver=1.40.0
+_pkgver=1.42.0
 pkgname=r-${_pkgname,,}
-pkgver=1.40.0
+pkgver=1.42.0
 pkgrel=1
 pkgdesc='functions for genome-wide application of Liquid Association'
 arch=('any')
@@ -24,7 +24,7 @@ optdepends=(
   r-yeastcc
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('487e39b67247304bfb43d5d649e8c874f98354623549c196813d24b20017195a')
+sha256sums=('55e5b2299283c60c7efd24230d1611fca1740484e2ce46254ca5507301bdfebf')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
