@@ -2,9 +2,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=Rdisop
-_pkgver=1.62.0
+_pkgver=1.66.0
 pkgname=r-${_pkgname,,}
-pkgver=1.62.0
+pkgver=1.66.0
 pkgrel=1
 pkgdesc='Decomposition of Isotopic Patterns'
 arch=('x86_64')
@@ -18,7 +18,7 @@ optdepends=(
   r-runit
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('0600d03ab393b592604865b2ac42e11aa6c09fb2d3978b3ac679e5ace130e0cb')
+sha256sums=('0238512e7267777506dc904879317cdad046beecf9dd9f4d67c9821066638313')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
