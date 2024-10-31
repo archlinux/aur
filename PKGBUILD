@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=EGSEAdata
-_pkgver=1.32.0
+_pkgver=1.33.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -16,8 +16,8 @@ optdepends=(
   r-egsea
 )
 source=("https://bioconductor.org/packages/release/data/experiment/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('cedc929b5f76b2e025afc7946b44efd7')
-b2sums=('c7f9c9d2540a3becd8b29ccae128c75171ae95e21fa949af827316073d6a967d8b89921fc2afbcf72ad514ddb088bd5320bcd7b1f1d9a2633ea3767d04b9022b')
+md5sums=('2e4b04269714261fb29d9ab9ea563a2a')
+b2sums=('f05a47b62895177933adcdb0e47e5b97df3b3d9ec548376baf93494bee19fdd297f89e534343960c398c4915edf02eb93753f7de53c0347a6b5ab78003e4051a')
 
 build() {
   mkdir build
