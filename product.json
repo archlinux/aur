@@ -50,8 +50,8 @@
 		},
 		{
 			"name": "ms-vscode.js-debug",
-			"version": "1.94.0",
-			"sha256": "439ee7d384999fb1726296801bfcad9dcc9bad6622ae54317fc51ef99e0b2552",
+			"version": "1.95.1",
+			"sha256": "0ac296e94c66fb31e8ca12af11cd5f1373627028c9e12e0dc6531f10bbe05f7e",
 			"repo": "https://github.com/microsoft/vscode-js-debug",
 			"metadata": {
 				"id": "25629058-ddac-4e17-abba-74678e126c5d",
@@ -628,6 +628,13 @@
 				{
 					"pathGlob": "**/*.pdf",
 					"important": true
+				}
+			]
+		},
+		"Redis.redis-for-vscode": {
+			"onFileOpen": [
+				{
+					"pathGlob": "{**/redis.*,**/redis-server.*,**/redis_*,**/redisinsight.*}"
 				}
 			]
 		}
@@ -1761,7 +1768,9 @@
 		}
 	],
 	"extensionsEnabledWithApiProposalVersion": [
-		"GitHub.copilot-chat"
+		"GitHub.copilot-chat",
+		"ms-vscode.vscode-commander",
+		"ms-vscode.vscode-copilot-vision"
 	],
 	"extensionEnabledApiProposals": {
 		"ms-vscode.vscode-selfhost-test-provider": [
@@ -1954,7 +1963,6 @@
 			"aiTextSearchProvider",
 			"documentFiltersExclusive",
 			"chatParticipantPrivate",
-			"lmTools",
 			"contribDebugCreateConfiguration",
 			"inlineEdit"
 		],
@@ -2014,23 +2022,16 @@
 		"ms-azuretools.vscode-azureappservice": [
 			"terminalDataWriteEvent"
 		],
-		"ms-azuretools.vscode-azure-github-copilot": [
-			"contribChatParticipantDetection",
-			"lmTools"
-		],
 		"ms-vscode.anycode": [
 			"extensionsAny"
 		],
 		"ms-vscode.cpptools": [
-			"terminalDataWriteEvent",
-			"lmTools"
+			"terminalDataWriteEvent"
 		],
 		"redhat.java": [
 			"documentPaste"
 		],
-		"vscjava.vscode-java-pack": [
-			"lmTools"
-		],
+		"vscjava.vscode-java-pack": [],
 		"ms-dotnettools.csdevkit": [
 			"inlineCompletionsAdditions"
 		],
@@ -2049,8 +2050,16 @@
 			"chatParticipantAdditions",
 			"languageModelSystem"
 		],
-		"ms-toolsai.datawrangler": [
-			"lmTools"
+		"ms-toolsai.datawrangler": [],
+		"ms-vscode.vscode-commander": [],
+		"ms-vscode.vscode-websearchforcopilot": [],
+		"ms-vscode.vscode-copilot-data-analysis": [
+			"chatVariableResolver",
+			"chatProvider"
+		],
+		"ms-vscode.vscode-copilot-vision": [
+			"chatReferenceBinaryData",
+			"codeActionAI"
 		]
 	},
 	"tasConfig": {
@@ -2414,6 +2423,13 @@
 		"enablementKey": "chat_enabled",
 		"confirmationAction": "Install",
 		"confirmationMessage": "Are you sure you want to install GitHub Copilot?"
+	},
+	"defaultChatAgent": {
+		"extensionId": "GitHub.copilot",
+		"name": "GitHub Copilot",
+		"icon": "copilot",
+		"documentationUrl": "https://aka.ms/copilot-overview",
+		"gettingStartedCommand": "github.copilot.open.walkthrough"
 	},
 	"chatParticipantRegistry": "https://az764295.vo.msecnd.net/extensions/chat.json",
 	"commit": "@COMMIT@",

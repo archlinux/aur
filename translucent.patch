@@ -1,9 +1,9 @@
-diff -Naur a/src/main.js b/src/main.js
---- a/src/main.js	2022-09-01 00:05:32.000000000 +0200
-+++ b/src/main.js	2022-09-04 04:30:24.685459144 +0200
-@@ -224,6 +224,10 @@
- 	 */
- 	app.commandLine.appendSwitch('disable-features', 'CalculateNativeWinOcclusion');
+diff -Naur a/src/main.ts b/src/main.ts
+--- a/src/main.ts	2024-10-28 09:08:10.000000000 +0100
++++ b/src/main.ts	2024-10-31 09:34:25.117872583 +0100
+@@ -298,6 +298,10 @@
+ 		`FontMatchingCTMigration,${app.commandLine.getSwitchValue('disable-blink-features')}`;
+ 	app.commandLine.appendSwitch('disable-blink-features', blinkFeaturesToDisable);
  
 +	// Enable visuals for transparent window
 +	app.commandLine.appendSwitch('enable-transparent-visuals');
@@ -100,13 +100,13 @@ diff -Naur a/src/vs/workbench/contrib/splash/browser/partsSplash.ts b/src/vs/wor
  				titleBarBackground: theme.getColor(themes.TITLE_BAR_ACTIVE_BACKGROUND)?.toString(),
  				activityBarBackground: theme.getColor(themes.ACTIVITY_BAR_BACKGROUND)?.toString(),
 diff -Naur a/src/vs/workbench/contrib/terminal/browser/xterm/xtermTerminal.ts b/src/vs/workbench/contrib/terminal/browser/xterm/xtermTerminal.ts
---- a/src/vs/workbench/contrib/terminal/browser/xterm/xtermTerminal.ts	2023-12-06 02:36:56.000000000 +0100
-+++ b/src/vs/workbench/contrib/terminal/browser/xterm/xtermTerminal.ts	2023-12-08 03:27:56.018613920 +0100
-@@ -219,6 +219,7 @@
+--- a/src/vs/workbench/contrib/terminal/browser/xterm/xtermTerminal.ts	2024-10-28 09:08:10.000000000 +0100
++++ b/src/vs/workbench/contrib/terminal/browser/xterm/xtermTerminal.ts	2024-10-31 09:32:17.961287862 +0100
+@@ -186,6 +186,7 @@
  
  		this.raw = this._register(new xtermCtor({
  			allowProposedApi: true,
 +			allowTransparency: true,
- 			cols,
- 			rows,
+ 			cols: options.cols,
+ 			rows: options.rows,
  			documentOverride: layoutService.mainContainer.ownerDocument,
