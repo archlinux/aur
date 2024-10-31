@@ -2,9 +2,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=sarks
-_pkgver=1.16.0
+_pkgver=1.18.0
 pkgname=r-${_pkgname,,}
-pkgver=1.16.0
+pkgver=1.18.0
 pkgrel=1
 pkgdesc='Suffix Array Kernel Smoothing for discovery of correlative sequence motifs and multi-motif domains'
 arch=('any')
@@ -23,7 +23,7 @@ optdepends=(
   r-runit
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('226254d71f820d9ddd4125977f44505c9b63151b7841da20f395ff309febceab')
+sha256sums=('126a89d57632391465a987b14c7ecb8fa2172b30d90856b501702e527cf940b2')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
