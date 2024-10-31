@@ -9,7 +9,7 @@ _electron="electron30"  # As of 2024-10-21, latest working version is `electron3
 _nodeversion=20         # As of 2024-10-20, the minimum version of `nodejs` is 20.
 _pkgname="schildichat-desktop"
 pkgname="${_pkgname}-git"
-pkgver=1.11.81.sc.0.test.0+3.r503.20241021.a18b08f
+pkgver=1.11.81.sc.0.test.0+15.r515.20241031.735143f
 pkgrel=2
 pkgdesc="A Matrix client based on Element with a more traditional instant messaging experience. Build of the latest git checkout."
 arch=(
@@ -45,8 +45,9 @@ depends=(
 )
 source=(
   "${_pkgname}::git+https://github.com/SchildiChat/schildichat-desktop.git#branch=lite"
+  "git+https://github.com/SchildiChat/compound-web.git"
   "git+https://github.com/SchildiChat/matrix-js-sdk.git"
-  "git+https://github.com/SchildiChat/matrix-react-sdk.git"
+  # "git+https://github.com/SchildiChat/matrix-react-sdk.git"
   "git+https://github.com/SchildiChat/element-web.git"
   "git+https://github.com/SchildiChat/element-desktop.git"
   "autolaunch.patch"
@@ -54,14 +55,15 @@ source=(
   "schildichat-desktop.sh"
 )
 sha256sums=(
-  'SKIP'
-  'SKIP'
-  'SKIP'
-  'SKIP'
-  'SKIP'
-  '20533d63ffadf03dbfd173e6d4f1f1048746a628db7b2a70f5bc02390e812302'
-  '6450af411fea039cb76357ff4ea7f1ef336601315de4d27b848a75d7960cef17'
-  '8084211fe11ba23be956ef4b8bb0fffaa6aaa721b79f9753ecc3574666ef95ce'
+  'SKIP'  # schildichat-desktop (git)
+  'SKIP'  # compound-web (git)
+  'SKIP'  # matrix-js-sdk (git)
+  # 'SKIP'  # matrix-react-sdk (git)
+  'SKIP'  # element-web (git)
+  'SKIP'  # element-desktop (git)
+  '20533d63ffadf03dbfd173e6d4f1f1048746a628db7b2a70f5bc02390e812302'  # autolaunch.patch
+  '6450af411fea039cb76357ff4ea7f1ef336601315de4d27b848a75d7960cef17'  # schildichat-desktop.desktop
+  '8084211fe11ba23be956ef4b8bb0fffaa6aaa721b79f9753ecc3574666ef95ce'  # schildichat-desktop.sh
 )
 
 prepare() {
@@ -71,8 +73,9 @@ prepare() {
   #nvm install "${_nodeversion}" # Not needed; `nodejs>=${_nodeversion}` from the repositories suffices.
 
   git submodule init
+  git config submodule.compound-web.url     "${srcdir}/compound-web"
   git config submodule.matrix-js-sdk.url    "${srcdir}/matrix-js-sdk"
-  git config submodule.matrix-react-sdk.url "${srcdir}/matrix-react-sdk"
+  # git config submodule.matrix-react-sdk.url "${srcdir}/matrix-react-sdk"
   git config submodule.element-web.url      "${srcdir}/element-web"
   git config submodule.element-desktop.url  "${srcdir}/element-desktop"
   git -c protocol.file.allow=always submodule update
