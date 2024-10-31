@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=miRBaseConverter
-_pkgver=1.28.6
+_pkgver=1.30.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -20,8 +20,8 @@ optdepends=(
   r-runit
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('46ee53b1acb8da0a1fe09c6e6e77592f')
-b2sums=('83224dfcdd348c23706ee06a5a5beee1168d6825f4332af90270128788caab863a5006e4edd321de3eb4924ff46b8c0c7148f1c24d8af5572be4e547f9e37a73')
+md5sums=('1be1455324a0b495727373e719e29026')
+b2sums=('67ae1a362c89586bea36fa1d74c5df20a32413d5568f794522861728f7740df53747a46e55c5f11b5a80857f58a1e2d841a1da655e4cbbee52ef3710ad191c9c')
 
 build() {
   mkdir build
