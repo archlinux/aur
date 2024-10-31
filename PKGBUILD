@@ -1,16 +1,17 @@
-# Maintainer: mel <mel@nie.rs>
+# Maintainer: Jah Way <jahway603 at protonmail dot com>
+# Previous Maintainer: mel <mel@nie.rs>
 # Contributor Gustavo Alvarez <sl1pkn07@gmail.com>
 # Contributor: Antonio Rojas
 
 pkgname=prison-git
 _name=${pkgname%-git}
-pkgver=v5.102.0.r8.gd195b3a
+pkgver=v6.7.0.r2.g4cbf603
 pkgrel=1
 pkgdesc="Barcode api currently offering a nice Qt api to produce QRCode barcodes and DataMatrix barcodes. (GIT version)"
 arch=(x86_64)
 url='https://invent.kde.org/frameworks/prison'
 license=(LGPL)
-depends=(libdmtx qrencode qt6-declarative zxing-cpp)
+depends=(libdmtx qrencode qt6-declarative qt6-multimedia zxing-cpp)
 makedepends=(extra-cmake-modules git)
 conflicts=(prison)
 provides=(prison)
