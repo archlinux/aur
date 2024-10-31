@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=TSAR
-_pkgver=1.2.0
+_pkgver=1.4.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -35,8 +35,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('8e206686dbb35ea9263932955484f4db')
-b2sums=('7f1b307e939a38e86ee4b6c091fea42b996c84fea16769aa04a067695c62b9ba2ccd99d7952f454364e7f0e9679cf5f098a5efdba9fcce470fc752bc49f25fab')
+md5sums=('841c30e0dfaafc18f334079e604b927b')
+b2sums=('28fbcd83bb526af877f06dde90468ea17ad6375e8386ec5fb962c5f2701ab810321d4714d817b29d8309faba0b3fe3cf8d6de6e0cfd24926a0c07af67a59ca35')
 
 build() {
   mkdir build
