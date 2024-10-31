@@ -2,10 +2,13 @@
 # Contributor: Robert Brzozowski <robson75@linux.pl>
 # Contributor: Charles Bos <charlesbos1 AT gmail>
 
+## options
+: ${_build_sodeps:=false}
+
 _pkgname='compiz'
 pkgname="$_pkgname-git"
 pkgver=0.9.14.2.r11.g8196e9c
-pkgrel=3
+pkgrel=4
 pkgdesc="Composite manager for Aiglx and Xgl, with plugins and CCSM"
 url="https://launchpad.net/compiz"
 arch=('i686' 'x86_64')
@@ -20,11 +23,11 @@ depends=(
   'glu'
   'libice'
   'libnotify'
-  'libprotobuf.so'
   'libsm'
   'libwnck3'
   'libxslt'
-  'metacity' # libmetacity.so
+  'metacity'
+  'protobuf'
   'python'
   'python-cairo'
   'python-dbus'
@@ -42,6 +45,12 @@ makedepends=(
 optdepends=(
   'xorg-xprop: grab various window properties for use in window matching rules'
 )
+
+if [ "${_build_sodeps::1}" = "t" ]; then
+  depends+=(
+    "libprotobuf.so"
+  )
+fi
 
 provides=(
   "ccsm=${pkgver:0:6}"
@@ -129,14 +138,12 @@ build() {
     -S "$_pkgsrc"
     -G Ninja
     -DCMAKE_BUILD_TYPE=None
-    -DCMAKE_INSTALL_PREFIX="/usr"
-    -DCMAKE_INSTALL_LIBDIR="/usr/lib"
+    -DCMAKE_INSTALL_PREFIX='/usr'
     -DCMAKE_CXX_STANDARD=17
     -DCOMPIZ_DISABLE_SCHEMAS_INSTALL=ON
     -DCOMPIZ_BUILD_WITH_RPATH=OFF
     -DCOMPIZ_PACKAGING_ENABLED=ON
     -DBUILD_GTK=ON
-    -DBUILD_KDE4=OFF
     -DBUILD_METACITY=ON
     -DCOMPIZ_DEFAULT_PLUGINS="composite,opengl,decor,resize,place,move,compiztoolbox,staticswitcher,regex,animation,wall,ccp"
     -DCOMPIZ_BUILD_TESTING=OFF
@@ -164,6 +171,7 @@ package() {
   fi
 
   # licenses
-  install -Dm644 "$_pkgsrc"/{COPYING,COPYING.GPL,COPYING.LGPL,COPYING.MIT} \
-    -t "$pkgdir/usr/share/licenses/$pkgname"
+  for i in COPYING COPYING.GPL COPYING.LGPL COPYING.MIT; do
+    install -Dm644 "$_pkgsrc/$i" "$pkgdir/usr/share/licenses/$pkgname/LICENSE${i#COPYING}"
+  done
 }
