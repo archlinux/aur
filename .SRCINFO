@@ -1,6 +1,6 @@
 pkgbase = r-cogena
 	pkgdesc = co-expressed gene-set enrichment analysis
-	pkgver = 1.38.0
+	pkgver = 1.40.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/cogena
 	arch = any
@@ -26,7 +26,7 @@ pkgbase = r-cogena
 	depends = r-tidyr
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/cogena_1.38.0.tar.gz
-	sha256sums = 7fec886d820ccfa8193573443b4d5a54990a3c0e436705eabe0581bd2b898170
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/cogena_1.40.0.tar.gz
+	sha256sums = 0cbb5076adfbf672149e0104db0a00b31fc6edc26ed11789792c53902c545772
 
 pkgname = r-cogena
