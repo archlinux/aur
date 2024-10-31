@@ -3,7 +3,7 @@
 _pkgmainbranch=nvidia-utils
 pkgbase=nvidia-535xx-utils
 pkgname=('nvidia-535xx-utils' 'opencl-nvidia-535xx' 'nvidia-535xx-dkms')
-pkgver=535.183.01
+pkgver=535.216.01
 pkgrel=3
 pkgdesc="NVIDIA drivers for Linux, 535 branch, dkms"
 arch=('x86_64')
@@ -15,15 +15,11 @@ _pkg="NVIDIA-Linux-x86_64-${pkgver}"
 source=('nvidia-drm-outputclass.conf'
         'nvidia-utils.sysusers'
         'nvidia.rules'
-        'linux-6.10.patch'
-        '6.11-fbdev.patch'
         "https://us.download.nvidia.com/XFree86/Linux-x86_64/${pkgver}/${_pkg}.run")
 sha512sums=('de7116c09f282a27920a1382df84aa86f559e537664bb30689605177ce37dc5067748acf9afd66a3269a6e323461356592fdfc624c86523bf105ff8fe47d3770'
             '4b3ad73f5076ba90fe0b3a2e712ac9cde76f469cd8070280f960c3ce7dc502d1927f525ae18d008075c8f08ea432f7be0a6c3a7a6b49c361126dcf42f97ec499'
             'a0ceb0a6c240cf97b21a2e46c5c212250d3ee24fecef16aca3dffb04b8350c445b9f4398274abccdb745dd0ba5132a17942c9508ce165d4f97f41ece02b0b989'
-            '29b156ee3504f11216e462d69c219f1c144a36f19b6756301e3db133c4c471d0b94483fd2809a32909c43f9cbaadd4016988b55354e77204f7d8a0033e735a8e'
-            'd37aa56ed937c596340106138a80c38ef5cc703cdc270dea6189fda20bcf369b11badd662bd0c0799ec1282428ca64d3dc137289fa1951905a10fd4cba6dd9b0'
-            '02b6b679f4fc1d5305f32fca8ce0875eef04cb99f5611d0bb85ac7607ecdd5b2aa4d60b51bf47546477464531a07fffa5bf3db3859868648bd5e86565d85afbb')
+            '3b4ae3584368fcc5f81a680dd8588d8b9e48f43dafe2490f5414ed258fa8c9799ebd40d2fd115e20bd02648eeb3e5c6dff39562d89353580fa679d011cebf6f8')
 
 
 create_links() {
@@ -40,9 +36,6 @@ prepare() {
     sh "${_pkg}.run" --extract-only
     cd "${_pkg}"
     bsdtar -xf nvidia-persistenced-init.tar.bz2
-
-    # https://aur.archlinux.org/packages/nvidia-535xx-dkms#comment-982769
-    patch -Np1 -i "$srcdir/linux-6.10.patch"
 
     cd kernel
 
@@ -105,8 +98,8 @@ package_nvidia-535xx-utils() {
                 'xorg-server: Xorg support'
                 'xorg-server-devel: nvidia-xconfig'
                 'opencl-nvidia: OpenCL support')
-    conflicts=('nvidia-utils' 'nvidia-libgl')
-    provides=("nvidia-utils=${pkgver}" 'vulkan-driver' 'opengl-driver' 'nvidia-libgl')
+    conflicts=('nvidia-utils' 'nvidia-libgl' 'egl-gbm')
+    provides=("nvidia-utils=${pkgver}" 'vulkan-driver' 'opengl-driver' 'nvidia-libgl' 'egl-gbm')
     install="${pkgname}.install"
 
     cd "${_pkg}"
