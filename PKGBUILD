@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=GeneMeta
-_pkgver=1.76.0
+_pkgver=1.78.0
 pkgname=r-${_pkgname,,}
-pkgver=1.76.0
+pkgver=1.78.0
 pkgrel=1
 pkgdesc='MetaAnalysis for High Throughput Experiments'
 arch=('any')
@@ -18,7 +18,7 @@ optdepends=(
   r-rcolorbrewer
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('c1f5a4bb27c0df02b7db1395a39a053994896fd203aa9f7d112e9016bb98e3f4')
+sha256sums=('29b471690d86f9e3f7f5de2e103019bb1615a2ee3360b4f243f904c79bc4d0c7')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
