@@ -4,7 +4,6 @@ pkgbase = dictpopup
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/Ajatt-Tools/dictpopup
-	install = dictpopup.install
 	arch = any
 	license = GPL-3.0
 	makedepends = git

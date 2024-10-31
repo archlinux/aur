@@ -15,7 +15,6 @@ conflicts=()
 replaces=()
 backup=()
 options=()
-install="$pkgname.install"
 changelog=
 url="https://github.com/Ajatt-Tools/dictpopup"
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
