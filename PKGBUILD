@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=EnMCB
-_pkgver=1.16.0
+_pkgver=1.18.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -32,8 +32,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('1970f93fe12f889989fb8c75325570fb')
-b2sums=('d69b8a30210b0dbff7172ca55c5bbc97404463632ca6ca93635424fe5e0e5bb7da790700a20995995c1dedd1cd2111b3b0d7011d3fe9edf2144d4d5f1df1db52')
+md5sums=('8ffa6ebe8f3a3038947a7a113cb601ca')
+b2sums=('2eea1bbd87dc0a97ce7ae9f6e6da4948c2fff40f404c498010570d51f2a88fd1438de112fab939d6086a25675a79917d232ec4365ced25f35118c54359834d23')
 
 build() {
   mkdir build
