@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=ReactomeGSA
-_pkgver=1.18.0
+_pkgver=1.20.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -28,8 +28,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('d26ef99a4e66f2bd8260f740756ff143')
-b2sums=('a8538e564bd3b83ed1aa968f8937a6797815474a76054978bec800e4fa1b2d3cc1ec933fdfb03062256deb9ed4e82a83430e05550e9262487234fbb02b566c70')
+md5sums=('9ac75169cf50f17bee67fe2487c30a57')
+b2sums=('5be890335b6fd3e9dd4ef8958028a4ceb4b11dd15e6906e22c0971f0681899f9756c8934eafcf9559569c0705b50171e7ddc5ea4fa45b6b184d16bd391e1dc4c')
 
 build() {
   mkdir build
