@@ -1,0 +1,3 @@
+[kwin-scripts-open-window-on-active-screen-git]
+source = "git"
+git = "https://github.com/MagiusCHE/p6-owac.git"
