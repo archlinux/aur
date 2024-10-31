@@ -1,6 +1,6 @@
 pkgbase = r-oncoscanr
 	pkgdesc = Secondary analyses of CNV data (HRD and more)
-	pkgver = 1.6.0
+	pkgver = 1.8.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/oncoscanR
 	arch = any
@@ -16,8 +16,8 @@ pkgbase = r-oncoscanr
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/oncoscanR_1.6.0.tar.gz
-	md5sums = c0cb4d4e3401baaaaafb15dce0fc2dfc
-	b2sums = 0ad00bab6a55b37704784c61d7b3d0678e1f6a7fbed6fb2a4c66ea0cfd67637c902de74acc94b62add81361a18f689764a94f2a2f067c3cbcaa0429ef18109f3
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/oncoscanR_1.8.0.tar.gz
+	md5sums = 41a3ad0c018823770001a20a8a1625ac
+	b2sums = 391cb89f72d68aea4f4162efcb9e9570fc24471dc4880e5c2d5c7558c1a05708d1ae4cbcd2995df79750af52d88051e909163dccacb6b4a7ea7f07a8a7d0cf19
 
 pkgname = r-oncoscanr
