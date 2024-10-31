@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=PROcess
-_pkgver=1.80.0
+_pkgver=1.82.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -13,8 +13,8 @@ depends=(
   r-icens
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('503353d272d55184fae548f5564b43d1')
-b2sums=('d198d0ff5a6c23221f43e9a2d5994562d096385efd01dc1bfb6baff587ae1e04e5a60ca851b18004f2f47800857d11b83ac68b2fe6bf8fb2715863114fd68f75')
+md5sums=('4908c255d9a7568a935d9a9a104a1543')
+b2sums=('61a9be7f114f37f69cb652b78e44795b39b879b5070567894f6e4b376508f1682e82985681ce29d1c34211c3a6e0e513f31a53bf69dedfc5a4b987c1b4db2845')
 
 build() {
   mkdir build
