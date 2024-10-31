@@ -3,7 +3,7 @@
 
 pkgname=lobe-chat
 pkgver=1.26.17
-pkgrel=4
+pkgrel=6
 pkgdesc="An open-source, modern-design LLMs/AI chat framework"
 arch=("x86_64" "aarch64")
 url="https://github.com/lobehub/${pkgname}"
@@ -74,6 +74,6 @@ package() {
     cp -r --preserve=mode .next/static     "${pkgdir}/usr/share/${pkgname}/"
     cp -r --preserve=mode public           "${pkgdir}/usr/share/${pkgname}/"
 
-    mkdir -p "${pkgdir}/usr/share/${pkgname}/standalone/.next"
-    ln -s "/var/lib/${pkgname}/cache"      "${pkgdir}/usr/share/${pkgname}/standalone/.next/cache"
+    mkdir -p "${pkgdir}/var/lib/${pkgname}/standalone"
+    ln -s "/var/lib/${pkgname}/standalone/.next"      "${pkgdir}/usr/share/${pkgname}/standalone/.next"
 }
