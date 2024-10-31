@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=genoCN
-_pkgver=1.56.0
+_pkgver=1.58.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -13,8 +13,8 @@ depends=(
   r
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('725246cab4e8d0edf5dd6c0266ecde22')
-b2sums=('7e20661834f42fdfaf8de793d6bdb1c01910e8507ea6ef2bceda2ff5924cab790fa234d7344d255d3ea9da14ba25b4e00c253c883305a563995fa3b51d6cf1f9')
+md5sums=('f1d64e3799c3378276c6921f175ec367')
+b2sums=('edf91b9df85038ad570fe5eda4d86ee97ee7e1bcdc4b06f20667ac25dc61e0a4882bd3b01c1673a3edd0c4a2936d0898a0b4c4d7d8bc1786c48c460d7fb6e706')
 
 build() {
   mkdir build
