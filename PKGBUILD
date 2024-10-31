@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=Icens
-_pkgver=1.76.0
+_pkgver=1.78.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -13,8 +13,8 @@ depends=(
   r
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('ba4363a7840211d10614391f79d8260e')
-b2sums=('aaac6ced07a32f7795cd5f3d8a7f31ca9bf56287ab0d59f9ec74bce76f34442859af754f5474cdb233bf9020ebf48f84570e79bd4a2beccf5049528fca8077d4')
+md5sums=('a9c2a7c2a240d00ef9baa1100daabf5c')
+b2sums=('5cbaa23b8e3c2f51224e6f9c8c90a9b7139c950ebb33b285d857c379ec3604bd8cb1d5e18024a612803ccb5592dbccf2dbd9e874e460fd835f801161378a165f')
 
 build() {
   mkdir build
