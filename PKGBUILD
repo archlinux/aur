@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=copa
-_pkgver=1.72.0
+_pkgver=1.74.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -16,8 +16,8 @@ optdepends=(
   r-colonca
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('fb39db43120b4f25ce43c970daf9447d')
-b2sums=('04dd4a5a85c016e03d15a70731cadb5730f03305f9b0b0c2dbcc58f511378eb428130aab293dccb8dfe224813b1b7702766d295a5f72c0cc010b608a7dab100d')
+md5sums=('4a01631dd274c80e9005beb1021e1684')
+b2sums=('c7e87d89972eaa5ba00871bdde9bfa77278f8f69ecceb50d28999e9002fc7133eb7c7fd13c51db0d6002cc13c4904fb131a30c155644d9f1d7ce10da29b0075f')
 
 build() {
   mkdir build
