@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=HilbertCurve
-_pkgver=1.34.0
+_pkgver=2.0.0
 pkgname=r-${_pkgname,,}
-pkgver=1.34.0
+pkgver=2.0.0
 pkgrel=1
 pkgdesc='Making 2D Hilbert Curve'
 arch=('any')
@@ -29,7 +29,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('4b4103c3c45fe345c194f387bd096cf201ec2a8811788b79177b12a414146a4e')
+sha256sums=('4398f5fa6ca052500711fa5815e8b7f28b882b1e9f890150913ca5d02e898a1d')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
