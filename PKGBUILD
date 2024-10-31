@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=coGPS
-_pkgver=1.48.0
+_pkgver=1.50.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -16,8 +16,8 @@ optdepends=(
   r-limma
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('c3e970e705076cfd80268a8c318651dd')
-b2sums=('a4e55cba7c9d70d4201bdcbba77af562034abf8523188d1442ac012c68b4a26ceaa2313d8339ef56962e08e6f021fc91ff6e1bfc2f4e252ae14432ffa7432eeb')
+md5sums=('24c06b97648ec7877c93dc5c8a98240f')
+b2sums=('d2a46d120708e8e9019b2d2cfae78defac45e86daf05a17b48ecfc4bcaba001502220f7dee006d0e18df0adb79c9974af0c84d7e897d1f2737a8e9b2791f37b7')
 
 build() {
   mkdir build

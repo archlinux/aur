@@ -1,14 +1,14 @@
 pkgbase = r-cogps
 	pkgdesc = cancer outlier Gene Profile Sets
-	pkgver = 1.48.0
+	pkgver = 1.50.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/coGPS
 	arch = any
 	license = GPL-2.0-only
 	depends = r
 	optdepends = r-limma
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/coGPS_1.48.0.tar.gz
-	md5sums = c3e970e705076cfd80268a8c318651dd
-	b2sums = a4e55cba7c9d70d4201bdcbba77af562034abf8523188d1442ac012c68b4a26ceaa2313d8339ef56962e08e6f021fc91ff6e1bfc2f4e252ae14432ffa7432eeb
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/coGPS_1.50.0.tar.gz
+	md5sums = 24c06b97648ec7877c93dc5c8a98240f
+	b2sums = d2a46d120708e8e9019b2d2cfae78defac45e86daf05a17b48ecfc4bcaba001502220f7dee006d0e18df0adb79c9974af0c84d7e897d1f2737a8e9b2791f37b7
 
 pkgname = r-cogps
