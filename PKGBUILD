@@ -7,11 +7,11 @@
 pkgname=('0ad-git' '0ad-data-git')
 _pkgname=0ad
 epoch=1
-pkgver=a26.r849.gea4b580527
-pkgrel=2
+pkgver=a26.r957.g6d12d25348
+pkgrel=1
 pkgdesc="Cross-platform, 3D and historically-based real-time strategy game - built from git development version."
 arch=('i686' 'x86_64')
-url="http://play0ad.com/"
+url="https://play0ad.com"
 license=('GPL-2.0-or-later' 'LicenseRef-CCPL')
 makedepends=('boost' 'cmake' 'mesa' 'zip' 'libsm' 'rust' 'git'
              'enet' 'fmt' 'gloox' 'libminiupnpc.so'
@@ -42,17 +42,20 @@ prepare() {
 }
 
 build() {
+# https://gitea.wildfiregames.com/0ad/0ad/issues/6895
   cd Python-3.11.10
   ./configure
   make
   make DESTDIR="$srcdir/pythoninstall" install
   cd ..
   PATH="$PWD/pythoninstall/usr/local/bin:$PATH"
+  cd pythoninstall/usr/local/bin/
+  # Why is this not done by default...
+  ln -s python3 python
 
   # this uses malloc_usable_size, which is incompatible with fortification level 3
   export CFLAGS="${CFLAGS/_FORTIFY_SOURCE=3/_FORTIFY_SOURCE=2}"
   export CXXFLAGS="${CXXFLAGS/_FORTIFY_SOURCE=3/_FORTIFY_SOURCE=2}"
-  # remove once this is fixed https://trac.wildfiregames.com/ticket/6895
   cd "$srcdir/${_pkgname}/libraries"
   ./build-source-libs.sh
   cd "$srcdir/${_pkgname}/build/workspaces"
