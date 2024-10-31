@@ -1,6 +1,6 @@
 # Maintainer: Jenya Sovetkin <e dot sovetkin at gmail dot com>
 pkgname=notmuch-deduplicate-git
-pkgver=r1.335a9d0
+pkgver=r4.76bc091
 pkgrel=1
 pkgdesc="Deduplicate Maildir using Notmuch"
 arch=('any')
