@@ -2,7 +2,7 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=diffuStats
-_pkgver=1.24.0
+_pkgver=1.26.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -36,8 +36,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('7acb79b4e235d46ccdd561c0d17f54b6')
-b2sums=('fbfa3b4fa0722fb30e7edafac3c241fb0e446de2115f79acb9c89f09f83cc1e0852cd145bcb923a7322d97180c07fce30af56294f92bd86254874310bb038384')
+md5sums=('898b1d3d9490425dac135e1cc272f6f7')
+b2sums=('788328dc8e4a6e40ce6310c8b8a89650cf5d6fbdce1ab515c72c458e64c83f51c610041c863ff1c9e3464da8c5c704cf4e582731cb86140e685fdb86bd84016a')
 
 build() {
   mkdir build
