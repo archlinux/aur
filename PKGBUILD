@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=miRNApath
-_pkgver=1.64.0
+_pkgver=1.66.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -13,8 +13,8 @@ depends=(
   r
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('c31549487f7ea690756db91fef9599af')
-b2sums=('a8a917c17017984a8abd011d487bdcee681bdd1aae8348c945f07691b2f4d6491be385297af9cd5372e0e045cffcc8c54d7d176c8fa499ad568ab7c6e12fb799')
+md5sums=('52bfe4f43f6707c465da3e1fb4fe4ff4')
+b2sums=('706bcd4b98f95ee572f492d29fefa82a6f83ea79d31542e6d679eec67391a394195c904a6c813235ee512db9acddf39b4ffac7992d7997cb932ee62eaabd141e')
 
 build() {
   mkdir build
