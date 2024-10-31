@@ -1,8 +1,8 @@
 pkgbase = minetest-git
-	pkgver = 5.8.0.r67.g431444ba9
+	pkgver = 5.10.0.rc1.r0.g5c5538685
 	pkgrel = 1
 	epoch = 1
-	url = https://www.minetest.net
+	url = https://www.luanti.org
 	arch = i686
 	arch = x86_64
 	license = LGPLv2.1
@@ -28,12 +28,12 @@ pkgbase = minetest-git
 	makedepends = sdl2
 	source = git+https://github.com/minetest/minetest.git
 	source = git+https://github.com/minetest/irrlicht.git
-	source = minetest.service
+	source = luanti.service
 	source = sysusers.d
 	source = tmpfiles.d
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = 2d80b4ff925770bdf3d857debb2ad11227cc9b022eb01a358b18f8d5f2641a5c
+	sha256sums = 94bd65bff21c63d508f127f19a6323c1a4e9c6869da239c9fc3af2d7f498d09d
 	sha256sums = e4166d639b35efda2cd72269208184ab1e72c54541344cd202ff2005c90b9433
 	sha256sums = d9405cf7cd0a657ef06082570783383a1f527fbc0bd122ea506d4fbe26950d4a
 
