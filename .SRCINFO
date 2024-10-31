@@ -1,6 +1,6 @@
 pkgbase = ps7_libps4000a
 	pkgdesc = Library for PicoScope 4000a series in PicoScope 7
-	pkgver = 2.1.140_2r6036
+	pkgver = 2.2.149_2r7534
 	pkgrel = 1
 	url = https://labs.picotech.com/picoscope7/debian/pool/main/libp/libps4000a/
 	install = ps7_libps4000a.install
@@ -9,7 +9,7 @@ pkgbase = ps7_libps4000a
 	depends = libusb
 	conflicts = ps7b_libps4000a
 	options = !strip
-	source = https://labs.picotech.com/picoscope7/debian/pool/main/libp/libps4000a/libps4000a_2.1.140-2r6036_amd64.deb
-	md5sums = 7c1f40161bcc9ea097d0f52ce4744b1f
+	source = https://labs.picotech.com/picoscope7/debian/pool/main/libp/libps4000a/libps4000a_2.2.149-2r7534_amd64.deb
+	md5sums = 161caafbc595bccdcc9ae2d3710220a8
 
 pkgname = ps7_libps4000a
