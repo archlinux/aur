@@ -45,6 +45,13 @@ check()
     _compile "ON"
     # TODO
     # ctest --output-on-failure --test-dir "${srcdir}"/"${_pkgname}"-"${pkgver}"/build/
+    cd "${srcdir}"/"${_pkgname}"-"${pkgver}"/build/ || exit 1
+    ./stringzilla_test_cpp11
+    ./stringzilla_test_cpp14
+    ./stringzilla_test_cpp17
+    ./stringzilla_test_cpp20
+    ./stringzilla_test_cpp20_x86_serial
+    ./stringzilla_test_cpp20_x86_avx2
     _compile "OFF"
 }
 
