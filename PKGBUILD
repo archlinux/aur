@@ -1,5 +1,6 @@
 # Maintainer: Zen <dev@pyl.onl>
 pkgname=python-zenlib-git
+pkgver=0
 pkgrel=1
 pkgdesc="Useful python decorators and utilities"
 arch=('x86_64')
