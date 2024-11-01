@@ -2,7 +2,7 @@
 
 _pkgname="annotator"
 pkgname="$_pkgname-git"
-pkgver=1.2.1.r55.g8c3d3cce
+pkgver=2.0.0.r0.g4c953af
 pkgrel=1
 pkgdesc="Image annotation for Elementary OS"
 url='https://github.com/phase1geo/Annotator'
@@ -11,12 +11,11 @@ arch=('aarch64' 'armv6h' 'armv7h' 'i686' 'x86_64')
 
 depends=(
   'granite7'
-  'libhandy'
   'libportal-gtk4'
 )
 makedepends=(
-  'cmake'
   'git'
+  'gtk3'
   'meson'
   'vala'
 )
@@ -30,20 +29,16 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "$_pkgsrc"
-  git describe --long --tags --abbrev=8 --exclude='*[a-zA-Z][a-zA-Z]*' \
+  git describe --long --tags --abbrev=7 --exclude='*[a-zA-Z][a-zA-Z]*' \
     | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
 build() {
-  cd "$_pkgsrc"
-  meson build --prefix=/usr	
-  ninja -C build
+  arch-meson "$_pkgsrc" build
+  meson compile -C build
 }
 
 package() {
-  cd "$_pkgsrc"
-  DESTDIR="$pkgdir" ninja -C build install
-
-  # symlink
+  meson install -C build --destdir "$pkgdir"
   ln -sf "com.github.phase1geo.annotator" "$pkgdir/usr/bin/annotator"
 }
