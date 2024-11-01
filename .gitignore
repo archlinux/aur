@@ -1,3 +1,4 @@
-mplcairo/
 pkg/
 src/
+*.tar.gz
+*pkg.tar.zst

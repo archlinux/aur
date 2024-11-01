@@ -1,5 +1,5 @@
 pkgname=mplcairo
-pkgver=0.5
+pkgver=0.6
 pkgrel=1
 pkgdesc="A (new) cairo backend for Matplotlib."
 arch=(x86_64)
@@ -11,23 +11,27 @@ python-cairo
 cairo
 )
 makedepends=(
-python-pip
+python-build
+python-installer
+python-wheel
 python-setuptools
-git
 )
-source=(git+https://github.com/matplotlib/mplcairo.git#tag=v${pkgver})
-sha256sums=('SKIP')
+
+#source=(git+https://github.com/matplotlib/mplcairo.git#tag=v${pkgver})
+#sha256sums=('87')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/matplotlib/mplcairo/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('27ef1755b2e4872b4966524b54c227ac24faa000273193c21318b8c123e49ce4')
 
 prepare(){
-  cd mplcairo
+  cd mplcairo-${pkgver}
 }
 
 build() {
-  cd mplcairo
-  python setup.py build
+  cd mplcairo-${pkgver}
+  python -m build --wheel --no-isolation
 }
 
 package() {
-  cd mplcairo
-  python setup.py install --root="$pkgdir" --optimize=1
+  cd mplcairo-${pkgver}
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
