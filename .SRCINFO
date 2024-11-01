@@ -1,0 +1,23 @@
+pkgbase = kanbanflow-app-git
+	pkgdesc = A standalone application for Kanbanflow.com
+	pkgver = 1.0.0.beta.4.r71.gf80a229
+	pkgrel = 1
+	url = https://github.com/metawave/kanbanflow-app
+	arch = x86_64
+	license = MIT
+	makedepends = gendesk
+	makedepends = npm
+	makedepends = nvm
+	makedepends = git
+	makedepends = curl
+	makedepends = yarn
+	makedepends = gcc
+	depends = electron33
+	provides = kanbanflow-app=1.0.0.beta.4
+	conflicts = kanbanflow-app
+	source = kanbanflow-app.git::git+https://github.com/metawave/kanbanflow-app
+	source = kanbanflow-app.sh
+	sha256sums = SKIP
+	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
+
+pkgname = kanbanflow-app-git
