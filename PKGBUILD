@@ -1,14 +1,35 @@
 # Maintainer: edwloef
+# Maintainer: may
 
 pkgname=mayland-git
 _pkgname=mayland
-pkgver=r161.dbe04c3
+pkgver=r171.dd61f1a
 pkgrel=1
 pkgdesc="a bad wayland compositor"
 arch=('x86_64')
 url="https://github.com/m4rch3n1ng/mayland"
 license=('GPL-3.0-or-later')
-depends=('expat' 'gcc-libs' 'glib2' 'glibc' 'icu' 'libcap' 'libdisplay-info' 'libdrm' 'libedit' 'libelf' 'libevdev' 'libffi' 'libgudev' 'libinput' 'libpciaccess' 'libwacom' 'libx11' 'libxau' 'libxcb' 'libxdmcp' 'libxkbcommon' 'libxml2' 'libxshmfence' 'llvm-libs' 'lm_sensors' 'mesa' 'mtdev' 'ncurses' 'pcre2' 'seatd' 'systemd-libs' 'wayland' 'xz' 'zlib' 'zstd')
+depends=(
+	'gcc-libs'
+	'glib2'
+	'glibc'
+	'libcap'
+	'libdisplay-info'
+	'libdrm'
+	'libevdev'
+	'libffi'
+	'libinput'
+	'libx11'
+	'libxcb'
+	'libxkbcommon'
+	'llvm-libs'
+	'mesa'
+	'seatd'
+	'wayland'
+)
+optdepends=(
+	'kitty: the default terminal emulator'
+)
 makedepends=('cargo')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
