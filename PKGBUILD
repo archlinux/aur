@@ -1,7 +1,7 @@
 # Maintainer: tytan652 <tytan652@tytanium.xyz>
 
 pkgname=obs-scene-collection-manager
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="Plugin for OBS Studio to add a Scene Collection Manager"
 arch=("x86_64" "aarch64")
