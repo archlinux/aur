@@ -4,7 +4,7 @@
 
 pkgname=connectiq-sdk-manager
 pkgver=7.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Garmin Connect IQ SDK Manager"
 arch=('x86_64')
 url="https://developer.garmin.com/connect-iq/sdk/"
