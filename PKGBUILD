@@ -2,7 +2,7 @@
 
 pkgname=mobazha-bin
 _name=${pkgname%-bin}
-pkgver=3.2.1
+pkgver=3.2.5
 pkgrel=1
 pkgdesc="Mobazha Client, Decentralized Peer to Peer Marketplace for Bitcoin -- Static binaries"
 arch=('x86_64')
@@ -32,5 +32,5 @@ package() {
     cp $srcdir/${_name}.desktop usr/share/applications/
 }
 
-sha256sums=('619e69b3717cad82a5600eda9aa13d7e853cf5a1af1a7b971ceac87b9177f310'
+sha256sums=('f068c707032f35fc9b692b9df51c557d61da3037e5add2861a1c5ad979f104a0'
             'fbf464538965c4205aca68266cfe6c901839a0d7c255dbe24146bc8bf594ee30')

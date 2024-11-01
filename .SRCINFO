@@ -1,6 +1,6 @@
 pkgbase = mobazha-bin
 	pkgdesc = Mobazha Client, Decentralized Peer to Peer Marketplace for Bitcoin -- Static binaries
-	pkgver = 3.2.1
+	pkgver = 3.2.5
 	pkgrel = 1
 	url = https://github.com/mobazha/mobazha
 	install = mobazha-bin.install
@@ -24,9 +24,9 @@ pkgbase = mobazha-bin
 	optdepends = lsb-release
 	provides = mobazha
 	conflicts = mobazha
-	source = https://github.com/mobazha/mobazha/releases/download/v3.2.1/Mobazha-linux-3.2.1-amd64.deb
+	source = https://github.com/mobazha/mobazha/releases/download/v3.2.5/Mobazha-linux-3.2.5-amd64.deb
 	source = mobazha.desktop
-	sha256sums = 619e69b3717cad82a5600eda9aa13d7e853cf5a1af1a7b971ceac87b9177f310
+	sha256sums = f068c707032f35fc9b692b9df51c557d61da3037e5add2861a1c5ad979f104a0
 	sha256sums = fbf464538965c4205aca68266cfe6c901839a0d7c255dbe24146bc8bf594ee30
 
 pkgname = mobazha-bin
