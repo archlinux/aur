@@ -1,3 +1,15 @@
+2024-10-29 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
+  * 6.0.8.7-1:
+    Added new redeempoints command with its rp alias (@JustArchi #3299).
+    Added AutoUnpackBoosterPacks to FarmingPreferences (@JustArchi #3304).
+    ASF will no longer escape certain characters in JSON files upon migration (@Abrynos #3302 #3301).
+    Removed deprecated in the previous release functionalities (@JustArchi).
+    Fixed stale cache of CM servers, which previously made connection with Steam servers harder than usual (@JustArchi).
+    Fixed some rare race conditions in bot start/stop logic (@JustArchi).
+    Fixed ASF getting stuck for 30 seconds during processing update from ASF API (@JustArchi).
+    Latest ASF-ui with new features, improvements and bugfixes (@MrBurrBurr).
+    Updated localization provided by our community (@JustArchi-ArchiBot).
+    Usual amount of other core improvements, optimizations and bugfixes (@JustArchi).
 2024-09-28 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
   * 6.0.7.5-1:
     Added new loot& and transfer& commands (@dm1tz #3287).

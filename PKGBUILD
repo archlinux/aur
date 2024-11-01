@@ -9,7 +9,7 @@ pkgname=('asf-plugin-steamtokendumper'
          'asf-plugin-periodicgc'
          'asf-plugin-signinwithsteam'
          'asf')
-pkgver="6.0.7.5"
+pkgver="6.0.8.7"
 pkgrel=1
 arch=('x86_64' 'armv7h' 'aarch64')
 url="https://github.com/JustArchiNET/ArchiSteamFarm"
