@@ -1,7 +1,7 @@
 pkgbase = rudesktop
 	pkgdesc = Ru-Desktop client for home use
 	pkgver = 2.7.692
-	pkgrel = 1
+	pkgrel = 5
 	url = https://rudesktop.ru/downloads/
 	arch = x86_64
 	license = custom
