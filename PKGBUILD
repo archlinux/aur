@@ -1,7 +1,7 @@
 # Maintainer: greyltc
 
 pkgname=python-pkg-about
-pkgver=1.1.5
+pkgver=1.2.1
 pkgrel=1
 pkgdesc="Shares Python package metadata at runtime."
 url="https://github.com/karpierz/pkg_about"
@@ -16,7 +16,7 @@ python-wheel
 python-tox
 )
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/karpierz/pkg_about/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('0c45507ab7098b5d21194cbbf6c17921fb03279ae25564cebd9695d78325cdc7')
+sha256sums=('5c2f57a50a3641f3d27c62c77f5b7d556df4a48dcf2ba7b4af0492e88437abdc')
 
 build() {
   cd "pkg-about-${pkgver}"
