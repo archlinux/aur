@@ -1,7 +1,7 @@
 pkgbase = python-rasterio
 	pkgdesc = Fast and direct raster I/O for use with Numpy and SciPy
-	pkgver = 1.4.1
-	pkgrel = 4
+	pkgver = 1.4.2
+	pkgrel = 1
 	url = https://github.com/rasterio/rasterio
 	arch = x86_64
 	license = BSD
@@ -22,7 +22,7 @@ pkgbase = python-rasterio
 	optdepends = python-boto3: for s3 support
 	optdepends = python-matplotlib: for plotting support
 	optdepends = python-swiftclient: for OpenStack support
-	source = rasterio-1.4.1.tar.gz::https://github.com/rasterio/rasterio/archive/1.4.1.tar.gz
-	sha512sums = 349511446bd2f9b1dcc641f9039563bbc0e4796816b643f2d88b1d326a6f74ccb552aa7c24710e7cff130456fd9506c9cbe0fb1ab5892a08d1535102b0aadacc
+	source = rasterio-1.4.2.tar.gz::https://github.com/rasterio/rasterio/archive/1.4.2.tar.gz
+	sha512sums = 4f77619e588ea6df1d34a6e07763d7dd8ebfe38f112672571fee6c69a7337f5dc7526f99c268de567b4a8fb9c56ee2df2ceb6d3843d51dcee18d1b96c2e6487c
 
 pkgname = python-rasterio
