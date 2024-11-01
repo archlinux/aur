@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=MBCB
-_pkgver=1.59.0
+_pkgver=1.60.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -14,8 +14,8 @@ depends=(
   r-tcltk2
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('e9ec96b24360544abe553384f85e0460')
-b2sums=('657726812f9bbcdd66adb4ebc6f90c850190b544f62aba8c56c1afe54149cfd5427170bf07cdb652e4116a90ee1345c06485417b30b17c04bcc98a6ee80bbcd1')
+md5sums=('083dda1a76d23a0e162baa2ed3c3da97')
+b2sums=('5afa788003d132d81ba177bf5c87c84ebe0943fe5c26a40ce409d2966993b7445850b2ae0ad7e62163c9194047bb920d619aca16e90235487bfe582b405a8ff7')
 
 build() {
   mkdir build
