@@ -1,20 +1,35 @@
- 
-# Maintainer: Quentin Bouvet <qbouvet at outlook dot com>
+# Maintainer: qbvt <qbouvet at outlook dot com>
+
+# Metadata
+#
 pkgname=dolphin-squashfs-mount
-pkgver=1.0
-pkgrel=1
-pkgdesc="Mount squashfs archives in dolphin right-click menu"
+pkgver=1.1
+pkgrel=0
+pkgdesc="Mount squashfs archives through dolphin's right-click menu"
 arch=('any')
 url="https://github.com/shvchk/dolphin-squashfs-mount"
 license=('GPLv3')
 depends=('dolphin' 'squashfuse')
 
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/shvchk/dolphin-squashfs-mount/archive/v1.0.tar.gz")
-sha256sums=('d0699590502350a70c0cb2d88cf4e872e85117f6b5c37cc05b14a0e48ebee1e7')
+# Sources
+#
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/shvchk/dolphin-squashfs-mount/archive/refs/tags/v1.1.tar.gz")
+sha256sums=('SKIP')
 
 package() {
+
   cd "${srcdir}/${pkgname}-${pkgver}"
-  install -D -m0755 -t "${pkgdir}/usr/share/kservices5/ServiceMenus/" \
+  
+  # Identify the directory for KDE service menu. 
+  # See:
+  #   - https://develop.kde.org/docs/apps/dolphin/service-menus/
+  # If this directory changes frequently, we could even have: 
+  #   $ kde_service_menu_dir="qtpaths --locate-dirs GenericDataLocation kio/servicemenus"
+  kde_service_menu_dir="/usr/share/kio/servicemenus/"
+  
+  # Copy desktop file
+  install -D -m0755 \
+    -t "${pkgdir}${kde_service_menu_dir}" \
     "squashfs-mount.desktop"
 }
 
