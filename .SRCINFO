@@ -1,6 +1,6 @@
 pkgbase = proxsuite-nlp
 	pkgdesc = A primal-dual augmented Lagrangian solver for nonlinear programming on manifolds.
-	pkgver = 0.8.0
+	pkgver = 0.10.0
 	pkgrel = 1
 	url = https://github.com/Simple-Robotics/proxsuite-nlp
 	arch = i686
@@ -17,12 +17,12 @@ pkgbase = proxsuite-nlp
 	depends = casadi
 	depends = example-robot-data
 	optdepends = doxygen
-	source = https://github.com/Simple-Robotics/proxsuite-nlp/releases/download/v0.8.0/proxsuite-nlp-0.8.0.tar.gz
-	source = https://github.com/Simple-Robotics/proxsuite-nlp/releases/download/v0.8.0/proxsuite-nlp-0.8.0.tar.gz.sig
+	source = https://github.com/Simple-Robotics/proxsuite-nlp/releases/download/v0.10.0/proxsuite-nlp-0.10.0.tar.gz
+	source = https://github.com/Simple-Robotics/proxsuite-nlp/releases/download/v0.10.0/proxsuite-nlp-0.10.0.tar.gz.sig
 	validpgpkeys = A031AD35058955293D54DECEC45D22EF408328AD
 	validpgpkeys = 1462AF00C9CF3C9E7AFC905E63380359F089A579
 	validpgpkeys = F6B9DDE42ED91D7939BC25B2A4D60E0153ADD041
-	sha256sums = 067a0ad63fe809f0e4959601a0ff42f769abb0016190d9c59333858ea397b78b
+	sha256sums = e5b3b049b12b9093a9ab642e411796209190e54dcda4c8e9933ff4f6e426732a
 	sha256sums = SKIP
 
 pkgname = proxsuite-nlp
