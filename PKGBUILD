@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=DrugVsDiseasedata
-_pkgver=1.41.0
+_pkgver=1.42.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -13,8 +13,8 @@ depends=(
   r
 )
 source=("https://bioconductor.org/packages/release/data/experiment/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('a9c385803ec91e51aaa67286303e2d97')
-b2sums=('d16e662a62036bec2780964f8b17c68867ce14155be9be5c91be4a2a2bc059516654dcedfe399a05182878f58560059cddfb44381cd49d2ad55447a34d418e7d')
+md5sums=('c14a86c5d506d84420eb41edd7858d8c')
+b2sums=('169f5f8e982173722cf1c789f50b3d885c17af92c831072c791c52bf1f9dfcd11e9670081e0049daefc3d68cc04306216018a66efe07e20d8e80202de283f91f')
 
 build() {
   mkdir build
