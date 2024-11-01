@@ -30,7 +30,7 @@ source=("https://ftp.gnu.org/gnu/gcc/gcc-${pkgver}/gcc-${pkgver}.tar.xz"
         
 sha256sums=(SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP
             dc59a00ccc79dcfee0c37f1b17ededd27d9f8a3d527286873fa5d9c0871894d4
-            846738d224b4c1aa7b2e1abedff300002134db2308972eeebfb8f47a3d2cbc5b)
+            61cda3842968a609570ab834d605a76067544544dbf25bcf0fe637e06f76d054)
 validpgpkeys=(13975A70E63C361C73AE69EF6EEB81F8981C74C7
               07F3DBBECC1A39605078094D980C197698C3739D
               AD17A21EF8AED8F1CC02DBD9F7D5C9BF765C61E3
