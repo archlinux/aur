@@ -1,0 +1,183 @@
+diff -aurN gcc-12.2.0-retro68/gcc/c-family/c-lex.cc gcc-12.2.0-palm/gcc/c-family/c-lex.cc
+--- gcc-12.2.0-retro68/gcc/c-family/c-lex.cc	2024-10-31 18:26:41.034516861 +0700
++++ gcc-12.2.0-palm/gcc/c-family/c-lex.cc	2024-10-31 18:55:13.942542636 +0700
+@@ -1451,10 +1451,14 @@
+     }
+   /* In C, a character constant has type 'int'.
+      In C++ 'char', but multi-char charconsts have type 'int'.  */
+-  else if (!c_dialect_cxx () || chars_seen > 1)
+-    type = integer_type_node;
+-  else
++  else if (c_dialect_cxx ())
+     type = char_type_node;
++  else if (chars_seen > 2)
++    type = long_unsigned_type_node;
++  else if (chars_seen > 1)
++    type = unsigned_type_node;
++  else
++    type = integer_type_node;
+ 
+   /* Cast to cppchar_signed_t to get correct sign-extension of RESULT
+      before possibly widening to HOST_WIDE_INT for build_int_cst.  */
+diff -aurN gcc-12.2.0-retro68/gcc/c-family/c-pragma.cc gcc-12.2.0-palm/gcc/c-family/c-pragma.cc
+--- gcc-12.2.0-retro68/gcc/c-family/c-pragma.cc	2024-10-31 18:26:41.034516861 +0700
++++ gcc-12.2.0-palm/gcc/c-family/c-pragma.cc	2024-10-31 18:55:33.359399276 +0700
+@@ -1642,7 +1642,7 @@
+   c_register_pragma_with_expansion (0, "message", handle_pragma_message);
+ 
+ #ifdef REGISTER_TARGET_PRAGMAS
+-  REGISTER_TARGET_PRAGMAS ();
++  //REGISTER_TARGET_PRAGMAS ();
+ #endif
+ 
+   global_sso = default_sso;
+diff -aurN gcc-12.2.0-retro68/gcc/config/m68k/m68k.cc gcc-12.2.0-palm/gcc/config/m68k/m68k.cc
+--- gcc-12.2.0-retro68/gcc/config/m68k/m68k.cc	2024-10-31 18:26:41.264519758 +0700
++++ gcc-12.2.0-palm/gcc/config/m68k/m68k.cc	2024-10-31 18:57:39.321889507 +0700
+@@ -6042,9 +6042,9 @@
+     break;
+   }
+ 
+-#if 1 /* POINTERS_IN_D0 */
++#if 0 /* POINTERS_IN_D0 */
+   return gen_rtx_REG (mode, D0_REG);
+-#else
++
+   /* If the function returns a pointer, push that into %a0.  */
+   if (type && POINTER_TYPE_P (TREE_TYPE (type)) && !outgoing)
+     /* For compatibility with the large body of existing code which
+@@ -6063,7 +6063,8 @@
+ 		  gen_rtx_EXPR_LIST (VOIDmode,
+ 				     gen_rtx_REG (mode, D0_REG),
+ 				     const0_rtx)));
+-  else if (POINTER_TYPE_P (valtype))
++#else
++  if (POINTER_TYPE_P (valtype))
+     return gen_rtx_REG (mode, A0_REG);
+   else
+     return gen_rtx_REG (mode, D0_REG);
+diff -aurN gcc-12.2.0-retro68/gcc/config.gcc gcc-12.2.0-palm/gcc/config.gcc
+--- gcc-12.2.0-retro68/gcc/config.gcc	2024-10-31 18:26:41.067850614 +0700
++++ gcc-12.2.0-palm/gcc/config.gcc	2024-10-31 18:56:22.369878475 +0700
+@@ -442,8 +442,6 @@
+ m68k-*-*)
+ 	extra_headers=math-68881.h
+ 	extra_options="${extra_options} m68k/m68k-tables.opt"
+-	c_target_objs="m68k-mac-pragmas.o"
+-	cxx_target_objs="m68k-mac-pragmas.o"
+ 	;;
+ microblaze*-*-*)
+         cpu_type=microblaze
+diff -aurN gcc-12.2.0-retro68/libcpp/charset.cc gcc-12.2.0-palm/libcpp/charset.cc
+--- gcc-12.2.0-retro68/libcpp/charset.cc	2024-10-31 18:27:11.758234650 +0700
++++ gcc-12.2.0-palm/libcpp/charset.cc	2024-10-31 18:59:56.479317471 +0700
+@@ -1920,7 +1920,7 @@
+ 			 enum cpp_ttype type)
+ {
+   size_t width = CPP_OPTION (pfile, char_precision);
+-  size_t max_chars = CPP_OPTION (pfile, int_precision) / width;
++  size_t max_chars = 4;
+   size_t mask = width_to_mask (width);
+   size_t i;
+   cppchar_t result, c;
+@@ -1957,10 +1957,8 @@
+   else if (i > 1 && i != 4 && CPP_OPTION (pfile, warn_multichar))
+     cpp_warning (pfile, CPP_W_MULTICHAR, "multi-character character constant");
+ 
+-  /* Multichar constants are of type int and therefore signed.  */
++  /* Multichar constants are of type unsigned long on Palm OS.  */
+   if (i > 1)
+-    unsigned_p = 0;
+-  else if (type == CPP_UTF8CHAR && !CPP_OPTION (pfile, cplusplus))
+     unsigned_p = 1;
+   else
+     unsigned_p = CPP_OPTION (pfile, unsigned_char);
+@@ -1969,8 +1967,10 @@
+      sign- or zero-extend to the full width of cppchar_t.
+      For single-character constants, the value is WIDTH bits wide.
+      For multi-character constants, the value is INT_PRECISION bits wide.  */
+-  if (i > 1)
+-    width = CPP_OPTION (pfile, int_precision);
++  if (i > 2)	//3-4 char sequences are long, 2-char seq is short
++    width = 32;
++  else if (i > 1)
++    width = 16;
+   if (width < BITS_PER_CPPCHAR_T)
+     {
+       mask = ((cppchar_t) 1 << width) - 1;
+diff -aurN gcc-12.2.0-retro68/libgcc/config/m68k/lb1sf68.S gcc-12.2.0-palm/libgcc/config/m68k/lb1sf68.S
+--- gcc-12.2.0-retro68/libgcc/config/m68k/lb1sf68.S	2024-10-31 18:27:12.164906371 +0700
++++ gcc-12.2.0-palm/libgcc/config/m68k/lb1sf68.S	2024-10-31 19:04:28.012560498 +0700
+@@ -102,11 +102,11 @@
+ 	/* Non PIC (absolute/relocatable) versions */
+ 
+ 	.macro PICCALL addr
+-	jbsr	\addr
++	bsr	\addr
+ 	.endm
+ 
+ 	.macro PICJUMP addr
+-	jmp	\addr
++	bra	\addr
+ 	.endm
+ 
+ 	.macro PICLEA sym, reg
+@@ -164,7 +164,7 @@
+ 	lea	\addr-.-8,a0
+ 	jsr	pc@(a0)
+ #else
+-	jbsr	\addr
++	bsr	\addr
+ #endif
+ 	.endm
+ 
+@@ -203,7 +203,7 @@
+ 	lea	\addr-.-8,a0
+ 	jsr	pc@(a0)
+ #else
+-	jbsr	\addr
++	bsr	\addr
+ #endif
+ 	.endm
+ 
+diff -aurN gcc-12.2.0-retro68/libgcc/Makefile.in gcc-12.2.0-palm/libgcc/Makefile.in
+--- gcc-12.2.0-retro68/libgcc/Makefile.in	2024-10-31 18:27:11.981570759 +0700
++++ gcc-12.2.0-palm/libgcc/Makefile.in	2024-10-31 19:03:05.720739735 +0700
+@@ -248,7 +248,7 @@
+ 		 $(LIBGCC2_DEBUG_CFLAGS) -DIN_LIBGCC2 \
+ 		 -fbuilding-libgcc -fno-stack-protector \
+ 		 -ffunction-sections \
+-		 $(INHIBIT_LIBC_CFLAGS)
++		 $(INHIBIT_LIBC_CFLAGS) -mpcrel -fpic
+ 
+ # Additional options to use when compiling libgcc2.a.
+ # Some targets override this to -isystem include
+@@ -445,9 +445,11 @@
+ 	    _negvsi2 _negvdi2 _ctors _ffssi2 _ffsdi2 _clz _clzsi2 _clzdi2  \
+ 	    _ctzsi2 _ctzdi2 _popcount_tab _popcountsi2 _popcountdi2	   \
+ 	    _paritysi2 _paritydi2 _powisf2 _powidf2 _powixf2 _powitf2	   \
+-	    _mulhc3 _mulsc3 _muldc3 _mulxc3 _multc3 _divhc3 _divsc3	   \
+-	    _divdc3 _divxc3 _divtc3 _bswapsi2 _bswapdi2 _clrsbsi2	   \
+-	    _clrsbdi2
++	    _bswapsi2 _bswapdi2 _clrsbsi2 _clrsbdi2
++
++# complex shit we do not support (gcc bugs cause compile failure)
++#lib2funcs += _mulhc3 _mulsc3 _muldc3 _mulxc3 _multc3 _divhc3 _divsc3	   \
++#	      _divdc3 _divxc3 _divtc3	   
+ 
+ # The floating-point conversion routines that involve a single-word integer.
+ # XX stands for the integer mode.
+diff -aurN gcc-12.2.0-retro68/newlib/libc/machine/m68k/memset.S gcc-12.2.0-palm/newlib/libc/machine/m68k/memset.S
+--- gcc-12.2.0-retro68/newlib/libc/machine/m68k/memset.S	2024-10-31 18:27:19.865001901 +0700
++++ gcc-12.2.0-palm/newlib/libc/machine/m68k/memset.S	2024-10-31 19:05:14.526869377 +0700
+@@ -42,8 +42,8 @@
+ |
+ SYM(memset):
+ 	move.l	4(sp),a0	| dest ptr
+-	move.l	8(sp),d0	| value
+-	move.l	12(sp),d1	| len
++	move.w	8(sp),d0	| value
++	move.l	10(sp),d1	| len
+ 	cmp.l	#16,d1
+ 	blo	.Lbset		| below, byte fills
+ 	|

@@ -1,0 +1,46 @@
+pkgbase = m68k-palmos-gcc
+	pkgdesc = The GNU Compiler Collection (m68k-palmos)
+	pkgver = 12.2.0
+	pkgrel = 1
+	url = http://gcc.gnu.org
+	arch = i686
+	arch = x86_64
+	license = GPL
+	license = LGPL
+	license = FDL
+	license = custom
+	makedepends = m68k-palmos-newlib
+	depends = m68k-palmos-binutils>=2.29-1
+	depends = zlib
+	optdepends = m68k-palmos-newlib
+	conflicts = m68k-palmos-gcc-bootstrap=12.2.0
+	replaces = m68k-palmos-gcc-bootstrap
+	options = !emptydirs
+	options = !distcc
+	options = !strip
+	source = https://ftp.gnu.org/gnu/gcc/gcc-12.2.0/gcc-12.2.0.tar.xz
+	source = https://ftp.gnu.org/gnu/gcc/gcc-12.2.0/gcc-12.2.0.tar.xz.sig
+	source = https://ftp.gnu.org/gnu/mpfr/mpfr-4.1.0.tar.xz
+	source = https://ftp.gnu.org/gnu/mpfr/mpfr-4.1.0.tar.xz.sig
+	source = https://ftp.gnu.org/gnu/mpc/mpc-1.2.1.tar.gz
+	source = https://ftp.gnu.org/gnu/mpc/mpc-1.2.1.tar.gz.sig
+	source = https://ftp.gnu.org/gnu/gmp/gmp-6.2.1.tar.xz
+	source = https://ftp.gnu.org/gnu/gmp/gmp-6.2.1.tar.xz.sig
+	source = retro68.patch
+	source = palm.patch
+	validpgpkeys = 13975A70E63C361C73AE69EF6EEB81F8981C74C7
+	validpgpkeys = 07F3DBBECC1A39605078094D980C197698C3739D
+	validpgpkeys = AD17A21EF8AED8F1CC02DBD9F7D5C9BF765C61E3
+	validpgpkeys = 343C2FF0FBEE5EC2EDBEF399F3599FF828C67298
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = dc59a00ccc79dcfee0c37f1b17ededd27d9f8a3d527286873fa5d9c0871894d4
+	sha256sums = 846738d224b4c1aa7b2e1abedff300002134db2308972eeebfb8f47a3d2cbc5b
+
+pkgname = m68k-palmos-gcc
