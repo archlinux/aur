@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=tweeDEseqCountData
-_pkgver=1.43.0
+_pkgver=1.44.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -19,9 +19,9 @@ optdepends=(
 )
 source=("https://bioconductor.org/packages/release/data/experiment/src/contrib/${_pkgname}_${_pkgver}.tar.gz"
         "$_pkgname-LICENSE::https://github.com/isglobal-brge/tweeDEseqCountData/raw/main/LICENSE")
-md5sums=('b41ae75be88abfd53b4913ba54ed50aa'
+md5sums=('d948402ffc023b37cf2347865a1f1e2e'
          'ea74422d64281c76f02c6a40dd626880')
-b2sums=('2b7df98e0813ac59d6addad699d0dc7a38f2a4e97f159b26b925e304f7993b09169703484ae6bb7399c31d2d332a39a49d21b4b932f0d539e9c6bfad2deb80de'
+b2sums=('4bd46eb41a228fbda0c0f443565fb67a8ffffbb16344e2387428c484a7c82eca2db3d89eeecf19fcc1e0fa80e0071ded2005ddf8cf0121a0e75291379eea6a0f'
         '9e1176209d038ad2e2cfa330886927090dc6d20f1fc60bc7c3a1fd04dfb4d1ae0a03ede61627f4e28789b4023e967e40df934568f4083689b6612315a6073c22')
 
 build() {
