@@ -2,7 +2,7 @@
 
 _pkgname=gyroflow
 pkgname=${_pkgname}-bin
-pkgver=1.5.4
+pkgver=1.6.0
 pkgrel=1
 pkgdesc="Video stabilization using gyroscope data"
 arch=("x86_64")
@@ -18,7 +18,7 @@ source=("Gyroflow-linux64.tar.gz::https://github.com/gyroflow/gyroflow/releases/
 		"icon.svg::https://raw.githubusercontent.com/gyroflow/gyroflow/v${pkgver}/resources/icon.svg"
         "${_pkgname}.desktop")
 
-sha256sums=('1b2cccb33f2f3f00a8e22daf77d51407552905604b3e3d000220fd80581b19d0'
+sha256sums=('5ce4c0c762d561be3d110aa07c25ace63f2304c3cd487fcd8f2aadb001c1ebe8'
             '847ac94756cb80317c2cb716790c4fded707236eaecbf6c9611d27124c442578'
             '9e97420c0d48fa0959312d6566410f801d82423b4a3332fe9eddb33c04469779')
 
