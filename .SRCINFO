@@ -1,0 +1,21 @@
+pkgbase = cron-notify
+	pkgdesc = FreeDesktop.org-compatible notification service to periodically ask for acknowledgement before executing a cronjob
+	pkgver = 1.0.6
+	pkgrel = 1
+	url = https://github.com/PhrozenByte/cron-notify
+	arch = any
+	license = GPL-3.0-only
+	depends = dbus
+	depends = python
+	depends = python-croniter
+	depends = python-notify2
+	depends = python-gobject
+	depends = python-pyxdg
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	source = cron-notify-1.0.6.tar.gz::https://github.com/PhrozenByte/cron-notify/archive/v1.0.6.tar.gz
+	sha256sums = 1cc6cf681108384ac6ebbc8f093d376477d2ca7338e25dbef3df019de9573e0a
+
+pkgname = cron-notify
