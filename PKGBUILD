@@ -2,7 +2,7 @@
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-critic-strictersubs'
-pkgver='0.07'
+pkgver='0.08'
 pkgrel='1'
 pkgdesc="Perl::Critic plugin for stricter subroutine checks"
 arch=('any')
@@ -12,8 +12,8 @@ depends=('perl-file-pathlist>=0' 'perl-list-moreutils>=0' 'perl-module-build>=0.
 makedepends=()
 url='https://metacpan.org/release/Perl-Critic-StricterSubs'
 source=("https://cpan.metacpan.org/authors/id/P/PE/PETDANCE/Perl-Critic-StricterSubs-$pkgver.tar.gz")
-md5sums=('72600b5f0d839e3335823070a8eba7f6')
-sha512sums=('03f97f077c19744ab4acff949642beecf72b3574f2e4886363377c7564e8627644c922d2b529c47f1a7ea4b121257b6f9900b9f10d0ed7fcb8636677c2619b85')
+md5sums=('4cb9bd80fdd33ec71565af51936c8057')
+sha512sums=('a405fca247a86b64133b85553db5cb396fd205436c7ffe805d479b4ed117b929a03ec3b0fa8655ce63789d3d578e60586f9ce3544bebde36e39a231219850940')
 _distdir="Perl-Critic-StricterSubs-$pkgver"
 
 build() {
