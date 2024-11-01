@@ -15,7 +15,7 @@
 
 pkgname=koboldcpp
 pkgver=1.77
-pkgrel=2
+pkgrel=3
 pkgdesc="An easy-to-use AI text-generation software for GGML and GGUF models"
 arch=('x86_64')
 url="https://github.com/LostRuins/koboldcpp"
@@ -41,7 +41,7 @@ sha256sums=(
   'd244788c74a693a383bea7db6ab2bb2f762e6020de900be977b16e18dcd20f54'
 )
 
-prepare() {
+build() {
   source "${KOBOLDCPP_BUILD_CONF}"
 
   if [ "${KOBOLDCPP_NO_PORTABLE}" == "0" ]; then
@@ -50,9 +50,7 @@ prepare() {
 
   export LLAMA_VULKAN=1
   export LLAMA_CLBLAST=1
-}
 
-build() {
   cd "$srcdir/koboldcpp-$pkgver"
 
   make clean && make
