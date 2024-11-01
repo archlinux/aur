@@ -1,13 +1,13 @@
 # Maintainer: Adam Perkowski <adas1per@protonmail.com>
 pkgname='hyprgui'
-pkgver=0.1.5
+pkgver=0.1.6
 pkgrel=1
 pkgdesc='GUI for configuring Hyprland, written in blazingly fast Rust!'
 arch=('x86_64')
 url='https://github.com/nnyyxxxx/hyprgui'
 license=('GPL-2.0')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/nnyyxxxx/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('724bf3d45ef780f9ec730e569bd490cad292ca5e140c11fb6a6bdd79b4ea2e8c')
+sha256sums=('e285bde9cb08a29ed794600c5adb49c4c9f39ad7a6ba488e2c6b631e577c2a50')
 makedepends=('rustup' 'pango')
 depends=('glibc' 'gcc-libs' 'gtk4')
 optdepends=('hyprland')
