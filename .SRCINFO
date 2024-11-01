@@ -1,0 +1,19 @@
+pkgbase = gst-plugin-ndi-git
+	pkgdesc = GStreamer plugin for NDI
+	pkgver = r244.12656af
+	pkgrel = 1
+	url = https://github.com/teltek/gst-plugin-ndi
+	arch = x86_64
+	license = LGPL
+	makedepends = cargo-c
+	makedepends = clang
+	makedepends = git
+	makedepends = rust
+	depends = gstreamer
+	depends = libndi
+	provides = gst-plugin-ndi
+	conflicts = gst-plugin-ndi
+	source = gst-plugin-ndi::git+https://github.com/teltek/gst-plugin-ndi.git
+	sha256sums = SKIP
+
+pkgname = gst-plugin-ndi-git
