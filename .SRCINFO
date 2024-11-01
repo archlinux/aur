@@ -1,6 +1,6 @@
 pkgbase = sdrangel-git
 	pkgdesc = Qt5/OpenGL SDR and signal analyzer frontend.
-	pkgver = 7.21.4.r92.fcd43df71
+	pkgver = 7.22.2.r28.bd67d553e
 	pkgrel = 1
 	url = https://github.com/f4exb/sdrangel
 	arch = x86_64
@@ -56,6 +56,7 @@ pkgbase = sdrangel-git
 	depends = qt5-webengine
 	depends = qt5-gamepad
 	depends = qt5-svg
+	depends = qt5-graphicaleffects
 	optdepends = ffmpeg: DATV demodulator
 	optdepends = libdab: DAB demodulator
 	optdepends = zlib: DAB demodulator
@@ -74,7 +75,7 @@ pkgbase = sdrangel-git
 	optdepends = airspyhf: Airspy HF+ support
 	optdepends = libxtrx: XTRX SDR support
 	optdepends = libuhd: USRP support
-	provides = sdrangel=7.21.4.r92.fcd43df71
+	provides = sdrangel=7.22.2.r28.bd67d553e
 	conflicts = sdrangel
 	source = git+https://github.com/f4exb/sdrangel
 	sha512sums = SKIP
