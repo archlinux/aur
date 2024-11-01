@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=HSMMSingleCell
-_pkgver=1.25.0
+_pkgver=1.26.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -13,8 +13,8 @@ depends=(
   r
 )
 source=("https://bioconductor.org/packages/release/data/experiment/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('3a4cebe44f14d8feeb54f58637e1855e')
-b2sums=('e368b4867a3428371dac565f1224da1e5643935372a6ba999bb95a99a0c7b1bb783966b62d21afc012ad47639a479d978ebb3891653df2b4ef7b82e99d7ef1ef')
+md5sums=('81add770e941f389d38651577056a14e')
+b2sums=('a78596fd25f0933f21dc6c7c835cd836b7ce9ea4dc5a97c1ac1fb6534242593ff3dd0128fd5b6399855cdc666494194189af25728343ac339a1111d3e8c13d45')
 
 build() {
   mkdir build
