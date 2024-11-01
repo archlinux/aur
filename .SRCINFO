@@ -9,6 +9,7 @@ pkgbase = mplcairo
 	makedepends = python-installer
 	makedepends = python-wheel
 	makedepends = python-setuptools
+	makedepends = pybind11
 	depends = python-matplotlib
 	depends = python-cairo
 	depends = cairo

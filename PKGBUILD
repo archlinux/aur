@@ -15,6 +15,7 @@ python-build
 python-installer
 python-wheel
 python-setuptools
+pybind11
 )
 
 #source=(git+https://github.com/matplotlib/mplcairo.git#tag=v${pkgver})
