@@ -8,7 +8,7 @@ _pkgname=dingtalk
 _pkgname2=com.alibabainc.dingtalk
 # https://dtapp-pub.dingtalk.com/dingtalk-desktop/xc_dingtalk_update/linux_deb/Update/other/amd64/linux_dingtalk_update_package_gray.json
 pkgver=7.6.15.4102301
-pkgrel=1
+pkgrel=2
 pkgdesc="钉钉"
 arch=("x86_64")
 url="https://www.dingtalk.com/"
@@ -33,14 +33,14 @@ source=("service-terms-zh_${pkgver}.html::https://tms.dingtalk.com/markets/dingt
 )
 
 # DebSource & pkgver can be get here: https://dtapp-pub.dingtalk.com/dingtalk-desktop/xc_dingtalk_update/linux_deb/Update/other/linux_dingtalk_update.json
-sha512sums=('680429273d159db12d8190ca0e886bbdc2c48a518b70bab241ed451e3bfd93049789c29168102d0f11a934be226096d3f218bca1f13f132e5d58204328746fd8'
+sha512sums=('SKIP'
             'c8570ec4cd978e26ac622a83db053a0555324752f5000dc5b3cd680d782138e8ef856f09ec9b7850e04e1faa1e39de94dabeb16fbfbe0fd44af43247b30e8b2f'
             'b2493e7bddc2d701204899bcd82930f97779eec23485870c64665c525b9faca382a3c0e9e9c1bd18f8fa8157ea408943e542de56dc3410388e78f30732511f5c'
             '5f05f90704526fbd16371f6f9deaa171a3cac25a103b21daba72a3028ab7cdf9b566a3ac7842c6ce88d30cc29fe0c8b989c77aa36daab73793a827a1a0d6c775')
 sha512sums_x86_64=('505ee5410c89240b18448fa27d7d4b13698123d12a829246162a410651cd9488a933348b746a0f6b9d63717cd92bd0515a7c22f9a25204291506f6e7a1d48efb')
 
 prepare() {
-    tar -Jxvf data.tar.xz -C "${srcdir}"
+    tar -Jxf data.tar.xz -C "${srcdir}"
 }
 
 package() {
