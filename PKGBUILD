@@ -5,7 +5,7 @@
 pkgname=bcunit
 pkgver=5.3.94
 #_commit=6ca58a7ca673d23c2dd4ef2dd107743785d2b7f9
-pkgrel=1
+pkgrel=2
 pkgdesc="Lightweight system for writing, administering, and running unit tests in C"
 arch=(x86_64)
 url="https://gitlab.linphone.org/BC/public/bcunit"
@@ -22,13 +22,12 @@ sha256sums=('SKIP')
 #}
 
 prepare() {
-  cd $pkgname-$pkgver
-  mkdir -p build
+  mkdir -p $pkgname-$pkgver/build
 }
 
 build() {
-  cd build
-  cmake ../$pkgname-$pkgver \
+  cd $pkgname-$pkgver/build
+  cmake .. \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DENABLE_DOC=ON \
     -DENABLE_STATIC=OFF
@@ -36,6 +35,6 @@ build() {
 }
 
 package() {
-  cd build
+  cd $pkgname-$pkgver/build
   make DESTDIR="$pkgdir" install
 }
