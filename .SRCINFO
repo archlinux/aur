@@ -1,6 +1,6 @@
 pkgbase = r-scanmirdata
 	pkgdesc = miRNA Affinity models for the scanMiR package
-	pkgver = 1.11.0
+	pkgver = 1.12.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/scanMiRData
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = r-scanmirdata
 	optdepends = r-biocstyle
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
-	source = https://bioconductor.org/packages/release/data/experiment/src/contrib/scanMiRData_1.11.0.tar.gz
-	sha256sums = f400ce75a7afe9ce71be876d21a397e75e721b32f051b8c80d333bcca4370f2e
+	source = https://bioconductor.org/packages/release/data/experiment/src/contrib/scanMiRData_1.12.0.tar.gz
+	sha256sums = f5abffa83c9422bcbde0e4661607737c15cbc81793d3338ca5421ad4b1ab84e7
 
 pkgname = r-scanmirdata
