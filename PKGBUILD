@@ -22,6 +22,8 @@ build(){
 }
 
 package(){
-	cd "dash-$pkgver"
-	make DESTDIR="$pkgdir" install
+	cd "dash-$pkgver/src"
+	cp -- dash "$pkgdir"/usr/bin/
+	gzip dash.1
+	cp -- dash.1.gz "$pkgdir"/usr/share/man/
 }
