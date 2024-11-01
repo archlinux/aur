@@ -1,37 +1,39 @@
-# Maintainer: Dennis Twardowsky <aur@devpty.de>
-_pkgname=noson-app
-pkgname="${_pkgname}-git"
-pkgver=4.5.0.r4.g9d863645
+# Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
+# Contributor: Dennis Twardowsky <aur@devpty.de>
+
+pkgname=noson-app-git
+pkgver=5.6.8.r0.g8326e67
 pkgrel=1
 pkgdesc="SONOS controller for Linux platforms"
-arch=('x86_64')
-url="https://janbar.github.io/noson-app"
-license=('GPL3')
-groups=('base-devel')
-depends=('cmake' 'qt5-base' 'qt5-quickcontrols2' 'qt5-graphicaleffects' 'qt5-svg')
-makedepends=('cmake' 'git')
-provides=("${_pkgname}")
-conflicts=("${_pkgname}")
-source=("git+git://github.com/janbar/noson-app.git")
-sha1sums=('SKIP')
+arch=(x86_64 aarch64 armv7h)
+url="https://github.com/janbar/noson-app"
+license=(GPL-3.0-only)
+depends=(qt5-base qt5-quickcontrols2 qt5-declarative)
+makedepends=(cmake git qt5-svg)
+provides=(noson-app)
+conflicts=(noson-app)
+source=("git+https://github.com/janbar/noson-app.git")
+sha256sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/${pkgname%-git}"
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  cd noson-app
+  git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  mkdir -p "$srcdir/build"
-  cd "$srcdir/build"
-  cmake "$srcdir/${pkgname%-git}" \
-    -DCMAKE_BUILD_TYPE=Release \
+  local _flags=(
+    -DBUILD_LIBNOSON:BOOL=ON
+  )
+
+  cmake -B build -S "noson-app" -Wno-dev \
+    -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_INSTALL_LIBDIR=/usr/lib
-  make
+    "${_flags[@]}"
+
+  cmake --build build
 }
 
 package() {
-  cd "$srcdir/build"
-  make DESTDIR="$pkgdir/" install
+  DESTDIR="${pkgdir}" cmake --install build
 }
 
