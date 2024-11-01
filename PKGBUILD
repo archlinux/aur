@@ -1,15 +1,17 @@
 # Maintainer: George Rawlinson <grawlinson@archlinux.org>
+# Maintainer: Xiang Chen <iflygo@outlook.com>
 
 pkgname=zigup
-pkgver=2022.08.25.r3.g644f8aa
+pkgver=2024.05.05.r8.g67643d6
 pkgrel=1
 pkgdesc='Download and manage Zig compilers'
 arch=('x86_64')
 url='https://github.com/marler8997/zigup'
-license=('custom:MIT-0')
+license=('MIT-0')
+depends=('tar')
 makedepends=('git' 'zig')
 options=('!debug')
-_commit='644f8aa15bc91159591f970e1f610de5147b4796'
+_commit='67643d63359502d8dab9628ad071c61837a55b02'
 source=("$pkgname::git+$url#commit=$_commit")
 b2sums=('SKIP')
 
@@ -22,14 +24,14 @@ pkgver() {
 build() {
   cd "$pkgname"
 
-  zig build -Dfetch -Dcpu=baseline -Drelease-safe
+  zig build --release=fast
 }
 
-check() {
-  cd "$pkgname"
-
-  zig build test -Dfetch -Dcpu=baseline -Drelease-safe
-}
+# check() {
+#   cd "$pkgname"
+#
+#   zig build test
+# }
 
 package() {
   cd "$pkgname"
