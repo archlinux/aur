@@ -1,0 +1,12 @@
+[Desktop Entry]
+Name=Mobazha
+Comment=Decentralized Peer to Peer Marketplace for Bitcoin
+GenericName=Mobazha Desktop Client
+Exec=mobazha %U
+Icon=mobazha
+Type=Application
+StartupNotify=true
+Categories=Utility;
+Categories=Application;Network;
+MimeType=x-scheme-handler/ob;
+StartupWMClass=mobazha desktop client
