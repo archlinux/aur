@@ -1,2 +1,7 @@
-mayland/
-mayland-git-*-x86_64.pkg.tar
+# Ignore everything
+*
+
+# But not these files...
+!.gitignore
+!PKGBUILD
+!.SRCINFO
