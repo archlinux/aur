@@ -1,0 +1,15 @@
+diff --git a/src/accelerator/ogl/util/device.cpp b/src/accelerator/ogl/util/device.cpp
+index 31a913394..74e30bd7f 100644
+--- a/src/accelerator/ogl/util/device.cpp
++++ b/src/accelerator/ogl/util/device.cpp
+@@ -150,7 +150,9 @@ struct device::impl : public std::enable_shared_from_this<impl>
+ 
+         auto task   = task_type(std::forward<Func>(func));
+         auto future = task.get_future();
+-        boost::asio::spawn(service_, std::move(task));
++        boost::asio::spawn(service_, std::move(task), [](std::exception_ptr e) {
++            if (e) std::rethrow_exception(e);
++        });
+         return future;
+     }
+ 
