@@ -481,7 +481,6 @@
 			"aiTextSearchProvider",
 			"documentFiltersExclusive",
 			"chatParticipantPrivate",
-			"lmTools",
 			"contribDebugCreateConfiguration",
 			"inlineEdit"
 		],
@@ -541,23 +540,16 @@
 		"ms-azuretools.vscode-azureappservice": [
 			"terminalDataWriteEvent"
 		],
-		"ms-azuretools.vscode-azure-github-copilot": [
-			"contribChatParticipantDetection",
-			"lmTools"
-		],
 		"ms-vscode.anycode": [
 			"extensionsAny"
 		],
 		"ms-vscode.cpptools": [
-			"terminalDataWriteEvent",
-			"lmTools"
+			"terminalDataWriteEvent"
 		],
 		"redhat.java": [
 			"documentPaste"
 		],
-		"vscjava.vscode-java-pack": [
-			"lmTools"
-		],
+		"vscjava.vscode-java-pack": [],
 		"ms-dotnettools.csdevkit": [
 			"inlineCompletionsAdditions"
 		],
@@ -576,8 +568,16 @@
 			"chatParticipantAdditions",
 			"languageModelSystem"
 		],
-		"ms-toolsai.datawrangler": [
-			"lmTools"
+		"ms-toolsai.datawrangler": [],
+		"ms-vscode.vscode-commander": [],
+		"ms-vscode.vscode-websearchforcopilot": [],
+		"ms-vscode.vscode-copilot-data-analysis": [
+			"chatVariableResolver",
+			"chatProvider"
+		],
+		"ms-vscode.vscode-copilot-vision": [
+			"chatReferenceBinaryData",
+			"codeActionAI"
 		]
 	},
 	"tasConfig": {
