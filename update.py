@@ -1,9 +1,5 @@
 #!/usr/bin/env python3
 
-# This script will update the ./patch.json to match the official release
-# Usage: ./update.py <version-number>
-# Where <version-number> is the version of the official release
-
 import argparse
 import json
 import os
