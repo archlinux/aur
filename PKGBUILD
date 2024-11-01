@@ -5,7 +5,7 @@ pkgrel=1
 pkgdesc="Cosmic idle daemon"
 arch=('x86_64' 'aarch64')
 url="https://github.com/pop-os/cosmic-idle"
-license=('GPL-3.0-or-later')
+license=('GPL-3.0-only')
 depends=(
   'libxkbcommon'
   'wayland'
