@@ -8,6 +8,6 @@ pkgbase = dolphin-squashfs-mount
 	depends = dolphin
 	depends = squashfuse
 	source = dolphin-squashfs-mount-1.1.tar.gz::https://github.com/shvchk/dolphin-squashfs-mount/archive/refs/tags/v1.1.tar.gz
-	sha256sums = SKIP
+	sha256sums = 81f05626ef4303a471c7883773d3990f20b2680348a8146e91c51c00cfe5896b
 
 pkgname = dolphin-squashfs-mount
