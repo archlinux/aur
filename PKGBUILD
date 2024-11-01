@@ -23,7 +23,8 @@ build(){
 
 package(){
 	cd "dash-$pkgver/src"
+	mkdir -p "$pkgdir"/usr/bin "$pkgdir"/usr/share/man/man1
 	cp -- dash "$pkgdir"/usr/bin/
 	gzip dash.1
-	cp -- dash.1.gz "$pkgdir"/usr/share/man/
+	cp -- dash.1.gz "$pkgdir"/usr/share/man/man1
 }
