@@ -1,7 +1,7 @@
 pkgbase = m68k-palmos-elf-newlib
 	pkgdesc = C library for bare metal systems (m68k-palmos-elf).
 	pkgver = 4.3.0
-	pkgrel = 3
+	pkgrel = 1
 	url = https://sourceware.org/newlib/
 	arch = any
 	groups = devel
