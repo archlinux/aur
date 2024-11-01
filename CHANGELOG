@@ -1,0 +1,7 @@
+2024-11-02 GregTheMadMonk <yagreg7@gmail.com>
+    * Rebase to upstream 0542d9f (0.15.0-dev)
+    * Disable Wayland when building
+    * PSA: If you've used `env -u WAYLAND_DISPLAY` to run this: don't. Just use
+      this version or build it yourself without Walyand support. Unsetting
+      `WAYLAND_DISPLAY` prevents all applications you run from your terminal
+      from using Wayland.

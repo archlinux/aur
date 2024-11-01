@@ -1,7 +1,7 @@
 # Credit: PKGBUILD from https://aur.archlinux.org/packages/alacritty-git
 pkgname='alacritty-smooth-cursor-git'
 _pkgname="alacritty"
-pkgver=0.14.0.2321.gcb324c95
+pkgver=0.15.0.2383.gec2f5196
 pkgrel=1
 epoch=1
 arch=('x86_64' 'i686' 'aarch64')
@@ -23,7 +23,7 @@ pkgver() {
 
 build(){
   cd "$_pkgname"
-  env CARGO_INCREMENTAL=0 cargo build --release --locked
+  env CARGO_INCREMENTAL=0 cargo build --release --locked --features=x11 --no-default-features
 }
 
 check(){
