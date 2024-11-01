@@ -1,6 +1,6 @@
 # Maintainer: Robert Baker <reiichi001@gmail.com>
 pkgname=xivlauncher-bin
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="Custom Launcher for Final Fantasy XIV Online - github binary artifact wrapper"
 arch=('x86_64')
@@ -27,7 +27,7 @@ source=(
     "xivlauncher-core"
 )
 sha512sums=(
-    'd3367ca2207ab11d547d841e2d889dff6db5a9fd8b36ba750ed94446ddc5eb36305e5d121ff19564faba0536e6e77852330d105dfdaff5398594fa8ab955d3e7'
+    '227b40463fdf09b04671c2ecda2a8b4aad6847e8e74680db51439cc5a1a3ed484830a06d64eee73f8c831b7adc4b530b528506bed69c80763fbb23a53d895387'
     '0c33502cd915132151fa4b6c94899bf3f8806c2943469609cdda09365ff78be863215abd2741048d6c9a934a22dca0f8a8a2c67074c38abc6f67984c393859c4'
     'c06130b67efff8aa53760cb9c8bd764d4307624ec42c52d58cce388863e64788821f6f836857f200452e75de3b5311466074c70b81ad6d70ab60b286ddfda2e8'
     '1b4584216828fac294d9955924a89bba716bcb6f1ec582e50f3169e1501eb3d637cb89f921d887d8aba20eb4a4166915e9812aad634bcfd10ab97324164aaec5'
