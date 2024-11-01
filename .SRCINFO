@@ -1,0 +1,21 @@
+pkgbase = wavy-git
+	pkgdesc = A simple protocol testing tool that supports various connection types(now serial port only).Use system-wide electron.
+	pkgver = 1.1.3.r0.ga69c717
+	pkgrel = 1
+	url = https://github.com/novrain/wavy
+	arch = x86_64
+	license = MIT
+	makedepends = npm
+	makedepends = nvm
+	makedepends = git
+	makedepends = curl
+	makedepends = yarn
+	depends = electron28
+	provides = wavy=1.1.3
+	conflicts = wavy
+	source = wavy.git::git+https://github.com/novrain/wavy.git
+	source = wavy.sh
+	sha256sums = SKIP
+	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
+
+pkgname = wavy-git
