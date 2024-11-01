@@ -1,0 +1,15 @@
+pkgbase = perl-devel-traceuse
+	pkgdesc = show the modules your program loads, recursively
+	pkgver = 2.097
+	pkgrel = 1
+	url = https://metacpan.org/release/Devel-TraceUse
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl>=5.008
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/B/BO/BOOK/Devel-TraceUse-2.097.tar.gz
+	md5sums = 54e060eefd942e9c586f8774b1d03ae7
+	sha512sums = 75111b4c6f55475c473d9abe4d7d15e3a9f5913807934a10d0f393238d8895db30113187240c179cddb0cbb19c0daffac8e3f7acb073e060dc583b795d716e9b
+
+pkgname = perl-devel-traceuse
