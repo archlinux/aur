@@ -2,7 +2,7 @@
 
 _pkgname=intel-cmt-cat
 pkgname=${_pkgname}
-pkgver=23.11.1
+pkgver=24.05
 pkgrel=1
 pkgdesc="User space software for Intel(R) Resource Director Technology"
 url="https://github.com/intel/intel-cmt-cat"
@@ -14,7 +14,7 @@ optdepends=()
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/intel/intel-cmt-cat/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('0c8354397a0b248cb31a4a6f37ce193a60126753e91bd5d32581abf2ad8b9428')
+sha256sums=('5ed6c712f967f10e4160da72a0e4880caad29795f99c9ae1ce9d5832939705f0')
 
 pkgver() {
     echo "$pkgver"
