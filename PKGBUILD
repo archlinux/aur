@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=KEGGdzPathwaysGEO
-_pkgver=1.43.0
+_pkgver=1.44.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -14,8 +14,8 @@ depends=(
   r-biocgenerics
 )
 source=("https://bioconductor.org/packages/release/data/experiment/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('c7afdfb011ee785e93a11c36e8b37dc9')
-b2sums=('f050899f183906bf58a3ea0a9d798f529facf7494b6a17e358b3591090579ccf5043f6994e45b41c15f9acc3b60379c0f7f21d84eb889fc29e69dfba7eba61dd')
+md5sums=('2edbe2925b386b52a1fd7231d93d006b')
+b2sums=('4eea862056e60101c31080596941f67b7b5eed198e7036ba49ba1389d4ca762c989d6e66f4749a44cb63f32bf55117b282a87206cfc8367cb546b05f7d434649')
 
 build() {
   mkdir build
