@@ -471,6 +471,7 @@
 			"codeActionAI",
 			"findTextInFiles",
 			"textSearchProvider",
+			"textSearchProvider2",
 			"activeComment",
 			"commentReveal",
 			"contribSourceControlInputBoxMenu",
