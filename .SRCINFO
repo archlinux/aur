@@ -25,7 +25,7 @@ pkgbase = obs-studio-liberty
 	makedepends = cef-minimal-obs=103.0.0_5060_shared_textures_2594+g17f8588+chromium_103.0.5060.134_1
 	depends = alsa-lib
 	depends = curl
-	depends = ffmpeg
+	depends = ffmpeg>=7
 	depends = fontconfig
 	depends = freetype2
 	depends = gcc-libs
@@ -51,6 +51,7 @@ pkgbase = obs-studio-liberty
 	depends = speexdsp
 	depends = srt
 	depends = util-linux-libs
+	depends = vlc
 	depends = wayland
 	depends = x264
 	depends = zlib
@@ -100,12 +101,10 @@ pkgbase = obs-studio-liberty
 	source = obs-websocket::git+https://github.com/obsproject/obs-websocket.git
 	source = ftl-sdk::git+https://github.com/microsoft/ftl-sdk.git
 	source = supported-nv-codec-headers::git+https://github.com/FFmpeg/nv-codec-headers.git#tag=n12.1.14.0
-	source = 0004-Max_tls_v1_2_mbedtls_3_6_0_workaround.patch
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = c397a8da291547c757a42f7727a5e6650aa70e6e531f2ef150356eb9eb1fb49c
 
 pkgname = obs-studio-liberty

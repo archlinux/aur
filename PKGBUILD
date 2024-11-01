@@ -15,7 +15,7 @@ _pythonver=3.12
 depends=(
   "alsa-lib" # Deps of ALSA plugin and CEF
   "curl" # Deps of OBS Studio and rtmp-services plugin
-  "ffmpeg" # Deps of OBS Studio and FFmpeg plugin
+  "ffmpeg>=7" # Deps of OBS Studio and FFmpeg plugin
   "fontconfig" # Deps of Freetype2 plugin
   "freetype2" # Deps of Freetype2 plugin
   "gcc-libs" # Deps of any C++ related binary
@@ -41,6 +41,7 @@ depends=(
   "speexdsp" # Deps if the filter plugin
   "srt" # Deps of FFmpeg plugin
   "util-linux-libs" # Deps of libobs
+  "vlc" # It is necessary to build the package and work
   "wayland" # Deps of libobs, libobs-opengl and CEF
   "x264" # Deps of the X264 plugin
   "zlib" # Deps of libobs
@@ -98,7 +99,7 @@ source=(
   "obs-websocket::git+https://github.com/obsproject/obs-websocket.git"
   "ftl-sdk::git+https://github.com/microsoft/ftl-sdk.git"
   "supported-nv-codec-headers::git+https://github.com/FFmpeg/nv-codec-headers.git#tag=n12.1.14.0"
-  "0004-Max_tls_v1_2_mbedtls_3_6_0_workaround.patch"
+  #"0004-Max_tls_v1_2_mbedtls_3_6_0_workaround.patch"
 )
 sha256sums=(
   "SKIP"
@@ -106,7 +107,7 @@ sha256sums=(
   "SKIP"
   "SKIP"
   "SKIP"
-  "c397a8da291547c757a42f7727a5e6650aa70e6e531f2ef150356eb9eb1fb49c"
+  #"c397a8da291547c757a42f7727a5e6650aa70e6e531f2ef150356eb9eb1fb49c"
 )
 
 prepare() {
@@ -117,7 +118,7 @@ prepare() {
   git -c protocol.file.allow=always submodule update
 
   # MbedTLS 3.6.0 broke stuff with TLS v1.3 (Thanks tytan652)
-  patch -Np1 -i "$srcdir/0004-Max_tls_v1_2_mbedtls_3_6_0_workaround.patch"
+  # patch -Np1 -i "$srcdir/0004-Max_tls_v1_2_mbedtls_3_6_0_workaround.patch"
 
   cd "$srcdir"
   make PREFIX="$srcdir/nv-prefix" -C supported-nv-codec-headers install
