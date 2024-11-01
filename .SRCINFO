@@ -1,7 +1,7 @@
 pkgbase = baidu-translate-client-bin
-	pkgdesc = Baidu translate.百度翻译
+	pkgdesc = Baidu translate.Prebuilt version.Use system-wide electron.百度翻译
 	pkgver = 1.8.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://fanyi.baidu.com/
 	arch = i686
 	arch = x86_64
