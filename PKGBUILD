@@ -1,14 +1,14 @@
 # Maintainer: CupIvan <mail@cupivan.ru>
 pkgname=quik
 pkgver=11.3.4
-pkgrel=1
+pkgrel=2
 stratver=3.0.5
 trustver=2.10.0
 btradever=1.2.1002
 pkgdesc="Trading terminal in Wine"
 url="https://arqatech.com/ru/products/quik/terminals/user-applications/quik-workstation/"
 arch=('x86_64')
-depends=('wine<=9.12') # with wine-9.19 does not work
+depends=('wine>=9.20') # can't start with wine 9.13-9.19
 noextract=('keygen.zip')
 
 source=(
