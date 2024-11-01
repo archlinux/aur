@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=RnBeads.hg38
-_pkgver=1.37.0
+_pkgver=1.38.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -16,8 +16,8 @@ optdepends=(
   r-rnbeads
 )
 source=("https://bioconductor.org/packages/release/data/experiment/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('dbc8abc238802488228d42ee47c39845')
-b2sums=('6778e089911f57ed504c933bd4c09df1cfea34ed9d48c61f8d3b0f481a1b9b09ddc35a4622b6fe3a72d9539fbc3cd62efa21e7bad40224c22c4fb77b9cfd1b93')
+md5sums=('43ecf19a9513772a76d0470d1dae9366')
+b2sums=('f2deee8f9207e071f1a94988ed9056f1d28cb95f430a235cc4b1c90c6bb770c414da3560ffa23cf7a28f0fddc0c83c96ec68398add68a690d95397cfbe74c721')
 
 build() {
   mkdir build
