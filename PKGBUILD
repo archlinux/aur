@@ -1,0 +1,65 @@
+#!/usr/bin/env bash
+# shellcheck disable=SC2034
+# shellcheck disable=SC2154
+# The PKGBUILD for usearch.
+# Maintainer: Matheus <matheusgwdl@protonmail.com>
+# Contributor: Matheus <matheusgwdl@protonmail.com>
+
+declare -r _pkgname="FP16"
+declare -r _tag="98b0a46bce017382a6351a19577ec43a715b6835"
+
+pkgname="fp16"
+pkgver="0.0.0"
+pkgrel="1"
+pkgdesc="Conversion to or from half-precision floating point formats."
+arch=("x86_64")
+url="https://github.com/Maratyszcza/${_pkgname}"
+license=("MIT")
+makedepends=("cmake" "git")
+checkdepends=("gtest")
+source=("${pkgname}::git+${url}.git#tag=${_tag}")
+sha512sums=("SKIP")
+
+_compile()
+{
+    cmake -B "${srcdir}"/"${pkgname}"/build/ \
+        -D CMAKE_BUILD_TYPE=None \
+        -D CMAKE_INSTALL_PREFIX=/usr/ \
+        -D FP16_BUILD_BENCHMARKS=OFF \
+        -D FP16_BUILD_COMPARATIVE_BENCHMARKS=OFF \
+        -D FP16_BUILD_TESTS="$1" \
+        -D FP16_INSTALL_LIBRARY=ON \
+        -S "${srcdir}"/"${pkgname}"/ \
+        -Wno-dev
+    cmake --build "${srcdir}"/"${pkgname}"/build/
+}
+
+build()
+{
+    for build_tests in "OFF" "ON"; do
+        _compile "${build_tests}"
+    done
+}
+
+check()
+{
+    _compile "ON"
+    ctest --output-on-failure --test-dir "${srcdir}"/"${pkgname}"/build/
+    _compile "OFF"
+}
+
+package()
+{
+    # Assure that the directories exist.
+    mkdir -p "${pkgdir}"/usr/share/doc/"${pkgname}"/
+    mkdir -p "${pkgdir}"/usr/share/licenses/"${pkgname}"/
+
+    # Install the software.
+    DESTDIR="${pkgdir}"/ cmake --install "${srcdir}"/"${pkgname}"/build/
+
+    # Install the documentation.
+    install -Dm644 "${srcdir}"/"${pkgname}"/README.md "${pkgdir}"/usr/share/doc/"${pkgname}"/
+
+    # Install the license.
+    install -Dm644 "${srcdir}"/"${pkgname}"/LICENSE "${pkgdir}"/usr/share/licenses/"${pkgname}"/
+}

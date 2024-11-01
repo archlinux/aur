@@ -1,0 +1,14 @@
+pkgbase = fp16
+	pkgdesc = Conversion to or from half-precision floating point formats.
+	pkgver = 0.0.0
+	pkgrel = 1
+	url = https://github.com/Maratyszcza/FP16
+	arch = x86_64
+	license = MIT
+	checkdepends = gtest
+	makedepends = cmake
+	makedepends = git
+	source = fp16::git+https://github.com/Maratyszcza/FP16.git#tag=98b0a46bce017382a6351a19577ec43a715b6835
+	sha512sums = SKIP
+
+pkgname = fp16
