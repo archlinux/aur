@@ -1,0 +1,18 @@
+pkgbase = ttf-honorsans-git
+	pkgdesc = 华为HONORSans中文简繁字体添加nerd补丁    
+	pkgver = 1.2.r6.g9e4dbb0
+	pkgrel = 1
+	url = https://developer.honor.com/cn/doc/guides/100681
+	arch = any
+	license = custom
+	provides = HONORSans
+	source = git+https://github.com/maoyaotang12/HONORSans.git
+	sha256sums = SKIP
+
+pkgname = ttf-honorsans-git
+
+pkgname = ttf-honorsansarabic-git
+
+pkgname = ttf-honorsanscn-git
+
+pkgname = ttf-honorsanstc-git
