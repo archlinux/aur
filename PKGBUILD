@@ -1,8 +1,8 @@
 # Maintainer: Akash Sil <akashsil420@duck.com>
 pkgname='dare-devil'
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
-pkgdesc="It's a hellish game and going to be wickedly fun and challenging.Full of thrilling twists and turns. Warning: don't play this in your host os.."
+pkgdesc="It's a hellish game and going to be wickedly fun and challenging.Full of thrilling twists and turns..."
 url='https://github.com/Akash420-oss/Dare-Devil'
 arch=('x86_64')
 license=('MIT')

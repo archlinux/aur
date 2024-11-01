@@ -1,6 +1,6 @@
 pkgbase = dare-devil
-	pkgdesc = It's a hellish game and going to be wickedly fun and challenging.Full of thrilling twists and turns. Warning: don't play this in your host os..
-	pkgver = 0.1.0
+	pkgdesc = It's a hellish game and going to be wickedly fun and challenging.Full of thrilling twists and turns...
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/Akash420-oss/Dare-Devil
 	arch = x86_64
