@@ -1,6 +1,6 @@
 pkgbase = pycpio
 	pkgdesc = Python CPIO library
-	pkgver = 1.4.0.r1.ge5ef08a
+	pkgver = 1.2.1.r41.ge5ef08a
 	pkgrel = 1
 	url = https://github.com/desultory/pycpio
 	arch = x86_64
@@ -11,8 +11,7 @@ pkgbase = pycpio
 	makedepends = python-wheel
 	makedepends = python-setuptools
 	depends = python-zenlib-git
-	source = git+https://github.com/desultory/pycpio?signed#commit=e5ef08abdb1995e95f1fbf98ae2ff38a5d725769
-	validpgpkeys = 7751D62F9F9A0454B86871CE64FA651BB8850B48
+	source = git+https://github.com/desultory/pycpio
 	sha256sums = SKIP
 
 pkgname = python-pycpio-git
