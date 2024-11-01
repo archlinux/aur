@@ -1,13 +1,13 @@
 pkgbase = r-stemhypoxia
 	pkgdesc = Differentiation of Human Embryonic Stem Cells under Hypoxia gene expression dataset by Prado-Lopez et al. (2010)
-	pkgver = 1.41.0
+	pkgver = 1.42.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/stemHypoxia
 	arch = any
 	license = GPL-2.0-or-later
 	depends = r
-	source = https://bioconductor.org/packages/release/data/experiment/src/contrib/stemHypoxia_1.41.0.tar.gz
-	md5sums = ca8e6d021a61b883ae8cddbf183d9440
-	b2sums = 6fe6b592d9565195de30e6b88ec5fe991adc8353e5d06c8432d73c7e60c9f0b78121180039724aa7ae1b38b03c25699c37764ccff8048218e88416d4233bfe00
+	source = https://bioconductor.org/packages/release/data/experiment/src/contrib/stemHypoxia_1.42.0.tar.gz
+	md5sums = 49bf6a9e4b05c1ae7841672ab7484457
+	b2sums = a4caea2ac33f489e88123cc29c7298ed735e47a265d9b71e1324c345831bbdcab006157e3b8edcbcacdff8dc06b4c9a36ea1c2e2c403008095e4aa7b570e5c5e
 
 pkgname = r-stemhypoxia
