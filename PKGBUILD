@@ -2,39 +2,43 @@
 
 pkgname=cangaroo
 pkgver=0.2.2.r64.gca7f907
-pkgrel=3
+pkgrel=6
 pkgdesc="Open source can bus analyzer software - with support for CANable / CANable2, CANFD, and other new features"
 arch=(aarch64
 	riscv64
 	x86_64)
 license=('GPL-2.0-only')
 depends=(
-  libnl
-  qt5-charts
-  qt5-tools
-  qt5-serialport
+	bash
+	gcc-libs
+	glibc
+	libnl
+	qt5-charts
+	qt5-base
+	qt5-serialport
 )
-makedepends=(git)
+makedepends=(git
+	qt5-tools)
 url="https://github.com/normaldotcom/cangaroo"
 
 source=("$pkgname::git+${url}.git")
-md5sums=('SKIP')
+sha256sums=('SKIP')
 
 pkgver() {
-    cd "${srcdir}/${pkgname}"
-    ( set -o pipefail
-        git describe --long --tag --abbrev=7 2>/dev/null | sed 's/^v//g;s/\([^-]*-g\)/r\1/;s/-/./g' ||
-        printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
-    )
+	cd "${srcdir}/${pkgname}"
+	(
+		set -o pipefail
+		git describe --long --tag --abbrev=7 2>/dev/null | sed 's/^v//g;s/\([^-]*-g\)/r\1/;s/-/./g' ||
+			printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+	)
 }
 
-
-prepare()
-{
-    git -C "${srcdir}/${pkgname}" clean -dfx
+prepare() {
+	git -C "${srcdir}/${pkgname}" clean -dfx
+	sed -i '29i#include <linux/sockios.h>' "$srcdir/$pkgname"/src/driver/SocketCanDriver/SocketCanInterface.cpp
 }
 
-build(){
+build() {
 	cd "$srcdir/$pkgname"
 	qmake-qt5
 	make
@@ -42,7 +46,6 @@ build(){
 	qmake-qt5
 	make
 }
-
 
 package() {
 	cd "$srcdir/$pkgname"
