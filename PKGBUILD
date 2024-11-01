@@ -11,9 +11,9 @@
 # Contributor: anthrit <anthrit [at] anthware [dot] com>
 
 pkgname=lightworks
-lwksver=2023.2
+lwksver=2025.1
 lwksreldir=$lwksver
-lwksbuild=147988
+lwksbuild=148287
 pkgver=$lwksver.$lwksbuild
 pkgrel=2
 pkgdesc="Lightworks is a professional video editing suite"
@@ -46,4 +46,4 @@ package() {
     chmod a+rw "$pkgdir"/usr/share/lightworks/Preferences
     chmod a+rw "$pkgdir"/usr/share/lightworks/"Audio Mixes"
 }
-sha256sums=('bdc6a4900403254464dd3ab030bc8c1652bd16eedbe7d8b8b27ea7bd00153449')
+sha256sums=('a2961b5b36588a6e70a926b10de1a6735d17c45924139db53c307c3942e1ec97')
