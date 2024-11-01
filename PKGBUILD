@@ -14,10 +14,8 @@ pkgdesc="Fast open-source search and clustering engine for vectors."
 arch=("x86_64")
 url="https://github.com/unum-cloud/${pkgname}"
 license=("Apache-2.0")
-depends=("stringzilla")
+depends=("fp16" "simsimd" "stringzilla")
 makedepends=("cmake" "git")
-optdepends=("fp16: Alternative library."
-    "simsimd: Alternative library.")
 source=("${pkgname}::git+${url}.git#tag=${_tag}"
     "git+https://github.com/Maratyszcza/FP16.git"
     "git+https://github.com/ashvardanian/SimSIMD.git"
