@@ -2,8 +2,8 @@
 
 pkgbase=cloud-fs-bin
 pkgname=clouddrive
-pkgver=0.7.21
-pkgrel=4
+pkgver=0.8.0
+pkgrel=1
 epoch=2
 pkgdesc="CloudDrive - Unlocking the Unlimited Possibilities of Cloud Storage"
 arch=('x86_64' 'aarch64')
@@ -18,7 +18,8 @@ depends=(
     systemd-libs)
 makedepends=(libarchive)
 optdepends=('docker: Pack, ship and run any application as a lightweight container'
-    'davfs2: File system driver that allows you to mount a WebDAV folder')
+    'davfs2: File system driver that allows you to mount a WebDAV folder'
+    'clouddrive-decrypt: clouddrive-decrypt is a standalone tool designed to demo how to decrypt files encrypted by CloudDrive2.')
 backup=()
 options=('!strip' '!debug' '!lto')
 install=${pkgname}.install
@@ -27,9 +28,9 @@ source=("LICENSE.html::https://raw.githubusercontent.com/cloud-fs/cloud-fs.githu
     "${pkgname}-${epoch}-x86_64-${pkgver}.tgz::${url}/releases/download/v${pkgver}/${pkgname}-${epoch}-linux-x86_64-${pkgver}.tgz"
     "${pkgname}-${epoch}-aarch64-${pkgver}.tgz::${url}/releases/download/v${pkgver}/${pkgname}-${epoch}-linux-aarch64-${pkgver}.tgz")
 sha256sums=('c336f41e259916212c7fdd3e21a26a2faf94d725b5daf686bca501978efbf17e'
-    '32d37f9ab2f20170c8938a7bf3349eac152f4ee663f2c630be3ca966f50300bc'
-    '53cb61edc100143060f8257a0c45f4627a9a336f8d24d2a6c80fc846d9d6112a'
-    '2da0153b8a74b127ec1a614f4b3972d47ce8fade2863a9a06937671eb86ed2f2')
+            '32d37f9ab2f20170c8938a7bf3349eac152f4ee663f2c630be3ca966f50300bc'
+            'f9269eda888cdb1a3661399b04acdedfbc356f91618aeb2f917d9cf575dddbae'
+            'b9e4b8e0b5b7d04ed567ea7f9a6557c6e7c0472def1b8a46870278e6ebdadaa6')
 noextract=(
     ${pkgname}-${epoch}-x86_64-${pkgver}.tgz
     ${pkgname}-${epoch}-aarch64-${pkgver}.tgz)
@@ -52,7 +53,7 @@ package() {
 #!/usr/bin/env bash
 
 LOCAL_ROOT_PATH="/media/clouddrive"
-MAX_QSP_115=2.5
+MAX_QSP_115=3
 
 cd /opt/clouddrive
 ./clouddrive
