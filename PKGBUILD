@@ -3,7 +3,7 @@
 # Contributor: yjun <jerrysteve1101@gmail.com>
 
 pkgname='hentaiathome'
-pkgver=1.6.1
+pkgver=1.6.3
 pkgrel=3
 pkgdesc="An open-source Peer-2-Peer gallery distribution system which reduces the load on the E-Hentai Galleries"
 arch=('x86_64')
@@ -17,7 +17,7 @@ source=("HentaiAtHome_${pkgver}.zip::https://repo.e-hentai.org/hath/HentaiAtHome
         "hentaiathome.desktop"
         "hentaiathome-cli"
         "hentaiathome-gui")
-sha256sums=('9d843b4af8c109450938206f7d72e7a90bd0fca6b3922ac555aaf328ee7c0e5b'
+sha256sums=('801de4cfdb2f57f9aab27371900b9fab33df82f83811b03e72425595dec45388'
             '5bde26294110d8454c40772ed147238741ab7d992e7c5f8054e2cd139222258f'
             'c50d1fb930990b033445351d7186634ed55bd083dbbb634680507300211145a6'
             '6f9896d1311cc10a4fe5104e77362422eedd58198ba85b1f9093f7a290189f1e'
