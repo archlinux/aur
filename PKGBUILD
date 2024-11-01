@@ -1,16 +1,16 @@
 # Maintainer: Zen <dev@pyl.onl>
 pkgname=python-zenlib-git
-pkgver=2.3.2-r0.74a840d
+pkgver=9999
 pkgrel=1
 pkgdesc="Useful python decorators and utilities"
 arch=('x86_64')
 url="https://github.com/desultory/zenlib"
 license=('GPL2')
 makedepends=(git python-build python-installer python-wheel python-setuptools)
-source=("git+https://github.com/desultory/zenlib?signed#commit=74a840daebde60494bc8092e315ba7411581e33c")
+source=("git+https://github.com/desultory/zenlib?signed#branch=main)
 # https://wiki.gentoo.org/wiki/User:Zen_desu
 # gpg  --keyserver 'hkps://keys.openpgp.org' --recv-keys 7751D62F9F9A0454B86871CE64FA651BB8850B48
-validpgpkeys=('7751D62F9F9A0454B86871CE64FA651BB8850B48')
+#validpgpkeys=('7751D62F9F9A0454B86871CE64FA651BB8850B48')
 sha256sums=(SKIP) 
 _name=${pkgname#python-};
 _name=${_name%-git}
