@@ -43,7 +43,6 @@ sha256sums=('SKIP'
         '3a78c9ceb45dca435d3542c6416b511293743b32c7f384a3689d4addf3653989')
 
 prepare() {
-    rm -f "$_pkgname-"*.desktop
     sed -i "s/@PROJECT_NAME@/$_pkgname/g" "$_pkgname-$pkgver.desktop"
     sed -i "s/@PROJECT_DESCRIPTION@/$pkgdesc/g" "$_pkgname-$pkgver.desktop"
     sed -i "s/@PROJECT_VERSION@/$_gittag/g" "$_pkgname-$pkgver.desktop"
