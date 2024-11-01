@@ -1,13 +1,13 @@
 # Maintainer: Wraient <rushikeshwastaken@gmail.com>
 pkgname='octopus-player'
 pkgver=v0.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Watch shows CLI with playback tracking"
 arch=("x86_64")
 url="https://github.com/Wraient/octopus"
 license=('GPL')
 depends=('mpv' 'rofi')
-source=("flick::https://github.com/Wraient/octopus/releases/latest/download/flick")
+source=("octopus::https://github.com/Wraient/octopus/releases/latest/download/octopus")
 sha256sums=('SKIP')
 
 pkgver() {
