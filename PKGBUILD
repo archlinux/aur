@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=ALL
-_pkgver=1.47.0
+_pkgver=1.48.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -13,8 +13,8 @@ depends=(
   r-biobase
 )
 source=("https://bioconductor.org/packages/release/data/experiment/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('e09ed8b2e4fe15cbb5308cfbab038b0f')
-b2sums=('2bd631e56d0ec5b22d0805cbc00ddcfcfb85559e0b5e43a73afd7731401866c73977100458e512412c994927a3a744a7d9a89948d42c87e72c0337c99fcb878b')
+md5sums=('5580b83d2affbc83bfe4d3c7c090ceff')
+b2sums=('fc3b6f81e01b3dfac848b09f9e19eeb16502bac0e4d8ae2094235cd7e4370329a9a9fddbdaa2323febfef15a4e7fb9fed645837c1da798ebd726a19daf9cf11f')
 
 build() {
   mkdir build
