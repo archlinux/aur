@@ -1,0 +1,16 @@
+pkgbase = gluten-git
+	pkgdesc = gitlab tui for viewing notifications
+	pkgver = 0.1.0.r24.g65fe84d
+	pkgrel = 1
+	url = https://gitlab.com/sornas/gluten.git
+	arch = x86_64
+	license = EUPL-1.2
+	makedepends = cargo
+	makedepends = git
+	makedepends = scdoc
+	depends = curl
+	options = !lto
+	source = gluten::git+https://gitlab.com/sornas/gluten.git
+	sha1sums = SKIP
+
+pkgname = gluten-git
