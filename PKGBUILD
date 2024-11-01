@@ -5,7 +5,7 @@
 _pkgname=libinput
 pkgname="$_pkgname-three-finger-drag"
 pkgver=1.26.1
-pkgrel=0
+pkgrel=1
 pkgdesc="Input device management and event handling library"
 url="https://www.freedesktop.org/wiki/Software/$_pkgname/"
 arch=(x86_64)
