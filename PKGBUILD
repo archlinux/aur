@@ -4,7 +4,7 @@
 pkgname='vkteams-bin'
 pkgbasename='vkteams'
 pkgver=24.5.4.46643
-pkgrel=1
+pkgrel=2
 pkgdesc='Official desktop application for the VK Teams messaging service'
 arch=("x86_64")
 url='https://teams.vk.com'
