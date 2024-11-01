@@ -3,7 +3,7 @@
 _org='Simple-Robotics'
 _pkgname='aligator'
 pkgname=("$_pkgname" "$_pkgname-docs")
-pkgver='0.6.1'
+pkgver='0.8.0'
 pkgrel=1
 pkgdesc="A versatile and efficient framework for constrained trajectory optimization"
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ depends=('boost-libs' 'eigenpy' 'pinocchio' 'proxsuite-nlp' 'crocoddyl')
 optdepends=('doxygen')
 makedepends=('cmake' 'eigen' 'fmt' 'boost' 'benchmark')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('803990b868400fb16a25693b0f0f41d848c1cbe6efbdae13704fc56decdacc83')
+sha256sums=('e4e082bfef84094f06f77baf3bedb0edcf3efdea5cc62cdf7a26381e18a3cca6')
 
 build() {
     cmake -B "build-$pkgver" -S "$pkgbase-$pkgver" \
@@ -27,10 +27,10 @@ build() {
     cmake --build "build-$pkgver"
 }
 
-#check() {
+check() {
     # test-cpp-gar-riccati fails
-    #cmake --build "build-$pkgver" -t test
-#}
+    cmake --build "build-$pkgver" -t test
+}
 
 package_aligator() {
     DESTDIR="$pkgdir/" cmake --build "build-$pkgver" -t install
