@@ -3,11 +3,10 @@ pkgbase = minimap2
 	pkgver = 2.28
 	pkgrel = 1
 	url = https://lh3.github.io/minimap2
-	arch = i686
 	arch = x86_64
 	license = MIT
 	depends = zlib
-	source = https://github.com/lh3/minimap2/releases/download/v2.28/minimap2-2.28.tar.bz2
-	sha256sums = ffa5712735d229119f8c05722a0638ae0cc15aeb8938e29a3e52d5da5c92a0b4
+	source = minimap2-2.28.tar.gz::https://github.com/lh3/minimap2/archive/v2.28.tar.gz
+	sha256sums = 5ea6683b4184b5c49f6dbaef2bc5b66155e405888a0790d1b21fd3c93e474278
 
 pkgname = minimap2

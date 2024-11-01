@@ -1,32 +1,29 @@
-# Maintainer: Ghabry <gabriel-aur mastergk de>
+# Maintainer: Charles Vejnar <first name [dot] last name [at] gmail [dot] com>
+# Contributor: Ghabry <gabriel-aur mastergk de>
 
 pkgname=minimap2
 pkgver=2.28
 pkgrel=1
 pkgdesc="A versatile pairwise aligner for genomic and spliced nucleotide sequences"
-arch=('i686' 'x86_64')
+arch=("x86_64")
 url="https://lh3.github.io/minimap2"
-license=('MIT')
+license=("MIT")
 depends=('zlib')
-source=("https://github.com/lh3/$pkgname/releases/download/v$pkgver/$pkgname-$pkgver.tar.bz2")
-sha256sums=('ffa5712735d229119f8c05722a0638ae0cc15aeb8938e29a3e52d5da5c92a0b4')
-
-prepare() {
-  cd $pkgname-$pkgver
-}
+source=("$pkgname-$pkgver.tar.gz::https://github.com/lh3/minimap2/archive/v${pkgver}.tar.gz")
+sha256sums=('5ea6683b4184b5c49f6dbaef2bc5b66155e405888a0790d1b21fd3c93e474278')
 
 build() {
-  cd $pkgname-$pkgver
+    cd "$srcdir/$pkgname-$pkgver"
 
-  make
+    make
 }
 
 package() {
-  cd $pkgname-$pkgver
+    cd "$srcdir/$pkgname-$pkgver"
 
-  # application
-  install -Dm0755 $pkgname "$pkgdir"/usr/bin/$pkgname
+    # application
+    install -Dm0755 $pkgname "$pkgdir/usr/bin/$pkgname"
 
-  # license
-  install -Dm0644 LICENSE.txt "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+    # license
+    install -Dm0644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
