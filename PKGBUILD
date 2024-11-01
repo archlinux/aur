@@ -1,11 +1,12 @@
 # Maintainer: Self Denial <selfdenial@pm.me>
-pkgname='Screenshot_LLM'
+pkgname='screenshot_llm-git'
+_pkgname='Screenshot_LLM'
 pkgdesc='AI-Powered Screenshot Analysis'
 pkgver='eeb440e'
 _pkgver='main'
 pkgrel='1'
 arch=('x86_64')
-url="https://github.com/ThanabordeeN/${pkgname}"
+url="https://github.com/ThanabordeeN/${_pkgname}"
 license=('MIT')
 depends=('python' 'tk' 'python-dotenv' 'python-markdown')
 optdepends=('ollama: ollama support.')
@@ -22,19 +23,19 @@ prepare() {
 }
 
 package() {
-  mkdir -p "${pkgdir}/usr/lib/${pkgname}"
-  cp -r "${srcdir}/${pkgname}-${_pkgver}/"* "${pkgdir}/usr/lib/${pkgname}"
+  mkdir -p "${pkgdir}/usr/lib/${_pkgname}"
+  cp -r "${srcdir}/${pkgname}-${_pkgver}/"* "${pkgdir}/usr/lib/${_pkgname}"
 
   # Add script symlink under /usr/bin
   mkdir -p "${pkgdir}/usr/bin"
-  ln -sf "/usr/lib/${pkgname}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname,,}"
+  ln -sf "/usr/lib/${_pkgname}/${_pkgname}.sh" "${pkgdir}/usr/bin/${_pkgname,,}"
 
   # Install service
-  install -D -m 644 "${srcdir}/${pkgname}-${_pkgver}/systemd/user/${pkgname,,}.service" "${pkgdir}/usr/lib/systemd/user/${pkgname,,}.service"
+  install -D -m 644 "${srcdir}/${pkgname}-${_pkgver}/systemd/user/${_pkgname,,}.service" "${pkgdir}/usr/lib/systemd/user/${_pkgname,,}.service"
   install -D -m 644 "${srcdir}/${pkgname}-${_pkgver}/systemd/Screenshot_LLM_systemd.desktop" "${pkgdir}/usr/share/applications/Screenshot_LLM.desktop"
 
   echo "********************"
   echo "To enable and start the service:"
-  echo "systemctl --user enable --now ${pkgname,,}.service"
+  echo "systemctl --user enable --now ${_pkgname,,}.service"
   echo "********************"
 }
