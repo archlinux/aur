@@ -2,12 +2,12 @@
 pkgname=python-moteus-gui
 _name=${pkgname#python-}
 pkgver=0.3.73
-pkgrel=1
+pkgrel=2
 pkgdesc="moteus brushless controller graphical user interfaces"
 url="https://pypi.org/project/moteus-gui/"
 arch=('any')
 license=('Apache-2.0')
-depends=('pyside2' 'python-asyncqt' 'python-matplotlib' 'python-moteus' 'python-numpy' 'python-qtconsole' 'python-qtpy')
+depends=('pyside6' 'python-asyncqt' 'python-matplotlib' 'python-moteus' 'python-numpy' 'python-qtconsole' 'python-qtpy')
 makedepends=('python-installer')
 
 source=("https://files.pythonhosted.org/packages/py3/${_name::1}/$_name/${_name//-/_}-$pkgver-py3-none-any.whl")
