@@ -1,6 +1,6 @@
 pkgbase = python-cx-freeze
 	pkgdesc = Create standalone executables from Python scripts
-	pkgver = 7.2.0
+	pkgver = 7.2.4
 	pkgrel = 1
 	url = https://marcelotduarte.github.io/cx_Freeze
 	arch = x86_64
@@ -18,11 +18,13 @@ pkgbase = python-cx-freeze
 	depends = python-packaging
 	depends = python-setuptools
 	depends = python-filelock
-	depends = python-pyqt5
+	depends = python-pyqt6
+	optdepends = perl-alien-build: Alien support for rpm, dpkg, stampede slp, and slackware tgz file formats
+	optdepends = rpm-tools: RPM Package Manager RPM.org support
 	provides = python-cx_freeze
 	conflicts = python-cx_freeze
 	replaces = python-cx_freeze
-	source = https://github.com/marcelotduarte/cx_Freeze/archive/7.2.0/python-cx-freeze-7.2.0.tar.gz
-	sha512sums = e7ff9c3ed578e20d9c85b8b500ba405fff924325d61d0f92a2a42898d46ba2d32216ada31d255252f8962731f2c0a59dae94a803fca31c6acea0dfdea16db2eb
+	source = https://github.com/marcelotduarte/cx_Freeze/archive/7.2.4/python-cx-freeze-7.2.4.tar.gz
+	sha512sums = 393fc84e35bbade716fd6f67cd17a820252d27a0212417740cea555671ce5965641defe80d3860279a99311a2cb429b8f3fe0af692181bfd923445f28a95dfda
 
 pkgname = python-cx-freeze
