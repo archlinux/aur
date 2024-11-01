@@ -1,0 +1,15 @@
+pkgbase = uptime-kuma-runit
+	pkgdesc = Runit service script for uptime-kuma.
+	pkgver = 20241101
+	pkgrel = 1
+	url = https://github.com/louislam/uptime-kuma
+	arch = any
+	license = MIT
+	depends = runit
+	depends = uptime-kuma
+	source = uptime-kuma.run
+	source = uptime-kuma.log.run
+	sha256sums = cfedd218efd206ba72d3b71097753581c994ab81c1f3a510fdc04228af310cec
+	sha256sums = e4a66e777b8fbc2d0369b93538410130b0d3b5c30fb5d4ae80b46cb359a270e4
+
+pkgname = uptime-kuma-runit

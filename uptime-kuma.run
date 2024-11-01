@@ -1,0 +1,4 @@
+#!/bin/sh
+
+cd /usr/lib/node_modules/uptime-kuma/
+exec /usr/bin/node server/server.js 2>&1
