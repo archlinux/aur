@@ -1,11 +1,11 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=cosmic-wallpapers-git
-pkgver=r4.0f2f16d
-pkgrel=2
+pkgver=1.0.0.alpha.3.r0.gcb8e6d6
+pkgrel=1
 pkgdesc="Wallpapers for the COSMIC Desktop Environment"
 arch=('any')
 url="https://github.com/pop-os/cosmic-wallpapers"
-license=('LicenseRef-unknown')
+license=('CC-BY-4.0 AND LicenseRef-custom')
 makedepends=('git' 'git-lfs')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
@@ -14,7 +14,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "${pkgname%-git}"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+  git describe --long --tags --abbrev=7 | sed 's/^epoch-//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
