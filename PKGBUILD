@@ -1,7 +1,7 @@
 # Maintainer: Adam Perkowski <adas1per@protonmail.com>
 pkgname='hyprgui'
 pkgver=0.1.6
-pkgrel=1
+pkgrel=2
 pkgdesc='GUI for configuring Hyprland, written in blazingly fast Rust!'
 arch=('x86_64')
 url='https://github.com/nnyyxxxx/hyprgui'
@@ -34,5 +34,6 @@ package() {
     cd "$pkgname-$pkgver"
 
     install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/$pkgname"
+    install -Dm644 "$pkgname.png" "$pkgdir/usr/share/icons/$pkgname.png"
     install -Dm644 "$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
 }
