@@ -1,6 +1,6 @@
 # Maintainer: beelzy
 pkgname=kame-tools-git
-pkgver=90ca8e5
+pkgver=a1fe47c
 pkgrel=1
 pkgdesc="A tool for bundling 3DS theme files"
 arch=('i686' 'x86_64' 'aarch64')
