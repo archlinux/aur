@@ -1,12 +1,14 @@
 # Maintainer: zhullyb <zhullyb [at] outlook dot com>
 # Maintainer: yjun <jerrysteve1101 at gmail dot com>
 # Contributor: Bruce Zhang <zttt183525594@gmail.com>
+# Contributor: witt <1989161762 at qq dot com>
 
 pkgname=dingtalk-bin
 _pkgname=dingtalk
 _pkgname2=com.alibabainc.dingtalk
-pkgver=7.6.15.4101801
-pkgrel=2
+# https://dtapp-pub.dingtalk.com/dingtalk-desktop/xc_dingtalk_update/linux_deb/Update/other/amd64/linux_dingtalk_update_package_gray.json
+pkgver=7.6.15.4102301
+pkgrel=1
 pkgdesc="钉钉"
 arch=("x86_64")
 url="https://www.dingtalk.com/"
@@ -23,51 +25,49 @@ conflicts=('com.alibabainc.dingtalk')
 replaces=('com.alibabainc.dingtalk')
 # https://tms.dingtalk.com/markets/dingtalk/service-terms-zh md5 will change per download
 source_x86_64=("${_pkgname}_${pkgver}-x86_64.deb::https://dtapp-pub.dingtalk.com/dingtalk-desktop/xc_dingtalk_update/linux_deb/Release/${_pkgname2}_${pkgver}_amd64.deb")
-source_aarch64=(${_pkgname}_${pkgver}-aarch64.deb::https://dtapp-pub.dingtalk.com/dingtalk-desktop/xc_dingtalk_update/linux_deb/Release/${_pkgname2}_${pkgver}_arm64.deb)
-source=("service-terms-zh"
+source_aarch64=("${_pkgname}_${pkgver}-aarch64.deb::https://dtapp-pub.dingtalk.com/dingtalk-desktop/xc_dingtalk_update/linux_deb/Release/${_pkgname2}_${pkgver}_arm64.deb")
+source=("service-terms-zh_${pkgver}.html::https://tms.dingtalk.com/markets/dingtalk/service-terms-zh"
     "${_pkgname2}.desktop"
     "dingtalk.sh"
     "${_pkgname2}.svg"
 )
 
 # DebSource & pkgver can be get here: https://dtapp-pub.dingtalk.com/dingtalk-desktop/xc_dingtalk_update/linux_deb/Update/other/linux_dingtalk_update.json
-
-sha512sums=('b83d493ed68be0f5a6b851fd93d819bb3a6e62feeb71a5bef10bad24b5ea8f3cf09deea4f31ed727449888a6eae1be99fa9cf263bc921cb8bb2958e2f37a7d64'
+sha512sums=('680429273d159db12d8190ca0e886bbdc2c48a518b70bab241ed451e3bfd93049789c29168102d0f11a934be226096d3f218bca1f13f132e5d58204328746fd8'
             'c8570ec4cd978e26ac622a83db053a0555324752f5000dc5b3cd680d782138e8ef856f09ec9b7850e04e1faa1e39de94dabeb16fbfbe0fd44af43247b30e8b2f'
             'b2493e7bddc2d701204899bcd82930f97779eec23485870c64665c525b9faca382a3c0e9e9c1bd18f8fa8157ea408943e542de56dc3410388e78f30732511f5c'
             '5f05f90704526fbd16371f6f9deaa171a3cac25a103b21daba72a3028ab7cdf9b566a3ac7842c6ce88d30cc29fe0c8b989c77aa36daab73793a827a1a0d6c775')
-sha512sums_x86_64=('1f00e75b3ec8f416daf64e46484117f1bae8aaf4dfcf08cd953d96b4af283dd074400c96bab38ba9ace7a446f24044356c23bbbac78403e0ea24bb65590d831a')
+sha512sums_x86_64=('505ee5410c89240b18448fa27d7d4b13698123d12a829246162a410651cd9488a933348b746a0f6b9d63717cd92bd0515a7c22f9a25204291506f6e7a1d48efb')
 
 prepare() {
-    cd ${srcdir}
     tar -Jxvf data.tar.xz -C "${srcdir}"
 }
 
 package() {
-    cd ${srcdir}
+    cd "${srcdir}"
 
-    mkdir -p ${pkgdir}/opt/${_pkgname}/release
-    mkdir -p ${pkgdir}/usr/share/doc/
-    mv opt/apps/${_pkgname2}/files/*-Release.*/* ${pkgdir}/opt/${_pkgname}/release
-    mv opt/apps/${_pkgname2}/files/version ${pkgdir}/opt/${_pkgname}
-    mv opt/apps/${_pkgname2}/files/doc/${_pkgname2} ${pkgdir}/usr/share/doc/${_pkgname}
+    mkdir -p "${pkgdir}/opt/${_pkgname}/release"
+    mkdir -p "${pkgdir}/usr/share/doc/"
+    mv "opt/apps/${_pkgname2}/files/"*-Release.*/* "${pkgdir}/opt/${_pkgname}/release"
+    mv "opt/apps/${_pkgname2}/files/version" "${pkgdir}/opt/${_pkgname}"
+    mv "opt/apps/${_pkgname2}/files/doc/${_pkgname2}" "${pkgdir}/usr/share/doc/${_pkgname}"
 
     # binary wrapper
-    install -Dm755 ${srcdir}/dingtalk.sh ${pkgdir}/usr/bin/dingtalk
+    install -Dm755 "${srcdir}/dingtalk.sh" "${pkgdir}/usr/bin/dingtalk"
 
     # desktop enrty
-    install -Dm644 ${_pkgname2}.desktop -t ${pkgdir}/usr/share/applications/
+    install -Dm644 "${_pkgname2}.desktop" -t "${pkgdir}/usr/share/applications/"
 
-    install -Dm644 ${srcdir}/${_pkgname2}.svg ${pkgdir}/usr/share/icons/hicolor/scalable/apps/${_pkgname}.svg
+    install -Dm644 "${srcdir}/${_pkgname2}.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/${_pkgname}.svg"
 
     # license
-    install -Dm644 service-terms-zh ${pkgdir}/usr/share/licenses/${_pkgname}/service-terms-zh.html
+    install -Dm644 "service-terms-zh_${pkgver}.html" "${pkgdir}/usr/share/licenses/${_pkgname}/service-terms-zh.html"
 
     # fix chinese input in workbench
-    rm -rf ${pkgdir}/opt/${_pkgname}/release/libgtk-x11-2.0.so.*
+    rm -rf "${pkgdir}/opt/${_pkgname}/release/libgtk-x11-2.0.so."*
 
-    rm -rf ${pkgdir}/opt/${_pkgname}/release/{libm.so.6,Resources/{i18n/tool/*.exe,qss/mac,web_content/NativeWebContent_*.zip},libstdc*}
+    rm -rf "${pkgdir}/opt/${_pkgname}/release"/{libm.so.6,Resources/{i18n/tool/*.exe,qss/mac,web_content/NativeWebContent_*.zip},libstdc*}
 
     # remove unused lib
-    rm -rf ${pkgdir}/opt/${_pkgname}/release/{libcurl.so.4,libz*}
+    rm -rf "${pkgdir}/opt/${_pkgname}/release"/{libcurl.so.4,libz*}
 }
