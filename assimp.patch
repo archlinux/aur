@@ -1,31 +1,52 @@
 diff --git a/src/ext/CMakeLists.txt b/src/ext/CMakeLists.txt
-index 6b2690eb..bfdf5091 100644
+index ba422f8e..dfe210c6 100644
 --- a/src/ext/CMakeLists.txt
 +++ b/src/ext/CMakeLists.txt
-@@ -7,25 +7,7 @@ add_library(fast_float INTERFACE)
- target_include_directories(fast_float INTERFACE fast_float/include)
- target_link_libraries(luisa-render-ext INTERFACE fast_float)
+@@ -11,46 +11,7 @@ target_link_libraries(luisa-render-ext INTERFACE fast_float)
+ find_package(ZLIB)
  
--#find_package(assimp CONFIG)
--if (NOT assimp_FOUND)
--    set(ASSIMP_BUILD_ZLIB ON CACHE BOOL "" FORCE)
--    set(ASSIMP_BUILD_ASSIMP_TOOLS OFF CACHE BOOL "" FORCE)
--    set(ASSIMP_BUILD_TESTS OFF CACHE BOOL "" FORCE)
--    set(ASSIMP_INSTALL OFF CACHE BOOL "" FORCE)
--    set(ASSIMP_INJECT_DEBUG_POSTFIX OFF CACHE BOOL "" FORCE)
--    set(ASSIMP_NO_EXPORT ON CACHE BOOL "" FORCE)
--    set(ASSIMP_BUILD_ALL_IMPORTERS_BY_DEFAULT ON CACHE BOOL "" FORCE)
--    add_subdirectory(assimp)
--    set_target_properties(assimp PROPERTIES UNITY_BUILD OFF)
--    if (UNIX AND NOT APPLE)
--        target_compile_definitions(assimp PRIVATE USE_FILE32API=1)
+ # Assimp
+-if (ZLIB_FOUND)
+-    # work around assimp's broken install when using system zlib
+-    if (NOT TARGET zlib)
+-        add_library(zlib INTERFACE)
 -    endif ()
--    if (CMAKE_CXX_COMPILER_ID MATCHES "Clang" AND
--            CMAKE_CXX_COMPILER_VERSION VERSION_GREATER_EQUAL 15.0)
--        target_compile_options(assimp PRIVATE -Wno-deprecated-non-prototype)
+-    if (NOT TARGET zlibstatic)
+-        add_library(zlibstatic INTERFACE)
+-    endif ()
+-    set(ASSIMP_BUILD_ZLIB OFF CACHE BOOL "" FORCE)
+-else ()
+-    set(ASSIMP_BUILD_ZLIB ON CACHE BOOL "" FORCE)
+-endif ()
+-set(ASSIMP_BUILD_ASSIMP_TOOLS OFF CACHE BOOL "" FORCE)
+-set(ASSIMP_BUILD_TESTS OFF CACHE BOOL "" FORCE)
+-set(ASSIMP_INSTALL ON CACHE BOOL "" FORCE)
+-set(ASSIMP_INJECT_DEBUG_POSTFIX OFF CACHE BOOL "" FORCE)
+-set(ASSIMP_NO_EXPORT ON CACHE BOOL "" FORCE)
+-set(ASSIMP_BUILD_ALL_IMPORTERS_BY_DEFAULT ON CACHE BOOL "" FORCE)
+-set(ASSIMP_WARNINGS_AS_ERRORS OFF CACHE BOOL "" FORCE)
+-if (CMAKE_CXX_COMPILER_ID MATCHES "Clang" AND
+-        CMAKE_CXX_COMPILER_VERSION VERSION_GREATER_EQUAL 15.0)
+-    add_compile_options(-Wno-deprecated-non-prototype)
+-endif ()
+-add_subdirectory(assimp)
+-set_target_properties(assimp PROPERTIES
+-        UNITY_BUILD OFF
+-        OUTPUT_NAME "luisa-render-ext-assimp")
+-if (UNIX AND NOT APPLE) # TODO: fix this
+-    target_compile_definitions(assimp PRIVATE USE_FILE32API=1)
+-endif ()
+-if (ASSIMP_BUILD_ZLIB)
+-    if (TARGET zlib)
+-        set_target_properties(zlib PROPERTIES
+-                WINDOWS_EXPORT_ALL_SYMBOLS ON
+-                OUTPUT_NAME "luisa-render-ext-zlib")
+-        install(TARGETS zlib
+-                LIBRARY DESTINATION ${CMAKE_INSTALL_BINDIR}
+-                RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR})
 -    endif ()
 -endif ()
 +find_package(assimp CONFIG)
  target_link_libraries(luisa-render-ext INTERFACE assimp::assimp)
  
- set(TINYEXR_BUILD_SAMPLE OFF CACHE BOOL "" FORCE)
+ # tinyexr

@@ -1,13 +1,15 @@
 # Maintainer: Alex Hirzel <alex at hirzel period us>
+# Maintainer: Chuyan Zhang <develop at zcy dot moe>
 
-pkgname=luisarender-git
-pkgver=1381f5ab
+_pkgname=luisarender
+pkgname=$_pkgname-git
+pkgver=d77dd353
 pkgrel=1
 pkgdesc="High-Performance Rendering Framework on Stream Architectures"
 arch=('x86_64')
 url="https://luisa-render.com/"
 license=('BSD')
-depends=('abseil-cpp' 'assimp' 'cuda' 'embree' 'glfw-wayland' 'tbb')
+depends=('assimp' 'cuda' 'embree' 'glfw-wayland' 'tbb')
 makedepends=('clang' 'git' 'cmake')
 source=(
 	'git+https://github.com/LuisaGroup/LuisaRender.git'
@@ -25,29 +27,25 @@ source=(
 	'git+https://github.com/glfw/glfw.git'
 	'git+https://github.com/ocornut/imgui.git'
 	'git+https://github.com/LuisaGroup/EASTL.git'
-	'git+https://github.com/jothepro/doxygen-awesome-css.git'
-	'git+https://github.com/KhronosGroup/SPIRV-Headers'
-	'git+https://github.com/KhronosGroup/SPIRV-Tools.git'
-	'git+https://github.com/KhronosGroup/glslang.git'
-	'git+https://github.com/google/shaderc.git'
+	'git+https://github.com/Neargye/magic_enum.git'
+	'git+https://github.com/LuisaGroup/reproc.git'
+	'git+https://github.com/LuisaGroup/marl.git'
 
 	# submodules within compute
 	'git+https://github.com/LuisaGroup/EABase.git'
 	'git+https://github.com/microsoft/mimalloc.git'
 
 	'assimp.patch'
-	'abseil-cpp.patch'
 	'pybind11.patch'
 )
 
 sha256sums=(
 	'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP'
 	'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP'
-	'SKIP' 'SKIP' 'SKIP' 'SKIP'
+	'SKIP' 'SKIP'
 
-	'822638ea7608bf42fdfd7f04d4453c5413c7cb673296415fc82dc110fc1f97a3'
-	'0fb87b700d7e657836d69aca7f114d8bfaaf7843b0c04c05cb4d3f2cb2a99ba6'
-	'a1bd3301ed9aaa7cb35acf14afe430db3edd1523324fa6498776e60e80c4cf14'
+	'60c46ae63d3f4b42606e59dd6448f53aa5b47039bf1438ef290caab312d06351'
+	'133de203c1237cf2463a3b791cd185973b23916b6bb2a9d574617989fc1f0ccb'
 )
 
 pkgver() {
@@ -62,26 +60,22 @@ prepare() {
 	# nesting we need to be careful to 'cd' to the correct parent repository
 	# when calling "submodule update"
 	for clone_path in \
-		"LuisaCompute        src/compute" \
-		"xxHash              src/compute/src/ext/xxHash" \
-		"spdlog              src/compute/src/ext/spdlog" \
-		"asio                src/compute/src/ext/asio" \
-		"stb                 src/compute/src/ext/stb/stb" \
-		"json                src/compute/src/ext/json" \
-		"glfw                src/compute/src/ext/glfw" \
-		"imgui               src/compute/src/ext/imgui/imgui" \
-		"EASTL               src/compute/src/ext/EASTL" \
-		"EABase              src/compute/src/ext/EASTL/packages/EABase" \
-		"mimalloc            src/compute/src/ext/EASTL/packages/mimalloc" \
-		"doxygen-awesome-css src/compute/src/ext/doxygen-awesome-css" \
-		"abseil-cpp          src/compute/src/ext/abseil-cpp" \
-		"SPIRV-Hea           src/compute/src/ext/SPIRV-Headers" \
-		"SPIRV-Tools         src/compute/src/ext/SPIRV-Tools" \
-		"glslang             src/compute/src/ext/glslang" \
-		"shaderc             src/compute/src/ext/shaderc" \
-		"cxxopts             src/ext/cxxopts" \
-		"fast_float          src/ext/fast_float" \
-		"tinyexr             src/ext/tinyexr" \
+		"LuisaCompute src/compute" \
+		"xxHash       src/compute/src/ext/xxHash" \
+		"spdlog       src/compute/src/ext/spdlog" \
+		"stb          src/compute/src/ext/stb/stb" \
+		"glfw         src/compute/src/ext/glfw" \
+		"EASTL        src/compute/src/ext/EASTL" \
+		"EABase       src/compute/src/ext/EASTL/packages/EABase" \
+		"mimalloc     src/compute/src/ext/EASTL/packages/mimalloc" \
+		"magic_enum   src/compute/src/ext/magic_enum" \
+		"imgui        src/compute/src/ext/imgui" \
+		"reproc       src/compute/src/ext/reproc" \
+		"marl         src/compute/src/ext/marl" \
+		"cxxopts      src/ext/cxxopts" \
+		"fast_float   src/ext/fast_float" \
+		"tinyexr      src/ext/tinyexr" \
+		"json         src/ext/json" \
 	; do
 		clone_path=( $clone_path );      # string to array
 		clone=${clone_path[0]};          # first path from above - the cloned folder from PKGBUILD
@@ -110,9 +104,8 @@ prepare() {
 	# use system abseil-cpp and pybind11
 	pushd "$srcdir/LuisaRender/src/compute" > /dev/null
 		git restore . # in case it was already applied
-		git apply -v "$srcdir/abseil-cpp.patch"
 		git apply -v "$srcdir/pybind11.patch"
-		rm -rf ext/abseil-cpp ext/pybi
+		rm -rf ext/abseil-cpp ext/pybind11
 	popd > /dev/null
 }
 
@@ -121,19 +114,28 @@ build() {
 		-B "$srcdir/build" \
 		-DLUISA_RENDER_BUILD_TESTS=ON \
 		-DLUISA_COMPUTE_ENABLE_PYTHON=ON \
-		-DCMAKE_BUILD_TYPE=Release
+		-DCMAKE_BUILD_TYPE=Release \
+		-GNinja
 
-	make -C "$srcdir/build" ${MAKEFLAGS:--j1}
+	cmake --build "$srcdir/build"
+}
+
+check() {
+	cd "$srcdir/build/bin"
+	for test_binary in test_*; do
+		msg2 "Running test case $test_binary."
+		$srcdir/build/bin/$test_binary
+	done
 }
 
 package() {
 	cd "$srcdir/build"
 
 	pkgusr="$pkgdir/usr"
-	pkglib="$pkgusr/lib/$pkgname"
+	pkglib="$pkgusr/lib/$_pkgname"
 
 	cd "$srcdir/LuisaRender"
-	install -Dm644 LICENSE "$pkgusr/share/licenses/$pkgname/LICENSE"
+	install -Dm644 LICENSE "$pkgusr/share/licenses/$_pkgname/LICENSE"
 
 	# for now, we manually pick things out of the build folder rather than using
 	# the install.
@@ -141,11 +143,13 @@ package() {
 	for binary_name in luisa-render-*; do
 		dest="$pkgusr/bin/$binary_name"
 		install -Dm755 $binary_name $dest
-		patchelf --set-rpath "/usr/lib/$pkgname" "$dest"
+		patchelf --set-rpath /usr/lib/$_pkgname $dest
 	done
 	for so in *.so*; do
 		dest="$pkglib/$so"
 		install -Dm755 "$so" $dest
-		patchelf --set-rpath "/usr/lib/$pkgname" "$dest"
+		if ! patchelf --set-rpath /usr/lib/$_pkgname $dest ; then
+			msg2 "patchelf for $dest failed."
+		fi
 	done
 }

@@ -1,13 +1,13 @@
 diff --git a/src/ext/CMakeLists.txt b/src/ext/CMakeLists.txt
-index d90636a9..8197f0d3 100644
+index 0cd88ed32..4f817be16 100644
 --- a/src/ext/CMakeLists.txt
 +++ b/src/ext/CMakeLists.txt
-@@ -80,7 +80,7 @@ add_subdirectory(EASTL)
- target_link_libraries(luisa-compute-ext PUBLIC EASTL)
+@@ -235,7 +235,7 @@ set_target_properties(luisa-compute-ext-lmdb PROPERTIES
+ install(TARGETS luisa-compute-ext-lmdb EXPORT LuisaComputeTargets)
  
- if (LUISA_COMPUTE_ENABLE_PYTHON)
+ if (SKBUILD OR LUISA_COMPUTE_FORCE_PYTHON_BINDINGS)
 -    add_subdirectory(pybind11)
 +    find_package(pybind11 REQUIRED)
  endif ()
  
- if (LUISA_COMPUTE_ENABLE_ISPC OR LUISA_COMPUTE_ENABLE_LLVM)
+ install(TARGETS luisa-compute-ext EXPORT LuisaComputeTargets)
