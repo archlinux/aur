@@ -1,20 +1,20 @@
 # Maintainer: Arnab Bose <hirak99+arch@gmail.com>
 
 pkgname=keyshift
-pkgver=1.0.5
+pkgver=1.0.6
 pkgrel=1
 pkgdesc="Keyshift - keyboard remapping utility for Linux"
 arch=('any')
 url="https://github.com/hirak99/$pkgname"
 license=('Apache')
 depends=()
-makedepends=('boost' 'catch2')
+makedepends=('catch2')
 source=(
   "$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
   "git+https://github.com/kerukuro/digestpp.git"
 )
 md5sums=(
-  'af4c561c9e041de6cb55af70c74a1cfb'
+  'bf093d724fe4f489aaf7e36d9a974d1e'
   'SKIP'
 )
 options=(!debug)
@@ -43,7 +43,7 @@ prepare() {
 
 package() {
   cd "$pkgname"-"$pkgver"
-  ./build.sh
+  ./build_minimal.sh
 
   install -Dm 755 ./build/keyshift "$pkgdir"/usr/bin/keyshift
 }
