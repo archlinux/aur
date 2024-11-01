@@ -1,0 +1,15 @@
+pkgbase = gdsdecomp-bin
+	pkgdesc = Godot reverse engineering tools
+	pkgver = 0.7.3
+	pkgrel = 1
+	url = https://github.com/bruvzg/gdsdecomp
+	arch = x86_64
+	license = MIT
+	provides = gdre_tools
+	options = !strip
+	source = https://github.com/bruvzg/gdsdecomp/releases/download/v0.7.3/GDRE_tools-v0.7.3-linux.zip
+	source = https://raw.githubusercontent.com/bruvzg/gdsdecomp/refs/tags/v0.7.3/LICENSE
+	sha256sums = 5573da0a9ee7cd8b3d9239603bbe0c098c9058ac00ad5bcdea1dddd69701efcf
+	sha256sums = 6181b7004272970cff8063ac38dffa7a673328b1eb26647770448e46e20412f4
+
+pkgname = gdsdecomp-bin
