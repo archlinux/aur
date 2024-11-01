@@ -1,0 +1,3 @@
+[proton-pass-bin]
+source = "cmd"
+cmd = "curl -L https://proton.me/download/PassDesktop/linux/x64/version.json | jq -r '.Releases[0].Version'"
