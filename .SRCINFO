@@ -1,12 +1,13 @@
 pkgbase = hyprdim
 	pkgdesc = Automatically dim windows in Hyprland when switching between them
 	pkgver = 3.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/donovanglover/hyprdim
 	arch = x86_64
 	license = GPL3
 	makedepends = cargo
 	depends = gcc-libs
+	depends = hyprland>=0.42.0
 	source = hyprdim-3.0.0.tar.gz::https://github.com/donovanglover/hyprdim/archive/3.0.0.tar.gz
 	sha256sums = 6dfb9d47767b2afcbf3dfc682d6e278dc5276da521d045c16c66fa9ea19f830a
 

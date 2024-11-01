@@ -6,12 +6,12 @@
 
 pkgname=hyprdim
 pkgver=3.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Automatically dim windows in Hyprland when switching between them"
 arch=('x86_64')
 url="https://github.com/donovanglover/hyprdim"
 license=('GPL3')
-depends=('gcc-libs')
+depends=('gcc-libs' 'hyprland>=0.42.0')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/donovanglover/$pkgname/archive/$pkgver.tar.gz")
 sha256sums=('6dfb9d47767b2afcbf3dfc682d6e278dc5276da521d045c16c66fa9ea19f830a')
@@ -22,6 +22,9 @@ prepare() {
   export RUSTUP_TOOLCHAIN=stable
 
   cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+
+  # https://github.com/donovanglover/hyprdim/issues/110
+  sed -i '25,30s_^_// _' src/main.rs
 }
 
 build() {
