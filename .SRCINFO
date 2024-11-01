@@ -32,6 +32,6 @@ pkgbase = casparcg-server-git
 	source = casparcg-server::git+https://github.com/CasparCG/server.git
 	source = casparcg
 	sha256sums = SKIP
-	sha256sums = ce9dd83ae2ef9289e551f0a3ecbe246537195049c15f69bbfdc6c3ddd23291c2
+	sha256sums = 12a864689feb28c09fe809b733cfd502602dd8467bca83a617a3fec02fc92a66
 
 pkgname = casparcg-server-git

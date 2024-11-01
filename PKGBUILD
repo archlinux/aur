@@ -13,7 +13,7 @@ makedepends=(git cmake ninja boost dos2unix)
 source=("casparcg-server::git+https://github.com/CasparCG/server.git"
         casparcg)
 sha256sums=('SKIP'
-            'ce9dd83ae2ef9289e551f0a3ecbe246537195049c15f69bbfdc6c3ddd23291c2')
+            '12a864689feb28c09fe809b733cfd502602dd8467bca83a617a3fec02fc92a66')
 
 pkgver() {
     cd "$srcdir/casparcg-server"
