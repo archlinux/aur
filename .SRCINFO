@@ -1,0 +1,22 @@
+pkgbase = clouddrive-decrypt-git
+	pkgdesc = clouddrive-decrypt is a standalone tool designed to demo how to decrypt files encrypted by CloudDrive2.
+	pkgver = r1.b7472e4
+	pkgrel = 1
+	url = https://github.com/cloud-fs/clouddrive-decrypt
+	arch = x86_64
+	arch = aarch64
+	arch = riscv64
+	license = Commercial
+	makedepends = git
+	makedepends = cargo
+	depends = gcc-libs
+	depends = glibc
+	optdepends = clouddrive: CloudDrive - Unlocking the Unlimited Possibilities of Cloud Storage
+	provides = clouddrive-decrypt
+	conflicts = clouddrive-decrypt
+	options = !lto
+	options = !debug
+	source = clouddrive-decrypt-git::git+https://github.com/cloud-fs/clouddrive-decrypt.git
+	sha256sums = SKIP
+
+pkgname = clouddrive-decrypt-git
