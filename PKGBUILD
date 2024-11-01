@@ -11,7 +11,7 @@ url="https://github.com/$_org/$_pkgname"
 license=('BSD-2-Clause')
 depends=('eigen' 'simde')
 optdepends=()
-makedepends=('cmake')
+makedepends=('cmake' 'graphviz')
 checkdepends=('libmatio')
 source=(
         $url/releases/download/v$pkgver/$_pkgname-$pkgver.tar.gz{,.sig}
