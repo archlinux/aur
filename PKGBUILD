@@ -13,7 +13,7 @@ makedepends=('python-installer')
 source=("https://files.pythonhosted.org/packages/py3/${_name::1}/$_name/${_name//-/_}-$pkgver-py3-none-any.whl"
         "https://raw.githubusercontent.com/mjbots/fdcanusb/master/70-fdcanusb.rules")
 
-sha256sums=('cc7b80e0d09c0823c493facccb0c2dc6633c3f1d3265453952f4b0afe8e4ba19'
+sha256sums=('fda2b652450b4c1f987007ec949e4311fae1a84ea5f21fe16daa39afc0355a77'
             '6008f3b20baca0e4a077bc45c8e541717d6e3fc63ba7621dc3b1bcb14d86cb23')
 
 package() {
