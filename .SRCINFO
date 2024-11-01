@@ -1,13 +1,13 @@
 pkgbase = r-jaspar2016
 	pkgdesc = Data package for JASPAR 2016
-	pkgver = 1.33.0
+	pkgver = 1.34.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/JASPAR2016
 	arch = any
 	license = GPL-2.0-only
 	depends = r
-	source = https://bioconductor.org/packages/release/data/experiment/src/contrib/JASPAR2016_1.33.0.tar.gz
-	md5sums = e4ccad62b31962e2a61b904c1e208640
-	b2sums = 46cb96e9638d26917724a49937afaa767d224cd0072c14d757ae5422c5f70f0a73f93c0248439e10d17a02e674069f240bf148366bd8d30a9a0df2ba1cc7b0a7
+	source = https://bioconductor.org/packages/release/data/experiment/src/contrib/JASPAR2016_1.34.0.tar.gz
+	md5sums = 15bad5cb473e295ea4c509c366f4568a
+	b2sums = c5698eed4f93363bbe628b6dbe1d48a61561c49b94bc267b794fdcb4a1018cc44207fe354a16358c56fc7de2d17db3993f33b29cec85a74fcb69597278422587
 
 pkgname = r-jaspar2016
