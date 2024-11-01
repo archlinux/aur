@@ -8,6 +8,7 @@ pre_upgrade() {
 
 post_upgrade() {
   /usr/share/code-features/patch.py code-features patch
+  printf "==> [code-features] !!! Now there is a new command /usr/bin/code-features-update that can update the patch to keep up with the official vscode release. You can use this command to manually update the patch so you don't have to wait for this package to be updated every time."
 }
 
 pre_remove() {
