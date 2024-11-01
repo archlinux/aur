@@ -1,6 +1,6 @@
 pkgbase = casadi
 	pkgdesc = Symbolic framework for automatic differentiation and numeric optimization
-	pkgver = 3.6.6
+	pkgver = 3.6.7
 	pkgrel = 1
 	url = https://github.com/casadi/casadi
 	arch = i686
@@ -25,7 +25,7 @@ pkgbase = casadi
 	depends = osqp
 	depends = proxsuite
 	depends = coin-or-qpoases
-	source = casadi-3.6.6.tar.gz::https://github.com/casadi/casadi/archive/3.6.6.tar.gz
-	sha256sums = e8b2eb594cdca56b2731be29b5accc2a7390725976d4aa944ac99de78aacac6b
+	source = casadi-3.6.7.tar.gz::https://github.com/casadi/casadi/archive/3.6.7.tar.gz
+	sha256sums = 47602bab2aa187bfa8280cc4fa7d68ee19abbbdfeb90991e9eb3dd88465fd18b
 
 pkgname = casadi
