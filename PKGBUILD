@@ -1,7 +1,7 @@
 # Maintainer: Antoine Bertin <antoine.bertin@archlinux.org>
 
 pkgname=gruvbox-plus-icon-theme
-pkgver=5.4.0 # renovate: datasource=github-tags depName=SylEleuth/gruvbox-plus-icon-pack
+pkgver=5.5.0 # renovate: datasource=github-tags depName=SylEleuth/gruvbox-plus-icon-pack
 pkgrel=2
 pkgdesc="Icon theme based on Gruvbox color scheme"
 arch=(any)
@@ -13,7 +13,7 @@ provides=(gruvbox-plus-icon-theme)
 conflicts=(gruvbox-plus-icon-theme-git)
 options=(!strip !emptydirs)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('46c5974d4b74eb641f2d77af24db318dbf6150662c696eddf5373e8b8e090686')
+sha256sums=('0c03a10607e090e0a1d10a415c8be200b11b9a1bdc46d6e189b0577de0e94339')
 
 package() {
   cd "gruvbox-plus-icon-pack-$pkgver"
