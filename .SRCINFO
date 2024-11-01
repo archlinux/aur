@@ -1,6 +1,6 @@
 pkgbase = python-moteus
 	pkgdesc = moteus brushless controller library and tools
-	pkgver = 0.3.72
+	pkgver = 0.3.73
 	pkgrel = 1
 	url = https://pypi.org/project/moteus/
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = python-moteus
 	depends = python-pyelftools
 	depends = python-pyserial
 	depends = python-can
-	source = https://files.pythonhosted.org/packages/py3/m/moteus/moteus-0.3.72-py3-none-any.whl
+	source = https://files.pythonhosted.org/packages/py3/m/moteus/moteus-0.3.73-py3-none-any.whl
 	source = https://raw.githubusercontent.com/mjbots/fdcanusb/master/70-fdcanusb.rules
 	sha256sums = cc7b80e0d09c0823c493facccb0c2dc6633c3f1d3265453952f4b0afe8e4ba19
 	sha256sums = 6008f3b20baca0e4a077bc45c8e541717d6e3fc63ba7621dc3b1bcb14d86cb23

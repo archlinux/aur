@@ -1,7 +1,7 @@
 # Maintainer: Octopus118 <idlansdowne at gmail dot com>
 pkgname=python-moteus
 _name=${pkgname#python-}
-pkgver=0.3.72
+pkgver=0.3.73
 pkgrel=1
 pkgdesc="moteus brushless controller library and tools"
 url="https://pypi.org/project/moteus/"
