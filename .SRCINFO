@@ -1,6 +1,6 @@
 pkgbase = r-epimutacionsdata
 	pkgdesc = Data for epimutacions package
-	pkgver = 1.9.0
+	pkgver = 1.10.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/epimutacionsData
 	arch = any
@@ -11,8 +11,8 @@ pkgbase = r-epimutacionsdata
 	optdepends = r-knitr
 	optdepends = r-minfi
 	optdepends = r-rmarkdown
-	source = https://bioconductor.org/packages/release/data/experiment/src/contrib/epimutacionsData_1.9.0.tar.gz
-	md5sums = 5ce557fd9cec9165be14b66ab12fc1bc
-	b2sums = fdc2ebdbcfcac1cb7f0bee91d5cb197669febc2cbcac2647512b767616a18dd6734e399a04348b40fb907176f28ba6b3e248d915595957e699a318253181ac0e
+	source = https://bioconductor.org/packages/release/data/experiment/src/contrib/epimutacionsData_1.10.0.tar.gz
+	md5sums = 1bb081472a039407ea2bb74f109cf1ae
+	b2sums = 58ca8f77eb599e2ac83b40a9be0ee3792817e4a2077067bfcc974947daf8429c5fff7d978a8ce1d341d6cd98aa9bc97e444bb1799c8f3bf1357df366017b9543
 
 pkgname = r-epimutacionsdata
