@@ -2,7 +2,7 @@
 # Contributer: Alpin <alpin 'at' alpindale 'dot' dev>
 # Author: LostRuins (concedo)
 pkgname=koboldcpp
-pkgver=1.76
+pkgver=1.77
 pkgrel=1
 pkgdesc="An easy-to-use AI text-generation software for GGML and GGUF models"
 arch=('x86_64')
