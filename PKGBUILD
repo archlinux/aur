@@ -5,7 +5,7 @@
 #   - Donovan Glover <https://donovan.is>
 
 pkgname=hyprdim
-pkgver=2.2.6
+pkgver=3.0.0
 pkgrel=1
 pkgdesc="Automatically dim windows in Hyprland when switching between them"
 arch=('x86_64')
@@ -14,7 +14,7 @@ license=('GPL3')
 depends=('gcc-libs')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/donovanglover/$pkgname/archive/$pkgver.tar.gz")
-sha256sums=('6e322e97f5c23dd1e680ecd2127e3960b5217c3934f636cb53cc8f360d7ff24e')
+sha256sums=('6dfb9d47767b2afcbf3dfc682d6e278dc5276da521d045c16c66fa9ea19f830a')
 
 prepare() {
   cd "$pkgname-$pkgver"
