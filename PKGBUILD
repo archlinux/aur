@@ -6,7 +6,7 @@
 
 _pkgname=radium
 pkgname=$_pkgname-git
-pkgver=7.4.76.r24.g29c8c97
+pkgver=7.4.76.r69.gc7fa14e
 pkgrel=1
 pkgdesc='A graphical music editor. A next generation tracker.'
 arch=(x86_64)
@@ -55,7 +55,7 @@ depends=(
   qt5-base
   libmicrohttpd
   ladspa
-  )
+)
 makedepends=(
   git
   boost
@@ -73,27 +73,20 @@ optdepends=(
   'ladspa-plugins: package group for plugins normally included in binary releases'
   'vst-plugins: more plugins'
 )
-options=( !strip )
-source=("git+https://github.com/kmatheussen/radium"
-        build_linux_common.patch
-)
-sha256sums=('SKIP'
-            '0decfc3adcba836004ac34d970a83d4d0b69743334a586f42be53b3de7bdd5a4')
+options=(!strip)
+source=("git+https://github.com/kmatheussen/radium")
+sha256sums=('SKIP')
 
 prepare() {
   cd "$_pkgname"
 
-  # fix for binutils 2.40
-  patch -p0 < "$srcdir/build_linux_common.patch"
-  
   # This tweak edits new file template and demo songs to be compatible with chorus plugin from calf-ladspa package or with veal.so from lmms>=1.3
   # New Demosong also needs fixes for LADSPA-Plugins
   for file in bin/sounds/*.rad; do sed -i -e 's/Calf MultiChorus LADSPA/Calf Multi Chorus LADSPA/g' "$file"; done
   for file in bin/sounds/*.RAD; do sed -i -e 's/Calf MultiChorus LADSPA/Calf Multi Chorus LADSPA/g' "$file"; done
-  sed -ie "s/C\* Eq - 10-band equalizer/C\* Eq10 - 10-band equaliser/g" bin/sounds/ROMANCE2.RAD 
+  sed -ie "s/C\* Eq - 10-band equalizer/C\* Eq10 - 10-band equaliser/g" bin/sounds/ROMANCE2.RAD
 
-  sed -i "/cd libpd-master/s|$|\nsed -i '/LINUXCFLAGS/s/=/= --Wno-error=implicit-function-declaration/' pure-data/extra/makefile |" bin/packages/build.sh
-  sed -i "/cd libpd-master/s|$|\nsed -i '/define CFLAGS/s/-Wall/-Wall -Wno-error=implicit-function-declaration/' make.scm |" bin/packages/build.sh
+  sed -i 's/cd \$(dirname \$0)/cd \$(dirname \${BASH_SOURCE[0]})/' configuration.sh
 }
 
 pkgver() {
@@ -103,7 +96,7 @@ pkgver() {
 
 build() {
   cd "$_pkgname"
-  
+
   export INCLUDE_FAUSTDEV_BUT_NOT_LLVM=1
   # export RADIUM_USE_CLANG=1
 
@@ -114,7 +107,7 @@ build() {
 package() {
   cd "$_pkgname"
 
-  # install.sh will create radium/ladspa dir and complain if something already exists. so we remove the existing symlink first
+  # install.sh will create opt/radium/ladspa dir and complain if something already exists. so we remove the existing symlink first
   # (bin/ is the dir of the build output that gets copied to opt/radium by install.sh)
   rm -f "bin/ladspa"
   # Install radium and its packages to /opt
@@ -122,9 +115,9 @@ package() {
 
   # Create startup script according to bin/packages/README
   mkdir -p "$pkgdir/usr/bin"
-  echo '#!/usr/bin/env bash' > "$pkgdir/usr/bin/radium"
+  echo '#!/usr/bin/env bash' >"$pkgdir/usr/bin/radium"
   echo QT_QPA_PLATFORM_PLUGIN_PATH="$($(RADIUM_QT_VERSION=5 ./find_moc_and_uic_paths.sh qmake) -query QT_INSTALL_PLUGINS)" \
-    /opt/radium/radium '"$@"' >> "$pkgdir/usr/bin/radium"
+    /opt/radium/radium '"$@"' >>"$pkgdir/usr/bin/radium"
   chmod +x "$pkgdir/usr/bin/radium"
 
   # Icons, .desktop and mimetype files
