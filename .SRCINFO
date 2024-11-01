@@ -1,7 +1,7 @@
 pkgbase = cosmic-edit-git
 	pkgdesc = Text editor for the COSMIC desktop
-	pkgver = 1.0.0.alpha.2.r23.g5b0d05d
-	pkgrel = 2
+	pkgver = 1.0.0.alpha.3.r0.g3d92409
+	pkgrel = 1
 	url = https://github.com/pop-os/cosmic-edit
 	arch = x86_64
 	license = GPL-3.0-or-later
@@ -20,6 +20,6 @@ pkgbase = cosmic-edit-git
 	source = git+https://github.com/pop-os/cosmic-edit.git
 	source = lto.patch
 	sha256sums = SKIP
-	sha256sums = 1f8c56fbceea1921eabb764e184709c29607cd2f53a55638d24d0fc2c6f7ac28
+	sha256sums = a6bd11d790dbdc9eaa3741990eaa4d7ac1e123f8b30ac62cd9303670be98fbfb
 
 pkgname = cosmic-edit-git
