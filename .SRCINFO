@@ -1,6 +1,6 @@
 pkgbase = r-yeastexpdata
 	pkgdesc = Yeast Experimental Data
-	pkgver = 0.51.0
+	pkgver = 0.52.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/yeastExpData
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = r-yeastexpdata
 	optdepends = r-go.db
 	optdepends = r-org.sc.sgd.db
 	optdepends = r-rbgl
-	source = https://bioconductor.org/packages/release/data/experiment/src/contrib/yeastExpData_0.51.0.tar.gz
-	sha256sums = df7408067f670140353a82d5549d362c896d8a501717ca6ebf4d6e47380a29d9
+	source = https://bioconductor.org/packages/release/data/experiment/src/contrib/yeastExpData_0.52.0.tar.gz
+	sha256sums = 74970c07dc597d98fa4382819bda373d0ec4ff425b9b874f10348c796a2c0f37
 
 pkgname = r-yeastexpdata
