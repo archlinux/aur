@@ -7,7 +7,7 @@ pkgname=${_target}-newlib
 # Latest version 4.4.0.20231231 does not build with GCC 14.1, so stay in previous release
 pkgver=4.3.0
 _suffix=.20230120
-pkgrel=3
+pkgrel=1
 pkgdesc="C library for bare metal systems (${_target})."
 arch=(any)
 url="https://sourceware.org/newlib/"
