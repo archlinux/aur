@@ -3,17 +3,17 @@
 _org='Simple-Robotics'
 _pkgname='proxsuite-nlp'
 pkgname=("$_pkgname" "$_pkgname-docs")
-pkgver=0.7.0
+pkgver=0.8.0
 pkgrel=1
 pkgdesc="A primal-dual augmented Lagrangian solver for nonlinear programming on manifolds."
 arch=('i686' 'x86_64')
 url="https://github.com/$_org/$pkgname"
 license=('BSD-2-Clause')
-depends=('proxsuite' 'boost-libs' 'eigenpy' 'pinocchio' 'casadi')
+depends=('proxsuite' 'boost-libs' 'eigenpy' 'pinocchio' 'casadi' 'example-robot-data')
 optdepends=('doxygen')
 makedepends=('cmake' 'eigen' 'boost' 'fmt')
 source=($url/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz{,.sig})
-sha256sums=('58c94ae2965ba70bd436c90774dd660231a20a2be15f0e00c83708f39570aaed'
+sha256sums=('067a0ad63fe809f0e4959601a0ff42f769abb0016190d9c59333858ea397b78b'
             'SKIP')
 validpgpkeys=(
         'A031AD35058955293D54DECEC45D22EF408328AD'  # https://github.com/jcarpent.gpg
