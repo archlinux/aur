@@ -1,20 +1,19 @@
-# Maintainer: Kyle Keen <keenerd@gmail.com>
+# Maintainer: tarball <bootctl@gmail.com>
+# Contributor: Kyle Keen <keenerd@gmail.com>
 # Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
 # Contributor: Tino Reichardt <milky-archlinux@mcmilk.de>
 
 pkgname=dietlibc
-pkgver=0.34
-pkgrel=2
+pkgver=0.35
+pkgrel=1
 pkgdesc="a libc optimized for small size"
-arch=('x86_64')
+arch=('i686' 'x86_64' 'armv7h' 'armv6h' 'aarch64' 'riscv64')
 url="https://www.fefe.de/dietlibc/"
-license=("GPL")
+license=("GPL-2.0-only")
 options=('staticlibs')
-validpgpkeys=('878CBE5DA9A50595E674183F15396A7933EB059A'
-              '2DEC330151BB9F7DAD8B0BDCFC32CEECA534A9C6')
-#source=(http://www.kernel.org/pub/linux/libs/dietlibc/$pkgname-$pkgver.tar.bz2)
+validpgpkeys=('950097E47CAF6CF5EB228BADABE0AAAD4637EE30') # Felix von Leitner
 source=("https://www.fefe.de/dietlibc/dietlibc-$pkgver.tar.xz"{,.sig})
-sha256sums=('7994ad5a63d00446da2e95da1f3f03355b272f096d7eb9830417ab14393b3ace'
+sha256sums=('5aa5599039ae58bba7b4a1566fc453485cd1a155a20b313e15cd1bd0e19c0beb'
             'SKIP')
 
 build() {
@@ -25,6 +24,12 @@ build() {
 package() {
   cd "$srcdir/$pkgname-$pkgver"
   make DESTDIR="$pkgdir" install
-  mkdir -p "$pkgdir/usr/bin"
-  ln -s /opt/diet/bin/diet "$pkgdir/usr/bin/diet"
+
+  mkdir -p "$pkgdir/usr/bin/" "$pkgdir/usr/man/man1/"
+
+  for bin in "$pkgdir"/opt/diet/bin/*; do
+    ln -s /opt/diet/bin/"$(basename "$bin")" -t "$pkgdir/usr/bin/"
+  done
+
+  ln -s /opt/diet/man/man1/diet.1 -t "$pkgdir/usr/man/man1/"
 }
