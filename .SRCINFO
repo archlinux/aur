@@ -1,0 +1,24 @@
+pkgbase = justniffer-bin
+	pkgdesc = TCP sniffer. It reassembles and reorders packets and displays the TCP flow in a customizable way.
+	pkgver = 0.5.16
+	pkgrel = 1
+	url = https://onotelli.github.io/justniffer
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = gzip
+	makedepends = patchelf
+	depends = boost183-libs
+	depends = gcc-libs
+	depends = glibc
+	depends = libpcap
+	provides = justniffer
+	conflicts = justniffer
+	noextract = justniffer-0.5.16-x86_64.deb
+	source = COPYING-0.5.16::https://github.com/onotelli/justniffer/raw/refs/tags/v0.5.16/COPYING
+	source = AUTHORS-0.5.16::https://github.com/onotelli/justniffer/raw/refs/tags/v0.5.16/AUTHORS
+	sha256sums = 8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903
+	sha256sums = dff89e69fe6c268939c410c7a10afdc3ad44cdf889126197abdc149881b92fc9
+	source_x86_64 = justniffer-0.5.16-x86_64.deb::https://launchpad.net/~oreste-notelli/+archive/ubuntu/ppa/+files/justniffer_0.5.16.noble_amd64.deb
+	sha256sums_x86_64 = c221bdce768d394d23e1a4a9118dc6763b6acb5cf542c231bab30071cd8f93f5
+
+pkgname = justniffer-bin
