@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=MOFAdata
-_pkgver=1.21.0
+_pkgver=1.22.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -19,8 +19,8 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://bioconductor.org/packages/release/data/experiment/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('7cb6bb9883b655ef6d32a29f77b8ff8a')
-b2sums=('0a93eb51d76bae8fe407fc57ed2027acc7cc66d48dc0e1c1c10e12a678720efad0ad73210698a9356d48e5f2495283b4d11cd5aca75b8c2f38b0613b4dac3785')
+md5sums=('3f8a0f3d03b4fa72d75a782592539c5c')
+b2sums=('40340bc953e9ba670a3fc2286ef709d2e43b2892a4d976e82d174b620f04f439475526bba474178947120cfcb7d7531fe47ee4aeb4b432af0fdc21060ab0f60d')
 
 build() {
   mkdir build
