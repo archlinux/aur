@@ -1,6 +1,6 @@
 pkgbase = vkteams-bin
 	pkgdesc = Official desktop application for the VK Teams messaging service
-	pkgver = 24.5.6.47243
+	pkgver = 24.5.4.46643
 	pkgrel = 1
 	url = https://teams.vk.com
 	install = vkteams-bin.install
@@ -10,10 +10,10 @@ pkgbase = vkteams-bin
 	provides = vkteams
 	conflicts = vkteams
 	options = !strip
-	source = vkteams-24.5.6.47243.tar.xz::https://vkteams-www.hb.bizmrg.com/linux/x64/24.5.6.47243/vkteams.tar.xz
+	source = vkteams-24.5.4.46643.tar.xz::https://vkteams-www.hb.bizmrg.com/linux/x64/24.5.4.46643/vkteams.tar.xz
 	source = vkteams.sh
 	source = vkteams.png
-	sha256sums = 80a8bfe32a89500368c4fc6d9a43e99c932045a61a40378a122fdf866a8fa756
+	sha256sums = 71aa7c544eb0b27aa856afdb101bdf97fa2dc9a0cf7b5086383e66a0af7598c4
 	sha256sums = a2afc2dbd79e67736511c91b3d8f0a5fe3800c929ead9909d1b8f90fe7a7ca4b
 	sha256sums = f4d3d9c11bcfd458a44f6e555bd753284b680c25977ddcfdf6039ea3ba65a75a
 
