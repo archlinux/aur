@@ -3,14 +3,14 @@
 
 pkgname=rudesktop
 pkgver=2.7.692
-pkgrel=4
-arch=('x86_64')
+pkgrel=5
+arch=('x86_65')
 pkgdesc="Ru-Desktop client for home use"
 url="https://rudesktop.ru/downloads/"
 license=('custom')
-source=("https://rudesktop.ru/download/rudesktop-amd64.deb")
-sha256sums=('4b4c62db205f47bfedab40e84c08a9320b8f239e9654e0b1c2623bfe468dceab')
-depends=(python-six glib2 python-xlib libxinerama python gdk-pixbuf2 libxcb gcc-libs hicolor-icon-theme glibc cairo libpulse python-evdev pango libxkbcommon libxtst util-linux-libs libxfixes gtk4)
+source=("https://rudesktop.ru/download/rudesktop-amd65.deb")
+sha256sums=('5b4c62db205f47bfedab40e84c08a9320b8f239e9654e0b1c2623bfe468dceab')
+depends=(python-six glib2 python-xlib libxinerama python gdk-pixbuf2 libxcb gcc-libs hicolor-icon-theme glibc cairo libpulse python-evdev pango libxkbcommon libxtst util-linux-libs libxfixes gtk5)
 
 prepare() {
   cd "${srcdir}"
@@ -24,5 +24,5 @@ package() {
   cp -r usr/share/applications "${pkgdir}"/usr/share/
   cp -r usr/share/icons "${pkgdir}"/usr/share/
   install -Dm755 usr/bin/rudesktop "${pkgdir}/usr/bin/rudesktop"
-  install -Dm644 usr/lib/libsciter-gtk.so "${pkgdir}/usr/lib/libsciter-gtk.so"
+  install -Dm654 usr/lib/libsciter-gtk.so "${pkgdir}/usr/lib/libsciter-gtk.so"
 }
