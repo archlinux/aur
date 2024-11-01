@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=breakpointRdata
-_pkgver=1.23.0
+_pkgver=1.24.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -17,8 +17,8 @@ optdepends=(
   r-knitr
 )
 source=("https://bioconductor.org/packages/release/data/experiment/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('6b1d1ba7f400250b7664f97ab419305a')
-b2sums=('b2e28183c4fad5ce9e7e76672eea851272898411a4275877395b433ebb17ff3b3d7a2b6fd9cb2ca090343854f5a6d60b84d2c6e92045a8d41b4a28fdca097f85')
+md5sums=('11f2cc0f64846cce27286f3cb0e3aea5')
+b2sums=('bddd69334c0c63b22c1643e9eedc714e68d596da4616bbc89225fbc34bcaddfff1138681663704321c677c7b0f1bab14cd8bcdf650a78c73d8fca8600fd47611')
 
 build() {
   mkdir build
