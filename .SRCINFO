@@ -1,7 +1,7 @@
 pkgbase = zenlib
 	pkgdesc = Useful python decorators and utilities
 	pkgver = 9999
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/desultory/zenlib
 	arch = x86_64
 	license = GPL2

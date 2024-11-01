@@ -1,11 +1,13 @@
 # Maintainer: Zen <dev@pyl.onl>
 pkgname=python-zenlib-git
 pkgver=9999
-pkgrel=1
+pkgrel=2
 pkgdesc="Useful python decorators and utilities"
 arch=('x86_64')
 url="https://github.com/desultory/zenlib"
 license=('GPL2')
+conflicts=('python-zenlib')
+provides=('python-zenlib')
 makedepends=(git python-build python-installer python-wheel python-setuptools)
 source=("git+https://github.com/desultory/zenlib")
 # https://wiki.gentoo.org/wiki/User:Zen_desu
