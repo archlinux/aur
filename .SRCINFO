@@ -1,6 +1,6 @@
 pkgbase = python-moteus-gui
 	pkgdesc = moteus brushless controller graphical user interfaces
-	pkgver = 0.3.72
+	pkgver = 0.3.73
 	pkgrel = 1
 	url = https://pypi.org/project/moteus-gui/
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = python-moteus-gui
 	depends = python-numpy
 	depends = python-qtconsole
 	depends = python-qtpy
-	source = https://files.pythonhosted.org/packages/py3/m/moteus-gui/moteus_gui-0.3.72-py3-none-any.whl
-	sha256sums = c0045dc5c5fbcb678805d4af96005fc9c4c8c05387c17ae1d7ca62272db07892
+	source = https://files.pythonhosted.org/packages/py3/m/moteus-gui/moteus_gui-0.3.73-py3-none-any.whl
+	sha256sums = ff0f36626c8e258ae4e2a8176b959e7434bcf6402472129ed2cee99bb617d9a2
 
 pkgname = python-moteus-gui
