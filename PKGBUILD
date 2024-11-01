@@ -1,13 +1,12 @@
 # Maintainer: Wraient <rushikeshwastaken@gmail.com>
 pkgname='myd'
 pkgver=v0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Manage your dotfiles"
 arch=("x86_64")
 url="https://github.com/Wraient/myd"
 license=('GPL')
-depends=('mpv' 'rofi')
-source=("flick::https://github.com/Wraient/myd/releases/latest/download/myd")
+source=("myd::https://github.com/Wraient/myd/releases/latest/download/myd")
 sha256sums=('SKIP')
 
 pkgver() {

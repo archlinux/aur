@@ -1,13 +1,11 @@
 pkgbase = myd
 	pkgdesc = Manage your dotfiles
 	pkgver = v0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Wraient/myd
 	arch = x86_64
 	license = GPL
-	depends = mpv
-	depends = rofi
-	source = flick::https://github.com/Wraient/myd/releases/latest/download/myd
+	source = myd::https://github.com/Wraient/myd/releases/latest/download/myd
 	sha256sums = SKIP
 
 pkgname = myd
