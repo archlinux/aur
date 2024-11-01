@@ -13,6 +13,7 @@ pkgbase = way-edges-bin
 	depends = wayland
 	depends = glib2
 	depends = pipewire-pulse
+	depends = libpulse
 	provides = way-edges
 	conflicts = way-edges-git
 	options = !debug

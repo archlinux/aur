@@ -2,7 +2,7 @@
 _pkgname=way-edges
 pkgname=way-edges-bin
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 
 pkgdesc="Hidden widget on screen edges"
 arch=('x86_64' 'aarch64')
@@ -12,7 +12,7 @@ license=('MIT')
 provides=("$_pkgname")
 conflicts=("$_pkgname"-git)
 
-depends=('gtk4' 'gtk4-layer-shell' 'cairo' 'pango' 'wayland' 'glib2' 'pipewire-pulse')
+depends=('gtk4' 'gtk4-layer-shell' 'cairo' 'pango' 'wayland' 'glib2' 'pipewire-pulse' 'libpulse')
 
 _repo=way-edges/way-edges
 _tar_name="$_pkgname"_linux-x86_64.tar.gz
