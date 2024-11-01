@@ -1,6 +1,6 @@
 # shellcheck shell=bash
 pkgname=rivercarro
-pkgver=0.4.0
+pkgver=0.5.0
 pkgrel=1
 pkgdesc='A slightly modified version of rivertile layout generator for river.'
 arch=('x86_64')
@@ -10,7 +10,7 @@ depends=('wayland' 'wayland-protocols')
 makedepends=('zig' 'git')
 conflicts=('rivercarro-git')
 source=("https://git.sr.ht/~novakane/$pkgname/refs/download/v$pkgver/$pkgname-v$pkgver.tar.gz")
-b2sums=('f8750fe8485df0987fbff9114089f748c1ee7324b8f4f86f20db787433b9eb441274c3f8d877279ee5e41d4a131d71cb642b19e299098e508c46caa049655b35')
+sha256sums=('78643ae132a7dab9ca9904df0ca3eb3dc4d8b8873f3a407166fe95d958ec6b36')
 
 package() {
 	cd "$srcdir/$pkgname-v$pkgver"
