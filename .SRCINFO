@@ -1,6 +1,6 @@
 pkgbase = frotz-git
 	pkgdesc = Z-machine interpreter for interactive fiction games
-	pkgver = 2.54.r139.g4143703
+	pkgver = 2.54.r164.g8c08ae2
 	pkgrel = 1
 	url = https://gitlab.com/DavidGriffith/frotz
 	arch = x86_64
@@ -28,17 +28,6 @@ pkgname = frotz-dumb-git
 	provides = dfrotz
 	provides = frotz-dumb
 	conflicts = frotz-dumb
-
-pkgname = frotz-ncurses-git
-	pkgdesc = ncurses-based Z-machine interpreter for interactive fiction games
-	depends = libao
-	depends = libmodplug
-	depends = libsamplerate
-	depends = libsndfile
-	depends = ncurses
-	provides = frotz
-	provides = frotz-ncurses
-	conflicts = frotz-ncurses
 
 pkgname = frotz-sdl-git
 	pkgdesc = Graphical Z-machine interpreter for interactive fiction games
