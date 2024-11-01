@@ -1,0 +1,11 @@
+--- briquolo-0.5.7/src/MOGL/MOGL_Fenetre.h	2008-03-22 05:57:47.000000000 -0400
++++ briquolo-0.5.7_patched/src/MOGL/MOGL_Fenetre.h	2024-11-01 03:10:02.431558347 -0400
+@@ -52,7 +52,7 @@
+   private:
+     struct CompareResolution
+     {
+-        bool operator() (const MOGL_Resolution & x, const MOGL_Resolution & y)
++        bool operator() (const MOGL_Resolution & x, const MOGL_Resolution & y) const
+         {
+           return x.w < y.w;
+         }

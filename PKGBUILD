@@ -1,6 +1,7 @@
+# Maintainer: envolution
 # Contributor: Jaroslav Lichtblau <dragonlord@aur.archlinux.org>
 # Contributor: Liberion <liberion[at]gmail[.]com> patch libpng compile 
-# Maintainer: SanskritFritz (gmail)
+# Contributor: SanskritFritz (gmail)
 
 pkgname=briquolo
 pkgver=0.5.7
@@ -14,12 +15,14 @@ makedepends=('patch' 'autoconf' 'automake' 'cvs')
 install=$pkgname.install
 options=('!makeflags')
 source=(http://briquolo.free.fr/download/$pkgname-$pkgver.tar.bz2 \
-        $pkgname.desktop $pkgname.png $pkgname-gcc.patch $pkgname-libpng.patch)
+        $pkgname.desktop $pkgname.png $pkgname-gcc.patch $pkgname-libpng.patch \
+        $pkgname-resolution_const_fix.patch)
 md5sums=('e24d22d2d719d64c231d3d76f9291d6e'
          '0fb2744c4bb0e36bf9599a77a54183d7'
          '6a310dfa94225c9e16571e4e25eebfb3'
          'd3077d1a57e531bbe8d1b15dae09969f'
-         'f9b3afa24803a02d23616b859d880b1d')
+         'f9b3afa24803a02d23616b859d880b1d'
+         'dacbb109f5ede27507025cd5a86b42fe')
 
 prepare() {
   cd "${srcdir}"/$pkgname-$pkgver
@@ -28,6 +31,8 @@ prepare() {
   patch -Np0 -i "${srcdir}"/$pkgname-gcc.patch
 # Fixes libpng compilation problem
   patch -Np1 -i "${srcdir}"/$pkgname-libpng.patch
+# Fix resolution call
+  patch -p1 -i "${srcdir}"/$pkgname-resolution_const_fix.patch
 }
 
 build() {
