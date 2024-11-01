@@ -1,26 +1,14 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=xterminal-bin
 _pkgname=XTerminal
-_pkgver_aarch64=2.5.0
-_pkgver_x86_64=2.5.0
-_electronversion_aarch64=31
-_electronversion_x86_64=31
-case "${CARCH}" in
-    aarch64)
-        pkgver="${_pkgver_aarch64}"
-        _electronversion="${_electronversion_aarch64}"
-    ;;
-    x86_64)
-        pkgver="${_pkgver_x86_64}"
-        _electronversion="${_electronversion_x86_64}"
-    ;;
-esac
+pkgver=2.6.3
+_electronversion=31
 #update:https://txc.qq.com/products/598955/change-log
 pkgrel=1
 pkgdesc="Not only powerful SSH tools, but also local consoles, and more coming soon.Prebuilt version.Use system-wide electron.不仅是强大的SSH工具,更提供本地控制台,以及更多即将推出的开发相关功能."
 arch=(
-    "aarch64"
-    "x86_64"
+    'aarch64'
+    'x86_64'
 )
 url="https://www.xterminal.cn/"
 license=('LicenseRef-custom')
@@ -37,12 +25,12 @@ source=(
     "LICENSE.html"
     "${pkgname%-bin}.sh"
 )
-source_aarch64=("${pkgname%-bin}-${_pkgver_aarch64}-aarch64.rpm::https://cdn-cn.xterminal.cn/downloads/${_pkgname}-${_pkgver_aarch64}-linux-aarch64.rpm")
-source_x86_64=("${pkgname%-bin}-${_pkgver_x86_64}-x86_64.rpm::https://cdn-cn.xterminal.cn/downloads/${_pkgname}-${_pkgver_x86_64}-linux-x86_64.rpm")
+source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::https://cdn-cn.xterminal.cn/downloads/${_pkgname}-${pkgver}-linux-aarch64.rpm")
+source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::https://cdn-cn.xterminal.cn/downloads/${_pkgname}-${pkgver}-linux-x86_64.rpm")
 sha256sums=('8d08a959e0086a206ef3454cc0fc323454c73609cd764f102d8d2d076dafa0af'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-sha256sums_aarch64=('7da41cb7328aa3dc12f569740b74887013f3557b304537dc4a8807d961d18fc7')
-sha256sums_x86_64=('fa9a6829783da522211e50706e0c3276b52cf36dacbe6bb1fd1312482a7b6d6c')
+sha256sums_aarch64=('2728f6a372ab49110900d54355afb248d707cdcae84a523d26e2157d3816dd4e')
+sha256sums_x86_64=('b3ca2034c508c475049801b63cda7b934ed7ff629058133e9106e3ea7d7d672b')
 build() {
     sed -e "
         s/@electronversion@/${_electronversion}/g
