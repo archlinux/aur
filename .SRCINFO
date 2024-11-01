@@ -1,15 +1,18 @@
 pkgbase = python-drawsvg
 	pkgdesc = Programmatically generate SVG (vector) images
-	pkgver = 2.1.1
+	pkgver = 2.4.0
 	pkgrel = 1
 	url = https://github.com/cduck/drawSvg
 	arch = any
 	license = MIT
-	depends = python
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
 	depends = python-numpy
 	depends = python-imageio
 	depends = python-cairosvg
-	source = https://github.com/cduck/drawSvg/archive/2.1.1.tar.gz
-	md5sums = 1a17da2d302849fe4921576842381d38
+	source = https://github.com/cduck/drawSvg/archive/2.4.0.tar.gz
+	sha256sums = 2ded625da44020a414493e6a7fa4e67354e6bb7968e35d89afe7af2e74939b9e
 
 pkgname = python-drawsvg

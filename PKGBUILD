@@ -1,15 +1,25 @@
 # Maintainer: Greyson Christoforo <grey@christoforo.net>
 pkgname=python-drawsvg
-pkgver=2.1.1
+pkgver=2.4.0
 pkgrel=1
 pkgdesc="Programmatically generate SVG (vector) images"
 arch=('any')
 url="https://github.com/cduck/drawSvg"
 license=('MIT')
-depends=('python' 'python-numpy' 'python-imageio' 'python-cairosvg')
+depends=(
+python-numpy
+python-imageio
+python-cairosvg
+)
+makedepends=(
+python-build
+python-installer
+python-wheel
+python-setuptools
+)
 
 source=("https://github.com/cduck/drawSvg/archive/${pkgver}.tar.gz")
-md5sums=('1a17da2d302849fe4921576842381d38')
+sha256sums=('2ded625da44020a414493e6a7fa4e67354e6bb7968e35d89afe7af2e74939b9e')
 
 prepare() {
   cd "drawsvg-${pkgver}"
@@ -24,11 +34,11 @@ prepare() {
 
 build() {
   cd "drawsvg-${pkgver}"
-  python setup.py build
+  python -m build --wheel --no-isolation
 }
 
 package(){
   cd "drawsvg-${pkgver}"
-  python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
 
