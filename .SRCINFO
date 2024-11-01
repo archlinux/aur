@@ -1,6 +1,6 @@
 pkgbase = defoldsdk-headers
 	pkgdesc = Headers for Defold SDK
-	pkgver = 1.8.0.r9141d9d
+	pkgver = 1.9.4.redfdbe3
 	pkgrel = 1
 	url = https://defold.com/
 	install = defoldsdk-headers.install

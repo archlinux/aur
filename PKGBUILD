@@ -1,6 +1,6 @@
 # Maintainer: Asakura Mizu <asakuramizu111@gmail.com>
 pkgname=defoldsdk-headers
-pkgver=1.8.0.r9141d9d
+pkgver=1.9.4.redfdbe3
 pkgrel=1
 epoch=
 pkgdesc='Headers for Defold SDK'
@@ -30,7 +30,7 @@ prepare() {
     _sha1=$(cat info.json | jq -r '.sha1')
     curl -O "https://d.defold.com/archive/stable/${_sha1}/engine/defoldsdk_headers.zip"
 
-    bsdtar -xf defoldsdk_headers.zip -C "$pkgdir/usr/include"
+    bsdtar -xf defoldsdk_headers.zip
 }
 
 pkgver() {
