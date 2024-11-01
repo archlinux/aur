@@ -1,7 +1,7 @@
 pkgbase = baiduwenku-bin
-	pkgdesc = Baidu wenku Client.一款由百度发布的供网友在线分享文档的平台
+	pkgdesc = Baidu wenku Client.Prebuilt version.Use system-wide electron.一款由百度发布的供网友在线分享文档的平台
 	pkgver = 2.0.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wenku.baidu.com
 	arch = x86_64
 	license = LicenseRef-custom

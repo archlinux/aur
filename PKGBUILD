@@ -5,8 +5,8 @@ _zhsname="百度文库"
 pkgver=2.0.4
 _electronversion=22
 _nodeversion=18
-pkgrel=1
-pkgdesc="Baidu wenku Client.一款由百度发布的供网友在线分享文档的平台"
+pkgrel=2
+pkgdesc="Baidu wenku Client.Prebuilt version.Use system-wide electron.一款由百度发布的供网友在线分享文档的平台"
 arch=('x86_64')
 url="https://wenku.baidu.com"
 license=('LicenseRef-custom')
@@ -37,21 +37,22 @@ sha256sums=('bc455b249f08501600ecd16774ce0a66773ebab3306049a7eaf84bbe54979f07'
             'eb85aa9b3586dcd16b0f18b4b467b46b076688f9d1f723dea7f2eb92cd797ce7'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 _ensure_local_nvm() {
-    export NVM_DIR="${srcdir}/.nvm"
+    local NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
     nvm install "${_nodeversion}"
     nvm use "${_nodeversion}"
 }
 build() {
-    sed -e "s|@electronversion@|${_electronversion}|g" \
-        -e "s|@appname@|${pkgname%-bin}|g" \
-        -e "s|@runname@|app.asar|g" \
-        -e "s|@cfgdirname@|${_pkgname}-pc|g" \
-        -e "s|@options@|env ELECTRON_OZONE_PLATFORM_HINT=auto|g" \
-        -i "${srcdir}/${pkgname%-bin}.sh"
+    sed -e "
+        s/@electronversion@/${_electronversion}/g
+        s/@appname@/${pkgname%-bin}/g
+        s/@runname@/app.asar/g
+        s/@cfgdirname@/${_pkgname}-pc/g
+        s/@options@//g
+    " -i "${srcdir}/${pkgname%-bin}.sh"
     _ensure_local_nvm
     gendesk -q -f -n --pkgname="${pkgname%-bin}" --pkgdesc="${pkgdesc}" --categories="Office" --name="${pkgname%-bin}" --exec="${pkgname%-bin} %U"
-    sed "3i\Name[zh_CN]=${_zhsname}" -i "${srcdir}/${pkgname%-bin}.desktop"
+    sed -i "3i\Name[zh_CN]=${_zhsname}" "${srcdir}/${pkgname%-bin}.desktop"
     rm -rf "${srcdir}/tmp"
     install -Dm755 -d "${srcdir}/tmp"
     7z x -aoa "${srcdir}/${pkgname%-bin}-${pkgver}.exe" -o"${srcdir}/tmp"
@@ -59,14 +60,17 @@ build() {
     asar e "${srcdir}/tmp/resources/app.asar" "${srcdir}/app.asar.unpacked"
     cd "${srcdir}/app.asar.unpacked"
     rm -rf node_modules/sqlite3
+    electronDist="/usr/lib/electron${_electronversion}"
     HOME="${srcdir}/.electron-gyp"
-    echo 'build_from_source=true'  >> .npmrc
-    echo "cache="${srcdir}"/.npm_cache"  >> .npmrc
+    {
+        echo -e '\n'	
+        #echo 'build_from_source=true'
+        echo "cache=${srcdir}/.npm_cache"
+    } >> .npmrc
     if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
-        echo 'registry=https://registry.npmmirror.com' >> .npmrc
-        echo 'disturl=https://registry.npmmirror.com/-/binary/node/' >> .npmrc
-    else
-        echo "Your network is OK."
+        {
+            echo 'registry=https://registry.npmmirror.com'
+        } >> .npmrc
     fi
     NODE_ENV=development npm add -D sqlite3
     cd "${srcdir}"
