@@ -1,5 +1,5 @@
-pkgbase = m68k-palmos-gcc
-	pkgdesc = The GNU Compiler Collection (m68k-palmos)
+pkgbase = m68k-palmos-elf-gcc
+	pkgdesc = The GNU Compiler Collection (m68k-palmos-elf)
 	pkgver = 12.2.0
 	pkgrel = 1
 	url = http://gcc.gnu.org
@@ -9,12 +9,12 @@ pkgbase = m68k-palmos-gcc
 	license = LGPL
 	license = FDL
 	license = custom
-	makedepends = m68k-palmos-newlib
-	depends = m68k-palmos-binutils>=2.29-1
+	makedepends = m68k-palmos-elf-newlib
+	depends = m68k-palmos-elf-binutils>=2.29-1
 	depends = zlib
-	optdepends = m68k-palmos-newlib
-	conflicts = m68k-palmos-gcc-bootstrap=12.2.0
-	replaces = m68k-palmos-gcc-bootstrap
+	optdepends = m68k-palmos-elf-newlib
+	conflicts = m68k-palmos-elf-gcc-bootstrap=12.2.0
+	replaces = m68k-palmos-elf-gcc-bootstrap
 	options = !emptydirs
 	options = !distcc
 	options = !strip
@@ -43,4 +43,4 @@ pkgbase = m68k-palmos-gcc
 	sha256sums = dc59a00ccc79dcfee0c37f1b17ededd27d9f8a3d527286873fa5d9c0871894d4
 	sha256sums = 846738d224b4c1aa7b2e1abedff300002134db2308972eeebfb8f47a3d2cbc5b
 
-pkgname = m68k-palmos-gcc
+pkgname = m68k-palmos-elf-gcc

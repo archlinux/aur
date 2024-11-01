@@ -17,7 +17,7 @@ depends=("${_target}-binutils>=2.29-1" 'zlib')
 makedepends=('m68k-palmos-elf-newlib')
 optdepends=('m68k-palmos-elf-newlib')
 options=('!emptydirs' '!distcc' '!strip')
-conflicts=("${_target}-gcc-bootstrap=${pkgver}" 'prc-tools-remix')
+conflicts=("${_target}-gcc-bootstrap=${pkgver}")
 replaces=("${_target}-gcc-bootstrap")
 PKGEXT="pkg.tar.zst"
 source=("https://ftp.gnu.org/gnu/gcc/gcc-${pkgver}/gcc-${pkgver}.tar.xz"
