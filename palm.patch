@@ -167,17 +167,3 @@ diff -aurN gcc-12.2.0-retro68/libgcc/Makefile.in gcc-12.2.0-palm/libgcc/Makefile
  
  # The floating-point conversion routines that involve a single-word integer.
  # XX stands for the integer mode.
-diff -aurN gcc-12.2.0-retro68/newlib/libc/machine/m68k/memset.S gcc-12.2.0-palm/newlib/libc/machine/m68k/memset.S
---- gcc-12.2.0-retro68/newlib/libc/machine/m68k/memset.S	2024-10-31 18:27:19.865001901 +0700
-+++ gcc-12.2.0-palm/newlib/libc/machine/m68k/memset.S	2024-10-31 19:05:14.526869377 +0700
-@@ -42,8 +42,8 @@
- |
- SYM(memset):
- 	move.l	4(sp),a0	| dest ptr
--	move.l	8(sp),d0	| value
--	move.l	12(sp),d1	| len
-+	move.w	8(sp),d0	| value
-+	move.l	10(sp),d1	| len
- 	cmp.l	#16,d1
- 	blo	.Lbset		| below, byte fills
- 	|
