@@ -1,0 +1,56 @@
+diff --git a/package.json b/package.json
+index 433365f..a3d3a76 100644
+--- a/package.json
++++ b/package.json
+@@ -9,9 +9,9 @@
+     "tauri-dev": "tauri dev",
+     "build": "tauri build",
+     "build-bin": "tauri build -b none",
+-    "webpack-serve": "webpack serve --config webpack.dev.js",
+-    "webpack-dev": "webpack --config webpack.dev.js",
+-    "webpack-prod": "webpack --config webpack.prod.js",
++    "webpack-serve": "webpack serve --config webpack.dev.mjs",
++    "webpack-dev": "webpack --config webpack.dev.mjs",
++    "webpack-prod": "webpack --config webpack.prod.mjs",
+     "info": "tauri info",
+     "react-devtools": "npx react-devtools"
+   },
+diff --git a/webpack.common.js b/webpack.common.mjs
+similarity index 100%
+rename from webpack.common.js
+rename to webpack.common.mjs
+diff --git a/webpack.dev.js b/webpack.dev.mjs
+similarity index 96%
+rename from webpack.dev.js
+rename to webpack.dev.mjs
+index 79fbf61..3c2f7ff 100644
+--- a/webpack.dev.js
++++ b/webpack.dev.mjs
+@@ -17,7 +17,7 @@
+  */
+ 
+ import { merge } from "webpack-merge";
+-import common from "./webpack.common.js";
++import common from "./webpack.common.mjs";
+ 
+ export default merge(common("development"), {
+     devtool: "source-map",
+diff --git a/webpack.prod.js b/webpack.prod.mjs
+similarity index 95%
+rename from webpack.prod.js
+rename to webpack.prod.mjs
+index 2860e53..63041e7 100644
+--- a/webpack.prod.js
++++ b/webpack.prod.mjs
+@@ -17,7 +17,7 @@
+  */
+ 
+ import { merge } from "webpack-merge";
+-import common, { __dirname } from "./webpack.common.js";
++import common, { __dirname } from "./webpack.common.mjs";
+ import path from "path";
+ import { BundleAnalyzerPlugin } from "webpack-bundle-analyzer";
+ 
+-- 
+2.47.0
+
