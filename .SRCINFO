@@ -1,7 +1,7 @@
 pkgbase = m68k-palmos-elf-gcc
 	pkgdesc = The GNU Compiler Collection (m68k-palmos-elf)
 	pkgver = 12.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://gcc.gnu.org
 	arch = i686
 	arch = x86_64
@@ -41,6 +41,6 @@ pkgbase = m68k-palmos-elf-gcc
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = dc59a00ccc79dcfee0c37f1b17ededd27d9f8a3d527286873fa5d9c0871894d4
-	sha256sums = 846738d224b4c1aa7b2e1abedff300002134db2308972eeebfb8f47a3d2cbc5b
+	sha256sums = 61cda3842968a609570ab834d605a76067544544dbf25bcf0fe637e06f76d054
 
 pkgname = m68k-palmos-elf-gcc
