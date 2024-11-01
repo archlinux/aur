@@ -1,5 +1,6 @@
 post_install() {
   /usr/share/code-features/patch.py code-features patch
+  printf "==> [code-features] Use command /usr/bin/code-features-update to manually update the patch to keep up with the official vscode release so you don't have to wait for this package to be updated every time."
 }
 
 pre_upgrade() {
