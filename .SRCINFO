@@ -9,7 +9,7 @@ pkgbase = zenlib
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
-	source = git+https://github.com/desultory/zenlib?signed#branch=main
+	source = git+https://github.com/desultory/zenlib?signed#commit=74a840daebde60494bc8092e315ba7411581e33c
 	validpgpkeys = 7751D62F9F9A0454B86871CE64FA651BB8850B48
 	sha256sums = SKIP
 
