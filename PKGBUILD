@@ -1,7 +1,7 @@
 # Maintainer: leap123 <leap123 at canaglie dot org>
 # Contributor: Jesus Alonso <doragasu at hotmail dot com>
 
-_target=m68k-palmos
+_target=m68k-palmos-elf
 _target_cpu=m68000
 pkgname=${_target}-newlib
 # Latest version 4.4.0.20231231 does not build with GCC 14.1, so stay in previous release
