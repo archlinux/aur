@@ -16,6 +16,8 @@ url="https://github.com/unum-cloud/${pkgname}"
 license=("Apache-2.0")
 depends=("stringzilla")
 makedepends=("cmake" "git")
+optdepends=("fp16: Alternative library."
+    "simsimd: Alternative library.")
 source=("${pkgname}::git+${url}.git#tag=${_tag}"
     "git+https://github.com/Maratyszcza/FP16.git"
     "git+https://github.com/ashvardanian/SimSIMD.git"
@@ -27,6 +29,18 @@ sha512sums=("SKIP"
 
 _compile()
 {
+    declare _use_fp16="OFF"
+
+    if pacman -Q fp16 &> /dev/null; then
+        _use_fp16="ON"
+    fi
+
+    declare _use_simsimd="OFF"
+
+    if pacman -Q simsimd &> /dev/null; then
+        _use_simsimd="ON"
+    fi
+
     cmake -B "${srcdir}"/"${pkgname}"/build/ \
         -D CMAKE_BUILD_TYPE=None \
         -D CMAKE_INSTALL_PREFIX=/usr/ \
@@ -37,10 +51,10 @@ _compile()
         -D USEARCH_BUILD_TEST_CPP="$1" \
         -D USEARCH_BUILD_WOLFRAM=OFF \
         -D USEARCH_INSTALL=ON \
-        -D USEARCH_USE_FP16LIB=OFF \
+        -D USEARCH_USE_FP16LIB="${_use_fp16}" \
         -D USEARCH_USE_JEMALLOC=OFF \
         -D USEARCH_USE_OPENMP=OFF \
-        -D USEARCH_USE_SIMSIMD=ON \
+        -D USEARCH_USE_SIMSIMD="${_use_simsimd}" \
         -S "${srcdir}"/"${pkgname}"/ \
         -Wno-dev
     cmake --build "${srcdir}"/"${pkgname}"/build/
