@@ -4,8 +4,8 @@ _pkgname=HuaWeiCloudMeeting
 _zhsname="华为云会议"
 pkgver=9.12.5
 _electronversion=22
-pkgrel=4
-pkgdesc='HuaWei Cloud Meeting."云端"协同的会议解决方案，全平台接入，全球覆盖，提供高清、稳定、安全、高效的极简会议体验'
+pkgrel=5
+pkgdesc='HuaWei Cloud Meeting.Prebuilt version.Use system-wide electron."云端"协同的会议解决方案，全平台接入，全球覆盖，提供高清、稳定、安全、高效的极简会议体验'
 arch=('x86_64')
 url="https://www.huaweicloud.com/product/meeting"
 _downurl="https://mirrors.sdu.edu.cn/spark-store-repository/store"
@@ -25,24 +25,27 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('60e15e2a93c0529c4573a6c616e76b3e74f61f4f160e7d3279fde28993982f1f'
-            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
+            '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 build() {
-    sed -e "s|@electronversion@|${_electronversion}|" \
-        -e "s|@appname@|${pkgname%-bin}|g" \
-        -e "s|@runname@|app.asar|g" \
-        -e "s|@cfgdirname@|${_pkgname}|g" \
-        -e "s|@options@||g" \
-        -i "${srcdir}/${pkgname%-bin}.sh"
+    sed -e "
+        s/@electronversion@/${_electronversion}/g
+        s/@appname@/${pkgname%-bin}/g
+        s/@runname@/app.asar/g
+        s/@cfgdirname@/${_pkgname}/g
+        s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
+    " -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
-    sed -e "s|\"/opt/${_zhsname}/${pkgname%-bin}\"|${pkgname%-bin}|g" \
-        -e "s|Education|Network|g" \
-        -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
+    sed -e "
+        s/\"\/opt\/${_zhsname}\/${pkgname%-bin}\"/${pkgname%-bin}/g
+        s/Education/Network/g
+    " -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm644 "${srcdir}/opt/${_zhsname}/resources/app.asar" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
     install -Dm644 "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
-    for _icons in 16x16 32x32 64x64 128x128 256x256 512x512;do
+    _icon_sizes=(16x16 32x32 64x64 128x128 256x256 512x512)
+    for _icons in "${_icon_sizes[@]}";do
         install -Dm644 "${srcdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname%-bin}.png" \
             -t "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps"
     done
