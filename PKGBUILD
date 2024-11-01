@@ -5,8 +5,8 @@ _srcname="python-pyvex"
 pkgname="${_srcname}-git"
 pkgdesc="Python bindings for Valgrind's VEX IR"
 url="https://github.com/angr/pyvex"
-pkgver=9.2.123.r1130.73519b5
-pkgrel=2
+pkgver=9.2.126.r1135.1add9e2
+pkgrel=1
 arch=('x86_64')
 depends=('glibc' 'python>=3.10' 'python-bitstring' 'python-cffi')
 makedepends=('git' 'python-build' 'python-installer' 'python-myst-parser' 'python-setuptools' 'python-sphinx-autodoc-typehints' 'python-wheel')
