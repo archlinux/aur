@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=DExMAdata
-_pkgver=1.13.0
+_pkgver=1.14.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -16,8 +16,8 @@ optdepends=(
   r-biocstyle
 )
 source=("https://bioconductor.org/packages/release/data/experiment/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('cba58dbea8d4efa2f454d9188b8b4d41')
-b2sums=('51662b0775b537f7633050c0fa6349ed38b6800dcd39a44b26bd4ae05629e218dcc8e39cbd4967f1326a92f24ad8451f54d5f8a2d81ba9f360121ced39cc9adc')
+md5sums=('6c03e9b7bdf0dd3c28a6aedbecf1de44')
+b2sums=('ad565352cd893b3d851357a9d31c602f4ccfc9f26996e2a7325099d30013f87d4f0ca2229a575b2d1f8a0294e6adc273cab3f230568b81ddd203918a513c258a')
 
 build() {
   mkdir build
