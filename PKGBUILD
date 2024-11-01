@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=own3d-desktop-bin
 _pkgname="OWN3D Pro Desktop"
-pkgver=2.5.1
+pkgver=2.5.2
 _electronversion=29
 pkgrel=1
 pkgdesc="Public Development Preview of the OWN3D Desktop App.Prebuilt version.Use system-wide electron."
@@ -18,10 +18,10 @@ makedepends=(
     'asar'
 )
 source=(
-    "${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb"
+    "${pkgname%-bin}-${pkgver}.rpm::${_ghurl}/releases/download/${pkgver}/${pkgname%-bin}-${pkgver}-1.${CARCH}.rpm"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('e379734562ca9b043eed760fbb500c43598322e3aca1b787486359362c48a325'
+sha256sums=('cc02c35e7b5e28fce7bceb08f962c6c1d0e9b4fabd0082c9d8e896cd4c6d731d'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 build() {
     sed -e "
@@ -31,7 +31,6 @@ build() {
         s/@cfgdirname@/${_pkgname}/g
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
     " -i "${srcdir}/${pkgname%-bin}.sh"
-    bsdtar -xf "${srcdir}/data."*
     asar e "${srcdir}/usr/lib/${pkgname%-bin}/resources/app.asar" "${srcdir}/app.asar.unpacked"
     sed -i "s/fullscreen.html/index.html/g" "${srcdir}/app.asar.unpacked/.vite/build/main.js"
     rm -rf "${srcdir}/app.asar.unpacked/node_modules/vue/node_modules/.bin"
