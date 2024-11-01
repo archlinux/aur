@@ -1,2 +1,3 @@
 [briquolo]
+source='cmd'
 cmd="echo 0.5.8"
