@@ -8,6 +8,8 @@ pkgbase = usearch
 	makedepends = cmake
 	makedepends = git
 	depends = stringzilla
+	optdepends = fp16: Alternative library.
+	optdepends = simsimd: Alternative library.
 	source = usearch::git+https://github.com/unum-cloud/usearch.git#tag=6a0e2ee3db127a32c9d4d6f4b1b20eeb5b71aef1
 	source = git+https://github.com/Maratyszcza/FP16.git
 	source = git+https://github.com/ashvardanian/SimSIMD.git
