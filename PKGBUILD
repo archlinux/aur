@@ -23,11 +23,12 @@ sha512sums=('a6510935bbacc552544bff3ad03129a68876fa819b6c7e9b24544f1e212f04708b8
             '4ff8899a47612a81f73c1c6449fb30a7ddfb0b199756db7f73e0a3078cf818b88e481fd828296b148a348d137ae529ce591d6c2bd6b57ae9278188e715086b59'
             '0086f72f16a594116586d4b6783b104f7bba779e4f8e31e5988c7fa67e1c7d9fc95215d0a04c4f24c72b4183774a9768a29b05c828990125dd4a3379a69aa648'
             'e3eedb9d4949f9498bd3a1710983ce91b811f0907946d43b93eff3fda88bfd831097355b40e7ebe4db3c44e01525e81b317e339a82ffc1611ea141516a09ccb7')
+_node=20
 
 prepare() {
 source /usr/share/nvm/init-nvm.sh
-nvm install 20
-nvm use 20
+nvm install $_node
+nvm use $_node
 }
 package() {
 install -dm755 "${pkgdir}/usr/share/webapps/rocketchat-server"
@@ -36,7 +37,7 @@ pushd "${pkgdir}/usr/share/webapps/rocketchat-server/programs/server"
 npm install --cache "${srcdir}/npm-cache"
 popd
 install -dm755 "${pkgdir}/usr/share/webapps/rocketchat-server/node"
-cp -dr ~/.nvm/versions/node/v14*/* "${pkgdir}/usr/share/webapps/rocketchat-server/node/"
+cp -dr $(find ~/.nvm/versions/node/ -maxdepth 1 -type d -name "v${_node}.*" | sort -V | tail -n 1)/* "${pkgdir}/usr/share/webapps/rocketchat-server/node/"
 install -Dm644 rocketchat-server.conf "${pkgdir}/etc/rocketchat-server.conf"
 install -Dm644 rocketchat.service "${pkgdir}/usr/lib/systemd/system/rocketchat.service"
 install -Dm644 rocketchat-user.conf "${pkgdir}/usr/lib/sysusers.d/rocketchat.conf"
