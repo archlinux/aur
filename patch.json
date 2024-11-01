@@ -541,6 +541,13 @@
 					"important": true
 				}
 			]
+		},
+		"Redis.redis-for-vscode": {
+			"onFileOpen": [
+				{
+					"pathGlob": "{**/redis.*,**/redis-server.*,**/redis_*,**/redisinsight.*}"
+				}
+			]
 		}
 	},
 	"keymapExtensionTips": [
