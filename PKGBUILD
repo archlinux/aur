@@ -1,7 +1,7 @@
 # Maintainer: karboncore
 
 pkgname=mealie
-pkgver=2.0.0
+pkgver=2.1.0
 pkgrel=1
 pkgdesc='A self hosted recipe manager'
 arch=(any)
@@ -19,7 +19,7 @@ makedepends=(git python-build python-wheel python-installer yarn nodejs-lts-hydr
 optdepends=('postgresql: for postgresql support'
             'python-psycopg2: for postgresql support')
 source=(https://github.com/mealie-recipes/mealie/archive/refs/tags/v${pkgver}.tar.gz)
-sha256sums=('e5818b22ea7a1f7a4921051babc0a52677c6687daaab0218d0924a8e71307041')
+sha256sums=('f144aa9fe8ef9e5579701d0ce90fa676c725e6b9c746cfe41956932309b3fab9')
 
 build() {
   cd "$srcdir/${pkgname}-${pkgver}"
