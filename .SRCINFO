@@ -10,7 +10,7 @@ pkgbase = zenlib
 	makedepends = python-installer
 	makedepends = python-wheel
 	makedepends = python-setuptools
-	source = git+https://github.com/desultory/zenlib?signed#branch=main
+	source = git+https://github.com/desultory/zenlib?branch=main
 	sha256sums = SKIP
 
 pkgname = python-zenlib-git
