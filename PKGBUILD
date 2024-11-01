@@ -26,8 +26,8 @@ sha512sums=('a6510935bbacc552544bff3ad03129a68876fa819b6c7e9b24544f1e212f04708b8
 
 prepare() {
 source /usr/share/nvm/init-nvm.sh
-nvm install 14
-nvm use 14
+nvm install 20
+nvm use 20
 }
 package() {
 install -dm755 "${pkgdir}/usr/share/webapps/rocketchat-server"
