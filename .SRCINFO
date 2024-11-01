@@ -1,16 +1,12 @@
-pkgbase = cli11-compiled
-	pkgdesc = Command line parser for C++.
-	pkgver = 2.4.2
+pkgbase = stringzilla
+	pkgdesc = Up to 10x faster strings for C, C++, Python, Rust and Swift.
+	pkgver = 3.10.7
 	pkgrel = 1
-	url = https://github.com/CLIUtils/CLI11
+	url = https://github.com/ashvardanian/StringZilla
 	arch = x86_64
-	license = BSD-3-Clause
-	checkdepends = catch2
+	license = Apache-2.0
 	makedepends = cmake
-	makedepends = doxygen
-	conflicts = cli11
-	options = !strip
-	source = cli11-compiled-v2.4.2.tar.gz::https://github.com/CLIUtils/CLI11/archive/refs/tags/v2.4.2.tar.gz
-	sha512sums = fdb61c430f5b99a9495fda7f94bfc8d0fb5360c99beeccbcb3b8918713579aac97fa0dcbce296065d9043f141a538c505919c9810fd1d192661e8b48b6a2637a
+	source = stringzilla-v3.10.7.tar.gz::https://github.com/ashvardanian/StringZilla/archive/refs/tags/v3.10.7.tar.gz
+	sha512sums = bf4beaf0874df25e9e5eb80c85fcbd77a37f34c51f330336319cfcb0830a5a56ea484dec27ceb3a2922af560b33d7d14859e36907400870f9860350f1698beb0
 
-pkgname = cli11-compiled
+pkgname = stringzilla
