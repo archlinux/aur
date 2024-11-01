@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=encrypt0r-bin
-pkgver=3.12.51
+pkgver=3.12.52
 _electronversion=29
 pkgrel=1
-pkgdesc="App to encrypt and decrypt your files with a passphrase, powered by electron"
+pkgdesc="App to encrypt and decrypt your files with a passphrase, powered by electron.Prebuilt version.Use system-wide electron."
 arch=('x86_64')
 url="https://www.kunalnagar.in/blog/encryptor-encrypt-decrypt-files-passphrase/"
 _ghurl="https://github.com/kunalnagar/encrypt0r"
@@ -18,16 +18,17 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/kunalnagar/encrypt0r/v${pkgver}/LICENSE.md"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('cea2d5417557f01186930a5fd36757785bec9f35f94da298f093612c64fb5851'
+sha256sums=('fa96e0390b77ca386294f494b1cf582958c4f89289aed1a5218fd7395f9cf417'
             'dd8cfe4d2d540a3c670cf0aa6c95e9076e8949d7c50d04495feb0a6ce9d82cc3'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 build() {
-    sed -e "s|@electronversion@|${_electronversion}|" \
-        -e "s|@appname@|${pkgname%-bin}|g" \
-        -e "s|@runname@|app.asar|g" \
-        -e "s|@cfgdirname@|${pkgname%-bin}|g" \
-        -e "s|@options@|env ELECTRON_OZONE_PLATFORM_HINT=auto|g" \
-        -i "${srcdir}/${pkgname%-bin}.sh"
+    sed -e "
+        s/@electronversion@/${_electronversion}/g
+        s/@appname@/${pkgname%-bin}/g
+        s/@runname@/app.asar/g
+        s/@cfgdirname@/${pkgname%-bin}/g
+        s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
+    " -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/release-builds/"*.deb
     bsdtar -xf "${srcdir}/data."*
 }
