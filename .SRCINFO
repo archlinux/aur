@@ -1,4 +1,4 @@
-pkgbase = python-zenlib-git
+pkgbase = zenlib
 	pkgdesc = Useful python decorators and utilities
 	pkgver = 0
 	pkgrel = 1
