@@ -3,7 +3,7 @@
 _pkgname='python-pandera'
 _vcssuffix='-git'
 pkgname="${_pkgname}${_vcssuffix}"
-pkgver=0.20.4+10.r776.20240930.4f8bdbf4
+pkgver=0.20.4+11.r777.20241101.ea4538d2
 pkgrel=1
 pkgdesc="Provides a flexible and expressive API for performing data validation on dataframe-like objects to make data processing pipelines more readable and robust."
 arch=(

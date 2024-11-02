@@ -1,6 +1,6 @@
 pkgbase = python-pandera-git
 	pkgdesc = Provides a flexible and expressive API for performing data validation on dataframe-like objects to make data processing pipelines more readable and robust.
-	pkgver = 0.20.4+10.r776.20240930.4f8bdbf4
+	pkgver = 0.20.4+11.r777.20241101.ea4538d2
 	pkgrel = 1
 	url = https://www.union.ai/pandera
 	arch = any
@@ -31,7 +31,7 @@ pkgbase = python-pandera-git
 	optdepends = python-scipy
 	optdepends = python-shapely
 	optdepends = python-yaml>=5.1
-	provides = python-pandera=0.20.4+10.r776.20240930.4f8bdbf4
+	provides = python-pandera=0.20.4+11.r777.20241101.ea4538d2
 	conflicts = python-pandera
 	source = python-pandera::git+https://github.com/unionai-oss/pandera.git
 	sha256sums = SKIP
