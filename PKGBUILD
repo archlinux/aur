@@ -2,7 +2,7 @@
 
 pkgname=freetube-electron-git
 _pkgname=FreeTube
-pkgver=0.21.3.beta.r7120.3385f63
+pkgver=0.22.0.beta.r7355.c32409f
 pkgrel=1
 pkgdesc='An open source desktop YouTube player built with privacy in mind - built from git source tree, with the system electron (unsupported).'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
