@@ -9,7 +9,7 @@ pkgrel=1
 pkgdesc='Library for working with the PuppetDB REST API'
 arch=('any')
 url='https://github.com/voxpupuli/pypuppetdb'
-license=('Apache')
+license=('Apache-2.0')
 depends=('python-requests')
 makedepends=('python-setuptools' 'python-sphinx_rtd_theme'
              'python-build' 'python-installer' 'python-wheel')
