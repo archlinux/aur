@@ -26,7 +26,5 @@ build() {
 
 package() {
 	cd $srcdir/build || exit
-	# cmake .. -G"Unix Makefiles" -DCMAKE_BUILD_TYPE=RELEASE -DUIMGUI_INSTALL=ON -DCMAKE_INSTALL_PREFIX="${pkgdir}/usr/" || exit
-	# make || exit
 	cmake --install . --prefix="${pkgdir}/usr/" || exit
 }
