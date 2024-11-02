@@ -1,6 +1,6 @@
 pkgbase = thunderbird-bin
 	pkgdesc = Standalone Mail/News reader - binary version
-	pkgver = 131.0.1
+	pkgver = 132.0
 	pkgrel = 1
 	url = https://www.mozilla.org/thunderbird
 	install = thunderbird-bin.install
@@ -17,7 +17,7 @@ pkgbase = thunderbird-bin
 	optdepends = hunspell: Spell checking
 	optdepends = hyphen: Hyphenation
 	optdepends = libcanberra: Sound support
-	provides = thunderbird=131.0.1
+	provides = thunderbird=132.0
 	conflicts = thunderbird
 	options = !strip
 	options = !debug
@@ -26,17 +26,17 @@ pkgbase = thunderbird-bin
 	validpgpkeys = 14F26682D0916CDD81E37B6D61B7B526D98F0353
 	sha512sums = 6813e1dfd43c67ad7517714988ac27e7fdfe4857c8e6612c165a8aa89fa013c5ab4f270c13945010422d3bda82a7b7cd5496eaa5cb5524f6b2fa1732e59fd737
 	sha512sums = aeb444784732267f1b1e87e6084a776f82a1912c4c2637d2cf1de1c135dd9d41d2ef66d2bd3f9cbd3a79fad32d17ea6e2968ba644d5f887cb66ba6c09a2098f5
-	source_x86_64 = thunderbird-131.0.1-x86_64.tar.bz2::https://archive.mozilla.org/pub/thunderbird/releases/131.0.1/linux-x86_64/en-US/thunderbird-131.0.1.tar.bz2
-	source_x86_64 = thunderbird-131.0.1-x86_64.tar.bz2.asc::https://archive.mozilla.org/pub/thunderbird/releases/131.0.1/linux-x86_64/en-US/thunderbird-131.0.1.tar.bz2.asc
-	sha512sums_x86_64 = 43043c76aa580751dfb9b4b8d82c6d2012fc1eb5d8298179733348ebb3593966db637a5ff73b8054f9f58a83c6fe216c1568c7c4aed8c95bb63d5f68d8402ee6
+	source_x86_64 = thunderbird-132.0-x86_64.tar.bz2::https://archive.mozilla.org/pub/thunderbird/releases/132.0/linux-x86_64/en-US/thunderbird-132.0.tar.bz2
+	source_x86_64 = thunderbird-132.0-x86_64.tar.bz2.asc::https://archive.mozilla.org/pub/thunderbird/releases/132.0/linux-x86_64/en-US/thunderbird-132.0.tar.bz2.asc
+	sha512sums_x86_64 = 921bf1521e0a972c1e029a3ee8eb3f13fb3b31ef65fe977ec0250390991c9cfc10f8bef27eb969ea3f8ca7d7f539c3be59809b29fcd1ce32f3a3583d5a42860f
 	sha512sums_x86_64 = SKIP
-	source_pentium4 = thunderbird-131.0.1-pentium4.tar.bz2::https://archive.mozilla.org/pub/thunderbird/releases/131.0.1/linux-i686/en-US/thunderbird-131.0.1.tar.bz2
-	source_pentium4 = thunderbird-131.0.1-pentium4.tar.bz2.asc::https://archive.mozilla.org/pub/thunderbird/releases/131.0.1/linux-i686/en-US/thunderbird-131.0.1.tar.bz2.asc
-	sha512sums_pentium4 = b20f643ecaa32f05d406866cfd981519c369a85c939d34b31db09fb450c6029e536b51701b0afab3ddb3c4652cb33e6a888beac292622fe06e44e79b18380b46
+	source_pentium4 = thunderbird-132.0-pentium4.tar.bz2::https://archive.mozilla.org/pub/thunderbird/releases/132.0/linux-i686/en-US/thunderbird-132.0.tar.bz2
+	source_pentium4 = thunderbird-132.0-pentium4.tar.bz2.asc::https://archive.mozilla.org/pub/thunderbird/releases/132.0/linux-i686/en-US/thunderbird-132.0.tar.bz2.asc
+	sha512sums_pentium4 = 733dc2bb9be5dcd07a0bcbc2e1ea7095c719ac294b7ba5ef84092426fe0eb455f2b88b856148f651368c9bfb4bc264a9ce0b8cd388eb72806721c3e3431a4b9d
 	sha512sums_pentium4 = SKIP
-	source_i686 = thunderbird-131.0.1-i686.tar.bz2::https://archive.mozilla.org/pub/thunderbird/releases/131.0.1/linux-i686/en-US/thunderbird-131.0.1.tar.bz2
-	source_i686 = thunderbird-131.0.1-i686.tar.bz2.asc::https://archive.mozilla.org/pub/thunderbird/releases/131.0.1/linux-i686/en-US/thunderbird-131.0.1.tar.bz2.asc
-	sha512sums_i686 = b20f643ecaa32f05d406866cfd981519c369a85c939d34b31db09fb450c6029e536b51701b0afab3ddb3c4652cb33e6a888beac292622fe06e44e79b18380b46
+	source_i686 = thunderbird-132.0-i686.tar.bz2::https://archive.mozilla.org/pub/thunderbird/releases/132.0/linux-i686/en-US/thunderbird-132.0.tar.bz2
+	source_i686 = thunderbird-132.0-i686.tar.bz2.asc::https://archive.mozilla.org/pub/thunderbird/releases/132.0/linux-i686/en-US/thunderbird-132.0.tar.bz2.asc
+	sha512sums_i686 = 733dc2bb9be5dcd07a0bcbc2e1ea7095c719ac294b7ba5ef84092426fe0eb455f2b88b856148f651368c9bfb4bc264a9ce0b8cd388eb72806721c3e3431a4b9d
 	sha512sums_i686 = SKIP
 
 pkgname = thunderbird-bin
