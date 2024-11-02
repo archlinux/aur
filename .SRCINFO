@@ -1,7 +1,7 @@
 pkgbase = froniusd
 	pkgdesc = Read data from a Fronius inverter
 	pkgver = 0.1.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/ahpohl/froniusd
 	arch = i686
 	arch = x86_64
@@ -21,7 +21,7 @@ pkgbase = froniusd
 	source = froniusd-0.1.2::git+https://github.com/ahpohl/froniusd.git#tag=v0.1.2
 	source = sysusers_froniusd.conf
 	source = froniusd.service
-	sha256sums = e06bde59e13232849d80ccbff11ac6d41208ae7b0354b32fde9bea7e3719d1fa
+	sha256sums = SKIP
 	sha256sums = 8c96a8c940a94b8b86312873ad93a2f2a01a2e1e9dbc52b074b04375189dc26b
 	sha256sums = c7e4c04a984a3ea49991c4bf5cf4dac26fa9b2e9eda1a801d20c57e5941d2bfd
 
