@@ -1,0 +1,13 @@
+pkgbase = mems-studio
+	pkgdesc = Software solution for MEMS sensors with graphical no-code design of algorithms and development of embedded AI features.
+	pkgver = 1.4.1
+	pkgrel = 1
+	url = https://www.st.com/en/development-tools/mems-studio.html
+	arch = x86_64
+	license = LGPL
+	makedepends = dpkg
+	provides = mems-studio
+	source = local://mems-studio_1.4.1_amd64.deb
+	sha256sums = 5cb9b5e8287c393d268b7139996e161510f50922867a341fc849996927bda1b7
+
+pkgname = mems-studio
