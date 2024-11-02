@@ -1,6 +1,6 @@
 # Maintainer: Vinícius dos Santos Oliveira <vini.ipsmaker@gmail.com>
 pkgname=emilua-this-thread
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Access C++'s this_thread from Lua"
 arch=('i686' 'x86_64')
