@@ -5,8 +5,6 @@ pkgbase = am
 	url = https://github.com/ivan-hc/AM
 	arch = any
 	license = GPL3
-	depends = glib2
-	depends = libappimage
 	depends = coreutils
 	depends = curl
 	depends = grep
@@ -15,6 +13,8 @@ pkgbase = am
 	depends = wget
 	depends = git
 	depends = jq
+	depends = fuse2
+	depends = fuse3
 	source = https://raw.githubusercontent.com/ivan-hc/AM/main/APP-MANAGER
 	sha256sums = SKIP
 

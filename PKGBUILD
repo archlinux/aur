@@ -8,8 +8,6 @@ arch=('any')
 license=('GPL3')
 
 depends=(
-    'glib2'
-    'libappimage'
     'coreutils'
     'curl'
     'grep'
@@ -18,6 +16,8 @@ depends=(
     'wget'
     'git'
     'jq'
+    'fuse2'
+    'fuse3'
 )
 
 source=("https://raw.githubusercontent.com/ivan-hc/AM/main/APP-MANAGER")
