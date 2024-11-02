@@ -1,6 +1,6 @@
 pkgbase = ffxvid
 	pkgdesc = Small script to encode to Xvid video using FFmpeg
-	pkgver = 1.8.2
+	pkgver = 1.8.3
 	pkgrel = 1
 	url = https://ffxvid.teambelgium.net/
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = ffxvid
 	depends = bc
 	optdepends = mplayer: for crop preview
 	optdepends = gpac: for MP4 cover art
-	source = https://downloads.sourceforge.net/project/ffxvid/ffxvid-1.8.2.tar.gz
-	sha256sums = b4e82a3b5b238d62dbe7fa0dfa83af6d11125b1b2471aec2d2d31067c6f9e72f
+	source = https://downloads.sourceforge.net/project/ffxvid/ffxvid-1.8.3.tar.gz
+	sha256sums = e43ddba68ea86c12ba22f9e4515c5c5317c7345b26a3b140d9411c5b0106937f
 
 pkgname = ffxvid
