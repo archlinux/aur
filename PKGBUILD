@@ -7,8 +7,8 @@ pkgdesc="An all-in-one tool for managing Beat Saber versions, maps, mods, and mo
 arch=("x86_64")
 url="https://github.com/Zagrios/bs-manager"
 license=('GPL')
-depends=('libvips' 'dotnet-runtime-3.1' 'libicu50' 'screen')
-makedepends=('git' 'nvm' 'npm')
+depends=('dotnet-runtime-3.1' 'screen')
+makedepends=('git' 'nodejs>=18')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 options=('!strip')
@@ -24,16 +24,6 @@ sha256sums=(
 pkgver() {
     cd "${pkgname%-git}"
     git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
-}
-
-prepare() {
-    cd "${pkgname%-git}"
-
-    command -v nvm >/dev/null && nvm deactivate && nvm unload
-    export NVM_DIR="${srcdir}/.nvm"
-    source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
-    nvm install 20
-    nvm use 20
 }
 
 build() {

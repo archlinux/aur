@@ -6,11 +6,8 @@ pkgbase = bs-manager-git
 	arch = x86_64
 	license = GPL
 	makedepends = git
-	makedepends = nvm
-	makedepends = npm
-	depends = libvips
+	makedepends = nodejs>=18
 	depends = dotnet-runtime-3.1
-	depends = libicu50
 	depends = screen
 	provides = bs-manager
 	conflicts = bs-manager
