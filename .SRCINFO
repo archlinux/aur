@@ -1,7 +1,7 @@
 pkgbase = ugrd
 	pkgdesc = Python based initramfs generator with TOML defintions
 	pkgver = 1.27.1.r14.ge83d58f
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/desultory/ugrd
 	arch = x86_64
 	license = GPL2

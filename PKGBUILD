@@ -1,7 +1,7 @@
 # Maintainer: Zen <dev@pyl.onl>
-pkgname=python-pycpio-git
+pkgname=python-ugrd-git
 pkgver=1.27.1.r14.ge83d58f
-pkgrel=1
+pkgrel=2
 pkgdesc="Python based initramfs generator with TOML defintions"
 arch=('x86_64')
 url="https://github.com/desultory/ugrd"
