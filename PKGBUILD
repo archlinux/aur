@@ -1,7 +1,7 @@
 # Maintainer: Zen <dev@pyl.onl>
 pkgname=python-ugrd-git
 pkgver=1.27.1.r14.ge83d58f
-pkgrel=2
+pkgrel=3
 pkgdesc="Python based initramfs generator with TOML defintions"
 arch=('x86_64')
 url="https://github.com/desultory/ugrd"
@@ -15,6 +15,7 @@ source=("git+https://github.com/desultory/ugrd")
 # gpg  --keyserver 'hkps://keys.openpgp.org' --recv-keys 7751D62F9F9A0454B86871CE64FA651BB8850B48
 #validpgpkeys=('7751D62F9F9A0454B86871CE64FA651BB8850B48')
 sha256sums=(SKIP) 
+backup=(etc/ugrd/config.toml)
 _name=${pkgname#python-};
 _name=${_name%-git}
 
@@ -31,4 +32,5 @@ build() {
 package() {
     cd $_name
     python -m installer --destdir="$pkgdir" dist/*.whl
+    install -Dm0644 examples/example.conf "$pkgdir/etc/ugrd/config.toml"
 }
