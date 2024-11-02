@@ -15,7 +15,7 @@
 
 pkgname=koboldcpp-cuda
 pkgver=1.77
-pkgrel=3
+pkgrel=4
 pkgdesc="An easy-to-use AI text-generation software for GGML and GGUF models (with CUDA)"
 arch=('x86_64')
 url="https://github.com/LostRuins/koboldcpp"
@@ -45,7 +45,10 @@ sha256sums=(
 )
 
 build() {
-  source "${KOBOLDCPP_BUILD_CONF}"
+  if [ -f "${KOBOLDCPP_BUILD_CONF}" ]; then
+    echo "Using config from ${KOBOLDCPP_BUILD_CONF}"
+    source "${KOBOLDCPP_BUILD_CONF}"
+  fi
 
   if [ "${KOBOLDCPP_NO_PORTABLE}" == "0" ]; then
     export LLAMA_PORTABLE=1
