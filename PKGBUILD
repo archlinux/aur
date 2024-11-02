@@ -6,9 +6,9 @@
 _gitname="hidapi"
 _pkgname="hidapi-testgui"
 pkgname="${_pkgname}-git"
-pkgver=0.14.0+40.r665.20241003.750bf20
+pkgver=0.14.0+41.r666.20241030.ff67c77
 _pkgmajorver="$(awk -F. '{print $1}' <<<"${pkgver}")"
-pkgrel=2
+pkgrel=1
 epoch=0
 pkgdesc="'hidapi-hidraw-testgui' and 'hidapi-libusb-testgui' for hidapi."
 arch=(
@@ -81,7 +81,6 @@ pkgver() {
   else
     printf '%s' "${_ver}.r${_rev}.${_date}.${_hash}"
   fi
-
 }
 
 build() {
