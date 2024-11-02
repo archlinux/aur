@@ -6,7 +6,7 @@
 
 pkgbase=network-manager-applet-debug-git
 pkgname=(network-manager-applet-debug-git nm-connection-editor-debug-git)
-pkgver=1.37.0.dev+21.r5008.20231113.b567ee02
+pkgver=1.37.0.dev+22.r5009.20230311.6cb6fe07
 pkgrel=1
 pkgdesc="A system tray applet for NetworkManager. Debug build, latest git checkout."
 arch=('i686' 'x86_64')
