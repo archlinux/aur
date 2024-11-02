@@ -34,10 +34,12 @@ pkgbase = zwcad-bin
 	depends = krb5
 	depends = util-linux-libs
 	depends = zlib
+	depends = openssl-1.0
+	depends = libldap24
 	provides = zwcad
 	options = !strip
 	source = zwcad.sh
-	sha512sums = 3f978fc46a39c8e65551a8e581f234526183b6b811b1e857fb17903549b10442b676713c342880d144a47fc5da76882152901533abd898a24588b7e9bbbc207c
+	sha512sums = 68de85e988c65f1ab571b26c19d4988fd5a5cafaa4f8ea1bb834f5192e967852cd9a136cb5d080bf3d0f2f5580961f1619de1675f51c76382fc94354b19365a4
 	source_x86_64 = zwcad-25.0.3.4-x86_64.deb::https://aur-repo.taotieren.com:3443/atzlinux/pool/non-free/z/zwcad2025/zwcad2025_25.0.3.4_amd64.deb
 	sha512sums_x86_64 = 6545800e3cfa648fcca2d16de698ed532ab6116a30bbfbc1057aafb6d200462731b01ed5b03fa5532a3059e1c4eb47fbb07af56b69b97f535f625b663fbb19da
 

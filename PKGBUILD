@@ -41,6 +41,9 @@ depends=(
     krb5
     util-linux-libs
     zlib
+    # AUR
+    openssl-1.0
+    libldap24
 )
 makedepends=('patchelf')
 source=('zwcad.sh')
@@ -49,7 +52,7 @@ source=('zwcad.sh')
 source_x86_64=("${_pkgname}-${pkgver}-x86_64.deb::https://aur-repo.taotieren.com:3443/atzlinux/pool/non-free/z/zwcad${_year}/zwcad${_year}_${pkgver}_amd64.deb")
 # source_aarch64=("${_pkgname}-${pkgver}-aarch64.deb::https://dl.zwsoft.cn/zwcad/cad_linux/${_year}/zwcad${_year}_${pkgver}_arm64.deb?auth_key=1690549857-0-0-5896181fcadbec59eb315d18a65cc634")
 # source_aarch64=("${_pkgname}-${pkgver}-aarch64.deb::https://aur-repo.taotieren.com:3443/atzlinux/pool/non-free/z/zwcad${_year}/zwcad${_year}_${pkgver}_arm64.deb")
-sha512sums=('3f978fc46a39c8e65551a8e581f234526183b6b811b1e857fb17903549b10442b676713c342880d144a47fc5da76882152901533abd898a24588b7e9bbbc207c')
+sha512sums=('68de85e988c65f1ab571b26c19d4988fd5a5cafaa4f8ea1bb834f5192e967852cd9a136cb5d080bf3d0f2f5580961f1619de1675f51c76382fc94354b19365a4')
 sha512sums_x86_64=('6545800e3cfa648fcca2d16de698ed532ab6116a30bbfbc1057aafb6d200462731b01ed5b03fa5532a3059e1c4eb47fbb07af56b69b97f535f625b663fbb19da')
 options=(!strip)
 # no need to strip, it only decreases the installed size by 24.44 MiB.
