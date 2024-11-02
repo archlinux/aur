@@ -1,3 +1,6 @@
+# Maintainer: Carlo Sala <carlosalag@protonmail.com>
+# Contributor: Artem Vorotnikov <artem@vorotnikov.me>
+
 pkgname='python-ledger-bitcoin'
 _name='ledger_bitcoin'
 pkgver='0.2.2'
@@ -6,7 +9,7 @@ pkgdesc="Client for Ledger Nano Bitcoin application"
 url="https://github.com/LedgerHQ/app-bitcoin-new"
 depends=('python' 'python-bip32' 'python-coincurve' 'python-ledgercomm')
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
-license=('APACHE')
+license=('Apache-2.0')
 arch=('any')
 source=(
     "https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz"
