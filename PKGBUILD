@@ -1,12 +1,12 @@
 # Maintainer: David C Rankin <drankinatty@gmail.com>
-# Previous Maintainer: JustKidding <jk@vin.ovh> 
+# Previous Maintainer: JustKidding <jk@vin.ovh>
 
 pkgname=mongodb44
 _pkgname=mongodb
 _srcname=mongo
 # #.<odd number>.# releases are unstable development/testing
 pkgver=4.4.29
-pkgrel=3
+pkgrel=4
 pkgdesc="A high-performance, open source, schema-free document-oriented database (last version to support non-avx CPUs)"
 arch=("x86_64" "aarch64")
 url="https://www.mongodb.com/"
@@ -45,8 +45,8 @@ sha256sums=('ec12d15b74276465002f66df3b834b2872597166a137e85378b9018f79b2ffc8'
             '7bfeadf2fb7e13bd93c4515faada070410ddd8e276cc947b5b2b2292539051b7'
             '7cd27b2ce15cc6efdce07ef934ed3d9356025ebade4856a9d0a75a80f7c08905'
             'ef2a0c1516175bf73050884cfdfa5d87e5e065738c51bbd50302b16924e11bf1'
-            '615ae988bc80a27cc16d06672dbbf62ee88827aa0177c2abd814d4bc25bb9385'
-            'ab580ca52f14b0452ccb93b4974a6cd236b7e29f6f262953fa274b09259c8245')
+            'f389b2cc623d5be6d3fff5472b3edce68c23de3a67f9ef9a1dd3b92eb4827778'
+            'd53043ccf3922299458d52af9c942eed19df5435263ce490da4e90fbfb2a2153')
 
 _scons_args=(
   CC="${CC:-gcc}"

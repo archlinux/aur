@@ -1,3 +1,57 @@
+diff -ruNb a/src/mongo/client/authenticate.cpp b/src/mongo/client/authenticate.cpp
+--- a/src/mongo/client/authenticate.cpp	2024-02-13 02:46:45.000000000 -0600
++++ b/src/mongo/client/authenticate.cpp	2024-11-01 23:04:29.066093713 -0500
+@@ -75,7 +75,7 @@
+         }
+     }
+ 
+-    return std::move(db);
++    return db;
+ }
+ 
+ //
+@@ -99,7 +99,7 @@
+     }
+     auto db = extractDBField(params);
+     if (!db.isOK())
+-        return std::move(db.getStatus());
++        return db.getStatus();
+ 
+     std::string username;
+     auto response = bsonExtractStringFieldWithDefault(
+diff -ruNb a/src/mongo/client/connection_string_connect.cpp b/src/mongo/client/connection_string_connect.cpp
+--- a/src/mongo/client/connection_string_connect.cpp	2024-02-13 02:46:45.000000000 -0600
++++ b/src/mongo/client/connection_string_connect.cpp	2024-11-01 23:32:52.295385640 -0500
+@@ -70,7 +70,7 @@
+                     continue;
+                 }
+                 LOGV2_DEBUG(20110, 1, "Connected connection!");
+-                return std::move(c);
++                return c;
+             }
+             return nullptr;
+         }
+@@ -83,7 +83,7 @@
+                 errmsg += toString();
+                 return nullptr;
+             }
+-            return std::move(set);
++            return set;
+         }
+ 
+         case CUSTOM: {
+diff -ruNb a/src/mongo/client/dbclient_base.cpp b/src/mongo/client/dbclient_base.cpp
+--- a/src/mongo/client/dbclient_base.cpp	2024-02-13 02:46:45.000000000 -0600
++++ b/src/mongo/client/dbclient_base.cpp	2024-11-01 22:47:37.689572805 -0500
+@@ -448,7 +448,7 @@
+             if (!status.isOK()) {
+                 return status;
+             }
+-            return Future<BSONObj>::makeReady(std::move(ret->getCommandReply()));
++            return Future<BSONObj>::makeReady(ret->getCommandReply());
+         } catch (const DBException& e) {
+             return Future<BSONObj>::makeReady(e.toStatus());
+         }
 diff -ruNb a/src/mongo/crypto/symmetric_crypto_openssl.cpp b/src/mongo/crypto/symmetric_crypto_openssl.cpp
 --- a/src/mongo/crypto/symmetric_crypto_openssl.cpp	2024-02-13 02:46:45.000000000 -0600
 +++ b/src/mongo/crypto/symmetric_crypto_openssl.cpp	2024-11-01 02:09:30.092577633 -0500
@@ -19,6 +73,132 @@ diff -ruNb a/src/mongo/crypto/symmetric_crypto_openssl.cpp b/src/mongo/crypto/sy
  } catch (const DBException& e) {
      return e.toStatus();
  }
+diff -ruNb a/src/mongo/db/auth/sasl_commands.cpp b/src/mongo/db/auth/sasl_commands.cpp
+--- a/src/mongo/db/auth/sasl_commands.cpp	2024-02-13 02:46:45.000000000 -0600
++++ b/src/mongo/db/auth/sasl_commands.cpp	2024-11-01 22:45:07.247341550 -0500
+@@ -301,7 +301,7 @@
+         return statusStep;
+     }
+ 
+-    return std::move(session);
++    return session;
+ }
+ 
+ Status doSaslContinue(OperationContext* opCtx,
+diff -ruNb a/src/mongo/db/catalog/collection_catalog.cpp b/src/mongo/db/catalog/collection_catalog.cpp
+--- a/src/mongo/db/catalog/collection_catalog.cpp	2024-02-13 02:46:45.000000000 -0600
++++ b/src/mongo/db/catalog/collection_catalog.cpp	2024-11-01 23:19:09.060941984 -0500
+@@ -371,7 +371,7 @@
+         uassert(ErrorCodes::InvalidNamespace,
+                 str::stream() << "Namespace " << *nss << " is not a valid collection name",
+                 nss->isValid());
+-        return std::move(*nss);
++        return *nss;
+     }
+ 
+     auto resolvedNss = lookupNSSByUUID(opCtx, *nsOrUUID.uuid());
+diff -ruNb a/src/mongo/db/commands/map_reduce_out_options.cpp b/src/mongo/db/commands/map_reduce_out_options.cpp
+--- a/src/mongo/db/commands/map_reduce_out_options.cpp	2024-02-13 02:46:45.000000000 -0600
++++ b/src/mongo/db/commands/map_reduce_out_options.cpp	2024-11-01 23:27:04.667448312 -0500
+@@ -127,7 +127,7 @@
+                 obj.nFields() == allowedNFields);
+ 
+         return MapReduceOutOptions(
+-            std::move(databaseName), std::move(collectionName), outputType, sharded);
++            std::move(databaseName), collectionName, outputType, sharded);
+     } else {
+         uasserted(ErrorCodes::BadValue, "'out' must be either a string or an object");
+     }
+diff -ruNb a/src/mongo/db/commands/user_management_commands.cpp b/src/mongo/db/commands/user_management_commands.cpp
+--- a/src/mongo/db/commands/user_management_commands.cpp	2024-02-13 02:46:45.000000000 -0600
++++ b/src/mongo/db/commands/user_management_commands.cpp	2024-11-01 23:42:43.311964832 -0500
+@@ -623,7 +623,7 @@
+         return status;
+     }
+ 
+-    return std::move(lk);
++    return lk;
+ }
+ 
+ /**
+@@ -655,7 +655,7 @@
+                                     << foundSchemaVersion);
+     }
+ 
+-    return std::move(lk);
++    return lk;
+ }
+ 
+ Status buildCredentials(BSONObjBuilder* builder, const auth::CreateOrUpdateUserArgs& args) {
+diff -ruNb a/src/mongo/db/concurrency/deferred_writer.cpp b/src/mongo/db/concurrency/deferred_writer.cpp
+--- a/src/mongo/db/concurrency/deferred_writer.cpp	2024-02-13 02:46:45.000000000 -0600
++++ b/src/mongo/db/concurrency/deferred_writer.cpp	2024-11-01 23:41:02.874692771 -0500
+@@ -96,7 +96,7 @@
+         agc = std::make_unique<AutoGetCollection>(opCtx, _nss, MODE_IX);
+     }
+ 
+-    return std::move(agc);
++    return agc;
+ }
+ 
+ Status DeferredWriter::_worker(InsertStatement stmt) noexcept try {
+diff -ruNb a/src/mongo/db/concurrency/lock_state.cpp b/src/mongo/db/concurrency/lock_state.cpp
+--- a/src/mongo/db/concurrency/lock_state.cpp	2024-02-13 02:46:45.000000000 -0600
++++ b/src/mongo/db/concurrency/lock_state.cpp	2024-11-01 22:34:30.821376746 -0500
+@@ -743,7 +743,7 @@
+     const boost::optional<SingleThreadedLockStats> lockStatsBase) const {
+     Locker::LockerInfo lockerInfo;
+     getLockerInfo(&lockerInfo, lockStatsBase);
+-    return std::move(lockerInfo);
++    return lockerInfo;
+ }
+ 
+ bool LockerImpl::saveLockStateAndUnlock(Locker::LockSnapshot* stateOut) {
+diff -ruNb a/src/mongo/db/fts/fts_query_impl.cpp b/src/mongo/db/fts/fts_query_impl.cpp
+--- a/src/mongo/db/fts/fts_query_impl.cpp	2024-02-13 02:46:45.000000000 -0600
++++ b/src/mongo/db/fts/fts_query_impl.cpp	2024-11-01 23:18:25.467810817 -0500
+@@ -149,7 +149,7 @@
+     clonedQuery->_positivePhrases = _positivePhrases;
+     clonedQuery->_negatedPhrases = _negatedPhrases;
+     clonedQuery->_termsForBounds = _termsForBounds;
+-    return std::move(clonedQuery);
++    return clonedQuery;
+ }
+ 
+ void FTSQueryImpl::_addTerms(FTSTokenizer* tokenizer, const string& sentence, bool negated) {
+diff -ruNb a/src/mongo/db/fts/fts_query_noop.cpp b/src/mongo/db/fts/fts_query_noop.cpp
+--- a/src/mongo/db/fts/fts_query_noop.cpp	2024-02-13 02:46:45.000000000 -0600
++++ b/src/mongo/db/fts/fts_query_noop.cpp	2024-11-01 22:46:46.311141504 -0500
+@@ -43,7 +43,7 @@
+     clonedQuery->setLanguage(getLanguage());
+     clonedQuery->setCaseSensitive(getCaseSensitive());
+     clonedQuery->setDiacriticSensitive(getDiacriticSensitive());
+-    return std::move(clonedQuery);
++    return clonedQuery;
+ }
+ 
+ }  // namespace fts
+diff -ruNb a/src/mongo/db/matcher/expression_algo.cpp b/src/mongo/db/matcher/expression_algo.cpp
+--- a/src/mongo/db/matcher/expression_algo.cpp	2024-02-13 02:46:45.000000000 -0600
++++ b/src/mongo/db/matcher/expression_algo.cpp	2024-11-01 23:31:29.441686600 -0500
+@@ -255,7 +255,7 @@
+         splitAnd->add(expr.release());
+     }
+ 
+-    return std::move(splitAnd);
++    return splitAnd;
+ }
+ 
+ /**
+@@ -271,7 +271,7 @@
+         splitNor->add(expr.release());
+     }
+ 
+-    return std::move(splitNor);
++    return splitNor;
+ }
+ 
+ void applyRenamesToExpression(MatchExpression* expr, const StringMap<std::string>& renames) {
 diff -ruNb a/src/mongo/db/matcher/expression_array.h b/src/mongo/db/matcher/expression_array.h
 --- a/src/mongo/db/matcher/expression_array.h	2024-02-13 02:46:45.000000000 -0600
 +++ b/src/mongo/db/matcher/expression_array.h	2024-11-01 14:20:19.738743379 -0500
@@ -49,6 +229,80 @@ diff -ruNb a/src/mongo/db/matcher/expression_array.h b/src/mongo/db/matcher/expr
      }
  
      size_t numChildren() const override {
+diff -ruNb a/src/mongo/db/matcher/expression_expr.cpp b/src/mongo/db/matcher/expression_expr.cpp
+--- a/src/mongo/db/matcher/expression_expr.cpp	2024-02-13 02:46:45.000000000 -0600
++++ b/src/mongo/db/matcher/expression_expr.cpp	2024-11-01 22:32:22.347632428 -0500
+@@ -115,7 +115,7 @@
+     if (_rewriteResult) {
+         clone->_rewriteResult = _rewriteResult->clone();
+     }
+-    return std::move(clone);
++    return clone;
+ }
+ 
+ MatchExpression::ExpressionOptimizerFunc ExprMatchExpression::getOptimizer() const {
+diff -ruNb a/src/mongo/db/matcher/expression_geo.cpp b/src/mongo/db/matcher/expression_geo.cpp
+--- a/src/mongo/db/matcher/expression_geo.cpp	2024-02-13 02:46:45.000000000 -0600
++++ b/src/mongo/db/matcher/expression_geo.cpp	2024-11-01 22:25:33.196323146 -0500
+@@ -408,7 +408,7 @@
+     if (getTag()) {
+         next->setTag(getTag()->clone());
+     }
+-    return std::move(next);
++    return next;
+ }
+ 
+ //
+@@ -465,6 +465,6 @@
+     if (getTag()) {
+         next->setTag(getTag()->clone());
+     }
+-    return std::move(next);
++    return next;
+ }
+ }  // namespace mongo
+diff -ruNb a/src/mongo/db/matcher/expression_internal_expr_eq.cpp b/src/mongo/db/matcher/expression_internal_expr_eq.cpp
+--- a/src/mongo/db/matcher/expression_internal_expr_eq.cpp	2024-02-13 02:46:45.000000000 -0600
++++ b/src/mongo/db/matcher/expression_internal_expr_eq.cpp	2024-11-01 23:22:13.023832977 -0500
+@@ -63,7 +63,7 @@
+     if (getTag()) {
+         clone->setTag(getTag()->clone());
+     }
+-    return std::move(clone);
++    return clone;
+ }
+ 
+ }  //  namespace mongo
+diff -ruNb a/src/mongo/db/matcher/expression_leaf.cpp b/src/mongo/db/matcher/expression_leaf.cpp
+--- a/src/mongo/db/matcher/expression_leaf.cpp	2024-02-13 02:46:45.000000000 -0600
++++ b/src/mongo/db/matcher/expression_leaf.cpp	2024-11-01 23:35:58.739642921 -0500
+@@ -415,7 +415,7 @@
+             static_cast<RegexMatchExpression*>(regex->shallowClone().release()));
+         next->_regexes.push_back(std::move(clonedRegex));
+     }
+-    return std::move(next);
++    return next;
+ }
+ 
+ bool InMatchExpression::contains(const BSONElement& e) const {
+@@ -590,7 +590,7 @@
+             if (expression->getTag()) {
+                 simplifiedExpression->setTag(expression->getTag()->clone());
+             }
+-            return std::move(simplifiedExpression);
++            return simplifiedExpression;
+         } else if (equalitySet.size() == 1 && regexList.empty()) {
+             // Simplify IN of exactly one equality to be an EqualityMatchExpression.
+             auto simplifiedExpression = std::make_unique<EqualityMatchExpression>(
+@@ -600,7 +600,7 @@
+                 simplifiedExpression->setTag(expression->getTag()->clone());
+             }
+ 
+-            return std::move(simplifiedExpression);
++            return simplifiedExpression;
+         }
+ 
+         return expression;
 diff -ruNb a/src/mongo/db/matcher/expression_leaf.h b/src/mongo/db/matcher/expression_leaf.h
 --- a/src/mongo/db/matcher/expression_leaf.h	2024-02-13 02:46:45.000000000 -0600
 +++ b/src/mongo/db/matcher/expression_leaf.h	2024-11-01 02:05:33.172570060 -0500
@@ -160,6 +414,63 @@ diff -ruNb a/src/mongo/db/matcher/expression_leaf.h b/src/mongo/db/matcher/expre
      }
  };
  
+diff -ruNb a/src/mongo/db/matcher/expression_parser.cpp b/src/mongo/db/matcher/expression_parser.cpp
+--- a/src/mongo/db/matcher/expression_parser.cpp	2024-02-13 02:46:45.000000000 -0600
++++ b/src/mongo/db/matcher/expression_parser.cpp	2024-11-01 23:38:07.140342121 -0500
+@@ -940,7 +940,7 @@
+             std::move(expressionWithPlaceholder.getValue()));
+     }
+ 
+-    return std::move(patternProperties);
++    return patternProperties;
+ }
+ 
+ StatusWith<StringDataSet> parseProperties(BSONElement propertiesElem) {
+@@ -967,7 +967,7 @@
+         properties.insert(property.valueStringData());
+     }
+ 
+-    return std::move(properties);
++    return properties;
+ }
+ 
+ StatusWithMatchExpression parseInternalSchemaAllowedProperties(
+diff -ruNb a/src/mongo/db/matcher/expression_text.cpp b/src/mongo/db/matcher/expression_text.cpp
+--- a/src/mongo/db/matcher/expression_text.cpp	2024-02-13 02:46:45.000000000 -0600
++++ b/src/mongo/db/matcher/expression_text.cpp	2024-11-01 23:48:08.324005867 -0500
+@@ -108,7 +108,7 @@
+     if (getTag()) {
+         expr->setTag(getTag()->clone());
+     }
+-    return std::move(expr);
++    return expr;
+ }
+ 
+ }  // namespace mongo
+diff -ruNb a/src/mongo/db/matcher/expression_text_noop.cpp b/src/mongo/db/matcher/expression_text_noop.cpp
+--- a/src/mongo/db/matcher/expression_text_noop.cpp	2024-02-13 02:46:45.000000000 -0600
++++ b/src/mongo/db/matcher/expression_text_noop.cpp	2024-11-01 23:15:02.053133803 -0500
+@@ -56,7 +56,7 @@
+     if (getTag()) {
+         expr->setTag(getTag()->clone());
+     }
+-    return std::move(expr);
++    return expr;
+ }
+ 
+ }  // namespace mongo
+diff -ruNb a/src/mongo/db/matcher/expression_tree.cpp b/src/mongo/db/matcher/expression_tree.cpp
+--- a/src/mongo/db/matcher/expression_tree.cpp	2024-02-13 02:46:45.000000000 -0600
++++ b/src/mongo/db/matcher/expression_tree.cpp	2024-11-01 22:39:03.995584061 -0500
+@@ -151,7 +151,7 @@
+                 // Simplify NOR of exactly one operand to NOT of that operand.
+                 auto simplifiedExpression = std::make_unique<NotMatchExpression>(children.front());
+                 children.clear();
+-                return std::move(simplifiedExpression);
++                return simplifiedExpression;
+             }
+         }
+ 
 diff -ruNb a/src/mongo/db/matcher/expression_tree.h b/src/mongo/db/matcher/expression_tree.h
 --- a/src/mongo/db/matcher/expression_tree.h	2024-02-13 02:46:45.000000000 -0600
 +++ b/src/mongo/db/matcher/expression_tree.h	2024-11-01 02:07:37.155907361 -0500
@@ -211,6 +522,58 @@ diff -ruNb a/src/mongo/db/matcher/expression_type.h b/src/mongo/db/matcher/expre
      }
  
      void debugString(StringBuilder& debug, int indentationLevel) const final {
+diff -ruNb a/src/mongo/db/matcher/expression_where.cpp b/src/mongo/db/matcher/expression_where.cpp
+--- a/src/mongo/db/matcher/expression_where.cpp	2024-02-13 02:46:45.000000000 -0600
++++ b/src/mongo/db/matcher/expression_where.cpp	2024-11-01 23:46:29.303373402 -0500
+@@ -117,6 +117,6 @@
+     if (getTag()) {
+         e->setTag(getTag()->clone());
+     }
+-    return std::move(e);
++    return e;
+ }
+ }  // namespace mongo
+diff -ruNb a/src/mongo/db/matcher/expression_where_noop.cpp b/src/mongo/db/matcher/expression_where_noop.cpp
+--- a/src/mongo/db/matcher/expression_where_noop.cpp	2024-02-13 02:46:45.000000000 -0600
++++ b/src/mongo/db/matcher/expression_where_noop.cpp	2024-11-01 23:22:59.440475800 -0500
+@@ -51,6 +51,6 @@
+     if (getTag()) {
+         e->setTag(getTag()->clone());
+     }
+-    return std::move(e);
++    return e;
+ }
+ }  // namespace mongo
+diff -ruNb a/src/mongo/db/matcher/rewrite_expr.cpp b/src/mongo/db/matcher/rewrite_expr.cpp
+--- a/src/mongo/db/matcher/rewrite_expr.cpp	2024-02-13 02:46:45.000000000 -0600
++++ b/src/mongo/db/matcher/rewrite_expr.cpp	2024-11-01 23:21:09.373918638 -0500
+@@ -97,7 +97,7 @@
+     }
+ 
+     if (andMatch->numChildren() > 0) {
+-        return std::move(andMatch);
++        return andMatch;
+     }
+ 
+     return nullptr;
+@@ -118,7 +118,7 @@
+     }
+ 
+     if (orMatch->numChildren() > 0) {
+-        return std::move(orMatch);
++        return orMatch;
+     }
+ 
+     return nullptr;
+@@ -166,7 +166,7 @@
+         std::make_unique<InternalExprEqMatchExpression>(fieldAndValue.fieldName(), fieldAndValue);
+     eqMatchExpr->setCollator(_collator);
+ 
+-    return std::move(eqMatchExpr);
++    return eqMatchExpr;
+ }
+ 
+ bool RewriteExpr::_canRewriteComparison(
 diff -ruNb a/src/mongo/db/matcher/schema/expression_internal_schema_all_elem_match_from_index.cpp b/src/mongo/db/matcher/schema/expression_internal_schema_all_elem_match_from_index.cpp
 --- a/src/mongo/db/matcher/schema/expression_internal_schema_all_elem_match_from_index.cpp	2024-02-13 02:46:45.000000000 -0600
 +++ b/src/mongo/db/matcher/schema/expression_internal_schema_all_elem_match_from_index.cpp	2024-11-01 14:26:56.475862314 -0500
@@ -223,6 +586,194 @@ diff -ruNb a/src/mongo/db/matcher/schema/expression_internal_schema_all_elem_mat
  }
  
  bool InternalSchemaAllElemMatchFromIndexMatchExpression::equivalent(
+diff -ruNb a/src/mongo/db/matcher/schema/expression_internal_schema_eq.cpp b/src/mongo/db/matcher/schema/expression_internal_schema_eq.cpp
+--- a/src/mongo/db/matcher/schema/expression_internal_schema_eq.cpp	2024-02-13 02:46:45.000000000 -0600
++++ b/src/mongo/db/matcher/schema/expression_internal_schema_eq.cpp	2024-11-01 23:34:04.869063639 -0500
+@@ -87,7 +87,7 @@
+     if (getTag()) {
+         clone->setTag(getTag()->clone());
+     }
+-    return std::move(clone);
++    return clone;
+ }
+ 
+ }  //  namespace mongo
+diff -ruNb a/src/mongo/db/matcher/schema/expression_internal_schema_fmod.h b/src/mongo/db/matcher/schema/expression_internal_schema_fmod.h
+--- a/src/mongo/db/matcher/schema/expression_internal_schema_fmod.h	2024-02-13 02:46:45.000000000 -0600
++++ b/src/mongo/db/matcher/schema/expression_internal_schema_fmod.h	2024-11-01 23:05:44.903693061 -0500
+@@ -47,7 +47,7 @@
+         if (getTag()) {
+             m->setTag(getTag()->clone());
+         }
+-        return std::move(m);
++        return m;
+     }
+ 
+     bool matchesSingleElement(const BSONElement& e, MatchDetails* details = nullptr) const final;
+diff -ruNb a/src/mongo/db/matcher/schema/expression_internal_schema_match_array_index.cpp b/src/mongo/db/matcher/schema/expression_internal_schema_match_array_index.cpp
+--- a/src/mongo/db/matcher/schema/expression_internal_schema_match_array_index.cpp	2024-02-13 02:46:45.000000000 -0600
++++ b/src/mongo/db/matcher/schema/expression_internal_schema_match_array_index.cpp	2024-11-01 23:27:44.340886101 -0500
+@@ -91,7 +91,7 @@
+     if (getTag()) {
+         clone->setTag(getTag()->clone());
+     }
+-    return std::move(clone);
++    return clone;
+ }
+ 
+ MatchExpression::ExpressionOptimizerFunc
+diff -ruNb a/src/mongo/db/matcher/schema/expression_internal_schema_max_items.h b/src/mongo/db/matcher/schema/expression_internal_schema_max_items.h
+--- a/src/mongo/db/matcher/schema/expression_internal_schema_max_items.h	2024-02-13 02:46:45.000000000 -0600
++++ b/src/mongo/db/matcher/schema/expression_internal_schema_max_items.h	2024-11-01 23:07:00.154586767 -0500
+@@ -54,7 +54,7 @@
+         if (getTag()) {
+             maxItems->setTag(getTag()->clone());
+         }
+-        return std::move(maxItems);
++        return maxItems;
+     }
+ };
+ }  // namespace mongo
+diff -ruNb a/src/mongo/db/matcher/schema/expression_internal_schema_max_length.h b/src/mongo/db/matcher/schema/expression_internal_schema_max_length.h
+--- a/src/mongo/db/matcher/schema/expression_internal_schema_max_length.h	2024-02-13 02:46:45.000000000 -0600
++++ b/src/mongo/db/matcher/schema/expression_internal_schema_max_length.h	2024-11-01 23:08:26.068907277 -0500
+@@ -52,7 +52,7 @@
+         if (getTag()) {
+             maxLen->setTag(getTag()->clone());
+         }
+-        return std::move(maxLen);
++        return maxLen;
+     }
+ };
+ 
+diff -ruNb a/src/mongo/db/matcher/schema/expression_internal_schema_max_properties.h b/src/mongo/db/matcher/schema/expression_internal_schema_max_properties.h
+--- a/src/mongo/db/matcher/schema/expression_internal_schema_max_properties.h	2024-02-13 02:46:45.000000000 -0600
++++ b/src/mongo/db/matcher/schema/expression_internal_schema_max_properties.h	2024-11-01 23:09:29.872954016 -0500
+@@ -64,7 +64,7 @@
+         if (getTag()) {
+             maxProperties->setTag(getTag()->clone());
+         }
+-        return std::move(maxProperties);
++        return maxProperties;
+     }
+ };
+ }  // namespace mongo
+diff -ruNb a/src/mongo/db/matcher/schema/expression_internal_schema_min_items.h b/src/mongo/db/matcher/schema/expression_internal_schema_min_items.h
+--- a/src/mongo/db/matcher/schema/expression_internal_schema_min_items.h	2024-02-13 02:46:45.000000000 -0600
++++ b/src/mongo/db/matcher/schema/expression_internal_schema_min_items.h	2024-11-01 23:10:21.760189971 -0500
+@@ -54,7 +54,7 @@
+         if (getTag()) {
+             minItems->setTag(getTag()->clone());
+         }
+-        return std::move(minItems);
++        return minItems;
+     }
+ };
+ }  // namespace mongo
+diff -ruNb a/src/mongo/db/matcher/schema/expression_internal_schema_min_length.h b/src/mongo/db/matcher/schema/expression_internal_schema_min_length.h
+--- a/src/mongo/db/matcher/schema/expression_internal_schema_min_length.h	2024-02-13 02:46:45.000000000 -0600
++++ b/src/mongo/db/matcher/schema/expression_internal_schema_min_length.h	2024-11-01 23:11:26.164217868 -0500
+@@ -52,7 +52,7 @@
+         if (getTag()) {
+             minLen->setTag(getTag()->clone());
+         }
+-        return std::move(minLen);
++        return minLen;
+     }
+ };
+ 
+diff -ruNb a/src/mongo/db/matcher/schema/expression_internal_schema_min_properties.h b/src/mongo/db/matcher/schema/expression_internal_schema_min_properties.h
+--- a/src/mongo/db/matcher/schema/expression_internal_schema_min_properties.h	2024-02-13 02:46:45.000000000 -0600
++++ b/src/mongo/db/matcher/schema/expression_internal_schema_min_properties.h	2024-11-01 23:12:09.198008568 -0500
+@@ -64,7 +64,7 @@
+         if (getTag()) {
+             minProperties->setTag(getTag()->clone());
+         }
+-        return std::move(minProperties);
++        return minProperties;
+     }
+ };
+ }  // namespace mongo
+diff -ruNb a/src/mongo/db/matcher/schema/expression_internal_schema_object_match.cpp b/src/mongo/db/matcher/schema/expression_internal_schema_object_match.cpp
+--- a/src/mongo/db/matcher/schema/expression_internal_schema_object_match.cpp	2024-02-13 02:46:45.000000000 -0600
++++ b/src/mongo/db/matcher/schema/expression_internal_schema_object_match.cpp	2024-11-01 23:25:40.327271741 -0500
+@@ -80,7 +80,7 @@
+     if (getTag()) {
+         clone->setTag(getTag()->clone());
+     }
+-    return std::move(clone);
++    return clone;
+ }
+ 
+ MatchExpression::ExpressionOptimizerFunc InternalSchemaObjectMatchExpression::getOptimizer() const {
+diff -ruNb a/src/mongo/db/matcher/schema/expression_internal_schema_root_doc_eq.cpp b/src/mongo/db/matcher/schema/expression_internal_schema_root_doc_eq.cpp
+--- a/src/mongo/db/matcher/schema/expression_internal_schema_root_doc_eq.cpp	2024-02-13 02:46:45.000000000 -0600
++++ b/src/mongo/db/matcher/schema/expression_internal_schema_root_doc_eq.cpp	2024-11-01 22:40:16.529149473 -0500
+@@ -75,7 +75,7 @@
+     if (getTag()) {
+         clone->setTag(getTag()->clone());
+     }
+-    return std::move(clone);
++    return clone;
+ }
+ 
+ }  // namespace mongo
+diff -ruNb a/src/mongo/db/matcher/schema/expression_internal_schema_unique_items.cpp b/src/mongo/db/matcher/schema/expression_internal_schema_unique_items.cpp
+--- a/src/mongo/db/matcher/schema/expression_internal_schema_unique_items.cpp	2024-02-13 02:46:45.000000000 -0600
++++ b/src/mongo/db/matcher/schema/expression_internal_schema_unique_items.cpp	2024-11-01 23:24:27.767176207 -0500
+@@ -70,6 +70,6 @@
+     if (getTag()) {
+         clone->setTag(getTag()->clone());
+     }
+-    return std::move(clone);
++    return clone;
+ }
+ }  // namespace mongo
+diff -ruNb a/src/mongo/db/matcher/schema/expression_internal_schema_xor.h b/src/mongo/db/matcher/schema/expression_internal_schema_xor.h
+--- a/src/mongo/db/matcher/schema/expression_internal_schema_xor.h	2024-02-13 02:46:45.000000000 -0600
++++ b/src/mongo/db/matcher/schema/expression_internal_schema_xor.h	2024-11-01 23:13:09.111970655 -0500
+@@ -55,7 +55,7 @@
+         if (getTag()) {
+             xorCopy->setTag(getTag()->clone());
+         }
+-        return std::move(xorCopy);
++        return xorCopy;
+     }
+ 
+     void debugString(StringBuilder& debug, int indentationLevel = 0) const final;
+diff -ruNb a/src/mongo/db/matcher/schema/json_schema_parser.cpp b/src/mongo/db/matcher/schema/json_schema_parser.cpp
+--- a/src/mongo/db/matcher/schema/json_schema_parser.cpp	2024-02-13 02:46:45.000000000 -0600
++++ b/src/mongo/db/matcher/schema/json_schema_parser.cpp	2024-11-01 23:14:12.185956847 -0500
+@@ -151,7 +151,7 @@
+     orExpr->add(notExpr.release());
+     orExpr->add(restrictionExpr.release());
+ 
+-    return std::move(orExpr);
++    return orExpr;
+ }
+ 
+ StatusWith<std::unique_ptr<InternalSchemaTypeExpression>> parseType(
+@@ -431,7 +431,7 @@
+                               << "' cannot be an empty array"};
+     }
+ 
+-    return std::move(properties);
++    return properties;
+ }
+ 
+ /**
+diff -ruNb a/src/mongo/db/ops/parsed_update.cpp b/src/mongo/db/ops/parsed_update.cpp
+--- a/src/mongo/db/ops/parsed_update.cpp	2024-02-13 02:46:45.000000000 -0600
++++ b/src/mongo/db/ops/parsed_update.cpp	2024-11-01 23:41:38.874908075 -0500
+@@ -223,7 +223,7 @@
+         arrayFiltersOut[*fieldName] = std::move(finalArrayFilter);
+     }
+ 
+-    return std::move(arrayFiltersOut);
++    return arrayFiltersOut;
+ }
+ 
+ PlanExecutor::YieldPolicy ParsedUpdate::yieldPolicy() const {
 diff -ruNb a/src/mongo/db/pipeline/aggregation_request.h b/src/mongo/db/pipeline/aggregation_request.h
 --- a/src/mongo/db/pipeline/aggregation_request.h	2024-02-13 02:46:45.000000000 -0600
 +++ b/src/mongo/db/pipeline/aggregation_request.h	2024-11-01 02:01:43.775896097 -0500
@@ -235,6 +786,18 @@ diff -ruNb a/src/mongo/db/pipeline/aggregation_request.h b/src/mongo/db/pipeline
      }
  
  
+diff -ruNb a/src/mongo/db/pipeline/document_source_graph_lookup.cpp b/src/mongo/db/pipeline/document_source_graph_lookup.cpp
+--- a/src/mongo/db/pipeline/document_source_graph_lookup.cpp	2024-02-13 02:46:45.000000000 -0600
++++ b/src/mongo/db/pipeline/document_source_graph_lookup.cpp	2024-11-01 22:48:28.091183976 -0500
+@@ -601,7 +601,7 @@
+                                       maxDepth,
+                                       boost::none));
+ 
+-    return std::move(newSource);
++    return newSource;
+ }
+ 
+ void DocumentSourceGraphLookUp::addInvolvedCollections(
 diff -ruNb a/src/mongo/db/pipeline/document_source_group.cpp b/src/mongo/db/pipeline/document_source_group.cpp
 --- a/src/mongo/db/pipeline/document_source_group.cpp	2024-02-13 02:46:45.000000000 -0600
 +++ b/src/mongo/db/pipeline/document_source_group.cpp	2024-11-01 14:25:04.418131989 -0500
@@ -261,7 +824,7 @@ diff -ruNb a/src/mongo/db/pipeline/document_source_index_stats.cpp b/src/mongo/d
      }
 diff -ruNb a/src/mongo/db/query/canonical_query.cpp b/src/mongo/db/query/canonical_query.cpp
 --- a/src/mongo/db/query/canonical_query.cpp	2024-02-13 02:46:45.000000000 -0600
-+++ b/src/mongo/db/query/canonical_query.cpp	2024-11-01 14:20:49.372361693 -0500
++++ b/src/mongo/db/query/canonical_query.cpp	2024-11-01 22:42:01.919486668 -0500
 @@ -185,7 +185,7 @@
      if (!initStatus.isOK()) {
          return initStatus;
@@ -271,6 +834,411 @@ diff -ruNb a/src/mongo/db/query/canonical_query.cpp b/src/mongo/db/query/canonic
  }
  
  // static
+@@ -216,7 +216,7 @@
+     if (!initStatus.isOK()) {
+         return initStatus;
+     }
+-    return std::move(cq);
++    return cq;
+ }
+ 
+ Status CanonicalQuery::init(OperationContext* opCtx,
+diff -ruNb a/src/mongo/db/query/plan_executor_impl.cpp b/src/mongo/db/query/plan_executor_impl.cpp
+--- a/src/mongo/db/query/plan_executor_impl.cpp	2024-02-13 02:46:45.000000000 -0600
++++ b/src/mongo/db/query/plan_executor_impl.cpp	2024-11-01 23:47:28.263749063 -0500
+@@ -214,7 +214,7 @@
+         return status;
+     }
+ 
+-    return std::move(exec);
++    return exec;
+ }
+ 
+ PlanExecutorImpl::PlanExecutorImpl(OperationContext* opCtx,
+diff -ruNb a/src/mongo/db/query/planner_access.cpp b/src/mongo/db/query/planner_access.cpp
+--- a/src/mongo/db/query/planner_access.cpp	2024-02-13 02:46:45.000000000 -0600
++++ b/src/mongo/db/query/planner_access.cpp	2024-11-01 22:44:20.952028365 -0500
+@@ -257,7 +257,7 @@
+         }
+     }
+ 
+-    return std::move(csn);
++    return csn;
+ }
+ 
+ std::unique_ptr<QuerySolutionNode> QueryPlannerAccess::makeLeafNode(
+@@ -291,7 +291,7 @@
+             ret->addPointMeta = query.metadataDeps()[DocumentMetadataFields::kGeoNearPoint];
+             ret->addDistMeta = query.metadataDeps()[DocumentMetadataFields::kGeoNearDist];
+ 
+-            return std::move(ret);
++            return ret;
+         } else {
+             auto ret = std::make_unique<GeoNear2DSphereNode>(index);
+             ret->nq = &nearExpr->getData();
+@@ -299,7 +299,7 @@
+             ret->addPointMeta = query.metadataDeps()[DocumentMetadataFields::kGeoNearPoint];
+             ret->addDistMeta = query.metadataDeps()[DocumentMetadataFields::kGeoNearDist];
+ 
+-            return std::move(ret);
++            return ret;
+         }
+     } else if (MatchExpression::TEXT == expr->matchType()) {
+         // We must not keep the expression node around.
+@@ -318,7 +318,7 @@
+             ++(ret->numPrefixFields);
+         }
+ 
+-        return std::move(ret);
++        return ret;
+     } else {
+         // Note that indexKeyPattern.firstElement().fieldName() may not equal expr->path()
+         // because expr might be inside an array operator that provides a path prefix.
+@@ -1138,7 +1138,7 @@
+         fetch->filter = std::move(clonedRoot);
+         // Takes ownership of 'andResult'.
+         fetch->children.push_back(andResult.release());
+-        return std::move(fetch);
++        return fetch;
+     }
+ 
+     // If there are any nodes still attached to the AND, we can't answer them using the
+@@ -1305,7 +1305,7 @@
+                 auto fetch = std::make_unique<FetchNode>();
+                 fetch->filter = std::move(ownedRoot);
+                 fetch->children.push_back(soln.release());
+-                return std::move(fetch);
++                return fetch;
+             }
+         } else if (Indexability::arrayUsesIndexOnChildren(root)) {
+             std::unique_ptr<QuerySolutionNode> solution;
+@@ -1329,7 +1329,7 @@
+             auto fetch = std::make_unique<FetchNode>();
+             fetch->filter = std::move(ownedRoot);
+             fetch->children.push_back(solution.release());
+-            return std::move(fetch);
++            return fetch;
+         }
+     }
+ 
+diff -ruNb a/src/mongo/db/query/query_request.cpp b/src/mongo/db/query/query_request.cpp
+--- a/src/mongo/db/query/query_request.cpp	2024-02-13 02:46:45.000000000 -0600
++++ b/src/mongo/db/query/query_request.cpp	2024-11-01 23:01:35.507142704 -0500
+@@ -448,7 +448,7 @@
+         return validateStatus;
+     }
+ 
+-    return std::move(qr);
++    return qr;
+ }
+ 
+ StatusWith<unique_ptr<QueryRequest>> QueryRequest::makeFromFindCommand(NamespaceString nss,
+@@ -780,7 +780,7 @@
+         return status;
+     }
+ 
+-    return std::move(qr);
++    return qr;
+ }
+ 
+ StatusWith<unique_ptr<QueryRequest>> QueryRequest::fromLegacyQuery(NamespaceStringOrUUID nsOrUuid,
+@@ -796,7 +796,7 @@
+         return status;
+     }
+ 
+-    return std::move(qr);
++    return qr;
+ }
+ 
+ Status QueryRequest::init(int ntoskip,
+diff -ruNb a/src/mongo/db/repl/oplog_batcher.cpp b/src/mongo/db/repl/oplog_batcher.cpp
+--- a/src/mongo/db/repl/oplog_batcher.cpp	2024-02-13 02:46:45.000000000 -0600
++++ b/src/mongo/db/repl/oplog_batcher.cpp	2024-11-01 23:45:43.213081829 -0500
+@@ -195,7 +195,7 @@
+                     // reconfigs and shutdown to occur.
+                     sleepsecs(1);
+                 }
+-                return std::move(ops);
++                return ops;
+             }
+         }
+ 
+@@ -206,7 +206,7 @@
+             }
+ 
+             // Otherwise, apply what we have so far and come back for this entry.
+-            return std::move(ops);
++            return ops;
+         }
+ 
+         // Apply replication batch limits. Avoid returning an empty batch.
+@@ -214,7 +214,7 @@
+         auto opBytes = entry.getRawObjSizeBytes();
+         if (totalOps > 0) {
+             if (totalOps + opCount > batchLimits.ops || totalBytes + opBytes > batchLimits.bytes) {
+-                return std::move(ops);
++                return ops;
+             }
+         }
+ 
+@@ -222,7 +222,7 @@
+         if (totalOps > 0 && !batchLimits.forceBatchBoundaryAfter.isNull() &&
+             entry.getOpTime().getTimestamp() > batchLimits.forceBatchBoundaryAfter &&
+             ops.back().getOpTime().getTimestamp() <= batchLimits.forceBatchBoundaryAfter) {
+-            return std::move(ops);
++            return ops;
+         }
+ 
+         // Add op to buffer.
+@@ -231,7 +231,7 @@
+         ops.push_back(std::move(entry));
+         _consume(opCtx, _oplogBuffer);
+     }
+-    return std::move(ops);
++    return ops;
+ }
+ 
+ /**
+diff -ruNb a/src/mongo/db/repl/topology_coordinator.cpp b/src/mongo/db/repl/topology_coordinator.cpp
+--- a/src/mongo/db/repl/topology_coordinator.cpp	2024-02-13 02:46:45.000000000 -0600
++++ b/src/mongo/db/repl/topology_coordinator.cpp	2024-11-01 23:46:56.163544181 -0500
+@@ -1045,7 +1045,7 @@
+                         "retriesElapsed"_attr = alreadyElapsed);
+         }
+     } else {
+-        ReplSetHeartbeatResponse hbr = std::move(hbResponse.getValue());
++        ReplSetHeartbeatResponse hbr = hbResponse.getValue();
+         LOGV2_DEBUG(21808,
+                     3,
+                     "setUpValues: heartbeat response good for member _id:{memberId}",
+diff -ruNb a/src/mongo/db/s/balancer/migration_manager.cpp b/src/mongo/db/s/balancer/migration_manager.cpp
+--- a/src/mongo/db/s/balancer/migration_manager.cpp	2024-02-13 02:46:45.000000000 -0600
++++ b/src/mongo/db/s/balancer/migration_manager.cpp	2024-11-01 23:39:45.997573714 -0500
+@@ -608,7 +608,7 @@
+         return;
+     }
+ 
+-    _complete(lock, opCtx, itMigration, std::move(callbackHandleWithStatus.getStatus()));
++    _complete(lock, opCtx, itMigration, callbackHandleWithStatus.getStatus());
+ }
+ 
+ void MigrationManager::_complete(WithLock lock,
+diff -ruNb a/src/mongo/db/s/balancer/scoped_migration_request.cpp b/src/mongo/db/s/balancer/scoped_migration_request.cpp
+--- a/src/mongo/db/s/balancer/scoped_migration_request.cpp	2024-02-13 02:46:45.000000000 -0600
++++ b/src/mongo/db/s/balancer/scoped_migration_request.cpp	2024-11-01 23:40:24.144463544 -0500
+@@ -171,7 +171,7 @@
+             return result;
+         }
+ 
+-        return std::move(scopedMigrationRequest);
++        return scopedMigrationRequest;
+     }
+ 
+     return Status(ErrorCodes::OperationFailed,
+diff -ruNb a/src/mongo/db/s/range_deletion_util.cpp b/src/mongo/db/s/range_deletion_util.cpp
+--- a/src/mongo/db/s/range_deletion_util.cpp	2024-02-13 02:46:45.000000000 -0600
++++ b/src/mongo/db/s/range_deletion_util.cpp	2024-11-01 23:49:58.888053728 -0500
+@@ -579,7 +579,7 @@
+             }
+ 
+             try {
+-                removePersistentRangeDeletionTask(nss, std::move(*migrationId));
++                removePersistentRangeDeletionTask(nss, *migrationId);
+             } catch (const DBException& e) {
+                 LOGV2_ERROR(23770,
+                             "Failed to delete range deletion task for range {range} in collection "
+diff -ruNb a/src/mongo/db/s/sharding_state_recovery.cpp b/src/mongo/db/s/sharding_state_recovery.cpp
+--- a/src/mongo/db/s/sharding_state_recovery.cpp	2024-02-13 02:46:45.000000000 -0600
++++ b/src/mongo/db/s/sharding_state_recovery.cpp	2024-11-01 23:44:24.349254347 -0500
+@@ -228,7 +228,7 @@
+     if (!recoveryDocStatus.isOK())
+         return recoveryDocStatus.getStatus();
+ 
+-    const auto recoveryDoc = std::move(recoveryDocStatus.getValue());
++    const auto recoveryDoc = recoveryDocStatus.getValue();
+ 
+     LOGV2(22084,
+           "Sharding state recovery process found document {recoveryDoc}",
+diff -ruNb a/src/mongo/db/s/transaction_coordinator_util.cpp b/src/mongo/db/s/transaction_coordinator_util.cpp
+--- a/src/mongo/db/s/transaction_coordinator_util.cpp	2024-02-13 02:46:45.000000000 -0600
++++ b/src/mongo/db/s/transaction_coordinator_util.cpp	2024-11-01 23:49:10.314405495 -0500
+@@ -145,7 +145,7 @@
+             // Update with participant list.
+             TransactionCoordinatorDocument doc;
+             doc.setId(std::move(sessionInfo));
+-            doc.setParticipants(std::move(participantList));
++            doc.setParticipants(participantList);
+             entry.setU(doc.toBSON());
+ 
+             entry.setUpsert(true);
+@@ -355,7 +355,7 @@
+             entry.setU([&] {
+                 TransactionCoordinatorDocument doc;
+                 doc.setId(sessionInfo);
+-                doc.setParticipants(std::move(participantList));
++                doc.setParticipants(participantList);
+                 doc.setDecision(decision);
+                 return doc.toBSON();
+             }());
+diff -ruNb a/src/mongo/db/storage/wiredtiger/wiredtiger_kv_engine.cpp b/src/mongo/db/storage/wiredtiger/wiredtiger_kv_engine.cpp
+--- a/src/mongo/db/storage/wiredtiger/wiredtiger_kv_engine.cpp	2024-02-13 02:46:45.000000000 -0600
++++ b/src/mongo/db/storage/wiredtiger/wiredtiger_kv_engine.cpp	2024-11-01 23:43:32.445599489 -0500
+@@ -1568,7 +1568,7 @@
+         ret->checkSize(opCtx);
+     }
+ 
+-    return std::move(ret);
++    return ret;
+ }
+ 
+ string WiredTigerKVEngine::_uri(StringData ident) const {
+@@ -1667,7 +1667,7 @@
+     rs = std::make_unique<StandardWiredTigerRecordStore>(this, opCtx, params);
+     rs->postConstructorInit(opCtx);
+ 
+-    return std::move(rs);
++    return rs;
+ }
+ 
+ void WiredTigerKVEngine::alterIdentMetadata(OperationContext* opCtx,
+diff -ruNb a/src/mongo/db/update/update_array_node.cpp b/src/mongo/db/update/update_array_node.cpp
+--- a/src/mongo/db/update/update_array_node.cpp	2024-02-13 02:46:45.000000000 -0600
++++ b/src/mongo/db/update/update_array_node.cpp	2024-11-01 22:54:23.943348630 -0500
+@@ -44,7 +44,7 @@
+     mergedNode->_children = createUpdateNodeMapByMerging(
+         leftNode._children, rightNode._children, pathTaken, wrapFieldNameAsArrayFilterIdentifier);
+ 
+-    return std::move(mergedNode);
++    return mergedNode;
+ }
+ 
+ UpdateExecutor::ApplyResult UpdateArrayNode::apply(
+diff -ruNb a/src/mongo/db/update/update_object_node.cpp b/src/mongo/db/update/update_object_node.cpp
+--- a/src/mongo/db/update/update_object_node.cpp	2024-02-13 02:46:45.000000000 -0600
++++ b/src/mongo/db/update/update_object_node.cpp	2024-11-01 23:19:55.137439158 -0500
+@@ -352,7 +352,7 @@
+         leftNode._positionalChild.get(), rightNode._positionalChild.get(), pathTaken, "$");
+ 
+     // In Clang-3.9, we can just return mergedNode directly, but in 3.7, we need a std::move
+-    return std::move(mergedNode);
++    return mergedNode;
+ }
+ 
+ UpdateNode* UpdateObjectNode::getChild(const std::string& field) const {
+diff -ruNb a/src/mongo/db/views/view_catalog.cpp b/src/mongo/db/views/view_catalog.cpp
+--- a/src/mongo/db/views/view_catalog.cpp	2024-02-13 02:46:45.000000000 -0600
++++ b/src/mongo/db/views/view_catalog.cpp	2024-11-01 22:28:26.593544728 -0500
+@@ -377,7 +377,7 @@
+         return ex.toStatus();
+     }
+ 
+-    return std::move(involvedNamespaces);
++    return involvedNamespaces;
+ }
+ 
+ Status ViewCatalog::_validateCollation(WithLock lk,
+diff -ruNb a/src/mongo/executor/network_interface_tl.cpp b/src/mongo/executor/network_interface_tl.cpp
+--- a/src/mongo/executor/network_interface_tl.cpp	2024-02-13 02:46:45.000000000 -0600
++++ b/src/mongo/executor/network_interface_tl.cpp	2024-11-01 22:33:39.144544760 -0500
+@@ -709,7 +709,7 @@
+         if (cmdState->finishLine.arriveStrongly()) {
+             auto& reactor = cmdState->interface->_reactor;
+             if (reactor->onReactorThread()) {
+-                cmdState->fulfillFinalPromise(std::move(swConn.getStatus()));
++                cmdState->fulfillFinalPromise(swConn.getStatus());
+             } else {
+                 ExecutorFuture<void>(reactor, swConn.getStatus())
+                     .getAsync([this, anchor = cmdState->shared_from_this()](Status status) {
+@@ -941,7 +941,7 @@
+     std::shared_ptr<RequestState> requestState, StatusWith<RemoteCommandResponse> swResponse) {
+     RemoteCommandResponse response;
+     if (!swResponse.isOK()) {
+-        response = RemoteCommandResponse(std::move(swResponse.getStatus()));
++        response = RemoteCommandResponse(swResponse.getStatus());
+     } else {
+         response = std::move(swResponse.getValue());
+     }
+diff -ruNb a/src/mongo/s/catalog_cache.cpp b/src/mongo/s/catalog_cache.cpp
+--- a/src/mongo/s/catalog_cache.cpp	2024-02-13 02:46:45.000000000 -0600
++++ b/src/mongo/s/catalog_cache.cpp	2024-11-01 23:25:04.253883883 -0500
+@@ -240,7 +240,7 @@
+             return {swDbInfo.getStatus(), refreshActionTaken};
+         }
+ 
+-        const auto dbInfo = std::move(swDbInfo.getValue());
++        const auto dbInfo = swDbInfo.getValue();
+ 
+         stdx::unique_lock<Latch> ul(_mutex);
+ 
+diff -ruNb a/src/mongo/s/query/async_results_merger.cpp b/src/mongo/s/query/async_results_merger.cpp
+--- a/src/mongo/s/query/async_results_merger.cpp	2024-02-13 02:46:45.000000000 -0600
++++ b/src/mongo/s/query/async_results_merger.cpp	2024-11-01 22:59:43.695531049 -0500
+@@ -559,7 +559,7 @@
+                                     << cursorResponse.getCursorId());
+     }
+ 
+-    return std::move(cursorResponse);
++    return cursorResponse;
+ }
+ 
+ void AsyncResultsMerger::_updateRemoteMetadata(WithLock lk,
+diff -ruNb a/src/mongo/s/query/cluster_cursor_manager.cpp b/src/mongo/s/query/cluster_cursor_manager.cpp
+--- a/src/mongo/s/query/cluster_cursor_manager.cpp	2024-02-13 02:46:45.000000000 -0600
++++ b/src/mongo/s/query/cluster_cursor_manager.cpp	2024-11-01 23:03:32.622042382 -0500
+@@ -783,7 +783,7 @@
+ 
+     _log.push({LogEvent::Type::kDetachComplete, cursorId, boost::none, nss});
+ 
+-    return std::move(cursor);
++    return cursor;
+ }
+ 
+ void ClusterCursorManager::logCursorManagerInfo() const {
+diff -ruNb a/src/mongo/s/query/cluster_find.cpp b/src/mongo/s/query/cluster_find.cpp
+--- a/src/mongo/s/query/cluster_find.cpp	2024-02-13 02:46:45.000000000 -0600
++++ b/src/mongo/s/query/cluster_find.cpp	2024-11-01 22:27:30.886699798 -0500
+@@ -162,7 +162,7 @@
+     newQR->setUse44SortKeys(true);
+ 
+     invariant(newQR->validate());
+-    return std::move(newQR);
++    return newQR;
+ }
+ 
+ /**
+diff -ruNb a/src/mongo/s/shard_util.cpp b/src/mongo/s/shard_util.cpp
+--- a/src/mongo/s/shard_util.cpp	2024-02-13 02:46:45.000000000 -0600
++++ b/src/mongo/s/shard_util.cpp	2024-11-01 23:16:59.897655276 -0500
+@@ -74,7 +74,7 @@
+         Shard::RetryPolicy::kIdempotent);
+ 
+     if (!listDatabasesStatus.isOK()) {
+-        return std::move(listDatabasesStatus.getStatus());
++        return listDatabasesStatus.getStatus();
+     }
+ 
+     if (!listDatabasesStatus.getValue().commandStatus.isOK()) {
+@@ -144,7 +144,7 @@
+         while (it.more()) {
+             splitPoints.push_back(it.next().Obj().getOwned());
+         }
+-        return std::move(splitPoints);
++        return splitPoints;
+     }
+ 
+     const auto response = AutoSplitVectorResponse::parse(
+diff -ruNb a/src/mongo/shell/encrypted_dbclient_base.cpp b/src/mongo/shell/encrypted_dbclient_base.cpp
+--- a/src/mongo/shell/encrypted_dbclient_base.cpp	2024-02-13 02:46:45.000000000 -0600
++++ b/src/mongo/shell/encrypted_dbclient_base.cpp	2024-11-01 23:38:44.607220450 -0500
+@@ -775,7 +775,7 @@
+ 
+     std::unique_ptr<EncryptedDBClientBase> base =
+         std::make_unique<EncryptedDBClientBase>(std::move(conn), encryptionOptions, collection, cx);
+-    return std::move(base);
++    return base;
+ }
+ 
+ MONGO_INITIALIZER(setCallbacksForEncryptedDBClientBase)(InitializerContext*) {
 diff -ruNb a/src/mongo/shell/mongodbcr.cpp b/src/mongo/shell/mongodbcr.cpp
 --- a/src/mongo/shell/mongodbcr.cpp	2024-02-13 02:46:45.000000000 -0600
 +++ b/src/mongo/shell/mongodbcr.cpp	2024-11-01 02:12:23.499249848 -0500
@@ -304,3 +1272,27 @@ diff -ruNb a/src/mongo/util/decoration_registry.h b/src/mongo/util/decoration_re
      }
  
      size_t getDecorationBufferSizeBytes() const {
+diff -ruNb a/src/mongo/util/net/ssl_manager.cpp b/src/mongo/util/net/ssl_manager.cpp
+--- a/src/mongo/util/net/ssl_manager.cpp	2024-02-13 02:46:45.000000000 -0600
++++ b/src/mongo/util/net/ssl_manager.cpp	2024-11-01 23:33:28.048886144 -0500
+@@ -1097,7 +1097,7 @@
+         features.emplace_back(swDERInt.getValue());
+     }
+ 
+-    return std::move(features);
++    return features;
+ }
+ 
+ std::string removeFQDNRoot(std::string name) {
+diff -ruNb a/src/mongo/util/net/ssl_manager_openssl.cpp b/src/mongo/util/net/ssl_manager_openssl.cpp
+--- a/src/mongo/util/net/ssl_manager_openssl.cpp	2024-02-13 02:46:45.000000000 -0600
++++ b/src/mongo/util/net/ssl_manager_openssl.cpp	2024-11-01 22:45:52.582483373 -0500
+@@ -717,7 +717,7 @@
+                 return getSSLFailure("Could not retrieve OCSP Response.");
+             }
+ 
+-            return std::move(response);
++            return response;
+         });
+ }
+ 

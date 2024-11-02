@@ -1,6 +1,6 @@
 diff -ruNb a/SConstruct b/SConstruct
 --- a/SConstruct	2024-02-13 02:46:45.000000000 -0600
-+++ b/SConstruct	2024-11-01 17:33:44.353421137 -0500
++++ b/SConstruct	2024-11-02 00:13:54.698470853 -0500
 @@ -2197,7 +2197,6 @@
      env.Append( CCFLAGS=["-fno-omit-frame-pointer",
                           "-fno-strict-aliasing",
@@ -31,3 +31,12 @@ diff -ruNb a/SConstruct b/SConstruct
          try:
              env['ENV'][key] = os.environ[key]
          except KeyError:
+@@ -2647,7 +2650,7 @@
+ 
+         # This warning was added in clang-5 and incorrectly flags our implementation of
+         # exceptionToStatus(). See https://bugs.llvm.org/show_bug.cgi?id=34804
+-        AddToCCFLAGSIfSupported(myenv, "-Wno-exceptions")
++        AddToCXXFLAGSIfSupported(myenv, "-Wno-exceptions")
+ 
+         # Enable sized deallocation support.
+         AddToCXXFLAGSIfSupported(myenv, '-fsized-deallocation')

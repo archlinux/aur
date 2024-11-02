@@ -1,7 +1,7 @@
 pkgbase = mongodb44
 	pkgdesc = A high-performance, open source, schema-free document-oriented database (last version to support non-avx CPUs)
 	pkgver = 4.4.29
-	pkgrel = 3
+	pkgrel = 4
 	url = https://www.mongodb.com/
 	arch = x86_64
 	arch = aarch64
@@ -51,7 +51,7 @@ pkgbase = mongodb44
 	sha256sums = 7bfeadf2fb7e13bd93c4515faada070410ddd8e276cc947b5b2b2292539051b7
 	sha256sums = 7cd27b2ce15cc6efdce07ef934ed3d9356025ebade4856a9d0a75a80f7c08905
 	sha256sums = ef2a0c1516175bf73050884cfdfa5d87e5e065738c51bbd50302b16924e11bf1
-	sha256sums = 615ae988bc80a27cc16d06672dbbf62ee88827aa0177c2abd814d4bc25bb9385
-	sha256sums = ab580ca52f14b0452ccb93b4974a6cd236b7e29f6f262953fa274b09259c8245
+	sha256sums = f389b2cc623d5be6d3fff5472b3edce68c23de3a67f9ef9a1dd3b92eb4827778
+	sha256sums = d53043ccf3922299458d52af9c942eed19df5435263ce490da4e90fbfb2a2153
 
 pkgname = mongodb44
