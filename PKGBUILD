@@ -1,7 +1,7 @@
 # Maintainer: Astro Benzene <universebenzene at sina dot com>
 _pyname=sncosmo
 pkgname=python-${_pyname}-doc
-pkgver=2.11.1
+pkgver=2.11.2
 pkgrel=1
 pkgdesc="Documentation for SNCosmo"
 arch=('any')
@@ -19,7 +19,7 @@ source=("https://github.com/sncosmo/sncosmo/archive/v${pkgver}.tar.gz"
         "https://c3.lbl.gov/nugent/templates/sn1a_flux.v1.2.dat.gz"
         "https://c3.lbl.gov/nugent/templates/sn2p_flux.v1.2.dat.gz"
         'doc-use-local-data.patch')
-md5sums=('1361aa6bca5b9301d22ad0d454b40b2d'
+md5sums=('9f9cbb3cd4abd19643afa629021dfc0d'
          '86a80d4b02030abbeb9941131053082a'
          '121927c70484bf2f11298465210fc1a1'
          'f277218e6347977f675dada2ad5859ee')
