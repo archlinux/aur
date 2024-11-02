@@ -1,7 +1,7 @@
 # Maintainer: chris.imx <chris.imx.aur@online.de>
 
 pkgname=findmydeviceserver
-pkgver=0.6.0
+pkgver=0.7.0
 pkgrel=1
 pkgdesc='Official server for the android app FindMyDevice (FMD) written in Go'
 arch=('x86_64' 'armv7h' 'aarch64')
@@ -21,7 +21,7 @@ source=(git+https://gitlab.com/Nulide/findmydeviceserver.git#tag=v${pkgver}
 	findmydeviceserver.service
 	findmydeviceserver.sysusers
 	findmydeviceserver.tmpfiles)
-sha256sums=('8c882d126ab4ebfaab67aa539875ddc0f255c0c0032f53e2514d2b3d4763ced5'
+sha256sums=('e0228c39b7b4517235a4694d188023f50cdccc05b4e38fdb7bbd1a62ad150c84'
             'f2a99e8d8c80152e91de085b4bb6035fa644ff08556d4bf86f38fa94c796ddcb'
             'e25b578bf128c75372669801a5cd7197cc9f3f4ceedc0819dbd30a2053f53e7b'
             'd3f754171a12f8559de28b9c08699dd96f741abeb0f0e44dff9a912e9b381387'
