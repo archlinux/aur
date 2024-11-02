@@ -1,25 +1,45 @@
+# Maintainer: Michał Wojdyła < micwoj9292 at gmail dot com >
 # Contributor: DDoSolitary <DDoSolitary@gmail.com>
 # Contributor: Carsten Feuls <archlinux@carstenfeuls.de>
 
 _gemname=travis
 pkgname=ruby-$_gemname
 pkgver=1.14.0
-pkgrel=1
+pkgrel=2
 pkgdesc='CLI and Ruby client library for Travis CI'
 arch=(any)
 url='https://github.com/travis-ci/travis.rb'
 license=(MIT)
 depends=(ruby-faraday ruby-faraday-rack ruby-highline ruby-json_pure ruby-launchy ruby-pusher-client ruby-rack-test ruby-travis-gh)
-makedepends=('ruby-rdoc')
+makedepends=('ruby-rdoc' 'ruby-rake' 'ruby-bundler')
 options=(!emptydirs)
-source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
-noextract=($_gemname-$pkgver.gem)
-sha256sums=('915df827466ea17f8c6fcc06a661a7f150d395d1c5b2bbdd62a4e129f3f9e884')
+source=("${url}/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
+sha256sums=('6fe418bf33b025a106dd99762aa8ebc595b4b549d4087c6921d5565b741f7361')
 
+prepare() {
+  cd "travis.rb-${pkgver}"
+
+  # we built based on a tar archive, not a git repo
+  sed --in-place 's/git ls-files/find/' "${_gemname}.gemspec"
+
+  # update gemspec/Gemfile to allow newer version of the dependencies
+  sed --in-place --regexp-extended 's|~>|>=|g' "${_gemname}.gemspec"
+}
+
+build() {
+  cd "travis.rb-${pkgver}"
+
+  rake build
+}
 package() {
-  local _gemdir="$(ruby -e'puts Gem.default_dir')"
-  gem install --ignore-dependencies --no-user-install -i "$pkgdir/$_gemdir" -n "$pkgdir/usr/bin" $_gemname-$pkgver.gem
-  rm "$pkgdir/$_gemdir/cache/$_gemname-$pkgver.gem"
-  find "$pkgdir" -name '*.gemspec' -type f -exec sed -i 's/\(launchy.*\), "< 2.5.0"/\1/' '{}' \;
-  install -D -m644 "$pkgdir/$_gemdir/gems/$_gemname-$pkgver/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  cd "travis.rb-${pkgver}"
+
+  local _gemdir="$(gem env gemdir)"
+
+  gem install --ignore-dependencies --no-user-install --install-dir "${pkgdir}/${_gemdir}" --bindir "${pkgdir}/usr/bin" "pkg/${_gemname}-${pkgver}.gem"
+
+  rm "${pkgdir}/${_gemdir}/cache/${_gemname}-${pkgver}.gem"
+
+  install -Dm 644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm 644 README.md --target-directory "${pkgdir}/usr/share/doc/${pkgname}"
 }

@@ -1,11 +1,13 @@
 pkgbase = ruby-travis
 	pkgdesc = CLI and Ruby client library for Travis CI
 	pkgver = 1.14.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/travis-ci/travis.rb
 	arch = any
 	license = MIT
 	makedepends = ruby-rdoc
+	makedepends = ruby-rake
+	makedepends = ruby-bundler
 	depends = ruby-faraday
 	depends = ruby-faraday-rack
 	depends = ruby-highline
@@ -14,9 +16,8 @@ pkgbase = ruby-travis
 	depends = ruby-pusher-client
 	depends = ruby-rack-test
 	depends = ruby-travis-gh
-	noextract = travis-1.14.0.gem
 	options = !emptydirs
-	source = https://rubygems.org/downloads/travis-1.14.0.gem
-	sha256sums = 915df827466ea17f8c6fcc06a661a7f150d395d1c5b2bbdd62a4e129f3f9e884
+	source = https://github.com/travis-ci/travis.rb/archive/v1.14.0/ruby-travis-1.14.0.tar.gz
+	sha256sums = 6fe418bf33b025a106dd99762aa8ebc595b4b549d4087c6921d5565b741f7361
 
 pkgname = ruby-travis
