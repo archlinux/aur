@@ -1,6 +1,6 @@
 pkgbase = libwandio
 	pkgdesc = software library written in C that provides an API for transparently reading from and writing to files using a variety of supported compression methods
-	pkgver = 4.2.4
+	pkgver = 4.2.6
 	pkgrel = 1
 	url = http://research.wand.net.nz/software/libwandio.php
 	arch = i686
@@ -8,8 +8,7 @@ pkgbase = libwandio
 	license = LGPL3
 	depends = zlib
 	depends = curl>=7.18.0
-	provides = libwandio
-	source = https://github.com/LibtraceTeam/wandio/archive/refs/tags/4.2.4-1.tar.gz
-	sha256sums = 6e1f36edfc3b814d62f91b09cee906e28cd811881da51544acf2ace5e6e5b13f
+	source = https://github.com/LibtraceTeam/wandio/archive/refs/tags/4.2.6-1.tar.gz
+	sha256sums = f035d4d6beadf7a7e5619fb73db5a84d338008b5f4d6b1b8843619547248ec73
 
 pkgname = libwandio
