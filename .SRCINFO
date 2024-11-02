@@ -1,0 +1,13 @@
+pkgbase = python-abi3info
+	pkgdesc = A library for abi3 and other CPython API information
+	pkgver = 2024.10.26
+	pkgrel = 1
+	url = https://pypi.org/project/abi3info/
+	arch = any
+	license = MIT
+	makedepends = python-flit-core
+	depends = python
+	source = https://github.com/woodruffw/abi3info/archive/refs/tags/v2024.10.26.tar.gz
+	sha256sums = e81920cd94077904bc505a6e28fc5dfd97994e52de2ffedbcdc28c16e63a732e
+
+pkgname = python-abi3info
