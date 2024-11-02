@@ -5,7 +5,7 @@
 # Maintainer: Matheus <matheusgwdl@protonmail.com>
 # Contributor: Matheus <matheusgwdl@protonmail.com>
 
-declare -r _pkgname="FP16"
+readonly _pkgname="FP16"
 declare -r _tag="98b0a46bce017382a6351a19577ec43a715b6835"
 
 pkgname="fp16"
@@ -17,21 +17,21 @@ url="https://github.com/Maratyszcza/${_pkgname}"
 license=("MIT")
 makedepends=("cmake" "git")
 checkdepends=("gtest")
-source=("${pkgname}::git+${url}.git#tag=${_tag}")
+source=("${_pkgname}::git+${url}.git#tag=${_tag}")
 sha512sums=("SKIP")
 
 _compile()
 {
-    cmake -B "${srcdir}"/"${pkgname}"/build/ \
+    cmake -B "${srcdir}"/"${_pkgname}"/build/ \
         -D CMAKE_BUILD_TYPE=None \
         -D CMAKE_INSTALL_PREFIX=/usr/ \
         -D FP16_BUILD_BENCHMARKS=OFF \
         -D FP16_BUILD_COMPARATIVE_BENCHMARKS=OFF \
         -D FP16_BUILD_TESTS="$1" \
         -D FP16_INSTALL_LIBRARY=ON \
-        -S "${srcdir}"/"${pkgname}"/ \
+        -S "${srcdir}"/"${_pkgname}"/ \
         -Wno-dev
-    cmake --build "${srcdir}"/"${pkgname}"/build/
+    cmake --build "${srcdir}"/"${_pkgname}"/build/
 }
 
 build()
@@ -44,7 +44,7 @@ build()
 check()
 {
     _compile "ON"
-    ctest --output-on-failure --test-dir "${srcdir}"/"${pkgname}"/build/
+    ctest --output-on-failure --test-dir "${srcdir}"/"${_pkgname}"/build/
     _compile "OFF"
 }
 
@@ -55,11 +55,11 @@ package()
     mkdir -p "${pkgdir}"/usr/share/licenses/"${pkgname}"/
 
     # Install the software.
-    DESTDIR="${pkgdir}"/ cmake --install "${srcdir}"/"${pkgname}"/build/
+    DESTDIR="${pkgdir}"/ cmake --install "${srcdir}"/"${_pkgname}"/build/
 
     # Install the documentation.
-    install -Dm644 "${srcdir}"/"${pkgname}"/README.md "${pkgdir}"/usr/share/doc/"${pkgname}"/
+    install -Dm644 "${srcdir}"/"${_pkgname}"/README.md "${pkgdir}"/usr/share/doc/"${pkgname}"/
 
     # Install the license.
-    install -Dm644 "${srcdir}"/"${pkgname}"/LICENSE "${pkgdir}"/usr/share/licenses/"${pkgname}"/
+    install -Dm644 "${srcdir}"/"${_pkgname}"/LICENSE "${pkgdir}"/usr/share/licenses/"${pkgname}"/
 }
