@@ -20,6 +20,7 @@ pkgbase = prologs
 	optdepends = dogelog-py
 	optdepends = dogelog-node
 	optdepends = dogelog-java
+	optdepends = xsb-prolog
 	source = git+https://github.com/hurufu/prolog-all.git
 	sha256sums = SKIP
 

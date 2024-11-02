@@ -22,6 +22,7 @@ optdepends=(
     dogelog-py
     dogelog-node
     dogelog-java
+    xsb-prolog
 )
 source=(git+https://github.com/hurufu/prolog-all.git)
 sha256sums=(SKIP)
