@@ -1,0 +1,5 @@
+[artisan-roaster-scope]
+source='github'
+github="artisan-roaster-scope/artisan"
+use_latest_release=true
+prefix='v'
