@@ -1,30 +1,25 @@
 # Maintainer: Clint Valentine <valentine.clint@gmail.com>
 
-_name=adjustText
+_name=adjusttext
 pkgname=python-adjusttext
-pkgver=0.8
+pkgver=1.3.0
 pkgrel=1
 pkgdesc='Iteratively adjust text position in matplotlib plots to minimize overlaps'
 arch=(any)
 url="https://github.com/Phlya/$_name"
 license=(MIT)
-depends=(python python-matplotlib python-numpy)
-makedepends=(python-setuptools)
-options=(!emptydirs)
-source=(
-	"$pkgname-$pkgver.tar.gz::https://pypi.io/packages/source/${_name:0:1}/$_name/$_name-$pkgver.tar.gz"
-	"https://raw.githubusercontent.com/Phlya/$_name/$pkgver/LICENSE"
-)
-sha256sums=('bb0682bb53abb626d6afc9c1db108ccb67f2c35ddc8d20ac6a802c756c07ee17'
-            '443687f058d5f541952ab9bcd6f836d9843ac13b93b8a6b1097eb0832d2314fa')
+depends=(python python-numpy python-matplotlib python-scipy)
+makedepends=(python-setuptools python-build python-installer python-wheel)
+source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
+sha256sums=('4ab75cd4453af4828876ac3e964f2c49be642ea834f0c1f7449558d5f12cbca1')
 
 build() {
-	cd "$srcdir/$_name-$pkgver"
-	python setup.py build
+	cd "$_name-$pkgver"
+	python -m build --wheel --no-isolation
 }
 
 package() {
+	cd "$_name-$pkgver"
+	python -m installer --destdir="$pkgdir" dist/*.whl
 	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-	cd "$srcdir/$_name-$pkgver"
-	python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
 }
