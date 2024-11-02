@@ -1,0 +1,23 @@
+pkgbase = lq-bin
+	pkgdesc = jq compatible yq implementation in rust
+	pkgver = 0.12.2
+	pkgrel = 1
+	url = https://github.com/clux/lq
+	arch = x86_64
+	arch = aarch64
+	license = Apache
+	depends = glibc
+	provides = lq
+	conflicts = lq
+	conflicts = whyq
+	conflicts = whyq-bin
+	source = LICENSE-0.12.2::https://raw.githubusercontent.com/clux/lq/0.12.2/LICENSE
+	source = README-0.12.2.md::https://raw.githubusercontent.com/clux/lq/0.12.2/README.md
+	sha256sums = c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4
+	sha256sums = 8dbfe3e2ca4c9ce47700e15473d6c4129db56d297b595a38b03f398ce3c8f6f1
+	source_x86_64 = https://github.com/clux/lq/releases/download/0.12.2/lq-x86_64-unknown-linux-gnu.tar.xz
+	sha256sums_x86_64 = e174c973a1d713159bfa0e14d7f82d0149499b90bc3ddeda65862ff35ffb7de1
+	source_aarch64 = https://github.com/clux/lq/releases/download/0.12.2/lq-aarch64-unknown-linux-gnu.tar.xz
+	sha256sums_aarch64 = a342b31d9bce4e42b00475e11ad89076fb0645d298357e4a3f8996bd39a15a7c
+
+pkgname = lq-bin
