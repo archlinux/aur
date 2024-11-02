@@ -1,7 +1,7 @@
 pkgbase = nemiver
 	pkgdesc = C/C++ debugger for GNOME
 	pkgver = 0.9.6
-	pkgrel = 9
+	pkgrel = 10
 	url = https://projects.gnome.org/nemiver
 	arch = x86_64
 	license = GPL
@@ -10,8 +10,6 @@ pkgbase = nemiver
 	makedepends = intltool
 	makedepends = yelp-tools
 	depends = gdb
-	depends = gdlmm
-	depends = ghex
 	depends = gsettings-desktop-schemas
 	depends = gtksourceviewmm
 	depends = libgtop

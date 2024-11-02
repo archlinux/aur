@@ -1,15 +1,15 @@
-# Maintainer: Alexander F. Rødseth <xyproto@archlinux.org>
+# Contributor: Alexander F. Rødseth <xyproto@archlinux.org>
 # Contributor: loqs
 # Contributor: jordz <jordz@archlinux.us>
 
 pkgname=nemiver
 pkgver=0.9.6
-pkgrel=9
+pkgrel=10
 pkgdesc='C/C++ debugger for GNOME'
 arch=(x86_64)
 license=(GPL)
 url='https://projects.gnome.org/nemiver'
-depends=(gdb gdlmm ghex gsettings-desktop-schemas gtksourceviewmm libgtop vte3)
+depends=(gdb gsettings-desktop-schemas gtksourceviewmm libgtop vte3)
 makedepends=(boost gnome-common intltool yelp-tools)
 source=("https://download.gnome.org/sources/nemiver/${pkgver%.*}/nemiver-$pkgver.tar.xz"
          0001-Fix-compiliation-warnings-errors.patch
@@ -36,7 +36,9 @@ build() {
     --localstatedir=/var \
     --prefix=/usr \
     --sysconfdir=/etc \
-    --with-boost
+    --with-boost \
+    --disable-dynamiclayout \
+    --disable-memoryview
   sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
   make
 }
