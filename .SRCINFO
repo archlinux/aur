@@ -6,6 +6,7 @@ pkgbase = ezame
 	arch = i686
 	arch = x86_64
 	license = GPL3
+	makedepends = python-setuptools
 	depends = python
 	depends = python-gobject
 	depends = desktop-file-utils
@@ -13,4 +14,3 @@ pkgbase = ezame
 	md5sums = 449739307314763bd349c8ab50be3fcf
 
 pkgname = ezame
-
