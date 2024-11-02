@@ -32,3 +32,5 @@ package() {
     # Install license
     install -Dm644 "LICENSE.md" "${pkgdir}/usr/share/licenses/${_altpkgname}/LICENSE.md"
 }
+
+# vim: ts=2 sw=2 et:
