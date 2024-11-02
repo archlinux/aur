@@ -1,7 +1,7 @@
 # Maintainer: fubarhouse
 pkgname=pygmy
 provides=(pygmy)
-pkgver=0.8.0
+pkgver=0.13.1
 pkgrel=1
 pkgdesc="Amazee.io's local docker development tool"
 arch=('x86_64')
