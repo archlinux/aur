@@ -1,6 +1,6 @@
 pkgbase = gepetto-viewer-corba
 	pkgdesc = Graphical Interface for Pinocchio and HPP.
-	pkgver = 5.8.0
+	pkgver = 5.8.1
 	pkgrel = 1
 	url = https://github.com/gepetto/gepetto-viewer-corba
 	arch = i686
@@ -18,10 +18,10 @@ pkgbase = gepetto-viewer-corba
 	depends = glibc
 	depends = qt5-base
 	depends = gcc-libs
-	source = https://github.com/gepetto/gepetto-viewer-corba/releases/download/v5.8.0/gepetto-viewer-corba-5.8.0.tar.gz
-	source = https://github.com/gepetto/gepetto-viewer-corba/releases/download/v5.8.0/gepetto-viewer-corba-5.8.0.tar.gz.sig
+	source = https://github.com/gepetto/gepetto-viewer-corba/releases/download/v5.8.1/gepetto-viewer-corba-5.8.1.tar.gz
+	source = https://github.com/gepetto/gepetto-viewer-corba/releases/download/v5.8.1/gepetto-viewer-corba-5.8.1.tar.gz.sig
 	validpgpkeys = 9B1A79065D2F2B806C8A5A1C7D2ACDAF4653CF28
-	sha256sums = 5672d10833eb5ff26f5b59af34e0303ed0648377049380f66f2386d0e89c76fe
+	sha256sums = 308fc881740e8bfd363c1e162b4624f1859c289f7270721b5b908afcfd1eaf80
 	sha256sums = SKIP
 
 pkgname = gepetto-viewer-corba
