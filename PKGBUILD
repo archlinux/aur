@@ -22,6 +22,8 @@ sha512sums=("SKIP")
 
 _compile()
 {
+    # -D GOOGLETEST_SOURCE_DIR=/usr/src/googletest/ \
+    # -D GOOGLETEST_VERSION="$(pacman -Q gtest | cut -d " " -f 2 | cut -d "-" -f 2 || true)" \
     cmake -B "${srcdir}"/"${_pkgname}"/build/ \
         -D CMAKE_BUILD_TYPE=None \
         -D CMAKE_INSTALL_PREFIX=/usr/ \
