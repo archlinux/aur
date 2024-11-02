@@ -1,0 +1,13 @@
+pkgbase = luckey-games-meta
+	pkgdesc = Meta package for Luckey games
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://luckey.games/
+	arch = any
+	license = None
+	depends = amazingurho
+	depends = hexon
+	depends = opensaucer
+	depends = tux
+
+pkgname = luckey-games-meta
