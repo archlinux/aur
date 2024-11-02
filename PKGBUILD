@@ -6,7 +6,7 @@
 pkgbase=nvidia-510xx-utils
 pkgname=('nvidia-510xx-utils' 'opencl-510xx-nvidia' 'nvidia-510xx-dkms')
 pkgver=510.108.03
-pkgrel=2
+pkgrel=3
 arch=('x86_64')
 url="http://www.nvidia.com/"
 license=('custom')
@@ -24,7 +24,8 @@ source=('nvidia-drm-outputclass.conf'
         'kernel-6.4.patch'
         'kernel-6.5.patch'
         'kernel-6.8.patch'
-        'kernel-6.10.patch')
+        'kernel-6.10.patch'
+        'kernel-6.12.patch')
 sha512sums=('de7116c09f282a27920a1382df84aa86f559e537664bb30689605177ce37dc5067748acf9afd66a3269a6e323461356592fdfc624c86523bf105ff8fe47d3770'
             '4b3ad73f5076ba90fe0b3a2e712ac9cde76f469cd8070280f960c3ce7dc502d1927f525ae18d008075c8f08ea432f7be0a6c3a7a6b49c361126dcf42f97ec499'
             'a0ceb0a6c240cf97b21a2e46c5c212250d3ee24fecef16aca3dffb04b8350c445b9f4398274abccdb745dd0ba5132a17942c9508ce165d4f97f41ece02b0b989'
@@ -37,7 +38,8 @@ sha512sums=('de7116c09f282a27920a1382df84aa86f559e537664bb30689605177ce37dc50677
             'd5f80a7deb76ada84e89ff1ca26772546505f11322bfe3f6f17a043f17bcaace3512096af8d4156f725cf7d87dfb2218a23a9edf0f326834c85144bebb7ec3c6'
             'c71753a23cc7bb1b8750cc24c64f1a31bf50680af555406eaa5a5b19fde4933cdf9fbc6a0d9d46030feaf8b5fa42267ad509b0f8b478ae2dabb3f4be23d85be2'
             'd4faf1807de57265407fd6dba9734301b8281c942324851792047708a50442a1feb76fd2ae48bc8e162210ee72e0f13ed0373ed33a7637a382703d6b96fe54de'
-            '8aa7a6ba05d6dd2a4d504cb9eeecdce0ac34be8cd648400739332ae8b8aa9444cceaaa598cb75e431efc43eaf471422cbf5e49c8dc77adbfe23529bc8feb803b')
+            '8aa7a6ba05d6dd2a4d504cb9eeecdce0ac34be8cd648400739332ae8b8aa9444cceaaa598cb75e431efc43eaf471422cbf5e49c8dc77adbfe23529bc8feb803b'
+            '9be4f085277f551a4619309644a5ab50d9c302b565c7071e6d91475b4fdb13c90470af67f80a3fde840e4ebb9dfbca10f97e723731b8dcbdad08119ae61d152a')
 
 
 create_links() {
@@ -67,6 +69,7 @@ prepare() {
     patch -p1 -i "$srcdir/kernel-6.5.patch"
     patch -p1 -i "$srcdir/kernel-6.8.patch"
     patch -p1 -i "$srcdir/kernel-6.10.patch"
+    patch -p1 -i "$srcdir/kernel-6.12.patch"
 
     sed -i "s/__VERSION_STRING/${pkgver}/" dkms.conf
     sed -i 's/__JOBS/`nproc`/' dkms.conf
