@@ -1,15 +1,15 @@
 pkgbase = sononym
 	pkgdesc = Audio sample manager and categorizer
 	pkgver = 1.5.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.sononym.net
 	arch = x86_64
 	license = custom:sononym
 	source = https://www.sononym.net/download/sononym-1.5.6.tar.bz2
 	source = logo.svg
 	source = sononym.desktop
-	sha256sums = 08f08433c1bd2d26be15fcd5d31a7bac06e05f58a2f3c6f8847b135537bdbc23
-	sha256sums = SKIP
-	sha256sums = SKIP
+	sha256sums = 6f883b158e89c9005ca376dfd717be4606b4a0150ef6c816fc3cb4da3298ee4c
+	sha256sums = a3e8e1f684398ab4fa8d209bee8b0d652fdd0a5f3553276ad1d0664f1a23960e
+	sha256sums = 92685f95c29a0b10a6ece3328b28efc6bfbd6b46fbfa0790c27915b936922249
 
 pkgname = sononym
