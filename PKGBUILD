@@ -3,14 +3,13 @@
 pkgname=activate-linux
 pkgver=1.1.0
 _pkg="$pkgname-$pkgver"
-pkgrel=2
+pkgrel=3
 pkgdesc="The \"Activate Windows\" watermark ported to Linux with Xlib and cairo in C"
 arch=("x86_64")
 url='https://github.com/MrGlockenspiel/activate-linux'
 makedepends=('make' 'clang' 'pkgconf')
 depends=('cairo' 'libx11' 'libxi' 'libxt' 'libxrandr' 'libxfixes' 'libxinerama' 'wayland' 'wayland-protocols')
 optdepends=('libconfig')
-conflicts=('activate-linux-git')
 license=('GPL3')
 options=('!buildflags' '!makeflags')
 sha512sums=('629e2bba62f65db1351f0ae94e604b401c39021aaf429d26d31c3f984d05bdf06374797bec37416f119516d6d226599be04f68097659d19e05bf2dfb1971aba4')
