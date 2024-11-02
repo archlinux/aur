@@ -15,7 +15,7 @@ sha512sums=('SKIP')
 
 pkgver() {
   cd "${cleanname}-git"
-  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build(){
