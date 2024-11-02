@@ -1,6 +1,7 @@
-# Maintainer: Paul <paul@mrarm.io>
+# Maintainer: Ash <xash at riseup d0t net>
+# Former Maintainer: Paul <paul@mrarm.io>
 pkgname=mcpelauncher-msa-git
-pkgver=v0.1.beta.1.r10.g323bb82
+pkgver=v0.9.0.r1.gcfcebaa
 pkgrel=1
 pkgdesc="Microsoft Account authentication daemon for mcpelauncher"
 arch=('x86_64' 'i686')
@@ -11,17 +12,17 @@ depends=('curl' 'openssl')
 provides=('mcpelauncher-msa')
 conflicts=('mcpelauncher-msa')
 source=(
-  'git://github.com/minecraft-linux/msa-manifest.git'
-  'git://github.com/minecraft-linux/logger.git'
-  'git://github.com/minecraft-linux/base64.git'
-  'git://github.com/minecraft-linux/file-util.git'
-  'git://github.com/minecraft-linux/arg-parser.git'
-  'git://github.com/minecraft-linux/rapidxml.git'
-  'git://github.com/MCMrARM/simple-ipc.git'
-  'git://github.com/minecraft-linux/daemon-utils.git'
-  'git://github.com/minecraft-linux/msa.git'
-  'git://github.com/minecraft-linux/msa-daemon.git'
-  'git://github.com/minecraft-linux/msa-daemon-client.git'
+  'git+https://github.com/minecraft-linux/msa-manifest.git'
+  'git+https://github.com/minecraft-linux/logger.git'
+  'git+https://github.com/minecraft-linux/base64.git'
+  'git+https://github.com/minecraft-linux/file-util.git'
+  'git+https://github.com/minecraft-linux/arg-parser.git'
+  'git+https://github.com/minecraft-linux/rapidxml.git'
+  'git+https://github.com/MCMrARM/simple-ipc.git'
+  'git+https://github.com/minecraft-linux/daemon-utils.git'
+  'git+https://github.com/minecraft-linux/msa.git'
+  'git+https://github.com/minecraft-linux/msa-daemon.git'
+  'git+https://github.com/minecraft-linux/msa-daemon-client.git'
   'nlohmann_json_license.txt::https://raw.githubusercontent.com/nlohmann/json/develop/LICENSE.MIT'
 )
 md5sums=(
