@@ -1,0 +1,26 @@
+pkgbase = rio-git
+	pkgdesc = A hardware-accelerated GPU terminal emulator powered by WebGPU (git)
+	pkgver = 0.1.17.r154.g7855417a0
+	pkgrel = 1
+	url = https://github.com/raphamorim/rio
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = cargo
+	makedepends = cmake
+	makedepends = desktop-file-utils
+	makedepends = libxcb
+	makedepends = libxkbcommon
+	makedepends = python
+	depends = gcc-libs
+	depends = fontconfig
+	depends = freetype2
+	depends = glibc
+	depends = hicolor-icon-theme
+	provides = rio
+	conflicts = rio
+	options = !lto
+	source = rio-git-0.1.17.r154.g7855417a0::git+https://github.com/raphamorim/rio
+	sha512sums = SKIP
+
+pkgname = rio-git
