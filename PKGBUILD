@@ -5,11 +5,11 @@
 
 
 pkgname=minetest-game-cdb
-pkgver=20240901
+pkgver=20241017
 pkgrel=1
-pkgdesc='Latest version of “Minetest Game” from the Minetest Content Database, but installed system-wide as a regular Arch package.'
+pkgdesc='Latest version of “Minetest Game” from the Luanti Content Database, but installed system-wide as a regular Arch package.'
 
-url='https://content.minetest.net/packages/Minetest/minetest_game/'
+url='https://content.luanti.org/packages/Minetest/minetest_game/'
 arch=('any')
 license=('LGPL-2.1')
 
@@ -22,7 +22,7 @@ source=('minetest_cdb_icon.png')
 sha256sums=('77883f101d4b46e3ed37bfc6095e1b2143a79ff852c702d6d98509b6d998ca6b')
 
 prepare() {
-    cdb='https://content.minetest.net'
+    cdb='https://content.luanti.org'
     releases=$(curl "${cdb}/api/packages/Minetest/minetest_game/releases/")
     dlpath=$(echo $releases | jq -r '.[0].url')
     curl "${cdb}${dlpath}" --output 'minetest-game-cdb.zip'
