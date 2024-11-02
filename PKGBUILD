@@ -1,7 +1,7 @@
 # Maintainer: Alexander Pohl <alex at ahpohl dot com>
 pkgname=froniusd
-pkgver=0.1.2
-pkgrel=3
+pkgver=0.1.3
+pkgrel=1
 epoch=
 pkgdesc="Read data from a Fronius inverter"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
