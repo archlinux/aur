@@ -1,6 +1,6 @@
 # Maintainer: Alex Gartner <aur@agartner.com>
 pkgname=swaylock-dpms-git
-pkgver=1.5.r12.g4870372
+pkgver=1.8.0.r4.gbd8fd89
 pkgrel=1
 license=(custom:MIT)
 pkgdesc='swaylock with dpms support'
@@ -15,14 +15,14 @@ source=(
 )
 
 sha512sums=(
-	'SKIP'
+    'SKIP'
 )
 
 pkgver () {
 	cd "${pkgname}"
 	(
 		set -o pipefail
-		git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+		git describe --long 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' ||
 		printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 	)
 }
