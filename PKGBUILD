@@ -1,8 +1,8 @@
-# Maintainer: Seth Murphy <seth.murphy18@gmail.com>
-# PGP ID: 1DB95DC235C2C613
+# Maintainer: Wagner Skellington <kelson dot glint at gmail dot com>
+# Contributor: Seth Murphy <seth.murphy18@gmail.com>
 
 pkgname='expandrive-bin'
-pkgver='2023.3.2'
+pkgver='2023.4.1'
 pkgrel='1'
 pkgdesc='A utility for managing multiple cloud storage services'
 arch=('x86_64')
@@ -19,7 +19,7 @@ depends=(
 source=('LICENSE'
     "https://packages.expandrive.com/expandrive/pool/stable/e/ex/ExpanDrive_${pkgver}_amd64.deb")
 sha256sums=('dd77a86c9319a5e12b066688a0c804f942fd358b096ad1981eba04426dd16781'
-    'bb72a5090f9f05e7550a6ff587948c18503a9bd045ff133d146bc421738b4021')
+    'f5578961a8697bc8caf0dd3160200a21728db52932929079f71755b39619c8ef')
 
 prepare() {
     # Create the package directory, if it doesn't already exist
