@@ -1,0 +1,6 @@
+pkg/
+src/
+hyperhdr/
+
+*.tar.xz
+

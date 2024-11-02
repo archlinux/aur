@@ -1,0 +1,15 @@
+[Unit]
+Description=HyperHDR ambient light systemd service
+StartLimitIntervalSec=30s
+StartLimitBurst=30
+
+[Service]
+ExecStart=/usr/bin/hyperhdr
+WorkingDirectory=/usr/share/hyperhdr
+TimeoutStopSec=5
+KillMode=mixed
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=default.target
