@@ -18,7 +18,7 @@ _get_dirname() {
 }
 
 cd "src/${pkgbase}-${pkgver}"
-pkgs=$(find . -mindepth 1 -maxdepth 2 -type d -name "opentelemetry-*" | awk -F '/' '{print $NF}' | grep -v "docker-test")
+pkgs=$(find . -mindepth 1 -maxdepth 2 -type d -name "opentelemetry-*" | awk -F '/' '{print $NF}' | grep -v "docker-test" | sort -u)
 
 ## pkgname
 echo "pkgname=("
