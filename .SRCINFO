@@ -1,7 +1,8 @@
 pkgbase = prologs
 	pkgdesc = Test your Prolog program against different engines
 	pkgver = 0.1
-	pkgrel = 1
+	pkgrel = 2
+	url = https://github.com/hurufu/prolog-all
 	arch = x86_64
 	arch = i686
 	depends = make
