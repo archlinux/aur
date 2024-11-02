@@ -2,25 +2,25 @@
 
 _name="sixelcrop"
 pkgname="python-${_name}"
-pkgver=0.1.8
+pkgver=0.1.9
+_commit="f78ae776164f0fe186e7ada12eab1336068a1687"
 pkgrel=1
 pkgdesc="Crop sixel images in sixel-space"
 arch=('any')
 url="https://github.com/joouha/${_name}"
 license=('MIT')
-makedepends=('python-build' 'python-installer' 'python-wheel'
-             'python-hatchling')
 depends=('python>=3.7')
-_pkgsrc="${_name}-${pkgver}"
-source=("${_pkgsrc}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-b2sums=('215444086225ba34b13d1000c8ee51d792309900795c49aa0cba8eb62d01a976ec1d3281d071e2f9e67a30887945266105eace9b1ceca01a2a2207d8b3659bac')
+makedepends=('python-build' 'python-hatchling' 'python-installer' 'python-wheel')
+_pkgsrc="${_name}-${_commit}"
+source=("${_pkgsrc}.tar.gz::${url}/archive/${_commit}.tar.gz")
+b2sums=('c17acb124be01ba9f91d09b74c66234af4a48193c6d01fcf479530ab2f2fb3af7df2e91c655ad2fa5bdafbaa949e23a77cf5a3f1f4337f4a2100b87b2c0828bb')
 
-build () {
+build() {
   cd "${srcdir}/${_pkgsrc}"
   python -m build --wheel --no-isolation
 }
 
-package () {
+package() {
   local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
 
   cd "${srcdir}/${_pkgsrc}"

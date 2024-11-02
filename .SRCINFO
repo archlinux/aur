@@ -1,16 +1,16 @@
 pkgbase = python-sixelcrop
 	pkgdesc = Crop sixel images in sixel-space
-	pkgver = 0.1.8
+	pkgver = 0.1.9
 	pkgrel = 1
 	url = https://github.com/joouha/sixelcrop
 	arch = any
 	license = MIT
 	makedepends = python-build
+	makedepends = python-hatchling
 	makedepends = python-installer
 	makedepends = python-wheel
-	makedepends = python-hatchling
 	depends = python>=3.7
-	source = sixelcrop-0.1.8.tar.gz::https://github.com/joouha/sixelcrop/archive/v0.1.8.tar.gz
-	b2sums = 215444086225ba34b13d1000c8ee51d792309900795c49aa0cba8eb62d01a976ec1d3281d071e2f9e67a30887945266105eace9b1ceca01a2a2207d8b3659bac
+	source = sixelcrop-f78ae776164f0fe186e7ada12eab1336068a1687.tar.gz::https://github.com/joouha/sixelcrop/archive/f78ae776164f0fe186e7ada12eab1336068a1687.tar.gz
+	b2sums = c17acb124be01ba9f91d09b74c66234af4a48193c6d01fcf479530ab2f2fb3af7df2e91c655ad2fa5bdafbaa949e23a77cf5a3f1f4337f4a2100b87b2c0828bb
 
 pkgname = python-sixelcrop
