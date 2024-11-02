@@ -1,4 +1,5 @@
-# Maintainer:  Marcell Meszaros < marcell.meszaros AT runbox.eu >
+# Maintainer: bemxio <bemxiov at protonmail dot com>
+# Contributor: Marcell Meszaros < marcell.meszaros AT runbox.eu >
 # Contributor: Pellegrino Prevete <pellegrinoprevete@gmail.com>
 # Contributor: Tomasz Maciej Nowak <com[dot]gmail[at]tmn505>
 # Contributor: gbr <gbr@protonmail.com>
@@ -11,7 +12,7 @@
 _pkgname=ffmpeg
 pkgname="${_pkgname}5.1"
 pkgver=5.1.6
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc='Complete solution to record, convert and stream audio and video (legacy v5.1 branch, with libavcodec v59)'
 arch=(aarch64 i686 x86_64)
@@ -137,7 +138,6 @@ build() {
     --disable-sndio
     --disable-static
     --disable-stripping
-    --disable-swresample    # ffmpeg 6.0 & 6.1 contains same major SO version 4
     --enable-alsa
     --enable-amf
     --enable-avisynth
@@ -194,6 +194,7 @@ build() {
     --enable-opengl
     --enable-sdl2
     --enable-shared
+    --enable-swresample
     --enable-v4l2-m2m
     --enable-vaapi
     --enable-vdpau
@@ -219,7 +220,6 @@ build() {
 }
 
 package() {
-  depends+=(ffmpeg)   # ffmpeg 6.x provides libswresample.so.4, omitted from this package
   make DESTDIR="${pkgdir}" \
        -C "${_pkgname}" install
 
