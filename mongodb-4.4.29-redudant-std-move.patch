@@ -1,0 +1,306 @@
+diff -ruNb a/src/mongo/crypto/symmetric_crypto_openssl.cpp b/src/mongo/crypto/symmetric_crypto_openssl.cpp
+--- a/src/mongo/crypto/symmetric_crypto_openssl.cpp	2024-02-13 02:46:45.000000000 -0600
++++ b/src/mongo/crypto/symmetric_crypto_openssl.cpp	2024-11-01 02:09:30.092577633 -0500
+@@ -235,7 +235,7 @@
+                                                                            size_t ivLen) try {
+     std::unique_ptr<SymmetricEncryptor> encryptor =
+         std::make_unique<SymmetricEncryptorOpenSSL>(key, mode, iv);
+-    return std::move(encryptor);
++    return encryptor;
+ } catch (const DBException& e) {
+     return e.toStatus();
+ }
+@@ -246,7 +246,7 @@
+                                                                            size_t ivLen) try {
+     std::unique_ptr<SymmetricDecryptor> decryptor =
+         std::make_unique<SymmetricDecryptorOpenSSL>(key, mode, iv);
+-    return std::move(decryptor);
++    return decryptor;
+ } catch (const DBException& e) {
+     return e.toStatus();
+ }
+diff -ruNb a/src/mongo/db/matcher/expression_array.h b/src/mongo/db/matcher/expression_array.h
+--- a/src/mongo/db/matcher/expression_array.h	2024-02-13 02:46:45.000000000 -0600
++++ b/src/mongo/db/matcher/expression_array.h	2024-11-01 14:20:19.738743379 -0500
+@@ -82,7 +82,7 @@
+         if (getTag()) {
+             e->setTag(getTag()->clone());
+         }
+-        return std::move(e);
++        return e;
+     }
+ 
+     virtual void debugString(StringBuilder& debug, int indentationLevel) const;
+@@ -137,7 +137,7 @@
+         if (getTag()) {
+             e->setTag(getTag()->clone());
+         }
+-        return std::move(e);
++        return e;
+     }
+ 
+     virtual void debugString(StringBuilder& debug, int indentationLevel) const;
+@@ -174,7 +174,7 @@
+         if (getTag()) {
+             e->setTag(getTag()->clone());
+         }
+-        return std::move(e);
++        return e;
+     }
+ 
+     size_t numChildren() const override {
+diff -ruNb a/src/mongo/db/matcher/expression_leaf.h b/src/mongo/db/matcher/expression_leaf.h
+--- a/src/mongo/db/matcher/expression_leaf.h	2024-02-13 02:46:45.000000000 -0600
++++ b/src/mongo/db/matcher/expression_leaf.h	2024-11-01 02:05:33.172570060 -0500
+@@ -198,7 +198,7 @@
+             e->setTag(getTag()->clone());
+         }
+         e->setCollator(_collator);
+-        return std::move(e);
++        return e;
+     }
+ };
+ 
+@@ -220,7 +220,7 @@
+             e->setTag(getTag()->clone());
+         }
+         e->setCollator(_collator);
+-        return std::move(e);
++        return e;
+     }
+ };
+ 
+@@ -242,7 +242,7 @@
+             e->setTag(getTag()->clone());
+         }
+         e->setCollator(_collator);
+-        return std::move(e);
++        return e;
+     }
+ };
+ 
+@@ -264,7 +264,7 @@
+             e->setTag(getTag()->clone());
+         }
+         e->setCollator(_collator);
+-        return std::move(e);
++        return e;
+     }
+ };
+ 
+@@ -286,7 +286,7 @@
+             e->setTag(getTag()->clone());
+         }
+         e->setCollator(_collator);
+-        return std::move(e);
++        return e;
+     }
+ };
+ 
+@@ -305,7 +305,7 @@
+         if (getTag()) {
+             e->setTag(getTag()->clone());
+         }
+-        return std::move(e);
++        return e;
+     }
+ 
+     bool matchesSingleElement(const BSONElement&, MatchDetails* details = nullptr) const final;
+@@ -349,7 +349,7 @@
+         if (getTag()) {
+             m->setTag(getTag()->clone());
+         }
+-        return std::move(m);
++        return m;
+     }
+ 
+     bool matchesSingleElement(const BSONElement&, MatchDetails* details = nullptr) const final;
+@@ -385,7 +385,7 @@
+         if (getTag()) {
+             e->setTag(getTag()->clone());
+         }
+-        return std::move(e);
++        return e;
+     }
+ 
+     bool matchesSingleElement(const BSONElement&, MatchDetails* details = nullptr) const final;
+@@ -571,7 +571,7 @@
+         if (getTag()) {
+             bitTestMatchExpression->setTag(getTag()->clone());
+         }
+-        return std::move(bitTestMatchExpression);
++        return bitTestMatchExpression;
+     }
+ };
+ 
+@@ -592,7 +592,7 @@
+         if (getTag()) {
+             bitTestMatchExpression->setTag(getTag()->clone());
+         }
+-        return std::move(bitTestMatchExpression);
++        return bitTestMatchExpression;
+     }
+ };
+ 
+@@ -613,7 +613,7 @@
+         if (getTag()) {
+             bitTestMatchExpression->setTag(getTag()->clone());
+         }
+-        return std::move(bitTestMatchExpression);
++        return bitTestMatchExpression;
+     }
+ };
+ 
+@@ -634,7 +634,7 @@
+         if (getTag()) {
+             bitTestMatchExpression->setTag(getTag()->clone());
+         }
+-        return std::move(bitTestMatchExpression);
++        return bitTestMatchExpression;
+     }
+ };
+ 
+diff -ruNb a/src/mongo/db/matcher/expression_tree.h b/src/mongo/db/matcher/expression_tree.h
+--- a/src/mongo/db/matcher/expression_tree.h	2024-02-13 02:46:45.000000000 -0600
++++ b/src/mongo/db/matcher/expression_tree.h	2024-11-01 02:07:37.155907361 -0500
+@@ -123,7 +123,7 @@
+         if (getTag()) {
+             self->setTag(getTag()->clone());
+         }
+-        return std::move(self);
++        return self;
+     }
+ 
+     virtual void debugString(StringBuilder& debug, int indentationLevel = 0) const;
+@@ -152,7 +152,7 @@
+         if (getTag()) {
+             self->setTag(getTag()->clone());
+         }
+-        return std::move(self);
++        return self;
+     }
+ 
+     virtual void debugString(StringBuilder& debug, int indentationLevel = 0) const;
+@@ -181,7 +181,7 @@
+         if (getTag()) {
+             self->setTag(getTag()->clone());
+         }
+-        return std::move(self);
++        return self;
+     }
+ 
+     virtual void debugString(StringBuilder& debug, int indentationLevel = 0) const;
+@@ -199,7 +199,7 @@
+         if (getTag()) {
+             self->setTag(getTag()->clone());
+         }
+-        return std::move(self);
++        return self;
+     }
+ 
+     virtual bool matches(const MatchableDocument* doc, MatchDetails* details = nullptr) const {
+diff -ruNb a/src/mongo/db/matcher/expression_type.h b/src/mongo/db/matcher/expression_type.h
+--- a/src/mongo/db/matcher/expression_type.h	2024-02-13 02:46:45.000000000 -0600
++++ b/src/mongo/db/matcher/expression_type.h	2024-11-01 02:08:13.019241828 -0500
+@@ -193,7 +193,7 @@
+         if (getTag()) {
+             expr->setTag(getTag()->clone());
+         }
+-        return std::move(expr);
++        return expr;
+     }
+ 
+     void debugString(StringBuilder& debug, int indentationLevel) const final {
+diff -ruNb a/src/mongo/db/matcher/schema/expression_internal_schema_all_elem_match_from_index.cpp b/src/mongo/db/matcher/schema/expression_internal_schema_all_elem_match_from_index.cpp
+--- a/src/mongo/db/matcher/schema/expression_internal_schema_all_elem_match_from_index.cpp	2024-02-13 02:46:45.000000000 -0600
++++ b/src/mongo/db/matcher/schema/expression_internal_schema_all_elem_match_from_index.cpp	2024-11-01 14:26:56.475862314 -0500
+@@ -52,7 +52,7 @@
+     if (getTag()) {
+         clone->setTag(getTag()->clone());
+     }
+-    return std::move(clone);
++    return clone;
+ }
+ 
+ bool InternalSchemaAllElemMatchFromIndexMatchExpression::equivalent(
+diff -ruNb a/src/mongo/db/pipeline/aggregation_request.h b/src/mongo/db/pipeline/aggregation_request.h
+--- a/src/mongo/db/pipeline/aggregation_request.h	2024-02-13 02:46:45.000000000 -0600
++++ b/src/mongo/db/pipeline/aggregation_request.h	2024-11-01 02:01:43.775896097 -0500
+@@ -89,7 +89,7 @@
+             pipeline.push_back(elem.embeddedObject().getOwned());
+         }
+ 
+-        return std::move(pipeline);
++        return pipeline;
+     }
+ 
+ 
+diff -ruNb a/src/mongo/db/pipeline/document_source_group.cpp b/src/mongo/db/pipeline/document_source_group.cpp
+--- a/src/mongo/db/pipeline/document_source_group.cpp	2024-02-13 02:46:45.000000000 -0600
++++ b/src/mongo/db/pipeline/document_source_group.cpp	2024-11-01 14:25:04.418131989 -0500
+@@ -237,7 +237,7 @@
+     if (++groupsIterator == _groups->end())
+         dispose();
+ 
+-    return std::move(out);
++    return out;
+ }
+ 
+ void DocumentSourceGroup::doDispose() {
+diff -ruNb a/src/mongo/db/pipeline/document_source_index_stats.cpp b/src/mongo/db/pipeline/document_source_index_stats.cpp
+--- a/src/mongo/db/pipeline/document_source_index_stats.cpp	2024-02-13 02:46:45.000000000 -0600
++++ b/src/mongo/db/pipeline/document_source_index_stats.cpp	2024-11-01 14:25:55.001945888 -0500
+@@ -58,7 +58,7 @@
+     }
+ 
+     if (_indexStatsIter != _indexStats.cend()) {
+-        Document doc{std::move(*_indexStatsIter)};
++        Document doc{*_indexStatsIter};
+         ++_indexStatsIter;
+         return doc;
+     }
+diff -ruNb a/src/mongo/db/query/canonical_query.cpp b/src/mongo/db/query/canonical_query.cpp
+--- a/src/mongo/db/query/canonical_query.cpp	2024-02-13 02:46:45.000000000 -0600
++++ b/src/mongo/db/query/canonical_query.cpp	2024-11-01 14:20:49.372361693 -0500
+@@ -185,7 +185,7 @@
+     if (!initStatus.isOK()) {
+         return initStatus;
+     }
+-    return std::move(cq);
++    return cq;
+ }
+ 
+ // static
+diff -ruNb a/src/mongo/shell/mongodbcr.cpp b/src/mongo/shell/mongodbcr.cpp
+--- a/src/mongo/shell/mongodbcr.cpp	2024-02-13 02:46:45.000000000 -0600
++++ b/src/mongo/shell/mongodbcr.cpp	2024-11-01 02:12:23.499249848 -0500
+@@ -61,13 +61,13 @@
+         }
+     }
+ 
+-    return std::move(db);
++    return db;
+ }
+ 
+ StatusWith<OpMsgRequest> createMongoCRGetNonceCmd(const BSONObj& params) {
+     auto db = extractDBField(params);
+     if (!db.isOK()) {
+-        return std::move(db.getStatus());
++        return db.getStatus();
+     }
+ 
+     return OpMsgRequest::fromDBAndBody(db.getValue(), kGetNonceCmd);
+diff -ruNb a/src/mongo/util/decoration_registry.h b/src/mongo/util/decoration_registry.h
+--- a/src/mongo/util/decoration_registry.h	2024-02-13 02:46:45.000000000 -0600
++++ b/src/mongo/util/decoration_registry.h	2024-11-01 14:22:16.633198462 -0500
+@@ -69,8 +69,8 @@
+                                 "Decorations must be nothrow destructible");
+         return
+             typename DecorationContainer<DecoratedType>::template DecorationDescriptorWithType<T>(
+-                std::move(declareDecoration(
+-                    sizeof(T), std::alignment_of<T>::value, &constructAt<T>, &destroyAt<T>)));
++                declareDecoration(
++                    sizeof(T), std::alignment_of<T>::value, &constructAt<T>, &destroyAt<T>));
+     }
+ 
+     size_t getDecorationBufferSizeBytes() const {

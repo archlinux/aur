@@ -1,8 +1,7 @@
-diff --git a/SConstruct b/SConstruct
-index 89c044ab..a6d02072 100644
---- a/SConstruct
-+++ b/SConstruct
-@@ -2064,7 +2064,6 @@ if env.TargetOSIs('posix'):
+diff -ruNb a/SConstruct b/SConstruct
+--- a/SConstruct	2024-02-13 02:46:45.000000000 -0600
++++ b/SConstruct	2024-11-01 17:33:44.353421137 -0500
+@@ -2197,7 +2197,6 @@
      env.Append( CCFLAGS=["-fno-omit-frame-pointer",
                           "-fno-strict-aliasing",
                           "-fasynchronous-unwind-tables",
@@ -10,17 +9,18 @@ index 89c044ab..a6d02072 100644
                           "-pthread",
                           "-Wall",
                           "-Wsign-compare",
-@@ -2076,6 +2075,9 @@ if env.TargetOSIs('posix'):
+@@ -2209,6 +2208,10 @@
              env.Append( CCFLAGS=["-Werror"] )
  
      env.Append( CXXFLAGS=["-Woverloaded-virtual"] )
-+    env.Append( CXXFLAGS=os.environ['CXXFLAGS'] )
-+    env.Append( LINKFLAGS=os.environ['LDFLAGS'] )
++    env.Append( CXXFLAGS=["-Wno-c++20-compat"] )
++    env.Append( CXXFLAGS=["-Wno-cpp"] )
++    env.Append( CXXFLAGS=["-Wno-interference-size"] )
 +
      if env.ToolchainIs('clang'):
          env.Append( CXXFLAGS=['-Werror=unused-result'] )
  
-@@ -2096,8 +2098,8 @@ if env.TargetOSIs('posix'):
+@@ -2229,8 +2232,8 @@
  
      env.Append( LIBS=[] )
  
