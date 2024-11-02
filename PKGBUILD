@@ -2,24 +2,21 @@
 pkgname='screenshot_llm-git'
 _pkgname='Screenshot_LLM'
 pkgdesc='AI-Powered Screenshot Analysis'
-pkgver='eeb440e'
-_pkgver='main'
-pkgrel='1'
+pkgver=1.0.0.r0.g53a7d71
+_pkgver=${pkgver##*.}
+pkgrel=1
 arch=('x86_64')
 url="https://github.com/ThanabordeeN/${_pkgname}"
 license=('MIT')
+conflicts=("${pkgname%-git}")
 depends=('python' 'tk' 'python-dotenv' 'python-markdown')
 optdepends=('ollama: ollama support.')
-source=("${pkgname}-${_pkgver}::git+${url}.git" "${url}/pull/3.patch")
-b2sums=('SKIP' 'SKIP')
+source=("${pkgname}-${_pkgver}::git+${url}.git")
+b2sums=('SKIP')
 
 pkgver() {
   cd "${pkgname}-${_pkgver}"
-  git rev-parse --short HEAD || echo 0.0.1
-}
-
-prepare() {
-  patch --directory="${pkgname}-${_pkgver}" --forward --strip=1 --input="${srcdir}/3.patch"
+  git describe --tags --long --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
@@ -36,6 +33,7 @@ package() {
 
   echo "********************"
   echo "To enable and start the service:"
+  echo "mkdir -p ~/.screenshot_llm"
   echo "systemctl --user enable --now ${_pkgname,,}.service"
   echo "********************"
 }

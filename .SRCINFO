@@ -1,6 +1,6 @@
 pkgbase = screenshot_llm-git
 	pkgdesc = AI-Powered Screenshot Analysis
-	pkgver = eeb440e
+	pkgver = 1.0.0.r0.g53a7d71
 	pkgrel = 1
 	url = https://github.com/ThanabordeeN/Screenshot_LLM
 	arch = x86_64
@@ -10,9 +10,8 @@ pkgbase = screenshot_llm-git
 	depends = python-dotenv
 	depends = python-markdown
 	optdepends = ollama: ollama support.
-	source = screenshot_llm-git-main::git+https://github.com/ThanabordeeN/Screenshot_LLM.git
-	source = https://github.com/ThanabordeeN/Screenshot_LLM/pull/3.patch
-	b2sums = SKIP
+	conflicts = screenshot_llm
+	source = screenshot_llm-git-g53a7d71::git+https://github.com/ThanabordeeN/Screenshot_LLM.git
 	b2sums = SKIP
 
 pkgname = screenshot_llm-git
