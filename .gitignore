@@ -1,4 +1,5 @@
 git-secrets/
 pkg/
 src/
-*.xz
+*.zst
+*.gz

@@ -1,28 +1,16 @@
 # Maintainer: Jonathan la Cour <jon@lacour.me>
 pkgname=git-secrets
 pkgver=1.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Prevents you from committing secrets and credentials into git repositories"
 arch=('any')
 url="https://github.com/awslabs/git-secrets"
-license=('custom:APLv2')
-depends=('git')
-makedepends=('git' 'gcc' 'make')
-source=("$pkgname"::'git+https://github.com/awslabs/git-secrets.git')
-sha256sums=('SKIP')
-
-pkgver() {
-  cd "$srcdir/$pkgname"
-  git describe --tags $(git rev-list --tags --max-count=1) | sed -E 's/([^-]*-g)/r\1/;s/-/./g'
-}
-
-build() {
-  cd "$srcdir/$pkgname"
-  git checkout tags/$pkgver
-}
+license=('Apache')
+depends=('awk' 'sed' 'coreutils')
+source=(https://github.com/awslabs/${pkgname}/archive/refs/tags/${pkgver}.tar.gz)
+sha256sums=('f1d50c6c5c7564f460ff8d279081879914abe920415c2923934c1f1d1fac3606')
 
 package() {
-  cd "$srcdir/$pkgname"
-  install -D -m644 LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-  make PREFIX="$pkgdir/usr/" install
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  make PREFIX="${pkgdir}/usr/" install
 }
