@@ -3,19 +3,24 @@
 _name=spectate
 pkgname=python-$_name
 pkgver=1.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Observe the evolution of mutable data types like lists, dicts, and sets.'
 arch=(any)
 url="https://github.com/rmorshea/$_name"
 license=(MIT)
 depends=(python)
-_wheel="${_name/-/_}-$pkgver-py2.py3-none-any.whl"
-source=("https://files.pythonhosted.org/packages/py2.py3/${_name::1}/$_name/$_wheel")
-sha256sums=('c4585194c238979f953fbf2ecf9f94c84d9d0a929432c7104e39984f52c9e718')
-noextract=("$_wheel")
+makedepends=(python-setuptools python-build python-installer python-wheel)
+source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
+sha256sums=('49a2dde0962fcecf120cb361cc293989489078eb29ba1d8c3d342a741e898b7e')
+
+build() {
+	cd "$srcdir/$_name-$pkgver"
+	export SETUPTOOLS_SCM_PRETEND_VERSION="${pkgver}"
+	python -m build --wheel --no-isolation
+}
 
 package() {
-	local site="$pkgdir/usr/lib/$(readlink /bin/python3)/site-packages"
-	mkdir -p "$site"
-	unzip "$_wheel" -d "$site"
+	cd "$srcdir/$_name-$pkgver"
+	python -m installer --destdir="$pkgdir" dist/*.whl
+	install -Dm 644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
