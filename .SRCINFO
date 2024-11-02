@@ -1,7 +1,7 @@
 pkgbase = xfdashboard
 	pkgdesc = Maybe a Gnome shell like dashboard for Xfce
 	pkgver = 1.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://docs.xfce.org/apps/xfdashboard/start
 	arch = x86_64
 	license = GPL-2.0-or-later

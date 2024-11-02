@@ -3,7 +3,7 @@
 
 pkgname=xfdashboard
 pkgver=1.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Maybe a Gnome shell like dashboard for Xfce"
 arch=('x86_64')
 url="https://docs.xfce.org/apps/xfdashboard/start"
@@ -15,13 +15,15 @@ sha256sums=('9a5292d4f34db19068c99e696e61b4fc2fd20465e357f82100070e1ec261d10f')
 
 prepare() {
   cd $pkgname
-  ./autogen.sh \
-    --prefix=/usr \
-    --sysconfdir=/etc
+  NOCONFIGURE=1 ./autogen.sh
 }
 
 build() {
   cd $pkgname
+  ./configure \
+    --prefix=/usr \
+    --sysconfdir=/etc \
+    --enable-maintainer-mode
   make
 }
 
