@@ -1,6 +1,6 @@
 pkgbase = hhd-git
 	pkgdesc = Handheld Daemon. A tool for managing the quirks of handheld devices. Latest git checkout.
-	pkgver = 3.5.6+17.r1404.20241019.4bf0ff7
+	pkgver = 3.5.12.r1436.20241101.09c5400
 	pkgrel = 1
 	url = https://github.com/hhd-dev/hhd
 	arch = x86_64
@@ -26,7 +26,7 @@ pkgname = hhd-git
 	optdepends = hhd-ui: A (browser based) graphical user interface for hhd.
 	optdepends = hhd-user: allows running hhd as a user service.
 	optdepends = hhd-systemd: For automatic startup at system boot.
-	provides = hhd=3.5.6+17.r1404.20241019.4bf0ff7
+	provides = hhd=3.5.12.r1436.20241101.09c5400
 	conflicts = hhd
 
 pkgname = hhd-systemd-git
@@ -36,7 +36,7 @@ pkgname = hhd-systemd-git
 	depends = hhd-license-git
 	depends = python-setuptools
 	optdepends = systemd: To make use of this systemd service.
-	provides = hhd-systemd=3.5.6+17.r1404.20241019.4bf0ff7
+	provides = hhd-systemd=3.5.12.r1436.20241101.09c5400
 	conflicts = hhd-systemd
 
 pkgname = hhd-license-git
@@ -53,5 +53,5 @@ pkgname = hhd-doc-git
 	arch = any
 	depends = hhd-license-git
 	optdepends = hhd: The software this Documentation is for.
-	provides = hhd-doc=3.5.6+17.r1404.20241019.4bf0ff7
+	provides = hhd-doc=3.5.12.r1436.20241101.09c5400
 	conflicts = hhd-doc
