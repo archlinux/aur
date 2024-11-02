@@ -1,0 +1,18 @@
+pkgbase = untitled-exec
+	pkgdesc = C/C++ cross-platform wrapper for launching applications as separate processes
+	pkgver = 4.0.0.0
+	pkgrel = 1
+	url = https://github.com/MadLadSquad/UntitledExec
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cmake
+	makedepends = make
+	depends = gcc-libs
+	depends = glibc
+	depends = pkgconf
+	provides = libuexec.so
+	source = https://github.com/MadLadSquad/UntitledExec/releases/download/v4.0.0.0/untitled-exec.tar.xz
+	sha256sums = 39a29693bda66bf7b95076a682e7b3a76683b1b2b0a03214b8f082a3ac02c3df
+
+pkgname = untitled-exec
