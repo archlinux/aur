@@ -1,20 +1,22 @@
-# Maintainer: Vianney le Clément <vleclement AT gmail· com>
+# Maintainer:
+# Contributor: Vianney le Clément <vleclement AT gmail· com>
+
 _pkgname=gedit-coffeescript
 pkgname=$_pkgname-git
-pkgver=1.0.4
+pkgver=1.0.4.r20.g57969df
 pkgrel=1
 pkgdesc="gedit Syntax Highlighting for CoffeeScript files"
 arch=(any)
 url="https://github.com/wavded/gedit-coffeescript"
-license=('GPL')
+license=('GPL-2.0-or-later')
 depends=('gtksourceview3')
 makedepends=('git')
-source=("git://github.com/wavded/$_pkgname.git")
+source=("git+https://github.com/wavded/$_pkgname.git")
 md5sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/$_pkgname"
-  git describe | sed 's/-/./g'
+  git describe --long | sed 's/-/.r/;s/-/./g'
 }
 
 package() {
