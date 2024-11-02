@@ -1,7 +1,7 @@
 # Maintainer: Toni500 <tonino512@linuxmail.org>
 pkgname="customfetch"
 _pkgname="customfetch"
-pkgver=0.10.0
+pkgver=0.10.1
 pkgrel=1
 pkgdesc="Highly customizable and fast system information fetch program"
 arch=('x86_64' 'aarch64')
