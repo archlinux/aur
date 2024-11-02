@@ -2,4 +2,5 @@
 /src/
 python-pygobject-stubs-*.pkg.*
 PyGObject-stubs-*.tar.gz
+v*.tar.gz
 last_installed.txt
