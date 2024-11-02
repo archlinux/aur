@@ -1,6 +1,6 @@
+# Maintainer: Ruben Di Battista <rubendibattista@gmail.com>
 # Maintainer: Carlos Aznarán <caznaranl@uni.pe>
-# Contributor: Ista Zahn <istazahn@gmail.com>
-## Based on miniconda3 aur package by Ashwin Vishn Immae, Martin Wimpress and Jingbei Li
+## Based on mambaforge aur package by Ashwin Vishn Immae, Martin Wimpress and Jingbei Li
 pkgname=miniforge
 pkgver=24.9.0.0
 _pkgver=${pkgver%.*}-${pkgver##*.}
@@ -20,23 +20,23 @@ sha256sums_powerpc64le=('d442c75fd69359dd8ef444e3ba16a83d88ff437c92669661e2450b0
 install="${pkgname}.install"
 
 package() {
-	prefix="${pkgdir}/opt/${pkgname}"
-	LD_PRELOAD="/usr/lib/libfakeroot/libfakeroot.so"
+  prefix="${pkgdir}/opt/${pkgname}"
+  LD_PRELOAD="/usr/lib/libfakeroot/libfakeroot.so"
 
-	# Packaging mambaforge for installation to /opt/mambaforge
-	bash "${srcdir}/Miniforge3-${_pkgver}-Linux-${CARCH}.sh" -b -p $prefix -f
-	[ "$BREAK_EARLY" = 1 ] && exit 1
-	cd "${prefix}"
+  # Packaging mambaforge for installation to /opt/mambaforge
+  bash "${srcdir}/Miniforge3-${_pkgver}-Linux-${CARCH}.sh" -b -p $prefix -f
+  [ "$BREAK_EARLY" = 1 ] && exit 1
+  cd "${prefix}"
 
-	# Correcting permissions
-	chmod a+r -R pkgs
+  # Correcting permissions
+  chmod a+r -R pkgs
 
-	# Stripping $pkgdir
-	sed "s|${pkgdir}||g" -i $(grep "$pkgdir" . -rIl)
+  # Stripping $pkgdir
+  sed "s|${pkgdir}||g" -i $(grep "$pkgdir" . -rIl)
 
-	# Set string path to a certificate SSL connection
-	echo "ssl_verify: /opt/${pkgname}/ssl/cacert.pem" >>"${pkgdir}/opt/${pkgname}/.condarc"
+  # Set string path to a certificate SSL connection
+  echo "ssl_verify: /opt/${pkgname}/ssl/cacert.pem" >>"${pkgdir}/opt/${pkgname}/.condarc"
 
-	# Installing license
-	install -D -m644 LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  # Installing license
+  install -D -m644 LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }

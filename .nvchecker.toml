@@ -1,0 +1,6 @@
+[miniforge]
+source = "github"
+github = "conda-forge/miniforge"
+use_latest_release = "true"
+from_pattern = "-"
+to_pattern = "."
