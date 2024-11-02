@@ -1,0 +1,503 @@
+pkgbase = opentelemetry-python-contrib
+	pkgver = 0.48b0
+	pkgrel = 1
+	arch = any
+	license = Apache-2.0
+	makedepends = python-build
+	makedepends = python-hatchling
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	source = opentelemetry-python-contrib-0.48b0.tar.gz::https://github.com/open-telemetry/opentelemetry-python-contrib/archive/refs/tags/v0.48b0.tar.gz
+	sha256sums = 3a5c849b2193397db6cf7a4352bbe747f81cdcc234698dc8d5e516d415db0b71
+
+pkgname = python-opentelemetry-exporter-prometheus-remote-write
+	pkgdesc = Prometheus Remote Write Metrics Exporter for OpenTelemetry
+	url = https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/exporter/opentelemetry-exporter-prometheus-remote-write
+	depends = python-opentelemetry-api
+	depends = python-opentelemetry-sdk
+	depends = python-protobuf
+	depends = python-requests
+	depends = python-snappy
+
+pkgname = python-opentelemetry-exporter-richconsole
+	pkgdesc = Rich Console Exporter for OpenTelemetry
+	url = https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/exporter/opentelemetry-exporter-richconsole
+	depends = python-opentelemetry-api
+	depends = python-opentelemetry-sdk
+	depends = python-opentelemetry-semantic-conventions
+	depends = python-rich
+
+pkgname = python-opentelemetry-instrumentation-aio-pika
+	pkgdesc = OpenTelemetry Aio-pika instrumentation
+	url = https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/instrumentation/opentelemetry-instrumentation-aio-pika
+	depends = python-opentelemetry-api
+	depends = python-opentelemetry-instrumentation
+	depends = python-wrapt
+
+pkgname = python-opentelemetry-instrumentation-aiohttp-client
+	pkgdesc = OpenTelemetry aiohttp client instrumentation
+	url = https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/instrumentation/opentelemetry-instrumentation-aiohttp-client
+	depends = python-opentelemetry-api
+	depends = python-opentelemetry-instrumentation
+	depends = python-opentelemetry-semantic-conventions
+	depends = python-opentelemetry-util-http
+	depends = python-wrapt
+
+pkgname = python-opentelemetry-instrumentation-aiohttp-server
+	pkgdesc = Aiohttp server instrumentation for OpenTelemetry
+	url = https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/instrumentation/opentelemetry-instrumentation-aiohttp-server
+	depends = python-opentelemetry-api
+	depends = python-opentelemetry-instrumentation
+	depends = python-opentelemetry-semantic-conventions
+	depends = python-opentelemetry-util-http
+	depends = python-wrapt
+
+pkgname = python-opentelemetry-instrumentation-aiopg
+	pkgdesc = OpenTelemetry aiopg instrumentation
+	url = https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/instrumentation/opentelemetry-instrumentation-aiopg
+	depends = python-opentelemetry-api
+	depends = python-opentelemetry-instrumentation
+	depends = python-opentelemetry-instrumentation-dbapi
+	depends = python-wrapt
+
+pkgname = python-opentelemetry-instrumentation-asgi
+	pkgdesc = ASGI instrumentation for OpenTelemetry
+	url = https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/instrumentation/opentelemetry-instrumentation-asgi
+	depends = python-asgiref
+	depends = python-opentelemetry-api
+	depends = python-opentelemetry-instrumentation
+	depends = python-opentelemetry-semantic-conventions
+	depends = python-opentelemetry-util-http
+
+pkgname = python-opentelemetry-instrumentation-asyncio
+	pkgdesc = OpenTelemetry instrumentation for asyncio
+	url = https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/instrumentation/opentelemetry-instrumentation-asyncio
+	depends = python-opentelemetry-api
+	depends = python-opentelemetry-instrumentation
+	depends = python-opentelemetry-semantic-conventions
+	depends = python-wrapt
+
+pkgname = python-opentelemetry-instrumentation-asyncpg
+	pkgdesc = OpenTelemetry instrumentation for AsyncPG
+	url = https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/instrumentation/opentelemetry-instrumentation-asyncpg
+	depends = python-opentelemetry-api
+	depends = python-opentelemetry-instrumentation
+	depends = python-opentelemetry-semantic-conventions
+
+pkgname = python-opentelemetry-instrumentation-aws-lambda
+	pkgdesc = OpenTelemetry AWS Lambda instrumentation
+	url = https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/instrumentation/opentelemetry-instrumentation-aws-lambda
+	depends = python-opentelemetry-instrumentation
+	depends = python-opentelemetry-propagator-aws-xray
+	depends = python-opentelemetry-semantic-conventions
+
+pkgname = python-opentelemetry-instrumentation-boto
+	pkgdesc = OpenTelemetry Boto instrumentation
+	url = https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/instrumentation/opentelemetry-instrumentation-boto
+	depends = python-opentelemetry-api
+	depends = python-opentelemetry-instrumentation
+	depends = python-opentelemetry-semantic-conventions
+
+pkgname = python-opentelemetry-instrumentation-boto3sqs
+	pkgdesc = Boto3 SQS service tracing for OpenTelemetry
+	url = https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/instrumentation/opentelemetry-instrumentation-boto3sqs
+	depends = python-opentelemetry-api
+	depends = python-opentelemetry-instrumentation
+	depends = python-opentelemetry-semantic-conventions
+	depends = python-wrapt
+
+pkgname = python-opentelemetry-instrumentation-botocore
+	pkgdesc = OpenTelemetry Botocore instrumentation
+	url = https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/instrumentation/opentelemetry-instrumentation-botocore
+	depends = python-opentelemetry-api
+	depends = python-opentelemetry-instrumentation
+	depends = python-opentelemetry-propagator-aws-xray
+	depends = python-opentelemetry-semantic-conventions
+
+pkgname = python-opentelemetry-instrumentation-cassandra
+	pkgdesc = OpenTelemetry Cassandra instrumentation
+	url = https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/instrumentation/opentelemetry-instrumentation-cassandra
+	depends = python-opentelemetry-api
+	depends = python-opentelemetry-instrumentation
+	depends = python-opentelemetry-semantic-conventions
+	depends = python-wrapt
+
+pkgname = python-opentelemetry-instrumentation-celery
+	pkgdesc = OpenTelemetry Celery Instrumentation
+	url = https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/instrumentation/opentelemetry-instrumentation-celery
+	depends = python-opentelemetry-api
+	depends = python-opentelemetry-instrumentation
+	depends = python-opentelemetry-semantic-conventions
+
+pkgname = python-opentelemetry-instrumentation-confluent-kafka
+	pkgdesc = OpenTelemetry Confluent Kafka instrumentation
+	url = https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/instrumentation/opentelemetry-instrumentation-confluent-kafka
+	depends = python-opentelemetry-api
+	depends = python-opentelemetry-instrumentation
+	depends = python-wrapt
+
+pkgname = python-opentelemetry-instrumentation-dbapi
+	pkgdesc = OpenTelemetry Database API instrumentation
+	url = https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/instrumentation/opentelemetry-instrumentation-dbapi
+	depends = python-opentelemetry-api
+	depends = python-opentelemetry-instrumentation
+	depends = python-opentelemetry-semantic-conventions
+	depends = python-wrapt
+
+pkgname = python-opentelemetry-instrumentation-django
+	pkgdesc = OpenTelemetry Instrumentation for Django
+	url = https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/instrumentation/opentelemetry-instrumentation-django
+	depends = python-opentelemetry-api
+	depends = python-opentelemetry-instrumentation
+	depends = python-opentelemetry-instrumentation-wsgi
+	depends = python-opentelemetry-semantic-conventions
+	depends = python-opentelemetry-util-http
+
+pkgname = python-opentelemetry-instrumentation-elasticsearch
+	pkgdesc = OpenTelemetry elasticsearch instrumentation
+	url = https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/instrumentation/opentelemetry-instrumentation-elasticsearch
+	depends = python-opentelemetry-api
+	depends = python-opentelemetry-instrumentation
+	depends = python-opentelemetry-semantic-conventions
+	depends = python-wrapt
+
+pkgname = python-opentelemetry-instrumentation-falcon
+	pkgdesc = Falcon instrumentation for OpenTelemetry
+	url = https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/instrumentation/opentelemetry-instrumentation-falcon
+	depends = python-opentelemetry-api
+	depends = python-opentelemetry-instrumentation
+	depends = python-opentelemetry-instrumentation-wsgi
+	depends = python-opentelemetry-semantic-conventions
+	depends = python-opentelemetry-util-http
+	depends = python-packaging
+
+pkgname = python-opentelemetry-instrumentation-fastapi
+	pkgdesc = OpenTelemetry FastAPI Instrumentation
+	url = https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/instrumentation/opentelemetry-instrumentation-fastapi
+	depends = python-opentelemetry-api
+	depends = python-opentelemetry-instrumentation
+	depends = python-opentelemetry-instrumentation-asgi
+	depends = python-opentelemetry-semantic-conventions
+	depends = python-opentelemetry-util-http
+
+pkgname = python-opentelemetry-instrumentation-flask
+	pkgdesc = Flask instrumentation for OpenTelemetry
+	url = https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/instrumentation/opentelemetry-instrumentation-flask
+	depends = python-importlib-metadata
+	depends = python-opentelemetry-api
+	depends = python-opentelemetry-instrumentation
+	depends = python-opentelemetry-instrumentation-wsgi
+	depends = python-opentelemetry-semantic-conventions
+	depends = python-opentelemetry-util-http
+	depends = python-packaging
+
+pkgname = python-opentelemetry-instrumentation-grpc
+	pkgdesc = OpenTelemetry gRPC instrumentation
+	url = https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/instrumentation/opentelemetry-instrumentation-grpc
+	depends = python-opentelemetry-api
+	depends = python-opentelemetry-instrumentation
+	depends = python-opentelemetry-semantic-conventions
+	depends = python-wrapt
+
+pkgname = python-opentelemetry-instrumentation-httpx
+	pkgdesc = OpenTelemetry HTTPX Instrumentation
+	url = https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/instrumentation/opentelemetry-instrumentation-httpx
+	depends = python-opentelemetry-api
+	depends = python-opentelemetry-instrumentation
+	depends = python-opentelemetry-semantic-conventions
+	depends = python-opentelemetry-util-http
+
+pkgname = python-opentelemetry-instrumentation-jinja2
+	pkgdesc = OpenTelemetry jinja2 instrumentation
+	url = https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/instrumentation/opentelemetry-instrumentation-jinja2
+	depends = python-opentelemetry-api
+	depends = python-opentelemetry-instrumentation
+	depends = python-wrapt
+
+pkgname = python-opentelemetry-instrumentation-kafka-python
+	pkgdesc = OpenTelemetry Kafka-Python instrumentation
+	url = https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/instrumentation/opentelemetry-instrumentation-kafka-python
+	depends = python-opentelemetry-api
+	depends = python-opentelemetry-instrumentation
+	depends = python-opentelemetry-semantic-conventions
+
+pkgname = python-opentelemetry-instrumentation-logging
+	pkgdesc = OpenTelemetry Logging instrumentation
+	url = https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/instrumentation/opentelemetry-instrumentation-logging
+	depends = python-opentelemetry-api
+	depends = python-opentelemetry-instrumentation
+
+pkgname = python-opentelemetry-instrumentation-mysql
+	pkgdesc = OpenTelemetry MySQL instrumentation
+	url = https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/instrumentation/opentelemetry-instrumentation-mysql
+	depends = python-opentelemetry-api
+	depends = python-opentelemetry-instrumentation
+	depends = python-opentelemetry-instrumentation-dbapi
+
+pkgname = python-opentelemetry-instrumentation-mysqlclient
+	pkgdesc = OpenTelemetry mysqlclient instrumentation
+	url = https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/instrumentation/opentelemetry-instrumentation-mysqlclient
+	depends = python-opentelemetry-api
+	depends = python-opentelemetry-instrumentation
+	depends = python-opentelemetry-instrumentation-dbapi
+
+pkgname = python-opentelemetry-instrumentation-pika
+	pkgdesc = OpenTelemetry pika instrumentation
+	url = https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/instrumentation/opentelemetry-instrumentation-pika
+	depends = python-opentelemetry-api
+	depends = python-opentelemetry-instrumentation
+	depends = python-packaging
+	depends = python-wrapt
+
+pkgname = python-opentelemetry-instrumentation-psycopg
+	pkgdesc = OpenTelemetry psycopg instrumentation
+	url = https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/instrumentation/opentelemetry-instrumentation-psycopg
+	depends = python-opentelemetry-api
+	depends = python-opentelemetry-instrumentation
+	depends = python-opentelemetry-instrumentation-dbapi
+
+pkgname = python-opentelemetry-instrumentation-psycopg2
+	pkgdesc = OpenTelemetry psycopg2 instrumentation
+	url = https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/instrumentation/opentelemetry-instrumentation-psycopg2
+	depends = python-opentelemetry-api
+	depends = python-opentelemetry-instrumentation
+	depends = python-opentelemetry-instrumentation-dbapi
+
+pkgname = python-opentelemetry-instrumentation-pymemcache
+	pkgdesc = OpenTelemetry pymemcache instrumentation
+	url = https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/instrumentation/opentelemetry-instrumentation-pymemcache
+	depends = python-opentelemetry-api
+	depends = python-opentelemetry-instrumentation
+	depends = python-opentelemetry-semantic-conventions
+	depends = python-wrapt
+
+pkgname = python-opentelemetry-instrumentation-pymongo
+	pkgdesc = OpenTelemetry pymongo instrumentation
+	url = https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/instrumentation/opentelemetry-instrumentation-pymongo
+	depends = python-opentelemetry-api
+	depends = python-opentelemetry-instrumentation
+	depends = python-opentelemetry-semantic-conventions
+
+pkgname = python-opentelemetry-instrumentation-pymysql
+	pkgdesc = OpenTelemetry PyMySQL instrumentation
+	url = https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/instrumentation/opentelemetry-instrumentation-pymysql
+	depends = python-opentelemetry-api
+	depends = python-opentelemetry-instrumentation
+	depends = python-opentelemetry-instrumentation-dbapi
+
+pkgname = python-opentelemetry-instrumentation-pyramid
+	pkgdesc = OpenTelemetry Pyramid instrumentation
+	url = https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/instrumentation/opentelemetry-instrumentation-pyramid
+	depends = python-opentelemetry-api
+	depends = python-opentelemetry-instrumentation
+	depends = python-opentelemetry-instrumentation-wsgi
+	depends = python-opentelemetry-semantic-conventions
+	depends = python-opentelemetry-util-http
+	depends = python-wrapt
+
+pkgname = python-opentelemetry-instrumentation-redis
+	pkgdesc = OpenTelemetry Redis instrumentation
+	url = https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/instrumentation/opentelemetry-instrumentation-redis
+	depends = python-opentelemetry-api
+	depends = python-opentelemetry-instrumentation
+	depends = python-opentelemetry-semantic-conventions
+	depends = python-wrapt
+
+pkgname = python-opentelemetry-instrumentation-remoulade
+	pkgdesc = OpenTelemetry Remoulade instrumentation
+	url = https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/instrumentation/opentelemetry-instrumentation-remoulade
+	depends = python-opentelemetry-api
+	depends = python-opentelemetry-instrumentation
+	depends = python-opentelemetry-semantic-conventions
+
+pkgname = python-opentelemetry-instrumentation-requests
+	pkgdesc = OpenTelemetry requests instrumentation
+	url = https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/instrumentation/opentelemetry-instrumentation-requests
+	depends = python-opentelemetry-api
+	depends = python-opentelemetry-instrumentation
+	depends = python-opentelemetry-semantic-conventions
+	depends = python-opentelemetry-util-http
+
+pkgname = python-opentelemetry-instrumentation-sqlalchemy
+	pkgdesc = OpenTelemetry SQLAlchemy instrumentation
+	url = https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/instrumentation/opentelemetry-instrumentation-sqlalchemy
+	depends = python-opentelemetry-api
+	depends = python-opentelemetry-instrumentation
+	depends = python-opentelemetry-semantic-conventions
+	depends = python-packaging
+	depends = python-wrapt
+
+pkgname = python-opentelemetry-instrumentation-sqlite3
+	pkgdesc = OpenTelemetry SQLite3 instrumentation
+	url = https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/instrumentation/opentelemetry-instrumentation-sqlite3
+	depends = python-opentelemetry-api
+	depends = python-opentelemetry-instrumentation
+	depends = python-opentelemetry-instrumentation-dbapi
+
+pkgname = python-opentelemetry-instrumentation-starlette
+	pkgdesc = OpenTelemetry Starlette Instrumentation
+	url = https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/instrumentation/opentelemetry-instrumentation-starlette
+	depends = python-opentelemetry-api
+	depends = python-opentelemetry-instrumentation
+	depends = python-opentelemetry-instrumentation-asgi
+	depends = python-opentelemetry-semantic-conventions
+	depends = python-opentelemetry-util-http
+
+pkgname = python-opentelemetry-instrumentation-system-metrics
+	pkgdesc = OpenTelemetry System Metrics Instrumentation
+	url = https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/instrumentation/opentelemetry-instrumentation-system-metrics
+	depends = python-opentelemetry-api
+	depends = python-opentelemetry-instrumentation
+	depends = python-psutil
+
+pkgname = python-opentelemetry-instrumentation-threading
+	pkgdesc = Thread context propagation support for OpenTelemetry
+	url = https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/instrumentation/opentelemetry-instrumentation-threading
+	depends = python-opentelemetry-api
+	depends = python-opentelemetry-instrumentation
+	depends = python-wrapt
+
+pkgname = python-opentelemetry-instrumentation-tornado
+	pkgdesc = Tornado instrumentation for OpenTelemetry
+	url = https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/instrumentation/opentelemetry-instrumentation-tornado
+	depends = python-opentelemetry-api
+	depends = python-opentelemetry-instrumentation
+	depends = python-opentelemetry-semantic-conventions
+	depends = python-opentelemetry-util-http
+
+pkgname = python-opentelemetry-instrumentation-tortoiseorm
+	pkgdesc = OpenTelemetry Instrumentation for Tortoise ORM
+	url = https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/instrumentation/opentelemetry-instrumentation-tortoiseorm
+	depends = python-opentelemetry-api
+	depends = python-opentelemetry-instrumentation
+	depends = python-opentelemetry-semantic-conventions
+
+pkgname = python-opentelemetry-instrumentation-urllib
+	pkgdesc = OpenTelemetry urllib instrumentation
+	url = https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/instrumentation/opentelemetry-instrumentation-urllib
+	depends = python-opentelemetry-api
+	depends = python-opentelemetry-instrumentation
+	depends = python-opentelemetry-semantic-conventions
+	depends = python-opentelemetry-util-http
+
+pkgname = python-opentelemetry-instrumentation-urllib3
+	pkgdesc = OpenTelemetry urllib3 instrumentation
+	url = https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/instrumentation/opentelemetry-instrumentation-urllib3
+	depends = python-opentelemetry-api
+	depends = python-opentelemetry-instrumentation
+	depends = python-opentelemetry-semantic-conventions
+	depends = python-opentelemetry-util-http
+	depends = python-wrapt
+
+pkgname = python-opentelemetry-instrumentation-wsgi
+	pkgdesc = WSGI Middleware for OpenTelemetry
+	url = https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/instrumentation/opentelemetry-instrumentation-wsgi
+	depends = python-opentelemetry-api
+	depends = python-opentelemetry-instrumentation
+	depends = python-opentelemetry-semantic-conventions
+	depends = python-opentelemetry-util-http
+
+pkgname = python-opentelemetry-contrib-instrumentations
+	pkgdesc = OpenTelemetry Contrib Instrumentation Packages
+	url = https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/opentelemetry-contrib-instrumentations
+	depends = python-opentelemetry-instrumentation-aio-pika
+	depends = python-opentelemetry-instrumentation-aiohttp-client
+	depends = python-opentelemetry-instrumentation-aiohttp-server
+	depends = python-opentelemetry-instrumentation-aiopg
+	depends = python-opentelemetry-instrumentation-asgi
+	depends = python-opentelemetry-instrumentation-asyncio
+	depends = python-opentelemetry-instrumentation-asyncpg
+	depends = python-opentelemetry-instrumentation-aws-lambda
+	depends = python-opentelemetry-instrumentation-boto
+	depends = python-opentelemetry-instrumentation-boto3sqs
+	depends = python-opentelemetry-instrumentation-botocore
+	depends = python-opentelemetry-instrumentation-cassandra
+	depends = python-opentelemetry-instrumentation-celery
+	depends = python-opentelemetry-instrumentation-confluent-kafka
+	depends = python-opentelemetry-instrumentation-dbapi
+	depends = python-opentelemetry-instrumentation-django
+	depends = python-opentelemetry-instrumentation-elasticsearch
+	depends = python-opentelemetry-instrumentation-falcon
+	depends = python-opentelemetry-instrumentation-fastapi
+	depends = python-opentelemetry-instrumentation-flask
+	depends = python-opentelemetry-instrumentation-grpc
+	depends = python-opentelemetry-instrumentation-httpx
+	depends = python-opentelemetry-instrumentation-jinja2
+	depends = python-opentelemetry-instrumentation-kafka-python
+	depends = python-opentelemetry-instrumentation-logging
+	depends = python-opentelemetry-instrumentation-mysql
+	depends = python-opentelemetry-instrumentation-mysqlclient
+	depends = python-opentelemetry-instrumentation-pika
+	depends = python-opentelemetry-instrumentation-psycopg
+	depends = python-opentelemetry-instrumentation-psycopg2
+	depends = python-opentelemetry-instrumentation-pymemcache
+	depends = python-opentelemetry-instrumentation-pymongo
+	depends = python-opentelemetry-instrumentation-pymysql
+	depends = python-opentelemetry-instrumentation-pyramid
+	depends = python-opentelemetry-instrumentation-redis
+	depends = python-opentelemetry-instrumentation-remoulade
+	depends = python-opentelemetry-instrumentation-requests
+	depends = python-opentelemetry-instrumentation-sqlalchemy
+	depends = python-opentelemetry-instrumentation-sqlite3
+	depends = python-opentelemetry-instrumentation-starlette
+	depends = python-opentelemetry-instrumentation-system-metrics
+	depends = python-opentelemetry-instrumentation-threading
+	depends = python-opentelemetry-instrumentation-tornado
+	depends = python-opentelemetry-instrumentation-tortoiseorm
+	depends = python-opentelemetry-instrumentation-urllib
+	depends = python-opentelemetry-instrumentation-urllib3
+	depends = python-opentelemetry-instrumentation-wsgi
+
+pkgname = python-opentelemetry-distro
+	pkgdesc = OpenTelemetry Python Distro
+	url = https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/opentelemetry-distro
+	depends = python-opentelemetry-api
+	depends = python-opentelemetry-instrumentation
+	depends = python-opentelemetry-sdk
+
+pkgname = python-opentelemetry-instrumentation
+	pkgdesc = Instrumentation Tools & Auto Instrumentation for OpenTelemetry Python
+	url = https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/opentelemetry-instrumentation
+	depends = python-opentelemetry-api
+	depends = python-setuptools
+	depends = python-wrapt
+
+pkgname = python-opentelemetry-processor-baggage
+	pkgdesc = OpenTelemetry Baggage Span Processor
+	url = https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/processor/opentelemetry-processor-baggage
+	depends = python-opentelemetry-api
+	depends = python-opentelemetry-sdk
+	depends = python-wrapt
+
+pkgname = python-opentelemetry-propagator-aws-xray
+	pkgdesc = AWS X-Ray Propagator for OpenTelemetry
+	url = https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/propagator/opentelemetry-propagator-aws-xray
+	depends = python-opentelemetry-api
+
+pkgname = python-opentelemetry-propagator-ot-trace
+	pkgdesc = OT Trace Propagator for OpenTelemetry
+	url = https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/propagator/opentelemetry-propagator-ot-trace
+	depends = python-opentelemetry-api
+	depends = python-opentelemetry-sdk
+
+pkgname = python-opentelemetry-resource-detector-azure
+	pkgdesc = Azure Resource Detector for OpenTelemetry
+	url = https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/resource/opentelemetry-resource-detector-azure
+	depends = python-opentelemetry-instrumentation
+	depends = python-opentelemetry-sdk
+
+pkgname = python-opentelemetry-resource-detector-container
+	pkgdesc = Container Resource Detector for OpenTelemetry
+	url = https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/resource/opentelemetry-resource-detector-container
+	depends = python-opentelemetry-sdk
+
+pkgname = python-opentelemetry-sdk-extension-aws
+	pkgdesc = AWS SDK extension for OpenTelemetry
+	url = https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/sdk-extension/opentelemetry-sdk-extension-aws
+	depends = python-opentelemetry-sdk
+
+pkgname = python-opentelemetry-util-http
+	pkgdesc = Web util for OpenTelemetry
+	url = https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/util/opentelemetry-util-http
+	depends = 
