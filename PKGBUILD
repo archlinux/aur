@@ -4,7 +4,7 @@ pkgrel=1
 pkgdesc="A custom sugar-candy sddm theme by nixxo"
 arch=('any')
 url=""
-license=('GPL3') # Если лицензия отличается от стандартной, уточни здесь
+license=('GPL3')
 depends=('sddm' 'qt5-graphicaleffects' 'qt5-svg' 'qt5-quickcontrols2')
 conflicts=('sddm-sugar-dark')
 source=("https://github.com/nixxoq/dotfiles/raw/refs/heads/pkgs/hypo-candy.tar.gz")
@@ -24,8 +24,3 @@ package() {
 }
 
 options=(!strip)
-md5sums=('f01d4e02e28da31328d12044d42f2b6a')
-md5sums=('885ea6a0b940b6417b46d9cb3c9e6362')
-md5sums=('885ea6a0b940b6417b46d9cb3c9e6362')
-md5sums=('885ea6a0b940b6417b46d9cb3c9e6362')
-md5sums=('885ea6a0b940b6417b46d9cb3c9e6362')
