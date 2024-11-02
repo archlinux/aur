@@ -6,9 +6,9 @@
 
 pkgname=imapfilter
 pkgver=2.8.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A mail filtering utility for processing IMAP mailboxes"
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+arch=(i686 x86_64 armv7h aarch64)
 url="https://github.com/lefcha/imapfilter"
 license=('MIT')
 depends=('lua' 'pcre2' 'openssl')
@@ -23,8 +23,8 @@ build() {
   # in that case, uncomment next line.
   # LDFLAGS="-Wl,--hash-style=gnu -Wl"
 
-  sed -i "s/MYCFLAGS =/MYCFLAGS=${CFLAGS}/" src/Makefile
-  sed -i "s/MYLDFLAGS =/MYLDFLAGS=${LDFLAGS}/" src/Makefile
+  sed -i "s@MYCFLAGS =@MYCFLAGS=${CFLAGS}@" src/Makefile
+  sed -i "s@MYLDFLAGS =@MYLDFLAGS=${LDFLAGS}@" src/Makefile
 
   make PREFIX=/usr SSLCAFILE=/etc/ssl/certs/ca-certificates.crt all
 }
