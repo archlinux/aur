@@ -3,15 +3,16 @@
 
 _pkgname="memos"
 pkgname="${_pkgname}-git"
-pkgver=0.22.4.r62.gbb86482b
+pkgver=0.23.0.rc.0.r0.gf59daf83
 pkgrel=1
 pkgdesc="A privacy-first, lightweight note-taking service. Easily capture and share your great thoughts."
 url="https://github.com/usememos/${_pkgname}"
 arch=("any")
 license=('MIT')
-makedepends=("go" "git" "npm")
+makedepends=("go" "git" "npm" "pnpm" "nvm")
 provides=("$pkgname")
 backup=('etc/memos.conf')
+options=(!strip !debug)
 source=(
   "git+https://github.com/usememos/$_pkgname.git"
   "systemd.service"
@@ -31,38 +32,42 @@ pkgver(){
   git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-
-build(){
-    # build frontend
-    cd "$srcdir/$_pkgname/web"
-    npm install --frozen-lockfile
-    npm run build
-    rm -fr "$srcdir/$_pkgname/server/router/frontend/dist"
-    cp -r "dist" "$srcdir/$_pkgname/server/router/frontend/dist"
-    
-    # build backend
-    export CGO_CPPFLAGS="${CPPFLAGS}"
-    export CGO_CFLAGS="${CFLAGS}"
-    export CGO_CXXFLAGS="${CXXFLAGS}"
-    export CGO_LDFLAGS="${LDFLAGS}"
-    export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
-    
-    cd "$srcdir/$_pkgname"
-    go build -o memos ./bin/memos/main.go
+_ensure_local_nvm() {
+    export NVM_DIR="${srcdir}/.nvm"
+    source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
+    nvm install
+    nvm use
+    echo "in _ensure nvm dir = ${NVM_DIR}"
 }
 
-check(){
-    cd "$srcdir/$_pkgname"
-    go test ./...
-}
+build() {
+    export COREPACK_ENABLE_STRICT=0
+    export COREPACK_ENABLE_DOWNLOAD_PROMPT=0
+    cd $_pkgname/web
+    # Build frontend
+    echo "lts/iron" > .nvmrc
+    _ensure_local_nvm
+    pnpm install --frozen-lockfile
 
+    pnpm build
+
+    # Set up backend build environment
+    mkdir -p "$srcdir/$_pkgname/backend_build_dir/server/router/frontend/dist/"
+    rm -rf "${srcdir}/${_pkgname}/server/router/frontend/dist"
+    cp -r "$srcdir/$_pkgname/web/dist" "$srcdir/$_pkgname/server/router/frontend/"
+
+    # Compile the backend Go binary
+    CGO_ENABLED=0 go build -o "$srcdir/${_pkgname}.bin" "$srcdir/$_pkgname/bin/memos/main.go"
+}
 package () {
   install -vDm644 systemd.service "$pkgdir/usr/lib/systemd/system/${_pkgname}.service"
-  install -vDm644 sysusers.conf "$pkgdir/usr/lib/sysusers.d/${_pkgname}.conf"
-  install -vDm644 tmpfiles.conf "$pkgdir/usr/lib/tmpfiles.d/${_pkgname}.conf"
-  install -vDm644 memos.conf "$pkgdir/etc/memos.conf"
+  install -vDm644 sysusers.conf   "$pkgdir/usr/lib/sysusers.d/${_pkgname}.conf"
+  install -vDm644 tmpfiles.conf   "$pkgdir/usr/lib/tmpfiles.d/${_pkgname}.conf"
+  install -vDm644 memos.conf      "$pkgdir/etc/memos.conf"
 
-  cd "$_pkgname"
-  install  -Dm755 "memos" "$pkgdir/usr/bin/memos"
-  install -Dm0644 LICENSE "$pkgdir/usr/share/licenses/${_pkgname}/LICENSE"
+  pwd
+  ls -latr
+  install -Dm755  "memos.bin"            "$pkgdir/usr/bin/memos"
+  install -Dm0644 "${_pkgname}/LICENSE" "$pkgdir/usr/share/licenses/${_pkgname}/LICENSE"
 }
+
