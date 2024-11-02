@@ -1,0 +1,18 @@
+pkgbase = untitled-cli-parser
+	pkgdesc = C and C++ parser for CLI arguments
+	pkgver = 4.0.0.0
+	pkgrel = 1
+	url = https://github.com/MadLadSquad/UntitledCLIParser
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cmake
+	makedepends = make
+	depends = gcc-libs
+	depends = glibc
+	depends = pkgconf
+	provides = libUntitledCLIParser.so
+	source = https://github.com/MadLadSquad/UntitledCLIParser/releases/download/v4.0.0.0/untitled-cli-parser.tar.xz
+	sha256sums = c538205df1559bbefe84b487d117f984093a748a3ced915d62f4f3d47c396db3
+
+pkgname = untitled-cli-parser
