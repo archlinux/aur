@@ -1,7 +1,7 @@
 pkgbase = annotator
 	pkgdesc = Image annotation for Elementary OS
 	pkgver = 2.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/phase1geo/Annotator
 	arch = aarch64
 	arch = armv6h
@@ -14,6 +14,7 @@ pkgbase = annotator
 	makedepends = vala
 	depends = libadwaita
 	depends = libportal-gtk4
+	depends = granite7
 	provides = Annotator
 	source = https://github.com/phase1geo/Annotator/archive/refs/tags/2.0.0.tar.gz
 	sha1sums = d6d0447d2ea88d7c2da944e527e1ef2dc7d60fa9

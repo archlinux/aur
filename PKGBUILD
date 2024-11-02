@@ -3,12 +3,12 @@
 
 pkgname="annotator"
 pkgver=2.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Image annotation for Elementary OS"
 url="https://github.com/phase1geo/Annotator"
 license=(" GPL3")
 arch=('aarch64' 'armv6h' 'armv7h' 'i686' 'x86_64')
-depends=('libadwaita' 'libportal-gtk4')
+depends=('libadwaita' 'libportal-gtk4' 'granite7')
 makedepends=('git' 'meson' 'vala')
 provides=("Annotator")
 source=("https://github.com/phase1geo/Annotator/archive/refs/tags/${pkgver}.tar.gz")
