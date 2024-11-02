@@ -3,6 +3,7 @@
 # Maintainer: shtrophic <christoph at liebender dot dev>
 
 pkgname="paperless-ngx-venv"
+_pkgname="paperless-ngx"
 pkgver=2.13.2
 pkgrel=1
 pkgdesc="A supercharged version of paperless: scan, index and archive all your physical documents"
@@ -31,7 +32,7 @@ optdepends=("jbig2enc: smaller PDF size"
             "mariadb: mariadb database"
             "tika-server: extract metadata from files"
             "gotenberg: convert files to pdf")
-source=("https://github.com/$pkgname/$pkgname/releases/download/v$pkgver/$pkgname-v$pkgver.tar.xz"
+source=("https://github.com/$_pkgname/$_pkgname/releases/download/v$pkgver/$_pkgname-v$pkgver.tar.xz"
         "paperless.hook"
         "paperless.sysusers"
         "paperless.tmpfiles"
