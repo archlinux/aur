@@ -2,7 +2,7 @@
 # Contributor: Florian Bruhin (The Compiler) <archlinux.org@the-compiler.org>
 
 pkgname=baikal
-pkgver=0.9.5
+pkgver=0.10.0
 pkgrel=1
 pkgdesc='Lightweight CalDAV+CardDAV server'
 url='http://sabre.io/baikal/'
@@ -12,7 +12,7 @@ depends=('php')
 optdepends=('sqlite: Database' 'mariadb: Alternate database' 'php-sqlite: To use the sqlite backend')
 source=("https://github.com/fruux/Baikal/releases/download/$pkgver/baikal-$pkgver.zip"
         'baikal.install')
-sha512sums=('e544ed39047788bf001c81a44eb69a3db30a871253cb6bf12b54d5d476eaadc63d723192d41b67f2cf908a72d4c722def03d853df68b7fd464a4093e08ed0f19'
+sha512sums=('b17c3a8b1b20c3cfa5977978391b9319aba252adcf9718376d5e3d9cda222cd32f0ff33646bd258687bbbc1dfb27485567ffa80251fa4421e8f42b9372011928'
             'bd49f46a35ec6921ca4c20dc00122bdace237ebf37b4add00b21217bdacd5a622a6bcfe310cb79b9780c45384492a305716700f4bca55e043d804af714bbdaf1')
 options=('!strip')
 install=baikal.install
