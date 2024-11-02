@@ -4,7 +4,7 @@
 
 _pkgname=ddb_discord_presence
 pkgname=deadbeef-plugin-discord-git
-pkgver=r51.g18103a9
+pkgver=r66.g9d2bbf9
 pkgrel=1
 pkgdesc="DeaDBeeF Discord rich presence plugin"
 arch=('i686' 'x86_64')
@@ -25,8 +25,7 @@ pkgver() {
 prepare() {
   cd "${_pkgname}"
 
-  make submodules_load
-  make discord-rpc-patch
+  git submodule update --init
 }
 
 build() {
