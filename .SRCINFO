@@ -1,0 +1,16 @@
+pkgbase = satintel-git
+	pkgdesc = OSINT tool for Satellitest to extract satellite telemetry, receive orbital predictions, and parse TLEs
+	pkgver = r63.dbd28b5
+	pkgrel = 1
+	url = https://github.com/ANG13T/satintel
+	arch = any
+	license = custom
+	makedepends = git
+	makedepends = go
+	provides = satintel
+	conflicts = satintel
+	conflicts = satintel-bin
+	source = git+https://github.com/ANG13T/satintel
+	sha512sums = SKIP
+
+pkgname = satintel-git
