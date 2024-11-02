@@ -1,7 +1,7 @@
 # Maintainer: Zen <dev@pyl.onl>
 pkgname=python-ugrd-git
 pkgver=1.27.1.r14.ge83d58f
-pkgrel=4
+pkgrel=5
 pkgdesc="Python based initramfs generator with TOML defintions"
 arch=('x86_64')
 url="https://github.com/desultory/ugrd"
@@ -32,7 +32,7 @@ build() {
 package() {
     cd $_name
     python -m installer --destdir="$pkgdir" dist/*.whl
-    install -Dm0644 examples/example.conf "$pkgdir/etc/ugrd/config.toml"
+    install -Dm0644 examples/example.toml "$pkgdir/etc/ugrd/config.toml"
     install -Dm0644 completion/ugrd "$pkgdir/usr/share/bash-completion/completions/"
     install -Dm0644 completion/_ugrd "$pkgdir/usr/share/zsh/site-functions/"
 }
