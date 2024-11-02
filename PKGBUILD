@@ -1,6 +1,6 @@
 # Maintainer: Riolku <me [at] kgugeler [dot] ca>
 pkgname=kambi
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc='Simple rotating wallpaper client for Wayland'
 arch=('x86_64')
@@ -11,7 +11,7 @@ makedepends=('cargo' 'scdoc')
 provides=("$pkgname")
 conflicts=('kambi-git')
 source=("$url/archive/v$pkgver.tar.gz")
-sha256sums=('b551db3cb4ef5a30969b683e96252929329d421386b7412ac4fbfb4202f29f1b')
+sha256sums=('8b0e2b5ef4e6affa76ab50fcdbf886fbfd69537f8539fc75645e5dcaa8cfa9c6')
 
 prepare() {
   cd "$srcdir/$pkgname-v$pkgver"
