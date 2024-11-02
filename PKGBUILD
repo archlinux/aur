@@ -11,7 +11,7 @@ pkgdesc="WLAN penetration tool"
 url="https://www.kali.org/tools/mdk3/"
 arch=("x86_64")
 license=('GPL2')
-depends=('glibc>=14' 'aircrack-ng')
+depends=('glibc' 'aircrack-ng')
 source=(https://salsa.debian.org/pkg-security-team/${pkgname}/-/archive/debian/master/${pkgname}-debian-master.tar.bz2)
 sha512sums=('79dff994816e78ae1001074f93f266ad7b820cf03c0b2c3e61d9eb73e2a047c9bb912bcfb14f6dec09584c017407bd84fea127a11cc355b5f8a77102ef0ded89')
 
