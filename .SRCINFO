@@ -1,6 +1,6 @@
 pkgbase = moar
 	pkgdesc = A pager designed to just do the right thing without any configuration.
-	pkgver = 1.27.2
+	pkgver = 1.28.0
 	pkgrel = 1
 	url = https://github.com/walles/moar
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = moar
 	license = BSD-2-Clause-Views
 	makedepends = go
 	depends = glibc
-	source = moar-1.27.2.tar.gz::https://github.com/walles/moar/archive/v1.27.2.tar.gz
-	sha256sums = c1aa0c217dd5b59535b0cbe6b0a6e02a14cdff01bbe2146ea1b0968036c9a412
+	source = moar-1.28.0.tar.gz::https://github.com/walles/moar/archive/v1.28.0.tar.gz
+	sha256sums = 6997b8c675950481793fbdcd6d0bb85b887901865031136a8135ca3cb28b1dd3
 
 pkgname = moar
