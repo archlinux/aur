@@ -1,0 +1,27 @@
+pkgbase = mingw-w64-wxmsw-git
+	pkgdesc = Win32 implementation of wxWidgets API for GUI (mingw-w64)
+	pkgver = 3.2.0.rc1.r4246.g12b09a5
+	pkgrel = 1
+	url = https://wxwidgets.org
+	arch = any
+	license = custom:wxWindows
+	makedepends = mingw-w64-cmake
+	makedepends = mingw-w64-configure
+	depends = mingw-w64-crt
+	depends = mingw-w64-expat
+	depends = mingw-w64-libpng
+	depends = mingw-w64-libjpeg-turbo
+	depends = mingw-w64-libtiff
+	provides = mingw-w64-wxmsw
+	provides = mingw-w64-wxmsw2.9
+	provides = mingw-w64-wxmsw-static
+	conflicts = mingw-w64-wxmsw
+	conflicts = mingw-w64-wxmsw2.9
+	conflicts = mingw-w64-wxmsw-static
+	options = staticlibs
+	options = !strip
+	options = !buildflags
+	source = git+https://github.com/wxWidgets/wxWidgets.git
+	b2sums = SKIP
+
+pkgname = mingw-w64-wxmsw-git
