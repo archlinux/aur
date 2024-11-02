@@ -38,8 +38,3 @@ package() {
   install -Dm755 "$cleanname" "$pkgdir/usr/bin/$cleanname"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$cleanname/LICENSE"
 }
-
-pkgver() {
-  cd "$pkgname"
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
-}
