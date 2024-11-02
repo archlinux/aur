@@ -5,8 +5,8 @@
 pkgname=jnetmap
 _pkgname=jNetMap
 pkgver=0.5.6
-subver=734
-pkgrel=2
+subver=733
+pkgrel=3
 pkgdesc="Graphical network monitoring and documentation tool"
 arch=('any')
 url="http://rakudave.ch/jnetmap"
