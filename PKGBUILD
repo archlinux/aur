@@ -1,13 +1,14 @@
 _pkgname=bibata_cursor
 pkgname=bibata-cursor-git
-pkgver=0.1.r0.40e6dcf
+pkgver=0.1.r11.2fdeee7
 pkgrel=1
 pkgdesc='Bibata Cursor Themes, including hyprcursor and Xcursor'
 arch=('any')
 url="https://github.com/rtgiskard/${_pkgname}"
 license=('GPL-3.0-or-later')
-makedepends=('librsvg' 'xorg-xcursorgen')
+makedepends=('git' 'librsvg' 'python' 'xorg-xcursorgen')
 options=('!strip')
+conflicts=('bibata-cursor-theme')
 source=("git+https://github.com/rtgiskard/${_pkgname}.git")
 b2sums=('SKIP')
 
