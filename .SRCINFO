@@ -1,16 +1,18 @@
 pkgbase = python-rserve
 	pkgdesc = Python client to remotely access the R statistic package via network
-	pkgver = 1.0.3
+	pkgver = 1.0.4
 	pkgrel = 1
-	url = https://github.com/ralhei/pyRserve
+	url = https://github.com/ralhei/pyrserve
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
+	depends = python
 	depends = python-numpy
-	source = https://files.pythonhosted.org/packages/source/p/pyRserve/pyRserve-1.0.3.tar.gz
-	sha256sums = b96b439bc63ed45315eae2bcf7be5301444fc21f7632743538d2c438d287b286
+	provides = python-pyrserve
+	source = https://files.pythonhosted.org/packages/source/p/pyrserve/pyrserve-1.0.4.tar.gz
+	sha256sums = 29c57f375afc38642cdea7df477b9f565f07805656aa1066bba8cfcb04dfa61a
 
 pkgname = python-rserve
