@@ -1,7 +1,7 @@
 pkgbase = scanpy-scripts
 	pkgdesc = Scripts for using scanpy from the command line
-	pkgver = 1.1.6
-	pkgrel = 2
+	pkgver = 1.9.301
+	pkgrel = 1
 	url = https://github.com/ebi-gene-expression-group/scanpy-scripts
 	arch = any
 	license = MIT
@@ -11,7 +11,7 @@ pkgbase = scanpy-scripts
 	makedepends = python-wheel
 	depends = scanpy
 	depends = python-click
-	source = https://files.pythonhosted.org/packages/source/s/scanpy-scripts/scanpy-scripts-1.1.6.tar.gz
-	sha256sums = 1701e35f93f5370ab451760b3892caf01b46d2898c3dd149e1dcba602e45eea1
+	source = https://files.pythonhosted.org/packages/source/s/scanpy-scripts/scanpy-scripts-1.9.301.tar.gz
+	sha256sums = c681d9cf5670d8b771b7327684f19d52f9661ee31e685241af4d960220a5d63b
 
 pkgname = scanpy-scripts
