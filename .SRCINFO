@@ -1,0 +1,13 @@
+pkgbase = chromium-surfingkeys
+	pkgdesc = Unpacked browser extension that provides keyboard-based navigation and control of the web in the spirit of the VIM editor
+	pkgver = f152a9a8
+	pkgrel = 1
+	url = https://github.com/brookhong/Surfingkeys.git
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = npm
+	source = surfingkeys::git+https://github.com/brookhong/Surfingkeys.git
+	sha256sums = SKIP
+
+pkgname = chromium-surfingkeys-git
