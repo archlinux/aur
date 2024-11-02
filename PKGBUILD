@@ -4,10 +4,10 @@
 pkgname='python-ledger-bitcoin'
 _name='ledger_bitcoin'
 pkgver='0.3.0'
-pkgrel=1
+pkgrel=2
 pkgdesc="Client for Ledger Nano Bitcoin application"
 url="https://github.com/LedgerHQ/app-bitcoin-new"
-depends=('python' 'python-ledgercomm')
+depends=('python' 'python-btchip' 'python-ledgercomm')
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 license=('Apache-2.0')
 arch=('any')
