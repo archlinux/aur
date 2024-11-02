@@ -6,9 +6,9 @@ pkgdesc='Bibata Cursor Themes, including hyprcursor and Xcursor'
 arch=('any')
 url="https://github.com/rtgiskard/${_pkgname}"
 license=('GPL-3.0-or-later')
+conflicts=('bibata-cursor-theme')
 makedepends=('git' 'librsvg' 'python' 'xorg-xcursorgen')
 options=('!strip')
-conflicts=('bibata-cursor-theme')
 source=("git+https://github.com/rtgiskard/${_pkgname}.git")
 b2sums=('SKIP')
 
