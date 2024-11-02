@@ -1,7 +1,7 @@
 # Maintainer: Kppqju77 <ju.adde-gmail-com>
 
 pkgname=flutter-beta
-pkgver=3.26.0_0.1.pre
+pkgver=3.27.0_0.1.pre
 pkgrel=1
 pkgdesc="A new mobile app SDK to help developers and designers build modern mobile apps for iOS and Android."
 arch=("x86_64")
@@ -20,7 +20,7 @@ source=(
   "${pkgname%-beta}.sh"
   "${pkgname%-beta}.csh"
 )
-sha256sums=('dca40a84c968e6a0344ff71bdd0e5d83bb6c678287f0d104c0e7a98892c38b58'
+sha256sums=('f25e6f653088a7c08ae7ca9b9e2f3bb76ddf8b9816491c5062bc25b9d37f98db'
             '1dea1952d386c43948b9970382c2da5b65b7870684b8ad2ad89124e873aa485a'
             '7ef10d753cfaac52d243549764a793f44f8284a1f4b11715ccd2fa915b026a6f')
 
