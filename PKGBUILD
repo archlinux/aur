@@ -3,7 +3,7 @@
 _org='gepetto'
 _pkgname='gepetto-viewer'
 pkgname=("$_pkgname" "$_pkgname-docs")
-pkgver=5.0.0
+pkgver=5.2.0
 pkgrel=1
 pkgdesc="Graphical Interface for Pinocchio and HPP."
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ depends=('openscenegraph' 'osgqt' 'pythonqt' 'boost-libs' 'glibc' 'qgv' 'qt5-bas
 makedepends=('cmake' 'doxygen' 'urdfdom' 'boost')
 optdepends=('openscenegraph-dae: load DAE files')
 source=($url/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz{,.sig})
-sha256sums=('1a9a15ecd9d4094071e110bad6daa2c35dedd2f552574c9b0a7c73161414cbc8'
+sha256sums=('136e8b65e467aa3b822a0d20afc43972524bb910106470707e1a544ee11c1511'
             'SKIP')
 validpgpkeys=('9B1A79065D2F2B806C8A5A1C7D2ACDAF4653CF28' 'A031AD35058955293D54DECEC45D22EF408328AD')
 
