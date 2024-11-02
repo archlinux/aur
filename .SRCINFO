@@ -1,7 +1,7 @@
 pkgbase = zwcad-bin
 	pkgdesc = ZWSOFT研发的二维CAD软件，可满足看图、审图、打印工作需要
 	pkgver = 25.0.3.4
-	pkgrel = 0
+	pkgrel = 1
 	epoch = 1
 	url = https://www.zwcad.com
 	arch = x86_64
