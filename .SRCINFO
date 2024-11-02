@@ -1,6 +1,6 @@
 pkgbase = kambi
 	pkgdesc = Simple rotating wallpaper client for Wayland
-	pkgver = 0.1.1
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://git.sr.ht/~riolku/kambi
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = kambi
 	depends = glibc
 	provides = kambi
 	conflicts = kambi-git
-	source = https://git.sr.ht/~riolku/kambi/archive/v0.1.1.tar.gz
-	sha256sums = af7c4ed4dd4e1ffac5f5d44a01e8505ba4cfc67026bbb785b4791c6aedc83ddc
+	source = https://git.sr.ht/~riolku/kambi/archive/v0.1.2.tar.gz
+	sha256sums = 8b0e2b5ef4e6affa76ab50fcdbf886fbfd69537f8539fc75645e5dcaa8cfa9c6
 
 pkgname = kambi
