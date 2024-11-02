@@ -4,9 +4,9 @@
 # Contributor: Andreas Radke <andyrtr@archlinux.org>
 
 pkgname=jpilot
-pkgver=2.0.1
-pkgrel=5
-pkgGitHubCommit=f153203
+pkgver=2.0.2
+pkgrel=1
+pkgGitHubCommit=23fafa8
 pkgdesc="A desktop organizer application for the Palm Pilot"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/juddmon/jpilot/"
@@ -14,7 +14,7 @@ license=('GPL2')
 depends=('openssl' 'gtk3' 'pilot-link' 'slang')
 makedepends=('intltool')
 source=("https://codeload.github.com/juddmon/jpilot/legacy.tar.gz/$pkgGitHubCommit")
-sha256sums=('a094c65587d5a97dc35d700e21372e129c4f6214000c7976b619a6a8d1a58b89')
+sha256sums=('50365229ba64b3f6f57192cdc01657aa647cad75441d1729915b3435e3c45cff')
 
 build() {
 	cd "${srcdir}"/juddmon-$pkgname-$pkgGitHubCommit
