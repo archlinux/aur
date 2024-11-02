@@ -34,7 +34,7 @@ build(){
 }
 
 package() {
-  cd "${cleanname}-git"
+  cd "${srcdir}/${cleanname}-git" || exit 1
   install -Dm755 "$cleanname" "$pkgdir/usr/bin/$cleanname"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$cleanname/LICENSE"
 }
