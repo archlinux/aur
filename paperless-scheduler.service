@@ -1,0 +1,15 @@
+[Unit]
+Description=Paperless Celery Beat
+After=network.target
+Requires=redis.service
+PartOf=paperless.target
+
+[Service]
+User=paperless
+Group=paperless
+WorkingDirectory=/usr/share/paperless/src
+ExecStart=/usr/lib/paperless/scheduler
+Restart=on-abort
+
+[Install]
+WantedBy=paperless.target

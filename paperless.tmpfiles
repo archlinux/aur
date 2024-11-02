@@ -1,0 +1,7 @@
+f /etc/paperless.conf 0640 root paperless
+d /var/lib/paperless 0770 paperless paperless
+d /var/lib/paperless/consume 0770 paperless paperless
+d /var/lib/paperless/data 0750 paperless paperless
+d /var/lib/paperless/media 0750 paperless paperless
+d /var/lib/paperless/tmp 0750 paperless paperless
+d /var/lib/paperless/uploads 0750 paperless paperless

@@ -1,0 +1,15 @@
+[Unit]
+Description=Paperless Celery Workers
+After=network.target
+Requires=redis.service
+PartOf=paperless.target
+
+[Service]
+User=paperless
+Group=paperless
+WorkingDirectory=/usr/share/paperless/src
+ExecStart=/usr/lib/paperless/task-queue
+Restart=on-abort
+
+[Install]
+WantedBy=paperless.target

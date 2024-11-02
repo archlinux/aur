@@ -1,0 +1,15 @@
+[Unit]
+Description=Paperless consumer service
+After=network.target
+Requires=redis.service
+PartOf=paperless.target
+
+[Service]
+User=paperless
+Group=paperless
+WorkingDirectory=/usr/share/paperless/src
+ExecStart=/usr/bin/paperless-manage document_consumer
+Restart=on-abort
+
+[Install]
+WantedBy=paperless.target
