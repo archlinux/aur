@@ -17,8 +17,11 @@ sha512sums=('79dff994816e78ae1001074f93f266ad7b820cf03c0b2c3e61d9eb73e2a047c9bb9
 
 prepare() {
   cd ${pkgname}-debian-master
+  patches=$(cat debian/patches/series)
+  for patch in $patches; do
+    patch -Np1 -i debian/patches/$patch
+  done
   sed 's|sbin|bin|g' -i Makefile
-  patch -p1 -i debian/patches/ftbfs_with_gcc-14.patch
 }
 
 
