@@ -4,9 +4,9 @@
 # Contributor: Jun Bo Bi <jambonmcyeah@gmail.com>
 
 pkgname=netcoredbg
-_pkgver=3.1.1-1042
+_pkgver=3.1.2-1054
 pkgver="${_pkgver//-/_}"
-pkgrel=2
+pkgrel=1
 pkgdesc='Debugger for .NET Core runtime'
 url='https://github.com/Samsung/netcoredbg'
 license=('MIT')
@@ -19,7 +19,7 @@ _runtime_tag=81cabf2857a01351e5ab578947c7403a5b128ad1
 source=("$pkgname-$_pkgver.tar.gz::https://github.com/Samsung/netcoredbg/archive/refs/tags/$_pkgver.tar.gz"
         "dotnet_runtime_${_runtime_tag:0:7}.tar.gz::https://github.com/dotnet/runtime/archive/$_runtime_tag.tar.gz")
 
-sha256sums=('14578158c84edc58d863632ac55969e876d04892f6c2bd058a60638c706b5352'
+sha256sums=('2699f6dd0275c5943339183fc5c7e5c0cdfe77a23388a9fdab3f2c6929ff40a7'
             'bbd5b1651bfc4c75b67ef23b71af58f6441401185f22233daefd35cc9ec72cfd')
 
 build() {
