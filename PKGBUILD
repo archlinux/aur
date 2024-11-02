@@ -56,32 +56,32 @@ install="paperless.install"
 
 prepare(){
  # use arch linux canonical paths
- sed -i "$pkgname/paperless.conf" \
+ sed -i "$_pkgname/paperless.conf" \
      -e "s|#PAPERLESS_CONSUMPTION_DIR=../consume|PAPERLESS_CONSUMPTION_DIR=/var/lib/paperless/consume|" \
      -e "s|#PAPERLESS_DATA_DIR=../data|PAPERLESS_DATA_DIR=/var/lib/paperless/data|" \
      -e "s|#PAPERLESS_MEDIA_ROOT=../media|PAPERLESS_MEDIA_ROOT=/var/lib/paperless/media|" \
      -e "s|#PAPERLESS_STATICDIR=../static|PAPERLESS_STATICDIR=/usr/share/paperless/static|" \
      -e "s|#PAPERLESS_CONVERT_TMPDIR=/var/tmp/paperless|PAPERLESS_CONVERT_TMPDIR=/var/lib/paperless/tmp|"
  # remove hardcoded bind address
- sed -i "$pkgname/gunicorn.conf.py" \
+ sed -i "$_pkgname/gunicorn.conf.py" \
      -e "s|bind = '0.0.0.0:8000'||"
  # add custom dir for uploaded files
- printf "\n# Uploads\n\nPAPERLESS_SCRATCH_DIR=/var/lib/paperless/uploads" >> "$pkgname/paperless.conf"
+ printf "\n# Uploads\n\nPAPERLESS_SCRATCH_DIR=/var/lib/paperless/uploads" >> "$_pkgname/paperless.conf"
  # add customizable bind address, will be used by paperless-webserver.service
- printf "\n\n# Webserver\n\nGUNICORN_CMD_ARGS='--bind=127.0.0.1:8000'" >> "$pkgname/paperless.conf"
+ printf "\n\n# Webserver\n\nGUNICORN_CMD_ARGS='--bind=127.0.0.1:8000'" >> "$_pkgname/paperless.conf"
 
  # create venv
  mkdir -p "$srcdir/venv"
  python -m venv "$srcdir/venv"
  source "$srcdir/venv/bin/activate"
- pip install -r "$srcdir/$pkgname/requirements.txt"
+ pip install -r "$srcdir/$_pkgname/requirements.txt"
  deactivate
 }
 
 package(){
  # program files
  install -d "$pkgdir/usr/share/paperless" "$pkgdir/usr/bin"
- cp -R "$pkgname"/* "$pkgdir/usr/share/paperless"
+ cp -R "$_pkgname"/* "$pkgdir/usr/share/paperless"
 
  # main executable
  cat << EOF > "$pkgdir/usr/bin/paperless-manage"
@@ -121,7 +121,7 @@ EOF
  chmod 755 "$pkgdir/usr/lib/paperless/"{scheduler,task-queue,webserver} "$pkgdir/usr/share/paperless/src/manage.py" "$pkgdir/usr/bin/paperless-manage"
 
  # config file
- install -D -m 640 "$pkgname/paperless.conf" "$pkgdir/etc/paperless.conf"
+ install -D -m 640 "$_pkgname/paperless.conf" "$pkgdir/etc/paperless.conf"
  rm "$pkgdir/usr/share/paperless/paperless.conf"
  ln -s "/etc/paperless.conf" "$pkgdir/usr/share/paperless/paperless.conf"
  # optional pacman hook
