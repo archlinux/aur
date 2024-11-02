@@ -1,6 +1,6 @@
 pkgbase = thunar-devel
 	pkgdesc = File manager for Xfce (development version)
-	pkgver = 4.19.3
+	pkgver = 4.19.4
 	pkgrel = 1
 	url = https://thunar.xfce.org
 	arch = i686
@@ -29,9 +29,9 @@ pkgbase = thunar-devel
 	optdepends = thunar-archive-plugin: create and deflate archives
 	optdepends = thunar-media-tags-plugin: view/edit id3/ogg tags
 	optdepends = catfish: file search
-	provides = thunar=4.19.3
+	provides = thunar=4.19.4
 	conflicts = thunar
-	source = https://archive.xfce.org/src/xfce/thunar/4.19/thunar-4.19.3.tar.bz2
-	sha256sums = 9a7876352e8a54dd5a52c64affb54e7c8582e64dd569d9fe43af5835d9485b37
+	source = https://archive.xfce.org/src/xfce/thunar/4.19/thunar-4.19.4.tar.bz2
+	sha256sums = 6358d15d1e4650e6d09386bc8449217cf81536a7456f059c223dab3664ea64f6
 
 pkgname = thunar-devel
