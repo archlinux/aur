@@ -2,7 +2,7 @@
 # Contributor: Fabien Devaux <fdev31@gmail.com>
 pkgname=wlr-layout-ui
 pkgver=1.6.14
-pkgrel=0
+pkgrel=1
 pkgdesc="GUI to configure your screens"
 arch=(any)
 url="https://github.com/fdev31/wlr-layout-ui"
@@ -24,13 +24,14 @@ noextract=()
 md5sums=('5c3c3329f57ac842193d4abb34167488')
 
 build() {
-	cd "$srcdir/${pkgname%-git}"
+	cd "$srcdir/${pkgname%-git}-${pkgver}"
 	python -m build --wheel --no-isolation
 }
 
 package() {
-	cd "$srcdir/${pkgname%-git}"
+	cd "$srcdir/${pkgname%-git}-${pkgver}"
+	python -m build --wheel --no-isolation
 	python -m installer --destdir="$pkgdir" dist/*.whl
-	install -Dm644 "${srcdir}/wlr-layout-ui/files/wlr-layout-ui.desktop"\
+	install -Dm644 "${srcdir}/wlr-layout-ui-${pkgver}/files/wlr-layout-ui.desktop"\
 		"${pkgdir}/usr/share/applications/wlr-layout-ui.desktop"
 }
