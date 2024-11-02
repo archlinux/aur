@@ -13,9 +13,9 @@ _devenv=false
 _generic_release=false
 
 ## real pkgrel is the eval one
-pkgver=9.20.w105.s78bd3f0
+pkgver=9.20.w144.s6ae3756
 pkgrel=1
-eval pkgrel=2
+eval pkgrel=3
 
 ################################################################################################################################
 ################################################################################################################################
@@ -35,7 +35,7 @@ _enabled_staging=()
 _disabled_staging=(eventfd_synchronization) # added manually from proton
 
 ## main AUR version control setting, wine/staging base will be taken from this if custompatches=false (default)
-_patchbase_tag="10-27-2024-3a736901-78bd3f0c"
+_patchbase_tag="11-01-2024-ff2070b7-6ae3756a"
 
 ## to use this, set this to true, create a "custompatches" folder in the top-level PKGBUILD directory, and place your patches there.
 ## the patches from the wine-osu-patches git repo will no longer be applied, but you can copy them to the
@@ -45,8 +45,8 @@ _custompatches=false
 
 ## (with custompatches) uses wine/staging master if empty, uses given commit or tag if set
 ## (without custompatches) ignored and overwritten by upstream commits from patchbase repo
-_desired_wine_commit=3a736901cdd588ba7fbb4318e5f5069793268a01
-_desired_staging_commit=78bd3f0c6d0beb781b87dd9d54fd186e8f7628ef
+_desired_wine_commit=ff2070b79006c74546c24106a02b814a691eba1b
+_desired_staging_commit=6ae3756a4f5023a07870bfcd9b38b148e8527797
 
 ## (with custompatches) ignore the _desired_wine_commit above and take the wine commit from the "upstream-commit" file in the staging repo
 _use_staging_upstream=false
@@ -88,7 +88,7 @@ if [ "$_wow64build" = "true" ]; then _wowname="-wow64"; else _wowname=""; fi
 if [ "${_generic_release}" = "true" ]; then
   PKGEXT='.pkg.tar.xz'
   COMPRESSXZ=(xz -9 -c -z - --threads=0)
-  _cpu_target="-march=x86-64 -mtune=generic"
+  _cpu_target="-march=x86-64 -mtune=generic -msse -msse2"
 else
   _cpu_target="-march=native -mtune=native"
 fi
@@ -134,7 +134,7 @@ noextract=()
 ## don't needlessly add the wine-osu-patches repo if we explicitly specify custom ones
 if ! { [ -d "${_where}"/custompatches ] && [ "${_custompatches}" = "true" ] ; }; then
   source+=("git+https://github.com/whrvt/wine-osu-patches.git#tag=${_patchbase_tag}")
-  sha512sums+=('8364443322bea87adafa861cdfd45862d6a15592a1f351bc69f0f6154d9dbd69d45515ce313c8b38dfaae392af3438e03e40b9e92bfda5ba4b8774340c9d5701')
+  sha512sums+=('f2cccafcfa1be98086ebc78f60f76fb702c49292c2e2114c0cb6948d227275079f7828729ecaa6d539fa04b9286930f89a82b8891ab4af1eac402be5121b40b7')
 
   if [ "${_custompatches}" = "true" ]; then
     msg2 "WARNING: _custompatches=true but custompatches directory not found. Will be using wine-osu-patches repo."
@@ -193,6 +193,8 @@ makedepends=(autoconf bison ccache perl fontforge flex
   nasm
   attr
   gtk3
+  zlib
+  xz
 #  ntsync-header
 )
 
@@ -222,7 +224,7 @@ optdepends=(
 
 if [ "${_wow64build}" != "true" ]; then
   depends+=(lib32-ffmpeg lib32-libxkbcommon libvulkan.so=1-32 lib32-gst-plugins-base-libs lib32-gst-plugins-good lib32-gnutls lib32-libxcomposite lib32-libpulse lib32-fontconfig lib32-lcms2 lib32-libxml2 lib32-libxcursor lib32-libxrandr lib32-libxdamage lib32-libxi lib32-gettext lib32-freetype2 lib32-glu lib32-libsm lib32-gcc-libs lib32-libpcap)
-  makedepends+=(lib32-wayland lib32-gtk3 lib32-attr lib32-giflib lib32-libpng lib32-libxmu lib32-libxxf86vm lib32-libldap lib32-mpg123 lib32-openal lib32-v4l-utils lib32-alsa-lib lib32-mesa lib32-mesa-libgl lib32-opencl-icd-loader lib32-libxslt lib32-sdl2)
+  makedepends+=(lib32-zlib lib32-xz lib32-wayland lib32-gtk3 lib32-attr lib32-giflib lib32-libpng lib32-libxmu lib32-libxxf86vm lib32-libldap lib32-mpg123 lib32-openal lib32-v4l-utils lib32-alsa-lib lib32-mesa lib32-mesa-libgl lib32-opencl-icd-loader lib32-libxslt lib32-sdl2)
   optdepends+=(lib32-gst-libav lib32-libusb lib32-libxinerama lib32-giflib lib32-libpng lib32-libldap lib32-mpg123 lib32-openal lib32-v4l-utils lib32-alsa-plugins lib32-alsa-lib lib32-libjpeg-turbo lib32-libxcomposite lib32-libxinerama lib32-opencl-icd-loader lib32-libxslt lib32-vkd3d lib32-sdl2)
   if [ "${_use_clang}" = "true" ]; then makedepends+=(lib32-llvm-libs); fi
 fi
@@ -310,7 +312,7 @@ _set_vars() {
   export PATH="${_cross_path}"
 
   # note: using Oz for a smaller memory footprint, otherwise 32bit programs can hit the virtual address space limit quickly
-  _common_cflags="${_cpu_target} -pipe -Oz -mfpmath=sse -mno-avx -mno-avx2 -fno-strict-aliasing -fomit-frame-pointer -Wno-error=incompatible-pointer-types -Wno-error=implicit-function-declaration -Wno-error=int-conversion -w"
+  _common_cflags="${_cpu_target} -pipe -Oz -mfpmath=sse -fno-strict-aliasing -fomit-frame-pointer -Wno-error=incompatible-pointer-types -Wno-error=implicit-function-declaration -Wno-error=int-conversion -w"
   _native_common_cflags="${_lto_flags:-} ${_extra_native_flags:-}" # only for the non-mingw side
 
   export CPPFLAGS="-U_FORTIFY_SOURCE -D_FORTIFY_SOURCE=0 -DNDEBUG -D_NDEBUG"
@@ -351,12 +353,19 @@ _set_vars64() {
   _common_32_cflags=""
   _set_vars
 
+  if [ -f "/usr/lib/libunwind.a" ] && [ -f "/usr/lib/libz.a" ] && [ -f "/usr/lib/liblzma.a" ]; then
+    export UNWIND_CFLAGS=""
+    export UNWIND_LIBS="-static-libgcc -l:libunwind.a -l:liblzma.a -l:libz.a"
+  fi
+
   export CROSSCC="${x86_64_CC}"
 }
 
 _set_vars32() {
   ## lib32 fsync doesn't compile with clang due to undefined atomic ops otherwise (ntdll.so)
-  if [ "${_use_clang}" = "true" ] || [ "${_use_clang}" = "bundled" ]; then export I386_LIBS="-latomic"; fi
+  # if [ "${_use_clang}" = "true" ] || [ "${_use_clang}" = "bundled" ]; then
+  #   export I386_LIBS="-latomic"
+  # fi
 
   _common_64_cflags=""
   _common_32_cflags=""
