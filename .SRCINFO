@@ -12,6 +12,7 @@ pkgbase = python-wpiformat-git
 	depends = clang
 	depends = python-black
 	depends = python-gersemi
+	depends = python-isort
 	depends = python-regex
 	provides = python-wpiformat
 	conflicts = python-wpiformat

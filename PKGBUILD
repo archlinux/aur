@@ -1,13 +1,13 @@
 # Maintainer: Tyler Veness <calcmogul at gmail dot com>
 
 pkgname=python-wpiformat-git
-pkgver=2024.31
-pkgrel=2
+pkgver=2024.45
+pkgrel=1
 pkgdesc="Linters and formatters for ensuring WPILib's source code conforms to its style guide"
 arch=('i686' 'x86_64')
 url="https://github.com/wpilibsuite/styleguide"
 license=('custom=FRC-BSD')
-depends=('clang' 'python-black' 'python-gersemi' 'python-regex')
+depends=('clang' 'python-black' 'python-gersemi' 'python-isort' 'python-regex')
 makedepends=('python-build' 'python-installer' 'python-tox')
 provides=('python-wpiformat')
 conflicts=('python-wpiformat')
