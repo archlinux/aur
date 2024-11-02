@@ -3,7 +3,7 @@
 _pkgname=balong-usbdload
 pkgname="${_pkgname}-git"
 _pkgver=latest
-pkgver=2.20.r89.20191227.c0ebd14
+pkgver=2.20.r91.20241023.4fa8b92
 pkgrel=1
 pkgdesc='Low level USB Flashing/ downloader utility for Huawei E3372 and other modems baesd on Balong v7. Includes temporary usb loader "firmware" for some devices.'
 arch=('i686' 'x86_64')
