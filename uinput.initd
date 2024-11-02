@@ -1,0 +1,21 @@
+#!/sbin/openrc-run
+
+command="/sbin/modprobe uinput"
+command_background="yes"
+pidfile="/run/uinput.pid"
+
+depend() {
+  need modules
+}
+
+start_pre() {
+  ebegin "Loading uinput module"
+  $command
+  eend $?
+}
+
+stop_post() {
+  ebegin "Unloading uinput module"
+  /sbin/rmmod uinput
+  eend $?
+}
