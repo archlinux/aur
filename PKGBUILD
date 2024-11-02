@@ -3,7 +3,7 @@
 _pkgname=Equibop
 pkgname=equibop-bin
 _appname=equibop-desktop
-pkgver=2.0.9
+pkgver=2.1.0
 _electronversion=33
 pkgrel=2
 pkgdesc="A Vesktop fork cross platform electron-based desktop app aiming to give you a snappier Discord experience with Equicord pre-installed"
@@ -28,8 +28,8 @@ source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${url}/releases/download
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${url}/releases/download/v${pkgver}/${pkgname%-bin}-linux-amd64.deb")
 source=("${pkgname%-bin}.sh")
 sha256sums=('ff735fe74c99880bd05cf90473db836149b7daa8d01bf7334b299aeb12a46f3e')
-sha256sums_aarch64=('3eb5b14cbb0818d16e3f9a9d07e16a377a7f5349c26b3a45c05a4afa1ae7943b')
-sha256sums_x86_64=('f453f964ecb5dbb62cee34462e2bfd6b6cdb899c637f380d8fd1133ea56e6848')
+sha256sums_aarch64=('cd134ac793817f1ce055a4abda5714e944c05ad8a5fcd6112f6d89f4dab1c427')
+sha256sums_x86_64=('9941a5fd156b203d2eaf27849969d8743270310c4d5a5a4e608a9b181886406c')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
