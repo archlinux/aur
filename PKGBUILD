@@ -2,7 +2,7 @@
 
 pkgname=gpu-screen-recorder-ui
 pkgver=r89.6e91159
-pkgrel=1
+pkgrel=2
 pkgdesc='A fullscreen overlay UI for GPU Screen Recorder in the style of ShadowPlay. X11 only.'
 arch=('x86_64')
 url="https://git.dec05eba.com/gpu-screen-recorder-ui"

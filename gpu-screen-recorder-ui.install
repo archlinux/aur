@@ -1,3 +1,7 @@
 post_install() {
     echo "You can start the overlay UI at system startup by running 'systemctl enable --now --user gpu-screen-recorder-ui' and press Alt+Z to show/hide the UI"
 }
+
+post_upgrade() {
+    echo "GPU Screen Recorder UI has updated. Run 'systemctl restart --user gpu-screen-recorder-ui' to use the new version of the software without rebooting"
+}
