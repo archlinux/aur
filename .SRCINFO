@@ -1,8 +1,8 @@
 pkgbase = python-holidays
 	pkgdesc = Generate and work with holidays in Python
-	pkgver = 0.41
+	pkgver = 0.59
 	pkgrel = 1
-	url = https://github.com/dr-prodigy/python-holidays
+	url = https://github.com/vacanza/holidays
 	arch = any
 	license = MIT
 	makedepends = python-build
@@ -13,7 +13,7 @@ pkgbase = python-holidays
 	depends = python-convertdate
 	depends = python-korean_lunar_calendar
 	depends = python-hijri-converter
-	source = https://files.pythonhosted.org/packages/source/h/holidays/holidays-0.41.tar.gz
-	b2sums = d87884c057dbe6bc4b6ea248985dcc9cf4e065137cb97595bc35dd7ea82358a46d83149ab46c48f5e038f030b255b7ab2987b718787e30bf43edf642eda57ccf
+	source = https://files.pythonhosted.org/packages/source/h/holidays/holidays-0.59.tar.gz
+	b2sums = 9350b9cf3f79dcc214a2ea63ff5b652eb3ff13226198505d9d157253589a5960663e1dbcb2d776ad1c6e5d55bd08189e9b3622c9e307c27c5889dac4689030f7
 
 pkgname = python-holidays
