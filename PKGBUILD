@@ -7,8 +7,8 @@
 
 pkgname="superset-venv"
 _pkgname="apache-superset"
-pkgver=3.1.0
-pkgrel=2
+pkgver=4.0.2
+pkgrel=1
 pkgdesc="A modern, enterprise-ready business intelligence web application (venv installation type)"
 url="https://superset.apache.org/"
 license=("Apache-2.0")
@@ -16,6 +16,7 @@ arch=("any")
 provides=("superset")
 conflicts=("superset")
 depends=("python")
+makepkg=("jq")
 source=("superset.bin"
         "superset.env"
         "superset.conf"
@@ -32,6 +33,10 @@ backup=("etc/superset/env"
         "etc/superset/superset_config.py")
 options=("!strip")
 install="superset.install"
+
+pkgver(){
+ curl -s "https://pypi.org/pypi/apache-superset/json" | jq -r ".info.version"
+}
 
 package(){
  install -d -m 750 "$pkgdir/etc/superset"
@@ -50,7 +55,7 @@ package(){
  python -m venv "$pkgdir/usr/share/superset/venv"
  source "$pkgdir/usr/share/superset/venv/bin/activate"
  # install superset and dependencies using pip
- "$pkgdir/usr/share/superset/venv/bin/"pip install -I apache-superset==$pkgver gevent Pillow
+ "$pkgdir/usr/share/superset/venv/bin/"pip install -I apache-superset gevent Pillow
  # remove references to pkgdir
  find "$pkgdir/usr/share/superset/venv/bin" -maxdepth 1 -type f -exec sed -i "s#${pkgdir}/#/#g" {} +
  find "$pkgdir/usr/share/superset/venv/pyvenv.cfg" -maxdepth 1 -type f -exec sed -i "s#${pkgdir}/#/#g" {} +
