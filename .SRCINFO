@@ -1,0 +1,20 @@
+pkgbase = untitled-i18n
+	pkgdesc = Next generation C/C++ internationalisation library
+	pkgver = 1.4.1.0
+	pkgrel = 1
+	url = https://github.com/MadLadSquad/UntitledI18N
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cmake
+	makedepends = make
+	makedepends = yaml-cpp
+	depends = gcc-libs
+	depends = glibc
+	depends = pkgconf
+	depends = yaml-cpp
+	provides = libUntitledI18N.so
+	source = https://github.com/MadLadSquad/UntitledI18N/releases/download/v1.4.1.0/untitled-i18n.tar.xz
+	sha256sums = 7cd5074b6d40f2aaec4bfda3640f13b62a06633b0af8e3355a8e3a82155be800
+
+pkgname = untitled-i18n
