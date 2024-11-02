@@ -1,0 +1,21 @@
+pkgbase = am
+	pkgdesc = AppImage package manager to install, update and manage ALL of them, system-wide or locally.
+	pkgver = 9.0.0
+	pkgrel = 1
+	url = https://github.com/ivan-hc/AM
+	arch = any
+	license = GPL3
+	depends = glib2
+	depends = libappimage
+	depends = coreutils
+	depends = curl
+	depends = grep
+	depends = less
+	depends = sed
+	depends = wget
+	depends = git
+	depends = jq
+	source = https://raw.githubusercontent.com/ivan-hc/AM/main/APP-MANAGER
+	sha256sums = SKIP
+
+pkgname = am
