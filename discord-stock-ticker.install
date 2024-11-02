@@ -1,0 +1,17 @@
+pre_install() {
+    useradd -r -d /var/lib/discord-stock-ticker discord-stock-ticker
+}
+
+post_install() {
+    chown -R discord-stock-ticker /var/lib/discord-stock-ticker
+    chown -R discord-stock-ticker /var/log/discord-stock-ticker
+}
+
+pre_remove() {
+    systemctl stop discord-stock-ticker
+    systemctl disable discord-stock-ticker
+}
+
+post_remove() {
+    userdel discord-stock-ticker
+}
