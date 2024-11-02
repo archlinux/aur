@@ -5,7 +5,7 @@
 _pkgname=autorestic
 pkgname="${_pkgname}-git"
 pkgver=1.8.3+7.r538.20241021.8a77385
-pkgrel=1
+pkgrel=2
 pkgdesc='Config driven, easy backup cli for restic. Latest git checkout.'
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url="https://github.com/cupcakearmy/$_pkgname"
@@ -40,8 +40,11 @@ prepare() {
   mkdir -p build/
 
   # download go modules so build() works offline
-  #go mod download
+  #go mod download -x
   go get -v ./...
+
+  # Add write permission to downloaded go files so that downloaded files can be removed again.
+  chmod -R ug+Xwr "${GOPATH}"
 
   git log > "${srcdir}/git.log"
 }
