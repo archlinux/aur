@@ -1,13 +1,13 @@
 pkgbase = mdk3
 	pkgdesc = WLAN penetration tool
 	pkgver = v6
-	pkgrel = 10
+	pkgrel = 11
 	url = https://www.kali.org/tools/mdk3/
 	arch = x86_64
 	license = GPL2
-	depends = glibc
+	depends = glibc>=14
 	depends = aircrack-ng
 	source = https://salsa.debian.org/pkg-security-team/mdk3/-/archive/debian/master/mdk3-debian-master.tar.bz2
-	sha512sums = b5bb0e7d86e1bd9f5ccd9a7c4a7c3dfdce1b2fe4c86d5a7fdf0928c5b49ed892d2cb7be39b0e49018e29320a5819432f9422e79bbd15c351ce4abcb796f5c7e9
+	sha512sums = 79dff994816e78ae1001074f93f266ad7b820cf03c0b2c3e61d9eb73e2a047c9bb912bcfb14f6dec09584c017407bd84fea127a11cc355b5f8a77102ef0ded89
 
 pkgname = mdk3
