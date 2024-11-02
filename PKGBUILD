@@ -1,13 +1,13 @@
 # Maintainer: Maciej Dziuban <dziuban.maciej@gmail.com>
 pkgname=check_mate-bin
-pkgver=0.3.0
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="Utility program to monitor output of certain commands"
 arch=('x86_64')
 url="https://github.com/DziubanMaciej/CheckMate"
 license=('MIT')
 source=("https://github.com/DziubanMaciej/CheckMate/releases/download/v${pkgver}/check_mate_linux_${pkgver}.zip")
-sha256sums=('43e6b9b2118f65ae563f3f1c0198365668f44e9b96da46b51fa82606f13e8431')
+sha256sums=('cb5d095afbd75023fac51c2a3a98866b0f18948d041cd8ab639c126cc65e9d45')
 
 package() {
     mkdir -p "$pkgdir/usr/bin"
