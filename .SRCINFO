@@ -1,7 +1,7 @@
 pkgbase = goto-ssh-bin
 	pkgdesc = A simple terminal SSH manager that provides you with an easy access to the list of your favorite SSH servers.
 	pkgver = 1.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/grafviktor/goto
 	arch = any
 	license = MIT
@@ -13,3 +13,4 @@ pkgbase = goto-ssh-bin
 	b2sums = 5727b772a1c4851aabc85e184cbb043e555e7db727b8183aefba4082772b8ffad71748bf0709ea9d32933a8dc0db9a44ddeebf6b6ee5b5a65bb432ca61a57cd5
 
 pkgname = goto-ssh-bin
+	depends = openssh

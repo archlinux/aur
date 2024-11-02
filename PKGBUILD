@@ -2,7 +2,7 @@
 
 pkgname='goto-ssh-bin'
 pkgver=1.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A simple terminal SSH manager that provides you with an easy access to the list of your favorite SSH servers.'
 arch=('any')
 license=('MIT')
@@ -14,6 +14,8 @@ b2sums=('03eeeda39ebb515a0f0b3a20d424f1d7e4ea12943e2bf9df85ba700728194214f83363b
 provides=('goto-ssh-bin' 'gg-ssh-bin')
 
 package() {
+    depends=('openssh')
+
     _pkgname="${pkgname/-bin/''}"
     _pkgname_link="${_pkgname/goto/'gg'}"
 
