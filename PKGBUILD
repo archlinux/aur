@@ -9,7 +9,6 @@ url="https://github.com/usememos/${pkgname}"
 arch=("any")
 license=('MIT')
 makedepends=("go" "git" "npm" "pnpm" "nvm")
-provides=("$pkgname")
 backup=('etc/memos.conf')
 options=(!strip !debug)
 source=(
@@ -43,12 +42,13 @@ prepare() {
 build() {
     export COREPACK_ENABLE_STRICT=0
     export COREPACK_ENABLE_DOWNLOAD_PROMPT=0
+
     cd "${pkgname}-${pkgver}/web"
+
     # Build frontend
     echo "lts/iron" > .nvmrc
     _ensure_local_nvm
     pnpm install
-
     pnpm build
 
     # Set up backend build environment

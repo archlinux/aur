@@ -10,7 +10,6 @@ pkgbase = memos
 	makedepends = npm
 	makedepends = pnpm
 	makedepends = nvm
-	provides = memos
 	options = !strip
 	options = !debug
 	backup = etc/memos.conf
