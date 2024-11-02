@@ -1,11 +1,10 @@
 pkgname=hisat2
 pkgver=2.2.1
-pkgrel=2
+pkgrel=3
 pkgdesc='A fast and sensitive alignment program for mapping next-generation sequencing reads against genomes'
 url="https://daehwankimlab.github.io/$pkgname"
 license=(GPL-3.0-only)
 arch=(x86_64)
-depends=(perl)
 optdepends=(
 	'perl: To use the `hisat2` wrapper script'
 	'python: To use the `hisat2-{build,build-new,inspect}` scripts'
