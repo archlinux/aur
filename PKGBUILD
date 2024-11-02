@@ -7,7 +7,7 @@ pkgname=(
   "${_pkgbase}-hostapp-git"
   "${_pkgbase}-docfiles-git"
 )
-pkgver=0.5.1+1.r84.20240614.c480721
+pkgver=1.0.1+2.r94.20241102.d1a3fec
 _mainver="$(sed -E 's|^([^\.]*\.[^\.]*\.[^.+_]*)[\.+_]?.*$|\1|' <<<"${pkgver}")"
 _nextver="$(awk -F. '{print $1"."$2"."$3+1}' <<<"${_mainver}")"
 pkgrel=1
