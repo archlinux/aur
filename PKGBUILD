@@ -10,9 +10,8 @@ pkgdesc="Breakout game with 3D representation based on OpenGL."
 arch=('i686' 'x86_64')
 url="http://briquolo.free.fr/"
 license=('GPL')
-depends=('sdl_mixer' 'sdl_ttf' 'desktop-file-utils' 'glu')
+depends=('sdl_mixer' 'sdl_ttf' 'glu')
 makedepends=('patch' 'autoconf' 'automake' 'cvs')
-install=$pkgname.install
 options=('!makeflags')
 source=(http://briquolo.free.fr/download/$pkgname-$pkgver.tar.bz2 \
         $pkgname.desktop $pkgname.png $pkgname-gcc.patch $pkgname-libpng.patch \
