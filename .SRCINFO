@@ -1,7 +1,7 @@
 pkgbase = lingmo-settings
 	pkgdesc = The system settings application for LingmoOS uses LingmoUI as the interface style.
 	pkgver = 2.1.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://lingmo.org
 	arch = x86_64
 	license = GPL
@@ -12,7 +12,7 @@ pkgbase = lingmo-settings
 	depends = freetype2
 	depends = fontconfig
 	depends = networkmanager-qt
-	depends = modemmanager-qt
+	depends = modemmanager-qt5
 	depends = libqtxdg
 	depends = lingmoui
 	source = https://github.com/LingmoOS/lingmo-settings/archive/refs/tags/2.1.5.tar.gz

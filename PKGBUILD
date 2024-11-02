@@ -4,12 +4,12 @@ pkgname=lingmo-settings
 arch=("x86_64")
 depends=(
     "qt5-base" "qt5-quickcontrols2" "qt5-x11extras" "freetype2"
-    "fontconfig" "networkmanager-qt" "modemmanager-qt" "libqtxdg"
+    "fontconfig" "networkmanager-qt" "modemmanager-qt5" "libqtxdg"
     "lingmoui"
 )
 makedepends=("extra-cmake-modules")
 pkgdesc="The system settings application for LingmoOS uses LingmoUI as the interface style."
-pkgrel=1
+pkgrel=2
 pkgver=2.1.5
 url="https://lingmo.org"
 license=("GPL")
