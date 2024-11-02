@@ -1,0 +1,18 @@
+pkgbase = untitled-xdg-basedir
+	pkgdesc = C/C++ implementation of the XDG basedir specification
+	pkgver = 4.0.0.0
+	pkgrel = 1
+	url = https://github.com/MadLadSquad/UntitledXDGBasedir
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cmake
+	makedepends = make
+	depends = gcc-libs
+	depends = glibc
+	depends = pkgconf
+	provides = libUntitledXDGBasedir.so
+	source = https://github.com/MadLadSquad/UntitledXDGBasedir/releases/download/v4.0.0.0/untitled-xdg-basedir.tar.xz
+	sha256sums = dc6862e4713a2d85c30144e0b7caa2850dc1ab487691b4c9f356c35741387e28
+
+pkgname = untitled-xdg-basedir
