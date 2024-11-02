@@ -1,0 +1,12 @@
+[Desktop Entry]
+Name=Melodfy
+GenericName=Piano to midi converter
+Comment=Melodfy✨: AI-Powered Piano Audio to MIDI Converter 🎶
+Encoding=UTF-8
+Version=1.0
+Type=Application
+Terminal=false
+Icon=melodfy
+Exec=melodfy
+Categories=AudioVideo;Audio;
+StartupWMClass=Melodfy.exe
