@@ -1,4 +1,4 @@
-# Maintainer:
+# Maintainer: envolution
 # Contributor: Lindasy Zhou <i@lin.moe>
 
 _pkgname="memos"
@@ -13,6 +13,8 @@ makedepends=("go" "git" "npm" "pnpm" "nvm")
 provides=("$pkgname")
 backup=('etc/memos.conf')
 options=(!strip !debug)
+provides=('memos')
+conflicts=('memos')
 source=(
   "git+https://github.com/usememos/$_pkgname.git"
   "systemd.service"
