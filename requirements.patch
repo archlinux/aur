@@ -1,0 +1,11 @@
+--- requirements.txt	2024-10-29 20:35:10.000000000 +0100
++++ requirements-patched.txt	2024-11-02 21:51:57.394227826 +0100
+@@ -9,7 +9,7 @@
+ celery[redis]==5.4.0; python_version >= '3.8'
+ certifi==2024.8.30; python_version >= '3.6'
+ cffi==1.17.1; platform_python_implementation != 'PyPy'
+-channels==4.1.0; python_version >= '3.8'
++channels==4.0.0; python_version >= '3.8'
+ channels-redis==4.2.0; python_version >= '3.8'
+ charset-normalizer==3.3.2; python_full_version >= '3.7.0'
+ click==8.1.7; python_version >= '3.7'
