@@ -24,7 +24,7 @@ unset _pkgtype
 _gitname="linux"
 _pkgname="$_gitname${_pkgtype:-}"
 pkgbase="$_pkgname"
-pkgver=6.11.5
+pkgver=6.11.6
 pkgrel=1
 pkgdesc='Linux'
 url='https://www.kernel.org'
@@ -49,14 +49,16 @@ makedepends=(
   python-yaml
   texlive-latexextra
 )
-options=('!strip')
+
+options=('!debug' '!strip')
+
 _srcname=linux-$pkgver
 source+=(
   https://cdn.kernel.org/pub/linux/kernel/v${pkgver%%.*}.x/${_srcname}.tar.{xz,sign}
   "config-$pkgver"::https://gitlab.archlinux.org/archlinux/packaging/packages/linux/-/raw/main/config
 )
 sha256sums+=(
-  '471485b3b7f2fb637bd8fe3d00944c4c135c7d8ee02f357f33690baab0752a07' ###
+  'c954f60197008f1e1f32a1e77293903cf3801d2543ec4bf521f5651eb7f133ce' ###
   'SKIP'
   'SKIP'
 )
@@ -99,8 +101,6 @@ fi
 
 if [[ "${_build_v3::1}" == "t" ]]; then
   export KCFLAGS="-march=x86-64-v3 -mtune=generic -O3"
-  #export HOSTCFLAGS="-march=x86-64-v3 -mtune=generic -O3"
-  #export HOSTCXXFLAGS="-march=x86-64-v3 -mtune=generic -O3"
 fi
 
 export KBUILD_BUILD_HOST=archlinux
