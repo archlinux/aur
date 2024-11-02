@@ -1,9 +1,8 @@
 pkgbase = cantera-git
 	pkgdesc = suite of tools for kinetics, thermodynamics, and transport processes
-	pkgver = 2.5.1.r1074.g80e93621f
+	pkgver = 3.1.0a4.r137.gafa45f417
 	pkgrel = 1
 	url = https://cantera.org/
-	install = cantera-git.install
 	arch = x86_64
 	license = custom:Cantera Developers
 	license = custom:Sandia Corporation Contract AC04-94AL85000
@@ -17,11 +16,16 @@ pkgbase = cantera-git
 	makedepends = gcc
 	makedepends = doxygen
 	makedepends = cython
+	makedepends = eigen
+	makedepends = boost
+	makedepends = python-pip
+	makedepends = python-setuptools
 	depends = sundials
 	depends = python-numpy
 	depends = openmp
 	depends = yaml-cpp
 	depends = fmt
+	depends = boost-libs
 	provides = libcantera_shared.so=2-64
 	source = git+https://github.com/Cantera/cantera.git
 	md5sums = SKIP
