@@ -1,14 +1,18 @@
 pkgbase = python-web-pdb
 	pkgdesc = Web interface for Python’s built-in PDB debugger.
-	pkgver = 1.5.6
+	pkgver = 1.6.2
 	pkgrel = 1
 	url = https://github.com/romanvm/python-web-pdb
 	arch = any
 	license = MIT
+	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
 	depends = python-bottle
 	depends = python-asyncore-wsgi
-	noextract = web_pdb-1.5.6-py2.py3-none-any.whl
-	source = https://files.pythonhosted.org/packages/py2.py3/w/web-pdb/web_pdb-1.5.6-py2.py3-none-any.whl
-	sha256sums = 00caf906fc5d730c9bd4d3a219e3cbc5b93e334c4beac28a9617fc82275f5e8b
+	source = https://files.pythonhosted.org/packages/source/w/web-pdb/web-pdb-1.6.2.tar.gz
+	sha256sums = f077221439fe547cf94c0e092afe0afcb5b6c12e8f18e76840e5cf54a9137deb
 
 pkgname = python-web-pdb
