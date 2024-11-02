@@ -1,6 +1,6 @@
 pkgbase = xfce4-settings-devel
 	pkgdesc = Settings manager for xfce
-	pkgver = 4.19.2
+	pkgver = 4.19.3
 	pkgrel = 1
 	url = https://docs.xfce.org/xfce/xfce4-settings/start
 	arch = i686
@@ -24,11 +24,11 @@ pkgbase = xfce4-settings-devel
 	depends = wayland
 	depends = gtk-layer-shell
 	optdepends = python: xfce4-compose-mail -- "mailto:" URI handling
-	provides = xfce4-settings=4.19.2
+	provides = xfce4-settings=4.19.3
 	conflicts = xfce4-settings
-	source = https://archive.xfce.org/src/xfce/xfce4-settings/4.19/xfce4-settings-4.19.2.tar.bz2
+	source = https://archive.xfce.org/src/xfce/xfce4-settings/4.19/xfce4-settings-4.19.3.tar.bz2
 	source = enable-antialias-by-default.patch
-	sha256sums = 23d44e50419263499096184b5931915b416328d6eca95dd99da3be2ba56946ad
+	sha256sums = 30c2659a266240b6d2950bf2cf7ab86b70372e127cd092385693c26fb928aa43
 	sha256sums = 25176aa463740d344c194d94771b7bfd9550809fd2ecd0e86acceb925afcf1ac
 
 pkgname = xfce4-settings-devel
