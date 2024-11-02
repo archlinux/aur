@@ -1,7 +1,7 @@
 pkgbase = elite-beep-beep-git
 	pkgdesc = Elite Dangerous player indicator
-	pkgver = r10.7ce6cf9
-	pkgrel = 3
+	pkgver = r13.05d910a
+	pkgrel = 1
 	url = https://github.com/CMDR-WDX/elite-beep-beep
 	arch = x86_64
 	license = GPL-3.0
@@ -10,7 +10,7 @@ pkgbase = elite-beep-beep-git
 	depends = glibc
 	depends = alsa-lib
 	depends = gcc-libs
-	provides = elite-beep-beep=r10.7ce6cf9
+	provides = elite-beep-beep=r13.05d910a
 	conflicts = elite-beep-beep
 	source = git+https://github.com/CMDR-WDX/elite-beep-beep.git
 	sha256sums = SKIP

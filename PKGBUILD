@@ -1,8 +1,8 @@
-# Maintainer: Thomas Clarke <tomclarke2006@hotmail.com>
+# Maintainer: Thomas Clarke <colonia_duck@posteo.net>
 pkgname="elite-beep-beep-git"
 _pkgname="elite-beep-beep"
-pkgver=r10.7ce6cf9
-pkgrel=3
+pkgver=r13.05d910a
+pkgrel=1
 pkgdesc="Elite Dangerous player indicator"
 arch=("x86_64")
 url="https://github.com/CMDR-WDX/elite-beep-beep"
