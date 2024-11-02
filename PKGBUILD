@@ -3,7 +3,7 @@
 pkgname=alcom-bin
 pkgver=0.1.16_beta.2
 _pkgver=0.1.16-beta.2
-pkgrel=2
+pkgrel=1
 pkgdesc="A fast open-source alternative of VRChat Creator Companion"
 arch=(x86_64)
 url="https://github.com/vrc-get/vrc-get/tree/master/vrc-get-gui"
