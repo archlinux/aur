@@ -6,8 +6,8 @@
 # Contributor: Bazon <bazonbloch@arcor.de>
 
 pkgname=activinspire
-pkgver=3.3.15
-pkgrel=1.1
+pkgver=3.4.16
+pkgrel=1.0
 pkgdesc="Presentation Software for use with Promethean Hardware products ."
 arch=('x86_64')
 url="https://support.prometheanworld.com/product/activinspire"
