@@ -1,6 +1,6 @@
 # Maintainer: Alexandre Leconte <aleconte@dwightstudio.fr>
 pkgname=jarmemu
-pkgver=1.1.2
+pkgver=1.1.3
 pkgrel=1
 pkgdesc="Simple ARMv7 simulator written in Java, intended for educational purpose"
 arch=('any')
@@ -19,7 +19,7 @@ install=
 changelog=
 source=("https://github.com/Dwight-Studio/JArmEmu/releases/download/v$pkgver/JArmEmu-$pkgver.zip")
 noextract=()
-sha256sums=("0aad895439551064b386845be04e817fea0e440e6179384e686129527d869a64")
+sha256sums=("81ef6b9d71d5a903a9260af70ba31b4b41609217c80283777ddbf5cbc49d7504")
 
 build() {
     cd $srcdir/jarmemu
