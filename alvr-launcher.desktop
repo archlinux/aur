@@ -6,8 +6,3 @@ Comment=Launcher for ALVR, an open source remote VR display which allows playing
 Exec=alvr-launcher
 Icon=alvr-launcher
 Categories=Game;
-StartupNotify=true
-PrefersNonDefaultGPU=true
-X-KDE-RunOnDiscreteGpu=true
-StartupWMClass=ALVR
-
