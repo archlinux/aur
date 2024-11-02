@@ -1,6 +1,6 @@
 post_install() {
   /usr/share/code-features/patch.py code-features patch
-  printf "==> [code-features] Use command /usr/bin/code-features-update to manually update the patch to keep up with the official vscode release so you don't have to wait for this package to be updated every time."
+  printf "==> [code-features] Use command /usr/bin/code-features-update to manually update the patch to keep up with the official vscode release when this package is out of date or some extensions don't work after an update in extra/code."
 }
 
 pre_upgrade() {
@@ -9,7 +9,7 @@ pre_upgrade() {
 
 post_upgrade() {
   /usr/share/code-features/patch.py code-features patch
-  printf "==> [code-features] !!! Now there is a new command /usr/bin/code-features-update that can update the patch to keep up with the official vscode release. You can use this command to manually update the patch so you don't have to wait for this package to be updated every time."
+  printf "==> [code-features] !!! Now there is a new command /usr/bin/code-features-update that can update the patch to keep up with the official vscode release. You can use this command to manually update the patch when this package is out of date or some extensions don't work after an update in extra/code."
 }
 
 pre_remove() {
