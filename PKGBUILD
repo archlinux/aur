@@ -1,7 +1,7 @@
 # Maintainer: Hajos Attila <linux.alucard@gmail.com>
 
 pkgname=sunshine-beta-bin
-_pkgname=${pkgname%-beta-bin}
+_pkgname=sunshine-beta-bin
 pkgver=2024.1102.190004
 _gittag=v$pkgver
 pkgrel=1
