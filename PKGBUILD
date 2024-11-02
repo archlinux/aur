@@ -1,7 +1,7 @@
 # Maintainer: Antonin Godard <antonin dot godard at pm dot me>
 
 pkgname=zsh-bitbake
-pkgver=1.5.0
+pkgver=1.5.1
 pkgrel=1
 pkgdesc="Bitbake completion for zsh"
 arch=("any")
@@ -9,7 +9,7 @@ url="https://github.com/antznin/zsh-bitbake"
 license=("MIT")
 depends=("zsh")
 source=("https://github.com/antznin/zsh-bitbake/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=("e75bb32d2ac1961ad65efee16c229dcda2f2bf12ac238ef62fff1ff422c5a2f2")
+sha256sums=("39f20c94468328b7222f699298c0407973f2724066e90cd0bf3fca472b93d367")
 
 package() {
   cd "$srcdir/$pkgname-$pkgver/"
