@@ -2,7 +2,7 @@
 
 _pkgname=xfconf
 pkgname=${_pkgname}-devel
-pkgver=4.19.3
+pkgver=4.19.4
 pkgrel=1
 pkgdesc="A simple client-server configuration storage and query system"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
@@ -14,7 +14,7 @@ makedepends=('gtk-doc' 'vala' 'gobject-introspection' 'glib2-devel')
 provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}")
 source=("https://archive.xfce.org/src/xfce/$_pkgname/${pkgver%.*}/${_pkgname}-${pkgver}.tar.bz2")
-sha256sums=('3f829221a6b5aa5609470959f58d10c32fccff8036d735ed458a79a795436713')
+sha256sums=('9c1d70be5a86141944d8a69fcc836dee0bd47e60ec9b0d2bca2bb2c4725618ec')
 
 build() {
   cd "${_pkgname}-${pkgver}"
