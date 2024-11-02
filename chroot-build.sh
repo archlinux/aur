@@ -65,5 +65,5 @@ mv .PKGBUILD PKGBUILD
 
 # remove downloaded patches to ensure we always get the latest one
 rm more-uarches-for-kernel-6.1+.patch
-#rm 0000-asus-patch-series.patch
+rm 0000-asus-patch-series.patch
 rm partial-rog.config

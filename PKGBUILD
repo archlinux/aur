@@ -3,7 +3,7 @@
 # Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 
 pkgbase=linux-g14
-pkgver=6.11.5.arch1
+pkgver=6.11.6.arch1
 pkgrel=1
 pkgdesc='Linux-g14'
 url="https://gitlab.com/dragonn/linux-g14.git"
@@ -57,12 +57,12 @@ validpgpkeys=(
   83BC8889351B5DEBBB68416EB8AC08600F108CDF  # Jan Alexander Steffens (heftig)
 )
 
-sha256sums=('471485b3b7f2fb637bd8fe3d00944c4c135c7d8ee02f357f33690baab0752a07'
+sha256sums=('c954f60197008f1e1f32a1e77293903cf3801d2543ec4bf521f5651eb7f133ce'
             'SKIP'
-            'a2654b42fbca1da939059ae96da323b369f27134aaf149e393f531fb2d8d9aa1'
+            'e5adf4a8f4ce49b8322f5fe246b4f4b98c294b458c1568dd67d95d533ecc0ccd'
             'SKIP'
-            '6c4d63503c77465232fe4ed42671261b476bb0bfd1223b1a3da4afcc1cd615fb'
-            '3cc13b8e108528bfba5f544e7993af415a3bdaab13fb36285c886a628cd39332'
+            'c23f762f615dd4f68161270e19d182a1ade4cdd11ebae6f46f7ca1974d840a20'
+            'a8afb5f75dde2eb038bdd2ec4cd2f8c600d6357ae64960c0df5f2c6c168514ce'
             '278118011d7a2eeca9971ac97b31bf0c55ab55e99c662ab9ae4717b55819c9a2'
             '48e12a587e3a93e73ca2bba9f3b418d70c0a56592581d2705384a07243c70d61'
             'b28624ac1aee06d0949e858667171d93f011b38a623fa77cf38863aa12db3849'
@@ -152,7 +152,7 @@ prepare() {
   #                --disable CONFIG_INTEL_IOMMU
 
   # Stuff from Fedora
-  scripts/config --enable CONFIG_ASUS_WMI_BIOS \
+  scripts/config --enable CONFIG_ASUS_WMI_DEPRECATED_ATTRS \
                  --module CONFIG_HID_ASUS_ALLY \
                  --module CONFIG_ASUS_ARMOURY \
                  --enable CONFIG_CRYPTO_LZ4 \
