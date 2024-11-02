@@ -1,6 +1,6 @@
 pkgbase = superflu-riteurnz
-	pkgdesc = Artisanal point and click game
-	pkgver = 1.2.1
+	pkgdesc = Artisanal point and click game - full version
+	pkgver = 1.6.0
 	pkgrel = 1
 	url = https://ptilouk.net/superflu-riteurnz/index.html
 	arch = any
@@ -10,7 +10,9 @@ pkgbase = superflu-riteurnz
 	depends = sdl2_ttf
 	depends = sdl2_mixer
 	depends = hicolor-icon-theme
-	source = https://studios.ptilouk.net/files/superfluous-returnz-demo-1.2.1-gnunux.deb
-	sha256sums = 7000e2703cb5dcea05eb5837f6da618074aede058de9310aee0bd7ad7be2c77d
+	options = !strip
+	options = !debug
+	source = https://asso.framasoft.org/dolo/h/7raZBvcqNq0
+	sha256sums = db7b805037e07c41dfea7066b0dc47ef9baf0ba5123122680202495fb5a84aa7
 
 pkgname = superflu-riteurnz
