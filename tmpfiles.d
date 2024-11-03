@@ -1,1 +1,1 @@
-d /var/lib/minetest - minetest minetest - -
+d /var/lib/luanti - luanti luanti - -

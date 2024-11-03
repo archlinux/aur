@@ -7,7 +7,7 @@
 pkgbase=minetest-git
 pkgname=(minetest-git minetest-server-git minetest-common-git)
 _pkgname=minetest
-pkgver=5.10.0.rc1.r0.g5c5538685
+pkgver=5.10.0.rc1.r6.g9982c5637
 pkgrel=1
 epoch=1
 url=https://www.luanti.org
@@ -22,8 +22,8 @@ source=(git+https://github.com/minetest/minetest.git
 sha256sums=('SKIP'
             'SKIP'
             '94bd65bff21c63d508f127f19a6323c1a4e9c6869da239c9fc3af2d7f498d09d'
-            'e4166d639b35efda2cd72269208184ab1e72c54541344cd202ff2005c90b9433'
-            'd9405cf7cd0a657ef06082570783383a1f527fbc0bd122ea506d4fbe26950d4a')
+            '294283b0686c4d73d816168544ab2f813a7a0ca63fc49da59563a329dd329eed'
+            'c9a0c78a49461f56381e5615045d036cd594b741c910129eccf43e475c40cca1')
 
 pkgver() {
 	git -C "${_pkgname}" describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
@@ -93,5 +93,5 @@ package_minetest-common-git() {
 
 	rm -rf "${pkgdir}/usr/bin/"
 	rm -rf "${pkgdir}/usr/share/"{applications,icons,locale,man,metainfo}
-	rm -rf "${pkgdir}/usr/share/minetest/"{client,fonts,textures}
+	rm -rf "${pkgdir}/usr/share/luanti/"{client,fonts,textures}
 }

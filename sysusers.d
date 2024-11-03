@@ -1,2 +1,1 @@
-u minetest - "minetest" /var/lib/minetest
-
+u luanti - "luanti" /var/lib/luanti
