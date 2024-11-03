@@ -1,6 +1,6 @@
 pkgbase = tmux-rime
 	pkgdesc = rime for tmux
-	pkgver = 0.0.1
+	pkgver = 0.0.2
 	pkgrel = 1
 	url = https://github.com/Freed-Wu/tmux-rime
 	arch = i686
@@ -13,7 +13,7 @@ pkgbase = tmux-rime
 	depends = librime
 	depends = glib2
 	depends = tmux
-	source = https://github.com/Freed-Wu/tmux-rime/archive/0.0.1.tar.gz
-	sha256sums = 23fa2adf9df745d32edf00cec609af1333bbd41016725240c708d41bdfc9e8c5
+	source = https://github.com/Freed-Wu/tmux-rime/archive/0.0.2.tar.gz
+	sha256sums = b59f141d1c90d675cf921376012dbbf281a778bd131357c9fee9b279cdce478c
 
 pkgname = tmux-rime
