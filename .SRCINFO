@@ -1,7 +1,7 @@
 pkgbase = coolercontrold-bin
 	pkgdesc = A program to monitor and control your cooling devices: daemon (binary release)
 	pkgver = 1.4.4
-	pkgrel = 3
+	pkgrel = 4
 	url = https://gitlab.com/coolercontrol/coolercontrol
 	arch = x86_64
 	groups = coolercontrol-bin
