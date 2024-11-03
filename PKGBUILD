@@ -44,7 +44,7 @@ source=("${_pkgname}::git+${url}.git#tag=${_tag}"
     "git+https://github.com/matomo-org/tag-manager.git"
     "git+https://github.com/matomo-org/travis-scripts.git"
     "override-${_pkgname}.conf")
-sha512sums=("SKIP"
+sha512sums=("c4c53d7d57a50d18e0e66ac34facffb724179e2c0a9b3017c00a7506999e8c797442a623d4636048c66421cc2588b9dc8e1e3b4b39c886805af5ee50f4308fed"
     "SKIP"
     "SKIP"
     "SKIP"
