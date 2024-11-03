@@ -1,18 +1,21 @@
 pkgbase = python-pyfluidsynth
 	pkgdesc = Python bindings for FluidSynth
-	pkgver = 1.3.3
+	pkgver = 1.3.4
 	pkgrel = 1
 	url = https://github.com/nwhitehead/pyfluidsynth
 	arch = any
 	license = LGPL-2.1-only
 	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
 	depends = fluidsynth
 	depends = python-numpy
 	depends = python
 	provides = pyfluidsynth
 	conflicts = pyfluidsynth
 	replaces = pyfluidsynth
-	source = https://files.pythonhosted.org/packages/source/p/pyFluidSynth/pyFluidSynth-1.3.3.tar.gz
-	sha256sums = d50d4b55073e7580b2a3ca470992b6c51c279dba1c5512dc85135595f42d6881
+	source = pyfluidsynth-1.3.4.tar.gz::https://github.com/nwhitehead/pyfluidsynth/archive/v1.3.4.tar.gz
+	sha512sums = efff016f5ea0103affa5a8076674d2a5dc71a2d29b4be2d97bff48691ba09c8b5ce394b4459e0e56e8914ed02991b489c8874c3ace0de8ffec12f2ce38ef67ae
 
 pkgname = python-pyfluidsynth

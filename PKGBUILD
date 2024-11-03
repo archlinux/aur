@@ -2,7 +2,7 @@
 # Contributor: masutu <masutu dot arch at gmail dot com>
 
 pkgname=python-pyfluidsynth
-pkgver=1.3.3
+pkgver=1.3.4
 pkgrel=1
 pkgdesc="Python bindings for FluidSynth"
 arch=('any')
@@ -16,17 +16,21 @@ depends=(
   'python-numpy'
   'python'
 )
-makedepends=('python-setuptools')
-source=(https://files.pythonhosted.org/packages/source/p/pyFluidSynth/pyFluidSynth-$pkgver.tar.gz)
-sha256sums=('d50d4b55073e7580b2a3ca470992b6c51c279dba1c5512dc85135595f42d6881')
+makedepends=(
+  'python-setuptools'
+  'python-build'
+  'python-installer'
+  'python-wheel'
+)
+source=("pyfluidsynth-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
+sha512sums=('efff016f5ea0103affa5a8076674d2a5dc71a2d29b4be2d97bff48691ba09c8b5ce394b4459e0e56e8914ed02991b489c8874c3ace0de8ffec12f2ce38ef67ae')
 
 build() {
-	cd "$srcdir/pyFluidSynth-$pkgver"
-	python setup.py build
+	cd pyfluidsynth-$pkgver
+	python -m build --wheel --no-isolation
 }
 
 package() {
-	cd "$srcdir/pyFluidSynth-$pkgver"
-	python setup.py install --root="$pkgdir" --optimize=1
-	install -D -m644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+	cd pyfluidsynth-$pkgver
+	python -m installer --destdir="$pkgdir" dist/*.whl
 }
