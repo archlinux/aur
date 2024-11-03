@@ -1,5 +1,6 @@
 [gnubg]
 source = "git"
 git = "https://git.savannah.gnu.org/git/gnubg.git"
-prefix = "v"
-
+prefix = "release-"
+from_pattern = "(\\d+)_(\\d+)_(\\d+)"
+to_pattern = "\\1.\\2.\\3 "
