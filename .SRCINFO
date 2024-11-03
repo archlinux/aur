@@ -1,0 +1,10 @@
+pkgbase = ismycomputeronrightnow
+	pkgdesc = A script that confirms if your computer is on
+	pkgver = 1.0
+	pkgrel = 1
+	arch = any
+	license = MIT
+	source = ismycomputeronrightnow.sh
+	sha256sums = SKIP
+
+pkgname = ismycomputeronrightnow
