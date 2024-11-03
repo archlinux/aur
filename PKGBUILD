@@ -5,7 +5,7 @@
 pkgname="paperless-ngx-venv"
 _pkgname="paperless-ngx"
 pkgver=2.13.4
-pkgrel=2
+pkgrel=3
 pkgdesc="A supercharged version of paperless: scan, index and archive all your physical documents (version with bundled dependencies)"
 url="https://docs.paperless-ngx.com/"
 license=("GPL3")
@@ -47,7 +47,9 @@ source=("https://github.com/$_pkgname/$_pkgname/releases/download/v$pkgver/$_pkg
         "paperless-scheduler.service"
         "paperless-task-queue.service"
         "paperless-webserver.service"
-        "requirements.patch")
+        "requirements.patch"
+        "whoosh-filters.patch"
+        "whoosh-intraword.patch")
 b2sums=('948521ce122c898c40d03e77a34605619243a9349570d5032dc2617edebd1447cb779811cf13b0d864348fe962c102444f6374aa185dbb844aaab2ff2f7f1c30'
         '747a8b8774fa48073e58b9b3ba55b28ca505b193cf180467b1bcbbe3a2c44931a198f355163b377219299c8b43f0a74550e241f835d9941c594fe318ae5235cd'
         '586ad775e26aef216716c33d8951e00044a7f6866167d27dceab39d51b4fd46527693dfe4e085dc20d2e9193679122ad2b9ac8a1c03a98df747af15ecca24ca2'
@@ -57,7 +59,9 @@ b2sums=('948521ce122c898c40d03e77a34605619243a9349570d5032dc2617edebd1447cb77981
         '6ecee87188daf05791ee1dbd152277e2dc09797988c2caf5f01cd2c630925332e3796159e7dce4f3ccb791f925b1c53aa91f89091254b5b55dc51322f9212509'
         '03a55bc65ae9b066e001d56599dcc1d84f19cfba7bdb866bdbb64b6bc53637668a2b0783e3012d5c80638d55667a32058ca2c337c869de5225e19c37b32804f2'
         '0d7784f9e1a960bdba55586032c2682bde0b17f601a08eead332e62a5782319e9dbcbe45b940772107c374f08e39c8d727ec0eb555b15c584238871f4ed5201f'
-        '799d3f49c2e4c77bea0063f320b16d4521f881b53ad4b54081a352e0463b2bbeb2b44403e621d09927c0e7051db3d2a317067178b0b171e991483b8c3566ef42')
+        '799d3f49c2e4c77bea0063f320b16d4521f881b53ad4b54081a352e0463b2bbeb2b44403e621d09927c0e7051db3d2a317067178b0b171e991483b8c3566ef42'
+        '216180663dd139513b51e087e1ee59ada29482fd47e138caa9a9aead362722f9111c164e77f9f336afbad05326cc558e256d90f89a087fdbc1ba606bc2ee4517'
+        '917d8a50a18b329abfcb19ee25fe8e85636979673f73ca806325eee8c0aa28af60580ac1d52d5b593ecf9e1d87a4bee051533988224b875bc7f42da02baf634b')
 backup=("etc/paperless.conf")
 options=("!strip")
 install="paperless.install"
@@ -87,6 +91,11 @@ prepare(){
  source "$srcdir/venv/bin/activate"
  pip install -r "$srcdir/$_pkgname/requirements.txt"
  deactivate
+
+ # fix regex warnings
+ for whoosh in filters intraword; do
+	patch "$srcdir/venv/lib/python3.12/site-packages/whoosh/analysis/$whoosh.py" < "$srcdir/whoosh-$whoosh.patch"
+ done
 }
 
 package(){

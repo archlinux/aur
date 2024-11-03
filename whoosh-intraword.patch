@@ -1,0 +1,29 @@
+--- intraword.py	2024-11-03 19:20:52.769847419 +0100
++++ intraword-patched.py	2024-11-03 19:27:42.652051344 +0100
+@@ -46,7 +46,7 @@
+     compound word in the token stream along with the word segments.
+ 
+     >>> cwf = CompoundWordFilter(wordset, keep_compound=True)
+-    >>> analyzer = RegexTokenizer(r"\S+") | cwf
++    >>> analyzer = RegexTokenizer(r"\\S+") | cwf
+     >>> [t.text for t in analyzer("I do not like greeneggs and ham")
+     ["I", "do", "not", "like", "greeneggs", "green", "eggs", "and", "ham"]
+     >>> cwf.keep_compound = False
+@@ -272,7 +272,7 @@
+     >>> iwf_i = IntraWordFilter(mergewords=True, mergenums=True)
+     >>> iwf_q = IntraWordFilter(mergewords=False, mergenums=False)
+     >>> iwf = MultiFilter(index=iwf_i, query=iwf_q)
+-    >>> analyzer = RegexTokenizer(r"\S+") | iwf | LowercaseFilter()
++    >>> analyzer = RegexTokenizer(r"\\S+") | iwf | LowercaseFilter()
+ 
+     (See :class:`MultiFilter`.)
+     """
+@@ -282,7 +282,7 @@
+     __inittypes__ = dict(delims=text_type, splitwords=bool, splitnums=bool,
+                          mergewords=bool, mergenums=bool)
+ 
+-    def __init__(self, delims=u("-_'\"()!@#$%^&*[]{}<>\|;:,./?`~=+"),
++    def __init__(self, delims=u("-_'\"()!@#$%^&*[]{}<>\\|;:,./?`~=+"),
+                  splitwords=True, splitnums=True,
+                  mergewords=False, mergenums=False):
+         """
