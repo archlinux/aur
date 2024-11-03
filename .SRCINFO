@@ -1,7 +1,7 @@
 pkgbase = patchance-git
 	pkgdesc = A modern graphical patchbay for JACK (git version)
 	pkgver = 1.1.0.r6.g9d279f4
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Houston4444/Patchance
 	arch = any
 	groups = pro-audio
@@ -14,9 +14,7 @@ pkgbase = patchance-git
 	conflicts = patchance
 	source = patchance::git+https://github.com/Houston4444/Patchance.git
 	source = HoustonPatchbay::git+https://github.com/Houston4444/HoustonPatchbay.git
-	source = patchance-disable-alsa.patch
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = f6efe60272b10759f2dcbd3676e4bc1cdaaafad5e22bf5a0da554260c24ace59
 
 pkgname = patchance-git
