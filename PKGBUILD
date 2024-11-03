@@ -1,27 +1,28 @@
-# Maintainer: Andrew Sun <adsun701 at gmail dot com>
+# Maintainer: devome <evinedeng@hotmail.com>
+# Contributor: Andrew Sun <adsun701 at gmail dot com>
 # Contributor: Philippe Hürlimann <p at hurlimann dot org>
 
-pkgname=python-ftfy
-_name=ftfy
-pkgver=6.2.3
-pkgrel=2
-pkgdesc='Fixes some problems with Unicode text after the fact'
-url="https://github.com/LuminosoInsight/python-ftfy"
+_pkgname=ftfy
+pkgname="python-${_pkgname}"
+pkgver=6.3.1
+pkgrel=1
+pkgdesc="Fixes mojibake and other problems with Unicode, after the fact"
+url="https://github.com/LuminosoInsight/${pkgname}"
 arch=('any')
 license=('MIT')
-makedepends=('python-build' 'python-installer' 'python-poetry-core' 'python-wheel')
 depends=('python-wcwidth')
-source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/f/${_name}/${_name}-${pkgver}.tar.gz")
-sha512sums=('6711dbe9750db6bc25c57d5d600d1db52eff6f22caa7ff89c06615bbd7dd612cca56f9e9a35c633648747c421f2e710a6e24ee1f9a6d6df0ac6f6049a5189e8e')
+makedepends=('python-build' 'python-hatchling' 'python-installer' 'python-setuptools' 'python-wheel')
+source=("${_pkgname}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
+sha256sums=('9b3c3d90f84fb267fe64d375a07b7f8912d817cf86009ae134aa03e1819506ec')
 
 build() {
-  cd "$_name-$pkgver"
-  python -m build --wheel --no-isolation
+    cd "${_pkgname}-${pkgver}"
+    python -m build --wheel --no-isolation
 }
 
 package() {
-  cd "$_name-$pkgver"
-  python -m installer --destdir="${pkgdir}" dist/*.whl
-  install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE.txt
-  install -Dm644 -t "${pkgdir}/usr/share/doc/${pkgname}" CHANGELOG.md README.md
+    cd "${_pkgname}-${pkgver}"
+    python -m installer --destdir="${pkgdir}" dist/*.whl
+    install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE*
+    install -Dm644 -t "${pkgdir}/usr/share/doc/${pkgname}"      CHANGELOG.md README.md
 }
