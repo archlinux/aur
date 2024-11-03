@@ -13,25 +13,31 @@ arch=("any")
 provides=("paperless" "$pkgname")
 conflicts=("paperless" "paperless-ng" "paperless-ngx")
 replaces=("paperless-ngx")
-makedepends=("postgresql-libs"
-             "findutils"
+makedepends=(
+ "findutils"
+ "mariadb"
+ "postgresql"
+ "postgresql-libs"
 )
-depends=("python"
-         "file"
-         "gnupg"
-         "imagemagick"
-         "nltk-data"
-         "optipng"
-         "redis"
-         "sqlite"
-         "tesseract-data-eng"
-         "ttf-liberation"
+depends=(
+ "file"
+ "gnupg"
+ "imagemagick"
+ "nltk-data"
+ "optipng"
+ "python"
+ "redis"
+ "sqlite"
+ "tesseract-data-eng"
+ "ttf-liberation"
 )
-optdepends=("jbig2enc: smaller PDF size"
-            "postgresql: postgres database"
-            "mariadb: mariadb database"
-            "tika-server: extract metadata from files"
-            "gotenberg: convert files to pdf")
+optdepends=(
+ "gotenberg: convert files to pdf"
+ "jbig2enc: smaller PDF size"
+ "mariadb: mariadb database"
+ "postgresql: postgres database"
+ "tika-server: extract metadata from files"
+)
 source=("https://github.com/$_pkgname/$_pkgname/releases/download/v$pkgver/$_pkgname-v$pkgver.tar.xz"
         "paperless.hook"
         "paperless.sysusers"
