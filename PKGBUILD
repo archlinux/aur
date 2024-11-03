@@ -7,7 +7,7 @@
 _pkgbase='logisim-evolution'
 pkgbase="${_pkgbase}-git"
 pkgname="${_pkgbase}-git"
-pkgver=3.9.0+50.r5041.20241102.cccab4554
+pkgver=3.9.0+52.r5043.20241103.6e46e5431
 pkgrel=2
 provides=("${_pkgbase}=${pkgver}")
 conflicts=("${_pkgbase}")
@@ -45,10 +45,6 @@ sha256sums=(
 
 prepare() {
   cd "$srcdir/${_pkgbase}"
-
-  # 2024-11-03: Revert https://github.com/logisim-evolution/logisim-evolution/pull/2084/files. See https://github.com/logisim-evolution/logisim-evolution/issues/2089#issuecomment-2453221269.
-  printf '%s\n' "Reverting PR 2084 ..."
-  patch -Np1 -R --follow-symlinks -i "${srcdir}/rsyntaxtextarea_v3.5.1_to_v3.5.2.patch"
 
   git log > git.log
 }
