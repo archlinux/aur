@@ -3,7 +3,7 @@
 # Contributor: Aleksandar Trifunović <akstrfn at gmail dot com>
 
 pkgname=fizz
-pkgver=2024.05.27.00
+pkgver=2024.10.28.00
 pkgrel=1
 pkgdesc="C++14 implementation of the TLS-1.3 standard"
 arch=(x86_64)
@@ -33,23 +33,18 @@ provides=(
   libfizz_test_support.so
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('3b41ed6d6afea0821b5702fbe46e10877efdf4f6da00e7fd9aceb514c03178be')
-
-_archive="$pkgname-$pkgver"
+sha256sums=('b78fc01145beb72188cefb4ab82b87d04e0ab7f712f99d49e80c8a14264ae6b9')
 
 prepare() {
-  cd "$_archive"
-
-  # Use system CMake config instead of bundled module, incompatible with glog
-  # v0.7.0+
+  cd $pkgname-$pkgver
+  # Use system CMake config instead of bundled module
   sed -i 's/find_package(Glog REQUIRED)/find_package(Glog CONFIG REQUIRED)/' \
     fizz/CMakeLists.txt
 }
 
 build() {
-  cd "$_archive/fizz"
-
-  cmake -S . -B build \
+  cd $pkgname-$pkgver
+  cmake -S fizz -B build \
     -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -Wno-dev \
@@ -60,25 +55,17 @@ build() {
 }
 
 check() {
-  cd "$_archive/fizz"
-
-  # Skip failing tests - not sure why they fail
-  local skipped_tests=(
-    DefaultCertificateVerifierTest
-    SlidingBloomReplayCacheTest
-  )
-  local skipped_tests_pattern="${skipped_tests[0]}$(printf "|%s" "${skipped_tests[@]:1}")"
-  ctest --test-dir build --output-on-failure -E "$skipped_tests_pattern"
+  cd $pkgname-$pkgver
+  ctest --test-dir build --output-on-failure
 }
 
 package() {
-  cd "$_archive"
-
-  DESTDIR="$pkgdir" cmake --install "$pkgname/build"
+  cd $pkgname-$pkgver
+  DESTDIR="$pkgdir" cmake --install build
 
   # Remove empty directories to avoid namcap warnings
-  rm -r "$pkgdir/usr/include/fizz/tool/test"
-  rm -r "$pkgdir/usr/include/fizz/util/test"
+  rm -vr "$pkgdir/usr/include/fizz/tool/test"
+  rm -vr "$pkgdir/usr/include/fizz/util/test"
 
-  install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
+  install -vDm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
 }
