@@ -18,6 +18,6 @@ pkgbase = equibop
 	source = equibop.sh
 	sha256sums = a590843c96261595b5a940e0c7c5c1869ec76ea860432b3d55bdefc0500c5b2a
 	sha256sums = d84e7ae91a126374948ccaa86bf2d0e64bb198f748596f8c086e19a1bf3827ad
-	sha256sums = 4b23eeeadd13fcdd7fd2d0556bca5805127394814051deb4cc022db5f2923603
+	sha256sums = fc2df19a94fe663e48bea9f2e57dfc2c7d0facabd46d43f02dc9992a68cd248e
 
 pkgname = equibop

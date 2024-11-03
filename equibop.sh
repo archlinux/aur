@@ -7,9 +7,11 @@ if [[ -f $XDG_CONFIG_HOME/equibop-flags.conf ]]; then
     EQUIBOP_USER_FLAGS="$(grep -v '^#' $XDG_CONFIG_HOME/equibop-flags.conf)"
 fi
 
-# Detect Wayland and add specific flags if running on Wayland
-if [[ $XDG_SESSION_TYPE == "wayland" ]]; then
-    EQUIBOP_USER_FLAGS="$EQUIBOP_USER_FLAGS --enable-features=UseOzonePlatform,WaylandWindowDecorations,VaapiVideoDecodeLinuxGL --ozone-platform=wayland"
+if [[ " $@ " == *" --wayland "* ]]; then
+    if [[ $XDG_SESSION_TYPE == "wayland" ]]; then
+        echo "Forcing Wayland"
+        EQUIBOP_USER_FLAGS="$EQUIBOP_USER_FLAGS --enable-features=UseOzonePlatform,WaylandWindowDecorations,VaapiVideoDecodeLinuxGL --ozone-platform=wayland"
+    fi
 fi
 
 # Launch
