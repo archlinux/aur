@@ -1,7 +1,7 @@
 # Maintainer: Sergey Mezentsev <thebits@yandex.ru>
 
 pkgname=datafusion-cli
-pkgver=42.0.0
+pkgver=42.1.0
 pkgrel=1
 pkgdesc="The DataFusion CLI is a command-line interactive SQL utility for executing queries against any supported data files."
 url="https://github.com/apache/datafusion"
@@ -13,12 +13,12 @@ makedepends=(
   cargo
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/apache/arrow-datafusion/archive/tags/$pkgver.tar.gz")
-b2sums=('91d157e36854d61d2c01af85ffe876cc718ad535831268a10151a2ec2b864053d03600476c1e13b6fec2003ed2a5f5e496e3c85678c31e6cad7686fb5737a70c')
+b2sums=('6df81761076dd5a0680a0a28827be23286252856f1adf67991790d8da6a839c586f73b40fdfc7699ffd09b345169557a7358160a14fc7323ab004f747080e4e3')
 
 build() {
   export CARGO_TARGET_DIR=target
   cd "datafusion-tags-$pkgver/datafusion-cli"
-  rustup override set 1.78
+  rustup override set 1.79
   rustup component add rustfmt
   cargo build --release --locked
 }
