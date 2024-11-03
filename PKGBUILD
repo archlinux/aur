@@ -3,8 +3,8 @@
 
 _gemname=cairo
 pkgname=ruby-$_gemname
-pkgver=1.17.8
-pkgrel=4
+pkgver=1.17.13
+pkgrel=1
 pkgdesc='Ruby bindings for cairo'
 arch=('x86_64')
 url='https://cairographics.org/rcairo'
@@ -14,7 +14,7 @@ makedepends=('ruby-rdoc')
 options=('!emptydirs')
 source=("https://rubygems.org/downloads/$_gemname-$pkgver.gem")
 noextract=($_gemname-$pkgver.gem)
-sha512sums=('a2b756dc1cf1abb98e4b60b9b56f5f610058bd840b67c991d6bfb3da2523b0f77a5854147f9d14ca461d573e51fbe3ba35c83659af5c031086710970fac6665a')
+sha512sums=('82fb621f97b6eb292565fd0f90f5e686c2cd4cd8aa61fa0ab6e25aac665aa9f7e780481a6571fd443be8c53070f29a2dfea5a54949350fe783b12aeb6aba3769')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
