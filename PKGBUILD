@@ -15,12 +15,10 @@ license=(LGPLv2.1)
 arch=(i686 x86_64)
 makedepends=(cmake curl freetype2 git gmp hicolor-icon-theme hiredis jsoncpp leveldb libgl libjpeg libvorbis libxi luajit openal postgresql-libs spatialindex sqlite ninja sdl2)
 source=(git+https://github.com/minetest/minetest.git
-		git+https://github.com/minetest/irrlicht.git
 		luanti.service
 		sysusers.d
 		tmpfiles.d)
 sha256sums=('SKIP'
-            'SKIP'
             '94bd65bff21c63d508f127f19a6323c1a4e9c6869da239c9fc3af2d7f498d09d'
             '294283b0686c4d73d816168544ab2f813a7a0ca63fc49da59563a329dd329eed'
             'c9a0c78a49461f56381e5615045d036cd594b741c910129eccf43e475c40cca1')
@@ -30,8 +28,6 @@ pkgver() {
 }
 
 build() {
-	ln -sf "${srcdir}/irrlicht" "${srcdir}/${_pkgname}/lib/irrlichtmt"
-
 	cd "${srcdir}/${_pkgname}"
 	mkdir -p build && cd build
 
