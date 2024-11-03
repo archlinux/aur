@@ -1,6 +1,6 @@
 # Maintainer: Alexander Pohl <alex at ahpohl dot com>
 pkgname=libsunspec
-pkgver=0.1.4
+pkgver=0.1.5
 pkgrel=1
 epoch=
 pkgdesc="A C++ library for SunSpec compatible inverters, meters and batteries" 
