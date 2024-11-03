@@ -4,18 +4,18 @@ PKG_REAL_NAME="UntitledGameSystemManager"
 PKG_FRAMEWORK_VERSION="0.9.8.10"
 
 pkgname=untitled-game-system-manager
-pkgver=2.5.0.0
+pkgver=2.6.0.0
 pkgrel=1
 pkgdesc="A manager for containerised Linux gaming systems"
 url="https://github.com/MadLadSquad/${PKG_REAL_NAME}"
 arch=(x86_64 aarch64)
 license=('MIT')
-depends=("gcc-libs" "glibc" "pkgconf" "untitled-imgui-framework" "incus")
+depends=("gcc-libs" "glibc" "pkgconf" "untitled-imgui-framework" "incus" "xorg-xhost")
 provides=("lib${PKG_REAL_NAME}Lib.so" "${PKG_REAL_NAME}")
 makedepends=("cmake" "make" "pkgconf" "untitled-imgui-framework" "go" "incus")
 source=("https://github.com/MadLadSquad/UntitledImGuiFramework/releases/download/v${PKG_FRAMEWORK_VERSION}/untitled-imgui-framework.tar.xz" "https://github.com/MadLadSquad/${PKG_REAL_NAME}/releases/download/v${pkgver}/${pkgname}.tar.xz")
 sha256sums=('7844ae7820bfb202bfb11c10d86361a7dbbdb788b422e837e78e7b1afe375663'
-            'ccdc5de34ada2333568dd073444345a49fad42d99a709f23343c9aa7c237af3b')
+            'f0873cb3f32b8a822bb1db6a4b1f02ebb3bdfdd861799fe474f134e544d7affb')
 noextract=("${pkgname}.tar.xz")
 
 prepare() {
