@@ -16,6 +16,6 @@ pkgbase = soci-git
 	provides = soci
 	conflicts = soci
 	source = soci::git+https://github.com/SOCI/soci.git#tag=d7bec49aaa6e44c85e3e72dcf3c57458724cfc72
-	sha512sums = SKIP
+	sha512sums = 12cc069ed88ccd7a4fde0cbe87d895da1b3b79c826facbc0311c47244d8899104a7b4096bcdaed5d39b1c1e356a1aabbc043b0d7eb8d1a0d0133c82d41c6be39
 
 pkgname = soci-git

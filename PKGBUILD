@@ -24,7 +24,7 @@ makedepends=("cmake" "git")
 provides=("${_pkgname}")
 conflicts=("soci")
 source=("${_pkgname}::git+${url}.git#tag=${_tag}")
-sha512sums=("SKIP")
+sha512sums=("12cc069ed88ccd7a4fde0cbe87d895da1b3b79c826facbc0311c47244d8899104a7b4096bcdaed5d39b1c1e356a1aabbc043b0d7eb8d1a0d0133c82d41c6be39")
 
 _compile()
 {
