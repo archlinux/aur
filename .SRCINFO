@@ -1,6 +1,6 @@
 pkgbase = thextech-bin
 	pkgdesc = SMBX engine.
-	pkgver = 1.3.6.5
+	pkgver = 1.3.6.6
 	pkgrel = 1
 	url = https://github.com/Wohlstand/TheXTech
 	arch = i386
@@ -11,14 +11,14 @@ pkgbase = thextech-bin
 	license = GPL
 	makedepends = unzip
 	depends = sdl2
-	provides = thextech=1.3.6.5
-	source_i386 = https://github.com/Wohlstand/TheXTech/releases/download/v1.3.6.5/thextech-plain-runtime-v1.3.6.5-linux-generic-u16.04-i386.tar.gz
-	sha256sums_i386 = ce90eef926921fa0979b2f1d244122e560a5bb3990976747e9a90b148b29718c
-	source_i686 = https://github.com/Wohlstand/TheXTech/releases/download/v1.3.6.5/thextech-plain-runtime-v1.3.6.5-linux-generic-u16.04-i386.tar.gz
-	sha256sums_i686 = ce90eef926921fa0979b2f1d244122e560a5bb3990976747e9a90b148b29718c
-	source_x86_64 = https://github.com/Wohlstand/TheXTech/releases/download/v1.3.6.5/thextech-plain-runtime-v1.3.6.5-linux-generic-u20.04-amd64.tar.gz
-	sha256sums_x86_64 = 5e695e4c90c89a3be0fe5f36c4620173b2b5aad7e48f9b1a2658d7ddf551a502
-	source_aarch64 = https://gitlab.com/linuxbombay/thextech/1.3.6.5/-/raw/main/thextech-linux-arm64.tar.xz
-	sha256sums_aarch64 = bb63fce74347b4cb7893b994308cf2a057d22726d1e2011868ca1a70721b98e7
+	provides = thextech=1.3.6.6
+	source_i386 = https://github.com/Wohlstand/TheXTech/releases/download/v1.3.6.6/thextech-plain-runtime-v1.3.6.6-linux-generic-u16.04-i386.tar.gz
+	sha256sums_i386 = 24afbb17285139bc2f9db4466323fbb017f95c0c9c04bd81ac4cf5c9af4ac0fc
+	source_i686 = https://github.com/Wohlstand/TheXTech/releases/download/v1.3.6.6/thextech-plain-runtime-v1.3.6.6-linux-generic-u16.04-i386.tar.gz
+	sha256sums_i686 = 24afbb17285139bc2f9db4466323fbb017f95c0c9c04bd81ac4cf5c9af4ac0fc
+	source_x86_64 = https://github.com/Wohlstand/TheXTech/releases/download/v1.3.6.6/thextech-plain-runtime-v1.3.6.6-linux-generic-u20.04-amd64.tar.gz
+	sha256sums_x86_64 = a24bca30d5b53cdac7b53a4d78365c19467b986ddac9238d7374d7bf3ad79b57
+	source_aarch64 = https://gitlab.com/linuxbombay/thextech/1.3.6.6/-/raw/main/thextech-linux-arm64.tar.xz
+	sha256sums_aarch64 = d00ab92a8781dd0b2086b1d2d451287ea0fffa20d25f572b6b0c724947ac57e0
 
 pkgname = thextech-bin
