@@ -1,0 +1,16 @@
+pkgbase = zinar
+	pkgdesc = A modern Python GUI application.
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/Zinaro/zinar
+	arch = any
+	license = GPL-3.0-or-later
+	depends = python
+	depends = python-kivy
+	provides = zinar
+	conflicts = zinar-bin
+	conflicts = zinar-git
+	source = zinar.py
+	sha256sums = c498244711343582e646cc85eb31cf18b1fc784c54f370d4c256597d4aaa899a
+
+pkgname = zinar
