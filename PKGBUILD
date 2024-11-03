@@ -4,8 +4,8 @@
 pkgname=coolercontrol-bin
 _pkgname=${pkgname%-bin}
 _app_id="org.$_pkgname.CoolerControl"
-pkgver=1.4.2
-pkgrel=2
+pkgver=1.4.4
+pkgrel=1
 pkgdesc="A program to monitor and control your cooling devices (binary release)"
 arch=('x86_64')
 url="https://gitlab.com/coolercontrol/coolercontrol"
@@ -27,12 +27,12 @@ conflicts=(
 )
 groups=(coolercontrol-bin)
 source=(
-  "https://gitlab.com/coolercontrol/coolercontrol/-/releases/$pkgver/downloads/packages/$_pkgname"
+  "https://gitlab.com/coolercontrol/coolercontrol/-/releases/$pkgver/downloads/packages/${_pkgname}_${pkgver}"
   "https://gitlab.com/coolercontrol/coolercontrol/-/archive/$pkgver/$_pkgname-$pkgver.tar.gz"
 )
 sha256sums=(
-  'ac3509b8b9eb01a813e3035ea746b265fbcf84b5797260b204653570ce9e1612'
-  '0185f95f000cf2a587ceecde9aadaf58901afe9a35fdc56acf7e1df81c56b13e'
+  '7d8e3a9455ec0a7bef4d8b894c20f59410f8fdcab49bf01a79d0a4d3e46156fd'
+  'acf5a27111122230d243e66eae85212f9c01a402b12028a8918fc785414bb713'
 )
 
 check() {
@@ -42,7 +42,7 @@ check() {
 }
 
 package() {
-  install -Dm755 "$_pkgname" -t "$pkgdir/usr/bin"
+  install -DTm755 "${_pkgname}_${pkgver}" "$pkgdir/usr/bin/${_pkgname}"
 
   cd "${srcdir}/$_pkgname-$pkgver"
 
