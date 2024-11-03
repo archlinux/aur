@@ -24,7 +24,7 @@
 	depends = snappy
 	depends = xcb-util-wm
 	depends = xcb-util-image
-	depends = xcb-renderutil
+	depends = xcb-util-renderutil
 	depends = qt5-webengine
 	optdepends = activdriver: Driver for Promethean hardware
 	optdepends = activtools: Tools for Promethean hardware, e.g. calibration or systray monitor
