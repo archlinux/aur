@@ -1,0 +1,17 @@
+pkgbase = python-rtfde
+	pkgdesc = A library for extracting HTML content from RTF encapsulated HTML as commonly found in the exchange MSG email format.
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://github.com/seamustuohy/RTFDE
+	arch = any
+	license = LGPL-3.0-or-later
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python-lark
+	depends = python-oletools
+	source = rtfde-0.1.2.tar.gz::https://github.com/seamustuohy/RTFDE/archive/refs/tags/0.1.2.tar.gz
+	sha256sums = e7e65410b10b9d61be3d96b2cd5a7bc88d21ea75d519296925a0cb9631b50d73
+
+pkgname = python-rtfde
