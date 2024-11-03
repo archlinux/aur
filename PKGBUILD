@@ -1,6 +1,6 @@
 # Maintainer: Matt Pharoah <mtpharoah@gmail.com>
 pkgname=parallel-launcher
-pkgver=7.7.0
+pkgver=7.8.0
 pkgrel=0
 epoch=
 pkgdesc='Modern N64 Emulator'
@@ -41,9 +41,9 @@ backup=()
 options=()
 install='parallel-launcher.install'
 changelog=
-source=('https://gitlab.com/parallel-launcher/parallel-launcher/uploads/162332acfcd06d67edb337d85d84578d/parallel-launcher-7.7.0.tar.gz')
+source=('https://gitlab.com/-/project/22150690/uploads/6e06a6e40711bf9bdc8fc4093856af5f/parallel-launcher-7.8.0.tar.gz')
 noextract=()
-sha256sums=('7d8a603d0f72e81faa3d6e1d5a5e86db56a8528c2c25a50c5c9327c6bf56db44')
+sha256sums=('20f6057050d461136a8545f16e89abd7d72ba0eecbb3ddecdd3f37f6d49f578e')
 validpgpkeys=()
 
 build() {
@@ -67,6 +67,7 @@ package() {
 	install -D lang/parallel-launcher_de.qm $pkgdir/usr/share/parallel-launcher/translations/parallel-launcher_de.qm
 	install -D lang/parallel-launcher_ar.qm $pkgdir/usr/share/parallel-launcher/translations/parallel-launcher_ar.qm
 	install -D lang/parallel-launcher_pt.qm $pkgdir/usr/share/parallel-launcher/translations/parallel-launcher_pt.qm
+	install -D lang/parallel-launcher_ja.qm $pkgdir/usr/share/parallel-launcher/translations/parallel-launcher_ja.qm
 	install -D parallel-launcher-sdl-relay $pkgdir/usr/share/parallel-launcher/parallel-launcher-sdl-relay
 	install -D parallel-launcher-lsjs $pkgdir/usr/share/parallel-launcher/parallel-launcher-lsjs
 }
