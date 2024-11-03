@@ -1,0 +1,10 @@
+diff --unified --recursive --text a/lgmon2/src/keytext.c b/lgmon2/src/keytext.c
+--- a/lgmon2/src/keytext.c	2013-12-23 21:09:15.000000000 -0700
++++ b/lgmon2/src/keytext.c	2024-11-03 10:54:25.716586047 -0700
+@@ -37,6 +37,7 @@
+ #include <unistd.h>
+ #include <libxml/parser.h>	/* Ver.2.80 */
+ #include <string.h>
++#include <stdlib.h>
+ 
+ #include "keytext.h"
