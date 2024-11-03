@@ -4,7 +4,7 @@
 pkgname=coolercontrold-bin
 _pkgname="${pkgname%-bin}"
 pkgver=1.4.4
-pkgrel=2
+pkgrel=3
 pkgdesc="A program to monitor and control your cooling devices: daemon (binary release)"
 arch=('x86_64')
 url="https://gitlab.com/coolercontrol/coolercontrol"
@@ -36,7 +36,7 @@ check() {
 }
 
 package() {
-  install -Dm755 "./${_pkgname}_${pkgver}" -t "$pkgdir/usr/bin/${_pkgname}"
+  install -DTm755 "./${_pkgname}_${pkgver}" -t "$pkgdir/usr/bin/${_pkgname}"
 
   cd "${srcdir}/${pkgname%d-bin}-$pkgver"
 
