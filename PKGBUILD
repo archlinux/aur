@@ -1,7 +1,7 @@
 # Maintainer: Carl Smedstad <carsme@archlinux.org>
 
 pkgname=mvfst
-pkgver=2024.05.27.00
+pkgver=2024.10.28.00
 pkgrel=1
 pkgdesc="An implementation of the QUIC transport protocol"
 arch=(x86_64)
@@ -68,22 +68,17 @@ provides=(
   libmvfst_transport_settings_functions.so
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('9f9ca0da5f4cbd4dd88ebb9e72556f0305aa67dcea99beb462b7f321a829920d')
-
-_archive="$pkgname-$pkgver"
+sha256sums=('cafe975b1dc0ba6656fcaffea3c7281816e919bbfd1a7c6969fb38f9ae700b40')
 
 prepare() {
-  cd "$_archive"
-
-  # Use system CMake config instead of bundled module, incompatible with glog
-  # v0.7.0+
+  cd $pkgname-$pkgver
+  # Use system CMake config instead of bundled module
   sed -i 's/find_package(Glog REQUIRED)/find_package(Glog CONFIG REQUIRED)/' \
     CMakeLists.txt
 }
 
 build() {
-  cd "$_archive"
-
+  cd $pkgname-$pkgver
   cmake -S . -B build \
     -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_INSTALL_PREFIX=/usr \
@@ -95,17 +90,12 @@ build() {
 }
 
 check() {
-  cd "$_archive"
-
-  # Test fails in a chroot - not sure why
-  ctest --test-dir build --output-on-failure \
-    -E QuicClientTransportAfterStartTest.BadStatelessResetWontCloseTransport
+  cd $pkgname-$pkgver
+  ctest --test-dir build --output-on-failure
 }
 
 package() {
-  cd "$_archive"
-
+  cd $pkgname-$pkgver
   DESTDIR="$pkgdir" cmake --install build
-
-  install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
+  install -vDm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
 }
