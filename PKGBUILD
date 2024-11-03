@@ -2,26 +2,41 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=proxmark3-iceman-git
-pkgver=4.18994.r249.gdc76492
+pkgver=4.18994.r402.g411f777
 pkgrel=1
 pkgdesc='RRG / Iceman repo - Proxmark3 RDV4.0 and other Proxmark3 platforms.'
 arch=('x86_64')
 url='https://github.com/RfidResearchGroup/proxmark3'
 license=('GPL-2.0-only')
-depends=('perl'
+_pydeps=(
+  bitarray
+  pyaudio
+  numpy
+)
+depends=(
+  'bash'
+  'bzip2'
+  'gcc-libs'
+  'glibc'
+  'readline'
+  'lz4'
+  'jansson'
+  'perl'
   'python'
+  "${_pydeps[@]/#/python-}"
   'libsndfile'
   'bluez'
   'bluez-libs'
   'gd'
-  'qt5-tools')
+  'qt5-base')
 makedepends=('git'
   'arm-none-eabi-gcc'
   'arm-none-eabi-newlib'
+  'qt5-tools'
   'pkgconf'
-  'readline'
-  'bzip2'
-  'lz4'
+  #   'readline'
+  #   'bzip2'
+  #   'lz4'
   #   'lua'
   #   'libwhereami'
 )
@@ -38,7 +53,7 @@ replaces=($pkgname'-generic' $pkgname'-rdv4')
 source=("$pkgname::git+${url}.git"
   "${pkgname}.install")
 sha512sums=('SKIP'
-            'dd9b4a37918fcd2a646090b1805de159ec05fec337f14aac09ff476c164551d94c16085bae19be8a1f8f3eb66c0470f98b728f3bf1b48a7ab5b94f99e753afe7')
+  'dd9b4a37918fcd2a646090b1805de159ec05fec337f14aac09ff476c164551d94c16085bae19be8a1f8f3eb66c0470f98b728f3bf1b48a7ab5b94f99e753afe7')
 install=${pkgname}.install
 
 pkgver() {
