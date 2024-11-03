@@ -1,19 +1,20 @@
 pkgbase = autogit
 	pkgdesc = Auto build, update, install PKGBUILDS from Github, Gitlab and AUR
-	pkgver = 1.9.0
-	pkgrel = 2
+	pkgver = 2.0.0
+	pkgrel = 1
 	url = https://github.com/puxplaying/autogit
 	arch = any
 	license = GPL-3.0-or-later
 	makedepends = git
-	depends = pacman
-	depends = sudo
 	depends = bash
 	depends = curl
 	depends = fzf
+	depends = pacman
+	depends = rsync
+	depends = sudo
 	optdepends = devtools: Needed for Arch Linux clean chroot package building
 	backup = etc/autogit/autogit.conf
-	source = autogit-1.9.0.tar.gz::https://github.com/puxplaying/autogit/archive/1.9.0.tar.gz
-	sha256sums = c5bd919507944703d3aa7ea75719dde43026da0a6de8fae6661c4488229ddd88
+	source = autogit-2.0.0.tar.gz::https://github.com/puxplaying/autogit/archive/2.0.0.tar.gz
+	sha256sums = 0629193651d14f7bc60fbb8dccf3b26903b5d5f829434e2c58fa0a81ee7de414
 
 pkgname = autogit
