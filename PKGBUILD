@@ -18,7 +18,7 @@ depends=("nlohmann-json")
 makedepends=("cmake" "doxygen" "git")
 checkdepends=("doctest")
 source=("${pkgname}::git+${url}.git#tag=${_tag}")
-sha512sums=("SKIP")
+sha512sums=("2c2e0425f0b63c4f777227fb87caf8f223b8653a87894e5b185f1b09f7799f9633dc59a08806c494ae8cb6e8ba28bb06e3f4900e843a9e1ebe809d77662d2063")
 
 _compile()
 {
