@@ -1,14 +1,14 @@
 # Maintainer: Alexander Pohl <alex at ahpohl dot com>
 pkgname=froniusd
 pkgver=0.1.3
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Read data from a Fronius inverter"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url="https://github.com/ahpohl/froniusd"
 license=('MIT')
 groups=()
-depends=('mosquitto' 'libsunspec>=0.1.3' 'libmodbus>=3.1.11')
+depends=('mosquitto' 'libsunspec>=0.1.5' 'libmodbus>=3.1.11')
 makedepends=()
 checkdepends=()
 optdepends=('nodejs-node-red' 'postgresql' 'timescaledb' 'pg_cron' 'grafana-bin')
