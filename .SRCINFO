@@ -25,7 +25,7 @@ pkgbase = parallel-launcher
 	depends = p7zip
 	optdepends = noto-fonts: intended font
 	optdepends = udisks2: mounting emulated SD cards
-	source = https://gitlab.com/-/project/22150690/uploads/6e06a6e40711bf9bdc8fc4093856af5f/parallel-launcher-7.8.0.tar.gz
+	source = https://gitlab.com/-/project/22150690/uploads/8eb98987d556b6b8ec7ec34cdfb5555e/parallel-launcher-7.8.0.tar.gz
 	sha256sums = 20f6057050d461136a8545f16e89abd7d72ba0eecbb3ddecdd3f37f6d49f578e
 
 pkgname = parallel-launcher
