@@ -7,7 +7,7 @@
 pkgbase=qt6-base-git
 pkgname=(qt6-base-git
          qt6-xcb-private-headers-git)
-pkgver=6.8.0_r68447.gfdfb360f4f
+pkgver=6.8.0_r69786.g8f5ee7acbdf
 pkgrel=1
 arch=($CARCH)
 url='https://www.qt.io'
@@ -66,7 +66,7 @@ package_qt6-base-git() {
 
   DESTDIR="$pkgdir" cmake --install build
 
-  install -Dm644 qtbase/LICENSE* -t "$pkgdir"/usr/share/licenses/$pkgbase
+  install -Dm644 qtbase/LICENSES/* -t "$pkgdir"/usr/share/licenses/$pkgbase
 
   # Install symlinks for user-facing tools
   cd "$pkgdir"
