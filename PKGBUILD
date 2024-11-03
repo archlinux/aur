@@ -1,9 +1,10 @@
 # Maintainer: Tzu-Yu Lee <leejuyuu@gmail.com>
+# Contributor: RayeS <sidorovi4pasha at yandex dot by>
 # Contributor: chn <g897331845@gmail.com>
 # Contributor: xantares
 
 pkgname=boost-stacktrace-backtrace
-pkgver=1.83.0
+pkgver=1.86.0
 _boostver=${pkgver//./_}
 pkgrel=1
 pkgdesc='Boost.stacktrace backtrace variant'
@@ -16,7 +17,7 @@ options=('staticlibs')
 provides=(libboost_stacktrace_backtrace.so)
 
 source=("https://boostorg.jfrog.io/artifactory/main/release/$pkgver/source/boost_$_boostver.tar.gz")
-sha256sums=('c0685b68dd44cc46574cce86c4e17c0f611b15e195be9848dfd0769a0a207628')
+sha256sums=('2575e74ffc3ef1cd0babac2c1ee8bdb5782a0ee672b1912da40e5b4b591ca01f')
 
 build() {
   cd boost_$_boostver
