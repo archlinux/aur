@@ -1,0 +1,4 @@
+[xdg-desktop-portal-phosh]
+source = "git"
+git = "https://gitlab.gnome.org/guidog/xdg-desktop-portal-phosh"
+prefix = "v"
