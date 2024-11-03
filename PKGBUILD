@@ -11,7 +11,7 @@ arch=(x86_64 aarch64)
 license=('MIT')
 depends=("gcc-libs" "glibc" "pkgconf" "yaml-cpp")
 provides=("lib${PKG_REAL_NAME}.so")
-makedepends=("cmake" "make" "yaml-cpp")
+makedepends=("cmake" "make" "yaml-cpp" "pkgconf")
 source=("https://github.com/MadLadSquad/${PKG_REAL_NAME}/releases/download/v${pkgver}/${pkgname}.tar.xz")
 sha256sums=('7cd5074b6d40f2aaec4bfda3640f13b62a06633b0af8e3355a8e3a82155be800')
 
