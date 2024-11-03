@@ -4,7 +4,7 @@
 # Contributor: Daichi Shinozaki <dsdseg@gmail.com>
 
 pkgname=proxygen
-pkgver=2024.05.27.00
+pkgver=2024.10.28.00
 pkgrel=1
 pkgdesc="A collection of C++ HTTP libraries including an easy to use HTTP server"
 arch=(x86_64)
@@ -42,13 +42,10 @@ provides=(
   libproxygenhttpserver.so
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('938c72b8b0bdf45c62ac16967b92fae28e6e6078f2dde811825b2a02b4cb7728')
-
-_archive="$pkgname-$pkgver"
+sha256sums=('d84fb64c35afc6672a458805a8d988098717fdc2be9d0cb88337588c78f515e8')
 
 prepare() {
-  cd "$_archive"
-
+  cd $pkgname-$pkgver
   # Use system CMake config instead of bundled module, incompatible with glog
   # v0.7.0+
   sed -i '/find_package(fmt REQUIRED)/a find_package(Glog CONFIG REQUIRED)' \
@@ -56,21 +53,19 @@ prepare() {
 }
 
 build() {
-  cd "$_archive"
-
+  cd $pkgname-$pkgver
   cmake -S . -B build \
     -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -Wno-dev \
     -DBUILD_TESTS=ON \
     -DBUILD_SHARED_LIBS=ON \
-    -DPACKAGE_VERSION="$pkgver"
+    -DPACKAGE_VERSION=$pkgver
   cmake --build build
 }
 
 check() {
-  cd "$_archive"
-
+  cd $pkgname-$pkgver
   # Skip failing tests - not sure why they fail
   local skipped_tests=(
     ConnectionFilterTest.Test
@@ -95,9 +90,7 @@ check() {
 }
 
 package() {
-  cd "$_archive"
-
+  cd $pkgname-$pkgver
   DESTDIR="$pkgdir" cmake --install build
-
-  install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
+  install -vDm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
 }
