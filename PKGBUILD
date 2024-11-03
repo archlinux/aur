@@ -18,7 +18,7 @@ _CUDA_ARCH_LIST_CMAKE="52-real;53-real;60-real;61-real;62-real;70-real;72-real;7
 _pkgname=vision
 pkgbase='torchvision'
 pkgname=('torchvision' 'torchvision-cuda' 'python-torchvision' 'python-torchvision-cuda')
-pkgver=0.18.1
+pkgver=0.20.1
 pkgrel=1
 pkgdesc='Datasets, transforms, and models specific to computer vision'
 arch=('x86_64')
@@ -54,21 +54,17 @@ source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/pytorch/vision/archive
         "https://github.com/NVIDIA/DALI/raw/main/dali/operators/reader/loader/video/nvdecode/cuviddec.h"
         "https://github.com/NVIDIA/DALI/raw/main/dali/operators/reader/loader/video/nvdecode/nvcuvid.h"
         "torchvision-0_17_1-fix-build.patch"
-        "torchvision-ffmpeg7.patch"
 )
-b2sums=('663277ebd597ed27f410729ae8e17bb68e64d0116d65b752c9c59b342f58eae7ce6073e2f3a05c4697ff4d1390ff7a64b01e8839cca74000af1c1d4d976ddaa0'
+b2sums=('e598d0b4c3523a905ad06aa218c554622d2f2acaa19277b82b7611cbe19ad51937ee7c74e18933160ad37d79870e55b4b84b0eddc02b324241cacf67134bb888'
         '9ccff204a4e1e93340d8b12c2b1d17e01663c12957b4665c0043eccf76d507a7308745a5d9e4d89657840aaf8abf0aa8f51bd79d6e0d5dc57a376d54a754755a'
         '7db5d621f3099bc5455f1faeb7f4c3575a9cf70153ba56a6efc6d67d0ef2ac5438f6e117e621c5ef35c239eb3bce3fe17ce160e6b7765e8203d67a7299085429'
-        '1c3b33f7ff310e2e91ba277e2d984641e10b60c2acde42e30d3454e254b44f1f91cb7374a8aa7e66e5a870c71166a799f9fe640fed3629dc3d7a0a8ea66f9f2f'
-        'eee97b25bd40a18341e991bfa8a4adf72cd884aaf08068326c276532b5769c02afebeb8834d207a04725d2d2b2f696ac04837dbc2982bc4389f17b9810e14574')
+        'b2036b9f4102c50cbcf6813e4a5c46d2899c11ab8d20236eadb5ac1f88d927ee0fb809c880ca3ad9194efa8df665a47d05085b5352b804dabe8925836ecfd0f7')
 
 prepare() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
 
   # https://github.com/pytorch/vision/issues/8307
   patch -N -i "${srcdir}"/torchvision-0_17_1-fix-build.patch
-
-  patch -Np1 -i "${srcdir}"/torchvision-ffmpeg7.patch
 
   cp -a "${srcdir}/${_pkgname}-${pkgver}" "${srcdir}/${_pkgname}-cuda-${pkgver}"
   cp -a "${srcdir}/${_pkgname}-${pkgver}" "${srcdir}/python-${_pkgname}-${pkgver}"
