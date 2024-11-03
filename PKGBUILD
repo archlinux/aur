@@ -2,7 +2,7 @@
 pkgname=onscripter-en-galladite27
 _pkgname=ONScripter-EN
 pkgver=2024_07_21
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="modern fork of onscripter-en, an opensource nscript interpreter"
 arch=('x86_64')
