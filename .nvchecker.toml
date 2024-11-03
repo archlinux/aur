@@ -1,3 +1,4 @@
 [texttest]
 source = "pypi"
 pypi = "texttest"
+exclude_regex = '4\.4\.0\.1'

@@ -1,19 +1,19 @@
 # Maintainer: Carl Smedstad <carl.smedstad at protonmail dot com>
 
 pkgname=texttest
-pkgver=4.3.1
-pkgrel=2
+pkgver=4.4.0
+_commit=0f024202b56ca913e1149e857f296e6c04a83441
+pkgrel=1
 pkgdesc="A tool for text-based functional testing"
 arch=(any)
 url="https://github.com/texttest/texttest"
 license=(LGPL-2.1-or-later)
 depends=(
   gdk-pixbuf2
-  gobject-introspection-runtime
+  glib2
   gtk3
   pango
   python
-  python-boto
   python-certifi
   python-gobject
   python-matplotlib
@@ -26,20 +26,21 @@ makedepends=(
   python-setuptools
   python-wheel
 )
+optdepends=('python-boto: for Amazon EC2 support')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/$_commit.tar.gz")
+sha256sums=('27bbfa733bc0d7d7a763f3c555ffda91e5d2202a402a1f42611e1d2523074ad5')
 
-source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('d15c75b8262d6ba9a60320801a03b59b9d33b6d28c62348c33255497aaad8e7f')
-
-_archive="$pkgname-$pkgver"
+pkgver() {
+  cd $pkgname-$_commit
+  grep -Po 'version = "\K[^"]+' texttestlib/texttest_version.py
+}
 
 build() {
-  cd "$_archive"
-
+  cd $pkgname-$_commit
   python -m build --wheel --no-isolation
 }
 
 package() {
-  cd "$_archive"
-
+  cd $pkgname-$_commit
   python -m installer --destdir="$pkgdir" dist/*.whl
 }
