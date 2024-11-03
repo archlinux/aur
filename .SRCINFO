@@ -1,0 +1,16 @@
+pkgbase = python-red-black-tree-mod
+	pkgdesc = Flexible python implementation of red black trees
+	pkgver = 1.22
+	pkgrel = 1
+	url = http://stromberg.dnsalias.org/~strombrg/red-black-tree-mod
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	source = red-black-tree-mod-1.22.tar.gz::https://files.pythonhosted.org/packages/source/r/red-black-tree-mod/red-black-tree-mod-1.22.tar.gz
+	sha256sums = 38e3652903a2bf96379c27c2082ca0b7b905158662dd7ef0c97f4fd93a9aa908
+
+pkgname = python-red-black-tree-mod
