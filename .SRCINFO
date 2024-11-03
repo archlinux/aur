@@ -1,6 +1,6 @@
 pkgbase = equibop-git
 	pkgdesc = Forked Custom Discord desktop app with Equicord preinstalled
-	pkgver = 2.1.0.r1.g96e6764
+	pkgver = 2.1.0.r4.ge9d419d
 	pkgrel = 1
 	url = https://github.com/Equicord/Equibop
 	arch = any

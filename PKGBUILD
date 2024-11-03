@@ -9,7 +9,7 @@
 _pkgname="equibop"
 pkgname="$_pkgname-git"
 pkgdesc="Forked Custom Discord desktop app with Equicord preinstalled"
-pkgver=2.1.0.r1.g96e6764
+pkgver=2.1.0.r4.ge9d419d
 pkgrel=1
 url="https://github.com/Equicord/Equibop"
 license=('GPL-3.0-only')
@@ -90,7 +90,12 @@ if [ -r "\$_FLAGS_FILE" ]; then
   _USER_FLAGS="\$(grep -v '^#' "\$_FLAGS_FILE")"
 fi
 
-exec electron${_electron_version:-} /$_install_path/$_pkgname/app.asar \$_USER_FLAGS "\$@"
+# Detect if running under Wayland
+if [ "\$XDG_SESSION_TYPE" = "wayland" ]; then
+  _WAYLAND_FLAGS="--enable-features=UseOzonePlatform,WaylandWindowDecorations,VaapiVideoDecodeLinuxGL --ozone-platform=wayland"
+fi
+
+exec electron${_electron_version:-} /$_install_path/$_pkgname/app.asar \$_USER_FLAGS \$_WAYLAND_FLAGS "\$@"
 END
 
   install -Dm755 /dev/stdin "$pkgdir/usr/share/applications/$_pkgname.desktop" << END
