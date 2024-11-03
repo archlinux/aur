@@ -1,4 +1,4 @@
-From 7e3d7e44bbf34fe6076a05e38d11e54589943f91 Mon Sep 17 00:00:00 2001
+From b14cda4df29024c82b6b1d41308167e9d883baef Mon Sep 17 00:00:00 2001
 From: Stelios Tsampas <loathingkernel@gmail.com>
 Date: Tue, 7 Feb 2023 22:00:48 +0200
 Subject: [PATCH 1/7] AUR Pkgbuild changes
@@ -20,7 +20,7 @@ Subject: [PATCH 1/7] AUR Pkgbuild changes
  13 files changed, 85 insertions(+), 40 deletions(-)
 
 diff --git a/Makefile.in b/Makefile.in
-index d31e8a38..2fcc6cd6 100644
+index 5ae5fcec..85c32830 100644
 --- a/Makefile.in
 +++ b/Makefile.in
 @@ -54,11 +54,12 @@ else
@@ -250,7 +250,7 @@ index d31e8a38..2fcc6cd6 100644
  
  $(micross.ttf): $(FONTS)/scripts/merge.py $(noto_sans.ttf) $(noto_sans_arabic.ttf) $(noto_sans_armenian.ttf) $(noto_sans_bengali.ttf) $(noto_sans_coptic.ttf) \
  		$(noto_sans_georgian.ttf) $(noto_sans_gujarati.ttf) $(noto_sans_hebrew.ttf) $(noto_sans_khmer.ttf) $(noto_sans_tamil.ttf) \
-@@ -1278,8 +1321,8 @@ all-dist: $(DIST_OVR32) $(DIST_OVR64)
+@@ -1291,8 +1334,8 @@ all-dist: $(DIST_OVR32) $(DIST_OVR64)
  ##
  
  default_pfx: wine gst_good gst_bad gst_libav gst_plugins_rs lsteamclient steamexe vrclient wineopenxr dxvk dxvk-nvapi vkd3d-proton
@@ -261,7 +261,7 @@ index d31e8a38..2fcc6cd6 100644
  	rm -rf $(abspath $(DIST_PREFIX))
  	python3 $(SRCDIR)/default_pfx.py $(abspath $(DIST_PREFIX)) $(abspath $(DST_DIR))
  
-@@ -1435,7 +1478,6 @@ ifeq ($(ENABLE_CCACHE),1)
+@@ -1448,7 +1491,6 @@ ifeq ($(ENABLE_CCACHE),1)
  	export CCACHE_DIR := $(if $(CCACHE_DIR),$(CCACHE_DIR),$(HOME)/.ccache)
  	override DOCKER_OPTS := -v $(CCACHE_DIR):$(CCACHE_DIR)$(CONTAINER_MOUNT_OPTS) $(CCACHE_ENV) -e CCACHE_DIR=$(CCACHE_DIR) $(DOCKER_OPTS)
  else
@@ -269,7 +269,7 @@ index d31e8a38..2fcc6cd6 100644
  	override DOCKER_OPTS := $(CCACHE_ENV) -e CCACHE_DISABLE=1 $(DOCKER_OPTS)
  endif
  
-@@ -1450,9 +1492,6 @@ ifeq ($(CONTAINER_ENGINE),)
+@@ -1463,9 +1505,6 @@ ifeq ($(CONTAINER_ENGINE),)
  	CONTAINER_ENGINE := docker
  endif
  
@@ -481,10 +481,10 @@ index 5c3b59a3..ed6589e0 100644
  	winebuild --$(lastword $(subst ., ,$(4))) --fake-module -E "$(basename $(4)).spec" -o "$(4).fake"
  	mkdir -p $$($(2)_LIBDIR$(3))/$(LIBDIR_WINE_$(3))
 diff --git a/proton b/proton
-index 1f7b50a2..b4fb33f2 100755
+index 3e9549b8..c15f7da3 100755
 --- a/proton
 +++ b/proton
-@@ -543,7 +543,6 @@ class Proton:
+@@ -595,7 +595,6 @@ class Proton:
          self.wine_bin = self.bin_dir + "wine"
          self.wine64_bin = self.bin_dir + "wine64"
          self.wineserver_bin = self.bin_dir + "wineserver"
@@ -492,7 +492,7 @@ index 1f7b50a2..b4fb33f2 100755
  
      def path(self, d):
          return self.base_dir + d
-@@ -1769,8 +1768,6 @@ if __name__ == "__main__":
+@@ -1836,8 +1835,6 @@ if __name__ == "__main__":
  
      g_proton = Proton(os.path.dirname(sys.argv[0]))
  
@@ -501,7 +501,7 @@ index 1f7b50a2..b4fb33f2 100755
  
      g_compatdata = CompatData(os.environ["STEAM_COMPAT_DATA_PATH"])
  
-@@ -1782,7 +1779,8 @@ if __name__ == "__main__":
+@@ -1849,7 +1846,8 @@ if __name__ == "__main__":
      os.environ["PROTON_DLL_COPY"] = "*"
  
      if g_proton.missing_default_prefix():

@@ -1,4 +1,4 @@
-From c56741cc129921f72588f52b74430a3a883f8209 Mon Sep 17 00:00:00 2001
+From 6abb87efbc0bdd64ec4921baa4fe8c3df888827d Mon Sep 17 00:00:00 2001
 From: Stelios Tsampas <loathingkernel@gmail.com>
 Date: Sat, 11 May 2024 21:58:52 +0300
 Subject: [PATCH 7/7] AUR: Disable incompatible-pointer-types in Wine (GCC 14)
@@ -8,7 +8,7 @@ Subject: [PATCH 7/7] AUR: Disable incompatible-pointer-types in Wine (GCC 14)
  1 file changed, 3 insertions(+)
 
 diff --git a/Makefile.in b/Makefile.in
-index b3fa1504..aeb1bac6 100644
+index 438ccbae..a1aed620 100644
 --- a/Makefile.in
 +++ b/Makefile.in
 @@ -626,6 +626,9 @@ WINE_CONFIGURE_ARGS64 = --enable-win64 \
