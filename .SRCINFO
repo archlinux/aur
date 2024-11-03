@@ -1,0 +1,22 @@
+pkgbase = python-pycsw
+	pkgdesc = pycsw is an OGC API - Records and CSW server implementation written in Python.
+	pkgver = 2.6.1
+	pkgrel = 1
+	url = https://github.com/geopython/pycsw
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python-click
+	depends = python-geolinks
+	depends = python-lxml
+	depends = python-owslib
+	depends = python-pyproj
+	depends = python-dateutil
+	depends = python-pyaml
+	depends = python-shapely
+	depends = python-xmltodict
+	source = pycsw-2.6.1.tar.gz::https://github.com/geopython/pycsw/archive/refs/tags/2.6.1.tar.gz
+	sha256sums = bf00b6d62d1781f85980ff60d522fb4782f3938a60df6720347354e7b4604fb7
+
+pkgname = python-pycsw
