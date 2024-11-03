@@ -1,0 +1,14 @@
+pkgbase = python-geolinks
+	pkgdesc = Utilities to deal with geospatial links
+	pkgver = 0.2.3
+	pkgrel = 1
+	url = https://github.com/geopython/geolinks
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python-click
+	source = geolinks-0.2.3.tar.gz::https://github.com/geopython/geolinks/archive/refs/tags/0.2.3.tar.gz
+	sha256sums = 27e9d766d4e2d7200c284f481b0000c5fa0aabafb0445fd2ff2fb142a9510b9b
+
+pkgname = python-geolinks
