@@ -8,15 +8,15 @@
 
 pkgname=perl-pdl
 _dist=PDL
-pkgver=2.093
-pkgrel=2
+pkgver=2.094
+pkgrel=1
 pkgdesc='The Perl Data Language'
 license=('GPL-1.0-or-later OR Artistic-1.0-Perl')
 
 url="https://metacpan.org/release/$_dist"
 source=("$pkgname-$pkgver.tar.gz::https://cpan.metacpan.org/authors/id/E/ET/ETJ/$_dist-$pkgver.tar.gz"
         perldl.conf)
-sha256sums=('7cc43ae8db553960da964c9964f043128c417f1151202ad3f74ae6c2b0fe588a'
+sha256sums=('ba1d896b82204348d921da95fb72d7584ff1c0027e91b279cb3a3b3d47b89e12'
             'SKIP')
 
 arch=(i686 x86_64)
@@ -34,7 +34,7 @@ depends=(
   # They must be included here as they affect which modules are built.
   # The related modules will not be very useful without these dependencies.
   #
-  # See https://metacpan.org/release/ETJ/PDL-2.089/source/DEPENDENCIES
+  # See https://metacpan.org/release/ETJ/PDL-2.094/source/DEPENDENCIES
   # for more information
 
   #-- Uncategorised
@@ -94,6 +94,7 @@ makedepends=(
   gcc-fortran
 )
 checkdepends=(
+  perl-test-deep
   perl-test-exception
   perl-test-warn
 )
