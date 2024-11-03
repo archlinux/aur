@@ -1,0 +1,20 @@
+pkgbase = frs
+	pkgdesc = CLI wrapper around the Frankfurter API, used for getting the latest and historical currency exchange rates
+	pkgver = v0.0.0.r0.g39125b7
+	pkgrel = 1
+	url = https://github.com/Rolv-Apneseth/frankfurte-rs
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	depends = gcc-libs
+	depends = glibc
+	depends = openssl
+	provides = frs
+	conflicts = frs-git
+	options = !debug
+	source = git+https://github.com/Rolv-Apneseth/frankfurte-rs.git
+	md5sums = SKIP
+
+pkgname = frs
