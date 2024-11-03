@@ -1,7 +1,7 @@
 # Maintainer: Viech <viech unvanquished net>
 
 pkgname=unvanquished-data
-pkgver=0.55.0
+pkgver=0.55.1
 pkgrel=1
 pkgdesc='Game assets for Unvanquished'
 arch=(any)
@@ -9,7 +9,7 @@ url='https://www.unvanquished.net'
 license=(CC-BY-SA-2.5)
 makedepends=(aria2)
 source=("https://cdn.unvanquished.net/unvanquished_${pkgver}.torrent")
-sha256sums=('137f0185233a5c01de1f315042d416137b5d0c93d391a21e779b054495609144')
+sha256sums=('922fc38985787d97ac37c54f08af2a0f7141aa1b2af36473b309d7728af1b3ef')
 
 # Disable package compression since assets are already compressed.
 PKGEXT='.pkg.tar'
