@@ -40,7 +40,6 @@ optdepends=('apprise'
             'python-pycryptodomex'
             'python-send2trash'
 	    'python-slixmpp')
-# https://github.com/izderadicka/adecaptcha, not packaged
 source=("${pkgname}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${pkgname::1}/${pkgname}/${_pkgname}-$pkgver.tar.gz")
 sha256sums=('2db8b16947ec59e53c595a59b122c998547f8552e10abd4346c21e15809cc450')
 
