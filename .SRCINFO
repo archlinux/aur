@@ -1,0 +1,27 @@
+pkgbase = python-colbert-ai
+	pkgdesc = Efficient and Effective Passage Search via Contextualized Late Interaction over BERT
+	pkgver = 0.2.21
+	pkgrel = 1
+	url = https://github.com/stanford-futuredata/ColBERT
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python-bitarray
+	depends = python-datasets
+	depends = python-flask
+	depends = python-git-python
+	depends = python-dotenv
+	depends = python-ninja
+	depends = python-scipy
+	depends = python-tqdm
+	depends = python-transformers
+	depends = python-ujson
+	optdepends = python-faiss
+	optdepends = python-pytorch
+	source = colbert-ai-0.2.21.tar.gz::https://files.pythonhosted.org/packages/source/c/colbert_ai/colbert_ai-0.2.21.tar.gz
+	sha256sums = a8d6fdb4e2272f2b08ed37f8e5096072160d8415d1e40585751898b77e625bab
+
+pkgname = python-colbert-ai
