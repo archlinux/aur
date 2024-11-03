@@ -6,7 +6,7 @@ _srcname=python-$_pyname
 pkgname=$_srcname-git
 pkgdesc="An abstraction layer for constraint solvers."
 url="https://github.com/angr/claripy"
-pkgver=9.2.123.r2388.bc31f6ad
+pkgver=9.2.126.r2398.8662617b
 pkgrel=1
 arch=('any')
 depends=('python-cachetools' 'python-typing_extensions' 'python-z3-solver' 'python>=3.10')
@@ -15,6 +15,7 @@ makedepends=(
     'python-build'
     'python-installer'
     'python-myst-parser'
+    'python-setuptools'
     'python-sphinx'
     'python-sphinx-autodoc-typehints'
     'python-wheel'
