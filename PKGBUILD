@@ -1,5 +1,6 @@
-# Maintainer: Nicolas Stalder <n+archlinux@stalder.io>
-# Maintainer: Shi Liang <shiliang2008@msn.com>
+# Maintainer: 1ridic <i at 8f dot al>
+# Contributor: Nicolas Stalder <n+archlinux@stalder.io>
+# Contributor: Shi Liang <shiliang2008@msn.com>
 pkgname=caddy-naiveproxy
 pkgver=2.8.4
 pkgrel=1
