@@ -1,0 +1,4 @@
+[eid-mw]
+source = "regex"
+regex = "[\\d.]+\\.\\d*"
+url = "https://dist.eid.belgium.be/continuous/sources"
