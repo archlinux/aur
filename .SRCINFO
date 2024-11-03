@@ -1,6 +1,6 @@
 pkgbase = python-glom
 	pkgdesc = Python's nested data operator
-	pkgver = 23.5.0
+	pkgver = 24.11.0
 	pkgrel = 1
 	url = https://github.com/mahmoud/glom
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = python-glom
 	depends = python-boltons
 	depends = python-attrs
 	depends = python-face
-	source = https://files.pythonhosted.org/packages/source/g/glom/glom-23.5.0.tar.gz
-	sha256sums = 06af5e3486aacc59382ba34e53ebeabd7a9345d78f7dbcbee26f03baa4b83bac
+	source = https://github.com/mahmoud/glom/archive/refs/tags/v24.11.0.tar.gz
+	sha256sums = 4dddb8ccb3566e5cf8b2efa0276ab53cf651cc8998ac1453bac2440c52933f25
 
 pkgname = python-glom

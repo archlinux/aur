@@ -1,9 +1,8 @@
 # Maintainer: Evan Edwards <evan@ejedev.com>
 
 pkgname=python-glom
-_name=${pkgname#python-}
-_py=py3
-pkgver=23.5.0
+_name=glom
+pkgver=24.11.0
 pkgrel=1
 pkgdesc="Python's nested data operator"
 arch=('any')
@@ -12,10 +11,10 @@ license=('BSD-3')
 makedepends=('python-setuptools')
 depends=('python-boltons' 'python-attrs' 'python-face')
 source=(
-  "https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz"
+  "https://github.com/mahmoud/glom/archive/refs/tags/v${pkgver}.tar.gz"
 )
 sha256sums=(
-  '06af5e3486aacc59382ba34e53ebeabd7a9345d78f7dbcbee26f03baa4b83bac'
+  '4dddb8ccb3566e5cf8b2efa0276ab53cf651cc8998ac1453bac2440c52933f25'
 )
 
 
@@ -26,5 +25,6 @@ build() {
 
 package() {
   cd "$srcdir/$_name-$pkgver"
+  install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   python setup.py install --root="$pkgdir" --optimize=1
 }
