@@ -2,7 +2,7 @@
 # Contributor: Philip Goto <philip.goto@gmail.com>
 
 pkgname=phosh-git
-pkgver=0.38.0.r75.g0155a295
+pkgver=0.42.0.r106.g806a6ca1
 pkgrel=1
 pkgdesc='A pure Wayland shell prototype for GNOME on mobile devices'
 arch=(x86_64 aarch64 armv7h)
@@ -31,6 +31,7 @@ depends=(
 	fribidi
 	wayland
 	libsecret
+	gnome-bluetooth-3.0
 )
 makedepends=(
 	meson
@@ -39,6 +40,7 @@ makedepends=(
 	python-docutils
 	python-packaging
 	feedbackd
+	glib2-devel
 )
 checkdepends=(
 	xorg-server-xvfb
@@ -74,19 +76,21 @@ prepare() {
 
 build() {
 	# If we don't set `libexecdir` then meson will try and place the phosh bin in /lib/phosh and collide with the dir so we put it in /lib/phosh/phosh
+	# Disable creating man pages becuse rst2man throws locale.Error: unsupported locale setting
 	arch-meson --libexecdir="/usr/lib/phosh" \
+	--wrap-mode default \
 	-D tests=true \
 	-D phoc_tests=disabled \
-	-D man=true -D gtk_doc=false \
+	-D man=false \
+	-D gtk_doc=false \
 	-D callui-i18n=true \
 	-D lockscreen-plugins=true \
-	-D systemd=true \
 	phosh _build 
 	meson compile -C _build
 }
 
 check() {
-	xvfb-run meson test --no-suite screenshots -C _build
+	LANG=C.UTF8 xvfb-run meson test --no-suite screenshots -C _build
 }
 
 package() {
