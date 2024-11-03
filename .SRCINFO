@@ -12,6 +12,7 @@ pkgbase = streamcontroller
 	depends = xdg-desktop-portal-gtk
 	depends = libportal
 	depends = libportal-gtk4
+	depends = libadwaita
 	source = git+https://github.com/StreamController/StreamController.git
 	sha256sums = SKIP
 
