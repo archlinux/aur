@@ -12,6 +12,6 @@ pkgbase = pygmy
 	conflicts = pygmy-go-bin
 	conflicts = pygmy-go-git
 	source = pygmy-0.13.1.tar.gz::https://github.com/pygmystack/pygmy/archive/v0.13.1.tar.gz
-	sha512sums = 0eef378c5b7829a73680a682f26dbb45b49e7d2d552f5f2e525ed2ef952dcc7a85f2815097928d10f00b98161ca1301a84ef7ddc9d52649fa8b09348451a1871
+	sha512sums = c8b63a8cbe59d0dcdd92a028d0fb6fee134af4766fbf1276a97313ba005b1881bd284a42328f1ed53f98611c190c407a02628220adafcdd21064cf9b94a2505a
 
 pkgname = pygmy
