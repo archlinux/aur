@@ -1,6 +1,6 @@
 _pkgname=ddns-go
 pkgname=${_pkgname}-bin
-pkgver="6.7.1"
+pkgver="6.7.5"
 pkgrel=1
 pkgdesc='A simple, easy-to-use ddns service optimized for Chinese Mainland users'
 license=('MIT')
@@ -16,11 +16,11 @@ source_aarch64=("${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_linux
 source_armv7h=("${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_linux_armv7.tar.gz")
 sha256sums=('4a8086b2ef19c1c2f9c60f7cae5b852e6ce4a28a11709065f5099f001f8b6934'
             'caf121192d465753c553163c8cd6fe56b3a5d27edf9fbce489bb3c1e7c27fe65')
-sha256sums_x86_64=('fa63e2a46de6f26abad5fb8a5f1c3a31cf282f3e878574365de7e8ad933b5efb')
-sha256sums_i686=('4783ef372947206223c467535fa602eafb25c8d2375489162d8b1c6a9f4d2c0b')
-sha256sums_i386=('4783ef372947206223c467535fa602eafb25c8d2375489162d8b1c6a9f4d2c0b')
-sha256sums_aarch64=('a79aac93437629ed2f2eb8aa42dcd7d4d01b219852909d8fc6754247b1f13a3f')
-sha256sums_armv7h=('bc09022a2728496957ead480fbd233551fc4394a3b9ca029e8babb22d3f5a62c')
+sha256sums_x86_64=('706caa40385c6ab1c9464ef3205622d8dcc3a09c218cd15d77b2305bac348f2f')
+sha256sums_i686=('3f3504c82fcf074c2ae7772c21d3063995341a55a286a297ac247203cf1eb821')
+sha256sums_i386=("${sha256sums_i686[0]}")
+sha256sums_aarch64=('ae6950a9dd10269b774c6249ba39859d87548b35c6dedf8de0309e6c0370f059')
+sha256sums_armv7h=('7bbca169f71eacb3976488937694706a30c243814be1ed5edc7442565a6edfb7')
 install=ddns-go.install
 
 package() {
