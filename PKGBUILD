@@ -1,13 +1,32 @@
 # Maintainer: Michał Wojdyła < micwoj9292 at gmail dot com >
 pkgname='pyload-ng'
 _pkgname=pyload_ng
-pkgver=0.5.0b3.dev85
-pkgrel=4
+pkgver=0.5.0b3.dev87
+pkgrel=2
 pkgdesc="The free and open-source Download Manager written in pure Python"
 url="https://pyload.net/"
 license=('AGPL3')
 arch=('any')
-depends=(python-dukpy python-werkzeug python-cryptography python-flask-session python-flask-themes2 python-pycurl python-semver python python-certifi python-jinja python-setuptools python-flask python-flask-caching python-filetype python-flask-babel python-flask-compress python-bitmath python-cheroot)
+depends=(
+python
+python-bitmath
+python-certifi
+python-cheroot
+python-cryptography
+python-dukpy
+python-filetype
+python-flask
+python-flask-babel
+python-flask-caching
+python-flask-compress
+python-flask-session
+python-flask-themes2
+python-jinja
+python-pycurl
+python-semver
+python-setuptools
+python-werkzeug
+)
 optdepends=('apprise'
             'caffeine-ng'
             'python-beautifulsoup4'
@@ -23,7 +42,7 @@ optdepends=('apprise'
 	    'python-slixmpp')
 # https://github.com/izderadicka/adecaptcha, not packaged
 source=("${pkgname}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${pkgname::1}/${pkgname}/${_pkgname}-$pkgver.tar.gz")
-sha256sums=('28ba5f879dc92aa7b49192dc4350b87d714561e3b9a4f8626bd7d1c56b1b2076')
+sha256sums=('2db8b16947ec59e53c595a59b122c998547f8552e10abd4346c21e15809cc450')
 
 prepare() {
   cd "$srcdir/${_pkgname}-${pkgver}"
