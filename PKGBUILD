@@ -2,11 +2,11 @@
 
 pkgname=usb_resetter
 pkgver=1.3.0
-  pkgrel=1
+pkgrel=2
 pkgdesc="Tool to reset USB controllers, hubs or devices"
 arch=("any")
 url="https://github.com/netinvent/usb_resetter"
-license=("BSD")
+license=("BSD-3-Clause")
 depends=("python")
 makedepends=("git")
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
