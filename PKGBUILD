@@ -22,10 +22,10 @@ package() {
 	local desktopfile="$pkgdir/usr/share/applications/nbopen.desktop"
 	install -Dm755 nbopen/nbopen.desktop "$desktopfile"
 	sed -i 's/{PYTHON}/python3/' "$desktopfile"
-	
+
 	for s in 16 24 32 48 64 128 256 512; do
 		install -Dm644 "nbopen/icons/ipynb_icon_${s}x${s}.png" "$pkgdir/usr/share/icons/hicolor/${s}x${s}/mimetypes/application-x-ipynb+json.png"
 	done
-	
+
 	rm -rf "$pkgdir/usr/lib/python"*'/site-packages/nbopen/'{application-x-ipynb+json.xml,icons,nbopen.desktop}
 }
