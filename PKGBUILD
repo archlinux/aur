@@ -47,7 +47,7 @@ package() {
     mkdir -p "$pkgdir/opt/$pkgname"
     cp -r "$srcdir/squashfs-root/." "$pkgdir/opt/$pkgname/"
 
-    # Symlink Bin
+    # Copy Bin run file
     install -dm755 "$pkgdir/usr/bin"
-    ln -s "$pkgdir/opt/$pkgname/AppRun" "$pkgdir/usr/bin/hexhub"
+    cp -r "$pkgdir/opt/$pkgname/AppRun" "$pkgdir/usr/bin/hexhub"
 }
