@@ -5,12 +5,13 @@
 
 _pkgname=pamac
 pkgname=${_pkgname}-flatpak
-pkgver=11.7.1
+pkgver=11.7.2
 pkgrel=1
 _srcdir="$_pkgname-$pkgver"
 pkgdesc="A GUI frontend for libalpm. With Flatpak support"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
-url="https://gitlab.manjaro.org/applications/$_pkgname"
+#url="https://gitlab.manjaro.org/applications/$_pkgname"
+url="https://github.com/manjaro/pamac"
 license=('GPL3')
 depends=(
     'desktop-file-utils'
@@ -43,12 +44,11 @@ conflicts=(
     'pamac'
     'pamac-aur'
     'pamac-all'
-    'pamac-cli'
     'pamac-nosnap'
 )
 options=(!emptydirs)
-source=("$url/-/archive/$pkgver/pamac-$pkgver.tar.gz")
-sha256sums=('bdf93f7efde43a1d0fa9ef9cceea409691f1d5e42bbd4fb0f9b3e38e0cd0c22a')
+source=("$url/archive/refs/tags/$pkgver.tar.gz")
+sha256sums=('c13d422bbdd9ced4c86de4a4921516b0ca69640440e18082ac29af87105e6829')
 
 _srcdir="$_pkgname-$pkgver"
 

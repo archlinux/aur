@@ -1,8 +1,8 @@
 pkgbase = pamac-flatpak
 	pkgdesc = A GUI frontend for libalpm. With Flatpak support
-	pkgver = 11.7.1
+	pkgver = 11.7.2
 	pkgrel = 1
-	url = https://gitlab.manjaro.org/applications/pamac
+	url = https://github.com/manjaro/pamac
 	arch = i686
 	arch = x86_64
 	arch = arm
@@ -29,14 +29,13 @@ pkgbase = pamac-flatpak
 	optdepends = lxsession: needed for authentification in Xfce, LXDE etc.
 	optdepends = polkit-gnome: needed for authentification in Cinnamon, Gnome
 	optdepends = plymouth: offline upgrades
-	provides = pamac=11.7.1-1
+	provides = pamac=11.7.2-1
 	conflicts = pamac
 	conflicts = pamac-aur
 	conflicts = pamac-all
-	conflicts = pamac-cli
 	conflicts = pamac-nosnap
 	options = !emptydirs
-	source = https://gitlab.manjaro.org/applications/pamac/-/archive/11.7.1/pamac-11.7.1.tar.gz
-	sha256sums = bdf93f7efde43a1d0fa9ef9cceea409691f1d5e42bbd4fb0f9b3e38e0cd0c22a
+	source = https://github.com/manjaro/pamac/archive/refs/tags/11.7.2.tar.gz
+	sha256sums = c13d422bbdd9ced4c86de4a4921516b0ca69640440e18082ac29af87105e6829
 
 pkgname = pamac-flatpak
