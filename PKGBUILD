@@ -5,7 +5,7 @@
 # Contributor: Michael Louis Thaler <michael.louis.thaler@gmail.com>
 
 pkgname=watchman
-pkgver=2024.05.27.00
+pkgver=2024.10.28.00
 pkgrel=1
 pkgdesc="Watches files and records, or triggers actions, when they change"
 url="https://github.com/facebook/watchman"
@@ -32,6 +32,7 @@ makedepends=(
   cpptoml
   fizz
   gtest
+  mvfst
   python-setuptools
   rust
 )
@@ -45,7 +46,7 @@ source=(
   "watchman.socket"
 )
 sha256sums=(
-  '6b2b9c3c69e59e1aa47369fff95ebc6d1e2fbf14516dd99b1951f1b2c8e02077'
+  'a34c511ad9d2713328371f1aa663ba98ef5acdd934ce13ef6336da3548f855a5'
   'd40feab6aa7dc6522c648660e88642fdf721ee1f9d80c23f6891a6381067a38b'
   '3ebc93cb91ec9b9603969e222fd3ffd9baa4a1d07a7b3bd7aabf956ec2e177c8'
   'ca3d163bab055381827226140568f3bef7eaac187cebd76878e0b63e9e442356'
@@ -53,13 +54,9 @@ sha256sums=(
   '853457ad70492fec9d7d020b9e067e2aec2ca419c0a5cddd5d93c5fab354c87a'
 )
 
-_archive="$pkgname-$pkgver"
-
 prepare() {
-  cd "$_archive"
-
-  patch --forward --strip=1 --ignore-whitespace --fuzz=3 --input="$srcdir/watchman-destdir.patch"
-
+  cd $pkgname-$pkgver
+  patch -Np1 --ignore-whitespace --fuzz=3 -i ../watchman-destdir.patch
   # Use system CMake config instead of bundled module, incompatible with glog
   # v0.7.0+
   sed -i 's/find_package(Glog REQUIRED)/find_package(Glog CONFIG REQUIRED)/' \
@@ -67,10 +64,8 @@ prepare() {
 }
 
 build() {
-  cd "$_archive"
-
+  cd $pkgname-$pkgver
   export RUSTUP_TOOLCHAIN=stable
-
   cmake -S . -B build \
     -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_INSTALL_PREFIX=/usr \
@@ -79,13 +74,12 @@ build() {
     -DWATCHMAN_STATE_DIR=/var/run/watchman \
     -DUSE_SYS_PYTHON=ON \
     -DENABLE_EDEN_SUPPORT=ON \
-    -DWATCHMAN_VERSION_OVERRIDE="$pkgver"
+    -DWATCHMAN_VERSION_OVERRIDE=$pkgver
   cmake --build build
 }
 
 check() {
-  cd "$_archive"
-
+  cd $pkgname-$pkgver
   local skipped_tests=(
     # Skip failing tests - not sure why they fail
     bser_js::watchman.node.bser.test_bser.BserTestCase.runTest
@@ -110,15 +104,12 @@ check() {
 }
 
 package() {
-  cd "$_archive"
-
+  cd $pkgname-$pkgver
   DESTDIR="$pkgdir" cmake --install build
-
-  install -Dm644 -t "$pkgdir/usr/lib/tmpfiles.d" "$srcdir/watchman.conf"
-  install -Dm644 -t "$pkgdir/etc" "$srcdir/watchman.json"
-  install -Dm644 -t "$pkgdir/usr/lib/systemd/user" \
+  install -vDm644 -t "$pkgdir/usr/lib/tmpfiles.d" "$srcdir/watchman.conf"
+  install -vDm644 -t "$pkgdir/etc" "$srcdir/watchman.json"
+  install -vDm644 -t "$pkgdir/usr/lib/systemd/user" \
     "$srcdir/watchman.service" \
     "$srcdir/watchman.socket"
-
-  install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
+  install -vDm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
 }
