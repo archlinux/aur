@@ -1,5 +1,7 @@
-pkg/
-src/
-*.zst
-*.tar.gz
-*.log
+*
+!.nvchecker.toml
+!.SRCINFO
+!*.service
+!*.changelog
+!*.conf
+!PKGBUILD
