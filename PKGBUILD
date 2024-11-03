@@ -1,16 +1,15 @@
 # Maintainer: Masato TOYOSHIMA <phoepsilonix@gmail.com>
 # Maintainer: Iru Cai <mytbk920423@gmail.com>
-# Maintainer: phoepsilonix <phoepsilonix@gmail.com>
 # Contributor: Andy Weidenbaum <archbaum@gmail.com>
 # Contributor: Paul Préfontaine <paul+archlinuxaur@prefontaine.name>
 # Contributor: HLFH
 # Contributor: Wilhelm Schuster <wilhelm [aT] wilhelm [.] re>
 # Contributor: The_Decryptor
 
-_commit=3972d2128e12d8d9857d446f9665644f51fdf25c
+_commit=f33e03130d58105898557d2b9be59fa86dfe7b5d
 pkgname=h2o-git
-pkgver=2.2.0.8069
-pkgrel=2
+pkgver=2.2.0.8071
+pkgrel=1
 pkgdesc="Optimized HTTP server with support for HTTP/1.x and HTTP/2"
 arch=('i686' 'x86_64' 'aarch64')
 # if you want websocket support, you'll also need aur/wslay
@@ -24,7 +23,7 @@ options=('lto')
 source=("git+https://github.com/h2o/h2o.git#commit=${_commit}?signed/"
 #        "neverbleed-fix-when-lacking-engines.patch"
 	'h2o.service')
-sha256sums=('ab08261f86a4a1313e0a806dc9f7c9e80915511059a7c31c1c395dbad22a1c0b'
+sha256sums=('6d28fbe5818a9c0c3147f3c25d1948f079797474a37a9ca63d7499ce7d9e4238'
             '7fccdeb1a89134b48674764dc243f8967eb1234679e401af93e210fbf0934b62')
 backup=('etc/h2o.conf')
 provides=('h2o' 'libh2o')
