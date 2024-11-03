@@ -1,0 +1,4 @@
+[libstroke]
+source = "regex"
+regex = "([\\d.]+\\.\\d+).tar.gz"
+url = "https://sources.archlinux.org/other/packages/libstroke/"
