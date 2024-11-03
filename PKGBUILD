@@ -8,7 +8,7 @@
 
 pkgname=zramswap
 pkgver=7
-pkgrel=1
+pkgrel=2
 pkgdesc="Sets up zram-based swap devices on boot"
 arch=('any')
 url="http://en.wikipedia.org/wiki/ZRam"
@@ -19,7 +19,7 @@ source=("zramctrl"
         "zramswap.conf"
         "zramswap.service")
 md5sums=('fb633774fb523b7107ca62b2647aec89'
-         'aff850d716b5d9a181418cfe9116b279'
+         '2137bd73c7d87a6ded0011a8f27f478e'
          'a746969adc521826c14b0796968f3ca6')
 
 package() {
