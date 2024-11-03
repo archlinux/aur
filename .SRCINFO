@@ -1,7 +1,7 @@
 pkgbase = redot-bin
 	pkgdesc = A multi-platform 2D and 3D game engine
-	pkgver = 4.3.beta.2
-	pkgrel = 4
+	pkgver = 4.3.beta.3
+	pkgrel = 6
 	url = https://github.com/Redot-Engine/redot-engine
 	arch = x86_64
 	license = MIT
@@ -26,7 +26,7 @@ pkgbase = redot-bin
 	depends = pcre2
 	optdepends = pipewire-alsa: for audio support
 	optdepends = pipewire-pulse: for audio support
-	source = https://github.com/Redot-Engine/redot-engine/releases/download/redot-4.3-beta.2/Redot_v4.3-beta.2_linux.x86_64.zip
-	sha256sums = 05fc1b5306bfb9f8e77f3d093d9897247a44b4cd2c540275acad9fc223e1bd5c
+	source = https://github.com/Redot-Engine/redot-engine/releases/download/redot-4.3-beta.3/Redot_v4.3-beta.3_linux.x86_64.zip
+	sha256sums = c6010a7db9b838349ffb8b2043a5958f49d4c880579fdbcf56ceb2c96d6c9657
 
 pkgname = redot-bin
