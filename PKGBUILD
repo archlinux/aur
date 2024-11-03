@@ -3,7 +3,7 @@
 _name=Patchance
 pkgname="${_name,,}"
 pkgver=1.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc='A modern graphical patchbay for JACK'
 arch=(any)
 url='https://github.com/Houston4444/Patchance'
@@ -11,15 +11,9 @@ license=(GPL-2.0-only)
 depends=(hicolor-icon-theme python-pyqt5)
 makedepends=(qt5-tools)
 groups=(pro-audio)
-source=("https://github.com/Houston4444/Patchance/releases/download/v$pkgver/$_name-$pkgver-source.tar.gz"
-        'patchance-disable-alsa.patch')
-sha256sums=('c259042a43c7d82ff2ed34227085727166ed2d4757da12027145a2ee714de75c'
-            'f6efe60272b10759f2dcbd3676e4bc1cdaaafad5e22bf5a0da554260c24ace59')
+source=("https://github.com/Houston4444/Patchance/releases/download/v$pkgver/$_name-$pkgver-source.tar.gz")
+sha256sums=('c259042a43c7d82ff2ed34227085727166ed2d4757da12027145a2ee714de75c')
 
-prepare() {
-  cd $_name-$pkgver
-  patch -p1 -N -r - -i "$srcdir"/patchance-disable-alsa.patch
-}
 
 build() {
   cd $_name-$pkgver

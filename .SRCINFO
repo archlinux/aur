@@ -1,7 +1,7 @@
 pkgbase = patchance
 	pkgdesc = A modern graphical patchbay for JACK
 	pkgver = 1.1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Houston4444/Patchance
 	arch = any
 	groups = pro-audio
@@ -10,8 +10,6 @@ pkgbase = patchance
 	depends = hicolor-icon-theme
 	depends = python-pyqt5
 	source = https://github.com/Houston4444/Patchance/releases/download/v1.1.0/Patchance-1.1.0-source.tar.gz
-	source = patchance-disable-alsa.patch
 	sha256sums = c259042a43c7d82ff2ed34227085727166ed2d4757da12027145a2ee714de75c
-	sha256sums = f6efe60272b10759f2dcbd3676e4bc1cdaaafad5e22bf5a0da554260c24ace59
 
 pkgname = patchance
