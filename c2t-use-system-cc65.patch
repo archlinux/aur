@@ -1,0 +1,36 @@
+diff -rauN c2t-orig/Makefile c2t-use-system-cc65/Makefile
+--- c2t-orig/Makefile	2024-11-03 14:59:38.314235950 +0100
++++ c2t-use-system-cc65/Makefile	2024-11-03 15:09:05.155067330 +0100
+@@ -45,14 +45,14 @@
+ bin/c2t-96h.exe: c2t-96h.c c2t.h
+ 	$(WIN32GCC) -Wall -Wno-strict-aliasing -Wno-unused-value -Wno-unused-function -I. -O3 -o bin/c2t-96h.exe c2t-96h.c
+ 
+-cc65-sources-2.13.3.tar.bz2:
+-	curl -sLO https://github.com/mrdudz/cc65-old/raw/master/cc65-sources-2.13.3.tar.bz2
++#cc65-sources-2.13.3.tar.bz2:
++#	curl -sLO https://github.com/mrdudz/cc65-old/raw/master/cc65-sources-2.13.3.tar.bz2
+ 
+-cc65-2.13.3/bin/cl65: cc65-sources-2.13.3.tar.bz2
+-	bunzip2 -c cc65-sources-2.13.3.tar.bz2 | tar xf -
+-	(cd cc65-2.13.3; /usr/bin/sed 's!/usr/local!'${PWD}'/cc65-2.13.3!' <make/gcc.mak >Makefile; make -j4 bins || make bins && make install || true)
++#cc65-2.13.3/bin/cl65: cc65-sources-2.13.3.tar.bz2
++#	bunzip2 -c cc65-sources-2.13.3.tar.bz2 | tar xf -
++#	(cd cc65-2.13.3; /usr/bin/sed 's!/usr/local!'${PWD}'/cc65-2.13.3!' <make/gcc.mak >Makefile; make -j4 bins || make bins && make install || true)
+ 
+-c2t.h: c2t.h.0 makeheader mon/dos33.boot1.mon mon/dos33.boot2.mon asm/autoload.s asm/diskload2.s asm/diskload3.s asm/diskload8000.s asm/diskload9600.s asm/fastload8000.s asm/fastload9600.s asm/fastloadcd.s asm/inflate.s cc65-2.13.3/bin/cl65
++c2t.h: c2t.h.0 makeheader mon/dos33.boot1.mon mon/dos33.boot2.mon asm/autoload.s asm/diskload2.s asm/diskload3.s asm/diskload8000.s asm/diskload9600.s asm/fastload8000.s asm/fastload9600.s asm/fastloadcd.s asm/inflate.s
+ 	./makeheader
+ 
+ test: bin/c2t-96h bin/c2t-96h.exe tests/test.md
+diff -rauN c2t-orig/makeheader c2t-use-system-cc65/makeheader
+--- c2t-orig/makeheader	2024-11-03 14:47:00.283124153 +0100
++++ c2t-use-system-cc65/makeheader	2024-11-03 15:12:50.115397277 +0100
+@@ -10,7 +10,7 @@
+ 
+ cd asm
+ make clean
+-PATH=../cc65-2.13.3/bin:$PATH make
++make
+ 
+ (
+ header autoload autoloadcode 4
