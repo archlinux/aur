@@ -1,0 +1,16 @@
+pkgbase = deskthing-git
+	pkgdesc = This is the DeskThing project. Using Spotify's existing Car Thing, the DeskThing makes the perfect desk assistant.
+	pkgver = r244.4849fde
+	pkgrel = 1
+	url = https://github.com/ItsRiprod/DeskThing
+	arch = x86_64
+	license = MIT
+	makedepends = nodejs
+	makedepends = npm
+	makedepends = typescript
+	provides = deskthing
+	conflicts = deskthing
+	source = git+https://github.com/ItsRiprod/DeskThing
+	md5sums = SKIP
+
+pkgname = deskthing-git
