@@ -7,12 +7,12 @@
 
 pkgname=activinspire
 pkgver=3.4.16
-pkgrel=1.3
+pkgrel=1.4
 pkgdesc="Presentation Software for use with Promethean Hardware products ."
 arch=('x86_64')
 url="https://support.prometheanworld.com/product/activinspire"
 license=('unknown')
-depends=(libxmu gst-plugins-base libjpeg-turbo libxrender libxkbcommon libxrandr libgl libxdamage snappy libgl fontconfig openssl-1.1 nss libxcomposite libxcursor libxtst dbus libxkbcommon-x11 xcb-utilwm xcb-util-image xcb-util-renderutil qt5-webengine)
+depends=(libxmu gst-plugins-base libjpeg-turbo libxrender libxkbcommon libxrandr libgl libxdamage snappy libgl fontconfig openssl-1.1 nss libxcomposite libxcursor libxtst dbus libxkbcommon-x11 xcb-util-wm xcb-util-image xcb-util-renderutil qt5-webengine)
 optdepends=('activdriver: Driver for Promethean hardware'
             'activtools: Tools for Promethean hardware, e.g. calibration or systray monitor')
 source=("https://activsoftware.co.uk/linux/repos/ubuntu/pool/focal/a/ac/activinspire_2004-3.4.16-1-amd64.deb"
