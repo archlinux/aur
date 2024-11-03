@@ -1,0 +1,4 @@
+[libcs50]
+source = "github"
+github = "cs50/libcs50"
+use_latest_release = true
