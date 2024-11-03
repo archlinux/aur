@@ -1,7 +1,7 @@
-# Maintainer: omansh-krishn <omanshkrishn@duck.com>
+# Maintainer: Omansh Krishn <omansh@duck.com>
 # Previous Maintainer: westpain <homicide@disroot.org>
 pkgname=materialgram-bin
-pkgver=v5.6.1.1
+pkgver=5.7.0.1
 pkgrel=1
 pkgdesc="Telegram Desktop based messenger with Material Design and additional features - Binary Version"
 arch=(x86_64)
@@ -18,9 +18,9 @@ provides=('materialgram')
 conflicts=('materialgram-git')
 options=(!debug)
 
-source=( https://github.com/kukuruzka165/materialgram/releases/download/${pkgver}/materialgram-${pkgver}.tar.gz )
+source=( https://github.com/kukuruzka165/materialgram/releases/download/v${pkgver}/materialgram-v${pkgver}.tar.gz )
 
-sha256sums=('05159d803d6c1eda4a3e8fa137c80ab513cf5d65b8602b937a2b08bef5d76d88')
+sha256sums=('18195dcae848eeb0004f00987319a69d408750e5dace0d85aac6b354759558bd')
 
 package() {
 
