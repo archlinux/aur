@@ -6,7 +6,7 @@ _pkgname=mongodb
 _srcname=mongo
 # #.<odd number>.# releases are unstable development/testing
 pkgver=4.4.29
-pkgrel=4
+pkgrel=5
 pkgdesc="A high-performance, open source, schema-free document-oriented database (last version to support non-avx CPUs)"
 arch=("x86_64" "aarch64")
 url="https://www.mongodb.com/"
@@ -46,7 +46,7 @@ sha256sums=('ec12d15b74276465002f66df3b834b2872597166a137e85378b9018f79b2ffc8'
             '7cd27b2ce15cc6efdce07ef934ed3d9356025ebade4856a9d0a75a80f7c08905'
             'ef2a0c1516175bf73050884cfdfa5d87e5e065738c51bbd50302b16924e11bf1'
             'f389b2cc623d5be6d3fff5472b3edce68c23de3a67f9ef9a1dd3b92eb4827778'
-            'd53043ccf3922299458d52af9c942eed19df5435263ce490da4e90fbfb2a2153')
+            '4320fc665a254ae88ad8f9a02d4a8beabfea5145435eaa75b27d88fd556bd1d6')
 
 _scons_args=(
   CC="${CC:-gcc}"

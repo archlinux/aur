@@ -822,6 +822,18 @@ diff -ruNb a/src/mongo/db/pipeline/document_source_index_stats.cpp b/src/mongo/d
          ++_indexStatsIter;
          return doc;
      }
+diff -ruNb a/src/mongo/db/profile_filter_impl.cpp b/src/mongo/db/profile_filter_impl.cpp
+--- a/src/mongo/db/profile_filter_impl.cpp	2024-02-13 02:46:45.000000000 -0600
++++ b/src/mongo/db/profile_filter_impl.cpp	2024-11-02 18:50:16.969423151 -0500
+@@ -56,7 +56,7 @@
+     // Reduce the DepsTracker down to a set of top-level fields.
+     StringSet toplevelFields;
+     for (auto&& field : deps.fields) {
+-        toplevelFields.emplace(FieldPath(std::move(field)).front());
++        toplevelFields.emplace(FieldPath(field).front());
+     }
+ 
+     // Remember a list of functions we'll call whenever we need to build BSON from CurOp.
 diff -ruNb a/src/mongo/db/query/canonical_query.cpp b/src/mongo/db/query/canonical_query.cpp
 --- a/src/mongo/db/query/canonical_query.cpp	2024-02-13 02:46:45.000000000 -0600
 +++ b/src/mongo/db/query/canonical_query.cpp	2024-11-01 22:42:01.919486668 -0500
