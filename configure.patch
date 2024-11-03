@@ -1,0 +1,48 @@
+diff -Naur ONScripter-EN-2024-07-21-old/configure ONScripter-EN-2024-07-21/configure
+--- ONScripter-EN-2024-07-21-old/configure	2024-07-21 15:03:39.000000000 -0400
++++ ONScripter-EN-2024-07-21/configure	2024-11-03 17:28:12.562892505 -0500
+@@ -1131,11 +1131,16 @@
+ 	         extlib/share extlib/man
+ 	rm -f Makefile $DISTCLEAN_OTHER
+ 
++.PHONY: install* uninstall*
+ install-bin:
+-	./install-sh -c -s \$(TARGET) \$(PREFIX)/bin/\$(TARGET)
+-install: install-bin
++	./install-sh -c -s \$(TARGET) \$(DESTDIR)\$(PREFIX)/bin/\$(TARGET)
++install: install-bin install-tools
++install-tools: install-tools-yes
++install-tools-yes: \$(TOOLS)
++	mkdir -p \$(DESTDIR)\$(PREFIX)/bin/
++	\$(foreach file, \$(TOOLS), (./install-sh -c -s \$(file) \$(DESTDIR)\$(PREFIX)/bin/ || true);)
+ uninstall:
+-	rm \$(PREFIX)/bin/\$(TARGET)
++	\$(RM) \$(addprefix \$(DESTDIR)\$(PREFIX)/bin/, \$(TARGET) \$(TOOLBINS))
+ _EOF
+ 
+ if [ "$SYS" = "MinGW" ]
+diff -Naur ONScripter-EN-2024-07-21-old/Makefile.onscripter ONScripter-EN-2024-07-21/Makefile.onscripter
+--- ONScripter-EN-2024-07-21-old/Makefile.onscripter	2024-07-21 15:03:39.000000000 -0400
++++ ONScripter-EN-2024-07-21/Makefile.onscripter	2024-11-03 17:28:12.559559321 -0500
+@@ -6,13 +6,14 @@
+ TARGET ?= onscripter-en
+ 
+ TDIR = tools/
+-TOOLS = $(TDIR)sardec$(EXESUFFIX) $(TDIR)nsadec$(EXESUFFIX)	\
+-        $(TDIR)ns2dec$(EXESUFFIX) $(TDIR)nscdec$(EXESUFFIX)	\
+-        $(TDIR)sarconv$(EXESUFFIX) $(TDIR)nsaconv$(EXESUFFIX)	\
+-        $(TDIR)ns2conv$(EXESUFFIX) $(TDIR)batchconv$(EXESUFFIX)	\
+-        $(TDIR)sarmake$(EXESUFFIX) $(TDIR)nsamake$(EXESUFFIX)	\
+-        $(TDIR)ns2make$(EXESUFFIX) $(TDIR)nscmake$(EXESUFFIX)	\
+-        $(TDIR)nbzdec$(EXESUFFIX)
++TOOLBINS = sardec$(EXESUFFIX) nsadec$(EXESUFFIX)	\
++        ns2dec$(EXESUFFIX) nscdec$(EXESUFFIX)	\
++        sarconv$(EXESUFFIX) nsaconv$(EXESUFFIX)	\
++        ns2conv$(EXESUFFIX) batchconv$(EXESUFFIX)	\
++        sarmake$(EXESUFFIX) nsamake$(EXESUFFIX)	\
++        ns2make$(EXESUFFIX) nscmake$(EXESUFFIX)	\
++        nbzdec$(EXESUFFIX)
++TOOLS = $(TOOLBINS:%=$(TDIR)%)
+ TOOL_INCS = -I`pwd` -Iextlib/include $(TOOL_EXTRA_INCS)
+ TOOL_DEFS = $(DEFS) -DTOOLS_BUILD
+ 
