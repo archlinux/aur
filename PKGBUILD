@@ -4,7 +4,7 @@
 # Contributor: Daichi Shinozaki <dsdseg at gmail dot com>
 
 pkgname=wangle
-pkgver=2024.05.27.00
+pkgver=2024.10.28.00
 pkgrel=1
 pkgdesc="C++ networking library providing client/server abstractions for building services"
 arch=(x86_64)
@@ -29,23 +29,19 @@ makedepends=(
 checkdepends=(expat)
 provides=(libwangle.so)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('3464101a09421bb83b22d3169b2aa76a16254233df64a3a7d0417ba530d70b39')
-
-_archive="$pkgname-$pkgver"
+sha256sums=('5e85324a00f5472b0fa0e627beff460ec9a81381f59d3e2c0bf284d843cc69eb')
 
 prepare() {
-  cd "$_archive/wangle"
-
+  cd $pkgname-$pkgver
   # Use system CMake config instead of bundled module, incompatible with glog
   # v0.7.0+
   sed -i 's/find_package(Glog REQUIRED)/find_package(Glog CONFIG REQUIRED)/' \
-    CMakeLists.txt
+    wangle/CMakeLists.txt
 }
 
 build() {
-  cd "$_archive/wangle"
-
-  cmake -S . -B build \
+  cd $pkgname-$pkgver
+  cmake -S wangle -B build \
     -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -Wno-dev \
@@ -56,19 +52,16 @@ build() {
 }
 
 check() {
-  cd "$_archive/wangle"
-
-  ctest --test-dir build --output-on-failure \
-    -E SSLContextManagerTest
+  cd $pkgname-$pkgver
+  ctest --test-dir build --output-on-failure -E SSLContextManagerTest
 }
 
 package() {
-  cd "$_archive/wangle"
-
+  cd $pkgname-$pkgver
   DESTDIR="$pkgdir" cmake --install build
 
   # Remove empty directories to avoid namcap warnings
-  rm -r "$pkgdir/usr/include/wangle/service/test"
-  rm -r "$pkgdir/usr/include/wangle/ssl/test/certs"
-  rm -r "$pkgdir/usr/include/wangle/util/test"
+  rm -vr "$pkgdir/usr/include/wangle/service/test"
+  rm -vr "$pkgdir/usr/include/wangle/ssl/test/certs"
+  rm -vr "$pkgdir/usr/include/wangle/util/test"
 }
