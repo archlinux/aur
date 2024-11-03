@@ -1,6 +1,6 @@
 pkgbase = cudatext-git
 	pkgdesc = Text editor written in Free Pascal with Lazarus (Qt6)
-	pkgver = 1.218.0.2.r0.g446e84a
+	pkgver = 1.219.0.0.r0.gfea21f2
 	pkgrel = 1
 	url = https://github.com/Alexey-T/CudaText
 	arch = x86_64
@@ -9,6 +9,7 @@ pkgbase = cudatext-git
 	makedepends = lazarus
 	makedepends = xmlstarlet
 	makedepends = imagemagick
+	depends = python
 	depends = qt6pas
 	provides = cudatext
 	conflicts = cudatext

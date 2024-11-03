@@ -1,0 +1,5 @@
+[cudatext-git]
+source = "github"
+github = "Alexey-T/CudaText"
+prefix = "v"
+use_latest_release = "true"

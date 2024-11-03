@@ -1,6 +1,6 @@
 # Maintainer:
 
-## useful links
+## links
 # https://github.com/Alexey-T/CudaText
 # https://github.com/Alexey-T/CudaText_up
 
@@ -10,27 +10,31 @@
 ## basic info
 _pkgname="cudatext"
 pkgname="$_pkgname-git"
-pkgver=1.218.0.2.r0.g446e84a
+pkgver=1.219.0.0.r0.gfea21f2
 pkgrel=1
 pkgdesc="Text editor written in Free Pascal with Lazarus (${_widgets^})"
 url="https://github.com/Alexey-T/CudaText"
 license=("MPL-2.0")
 arch=('x86_64')
 
-case "${_widgets::1}" in
-  g)
-    depends=("${_widgets}")
-    ;;
-  q)
-    depends=("${_widgets}pas")
-    ;;
-esac
+depends=(
+  'python'
+)
 makedepends=(
   'git'
   'lazarus'
   'xmlstarlet'
   'imagemagick'
 )
+
+case "${_widgets::1}" in
+  g)
+    depends+=("${_widgets}")
+    ;;
+  q)
+    depends+=("${_widgets}pas")
+    ;;
+esac
 
 provides=("$_pkgname")
 conflicts=("$_pkgname")
@@ -125,8 +129,19 @@ build() (
 )
 
 package() (
+  # binary
   install -Dm755 "$_pkgsrc/app/cudatext" -t "$pkgdir/usr/bin/"
 
+  # launcher
   install -Dm644 "$_pkgname.png" -t "$pkgdir/usr/share/pixmaps/"
   install -Dm644 "$srcdir/$_pkgname.desktop" -t "$pkgdir/usr/share/applications/"
+
+  # share
+  for i in data py settings_default; do
+    install -dm755 "$pkgdir/usr/share/$_pkgname/$i"
+    cp --reflink=auto -a "$_pkgsrc/app/$i"/* "$pkgdir/usr/share/$_pkgname/$i/"
+  done
+
+  # permissions
+  chmod -R u+rwX,go+rX,go-w "$pkgdir/"
 )
