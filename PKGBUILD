@@ -8,7 +8,7 @@
 # for more details # on package signing.
 pkgname=librepcb
 pkgver=1.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A free EDA software to develop printed circuit boards"
 arch=('x86_64' 'i686')
 url="https://librepcb.org/"
