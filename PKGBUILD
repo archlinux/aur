@@ -35,8 +35,12 @@ package() {
   install -dm755 "$pkgdir/usr/share/deskthing"
   
   cp -r "dist/linux-unpacked/"* "$pkgdir/usr/share/deskthing/"
+  cp "resources/icon.png" "$pkgdir/usr/share/deskthing/"
   
   install -dm755 "$pkgdir/usr/bin"
   ln -sf "/usr/share/deskthing/deskthing" "$pkgdir/usr/bin/deskthing"
+
+  install -dm755 "$pkgdir/usr/share/applications"
+  cp "resources/deskthing.desktop" "$pkgdir/usr/share/applications/"
 }
 
