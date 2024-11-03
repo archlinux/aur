@@ -2,7 +2,7 @@
 
 pkgbase=django-rq
 pkgname=('python-django-rq')
-pkgver=2.10.2
+pkgver=3.0
 pkgrel=1
 pkgdesc="A simple app that provides django integration for RQ (Redis Queue)"
 arch=('any')
@@ -10,7 +10,7 @@ license=('MIT')
 url="https://github.com/ui/django-rq"
 makedepends=('python' 'python-setuptools' 'python-django' 'python-rq')
 source=("django-rq-${pkgver}.tar.gz::https://github.com/ui/django-rq/archive/v${pkgver}.tar.gz")
-sha512sums=('bc6d02db9c144b09cffd375322b9ff3adcb6970609968442066e1bc7755a5a33c6788d8573269749559af2d47c0829d798896951166e4385d6852520b4e28b94')
+sha512sums=('09c9a420edfa21f52c87151d83ad5047f5ba61b1a8b4d686a9ac93bbdd1a3e0e7c8114d92218802e34043f92b6f4e3157edd8a1beba92ff33099c44c5d294bf3')
 
 package_python-django-rq() {
   depends=('python' 'python-django' 'python-rq')
