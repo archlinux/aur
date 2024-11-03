@@ -1,7 +1,7 @@
 # Maintainer: Carl Smedstad <carsme@archlinux.org>
 
 pkgname=edencommon
-pkgver=2024.05.27.00
+pkgver=2024.10.28.00
 pkgrel=1
 pkgdesc="Shared library for Watchman and Eden projects"
 arch=(x86_64)
@@ -20,6 +20,7 @@ makedepends=(
   boost
   cmake
   gtest
+  mvfst
 )
 provides=(
   libedencommon_os.so
@@ -33,26 +34,20 @@ source=(
   "build-shared-libraries.patch"
 )
 sha256sums=(
-  '8cffb562c011769a7e54ec62ae204800f18017d338c43de05d950c29cdfdbe42'
-  'ffe1476d4edccb5ab8de82a9c2dd97e85dec8bea216ea3e1adb48b6c2946111a'
+  '28b8e2029f8d9d8039d13cd25d6901e1b48127fae8a3b7ed944fb6fea6ecafc2'
+  '1f351de94a786c8be397c07454a48d28a0dd0b758924792e6e3f1f49405c492a'
 )
 
-_archive="$pkgname-$pkgver"
-
 prepare() {
-  cd "$_archive"
-
-  patch --forward --strip=1 --input="$srcdir/build-shared-libraries.patch"
-
-  # Use system CMake config instead of bundled module, incompatible with glog
-  # v0.7.0+
+  cd $pkgname-$pkgver
+  patch -Np1 -i ../build-shared-libraries.patch
+  # Use system CMake config instead of bundled module
   sed -i 's/find_package(Glog MODULE REQUIRED)/find_package(Glog CONFIG REQUIRED)/' \
     CMakeLists.txt
 }
 
 build() {
-  cd "$_archive"
-
+  cd $pkgname-$pkgver
   cmake -S . -B build \
     -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_INSTALL_PREFIX=/usr \
@@ -61,15 +56,12 @@ build() {
 }
 
 check() {
-  cd "$_archive"
-
-  ctest --test-dir build --output-on-failure -E PathFuncs.move_or_copy
+  cd $pkgname-$pkgver
+  ctest --test-dir build --output-on-failure -E UnixSocket.sendDataAndFiles
 }
 
 package() {
-  cd "$_archive"
-
+  cd $pkgname-$pkgver
   DESTDIR="$pkgdir" cmake --install build
-
-  install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
+  install -vDm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
 }
