@@ -4,7 +4,7 @@
 # Contributor: Christer Solskogen <christer.solskogen@gmail.com>
 
 pkgname=lib32-sdl3
-pkgver=3.1.3
+pkgver=3.1.6
 pkgrel=1
 epoch=1
 pkgdesc="Simple Directmedia Layer (Version 3 Pre-Release, Updated weekly)"
@@ -21,7 +21,7 @@ optdepends=('lib32-alsa-lib: ALSA audio driver'
 	    'lib32-sndio: MIDI audio driver'
 	    'lib32-libdecor: Wayland client decorations')
 source=("git+https://github.com/libsdl-org/SDL.git#tag=preview-${pkgver}")
-sha256sums=('0b48258be2f359a5e2225fa55651e910b1aa70441f5f6ec91809365ee8f6ff5b')
+sha256sums=('b135e1999ee24aecc7f39c5e55fb73851b19088742c2786eba0a436d8290fd26')
 
 build() {
 	cd "$srcdir"
