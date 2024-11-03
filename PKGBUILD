@@ -12,22 +12,22 @@ conflicts=("${pkgname}-git")
 license=('MIT')
 depends=(
     'python>=3.11'
+    # AUR packages
     'python-fusepy'
+    'python-rapidgzip'
+    'python-indexed-gzip'
+    'python-xz'
+    'python-indexed-zstd'
+    # Extra repository packages
+    'python-rarfile'
+    'python-libarchive-c'
 )
+
 makedepends=(
     'python-build'
     'python-installer'
     'python-wheel'
     'python-setuptools'
-)
-
-optdepends=(
-    'python-rapidgzip: Support for gzip and bzip2 compressed tar files'
-    'python-indexed-gzip: Option 2 for support for gzip-compressed tar files'
-    'python-xz: Support for xz-compressed tar files'
-    'python-indexed-zstd: Support for zstd-compressed tar files'
-    'python-rarfile: Support for rar-compressed tar files'
-    'python-libarchive-c: Support for 7z, ar, cab, compress, cpio, iso, lrzip, lzma, lz4, lzip, lzo, warc, xar; (no random access)'
 )
 
 _pkg_ext='.tar.gz'
