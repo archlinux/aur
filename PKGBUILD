@@ -12,10 +12,6 @@ conflicts=("${pkgname}-git")
 license=('MIT')
 depends=(
     'python>=3.11'
-    'python-msgpack'
-    'python-rapidjson'
-    'python-ujson'
-    'python-simplejson'
     'python-fusepy'
 )
 makedepends=(
