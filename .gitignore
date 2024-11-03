@@ -1,5 +1,4 @@
-pkg/
-src/
-
-LICENSE
-*.tar.*
+/pkg
+/src
+*.pkg.tar.*
+*.tar.gz

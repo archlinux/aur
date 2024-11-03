@@ -1,49 +1,27 @@
-# Maintainer: txtsd <aur.archlinux@ihavea.quest>
+# Maintainer: devome <evinedeng@hotmail.com>
+# Contributor: txtsd <aur.archlinux@ihavea.quest>
 
-pkgname=python-langchain
-_pkgname="${pkgname#python-}"
-pkgver=0.2.1
+_pkgname=langchain
+pkgname="python-${_pkgname}"
+pkgver=0.3.7
 pkgrel=1
-pkgdesc='Build context-aware reasoning applications'
+pkgdesc='Building applications with LLMs through composability'
 arch=('any')
 url='https://github.com/langchain-ai/langchain'
 license=('MIT')
-_src_name="${_pkgname%%-*}-${_pkgname}-${pkgver}"
-source=("${_pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/langchain==${pkgver}.tar.gz")
-sha256sums=('53b768336dc950c3526d9f5c95f3b8e49dbfeb5aeec8bdafa320e158c7599ced')
-depends=(python
-    python-aiohttp
-    python-dataclasses-json
-    python-jsonpatch
-    python-numpy
-    python-pydantic
-    python-yaml
-    python-requests
-    python-sqlalchemy
-    python-tenacity
-    python-jsonschema
-    python-rapidfuzz
-    python-lark-parser
-    python-lxml
-    python-pandas
-    python-mypy_extensions
-    python-regex
-    python-typing_extensions
-    python-async-timeout
-    python-redis
-    python-beautifulsoup4
-    python-tiktoken
-    python-openai
-)
+depends=("python-aiohttp" "python-langchain-core" "python-langchain-text-splitters" "python-langsmith" "python-numpy" "python-pydantic"
+         "python-requests" "python-sqlalchemy" "python-tenacity" "python-yaml" )
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-poetry-core')
+source=("${_pkgname}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
+sha256sums=('2e4f83bf794ba38562f7ba0ede8171d7e28a583c0cec6f8595cfe72147d336b2')
 
 build() {
-    cd "${_src_name}/libs/${_pkgname}"
+    cd "${_pkgname}-${pkgver}"
     python -m build --wheel --no-isolation
 }
 
 package() {
-    cd "${_src_name}/libs/${_pkgname}"
+    cd "${_pkgname}-${pkgver}"
     python -m installer --destdir="${pkgdir}" dist/*.whl
-    install -Dm644 "${srcdir}/${_src_name}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
