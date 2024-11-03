@@ -1,16 +1,20 @@
 pkgbase = nbopen
 	pkgdesc = Opens an Jupyter notebook in the best available server
-	pkgver = 0.6
-	pkgrel = 4
+	pkgver = 0.7
+	pkgrel = 1
 	url = https://github.com/takluyver/nbopen
 	arch = any
 	license = BSD
+	makedepends = python-flit-core
 	makedepends = python-build
 	makedepends = python-installer
 	depends = python
-	depends = jupyter
+	depends = jupyter-notebook
+	depends = jupyter-server
+	depends = jupyter-nbformat
 	depends = shared-mime-info>=1.7
-	source = https://files.pythonhosted.org/packages/source/n/nbopen/nbopen-0.6.tar.gz
-	sha256sums = 0aa53525a6ec3de403635dd91bab7607c451a67b275492947d6934963902ffa1
+	depends = hicolor-icon-theme
+	source = https://files.pythonhosted.org/packages/source/n/nbopen/nbopen-0.7.tar.gz
+	sha256sums = 1c80ed2d80da0245270b4de9d2a1a44b19e55cfa17348ac45ee3d6f076303503
 
 pkgname = nbopen
