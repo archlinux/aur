@@ -25,7 +25,7 @@ source=("${pkgname}::git+${url}.git#tag=${_tag}"
     "git+https://github.com/RedisLabsModules/RedisModulesSDK.git"
     "git+https://github.com/google/s2geometry.git"
     "git+https://github.com/RedisAI/VectorSimilarity.git")
-sha512sums=("SKIP"
+sha512sums=("08ce8d3d35bc5ff2a460b6506c6d41c96aa7fcd45f4c4890459d1405d3d9350663008594354595d9efedbc61113b9a0fe48c23e91e46a8e8d63ecc4bc96ef400"
     "SKIP"
     "SKIP"
     "SKIP"
