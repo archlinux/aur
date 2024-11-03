@@ -18,12 +18,12 @@ build(){
   go build \
     -mod=vendor \
     -trimpath \
-    -ldflags "-extldflags ${LDFLAGS}" \
+    -buildvcs=false \
     .
 }
 
 package() {
   cd "$pkgname-$pkgver"
-  install -Dm755 $pkgname-go "$pkgdir/usr/bin/$pkgname"
+  install -Dm755 $pkgname "$pkgdir/usr/bin/$pkgname"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
