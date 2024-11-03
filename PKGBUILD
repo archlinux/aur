@@ -1,7 +1,7 @@
 # Maintainer: Sieve Lau <sievelau@gmail.com>
 
 pkgname=danmakufactory-git
-pkgver=r76.f285ff1
+pkgver=r81.fa7dfea
 pkgrel=1
 pkgdesc='A tool for converting XML danmaku to ass subtitles.'
 url="https://github.com/hihkm/DanmakuFactory"
