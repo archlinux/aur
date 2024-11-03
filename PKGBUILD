@@ -5,14 +5,14 @@
 
 _pkgname=libpamac
 pkgname=$_pkgname-flatpak
-pkgver=11.6.4
+pkgver=11.7.0
 pkgrel=1
 epoch=1
 _srcdir="$_pkgname-$pkgver"
-#_srcdir="$_pkgname"
 pkgdesc="Pamac package manager library based on libalpm. With Flatpak support"
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
-url="https://gitlab.manjaro.org/applications/libpamac"
+#url="https://gitlab.manjaro.org/applications/libpamac"
+url="https://github.com/manjaro/libpamac"
 license=('GPL3')
 depends=(
     'appstream-glib'
@@ -48,21 +48,8 @@ conflicts=(
 options=(!emptydirs !strip)
 backup=('etc/pamac.conf')
 install='pamac.install'
-source=($_pkgname-$pkgver.tar.bz2::$url/-/archive/$pkgver/$_pkgname-$pkgver.tar.bz2)
-sha256sums=('4ac54679e25004d6af8154340bac2e060c3a109a6bcb336f54ce025b2d68f080')
-#source=(
-#    "git+https://gitlab.manjaro.org/applications/libpamac.git#commit=e74fe0e1c15f4fd14d02ff12650be3fde47287d7"
-#    "${pkgname}-appstream-1.0.patch"    
-#)
-#sha256sums=(
-#    'SKIP'
-#    '23beff3d0bc9e1bf30b3ab45910faeb89125c392d9b95d6de83020ac88698851'
-#)
-
-#prepare() {
-#	cd "$_srcdir"
-#	patch -p1 -i "${srcdir}/${pkgname}-appstream-1.0.patch"
-#}
+source=($_pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz)
+sha256sums=('f63658f93f7ba70932290d5813474f6f59b981c8510848ce6dc5c19004285586')
 
 build() {
 	arch-meson "$_srcdir" 'build' -Denable-snap=false -Denable-flatpak=true -Denable-aur=true -Denable-appstream=true

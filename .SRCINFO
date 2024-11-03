@@ -1,9 +1,9 @@
 pkgbase = libpamac-flatpak
 	pkgdesc = Pamac package manager library based on libalpm. With Flatpak support
-	pkgver = 11.6.4
+	pkgver = 11.7.0
 	pkgrel = 1
 	epoch = 1
-	url = https://gitlab.manjaro.org/applications/libpamac
+	url = https://github.com/manjaro/libpamac
 	install = pamac.install
 	arch = i686
 	arch = pentium4
@@ -41,7 +41,7 @@ pkgbase = libpamac-flatpak
 	options = !emptydirs
 	options = !strip
 	backup = etc/pamac.conf
-	source = libpamac-11.6.4.tar.bz2::https://gitlab.manjaro.org/applications/libpamac/-/archive/11.6.4/libpamac-11.6.4.tar.bz2
-	sha256sums = 4ac54679e25004d6af8154340bac2e060c3a109a6bcb336f54ce025b2d68f080
+	source = libpamac-11.7.0.tar.gz::https://github.com/manjaro/libpamac/archive/refs/tags/11.7.0.tar.gz
+	sha256sums = f63658f93f7ba70932290d5813474f6f59b981c8510848ce6dc5c19004285586
 
 pkgname = libpamac-flatpak
