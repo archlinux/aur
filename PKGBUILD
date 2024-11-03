@@ -1,7 +1,7 @@
 # Maintainer: Carl Smedstad <carsme@archlinux.org>
 
 pkgname=fbthrift
-pkgver=2024.05.27.00
+pkgver=2024.10.28.00
 pkgrel=1
 pkgdesc="Facebook's branch of Apache Thrift, including a new C++ server"
 arch=(x86_64)
@@ -19,8 +19,8 @@ depends=(
   google-glog
   openssl
   python
-  python-six
   wangle
+  xxhash
   zlib
 )
 makedepends=(
@@ -58,34 +58,18 @@ options=(
   !emptydirs
   !lto
 )
-source=(
-  "$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
-  "remove-python-six-dependency-from-cmake-files.patch"
-  "fix-compiler-cmake-file.patch"
-)
-sha256sums=(
-  'a6c8d17062e459eaec36d5c64de6187f9b2d59eb927f6ac0d217e38aa6b75be1'
-  'bedcf4d00d08263a943d0878b9a0fe68c0fafebd33b5445ae35f84a3e92540ec'
-  'e81036accfb08d864207eba92f6579559a213c80e90f0c79c3e952ae7bd04c6b'
-)
-
-_archive="$pkgname-$pkgver"
+source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
+sha256sums=('3180aacf5dcc715bae9ed1cc107ed589fa2934795ed9ba69585fa3eb97b5b57a')
 
 prepare() {
-  cd "$_archive"
-
-  patch --forward --strip=1 --input="$srcdir/remove-python-six-dependency-from-cmake-files.patch"
-  patch --forward --strip=1 --input="$srcdir/fix-compiler-cmake-file.patch"
-
-  # Use system CMake config instead of bundled module, incompatible with glog
-  # v0.7.0+
+  cd $pkgname-$pkgver
+  # Use system CMake config instead of bundled module
   sed -i 's/find_package(Glog REQUIRED)/find_package(Glog CONFIG REQUIRED)/' \
     CMakeLists.txt
 }
 
 build() {
-  cd "$_archive"
-
+  cd $pkgname-$pkgver
   cmake -S . -B build \
     -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_INSTALL_PREFIX=/usr \
@@ -100,22 +84,20 @@ build() {
 }
 
 check() {
-  cd "$_archive"
-
+  cd $pkgname-$pkgver
   ctest --test-dir build --output-on-failure
 }
 
 package() {
-  cd "$_archive"
-
+  cd $pkgname-$pkgver
   DESTDIR="$pkgdir" cmake --install build
 
   # Move Python extensions to site-packages
   local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
-  install -dm755 "$pkgdir/$site_packages/thrift"
-  mv -t "$pkgdir/$site_packages/thrift" \
+  install -vdm755 "$pkgdir/$site_packages/thrift"
+  mv -vt "$pkgdir/$site_packages/thrift" \
     "$pkgdir/usr/lib/fb-py-libs/thrift_py/thrift/"*
-  mv -t "$pkgdir/$site_packages/thrift/util" \
+  mv -vt "$pkgdir/$site_packages/thrift/util" \
     "$pkgdir/usr/lib/fb-py-libs/thrift_py_inspect/thrift/util/"*
-  rm -r "$pkgdir/usr/lib/fb-py-libs"
+  rm -vr "$pkgdir/usr/lib/fb-py-libs"
 }
