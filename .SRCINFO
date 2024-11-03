@@ -1,7 +1,7 @@
 pkgbase = paperless-ngx-venv
 	pkgdesc = A supercharged version of paperless: scan, index and archive all your physical documents (version with bundled dependencies)
 	pkgver = 2.13.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://docs.paperless-ngx.com/
 	install = paperless.install
 	arch = any
@@ -44,7 +44,7 @@ pkgbase = paperless-ngx-venv
 	source = paperless-webserver.service
 	source = requirements.patch
 	b2sums = 948521ce122c898c40d03e77a34605619243a9349570d5032dc2617edebd1447cb779811cf13b0d864348fe962c102444f6374aa185dbb844aaab2ff2f7f1c30
-	b2sums = 66073b686ac143f5b6a2c581705ca77a90b48e5ad03208c61976e0421e54c08bb5ce8168a42cd1f11d9f34e270a27ee91102c5fbf5477fdb5a596ad7b38e5750
+	b2sums = 747a8b8774fa48073e58b9b3ba55b28ca505b193cf180467b1bcbbe3a2c44931a198f355163b377219299c8b43f0a74550e241f835d9941c594fe318ae5235cd
 	b2sums = 586ad775e26aef216716c33d8951e00044a7f6866167d27dceab39d51b4fd46527693dfe4e085dc20d2e9193679122ad2b9ac8a1c03a98df747af15ecca24ca2
 	b2sums = 4a59f0a0c6a4abad23cba01e216909f45a7064e93911b8ba3e3b394f52379e41898b8c9e1246ba034bc8d2fe6dc83f5cad926e265a17da7c7093d997cfe8b4f3
 	b2sums = d4eff17cf6b4642211d61545d3722cb626e35b591fc1f11dfc0d4bd3b303ac145777953d405b1bbdf6473512590d50169cf58db8251de2701cee4d7b151ef6be

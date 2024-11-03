@@ -1,7 +1,7 @@
 [Trigger]
 Operation = Upgrade
 Type = Package
-Target = paperless-ngx
+Target = paperless-ngx-venv
 
 [Action]
 Description = Migrating the Paperless database
