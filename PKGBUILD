@@ -2,7 +2,7 @@
 pkgname='screenshot_llm'
 _pkgname='Screenshot_LLM'
 pkgdesc='AI-Powered Screenshot Analysis'
-pkgver='1.0.0'
+pkgver='1.0.1'
 pkgrel='1'
 arch=('x86_64')
 url="https://github.com/ThanabordeeN/${_pkgname}"
@@ -11,7 +11,7 @@ conflicts=("${pkgname}-git")
 depends=('python' 'tk' 'python-dotenv' 'python-markdown')
 optdepends=('ollama: ollama support.')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-b2sums=('4a8ae9456d6661d62d2a1cfbc1135b3d902ccb43a489dc1532d5341631b1ccc8315ed89b19d053ff99190a9d0c746ea5f90756c52dafd60fdebc236e62ca9782')
+b2sums=('3ec6546fbedcd101af3b17f3649a05534568400491707fa918c542d73325f2c867a511fffddd9c99221aa94e3128f198754167388150e0e4b6327b5f82f8db6e')
 
 package() {
   mkdir -p "${pkgdir}/usr/lib/${_pkgname}"
@@ -27,7 +27,6 @@ package() {
 
   echo "********************"
   echo "To enable and start the service:"
-  echo "mkdir -p ~/.screenshot_llm"
   echo "systemctl --user enable --now ${_pkgname,,}.service"
   echo "********************"
 }
