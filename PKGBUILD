@@ -5,7 +5,7 @@
 # Maintainer: Matheus <matheusgwdl@protonmail.com>
 # Contributor: Matheus <matheusgwdl@protonmail.com>
 
-declare -r _tag="6a0e2ee3db127a32c9d4d6f4b1b20eeb5b71aef1"
+declare -r _tag="e7140e55967a4198f2bbd34987fa7597ebafa649"
 
 pkgname="usearch"
 pkgver="2.16.1"
@@ -20,7 +20,7 @@ source=("${pkgname}::git+${url}.git#tag=${_tag}"
     "git+https://github.com/Maratyszcza/FP16.git"
     "git+https://github.com/ashvardanian/SimSIMD.git"
     "git+https://github.com/ashvardanian/StringZilla.git")
-sha512sums=("88471dbe4448ebe781ee9f7bf8cc391cfa1f2b1e70eccaf10b2238b1c77bd99abdefb3adf4b18d46d940d2f4c6cc2b799f329c69f1ac1aa3591a1208f0dcac37"
+sha512sums=("083c88b03af617a2a5222adc554bca99ec830a66532f06d3fe835272d2003a63ed1d586401889cdce583fb8f08317e67cf9d55b24fc4b5fc081314e3b5d159aa"
     "SKIP"
     "SKIP"
     "SKIP")
