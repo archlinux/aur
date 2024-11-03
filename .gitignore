@@ -1,0 +1,8 @@
+/*
+!/.gitignore
+!/.SRCINFO
+!/.nvchecker.toml
+!/PKGBUILD
+!/*.desktop
+!/*.patch
+!/*.install
