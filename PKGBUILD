@@ -17,13 +17,13 @@ source=("https://github.com/Redot-Engine/redot-engine/releases/download/redot-4.
 sha256sums=('c6010a7db9b838349ffb8b2043a5958f49d4c880579fdbcf56ceb2c96d6c9657')
 
 package() {
-    cp ../Redot.desktop ${srcdir}
-    cp ../icon.png ${srcdir}
-    cp ../LICENSE.txt ${srcdir}
+	cp ../Redot.desktop ${srcdir}
+	cp ../icon.png ${srcdir}
+	cp ../LICENSE.txt ${srcdir}
 	cd "$srcdir"
 	install -Dm644 Redot.desktop ${pkgdir}/usr/share/applications/Redot.desktop
 	install -Dm644 icon.png ${pkgdir}/usr/share/pixmaps/Redot.png
-    install -D -m755 Redot_v4.3-beta.2_linux.${arch} ${pkgdir}/usr/bin/redot
-    install -D -m644 LICENSE.txt ${pkgdir}/usr/share/licenses/"${pkgname}"/LICENSE
+	install -D -m755 Redot_v4.3-beta.3_linux.${arch} ${pkgdir}/usr/bin/redot
+	install -D -m644 LICENSE.txt ${pkgdir}/usr/share/licenses/"${pkgname}"/LICENSE
 }
 
