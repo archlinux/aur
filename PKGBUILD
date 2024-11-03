@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=ecode
-pkgver=0.6.2
+pkgver=0.6.3
 pkgrel=1
 pkgdesc="Lightweight multi-platform code editor designed for modern hardware with a focus on responsiveness and performance."
 arch=('x86_64' 'aarch64')
@@ -12,7 +12,7 @@ provides=('libeepp.so')
 source=("git+https://github.com/SpartanJ/eepp.git#tag=$pkgname-$pkgver"
         'git+https://github.com/SpartanJ/efsw.git'
         'git+https://github.com/SpartanJ/soil2.git')
-sha256sums=('94f62aae98e3f3933a3fce6dbcfae83c5a00ef545137917dacdcb7006ad470c5'
+sha256sums=('ca63eb057e172b24fc79ea9c9e3722fe4f0731e287712477267577fef40e2988'
             'SKIP'
             'SKIP')
 
