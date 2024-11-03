@@ -21,8 +21,16 @@ for line in "${MAPFILE[@]}"; do
     fi
 done
 
-# Detect if running on Wayland
-if [[ "${XDG_SESSION_TYPE}" == "wayland" ]]; then
+WAYLAND_OPTION=false
+for arg in "$@"; do
+    if [[ "$arg" == "--wayland" ]]; then
+        WAYLAND_OPTION=true
+        break
+    fi
+done
+
+if [[ "${WAYLAND_OPTION}" == true ]]; then
+    echo "Forcing Wayland"
     flags+=("--enable-features=UseOzonePlatform,WaylandWindowDecorations,VaapiVideoDecodeLinuxGL" "--ozone-platform=wayland")
 fi
 
