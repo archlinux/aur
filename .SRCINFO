@@ -1,9 +1,8 @@
 pkgbase = firefox-esr-globalmenu
 	pkgdesc = Fast, Private & Safe Web Browser, Extended Support Release. (with appmenu patch)
 	pkgver = 128.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.mozilla.org/en-US/firefox/enterprise/
-	install = firefox-esr.install
 	arch = x86_64
 	license = MPL-2.0
 	makedepends = cbindgen
@@ -53,6 +52,6 @@ pkgbase = firefox-esr-globalmenu
 	validpgpkeys = 14F26682D0916CDD81E37B6D61B7B526D98F0353
 	sha1sums = 63976b5ea27d03ca8b6230435fb62fb74265cafc
 	sha1sums = SKIP
-	sha1sums = 9788a6edefd4d34d25788f2914eb3b096690d2b7
+	sha1sums = 68ab2ba970bed5a147043d0bd2ac21b68f766fb1
 
 pkgname = firefox-esr-globalmenu

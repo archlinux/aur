@@ -10,11 +10,10 @@ _ff_theme=official
 _pkgname=firefox-esr
 pkgname=firefox-esr-globalmenu
 pkgver=128.4.0
-pkgrel=1
+pkgrel=2
 _ff_srcname="firefox-$pkgver"
 pkgdesc="Fast, Private & Safe Web Browser, Extended Support Release. (with appmenu patch)"
 url="https://www.mozilla.org/en-US/firefox/enterprise/"
-install="$_pkgname.install"
 arch=(x86_64)
 license=(MPL-2.0)
 provides=("$_pkgname=$pkgver")
@@ -298,6 +297,6 @@ package() {
 
 sha1sums=('63976b5ea27d03ca8b6230435fb62fb74265cafc'
           'SKIP'
-          '9788a6edefd4d34d25788f2914eb3b096690d2b7')
+          '68ab2ba970bed5a147043d0bd2ac21b68f766fb1')
 
 # vim:set sw=2 sts=-1 et:
