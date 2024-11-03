@@ -24,10 +24,10 @@
 : ${_lang:=}
 
 ## update
-_icver="115.16.1"
-_commit="2a76759a6220e9eeb9037671140b5574d6d1981e"
-_icsum="5a475b6214fe8515e7b55e09d796ae653fdce09ea57441b1f5dfc528157a6d59"
-_ffsum="c3bb5a210738ca0f8cd26aa53fc4a07560db079c06cd0421cf35af4035029367"
+_icver="115.17.0"
+_commit="a0b1a124e8e063a35389e1f20653047f37ca069b"
+_icsum="cef78116adb0a14e45e57cd7e8a064cac50f1065213d615eabb81c54ab3b5096"
+_ffsum="80f184a102a743ee75401e86dd86af0be5f1e5ebf07c81119d9ca77422d716c3"
 
 if [ -n "$_srcinfo" ]; then
   : ${_lang:=en-US}
@@ -430,9 +430,9 @@ END
 build() (
   cd "$_pkgsrc"
 
-  export PATH="/usr/lib/llvm${_ver_clang:-}/bin:$PATH"
-  export LD_LIBRARY_PATH=/usr/lib/llvm${_ver_clang:-}/lib
-  export RUSTUP_TOOLCHAIN
+  export PATH LD_LIBRARY_PATH RUSTUP_TOOLCHAIN
+  PATH="/usr/lib/llvm${_ver_clang:-}/bin:$PATH"
+  LD_LIBRARY_PATH="/usr/lib/llvm${_ver_clang:-}/lib"
 
   export XDG_RUNTIME_DIR="${XDG_RUNTIME_DIR:-$srcdir/xdg-runtime}"
   [ ! -d "$XDG_RUNTIME_DIR" ] && install -dm700 "${XDG_RUNTIME_DIR:?}"
