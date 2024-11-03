@@ -19,7 +19,7 @@ depends=("alsa-lib" "at-spi2-core" "dbus-glib" "freetype2" "java-runtime>=11" "j
 makedepends=("git" "java-environment>=11" "java-environment<=17" "maven")
 # The git repository is needed for the build.
 source=("${pkgname}::git+${url}.git#tag=${_tag}")
-sha512sums=("SKIP")
+sha512sums=("8a75e2f9fe1fce6e377090696a6ad466e2c441165423d60f0230b469cc07a0faafd037a043aa23025c7d41c5ef48af561d19edf506a8d32868e2b7d1951ebf9a")
 
 build()
 {

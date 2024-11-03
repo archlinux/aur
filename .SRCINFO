@@ -23,6 +23,6 @@ pkgbase = elexis
 	depends = mesa
 	depends = nss
 	source = elexis::git+https://github.com/elexis/elexis-3-core.git#tag=29e738676684a7ef6afee57908b5e9df499b1390
-	sha512sums = SKIP
+	sha512sums = 8a75e2f9fe1fce6e377090696a6ad466e2c441165423d60f0230b469cc07a0faafd037a043aa23025c7d41c5ef48af561d19edf506a8d32868e2b7d1951ebf9a
 
 pkgname = elexis
