@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Celeste Studio
+Comment=TAS editing tool
+Exec=CelesteStudio
+Icon=/usr/share/icons/hicolor/256x256/apps/CelesteStudio.ico
+Terminal=false
+Type=Application
+Categories=Game;
