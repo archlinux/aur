@@ -8,6 +8,7 @@ pkgbase = untitled-open
 	license = MIT
 	makedepends = cmake
 	makedepends = make
+	makedepends = pkgconf
 	makedepends = dbus
 	makedepends = xdg-desktop-portal
 	depends = gcc-libs

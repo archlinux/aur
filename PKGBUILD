@@ -11,7 +11,7 @@ arch=(x86_64 aarch64)
 license=('MIT')
 depends=("gcc-libs" "glibc" "pkgconf" "dbus" "xdg-desktop-portal")
 provides=("lib${PKG_REAL_NAME}.so")
-makedepends=("cmake" "make" "dbus" "xdg-desktop-portal")
+makedepends=("cmake" "make" "pkgconf" "dbus" "xdg-desktop-portal")
 source=("https://github.com/MadLadSquad/${PKG_REAL_NAME}/releases/download/v${pkgver}/${pkgname}.tar.xz")
 sha256sums=('7a3f5b0bdc315170b203bef514514a9d17f2541068e4ad6bf723d2b3131f8a24')
 
