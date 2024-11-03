@@ -1,6 +1,6 @@
-diff -ru tools-20070815.orig/lib/Makefile tools-20070815/lib/Makefile
---- tools-20070815.orig/lib/Makefile	2006-02-15 18:04:44.000000000 +0100
-+++ tools-20070815/lib/Makefile	2018-10-14 16:14:53.694209536 +0200
+diff -r --unified tools-20070815.orig/lib/Makefile tools-20070815.new/lib/Makefile
+--- tools-20070815.orig/lib/Makefile	2006-02-15 17:04:44.000000000 +0000
++++ tools-20070815.new/lib/Makefile	2024-11-03 10:27:51.088840719 +0000
 @@ -1,6 +1,6 @@
  LIB = libuml.a
  OBJS = rights.o
@@ -9,40 +9,44 @@ diff -ru tools-20070815.orig/lib/Makefile tools-20070815/lib/Makefile
  
  all : $(LIB)
  
-diff -ru tools-20070815.orig/Makefile tools-20070815/Makefile
---- tools-20070815.orig/Makefile	2006-02-27 20:38:55.000000000 +0100
-+++ tools-20070815/Makefile	2018-10-14 16:14:53.694209536 +0200
-@@ -6,13 +6,9 @@
+diff -r --unified tools-20070815.orig/Makefile tools-20070815.new/Makefile
+--- tools-20070815.orig/Makefile	2006-02-27 19:38:55.000000000 +0000
++++ tools-20070815.new/Makefile	2024-11-03 10:30:35.228375431 +0000
+@@ -6,13 +6,13 @@
  TARBALL = uml_utilities_$(UMLVER).tar.bz2
  BIN_DIR = /usr/bin
  
 -ifeq ($(shell uname -m),x86_64)
 -LIB_DIR = /usr/lib64/uml
 -else
++# ifeq ($(shell uname -m),x86_64)
++# LIB_DIR = /usr/lib64/uml
++# else
  LIB_DIR = /usr/lib/uml
 -endif
++# endif
  
 -CFLAGS = -g -Wall
 +CFLAGS ?= -g -Wall
  #CFLAGS = -g -O2 -Wall
  
  export BIN_DIR LIB_DIR CFLAGS
-diff -ru tools-20070815.orig/umlfs/Makefile tools-20070815/umlfs/Makefile
---- tools-20070815.orig/umlfs/Makefile	2006-02-27 22:11:25.000000000 +0100
-+++ tools-20070815/umlfs/Makefile	2018-10-14 16:19:31.607958547 +0200
+diff -r --unified tools-20070815.orig/umlfs/Makefile tools-20070815.new/umlfs/Makefile
+--- tools-20070815.orig/umlfs/Makefile	2006-02-27 21:11:25.000000000 +0000
++++ tools-20070815.new/umlfs/Makefile	2024-11-03 10:31:29.817134764 +0000
 @@ -1,7 +1,8 @@
  BIN = uml_mount
  OBJS = $(BIN).o
  # I have the FUSE headers in /usr/local/include
 -CFLAGS = -g -Wall -D_FILE_OFFSET_BITS=64 -I/usr/local/include
 +CFLAGS ?= -g -Wall -I/usr/local/include
-+CFLAGS += -D_FILE_OFFSET_BITS=64
++CFLAGS += -D_FILE_OFFSET_BITS=64 -DFUSE_USE_VERSION=25
  LIBS = -lfuse
  
  BIN_DIR ?= /usr/bin
-diff -ru tools-20070815.orig/uml_net/host.c tools-20070815/uml_net/host.c
---- tools-20070815.orig/uml_net/host.c	2006-02-27 21:19:52.000000000 +0100
-+++ tools-20070815/uml_net/host.c	2018-10-14 16:14:53.694209536 +0200
+diff -r --unified tools-20070815.orig/uml_net/host.c tools-20070815.new/uml_net/host.c
+--- tools-20070815.orig/uml_net/host.c	2006-02-27 20:19:52.000000000 +0000
++++ tools-20070815.new/uml_net/host.c	2024-11-03 10:27:01.790005406 +0000
 @@ -10,6 +10,7 @@
  #include <ctype.h>
  #include <sys/wait.h>
