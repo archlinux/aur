@@ -9,7 +9,7 @@
 
 _pkgname=Flexget
 pkgname=${_pkgname,,}
-pkgver=3.11.53
+pkgver=3.11.54
 pkgrel=1
 pkgdesc="A multipurpose automation tool for all of your media"
 arch=(any)
@@ -55,7 +55,7 @@ source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
         "$pkgname.user.service"
         "$pkgname.sysusers"
         "$pkgname.tmpfiles")
-sha256sums=('cb4554445f6bcd8255679412a2c5a10bb5efeccf64a9c16ac61a5f3e535050fa'
+sha256sums=('9ea4bde9a1e5107df6c51b8d49a7fa27aaac114795eae2d9d6d3c723f1c7706b'
             'b7578417ab5f671def7021133ae68900d82aaa81b5e80a2fec4d85e46eb1f8e9'
             'b9d354f6095aafe7a29cb8e90239b662a2584903a85fe3770f2b99bb8bdfff4a'
             '799921777b3714f074deaafbdd241ea7b99a0eccd65931708fd81457286f4f49'
@@ -69,7 +69,7 @@ build() {
 }
 
 package() {
-    local python_ver=$(python -V | awk '{print $2}')
+    local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
 
     install -Dm644 "$pkgname.service"      "$pkgdir/usr/lib/systemd/system/$pkgname.service"
     install -Dm644 "$pkgname@.service"     "$pkgdir/usr/lib/systemd/system/$pkgname@.service"
@@ -80,6 +80,6 @@ package() {
     cd "$_pkgname-$pkgver"
     python -m installer --destdir="$pkgdir" dist/*.whl
     install -Dm644 LICENSE                 "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-    ln -sf "/usr/share/flexget-webui/v1/app"  "$pkgdir/usr/lib/python${python_ver%.*}/site-packages/$pkgname/ui/v1/app"
-    ln -sf "/usr/share/flexget-webui/v2/dist" "$pkgdir/usr/lib/python${python_ver%.*}/site-packages/$pkgname/ui/v2/dist"
+    ln -sf "/usr/share/flexget-webui/v1/app"  "$pkgdir/$site_packages/$pkgname/ui/v1/app"
+    ln -sf "/usr/share/flexget-webui/v2/dist" "$pkgdir/$site_packages/$pkgname/ui/v2/dist"
 }
