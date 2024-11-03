@@ -1,6 +1,6 @@
 pkgbase = audacious-plugins-gtk3
 	pkgdesc = Plugins for Audacious
-	pkgver = 4.4.1
+	pkgver = 4.4.2
 	pkgrel = 1
 	url = https://audacious-media-player.org/
 	arch = i686
@@ -9,7 +9,7 @@ pkgbase = audacious-plugins-gtk3
 	license = GPL
 	makedepends = meson
 	makedepends = glib2-devel
-	depends = audacious-gtk3>=4.4.1
+	depends = audacious-gtk3>=4.4.2
 	depends = alsa-lib
 	depends = curl
 	depends = faad2
@@ -40,9 +40,9 @@ pkgbase = audacious-plugins-gtk3
 	depends = wavpack
 	provides = audacious-plugins
 	conflicts = audacious-plugins
-	source = https://distfiles.audacious-media-player.org/audacious-plugins-4.4.1.tar.bz2
+	source = https://distfiles.audacious-media-player.org/audacious-plugins-4.4.2.tar.bz2
 	source = https://gitlab.archlinux.org/archlinux/packaging/packages/audacious-plugins/-/raw/main/sidplay-rom-paths.patch
-	sha256sums = 484ed416b1cf1569ce2cc54208e674b9c516118485b94ce577d7bc5426d05976
+	sha256sums = 50f494693b6b316380fa718c667c128aa353c01e954cd77a65c9d8aedf18d4bd
 	sha256sums = c32cd36f75dd18db082f9b9447f1c0982279703b9d648f5695295ff25c9b678d
 
 pkgname = audacious-plugins-gtk3
