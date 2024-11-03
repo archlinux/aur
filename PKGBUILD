@@ -8,7 +8,7 @@
 declare -r _tag="6a0e2ee3db127a32c9d4d6f4b1b20eeb5b71aef1"
 
 pkgname="usearch"
-pkgver="2.16.0"
+pkgver="2.16.1"
 pkgrel="1"
 pkgdesc="Fast open-source search and clustering engine for vectors."
 arch=("x86_64")
@@ -20,25 +20,13 @@ source=("${pkgname}::git+${url}.git#tag=${_tag}"
     "git+https://github.com/Maratyszcza/FP16.git"
     "git+https://github.com/ashvardanian/SimSIMD.git"
     "git+https://github.com/ashvardanian/StringZilla.git")
-sha512sums=("SKIP"
+sha512sums=("88471dbe4448ebe781ee9f7bf8cc391cfa1f2b1e70eccaf10b2238b1c77bd99abdefb3adf4b18d46d940d2f4c6cc2b799f329c69f1ac1aa3591a1208f0dcac37"
     "SKIP"
     "SKIP"
     "SKIP")
 
 _compile()
 {
-    declare _use_fp16="OFF"
-
-    if pacman -Q fp16 &> /dev/null; then
-        _use_fp16="ON"
-    fi
-
-    declare _use_simsimd="OFF"
-
-    if pacman -Q simsimd &> /dev/null; then
-        _use_simsimd="ON"
-    fi
-
     cmake -B "${srcdir}"/"${pkgname}"/build/ \
         -D CMAKE_BUILD_TYPE=None \
         -D CMAKE_INSTALL_PREFIX=/usr/ \
@@ -49,10 +37,10 @@ _compile()
         -D USEARCH_BUILD_TEST_CPP="$1" \
         -D USEARCH_BUILD_WOLFRAM=OFF \
         -D USEARCH_INSTALL=ON \
-        -D USEARCH_USE_FP16LIB="${_use_fp16}" \
+        -D USEARCH_USE_FP16LIB=ON \
         -D USEARCH_USE_JEMALLOC=OFF \
         -D USEARCH_USE_OPENMP=OFF \
-        -D USEARCH_USE_SIMSIMD="${_use_simsimd}" \
+        -D USEARCH_USE_SIMSIMD=ON \
         -S "${srcdir}"/"${pkgname}"/ \
         -Wno-dev
     cmake --build "${srcdir}"/"${pkgname}"/build/
@@ -80,11 +68,7 @@ build()
 check()
 {
     _compile "ON"
-    # TODO
-    # ctest --output-on-failure --test-dir "${srcdir}"/"${pkgname}"/build/
-    cd "${srcdir}"/"${pkgname}"/build/ || exit 1
-    ./test_c
-    ./test_cpp
+    ctest --output-on-failure --test-dir "${srcdir}"/"${pkgname}"/build/
     _compile "OFF"
 }
 
