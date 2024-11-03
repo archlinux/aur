@@ -1,6 +1,7 @@
 # Maintainer: Snogard <snogardb at gmail dot com>
 # Contributor: @RubenKelevra <cyrond@gmail.com>
 # Contributor: Jose Riha <jose1711 [at] gmail (dot) com>
+# Contributor: Maximilian Knespel <mxmlnknp at gmail dot com>
 
 pkgname=ratarmount
 pkgver=0.15.2
