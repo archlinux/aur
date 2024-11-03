@@ -1,0 +1,15 @@
+pkgbase = teller
+	pkgdesc = Cloud native secrets management for developers - never leave your command line for secrets
+	pkgver = 2.0.7
+	pkgrel = 1
+	url = https://github.com/tellerops/teller
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = cargo
+	depends = gcc-libs
+	depends = glibc
+	depends = openssl
+	source = teller-2.0.7.tar.gz::https://github.com/tellerops/teller/archive/refs/tags/v2.0.7.tar.gz
+	sha256sums = 1d4275ede4366a31efc94039c58da4cec87466d09cc01444c3c18e9432716d23
+
+pkgname = teller
