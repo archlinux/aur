@@ -18,7 +18,7 @@ license=("MIT")
 makedepends=("cmake" "git")
 checkdepends=("gtest")
 source=("${_pkgname}::git+${url}.git#tag=${_tag}")
-sha512sums=("SKIP")
+sha512sums=("d64a79ab840374362aca644bce9acb7eb376c722d93a739d78f3b3b77baed37f65adc686a9998a2a11c406252a982fdcab4dd6fd753118f340542ff111732829")
 
 _compile()
 {
