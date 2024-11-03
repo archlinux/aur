@@ -1,0 +1,4 @@
+[autorandr-git]
+source = "github"
+github = "phillipberndt/autorandr"
+use_commit = true
