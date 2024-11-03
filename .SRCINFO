@@ -1,6 +1,6 @@
 pkgbase = epson-inkjet-printer-202101w
 	pkgdesc = Epson printer driver (L3210)
-	pkgver = 1.0.1
+	pkgver = 1.0.2
 	pkgrel = 1
 	url = http://download.ebz.epson.net/dsc/search/01/search/?OSC=LX
 	install = epson-inkjet-printer-202101w.install
@@ -11,9 +11,9 @@ pkgbase = epson-inkjet-printer-202101w
 	depends = cups
 	depends = ghostscript
 	optdepends = epsonscan2: Epson scanner management utility epson-printer-utility: This is a Printer Utility program for Epson. Using this software, you can check ink levels, view error and other status... on EPSON Printers.
-	source = https://download3.ebz.epson.net/dsc/f/03/00/13/05/46/9d539ec64f121214f7e286926346850a95cd3244/epson-inkjet-printer-202101w-1.0.1-1lsb3.2.src.rpm
+	source = https://download3.ebz.epson.net/dsc/f/03/00/15/15/02/f5cba2761f2f501363cdbf7e1b9b9879b0715aa5/epson-inkjet-printer-202101w-1.0.2-1.src.rpm
 	source = fixbuild.patch
-	sha256sums = 702039cf5a3ea0545dece5150462bdb5ecbc0d9a41b40cab0320a212bdbb3fc3
+	sha256sums = 9f415fdb07e13ebb98873007d06ae1a58a6475d890deb918ba4bd9c9182b9f9e
 	sha256sums = 2e613da0a2cb86367d7f73612dc381d489a92311b099c048698eac173a7e0c55
 
 pkgname = epson-inkjet-printer-202101w

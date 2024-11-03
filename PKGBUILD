@@ -3,8 +3,8 @@
 
 pkgname=epson-inkjet-printer-202101w
 _pkgname_filter=epson-inkjet-printer-filter
-_suffix=1lsb3.2.src.rpm
-pkgver=1.0.1
+_suffix=1.src.rpm
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="Epson printer driver (L3210)"
 arch=('i686' 'x86_64')
@@ -15,7 +15,8 @@ depends=('cups' 'ghostscript')
 optdepends=('epsonscan2: Epson scanner management utility
              epson-printer-utility: This is a Printer Utility program for Epson. Using this software, you can check ink levels, view error and other status... on EPSON Printers.')
 #makedepends=('libtool' 'make' 'automake' 'autoconf')
-source=(https://download3.ebz.epson.net/dsc/f/03/00/13/05/46/9d539ec64f121214f7e286926346850a95cd3244/${pkgname}-${pkgver}-${_suffix} fixbuild.patch)
+source=(https://download3.ebz.epson.net/dsc/f/03/00/15/15/02/f5cba2761f2f501363cdbf7e1b9b9879b0715aa5/${pkgname}-${pkgver}-${_suffix} fixbuild.patch)
+
 
 build() {
   cd "$srcdir" || exit
@@ -23,7 +24,7 @@ build() {
   FILTER_FILE=$(ls $_pkgname_filter*.tar.gz)
   tar xzf $FILTER_FILE
   cd "${FILTER_FILE%.tar.gz}" || exit
-  patch -p1 -i "$srcdir"/fixbuild.patch
+  # patch -p1 -i "$srcdir"/fixbuild.patch
   autoreconf -f -i
   # if you have runtime problems: add "--enable-debug" and look into /tmp/epson-inkjet-printer-filter.txt
   ./configure LDFLAGS="$LDFLAGS -Wl,--no-as-needed" --prefix=/opt/$pkgname
@@ -54,6 +55,5 @@ package() {
   install -m 755 src/epson_inkjet_printer_filter "$pkgdir/opt/$pkgname/cups/lib/filter/epson_inkjet_printer_filter"
 
 }
-sha256sums=('702039cf5a3ea0545dece5150462bdb5ecbc0d9a41b40cab0320a212bdbb3fc3'
+sha256sums=('9f415fdb07e13ebb98873007d06ae1a58a6475d890deb918ba4bd9c9182b9f9e'
             '2e613da0a2cb86367d7f73612dc381d489a92311b099c048698eac173a7e0c55')
-
