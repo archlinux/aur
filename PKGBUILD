@@ -1,12 +1,12 @@
 # Maintainer: David C Rankin <drankinatty@gmail.com>
-# Previous Maintainer: JustKidding <jk@vin.ovh>
+# Contributor: JustKidding <jk@vin.ovh>
 
 pkgname=mongodb44
 _pkgname=mongodb
 _srcname=mongo
 # #.<odd number>.# releases are unstable development/testing
 pkgver=4.4.29
-pkgrel=5
+pkgrel=6
 pkgdesc="A high-performance, open source, schema-free document-oriented database (last version to support non-avx CPUs)"
 arch=("x86_64" "aarch64")
 url="https://www.mongodb.com/"
@@ -14,12 +14,11 @@ license=("Apache" "custom:SSPL1")
 depends=('libstemmer' 'snappy' 'boost-libs' 'pcre' 'yaml-cpp' 'curl')
 makedepends=('python-psutil' 'python-setuptools' 'python-regex' 'python-cheetah3' 'python-yaml' 'python-requests' 'boost')
 optdepends=('mongodb-tools: mongoimport, mongodump, mongotop, etc'
-            'mongosh-bin: interactive shell to connect with MongoDB')
+            'mongosh: interactive shell to connect with MongoDB')
 backup=("etc/mongodb.conf")
 conflicts=(mongodb)
 provides=(mongodb="$pkgver")
-# https://fastdl.mongodb.org/src/mongodb-src-r$pkgver.tar.gz
-source=(https://github.com/mongodb/mongo/archive/refs/tags/r$pkgver.tar.gz
+source=($pkgname-$pkgver.tar.gz::https://github.com/mongodb/mongo/archive/refs/tags/r$pkgver.tar.gz
         mongodb.sysusers
         mongodb.tmpfiles
         mongodb-4.4.8-no-compass.patch
@@ -68,7 +67,7 @@ _scons_args=(
   --runtime-hardening=off
 )
 
-all-flag-vars() {
+_all-flag-vars() {
   echo {C,CXX}FLAGS
 }
 
@@ -86,16 +85,16 @@ _filter-var() {
   export ${var}="${new[*]}"
 }
 
-filter-flags() {
+_filter-flags() {
   local v
-  for v in $(all-flag-vars) ; do
+  for v in $(_all-flag-vars) ; do
     _filter-var ${v} "$@"
   done
   return 0
 }
 
 prepare() {
-  cd "${srcdir}/${_srcname}-r${pkgver}"
+  cd "${_srcname}-r${pkgver}"
 
   # Keep historical Arch dbPath
   sed -i 's|dbPath: /var/lib/mongo|dbPath: /var/lib/mongodb|' rpm/mongod.conf
@@ -137,11 +136,11 @@ prepare() {
 }
 
 build() {
-  cd "${srcdir}/${_srcname}-r${pkgver}"
+  cd "${_srcname}-r${pkgver}"
 
   if check_option debug n; then
-    filter-flags '-m*'
-    filter-flags '-O?'
+    _filter-flags '-m*'
+    _filter-flags '-O?'
   fi
 
   export SCONSFLAGS="$MAKEFLAGS"
@@ -149,12 +148,12 @@ build() {
 }
 
 package() {
-  cd "${srcdir}/${_srcname}-r${pkgver}"
+  cd "${_srcname}-r${pkgver}"
 
   # Install binaries
-  install -D build/install/bin/mongo "$pkgdir/usr/bin/mongo"
-  install -D build/install/bin/mongod "$pkgdir/usr/bin/mongod"
-  install -D build/install/bin/mongos "$pkgdir/usr/bin/mongos"
+  install -Dm755 build/install/bin/mongo "$pkgdir/usr/bin/mongo"
+  install -Dm755 build/install/bin/mongod "$pkgdir/usr/bin/mongod"
+  install -Dm755 build/install/bin/mongos "$pkgdir/usr/bin/mongos"
 
   # Keep historical Arch conf file name
   install -Dm644 "rpm/mongod.conf" "${pkgdir}/etc/${_pkgname}.conf"
