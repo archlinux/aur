@@ -1,11 +1,11 @@
 pkgbase = stardict-wikt-en-all
 	pkgdesc = English Wiktionary All Languages for StarDict
-	pkgver = 2023_07_27
-	pkgrel = 2
+	pkgver = 2024_10_05
+	pkgrel = 1
 	url = https://www.dictinfo.com/
 	arch = any
 	license = cc-by-sa-3.0
-	source = https://www.dictinfo.com/stardict/wikt-en-ALL-2023-07-27.7z
-	b2sums = 7bd918d5699c4b2d4ea655c0030f4cbf7ba2040c7310e5fb9840e7e563f0222b316bad23f70b57bf258b0eaa7fab0c21a2bb43529410398db0a58de1ec71770c
+	source = https://www.dictinfo.com/stardict/wikt-en-ALL-2024-10-05.7z
+	b2sums = 6d59591fa812595c9afed658ce9eef9e83f8ddb8ecdc2a3e0b41f4928f9568fd46f1ddff6f9deb05df470c26a9484fb443dd4096ff6fd42d27363ef68174cb7e
 
 pkgname = stardict-wikt-en-all
