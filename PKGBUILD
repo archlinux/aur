@@ -11,9 +11,11 @@ makedepends=('cmake' 'base-devel' 'git')
 provides=('hyperhdr')
 conflicts=('hyperhdr' 'hyperhdr-git')
 source=("git+https://github.com/awawa-dev/${pkgname%-git}"
-        "hyperhdr.systemd-user")
+        "hyperhdr.systemd-user"
+        "hyperhdr-x11.systemd-user")
 sha512sums=('SKIP'
-            '20d093c7b342733460e1efb5b2af64ba133048fcaad8746ae89a6363bddf0b870a51077b71179edeccfced41d40972f691b0a5edd927fda1adb5940e796778e6')
+            'a6d5dfe3d47fef991c4a5d5d8b357811deb1114ea2ec550f0fd1664ab04b31309c8abdf91949d7d0790cb3ce0bec459b3630f72cca5eedc6a5ad18f6c3830b12'
+            'e84e56fb89658a8af233d16aa174b1fb36d02c3585f99d58668ec3fdf273ee31afe8ee7ede9a5818d345a6383bfec9f62f7cc5efc4a961770a530fb5c31ff443')
 
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"
@@ -86,12 +88,16 @@ package() {
   rm -rf $pkgdir/usr/lib
 
   install -Dm 644 ${srcdir}/hyperhdr.systemd-user "${pkgdir}/usr/lib/systemd/user/hyperhdr.service"
+  install -Dm 644 ${srcdir}/hyperhdr-x11.systemd-user "${pkgdir}/usr/lib/systemd/user/hyperhdr-x11.service"
+
 
   echo
   echo
   echo -------------------------------------------------------------
   echo 'run to start hyperhdr as user via systemd:'
   echo 'systemctl --user daemon-reload && systemctl --user enable hyperhdr && systemctl --user start hyperhdr'
+  echo 'or for X11 / Xorg'
+  echo 'systemctl --user daemon-reload && systemctl --user enable hyperhdr-x11 && systemctl --user start hyperhdr-x11'
   echo -------------------------------------------------------------
   echo
   echo

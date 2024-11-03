@@ -4,7 +4,8 @@ StartLimitIntervalSec=30s
 StartLimitBurst=30
 
 [Service]
-ExecStartPre=/bin/sh -c 'systemctl --user show-environment | grep WAYLAND_DISPLAY'
+Environment=DISPLAY=:0
+ExecStartPre=xrandr --listactivemonitors
 ExecStart=/usr/bin/hyperhdr
 WorkingDirectory=/usr/share/hyperhdr
 TimeoutStopSec=5

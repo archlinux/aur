@@ -36,7 +36,9 @@ pkgbase = hyperhdr-git
 	conflicts = hyperhdr-git
 	source = git+https://github.com/awawa-dev/hyperhdr
 	source = hyperhdr.systemd-user
+	source = hyperhdr-x11.systemd-user
 	sha512sums = SKIP
-	sha512sums = 20d093c7b342733460e1efb5b2af64ba133048fcaad8746ae89a6363bddf0b870a51077b71179edeccfced41d40972f691b0a5edd927fda1adb5940e796778e6
+	sha512sums = a6d5dfe3d47fef991c4a5d5d8b357811deb1114ea2ec550f0fd1664ab04b31309c8abdf91949d7d0790cb3ce0bec459b3630f72cca5eedc6a5ad18f6c3830b12
+	sha512sums = e84e56fb89658a8af233d16aa174b1fb36d02c3585f99d58668ec3fdf273ee31afe8ee7ede9a5818d345a6383bfec9f62f7cc5efc4a961770a530fb5c31ff443
 
 pkgname = hyperhdr-git
