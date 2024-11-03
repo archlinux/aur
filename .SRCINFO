@@ -1,0 +1,16 @@
+pkgbase = python-broadlink-git
+	pkgdesc = broadlink_cli script for interacting with broadlink remote control devices
+	pkgver = 0.19.0.r0.g730853e
+	pkgrel = 1
+	url = https://github.com/mjg59/python-broadlink
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	depends = python
+	depends = python-cryptography
+	source = python-broadlink::git+https://github.com/mjg59/python-broadlink.git
+	sha256sums = SKIP
+
+pkgname = python-broadlink-git
