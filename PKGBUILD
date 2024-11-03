@@ -21,4 +21,5 @@ build() {
 package() {
     cd "CodecMapper-${pkgver}/${_pkgname}"
     python -m installer --destdir="${pkgdir}" dist/*.whl
+    install -Dm644 LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
