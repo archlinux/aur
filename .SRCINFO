@@ -1,7 +1,7 @@
 pkgbase = python-claripy-git
 	pkgdesc = An abstraction layer for constraint solvers.
 	pkgver = 9.2.126.r2398.8662617b
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/angr/claripy
 	arch = any
 	license = BSD-2-Clause

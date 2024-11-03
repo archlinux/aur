@@ -7,7 +7,7 @@ pkgname=$_srcname-git
 pkgdesc="An abstraction layer for constraint solvers."
 url="https://github.com/angr/claripy"
 pkgver=9.2.126.r2398.8662617b
-pkgrel=1
+pkgrel=2
 arch=('any')
 depends=('python-cachetools' 'python-typing_extensions' 'python-z3-solver' 'python>=3.10')
 makedepends=(
@@ -29,6 +29,10 @@ conflicts=($_srcname)
 license=('BSD-2-Clause')
 source=("$pkgname::git+https://github.com/angr/claripy.git#branch=master")
 b2sums=('SKIP')
+
+prepare() {
+    git -C $srcdir/$pkgname clean -dfx
+}
 
 pkgver() {
     cd $srcdir/$pkgname
