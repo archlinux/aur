@@ -7,7 +7,7 @@ pkgbase = usb_resetter
 	license = BSD
 	makedepends = git
 	depends = python
-	source = https://github.com/netinvent/usb_resetter/archive/v1.3.0.tar.gz
+	source = https://github.com/netinvent/usb_resetter/archive/refs/tags/v1.3.0.tar.gz
 	sha256sums = c22c3a902e3b654263cbc355c94f67264c764570805988515aa25713c854afc5
 
 pkgname = usb_resetter

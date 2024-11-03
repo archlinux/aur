@@ -1,0 +1,4 @@
+[usb_resetter]
+source = "github"
+github = "netinvent/usb_resetter"
+use_latest_release = true
