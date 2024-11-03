@@ -11,6 +11,6 @@ pkgbase = zinar
 	conflicts = zinar-bin
 	conflicts = zinar-git
 	source = zinar.py
-	sha256sums = c498244711343582e646cc85eb31cf18b1fc784c54f370d4c256597d4aaa899a
+	sha256sums = 2bb642fd1790dfdf8726d48a3ddf807f9885ceb13d9834f5b818a3869b28f301
 
 pkgname = zinar
