@@ -19,7 +19,7 @@ depends=("java-runtime>=11" "java-runtime<=17")
 makedepends=("git" "java-environment>=11" "java-environment<=17" "maven")
 # The git repository is needed for the build.
 source=("${pkgname}::git+${url}.git#tag=${_tag}")
-sha512sums=("SKIP")
+sha512sums=("9e83a054879e9bdb09574325ffeb8acb968f83045974cd864dc7b64cfde6aa3e678148600464df1d5471fb82fb14ae34c760cc51aff5a7c08b13034b2c6dc175")
 
 build()
 {
