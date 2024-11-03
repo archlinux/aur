@@ -1,0 +1,16 @@
+pkgbase = python-docx2txt
+	pkgdesc = A pure python-based utility to extract text and images from docx files.
+	pkgver = 0.8
+	pkgrel = 1
+	url = https://github.com/ankushshah89/python-docx2txt
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	source = docx2txt-0.8.tar.gz::https://files.pythonhosted.org/packages/source/d/docx2txt/docx2txt-0.8.tar.gz
+	sha256sums = 2c06d98d7cfe2d3947e5760a57d924e3ff07745b379c8737723922e7009236e5
+
+pkgname = python-docx2txt
