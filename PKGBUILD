@@ -2,7 +2,7 @@
 pkgname='pyload-ng'
 _pkgname=pyload_ng
 pkgver=0.5.0b3.dev87
-pkgrel=2
+pkgrel=3
 pkgdesc="The free and open-source Download Manager written in pure Python"
 url="https://pyload.net/"
 license=('AGPL3')
@@ -26,6 +26,9 @@ python-pycurl
 python-semver
 python-setuptools
 python-werkzeug
+
+python-msgspec
+# temp until python-flask-session dep is fixed
 )
 optdepends=('apprise'
             'caffeine-ng'
