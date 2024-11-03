@@ -18,13 +18,13 @@ depends=(
     'python-indexed-gzip'
     'python-xz'
     'python-indexed-zstd'
-    'python-pyfatfs'
     # Extra repository packages
     'python-rarfile'
     'python-libarchive-c'
 )
 
 optdepends=(
+    'python-pyfatfs: Support for FAT12, 16, 32 images.'
     'python-fsspec: Support for remote files.'
     'python-aiohttp: Support for http:// via fsspec.'
     'python-requests: Support for various web backends such as github:// via fsspec.'
