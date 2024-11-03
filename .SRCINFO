@@ -1,0 +1,11 @@
+pkgbase = tigerbeetle
+	pkgdesc = A distributed financial accounting database designed for safety and performance
+	pkgver = 0.16.11
+	pkgrel = 1
+	epoch = 0
+	url = https://tigerbeetle.com
+	arch = any
+	source = tigerbeetle-0.16.11.zip::https://linux.tigerbeetle.com
+	sha256sums = 892172989a9d04eb1b85e283353de43d0a030604acf8ae1d8dc04736be4416da
+
+pkgname = tigerbeetle
