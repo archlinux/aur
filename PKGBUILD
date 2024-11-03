@@ -15,5 +15,5 @@ sha512sums=('f8a72cb07a143581832901d4f6be1d6c31954f862ed31c55f0d19eb5d7624264d00
 
 package() {
   mkdir -p $pkgdir/usr/local/bin
-  install -Dm755 ${cleanname}-go "$pkgdir/usr/bin/$cleanname"
+  install -Dm755 ${cleanname} "$pkgdir/usr/bin/$cleanname"
 }
