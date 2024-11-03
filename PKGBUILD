@@ -1,7 +1,7 @@
 #Maintainer: Maxb0tbeep <max@polygonal.place)
 pkgname=deskthing-git
 pkgrel=1
-pkgver=r244.4849fde
+pkgver=r246.fdeee67
 pkgdesc="This is the DeskThing project. Using Spotify's existing Car Thing, the DeskThing makes the perfect desk assistant."
 arch=(x86_64)
 url="https://github.com/ItsRiprod/DeskThing"
@@ -23,11 +23,6 @@ build() {
   npm install
   npm run build
 }
-
-#package() {
-#	cd "$srcdir/DeskThing/DeskThingServer"
-#	install -Dm755 "dist/linux-unpacked/deskthing" "$pkgdir/usr/bin/deskthing"
-#}
 
 package() {
   cd "$srcdir/DeskThing/DeskThingServer"
