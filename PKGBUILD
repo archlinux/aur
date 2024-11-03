@@ -2,8 +2,8 @@
 
 _name=PyMCTranslate
 pkgname=python-${_name,,}
-pkgver=1.2.28
-_commit=b2caf771fb460e1d93d628ccd2e0d03370a450ec
+pkgver=1.2.29
+_commit=c9921f993304c6276d44fdd3fe5d330301fd31f1
 pkgrel=1
 pkgdesc='A library of block mappings that can be used to convert from any Minecraft format into any other Minecraft format'
 arch=('any')
