@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=reformulas
-_pkgver=0.3.0
+_pkgver=0.4.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -17,8 +17,8 @@ optdepends=(
   r-tinytest
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('77ac03912efe8d7bc435117e80ed157f')
-b2sums=('49faf0ed3bbf5c98c129270d8d736e3135f70b1cbff8ada26d4674da86203072f641ae7a17f43349506cff809828ee7e151d5208e3d69ce13a14c2ebcfc95c31')
+md5sums=('c10349669436c9cf55f8dd851c8247f7')
+b2sums=('17e84d6424730c71c87fff412481ddc4519a9afff3cd095c04b9cb26e762fffde666629a0ddef5fb32cb4eb826f6421d8c1502fbf3bcbd635eb2b2c50a4c4ac3')
 
 build() {
   mkdir build
