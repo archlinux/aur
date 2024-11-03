@@ -1,7 +1,7 @@
 # Maintainer: kiasoc5 <kiasoc5 at tutanota dot com>
 # Maintainer: benpiano800 <ben@poest.com>
 pkgname=libcpufeatures
-pkgver=0.8.0
+pkgver=0.9.0
 pkgrel=1
 pkgdesc="A cross-platform C library to retrieve CPU features (such as available instructions) at runtime."
 url="https://github.com/google/cpu_features"
