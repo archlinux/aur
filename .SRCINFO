@@ -1,0 +1,14 @@
+pkgbase = c2t-git
+	pkgdesc = Apple II audio file cassette utility
+	pkgver = r119.6c20c17
+	pkgrel = 1
+	url = https://github.com/datajerk/c2t
+	arch = x86_64
+	license = custom
+	makedepends = tinyxxd
+	source = git+https://github.com/datajerk/c2t.git
+	source = c2t-use-system-cc65.patch
+	sha256sums = SKIP
+	sha256sums = 4d5cfd5610e5c87d37f778e44d96cde0e60664c6d2762e6e5cffbe407145ab2f
+
+pkgname = c2t-git
