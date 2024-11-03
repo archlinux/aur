@@ -8,8 +8,8 @@ pkgbase = ttf-malayalam-font-chilanka
 	source = http://smc.org.in/downloads/fonts/chilanka/Chilanka-Regular.ttf
 	source = https://gitlab.com/smc/fonts/chilanka/raw/master/OFL.txt
 	source = https://gitlab.com/smc/fonts/chilanka/raw/master/67-smc-chilanka.conf
-	sha256sums = 3042ab2cd7e9ae4f8f8137c336ccf5186e6235a2901cb46e2544d7277be2c77b
-	sha256sums = 09c51553395ca2401d43c98a034dad1dad96b24706c2ea07972d698f90a0338f
+	sha256sums = 0571306aa61bec9d5abbe9e98d538985976b462b857490250388f1ce380123b6
+	sha256sums = f7516c3dde20383922ee27750d432cc2b95b4ba275204d374b7305ef95ed2d14
 	sha256sums = cf9d4c9e6efbd8bf676d9f1cabe86407ee570caa5f299bcbb8e4b5f46b59162a
 
 pkgname = ttf-malayalam-font-chilanka
