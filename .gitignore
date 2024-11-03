@@ -3,6 +3,6 @@
 !.gitignore
 !.SRCINFO
 !PKGBUILD
-!upload-symbol-archive
 !*.desktop
 !*.install
+!*.patch

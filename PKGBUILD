@@ -4,12 +4,15 @@
 # Contributor: Ionut Biru <ibiru@archlinux.org>
 # Contributor: Jakub Schmidtke <sjakub@gmail.com>
 
+_tb_displayname=Thunderbird
+_tb_theme=thunderbird
+
 _pkgname=thunderbird
 pkgname=thunderbird-globalmenu
-pkgver=115.14.0
+pkgver=128.4.0
 pkgrel=1
+_tb_srcname="$_pkgname-$pkgver"
 pkgdesc="Standalone mail and news reader from mozilla.org (With appmenu patch from Ubuntu)"
-install="$_pkgname.install"
 url="https://www.thunderbird.net/"
 arch=(x86_64)
 license=(MPL-2.0)
@@ -51,7 +54,6 @@ optdepends=(
 	'hunspell-en_US: Spell checking, American English'
 	'libnotify: Notification integration'
 	'networkmanager: Location detection via available WiFi networks'
-	'pulseaudio: Audio support'
 	'speech-dispatcher: Text-to-Speech'
 	'libotr: OTR support for active one-to-one chats'
 	'xdg-desktop-portal: Screensharing with Wayland')
@@ -60,33 +62,13 @@ options=(
 	!lto
 	!makeflags)
 source=(
-	"https://archive.mozilla.org/pub/thunderbird/releases/$pkgver/source/thunderbird-$pkgver.source.tar.xz"{,.asc}
-	"D187418.patch::https://phabricator.services.mozilla.com/D187418?download=true"
-	"D187749.patch::https://phabricator.services.mozilla.com/D187749?download=true"
-	"feature-unity-menubar-m-c.patch::https://github.com/Betterbird/thunderbird-patches/raw/83819e9a1df8e8e4221c3e5bce5d35492611d5ca/115/features/feature-unity-menubar-m-c.patch"
-	"feature-unity-menubar-comm.patch::https://github.com/Betterbird/thunderbird-patches/raw/83819e9a1df8e8e4221c3e5bce5d35492611d5ca/115/features/feature-unity-menubar.patch"
-	"9e96d1447f6c.patch::https://hg.mozilla.org/mozilla-central/raw-rev/9e96d1447f6c" #MOZ Bug 1873379
-	"c4d6ad7c5e44.patch::https://hg.mozilla.org/mozilla-central/raw-rev/c4d6ad7c5e44" #MOZ Bug 1841919
-	"ea780120e917.patch::https://hg.mozilla.org/mozilla-central/raw-rev/ea780120e917" #MOZ Bug 1841919
-	"rust-1.78.0.patch::https://gitlab.archlinux.org/archlinux/packaging/packages/thunderbird/-/raw/1eb123764e21a3c3788240be5ca63e13d36e2b6b/0033-bmo-1882209-update-crates-for-rust-1.78-stripped-patch-from-bugs.freebsd.org-bug278834.patch" # BSD Bug 278834
-	"llvm18.patch::https://github.com/pld-linux/thunderbird/raw/1b415245f46e2d8667ee0448bfeb1ff3a0ad67ee/llvm18.patch" # BSD Bug 278989
+	"https://archive.mozilla.org/pub/thunderbird/releases/${pkgver}esr/source/thunderbird-${pkgver}esr.source.tar.xz"{,.asc}
+	unity-menubar{,-comm}.patch
 	org.mozilla.thunderbird.desktop)
 validpgpkeys=(
 	# Mozilla Software Releases <release@mozilla.com>
 	# https://blog.mozilla.org/security/2023/05/11/updated-gpg-key-for-signing-firefox-releases/
 	'14F26682D0916CDD81E37B6D61B7B526D98F0353')
-sha1sums=('720247c4f77f6674bd86ec0a5190461f47954109'
-          'SKIP'
-          'b3ccca02959d94ef2a5db8f140ff96a2cd9724ef'
-          '559ce09fee54c849ea4da2bf881da37f5fc0cac9'
-          '0b5cb49417c6666fe9c1ff8ea6b5f0bfacac24d0'
-          '84a41fe516ce8c79e6f026029b7bda67ad4d9bf8'
-          'eb757775d705b86a55b1da16f8fb3263d76eccfc'
-          '1029fe0d467adb991f2cc155f290fdd04844bba2'
-          'aedcae99a93ab718463cf5cc529331e9d0d4ff35'
-          '659db072059db04bfc27ac4659912f6fb5e842aa'
-          '55a2d38af72d013c4ace8b633fd9a96b48d9fcfb'
-          '59206e9c42055ebcd15fb5fc27ff8f12d64b1f38')
 
 # Google API keys (see http://www.chromium.org/developers/how-tos/api-keys)
 # Note: These are for Arch Linux use ONLY. For your own distribution, please
@@ -94,31 +76,24 @@ sha1sums=('720247c4f77f6674bd86ec0a5190461f47954109'
 # more information.
 _google_api_key=AIzaSyDwr302FpOSkGRpLlUpPThNTDPbXcIn_FM
 
-# Mozilla API keys (see https://location.services.mozilla.com/api)
-# Note: These are for Arch Linux use ONLY. For your own distribution, please
-# get your own set of keys. Feel free to contact heftig@archlinux.org for
-# more information.
-_mozilla_api_key=e05d56db0a694edc8b5aaebda3f2db6a
-
 prepare() {
-	mkdir mozbuild
-	cd $_pkgname-$pkgver
+	if ! mkdir mozbuild; then
+		error "Remove '$srcdir' before build!"
+		exit 1
+	fi
+
+	cd "$_tb_srcname"
 
 	for patch in "${source[@]%%::*}"; do
 		if [[ $patch == *.patch ]]; then
 			msg2 "Applying $patch"
-			if [[ $patch == *-comm.patch ]]; then
-				patch --no-backup-if-mismatch -Np1 -d "comm" -i "$srcdir/$patch"
-			else
-				patch --no-backup-if-mismatch -Np1 -i "$srcdir/$patch"
-			fi
+			patch --no-backup-if-mismatch -Np1 -i "$srcdir/$patch"
 		fi
 	done
 
 	echo -n "$_google_api_key" >google-api-key
-	echo -n "$_mozilla_api_key" >mozilla-api-key
 
-	cat >./mozconfig <<-END
+	cat >../mozconfig <<-END
 		ac_add_options --enable-application=comm/mail
 		mk_add_options MOZ_OBJDIR=${PWD@Q}/obj
 
@@ -134,15 +109,17 @@ prepare() {
 		ac_add_options --with-wasi-sysroot=/usr/share/wasi-sysroot
 
 		# Branding
-		ac_add_options --enable-official-branding
+		ac_add_options --with-branding=comm/mail/branding/$_tb_theme
 		ac_add_options --enable-update-channel=release
 		ac_add_options --with-distribution-id=org.archlinux
+		ac_add_options --with-app-name=$_pkgname
+		export MOZILLA_OFFICIAL=1
+		export MOZ_APP_REMOTINGNAME=$_pkgname
 		export MOZ_APP_PROFILE="mozilla/${_pkgname}"
 
 		# Keys
 		ac_add_options --with-google-location-service-api-keyfile=${PWD@Q}/google-api-key
 		ac_add_options --with-google-safebrowsing-api-keyfile=${PWD@Q}/google-api-key
-		ac_add_options --with-mozilla-api-keyfile=${PWD@Q}/mozilla-api-key
 
 		# System libraries
 		ac_add_options --with-system-nspr
@@ -164,15 +141,16 @@ prepare() {
 if [[ -n $_SCCACHE ]]; then
 	echo 'ac_add_options --with-ccache=sccache' >> ../mozconfig
 fi
+
+if [[ $_tb_theme == 'thunderbird' ]]; then
+	echo 'ac_add_options --enable-official-branding' >> ../mozconfig
+fi
 }
 
 build() {
-	cd $_pkgname-$pkgver
+	cd "$_tb_srcname"
 
-	# The correct Rust version for thunderbird 115 is 1.70.0
-	# packed_simd no longer builds with 1.78.0, but patched
-	export RUSTUP_TOOLCHAIN=1.77
-
+	export RUSTUP_TOOLCHAIN=1.78
 	export MACH_BUILD_PYTHON_NATIVE_PACKAGE_SOURCE=none
 	export MOZBUILD_STATE_PATH="$srcdir/mozbuild"
 	export MOZ_NOSPAM=1
@@ -183,9 +161,17 @@ build() {
 	CFLAGS="${CFLAGS/_FORTIFY_SOURCE=3/_FORTIFY_SOURCE=2}"
 	CXXFLAGS="${CXXFLAGS/_FORTIFY_SOURCE=3/_FORTIFY_SOURCE=2}"
 
-	./mach configure
-	./mach build
-	#./mach buildsymbols
+	# Breaks compilation since https://bugzilla.mozilla.org/show_bug.cgi?id=1896066
+	CFLAGS="${CFLAGS/-fexceptions/}"
+	CXXFLAGS="${CXXFLAGS/-fexceptions/}"
+
+	# LTO needs more open files
+	ulimit -n 4096
+
+	cat >.mozconfig ../mozconfig - <<-END
+		ac_add_options --enable-lto=cross,thin
+	END
+	./mach build --priority normal
 }
 
 package() {
@@ -193,9 +179,8 @@ package() {
 	local vendordir="$pkgdir/usr/lib/$_pkgname/defaults/pref/"
 	local distdir="$pkgdir/usr/lib/$_pkgname/distribution/"
 	local nssckbi="$pkgdir/usr/lib/$_pkgname/libnssckbi.so"
-	local i theme=$_pkgname
 
-	cd $_pkgname-$pkgver
+	cd "$_tb_srcname"
 	DESTDIR="$pkgdir" ./mach install
 
 	# Distribution
@@ -238,18 +223,18 @@ package() {
 	done
 
 	install -Dvm644 <(
-		sed '/^<rect/d' comm/mail/branding/$theme/content/about-logo.svg # Make svg transparent
+		sed '/^<rect/d' comm/mail/branding/$_tb_theme/content/about-logo.svg # Make svg transparent
 	) "$pkgdir/usr/share/icons/hicolor/scalable/apps/$desktopid.svg"
 	install -Dvm644 <(
-		sed '/^<rect/d' comm/mail/branding/$theme/TB-symbolic.svg # Make svg transparent
+		sed '/^<rect/d' comm/mail/branding/$_tb_theme/TB-symbolic.svg # Make svg transparent
 	) "$pkgdir/usr/share/icons/hicolor/symbolic/apps/$desktopid-symbolic.svg"
 
 	# Metainfo
 	install -Dvm644 /dev/stdin "$pkgdir/usr/share/metainfo/$desktopid.metainfo.xml" < <(\
-		RELEASE_NOTES_URL="https://www.${_pkgname}.net/en-US/${_pkgname}/${pkgver}/releasenotes/" \
+		RELEASE_NOTES_URL="https://www.${_pkgname}.net/en-US/${_pkgname}/${pkgver}esr/releasenotes/" \
 		MANIFEST_URL="https://aur.archlinux.org/cgit/aur.git/tree/PKGBUILD?h=$pkgname" \
 		VERSION=$pkgver DATE=$(date +%Y-%m-%d) envsubst < <(\
-			sed "s|org.mozilla.Thunderbird|$desktopid|g" \
+			sed "s|org\.mozilla\.Thunderbird|$desktopid|g" \
 				comm/taskcluster/docker/tb-flatpak/org.mozilla.Thunderbird.appdata.xml.in)\
 	)
 
@@ -261,7 +246,7 @@ package() {
 	# Desktop
 	install -Dvm755 /dev/stdin "$pkgdir/usr/share/applications/$desktopid.desktop" < <(\
 		sed -e "s|Exec=thunderbird|Exec=/usr/bin/$_pkgname|g" \
-			-e "s|Icon=org.mozilla.Thunderbird|Icon=$desktopid|g" \
+			-e "s|Icon=.*\$|Icon=$desktopid|g" \
 			-e "s|StartupWMClass=thunderbird|StartupWMClass=$_pkgname|" \
 			"$srcdir/$desktopid.desktop"\
 	)
@@ -271,7 +256,7 @@ package() {
 		#!/usr/bin/env sh
 		export MOZ_APP_LAUNCHER="\$0" # For $_pkgname can correctly set itself as the default application
 		export MOZ_DESKTOP_FILE_NAME=$desktopid # https://bugzilla.mozilla.org/show_bug.cgi?id=1438051
-		exec /usr/lib/$_pkgname/$_pkgname "\$@"
+		exec /usr/lib/$_pkgname/$_pkgname --name $desktopid "\$@"
 
 	END
 
@@ -279,5 +264,11 @@ package() {
 	# https://bugzilla.mozilla.org/show_bug.cgi?id=658850
 	ln -srfv "$pkgdir/usr/lib/$_pkgname/$_pkgname" "$pkgdir/usr/lib/$_pkgname/$_pkgname-bin"
 }
+
+sha1sums=('21a167582e10d2f63917209b87958be29ff14829'
+          'SKIP'
+          '9788a6edefd4d34d25788f2914eb3b096690d2b7'
+          '3fcb94ed04ece9c8cd511573a9db8fc2613f57bd'
+          '4f9856b9882dd0e20ad15c2162352f8a685d71ba')
 
 # vim:set sw=2 sts=-1 et:

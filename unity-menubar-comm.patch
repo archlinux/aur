@@ -1,0 +1,27 @@
+diff --git a/comm/calendar/base/content/dialogs/calendar-event-dialog.xhtml b/comm/calendar/base/content/dialogs/calendar-event-dialog.xhtml
+--- a/comm/calendar/base/content/dialogs/calendar-event-dialog.xhtml
++++ b/comm/calendar/base/content/dialogs/calendar-event-dialog.xhtml
+@@ -201,7 +201,8 @@
+       >
+         <!-- Menubar -->
+         <toolbar type="menubar">
+-          <menubar id="event-menubar">
++          <!-- for some reason, this doesn't work with the global menu -->
++          <menubar id="event-menubar" _moz-menubarkeeplocal="true">
+             <!-- Item menu -->
+             <!-- These 2 Strings are placeholders, values are set at runtime -->
+             <menu label="Item" accesskey="I" id="item-menu">
+
+diff --git a/comm/mail/extensions/openpgp/content/ui/enigmailKeyManager.xhtml b/comm/mail/extensions/openpgp/content/ui/enigmailKeyManager.xhtml
+--- a/comm/mail/extensions/openpgp/content/ui/enigmailKeyManager.xhtml
++++ b/comm/mail/extensions/openpgp/content/ui/enigmailKeyManager.xhtml
+@@ -81,7 +81,8 @@
+         type="menubar"
+         style="margin-inline: -8px -10px; margin-top: -8px"
+       >
+-        <menubar id="main-menubar">
++        <!-- for some reason, this doesn't work with the global menu -->
++        <menubar id="main-menubar" _moz-menubarkeeplocal="true">
+           <menu id="menu_File" data-l10n-id="openpgp-key-man-file-menu">
+             <menupopup id="menu_FilePopup" onpopupshowing="enigmailKeyMenu();">
+               <menuitem
