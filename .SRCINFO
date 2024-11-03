@@ -1,6 +1,6 @@
 pkgbase = pixelflasher-bin
 	pkgdesc = Pixel phone flashing GUI utility with features.
-	pkgver = 7.5.0.0
+	pkgver = 7.6.0.0
 	pkgrel = 1
 	url = https://github.com/badabing2005/PixelFlasher
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = pixelflasher-bin
 	provides = pixelflasher
 	conflicts = pixelflasher
 	options = !strip
-	source = PixelFlasher-7.5.0.0::https://github.com/badabing2005/PixelFlasher/releases/download/v7.5.0.0/PixelFlasher_Ubuntu_22_04
+	source = PixelFlasher-7.6.0.0::https://github.com/badabing2005/PixelFlasher/releases/download/v7.6.0.0/PixelFlasher_Ubuntu_22_04
 	source = PixelFlasher.desktop
 	source = PixelFlasher.png
 	sha256sums = cd112132db15dc274c29ed87e1f0efd02ab80c8636aa387d7afd4e6a00bc2879
