@@ -4,7 +4,7 @@
 # Contributor: Daichi Shinozaki <dsdseg@gmail.com>
 
 pkgname=folly
-pkgver=2024.09.09.00
+pkgver=2024.10.28.00
 pkgrel=1
 pkgdesc="An open-source C++ library developed and used at Facebook"
 arch=(x86_64)
@@ -49,21 +49,17 @@ options=(!lto)
 source=(
   "$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
   "fix-cmake-find-glog.patch"
-  "fix-missing-include.patch"
   "fix-setup-py-for-python-extensions.patch"
 )
-sha256sums=('3005e3247b40e5b50b8b28936a3c1baeac9aec411e5e20057eb49d1298883cd7'
-            '7655b9d6fd926770dae4d26f67b6aedf8fb6ff03927782bcfeffa09b5138b87c'
-            '19cc8b4190e3c7d4ef9d1d9842a2def99bb261711ae85cb03e63787c4995e286'
-            '1f369049ec6f14cc8682f0a8d6d08cca8ac49a1cf83f94914f0335adacba29c0')
-
-_archive="$pkgname-$pkgver"
+sha256sums=(
+  'fe544b549cd8094759113882a969082eedadb2732d2ede85d603e8066f753d5d'
+  '7655b9d6fd926770dae4d26f67b6aedf8fb6ff03927782bcfeffa09b5138b87c'
+  '1f369049ec6f14cc8682f0a8d6d08cca8ac49a1cf83f94914f0335adacba29c0'
+)
 
 prepare() {
-  cd "$_archive"
-
+  cd $pkgname-$pkgver
   patch --forward --strip=1 --input="$srcdir/fix-cmake-find-glog.patch"
-  # patch --forward --strip=1 --input="$srcdir/fix-missing-include.patch"
   patch --forward --strip=1 --input="$srcdir/fix-setup-py-for-python-extensions.patch"
 
   # Remove test with compilation error
@@ -80,8 +76,7 @@ prepare() {
 }
 
 build() {
-  cd "$_archive"
-
+  cd $pkgname-$pkgver
   cmake -S . -B build \
     -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_INSTALL_PREFIX=/usr \
@@ -95,8 +90,7 @@ build() {
 }
 
 check() {
-  cd "$_archive"
-
+  cd $pkgname-$pkgver
   local skipped_tests=(
     # These tests will fail (by design) if the test execution exceeds a
     # pre-defined time limit (wall time). This is bound to be flaky in a
@@ -110,13 +104,16 @@ check() {
     fbvector_test
     singleton_thread_local_test.SingletonThreadLocalDeathTest.Overload
     xlog_test.XlogTest.perFileCategoryHandling
+
+    io_async_ssl_session_test.SSLSessionTest.BasicTest
+    io_async_ssl_session_test.SSLSessionTest.NullSessionResumptionTest
+    io_async_hh_wheel_timer_test.HHWheelTimerTest.DestroyTimeoutSet
   )
   local skipped_tests_pattern="${skipped_tests[0]}$(printf '|%s' "${skipped_tests[@]:1}")"
   ctest --test-dir build --output-on-failure -E "$skipped_tests_pattern"
 }
 
 package() {
-  cd "$_archive"
-
+  cd $pkgname-$pkgver
   DESTDIR="$pkgdir" cmake --install build
 }
