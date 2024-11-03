@@ -1,0 +1,4 @@
+[shq]
+source = "git"
+git = "https://codeberg.org/tippfehlr/shq.git"
+prefix = "v"
