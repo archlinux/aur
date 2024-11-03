@@ -1,7 +1,7 @@
 pkgbase = untitled-i18n
 	pkgdesc = Next generation C/C++ internationalisation library
 	pkgver = 1.4.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/MadLadSquad/UntitledI18N
 	arch = x86_64
 	arch = aarch64
@@ -9,6 +9,7 @@ pkgbase = untitled-i18n
 	makedepends = cmake
 	makedepends = make
 	makedepends = yaml-cpp
+	makedepends = pkgconf
 	depends = gcc-libs
 	depends = glibc
 	depends = pkgconf

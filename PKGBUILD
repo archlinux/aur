@@ -4,7 +4,7 @@ PKG_REAL_NAME="UntitledI18N"
 
 pkgname=untitled-i18n
 pkgver=1.4.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Next generation C/C++ internationalisation library"
 url="https://github.com/MadLadSquad/${PKG_REAL_NAME}"
 arch=(x86_64 aarch64)
