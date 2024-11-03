@@ -2,7 +2,7 @@
 pkgname=streamcontroller
 _pkgname=${pkgname%-git}
 _reponame=StreamController
-pkgver=r1594.50b1ca6
+pkgver=r1620.2b5e328
 pkgrel=1
 pkgdesc="An elegant Linux app for the Elgato Stream Deck with support for plugins"
 arch=('any')
