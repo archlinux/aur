@@ -8,7 +8,7 @@ _pkgbase='logisim-evolution'
 pkgbase="${_pkgbase}-git"
 pkgname="${_pkgbase}-git"
 pkgver=3.9.0+52.r5043.20241103.6e46e5431
-pkgrel=2
+pkgrel=3
 provides=("${_pkgbase}=${pkgver}")
 conflicts=("${_pkgbase}")
 pkgdesc='An educational tool for designing and simulating digital logic circuits.'
@@ -33,14 +33,12 @@ source=(
   'logisim-evolution.xml'
   'logisim-evolution.desktop'
   'logisim-evolution.sh'
-  "rsyntaxtextarea_v3.5.1_to_v3.5.2.patch::https://github.com/logisim-evolution/logisim-evolution/pull/2084.patch"
 )
 sha256sums=(
   'SKIP'                                                              # Main git source
   'f90c3709748af806a33c14e81c8bf91dc06c3a4f58fe00cfe14a8f1842e09dec'  # logisim-evolution.xml
   '086851b07012f669743080dc4f059cf7727b19200384070852b34e142533385b'  # logisim-evolution.desktop
   '35b6b4da515f1c5619d35bbedc1469e5ec5b823bf486efdfbb5b705b65e10656'  # logisim-evolution.sh
-  '46eaaa0b2fdf018ae7e1f48b46234a46636bd04872e131826da87be1468b1862'  # rsyntaxtextarea_v3.5.1_to_v3.5.2.patch
 )
 
 prepare() {
