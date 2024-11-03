@@ -1,6 +1,6 @@
 pkgbase = raidrivecli
 	pkgdesc = Use cloud storage services as if they were USB drives on your computer
-	pkgver = 2024.9.27.4
+	pkgver = 2024.9.27.6
 	pkgrel = 1
 	url = https://www.raidrive.com
 	arch = x86_64
@@ -10,13 +10,13 @@ pkgbase = raidrivecli
 	depends = glibc
 	depends = sh
 	depends = zlib
-	noextract = raidrivecli-2024.9.27.4-x86_64.deb
-	noextract = raidrivecli-2024.9.27.4-aarch64.deb
+	noextract = raidrivecli-2024.9.27.6-x86_64.deb
+	noextract = raidrivecli-2024.9.27.6-aarch64.deb
 	options = !debug
 	options = !strip
-	source_x86_64 = raidrivecli-2024.9.27.4-x86_64.deb::https://app.raidrive.com/deb/pool/main/r/raidrive/raidrive_2024.9.27.4-linux_amd64.deb
-	sha256sums_x86_64 = 0a414f457ac1d259638aa6c67ef829f1d92cdaf6b5caf98acc64a0011617b0ad
-	source_aarch64 = raidrivecli-2024.9.27.4-aarch64.deb::https://app.raidrive.com/deb/pool/main/r/raidrive/raidrive_2024.9.27.4-linux_arm64.deb
-	sha256sums_aarch64 = ca60bda12ace57b699ccb91753a302db3a23502398d04b248c59f861c6d976f1
+	source_x86_64 = raidrivecli-2024.9.27.6-x86_64.deb::https://app.raidrive.com/deb/pool/main/r/raidrive/raidrive_2024.9.27.6-linux_amd64.deb
+	sha256sums_x86_64 = a0aa845fa4ab77c5066d989d402b03ffa32ecfcad2dec42bb102f8deb1af5e37
+	source_aarch64 = raidrivecli-2024.9.27.6-aarch64.deb::https://app.raidrive.com/deb/pool/main/r/raidrive/raidrive_2024.9.27.6-linux_arm64.deb
+	sha256sums_aarch64 = 76c65b2bf421641c9f273b5fe7d742818e0769c4767a97e86b7e834b47faea8e
 
 pkgname = raidrivecli
