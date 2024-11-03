@@ -1,5 +1,5 @@
 pkgname=swaywsr-git
-pkgver=1.0.0.r7.g7f022ce
+pkgver=1.4.0.r42.g193c4cb
 pkgrel=1
 pkgdesc='sway workspace renamer'
 arch=('x86_64')
@@ -13,7 +13,7 @@ sha1sums=('SKIP')
 
 pkgver() {
   cd "${pkgname%-*}"
-  echo $(grep '^version =' Cargo.toml|head -n1|cut -d\" -f2).r$(git rev-list --count HEAD).g$(git describe --always)
+  git describe --long --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
