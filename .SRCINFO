@@ -1,6 +1,6 @@
 pkgbase = nono
 	pkgdesc = Omron LUNA-I/LUNA-88K, Sharp X68030, and NEWS NWS-1750 emulator
-	pkgver = 0.7.3
+	pkgver = 1.0.0
 	pkgrel = 1
 	url = http://www.pastel-flower.jp/~isaki/nono
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = nono
 	depends = libkqueue
 	depends = termcap
 	depends = wxgtk3
-	source = http://www.pastel-flower.jp/~isaki/nono/archive/nono-0.7.3.tar.gz
-	b2sums = 7939fda3d871bb2dd26cf20117c658014f8136f33466026beb416e523abf8bc940ec2be6b84fbb87c181a0b5b8354e2079d5ccd6ce3dd706b1fad47f55168043
+	source = http://www.pastel-flower.jp/~isaki/nono/archive/nono-1.0.0.tar.gz
+	b2sums = a58b1888743bcf565d289c50afac3a658d678ffb3e5d2aaed5d6e0188471cf4ca0ff9c9bda6553ef7b0ae9ff8250db35cd123acaa973fefa9ff239e89c7318ec
 
 pkgname = nono
