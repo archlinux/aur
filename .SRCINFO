@@ -1,6 +1,6 @@
 pkgbase = ffx264
 	pkgdesc = Small script to encode to H.264/AVC video using FFmpeg and libx264
-	pkgver = 4.2.4
+	pkgver = 4.2.5
 	pkgrel = 1
 	url = https://ffx264.teambelgium.net/
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = ffx264
 	depends = bc
 	optdepends = mplayer: for crop preview
 	optdepends = gpac: for MP4 cover art
-	source = https://downloads.sourceforge.net/project/ffx264/ffx264-4.2.4.tar.gz
-	sha256sums = bf5ccf52be5d6eae2113d3e150657ab41440aee620338640bcc5145e743bbd0a
+	source = https://downloads.sourceforge.net/project/ffx264/ffx264-4.2.5.tar.gz
+	sha256sums = ba9fcfedcf25e6db5b7b24e59518443e65b44cec3abb5d681460d634b158f347
 
 pkgname = ffx264
