@@ -1,6 +1,6 @@
 pkgname=openmodelica
 pkgver=1.24.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Open-source Modelica-based modeling and simulation environment"
 url="https://www.openmodelica.org"
 _giturl="https://github.com/OpenModelica/OpenModelica.git"
@@ -19,6 +19,8 @@ prepare() {
 
   # Library index file //.openmodelica/libraries/index.json doesn't exist
   curl -L https://github.com/OpenModelica/OpenModelica/pull/13078.patch | patch -p1
+
+  sed -i "s|Qt5|Qt6|g" OMSens_Qt/CMakeLists.txt
 }
 
 build() {
