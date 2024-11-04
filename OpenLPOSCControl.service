@@ -1,0 +1,8 @@
+[Unit]
+Description=OpenLP OSC Control Service
+
+[Service]
+ExecStart=/usr/local/bin/OpenLPOSCControl
+
+[Install]
+WantedBy=default.target
