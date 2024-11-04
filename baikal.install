@@ -1,7 +1,8 @@
 # Maintainer: Florian Bruhin (The Compiler) <archlinux.org@the-compiler.org>
 
 post_install() {
-  echo "Please add /var/lib/baikal to open_basedir in your /etc/php/php.ini."
+  echo "Please add /var/lib/baikal to open_basedir in your php.ini (e.g."
+  echo "/etc/php/php.ini or /etc/php-legacy/php.ini)."
   echo
   echo "You also need to set up your webserver for baikal, there are example"
   echo "configs for Apache/nginx at http://sabre.io/baikal/install/."
@@ -11,7 +12,8 @@ post_install() {
 
 post_upgrade() {
   if [[ $(vercmp $2 '0.2.7-5') == -1 ]]; then
-    echo "Please add /var/lib/baikal to open_basedir in your /etc/php.ini."
+    echo "Please add /var/lib/baikal to open_basedir in your php.ini (e.g."
+    echo "/etc/php/php.ini or /etc/php-legacy/php.ini)."
   fi
   echo "Navigate to your baikal admin interface to complete the upgrade."
 }
