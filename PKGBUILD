@@ -1,0 +1,47 @@
+# Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
+pkgname=text-diff-view-bin
+_pkgname="Text Diff View"
+pkgver=1.3.1
+_electronversion=31
+pkgrel=1
+pkgdesc="Multi-platform text diff (text comparison) view electron app and web. Text-only.(Prebuilt version.Use system-wide electron.)"
+arch=('x86_64')
+url="https://sandbox.saino.me/text-diff-view/"
+_ghurl="https://github.com/kaishuu0123/text-diff-view"
+license=('MIT')
+conflicts=("${pkgname%-bin}")
+prodives=("${pkgname%-bin}=${pkgver}")
+depends=(
+    "electron${_electronversion}"
+)
+makedepends=(
+    'fuse2'
+)
+source=(
+    "${pkgname%-bin}-${pkgver}.AppImage::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-1.3.0.AppImage"
+    "LICENSE-${pkgver}::https://raw.githubusercontent.com/kaishuu0123/text-diff-view/v${pkgver}/LICENSE"
+    "${pkgname%-bin}.sh"
+)
+sha256sums=('7a4e4b6d5d3ff6c0116457e43b1365e1a108cced858ff0519c09d535a944e82f'
+            '2db6d2f8319742e183737299159ca2a72096629542c080492f13770b7d305c3b'
+            '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
+build() {
+    sed -e "
+        s/@electronversion@/${_electronversion}/g
+        s/@appname@/${pkgname%-bin}/g
+        s/@runname@/app.asar/g
+        s/@cfgdirname@/${pkgname%-bin}/g
+        s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
+    " -i "${srcdir}/${pkgname%-bin}.sh"
+    chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
+    "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
+    sed -i "s/AppRun --no-sandbox/${pkgname%-bin}/g" "${srcdir}/squashfs-root/${pkgname%-bin}.desktop"
+}
+package() {
+    install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
+    install -Dm644 "${srcdir}/squashfs-root/resources/app.asar" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
+    cp -Pr --no-preserve=ownership "${srcdir}/squashfs-root/resources/app.asar.unpacked" "${pkgdir}/usr/lib/${pkgname%-bin}"
+    install -Dm644 "${srcdir}/squashfs-root/usr/share/icons/hicolor/0x0/apps/${pkgname%-bin}.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-bin}.png"
+    install -Dm644 "${srcdir}/squashfs-root/${pkgname%-bin}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
+    install -Dm644 "${srcdir}/LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+}
