@@ -1,3 +1,4 @@
+#Maintainer: memchr
 # FIXME: arabic tashkeel library path
 pkgname=piper-tts-git
 pkgver=2023.11.14.2.r29.e507877
@@ -15,6 +16,7 @@ depends=(
   gcc
 )
 makedepends=(
+  git
   cmake
   make
 )
