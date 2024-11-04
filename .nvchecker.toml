@@ -1,0 +1,4 @@
+[libloot]
+source = "git"
+git = "https://github.com/loot/libloot.git"
+prefix = "v"
