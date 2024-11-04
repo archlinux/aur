@@ -5,8 +5,8 @@
 # Contributor: Sven Schulz <omee@archlinux.de>
 
 pkgname=ssldump
-pkgver=1.8
-pkgrel=2
+pkgver=1.9
+pkgrel=1
 pkgdesc='SSLv3/TLS network protocol analyzer'
 url=https://github.com/adulau/ssldump
 license=(BSD)
@@ -14,7 +14,7 @@ arch=(x86_64)
 depends=(json-c libnet libpcap openssl)
 makedepends=(cmake ninja)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/adulau/ssldump/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('fa1bb14034385487cc639fb32c12a5da0f8fbfee4603f4e101221848e46e72b3')
+sha256sums=('c81ce58d79b6e6edb8d89822a85471ef51cfa7d63ad812df6f470b5d14ff6e48')
 
 prepare() {
   sed -i 's|/usr/local|/usr|' $pkgname-$pkgver/CMakeLists.txt
