@@ -3,8 +3,8 @@
 _npmname=concurrently
 _npmalias=conc
 pkgname=nodejs-${_npmname}
-pkgver=9.0.1
-pkgrel=2
+pkgver=9.1.0
+pkgrel=1
 pkgdesc="Run multiple commands concurrently"
 arch=(any)
 url="https://github.com/open-cli-tools/concurrently"
@@ -14,7 +14,7 @@ depends=('nodejs')
 makedepends=('npm')
 source=(http://registry.npmjs.org/$_npmname/-/$_npmname-$pkgver.tgz)
 noextract=($_npmname-$pkgver.tgz)
-sha256sums=('c9f5d8cfb813ab049e1e01f10719832049b6f00e4df3658da27590f43f185fb9')
+sha256sums=('a1d84591095b8528ff74e7b47a4e85adc5164a06035b2ada78bdcda8051f441b')
 
 package() {
 	npm install -g --user root --prefix "$pkgdir/usr" "$srcdir/$_npmname-$pkgver.tgz"
