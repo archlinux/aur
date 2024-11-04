@@ -1,7 +1,7 @@
 pkgbase = input-devices-support-gnome
-	pkgdesc = Meta package for input devices support.
+	pkgdesc = Metapkg for commonly used input devices such as fingerprint sensors or Wacom tablets with more native integration with GNOME.
 	pkgver = 1.0.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wiki.archlinux.org/index.php/Category:Input_devices
 	install = input-devices-support-gnome.install
 	arch = any
