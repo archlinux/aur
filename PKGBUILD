@@ -2,7 +2,7 @@
 
 pkgname=python-gersemi
 _name=${pkgname#"python-"}
-pkgver=0.12.1
+pkgver=0.17.0
 pkgrel=1
 pkgdesc="A formatter to make your CMake code the real treasure"
 arch=('any')
@@ -16,7 +16,7 @@ depends=(
 )
 makedepends=('python-setuptools')
 source=("${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('a4c92c1eed5f94b81ed96d15a52417bfeb73ffb6b79b5a73dd1b4b7a104c6f1d')
+sha256sums=('a419371827b3b8208ea83b4a9c6973889ee2bbc91376eee38584d8507d75ff61')
 
 build() {
   cd $_name-$pkgver
@@ -27,3 +27,4 @@ package() {
   cd $_name-$pkgver
   python setup.py install --root="$pkgdir" --optimize=1
 }
+
