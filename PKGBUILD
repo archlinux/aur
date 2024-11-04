@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=jm-desktop-bin
-pkgver=1.5.0
+pkgver=1.6.1
 _electronversion=33
 pkgrel=1
 pkgdesc="A jm comic desktop app by react + electron.Prebuilt version.Use system-wide electron.一个禁漫的第三方客户端"
@@ -21,7 +21,7 @@ makedepends=(
 source=(
     "${pkgname%-bin}-${pkgver}.AppImage::${url}/releases/download/v${pkgver}/${pkgname%-bin}-Linux-${pkgver}.AppImage"
 )
-sha256sums=('5624e01ee80eecaa545ce9832ab4f0686016a3faf7f5b2f44561ae439279941d')
+sha256sums=('6330238bd7413a59991c54f3e683be922f964a377715061f37cf5e05eebb82b9')
 build() {
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
