@@ -1,0 +1,14 @@
+pkgbase = python-snapcast
+	pkgdesc = Python bindings for snapcast
+	pkgver = 2.3.6
+	pkgrel = 1
+	url = https://github.com/happyleavesaoc/python-snapcast/
+	arch = any
+	license = custom:MIT License
+	makedepends = python-setuptools
+	depends = python
+	source = https://files.pythonhosted.org/packages/31/8c/d87c2c551f84d8488513eb43d426f30cb89b8b658321fe77d5376e718cfd/snapcast-2.3.6.tar.gz
+	sha256sums = 002e99231a65377c5a2cbb6bef0de6d1eeb9373708ff32cf53ac3dfc9affcdf0
+
+pkgname = python-snapcast
+	depends = python
