@@ -1,13 +1,16 @@
 #!/usr/bin/env bash
 
+## need install yq and jq
+
 pkgbase=$(awk -F= '/pkgbase=/{print $2}' PKGBUILD)
 pkgver=$(awk -F= '/pkgver=/{print $2}' PKGBUILD)
 tmp_pkgname=$(mktemp)
 tmp_pkgdescs=$(mktemp)
 tmp_urls=$(mktemp)
 tmp_depends=$(mktemp)
+tmp_optdepends=$(mktemp)
 
-trap "rm $tmp_pkgname $tmp_pkgdescs $tmp_urls $tmp_depends" EXIT 
+trap "rm $tmp_pkgname $tmp_pkgdescs $tmp_urls $tmp_depends $tmp_optdepends" EXIT 
 
 _get_dirname() {
     case $1 in
@@ -32,7 +35,7 @@ _gen_pkgname() {
 _gen_pkgdescs() {
     for pkg in $pkgs; do
         dirname=$(_get_dirname "$pkg")
-        pkgdesc=$(awk -F '"' '/description = /{print $2}' "src/${pkgbase}-${pkgver}/${dirname}${pkg}/pyproject.toml")
+        pkgdesc=$(yq eval -o=json "src/${pkgbase}-${pkgver}/${dirname}${pkg}/pyproject.toml" | jq -r '.project.description' )
         echo "    \"$pkgdesc\""
     done
     echo ")"
@@ -51,7 +54,34 @@ _gen_urls() {
 _gen_depends() {
     for pkg in $pkgs; do
         dirname=$(_get_dirname "$pkg")
-        depends=($(awk '/dependencies *= *\[/,/\]/' "src/${pkgbase}-${pkgver}/${dirname}${pkg}/pyproject.toml" | awk -F '"' '{print $2}' | sed '/^$/d' | awk -F ' |=|~|>' '{print $1}' | sed 's|^|python-|' | sed 's|python-python-|python-|' | sort))
+        depends=($(
+            yq eval -o=json "src/${pkgbase}-${pkgver}/${dirname}${pkg}/pyproject.toml" | \
+            jq -r '.project.dependencies.[]' 2>/dev/null | \
+            grep -oP '^([a-zA-Z0-9_-]+)' | \
+            tr 'A-Z' 'a-z' | \
+            sed 's|^|python-|' | \
+            sed 's|python-python|python|' | \
+            sort -u
+        ))
+        echo "    \""${depends[@]}"\""
+    done
+    echo ")"
+}
+
+## _optdepends
+_gen_optdepends() {
+    for pkg in $pkgs; do
+        dirname=$(_get_dirname "$pkg")
+        depends=($(
+            yq eval -o=json "src/${pkgbase}-${pkgver}/${dirname}${pkg}/pyproject.toml" | \
+            jq -r '.project."optional-dependencies".[].[]' 2>/dev/null | \
+            grep -oP '^([a-zA-Z0-9_-]+)' | \
+            tr 'A-Z' 'a-z' | \
+            sed 's|^|python-|' | \
+            sed 's|-python||g' | \
+            sed 's|_|-|g' | \
+            sort -u
+        ))
         echo "    \""${depends[@]}"\""
     done
     echo ")"
@@ -63,15 +93,18 @@ _gen_pkgname > $tmp_pkgname
 _gen_pkgdescs > $tmp_pkgdescs
 _gen_urls > $tmp_urls
 _gen_depends > $tmp_depends
+_gen_optdepends > $tmp_optdepends
 
 sed -e "/^pkgname=(/,/)/c\pkgname=(" \
     -e "/^_pkgdescs=(/,/)/c\_pkgdescs=(" \
     -e "/^_urls=(/,/)/c\_urls=(" \
     -e "/^_depends=(/,/)/c\_depends=(" \
+    -e "/^_optdepends=(/,/)/c\_optdepends=(" \
     -i PKGBUILD
 
 sed -e "/^pkgname=/r $tmp_pkgname" \
     -e "/^_pkgdescs=/r $tmp_pkgdescs" \
     -e "/^_urls=/r $tmp_urls" \
     -e "/^_depends=/r $tmp_depends" \
+    -e "/^_optdepends=/r $tmp_optdepends" \
     -i PKGBUILD
