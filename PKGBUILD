@@ -4,14 +4,16 @@
 # Contributor: portix <portix at gmx.net>
 
 pkgname=srandrd-git
-pkgver=v0.6.0.r10.g4e4b754
+pkgver=v0.6.3.r0.g640f3e3
 pkgrel=1
 pkgdesc="Simple randr daemon that reacts to monitor hotplug events" 
 arch=('i686' 'x86_64')
 url="https://github.com/jceb/srandrd"
 license=('custom:MIT/X')
-depends=('libxrandr')
+depends=('libxrandr' 'libxinerama' 'libx11')
 provides=('srandrd')
+conflicts=('srandrd')
+makedepends=('git')
 source=("${pkgname%-git}::git+${url}.git#branch=master")
 md5sums=('SKIP')
 
