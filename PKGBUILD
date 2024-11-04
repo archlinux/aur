@@ -1,10 +1,10 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=atmos-weather-bin
 _pkgname="Atmos Weather"
-pkgver=2.2.0
+pkgver=2.2.1
 _electronversion=29
 pkgrel=1
-pkgdesc="A lightweight weather app for receiving alerts and forecasts in the US."
+pkgdesc="A lightweight weather app for receiving alerts and forecasts in the US.Prebuilt version.Use system-wide electron."
 arch=(
     'aarch64'
     'armv7h'
@@ -22,17 +22,18 @@ source=("${pkgname%-bin}.sh")
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_arm64.deb")
 source_armv7h=("${pkgname%-bin}-${pkgver}-armv7h.deb::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_armv7l.deb")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb")
-sha256sums=('2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
-sha256sums_aarch64=('95dc820b871ef0b5515f2f49fe4e24b451ed4859733c944ae1ebc8443b36bf31')
-sha256sums_armv7h=('497af43dd7a441b18641b55d51b381d489c5792dc87acebb0dba6b622bc4a91e')
-sha256sums_x86_64=('4c1c670a63b8f359d345988a220db71bd99e9d0ecda0dfae2354bf721fa07561')
+sha256sums=('291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
+sha256sums_aarch64=('3ab3a1a1871ddb40792e4f13d062222dd2972fc820e2d90ca4d8aef6b9c54fd7')
+sha256sums_armv7h=('b4cd82811fd0dd84e0cb63d63419da3562bfb52d8267af837faaa35929795c41')
+sha256sums_x86_64=('6f047db3f1ea36915e7bef21060b4403797eb8e200a4ea7dffc4b87c0a00100c')
 build() {
-    sed -e "s|@electronversion@|${_electronversion}|g" \
-        -e "s|@appname@|${pkgname%-bin}|g" \
-        -e "s|@runname@|app.asar|g" \
-        -e "s|@cfgdirname@|${pkgname%-bin}|g" \
-        -e "s|@options@|env ELECTRON_OZONE_PLATFORM_HINT=auto|g" \
-        -i "${srcdir}/${pkgname%-bin}.sh"
+    sed -e "
+        s/@electronversion@/${_electronversion}/g
+        s/@appname@/${pkgname%-bin}/g
+        s/@runname@/app.asar/g
+        s/@cfgdirname@/${pkgname%-bin}/g
+        s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
+    " -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
     sed "s|\"/opt/${_pkgname}/${pkgname%-bin}\"|${pkgname%-bin}|g" -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
