@@ -3,8 +3,8 @@
 _appname=codium
 _pkgname="vs${_appname}"
 pkgname="${_pkgname}-electron-bin"
-pkgver=1.94.2.24286
-_electronversion=30
+pkgver=1.95.1.24307
+_electronversion=32
 pkgrel=1
 pkgdesc="VS Code without MS branding/telemetry/licensing.Prebuilt and System-wide Electron edition."
 arch=(
@@ -41,15 +41,15 @@ source=(
     "${pkgname%-bin}.js"
     "${pkgname%-bin}.sh"
 )
-source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${_ghurl}/releases/download/${pkgver}/codium_${pkgver}_arm64.deb")
-source_armv7h=("${pkgname%-bin}-${pkgver}-armv7h.deb::${_ghurl}/releases/download/${pkgver}/codium_${pkgver}_armhf.deb")
-source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${_ghurl}/releases/download/${pkgver}/codium_${pkgver}_amd64.deb")
+source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::${_ghurl}/releases/download/${pkgver}/codium-${pkgver}-el9.aarch64.rpm")
+source_armv7h=("${pkgname%-bin}-${pkgver}-armv7h.rpm::${_ghurl}/releases/download/${pkgver}/codium-${pkgver}-el9.armv7hl.rpm")
+source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${_ghurl}/releases/download/${pkgver}/codium-${pkgver}-el9.x86_64.rpm")
 sha256sums=('ed289092386002771285e3423f66f49af65ff918e1b667b517d977fa4fe1f057'
             '3ed94f3752e2695f64b6c5e9c40120837f463bfe55f330fd59a285c7d21f4bf2'
             '164bbaffe22f4ad43607f44a114528317c4d63592b88e911abadfa962443ac26')
-sha256sums_aarch64=('22452a82ec340b3b012daae0a6fce9012ed6bedecc6915185ed50eb61c22cfa6')
-sha256sums_armv7h=('750d1b695fd93b57c619cef9c49fcae3b458fa5fdcccbbfff6f8fab6467f9695')
-sha256sums_x86_64=('59462e1700d945ad7557af150caeda9ba61782ed9fafa74ea060f519819b9376')
+sha256sums_aarch64=('2fe8184771bb4baa6cd6c487746803993c9820f9de26ad5763ea4e22f0c687af')
+sha256sums_armv7h=('8e402c82232db09e3ba297cbe736ad1cf337e0f2a1c106941f0d2b516f5ef741')
+sha256sums_x86_64=('224110475799a12be7cc6fb042b670ef39aa0b5707adfa6ab6ae8bd15d268ddd')
 build() {
     sed -e "
         s/@electronversion@/${_electronversion}/g
@@ -58,7 +58,6 @@ build() {
         s/@cfgdirname@/${_pkgname}/g
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
     " -i "${srcdir}/${pkgname%-bin}.sh"
-    bsdtar -xf "${srcdir}/data."*
     sed -i "s/${_appname}.desktop/${pkgname%-bin}.desktop/g" "${srcdir}/usr/share/appdata/${_appname}.appdata.xml"
     sed -e "
         s/\/usr\/share\/${_appname}\/${_appname}/${pkgname%-bin}/g
@@ -74,6 +73,6 @@ package() {
     install -Dm644 "${srcdir}/usr/share/applications/${_appname}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
     install -Dm644 "${srcdir}/usr/share/pixmaps/${_pkgname}.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-bin}.png"
     install -Dm644 "${srcdir}/usr/share/bash-completion/completions/${_appname}" -t "${pkgdir}/usr/share/bash-completion/completions"
-    install -Dm644 "${srcdir}/usr/share/zsh/vendor-completions/_${_appname}" -t "${pkgdir}/usr/share/zsh/vendor-completions/"
+    install -Dm644 "${srcdir}/usr/share/zsh/site-functions/_${_appname}" -t "${pkgdir}/usr/share/zsh/vendor-completions/"
     install -Dm644 "${srcdir}/LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
