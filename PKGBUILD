@@ -1,5 +1,5 @@
 # Maintainer: Lukasz Pozarlik <lpozarlik@gmail.com>
-# Co-Maintainer: Martin Rys <rys.pw/contact>
+# Co-Maintainer: Martin Rys <https://rys.rs/contact> | Toss a coin on https://rys.rs/donate
 # Contributor: Carl George < arch at cgtx dot us >
 # Contributor: Duy Truong <jimreynold2nd@yahoo.com>
 # Contributor: Vyacheslav Konovalov <vyachkonovalov@protonmail.com>
@@ -7,8 +7,8 @@
 pkgname='python-jira'
 _pkgname='jira'
 pkgdesc='Python library to work with Jira APIs'
-pkgver=3.6.0
-pkgrel=4
+pkgver=3.9.1
+pkgrel=1
 url='https://github.com/pycontribs/jira'
 license=('BSD-2-Clause')
 arch=('any')
@@ -33,7 +33,7 @@ makedepends=(
 	'python-setuptools-scm'
 	'python-installer')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/pycontribs/jira/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('879cb1eb6a84b0c7c94cd3c80c7740fc1d3b88d45b2a5f6c8e599b349a77ca3b')
+sha256sums=('c5cf3fadf36c391d609e7e7dbf9af213acb4222d6674c7004d4037041ee529c6')
 
 build() {
 	cd "${srcdir}/jira-${pkgver}"
