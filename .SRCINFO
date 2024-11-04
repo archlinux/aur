@@ -11,6 +11,6 @@ pkgbase = python-stlib-plugins
 	depends = python>=3.9
 	depends = python-stlib
 	source = https://github.com/calendulish/stlib-plugins/archive/v1.2.4.tar.gz
-	sha256sums = 40919df797a09ae2f59e4a5c944c3c3af654e608d4cbbf929c1deae01fb7f825
+	sha256sums = 9f232396d8644a27dcd0d31d68b7865b0055f2e0e5e7c3288d1a32af80586683
 
 pkgname = python-stlib-plugins
