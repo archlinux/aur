@@ -107,8 +107,6 @@ function cameraDect() {
 
 function execApp() {
 	# Wayland is not available for now
-	# 	--ro-bind-try "${XDG_RUNTIME_DIR}/${WAYLAND_DISPLAY}" \
-	#			"${XDG_RUNTIME_DIR}/${WAYLAND_DISPLAY}" \
 	if [ -f /usr/lib/wechat-uos-qt/keyBlocker.so ]; then
 		if [ ! ${LD_PRELOAD} ]; then
 			echo "[Info] Key blocker enabled"
@@ -275,6 +273,10 @@ function execApp() {
 		--bind "${XDG_DOCUMENTS_DIR}"/WeChat \
 			"${HOME}/Shared Directory" \
 		--ro-bind-try "${XAUTHORITYpath}" "${XAUTHORITYpath}" \
+		--ro-bind-try "${XDG_RUNTIME_DIR}/${WAYLAND_DISPLAY}" \
+				"${XDG_RUNTIME_DIR}/${WAYLAND_DISPLAY}" \
+		--ro-bind-try "${XDG_RUNTIME_DIR}/${WAYLAND_DISPLAY}.lock" \
+				"${XDG_RUNTIME_DIR}/${WAYLAND_DISPLAY}.lock" \
 		--ro-bind /usr/lib/wechat-uos-qt/open \
 			/sandbox/dde-file-manager \
 		--ro-bind /usr/lib/wechat-uos-qt/open \
@@ -426,6 +428,34 @@ function execAppUnsafe() {
 		"${launchTarget}"
 }
 
+function questionFirstLaunch() {
+	if [ ! -f "${XDG_DATA_HOME}"/WeChat_Data/options/sandbox ]; then
+		if [[ "${LANG}" =~ 'zh_CN' ]]; then
+			zenity --title "初次启动" --icon=security-medium-symbolic --default-cancel --question --text="允许微信读取 / 修改所有个人数据?"
+		else
+			zenity --title "Welcome" --icon=security-medium-symbolic --default-cancel --question --text="Do you wish WeChat to access and modify all of your data?"
+		fi
+		if [[ $? = 0 ]]; then
+			export trashAppUnsafe=1
+			if [[ "${LANG}" =~ 'zh_CN' ]]; then
+				zenity --error --title "沙盒已禁用" --icon=security-low-symbolic --text "用户数据不再被保护"
+			else
+				zenity --error --title "Sandbox disabled" --icon=security-low-symbolic --text "User data is potentially compromised"
+			fi
+		else
+			echo "Request canceled by user"
+			mkdir -p "${XDG_DATA_HOME}"/WeChat_Data/options
+			touch "${XDG_DATA_HOME}"/WeChat_Data/options/sandbox
+			return 0
+		fi
+		mkdir -p "${XDG_DATA_HOME}"/WeChat_Data/options
+		echo disableSandbox >>"${XDG_DATA_HOME}"/WeChat_Data/options/sandbox
+	fi
+	if [[ $(cat "${XDG_DATA_HOME}"/WeChat_Data/options/sandbox) =~ "disableSandbox" ]]; then
+		export trashAppUnsafe=1
+	fi
+}
+
 function disableSandbox() {
 	if [[ $@ =~ "f5aaebc6-0014-4d30-beba-72bce57e0650" ]] && [[ $@ =~ "--actions" ]]; then
 		if [[ "${LANG}" =~ 'zh_CN' ]]; then
@@ -519,8 +549,10 @@ if [[ $@ = "--actions quit" ]]; then
 	stopApp $@
 	exit $?
 fi
+
 disableSandbox $@
 sourceXDG
+questionFirstLaunch
 openDataDir $@
 manageDirs
 launch $@
