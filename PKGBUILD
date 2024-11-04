@@ -1,23 +1,23 @@
 # Maintainer: Snowstorm64
 
 pkgname=ares-emu
-pkgver=140
+pkgver=141
 pkgrel=1
 pkgdesc="Cross-platform, open source, multi-system emulator by Near and Ares team, focusing on accuracy and preservation."
-arch=(x86_64 i686)
+arch=("x86_64" "i686")
 url="https://ares-emu.net/"
 license=("ISC")
-depends=(gtk3 libao libgl libpulse librashader libudev.so=1-64 libxv openal sdl2 vulkan-driver vulkan-icd-loader)
-makedepends=(mesa git clang lld)
-provides=(ares-emu)
-conflicts=(ares-emu)
-install=ares.install
+depends=("gtk3" "libao" "libgl" "libpulse" "librashader>=0.5.1-1" "libudev.so=1-64" "libxv" "openal" "sdl2" "vulkan-driver" "vulkan-icd-loader")
+makedepends=("mesa" "git" "clang" "lld")
+provides=("ares-emu")
+conflicts=("ares-emu")
+install="ares.install"
 source=("https://github.com/ares-emulator/ares/archive/refs/tags/v${pkgver}.tar.gz")
-sha512sums=("ede555acb596021b8f7a9ad25f8b38be8052da8380995baf6a24b5062ac6ff7235bee35406e613ac7d1dcea59bea65d7f1bef3264a603ddd65b1f4028740a4d9")
+sha512sums=("b9fab771b83cb320cbfe9880d9c1d837edcafbeb73a833ccd4752e461f3e2b3ee295a44a84ed63f8bd35436578bfff3ee8c35e155e0b671cf62e0f8d2de4f873")
 
 build() {
   # If you want to build with gcc, edit to use g++ instead of clang++
-  make -C "${srcdir}/ares-${pkgver}/desktop-ui" hiro=gtk3 compiler=clang++ prefix="/usr"
+  make ${MAKEFLAGS} -C "${srcdir}/ares-${pkgver}/desktop-ui" hiro=gtk3 compiler=clang++ prefix="/usr"
 }
 
 package() {
