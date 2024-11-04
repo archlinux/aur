@@ -1,7 +1,7 @@
 pkgbase = libastal-git
 	pkgdesc = Building blocks for building desktop shells.
 	pkgver = r540.c5eba25
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Aylur/astal
 	arch = x86_64
 	groups = libastal
