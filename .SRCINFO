@@ -1,0 +1,19 @@
+pkgbase = fzpac
+	pkgdesc = Arch Linux (pacman) package finder with fzf
+	pkgver = 2.0.5
+	pkgrel = 1
+	url = https://github.com/sheepla/fzpac
+	arch = any
+	license = MIT
+	depends = fzf
+	depends = pacman
+	optdepends = bash-completion: completion support for bash
+	optdepends = zsh-completions: completion support for zsh
+	optdepends = fish: for fish completion support
+	optdepends = yay: for AUR helper support
+	optdepends = paru: for AUR helper support
+	provides = fzpac
+	source = https://github.com/sheepla/fzpac/archive/refs/tags/v2.0.5.tar.gz
+	sha256sums = ef2f8cac36ac8270b5f08169865d3998f8cb68ebf5e252623e5be36ad0c92cfe
+
+pkgname = fzpac
