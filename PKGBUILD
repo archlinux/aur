@@ -1,8 +1,8 @@
 # Maintainer: OGIOS <ogios@foxmail.com>
 _pkgname=way-edges
 pkgname=way-edges-bin
-pkgver=0.2.0
-pkgrel=2
+pkgver=0.2.1
+pkgrel=1
 
 pkgdesc="Hidden widget on screen edges"
 arch=('x86_64' 'aarch64')
@@ -17,8 +17,11 @@ depends=('gtk4' 'gtk4-layer-shell' 'cairo' 'pango' 'wayland' 'glib2' 'pipewire-p
 _repo=way-edges/way-edges
 _tar_name="$_pkgname"_linux-x86_64.tar.gz
 _tar_rename="$pkgname"-"$pkgver"-"$pkgrel".tar.gz
-source=("$_tar_rename"::https://github.com/"$_repo"/releases/download/"$pkgver"/"$_tar_name" https://raw.githubusercontent.com/"$_repo"/"$pkgver"/LICENSE)
-sha256sums=('SKIP' 'SKIP')
+_bash_complete=$_pkgname
+source=("$_tar_rename"::https://github.com/"$_repo"/releases/download/"$pkgver"/"$_tar_name"
+  https://raw.githubusercontent.com/"$_repo"/"$pkgver"/LICENSE
+  "$_bash_complete"::https://raw.githubusercontent.com/way-edges/way-edges/refs/heads/master/way-edges-bash-complete.bash)
+sha256sums=('SKIP' 'SKIP' 'SKIP')
 
 options=(!debug)
 
@@ -29,4 +32,8 @@ build() {
 package() {
   install -Dm755 "target/release/$_pkgname" "$pkgdir/usr/bin/$_pkgname"
   install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENCE"
+
+  # bash completion
+  mkdir -p "$pkgdir"/usr/share/bash-completion/completions/
+  install -m 0644 $_bash_complete "$pkgdir"/usr/share/bash-completion/completions/$_bash_complete
 }
