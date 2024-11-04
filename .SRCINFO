@@ -1,0 +1,14 @@
+pkgbase = emacs-ediprolog
+	pkgdesc = Emacs Does Interactive Prolog
+	pkgver = 2.3
+	pkgrel = 1
+	url = https://www.metalevel.at/ediprolog/
+	arch = any
+	groups = prolog
+	groups = emacs
+	license = GPL
+	depends = emacs
+	source = https://www.metalevel.at/ediprolog/ediprolog.el
+	sha256sums = SKIP
+
+pkgname = emacs-ediprolog
