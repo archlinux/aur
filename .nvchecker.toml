@@ -1,0 +1,4 @@
+# Nay work - https://gitlab.archlinux.org/archlinux/devtools/-/issues/248
+[vtracer]
+source = "git"
+git = "https://github.com/visioncortex/vtracer.git"
