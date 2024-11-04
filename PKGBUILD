@@ -1,8 +1,8 @@
 # Maintainer: Uģis Gērmanis <ugis@germanis.lv>
 pkgname=blast
 pkgver=v0.7.0
-pkgrel=1
-pkgdesc="blast your linux audio to DLNA receivers "
+pkgrel=2
+pkgdesc="send your linux audio to DLNA receivers "
 arch=(any)
 url="https://github.com/ugjka/blast"
 license=('MIT+NoAI')

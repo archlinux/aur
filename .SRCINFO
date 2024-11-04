@@ -1,7 +1,7 @@
 pkgbase = blast
-	pkgdesc = blast your linux audio to DLNA receivers
+	pkgdesc = send your linux audio to DLNA receivers
 	pkgver = v0.7.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ugjka/blast
 	arch = any
 	license = MIT+NoAI
