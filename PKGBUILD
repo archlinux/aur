@@ -1,9 +1,10 @@
 # Maintainer: nealinux <vimlinux@proton.me>
-# Maintainer: Tenshi65535 <wu.junyu.aur@outlook.com>
+# Packager: nealinux <vimlinux@proton.me>
+# Maintainer: Tenshi65535-2023 <wu.junyu.aur@outlook.com>
 # Contributor: ston
 pkgname=go-musicfox
 pkgver=4.5.7
-pkgrel=1
+pkgrel=2
 pkgdesc='Command-line Netease Cloud Music written in Go.'
 url='https://github.com/anhoder/go-musicfox'
 license=('MIT')
