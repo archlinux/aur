@@ -1,7 +1,7 @@
 pkgbase = gnome-shell-extension-kimpanel-git
 	pkgdesc = KDE's kimpanel implementation for GNOME Shell, now support fcitx
-	pkgver = 20240925
-	pkgrel = 2
+	pkgver = 20241915
+	pkgrel = 1
 	url = https://github.com/wengxt/gnome-shell-extension-kimpanel
 	arch = i686
 	arch = x86_64
