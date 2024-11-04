@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.1
+Type=Application
+Name=AdventuresofDemo
+Comment=This is a small game based on the TheXTech engine with the A2XT content pack made by the Talkhaus community. It's a remix of old SMBX episodes such as "The Invasion 1", brought to the A2XT universe!
+Icon=adventuresofdemo
+Exec=/usr/bin/thextech -c /usr/games/thextech/assets/aod/
+Actions=
+Categories=Game;
