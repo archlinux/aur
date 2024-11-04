@@ -1,9 +1,11 @@
 # Maintainer: Kevin Masson <hi@oktomus.com>
+# Maintainer: Alex Hirzel <alex@hirzel.us>
+# Maintainer: Chuyan Zhang <develop@zcy.moe>
+
 _pkgname=tev
 pkgname=${_pkgname}
-pkgver=1.27
-pkgrel=2
-epoch=
+pkgver=1.28
+pkgrel=1
 pkgdesc="High dynamic range (HDR) image comparison tool for graphics people. Supports primarily OpenEXR files."
 arch=("i686" "x86_64")
 url="https://github.com/Tom94/tev"
