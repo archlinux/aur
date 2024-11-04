@@ -1,28 +1,45 @@
-# Maintainer: Jan de Groot <jgc@archlinux.org>
+# Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
+# Contributor: Jan de Groot <jgc@archlinux.org>
 
-pkgname=libepc
+pkgbase="libepc"
+pkgname=("${pkgbase}" "${pkgbase}-docs")
 pkgver=0.4.6
-pkgrel=2
+pkgrel=3
 pkgdesc="Easy Publish and Consume Library"
-arch=(x86_64)
-license=('LGPL')
-url="https://wiki.gnome.org/Projects/libepc"
-depends=('gtk3' 'avahi' 'libsoup')
-makedepends=('intltool' 'python')
-source=(https://download.gnome.org/sources/$pkgname/0.4/$pkgname-$pkgver.tar.xz)
+arch=('any')
+url="https://gitlab.gnome.org/Archive/libepc"
+license=('LGPL-2.1-or-later')
+makedepends=('glib2-devel>=2.36' 'gnome-common' 'gtk-doc>=1.4' 'intltool>=0.35')
+_pkgsrc="${pkgbase}-${pkgver}"
+source=("${_pkgsrc}.tar.xz::https://download.gnome.org/sources/${pkgbase}/${pkgver%.*}/${_pkgsrc}.tar.xz")
 sha256sums=('215990847a8526c85774cb74fbcaea4c46866df58281b21dce5a62aac5da7ae8')
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
-  ./configure --prefix=/usr --sysconfdir=/etc \
-      --localstatedir=/var --disable-static
-
+  cd "${srcdir}/${_pkgsrc}"
+  libtoolize
+  autoreconf -vfi
+  ./configure \
+    --prefix='/usr' \
+    --enable-gtk-doc
   sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
-
   make
 }
 
-package() {
-  cd "$srcdir/$pkgname-$pkgver"
-  make DESTDIR="$pkgdir" install
+package_libepc() {
+  arch=('x86_64' 'i686')
+  depends=('avahi>=0.6' 'glib2>=2.36' 'glibc' 'gnutls>=1.4' 'gtk3'
+           'libsoup>=2.2' 'util-linux-libs')
+
+  cd "${srcdir}/${_pkgsrc}"
+  make DESTDIR="${pkgdir}" install
+  
+  cd "${pkgdir}/usr/share"
+  rm -rf "gtk-doc"
+}
+
+package_libepc-docs() {
+  pkgdesc+=" (documentation)"
+
+  cd "${srcdir}/${_pkgsrc}/docs/reference/${pkgbase}"
+  make DESTDIR="${pkgdir}" install
 }
