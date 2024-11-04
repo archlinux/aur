@@ -1,0 +1,34 @@
+pkgbase = libastal-lua-git
+	pkgdesc = Lua bindings for libastal.
+	pkgver = r540.c5eba25
+	pkgrel = 1
+	url = https://github.com/Aylur/astal
+	arch = x86_64
+	groups = libastal
+	license = LGPL-2.1-only
+	makedepends = git
+	makedepends = lua-lgi
+	makedepends = lua51
+	makedepends = lua51-lgi
+	makedepends = lua53
+	makedepends = lua53-lgi
+	makedepends = luarocks
+	depends = libastal-git
+	depends = libastal-4-git
+	source = git+https://github.com/Aylur/astal.git
+	sha256sums = SKIP
+
+pkgname = libastal-lua-git
+	pkgdesc = lua bindings for libstal.
+	depends = lua
+	depends = lua-lgi
+
+pkgname = libastal-lua51-git
+	pkgdesc = lua bindings for libstal.
+	depends = lua51
+	depends = lua51-lgi
+
+pkgname = libastal-lua53-git
+	pkgdesc = lua bindings for libstal.
+	depends = lua53
+	depends = lua53-lgi
