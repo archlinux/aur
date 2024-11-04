@@ -3,14 +3,14 @@ _name=melodfy
 pkgname=${_name}-bin
 _year=24
 pkgver=v1.0.0+${_year}
-pkgrel=1
+pkgrel=2
 pkgdesc="Melodfy✨: AI-Powered Piano Audio to MIDI Converter 🎶"
 arch=('x86_64')
 url="https://github.com/HemantKArya/Melodfy"
 license=('MIT')
 depends=(wine)
 source=("${_name}"
-        "https://github.com/HemantKArya/${_name^}/releases/download/${pkgver}/${_name^}_Windows_Build_${_year}.zip"
+        "${pkgname}-${pkgver}.zip::https://github.com/HemantKArya/${_name^}/releases/download/${pkgver}/${_name^}_Windows_Build_${_year}.zip"
         "${_name}.desktop"
         "${_name}.png"
         )
@@ -23,7 +23,6 @@ sha256sums=('e9c53373e2bc70df9a75cc2c051268f791b564a29b52c0c7d2953abaed0b3a55'
 
 
 package() {
-
   install -d -m755 "${pkgdir}/usr/share/${_name}"
   cp -ra "${srcdir}/${_name^}"/* "${pkgdir}/usr/share/${_name}"
   find "${pkgdir}/usr/share/${_name}" -type d -exec chmod 755 "{}" \;
