@@ -1,11 +1,11 @@
 pkgbase = alire-bin
 	pkgdesc = Command-line tool from the Alire project and supporting library
-	pkgver = 2.0.1
+	pkgver = 2.0.2
 	pkgrel = 2
 	url = https://github.com/alire-project/alire
 	arch = x86_64
 	license = GPL-3.0
-	source = alire-bin_2.0.1.zip::https://github.com/alire-project/alire/releases/download/v2.0.1/alr-2.0.1-bin-x86_64-linux.zip
-	sha256sums = 8f4b39f42fd6969815077f91fdae087b8309eedda069ad5227374c49807792a1
+	source = alire-bin_2.0.2.zip::https://github.com/alire-project/alire/releases/download/v2.0.2/alr-2.0.2-bin-x86_64-linux.zip
+	sha256sums = 579de127341a1a684e07410b8b7a15ea7c2b39c47fd1a21179202203afe4be23
 
 pkgname = alire-bin
