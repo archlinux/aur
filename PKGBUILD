@@ -4,7 +4,6 @@ pkgbase=whisper.cpp
 pkgname=(
   "${pkgbase}"
   "${pkgbase}-cuda"
-  # "${pkgbase}-hipblas"
   "${pkgbase}-openvino"
   "${pkgbase}-vulkan"
 )
@@ -21,8 +20,9 @@ makedepends=(
   'cuda'
   'git'
   'openvino'
-  # 'rocm-hip-sdk'
+  'vulkan-icd-loader'
 )
+
 source=("${pkgbase}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
 
 prepare() {
@@ -64,11 +64,6 @@ build() {
     -DGGML_CUDA=1
   )
 
-  local _cmake_hipblas_args=(
-    "${_cmake_args[@]}"
-    -DWHISPER_HIPBLAS=1
-  )
-
   local _cmake_openvino_args=(
     "${_cmake_args[@]}"
     -DWHISPER_OPENVINO=1
@@ -89,11 +84,6 @@ build() {
   export PATH+=":/opt/cuda/bin"
   cmake "${_cmake_cuda_args[@]}"
   cmake --build build
-
-  # echo "Build ${pkgbase} with HIPBlas (AMD ROCm)"
-  # cd "${srcdir}/${pkgbase}-hipblas"
-  # cmake "${_cmake_hipblas_args[@]}"
-  # cmake --build build
 
   echo "Build ${pkgbase} with OpenVINO run-time"
   cd "${srcdir}/${pkgbase}-openvino"
@@ -124,17 +114,6 @@ package_whisper.cpp-cuda() {
   conflicts=("${pkgbase}")
 
   cd "${pkgbase}-cuda"
-  DESTDIR="${pkgdir}" cmake --install build
-  _package
-}
-
-package_whisper.cpp-hipblas() {
-  pkgdesc="$pkgdesc (with AMD ROCm optimizations)"
-  depends+=('rocm-hip-runtime')
-  provides=("${pkgbase}=${pkgver}")
-  conflicts=("${pkgbase}")
-
-  cd "${pkgbase}-hipblas"
   DESTDIR="${pkgdir}" cmake --install build
   _package
 }

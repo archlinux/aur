@@ -12,6 +12,7 @@ pkgbase = whisper.cpp
 	makedepends = cuda
 	makedepends = git
 	makedepends = openvino
+	makedepends = vulkan-icd-loader
 	depends = glibc
 	depends = gcc-libs
 	source = whisper.cpp-1.7.1.tar.gz::https://github.com/ggerganov/whisper.cpp/archive/v1.7.1.tar.gz
