@@ -4,11 +4,12 @@
 
 _pkgname=pamac
 pkgname=${_pkgname}-all
-pkgver=11.7.1
+pkgver=11.7.2
+_commit=71ced277e5931ccea2433ece291430481a2694ee
 pkgrel=1
 pkgdesc='A GUI frontend for libalpm (everything in one package - snap, flatpak, appindicator, aur, appstream)'
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
-url="https://gitlab.manjaro.org/applications/$_pkgname"
+url="https://github.com/manjaro/$_pkgname"
 license=('GPL3')
 depends=('libnotify' 'libpamac-full' 'libhandy' 'libadwaita' 'pamac-cli')
 optdepends=(
@@ -17,14 +18,19 @@ optdepends=(
 	'polkit-gnome: legacy authentication agent for Gnome'
 	'mate-polkit: authentication agent for Mate'
 	'plymouth: offline upgrades')
-makedepends=('gettext' 'vala' 'meson' 'ninja' 'gobject-introspection')
+makedepends=('asciidoc' 'vala' 'meson' 'gobject-introspection' 'git')
 conflicts=('pamac' 'pamac-gtk' 'pamac-common' 'pamac-aur' 'pamac-aur-git' 'pamac-flatpak' 'pamac-flatpak-gnome')
 provides=("pamac=$pkgver-$pkgrel")
 options=(!emptydirs)
-source=("$url/-/archive/$pkgver/pamac-$pkgver.tar.gz")
-sha256sums=('bdf93f7efde43a1d0fa9ef9cceea409691f1d5e42bbd4fb0f9b3e38e0cd0c22a')
+source=("git+${url}.git#commit=${_commit}")
+sha256sums=('b7166976642b21e9ce22c9f0a0b6a2708ffe4f1c91cf9ec3b52231d2eb13d66e')
 
-_srcdir="$_pkgname-$pkgver"
+_srcdir="$_pkgname"
+
+pkgver() {
+  cd "$_srcdir"
+  git describe --tags | sed 's/^v//;s/-/+/g'
+}
 
 prepare() {
 	cd "$_srcdir"
