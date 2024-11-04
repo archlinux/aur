@@ -1,6 +1,6 @@
 pkgbase = ds360go-git
 	pkgdesc = xboxdrv wrapper to use a Dualsense as a Xbox 360 controller on Linux
-	pkgver = r3.7e007ab
+	pkgver = r5.fd99396
 	pkgrel = 1
 	url = https://github.com/ugjka/ds360go
 	install = ds360go.install
