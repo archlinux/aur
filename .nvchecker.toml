@@ -1,0 +1,3 @@
+[python-elevenlabs]
+source = "pypi"
+pypi = "elevenlabs"
