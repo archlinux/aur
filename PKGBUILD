@@ -123,10 +123,13 @@ build() {
 package() {
   install -d "${pkgdir}"/opt/minecraft-bedrock-server &&
     cp -r -fHip "${srcdir}"/tmp/* "${pkgdir}/opt/minecraft-bedrock-server" &&
-    install -Dm 644 minecraft-bedrock-server.service \
-            -t "${pkgdir}"/usr/lib/systemd/system/ &&
-    install -Dm 644 minecraft-bedrock-server.sysusers \
-            "${pkgdir}"/usr/lib/sysusers.d/minecraft-bedrock-server.conf &&
-    install -Dm 644 minecraft-bedrock-server.tmpfiles \
-            "${pkgdir}"/usr/lib/tmpfiles.d/minecraft-bedrock-server.conf
+    install \
+      -Dm 644 minecraft-bedrock-server.service \
+      -t "${pkgdir}"/usr/lib/systemd/system/ &&
+    install \
+      -Dm 644 minecraft-bedrock-server.sysusers \
+      "${pkgdir}"/usr/lib/sysusers.d/minecraft-bedrock-server.conf &&
+    install \
+      -Dm 644 minecraft-bedrock-server.tmpfiles \
+      "${pkgdir}"/usr/lib/tmpfiles.d/minecraft-bedrock-server.conf
 }
