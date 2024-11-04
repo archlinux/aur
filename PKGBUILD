@@ -3,8 +3,8 @@
 
 _pkgname=eidklient
 pkgname="${_pkgname}-native"
-pkgver=4.8
-pkgrel=2
+pkgver=4.9
+pkgrel=1
 pkgdesc="Slovak eID Client - uses system-provided libraries, supports Wayland, …"
 arch=('i686' 'x86_64')
 url="https://www.slovensko.sk/"
@@ -19,20 +19,20 @@ source=(
 )
 # shellcheck disable=SC2059
 source_i686=(
-    "eID_klient_${pkgver}_i386.tar.gz::$(printf "${_url}" 20240217093941 i386)"
+    "eID_klient_${pkgver}_i386.tar.gz::$(printf "${_url}" 20241104115600 i386)"
 )
 # shellcheck disable=SC2059
 source_x86_64=(
-    "eID_klient_${pkgver}_x86_64.tar.gz::$(printf "${_url}" 20240217093919 x86_64)"
+    "eID_klient_${pkgver}_x86_64.tar.gz::$(printf "${_url}" 20241104115516 x86_64)"
 )
 sha256sums=(
     SKIP
 )
 sha256sums_i686=(
-    5501a742e3c04a7663b880e423b53caa21dc7fc79bb7603f2fe45762ac7bc886
+    a336d78ae655c775cecb2c09440df220c1ae95bccb3d1c6e05d4f0f680f155e8
 )
 sha256sums_x86_64=(
-    af12b06ab573477253eae1c273caba782f801850cdbda2bb25a3aeeeb635aa45
+    2e8ec2a533810865278c233459e8b6eaecb8dcc19cc849088956da3204d06ea5
 )
 options=(
     !debug
