@@ -1,7 +1,7 @@
 # Maintainer: Alexei Colin <ac@alexeicolin.com>
 
 pkgname=zephyr-sdk
-pkgver=0.16.5
+pkgver=0.17.0
 pkgrel=1
 pkgdesc="SDK for Zephyr real-time operating system"
 arch=('x86_64')
@@ -9,17 +9,16 @@ url="https://www.zephyrproject.org/"
 license=('Apache')
 
 depends=('cmake' 'ninja' 'gperf' 'ccache' 'dfu-util' 'dtc'
-         'python-pip' 'python-pyelftools' 'python-setuptools' 'python-wheel'
-         'tk' 'xz')
+  'python-pip' 'python-pyelftools' 'python-setuptools' 'python-wheel'
+  'tk' 'xz')
 optdepends=('pyocd: programming and debugging ARM MCUs'
-            'python-west: Zephyr RTOS Project meta-tool')
+  'python-west: Zephyr RTOS Project meta-tool')
 makedepends=('patchelf' 'wget')
 source=("https://github.com/zephyrproject-rtos/sdk-ng/releases/download/v${pkgver}/zephyr-sdk-${pkgver}_linux-x86_64.tar.xz"
-        "zephyrrc"
+  "zephyrrc"
 )
-sha256sums=('eb4495e2e04387c822f8482be116a8f4ab3d1d2bfc1c1aeb53ca67937acf0009'
+sha256sums=('e7536b4879f689cfd4ef9c1939069da6c4cf0e3030a2940175d6354e7b8b69e1'
             '7a1257272c64bdec281283d391e3149cece065935c9e8394d6bece32d0f6fc05')
-
 
 options=(!strip)
 install=$pkgname.install
@@ -31,8 +30,7 @@ build() {
   cd "$srcdir"
 }
 
-package ()
-{
+package() {
   cd "$srcdir"
 
   mkdir -p $pkgdir/opt
@@ -61,7 +59,7 @@ package ()
   local _cmake_fname=$(echo -n /$_installdir | md5sum | cut -d' ' -f1)
   local _cmake_module_path="$pkgdir/usr/lib/cmake/Zephyr-sdk"
   mkdir -p "$_cmake_module_path"
-  echo "/$_installdir" > "$_cmake_module_path/${_cmake_fname}"
+  echo "/$_installdir" >"$_cmake_module_path/${_cmake_fname}"
 
   # Strip package build path from prefix path
   sed -i "s@\(relocate_sdk.py\s\+\)${pkgdir}/${_installdir} ${pkgdir}/${_installdir}@\1 /${_installdir} /${_installdir}@g" relocate_sdk.sh
