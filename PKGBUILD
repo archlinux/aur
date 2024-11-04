@@ -2,7 +2,7 @@
 
 pkgname=yabridge-bin
 _pkgname=yabridge
-pkgver=5.1.0
+pkgver=5.1.1
 pkgrel=1
 pkgdesc="A modern and transparent way to use Windows VST2, VST3, and CLAP plugins on Linux (includes yabridgectl)"
 epoch=
@@ -16,7 +16,7 @@ conflicts=('yabridge' 'yabridgectl' 'yabridgectl-git')
 options=('!strip')
 install=yabridge.install
 source=("https://github.com/robbert-vdh/yabridge/releases/download/$pkgver/$_pkgname-$pkgver.tar.gz")
-sha256sums=('4ad1ce6e56f0e178756b239f463ca7202cca9e9c21cbd5a1ef6f9a5c790964ac')
+sha256sums=('d11f0307412b5566b09a75ed4aa191266db56d22f4de4d20e4fbde6296cd1a47')
 
 package() {
   cd "$srcdir/$_pkgname"
