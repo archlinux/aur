@@ -1,19 +1,19 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
 pkgname="updatecli"
-pkgver=0.85.0
+pkgver=0.86.0
 pkgrel=1
 pkgdesc="A declarative dependency management command line tool"
 arch=('x86_64')
 url="https://www.updatecli.io"
 _url="https://github.com/${pkgname}/${pkgname}"
 license=('Apache-2.0')
+depends=('glibc')
 makedepends=('go')
 # checkdepends=('docker')
-depends=('glibc')
 _pkgsrc="${pkgname}-${pkgver}"
 source=("${_pkgsrc}.tar.gz::${_url}/archive/refs/tags/v${pkgver}.tar.gz")
-b2sums=('5a3416b71af00c79b6882786f90069b53b7d317eae782cb68eb0dc311229802d62576e44d647ae3bc132ed8991a126334827dd61755a2fa0b7178eb43e26a724')
+b2sums=('9bfca4dfbe8f8b69d5004c85cfaa488fefa820dc352f7073cd309deaa89a379da2c72ae6d34ed18325440a19c4a280cbf723f8486df0436028a0a04269ce7603')
 
 prepare() {
   cd "${srcdir}/${_pkgsrc}"
