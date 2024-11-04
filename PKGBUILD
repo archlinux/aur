@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=ytdownloader-gui-bin
 _pkgname=YTDownloader
-pkgver=3.18.3
+pkgver=3.18.4
 _electronversion=30
 pkgrel=1
 pkgdesc="A modern GUI App for downloading Videos and Audios from hundreds of sites.Prebuilt version.Use system-wide electron."
@@ -17,10 +17,10 @@ depends=(
 )
 options=('!strip')
 source=(
-    "${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/v${pkgver}/${_pkgname}_Linux.deb"
+    "${pkgname%-bin}-${pkgver}.rpm::${_ghurl}/releases/download/v${pkgver}/${_pkgname}_Linux.rpm"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('e4a491f8592d0754f8b8bc3f545da08a4a8da059834e6530b109d8e2573812ef'
+sha256sums=('259917c773480179d05164475c293f1864d1198d9bbef9423f03d54f61982be0'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 build() {
     sed -e "
@@ -30,7 +30,6 @@ build() {
         s/@cfgdirname@/${pkgname%-gui-bin}/g
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
     " -i "${srcdir}/${pkgname%-bin}.sh"
-    bsdtar -xf "${srcdir}/data."*
     sed -e "
         s/\/opt\/${_pkgname}\/${pkgname%-gui-bin}/${pkgname%-bin}/g
         s/Icon=${pkgname%-gui-bin}/Icon=${pkgname%-bin}/g
