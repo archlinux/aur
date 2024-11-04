@@ -1,23 +1,26 @@
 # Maintainer: Patrick Northon <northon_patrick3@yahoo.ca>
 # Contributor: Zeph <zeph33@gmail.com>
 
-_pkgname=pamac
-pkgname=${_pkgname}-cli
-pkgver=11.6.0
-pkgrel=2
+pkgname=pamac-cli
+pkgver=11.7.0
+_commit=035e66944ce8633b6362b45ced879f00ba00a09b
+pkgrel=1
 pkgdesc='Pamac cli frontend for libalpm'
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
-url="https://gitlab.manjaro.org/applications/$pkgname"
+url="https://github.com/manjaro/$pkgname"
 license=('GPL3')
 depends=('libpamac')
-makedepends=('gettext' 'vala' 'meson' 'ninja' 'asciidoc' 'git')
+makedepends=('vala' 'meson' 'asciidoc' 'git')
 optdepends=('plymouth: offline upgrades')
-source=("$url/-/archive/$pkgver/$pkgname-$pkgver.tar.gz")
-#source=("git+$url.git#commit=a1cd2b9709a642b807f163fdbd6bd539b1881059")
-sha256sums=('a885681b0c190bebf27554e33f4418dbce9e256af19108fb5e115521c65aca78')
+source=("git+${url}.git#commit=${_commit}")
+sha256sums=('1d6a07d46bc15d7824f9a1c00e2da89989737f7116c452af1ee4619a61d1853c')
 
-_srcdir="$pkgname-$pkgver"
-#_srcdir="$pkgname"
+_srcdir="$pkgname"
+
+pkgver() {
+  cd "$_srcdir"
+  git describe --tags | sed 's/^v//;s/-/+/g'
+}
 
 prepare() {
 	cd "$_srcdir"

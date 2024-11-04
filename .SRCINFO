@@ -1,8 +1,8 @@
 pkgbase = pamac-cli
 	pkgdesc = Pamac cli frontend for libalpm
-	pkgver = 11.6.0
-	pkgrel = 2
-	url = https://gitlab.manjaro.org/applications/pamac-cli
+	pkgver = 11.7.0
+	pkgrel = 1
+	url = https://github.com/manjaro/pamac-cli
 	arch = i686
 	arch = x86_64
 	arch = arm
@@ -10,15 +10,13 @@ pkgbase = pamac-cli
 	arch = armv7h
 	arch = aarch64
 	license = GPL3
-	makedepends = gettext
 	makedepends = vala
 	makedepends = meson
-	makedepends = ninja
 	makedepends = asciidoc
 	makedepends = git
 	depends = libpamac
 	optdepends = plymouth: offline upgrades
-	source = https://gitlab.manjaro.org/applications/pamac-cli/-/archive/11.6.0/pamac-cli-11.6.0.tar.gz
-	sha256sums = a885681b0c190bebf27554e33f4418dbce9e256af19108fb5e115521c65aca78
+	source = git+https://github.com/manjaro/pamac-cli.git#commit=035e66944ce8633b6362b45ced879f00ba00a09b
+	sha256sums = 1d6a07d46bc15d7824f9a1c00e2da89989737f7116c452af1ee4619a61d1853c
 
 pkgname = pamac-cli
