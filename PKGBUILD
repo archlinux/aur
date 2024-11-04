@@ -1,7 +1,7 @@
 # Maintainer: Brody <archfan at brodix dot de>
 
 pkgname=cloud-sql-proxy
-pkgver=2.13.0
+pkgver=2.14.0
 pkgrel=1
 pkgdesc='Cloud SQL Auth Proxy'
 arch=(x86_64)
@@ -10,7 +10,7 @@ license=(Apache)
 depends=(fuse3)
 makedepends=(go)
 source=(${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-b2sums=(2e47b90005b740c7845b302e8a361c4174bf2165be1879dd5f89f8295109181c6c60ab39b5f88ca6fafb10b3ca91dd05f8b9406708eb39564053cb7540c3934c)
+b2sums=(63b6e1d317019454f884c5775e73f1220ef601e286a9b112d6c2656c2ed3873390a441bca644e8cd8345f6be42bf056a1c9b0b9276d11af43c4b5eb4b81ba789)
 
 build() {
   cd ${pkgname}-${pkgver}
