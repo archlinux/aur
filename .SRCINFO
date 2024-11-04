@@ -1,0 +1,15 @@
+pkgbase = trex-c
+	pkgdesc = A console game based on the Google T-Rex game
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/StiveMan1/T-RexC
+	arch = x86_64
+	license = GNU
+	makedepends = gcc
+	depends = glibc
+	source = trex-c.c
+	source = game_objects.h
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = trex-c
