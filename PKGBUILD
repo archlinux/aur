@@ -5,7 +5,7 @@
 # Contributor: Frederik “Freso” S. Olesen <freso.dk@gmail.com>
 # Contributor: Maxime Gauduin <alucryd@archlinux.org>
 pkgname=lutris-git
-pkgver=0.5.17.r385.g66d4170
+pkgver=0.5.17.r474.gcc8dba1
 pkgrel=1
 pkgdesc="Open Gaming Platform"
 arch=('any')
@@ -64,6 +64,7 @@ optdepends=(
   'python-pefile: Extract icons from Windows executables'
   'python-protobuf: BattleNet integration'
   'python-pypresence: Discord Rich Presence integration'
+  'umu-launcher: For running games through Proton'
   'vkd3d: DirectX 12 support'
   'vulkan-icd-loader: Vulkan support'
   'vulkan-tools: Vulkan support'
