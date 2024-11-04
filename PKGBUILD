@@ -4,12 +4,11 @@ pkgbase=whisper.cpp
 pkgname=(
   "${pkgbase}"
   "${pkgbase}-cuda"
-  "${pkgbase}-clblas"
   # "${pkgbase}-hipblas"
   "${pkgbase}-openvino"
 )
 pkgver=1.7.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Port of OpenAI's Whisper model in C/C++"
 arch=('armv7h' 'aarch64' 'x86_64')
 url="https://github.com/ggerganov/whisper.cpp"
@@ -17,7 +16,6 @@ license=("MIT")
 depends=('glibc' 'gcc-libs')
 makedepends=(
   'blas-openblas'
-  'clblast'
   'cmake'
   'cuda'
   'git'
@@ -60,11 +58,6 @@ build() {
     -DWHISPER_OPENBLAS=ON
   )
 
-  local _cmake_clblas_args=(
-    "${_cmake_args[@]}"
-    -DWHISPER_CLBLAST=ON
-  )
-
   local _cmake_cuda_args=(
     "${_cmake_args[@]}"
     -DWHISPER_CUDA=ON
@@ -83,11 +76,6 @@ build() {
   echo "Build ${pkgbase} with OPENBlas"
   cd "${srcdir}/${pkgbase}"
   cmake "${_cmake_openblas_args[@]}"
-  cmake --build build
-
-  echo "Build ${pkgbase} with OpenCL"
-  cd "${srcdir}/${pkgbase}-clblas"
-  cmake "${_cmake_clblas_args[@]}"
   cmake --build build
 
   echo "Build ${pkgbase} with cuda (NVIDIA CUDA)"
@@ -114,17 +102,6 @@ package_whisper.cpp() {
   provides=("${pkgbase}=${pkgver}")
 
   cd "${pkgbase}"
-  DESTDIR="${pkgdir}" cmake --install build
-  _package
-}
-
-package_whisper.cpp-clblas() {
-  pkgdesc="$pkgdesc (with OpenCL optimizations)"
-  depends+=('clblast')
-  provides=("${pkgbase}=${pkgver}")
-  conflicts=("${pkgbase}")
-
-  cd "${pkgbase}-clblas"
   DESTDIR="${pkgdir}" cmake --install build
   _package
 }
