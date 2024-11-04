@@ -1,3 +1,13 @@
+post_upgrade() {
+  if [ $(vercmp 7.1.11.76496-1 "$2") -eq 1 ]; then
+    cat <<EOF
+Firestorm requires a CPU with avx2 support now, which includes most
+processors made in the last decade.  No current plans exist to provide
+a Firestorm Legacy package for older CPUs, but it could be made with
+demand.
+EOF
+}
+
 post_install() {
   cat <<EOF
 You must register an account on the official Second Life website in
