@@ -1,6 +1,6 @@
 # Maintainer: coloryr <402067010@qq.com>
 
-pkgname=colordesktop
+pkgname=colordesktop-bin
 pkgver=2
 pkgrel=1
 pkgdesc="A Desktop Tools"
