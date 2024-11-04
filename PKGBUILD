@@ -44,7 +44,7 @@ license=(
 
 # Instructs makepkg not to extract a source code archive automatically
 # when installing the package via makepkg or the user's AUR helper (i.e. paru, yay, etc).
-# For this package, when do this ourselves (in a custom way) in the build() function (defined below).
+# For this package, we do this ourselves (in a custom way) in the build() function (defined below).
 #shellcheck disable=2016
 noextract=(
   'bedrock-server-${pkgver}.zip'
@@ -72,7 +72,7 @@ makedepends=(
   'unzip'
 )
 
-# The first file in this sources list is located on the official Minecraft Bedrock download page.
+# The first file in this sources list is located on the official Minecraft Bedrock Server download page.
 # https://www.minecraft.net/en-us/download/server/bedrock
 # Mousing over the download button for the stable/non-preview "Ubuntu (Linux)" version will provide the full URL.
 source=(
@@ -82,11 +82,11 @@ source=(
   'minecraft-bedrock-server.tmpfiles'
 )
 
-# These are the hashsums for the files listed in the 'source' array elsewhere in this file.
-# They are indexed (i.e. 0,1,2,3) in the same manner as the source array, and must match it its order.
-# So, for example, the second hash in this array must be for second filename in the sources array.
-# The hash for the source zip file is set with the _pkghash because it changes with each new release.
-# The orders are hardcoded because the systemd files in this repo rarely change as new releases are cut.
+# These are the matching hashsums for the files listed in the 'source' array elsewhere in this file.
+# They are indexed (i.e. 0,1,2,3) in the same manner as the source array, and must match its same order.
+# So, for example, the second hash in this array must be the hash for the second filename in the sources array.
+# The hash for the source zip file is set with the '_pkghash' variable because it changes with each new release.
+# The other hashsums are hardcoded because the systemd files in this repo rarely change as new releases are cut.
 sha256sums=(
   "${_pkghash}"
   'cc08effe04701f1ca16a1edd153d12a94ed498e9a3e68a004b74189eef9edb81'
@@ -94,9 +94,11 @@ sha256sums=(
   '829ff9e583408fcc1d0436a6896ecbd3128f893dcbc2b0147130219a13586ae3'
 )
 
-# Without the appropriate user-agent string, the automated download of the source zip will hang and eventually timeout.
+# Without the appropriate user-agent string,
+# the automated download of the source zip will hang and eventually timeout.
 # If this happens, please help by figuring out the appropriate one and submit a patch to this array value.
-# The upstream package maintainer has put protections in place to discourage automated downloads by certain bots/scripts.
+# The upstream package maintainer has put protections in place
+# to discourage automated downloads by certain bots/scripts.
 # More information about why this is sometimes needed can be found here on the Arch wiki:
 # https://wiki.archlinux.org/title/Nonfree_applications_package_guidelines#Custom_DLAGENTS
 DLAGENTS=(
@@ -106,6 +108,7 @@ DLAGENTS=(
 # This function is called by makepkg as a pre-requisite step to installing the package.
 # Prior to this function running, makepkg will automatically download any remote source files listed
 # in the "sources" array (elsewhere in this file), and will check their hashes against those listed
+# in the "sha256sums" array. The hash for the source zip, in particular, is stored in the '_pkghash' var.
 build() {
   unzip -q bedrock-server-"${pkgver}".zip -d tmp &&
     rm bedrock-server-"${pkgver}".zip
@@ -115,12 +118,15 @@ build() {
 # and runs after the source zip is downloaded automatically,
 # and after the build() function has already run successfully.
 # It is not coded directly in this function, but any files in the 'backup' array are automatically backed up
-# and then moved back in place after this function completes in order to preserve post-install user configurations
-# from previous installs of this same package.
+# and then moved back into place after this function completes. This is done in order to preserve post-install
+# user configurations from any previous installs of this same package on the same system.
 package() {
   install -d "${pkgdir}"/opt/minecraft-bedrock-server &&
     cp -r -fHip "${srcdir}"/tmp/* "${pkgdir}/opt/minecraft-bedrock-server" &&
-    install -Dm 644 minecraft-bedrock-server.service -t "${pkgdir}"/usr/lib/systemd/system/ &&
-    install -Dm 644 minecraft-bedrock-server.sysusers "${pkgdir}"/usr/lib/sysusers.d/minecraft-bedrock-server.conf &&
-    install -Dm 644 minecraft-bedrock-server.tmpfiles "${pkgdir}"/usr/lib/tmpfiles.d/minecraft-bedrock-server.conf
+    install -Dm 644 minecraft-bedrock-server.service \
+            -t "${pkgdir}"/usr/lib/systemd/system/ &&
+    install -Dm 644 minecraft-bedrock-server.sysusers \
+            "${pkgdir}"/usr/lib/sysusers.d/minecraft-bedrock-server.conf &&
+    install -Dm 644 minecraft-bedrock-server.tmpfiles \
+            "${pkgdir}"/usr/lib/tmpfiles.d/minecraft-bedrock-server.conf
 }
