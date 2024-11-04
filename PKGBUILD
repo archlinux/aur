@@ -2,7 +2,7 @@
 
 _pkgname=libheif
 pkgname=lib32-libheif
-pkgver=1.18.2
+pkgver=1.19.1
 pkgrel=1
 pkgdesc="HEIF file format decoder and encoder (32-bit)"
 arch=('x86_64')
@@ -17,7 +17,7 @@ depends=(
 )
 makedepends=(
   'cmake'
-  'lib32-libjpeg'
+  'lib32-libjpeg-turbo'
   'lib32-libpng'
   'lib32-svt-av1'
   'lib32-rav1e'
@@ -27,7 +27,7 @@ makedepends=(
   'lib32-aom'
 )
 optdepends=(
-  'lib32-libjpeg: for heif-convert-32 and heif-enc-32'
+  'lib32-libjpeg-turbo: for heif-convert-32 and heif-enc-32'
   'lib32-libpng: for heif-convert-32 and heif-enc-32'
   'lib32-svt-av1: svt-av1 encoder'
   'lib32-rav1e: rav1e encoder'
@@ -38,7 +38,7 @@ optdepends=(
 )
 provides=('libheif.so')
 source=("https://github.com/strukturag/libheif/releases/download/v${pkgver}/libheif-${pkgver}.tar.gz")
-sha256sums=('c4002a622bec9f519f29d84bfdc6024e33fd67953a5fb4dc2c2f11f67d5e45bf')
+sha256sums=('994913eb2a29c00c146d6f3d61e07d9ff0d8e9eccb0624d87e4be8b108c74e4b')
 options=('debug')
 
 build() {
