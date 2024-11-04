@@ -29,12 +29,15 @@ OPTIONS=(strip lto !debug)
 
 prepare() {
     cd "$srcdir/$_clientname"
-    cargo fetch --frozen --target "$CARCH-unknown-linux-gnu"
+    export RUSTUP_TOOLCHAIN=stable
+    cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
 build() {
     cd "$srcdir/$_clientname"
-    cargo build --locked --release --target "$CARCH-unknown-linux-gnu"
+    export RUSTUP_TOOLCHAIN=stable
+    export CARGO_TARGET_DIR=target
+    cargo build --frozen --release --target "$CARCH-unknown-linux-gnu"
 }
 
 package() {
