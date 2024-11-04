@@ -24,10 +24,10 @@ license=('PROPRIETARY')
 source_aarch64=("${pkgname}_${pkgver}_arm64.tar.gz::https://github.com/docker/scout-cli/releases/download/v${pkgver}/docker-scout_${pkgver}_linux_arm64.tar.gz")
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/docker/scout-cli/releases/download/v${pkgver}/docker-scout_${pkgver}_linux_amd64.tar.gz")
 sha256sums_x86_64=(
-  f3e79ed43b50155c74d484a50d7a5d62b2a41720392aa141fae755356c5527fc
+  9dd20de30124cf88126d9c8798742916daec2ac7b26a57b3b20f62648f1eb44b
 )
 sha256sums_aarch64=(
-  fd9d2a50874849b82e7270d566b780f5527edd2c9b393a4daf73c4519b6b5083
+  fff9834899a6e1a45aaa18a03b0b079baad64c83ea5027000b59b5424bc10638
 )
 
 package() {
