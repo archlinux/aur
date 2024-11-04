@@ -4,7 +4,7 @@
 
 pkgname=input-devices-support
 pkgver=1.0.7
-pkgrel=2
+pkgrel=3
 arch=('any')
 url="https://wiki.archlinux.org/index.php/Category:Input_devices"
 license=('GPL')

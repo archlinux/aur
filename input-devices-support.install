@@ -46,8 +46,10 @@ post_upgrade() {
 ********************"
 
 If you need advanced gesture support, run the command:
-libinput-gestures-setup service autostart start for your user,
-and to disable it, run libinput-gestures-setup service autostop stop
+libinput-gestures-setup service autostart start
+for your user,and to disable it, run:
+libinput-gestures-setup service autostop stop
+
 ********************"
 
 EOF
