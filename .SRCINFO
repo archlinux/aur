@@ -1,0 +1,12 @@
+pkgbase = colordesktop
+	pkgdesc = A Desktop Tools
+	pkgver = 2
+	pkgrel = 1
+	url = https://www.github.com/Coloryr/ColorDesktop
+	install = colordesktop.install
+	arch = x86_64
+	license = Apache 2.0
+	source = https://github.com/Coloryr/ColorDesktop/releases/download/a2.2024.11.4/colordesktop-linux-a2-1-x86_64.pkg.tar.zst
+	sha256sums = 52ae2d34a886fbd69eec30db50fc0b5254e80b6094dcc1307a8b8a44561cef4b
+
+pkgname = colordesktop
