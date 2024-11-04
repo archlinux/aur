@@ -1,0 +1,16 @@
+pkgbase = 7d2d-modlauncher-bin
+	pkgdesc = 7 Days to Die Mod Launcher for Linux
+	pkgver = 5.2.2.0
+	pkgrel = 1
+	url = https://the7d2dmodlauncher.github.io/7D2DModLauncherV5/
+	arch = x86_64
+	license = unknown
+	depends = glibc
+	source = https://github.com/The7D2DModLauncher/7D2DModLauncherV5/releases/download/5.2.2.0/7D2DModLauncher-Linux.tar.gz
+	source = 7d2d-modlauncher.desktop
+	source = icon.jpg
+	sha256sums = b1669af4ac61c4eb65b755522fa39bb5eb425364dfe64ddd714551e6ead19edd
+	sha256sums = df15a6fd97be45d296f68698481869de386296f3cdb279fbde385751a01ba972
+	sha256sums = 3400314b953dc9b33eb8dad9b6bf60bcb3902ffa61ee352e231a4099da60de71
+
+pkgname = 7d2d-modlauncher-bin

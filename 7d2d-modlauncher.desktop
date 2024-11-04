@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=7 Days to Die Mod Launcher
+Comment=Launcher for 7 Days to Die Mods
+Exec=/opt/7d2d-modlauncher-bin/ModLauncherV5.x86_64
+Icon=/usr/share/icons/hicolor/256x256/apps/7d2d-modlauncher.jpg
+Terminal=false
+Categories=Game;Utility;
+
