@@ -1,10 +1,10 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=perplexity-ai-app
 _pkgname="Perplexity AI"
-pkgver=2.2.0
-_electronversion=31
+pkgver=3.0.0
+_electronversion=33
 _nodeversion=20
-pkgrel=2
+pkgrel=1
 pkgdesc="The Unofficial Perplexity AI Desktop App, powered by Electron which brings the magic of AI language processing to your desktop.Use system-wide electron."
 arch=('any')
 url="https://github.com/inulute/perplexity-ai-app"
@@ -23,7 +23,7 @@ source=(
     "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
     "${pkgname}.sh"
 )
-sha256sums=('14789c9cf3d3c223dbb1c2b2b9cb273a58b8365a46dbc49f8b72b434a78a63e3'
+sha256sums=('142800719a2e2e8c28dd6714626cf8e71803809b37cbde916271cabcda27ae6e'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
@@ -59,6 +59,8 @@ build() {
         } >> .npmrc
         find ./ -type f -name "package-lock.json" -exec sed -i "s/registry.npmjs.org/registry.npmmirror.com/g" {} +
     fi
+    cp assets/icons/png/favicon.png "${srcdir}/${pkgname}-${pkgver}/assets/icons/win/icon.png"
+    sed -i "s/icon\.ico/icon\.png/g" main.js
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
     NODE_ENV=development    npm install
     NODE_ENV=production     npm exec -c "electron-builder build --linux dir -c.electronDist=${electronDist}"
