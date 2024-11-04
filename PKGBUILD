@@ -1,11 +1,12 @@
-# Maintainer: Andrew Steinke <rkcf@rkcf.me>
+# Contributor: Andrew Steinke <rkcf@rkcf.me>
 
 pkgname=python-esprima
 _pkgname=esprima-python
-pkgrel=1
+pkgrel=2
 pkgver=4.0.1
 pkgdesc="Python port of esprima. ECMAScript parsing infrastructure for multipurpose analysis"
 depends=('python')
+makedepends=('python-setuptools')
 url="https://github.com/Kronuz/esprima-python"
 license=('BSD')
 arch=('any')
