@@ -7,7 +7,7 @@ arch=("x86_64")
 url="https://github.com/chicco-carone/Snapcast-Gui"
 license=("GPLv3")
 depends=("git" "python" "pyside6" "python-setuptools" "python-wheel" "python-platformdirs")
-makedepends=("python-notify-py")
+makedepends=("python-notify-py" "python-snapcast")
 source=("$pkgname::git+https://github.com/chicco-carone/Snapcast-Gui.git")
 sha256sums=('SKIP')
 
@@ -28,7 +28,7 @@ package() {
     python setup.py install --root="$pkgdir/" --optimize=1
 
     install -Dm644 /dev/null "$pkgdir/usr/share/applications/snapcast-gui.desktop"
-    
+
     cat <<EOF > "$pkgdir/usr/share/applications/snapcast-gui.desktop"
 [Desktop Entry]
 Name=Snapcast Gui
