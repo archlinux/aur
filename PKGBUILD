@@ -1,8 +1,8 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=zteonu-git
-pkgver=0.0.4.r4.ga8ecf7e
-pkgrel=0
+pkgver=0.0.7.r0.g826050b
+pkgrel=1
 pkgdesc="中兴 F677V9/F7607P/F4607P/G7615 光猫工厂模式工具"
 arch=(x86_64
     aarch64
