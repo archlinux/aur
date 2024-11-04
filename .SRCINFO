@@ -1,20 +1,24 @@
 pkgbase = libepc
 	pkgdesc = Easy Publish and Consume Library
 	pkgver = 0.4.6
-	pkgrel = 3
+	pkgrel = 4
 	url = https://gitlab.gnome.org/Archive/libepc
-	arch = any
+	arch = x86_64
+	arch = i686
 	license = LGPL-2.1-or-later
+	makedepends = avahi>=0.6
+	makedepends = glib2>=2.36
 	makedepends = glib2-devel>=2.36
 	makedepends = gnome-common
+	makedepends = gnutls>=1.4
+	makedepends = gtk3
 	makedepends = gtk-doc>=1.4
 	makedepends = intltool>=0.35
+	makedepends = libsoup>=2.2
 	source = libepc-0.4.6.tar.xz::https://download.gnome.org/sources/libepc/0.4/libepc-0.4.6.tar.xz
 	sha256sums = 215990847a8526c85774cb74fbcaea4c46866df58281b21dce5a62aac5da7ae8
 
 pkgname = libepc
-	arch = x86_64
-	arch = i686
 	depends = avahi>=0.6
 	depends = glib2>=2.36
 	depends = glibc
@@ -25,3 +29,4 @@ pkgname = libepc
 
 pkgname = libepc-docs
 	pkgdesc = Easy Publish and Consume Library (documentation)
+	arch = any
