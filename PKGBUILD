@@ -2,7 +2,7 @@
 # Contributor: Maxime "pep" Buquet <archlinux@bouah.net>
 
 _pkgname=git-pw
-_tag=2.6.0
+_tag=2.7.0
 pkgname=${_pkgname}
 pkgver=${_tag}
 pkgrel=1
@@ -31,7 +31,7 @@ build() {
 
 package() {
   cd ${srcdir}/${_pkgname}
-  python -m installer --destdir="${pkgdir}" dist/*.whl
+  python -m installer --destdir="${pkgdir}" dist/git_pw-${_tag}-py3-none-any.whl
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   mkdir -p "${pkgdir}/usr/share/man/man1"
   install -Dm644 man/*.1 "${pkgdir}/usr/share/man/man1/"
