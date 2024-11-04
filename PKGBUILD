@@ -3,12 +3,12 @@
 # Contributor: fnord0 <fnord0 AT riseup DOT net>
 
 pkgname=dnsenum2
-pkgver=1.3.1
-pkgrel=2
+pkgver=1.3.2
+pkgrel=1
 pkgdesc="Enumerate DNS information from a domain and discover non-contiguous ip blocks"
 url='https://github.com/SparrowOchon/dnsenum2'
 arch=('any')
-license=('GPL')
+license=('GPL-2.0-or-later')
 depends=('perl' 'perl-net-dns' 'perl-net-ip' 'perl-net-netmask' 'perl-string-random')
 optdepends=(
   'perl-net-whois-ip: whois queries support'
@@ -18,7 +18,7 @@ optdepends=(
 )
 conflicts=('dnsenum')
 source=(${pkgname}-${pkgver}.tar.gz::https://github.com/SparrowOchon/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz)
-sha512sums=('26cec4056ae787ee297868e58ca384946e1edb80be36b0a92beca846a8abb9be21963295cb2cc3349d9ec765b30b308f3721347d24208481c35dce371c32db97')
+sha512sums=('47915d3a61223898aa50b7d96993ac6dce26027e1ab6ed4f373d7e4df7e293583657f0c030fde00f6ec34e04a0d83a505abbcb0dbbf4db27cb29676cb3979156')
 
 build() {
   cd ${pkgname}-${pkgver}
