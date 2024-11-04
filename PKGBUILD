@@ -10,9 +10,8 @@ pkgname=(
   gnome-shell-git
   gnome-shell-docs-git
 )
-pkgver=47.0+r65+gbab37d328
+pkgver=47.1+r19211+152faae6f
 pkgrel=1
-epoch=1
 pkgdesc="Next generation desktop shell - git latest"
 url="https://gitlab.gnome.org/GNOME/gnome-shell"
 arch=(x86_64)
@@ -85,8 +84,13 @@ b2sums=('SKIP'
 
 pkgver() {
   cd gnome-shell
-  git describe --tags | sed 's/[^-]*-g/r&/;s/-/+/g'
+
+  _version=$(git tag --sort=-v:refname --list | grep '^[0-9.]*$' | head -n1)
+  _commits=$(git rev-list --count HEAD)
+  _short_commit_hash=$(git rev-parse --short HEAD)
+  echo "${_version}+r${_commits}+${_short_commit_hash}"
 }
+
 
 prepare() {
   # Inject gvc

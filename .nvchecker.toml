@@ -1,0 +1,3 @@
+[gnome-shell-git]
+source="cmd"
+cmd="~/nvchecker/github_version.sh GNOME gnome-shell"
