@@ -1,6 +1,6 @@
 # Maintainer: Mohammed Chelouti <m.chelouti@bluewin.ch>
 pkgname=tasklite-bin
-pkgver='0.3.0.0'
+pkgver='0.4.0.0'
 pkgrel=1
 epoch=
 pkgdesc="The CLI task manager for power users"
@@ -21,7 +21,7 @@ install=
 changelog=
 source=("https://github.com/ad-si/TaskLite/releases/download/v${pkgver}/tasklite_linux_${arch}.zip")
 noextract=()
-sha256sums=('b6757655fbbf85f31cacea399d32c726740f7bd02803244b00c5e1d56576438b')
+sha256sums=('fab70c3874e9ee38864f3eb23d0b826956e0d6ce90baa6a27a881cf7ffba1c68')
 validpgpkeys=()
 
 prepare() {
