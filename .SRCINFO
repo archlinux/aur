@@ -1,0 +1,17 @@
+pkgbase = diablo-project-manager-git
+	pkgdesc = A CLI Project Manager
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/diabl0dev/dpm
+	arch = x86_64
+	license = MIT
+	makedepends = shc
+	depends = bash
+	depends = git
+	depends = glibc
+	provides = diablo-project-manager
+	conflicts = diablo-project-manager
+	source = diablo-project-manager-git::git+https://github.com/diabl0dev/dpm
+	sha256sums = SKIP
+
+pkgname = diablo-project-manager-git
