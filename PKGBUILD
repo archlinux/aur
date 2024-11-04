@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=follow
 _pkgname=Follow
-pkgver=0.1.1_beta.1
+pkgver=0.1.2_beta.0
 _electronversion=33
 _nodeversion=22
 pkgrel=1
@@ -22,10 +22,10 @@ makedepends=(
     'python-setuptools'
 )
 source=(
-    "${pkgname}-${pkgver}::${_ghurl}/archive/refs/tags/v${pkgver//_/-}.tar.gz"
+    "${pkgname}-${pkgver}.tar.gz::${_ghurl}/archive/refs/tags/v${pkgver//_/-}.tar.gz"
     "${pkgname}.sh"
 )
-sha256sums=('e96e0d5215c96338f9a8ffd04a02a1227e27319953af17d3479bea5e4afd4f36'
+sha256sums=('d48af01094b3a8451515987ecd701abc852498a96c43602f180e643b252f34bf'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
