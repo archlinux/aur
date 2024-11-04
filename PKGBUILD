@@ -1,9 +1,9 @@
 # Maintainer: Frederik “Freso” S. Olesen <archlinux@freso.dk>
 # Contributor: Christoph Korn <christoph.korn at posteo dot de>
 _pkgname=chatty
-pkgname=${_pkgname}
+pkgname=java-${_pkgname}
 pkgver=0.26
-pkgrel=2
+pkgrel=1
 pkgdesc='Twitch Chat Client for Desktop'
 arch=('any')
 url='https://chatty.github.io/'
@@ -12,6 +12,7 @@ depends=('java-runtime' 'sh')
 optdepends=('streamlink: for watching streams in a custom video player.'
             'livestreamer: for watching streams in a custom video player.')
 makedepends=('gradle' 'java-environment')
+conflicts=('chatty')
 source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/chatty/${_pkgname}/archive/v${pkgver}.tar.gz"
         "${_pkgname}.desktop"
         "${_pkgname}_script"

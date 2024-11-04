@@ -1,4 +1,4 @@
-[chatty]
+[java-chatty]
 source = "github"
 github = "chatty/chatty"
 use_latest_release = true

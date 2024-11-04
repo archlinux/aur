@@ -1,7 +1,7 @@
-pkgbase = chatty
+pkgbase = java-chatty
 	pkgdesc = Twitch Chat Client for Desktop
 	pkgver = 0.26
-	pkgrel = 2
+	pkgrel = 1
 	url = https://chatty.github.io/
 	arch = any
 	license = GPL-3.0-or-later
@@ -11,6 +11,7 @@ pkgbase = chatty
 	depends = sh
 	optdepends = streamlink: for watching streams in a custom video player.
 	optdepends = livestreamer: for watching streams in a custom video player.
+	conflicts = chatty
 	source = chatty-0.26.tar.gz::https://github.com/chatty/chatty/archive/v0.26.tar.gz
 	source = chatty.desktop
 	source = chatty_script
@@ -20,4 +21,4 @@ pkgbase = chatty
 	b2sums = ad27872651f6481b52721b286f3b22b5dde3c9d3a9f3bdf155a361f5733d20c0bd97515d283f0d038e96903e91e62e363dbb57aee25e018a4e7f4aa014ec715b
 	b2sums = fa6495c018023f244a924c2a37eafde6f26c13e4664480ca2ffdb3d7e97ba644f78db42bd75649825966ff70a3cfb1a4e9eff41087c501528f964f32ed0defe5
 
-pkgname = chatty
+pkgname = java-chatty
