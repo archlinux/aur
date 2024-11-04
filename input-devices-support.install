@@ -1,19 +1,31 @@
-add_users() {
+get_valid_users() {
     _l="/etc/login.defs"
     _p="/etc/passwd"
- 
-    ## get mini UID limit ##
-    l=$(grep "^UID_MIN" $_l)
- 
-    ## get max UID limit ##
-    l1=$(grep "^UID_MAX" $_l)
- 
+
+    ## get min and max UID limit ##
+    l=$(grep "^UID_MIN" "$_l")
+    l1=$(grep "^UID_MAX" "$_l")
+
     ## use awk to print if UID >= $MIN and UID <= $MAX and shell is not /sbin/nologin ##
-    users=$(awk -F':' -v "min=${l##UID_MIN}" -v "max=${l1##UID_MAX}" '{ if ( $3 >= min && $3 <= max  && $7 != "/sbin/nologin" ) print $0 }' "$_p" | cut -d: -f1)
+    awk -F':' -v "min=${l##UID_MIN}" -v "max=${l1##UID_MAX}" '{
+        if ($3 >= min && $3 <= max && $7 != "/sbin/nologin") print $0
+    }' "$_p" | cut -d: -f1
+}
+
+add_users() {
+    users=$(get_valid_users)
     for i in $users; do
         echo "Adding user '$i' to user-group 'input,video'"
-        usermod -a -G input $i
-        usermod -a -G video $i
+        usermod -a -G input "$i"
+        usermod -a -G video "$i"
+    done
+}
+
+disable_gestures() {
+    users=$(get_valid_users)
+    for i in $users; do
+        echo "Disabling libinput-gestures.service for user '$i'"
+        sudo systemctl --machine "$i"@ disable --now --user libinput-gestures.service
     done
 }
 
@@ -28,6 +40,20 @@ post_install() {
 }
 
 post_upgrade() {
-    systemctl  enable touchegg
     add_group
+    cat <<EOF
+
+********************"
+
+If you need advanced gesture support, run the command:
+libinput-gestures-setup service autostart start for your user,
+and to disable it, run libinput-gestures-setup service autostop stop
+********************"
+
+EOF
+
+}
+
+pre_remove() {
+    disable_gestures
 }
