@@ -1,0 +1,25 @@
+pkgbase = python-langfuse
+	pkgdesc = A client library for accessing langfuse
+	pkgver = 2.53.3
+	pkgrel = 1
+	url = https://github.com/langchain-ai/langchain
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-poetry-core
+	makedepends = python-wheel
+	depends = python-anyio
+	depends = python-backoff
+	depends = python-httpx
+	depends = python-idna
+	depends = python-packaging
+	depends = python-pydantic
+	depends = python-wrapt
+	optdepends = python-langchain
+	optdepends = python-llama-index
+	optdepends = python-openai
+	source = langfuse-2.53.3.tar.gz::https://files.pythonhosted.org/packages/source/l/langfuse/langfuse-2.53.3.tar.gz
+	sha256sums = 702ee42669f8283c0b4400fdf039f13b896e18c8b94ad20c079148c2894cbc64
+
+pkgname = python-langfuse
