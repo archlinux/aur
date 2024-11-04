@@ -1,0 +1,20 @@
+pkgbase = snapcast-gui-git
+	pkgdesc = A GUI to control Snapcast
+	pkgver = v0.1.0.r19.g9e9bb92
+	pkgrel = 1
+	url = https://github.com/chicco-carone/Snapcast-Gui
+	arch = x86_64
+	license = GPLv3
+	makedepends = python-notify-py
+	depends = git
+	depends = python
+	depends = pyside6
+	depends = python-setuptools
+	depends = python-wheel
+	depends = python-platformdirs
+	provides = snapcast-gui
+	conflicts = snapcast-gui
+	source = snapcast-gui-git::git+https://github.com/chicco-carone/Snapcast-Gui.git
+	sha256sums = SKIP
+
+pkgname = snapcast-gui-git
