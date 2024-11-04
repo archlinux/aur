@@ -4,12 +4,14 @@
 
 pkgname=python-wordllama
 pkgver=0.3.6.post1
-pkgrel=1
+pkgrel=2
 pkgdesc="WordLlama NLP Utility"
 arch=(any)
-url="https://github.com/dleemiller"
+url="https://github.com/dleemiller/WordLlama"
 license=(MIT License)
 makedepends=("python" "python-pip")
+depends=("python-tokenizers" "python-safetensors" "python-toml")
+
 build() {
   pip install --no-deps --target="wordllama" wordllama==0.3.6.post1
 }
