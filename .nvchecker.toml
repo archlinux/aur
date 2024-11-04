@@ -1,0 +1,3 @@
+[nodejs-fontmin]
+source = "npm"
+npm = "fontmin"
