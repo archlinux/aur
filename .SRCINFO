@@ -1,0 +1,18 @@
+pkgbase = python-rank-bm25
+	pkgdesc = Various BM25 algorithms for document ranking
+	pkgver = 0.2.2
+	pkgrel = 1
+	url = https://github.com/dorianbrown/rank_bm25
+	arch = any
+	license = Apache-2.0
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python-numpy
+	source = rank-bm25-0.2.2.tar.gz::https://files.pythonhosted.org/packages/source/r/rank_bm25/rank_bm25-0.2.2.tar.gz
+	source = version-0.2.2.py::https://github.com/dorianbrown/rank_bm25/raw/refs/tags/0.2.2/version.py
+	sha256sums = 096ccef76f8188563419aaf384a02f0ea459503fdf77901378d4fd9d87e5e51d
+	sha256sums = c98ea549a508952b84f6dc8153aa143944661fe45ade8b58eb59516f04d59704
+
+pkgname = python-rank-bm25
