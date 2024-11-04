@@ -3,7 +3,7 @@
 _repo=ideapad-laptop-tb
 _module_name=ideapad-laptop-tb
 pkgname=${_module_name}-dkms
-pkgver=r2.5e4dab4
+pkgver=2
 pkgrel=1
 pkgdesc="The IdeaPad ACPI Extras kernel modules for ThinkBook 2024 NoteBooks (DKMS)"
 url="https://github.com/ferstar/${_repo}"
@@ -15,14 +15,6 @@ provides=("${_module_name}=${pkgver}")
 conflicts=("${_module_name}")
 source=("git+https://github.com/ferstar/${_repo}")
 sha256sums=('SKIP')
-
-pkgver() {
-  cd "${srcdir}"/"$_repo" || exit
-  ( set -o pipefail
-    git describe --long --abbrev=7 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
-  )
-}
 
 package() {
   _dkms_dest="${pkgdir}"/usr/src/${_module_name}-${pkgver}
