@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=jm-desktop-bin
-pkgver=1.6.1
+pkgver=1.7.1
 _electronversion=33
 pkgrel=1
-pkgdesc="A jm comic desktop app by react + electron.Prebuilt version.Use system-wide electron.一个禁漫的第三方客户端"
+pkgdesc="A jm comic desktop app by react + electron.Prebuilt version.一个禁漫的第三方客户端"
 arch=('x86_64')
 url="https://github.com/Dedicatus546/jm-desktop"
 license=('GPL-3.0-only')
@@ -16,22 +16,24 @@ depends=(
     'gtk3'
 )
 makedepends=(
-    'fuse2'
+    'gendesk'
 )
+noextract=("${pkgname%-bin}-${pkgver}.zip")
 source=(
-    "${pkgname%-bin}-${pkgver}.AppImage::${url}/releases/download/v${pkgver}/${pkgname%-bin}-Linux-${pkgver}.AppImage"
+    "${pkgname%-bin}-${pkgver}.zip::${url}/releases/download/v${pkgver}/${pkgname%-bin}-Linux-${pkgver}.zip"
+    "${pkgname%-bin}-${pkgver}.png::https://raw.githubusercontent.com/Dedicatus546/jm-desktop/v${pkgver}/public/png/512x512.png"
 )
-sha256sums=('6330238bd7413a59991c54f3e683be922f964a377715061f37cf5e05eebb82b9')
+sha256sums=('5ebe3f4ff60dc838f714dced4b2321aa1077d10abd4275cdbfda0997d0ae487f'
+            'b09140b89c05bcf1bfa0f0db74aa55f83b4fdbc4cd6955efeb539631f57d4528')
 build() {
-    chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
-    "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
-    sed -i "s/AppRun --no-sandbox/${pkgname%-bin}/g" "${srcdir}/squashfs-root/${pkgname%-bin}.desktop"
-    find "${srcdir}/squashfs-root" -type d -exec chmod 755 {} +
+    install -Dm755 -d "${srcdir}/usr/"{bin,lib/"${pkgname%-bin}"}
+    bsdtar -xf "${srcdir}/${pkgname%-bin}-${pkgver}.zip" -C "${srcdir}/usr/lib/${pkgname%-bin}"
+    gendesk -q -f -n --pkgname="${pkgname%-bin}" --pkgdesc="${pkgdesc}" --categories="AudioVideo" --name="${pkgname%-bin}" --exec="${pkgname%-bin} %U"
+    find "${srcdir}/usr/lib/${pkgname%-bin}" -type d -exec chmod 755 {} +
 }
 package() {
-    install -Dm755 -d "${pkgdir}/usr/"{bin,lib/"${pkgname%-bin}"}
-    cp -Pr --no-preserve=ownership "${srcdir}/squashfs-root/"* "${pkgdir}/usr/lib/${pkgname%-bin}"
+    cp -Pr --no-preserve=ownership "${srcdir}/usr" "${pkgdir}"
     ln -sf "/usr/lib/${pkgname%-bin}/${pkgname%-bin}" "${pkgdir}/usr/bin/${pkgname%-bin}"
-    install -Dm644 "${srcdir}/squashfs-root/usr/share/icons/hicolor/256x256/apps/${pkgname%-bin}.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-bin}.png"
-    install -Dm644 "${srcdir}/squashfs-root/${pkgname%-bin}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
+    install -Dm644 "${srcdir}/${pkgname%-bin}-${pkgver}.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-bin}.png"
+    install -Dm644 "${srcdir}/${pkgname%-bin}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
