@@ -1,8 +1,8 @@
 # Maintainer: Mike Swanson <mikeonthecomputer@gmail.com>
 
 pkgname=eternity-engine
-pkgver=4.02.00
-pkgrel=2
+pkgver=4.04.01
+pkgrel=1
 pkgdesc="An advanced Doom port with vanilla compatibility"
 url="http://eternity.youfailit.net/"
 arch=('i686' 'x86_64')
@@ -18,7 +18,7 @@ prepare() {
   cd "${srcdir}/eternity"
   git submodule init
   git config submodule.adlmidi.url "${srcdir}/libADLMIDI"
-  git submodule update
+  git -c protocol.file.allow=always submodule update
 
   for patch in ../*.patch; do
     if [ ! -f "$patch" ]; then
