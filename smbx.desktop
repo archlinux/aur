@@ -1,0 +1,8 @@
+[Desktop Entry]
+Version=1.1
+Type=Application
+Name=SMBX
+Comment=Super Mario Bros. X is a Mario fan game originally made by Andrew Spinks in the year 2009 and supported by him up to 2011. This game combines various aspects of Super Mario Bros., Super Mario Bros. 2, Super Mario Bros. 3, Super Mario World, and other Mario games.
+Icon=smbx
+Exec=/usr/bin/thextech -c /usr/games/thextech/assets/smbx/
+Categories=Game;
