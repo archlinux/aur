@@ -3,11 +3,11 @@
 _pkgname=chatty
 pkgname=${_pkgname}
 pkgver=0.26
-pkgrel=1
+pkgrel=2
 pkgdesc='Twitch Chat Client for Desktop'
 arch=('any')
 url='https://chatty.github.io/'
-license=('GPL3')
+license=('GPL-3.0-or-later')
 depends=('java-runtime' 'sh')
 optdepends=('streamlink: for watching streams in a custom video player.'
             'livestreamer: for watching streams in a custom video player.')
