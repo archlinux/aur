@@ -1,7 +1,7 @@
 # Maintainer: Entailz <entail-wraps0r at icloud dot com>
 
 pkgname=quickshell
-pkgver=0.1.4e48c6e
+pkgver=0.1.2e18340
 pkgrel=1
 pkgdesc='Simple and flexbile QtQuick based desktop shell toolkit.'
 arch=(x86_64 aarch64)
@@ -48,7 +48,8 @@ build() {
 		-DCMAKE_BUILD_TYPE="RelWithDebInfo" \
 		-DCMAKE_INSTALL_PREFIX=/usr \
 		-DDISTRIBUTOR="AUR (package: quickshell)" \
-		-DDISTRIBUTOR_DEBUGINFO_AVAILABLE=NO
+		-DDISTRIBUTOR_DEBUGINFO_AVAILABLE=NO \
+		-DINSTALL_QML_PREFIX=/lib/qt6/qml
 
 	cmake --build build
 }

@@ -1,6 +1,6 @@
 pkgbase = quickshell
 	pkgdesc = Simple and flexbile QtQuick based desktop shell toolkit.
-	pkgver = 0.1.4e48c6e
+	pkgver = 0.1.2e18340
 	pkgrel = 1
 	url = https://github.com/outfoxxed/quickshell
 	arch = x86_64
@@ -20,7 +20,7 @@ pkgbase = quickshell
 	depends = wayland
 	depends = cli11
 	depends = google-breakpad
-	provides = quickshell=0.1.4e48c6e
+	provides = quickshell=0.1.2e18340
 	conflicts = quickshell
 	options = !strip
 	source = git+https://github.com/outfoxxed/quickshell.git
