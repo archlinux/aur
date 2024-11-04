@@ -1,6 +1,6 @@
 # Maintainer: Frederick Price <fprice at pricemail dot ca>
 
-pkgname=python-openlp-OSC-control
+pkgname=python-openlp-osc-control
 _reponame=openlposccontrol
 pkgver=0.1.3
 pkgrel=1
