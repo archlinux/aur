@@ -3,7 +3,7 @@
 # Contributor: Acidhub <dev@acidhub.click>
 
 pkgname=steam-tools-ng
-pkgver=3.3.1
+pkgver=4.0
 pkgrel=1
 pkgdesc="Some useful tools for use with steam client or compatible programs, websites"
 arch=('any')
@@ -14,7 +14,7 @@ license=('GPL')
 source=(
     "https://github.com/calendulish/$pkgname/archive/v${pkgver}.tar.gz"
 )
-sha256sums=('c61e0eedcad58f8cf25dc4830b6cb74ecd505558eb2aabee4fb4ff1324949f9b')
+sha256sums=('3f8c362965ea666db8467b94846ddff952bec93c7aa390fe057a1254b321b0bc')
 
 build() {
     cd $pkgname-$pkgver

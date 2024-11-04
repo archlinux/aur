@@ -1,6 +1,6 @@
 pkgbase = steam-tools-ng
 	pkgdesc = Some useful tools for use with steam client or compatible programs, websites
-	pkgver = 3.3.1
+	pkgver = 4.0
 	pkgrel = 1
 	url = https://github.com/calendulish/steam-tools-ng
 	arch = any
@@ -18,7 +18,7 @@ pkgbase = steam-tools-ng
 	depends = python-gobject
 	depends = gtk4
 	depends = xdg-utils
-	source = https://github.com/calendulish/steam-tools-ng/archive/v3.3.1.tar.gz
-	sha256sums = c61e0eedcad58f8cf25dc4830b6cb74ecd505558eb2aabee4fb4ff1324949f9b
+	source = https://github.com/calendulish/steam-tools-ng/archive/v4.0.tar.gz
+	sha256sums = 3f8c362965ea666db8467b94846ddff952bec93c7aa390fe057a1254b321b0bc
 
 pkgname = steam-tools-ng
