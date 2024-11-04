@@ -1,0 +1,10 @@
+pkgbase = arptofile
+	pkgdesc = An arp-scan script that prints necessary information to a file
+	pkgver = 1.0
+	pkgrel = 1
+	arch = any
+	license = MIT
+	source = arptofile
+	md5sums = SKIP
+
+pkgname = arptofile
