@@ -18,23 +18,7 @@ package_sylixos-cross-compiler-toolchain() {
     _install_dir="opt/sylixos"
     #extracting
     install -dm755 "${pkgdir}/${_install_dir}"
-    tar xzf ${srcdir}/realevo-linux-tools/compiler_pub.tar.gz -C "${pkgdir}/${_install_dir}"
-
-    #fix user mod
-    TARGET_PATH="${pkgdir}/${_install_dir}/compiler/"
-    find "$TARGET_PATH" -type f -o -type d | while read -r item; do
-        if [ -f "$item" ]; then
-            if [[ "$item" == */lib/* || "$item" == */bin/* ]]; then
-                chmod 777 "$item"
-            elif [ "$(stat -c "%a" "$item")" -ne 766 ]; then
-                chmod 766 "$item"
-            fi
-        elif [ -d "$item" ]; then
-            if [ "$(stat -c "%a" "$item")" -ne 755 ]; then
-                chmod 755 "$item"
-            fi
-        fi
-    done
+    tar --no-same-owner --no-same-permissions -xaf ${srcdir}/realevo-linux-tools/compiler_pub.tar.gz -C "${pkgdir}/${_install_dir}"
 
     #symlinking
     install -dm755 "${pkgdir}/usr/bin"
