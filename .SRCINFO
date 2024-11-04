@@ -1,0 +1,14 @@
+pkgbase = blast
+	pkgdesc = blast your linux audio to DLNA receivers
+	pkgver = v0.7.0
+	pkgrel = 1
+	url = https://github.com/ugjka/blast
+	arch = any
+	license = MIT+NoAI
+	makedepends = go
+	makedepends = go-tools
+	provides = blast
+	source = blast-v0.7.0.tar.gz::https://github.com/ugjka/blast/archive/refs/tags/v0.7.0.tar.gz
+	sha256sums = 9c05c0731445b3c4061f3f52bbe4210503ae27e83c15cfcb6121f8dad4dc550f
+
+pkgname = blast
