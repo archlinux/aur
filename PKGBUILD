@@ -10,7 +10,7 @@ makedepends=('python-build' 'python-hatchling' 'python-installer' 'python-setupt
 source=("${pkgbase}-${pkgver}.tar.gz::${_url}/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('3a5c849b2193397db6cf7a4352bbe747f81cdcc234698dc8d5e516d415db0b71')
 
-# run './geninfo.sh' to generate following variables after run 'makepkg'
+# run './geninfo.sh' to generate following variables
 pkgname=(
     "python-opentelemetry-contrib-instrumentations"
     "python-opentelemetry-distro"
