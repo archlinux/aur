@@ -1,6 +1,5 @@
 # Maintainer: nealinux <vimlinux@proton.me>
-# Packager: nealinux <vimlinux@proton.me>
-# Maintainer: Tenshi65535-2023 <wu.junyu.aur@outlook.com>
+# Contributor: Tenshi65535 <wu.junyu.aur@outlook.com>
 # Contributor: ston <2424284164@qq.com>
 pkgname=go-musicfox
 pkgver=4.5.7
