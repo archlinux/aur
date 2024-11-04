@@ -1,0 +1,49 @@
+From a29eb7e459f80308c7cff77ad749cbe5e60e35c1 Mon Sep 17 00:00:00 2001
+From: rigaya <rigaya34589@live.jp>
+Date: Sun, 3 Nov 2024 09:49:38 +0900
+Subject: [PATCH 1/2] =?UTF-8?q?libhdr10plus=E9=96=A2=E9=80=A3=E3=81=AE?=
+ =?UTF-8?q?=E4=BF=AE=E6=AD=A3=E3=80=82?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ NVEncCore/rgy_hdr10plus.cpp | 10 +++++++---
+ 1 file changed, 7 insertions(+), 3 deletions(-)
+
+diff --git a/NVEncCore/rgy_hdr10plus.cpp b/NVEncCore/rgy_hdr10plus.cpp
+index 964cabbd..a4712ae2 100644
+--- a/NVEncCore/rgy_hdr10plus.cpp
++++ b/NVEncCore/rgy_hdr10plus.cpp
+@@ -42,8 +42,8 @@
+ #endif
+ 
+ RGYHDR10Plus::RGYHDR10Plus() :
+-    m_inputJson(),
+-    m_hdr10plusJson(std::unique_ptr<Hdr10PlusRsJsonOpaque, funcHdr10PlusRsJsonOpaqueDelete>(nullptr, nullptr)) {
++    m_hdr10plusJson(std::unique_ptr<Hdr10PlusRsJsonOpaque, funcHdr10PlusRsJsonOpaqueDelete>(nullptr, nullptr)),
++    m_inputJson() {
+ }
+ 
+ RGYHDR10Plus::~RGYHDR10Plus() {
+@@ -64,12 +64,16 @@ RGY_ERR RGYHDR10Plus::init(const tstring &inputJson) {
+     }
+     return RGY_ERR_NONE;
+ #else
+-    reutnr RGY_ERR_UNSUPPORTED;
++    return RGY_ERR_UNSUPPORTED;
+ #endif
+ }
+ 
+ tstring RGYHDR10Plus::getError() {
++#if ENABLE_LIBHDR10PLUS
+     return (m_hdr10plusJson) ? char_to_tstring(hdr10plus_rs_json_get_error(m_hdr10plusJson.get())) : tstring();
++#else
++    return tstring();
++#endif
+ }
+ 
+ const std::vector<uint8_t> RGYHDR10Plus::getData(int iframe) {
+-- 
+2.47.0
+
