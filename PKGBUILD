@@ -3,8 +3,8 @@
 # Contributor: Marc Plano-Lesay <marc.planolesay@gmail.com>
 
 pkgname=bazelisk
-pkgver=1.20.0
-pkgrel=2
+pkgver=1.22.1
+pkgrel=1
 pkgdesc='A user-friendly launcher for Bazel.'
 arch=('x86_64')
 url='https://github.com/bazelbuild/bazelisk'
@@ -15,7 +15,7 @@ makedepends=('go' 'git')
 provides=('bazel')
 conflicts=('bazel' 'bazelisk-bin')
 source=("bazelisk-v$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('3c2303d45562cf7a9bc64ad41b670f38c2634bf8ba5b3acffa2997577955b3e0')
+sha256sums=('64b584d1019d54cde34123d8da06c718c7a7c591f9fd49a29dccb825b9e95e8c')
 
 build() {
   cd $srcdir/bazelisk-$pkgver
