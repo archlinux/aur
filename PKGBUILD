@@ -8,7 +8,7 @@ _pkgname=ninja
 pkgname=$_pkgname-jobserver
 provides=(ninja)
 conflicts=(ninja)
-pkgver=r2936.c9e21db
+pkgver=r3149.34398e7
 pkgrel=1
 pkgdesc='Small build system with a focus on speed (with job server and client patch)'
 arch=(x86_64)
@@ -17,10 +17,10 @@ license=(Apache-2.0)
 depends=(gcc-libs)
 makedepends=(cmake python re2c emacs-nox git)
 checkdepends=(gtest)
-_srcdir='ninja-jobserver-fifo'
-_commit='c9e21dbbc4c746ba397c0f9bec5f65c99f783c08'
-source=("${_srcdir}::git+https://github.com/stefanb2/ninja.git#commit=$_commit")
-sha256sums=('a7be977b9c915b1289329395d44ca9eac0df87950a366e00f0875d9ab7712dff')
+_srcdir='ninja-digit-google'
+_commit='34398e7634255377eb2988feffe17da646a80e38'
+source=("${_srcdir}::git+https://github.com/digit-google/ninja.git#commit=$_commit")
+sha256sums=('1be0cd16f982dee75bd13cf0ecf035c2764ceb933af3a1d9ac12cb5d141135b4')
 
 pkgver() {
 	cd "${_srcdir}"
@@ -49,6 +49,7 @@ package() {
   local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
 
   install -m755 -D build-cmake/ninja "$pkgdir/usr/bin/ninja"
+  install -m755 -D 'misc/jobserver_pool.py' "$pkgdir/usr/bin/jobserver-pool"
   install -m644 -D doc/manual.asciidoc "$pkgdir/usr/share/doc/ninja/manual.asciidoc"
   install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
 

@@ -1,6 +1,6 @@
 pkgbase = ninja-jobserver
 	pkgdesc = Small build system with a focus on speed (with job server and client patch)
-	pkgver = r2936.c9e21db
+	pkgver = r3149.34398e7
 	pkgrel = 1
 	url = https://ninja-build.org/
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = ninja-jobserver
 	depends = gcc-libs
 	provides = ninja
 	conflicts = ninja
-	source = ninja-jobserver-fifo::git+https://github.com/stefanb2/ninja.git#commit=c9e21dbbc4c746ba397c0f9bec5f65c99f783c08
-	sha256sums = a7be977b9c915b1289329395d44ca9eac0df87950a366e00f0875d9ab7712dff
+	source = ninja-digit-google::git+https://github.com/digit-google/ninja.git#commit=34398e7634255377eb2988feffe17da646a80e38
+	sha256sums = 1be0cd16f982dee75bd13cf0ecf035c2764ceb933af3a1d9ac12cb5d141135b4
 
 pkgname = ninja-jobserver
