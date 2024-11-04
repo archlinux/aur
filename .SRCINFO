@@ -1,0 +1,19 @@
+pkgbase = infoz-bin
+	pkgdesc = See your system information graphically.Prebuilt version.
+	pkgver = 0.0.9
+	pkgrel = 1
+	url = https://github.com/erfanbanaei/infoz
+	arch = x86_64
+	license = LicenseRef-unknown
+	makedepends = gendesk
+	depends = gtk3
+	provides = infoz=0.0.9
+	conflicts = infoz
+	source = infoz-0.0.9.tar.gz::https://github.com/erfanbanaei/infoz/releases/download/v0.0.9/linux-release-v0.0.9.tar.gz
+	source = infoz-0.0.9.png::https://raw.githubusercontent.com/erfanbanaei/infoz/v0.0.9/web/icons/Icon-512.png
+	source = infoz.sh
+	sha256sums = 3a2d41ba78b990c7b1ab02cfc9a88710d71f92af7958196d79b53a6a77616920
+	sha256sums = baccb205ae45f0b421be1657259b4943ac40c95094ab877f3bcbe12cd544dcbe
+	sha256sums = 3b8311438e88f47eb507322a43c7a4156bfebb8c0f6e7b7436ef70842fb4c745
+
+pkgname = infoz-bin
