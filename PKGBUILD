@@ -1,8 +1,8 @@
 #Maintainer: Armin Luntzer <armin.luntzer@univie.ac.at>
 
 pkgname=star-system
-pkgver=5.04
-pkgrel=3
+pkgver=6.00
+pkgrel=1
 pkgdesc="STAR-System is the new driver and API system provided with all new and future STAR-Dundee interface and router devices."
 arch=('x86_64')
 url="http://www.star-dundee.com"
@@ -10,7 +10,7 @@ license=('custom')
 optdepends=('qt5-multimedia')
 makedepends=('linux-headers' 'fakeroot')
 
-source=("file://star-system_linux_x86-64_v5.04.tgz"
+source=("file://star-system_linux_x86-64_v6.00.tgz"
 	"star-system.service"
 	"kbuild.patch"
 	"version.patch"
@@ -32,7 +32,7 @@ prepare() {
 
 	cd ${srcdir}/tmp
 	patch -Np0 -i ${srcdir}/kbuild.patch
-	patch -Np3 -i ${srcdir}/version.patch
+	#patch -Np3 -i ${srcdir}/version.patch
 }
 
 
@@ -59,30 +59,6 @@ build() {
 
 	make -f Kbuild EXTRA_CFLAGS=-DSTAR_TRY_NEWER_KERNEL CONFIG_WERROR=n
 	cp star_spw_usb.ko ../
-
-	# build test programs
-
-	cd ${srcdir}/tmp/examples/star_system_test
-	CFLAGS='-L../../lib/x86-64 -Wl,-rpath-link=../../lib/x86-64' make
-
-	cd ${srcdir}/tmp/examples/performance_tester
-	CFLAGS='-L../../lib/x86-64 -Wl,-rpath-link=../../lib/x86-64' make
-
-	cd ${srcdir}/tmp/examples/time-code_test
-	CFLAGS='-L../../lib/x86-64 -Wl,-rpath-link=../../lib/x86-64' make
-
-	cd ${srcdir}/tmp/examples/rmap
-	CFLAGS='-L../../lib/x86-64 -Wl,-rpath-link=../../lib/x86-64' make
-
-	cd ${srcdir}/tmp/examples/config/brickMk2_configuration
-	CFLAGS='-L../../../lib/x86-64 -Wl,-rpath-link=../../../lib/x86-64' make
-
-	cd ${srcdir}/tmp/examples/config/pciMk2_configuration
-	CFLAGS='-L../../../lib/x86-64 -Wl,-rpath-link=../../../lib/x86-64' make
-
-	cd ${srcdir}/tmp/examples/config/routerMk2S_configuration
-	CFLAGS='-L../../../lib/x86-64 -Wl,-rpath-link=../../../lib/x86-64' make
-
 }
 
 
@@ -113,12 +89,6 @@ package() {
 	install -m644 ${srcdir}/99-star_spw_pci.rules    ${pkgdir}/usr/lib/udev/rules.d
 	install -m644 ${srcdir}/99-star_ultra_pcie.rules ${pkgdir}/usr/lib/udev/rules.d
 
-
-	cd ${srcdir}/tmp/
-	# test binaries
-	mkdir -p ${pkgdir}/usr/bin
-	install -m755 examples/*/bin/* examples/config/*/bin/* ${pkgdir}/usr/bin
-
 	# GUI binaries
 	#mkdir -p ${pkgdir}/usr/bin
 	install -m755 $(ls -1 -d lib/x86-64/Qt5/*|grep -v "\.so") ${pkgdir}/usr/bin
@@ -131,7 +101,7 @@ package() {
 	chmod 775  ${pkgdir}/run/lock/subsys
 
 }
-md5sums=('fa97e3cdb841592b41de26340d6f994b'
+md5sums=('b540f74aa865ddf54976b41dc4f932c8'
          '27cdc9e2194c607bd3dddd836436d1b5'
          'ff68ba2ba6f66417be61b665ee9c640c'
          'a199b4efd164a0624069a890af16e919'
