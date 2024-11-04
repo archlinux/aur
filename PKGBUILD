@@ -10,8 +10,8 @@ unset _pkgtype
 # basic info
 _pkgname="fanficfare"
 pkgname="$_pkgname${_pkgtype:-}"
-pkgver=4.32.3.r21.g56d1cf1
-pkgrel=1
+pkgver=4.40.0.r0.g9005f9d
+pkgrel=2
 pkgdesc="Tool to make eBooks from stories on fanfiction and other websites"
 url="https://github.com/JimmXinu/FanFicFare"
 license=(
@@ -25,14 +25,13 @@ depends=(
   'python-beautifulsoup4'
   'python-brotli'
   'python-chardet'
+  'python-cloudscraper' # AUR
+  'python-colorama'
   'python-html2text'
-  'python-html5lib'
   'python-requests'
   'python-requests-file'
+  'python-six'
   'python-urllib3'
-
-  # AUR
-  'python-cloudscraper'
 )
 makedepends=(
   'git'
@@ -56,7 +55,7 @@ sha256sums=(
   '6d172dcc98a8f6dcef2048272bfabd810ceeb5740969fbe406ebcd7b638e072c'
 )
 
-if [ "${_build_git::1}" != "t" ] ; then
+if [ "${_build_git::1}" != "t" ]; then
   # stable
   _prepare() {
     cd "$_pkgsrc"
@@ -94,7 +93,7 @@ else
 fi
 
 prepare() {
-  ( _prepare )
+  (_prepare)
 
   cd "$_pkgsrc"
   patch -p1 -i ../0001-makeplugin-do-not-bundle-system-dependencies.patch
@@ -112,6 +111,6 @@ build() {
 
 package() {
   cd "$_pkgsrc"
-  python -m installer --destdir="$pkgdir" "$(ls -1 -- dist/FanFicFare-*.whl | sort -rV | head -1)"
+  python -m installer --destdir="$pkgdir" dist/FanFicFare-*.whl
   install -Dm644 FanFicFare.zip "$pkgdir"/usr/share/calibre/system-plugins/FanFicFare.zip
 }
