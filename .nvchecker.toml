@@ -1,6 +1,0 @@
-[python-langchain-community]
-source = "github"
-github = "langchain-ai/langchain"
-prefix = "langchain-community=="
-include_regex = "langchain-community==\\d+\\.\\d+\\.\\d+"
-use_max_tag = true

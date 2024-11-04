@@ -1,84 +1,26 @@
-# Maintainer: txtsd <aur.archlinux@ihavea.quest>
+# Maintainer: devome <evinedeng@hotmail.com>
+# Contributor: txtsd <aur.archlinux@ihavea.quest>
 
-pkgname=python-langchain-community
-_pkgname=${pkgname#python-}
-pkgver=0.2.1
+_pkgname=langchain-community
+_pipname="${_pkgname//-/_}"
+pkgname="python-${_pkgname}"
+pkgver=0.3.5
 pkgrel=1
 pkgdesc="Community contributed LangChain integrations."
-url='https://github.com/langchain-ai/langchain'
-depends=(python
-    python-aiohttp
-    python-dataclasses-json
-    python-langchain-core
-    python-langsmith
-    python-numpy
-    python-yaml
-    python-requests
-    python-sqlalchemy
-    python-tenacity
-    python-tiktoken
-    python-lxml
-    python-steam
-    python-google-auth
-    python-psycopg2
-    python-feedparser
-    python-pytube
-    python-beautifulsoup4
-    python-redis
-    python-html2text
-    python-pychm
-    python-google-auth-oauthlib
-    python-scikit-learn
-    python-reportlab
-    python-pyparsing
-    python-websocket-client
-    python-google-api-python-client
-    python-googleapis-common-protos
-    python-pillow
-    python-chardet
-    python-xmltodict
-    python-magic
-    python-joblib
-    yt-dlp
-    python-grpcio
-    python-selenium
-    python-google-api-core
-    python-pygithub
-    python-protobuf
-    python-pytz
-    python-openai
-    python-packaging
-    python-tqdm
-    python-jsonpatch
-    python-tomli
-    python-typing_extensions
-    python-pandas
-    python-httpx
-    python-urllib3
-    python-psutil
-    python-requests-toolbelt
-    python-pypdf
-    python-boto3
-    python-botocore
-    python-tree-sitter
-    python-tree-sitter-languages-bin
-    python-pyjwt
-    python-mypy_extensions
-)
-makedepends=('python-build' 'python-installer' 'python-wheel' 'python-poetry-core')
-license=('MIT')
 arch=('any')
-_src_name="${_pkgname%%-*}-${_pkgname}-${pkgver}"
-source=("${_pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/langchain-community==${pkgver}.tar.gz")
-sha256sums=('15ec63e8a8053642c7420c78f940233e322a06cd8d3b24989912c325babb7332')
+url="https://github.com/langchain-ai/langchain"
+license=('MIT')
+depends=(python-aiohttp python-dataclasses-json python-httpx-sse python-langchain python-langchain-core python-langsmith python-numpy python-pydantic-settings python-pyyaml python-requests python-sqlalchemy python-tenacity)
+makedepends=('python-build' 'python-installer' 'python-poetry-core' 'python-wheel')
+source=("${_pkgname}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_pipname::1}/${_pipname}/${_pipname}-${pkgver}.tar.gz")
+sha256sums=('345febbc972a08c97f09cce6cc07d039aa7d1348fe8efdace85335be6ac9cb7d')
 
 build() {
-    cd "${_src_name}/libs/${_pkgname#langchain-}"
+    cd "${_pipname}-${pkgver}"
     python -m build --wheel --no-isolation
 }
 
 package() {
-    cd "${_src_name}/libs/${_pkgname#langchain-}"
+    cd "${_pipname}-${pkgver}"
     python -m installer --destdir="${pkgdir}" dist/*.whl
-    install -Dm644 "${srcdir}/${_src_name}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
