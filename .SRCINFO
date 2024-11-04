@@ -1,0 +1,21 @@
+pkgbase = python-pysylph
+	pkgdesc = PyO3 bindings and Python interface to sylph, an ultrafast method for containment ANI querying and taxonomic profiling.
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/althonos/pysylph
+	arch = i686
+	arch = pentium4
+	arch = x86_64
+	arch = armv7h
+	arch = aarch64
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-maturin
+	makedepends = cargo
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/p/pysylph/pysylph-0.1.1.tar.gz
+	sha256sums = 9b9f4110e2d18d019e7897da8df383a73adb39cbed1a0c5dac9793ea37a7560e
+
+pkgname = python-pysylph
