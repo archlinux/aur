@@ -1,0 +1,24 @@
+pkgbase = python-jax-bin
+	pkgdesc = Composable transformations of Python+NumPy programs
+	pkgver = 0.4.35
+	pkgrel = 1
+	url = https://github.com/jax-ml/jax/
+	arch = any
+	license = Apache
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python-absl
+	depends = python-jaxlib>=0.4.35
+	depends = python-ml-dtypes
+	depends = python-numpy
+	depends = python-opt_einsum
+	depends = python-scipy
+	optdepends = python-protobuf: Australis
+	optdepends = python-requests: Distributed computations
+	provides = python-jax
+	conflicts = python-jax
+	source = https://files.pythonhosted.org/packages/source/j/jax/jax-0.4.35.tar.gz
+	sha256sums = c0c986993026b10bf6f607fecb7417377460254640766ce40f1fef3fd139c12e
+
+pkgname = python-jax-bin
