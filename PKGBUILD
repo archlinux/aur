@@ -4,7 +4,7 @@
 
 _pkgname="telegram-desktop"
 pkgname="$_pkgname-git"
-pkgver=5.7.0.r1.g1ca1f0f
+pkgver=5.7.1.r0.g233eb6d
 pkgrel=1
 pkgdesc='Official Telegram Desktop client'
 url="https://github.com/telegramdesktop/tdesktop"
@@ -67,7 +67,6 @@ _source_telegram_desktop() {
     'cyan4973.xxhash'::'git+https://github.com/Cyan4973/xxHash.git'
     'desktop-app.cmake_helpers'::'git+https://github.com/desktop-app/cmake_helpers.git'
     'desktop-app.codegen'::'git+https://github.com/desktop-app/codegen.git'
-    'desktop-app.gsl'::'git+https://github.com/desktop-app/GSL.git'
     'desktop-app.lib_base'::'git+https://github.com/desktop-app/lib_base.git'
     'desktop-app.lib_crl'::'git+https://github.com/desktop-app/lib_crl.git'
     'desktop-app.lib_lottie'::'git+https://github.com/desktop-app/lib_lottie.git'
@@ -92,6 +91,7 @@ _source_telegram_desktop() {
     #'kde.kcoreaddons'::'git+https://github.com/KDE/kcoreaddons.git'
     #'kde.kimageformats'::'git+https://github.com/KDE/kimageformats.git'
     'lz4'::'git+https://github.com/lz4/lz4.git'
+    'microsoft.gsl'::'git+https://github.com/Microsoft/GSL.git'
     'nayuki.qr-code-generator'::'git+https://github.com/nayuki/QR-Code-generator.git'
     'tartanllama.expected'::'git+https://github.com/TartanLlama/expected.git'
     'telegramdesktop.libtgvoip'::'git+https://github.com/telegramdesktop/libtgvoip.git'
@@ -140,7 +140,6 @@ _source_telegram_desktop() {
       'cyan4973.xxhash'::'Telegram/ThirdParty/xxHash'
       'desktop-app.cmake_helpers'::'cmake'
       'desktop-app.codegen'::'Telegram/codegen'
-      'desktop-app.gsl'::'Telegram/ThirdParty/GSL'
       'desktop-app.lib_base'::'Telegram/lib_base'
       'desktop-app.lib_crl'::'Telegram/lib_crl'
       'desktop-app.lib_lottie'::'Telegram/lib_lottie'
@@ -165,6 +164,7 @@ _source_telegram_desktop() {
       #'kde.kcoreaddons'::'Telegram/ThirdParty/kcoreaddons'
       #'kde.kimageformats'::'Telegram/ThirdParty/kimageformats'
       'lz4'::'Telegram/ThirdParty/lz4'
+      'microsoft.gsl'::'Telegram/ThirdParty/GSL'
       'nayuki.qr-code-generator'::'Telegram/ThirdParty/QR'
       'tartanllama.expected'::'Telegram/ThirdParty/expected'
       'telegramdesktop.libtgvoip'::'Telegram/ThirdParty/libtgvoip'

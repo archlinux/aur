@@ -1,6 +1,6 @@
 pkgbase = telegram-desktop-git
 	pkgdesc = Official Telegram Desktop client
-	pkgver = 5.7.0.r1.g1ca1f0f
+	pkgver = 5.7.1.r0.g233eb6d
 	pkgrel = 1
 	url = https://github.com/telegramdesktop/tdesktop
 	arch = x86_64
@@ -44,13 +44,12 @@ pkgbase = telegram-desktop-git
 	depends = xxhash
 	optdepends = webkit2gtk: embedded browser features
 	optdepends = xdg-desktop-portal: desktop integration
-	provides = telegram-desktop=5.7.0
+	provides = telegram-desktop=5.7.1
 	conflicts = telegram-desktop
 	source = telegram-desktop::git+https://github.com/telegramdesktop/tdesktop.git
 	source = cyan4973.xxhash::git+https://github.com/Cyan4973/xxHash.git
 	source = desktop-app.cmake_helpers::git+https://github.com/desktop-app/cmake_helpers.git
 	source = desktop-app.codegen::git+https://github.com/desktop-app/codegen.git
-	source = desktop-app.gsl::git+https://github.com/desktop-app/GSL.git
 	source = desktop-app.lib_base::git+https://github.com/desktop-app/lib_base.git
 	source = desktop-app.lib_crl::git+https://github.com/desktop-app/lib_crl.git
 	source = desktop-app.lib_lottie::git+https://github.com/desktop-app/lib_lottie.git
@@ -70,6 +69,7 @@ pkgbase = telegram-desktop-git
 	source = hamonikr.nimf::git+https://github.com/hamonikr/nimf.git
 	source = hime-ime.hime::git+https://github.com/hime-ime/hime.git
 	source = lz4::git+https://github.com/lz4/lz4.git
+	source = microsoft.gsl::git+https://github.com/Microsoft/GSL.git
 	source = nayuki.qr-code-generator::git+https://github.com/nayuki/QR-Code-generator.git
 	source = tartanllama.expected::git+https://github.com/TartanLlama/expected.git
 	source = telegramdesktop.libtgvoip::git+https://github.com/telegramdesktop/libtgvoip.git
