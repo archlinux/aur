@@ -1,7 +1,7 @@
 # Maintainer: Sanzhar 04024004zh@gmail.com
 pkgname=trex-c
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A console game based on the Google T-Rex game"
 arch=("x86_64")
 url="https://github.com/StiveMan1/T-RexC"

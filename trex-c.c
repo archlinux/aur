@@ -414,7 +414,8 @@ void draw_clouds() {
             cloud->c_x = (float_t) game.weight;
             if (cloud->c_x < (float_t) min_distance + mx) cloud->c_x = (float_t) min_distance + mx;
             if (mx < cloud->c_x) mx = cloud->c_x;
-            cloud->c_y = 10 + rand() % (game.height - CLOUD_H - 10); // NOLINT(*-msc50-cpp)
+	    if (game.height - CLOUD_H - 10 == 0) cloud->c_y = 10; 
+            else cloud->c_y = 10 + rand() % (game.height - CLOUD_H - 10); // NOLINT(*-msc50-cpp)
             cloud->c_speed = 0.1 + rand() % 15 / 10.0; // NOLINT(*-msc50-cpp)
         }
         drawing_back(cloud->c_x, cloud->c_y, CLOUD_W, CLOUD_H, cloud_1r);
