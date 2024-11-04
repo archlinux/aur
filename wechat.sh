@@ -154,13 +154,14 @@ function execApp() {
 		unitName="wechat-uos-qt"
 	fi
 	mkdir -p "${XDG_DATA_HOME}"/WeChat_Data/.config
+	createWrapIfNotExist "${XDG_DOCUMENTS_DIR}"/WeChat
 	systemd-run \
 	--user \
 	${sdOption} \
 	-p SyslogIdentifier=WeChat \
 	-p Environment=LD_PRELOAD="${LD_PRELOAD}" \
 	-u "${unitName}" \
-	-p Description="WeChat Qt" \
+	-p Description="WeChat UOS (Qt)" \
 	-p Documentation="https://wiki.archlinuxcn.org/wiki/%E5%BE%AE%E4%BF%A1#%E5%BE%AE%E4%BF%A1_Linux_%E5%8E%9F%E7%94%9F%E7%89%88%E9%87%8D%E6%9E%84" \
 	-p ExitType=cgroup \
 	-p OOMPolicy=stop \
@@ -235,13 +236,16 @@ function execApp() {
 	-p Environment=PATH=/sandbox:"${PATH}" \
 	-- \
 	bwrap \
+		--tmpfs /tmp \
+		--ro-bind-try /tmp/.X11-unix /tmp/.X11-unix \
 		--dev /dev \
 		--dev-bind /dev/dri /dev/dri \
-		--dev-bind /dev/shm /dev/shm \
 		--dev-bind-try /dev/nvidia0 /dev/nvidia0 \
+		--dev-bind-try /dev/nvidiactl /dev/nvidiactl \
 		--dev-bind-try /dev/nvidia-modeset /dev/nvidia-modeset \
 		--dev-bind-try /dev/nvidia-uvm /dev/nvidia-uvm \
 		--tmpfs /sys \
+		--bind /sys/module/ /sys/module/ \
 		--ro-bind /sys/dev/char /sys/dev/char \
 		--ro-bind /sys/devices /sys/devices \
 		--dir /sandbox \
@@ -251,8 +255,7 @@ function execApp() {
 			/sandbox/firefox \
 		--ro-bind /usr/lib/wechat-uos-qt/mimeapps.list \
 			"${XDG_DATA_HOME}"/WeChat_Data/.config/mimeapps.list \
-		--tmpfs /tmp \
-		--bind /proc /proc \
+		--proc /proc \
 		--bind /usr /usr \
 		--ro-bind /etc /etc \
 		--ro-bind-try /lib /lib \
@@ -264,6 +267,13 @@ function execApp() {
 		--ro-bind "${XDG_RUNTIME_DIR}/pulse" \
 			"${XDG_RUNTIME_DIR}/pulse" \
 		--bind "${XDG_DATA_HOME}"/WeChat_Data "${HOME}" \
+		--dir "${XDG_DATA_HOME}/WeChat_Data/Shared Directory" \
+		--dir "${HOME}/共享目录" \
+		--dir "${XDG_DOCUMENTS_DIR}/WeChat" \
+		--bind "${XDG_DOCUMENTS_DIR}/WeChat" \
+			"${HOME}/共享目录" \
+		--bind "${XDG_DOCUMENTS_DIR}"/WeChat \
+			"${HOME}/Shared Directory" \
 		--ro-bind-try "${XAUTHORITYpath}" "${XAUTHORITYpath}" \
 		--ro-bind /usr/lib/wechat-uos-qt/open \
 			/sandbox/dde-file-manager \
@@ -280,10 +290,6 @@ function execApp() {
 			"${XDG_CONFIG_HOME}"/fontconfig \
 		--ro-bind-try "${XDG_DATA_HOME}/fonts" \
 			"${XDG_DATA_HOME}/fonts" \
-		--ro-bind-try "${XDG_CONFIG_HOME}"/Trolltech.conf \
-			"${XDG_CONFIG_HOME}"/Trolltech.conf \
-		--ro-bind-try "${XDG_CONFIG_HOME}"/kdeglobals \
-			"${XDG_CONFIG_HOME}"/kdeglobals \
 		--ro-bind-try "/run/systemd/resolve/stub-resolv.conf" \
 			"/run/systemd/resolve/stub-resolv.conf" \
 		--dir "${XDG_DATA_HOME}/WeChat_Data/Documents" \
@@ -362,7 +368,7 @@ function dbusProxy() {
 	systemd-run \
 		--user \
 		-u wechat-dbus-proxy \
-			-- bwrap \
+		-- bwrap \
 			--symlink /usr/lib64 /lib64 \
 			--ro-bind /usr/lib /usr/lib \
 			--ro-bind /usr/lib64 /usr/lib64 \
@@ -383,7 +389,6 @@ function dbusProxy() {
 			--talk=org.freedesktop.Notifications \
 			--talk=org.freedesktop.FileManager1 \
 			--talk=org.kde.StatusNotifierWatcher \
-			--talk=org.mozilla.firefox.OpenURL \
 			--talk=org.freedesktop.portal.OpenURI \
 			--talk=org.freedesktop.portal.OpenURI.* \
 			--call=org.freedesktop.portal.*=* \
@@ -448,6 +453,11 @@ function disableSandbox() {
 function openDataDir() {
 	if [[ $@ =~ "--actions" ]] && [[ $@ =~ "opendir" ]]; then
 		xdg-open "${XDG_DATA_HOME}"/WeChat_Data
+		exit $?
+	fi
+	if [[ $@ =~ "--actions" ]] && [[ $@ =~ "shareddir" ]]; then
+		mkdir -p "${XDG_DOCUMENTS_DIR}"/WeChat
+		xdg-open "${XDG_DOCUMENTS_DIR}"/WeChat
 		exit $?
 	fi
 }

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-if [[ $@ =~ "https://" ]] || [[ $@ =~ "http://" ]]; then
+if [[ "$@" =~ "https://" ]] || [[ "$@" =~ "http://" ]]; then
 	echo "[Info] Received a request: $@, interpreting as link"
 	/usr/lib/flatpak-xdg-utils/xdg-open "$@"
 	exit $?
@@ -8,11 +8,12 @@ fi
 
 if [ ${trashAppUnsafe} ]; then
 	link="$2"
+	xdg-open "$2"
+	exit $?
 else
 	fakeDirBase="${XDG_DOCUMENTS_DIR}/xwechat_files"
 	realDirBase="${XDG_DATA_HOME}/WeChat_Data/Documents/xwechat_files"
 	link=$(echo "$2" | sed "s|${fakeDirBase}|${reakDirBase}|g")
-	#link=$(echo "$2" | awk -v oldPath="${fakeDirBase}" -v newPath=${reakDirBase} '{gsub(oldPath, newPath)} 1')
 fi
 
 link="${realDirBase}${link}"
