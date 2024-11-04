@@ -2,7 +2,7 @@
 # Contributor: Robert Greener <me@r0bert.dev>
 
 _pkgname=cNORM
-_pkgver=3.3.1
+_pkgver=3.4.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -22,8 +22,8 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('ea2a5a19553094329d0654c62e4bb91e')
-b2sums=('e0f6442642a72c1fcd3c979f7360492011a7e799160a20c0818dfe0a9c14731421d355a0063da551b17eed3c60b8123ca742d218ca49e98f0606449fc548c457')
+md5sums=('57ae8ff2cef8bebe9a19f0ff1e15f45e')
+b2sums=('c988469e5a8af920a590f5cce4abe931dbaa9d543740611b2ec14ade734e44847f32ca6c63338f4747a8217acbb4b4e5fe9537b93d17c16ab9d43a11c4389632')
 
 build() {
   mkdir build
