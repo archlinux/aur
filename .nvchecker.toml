@@ -1,6 +1,0 @@
-[python-langchain-core]
-source = "github"
-github = "langchain-ai/langchain"
-prefix = "langchain-core=="
-include_regex = "langchain-core==\\d+\\.\\d+\\.\\d+"
-use_max_tag = true
