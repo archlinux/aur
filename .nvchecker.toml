@@ -1,4 +1,5 @@
 # Nay work - https://gitlab.archlinux.org/archlinux/devtools/-/issues/248
 [vtracer]
-source = "git"
-git = "https://github.com/visioncortex/vtracer.git"
+source = "github"
+github = "visioncortex/vtracer"
+use_latest_release = true
