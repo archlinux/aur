@@ -1,27 +1,21 @@
 # Maintainer: system64 <system64fumo@protonmail.com>
 
 pkgname=syshud
-pkgver=0.1
-pkgrel=1
+pkgver=9.9.9
+pkgrel=9
 pkgdesc="Simple heads up display written in gtkmm 4"
 arch=('aarch64' 'x86_64')
 url="https://github.com/System64fumo/syshud"
 license=('WTFPL')
 groups=('sysshell')
-depends=('gtkmm-4.0' 'gtk4-layer-shell')
+depends=('gtkmm-4.0' 'gtk4-layer-shell' 'wireplumber')
 source=("git+https://github.com/System64fumo/syshud")
 sha256sums=('SKIP')
 
-if pacman -Qs wireplumber >/dev/null; then
-	depends+=('wireplumber')
-	PULSEAUDIO=0
-elif pacman -Qs libpulse >/dev/null; then
-	depends+=('libpulse')
-	PULSEAUDIO=1
-else
-	depends+=('wireplumber')
-	PULSEAUDIO=0
-fi
+pkgver() {
+	cd "${pkgname}"
+	git show -s --format=%cd --date=format:%Y.%m.%d $(git rev-parse HEAD)
+}
 
 build() {
 	cd "${pkgname}"

@@ -1,10 +1,10 @@
 pkgbase = syshud
 	pkgdesc = Simple heads up display written in gtkmm 4
-	pkgver = 0.1
-	pkgrel = 1
+	pkgver = 9.9.9
+	pkgrel = 9
 	url = https://github.com/System64fumo/syshud
-	arch = x86_64
 	arch = aarch64
+	arch = x86_64
 	groups = sysshell
 	license = WTFPL
 	depends = gtkmm-4.0
