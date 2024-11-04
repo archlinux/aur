@@ -2,7 +2,7 @@
 # Contact about package issues tho. <bjoel2@i2pmail.org>
 
 pkgname="prismlauncher-themes-git"
-pkgver=2024.04.01_1711994750.r0.g0a1fcdb
+pkgver=2024.10.21_1729507458.r0.g588368d
 pkgrel=1
 pkgdesc="PrismLauncher themes from their official github"
 arch=('any')
@@ -19,31 +19,7 @@ pkgver() {
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//g'
 }
 
-build() {
-  rm -f _prism-theme-installer
-  _genInstallScript
-  cd "${pkgname}/themes"
-}
-
-# dirty hack creating install script
-_genInstallScript()
-{
-cat << 'EOF' >> _prism-theme-installer
-#!/bin/bash
-defaultPath="${HOME}/.local/share/PrismLauncher/themes"
-read -p "Specify the directory where you want to install themes (default: ${defaultPath})"$'\n> ' installPath
-installPath=${installPath:-$defaultPath}
-cd /usr/share/prismlauncher-themes
-for themeDir in *
-do
-  cp -rf "$themeDir" "${installPath}/"
-done
-echo done
-EOF
-}
-
 package() {
-  install --mode=755 -D "_prism-theme-installer" "${pkgdir}/usr/bin/_prism-theme-installer"
   cd "${pkgname}"
   install --mode=644 -Dt "$pkgdir/usr/share/licenses/$pkgname" LICENSES/*
   mkdir "${pkgdir}/usr/share/prismlauncher-themes"

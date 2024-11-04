@@ -1,4 +1,5 @@
 post_install() {
   echo ">>    Attention! At the moment, no theme has been installed into PrismLauncher yet"
-  echo ">>    Run _prism-theme-installer to install them"
+  echo ">>    Run ln -s /usr/share/prismlauncher-themes ~/.local/share/PrismLauncher/themes"
+  echo ">>    To install themes (of course check if the path is correct before running the command)"
 }
