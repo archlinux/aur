@@ -1,7 +1,7 @@
-# Maintainer: Daniel E. Shub <daniel.e.shub@gmail.com>
+# Contributor: Daniel E. Shub <daniel.e.shub@gmail.com>
 
 pkgname=python-javascripthon
-pkgver=0.12
+pkgver=0.13
 pkgrel=1
 pkgdesc="A Python 3 to ES6 Javascript translator "
 arch=('any')
@@ -10,7 +10,7 @@ license=('GPL3')
 makedepends=('python-setuptools')
 depends=('python-dukpy')
 source=("https://github.com/metapensiero/metapensiero.pj/archive/v${pkgver}.tar.gz")
-sha512sums=('3a1e2f2cd51e87738f851aa02c53a0be42e73765157451fd1ff7eb292998f0bbe60a209788749491f79945bd0a5f1780b5a2886acdf81153a318f1e69c12328c')
+sha512sums=('bf919524785423579304f4e5c20748a11ab21d6548b946dc7c6efa34fc5ee7394683f2c80edd8a065af340ea7a9bd88c96761a871c61a022cbbd1fd518b99848')
 
 build() {
   cd "$srcdir/metapensiero.pj-$pkgver"
