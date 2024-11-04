@@ -1,6 +1,6 @@
 pkgbase = python-pdoc
 	pkgdesc = A simple program and library to auto generate API documentation for Python modules.
-	pkgver = 14.7.0
+	pkgver = 15.0.0
 	pkgrel = 1
 	url = https://pdoc.dev/
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = python-pdoc
 	depends = python-jinja
 	depends = python-pygments
 	depends = python-markupsafe
-	source = https://files.pythonhosted.org/packages/source/p/pdoc/pdoc-14.7.0.tar.gz
-	sha256sums = 2d28af9c0acc39180744ad0543e4bbc3223ecba0d1302db315ec521c51f71f93
+	source = https://files.pythonhosted.org/packages/source/p/pdoc/pdoc-15.0.0.tar.gz
+	sha256sums = b761220d3ba129cd87e6da1bb7b62c8e799973ab9c595de7ba1a514850d86da5
 
 pkgname = python-pdoc
