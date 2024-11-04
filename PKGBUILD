@@ -2,7 +2,7 @@
 
 pkgname=eco-paste-beta-bin
 _pkgname="EcoPaste"
-pkgver=0.3.0
+pkgver=0.4.0-beta.1
 pkgrel=1
 pkgdesc="内测预览版!!!🎉跨平台的剪贴板管理工具 | Cross-platform clipboard management tool ."
 arch=('any')
@@ -26,11 +26,11 @@ source=(
   "${_pkgname}-${pkgver}_amd64.deb::${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_amd64.deb"
   "LICENSE::https://raw.githubusercontent.com/EcoPasteHub/EcoPaste/refs/heads/master/LICENSE"
 )
-sha256sums=('b90d4c13c56cb6181d2b011ad3762504e30333b013e97ec992f0a8282928a7fb'
+sha256sums=('7e81af84737c69e7e8ebaf962e1e4d836a570424921614b1fe75b312f4c803b1'
             'c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4')
 # 修复不能出现短线的问题
 fixver(){
-  pkgver="${pkgver//[:\/\- ]/_}";
+  pkgver="${pkgver//[:\/\- ]/}";
 }
 fixver;
 
@@ -42,8 +42,8 @@ build() {
 package() {
   # binary
   install -Dm755 "${srcdir}/build/usr/bin/"* -t "${pkgdir}/usr/bin/"
-  
-  # desktop 
+
+  # desktop
   install -Dm644 "${srcdir}/build/usr/share/applications/"*.desktop -t "${pkgdir}/usr/share/applications"
 
   # icon
