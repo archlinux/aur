@@ -1,12 +1,12 @@
 pkgbase = phizclip-studio-dev
 	pkgdesc = Developer tools for PhizClip-dev
-	pkgver = 1.2.1
+	pkgver = 1.2.2
 	pkgrel = 1
 	url = https://open-dev.xyue.zip:9443/
 	arch = x86_64
 	license = custom
 	options = !strip
-	source = phizclip-studio-dev-1.2.1-1.AppImage::https://pan-dev.xyue.zip:8443/s/dMDGgPyQw5LAkWs/download/PhizClip%20Studio-1.2.1-dev.AppImage
+	source = phizclip-studio-dev-1.2.2-1.AppImage::https://pan-dev.xyue.zip:8443/s/g3jPmMxxjn33SBX/download/PhizClip%20Studio-1.2.2-dev.AppImage
 	source = phizclip-studio-dev.desktop
 	source = phizclip-studio-dev.png
 	sha256sums = 5de817b24de58e8cde044861882fe6289ca5c6149f7872e64cdeb9fa1e47a6c8

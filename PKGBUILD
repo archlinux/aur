@@ -1,6 +1,6 @@
 # Maintainer: zaeyee <zaeyee@163.com>
 pkgname="phizclip-studio-dev"
-pkgver="1.2.1"
+pkgver="1.2.2"
 pkgrel=1
 pkgdesc="Developer tools for PhizClip-dev"
 arch=("x86_64")
@@ -8,7 +8,7 @@ url="https://open-dev.xyue.zip:9443/"
 license=('custom')
 depends=()
 source=(
-  "${pkgname}-${pkgver}-${pkgrel}.AppImage"::"https://pan-dev.xyue.zip:8443/s/dMDGgPyQw5LAkWs/download/PhizClip%20Studio-1.2.1-dev.AppImage"
+  "${pkgname}-${pkgver}-${pkgrel}.AppImage"::"https://pan-dev.xyue.zip:8443/s/g3jPmMxxjn33SBX/download/PhizClip%20Studio-1.2.2-dev.AppImage"
   "${pkgname}.desktop"
   "${pkgname}.png")
 sha256sums=('5de817b24de58e8cde044861882fe6289ca5c6149f7872e64cdeb9fa1e47a6c8'
