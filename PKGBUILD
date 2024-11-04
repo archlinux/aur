@@ -1,31 +1,26 @@
-# Maintainer: txtsd <aur.archlinux@ihavea.quest>
+# Maintainer: devome <evinedeng@hotmail.com>
+# Contributor: txtsd <aur.archlinux@ihavea.quest>
 
-pkgname=python-langchain-text-splitters
-_pkgname=${pkgname#python-}
-pkgver=0.2.0
+_pkgname=langchain-text-splitters
+_pipname="${_pkgname//-/_}"
+pkgname="python-${_pkgname}"
+pkgver=0.3.2
 pkgrel=1
-pkgdesc="Building applications with LLMs through composability"
-url='https://github.com/langchain-ai/langchain'
-depends=(python
-    python-tiktoken
-    python-requests
-    python-lxml
-    python-langchain-core
-    python-beautifulsoup4)
-makedepends=('python-build' 'python-installer' 'python-wheel' 'python-poetry')
-license=('MIT')
+pkgdesc="LangChain text splitting utilities"
 arch=('any')
-_src_name="${_pkgname%%-*}-${_pkgname}-${pkgver}"
-source=("${_pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/langchain-text-splitters==${pkgver}.tar.gz")
-sha256sums=('d2668a5d5c3aba6c715b863fe819b712e93c627cbdbc2b35cc4d3dda1c3ff050')
+url="https://github.com/langchain-ai/langchain"
+license=('MIT')
+depends=(python-langchain-core)
+makedepends=('python-build' 'python-installer' 'python-poetry-core' 'python-wheel')
+source=("${_pkgname}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_pipname::1}/${_pipname}/${_pipname}-${pkgver}.tar.gz")
+sha256sums=('81e6515d9901d6dd8e35fb31ccd4f30f76d44b771890c789dc835ef9f16204df')
 
 build() {
-    cd "${_src_name}/libs/${_pkgname#langchain-}"
+    cd "${_pipname}-${pkgver}"
     python -m build --wheel --no-isolation
 }
 
 package() {
-    cd "${_src_name}/libs/${_pkgname#langchain-}"
+    cd "${_pipname}-${pkgver}"
     python -m installer --destdir="${pkgdir}" dist/*.whl
-    install -Dm644 "${srcdir}/${_src_name}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }

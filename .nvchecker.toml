@@ -1,6 +1,0 @@
-[python-langchain-text-splitters]
-source = "github"
-github = "langchain-ai/langchain"
-prefix = "langchain-text-splitters=="
-include_regex = "langchain-text-splitters==\\d+\\.\\d+\\.\\d+"
-use_max_tag = true
