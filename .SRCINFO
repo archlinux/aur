@@ -1,6 +1,6 @@
 pkgbase = libastal-git
 	pkgdesc = Building blocks for building desktop shells.
-	pkgver = r439.dcc3870
+	pkgver = r540.c5eba25
 	pkgrel = 1
 	url = https://github.com/Aylur/astal
 	arch = x86_64
@@ -12,10 +12,6 @@ pkgbase = libastal-git
 	makedepends = gobject-introspection
 	makedepends = meson
 	makedepends = vala
-	makedepends = lua
-	makedepends = lua51
-	makedepends = lua53
-	makedepends = luarocks
 	depends = glib2
 	depends = glibc
 	depends = gtk3
@@ -23,27 +19,9 @@ pkgbase = libastal-git
 	depends = gdk-pixbuf2
 	depends = wayland
 	depends = libastal-io
+	provides = libastal
+	provides = libastal.so=3-64
 	source = git+https://github.com/Aylur/astal.git
 	sha256sums = SKIP
 
 pkgname = libastal-git
-	provides = libastal
-	provides = libastal.so=3-64
-
-pkgname = lua-libastal-git
-	pkgdesc = lua bindings for libstal.
-	depends = libastal-git
-	depends = lua
-	depends = lua-lgi
-
-pkgname = lua51-libastal-git
-	pkgdesc = lua bindings for libstal.
-	depends = libastal-git
-	depends = lua51
-	depends = lua51-lgi
-
-pkgname = lua53-libastal-git
-	pkgdesc = lua bindings for libstal.
-	depends = libastal-git
-	depends = lua53
-	depends = lua53-lgi

@@ -1,9 +1,8 @@
 # Maintainer: kotontrion <kotontrion@tutanota.de>
 pkgbase=libastal-git
-pkgname=("libastal-git"
-         "lua-libastal-git" "lua51-${pkgbase}" "lua53-${pkgbase}")
+pkgname=("libastal-git")
 _pkgname=libastal
-pkgver=r439.dcc3870
+pkgver=r540.c5eba25
 pkgrel=1
 pkgdesc="Building blocks for building desktop shells."
 arch=("x86_64")
@@ -12,9 +11,9 @@ url="https://github.com/Aylur/astal"
 makedepends=(
   "git"
   "wayland" "wayland-protocols"
-  "gobject-introspection" "meson" "vala"
-  "lua" "lua51" "lua53" "luarocks")
+  "gobject-introspection" "meson" "vala")
 depends=("glib2" "glibc" "gtk3" "gtk-layer-shell" "gdk-pixbuf2" "wayland" "libastal-io")
+provides=(libastal libastal.so=3-64)
 groups=("libastal")
 source=("git+${url}.git")
 sha256sums=("SKIP")
@@ -32,33 +31,8 @@ build() {
   meson compile -C build
 }
 
-package_libastal-git() {
-  provides=(libastal libastal.so=3-64)
+package() {
   cd astal/lib/astal/gtk3
   meson install -C build --destdir "$pkgdir"
 }
 
-_package_lua() {
-  cd astal/lang/lua
-	luarocks --lua-version $1 --tree "$pkgdir/usr/" \
-		make --deps-mode none --no-manifest -- "$_rockname"
-}
-
-package_lua-libastal-git() {
-	depends=("libastal-git" "${pkgname%-*-git}" "${pkgname%-*-git}-lgi")
-  pkgdesc="lua bindings for libstal."
-  _package_lua 5.4
-}
-
-package_lua51-libastal-git() {
-	depends=("libastal-git" "${pkgname%-*-git}" "${pkgname%-*-git}-lgi")
-  pkgdesc="lua bindings for libstal."
-  _package_lua 5.1
-}
-
-
-package_lua53-libastal-git() {
-	depends=("libastal-git" "${pkgname%-*-git}" "${pkgname%-*-git}-lgi")
-  pkgdesc="lua bindings for libstal."
-  _package_lua 5.3
-}
