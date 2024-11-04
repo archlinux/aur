@@ -5,6 +5,7 @@ pkgbase = python-gitchangelog
 	url = https://github.com/sarnold/gitchangelog
 	arch = x86_64
 	license = BSD
+	makedepends = git
 	makedepends = python-setuptools
 	depends = python
 	optdepends = python-pystache
