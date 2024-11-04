@@ -16,6 +16,7 @@ pkgbase = go-musicfox
 	source = lastfm_auth
 	sha256sums = 608b19f8b0c1ef01aa49a3711dff98c757ad4024f1a141522806256289273af6
 	sha256sums = 1798a98fc0b986c690f0dc93b4f475b03f18cc72abf2825cbffcaa78cd869df2
+    packager = nealinux <vimlinux@proton.me>
 
 pkgname = go-musicfox
 sha256sums=('608b19f8b0c1ef01aa49a3711dff98c757ad4024f1a141522806256289273af6'
