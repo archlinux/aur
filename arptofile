@@ -1,0 +1,136 @@
+#!/bin/bash
+
+#lol
+
+# Function to check if a command exists
+command_exists() {
+    command -v "$1" >/dev/null 2>&1
+}
+
+# Function to ask for confirmation
+confirm() {
+    read -r -p "${1:-Are you sure?} [y/N] " response
+    case "$response" in
+        [yY][eE][sS]|[yY])
+            true
+            ;;
+        *)
+            false
+            ;;
+    esac
+}
+
+# Function to remove older files
+remove_older_files() {
+    local files=(arp-scan-*.log)
+    if [ ${#files[@]} -gt 0 ] && [ -f "${files[0]}" ]; then
+        echo "Old arping files found:"
+        ls -l arp-scan-*.log
+        if confirm "Remove these files?"; then
+            rm arp-scan-*.log
+            echo "Removed older files."
+        else
+            echo "Kept older files."
+        fi
+    fi
+}
+
+# Function to show progress with a spinning wheel
+show_progress() {
+    local spinners=(
+        "⠋" "⠙" "⠹" "⠸" "⠼" "⠴" "⠦" "⠧" "⠇" "⠏"
+    )
+    local i=0
+    while true; do
+        printf "\r${spinners[$((i++ % ${#spinners[@]}))]} Scanning..."
+        sleep 0.1
+    done
+}
+
+# Function to stop the spinning wheel
+stop_progress() {
+    printf "\r  Done!     "
+}
+
+# Check for required commands
+for cmd in arp-scan nslookup awk sed; do
+    if ! command_exists $cmd; then
+        echo "Error: $cmd is not installed or not in PATH" >&2
+        exit 1
+    fi
+done
+
+# Remove older files
+remove_older_files
+
+# Start the spinning wheel
+show_progress &
+progress_pid=$!
+
+
+# Run arp-scan and store the results
+echo "Running arp-scan..." >&2
+scan_output=$(arp-scan -l 2>&1)
+if [ $? -ne 0 ]; then
+    echo "Error running arp-scan: $scan_output" >&2
+    exit 1
+fi
+
+# Get the first IP address
+first_ip=$(echo "$scan_output" | grep -E '^[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+' | head -n 1 | awk '{print $1}')
+
+# Get the hostname or domain of the first IP
+full_hostname=$(nslookup $first_ip 2>/dev/null | awk '/name =/ {print $NF}' | sed 's/\.$//')
+if [ -z "$full_hostname" ]; then
+    hostname="unknown"
+else
+    # Extract only the part before the first dot
+    hostname=$(echo "$full_hostname" | cut -d. -f1)
+fi
+
+# Create the output filename
+base_filename="arp-scan-${hostname}"
+output_file="${base_filename}.log"
+
+# Check if file exists and add number if necessary
+counter=1
+while [ -e "$output_file" ]; do
+    output_file="${base_filename}-${counter}.log"
+    ((counter++))
+done
+
+# Process each line and write to file
+echo "Processing results..." >&2
+
+{
+printf "%-15s %-17s %-30s %s\n" "IP" "MAC" "Hostname" "Vendor"
+echo "$scan_output" | grep -E '^[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+' | while read -r ip mac vendor_info; do
+    if [ -n "$ip" ] && [ -n "$mac" ]; then
+        device_hostname=$(nslookup $ip 2>/dev/null | awk '/name =/ {print $NF}' | sed 's/\.$//')
+        if [ -z "$device_hostname" ]; then
+            device_hostname="Unknown"
+        fi
+        # Replace "(Unknown: locally administered)" with "---"
+        if [ "$vendor_info" = "(Unknown: locally administered)" ]; then
+            vendor="---"
+        else
+            vendor="$vendor_info"
+        fi
+        printf "%-15s %-17s %-30s %s\n" "$ip" "$mac" "$device_hostname" "$vendor"
+    fi
+done
+} > "$output_file"
+
+# Stop the spinning wheel
+kill $progress_pid
+stop_progress
+
+echo "Results saved to $output_file" >&2
+
+# Display the first few lines of the output file
+echo "First few lines of $output_file:" >&2
+head -n 5 "$output_file" >&2
+
+# Count the number of entries
+entry_count=$(grep -c '^[0-9]' "$output_file")
+echo "Total entries found: $entry_count" >&2
