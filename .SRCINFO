@@ -1,6 +1,6 @@
 pkgbase = tsukimi-bin
 	pkgdesc = A simple third-party Emby client
-	pkgver = 0.16.8
+	pkgver = 0.16.9
 	pkgrel = 1
 	url = https://github.com/tsukinaha/tsukimi
 	arch = x86_64
@@ -13,10 +13,10 @@ pkgbase = tsukimi-bin
 	depends = gtk4
 	provides = tsukimi
 	conflicts = tsukimi-git
-	source = tsukimi-bin-0.16.8.tar.gz::https://github.com/tsukinaha/tsukimi/releases/download/v0.16.8/tsukimi-x86_64-linux.tar.gz
+	source = tsukimi-bin-0.16.9.tar.gz::https://github.com/tsukinaha/tsukimi/releases/download/v0.16.9/tsukimi-x86_64-linux.tar.gz
 	source = tsukimi.desktop
 	source = tsukimi.png
-	sha256sums = 32453ac409e3f7d220274baebabb6d6f761de58762bb1b8236d9c617dfc13f29
+	sha256sums = 98969de5ea63bdacf8bd352de85b7eb24d196344f2e35f8662f0ec4886eb31da
 	sha256sums = d12dc777bbb05ed92d75f8d36e453b651e12596ead6e297386419a24d051a0a3
 	sha256sums = 04a712d60bbf5cc8873af24fb8ff76b47f27ef77ba45c7901fb7d3cd26dd6893
 
