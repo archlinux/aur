@@ -2,14 +2,19 @@
 
 pkgname=python-pkg-about
 pkgver=1.2.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Shares Python package metadata at runtime."
 url="https://github.com/karpierz/pkg_about"
 arch=('x86_64')
 license=('ZLIB')
-depends=('python>=3.7')
+depends=(
+python-docutils
+python-tomli
+python-setuptools
+python-packaging
+python-importlib-metadata
+)
 makedepends=(
-'python-setuptools>=42.0'
 python-build
 python-installer
 python-wheel
