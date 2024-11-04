@@ -6,6 +6,7 @@ processors made in the last decade.  No current plans exist to provide
 a Firestorm Legacy package for older CPUs, but it could be made with
 demand.
 EOF
+  fi
 }
 
 post_install() {
