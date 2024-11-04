@@ -35,7 +35,7 @@ _pkghash='2dc1fe943939557cde2919d2b180ec938671c10fce9efaa68bfd03cd29e97af0'
 # Version of the AUR package, (not the underlying vendor's release version).
 # This is only higher than "1" if another AUR package release is cut
 # for the same "pkgver" of the upstream vendor's package.
-pkgrel=1
+pkgrel=2
 
 # The license type of the upstream vendor's package, as displayed on the AUR.
 license=(
