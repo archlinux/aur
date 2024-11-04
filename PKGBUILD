@@ -1,7 +1,8 @@
+# Maintainer: Michał Wojdyła < micwoj9292 at gmail dot com >
 # Contributor: Daniel E. Shub <daniel.e.shub@gmail.com>
 
 pkgname=python-psychtoolbox
-pkgver=3.0.19.0
+pkgver=3.0.19.14
 pkgrel=1
 pkgdesc="Pieces of Psychtoolbox-3 ported to CPython"
 arch=('any')
@@ -10,7 +11,7 @@ license=('custom')
 makedepends=('python-setuptools' 'libxfixes' 'python-wheel')
 depends=('alsa-lib' 'libxi' 'libusb' 'portaudio' 'python-numpy')
 source=(https://files.pythonhosted.org/packages/source/p/${pkgname/python-/}/${pkgname/python-/}-${pkgver}.tar.gz)
-sha512sums=('89711cf086e19fd02e257ca5b1acb999ca38fa2b509f60f65fa0b804f43a7850a8e20bba56fcfbb004d67bd214fd7255811c561d8b0e731d6c0347f80283e561')
+sha512sums=('1bea170fd8891e410796f44c6111e2d3f55492a5257d93d57601402067d47fb8dfc2c3def606c6d50aecf5f6ab3e98d4218768c4cd61114573a74b742cdd5bd3')
 
 build() {
   cd "$srcdir/${pkgname/python-/}-$pkgver"
