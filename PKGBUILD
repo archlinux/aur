@@ -125,7 +125,7 @@ pkgver() {
 
   _version=$(git tag --sort=-v:refname --list 'clamav-*.*' | head -n1)
   _commits=$(git rev-list --count HEAD)
-  _short_commit_hash=$(git rev-parse --short HEAD)
+  _short_commit_hash=$(git rev-parse --short=9 HEAD)
   echo "${_version#'clamav-'}+r${_commits}+${_short_commit_hash}"
 }
 
