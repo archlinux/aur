@@ -1,6 +1,6 @@
 pkgbase = psychopy
 	pkgdesc = An experiment builder for neuroscience, psychology and psychophysics
-	pkgver = 2024.2.1
+	pkgver = 2024.2.4
 	pkgrel = 1
 	url = http://www.psychopy.org
 	arch = any
@@ -13,8 +13,8 @@ pkgbase = psychopy
 	depends = python-distro
 	depends = python-pyosf
 	optdepends = python-seaborn: For nice graphs
-	source = https://github.com/psychopy/psychopy/archive/2024.2.1.tar.gz
-	sha512sums = 6a61ba1360a0714802e745baaea363bdc0cd34501de813ce00b61c5bd9b5179d77bb50d60ebecf6f9c5d6a47fd9737f86569efa8da7913429bfb4b048d0d332d
+	source = https://github.com/psychopy/psychopy/archive/2024.2.4.tar.gz
+	sha512sums = 91cb243282688839804a6a2221a9c52be4e516188329f1d184003050ffe6b75361715de577827daf7d0796f08f8b7766c7fa08209ef1acd07d1e4690ae0223ba
 
 pkgname = psychopy
 	depends = python-distro
@@ -67,5 +67,6 @@ pkgname = psychopy
 	depends = python-pyqt5
 	depends = python-javascripthon
 	depends = python-questplus
+	depends = pypi-search
 	depends = webkit2gtk-4.1
 	depends = python-xmlschema
