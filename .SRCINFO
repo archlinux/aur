@@ -4,6 +4,8 @@ pkgbase = arptofile
 	pkgrel = 1
 	arch = any
 	license = MIT
+	depends = arp-scan
+	depends = grep
 	source = arptofile
 	md5sums = SKIP
 
