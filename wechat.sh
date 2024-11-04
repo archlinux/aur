@@ -123,9 +123,16 @@ function execApp() {
 	if [[ ${wechatXserverPatch} = 1 ]]; then
 		xhost +
 	fi
-	if [ -f /usr/share/fontconfig/conf.avail/75-twemoji.conf ]; then
-		cp /usr/share/fontconfig/conf.avail/75-twemoji.conf \
-			"${XDG_CONFIG_HOME}"/fontconfig
+	if [[ $(fc-match emoji) =~ Twemoji ]]; then
+		echo "[Info] Emoji already set to Twemoji"
+	else
+		if [ -f /usr/share/fontconfig/conf.avail/75-twemoji.conf ]; then
+			cp /usr/share/fontconfig/conf.avail/75-twemoji.conf \
+				"${XDG_CONFIG_HOME}"/fontconfig
+			echo "[Info] Using Twemoji as Emoji font, fontconfig has been changed"
+		else
+			echo "[Warn] Emojis may be broken"
+		fi
 	fi
 	if [ ! -S "${busDir}/bus" ]; then
 		echo "[Info] Waiting for D-Bus proxy..."

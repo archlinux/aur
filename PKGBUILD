@@ -1,6 +1,6 @@
 # Maintainer: Kimiblock Moe
 pkgname=(wechat-uos-bwrap wechat-uos-qt wechat-key-block)
-pkgver=1.0.0.241
+pkgver=4.0.0.21
 pkgrel=32
 epoch=
 pkgdesc="WeChat Qt, the so-called universal version"
@@ -105,7 +105,7 @@ source_loong64=(
 	wechat-loong64-${pkgver}.deb::"https://pro-store-packages.uniontech.com/appstore/pool/appstore/c/com.tencent.wechat/com.tencent.wechat_${pkgver}_arm64.deb"
 )
 
-md5sums=('895e227f2857ad709187564f661ddb39'
+md5sums=('34098b50abe113333da4c2d2e51004e0'
          '860ea16819270285e22ef0dee6abd217'
          '468e0367346707c026e577e7bf3e3a82'
          '5257ea879774084f8ca4b4c82bdeef85'
@@ -116,9 +116,9 @@ md5sums=('895e227f2857ad709187564f661ddb39'
          '83c934cd928c7411c3b8e7d4e86fb52c'
          'e821fd2d05d6d39c7ecf118916922414'
          'e472d6dd49522bc90fdaf0b4adcdb744')
-md5sums_x86_64=('2c2c8ec69b6b798b7ccaf873e27d977a')
-md5sums_aarch64=('c4d443515fe76ec35e792d43e9521887')
-md5sums_loong64=('c4d443515fe76ec35e792d43e9521887')
+md5sums_x86_64=('b2df207e4a27c1a2930c1b07a62332d0')
+md5sums_aarch64=('6e34513d6781c7698ea53c7efcf216a8')
+md5sums_loong64=('6e34513d6781c7698ea53c7efcf216a8')
 
 function build() {
 	cd "${srcdir}"
