@@ -1,8 +1,8 @@
 pkgbase = nodejs-chokidar-cli
 	pkgdesc = Run multiple commands concurrently
 	pkgver = 3.0.0
-	pkgrel = 2
-	url = https://github.com/open-cli-tools/concurrently
+	pkgrel = 3
+	url = https://github.com/open-cli-tools/chokidar-cli
 	arch = any
 	license = MIT
 	makedepends = npm
