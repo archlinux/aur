@@ -1,0 +1,21 @@
+pkgbase = python-pymilvus
+	pkgdesc = Python Sdk for Milvus
+	pkgver = 2.4.9
+	pkgrel = 1
+	url = https://github.com/milvus-io/pymilvus
+	arch = any
+	license = Apache-2.0
+	makedepends = python-build
+	makedepends = python-gitpython
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python-environs
+	depends = python-grpcio
+	depends = python-pandas
+	depends = python-protobuf
+	depends = python-setuptools
+	depends = python-ujson
+	source = pymilvus-2.4.9.tar.gz::https://files.pythonhosted.org/packages/source/p/pymilvus/pymilvus-2.4.9.tar.gz
+	sha256sums = 0937663700007c23a84cfc0656160b301f6ff9247aaec4c96d599a6b43572136
+
+pkgname = python-pymilvus
