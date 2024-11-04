@@ -13,7 +13,7 @@ optdepends=('mariadb: Alternate database' 'php-sqlite-interpreter: To use the sq
 source=("https://github.com/fruux/Baikal/releases/download/$pkgver/baikal-$pkgver.zip"
         'baikal.install')
 sha512sums=('b17c3a8b1b20c3cfa5977978391b9319aba252adcf9718376d5e3d9cda222cd32f0ff33646bd258687bbbc1dfb27485567ffa80251fa4421e8f42b9372011928'
-            'bd49f46a35ec6921ca4c20dc00122bdace237ebf37b4add00b21217bdacd5a622a6bcfe310cb79b9780c45384492a305716700f4bca55e043d804af714bbdaf1')
+            '21051b6a30496fe68b383b3af54b5661fa71c518fe2b258423573ca04edc0b56189e200241dfcc8a40984ffb1c6966dd4e1700a87d75afe4645d5d4ec645aceb')
 options=('!strip')
 install=baikal.install
 
