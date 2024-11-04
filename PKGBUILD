@@ -2,10 +2,10 @@
 _appname=codius
 pkgname="vs${_appname}-bin"
 _pkgname=VSCodius
-pkgver=1.94.2
-_electronversion=30
+pkgver=1.95.1
+_electronversion=32
 pkgrel=1
-pkgdesc="Binary releases of Visual Studio Code without MS branding/telemetry/licensing and various personal workflow improvements."
+pkgdesc="Binary releases of Visual Studio Code without MS branding/telemetry/licensing and various personal workflow improvements.Prebuilt version."
 arch=('x86_64')
 url="https://github.com/RubisetCie/vscodius"
 license=('MIT')
@@ -33,7 +33,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.zip::${url}/releases/download/v${pkgver}/${_pkgname}-Linux-x64-${pkgver}.zip"
     "LICENSE-${pkgver}.txt::https://raw.githubusercontent.com/RubisetCie/vscodius/v${pkgver}/LICENSE.txt"
 )
-sha256sums=('17c9f27624381d3af7133eb421221ee4e30f4c5711213b3388600b5c6394e418'
+sha256sums=('179f4209e6ef8408120c4d245c30f67449f2464bbc0347a4ad3523bd8559dda4'
             '9480271317925265e806a9a196aaa33410a962fa9d4d1e248a4a5187bc8c9df9')
 build() {
     gendesk -f -n -q --pkgname="${pkgname%-bin}" --pkgdesc="${pkgdesc}" --categories="Development" --name="${_pkgname}" --exec="${pkgname%-bin}"
