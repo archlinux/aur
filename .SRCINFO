@@ -1,20 +1,20 @@
 pkgbase = pharmaspot-bin
 	pkgdesc = A cross-platform Point of Sale system designed for pharmacies and built to streamline operations and enhance customer service.Prebuilt version.Use system-wide electron.
-	pkgver = 1.4.3
-	pkgrel = 2
+	pkgver = 1.4.4
+	pkgrel = 1
 	url = https://www.patternsdigital.com/pharmaspot
 	arch = x86_64
 	license = MIT
 	makedepends = gendesk
 	depends = electron22
-	provides = pharmaspot=1.4.3
+	provides = pharmaspot=1.4.4
 	conflicts = pharmaspot
 	options = !emptydirs
-	source = pharmaspot-1.4.3.zip::https://github.com/drkNsubuga/PharmaSpot/releases/download/v1.4.3/Pharmaspot-linux-x64-1.4.3.zip
-	source = LICENSE-1.4.3::https://raw.githubusercontent.com/drkNsubuga/PharmaSpot/v1.4.3/LICENSE
-	source = pharmaspot-1.4.3.png::https://raw.githubusercontent.com/drkNsubuga/PharmaSpot/v1.4.3/assets/images/favicon.png
+	source = pharmaspot-1.4.4.zip::https://github.com/drkNsubuga/PharmaSpot/releases/download/v1.4.4/Pharmaspot-linux-x64-1.4.4.zip
+	source = LICENSE-1.4.4::https://raw.githubusercontent.com/drkNsubuga/PharmaSpot/v1.4.4/LICENSE
+	source = pharmaspot-1.4.4.png::https://raw.githubusercontent.com/drkNsubuga/PharmaSpot/v1.4.4/assets/images/favicon.png
 	source = pharmaspot.sh
-	sha256sums = 273bde007b40b61cef85339ea2778a2a0f7f2df1bbb47f544e4666a63c6ebd36
+	sha256sums = 6b8f262b11aaa6d076d61d98ff1c1eb51728ac03fa473c46ab1fdbc95a1da398
 	sha256sums = 66d59240c025ee617d78f981b88b1bb53393e657f064f9e8e0d68204644d8e1c
 	sha256sums = ba44229f6c0a35bb02fe584adb1b33029c78a80b2bdb96877ddff05c3b6ac17a
 	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
