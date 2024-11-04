@@ -1,0 +1,34 @@
+pkgbase = uctools-git
+	pkgdesc = Tools for showing information about unicode characters (UTF-8) and performing normalization.
+	pkgver = 1.2.1+2.r11.20200714.5465869
+	pkgrel = 1
+	url = https://github.com/luismsgomes/uctools
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python>=3.7
+	provides = uctools=1.2.1+2.r11.20200714.5465869
+	provides = python-uctools=1.2.1+2.r11.20200714.5465869
+	provides = python-uctools-git=1.2.1+2.r11.20200714.5465869
+	provides = ucinfo=1.2.1+2.r11.20200714.5465869
+	provides = ucenum=1.2.1+2.r11.20200714.5465869
+	provides = ucnorm=1.2.1+2.r11.20200714.5465869
+	provides = python-ucinfo=1.2.1+2.r11.20200714.5465869
+	provides = python-ucenum=1.2.1+2.r11.20200714.5465869
+	provides = python-ucnorm=1.2.1+2.r11.20200714.5465869
+	conflicts = uctools
+	conflicts = python-uctools
+	conflicts = ucinfo
+	conflicts = ucenum
+	conflicts = ucnorm
+	conflicts = python-ucinfo
+	conflicts = python-ucenum
+	conflicts = python-ucnorm
+	source = uctools::git+https://github.com/luismsgomes/uctools.git
+	sha256sums = SKIP
+
+pkgname = uctools-git
