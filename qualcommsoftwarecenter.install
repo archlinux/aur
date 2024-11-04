@@ -1,0 +1,159 @@
+pre_install() {
+	if [ ! -f /opt/qcom/softwarecenter/bin/softwarecenter ];then #if the app was installed before, we can assume that eula was accepted
+	  :
+	fi
+	OS_NAME=Ubuntu
+	versionid=$(grep '^VERSION_ID' /etc/os-release | awk 'NR==1{print$1}' |awk '{print substr($0, 13, 2)}')
+	os=$(egrep '^(VERSION|NAME)=' /etc/os-release | awk 'NR==1{print$1}' |awk '{print substr($0, 7, 6)}')
+	MINIMUM_OS_VERSION=20
+	if [ "$os" = "$OS_NAME" ];
+	then
+	    if [ $MINIMUM_OS_VERSION -gt $versionid ];
+	    then
+	    echo "Qualcomm Software Center App is supported on Ubuntu 20 and above."
+	    echo "Installation will be terminated."
+	    exit 1
+	    fi
+	fi
+	if [ -d /run/systemd/system ] ; then
+	  sudo systemctl stop qikservice3 > /dev/null 2>&1 || true
+	fi
+
+
+	QCOM_INSTALL_DIR="/opt/qcom"
+	QCOM_TMP="/var/tmp/qcom"
+	QCOM_LIB="/var/lib/qcom"
+	INSTALL_LOG_DIR=$TEMP_INSTALL_FILES_DIR/logs
+	QSC_APP_NAME="softwarecenter"
+
+	mkdir -p $INSTALL_LOG_DIR
+
+	{
+	echo `date '+%Y-%m-%d %H:%M:%S'` PRE-INSTALL STARTED 
+
+
+	rm -rf  $QCOM_INSTALL_DIR//$QSC_APP_NAME || true
+	rm -rf  $QCOM_INSTALL_DIR/qik3/ > /dev/null 2>&1 || true
+	mkdir -p $QCOM_INSTALL_DIR
+	chmod 777 $QCOM_INSTALL_DIR
+	mkdir -p $QCOM_TMP
+	chmod 777 $QCOM_TMP
+	mkdir -p $QCOM_LIB
+	chmod 777 $QCOM_LIB
+
+	echo `date '+%Y-%m-%d %H:%M:%S'` PRE-INSTALL DONE 
+	} 2>&1 | tee -a $PRE_INSTALL_LOG_FILE
+}
+
+post_install() {
+	gtk-update-icon-cache -q -t -f usr/share/icons/hicolor
+	if [ ! -f /opt/qcom/softwarecenter/bin/softwarecenter ];then #if the app was installed before, we can assume that eula was accepted
+		:
+	fi
+
+	QSC_VER="1.6.0"
+
+	QSC_COMPONENT_ID=abc31016-7831-11ee-b4ae-026b10d3716b
+	QSC_PRODUCT_ID=ab2423ae-7831-11ee-b4ae-026b10d3716b
+	QSC_FEATURE_ID=ab64288f-7831-11ee-b4ae-026b10d3716b
+	QSC_GUID=3b59d03c-d624-4c78-ad52-a516b8ec85b4
+	COMPONENT_FILE="/var/lib/qcom/data/qik/components/qikcomponent_$QSC_COMPONENT_ID.dat"
+
+	QCOM_HOME_DIR="/opt/qcom"
+	QCOM_TMP_DIR="/var/tmp/qcom"
+	QCOM_LIB_DIR="/var/lib/qcom"
+	QSC_HOME_DIR=$QCOM_HOME_DIR/softwarecenter
+	QSC_BIN_DIR=$QSC_HOME_DIR/bin
+	QIK_BIN_DIR=$QSC_BIN_DIR/qik
+	QPM_CLI_BIN_DIR=$QSC_BIN_DIR/qpm-cli
+	QPM3_CLI_BIN_DIR=$QSC_BIN_DIR/qpm3-cli
+	QSC_CLI_BIN_DIR=$QSC_BIN_DIR/qsc-cli
+	COMMON_LIBS_DIR=$QCOM_HOME_DIR/tools-common/libs
+
+	QLAUNCHER_DATA_DIR=$QCOM_LIB_DIR/data/qualcomm_launcher
+	QLAUNCHER_LICENSE_DIR=$QLAUNCHER_DATA_DIR/licenses
+	QLAUNCHER_WORKSPACES_FILEPATH=$QLAUNCHER_LICENSE_DIR/workspaces2.json
+
+	TEMP_INSTALL_FILES_DIR=/tmp/qcom/qsc_installer
+	QSC_SETUP_SCRIPT_FILEPATH=$TEMP_INSTALL_FILES_DIR/prepare_qsc.sh
+	LAUNCHER_DEPENDENCIES_INSTALLER_SCRIPT_FILEPATH=$TEMP_INSTALL_FILES_DIR/dependencies_installer.sh
+	QPM3_CRONJOB_FILEPATH=$TEMP_INSTALL_FILES_DIR/qpm3cronjob
+	INSTALL_LOG_DIR=$TEMP_INSTALL_FILES_DIR/logs
+	EXTERNAL_DEPENDENCIES_DIR=$TEMP_INSTALL_FILES_DIR/external-dependencies
+
+	GIT_CONFIG_DIR=$QLAUNCHER_DATA_DIR/.qualcomm_launcher_workspace_config
+	LAUNCHER_AGREEMENT_DIR=$QLAUNCHER_DATA_DIR/eula/launcher_agreement
+
+	mkdir -p $GIT_CONFIG_DIR/.git_config
+	chmod -R 777 $GIT_CONFIG_DIR
+
+	mkdir -p $LAUNCHER_AGREEMENT_DIR && touch $LAUNCHER_AGREEMENT_DIR/users.txt
+	chmod -R 777 $LAUNCHER_AGREEMENT_DIR
+
+	mkdir -p $INSTALL_LOG_DIR
+	chmod -R 777 $INSTALL_LOG_DIR
+
+	{
+	echo `date '+%Y-%m-%d %H:%M:%S'` POST-INSTALL START >&2
+
+	echo SETTING UP DIRECTORIES >&2
+	sudo sh $QSC_SETUP_SCRIPT_FILEPATH
+
+	echo CREATING LINKS >&2 
+	sudo ln -fs $QPM3_CLI_BIN_DIR/qpm3-cli /usr/bin/qpm3-cli
+	sudo ln -fs $QPM_CLI_BIN_DIR/qpm-cli /usr/bin/qpm-cli
+	sudo ln -fs $QIK_BIN_DIR/qik /usr/bin/qikv3
+	sudo ln -fs $QIK_BIN_DIR/qik $QCOM_LIB_DIR/bin/qikv3 || exit 1
+	sudo ln -fs $QSC_CLI_BIN_DIR/qsc-cli /usr/bin/qsc-cli
+
+	if [ -d /run/systemd/system ] ; then
+	  echo INITIALIZING QIKSERVICE3  >&2
+	  #qikv3 install /tmp/qcom/qsc_installer/qikservice3_installer.qik  --force > /dev/null
+	fi
+
+	mv $QPM3_CRONJOB_FILEPATH /etc/cron.d/qpm3cronjob
+	sudo chmod 755 /etc/cron.d/qpm3cronjob
+	sudo chown root /etc/cron.d/qpm3cronjob
+
+	sudo chmod 755 $LAUNCHER_DEPENDENCIES_INSTALLER_SCRIPT_FILEPATH
+	nohup bash $LAUNCHER_DEPENDENCIES_INSTALLER_SCRIPT_FILEPATH > /dev/null 2>&1 &
+	INSTALL_DATE=`date '+%Y-%m-%d %H:%M:%S'`
+
+	cat <<END > $COMPONENT_FILE
+{"Branch":null,"ComponentID":"$QSC_COMPONENT_ID","ComponentName":"Qualcomm_Software_Center.Core","ComponentType":"Core","DependsOn":null,"Description":"Qualcomm_Software_Center.Core","FeatureID":"$QSC_FEATURE_ID","FeatureName":"Core","GUID":"$QSC_GUID","InstallLocation":"\/opt\/qcom\/softwarecenter\/bin","InstallLocationRoot":"\/opt\/qcom\/softwarecenter","InstallationDate":"$INSTALL_DATE","MultipleVersions":0,"Name":"Qualcomm_Software_Center","ProductID":"$QSC_PRODUCT_ID","ProductName":"Qualcomm_Software_Center","PublishedDate":"2024-02-23 13:31:44","Publisher":"Qualcomm Technologies, Inc.","ReferenceCounter":0,"RequiredBy":null,"SpaceReq":"","Subtitle":"Qualcomm® Software Center","Version":"$QSC_VER","packageFile":""}
+END
+
+	sudo chmod 777 $COMPONENT_FILE
+
+	echo UPDATING MENU >&2
+	sudo chmod 644 /usr/share/menu/qualcommsoftwarecenter
+	sudo chmod 755 /usr/share/pixmaps/qualcommsoftwarecenter.png
+	sudo chmod 755 /usr/share/applications/qualcommsoftwarecenter.desktop
+	update-desktop-database > /dev/null 2>&1 || true
+	sudo -i -u $(logname) bash -c 'xdg-desktop-menu install /usr/share/applications/qualcommsoftwarecenter.desktop --novendor' > /dev/null 2>&1 || true
+	xdg-mime default softwarecenter.desktop x-scheme-handler/qsc > /dev/null 2>&1 || true
+
+	echo `date '+%Y-%m-%d %H:%M:%S'` POST-INSTALL END >&2
+	echo "Installed Qualcomm Software Center v$QSC_VER successfully." >&2
+
+	} 2>&1 | tee -a $POST_INSTALL_LOG_FILE
+
+	if [ ! -f /opt/qcom/softwarecenter/bin/softwarecenter ];then #if the app was installed before, we can assume that eula was accepted
+		:
+	fi
+	echo "To open the QSC desktop application, search for “Qualcomm Software Center” in the Applications menu" >&2
+	update-desktop-database -q
+}
+
+pre_upgrade() {
+	pre_install
+}
+
+post_upgrade() {
+	post_install
+}
+
+post_remove() {
+	gtk-update-icon-cache -q -t -f usr/share/icons/hicolor
+	update-desktop-database -q
+}
