@@ -6,6 +6,7 @@ pkgbase = snapcast-gui-git
 	arch = x86_64
 	license = GPLv3
 	makedepends = python-notify-py
+	makedepends = python-snapcast
 	depends = git
 	depends = python
 	depends = pyside6
