@@ -3,7 +3,7 @@
 BASE=$PWD
 mkdir -p tmp
 git clone mozc tmp/mozc
-(cd tmp/mozc; git submodule update --init;git fetch)
+(cd tmp/mozc; git fetch;git submodule update --init)
 source $BASE/PKGBUILD
 UPDATED=0
 for url in $(echo ${source[@]}|xargs -n1|grep "^git"|sed -e 's/git+//' -e 's/#commit=.*//'|grep -vE 'dict-to-mozc|mozc|bcr')

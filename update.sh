@@ -26,7 +26,8 @@ echo "BCR        :" $BCR_CURRENT_COMMIT
 echo "SudachiDict:" $SUDACHI_DATE
 
 UPDATED_FLAG=0
-if [[ "$COMMIT" != "$FCITX5_MOZC_COMMIT" ]]; then
+MSGS=""
+if [[ $(cd mozc; git rev-list --count $COMMIT..$FCITX5_MOZC_COMMIT)>0 ]]; then
     echo "Mozc Updated."
     echo "Current: $COMMIT"
     echo "Latest : $FCITX5_MOZC_COMMIT"
@@ -38,6 +39,9 @@ if [[ "$SudachiDict_DATE" != "$SUDACHI_DATE" ]];then
     echo "${SudachiDict_DATE}"
     UPDATED_FLAG=1
 fi
+if [[ "$UPDATED_FLAG" == "1" ]]; then
+    ./init-clone.sh
+fi
 if [[ "$SudachiDict_DATE" != "$SUDACHI_DATE" ]];then
     sed -i 's|^_sudachidict_date=.*$|_sudachidict_date='"${SudachiDict_DATE}"'|' PKGBUILD*
     rm -f *_lex.zip
@@ -48,7 +52,7 @@ if [[ "$SudachiDict_DATE" != "$SUDACHI_DATE" ]];then
     done
     #mksrcinfo
     git diff
-    git commit -a -m "Update: SudachiDict=$SudachiDict_DATE"
+    [[ -z $MSGS ]] && MSGS="Update: SudachiDict=$SudachiDict_DATE" || MSGS+="\nUpdate: SudachiDict=$SudachiDict_DATE"
 fi
 if [[ "$COMMIT" != "$FCITX5_MOZC_COMMIT" ]]; then
     sed -i 's|^_mozc_commit=.*$|_mozc_commit='"${FCITX5_MOZC_COMMIT}"'|' PKGBUILD*
@@ -60,12 +64,36 @@ if [[ "$COMMIT" != "$FCITX5_MOZC_COMMIT" ]]; then
     done
     #mksrcinfo
     git diff
-    git commit -a -m "Update: _mozc_commit=$FCITX5_MOZC_COMMIT"
+    [[ -z $MSGS ]] && MSGS="Update: _mozc_commit=$FCITX5_MOZC_COMMIT" || MSGS+="\nUpdate: _mozc_commit=$FCITX5_MOZC_COMMIT"
 fi
+function pkgver() {
+  cd "tmp/mozc" || exit
+  source <(grep = src/data/version/mozc_version_template.bzl| tr -d ' ')
+  printf "%s.%s.%s.%s" "$MAJOR" "$MINOR" "$BUILD_OSS" "$((REVISION+2))"
+}
+function pkgrel() {
+    FLAG=$1
+    for f in $(ls PKGBUILD*)
+    do
+        PKGREL=$(grep -E "^pkgrel=" $f|cut -f2 -d"=")
+        [[ -z $FLAG ]] && PKGREL=$((${PKGREL}+1)) || PKGREL=1
+        sed -i 's|^pkgrel=.*$|pkgrel='"${PKGREL}"'|' $f
+    done
+}
 if [[ "$UPDATED_FLAG" == "1" ]]; then
     echo "Change Detected."
+    ./update-submodule.sh
+    CURRENT_PKGVER=$(grep "pkgver=" PKGBUILD|cut -f2 -d"=")
+    PKGVER=$(pkgver)
+    if [[ "$CURRENT_PKGVER" == "$PKGVER" ]];then
+        pkgrel
+    else
+        sed -i 's|^pkgver=.*$|pkgver='"${PKGVER}"'|' PKGBUILD*
+        pkgrel 1
+    fi
+    makepkg --printsrcinfo > .SRCINFO
+    git commit -a -m "$(echo -e $MSGS)"
     #git push
 else
     echo "No change Detected."
 fi
-./update-submodule.sh

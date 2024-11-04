@@ -9,8 +9,8 @@
 
 ## Mozc compile option
 _bldtype=Release
-_mozc_commit=ae65159bad435a89894197297fe1f1e32a26e7c0
-_bcr_commit=54872d9e7c4355f701ab3f1b7dca054109a78b50
+_mozc_commit=718a451edc365e21a9cc41551f81b9fb13f13d51
+_bcr_commit=0ca5c61e40efe8eb8a91ffe3b58b4200ac2cd10d
 _dict_to_mozc_commit=c9b7de2e5b74be3b23ad7fec83f7b643716ead73
 _branch=fcitx
 # Sudachi Dictionary
@@ -28,7 +28,7 @@ _wil_commit=fc5dbf5
 pkgbase=mozc-with-jp-dict
 pkgname=("ibus-$pkgbase" "fcitx5-$pkgbase" "emacs-$pkgbase")
 pkgver=2.30.5618.102
-pkgrel=10
+pkgrel=11
 arch=('x86_64')
 url="https://github.com/fcitx/mozc"
 license=('Apache-2.0 AND BSD-2-Clause AND BSD-3-Clause AND MIT AND NAIST-2003 AND Unicode-3.0 AND LicenseRef-Okinawa-Dictionary')
@@ -57,8 +57,8 @@ source=("git+$url.git#commit=${_mozc_commit}"
         LICENSE-MeCab-ipadic-Neologd::https://github.com/neologd/mecab-ipadic-neologd/raw/refs/heads/master/COPYING
         )
 
-sha512sums=('d3abb209b9e6f7fd482a74f233ad34a1f095cc7bfecd75c99c607f0f5c6272e941d1fbe00b0738c0ddaa0a41895b94fbe3856dcf21108e4d22fbdb55ac01ff36'
-            '2b42515b9d63f6702a6f830e055b089289511a09dd519fb683cb539bc77f8ec387542b38bf1081e59138296252587c9ec6deb64871a6ca33f062fe4f0552bbca'
+sha512sums=('f6b55d63a067dd754999eb1b1fec92bc57dd1f5e252b1669c02a0a9cd2679fcc847b9702a41e9a7ed2ad3e666d396cee4695b44b2bb77dfa74bbbd2069f8e9ff'
+            '714c20720aa5f15025ed8ea9e704e339dd8eca307f7f673f648ec77ac2f0b468e005b8fdb4c3cc74edebf59f21bf51f1e6ff887d4c1fd85a17c590f2083d1202'
             '83a6fa68645d138af64ddddcfd15da567c4c46f92fb69be6c10bc5989c3aa6ab85776dfb3fcccdc9e7c32ca9f8260be121ceb7d329792d28ec9a66417a903a68'
             'f69046af8c37a2a8a441a258d5b8677016966cb43d8a3bb48badc78123a885d6179ff77d7885fd6c84130136a1b8931a98d35f9fcce3d03ed31a37a72ece0b9d'
             '44db7d4a09aa7d36f1fb5a89be2234834a58834c76e445f8e9f7bc5685f6a76005b19fc758842c63641e476fa97c10eb968fa13965312fafca25843181fd025b'
