@@ -4,7 +4,7 @@ pkgname=('sylixos-cross-compiler-toolchain' 'sylixos-cross-compiler-lcsproxy' 's
 pkgver=0.4.0
 _lcsproxy_ver=1.0.6
 _senseshield_ver=2.7.0.66418
-pkgrel=1
+pkgrel=2
 pkgdesc="cross compile toolchain to build objects running on sylixos"
 arch=('x86_64')
 url="http://10.7.0.200:9000/RealEvo-IDE/realevo-linux-tools-v$pkgver.tar.gz"
@@ -19,6 +19,22 @@ package_sylixos-cross-compiler-toolchain() {
     #extracting
     install -dm755 "${pkgdir}/${_install_dir}"
     tar xzf ${srcdir}/realevo-linux-tools/compiler_pub.tar.gz -C "${pkgdir}/${_install_dir}"
+
+    #fix user mod
+    TARGET_PATH="${pkgdir}/${_install_dir}/compiler/"
+    find "$TARGET_PATH" -type f -o -type d | while read -r item; do
+        if [ -f "$item" ]; then
+            if [[ "$item" == */lib/* || "$item" == */bin/* ]]; then
+                chmod 777 "$item"
+            elif [ "$(stat -c "%a" "$item")" -ne 766 ]; then
+                chmod 766 "$item"
+            fi
+        elif [ -d "$item" ]; then
+            if [ "$(stat -c "%a" "$item")" -ne 755 ]; then
+                chmod 755 "$item"
+            fi
+        fi
+    done
 
     #symlinking
     install -dm755 "${pkgdir}/usr/bin"
