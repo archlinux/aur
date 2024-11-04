@@ -1,7 +1,7 @@
 # Maintainer: UnicornDarkness
 
 pkgname=tumbler-extra-thumbnailers
-pkgver=5.0
+pkgver=5.1
 pkgrel=1
 pkgdesc="Customized thumbnailers for Tumbler"
 arch=('any')
@@ -24,7 +24,7 @@ source=('comicthumb.thumbnailer'
 	'text-thumbnailer.sh'
 	'text.thumbnailer'
 	'webp.thumbnailer')
-sha512sums=('dca20d4fa05e93704252e8ffa764e5a745c43c3dfb40f77e3a16e3f2d789931f00aa7c9eee9235107f74be71906ebf45a287f216bdbab46dc1a9f9986e5cc00f'
+sha512sums=('e6983e977ead2bd46bf7509dbd2ecfeb0cbcc7782f8c9ff421aa93e5157b7709eb34aec05b336c4cfa3f46e093e02c5cea337a7ff5f9beff57b5e8cc1de9170e'
             'c4f484f78b28d51e167d1e861c63c81aea623539fcaae7433d13b3fc8c0ccf5f9dbe5a760fcf3310490f1df3c31c1c1368e63d35604658dabe403216f9bf3e13'
             '3590b2c8d6360b037f4b799e2ed77b67de9c172e56b068a73d31f4aa2e3161bae894080309f1cfd808bb00fc326062e33b35f9a9c87e4f6b78643658d00bc51c'
             'd6b94fbee77935294a0fa8fd460bceb51db11bbf584c771d1f2055f0d87c900bdc494dba0519960bfad10058074623893609f40e2e2d60bc00bba6b5750f161d'
