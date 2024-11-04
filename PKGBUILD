@@ -8,7 +8,7 @@ pkgname=(
   "${pkgbase}-vulkan"
 )
 pkgver=1.7.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Port of OpenAI's Whisper model in C/C++"
 arch=('armv7h' 'aarch64' 'x86_64')
 url="https://github.com/ggerganov/whisper.cpp"
@@ -135,7 +135,7 @@ package_whisper.cpp-vulkan() {
   provides=("${pkgbase}=${pkgver}")
   conflicts=("${pkgbase}")
 
-  cd "${pkgbase}-openvino"
+  cd "${pkgbase}-vulkan"
   DESTDIR="${pkgdir}" cmake --install build
   _package
 }
