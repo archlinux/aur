@@ -7,6 +7,8 @@ pkgbase = python-gitchangelog
 	license = BSD
 	makedepends = git
 	makedepends = python-setuptools
+	makedepends = python-pip
+	makedepends = python-wheel
 	depends = python
 	optdepends = python-pystache
 	source = git+https://github.com/sarnold/gitchangelog#tag=3.2.0

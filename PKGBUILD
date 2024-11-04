@@ -10,7 +10,7 @@ url="https://github.com/sarnold/gitchangelog"
 license=("BSD")
 depends=('python')
 optdepends=('python-pystache')
-makedepends=('git' 'python-setuptools')
+makedepends=('git' 'python-setuptools' 'python-pip' 'python-wheel')
 arch=("x86_64")
 source=("git+https://github.com/sarnold/${_pkgname}#tag=${pkgver}")
 
