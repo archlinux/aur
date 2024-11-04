@@ -1,6 +1,6 @@
 pkgbase = witsy
 	pkgdesc = Generative AI desktop application.Use system-wide electron.
-	pkgver = 1.21.1
+	pkgver = 1.22.0
 	pkgrel = 1
 	url = https://github.com/nbonamy/witsy
 	arch = any
@@ -11,9 +11,9 @@ pkgbase = witsy
 	makedepends = curl
 	depends = electron32
 	conflicts = witsy
-	source = witsy-1.21.1.tar.gz::https://github.com/nbonamy/witsy/archive/refs/tags/v1.21.1.tar.gz
+	source = witsy-1.22.0.tar.gz::https://github.com/nbonamy/witsy/archive/refs/tags/v1.22.0.tar.gz
 	source = witsy.sh
-	sha256sums = 5323f8e4cb4ba2673c9a753c0bbaeb586115cd6eb989dc5c789ef5e7721bfd85
+	sha256sums = 7f71a9972e0219087a3704a6e88b3d4f0fc46f290c60541ac849e384faa71144
 	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
 
 pkgname = witsy
