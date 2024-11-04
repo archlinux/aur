@@ -1,15 +1,15 @@
 # Maintainer: Alex Grabowski <hurufu+aur@gmail.com>
 pkgbase=dogelog
 pkgname=(dogelog-node dogelog-py dogelog-java)
-pkgver=1.2.3
+pkgver=1.2.4
 pkgrel=1
 arch=(any)
 url='https://www.dogelog.ch/'
 pkgdesc='The avant-garde of logic programming'
 license=(custom)
 options=(!strip)
-source=(https://www.dogelog.ch/typtab/rscsrv/docs/50_archive/archive_1_2/dogelog_1_2_3.zip)
-sha256sums=('434bbcbfe7b5cc70a6c55c71633d549a9b4420e48157e8903a9fab33508c3d92')
+source=(https://www.dogelog.ch/typtab/rscsrv/docs/50_archive/archive_1_2/dogelog_1_2_4.zip)
+sha256sums=('9521b48acdae738fe41b3de93d5fbe9f8996cf34d9537f146241f90a4dd4de75')
 
 package_any() {
     install -D --mode=644 -t "$pkgdir/usr/share/licenses/$pkgbase/$1" ../LICENSE
