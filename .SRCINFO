@@ -40,3 +40,12 @@ pkgname = whisper.cpp-openvino
 	depends = pugixml
 	provides = whisper.cpp=1.7.1
 	conflicts = whisper.cpp
+
+pkgname = whisper.cpp-vulkan
+	pkgdesc = Port of OpenAI's Whisper model in C/C++ (with Vulkan optimizations)
+	depends = glibc
+	depends = gcc-libs
+	depends = vulkan-driver
+	depends = vulkan-icd-loader
+	provides = whisper.cpp=1.7.1
+	conflicts = whisper.cpp
