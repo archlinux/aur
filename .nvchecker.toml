@@ -1,0 +1,5 @@
+[loot]
+source = "github"
+github = "loot/loot"
+prefix = "v"
+use_latest_release = true
