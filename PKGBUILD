@@ -2,7 +2,7 @@
 
 pkgname=colormc
 pkgver=32
-pkgrel=3
+pkgrel=1
 pkgdesc="A Minecraft Launcher"
 url="https://www.github.com/Coloryr/ColorMC"
 arch=('x86_64')
