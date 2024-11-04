@@ -1,0 +1,117 @@
+Fix compilation errors and warnings for etherdump
+
+diff --git a/Makefile b/Makefile
+index af9c7a2..a8cdda5 100644
+--- a/Makefile
++++ b/Makefile
+@@ -1,6 +1,6 @@
+ PROG=etherdump
+ 
+-CFLAGS=-Os -W
++CFLAGS ?= -Os -W
+ #-Wall
+ 
+ # For gdb debugging, does not change ethereal '-d' option
+diff --git a/etherdump.c b/etherdump.c
+index 2be4172..b8d1059 100644
+--- a/etherdump.c
++++ b/etherdump.c
+@@ -58,6 +58,12 @@
+ 
+ #include "etherdump.h"
+ 
++// miscellaneous crap useful in many functions
++unsigned char debug;
++FILE *F_logfd;
++struct tm *lt;
++struct timeval tv;
++
+ int logfd = 1; /* default to stdout */
+ 
+ /*struct protoent * my_getproto(unsigned char *name);
+@@ -398,17 +404,18 @@ int main( int argc, char *argv[] )
+     
+         } else if (dumptype == 2) { /* dump raw frames in binary */
+     
+-            write(logfd, buffer, n);
++            if(write(logfd, buffer, n) == -1)
++		    fprintf(stderr, "writing error... no idea what to do\n");
+     
+         } else { /* display certain packet types all nifty-like */
+ 
+             uint16_t proto_num = ntohs(from.sll_protocol);
+ 
+             if ( proto_num == ETH_P_IP ) {
+-                process_ip(&buffer, n, &from, p_filters, p_filter_idx);
++                process_ip(buffer, n, &from, p_filters, p_filter_idx);
+ 
+             } else if ( proto_num == ETH_P_ARP ) {
+-                process_arp(&buffer, n, &from, p_filters, p_filter_idx);
++                process_arp(buffer, n, &from, p_filters, p_filter_idx);
+ 
+             } else {
+                 if (debug) fprintf(stderr, "unsupported link layer protocol 0x%04x\n", proto_num);
+diff --git a/etherdump.h b/etherdump.h
+index 02c7d25..acc9b89 100644
+--- a/etherdump.h
++++ b/etherdump.h
+@@ -388,10 +388,10 @@ static const struct protoent my_protocols[] = {
+ //const char *dotdigits = "0123456789.";
+ 
+ // miscellaneous crap useful in many functions
+-unsigned char debug;
+-FILE *F_logfd;
+-struct tm *lt;
+-struct timeval tv;
++extern unsigned char debug;
++extern FILE *F_logfd;
++extern struct tm *lt;
++extern struct timeval tv;
+ 
+ 
+ // stuff from etherdump.c
+diff --git a/filtering.c b/filtering.c
+index bb65d64..39d7bab 100644
+--- a/filtering.c
++++ b/filtering.c
+@@ -206,11 +206,11 @@ int filter_packet( struct my_sockaddr_ll *from, void *main_packet, void *packet,
+             }
+ 
+             if ( good == 0 ) {
+-                if ( FILTDEBUG ) fprintf(stderr, "info: filter %i: src host %s and dst host %s do not match filter host %s\n", i, src, dst, filters[i].buff);
++                if ( FILTDEBUG ) fprintf(stderr, "info: filter %i: src host %s and dst host %s do not match filter host %s\n", i, src, dst, (char *) filters[i].buff);
+                 bad_filter++;
+                 continue;
+             } else {
+-                if ( FILTDEBUG ) fprintf(stderr, "info: fitler %i: host matched %s\n", i, filters[i].buff);
++                if ( FILTDEBUG ) fprintf(stderr, "info: fitler %i: host matched %s\n", i, (char *) filters[i].buff);
+             }
+ 
+         }
+diff --git a/icmp.c b/icmp.c
+index 77f7569..6950fa2 100644
+--- a/icmp.c
++++ b/icmp.c
+@@ -101,7 +101,7 @@ int tcpdump_print_icmp(struct ip_packet *packet_ip, struct icmp_packet *packet_i
+                     snprintf(buff, sizeof(buff), " %s %s port %i redirect to %s, length %u", tmp_packet_ip.destination_a, proto, port, inet_ntoa(gw_addr), packet_icmp->length);
+                 }
+ 
+-                fprintf(F_logfd, buff);
++                fprintf(F_logfd, "%s", buff);
+ 
+                 break;
+             }
+diff --git a/ip.c b/ip.c
+index 006b79e..d58d38f 100644
+--- a/ip.c
++++ b/ip.c
+@@ -1,8 +1,8 @@
+ #include <stdio.h>
+ #include <string.h>
+ #include <time.h>
++#include <sys/time.h>
+ #ifndef __CYGWIN__
+-//#include <sys/time.h>
+ #include <sys/socket.h>
+ #include <netinet/in.h>
+ #include <arpa/inet.h>
