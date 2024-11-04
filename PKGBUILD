@@ -4,7 +4,7 @@
 pkgbase="libepc"
 pkgname=("${pkgbase}" "${pkgbase}-docs")
 pkgver=0.4.6
-pkgrel=4
+pkgrel=5
 pkgdesc="Easy Publish and Consume Library"
 arch=('x86_64' 'i686')
 url="https://gitlab.gnome.org/Archive/libepc"
@@ -32,6 +32,12 @@ package_libepc() {
 
   cd "${srcdir}/${_pkgsrc}"
   make DESTDIR="${pkgdir}" install
+
+  install -Dm644 "README"    "${pkgdir}/usr/share/doc/${pkgbase}/README"
+  install -Dm644 "NEWS"      "${pkgdir}/usr/share/doc/${pkgbase}/NEWS"
+  install -Dm644 "ChangeLog" "${pkgdir}/usr/share/doc/${pkgbase}/CHANGELOG"
+  install -Dm644 "AUTHORS"   "${pkgdir}/usr/share/doc/${pkgbase}/AUTHORS"
+  install -Dm644 "COPYING"   "${pkgdir}/usr/share/licenses/${pkgbase}/COPYING"
   
   cd "${pkgdir}/usr/share"
   rm -rf "gtk-doc"

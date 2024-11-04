@@ -1,7 +1,7 @@
 pkgbase = libepc
 	pkgdesc = Easy Publish and Consume Library
 	pkgver = 0.4.6
-	pkgrel = 4
+	pkgrel = 5
 	url = https://gitlab.gnome.org/Archive/libepc
 	arch = x86_64
 	arch = i686
