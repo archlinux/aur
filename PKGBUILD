@@ -6,7 +6,7 @@ _module="diffusers"
 _pkgname="python-$_module"
 pkgname="$_pkgname"
 pkgver=0.31.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Pretrained diffusion models for image and audio generation in PyTorch'
 url='https://github.com/huggingface/diffusers'
 license=('Apache-2.0')
@@ -47,7 +47,7 @@ build() {
 }
 
 check() {
-  PYHONPATH=$srcdir/$_pkgsrc/src python -c 'import diffusers'
+  PYTHONPATH=$srcdir/$_pkgsrc/src python -c 'import diffusers'
 }
 
 package() {

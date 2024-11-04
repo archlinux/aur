@@ -1,7 +1,7 @@
 pkgbase = python-diffusers
 	pkgdesc = Pretrained diffusion models for image and audio generation in PyTorch
 	pkgver = 0.31.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/huggingface/diffusers
 	arch = any
 	groups = huggingface
