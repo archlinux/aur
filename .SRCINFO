@@ -1,6 +1,6 @@
 pkgbase = mud-git
 	pkgdesc = Multi repository git utility. Manage multiple git-repositories simultaneously.
-	pkgver = 1.0.3
+	pkgver = 1.0.4
 	pkgrel = 1
 	url = https://github.com/jasursadikov/mud
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = mud-git
 	makedepends = git
 	depends = python
 	depends = python-prettytable
-	source = mud-git::git+https://github.com/jasursadikov/mud.git
+	source = mud-git::git+https://github.com/jasursadikov/mud.git#tag=v1.0.4
 	md5sums = SKIP
 
 pkgname = mud-git

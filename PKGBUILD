@@ -1,6 +1,6 @@
 # Maintainer: Jasur Sadikov <jasur@sadikoff.com>
 pkgname=mud-git
-pkgver=1.0.3
+pkgver=1.0.4
 pkgrel=1
 pkgdesc="Multi repository git utility. Manage multiple git-repositories simultaneously."
 arch=('any')
@@ -8,7 +8,7 @@ url="https://github.com/jasursadikov/mud"
 license=('MIT')
 depends=('python' 'python-prettytable')
 makedepends=('python-build' 'python-setuptools' 'python-setuptools-scm' 'git')
-source=("${pkgname}::git+https://github.com/jasursadikov/mud.git")
+source=("${pkgname}::git+https://github.com/jasursadikov/mud.git#tag=v1.0.4")
 md5sums=('SKIP')
 
 build() {
