@@ -1,0 +1,10 @@
+[Application]
+name=wechat
+
+[Instance]
+instance-id=114514
+session-bus-proxy=true
+system-bus-proxy=true
+
+[Context]
+devices=dri;all;
