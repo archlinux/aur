@@ -1,7 +1,7 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 _pkgname=shadps4
 pkgname=$_pkgname-git
-pkgver=0.3.0.r201.g9814a1b7
+pkgver=0.4.0.r9.gfe389e56
 pkgrel=1
 pkgdesc="Sony PlayStation 4 emulator"
 arch=('aarch64' 'x86_64')
@@ -51,9 +51,11 @@ source=(
 	"$_pkgname-imgui::git+https://github.com/shadps4-emu/ext-imgui.git"
 	"$_pkgname-sirit::git+https://github.com/shadps4-emu/sirit.git"
 	"$_pkgname-tracy::git+https://github.com/shadps4-emu/tracy.git"
+	"vita3k-libatrac9::git+https://github.com/Vita3K/LibAtrac9.git"
 	"zydis::git+https://github.com/zyantific/zydis.git"
 )
 b2sums=(
+	'SKIP'
 	'SKIP'
 	'SKIP'
 	'SKIP'
@@ -71,6 +73,7 @@ prepare() {
 	cd $_pkgname
 	git config submodule.externals/dear_imgui.url ../$_pkgname-imgui
 	git config submodule.externals/discord-rpc.url ../$_pkgname-discord-rpc
+	git config submodule.externals/LibAtrac9.url ../vita3k-libatrac9
 	git config submodule.externals/sirit.url ../$_pkgname-sirit
 	git config submodule.externals/tracy.url ../$_pkgname-tracy
 	git config submodule.externals/zydis.url ../zydis
