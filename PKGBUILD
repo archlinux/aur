@@ -1,7 +1,7 @@
 # Maintainer: Étienne Deparis <etienne@depar.is>
 
 pkgname=fronde
-pkgver=0.6.0
+pkgver=0.6.1
 pkgrel=1
 pkgdesc="An opinionated static website generator for Emacs Org mode"
 url="https://etienne.depar.is/fronde"
@@ -12,12 +12,7 @@ depends=("emacs" "ruby>=3.3.0" "ruby<3.4.0" "ruby-i18n" "ruby-liquid"
          "ruby-nokogiri>=1.15" "ruby-rainbow" "ruby-rake" "ruby-webrick")
 options=("!emptydirs")
 source=("https://git.umaneti.net/${pkgname}/snapshot/${pkgname}-${pkgver}.tar.gz")
-sha512sums=('ddd04bf0ca9c3b2d436de5fe1af79e74704c8cf7dad1c5efcbd751b23db6a107f9b913fdb74fe97108642efb95ffd58dd708ab158f3f0d0f8b44b15e58a6884f')
-
-prepare() {
-    cd ${pkgname}-${pkgver}
-    sed -i "s|~>|>=|g" ${pkgname}.gemspec
-}
+sha512sums=('0f68c03adf1225c69d280c8e0b0441f0a0d57e5b938da2f4d4827ee348be67b4023b7ba05c39f0db13957a55df1ea03e5f5689cd1293210f82fe10d65ebf3d9d')
 
 build() {
     cd ${pkgname}-${pkgver}
