@@ -3,7 +3,7 @@
 pkgbase=wps-office-365
 pkgname=('wps-office-365' 'wps-office-365-xiezuo' 'wps-office-365-fonts')
 pkgver=12.8.2.18605
-pkgrel=1
+pkgrel=2
 pkgdesc="WPS Office, is an office productivity suite."
 arch=('x86_64' 'aarch64' 'loong64')
 url="https://365.wps.cn/"
@@ -37,8 +37,9 @@ package_wps-office-365(){
   conflicts=('wps-office')
   provides=('wps-office')
 
-  _install --exclude './usr/*xiezuo*' --exclude './usr/share/fonts' \
-    ./opt/kingsoft ./usr ./etc/xdg/menus
+  _install --exclude ./usr/*xiezuo* --exclude ./usr/share/fonts \
+    --exclude ./usr/share/desktop-directories \
+    ./opt/kingsoft/wps-office/office6 ./usr
 
   # to save typing pkgdir 
   cd "${pkgdir}"
@@ -67,6 +68,10 @@ python -c 'import sys, urllib.parse; print(urllib.parse.unquote(sys.argv[1]))'/"
   sed -i 's|URL=.*|URL=/opt/kingsoft/wps-office/office6/mui/zh_CN/templates/newfile.pptx|' \
     usr/share/templates/wps-office-wpp-template.desktop
 
+  # fix menu category
+  sed -i 's|Categories=.*|&Office;|' usr/share/applications/*.desktop
+  sed -i '$a Categories=Office;' usr/share/applications/wps-office-officeassistant.desktop
+
   # fix background process
   sed -i '2i [[ $(ps -ef | grep -c "office6/$(basename $0)") == 1 ]] && gOptExt=-multiply' usr/bin/{wps,wpp,et,wpspdf}
 
@@ -80,7 +85,7 @@ python -c 'import sys, urllib.parse; print(urllib.parse.unquote(sys.argv[1]))'/"
 }
 
 package_wps-office-365-xiezuo(){
-  _install --wildcards ./opt/xiezuo './usr/*xiezuo*'
+  _install --wildcards ./opt/xiezuo ./usr/*xiezuo*
 }
 
 package_wps-office-365-fonts(){
