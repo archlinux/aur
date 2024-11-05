@@ -20,16 +20,16 @@ makedepends=(
     'python-setuptools'
     'python-setuptools-scm'
 )
-source=("git+${url}.git")
+source=("${pkgname}::git+${url}.git")
 md5sums=('SKIP')
 
 build() {
-    cd "$srcdir/mud"
+    cd "$srcdir/$pkgname"
     python -m build --wheel --no-isolation
 }
 
 package() {
-    cd "$srcdir/mud"
+    cd "$srcdir/$pkgname"
     python -m installer --destdir="$pkgdir" dist/*.whl
-    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/mud/LICENSE"
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
