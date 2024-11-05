@@ -1,0 +1,19 @@
+pkgbase = jet-pilot-bin
+	pkgdesc = An open-source Kubernetes desktop client that focuses on less clutter, speed and good looks.(Prebuilt version)
+	pkgver = 1.31.0
+	pkgrel = 1
+	url = https://jet-pilot.app/
+	arch = x86_64
+	license = MIT
+	depends = gtk3
+	depends = gdk-pixbuf2
+	depends = webkit2gtk
+	depends = libsoup
+	provides = jet-pilot=1.31.0
+	conflicts = jet-pilot
+	source = jet-pilot-1.31.0.deb::https://github.com/unxsist/jet-pilot/releases/download/v1.31.0/jet-pilot_1.31.0_amd64.deb
+	source = LICENSE-1.31.0::https://raw.githubusercontent.com/unxsist/jet-pilot/v1.31.0/LICENSE
+	sha256sums = 10c3cc7803839382a4a5956e093104329bf0535d176be76b85a042999860274f
+	sha256sums = 508a77d2e7b51d98adeed32648ad124b7b30241a8e70b2e72c99f92d8e5874d1
+
+pkgname = jet-pilot-bin
