@@ -1,7 +1,7 @@
 pkgbase = wechat
 	pkgdesc = WeChat 是一种生活方式
 	pkgver = 4.0.0.21
-	pkgrel = 3
+	pkgrel = 4
 	url = https://weixin.qq.com/
 	arch = x86_64
 	arch = aarch64
@@ -75,7 +75,7 @@ pkgbase = wechat
 	source = wechat.env
 	source = mimeapps.list
 	source = flatpak-info
-	md5sums = 5354674c2043bc3d7202c34b7ff7a584
+	md5sums = c63f90970f0a5992207110b227d8de61
 	md5sums = 89ae77c95f205d0a7f9347f8251ce742
 	md5sums = 468e0367346707c026e577e7bf3e3a82
 	md5sums = b48d860c2d03ddb4ffa609fcd5fe6857
