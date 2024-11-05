@@ -1,7 +1,7 @@
 # Maintainer: Frank Bearoff fbearoff at gmail dot com
 
 pkgname=dufs-bin
-pkgver=v0.42.0
+pkgver=v0.43.0
 pkgrel=1
 pkgdesc='Dufs is a distinctive utility file server that supports static serving, uploading, searching, accessing control, webdav...'
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('APACHE' 'MIT')
 depends=()
 source=("${url}/releases/download/${pkgver}/${pkgname%-bin}-${pkgver}-x86_64-unknown-linux-musl.tar.gz"
 	"https://raw.githubusercontent.com/sigoden/dufs/main/LICENSE-MIT")
-sha256sums=('af895ce65b894fa117a6622a1201f66a82c88ad62b19b2c214ed05c06989a68a'
+sha256sums=('e41a21fd11d1cbbc7fcaba8c6d246d878dfab5a5d12be48db84d8067c3f1c995'
 	'4623d04ec401ec83c94b935d75d8b4329e860580e91ed777ef03a0aa3b31bb04')
 package() {
 	install -Dm755 "dufs" "${pkgdir}/usr/bin/${pkgname%-bin}"
