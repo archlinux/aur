@@ -4,8 +4,8 @@ pkgname="${_appname}-wallet-bin"
 _pkgname=Aesir
 pkgver=1.0.0
 _electronversion=30
-pkgrel=1
-pkgdesc="The most current Kryptokrona GUI Wallet built with Svelte and Electron.Prebuilt version.Use system-wide electron."
+pkgrel=2
+pkgdesc="The most current Kryptokrona GUI Wallet built with Svelte and Electron.(Prebuilt version.Use system-wide electron.)"
 arch=('x86_64')
 url="https://kryptokrona.org/"
 _ghurl="https://github.com/kryptokrona/aesir-wallet"
@@ -23,7 +23,7 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/kryptokrona/aesir-wallet/${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('3d57bae17c7c134b5540ff09b285376e1b6768518a85ad68d31e9bd0a2a41db7'
+sha256sums=('b8c3b46e5175ed3277fdc602b19f34c3e4bbc1aa3e7e947c94b899f88cab7ca0'
             '6533f6c810ff2e8e6ca1c96333b082d2f4e755f4ee586d2ef320c34782503950'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 build() {
