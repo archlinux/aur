@@ -25,8 +25,8 @@ if [[ "$UPDATED" == "1" ]];then
     sed -i 's|^_commit=.*$|_commit='"${LATEST_COMMIT}"'|' PKGBUILD
     sed -i 's|^_libressl_ver=.*$|_libressl_ver='"${LIBRESSL_LATEST}"'|' PKGBUILD
     updpkgsums
-    mksrcinfo
     makepkg -do --noprepare
+    makepkg --printsrcinfo > .SRCINFO
     git diff
     MSG="Update: Nginx\n\n_commit=${LATEST_COMMIT}\n"
     MSG=$MSG"_libressl_ver=${LIBRESSL_LATEST}"
