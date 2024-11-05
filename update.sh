@@ -1,6 +1,7 @@
 #!/bin/bash
 
 #SudahiDict
+./partial-clone.sh
 SudachiDict_DATE=$(curl -s 'http://sudachi.s3-website-ap-northeast-1.amazonaws.com/sudachidict-raw/' | grep -o '<td>[0-9]*</td>' | grep -o '[0-9]*' | sort -n | tail -n 1)
 
 #ORIGINAL_REPO=fcitx/mozc
@@ -50,7 +51,6 @@ if [[ "$SudachiDict_DATE" != "$SUDACHI_DATE" ]];then
         eval $(makepkg -g --noprepare -do -p $f)
         ./update_sha512sums.sh $f "${sha512sums[@]}"
     done
-    #mksrcinfo
     git diff
     [[ -z $MSGS ]] && MSGS="Update: SudachiDict=$SudachiDict_DATE" || MSGS+="\nUpdate: SudachiDict=$SudachiDict_DATE"
 fi
@@ -62,7 +62,6 @@ if [[ "$COMMIT" != "$FCITX5_MOZC_COMMIT" ]]; then
         eval $(makepkg -g --noprepare -do -p $f)
         ./update_sha512sums.sh $f "${sha512sums[@]}"
     done
-    #mksrcinfo
     git diff
     [[ -z $MSGS ]] && MSGS="Update: _mozc_commit=$FCITX5_MOZC_COMMIT" || MSGS+="\nUpdate: _mozc_commit=$FCITX5_MOZC_COMMIT"
 fi

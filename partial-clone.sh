@@ -11,8 +11,9 @@ do
     fi
     COMMIT=${DIR#*commit=}
     COMMIT=${COMMIT%\?*}
-    DIR=${DIR%.git*}
-    URL=${url%.git*}.git
+    DIR=${DIR%#commit=*}
+    DIR=${DIR%.git}
+    URL=${url%#commit=*}
     if [[ ! $url =~ ^git\+ ]];then
         URL=${URL#*::}
         DIR=${url%::*}
