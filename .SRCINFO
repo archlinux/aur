@@ -1,0 +1,17 @@
+pkgbase = materialious
+	pkgdesc = Modern material design for Invidious.
+	pkgver = 1.6.22
+	pkgrel = 1
+	url = https://materialio.us
+	arch = x86_64
+	license = AGPL-3.0-or-later
+	makedepends = desktop-file-utils
+	makedepends = npm
+	makedepends = python
+	depends = electron33
+	source = Materialious-1.6.22.tar.gz::https://github.com/Materialious/Materialious/archive/refs/tags/v1.6.22.tar.gz
+	source = materialious.sh
+	sha256sums = 5ca22d1d3794b840f573038af11066f77eef044bb93fcca8a876a89fd6560026
+	sha256sums = 2109a2f0353f1cc04e12539f55ed4dbb58d59f4d12e000d86f6668369c224c4c
+
+pkgname = materialious
