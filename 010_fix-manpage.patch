@@ -1,0 +1,24 @@
+Description: adjustments to Debian reality.
+Author: Joao Eriberto Mota Filho
+Last-Update: 2014-11-03
+Comments: closes #759369.
+Index: magicrescue/doc/magicrescue.1
+===================================================================
+--- magicrescue.orig/doc/magicrescue.1
++++ magicrescue/doc/magicrescue.1
+@@ -193,13 +193,12 @@ for in the first place.
+ Mandatory.  Recipe name, file, or directory.  Specify this as either a plain
+ name (e.g.  \f(CW\*(C`jpeg\-jfif\*(C'\fR) or a path (e.g. \fIrecipes/jpeg\-jfif\fR).  If it doesn't
+ find such a file in the current directory, it will look in \fI./recipes\fR and
+-\&\fIPREFIX/share/magicrescue/recipes\fR, where \fI\s-1PREFIX\s0\fR is the path you installed
+-to, e.g. \fI/usr/local\fR.
++\&\fI/usr/share/magicrescue/recipes\fR.
+ .Sp
+ If \fIrecipe\fR is a directory, all files in that directory will be treated as
+ recipes.
+ .Sp
+-Browse the \fIPREFIX/share/magicrescue/recipes\fR directory to see what recipes
++Browse the \fI/usr/share/magicrescue/recipes\fR directory to see what recipes
+ are available.  A recipe is a text file, and you should read the comments
+ inside it before using it.  Either use the recipe as it is or copy it somewhere
+ and modify it.

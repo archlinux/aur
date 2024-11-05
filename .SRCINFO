@@ -6,7 +6,17 @@ pkgbase = magicrescue
 	arch = i686
 	arch = x86_64
 	license = GPL-2.0-or-later
+	options = !strip
+	options = !debug
 	source = http://deb.debian.org/debian/pool/main/m/magicrescue/magicrescue_1.1.10.orig.tar.gz
+	source = 010_fix-manpage.patch
+	source = 020_add-Perl-preprocessor.patch
+	source = 030_fix-textextract-crash.patch
+	source = 040_fix-install.patch
 	sha256sums = 060c77be3e86a328a4f90f45d2da41b2b78cb74f13d44f69e29909cf68e98cad
+	sha256sums = cf100ebf81d758abd6d4f6c8c35e6f4cb30bb4454b45aff96108c9a80c6ca4b3
+	sha256sums = b9bc14b94bfe9922beccff4fd5383ef03dc5ebaf040afd15fb2712e43fe89b32
+	sha256sums = 7c7c3f6fbd914a770d0a3a49819b21ae20fb2ef2e81b8770c94a8c5886b8ee20
+	sha256sums = 50b3a504121cfc682b926a1667509edf1bad675dd207214d5e3a521b239d55fc
 
 pkgname = magicrescue

@@ -1,0 +1,15 @@
+Description: Add PERL as processor for file.
+Author: Torsten Werner <twerner@debian.org>,
+        Varun Hiremath <varun@debian.org>
+Reviewed-by: Joao Eriberto Mota Filho <eriberto@debian.org>
+Last-Update: 2018-11-25
+Index: magicrescue/tools/laola.pl
+===================================================================
+--- magicrescue.orig/tools/laola.pl
++++ magicrescue/tools/laola.pl
+@@ -1,4 +1,4 @@
+-#
++#!/usr/bin/perl
+ # $Id: laola.pl,v 0.5.1.5 1997/07/01 00:06:42 schwartz Rel $
+ #
+ # laola.pl, LAOLA filesystem. 
