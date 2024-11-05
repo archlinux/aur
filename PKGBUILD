@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=poilog
-_pkgver=0.4.2
+_pkgver=0.4.2.1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=3
+pkgrel=1
 pkgdesc="Poisson Lognormal and Bivariate Poisson Lognormal Distribution"
 arch=(x86_64)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -13,8 +13,8 @@ depends=(
   r
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('e3eaf4f8caf52dc896096364e3de4dee')
-b2sums=('2cecb56a7ceddd9da97122e21fcf4ff441fedebfb480ca2bb4f4aeb1d0f562ad5f7dfe5d4956bacd0b5cd4da4939e1dae65b3340aa37f7fd6de38e7809b91735')
+md5sums=('856acda96547132a5c253b37bed1f7d9')
+b2sums=('518dcea7c7bb458879f9f0beebd0ceec9ef41195061171ff8e26e7f54a07a506409d6227a08129ae6c56c1bcfda23ce55b696074f938224f9b55ce4ef933cbd9')
 
 build() {
   mkdir build
