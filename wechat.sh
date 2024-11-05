@@ -161,7 +161,7 @@ function execApp() {
 	-p SyslogIdentifier=WeChat \
 	-p Environment=LD_PRELOAD="${LD_PRELOAD}" \
 	-u "${unitName}" \
-	-p Description="WeChat UOS (Qt)" \
+	-p Description="WeChat" \
 	-p Documentation="https://wiki.archlinuxcn.org/wiki/%E5%BE%AE%E4%BF%A1#%E5%BE%AE%E4%BF%A1_Linux_%E5%8E%9F%E7%94%9F%E7%89%88%E9%87%8D%E6%9E%84" \
 	-p ExitType=cgroup \
 	-p OOMPolicy=stop \
@@ -408,10 +408,11 @@ function dbusProxy() {
 }
 
 function execAppUnsafe() {
-	systemd-run --user \
-		-p EnvironmentFile=/usr/lib/wechat/envs \
-		--tty \
-		bwrap \
+	source /usr/lib/wechat/envs
+	source "${XDG_DATA_HOME}"/WeChat_Data/wechat.env
+	echo "GTK_IM_MODULE is ${GTK_IM_MODULE}"
+	echo "QT_IM_MODULE is ${QT_IM_MODULE}"
+	bwrap \
 		--dev-bind / / \
 		--bind /opt/wechat/files \
 			/usr/lib/license \

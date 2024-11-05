@@ -1,7 +1,7 @@
 # Maintainer: Kimiblock Moe
 pkgname=wechat
 pkgver=4.0.0.21
-pkgrel=2
+pkgrel=3
 epoch=
 pkgdesc="WeChat 是一种生活方式"
 arch=('x86_64' 'aarch64' 'loong64')
@@ -67,7 +67,7 @@ depends=(
 )
 
 optdepends=(
-	'wechat-key-blocker: Block keyboard shortcuts'
+	'wechat-key-block: Block keyboard shortcuts'
 	'ttf-twemoji: An emoji font that will work with WeChat'
 	'at-spi2-core: accessibility'
 	'orca: screen reader'
@@ -105,8 +105,8 @@ source_loong64=(
 )
 
 
-md5sums=('a9832d8f8487f6b5ec95467f733d9cb1'
-         '58383daf6bd90dd3b83610d68469bfe8'
+md5sums=('5354674c2043bc3d7202c34b7ff7a584'
+         '89ae77c95f205d0a7f9347f8251ce742'
          '468e0367346707c026e577e7bf3e3a82'
          'b48d860c2d03ddb4ffa609fcd5fe6857'
          '6b159c6e9d21a98925489bc37a9aea43'
@@ -128,7 +128,7 @@ function package_wechat() {
 	install -Dm644 wechat.desktop \
 		"${pkgdir}/usr/share/applications/wechat.desktop"
 	install -Dm755 wechat.sh \
-		"${pkgdir}/usr/bin/wechat"
+		"${pkgdir}/usr/bin/wechat.sh"
 	install -Dm644 user-dirs.dirs \
 		"${pkgdir}/usr/lib/wechat/user-dirs.dirs"
 	install -Dm755 open.sh \
