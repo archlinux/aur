@@ -1,7 +1,7 @@
 pkgbase = superproductivity-bin
 	pkgdesc = ToDo List / Time Tracker / Personal Jira Task Manager
 	pkgver = 10.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://super-productivity.com/
 	arch = x86_64
 	license = MIT
@@ -10,7 +10,7 @@ pkgbase = superproductivity-bin
 	provides = superproductivity
 	conflicts = superproductivity
 	conflicts = superproductivity-git
-	source = https://github.com/johannesjo/super-productivity/releases/download/v10.1.0/superProductivity_10.1.0_amd64.deb
-	md5sums = SKIP
+	source = https://github.com/johannesjo/super-productivity/releases/download/v10.1.0/superProductivity-amd64.deb
+	md5sums = a5628cd80c0de7754c3a605fde1129bb
 
 pkgname = superproductivity-bin
