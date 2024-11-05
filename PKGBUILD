@@ -1,8 +1,8 @@
 # Maintainer: Manuel Wiesinger <m {you know what belongs here} mmap {and here} at>
 
 pkgname=quartodoc
-pkgver=0.8.1
-pkgrel=2
+pkgver=0.9.0
+pkgrel=1
 pkgdesc="Generate Python package API reference documentation using Markdown and Quarto"
 arch=('any')
 url='https://machow.github.io/quartodoc'
@@ -14,6 +14,7 @@ depends=(
     'python-importlib-metadata>=5.1.0'
     'python-importlib_resources>=5.10.2'
     'python-plum-dispatch>2.0.0'
+    'python-pydantic'
     'python-pyyaml'
     'python-requests'
     'python-sphobjinv>=2.3.1'
@@ -30,12 +31,11 @@ makedepends=(
     'python-wheel'
 )
 checkdepends=(
-    'python-pydantic'
     'python-pytest'
     'python-syrupy'
 )
 source=("${pkgname}-${pkgver}::git+https://github.com/machow/quartodoc.git#tag=v${pkgver}")
-b2sums=('76c1b6fecfb9002118ce3853074b9ec3eb6399bab7bf61744216ff100cd3a71e73e80c66c93e95d3175b4937561c5b5ef8dd4c78e9f8c3279144e363f6782b22')
+b2sums=('95fe5669328ab6fae6db1c7702d505b01f6cc0407960088dff1257cca9770328db8588e5a5874833151ce7b47c3bedcfa552bc7a0f93c5c9017dbe08349969b8')
 
 check() {
     cd $pkgname-$pkgver
