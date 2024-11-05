@@ -1,8 +1,9 @@
 pkgbase = locus
 	pkgdesc = An intelligent activity tracker that helps you understand and improve your focus habits.
 	pkgver = 0.1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Sushants-Git/locus
+	install = locus.install
 	arch = x86_64
 	license = custom
 	depends = cairo
