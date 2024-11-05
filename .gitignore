@@ -1,6 +1,4 @@
 pkg
 src
-LICENSE
-mtracker
 *.gz
 *.zst
