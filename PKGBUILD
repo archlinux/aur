@@ -1,3 +1,5 @@
+# Maintainer: Rin <icealtria at gmail dot com>
+
 pkgbase=geph5-git
 _pkgbase=geph5
 pkgname=(
