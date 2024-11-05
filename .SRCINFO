@@ -1,13 +1,13 @@
 pkgbase = r-spatstat.univar
 	pkgdesc = One-Dimensional Probability Distribution Support for the 'spatstat' Family
-	pkgver = 3.0.1
+	pkgver = 3.1.1
 	pkgrel = 1
 	url = https://cran.r-project.org/package=spatstat.univar
 	arch = x86_64
 	license = GPL-2.0-or-later
 	depends = r-spatstat.utils
-	source = https://cran.r-project.org/src/contrib/spatstat.univar_3.0-1.tar.gz
-	md5sums = 97dbd0ef7b7e497e088492d25f0b1ff9
-	b2sums = e982a1dbc8830afc4f31c5c2f7ed526149621b2c8489d0b4ae46d631aa9083623d24d71ab4d349713506e39c8176e8865aa01662b92bc0012da62d114472f344
+	source = https://cran.r-project.org/src/contrib/spatstat.univar_3.1-1.tar.gz
+	md5sums = e05e688d52ea5c06c2ca3bf33da1c381
+	b2sums = 8f13dcfacad9b8197e732296d10d674a0f7e00e68bd3c78673fd343b8ccf75bd8b2946722b704aa59fd77e8063e2ca35499d3d219ef8d3de1c6596837b9edbf6
 
 pkgname = r-spatstat.univar
