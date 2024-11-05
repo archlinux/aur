@@ -1,10 +1,10 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=escrcpy
-pkgver=1.25.4
+pkgver=1.25.5
 _electronversion=33
 _nodeversion=20
 pkgrel=1
-pkgdesc="📱 Graphical Scrcpy to display and control Android, devices powered by Electron.Use system-wide electron.使用图形化的 Scrcpy 显示和控制您的 Android 设备，由 Electron 驱动。"
+pkgdesc="📱 Graphical Scrcpy to display and control Android, devices powered by Electron(Use system-wide electron).使用图形化的 Scrcpy 显示和控制您的 Android 设备，由 Electron 驱动。"
 arch=(
     'aarch64'
     'x86_64'
