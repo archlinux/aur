@@ -1,8 +1,6 @@
 # Contributer: Paramvir Likhari <plikhari at gmail dot com>
 # Maintainer: Paramvir Likhari <plikhari at gmail dot com>
 
-# This conky version has built in tolua++_5.3 lua and only supports lua 5.3
-
 # to create NON NVIDIA package - remove following
 # in makedepends 'libxnvctrl'
 # in build  section remove line containing -D BUILD_NVIDIA=ON \
@@ -22,7 +20,7 @@
 # 'perl-xml-libxml' 'perl-xml-sax-expat' in makedepends
 
 pkgname=conky-cairo
-pkgver=1.21.7
+pkgver=1.21.8
 pkgrel=1
 pkgdesc='Lightweight system monitor for X, Wayland, console, or file/HTTP output (with Cairo/Cairo-Lua support)'
 url='https://github.com/brndnmtthws/conky'
