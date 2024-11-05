@@ -37,7 +37,7 @@ function manageDirs() {
 		echo "[Info] Migrating user data..."
 		mv "${XDG_DOCUMENTS_DIR}"/WeChat_Data "${XDG_DATA_HOME}"/WeChat_Data
 	fi
-	if [ -d "${XDG_DOCUMENTS_DIR}"/xwechat_files ]; then
+	if [ -L "${XDG_DOCUMENTS_DIR}"/xwechat_files ]; then
 		echo "[Info] Removing unused links..."
 		rm "${XDG_DOCUMENTS_DIR}"/xwechat_files
 	fi
@@ -67,16 +67,16 @@ function createWrapIfNotExist() {
 
 function inputMethod() {
 	if [[ ${XMODIFIERS} =~ fcitx ]] || [[ ${QT_IM_MODULE} =~ fcitx ]] || [[ ${GTK_IM_MODULE} =~ fcitx ]]; then
-		QT_IM_MODULE=fcitx
-		GTK_IM_MODULE=fcitx
+		export QT_IM_MODULE=fcitx
+		export GTK_IM_MODULE=fcitx
 	elif [[ ${XMODIFIERS} =~ ibus ]] || [[ ${QT_IM_MODULE} =~ ibus ]] || [[ ${GTK_IM_MODULE} =~ ibus ]]; then
-		QT_IM_MODULE=ibus
-		GTK_IM_MODULE=ibus
+		export QT_IM_MODULE=ibus
+		export GTK_IM_MODULE=ibus
 		IBUS_USE_PORTAL=1
 	elif [[ ${XMODIFIERS} =~ gcin ]]; then
-		QT_IM_MODULE=ibus
-		GTK_IM_MODULE=gcin
-		LC_CTYPE=zh_TW.UTF-8
+		export QT_IM_MODULE=ibus
+		export GTK_IM_MODULE=gcin
+		export LC_CTYPE=zh_TW.UTF-8
 	else
 		echo '[Warn] Input Method potentially broken! Please set $XMODIFIERS properly'
 	fi
@@ -153,6 +153,8 @@ function execApp() {
 	fi
 	mkdir -p "${XDG_DATA_HOME}"/WeChat_Data/.config
 	createWrapIfNotExist "${XDG_DOCUMENTS_DIR}"/WeChat
+	echo "GTK_IM_MODULE is ${GTK_IM_MODULE}"
+	echo "QT_IM_MODULE is ${QT_IM_MODULE}"
 	systemd-run \
 	--user \
 	${sdOption} \
