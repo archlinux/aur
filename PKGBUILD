@@ -1,8 +1,9 @@
-# Maintainer: Jef Roosens
+# Maintainer: envolution
+# Contributor: Jef Roosens
 
 _pkgname='ved'
 pkgname='ved-git'
-pkgver=r288.b9f8745
+pkgver=0.1+r348+696790fb8
 pkgrel=1
 pkgdesc='1 MB text editor written in V with hardware accelerated text rendering (development version)'
 arch=('x86_64')
@@ -18,12 +19,12 @@ source=("${_pkgname}::git+https://github.com/vlang/ved")
 md5sums=('SKIP')
 
 pkgver() {
-    cd "${_pkgname}"
+  cd ${_pkgname}
 
-    commit_count="$(git rev-list --count HEAD)"
-    commit="$(git rev-parse --short HEAD)"
-
-    echo "r${commit_count}.${commit}"
+  _version=$(git tag --sort=-v:refname --list | head -n1)
+  _commits=$(git rev-list --count HEAD)
+  _short_commit_hash=$(git rev-parse --short=9 HEAD)
+  echo "${_version}+r${_commits}+${_short_commit_hash}"
 }
 
 build() {
