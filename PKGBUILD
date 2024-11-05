@@ -1,7 +1,7 @@
 # Maintainer: coldBug <coldbug@e.mail.de>
 pkgname=rusthound-ce-git
 _pkgname=${pkgname%-git}
-pkgver=b212f11
+pkgver=r10.6aacf86
 pkgrel=1
 pkgdesc="BloodHoundCE collector tool written in Rust."
 arch=('any')
@@ -15,7 +15,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "${_pkgname}"
-  git describe --long --tags --always | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
 prepare() {
