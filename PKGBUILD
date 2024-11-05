@@ -10,7 +10,7 @@
 
 pkgname=ansible-core-2.16
 _pkgname=ansible
-pkgver=2.16.12
+pkgver=2.16.13
 pkgrel=1
 pkgdesc='Radically simple IT automation platform'
 arch=('any')
@@ -65,9 +65,17 @@ conflicts=('ansible-core')
 replaces=('ansible-base')
 source=(
     "${pkgname}-${pkgver}.tar.gz::https://github.com/ansible/ansible/archive/refs/tags/v${pkgver}.tar.gz"
+    "0001-do-not-pin-resolvelib.patch"
 )
-sha512sums=('6048ecc31b23244f0826dd3e46c93d35e667f059a346a3f51a312028c80d333b75066b0a17fe043e53aafa128c78ca3a88dbfa3954c0b8869fe92b2e71134f42')
-b2sums=('b505f38d7746c1623eee9511d906698cc7dd70e8de22bef39a707f0d9d42b15776a21eafdbc306e5474b748f215344772572e340ec674a72e6515c7f92c00c1b')
+sha512sums=('bbb8f6705296d44e9cd3c7cd1122495419f74fae910e4a172d6c513eed2dae7137390e63c09f1d680e64344685f168c599b3b57dbefbb1d949109578a6135362'
+            'fa3eef53633247e3e41fd636ea29309114e9a80eea868da30b8e0384165270e5c5ea979f9d30e6d6da0bb78a7ddea130a235e543794d774cd7181506a5a51299')
+b2sums=('d2bdecdc478e1db210b4e673abf5e19c687678dadad50c2c052e7ae3edcef6861a58d5ccebbb21c8378212424c95f171150f3d4792f65f23c7f15c7d22ac447c'
+        'e4061b50f8c9bc68de5c79e85ae9380a213d311eca4d6b6e4a593dc24b2149a5c5c9590223561c4f6e2ee4f59121d1d19c5cda8f8cbf3998046809fc118fd02f')
+
+prepare() {
+  cd "${_pkgname}-${pkgver}"
+  patch -p1 < ../0001-do-not-pin-resolvelib.patch
+}
 
 build() {
   cd "${_pkgname}-${pkgver}"

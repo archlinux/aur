@@ -1,0 +1,98 @@
+From 67fa91b700f71de68b13da303764aa46e1728357 Mon Sep 17 00:00:00 2001
+From: nicolasyang <nicolasyang243@proton.me>
+Date: Tue, 5 Nov 2024 12:42:12 +0800
+Subject: [PATCH] do not pin resolvelib
+
+See 016b7f71b10539c90ddbb3246f19f9cbf0e65428.
+---
+ lib/ansible/galaxy/collection/__init__.py             | 5 ++---
+ lib/ansible/galaxy/dependency_resolution/providers.py | 3 +--
+ requirements.txt                                      | 2 +-
+ test/sanity/code-smell/package-data.requirements.in   | 2 +-
+ test/sanity/code-smell/package-data.requirements.txt  | 2 +-
+ 5 files changed, 6 insertions(+), 8 deletions(-)
+
+diff --git a/lib/ansible/galaxy/collection/__init__.py b/lib/ansible/galaxy/collection/__init__.py
+index 60c9c94ba2..b9cfeff4b1 100644
+--- a/lib/ansible/galaxy/collection/__init__.py
++++ b/lib/ansible/galaxy/collection/__init__.py
+@@ -112,7 +112,6 @@ try:
+     from ansible.galaxy.dependency_resolution.providers import (
+         RESOLVELIB_VERSION,
+         RESOLVELIB_LOWERBOUND,
+-        RESOLVELIB_UPPERBOUND,
+     )
+ except ImportError:
+     HAS_RESOLVELIB = False
+@@ -1810,9 +1809,9 @@ def _resolve_depenency_map(
+         if req is None:
+             # TODO: replace the hardcoded versions with a warning if the dist info is missing
+             # display.warning("Unable to find 'ansible-core' distribution requirements to verify the resolvelib version is supported.")
+-            if not RESOLVELIB_LOWERBOUND <= RESOLVELIB_VERSION < RESOLVELIB_UPPERBOUND:
++            if not RESOLVELIB_LOWERBOUND <= RESOLVELIB_VERSION:
+                 raise AnsibleError(
+-                    f"ansible-galaxy requires resolvelib<{RESOLVELIB_UPPERBOUND.vstring},>={RESOLVELIB_LOWERBOUND.vstring}"
++                    f"ansible-galaxy requires resolvelib>={RESOLVELIB_LOWERBOUND.vstring}"
+                 )
+         elif not req.specifier.contains(RESOLVELIB_VERSION.vstring):
+             raise AnsibleError(f"ansible-galaxy requires {req.name}{req.specifier}")
+diff --git a/lib/ansible/galaxy/dependency_resolution/providers.py b/lib/ansible/galaxy/dependency_resolution/providers.py
+index f13d3ecf2d..8e8f7a0ece 100644
+--- a/lib/ansible/galaxy/dependency_resolution/providers.py
++++ b/lib/ansible/galaxy/dependency_resolution/providers.py
+@@ -40,7 +40,6 @@ except ImportError:
+ 
+ # TODO: add python requirements to ansible-test's ansible-core distribution info and remove the hardcoded lowerbound/upperbound fallback
+ RESOLVELIB_LOWERBOUND = SemanticVersion("0.5.3")
+-RESOLVELIB_UPPERBOUND = SemanticVersion("1.1.0")
+ RESOLVELIB_VERSION = SemanticVersion.from_loose_version(LooseVersion(resolvelib_version))
+ 
+ 
+@@ -143,7 +142,7 @@ class CollectionDependencyProviderBase(AbstractProvider):
+             Mapping of identifier, list of named tuple pairs.
+             The named tuples have the entries ``requirement`` and ``parent``.
+ 
+-        resolvelib >=0.8.0, <= 1.0.1
++        resolvelib >=0.8.0
+ 
+         :param identifier: The value returned by ``identify()``.
+ 
+diff --git a/requirements.txt b/requirements.txt
+index 5eaf9f2cbc..0a946b4c5d 100644
+--- a/requirements.txt
++++ b/requirements.txt
+@@ -12,4 +12,4 @@ packaging
+ # NOTE: Ref: https://github.com/sarugaku/resolvelib/issues/69
+ # NOTE: When updating the upper bound, also update the latest version used
+ # NOTE: in the ansible-galaxy-collection test suite.
+-resolvelib >= 0.5.3, < 1.1.0  # dependency resolver used by ansible-galaxy
++resolvelib >= 0.5.3 # dependency resolver used by ansible-galaxy
+diff --git a/test/sanity/code-smell/package-data.requirements.in b/test/sanity/code-smell/package-data.requirements.in
+index 81b58bcf71..f406f93d40 100644
+--- a/test/sanity/code-smell/package-data.requirements.in
++++ b/test/sanity/code-smell/package-data.requirements.in
+@@ -2,7 +2,7 @@ build  # required to build sdist
+ wheel  # required to build wheel
+ jinja2
+ pyyaml
+-resolvelib < 1.1.0
++resolvelib
+ rstcheck < 6  # newer versions have too many dependencies
+ antsibull-changelog
+ setuptools == 66.1.0  # minimum supported setuptools
+diff --git a/test/sanity/code-smell/package-data.requirements.txt b/test/sanity/code-smell/package-data.requirements.txt
+index ce0fb9cffe..9bc9ccef0b 100644
+--- a/test/sanity/code-smell/package-data.requirements.txt
++++ b/test/sanity/code-smell/package-data.requirements.txt
+@@ -7,7 +7,7 @@ MarkupSafe==2.1.3
+ packaging==23.2
+ pyproject_hooks==1.0.0
+ PyYAML==6.0.1
+-resolvelib==1.0.1
++resolvelib
+ rstcheck==5.0.0
+ semantic-version==2.10.0
+ setuptools==66.1.0
+-- 
+2.47.0
+
