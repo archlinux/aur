@@ -1,7 +1,7 @@
 pkgbase = screenshot_llm
 	pkgdesc = AI-Powered Screenshot Analysis
 	pkgver = 1.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ThanabordeeN/Screenshot_LLM
 	arch = x86_64
 	license = MIT
@@ -12,6 +12,8 @@ pkgbase = screenshot_llm
 	optdepends = ollama: ollama support.
 	conflicts = screenshot_llm-git
 	source = screenshot_llm-1.0.1.tar.gz::https://github.com/ThanabordeeN/Screenshot_LLM/archive/refs/tags/v1.0.1.tar.gz
+	source = https://github.com/ThanabordeeN/Screenshot_LLM/pull/6.patch
 	b2sums = 3ec6546fbedcd101af3b17f3649a05534568400491707fa918c542d73325f2c867a511fffddd9c99221aa94e3128f198754167388150e0e4b6327b5f82f8db6e
+	b2sums = 6c5b10db8bce8d1ba14a07b547c70f0c86e2902cdf7373e9c67c6d491143c0bf084dcbec92ef70bc7ae0810125f28b40d70de0720e9a0b1f514c52678004fac4
 
 pkgname = screenshot_llm
