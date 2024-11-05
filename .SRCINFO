@@ -1,14 +1,13 @@
 pkgbase = wasi-sdk-bin
 	pkgdesc = WASI-enabled WebAssembly C/C++ toolchain
-	pkgver = 20.0
+	pkgver = 24.0
 	pkgrel = 1
 	url = https://github.com/WebAssembly/wasi-sdk
 	arch = x86_64
 	license = Apache-2.0
-	depends = clang
-	depends = lld
+	options = staticlibs
 	options = !strip
-	source = https://github.com/WebAssembly/wasi-sdk/releases/download/wasi-sdk-20/wasi-sdk-20.0-linux.tar.gz
-	sha512sums = ff3d368267526887534f50767ff010bd368e9c24178ab2f0cf57a8ed0b3a82fbf85986d620ab2327ac6bb3f456c65adc6edb80626a1289e630dde7e43b191b42
+	source = https://github.com/WebAssembly/wasi-sdk/releases/download/wasi-sdk-24/wasi-sdk-24.0-x86_64-linux.tar.gz
+	b2sums = 385dced143f463427e48839b4c9a810161b2791f0a1a335ad53b1cff9e20fd004b1c24c80443ec213f448dc31a5b1748f447569161c88ca8fc01b3bf35421aa6
 
 pkgname = wasi-sdk-bin
