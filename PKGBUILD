@@ -9,11 +9,11 @@ pkgrel=1
 pkgdesc="This is Anjali Old Lipi, a font belonging to a set of TrueType and OpenType fonts released under the GNU General Public License for Malayalam Language."
 arch=(any)
 license=("OFL")
-url="https://releases.smc.org.in/fonts/archives/anjalioldlipi"
+url="http://smc.org.in/fonts/"
 source=(
-"$url/Version$pkgver/AnjaliOldLipi-Regular.ttf"
-"$url/Version$pkgver/LICENSE.txt"
-"$url/Version$pkgver/67-smc-anjalioldlipi.conf"
+"https://releases.smc.org.in/fonts/archives/anjalioldlipi/Version$pkgver/AnjaliOldLipi-Regular.ttf"
+"https://releases.smc.org.in/fonts/archives/anjalioldlipi/Version$pkgver/LICENSE.txt"
+"https://releases.smc.org.in/fonts/archives/anjalioldlipi/Version$pkgver/67-smc-anjalioldlipi.conf"
 )
 
 sha256sums=('dc8cf3574c78338d3650d37fa208214fce9d22ecf08ec0a614325a26168bb131'
