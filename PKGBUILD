@@ -1,35 +1,36 @@
-# Maintainer: Michael Bauer <michael@m-bauer.org>
+# Maintainer: Laura Demkowicz-Duffy <dev at demkowiczduffy.co.uk>
+# Contributor: Michael Bauer <michael@m-bauer.org>
 pkgname=radicle-cli-git
 _pkgname=radicle-cli
 pkgver=20241105.f6aa46a2
-pkgrel=2
+pkgrel=3
 pkgdesc="Radicle command line interface"
 arch=('x86_64' 'aarch64')
 _repoid=z3gqcJUoA1n9HaHKufZs5FCSGazv5
-url="https://app.radicle.xyz/nodes/seed.radicle.xyz/rad:$_repoid"
+url="https://radicle.xyz"
 license=('MIT' 'Apache-2.0')
 depends=('gcc-libs' 'glibc' 'zlib' 'git>=2.34.0' 'openssh')
 makedepends=('cargo' 'asciidoctor')
-source=("git+https://seed.radicle.xyz/$_repoid.git")
-provides=("$_pkgname")
-conflicts=("$_pkgname")
+source=("heartwood::git+https://seed.radicle.xyz/$_repoid.git")
+provides=("$_pkgname" "radicle-node")
+conflicts=("$_pkgname" "radicle-node")
 
 sha512sums=('SKIP')
 
 _man_pages="rad-id rad-patch rad git-remote-rad radicle-node"
 
 pkgver() {
-	cd "$srcdir/$_repoid"
+	cd "$srcdir/heartwood"
 	git log -1 --format=%cd.%h --date=short|tr -d -
 }
 
 prepare() {
-	cd $_repoid
+	cd "$srcdir/heartwood"
 	cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
-	cd $_repoid
+	cd "$srcdir/heartwood"
 	export CARGO_TARGET_DIR=target
 	cargo build --frozen --release --all-features
 
@@ -39,12 +40,12 @@ build() {
 }
 
 check() {
-	cd $_repoid
+	cd "$srcdir/heartwood"
 	cargo test --frozen --all-features
 }
 
 package() {
-	cd $_repoid
+	cd "$srcdir/heartwood"
 	find target/release \
 		-maxdepth 1 \
 		-executable \
@@ -57,4 +58,6 @@ package() {
 
 	install -Dm0644 LICENSE-MIT "$pkgdir/usr/share/licenses/$pkgname/LICENSE-MIT"
 	install -Dm0644 LICENSE-APACHE "$pkgdir/usr/share/licenses/$pkgname/LICENSE-APACHE"
+
+	install -Dm0644 systemd/radicle-node.service "$pkgdir/usr/lib/systemd/system/radicle-node.service"
 }
