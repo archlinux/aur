@@ -13,7 +13,7 @@ options=(!debug !strip)
 makedepends+=()
 
 depends=(
-	"wechat-uos-qt>114514"
+	#"wechat-uos-qt"
 
 	"xdg-user-dirs"
 	"xorg-xhost"
