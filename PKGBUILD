@@ -65,7 +65,7 @@ depends=(
 )
 
 optdepends=(
-	'wechat: The old package name'
+	'wechat-key-blocker: Block keyboard shortcuts'
 	'ttf-twemoji: An emoji font that will work with WeChat'
 	'at-spi2-core: accessibility'
 	'orca: screen reader'
@@ -148,11 +148,4 @@ function package_wechat() {
 		>"${pkgdir}/usr/share/licenses/${pkgname}/ToS.txt"
 	install -Dm644 "${srcdir}/flatpak-info" \
 		"${pkgdir}/usr/lib/wechat/flatpak-info"
-}
-
-function package_wechat-uos-bwrap() {
-	conflicts=()
-	depends+=(wechat)
-	install -d "${pkgdir}/usr/share/licenses/${pkgname}/"
-	echo "https://www.wechat.com/us/service_terms.html" >"${pkgdir}/usr/share/licenses/${pkgname}/ToS.txt"
 }
