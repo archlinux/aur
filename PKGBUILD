@@ -29,9 +29,16 @@ depends=("python-proton-core"
 		"gtk3")
 optdepends=("libappindicator-gtk3")
 makedepends=("git" "python-setuptools")
-source=("git+https://github.com/ProtonVPN/proton-vpn-gtk-app.git#tag=v${pkgver}")
-sha256sums=('SKIP')
+source=("git+https://github.com/ProtonVPN/proton-vpn-gtk-app.git#tag=v${pkgver}"
+        "early_access.patch")
+sha256sums=('SKIP'
+            'e4a58cd963e567a2e3cf718c0975b7c2c7ff99a9c1d91b35bcb586131aeedff2')
 conflicts=('protonvpn-gui' 'python-proton-client')
+
+prepare() {
+	cd "$srcdir"/"$pkgname"
+        git apply ../early_access.patch
+}
 
 build() {
 	cd "$pkgname"
