@@ -3,12 +3,13 @@
 
 pkgname="brother-hl-1110"
 pkgver="3.0.1_1"
-pkgrel="2"
+pkgrel="3"
 pkgdesc="Brother HL-1110 CUPS Driver"
 url="https://support.brother.com/g/b/producttop.aspx?c=us_ot&lang=en&prod=hl1110_us_eu_as"
 license=('GPL2')
 arch=('x86_64')
-depends=('cups' 'cups-pdf' 'lprint')
+depends=('cups' 'lprint')
+optdepends=('cups-pdf: CUPS-PDF support')
 conflicts=('brother-hl-1112')
 
 sha256sums=(
