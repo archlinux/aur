@@ -1,0 +1,26 @@
+pkgbase = remarkable-remember-bin
+	pkgdesc = A cross-platform management application for your reMarkable tablet.(Prebuilt version)
+	pkgver = 1.6.4
+	pkgrel = 1
+	url = https://github.com/ds160/remarkable-remember
+	arch = aarch64
+	arch = x86_64
+	license = MIT
+	depends = krb5
+	depends = icu
+	depends = libunwind
+	depends = fontconfig
+	provides = remarkable-remember=1.6.4
+	conflicts = remarkable-remember
+	options = !strip
+	options = staticlibs
+	source = LICENSE-1.6.4::https://raw.githubusercontent.com/ds160/remarkable-remember/1.6.4/LICENSE
+	source = remarkable-remember.sh
+	sha256sums = ce46b168873c89cd7f1cedacb8791829c17cfd7fcf9ea837d4cacb08ad96ea73
+	sha256sums = 9887c2b5cc4171f8768feae7da23aa6765eaa859434757d416fb8988a36936c8
+	source_aarch64 = remarkable-remember-1.6.4-aarch64.deb::https://github.com/ds160/remarkable-remember/releases/download/1.6.4/reMarkableRemember-linux-arm64.deb
+	sha256sums_aarch64 = 8c6a600449995734a7b77e5259c0464c9cfa0c726e945f8706a618d93a976f02
+	source_x86_64 = remarkable-remember-1.6.4-x86_64.deb::https://github.com/ds160/remarkable-remember/releases/download/1.6.4/reMarkableRemember-linux-x64.deb
+	sha256sums_x86_64 = 4e3d8fdecf39a72973ecc63b02291ee6f93b60e9e99696c351106e5cdeab4256
+
+pkgname = remarkable-remember-bin
