@@ -1,6 +1,6 @@
 # Maintainer: Asuka Minato <i at asukaminato dot eu dot org>
 pkgname=detect-it-easy-bin
-pkgver=3.09
+pkgver=3.10
 pkgrel=1
 pkgdesc="Program for determining types of files for Windows, Linux and MacOS."
 arch=(x86_64)
@@ -11,7 +11,7 @@ provides=(detect-it-easy)
 conflicts=(detect-it-easy)
 source=("https://github.com/horsicq/DIE-engine/releases/download/${pkgver}/detect-it-easy-${pkgver}-1-x86_64.pkg.tar.zst"
 )
-sha256sums=('75a0766d2a1599583e0b3ab3ce399c062400fdbd9afbab0676a1690e9a6869f7')
+sha256sums=('8017f6722b15f92ffad130b1a0d6f9081e9fb31ab93794f6b7c52679bfced67f')
 
 package() {
 	rm -v *.tar.zst
