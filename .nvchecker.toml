@@ -1,0 +1,3 @@
+[tuckr]
+source = "git"
+git = "https://github.com/RaphGL/Tuckr.git"
