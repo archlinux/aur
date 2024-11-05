@@ -1,0 +1,3 @@
+[goxel-voxel-editor-git]
+source="cmd"
+cmd="~/nvchecker/github_version.sh guillaumechereau goxel v"
