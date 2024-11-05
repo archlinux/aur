@@ -1,7 +1,7 @@
 # Maintainer: D. Can Celasun <can[at]dcc[dot]im>
 pkgname=cloudquery-cli
-pkgver=6.10.0
-pkgrel=2
+pkgver=6.11.0
+pkgrel=1
 pkgdesc=" The open source high performance ELT framework powered by Apache Arrow"
 arch=('x86_64' 'aarch64')
 url="https://github.com/cloudquery/cloudquery"
@@ -9,7 +9,7 @@ options=(!lto)
 license=('MPL-2.0')
 makedepends=('go>=1.21')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/cloudquery/cloudquery/archive/refs/tags/cli-v${pkgver}.zip")
-sha256sums=('b9d72c33a29b904af94957e7ed3f97cf869c0192a1977f3a5ea45f79ee225ec9')
+sha256sums=('3cfc7612d1fed61083ef78e42781404edd8cfee7a6071b882c6fc8f452fec77a')
 
 build() {
   export GOPATH="$srcdir"/gopath
