@@ -1,0 +1,22 @@
+pkgbase = mq3t-bin
+	pkgdesc = The last MQTT development tool you'll ever need(Prebuilt version.Use system-wide electron).
+	pkgver = 1.8.8
+	pkgrel = 1
+	url = https://mq3t.guillaumechx.dev/
+	arch = aarch64
+	arch = armv7h
+	arch = x86_64
+	license = GPL-3.0-only
+	depends = electron33
+	conflicts = mq3t
+	options = !emptydirs
+	source = mq3t.sh
+	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
+	source_aarch64 = mq3t-1.8.8-aarch64.deb::https://github.com/ChxGuillaume/MQ3T/releases/download/v1.8.8/mq3t-1.8.8-arm64.deb
+	sha256sums_aarch64 = 6b37c313eec7ddd6070707e516bb1882c9a901ec7041fd9ab1741c4867831a02
+	source_armv7h = mq3t-1.8.8-armv7h.deb::https://github.com/ChxGuillaume/MQ3T/releases/download/v1.8.8/mq3t-1.8.8-armv7l.deb
+	sha256sums_armv7h = 2bf6c7c5d87526670f95cfdf0ca67e3c50d0dced992394257f1c7eccca70cfe1
+	source_x86_64 = mq3t-1.8.8-x86_64.deb::https://github.com/ChxGuillaume/MQ3T/releases/download/v1.8.8/mq3t-1.8.8-amd64.deb
+	sha256sums_x86_64 = 5b479f7ab45d11af2ed0685dd53ce4d6ed7e363ab9979bf4df35d9328512641e
+
+pkgname = mq3t-bin
