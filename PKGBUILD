@@ -1,6 +1,6 @@
 # Maintainer: NAME <EMAIL>
 pkgname=pet-git
-pkgver=VERSION
+pkgver=0.9.1
 pkgrel=1
 pkgdesc='Simple command-line snippet manager, written in Go.'
 arch=('i686' 'x86_64')
@@ -10,32 +10,38 @@ depends=('fzf')
 makedepends=('go' 'git')
 provides=('pet')
 conflicts=('pet')
-_gourl=github.com/knqyf263/pet
+source=("git+https://github.com/knqyf263/pet.git")
+sha256sums=('SKIP')
 
 pkgver() {
   date +%Y%m%d
 }
 
+prepare() {
+  cd pet
+  mkdir -p build/
+}
 
 build() {
-  GOPATH="$srcdir" go get -fix -v -x ${_gourl}
-}
+  cd pet
+  export CGO_CPPFLAGS="${CPPFLAGS}"
+  export CGO_CFLAGS="${CFLAGS}"
+  export CGO_CXXFLAGS="${CXXFLAGS}"
+  export CGO_LDFLAGS="${LDFLAGS}"
+  export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
 
+  go build -o build/pet
+}
 
 package() {
-  mkdir -p "$pkgdir/usr/bin"
-  install -p -m755 "$srcdir/bin/"* "$pkgdir/usr/bin"
+  cd pet
+  install -Dm755 build/pet "$pkgdir/usr/bin/pet"
 
-  # Package license (if available)
-  for f in LICENSE COPYING LICENSE.* COPYING.*; do
-    if [ -e "$srcdir/src/$_gourl/$f" ]; then
-      install -Dm644 "$srcdir/src/$_gourl/$f" \
-        "$pkgdir/usr/share/licenses/$pkgname/$f"
-    fi
-  done
-  	cd "$srcdir"/src/github.com/knqyf263/pet/misc/completions/zsh/
-	install -m0755 -d "$pkgdir"/usr/share/zsh/site-functions
-	install -m0644 _* "$pkgdir"/usr/share/zsh/site-functions
+  # Install license
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+
+  # Install shell completions
+  cd misc/completions/zsh/
+  install -Dm755 -d "$pkgdir/usr/share/zsh/site-functions"
+  install -Dm644 _* "$pkgdir/usr/share/zsh/site-functions/"
 }
-
-# vim:set ts=2 sw=2 et:
