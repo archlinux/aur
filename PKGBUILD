@@ -5,7 +5,7 @@
 
 pkgname=shotcut-git
 pkgdesc='Cross-platform Qt based Video Editor - Git latest'
-pkgver=v24.10.29+r1+g5946fd09
+pkgver=24.10.29+r6395+7fa11cca9
 pkgrel=1
 arch=('x86_64')
 url='https://www.shotcut.org'
@@ -22,11 +22,20 @@ prepare() {
   sed -e 's|${Qt6_LUPDATE_EXECUTABLE}|/usr/lib/qt6/bin/lupdate|' -i translations/CMakeLists.txt
 }
 
+pkgver(){
+  cd "$srcdir/shotcut"
+  _version=$(git tag --sort=-v:refname --list | head -n1 | cut -c2-)
+  _commits=$(git rev-list --count HEAD)
+  _short_commit_hash=$(git rev-parse --short=9 HEAD)
+  echo "${_version#'v'}+r${_commits}+${_short_commit_hash}"
+}
+
 build() {
   cd shotcut
-  compile_version=$(echo $pkgver | sed 's/v\([0-9.]*\).*/\1/')
+  compile_version=${pkgver/#v/}     # First remove optional leading 'v'
+  compile_version=${compile_version%%+*}   # Then remove everything after first '+'
 
-  #  https://github.com/mltframework/shotcut/issues/1275
+  #   https://github.com/mltframework/shotcut/issues/1275
   export CXXFLAGS+=" -DSHOTCUT_NOUPGRADE"
 
   cmake \
@@ -36,11 +45,6 @@ build() {
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DSHOTCUT_VERSION=$compile_version
   cmake --build build --verbose
-}
-
-pkgver() {
-  cd shotcut
-  git describe --tags | sed 's/[^-]*-g/r&/;s/-/+/g'
 }
 
 package() {

@@ -1,0 +1,3 @@
+[shotcut-git]
+source='cmd'
+cmd="~/nvchecker/github_version.sh mltframework shotcut v"
