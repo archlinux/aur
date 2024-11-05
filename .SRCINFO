@@ -1,6 +1,6 @@
 pkgbase = mounriver-studio-community-bin
 	pkgver = 180
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.mounriver.com/
 	arch = x86_64
 	license = GPL2
@@ -20,7 +20,7 @@ pkgbase = mounriver-studio-community-bin
 	conflicts = mounriver-studio-community
 	noextract = mounriver-studio-community-bin-180.tar.xz
 	options = !strip
-	source = mounriver-studio-community-bin-180.tar.xz::http://file.mounriver.com/upgrade/MounRiver_Studio_Community_Linux_x64_V180.tar.xz
+	source = mounriver-studio-community-bin-180.tar.xz::http://file-oss.mounriver.com/upgrade/MounRiver_Studio_Community_Linux_x64_V180.tar.xz
 	sha256sums = bc7cdf4d8e704c33accc1f4afb6d35f1595c073535ae65e6f5adb4a8ac299222
 
 pkgname = mounriver-studio-community-bin
