@@ -3,7 +3,7 @@
 
 _pkgname="memos"
 pkgname="${_pkgname}-git"
-pkgver=0.23.0.rc.0.r0.gf59daf83
+pkgver=+r3105+f5a0827a3
 pkgrel=1
 pkgdesc="A privacy-first, lightweight note-taking service. Easily capture and share your great thoughts."
 url="https://github.com/usememos/${_pkgname}"
@@ -31,7 +31,10 @@ sha512sums=('SKIP'
 
 pkgver(){
   cd "$srcdir/$_pkgname"
-  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  _version=$(git tag --sort=-v:refname --list | grep '^[0-9.]*$' | head -n1 )
+  _commits=$(git rev-list --count HEAD)
+  _short_commit_hash=$(git rev-parse --short=9 HEAD)
+  echo "${_version#'v'}+r${_commits}+${_short_commit_hash}"
 }
 
 _ensure_local_nvm() {

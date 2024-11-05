@@ -1,0 +1,3 @@
+[memos-git]
+source="cmd"
+cmd="~/nvchecker/github_version.sh usememos memos v"
