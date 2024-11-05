@@ -1,0 +1,3 @@
+[hardened-malloc-git]
+source="cmd"
+cmd="~/nvchecker/github_version.sh grapheneos hardened_malloc"

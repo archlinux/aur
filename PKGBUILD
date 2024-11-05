@@ -1,6 +1,6 @@
 # Maintainer: Matt Parnell/ilikenwf <parwok@gmail.com>
 pkgname="hardened-malloc-git"
-pkgver=654+2250130
+pkgver=TQ3A.230605.012.2023061402+r724+a7302add6
 pkgdesc="Hardened allocator designed for modern systems."
 url="https://github.com/GrapheneOS/hardened_malloc"
 license=("MIT")
@@ -14,15 +14,12 @@ source=('hardened_malloc::git+https://github.com/GrapheneOS/hardened_malloc#bran
 sha256sums=('SKIP'
             'e6dbce7ac1d689fafbc94ffb17d8c4ae5271dd3580421828d35aac2c067b652d')
 
-# compress the modules or not
-_compress="y"
-
-# don't compress the package - we're just going to uncompress during install in a moment
-PKGEXT='.pkg.tar'
-
-pkgver() {
-	cd "${srcdir}/hardened_malloc"	
-	printf "%s+%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+pkgver(){
+  cd "$srcdir/hardened_malloc"
+  _version=$(git tag --sort=-v:refname --list | head -n1 )
+  _commits=$(git rev-list --count HEAD)
+  _short_commit_hash=$(git rev-parse --short=9 HEAD)
+  echo "${_version}+r${_commits}+${_short_commit_hash}"
 }
 
 build() {
