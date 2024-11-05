@@ -16,7 +16,7 @@ pkgbase = mud-git
 	depends = git
 	provides = mud-git
 	conflicts = mud-git
-	source = mud-git::git+https://github.com/jasursadikov/mud.git
+	source = mud-git::git+https://github.com/jasursadikov/mud
 	md5sums = SKIP
 
 pkgname = mud-git
