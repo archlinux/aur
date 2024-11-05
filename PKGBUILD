@@ -1,7 +1,7 @@
 # Maintainer: dec05eba <dec05eba@protonmail.com>
 
 pkgname=gpu-screen-recorder-gtk-git
-pkgver=r398.efcbc80
+pkgver=r402.ee137ee
 pkgrel=1
 pkgdesc='Gtk frontend to gpu-screen-recorder, a shadowplay-like screen recorder for Linux. The fastest screen recorder for Linux'
 arch=('x86_64')
@@ -12,7 +12,7 @@ depends=('gtk3' 'libx11' 'libxrandr' 'libpulse' 'libayatana-appindicator' 'gpu-s
 provides=('gpu-screen-recorder-gtk')
 conflicts=('gpu-screen-recorder-gtk')
 source=("${pkgname}-${pkgver}.tar.gz::https://dec05eba.com/snapshot/gpu-screen-recorder-gtk.git.${pkgver}.tar.gz")
-sha512sums=('5728b7e2fc1049da18b2590c6f11bc4a1d8b2df3bdc4ac45217fe7747b93791c2d09bc28333293fef46e2ba2ca6d16cf83babdc9a0206a735136c4b06b2f870a')
+sha512sums=('daacf23afc565e78e3ef4f327cd4144ef439a2d6499aa5408698093cc17a63668aa05a2a40e55e22090d4f69d9de7e52bf2d9a42f56cc71a7cbbd0169c5587f7')
 
 build() {
   cd "$srcdir"
