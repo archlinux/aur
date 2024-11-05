@@ -1,14 +1,15 @@
-# Maintainer: Jaroslav Lichtblau <dragonlord@aur.archlinux.org>
+# Maintainer: envolution
+# Contributor: Jaroslav Lichtblau <dragonlord@aur.archlinux.org>
 
 pkgname=magicrescue
-pkgver=1.1.9
+pkgver=1.1.10
 pkgrel=1
 pkgdesc="Find and recover deleted files on block devices"
 arch=('i686' 'x86_64')
-url="http://freshmeat.net/projects/magicrescue/"
-license=('GPL')
+url="https://github.com/jbj/magicrescue"
+license=('GPL-2.0-or-later')
 source=(http://deb.debian.org/debian/pool/main/m/$pkgname/${pkgname}_${pkgver}.orig.tar.gz)
-sha256sums=('a920b174efd664afe9760a43700588c9c5e6182cb13d7421e07ab613bceeb3c7')
+sha256sums=('060c77be3e86a328a4f90f45d2da41b2b78cb74f13d44f69e29909cf68e98cad')
 
 build() {
   cd "${srcdir}"/$pkgname-$pkgver

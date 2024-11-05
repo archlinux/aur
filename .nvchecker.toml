@@ -1,0 +1,4 @@
+[magicrescue]
+url="http://ftp.debian.org/debian/pool/main/m/magicrescue/"
+source="regex"
+regex="magicrescue_([0-9.]+)\\.orig\\.tar\\.gz"
