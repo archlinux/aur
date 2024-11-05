@@ -2,18 +2,16 @@
 
 _name=pyjess
 pkgname=python-${_name}
-pkgver=0.3.1
+pkgver=0.3.2
 pkgrel=1
 pkgdesc="Cython bindings and Python interface to Jess, a 3D template matching software."
 url="https://github.com/althonos/pyjess"
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 license=("MIT")
-groups=()
-makedepends=('python-setuptools' 'cython' 'python-build' 'python-installer')
-depends=('python')
+depends=('python' 'python-pyopal' 'python-scoring-matrices')
+makedepends=('cython' 'python-build' 'python-installer' 'cmake' 'ninja' 'python-scikit-build-core')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-noextract=()
-sha256sums=(35a4dd5b57240df1b550ede3d3f1b5433c12abb02cc513807dd06813dbff303e)
+sha256sums=(7cc30b6f2f9417d018afcc18642654dde88e5d72dfe88e2e219bb6dd2cb80705)
 
 build() {
     cd "${srcdir}/${_name}-${pkgver}"
@@ -21,16 +19,22 @@ build() {
 }
 
 check() {
-    local pyver=$(python -c 'import sys; print(*sys.version_info[:2], sep="")')
-    local impl=$(python -c 'import platform; print(platform.python_implementation().lower())')
+    local abitag=$(python -c 'import sys; print(*sys.version_info[:2], sep="")')
     local machine=$(python -c 'import platform; print(platform.machine())')
-    cd "${srcdir}/${_name}-${pkgver}/build/lib.linux-${machine}-${impl}-${pyver}"
+    whl="${srcdir}/${_name}-${pkgver}/dist/${_name}-${pkgver}-cp${abitag}-cp${abitag}-linux_${machine}.whl"
+
+    python -m venv --symlinks --system-site-packages "${srcdir}/env"
+    source "${srcdir}/env/bin/activate"
+    python -m installer "$whl"
+
     python -m unittest ${_name}.tests
 }
 
 package() {
     local abitag=$(python -c 'import sys; print(*sys.version_info[:2], sep="")')
     local machine=$(python -c 'import platform; print(platform.machine())')
-    python -m installer --destdir="$pkgdir" "${srcdir}/${_name}-${pkgver}/dist/${_name}-${pkgver}-cp${abitag}-cp${abitag}-linux_${machine}.whl"
+    whl="${srcdir}/${_name}-${pkgver}/dist/${_name}-${pkgver}-cp${abitag}-cp${abitag}-linux_${machine}.whl"
+
+    python -m installer --prefix="${pkgdir}/usr" "$whl"
     install -Dm644  ${srcdir}/${_name}-${pkgver}/COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
 }
