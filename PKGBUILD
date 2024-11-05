@@ -1,7 +1,7 @@
 # Maintainer: Matt Coffin <mcoffin13@gmail.com>
 pkgname=hid-fanatecff-dkms
 _pkgname="${pkgname%-*}"
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc='Driver to support force feedback and load cells for the FANATEC controller ecosystem'
 arch=(any)
