@@ -1,73 +1,44 @@
-# Maintainer: ZorinArch <zorinarch@protonmail.com>
-
-_pkgname=penpot-desktop
-pkgname=$_pkgname-bin
-pkgdesc="Unofficial desktop app to Penpot — The open-source design tool for design and code collaboration. (binary release)"
-pkgver=0.3.1
+# Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
+# Contributor ZorinArch <zorinarch@protonmail.com>
+pkgname=penpot-desktop-bin
+_pkgname='Penpot Desktop'
+pkgver=0.3.2
+_electronversion=33
 pkgrel=1
-url="https://sudovanilla.com/code/Korbs/Penpot-Desktop/"
-license=('MPL-2.0 license')
-arch=('x86_64' 'aarch64')
-depends=('alsa-lib' 'libappindicator-gtk3' 'libnotify' 'libsodium' 'libxss' 'libxtst' 'mesa' 'nss')
-makedepends=('fuse2')
-provides=("$_pkgname" "$pkgname")
-conflicts=("$_pkgname")
-if [ "$CARCH" == "x86_64" ]; then
-    _appimage="$_pkgname-$pkgver.AppImage"
-  elif [ "$CARCH" == "aarch64" ]; then
-    _appimage="$_pkgname-$pkgver-arm64.AppImage"
-fi
-source_x86_64=("$_appimage::https://dl.sudovanilla.com/applications/$_pkgname/latest/Penpot%20Desktop-$pkgver.AppImage")
-source_aarch64=("$_appimage::https://dl.sudovanilla.com/applications/$_pkgname/latest/Penpot%20Desktop-$pkgver-arm64.AppImage")
-sha256sums_x86_64=('48a50166200de21955ca286cb14d4a516bf9527c41c945e6047250fd70d4e691')
-sha256sums_aarch64=('SKIP')
-
-
-_fix_permissions() (
-  target=$1
-
-  if [[ -L "$target" ]]; then
-    return 0
-  fi
-
-  if [[ -d "$target" || -x "$target" ]]; then
-    chmod 755 "$target"
-    return 0
-  fi
-
-  if [[ -f "$target" ]]; then
-    chmod 644 "$target"
-    return 0
-  fi
-
-  echo "Unrecognizable filesystem entry: $target" >&2
-  return 1
+pkgdesc="An unofficial desktop application for the open-source design tool, Penpot(Prebuilt version.Use system-wide electron)."
+arch=(
+    'aarch64'
+    'x86_64'
 )
-
-prepare() {
-# Extract the AppImage
-  chmod +x "./$_appimage"
-  "./$_appimage" --appimage-extract
-# Edit the shortcut
-  cd squashfs-root
-  sed -i -E "s|Exec=AppRun|Exec=$_pkgname|g" $_pkgname.desktop
-  sed -i "/X-AppImage-Version=$pkgver/d; /actions=undefined/d" $_pkgname.desktop
-  sed -i 's/--no-sandbox //g' $_pkgname.desktop
+url="https://github.com/author-more/penpot-desktop"
+license=('AGPL-3.0-only')
+conflicts=("${pkgname%-bin}")
+prodives=("${pkgname%-bin}=${pkgver}")
+depends=(
+    "electron${_electronversion}"
+)
+options=(
+    '!emptydirs'
+)
+source=("${pkgname%-bin}.sh")
+source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::${url}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}.aarch64.rpm")
+source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${url}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}.x86_64.rpm")
+sha256sums=('291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
+sha256sums_aarch64=('38fe7a06f08e47c6ef6552e995e607f2b03d7b7014e1b0dea0dd77fe645a20b5')
+sha256sums_x86_64=('e653698a867d0854bd09ac94730af0c753232d2817c152b114a8854c9f4dc569')
+build() {
+    sed -e "
+        s/@electronversion@/${_electronversion}/g
+        s/@appname@/${pkgname%-bin}/g
+        s/@runname@/app.asar/g
+        s/@cfgdirname@/${pkgname%-bin}/g
+        s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
+    " -i "${srcdir}/${pkgname%-bin}.sh"
+    sed -i "s/\"\/opt\/${_pkgname}\/${pkgname%-bin}\"/${pkgname%-bin}/g" "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
-
 package() {
-# Create directories
-  mkdir -p "$pkgdir/opt/$_pkgname" "$pkgdir/usr/bin"
-  mkdir -p "$pkgdir/usr/share/icons/hicolor/512x512/apps"
-# Install
-  cd squashfs-root
-  install -D -m644 "${srcdir}/squashfs-root/usr/share/icons/hicolor/0x0/apps/$_pkgname.png" "${pkgdir}/usr/share/icons/hicolor/512x512/apps/$_pkgname.png"
-  install -Dm644 $_pkgname.desktop -t "$pkgdir/usr/share/applications"
-  rm -dr usr AppRun $_pkgname.desktop $_pkgname.png .DirIcon resources/app-update.yml
-  ln -s /opt/$_pkgname/$_pkgname -t "$pkgdir/usr/bin"
-  mv * "$pkgdir/opt/$_pkgname"
-# Fix permissions
-  find "$pkgdir/opt/$_pkgname" | while read -r target; do
-    _fix_permissions "$target"
-  done
+    install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
+    install -Dm644 "${srcdir}/opt/${_pkgname}/resources/app.asar" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
+    install -Dm644 "${srcdir}/usr/share/icons/hicolor/512x512/apps/${pkgname%-bin}.png" -t "${pkgdir}/usr/share/pixmaps"
+    install -Dm644 "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
 }
