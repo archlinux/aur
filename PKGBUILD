@@ -2,7 +2,7 @@
 # Co-Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 # Contributor: TDY <tdy@gmx.com>
 pkgname=git-cola
-pkgver=4.8.2
+pkgver=4.9.0
 pkgrel=1
 pkgdesc="The highly caffeinated Git GUI"
 arch=('any')
@@ -19,13 +19,12 @@ depends=(
 makedepends=(
   'python-build'
   'python-installer'
-  'python-rst.linker'
+#  'python-rst.linker'
   'python-setuptools-scm'
   'python-sphinx'
-  'python-sphinx-furo'
-  'python-sphinx_rtd_theme'
+#  'python-sphinx-furo'
   'python-wheel'
-  'rsync'
+#  'rsync'
 )
 checkdepends=(
   'appstream'
@@ -34,16 +33,18 @@ checkdepends=(
   'python-pytest'
 )
 optdepends=(
-  'python-pygments: syntax highlighting'
-  'python-pyinotify: file system change monitoring'
-  'python-send2trash: enables "Send to Trash" functionality.'
-  'tk: to use the built-in ssh-askpass handler'
+  'python-notify2: Enables desktop notifications'
+  'python-pygments: Syntax highlighting'
+  'python-pyinotify: Enable file system change monitoring'
+  'python-send2trash: Enables "Send to Trash" functionality'
+  'tk: To use the built-in ssh-askpass handler'
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/git-cola/git-cola/archive/v$pkgver.tar.gz")
-sha256sums=('6df2da22d603a506c8b4c8dee11c995a88c36fc8524f93260b67499d69e5f5de')
+sha256sums=('0424af1a549aef78026ee9e3cce30abeb68081dc9382c8182d31bf42450362c8')
 
 prepare() {
   cd "$pkgname-$pkgver"
+  make clean
 
   # Remove vendorized polib.py
   rm cola/polib.py
@@ -53,8 +54,7 @@ build() {
   cd "$pkgname-$pkgver"
   python -m build --wheel --no-isolation
 
-#  make prefix=/usr doc
-  make prefix=/usr man
+#  make doc
 }
 
 check() {
@@ -70,7 +70,10 @@ package() {
   cd "$pkgname-$pkgver"
   python -m installer --destdir="$pkgdir" dist/*.whl
 
-#  make prefix=/usr DESTDIR="$pkgdir" install-doc
+  make prefix=/usr DESTDIR="$pkgdir" install-desktop-files
+  make prefix=/usr DESTDIR="$pkgdir" install-icons
+  make prefix=/usr DESTDIR="$pkgdir" install-htmldocs
+  make prefix=/usr DESTDIR="$pkgdir" install-metainfo
   make prefix=/usr DESTDIR="$pkgdir" install-man
 
   install -Dm644 "contrib/_${pkgname}" -t "$pkgdir/usr/share/zsh/site-functions/"
