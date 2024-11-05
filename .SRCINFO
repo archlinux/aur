@@ -1,0 +1,14 @@
+pkgbase = mtracker
+	pkgdesc = cli movie tracker - keep track of watched movies and series
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/r-unruh/mtracker
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	provides = mtracker
+	conflicts = mtracker
+	source = https://github.com/r-unruh/mtracker/archive/refs/tags/v0.4.0.tar.gz
+	b2sums = ae35aa5aa21024a76dfa1b186de307227b18ed3e12e00a1f605c39ff2953521d0f32e56a8bd422799e67e41ed5b84896f462fc66f4507267d2e96735a243c18a
+
+pkgname = mtracker
