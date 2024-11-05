@@ -7,7 +7,7 @@
 
 pkgname=kdeconnect-git
 _pkgname=kdeconnect
-pkgver=24.01.90.r409.gf3e8942
+pkgver=24.08.2+r4680+635024d96
 pkgrel=1
 pkgdesc='Adds communication between KDE and your smartphone'
 arch=('x86_64')
@@ -56,14 +56,17 @@ makedepends=(extra-cmake-modules
 optdepends=('python-nautilus: Nautilus integration'
             'qt6-tools: for some runcommand plugin actions'
             'sshfs: remote filesystem browser')
-conflicts=($_pkgname)
-provides=($_pkgname)
+provides=("kdeconnect")
+conflicts=("kdeconnect")
 source=("git+https://invent.kde.org/network/${_pkgname}-kde.git")
 sha256sums=('SKIP')
 
-pkgver() {
-	cd "${_pkgname}-kde"
-	git describe --long --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+pkgver(){
+  cd "${srcdir}/${_pkgname}-kde"
+  _version=$(git tag --sort=-v:refname --list | grep '^v[0-9.]*$' | head -n1 | cut -c2-)
+  _commits=$(git rev-list --count HEAD)
+  _short_commit_hash=$(git rev-parse --short=9 HEAD)
+  echo "${_version#'v'}+r${_commits}+${_short_commit_hash}"
 }
 
 build() {

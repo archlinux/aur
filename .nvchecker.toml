@@ -1,0 +1,3 @@
+[kdeconnect-git]
+source="cmd"
+cmd="~/nvchecker/github_version.sh KDE kdeconnect-kde v"
