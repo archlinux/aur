@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=hyperamp-bin
 _pkgname=Hyperamp
-pkgver=1.1.11
+pkgver=1.2.0
 _electronversion=33
 pkgrel=1
 pkgdesc="🎛 Humble music player.Prebuilt version.Use system-wide electron."
@@ -28,9 +28,9 @@ source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.AppImage::${_ghurl}/releases/
 source_armv7h=("${pkgname%-bin}-${pkgver}-armv7h.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-armv7l.AppImage")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}.AppImage")
 sha256sums=('291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-sha256sums_aarch64=('bf3c6d0f64f4dd40dab619b3df65de4b1a82bbacaba81f442f15bdb259ee2ef3')
-sha256sums_armv7h=('b7464b2775210eff270a04f58f68d23691f78067cb1cbbc82f5baa43c345b79c')
-sha256sums_x86_64=('fb45f875d23df0dc898620fbca717b2662306c727ac0e04745aca8dba73a3536')
+sha256sums_aarch64=('cca89f9584bdd14e6005c5cbb8d1b9beaa52fa4157c2a01bffc0de5f4d029a40')
+sha256sums_armv7h=('23cf9d9ea9eff499352788323bd9f49e230a38143f2f4a74f64e537bda7f2df7')
+sha256sums_x86_64=('e3e12e5327ff4fcc0cef522164a3f63e3a546248430ce75fe31ad349db77ffe4')
 build() {
     sed -e "
         s/@electronversion@/${_electronversion}/g
