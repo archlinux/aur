@@ -13,7 +13,7 @@ conflicts=('go-musicfox-bin' 'musicfox')
 depends=('flac' 'alsa-lib')
 makedepends=('gcc-objc' 'go')
 pkgsrcdir=${pkgname}-${pkgver}
-source=("${pkgsrcdir}::git+${url}.git#tag=v${pkgver}"
+source=("go-musicfox-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
     "lastfm_auth")
 sha256sums=('608b19f8b0c1ef01aa49a3711dff98c757ad4024f1a141522806256289273af6'
     '1798a98fc0b986c690f0dc93b4f475b03f18cc72abf2825cbffcaa78cd869df2')
@@ -24,8 +24,15 @@ build() {
     export LASTFM_KEY=$(awk 'NR==1{print $3}' $HOME/.config/go-musicfox/lastfm_auth)
     export LASTFM_SECRET=$(awk 'NR==2{print $3}' $HOME/.config/go-musicfox/lastfm_auth)
     export GOPROXY="https://goproxy.cn,direct"
-    go mod download
-    make
+    export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external"
+    export CGO_LDFLAGS="${LDFLAGS}"
+    export CGO_CFLAGS="${CFLAGS}"
+    export CGO_CPPFLAGS="${CPPFLAGS}"
+    export GOPATH=${srcdir}
+    go build -o ../musicfox -ldflags "-s -w \
+		-X 'github.com/go-musicfox/go-musicfox/pkg/constants.AppVersion=v${pkgver}' 	\
+		-X 'github.com/go-musicfox/go-musicfox/pkg/constants.LastfmKey=${LASTFM_KEY}'	\
+		-X 'github.com/go-musicfox/go-musicfox/pkg/constants.LastfmSecret=${LASTFM_SECRET}' " cmd/musicfox.go
 }
 
 package() {
