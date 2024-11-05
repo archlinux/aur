@@ -1,9 +1,9 @@
 # Maintainer: meanlint <meanlint@outlook.com>
 # Contributor: Robert Baker <reiichi001@gmail.com>
-pkgname=xivlauncher-cn-bin
+pkgname=xivlauncher-cn-bin-no-conflict
 pkgver=1.1.0.3
-pkgrel=2
-pkgdesc="Custom Launcher for Final Fantasy XIV Online CN"
+pkgrel=1
+pkgdesc="Custom Launcher for Final Fantasy XIV Online CN (Not conflict with xivlauncher)"
 arch=('x86_64')
 url='https://github.com/ottercorp/XIVLauncher.Core'
 license=('GPL')
@@ -15,27 +15,25 @@ depends=(
     'jxrlib'
 )
 options=('!strip')
-provides=("xivlauncher=${pkgver}")
-conflicts=("xivlauncher")
+provides=("xivlauncher-cn=${pkgver}")
+conflicts=("xivlauncher-cn" "xivlauncher-cn-bin")
 source=(
     "XIVLauncher.Core.tar.gz::https://github.com/ottercorp/XIVLauncher.Core/releases/download/${pkgver}/XIVLauncher.Core-arch.tar.gz"
     "512.png"
-    "XIVLauncher.desktop"
-    "xivlauncher-core"
+    "XIVLauncherCN.desktop"
+    "xivlauncher-core-cn"
 )
-sha512sums=(
-    'aab660a671e93b0a6f17b69a5d8fe5875bb4b6840238666683c6b2844251c43b1e4d2b6e95b4adecf510495918e810e272c1b8af81065de125b3452ee3177eed'
-    '0c33502cd915132151fa4b6c94899bf3f8806c2943469609cdda09365ff78be863215abd2741048d6c9a934a22dca0f8a8a2c67074c38abc6f67984c393859c4'
-    '6c9a1f783969f293c07f06d167ab830f77ddaffdd8ce1df5f4e736056bd7c10c169c8c2411499493fb39659ca10643590998fccdaf4978dacb671ecfa2872949'
-    'dad16da8e1d2bc772f7e1be1f59fd799c596fa88fb77a7e58a94baf10a1ca2f0ad7e79ad3baa8ba24e35dd0bc748884c74371c447816b1ea61098f58a130313a'
-)
+sha512sums=('aab660a671e93b0a6f17b69a5d8fe5875bb4b6840238666683c6b2844251c43b1e4d2b6e95b4adecf510495918e810e272c1b8af81065de125b3452ee3177eed'
+            '3a95e052263310fbcfb67be8d229c8d71baecb1a8b7b19e4499039362f32b1a80e557cd219860c06de2098a1432e6fa802b772612c3c8805197299907f314974'
+            '3fe46ea8b9dde7c034e1483fa29dfa281dfc4079e9cf19e43d9e9dd86c122af6c8bb1d0b30c1d0cc034916a12699d95eaf4aef474aae364ccadc566dc43f0389'
+            '71aa8d36c1f18eec6706dbb7d2518b8995c5d8153fcc32a5b29ae3d9738f6c2248fab181bb758750afddb78a8a1a01fddb28c5b1159a15c10db5f6de1065e575')
 
 package() {
     install -d "${pkgdir}/usr/bin/"
-    install -d "${pkgdir}/opt/XIVLauncher/"
-    install -D -m644 "${srcdir}/XIVLauncher.desktop" "${pkgdir}/usr/share/applications/XIVLauncher.desktop"
-    install -D -m644 "${srcdir}/512.png" "${pkgdir}/usr/share/pixmaps/xivlauncher.png"
-    cp -r "${srcdir}/." "${pkgdir}/opt/XIVLauncher/"
-    ln -s ../../opt/XIVLauncher/XIVLauncher.Core "${pkgdir}/usr/bin/XIVLauncher.Core"
-    install -D -m755  "${srcdir}/xivlauncher-core" "${pkgdir}/usr/bin/xivlauncher-core"
+    install -d "${pkgdir}/opt/XIVLauncherCN/"
+    install -D -m644 "${srcdir}/XIVLauncherCN.desktop" "${pkgdir}/usr/share/applications/XIVLauncherCN.desktop"
+    install -D -m644 "${srcdir}/512.png" "${pkgdir}/usr/share/pixmaps/xivlaunchercn.png"
+    cp -r "${srcdir}/." "${pkgdir}/opt/XIVLauncherCN/"
+    ln -s ../../opt/XIVLauncherCN/XIVLauncher.Core "${pkgdir}/usr/bin/XIVLauncher.Core.CN"
+    install -D -m755  "${srcdir}/xivlauncher-core-cn" "${pkgdir}/usr/bin/xivlauncher-core-cn"
 }
