@@ -14,8 +14,8 @@ if [[ "$COMMIT" != "$LATEST_COMMIT" ]]; then
     #git checkout master
     sed -i 's|^_commit=.*$|_commit='"${LATEST_COMMIT}"'|' PKGBUILD
     updpkgsums
-    mksrcinfo
     makepkg -do --noprepare
+    makepkg --printsrcinfo > .SRCINFO
     git diff
     git commit -a -m "Update: _commit=${LATEST_COMMIT}"
     #git push
