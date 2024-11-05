@@ -3,7 +3,7 @@
 pkgname=ruby-bump
 pkgver=0.10.0
 _commit=73c206174ca02549d120402b9a007db0d0bc9699
-pkgrel=5
+pkgrel=6
 pkgdesc='Bump your gem version file'
 arch=(any)
 url='https://github.com/gregorym/bump'

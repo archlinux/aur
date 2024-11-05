@@ -1,7 +1,7 @@
 pkgbase = ruby-bump
 	pkgdesc = Bump your gem version file
 	pkgver = 0.10.0
-	pkgrel = 5
+	pkgrel = 6
 	url = https://github.com/gregorym/bump
 	arch = any
 	license = MIT
