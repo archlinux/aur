@@ -1,10 +1,11 @@
 # Maintainer:
-# Contributor: Sven-Hendrik Haase <svenstaro@gmail.com>
-# Contributor: hexchain <i@hexchain.org>
+
+## options
+: ${_ffmpeg_version=}
 
 _pkgname="telegram-desktop"
 pkgname="$_pkgname-git"
-pkgver=5.7.1.r0.g233eb6d
+pkgver=5.7.2.r0.g02c01e2
 pkgrel=1
 pkgdesc='Official Telegram Desktop client'
 url="https://github.com/telegramdesktop/tdesktop"
@@ -13,13 +14,11 @@ arch=('x86_64')
 
 depends+=(
   ada
-  ffmpeg
-  glibmm-2.68
+  ffmpeg${_ffmpeg_version:-}
   hunspell
   jemalloc
   kcoreaddons
   libdispatch
-  libsigc++-3.0
   libvpx
   libxdamage
   minizip
@@ -31,9 +30,7 @@ depends+=(
   qt6-declarative
   qt6-svg
   qt6-wayland
-  range-v3
   rnnoise
-  tl-expected
   xcb-util-keysyms
   xxhash
 )
@@ -57,8 +54,8 @@ conflicts=("$_pkgname")
 
 _source_main() {
   _pkgsrc="$_pkgname"
-  source+=("$_pkgsrc"::"git+$url.git")
-  sha256sums+=('SKIP')
+  source=("$_pkgsrc"::"git+$url.git")
+  sha256sums=('SKIP')
 }
 
 _source_telegram_desktop() {
@@ -80,7 +77,7 @@ _source_telegram_desktop() {
     'desktop-app.lib_webview'::'git+https://github.com/desktop-app/lib_webview.git'
     'desktop-app.libprisma'::'git+https://github.com/desktop-app/libprisma.git'
     'desktop-app.rlottie'::'git+https://github.com/desktop-app/rlottie.git'
-    #'ericniebler.range-v3'::'git+https://github.com/ericniebler/range-v3.git'
+    'ericniebler.range-v3'::'git+https://github.com/ericniebler/range-v3.git'
     'fcitx.fcitx5-qt'::'git+https://github.com/fcitx/fcitx5-qt.git'
     'flatpak.xdg-desktop-portal'::'git+https://github.com/flatpak/xdg-desktop-portal.git'
     'google.cld3'::'git+https://github.com/google/cld3.git'
@@ -103,7 +100,7 @@ _source_telegram_desktop() {
     #'SKIP'
     #'SKIP'
     #'SKIP'
-    #'SKIP'
+    'SKIP'
     'SKIP'
     'SKIP'
     'SKIP'
@@ -153,7 +150,7 @@ _source_telegram_desktop() {
       'desktop-app.lib_webview'::'Telegram/lib_webview'
       'desktop-app.libprisma'::'Telegram/ThirdParty/libprisma'
       'desktop-app.rlottie'::'Telegram/ThirdParty/rlottie'
-      #'ericniebler.range-v3'::'Telegram/ThirdParty/range-v3'
+      'ericniebler.range-v3'::'Telegram/ThirdParty/range-v3'
       'fcitx.fcitx5-qt'::'Telegram/ThirdParty/fcitx5-qt'
       'flatpak.xdg-desktop-portal'::'Telegram/ThirdParty/xdg-desktop-portal'
       'google.cld3'::'Telegram/ThirdParty/cld3'
@@ -233,13 +230,14 @@ _source_mnauw_cppgir() {
 }
 
 _source_tg_owt() {
-  makedepends+=(
-    pipewire
-    yasm
-
+  depends+=(
+    libpipewire
     libxcomposite
     libxrandr
     libxtst
+  )
+  makedepends+=(
+    yasm
   )
 
   _pkgsrc_tgowt="telegram-tg_owt"
@@ -365,6 +363,7 @@ _build_telegram() (
 
 build() {
   export LDFLAGS+=" -Wl,--copy-dt-needed-entries"
+  [ -n "${_ffmpeg_version}" ] && export PKG_CONFIG_PATH="/usr/lib/ffmpeg${_ffmpeg_version:-}/pkgconfig"
 
   _build_tg_owt
   _build_telegram
