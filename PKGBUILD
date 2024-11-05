@@ -15,7 +15,7 @@ prepare() {
   cd "$pkgname-$pkgver"
   cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
   mimes='image/bmp;image/png;image/gif;image/jpeg;image/svg+xml;image/x-icon;image/tiff;image/webp;image/tga;image/apng;image/avif;image/heif;image/heic;image/qoi'
-  gendesk -f --pkgname=$pkgname --pkgdesc="$pkgdesc" --exec=simp --terminal=false --icon="$pkgname.png" --mimetypes=$mimes --categories='Graphics;ImageProcessing'
+  gendesk -f --pkgname=$pkgname --pkgdesc="$pkgdesc" '--exec=simp %U' --terminal=false --icon="$pkgname.png" --mimetypes=$mimes --categories='Graphics;ImageProcessing'
 }
 
 build() {
