@@ -2,7 +2,7 @@
 
 _name=pysylph
 pkgname=python-${_name}
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="PyO3 bindings and Python interface to sylph, an ultrafast method for containment ANI querying and taxonomic profiling."
 url="https://github.com/althonos/pysylph"
@@ -12,7 +12,7 @@ makedepends=('python-setuptools' 'python-build' 'python-installer' 'python-matur
 depends=('python')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
 noextract=()
-sha256sums=('9b9f4110e2d18d019e7897da8df383a73adb39cbed1a0c5dac9793ea37a7560e')
+sha256sums=('43d58e3cd22a97d4bfbaa1f3682d1bdb2d13dab44ad66ddaa6bd8374a5361d30')
 
 prepare() {
     cargo fetch --manifest-path "${srcdir}/${_name}-${pkgver}/Cargo.toml" --target "$CARCH-unknown-linux-gnu"
