@@ -1,0 +1,11 @@
+pkgbase = yarux
+	pkgdesc = An elegant icon theme that extends Yaru's beautiful icons to third party applications
+	pkgver = 0.0.0
+	pkgrel = 1
+	url = https://github.com/ochi12/YaruX
+	arch = any
+	license = MIT
+	source = yarux-aaef88f.zip::https://github.com/ochi12/YaruX/archive/aaef88f80545936ee1b32afa3538373c7afe9308.zip
+	sha256sums = 132385e9af1902aab23668bcb0db9e239c4371a0fe8405631ae9235057f4baa9
+
+pkgname = yarux
