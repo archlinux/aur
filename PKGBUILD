@@ -3,7 +3,7 @@
 
 pkgname=python-anthropic
 _pkgname=anthropic-sdk-python
-pkgver=0.37.1
+pkgver=0.39.0
 pkgrel=1
 pkgdesc="Python library that provides convenient access to the Anthropic REST API"
 arch=(any)
@@ -41,16 +41,9 @@ optdepends=(
 )
 source=(
   "$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
-  "fix-pytest-asyncio-usage.patch"
 )
-sha256sums=('888312a688285ac59befdcf3779455f5af574f7926afab89bf506203a3a940d4'
-            '9058cc717a6e8eebba65d9735e7376f9d1a024f0e4a2635b96278e6a39b31e01')
+sha256sums=('11105a4f868246035b139fb1d713d93f97c019d118870b86344afbfe016925cd')
 
-prepare() {
-  cd $_pkgname-$pkgver
-
-  patch --forward --strip=1 --input="$srcdir/fix-pytest-asyncio-usage.patch"
-}
 
 build() {
   cd $_pkgname-$pkgver
