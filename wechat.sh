@@ -459,6 +459,7 @@ function questionFirstLaunch() {
 
 function disableSandbox() {
 	if [[ $@ =~ "f5aaebc6-0014-4d30-beba-72bce57e0650" ]] && [[ $@ =~ "--actions" ]]; then
+		rm "${XDG_DATA_HOME}"/WeChat_Data/options/sandbox
 		questionFirstLaunch
 	fi
 }
@@ -533,8 +534,8 @@ if [[ $@ = "--actions quit" ]]; then
 	exit $?
 fi
 
-disableSandbox $@
 sourceXDG
+disableSandbox $@
 questionFirstLaunch
 openDataDir $@
 manageDirs
