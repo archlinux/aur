@@ -1,6 +1,6 @@
 #!/bin/bash
 pkgname=python-decli
-pkgver=0.6.1
+pkgver=0.6.2
 pkgrel=0
 pkgdesc="Minimal, easy to use, declarative command line interface tool"
 arch=('any')
@@ -16,7 +16,7 @@ checkdepends=(
 )
 depends=()
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('2d4c35cd54841d95eac9df0508f40c20a8df81c0c9e51c83f2a2285d35987010')
+sha256sums=('e29abae67388aca6b4517bf048f0ea723fe93f5af6b06bbea6cbbc766d0086fd')
 
 _pkgname="${pkgname/python-/}"
 
