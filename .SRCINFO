@@ -1,6 +1,6 @@
 pkgbase = kadnode
 	pkgdesc = P2P DNS with content key, crypto key and PKI support. DynDNS alternative.
-	pkgver = 2.3.0
+	pkgver = 2.4.0
 	pkgrel = 1
 	url = http://github.com/mwarning/KadNode
 	install = kadnode.install
@@ -10,8 +10,7 @@ pkgbase = kadnode
 	depends = mbedtls
 	backup = etc/kadnode/kadnode.conf
 	backup = etc/kadnode/peers.txt
-	source = https://github.com/mwarning/KadNode/archive/v2.3.0.tar.gz
-	md5sums = 4a39a84be9573bf014b88d1ae7adc823
+	source = https://github.com/mwarning/KadNode/archive/v2.4.0.tar.gz
+	md5sums = 589b6c4ce0b5205c5d062ee474c1edbd
 
 pkgname = kadnode
-
