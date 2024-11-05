@@ -2,14 +2,14 @@
 pkgname=radicle-cli-git
 _pkgname=radicle-cli
 pkgver=20241105.f6aa46a2
-pkgrel=1
+pkgrel=2
 pkgdesc="Radicle command line interface"
 arch=('x86_64' 'aarch64')
 _repoid=z3gqcJUoA1n9HaHKufZs5FCSGazv5
 url="https://app.radicle.xyz/nodes/seed.radicle.xyz/rad:$_repoid"
 license=('MIT' 'Apache-2.0')
 depends=('gcc-libs' 'glibc' 'zlib' 'git>=2.34.0' 'openssh')
-makedepends=('git' 'cargo' 'asciidoctor')
+makedepends=('cargo' 'asciidoctor')
 source=("git+https://seed.radicle.xyz/$_repoid.git")
 provides=("$_pkgname")
 conflicts=("$_pkgname")
