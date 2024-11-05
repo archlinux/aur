@@ -1,8 +1,7 @@
 # Maintainer: hawkeye116477 <hawkeye116477 at gmail dot com>
 
 pkgname=waterfox-bin
-_pkgver=6.0.20
-pkgver=G${_pkgver}
+pkgver=6.5.0
 pkgrel=1
 pkgdesc="Current/modern generation of customizable privacy-conscious web browser."
 arch=('x86_64')
@@ -16,7 +15,7 @@ optdepends=('networkmanager: Location detection via available WiFi networks'
             'alsa-lib: Audio support'
             'speech-dispatcher: Text-to-Speech'
             'hunspell-en_US: Spell checking, American English')
-provides=("waterfox-g=${_pkgver}" "waterfox=${pkgver}")
+provides=("waterfox=${pkgver}")
 source=('waterfox.desktop'
         'https://cdn1.waterfox.net/waterfox/releases/'"${pkgver}"'/Linux_x86_64/waterfox-'"${pkgver}"'.tar.bz2')
 
@@ -69,4 +68,4 @@ END
 }
 
 sha512sums=('d0ff0445021b975d52eee7dac27dfdc0d170da07f8a8dc1676ba53387c2006f0598c163b36b07abdbb411cfb61bf52b8222fc5882bdfa8dfcd13d99cb44c92b6'
-            'a6d92f88ff6d37b6cf00c1c72fc5a47746e48e1aaf90f74bb5c9f5e8bd842dadda8cb26f829fa50a2270e203b722933ef8ba35330a2b99c0c9f2e63dab1a5798')
+            '6a9b4a43102e3293fbd3459a4fd99c60451c5431e24eb2ff55e316c08a8956924151d2bb447f472a73bcb66fa21e64146216e3e832c5ec971fe547be62859d3b')
