@@ -1,14 +1,13 @@
 # Maintainer: Matteo Piccinini (loacker) <matteo.piccinini@gmail.com>
 
 pkgname=python-sushy
-pkgver=5.2.0
+pkgver=5.3.0
 pkgrel=1
 pkgdesc="Small Python library to communicate with Redfish based systems"
 arch=(any)
 url="https://opendev.org/openstack/sushy"
 license=('Apache-2.0')
 depends=('python'
-         'python-setuptools'
          'python-pbr'
          'python-requests'
          'python-dateutil'
@@ -22,7 +21,7 @@ makedepends=('python-build'
 checkdepends=('python-coverage'
               'python-stestr')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-b2sums=('7bfc151d234ec8622c0ccb62c079ea11c65bb98adb1fb05bfaa0557d0b0711051a055d81a2564b03e824bf284ce46cbdd170226a37e6c63edec6880b51d93ce4')
+b2sums=('13a487f268cbd34ccff3fd28c797a6e7b9e5b1c46a73f5fab0994b60c3a133523ab0f51322c8904b685c189478a0718f3fe98afe70945fcb354c3162bc4fe796')
 
 prepare() {
     tar zxvf "$pkgname-$pkgver.tar.gz" --strip-components=1 --one-top-level
