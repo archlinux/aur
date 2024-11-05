@@ -3,7 +3,7 @@
 
 pkgname=ds4drv
 pkgver=0.5.1
-pkgrel=4
+pkgrel=5
 pkgdesc="Sony DualShock 4 Userspace Driver"
 arch=('any')
 url="https://github.com/chrippa/ds4drv"
@@ -31,6 +31,9 @@ package() {
 	mkdir -pm755 $pkgdir/etc/systemd/system
 	cp systemd/ds4drv.service $pkgdir/etc/systemd/system/ds4drv.service
 	cp ds4drv.conf $pkgdir/etc/ds4drv.conf
+	if [ $(python -c "import sys; print(sys.version_info.minor == 12)") = "True" ]; then
+		sed -i "s/SafeConfigParser/ConfigParser/g" $pkgdir/usr/lib/python3.12/site-packages/ds4drv/config.py
+	fi
 }
 
 # vim: ft=sh syn=sh
