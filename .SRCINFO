@@ -1,0 +1,21 @@
+pkgbase = pamac-tray-plasma-git
+	pkgdesc = Pamac tray icon for Plasma
+	pkgver = r21.58353a1
+	pkgrel = 1
+	url = https://gitlab.com/LordTermor/pamac-tray-icon-plasma
+	arch = x86_64
+	license = Unknown
+	makedepends = cmake
+	makedepends = ninja
+	depends = knotifications
+	depends = kstatusnotifieritem
+	depends = libpamac
+	depends = qt6-base
+	provides = pamac-tray-plasma
+	provides = pamac-tray-icon-plasma
+	conflicts = pamac-tray-plasma
+	conflicts = pamac-tray-icon-plasma
+	source = pamac-tray-plasma::git+https://gitlab.com/LordTermor/pamac-tray-icon-plasma.git
+	sha256sums = SKIP
+
+pkgname = pamac-tray-plasma-git
