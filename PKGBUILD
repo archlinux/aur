@@ -2,11 +2,11 @@
 
 pkgname=libgbinder
 pkgver=1.1.40
-pkgrel=1
+pkgrel=2
 pkgdesc="GLib-style interface to binder"
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url="https://github.com/mer-hybris/libgbinder.git"
-license=('BSD')
+license=('BSD-3-Clause')
 depends=('libglibutil' 'glib2')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/mer-hybris/libgbinder/archive/refs/tags/${pkgver}.tar.gz")
 sha512sums=('1bace60c31344b06ce6a935c045e14c1f29728621d7940df8e5e8d9a62592c21632a7a2172508a193e0b5fa8dfcea95bd42d3a6df34de6d1ebd2f5b2d592779e')
