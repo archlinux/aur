@@ -62,6 +62,8 @@ depends=(
 	"psmisc"
 	"wmctrl"
 	"flatpak-xdg-utils"
+	"xdg-desktop-portal"
+	"xdg-desktop-portal-gtk"
 )
 
 optdepends=(
