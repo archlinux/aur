@@ -1,7 +1,7 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=mpv-build-git
-pkgver=0.37.0.469.g1a649afbad
+pkgver=0.39.0.315.g91d4e6f937
 pkgrel=1
 pkgdesc="Video player based on MPlayer/mplayer2 (uses statically linked ffmpeg). (GIT version)"
 arch=('x86_64')
@@ -68,11 +68,11 @@ depends=(
   'wayland' 'libwayland-client.so' 'libwayland-cursor.so' 'libwayland-egl.so'
   'libjpeg-turbo' 'libjpeg.so'
   'vulkan-icd-loader' 'libvulkan.so'
+  'libdisplay-info' 'libdisplay-info.so'
   'mesa'
   'zlib' 'libz.so'
   'python'
   'hicolor-icon-theme'
-  'xxhash' 'libxxhash.so'
 )
 
 license=('GPL2' 'GPL3' 'LGPL3' 'LGPL2.1' 'BSD')
@@ -91,6 +91,7 @@ makedepends=(
   'nuklear'
   'glad'
   'jbigkit'
+  'xxhash'
 )
 optdepends=(
   'nvidia-utils: for hardware accelerated video decoding with CUDA'
@@ -229,7 +230,6 @@ prepare() {
     '-Dvulkan=enabled'
     '-Dwayland=enabled'
     '-Ddmabuf-wayland=enabled'
-    '-Dvulkan-interop=enabled'
     '-Dx11=enabled'
     '-Dxv=enabled'
     '-Dcuda-hwaccel=enabled'
@@ -238,7 +238,7 @@ prepare() {
     '-Dhtml-build=enabled'
 
     # Fix Build
-    '-Dc_link_args=-lstdc++'
+    '-Dc_link_args=-lstdc++ -lglslang'
     )
 
 if [ -f /usr/lib/libavisynth.so.*.*.* ]; then
