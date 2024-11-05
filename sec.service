@@ -1,9 +1,0 @@
-[Unit]
-Description=sec daemon
-After=basic.target
-
-[Service]
-ExecStart=/usr/bin/sec -conf=/etc/sec.d/*.sec -input=/var/log/messages
-
-[Install]
-WantedBy=multi-user.target

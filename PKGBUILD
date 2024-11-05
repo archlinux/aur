@@ -2,17 +2,15 @@
 # Contributor: Ansuransax <ansuransax at hotmail dot com>
 
 pkgname=sec
-pkgver=2.9.2
+pkgver=2.9.3
 pkgrel=1
 pkgdesc='A logfile monitoring tool with support for event correlation, written in perl'
 arch=('i686' 'x86_64')
 url='https://simple-evcorr.github.io/'
 license=('GPL')
 depends=('perl')
-source=("https://github.com/simple-evcorr/sec/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.gz"
-	'sec.service')
-sha256sums=('97c8bde4bcb8d7bacef6e186acfae4f6037928dc308fecc69db82d16267a18d2'
-            'd69d000433162aa82a1d184df823185d739e2ab8a2d631b6adb2189f9e1839c4')
+source=("https://github.com/simple-evcorr/sec/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.gz")
+sha256sums=('280f5b94eebbf7efbf5a7d7e417beae75415a7dc5103a2d0fdb3008568fb9f30')
 
 package() {
 	cd ${srcdir}/${pkgname}-${pkgver}
@@ -29,6 +27,6 @@ package() {
 	install -D -m0644 README ${pkgdir}/usr/share/${pkgname}/README
 
 	# install systemd service
-	install -D -m0644 ${srcdir}/sec.service ${pkgdir}/usr/lib/systemd/system/sec.service
+	install -D -m0644 contrib/suse.service ${pkgdir}/usr/lib/systemd/system/sec.service
 }
 
