@@ -6,9 +6,21 @@ pkgdesc="Multi repository git utility. Manage multiple git-repositories simultan
 arch=('any')
 url="https://github.com/jasursadikov/mud"
 license=('MIT')
-depends=('python' 'python-prettytable' 'git')
-makedepends=('python-build' 'python-setuptools' 'python-setuptools-scm' 'python-hatchling' 'git')
-source=("${pkgname}::git+https://github.com/jasursadikov/mud.git#tag=v1.0.4")
+provides=("${pkgname}")
+conflicts=("${pkgname}")
+depends=(
+    'python' 
+    'python-prettytable' 
+    'git')
+makedepends=(
+    'python-build'
+    'python-installer'
+    'python-wheel'
+    'python-hatchling'
+    'python-setuptools'
+    'python-setuptools-scm'
+)
+source=("git+${url}.git")
 md5sums=('SKIP')
 
 build() {

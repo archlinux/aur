@@ -6,14 +6,17 @@ pkgbase = mud-git
 	arch = any
 	license = MIT
 	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-hatchling
 	makedepends = python-setuptools
 	makedepends = python-setuptools-scm
-	makedepends = python-hatchling
-	makedepends = git
 	depends = python
 	depends = python-prettytable
 	depends = git
-	source = mud-git::git+https://github.com/jasursadikov/mud.git#tag=v1.0.4
+	provides = mud-git
+	conflicts = mud-git
+	source = git+https://github.com/jasursadikov/mud.git
 	md5sums = SKIP
 
 pkgname = mud-git
