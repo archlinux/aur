@@ -1,0 +1,17 @@
+pkgbase = nerdtree-git-plugin-git
+	pkgdesc = A plugin of NERDTree showing git status
+	pkgver = r149.e1fe727
+	pkgrel = 1
+	url = https://github.com/Xuyuanp/nerdtree-git-plugin
+	arch = any
+	license = LicenseRef-WTFPL
+	depends = git
+	depends = vim-nerdtree
+	provides = nerdtree-git-plugin
+	conflicts = nerdtree-git-plugin
+	source = git+https://github.com/Xuyuanp/nerdtree-git-plugin.git
+	source = rollback_git_status-vim.patch
+	sha256sums = SKIP
+	sha256sums = 4473fbe1c91e1cf19f7b7362517ae32be7acdb2eb45baa348b7025938b681095
+
+pkgname = nerdtree-git-plugin-git
