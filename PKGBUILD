@@ -2,12 +2,12 @@
 # Contributor: Michael Bauer <michael@m-bauer.org>
 pkgname=radicle-cli
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Radicle command line interface"
 arch=('x86_64')
 url="https://radicle/xyz"
-license=('MIT Apache-2.0')
-depends=('libusb' 'gcc-libs' 'openssh' 'git' 'glibc')
+license=('MIT' 'Apache-2.0')
+depends=('libusb' 'gcc-libs' 'openssh' 'git' 'glibc' 'zlib')
 makedepends=('cargo' 'git')
 
 _man_pages="rad-id rad-patch rad git-remote-rad radicle-node"
@@ -20,12 +20,12 @@ source=("heartwood-$pkgver::git+https://seed.radicle.xyz/$_repoid.git#commit=$_p
 sha512sums=('SKIP')
 
 prepare() {
-	cd "$srcdir/heartwood"
+	cd "$srcdir/heartwood-$pkgver"
 	cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
-	cd "$srcdir/heartwood"
+	cd "$srcdir/heartwood-$pkgver"
 	export CARGO_TARGET_DIR=target
 	cargo build --frozen --release --all-features
 
@@ -35,12 +35,12 @@ build() {
 }
 
 check() {
-	cd "$srcdir/heartwood"
+	cd "$srcdir/heartwood-$pkgver"
 	cargo test --frozen --all-features
 }
 
 package() {
-	cd "$srcdir/heartwood"
+	cd "$srcdir/heartwood-$pkgver"
 	find target/release \
 		-maxdepth 1 \
 		-executable \
@@ -54,5 +54,5 @@ package() {
 	install -Dm0644 LICENSE-MIT "$pkgdir/usr/share/licenses/$pkgname/LICENSE-MIT"
 	install -Dm0644 LICENSE-APACHE "$pkgdir/usr/share/licenses/$pkgname/LICENSE-APACHE"
 
-	install -Dm0644 systemd/radicle-node.service "$pkgdir/usr/lib/systemd/system/radicle-node.service"
+	install -Dm0644 systemd/radicle-node.service "$pkgdir/usr/lib/systemd/user/radicle-node.service"
 }
