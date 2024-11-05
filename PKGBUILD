@@ -2,34 +2,19 @@
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-sms-send'
-pkgver='1.06'
+pkgver='1.07'
 pkgrel='1'
 pkgdesc="Perl/CPAN Module SMS::Send: Driver-based API for sending SMS messages"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('perl-class-adapter>=1.05' 'perl-module-pluggable>=3.7' 'perl-params-util>=1.00' 'perl>=5.6.0')
+depends=('perl>=5.6.0' 'perl-class-adapter>=1.05' 'perl-module-pluggable>=3.7' 'perl-params-util>=1.00')
 makedepends=()
 url='https://metacpan.org/release/SMS-Send'
-source=("http://search.cpan.org/CPAN/authors/id/A/AD/ADAMK/SMS-Send-$pkgver.tar.gz")
-md5sums=('bf8c79fb145883c3cd475e5687201151')
-sha512sums=('7e4fd12d9a8fd1f9a2b77ea441c146becd03b4cacd84d167ded3d569889c797ef8def3293b8996786a6d577274c12c4c8d8a2724a2365012c0f35966d85b313d')
+source=("http://search.cpan.org/CPAN/authors/id/E/ET/ETHER/SMS-Send-$pkgver.tar.g")
+md5sums=('71989af7a2c95a328b7e4abafa3f12e1')
+sha512sums=('e925de53c9fb45caf350322a64caabd63568cedae4e22141ceadc33392469cd88cdf2606c929a3a022f45956f5943d8126749c8063f5249f6c51a2f1fa118b01')
 _distdir="SMS-Send-$pkgver"
-
-prepare() {
-  cd "$srcdir/$_distdir"
-
-  # Patch Makefile.PL
-  # by adding "use lib '.';" before "use inc::Module::Install".
-  # Maybe a real patch-file would be better.
-  #
-  # This fixes the "Can't locate inc/Module/Install.pm in @INC"-error,
-  # which isn't upstream yet, when doing "make".
-  # See https://rt.cpan.org/Public/Bug/Display.html?id=120825
-  # for details on this problem (but for a different Perl/CPAN-module).
-  #
-  sed -i "s/use inc::Module::Install/use lib '.';\nuse inc::Module::Install/" Makefile.PL
-}
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
