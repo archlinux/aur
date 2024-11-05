@@ -5,6 +5,7 @@ then
 fi
 cd ov-client
 git checkout master
+git pull
 make gitupdate
 git checkout $(git describe --tags --candidates 1)
 

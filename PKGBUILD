@@ -1,6 +1,6 @@
-# Maintainer: David Grimm < david[dot]grimm [replace this with the swirly a sign] vegri[dot]net >
+# Maintainer: David Grimm < david[dot]dg[dot]grimm [replace this with the swirly a sign] gmail[dot]com >
 pkgname=ov-client
-pkgver="0.24.2"
+pkgver="0.25.1"
 pkgrel=1
 epoch=
 pkgdesc="Client to share and receive spatial realtime Audio"
@@ -44,6 +44,8 @@ depends=('jack2'
 makedepends=('git'
 			 'bash'
 			 'make'
+			 'cmake'
+			 'cunit'
 			 'gcc'
 			 'vim'
 			 'pkg-config')
@@ -73,7 +75,7 @@ prepare() {
 		cd ..
 	fi
 	cd ov-client
-	git checkout -q de802001bc9b91de988325f02a90b43e4713665b
+	git checkout -q 4fa893aa264dcc4df436560ec8447daf32bd3322
 	git submodule update --init --recursive
 }
 
