@@ -1,6 +1,6 @@
 #Maintainer: Noble Eugene <nobleeugene2005@gmail.com>
 pkgname="swengine"
-pkgver="0.14.1"
+pkgver="0.15"
 pkgrel=1
 pkgdesc="Download and apply live wallpapers with swww"
 arch=("x86_64")
@@ -17,7 +17,7 @@ prepare(){
 }
 build(){
     cd "$srcdir/swengine/swengine.desktop" 
-    dotnet publish --self-contained=true  --output dist
+    dotnet publish --output dist
 }
 package(){
     cd "$srcdir/swengine/swengine.desktop"
