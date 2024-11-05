@@ -1,6 +1,6 @@
 # Maintainer: Mika Hyttinen <mika dot hyttinen+arch ät gmail dot com>
 pkgname=cellframe-node
-pkgver=5.3.r3032.a018d95
+pkgver=5.3.r3034.61c90c0
 pkgrel=1
 pkgdesc='Cellframe blockchain node with a powerful SDK'
 arch=('x86_64' 'aarch64')
@@ -10,7 +10,7 @@ makedepends=(git cmake python3 libxslt)
 depends=(logrotate libxcrypt-compat)
 provides=('cellframe-node' 'cellframe-node-cli' 'cellframe-node-tool' 'cellframe-node-config')
 replaces=('cellframe-node-debug')
-source=(git+https://gitlab.demlabs.net/cellframe/$pkgname.git#commit=a018d95af6b9a909959a668f89bdc437c72b95af
+source=(git+https://gitlab.demlabs.net/cellframe/$pkgname.git#commit=61c90c0695981f14aff7be7e924a78a8c065d53e
 		cellframe-node.logrotate
 		cellframe-node.service
 		cellframe-node-asan.service
@@ -58,7 +58,7 @@ build() {
 			cmake -B build \
 				-DDAP_CRYPTO_XKCP_PLAINC=ON \
 				-DCMAKE_BUILD_TYPE=Debug \
-				-DCMAKE_C_FLAGS="-Wno-error=incompatible-pointer-types -fsanitize=address -fsanitize-address-use-after-scope -fno-omit-frame-pointer -fno-common -O1" \
+				-DCMAKE_C_FLAGS="-fsanitize=address -fsanitize-address-use-after-scope -fno-omit-frame-pointer -fno-common -O1" \
 				-DCMAKE_LINKER_FLAGS="-fsanitize=address" \
 				-Wno-dev
 		else
@@ -66,7 +66,6 @@ build() {
 			cmake -B build \
 				-DDAP_CRYPTO_XKCP_PLAINC=ON \
 				-DCMAKE_BUILD_TYPE=$BUILD_TYPE \
-				-DCMAKE_C_FLAGS="-Wno-error=incompatible-pointer-types" \
 				-DCELLFRAME_NO_OPTIMIZATION=OFF \
 				-Wno-dev
 		fi
@@ -74,7 +73,7 @@ build() {
 		echo ":: Building with Address Sanitizer (ASAN) enabled..."
 		cmake -B build \
 			-DCMAKE_BUILD_TYPE=Debug \
-			-DCMAKE_C_FLAGS="-Wno-error=incompatible-pointer-types -fsanitize=address -fsanitize-address-use-after-scope -fno-omit-frame-pointer -fno-common -O1" \
+			-DCMAKE_C_FLAGS="-fsanitize=address -fsanitize-address-use-after-scope -fno-omit-frame-pointer -fno-common -O1" \
 			-DCMAKE_LINKER_FLAGS="-fsanitize=address" \
 			-DCELLFRAME_NO_OPTIMIZATION=OFF \
 			-Wno-dev
@@ -82,7 +81,6 @@ build() {
 		echo ":: Building with normal optimization..."
 		cmake -B build \
 			-DCMAKE_BUILD_TYPE=$BUILD_TYPE \
-			-DCMAKE_C_FLAGS="-Wno-error=incompatible-pointer-types" \
 			-DCELLFRAME_NO_OPTIMIZATION=OFF \
 			-Wno-dev
 	fi
