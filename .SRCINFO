@@ -1,20 +1,16 @@
 pkgbase = python-pcodedmp
 	pkgdesc = A VBA p-code disassembler
 	pkgver = 1.2.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/bontchev/pcodedmp
 	arch = any
-	license = GPLv3
+	license = GPL-3.0-or-later
+	makedepends = python-build
+	makedepends = python-installer
 	makedepends = python-setuptools
-	makedepends = python2-setuptools
-	source = https://files.pythonhosted.org/packages/source/p/pcodedmp/pcodedmp-1.2.6.tar.gz
-	md5sums = 9b9b4e85203a6dd19757793bf2d87af4
+	makedepends = python-wheel
+	depends = python
+	source = pcodedmp-1.2.6.tar.gz::https://files.pythonhosted.org/packages/source/p/pcodedmp/pcodedmp-1.2.6.tar.gz
+	sha256sums = 025f8c809a126f45a082ffa820893e6a8d990d9d7ddb68694b5a9f0a6dbcd955
 
 pkgname = python-pcodedmp
-	depends = python
-	depends = python-oletools
-
-pkgname = python2-pcodedmp
-	depends = python2
-	depends = python2-oletools
-

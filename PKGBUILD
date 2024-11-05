@@ -1,37 +1,24 @@
-pkgbase=python-pcodedmp
-pkgname=('python-pcodedmp' 'python2-pcodedmp')
-_module='pcodedmp'
-pkgver='1.2.6'
-pkgrel=1
-pkgdesc="A VBA p-code disassembler"
-url="https://github.com/bontchev/pcodedmp"
-depends=()
-makedepends=('python-setuptools' 'python2-setuptools')
-license=('GPLv3')
-arch=('any')
-source=("https://files.pythonhosted.org/packages/source/p/pcodedmp/pcodedmp-${pkgver}.tar.gz")
-md5sums=('9b9b4e85203a6dd19757793bf2d87af4')
+# Maintainer: devome <evinedeng@hotmail.com>
 
-prepare() {
-    cp -a "${srcdir}/${_module}-${pkgver}"{,-python2}
-}
+_pkgname=pcodedmp
+pkgname="python-${_pkgname}"
+pkgver=1.2.6
+pkgrel=2
+pkgdesc="A VBA p-code disassembler"
+arch=("any")
+url="https://github.com/bontchev/${_pkgname}"
+license=('GPL-3.0-or-later')
+depends=("python")
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
+source=("${_pkgname}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
+sha256sums=('025f8c809a126f45a082ffa820893e6a8d990d9d7ddb68694b5a9f0a6dbcd955')
 
 build() {
-    cd "${srcdir}/${_module}-${pkgver}"
-    python setup.py build
-
-    cd "${srcdir}/${_module}-${pkgver}-python2"
-    python2 setup.py build
+    cd "${_pkgname}-${pkgver}"
+    python -m build --wheel --no-isolation
 }
 
-package_python-pcodedmp() {
-    depends+=('python' 'python-oletools')
-    cd "${srcdir}/${_module}-${pkgver}"
-    python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
-}
-
-package_python2-pcodedmp() {
-    depends+=('python2' 'python2-oletools')
-    cd "${srcdir}/${_module}-${pkgver}-python2"
-    python2 setup.py install --root="${pkgdir}" --optimize=1 --skip-build
+package() {
+    cd "${_pkgname}-${pkgver}"
+    python -m installer --destdir="${pkgdir}" dist/*.whl
 }
