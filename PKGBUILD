@@ -3,15 +3,15 @@
 _pkgauthor=Jojo4GH
 _pkgname=nav
 pkgname=${_pkgname}-bin
-pkgver=1.2.0
-pkgrel=2
+pkgver=1.2.1
+pkgrel=1
 pkgdesc='The interactive and stylish replacement for ls & cd!'
 url="https://github.com/${_pkgauthor}/${_pkgname}"
 _urlraw="https://raw.githubusercontent.com/${_pkgauthor}/${_pkgname}/v${pkgver}"
 arch=('x86_64' 'aarch64')
 license=('MIT')
 makedepends=('help2man' 'xdelta3')
-conflicts=("${_pkgname}")
+conflicts=("${_pkgname}" "${_pkgname}-cli")
 provides=("${_pkgname}")
 source=("LICENSE-${pkgver}::${_urlraw}/LICENSE.md"
         "README-${pkgver}.md::${_urlraw}/README.md"
@@ -20,9 +20,9 @@ source_x86_64=("${url}/releases/download/v${pkgver}/${_pkgname}-${arch[0]}-unkno
 source_aarch64=("${url}/releases/download/v${pkgver}/${_pkgname}-${arch[1]}-unknown-linux-gnu.tar.gz")
 sha256sums=('d5532d342ac8c329541cd225a66c5cfdcac577dbb400024cae4b5195ba5e95ea'
             '86a1796c1e78534bc808f4c1105972c95e3bf4014501319a6ae8230d4f515305'
-            '8a14acb3c1ca384c5a5ac6111e2acc49933e4c99dddc1a425eeb08684c287d48')
-sha256sums_x86_64=('c71cbe7853604ff6ae0f47e4ab1923c044f14540410142a88597f7221c3b54a0')
-sha256sums_aarch64=('8df9f948edd289d32e943bcc170cfae501c057d3a3773557459311efd968a32b')
+            'dbe20067050998d09567f074c1eb00495fdf3567938c9d94acd1c5974adb5131')
+sha256sums_x86_64=('7f2a06ca84598f62b1d06c009e1fed1d1e87622d6bf88aadc548f9a3d0009b44')
+sha256sums_aarch64=('de53ac6d40c55fa9066250712017caf0145b0ac9fc3d7d07bcb2fe0f91373cb4')
 
 prepare() {
   cd "${srcdir}/" || exit
