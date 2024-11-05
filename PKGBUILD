@@ -2,7 +2,7 @@
 
 pkgname=duckstation-git
 _pkgname=duckstation
-pkgver=0.1.r7423.g5540d07
+pkgver=0.1.r7851.gead9e56
 pkgdesc='A Sony PlayStation (PSX) emulator, focusing on playability, speed, and long-term maintainability (git version)'
 pkgrel=1
 arch=(x86_64 aarch64)
@@ -22,11 +22,11 @@ depends=(
     freetype2 libfreetype.so
     libzstd.so
     libz.so
+    libzip.so
     libdbus-1.so
     libcurl.so
     systemd-libs libudev.so
     hicolor-icon-theme
-    ffmpeg
 )
 makedepends=(
     git
@@ -54,6 +54,7 @@ optdepends=(
     'sndio: Small audio support'
     'alsa-lib: ALSA support'
     'jack: JACK support'
+    'ffmpeg: Video capture support'
 )
 provides=(duckstation)
 conflicts=(duckstation)
