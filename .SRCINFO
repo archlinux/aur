@@ -1,7 +1,7 @@
 pkgbase = radicle-cli-git
 	pkgdesc = Radicle command line interface
 	pkgver = 20241105.f6aa46a2
-	pkgrel = 3
+	pkgrel = 4
 	url = https://radicle.xyz
 	arch = x86_64
 	arch = aarch64

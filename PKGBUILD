@@ -3,7 +3,7 @@
 pkgname=radicle-cli-git
 _pkgname=radicle-cli
 pkgver=20241105.f6aa46a2
-pkgrel=3
+pkgrel=4
 pkgdesc="Radicle command line interface"
 arch=('x86_64' 'aarch64')
 _repoid=z3gqcJUoA1n9HaHKufZs5FCSGazv5
@@ -59,5 +59,5 @@ package() {
 	install -Dm0644 LICENSE-MIT "$pkgdir/usr/share/licenses/$pkgname/LICENSE-MIT"
 	install -Dm0644 LICENSE-APACHE "$pkgdir/usr/share/licenses/$pkgname/LICENSE-APACHE"
 
-	install -Dm0644 systemd/radicle-node.service "$pkgdir/usr/lib/systemd/system/radicle-node.service"
+	install -Dm0644 systemd/radicle-node.service "$pkgdir/usr/lib/systemd/user/radicle-node.service"
 }
