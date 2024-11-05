@@ -1,7 +1,22 @@
 # Maintainer: Christopher Kaster <me@atomicptr.de>
 # Contributor: Hanna Rose <imhxnna@gmail.com>
 
-pkgver=2024_10
+# If you read this and intend to maintain this keep in mind that the Odin release process
+# is an utter mess and you will have to update this script almost every release
+
+# How to update this:
+#     0. Change the pkgver var below
+#     1. Download the release
+#     2. get a sha256sum of it, replace the current "sha256sums" with the new one
+#     3. unzip the release, maybe there will be a dist.zip or dist.tar.gz in there, maybe not
+#     4. check what the directory is named and adjust if necessary (odin_download_dir var)
+#     5. Run the following Docker command:
+#          docker run --rm -it -v "$(pwd):/pkg" zaggash/arch-makepkg
+#     6. if it runs through correctly, update the .SRCINFO using this:
+#          docker run --rm -it --entrypoint="" -v "$(pwd):/pkg" zaggash/arch-makepkg makepkg --printsrcinfo > .SRCINFO
+
+pkgver=2024_11
+odin_download_dir="odin-linux-amd64-nightly+2024-11-04"
 
 _srcname=odin
 pkgname=odin-bin
@@ -21,27 +36,34 @@ source=(
   "https://github.com/odin-lang/Odin/releases/download/dev-$pkgver_fixed/odin-linux-amd64-dev-$pkgver_fixed.zip"
 )
 sha256sums=(
-  "785dcae8bc51dc7a10d2373d5ce8b308fcbde7d4f37668f2be60951c8b56e6b5"
+  "fcc412473ab94f15999c8f6f84d88dc1b47b1e9f3b94c27e6eaf4ff9ae671a3d"
 )
 
 build() {
-  cd "${srcdir}/odin-linux-amd64-dev-${pkgver_fixed}/"
+  if [[ -f "dist.zip" ]]; then
+    unzip dist.zip
+  fi
+
+  if [[ -f "dist.tar.gz" ]]; then
+    tar xvf dist.tar.gz
+  fi
+
+  cd "${srcdir}/${odin_download_dir}/"
   chmod +x odin
 
-  # this time odin forgot to add the SO (maybe intentional?)
-  cp /usr/lib/libLLVM-18.so "${srcdir}/odin-linux-amd64-dev-${pkgver_fixed}/libLLVM-18.so.18.1"
+  cp /usr/lib/libLLVM-18.so "${srcdir}/${odin_download_dir}/libLLVM-18.so.18.1"
 
   # build libs
-  cd "${srcdir}/odin-linux-amd64-dev-${pkgver_fixed}/vendor/cgltf/src" && make
-  cd "${srcdir}/odin-linux-amd64-dev-${pkgver_fixed}/vendor/miniaudio/src" && make
-  cd "${srcdir}/odin-linux-amd64-dev-${pkgver_fixed}/vendor/stb/src" && make
+  cd "${srcdir}/${odin_download_dir}/vendor/cgltf/src" && make
+  cd "${srcdir}/${odin_download_dir}/vendor/miniaudio/src" && make
+  cd "${srcdir}/${odin_download_dir}/vendor/stb/src" && make
 }
 
 package() {
   install -d "${pkgdir}/usr/bin"
   install -d "${pkgdir}/usr/lib/${_srcname}"
 
-  cd "${srcdir}/odin-linux-amd64-dev-${pkgver_fixed}/"
+  cd "${srcdir}/${odin_download_dir}/"
 
   cp odin "${pkgdir}/usr/lib/${_srcname}/odin"
   cp libLLVM-18.so.18.1 "${pkgdir}/usr/lib/${_srcname}/libLLVM-18.so.18.1"
@@ -59,12 +81,6 @@ package() {
 }
 
 check() {
-  cd "${srcdir}/odin-linux-amd64-dev-${pkgver_fixed}"
-  ODIN_ROOT="${srcdir}/odin-linux-amd64-dev-${pkgver_fixed}" ./odin check examples/all -strict-style
+  cd "${srcdir}/${odin_download_dir}"
+  ODIN_ROOT="${srcdir}/${odin_download_dir}" ./odin check examples/all -strict-style
 }
-
-# Building this package in a clean docker env:
-#    docker run --rm -it -v "$(pwd):/pkg" zaggash/arch-makepkg
-
-# Update .SRCINFO
-#    docker run --rm -it --entrypoint="" -v "$(pwd):/pkg" zaggash/arch-makepkg makepkg --printsrcinfo > .SRCINFO
