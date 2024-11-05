@@ -1,0 +1,3 @@
+[python-os-traits]
+source = "git"
+git = "https://opendev.org/openstack/os-traits.git"

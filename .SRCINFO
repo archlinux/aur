@@ -1,6 +1,6 @@
 pkgbase = python-os-traits
 	pkgdesc = A library containing standardized trait strings. Used by placement service and clients to ensure consistency
-	pkgver = 3.1.0
+	pkgver = 3.2.0
 	pkgrel = 1
 	url = https://opendev.org/openstack/os-traits
 	arch = any
@@ -19,7 +19,7 @@ pkgbase = python-os-traits
 	depends = python
 	depends = python-pbr
 	depends = python-oslotest
-	source = python-os-traits-3.1.0.tar.gz::https://opendev.org/openstack/os-traits/archive/3.1.0.tar.gz
-	b2sums = cdedbf78cf81a75333c2182cb8463f82adb05a075732bf33b449daf811359a7ced0419668a4f5b4df52f92f6cf86600935cd93077dff5466fcc7005326855bd2
+	source = python-os-traits-3.2.0.tar.gz::https://opendev.org/openstack/os-traits/archive/3.2.0.tar.gz
+	b2sums = 90b1e09f3eb43127f46d93a74feef60a78f6a6e9f62ebc57da02c431c883bb63b8f92810ea389021bf62f45f673522821bf5c2e5036103137ebe010bf272f650
 
 pkgname = python-os-traits
