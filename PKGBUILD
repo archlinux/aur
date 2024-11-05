@@ -3,10 +3,11 @@ pkgname=elastron-bin
 _pkgname=Elastron
 pkgver=1.5.1
 _electronversion=32
-pkgrel=1
-pkgdesc="Elasticsearch Desktop GUI Client(Prebuilt version.Use system-wide electron)."
+pkgrel=2
+pkgdesc="Full featured elasticsearch client(Prebuilt version.Use system-wide electron)."
 arch=('x86_64')
-url="https://github.com/antonkorotkov/elastron"
+url="https://elastron.eney.solutions/"
+_ghurl="https://github.com/antonkorotkov/elastron"
 license=('AGPL-3.0-only')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
@@ -17,7 +18,7 @@ makedepends=(
     'fuse2'
 )
 source=(
-    "${pkgname%-bin}-${pkgver}.AppImage::${url}/releases/download/${pkgver}/${_pkgname}-${pkgver}.AppImage"
+    "${pkgname%-bin}-${pkgver}.AppImage::${_ghurl}/releases/download/${pkgver}/${_pkgname}-${pkgver}.AppImage"
     "${pkgname%-bin}.sh"
 )
 sha256sums=('1cccc17b5cd2213280fa35e0511acf686653702d79a26fe081a692b99280ddd7'
