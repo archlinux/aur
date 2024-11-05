@@ -2,7 +2,7 @@
 
 pkgname=mediamtx-bin
 pkgver=1.9.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Also known as rtsp-simple-server. Ready-to-use RTSP / RTMP / LL-HLS / WebRTC server and proxy that allows to read, publish and proxy video and audio streams'
 arch=('x86_64' 'armv7h' 'aarch64')
 url="https://github.com/bluenviron/${pkgname%-bin}"
@@ -15,6 +15,7 @@ source=(
 	"${pkgname%-bin}.sysusers"
 	"${pkgname%-bin}.tmpfiles"
 	"${pkgname%-bin}.service"
+	"${pkgname%-bin}@.service"
 )
 
 source_x86_64=("$url/releases/download/v$pkgver/${pkgname%-bin}_v${pkgver}_linux_amd64.tar.gz")
@@ -25,6 +26,7 @@ sha256sums=(
 	'fbae4d196086e770a0a4f10ac03b1e4180517381bbc03d9acc16b6d4f7fe3a71'
 	'22b549d42f74e18ba8ee054248a447fd406dabe77f280766588ece12e1846b5c'
 	'7e3736dfad3141a3f263fb29a05885670961f07dfbdad8bdbb5de41e3433f3b0'
+	'80442dadb22e57529b456c76bf33ac364cd022f134fc5290dc54a7e2f8378124'
 )
 
 sha256sums_x86_64=('0b885dbfa4ef9c14cd00191c57d90d804255ff50403a28b85ceee7988c535b60')
@@ -44,4 +46,5 @@ package() {
 	install -Dm644 "$srcdir/${pkgname%-bin}.tmpfiles" "$pkgdir/usr/lib/tmpfiles.d/$pkgname.conf"
 
 	install -Dm644 "$srcdir/${pkgname%-bin}.service" "$pkgdir/usr/lib/systemd/system/${pkgname%-bin}.service"
+	install -Dm644 "$srcdir/${pkgname%-bin}@.service" "$pkgdir/usr/lib/systemd/system/${pkgname%-bin}@.service"
 }
