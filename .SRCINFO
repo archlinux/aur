@@ -8,6 +8,7 @@ pkgbase = mud-git
 	makedepends = python-build
 	makedepends = python-setuptools
 	makedepends = python-setuptools-scm
+	makedepends = python-hatchling
 	makedepends = git
 	depends = python
 	depends = python-prettytable
