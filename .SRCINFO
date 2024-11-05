@@ -11,6 +11,7 @@ pkgbase = mud-git
 	makedepends = git
 	depends = python
 	depends = python-prettytable
+	depends = git
 	source = mud-git::git+https://github.com/jasursadikov/mud.git#tag=v1.0.4
 	md5sums = SKIP
 
