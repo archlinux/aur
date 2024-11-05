@@ -2,26 +2,26 @@
 # Contributor: Gunnar Bretthauer <taijian@posteo.de>
 
 pkgname=duplicacy
-pkgver=3.2.3
-pkgrel=2
+pkgver=3.2.4
+pkgrel=1
 pkgdesc="A new generation cloud backup tool based on lock-free deduplication"
 arch=('x86_64' 'i686')
 url="https://duplicacy.com/"
 license=('custom')
 depends=('glibc')
 makedepends=('go' 'git')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/gilbertchen/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('8c8e30fb24a60e1a2c0cc11e0f408114163d6d911c7824000913fec88f31e32e')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/gilbertchen/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('07e9dd3c9a54b455474939a2ff0a08808074cfd74691b826fdbdf4e3e35201cc')
 
 export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
   
 prepare() {
-  cd "$pkgname-$pkgver/$pkgname"
+ cd "$pkgname-$pkgver/$pkgname"
 
-  mkdir -p "src/github.com/gilbertchen"
-  ln -sf "$srcdir/$pkgname-$pkgver" "src/github.com/gilbertchen/$pkgname"
+ mkdir -p "src/github.com/gilbertchen"
+ ln -sf "$srcdir/$pkgname-$pkgver" "src/github.com/gilbertchen/$pkgname"
 
-  GOPATH="$srcdir/$pkgname-$pkgver/$pkgname" go get -d -v
+ GOPATH="$srcdir/$pkgname-$pkgver/$pkgname" go get -d -v
 }
 
 build() {
