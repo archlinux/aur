@@ -1,6 +1,6 @@
 pkgbase = mounriver-studio-toolchain-bin
 	pkgver = 1.92
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.mounriver.com/
 	arch = x86_64
 	license = GPL2
@@ -18,7 +18,7 @@ pkgbase = mounriver-studio-toolchain-bin
 	provides = MRS-Toolchain
 	noextract = mounriver-studio-toolchain-bin-1.92.tar.xz
 	options = !strip
-	source = mounriver-studio-toolchain-bin-1.92.tar.xz::http://file.mounriver.com/tools/MRS_Toolchain_Linux_x64_V1.92.tar.xz
+	source = mounriver-studio-toolchain-bin-1.92.tar.xz::http://file-oss.mounriver.com/tools/MRS_Toolchain_Linux_x64_V1.92.tar.xz
 	sha256sums = 33e0dd7581a2eea25bc5d1aa2c31f5c8b316e543b954d84f9e1ffc5999e93fea
 
 pkgname = mounriver-studio-toolchain-bin

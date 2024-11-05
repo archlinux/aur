@@ -3,7 +3,7 @@
 pkgbase=mounriver-studio-toolchain-bin
 pkgname=($pkgbase mounriver-studio-toolchain-openocd-bin mounriver-studio-toolchain-riscv-gcc-bin mounriver-studio-toolchain-riscv-gcc12-bin)
 pkgver=1.92
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url='http://www.mounriver.com/'
 license=('GPL2' 'GPL3' 'custom')
@@ -17,7 +17,7 @@ optdepends=('ch34x-dkms-git: CH341SER driver with fixed bug'
     'ch341eeprom-git: A libusb based programming tool for 24xx I²C EEPROMs using the WCH CH341A'
     'ch343ser-dkms: USB serial driver for ch342/ch343/ch344/ch347/ch347f/ch9101/ch9102/ch9103/ch9104, etc (dkms).'
     'wchisp: WCH ISP Tool in Rust')
-source=("${pkgbase}-${pkgver}.tar.xz::http://file.mounriver.com/tools/MRS_Toolchain_Linux_x64_V${pkgver}.tar.xz")
+source=("${pkgbase}-${pkgver}.tar.xz::http://file-oss.mounriver.com/tools/MRS_Toolchain_Linux_x64_V${pkgver}.tar.xz")
 sha256sums=('33e0dd7581a2eea25bc5d1aa2c31f5c8b316e543b954d84f9e1ffc5999e93fea')
 options=('!strip')
 noextract=(${pkgbase}-${pkgver}.tar.xz)
