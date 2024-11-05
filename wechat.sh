@@ -408,7 +408,6 @@ function dbusProxy() {
 }
 
 function execAppUnsafe() {
-	killall wechat
 	systemd-run --user \
 		-p EnvironmentFile=/usr/lib/wechat/envs \
 		--tty \
