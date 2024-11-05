@@ -1,0 +1,11 @@
+[Unit]
+Description=Geph5 client Service for user.
+After=network.target nss-lookup.target
+
+[Service]
+ExecStart=/usr/bin/geph5-client -c %h/.config/geph5-client/config.yml
+Restart=on-abort
+
+[Install]
+WantedBy=default.target
+

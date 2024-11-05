@@ -1,0 +1,23 @@
+pkgbase = geph5-client
+	pkgdesc = The command-line Geph5 client
+	pkgver = 0.2.14
+	pkgrel = 1
+	url = https://github.com/geph-official/geph5
+	arch = x86_64
+	license = MPL-2.0
+	makedepends = cargo
+	depends = gcc-libs
+	depends = glibc
+	provides = geph5-client
+	conflicts = geph5-client-git
+	backup = etc/geph5-client/config.yml
+	source = geph5-client-0.2.14.tar.gz::https://static.crates.io/crates/geph5-client/geph5-client-0.2.14.crate
+	source = config.yml
+	source = geph5-client.user.service
+	source = geph5-client.service
+	md5sums = 846a6972ea7aa1bd6254487b6dc042aa
+	md5sums = 6ab04b99d6def04c2d6a06c4ba037f8e
+	md5sums = 186cca941b1c4a510a71bf79a0ef8921
+	md5sums = d922cdc2a992ee2cd4241808fa30aba1
+
+pkgname = geph5-client

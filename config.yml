@@ -1,0 +1,13 @@
+socks5_listen: 127.0.0.1:9999
+http_proxy_listen: 127.0.0.1:19999
+passthrough_china: false
+exit_constraint: auto
+broker:
+  fronted:
+    front: https://www.cdn77.com/
+    host: 1826209743.rsc.cdn77.org
+credentials:
+  legacy_username_password:
+    username: username
+    password: password
+
