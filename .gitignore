@@ -1,0 +1,5 @@
+pkg/
+src/
+dfjpverb-*.pkg.tar.*
+dfjpverb-*.src.tar.gz
+dfjpverb-*-source.tar.gz
