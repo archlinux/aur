@@ -3,7 +3,7 @@
 pkgname=nerdtree-git-plugin-git
 _pkgname="${pkgname%-git}"
 pkgver=r149.e1fe727
-pkgrel=1
+pkgrel=2
 pkgdesc="A plugin of NERDTree showing git status"
 url="https://github.com/Xuyuanp/nerdtree-git-plugin"
 arch=('any') 
@@ -24,8 +24,8 @@ pkgver() {
 prepare() {
 	cd "${_pkgname}"
 
-	# Rollback the git_status.vim to a state where it is now working
-	# (git_status.vim in current HEAD/main is severely broken)
+	# Rollback the git_status.vim file to a known working state (rollback to commit db33cfa4d3c066ee9e204f65cf13090b21978001)
+	# git_status.vim in current HEAD/main is severely broken...
 	patch -Np1 < "${srcdir}/rollback_git_status-vim.patch"
 }
 

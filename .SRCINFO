@@ -1,7 +1,7 @@
 pkgbase = nerdtree-git-plugin-git
 	pkgdesc = A plugin of NERDTree showing git status
 	pkgver = r149.e1fe727
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Xuyuanp/nerdtree-git-plugin
 	arch = any
 	license = LicenseRef-WTFPL
