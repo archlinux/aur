@@ -1,14 +1,14 @@
 # Maintainer: Zoe Eisendle <zoe.pkgbuild@astech.hu>
 pkgname=mptcpd
-pkgver=0.12
+pkgver=0.13
 pkgrel=0
 pkgdesc="Multipath TCP daemon"
-url="https://github.com/intel/mptcpd"
+url="https://github.com/multipath-tcp/mptcpd"
 arch=('any')
 license=('GPL2')
 depends=('ell')
 source=("$url/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz")
-sha512sums=('313ce6f3905192fc614d419d498bfd814632730a50e3119039f076b4cec32360424f237a18cfec8c80a52ea6555a6e21949669ccb85e3178bd83748a2de66f73')
+sha512sums=('5dd53c9e1c92a3242ad84d93642116e77acb24c997219c98fe30a4c6d80b283de8878bcc84a6ac4eaf51ff6dd32cff5ed2a40a869c8304faa835f3b300dbca37')
 
 build() {
 	cd "$pkgname-$pkgver"
