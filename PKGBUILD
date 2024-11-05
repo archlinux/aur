@@ -2,7 +2,7 @@
 
 pkgname=qt5-webengine-widevine
 pkgdesc='A browser plugin designed for the viewing of premium video content (E.g. Spotify)'
-pkgver=112.0.5615.49
+pkgver=130.0.6723.91
 pkgrel=1
 arch=('x86_64')
 url='https://www.widevine.com/'
@@ -10,7 +10,7 @@ license=('custom')
 depends=('qt5-webengine')
 options=('!strip')
 source=("https://dl.google.com/linux/deb/pool/main/g/google-chrome-stable/google-chrome-stable_${pkgver}-1_amd64.deb")
-sha256sums=('b1e4e9080d12911f54c0f3ba6a4061510a79e6984ddcae6752174daffcba054b')
+sha256sums=('df4470b4b954e0686a0e16c74d932aae287bedddb2385788062386dc2ba0bcba')
 
 prepare() {
   bsdtar -x --strip-components 7 -f data.tar.xz opt/google/chrome/WidevineCdm/_platform_specific/linux_x64/libwidevinecdm.so
