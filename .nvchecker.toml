@@ -1,0 +1,3 @@
+[python-neutron-lib]
+source = "git"
+git = "https://opendev.org/openstack/neutron-lib.git"
