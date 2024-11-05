@@ -1,10 +1,10 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=comet-bin
 _pkgname=Comet
-pkgver=2.2.2
+pkgver=2.2.3
 _electronversion=33
 pkgrel=1
-pkgdesc="☄️ A cross-platform app powered by FFmpeg for easy, beautiful video conversion. Free, user-friendly, and in development with bulk uploads and customizable output settings.Prebuilt version.Use system-wide electron."
+pkgdesc="☄️ A cross-platform app powered by FFmpeg for easy, beautiful video conversion. Free, user-friendly, and in development with bulk uploads and customizable output settings.(Prebuilt version.Use system-wide electron.)"
 arch=(
     'aarch64'
     'x86_64'
@@ -20,11 +20,11 @@ depends=(
 source=(
     "${pkgname%-bin}.sh"
 )
-source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_arm64.deb")
-source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb")
+source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-1.arm64.rpm")
+source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-1.x86_64.rpm")
 sha256sums=('291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-sha256sums_aarch64=('563abc40ad19390d90f3f5a93dfe3f00dd9e62fed77c36498de30538e8fb0bec')
-sha256sums_x86_64=('d7e65473ffbdf57d7cf53e36e0eae707a3e43029a30e598a139007e2a3c3c86b')
+sha256sums_aarch64=('c1596b6424d19b91a8cdd53c6a871a039b06bf40a4355e8d9fe95370841f33f3')
+sha256sums_x86_64=('b6555d7ef2ed7cc5d064a8b4491787c01bdfd2da7bddd0c54acf54bb92e5a9dc')
 build() {
     sed -e "
         s/@electronversion@/${_electronversion}/g
@@ -33,7 +33,6 @@ build() {
         s/@cfgdirname@/${_pkgname}/g
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
     " -i "${srcdir}/${pkgname%-bin}.sh"
-    bsdtar -xf "${srcdir}/data."*
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"

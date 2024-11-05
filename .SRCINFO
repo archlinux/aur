@@ -1,19 +1,19 @@
 pkgbase = comet-bin
-	pkgdesc = ☄️ A cross-platform app powered by FFmpeg for easy, beautiful video conversion. Free, user-friendly, and in development with bulk uploads and customizable output settings.Prebuilt version.Use system-wide electron.
-	pkgver = 2.2.2
+	pkgdesc = ☄️ A cross-platform app powered by FFmpeg for easy, beautiful video conversion. Free, user-friendly, and in development with bulk uploads and customizable output settings.(Prebuilt version.Use system-wide electron.)
+	pkgver = 2.2.3
 	pkgrel = 1
 	url = https://comet.thavarshan.com/
 	arch = aarch64
 	arch = x86_64
 	license = MIT
 	depends = electron33
-	provides = comet=2.2.2
+	provides = comet=2.2.3
 	conflicts = comet
 	source = comet.sh
 	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
-	source_aarch64 = comet-2.2.2-aarch64.deb::https://github.com/Thavarshan/comet/releases/download/v2.2.2/comet_2.2.2_arm64.deb
-	sha256sums_aarch64 = 563abc40ad19390d90f3f5a93dfe3f00dd9e62fed77c36498de30538e8fb0bec
-	source_x86_64 = comet-2.2.2-x86_64.deb::https://github.com/Thavarshan/comet/releases/download/v2.2.2/comet_2.2.2_amd64.deb
-	sha256sums_x86_64 = d7e65473ffbdf57d7cf53e36e0eae707a3e43029a30e598a139007e2a3c3c86b
+	source_aarch64 = comet-2.2.3-aarch64.rpm::https://github.com/Thavarshan/comet/releases/download/v2.2.3/comet-2.2.3-1.arm64.rpm
+	sha256sums_aarch64 = c1596b6424d19b91a8cdd53c6a871a039b06bf40a4355e8d9fe95370841f33f3
+	source_x86_64 = comet-2.2.3-x86_64.rpm::https://github.com/Thavarshan/comet/releases/download/v2.2.3/comet-2.2.3-1.x86_64.rpm
+	sha256sums_x86_64 = b6555d7ef2ed7cc5d064a8b4491787c01bdfd2da7bddd0c54acf54bb92e5a9dc
 
 pkgname = comet-bin
