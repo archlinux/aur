@@ -1,7 +1,7 @@
 pkgbase = python-decli
 	pkgdesc = Minimal, easy to use, declarative command line interface tool
 	pkgver = 0.6.2
-	pkgrel = 0
+	pkgrel = 1
 	url = https://github.com/Woile/decli
 	arch = any
 	license = MIT

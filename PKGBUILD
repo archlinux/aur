@@ -1,7 +1,7 @@
-#!/bin/bash
+# Maintainer: Daringcuteseal <daringcuteseal@gmail.com>
 pkgname=python-decli
 pkgver=0.6.2
-pkgrel=0
+pkgrel=1
 pkgdesc="Minimal, easy to use, declarative command line interface tool"
 arch=('any')
 url="https://github.com/Woile/decli"
