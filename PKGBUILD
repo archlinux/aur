@@ -12,7 +12,7 @@ depends=('python')
 makedepends=('git' 'python-build' 'python-installer' 'python-wheel' 'python-setuptools')
 source=("$pkgname::git+$url.git")
 sha256sums=('SKIP')
-provides=('python-pysubs2')
+provides=('python-pysubs2=1.7.3')
 conflicts=('python-pysubs2')
 
 pkgver() {

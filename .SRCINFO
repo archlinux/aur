@@ -11,7 +11,7 @@ pkgbase = python-pysubs2-git
 	makedepends = python-wheel
 	makedepends = python-setuptools
 	depends = python
-	provides = python-pysubs2
+	provides = python-pysubs2=1.7.3
 	conflicts = python-pysubs2
 	source = python-pysubs2-git::git+https://github.com/tkarabela/pysubs2.git
 	sha256sums = SKIP
