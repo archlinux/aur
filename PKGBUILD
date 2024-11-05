@@ -6,7 +6,7 @@
 
 pkgname=btrfs-progs-git
 _gitname=${pkgname%-git}
-pkgver=6994_6.7.1_r0_g60abf7a9
+pkgver=7318_6.11_r0_g8859114e
 pkgrel=1
 pkgdesc="Btrfs filesystem utilities"
 arch=("i686" "x86_64")
@@ -55,6 +55,7 @@ build() {
   cd ${_gitname}
   ./configure --prefix=/usr
   make
+  make hash-speedtest
 }
 
 package() {
@@ -71,6 +72,9 @@ package() {
   
   # install bash completion
   install -Dm644 btrfs-completion "${pkgdir}/usr/share/bash-completion/completions/btrfs"
+
+  # install hash-speedtest
+  install -Dm755 hash-speedtest "${pkgdir}/usr/bin/hash-speedtest"
 }
 
 check() {
