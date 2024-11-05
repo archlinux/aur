@@ -1,0 +1,24 @@
+pkgbase = projectforge-bin
+	pkgdesc = Project Forge helps you build applications with Go(Prebuilt version).
+	pkgver = 1.5.25
+	pkgrel = 1
+	url = https://projectforge.dev/
+	arch = aarch64
+	arch = armv7h
+	arch = i686
+	arch = x86_64
+	license = MIT
+	provides = projectforge=1.5.25
+	conflicts = projectforge
+	source = LICENSE-1.5.25.md::https://raw.githubusercontent.com/kyleu/projectforge/v1.5.25/LICENSE.md
+	sha256sums = c13f88f8f26e1959cebd757842d7c7b067c7ec10a637fed994ccf7f6f6d6763e
+	source_aarch64 = projectforge-1.5.25-aarch64.rpm::https://github.com/kyleu/projectforge/releases/download/v1.5.25/projectforge_1.5.25_linux_arm64.rpm
+	sha256sums_aarch64 = a2fb7f4332e2ad7a6ba4ef9270b132b867acd1cd48a3562994401c44919c1a20
+	source_armv7h = projectforge-1.5.25-armv7h.rpm::https://github.com/kyleu/projectforge/releases/download/v1.5.25/projectforge_1.5.25_linux_armv7.rpm
+	sha256sums_armv7h = 30930fc14fec5e7e8ead8dc7a047639da9ab03b3d7dbecff79b196e3d60314e7
+	source_i686 = projectforge-1.5.25-i686.rpm::https://github.com/kyleu/projectforge/releases/download/v1.5.25/projectforge_1.5.25_linux_386.rpm
+	sha256sums_i686 = 9edc69bb529108b15aa5f580888a49cb4164d4eb93aaa987b0b105fe73b808d6
+	source_x86_64 = projectforge-1.5.25-x86_64.rpm::https://github.com/kyleu/projectforge/releases/download/v1.5.25/projectforge_1.5.25_linux_amd64.rpm
+	sha256sums_x86_64 = eb481379f4f138cf2f3982f858833d24b583f8e4380d40fc00369ad5d7455c1c
+
+pkgname = projectforge-bin
