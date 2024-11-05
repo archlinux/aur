@@ -1,7 +1,8 @@
-# Maintainer: éclairevoyant
+# Maintainer: envolution
+# Contributor: éclairevoyant
 
 pkgname=owncast
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 pkgdesc='Self-hosted live video streaming (chat included)'
 url="https://github.com/owncast/$pkgname"
@@ -9,8 +10,16 @@ arch=(x86_64)
 license=(MIT)
 depends=(glibc)
 makedepends=(git go)
-source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-b2sums=('d173461004599788698bfd241e0522cfcda462ac6977abfff1a2a4b42ad908457dbf60e27f0fa1135e6afde2c9f4ef40ac6b4bf61ea086c52b94347b4a913472')
+source=(
+    "$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
+    owncast.tempfiles.conf
+    owncast.users.conf
+    owncast.service
+)
+b2sums=('7028f7a4dd1e93fb50216f3729383e13e6cd610f36cd003d2c17129121dc9f1406bcc1c6c47dd239ca162d14534401d256b2917c27cc98a9d17a9fb5719fd4fc'
+        '4cfc8fff50a032f849eea3ff2b1193f5d1cf3c2f5ed995621c63b2cf273af4298271941f27f2aa3c6bc96d2cc3262da1f65f3d251f973aa5fe0cbbfe824f0042'
+        '157be9c742c578f9096b32b877dae28627783f55bf6c5ca575bfa60b8b329c3096e4e1ebacc2b1eac7f6804fa6692dac89360d4160921f867a1a3f14954b3d4a'
+        '4466d8017f264a7b7be432418ac6ba76c610459754ca85f10403a8f4577227588c26911738e3726349c3cdf1c041219a3c4d6840bfa4959f965678dfb97343ef')
 options=(emptydirs)
 install=$pkgname.install
 
@@ -26,34 +35,10 @@ build() {
 }
 
 package() {
+	install -vDm644 $pkgname.service        "$pkgdir/usr/lib/systemd/system/$pkgname.service" 
+    install -vDm644 $pkgname.users.conf     "$pkgdir/usr/lib/sysusers.d/$pkgname.conf"
+	install -vDm644 $pkgname.tempfiles.conf "$pkgdir/usr/lib/tmpfiles.d/$pkgname.conf"
 	cd $pkgname-$pkgver
-	install -vDm755 $pkgname -t "$pkgdir/usr/bin/"
-	install -vDm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
-	install -vDm644 /dev/stdin "$pkgdir/usr/lib/systemd/system/$pkgname.service" <<eof
-[Unit]
-Description=Owncast Service
-
-[Service]
-Type=simple
-User=owncast
-Group=owncast
-WorkingDirectory=/var/lib/$pkgname/
-ExecStart=/usr/bin/$pkgname
-Restart=on-failure
-RestartSec=5
-
-[Install]
-WantedBy=multi-user.target
-eof
-
-install -vDm644 /dev/stdin "$pkgdir/usr/lib/sysusers.d/$pkgname.conf" <<eof
-# Type  Name    ID GECOS HomeDir          Shell
-u       $pkgname -  -     /var/lib/$pkgname -
-eof
-
-	install -vDm644 /dev/stdin "$pkgdir/usr/lib/tmpfiles.d/$pkgname.conf" <<eof
-# Type Path                               Mode User    Group   Age Argument
-d      /var/lib/$pkgname            0700 $pkgname $pkgname -   -
-eof
-
+	install -vDm755 $pkgname -t             "$pkgdir/usr/bin/"
+	install -vDm644 LICENSE -t              "$pkgdir/usr/share/licenses/$pkgname/"
 }
