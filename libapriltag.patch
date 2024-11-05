@@ -1,0 +1,40 @@
+diff --git a/dt_apriltags/apriltags.py b/dt_apriltags/apriltags.py
+index 271d569..64b9829 100644
+--- a/dt_apriltags/apriltags.py
++++ b/dt_apriltags/apriltags.py
+@@ -232,33 +232,14 @@ class Detector(object):
+         self.params['decode_sharpening'] = decode_sharpening
+         self.params['debug'] = debug
+ 
+-        # detect OS to get extension for DLL
+-        uname0 = os.uname()[0]
+-        if uname0 == 'Darwin':
+-            extension = '.dylib'
+-        else:
+-            extension = '.so'
+-
+-        filename = 'libapriltag' + extension
+-
+         self.libc = None
+         self.tag_detector = None
+         self.tag_detector_ptr = None
+ 
+-        for path in searchpath:
+-            relpath = os.path.join(os.path.dirname(__file__), path, filename)
+-            if os.path.exists(relpath):
+-                self.libc = ctypes.CDLL(relpath)
+-                break
+-
+-        # if full path not found just try opening the raw filename;
+-        # this should search whatever paths dlopen is supposed to
+-        # search.
+-        if self.libc is None:
+-            self.libc = ctypes.CDLL(os.path.join(os.path.dirname(__file__), filename))
++        self.libc = ctypes.CDLL("/usr/lib/libapriltag.so")
+ 
+         if self.libc is None:
+-            raise RuntimeError('could not find DLL named ' + filename)
++            raise RuntimeError('could not find DLL')
+ 
+         # create the c-_apriltag_detector object
+         self.libc.apriltag_detector_create.restype = ctypes.POINTER(_ApriltagDetector)

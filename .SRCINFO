@@ -1,0 +1,19 @@
+pkgbase = python-dt-apriltags-git
+	pkgdesc = Duckietown python bindings to the apriltag library
+	pkgver = 3.4.2.r26.gbcf530b
+	pkgrel = 1
+	url = https://github.com/duckietown/lib-dt-apriltags
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	depends = apriltag
+	depends = python-numpy
+	provides = python-dt-apriltags
+	conflicts = python-dt-apriltags
+	source = dt-apriltags::git+https://github.com/duckietown/lib-dt-apriltags.git
+	source = libapriltag.patch
+	sha512sums = SKIP
+	sha512sums = b1b3c22366265bc02aa04a367bab5423a5b20fdb76f792886cefa5ec0b3e076b40e339a3ebfd2e7b6fc2f769660bb696fbd8131c280e97d344829488ba7a6377
+
+pkgname = python-dt-apriltags-git
