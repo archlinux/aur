@@ -1,7 +1,7 @@
 # Maintainer: sukanka <su975853527@gmail.com>
 
 _pkgname=coro
-_pkgver=1.0.5
+_pkgver=1.1.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -22,8 +22,8 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('43de2145fa31d857e57ba72800c114cb')
-b2sums=('b51ce96d1bb2846eee9a6d9f8e81e2b7701caf3ed0a76939a0d600ed7de4ab3d75b8a5fc8c64692f8fa7e8fd918f1b20d5941b9d803489a44a1f9797563ed7ef')
+md5sums=('7098e0517f4d67246c3d6db5f3ddffb4')
+b2sums=('9a31369e919d5a378800c7f30bff8e0cbc9bfc93d42e3bbb3b8efa1ec04b8d4b1fe5ee2a9a2def35134777e32c8b24d7599b5540a0a2627c5f9173407b67a13f')
 
 build() {
   mkdir build
