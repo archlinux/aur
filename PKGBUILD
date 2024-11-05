@@ -28,8 +28,8 @@ sha256sums=('SKIP')
 
 prepare() {
   cd bump
-  git config --global user.email "pony@arch"
-  git config --global user.name "Lucky Pony"
+  git config user.email "pony@arch"
+  git config user.name "Lucky Pony"
 }
 
 build() {
