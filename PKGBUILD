@@ -1,28 +1,29 @@
-# Maintainer: Élie Bouttier <elie+aur@bouttier.eu>
+# Maintainer: Radu Potop <radu@wooptoo.com>
+# Contributor: Élie Bouttier <elie+aur@bouttier.eu>
 # Contributor: Jakob Gahde <j5lx@fmail.co.uk>
 
+basename='rq'
 pkgname='python-rq'
-pkgver=1.15.1
-_ver="${pkgver%.*}"
+pkgver=2.0
 pkgrel=1
 pkgdesc="Simple job queues for Python"
-arch=('any')
-license=('BSD')
+arch=(any)
+license=("BSD")
 url="https://github.com/rq/rq"
-makedepends=('python-setuptools')
+makedepends=("python-build" "python-installer")
 depends=('python' 'python-click' 'python-redis')
-source=("$pkgname-$pkgver.tar.gz::${url}/archive/refs/tags/v${_ver}.tar.gz")
-sha256sums=('9cf9baa6dd1fa9bdaf01f8bb86960927de389b1f679afc5f928753151f90c382')
+source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
+
+build() {
+    cd "$srcdir/$basename-$pkgver"
+    python -m build --wheel --no-isolation
+}
 
 package() {
-    cd "${srcdir}/rq-${_ver}"
-
-    python setup.py install --root="${pkgdir}" -O1
-    mv "${pkgdir}/usr/bin/rq"{,3}
-    mv "${pkgdir}/usr/bin/rqinfo"{,3}
-    mv "${pkgdir}/usr/bin/rqworker"{,3}
-    ln -s "/usr/bin/rq3" "${pkgdir}/usr/bin/rq"
-    ln -s "/usr/bin/rqinfo3" "${pkgdir}/usr/bin/rqinfo"
-    ln -s "/usr/bin/rqworker3" "${pkgdir}/usr/bin/rqworker"
+    cd "$srcdir/$basename-$pkgver"
+    python -m installer --destdir="$pkgdir" dist/*.whl
     install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
+
+
+sha256sums=('d9ad23f25e5e8c53198000ae376d84b8f69458344a4e863942a194e96afe93bd')
