@@ -2,11 +2,11 @@
 # Contributor: Richard Neumann aka. schard <mail at richard dash neumann period de>
 
 pkgname='omada-controller'
-pkgver=5.14.26.1
-pkgrel=2
+pkgver=5.14.32.3
+pkgrel=1
 pkgdesc='Omada SDN Controller'
 _basepkgname='Omada_SDN_Controller'
-_basepkgpath='upload/software/2024/202407/20240710'
+_basepkgpath='upload/software/2024/202411/20241101'
 _baseos='linux_x64'
 arch=('x86_64')
 url='https://www.tp-link.com/us/support/download/omada-software-controller/#Controller_Software'
@@ -19,7 +19,7 @@ source=(
     "https://static.tp-link.com/${_basepkgpath}/${_basepkgname}_v${pkgver}_${_baseos}.tar.gz"
     "git+http://github.com/murtuzaakhtari/omada-controller-scripts.git"
 )
-sha256sums=('8554256c54c2705a086c10da8c239d6e0de6dce8179c87a3dce0656c72f7ef81'
+sha256sums=('04d0f34e2c4e7604629ae055d9ee61a6b1bb76c043869a82709b0aeb380e7132'
             'SKIP')
 
 package() {

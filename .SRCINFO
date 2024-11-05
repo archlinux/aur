@@ -1,7 +1,7 @@
 pkgbase = omada-controller
 	pkgdesc = Omada SDN Controller
-	pkgver = 5.14.26.1
-	pkgrel = 2
+	pkgver = 5.14.32.3
+	pkgrel = 1
 	url = https://www.tp-link.com/us/support/download/omada-software-controller/#Controller_Software
 	arch = x86_64
 	license = custom
@@ -12,9 +12,9 @@ pkgbase = omada-controller
 	depends = mongodb>=3
 	depends = mongodb<5
 	conflicts = omada-sdn-controller
-	source = https://static.tp-link.com/upload/software/2024/202407/20240710/Omada_SDN_Controller_v5.14.26.1_linux_x64.tar.gz
+	source = https://static.tp-link.com/upload/software/2024/202411/20241101/Omada_SDN_Controller_v5.14.32.3_linux_x64.tar.gz
 	source = git+http://github.com/murtuzaakhtari/omada-controller-scripts.git
-	sha256sums = 8554256c54c2705a086c10da8c239d6e0de6dce8179c87a3dce0656c72f7ef81
+	sha256sums = 04d0f34e2c4e7604629ae055d9ee61a6b1bb76c043869a82709b0aeb380e7132
 	sha256sums = SKIP
 
 pkgname = omada-controller
