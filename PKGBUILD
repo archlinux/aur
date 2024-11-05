@@ -24,12 +24,12 @@ source=("git+${url}.git")
 md5sums=('SKIP')
 
 build() {
-    cd "$srcdir/$pkgname"
+    cd "$srcdir/mud"
     python -m build --wheel --no-isolation
 }
 
 package() {
-    cd "$srcdir/$pkgname"
+    cd "$srcdir/mud"
     python -m installer --destdir="$pkgdir" dist/*.whl
-    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/mud/LICENSE"
 }
