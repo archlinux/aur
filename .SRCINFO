@@ -1,13 +1,13 @@
 pkgbase = libglibutil
 	pkgdesc = Library of glib utilities
 	pkgver = 1.0.79
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/sailfishos/libglibutil
 	arch = x86_64
 	arch = i686
 	arch = armv7h
 	arch = aarch64
-	license = BSD
+	license = BSD-3-Clause
 	depends = glib2
 	source = libglibutil-1.0.79.tar.gz::https://github.com/sailfishos/libglibutil/archive/refs/tags/1.0.79.tar.gz
 	sha512sums = ee0b72d859702c142d86a3147fe5fca48ea0296c5aaf63f355fd7f46eaae027481ad1de3a6ebb7c41205ea1a586f0ccfd8fe41b6d3bf6111fa613df69173e3dc
