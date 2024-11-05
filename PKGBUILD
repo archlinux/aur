@@ -3,7 +3,7 @@
 
 pkgname=gnome-radio
 pkgver=48.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Easily find live radio programs based on geographical location of radio broadcasters on the Internet"
 arch=('x86_64')
 url="https://wiki.gnome.org/Apps/Radio"
