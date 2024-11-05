@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=perplexity-ai-app
 _pkgname="Perplexity AI"
-pkgver=3.0.0
+pkgver=3.1.0
 _electronversion=33
 _nodeversion=20
 pkgrel=1
@@ -23,7 +23,7 @@ source=(
     "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
     "${pkgname}.sh"
 )
-sha256sums=('142800719a2e2e8c28dd6714626cf8e71803809b37cbde916271cabcda27ae6e'
+sha256sums=('3f2a7e0f6cda7c02ce0629467add240a81783fbaa7fb305a6cc49b6e08ccf6c8'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
