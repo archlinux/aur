@@ -1,0 +1,16 @@
+pkgbase = bimbala-desktop-bin
+	pkgdesc = All-in-one platform which transforms your boring docs into a interactive information hub.(Prebuilt version.Use system-wide electron)
+	pkgver = 1.0.5
+	pkgrel = 1
+	url = https://bimbala.com/
+	arch = x86_64
+	license = MIT
+	depends = electron33
+	conflicts = bimbala-desktop
+	options = !emptydirs
+	source = bimbala-desktop-1.0.5.rpm::https://github.com/Bimbalacom/Desktop/releases/download/v1.0.5/bimbala-desktop-1.0.5-1.x86_64.rpm
+	source = bimbala-desktop.sh
+	sha256sums = 660c57567cb9a2f91101dd8b63a64f9dd21450555db4bfba2d60136f167c72bd
+	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
+
+pkgname = bimbala-desktop-bin
