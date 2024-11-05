@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=serial-studio-bin
 _pkgname=Serial-Studio
-pkgver=3.0.3
+pkgver=3.0.4
 pkgrel=1
 pkgdesc="Multi-purpose serial data visualization & processing program.Prebuilt version."
 arch=('x86_64')
@@ -28,7 +28,7 @@ source=(
     "LICENSE-${pkgver}.md::https://raw.githubusercontent.com/Serial-Studio/Serial-Studio/v${pkgver}/LICENSE.md"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('5370dd6003c8315dbb1157461c89eca840eee7b93c4dabcbea4cd19e1c711945'
+sha256sums=('401c742851d803789c2942357ef3aa4da1b83fdb7795685f70c5adf7e0400283'
             'd2d20f56865ebe59a1a3ce0843cee2808f0c69f7a2ba2b9f7808f1d2df331586'
             '2a39e193905c92b426b83c70095b30ce7df9900c60f7c2e29ab2a2973eded130')
 build() {
