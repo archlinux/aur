@@ -16,7 +16,7 @@ makedepends+=(
 	)
 
 depends=(
-	"wechat>4"
+	"wechat"
 
 	"xdg-user-dirs"
 	"xorg-xhost"

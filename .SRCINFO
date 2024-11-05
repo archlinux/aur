@@ -11,7 +11,7 @@ pkgbase = wechat-uos-bwrap
 	makedepends = cmake
 	makedepends = libarchive
 	makedepends = cmake
-	depends = wechat>4
+	depends = wechat
 	depends = xdg-user-dirs
 	depends = xorg-xhost
 	depends = findutils
@@ -70,7 +70,7 @@ pkgbase = wechat-uos-bwrap
 	sha256sums = 0fe7b98442e5d6d5196818805b13e226b9476886e2c1514b27f0232aacd6b8de
 
 pkgname = wechat-uos-bwrap
-	depends = wechat>4
+	depends = wechat
 	depends = xdg-user-dirs
 	depends = xorg-xhost
 	depends = findutils
