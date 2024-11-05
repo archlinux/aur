@@ -3,7 +3,7 @@
 _pkgname='quikc'
 pkgname='quikc-git'
 pkgver=r374.fa09550
-pkgrel=2
+pkgrel=3
 url="https://git.missingno.dev/$_pkgname"
 pkgdesc='A minimalistic, safety-focused build system for C/C++'
 arch=(
@@ -15,9 +15,10 @@ makedepends=('cargo' 'git')
 license=('MIT')
 source=("$_pkgname::git+$url")
 optdepends=('gcc: GNU C/C++ compiler'
-		    'clang: LLVM C/C++ frontend'
-			'pkgconf: for automatic third party dependency resolution'
-			'python: for quikc-init')
+	    'clang: LLVM C/C++ frontend'
+	    'pkgconf: for automatic third party dependency resolution'
+	    'python: for quikc-init'
+	    'clang-format: for code formatting')
 conflicts=('quikc')
 provides=('quikc')
 b2sums=('SKIP')
