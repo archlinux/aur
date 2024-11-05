@@ -1,4 +1,4 @@
-# Maintainer: CsiPA0723 <csizipeti0723@gmail.com>
+# Maintainer: CsiPA0723 <csizipeti0723 at gmail dot com>
 _pkgname=weylus
 pkgname="$_pkgname-community-git"
 pkgver=2024.9.10.gbe2ca4e
@@ -12,7 +12,7 @@ provides=("$_pkgname=${pkgver/\.r*/}")
 options=(!debug !lto) # Disabled for rust build
 makedepends=(rust typescript gcc libx11 pkg-config git make cmake npm pnpm)
 depends=(libxtst libxcursor libxinerama libxft libxrandr libxcomposite libdrm libva ffmpeg dbus gst-plugins-base-libs)
-optdepends=("gst-plugin-pipewire: Wayland support")
+optdepends=("gst-plugin-pipewire: Wayland and or pipewire support")
 source=("$_pkgname::git+$url.git")
 sha256sums=("SKIP")
 

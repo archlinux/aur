@@ -26,7 +26,7 @@ pkgbase = weylus-community-git
 	depends = ffmpeg
 	depends = dbus
 	depends = gst-plugins-base-libs
-	optdepends = gst-plugin-pipewire: Wayland support
+	optdepends = gst-plugin-pipewire: Wayland and or pipewire support
 	provides = weylus=2024.9.10.gbe2ca4e
 	conflicts = weylus
 	conflicts = weylus-bin
