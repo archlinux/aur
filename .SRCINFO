@@ -1,6 +1,6 @@
 pkgbase = choosenim-bin
 	pkgdesc = Nim toolchain installer
-	pkgver = 0.8.9
+	pkgver = 0.8.10
 	pkgrel = 1
 	url = https://github.com/nim-lang/choosenim
 	install = choosenim-bin.install
@@ -18,9 +18,9 @@ pkgbase = choosenim-bin
 	provides = nimsuggest
 	conflicts = choosenim
 	conflicts = nim
-	source = choosenim-bin-0.8.9::https://github.com/nim-lang/choosenim/releases/download/v0.8.9/choosenim-0.8.9_linux_amd64
-	source = LICENSE-choosenim-bin-0.8.9::https://github.com/nim-lang/choosenim/raw/v0.8.9/LICENSE
-	sha256sums = c70975e1467b43842f7bcfd535b9d599ed359c7b61e26fab246b9e6fbab7bff6
-	sha256sums = 5cb6b77a8a0f2f60ed5b9ceeb633fc79331a012c209fc05617f47bc528724d87
+	source = choosenim-bin-0.8.10::https://github.com/nim-lang/choosenim/releases/download/v0.8.10/choosenim-0.8.10_linux_amd64
+	source = LICENSE-choosenim-bin-0.8.10::https://github.com/nim-lang/choosenim/raw/v0.8.10/LICENSE
+	sha256sums = 85c5b1405357eb48f96ce19873fdb9a6ab1621c47d60c7cd0aa56a5c40edb6fd
+	sha256sums = b56edb0cb907c58a59146f73b43797be78a0e9e0a4d87905dadff9fa7f1d6494
 
 pkgname = choosenim-bin

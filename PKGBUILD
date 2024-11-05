@@ -5,7 +5,7 @@
 
 _pkgname=choosenim
 pkgname=$_pkgname-bin
-pkgver=0.8.9
+pkgver=0.8.10
 pkgrel=1
 pkgdesc='Nim toolchain installer'
 arch=(x86_64)
@@ -21,8 +21,8 @@ conflicts=($_pkgname nim)
 install=$pkgname.install
 source=("$pkgname-$pkgver::$url/releases/download/v$pkgver/$_pkgname-${pkgver}_linux_amd64"
         "LICENSE-$pkgname-$pkgver::$url/raw/v$pkgver/LICENSE")
-sha256sums=('c70975e1467b43842f7bcfd535b9d599ed359c7b61e26fab246b9e6fbab7bff6'
-            '5cb6b77a8a0f2f60ed5b9ceeb633fc79331a012c209fc05617f47bc528724d87')
+sha256sums=('85c5b1405357eb48f96ce19873fdb9a6ab1621c47d60c7cd0aa56a5c40edb6fd'
+            'b56edb0cb907c58a59146f73b43797be78a0e9e0a4d87905dadff9fa7f1d6494')
 
 package() {
   install -vDm 755 $pkgname-$pkgver "$pkgdir"/usr/bin/$_pkgname
