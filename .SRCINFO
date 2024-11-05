@@ -1,16 +1,13 @@
 pkgbase = sopel
 	pkgdesc = An easy-to-use and highly extensible IRC Bot framework (Formerly Willie)
 	pkgver = 8.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://sopel.chat
 	arch = any
 	license = EFL-2.0
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-setuptools
-	makedepends = python-sphinx
-	makedepends = python-sphinxcontrib-autoprogram
-	makedepends = python-sphinx-rfcsection
 	makedepends = python-wheel
 	depends = python
 	depends = python-dnspython

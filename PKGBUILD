@@ -3,7 +3,7 @@
 
 pkgname=sopel
 pkgver=8.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="An easy-to-use and highly extensible IRC Bot framework (Formerly Willie)"
 arch=('any')
 url='https://sopel.chat'
@@ -19,13 +19,7 @@ depends=('python'
          'python-urllib3'
          'python-xmltodict'
          'sqlite')
-makedepends=('python-build'
-             'python-installer'
-             'python-setuptools'
-             'python-sphinx'
-             'python-sphinxcontrib-autoprogram'
-             'python-sphinx-rfcsection'
-             'python-wheel')
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 # checkdepends=('python-pytest' 'python-pytest-vcr' 'python-requests-mock')
 source=("https://github.com/sopel-irc/sopel/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
 sha512sums=('dccc620a2a90c7dc9a175e4c76d32dd07a85307087a595ddc8f3156dc7e04326b3a7d8cfe44d7c444d25360e8039ed751dc334a19253bb7f54dbb7502ce594db')
@@ -38,7 +32,6 @@ prepare() {
 build() {
   cd "${pkgname}-${pkgver}"
   python -m build --wheel --no-isolation
-  PYTHONPATH="${PWD}" make -C docs man
 }
 
 # check() {
@@ -50,5 +43,4 @@ package() {
   cd "${pkgname}-${pkgver}"
   python -m installer --destdir="${pkgdir}" dist/*.whl
   install -Dm644 COPYING -t "${pkgdir}/usr/share/licenses/${pkgname}"
-  install -Dm644 docs/build/man/sopel.3 -t "${pkgdir}/usr/share/man/man3"
 }
