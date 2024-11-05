@@ -175,6 +175,7 @@ function execApp() {
 	-p StartupIOWeight=1 \
 	-p MemoryMax=90% \
 	-p MemoryHigh=80% \
+	-p LimitCORE=0 \
 	-p CPUWeight=20 \
 	-p IOWeight=20 \
 	-p ManagedOOMSwap=kill \
@@ -267,6 +268,7 @@ function execApp() {
 		--ro-bind "${XDG_RUNTIME_DIR}/pulse" \
 			"${XDG_RUNTIME_DIR}/pulse" \
 		--bind "${XDG_DATA_HOME}"/WeChat_Data "${HOME}" \
+		--ro-bind-try "${XDG_DATA_HOME}"/icons "${XDG_DATA_HOME}"/icons \
 		--dir "${XDG_DATA_HOME}/WeChat_Data/Shared Directory" \
 		--dir "${HOME}/共享目录" \
 		--dir "${XDG_DOCUMENTS_DIR}/WeChat" \
@@ -384,7 +386,6 @@ function dbusProxy() {
 			-- /usr/bin/xdg-dbus-proxy \
 			"${DBUS_SESSION_BUS_ADDRESS}" \
 			"${busDir}/bus" \
-			--log \
 			--filter \
 			--own=org.kde.* \
 			--talk=org.freedesktop.portal.Flatpak \
