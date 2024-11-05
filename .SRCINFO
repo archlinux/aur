@@ -1,13 +1,13 @@
 pkgbase = r-mrmre
 	pkgdesc = Parallelized Minimum Redundancy, Maximum Relevance (mRMR)
-	pkgver = 2.1.2.1
+	pkgver = 2.1.2.2
 	pkgrel = 1
 	url = https://cran.r-project.org/package=mRMRe
 	arch = x86_64
 	license = Artistic2.0
 	depends = r
 	depends = r-igraph
-	source = https://cran.r-project.org/src/contrib/mRMRe_2.1.2.1.tar.gz
-	sha256sums = d53c392e82a437005b71d0e8b97350d0237608fffafe087700fe7f6770167fd9
+	source = https://cran.r-project.org/src/contrib/mRMRe_2.1.2.2.tar.gz
+	sha256sums = 1d2c3b53a6ecfa61f4891e08114d6951ebb7a9830c934515406e180277339209
 
 pkgname = r-mrmre
