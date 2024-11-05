@@ -5,10 +5,10 @@
 # Maintainer: Matheus <matheusgwdl@protonmail.com>
 # Contributor: Matheus <matheusgwdl@protonmail.com>
 
-declare -r _tag="e7140e55967a4198f2bbd34987fa7597ebafa649"
+declare -r _tag="dccdd8e4152de82870296163562e0281315afa42"
 
 pkgname="usearch"
-pkgver="2.16.1"
+pkgver="2.16.2"
 pkgrel="1"
 pkgdesc="Fast open-source search and clustering engine for vectors."
 arch=("x86_64")

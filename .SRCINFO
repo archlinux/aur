@@ -1,6 +1,6 @@
 pkgbase = usearch
 	pkgdesc = Fast open-source search and clustering engine for vectors.
-	pkgver = 2.16.1
+	pkgver = 2.16.2
 	pkgrel = 1
 	url = https://github.com/unum-cloud/usearch
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = usearch
 	depends = fp16
 	depends = simsimd
 	depends = stringzilla
-	source = usearch::git+https://github.com/unum-cloud/usearch.git#tag=e7140e55967a4198f2bbd34987fa7597ebafa649
+	source = usearch::git+https://github.com/unum-cloud/usearch.git#tag=dccdd8e4152de82870296163562e0281315afa42
 	source = git+https://github.com/Maratyszcza/FP16.git
 	source = git+https://github.com/ashvardanian/SimSIMD.git
 	source = git+https://github.com/ashvardanian/StringZilla.git
