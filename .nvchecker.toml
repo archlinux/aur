@@ -1,0 +1,3 @@
+[python-oslo-messaging]
+source = "git"
+git = "https://opendev.org/openstack/oslo.messaging.git"
