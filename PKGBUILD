@@ -1,8 +1,8 @@
 # Maintainer: greyltc
 
 pkgname=python-pkg-about
-pkgver=1.2.1
-pkgrel=3
+pkgver=1.2.2
+pkgrel=1
 pkgdesc="Shares Python package metadata at runtime."
 url="https://github.com/karpierz/pkg_about"
 arch=('x86_64')
