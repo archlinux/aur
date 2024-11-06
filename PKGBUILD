@@ -1,8 +1,9 @@
+# Maintainer: envolution
 # Contributor: Eric Bélanger <eric@archlinux.org>
 
 pkgname=gv
 pkgver=3.7.4
-pkgrel=6
+pkgrel=7
 pkgdesc="A program to view PostScript and PDF documents"
 arch=('x86_64')
 url="https://www.gnu.org/software/gv/"
@@ -11,7 +12,7 @@ depends=('xaw3d' 'ghostscript')
 optdepends=('perl: gv-update-userconfig')
 options=('emptydirs')
 source=(
-  https://ftp.gnu.org/gnu/gv/${pkgname}-${pkgver}.tar.gz
+  "https://ftp.gnu.org/gnu/gv/${pkgname}-${pkgver}.tar.gz"
   gv.desktop
   0001-Do-not-segfault-on-buggy-postscript-files-i.-e.-file.patch
   0002-Fix-crash-in-zoom.c.patch

@@ -1,0 +1,4 @@
+[gv]
+source="regex"
+url="https://ftp.gnu.org/gnu/gv/"
+regex="gv-([0-9.]*).tar.gz"
