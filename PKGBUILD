@@ -1,7 +1,7 @@
 # Maintainer: tam1m <tbacc plus aur at pm dot me>
 pkgname=fladder-git
 _pkgname=Fladder
-pkgver=r140.6991282
+pkgver=r167.043e465
 pkgrel=1
 pkgdesc="Fladder - A Simple Jellyfin Frontend"
 arch=('x86_64')
@@ -17,7 +17,7 @@ source=("git+https://github.com/Fladder-App/Fladder.git#branch=${_branch}"
 sha256sums=('SKIP'
             '2ce78d4a51f063efa7f04666ae010d026d119eea6bdea7e08b736840fe88ddb4'
             '76f8c52297b4f423dd6767a37b56c30ea3398e16f2e0500911ba01df40635ce1'
-            'fea77c236d4f50c0a8e0b70911916d9668d2c4912cdbce96e1758b2b211eba7d')
+            'ebe0c9506079977487d5acfcde63293b81cc69966a6c084f5f456d5fec89677e')
 conflicts=('fladder')
 
 # if set, fladder will autoconnect to the given server

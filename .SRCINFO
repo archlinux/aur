@@ -1,6 +1,6 @@
 pkgbase = fladder-git
 	pkgdesc = Fladder - A Simple Jellyfin Frontend
-	pkgver = r140.6991282
+	pkgver = r167.043e465
 	pkgrel = 1
 	url = https://github.com/Fladder-App/Fladder
 	arch = x86_64
@@ -22,6 +22,6 @@ pkgbase = fladder-git
 	sha256sums = SKIP
 	sha256sums = 2ce78d4a51f063efa7f04666ae010d026d119eea6bdea7e08b736840fe88ddb4
 	sha256sums = 76f8c52297b4f423dd6767a37b56c30ea3398e16f2e0500911ba01df40635ce1
-	sha256sums = fea77c236d4f50c0a8e0b70911916d9668d2c4912cdbce96e1758b2b211eba7d
+	sha256sums = ebe0c9506079977487d5acfcde63293b81cc69966a6c084f5f456d5fec89677e
 
 pkgname = fladder-git
