@@ -1,6 +1,6 @@
 _baseurl='https://github.com/ggerganov/whisper.cpp'
 _model='base-q5_1'
-_model_sha256sum='SKIP'
+_model_sha256sum='422f1ae452ade6f30a004d7e5c6a43195e4433bc370bf23fac9cc591f01a8898'
 _pkgbase='whisper.cpp-model'
 # Maintainer: Hauke Rehfeld <aur@haukerehfeld.de>
 pkgname="${_pkgbase}-${_model}"
