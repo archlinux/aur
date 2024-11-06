@@ -5,8 +5,8 @@
 
 _basename=deskflow
 pkgname=${_basename}-git
-pkgver=1.17.0.r37.g24db09b
-pkgrel=2
+pkgver=1.17.0.r153.g3cb1980
+pkgrel=1
 pkgdesc="Deskflow lets you share one mouse and keyboard between multiple computers (git version)"
 arch=('x86_64')
 url="https://deskflow.org/"
@@ -20,6 +20,7 @@ depends=(
 	'qt6-base'
 	'gdk-pixbuf2'
 	'pugixml'
+	'tomlplusplus'
 )
 makedepends=(
 	'git'
@@ -27,7 +28,6 @@ makedepends=(
 	'python'
 	'libxkbfile'
 	'gtest'
-	'tomlplusplus'
 	'cli11'
 )
 optdepends=(
