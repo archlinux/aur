@@ -1,0 +1,4 @@
+[mementodb]
+source = "regex"
+url = "https://mementodatabase.com/download.html"
+regex = 'mementodb-([\d.]+)-linux.deb'
