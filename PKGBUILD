@@ -1,26 +1,21 @@
 # Maintainer: Anton Kudelin <kudelin at proton dot me>
 
 pkgname=elpa
-PkgName=ELPA
-pkgver=2024.03.001
+pkgver=2024.05.001
 _pkgver=${pkgver}
 pkgrel=1
 arch=(x86_64 aarch64)
 pkgdesc="Eigenvalue SoLvers for Petaflop-Applications"
 url="https://elpa.mpcdf.mpg.de"
-license=(LGPL3)
+license=(LGPL-3.0-only)
+makedepends=(gcc-fortran cython vim)
 depends=(scalapack python-numpy python-mpi4py)
-makedepends=(gcc-fortran vim cython)
-provides=(elpa)
+checkdepends=(blas-openblas)
 source=($url/software/tarball-archive/Releases/$pkgver/$pkgname-$_pkgver.tar.gz)
-sha256sums=('41c6cbf56d2dac26443faaba8a77307d261bf511682a64b96e24def77c813622')
+sha256sums=('9caf41a3e600e2f6f4ce1931bd54185179dade9c171556d0c9b41bbc6940f2f6')
 options=(!makeflags !buildflags)
 
 prepare() {
-  export CC=mpicc
-  export FC=mpifort
-  unset FCFLAGS
-
   # Detecting vectorization compatibility
   _AVXCOMP=$( $CC -march=native -dM -E - < /dev/null \
     | grep -E "AVX" | sort -d | tail -n 1 | awk -F'_' '{print $3}' )
@@ -68,27 +63,30 @@ prepare() {
 
   # Python 3 semantics
   sed -i "s@cython@cython -3@" "$srcdir/$pkgname-$pkgver/Makefile.am"
+
+  cd "$srcdir/$pkgname-$pkgver"
+  autoreconf -if
 }
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
-  ./configure                                                        \
-    --prefix=/usr                                                    \
-    --enable-openmp                                                  \
-    --enable-sse=$_SSE                                               \
-    --enable-sse-assembly=$_SSE                                      \
-    --enable-avx=$_AVX                                               \
-    --enable-avx2=$_AVX2                                             \
-    --enable-avx512=$_AVX512                                         \
-    --enable-autotune-redistribute-matrix                            \
-    --enable-python                                                  \
-    --enable-scalapack-tests                                         \
-    --without-threading-support-check-during-build                   \
-    PYTHON_INCLUDE="-I/usr/include/python$_python_version"           \
-    CFLAGS="-O2 -march=native"                                       \
-    FCFLAGS="-O2 -march=native -fallow-argument-mismatch"            \
-    LIBS="-lscalapack -lblas -llapack -lmpi"                         \
-    CPP="cpp"
+  ./configure \
+    --prefix=/usr \
+    --enable-openmp \
+    --enable-sse=$_SSE \
+    --enable-sse-assembly=$_SSE \
+    --enable-avx=$_AVX \
+    --enable-avx2=$_AVX2 \
+    --enable-avx512=$_AVX512 \
+    --enable-autotune-redistribute-matrix \
+    --enable-python \
+    --enable-scalapack-tests \
+    --without-threading-support-check-during-build \
+    FC="mpifort" \
+    CFLAGS="-O2 -march=native" \
+    FCFLAGS="-O2 -march=native -fallow-argument-mismatch" \
+    LIBS="-lscalapack -lblas -llapack -lmpi" \
+    PYTHON_INCLUDE="-I/usr/include/python$_python_version"
   make
 }
 
