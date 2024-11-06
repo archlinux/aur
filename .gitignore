@@ -5,5 +5,5 @@
 !.gitignore
 !.SRCINFO
 !PKGBUILD
-!sonusmix.desktop
+!fladder.desktop
 !*.patch
