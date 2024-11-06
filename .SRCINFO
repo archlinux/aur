@@ -7,8 +7,6 @@ pkgbase = bs-manager-git
 	license = GPL
 	makedepends = git
 	makedepends = nodejs>=18
-	depends = dotnet-runtime-3.1
-	depends = screen
 	provides = bs-manager
 	conflicts = bs-manager
 	options = !strip

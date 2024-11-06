@@ -1,13 +1,13 @@
 # Maintainer: Pierce Thompson <pierce at insprill dot net>
 
 pkgname=bs-manager-git
-pkgver=v1.4.10.r5.g83f23c5
+pkgver=v1.4.12.r3.g5cbc480
 pkgrel=1
 pkgdesc="An all-in-one tool for managing Beat Saber versions, maps, mods, and more"
 arch=("x86_64")
 url="https://github.com/Zagrios/bs-manager"
 license=('GPL')
-depends=('dotnet-runtime-3.1' 'screen')
+depends=()
 makedepends=('git' 'nodejs>=18')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
