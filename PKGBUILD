@@ -4,7 +4,7 @@
 
 pkgname=taskchampion-sync-server
 pkgver=3.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="The server Taskwarrior syncs to"
 arch=('x86_64' 'aarch64')
 url="https://taskwarrior.org/"
@@ -12,12 +12,12 @@ license=('MIT')
 depends=('gcc-libs')
 makedepends=('git' 'rust')
 optdepends=()
-_commit=af918bdf0dea7f7b6e920680c947fc37b37ffffb
+_commit=c1862d30ad6b6d8e54fd983662789a48e0e2feb0
 source=(
     "${pkgname}-${pkgver}::git+https://github.com/GothenburgBitFactory/taskchampion-sync-server.git#commit=$_commit"
     "${pkgname}.service"
 )
-b2sums=('8a78939346296b0326a9c34b803a706768d934b3179b1ec7429cc3a3f49e866d3dbb807f5c8999ab97ecdad7ff5f12b1a93837cb10a150bb476f5bdd6d52d7af'
+b2sums=('be0858851f1df45fdc5bacd33ac2c7ed96a5bc1b053edbf56fdac7c076dd007d20e6016a16e810f93012bf8cee8987a47a30a4f282aae78e832939bcbc1626b5'
         'e40adbaa31f8e1a64e17f15f1200e43b7b662e98d37fc0be84efcbe8276e712cd98a3c1053eb47749732b6d983f704cd4a17a9f6c8ff8f19408c7b9bee9b5086')
 options=('!lto')
 
