@@ -1,0 +1,228 @@
+# private key to sign chromium extension is generated with `openssl genrsa 2048 | openssl pkcs8 -topk8 -nocrypt -traditional`
+
+_channel=nightly
+_date=2024-11-06
+
+pkgbase=ruffle
+pkgname=(ruffle ruffle-demo ruffle-selfhosted firefox-extension-ruffle chromium-extension-ruffle)
+pkgver="0.1.0+$_channel+${_date//-}"
+pkgrel=1
+arch=("x86_64")
+pkgdesc="A Flash Player emulator written in Rust."
+url="https://ruffle.rs/"
+license=("MIT OR Apache-2.0")
+makedepends=("cargo" "cmake" "java-environment" "npm" "nodejs-lts-iron"
+             "wasm-bindgen" "binaryen" "gtk3" "alsa-lib" "libxcb" "systemd-libs"
+             "clang" "jq" "git" "chromium" "openssl")
+source=("git+https://github.com/ruffle-rs/ruffle.git#tag=$_channel-$_date"
+        "chromium-extension-ruffle.key")
+sha256sums=('c8500797af9b5928c1057f3f9dee1db4292c9f086d9902384d93cd178e19938a'
+            'dac5c0e9661e41834b76d6d047dc94e41dd7a80d98e1c39cb4f2c95b1a7c7a46')
+options=("!lto")
+
+_FIREFOX_EXTRNSION_ID="ruffle@ruffle.rs"
+
+prepare() {
+    cd "$srcdir/$pkgbase"
+    export RUSTUP_TOOLCHAIN=stable
+    cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+    cd web
+    npm ci
+    # TODO version_name=$version_number when not nightly
+    jq --null-input \
+        --arg version_channel "$_channel" \
+        --arg version_number "$(jq -r .version package.json)" \
+        --arg version_name "$_channel $_date" \
+        --arg build_date "$(date --utc --date="@${SOURCE_DATE_EPOCH:-$(date +%s)}" +%Y-%m-%d)" \
+        --arg build_id "$pkgrel" \
+        --arg commitHash "$(git rev-parse HEAD)" \
+        --arg firefox_extension_id "$_FIREFOX_EXTRNSION_ID" \
+    '$ARGS.named' > version_seal.json
+    echo "Generated version_seal.json:"
+    cat version_seal.json
+}
+
+build() {
+    cd "$srcdir/$pkgbase"
+    export RUSTUP_TOOLCHAIN=stable
+    export CARGO_TARGET_DIR=target
+    cargo build --frozen --release --all-features \
+        --package=ruffle_desktop
+    # libtracy_client-sys seems missing some symbols, skip enabling all features.
+    cargo build --frozen --release \
+        --package=ruffle_scanner \
+        --package=exporter
+
+    export CARGO_FEATURES=jpegxr
+    # Script will read binary at hardcoded path
+    # See web/packages/core/tools/build_wasm.ts for more info.
+    unset CARGO_TARGET_DIR
+    # Flags does not supported by WASM target:
+    # C/CXX: -mtune -march -fcf-protection
+    # RUST: -Ctarget-cpu
+    local flag flags
+    for flags in "$CFLAGS" "$CXXFLAGS"
+    do
+        for flag in $flags
+        do
+            if [[ "$flag" =~ ^-m(tune|arch)=[0-9a-z]+ ]] || [[ "$flag" == "-fcf-protection" ]]
+            then
+                echo "Removing $flag in C/CXX FLAGS"
+                CFLAGS=${CFLAGS/$flag/}
+            fi
+        done
+    done
+    if flags="$(echo "$RUSTFLAGS" | grep -o -P '(\ *-C\s*target-cpu=[0-9a-z]+)')"
+    then
+        for flag in $flags
+        do
+            echo "Removing $flag in Rust FLAGS"
+            RUSTFLAGS=${RUSTFLAGS/$flag/}
+        done
+    fi
+
+    cd web
+    npm run build:repro
+    unset CARGO_FEATURES
+
+    echo "Signing chromium extension..."
+    mkdir -p extension-chromium
+    bsdtar -x -C extension-chromium -f packages/extension/dist/ruffle_extension.zip
+    local extension_version pubkey extension_id userdatadir
+    extension_version="$(jq -r .version extension-chromium/manifest.json)"
+    pubkey="$(openssl rsa -in "$srcdir/chromium-extension-ruffle.key" -pubout -outform DER | base64 -w0)"
+    extension_id="$(echo "$pubkey" | base64 -d | sha256sum | head -c32 | tr '0-9a-f' 'a-p')"
+    echo "Chromium extension id is $extension_id"
+    echo "$extension_id" > .chromium_extension_id
+    jq --null-input \
+        --arg external_crx "/usr/lib/chromium-extension-ruffle/$extension_id.crx" \
+        --arg external_version "$extension_version" \
+    '$ARGS.named' > "$extension_id.json"
+    jq --ascii-output \
+        --arg key "$pubkey" \
+    '. + {"key": $key}' extension-chromium/manifest.json > manifest.json
+    mv manifest.json extension-chromium/manifest.json
+
+    userdatadir="$(mktemp -d chromium-pack-XXXXXX)"
+    chromium --user-data-dir="$userdatadir" --pack-extension="extension-chromium" \
+        --pack-extension-key="$srcdir/chromium-extension-ruffle.key"
+}
+
+check() {
+    cd "$srcdir/$pkgbase"
+    export RUSTUP_TOOLCHAIN=stable
+    cargo test --frozen --all-features \
+        --package=ruffle_desktop
+    cargo test --frozen \
+        --package=ruffle_scanner \
+        --package=exporter
+
+    cd web
+    npm run test
+}
+
+package_ruffle() {
+    depends=("hicolor-icon-theme" "alsa-lib" "systemd-libs" "gcc-libs" "glibc")
+    pkgdesc+=" (Desktop app and utils)"
+
+    cd "$srcdir/$pkgbase"
+    local f
+    find target/release -maxdepth 1 -executable -type f | while read -r f
+    do
+        local target
+        target="$(basename "$f")"
+        target=${target/_/-}
+        if ! [[ "$target" =~ ^ruffle- ]]
+        then
+            target="ruffle-$target"
+        fi
+        if [[ "$target" == "ruffle-desktop" ]]
+        then
+            target="ruffle"
+        fi
+        echo "Installing $f to $target..."
+        install -Dm755 "$f" "$pkgdir/usr/bin/$target"
+    done
+
+    install -Dm644 desktop/packages/linux/rs.ruffle.Ruffle.desktop \
+        "$pkgdir/usr/share/applications/rs.ruffle.Ruffle.desktop"
+    install -Dm644 desktop/packages/linux/rs.ruffle.Ruffle.metainfo.xml \
+        "$pkgdir/usr/share/metainfo/rs.ruffle.Ruffle.metainfo.xml"
+    install -Dm644 desktop/packages/linux/rs.ruffle.Ruffle.svg \
+        "$pkgdir/usr/share/icons/hicolor/scalable/apps/rs.ruffle.Ruffle.svg"
+    install -Dm644 LICENSE.md \
+        "$pkgdir/usr/share/licenses/$pkgname/LICENSE.md"
+    install -Dm644 README.md \
+        "$pkgdir/usr/share/doc/ruffle/README.md"
+}
+
+package_ruffle-demo() {
+    pkgdesc+=" (Demo web app)"
+    arch=("any")
+
+    cd "$srcdir/$pkgbase"
+    mkdir -p "$pkgdir/usr/share/webapps"
+    cp -a --no-preserve=ownership \
+        web/packages/demo/dist \
+        "$pkgdir/usr/share/webapps/ruffle"
+    install -Dm644 web/packages/demo/LICENSE_APACHE \
+        "$pkgdir/usr/share/licenses/$pkgname/LICENSE_APACHE"
+    install -Dm644 web/packages/demo/LICENSE_MIT \
+        "$pkgdir/usr/share/licenses/$pkgname/LICENSE_MIT"
+    install -Dm644 web/packages/demo/README.md \
+        "$pkgdir/usr/share/doc/ruffle/demo/README.md"
+}
+
+package_ruffle-selfhosted() {
+    pkgdesc+=" (JavaScript module)"
+    arch=("any")
+
+    cd "$srcdir/$pkgbase"
+    mkdir -p \
+        "$pkgdir/usr/lib/node_modules" \
+        "$pkgdir/usr/share/licenses/$pkgname"
+    cp -a --no-preserve=ownership \
+        web/packages/selfhosted/dist \
+        "$pkgdir/usr/lib/node_modules/ruffle"
+    ln -srfv \
+        "$pkgdir/usr/lib/node_modules/ruffle/LICENSE_APACHE" \
+        "$pkgdir/usr/share/licenses/$pkgname/LICENSE_APACHE"
+    ln -srfv \
+        "$pkgdir/usr/lib/node_modules/ruffle/LICENSE_MIT" \
+        "$pkgdir/usr/share/licenses/$pkgname/LICENSE_MIT"
+    install -Dm644 web/packages/selfhosted/README.md \
+        "$pkgdir/usr/share/doc/ruffle/selfhosted/README.md"
+}
+
+package_firefox-extension-ruffle() {
+    optdepends=("firefox: Load extension in browser.")
+    pkgdesc+=" (Unsigned Firefox extension)"
+    arch=("any")
+
+    cd "$srcdir/$pkgbase"
+    install -Dm644 web/packages/extension/dist/firefox_unsigned.xpi \
+        "$pkgdir/usr/lib/firefox/browser/extensions/$_FIREFOX_EXTRNSION_ID.xpi"
+    install -Dm644 web/packages/extension/LICENSE_APACHE \
+        "$pkgdir/usr/share/licenses/$pkgname/LICENSE_APACHE"
+    install -Dm644 web/packages/extension/LICENSE_MIT \
+        "$pkgdir/usr/share/licenses/$pkgname/LICENSE_MIT"
+}
+
+package_chromium-extension-ruffle() {
+    optdepends=("chromium: Load extension in browser.")
+    pkgdesc+=" (Self-signed Chromium extension)"
+    arch=("any")
+
+    cd "$srcdir/$pkgbase"
+    local extension_id
+    extension_id=$(<web/.chromium_extension_id)
+    echo  "Installing chromium extension $extension_id..."
+    install -Dm644 "web/$extension_id.json" \
+        "$pkgdir/usr/share/chromium/extensions/$extension_id.json"
+    install -Dm644 web/extension-chromium.crx \
+        "$pkgdir/usr/lib/$pkgname/$extension_id.crx"
+    install -Dm644 web/packages/extension/LICENSE_APACHE \
+        "$pkgdir/usr/share/licenses/$pkgname/LICENSE_APACHE"
+    install -Dm644 web/packages/extension/LICENSE_MIT \
+        "$pkgdir/usr/share/licenses/$pkgname/LICENSE_MIT"
+}
