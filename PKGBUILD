@@ -46,9 +46,13 @@ check() {
 package() {
     cd "$pkgname-$pkgver"
     sed -i "s/\${engine_path}/\/usr\/bin\/$pkgname/" $pkgname.desktop
-    mv logo.png $pkgname.png
 
+    # Install Engine
+    install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/$pkgname"
+
+    # Install Helper Files
+    cd "install"
+    # install -Dm0755 -t "$pkgdir/usr/share/icons/" "$pkgname.svg"
     install -Dm0755 -t "$pkgdir/usr/share/icons/" "$pkgname.png"
     install -Dm0755 -t "$pkgdir/usr/share/applications/" "$pkgname.desktop"
-    install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/$pkgname"
 }
