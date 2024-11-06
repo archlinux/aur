@@ -45,5 +45,5 @@ package_cpolar-bin-multi-user() {
     #Install systemd service file
     sed 's:/usr/local::g' -i ${srcdir}/${_pkgname}@.service
     sed 's:-log=/var/log/cpolar/access.log::g' -i ${srcdir}/${_pkgname}@.service
-    install -Dm644  ${srcdir}/${_pkgname}@.service ${pkgdir}/usr/lib/systemd/system/${_pkgname}@user-template.service
+    install -Dm644  ${srcdir}/${_pkgname}@.service -t ${pkgdir}/usr/lib/systemd/system
 }
