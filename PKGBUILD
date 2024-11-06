@@ -15,6 +15,7 @@ depends=(
   libastal-battery
   libastal-bluetooth
   libastal-cava
+  libastal-greetd
   libastal-hyprland
   libastal-io
   libastal-mpris
