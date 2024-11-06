@@ -3,7 +3,7 @@
 
 _pkgname="libresprite"
 pkgname="$_pkgname-git"
-pkgver=1.0.r245.gc99d366
+pkgver=1.1.r59.ga678ddf
 pkgrel=1
 pkgdesc="Animated sprite editor and pixel art tool"
 url='https://github.com/LibreSprite/LibreSprite'
@@ -14,10 +14,12 @@ depends=(
   'curl'
   'freetype2'
   'giflib'
+  'libarchive'
   'libjpeg-turbo'
   'libpng'
   'libwebp'
-  'lua'
+  'libxcb'
+  'libxi'
   'pixman'
   'sdl2'
   'sdl2_image'
@@ -28,6 +30,7 @@ makedepends=(
   'cmake'
   'git'
   'gtest'
+  'ninja'
 )
 
 provides=(
@@ -42,18 +45,16 @@ _pkgsrc="$_pkgname"
 source=(
   "$_pkgsrc"::"git+https://github.com/LibreSprite/LibreSprite.git"
 
-  'clip'::'git+https://github.com/aseprite/clip.git'
-  'duktape'::'git+https://github.com/libresprite/duktape.git'
-  'flic'::'git+https://github.com/aseprite/flic.git'
-  'observable'::'git+https://github.com/dacap/observable.git'
-  'simpleini'::'git+https://github.com/aseprite/simpleini.git'
-  'undo'::'git+https://github.com/aseprite/undo.git'
+  'aseprite.clip'::'git+https://github.com/aseprite/clip.git'
+  'aseprite.flic'::'git+https://github.com/aseprite/flic.git'
+  'aseprite.simpleini'::'git+https://github.com/aseprite/simpleini.git'
+  'aseprite.undo'::'git+https://github.com/aseprite/undo.git'
+  'libresprite.duktape'::'git+https://github.com/libresprite/duktape.git'
 )
 
 sha256sums=(
   'SKIP'
 
-  'SKIP'
   'SKIP'
   'SKIP'
   'SKIP'
@@ -70,12 +71,11 @@ pkgver() {
 prepare() {
   cd "$_pkgsrc"
   local _submodules=(
-    'clip'::'src/clip'
-    'duktape'::'third_party/duktape'
-    'flic'::'src/flic'
-    'observable'::'src/observable'
-    'simpleini'::'third_party/simpleini'
-    'undo'::'src/undo'
+    'aseprite.clip'::'src/clip'
+    'aseprite.flic'::'src/flic'
+    'aseprite.simpleini'::'third_party/simpleini'
+    'aseprite.undo'::'src/undo'
+    'libresprite.duktape'::'third_party/duktape'
   )
   local _module
   for _module in "${_submodules[@]}"; do
@@ -89,8 +89,9 @@ build() {
   local _cmake_options=(
     -B build
     -S "$_pkgsrc"
-
-    -DCMAKE_INSTALL_PREFIX="/usr"
+    -G Ninja
+    -DCMAKE_BUILD_TYPE=None
+    -DCMAKE_INSTALL_PREFIX='/usr'
     -Wno-dev
   )
 
