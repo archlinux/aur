@@ -9,12 +9,13 @@ pkgbase = rl_custom_rime
 	arch = aarch64
 	license = GPL3
 	makedepends = xmake
-	makedepends = git
 	depends = librime
 	depends = glib2
 	depends = readline
 	depends = rl_custom_function
 	source = https://github.com/Freed-Wu/rl_custom_rime/archive/0.0.1.tar.gz
-	sha256sums = 6e91d22e29d1968a03b7ce3ed0d291e562ebea6a2599c4679491ba41b68c56aa
+	source = https://github.com/Freed-Wu/tmux-rime/archive/0.0.3.tar.gz
+	sha256sums = 94d7d20dbf443fed7d8ea5112b82b9ac6f0576a0b9fdab7e4e266433ae50f10a
+	sha256sums = 012d1b8e8fe265fbd927af113fa7d54fc8704a449f9b86904767fe20378bea81
 
 pkgname = rl_custom_rime
