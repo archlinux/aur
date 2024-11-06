@@ -5,7 +5,7 @@
 # adapted from pkgbuild creator: CrocoDuck <crocoduck dot oducks at gmail dot com>
 
 pkgname=pianoteq-stage
-pkgver=8.3.1
+pkgver=8.4.0
 pkgrel=1
 pkgdesc="Virtual piano instrument using physical modelling synthesis. Both standalone and plugin versions."
 arch=('x86_64')
@@ -18,38 +18,38 @@ provides=("${pkgname%-*}")
 conflicts=("${pkgname%-*}" "pianoteq-stage-bin" "pianoteq-standard-trial-bin")
 # the source package must be downloaded manually
 # this can be done by going to the link here:
-# https://www.modartt.com/download?file=pianoteq_stage_linux_v831.7z
+# https://www.modartt.com/download?file=pianoteq_stage_linux_v840.7z
 source=("local://pianoteq_stage_linux_v${pkgver//./}.7z"
-	'https://www.pianoteq.com/images/logo/pianoteq_icon_128.png')
-b2sums=('a29faa4069f2abeedfaa13c8b0d6ace52640e13068bb63eb7710d0266f6f6a9a73a1ffc5bd17545dea0a84ae0434b1c96754ceb58f1bfece7b74674c89716b22'
-	'bbb48b5b2bd5bbe52a39c84f42ea6c12a3633e4713e00d8132654ddf5adc5d7da1b7951c683cb11446ee847a388a775eb48591089a4e8dc69ed6d97cfc80d56d')
+  'https://www.pianoteq.com/images/logo/pianoteq_icon_128.png')
+b2sums=('2220ea28692bdf4530b751f48a79a5e392705b689f82c9ffb2cf011fd55dfbeb5f5ea66587e8db4009fbe83b244061729e0bbb76a3d29d9a66959e45bdc66581'
+  'bbb48b5b2bd5bbe52a39c84f42ea6c12a3633e4713e00d8132654ddf5adc5d7da1b7951c683cb11446ee847a388a775eb48591089a4e8dc69ed6d97cfc80d56d')
 
 prepare() {
-	gendesk -f -n --pkgname "$pkgname" --pkgdesc "$pkgdesc" --name='pianoteq 8' --exec='"pianoteq 8"' --categories 'Audio;Sequencer;Midi;AudioVideoEditing;Music;AudioVideo;'
+  gendesk -f -n --pkgname "$pkgname" --pkgdesc "$pkgdesc" --name='pianoteq 8' --exec='"pianoteq 8"' --categories 'Audio;Sequencer;Midi;AudioVideoEditing;Music;AudioVideo;'
 }
 
 package() {
-	_pianoteq_type="Pianoteq 8 STAGE"
-	archdir=x86-64bit
-	# Install program files:
-	install -Dm 755 "$srcdir/$_pianoteq_type/$archdir/$_pianoteq_type" "$pkgdir/usr/bin/pianoteq 8"
-	install -Dm 755 "$srcdir/$_pianoteq_type/$archdir/$_pianoteq_type.so" "$pkgdir/usr/lib/vst/pianoteq 8.so"
-	cd "$srcdir/$_pianoteq_type/$archdir/$_pianoteq_type.lv2"
-	for i in *; do
-		install -D "$i" "$pkgdir/usr/lib/lv2/Pianoteq 8.lv2/$i"
-	done
-	cd $srcdir
-	# Install desktop launcher:
-	install -Dm 644 "$srcdir/pianoteq_icon_128.png" "$pkgdir/usr/share/pixmaps/$pkgname.png"
-	install -Dm 644 "$srcdir/$pkgname.desktop" "$pkgdir/usr/share/applications/${pkgname%-*}.desktop"
-	# Install the license:
-	install -d "$pkgdir/usr/share/licenses/$pkgname"
-	ls -a
-	install -m 644 "$_pianoteq_type"/*Licence* "$pkgdir/usr/share/licenses/$pkgname/"
-	# Install the Documentation:
-	install -D "$_pianoteq_type/README_LINUX.txt" "$pkgdir/usr/share/doc/${pkgname%-*}/README_LINUX.txt"
-	cd "$srcdir/$_pianoteq_type/Documentation"
-	for i in *; do
-		install -D "$i" "$pkgdir/usr/share/doc/${pkgname%-*}/$i"
-	done
+  _pianoteq_type="Pianoteq 8 STAGE"
+  archdir=x86-64bit
+  # Install program files:
+  install -Dm 755 "$srcdir/$_pianoteq_type/$archdir/$_pianoteq_type" "$pkgdir/usr/bin/pianoteq 8"
+  install -Dm 755 "$srcdir/$_pianoteq_type/$archdir/$_pianoteq_type.so" "$pkgdir/usr/lib/vst/pianoteq 8.so"
+  cd "$srcdir/$_pianoteq_type/$archdir/$_pianoteq_type.lv2"
+  for i in *; do
+    install -D "$i" "$pkgdir/usr/lib/lv2/Pianoteq 8.lv2/$i"
+  done
+  cd $srcdir
+  # Install desktop launcher:
+  install -Dm 644 "$srcdir/pianoteq_icon_128.png" "$pkgdir/usr/share/pixmaps/$pkgname.png"
+  install -Dm 644 "$srcdir/$pkgname.desktop" "$pkgdir/usr/share/applications/${pkgname%-*}.desktop"
+  # Install the license:
+  install -d "$pkgdir/usr/share/licenses/$pkgname"
+  ls -a
+  install -m 644 "$_pianoteq_type"/*Licence* "$pkgdir/usr/share/licenses/$pkgname/"
+  # Install the Documentation:
+  install -D "$_pianoteq_type/README_LINUX.txt" "$pkgdir/usr/share/doc/${pkgname%-*}/README_LINUX.txt"
+  cd "$srcdir/$_pianoteq_type/Documentation"
+  for i in *; do
+    install -D "$i" "$pkgdir/usr/share/doc/${pkgname%-*}/$i"
+  done
 }
