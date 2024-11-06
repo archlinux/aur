@@ -1,20 +1,18 @@
 # Maintainer: Ayoub Eddaoudi <me@ayoubedd.me>
 # Maintainer: Rafael Baboni Dominiquini <rafaeldominiquini@gmail.com>
 
-pkgname=zfind-bin
-_pkgname="${pkgname%-bin}"
+_pkgauthor=laktak
+_pkgname=zfind
+pkgname=${_pkgname}-bin
 pkgver=0.4.6
-pkgrel=2
+pkgrel=3
 pkgdesc="Search for files (even inside tar/zip/7z/rar) using a SQL-WHERE filter"
+url="https://github.com/${_pkgauthor}/${_pkgname}"
+_urlraw="https://raw.githubusercontent.com/${_pkgauthor}/${_pkgname}/v${pkgver}"
 arch=('x86_64' 'arm64' 'riscv64')
-url="https://github.com/laktak/${_pkgname}"
-_urlraw="https://raw.githubusercontent.com/laktak/${_pkgname}/v${pkgver}"
 license=('MIT')
 provides=("${_pkgname}")
-conflicts=(
-	"${_pkgname}"
-	"${_pkgname}-git"
-)
+conflicts=("${_pkgname}" "${_pkgname}-git")
 makedepends=('help2man')
 source=("LICENSE_${pkgver}::${_urlraw}/LICENSE"
 		"README_${pkgver}.md::${_urlraw}/README.md")
