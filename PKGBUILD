@@ -12,8 +12,8 @@ pkgdesc="Full screen ncurses traceroute tool, mtr v0.85 fork"
 arch=('x86_64' 'aarch64')
 url="https://github.com/yvs2014/$pkgname"
 license=('GPL-2.0')
-depends=('ncurses' 'libidn2' 'libcap')
-makedepends=('git' 'sed' 'gcc' 'meson' 'pkgconf')
+depends=('ncurses' 'libcap')
+makedepends=('git' 'gcc' 'meson' 'pkgconf')
 options=(strip !debug)
 
 conflicts=('mtr' 'mtr-gtk')
@@ -24,6 +24,14 @@ provides=("$_bin")
 build() {
   arch-meson "$pkgname" "$_build"
   meson compile -C "$_build"
+}
+
+post_install() {
+  setcap 'cap_net_raw+ep' "usr/bin/$_bin" || :
+}
+
+post_upgrade() {
+  post_install
 }
 
 package() {
