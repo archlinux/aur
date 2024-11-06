@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=jm-desktop-bin
-pkgver=1.7.1
+pkgver=1.8.1
 _electronversion=33
 pkgrel=1
 pkgdesc="A jm comic desktop app by react + electron.Prebuilt version.一个禁漫的第三方客户端"
@@ -23,7 +23,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.zip::${url}/releases/download/v${pkgver}/${pkgname%-bin}-Linux-${pkgver}.zip"
     "${pkgname%-bin}-${pkgver}.png::https://raw.githubusercontent.com/Dedicatus546/jm-desktop/v${pkgver}/public/png/512x512.png"
 )
-sha256sums=('5ebe3f4ff60dc838f714dced4b2321aa1077d10abd4275cdbfda0997d0ae487f'
+sha256sums=('432b84df8554fdc3ed3f06a7331e5ceddfb65242f6cefbb3ed38e2b4e312b366'
             'b09140b89c05bcf1bfa0f0db74aa55f83b4fdbc4cd6955efeb539631f57d4528')
 build() {
     install -Dm755 -d "${srcdir}/usr/"{bin,lib/"${pkgname%-bin}"}
