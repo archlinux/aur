@@ -1,6 +1,6 @@
 pkgbase = openscad-nopscadlib-git
 	pkgdesc = Library of parts modelled in OpenSCAD and a framework for making projects.
-	pkgver = r1549.70fd7fb
+	pkgver = 21.32.0+r1549+70fd7fbe1
 	pkgrel = 1
 	url = https://github.com/nophead/NopSCADlib
 	install = openscad-nopscadlib-git.install

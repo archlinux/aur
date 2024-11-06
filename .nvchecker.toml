@@ -1,0 +1,3 @@
+[openscad-nopscadlib-git]
+source="cmd"
+cmd="~/nvchecker/github_version.sh nophead NopSCADlib v"
