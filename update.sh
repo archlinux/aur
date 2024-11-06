@@ -40,9 +40,6 @@ if [[ "$SudachiDict_DATE" != "$SUDACHI_DATE" ]];then
     echo "${SudachiDict_DATE}"
     UPDATED_FLAG=1
 fi
-if [[ "$UPDATED_FLAG" == "1" ]]; then
-    ./init-clone.sh
-fi
 if [[ "$SudachiDict_DATE" != "$SUDACHI_DATE" ]];then
     sed -i 's|^_sudachidict_date=.*$|_sudachidict_date='"${SudachiDict_DATE}"'|' PKGBUILD*
     rm -f *_lex.zip
