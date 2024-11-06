@@ -1,6 +1,6 @@
 pkgbase = python38
 	pkgdesc = Major release 3.8 of the Python high-level programming language
-	pkgver = 3.8.19
+	pkgver = 3.8.20
 	pkgrel = 1
 	url = https://www.python.org/
 	arch = i686
@@ -18,11 +18,11 @@ pkgbase = python38
 	depends = zlib
 	optdepends = tk: for tkinter
 	optdepends = sqlite
-	source = https://www.python.org/ftp/python/3.8.19/Python-3.8.19.tar.xz
-	source = https://www.python.org/ftp/python/3.8.19/Python-3.8.19.tar.xz.asc
+	source = https://www.python.org/ftp/python/3.8.20/Python-3.8.20.tar.xz
+	source = https://www.python.org/ftp/python/3.8.20/Python-3.8.20.tar.xz.asc
 	source = mpdecimal-2.5.1.patch
 	validpgpkeys = E3FF2839C048B25C084DEBE9B26995E310250568
-	sha256sums = d2807ac69f69b84fd46a0b93bbd02a4fa48d3e70f4b2835ff0f72a2885040076
+	sha256sums = 6fb89a7124201c61125c0ab4cf7f6894df339a40c02833bfd28ab4d7691fafb4
 	sha256sums = SKIP
 	sha256sums = 8eb389be1babe03a0231001dc16dd2d69a3ea0fbf6b8c976a580787e7ff1594c
 
