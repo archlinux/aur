@@ -13,6 +13,7 @@ pkgbase = dune-logging
 	depends = fmt
 	optdepends = doxygen: Generate the class documentation from C++ sources
 	optdepends = graphviz: Graph visualization software
+	options = !emptydirs
 	source = https://gitlab.dune-project.org/staging/dune-logging/-/archive/releases/2.8/dune-logging-releases-2.8.tar.gz
 	source = fmt9.patch::https://gitlab.dune-project.org/staging/dune-logging/-/commit/39e3ca6fad529e44b1d59463af3288870d61e916.patch
 	sha512sums = 3b57d0e57c55195ee20be617f308d8294c7fe87ac8b6d5fbc3d03e12229b6a9f331e4391651a6a8876ab2ffa3e147e10bfddae45dd5f700ca1ebe93f7f9b1215
