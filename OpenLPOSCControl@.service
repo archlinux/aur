@@ -1,0 +1,12 @@
+[Unit]
+Description=OpenLP OSC Control Service
+After=local-fs.target network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/openLPOSCControl --OpenLPConfigurationFile=%h/.config/openlp.org.conf
+Restart=on-failure
+User=%I
+
+[Install]
+WantedBy=multi-user.target
