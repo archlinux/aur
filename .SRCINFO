@@ -1,11 +1,13 @@
 pkgbase = revolt-desktop-appimage
 	pkgdesc = User-first chat platform built with modern web technologies
 	pkgver = 1.0.8
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/revoltchat/desktop
 	arch = x86_64
 	license = AGPL-3.0-only
 	makedepends = desktop-file-utils
+	provides = revolt-desktop
+	conflicts = revolt-desktop
 	options = !strip
 	source = Revolt-1.0.8.AppImage::https://github.com/revoltchat/desktop/releases/download/v1.0.8/Revolt-1.0.8.AppImage
 	sha256sums = 2f6dc97b9a7b56642938b0be21f990464d8228a526e2b34176c60bbea2d39516

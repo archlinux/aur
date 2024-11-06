@@ -6,7 +6,7 @@
 _pkgname="revolt-desktop"
 pkgname="$_pkgname-appimage"
 pkgver=1.0.8
-pkgrel=2
+pkgrel=3
 pkgdesc="User-first chat platform built with modern web technologies"
 url="https://github.com/revoltchat/desktop"
 license=('AGPL-3.0-only')
@@ -15,6 +15,9 @@ arch=('x86_64')
 makedepends=(
   'desktop-file-utils'
 )
+
+provides=("$_pkgname")
+conflicts=("$_pkgname")
 
 options=('!strip')
 
@@ -48,5 +51,5 @@ END
   install -dm755 "$pkgdir/usr/bin"
   ln -srf "$pkgdir/$_install_path/$_pkgname/$_pkgname" "$pkgdir/usr/bin/$_pkgname"
 
-  chown -R u+rwX,go+rX,go-w "$pkgdir/"
+  chmod -R u+rwX,go+rX,go-w "$pkgdir/"
 }
