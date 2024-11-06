@@ -1,18 +1,18 @@
 # Maintainer: Leonid Murin (Dasperal) <Dasperal1 at gmail dot com>
 pkgname=inter-doom
-pkgver=7.5
+pkgver=8.0
 pkgrel=1
 pkgdesc="Small, functional and simple Doom source port, created with help, efforts and bits of code from people around the world"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url="https://github.com/JNechaevsky/international-doom"
 license=('GPL-2.0-only')
-depends=('sdl2>=2.0.18' 'sdl2_mixer>=2.0.2' 'sdl2_net>=2.0.0' 'libsamplerate' 'fluidsynth>=2.2.0')
+depends=('sdl2>=2.0.18' 'sdl2_mixer>=2.0.2' 'sdl2_net>=2.0.0' 'libsamplerate' 'fluidsynth')
 makedepends=(cmake)
 optdepends=('doom1-wad: Doom shareware game data')
 conflicts=('inter-doom-git')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/JNechaevsky/international-doom/archive/refs/tags/${pkgver}.tar.gz"
         001_install_rule.patch)
-b2sums=('1bee87ea72cd367872808b632ddded5c58fc9b10aa8723751cf28f8f22b5388f3797ba117e914678a6060c4f68dee0ab69e9ed5b671ddfda62cc0f74fefbd000'
+b2sums=('757b1192d3436f0ec750be20a4c3b4397ed55ead374ac513796d7a1256002e37445523a79e8e4efaf9a7fded955c6fdd81ca362a25f77df54eba19115179d008'
         '431d360f7a6fe903fdae293d4bd217d90a6153e7f8093d313e4ce7e1be36a0abe535e3333fb21467d1d5c4ade6055ab268a25585f267566345c20fb6d3381979')
 
 prepare() {
