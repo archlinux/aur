@@ -1,7 +1,7 @@
 pkgbase = kdeconnect-git
 	pkgdesc = Adds communication between KDE and your smartphone
 	pkgver = 24.08.2+r4682+626dc1006
-	pkgrel = 1
+	pkgrel = 2
 	url = https://kdeconnect.kde.org/
 	arch = x86_64
 	license = GPL-2.0-or-later
@@ -9,6 +9,7 @@ pkgbase = kdeconnect-git
 	makedepends = kdoctools
 	makedepends = kpackage
 	makedepends = wayland-protocols
+	makedepends = git
 	depends = dbus
 	depends = gcc-libs
 	depends = glibc

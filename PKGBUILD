@@ -8,7 +8,7 @@
 pkgname=kdeconnect-git
 _pkgname=kdeconnect
 pkgver=24.08.2+r4682+626dc1006
-pkgrel=1
+pkgrel=2
 pkgdesc='Adds communication between KDE and your smartphone'
 arch=('x86_64')
 url='https://kdeconnect.kde.org/'
@@ -52,7 +52,8 @@ depends=(dbus
 makedepends=(extra-cmake-modules
             kdoctools
             kpackage # kpackage_install_package
-            wayland-protocols)
+            wayland-protocols
+            git)
 optdepends=('python-nautilus: Nautilus integration'
             'qt6-tools: for some runcommand plugin actions'
             'sshfs: remote filesystem browser')
