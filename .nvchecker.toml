@@ -1,0 +1,6 @@
+[dune-grid]
+source = "gitlab"
+gitlab = "core/dune-grid"
+host = "gitlab.dune-project.org"
+use_max_tag = true
+prefix = "v"
