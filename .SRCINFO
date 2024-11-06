@@ -9,7 +9,6 @@ pkgbase = tmux-rime
 	arch = aarch64
 	license = GPL3
 	makedepends = xmake
-	makedepends = git
 	depends = librime
 	depends = glib2
 	depends = tmux
