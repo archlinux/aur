@@ -2,9 +2,9 @@
 
 pkgname='goxel-voxel-editor-bin'
 _pkgname='goxel'
-appname='goxel'
+_appname='goxel'
 pkgver=0.15.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Open Source 3D voxel editor for Mac, Windows and Linux. Release version."
 arch=('i686' 'x86_64')
 url="https://goxel.xyz/"
@@ -25,8 +25,8 @@ prepare() {
 
 build() {
     # Adjust .desktop so it will work outside of AppImage container
-    sed -i -E "s|Exec=${appname}|Exec=env DESKTOPINTEGRATION=false /usr/bin/${appname}|"\
-        "squashfs-root/${appname}.desktop"
+    sed -i -E "s|Exec=${_appname}|Exec=env DESKTOPINTEGRATION=false /usr/bin/${_appname}|"\
+        "squashfs-root/${_appname}.desktop"
     # Fix permissions; .AppImage permissions are 700 for all directories
     chmod -R a-x+rX squashfs-root/usr
 }
@@ -37,8 +37,8 @@ package() {
     #install -Dm644 "${srcdir}/squashfs-root/LICENSE" "${pkgdir}/opt/${pkgname}/LICENSE"
 
     # Desktop file
-    install -Dm644 "${srcdir}/squashfs-root/${appname}.desktop"\
-            "${pkgdir}/usr/share/applications/${appname}.desktop"
+    install -Dm644 "${srcdir}/squashfs-root/${_appname}.desktop"\
+            "${pkgdir}/usr/share/applications/${_appname}.desktop"
 
     # Icon images
     install -dm755 "${pkgdir}/usr/share/"
@@ -46,7 +46,7 @@ package() {
 
     # Symlink executable
     install -dm755 "${pkgdir}/usr/bin"
-    ln -s "/opt/${pkgname}/${pkgname}.AppImage" "${pkgdir}/usr/bin/${appname}"
+    ln -s "/opt/${pkgname}/${pkgname}.AppImage" "${pkgdir}/usr/bin/${_appname}"
 
     # Symlink license
     #install -dm755 "${pkgdir}/usr/share/licenses/${pkgname}/"
