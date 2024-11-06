@@ -1,6 +1,6 @@
 pkgbase = kdeconnect-git
 	pkgdesc = Adds communication between KDE and your smartphone
-	pkgver = 24.08.2+r4680+635024d96
+	pkgver = 24.08.2+r4682+626dc1006
 	pkgrel = 1
 	url = https://kdeconnect.kde.org/
 	arch = x86_64
