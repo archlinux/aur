@@ -1,0 +1,16 @@
+Index: libunique-1.1.6/tests/test-unique.c
+===================================================================
+--- libunique-1.1.6.orig/tests/test-unique.c	2009-09-21 14:31:14.000000000 +0200
++++ libunique-1.1.6/tests/test-unique.c	2011-10-27 20:31:38.869186701 +0200
+@@ -82,9 +82,11 @@
+                                    GTK_DIALOG_DESTROY_WITH_PARENT,
+                                    GTK_MESSAGE_INFO,
+                                    GTK_BUTTONS_CLOSE,
++                                   "%s",
+                                    title);
+   if (message)
+     gtk_message_dialog_format_secondary_text (GTK_MESSAGE_DIALOG (dialog),
++                                              "%s",
+                                               message);
+ 
+   gtk_window_set_urgency_hint (GTK_WINDOW (dialog), TRUE);

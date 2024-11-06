@@ -1,17 +1,50 @@
-# Maintainer:   LeSnake <dev.lesnake@posteo.de>
-
+# Maintainer: envolution
+# Contributor: Brian Bidulock <bidulock@openss7.org>
+# Contributor:   LeSnake <dev.lesnake@posteo.de>
+ 
 pkgname=libunique
 pkgver=1.1.6
-pkgrel=9
-pkgdesc='Library for writing single instance applications for GTK3'
+pkgrel=10
+pkgdesc="Library for writing single instance applications"
 arch=('i686' 'x86_64')
-url='https://wiki.gnome.org/Attic/LibUnique'
-license=('GPL')
+license=('LGPL')
 depends=('gtk2')
-#conflicts=('libunique3')
-source=("https://github.com/LeSnake04/aur-lesnake04-sources/raw/main/libunique/libunique-1.1.6-8-x86_64.tar.gz")
-sha256sums=('3f1aa2a6adbda9c9624d1ad131dd87802d76218649bd884e7f0ad3eb679f70b7')
+makedepends=('gtk-doc' 'gobject-introspection')
+url="http://live.gnome.org/LibUnique"
+source=(
+        "http://download.gnome.org/sources/${pkgname}/1.1/${pkgname}-${pkgver}.tar.bz2"
+        00git_g_const_return.patch
+        01_format-security.patch
+        99_ltmain_as-needed.patch
+)        
+sha256sums=('e5c8041cef8e33c55732f06a292381cb345db946cf792a4ae18aa5c66cdd4fbb'
+            'b70b603c4a40d07d40caf23de63f88bb8c7cc90b88c62c84dcc45d1db4b0b921'
+            'eda843d01ef27c56eb6d0753a70d658412e0acb8324b0e8c59a60594387c912d'
+            '01829263fae69782d7558c6e50a4b1c9885b9309c5198844eafa9005fc470631')
 
-package(){
-   mv $srcdir/usr $pkgdir/usr
+prepare() {
+  cd $pkgname-$pkgver
+  patch -Np1 -i "${srcdir}/00git_g_const_return.patch"
+  patch -Np1 -i "${srcdir}/01_format-security.patch"
+  patch -Np1 -i "${srcdir}/99_ltmain_as-needed.patch"
+}
+
+build() {
+  cd $pkgname-$pkgver
+  autoreconf -fi
+  ./configure --prefix=/usr --sysconfdir=/etc \
+      --localstatedir=/var --disable-static \
+      --disable-dbus \
+      --disable-maintainer-flags
+  # Fight unused direct deps
+  sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0 /g' -e 's/    if test "$export_dynamic" = yes && test -n "$export_dynamic_flag_spec"; then/      func_append compile_command " -Wl,-O1,--as-needed"\n\0/' libtool
+  make
+}
+
+package() {
+  cd $pkgname-$pkgver
+  make DESTDIR="${pkgdir}" install
+
+  # Remove documentation, provided by libunique
+  rm -r "$pkgdir/usr/share/gtk-doc"
 }
