@@ -8,7 +8,7 @@ pkgbase = davinci-convert
 	makedepends = gcc
 	makedepends = make
 	depends = ffmpeg
-	source = davinci-convert-1.0.0.tar.gz::https://github.com/tkmxqrdxddd/davinci-video-converter/archive/refs/tags/1.0.0.tar.gz
+	source = davinci-convert-1.0.1.tar.gz::https://github.com/tkmxqrdxddd/davinci-video-converter/archive/refs/tags/1.0.1.tar.gz
 	sha256sums = SKIP
 
 pkgname = davinci-convert
