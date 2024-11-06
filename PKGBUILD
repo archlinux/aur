@@ -3,9 +3,9 @@
 # Contributor: Tu Yu-Hsuan <dobe0331@gmail.com>
 
 pkgname=orfeo-toolbox
-pkgver=9.0.0
-_pkgver=9.0
-pkgrel=6
+pkgver=9.1.0
+_pkgver=9.1
+pkgrel=1
 pkgdesc="ORFEO Toolbox (OTB) is an open source library of image processing algorithms"
 arch=(x86_64 i686)
 url="http://www.orfeo-toolbox.org"
@@ -27,8 +27,8 @@ source=("${pkgname}-${pkgver}.tar.gz::https://www.orfeo-toolbox.org/packages/OTB
 		"git+https://github.com/jmichel-otb/GKSVM.git")
 noextract=()
 
-md5sums=('96514ae349ded4498d1e105694f7af5a'
-         '28eca0a5a7d488745b62c23ea3a3f0bf'
+md5sums=('5755c0f319ab374e3b433d1b15c96149'
+         'bd00bd7eb67a29635a4a2bc0b6682e29'
          'SKIP')
 
 
@@ -40,14 +40,10 @@ prepare() {
 	cd 	$srcdir/  
 	cp -ra $srcdir/GKSVM $srcdir/Modules/Remote
 	#commenting version detection for FindMUParser.cmake since it causes an error
-	sed -i '62 s/^/#/' $srcdir/CMake/FindMuParser.cmake 
-	sed -i '63 s/^/#/' $srcdir/CMake/FindMuParser.cmake 
-	
-}
-
-prepare() {
-    cd $srcdir
+	#sed -i '62 s/^/#/' $srcdir/CMake/FindMuParser.cmake
+	#sed -i '63 s/^/#/' $srcdir/CMake/FindMuParser.cmake
     patch -Np1 -i ../package.patch
+	
 }
 
 
@@ -108,6 +104,6 @@ package() {
   cd "$srcdir/"build
   make DESTDIR="$pkgdir" install
   mkdir ${pkgdir}/usr/bin/tools/
-  cp "$srcdir/Packaging/Files/post_install.sh" "${pkgdir}/usr/bin/tools/"
+  install -D -m644 "$srcdir/build/post_install.sh" "${pkgdir}/usr/bin/tools/"
 
 }
