@@ -2,7 +2,7 @@
 # Contributor: Kyle Keen <keenerd@gmail.com>
 
 pkgname=hyperrogue
-pkgver=v13.0v
+pkgver=13.0v
 pkgrel=1
 pkgdesc="You are a lone outsider in a strange, non-Euclidean hyperbolic world"
 arch=('i686' 'x86_64')
@@ -12,14 +12,14 @@ options=(!strip !debug)
 depends=('sdl_gfx' 'sdl_ttf' 'sdl_mixer' 'mesa' 'ttf-dejavu')
 makedepends=('glu' 'glew')
 source=(
-  "hyperrogue-$pkgver.tgz::https://github.com/zenorogue/hyperrogue/archive/refs/tags/${pkgver}.tar.gz"
+  "hyperrogue-$pkgver.tgz::https://github.com/zenorogue/hyperrogue/archive/refs/tags/v${pkgver}.tar.gz"
   "hyperrogue.sh"
 )
 sha256sums=('e02a4ada30c9167be9de723a46e83c45b0d2f0f37150dc5fcdef206b21e28303'
             'd8b6b3d6d8bfe7d7ce97e2fd2a35d148505890dc9c6ea972a7ecb2453245b032')
 
 build() {
-    cd "$srcdir/$pkgname-${pkgver:1}"
+    cd "$srcdir/$pkgname-${pkgver}"
     export HYPERROGUE_USE_GLEW=1
     export HYPERROGUE_USE_PNG=1
     make
@@ -27,7 +27,7 @@ build() {
 
 package() {
     install -Dm755 hyperrogue.sh "${pkgdir}/usr/bin/hyperrogue"
-    cd "${srcdir}/${pkgname}-${pkgver:1}"
+    cd "${srcdir}/${pkgname}-${pkgver}"
     install -d ${pkgdir}/usr/bin ${pkgdir}/usr/share/hyperrogue/{sounds,music,honeycombs} ${pkgdir}/usr/share/applications
     install -Dm755 ./hyperrogue "${pkgdir}/usr/share/${pkgname}/app"
     install -Dm644 ./*ttf "${pkgdir}/usr/share/${pkgname}"

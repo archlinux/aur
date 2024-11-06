@@ -1,0 +1,5 @@
+[hyperrogue]
+source="github"
+github="zenorogue/hyperrogue"
+use_latest_release=true
+prefix="v"

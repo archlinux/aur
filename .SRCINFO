@@ -1,6 +1,6 @@
 pkgbase = hyperrogue
 	pkgdesc = You are a lone outsider in a strange, non-Euclidean hyperbolic world
-	pkgver = v13.0v
+	pkgver = 13.0v
 	pkgrel = 1
 	url = http://www.roguetemple.com/z/hyper.php
 	arch = i686
@@ -15,7 +15,7 @@ pkgbase = hyperrogue
 	depends = ttf-dejavu
 	options = !strip
 	options = !debug
-	source = hyperrogue-v13.0v.tgz::https://github.com/zenorogue/hyperrogue/archive/refs/tags/v13.0v.tar.gz
+	source = hyperrogue-13.0v.tgz::https://github.com/zenorogue/hyperrogue/archive/refs/tags/v13.0v.tar.gz
 	source = hyperrogue.sh
 	sha256sums = e02a4ada30c9167be9de723a46e83c45b0d2f0f37150dc5fcdef206b21e28303
 	sha256sums = d8b6b3d6d8bfe7d7ce97e2fd2a35d148505890dc9c6ea972a7ecb2453245b032
