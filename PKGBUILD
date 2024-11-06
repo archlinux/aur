@@ -1,7 +1,7 @@
 pkgname=smbx
 _pkgname=SMBX
 pkgver=1.3.6.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Super Mario Bros. X is a Mario fan game originally made by Andrew Spinks in the year 2009 and supported by him up to 2011. This game combines various aspects of Super Mario Bros."
 arch=('pentium4' 'i386' 'i686' 'x86_64' 'aarch64')
 url="https://github.com/Wohlstand/TheXTech"
@@ -21,7 +21,7 @@ package() {
     # Packaging files
     cd "$srcdir"
     rm -rf thextech-smbx13-assets-full-v$pkgver.7z
-    cp -r "smbx.desktop" "$pkgdir/usr/share/applications"
-    cp -r "smbx.png" "$pkgdir/usr/share/pixmaps"
+    install -Dm755 "smbx.desktop" "$pkgdir/usr/share/applications"
+    install -Dm644 "smbx.png" "$pkgdir/usr/share/pixmaps"
     cp -r * "$pkgdir/usr/games/thextech/assets/smbx"
 }

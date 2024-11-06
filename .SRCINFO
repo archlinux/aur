@@ -1,7 +1,7 @@
 pkgbase = smbx
 	pkgdesc = Super Mario Bros. X is a Mario fan game originally made by Andrew Spinks in the year 2009 and supported by him up to 2011. This game combines various aspects of Super Mario Bros.
 	pkgver = 1.3.6.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Wohlstand/TheXTech
 	arch = pentium4
 	arch = i386
