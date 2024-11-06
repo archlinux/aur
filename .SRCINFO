@@ -1,11 +1,12 @@
 pkgbase = clamav-git
 	pkgdesc = Anti-virus toolkit for Unix - Git latest
 	pkgver = 1.4.1+r11250+g52b201762
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.clamav.net/
 	arch = x86_64
 	license = GPL-2.0-only
 	checkdepends = check
+	makedepends = git
 	makedepends = cargo
 	makedepends = cmake
 	makedepends = libmilter

@@ -31,6 +31,7 @@ depends=(
   zlib
 )
 makedepends=(
+  git
   cargo
   cmake
   libmilter
@@ -113,7 +114,7 @@ build() {
 check() {
   cd ${_pkgname}
   if ! ninja -C build test; then
-    error "test failure, rerun in verbose mode"
+    echo "test failure, rerun in verbose mode"
     cat build/Testing/Temporary/LastTest.log
     ctest --test-dir build --rerun-failed --output-on-failure --extra-verbose
     exit 1
