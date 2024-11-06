@@ -1,7 +1,7 @@
 pkgbase = python-openlp-osc-control
 	pkgdesc = Daemon to allow control of OpenLP using OSC control
 	pkgver = 0.1.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/rickprice/openlp-OSC-control
 	arch = any
 	license = MIT

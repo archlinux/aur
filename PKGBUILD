@@ -3,7 +3,7 @@
 pkgname=python-openlp-osc-control
 _reponame=openlposccontrol
 pkgver=0.1.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Daemon to allow control of OpenLP using OSC control"
 url="https://github.com/rickprice/openlp-OSC-control"
 arch=(any)
@@ -29,7 +29,7 @@ build() {
 }
 
 package() {
-    install -Dm644 OpenLPOSCControl@.service -t "$pkgdir"/usr/lib/systemd/system
+    install -Dm644 OpenLPOSCControl@.service -t "$pkgdir"/lib/systemd/system
 
 	cd "${srcdir}/${_reponame}-${pkgver}"
 
