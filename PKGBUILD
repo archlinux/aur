@@ -2,16 +2,16 @@
 
 pkgname=openarc-unofficial-patches
 _pkgname=openarc
-pkgver=1.0.0
-pkgrel=7
+pkgver=1.1.0
+pkgrel=1
 pkgdesc="OpenARC with patches from not-yet-merged PRs - by flowerysong"
 arch=(x86_64)
 url="https://github.com/flowerysong/OpenARC"
 license=('BSD-2-Clause' 'LicenseRef-Sendmail-1.1')
-depends=('sh' 'glibc' 'jansson' 'openssl' 'libbsd' 'libmilter')
+depends=('sh' 'glibc' 'jansson' 'openssl' 'libbsd' 'libidn2')
 optdepends=('smtp-server: for using a local mail server'
 	    'bind: required only for signature verification (alternatives available)')
-makedepends=('git' 'python-miltertest')
+makedepends=('git' 'python-miltertest' 'libmilter')
 conflicts=('openarc' 'openarc-unofficial-patches-git')
 #source=("git+https://github.com/flowerysong/OpenARC.git#tag=${pkgver}"
 source=("https://github.com/flowerysong/OpenARC/releases/download/v${pkgver}/${_pkgname}-${pkgver}.tar.gz"
@@ -19,7 +19,7 @@ source=("https://github.com/flowerysong/OpenARC/releases/download/v${pkgver}/${_
         openarc.sysusers
         openarc.tmpfiles)
 backup=('etc/openarc/openarc.conf')
-sha256sums=('d8c0fa7d9f4ee37260f3132ec30eb9f19b097de93dbdf67c088278d38e738948'
+sha256sums=('39e3327ea5e868633891cb3a04e9528f18a2efa6e6576c072881e1331fef0dab'
             'd438b4a2e0ab5b247938213da7e8062fa5865e750e4f89d41471311edc163022'
             '31c399c0e3a69bb845b033ab5c0ad92d44cacb0fd58e0113cd1901e75900515e'
             'a27619fe3bbea2a0fd7c555851089722b1d67818bc014d1dce20620b5eb4bbc5')
@@ -38,7 +38,7 @@ build() {
      --sysconfdir="/etc/_pkgname" \
      --localstatedir=/var \
      --disable-static
-  make
+  LDFLAGS+=' -Wl,-z,cet-report=error' make
 }
 
 check() {
