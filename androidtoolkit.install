@@ -1,11 +1,11 @@
 post_install() {
-    echo "Installing desktop file..."
-	xdg-desktop-menu install /opt/androidtoolkit/lib/androidtoolkit-AndroidToolKit.desktop
-    echo "Done."
+  echo "Installing desktop file..."
+  xdg-desktop-menu install /opt/androidtoolkit/lib/androidtoolkit-AndroidToolKit.desktop
+  echo "Done."
 }
 
 pre_remove() {
-    echo "Removing desktop file..."
-	xdg-desktop-menu uninstall /opt/androidtoolkit/lib/androidtoolkit-AndroidToolKit.desktop
-    echo "Done."
+  echo "Removing desktop file..."
+  xdg-desktop-menu uninstall /opt/androidtoolkit/lib/androidtoolkit-AndroidToolKit.desktop
+  echo "Done."
 }
