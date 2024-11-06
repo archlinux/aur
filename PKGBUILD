@@ -3,13 +3,14 @@
 pkgname=eco-paste-beta-bin
 _pkgname="EcoPaste"
 pkgver=0.4.0-beta.1
-pkgrel=1
+pkgrel=2
 pkgdesc="内测预览版!!!🎉跨平台的剪贴板管理工具 | Cross-platform clipboard management tool ."
 arch=('any')
 url="https://github.com/EcoPasteHub/EcoPaste"
 license=('Apache-2.0')
 provides=("eco-paste" "EcoPaste" "eco-paste-beta")
 conflicts=("eco-paste" "eco-paste-git" "eco-paste-appimage" "eco-paste-bin")
+depends=("webkit2gtk-4.1")
 optdepends=()
 _ocr_languages=(afr amh ara asm aze_cyrl aze bel ben bod bos bre bul cat ceb ces chi_sim chi_sim_vert
 chi_tra chi_tra_vert chr cos cym dan deu div dzo ell eng enm epo est eus fao fas fil fin fra frk
@@ -46,9 +47,11 @@ package() {
   # desktop
   install -Dm644 "${srcdir}/build/usr/share/applications/"*.desktop -t "${pkgdir}/usr/share/applications"
 
-  # icon
   cd "${srcdir}/build/";
+  # icon
   find "usr/share/icons" -type f -exec install -Dm644 {} "${pkgdir}/{}" \;
+  # lib
+  find "usr/lib/${_pkgname}/assets" -type f -exec install -Dm644 {} "${pkgdir}/{}" \;
 
   # license
   install -Dm644 "${srcdir}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
