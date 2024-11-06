@@ -1,7 +1,7 @@
 pkgname=lcm
 pkgver=1.5.0
 pkgrel=1
-pkgdesc="Lightweight real-time networking library"
+pkgdesc="Lightweight Communications and Marshalling"
 arch=('i686' 'x86_64' 'armv7h')
 url="https://github.com/lcm-proj/lcm"
 license=('LGPL')
