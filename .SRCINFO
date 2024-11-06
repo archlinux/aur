@@ -1,0 +1,18 @@
+pkgbase = python-alive-progress
+	pkgdesc = A new kind of Progress Bar, with real-time throughput, ETA, and very cool animations.
+	pkgver = 3.2.0
+	pkgrel = 1
+	url = https://github.com/rsalmei/alive-progress
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	depends = python-about-time
+	depends = python-grapheme
+	source = https://github.com/rsalmei/alive-progress/archive/refs/tags/v3.2.0.tar.gz
+	sha512sums = b7b3840e4e282bb95f85cf054abc0eff49364872ea9655585941b5e69e555ea516b39fbbe737c66ba65246ef5f1e3cfb1da3191500cb22540ccd66af67fb0e8f
+
+pkgname = python-alive-progress
