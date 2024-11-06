@@ -1,6 +1,6 @@
 pkgbase = arch-update
 	pkgdesc = An update notifier & applier that assists you with important pre / post update tasks
-	pkgver = 3.3.0
+	pkgver = 3.4.0
 	pkgrel = 1
 	url = https://github.com/Antiz96/arch-update
 	arch = any
@@ -18,15 +18,16 @@ pkgbase = arch-update
 	depends = python-pyqt6
 	depends = qt6-svg
 	depends = glib2
-	optdepends = yay: AUR Packages support
 	optdepends = paru: AUR Packages support
+	optdepends = yay: AUR Packages support
+	optdepends = pikaur: AUR Packages support
 	optdepends = flatpak: Flatpak Packages support
 	optdepends = libnotify: Desktop notifications support on new available updates
 	optdepends = vim: Default merge program for pacdiff
 	optdepends = qt6-wayland: Systray applet support on Wayland
 	optdepends = sudo: Privilege elevation
 	optdepends = doas: Privilege elavation
-	source = arch-update-3.3.0.tar.gz::https://github.com/Antiz96/arch-update/archive/v3.3.0.tar.gz
-	sha256sums = f8eeae432de5ba4e880f9b4437070722372b005123716433347e6319bd2e4f3c
+	source = arch-update-3.4.0.tar.gz::https://github.com/Antiz96/arch-update/archive/v3.4.0.tar.gz
+	sha256sums = d26011b2a01402cfaa4a98392c512d8de99657e587ee4a258c22626310eb2a98
 
 pkgname = arch-update
