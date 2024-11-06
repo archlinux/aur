@@ -1,5 +1,5 @@
 pkgname=lcm-git
-pkgver=20240627.r1424.64e149f
+pkgver=20241030.r1482.8489dde
 pkgrel=1
 pkgdesc="Lightweight Communications and Marshalling"
 arch=('i686' 'x86_64' 'armv7h')
