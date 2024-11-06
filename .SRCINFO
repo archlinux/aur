@@ -1,7 +1,7 @@
 pkgbase = revolt-desktop-appimage
-	pkgdesc = Revolt Desktop App
+	pkgdesc = User-first chat platform built with modern web technologies
 	pkgver = 1.0.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/revoltchat/desktop
 	arch = x86_64
 	license = AGPL-3.0-only
