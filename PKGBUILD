@@ -2,14 +2,13 @@
 # Contributor: BigfootACA <bigfoot@classfun.cn>
 
 pkgname=python-pycadf
-pkgver=3.1.1
-pkgrel=2
+pkgver=4.0.0
+pkgrel=1
 pkgdesc="CADF Python module"
 arch=(any)
 url="https://opendev.org/openstack/pycadf"
 license=(Apache-2.0)
 depends=('python'
-         'python-six'
          'python-oslo-config'
          'python-oslo-serialization'
          'python-pytz'
@@ -29,7 +28,7 @@ checkdepends=('python-hacking'
               'python-stestr'
               'python-debtcollector')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-b2sums=('22163ec3876386d1f516f1888eca82b1d103d5c48c9efc5bb1a83af62356ea39dcdfb404ac8724d5cebac2fe3ce1774590b6d7584f24f47d9e1ed04d3b6b3e8b')
+b2sums=('2833e1cf98e375a9d536f836652a158278f6a5fc624089a31cbc1f5e475052f9ed64f3ade33bf12c04f7622c2164895bd2453cbe945c38b56b431a3812c92771')
 backup=("etc/${pkgname#python-}/trove_api_audit_map.conf"
         "etc/${pkgname#python-}/swift_api_audit_map.conf"
         "etc/${pkgname#python-}/panko_api_audit_map.conf"

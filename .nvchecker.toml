@@ -1,0 +1,3 @@
+[python-pycadf]
+source = "git"
+git = "https://opendev.org/openstack/pycadf.git"

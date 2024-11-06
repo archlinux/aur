@@ -1,7 +1,7 @@
 pkgbase = python-pycadf
 	pkgdesc = CADF Python module
-	pkgver = 3.1.1
-	pkgrel = 2
+	pkgver = 4.0.0
+	pkgrel = 1
 	url = https://opendev.org/openstack/pycadf
 	arch = any
 	license = Apache-2.0
@@ -19,7 +19,6 @@ pkgbase = python-pycadf
 	makedepends = tar
 	makedepends = python-pbr
 	depends = python
-	depends = python-six
 	depends = python-oslo-config
 	depends = python-oslo-serialization
 	depends = python-pytz
@@ -36,7 +35,7 @@ pkgbase = python-pycadf
 	backup = etc/pycadf/glance_api_audit_map.conf
 	backup = etc/pycadf/cinder_api_audit_map.conf
 	backup = etc/pycadf/ceilometer_api_audit_map.conf
-	source = python-pycadf-3.1.1.tar.gz::https://opendev.org/openstack/pycadf/archive/3.1.1.tar.gz
-	b2sums = 22163ec3876386d1f516f1888eca82b1d103d5c48c9efc5bb1a83af62356ea39dcdfb404ac8724d5cebac2fe3ce1774590b6d7584f24f47d9e1ed04d3b6b3e8b
+	source = python-pycadf-4.0.0.tar.gz::https://opendev.org/openstack/pycadf/archive/4.0.0.tar.gz
+	b2sums = 2833e1cf98e375a9d536f836652a158278f6a5fc624089a31cbc1f5e475052f9ed64f3ade33bf12c04f7622c2164895bd2453cbe945c38b56b431a3812c92771
 
 pkgname = python-pycadf
