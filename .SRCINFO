@@ -1,0 +1,19 @@
+pkgbase = pipevcr-bin
+	pkgdesc = Like asciinema but for pipes
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/laktak/pipevcr
+	arch = x86_64
+	license = MIT
+	makedepends = help2man
+	provides = pipevcr
+	conflicts = pipevcr
+	conflicts = pipevcr-git
+	source = LICENSE_0.1.1::https://raw.githubusercontent.com/laktak/pipevcr/v0.1.1/LICENSE
+	source = README_0.1.1.md::https://raw.githubusercontent.com/laktak/pipevcr/v0.1.1/README.md
+	sha256sums = b04ffed3126b1640db6a77dbf8990785723ffc59d07b808e663830f04768bbf5
+	sha256sums = 6b9bcd6760aa7683ade74e7802a085965ac09dc647c73712d5208458f3acb409
+	source_x86_64 = pipevcr_0.1.1_x86_64.tar.gz::https://github.com/laktak/pipevcr/releases/download/v0.1.1/pipevcr-linux_amd64.tar.gz
+	sha256sums_x86_64 = 896a7ccd8aafdd7aa9c8740e45c873479d5d19a8f300b0b53d599c1ba2aeac06
+
+pkgname = pipevcr-bin
