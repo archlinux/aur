@@ -26,15 +26,15 @@ validpgpkeys=()
 build() {
 
 	cd "wikilynx-${pkgver}/wikiLYNX"
-	cmake -DCMAKE_BUILD_TYPE=MinSizeRel .
-	cmake --build .
+	cmake -DCMAKE_BUILD_TYPE=MinSizeRel -DCMAKE_INSTALL_PREFIX:PATH=/usr .
+	make
 
 }
 
 package() {
-		
+	
 	cd "wikilynx-${pkgver}/wikiLYNX"
-	install -D "wikilynx" "${pkgdir}/usr/bin/wikilynx"
+	make install
 	install -Dm644 "./assets/images/wikiLYNX_logo.svg" "${pkgdir}/usr/share/pixmaps/wikiLYNX_logo.svg"
 	install -Dm644  "./assets/desktop/wikilynx.desktop" "${pkgdir}/usr/share/applications/wikilynx.desktop"
 	install -Dm644 "../LICENSE" "${pkgdir}/usr/share/licenses/wikilynx/LICENSE"
