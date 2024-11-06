@@ -1,0 +1,19 @@
+pkgbase = rsyncy-bin
+	pkgdesc = A status/progress bar for rsync
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/laktak/rsyncy
+	arch = x86_64
+	license = MIT
+	depends = rsync
+	provides = rsyncy
+	conflicts = rsyncy
+	conflicts = rsyncy-git
+	source = LICENSE_0.2.0::https://raw.githubusercontent.com/laktak/rsyncy/v0.2.0/LICENSE
+	source = README_0.2.0.md::https://raw.githubusercontent.com/laktak/rsyncy/v0.2.0/README.md
+	sha256sums = b04ffed3126b1640db6a77dbf8990785723ffc59d07b808e663830f04768bbf5
+	sha256sums = a06155a2a9fe6b2cb7b83f9a42f89b5b0e0eb3f70c5a3748feb2cfb99790cf97
+	source_x86_64 = rsyncy_0.2.0_x86_64.tar.gz::https://github.com/laktak/rsyncy/releases/download/v0.2.0/rsyncy-linux_amd64.tar.gz
+	sha256sums_x86_64 = f83a0932dded57469722f5a45f73c47c84193454a6f830e2a6a08928c0461c4c
+
+pkgname = rsyncy-bin
