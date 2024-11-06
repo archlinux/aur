@@ -4,7 +4,7 @@
 # Maintainer: tristanrw <hidden>
 
 pkgname=remnote
-pkgver=1.17.1
+pkgver=1.17.12
 pkgrel=1
 pkgdesc="All-in-one workspace for note-taking, learning, organizing thoughts and growing knowledge"
 arch=('x86_64' 'aarch64')
@@ -14,7 +14,7 @@ license=('custom:Commercial')
 _appimage="RemNote-${pkgver}.AppImage"
 source=("https://download2.remnote.io/remnote-desktop2/RemNote-$pkgver.AppImage"
 	remnote.sh)
-sha256sums=('5bc6cdc5ac23931a2fabd0ea44258621a9c2f4721380f403c319a04c66711703'
+sha256sums=('97f4df28136b42b5e91470e1b5c339f18a68fb0884a115e58784974986450010'
             '42aeb6d5c89ab3e15d44617c06f50082cfdb57bce78b04bdf8885b41bf6bd293')
 
 prepare() {
