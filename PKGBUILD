@@ -10,7 +10,7 @@ url="https://github.com/jbj/magicrescue"
 options=(!strip !debug)
 license=('GPL-2.0-or-later')
 source=(
-	http://deb.debian.org/debian/pool/main/m/$pkgname/${pkgname}_${pkgver}.orig.tar.gz
+	"http://deb.debian.org/debian/pool/main/m/$pkgname/${pkgname}_${pkgver}.orig.tar.gz"
 	010_fix-manpage.patch
 	020_add-Perl-preprocessor.patch
 	030_fix-textextract-crash.patch
