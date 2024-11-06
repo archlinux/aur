@@ -1,0 +1,6 @@
+[dune-fem]
+source = "gitlab"
+gitlab = "dune-fem/dune-fem"
+host = "gitlab.dune-project.org"
+use_max_tag = true
+prefix = "v"
