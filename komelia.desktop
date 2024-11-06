@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Komelia
+GenericName=Komga media client
+Exec=/usr/bin/komelia %U
+TryExec=/usr/bin/komelia
+Icon=komelia
+Type=Application
+Categories=Graphics;Viewer;Java
+

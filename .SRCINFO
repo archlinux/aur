@@ -1,0 +1,31 @@
+pkgbase = komelia
+	pkgdesc = Komga media client
+	pkgver = 0.11.0
+	pkgrel = 1
+	url = https://github.com/Snd-R/Komelia
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = git
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = pkgconf
+	makedepends = npm
+	makedepends = gradle
+	makedepends = webkit2gtk-4.1
+	depends = java-runtime>=17
+	depends = libvips
+	optdepends = webkit2gtk-4.1: epub reader support
+	optdepends = onnxruntime: onnxruntime image upscaling support
+	optdepends = cuda: gpu accelerated image upscaling for onnxruntime
+	source = git+https://github.com/Snd-R/Komelia.git
+	source = git+https://github.com/Snd-R/ChipTextField.git
+	source = git+https://github.com/Snd-R/compose-sonner.git
+	source = git+https://github.com/Snd-R/secret-service.git
+	source = git+https://github.com/Snd-R/hkdf.git
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = komelia
