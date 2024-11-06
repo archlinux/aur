@@ -155,6 +155,10 @@ function execApp() {
 	createWrapIfNotExist "${XDG_DOCUMENTS_DIR}"/WeChat
 	echo "GTK_IM_MODULE is ${GTK_IM_MODULE}"
 	echo "QT_IM_MODULE is ${QT_IM_MODULE}"
+	if [ ! ${bwBindPar} ]; then
+		bwBindPar="/$(uuidgen)"
+	fi
+	echo "bwBindPar is ${bwBindPar}"
 	systemd-run \
 	--user \
 	${sdOption} \
@@ -302,7 +306,7 @@ function execApp() {
 		--bind "${XDG_DATA_HOME}/WeChat_Data" \
 			"${XDG_DATA_HOME}/WeChat_Data" \
 		--tmpfs "${XDG_DATA_HOME}/WeChat_Data"/options \
-		${bwBindPar} \
+		--bind-try "${bwBindPar}" "${bwBindPar}" \
 		${bwCamPar} \
 		--setenv XDG_DOCUMENTS_DIR "$HOME/Documents" \
 		--setenv XDG_DATA_HOME "${XDG_DATA_HOME}" \
