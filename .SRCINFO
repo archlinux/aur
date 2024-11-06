@@ -8,6 +8,7 @@ pkgbase = lcm
 	arch = armv7h
 	license = LGPL
 	makedepends = cmake
+	makedepends = java-environment
 	depends = glib2
 	optdepends = java-environment: support for lcm-spy and other GUI tools
 	optdepends = ttf-dejavu: support for lcm-spy and other GUI tools
