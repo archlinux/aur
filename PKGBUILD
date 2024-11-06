@@ -18,7 +18,7 @@ sha512sums=('3f5290d6a105e51f9136c4fb02c5525f059fe581ebcc292d716b2326831f7884ced
 
 build() {
   cmake \
-    -S ${pkgname}-${pkgver} \
+    -S ${pkgname}-releases-${_tarver} \
     -B build-cmake \
     -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_INSTALL_PREFIX=/usr \
@@ -34,5 +34,5 @@ build() {
 
 package() {
   DESTDIR="${pkgdir}" cmake --build build-cmake --target install
-  install -Dm644 ${pkgname}-${pkgver}/COPYING "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 ${pkgname}-releases-${_tarver}/COPYING "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
