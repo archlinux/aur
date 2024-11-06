@@ -3,7 +3,7 @@
 pkgname=prusa-slicer-rc-bin
 _pkgname="${pkgname%-rc-bin}"
 pkgver=2.8.1
-_pkgver="${pkgver//_/-}"
+_pkgver="${pkgver//rc/-rc}"
 _pkgdate=202409181416
 pkgrel=1
 pkgdesc="G-code generator for 3D printers (binary AppImage, includes release candidates)"
