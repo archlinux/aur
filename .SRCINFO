@@ -1,7 +1,7 @@
 pkgbase = sirikali
 	pkgdesc = A Qt/C++ GUI front end to sshfs, ecryptfs-simple, cryfs, gocryptfs, securefs, fscrypt and encfs
 	pkgver = 1.6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://mhogomchungu.github.io/sirikali/
 	arch = i686
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = sirikali
 	makedepends = cmake
 	makedepends = libgcrypt
 	makedepends = gcc-libs
-	depends = qt5-base
+	depends = qt6-base
 	depends = libpwquality
 	depends = hicolor-icon-theme
 	optdepends = lxqt_wallet: use an external lxqt_wallet (must recompile)
