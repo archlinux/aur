@@ -1,0 +1,13 @@
+[Trigger]
+Operation = Upgrade
+Type = Path
+Target = usr/src/*/dkms.conf
+Target = usr/lib/modules/*/build/include/
+Target = usr/lib/modules/*/modules.order
+
+[Action]
+Description = Remove upgraded DKMS modules
+Depends = dkms
+When = PreTransaction
+Exec = /usr/share/libalpm/scripts/dkms -D remove
+NeedsTargets

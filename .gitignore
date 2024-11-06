@@ -1,0 +1,4 @@
+dkms/
+pkg/
+src/
+*.zst

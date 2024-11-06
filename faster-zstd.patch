@@ -1,0 +1,13 @@
+diff --git a/dkms.old b/dkms.new
+index aa23dbf..5d49ac2 100755
+--- a/dkms.old
++++ b/dkms.new
+@@ -1218,7 +1218,7 @@ actual_build()
+         elif [[ $module_compressed_suffix = .xz ]]; then
+             xz --check=crc32 --lzma2=dict=1MiB -f "$built_module" || compressed_module=""
+         elif [[ $module_compressed_suffix = .zst ]]; then
+-            zstd -q -f -T0 -19 "$built_module" || compressed_module=""
++            zstd -q -f -T0 -1 "$built_module" || compressed_module=""
+         fi
+         if [[ -n $compressed_module ]]; then
+             cp -f "$compressed_module" "$base_dir/module/${dest_module_name[$count]}$module_suffix" >/dev/null
