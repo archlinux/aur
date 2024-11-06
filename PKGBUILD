@@ -37,7 +37,7 @@ build() {
     --build-type=None \
     -G 'Unix Makefiles' \
     -DBUILD_SHARED_LIBS=TRUE \
-    -DCMAKE_CXX_STANDARD=17 \
+    -DCMAKE_CXX_STANDARD=20 \
     -DCMAKE_C_COMPILER=gcc \
     -DCMAKE_CXX_COMPILER=g++ \
     -DCMAKE_C_FLAGS='-Wall -fdiagnostics-color=always' \
