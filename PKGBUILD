@@ -1,21 +1,21 @@
 # Maintainer: Sir-Photch <aur@liebender.dev>
 
 pkgname=wicuvanity
-pkgver=1.0
+pkgver=1.1
 pkgrel=1
 pkgdesc='Generate wireguard vanity keys on your Nvidia GPU'
 arch=('x86_64')
-url='https://git.sr.ht/~chrs/wicuvanity'
+url='https://git.sr.ht/~shtrophic/wicuvanity'
 license=('MIT')
 makedepends=('meson' 'cxxopts')
 depends=('cuda')
 
 source=(
 	"$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz"
-	"$pkgname-$pkgver.tar.gz.asc::$url/archive/1.0.tar.gz.asc"
+	"$pkgname-$pkgver.tar.gz.asc::$url/archive/$pkgver.tar.gz.asc"
 )
 validpgpkeys=(10F1CC925057D456798EBF9C1B3EB6FE2D338B4A)
-sha256sums=('b3a09f0a6745ada75209df14c18a94ddae82d80e906ec8483b7bf0388b9ebdf3'
+sha256sums=('2b83867ef2c08f2c16a50869bb600bfbc410b246932e5e7b532e3be9844532d5'
             'SKIP')
 
 build() {
