@@ -2,14 +2,14 @@
 # Contributor: Alexey Trifonov <otaku [at] rambler dot ru>
 # Contributor: Tesx <tesfabpel@gmail.com>
 pkgname=goxel-voxel-editor-git
-pkgver=+r6+ed345a1f5
+pkgver=+r7+1a30ef036
 pkgrel=1
 pkgdesc="Open Source 3D voxel editor for Mac, Windows and Linux. Git version."
 arch=('i686' 'x86_64')
 url="https://goxel.xyz/"
 license=('GPL3')
 groups=()
-makedepends=(scons pkg-config)
+makedepends=(git scons pkg-config)
 depends=(glfw gtk3)
 provides=('goxel-voxel-editor')
 conflicts=('goxel-voxel-editor')
@@ -24,10 +24,10 @@ _gitname=goxel
 
 pkgver(){
   cd "$srcdir/$_pkgname"
-  _version=$(git tag --sort=-v:refname --list | grep '^[0-9.]*$' | head -n1 )
+  _version=$(git tag --sort=-v:refname --list | head -n1 | cut -c2- )
   _commits=$(git rev-list --count HEAD)
   _short_commit_hash=$(git rev-parse --short=9 HEAD)
-  echo "${_version#'v'}+r${_commits}+${_short_commit_hash}"
+  echo "${_version}+r${_commits}+${_short_commit_hash}"
 }
 
 build() {
