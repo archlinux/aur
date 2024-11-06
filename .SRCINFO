@@ -1,22 +1,28 @@
 pkgbase = r-waldo
 	pkgdesc = Anything to ‘POSIXct’ or ‘Date’ Converter
-	pkgver = 0.5.3
+	pkgver = 0.6.0
 	pkgrel = 1
 	url = https://cran.r-project.org/package=waldo
 	arch = any
 	license = MIT
+	checkdepends = r-bit64
+	checkdepends = r-r6
+	checkdepends = r-s7
+	checkdepends = r-withr
+	checkdepends = r-xml2
+	checkdepends = r-testthat
 	depends = r
 	depends = r-cli
 	depends = r-diffobj>=0.3.4
 	depends = r-glue
-	depends = r-rematch2
 	depends = r-rlang>=1.0.0
 	depends = r-tibble
-	optdepends = r-covr
+	optdepends = r-bit64
 	optdepends = r-r6
+	optdepends = r-s7
 	optdepends = r-withr
 	optdepends = r-xml2
-	source = https://cran.r-project.org/src/contrib/waldo_0.5.3.tar.gz
-	b2sums = b4d8afffd1847183c3afaaa84655a7368adad584a84b3f2e9f2e112604d87b4bf3293f2100990058fbbdc1e2125b444823dd137181221ad36a7b686f0cc32999
+	source = https://cran.r-project.org/src/contrib/waldo_0.6.0.tar.gz
+	b2sums = 664455d5b963575ba9a40ede1e6aa6a1fba47eab11770efc8bc2073281f9f64936ed60d1107233e050b9c4382a9dbd9e643330aebb641a39d37773cbf12d472b
 
 pkgname = r-waldo

@@ -3,7 +3,7 @@
 # Contributor: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
 
 _cranname=waldo
-_cranver=0.5.3
+_cranver=0.6.0
 pkgname=r-${_cranname,,}
 pkgdesc="Anything to ‘POSIXct’ or ‘Date’ Converter"
 url="https://cran.r-project.org/package=${_cranname}"
@@ -17,13 +17,13 @@ depends=(
     "r-cli"
     "r-diffobj>=0.3.4"
     "r-glue"
-    "r-rematch2"
     "r-rlang>=1.0.0"
     "r-tibble"
 )
 optdepends=(
-    "r-covr"
+    "r-bit64"
     "r-r6"
+    "r-s7"
     "r-withr"
     "r-xml2"
 )
@@ -42,23 +42,23 @@ optdepends=(
 # the build chroot), uncomment the lines defining `checkdepends`, below,
 # as well as the `check()` function further down
 
-# checkdepends=(
-#     "${optdepends[@]}"
-#     "r-testthat"
-# )
+checkdepends=(
+    "${optdepends[@]}"
+    "r-testthat"
+)
 
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-b2sums=("b4d8afffd1847183c3afaaa84655a7368adad584a84b3f2e9f2e112604d87b4bf3293f2100990058fbbdc1e2125b444823dd137181221ad36a7b686f0cc32999")
+b2sums=("664455d5b963575ba9a40ede1e6aa6a1fba47eab11770efc8bc2073281f9f64936ed60d1107233e050b9c4382a9dbd9e643330aebb641a39d37773cbf12d472b")
 
 build() {
     mkdir -p "${srcdir}/build/"
     R CMD INSTALL ${_cranname}_${_cranver}.tar.gz -l "${srcdir}/build/"
 }
 
-# check() {
-#     export R_LIBS="build/"
-#     R CMD check --no-manual "${_cranname}"
-# }
+check() {
+    export R_LIBS="build/"
+    R CMD check --no-manual "${_cranname}"
+}
 
 package() {
     install -dm0755 "${pkgdir}/usr/lib/R/library"
