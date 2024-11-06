@@ -7,7 +7,7 @@
 
 pkgname=nnn-emoji-git
 _pkgname=nnn
-pkgver=4.7
+pkgver=5.0.r23.gab375de7
 pkgrel=1
 pkgdesc="The fastest terminal file manager ever written (with emoji as file icons)."
 arch=('x86_64')
@@ -29,6 +29,11 @@ provides=(nnn)
 conflicts=(nnn)
 source=("${_pkgname}::git+${url}")
 md5sums=('SKIP')
+
+pkgver() {
+    cd "${srcdir}/${_pkgname}"
+    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
+}
 
 prepare() {
     sed -i 's/install: all/install:/' "${srcdir}/${_pkgname}/Makefile"
