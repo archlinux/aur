@@ -1,15 +1,15 @@
-# Maintainer: Anton Kudelin <kudelin at protonmail dot com>
+# Maintainer: Anton Kudelin <kudelin at proton dot me>
 
 pkgname=platon
-pkgver=171020
-pkgrel=2
+pkgver=081024
+pkgrel=1
 pkgdesc="A Multipurpose Crystallographic Tool"
-arch=("x86_64")
+arch=(x86_64)
 url="https://www.platonsoft.nl"
-license=('custom')
-depends=('gcc-libs' 'libx11')
-makedepends=('gcc-fortran' 'gzip' 'tar')
-source=($pkgname-$pkgver.tar.gz::"$url/spek/xraysoft/unix/$pkgname.tar.gz")
+license=(custom)
+depends=(gcc-libs libx11)
+makedepends=(gcc-fortran)
+source=($pkgname-$pkgver.tar.gz::"http://www.platonsoft.nl/xraysoft/unix/$pkgname.tar.gz")
 sha256sums=('SKIP')
 
 prepare() {
@@ -26,7 +26,7 @@ pkgver() {
 
 build() {
   cd "$srcdir/$pkgname"
-  gfortran $CFLAGS -o platon platon.f xdrvr.c -lX11
+  gfortran -O3 -o platon platon.f xdrvr.c -lX11
 }
 
 package() {
