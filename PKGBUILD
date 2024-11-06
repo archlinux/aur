@@ -30,7 +30,7 @@ backup=(
   'var/ossec/etc/ossec.conf'
 )
 
-sha512sums=('d1bda90ce15d9f41b2fb93d106cada3268635cdfb22e0e2ab35dffc3dde5a0651d5ef607f370618dae06c3a028a9ab17065ab92cd4c0eb67aa94fb4e37cb16b2')
+sha512sums=('5d883e324191b6d9a419a792f03a1288971dc71ac74f970a033109d983fd5246d9c60e3beaa5cb6973b2c4c33bd6e1f149ed40deabfa3a54f925e1b71bfc5434')
 
 install=$pkgname.install
 
