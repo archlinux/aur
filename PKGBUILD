@@ -6,7 +6,8 @@ pkgver=3.3.7.r66.gd796640
 _electronversion=33
 _nodeversion=23
 pkgrel=1
-pkgdesc="Cross-platform desktop video resource player, free and beautiful.Use system-wide electron.跨平台桌面端视频资源播放器,免费高颜值"
+pkgdesc="名称新[zyfun]-名称旧[zyplayer]
+一款采用现代化技术栈开发的高颜值媒体播放器，它基于 electron-vite 框架，集成了 TDesign UI 组件库与 Vue3 全家桶，以清新的薄荷绿为主题，旨在为用户提供流畅的跨平台娱乐体验。"
 arch=('any')
 url="https://github.com/Hiram-Wong/ZyPlayer"
 license=("MIT")
