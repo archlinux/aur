@@ -1025,3 +1025,8 @@ Fixes:
 - An issue that could cause Morgen to crash with some Regional formats (e.g. Arabic) has been fixed.
 - An issue that could cause duplicate task creation with some Regional formats (e.g. Korean) has been rectified.
 - We updated time zone database
+
+=== Morgen 3.5.13
+Fixes:
+- It was not possible to add vide conferencing to Scheduling links and Open Invites. This has been rectified in v. 3.5.13.
+
