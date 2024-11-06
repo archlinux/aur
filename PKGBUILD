@@ -2,7 +2,7 @@
 # Contributor: Kevin Muñoz (MrHacker) <kmunoz@condorbs.net><david.munozm@proton.me>
 pkgname=wazuh-dashboard
 pkgver=4.9.2
-_remRevision=2
+_remRevision=1
 _prodver=${pkgver}-${_remRevision}
 pkgrel=1
 pkgdesc='Wazuh Dashboard for Arch Linux'
@@ -26,7 +26,7 @@ backup=(
   'usr/share/wazuh-dashboard/data/wazuh/config/wazuh.yml'
   )
 
-sha512sums=('e8f72800d9ffebaeb60f5794d2eec1628edc65aab178e53b11dd04463d726849ec2c5cc8c72a3805db192aca8ef175617d61c6e8292538b90282faca51b8630c')
+sha512sums=('980ff201fb24c13024605c6fb7e8f7fb64a20ec0bca496369b6b9934d6a6a976d26d83cb2e91e32f85d887de8209b876d493ce623a61ae9d936306062ef04e08')
 
 install=$pkgname.install
 
