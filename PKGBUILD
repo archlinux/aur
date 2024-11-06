@@ -5,7 +5,7 @@
 
 pkgname=palemoon-bin
 epoch=1
-pkgver=33.4.0.1
+pkgver=33.4.1
 pkgrel=1
 pkgdesc="Open source web browser based on Firefox focusing on efficiency."
 arch=('x86_64')
@@ -22,12 +22,12 @@ optdepends=('ffmpeg: record, convert, and stream audio and video')
 provides=("palemoon=$pkgver")
 conflicts=('palemoon')
 options=('!strip')
-source=(palemoon.desktop
+source=(palemoon.desktop-${pkgver}::"https://repo.palemoon.org/MoonchildProductions/Pale-Moon/raw/tag/${pkgver}_Release/palemoon/branding/official/palemoon.desktop"
        "https://rm-eu.palemoon.org/release/palemoon-${pkgver}.linux-x86_64-gtk2.tar.xz"{,.sig}) # EU link
 #      "https://rm-us.palemoon.org/release/palemoon-${pkgver}.linux-x86_64-gtk2.tar.xz"{,.sig}) # US link
 # link to latest tarball: https://www.palemoon.org/download.shtml
-sha256sums=('6fa2786e1828684a6783d340690f75382d1dcd02ce8533dad4f3f4f8b076dad7'
-            'd451f2c4cb34578cf6739c7bd856b09be5faeaea43dea6b82be5a673b47906e8'
+sha256sums=('b3803b30b5e6b9589387b7162cd24247da242fe77c0aed0d09bc51338d36d7d8'
+            'c5093734a2475bb27a5336ef65ef08185d7ca97b5ca4b8449081a82c288fb87a'
             'SKIP')
 validpgpkeys=('439F46F42C6AE3D23CF52E70865E6C87C65285EC' # T. Wine
               '3DAD8CD107197488D2A2A0BD40481E7B8FCF9CEC') # Moonchild, see https://forum.palemoon.org/viewtopic.php?f=1&t=7176
@@ -36,7 +36,7 @@ package() {
   install -d "$pkgdir"/usr/{bin,lib}
   cp -r palemoon/ "$pkgdir/usr/lib/palemoon"
   ln -s ../lib/palemoon/palemoon "$pkgdir/usr/bin/palemoon"
-  install -Dm644 palemoon.desktop "$pkgdir/usr/share/applications/palemoon.desktop"
+  install -Dm644 palemoon.desktop-$pkgver "$pkgdir/usr/share/applications/palemoon.desktop"
 
   # icons
   install -Dm644 palemoon/browser/chrome/icons/default/default16.png \
