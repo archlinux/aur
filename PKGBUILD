@@ -142,7 +142,7 @@ package() {
 
     install -d "$pkgdir"/usr/share/gamescope/reshade
     cp -r "$srcdir"/GamescopeShaders/* "$pkgdir"/usr/share/gamescope/reshade/
-    chmod -R 644 "$pkgdir"/usr/share/gamescope
+    chmod -R 755 "$pkgdir"/usr/share/gamescope
 
     meson install -C build --skip-subprojects --destdir="${pkgdir}"
 
