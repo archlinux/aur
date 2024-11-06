@@ -1,0 +1,26 @@
+pkgbase = python-selenium-bin
+	pkgdesc = Python language bindings for Selenium WebDriver
+	pkgver = 4.26.1
+	pkgrel = 1
+	url = https://github.com/SeleniumHQ/selenium
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = python-installer
+	depends = bzip2
+	depends = gcc-libs
+	depends = glibc
+	depends = python
+	depends = python-certifi
+	depends = python-trio
+	depends = python-trio-websocket
+	depends = python-typing_extensions
+	depends = python-urllib3
+	depends = python-websocket-client
+	depends = zlib
+	provides = python-selenium
+	conflicts = python-selenium
+	options = !lto
+	source = https://files.pythonhosted.org/packages/91/08/10cff8463b3510b78f9e3dcef6b37c542b06d71ed1240a8940ba0c75d3bc/selenium-4.26.1-py3-none-any.whl
+	sha256sums = 1db3f3a0cd5bb07624fa8a3905a6fdde1595a42185a0617077c361dc53d104fb
+
+pkgname = python-selenium-bin
