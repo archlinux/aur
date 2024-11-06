@@ -1,10 +1,10 @@
 pkgbase = firefox-startpage-bin
 	pkgdesc = This extension protects users from being tracked while allowing them to search the web in complete private mode.
 	pkgver = 2.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://addons.mozilla.org/en-US/firefox/addon/startpage-private-search/
 	arch = any
-	license = GNU-3.0
+	license = GPL-3.0
 	depends = firefox
 	noextract = startpage.xpi
 	source = startpage.xpi::https://addons.mozilla.org/firefox/downloads/file/4362482/startpage_private_search-2.0.2.xpi
