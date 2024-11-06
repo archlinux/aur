@@ -12,7 +12,7 @@ optdepends=(
 	'java-environment: support for lcm-spy and other GUI tools'
 	'ttf-dejavu: support for lcm-spy and other GUI tools'
 )
-makedepends=(cmake)
+makedepends=(cmake java-environment)
 source=($pkgname-$pkgver::git+https://github.com/lcm-proj/lcm.git)
 
 sha512sums=(SKIP)
