@@ -1,14 +1,17 @@
 pkgbase = python-quantlib
 	pkgdesc = QuantLib wrappers to Python
 	pkgver = 1.36
-	pkgrel = 1
+	pkgrel = 2
 	url = http://quantlib.org
 	arch = x86_64
 	license = BSD-3-Clause
+	checkdepends = python-tox
+	checkdepends = python-pytest
 	makedepends = clang
 	makedepends = boost
+	makedepends = python-installer
+	makedepends = python-build
 	makedepends = python-setuptools
-	makedepends = python-tox
 	depends = quantlib>=1.36
 	depends = python
 	depends = openmp
