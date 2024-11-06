@@ -9,6 +9,7 @@ pkgdesc="Filebeat version for Wazuh"
 arch=('x86_64')
 url="https://wazuh.com/"
 license=('gpl2')
+groups=("wazuh-siem")
 depends=(
     'glibc'
     'audit'
