@@ -13,8 +13,8 @@ pkgbase = ahk_x11-bin
 	conflicts = ahk_x11
 	options = !debug
 	options = !strip
-	source = ahk_x11-bin-1.0.4.tar.gz::https://github.com/phil294/AHK_X11/archive/refs/tags/1.0.4.tar.gz
-	source = ahk_x11-bin-1.0.4.AppImage::https://github.com/phil294/AHK_X11/releases/download/1.0.4/ahk_x11.AppImage
+	source = ${pkgname}-${pkgver}.tar.gz::"${url}/archive/refs/tags/${pkgver}.tar.gz"
+	source = ${pkgname/-bin/}-${pkgver}.AppImage::"${url}/releases/download/${pkgver}/${pkgname/-bin/}.AppImage"
 	sha512sums = 0227310b3c730bec3e077701c192c2e938cadf66b6975e4a995f96a9ebb7f132e0529237dfdbf7247e662f775da48763806123f051a0d8eb3a39dd49f2043a22
 	sha512sums = 3a346774822ce686af9e107459935184e31f3e17722deaabc3d5e5d583f8dc6ae0a49b814029c03e76685ffe4d4443446ebe438e9479d0c0a2e3778b93c9c56e
 
