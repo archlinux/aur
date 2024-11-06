@@ -1,6 +1,6 @@
 _baseurl='https://github.com/ggerganov/whisper.cpp'
 _model='large-v3-turbo'
-_model_sha256sum='SKIP'
+_model_sha256sum='1fc70f774d38eb169993ac391eea357ef47c88757ef72ee5943879b7e8e2bc69'
 _pkgbase='whisper.cpp-model'
 # Maintainer: Hauke Rehfeld <aur@haukerehfeld.de>
 pkgname="${_pkgbase}-${_model}"

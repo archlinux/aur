@@ -7,6 +7,6 @@ pkgbase = whisper.cpp-model-large-v3-turbo
 	arch = x86_64
 	license = MIT
 	source = ggml-large-v3-turbo.bin::https://huggingface.co/ggerganov/whisper.cpp/resolve/main/ggml-large-v3-turbo.bin
-	sha256sums = SKIP
+	sha256sums = 1fc70f774d38eb169993ac391eea357ef47c88757ef72ee5943879b7e8e2bc69
 
 pkgname = whisper.cpp-model-large-v3-turbo
