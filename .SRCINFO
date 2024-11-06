@@ -1,0 +1,24 @@
+pkgbase = cpolar-bin
+	pkgdesc = cpolar 极点云: 公开一个本地 Web 站点至公网
+	pkgver = 3.3.12
+	pkgrel = 1
+	url = http://www.cpolar.com
+	arch = x86_64
+	arch = aarch64
+	license = custom
+	depends = systemd
+	source = http://www.cpolar.com/static/downloads/cpolar.demo.yml
+	source = http://www.cpolar.com/static/downloads/cpolar.service
+	source = http://www.cpolar.com/static/downloads/cpolar@.service
+	sha1sums = b0d9c432e467930f898e9c3def9cfcde4d4b9f2b
+	sha1sums = 6d8352a14fbe49967759f87d23854cd536757182
+	sha1sums = d00ef16021ffa0f6746c81f498b029e5b51a56bd
+	source_x86_64 = cpolar-3.3.12.zip::http://www.cpolar.com/static/downloads/releases/3.3.12/cpolar-stable-linux-amd64.zip
+	sha1sums_x86_64 = fc1d436dab469eb576aa9ec29aeeff1c2ff16448
+	source_aarch64 = cpolar-3.3.12.zip::http://www.cpolar.com/static/downloads/releases/3.3.12/cpolar-stable-linux-arm64.zip
+	sha1sums_aarch64 = b232800014af76f1658423dbe0aba5a2a80084be
+
+pkgname = cpolar-bin
+
+pkgname = cpolar-bin-multi-user
+	depends = cpolar-bin
