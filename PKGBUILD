@@ -2,7 +2,7 @@
 
 _pyname=xgboost
 pkgname=python-$_pyname
-pkgver=2.1.1
+pkgver=2.1.2
 pkgrel=1
 pkgdesc="Gradient Boosting Library for Python"
 arch=(x86_64 aarch64)
@@ -28,11 +28,9 @@ makedepends=(
   git
 )
 optdepends=('apache-spark: Distributed XGBoost with PySpark' 'python-pytest')
-provides=(python-$_pyname)
-conflicts=(python-$_pyname-git)
 source=($_pyname-$pkgver.tar.gz::https://github.com/dmlc/xgboost/archive/refs/tags/v$pkgver.tar.gz
         git+https://github.com/dmlc/dmlc-core.git)
-sha256sums=('3204cc5cc3cf421c42d310cd5ef7711bf8fe7e11c34641e1f042625566a421b2'
+sha256sums=('edd0f8d7e14b38b0b4856b7a0d8956c836fa1bded96f2c8d0af72c77f1139847'
             'SKIP')
 
 prepare() {
