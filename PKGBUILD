@@ -111,7 +111,7 @@ md5sums=('ef6a081e3dc3ad182bfb1484decf23c0'
          'b48d860c2d03ddb4ffa609fcd5fe6857'
          '6b159c6e9d21a98925489bc37a9aea43'
          '38e98220da64adc1d8f9dc17d04b3a39'
-         'f044a73143ff8d4b4c4bf21d041e852e'
+         'd05ced7a9291cbca5cc30f64d873a4d1'
          'e821fd2d05d6d39c7ecf118916922414'
          'e472d6dd49522bc90fdaf0b4adcdb744')
 md5sums_x86_64=('b2df207e4a27c1a2930c1b07a62332d0')
