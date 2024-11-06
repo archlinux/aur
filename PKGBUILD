@@ -6,7 +6,7 @@
 # Contributor: Pablo Arias <pabloariasal@gmail.com>
 # Contributor: John Jenkins <twodopeshaggy@gmail.com>
 
-pkgname=nnn-icons
+pkgname=nnn-emoji
 pkgver=5.0
 pkgrel=1
 pkgdesc="The fastest terminal file manager ever written (with emoji as file icons)."

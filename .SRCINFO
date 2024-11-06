@@ -1,4 +1,4 @@
-pkgbase = nnn-icons
+pkgbase = nnn-emoji
 	pkgdesc = The fastest terminal file manager ever written (with emoji as file icons).
 	pkgver = 5.0
 	pkgrel = 1
@@ -19,4 +19,4 @@ pkgbase = nnn-icons
 	source = nnn-5.0.tar.gz::https://github.com/jarun/nnn/archive/v5.0.tar.gz
 	sha256sums = 31e8fd85f3dd7ab2bf0525c3c0926269a1e6d35a5343a6714315642370d8605a
 
-pkgname = nnn-icons
+pkgname = nnn-emoji
