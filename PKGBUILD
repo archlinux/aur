@@ -1,7 +1,7 @@
 # Maintainer: Desmond Kabus <desmond.kabus@protonmail.com>
 
 pkgname=bigjubel-git
-pkgver=10.2.3.r0.g0414093
+pkgver=10.2.3.r10.gf9e3327
 pkgrel=1
 pkgdesc="command line utility to calculate current jubilees"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')

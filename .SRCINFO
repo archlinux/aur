@@ -1,6 +1,6 @@
 pkgbase = bigjubel-git
 	pkgdesc = command line utility to calculate current jubilees
-	pkgver = 10.2.3.r0.g0414093
+	pkgver = 10.2.3.r10.gf9e3327
 	pkgrel = 1
 	url = https://gitlab.com/dkabus/bigjubel
 	arch = x86_64
