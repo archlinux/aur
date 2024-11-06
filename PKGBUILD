@@ -1,4 +1,5 @@
-# Maintainer: Daringcuteseal <daringcuteseal at gmail dot com>
+# Maintainer: Desmond Kabus <desmond.kabus@protonmail.com>
+# Contributor: Daringcuteseal <daringcuteseal at gmail dot com>
 # Contributor: Sashanoraa <sasha@noraa.gay>
 # Contributor: Felix Yan <felixonmars@archlinux.org
 # Contributor: Maxim Baz <$pkgname at maximbaz dot com>
@@ -8,9 +9,8 @@
 pkgname=nnn-icons
 pkgver=5.0
 pkgrel=1
-pkgdesc="The fastest terminal file manager ever written. (with icon support)"
+pkgdesc="The fastest terminal file manager ever written (with emoji as file icons)."
 arch=('x86_64')
-depends=('icons-in-terminal' 'hicolor-icon-theme')
 optdepends=(
     'atool: for more archive formats'
     'libarchive: for more archive formats'
@@ -35,7 +35,7 @@ prepare() {
 
 build() {
     cd "nnn-${pkgver}"
-    make O_ICONS=1
+    make O_EMOJI=1
 }
 
 package() {
