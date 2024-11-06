@@ -1,0 +1,16 @@
+pkgbase = zeronews-bin
+	pkgdesc = ZeroNews 是一个创新的边缘云内网穿透平台
+	pkgver = 1.3.12
+	pkgrel = 1
+	url = http://www.zeronews.cc
+	arch = x86_64
+	arch = aarch64
+	license = custom
+	depends = systemd
+	backup = etc/zeronews/tcc.toml
+	source_x86_64 = zeronews-1.3.12.tar::http://download.zeronews.cc/linux/x86_x64/zeronews-linux-1.3.12.tar
+	sha1sums_x86_64 = 2aaa7e3af8037b0ec7cd16625a7d14ef97e71a92
+	source_aarch64 = zeronews-1.3.12.tar::http://download.zeronews.cc/linux/arm64/zeronews-linux-1.3.12.tar
+	sha1sums_aarch64 = 5c3c73ddc6a9a1b6e73ea2fc950c8d380f0a45ab
+
+pkgname = zeronews-bin
