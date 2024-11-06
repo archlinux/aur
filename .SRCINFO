@@ -21,10 +21,12 @@ pkgbase = cnijfilter-mp280
 	source = cups-fixes.patch
 	source = cn-ppd-support-mp280.patch
 	source = glibc-deprecated-fix.patch
+	source = compilation-fixes-2024-11-06.diff
 	md5sums = 609975a05d6050fcca88f312d3f35c6a
 	md5sums = d1c346d063e7fc54dc74dc72bc5615ad
 	md5sums = 10e68bf7d29a6206171be05893e826e1
 	md5sums = 1b76cb2d4a46f6a10e6aced051729bb7
 	md5sums = 494a454cc2e91a3e8f14a6fb81131c10
+	md5sums = 2b44507c54f14fb6c8e08af30fdaafe7
 
 pkgname = cnijfilter-mp280

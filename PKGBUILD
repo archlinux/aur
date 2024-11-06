@@ -5,7 +5,7 @@
 
 pkgname=cnijfilter-mp280
 pkgver=3.40.1
-pkgrel=4
+pkgrel=5
 _pkgrealver=3.40
 _pkgrealrel=1
 pkgdesc="Canon IJ Printer Driver (mp280 series)"
@@ -32,6 +32,7 @@ source=(
     'cups-fixes.patch'
     'cn-ppd-support-mp280.patch'
     'glibc-deprecated-fix.patch'
+    'compilation-fixes-2024-11-06.diff'
 )
 md5sums=(
     '609975a05d6050fcca88f312d3f35c6a'
@@ -39,6 +40,7 @@ md5sums=(
     '10e68bf7d29a6206171be05893e826e1'
     '1b76cb2d4a46f6a10e6aced051729bb7'
     '494a454cc2e91a3e8f14a6fb81131c10'
+    '2b44507c54f14fb6c8e08af30fdaafe7'
 )
 
 
@@ -48,6 +50,7 @@ prepare() {
     patch -p1 < "$startdir/cups-fixes.patch"
     patch -p1 < "$startdir/cn-ppd-support-mp280.patch"
     patch -p1 < "$startdir/glibc-deprecated-fix.patch"
+    patch -p1 < "$startdir/compilation-fixes-2024-11-06.diff"
     
     sed -i -e 's/png_p->jmpbuf/png_jmpbuf(png_p)/' cnijfilter/src/bjfimage.c
     cp cnijfilter/src/config* lgmon/src/
