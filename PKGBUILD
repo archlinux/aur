@@ -1,8 +1,8 @@
 # Maintainer: Ludvig Hozman <ludvig.hozman@gmail.com>
 
 pkgname=plex-desktop
-pkgver=1.103.1.238
-_pkghash=223cbba6
+pkgver=1.104.0.241
+_pkghash=2164c90a
 pkgrel=1
 pkgdesc="Plex desktop client for linux"
 arch=('x86_64')
@@ -62,14 +62,14 @@ source=("https://artifacts.plex.tv/plex-desktop-stable/$pkgver-$_pkghash/linux/P
   "https://github.com/flathub/tv.plex.PlexDesktop/raw/master/tv.plex.PlexDesktop.desktop"
   "https://github.com/flathub/tv.plex.PlexDesktop/raw/master/tv.plex.PlexDesktop.png"
 )
-sha256sums=('be698e18f3f5f98bdbec6b42e2746b7e5654cc5319f2c6b4dcdacecc255aa1ba'
+sha256sums=('ed1da4bd60d09f9f50d934503f95f3c3dd409d7d2a6ae7bfd709b02e8aad274a'
             '8abc2b1ca77a458bbbcdeb6af5d85316260977370fa2518d017222b3584d9653'
             '2215f6bb3a2bbe50ceb3bedcb93f53d11f6a51ec7512f08f68af91da8253261b'
             '565178841c318fb4926acf65a68df6dae484c0b705be6dd736858e7408a261d5')
 noextract=('Plex-$pkgver-$_pkghash-linux-x86_64.tar.bz2')
 
 package() {
-  cd $srcdir
+  cd "$srcdir"
 
   install -d "${pkgdir}/opt/${pkgname}"
   tar --no-same-owner -xvf $srcdir/Plex-$pkgver-$_pkghash-linux-x86_64.tar.bz2 -C $pkgdir/opt/${pkgname}
