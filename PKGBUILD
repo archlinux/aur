@@ -3,9 +3,9 @@
 
 pkgname=superproductivity
 _name=super-productivity
-pkgver=10.0.11
+pkgver=10.1.0
 pkgrel=1
-pkgdesc="ToDo List / Time Tracker / Personal Jira Task Manager"
+pkgdesc="An advanced todo list app with timeboxing and time tracking capabilities"
 arch=('any')
 url="https://super-productivity.com"
 license=('MIT')
@@ -15,7 +15,7 @@ makedepends=('git' 'npm')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/johannesjo/super-productivity/archive/v${pkgver}.tar.gz"
         "${pkgname}.desktop"
         "${pkgname}.sh")
-sha256sums=('b73534625ae6a27ee3143fdebe954fc6cf8c71614ba3a0d5a79ef15539ea68e7'
+sha256sums=('af6af48698381010d70f4225e85f5db9901001cd2a1d3cac4c41a23d7a5c4062'
             'e3c71e1ba653ebb1662c8a10d55ed72dbec37eea911c1f18568d0c3e2d13f452'
             'f9ca69e16223b3dcfa0d8ae9dbbff231255482d85f0d72ddcc5033dac890741e')
 
