@@ -8,7 +8,9 @@ arch=('any')
 url="https://github.com/flamboyantpenguin/wikilynx"
 license=('MIT')
 depends=(
+	'qt6-base'
 	'qt6-webengine'
+	'qt6-svg'
 )
 makedepends=(
 	'cmake'
@@ -28,13 +30,13 @@ build() {
 	cd "wikilynx-${pkgver}/wikiLYNX"
 	cmake -DCMAKE_BUILD_TYPE=MinSizeRel -DCMAKE_INSTALL_PREFIX:PATH=${pkgdir}/usr .
 	make
-
 }
 
 package() {
 	
 	cd "wikilynx-${pkgver}/wikiLYNX"
-	make install
+	#make install
+	install -D "wikilynx" "${pkgdir}/usr/bin/wikilynx"
 	install -Dm644 "./assets/images/wikiLYNX_logo.svg" "${pkgdir}/usr/share/pixmaps/wikiLYNX_logo.svg"
 	install -Dm644  "./assets/desktop/wikilynx.desktop" "${pkgdir}/usr/share/applications/wikilynx.desktop"
 	install -Dm644 "../LICENSE" "${pkgdir}/usr/share/licenses/wikilynx/LICENSE"
