@@ -1,0 +1,21 @@
+pkgbase = snekstudio-bin
+	pkgdesc = Open-source VTuber software using Godot Engine!
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://github.com/ExpiredPopsicle/SnekStudio
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0
+	provides = snekstudio
+	conflicts = snekstudio
+	options = !debug
+	source = https://raw.githubusercontent.com/ExpiredPopsicle/SnekStudio/refs/tags/v0.1.2/Core/UI/Images/kiri_smug.png
+	source = snekstudio.desktop
+	md5sums = 9bc60005961b0df54f23f3edd11a3bb9
+	md5sums = a4eb3afd68dcdf5aa63ff5122d295b53
+	source_x86_64 = https://github.com/ExpiredPopsicle/SnekStudio/releases/download/v0.1.2/SnekStudio_Linux-x86_64_0.1.1.tar.gz
+	md5sums_x86_64 = 09bca36167000c2075c4b51d6604f18f
+	source_aarch64 = https://github.com/ExpiredPopsicle/SnekStudio/releases/download/v0.1.2/SnekStudio_Linux-arm64_0.1.1.tar.gz
+	md5sums_aarch64 = 4bcf79a7a8d510771660fec59e658fde
+
+pkgname = snekstudio-bin
