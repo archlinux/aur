@@ -1,7 +1,7 @@
 pkgname=adventuresofdemo
 _pkgname=AdventuresofDemo
 pkgver=1.3.6.6
-pkgrel=1
+pkgrel=2
 pkgdesc="This is a small game based on the TheXTech engine with the A2XT content pack made by the Talkhaus community. It's a remix of old SMBX episodes such as The Invasion 1, brought to the A2XT universe!"
 arch=('pentium4' 'i386' 'i686' 'x86_64' 'aarch64')
 url="https://github.com/Wohlstand/TheXTech"
@@ -21,7 +21,7 @@ package() {
     # Packaging files
     cd "$srcdir"
     rm -rf thextech-adventure-of-demo-assets-full-v$pkgver.7z
-    cp -r "adventuresofdemo.desktop" "$pkgdir/usr/share/applications"
-    cp -r "adventuresofdemo.png" "$pkgdir/usr/share/pixmaps"
+    install -Dm755 "adventuresofdemo.desktop" "$pkgdir/usr/share/applications"
+    install -Dm644 "adventuresofdemo.png" "$pkgdir/usr/share/pixmaps"
     cp -r * "$pkgdir/usr/games/thextech/assets/aod"
 }
