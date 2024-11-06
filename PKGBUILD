@@ -1,11 +1,11 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=perplexity-ai-app
 _pkgname="Perplexity AI"
-pkgver=3.1.0
+pkgver=3.1.1
 _electronversion=33
 _nodeversion=20
 pkgrel=1
-pkgdesc="The Unofficial Perplexity AI Desktop App, powered by Electron which brings the magic of AI language processing to your desktop.Use system-wide electron."
+pkgdesc="The Unofficial Perplexity AI Desktop App, powered by Electron which brings the magic of AI language processing to your desktop.(Use system-wide electron)"
 arch=('any')
 url="https://github.com/inulute/perplexity-ai-app"
 license=('MIT')
@@ -23,7 +23,7 @@ source=(
     "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
     "${pkgname}.sh"
 )
-sha256sums=('3f2a7e0f6cda7c02ce0629467add240a81783fbaa7fb305a6cc49b6e08ccf6c8'
+sha256sums=('fa4bb4ef324e692a52586eb7af9f5cf532204e7c3140bc8d0ea5b7c121531b23'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
