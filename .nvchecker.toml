@@ -1,0 +1,6 @@
+[dune-grid-glue]
+source = "gitlab"
+gitlab = "extensions/dune-grid-glue"
+host = "gitlab.dune-project.org"
+use_max_tag = true
+prefix = "v"
