@@ -16,7 +16,7 @@ license=('ISC')
 depends=(lib32-alsa-lib lib32-libbsd)
 
 source=("http://www.sndio.org/sndio-$pkgver.tar.gz")
-sha256sums=('f30826fc9c07e369d3924d5fcedf6a0a53c0df4ae1f5ab50fe9cf280540f699a')
+sha256sums=('bebd3bfd01c50c9376cf3e7814b9379bed9e17d0393b5113b7eb7a3d0d038c54')
 backup=(etc/default/sndiod)
 
 build() {
