@@ -1,7 +1,7 @@
 # Maintainer: Desmond Kabus <desmond.kabus@protonmail.com>
 
 pkgname=remind-dav-helper-git
-pkgver=r15.572626b
+pkgver=r16.21caf2d
 pkgrel=1
 pkgdesc="Helper scripts to sync 'remind' files with Nextcloud via CalDAV"
 arch=('any')
