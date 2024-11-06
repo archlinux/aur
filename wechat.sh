@@ -301,6 +301,7 @@ function execApp() {
 		--dir "${XDG_DATA_HOME}/WeChat_Data/Documents" \
 		--bind "${XDG_DATA_HOME}/WeChat_Data" \
 			"${XDG_DATA_HOME}/WeChat_Data" \
+		--tmpfs "${XDG_DATA_HOME}/WeChat_Data"/options \
 		${bwBindPar} \
 		${bwCamPar} \
 		--setenv XDG_DOCUMENTS_DIR "$HOME/Documents" \
