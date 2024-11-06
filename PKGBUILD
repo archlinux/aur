@@ -26,7 +26,7 @@ validpgpkeys=()
 build() {
 
 	cd "wikilynx-${pkgver}/wikiLYNX"
-	cmake .
+	cmake -DCMAKE_BUILD_TYPE=MinSizeRel .
 	cmake --build .
 
 }
