@@ -4,7 +4,7 @@
 _pkgname="revolt-desktop"
 pkgname="$_pkgname"
 pkgver=1.0.8
-pkgrel=1
+pkgrel=2
 pkgdesc="User-first chat platform built with modern web technologies"
 url="https://github.com/revoltchat/desktop"
 license=('AGPL-3.0-only')
@@ -55,5 +55,5 @@ package() {
 exec electron /usr/lib/$_pkgname/app.asar "\$@"
 END
 
-  chown -R u+rwX,go+rX,go-w "$pkgdir/"
+  chmod -R u+rwX,go+rX,go-w "$pkgdir/"
 }
