@@ -1,7 +1,7 @@
 pkgname=lcm-git
 pkgver=20240627.r1424.64e149f
 pkgrel=1
-pkgdesc="Lightweight real-time networking library (git version of lcm)"
+pkgdesc="Lightweight Communications and Marshalling"
 arch=('i686' 'x86_64' 'armv7h')
 url="https://github.com/lcm-proj/lcm"
 license=('LGPL')
