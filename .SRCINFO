@@ -1,6 +1,6 @@
 pkgbase = checkupdates-systemd-git
 	pkgdesc = Systemd service and timer to check for updates using pacman-contrib
-	pkgver = r7.d2b8af6
+	pkgver = r8.c8dd565
 	pkgrel = 1
 	url = https://gitlab.com/dkabus/checkupdates-systemd
 	arch = any

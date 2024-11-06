@@ -1,7 +1,7 @@
 # Maintainer: Desmond Kabus <desmond.kabus@protonmail.com>
 
 pkgname=checkupdates-systemd-git
-pkgver=r7.d2b8af6
+pkgver=r8.c8dd565
 pkgrel=1
 pkgdesc="Systemd service and timer to check for updates using pacman-contrib"
 arch=('any')
