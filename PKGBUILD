@@ -1,33 +1,44 @@
 pkgname=classicube-bin
 _pkgname=ClassiCube-bin
-pkgver=1.0.1
+pkgver=1.3.7
 pkgrel=1
-_pkgrel_x86_64=1
-_pkgrel_armv7h=1
-_pkgrel_aarch64=1
+scriptver=1.0.1
 pkgdesc="Play ClassiCube, our sandbox block game inspired by other similar sandbox block games, today for free! Just click one of the buttons below to start playing!"
-arch=('x86_64' 'arm7h' 'aarch64')
+arch=('i686' 'x86_64' 'armv7l' 'aarch64')
 url="https://www.classicube.net"
-conflicts=("classicube-git")
+conflicts=('classicube' 'classicube-git')
 license=('GPL')
-depends=('curl' 'openal' 'zenity')
+depends=('sdl2' 'curl' 'openal' 'zenity' 'yad')
 makedepends=('unzip')
-sha256sums_x86_64=('fcbb1f231c42d0d11307fd436dd73b99024658f2102cb837e332d0b5b22fee50'
-                   '00a31731209dd0ed1ae09e1692053804c9cd75224af4c2cd29bdd65599ae8e0e')
-sha256sums_aarch64=('fcbb1f231c42d0d11307fd436dd73b99024658f2102cb837e332d0b5b22fee50'
-                    '00a31731209dd0ed1ae09e1692053804c9cd75224af4c2cd29bdd65599ae8e0e')
-source_x86_64=("https://cdn.classicube.net/client/release/nix64/ClassiCube.tar.gz" "https://gitlab.com/linuxbombay/classicube/-/archive/$pkgver-$pkgrel/classicube-$pkgver-$pkgrel.tar.bz2")
-source_armv7h=("https://cdn.classicube.net/client/release/rpi32/ClassiCube.tar.gz" "https://gitlab.com/linuxbombay/classicube/-/archive/$pkgver-$pkgrel/classicube-$pkgver-$pkgrel.tar.bz2")
-source_aarch64=("https://cdn.classicube.net/client/release/rpi64/ClassiCube.tar.gz" "https://gitlab.com/linuxbombay/classicube/-/archive/$pkgver-$pkgrel/classicube-$pkgver-$pkgrel.tar.bz2")
-
+sha256sums_i686=('7457556e8a0d4d64fca01b2f61d639aa5627431d20a952c5360e92530d805dd0'
+                 'c534a27b230e2e8fce5a424d8b48b6a830241cc6914bb6e5022792775345358f')
+sha256sums_x86_64=('aab2bc97afeadcd5a1dab539699d238355cda37ef94b9d3af17c65386eefb339'
+                   'c534a27b230e2e8fce5a424d8b48b6a830241cc6914bb6e5022792775345358f')
+sha256sums_armv7l=('e8abfeee868efcd23cdd23be8df9195cfcb2512518bcb8eea176bf8e560377f5'
+                   'c534a27b230e2e8fce5a424d8b48b6a830241cc6914bb6e5022792775345358f')
+sha256sums_aarch64=('6ea9a02df91f4b7a062525ae0c7628f5de0679727d5892657042c258252dca2b'
+                    'c534a27b230e2e8fce5a424d8b48b6a830241cc6914bb6e5022792775345358f')
+source_i686=(
+"ClassiCube-i686.tar.gz::https://gitlab.com/linuxbombay/classicube/binaries/$pkgver/-/raw/main/ClassiCube-i686.tar.gz" 
+"https://gitlab.com/linuxbombay/classicube/classicube/-/archive/$scriptver/classicube-$scriptver.tar.bz2")
+source_x86_64=(
+"ClassiCube-x64.tar.gz::https://gitlab.com/linuxbombay/classicube/binaries/$pkgver/-/raw/main/ClassiCube-x64.tar.gz" 
+"https://gitlab.com/linuxbombay/classicube/classicube/-/archive/$scriptver/classicube-$scriptver.tar.bz2")
+source_armv7l=(
+"ClassiCube-arm7l.tar.gz::https://gitlab.com/linuxbombay/classicube/binaries/$pkgver/-/raw/main/ClassiCube-arm7l.tar.gz" 
+"https://gitlab.com/linuxbombay/classicube/classicube/-/archive/$scriptver/classicube-$scriptver.tar.bz2")
+source_aarch64=(
+"ClassiCube-arm64.tar.gz::https://gitlab.com/linuxbombay/classicube/binaries/$pkgver/-/raw/main/ClassiCube-arm64.tar.gz"
+"https://gitlab.com/linuxbombay/classicube/classicube/-/archive/$scriptver/classicube-$scriptver.tar.bz2")
 
 package() {
 	install -dm755 "$pkgdir/usr/share/games/ClassiCube"
 	install -dm755 "$pkgdir/usr/share/pixmaps"
 	install -dm755 "$pkgdir/usr/bin"
         cd $srcdir
-        cp -r ClassiCube "$pkgdir/usr/share/games/ClassiCube"
-	cd $srcdir/classicube-$pkgver-$pkgrel
+        rm -rf "$srcdir/ClassiCube/install-desktop-entry.sh"
+        cp -r ClassiCube "$pkgdir/usr/share/games/"
+	cd $srcdir/classicube-$scriptver
 	cp -r ./ "$pkgdir/usr/share/games/ClassiCube"
 	cp -r "$pkgdir/usr/share/games/ClassiCube/classicube.svg" "$pkgdir/usr/share/pixmaps"
 
@@ -35,7 +46,7 @@ package() {
     ln -s "/usr/share/games/ClassiCube/classicube.sh" "$pkgdir/usr/bin/classicube"
 
     # Desktop Entry
-    install -Dm644 "$srcdir/classicube-$pkgver-$pkgrel/ClassiCube.desktop" \
+    install -Dm644 "$srcdir/classicube-$scriptver/ClassiCube.desktop" \
         "$pkgdir/usr/share/applications/ClassiCube.desktop"
     sed -i s%/usr/share%/opt% "$pkgdir/usr/share/applications/ClassiCube.desktop"
 }
