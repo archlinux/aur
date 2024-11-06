@@ -1,5 +1,5 @@
-# Maintainer: Zacharias Knudsen <zachasme@gmail.com>
-# Contributor: JP Roemer <jp+aur@roemer.im>
+# Maintainer: JP Roemer <jp+aur@roemer.im>
+# Contributor: Zacharias Knudsen <zachasme@gmail.com>
 
 pkgname=aws-iam-authenticator-bin
 _pkgname="${pkgname%-bin}"
