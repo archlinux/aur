@@ -1,7 +1,7 @@
 # Maintainer: Jan Cholasta <grubber at grubber cz>
 
 pkgname=slade-git
-pkgver=3.2.6+2+g25cbba80
+pkgver=3.2.6+r3065+98f9b5cbf
 pkgrel=1
 pkgdesc='SLADE3 Doom editor (git version)'
 arch=('i686' 'x86_64')
@@ -28,11 +28,15 @@ conflicts=('slade')
 source=('slade::git+https://github.com/sirjuddington/SLADE.git')
 sha256sums=('SKIP')
 
-pkgver() {
-    cd slade
-
-    git describe --long --tags | sed -r 's/-/+/g'
+pkgver(){
+  cd "${srcdir}/slade"
+  _version=$(git tag --sort=-v:refname --list | head -n1)
+  _commits=$(git rev-list --count HEAD)
+  _short_commit_hash=$(git rev-parse --short=9 HEAD)
+  echo "${_version}+r${_commits}+${_short_commit_hash}"
 }
+
+
 
 build() {
     cd slade
