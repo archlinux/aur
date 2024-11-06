@@ -4,14 +4,15 @@
 # For more info and discussion about the Linux version go here:
 # https://forums.taleworlds.com/index.php/topic,313683.0.html
 
-pkgname=openbrf
+pkgname=openbrf-git
 pkgdesc='Mount&Blade resource editor by Marco Tarini.'
 pkgver=0.0.82e
-pkgrel=2
-arch=('i686' 'x86_64')
+pkgrel=3
+arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url="https://forums.taleworlds.com/index.php?topic=72279.0"
 license=('GPL')
 depends=('qt6-base' 'glu')
+replaces=('openbrf')
 makedepends=('icoutils' 'git' 'coreutils') # add coreutils for nproc
 install=openbrf.install
 source=('git+https://github.com/Swyter/openbrf-redux')
@@ -19,7 +20,10 @@ md5sums=('SKIP')
 
 pkgver()
 {
-	cat "${srcdir}/openbrf-redux/main_info.cpp" | grep applVersion\ \= | cut -d'"' -f2
+	base_ver=$(cat    "${srcdir}/openbrf-redux/main_info.cpp" | grep applVersion\ \= | cut -d'"' -f2)
+	date_ver=$(TZ=UTC git -C "${srcdir}/openbrf-redux" show -s --date=format-local:'%Y.%m.%d_%H.%M' --format=%cd HEAD)
+	git_hash=$(TZ=UTC git -C "${srcdir}/openbrf-redux" rev-parse --short HEAD)
+	echo "${date_ver}^[${base_ver}][${git_hash}]"
 }
 
 build()
@@ -59,8 +63,8 @@ package()
 Version=1.0
 Terminal=false
 Type=Application
-Name=OpenBRF
-Comment=Mount&Blade resource editor by Marco Tarini.
+Name=OpenBRF Redux
+Comment=Mount&Blade resource editor by Marco Tarini and Swyter.
 Exec=openbrf
 Icon=openbrf
 MimeType=application/x-openbrf
