@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=cosmic-ext-tweaks-git
-pkgver=r56.69e3b26
+pkgver=0.1.3.r0.g7eaf569
 pkgrel=1
 pkgdesc="A tweaking tool for the COSMIC desktop."
 arch=('x86_64')
@@ -24,7 +24,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd tweaks
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+  git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
