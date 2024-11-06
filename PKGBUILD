@@ -3,8 +3,8 @@
 pkgbase=bigjubelweb-git
 pkgname=bigjubelweb-git
 _module='bigjubelweb'
-pkgver=0.7.6.r7.g95f1c26
-pkgrel=2
+pkgver=0.7.7.r0.gf1b036b
+pkgrel=1
 pkgdesc="A web interface for BigJubel"
 url="https://gitlab.com/dkabus/bigjubelweb"
 depends=('bigjubel' 'sqlite' 'python' 'python-flask' 'python-werkzeug' 'python-yaml' 'python-click')
