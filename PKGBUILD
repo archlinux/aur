@@ -9,7 +9,7 @@ export CARGO_HOME CARGO_TARGET_DIR RUSTUP_TOOLCHAIN
 _pkgname="yazi"
 pkgname="$_pkgname-git"
 pkgver=0.3.3.r79.g81ce040
-pkgrel=2
+pkgrel=3
 pkgdesc="Blazing fast terminal file manager written in Rust, based on async I/O"
 url="https://github.com/sxyazi/yazi"
 arch=('x86_64' 'aarch64')
@@ -82,12 +82,12 @@ package() {
     magick assets/logo.png -resize "${r}x${r}" "$pkgdir/usr/share/icons/hicolor/${r}x${r}/apps/yazi.png"
   done
 
-  cd "yazi-boot/completions"
+  cd "$srcdir/$_pkgsrc/yazi-boot/completions"
   install -Dm644 "yazi.bash" "$pkgdir/usr/share/bash-completion/completions/yazi"
   install -Dm644 "yazi.fish" -t "$pkgdir/usr/share/fish/vendor_completions.d/"
   install -Dm644 "_yazi" -t "$pkgdir/usr/share/zsh/site-functions/"
 
-  cd "yazi-cli/completions"
+  cd "$srcdir/$_pkgsrc/yazi-cli/completions"
   install -Dm644 "ya.bash" "$pkgdir/usr/share/bash-completion/completions/ya"
   install -Dm644 "ya.fish" -t "$pkgdir/usr/share/fish/vendor_completions.d/"
   install -Dm644 "_ya" -t "$pkgdir/usr/share/zsh/site-functions/"
