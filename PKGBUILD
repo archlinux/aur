@@ -3,7 +3,7 @@
 # Reference: PKGBUILD(5)
 
 pkgname=lib32-sndio
-pkgver=1.9.0
+pkgver=1.10.0
 pkgrel=1
 pkgdesc='A small audio and MIDI framework part of the OpenBSD project (32 bit)'
 arch=('x86_64')
