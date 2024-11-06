@@ -13,6 +13,8 @@ pkgbase = tmux-rime
 	depends = glib2
 	depends = tmux
 	source = https://github.com/Freed-Wu/tmux-rime/archive/0.0.3.tar.gz
+	source = https://github.com/xmake-io/xmake-repo/archive/9e39ee6a9c9a4c43192b95b7efcc95ea1c79a28d.tar.gz
 	sha256sums = 012d1b8e8fe265fbd927af113fa7d54fc8704a449f9b86904767fe20378bea81
+	sha256sums = f4a75ea7b86ed7b652e514337746ea0232f88513ec6ab61a3c687a91b31d4a3c
 
 pkgname = tmux-rime
