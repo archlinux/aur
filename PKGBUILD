@@ -26,7 +26,7 @@ validpgpkeys=()
 build() {
 
 	cd "wikilynx-${pkgver}/wikiLYNX"
-	cmake -DCMAKE_BUILD_TYPE=MinSizeRel -DCMAKE_INSTALL_PREFIX:PATH=/usr .
+	cmake -DCMAKE_BUILD_TYPE=MinSizeRel -DCMAKE_INSTALL_PREFIX:PATH=${pkgdir}/usr .
 	make
 
 }
