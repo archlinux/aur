@@ -1,6 +1,6 @@
 _baseurl='https://github.com/ggerganov/whisper.cpp'
 _model='small'
-_model_sha256sum='SKIP'
+_model_sha256sum='1be3a9b2063867b937e64e2ec7483364a79917e157fa98c5d94b5c1fffea987b'
 _pkgbase='whisper.cpp-model'
 # Maintainer: Hauke Rehfeld <aur@haukerehfeld.de>
 pkgname="${_pkgbase}-${_model}"
