@@ -1,0 +1,22 @@
+pkgbase = libastal-greetd-git
+	pkgdesc = IPC client for greetd
+	pkgver = r545.84c02e5
+	pkgrel = 1
+	url = https://github.com/Aylur/astal
+	arch = x86_64
+	groups = libastal
+	license = LGPL-2.1-only
+	makedepends = meson
+	makedepends = git
+	makedepends = gobject-introspection
+	makedepends = vala
+	depends = glib2
+	depends = glibc
+	depends = json-glib
+	provides = astal-greet
+	provides = libastal-greet
+	provides = libastal-greet.so=0-64
+	source = git+https://github.com/Aylur/astal.git
+	sha256sums = SKIP
+
+pkgname = libastal-greetd-git
