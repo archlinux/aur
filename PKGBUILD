@@ -1,11 +1,11 @@
 # Maintainer: Sir-Photch <aur@liebender.dev>
 
 pkgname=gmlgcd
-pkgver=2.0
-pkgrel=2
+pkgver=2.1
+pkgrel=1
 pkgdesc='The gemlog comment daemon'
 arch=('x86_64' 'aarch64')
-url='https://sr.ht/~chrs/gmlgcd'
+url='https://git.sr.ht/~shtrophic/gmlgcd'
 license=('AGPL-3.0-or-later')
 makedepends=('meson' 'scdoc')
 checkdepends=('fish')
@@ -13,12 +13,12 @@ depends=('libevent' 'libbsd' 'confuse')
 
 backup=('etc/gmlgcd.conf' 'etc/gmlgcd.conf.d/help-template.gmi')
 source=(
-	"$pkgname-$pkgver.tar.gz::https://git.sr.ht/~chrs/$pkgname/archive/$pkgver.tar.gz"
-	"$pkgname-$pkgver.tar.gz.asc::https://git.sr.ht/~chrs/$pkgname/archive/$pkgver.tar.gz.asc"
+	"$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz"
+	"$pkgname-$pkgver.tar.gz.asc::$url/archive/$pkgver.tar.gz.asc"
 	"sysusers-gmlgcd.conf"
 )
 validpgpkeys=(10F1CC925057D456798EBF9C1B3EB6FE2D338B4A)
-sha256sums=('a85e3560d92652965968ecb70f27282aa37d5147d4d9a919fd0cd1d3467ce7e7'
+sha256sums=('651003875fa09dcfd2129071e7c15154342efbde821396807e9b6565cbee05dc'
             'SKIP'
             'e071442fbd90cf80ce528344d4849f6372c8e75d236f3dca9a56c03f3586d92d')
 
