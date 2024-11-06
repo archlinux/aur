@@ -1,6 +1,6 @@
 # Maintainer: sonofaglitch <sonofaglitch@mailbox.org>
 pkgname=ahk_x11-bin
-pkgver=1.0.3
+pkgver=1.0.4
 pkgrel=1
 pkgdesc="AutoHotkey for Linux."
 arch=('x86_64')
@@ -11,8 +11,8 @@ depends=('xorg-server' 'fuse2')
 makedepends=('coreutils')
 options=('!debug' '!strip')
 provides=('ahk_x11')
-source=(${pkgname}-${pkgver}.tar.gz::"${url}/archive/refs/tags/${pkgver}.tar.gz" ${pkgname}-${pkgver}.AppImage::"https://github.com/phil294/AHK_X11/releases/download/${pkgver}/${pkgname/-bin/}.AppImage")
-sha512sums=('a3bc9abe55a1cef65796a0a6f894617bc120f5c0a310220d6e1bbc8ff35fde885ea35c6689871ceca03848c424551e0b0061065e0c9d1f3344498033a26695c1' 'f2abd9d5fbbd788638acdd01b9e2654aa56fb7b98d384fec3b5dcbf2540c8f2ee45d5cf7248afe18d3c4b133e517024178461a50b7b168d3a322a7a75161608d')
+source=(${pkgname}-${pkgver}.tar.gz::"${url}/archive/refs/tags/${pkgver}.tar.gz" ${pkgname}-${pkgver}.AppImage::"${url}/releases/download/${pkgver}/${pkgname/-bin/}.AppImage")
+sha512sums=('0227310b3c730bec3e077701c192c2e938cadf66b6975e4a995f96a9ebb7f132e0529237dfdbf7247e662f775da48763806123f051a0d8eb3a39dd49f2043a22' '3a346774822ce686af9e107459935184e31f3e17722deaabc3d5e5d583f8dc6ae0a49b814029c03e76685ffe4d4443446ebe438e9479d0c0a2e3778b93c9c56e')
 package() {
   mkdir -p ${pkgdir}/usr/bin
   install -D ${srcdir}/${pkgname}-${pkgver}.AppImage ${pkgdir}/usr/bin/ahk_x11
