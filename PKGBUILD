@@ -6,13 +6,14 @@
 
 pkgname=openbrf-git
 pkgdesc='Mount&Blade resource editor by Marco Tarini.'
-pkgver=0.0.82e
-pkgrel=3
+pkgver=2024.11.03
+pkgrel=1
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url="https://forums.taleworlds.com/index.php?topic=72279.0"
 license=('GPL')
 depends=('qt6-base' 'glu')
 replaces=('openbrf')
+conflicts=('openbrf')
 makedepends=('icoutils' 'git' 'coreutils') # add coreutils for nproc
 install=openbrf.install
 source=('git+https://github.com/Swyter/openbrf-redux')

@@ -1,18 +1,22 @@
-pkgbase = openbrf
+pkgbase = openbrf-git
 	pkgdesc = Mount&Blade resource editor by Marco Tarini.
-	pkgver = 0.0.82e
-	pkgrel = 2
+	pkgver = 2024.11.03
+	pkgrel = 1
 	url = https://forums.taleworlds.com/index.php?topic=72279.0
 	install = openbrf.install
 	arch = i686
 	arch = x86_64
+	arch = armv7h
+	arch = aarch64
 	license = GPL
 	makedepends = icoutils
 	makedepends = git
 	makedepends = coreutils
 	depends = qt6-base
 	depends = glu
+	conflicts = openbrf
+	replaces = openbrf
 	source = git+https://github.com/Swyter/openbrf-redux
 	md5sums = SKIP
 
-pkgname = openbrf
+pkgname = openbrf-git
