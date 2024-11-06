@@ -38,5 +38,4 @@ package() {
 	install -D -m755 "$srcdir/preload.sh" "$pkgdir/usr/bin/hardened-malloc-preload"
 	install -D -m755 "calculate_waste.py" "$pkgdir/usr/bin/hardened-malloc-calculate-waste.py"
 	
-	msg "Done."
 }
