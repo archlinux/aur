@@ -4,7 +4,7 @@
 pkgname=electron-netease-cloud-music-git
 _pkgname="Electron Netease Cloud Music"
 _shortname="Electron NCM"
-pkgver=0.9.38.r15.gdd77617
+pkgver=0.9.39.r4.g5e51120
 _electronversion=33
 _nodeversion=20
 pkgrel=1
@@ -65,7 +65,6 @@ build() {
         {
             echo -e '\n'
             echo 'registry "https://registry.npmmirror.com"'
-            echo 'disturl "https://registry.npmmirror.com/-/binary/node/"'
             echo 'electron_mirror "https://registry.npmmirror.com/-/binary/electron/"'
             echo 'electron_builder_binaries_mirror "https://registry.npmmirror.com/-/binary/electron-builder-binaries/"'
             echo "cacheFolder "${srcdir}"/.yarn/cache"
@@ -77,9 +76,10 @@ build() {
             echo 'fetchRetries 3'
             echo 'fetchRetryTimeout 10000'
         } >> .yarnrc
-        sed -i "s/registry.yarnpkg.com/registry.npmmirror.com/g" yarn.lock
+        find ./ -type f -name "yarn.lock" -exec sed -i "s/registry.yarnpkg.com/registry.npmmirror.com/g" {} +
     fi
     rm -rf build dist node_modules
+    sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
     NODE_ENV=development    yarn install --cache-folder "${srcdir}/.yarn_cache"
     NODE_ENV=production     yarn run dist
     NODE_ENV=production     yarn run build
