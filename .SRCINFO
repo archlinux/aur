@@ -7,6 +7,6 @@ pkgbase = whisper.cpp-model-tiny.en
 	arch = x86_64
 	license = MIT
 	source = ggml-tiny.en.bin::https://huggingface.co/ggerganov/whisper.cpp/resolve/main/ggml-tiny.en.bin
-	sha256sums = SKIP
+	sha256sums = 921e4cf8686fdd993dcd081a5da5b6c365bfde1162e72b08d75ac75289920b1f
 
 pkgname = whisper.cpp-model-tiny.en
