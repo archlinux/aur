@@ -1,0 +1,17 @@
+pkgbase = brother-td4520dn
+	pkgdesc = LPR and CUPS driver for Brother TD-4520DN label printer
+	pkgver = 3.2.0
+	pkgrel = 1
+	url = http://solutions.brother.com/linux/en_us/
+	install = brother-td4520dn.install
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = cups
+	depends = lib32-glibc
+	source = https://download.brother.com/welcome/dlfp100713/td4520dnpdrv-3.2.0-1.i386.rpm
+	source = LICENSE
+	sha256sums = 6e2e85da66670cf8967d970a7cf2f9e78befd584d3deb0543bed458bb73b2ede
+	sha256sums = cdd1955a9996bc246ba54e84f0a5ccbfdf6623962b668188762389aa79ef9811
+
+pkgname = brother-td4520dn
