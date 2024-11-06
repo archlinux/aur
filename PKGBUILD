@@ -1,13 +1,15 @@
 # Maintainer: Adrian Holfter < aholfter PLUS aur AT googlemail DOT com >
 pkgname=laslib-git
-pkgver=2.0.3.r65.g29a7174
-pkgrel=2
+pkgver=2.0.3.r95.g11ae4c9
+pkgrel=1
 pkgdesc='C++ programming API for reading / writing LIDAR data stored in standard LAS format'
 arch=('x86_64')
 url='https://lastools.org/'
 license=('LGPL')
 provides=('laslib')
 conflicts=('laslib')
+makedepends=('cmake' 'git')
+depends=('gcc-libs')
 
 source=('git+https://github.com/LAStools/LAStools.git')
 sha256sums=('SKIP')
