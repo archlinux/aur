@@ -1,47 +1,64 @@
-# Maintainer: Paul Makles <paulmakles@gmail.com>
-pkgname=revolt-desktop-git
-pkgver=1.0.7.r13.g2373e7d
+# Maintainer:
+# Contributor: Paul Makles <paulmakles@gmail.com>
+
+_pkgname="revolt-desktop"
+pkgname="$_pkgname-git"
+pkgver=1.0.8.r0.gd668949
 pkgrel=1
-epoch=1
-pkgdesc="Open source user-first chat platform."
-arch=("x86_64")
-url="https://revolt.chat"
-license=("AGPL3")
-depends=("electron22")
-makedepends=("git" "npm" "nodejs")
-conflicts=("${pkgname%-git}")
-provides=("${pkgname%-git}")
-source=("git+https://github.com/revoltchat/desktop.git")
-md5sums=('SKIP')
+pkgdesc="User-first chat platform built with modern web technologies"
+url="https://github.com/revoltchat/desktop"
+license=('AGPL-3.0-only')
+arch=('any')
+
+depends=(
+  'electron'
+)
+makedepends=(
+  'git'
+  'npm'
+  'nodejs'
+)
+
+conflicts=("$_pkgname")
+provides=("$_pkgname")
+
+_pkgsrc="$_pkgname"
+source=("$_pkgsrc"::"git+$url.git")
+sha256sums=('SKIP')
 
 pkgver() {
-    cd "$srcdir/desktop"
-    git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  cd "$_pkgsrc"
+  git describe --long --tags --abbrev=7 \
+    | sed -E 's/^[^0-9]*//;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
 build() {
-	cd "$srcdir/desktop"
-    
-    electronDist=/usr/lib/electron22
-    electronVer=$(${electronDist}/electron --version | tail -c +2)
+  cd "$_pkgsrc"
 
-    sed -i '/		"electron": /d' ./package.json
-    HOME="$srcdir/.electron-gyp" npm install --cache "${srcdir}/npm-cache"
-	npm run build:bundle
+  electronDist=/usr/lib/electron
+  electronVer=$(cat /usr/lib/electron/version)
 
-    ./node_modules/.bin/electron-builder -l dir -c.electronDist=$electronDist -c.electronVersion=$electronVer
+  sed -E 's&"electron": "[^"]+",&"electron": "^'$electronVer'",&' -i package.json
+  HOME="$srcdir/.electron-gyp" npm install --cache "$srcdir/npm-cache"
+  npm run build:bundle
+
+  ./node_modules/.bin/electron-builder -l dir -c.electronDist=$electronDist -c.electronVersion=$electronVer
 }
 
 package() {
-	cd "$srcdir/desktop"
-    
-    install -dm755 "${pkgdir}/usr/lib/${pkgname%-git}"
-    cp -dr --no-preserve=ownership dist/linux-unpacked/resources/* "${pkgdir}/usr/lib/${pkgname%-git}/"
-    
-    install -Dm644 build/icons/icon.png "$pkgdir/usr/share/pixmaps/${pkgname%-git}.png"
-    
-    install -dm755 "${pkgdir}/usr/bin" "revolt-desktop"
-    
-    install -Dm755 "revolt-desktop.sh" "$pkgdir/usr/bin/${pkgname%-git}"
-    install -Dm644 "revolt-desktop.desktop" -t "$pkgdir/usr/share/applications"
+  cd "$_pkgsrc"
+
+  install -dm755 "$pkgdir/usr/lib/$_pkgname"
+  cp --reflink=auto -a dist/linux-unpacked/resources/* "$pkgdir/usr/lib/$_pkgname/"
+
+  install -Dm644 build/icons/icon.png "$pkgdir/usr/share/pixmaps/$_pkgname.png"
+
+  install -Dm644 "revolt-desktop.desktop" -t "$pkgdir/usr/share/applications"
+
+  install -Dm755 /dev/stdin "$pkgdir/usr/bin/$_pkgname" << END
+#!/usr/bin/env bash
+exec electron /usr/lib/$_pkgname/app.asar "\$@"
+END
+
+  chmod -R u+rwX,go+rX,go-w "$pkgdir/"
 }

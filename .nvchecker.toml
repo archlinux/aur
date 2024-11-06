@@ -1,0 +1,4 @@
+[revolt-desktop-git]
+source = "git"
+git = "https://github.com/revoltchat/desktop.git"
+prefix = "v"

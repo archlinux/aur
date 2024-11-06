@@ -1,5 +1,4 @@
-desktop
-pkg
-src
-
-*.zst
+*
+!PKGBUILD
+!.SRCINFO
+!.gitignore
