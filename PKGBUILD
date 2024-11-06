@@ -2,67 +2,61 @@
 
 _pkgname=gimp
 pkgname=${_pkgname}-devel
-pkgver=2.99.18
-pkgrel=6
+pkgver=3.0.0rc1
+pkgrel=1
 pkgdesc="GNU Image Manipulation Program (Development version)"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url="https://www.gimp.org/"
 license=('GPL-3.0-or-later')
-depends=('gtk3' 'lcms2' 'libwmf' 'icu' 'enchant' 'libgexiv2' 'librsvg' 'desktop-file-utils'
-         'libexif' 'libgudev' 'openjpeg2' 'poppler-glib' 'poppler-data' 'openexr' 'mypaint-brushes1'
-         'babl>=0.1.98' 'gegl>=0.4.48' 'cairo' 'python-gobject' 'appstream-glib' 'libxmu' 'graphviz')
-makedepends=('appstream' 'intltool' 'libxslt' 'glib-networking'
-             'alsa-lib' 'curl' 'ghostscript' 'libxpm'
-             'libheif' 'libwebp' 'libmng' 'iso-codes' 'aalib' 'zlib' 'libjxl' 'libilbm'
-             'gjs'  'luajit' 'meson' 'gobject-introspection'
-             'xorg-server-xvfb' 'vala' 'highway' 'meson' 'qoi-headers'
-             'cfitsio' 'gi-docgen' 'yelp-tools' 'glib2-devel')
-checkdepends=('xorg-server-xvfb')
-#'gutenprint: for sophisticated printing only as gimp has built-in cups print support'
-optdepends=('alsa-lib: for MIDI event controller module'
+depends=('appstream-glib' 'babl>=0.1.110' 'cairo' 'desktop-file-utils' 'enchant'
+         'gegl>=0.4.50' 'graphviz' 'gtk3' 'icu' 'lcms2' 'libexif' 'libgexiv2'
+         'libgudev' 'librsvg' 'libwmf' 'libxmu' 'mypaint-brushes1' 'openexr'
+         'openjpeg2' 'poppler-data' 'poppler-glib' 'python-gobject')
+makedepends=('aalib' 'alsa-lib' 'appstream' 'cfitsio' 'curl' 'ghostscript'
+             'gi-docgen' 'gjs' 'glib2-devel' 'glib-networking' 'gobject-introspection'
+             'highway' 'intltool' 'iso-codes' 'libheif' 'libilbm' 'libjxl'
+             'libmng' 'libwebp' 'libxpm' 'libxslt' 'luajit' 'meson' 'qoi-headers'
+             'vala' 'zlib')
+             # 'xorg-server-xvfb' # needed for -Dheadless-tests=enabled
+             # 'yelp-tools' # needed for -Dg-ir-doc=true
+optdepends=('aalib: ASCII art support'
+            'alsa-lib: for MIDI event controller module'
+            'cfitsio: FITS support'
             'curl: for URI support'
+            'gjs: JavaScript scripting support'
             'ghostscript: for postscript support'
-            'libxpm: XPM support'
+            'iso-codes: Language support'
             'libheif: HEIF support'
             'libilbm: ILBM support'
             'libjxl: JPEG XL support'
-            'libwebp: WebP support'
             'libmng: MNG support'
-            'qoi-headers: QOI image support'
-            'iso-codes: Language support'
-            'aalib: ASCII art support'
-            'zlib: Compression routines'
-            'gjs: JavaScript scripting support'
-            'luajit: LUA scripting support'
+            'libwebp: WebP support'
+            'libxpm: XPM support'
             'lua51-lgi: LUA scripting support'
-            'cfitsio: FITS support')
+            'luajit: LUA scripting support'
+            'qoi-headers: QOI image support'
+            'zlib: Compression routines')
+# 'gutenprint: for sophisticated printing only as gimp has built-in cups print support' # GIMP 2.0 only
 conflicts=("${_pkgname}")
 provides=("${_pkgname}=${pkgver}")
-source=("https://download.gimp.org/pub/gimp/v${pkgver%.*}/${_pkgname}-${pkgver}.tar.xz"
-        'docs_dont_fail_on_warn.patch'
-        'fix-missing-gimpchoice-header.patch::https://gitlab.gnome.org/GNOME/gimp/-/commit/11892f1d83ffc465346dab7e2e8c6e790f555a64.patch'
+source=("https://download.gimp.org/pub/gimp/v${pkgver%.*}/${_pkgname}-${pkgver/rc/-RC}.tar.xz"
         'linux.gpl')
-sha256sums=('8c1bb7a94ac0d4d0cde4d701d8b356387c2ecd87abbd35bbf7d222d40f6ddb6e'
-            '7517df6ce9f2237253a49cb96eeb2638c80c53301bada6b44ce7f6eab835fe13'
-            'daeddaae0b5634f953189f4a479cc335c1516e7d490e6bf95f7be8e21835db3e'
+sha256sums=('b3d0b264c5e38e789faaf3417003397f3240014c59c7f417f9ca3bd39c5ffb66'
             '1003bbf5fc292d0d63be44562f46506f7b2ca5729770da9d38d3bb2e8a2f36b3')
-
-prepare() {
-  cd "${_pkgname}-${pkgver}"
-  patch -uNp2 -r- -i ../docs_dont_fail_on_warn.patch
-}
 
 build() {
   local meson_options=(
-    -Dg-ir-doc=true
+    # -Dg-ir-doc=false # disabled by default, depends on yelp-tools -- was causing build errors on 3.0 RC1
+    -Dheadless-tests=disabled # enabled by default, depends on xorg-server-xvfb
+    -Dlua=true # disabled by default for release (flagged as experimental)
   )
 
-  arch-meson "${_pkgname}-${pkgver}" build "${meson_options[@]}"
+  arch-meson "${_pkgname}-${pkgver/rc/-RC}" build "${meson_options[@]}"
   meson compile -C build
 }
 
 package() {
-  meson install -C build --destdir "$pkgdir"
+  meson install -C build --destdir "${pkgdir}"
 
-  install -Dm 644 "${srcdir}/linux.gpl" "${pkgdir}/usr/share/gimp/2.99/palettes/Linux.gpl"
+  install -Dm 644 "${srcdir}"/linux.gpl "${pkgdir}/usr/share/gimp/${pkgver%.*}/palettes/Linux.gpl"
 }
