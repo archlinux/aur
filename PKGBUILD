@@ -165,7 +165,7 @@ _disabled_modules=(languages/mod_spidermonkey
 # BUILD CONFIGURATION ENDS                     #
 
 pkgname=freeswitch
-pkgver=1.10.9
+pkgver=1.10.12
 pkgrel=1
 pkgdesc="An opensource and free (libre, price) telephony system, similar to Asterisk."
 arch=('i686' 'x86_64')
@@ -183,12 +183,12 @@ depends=('curl'
          'libshout'
          'libtiff'
          'lua'
-         'ffmpeg4.4'
+         'ffmpeg'
          'openssl'
          'opus'
          'pcre'
          'freetype2'
-         'spandsp-fs'
+         'spandsp-git'
          'sofia-sip')
 # per https://wiki.freeswitch.org/wiki/FreeSwitch_Dependencies, dependencies are downloaded and built *from upstream*, so thankfully the deps are pretty minimal.
 makedepends=('git'
@@ -225,9 +225,11 @@ source=("https://github.com/signalwire/${pkgname}/archive/v${pkgver}.tar.gz"
          'conf_log.freeswitch'
          'freeswitch.service'
 	 'freeswitch-arch.patch'  # required for 1.6.17
-         'python-3.11.patch'
          'fix-zmq-url.patch'
          'spandsp-fix.patch'
+         'ffmpeg7-fix.patch'
+         'iksemel-double-pointer.patch'
+         'xmlrpc_constptrs.patch'
          'freeswitch.conf.d.sig'
          'README.freeswitch.sig'
          'run.freeswitch.sig'
@@ -235,9 +237,11 @@ source=("https://github.com/signalwire/${pkgname}/archive/v${pkgver}.tar.gz"
          'conf_log.freeswitch.sig'
          'freeswitch.service.sig'
 	 'freeswitch-arch.patch.sig'
-         'python-3.11.patch.sig'
          'fix-zmq-url.patch.sig'
-         'spandsp-fix.patch.sig')
+         'spandsp-fix.patch.sig'
+         'ffmpeg7-fix.patch.sig'
+         'iksemel-double-pointer.patch.sig'
+         'xmlrpc_constptrs.patch.sig')
 _pkgname="freeswitch"
 sha512sums=('SKIP'
             'a9c0f8397e9375b26f8c3950c07fff9ce2c60684bd99cfb371cd19cce2bfb2f042a5380a38751bcd212096611d38731a2613a93d037b53f0c1cf356180b98912'
@@ -247,9 +251,13 @@ sha512sums=('SKIP'
             'a4fd539de109de3475abfeb2bd8a95670af3f5af83bd6f6b229df19e81da3f121c28a62cff282f9dc152908ebe0f24f76743e00c72fa04dc1fd465a00dc6f976'
             '0d71a056de156f5840effabf6fb37a20e64ae011ecd48bf049886d4c073fe251cd6adeb0380784622b570948e1ca30ce7c92a2cade230a7177c97ed697e6f1cb'
 	    '4d4f5237297b298010b8a0b264435cc2c04742ca313272e7558f164b19aef97afaace5cf005eeffcfa6be096daedace67931cc209bccdabd2f3d01a42b643036'
-            '07560ded0f537e256748ed243e06c2072e93679d3e601423a77fbf3b885caeae0f354455b532903f399c7c949841775a49c648fa5189cb19566dc6f7e83e5629'
             'cf55641654538af737246f9c838b98c081cf4b00e5713b821b86e0fc02df7b6605ea26fed9b5e9d3740a7766ac33d6effec324d3cc9ed6a7d6faeb9ba744f35f'
             '7d249589dfaa081f29e8127f3e66beaeb696c15e35ab6d1aecf5ccc497d3b9993336455b612875ae62b04fd1a7ab12ad2d3b65460e5920dfd3adc71ff8b012c0'
+            'c14430cb366879c3be2ea406fa697cacc4517cb9b95f59f6436f3914de6ed681792e426b95467f9f6472b9e9a37589d29ef979471a2afa30f5918a78b2c63c6d'
+            '3c2aaa0f9f2bbe965f670b2af38829fe262429b2fa1aec788a63ccf8e2de7c6a70b4cb143f8ae21f82a186ad07268a10ce5d1185f2717673710bb7de77fef142'
+            '51f10e516c9e57f94e02f229c1a66cbfc8b513b39758ccc8c6c8fdb803d1f02027e54d6ee7c7e4a876c9de562975cbd87d1fda7c2123ec8e2b0693e92ba82990'
+            'SKIP'
+            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -277,9 +285,11 @@ disable_module() {
 prepare() {
   cd ${srcdir}/${_pkgname}-${pkgver}
 
-  patch -Np1 -i ../python-3.11.patch
   patch -Np1 -i ../spandsp-fix.patch
   patch -Np1 -i ../fix-zmq-url.patch
+  patch -Np1 -i ../ffmpeg7-fix.patch
+  patch -Np1 -i ../iksemel-double-pointer.patch
+  patch -Np1 -i ../xmlrpc_constptrs.patch
 
   # BUILD BEGINS
   msg "Bootstrapping..."
@@ -303,9 +313,9 @@ prepare() {
   # CONFIGURE
   # We need to override some things for the ./configure for 1.6.17
   #./configure \
-  export CFLAGS="${CFLAGS} -Wno-error -D__alloca=alloca -I/usr/include/python3.11" # -I/usr/include/ffmpeg4.4"
+  export CFLAGS="${CFLAGS} -Wno-error -D__alloca=alloca"
   export CXXFLAGS="${CFLAGS}"
-  PKG_CONFIG_PATH="/usr/lib/ffmpeg4.4/pkgconfig" \
+
   ./configure \
     --prefix=/var/lib/freeswitch \
     --bindir=/usr/bin \
