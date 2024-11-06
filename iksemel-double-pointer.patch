@@ -1,0 +1,12 @@
+diff -Naur freeswitch-1.10.12.pristine/libs/iksemel/tools/hash.c freeswitch-1.10.12/libs/iksemel/tools/hash.c
+--- freeswitch-1.10.12.pristine/libs/iksemel/tools/hash.c	2024-11-05 18:36:22.445168017 +0000
++++ freeswitch-1.10.12/libs/iksemel/tools/hash.c	2024-11-05 18:36:48.613949438 +0000
+@@ -138,7 +138,7 @@
+ void
+ hash_delete (hash *h)
+ {
+-	iks_stack_delete (h->s);
++	iks_stack_delete (&(h->s));
+ 	free (h->table);
+ 	free (h);
+ }

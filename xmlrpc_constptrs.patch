@@ -1,0 +1,21 @@
+diff -Naur freeswitch-1.10.12.pristine/src/mod/xml_int/mod_xml_rpc/mod_xml_rpc.c freeswitch-1.10.12/src/mod/xml_int/mod_xml_rpc/mod_xml_rpc.c
+--- freeswitch-1.10.12.pristine/src/mod/xml_int/mod_xml_rpc/mod_xml_rpc.c	2024-11-05 19:30:49.844398348 +0000
++++ freeswitch-1.10.12/src/mod/xml_int/mod_xml_rpc/mod_xml_rpc.c	2024-11-05 19:30:08.446685036 +0000
+@@ -359,7 +359,7 @@
+ 
+ 	err = 686;
+ 
+-	if (!user_attributes(user, domain_name, NULL, NULL, NULL, &allowed_commands)) {
++	if (!user_attributes(user, domain_name, NULL, NULL, NULL, (const char **)(&allowed_commands))) {
+ 		goto end;
+ 	}
+ 
+@@ -944,7 +944,7 @@
+ 							break;
+ 						}
+ 
+-						ConnRead(r->connP, 2000, NULL, NULL, &readError);
++						ConnRead(r->connP, 2000, NULL, NULL, (const char ** const)(&readError));
+ 		                if (readError) {
+ 							succeeded = FALSE;
+ 							free(readError);

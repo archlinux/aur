@@ -1,0 +1,196 @@
+diff -Naur freeswitch-1.10.12.pristine/src/mod/applications/mod_av/avcodec.c freeswitch-1.10.12/src/mod/applications/mod_av/avcodec.c
+--- freeswitch-1.10.12.pristine/src/mod/applications/mod_av/avcodec.c	2024-11-06 04:13:03.467528676 +0000
++++ freeswitch-1.10.12/src/mod/applications/mod_av/avcodec.c	2024-11-06 04:14:18.472443860 +0000
+@@ -1226,9 +1226,13 @@
+ 	}
+ 
+ 	if (context->encoder_ctx) {
++#if (LIBAVCODEC_VERSION_MAJOR < LIBAVCODEC_N)
+ 		if (avcodec_is_open(context->encoder_ctx)) {
+ 			avcodec_close(context->encoder_ctx);
+ 		}
++#else
++		avcodec_free_context(&(context->encoder_ctx));
++#endif
+ 		av_free(context->encoder_ctx);
+ 		context->encoder_ctx = NULL;
+ 	}
+@@ -1319,9 +1323,13 @@
+ 		}
+ 
+ 		if (context->encoder_ctx) {
++#if (LIBAVCODEC_VERSION_MAJOR < LIBAVCODEC_N)
+ 			if (avcodec_is_open(context->encoder_ctx)) {
+ 				avcodec_close(context->encoder_ctx);
+ 			}
++#else
++			avcodec_free_context(&(context->encoder_ctx));
++#endif
+ 			av_free(context->encoder_ctx);
+ 			context->encoder_ctx = NULL;
+ 		}
+@@ -1557,7 +1565,11 @@
+ 		}
+ 
+ 		 avframe->pict_type = AV_PICTURE_TYPE_I;
++#if (LIBAVUTIL_VERSION_MAJOR < LIBAVUTIL_N)
+ 		 avframe->key_frame = 1;
++#else
++		 avframe->flags |= AV_FRAME_FLAG_KEY;
++#endif
+ 		 context->last_keyframe_request = switch_time_now();
+ 	}
+ 
+@@ -1600,9 +1612,14 @@
+ 		}
+ #endif
+ 
++#if (LIBAVUTIL_VERSION_MAJOR < LIBAVUTIL_N)
+ 	if (context->need_key_frame && avframe->key_frame == 1) {
+-		avframe->pict_type = 0;
+ 		avframe->key_frame = 0;
++#else
++	if (context->need_key_frame && avframe->flags & AV_FRAME_FLAG_KEY) {
++		avframe->flags ^= AV_FRAME_FLAG_KEY;
++#endif
++		avframe->pict_type = 0;
+ 		context->need_key_frame = 0;
+ 	}
+ 
+@@ -1862,14 +1879,22 @@
+ 
+ 	switch_buffer_destroy(&context->nalu_buffer);
+ 	if (context->decoder_ctx) {
++#if (LIBAVCODEC_VERSION_MAJOR < LIBAVCODEC_N)
+ 		if (avcodec_is_open(context->decoder_ctx)) avcodec_close(context->decoder_ctx);
++#else
++		avcodec_free_context(&(context->decoder_ctx));
++#endif
+ 		av_free(context->decoder_ctx);
+ 	}
+ 
+ 	switch_img_free(&context->img);
+ 
+ 	if (context->encoder_ctx) {
++#if (LIBAVCODEC_VERSION_MAJOR < LIBAVCODEC_N)
+ 		if (avcodec_is_open(context->encoder_ctx)) avcodec_close(context->encoder_ctx);
++#else
++		avcodec_free_context(&(context->encoder_ctx));
++#endif
+ 		av_free(context->encoder_ctx);
+ 	}
+ 
+diff -Naur freeswitch-1.10.12.pristine/src/mod/applications/mod_av/avformat.c freeswitch-1.10.12/src/mod/applications/mod_av/avformat.c
+--- freeswitch-1.10.12.pristine/src/mod/applications/mod_av/avformat.c	2024-11-06 04:13:03.467528676 +0000
++++ freeswitch-1.10.12/src/mod/applications/mod_av/avformat.c	2024-11-06 04:15:57.267851488 +0000
+@@ -184,6 +184,15 @@
+ 
+ typedef struct av_file_context av_file_context_t;
+ 
++#if (LIBAVFORMAT_VERSION_MAJOR >= LIBAVFORMAT_N)
++static inline int priv_data_size(const AVOutputFormat *fmt)
++{
++	struct PrivSize {
++		int priv_data_size;
++	};
++    return ((const struct PrivSize*)fmt)->priv_data_size;
++}
++#endif
+ 
+ /**
+  * Fill the provided buffer with a string containing a timestamp
+@@ -455,8 +464,13 @@
+ 	}
+ 
+ 	s->oformat = oformat;
++#if (LIBAVFORMAT_VERSION_MAJOR < LIBAVFORMAT_N)
+ 	if (s->oformat->priv_data_size > 0) {
+ 		s->priv_data = av_mallocz(s->oformat->priv_data_size);
++#else
++	if (priv_data_size(s->oformat) > 0) {
++		s->priv_data = av_mallocz(priv_data_size(s->oformat));
++#endif
+ 		if (!s->priv_data) {
+ 			goto nomem;
+ 		}
+@@ -621,7 +635,9 @@
+ 		c->rc_initial_buffer_occupancy = buffer_bytes * 8;
+ 
+ 		if (codec_id == AV_CODEC_ID_H264) {
++#if (LIBAVCODEC_VERSION_MAJOR < LIBAVCODEC_N)
+ 			c->ticks_per_frame = 2;
++#endif
+ 
+ 
+ 			c->flags|=AV_CODEC_FLAG_LOOP_FILTER;   // flags=+loop
+@@ -1410,8 +1426,10 @@
+ 		switch_goto_status(SWITCH_STATUS_FALSE, err);
+ 	}
+ 
++#if (LIBAVFORMAT_VERSION_MAJOR < LIBAVFORMAT_N)
+ 	handle->seekable = context->fc->iformat->read_seek2 ? 1 : (context->fc->iformat->read_seek ? 1 : 0);
+ 	switch_log_printf(SWITCH_CHANNEL_LOG, SWITCH_LOG_INFO, "file %s is %sseekable\n", filename, handle->seekable ? "" : "not ");
++#endif
+ 
+ 	/** Get information on the input file (number of streams etc.). */
+ 	if ((error = avformat_find_stream_info(context->fc, opts ? &opts : NULL)) < 0) {
+@@ -1502,7 +1520,11 @@
+ 
+ 		switch_log_printf(SWITCH_CHANNEL_LOG, SWITCH_LOG_ERROR, "Could not open input audio codec channel 2 (error '%s')\n", get_error_text(error, ebuf, sizeof(ebuf)));
+ 		if ((cc = av_get_codec_context(&context->audio_st[0]))) {
++#if (LIBAVCODEC_VERSION_MAJOR < LIBAVCODEC_N)
+ 			avcodec_close(cc);
++#else
++			avcodec_free_context(&cc);
++#endif
+ 		}
+ 
+ 		context->has_audio = 0;
+@@ -3084,14 +3106,11 @@
+ 	void *pop;
+ 	MediaStream *mst = &context->video_st;
+ 	AVStream *st = mst->st;
+-	int ticks = 0;
+ 	int64_t max_delta = 1 * AV_TIME_BASE; // 1 second
+ 	switch_status_t status = SWITCH_STATUS_SUCCESS;
+ 	double fl_to = 0.02;
+ 	int do_fl = 0;
+ 	int smaller_ts = context->read_fps;
+-	AVCodecContext *c = NULL;
+-	AVCodecParserContext *cp = NULL;
+ 
+ 	if (!context->has_video) return SWITCH_STATUS_FALSE;
+ 
+@@ -3199,6 +3218,10 @@
+ 	}
+ #endif
+ 
++#if (LIBAVFORMAT_VERSION_MAJOR < LIBAVFORMAT_N)
++	int ticks = 0;
++	AVCodecContext *c = NULL;
++	AVCodecParserContext *cp = NULL;
+ 	if ((c = av_get_codec_context(mst)) && c->time_base.num) {
+ 		cp = av_stream_get_parser(st);
+ 		ticks = cp ? cp->repeat_pict + 1 : c->ticks_per_frame;
+@@ -3210,6 +3233,7 @@
+ 			context->video_start_time, ticks, c ? c->ticks_per_frame : -1, st->time_base.num, st->time_base.den, c ? c->time_base.num : -1, c ? c->time_base.den : -1,
+ 			st->start_time, st->duration == AV_NOPTS_VALUE ? context->fc->duration / AV_TIME_BASE * 1000 : st->duration, st->nb_frames, av_q2d(st->time_base));
+ 	}
++#endif
+ 
+  again:
+ 
+diff -Naur freeswitch-1.10.12.pristine/src/mod/applications/mod_av/mod_av.h freeswitch-1.10.12/src/mod/applications/mod_av/mod_av.h
+--- freeswitch-1.10.12.pristine/src/mod/applications/mod_av/mod_av.h	2024-11-06 04:13:03.467528676 +0000
++++ freeswitch-1.10.12/src/mod/applications/mod_av/mod_av.h	2024-11-06 04:14:18.472443860 +0000
+@@ -42,7 +42,10 @@
+ 
+ #define LIBAVCODEC_V 59
+ #define LIBAVFORMAT_V 59
++#define LIBAVCODEC_N 60
++#define LIBAVFORMAT_N 60
+ #define LIBAVUTIL_V 57
++#define LIBAVUTIL_N 59
+ 
+ struct mod_av_globals {
+ 	int debug;
