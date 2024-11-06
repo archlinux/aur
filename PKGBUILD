@@ -30,7 +30,7 @@ backup=(
   'etc/wazuh-indexer/opensearch.keystore'
   )
 
-sha512sums=('132c69c02788a51a6e496b623165cadd7465380ce77077561a03bec9a083d082fdd19f3ba1c91de00503e6821066d60d9e843e7a4d28fa78bf49ef99f1e943ad')
+sha512sums=('da9206909a10abae389a06be9e9656df52a1aa78b48003eec81f8ccef89c7d27445d11c3709023a0c1b0722db46d1c445d7987296efd0d6cba69161a2a28f3f4')
 
 install=$pkgname.install
 
