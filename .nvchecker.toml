@@ -1,0 +1,6 @@
+[dune-polygongrid]
+source = "gitlab"
+gitlab = "extensions/dune-polygongrid"
+host = "gitlab.dune-project.org"
+use_max_tag = true
+prefix = "v"
