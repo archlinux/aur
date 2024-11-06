@@ -1,14 +1,15 @@
 pkgbase = dune-subgrid
 	pkgdesc = Allows you to mark a subset of the elements of a given grid
-	pkgver = 2.9
+	pkgver = 2.10
 	pkgrel = 1
 	url = https://dune-project.org/modules/dune-subgrid
 	arch = x86_64
-	license = GPL2
+	license = GPL-2.0-or-later
 	makedepends = doxygen
 	makedepends = graphviz
-	depends = dune-grid>=2.9
-	source = https://gitlab.dune-project.org/extensions/dune-subgrid/-/archive/releases/2.9/dune-subgrid-releases-2.9.tar.gz
-	sha512sums = 6f89b0bbf3b5d34a985da98e3c46d652019ea012cc3e38904b87f0a3cf1192ab7eb9385846c157aa6d704ec0ffc2bad6ee7dc0ea3f5adad177cbb1d006c52c86
+	depends = dune-grid>=2.10
+	options = !emptydirs
+	source = https://gitlab.dune-project.org/extensions/dune-subgrid/-/archive/releases/2.10/dune-subgrid-releases-2.10.tar.gz
+	sha512sums = 86474b87fd1e31889dd23bd5192c805c4d7bed479a21aa4e5e5353be72d82dbe28edc12660c81f830676d067888c371b5526283c3d5bc77bf118a2ee6088e8ae
 
 pkgname = dune-subgrid

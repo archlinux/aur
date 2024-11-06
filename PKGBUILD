@@ -1,21 +1,18 @@
 # Maintainer: Carlos Aznarán <caznaranl@uni.pe>
 pkgname=dune-subgrid
-_tarver=2.9
+_tarver=2.10
 _tar="${_tarver}/${pkgname}-releases-${_tarver}.tar.gz"
 pkgver="${_tarver}"
 pkgrel=1
 pkgdesc="Allows you to mark a subset of the elements of a given grid"
 arch=(x86_64)
 url="https://dune-project.org/modules/${pkgname}"
-license=('GPL2')
+license=(GPL-2.0-or-later)
 depends=("dune-grid>=${_tarver}")
 makedepends=(doxygen graphviz)
+options=(!emptydirs)
 source=(https://gitlab.dune-project.org/extensions/${pkgname}/-/archive/releases/${_tar})
-sha512sums=('6f89b0bbf3b5d34a985da98e3c46d652019ea012cc3e38904b87f0a3cf1192ab7eb9385846c157aa6d704ec0ffc2bad6ee7dc0ea3f5adad177cbb1d006c52c86')
-
-prepare() {
-  sed -i 's/^Version: '"${pkgver}"'-git/Version: '"${pkgver}"'/' ${pkgname}-releases-${_tarver}/dune.module
-}
+sha512sums=('86474b87fd1e31889dd23bd5192c805c4d7bed479a21aa4e5e5353be72d82dbe28edc12660c81f830676d067888c371b5526283c3d5bc77bf118a2ee6088e8ae')
 
 build() {
   cmake \
@@ -25,11 +22,10 @@ build() {
     -DCMAKE_SKIP_RPATH=ON \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DBUILD_SHARED_LIBS=TRUE \
-    -DCMAKE_CXX_STANDARD=17 \
+    -DCMAKE_CXX_STANDARD=20 \
     -DCMAKE_C_COMPILER=gcc \
     -DCMAKE_CXX_COMPILER=g++ \
     -DCMAKE_C_FLAGS='-Wall -fdiagnostics-color=always' \
-    -DALLOW_CXXFLAGS_OVERWRITE=ON \
     -DCMAKE_CXX_FLAGS="-Wall -fdiagnostics-color=always -mavx" \
     -DCMAKE_POSITION_INDEPENDENT_CODE=TRUE \
     -DENABLE_HEADERCHECK=ON \
@@ -41,5 +37,4 @@ build() {
 package() {
   DESTDIR="${pkgdir}" cmake --build build-cmake --target install
   install -Dm644 ${pkgname}-releases-${_tarver}/COPYING "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-  find "${pkgdir}" -type d -empty -delete
 }
