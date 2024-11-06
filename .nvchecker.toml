@@ -1,0 +1,5 @@
+[goxel-voxel-editor]
+source="github"
+github="guillaumechereau/goxel"
+use_latest_release=true
+prefix="v"
