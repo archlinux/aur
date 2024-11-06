@@ -9,11 +9,12 @@
 pkgname=gnome-dds-thumbnailer
 pkgdesc='View DirectDraw Surface textures in Nautilus and Nemo.'
 pkgver=2016.02.19
-pkgrel=1
+pkgrel=2
 arch=('any')
 url=https://en.wikipedia.org/wiki/DirectDraw_Surface
 license=('GPL')
 depends=('imagemagick')
+conflicts=('tumbler-extra-thumbnailers')
 source=()
 md5sums=()
 
