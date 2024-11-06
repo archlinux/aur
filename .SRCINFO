@@ -1,0 +1,24 @@
+pkgbase = nnn-emoji-git
+	pkgdesc = The fastest terminal file manager ever written (with emoji as file icons).
+	pkgver = 4.7
+	pkgrel = 1
+	url = https://github.com/jarun/nnn
+	arch = x86_64
+	license = BSD
+	depends = bash
+	depends = sed
+	optdepends = atool: for more archive formats
+	optdepends = libarchive: for more archive formats
+	optdepends = zip: for zip archive format
+	optdepends = unzip: for zip archive format
+	optdepends = trash-cli: to trash files
+	optdepends = sshfs: mount remotes
+	optdepends = rclone: mount remotes
+	optdepends = fuse2: unmount remotes
+	optdepends = xdg-utils: desktop opener
+	provides = nnn
+	conflicts = nnn
+	source = nnn::git+https://github.com/jarun/nnn
+	md5sums = SKIP
+
+pkgname = nnn-emoji-git
