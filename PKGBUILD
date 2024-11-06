@@ -8,8 +8,8 @@ export CARGO_HOME CARGO_TARGET_DIR RUSTUP_TOOLCHAIN
 
 _pkgname="yazi"
 pkgname="$_pkgname-git"
-pkgver=0.3.2.r3.g69e7c8f
-pkgrel=1
+pkgver=0.3.3.r79.g81ce040
+pkgrel=2
 pkgdesc="Blazing fast terminal file manager written in Rust, based on async I/O"
 url="https://github.com/sxyazi/yazi"
 arch=('x86_64' 'aarch64')
@@ -54,7 +54,7 @@ pkgver() {
 
 prepare() {
   cd "$_pkgsrc"
-  cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
@@ -70,7 +70,7 @@ check() {
 
 package() {
   cd "$_pkgsrc"
-  install -Dm755 "target/release/$_pkgname" "$pkgdir/usr/bin/$_pkgname"
+  install -Dm755 "target/release/yazi" "$pkgdir/usr/bin/yazi"
   install -Dm755 "target/release/ya" "$pkgdir/usr/bin/ya"
   install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENCE"
   install -Dm644 "README.md" "$pkgdir/usr/share/doc/$pkgname/README.md"
@@ -79,11 +79,16 @@ package() {
   local r
   for r in 16 24 32 48 64 128 256; do
     install -dm755 "$pkgdir/usr/share/icons/hicolor/${r}x${r}/apps"
-    convert assets/logo.png -resize "${r}x${r}" "$pkgdir/usr/share/icons/hicolor/${r}x${r}/apps/yazi.png"
+    magick assets/logo.png -resize "${r}x${r}" "$pkgdir/usr/share/icons/hicolor/${r}x${r}/apps/yazi.png"
   done
 
-  cd "$_pkgname-boot/completions"
-  install -Dm644 "$_pkgname.bash" "$pkgdir/usr/share/bash-completion/completions/$_pkgname"
-  install -Dm644 "$_pkgname.fish" -t "$pkgdir/usr/share/fish/vendor_completions.d/"
-  install -Dm644 "_$_pkgname" -t "$pkgdir/usr/share/zsh/site-functions/"
+  cd "yazi-boot/completions"
+  install -Dm644 "yazi.bash" "$pkgdir/usr/share/bash-completion/completions/yazi"
+  install -Dm644 "yazi.fish" -t "$pkgdir/usr/share/fish/vendor_completions.d/"
+  install -Dm644 "_yazi" -t "$pkgdir/usr/share/zsh/site-functions/"
+
+  cd "yazi-cli/completions"
+  install -Dm644 "ya.bash" "$pkgdir/usr/share/bash-completion/completions/ya"
+  install -Dm644 "ya.fish" -t "$pkgdir/usr/share/fish/vendor_completions.d/"
+  install -Dm644 "_ya" -t "$pkgdir/usr/share/zsh/site-functions/"
 }
