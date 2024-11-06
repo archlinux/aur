@@ -1,6 +1,6 @@
 pkgbase = dune-fem-dg
 	pkgdesc = Implementation of Discontinuous Galerkin schemes using the DUNE-FEM framework
-	pkgver = 2.9.1
+	pkgver = 2.10.0
 	pkgrel = 1
 	url = https://dune-project.org/modules/dune-fem-dg
 	arch = x86_64
@@ -8,10 +8,11 @@ pkgbase = dune-fem-dg
 	makedepends = doxygen
 	makedepends = graphviz
 	makedepends = python-scikit-build
-	depends = dune-fem>=2.9.1
+	depends = dune-fem>=2.10.0
 	optdepends = doxygen: Generate the class documentation from C++ sources
 	optdepends = graphviz: Graph visualization software
-	source = https://gitlab.dune-project.org/dune-fem/dune-fem-dg/-/archive/v2.9.1/dune-fem-dg-v2.9.1.tar.gz
-	sha512sums = c8c0726bb38ea9e2a6fa11a956a72f1ac7cb454de566d4db445e2200fc917d7fba8454a294514ebcc58e4d77ec33e65e6ee4b468da2ebc8e06484a6abe71b21d
+	options = !emptydirs
+	source = https://gitlab.dune-project.org/dune-fem/dune-fem-dg/-/archive/v2.10.0/dune-fem-dg-v2.10.0.tar.gz
+	sha512sums = 805cc78221b471dd31bd932326b76fcce09171c55fc0e87b07d65a88ddac4b01fed31d470585f1f3f7e4cb7c8a49b4f2584841922f3c9ab2ea4cfa669a62e9cc
 
 pkgname = dune-fem-dg
