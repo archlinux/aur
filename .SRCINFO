@@ -1,13 +1,13 @@
 pkgbase = crosspaste-desktop-bin
 	pkgdesc = Universal Pasteboard Across Devices
-	pkgver = 1.0.12.1084
+	pkgver = 1.0.13.1121
 	pkgrel = 1
 	url = https://crosspaste.com
 	arch = x86_64
 	license = AGPL-3.0-or-later
 	provides = crosspaste-desktop
 	conflicts = crosspaste-desktop
-	source = crosspaste-1.0.12.1084.tar.gz::https://github.com/CrossPaste/crosspaste-desktop/releases/download/1.0.12.1084/crosspaste-1.0.12-1084-linux-amd64.tar.gz
-	sha256sums = f37e88abe7388ac2bad91f2b2ba02d69d44838a019656280cc1d8d2164840e0d
+	source = crosspaste-1.0.13.1121.tar.gz::https://github.com/CrossPaste/crosspaste-desktop/releases/download/1.0.13.1121/crosspaste-1.0.13-1121-linux-amd64.tar.gz
+	sha256sums = e88711004debd88a65fb13082edbe40c18c8cc386f31c409594eef2b3969deaa
 
 pkgname = crosspaste-desktop-bin
