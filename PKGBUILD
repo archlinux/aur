@@ -2,45 +2,48 @@
 # Maintainer: yifwon <wyf9661@gmail.com>
 
 _pkgname=wechat-universal
-_disname=com.tencent.wechat
 pkgname="${_pkgname}"-appimage
-pkgver=1.0.0.241
-pkgrel=2
+pkgver=4.0.0.30
+pkgrel=1
 pkgdesc="AppImage version of WeChat for linux desktop."
 arch=('x86_64' 'aarch64')
-url="https://github.com/zydou/WeChat-AppImage"
+url="https://linux.weixin.qq.com/"
+_downloadurl="https://dldir1v6.qq.com/weixin/Universal/Linux"
 license=('custom')
 options=(!strip !debug)
 depends=('zlib' 'hicolor-icon-theme' 'fuse2')
 provides=('wechat-universal')
 conflicts=('wechat-universal' 'wechat-universal-bwrap')
 
-source=("${_pkgname}.desktop::https://raw.githubusercontent.com/7Ji-PKGBUILDs/${_pkgname}-bwrap/master/${_pkgname}.desktop")
-source_x86_64=("${_pkgname}-${pkgver}-x86_64.AppImage::${url}/releases/download/${pkgver}/WeChat-${pkgver}-x86_64.AppImage")
-source_aarch64=("${_pkgname}-${pkgver}-aarch64.AppImage::${url}/releases/download/${pkgver}/WeChat-${pkgver}-aarch64.AppImage")
-sha1sums=('cd7db5c2b96626255eac3db29a92af322d6e46b2')
-sha1sums_x86_64=('82538d5cb9d5f3bf73d8bab57d353b29c02a36ee')
-sha1sums_aarch64=('a66ed8a149205ab54d6b8d02db70638445bfbddd')
+source_x86_64=("${_pkgname}-${pkgver}-x86_64.AppImage::${_downloadurl}/WeChatLinux_x86_64.AppImage")
+source_aarch64=("${_pkgname}-${pkgver}-aarch64.AppImage::${_downloadurl}/WeChatLinux_arm64.AppImage")
+
+sha1sums_x86_64=('SKIP')
+sha1sums_aarch64=('SKIP')
 
 _appimage="${_pkgname}-${pkgver}-${CARCH}.AppImage"
 noextract=("${_appimage}")
 
+_install_path=/opt/${pkgname}
+
 prepare() {
     chmod +x "${_appimage}"
     ./"${_appimage}" --appimage-extract
+    sed 's/Exec=/\#Exec=/g' -i "${srcdir}/squashfs-root/wechat.desktop"
+    echo "Exec=${_install_path}/${_pkgname}.AppImage --no-sandbox %U" >> "${srcdir}/squashfs-root/wechat.desktop"
 }
 
 package() {
     # AppImage
-    install -Dm755 "${srcdir}/${_appimage}" "${pkgdir}/opt/${pkgname}/${pkgname}.AppImage"
+    install -Dm755 "${srcdir}/${_appimage}" "${pkgdir}/opt/${pkgname}/${_pkgname}.AppImage"
 
     # Desktop file
-    install -Dm644 "${srcdir}/${_pkgname}.desktop"\
+    install -Dm644 "${srcdir}/squashfs-root/wechat.desktop"\
             "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
 
     # Icon images
     install -dm755 "${pkgdir}/usr/share/icons"
-    install -Dm644 "${srcdir}/squashfs-root/${_disname}.png" "${pkgdir}/usr/share/icons/${_pkgname}.png"
+    install -Dm644 "${srcdir}/squashfs-root/wechat.png" -t "${pkgdir}/usr/share/icons"
 
     # Symlink executable
     install -dm755 "${pkgdir}/usr/bin"
