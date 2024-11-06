@@ -1,0 +1,22 @@
+From 7695b5412f338acd639fa385ebfcb6c25164effa Mon Sep 17 00:00:00 2001
+From: Markus Steinborn <gnugv_maintainer@yahoo.de>
+Date: Mon, 3 Mar 2014 16:25:53 +0100
+Subject: Fix crash in zoom.c
+
+---
+ src/zoom.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/zoom.c b/src/zoom.c
+index ccd964e..6c31645 100644
+--- a/src/zoom.c
++++ b/src/zoom.c
+@@ -104,7 +104,7 @@ zoom_createZoom(Widget w _GL_UNUSED, XtPointer call_data)
+ 
+     BEGINMESSAGE(zoom_createZoom)
+ 
+-    if (!(gv_psfile != NULL || (gv_gs_arguments && *gv_gs_arguments))) {
++    if (!gv_psfile) {
+        INFMESSAGE(no file) ENDMESSAGE(zoom_createZoom)
+        return;
+     }

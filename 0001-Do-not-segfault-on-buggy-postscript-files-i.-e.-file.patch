@@ -1,0 +1,58 @@
+From f5e02eb52a4a25a16cbc48dd61f5dc9f50e1f5e5 Mon Sep 17 00:00:00 2001
+From: Markus Steinborn <gnugv_maintainer@yahoo.de>
+Date: Tue, 17 Dec 2013 19:16:55 +0100
+Subject: =?UTF-8?q?Do=20not=20segfault=20on=20buggy=20postscript=20files,?=
+ =?UTF-8?q?=20i.=20e.=20files=0Ai.=20e.=20files=20where=20the=20page=20num?=
+ =?UTF-8?q?ber=20iin=20DSC=20comments=20is=20missing.?=
+
+Fixes debian bug #729618: gv: segv on certain blank line
+---
+ src/doc_misc.c |  4 +++-
+ src/misc.c     | 12 +++++++++---
+ 2 files changed, 12 insertions(+), 4 deletions(-)
+
+diff --git a/src/doc_misc.c b/src/doc_misc.c
+index 4cf0740..e595be8 100644
+--- a/src/doc_misc.c
++++ b/src/doc_misc.c
+@@ -84,7 +84,9 @@ doc_scanFile(fPP,docP,filename,filename_raw,filename_dscP,cmd_scan_pdf,filename_
+          ret = d->structured = 1;
+          if (d->numpages == 1) d->labels_useful=1;
+          else for (i = 1; i < d->numpages; i++)
+-            if (strcmp(d->pages[i-1].label,d->pages[i].label)) { d->labels_useful = 1; break; }
++	    if (d->pages[i-1].label && d->pages[i].label) {
++               if (strcmp(d->pages[i-1].label,d->pages[i].label)) { d->labels_useful = 1; break; }
++	    }
+       }
+    }
+    *docP = d;
+diff --git a/src/misc.c b/src/misc.c
+index d10c3b9..b5545c5 100644
+--- a/src/misc.c
++++ b/src/misc.c
+@@ -995,8 +995,11 @@ setup_ghostview(void)
+ 
+         INFMESSAGE(toc available)
+ 	if (doc->labels_useful) {
+-	    for (i = 0; i < doc->numpages; i++) 
+-		maxlen = max(maxlen, (int)strlen(doc->pages[i].label));
++	    for (i = 0; i < doc->numpages; i++)
++	       if (doc->pages[i].label)
++      	          maxlen = max(maxlen, (int)strlen(doc->pages[i].label));
++	       else
++	          maxlen = max(maxlen, log10((double) doc->numpages) + 2);
+ 	} else {
+ 	    double x;
+ 	    x = doc->numpages;
+@@ -1014,7 +1017,10 @@ setup_ghostview(void)
+ 		} else {
+ 		    j = i;
+ 		}
+-		sprintf(tocp, "%*s\n", maxlen, doc->pages[j].label);
++		if (doc->pages[j].label)
++		  sprintf(tocp, "%*s\n", maxlen, doc->pages[j].label);
++		else
++		  sprintf(tocp, "?%*d\n", maxlen-1, i+1);
+ 	    } else {
+ 		sprintf(tocp, "%*d\n", maxlen, i+1);
+ 	    }
