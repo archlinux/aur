@@ -1,0 +1,4 @@
+[canorus]
+source="github"
+github="canorusmusic/canorus"
+use_latest_release=true

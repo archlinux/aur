@@ -7,15 +7,15 @@
 
 pkgname=canorus
 pkgver=0.7.3rc3
-pkgrel=4
+pkgrel=5
 pkgdesc="A free music score editor"
 arch=('x86_64')
 url="http://www.canorus.org/"
 license=('GPL')
 depends=('qt5-svg' 'qt5-webengine' 'alsa-lib' 'zlib' 'python')
 makedepends=('cmake' 'swig' 'qt5-tools' 'ruby')
-source=("https://downloads.sourceforge.net/project/canorus/0.7.3/canorus-${pkgver}.tar.bz2")
-sha256sums=('c5d470ac6cae696472dcb7176e0cd4545b883ff84ae2dc767a8956546f5b4b15')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/canorusmusic/canorus/archive/refs/tags/${pkgver}.zip")
+sha256sums=('a4f54c96172e02d799b30b0939ecea3e43d9b99511e556b208d1811ea3330e41')
 
 build() {
   cd $pkgname-$pkgver
