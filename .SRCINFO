@@ -1,0 +1,20 @@
+pkgbase = python-fast-zip-decryption
+	pkgdesc = Read password protected Zips 100x faster
+	pkgver = 3.0.0
+	pkgrel = 1
+	url = https://github.com/mxmlnkn/fast-zip-decryption
+	arch = i686
+	arch = x86_64
+	license = MIT
+	checkdepends = python-pytest
+	checkdepends = zip
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	makedepends = python-build
+	makedepends = python-installer
+	source = https://files.pythonhosted.org/packages/source/f/fast_zip_decryption/fast_zip_decryption-3.0.0.tar.gz
+	md5sums = 5afd23cc9f30cbba2dcc10d8b58aa7c7
+
+pkgname = python-fast-zip-decryption
+	depends = python>=3.8
+	depends = zip
