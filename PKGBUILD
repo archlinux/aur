@@ -29,7 +29,7 @@ makedepends=(
 )
 options=(!lto)
 source=("git+https://github.com/sched-ext/scx?signed#tag=v$pkgver")
-sha256sums=('4672ba95c9621da9bde899c24cac0e5b3915cb68fd22bd9050ec43b120e65640')
+sha256sums=('81ebebdef84d9e02fb56b766633545ecfa875c297381c4912448409592aa407a')
 validpgpkeys=(
   697C63013E65270255EBC2608744DC1EB26B5A9A  # Tejun Heo <tj@kernel.org>
   F5504C7B7B8107B40EF9E97AA1148BB3207BCC33  # David Vernet
