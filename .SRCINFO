@@ -1,6 +1,6 @@
 pkgbase = revolt-desktop
 	pkgdesc = User-first chat platform built with modern web technologies
-	pkgver = 1.0.7
+	pkgver = 1.0.8
 	pkgrel = 1
 	url = https://github.com/revoltchat/desktop
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = revolt-desktop
 	makedepends = npm
 	makedepends = nodejs
 	depends = electron
-	source = revolt-desktop-1.0.7.tar.gz::https://github.com/revoltchat/desktop/archive/v1.0.7.tar.gz
-	sha256sums = 4dcea2c0dac3920ea47e3daf2770d471da7a148e530f1e24df2aed39d45e5485
+	source = revolt-desktop-1.0.8.tar.gz::https://github.com/revoltchat/desktop/archive/v1.0.8.tar.gz
+	sha256sums = cec46eca480d3bf011c9ef3066b74366d706de525b432a9522156534c84ee519
 
 pkgname = revolt-desktop

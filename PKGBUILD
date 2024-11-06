@@ -3,7 +3,7 @@
 
 _pkgname="revolt-desktop"
 pkgname="$_pkgname"
-pkgver=1.0.7
+pkgver=1.0.8
 pkgrel=1
 pkgdesc="User-first chat platform built with modern web technologies"
 url="https://github.com/revoltchat/desktop"
@@ -18,13 +18,13 @@ makedepends=(
   'nodejs'
 )
 
-_pkgsrc="desktop-1.0.7"
+_pkgsrc="desktop-$pkgver"
 _pkgext="tar.gz"
 source=(
   "$_pkgname-$pkgver.$_pkgext"::"https://github.com/revoltchat/desktop/archive/v$pkgver.$_pkgext"
 )
 sha256sums=(
-  '4dcea2c0dac3920ea47e3daf2770d471da7a148e530f1e24df2aed39d45e5485'
+  'cec46eca480d3bf011c9ef3066b74366d706de525b432a9522156534c84ee519'
 )
 
 build() {
@@ -44,7 +44,7 @@ package() {
   cd "$_pkgsrc"
 
   install -dm755 "$pkgdir/usr/lib/$_pkgname"
-  cp -dr --no-preserve=ownership dist/linux-unpacked/resources/* "$pkgdir/usr/lib/$_pkgname/"
+  cp --reflink=auto -a dist/linux-unpacked/resources/* "$pkgdir/usr/lib/$_pkgname/"
 
   install -Dm644 build/icons/icon.png "$pkgdir/usr/share/pixmaps/$_pkgname.png"
 
@@ -54,4 +54,6 @@ package() {
 #!/usr/bin/env bash
 exec electron /usr/lib/$_pkgname/app.asar "\$@"
 END
+
+  chown -R u+rwX,go+rX,go-w "$pkgdir/"
 }
