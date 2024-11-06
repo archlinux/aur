@@ -105,7 +105,7 @@ source_loong64=(
 )
 
 
-md5sums=('424db725e68df56ea13aa65775235e3d'
+md5sums=('ef6a081e3dc3ad182bfb1484decf23c0'
          '89ae77c95f205d0a7f9347f8251ce742'
          '468e0367346707c026e577e7bf3e3a82'
          'b48d860c2d03ddb4ffa609fcd5fe6857'
