@@ -1,0 +1,5 @@
+[lobe-chat]
+source="github"
+github="lobehub/lobe-chat"
+use_latest_release=true
+prefix="v"
