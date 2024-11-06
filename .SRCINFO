@@ -1,14 +1,13 @@
 pkgbase = clac
 	pkgdesc = A command line, stack-based calculator with postfix notation
-	pkgver = 0.3.1.r0.g99be7a4
+	pkgver = 0.3.4
 	pkgrel = 1
 	url = https://github.com/soveran/clac
 	arch = i686
 	arch = x86_64
 	license = BSD
 	makedepends = git
-	source = clac::git+https://github.com/soveran/clac
-	sha1sums = SKIP
+	source = clac-0.3.4.tar.gz::https://github.com/soveran/clac/archive/refs/tags/0.3.4.tar.gz
+	sha512sums = 0418270992ac0054ea7fe2862b6ba894737a222467ec0d17f6eba04aeac26a4243e3b521d5080521331308f8969ab5b1d8c9ff616902cc098dbef5e2d39f14a2
 
 pkgname = clac
-
