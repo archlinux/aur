@@ -1,15 +1,13 @@
 pkgbase = revolt-desktop-appimage
 	pkgdesc = Revolt Desktop App
-	pkgver = 1.0.6
+	pkgver = 1.0.8
 	pkgrel = 1
 	url = https://github.com/revoltchat/desktop
-	arch = any
-	license = AGPL3
-	depends = hicolor-icon-theme
+	arch = x86_64
+	license = AGPL-3.0-only
+	makedepends = desktop-file-utils
 	options = !strip
-	source = https://github.com/revoltchat/desktop/releases/download/v1.0.6/Revolt-1.0.6.AppImage
-	source = revolt-desktop.patch
-	md5sums = 8b4e34af554b3a81215d388d985e977c
-	md5sums = adaaacac103291d004e4adca52db6b55
+	source = Revolt-1.0.8.AppImage::https://github.com/revoltchat/desktop/releases/download/v1.0.8/Revolt-1.0.8.AppImage
+	sha256sums = 2f6dc97b9a7b56642938b0be21f990464d8228a526e2b34176c60bbea2d39516
 
 pkgname = revolt-desktop-appimage

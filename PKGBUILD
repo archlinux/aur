@@ -1,29 +1,52 @@
-# Maintainer: Nathan Wong, NorthWestWind <wsyn148@gmail.com>
-_pkgname=revolt-desktop
-pkgname=$_pkgname-appimage
-pkgver=1.0.6
+# Maintainer:
+# Contributor: Nathan Wong, NorthWestWind <wsyn148@gmail.com>
+
+: ${_install_path:=opt}
+
+_pkgname="revolt-desktop"
+pkgname="$_pkgname-appimage"
+pkgver=1.0.8
 pkgrel=1
 pkgdesc="Revolt Desktop App"
-arch=('any')
 url="https://github.com/revoltchat/desktop"
-license=('AGPL3')
-depends=('hicolor-icon-theme')
-source=("${url}/releases/download/v${pkgver}/Revolt-${pkgver}.AppImage" "revolt-desktop.patch")
-md5sums=('8b4e34af554b3a81215d388d985e977c'
-         'adaaacac103291d004e4adca52db6b55')
-options=(!strip)
+license=('AGPL-3.0-only')
+arch=('x86_64')
+
+makedepends=(
+  'desktop-file-utils'
+)
+
+options=('!strip')
+
+_pkgsrc="Revolt-$pkgver"
+_pkgext="AppImage"
+source=("$_pkgsrc.$_pkgext"::"$url/releases/download/v$pkgver/Revolt-$pkgver.AppImage")
+sha256sums=('2f6dc97b9a7b56642938b0be21f990464d8228a526e2b34176c60bbea2d39516')
 
 prepare() {
-  cd $srcdir
-
-  chmod +x ./Revolt-${pkgver}.AppImage
-  ./Revolt-${pkgver}.AppImage --appimage-extract
-
-  cd squashfs-root
-  patch --forward --strip=1 --input="${srcdir}/revolt-desktop.patch"
+  chmod +x "$_pkgsrc.$_pkgext"
+  ./"$_pkgsrc.$_pkgext" --appimage-extract
 }
 
 package() {
-	install -Dm755 "${srcdir}/Revolt-${pkgver}.AppImage" "${pkgdir}/usr/bin/revolt-desktop"
-  install -Dm755 "${srcdir}/squashfs-root/revolt-desktop.desktop" "${pkgdir}/usr/share/applications/revolt-desktop.desktop"
+  install -Dm755 "squashfs-root/usr/share/icons/hicolor/512x512/apps/revolt-desktop.png" -t "$pkgdir/usr/share/pixmaps/"
+  install -Dm755 /dev/stdin "$pkgdir/usr/share/applications/$_pkgname.desktop" << END
+[Desktop Entry]
+Type=Application
+Name=Revolt
+Comment=$pkgdesc
+Exec=$_pkgname
+Terminal=false
+Icon=revolt-desktop
+Categories=Network;InstantMessaging
+StartupWMClass=RevoltDesktop
+END
+
+  install -dm755 "$pkgdir/$_install_path/$_pkgname"
+  mv squashfs-root/* "$pkgdir/$_install_path/$_pkgname/"
+
+  install -dm755 "$pkgdir/usr/bin"
+  ln -srf "$pkgdir/$_install_path/$_pkgname/$_pkgname" "$pkgdir/usr/bin/$_pkgname"
+
+  chmod -R u+rwX,go+rwX,go-w "$pkgdir/"
 }
