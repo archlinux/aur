@@ -11,8 +11,8 @@ latestversion=$(curl -sq https://api.github.com/repos/${GHREPO}/releases/latest 
 printf "\e[1m  \e[34m->\e[37m Found version %s\e[0m\n" "${latestversion}"
 
 version=${latestversion/v/}
-log "Updating PKGBUILD version to ${version/-/_}-1"
-sed -i "s|^pkgver=.*$|pkgver=${version/-/_}|; s|^pkgrel=.*$|pkgrel=1|" PKGBUILD
+log "Updating PKGBUILD version to ${version/-/}-1"
+sed -i "s|^pkgver=.*$|pkgver=${version/-/}|; s|^pkgrel=.*$|pkgrel=1|" PKGBUILD
 updpkgsums
 
 log "Generating .SRCINFO"

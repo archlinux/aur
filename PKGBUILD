@@ -2,8 +2,8 @@
 
 pkgname=ledfx-cc-bin
 _pkgname="${pkgname%-bin}"
-pkgver=2.0.105_b9
-_pkgver="${pkgver//_/-}"
+pkgver=2.0.105b9
+_pkgver="${pkgver//b/-b}"
 pkgrel=1
 pkgdesc="Network based LED effect controller with support for advanced real-time audio effects"
 arch=('x86_64')
