@@ -1,5 +1,5 @@
 pkgbase = lcm-git
-	pkgdesc = Lightweight real-time networking library (git version of lcm)
+	pkgdesc = Lightweight Communications and Marshalling
 	pkgver = 20240627.r1424.64e149f
 	pkgrel = 1
 	url = https://github.com/lcm-proj/lcm
