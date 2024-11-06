@@ -1,9 +1,21 @@
 # Maintainer: TheBill2001 <tuantran1632001 at gmail dot com>
 # Contributer: Alpin <alpin 'at' alpindale 'dot' dev>
 # Author: LostRuins (concedo), YellowRoseCx
+
+# Build configuration could be change with environment variables.
+# Or via `${XDG_CONFIG_HOME}/koboldcpp_build.conf` (default is `~/.config/koboldcpp_build.conf`).
+#
+# Disabling portable build
+# KOBOLDCPP_NO_PORTABLE:
+#   '0' - Keep portable build enabled (default)
+#   '1' or any other value that isn't '0' - Disable portable build.
+
+: ${KOBOLDCPP_BUILD_CONF:=${XDG_CONFIG_HOME:-~/.config}/koboldcpp_build.conf}
+: ${KOBOLDCPP_NO_PORTABLE:=0}
+
 pkgname=koboldcpp-hipblas
-_pkgver=1.76
-pkgver=$_pkgver.yr1
+_pkgver=1.77
+pkgver=$_pkgver.yr0
 _git_pkgver=$pkgver-ROCm
 pkgrel=1
 pkgdesc="An easy-to-use AI text-generation software for GGML and GGUF models (with HIPBLAS, for ROCM)"
@@ -29,14 +41,28 @@ source=(
   'koboldcpp.png'
 )
 sha256sums=(
-  '073bc920df2a2f16e33e9531780c5adc7744e112512f86871cb0a07268299412'
+  'bd3fcf12640e8b99c757c52cc59f4b3baa2382412c8b4bb2a5a8a830f133cd9b'
   'fcec7b843b908e1c03496fdc0605e6509f52526a855c43db16e287ef646503ef'
   'd244788c74a693a383bea7db6ab2bb2f762e6020de900be977b16e18dcd20f54'
 )
 
 build() {
+  if [ -f "${KOBOLDCPP_BUILD_CONF}" ]; then
+    echo "Using config from ${KOBOLDCPP_BUILD_CONF}"
+    source "${KOBOLDCPP_BUILD_CONF}"
+  fi
+
+  if [ "${KOBOLDCPP_NO_PORTABLE}" == "0" ]; then
+    export LLAMA_PORTABLE=1
+  fi
+
+  export LLAMA_VULKAN=1
+  export LLAMA_CLBLAST=1
+  export LLAMA_HIPBLAS=1
+
   cd "$srcdir/koboldcpp-rocm-${_git_pkgver}"
-  make LLAMA_VULKAN=1 LLAMA_CLBLAST=1 LLAMA_HIPBLAS=1 LLAMA_PORTABLE=1
+
+  make clean && make
 }
 
 package() {
@@ -44,25 +70,8 @@ package() {
 
   install -d "$pkgdir/usr/share/koboldcpp"
 
-  install -Dm644 "koboldcpp_default.so" "$pkgdir/usr/share/koboldcpp/koboldcpp_default.so"
-  install -Dm644 "koboldcpp_hipblas.so" "$pkgdir/usr/share/koboldcpp/koboldcpp_hipblas.so"
-
-  install -Dm644 "koboldcpp_failsafe.so" "$pkgdir/usr/share/koboldcpp/koboldcpp_failsafe.so"
-  install -Dm644 "koboldcpp_noavx2.so" "$pkgdir/usr/share/koboldcpp/koboldcpp_noavx2.so"
-
-  install -Dm644 "koboldcpp_vulkan.so" "$pkgdir/usr/share/koboldcpp/koboldcpp_vulkan.so"
-  install -Dm644 "koboldcpp_vulkan_noavx2.so" "$pkgdir/usr/share/koboldcpp/koboldcpp_vulkan_noavx2.so"
-
-  install -Dm644 "koboldcpp_clblast.so" "$pkgdir/usr/share/koboldcpp/koboldcpp_clblast.so"
-  install -Dm644 "koboldcpp_clblast_noavx2.so" "$pkgdir/usr/share/koboldcpp/koboldcpp_clblast_noavx2.so"
-
-  install -Dm644 "klite.embd" "$pkgdir/usr/share/koboldcpp/klite.embd"
-  install -Dm644 "kcpp_docs.embd" "$pkgdir/usr/share/koboldcpp/kcpp_docs.embd"
-  install -Dm644 "rwkv_vocab.embd" "$pkgdir/usr/share/koboldcpp/rwkv_vocab.embd"
-  install -Dm644 "rwkv_world_vocab.embd" "$pkgdir/usr/share/koboldcpp/rwkv_world_vocab.embd"
-  install -Dm644 "kcpp_sdui.embd" "$pkgdir/usr/share/koboldcpp/kcpp_sdui.embd"
-  install -Dm644 "taesd.embd" "$pkgdir/usr/share/koboldcpp/taesd.embd"
-  install -Dm644 "taesd_xl.embd" "$pkgdir/usr/share/koboldcpp/taesd_xl.embd"
+  install -Dm644 ./*.so "$pkgdir/usr/share/koboldcpp/"
+  install -Dm644 ./*.embd "$pkgdir/usr/share/koboldcpp/"
 
   install -d "$pkgdir/usr/share/koboldcpp/kcpp_adapters"
   install -m644 "kcpp_adapters"/* "$pkgdir/usr/share/koboldcpp/kcpp_adapters/"
