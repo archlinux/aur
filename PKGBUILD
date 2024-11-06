@@ -36,12 +36,12 @@ build() {
     --build-type=None \
     -G 'Unix Makefiles' \
     -DBUILD_SHARED_LIBS=TRUE \
-    -DCMAKE_CXX_STANDARD=17 \
+    -DCMAKE_CXX_STANDARD=20 \
     -DCMAKE_C_COMPILER=gcc \
     -DCMAKE_CXX_COMPILER=g++ \
     -DCMAKE_C_FLAGS='-Wall -fdiagnostics-color=always' \
     -DCMAKE_CXX_FLAGS="-O2 -Wall -fdiagnostics-color=always -mavx" \
-    -DCMAKE_POSITION_INDEPENDENT_CODE=TRUE \
+    -DCMAKE_POSITION_INDEPENDENT_CODE=TRUE \z
     -DCMAKE_DISABLE_FIND_PACKAGE_LATEX=FALSE \
     -DCMAKE_DISABLE_FIND_PACKAGE_Doxygen=FALSE \
     -DENABLE_HEADERCHECK=ON \
