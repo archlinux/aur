@@ -9,13 +9,12 @@
 # https://launchpad.net/~mozillacorp/+archive/ubuntu/mozillavpn/+packages
 
 pkgname=mozillavpn
-pkgver=2.24.1
+pkgver=2.24.3
 pkgrel=1
 pkgdesc="Fast, secure, and easy to use VPN from the makers of Firefox"
+arch=('x86_64')
 url="https://vpn.mozilla.org"
 license=('MPL-2.0')
-arch=('x86_64')
-
 depends=(
   'dbus'
   'freetype2'
@@ -41,38 +40,26 @@ makedepends=(
   'cmake'
   'flex'
   'go'
-  'ninja'
   'python-lxml'
   'python-yaml'
   'qt6-tools'
   'rustup'
 )
 optdepends=(
-  'qt6-wayland: for Wayland support'
+    'qt6-wayland: for Wayland support'
 )
 
 install=mozillavpn.install
 
-_commit_l10n="45def08c897e96ad92199910b41cc4884af35940"
-_dl_url_l10n="https://github.com/mozilla-l10n/mozilla-vpn-client-l10n"
-_pkgsrc_l10n="mozilla-vpn-client-l10n-$_commit_l10n"
-
 _debian_series="oracular1"
-_pkgver_lp="2.24.1"
-_dl_url_lp="https://launchpad.net/~mozillacorp/+archive/ubuntu/mozillavpn/+sourcefiles/mozillavpn"
-_pkgsrc_lp="$pkgname-$_pkgver_lp"
-
-_dl_url_gh="https://github.com/mozilla-mobile/mozilla-vpn-client"
-_pkgsrc="mozilla-vpn-client-$pkgver"
-
-source=(
-  "$pkgname-$pkgver.tar.gz"::"$_dl_url_gh/archive/refs/tags/v$pkgver.tar.gz"
-  "$_dl_url_lp/${_pkgver_lp}-${_debian_series}/mozillavpn_${_pkgver_lp}.orig.tar.gz"
-  "mozillavpn-l10n-${_commit_l10n::7}.tar.gz"::"$_dl_url_l10n/archive/$_commit_l10n.tar.gz"
-)
-sha256sums=('fab04cd425eba5baebaa5b61c198c723989bfca4a113433ce6b8950032dfe9ff'
-            '733bd3e90fe4ca0e6a432ad316e763bb2a887cad1f2b51c14a45c3139c798795'
-            '82fe6a1b2a63aafc9e1ba1c376f3fdfbf65c16898c770433104e4aa330564b3a')
+_dl_url="https://launchpad.net/~mozillacorp/+archive/ubuntu/mozillavpn/+sourcefiles/mozillavpn"
+_pkgsrc="$pkgname-$pkgver"
+source=("$_dl_url/${pkgver}-${_debian_series}/mozillavpn_${pkgver}.orig.tar.gz"
+        "https://github.com/mozilla-mobile/mozilla-vpn-client/pull/9961.patch"
+        "qt68fixes.patch")
+sha256sums=('f0f69f6aff6d7184d5fb8234599f3133bbade462e83ab922d48a752db5d9cec9'
+            '02285c79a50e67c28ad279be916419f0164a8efe1b2385befd18b90af92478e9'
+            '64bdd0a78dc284e12777c97eb0cbc86085ea22b5c0359aea03702956d3efbcd9')
 
 _cargo_env() {
   : ${CARGO_HOME:=$SRCDEST/cargo-home}
@@ -84,9 +71,8 @@ _cargo_env() {
 }
 
 prepare() {
-  cp --reflink=auto -an "$_pkgsrc_l10n"/* "$_pkgsrc/3rdparty/i18n/"
-  rm -rf "$_pkgsrc_lp/3rdparty/i18n"
-  cp --reflink=auto -an "$_pkgsrc_lp"/* "$_pkgsrc/"
+  patch -d $_pkgsrc -p1 < 9961.patch # https://github.com/mozilla-mobile/mozilla-vpn-client/pull/9961
+  patch -d $_pkgsrc -p1 < qt68fixes.patch # https://github.com/mozilla-mobile/mozilla-vpn-client/commit/485a2ad8feab6b1dee7c672ce03736d819fd9d37
 
   _cargo_env
 
@@ -101,12 +87,11 @@ build() {
   _cargo_env
 
   local _cmake_options=(
-    -B build
-    -S "$_pkgsrc"
-    -G Ninja
-    -DCMAKE_BUILD_TYPE=None
-    -DCMAKE_INSTALL_PREFIX='/usr'
-    -Wno-dev
+      -B build
+      -S "$_pkgsrc"
+      -DCMAKE_BUILD_TYPE=Release
+      -DCMAKE_INSTALL_PREFIX='/usr'
+      -Wno-dev
   )
 
   cmake "${_cmake_options[@]}"
