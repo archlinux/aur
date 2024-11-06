@@ -1,37 +1,37 @@
-# Maintainer: Sven-Hendrik Haase <svenstaro@gmail.com>
-# Contributor: Lubomir 'Kuci' Kucera <kuci24-at-gmail-dot-com>
+# Maintainer: Fabien LEFEBVRE <contact@d1ceward.com>
 
 pkgname=go-bindata
-pkgver=4.0.0
-pkgrel=2
+pkgver=4.0.2
+pkgrel=1
 pkgdesc="A small utility which generates Go code from any file"
 arch=('x86_64')
-url='https://github.com/shuLhan/go-bindata'
+url='https://github.com/kevinburke/go-bindata'
 license=('custom:CC0')
 depends=('glibc')
 makedepends=('go')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/shuLhan/go-bindata/archive/v${pkgver}.tar.gz")
-sha512sums=('c6182dd5ac46e7febe272e8f59c5e5c76658d42584c5db10e7b188577fc56d7a26f1743fea328f149ae5628fa305ca98cb5f27a29cef270cd10ef806e0e149bc')
+source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
+sha512sums=('4d92510d967bcac7e05eb5fd6e7bb6aa3d90550ac1c72adf56bdfbdd5e9f59703b65d24ec21f9b9f5d1033748b1f911830b177b845405008e6f5c41ab64282b9')
+
+prepare(){
+  cd "${pkgname}-${pkgver}"
+
+  mkdir -p build/
+}
 
 build() {
-  export GO111MODULE=off
-  export CGO_LDFLAGS="${LDFLAGS}"
-  export CGO_CFLAGS="${CFLAGS}"
+  cd "${pkgname}-${pkgver}"
+
   export CGO_CPPFLAGS="${CPPFLAGS}"
+  export CGO_CFLAGS="${CFLAGS}"
   export CGO_CXXFLAGS="${CXXFLAGS}"
+  export CGO_LDFLAGS="${LDFLAGS}"
   export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
-
-  export GOPATH="$srcdir"
-  mkdir -p "$GOPATH"/src/github.com/shuLhan/
-  mv $pkgname-$pkgver $GOPATH/src/github.com/shuLhan/go-bindata
-  cd $GOPATH/src/github.com/shuLhan/go-bindata
-
-  go build ./cmd/...
+  go build -o build ./go-bindata
 }
 
 package() {
-  cd src/github.com/shuLhan/go-bindata
+  cd "${pkgname}-${pkgver}"
 
-  install -Dm755 "go-bindata" "${pkgdir}/usr/bin/go-bindata"
+  install -Dm755 "build/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
