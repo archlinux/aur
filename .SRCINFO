@@ -4,9 +4,9 @@ pkgbase = dune-logging
 	pkgrel = 3
 	url = https://gitlab.dune-project.org/staging/dune-logging
 	arch = x86_64
-	license = custom:BSD-2-clause
-	license = LGPL3
-	license = custom:GPL2 with runtime exception
+	license = BSD-2-Clause
+	license = LGPL-3.0-or-later
+	license = LicenseRef-GPL-2.0-only-with-DUNE-exception
 	makedepends = doxygen
 	makedepends = graphviz
 	depends = dune-common>=2.8

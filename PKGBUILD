@@ -6,11 +6,11 @@ _tar="${_tarver}/${pkgname}-releases-${_tarver}.tar.gz"
 pkgver="${_tarver}"
 pkgrel=3
 pkgdesc="A logging framework for Dune"
-arch=('x86_64')
+arch=(x86_64)
 url="https://gitlab.dune-project.org/staging/${pkgname}"
-license=('custom:BSD-2-clause' 'LGPL3' 'custom:GPL2 with runtime exception')
+license=(BSD-2-Clause LGPL-3.0-or-later LicenseRef-GPL-2.0-only-with-DUNE-exception)
 depends=("dune-common>=${_tarver}" fmt)
-makedepends=('doxygen' 'graphviz')
+makedepends=(doxygen graphviz)
 optdepends=('doxygen: Generate the class documentation from C++ sources'
   'graphviz: Graph visualization software')
 source=(${url}/-/archive/releases/${_tar}
@@ -34,7 +34,7 @@ build() {
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBDIR=/usr/lib \
     -DBUILD_SHARED_LIBS=TRUE \
-    -DCMAKE_CXX_STANDARD=17 \
+    -DCMAKE_CXX_STANDARD=20 \
     -DCMAKE_C_COMPILER=gcc \
     -DCMAKE_CXX_COMPILER=g++ \
     -DCMAKE_POSITION_INDEPENDENT_CODE=TRUE \
