@@ -10,7 +10,7 @@
 _pkgname="PWAsForFirefox"
 pkgname="firefox-pwa"
 pkgdesc="A tool to install, manage and use Progressive Web Apps (PWAs) in Mozilla Firefox (native component)"
-pkgver="2.12.5"
+pkgver="2.13.1"
 pkgrel=1
 url="https://pwasforfirefox.filips.si/"
 arch=("x86_64" "i686" "aarch64" "armv7h")
@@ -21,7 +21,7 @@ optdepends=("firefox: Support for browser extension")
 install=package.install
 
 source=("$pkgname-$pkgver.tar.gz::https://github.com/filips123/PWAsForFirefox/archive/refs/tags/v$pkgver.tar.gz")
-b2sums=('cfd9c8deadc4825234df833eae5d3ceb4fe9479ef2acaeefa2dd5c98cd809b3d513ad45f0f78d6d6fa01d06e6f7d1b76638917725c5285ff3c5825386c3095d6')
+b2sums=('8b149340f5af702190c87ea623cc391413de6e115393231836534e4155ff980fa293e45a9875ed44c0bd7992d43f458d0fce136518b349f3522730cdf6399ad7')
 
 prepare() {
     cd $srcdir/$_pkgname-$pkgver/native/
@@ -32,12 +32,12 @@ prepare() {
 
     # We don't use libexec on Arch
     sed -i "s@/usr/libexec/firefoxpwa-connector@/usr/lib/firefoxpwa/firefoxpwa-connector@g" manifests/linux.json
-
-    # Disable zstd feature (which currently makes the build fail on Arch)
-    sed -i "s/\"zstd\",//g" Cargo.toml
 }
 
 build() {
+    # Needed to make LTO work with GCC
+    export CFLAGS="-fuse-linker-plugin"
+
     cd $srcdir/$_pkgname-$pkgver/native/
     RUSTUP_TOOLCHAIN=stable cargo build --release
 }
