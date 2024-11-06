@@ -21,9 +21,9 @@ md5sums=('SKIP')
 pkgver()
 {
 	base_ver=$(cat    "${srcdir}/openbrf-redux/main_info.cpp" | grep applVersion\ \= | cut -d'"' -f2)
-	date_ver=$(TZ=UTC git -C "${srcdir}/openbrf-redux" show -s --date=format-local:'%Y.%m.%d_%H.%M' --format=%cd HEAD)
+	date_ver=$(TZ=UTC git -C "${srcdir}/openbrf-redux" show -s --date=format-local:'%Y.%m.%d' --format=%cd HEAD)
 	git_hash=$(TZ=UTC git -C "${srcdir}/openbrf-redux" rev-parse --short HEAD)
-	echo "${date_ver}^[${base_ver}][${git_hash}]"
+	echo "${date_ver}"
 }
 
 build()
