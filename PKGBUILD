@@ -2,7 +2,7 @@
 
 pkgname='firefox-privacy-badger-bin'
 pkgver=2024.7.17
-pkgrel=3
+pkgrel=4
 pkgdesc='Automatically learns to block invisible trackers.'
 arch=('any')
 url='https://addons.mozilla.org/en-US/firefox/addon/privacy-badger17/'
@@ -17,7 +17,7 @@ sha256sums=('f7afc15d305966bafc9215f600acb0815c84402b7b8c763493387d19415deb0d')
 prepare() {
   cd "$srcdir"
 
-  unzip -qqo "privacy_badger-${pkgver}.xpi" -d "privacy_badger-${pkgver}"
+  unzip -qqo "privacy_badger.xpi" -d "privacy_badger-${pkgver}"
 }
 
 package() {
@@ -35,6 +35,6 @@ package() {
     cp -R privacy_badger-${pkgver}/* "${_extension_dest}"
     chmod -R ugo+rX "${_extension_dest}"
   else
-    install -Dm644 privacy_badger-${pkgver}.xpi "${_extension_dest}.xpi"
+    install -Dm644 privacy_badger.xpi "${_extension_dest}.xpi"
   fi
 }

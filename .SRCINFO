@@ -1,7 +1,7 @@
 pkgbase = firefox-privacy-badger-bin
 	pkgdesc = Automatically learns to block invisible trackers.
 	pkgver = 2024.7.17
-	pkgrel = 3
+	pkgrel = 4
 	url = https://addons.mozilla.org/en-US/firefox/addon/privacy-badger17/
 	arch = any
 	license = GPL-3.0
