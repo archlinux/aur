@@ -10,7 +10,7 @@ pkgname=(
   gnome-shell-git
   gnome-shell-docs-git
 )
-pkgver=47.1+r19214+d92f8daf6
+pkgver=47.1+r19216+b3c16a48c
 pkgrel=1
 pkgdesc="Next generation desktop shell - git latest"
 url="https://gitlab.gnome.org/GNOME/gnome-shell"
@@ -53,7 +53,7 @@ depends=(
   libsoup3
   libx11
   libxfixes
-  mutter-git #we need mutter-clutter 16, currently only 15 in base mutter
+  mutter
   pango
   polkit
   systemd-libs
@@ -73,6 +73,7 @@ makedepends=(
   meson
   python-docutils
   sassc
+  libmutter-16.so
 )
 source=(
   # GNOME Shell tags use SSH signatures which makepkg doesnt understand
