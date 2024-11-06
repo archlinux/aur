@@ -57,7 +57,7 @@ check() {
 package() {
     cd "catgirl-engine"
     sed -i "s/\${engine_path}/\/usr\/bin\/catgirl-engine/" client/assets/resources/catgirl-engine.desktop
-    mv client/assets/vanilla/texture/logo/logo.png client/assets/vanilla/texture/logo/catgirl-engine.png
+    mv client/assets/vanilla/texture/logo/logo-1024x1024-color.png client/assets/vanilla/texture/logo/catgirl-engine.png
 
     install -Dm0755 -t "$pkgdir/usr/share/icons" "client/assets/vanilla/texture/logo/catgirl-engine.png"
     install -Dm0755 -t "$pkgdir/usr/share/applications/" "client/assets/resources/catgirl-engine.desktop"
