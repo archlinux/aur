@@ -1,5 +1,5 @@
 pkgbase = opentelemetry-python-contrib
-	pkgver = 0.48b0
+	pkgver = 0.49b0
 	pkgrel = 1
 	arch = any
 	license = Apache-2.0
@@ -8,8 +8,8 @@ pkgbase = opentelemetry-python-contrib
 	makedepends = python-installer
 	makedepends = python-setuptools
 	makedepends = python-wheel
-	source = opentelemetry-python-contrib-0.48b0.tar.gz::https://github.com/open-telemetry/opentelemetry-python-contrib/archive/refs/tags/v0.48b0.tar.gz
-	sha256sums = 3a5c849b2193397db6cf7a4352bbe747f81cdcc234698dc8d5e516d415db0b71
+	source = opentelemetry-python-contrib-0.49b0.tar.gz::https://github.com/open-telemetry/opentelemetry-python-contrib/archive/refs/tags/v0.49b0.tar.gz
+	sha256sums = e8ca076b355fbb22509ca67d65af0b6a743add47e6b49bf61ac52a8baee1ec4c
 
 pkgname = python-opentelemetry-contrib-instrumentations
 	pkgdesc = OpenTelemetry Contrib Instrumentation Packages
@@ -17,6 +17,7 @@ pkgname = python-opentelemetry-contrib-instrumentations
 	depends = python-opentelemetry-instrumentation-aio-pika
 	depends = python-opentelemetry-instrumentation-aiohttp-client
 	depends = python-opentelemetry-instrumentation-aiohttp-server
+	depends = python-opentelemetry-instrumentation-aiokafka
 	depends = python-opentelemetry-instrumentation-aiopg
 	depends = python-opentelemetry-instrumentation-asgi
 	depends = python-opentelemetry-instrumentation-asyncio
@@ -55,6 +56,7 @@ pkgname = python-opentelemetry-contrib-instrumentations
 	depends = python-opentelemetry-instrumentation-sqlite3
 	depends = python-opentelemetry-instrumentation-starlette
 	depends = python-opentelemetry-instrumentation-system-metrics
+	depends = python-opentelemetry-instrumentation-test
 	depends = python-opentelemetry-instrumentation-threading
 	depends = python-opentelemetry-instrumentation-tornado
 	depends = python-opentelemetry-instrumentation-tortoiseorm
@@ -94,7 +96,8 @@ pkgname = python-opentelemetry-instrumentation
 	pkgdesc = Instrumentation Tools & Auto Instrumentation for OpenTelemetry Python
 	url = https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/opentelemetry-instrumentation
 	depends = python-opentelemetry-api
-	depends = python-setuptools
+	depends = python-opentelemetry-semantic-conventions
+	depends = python-packaging
 	depends = python-wrapt
 	optdepends = 
 
@@ -125,6 +128,14 @@ pkgname = python-opentelemetry-instrumentation-aiohttp-server
 	depends = python-opentelemetry-util-http
 	depends = python-wrapt
 	optdepends = python-aiohttp
+
+pkgname = python-opentelemetry-instrumentation-aiokafka
+	pkgdesc = OpenTelemetry aiokafka instrumentation
+	url = https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/instrumentation/opentelemetry-instrumentation-aiokafka
+	depends = python-opentelemetry-api
+	depends = python-opentelemetry-instrumentation
+	depends = python-opentelemetry-semantic-conventions
+	optdepends = python-aiokafka
 
 pkgname = python-opentelemetry-instrumentation-aiopg
 	pkgdesc = OpenTelemetry aiopg instrumentation
@@ -275,7 +286,6 @@ pkgname = python-opentelemetry-instrumentation-fastapi
 pkgname = python-opentelemetry-instrumentation-flask
 	pkgdesc = Flask instrumentation for OpenTelemetry
 	url = https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/instrumentation/opentelemetry-instrumentation-flask
-	depends = python-importlib-metadata
 	depends = python-opentelemetry-api
 	depends = python-opentelemetry-instrumentation
 	depends = python-opentelemetry-instrumentation-wsgi
@@ -300,6 +310,7 @@ pkgname = python-opentelemetry-instrumentation-httpx
 	depends = python-opentelemetry-instrumentation
 	depends = python-opentelemetry-semantic-conventions
 	depends = python-opentelemetry-util-http
+	depends = python-wrapt
 	optdepends = python-httpx
 
 pkgname = python-opentelemetry-instrumentation-jinja2
@@ -341,6 +352,14 @@ pkgname = python-opentelemetry-instrumentation-mysqlclient
 	depends = python-opentelemetry-instrumentation
 	depends = python-opentelemetry-instrumentation-dbapi
 	optdepends = python-mysqlclient
+
+pkgname = python-opentelemetry-instrumentation-openai-v2
+	pkgdesc = OpenTelemetry Official OpenAI instrumentation
+	url = https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/instrumentation-genai/opentelemetry-instrumentation-openai-v2
+	depends = python-opentelemetry-api
+	depends = python-opentelemetry-instrumentation
+	depends = python-opentelemetry-semantic-conventions
+	optdepends = python-openai
 
 pkgname = python-opentelemetry-instrumentation-pika
 	pkgdesc = OpenTelemetry pika instrumentation
@@ -464,6 +483,14 @@ pkgname = python-opentelemetry-instrumentation-system-metrics
 	depends = python-opentelemetry-instrumentation
 	depends = python-psutil
 	optdepends = python-psutil
+
+pkgname = python-opentelemetry-instrumentation-test
+	pkgdesc = test Middleware for OpenTelemetry
+	url = https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/instrumentation/opentelemetry-instrumentation-test
+	depends = python-opentelemetry-api
+	depends = python-opentelemetry-instrumentation
+	depends = python-opentelemetry-semantic-conventions
+	optdepends = 
 
 pkgname = python-opentelemetry-instrumentation-threading
 	pkgdesc = Thread context propagation support for OpenTelemetry

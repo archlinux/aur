@@ -14,13 +14,14 @@ trap "rm $tmp_pkgname $tmp_pkgdescs $tmp_urls $tmp_depends $tmp_optdepends" EXIT
 
 _get_dirname() {
     case $1 in
-        opentelemetry-exporter-*)        echo "exporter/";;
-        opentelemetry-instrumentation-*) echo "instrumentation/";;
-        opentelemetry-processor-*)       echo "processor/";;
-        opentelemetry-propagator-*)      echo "propagator/";;
-        opentelemetry-resource-*)        echo "resource/";;
-        opentelemetry-sdk-extension-*)   echo "sdk-extension/";;
-        opentelemetry-util-*)            echo "util/";;
+        opentelemetry-exporter-*)               echo "exporter/";;
+        opentelemetry-instrumentation-openai-*) echo "instrumentation-genai/";;
+        opentelemetry-instrumentation-*)        echo "instrumentation/";;
+        opentelemetry-processor-*)              echo "processor/";;
+        opentelemetry-propagator-*)             echo "propagator/";;
+        opentelemetry-resource-*)               echo "resource/";;
+        opentelemetry-sdk-extension-*)          echo "sdk-extension/";;
+        opentelemetry-util-*)                   echo "util/";;
         *) ;;
     esac
 }
@@ -35,7 +36,7 @@ _gen_pkgname() {
 _gen_pkgdescs() {
     for pkg in $pkgs; do
         dirname=$(_get_dirname "$pkg")
-        pkgdesc=$(yq eval -o=json "src/${pkgbase}-${pkgver}/${dirname}${pkg}/pyproject.toml" | jq -r '.project.description' )
+        pkgdesc=$(yq eval -o=json "src/${pkgbase}-${pkgver}/${dirname}${pkg}/pyproject.toml" | jq -r '.project.description' 2>/dev/null)
         echo "    \"$pkgdesc\""
     done
     echo ")"
