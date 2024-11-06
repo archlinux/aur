@@ -1,7 +1,7 @@
 pkgbase = cpolar-bin
 	pkgdesc = cpolar 极点云: 公开一个本地 Web 站点至公网
 	pkgver = 3.3.12
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.cpolar.com
 	arch = x86_64
 	arch = aarch64

@@ -3,7 +3,7 @@ pkgbase=cpolar-bin
 _pkgname=cpolar
 pkgname=('cpolar-bin' 'cpolar-bin-multi-user')
 pkgver=3.3.12
-pkgrel=1
+pkgrel=2
 pkgdesc="cpolar 极点云: 公开一个本地 Web 站点至公网"
 arch=('x86_64' 'aarch64')
 url="http://www.cpolar.com"
@@ -45,5 +45,9 @@ package_cpolar-bin-multi-user() {
     #Install systemd service file
     sed 's:/usr/local::g' -i ${srcdir}/${_pkgname}@.service
     sed 's:-log=/var/log/cpolar/access.log::g' -i ${srcdir}/${_pkgname}@.service
+
+    #disable dashboard to avoid display port conflict
+    sed 's:-dashboard=on::g' -i ${srcdir}/${_pkgname}@.service
+
     install -Dm644  ${srcdir}/${_pkgname}@.service -t ${pkgdir}/usr/lib/systemd/system
 }
