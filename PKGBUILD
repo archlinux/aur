@@ -14,11 +14,11 @@ optdepends=(
 	'cuda: gpu accelerated image upscaling for onnxruntime'
 )
 source=(
-	'git+https://github.com/Snd-R/Komelia.git'
-	'git+https://github.com/Snd-R/ChipTextField.git'
-	'git+https://github.com/Snd-R/compose-sonner.git'
-	'git+https://github.com/Snd-R/secret-service.git'
-	'git+https://github.com/Snd-R/hkdf.git'
+	'git+https://github.com/Snd-R/Komelia.git#commit=4009a37c530f204119119e7e6621b65741b4d034'
+	'git+https://github.com/Snd-R/ChipTextField.git#commit=1543eaeb41b51bfd803e325beed945744c626a71'
+	'git+https://github.com/Snd-R/compose-sonner.git#commit=841fb173f1b0ab83802b32dc21b0cd1928af04f8'
+	'git+https://github.com/Snd-R/secret-service.git#commit=efca0226a444fc7ca4be06858a457c50f63cd7b8'
+	'git+https://github.com/Snd-R/hkdf.git#commit=1d42fc2def0fcc7c04b7617678ee943d65e62197'
 	
 )
 
