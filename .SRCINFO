@@ -1,0 +1,13 @@
+pkgbase = firefox-user-agent-switcher-and-manager-bin
+	pkgdesc = Spoof websites trying to gather information about your web navigation—like your browser type and operating system—to deliver distinct content you may not want.
+	pkgver = 0.5.0
+	pkgrel = 1
+	url = https://addons.mozilla.org/en-US/firefox/addon/user-agent-string-switcher/
+	arch = any
+	license = MPL-2.0
+	depends = firefox
+	noextract = user_agent_string_switcher.xpi
+	source = user_agent_string_switcher.xpi::https://addons.mozilla.org/firefox/downloads/file/4098688/user_agent_string_switcher-0.5.0.xpi
+	sha256sums = 9dc8da3c8c46d4f04d12fd789c63501fa6a2f502f859b286939a090db63eae33
+
+pkgname = firefox-user-agent-switcher-and-manager-bin
