@@ -1,6 +1,6 @@
 pkgbase = bigjubeldesktop-git
 	pkgdesc = Desktop client for BigJubel: calculate current jubilees
-	pkgver = 0.2.2.r0.ge02e7f0
+	pkgver = 0.2.2.r4.ge10fc3c
 	pkgrel = 1
 	url = https://gitlab.com/dkabus/bigjubeldesktop
 	arch = any
