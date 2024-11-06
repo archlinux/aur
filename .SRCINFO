@@ -1,0 +1,22 @@
+pkgbase = certi-git
+	pkgdesc = Active Directory Certificate Services (ADCS) abuser. impacket copy of Certify.
+	pkgver = r6.6cfa656
+	pkgrel = 1
+	url = https://github.com/zer1t0/certi
+	arch = any
+	license = AGPL-3.0-only
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	depends = python-cryptography
+	depends = impacket
+	provides = certi
+	conflicts = certi
+	conflicts = certi-bin
+	source = git+https://github.com/zer1t0/certi
+	sha512sums = SKIP
+
+pkgname = certi-git
