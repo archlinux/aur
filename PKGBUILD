@@ -1,6 +1,6 @@
 # Maintainer: Jan Fidra <tkmxqrd@gmail.com>
 pkgname=davinci-convert
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="A video converter for Davinci Resolve using FFmpeg"
 arch=('x86_64')
