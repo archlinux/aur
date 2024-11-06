@@ -1,0 +1,17 @@
+pkgbase = freakyfetch
+	pkgdesc = Finally, a fetch that can match my freak!
+	pkgver = r34.f64409f
+	pkgrel = 1
+	url = https://github.com/icosa-dev/freakyfetch
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = make
+	makedepends = gcc
+	depends = viu
+	provides = freakyfetch
+	conflicts = freakyfetch
+	source = git+https://github.com/icosa-dev/freakyfetch.git
+	sha256sums = SKIP
+
+pkgname = freakyfetch
