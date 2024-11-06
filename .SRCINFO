@@ -1,27 +1,31 @@
 pkgbase = dune-functions
 	pkgdesc = Abstractions for functions and discrete function space bases
-	pkgver = 2.9.1
+	pkgver = 2.10.0
 	pkgrel = 1
 	url = https://dune-project.org/modules/dune-functions
 	arch = x86_64
-	license = LGPL3
-	license = custom:GPL2 with runtime exception
+	license = LGPL-3.0-or-later
+	license = LicenseRef-GPL-2.0-only-with-DUNE-exception
 	makedepends = texlive-latexextra
 	makedepends = texlive-pictures
 	makedepends = biber
 	makedepends = doxygen
 	makedepends = graphviz
-	makedepends = python-scipy
-	depends = dune-localfunctions>=2.9.1
-	depends = dune-grid>=2.9.1
-	depends = dune-istl>=2.9.1
-	depends = dune-typetree>=2.9.1
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = dune-localfunctions>=2.10.0
+	depends = dune-grid>=2.10.0
+	depends = dune-istl>=2.10.0
+	depends = dune-typetree>=2.10.0
 	optdepends = doxygen: Generate the class documentation from C++ sources
 	optdepends = graphviz: Graph visualization software
-	source = https://dune-project.org/download/2.9.1/dune-functions-2.9.1.tar.gz
-	source = https://dune-project.org/download/2.9.1/dune-functions-2.9.1.tar.gz.asc
-	validpgpkeys = 2AA99AA4E2D6214E6EA01C9A4AF42916F6E5B1CF
-	sha512sums = 0c3d21d8d9b2bc776eb9fb9f19305a5368c929ad0553e9576fca6557296a7be5f9626261151e6d9d31011756e751efaae5fe5912397c6fe20a615d89e00166c4
+	optdepends = python-scipy: for solve sparse matrices
+	options = !emptydirs
+	source = https://dune-project.org/download/2.10.0/dune-functions-2.10.0.tar.gz
+	source = https://dune-project.org/download/2.10.0/dune-functions-2.10.0.tar.gz.asc
+	validpgpkeys = 703607A1FD9AF4205E735522B95BE0EFB19724A1
+	sha512sums = 97589c0e9e8c1bdb4186137433c2c70f1bd63975511b805351fb9d0ff9a4aec3e564b72899084ae1d62d317eb098ef5686fa073e9bf0ca8895c72a7fed97eb54
 	sha512sums = SKIP
 
 pkgname = dune-functions
