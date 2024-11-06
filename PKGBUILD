@@ -2,7 +2,7 @@
 pkgname=sirikali
 _name=SiriKali
 pkgver=1.6.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A Qt/C++ GUI front end to sshfs, ecryptfs-simple, cryfs, gocryptfs, securefs, fscrypt and encfs"
 arch=('i686' 'x86_64' 'aarch64')
 url="https://mhogomchungu.github.io/sirikali/"
@@ -53,6 +53,7 @@ build() {
   cd "$srcdir/${_name}-${pkgver}/build"
   cmake \
     -DCMAKE_BUILD_TYPE=RELEASE \
+    -DBUILD_WITH_QT6=ON \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DINTERNAL_LXQT_WALLET=$intwallet \
     -DNOKDESUPPORT=$skipkde \
