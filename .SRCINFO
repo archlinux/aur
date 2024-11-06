@@ -1,7 +1,7 @@
 pkgbase = mailparser
 	pkgdesc = Tokenizer for raw mails
-	pkgver = 3.15.0
-	pkgrel = 3
+	pkgver = 4.0.0
+	pkgrel = 1
 	url = https://github.com/SpamScope/mail-parser
 	arch = any
 	license = Apache
@@ -9,9 +9,9 @@ pkgbase = mailparser
 	depends = python-ipaddress
 	depends = python-simplejson
 	depends = python-six
-	provides = python-mail-parser=3.15.0
+	provides = python-mail-parser=4.0.0
 	conflicts = python-mail-parser
-	source = mailparser-3.15.0.tar.gz::https://github.com/SpamScope/mail-parser/archive/v3.15.0.tar.gz
-	sha512sums = 88f64a160ce88137e1c5b30690d1d3278145217454d856751bb9fc872bdfee4cdc924517c623f4b1d8f5ac5cda52e7c4f325807fd006baee652934f724e6952a
+	source = mailparser-4.0.0.tar.gz::https://github.com/SpamScope/mail-parser/archive/refs/tags/4.0.0.tar.gz
+	sha512sums = aad0f680f9d33c1d6a258f7637d977710af02db86b744a4c47994e0e8fb02dadea54e9cd785f92488dc147d384b958d132dd098f28f8fcb1b2b137e973d924f0
 
 pkgname = mailparser

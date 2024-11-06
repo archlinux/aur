@@ -2,8 +2,8 @@
 # Contributor: Thomas Heinemann <thomas@niphba.de>
 
 pkgname=mailparser
-pkgver=3.15.0
-pkgrel=3
+pkgver=4.0.0
+pkgrel=1
 pkgdesc='Tokenizer for raw mails'
 arch=(any)
 url=https://github.com/SpamScope/mail-parser
@@ -14,8 +14,8 @@ depends=(python-ipaddress
 makedepends=(python-setuptools)
 provides=(python-mail-parser=${pkgver})
 conflicts=("python-mail-parser")
-source=(${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('88f64a160ce88137e1c5b30690d1d3278145217454d856751bb9fc872bdfee4cdc924517c623f4b1d8f5ac5cda52e7c4f325807fd006baee652934f724e6952a')
+source=(${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz)
+sha512sums=('aad0f680f9d33c1d6a258f7637d977710af02db86b744a4c47994e0e8fb02dadea54e9cd785f92488dc147d384b958d132dd098f28f8fcb1b2b137e973d924f0')
 
 build() {
   cd mail-parser-${pkgver}
