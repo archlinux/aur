@@ -1,10 +1,10 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=openhome-bin
 _pkgname=OpenHome
-pkgver=0.4.2
+pkgver=0.5.0
 _electronversion=31
 pkgrel=1
-pkgdesc="Application for importing and transferring Pokémon between save files.Prebuilt version.Use system-wide electron."
+pkgdesc="Application for importing and transferring Pokémon between save files.(Prebuilt version.Use system-wide electron)"
 arch=(
     'aarch64'
     'x86_64'
@@ -19,11 +19,11 @@ depends=(
 source=(
     "${pkgname%-bin}.sh"
 )
-source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_arm64.deb")
-source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb")
+source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::${url}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}.aarch64.rpm")
+source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${url}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}.x86_64.rpm")
 sha256sums=('291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-sha256sums_aarch64=('970b9455528c066fef70eaa2bd07321f90e7cf4167d14e96857f80e0cadb0096')
-sha256sums_x86_64=('09f1ac92ac8bab75666725fb50983429ca739245cb0cbb554795c3b41a8b22ab')
+sha256sums_aarch64=('c5ac4afd105a7fca0399a007c93d19d460d19b777e318152048cd303d3623120')
+sha256sums_x86_64=('d534ad3d953cbb4631509b90ea72665fb37411d967425b775d8e5e7c52fcb82b')
 build() {
     sed -e "
         s/@electronversion@/${_electronversion}/g
@@ -32,7 +32,6 @@ build() {
         s/@cfgdirname@/${_pkgname}/g
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
     " -i "${srcdir}/${pkgname%-bin}.sh"
-    bsdtar -xf "${srcdir}/data."*
     sed -i "s/\/opt\/${_pkgname}\/${pkgname%-bin}/${pkgname%-bin}/g" "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
 package() {
