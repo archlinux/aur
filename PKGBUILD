@@ -2,7 +2,7 @@
 
 pkgname=eco-paste-bin
 pkgver=0.3.0
-pkgrel=2
+pkgrel=3
 pkgdesc="🎉跨平台的剪贴板管理工具 | Cross-platform clipboard management tool ."
 arch=('any')
 url="https://github.com/EcoPasteHub/EcoPaste"
@@ -45,7 +45,7 @@ package() {
   # icon
   find "usr/share/icons" -type f -exec install -Dm644 {} "${pkgdir}/{}" \;
   # lib
-  find "usr/lib/${_pkgname}/assets" -type f -exec install -Dm644 {} "${pkgdir}/{}" \;
+  find "usr/lib/EcoPaste/assets" -type f -exec install -Dm644 {} "${pkgdir}/{}" \;
 
   # license
   install -Dm644 "${srcdir}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
