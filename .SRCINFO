@@ -1,12 +1,13 @@
 pkgbase = turso-cli-bin
 	pkgdesc = Command line interface to Turso.
 	pkgver = 0.97.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/tursodatabase/turso-cli
 	arch = arm64
 	arch = i386
 	arch = x86_64
 	license = MIT
+	optdepends = libsql-server-bin: for turso dev (local development server) support
 	provides = turso
 	source_arm64 = https://github.com/tursodatabase/turso-cli/releases/download/v0.97.2/turso-cli_Linux_arm64.tar.gz
 	sha256sums_arm64 = ee7dd584b8f8fcbaf6a31d51979789d2dc856df5f36a7c0ac58760b7696bce82
