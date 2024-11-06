@@ -1,7 +1,6 @@
 #!/bin/bash
 
 #SudahiDict
-./partial-clone.sh
 SudachiDict_DATE=$(curl -s 'http://sudachi.s3-website-ap-northeast-1.amazonaws.com/sudachidict-raw/' | grep -o '<td>[0-9]*</td>' | grep -o '[0-9]*' | sort -n | tail -n 1)
 
 #ORIGINAL_REPO=fcitx/mozc
@@ -77,6 +76,7 @@ function pkgrel() {
     done
 }
 if [[ "$UPDATED_FLAG" == "1" ]]; then
+    ./partial-clone.sh
     echo "Change Detected."
     ./update-submodule.sh
     CURRENT_PKGVER=$(grep "pkgver=" PKGBUILD|cut -f2 -d"=")
@@ -90,6 +90,7 @@ if [[ "$UPDATED_FLAG" == "1" ]]; then
     makepkg --printsrcinfo > .SRCINFO
     git commit -a -m "$(echo -e $MSGS)"
     #git push
+    ./partial-clone.sh
 else
     echo "No change Detected."
 fi
