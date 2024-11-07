@@ -4,6 +4,7 @@ pkgbase = blpapi_cpp
 	pkgrel = 1
 	url = https://www.bloomberg.com/professional/support/api-library/
 	arch = x86_64
+	license = custom
 	depends = glibc
 	source = https://blpapi.bloomberg.com/download/releases/raw/files/blpapi_cpp_3.24.9.1-linux.tar.gz
 	sha256sums = 7dbff183c99ac25c148a3bf273a6d2456b902a098b3f964406d992ae65d89c7d

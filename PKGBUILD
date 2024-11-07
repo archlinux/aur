@@ -6,6 +6,7 @@ pkgrel=1
 pkgdesc="Bloomberg API C++ SDK (BLPAPI)."
 arch=("x86_64")
 url="https://www.bloomberg.com/professional/support/api-library/"
+license=('custom')
 depends=('glibc')
 source=("https://blpapi.bloomberg.com/download/releases/raw/files/blpapi_cpp_$pkgver-linux.tar.gz")
 sha256sums=('7dbff183c99ac25c148a3bf273a6d2456b902a098b3f964406d992ae65d89c7d')
