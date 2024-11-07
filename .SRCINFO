@@ -1,0 +1,15 @@
+pkgbase = zj-58-git
+	pkgdesc = CUPS filter for thermal printers as Zjiang ZJ-58, XPrinter XP-58, etc
+	pkgver = r27.6474356
+	pkgrel = 1
+	url = https://github.com/klirichek/zj-58
+	arch = x86_64
+	arch = aarch64
+	license = BSD
+	makedepends = cmake
+	depends = cups
+	provides = zj-58
+	source = git+https://github.com/klirichek/zj-58.git
+	md5sums = SKIP
+
+pkgname = zj-58-git
