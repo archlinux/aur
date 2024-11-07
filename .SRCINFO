@@ -1,0 +1,12 @@
+pkgbase = wdns-git
+	pkgdesc = wdns is a low-level C library for dealing with wire-format dns packets.
+	pkgver = 0.0.0
+	pkgrel = 1
+	url = https://github.com/farsightsec/wdns/
+	arch = any
+	license = MIT
+	makedepends = libpcap
+	makedepends = tcpdump
+	makedepends = pkgconf
+
+pkgname = wdns-git
