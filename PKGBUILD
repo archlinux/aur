@@ -6,7 +6,7 @@
 
 _pkgname=chromium
 pkgname=chromium-no-extras
-pkgver=130.0.6723.91
+pkgver=130.0.6723.116
 pkgrel=1
 _launcher_ver=8
 _manual_clone=1
@@ -271,7 +271,7 @@ package() {
   install -Dm644 LICENSE \
     "$pkgdir/usr/share/licenses/chromium/LICENSE.launcher"
 
-  cd "../$_pkgname-$pkgver"
+  cd ../chromium-$pkgver
 
   install -D out/Release/chrome "$pkgdir/usr/lib/chromium/chromium"
   install -D out/Release/chromedriver.unstripped "$pkgdir/usr/bin/chromedriver"
