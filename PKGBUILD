@@ -11,6 +11,8 @@ arch=("x86_64")
 url="https://github.com/Mauitron/StygianSift"
 license=("Custom")
 makedepends=("git" "rust" "cargo")
+privides=("stygiansift")
+conflicts=("stygiansift")
 source=("$_pkgname::git+https://github.com/Mauitron/StygianSift.git")
 sha256sums=('SKIP')
 
