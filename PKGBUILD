@@ -9,7 +9,7 @@ pkgdesc="A logging framework for Dune"
 arch=(x86_64)
 url="https://gitlab.dune-project.org/staging/${pkgname}"
 license=(BSD-2-Clause LGPL-3.0-or-later LicenseRef-GPL-2.0-only-with-DUNE-exception)
-depends=("dune-common>=${_tarver}" fmt) #fmt9
+depends=("dune-common>=${_tarver}" libfmt.so=9)
 makedepends=(doxygen graphviz)
 optdepends=('doxygen: Generate the class documentation from C++ sources'
   'graphviz: Graph visualization software')

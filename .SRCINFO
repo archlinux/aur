@@ -10,7 +10,7 @@ pkgbase = dune-logging
 	makedepends = doxygen
 	makedepends = graphviz
 	depends = dune-common>=2.8
-	depends = fmt
+	depends = libfmt.so=9
 	optdepends = doxygen: Generate the class documentation from C++ sources
 	optdepends = graphviz: Graph visualization software
 	options = !emptydirs
