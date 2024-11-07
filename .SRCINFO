@@ -1,6 +1,6 @@
 pkgbase = python-pot
 	pkgdesc = Python Optimal Transport Library
-	pkgver = 0.9.4
+	pkgver = 0.9.5
 	pkgrel = 1
 	url = https://github.com/PythonOT/POT
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = python-pot
 	optdepends = python-jax: necessary to use `ot.lp`
 	optdepends = python-tensorflow: necessary to use `ot.lp`
 	optdepends = python-pymanopt: necessary to use `ot.dr`
-	source = POT-0.9.4.tar.gz::https://github.com/PythonOT/POT/archive/0.9.4.tar.gz
-	sha512sums = 102251b75dcf1ac673085dde2f5cb1512b512eee5d251b6ae2c63bf91340c94da9206380f99f3e7b302cd0f28a2577e6c573adea226beb06e825160d5e54ad0b
+	source = POT-0.9.5.tar.gz::https://github.com/PythonOT/POT/archive/0.9.5.tar.gz
+	sha512sums = 1117b1f1d5453768d3fc8796ec20928532e2f3732e52a63d297da9fedcb1677de6e01ce0173585dacccb0df6f2e25f95263ce7f4af18f53cec11c78ab827e448
 
 pkgname = python-pot

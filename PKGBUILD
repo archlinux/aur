@@ -3,7 +3,7 @@
 _base=POT
 pkgname=python-${_base,,}
 pkgdesc="Python Optimal Transport Library"
-pkgver=0.9.4
+pkgver=0.9.5
 pkgrel=1
 arch=(x86_64)
 url="https://github.com/PythonOT/${_base}"
@@ -16,7 +16,7 @@ optdepends=('python-autograd: necessary to use `ot.dr`'
   'python-tensorflow: necessary to use `ot.lp`'
   'python-pymanopt: necessary to use `ot.dr`')
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz)
-sha512sums=('102251b75dcf1ac673085dde2f5cb1512b512eee5d251b6ae2c63bf91340c94da9206380f99f3e7b302cd0f28a2577e6c573adea226beb06e825160d5e54ad0b')
+sha512sums=('1117b1f1d5453768d3fc8796ec20928532e2f3732e52a63d297da9fedcb1677de6e01ce0173585dacccb0df6f2e25f95263ce7f4af18f53cec11c78ab827e448')
 
 build() {
   cd ${_base}-${pkgver}
