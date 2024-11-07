@@ -1,7 +1,7 @@
 # Maintainer: RhiobeT (Pierre Jeanjean) <rhiobet@gmail.com>
 # Contributor: odrling <florianbadie@odrling.xyz>
 pkgname=aegisub-japan7-git
-pkgver=3.3.3.r816.9fb382c4c
+pkgver=3.3.3.r852.f5ec0f718
 pkgrel=1
 pkgdesc='A fork of aegisub including tap-to-time feature and custom user scripts'
 arch=(x86_64)
@@ -40,7 +40,7 @@ provides=(aegisub)
 conflicts=(aegisub)
 source=(
   aegisub::git+https://github.com/odrling/Aegisub.git
-  bestsource::git+https://github.com/vapoursynth/bestsource.git#tag=R4
+  bestsource::git+https://github.com/vapoursynth/bestsource.git#tag=R8
   ffms2::git+https://github.com/FFMS/ffms2.git
   libp2p::git+https://bitbucket.org/the-sekrit-twc/libp2p.git#commit=1e3818bd7277165819f659d410873fe5dab37af6
   luajit::git+https://github.com/LuaJIT/LuaJIT.git#branch=v2.1

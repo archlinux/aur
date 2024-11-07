@@ -33,7 +33,7 @@ pkgbase = aegisub-japan7-git
 	noextract = gtest.zip
 	noextract = gtest-patch.zip
 	source = aegisub::git+https://github.com/odrling/Aegisub.git
-	source = bestsource::git+https://github.com/vapoursynth/bestsource.git#tag=R4
+	source = bestsource::git+https://github.com/vapoursynth/bestsource.git#tag=R8
 	source = ffms2::git+https://github.com/FFMS/ffms2.git
 	source = libp2p::git+https://bitbucket.org/the-sekrit-twc/libp2p.git#commit=1e3818bd7277165819f659d410873fe5dab37af6
 	source = luajit::git+https://github.com/LuaJIT/LuaJIT.git#branch=v2.1
