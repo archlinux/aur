@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=probe-rs-git
-pkgver=0.1.0.r178.gaa4e7c093
+pkgver=0.1.0.r251.g1119317
 pkgrel=1
 pkgdesc="A debugging toolset and library for debugging embedded ARM and RISC-V targets on a separate host"
 arch=(x86_64
@@ -35,13 +35,12 @@ makedepends=(git
     openssl
     pkgconf)
 backup=()
-options=(!lto)
+options=(!lto !debug)
 install=
 source=("${pkgname}::git+${url}.git")
 sha256sums=('SKIP')
 
-prepare()
-{
+prepare() {
     git -C "${srcdir}/${pkgname}" clean -dfx
     cd "${srcdir}/${pkgname}"
     export RUSTUP_TOOLCHAIN=stable
@@ -50,9 +49,10 @@ prepare()
 
 pkgver() {
     cd "${srcdir}/${pkgname}"
-    ( set -o pipefail
-        git describe --long --tag --abbrev=7 2>/dev/null | sed 's/^v//g;s/\([^-]*-g\)/r\1/;s/-/./g'||
-        printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+    (
+        set -o pipefail
+        git describe --long --tag --abbrev=7 2>/dev/null | sed 's/^v//g;s/\([^-]*-g\)/r\1/;s/-/./g' ||
+            printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
     )
 }
 
@@ -61,9 +61,9 @@ build() {
 
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
-#     cargo build --release --all-features
+    #     cargo build --release --all-features
     CFLAGS+=" -ffat-lto-objects"
-#    --features 'cli,ftdi' \
+    #    --features 'cli,ftdi' \
     cargo build \
         --offline \
         --locked \
@@ -81,8 +81,8 @@ package() {
     cd "${srcdir}/${pkgname}/"
 
     export RUSTUP_TOOLCHAIN=stable
-#     cargo install --no-track --all-features --root "$pkgdir/usr/" --path .
-        find target/release \
+    #     cargo install --no-track --all-features --root "$pkgdir/usr/" --path .
+    find target/release \
         -maxdepth 1 \
         -executable \
         -type f \

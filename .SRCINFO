@@ -1,6 +1,6 @@
 pkgbase = probe-rs-git
 	pkgdesc = A debugging toolset and library for debugging embedded ARM and RISC-V targets on a separate host
-	pkgver = 0.1.0.r178.gaa4e7c093
+	pkgver = 0.1.0.r251.g1119317
 	pkgrel = 1
 	url = https://github.com/probe-rs/probe-rs
 	arch = x86_64
@@ -32,6 +32,7 @@ pkgbase = probe-rs-git
 	conflicts = target-gen
 	conflicts = xtask
 	options = !lto
+	options = !debug
 	source = probe-rs-git::git+https://github.com/probe-rs/probe-rs.git
 	sha256sums = SKIP
 
