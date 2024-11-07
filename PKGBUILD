@@ -2,12 +2,12 @@
 # Contributor: Carl Smedstad <carl.smedstad at protonmail dot com>
 # Contributor: Jamie Magee <jamie dot magee at gmail dot com>
 pkgname=bicep-bin
-pkgver=0.30.23
+pkgver=0.31.34
 pkgrel=1
-pkgdesc='A declarative language for describing and deploying Azure resources'
+pkgdesc="A declarative language for describing and deploying Azure resources(Prebuilt version)"
 arch=(
-    "aarch64"
-    "x86_64"
+    'aarch64'
+    'x86_64'
 )
 url='https://github.com/Azure/bicep'
 license=('MIT')
@@ -27,8 +27,8 @@ source=(
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64::${url}/releases/download/v${pkgver}/${pkgname%-bin}-linux-arm64")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64::${url}/releases/download/v${pkgver}/${pkgname%-bin}-linux-x64")
 sha256sums=('c2cfccb812fe482101a8f04597dfc5a9991a6b2748266c47ac91b6a5aae15383')
-sha256sums_aarch64=('6a49419ca51ca359cc94a9787b3d28a4b55660cd6a73b44c09050c6296176aca')
-sha256sums_x86_64=('b6a41ce8bdbf448feaf8fe2286164fb8c84e5d006c293fbc20591ff9baf76f18')
+sha256sums_aarch64=('08136287994bc6ad5d32d3cfb116fec8874e5d8c72e9e45cca81316c9a77ead6')
+sha256sums_x86_64=('63d330547223d0d79e83e88fa052adb2055ebcd3423d3e8e23e02cd42933342f')
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm644 "${srcdir}/LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
