@@ -2,7 +2,7 @@
 # Contributor: Jan Koppe <post@jankoppe.de>
 
 pkgname=ffmpeg-decklink
-pkgver=7.0.2
+pkgver=7.1
 pkgrel=1
 epoch=1
 pkgdesc='Complete solution to record, convert and stream audio and video (decklink enabled)'
@@ -20,6 +20,7 @@ depends=(
   fribidi
   glib2
   glibc
+  glslang
   gmp
   gnutls
   gsm
@@ -68,7 +69,6 @@ depends=(
   srt
   svt-av1
   v4l-utils
-  vapoursynth
   vid.stab
   vmaf
   vulkan-icd-loader
@@ -76,6 +76,7 @@ depends=(
   x265
   xvidcore
   xz
+  zeromq
   zimg
   zlib
 )
@@ -89,6 +90,7 @@ makedepends=(
   mesa
   nasm
   opencl-headers
+  vapoursynth
   vulkan-headers
   decklink-sdk
 )
@@ -107,11 +109,11 @@ source=("https://ffmpeg.org/releases/ffmpeg-${pkgver}.tar.xz"{,.asc}
         '050-ffmpeg-fix-segfault-with-avisynthplus.patch'
         '060-ffmpeg-fix-nvidia-vulkan-decoding-segfault.patch'
         'LICENSE')
-sha256sums=('8646515b638a3ad303e23af6a3587734447cb8fc0a0c064ecdb8e95c4fd8b389'
+sha256sums=('40973d44970dbc83ef302b0609f2e74982be2d85916dd2ee7472d30678a7abe6'
             'SKIP'
-            '62509a98460d3d48afcb0ce26250def7dfed124b82acc95a3b84a2802910c1fa'
-            'b0ce071f0d9c7c5eff8e7e654e30c6f4377aa137797aeb54338c2c3a93d5472c'
-            '4a8972bc6eae02ed9f473938b6e4d9dfa544274143dd735903073ca89633b721'
+            '57697441b8f3ff3be883a2444b4cb89eed452764d24965e74e7b101e6af7f70a'
+            '26419f819d1f3e4d0534995b73d05a8195bc7c892b74c37c3880085af027515b'
+            '5a3731d1410747703948c87e46bb3aef820c6038f7101ab37f9d072cd1d15d15'
             '04a7176400907fd7db0d69116b99de49e582a6e176b3bfb36a03e50a4cb26a36')
 validpgpkeys=('FCF986EA15E6E293A5644F10B4322F04D67658D8')
 
@@ -150,6 +152,7 @@ build() {
         --enable-libdvdread \
         --enable-libfreetype \
         --enable-libfribidi \
+        --enable-libglslang \
         --enable-libgsm \
         --enable-libharfbuzz \
         --enable-libiec61883 \
@@ -187,6 +190,7 @@ build() {
         --enable-libxml2 \
         --enable-libxvid \
         --enable-libzimg \
+        --enable-libzmq \
         --enable-nvdec \
         --enable-nvenc \
         --enable-opencl \

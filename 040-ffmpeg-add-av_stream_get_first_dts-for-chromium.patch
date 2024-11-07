@@ -1,6 +1,6 @@
 --- a/libavformat/avformat.h
 +++ b/libavformat/avformat.h
-@@ -1170,6 +1170,10 @@ typedef struct AVStreamGroup {
+@@ -1202,6 +1202,10 @@ typedef struct AVStreamGroup {
  
  struct AVCodecParserContext *av_stream_get_parser(const AVStream *s);
  
@@ -13,9 +13,9 @@
  /**
 --- a/libavformat/utils.c
 +++ b/libavformat/utils.c
-@@ -56,6 +56,13 @@ int ff_unlock_avformat(void)
-     return ff_mutex_unlock(&avformat_mutex) ? -1 : 0;
- }
+@@ -44,6 +44,13 @@
+  * various utility functions for use within FFmpeg
+  */
  
 +// Chromium: We use the internal field first_dts vvv
 +int64_t av_stream_get_first_dts(const AVStream *st)
