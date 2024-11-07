@@ -1,0 +1,19 @@
+pkgbase = ldapwordlistharvester-git
+	pkgdesc = Tool to generate wordlist from information present in LDAP, in order to crack passwords of domain accounts.
+	pkgver = 1.2.r12.g49ce8b2
+	pkgrel = 1
+	url = https://github.com/p0dalirius/ldapwordlistharvester
+	arch = any
+	license = custom
+	makedepends = git
+	depends = python
+	depends = python-pycryptodome
+	depends = python-sectools>=1.4.1
+	depends = python-xlsxwriter
+	provides = ldapwordlistharvester
+	conflicts = ldapwordlistharvester
+	conflicts = ldapwordlistharvester-git-bin
+	source = git+https://github.com/p0dalirius/ldapwordlistharvester
+	sha512sums = SKIP
+
+pkgname = ldapwordlistharvester-git
