@@ -1,7 +1,7 @@
 # Maintainer: Blallo <blallo@autistici.org>
 
 pkgname="savvy"
-pkgver="0.17.1"
+pkgver="0.20.0"
 pkgrel="1"
 pkgdesc="Command line tool for savvy services services"
 arch=("x86_64")
