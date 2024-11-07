@@ -1,7 +1,7 @@
 pkgbase = python-owega
 	pkgdesc = TUI / CLI interface for conversing with GPT models (from OpenAI)
 	pkgver = 5.16.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pypi.org/project/owega/
 	arch = any
 	license = custom:DGPL-1.0

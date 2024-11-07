@@ -3,7 +3,7 @@
 _name=owega
 pkgname="python-$_name"
 pkgver=5.16.3
-pkgrel=1
+pkgrel=2
 pkgdesc="TUI / CLI interface for conversing with GPT models (from OpenAI)"
 arch=('any')
 url="https://pypi.org/project/owega/"
@@ -31,10 +31,14 @@ b2sums=('7f9b9eaeb291398ec5dd8518a82460aed7c16491ab7552b62eebfc0fbab7181d103fcfa
 
 build() {
     cd "$srcdir/$_name-$pkgver"
+	export PYTHONDONTWRITEBYTECODE=
+	export PYTHONPYCACHEPREFIX=
     python setup.py build
 }
 
 package() {
     cd "$srcdir/$_name-$pkgver"
+	export PYTHONDONTWRITEBYTECODE=
+	export PYTHONPYCACHEPREFIX=
     python setup.py install --root="$pkgdir" --optimize=1 --skip-build
 }
