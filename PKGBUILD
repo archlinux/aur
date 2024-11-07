@@ -18,7 +18,7 @@ optdepends=('texlive-basic: Type setting system'
 options=(!emptydirs)
 source=(https://dune-project.org/download/${_tar}{,.asc})
 sha512sums=('32f6b440c6a8c036fcdfb1507c716bb6273cd3f3e0bba625454d7dd59f23bc274188eb2179450df1c1937959cb93703ee6d5198ef968e13bb4fcc7e5d947da27'
-            'SKIP')
+  'SKIP')
 validpgpkeys=('703607A1FD9AF4205E735522B95BE0EFB19724A1') # Simon Praetorius <simon.praetorius@tu-dresden.de>
 
 prepare() {
@@ -41,7 +41,7 @@ build() {
     -DCMAKE_CXX_COMPILER=g++ \
     -DCMAKE_C_FLAGS='-Wall -fdiagnostics-color=always' \
     -DCMAKE_CXX_FLAGS="-O2 -Wall -fdiagnostics-color=always -mavx" \
-    -DCMAKE_POSITION_INDEPENDENT_CODE=TRUE \z
+    -DCMAKE_POSITION_INDEPENDENT_CODE=TRUE \
     -DCMAKE_DISABLE_FIND_PACKAGE_LATEX=FALSE \
     -DCMAKE_DISABLE_FIND_PACKAGE_Doxygen=FALSE \
     -DENABLE_HEADERCHECK=ON \
