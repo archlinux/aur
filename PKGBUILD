@@ -1,7 +1,7 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 _pkgname=shadps4
 pkgname=$_pkgname-git
-pkgver=0.4.0.r14.gf45cad6b
+pkgver=0.4.0.r17.g176d2225
 pkgrel=1
 pkgdesc="Sony PlayStation 4 emulator"
 arch=('aarch64' 'x86_64')
@@ -88,6 +88,7 @@ build() {
 		-DCMAKE_INSTALL_PREFIX=/usr \
 		-DCMAKE_SKIP_INSTALL_RPATH=ON \
 		-DENABLE_QT_GUI=ON \
+		-DENABLE_UPDATER=OFF \
 		-DSIRIT_USE_SYSTEM_SPIRV_HEADERS=ON \
 		-Wno-dev
 	cmake --build build
