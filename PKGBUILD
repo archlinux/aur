@@ -8,13 +8,13 @@
 pkgbase=pyglet
 pkgname=('python-pyglet')
 pkgver=2.0.18
-pkgrel=1
+pkgrel=2
 pkgdesc="A cross-platform windowing and multimedia library for Python"
 arch=('any')
 url="https://github.com/pyglet/pyglet"
 license=('BSD')
 depends=('python' 'glu' 'python-future')
-makedepends=('python-setuptools')
+makedepends=('python-build' 'python-flit-core' 'python-installer')
 optdepends=('ffmpeg: provides audio&video support'
     'openal: live audio')
 source=("$pkgbase-$pkgver.zip::https://github.com/pyglet/pyglet/archive/refs/tags/v$pkgver.zip")
@@ -26,12 +26,12 @@ prepare() {
 
 build() {
     cd "$srcdir/$pkgbase-$pkgver"
-    python3 setup.py build
+    python -m build --wheel --no-isolation
 }
 
 package_python-pyglet() {
     depends=('python' 'glu' 'python-future')
     cd "$srcdir/$pkgbase-$pkgver"
-    python3 setup.py install --root="$pkgdir" --optimize=1
+    python -m installer --destdir="$pkgdir" dist/*.whl
     install -D -m644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
