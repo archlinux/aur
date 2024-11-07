@@ -2,12 +2,12 @@
 # Contributor: Alexey Trifonov <otaku [at] rambler dot ru>
 # Contributor: Tesx <tesfabpel@gmail.com>
 pkgname=goxel-voxel-editor-git
-pkgver=+r11+09b9b357e
-pkgrel=1
+pkgver=0.15.1+r2578+gb86fa3670
+pkgrel=2
 pkgdesc="Open Source 3D voxel editor for Mac, Windows and Linux. Git version."
 arch=('i686' 'x86_64')
 url="https://goxel.xyz/"
-license=('GPL3')
+license=('GPL-3.0-or-later')
 groups=()
 makedepends=(git scons pkg-config)
 depends=(glfw gtk3)

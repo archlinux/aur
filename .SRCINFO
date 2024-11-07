@@ -1,11 +1,11 @@
 pkgbase = goxel-voxel-editor-git
 	pkgdesc = Open Source 3D voxel editor for Mac, Windows and Linux. Git version.
-	pkgver = +r11+09b9b357e
-	pkgrel = 1
+	pkgver = 0.15.1+r2578+gb86fa3670
+	pkgrel = 2
 	url = https://goxel.xyz/
 	arch = i686
 	arch = x86_64
-	license = GPL3
+	license = GPL-3.0-or-later
 	makedepends = git
 	makedepends = scons
 	makedepends = pkg-config
