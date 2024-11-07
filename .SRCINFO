@@ -1,0 +1,27 @@
+pkgbase = bilibili-linux-git
+	pkgdesc = 这是哔哩哔哩 Linux版
+	pkgver = 1.15.2.1.r1.g5ac6c86
+	pkgrel = 1
+	url = https://github.com/msojocs/bilibili-linux
+	arch = aarch64
+	arch = x86_64
+	license = MIT
+	makedepends = wget
+	makedepends = perl-image-exiftool
+	makedepends = asar
+	makedepends = unzip
+	makedepends = p7zip
+	makedepends = curl
+	makedepends = npm
+	makedepends = nvm
+	makedepends = pnpm
+	depends = electron30
+	depends = ffmpeg
+	provides = bilibili-linux
+	conflicts = bilibili-linux
+	source = git+https://github.com/msojocs/bilibili-linux.git
+	source = bilibili-linux.sh
+	sha256sums = SKIP
+	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
+
+pkgname = bilibili-linux-git
