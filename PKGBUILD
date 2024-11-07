@@ -1,9 +1,9 @@
-# Maintainer: Sergey Feschukov <snfesh@yandex.ru>
-# Contributor: Konstantin Unruh <freaxmate@protonmail.com>
+# Maintainer: Mohamed Amine Zghal (medaminezghal) <medaminezghal at outlook dot com>
+
 pkgname=libreoffice-style-yaru-fullcolor
 _pkgver=2023-07-04
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=2
 pkgdesc="A fullcolor icon pack for Libreoffice of the awesome Yaru theme."
 arch=('any')
 url="https://github.com/ubuntu/$pkgname"
