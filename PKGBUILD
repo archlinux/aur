@@ -12,7 +12,7 @@ url="https://toitlang.org"
 license=('LGPL')
 depends=("toit=$pkgver")
 source=("vessels-$pkgver.tar.gz::https://github.com/toitlang/toit/releases/download/$_tag/vessels.tar.gz")
-sha256sums=('404b778fc6577ca68e55ac2bdb99f8c1e1feba8b086be1c18f29c8bd605eabab')
+sha256sums=('97d3966e6c9a3cc94232765b941fafb49449798500d6f1f8ce6e82a556900285')
 options=(!strip)
 
 build() {

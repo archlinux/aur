@@ -8,6 +8,6 @@ pkgbase = toit-vessels-bin
 	depends = toit=2.0.0alpha.164
 	options = !strip
 	source = vessels-2.0.0alpha.164.tar.gz::https://github.com/toitlang/toit/releases/download/v2.0.0-alpha.164/vessels.tar.gz
-	sha256sums = 404b778fc6577ca68e55ac2bdb99f8c1e1feba8b086be1c18f29c8bd605eabab
+	sha256sums = 97d3966e6c9a3cc94232765b941fafb49449798500d6f1f8ce6e82a556900285
 
 pkgname = toit-vessels-bin
