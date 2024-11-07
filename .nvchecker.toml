@@ -1,0 +1,5 @@
+[tabby]
+source = "github"
+github = "Eugeny/tabby"
+use_max_tag = true
+prefix = "v"

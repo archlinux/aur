@@ -1,25 +1,29 @@
 pkgbase = tabby
 	pkgdesc = A terminal for a more modern age
-	pkgver = 1.0.205
+	pkgver = 1.0.215
 	pkgrel = 1
-	url = https://eugeny.github.io/terminus/
+	url = https://tabby.sh
 	arch = x86_64
 	license = MIT
+	makedepends = gendesk
 	makedepends = git
-	makedepends = npm
+	makedepends = python-setuptools
 	makedepends = yarn
-	makedepends = python
-	makedepends = nodejs-lts-hydrogen
-	makedepends = cmake
-	makedepends = node-gyp
-	makedepends = rpm-tools
-	depends = glib2
-	depends = gtk3
-	depends = nss
-	depends = libxcrypt-compat
+	depends = bash
+	depends = electron29
+	depends = fontconfig
+	depends = gcc-libs
+	depends = glibc
+	depends = hicolor-icon-theme
+	depends = nodejs
+	depends = python
 	conflicts = terminus-terminal
 	replaces = terminus-terminal
-	source = git+https://github.com/Eugeny/tabby.git#tag=v1.0.205
-	sha256sums = SKIP
+	source = git+https://github.com/Eugeny/tabby.git#tag=v1.0.215
+	source = tabby.sh
+	source = build.patch
+	sha256sums = e3e1c4c3f90490972d4b031444b0780c9a05a620275d8add95bf771f80710385
+	sha256sums = e10c3846ec9ffd5d711397cece65d53fb2b81af1d08706442f04328c7bcbbb5a
+	sha256sums = 3718fc3b957179d1efd18e1aff4dc2de3123093ffa5fd8e357c132f082e3cf40
 
 pkgname = tabby
