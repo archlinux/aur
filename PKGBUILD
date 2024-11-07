@@ -1,7 +1,7 @@
 # Maintainer: su226 <thesu226@outlook.com>
 
 pkgname=r2modman
-pkgver=3.1.51
+pkgver=3.1.52
 pkgrel=1
 epoch=
 pkgdesc="A simple and easy to use mod manager for several games using Thunderstore."
@@ -9,10 +9,10 @@ arch=(any)
 url="https://github.com/ebkr/r2modmanPlus"
 license=("MIT")
 groups=()
-_electron=electron11
+_electron=electron24
 depends=("$_electron")
 # python2 for building node-sass
-makedepends=(yarn python2 nvm)
+makedepends=(yarn)
 checkdepends=()
 optdepends=()
 provides=()
@@ -25,21 +25,11 @@ changelog=
 source=("r2modmanPlus-$pkgver.tar.gz::https://github.com/ebkr/r2modmanPlus/archive/refs/tags/v$pkgver.tar.gz"
         "r2modman.desktop")
 noextract=()
-sha256sums=(2f1a7ba8bab08c2799d11a775d27716102e96e7dba865f9fe6a773b6d56ec2fb
+sha256sums=(8afdc950373e5bf08f38547588a3821580377226964e968eeced46f22d80d048
             6cd96385f1ad7bf6fec0f9a70b429305e6f20153528e415d3c943ff19a45fd0f)
 validpgpkeys=()
 
-_ensure_local_nvm() {
-	which nvm >/dev/null 2>&1 && nvm deactivate && nvm unload
-	export NVM_DIR="${srcdir}/.nvm"
-
-	source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
-}
-
 prepare() {
-	_ensure_local_nvm
-	# Node 14 is required, newer versions might not build node-sass
-	nvm install 14
 	cd "r2modmanPlus-$pkgver"
 	# Modify electron-builder config
 	local _electronDist="/usr/lib/$_electron"
@@ -49,13 +39,11 @@ prepare() {
 }
 
 build() {
-	_ensure_local_nvm
 	cd "r2modmanPlus-$pkgver"
 	yarn build-linux
 }
 
 check() {
-	_ensure_local_nvm
 	cd "r2modmanPlus-$pkgver"
 	node test/folder-structure-testing/populator.mjs
 	yarn test:unit
