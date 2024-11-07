@@ -24,10 +24,6 @@ makedepends=(
 source=("${pkgname}::git+${url}#tag=v${pkgver}")
 md5sums=('SKIP')
 
-pkgver() {
-	git -C "${_pkgname}" describe --tags --abbrev=0 | sed 's/^v//' 
-}
-
 build() {
     cd "$srcdir/$pkgname"
     python -m build --wheel --no-isolation
