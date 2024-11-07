@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=octad.db
-_pkgver=1.6.0
+_pkgver=1.8.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -17,8 +17,8 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://bioconductor.org/packages/release/data/experiment/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('b7c3100078f9b60f795b2101743fba4b')
-b2sums=('d637ec14ecd1c2413afec484b02ebd047d5304bbe4e31cf2c5e78effaf01245e5bf36b0e13fdd12efe4c85ff108c8afe7543d0e2a3dce9e860be2f13c79467c0')
+md5sums=('0afebff9d9a140dbdb280de68a39cc0e')
+b2sums=('0bdfbf6afd5967a04b4dd14b72749aee3c038645c38466f8b8bdd55e3c7f073b224422c56589ee5438e8d9d8539df641c7568c0dc00d9ad81f59a39e939d7b71')
 
 build() {
   mkdir build
