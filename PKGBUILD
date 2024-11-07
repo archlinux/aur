@@ -64,7 +64,7 @@ pkgver() {
 prepare() {
   cd ${_svnmod}/Scribus
 
-  sed -i "s/inline int operator ==/inline bool operator ==/" scribus/third_party/lib2geom/point.h
+  # Nothing done here. Keeping for future needs.
 }
 
 build() {
@@ -83,7 +83,7 @@ build() {
   make
 }
 
-package () {
+package() {
   cd ${_svnmod}/Scribus
   make DESTDIR="${pkgdir}" install
   install -Dm644 COPYING "${pkgdir}"/usr/share/licenses/${pkgname}/COPYING
