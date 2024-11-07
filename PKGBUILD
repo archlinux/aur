@@ -1,6 +1,7 @@
 # Maintainer: Jasur Sadikov <jasur@sadikoff.com>
 pkgname=mud-git
-pkgver=1.0.8
+_pkgname=mud
+pkgver=1.0.9
 pkgrel=1
 pkgdesc="Multi repository git utility. Manage multiple git-repositories simultaneously."
 arch=('any')
@@ -20,8 +21,12 @@ makedepends=(
     'python-setuptools'
     'python-setuptools-scm'
 )
-source=("${pkgname}::git+${url}")
+source=("${pkgname}::git+${url}#tag=v${pkgver}")
 md5sums=('SKIP')
+
+pkgver() {
+	git -C "${_pkgname}" describe --tags --abbrev=0 | sed 's/^v//' 
+}
 
 build() {
     cd "$srcdir/$pkgname"
