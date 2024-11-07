@@ -5,11 +5,11 @@
 # https://packages.qa.debian.org/u/urlview.html
 # https://sr.ht/~nabijaczleweli/urlview-ng/
 
-: ${_commit:=add0ab60b4cb2ef5a7051e86fb6d43ba62fa1e2e} # 1d
+: ${_commit:=243419e2ef22b4c3cfac6f29f4528231964e0082} # 1e
 
 _pkgname="urlview"
 pkgname="$_pkgname"
-pkgver=1.d
+pkgver=1e
 pkgrel=1
 pkgdesc="A curses URL parser for text files"
 url="https://git.sr.ht/~nabijaczleweli/urlview-ng"
@@ -18,6 +18,7 @@ arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 
 depends=(
   'bash'
+  'glibc'
   'ncurses'
 )
 makedepends=(
