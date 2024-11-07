@@ -7,9 +7,9 @@ pkgdesc="Erin Sheldons Python Utilities"
 arch=(any)
 url="https://github.com/esheldon/${_base}"
 license=(GPL-2.0-or-later)
-depends=(python-numpy)
+depends=(python-scipy)
 makedepends=(python-build python-installer python-setuptools python-wheel)
-checkdepends=(python-pytest python-scipy)
+checkdepends=(python-pytest)
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz)
 sha512sums=('b59646c15e147ee87111bff1fd3826469994024b70578b47174fd56795a2ba059c57bf2aef913f94f8599e8243a21f0f3532f51b266dd178f872002297ca7147')
 
