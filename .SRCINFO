@@ -1,0 +1,15 @@
+pkgbase = synapse-admin-etke-git
+	pkgdesc = A Matrix administration panel using react-admin (etke.cc fork)
+	pkgver = 0.10.3.etke28.r0.gb925c63
+	pkgrel = 1
+	url = https://github.com/etkecc/synapse-admin
+	arch = any
+	license = Apache-2.0
+	makedepends = nodejs
+	makedepends = yarn
+	makedepends = git
+	optdepends = nginx: to serve the web application
+	source = synapse-admin-etke::git+https://github.com/etkecc/synapse-admin
+	sha256sums = SKIP
+
+pkgname = synapse-admin-etke-git
