@@ -2,12 +2,12 @@
 pkgname=python-about-time
 _pkgname=about-time
 pkgver=4.2.1
-pkgrel=3
+pkgrel=4
 pkgdesc='Easily measure timing and throughput of code blocks, with beautiful human friendly representations.'
 arch=('any')
 url='https://github.com/rsalmei/about-time'
 license=('MIT')
-depends=('python' 'python-grapheme')
+depends=('python')
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
 sha512sums=('9fe0b488e9a2f6cfa2e20c80e4ba580651e396733ce60a8b51a8b782111ae314768d21a9f539b078781f669a408897b209de9da20e8f9fc70cce23326b589d73')

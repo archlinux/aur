@@ -1,7 +1,7 @@
 pkgbase = python-about-time
 	pkgdesc = Easily measure timing and throughput of code blocks, with beautiful human friendly representations.
 	pkgver = 4.2.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/rsalmei/about-time
 	arch = any
 	license = MIT
@@ -10,7 +10,6 @@ pkgbase = python-about-time
 	makedepends = python-wheel
 	makedepends = python-setuptools
 	depends = python
-	depends = python-grapheme
 	source = https://files.pythonhosted.org/packages/source/a/about-time/about-time-4.2.1.tar.gz
 	sha512sums = 9fe0b488e9a2f6cfa2e20c80e4ba580651e396733ce60a8b51a8b782111ae314768d21a9f539b078781f669a408897b209de9da20e8f9fc70cce23326b589d73
 
