@@ -1,6 +1,6 @@
 # Maintainer: Benjamin Kampmann <ben@acter.global>
 pkgname=acter-bin
-pkgver=1.24.10310
+pkgver=1.24.11070
 pkgrel=1
 epoch=
 pkgdesc="Casual Community Organizing"
@@ -19,9 +19,9 @@ backup=()
 options=()
 install=
 changelog=
-source=("https://github.com/acterglobal/a3/releases/download/v1.24.10310/acter-linux-x64-1.24.10310.tar.bz2")
+source=("https://github.com/acterglobal/a3/releases/download/v1.24.11070/acter-linux-x64-1.24.11070.tar.bz2")
 noextract=()
-md5sums=("c3b6ae29cb3500eea8da8c909427a4f9")
+md5sums=("696a9aeb5d7a8ef9809ac30eb251844f")
 validpgpkeys=()
 
 package() {
