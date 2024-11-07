@@ -1,7 +1,7 @@
 pkgbase = rdwatool-git
 	pkgdesc = Python script to extract information from a Microsoft Remote Desktop Web Access (RDWA) application
 	pkgver = 1.2.r12.g6c47a21
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/p0dalirius/rdwatool
 	arch = any
 	license = custom

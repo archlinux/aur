@@ -2,7 +2,7 @@
 pkgname=rdwatool-git
 _pkgname="${pkgname%-git}"
 pkgver=1.2.r12.g6c47a21
-pkgrel=1
+pkgrel=2
 pkgdesc="Python script to extract information from a Microsoft Remote Desktop Web Access (RDWA) application"
 arch=('any')
 url="https://github.com/p0dalirius/rdwatool"
@@ -32,7 +32,6 @@ build() {
 
 package() {
   cd "$_pkgname"
-  #install -Dm0755 $srcdir/$_pkgname/RDWAtool.py "$pkgdir/usr/bin/$_pkgname"
   python setup.py install --root="$pkgdir" --optimize=1
 }
 
