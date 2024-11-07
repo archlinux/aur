@@ -1,8 +1,8 @@
 # Maintainer: Carlos Aznarán <caznaranl@uni.pe>
 pkgbase=opm-common
 pkgname=("${pkgbase}" python-"${pkgbase}")
-_dunever=2.9.1
-pkgver=2024.04
+_dunever=2.10.0
+pkgver=2024.10
 pkgrel=1
 pkgdesc="Open Porous Media Initiative shared infrastructure"
 arch=(x86_64)
@@ -10,15 +10,9 @@ url="https://github.com/OPM/${pkgbase}"
 license=(GPL-3.0-or-later)
 makedepends=("dune-common>=${_dunever}" boost fmt cjson suitesparse texlive-basic doxygen graphviz
   pybind11 python-scikit-build python-setuptools-scm python-pytest-runner)
-source=(${pkgbase}-release-${pkgver}-final.tar.gz::${url}/archive/release/${pkgver}/final.tar.gz
-  gcc-14.patch::${url}/pull/4064.patch)
-sha512sums=('60ca3cb83628b3efb0d7424b4a4bbc5c650f2b1095da5a32617f5e0ed94f2861156cd78bfbcc0e126cfb7727db8106a903f8a802ea380cc05313346099957d02'
-            'c462d8149d70083abf536de8283633149319e16db439625073f89b7e65961c69e4fd9da2a4e21dfbcfbd37019afadc411b797e1f14279250b2c479e88976161d')
-
-prepare() {
-  cd ${pkgbase}-release-${pkgver}-final
-  patch -p1 -i ../gcc-14.patch
-}
+options=(!emptydirs)
+source=(${pkgbase}-release-${pkgver}-final.tar.gz::${url}/archive/release/${pkgver}/final.tar.gz)
+sha512sums=('4e9eaa455e1eb417deceae0f5da8c93c89f23ce72705c5ab7c152ee36382f8377b119035ef793f1f386e6e5b2e0c0aed549901816515292da175d876df6cab57')
 
 build() {
   cmake \
@@ -51,7 +45,6 @@ package_opm-common() {
   install -Dm644 ${pkgbase}-release-${pkgver}-final/LICENSE "${pkgdir}/usr/share/licenses/${pkgbase}/LICENSE"
   cd "${pkgdir}"
   rm -r usr/build-cmake
-  find "${pkgdir}" -type d -empty -delete
 }
 
 package_python-opm-common() {

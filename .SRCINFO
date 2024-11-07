@@ -1,11 +1,11 @@
 pkgbase = opm-common
 	pkgdesc = Open Porous Media Initiative shared infrastructure
-	pkgver = 2024.04
+	pkgver = 2024.10
 	pkgrel = 1
 	url = https://github.com/OPM/opm-common
 	arch = x86_64
 	license = GPL-3.0-or-later
-	makedepends = dune-common>=2.9.1
+	makedepends = dune-common>=2.10.0
 	makedepends = boost
 	makedepends = fmt
 	makedepends = cjson
@@ -17,13 +17,12 @@ pkgbase = opm-common
 	makedepends = python-scikit-build
 	makedepends = python-setuptools-scm
 	makedepends = python-pytest-runner
-	source = opm-common-release-2024.04-final.tar.gz::https://github.com/OPM/opm-common/archive/release/2024.04/final.tar.gz
-	source = gcc-14.patch::https://github.com/OPM/opm-common/pull/4064.patch
-	sha512sums = 60ca3cb83628b3efb0d7424b4a4bbc5c650f2b1095da5a32617f5e0ed94f2861156cd78bfbcc0e126cfb7727db8106a903f8a802ea380cc05313346099957d02
-	sha512sums = c462d8149d70083abf536de8283633149319e16db439625073f89b7e65961c69e4fd9da2a4e21dfbcfbd37019afadc411b797e1f14279250b2c479e88976161d
+	options = !emptydirs
+	source = opm-common-release-2024.10-final.tar.gz::https://github.com/OPM/opm-common/archive/release/2024.10/final.tar.gz
+	sha512sums = 4e9eaa455e1eb417deceae0f5da8c93c89f23ce72705c5ab7c152ee36382f8377b119035ef793f1f386e6e5b2e0c0aed549901816515292da175d876df6cab57
 
 pkgname = opm-common
-	depends = dune-common>=2.9.1
+	depends = dune-common>=2.10.0
 	depends = boost
 	depends = fmt
 	depends = cjson
@@ -42,5 +41,5 @@ pkgname = opm-common
 
 pkgname = python-opm-common
 	pkgdesc = Open Porous Media Initiative shared infrastructure (python bindings)
-	depends = opm-common>=2024.04
+	depends = opm-common>=2024.10
 	depends = python-numpy
