@@ -1,0 +1,16 @@
+pkgbase = ruby-syck
+	pkgdesc = Syck from stdlib turned in to a gem
+	pkgver = 1.5.1.1
+	pkgrel = 1
+	url = https://github.com/ruby/syck
+	arch = any
+	license = MIT
+	checkdepends = ruby-bundler
+	checkdepends = ruby-rake-compiler
+	checkdepends = ruby-test-unit
+	depends = ruby
+	options = !emptydirs
+	source = https://github.com/ruby/syck/archive/v1.5.1.1/ruby-syck-1.5.1.1.tar.gz
+	b2sums = be3b551cbb15b07f996bf1498c67385a902a18e8b4246b8eaf2c11c9078487f72295327a8f209553105ff3badea4b8dcb71de477e90be1c30ed6f438c1e1412f
+
+pkgname = ruby-syck
