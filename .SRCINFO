@@ -1,0 +1,18 @@
+pkgbase = python-jupyterlab-fonts
+	pkgdesc = Data-driven Style and Typography for JupyterLab powered by JSS.
+	pkgver = 3.0.0
+	pkgrel = 2
+	url = https://github.com/deathbeds/jupyterlab-fonts
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-hatch-nodejs-version
+	makedepends = python-hatch-jupyter-builder
+	makedepends = npm
+	makedepends = python-flit-core
+	depends = jupyterlab
+	source = jupyterlab_fonts-3.0.0.tar.gz::https://github.com/deathbeds/jupyterlab-fonts/releases/download/v3.0.0/jupyterlab_fonts-3.0.0.tar.gz
+	sha256sums = 9f98258fb80c5fe86e4996e7cbf1089c0837ffe19c49afd5f929f0762dfaf961
+
+pkgname = python-jupyterlab-fonts
