@@ -1,5 +1,5 @@
 pkgbase = pacfish
-	pkgdesc = AUR helper written in Ruby
+	pkgdesc = Pacfish is a lightweight AUR helper written in Ruby that follows the KISS (Keep It Simple, Stupid) principles. It provides a straightforward interface for searching, installing, and updating user packages from the AUR without unnecessary features or complexity.
 	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://codeberg.org/Ryba37/pacfish
