@@ -1,6 +1,6 @@
 pkgbase = kalamine-git
 	pkgdesc = A text-based, cross-platform Keyboard Layout Maker.
-	pkgver = v0.36.r3.173ff65
+	pkgver = v0.38.r1.5ad53d1
 	pkgrel = 1
 	url = https://github.com/OneDeadKey/kalamine
 	arch = any
