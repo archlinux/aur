@@ -1,59 +1,74 @@
-# Maintainer:
+# Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
+# Contributor: xiota
 # Contributor: Dušan Simić <dusan.simic1810@gmail.com>
-
-_pkgname="revolt-desktop"
-pkgname="$_pkgname"
+pkgname=revolt-desktop
 pkgver=1.0.8
-pkgrel=2
-pkgdesc="User-first chat platform built with modern web technologies"
+_electronversion=33
+_nodeversion=20
+pkgrel=3
+pkgdesc="User-first chat platform built with modern web technologies.(Use system-wide electron)"
 url="https://github.com/revoltchat/desktop"
 license=('AGPL-3.0-only')
 arch=('any')
-
 depends=(
-  'electron'
+    "electron${_electronversion}"
+    'python'
 )
 makedepends=(
-  'npm'
-  'nodejs'
+    'npm'
+    'gcc'
+    'cmake'
+    'nvm'
+    'curl'
 )
-
-_pkgsrc="desktop-$pkgver"
-_pkgext="tar.gz"
 source=(
-  "$_pkgname-$pkgver.$_pkgext"::"https://github.com/revoltchat/desktop/archive/v$pkgver.$_pkgext"
+    "desktop-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
+    "${pkgname}.sh"
 )
-sha256sums=(
-  'cec46eca480d3bf011c9ef3066b74366d706de525b432a9522156534c84ee519'
-)
-
-build() {
-  cd "$_pkgsrc"
-
-  electronDist=/usr/lib/electron
-  electronVer=$(cat /usr/lib/electron/version)
-
-  sed -E 's&"electron": "[^"]+",&"electron": "^'$electronVer'",&' -i package.json
-  HOME="$srcdir/.electron-gyp" npm install --cache "$srcdir/npm-cache"
-  npm run build:bundle
-
-  ./node_modules/.bin/electron-builder -l dir -c.electronDist=$electronDist -c.electronVersion=$electronVer
+sha256sums=('cec46eca480d3bf011c9ef3066b74366d706de525b432a9522156534c84ee519'
+            '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
+_ensure_local_nvm() {
+    local NVM_DIR="${srcdir}/.nvm"
+    source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
+    nvm install "${_nodeversion}"
+    nvm use "${_nodeversion}"
 }
-
+build() {
+    sed -e "
+        s/@electronversion@/${_electronversion}/g
+        s/@appname@/${pkgname}/g
+        s/@runname@/app.asar/g
+        s/@cfgdirname@/${pkgname}/g
+        s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
+    " -i "${srcdir}/${pkgname}.sh"
+    _ensure_local_nvm
+    cd "${srcdir}/desktop-${pkgver}"
+    electronDist="/usr/lib/electron${_electronversion}"
+    export ELECTRON_SKIP_BINARY_DOWNLOAD=1
+    export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
+    HOME="${srcdir}/.electron-gyp"
+    mkdir -p "${srcdir}/.electron-gyp"
+    touch "${srcdir}/.electron-gyp/.yarnrc"
+    if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
+        {
+          echo 'npmRegistryServer: "https://registry.npmmirror.com"'
+          echo "cacheFolder: "${srcdir}"/.yarn/cache"
+          echo "globalFolder: "${srcdir}"/.yarn/global"
+        } >> .yarnrc.yml
+        export npm_config_electron_mirror=https://registry.npmmirror.com/-/binary/electron/
+        export npm_config_electron_builder_binaries_mirror=https://registry.npmmirror.com/-/binary/electron-builder-binaries/
+        export disturl=https://registry.npmmirror.com/-/binary/node/
+    fi
+    sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
+    NODE_ENV=development    npx yarn install
+    NODE_ENV=production     npx yarn run build:bundle
+    NODE_ENV=production     npx yarn electron-builder --linux dir -c.electronDist="${electronDist}"
+}
 package() {
-  cd "$_pkgsrc"
-
-  install -dm755 "$pkgdir/usr/lib/$_pkgname"
-  cp --reflink=auto -a dist/linux-unpacked/resources/* "$pkgdir/usr/lib/$_pkgname/"
-
-  install -Dm644 build/icons/icon.png "$pkgdir/usr/share/pixmaps/$_pkgname.png"
-
-  install -Dm644 "revolt-desktop.desktop" -t "$pkgdir/usr/share/applications"
-
-  install -Dm755 /dev/stdin "$pkgdir/usr/bin/$_pkgname" << END
-#!/usr/bin/env bash
-exec electron /usr/lib/$_pkgname/app.asar "\$@"
-END
-
-  chmod -R u+rwX,go+rX,go-w "$pkgdir/"
+    install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
+    install -Dm644 "${srcdir}/desktop-${pkgver}/dist/linux-"*/resources/app.asar -t "${pkgdir}/usr/lib/${pkgname}"
+    cp -Pr --no-preserve=ownership "${srcdir}/desktop-${pkgver}/dist/linux-"*/resources/app.asar.unpacked "${pkgdir}/usr/lib/${pkgname}"
+    install -Dm644 "${srcdir}/desktop-${pkgver}/assets/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
+    install -Dm644 "${srcdir}/desktop-${pkgver}/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
+    install -Dm644 "${srcdir}/desktop-${pkgver}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
