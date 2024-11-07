@@ -1,0 +1,19 @@
+pkgbase = finduncommonshares
+	pkgdesc = Python script allowing to quickly find uncommon shares in vast Windows Domains...
+	pkgver = 3.2
+	pkgrel = 1
+	url = https://github.com/p0dalirius/finduncommonshares
+	arch = any
+	license = custom
+	depends = python
+	depends = impacket
+	depends = python-xlsxwriter
+	depends = python-sectools
+	depends = python-pycryptodome
+	provides = finduncommonshares
+	conflicts = finduncommonshares-git
+	conflicts = finduncommonshares-bin
+	source = https://github.com/p0dalirius/finduncommonshares/archive/refs/tags/3.2.tar.gz
+	sha512sums = d43e92c2c11b85d0d064794069a5270af25fde20f1b94959e16a4d5454816e7a585b71b374c12d3c4fd446212c1c7a8fd1b6d43d461bdae1c4d78eb6be052900
+
+pkgname = finduncommonshares
