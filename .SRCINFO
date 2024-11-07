@@ -1,0 +1,33 @@
+pkgbase = libasound2-plugin-fftrate
+	pkgdesc = ALSA library plugin - FFT based rate converter and utilities
+	pkgver = 1.6.3
+	pkgrel = 1
+	url = https://github.com/PetrovSE/fftrate
+	arch = x86_64
+	arch = i686
+	groups = fftrate
+	license = GPL
+	makedepends = alsa-lib>=1.0.22
+	makedepends = git
+	makedepends = fftw
+	source = libasound2-plugin-fftrate-1.6.3::git+https://github.com/PetrovSE/fftrate.git
+	sha256sums = SKIP
+
+pkgname = libasound2-plugin-fftrate
+	pkgdesc = ALSA library additional plugin - FFT based rate converter
+	groups = fftrate
+	depends = alsa-lib
+	depends = alsa-plugins
+
+pkgname = alsa-config-utils
+	pkgdesc = ALSA configurator - includes arateconf utility
+	groups = fftrate
+	depends = alsa-lib
+	depends = alsa-plugins
+	depends = libasound2-plugin-fftrate
+	depends = swh-plugins
+
+pkgname = pcm-utils
+	pkgdesc = Wave PCM utils for PCM file processing
+	groups = fftrate
+	depends = 
