@@ -2,7 +2,7 @@
 
 _pyname=pmdarima
 pkgname=python-$_pyname
-pkgver=2.0.3
+pkgver=2.0.4
 pkgrel=1
 pkgdesc="ARIMA estimators for Python"
 arch=(x86_64 aarch64)
@@ -13,7 +13,13 @@ optdepends=(python-matplotlib python-pytest)
 makedepends=(python-build python-installer python-setuptools python-wheel)
 checkdepends=(python-pytest)
 source=($pkgname-$pkgver.tar.gz::https://github.com/alkaline-ml/pmdarima/archive/refs/tags/v$pkgver.tar.gz)
-sha256sums=('f386db23571ca4b3c16a4906613778ad46f8605746222152ca101a6efc316713')
+sha256sums=('83eca810992679f2086781a8b58b39558392380c13ac60819b026fffb105cfcd')
+
+prepare() {
+  cat <<EOF > "$srcdir/$_pyname-$pkgver/$_pyname/VERSION"
+$pkgver
+EOF
+}
 
 build() {
   cd "$srcdir/$_pyname-$pkgver"
@@ -27,8 +33,8 @@ check() {
   cd "$srcdir/$_pyname-$pkgver"
   python -m venv --system-site-packages test-env
   test-env/bin/python -m installer dist/*.whl
-  mv pmdarima/tests .
-  rm -r pmdarima
+  mv $_pyname/tests .
+  rm -r $_pyname
   test-env/bin/python -m pytest -v
 }
 
