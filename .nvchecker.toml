@@ -1,0 +1,4 @@
+[libresprite-bin]
+source = "git"
+git = "https://github.com/LibreSprite/LibreSprite.git"
+prefix = "v"
