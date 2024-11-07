@@ -5,7 +5,7 @@
 
 _pkgname="forkgram"
 pkgname="$_pkgname"
-pkgver=5.7.1
+pkgver=5.7.2
 pkgrel=1
 pkgdesc="Fork of the Telegram Desktop messaging app"
 url="https://github.com/Forkgram/tdesktop"
@@ -63,7 +63,6 @@ optdepends=(
   'xdg-desktop-portal: desktop integration'
 )
 
-provides=("forkgram-bin")
 conflicts=("forkgram-bin")
 
 options=('!debug' '!emptydirs')
@@ -75,7 +74,7 @@ source=(
   '28583-ffmpeg.patch'
 )
 sha256sums=(
-  'cb4ed835f7e80c4c2dd57af0890ac344620c117688edfb82854b0acca0f056ab'
+  '17132ac73cb1f36332b54e0c33bf8b0d8273223229d7d8f49dff83479f433cc2'
   'd3a1561ab2d1e48132df3ef422e418d5ffcf71ab44f6423a4e8da2cc76a3a3c6'
 )
 
