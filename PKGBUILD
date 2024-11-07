@@ -5,7 +5,7 @@
 
 pkgname=shotcut-git
 pkgdesc='Cross-platform Qt based Video Editor - Git latest'
-pkgver=24.10.29+r6397+148c80c11
+pkgver=24.10.29+r6397+g148c80c11
 pkgrel=1
 arch=('x86_64')
 url='https://www.shotcut.org'
@@ -27,7 +27,7 @@ pkgver(){
   _version=$(git tag --sort=-v:refname --list | head -n1 | cut -c2-)
   _commits=$(git rev-list --count HEAD)
   _short_commit_hash=$(git rev-parse --short=9 HEAD)
-  echo "${_version#'v'}+r${_commits}+${_short_commit_hash}"
+  echo "${_version#'v'}+r${_commits}+g${_short_commit_hash}"
 }
 
 build() {
