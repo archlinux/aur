@@ -1,14 +1,13 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 
 pkgname=sdl12-compat-git
-_pkgbase=sdl12-compat
-pkgver=1.2.68.r9.gbb2f7ff
-pkgrel=2
+pkgver=1.2.68.r16.g6f0f603
+pkgrel=1
 pkgdesc="An SDL-1.2 compatibility layer that uses SDL 2.0 behind the scenes."
 arch=("x86_64")
 url="https://github.com/libsdl-org/sdl12-compat"
 license=('Zlib AND MIT-0')
-depends=('sdl2' 'glibc' 'glu')
+depends=('sdl2' 'glibc' 'glu' 'bash')
 makedepends=('cmake' 'git')
 conflicts=('sdl' 'sdl12-compat')
 provides=('sdl=1:1.2.15+r406+gf1caf909-1' 'sdl12-compat')
@@ -17,35 +16,27 @@ sha256sums=('SKIP')
 
 
 pkgver() {
-  cd "$_pkgbase"
+  cd "${pkgname::-4}"
   git describe --long --tags | sed 's/^release-//;s/\([^-]*-g\)/r\1/;s/-/./g' | sed 's/^prerelease.//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-prepare(){
-	if test -e "$srcdir/$_pkgbase/build64"
-	then
-		:
-	else
-	mkdir "$srcdir/$_pkgbase/build64"
-	fi
-}
-
 build() {
-	cd "$srcdir/$_pkgbase/build64"
+	cd "$srcdir/"
 
-	cmake ../ \
+	cmake -B build -S "${pkgname::-4}" \
+	-DCMAKE_BUILD_TYPE=None \
 	-DCMAKE_C_FLAGS="$CFLAGS" \
 	-DCMAKE_INSTALL_PREFIX="/usr" \
 	-DSDL12TESTS=0 \
 	-DSDL12DEVEL=1
-	make
 
+	cmake --build build
 }
 
 package() {
-	cd "$srcdir/$_pkgbase/build64"
-	make DESTDIR="$pkgdir/" install
+	cd "$srcdir"
+	DESTDIR="$pkgdir" cmake --install build
 
-	mkdir -p "$pkgdir/usr/share/licenses/sdl12-compat"
-	cp "$srcdir/$_pkgbase/LICENSE.txt" "$pkgdir/usr/share/licenses/sdl12-compat/LICENSE.txt"
+	mkdir -p "$pkgdir/usr/share/licenses/${pkgname}"
+	install -Dm644 "$srcdir/${pkgname::-4}/LICENSE.txt" "$pkgdir/usr/share/licenses/${pkgname}/LICENSE.txt"
 }
