@@ -16,6 +16,7 @@ sha512sums=('4e9eaa455e1eb417deceae0f5da8c93c89f23ce72705c5ab7c152ee36382f8377b1
 
 prepare() {
   sed -i '57 a #include <fmt/ranges.h>' ${pkgbase}-release-${pkgver}-final/opm/input/eclipse/EclipseState/EclipseState.cpp
+  sed -i '24 a #include <fmt/ranges.h>' ${pkgbase}-release-${pkgver}-final/opm/input/eclipse/EclipseState/Grid/FaceDir.cpp
 }
 
 build() {
