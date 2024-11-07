@@ -1,0 +1,21 @@
+pkgbase = dbcsr
+	pkgdesc = Distributed Block Compressed Sparse Row matrix library
+	pkgver = 2.7.0
+	pkgrel = 1
+	url = https://github.com/cp2k/dbcsr
+	arch = x86_64
+	license = GPL-2.0-only
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = gcc-fortran
+	makedepends = python
+	depends = libxsmm
+	depends = blas
+	depends = lapack
+	depends = openmpi
+	source = dbcsr-2.7.0.tar.gz::https://github.com/cp2k/dbcsr/archive/refs/tags/v2.7.0.tar.gz
+	source = cmake.patch
+	sha256sums = 25c367b49fb108c5230bcfb127f05fc16deff2bb467f437023dfa6045aff66f6
+	sha256sums = af12e55b6cbdd504379349a88c499e4ceac53bd8eb907133aaa95b8a97da85be
+
+pkgname = dbcsr
