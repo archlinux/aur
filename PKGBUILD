@@ -2,14 +2,14 @@
 # shellcheck disable=2034,2154,2164
 pkgname=gibo-bin
 pkgver=3.0.12
-pkgrel=1
+pkgrel=2
 pkgdesc='Command-line tool to help you easily access .gitignore boilerplates'
 arch=('x86_64')
 url="https://github.com/simonwhitaker/gibo"
 license=('custom:UNLICENSE')
 install=gibo.install
 source=(
-		"https://github.com/simonwhitaker/gibo/releases/download/v${pkgver}/gibo_Linux_x86_64.tar.gz"
+		"${pkgver}.tar.gz::https://github.com/simonwhitaker/gibo/releases/download/v${pkgver}/gibo_Linux_x86_64.tar.gz"
 		"gibo.install"
 	   )
 b2sums=('da347389867d9f870e31f12869389d32c0589d59c9ab700dfdf9b2cf855757364a17857c3d40fde64d02a772fbe5997671ebcd9d8564145355a987d9f911385c'
