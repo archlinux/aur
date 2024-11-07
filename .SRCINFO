@@ -1,0 +1,18 @@
+pkgbase = extractbitlockerkeys-git
+	pkgdesc = System administration or post-exploitation script to automatically extract the bitlocker recovery keys from a domain.
+	pkgver = 1.2.r15.gdbb7475
+	pkgrel = 1
+	url = https://github.com/p0dalirius/extractbitlockerkeys
+	arch = any
+	license = custom
+	makedepends = git
+	depends = python
+	depends = python-sectools
+	depends = python-xlsxwriter
+	provides = extractbitlockerkeys
+	conflicts = extractbitlockerkeys
+	conflicts = extractbitlockerkeys-git-bin
+	source = git+https://github.com/p0dalirius/extractbitlockerkeys
+	sha512sums = SKIP
+
+pkgname = extractbitlockerkeys-git
