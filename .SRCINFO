@@ -1,9 +1,9 @@
 pkgbase = project-monalisa
 	pkgdesc = This project allows you to explore networking protocols by sending custom packets, monitoring traffic, and identifying services like SSH, FTP, and Telnet without using traditional commands or tools.
-	pkgver = 1.0
+	pkgver = 0.1.0
 	pkgrel = 1
 	url = https://github.com/Akash420-oss/project-monalisa
-	arch = x86_64
+	arch = any
 	license = MIT
 	checkdepends = git
 	checkdepends = firefox

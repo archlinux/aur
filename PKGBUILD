@@ -1,16 +1,20 @@
 # Maintainer: Akash Sil <akashsil420@duck.com>
 pkgname='project-monalisa'
-pkgver=1.0
+pkgver=0.1.0
 pkgrel=1
 url='https://github.com/Akash420-oss/project-monalisa'
 pkgdesc="This project allows you to explore networking protocols by sending custom packets, monitoring traffic, and identifying services like SSH, FTP, and Telnet without using traditional commands or tools."
-arch=('x86_64')
+arch=('any')
 license=('MIT')
 depends=('git' 'firefox' 'wireshark-qt' 'gnome-terminal' 'python' 'nmap' 'termshark' 'tcpdump' 'nmap')
 checkdepends=('git' 'firefox' 'wireshark-qt' 'gnome-terminal' 'python' 'python-pip' 'termshark' 'tcpdump' 'nmap')
 makedepends=('git' 'firefox' 'wireshark-qt' 'gnome-terminal' 'python' 'python-pip' 'termshark' 'tcpdump' 'nmap')
 source=($pkgname::git+https://github.com/Akash420-oss/Project-Monalisa.git)
 md5sums=('SKIP')
+prepare(){
+	cd $pkgname 
+	rm -f install.sh uninstall.sh
+}
 package(){
 	cd $pkgname
 	mv mona.py mona 
