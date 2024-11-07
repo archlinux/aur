@@ -1,0 +1,20 @@
+pkgbase = ldapconsole-git
+	pkgdesc = Script allows you to perform custom LDAP requests to a Windows domain.
+	pkgver = 2.1.0.r1.g3a55822
+	pkgrel = 1
+	url = https://github.com/p0dalirius/ldapconsole
+	arch = any
+	license = custom
+	makedepends = git
+	depends = python
+	depends = python-ldap3
+	depends = python-pycryptodome
+	depends = python-sectools
+	depends = python-xlsxwriter
+	provides = ldapconsole
+	conflicts = ldapconsole
+	conflicts = ldapconsole-git-bin
+	source = git+https://github.com/p0dalirius/ldapconsole
+	sha512sums = SKIP
+
+pkgname = ldapconsole-git
