@@ -1,0 +1,9 @@
+pkgbase = tosutil-bin
+	pkgdesc = Tosutil is a command-line tool for accessing and managing BytePlus Torch Object Storage (TOS).
+	pkgver = 3.1.4
+	pkgrel = 1
+	arch = x86_64
+	source = https://tos-tools.tos-ap-southeast-1.bytepluses.com/linux/amd64/tosutil
+	sha256sums = 00b50507d7530cc073ed607a03cc578312a192709e34795bc8176d0d1ef60cde
+
+pkgname = tosutil-bin
