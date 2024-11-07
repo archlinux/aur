@@ -4,7 +4,7 @@
 # Maintainer: Miguel Revilla Rodríguez <yo at miguelrevilla.com>
 
 pkgname=scribus-svn
-pkgver=26135
+pkgver=26402
 pkgrel=1
 pkgdesc="A desktop publishing program - Version from SVN"
 arch=('i686' 'x86_64')
@@ -89,11 +89,5 @@ package () {
   install -Dm644 COPYING "${pkgdir}"/usr/share/licenses/${pkgname}/COPYING
   install -Dm644 scribus.desktop "${pkgdir}"/usr/share/applications/scribus.desktop
   install -d "${pkgdir}"/usr/share/pixmaps
-  ln -s /usr/share/scribus/icons/1_5_0/scribus.png "${pkgdir}"/usr/share/pixmaps/scribus.png
-  # move around some picture files
-  for _i in AppIcon.png AllCaps.png Kapital.xpm Strike.xpm \
-		       outlined.png shadow.png shade.png Revers.png zeichen.png
-  do install "${pkgdir}"/usr/share/scribus/icons/1_5_0/$_i "${pkgdir}"/usr/share/scribus/icons/1_5_1/$_i
-     rm "${pkgdir}"/usr/share/scribus/icons/1_5_0/$_i
-  done
+  ln -s /usr/share/scribus/icons/1_7_0/scribus-icon.svg "${pkgdir}"/usr/share/pixmaps/scribus.svg
 }
