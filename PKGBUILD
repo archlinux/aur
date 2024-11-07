@@ -1,14 +1,14 @@
-# Maintainer: Elaina Martineau <elainamartineau@gmail.com>
+# Maintainer: Cleber Matheus <clebermatheus@outlook.com>
 pkgname=ttf-octicons
 pkgver=19.12.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A scalable set of icons handcrafted with <3 by GitHub"
 arch=('any')
 license=('MIT')
 url="https://octicons.github.com/"
 makedepends=('git' 'npm' 'nvm')
 depends=('fontconfig' 'xorg-font-util' 'xorg-mkfontscale')
-source=("https://github.com/primer/octicons/archive/v${pkgver}.tar.gz")
+source=("${pkgname}_v${pkgver}.tar.gz::https://github.com/primer/octicons/archive/v${pkgver}.tar.gz")
 sha256sums=('08be590886d4440d3ca5acfcb4f994c482053a0047ec8daa43df0f74b0cc71cb')
 install=$pkgname.install
 
