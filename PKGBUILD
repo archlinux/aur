@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=openCyto
-_pkgver=2.16.1
+_pkgver=2.18.0
 pkgname=r-${_pkgname,,}
-pkgver=2.16.1
+pkgver=2.18.0
 pkgrel=1
 pkgdesc='Hierarchical Gating Pipeline for flow cytometry data'
 arch=('x86_64')
@@ -40,7 +40,7 @@ optdepends=(
   r-utils
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('940a8708a815998b31b3e192bc4ccf03e3161b3a17afb39f0cf4163aea96cd8e')
+sha256sums=('3cd6fbf5fed3da2ec60d9c18373effc66595d51625f5782860940c2acbdec51e')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
