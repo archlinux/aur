@@ -7,12 +7,12 @@ arch=('x86_64')
 pkgdesc=' VHDL 2008/93/87 simulator'
 url='https://github.com/ghdl/ghdl'
 license=('GPL-2.0-only')
-depends=('gcc-ada')
+depends=(
+	'gcc-ada'
+)
 checkdepends=(
 	'python-pytest'
 	'python-pytooling'
-#	'python-pyvhdlmodel>=0.12'
-#	'python-pyattributes'
 )
 optdepends=(
 	'python-pyghdl: python bindings and utilities'
@@ -48,12 +48,10 @@ build() {
 		--enable-synth
 
 	make
-
 }
 
 check() {
 	cd "$pkgname-$pkgver"
-
 	make test
 }
 
