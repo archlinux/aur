@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=android-messages-desktop
-pkgver=5.4.5
+pkgver=5.5.0
 pkgrel=1
 _electronversion=20
 pkgdesc="Android Messages as a cross-platform desktop app"
@@ -12,7 +12,7 @@ makedepends=('git' 'yarn')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
         "$pkgname.sh"
         "$pkgname.desktop")
-sha256sums=('0c6d638eacd211cd653943610147959365362ca97c6128e6a6593917eb577eb2'
+sha256sums=('b7db99f95dbc74331445648618c66edf702032b97726ea756dce2e88065957b1'
             '3310fc2c6cabab9f7e7177a710bc4a5ec6a0fd946eb14f791205ffeade6cb844'
             '1bf16b8864712b0c1de72d8c3764db14b75ecf64dae44d206a26aa036ac53b1a')
 
