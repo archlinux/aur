@@ -1,11 +1,11 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=witsy
 _pkgname=Witsy
-pkgver=1.22.0
+pkgver=1.22.1
 _electronversion=32
 _nodeversion=20
 pkgrel=1
-pkgdesc="Generative AI desktop application.Use system-wide electron."
+pkgdesc="Generative AI desktop application.(Use system-wide electron)"
 arch=('any')
 url="https://github.com/nbonamy/witsy"
 license=('Apache-2.0')
@@ -23,7 +23,7 @@ source=(
     "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
     "${pkgname}.sh"
 )
-sha256sums=('7f71a9972e0219087a3704a6e88b3d4f0fc46f290c60541ac849e384faa71144'
+sha256sums=('3091e2ad15518371d14ee7eb156342517594f4b272c72535705ed9808b508683'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
