@@ -4,16 +4,16 @@
 # Contributor: Juan Diego Tascon
 
 pkgname=tzclock
-pkgver=4.4
+pkgver=4.6
 pkgrel=1
 pkgdesc="Cairo clock to display the time around the world"
 arch=('x86_64')
 url="https://theknight.co.uk"
-license=("GPL")
+license=("GPL-3.0-only")
 depends=('gtk3' 'libnotify' 'libdial')
 changelog=CHANGELOG
 source=("$pkgname-$pkgver.tar.bz2::$url/releases/Source/$pkgname-$pkgver.tar.bz2")
-sha256sums=('9a4562f1c43ea8fb721bb98baa699dbd1fba3a9bc4dc626eba5aba7696f7a580')
+sha256sums=('c733a2e36d142038604a480e09098d8be049f08dae32084f5ab0a88c332a8bd0')
 
 build() {
 	cd "$pkgname-$pkgver"
