@@ -2,12 +2,12 @@
 
 pkgname=python-pglast
 _pkgname="${pkgname#python-}"
-pkgver=5.4
+pkgver=6.10
 pkgrel=1
 pkgdesc='PostgreSQL language AST and statement prettifier'
 arch=('x86_64')
 url='https://github.com/lelit/pglast'
-license=('GPL3')
+license=('GPL-3.0-only')
 depends=('python' 'python-setuptools')
 makedepends=(
   'git'
@@ -19,19 +19,15 @@ makedepends=(
   'python-sphinx'
 )
 checkdepends=('python-pytest' 'python-pytest-cov')
-_commit='3e83be0a36b092f191e8c4a4f8ef54974be72414'
 source=(
-  "$pkgname::git+$url#commit=$_commit"
+  "$pkgname::git+$url#tag=v$pkgver"
   'github.com-pganalyze-libpg_query::git+https://github.com/pganalyze/libpg_query'
 )
-b2sums=('SKIP'
+sha512sums=('7b9d2006c4b0e657cc41e12ac111fc0fa45cc297fdb4d54cf17fc4f4ab1993bcbcad8eb8722190354cd79cc0f050071158555f90b66932853fa9a35435647d49'
+            'SKIP')
+b2sums=('83abaf7ff49ca3f285a13dce935611a0b8ecf8596fdc048eea46f9145f1219582ea065b780181d66a0d2f12e5b70ba4143665c0386721c97b567699b9dbe4eb3'
         'SKIP')
 
-pkgver() {
-  cd "$pkgname"
-
-  git describe --tags | sed 's/^v//'
-}
 
 prepare() {
   cd "$pkgname"
