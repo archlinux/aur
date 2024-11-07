@@ -12,8 +12,8 @@ fi
 ## basic info
 _pkgname="ryujinx"
 pkgname="$_pkgname"
-pkgver=1.2.59
-pkgrel=2
+pkgver=1.2.72
+pkgrel=1
 pkgdesc="Experimental Nintendo Switch Emulator written in C#"
 url="https://github.com/GreemDev/Ryujinx"
 license=('MIT')
@@ -110,16 +110,16 @@ _update_version() {
     return
   fi
 
-  local _response=$(curl -Ssf "$url/releases.atom")
-  local _tag=$(
+  local _response _tag _pkgver_new
+  _response=$(curl -Ssf "$url/releases")
+  _tag=$(
     printf '%s' "$_response" \
-      | grep '"https://.*/releases/tag/.*"' \
-      | sed -E 's@^.*/releases/tag/(.*)".*$@\1@' \
-      | grep -Ev '[a-z]{2}' | sort -rV | head -1
+      | grep -E '/tree/([0-9\.]+)"' \
+      | sed -E 's&^.*/tree/([0-9\.]+)".*$&\1&' \
+      | sort -rV | head -1
   )
-  local _pkgver_new="${_tag#v}"
+  _pkgver_new="${_tag#v}"
 
-  # update _pkgver
   if [ "$_pkgver" != "${_pkgver_new:?}" ]; then
     _pkgver="${_pkgver_new:?}"
   fi
