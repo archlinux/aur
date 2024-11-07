@@ -61,7 +61,7 @@ export WM_MPLIB=SYSTEMOPENMPI
 
     # https://develop.openfoam.com/Development/openfoam/-/issues/3234
     cd "$projectDir"
-    sed -i 's/g++$(COMPILER_VERSION) -std=c++14/g++$(COMPILER_VERSION) -std=c++17 -D_GLIBCXX_USE_CXX14_ABI=0/g' wmake/rules/General/Gcc/c++
+    sed -i 's/g++$(COMPILER_VERSION) -std=c++14/g++$(COMPILER_VERSION) -std=c++17/g' wmake/rules/General/Gcc/c++
     patch -p1 -i ../update_to_std_optional.patch
     patch -p1 -i ../update_to_std_variant.patch
 }
