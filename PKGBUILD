@@ -2,7 +2,7 @@
 # Contributor:: AndyRTR <andyrtr@archlinux.org>
 
 pkgname=xorg-xwayland-bug865-issue1578
-pkgver=23.2.6
+pkgver=24.1.4
 pkgrel=1
 arch=('x86_64')
 license=(
@@ -25,17 +25,17 @@ license=(
 groups=('xorg')
 url="https://xorg.freedesktop.org"
 pkgdesc="run X clients under wayland"
-depends=('nettle' 'libepoxy' 'systemd-libs' 'libxfont2' 
-         'pixman' 'xorg-server-common' 'libxcvt' 'mesa'
+depends=('nettle' 'libepoxy' 'libxfont2' 'pixman'
+         'xorg-server-common' 'libxcvt' 'mesa'
          'libglvnd' 'libxau' 'wayland' 'libdrm' 'libtirpc'
-         'libxshmfence' 'glibc')
+         'libei' 'libxshmfence' 'libdecor' 'glibc')
 makedepends=('meson' 'xorgproto' 'xtrans' 'libxkbfile' 'dbus'
              'xorg-font-util' 'wayland-protocols' 'mesa-libgl'
-             'systemd' 'egl-wayland')
+             'systemd')
 source=("https://xorg.freedesktop.org/archive/individual/xserver/xwayland-$pkgver.tar.xz"
         "freedesktop-bug-865.patch" # The patch for freedesktop bug 865
         "revert-for-issue-1578.patch") # The patch for revert change that break issue 1578 workaround
-sha1sums=('8c45b889051bdea66fba51f267374a38b1fd1f49'
+sha1sums=('05a766897497b5df7e9d64e34fcd99304cd96363'
           '5c4f422327ae37c40a72e960e239591ca5e03c3a'
           'ad932cfba975aa42bfbd9379df156aca5bc62116')
 provides=('xorg-xwayland')
@@ -62,8 +62,8 @@ build() {
     -D xdmcp=false \
     -D xcsecurity=true \
     -D dri3=true \
-    -D xwayland_eglstream=true \
     -D glamor=true \
+    -D libdecor=true \
     -D xkb_dir=/usr/share/X11/xkb \
     -D xkb_output_dir=/var/lib/xkb
 
