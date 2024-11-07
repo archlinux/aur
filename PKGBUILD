@@ -1,127 +1,70 @@
-pkgname=ghdl
-pkgver=0.37
-pkgrel=1
-_gccver=9.2.0
-_islver=0.22.1
-arch=('aarch64' 'x86_64')
-pkgdesc='VHDL simulator'
-url='https://github.com/ghdl/ghdl'
-license=('GPLv2')
-makedepends=('gcc-ada' 'git')
-install=ghdl.install
-options=(!emptydirs staticlibs)
+# Maintainer: George Tsiamasiotis <gtsiam@windowslive.com>
 
-source=(
-  "git+https://github.com/ghdl/ghdl#tag=v${pkgver}"
-  "https://gcc.gnu.org/pub/gcc/releases/gcc-${_gccver}/gcc-${_gccver}.tar.xz"
-  "http://isl.gforge.inria.fr/isl-${_islver}.tar.bz2"
+pkgname=ghdl
+pkgver=4.1.0
+pkgrel=1
+arch=('x86_64')
+pkgdesc=' VHDL 2008/93/87 simulator'
+url='https://github.com/ghdl/ghdl'
+license=('GPL-2.0-only')
+depends=('gcc-ada')
+checkdepends=(
+	'python-pytest'
+	'python-pytooling'
+#	'python-pyvhdlmodel>=0.12'
+#	'python-pyattributes'
 )
-sha256sums=(
-  'SKIP'
-  'ea6ef08f121239da5695f76c9b33637a118dcf63e24164422231917fa61fb206'
-  '1a668ef92eb181a7c021e8531a3ca89fd71aa1b3744db56f68365ab0a224c5cd'
+optdepends=(
+	'python-pyghdl: python bindings and utilities'
 )
+
+source=("$pkgname-$pkgver.tar.gz::https://github.com/ghdl/ghdl/archive/refs/tags/v$pkgver.tar.gz"
+        '0001-fix-test-suite.patch::https://github.com/ghdl/ghdl/commit/a9fe853e63229603a8958fd80ff8b996dd49c950.patch'
+        '0002-fix-callback-types.patch::https://github.com/ghdl/ghdl/commit/659a5d7a018d011aad23235bfd3e306072436a8b.patch'
+        '0003-fix-more-callback-types.patch::https://github.com/ghdl/ghdl/commit/5c4d2509b47d416470cdac59bb81955f5aacfee3.patch'
+        '0004-fix-prototypes.patch::https://github.com/ghdl/ghdl/commit/9e7a317cea2473a31e18f63b9392912b7da8e63d.patch')
+sha256sums=('0aab531b45a6613b0918f3ac6ec717b8acfad051d1abb1c39eb7490590c7a324'
+            '93b136658bee0c34c0ac40ea9b5074f69f82cdad6119289f5542bbca18370860'
+            '9417a574aa13279a6cb05ac8f5bd9919029117fdbfcbf83a997dd1079b8e2ed3'
+            '7ed8e32715f85f03ab3c310ef9aef3190a3bc1f9b84eeb2a9db48ff827c1866e'
+            'c8da80ae5cc2cf3209b28d351f8d1345948285516ae97c3b85a75ab19608b30b')
 
 prepare() {
-  [[ ! -d gcc ]] && ln -s gcc-${_gccver/+/-} gcc
-
-  cd ghdl
-  ./configure --prefix=/usr --with-gcc="${srcdir}/gcc"
-  make copy-sources
-  cd ..
-
-  cd gcc
-
-  # link isl for in-tree build
-  ln -s ../isl-${_islver} isl
-
-  # Do not run fixincludes
-  sed -i 's@\./fixinc\.sh@-c true@' gcc/Makefile.in
-
-  # Arch Linux installs x86_64 libraries /lib
-  sed -i '/m64=/s/lib64/lib/' gcc/config/i386/t-linux64
-
-  # Arch Linux ARM installs aarch64 libraries /lib
-  sed -i '/lp64=/s/lib64/lib/' gcc/config/aarch64/t-aarch64-linux
-
-  # hack! - some configure tests for header files using "$CPP $CPPFLAGS"
-  sed -i "/ac_cpp=/s/\$CPPFLAGS/\$CPPFLAGS -O2/" {libiberty,gcc}/configure
-
-  mkdir -p "$srcdir/gcc-build"
+	cd "$pkgname-$pkgver"
+	
+	# Test suite failures. Should be fixed after 4.1.0
+	patch -Np1 -i ../0001-fix-test-suite.patch
+	patch -Np1 -i ../0002-fix-callback-types.patch
+	patch -Np1 -i ../0003-fix-more-callback-types.patch
+	patch -Np1 -i ../0004-fix-prototypes.patch
 }
 
 build() {
-  cd gcc-build
+	cd "$pkgname-$pkgver"
 
-  # using -pipe causes spurious test-suite failures
-  # http://gcc.gnu.org/bugzilla/show_bug.cgi?id=48565
-  CFLAGS=${CFLAGS/-pipe/}
-  CXXFLAGS=${CXXFLAGS/-pipe/}
+	./configure \
+		--prefix=/usr/ \
+		--enable-libghdl \
+		--enable-synth
 
-  "$srcdir/gcc/configure" --prefix=/usr \
-    --libdir=/usr/lib \
-    --libexecdir=/usr/lib \
-    --mandir=/usr/share/man \
-    --infodir=/usr/share/info \
-    --enable-shared \
-    --enable-threads=posix \
-    --with-system-zlib \
-    --with-isl \
-    --enable-__cxa_atexit \
-    --disable-libunwind-exceptions \
-    --enable-clocale=gnu \
-    --disable-libstdcxx-pch \
-    --disable-libssp \
-    --enable-gnu-unique-object \
-    --enable-linker-build-id \
-    --enable-lto \
-    --enable-plugin \
-    --enable-install-libiberty \
-    --with-linker-hash-style=gnu \
-    --enable-gnu-indirect-function \
-    --disable-werror \
-    --enable-checking=release \
-    --enable-default-pie \
-    --enable-default-ssp \
-    \
-    --enable-languages=vhdl \
-    --disable-bootstrap \
-    --disable-multilib \
-    --disable-libgomp \
-    --disable-libquadmath
+	make
 
-  make
+}
 
-  cd "${srcdir}/ghdl"
-  make -j1 \
-    GHDL_GCC_BIN="${srcdir}/gcc-build/gcc/ghdl" \
-    GHDL1_GCC_BIN="--GHDL1=${srcdir}/gcc-build/gcc/ghdl1" \
-    ghdllib
+check() {
+	cd "$pkgname-$pkgver"
+
+	make test
 }
 
 package() {
-  local _xgcc="${srcdir}/gcc-build/gcc/xgcc"
-  local _machine=$(${_xgcc} -dumpmachine)
-  local _version=$(${_xgcc} -dumpversion)
-  cd "${srcdir}/gcc-build"
+	cd "$pkgname-$pkgver"
 
-  # make a full install ...
-  make DESTDIR="${pkgdir}" install
+	make DESTDIR="$pkgdir" install
 
-  # and remove files not specific to ghdl
-  cd "${pkgdir}"
-  rm -rf "usr/"{include,share/{locale,man}}
-  find "usr/lib" \
-    -maxdepth 1 -mindepth 1 -not -name 'gcc' -not -name 'ghdl' \
-    -exec rm -rf {} +
-  find "usr/lib/gcc/${_machine}/${_version}" \
-    -maxdepth 1 -mindepth 1 -not -name 'ghdl*' \
-    -exec rm -rf {} +
-  find "usr/bin" "usr/share/info" \
-    -maxdepth 1 -mindepth 1 -not -name 'ghdl*' \
-    -exec rm -rf {} +
+	# Install man page
+	install -Dm0644 -t "$pkgdir/usr/share/man/man1" doc/ghdl.1
 
-  # install ghdl-lib
-  cd "${srcdir}/ghdl"
-  make DESTDIR="${pkgdir}" install
+	# libghdl.a probably shouldn't be executable
+	chmod 644 "$pkgdir/usr/lib/libghdl.a"
 }
