@@ -1,6 +1,6 @@
 pkgbase = jaguar-bin
 	pkgdesc = Tool to develop Toit programs for the ESP32
-	pkgver = 1.43.1
+	pkgver = 1.43.2
 	pkgrel = 1
 	url = https://github.com/toitlang/jaguar
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = jaguar-bin
 	depends = gcc-libs
 	provides = jaguar
 	conflicts = jaguar
-	source = jaguar-bin-1.43.1.tgz::https://github.com/toitlang/jaguar/releases/download/v1.43.1/jag_linux.tgz
-	sha256sums = 013116e430391a520a3a399178937c4e176bdce0881c1bc094fa9f61c57c0da7
+	source = jaguar-bin-1.43.2.tgz::https://github.com/toitlang/jaguar/releases/download/v1.43.2/jag_linux.tgz
+	sha256sums = cc6673c727cf702c699baf52838a0d780909c829aeb174ddb2eb1c1fc52ccb62
 
 pkgname = jaguar-bin
