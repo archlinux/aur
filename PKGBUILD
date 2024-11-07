@@ -1,33 +1,33 @@
-# Maintainer: k1f0 <generic@k1f0.mozmail.com>
-_pkgname=signalbackup-tools
-pkgname=${_pkgname}-git
-pkgver=20240910.r0.g1543540
-pkgrel=2
+# Maintainer: k1f0 <archlinux at k1f0.mozmail.com>
+
+pkgname=signalbackup-tools-git
+pkgver=20241106.1.r0.g242c983
+pkgrel=1
 pkgdesc="Tool to work with Signal Backup files"
 arch=('x86_64')
 url="https://github.com/bepaald/signalbackup-tools"
 license=('GPL3')
 depends=('openssl' 'sqlite' 'dbus')
-makedepends=('git' 'pkgconfig')
+makedepends=('git' 'pkgconfig' 'cmake')
 provides=("signalbackup-tools")
 conflicts=()
-source=("git+https://github.com/bepaald/${_pkgname}.git")
+source=("git+https://github.com/bepaald/${pkgname%-git}.git")
 md5sums=('SKIP')
 
 pkgver() {
-	cd "$srcdir/${_pkgname}"
+	cd "${srcdir}/${pkgname%-git}"
 	printf "%s" "$(git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g')"
 }
 
 build() {
-	cd "$srcdir/${_pkgname}"
-	export CXXFLAGSEXTRA="$(pkg-config --cflags dbus-1)"
-	export LDLIBS="$(pkg-config --libs dbus-1) -lcrypto -lsqlite3"
-	./BUILDSCRIPT.bash
+	cd "${srcdir}/${pkgname%-git}"
+	cmake -B output -DCMAKE_BUILD_TYPE=Release
+	cmake --build output -j $(nproc)
 }
 
 package() {
-	cd "$srcdir/${_pkgname}"
-	install -Dm755 ${_pkgname} "${pkgdir}/usr/bin/${_pkgname}"
-	install -Dm644 README.md "${pkgdir}/usr/share/doc/${_pkgname}/README"
+	cd "${srcdir}/${pkgname%-git}"
+	install -Dm755 "output/${pkgname%-git}" "${pkgdir}/usr/bin/${pkgname%-git}"
+	install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname%-git}/README"
+	install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname%-git}/LICENSE"
 }
