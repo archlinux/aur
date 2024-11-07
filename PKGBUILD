@@ -1,14 +1,14 @@
 # Maintainer: Ada Tretyakova <ada@ada-af.com>
 pkgname=dion-bin
-pkgver=5.17.0
-pkgrel=67
+pkgver=5.20.0
+pkgrel=394
 pkgdesc="Desktop application for dion.vc"
 arch=("x86_64")
 url="https://dion.vc"
 license=('MIT')
 depends=("gtk3" "libnotify" "nss" "libxss" "libxtst" "xdg-utils" "at-spi2-core" "util-linux-libs" "libappindicator-gtk3" "libsecret")
 source=("https://static.dion.vc/desktop_app/dion_${pkgver}_amd64.deb")
-sha256sums=("07817aa3a57c42f0eccdf9e009ff56b9870967a62a2ec86ff72db6bff12e8122")
+sha256sums=("2dac8114004358fd9428354c791aaffbdf5c10c40e74d29c73416e074b4eb5eb")
 
 prepare() {
 	bsdtar -xvf "${srcdir}/data.tar.xz"
