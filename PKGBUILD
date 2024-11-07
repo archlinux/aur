@@ -6,7 +6,7 @@
 # Contributor: Jakub Schmidtke <sjakub@gmail.com>
 
 pkgname=firefox-globalmenu
-pkgver=132.0
+pkgver=132.0.1
 pkgrel=1
 pkgdesc="Fast, Private & Safe Web Browser"
 url="https://www.mozilla.org/firefox/"
@@ -77,7 +77,7 @@ options=(
   !lto
   !makeflags
 )
-commit=https://gitlab.archlinux.org/archlinux/packaging/packages/firefox/-/raw/dc1cd48bfd394fdb2f1551224d39faf0bdb62ecf
+commit=https://gitlab.archlinux.org/archlinux/packaging/packages/firefox/-/raw/2e1d2f3a9b21c8ae05ea898544d4a6196fadfd60
 source=(
   https://archive.mozilla.org/pub/firefox/releases/$pkgver/source/firefox-$pkgver.source.tar.xz{,.asc}
   $commit/firefox-symbolic.svg
@@ -89,12 +89,12 @@ validpgpkeys=(
   # https://blog.mozilla.org/security/2023/05/11/updated-gpg-key-for-signing-firefox-releases/
   14F26682D0916CDD81E37B6D61B7B526D98F0353
 )
-sha256sums=('8908b144895b354460c6975291b75ea804b07bf9bb0ee386eafeaf3c82c55c7e'
+sha256sums=('5c031b572c1da726677e2ff97b6ad5a7e3b23387a6fc3963391cb562f80a5e48'
             'SKIP'
             'a9b8b4a0a1f4a7b4af77d5fc70c2686d624038909263c795ecc81e0aec7711e9'
             '71fe797430198ac8c00b538dce537284cf526e48be0496698cf5a980d70c16da'
             '58d78ce57b3ee936bc966458d6b20ab142d02a897bbe924b3f26717af0c5bee1')
-b2sums=('e1fb70d2d699153921bcb500801b77beeba8e1ff79ef9af678a0c573c252f61d7ad20e9f0676fe2fa2731bf14af7d2eff30c0b3b562102820fddb06f63a66a91'
+b2sums=('2773f6f74088954ab067df978e7069cbd92d96933190b32a24c7762ae7f300a8b4b9c95d6fee36ccceceebda86b51fd3842074d49869f8fa0cda5cb98402ed54'
         'SKIP'
         '63a8dd9d8910f9efb353bed452d8b4b2a2da435857ccee083fc0c557f8c4c1339ca593b463db320f70387a1b63f1a79e709e9d12c69520993e26d85a3d742e34'
         '2c7936949ef922307fb593bd0480a13bde2eab8ae24fc89071d809d6659384705f9b7838b1ae8bc46b98a152ba01fcffad606d4c84796ad9bfaaf20166f0a0fd'
@@ -259,7 +259,7 @@ END
 }
 
 source+=('unity-menubar.patch')
-sha256sums+=('95e69805c3f83aaf18ac18339289ba4661538c65b92ab93a352cb5bb76131c8a')
-b2sums+=('3576e8f301a59a8d3713984455d9219d4512659e198e132b4acff7ffab0cdb7a0ebbfea68212b68cf5579b841a8a81e1b1ff4755340414430d32c4b7f4481b56')
+sha256sums+=('b8b123a1b3d189dd053f68fc5e6075339131b9927be01e67151acd39b751e71f')
+b2sums+=('d37c568e3f618d5ad94e26dcfa1c081fe6885f97267e0cf7e2f4fa16a744e16a13e11a5c5b6ae6d4fc6ac2725af1c0e3a5b1b8a430e25452f588737bf809f90e')
 provides=(firefox)
 conflicts=(firefox)
