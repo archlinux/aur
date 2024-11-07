@@ -13,7 +13,7 @@ pkgbase = toit
 	depends = gcc-libs
 	depends = esptool
 	optdepends = toit-vessels-bin=2.0.0alpha.164: Vessels for cross-compilation
-	source = git+https://github.com/toitlang/toit.git#commit=235e4dcba0cca7ccdd922b81c64d29b50732843a
+	source = git+https://github.com/toitlang/toit.git#commit=8e67c157f93c50173d6a4abba3e67687723d46e3
 	md5sums = SKIP
 
 pkgname = toit
