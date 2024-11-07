@@ -1,6 +1,7 @@
-# Maintainer: Matt Parnell/ilikenwf <parwok@gmail.com>
+# Maintainer: envolution
+# Contributor: Matt Parnell/ilikenwf <parwok@gmail.com>
 pkgname="hardened-malloc-git"
-pkgver=TQ3A.230605.012.2023061402+r724+a7302add6
+pkgver=+r724+a7302add6
 pkgdesc="Hardened allocator designed for modern systems."
 url="https://github.com/GrapheneOS/hardened_malloc"
 license=("MIT")
@@ -16,7 +17,7 @@ sha256sums=('SKIP'
 
 pkgver(){
   cd "$srcdir/hardened_malloc"
-  _version=$(git tag --sort=-v:refname --list | head -n1 )
+  _version=$(git tag --sort=refname --list | grep "^[0-9]+$" | grep "^[0-9]\{2,4\}$" | sort -nr | head -1)
   _commits=$(git rev-list --count HEAD)
   _short_commit_hash=$(git rev-parse --short=9 HEAD)
   echo "${_version}+r${_commits}+${_short_commit_hash}"
