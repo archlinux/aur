@@ -6,7 +6,7 @@ pkgname=(
   'dsp56300-emulator-lv2'
   'dsp56300-emulator-vst3'
 )
-pkgver=1.3.20
+pkgver=1.3.21
 pkgrel=1
 pkgdesc='Emulates musical devices that used the Motorola 56300 DSPs'
 arch=('x86_64')
@@ -45,7 +45,7 @@ source=(
   'skip-cpack.patch'
   'skip-tests.patch'
 )
-sha512sums=('6634d432341c331fbbdc98ce276d2701eca18829ff8788429a8de02e3aadc35da667236ccf9c9673986133cc024efdb557f94c238c281d6e1c8cfd1e9ba2b880'
+sha512sums=('e1cce79c2ff1f751c97ff7dc19d3c43a53e1dd04c6a51068ddd51d684fd74e8fe3c39ba8d97628689567f25aa846d4ef68171678ca042a0c93e4a09615606184'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -56,7 +56,7 @@ sha512sums=('6634d432341c331fbbdc98ce276d2701eca18829ff8788429a8de02e3aadc35da66
             '07033d6171eabf8a57318c0e441d4c2c591f67ae6add2e6c4817224fe4c87c4c9563f1c2cb6db3282229a6e10415e13a986cc4a976373a493fbcbc302a4ee888'
             '9264c532fdd430f29341461555cf392d199bf58eddf63dfa6b8f88a37775ccba0ad287c8a36410bb7c5c5aac16a9c1ca1c47ab69d71955f12ebc83176872b0cf'
             '2334010c663b5e90e6b63a0e3ca73871609b2bc1d01116ea56dd896972f66a704cf910cfb61d44c922541376a1add69562f31ccc2457f1e16badbc932f0e4a45')
-b2sums=('e88d1b51a74cd542a2b3ab076b5b42b183d2ccd17dc2a9f09cb7adc79f611bb2d0b4cf45bf58d9516f9f964d3bf93b111be36f2891faf62e8624abb0b7b75684'
+b2sums=('ad018fe25c389215096a5946026051db32e046c7593c9dc7726acef8fb7cdd3c8c91d078913a9bca7dc50c2f204d4d777ba75fb09b65bfdd8c69a64376d8ca9f'
         'SKIP'
         'SKIP'
         'SKIP'
@@ -113,9 +113,11 @@ build() {
   cmake \
     -S "$pkgbase" \
     -B build \
+    -D CMAKE_INSTALL_PREFIX=/usr \
     -D gearmulator_BUILD_JUCEPLUGIN=ON \
     -D gearmulator_BUILD_JUCEPLUGIN_CLAP=ON \
     -D gearmulator_BUILD_JUCEPLUGIN_LV2=ON \
+    -D gearmulator_BUILD_JUCEPLUGIN_VST3=ON \
     -D gearmulator_BUILD_FX_PLUGIN=ON \
     -D gearmulator_SYNTH_OSIRUS=ON \
     -D gearmulator_SYNTH_OSTIRUS=ON \
@@ -124,6 +126,9 @@ build() {
     -D gearmulator_SYNTH_NODALRED2X=ON
 
   cmake --build build --config Release
+
+  mkdir install
+  DESTDIR=$(pwd)/install cmake --install build 
 }
 
 package_dsp56300-emulator-clap() {
@@ -134,11 +139,10 @@ package_dsp56300-emulator-clap() {
     'clap-host'
   )
 
-  find \
-    build/source \
-    -type f \
-    -name "*.clap" \
-    -exec install -vDm755 {} -t "$pkgdir/usr/lib/clap" \;
+  # install required directory
+  install -vd "$pkgdir/usr/lib/clap"
+
+  mv install/usr/lib/clap/* "$pkgdir/usr/lib/clap"
 }
 
 package_dsp56300-emulator-lv2() {
@@ -152,11 +156,7 @@ package_dsp56300-emulator-lv2() {
   # install required directory
   install -vd "$pkgdir/usr/lib/lv2"
 
-  find \
-    build/source \
-    -type d \
-    -name "*.lv2" \
-    -exec cp -vr {} "$pkgdir/usr/lib/lv2" \;
+  mv install/usr/lib/lv2/* "$pkgdir/usr/lib/lv2"
 }
 
 package_dsp56300-emulator-vst3() {
@@ -170,9 +170,5 @@ package_dsp56300-emulator-vst3() {
   # install required directory
   install -vd "$pkgdir/usr/lib/vst3"
 
-  find \
-    build/source \
-    -type d \
-    -name "*.vst3" \
-    -exec cp -vr {} "$pkgdir/usr/lib/vst3" \;
+  mv install/usr/lib/vst3/* "$pkgdir/usr/lib/vst3"
 }
