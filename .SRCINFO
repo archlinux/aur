@@ -1,7 +1,7 @@
 pkgbase = osu-lazer-extracted-bin
 	pkgdesc = A free-to-win rhythm game. Rhythm is just a *click* away!
 	pkgver = 2024.1009.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://osu.ppy.sh
 	arch = x86_64
 	license = LicenseRef-custom

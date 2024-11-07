@@ -3,7 +3,7 @@
 pkgname=osu-lazer-extracted-bin
 _pkgname=${pkgname%-extracted-bin}
 pkgver=2024.1009.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A free-to-win rhythm game. Rhythm is just a *click* away!"
 arch=(x86_64)
 url="https://osu.ppy.sh"
@@ -86,8 +86,6 @@ package() {
 
   # desktop file
   install -Dm644 ./squashfs-root/osu!.desktop "$pkgdir/usr/share/applications/$_pkgname.desktop"
-  desktop-file-edit --remove-key="SingleMainWindow" --set-key="Version" --set-value="1.4" "$pkgdir/usr/share/applications/$_pkgname.desktop"
-  desktop-file-edit --set-key="X-SingleMainWindow" --set-value="true" "$pkgdir/usr/share/applications/$_pkgname.desktop"
   desktop-file-edit --set-key="Icon" --set-value="osu-lazer" "$pkgdir/usr/share/applications/$_pkgname.desktop"
   desktop-file-edit --set-key="Exec" --set-value="osu-lazer %F" "$pkgdir/usr/share/applications/$_pkgname.desktop"
   desktop-file-edit --set-key="StartupWMClass" --set-value="osu!" "$pkgdir/usr/share/applications/$_pkgname.desktop"
