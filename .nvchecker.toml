@@ -1,0 +1,4 @@
+[libunique]
+source="regex"
+regex="libunique-([0-9.]+).tar.gz"
+url="https://download.gnome.org/sources/libunique/1.1/"

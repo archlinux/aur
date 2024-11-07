@@ -1,18 +1,17 @@
 # Maintainer: envolution
 # Contributor: Brian Bidulock <bidulock@openss7.org>
-# Contributor:   LeSnake <dev.lesnake@posteo.de>
- 
+#
 pkgname=libunique
 pkgver=1.1.6
-pkgrel=10
+pkgrel=11
 pkgdesc="Library for writing single instance applications"
 arch=('i686' 'x86_64')
 license=('LGPL')
 depends=('gtk2')
-makedepends=('gtk-doc' 'gobject-introspection')
-url="http://live.gnome.org/LibUnique"
+makedepends=('gtk-doc' 'glib2' 'glib2-devel' 'gobject-introspection')
+url="https://wiki.gnome.org/Attic/LibUnique"
 source=(
-        "http://download.gnome.org/sources/${pkgname}/1.1/${pkgname}-${pkgver}.tar.bz2"
+        "https://download.gnome.org/sources/${pkgname}/1.1/${pkgname}-${pkgver}.tar.bz2"
         00git_g_const_return.patch
         01_format-security.patch
         99_ltmain_as-needed.patch
@@ -23,7 +22,7 @@ sha256sums=('e5c8041cef8e33c55732f06a292381cb345db946cf792a4ae18aa5c66cdd4fbb'
             '01829263fae69782d7558c6e50a4b1c9885b9309c5198844eafa9005fc470631')
 
 prepare() {
-  cd $pkgname-$pkgver
+  cd "$srcdir/$pkgname-$pkgver"
   patch -Np1 -i "${srcdir}/00git_g_const_return.patch"
   patch -Np1 -i "${srcdir}/01_format-security.patch"
   patch -Np1 -i "${srcdir}/99_ltmain_as-needed.patch"
