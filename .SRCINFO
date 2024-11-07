@@ -1,6 +1,6 @@
 pkgbase = r-sparsearray
 	pkgdesc = High-performance sparse data representation and manipulation in R
-	pkgver = 1.4.8
+	pkgver = 1.6.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/SparseArray
 	arch = x86_64
@@ -14,12 +14,13 @@ pkgbase = r-sparsearray
 	depends = r-s4vectors
 	depends = r-xvector
 	optdepends = r-biocstyle
-	optdepends = r-delayedarray
+	optdepends = r-experimenthub
+	optdepends = r-hdf5array
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/SparseArray_1.4.8.tar.gz
-	md5sums = c68ebdf3fff037b68156988790727a8b
-	b2sums = 567515bebd82b7da81cb231dd109ff9a333655d5b0c660afd79bdf843e6dc637e3f7c2f7991aa5299b0a7235edb7915e1f465920b187ed3a3b18910d9f541e42
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/SparseArray_1.6.0.tar.gz
+	md5sums = b57caafbc8b4ad3fa535a6b6180d0476
+	b2sums = d49377c215d9a9ad2da60413d0c3a20b11909f63c822e37dc5360abfaf3ace2b6b2aa2d9df68e9978395700d65b619254e3b8c938c181e0d110f892b685deaf2
 
 pkgname = r-sparsearray

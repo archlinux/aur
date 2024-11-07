@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=SparseArray
-_pkgver=1.4.8
+_pkgver=1.6.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -23,14 +23,15 @@ checkdepends=(
 )
 optdepends=(
   r-biocstyle
-  r-delayedarray
+  r-experimenthub
+  r-hdf5array
   r-knitr
   r-rmarkdown
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('c68ebdf3fff037b68156988790727a8b')
-b2sums=('567515bebd82b7da81cb231dd109ff9a333655d5b0c660afd79bdf843e6dc637e3f7c2f7991aa5299b0a7235edb7915e1f465920b187ed3a3b18910d9f541e42')
+md5sums=('b57caafbc8b4ad3fa535a6b6180d0476')
+b2sums=('d49377c215d9a9ad2da60413d0c3a20b11909f63c822e37dc5360abfaf3ace2b6b2aa2d9df68e9978395700d65b619254e3b8c938c181e0d110f892b685deaf2')
 
 build() {
   mkdir build
