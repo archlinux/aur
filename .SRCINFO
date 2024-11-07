@@ -1,0 +1,17 @@
+pkgbase = mssqlrelay-git
+	pkgdesc = Microsoft SQL Relay is an offensive tool for auditing and abusing Microsoft SQL (MSSQL) services.
+	pkgver = r10.97efa52
+	pkgrel = 1
+	url = https://github.com/CompassSecurity/mssqlrelay
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python
+	provides = mssqlrelay
+	conflicts = mssqlrelay
+	conflicts = mssqlrelay-bin
+	source = git+https://github.com/CompassSecurity/mssqlrelay
+	sha512sums = SKIP
+
+pkgname = mssqlrelay-git
