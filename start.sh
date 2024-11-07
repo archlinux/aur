@@ -1,3 +1,3 @@
 #!/bin/sh
 cd /usr/share/TechminoDevelopment
-exec love game.love
+exec love game.love "$@"

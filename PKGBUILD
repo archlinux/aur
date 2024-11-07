@@ -1,5 +1,5 @@
 pkgname="techmino-git"
-pkgver=0.17.13.r4838.7dd73ef8
+pkgver=0.17.22.r5256.64ddb090
 pkgrel=1
 pkgdesc="A collection of various modern block game rules, more ways to play, and awesome features added for a new experience."
 arch=('x86_64')
@@ -10,14 +10,14 @@ options=(!strip)
 makedepends=('git' 'zip' 'sed' 'lua')
 source=("git+https://github.com/26F-Studio/Techmino.git"
 	"git+https://github.com/26F-Studio/Zframework.git"
-	"CC_2023-03-24.zip::https://github.com/26F-Studio/cold_clear_ai_love2d_wrapper/releases/download/11.4.2/Linux.zip"
+	"CC_2024-11-06.zip::https://github.com/26F-Studio/cold_clear_ai_love2d_wrapper/releases/download/11.5/Linux.zip"
 	"TechminoDevelopment.desktop"
 	"start.sh")
 sha256sums=('SKIP'
             'SKIP'
-            '78c0d98df6a5a14cf1e1f82c3fc59444bd1e0ee9a15b7afabffddec2938cec4c'
-            '55139aa19e25a16dd29d8f1727ce432401a418cee5ae1481c4120f635eef8d90'
-            '17a15020b0bb022356b8b43dd5111db8116538e7d12e07ff1f5b285745c98ee2')
+            '07fa2ff3e4fc59f8d1708f54e26869204621fc03ddeec3151dc5ddba3df0390c'
+            '53e20aab3488be864d29f143bb340f02056ab52529efef845875a8f577e56908'
+            '610343816733916901e5553b266b4bf0ebbc72386a5c99830f1d4f4a0931d4db')
 prepare() {
 	cd ${srcdir}/Techmino
 	git submodule init
