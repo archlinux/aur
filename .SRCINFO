@@ -1,0 +1,14 @@
+pkgbase = markcat
+	pkgdesc = A CLI tool to convert project directories to markdown format
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/RunnersNum40/markcat
+	arch = x86_64
+	license = Unlicense
+	makedepends = rust
+	makedepends = cargo
+	options = !debug
+	source = markcat::git+https://github.com/RunnersNum40/markcat.git#branch=main
+	sha256sums = SKIP
+
+pkgname = markcat
