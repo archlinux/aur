@@ -1,0 +1,13 @@
+pkgbase = momw-configurator
+	pkgdesc = Generates a fully functional openmw.cfg for any mod list from Modding-OpenMW.com and runs modding tools with appropriate handling for your selected mod list. Intended to be used alongside umomwd.
+	pkgver = 1.1
+	pkgrel = 1
+	url = https://gitlab.com/modding-openmw/momw-configurator
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	depends = glibc
+	source = momw-configurator-1.1.tar.gz::https://gitlab.com/modding-openmw/momw-configurator/-/archive/1.1/momw-configurator-1.1.tar.gz
+	sha512sums = dd022ea1dee7113f458cef5d221c259aaffc9be01ba584d7139983e4aa29fb469aeec1dccf4981b0fc870efbea152c426b2175e7ba86421963bd6e14672bd15b
+
+pkgname = momw-configurator

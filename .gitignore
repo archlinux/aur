@@ -1,0 +1,8 @@
+.bash_history
+.cache/
+.local/
+pkg/
+src/
+wem/
+*.tar.gz
+wem-*-x86_64.pkg.tar.zst
