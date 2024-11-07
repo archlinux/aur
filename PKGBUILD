@@ -22,7 +22,7 @@ python-tox
 python-setuptools
 )
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/karpierz/pkg_about/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('5c2f57a50a3641f3d27c62c77f5b7d556df4a48dcf2ba7b4af0492e88437abdc')
+sha256sums=('89ef63e7d58538a1dd2d42c977f3df9285a8deed1cfa784f049619d499fc6efe')
 
 prepare() {
   cd "pkg_about-${pkgver}"
