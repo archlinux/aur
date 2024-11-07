@@ -1,28 +1,27 @@
+# Maintainer: caier <kosmoziemia at gmail dot com>
 # Contributor: Tom Wambold <tom5760@gmail.com>
 # Contributor: Antonin Décimo <antonin dot decimo at gmail dot com>
 # Contributor: Markus Sommer <markus@splork.de>
 
 pkgname=core
 pkgver=9.1.0
-pkgrel=1
-pkgdesc="Common Open Research Emulator"
+pkgrel=2
+pkgdesc="Tool for building virtual network simulations"
 arch=('i686' 'x86_64')
 url="https://github.com/coreemu/core/"
 license=('BSD')
-# 'python-certifi' should' be a dependency of 'python-pyproj',
-# but the corresponding bug report seems to be orphaned
 depends=('ebtables' 'ethtool' 'fabric' 'iproute2' 'nftables' 'libev' 'python'
          'python-grpcio' 'python-invoke' 'python-lxml' 'python-mako'
          'python-netaddr' 'python-pillow' 'python-protobuf' 'python-pyproj'
-         'python-yaml' 'python-certifi' 'python-decorator' 'python-dulwich' 'python-keyring')
+         'python-yaml')
 makedepends=('help2man' 'imagemagick' 'python-grpcio-tools' 'python-poetry' 'python-poetry-plugin-export'
              'python-build' 'python-installer' 'python-wheel' 'python-setuptools' 'tk')
 optdepends=('openvswitch: Open vSwitch SDN support'
             'tkimg: Thumbnail support in Tcl/Tk GUI'
             'emane: Support for heterogeneous network emulation'
             'mgen: Traffic generation')
-backup=('etc/core/core.conf'
-        'etc/core/logging.conf')
+backup=('opt/core/etc/core.conf'
+        'opt/core/etc/logging.conf')
 source=(${pkgname}-${pkgver}.tar.gz::"https://github.com/coreemu/core/archive/release-$pkgver.tar.gz"
         'core-daemon.service')
 sha512sums=('406951369820381692962b08a70c8c030a8ab4898d7a54e804e55f7f3f1da9ea2f17408d4601f6b9c3432cca86868ad2a45d1802baae68593f8ccda971247f0f'
@@ -36,7 +35,7 @@ build() {
   make
 
   cd daemon
-  python -m build --wheel --no-isolation
+  python -m build --wheel --no-isolation --skip-dependency-check
 }
 
 package() {
@@ -46,14 +45,10 @@ package() {
   cd daemon
   python -m installer --destdir="$pkgdir" dist/*.whl
 
-  mkdir -p "$pkgdir/usr/bin"
-  cp -r scripts/* "$pkgdir/usr/bin"
-
-  mkdir -p "$pkgdir/usr/share/core"
-  cp -r examples "$pkgdir/usr/share/core"
-
-  install -D -m 0644 "data/core.conf" "$pkgdir/etc/core/core.conf"
-  install -D -m 0644 "data/logging.conf" "$pkgdir/etc/core/logging.conf"
+  cd ..
+  mkdir -p "$pkgdir/opt/core"
+  cp -a "package/share" "$pkgdir/opt/core"
+  cp -a "package/etc" "$pkgdir/opt/core/"
   install -D -m 0644 "$srcdir/core-daemon.service" "$pkgdir/usr/lib/systemd/system/core-daemon.service"
   install -D -m 0644 "$srcdir/core-release-$pkgver/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
