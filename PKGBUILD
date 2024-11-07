@@ -10,7 +10,7 @@ license=('BSD-3-Clause')
 depends=('gtk3' 'gtkmm3')
 optdepends=(
         "ttf-liberation: Font to be used for GUI (recommended)"
-        "wayland-client: Library for getting the Wayland compositor faster"
+        "wayland: Library for getting the Wayland compositor faster"
         "dconf: Alternative to the slow gsettings command"
         "libxfce4util: Query XFCE4 version faster"
 )
