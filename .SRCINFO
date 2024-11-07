@@ -1,0 +1,25 @@
+pkgbase = guesswidth-bin
+	pkgdesc = Guess the width (fwf) output without delimiters in commands that output to the terminal.
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/noborus/guesswidth
+	arch = x86_64
+	arch = i686
+	arch = aarch64
+	license = MIT
+	makedepends = help2man
+	depends = glibc
+	provides = guesswidth
+	conflicts = guesswidth
+	source = LICENSE-0.4.0::https://raw.githubusercontent.com/noborus/guesswidth/v0.4.0/LICENSE
+	source = README-0.4.0.md::https://raw.githubusercontent.com/noborus/guesswidth/v0.4.0/README.md
+	sha256sums = afcb1af4d492525f0eab04b3f2c28781710393d6b0f932521f87b531a99680ff
+	sha256sums = 4c0f3a18ed3b0abcd5ae6ed620ec4da1c034d6f0995419ab7c23b662b90d1495
+	source_x86_64 = https://github.com/noborus/guesswidth/releases/download/v0.4.0/guesswidth_0.4.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = b4b6ddc15478cd812dfc1829c6604b2884c40b58c2e06a32e98fab87076d299c
+	source_i686 = https://github.com/noborus/guesswidth/releases/download/v0.4.0/guesswidth_0.4.0_linux_386.tar.gz
+	sha256sums_i686 = de99d080827dbb8eeb948b53d7e652e6bdfb8d3e69acf3055ed00d69e3f7f685
+	source_aarch64 = https://github.com/noborus/guesswidth/releases/download/v0.4.0/guesswidth_0.4.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 75a70bcef7c14dc227ad09c76405bc16e2e9e9f87f10000601b244779b4a5a33
+
+pkgname = guesswidth-bin
