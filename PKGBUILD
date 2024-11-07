@@ -6,7 +6,7 @@ _pkgvariant=nosystemd
 pkgname="${_pkgname}-${_pkgvariant}-git"
 _pkgver=latest
 pkgver=2.0.0.11.r442.d20241031.84130b1
-pkgrel=1
+pkgrel=2
 pkgdesc="sdbus-c++ is a high-level C++ D-Bus library for Linux designed to provide expressive, easy-to-use API in modern C++. This package is without systemd dependencies; it will have it's own static libsystemd baked in."
 url="https://github.com/Kistler-Group/sdbus-cpp"
 arch=('i686' 'x86_64')
@@ -59,7 +59,7 @@ pkgver() {
     error "Error in ${FUNCNAME[0]}: Version information could not determined."
     return 1
   fi
-  printf '%s' "${_ver}.${_subver}.r${_rev}.d${_date}.${_hash}"
+  printf '%s' "${_ver}+${_subver}.r${_rev}.d${_date}.${_hash}"
 }
 
 prepare() {
