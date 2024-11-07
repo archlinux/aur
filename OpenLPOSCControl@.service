@@ -4,9 +4,9 @@ After=local-fs.target network.target
 
 [Service]
 Type=simple
-ExecStart=/usr/bin/openLPOSCControl --OpenLPConfigurationFile=%h/.config/openlp.org.conf
+ExecStart=/usr/bin/openLPOSCControl --OpenLPConfigurationFile=/home/%i/.config/openlp.org.conf
 Restart=on-failure
-User=%I
+User=%i
 
 [Install]
 WantedBy=multi-user.target
