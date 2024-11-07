@@ -1,0 +1,16 @@
+pkgbase = yabd-git
+	pkgdesc = Yet Another Brightness Daemon — set screen brightness from ambient light sensor
+	pkgver = 0.2.2.31.a6af8c0
+	pkgrel = 1
+	url = https://github.com/tbrugere/yabd
+	arch = any
+	license = custom:CeCILL-B
+	makedepends = python-poetry
+	makedepends = git
+	depends = python>=3.10
+	depends = iio-sensor-proxy
+	depends = python-sdbus
+	source = git+https://github.com/tbrugere/yabd.git
+	sha256sums = SKIP
+
+pkgname = yabd-git
