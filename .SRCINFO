@@ -1,6 +1,6 @@
 pkgbase = sdl2-compat-git
 	pkgdesc = SDL2 runtime compatibility library using SDL3
-	pkgver = r561.cddd4fa
+	pkgver = r701.44a2d4d
 	pkgrel = 1
 	url = https://github.com/libsdl-org/sdl2-compat
 	arch = x86_64
@@ -10,6 +10,8 @@ pkgbase = sdl2-compat-git
 	makedepends = ninja
 	makedepends = git
 	depends = sdl3
+	depends = bash
+	depends = glibc
 	provides = sdl2
 	conflicts = sdl2
 	source = git+https://github.com/libsdl-org/sdl2-compat.git
