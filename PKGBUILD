@@ -1,11 +1,11 @@
 # Maintainer: Peter Blackman <peter at pblackman dot plus dot com>
-# 24-Jul-2024
+# 7-Nov-2024
 #
 # use makepkg -C on upgrades
-# Old saved games may be incompatible with versions >= 2.1
+# Old saved games may be incompatible with this version
 
 pkgname=c-evo-dh
-pkgver=2.1.1
+pkgver=2.2
 pkgrel=1
 pkgdesc="C-evo: Distant Horizon, Empire Building Game"
 arch=('x86_64' 'aarch64')
@@ -15,7 +15,8 @@ makedepends=('git' 'fpc' 'lazarus-gtk2')
 depends=('gtk2' 'gdk-pixbuf2' 'glib2' 'glibc' 'pango' 'libx11' 'at-spi2-core' 'cairo' 'bash' 'hicolor-icon-theme')
 optdepends=('sox: Needed for sounds if ffmpeg not installed')
 source=("$pkgname-$pkgver"::git+$url#tag=$pkgver)
-sha256sums=('eb70edf64cf9bd9662225d56eb28a253d57550418459a1228ecfd9281b9589f9')
+#source=("$pkgname-$pkgver".orig.tar.xz)
+sha256sums=('0ad42a7a2d48e15d3880b7f28531c065721187ce469b08696143c227b128bce9')
 
 # Arch does not use games or libexec folders
 prepare() {
