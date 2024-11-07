@@ -7,7 +7,7 @@ url="https://git.savannah.gnu.org/gitweb/?p=gnulib.git;a=blob_plain;f=build-aux/
 license=("GPL3")
 epoch=0
 pkgver=20230624T2159
-pkgrel=1
+pkgrel=2
 arch=(
   'any'
 )
@@ -35,7 +35,7 @@ sha256sums=(
 
 pkgver() {
   cd "${srcdir}"
-  perl "${_pkgname}" --version | awk '{print $3"T"$4}' | tr -d ':-'
+  perl "${_pkgname}" --version | grep -E '[[:space:]]version[[:space:]]+[0-9]' | head -n1 | awk '{print $3"T"$4}' | tr -d ':-'
 }
 
 package() {
