@@ -2,24 +2,15 @@
 # Contributor: Audun-Marius Gangstø <audun@gangsto.org>
 pkgname=wpunix
 pkgver=3.0
-pkgrel=1
-epoch=
+pkgrel=2
 pkgdesc="WordPerfect 8 for UNIX - Empower Your Application Server"
 arch=("i386" "i686" "x86_64")
 url="https://github.com/taviso/wpunix"
 license=('unknown')
-groups=()
 depends=("lib32-ncurses")
-makedepends=('cpio' 'gcc' 'binutils' 'xz' 'patchelf' 'rpmextract' 'wget')
-checkdepends=()
-optdepends=()
+makedepends=('git' 'cpio' 'gcc' 'binutils' 'xz' 'patchelf' 'rpmextract' 'wget')
 provides=('wp')
-conflicts=()
-replaces=()
-backup=()
 options=('!strip')
-install=
-changelog=
 source=("${pkgname}::git+https://github.com/taviso/wpunix.git"
         "https://archive.org/download/corel-wpunix-8/COREL_WPUNIX_1.iso"
         "https://legacy.redhat.com/pub/redhat/linux/5.2/en/os/i386/RedHat/RPMS/libc-5.3.12-27.i386.rpm"
