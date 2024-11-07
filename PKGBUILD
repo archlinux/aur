@@ -37,7 +37,7 @@ build() {
 }
 
 package() {
-  install -Dm755 "$srcdir/$_pkgname/target/release/StygianSift" "$pkgdir/usr/bin/StygianSift"
+  install -Dm755 "$srcdir/$_pkgname/target/release/StygianSift" "$pkgdir/usr/bin/stygiansift"
   install -Dm644 "$srcdir/$_pkgname/LICENSE.md" "$pkgdir/usr/share/licenses/$pkgname/LICENSE.md"
 }
 
