@@ -8,11 +8,9 @@ pkgdesc="A Qt/C++ GUI front end to sshfs, ecryptfs-simple, cryfs, gocryptfs, sec
 arch=('i686' 'x86_64' 'aarch64')
 url="https://mhogomchungu.github.io/sirikali/"
 license=('GPL')
-depends=('qt6-base' 'libpwquality' 'hicolor-icon-theme')
+depends=('qt6-base' 'libpwquality' 'hicolor-icon-theme' 'libsecret')
 makedepends=('git' 'cmake' 'libgcrypt' 'gcc-libs')
-optdepends=('lxqt_wallet: use an external lxqt_wallet (must recompile)'
-            'libsecret: support for Gnome libsecret password storage (must recompile)'
-            'kwallet: support for KDE wallet storage (must recompile)'
+optdepends=('kwallet: password storage (either via libsecret or discovered via dbus)'
             'cryfs: for CryFS backend'
             'ecryptfs-simple: for eCryptfs backend'
             'encfs: for EncFS backend'
@@ -41,8 +39,6 @@ build() {
     -DCMAKE_BUILD_TYPE=RELEASE \
     -DBUILD_WITH_QT6=ON \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DINTERNAL_LXQT_WALLET=true \
-    -DNOKDESUPPORT=true \
     . ..
   make
 }
