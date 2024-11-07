@@ -1,0 +1,19 @@
+pkgbase = android-armv7a-eabi-libwebm
+	pkgdesc = WebM video file parser (Android armv7a-eabi)
+	pkgver = 1.0.0.30
+	pkgrel = 1
+	url = https://www.webmproject.org/
+	arch = any
+	license = BSD
+	makedepends = android-cmake
+	depends = android-ndk
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = https://github.com/webmproject/libwebm/archive/libwebm-1.0.0.30.tar.gz
+	source = cmake_install.patch
+	md5sums = ca0884b845e5150cdec1d0cf8729ef3d
+	md5sums = 0043032d67179a644969ef9909ad8d11
+
+pkgname = android-armv7a-eabi-libwebm
