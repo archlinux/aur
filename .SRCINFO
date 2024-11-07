@@ -1,6 +1,6 @@
 pkgbase = r-adductomicsr
 	pkgdesc = Processing of adductomic mass spectral datasets
-	pkgver = 1.20.0
+	pkgver = 1.22.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/adductomicsR
 	arch = any
@@ -31,7 +31,7 @@ pkgbase = r-adductomicsr
 	optdepends = r-rdisop
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/adductomicsR_1.20.0.tar.gz
-	sha256sums = 75393e5aa99f1296fc838f754640484ea7dcef4b6422f21933112152dd920020
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/adductomicsR_1.22.0.tar.gz
+	sha256sums = ba77ba7fa9f6092055029ff144a15259315027e4d51dcbd65bd91f2f54ea8624
 
 pkgname = r-adductomicsr
