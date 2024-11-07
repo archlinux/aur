@@ -5,7 +5,7 @@ _appimage="Bazecor-${_pkgver}-x64.AppImage"
 
 pkgname="bazecor"
 pkgver=${_pkgver/-/.}
-pkgrel=2
+pkgrel=3
 pkgdesc="Graphical configurator for Dygma keyboards"
 url="https://github.com/Dygmalab/Bazecor"
 license=("GPL-3.0-only")
@@ -20,7 +20,7 @@ noextract=("${_appimage}")
 source=("${url}/releases/download/v${_pkgver}/${_appimage}"
   "10-dygma.rules")
 sha256sums=('f7a04720eb7dbc0f6c2e947cf9744a8bcfa1f79dd558cc80784d3803ee064764'
-            '7cc39c4fdc1736c267d22d9fbaacc9db4afd026c3a77b1d263c3a11b65581def')
+            'aba17eabd0f8cbb5118d6d1013e40f3991e5e7c38f97e68f3053f8f5d098ff3c')
 
 prepare() {
     chmod +x "${_appimage}"
