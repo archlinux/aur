@@ -1,16 +1,16 @@
 # Maintainer: AlphaJack <alphajack at tuta dot io>
 
 pkgname="python-pkb-client"
-pkgver=1.2
-pkgrel=2
-pkgdesc="Unofficial client for the Porkbun API "
+pkgver=2.0.0
+pkgrel=1
+pkgdesc="Unofficial client for the Porkbun API"
 arch=("any")
 license=("MIT")
 url="https://github.com/infinityofspace/pkb_client"
-depends=("python-requests")
+depends=("python-requests" "python-responses" "python-dnspython")
 makedepends=("python-build" "python-installer" "python-setuptools" "python-wheel")
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('463fcf5fa6cbc5f04dd80ebb137547443c1747ef7f233cd6fffd51367ca276d7')
+b2sums=('587d72f87243d246ea3c2dcf0429cbc7d7c39bb805e315f2aa4b2e17980cc5ac34ba7a472bd49a87865e2aa5967c5b3eaa3f8211ee688e128fbb75675a6fd44c')
 
 build(){
  cd "pkb_client-$pkgver"
