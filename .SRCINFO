@@ -1,0 +1,18 @@
+pkgbase = python-sectools
+	pkgdesc = Offensive security python toolbox.
+	pkgver = 1.4.4
+	pkgrel = 1
+	url = https://pypi.org/project/sectools/
+	arch = any
+	license = GPL-3.0-only
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	depends = python-ldap3
+	options = !emptydirs
+	source = https://files.pythonhosted.org/packages/source/s/sectools/sectools-1.4.4.tar.gz
+	sha512sums = 81af60152f8eefd55bcd8b779747f3f364f35dd24aaf8ffa060ac99f068a776cb5f2a7a1ce0c0a9bd02d5dcb4810dff274dd302661cd9c5a6f491ea50b0c053f
+
+pkgname = python-sectools
