@@ -28,8 +28,8 @@ prepare() {
   cd "pkg_about-${pkgver}"
 
   # TODO: add these restrictions back in when the packages become available
-  sed 's,setuptools>=75.1.0,setuptools,' -i pyproject.toml
-  sed 's,tox>=4.21.2,tox,' -i pyproject.toml
+  sed 's,setuptools>=75.3.0,setuptools,' -i pyproject.toml
+  sed 's,tox>=4.23.2,tox,' -i pyproject.toml
 }
 
 build() {
