@@ -14,6 +14,10 @@ options=(!emptydirs)
 source=(${pkgbase}-release-${pkgver}-final.tar.gz::${url}/archive/release/${pkgver}/final.tar.gz)
 sha512sums=('4e9eaa455e1eb417deceae0f5da8c93c89f23ce72705c5ab7c152ee36382f8377b119035ef793f1f386e6e5b2e0c0aed549901816515292da175d876df6cab57')
 
+prepare() {
+  sed -i '57 a #include <fmt/ranges.h>' ${pkgbase}-release-${pkgver}-final/opm/input/eclipse/EclipseState/EclipseState.cpp
+}
+
 build() {
   cmake \
     -S ${pkgbase}-release-${pkgver}-final \
