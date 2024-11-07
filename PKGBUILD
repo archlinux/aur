@@ -2,8 +2,8 @@
 
 pkgname=lib32-sdl12-compat-git
 _pkgbase=sdl12-compat
-pkgver=1.2.68.r9.gbb2f7ff
-pkgrel=2
+pkgver=1.2.68.r16.g6f0f603
+pkgrel=1
 pkgdesc="An SDL-1.2 compatibility layer that uses SDL 2.0 behind the scenes."
 arch=("x86_64" "i686")
 url="https://github.com/libsdl-org/sdl12-compat"
@@ -28,6 +28,7 @@ build() {
 	cd "$srcdir"
 
 	cmake -S $_pkgbase -B build \
+	-DCMAKE_BUILD_TYPE=None \
 	-DCMAKE_C_FLAGS="$CFLAGS -m32" \
 	-DCMAKE_INSTALL_PREFIX="/usr" \
 	-DCMAKE_INSTALL_LIBDIR="lib32" \
@@ -42,7 +43,5 @@ package() {
 
 	cd "$pkgdir/usr/"
 	rm -rf share/ bin/ include/
-
-	mkdir -p "$pkgdir/usr/share/licenses/lib32-sdl12-compat"
-	cp "$srcdir/$_pkgbase/LICENSE.txt" "$pkgdir/usr/share/licenses/lib32-sdl12-compat/LICENSE.txt"
+	install -Dm655 "$srcdir/$_pkgbase/LICENSE.txt" "$pkgdir/usr/share/licenses/${pkgname}/LICENSE.txt"
 }
