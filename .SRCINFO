@@ -14,6 +14,7 @@ pkgbase = delfin-git
 	depends = libadwaita
 	depends = mpv
 	provides = delfin
+	conflicts = delfin
 	source = delfin-git::git+https://codeberg.org/avery42/delfin.git
 	sha256sums = SKIP
 

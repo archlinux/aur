@@ -10,6 +10,7 @@ license=(GPL-3.0)
 depends=(gtk4 libadwaita mpv)
 makedepends=(cargo clang meson mold)
 provides=(delfin)
+conflicts=(delfin)
 source=("$pkgname::git+https://codeberg.org/avery42/delfin.git")
 sha256sums=(SKIP)
 
