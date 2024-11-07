@@ -1,9 +1,9 @@
-# Contributor: Maxwell Pray a.k.a. Synthead <synthead@gmail.com>
 # Maintainer: Aikawa Yataro <aikawayataro at protonmail dot com>
+# Contributor: Maxwell Pray a.k.a. Synthead <synthead@gmail.com>
 
 pkgname=omi
-pkgver=1.9.0_0
-pkgrel=5
+pkgver=1.9.1_0
+pkgrel=1
 pkgdesc='Open Management Infrastructure (OMI) is an open source project to further the development of a production quality implementation of the DMTF CIM/WBEM standards.'
 arch=('i686' 'x86_64')
 url='https://github.com/Microsoft/omi'
@@ -19,7 +19,7 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/Microsoft/omi/archive/v${pk
             'omi.sysusers'
             'omi.tmpfiles'
             'omikeygen')
-sha256sums=('42227b31f6e6e20079a635bb7b3789a21541027169e7958fb868aa30cfcef32d'
+sha256sums=('3b52b10bef876ca1ef8bd31aac693442e9faa15b2c7da5759749db27849ab145'
             '8e4943f9a69b6be1d28170db271cc4ca29b680652c03001e1957133d369964b9'
             '806f0afccdb4c901f4ccbb8445bfc3518392f1f8c7fad1265cb733e7dd746be3'
             '584ce65c07a9984dda871e4b0eb2461533b6f88cfc2978edde3d10d2be6b0d49'
