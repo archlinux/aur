@@ -1,7 +1,7 @@
 # Maintainer: Joakim Hulthe <joakim@hulthe.net>
 pkgname=digiflisp
 pkgver=2.06
-pkgrel=1
+pkgrel=2
 pkgdesc="IDE for the FLIS processor and training computer"
 arch=('x86_64')
 url="https://www.gbgmv.se/studies.html"
@@ -57,7 +57,6 @@ package() {
 		'pixman'
 		'sqlite'
 		'systemd-libs'
-		'tinysparql'
 		'util-linux-libs'
 		'xz'
 		'zlib'

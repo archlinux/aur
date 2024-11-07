@@ -1,7 +1,7 @@
 pkgbase = digiflisp
 	pkgdesc = IDE for the FLIS processor and training computer
 	pkgver = 2.06
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.gbgmv.se/studies.html
 	arch = x86_64
 	license = Copyright 2012-2024, GMV
@@ -47,7 +47,6 @@ pkgname = digiflisp
 	depends = pixman
 	depends = sqlite
 	depends = systemd-libs
-	depends = tinysparql
 	depends = util-linux-libs
 	depends = xz
 	depends = zlib
