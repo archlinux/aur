@@ -4,20 +4,21 @@
 # Contributor: Christer Solskogen <christer.solskogen@gmail.com>
 
 pkgname=lib32-sdl3-git
-pkgver=3.1.1.r862.g80e64ef92
+pkgver=3.1.6.r28.g908bd84c5
 pkgrel=1
-pkgdesc="A library for portable low-level access to a video framebuffer, audio output, mouse, and keyboard (Version 3)"
+pkgdesc="Simple Directmedia Layer (Version 3)"
 arch=('x86_64' 'i686')
 url="https://www.libsdl.org"
 license=('Zlib')
 depends=('sdl3' 'lib32-glibc' 'lib32-libxext' 'lib32-libxrender' 'lib32-libx11' 'lib32-libgl' 'lib32-libxcursor' 'hidapi' 'lib32-libusb')
 makedepends=('lib32-alsa-lib' 'lib32-mesa' 'lib32-libpulse' 'lib32-libxrandr' 'lib32-libxinerama' 'lib32-wayland' 'lib32-libxkbcommon'
              'wayland-protocols' 'lib32-libxss' 'cmake' 'lib32-jack' 'ninja' 'lib32-pipewire'
-	     'lib32-libdecor' 'git')
+	     'lib32-libdecor' 'git' 'lib32-sndio')
 optdepends=('lib32-alsa-lib: ALSA audio driver'
             'lib32-libpulse: PulseAudio audio driver'
             'lib32-jack: JACK audio driver'
 	    'lib32-pipewire: PipeWire audio driver'
+	    'lib32-sndio: MIDI audio driver'
 	    'lib32-libdecor: Wayland client decorations')
 source=("git+https://github.com/libsdl-org/SDL.git")
 provides=("lib32-sdl3")
@@ -26,7 +27,7 @@ sha512sums=('SKIP')
 
 pkgver() {
   cd SDL
-  git describe --long --tags | sed 's/^release-//;s/\([^-]*-g\)/r\1/;s/-/./g' | sed 's/prerelease.//'
+  git describe --long --tags | sed 's/^release-//;s/\([^-]*-g\)/r\1/;s/-/./g' | sed 's/preview.//'
 }
 
 build() {
@@ -40,7 +41,6 @@ build() {
 	-D SDL_HIDAPI_LIBUSB=ON \
 	-D CMAKE_INSTALL_PREFIX=/usr \
 	-D CMAKE_INSTALL_LIBDIR=lib32 \
-	-D SDL_RPI=OFF \
 	-D SDL_STATIC=OFF \
 	-D SDL_RPATH=OFF
 	cmake --build build
