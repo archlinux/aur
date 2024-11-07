@@ -9,11 +9,11 @@
 # 感谢 Peternal 对 SVG图标 的授权
 pkgname=bilibili-bin
 _pkgname="io.github.msojocs.${pkgname%-bin}"
-pkgver=1.14.2_1
-_electronversion=21
+pkgver=1.15.2_1
+_electronversion=33
 epoch=5
-pkgrel=3
-pkgdesc='哔哩哔哩官方客户端linux移植版。Bilibili official desktop client.Binary version.Use system-wide electron.'
+pkgrel=1
+pkgdesc="Bilibili official desktop client.(Prebuilt version.Use system-wide electron)哔哩哔哩官方客户端linux移植版。"
 arch=(
     'aarch64'
     'x86_64'
@@ -35,24 +35,26 @@ source=(
 )
 sha256sums=('21668b8229199de1a523b82805c80d6e110a67fef5766aa7cc3c7df4416d1468'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-sha256sums_aarch64=('5e37ddff562260163e0a860b238a99bb03876df7d03877ba12bd4511e4233f72')
-sha256sums_x86_64=('9f49fbcc70f287d2420693c2e45ebd6eba03af958c01dca284903370f5c1cc31')
+sha256sums_aarch64=('b3fbbf4968e4f2f7d8195198d05fee8cf70180fa14bb4b18e22b822bee8afd9b')
+sha256sums_x86_64=('49f1fdf5b8914b6bc6d784ddd6e3a7083c6459eac001395cdb97701322af625a')
 build() {
     sed -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-bin}/g
         s/@runname@/app.asar/g
         s/@cfgdirname@/${pkgname%-bin}/g
-        s/@options@//g
+        s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
     " -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
-    sed -i "s/\/opt\/apps\/${_pkgname}\/files\/bin\/\/bin\/${pkgname%-bin}/${pkgname%-bin}/g;s/${_pkgname}/${pkgname%-bin}/g" \
-        "${srcdir}/opt/apps/${_pkgname}/entries/applications/${_pkgname}.desktop"
+    sed -e "
+        s/\/opt\/apps\/${_pkgname}\/files\/bin\/\/bin\/${pkgname%-bin}/${pkgname%-bin}/g
+        s/${_pkgname}/${pkgname%-bin}/g
+    " -i "${srcdir}/opt/apps/${_pkgname}/entries/applications/${_pkgname}.desktop"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm644 "${srcdir}/opt/apps/${_pkgname}/files/bin/app/app.asar" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
-    cp -r "${srcdir}/opt/apps/${_pkgname}/files/bin/app/extensions" "${pkgdir}/usr/lib/${pkgname%-bin}"
+    cp -Pr --no-preserve=ownership "${srcdir}/opt/apps/${_pkgname}/files/bin/app/extensions" "${pkgdir}/usr/lib/${pkgname%-bin}"
     install -Dm644 "${srcdir}/opt/apps/${_pkgname}/entries/icons/hicolor/scalable/apps/${_pkgname}.svg" \
         "${pkgdir}/usr/share/icons/hicolor/scalable/apps/${pkgname%-bin}.svg"
     install -Dm644 "${srcdir}/opt/apps/${_pkgname}/entries/applications/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
