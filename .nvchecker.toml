@@ -1,0 +1,4 @@
+[python-managesieve]
+source = "git"
+git = "https://gitlab.com/htgoebel/managesieve.git"
+prefix = "v"
