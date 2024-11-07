@@ -1,6 +1,6 @@
 pkgbase = python-cysystemd
 	pkgdesc = SystemD wrapper on Cython
-	pkgver = 1.4.5
+	pkgver = 1.6.2
 	pkgrel = 1
 	url = http://github.com/mosquito/cysystemd
 	arch = any
@@ -8,6 +8,7 @@ pkgbase = python-cysystemd
 	makedepends = python
 	makedepends = python-pip
 	depends = cython
+	source = https://pypi.org/packages/source/c/cysystemd/cysystemd-1.6.2.tar.gz
+	sha256sums = 6097e2d1ecbc7f21a90552e8432ed7bb5dfea06ff7a04f1001e949f8ff4756da
 
 pkgname = python-cysystemd
-
