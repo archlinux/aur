@@ -1,7 +1,7 @@
 # Maintainer: KokaKiwi <kokakiwi+aur at kokakiwi dot net>
 
 pkgname=kwin-effects-burn-my-windows
-pkgver=42
+pkgver=44
 pkgrel=1
 pkgdesc='Disintegrate your windows with style.'
 arch=('any')
@@ -9,8 +9,8 @@ url='https://github.com/Schneegans/Burn-My-Windows'
 license=('GPL-3.0-or-later')
 depends=('kwin')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Schneegans/Burn-My-Windows/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('cd92f45b2fa0a98c0d426fac572c03a55b2f8f43da608d2c3c57406a431c3adc')
-b2sums=('2303a79c1d6845820cc97d19841e062a11e2922eed99795b92fa12e0fcca848e7cf896f065dd47d86c394091d541927a24a0c732b96752e82faa093eb1e9c496')
+sha256sums=('d3c4107d5fbc14aa8ef898287e685b15e1cfb0f740ce743a48a65831c61e0fc2')
+b2sums=('8a53408807cd1650047cdc9b76a48183c9ad4d0cbb4d26eba16e2ebae2307826a0ee9e72e7027517bbb9cc845cf23d10ff772b6ee01b4d42693b517305a81231')
 
 build() {
   cd "Burn-My-Windows-$pkgver/kwin"
