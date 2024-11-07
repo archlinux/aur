@@ -2,9 +2,9 @@
 # Contributor: Aetf <7437103@gmail.com>
 # Contributor: Daniel Micay <danielmicay@gmail.com>
 # Contributor: David Herrmann <dh.herrmann@googlemail.com>
-pkgname=kmscon-macslow
+pkgname=kmscon-macslow-git
 _gitname=kmscon
-pkgver=r1552
+pkgver=r1556
 pkgrel=1
 pkgdesc='Terminal emulator based on Kernel Mode Setting (KMS) (forked and patched version, additional changes by macslow)'
 arch=('x86_64' 'armv7h' 'aarch64')
