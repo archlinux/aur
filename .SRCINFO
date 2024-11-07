@@ -1,13 +1,13 @@
 pkgbase = catalyst-browser-bin
 	pkgdesc = A minimal, functional, and customizable user-focused FOSS web browser
-	pkgver = 3.9.3
+	pkgver = 3.9.4
 	pkgrel = 1
 	url = https://getcatalyst.eu.org
 	arch = x86_64
 	license = MIT
 	makedepends = asar
 	conflicts = catalyst-browser-rc-bin
-	source = https://github.com/CatalystDevOrg/Catalyst/releases/download/v3.9.3/catalyst_3.9.3_amd64.deb
-	md5sums = f509e367b646ce15a575746f80cb04b5
+	source = https://github.com/CatalystDevOrg/Catalyst/releases/download/v3.9.4/catalyst_3.9.4_amd64.deb
+	sha512sums = e5288a66108b61471685b08df4c8877981f7025d5b9ea43c0d51a0c9affec3377687508be73f483307f25d1b40c82a099fc4caf35b6682549d779f1544630e2b
 
 pkgname = catalyst-browser-bin
