@@ -1,0 +1,13 @@
+pkgbase = pacfish
+	pkgdesc = AUR helper written in Ruby
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://codeberg.org/Ryba37/pacfish
+	arch = any
+	license = GPL3
+	depends = ruby
+	depends = pacman
+	source = git+https://codeberg.org/Ryba37/pacfish.git
+	sha256sums = SKIP
+
+pkgname = pacfish
