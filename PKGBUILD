@@ -3,7 +3,7 @@
 
 _pkgname='ved'
 pkgname='ved-git'
-pkgver=0.1+r350+1ae38e844
+pkgver=0.1+r350+g1ae38e844
 pkgrel=1
 pkgdesc='1 MB text editor written in V with hardware accelerated text rendering (development version)'
 arch=('x86_64')
@@ -25,7 +25,7 @@ pkgver() {
   _version=$(git tag --sort=-v:refname --list | head -n1)
   _commits=$(git rev-list --count HEAD)
   _short_commit_hash=$(git rev-parse --short=9 HEAD)
-  echo "${_version}+r${_commits}+${_short_commit_hash}"
+  echo "${_version}+r${_commits}+g${_short_commit_hash}"
 }
 
 build() {
