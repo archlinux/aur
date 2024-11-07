@@ -5,8 +5,8 @@
 # Contributor: Patrick Lloyd <$(base64 --decode <<<'cGF0cmlja0BsbG95ZC5zaAo=')>
 
 pkgname=marp-cli-bin
-pkgver=3.4.0
-pkgrel=4
+pkgver=4.0.3
+pkgrel=1
 pkgdesc='A CLI interface for Marp and Marpit based converters'
 url='https://github.com/marp-team/marp-cli'
 arch=('x86_64')
@@ -20,7 +20,7 @@ source=(
     "${pkgname}-${pkgver}-LICENSE::https://raw.githubusercontent.com/marp-team/marp-cli/v${pkgver}/LICENSE"
 )
 b2sums=(
-    '8194ee3e5924a97719064ad2c7061d5d567ed5513044394d7767860b2a1f87a782e52c9d9bbaa5ce9c55f4ea367af0026dacfceb40c52c62c93a345ad078fad1'
+    '9debd7a1142bb9da44199c53f7ddd9e2d8be1839a0f038fa7ad6b1820d35222fcfbaea45cb7c721c0f1f1914869177761483ac7f7e5abf45452235da9cb788cb'
     'c53efbcec37e21912a9cb464a70839674a6174b577656c738d72e803e53bb0d05050056c9144d1952a2e1db39cad66ce0176d6d17c92fa847e22a20ce98ec596'
 )
 
