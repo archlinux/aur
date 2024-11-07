@@ -2,13 +2,13 @@
 
 pkgname=cp2k
 pkgver=2024.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A quantum chemistry and solid state physics software package"
 arch=(x86_64)
 url="https://www.cp2k.org"
 license=(GPL-2.0-only)
-depends=(dbcsr fftw elpa)
-makedepends=(gcc-fortran python cmake ninja)
+depends=(dbcsr fftw-openmpi elpa)
+makedepends=(gcc-fortran python cmake ninja fypp)
 checkdepends=(numactl)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/cp2k/$pkgname/releases/download/v$pkgver/$pkgname-$pkgver.tar.bz2")
 sha256sums=('a6eeee773b6b1fb417def576e4049a89a08a0ed5feffcd7f0b33c7d7b48f19ba')
