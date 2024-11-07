@@ -9,7 +9,7 @@ url="https://github.com/Toni500github/customfetch"
 license=('BSD-3-Clause')
 #depends=() # some of them are in the "base" meta-package anyway so basically no extra depends
 optdepends=(
-        'wayland-client: Library for getting the Wayland compositor faster'
+        'wayland: Library for getting the Wayland compositor faster'
         'dconf: Alternative to the slow gsettings command'
         'libxfce4util: Query XFCE4 version faster'
 )
