@@ -4,7 +4,7 @@
 # Contributor: TDY <tdy@gmx.com>
 pkgname=git-cola-git
 _pkgname=git-cola
-pkgver=4.8.0.r0.gdbd543db
+pkgver=4.9.0.r0.g69f06128
 pkgrel=1
 pkgdesc="The highly caffeinated Git GUI"
 arch=('any')
@@ -19,13 +19,13 @@ depends=(
   'python-qtpy'
 )
 makedepends=(
+  'rsync'
   'python-build'
   'python-installer'
   'python-rst.linker'
   'python-setuptools-scm'
   'python-sphinx'
   'python-sphinx-furo'
-  'python-sphinx_rtd_theme'
   'python-wheel'
   'rsync'
 )
@@ -37,9 +37,10 @@ checkdepends=(
   'python-pytest'
 )
 optdepends=(
+  'python-notify2: desktop notifications'
   'python-pygments: syntax highlighting'
   'python-pyinotify: file system change monitoring'
-  'python-send2trash: enables "Send to Trash" functionality.'
+  'python-send2trash: "Send to Trash" functionality'
   'tk: to use the built-in ssh-askpass handler'
 )
 provides=(
@@ -73,15 +74,15 @@ build() {
   python -m build --wheel --no-isolation
 
   # sphinx (or, rather, rtd.linker) races against itself, leading to a spurious ENOENT
-  make -j1 prefix=/usr doc
+  make -j1 doc
 }
 
 check() {
   cd "$_pkgname"
 
   desktop-file-validate share/applications/*.desktop
+  appstreamcli validate --no-net share/metainfo/*.appdata.xml || :
   #appstream-util validate-relax --nonet share/metainfo/*.appdata.xml
-  appstreamcli validate --no-net share/metainfo/*.appdata.xml ||:
 
   # Run the unit tests
   GIT_CONFIG_NOSYSTEM=true LC_ALL="C.UTF-8" make test V=2
@@ -91,10 +92,16 @@ package() {
   cd "$_pkgname"
   python -m installer --destdir="$pkgdir" dist/*.whl
 
-  # `make -C docs` is used instead of `make install-doc` to specify
-  # `-o man -o html` (do not remake docs, we just built them)
-  #make install-doc
-  make -C docs -o man -o html prefix=/usr DESTDIR="$pkgdir" install
+  make prefix=/usr DESTDIR="$pkgdir" install-desktop-files
+  make prefix=/usr DESTDIR="$pkgdir" install-icons
+  make prefix=/usr DESTDIR="$pkgdir" install-htmldocs
+  make prefix=/usr DESTDIR="$pkgdir" install-metainfo
+  # `make -C docs` is used here to be able to specify `-o {man,html}`
+  # (do not remake docs, we just built them)
+  #make prefix=/usr DESTDIR="$pkgdir" install-man
+  #make prefix=/usr DESTDIR="$pkgdir" install-html
+  make -C docs -o man prefix=/usr DESTDIR="$pkgdir" install-man
+  make -C docs -o html prefix=/usr DESTDIR="$pkgdir" install-html
 
   install -Dm644 "contrib/_${_pkgname}" -t "$pkgdir/usr/share/zsh/site-functions/"
   install -Dm644 "contrib/${_pkgname}-completion.bash" \
