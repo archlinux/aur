@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=flowGate
-_pkgver=1.4.0
+_pkgver=1.6.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -32,8 +32,8 @@ optdepends=(
   r-tidyverse
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('842592ee43cba8c01196c7d5489152c3')
-b2sums=('9da4eeb0251777c3d523c7d2bb9b2ce45db86a7c6269dc6e8569b58eb32f1ac37d3685cca889b53996668196d29ac24656445706d1ce9c69c76b82b833f272c9')
+md5sums=('6839d6a9ee70a9095f5c78417d5e1c4a')
+b2sums=('661e23b94273a16fc27ebdfb8c5d6d5c226b13e1eb7c8ffe909ab5ace06332d8d93e007f2659715b3985d67cd330fddc14b8a4584e4b926f541cceaac0e824ec')
 
 build() {
   mkdir build
