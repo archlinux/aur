@@ -1,7 +1,7 @@
 pkgbase = python-openlp-osc-control
 	pkgdesc = Daemon to allow control of OpenLP using OSC control
-	pkgver = 0.1.4
-	pkgrel = 7
+	pkgver = 0.1.6
+	pkgrel = 2
 	url = https://github.com/rickprice/openlp-OSC-control
 	arch = any
 	license = MIT
@@ -10,9 +10,10 @@ pkgbase = python-openlp-osc-control
 	depends = python
 	depends = python-osc
 	depends = python-requests
-	source = https://pypi.org/packages/source/o/openlposccontrol/openlposccontrol-0.1.4.tar.gz
+	depends = python-cysystemd
+	source = https://pypi.org/packages/source/o/openlposccontrol/openlposccontrol-0.1.6.tar.gz
 	source = OpenLPOSCControl@.service
-	sha256sums = d585cfa6f40d3e7e484698f4c2c28c6b7feb42e487916d9b829422a9e257c959
+	sha256sums = 5fc4dcd9dd332f2a325f0e69d831416094c343f253a50b52490d7710b2063fdb
 	sha256sums = a6e6d767595f32941c73cb1f69a62c572c8febb71aab501aae3bf866b0aeb4ad
 
 pkgname = python-openlp-osc-control
