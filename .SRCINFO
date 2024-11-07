@@ -1,6 +1,6 @@
 pkgbase = r-crisprscoredata
 	pkgdesc = Pre-trained models for the crisprScore package
-	pkgver = 1.8.0
+	pkgver = 1.10.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/crisprScoreData
 	arch = any
@@ -11,8 +11,8 @@ pkgbase = r-crisprscoredata
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/data/experiment/src/contrib/crisprScoreData_1.8.0.tar.gz
-	md5sums = 5ae4856e689a5edd3d4c9449bca1985f
-	b2sums = ad6fb0c30905c5ba44b4b931af9a8e8b55e69d61d27061a55c74e276b036f288a8a8361e18ced4d56451c6b8c44d29f64475fcd688fb7aed8e6a6e49ed513a2c
+	source = https://bioconductor.org/packages/release/data/experiment/src/contrib/crisprScoreData_1.10.0.tar.gz
+	md5sums = 9e599deca608e23b7ec35db0579bff1b
+	b2sums = d90e9c796f6551da4cf3ac8dcb0c3e9db1d77ef4fe3731706755d12dd4b98035e028fdb4119c8185d17915513ff341446f2a7cd687b5d2bff32933f43d619d04
 
 pkgname = r-crisprscoredata
