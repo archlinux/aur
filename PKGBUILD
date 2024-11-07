@@ -1,10 +1,10 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=bilibili
-pkgver=1.14.2_1
-_electronversion=21
+pkgver=1.15.2_1
+_electronversion=33
 _nodeversion=18
-pkgrel=2
-pkgdesc="Linux version based on Beilai official client porting supports roaming.Use system-wide electron.基于哔哩哔哩官方客户端移植的Linux版本,支持漫游"
+pkgrel=1
+pkgdesc="Linux version based on Beilai official client porting supports roaming.(Use system-wide electron).基于哔哩哔哩官方客户端移植的Linux版本,支持漫游"
 arch=(
     'aarch64'
     'x86_64'
@@ -34,7 +34,7 @@ source=(
     "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver//_/-}.tar.gz"
     "${pkgname}.sh"
 )
-sha256sums=('4e3255523b296c5c1478521c4bb45872bc2fe5dd7bfbfe3b038cebd99fb55179'
+sha256sums=('7d6b3b2a0de0bb9203df82146293070a1facf3af1ad0cadb6f3c90426f200c44'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
@@ -47,7 +47,7 @@ build() {
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname}/g
         s/@runname@/app.asar/g
-        s/@cfgdirname@/${pkgname}/g
+        s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
         s/@options@//g
     " -i "${srcdir}/${pkgname}.sh"
     _ensure_local_nvm
