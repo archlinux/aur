@@ -8,6 +8,7 @@ pkgbase = stygiansift-git
 	makedepends = git
 	makedepends = rust
 	makedepends = cargo
+	provides = stygiansift
 	conflicts = stygiansift
 	source = StygianSift::git+https://github.com/Mauitron/StygianSift.git
 	sha256sums = SKIP
