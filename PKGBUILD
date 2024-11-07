@@ -3,7 +3,7 @@
 pkgname=serial-studio
 _pkgname=Serial-Studio
 pkgver=2.0.0
-pkgrel=1
+pkgrel=7
 pkgdesc="Multi-purpose serial data visualization & processing program"
 arch=('x86_64'
     'aarch64'
@@ -22,7 +22,8 @@ depends=(gcc-libs
 makedepends=(git
     $_qt-charts
     $_qt-location
-    $_qt-quickcontrols2
+    #     $_qt-quickcontrols2
+    $_qt-quickeffectmaker
     $_qt-svg
     $_qt-tools)
 provides=(${_pkgname} ${pkgname} ${pkgname}-git)
@@ -37,10 +38,10 @@ source=("${pkgname}::git+${url}.git"
     "git+https://github.com/jothepro/doxygen-awesome-css.git"
     "git+https://github.com/alex-spataru/qmqtt.git")
 sha256sums=('SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP')
+    'SKIP'
+    'SKIP'
+    'SKIP'
+    'SKIP')
 noextract=()
 
 prepare() {
