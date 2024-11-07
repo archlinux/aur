@@ -17,6 +17,6 @@ pkgbase = customfetch-gui-bin
 	conflicts = customfetch-git
 	conflicts = customfetch-bin
 	source = https://github.com/Toni500github/customfetch/releases/download/v0.10.2/customfetch-gui-v0.10.2.tar.gz
-	sha256sums = 37caf92c61cfd80c380ba08f9a4cb34de5c30ce08d560a484c93b2df1e32b9ae
+	sha256sums = b2392515756562885aba59537943a05e5819e337675df89e3431eb03fb66d490
 
 pkgname = customfetch-gui-bin

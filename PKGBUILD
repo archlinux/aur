@@ -16,7 +16,7 @@ optdepends=(
 )
 conflicts=('customfetch-gui-git' 'customfetch-gui' 'customfetch-git' 'customfetch-bin')
 source=("${url}/releases/download/v${pkgver}/${_pkgname}-gui-v${pkgver}.tar.gz")
-sha256sums=("37caf92c61cfd80c380ba08f9a4cb34de5c30ce08d560a484c93b2df1e32b9ae")
+sha256sums=("b2392515756562885aba59537943a05e5819e337675df89e3431eb03fb66d490")
 
 package() {
     cd "${srcdir}/"
