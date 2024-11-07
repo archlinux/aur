@@ -15,6 +15,7 @@ arch=('x86_64' 'i686')
 url='http://www.ntop.org/'
 license=('GPL-3.0-only')
 depends=('redis' 'libmariadbclient' 'libpcap' 'sqlite' 'libmaxminddb' 'zeromq' 'rrdtool' 'hiredis' 'curl' 'json-c')
+optdepends=('net-snmp: support SNMP SET and SNMP v3')
 makedepends=('glib2' 'automake' 'libtool' 'wget' 'curl' 'libxml2' 'npm' 'jq' python-setuptools)
 install=$pkgname.install
 source=("$pkgname-$pkgver.tar.gz::https://github.com/ntop/$pkgname/archive/$pkgver.tar.gz"

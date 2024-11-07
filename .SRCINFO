@@ -26,6 +26,7 @@ pkgbase = ntopng
 	depends = hiredis
 	depends = curl
 	depends = json-c
+	optdepends = net-snmp: support SNMP SET and SNMP v3
 	source = ntopng-6.2.tar.gz::https://github.com/ntop/ntopng/archive/6.2.tar.gz
 	source = nDPI-4.10.tar.gz::https://github.com/ntop/nDPI/archive/4.10.tar.gz
 	source = ntopng@.service
