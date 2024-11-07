@@ -1,7 +1,7 @@
 # Maintainer: Phyo Wai Lin (nureon22) <phyowailin2004.proton.me>
 
 pkgname=gfont
-pkgver=0.14.2
+pkgver=0.14.3
 pkgrel=1
 pkgdesc="Browse and install google fonts from terminal"
 arch=("any")
@@ -10,7 +10,7 @@ license=("MIT")
 depends=("python" "python-requests" "python-urllib3")
 makedepends=("python-build" "python-hatchling" "python-installer")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/nureon22/$pkgname/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=("82a06c0ceb20b9b0e9a330a7a479eeb29fbd2b90be404438737ba0f69715f262")
+sha256sums=("b6509fd2336143a519135f0c7534ef1f34a19bbdb440976d9498807afb463de9")
 
 build() {
     cd "$pkgname-$pkgver"
