@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=passwordsafe-bin
-pkgver=1.19.1
-pkgrel=2
-pkgdesc="Popular secure and convenient password manager"
+pkgver=1.20.0
+pkgrel=1
+pkgdesc="Popular secure and convenient password manager(Prebuilt version)"
 arch=("x86_64")
 url="https://pwsafe.org/"
 _ghurl="https://github.com/pwsafe/pwsafe"
@@ -18,12 +18,13 @@ depends=(
     'wxwidgets-common'
 )
 source=(
-    "${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/${pkgver}/${pkgname%-bin}-ubuntu24-${pkgver%.0}-amd64.deb"
+    "${pkgname%-bin}-${pkgver}.rpm::${_ghurl}/releases/download/${pkgver}/${pkgname%-bin}-fedora41-${pkgver%.0}.rpm"
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/pwsafe/pwsafe/${pkgver}/LICENSE"
 )
-sha256sums=('52d6993a8ed852ede53600e5ae09389aed4be018c180e709d363268dd7465f98'
+sha256sums=('50817ffca0fd1d9cd152a349823fd71efff072059d1cc8793fc183086399884b'
             '2d471d94ca72c38aeee8544cbceaa239e7cfd13fa766f8bee7a1dd8fa82c11c8')
 package() {
-    bsdtar -xf "${srcdir}/data.tar.gz" -C "${pkgdir}"
+    install -Dm755 "${srcdir}/usr/bin/"* -t "${pkgdir}/usr/bin"
+    cp -Pr --no-preserve=ownership "${srcdir}/usr/share" "${pkgdir}/usr"
     install -Dm644 "${srcdir}/LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }

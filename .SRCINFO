@@ -1,7 +1,7 @@
 pkgbase = passwordsafe-bin
-	pkgdesc = Popular secure and convenient password manager
-	pkgver = 1.19.1
-	pkgrel = 2
+	pkgdesc = Popular secure and convenient password manager(Prebuilt version)
+	pkgver = 1.20.0
+	pkgrel = 1
 	url = https://pwsafe.org/
 	arch = x86_64
 	license = Artistic-2.0
@@ -11,11 +11,11 @@ pkgbase = passwordsafe-bin
 	depends = util-linux-libs
 	depends = wxwidgets-gtk3
 	depends = wxwidgets-common
-	provides = passwordsafe=1.19.1
+	provides = passwordsafe=1.20.0
 	conflicts = passwordsafe
-	source = passwordsafe-1.19.1.deb::https://github.com/pwsafe/pwsafe/releases/download/1.19.1/passwordsafe-ubuntu24-1.19.1-amd64.deb
-	source = LICENSE-1.19.1::https://raw.githubusercontent.com/pwsafe/pwsafe/1.19.1/LICENSE
-	sha256sums = 52d6993a8ed852ede53600e5ae09389aed4be018c180e709d363268dd7465f98
+	source = passwordsafe-1.20.0.rpm::https://github.com/pwsafe/pwsafe/releases/download/1.20.0/passwordsafe-fedora41-1.20.rpm
+	source = LICENSE-1.20.0::https://raw.githubusercontent.com/pwsafe/pwsafe/1.20.0/LICENSE
+	sha256sums = 50817ffca0fd1d9cd152a349823fd71efff072059d1cc8793fc183086399884b
 	sha256sums = 2d471d94ca72c38aeee8544cbceaa239e7cfd13fa766f8bee7a1dd8fa82c11c8
 
 pkgname = passwordsafe-bin
