@@ -3,7 +3,7 @@
 
 _pkgname=neural-amp-modeler-lv2
 pkgname=$_pkgname-git
-pkgver=0.1.3.r23.1ff6dab
+pkgver=0.1.5.r4.69bfdb4
 pkgrel=1
 pkgdesc='Neural Amp Modeler (NAM) LV2 plugin (git version)'
 arch=(aarch64 armv7h i686 pentium4 riscv64 riscv x86_64)
@@ -15,10 +15,12 @@ provides=($_pkgname)
 conflicts=($_pkgname)
 source=("$_pkgname::git+https://github.com/mikeoliphant/$_pkgname.git"
         'lv2::git+https://github.com/lv2/lv2.git'
-        'eigen::git+https://gitlab.com/libeigen/eigen.git'
+        'NeuralAudio::git+https://github.com/mikeoliphant/NeuralAudio.git'
         'NeuralAmpModelerCore::git+https://github.com/mikeoliphant/NeuralAmpModelerCore.git'
+        'RTNeural::git+https://github.com/mikeoliphant/RTNeural.git'
 )
 sha256sums=('SKIP'
+            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP')
@@ -26,14 +28,20 @@ sha256sums=('SKIP'
 pkgver() {
   cd $_pkgname
   ( set -o pipefail
-    git describe --long --tags 2>/dev/null | sed 's/\([^-]*-\)g/r\1/;s/-/./g' ||
+    git describe --long --tags 2>/dev/null | sed 's/^v//;s/\([^-]*-\)g/r\1/;s/-/./g' ||
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
   )
 }
 
 prepare() {
   cd $_pkgname
-  for submodule in lv2 eigen NeuralAmpModelerCore; do
+  for submodule in lv2 NeuralAudio; do
+    git submodule init deps/$submodule
+    git submodule set-url deps/$submodule "$srcdir"/$submodule
+    git -c protocol.file.allow=always submodule update deps/$submodule
+  done
+  cd deps/NeuralAudio
+  for submodule in NeuralAmpModelerCore RTNeural; do
     git submodule init deps/$submodule
     git submodule set-url deps/$submodule "$srcdir"/$submodule
     git -c protocol.file.allow=always submodule update deps/$submodule
