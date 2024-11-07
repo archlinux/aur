@@ -3,9 +3,8 @@
 
 _pkgname=webkitfltk
 pkgname="${_pkgname}-static-git"
-_pkgver='latest'
 pkgver=0.5.1+29.r11877.20220906.7c630b0d6
-pkgrel=1
+pkgrel=2
 pkgdesc="Port of Webkit to FLTK 1.3. Compiles static library (all external dependencies internalised)."
 arch=('i686' 'x86_64')
 url="http://fifth-browser.sourceforge.net/"
