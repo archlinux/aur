@@ -4,7 +4,7 @@
 # Contributor: ledti <antergist at gmail dot com>
 
 pkgname=obs-studio-git
-pkgver=30.2.3.r315.gba6a6bf
+pkgver=30.2.3.r364.gb854f61
 pkgrel=1
 pkgdesc="Free and open source software for video recording and live streaming."
 arch=("i686" "x86_64")
@@ -97,8 +97,9 @@ build() {
     -DENABLE_LIBFDK=ON \
     -DCEF_ROOT_DIR="/opt/cef-obs" \
     -DOBS_VERSION_OVERRIDE="${pkgver%%.r*}" \
-    -DBUILD_TESTS=OFF \
+    -DOBS_COMPILE_DEPRECATION_AS_WARNING=ON \
     -DENABLE_UNIT_TESTS=OFF \
+    -DBUILD_TESTS=OFF \
     -Wno-dev
 
   cmake --build build
