@@ -1,7 +1,7 @@
 pkgbase = autorestic-git
 	pkgdesc = Config driven, easy backup cli for restic. Latest git checkout.
-	pkgver = 1.8.3+7.r538.20241021.8a77385
-	pkgrel = 2
+	pkgver = 1.8.3+9.r540.20241104.f7d28b4
+	pkgrel = 1
 	url = https://github.com/cupcakearmy/autorestic
 	arch = i686
 	arch = x86_64
@@ -12,8 +12,8 @@ pkgbase = autorestic-git
 	makedepends = go
 	depends = glibc
 	depends = restic
-	provides = autorestic=1.8.3+7.r538.20241021.8a77385
-	provides = autorestic-doc=1.8.3+7.r538.20241021.8a77385
+	provides = autorestic=1.8.3+9.r540.20241104.f7d28b4
+	provides = autorestic-doc=1.8.3+9.r540.20241104.f7d28b4
 	conflicts = autorestic
 	conflicts = autorestic-doc
 	source = autorestic::git+https://github.com/cupcakearmy/autorestic.git
