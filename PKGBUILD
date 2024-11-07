@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=crisprScore
-_pkgver=1.8.0
+_pkgver=1.10.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -31,8 +31,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('e874ab64c18b3ef64dd184b301f809ee')
-b2sums=('1729e17d3af3a90013e23cb71f71c119b2b06d466c5ec25ae421363fbe4b00d5a5fb4abece74d9adcd5bbf771a3be142c1fd721a40c5642096aee642aa33588a')
+md5sums=('4dfe683c4ce70e62c4d5a0b6eadbcd19')
+b2sums=('da5193753a8ff8aa25b0b11532e3ae25bce71dce17912b4ef35b369a5ca6a011fc38408f849f682720463283941fd03502927d8501a48c06e49fcb536238a7ba')
 
 build() {
   mkdir build
