@@ -4,7 +4,7 @@
 
 pkgname="ryzenadj"
 pkgver=0.16.0
-pkgrel=1
+pkgrel=2
 pkgdesc="RyzenAdj tool for adjusting Ryzen Mobile power states"
 url="https://github.com/FlyGoat/RyzenAdj"
 arch=("x86_64")
@@ -18,15 +18,15 @@ source=("${pkgname}-${pkgver}-${pkgrel}.tar.gz::${url}/archive/refs/tags/v${pkgv
 sha256sums=("7bef7dbde006afbe316091d8da8c8c551d5d7d43185d9e62281671959b7a3ca2")
 
 build() {
-    cd "${srcdir}/RyzenAdj-${pkgver}"
-    mkdir build -p && cd build
-    cmake -DCMAKE_BUILD_TYPE=Release ..
-    make
+    cmake -B build -S "${srcdir}/RyzenAdj-${pkgver}" \
+        -DCMAKE_BUILD_TYPE=Release \
+        -DCMAKE_INSTALL_PREFIX='/usr' \
+        -Wno-dev
+    cmake --build build
 }
 
 package() {
-    cd "${srcdir}/RyzenAdj-${pkgver}"
-    install -Dsm 755 build/ryzenadj $pkgdir/usr/bin/ryzenadj
+    DESTDIR="$pkgdir" cmake --install build
     install -Dsm 744 build/libryzenadj.so $pkgdir/usr/lib/libryzenadj.so
-    install -Dm 744 lib/ryzenadj.h $pkgdir/usr/include/ryzenadj.h
+    install -Dm 744 ${srcdir}/RyzenAdj-${pkgver}/lib/ryzenadj.h $pkgdir/usr/include/ryzenadj.h
 }
