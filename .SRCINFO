@@ -1,7 +1,7 @@
 pkgbase = linux-librem5
 	pkgdesc = The Linux kernel for Purism Librem 5
 	pkgver = 6.6.40
-	pkgrel = 1
+	pkgrel = 2
 	url = https://source.puri.sm/Librem5/linux
 	arch = aarch64
 	license = GPL-2.0-only
@@ -23,8 +23,11 @@ pkgbase = linux-librem5
 	options = !debug
 	options = !strip
 	source = https://source.puri.sm/Librem5/linux/-/archive/pureos/6.6.40pureos2/linux-pureos-6.6.40pureos2.tar.gz
+	source = config
 	sha256sums = 197f61667610c8bb426b1792fc97f21305e2eaf3328595a3dff61e19753f7b17
+	sha256sums = SKIP
 	b2sums = a6de14451e88cabd62ce1a90f3aaa217b11c3b8cdfa6bb155f2cbededf3a20c7d0a2ad89b67dcb4acb396624f351642d426ec0924c24ab52dbedc6642b7aa7f5
+	b2sums = SKIP
 
 pkgname = linux-librem5
 	depends = coreutils
