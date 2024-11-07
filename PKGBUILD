@@ -3,15 +3,15 @@
 
 
 pkgname=eddie-ui-git
-pkgver=2.24.2
+pkgver=2.24.3
 pkgrel=1
 pkgdesc='Eddie - VPN tunnel - UI'
 arch=('x86_64' 'aarch64' 'armv7l')
 url=https://eddie.website
 license=(GPLv3)
-depends=(mono curl openvpn sudo polkit desktop-file-utils libnotify libayatana-appindicator patchelf)
+depends=(mono curl openvpn sudo polkit libnotify libayatana-appindicator)
 optdepends=('stunnel: VPN over SSL' 'openssh: VPN over SSH')
-makedepends=(cmake dotnet-sdk mono-msbuild mono)
+makedepends=(cmake patchelf dotnet-sdk mono-msbuild mono desktop-file-utils)
 provides=('eddie-ui')
 conflicts=('airvpn' 'airvpn-beta-bin' 'airvpn-git')
 install=eddie-ui.install
@@ -62,7 +62,7 @@ build() {
         # Note: x64 in path hardcoded, correct, net4 build are CIL      
         
         export TERM=xterm # Fix Mono bug "Magic number is wrong".
-        TARGETFRAMEWORK="v4.8";
+        #TARGETFRAMEWORK="v4.8"; # Removed for https://aur.archlinux.org/packages/eddie-ui#comment-920114
         RULESETPATH="src/ruleset/norules.ruleset"
         SOLUTIONPATH="src/App.Forms.Linux//App.Forms.Linux.sln"
         
@@ -74,7 +74,8 @@ build() {
         
         # msbuild is available when monodevelop is installed (reccomended)
         # xbuild is available when mono-complete is installed (deprecated)        
-        msbuild /verbosity:minimal /p:Configuration=${CONFIG} /p:Platform=x64 /p:TargetFrameworkVersion=${TARGETFRAMEWORK} /t:Rebuild "${SOLUTIONPATH}" /p:DefineConstants="EDDIEMONO4LINUX"
+        #msbuild /verbosity:minimal /p:Configuration=${CONFIG} /p:Platform=x64 /p:TargetFrameworkVersion=${TARGETFRAMEWORK} /t:Rebuild "${SOLUTIONPATH}" /p:DefineConstants="EDDIEMONO4LINUX"
+        msbuild /verbosity:minimal /p:Configuration=${CONFIG} /p:Platform=x64 /t:Rebuild "${SOLUTIONPATH}" /p:DefineConstants="EDDIEMONO4LINUX"
 
         # msbuild/Mono under Linux don't honor the postbuild event, called manually
         "src/App.Forms.Linux/postbuild.sh" "src/App.Forms.Linux/bin/x64/${CONFIG}/" ${ARCH} ${CONFIG}
@@ -151,6 +152,7 @@ package() {
 
   install -Dm755 "src/App.CLI.Linux/bin/Release/net7.0/${RID}/libLib.Platform.Linux.Native.so" "$pkgdir/usr/lib/eddie-ui/libLib.Platform.Linux.Native.so"
   install -Dm755 "src/App.CLI.Linux/bin/Release/net7.0/${RID}/eddie-cli-elevated" "$pkgdir/usr/lib/eddie-ui/eddie-cli-elevated"
+  install -Dm755 "src/App.CLI.Linux/bin/Release/net7.0/${RID}/eddie-cli-elevated-service" "$pkgdir/usr/lib/eddie-ui/eddie-cli-elevated-service"
   install -Dm755 "src/App.CLI.Linux/bin/Release/net7.0/${RID}/publish/eddie-cli" "$pkgdir/usr/lib/eddie-ui/eddie-cli"
 
   if [ "ui" = "cli" ]; then
