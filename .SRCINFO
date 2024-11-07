@@ -1,0 +1,21 @@
+pkgbase = targetedkerberoast-git
+	pkgdesc = Kerberoast with ACL abuse capabilities
+	pkgver = r23.d77e642
+	pkgrel = 1
+	url = https://github.com/ShutdownRepo/targetedkerberoast
+	arch = any
+	license = GPL-3.0-only
+	makedepends = git
+	depends = python
+	depends = impacket
+	depends = python-ldap3
+	depends = python-pyasn1
+	depends = python-pycryptodome
+	depends = python-rich
+	provides = targetedkerberoast
+	conflicts = targetedkerberoast
+	conflicts = targetedkerberoast-bin
+	source = git+https://github.com/ShutdownRepo/targetedkerberoast
+	sha512sums = SKIP
+
+pkgname = targetedkerberoast-git
