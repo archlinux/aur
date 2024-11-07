@@ -1,0 +1,64 @@
+pkgbase = ruffle-nightly
+	pkgdesc = A Flash Player emulator written in Rust. (Nightly version)
+	pkgver = 0.1.0+nightly+20241107
+	pkgrel = 1
+	url = https://ruffle.rs/
+	arch = x86_64
+	license = MIT OR Apache-2.0
+	makedepends = cargo
+	makedepends = cmake
+	makedepends = java-environment
+	makedepends = npm
+	makedepends = nodejs-lts-iron
+	makedepends = wasm-bindgen
+	makedepends = binaryen
+	makedepends = gtk3
+	makedepends = alsa-lib
+	makedepends = libxcb
+	makedepends = systemd-libs
+	makedepends = clang
+	makedepends = jq
+	makedepends = git
+	makedepends = chromium
+	makedepends = openssl
+	options = !lto
+	source = git+https://github.com/ruffle-rs/ruffle.git#tag=nightly-2024-11-07
+	source = chromium-extension-ruffle.key
+	sha256sums = c8500797af9b5928c1057f3f9dee1db4292c9f086d9902384d93cd178e19938a
+	sha256sums = dac5c0e9661e41834b76d6d047dc94e41dd7a80d98e1c39cb4f2c95b1a7c7a46
+
+pkgname = ruffle-nightly
+	pkgdesc = A Flash Player emulator written in Rust. (Nightly version) (Desktop app and utils)
+	depends = hicolor-icon-theme
+	depends = alsa-lib
+	depends = systemd-libs
+	depends = gcc-libs
+	depends = glibc
+	provides = ruffle
+	conflicts = ruffle
+
+pkgname = ruffle-demo-nightly
+	pkgdesc = A Flash Player emulator written in Rust. (Nightly version) (Demo web app)
+	arch = any
+	provides = ruffle-demo
+	conflicts = ruffle-demo
+
+pkgname = ruffle-selfhosted-nightly
+	pkgdesc = A Flash Player emulator written in Rust. (Nightly version) (JavaScript module)
+	arch = any
+	provides = ruffle-selfhosted
+	conflicts = ruffle-selfhosted
+
+pkgname = firefox-extension-ruffle-nightly
+	pkgdesc = A Flash Player emulator written in Rust. (Nightly version) (Unsigned Firefox extension)
+	arch = any
+	optdepends = firefox: Load extension in browser.
+	provides = firefox-extension-ruffle
+	conflicts = firefox-extension-ruffle
+
+pkgname = chromium-extension-ruffle-nightly
+	pkgdesc = A Flash Player emulator written in Rust. (Nightly version) (Self-signed Chromium extension)
+	arch = any
+	optdepends = chromium: Load extension in browser.
+	provides = chromium-extension-ruffle
+	conflicts = chromium-extension-ruffle
