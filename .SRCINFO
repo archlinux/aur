@@ -1,6 +1,6 @@
 pkgbase = eddie-cli-git
 	pkgdesc = Eddie - VPN tunnel - CLI
-	pkgver = 2.24.2
+	pkgver = 2.24.3
 	pkgrel = 1
 	url = https://eddie.website
 	install = eddie-cli.install
@@ -9,6 +9,7 @@ pkgbase = eddie-cli-git
 	arch = armv7l
 	license = GPLv3
 	makedepends = cmake
+	makedepends = patchelf
 	makedepends = dotnet-sdk
 	depends = curl
 	depends = openvpn
