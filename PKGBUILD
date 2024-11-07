@@ -1,79 +1,57 @@
-# Maintainer: Alexander F. Rødseth <xyproto@archlinux.org>
-# Contributor: Matt Harrison <matt@harrison.us.com>
+# Maintainer: Wilken Gottwalt <wilken dot gottwalt at posteo dot net>
 
 pkgname=ollama-rocm-git
-pkgdesc='Create, run and share large language models (LLMs) with ROCm'
-pkgver=0.3.11.g504a410f
+pkgver=0.4.0.9e83e550
 pkgrel=1
+pkgdesc='Create, run and share large language models (LLMs) with ROCm'
 arch=(x86_64)
-url='https://github.com/jmorganca/ollama'
+url='https://github.com/ollama/ollama'
 license=(MIT)
-makedepends=(cmake clblast rocblas hipblas git go)
 provides=(ollama)
-conflicts=(ollama ollama-cuda)
-source=(git+$url
+conflicts=(ollama)
+depends=(comgr hip-runtime-amd hipblas hsa-rocr libdrm libelf numactl rocblas rocsolver rocsparse)
+optdepends=('rocm-smi-lib: monitor GPU usage with rocm-smi')
+makedepends=(git go hip-runtime-amd hipblas hsa-rocr libdrm libelf numactl rocblas rocm-hip-sdk rocm-opencl-sdk rocsolver rocsparse)
+source=(git+$url#branch=main
         ollama.service
         sysusers.conf
         tmpfiles.d)
 b2sums=('SKIP'
-        'a773bbf16cf5ccc2ee505ad77c3f9275346ddf412be283cfeaee7c2e4c41b8637a31aaff8766ed769524ebddc0c03cf924724452639b62208e578d98b9176124'
+        '564c355048079c72b0f052bf669dd8c5eb43921efa25fba5b425e29306815886eded52b7032bec67c6b0c2308d31a8ba13cd084b4a4bac5b329f471294a348d7'
         '3aabf135c4f18e1ad745ae8800db782b25b15305dfeaaa031b4501408ab7e7d01f66e8ebb5be59fc813cfbff6788d08d2e48dcf24ecc480a40ec9db8dbce9fec'
         'e8f2b19e2474f30a4f984b45787950012668bf0acb5ad1ebb25cd9776925ab4a6aa927f8131ed53e35b1c71b32c504c700fe5b5145ecd25c7a8284373bb951ed')
 
 pkgver() {
-  cd ${pkgname/-rocm-git}
-
-  local _tag=$(git describe --tags --abbrev=0 | sed "s/^v//" | sed "s/-rc[0-9]*$//")
-  local _commit=$(git describe --abbrev=8 --always)
-  echo "$_tag.g$_commit"
-}
-
-prepare() {
-  cd ${pkgname/-rocm-git}
-
-  # Clone submodules (llama.cpp)
-  git submodule update --init --recursive
-
-  # Turn LTO on and set the build type to Release
-  sed -i 's,T_CODE=on,T_CODE=on -D LLAMA_LTO=on -D CMAKE_BUILD_TYPE=Release,g' llm/generate/gen_linux.sh
-
-  # Fix linking (https://github.com/ollama/ollama/issues/2473#issuecomment-1942090475)
-  sed -i 's,g++,/opt/rocm/llvm/bin/clang++ -fcf-protection=none,g' llm/generate/gen_common.sh
-
-  # Display a more helpful error message
-  sed -i "s|could not connect to ollama server, run 'ollama serve' to start it|ollama is not running, try 'systemctl start ollama'|g" cmd/cmd.go
+  cd ollama
+  local _tag="$(git describe --tags --abbrev=0)"
+  local _hash="$(git rev-parse --short HEAD)"
+  echo "${_tag##v}.$_hash"
 }
 
 build() {
-  cd ${pkgname/-rocm-git}
-  export CFLAGS="-march=native -mtune=generic -O2 -pipe -fno-plt"
-  export CXXFLAGS="$CFLAGS"
-  export CGO_CFLAGS="$CFLAGS" CGO_CPPFLAGS="$CPPFLAGS" CGO_CXXFLAGS="$CXXFLAGS" CGO_LDFLAGS="$LDFLAGS"
-  export CFLAGS+=' -w'
-  export CXXFLAGS+=' -w'
+  export ROCM_PATH=/opt/rocm/
+  export AMDGPU_TARGETS="gfx1030,gfx1100"
+  export CFLAGS+=" -fcf-protection=none" CXXFLAGS+=" -fcf-protection=none"
+  export OLLAMA_SKIP_CUDA_GENERATE=on
 
-  local goflags="-buildmode=pie -trimpath -mod=readonly -modcacherw"
-  local ldflags="-linkmode=external -buildid= -X github.com/ollama/ollama/version.Version=$(git describe --tags --abbrev=0 | sed "s/^v//" | sed "s/-rc[0-9]*$//")"
-
-  export CUDA_LIB_DIR=/disabled
-  export ONEAPI_ROOT=/disabled
-  export OLLAMA_CUSTOM_CPU_DEFS="-DLLAMA_AVX=on -DLLAMA_AVX2=on -DLLAMA_F16C=on -DLLAMA_FMA=on"
-
+  cd ollama
   go generate ./...
-  go build $goflags -ldflags="$ldflags"
-}
-
-check() {
-  cd ${pkgname/-rocm-git}
-  go test ./api ./format
-  ./ollama --version > /dev/null
+  go build .
 }
 
 package() {
-  install -Dm755 ${pkgname/-rocm-git}/${pkgname/-rocm-git} "$pkgdir/usr/bin/${pkgname/-rocm-git}"
-  install -dm755 "$pkgdir/var/lib/ollama"
-  install -Dm644 ollama.service "$pkgdir/usr/lib/systemd/system/ollama.service"
-  install -Dm644 sysusers.conf "$pkgdir/usr/lib/sysusers.d/ollama.conf"
-  install -Dm644 tmpfiles.d "$pkgdir/usr/lib/tmpfiles.d/ollama.conf"
-  install -Dm644 ${pkgname/-rocm-git}/LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -dm755 $pkgdir/var/lib/ollama
+  install -dm755 $pkgdir/usr/lib/ollama/{rocblas/library,runners}
+
+  install -Dm755 ollama/ollama $pkgdir/usr/bin/ollama
+  install -Dm644 ollama/LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
+  install -Dm755 ollama/dist/linux-amd64/lib/ollama/libggml_rocm.so $pkgdir/usr/lib/ollama/
+  cp -r ollama/dist/linux-amd64/lib/ollama/runners $pkgdir/usr/lib/ollama/
+  cp -r ollama/dist/linux-amd64-rocm/lib/ollama/rocblas/library $pkgdir/usr/lib/ollama/rocblas/
+
+  install -Dm644 ollama.service $pkgdir/usr/lib/systemd/system/ollama.service
+  install -Dm644 sysusers.conf $pkgdir/usr/lib/sysusers.d/ollama.conf
+  install -Dm644 tmpfiles.d $pkgdir/usr/lib/tmpfiles.d/ollama.conf
+
+  ln -s /var/lib/ollama $pkgdir/usr/share/ollama
 }

@@ -6,11 +6,15 @@ After=network.target network-online.target
 [Service]
 ExecStart=/usr/bin/ollama serve
 WorkingDirectory=/var/lib/ollama
-Environment="HOME=/var/lib/ollama" "GIN_MODE=release"
+Environment='LD_LIBRARY_PATH=/usr/lib/ollama'
+Environment='HOME=/var/lib/ollama'
+#Environment='OLLAMA_HOST=http://127.0.0.1:11434'
+Environment='OLLAMA_MODELS=/var/lib/ollama'
 User=ollama
 Group=ollama
 Restart=on-failure
 RestartSec=3
+RestartPreventExitStatus=1
 Type=simple
 PrivateTmp=yes
 ProtectSystem=full
