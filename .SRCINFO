@@ -1,5 +1,5 @@
 pkgbase = ttf-ms-win11-fod-auto
-	pkgver = 22621.1.220506_1250
+	pkgver = 26100.1.240331_1435
 	pkgrel = 1
 	url = https://learn.microsoft.com/en-us/typography/fonts/windows_11_font_list#fonts-included-in-feature-on-demand-fod-packages
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = ttf-ms-win11-fod-auto
 	makedepends = httpdirfs
 	provides = ttf-font
 	provides = ttf-ms-win11-fod
-	source = https://software-static.download.prss.microsoft.com/dbazure/988969d5-f34g-4e03-ac9d-1f9786c66749/22621.1.220506-1250.ni_release_amd64fre_CLIENT_LOF_PACKAGES_OEM.iso
+	source = https://software-static.download.prss.microsoft.com/dbazure/888969d5-f34g-4e03-ac9d-1f9786c66749/26100.1.240331-1435.ge_release_amd64fre_CLIENT_LOF_PACKAGES_OEM.iso
 	source = file://Deng.ttf
 	source = file://Dengb.ttf
 	source = file://Dengl.ttf
