@@ -1,6 +1,6 @@
-diff -Naur freeswitch-1.10.12.pristine/src/mod/applications/mod_av/avcodec.c freeswitch-1.10.12/src/mod/applications/mod_av/avcodec.c
---- freeswitch-1.10.12.pristine/src/mod/applications/mod_av/avcodec.c	2024-11-06 04:13:03.467528676 +0000
-+++ freeswitch-1.10.12/src/mod/applications/mod_av/avcodec.c	2024-11-06 04:14:18.472443860 +0000
+diff -Naur freeswitch-1.10.12-pristine/src/mod/applications/mod_av/avcodec.c freeswitch-1.10.12/src/mod/applications/mod_av/avcodec.c
+--- freeswitch-1.10.12-pristine/src/mod/applications/mod_av/avcodec.c	2024-11-06 07:00:42.737612688 +0000
++++ freeswitch-1.10.12/src/mod/applications/mod_av/avcodec.c	2024-11-06 07:02:45.809730676 +0000
 @@ -1226,9 +1226,13 @@
  	}
  
@@ -80,26 +80,27 @@ diff -Naur freeswitch-1.10.12.pristine/src/mod/applications/mod_av/avcodec.c fre
  		av_free(context->encoder_ctx);
  	}
  
-diff -Naur freeswitch-1.10.12.pristine/src/mod/applications/mod_av/avformat.c freeswitch-1.10.12/src/mod/applications/mod_av/avformat.c
---- freeswitch-1.10.12.pristine/src/mod/applications/mod_av/avformat.c	2024-11-06 04:13:03.467528676 +0000
-+++ freeswitch-1.10.12/src/mod/applications/mod_av/avformat.c	2024-11-06 04:15:57.267851488 +0000
-@@ -184,6 +184,15 @@
+diff -Naur freeswitch-1.10.12-pristine/src/mod/applications/mod_av/avformat.c freeswitch-1.10.12/src/mod/applications/mod_av/avformat.c
+--- freeswitch-1.10.12-pristine/src/mod/applications/mod_av/avformat.c	2024-11-06 07:00:42.737612688 +0000
++++ freeswitch-1.10.12/src/mod/applications/mod_av/avformat.c	2024-11-06 07:07:14.001020789 +0000
+@@ -184,6 +184,16 @@
  
  typedef struct av_file_context av_file_context_t;
  
 +#if (LIBAVFORMAT_VERSION_MAJOR >= LIBAVFORMAT_N)
++typedef struct FFOutputFormat {
++	int priv_data_size;
++} FFOutputFormat;
++
 +static inline int priv_data_size(const AVOutputFormat *fmt)
 +{
-+	struct PrivSize {
-+		int priv_data_size;
-+	};
-+    return ((const struct PrivSize*)fmt)->priv_data_size;
++    return ((const struct FFOutputFormat*)fmt)->priv_data_size;
 +}
 +#endif
  
  /**
   * Fill the provided buffer with a string containing a timestamp
-@@ -455,8 +464,13 @@
+@@ -455,8 +465,13 @@
  	}
  
  	s->oformat = oformat;
@@ -113,7 +114,7 @@ diff -Naur freeswitch-1.10.12.pristine/src/mod/applications/mod_av/avformat.c fr
  		if (!s->priv_data) {
  			goto nomem;
  		}
-@@ -621,7 +635,9 @@
+@@ -621,7 +636,9 @@
  		c->rc_initial_buffer_occupancy = buffer_bytes * 8;
  
  		if (codec_id == AV_CODEC_ID_H264) {
@@ -123,7 +124,7 @@ diff -Naur freeswitch-1.10.12.pristine/src/mod/applications/mod_av/avformat.c fr
  
  
  			c->flags|=AV_CODEC_FLAG_LOOP_FILTER;   // flags=+loop
-@@ -1410,8 +1426,10 @@
+@@ -1410,8 +1427,10 @@
  		switch_goto_status(SWITCH_STATUS_FALSE, err);
  	}
  
@@ -134,7 +135,7 @@ diff -Naur freeswitch-1.10.12.pristine/src/mod/applications/mod_av/avformat.c fr
  
  	/** Get information on the input file (number of streams etc.). */
  	if ((error = avformat_find_stream_info(context->fc, opts ? &opts : NULL)) < 0) {
-@@ -1502,7 +1520,11 @@
+@@ -1502,7 +1521,11 @@
  
  		switch_log_printf(SWITCH_CHANNEL_LOG, SWITCH_LOG_ERROR, "Could not open input audio codec channel 2 (error '%s')\n", get_error_text(error, ebuf, sizeof(ebuf)));
  		if ((cc = av_get_codec_context(&context->audio_st[0]))) {
@@ -146,7 +147,7 @@ diff -Naur freeswitch-1.10.12.pristine/src/mod/applications/mod_av/avformat.c fr
  		}
  
  		context->has_audio = 0;
-@@ -3084,14 +3106,11 @@
+@@ -3084,14 +3107,11 @@
  	void *pop;
  	MediaStream *mst = &context->video_st;
  	AVStream *st = mst->st;
@@ -161,7 +162,7 @@ diff -Naur freeswitch-1.10.12.pristine/src/mod/applications/mod_av/avformat.c fr
  
  	if (!context->has_video) return SWITCH_STATUS_FALSE;
  
-@@ -3199,6 +3218,10 @@
+@@ -3199,6 +3219,10 @@
  	}
  #endif
  
@@ -172,7 +173,7 @@ diff -Naur freeswitch-1.10.12.pristine/src/mod/applications/mod_av/avformat.c fr
  	if ((c = av_get_codec_context(mst)) && c->time_base.num) {
  		cp = av_stream_get_parser(st);
  		ticks = cp ? cp->repeat_pict + 1 : c->ticks_per_frame;
-@@ -3210,6 +3233,7 @@
+@@ -3210,6 +3234,7 @@
  			context->video_start_time, ticks, c ? c->ticks_per_frame : -1, st->time_base.num, st->time_base.den, c ? c->time_base.num : -1, c ? c->time_base.den : -1,
  			st->start_time, st->duration == AV_NOPTS_VALUE ? context->fc->duration / AV_TIME_BASE * 1000 : st->duration, st->nb_frames, av_q2d(st->time_base));
  	}
@@ -180,9 +181,9 @@ diff -Naur freeswitch-1.10.12.pristine/src/mod/applications/mod_av/avformat.c fr
  
   again:
  
-diff -Naur freeswitch-1.10.12.pristine/src/mod/applications/mod_av/mod_av.h freeswitch-1.10.12/src/mod/applications/mod_av/mod_av.h
---- freeswitch-1.10.12.pristine/src/mod/applications/mod_av/mod_av.h	2024-11-06 04:13:03.467528676 +0000
-+++ freeswitch-1.10.12/src/mod/applications/mod_av/mod_av.h	2024-11-06 04:14:18.472443860 +0000
+diff -Naur freeswitch-1.10.12-pristine/src/mod/applications/mod_av/mod_av.h freeswitch-1.10.12/src/mod/applications/mod_av/mod_av.h
+--- freeswitch-1.10.12-pristine/src/mod/applications/mod_av/mod_av.h	2024-11-06 07:00:42.737612688 +0000
++++ freeswitch-1.10.12/src/mod/applications/mod_av/mod_av.h	2024-11-06 07:02:45.809730676 +0000
 @@ -42,7 +42,10 @@
  
  #define LIBAVCODEC_V 59
