@@ -1,6 +1,6 @@
-FROM docker.io/library/archlinux:base
+FROM archlinux:base
 
-RUN pacman -Sy --noconfirm binutils fakeroot gcc git go namcap
+RUN pacman -Sy --noconfirm binutils fakeroot gcc git go namcap debugedit
 
 RUN export uid=1000 gid=1000 && \
     mkdir -p /home/pkguser && \
@@ -10,7 +10,7 @@ RUN export uid=1000 gid=1000 && \
 
 USER pkguser
 
-ENV HOME /home/pkguser
+ENV HOME=/home/pkguser
 
 WORKDIR /home/pkguser
 
