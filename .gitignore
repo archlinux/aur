@@ -5,3 +5,5 @@
 *.sh
 pkg/
 src/
+*.tar.gz
+apifox-*
