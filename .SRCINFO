@@ -1,0 +1,13 @@
+pkgbase = twingate
+	pkgdesc = Zero trust remote access client for resource and networks
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://twingate.com
+	arch = x86_64
+	arch = aarch64
+	source_x86_64 = https://binaries.twingate.com/client/linux/ARCH/x86_64/stable/twingate-amd64.pkg.tar.zst
+	sha256sums_x86_64 = SKIP
+	source_aarch64 = https://binaries.twingate.com/client/linux/ARCH/aarch64/stable/twingate-arm64.pkg.tar.zst
+	sha256sums_aarch64 = SKIP
+
+pkgname = twingate
