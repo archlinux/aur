@@ -1,37 +1,26 @@
 pkgbase = dxvk-async-git
-	pkgdesc = A Vulkan-based compatibility layer for Direct3D 9/10/11 which allows running 3D applications on Linux using Wine. Windows DLL version)
-	pkgver = 2.2.r20.g4b108460
+	pkgdesc = A Vulkan-based compatibility layer for Direct3D 9/10/11 - Windows DLL version)
+	pkgver = 2.4.1.r422.g62970d2
 	pkgrel = 1
 	url = https://gitlab.com/Ph42oN/dxvk-gplasync/
 	arch = x86_64
-	license = zlib/libpng
-	makedepends = ninja
-	makedepends = meson>=0.43
-	makedepends = glslang
-	makedepends = mingw-w64-gcc
+	license = Zlib
 	makedepends = git
+	makedepends = glslang
+	makedepends = meson
+	makedepends = mingw-w64-gcc
 	makedepends = wine
-	depends = vulkan-icd-loader
-	depends = wine>=4.0rc1
 	depends = lib32-vulkan-icd-loader
-	provides = dxvk
+	depends = vulkan-icd-loader
 	provides = d9vk
-	provides = dxvk=2.2.r20.g4b108460
-	conflicts = d9vk-mingw-git
-	conflicts = d9vk-bin
-	conflicts = d9vk-winelib-git
-	conflicts = dxvk-bin
-	conflicts = dxvk-git
-	conflicts = dxvk-wine32-git
-	conflicts = dxvk-wine64-git
-	conflicts = dxvk-win32-git
-	conflicts = dxvk-win64-git
-	conflicts = dxvk-winelib-git
-	conflicts = dxvk-mingw-git
+	provides = dxvk=2.4.1.r422.g62970d2
+	conflicts = d9vk
+	conflicts = dxvk
 	options = !strip
 	options = !buildflags
 	options = staticlibs
-	source = git+https://github.com/doitsujin/dxvk.git
+	backup = etc/environment.d/dxvk-async-env.conf
+	source = dxvk::git+https://github.com/doitsujin/dxvk.git
 	source = git+https://github.com/Joshua-Ashton/mingw-directx-headers.git
 	source = git+https://github.com/KhronosGroup/Vulkan-Headers.git
 	source = git+https://github.com/KhronosGroup/SPIRV-Headers.git
@@ -43,10 +32,7 @@ pkgbase = dxvk-async-git
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = 5ea0fbf7fddb45a8575ff001793011a594d999aaeb66ef95378bca950c844300
+	sha256sums = 2bce3bf5dc5a3c7312bbaae96daf82e0fe6c370e96017ce5a0c49f40901866e3
 	sha256sums = 0f688815530ab5e8cc89b9b45d9b1d66cd8cd5a7770fb8249339af555a30dfe7
 
 pkgname = dxvk-async-git
-	arch = x86_64
-	conflicts = dxvk-bin
-	conflicts = dxvk-mingw-git
