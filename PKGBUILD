@@ -5,7 +5,7 @@ pkgver=2.4.2
 pkgrel=1
 pkgdesc="Shift timings and Screen Area of PGS/Sup subtitle"
 arch=("x86_64")
-url="https://www.jool.mx"
+url="https://github.com/MonoS/SupMover/"
 license=("AGPL-3.0-only")
 depends=(glibc gcc-libs)
 
