@@ -3,7 +3,7 @@
 # Contributor: hexchain <i@hexchain.org>
 # Based on official PKGBUILD from Arch Linux with an annoying bug reverted
 pkgname=telegram-desktop-kdefix
-pkgver=5.7.1
+pkgver=5.7.2
 pkgrel=1
 pkgdesc='Telegram Desktop client with KDE unread counter bug reverted'
 arch=('x86_64')
@@ -24,10 +24,10 @@ optdepends=('webkit2gtk: embedded browser features'
             'xdg-desktop-portal: desktop integration')
 source=("https://github.com/telegramdesktop/tdesktop/releases/download/v${pkgver}/tdesktop-${pkgver}-full.tar.gz"
         "0001-kde-theme-injection-fix.patch"
-        "0002-fix-round-video-recorder.patch")
-sha512sums=('06c465c6766ba2bb349bb37dd629fa494275cd9c165357ae39bfa7d967f0cce40c587788e88551705923d7bab089fc6a11d3175902c930dca7506a3bfb7d09b5'
+        "0002-fix-round-video-recorder.patch::https://github.com/telegramdesktop/tdesktop/commit/da8a4ba8ab58227177b69b7bfeec88f6476609eb.patch")
+sha512sums=('55fa4f20ceae71f2b869c00abdcf6a27f505156f7b254e38a68a97ea34b09e2e9deeef1fec6c5633e93043fb2e9e9ea72502ec9daeed319c8de65cbe825ca916'
             '6cfe49956da17cb7d7fa108cb922bab78865cddfe1863238c64b9ef22d2c138b24491de091f011d723babc4ed771a60d4e5a3a78dd9472ed3600b19aaf79ae65'
-            'f02b6d650516e1eb76fa2e200b59a10ea301238150254047d474341ea845e20ba492edb3d5cfd1991547f508adc2504c1d6574e8f8f8ab198f8ad44441a719f6')
+            '7bfd91382605d89e22065b745f5c41465b92235ed145f6c4b639fbc6fcea6ae4ee8ce616967ac4a3c8b3b64e2d36d045c1f28c350e628a65d2cea0a060508736')
 
 prepare() {
     cd tdesktop-$pkgver-full
