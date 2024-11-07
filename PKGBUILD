@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=SQLDataFrame
-_pkgver=1.18.0
+_pkgver=1.20.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -24,8 +24,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('d3f3b42d554d7262bb6dedc1d362d9b3')
-b2sums=('3953beef5982876d7d55f6f28dbff4e27cce3c6fc8c2ea8fbc73d2bd236d15b5755da43bc72fa02e43c2ef5f2fd409106c34ae4d75f4f54bd1c461a3d298fa3f')
+md5sums=('2448466a5203b92539fe0e1b7522379b')
+b2sums=('e9b691a9704ffe939c754b3b19f1fcf930b03d3f3503d966a56550b86800339cd34e4de3396b37109ebcb8797aecb4179f353b47924e73b293b2b42a15d53384')
 
 build() {
   mkdir build
