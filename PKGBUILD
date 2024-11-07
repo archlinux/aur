@@ -1,8 +1,9 @@
-# Maintainer: hawkeye116477 <hawkeye116477 at gmail dot com>
+# Maintainer: envolution
+# Contributor: hawkeye116477 <hawkeye116477 at gmail dot com>
 
 pkgname=waterfox-bin
 pkgver=6.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Current/modern generation of customizable privacy-conscious web browser."
 arch=('x86_64')
 url="https://www.waterfox.net"
