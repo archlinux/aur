@@ -1,0 +1,18 @@
+pkgbase = neohtop
+	pkgdesc = 💪🏻 htop on steroids
+	pkgver = 1.0.5
+	pkgrel = 1
+	url = https://github.com/Abdenasser/neohtop
+	arch = x86_64
+	license = MIT
+	makedepends = rust
+	makedepends = npm
+	makedepends = nodejs>=16
+	source = neohtop-1.0.5.tar.gz::https://github.com/Abdenasser/neohtop/archive/refs/tags/v1.0.5.tar.gz
+	source = neohtop.desktop
+	source = https://github.com/Abdenasser/neohtop/raw/main/app-icon.png
+	sha256sums = 3ed19340477962d6a0f3e9f651ea436d2e36db40fa50c5b0b6af1db9c7a37d85
+	sha256sums = 268edb20d231395da8f724283cd4244facd15ef9564b6705e0324223116eccbc
+	sha256sums = da490123ad87ff26b96b189eb4ed1b815e5e39ce3bec3b939fcdf331525dcefa
+
+pkgname = neohtop

@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=NeoHtop
+Comment=HTop on steroids
+Exec=/usr/bin/neohtop
+Icon=neohtop
+Terminal=false
+Type=Application
+Categories=System;Monitor;
