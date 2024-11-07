@@ -24,26 +24,20 @@ source=('sirikali::git+https://github.com/mhogomchungu/sirikali.git')
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/${_pkgname}"
+  cd ${_pkgname}
   printf "%s" "$(git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
 }
 
-prepare() {
-  cd ${_pkgname}
-  mkdir -p build
-}
-
 build() {
-  cd ${_pkgname}/build
   cmake \
+    -B build \
+    -S ${_pkgname} \
     -DCMAKE_BUILD_TYPE=RELEASE \
     -DBUILD_WITH_QT6=ON \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    . ..
-  make
+    -DCMAKE_INSTALL_PREFIX=/usr
+  make -C build
 }
 
 package() {
-  cd ${_pkgname}/build
-  make DESTDIR="$pkgdir/" install
+  make DESTDIR="$pkgdir/" -C build install
 }
