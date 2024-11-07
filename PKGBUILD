@@ -1,7 +1,7 @@
 # Maintainer: Carlos Aznarán <caznaranl@uni.pe>
 _base=esutil
 pkgname=python-${_base}
-pkgver=0.6.14
+pkgver=0.6.16
 pkgrel=1
 pkgdesc="Erin Sheldons Python Utilities"
 arch=(any)
