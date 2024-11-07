@@ -1,0 +1,12 @@
+pkgbase = tzyfetch
+	pkgdesc = An extremely simple fetch utility, built for a single line output with a three character distro logo.
+	pkgver = 0.1
+	pkgrel = 1
+	arch = any
+	license = MIT
+	makedepends = git
+	source = tzyfetch::git+https://github.com/cappsyco/tzyfetch.git
+	sha256sums = SKIP
+	sha512sums = SKIP
+
+pkgname = tzyfetch
