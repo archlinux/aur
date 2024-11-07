@@ -7,7 +7,7 @@
 
 _pkgname="urlview"
 pkgname="$_pkgname-git"
-pkgver=1.d.r2.g87d2ed7
+pkgver=1e.r1.g3041065
 pkgrel=1
 pkgdesc="A curses URL parser for text files"
 url="https://git.sr.ht/~nabijaczleweli/urlview-ng"
@@ -16,6 +16,7 @@ arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 
 depends=(
   'bash'
+  'glibc'
   'ncurses'
 )
 makedepends=(
@@ -34,7 +35,7 @@ sha256sums=('SKIP')
 pkgver() {
   cd "$_pkgsrc"
   git describe --long --tags --abbrev=7 --exclude='*[a-zA-Z][a-zA-Z]*' \
-    | sed -E 's/^[^0-9]*//;s/([0-9]+)([a-z]+)/\1.\2/;s/([^-]*-g)/r\1/;s/-/./g'
+    | sed -E 's/^[^0-9]*//;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
 build() {
