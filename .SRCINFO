@@ -1,7 +1,7 @@
 pkgbase = python-asgi-lifespan
 	pkgdesc = Programmatic startup/shutdown of ASGI apps.
 	pkgver = 2.1.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/florimondmanca/asgi-lifespan
 	arch = any
 	license = MIT

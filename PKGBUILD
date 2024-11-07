@@ -1,9 +1,9 @@
-# Maintainer: Mohamed Amine Zghal <medaminezghal at outlook dot com>
+# Maintainer: Mohamed Amine Zghal (medaminezghal) <medaminezghal at outlook dot com>
 
 pkgbase='python-asgi-lifespan'
 pkgname=('python-asgi-lifespan')
 pkgver=2.1.0
-pkgrel=3
+pkgrel=4
 pkgdesc='Programmatic startup/shutdown of ASGI apps.'
 arch=('any')
 url='https://github.com/florimondmanca/asgi-lifespan'
