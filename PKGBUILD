@@ -2,7 +2,7 @@
 pkgname=sirikali
 _name=SiriKali
 pkgver=1.6.0
-pkgrel=3
+pkgrel=4
 pkgdesc="A Qt/C++ GUI front end to sshfs, ecryptfs-simple, cryfs, gocryptfs, securefs, fscrypt and encfs"
 arch=('i686' 'x86_64' 'aarch64')
 url="https://mhogomchungu.github.io/sirikali/"
@@ -29,24 +29,6 @@ validpgpkeys=('6855E493B5B2DF96E319BB6D16E2E1ACC6F51242')
 prepare() {
   cd "$srcdir/${_name}-${pkgver}"
   mkdir -p build
-
-  if pacman -Qs "lxqt_wallet" > /dev/null ; then
-    intwallet="false"
-  else
-    intwallet="true"
-  fi
-
-  if pacman -Qs "kwallet" > /dev/null ; then
-    skipkde="false"
-  else
-    skipkde="true"
-  fi
-
-  if pacman -Qs "libsecret" > /dev/null ; then
-    skipsecret="false"
-  else
-    skipsecret="true"
-  fi
 }
 
 build() {
@@ -55,9 +37,8 @@ build() {
     -DCMAKE_BUILD_TYPE=RELEASE \
     -DBUILD_WITH_QT6=ON \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DINTERNAL_LXQT_WALLET=$intwallet \
-    -DNOKDESUPPORT=$skipkde \
-    -DNOSECRETSUPPORT=$skipsecret \
+    -DINTERNAL_LXQT_WALLET=true \
+    -DNOKDESUPPORT=true \
     . ..
   make
 }
