@@ -5,32 +5,22 @@ pkgver=1.0.0
 pkgrel=1
 pkgdesc="All of the fonts needed for proper Microsoft services with automated installation"
 arch=('any')
-depends=('wimlib' 'sudo' 'curl' 'udftools')
+source=(fonts.iso::http://software-static.download.prss.microsoft.com/pr/download/19042.631.201119-0144.20h2_release_svc_refresh_CLIENTENTERPRISEEVAL_OEMRET_x86FRE_en-us.iso)
+sha256sums=('SKIP')
+depends=('wimlib' 'sudo')
 
 prepare() {
-    sudo echo Downloading Windows...
-    curl -s "https://api.gravesoft.dev/msdl/proxy?product_id=3113&sku_id=18480" | grep -o '<a href="[^"]*">' | cut -d'"' -f2 > url.txt
-    curl -o fonts.iso -# $(cat url.txt)
-
-    mkdir mount
+    mkdir wim-mount
     mkdir fonts
+    mkdir iso-mount
 
-    sudo mount fonts.iso mount/ -r
-    cp mount/sources/install.wim ./fonts.wim
-    sudo umount mount/
-    
-    wimlib-imagex mount fonts.wim 1 mount/
-    cp mount/Windows/Fonts/*.ttf fonts/
-    wimlib-imagex unmount mount/
+    sudo mount fonts.iso iso-mount
+    cp iso-mount/sources/install.wim ./fonts.wim
+    sudo umount iso-mount
 
-    sudo bash -c 'ls fonts/ > /usr/share/fonts/ttf-windows-fonts.txt'
-    sudo cp fonts/* /usr/share/fonts/TTF/
-}
+    wimlib-imagex mount fonts.wim wim-mount
+    cp wim-mount/Windows/Fonts/*.ttf fonts
+    wimlib-imagex unmount wim-mount
 
-post_remove() {
-    for font in $(cat /usr/share/fonts/ttf-windows-fonts.txt); do
-	sudo rm /usr/share/fonts/TTF/$font
-    done
-
-    sudo rm /usr/share/fonts/ttf-windows-fonts.txt
+    sudo cp -r fonts /usr/share/fonts/TTF
 }
