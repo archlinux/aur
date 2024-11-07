@@ -3,7 +3,7 @@
 pkgname=python-openlp-osc-control
 _reponame=openlposccontrol
 pkgver=0.1.4
-pkgrel=3
+pkgrel=4
 pkgdesc="Daemon to allow control of OpenLP using OSC control"
 url="https://github.com/rickprice/openlp-OSC-control"
 arch=(any)
