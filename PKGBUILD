@@ -5,9 +5,9 @@
 
 pkgname=lib32-sdl3
 pkgver=3.1.6
-pkgrel=1
+pkgrel=2
 epoch=1
-pkgdesc="Simple Directmedia Layer (Version 3 Pre-Release, Updated weekly)"
+pkgdesc="Simple Directmedia Layer (Version 3)"
 arch=('x86_64' 'i686')
 url="https://www.libsdl.org"
 license=('Zlib')
@@ -35,7 +35,6 @@ build() {
 	-D SDL_HIDAPI_LIBUSB=ON \
 	-D CMAKE_INSTALL_PREFIX=/usr \
 	-D CMAKE_INSTALL_LIBDIR=lib32 \
-	-D SDL_RPI=OFF \
 	-D SDL_STATIC=OFF \
 	-D SDL_RPATH=OFF
 	cmake --build build
