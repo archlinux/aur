@@ -4,10 +4,10 @@
 
 pkgname='slang-snapshot'
 _pkgname="${pkgname%-snapshot}"
-_pkgver=2.3.4-15
+_pkgver=2.3.4-16
 _prever="pre$_pkgver"
 pkgver="${_pkgver/-/.}"
-pkgrel=3
+pkgrel=1
 pkgdesc='S-Lang is a powerful interpreted language (development snapshot)'
 arch=('aarch64' 'armv7h' 'i686' 'x86_64')
 provides=('libslang.so' 'slang' 'slsh')
@@ -26,7 +26,7 @@ options=('lto' '!makeflags')
 source=("${url}${_pkgname}-$_prever.tar.gz")
 validpgpkeys=('AE962A02D29BFE4A4BB2805FDE401E0D5873000A')  # John E. Davis
 # Taken from $url
-md5sums=('5ce7de7c53672b03030d09440fe69461')
+md5sums=('8983eaa3b50ed9ada632a01c836683fc')
 changelog="$pkgname.changelog"
 
 build() {
@@ -79,7 +79,7 @@ package() {
 
 # Calculated
 b2sums=(
-  '846541045985047033bb5181abfefcaa6d8d2de014effc0f08e9623211f1377c164832b2aca5897374807c21d70c4ff389eeebe290de2e45e3c3c3902e55ab01'
+  '9eb146c8aaa52b2bd47eac3f8d75c994e626a39f681b3db7ffbbfa391c7e110f13cedcef2b7a014eaff8e94ee1fd521b6419401a670150d3149f03020e3c8477'
 )
 
 # eof
