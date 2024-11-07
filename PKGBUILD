@@ -40,18 +40,20 @@ build() {
 check() {
     export RUSTUP_TOOLCHAIN=nightly
     cd "$pkgname-$pkgver"
-    cargo test --frozen
+    cargo test --frozen --release
 }
 
 package() {
     cd "$pkgname-$pkgver"
-    sed -i "s/\${engine_path}/\/usr\/bin\/$pkgname/" $pkgname.desktop
 
     # Install Engine
     install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/$pkgname"
 
-    # Install Helper Files
+    # Setup Helper Files
     cd "install"
+    sed -i "s/\${engine_path}/\/usr\/bin\/$pkgname/" "$pkgname.desktop"
+
+    # Install Helper Files
     # install -Dm0755 -t "$pkgdir/usr/share/icons/" "$pkgname.svg"
     install -Dm0755 -t "$pkgdir/usr/share/icons/" "$pkgname.png"
     install -Dm0755 -t "$pkgdir/usr/share/applications/" "$pkgname.desktop"
