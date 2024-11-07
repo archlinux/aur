@@ -1,0 +1,4 @@
+[scilab-bin]
+source="regex"
+regex="scilab-([0-9.]*).bin.x86_64-linux-gnu.tar"
+url="https://www.scilab.org/latest"
