@@ -36,7 +36,7 @@ _gen_pkgname() {
 _gen_pkgdescs() {
     for pkg in $pkgs; do
         dirname=$(_get_dirname "$pkg")
-        pkgdesc=$(yq eval -o=json "src/${pkgbase}-${pkgver}/${dirname}${pkg}/pyproject.toml" | jq -r '.project.description' 2>/dev/null)
+        pkgdesc=$(yq eval -o=json "src/${pkgbase}-${pkgver}/${dirname}${pkg}/pyproject.toml" | jq -r '.project.description')
         echo "    \"$pkgdesc\""
     done
     echo ")"

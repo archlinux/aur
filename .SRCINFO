@@ -1,5 +1,5 @@
 pkgbase = opentelemetry-python-contrib
-	pkgver = 0.49b0
+	pkgver = 0.49b1
 	pkgrel = 1
 	arch = any
 	license = Apache-2.0
@@ -8,8 +8,8 @@ pkgbase = opentelemetry-python-contrib
 	makedepends = python-installer
 	makedepends = python-setuptools
 	makedepends = python-wheel
-	source = opentelemetry-python-contrib-0.49b0.tar.gz::https://github.com/open-telemetry/opentelemetry-python-contrib/archive/refs/tags/v0.49b0.tar.gz
-	sha256sums = e8ca076b355fbb22509ca67d65af0b6a743add47e6b49bf61ac52a8baee1ec4c
+	source = opentelemetry-python-contrib-0.49b1.tar.gz::https://github.com/open-telemetry/opentelemetry-python-contrib/archive/refs/tags/v0.49b1.tar.gz
+	sha256sums = c8a07007d845f9ad05d20acc981a0f3c0c13a83c99863baf04d1c08ede3dbbe2
 
 pkgname = python-opentelemetry-contrib-instrumentations
 	pkgdesc = OpenTelemetry Contrib Instrumentation Packages
@@ -56,7 +56,6 @@ pkgname = python-opentelemetry-contrib-instrumentations
 	depends = python-opentelemetry-instrumentation-sqlite3
 	depends = python-opentelemetry-instrumentation-starlette
 	depends = python-opentelemetry-instrumentation-system-metrics
-	depends = python-opentelemetry-instrumentation-test
 	depends = python-opentelemetry-instrumentation-threading
 	depends = python-opentelemetry-instrumentation-tornado
 	depends = python-opentelemetry-instrumentation-tortoiseorm
@@ -483,14 +482,6 @@ pkgname = python-opentelemetry-instrumentation-system-metrics
 	depends = python-opentelemetry-instrumentation
 	depends = python-psutil
 	optdepends = python-psutil
-
-pkgname = python-opentelemetry-instrumentation-test
-	pkgdesc = test Middleware for OpenTelemetry
-	url = https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/instrumentation/opentelemetry-instrumentation-test
-	depends = python-opentelemetry-api
-	depends = python-opentelemetry-instrumentation
-	depends = python-opentelemetry-semantic-conventions
-	optdepends = 
 
 pkgname = python-opentelemetry-instrumentation-threading
 	pkgdesc = Thread context propagation support for OpenTelemetry
