@@ -1,4 +1,4 @@
-[snowflake-pt-client-git]
+[snowflake-pt-server]
 source = "git"
 git = "https://gitlab.torproject.org/tpo/anti-censorship/pluggable-transports/snowflake.git"
 prefix = "v"
