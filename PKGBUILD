@@ -11,15 +11,14 @@ pkgname=(
   lib32-gst-plugins-base-git
   lib32-gst-plugins-good-git
   lib32-gst-plugins-bad-git
-
-  lib32-gst-plugin-{gtk,va}-git
   lib32-gst-plugins-ugly-git
-
-  lib32-gst-{libav,rtsp-server}-git
-
+  lib32-gst-libav-git
+  lib32-gst-plugin-gtk-git
+  lib32-gst-plugin-va-git
+  lib32-gst-rtsp-server-git
   lib32-gstreamer-vaapi-git
 )
-pkgver=1.24.0+r883+ga786c85c4f
+pkgver=1.24.0+r1586+g1a412969f1
 pkgrel=1
 pkgdesc="Multimedia graph framework (32-bit)"
 url="https://gstreamer.freedesktop.org/"
@@ -34,7 +33,7 @@ makedepends=(
   valgrind lib32-libunwind bash-completion lib32-gtk3 lib32-libcap 
 
   # gst-plugins-base
-  lib32-cdparanoia lib32-libvisual lib32-opus lib32-libtheora lib32-libxv lib32-sdl2
+  lib32-cdparanoia lib32-opus lib32-libtheora lib32-libxv lib32-sdl2
   lib32-zlib lib32-libgl lib32-wayland wayland-protocols lib32-libx11 lib32-libgudev lib32-libdrm lib32-mesa lib32-orc
 
   # gst-plugins-good
@@ -46,7 +45,7 @@ makedepends=(
   lib32-vulkan-icd-loader vulkan-headers lib32-vulkan-validation-layers lib32-libusb lib32-libdc1394
   libltc lib32-bluez-libs lib32-libavtp lib32-libbs2b lib32-bzip2 lib32-libdca lib32-faac lib32-faad2
   lib32-libfdk-aac lib32-fluidsynth lib32-libgme lib32-liblrdf lib32-ladspa lib32-libde265 lib32-lilv lib32-lv2
-  lib32-libmpcdec lib32-neon lib32-openal lib32-libdvdnav lib32-rtmpdump lib32-sbc lib32-soundtouch
+  lib32-neon lib32-openal lib32-libdvdnav lib32-rtmpdump lib32-sbc lib32-soundtouch
   lib32-libsrtp lib32-zvbi lib32-wildmidi
   lib32-nettle lib32-libxml2 lib32-json-glib "lib32-libva>=2.21.0" lib32-libxkbcommon-x11
 
@@ -96,7 +95,7 @@ build() {
     -D qt5=disabled # fix
     -D qt6=disabled # fix
     -D gstreamer:dbghelp=disabled
-    -D gstreamer:gobject-cast-checks=disabled
+    -D gstreamer:glib_debug=disabled
     -D gstreamer:package-name="Arch Linux gstreamer $pkgver-$pkgrel"
     -D gstreamer:package-origin="https://www.archlinux.org/"
     -D gstreamer:ptp-helper=disabled # skip rustc required
@@ -104,13 +103,14 @@ build() {
     -D gstreamer-vaapi:package-origin="https://www.archlinux.org/"
 
     -D gst-plugins-base:gl-graphene=disabled
-    -D gst-plugins-base:gobject-cast-checks=disabled
+    -D gst-plugins-base:glib_debug=disabled
     -D gst-plugins-base:iso-codes=disabled
+    -D gst-plugins-base:libvisual=disabled
     -D gst-plugins-base:tremor=disabled
     -D gst-plugins-base:package-name="Arch Linux gst-plugins-base $pkgver-$pkgrel"
     -D gst-plugins-base:package-origin="https://www.archlinux.org/"
 
-    -D gst-plugins-good:gobject-cast-checks=disabled
+    -D gst-plugins-good:glib_debug=disabled
     -D gst-plugins-good:rpicamsrc=disabled
     -D gst-plugins-good:package-name="Arch Linux gst-plugins-good $pkgver-$pkgrel"
     -D gst-plugins-good:package-origin="https://www.archlinux.org/"
@@ -122,18 +122,21 @@ build() {
     -D gst-plugins-bad:directfb=disabled
     -D gst-plugins-bad:directshow=disabled 
     -D gst-plugins-bad:flite=disabled
-    -D gst-plugins-bad:gobject-cast-checks=disabled
+    -D gst-plugins-bad:glib_debug=disabled
     -D gst-plugins-bad:gs=disabled
     -D gst-plugins-bad:gsm=disabled
     -D gst-plugins-bad:iqa=disabled
     -D gst-plugins-bad:isac=disabled
     -D gst-plugins-bad:ldac=disabled
     -D gst-plugins-bad:lc3=disabled
+    -D gst-plugins-bad:lcevcencoder=disabled
+    -D gst-plugins-bad:lcevcdecoder=disabled
     -D gst-plugins-bad:magicleap=disabled
     -D gst-plugins-bad:microdns=disabled
     -D gst-plugins-bad:mpeg2enc=disabled
     -D gst-plugins-bad:mplex=disabled
     -D gst-plugins-bad:msdk=disabled
+    -D gst-plugins-bad:musepack=disabled
     -D gst-plugins-bad:nvcomp=disabled
     -D gst-plugins-bad:onnx=disabled
     -D gst-plugins-bad:openaptx=disabled
@@ -150,6 +153,7 @@ build() {
     -D gst-plugins-bad:spandsp=disabled
     -D gst-plugins-bad:svtav1=disabled 
     -D gst-plugins-bad:svthevcenc=disabled
+    -D gst-plugins-bad:svtjpegxs=disabled
     -D gst-plugins-bad:tinyalsa=disabled
     -D gst-plugins-bad:voaacenc=disabled
     -D gst-plugins-bad:voamrwbenc=disabled
@@ -159,11 +163,11 @@ build() {
     -D gst-plugins-bad:webrtcdsp=disabled
     -D gst-plugins-bad:wpe=disabled 
     -D gst-plugins-bad:zbar=disabled
-    -D gst-plugins-bad:zxing=disabled 
+    -D gst-plugins-bad:zxing=disabled
     -D gst-plugins-bad:package-name="Arch Linux gst-plugins-bad $pkgver-$pkgrel"
     -D gst-plugins-bad:package-origin="https://www.archlinux.org/"
 
-    -D gst-plugins-ugly:gobject-cast-checks=disabled
+    -D gst-plugins-ugly:glib_debug=disabled
     -D gst-plugins-ugly:sidplay=disabled
     -D gst-plugins-ugly:package-name="Arch Linux gst-plugins-ugly $pkgver-$pkgrel"
     -D gst-plugins-ugly:package-origin="https://www.archlinux.org/"
@@ -171,7 +175,7 @@ build() {
     -D gst-libav:package-name="Arch Linux gst-libav $pkgver-$pkgrel"
     -D gst-libav:package-origin="https://www.archlinux.org/"
 
-    -D gst-rtsp-server:gobject-cast-checks=disabled
+    -D gst-rtsp-server:glib_debug=disabled
     -D gst-rtsp-server:package-name="Arch Linux gst-rtsp-server $pkgver-$pkgrel"
     -D gst-rtsp-server:package-origin="https://www.archlinux.org/"
   )
@@ -279,7 +283,6 @@ package_lib32-gst-plugins-bad-libs-git() {
     usr/lib32/gstreamer-1.0/libgstaudiofxbad.so
     usr/lib32/gstreamer-1.0/libgstaudiolatency.so
     usr/lib32/gstreamer-1.0/libgstaudiomixmatrix.so
-    usr/lib32/gstreamer-1.0/libgstaudiovisualizers.so
     usr/lib32/gstreamer-1.0/libgstautoconvert.so
     usr/lib32/gstreamer-1.0/libgstbayer.so
     usr/lib32/gstreamer-1.0/libgstbluez.so
@@ -402,7 +405,7 @@ package_lib32-gst-plugins-base-git() {
   pkgdesc+=" - base plugins"
   depends=(
     "lib32-gst-plugins-base-libs-git=$pkgver"
-    lib32-alsa-lib lib32-cdparanoia lib32-libvisual lib32-libvorbis lib32-libtheora lib32-pango lib32-opus lib32-libpng lib32-libjpeg
+    lib32-alsa-lib lib32-cdparanoia lib32-libvorbis lib32-libtheora lib32-pango lib32-opus lib32-libpng
   )
   provides=("lib32-gst-plugins-base=$pkgver")
   conflicts=("lib32-gst-plugins-base")
@@ -410,7 +413,6 @@ package_lib32-gst-plugins-base-git() {
   cd root; local files=(
     usr/lib32/gstreamer-1.0/libgstalsa.so
     usr/lib32/gstreamer-1.0/libgstcdparanoia.so
-    usr/lib32/gstreamer-1.0/libgstlibvisual.so
     usr/lib32/gstreamer-1.0/libgstogg.so
     usr/lib32/gstreamer-1.0/libgstopengl.so
     usr/lib32/gstreamer-1.0/libgstopus.so
@@ -511,7 +513,7 @@ package_lib32-gst-plugins-bad-git() {
     "lib32-gst-plugins-bad-libs-git=$pkgver"
     lib32-aom lib32-libass lib32-libbs2b lib32-bzip2 lib32-pango lib32-lcms2 lib32-curl lib32-libxml2 lib32-libdc1394
     lib32-libde265 lib32-openssl lib32-libdca lib32-faac lib32-faad2 lib32-libfdk-aac lib32-fluidsynth lib32-libgme lib32-nettle
-    lib32-liblrdf lib32-lilv lib32-libmodplug lib32-libmpcdec lib32-neon lib32-openal 
+    lib32-liblrdf lib32-lilv lib32-libmodplug lib32-neon lib32-openal 
     lib32-opus lib32-libdvdnav lib32-libdvdread lib32-librsvg lib32-rtmpdump lib32-sbc lib32-libsndfile libltc
     lib32-soundtouch lib32-srt lib32-libsrtp lib32-zvbi lib32-vulkan-icd-loader lib32-libxcb lib32-wayland lib32-libwebp
     lib32-wildmidi lib32-x265 lib32-json-glib lib32-libavtp 
@@ -545,7 +547,6 @@ package_lib32-gst-plugins-bad-git() {
     usr/lib32/gstreamer-1.0/libgstladspa.so
     usr/lib32/gstreamer-1.0/libgstlv2.so
     usr/lib32/gstreamer-1.0/libgstmodplug.so
-    usr/lib32/gstreamer-1.0/libgstmusepack.so
     usr/lib32/gstreamer-1.0/libgstneonhttpsrc.so
     usr/lib32/gstreamer-1.0/libgstopenal.so
     usr/lib32/gstreamer-1.0/libgstopusparse.so
