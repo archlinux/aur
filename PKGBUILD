@@ -2,7 +2,7 @@
 
 pkgname=php-yaml
 _extname=yaml
-pkgver=2.2.3
+pkgver=2.2.4
 pkgrel=1
 pkgdesc="Support for YAML 1.1 (YAML Ain't Markup Language) serialization using the LibYAML library."
 arch=("i686" "x86_64")
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('php' 'libyaml')
 backup=("etc/php/conf.d/$_extname.ini")
 source=("http://pecl.php.net/get/$_extname-$pkgver.tgz")
-sha256sums=('5937eb9722ddf6d64626799cfa024598ff2452ea157992e4e67331a253f90236')
+sha256sums=('8eb353baf87f15b1b62ac6eb71c8b589685958a1fe8b0e3d22ac59560d0e8913')
 
 build() {
 	cd "$srcdir"/$_extname-$pkgver
