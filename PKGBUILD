@@ -4,12 +4,13 @@
 _android_arch=x86-64
 
 pkgname=android-${_android_arch}-gnutls
-pkgver=3.8.7
+pkgver=3.8.8
 pkgrel=1
 arch=('any')
 pkgdesc="A library which provides a secure layer over a reliable transport layer (Android ${_android_arch})"
 url="https://www.gnutls.org/"
 license=('GPL-3.0-or-later AND LGPL-2.1-or-later')
+groups=('android-gnutls')
 depends=("android-${_android_arch}-libtasn1"
          "android-${_android_arch}-readline"
          "android-${_android_arch}-zlib"
@@ -20,14 +21,17 @@ makedepends=('android-configure'
              'autogen')
 optdepends=("android-${_android_arch}-openssl: libgnutls-openssl")
 options=(!strip !buildflags staticlibs !emptydirs)
-source=("https://www.gnupg.org/ftp/gcrypt/gnutls/v${pkgver%.*}/gnutls-${pkgver}.tar.xz")
-md5sums=('539ac7a878a42f86242f75b19733e052')
+source=("https://www.gnupg.org/ftp/gcrypt/gnutls/v${pkgver%.*}/gnutls-${pkgver}.tar.xz"
+        '0001-Disable-libc-optimizations-for-strftime.patch')
+md5sums=('410d73daaeb1c0db9c12b617e97062c4'
+         '2b854ff520a41f5d7b09d80af1b26463')
 
 prepare() {
     cd "${srcdir}/gnutls-${pkgver}"
     source android-env ${_android_arch}
 
     autoreconf -vfi
+    patch -Np1 -i ../0001-Disable-libc-optimizations-for-strftime.patch
 }
 
 build() {
@@ -40,6 +44,9 @@ build() {
         --with-zstd \
         --with-tpm2 \
         --disable-doc \
+        --disable-tests \
+        --disable-valgrind-tests \
+        --disable-full-test-suite \
         --enable-ktls \
         --enable-openssl-compatibility \
         --disable-srp-authentication \
