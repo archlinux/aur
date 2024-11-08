@@ -8,7 +8,7 @@ pkgdesc="Open Porous Media Initiative shared infrastructure"
 arch=(x86_64)
 url="https://github.com/OPM/${pkgbase}"
 license=(GPL-3.0-or-later)
-makedepends=("dune-common>=${_dunever}" boost fmt cjson suitesparse texlive-basic doxygen graphviz
+makedepends=("dune-common>=${_dunever}" boost fmt10 cjson suitesparse texlive-basic doxygen graphviz
   pybind11 python-scikit-build python-setuptools-scm python-pytest-runner)
 options=(!emptydirs)
 source=(${pkgbase}-release-${pkgver}-final.tar.gz::${url}/archive/release/${pkgver}/final.tar.gz)

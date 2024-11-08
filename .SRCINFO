@@ -7,7 +7,7 @@ pkgbase = opm-common
 	license = GPL-3.0-or-later
 	makedepends = dune-common>=2.10.0
 	makedepends = boost
-	makedepends = fmt
+	makedepends = fmt10
 	makedepends = cjson
 	makedepends = suitesparse
 	makedepends = texlive-basic
