@@ -12,7 +12,7 @@
 _pkgname=ffmpeg
 pkgname="${_pkgname}5.1"
 pkgver=5.1.6
-pkgrel=2
+pkgrel=3
 epoch=1
 pkgdesc='Complete solution to record, convert and stream audio and video (legacy v5.1 branch, with libavcodec v59)'
 arch=(aarch64 i686 x86_64)
@@ -111,6 +111,10 @@ prepare() {
 
   echo "Applying patch to check for vulkan-headers 1.3+ instead of 1.2+..."
   git cherry-pick -n 59707cc485c7fcc1c06b96648ce605ed558da4ac
+
+  echo "Applying patches for the x265 API change..."
+  git cherry-pick -n 4ce4ecc19c49416054572989ef62e51c2bb5ee8b
+  git cherry-pick -n 768807492dd60671582b6f7829de8f8e5e9e6869
 
 #   # loop to apply any *.patch files from AUR source, if any exists.
 #   for _patchfile in ../*.patch
