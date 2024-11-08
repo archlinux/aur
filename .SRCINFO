@@ -1,9 +1,10 @@
 pkgbase = android-armv7a-eabi-harfbuzz
 	pkgdesc = OpenType text shaping engine (Android armv7a-eabi)
-	pkgver = 9.0.0
+	pkgver = 10.0.1
 	pkgrel = 1
 	url = https://www.freedesktop.org/wiki/Software/HarfBuzz
 	arch = any
+	groups = android-harfbuzz
 	license = MIT
 	makedepends = android-meson
 	makedepends = android-armv7a-eabi-cairo
@@ -17,8 +18,8 @@ pkgbase = android-armv7a-eabi-harfbuzz
 	options = !buildflags
 	options = staticlibs
 	options = !emptydirs
-	source = https://github.com/harfbuzz/harfbuzz/archive/refs/tags/9.0.0.tar.gz
-	md5sums = 155d42a86f54b356dd384a735389f84c
+	source = https://github.com/harfbuzz/harfbuzz/archive/refs/tags/10.0.1.tar.gz
+	md5sums = 7d1b0db8239bc058359716d4c30efb11
 
 pkgname = android-armv7a-eabi-harfbuzz
 
