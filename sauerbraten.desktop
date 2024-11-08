@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.1
+Type=Application
+Name=Cube 2: Sauerbraten
+GenericName=Sauerbraten
+Comment="Cube 2: Sauerbraten is a free and open-source Arena-FPS game. Its gameplay is similar to games like Quake, Doom or Unreal Tournament."
+Icon=sauerbraten
+Exec=sauerbraten
+Actions=
+Categories=Game;
+StartupWMClass=sauer_client

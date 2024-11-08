@@ -1,0 +1,4 @@
+#!/bin/sh
+
+cd /usr/share/games/sauerbraten
+exec ./sauer_client -q"$HOME/.sauerbraten" -r -k/usr/share/games/sauerbraten "$@"

@@ -1,0 +1,25 @@
+pkgbase = cube2-bin
+	pkgdesc = Cube 2: Sauerbraten is a free and open-source Arena-FPS game. Its gameplay is similar to games like Quake, Doom or Unreal Tournament.
+	pkgver = 2020.11.29
+	pkgrel = 1
+	url = https://gitlab.com/linuxbombay/sauerbraten-cube2
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	license = GPL2
+	depends = sdl2
+	depends = sdl2_image
+	source = sauerbraten.desktop
+	source = sauerbraten.svg
+	source = sauerbraten
+	sha256sums = 4b645944d8ffd230d9ad7d1cf6e81398df2be26152674154186677a928186304
+	sha256sums = b18914f81c2fea13ed6fe29fcd41a2f936781c2454e2c871c61a71bfa868784e
+	sha256sums = 9ab3b9a7413463b07bf5e2ce163b8674fa4e6318c94eac9acedc034ae8b0b723
+	source_i686 = sauerbraten-2020.11.29-i686.tar.xz::https://gitlab.com/linuxbombay/sauerbraten-cube2/binaries/2020.11.29/-/raw/main/sauerbraten-i686.tar.xz
+	sha256sums_i686 = 0bbc755ac26fdcda530c907fd44f625afc3812048242b2c4289c5f5007f59362
+	source_x86_64 = sauerbraten-2020.11.29-x64.tar.xz::https://gitlab.com/linuxbombay/sauerbraten-cube2/binaries/2020.11.29/-/raw/main/sauerbraten-x64.tar.xz
+	sha256sums_x86_64 = aa402bbcfc278a4759a1be8fd361eec00f8f47761d07b74080ac9261d686695e
+	source_aarch64 = sauerbraten-2020.11.29-arm64.tar.xz::https://gitlab.com/linuxbombay/sauerbraten-cube2/binaries/2020.11.29/-/raw/main/sauerbraten-arm64.tar.xz
+	sha256sums_aarch64 = 3c0a48d5474f2b4e726fcc259b66cf6d99c42721f9b7e84c9c2654154d8192a6
+
+pkgname = cube2-bin
