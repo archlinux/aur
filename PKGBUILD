@@ -28,7 +28,7 @@ package() {
   cd "${srcdir}/Extensions"
   install -d "${pkgdir}/usr/share/webapps/freshrss/extensions"
 
-  for extension in {xExtension-CustomCSS,xExtension-CustomJS,xExtension-ImageProxy,xExtension-QuickCollapse,xExtension-ReadingTime,xExtension-ShareByEmail,xExtension-StickyFeeds,xExtension-TTRSS_API,xExtension-TitleWrap} ; do
+  for extension in xExtension-* ; do
     cp -r $extension "${pkgdir}"/usr/share/webapps/freshrss/extensions/
   done
 
