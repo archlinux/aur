@@ -1,0 +1,19 @@
+pkgbase = python-cbbs-git
+        pkgdesc = A python package for decrypting data, using a custom bbs decryption algorithm implemented in C.
+        pkgver = r3.6f5ff5e
+        pkgrel = 1
+        url = https://github.com/Rin-Wood/cbbs
+        arch = x86_64
+        license = BSD
+        makedepends = python-build
+        makedepends = python-installer
+        makedepends = python-setuptools
+        makedepends = python-wheel
+        makedepends = git
+        depends = python
+        provides = python-cbbs
+        conflicts = python-cbbs
+        source = git+https://github.com/Rin-Wood/cbbs.git
+        md5sums = SKIP
+
+pkgname = python-cbbs-git
