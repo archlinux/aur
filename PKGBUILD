@@ -7,7 +7,7 @@
 
 pkgname=obs-studio-browser
 pkgver=30.2.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Free and open source software for video recording and live streaming. With everything except service integration"
 arch=("x86_64" "aarch64")
 url="https://github.com/obsproject/obs-studio"
@@ -21,7 +21,7 @@ _pythonver=3.12
 depends=(
   "alsa-lib" # Deps of ALSA plugin and CEF
   "curl" # Deps of OBS Studio and rtmp-services plugin
-  "ffmpeg-obs>=7" # Deps of OBS Studio and FFmpeg plugin
+  "ffmpeg-obs>=7.1" # Deps of OBS Studio and FFmpeg plugin
   "fontconfig" # Deps of Freetype2 plugin
   "freetype2" # Deps of Freetype2 plugin
   "gcc-libs" # Deps of any C++ related binary
