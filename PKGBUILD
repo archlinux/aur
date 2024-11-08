@@ -2,7 +2,7 @@
 # Contributor: Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=rotki-bin
-pkgver=1.35.1
+pkgver=1.36.0
 pkgrel=1
 pkgdesc='A portfolio tracking, analytics, accounting and tax reporting application that respects your privacy'
 arch=('x86_64')
@@ -19,7 +19,7 @@ sourceprefix=${pkgname%-bin}-${pkgver}
 source=("${sourceprefix}.tar.xz::https://github.com/rotki/rotki/releases/download/v${pkgver}/rotki-linux_x64-v${pkgver}.tar.xz"
         "${sourceprefix}-rotki.png::https://raw.githubusercontent.com/rotki/rotki/v${pkgver}/frontend/app/public/assets/images/rotki_1024x1024.png"
         "${sourceprefix}-LICENSE::https://github.com/rotki/rotki/raw/v${pkgver}/LICENSE.md")
-sha256sums=('ebac4b91c817dbe5e4dfa201d50b956b016c910e0cb805469b83c245a25beca3'
+sha256sums=('7147739469fad760cc1f140d97664fc0cdf4fbe8f8075c649e9ba82d71c027cc'
             '391e4e2bfe352660a151b8f7143f8057ad43aafb256d4e3dfbf15546c3541270'
             'eb6f58a98d8bdb6d3c8fee3817543589f3cd0921d14748fa0630edff2d4c08b0')
 
@@ -28,7 +28,7 @@ package() {
   ln -s /opt/rotki/rotki "${pkgdir}/usr/bin"
   tar xvf ${sourceprefix}.tar.xz -C "${pkgdir}/opt/"
   mv "${pkgdir}/opt/rotki"* "${pkgdir}/opt/rotki"
-  convert ${sourceprefix}-rotki.png -resize 256x256 rotki256.png
+  magick ${sourceprefix}-rotki.png -resize 256x256 rotki256.png
   install -Dm644 rotki256.png "${pkgdir}/usr/share/pixmaps/rotki.png"
   install -Dm644 ${sourceprefix}-LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   gendesk -f -n --pkgname "${pkgname%-bin}" \
