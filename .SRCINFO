@@ -1,0 +1,20 @@
+pkgbase = votar
+	pkgdesc = Tool to vote for AUR packages
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/Jguer/votar
+	arch = i686
+	arch = pentium4
+	arch = x86_64
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	license = GPL3
+	makedepends = go
+	provides = votar
+	conflicts = votar
+	source = votar-1.0.0.tar.gz::https://github.com/Jguer/votar/archive/v1.0.0.tar.gz
+	sha256sums = 1f4ab1f454537746224295ed74d8d2205d7c19f0524491cb92b4c2105ab69d7c
+
+pkgname = votar
