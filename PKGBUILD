@@ -5,13 +5,13 @@
 # Contributor: Themaister <maister@archlinux.us>
 
 pkgname=pcsx2-git
-pkgver=2.1.100.r0.g31b567287
+pkgver=2.3.10.r0.g5441c7ed59
 pkgrel=1
 pkgdesc='A Sony PlayStation 2 emulator'
 arch=(x86_64)
 url=https://github.com/PCSX2/pcsx2
 license=(
-    GPLV3
+    GPL-3.0+
 )
 
 depends=(
