@@ -1,0 +1,19 @@
+pkgbase = python-crijndael-git
+        pkgdesc = A python package for decrypting data, using a custom AES-256 decryption algorithm.
+        pkgver = r6.aae6121
+        pkgrel = 1
+        url = https://github.com/Rin-Wood/crijndael
+        arch = x86_64
+        license = BSD
+        makedepends = python-build
+        makedepends = python-installer
+        makedepends = python-setuptools
+        makedepends = python-wheel
+        makedepends = git
+        depends = python
+        provides = python-crijndael
+        conflicts = python-crijndael
+        source = git+https://github.com/Rin-Wood/crijndael.git
+        md5sums = SKIP
+
+pkgname = python-crijndael-git
