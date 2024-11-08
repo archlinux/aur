@@ -4,7 +4,7 @@
 # Contributor: Bartłomiej Piotrowski <bpiotrowski@archlinux.org>
 pkgname=openfortivpn-git
 _pkgname=openfortivpn
-pkgver=1.22.1+r836+c49663d26
+pkgver=1.22.1+r836+gc49663d26
 pkgrel=1
 pkgdesc="An open implementation of Fortinet's proprietary PPP+SSL VPN solution"
 arch=(x86_64)
@@ -38,7 +38,7 @@ pkgver(){
   _version=$(git tag --sort=-v:refname --list | grep '^v[0-9.]*$' | head -n1 | cut -c2-)
   _commits=$(git rev-list --count HEAD)
   _short_commit_hash=$(git rev-parse --short=9 HEAD)
-  echo "${_version#'v'}+r${_commits}+${_short_commit_hash}"
+  echo "${_version#'v'}+r${_commits}+g${_short_commit_hash}"
 }
 
 build() {
