@@ -1,6 +1,6 @@
 # Maintainer: Carlos Aznarán <caznaranl@uni.pe>
 pkgname=opm-upscaling
-pkgver=2024.04
+pkgver=2024.10
 pkgrel=1
 pkgdesc="Single-phase and steady-state upscaling methods"
 arch=(x86_64)
@@ -8,8 +8,9 @@ url="https://github.com/OPM/${pkgname}"
 license=(GPL-3.0-or-later)
 depends=("opm-grid>=${pkgver}")
 makedepends=(gcc-fortran suitesparse superlu)
+options=(!emptydirs)
 source=(${pkgname}-release-${pkgver}-final.tar.gz::${url}/archive/release/${pkgver}/final.tar.gz)
-sha512sums=('4744f9855a09772f4d38dea1117b8ca089c7a3473a0c8715daecdddd18224c74f94b192d19f208636d82a47f75100ce2d5ce6a5f204cbd70251f51108b44dbf6')
+sha512sums=('cf0de91e6a1eb04146d8e8688fe72e3bdedf5fe7a2c8d8290bf00cf74f3f1737f2be3b41b16ccbc8926417b767e6ad0d720cb50ecc48143566adfe991849428a')
 
 build() {
   cmake \
@@ -32,5 +33,4 @@ build() {
 package() {
   DESTDIR="${pkgdir}" cmake --build build-cmake --target install
   install -Dm644 ${pkgname}-release-${pkgver}-final/COPYING "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-  find "${pkgdir}" -type d -empty -delete
 }
