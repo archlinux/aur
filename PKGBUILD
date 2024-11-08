@@ -1,17 +1,14 @@
 # Maintainer: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
-
 pkgname=octave-docs
-pkgver=7.3.0
+pkgver=9.2.0
 pkgrel=1
 pkgdesc="GNU Octave documentation."
 arch=(any)
 url="https://www.gnu.org/software/octave/"
 license=('GPL')
 options=('docs')
-source=(https://ftp.gnu.org/gnu/octave/octave-${pkgver}.tar.gz{,.sig})
-sha256sums=('6e14a4649d70af45ab660f8cbbf645aaf1ec33f25f88bfda4697cb17e440c4f5'
-            'SKIP')
-validpgpkeys=('DBD9C84E39FE1AAE99F04446B05F05B75D36644B')  # John W. Eaton
+source=(https://ftp.gnu.org/gnu/octave/octave-${pkgver}.tar.gz)
+sha256sums=('0636554b05996997e431caad4422c00386d2d7c68900472700fecf5ffeb7c991')
 
 package() {
 	cd "${pkgname%-docs}-${pkgver}"
