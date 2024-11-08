@@ -1,0 +1,19 @@
+pkgbase = privexchange-git
+	pkgdesc = Exchange your privileges for Domain Admin privs by abusing Exchange Resources
+	pkgver = r6.3a6dea3
+	pkgrel = 1
+	url = https://codeberg.org/killab33z/privexchange
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = python
+	depends = impacket
+	provides = privexchange
+	conflicts = privexchange
+	conflicts = privexchange-git-bin
+	source = git+https://codeberg.org/killab33z/privexchange
+	source = privexchange.py
+	sha512sums = SKIP
+	sha512sums = c015a9d11bf0d38075755b9bed9d4ffb781a68fac98783dc27ef60e9295112906833c0ab46ef078d556f85cbea8ec5ec32e6f483930e9c0ee8f6f4750bece3b0
+
+pkgname = privexchange-git
