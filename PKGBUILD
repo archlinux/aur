@@ -1,4 +1,4 @@
-# Maintainer: Antoine Poinsot <My first name at wizardsardine.com>
+# Maintainer: Edouard Paris <edouard@wizardsardine.com>
 
 pkgname=liana-bin
 pkgver=8.0
