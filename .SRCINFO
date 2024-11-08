@@ -1,0 +1,24 @@
+pkgbase = smbclientng-git
+	pkgdesc = smbclient-ng, a fast and user friendly way to interact with SMB shares.
+	pkgver = 2.1.6.r5.g14531a1
+	pkgrel = 1
+	url = https://github.com/p0dalirius/smbclient-ng
+	arch = any
+	license = GPL-3.0-only
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	depends = impacket
+	depends = python-charset-normalizer
+	depends = python-pefile
+	depends = python-rich
+	provides = smbclientng
+	conflicts = smbclientng
+	conflicts = smbclientng-git-bin
+	source = git+https://github.com/p0dalirius/smbclient-ng
+	sha512sums = SKIP
+
+pkgname = smbclientng-git
