@@ -11,8 +11,9 @@ depends=("opm-common>=${pkgver}" "dune-grid>=${_dunever}" "dune-istl>=${_dunever
 makedepends=(cppcheck doxygen graphviz)
 optdepends=('man-db: manual pages for grdecl2vtu and mirror_grid')
 provides=('grdecl2vtu' 'mirror_grid')
+options=(!emptydirs)
 source=(${pkgname}-release-${pkgver}-final.tar.gz::${url}/archive/release/${pkgver}/final.tar.gz)
-sha512sums=('e16f5c99f25ac51f112e9e5b8486f46bf561280e4041f0b7458d765fda1f3648da5c51863526a11b559c7d34a8dad2f4e4e6f2c43ac5cc5e521534b5a28e7c70')
+sha512sums=('41600c23f63ba5368ede6d805ef40873cad1afa221cedf002ca2ae02eda6b610f9cf1dca83fe7fa7a51ee44cf461a1f317376287e1bf6c98ac6a4763844f8a4a')
 
 build() {
   cmake \
@@ -36,5 +37,4 @@ build() {
 package() {
   DESTDIR="${pkgdir}" cmake --build build-cmake --target install install-html
   install -Dm644 ${pkgname}-release-${pkgver}-final/COPYING "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-  find "${pkgdir}" -type d -empty -delete
 }
