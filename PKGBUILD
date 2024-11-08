@@ -12,7 +12,7 @@ pkgdesc="Official desktop version of Telegram messaging app - Static binaries"
 arch=(x86_64)
 url="https://github.com/telegramdesktop/tdesktop"
 license=(GPL3)
-depends=(fontconfig glib2 hicolor-icon-theme glibc libx11 freetype2)
+depends=(fontconfig glib2 hicolor-icon-theme glibc libx11 freetype2 qt6-base)
 makedepends=(
 	chrpath
 )
