@@ -1,0 +1,19 @@
+pkgbase = firefox-gnome-theme-nightly-git
+	pkgdesc = A GNOME theme for Firefox Nightly
+	pkgver = r1134.fe2b635
+	pkgrel = 1
+	url = https://github.com/rafaelmardojai/firefox-gnome-theme
+	install = firefox-gnome-theme.install
+	arch = any
+	license = Unlicense
+	makedepends = git
+	optdepends = firefox-developer-edition: compatible browser
+	optdepends = firefox-nightly: compatible browser
+	conflicts = firefox-gnome-theme
+	conflicts = firefox-gnome-theme-git
+	source = firefox-gnome-theme::git+https://github.com/rafaelmardojai/firefox-gnome-theme.git#branch=nightly
+	source = INSTALL.md
+	sha256sums = SKIP
+	sha256sums = f0fc2ccb43b813174e329fef74ab37a8cbfecd60168dbe05ccba999cfd8d222a
+
+pkgname = firefox-gnome-theme-nightly-git
