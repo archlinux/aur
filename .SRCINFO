@@ -1,4 +1,5 @@
 pkgbase = geant4-urrptdata
+	pkgdesc = Particle Tables for the treatment of low-energy neutrons in the Unresolved Resonance Region (URR)
 	pkgver = 1.0
 	pkgrel = 1
 	url = http://geant4.cern.ch/
