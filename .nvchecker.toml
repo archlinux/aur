@@ -1,0 +1,4 @@
+[snowflake-pt-client-git]
+source = "git"
+git = "https://gitlab.torproject.org/tpo/anti-censorship/pluggable-transports/snowflake.git"
+prefix = "v"
