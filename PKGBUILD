@@ -1,7 +1,7 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
 pkgname="ipsw"
-pkgver=3.1.554
+pkgver=3.1.555
 pkgrel=1
 pkgdesc="iOS/macOS Research Swiss Army Knife"
 arch=('x86_64')
@@ -12,7 +12,7 @@ makedepends=('git' 'go')
 backup=("etc/${pkgname}.conf")
 _pkgsrc="${pkgname}-${pkgver}"
 source=("${_pkgsrc}::git+${url}.git#tag=v${pkgver}") # ?signed
-b2sums=('fc4ee4b6bbb389517e229b53e5786cbd7aec267053df17cd569b8d5e96ee97ab9079968fa1a77b917b4042cc13277ef96eee6cabe84f8bda72108a4a9bc4a9b8')
+b2sums=('706a7bb4df629935c7d247230b54eaaaab28e8a0f07a220ac0c08c5742f5d904246a73923775a18c752e4b190522eef278bcd90cd787ba0a8a456859727da76f')
 # validpgpkeys=('9F1581FE95BD6E63C45205DD5A95D762E23EC861') # blacktop <blacktop@users.noreply.github.com> (https://github.com/blacktop.gpg)
 
 prepare() {
@@ -46,17 +46,17 @@ build() {
 
 package() {
   cd "${srcdir}/${_pkgsrc}"
-  install -Dm755 "build/${pkgname}"   "${pkgdir}/usr/bin/${pkgname}"
-  install -Dm644 "README.md"          "${pkgdir}/usr/share/doc/${pkgname}/README.md"
-  install -Dm644 "LICENSE"            "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-  install -Dm644 "config.example.yml" "${pkgdir}/etc/${pkgname}.conf"
+  install -vDm755 "build/${pkgname}"   "${pkgdir}/usr/bin/${pkgname}"
+  install -vDm644 "README.md"          "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+  install -vDm644 "LICENSE"            "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -vDm644 "config.example.yml" "${pkgdir}/etc/${pkgname}.conf"
 
   install -d "${pkgdir}/usr/share/man/man1"
-  find "manpages" -mindepth 1 -type f -exec install -Dm644 "{}" "${pkgdir}/usr/share/man/man1/" \;
+  find "manpages" -mindepth 1 -type f -exec install -vDm644 "{}" "${pkgdir}/usr/share/man/man1/" \;
 
   cd "${srcdir}/${_pkgsrc}/completions"
-  install -Dm644 "${pkgname}.bash"       "${pkgdir}/usr/share/bash-completion/completions/${pkgname}"
-  install -Dm644 "${pkgname}.fish"       "${pkgdir}/usr/share/fish/vendor_completions.d/${pkgname}.fish"
-  install -Dm644 "${pkgname}.zsh"        "${pkgdir}/usr/share/zsh/site-functions/_${pkgname}"
-  install -Dm644 "${pkgname}.powershell" "${pkgdir}/usr/share/powershell/Completions/${pkgname}.ps1"
+  install -vDm644 "${pkgname}.bash"       "${pkgdir}/usr/share/bash-completion/completions/${pkgname}"
+  install -vDm644 "${pkgname}.fish"       "${pkgdir}/usr/share/fish/vendor_completions.d/${pkgname}.fish"
+  install -vDm644 "${pkgname}.zsh"        "${pkgdir}/usr/share/zsh/site-functions/_${pkgname}"
+  install -vDm644 "${pkgname}.powershell" "${pkgdir}/usr/share/powershell/Completions/${pkgname}.ps1"
 }
