@@ -1,5 +1,4 @@
 [archosaur-bin]
-source = "github"
-github = "txtsd/archosaur"
+source = "git"
+git = "https://github.com/txtsd/archosaur.git"
 include_regex = "\\d+\\.\\d+\\.\\d+"
-use_max_tag = true
