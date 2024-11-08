@@ -1,6 +1,6 @@
 pkgbase = electrum-appimage
 	pkgdesc = Electrum Bitcoin wallet with bundled libraries
-	pkgver = 4.5.5
+	pkgver = 4.5.8
 	pkgrel = 1
 	url = https://electrum.org
 	arch = x86_64
@@ -8,13 +8,13 @@ pkgbase = electrum-appimage
 	provides = electrum
 	conflicts = electrum
 	conflicts = electrum-git
-	noextract = electrum-4.5.5-x86_64.AppImage
+	noextract = electrum-4.5.8-x86_64.AppImage
 	options = !strip
-	source = https://download.electrum.org/4.5.5/electrum-4.5.5-x86_64.AppImage
-	source = electrum-4.5.5-x86_64.AppImage.asc::https://download.electrum.org/4.5.5/electrum-4.5.5-x86_64.AppImage.ThomasV.asc
-	source = electrum-4.5.5-LICENCE::https://raw.githubusercontent.com/spesmilo/electrum/4.5.5/LICENCE
+	source = https://download.electrum.org/4.5.8/electrum-4.5.8-x86_64.AppImage
+	source = electrum-4.5.8-x86_64.AppImage.asc::https://download.electrum.org/4.5.8/electrum-4.5.8-x86_64.AppImage.ThomasV.asc
+	source = electrum-4.5.8-LICENCE::https://raw.githubusercontent.com/spesmilo/electrum/4.5.8/LICENCE
 	validpgpkeys = 6694D8DE7BE8EE5631BED9502BD5824B7F9470E6
-	b2sums = 381cb262344f539b9baca8a7418ecd6f1c16c43f1440363422077ebd73c0e042374307289dae136796b7b922ee8e0de735ba5c3057a6a9fae9e1cda4a5b169ba
+	b2sums = 4cf571b30a9c761f9aa121ad296f77f8454a8a801c4e08e844adbf970605f27e4b78e0fee9b6b31040e11765071741d77ae85d56cf4ffe461f9bce932c52f745
 	b2sums = SKIP
 	b2sums = 8e30e92bffb9b3c518bb106c23cbab40ceb9a1dace193bdbd7e979fa8116e76b47dfc99c5361020c58a7d0bb7de236e6dd7d8f3dfdb1b7fd16245135d53cec3f
 
