@@ -19,7 +19,6 @@ prepare() {
   sed -i '24 a #include <fmt/ranges.h>' ${pkgbase}-release-${pkgver}-final/opm/input/eclipse/EclipseState/Grid/FaceDir.cpp
   sed -i '37 a #include <fmt/ranges.h>' ${pkgbase}-release-${pkgver}-final/opm/input/eclipse/Schedule/Action/ASTNode.cpp
   sed -i '50 a #include <fmt/ranges.h>' ${pkgbase}-release-${pkgver}-final/opm/input/eclipse/Schedule/Well/WellKeywordHandlers.cpp
-  sed -i '91 a #include <fmt/ranges.h>' ${pkgbase}-release-${pkgver}-final/opm/output/eclipse/Summary.cpp
 }
 
 build() {
