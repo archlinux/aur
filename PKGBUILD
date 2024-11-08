@@ -2,16 +2,16 @@
 # Contributor: Alfonso Saavedra "Son Link" <sonlink.dourden@gmail.com>
 
 pkgname=zesarux-git
-pkgver=ZEsarUX.11.0.r580.g6827b68
+pkgver=ZEsarUX.11.0.r704.g138e573
 _ver=11.1
 pkgrel=1
 epoch=3
 pkgdesc="A Zx80/Zx81/Z88, Zx Spectrum 16/48/128/+2/+2A and ZX-Uno emulator with ULAPlus support. Development version."
 arch=('i686' 'x86_64')
 url="https://github.com/chernandezba/zesarux"
-license=('GPL3')
+license=('GPL-3.0-or-later')
 conflicts=('zesarux')
-depends=('libxxf86vm' 'aalib' 'libcaca' 'alsa-lib')
+depends=('libxxf86vm' 'aalib' 'libcaca' 'alsa-lib' 'python')
 optdepends=('libpulse: for support Pulseaudio'
 	'openssl: for enable SSL functions'
 	'sdl: for support sdl video and audio output')
@@ -32,9 +32,12 @@ pkgver() {
 
 build() {
 	cd "$srcdir/zesarux-code/src"
+	# Disable -Wimplicit-function-declaration errors 
+	# because gcc 14.x+ is very sensible
+	export CFLAGS+=" -Wno-error=implicit-function-declaration"
+	export CXXFLAGS+=" -Wno-error=implicit-function-declaration"
 	
-	# disable libcaca for now
-	./configure --prefix /usr --enable-memptr --enable-visualmem --enable-cpustats --disable-caca --enable-sdl2
+	./configure --prefix /usr --enable-memptr --enable-visualmem --enable-cpustats --enable-sdl2
 	sed -i 's/tar -C/#tar -C/g' Makefile
 	make bintargz
 }
