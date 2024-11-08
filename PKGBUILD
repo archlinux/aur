@@ -3,12 +3,12 @@
 # Contributor: regreddit <nik.martin@gmail.com>
 
 pkgname=mixxx-git
-pkgver=r8858
+pkgver=r9308
 pkgrel=1
-pkgdesc="Digital DJ mixing software. Git master branch (development/alpha)."
+pkgdesc="Digital DJ mixing software (latest development branch)."
 arch=('i686' 'x86_64' 'aarch64')
 url="https://mixxx.org/"
-license=('GPL2')
+license=('GPL-2.0-or-later')
 groups=('pro-audio')
 depends=(
     'chromaprint'
@@ -17,6 +17,7 @@ depends=(
     'lame'
     'libebur128'
     'libid3tag'
+    'libkeyfinder'
     'libmad'
     'libmodplug'
     'libmp4v2'
@@ -37,7 +38,7 @@ depends=(
     'qtkeychain-qt6'
     'rubberband'
     'soundtouch'
-    'taglib'
+    'taglib1'
     'ttf-opensans'
     'ttf-ubuntu-font-family'
     'upower'
