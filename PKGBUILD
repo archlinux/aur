@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=mailmaster-bin
 pkgver=5.0.2.1011
-pkgrel=5
-pkgdesc="专业的全平台邮箱客户端。一封邮件，多端同步。所有平台都能给你出色的体验。"
+pkgrel=6
+pkgdesc="Professional full-platform email client. One email, multiple syncs. All platforms give you a great experience.专业的全平台邮箱客户端。一封邮件，多端同步。所有平台都能给你出色的体验。"
 arch=('x86_64')
 url="https://dashi.163.com"
 _sparkurl="https://mirrors.sdu.edu.cn/spark-store-repository"
@@ -20,6 +20,7 @@ depends=(
     'gconf'
     'libxcomposite'
     'bubblewrap'
+    'libxdamage'
 )
 makedepends=(
     'imagemagick'
@@ -51,18 +52,20 @@ sha256sums=('d7c272d50798b4f0dc5279efba383e8f12decef19e434b144e07c3c26c25c58a'
             '76d582e6b5a7057acd8b239edf102329a5a966303d7d1b7a024b447e057b342e'
             '0fbbb920bb9b3b24c357cca9035671fcfee5f9ed49175f6145db979406dbc532'
             '83873058e692936a09649ede2f8e70b87dde1f3f5488db53da8081b81c79a5d9'
-            'e635574006c5f71fb3908a885e9b54f2ccf562017a2f8fdb810cd8ef6062d149'
-            '187934dbfbcf931831141a9b4e2926d20af7920320a2e3625df569464cc1d681')
+            'd3dc6df916c1600e66a673b63f2346777421d6cbcdbaf4a9eb0d182054c8b6a5'
+            '048b9c6c54f1fe46fa2d0844088d81e0c8e334dd7a8ed49699039b6d18348ee3')
 build() {
     #extract mailmaster
-    sed -e "s|@appname@|${pkgname%-bin}|g" \
-        -e "s|@runname@|${pkgname%-bin}|g" \
-        -i "${srcdir}/${pkgname%-bin}.sh"
+    sed -e "
+        s/@appname@/${pkgname%-bin}/g
+        s/@runname@/${pkgname%-bin}/g
+    " -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
-    sed -e "s|/opt/${pkgname%-bin}/launch.sh|${pkgname%-bin}|g" \
-        -e "s|/opt/${pkgname%-bin}/logo.ico|${pkgname%-bin}|g" \
-        -e "5i\Categories=Network;" \
-        -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
+    sed -e "
+        s/\/opt\/${pkgname%-bin}\/launch.sh/${pkgname%-bin}/g
+        s/\/opt\/${pkgname%-bin}\/logo.ico/${pkgname%-bin}/g
+        5i\Categories=Network;
+    " -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
     convert "${srcdir}/opt/${pkgname%-bin}/logo.ico" "${srcdir}/${pkgname%-bin}.png"
 
     #extract nss-wrapper
@@ -83,7 +86,7 @@ build() {
     bsdtar -xf "${srcdir}/ablrun/data."* -C "${srcdir}/ablrun"
     mv "${srcdir}/ablrun/usr/lib/${CARCH}-linux-gnu/additional-base-lib" "${srcdir}/ablrun/usr/lib"
     rm -rf "${srcdir}/ablrun/usr/lib/${CARCH}-linux-gnu"
-    sed "s|\/${CARCH}-linux-gnu||g" -i "${srcdir}/ablrun/usr/bin/ablrun"
+    sed "s/\/${CARCH}-linux-gnu//g" -i "${srcdir}/ablrun/usr/bin/ablrun"
 
     #extract ubuntu-libc6
     install -Dm755 -d "${srcdir}/libc6"

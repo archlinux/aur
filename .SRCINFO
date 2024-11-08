@@ -1,7 +1,7 @@
 pkgbase = mailmaster-bin
-	pkgdesc = 专业的全平台邮箱客户端。一封邮件，多端同步。所有平台都能给你出色的体验。
+	pkgdesc = Professional full-platform email client. One email, multiple syncs. All platforms give you a great experience.专业的全平台邮箱客户端。一封邮件，多端同步。所有平台都能给你出色的体验。
 	pkgver = 5.0.2.1011
-	pkgrel = 5
+	pkgrel = 6
 	url = https://dashi.163.com
 	arch = x86_64
 	license = LicenseRef-custom
@@ -15,6 +15,7 @@ pkgbase = mailmaster-bin
 	depends = gconf
 	depends = libxcomposite
 	depends = bubblewrap
+	depends = libxdamage
 	conflicts = mailmaster
 	noextract = libnss-wrapper-1.1.2.deb
 	noextract = libsasl2-2.1.28.deb
@@ -39,7 +40,7 @@ pkgbase = mailmaster-bin
 	sha256sums = 76d582e6b5a7057acd8b239edf102329a5a966303d7d1b7a024b447e057b342e
 	sha256sums = 0fbbb920bb9b3b24c357cca9035671fcfee5f9ed49175f6145db979406dbc532
 	sha256sums = 83873058e692936a09649ede2f8e70b87dde1f3f5488db53da8081b81c79a5d9
-	sha256sums = e635574006c5f71fb3908a885e9b54f2ccf562017a2f8fdb810cd8ef6062d149
-	sha256sums = 187934dbfbcf931831141a9b4e2926d20af7920320a2e3625df569464cc1d681
+	sha256sums = d3dc6df916c1600e66a673b63f2346777421d6cbcdbaf4a9eb0d182054c8b6a5
+	sha256sums = 048b9c6c54f1fe46fa2d0844088d81e0c8e334dd7a8ed49699039b6d18348ee3
 
 pkgname = mailmaster-bin
