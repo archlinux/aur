@@ -1,7 +1,7 @@
 pkgbase = sdrconnect
 	pkgdesc = SDR receiver for SDRplay devices
-	pkgver = 0.0.0.4
-	pkgrel = 2
+	pkgver = 0.0.0.5
+	pkgrel = 1
 	url = http://www.sdrplay.com/sdrconnect/
 	arch = aarch64
 	arch = x86_64
@@ -26,9 +26,9 @@ pkgbase = sdrconnect
 	sha256sums = 813615889e26d412e63c8c383626e370376d367c5109e909d61fe4070a1d8def
 	sha256sums = 4b9fb2be7c968874c71b003ea2eff1bef12feea70b0557315c9a5dbf8056851b
 	sha256sums = 0ac0db2d91ebfe442a80e0f5fb153ec0f93864abf5ae15c6163d9c3abc103498
-	source_aarch64 = https://www.sdrplay.com/software/SDRconnect_linux-arm64_5dce37273.run
-	sha256sums_aarch64 = cf8f4611ae9aaf69cae468f0bae479938169636a05300a8c7792a598b026c4af
-	source_x86_64 = https://www.sdrplay.com/software/SDRconnect_linux-x64_5dce37273.run
-	sha256sums_x86_64 = 70ec8cc3cc70266e882912ba3ec50ad2bd2c38d58e950fcbb6418df0cf756abb
+	source_aarch64 = https://www.sdrplay.com/software/SDRconnect_linux-arm64_105b8f722.run
+	sha256sums_aarch64 = 39c054ffbbf2b44a411b30e2a943095fe4520bc60966101e385e2a2678d5b507
+	source_x86_64 = https://www.sdrplay.com/software/SDRconnect_linux-x64_105b8f722.run
+	sha256sums_x86_64 = 981100aff35a15de235a7d28b0a45de92691cd0b39a924c087bab84f7b8096e2
 
 pkgname = sdrconnect
