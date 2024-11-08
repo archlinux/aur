@@ -1,4 +1,4 @@
-# Maintainer: SuicideCatt <fr7g31@gmail.com>
+# Maintainer: SuicideCatt <random.cat.from.internet@gmail.com>
 
 pkgname=sct_argsp
 pkgver=0.1.0
