@@ -2,7 +2,7 @@
 pkgname=orpheus-git
 _pkgname="${pkgname%-git}"
 pkgver=0.1.r7.gcf448df
-pkgrel=1
+pkgrel=2
 pkgdesc="Wrapper for modified version of Impacket GetUserSPNs.py and kerberosv5.py which alters the KDC Options (Ticket Options) and the Encryption Type for Kerberoasting."
 arch=('any')
 url="https://github.com/trustedsec/orpheus"
@@ -11,7 +11,7 @@ depends=('python'
          'impacket')
 makedepends=('git')
 provides=("$_pkgname")
-conflicts=("$_pkgname" "$pkgname-bin")
+conflicts=("$_pkgname" "$_pkgname-bin")
 source=("git+$url")
 sha512sums=('SKIP')
 

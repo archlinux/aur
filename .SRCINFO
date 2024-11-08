@@ -1,7 +1,7 @@
 pkgbase = orpheus-git
 	pkgdesc = Wrapper for modified version of Impacket GetUserSPNs.py and kerberosv5.py which alters the KDC Options (Ticket Options) and the Encryption Type for Kerberoasting.
 	pkgver = 0.1.r7.gcf448df
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/trustedsec/orpheus
 	arch = any
 	license = custom
@@ -10,7 +10,7 @@ pkgbase = orpheus-git
 	depends = impacket
 	provides = orpheus
 	conflicts = orpheus
-	conflicts = orpheus-git-bin
+	conflicts = orpheus-bin
 	source = git+https://github.com/trustedsec/orpheus
 	sha512sums = SKIP
 
