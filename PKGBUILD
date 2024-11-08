@@ -9,7 +9,7 @@
 
 _pkgname=Flexget
 pkgname=${_pkgname,,}
-pkgver=3.11.55
+pkgver=3.11.56
 pkgrel=1
 pkgdesc="A multipurpose automation tool for all of your media"
 arch=(any)
@@ -55,7 +55,7 @@ source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
         "$pkgname.user.service"
         "$pkgname.sysusers"
         "$pkgname.tmpfiles")
-sha256sums=('54f53a3e16a5e380c657084458619064cb90eb4a8979b9ef6a567fa79d53ae7d'
+sha256sums=('a91f2f71bd4c219e177541cc9d7d9ea6e91bf8074ce0ea82364ea8454d49989c'
             'b7578417ab5f671def7021133ae68900d82aaa81b5e80a2fec4d85e46eb1f8e9'
             'b9d354f6095aafe7a29cb8e90239b662a2584903a85fe3770f2b99bb8bdfff4a'
             '799921777b3714f074deaafbdd241ea7b99a0eccd65931708fd81457286f4f49'
