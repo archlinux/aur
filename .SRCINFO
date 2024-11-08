@@ -1,0 +1,17 @@
+pkgbase = php-kadm5
+	pkgdesc = PHP extension for interfacing with MIT Kerberos V admin servers
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/fuhry/php-kadm5
+	arch = x86_64
+	license = PHP
+	makedepends = php
+	makedepends = git
+	depends = krb5
+	source = git+https://github.com/fuhry/php-kadm5.git#commit=b24948126f1a1e702cde16f2c44d98e58b9cb382
+	sha256sums = SKIP
+
+pkgname = php-kadm5
+	depends = krb5
+	depends = php
+	backup = etc/php/conf.d/kadm5.ini
