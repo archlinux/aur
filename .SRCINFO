@@ -1,0 +1,19 @@
+pkgbase = python-catelier-git
+        pkgdesc = A python package for decrypting data, using a custom atelier decryption algorithm implemented in C.
+        pkgver = r6.99ce902
+        pkgrel = 1
+        url = https://github.com/Rin-Wood/catelier
+        arch = x86_64
+        license = BSD
+        makedepends = python-build
+        makedepends = python-installer
+        makedepends = python-setuptools
+        makedepends = python-wheel
+        makedepends = git
+        depends = python
+        provides = python-catelier
+        conflicts = python-catelier
+        source = git+https://github.com/Rin-Wood/catelier.git
+        md5sums = SKIP
+
+pkgname = python-catelier-git
