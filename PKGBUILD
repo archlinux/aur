@@ -21,7 +21,7 @@ unset _pkgtype
 _gitname="linux"
 _pkgname="$_gitname${_pkgtype:-}"
 pkgbase="$_pkgname"
-pkgver=6.6.58
+pkgver=6.6.60
 pkgrel=1
 pkgdesc='LTS Linux'
 url='https://www.kernel.org'
@@ -45,14 +45,16 @@ makedepends=(
   python-sphinx
   texlive-latexextra
 )
-options=('!strip')
+
+options=('!debug' '!strip')
+
 _srcname=linux-$pkgver
-source+=(
+source=(
   https://cdn.kernel.org/pub/linux/kernel/v${pkgver%%.*}.x/${_srcname}.tar.{xz,sign}
   "config-$pkgver"::https://gitlab.archlinux.org/archlinux/packaging/packages/linux-lts/-/raw/main/config
 )
-sha256sums+=(
-  'e7df81e588d70fab5ec3ec3bb04ac53d51f0860fc3b1ec45e0a4167a026899db' ###
+sha256sums=(
+  '52f9e32d5082ab94253447fd66670d0c3bb765cfcb99b0bf61d1b8eae25952ef' ###
   'SKIP'
   'SKIP'
 )
@@ -96,8 +98,6 @@ fi
 
 if [[ "${_build_v3::1}" == "t" ]]; then
   export KCFLAGS="-march=x86-64-v3 -mtune=generic -O3"
-  export HOSTCFLAGS="-march=x86-64-v3 -mtune=generic -O3"
-  export HOSTCXXFLAGS="-march=x86-64-v3 -mtune=generic -O3"
 fi
 
 export KBUILD_BUILD_HOST=archlinux
