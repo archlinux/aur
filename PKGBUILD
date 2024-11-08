@@ -1,7 +1,7 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
 pkgname="phylum"
-pkgver=7.1.3
+pkgver=7.1.4
 pkgrel=1
 pkgdesc="Command line interface for the Phylum API"
 arch=('x86_64' 'aarch64')
@@ -12,7 +12,7 @@ depends=('gcc-libs' 'glibc' 'zlib')
 makedepends=('cargo')
 _pkgsrc="cli-${pkgver}"
 source=("${_pkgsrc}.tar.gz::${_url}/archive/refs/tags/v${pkgver}.tar.gz")
-b2sums=('c72168c3de838ee7ba25c701055a292b8dccc79179f48ea335d8f99e32b3e66e1b3560cbd4c5ca954cab8d7a1b62447d76e92ff2f167f47ce60e906776d73f24')
+b2sums=('9907def5994c7ad6492d467ea34cbb14d0500c1cddfc581ee81362515d5300d039d29854da1421af4001a734ed74c8adac19a4080a0ef0eef808f5e9fb9e2d49')
 
 prepare() {
   cd "${srcdir}/${_pkgsrc}"
@@ -36,14 +36,14 @@ check() {
 
 package() {
   cd "${srcdir}/${_pkgsrc}"
-  install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
-  install -Dm644 "LICENSE"   "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -vDm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+  install -vDm644 "LICENSE"   "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
   cd "target"
-  install -Dm755 "release/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
+  install -vDm755 "release/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
 
   cd "completions"
-  install -Dm644 "${pkgname}.bash" "${pkgdir}/usr/share/bash-completion/completions/${pkgname}"
-  install -Dm644 "${pkgname}.fish" "${pkgdir}/usr/share/fish/vendor_completions.d/${pkgname}.fish"
-  install -Dm644 "_${pkgname}"     "${pkgdir}/usr/share/zsh/site-functions/_${pkgname}"
+  install -vDm644 "${pkgname}.bash" "${pkgdir}/usr/share/bash-completion/completions/${pkgname}"
+  install -vDm644 "${pkgname}.fish" "${pkgdir}/usr/share/fish/vendor_completions.d/${pkgname}.fish"
+  install -vDm644 "_${pkgname}"     "${pkgdir}/usr/share/zsh/site-functions/_${pkgname}"
 }
