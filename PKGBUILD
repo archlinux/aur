@@ -2,7 +2,7 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=yulab.utils
-_pkgver=0.1.7
+_pkgver=0.1.8
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -23,8 +23,8 @@ optdepends=(
   r-rappdirs
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('e971fafe5017f2df17171d17a2744001')
-b2sums=('b653061947e7a11a5e666c71ba1da25b4dd233e2db2951142bd60f98fe918677562c80fdfa22bad9bd61ed78d3345e091b4b025778fc18cb5fc2362cc1b9a834')
+md5sums=('e91421e54a362da6220fa6c5acb185e6')
+b2sums=('6f1a254a0ed17a22aa97125f69bc940427d6b92cbe8c738df76954417fa12e862ddb6acaf518f41c9839e8b4795734009ea67a007511b764b15673278007f8c5')
 
 build() {
   mkdir build
