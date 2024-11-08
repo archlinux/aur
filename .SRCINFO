@@ -1,0 +1,13 @@
+pkgbase = tr31-git
+	pkgdesc = Key block library and tools for ANSI X9.143, ASC X9 TR-31 and ISO 20038
+	pkgver = 0.6.2
+	pkgrel = 1
+	url = https://github.com/openemv/tr31
+	arch = x86_64
+	license = LGPL-2.1
+	provides = tr31-tool
+	conflicts = tr31-tool
+	source = git+https://github.com/openemv/tr31
+	sha256sums = SKIP
+
+pkgname = tr31-git
