@@ -1,0 +1,19 @@
+pkgbase = python-ctea-git
+        pkgdesc = A python package for decrypting data, using a custom TEA decryption algorithm implemented in C.
+        pkgver = r3.55f168a
+        pkgrel = 1
+        url = https://github.com/Rin-Wood/ctea
+        arch = x86_64
+        license = BSD
+        makedepends = python-build
+        makedepends = python-installer
+        makedepends = python-setuptools
+        makedepends = python-wheel
+        makedepends = git
+        depends = python
+        provides = python-ctea
+        conflicts = python-ctea
+        source = git+https://github.com/Rin-Wood/ctea.git
+        md5sums = SKIP
+
+pkgname = python-ctea-git
