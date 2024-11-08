@@ -1,6 +1,6 @@
 pkgbase = nvidia-open-beta
-	pkgdesc = NVIDIA open GPU kernel modules (beta version)
-	pkgver = 560.35.03
+	pkgdesc = NVIDIA open kernel modules (beta version)
+	pkgver = 565.57.01
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/NVIDIA/open-gpu-kernel-modules/
@@ -11,32 +11,38 @@ pkgbase = nvidia-open-beta
 	options = !buildflags
 	options = !lto
 	options = !strip
-	source = https://github.com/NVIDIA/open-gpu-kernel-modules/archive/560.35.03/nvidia-open-560.35.03.tar.gz
+	source = https://github.com/NVIDIA/open-gpu-kernel-modules/archive/565.57.01/nvidia-open-565.57.01.tar.gz
 	source = 110-nvidia-open-change-dkms-conf.patch
 	source = 120-nvidia-open-linux-rt-gift.patch
 	source = 130-nvidia-open-reproducible-build.patch
 	source = 140-nvidia-open-gcc-sls.patch
-	sha256sums = a5dfb5e9b051510cfa987a25a2afe58f8746582128a0e79cc2839b2ed2c7bc58
-	sha256sums = c583bacd93447e14b94086c322963f655347f6bb9cc53fa9739f628b07b6bd3f
+	source = 150-nvidia-open-make-modeset-fbdev-default.patch
+	source = 160-nvidia-open-fix-hdmi-names.patch
+	source = 170-nvidia-open-silence-event-assert-until-570.patch
+	sha256sums = e77b90834c151af3e517071baa908494fae0531ee8667ab170ca608eaaade16e
+	sha256sums = 20198683cf52f60bb9dfe4ad202bf5a1f5a0b47fab5f5cf78e5f48861adda9fa
 	sha256sums = b0f62a78f749ff3a104197c12b6d885352adcf35fb5ecf00c4cd4c51b4195e45
-	sha256sums = 7f13127b830723eef798d981929539fa28b558441836d9acefff7db198d561f2
+	sha256sums = 73b9cd6b048b0c75cbb6e03b76562f93107d5466fff3127938523a1412cf3d41
 	sha256sums = ab8f2fbf0b31b7fd07cb6fc6c5c8a72ff72e52c345ca49411c3bb93181b18449
+	sha256sums = 7faaeda40ea84bebc824ebb11be30d37f0c10119104ccc784e3131d5d206a4bc
+	sha256sums = 67f960617b753581b215dcef8cec7c50d09bf41a984f63cf6192b0d73aca9b8a
+	sha256sums = fa142f565cfd170e6771b7744a37e703726f62c5fa3539081134b7d244dfe789
 
 pkgname = nvidia-open-beta
 	depends = linux
 	depends = libglvnd
-	depends = nvidia-utils-beta>=560.35
-	provides = nvidia-open=560.35.03
+	depends = nvidia-utils-beta>=565.57
+	provides = nvidia-open=565.57.01
 	provides = NVIDIA-MODULE
 	conflicts = nvidia-open
 	conflicts = NVIDIA-MODULE
 
 pkgname = nvidia-open-beta-dkms
-	pkgdesc = NVIDIA open GPU kernel modules (sources; beta version)
+	pkgdesc = NVIDIA open kernel modules (module sources; beta version)
 	depends = dkms
 	depends = libglvnd
-	depends = nvidia-utils-beta>=560.35
-	provides = nvidia-open=560.35.03
+	depends = nvidia-utils-beta>=565.57
+	provides = nvidia-open=565.57.01
 	provides = NVIDIA-MODULE
 	conflicts = nvidia-open
 	conflicts = NVIDIA-MODULE
