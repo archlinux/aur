@@ -3,7 +3,7 @@
 # Contributor: Manuel Schneider  <manuelschneid3r at googles mail>
 
 pkgname=albert
-pkgver=0.26.6
+pkgver=0.26.7
 pkgrel=1
 pkgdesc="A sophisticated standalone keyboard launcher"
 arch=('x86_64')
@@ -27,6 +27,7 @@ build() {
     -DCMAKE_FIND_PACKAGE_RESOLVE_SYMLINKS=ON \
     -DQHOTKEY_INSTALL=OFF \
     -DBUILD_PLUGIN_APPLICATIONS=ON \
+    -DBUILD_PLUGIN_CAFFEINE=ON \
     -DBUILD_PLUGIN_CALCULATOR_QALCULATE=ON \
     -DBUILD_PLUGIN_CHROMIUM=ON \
     -DBUILD_PLUGIN_CLIPBOARD=ON \
@@ -38,7 +39,6 @@ build() {
     -DBUILD_PLUGIN_MPRIS=ON \
     -DBUILD_PLUGIN_PATH=ON \
     -DBUILD_PLUGIN_PYTHON=ON \
-    -DBUILD_PLUGIN_QMLBOXMODEL=ON \
     -DBUILD_PLUGIN_SNIPPETS=ON \
     -DBUILD_PLUGIN_SSH=ON \
     -DBUILD_PLUGIN_SYSTEM=ON \
@@ -60,4 +60,4 @@ package() {
   install -Dm644 "$srcdir/$pkgname/LICENSE.md" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
-sha512sums=('7ce5fe17b7af00c2f6b3c05e999374956c02a3d510eb5237e372d1aeb8c34f6433169a1e6a906a7ed90a87505fd697830a19b8bd762fc6899e20bc48bd104401')
+sha512sums=('6ea43920ad4a87625c1616b1819f98672eff58b86b4099fa97826a8ac80fcc97f903465018dec55da8ef05d6d2c1a4da893d7de5771e695ec64a458ca3adb329')
