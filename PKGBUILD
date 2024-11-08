@@ -3,17 +3,17 @@ pkgname=geant4-ensdfstatedata
 _varname='G4ENSDFSTATEDATA'
 _dataname="G4ENSDFSTATE"
 _foldername="G4ENSDFSTATE"
-pkgver=2.3
+pkgver=3.0
 pkgrel=1
 pkgdesc="Nuclei properties from the Evaluated Nuclear Structure Data Files"
 url="http://geant4.cern.ch/"
 arch=('any')
 license=('GPL')
-optdepends=('geant4>=10.7')
+optdepends=('geant4>=11.3')
 install="${pkgname}.install"
 source=("https://cern.ch/geant4-data/datasets/${_dataname}.${pkgver}.tar.gz"
         "${pkgname}.install")
-sha256sums=('9444c5e0820791abd3ccaace105b0e47790fadce286e11149834e79c4a8e9203'
+sha256sums=('4bdc3bd40b31d43485bf4f87f055705e540a6557d64ed85c689c59c9a4eba7d6'
             'd996294f5f7bef2e362812f0602d30e8439f3a6f7da695d787559d732449f6b4')
 
 ## Remove this if you want to keep an even smaller package
