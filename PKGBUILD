@@ -3,7 +3,7 @@
 
 pkgbase='intel-ledmon'
 pkgname='ledmon'
-pkgver='1.0.0'
+pkgver='1.1.0'
 pkgrel='1'
 pkgdesc='Enclosure LED Utilities'
 arch=('x86_64' 'aarch64')
@@ -12,7 +12,7 @@ license=('GPL')
 depends=('sg3_utils' 'systemd-libs' 'pciutils')
 makedepends=('autoconf-archive' 'check' 'python-pytest')
 source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('2826786cd5e7fe7d32d22e9d209b23124801fec9c3220dcd7fb45706f3818dc5')
+sha256sums=('4f626400e41ab1e4317b886db5b5df1afa517e8e4faa80fd4378fd22b0bcd055')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
