@@ -1,7 +1,7 @@
 #Maintainer: Bhoppi Chaw <bhoppi#outlook,com>
 
 pkgname=ffx264
-pkgver=4.2.6
+pkgver=4.2.7
 pkgrel=1
 pkgdesc='Small script to encode to H.264/AVC video using FFmpeg and libx264'
 arch=(any)
@@ -13,7 +13,7 @@ optdepends=(
   'gpac: for MP4 cover art'
 )
 source=("https://downloads.sourceforge.net/project/$pkgname/$pkgname-$pkgver.tar.gz")
-sha256sums=('c06c15c6a8aaca52c5a6e82dbc0f6b07053a1dc343dc4e32dc1a7d0e70875a65')
+sha256sums=('3e9425746dd22654e54cdc4a20ae915e0e5c04f66c1ba531cce86d8288577392')
 
 package() {
   cd $pkgname-$pkgver
