@@ -2,11 +2,11 @@
 # Contributor and Ahthor: qier22 <qier222@outlook.com>
 pkgname=yesplaymusic-git
 _pkgname=YesPlayMusic
-pkgver=0.4.8.2.r19.g022009b
+pkgver=0.4.9.r0.g022009b
 _electronversion=13
 _nodeversion=16
 pkgrel=1
-pkgdesc="A third party music application for Netease Music.Use system-wide electron.高颜值的第三方网易云播放器."
+pkgdesc="A third party music application for Netease Music.(Use system-wide electron).高颜值的第三方网易云播放器."
 arch=('any')
 url="https://github.com/qier222/YesPlayMusic"
 license=('MIT')
