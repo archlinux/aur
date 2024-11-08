@@ -13,7 +13,6 @@ if [ -z $WORKING_DIR ]
 then
     WORKING_DIR=${XDG_CACHE_HOME:-${HOME}/.cache}/hath;
 fi
-echo $WORKING_DIR
 mkdir -p ${WORKING_DIR}
 cd ${WORKING_DIR}
 for file in HentaiAtHome.jar HentaiAtHomeGUI.jar sqlite-jdbc.jar
