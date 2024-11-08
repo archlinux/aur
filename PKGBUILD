@@ -1,4 +1,4 @@
-# Maintainer: Evangelos Foutras <foutrelis@archlinux.org>
+# Maintainer: Dan Fuhry <dan@fuhry.com>
 
 pkgname='php-kadm5'
 pkgver=0.4.0
