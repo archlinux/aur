@@ -1,8 +1,8 @@
-# Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
+# Maintainer: MYT1 <MYT1 @ QQ COM>
 pkgname=bilibili-linux-git
 _pkgname=bilibili-linux
-pkgver=1.15.2.1.r1.g5ac6c86
-_electronversion=30
+pkgver=r223.d378029
+_electronversion=33
 _nodeversion=23
 pkgrel=1
 pkgdesc="这是哔哩哔哩 Linux版"
@@ -39,9 +39,7 @@ sha256sums=('SKIP'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 
 pkgver() {
-    cd $_pkgname
-    set -o pipefail
-    git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/v//g' ||
+    cd $_pkgname/conf
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
