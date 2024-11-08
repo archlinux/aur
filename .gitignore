@@ -1,0 +1,5 @@
+*.zst
+pkg/
+src/
+*.deb
+fcitx5-mellow-themes
