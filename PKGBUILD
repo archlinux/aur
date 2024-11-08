@@ -2,7 +2,7 @@
 
 pkgname=bcrawl-git
 _pkgname=bcrawl
-pkgver=0.22.a0.4846.gcf420f87c6
+pkgver=bcrawl.1.34.4.820.g4a8afe7061
 pkgrel=1
 pkgdesc='Continuation of X-Crawl fork of Dungeon Crawl Stone Soup roguelike with new content (Git version)'
 arch=('i686' 'x86_64')
