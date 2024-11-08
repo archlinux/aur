@@ -1,8 +1,8 @@
 # Maintainer: Fabien Devaux <fdev31@gmail.com>
 # Contributor: Fabien Devaux <fdev31@gmail.com>
 pkgname=wlr-layout-ui
-pkgver=1.6.14
-pkgrel=1
+pkgver=1.6.15
+pkgrel=0
 pkgdesc="GUI to configure your screens"
 arch=(any)
 url="https://github.com/fdev31/wlr-layout-ui"
@@ -21,7 +21,7 @@ options=()
 install=
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/${pkgver}.tar.gz")
 noextract=()
-md5sums=('5c3c3329f57ac842193d4abb34167488')
+md5sums=('2436966bf053ea0775a573ed5976e0f7')
 
 build() {
 	cd "$srcdir/${pkgname%-git}-${pkgver}"
