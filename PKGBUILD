@@ -1,10 +1,10 @@
-# Maintainer : Daniel Bermond <dbermond@archlinux.org>
+# Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgbase=nvidia-open-git
 pkgname=('nvidia-open-git' 'nvidia-open-dkms-git')
-pkgver=550.54.14.r0.g476bd3453
+pkgver=565.57.01.r0.gd5a0858f9
 pkgrel=1
-pkgdesc='NVIDIA open GPU kernel modules (git version)'
+pkgdesc='NVIDIA open kernel modules (git version)'
 arch=('x86_64')
 url='https://github.com/NVIDIA/open-gpu-kernel-modules/'
 license=('MIT' 'GPL-2.0-only')
@@ -14,18 +14,27 @@ source=('git+https://github.com/NVIDIA/open-gpu-kernel-modules.git'
         '110-nvidia-open-change-dkms-conf.patch'
         '120-nvidia-open-linux-rt-gift.patch'
         '130-nvidia-open-reproducible-build.patch'
-        '140-nvidia-open-gcc-sls.patch')
+        '140-nvidia-open-gcc-sls.patch'
+        '150-nvidia-open-make-modeset-fbdev-default.patch'
+        '160-nvidia-open-fix-hdmi-names.patch'
+        '170-nvidia-open-silence-event-assert-until-570.patch')
 sha256sums=('SKIP'
-            '009724e2e07b7be589ba455f225a9742d88a3a29383f2f220cb830ef4c8b7aea'
+            '20198683cf52f60bb9dfe4ad202bf5a1f5a0b47fab5f5cf78e5f48861adda9fa'
             'b0f62a78f749ff3a104197c12b6d885352adcf35fb5ecf00c4cd4c51b4195e45'
-            '15421d72aabc569c69762c77c7a37ad7be617f08e3c833318cecdeb5500e8ef4'
-            '71158935db9494bf8a18c34b29e2be19424ba09ce3017b9d9d7b6509f6090118')
+            '73b9cd6b048b0c75cbb6e03b76562f93107d5466fff3127938523a1412cf3d41'
+            'ab8f2fbf0b31b7fd07cb6fc6c5c8a72ff72e52c345ca49411c3bb93181b18449'
+            '7faaeda40ea84bebc824ebb11be30d37f0c10119104ccc784e3131d5d206a4bc'
+            '67f960617b753581b215dcef8cec7c50d09bf41a984f63cf6192b0d73aca9b8a'
+            'fa142f565cfd170e6771b7744a37e703726f62c5fa3539081134b7d244dfe789')
 
 prepare() {
     patch -d open-gpu-kernel-modules -Np1 -i "${srcdir}/110-nvidia-open-change-dkms-conf.patch"
     patch -d open-gpu-kernel-modules -Np1 -i "${srcdir}/120-nvidia-open-linux-rt-gift.patch"
     patch -d open-gpu-kernel-modules -Np1 -i "${srcdir}/130-nvidia-open-reproducible-build.patch"
     patch -d open-gpu-kernel-modules -Np1 -i "${srcdir}/140-nvidia-open-gcc-sls.patch"
+    patch -d open-gpu-kernel-modules -Np1 -i "${srcdir}/150-nvidia-open-make-modeset-fbdev-default.patch"
+    patch -d open-gpu-kernel-modules -Np1 -i "${srcdir}/160-nvidia-open-fix-hdmi-names.patch"
+    patch -d open-gpu-kernel-modules -Np1 -i "${srcdir}/170-nvidia-open-silence-event-assert-until-570.patch"
     
     sed -i "s/__VERSION_STRING/${pkgver}/" open-gpu-kernel-modules/kernel-open/dkms.conf
     
@@ -70,8 +79,7 @@ package_nvidia-open-git() {
     
     install -D -m644 open-gpu-kernel-modules/kernel-open/*.ko -t "${pkgdir}/usr/lib/modules/${_kernver}/extramodules"
     install -D -m644 open-gpu-kernel-modules/COPYING "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-    find "$pkgdir" -name '*.ko' -exec strip --strip-debug {} +
-    find "$pkgdir" -name '*.ko' -exec xz -T1 {} +
+    find "$pkgdir" -name '*.ko' -exec zstd --rm -19 {} +
     
     install -D -m644 <(printf '%s\n' 'options nvidia NVreg_OpenRmEnableUnsupportedGpus=1') "${pkgdir}/usr/lib/modprobe.d/nvidia-open.conf"
 }

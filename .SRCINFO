@@ -1,6 +1,6 @@
 pkgbase = nvidia-open-git
-	pkgdesc = NVIDIA open GPU kernel modules (git version)
-	pkgver = 550.54.14.r0.g476bd3453
+	pkgdesc = NVIDIA open kernel modules (git version)
+	pkgver = 565.57.01.r0.gd5a0858f9
 	pkgrel = 1
 	url = https://github.com/NVIDIA/open-gpu-kernel-modules/
 	arch = x86_64
@@ -16,27 +16,33 @@ pkgbase = nvidia-open-git
 	source = 120-nvidia-open-linux-rt-gift.patch
 	source = 130-nvidia-open-reproducible-build.patch
 	source = 140-nvidia-open-gcc-sls.patch
+	source = 150-nvidia-open-make-modeset-fbdev-default.patch
+	source = 160-nvidia-open-fix-hdmi-names.patch
+	source = 170-nvidia-open-silence-event-assert-until-570.patch
 	sha256sums = SKIP
-	sha256sums = 009724e2e07b7be589ba455f225a9742d88a3a29383f2f220cb830ef4c8b7aea
+	sha256sums = 20198683cf52f60bb9dfe4ad202bf5a1f5a0b47fab5f5cf78e5f48861adda9fa
 	sha256sums = b0f62a78f749ff3a104197c12b6d885352adcf35fb5ecf00c4cd4c51b4195e45
-	sha256sums = 15421d72aabc569c69762c77c7a37ad7be617f08e3c833318cecdeb5500e8ef4
-	sha256sums = 71158935db9494bf8a18c34b29e2be19424ba09ce3017b9d9d7b6509f6090118
+	sha256sums = 73b9cd6b048b0c75cbb6e03b76562f93107d5466fff3127938523a1412cf3d41
+	sha256sums = ab8f2fbf0b31b7fd07cb6fc6c5c8a72ff72e52c345ca49411c3bb93181b18449
+	sha256sums = 7faaeda40ea84bebc824ebb11be30d37f0c10119104ccc784e3131d5d206a4bc
+	sha256sums = 67f960617b753581b215dcef8cec7c50d09bf41a984f63cf6192b0d73aca9b8a
+	sha256sums = fa142f565cfd170e6771b7744a37e703726f62c5fa3539081134b7d244dfe789
 
 pkgname = nvidia-open-git
 	depends = linux
 	depends = libglvnd
-	depends = nvidia-utils>=550.54
-	provides = nvidia-open=550.54.14.r0.g476bd3453
+	depends = nvidia-utils>=565.57
+	provides = nvidia-open=565.57.01.r0.gd5a0858f9
 	provides = NVIDIA-MODULE
 	conflicts = nvidia-open
 	conflicts = NVIDIA-MODULE
 
 pkgname = nvidia-open-dkms-git
-	pkgdesc = NVIDIA open GPU kernel modules (sources; git version)
+	pkgdesc = NVIDIA open kernel modules (sources; git version)
 	depends = dkms
 	depends = libglvnd
-	depends = nvidia-utils>=550.54
-	provides = nvidia-open=550.54.14.r0.g476bd3453
+	depends = nvidia-utils>=565.57
+	provides = nvidia-open=565.57.01.r0.gd5a0858f9
 	provides = NVIDIA-MODULE
 	conflicts = nvidia-open
 	conflicts = NVIDIA-MODULE

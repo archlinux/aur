@@ -1,6 +1,12 @@
 --- a/kernel-open/dkms.conf
 +++ b/kernel-open/dkms.conf
-@@ -6,7 +6,16 @@ AUTOINSTALL="yes"
+@@ -1,12 +1,21 @@
+ PACKAGE_NAME="nvidia"
+-PACKAGE_VERSION="__VERSION_STRING"
++PACKAGE_VERSION="565.57.01"
+ AUTOINSTALL="yes"
+ 
+ # By default, DKMS will add KERNELRELEASE to the make command line; however,
  # this will cause the kernel module build to infer that it was invoked via
  # Kbuild directly instead of DKMS. The dkms(8) manual page recommends quoting
  # the 'make' command name to suppress this behavior.
