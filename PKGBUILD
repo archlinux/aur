@@ -3,7 +3,7 @@
 # Contributor: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
 
 _cranname=waldo
-_cranver=0.6.0
+_cranver=0.6.1
 pkgname=r-${_cranname,,}
 pkgdesc="Anything to ‘POSIXct’ or ‘Date’ Converter"
 url="https://cran.r-project.org/package=${_cranname}"
@@ -42,23 +42,23 @@ optdepends=(
 # the build chroot), uncomment the lines defining `checkdepends`, below,
 # as well as the `check()` function further down
 
-checkdepends=(
-    "${optdepends[@]}"
-    "r-testthat"
-)
+# checkdepends=(
+#     "${optdepends[@]}"
+#     "r-testthat"
+# )
 
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-b2sums=("664455d5b963575ba9a40ede1e6aa6a1fba47eab11770efc8bc2073281f9f64936ed60d1107233e050b9c4382a9dbd9e643330aebb641a39d37773cbf12d472b")
+b2sums=("2df4f61536d30336fef07b94219bf75319376f96a7fb283093a45eb2603d2a898e3e9acac0d95ae5af830fad3ea24c60fcb27e6e301376b947ea0cf32c87293d")
 
 build() {
     mkdir -p "${srcdir}/build/"
     R CMD INSTALL ${_cranname}_${_cranver}.tar.gz -l "${srcdir}/build/"
 }
 
-check() {
-    export R_LIBS="build/"
-    R CMD check --no-manual "${_cranname}"
-}
+# check() {
+#     export R_LIBS="build/"
+#     R CMD check --no-manual "${_cranname}"
+# }
 
 package() {
     install -dm0755 "${pkgdir}/usr/lib/R/library"
