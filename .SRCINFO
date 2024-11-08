@@ -1,11 +1,11 @@
 pkgbase = firestorm-next-bin
 	pkgdesc = Firestorm is a feature-packed third-party viewer for Second Life (next version)
-	pkgver = 7.1.11.76493
+	pkgver = 7.1.11.76658
 	pkgrel = 1
 	url = https://www.firestormviewer.org/early-access-beta-downloads/
 	install = firestorm-next.install
 	arch = x86_64
-	license = LGPL-2.1-only
+	license = LGPL-2.1-or-later
 	depends = apr-util
 	depends = dbus-glib
 	depends = glib2>=2.35
@@ -41,9 +41,9 @@ pkgbase = firestorm-next-bin
 	optdepends = nvidia-utils: for NVIDIA support
 	provides = firestorm-next
 	conflicts = firestorm-next
-	source = https://downloads.firestormviewer.org/preview/linux/Phoenix-Firestorm-Betax64_AVX2-7-1-11-76493.tar.xz
+	source = https://downloads.firestormviewer.org/preview/linux/Phoenix-Firestorm-Betax64_AVX2-7-1-11-76658.tar.xz
 	source = firestorm-next.desktop
-	md5sums = f0b6fcb618ab4e78c747465bd7feceb0
+	md5sums = 77e0b162756aebfc32788c5d827f4131
 	md5sums = 67c165cfb593cce56007421f8dcaaa38
 
 pkgname = firestorm-next-bin

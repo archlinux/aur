@@ -2,6 +2,8 @@ post_install() {
   cat <<EOF
 
 ===================================================================
+Config and cache files for Firestorm can be found in your user's ~/.firestorm_x64 directory.
+
 For support of early access releases, please join and message the Firestorm Preview group inworld:
   Group URL: https://my.secondlife.com/groups/7ba4569c-9dd9-fed2-aaa7-36065d18a13c
   Inworld Group URI: secondlife:///app/group/7ba4569c-9dd9-fed2-aaa7-36065d18a13c/about
