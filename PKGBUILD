@@ -2,7 +2,7 @@
 
 pkgname=proton-vpn-gtk-app
 pkgver=4.7.3
-pkgrel=1
+pkgrel=2
 pkgdesc="ProtonVPN GTK app, Maintained by Community"
 arch=("any")
 url="https://github.com/ProtonVPN/proton-vpn-gtk-app"
@@ -34,11 +34,6 @@ source=("git+https://github.com/ProtonVPN/proton-vpn-gtk-app.git#tag=v${pkgver}"
 sha256sums=('SKIP')
 
 conflicts=('protonvpn-gui' 'python-proton-client')
-
-prepare() {
-	cd "$srcdir"/"$pkgname"
-        git apply ../early_access.patch
-}
 
 build() {
 	cd "$pkgname"
