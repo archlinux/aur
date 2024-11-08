@@ -1,7 +1,7 @@
 # Maintainer: Jamie Magee <jamie DOT magee AT gmail DOT com>
 _npmname=azurite
 pkgname=nodejs-azurite
-pkgver=3.32.0 # renovate: datasource=github-tags depName=Azure/Azurite
+pkgver=3.33.0 # renovate: datasource=github-tags depName=Azure/Azurite
 pkgrel=2
 pkgdesc="A lightweight server clone of Azure Storage that simulates most of the commands supported by it with minimal dependencies"
 arch=(any)
@@ -11,7 +11,7 @@ depends=('nodejs' 'npm')
 optdepends=()
 source=(https://registry.npmjs.org/$_npmname/-/$_npmname-$pkgver.tgz)
 noextract=($_npmname-$pkgver.tgz)
-b2sums=('6571dcdc7323ff244e76dfc6c46bc165ef4d959c8ebdb806100a035b0214ebec4cc0aeaa0c468e30cabfbf70e91aa8fb2a7812ae7c5a13440cfd7a3d0e09f451')
+b2sums=('0d069223e48e1a1198088805220e82f84d5971a67a39aa215cf3d13a9a153682429fa78cb8c5ccad6c9c5aed6a05b84e31a86d2438665871168f6aec82acab6c')
 options=('!strip')
 
 package() {
