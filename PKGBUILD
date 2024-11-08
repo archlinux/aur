@@ -5,7 +5,7 @@
 
 pkgbase=nvidia-utils-beta
 pkgname=('nvidia-utils-beta' 'opencl-nvidia-beta' 'nvidia-settings-beta')
-pkgver=560.35.03
+pkgver=565.57.01
 pkgrel=1
 pkgdesc='NVIDIA drivers utilities (beta version)'
 arch=('x86_64')
@@ -15,13 +15,15 @@ options=('!strip')
 _pkg="NVIDIA-Linux-${CARCH}-${pkgver}"
 source=("https://us.download.nvidia.com/XFree86/Linux-${CARCH}/${pkgver}/${_pkg}.run"
         'nvidia-drm-outputclass.conf'
+        'nvidia-sleep.conf'
         'nvidia-utils.sysusers'
         'nvidia.rules'
         'systemd-homed-override.conf'
         'systemd-suspend-override.conf'
         '120-nvidia-settings-change-desktop-paths.patch')
-sha256sums=('f2932c92fadd43c5b2341be453fc4f73f0ad7185c26bb7a43fbde81ae29f1fe3'
+sha256sums=('6eebe94e585e385e8804f5a74152df414887bf819cc21bd95b72acd0fb182c7a'
             'be99ff3def641bb900c2486cce96530394c5dc60548fc4642f19d3a4c784134d'
+            '9c60bfe357cd1faf20f9167a6d42bfa724747805c1f12a1b603eb5ff57a523df'
             'd8d1caa5d72c71c6430c2a0d9ce1a674787e9272ccce28b9d5898ca24e60a167'
             '0e54249a7754b668b436f0f7aa7e95fff68edbb12a93dbee4660e09a8c695f84'
             'c5aa7b8abe69e72bfdc6b9ee8afbfd350bcc557e894558f2e6e4087fa9aa0dd8'
@@ -92,7 +94,7 @@ package_opencl-nvidia-beta() {
 }
 
 package_nvidia-utils-beta() {
-    depends=('xorg-server' 'libglvnd' 'egl-wayland')
+    depends=('xorg-server' 'libglvnd' 'egl-wayland' 'egl-gbm')
     optdepends=('nvidia-settings-beta: for the configuration tool'
                 'xorg-server-devel: for nvidia-xconfig'
                 'opencl-nvidia-beta: for OpenCL support')
@@ -108,8 +110,6 @@ package_nvidia-utils-beta() {
     install -D -m755 nvidia_drv.so -t "${pkgdir}/usr/lib/xorg/modules/drivers"
     
     # Wayland/GBM
-    install -D -m755 libnvidia-egl-gbm.so.1.1.1         -t "${pkgdir}/usr/lib"
-    install -D -m644 15_nvidia_gbm.json -t "${pkgdir}/usr/share/egl/egl_external_platform.d"
     install -d -m755 "${pkgdir}/usr/lib/gbm"
     ln -s "../libnvidia-allocator.so.${pkgver}" "${pkgdir}/usr/lib/gbm/nvidia-drm_gbm.so"
     
@@ -189,8 +189,8 @@ package_nvidia-utils-beta() {
     install -D -m755 "libnvidia-pkcs11-openssl3.so.${pkgver}" -t "${pkgdir}/usr/lib"
     
     # Xorg
-    install -D -m755 libnvidia-egl-xcb.so.1  -t "${pkgdir}/usr/lib"
-    install -D -m755 libnvidia-egl-xlib.so.1 -t "${pkgdir}/usr/lib"
+    install -D -m755 libnvidia-egl-xcb.so.1.0.0  -t "${pkgdir}/usr/lib"
+    install -D -m755 libnvidia-egl-xlib.so.1.0.0 -t "${pkgdir}/usr/lib"
     install -D -m644 20_nvidia_xcb.json  -t "${pkgdir}/usr/share/egl/egl_external_platform.d"
     install -D -m644 20_nvidia_xlib.json -t "${pkgdir}/usr/share/egl/egl_external_platform.d"
     
@@ -215,7 +215,7 @@ package_nvidia-utils-beta() {
     
     # nvidia-modprobe
     # This should be removed if nvidia fixed their uvm module!
-    install -D -m4755 nvidia-modprobe  -t "${pkgdir}/usr/bin"
+    install -D -m755 nvidia-modprobe   -t "${pkgdir}/usr/bin"
     install -D -m644 nvidia-modprobe.1 -t "${pkgdir}/usr/share/man/man1"
     
     # nvidia-persistenced
@@ -256,6 +256,11 @@ package_nvidia-utils-beta() {
     
     install -D -m644 <(printf '%s\n' 'blacklist nouveau') "${pkgdir}/usr/lib/modprobe.d/${pkgname}.conf"
     install -D -m644 <(printf '%s\n' 'nvidia-uvm') "${pkgdir}/usr/lib/modules-load.d/${pkgname}.conf"
+    
+    # enable PreserveVideoMemoryAllocations and TemporaryFilePath
+    # fixes Wayland Sleep, when restoring the session
+    install -D -m644 "${srcdir}/nvidia-sleep.conf" -t "${pkgdir}/usr/lib/modprobe.d"
+
     
     _create_links
 }
