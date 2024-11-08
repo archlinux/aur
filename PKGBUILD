@@ -2,7 +2,7 @@
 # Contributor: sukanka <su975853527@gmail.com>
 
 _pkgname=stars
-_pkgver=0.6-6
+_pkgver=0.6-7
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -70,8 +70,8 @@ optdepends=(
   r-zoo
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('d5cbba3c504f488439100bfbaa27cac1')
-b2sums=('280c443eb79e7ea85582816dda3f81fa1773370a37a4fcb39d55dce1bcf7089c1a56351e1fb9fd2c6ff67a14d845c0d9412d388ace32310e498934ced6ff11c7')
+md5sums=('f746ae18de570b68dbe5b0c4ec869457')
+b2sums=('90f86e34787e3060394c6c17984c4be9053b89df6a5d80fc7693791ec73d41009eaac3850b0af718ee3dd76ae26f3b8521c3053a5a492ffddb51ae01083d60f8')
 
 build() {
   mkdir build
