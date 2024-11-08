@@ -1,7 +1,7 @@
 # Maintainer: spikecodes <19519553+spikecodes@users.noreply.github.com>
 pkgname=the-way-git
 _pkgname=${pkgname%-git}
-pkgver=0.10.0
+pkgver=0.20.3
 pkgrel=1
 pkgdesc="A command line code snippets manager"
 arch=('any')

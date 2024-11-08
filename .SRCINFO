@@ -1,6 +1,6 @@
 pkgbase = the-way-git
 	pkgdesc = A command line code snippets manager
-	pkgver = 0.10.0
+	pkgver = 0.20.3
 	pkgrel = 1
 	url = https://github.com/out-of-cheese-error/the-way
 	arch = any
@@ -13,4 +13,3 @@ pkgbase = the-way-git
 	sha256sums = SKIP
 
 pkgname = the-way-git
-
