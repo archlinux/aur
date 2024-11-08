@@ -7,7 +7,7 @@
 _android_arch=aarch64
 
 pkgname=android-${_android_arch}-hwloc
-pkgver=2.11.1
+pkgver=2.11.2
 pkgrel=1
 arch=('any')
 pkgdesc="Portable Hardware Locality is a portable abstraction of hierarchical architectures (Android ${_android_arch})"
@@ -28,7 +28,7 @@ optdepends=("android-${_android_arch}-cairo"
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("https://www.open-mpi.org/software/hwloc/v${pkgver%.*}/downloads/hwloc-${pkgver}.tar.bz2"
         '0001-Added-missing-macros.patch')
-md5sums=('d1c163b73a4819bc912dd6f30233d6d5'
+md5sums=('4bb1d9bdf550a95fea4f588d8911b8e2'
          '540c7ecb4997cfcd37d4d9b450b21dcf')
 
 prepare() {
