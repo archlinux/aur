@@ -1,6 +1,6 @@
 pkgbase = oxigraph
 	pkgdesc = SPARQL graph database and RDF toolkit
-	pkgver = 0.4.1
+	pkgver = 0.4.3
 	pkgrel = 1
 	url = https://github.com/oxigraph/oxigraph
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = oxigraph
 	depends = openssl
 	depends = rocksdb
 	options = !lto
-	source = oxigraph-0.4.1.tar.gz::https://github.com/oxigraph/oxigraph/releases/download/v0.4.1/oxigraph_v0.4.1.tar.gz
-	sha512sums = f7e60c359b88ad61f121b57f264cb8354e887bb3029178491e2add54a8b49f57db768a166b46f0a1fe7c8d4bb62efd3a381bae1aafdfa2355940a89d18391637
+	source = oxigraph-0.4.3.tar.gz::https://github.com/oxigraph/oxigraph/releases/download/v0.4.3/oxigraph_v0.4.3.tar.gz
+	sha512sums = b6e52d412a7a28d6d25b0cea110a7ecd22423c36da8b63ac16a2d926323a27af4138d69736cb30a317cbd90d47c64cc6eaddf5b4dd76aa6dd44acdd23bee453f
 
 pkgname = oxigraph
