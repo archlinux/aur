@@ -8,13 +8,13 @@ pkgbase = neohtop
 	makedepends = rust
 	makedepends = npm
 	makedepends = nodejs>=16
+	depends = gtk3
+	depends = webkit2gtk-4.1
 	source = neohtop-1.0.8.tar.gz::https://github.com/Abdenasser/neohtop/archive/refs/tags/v1.0.8.tar.gz
 	source = neohtop.desktop
-	source = https://github.com/Abdenasser/neohtop/raw/main/app-icon.png
 	source = tauri_version_2.0.3_fix_11615_tauri_apps_tauri.patch
 	sha256sums = f47e5947b32bd94025185a7215472931096498c0603c2f97d0d381b4761d6fc8
 	sha256sums = 268edb20d231395da8f724283cd4244facd15ef9564b6705e0324223116eccbc
-	sha256sums = da490123ad87ff26b96b189eb4ed1b815e5e39ce3bec3b939fcdf331525dcefa
 	sha256sums = f627bd694dc07a114d339eaa829819fe821d876927f69303f4136ba6ce62e364
 
 pkgname = neohtop
