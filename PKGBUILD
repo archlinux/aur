@@ -8,9 +8,9 @@ arch=('x86_64')
 url='https://gitlab.com/modding-openmw/momw-configurator'
 license=('MIT')
 depends=('glibc')
-makedepends=('go') # https://gitlab.com/modding-openmw/momw-configurator/-/archive/1.1/momw-configurator-1.1.tar.gz
+makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::$url/-/archive/${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha512sums=('dd022ea1dee7113f458cef5d221c259aaffc9be01ba584d7139983e4aa29fb469aeec1dccf4981b0fc870efbea152c426b2175e7ba86421963bd6e14672bd15b')
+sha512sums=('c75cf8cb5b361eb2a62ee8e0dfa96c07167b719bb9e1b7fdfd741fb7b04f190fac69bb319cec533c720ebe9e5e3c59c3cbb7757c98dea4bdc576c9342fa65b91')
 
 build() {
     ## From Go package guidelines
