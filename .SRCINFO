@@ -1,0 +1,22 @@
+pkgbase = ldapper-git
+	pkgdesc = LDAP Querying without the Suck
+	pkgver = r13.5c4bbe6
+	pkgrel = 1
+	url = https://github.com/shellster/ldapper
+	arch = any
+	license = MIT
+	makedepends = dos2unix
+	makedepends = git
+	depends = python
+	depends = impacket
+	depends = python-colorama
+	depends = python-ldap3
+	depends = python-pyaml
+	depends = python-pyopenssl
+	provides = ldapper
+	conflicts = ldapper
+	conflicts = ldapper-git-bin
+	source = git+https://github.com/shellster/ldapper
+	sha512sums = SKIP
+
+pkgname = ldapper-git
