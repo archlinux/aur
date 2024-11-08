@@ -1,0 +1,12 @@
+pkgbase = tinyupnp-git
+	pkgdesc = Simple, small Zero Config UPnP Media Server
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://www.github.com/eugenenoble2005/tinyupnp
+	arch = x86_64
+	makedepends = scons
+	makedepends = gcc
+	source = git+https://github.com/eugenenoble2005/tinyupnp
+	sha256sums = SKIP
+
+pkgname = tinyupnp-git
