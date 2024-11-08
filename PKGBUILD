@@ -1,17 +1,15 @@
-# Maintainer: Jorengarenar
-
 pkgname=libxdgdirs
 _pkgname=libXDGdirs
-pkgver=1.1.2
+pkgver=1.1.3
 pkgrel=1
-pkgdesc="An implementation of XDG Base Directory Specification in C"
+pkgdesc="An implementation helpers for XDG Base Directory Specification in C"
 arch=('x86_64')
-url="https://github.com/Jorengarenar/${_pkgname}"
+url="https://github.com/Jorenar/${_pkgname}"
 license=('MIT')
 depends=('glibc')
 makedepends=('cmake')
-source=("${_pkgname}::https://github.com/Jorengarenar/${_pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('72abbf56ce9ef0fcaad47c851006987f4dd6b57d35e1724207ac7363596b87e9')
+source=("${_pkgname}::https://github.com/Jorenar/${_pkgname}/archive/v${pkgver}.tar.gz")
+sha256sums=('cc2f67b29d7faa15e6072c406e5483f5ff0787a811b62fd38c984b1ee9c005a6')
 
 build() {
     cd "${srcdir}/${_pkgname}-${pkgver}"
