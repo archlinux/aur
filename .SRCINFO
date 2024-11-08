@@ -1,12 +1,10 @@
 pkgbase = varia
 	pkgdesc = Download manager based on aria2
-	pkgver = 2024.5.7
+	pkgver = 2024.11.7
 	pkgrel = 1
 	url = https://github.com/giantpinkrobots/varia
 	arch = any
 	license = MPL-2.0
-	makedepends = desktop-file-utils
-	makedepends = gtk-update-icon-cache
 	makedepends = meson
 	depends = aria2
 	depends = aria2p
@@ -16,10 +14,11 @@ pkgbase = varia
 	depends = gtk4
 	depends = hicolor-icon-theme
 	depends = libadwaita
+	depends = pango
 	depends = python
 	depends = python-gobject
 	depends = python-requests
-	source = varia-2024.5.7.tar.gz::https://github.com/giantpinkrobots/varia/archive/refs/tags/v2024.5.7.tar.gz
-	sha256sums = 140e4c04ca3ee63988460c46df809c3762fe32e1a587556b18f4fa4e8ea4fe42
+	source = varia-2024.11.7.tar.gz::https://github.com/giantpinkrobots/varia/archive/refs/tags/v2024.11.7.tar.gz
+	sha256sums = 5b83ad82a62e322f406dee36bcc1733e3c3ff1527eb40016577eccfb9526b9f4
 
 pkgname = varia
