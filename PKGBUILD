@@ -1,17 +1,17 @@
 # Maintainer: Igor Dyatlov <dyatlov.igor@protonmail.com>
 
 pkgname=master-key
-pkgver=1.3.1
+pkgver=1.6.2
 pkgrel=1
 pkgdesc="A password manager application"
 arch=('any')
 url="https://gitlab.com/guillermop/master-key"
-license=('GPL3')
+license=('GPL-3.0-or-later')
 depends=('libadwaita' 'python-gobject' 'libpwquality' 'sqlcipher' 'tcl')
-makedepends=('meson' 'gobject-introspection')
+makedepends=('meson' 'gobject-introspection' 'blueprint-compiler')
 checkdepends=('appstream-glib' 'desktop-file-utils')
 source=($url/-/archive/v$pkgver/$pkgname-v$pkgver.tar)
-b2sums=('34b07bcfbb5c152f7e328a4c8184711e1461b60ac7a162761e6dec18a6767ab3f227bfd2e5325fc41ecec8ed16c54f3dd67b2dc176e2af2e035f28eeb7c030ad')
+b2sums=('72a437b8c23779bdac875aebdc57bea88cb5e11107c1e3380261c878df74ea5b70cbdc4d2502640919340b4931f29690214520a7d82649462d61b7ef8986b42b')
 
 build() {
   arch-meson "$pkgname-v$pkgver" build
