@@ -1,6 +1,6 @@
 --- a/Source/cmake_core.cmake
 +++ b/Source/cmake_core.cmake
-@@ -164,7 +164,6 @@ macro(astcenc_set_properties ASTCENC_TARGET_NAME ASTCENC_IS_VENEER)
+@@ -170,7 +170,6 @@ macro(astcenc_set_properties ASTCENC_TARGET_NAME ASTCENC_VENEER_TYPE)
              $<${is_gnu_fe}:-Wall>
              $<${is_gnu_fe}:-Wextra>
              $<${is_gnu_fe}:-Wpedantic>
