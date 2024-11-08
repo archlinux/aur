@@ -10,11 +10,11 @@ license=('')
 provides=('mfaws')
 conflicts=('mfaws')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/pbar1/mfaws/releases/download/1.0.9/mfaws_Linux_arm64.tar.gz")
-sha256sums_aarch64=('ad7a6ce3a1e8a5dc7e533fed10b543ff90f72592682cf4ddcda7bcec27a64b60')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/pbar1/mfaws/releases/download/1.0.9-rc1/mfaws_Linux_arm64.tar.gz")
+sha256sums_aarch64=('45ebefd0074d40d72c8a18626e18bb47e08566c19845ec94b2a3e79786947529')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/pbar1/mfaws/releases/download/1.0.9/mfaws_Linux_x86_64.tar.gz")
-sha256sums_x86_64=('298a6d6ad8852df0b7567dd62e65742d6dc5cc45664be07fc2fd924ec8a8d2e3')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/pbar1/mfaws/releases/download/1.0.9-rc1/mfaws_Linux_x86_64.tar.gz")
+sha256sums_x86_64=('576ecd26ed0711c05c0f3fc37639b3417545a5587b95d2779646dac2eee6f75a')
 
 package() {
   install -Dm755 "./mfaws" "${pkgdir}/usr/bin/mfaws"
