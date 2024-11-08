@@ -1,12 +1,15 @@
 pkgbase = mfaws-bin
-	pkgdesc = AWS Multi-Factor Authentication manager
-	pkgver = 1.0.0
+	pkgdesc = AWS multi-factor authentication manager
+	pkgver = 1.0.9
 	pkgrel = 1
 	url = https://github.com/pbar1/mfaws
+	conflicts = mfaws
+	provides = mfaws
+	arch = aarch64
+	source_aarch64 = https://github.com/pbar1/mfaws/releases/download/1.0.9/mfaws_Linux_arm64.tar.gz
+	sha256sums_aarch64 = ad7a6ce3a1e8a5dc7e533fed10b543ff90f72592682cf4ddcda7bcec27a64b60
 	arch = x86_64
-	license = MIT
-	source_x86_64 = mfaws::https://github.com/pbar1/mfaws/releases/download/v1.0.0/mfaws_v1.0.0_linux_amd64
-	sha256sums_x86_64 = 09fdeb8cd60bdee7678437272d461c885c67c82b7f531ddc85b35b4acebdddc5
-
+	source_x86_64 = https://github.com/pbar1/mfaws/releases/download/1.0.9/mfaws_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = 298a6d6ad8852df0b7567dd62e65742d6dc5cc45664be07fc2fd924ec8a8d2e3
+	
 pkgname = mfaws-bin
-
