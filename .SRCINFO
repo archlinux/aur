@@ -1,0 +1,19 @@
+pkgbase = mwtool-git
+	pkgdesc = 云固件配置工具箱
+	pkgver = 0.0.1.1.r1.ga8dc5f6
+	pkgrel = 1
+	url = https://gitee.com/xish-cc/MWTool
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = dos2unix
+	depends = sh
+	depends = yad
+	provides = mwtool
+	conflicts = mwtool
+	options = !strip
+	options = !debug
+	source = mwtool-git::git+https://gitee.com/xish-cc/MWTool.git
+	sha256sums = SKIP
+
+pkgname = mwtool-git
