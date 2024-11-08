@@ -2,7 +2,7 @@
 
 pkgbase=structstore
 pkgname=(structstore structstore_py)
-pkgver=0.2.1
+pkgver=0.2.2
 pkgrel=1
 pkgdesc='Structured object storage, dynamically typed, to be shared between processes'
 arch=('x86_64')
@@ -41,15 +41,15 @@ check() {
 }
 
 package_structstore() {
+    provides+=('libstructstore.so')
+
     cd "${srcdir}/${pkgbase}"
     venvdir="${srcdir}/venv"
     source "${venvdir}/bin/activate"
-    cmake -B build -S "." \
-        -DBUILD_WITH_PYTHON=OFF
     DESTDIR="$pkgdir" cmake --install build
 
     # keep only non-Python files
-    find "$pkgdir" -type f | sed "s@$pkgdir@@" | grep py \
+    find "$pkgdir" -type f | sed "s@$pkgdir@@" | grep -i py \
         | while IFS='' read f; do rm "$pkgdir/$f"; done
     find "$pkgdir" -type d -empty -delete
 }
@@ -60,12 +60,10 @@ package_structstore_py() {
     cd "${srcdir}/${pkgbase}"
     venvdir="${srcdir}/venv"
     source "${venvdir}/bin/activate"
-    cmake -B build -S "." \
-        -DBUILD_WITH_PYTHON=ON
     DESTDIR="$pkgdir" cmake --install build
 
     # keep only Python files
-    find "$pkgdir" -type f | sed "s@$pkgdir@@" | grep -v py \
+    find "$pkgdir" -type f | sed "s@$pkgdir@@" | grep -i -v py \
         | while IFS='' read f; do rm "$pkgdir/$f"; done
     find "$pkgdir" -type d -empty -delete
 }

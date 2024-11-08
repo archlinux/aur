@@ -1,6 +1,6 @@
 pkgbase = structstore
 	pkgdesc = Structured object storage, dynamically typed, to be shared between processes
-	pkgver = 0.2.1
+	pkgver = 0.2.2
 	pkgrel = 1
 	url = https://github.com/mertemba/structstore
 	arch = x86_64
@@ -19,6 +19,7 @@ pkgbase = structstore
 	sha256sums = SKIP
 
 pkgname = structstore
+	provides = libstructstore.so
 
 pkgname = structstore_py
 	depends = glibc
