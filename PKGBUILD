@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bershatsky <bepshatsky@yandex.ru>
 pkgname=python-orbax-checkpoint
 _pkgname=${pkgname#python-}
-pkgver=0.8.0
+pkgver=0.9.0
 pkgrel=1
 pkgdesc='Orbax provides common utility libraries for JAX users (checkpoint).'
 arch=('any')
@@ -28,7 +28,7 @@ optdepends=(
 conflicts=('python-orbax')
 replaces=('python-orbax')
 source=("$_pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('e915acc966ed07bfd359d26710cd8d0eb371cfac1f96f32599f090e6bf57bc73')
+sha256sums=('606f917673f2e2368907ba971d6b254a92cbb6e86643810b792e16a1c3dec992')
 
 build() {
     python -m build -nw orbax-$pkgver/checkpoint
