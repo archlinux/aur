@@ -1,6 +1,5 @@
-
 pkgname=mingw-w64-openmesh
-pkgver=7.1
+pkgver=11.0.0
 pkgrel=1
 pkgdesc="A generic and efficient data structure for representing and manipulating polygonal meshes (mingw-w64)"
 arch=('any')
@@ -9,25 +8,23 @@ license=('BSD')
 depends=('mingw-w64-crt')
 makedepends=('mingw-w64-cmake')
 options=('!buildflags' '!strip' 'staticlibs')
-source=("http://www.openmesh.org/media/Releases/${pkgver}/OpenMesh-${pkgver}.tar.bz2")
-sha256sums=('71cd5eb25893b0369ac766bb8305a525ffbb39b7f796d2878c7f9b8e0827cbac')
+source=("https://www.graphics.rwth-aachen.de/media/openmesh_static/Releases/11.0/OpenMesh-${pkgver}.tar.bz2")
+sha256sums=('9d22e65bdd6a125ac2043350a019ec4346ea83922cafdf47e125a03c16f6fa07')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 prepare () {
   cd "$srcdir"/OpenMesh-${pkgver}
+  sed -i "s|libdata|lib|g" CMakeLists.txt
 }
 
 build() {
   cd "$srcdir"/OpenMesh-${pkgver}
   for _arch in ${_architectures}; do
-    mkdir -p build-${_arch} && pushd build-${_arch}
-    ${_arch}-cmake \
-      -DOPENMESH_BUILD_SHARED=ON \
-      -DBUILD_APPS=OFF \
-      ..
-    make
-    popd
+    ${_arch}-cmake -DOPENMESH_BUILD_SHARED=ON \
+      -DBUILD_APPS=OFF -DOPENMESH_DOCS=OFF \
+      -B build-${_arch} .
+    make -C build-${_arch}
   done
 }
 
