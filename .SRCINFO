@@ -1,0 +1,17 @@
+pkgbase = python-mock-ssh-server
+	pkgdesc = Mock SSH server for testing purposes
+	pkgver = 0.9.1
+	pkgrel = 1
+	url = https://github.com/carletes/mock-ssh-server
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	checkdepends = python-paramiko
+	checkdepends = openssh
+	makedepends = python-setuptools
+	source = https://files.pythonhosted.org/packages/source/m/mock-ssh-server/mock-ssh-server-0.9.1.tar.gz
+	md5sums = 58cd8cc92ee51959462c490e70ea8336
+
+pkgname = python-mock-ssh-server
+	depends = python>=3.5
+	depends = python-paramiko
