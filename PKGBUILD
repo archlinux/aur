@@ -3,17 +3,17 @@ pkgname=geant4-ledata
 _varname='G4LEDATA'
 _dataname="G4EMLOW"
 _foldername='G4EMLOW'
-pkgver=8.2
-pkgrel=2
+pkgver=8.6.1
+pkgrel=1
 pkgdesc="Data files for low energy electromagnetic processes"
 url="http://geant4.cern.ch/"
 arch=('any')
 license=('GPL')
-optdepends=('geant4>=11.1')
+optdepends=('geant4>=11.3')
 install="${pkgname}.install"
 source=("https://cern.ch/geant4-data/datasets/${_dataname}.${pkgver}.tar.gz"
         "${pkgname}.install")
-sha256sums=('3d7768264ff5a53bcb96087604bbe11c60b7fea90aaac8f7d1252183e1a8e427'
+sha256sums=('4a93588d26080ce1d336b94f76fadabe4905fb8f1cba2415795023d6cd8f4a8a'
             '35e6e8b298b87976fbc01d933691940b4f95a8e6643bc81f9935f07b0ca8b08c')
 
 ## Remove this if you want to keep an even smaller package
