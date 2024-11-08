@@ -38,4 +38,8 @@ build() {
 package() {
   cd "${srcdir}/xmpb"
   make DESTDIR="${pkgdir}/" install
+
+  install -Dm644 \
+    "${srcdir}/xmpb/xmousepasteblock.service" \
+    -t "${pkgdir}/usr/lib/systemd/user"
 }
