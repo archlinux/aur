@@ -3,17 +3,17 @@ pkgname=geant4-incldata
 _varname='G4INCLDATA'
 _dataname="G4INCL"
 _foldername='G4INCL'
-pkgver=1.0
-pkgrel=2
+pkgver=1.2
+pkgrel=1
 pkgdesc="Data files for proton and neutron density profiles in INCL"
 url="http://geant4.cern.ch/"
 arch=('any')
 license=('GPL')
-optdepends=('geant4>=10.5')
+optdepends=('geant4>=11.3')
 install="${pkgname}.install"
 source=("https://cern.ch/geant4-data/datasets/${_dataname}.${pkgver}.tar.gz"
   "${pkgname}.install")
-sha256sums=('716161821ae9f3d0565fbf3c2cf34f4e02e3e519eb419a82236eef22c2c4367d'
+sha256sums=('f880b16073ee0a92d7494f3276a6d52d4de1d3677a0d4c7c58700396ed0e1a7e'
             '744614e9b6a3f9bbac15172ac3a1198e85dfab0fd5a1d6ce49d02fc23fab5f40')
 
 ## Remove this if you want to keep an even smaller package
