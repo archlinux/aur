@@ -1,7 +1,7 @@
 pkgbase = android-armv7a-eabi-fribidi
 	pkgdesc = A Free Implementation of the Unicode Bidirectional Algorithm (Android armv7a-eabi)
-	pkgver = 1.0.15
-	pkgrel = 2
+	pkgver = 1.0.16
+	pkgrel = 1
 	url = http://fribidi.org
 	arch = any
 	groups = android-fribidi
@@ -12,7 +12,7 @@ pkgbase = android-armv7a-eabi-fribidi
 	options = !buildflags
 	options = staticlibs
 	options = !emptydirs
-	source = https://github.com/fribidi/fribidi/archive/v1.0.15.tar.gz
-	md5sums = 246b219375b00db065e24f1caeade10c
+	source = https://github.com/fribidi/fribidi/archive/v1.0.16.tar.gz
+	md5sums = d14d2f2ebf77d7dc7b090aa58cc9f32a
 
 pkgname = android-armv7a-eabi-fribidi
