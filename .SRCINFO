@@ -1,0 +1,23 @@
+pkgbase = breads-git
+	pkgdesc = BREADS - BREaking Active Directory Security; focused on enumerating and attacking Active Directory environments through LDAP and SMB protocols.
+	pkgver = r129.dc012d7
+	pkgrel = 1
+	url = https://github.com/oppsec/breads
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	depends = impacket
+	depends = python-ldap3
+	depends = python-rich
+	provides = breads
+	conflicts = breads
+	conflicts = breads-git-bin
+	source = git+https://github.com/oppsec/breads
+	sha512sums = SKIP
+
+pkgname = breads-git
