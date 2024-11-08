@@ -1,7 +1,7 @@
 pkgbase = superproductivity-bin
 	pkgdesc = ToDo List / Time Tracker / Personal Jira Task Manager
 	pkgver = 10.1.1
-	pkgrel = 2
+	pkgrel = 3
 	url = http://super-productivity.com/
 	arch = x86_64
 	license = MIT

@@ -4,7 +4,7 @@
 _pkgname='superproductivity'
 pkgname="${_pkgname}-bin"
 pkgver=10.1.1
-pkgrel=2
+pkgrel=3
 pkgdesc="ToDo List / Time Tracker / Personal Jira Task Manager"
 arch=('x86_64')
 url="http://super-productivity.com/"
@@ -20,7 +20,7 @@ package() {
   tar -xvf data.tar.xz -C "${pkgdir}"
   rm -rf "${pkgdir}/usr/share/doc"
   install -d "${pkgdir}/usr/bin"
-  ln -sf "/opt/super Productivity/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
+  ln -sf "/opt/Super Productivity/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
   install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" \
-    "${pkgdir}/opt/super Productivity/"{'LICENSE.electron.txt','LICENSES.chromium.html'}
+    "${pkgdir}/opt/Super Productivity/"{'LICENSE.electron.txt','LICENSES.chromium.html'}
 }
