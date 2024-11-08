@@ -3,14 +3,14 @@
 pkgname=archosaur-bin
 _pkgname="${pkgname%-bin}"
 pkgver=1.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc='A PKGBUILD management framework for the Arch User Repository'
 arch=(any)
 url="https://github.com/txtsd/${_pkgname}"
 license=('GPL-2.0-or-later')
 depends=(bash openssh)
 provides=("${_pkgname}")
-conflicts=("${_pkgname}" "${_pkgname}-git")
+conflicts=("${_pkgname}")
 source=("${url}/releases/download/${pkgver}/${_pkgname}-${pkgver}.tar.gz")
 sha256sums=('fceab3be5b7f74e382ac76d7dd28a2fe2a7fa54f84ba442460f14f473126d59b')
 
