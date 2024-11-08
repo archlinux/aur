@@ -1,6 +1,6 @@
 pkgbase = python-pulsectl-asyncio
 	pkgdesc = Asyncio frontend for pulsectl, a Python bindings library for PulseAudio (libpulse)
-	pkgver = 1.2.1
+	pkgver = 1.2.2
 	pkgrel = 1
 	url = https://github.com/mhthies/pulsectl-asyncio
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = python-pulsectl-asyncio
 	makedepends = python-wheel
 	depends = python>=3.6
 	depends = python-pulsectl>=1:23.5.0
-	source = pulsectl-asyncio_1.2.1.tgz::https://github.com/mhthies/pulsectl-asyncio/archive/refs/tags/v1.2.1.tar.gz
-	sha512sums = b22d0a634433d558860ff1590020ba7272412be97da478a8b00ec457506cb58353b645537ae26591f1aed300cacc14fd0f50c8a3a0c7d650d610b24cc52248ee
+	source = pulsectl-asyncio_1.2.2.tgz::https://github.com/mhthies/pulsectl-asyncio/archive/refs/tags/v1.2.2.tar.gz
+	sha512sums = ccaa7ae14fd2ca7e9d6483efcb3d48f8364ed87ab99c700323c2f2d803986408394ae0fe83880d4d77b77daf17dfb58c6e9f94043a9b03ad643bff2e909a673a
 
 pkgname = python-pulsectl-asyncio
