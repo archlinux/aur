@@ -1,0 +1,24 @@
+pkgbase = aced-git
+	pkgdesc = Tool to parse and resolve a single targeted Active Directory principal's DACL.
+	pkgver = r60.b5d1ad1
+	pkgrel = 1
+	url = https://github.com/garrettfoster13/aced
+	arch = any
+	license = custom
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python
+	depends = impacket
+	depends = python-ldap3
+	depends = python-pyasn1
+	provides = aced
+	conflicts = aced
+	conflicts = aced-git-bin
+	source = git+https://github.com/garrettfoster13/aced
+	source = aced.py
+	source = setup.py
+	sha512sums = SKIP
+	sha512sums = 4604a222691732b704c31c78f89770fcc1a14aa6bbe37ed14e695eea512424666a9a40fdcb94c1e86974fee868b8559087c625eef8aee1a1bf35a8829671624e
+	sha512sums = 2a159be912b26a77026474c6d04875e6f503de6f1d0880a127a54cf723040647eda9f0c01bb106aa24d2f5c64f3afd44f75520ce346e10ee518d9163b07c285c
+
+pkgname = aced-git
