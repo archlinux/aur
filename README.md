@@ -35,6 +35,8 @@ git clone https://gitlab.com/drad/keepalived.git \
 
 ### Update
 
+__NOTICE:__ installing with `paru` (or another aur helper) should work fine.
+
 1. Update & Build
 ```
 cd /home/build/keepalived \
