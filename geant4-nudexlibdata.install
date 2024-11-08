@@ -1,0 +1,22 @@
+#!/bin/sh
+
+_varname='G4NUDEXLIBDATA'
+
+_remove() {
+    ## from the time where this variables where stored in this one script
+    sed -n -i "/${_varname}/d" /etc/profile.d/geant4.sh  2>/dev/null
+    sed -n -i "/${_varname}/d" /etc/profile.d/geant4.csh 2>/dev/null
+}
+
+pre_install() {
+    _remove
+}
+pre_upgrade() {
+    _remove
+}
+pre_remove() {
+    _remove
+}
+post_remove() {
+    _remove
+}
