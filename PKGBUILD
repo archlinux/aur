@@ -51,8 +51,8 @@ if [[ -z "$FFMPEG_OBS_VULKAN" ]]; then
 fi
 
 pkgname=ffmpeg-obs
-pkgver=7.0.2
-pkgrel=4
+pkgver=7.1
+pkgrel=1
 pkgdesc='Complete solution to record, convert and stream audio and video with fixes for OBS Studio. And various options in the PKGBUILD'
 arch=('x86_64' 'aarch64')
 url=https://ffmpeg.org/
@@ -67,13 +67,14 @@ _libplacebover=7
 _libristver=0.2.7
 _libvpxver=1.14
 _rav1ever=0.7.1
+_rubberbandver=4
 _srtver=1.5
 _svtav1ver=2
 _vidstabver=1.1.1
 _vmafver=3
 _vulkanver=1.3.279
 _x264ver=0.164
-_x265ver=3.6
+_x265ver=4
 depends=(
   "aom>=$_aomver"
   "srt>=$_srtver"
@@ -86,6 +87,7 @@ depends=(
   fribidi
   glib2
   glibc
+  glslang
   gmp
   gnutls
   gsm
@@ -127,7 +129,7 @@ depends=(
   openjpeg2
   opus
   "rav1e>=$_rav1ever"
-  rubberband
+  "rubberband>=$_rubberbandver"
   sdl2
   snappy
   speex
@@ -176,8 +178,8 @@ provides=(
   libswscale.so
 )
 conflicts=(ffmpeg)
-_tag=e3a61e91030696348b56361bdf80ea358aef4a19
-_deps_tag=2023-11-03
+_tag=b08d7969c550a804a59511c7b83f2dd8cc0499b8
+_deps_tag=2024-09-12
 source=(
   "ffmpeg::git+https://git.ffmpeg.org/ffmpeg.git#tag=${_tag}"
   "obs-deps::git+https://github.com/obsproject/obs-deps.git#tag=${_deps_tag}"
@@ -220,6 +222,7 @@ _args=(
   --enable-libdvdread
   --enable-libfreetype
   --enable-libfribidi
+  --enable-libglslang
   --enable-libgsm
   --enable-libharfbuzz
   --enable-libiec61883
@@ -344,7 +347,7 @@ fi
 if [[ $FFMPEG_OBS_SVT == 'ON' ]]; then
   depends+=(svt-hevc svt-vp9)
   _svt_hevc_ver='ed80959ebb5586aa7763c91a397d44be1798587c'
-  _svt_vp9_ver='3b9a3fa43da4cc5fe60c7d22afe2be15341392ea'
+  _svt_vp9_ver='1feb760a60bf519973610ad58001273cb55c7d26'
   source+=(
     "020-ffmpeg-add-svt-hevc-g${_svt_hevc_ver:0:7}.patch"::"https://raw.githubusercontent.com/OpenVisualCloud/SVT-HEVC/${_svt_hevc_ver}/ffmpeg_plugin/master-0001-lavc-svt_hevc-add-libsvt-hevc-encoder-wrapper.patch"
     "030-ffmpeg-add-svt-hevc-docs-g${_svt_hevc_ver:0:7}.patch"::"https://raw.githubusercontent.com/OpenVisualCloud/SVT-HEVC/${_svt_hevc_ver}/ffmpeg_plugin/0002-doc-Add-libsvt_hevc-encoder-docs.patch"
@@ -353,15 +356,15 @@ if [[ $FFMPEG_OBS_SVT == 'ON' ]]; then
   sha256sums+=(
     '9047e18d34716812d4ea7eafc1d0fd8b376d922a4b6b4dc20237662fcaf0c996'
     'a164ebdc4d281352bf7ad1b179aae4aeb33f1191c444bed96cb8ab333c046f81'
-    '59da61f2b2c556fbe0cdbf84bcc00977ee3d2447085decb21f6298226559f2aa'
+    'ee9499836808b6f5e583dcc1b21c28598550c58386c53cfaef41d25121ea2022'
   )
   _args+=(--enable-libsvthevc --enable-libsvtvp9)
   provides+=(ffmpeg-svt-hevc ffmpeg-svt-vp9)
 fi
 
 if [[ $FFMPEG_OBS_VULKAN == 'ON' ]]; then
-  depends+=(glslang spirv-tools)
-  _args+=(--enable-libglslang --disable-libshaderc)
+  depends+=(spirv-tools)
+  _args+=(--disable-libshaderc)
   provides+=(ffmpeg-vulkan)
 fi
 
@@ -375,15 +378,13 @@ if [[ $FFMPEG_OBS_FULL == 'ON' ]]; then
     'davs2' libdc1394 flite1 libgme libilbc 'libklvanc'
     kvazaar 'lensfun-git' 'openh264' librabbitmq-c
     rtmpdump 'shine' smbclient tesseract
-    twolame 'uavs3d-git' 'vo-amrwbenc' 'xavs' 'xavs2' zeromq
+    twolame 'uavs3d-git' 'vo-amrwbenc' 'xavs' 'xavs2'
     zvbi lv2 lilv libmysofa openal
     libomxil-bellagio 'rockchip-mpp' #'pocketsphinx'
     lcms2 libraw1394 openvino libaribcaption opencv2
-    qrencode quirc xevd xeve
+    qrencode quirc xevd xeve vvenc lcevcdec liblc3
   )
   makedepends+=(patchutils)
-  source+=('070-ffmpeg-xeve0.5.1-support.patch'::'https://git.ffmpeg.org/gitweb/ffmpeg.git/patch/3e6c7948626f19c46c1a630c788ea6bbd9e7fbcb')
-  sha256sums+=('9c76e4c5af11afed32c588d5d900f2eaf1ca43fc2611365f661df16acde912d0')
   _args+=(
     --enable-sndio --disable-rpath --enable-gray --enable-chromaprint --enable-gcrypt
     --enable-libaribb24 --enable-libcaca --enable-libcelt --enable-libcdio --enable-libcodec2
@@ -395,6 +396,7 @@ if [[ $FFMPEG_OBS_FULL == 'ON' ]]; then
     --enable-omx --enable-rkmpp #--enable-pocketsphinx
     --enable-lcms2 --enable-libopenvino --enable-libaribcaption --enable-libopencv
     --enable-libqrencode --enable-libquirc --disable-libtorch --enable-libxevd --enable-libxeve
+    --enable-liblc3 --enable-liblcevc-dec --enable-libvvenc
   )
   provides+=(ffmpeg-full)
 else
@@ -414,11 +416,6 @@ prepare() {
 
   ### ffmpeg-full changes
 
-  ## Add support for xeve 0.5.1
-  if [[ $FFMPEG_OBS_FULL == 'ON' ]]; then
-    patch -Np1 -i <(filterdiff -x a/libavcodec/version.h "${srcdir}/070-ffmpeg-xeve0.5.1-support.patch")
-  fi
-
   ## Fix segfault with avisynthplus
   sed -i 's/RTLD_LOCAL/RTLD_DEEPBIND/g' libavformat/avisynth.c
 
@@ -426,10 +423,6 @@ prepare() {
 
   ## https://crbug.com/1251779
   patch -Np1 -i "${srcdir}"/add-av_stream_get_first_dts-for-chromium.patch
-
-  ## Fix VAAPI AV1 performance with Mesa
-  git cherry-pick -n fe9d889dcd79ea18d4dfaa39df4ddbd4c8c3b15c
-  git cherry-pick -n d2d911eb9a2fc6eb8d86b3ae025a56c1a2692fba
 
   ### OBS changes
 
