@@ -1,7 +1,7 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
 pkgname="supabase"
-pkgver=1.219.0
+pkgver=1.219.2
 pkgrel=1
 pkgdesc="A CLI for Supabase, an open source Firebase alternative"
 arch=('x86_64' 'aarch64')
@@ -13,7 +13,7 @@ makedepends=('go')
 # checkdepends=('docker')
 _pkgsrc="cli-${pkgver}"
 source=("${_pkgsrc}.tar.gz::${_url}/archive/refs/tags/v${pkgver}.tar.gz")
-b2sums=('62b54e25728556dd4ab1c3792751d523c5b1c50ce6f35393ace16bb43fd6507e1ecce73a67d299cfece11c68ba74df314e68152f465bd19fb578ab17dfb801aa')
+b2sums=('17f0318df195df0af50b33c29c3ec13efe3875ea9927550eb235df41e1c753b9c5e49e12eb3dab94cab984b9bb59c7f31f2af03ca04f2ac6c32123af65d908f2')
 
 prepare() {
   cd "${srcdir}/${_pkgsrc}"
@@ -41,13 +41,13 @@ build() {
 
 package() {
   cd "${srcdir}/${_pkgsrc}"
-  install -Dm755 "build/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
-  install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
-  install -Dm644 "LICENSE"   "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -vDm755 "build/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
+  install -vDm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+  install -vDm644 "LICENSE"   "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
   cd "completions"
-  install -Dm644 "${pkgname}.bash"       "${pkgdir}/usr/share/bash-completion/completions/${pkgname}"
-  install -Dm644 "${pkgname}.fish"       "${pkgdir}/usr/share/fish/vendor_completions.d/${pkgname}.fish"
-  install -Dm644 "${pkgname}.zsh"        "${pkgdir}/usr/share/zsh/site-functions/_${pkgname}"
-  install -Dm644 "${pkgname}.powershell" "${pkgdir}/usr/share/powershell/Modules/${pkgname}/${pkgname}.ps1"
+  install -vDm644 "${pkgname}.bash"       "${pkgdir}/usr/share/bash-completion/completions/${pkgname}"
+  install -vDm644 "${pkgname}.fish"       "${pkgdir}/usr/share/fish/vendor_completions.d/${pkgname}.fish"
+  install -vDm644 "${pkgname}.zsh"        "${pkgdir}/usr/share/zsh/site-functions/_${pkgname}"
+  install -vDm644 "${pkgname}.powershell" "${pkgdir}/usr/share/powershell/Modules/${pkgname}/${pkgname}.ps1"
 }
