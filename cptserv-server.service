@@ -1,0 +1,12 @@
+[Unit]
+Description=Transfer-server
+After=network.target NetworkManager.service systemd-networkd.service
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/TServ.sh
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
