@@ -1,7 +1,7 @@
 # Maintainer: yifwon <wyf9661 at gmail dot com>
 # Contributor: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname="bilibili-appimage"
-_pkgver=1.14.2
+_pkgver=1.15.2
 _subver=1
 release_tag="${_pkgver}-${_subver}"
 pkgver="${_pkgver}.${_subver}"
@@ -18,9 +18,9 @@ source_x86_64=("${pkgname}-${pkgver}-x86_64.AppImage::${url}/releases/download/v
 source_aarch64=("${pkgname}-${pkgver}-aarch64.AppImage::${url}/releases/download/v${release_tag}/${pkgname%-appimage}-${_pkgver}-arm64.AppImage")
 source_loong64=("${pkgname}-${pkgver}-loong64.AppImage::${url}/releases/download/v${release_tag}/${pkgname%-appimage}-${_pkgver}-loong64.AppImage")
 source=("LICENSE::https://raw.githubusercontent.com/msojocs/bilibili-linux/master/license")
-sha256sums_x86_64=('8cf135767eaaace07687408e0ca0521f7f01c9725f1ee57be66084c35715cbc5')
-sha256sums_aarch64=('7413be2d4b0fc66663d17f5bb7926bc334f3a20b9038f3d1a456f71859ef7105')
-sha256sums_loong64=('d222225e34ca01b2832ecd65c69c74f0a5a06d13b52218c48c05638987eeb5fc')
+sha256sums_x86_64=('01dde5671a56d731aae9e237e96b1e0eccbc9bb9951494753242269010abf9cd')
+sha256sums_aarch64=('766d522202ed10dd4a5047b0e515d3102086f25dbeccc92584413e4549eaea23')
+sha256sums_loong64=('b540a05fa4589a98def39707a396e0116da0a8d18729e8c2a9cc392f55135df7')
 sha256sums=('21668b8229199de1a523b82805c80d6e110a67fef5766aa7cc3c7df4416d1468')
 
 _appimage="${pkgname}-${pkgver}-${CARCH}.AppImage"
