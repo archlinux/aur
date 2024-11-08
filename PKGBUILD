@@ -2,7 +2,7 @@
 
 pkgname='gui-for-singbox'
 _pkgname='GUI.for.SingBox'
-pkgver='1.8.3'
+pkgver='1.8.9'
 pkgrel='1'
 pkgdesc='GUI for SingBox'
 arch=('x86_64')
@@ -26,7 +26,7 @@ source=(
     "${pkgname}.install"
 )
 
-sha256sums=('348a66f7236450ee68854b573c51154b0009a8c04f8742922622cb3f9a74a058'
+sha256sums=('92f411934668c955cfc886e87fb482b19d13becdc6ec4c15ecd1339a7a1fe51d'
             '576a9561c73fdc39f31670ac5cb6fefc61822a348f116f0d64f9e2e402882729'
             '08257d0d21c76a56e48e38105460927293a452ddc6b0b62db401bf5b5b9b7adf'
             '53477d98b4507c0cf9ae88f3c6b06ddb768b604dab8027ca9ac29e5e4fe46d29')
