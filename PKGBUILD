@@ -3,11 +3,11 @@
 # Contributor: Jelle van der Waa <jelle@archlinux.org>
 
 pkgname=lib32-sdl2-compat-git
-pkgver=r561.cddd4fa
+pkgver=r701.44a2d4d
 pkgrel=1
 pkgdesc="SDL2 runtime compatibility library using SDL3"
 url="https://github.com/libsdl-org/sdl2-compat"
-depends=('lib32-sdl3')
+depends=('lib32-sdl3' 'lib32-glibc')
 makedepends=('cmake' 'lib32-libgl' 'ninja' 'git')
 arch=('x86_64' 'i686')
 conflicts=('lib32-sdl2')
