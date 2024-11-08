@@ -1,0 +1,14 @@
+pkgbase = smaz2-git
+	pkgdesc = compression for very small strings
+	pkgver = 2.9.g71ecc43
+	pkgrel = 1
+	url = https://github.com/antirez/smaz2
+	arch = x86_64
+	arch = i686
+	license = MIT
+	makedepends = git
+	provides = smaz2
+	source = smaz2::git+https://github.com/antirez/smaz2.git
+	sha256sums = SKIP
+
+pkgname = smaz2-git
