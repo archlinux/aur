@@ -1,6 +1,6 @@
 pkgbase = freerouting-zh-cn-git
 	pkgdesc = Advanced PCB autorouter
-	pkgver = 1.9.0.r148.gfac1d13
+	pkgver = 2.0.0.r1.g33b29ff
 	pkgrel = 1
 	url = https://github.com/freerouting/freerouting
 	arch = any

@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=freerouting-zh-cn-git
-pkgver=1.9.0.r148.gfac1d13
+pkgver=2.0.0.r1.g33b29ff
 pkgrel=1
 _jrever=21
 _jdkver=21
@@ -31,28 +31,29 @@ sha256sums=('SKIP')
 
 pkgver() {
     cd "${srcdir}/${pkgname%-git}"
-    ( set -o pipefail
+    (
+        set -o pipefail
         git describe --long --tag --abbrev=7 2>/dev/null | sed 's/^v//g;s/\([^-]*-g\)/r\1/;s/-/./g' ||
-        printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+            printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
     )
 }
 
 build() {
-# don't forget to set active JDK to 21 version before running makepkg:
-# sudo archlinux-java set java-21-openjdk
+    # don't forget to set active JDK to 21 version before running makepkg:
+    # sudo archlinux-java set java-21-openjdk
 
     cd "${srcdir}/${pkgname%-git}"
     export PATH="/usr/lib/jvm/java-${_jdkver}-openjdk/bin:$PATH"
-#     chmod +x gradlew
-#     ./gradlew assemble
-    ./gradlew dist
+    #     chmod +x gradlew
+    ./gradlew assemble
+    #     ./gradlew dist
 }
 
 package() {
     cd "${pkgname%-git}"
     install -Dm0644 design/icon/freerouting_icon_256x256_v2.png "${pkgdir}/usr/share/pixmaps/${pkgname%-git}.png"
     install -Dm0644 build/libs/freerouting-executable.jar "${pkgdir}/usr/lib/freerouting/freerouting-executable-zh-cn.jar"
-    install -Dm0755 /dev/stdin "${pkgdir}/usr/bin/${pkgname%-git}" << EOF
+    install -Dm0755 /dev/stdin "${pkgdir}/usr/bin/${pkgname%-git}" <<EOF
 #!/usr/bin/bash
 export PATH="/usr/lib/jvm/java-${_jdkver}-openjdk/bin/:\$PATH"
 
@@ -62,7 +63,7 @@ exit 0
 
 EOF
 
-    install -Dm0644 /dev/stdin "${pkgdir}/usr/share/applications/${pkgname%-git}.desktop" << EOF
+    install -Dm0644 /dev/stdin "${pkgdir}/usr/share/applications/${pkgname%-git}.desktop" <<EOF
 [Desktop Entry]
 Version=1.0
 Name=${pkgname%-git}
