@@ -1,16 +1,16 @@
 pkgbase = music-dl-bin
-	pkgdesc = Music Searcher and Downloader.Prebuilt version.音乐搜索下载器.
-	pkgver = 5.3.0
+	pkgdesc = Music Searcher and Downloader(Prebuilt version).音乐搜索下载器.
+	pkgver = 5.3.2
 	pkgrel = 1
 	url = https://github.com/guanguans/music-dl
 	arch = x86_64
 	license = MIT
 	depends = php>=8.1
-	provides = music-dl=5.3.0
+	provides = music-dl=5.3.2
 	conflicts = music-dl
-	source = music-dl-5.3.0::https://github.com/guanguans/music-dl/raw/5.3.0/builds/music-dl
-	source = LICENSE-5.3.0::https://raw.githubusercontent.com/guanguans/music-dl/5.3.0/LICENSE
-	sha256sums = abd1b7504af22a02e9506a7d59ea25c460bae4a3a2a1d6d76cdde6dd4587c8f6
+	source = music-dl-5.3.2::https://github.com/guanguans/music-dl/raw/5.3.2/builds/music-dl
+	source = LICENSE-5.3.2::https://raw.githubusercontent.com/guanguans/music-dl/5.3.2/LICENSE
+	sha256sums = b214c2fcb6427034fb16ab09f88628fc8c8ee37e6aca945d77b8d8550a98991e
 	sha256sums = c808ccc6389e810d0ad90d9f25e148b0a344f6be110704928d73ab95be5b62e9
 
 pkgname = music-dl-bin
