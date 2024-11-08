@@ -4,8 +4,6 @@ pkgbase = diabos-base
 	pkgrel = 1
 	arch = x86_64
 	license = GPL
-	depends = base
-	depends = base-devel
 	depends = filesystem
 	depends = gcc-libs
 	depends = glibc
@@ -74,5 +72,7 @@ pkgbase = diabos-base
 	provides = base
 	provides = base-devel
 	provides = diabos-base
+	conflicts = base
+	conflicts = base-devel
 
 pkgname = diabos-base
