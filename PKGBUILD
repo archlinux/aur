@@ -4,7 +4,7 @@
 _pkgname='superproductivity'
 pkgname="${_pkgname}-bin"
 pkgver=10.1.1
-pkgrel=3
+pkgrel=4
 pkgdesc="ToDo List / Time Tracker / Personal Jira Task Manager"
 arch=('x86_64')
 url="http://super-productivity.com/"
@@ -14,7 +14,7 @@ provides=("${_pkgname}")
 conflicts=("${_pkgname}"
   "${_pkgname}-git")
 md5sums=('SKIP')
-source=("https://github.com/johannesjo/super-productivity/releases/download/v${pkgver}/superProductivity_${pkgver}_amd64.deb")
+source=("https://github.com/johannesjo/super-productivity/releases/download/v${pkgver}/superProductivity-amd64.deb")
 
 package() {
   tar -xvf data.tar.xz -C "${pkgdir}"
