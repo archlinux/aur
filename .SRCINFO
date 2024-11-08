@@ -1,0 +1,27 @@
+pkgbase = python-sshfs
+	pkgdesc = SSH Filesystem -- Async SSH/SFTP backend for fsspec
+	pkgver = 2024.9.0
+	pkgrel = 1
+	url = https://github.com/fsspec/sshfs
+	arch = any
+	license = MIT
+	checkdepends = python-pytest-asyncio
+	checkdepends = python-fsspec
+	checkdepends = python-asyncssh
+	checkdepends = python-typing_extensions
+	checkdepends = python-cryptography
+	checkdepends = python-mock-ssh-server
+	checkdepends = python-importlib-metadata
+	checkdepends = openssh
+	checkdepends = openbsd-netcat
+	makedepends = python-setuptools-scm
+	makedepends = python-wheel
+	makedepends = python-build
+	makedepends = python-installer
+	source = https://files.pythonhosted.org/packages/source/s/sshfs/sshfs-2024.9.0.tar.gz
+	md5sums = fa8b3d33f417180cc95808bf29b17e17
+
+pkgname = python-sshfs
+	depends = python>=3.7
+	depends = python-fsspec>=2021.8.1
+	depends = python-asyncssh>=2.11.0
