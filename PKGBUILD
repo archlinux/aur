@@ -24,7 +24,7 @@ unset _pkgtype
 _gitname="linux"
 _pkgname="$_gitname${_pkgtype:-}"
 pkgbase="$_pkgname"
-pkgver=6.11.6
+pkgver=6.11.7
 pkgrel=1
 pkgdesc='Linux'
 url='https://www.kernel.org'
@@ -53,12 +53,12 @@ makedepends=(
 options=('!debug' '!strip')
 
 _srcname=linux-$pkgver
-source+=(
+source=(
   https://cdn.kernel.org/pub/linux/kernel/v${pkgver%%.*}.x/${_srcname}.tar.{xz,sign}
   "config-$pkgver"::https://gitlab.archlinux.org/archlinux/packaging/packages/linux/-/raw/main/config
 )
-sha256sums+=(
-  'c954f60197008f1e1f32a1e77293903cf3801d2543ec4bf521f5651eb7f133ce' ###
+sha256sums=(
+  '0bf5ec644817d7928920f763581311f5bf258a92759cf2f30985da743af3ebb2' ###
   'SKIP'
   'SKIP'
 )
