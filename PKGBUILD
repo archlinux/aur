@@ -3,7 +3,7 @@
 
 pkgname='openscad-nopscadlib-git'
 _gitname='nopscadlib'
-pkgver=21.32.0+r1549+70fd7fbe1
+pkgver=21.32.0+r1549+g70fd7fbe1
 pkgrel=1
 pkgdesc='Library of parts modelled in OpenSCAD and a framework for making projects.'
 url='https://github.com/nophead/NopSCADlib'
@@ -21,7 +21,7 @@ pkgver(){
   _version=$(git tag --sort=-v:refname --list | head -n1 | cut -c2- )
   _commits=$(git rev-list --count HEAD)
   _short_commit_hash=$(git rev-parse --short=9 HEAD)
-  echo "${_version}+r${_commits}+${_short_commit_hash}"
+  echo "${_version}+r${_commits}+g${_short_commit_hash}"
 }
 
 
