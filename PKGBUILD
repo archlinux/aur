@@ -1,4 +1,5 @@
 # Maintainer: Aman Gupta <aman.iv0012@gmail.com>
+
 pkgname=logstash
 pkgver=8.15.3
 pkgrel=1
@@ -37,13 +38,13 @@ md5sums=('b40958b093d21ecb4eb588f1e48b890d'
 
 build() {
   cd "$pkgname-$pkgver"
-  
+
   # export OSS=true
   # export JRUBY_OPTS="-Xms1g -Xmx1g"
-  
+
   export JAVA_OPTS="--add-opens java.base/sun.nio.ch=ALL-UNNAMED --add-opens java.base/java.io=ALL-UNNAMED"
   export GRADLE_OPTS="-Dorg.gradle.daemon=false -Dorg.gradle.jvmargs=-Xmx2g -Dfile.encoding=UTF-8"
-  
+
   ./gradlew clean installDefaultGems --no-daemon --warning-mode all
 }
 
