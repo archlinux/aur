@@ -1,23 +1,14 @@
 pkgbase = buttercup
-	pkgdesc = Javascript Password Vault - Multi-Platform Desktop Application
-	pkgver = 0.17.2
-	pkgrel = 3
-	url = https://github.com/buttercup/buttercup
-	arch = i686
+	pkgdesc = Watch TV Shows / Movies from torrent.
+	pkgver = v1.0.0
+	pkgrel = 1
+	url = https://github.com/Wraient/buttercup
 	arch = x86_64
-	license = GPL3
-	makedepends = npm
-	makedepends = sed
-	depends = gtk2
-	depends = gconf
-	depends = libxtst
-	depends = alsa-lib
-	depends = libxss
-	depends = nss
-	source = https://github.com/buttercup/buttercup/archive/v0.17.2.tar.gz
-	source = buttercup.desktop
-	sha256sums = 0a4db0c51a25122a5e786b1f7de2ddd2e5c6aad63149938ecc797386d892c53c
-	sha256sums = 1dd4ebbb268442e4c1a27ff720a1227b3aa01a11de939713602fb24c13890178
+	license = GPL
+	depends = mpv
+	depends = rofi
+	depends = npm
+	source = buttercup::https://github.com/Wraient/buttercup/releases/latest/download/buttercup
+	sha256sums = SKIP
 
 pkgname = buttercup
-
