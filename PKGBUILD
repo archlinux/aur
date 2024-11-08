@@ -1,0 +1,26 @@
+# Maintainer: killab33z <killab33z @ protonmail-dot-ch>
+pkgname=python-aiowmi
+_pkgname=aiowmi
+pkgver=0.2.3
+pkgrel=1
+pkgdesc='Python Windows Management Interface (WMI) queries connector using asyncio'
+arch=('any')
+url='https://github.com/cesbit/aiowmi'
+license=('GPL-3.0-only')
+depends=('python')
+makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools')
+source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
+sha512sums=('7608d352a50b99816545109b4ac87888683a8ea45ddb40d5b01072afa22ca70216e5a36281545f745e8945c0cf46117c72dcd86c233e76fdaf11c5b2f29a8df6')
+
+# https://wiki.archlinux.org/title/Python_package_guidelines#Standards_based_(PEP_517)
+build() {
+  cd "$_pkgname-$pkgver"
+  python -m build --wheel --no-isolation
+}
+
+package() {
+  cd "$_pkgname-$pkgver"
+  install -Dm644 "$srcdir/$_pkgname-$pkgver/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  python -m installer --destdir="$pkgdir" dist/*.whl
+}
+
