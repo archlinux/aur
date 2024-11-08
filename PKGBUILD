@@ -1,5 +1,5 @@
 # Maintainer: Maki <maki@hotmilk.space>
-# Maintainer: SuicideCatt <fr7g31@gmail.com>
+# Maintainer: SuicideCatt <random.cat.from.internet@gmail.com>
 
 pkgname=msdfgen-git
 pkgver=1.12.r3.g755c45b
