@@ -1,0 +1,19 @@
+pkgbase = python-cxxtea-git
+        pkgdesc = A python package for decrypting data, using a custom XXTEA decryption algorithm implemented in C.
+        pkgver = r34.d535b5a
+        pkgrel = 1
+        url = https://github.com/Rin-Wood/cxxtea
+        arch = x86_64
+        license = BSD
+        makedepends = python-build
+        makedepends = python-installer
+        makedepends = python-setuptools
+        makedepends = python-wheel
+        makedepends = git
+        depends = python
+        provides = python-cxxtea
+        conflicts = python-cxxtea
+        source = git+https://github.com/Rin-Wood/cxxtea.git
+        md5sums = SKIP
+
+pkgname = python-cxxtea-git
