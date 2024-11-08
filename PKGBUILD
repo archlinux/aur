@@ -3,8 +3,8 @@
 
 _pkgname="zapret"
 pkgname="$_pkgname-git"
-pkgver=68.r27.g9e84bf7
-pkgrel=2
+pkgver=68.r64.g9e84bf7
+pkgrel=1
 pkgdesc="Bypass deep packet inspection"
 url="https://github.com/bol-van/zapret"
 license=('MIT')
@@ -19,6 +19,9 @@ depends=(
 makedepends=(
   'git'
   'libnetfilter_queue'
+)
+optdepends=(
+  'nmap: blockcheck script uses ncat'
 )
 
 provides=("$_pkgname=$pkgver")
