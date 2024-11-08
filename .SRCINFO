@@ -1,7 +1,7 @@
 pkgbase = python-scikit-umfpack
 	pkgdesc = Python interface to UMFPACK sparse direct solver
 	pkgver = 0.4.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://scikit-umfpack.github.io/scikit-umfpack
 	arch = x86_64
 	license = BSD-3-Clause
@@ -13,6 +13,8 @@ pkgbase = python-scikit-umfpack
 	depends = python-scipy
 	depends = suitesparse
 	source = scikit-umfpack-0.4.1.tar.gz::https://github.com/scikit-umfpack/scikit-umfpack/archive/0.4.1.tar.gz
+	source = oldmacros.patch::https://github.com/scikit-umfpack/scikit-umfpack/pull/104.patch
 	sha512sums = b532decd09d1e61b772c1241b4722460a83a30cdc09f38914aafe4fea1f59e458cbfd6d01b94611cb21097d13ddf0b7326039f0a7874ee44787b97ab75e04c9b
+	sha512sums = e5d0ab2cb16dc5032852e016aa6d672ab3e6c9667e5361ed1edf642b24a4fdc41a26d166925f071e1a2712304abc7b14a16b5291466501d6df76132bdc971fce
 
 pkgname = python-scikit-umfpack
