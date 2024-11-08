@@ -1,7 +1,7 @@
 # Maintainer: Ashley Bone <ashley DOT bone AT pm DOT me>
 pkgname=python-django-stubs-ext
 _pkgname=django-stubs
-pkgver=4.2.7
+pkgver=5.1.1
 pkgrel=1
 pkgdesc="Extensions and monkey-patching for django-stubs."
 arch=('any')
@@ -13,7 +13,7 @@ makedepends=(python-build
 	     python-setuptools
 	     python-wheel)
 source=($url/archive/refs/tags/$pkgver.tar.gz)
-sha256sums=('78c2750b95a877260b44354d43ff6eee8b516cdb909398df7e78da060cc42a78')
+sha256sums=('c1cc98a31c4f7bb96ce7d4597211a1edb5222a5a6277a3572105207fc916f0f3')
 
 build() {
     cd "${srcdir}/${_pkgname}-${pkgver}/ext"
