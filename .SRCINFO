@@ -1,6 +1,6 @@
 pkgbase = r-mlr3tuning
 	pkgdesc = Hyperparameter Optimization for 'mlr3'
-	pkgver = 1.1.0
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://cran.r-project.org/package=mlr3tuning
 	arch = any
@@ -26,8 +26,8 @@ pkgbase = r-mlr3tuning
 	optdepends = r-rush
 	optdepends = r-testthat
 	optdepends = r-xgboost
-	source = https://cran.r-project.org/src/contrib/mlr3tuning_1.1.0.tar.gz
-	md5sums = 0f338d9052126fa0da77bc2e1ebf1a0a
-	b2sums = 604593bdb0be9bef14e4a2ab64a22815728d5036a3be5a63f56ef98cdda411ebcc5b13a215d60231ec9e4153c7de56de5cc52da1709e5871c9cfd4c7ee27f91c
+	source = https://cran.r-project.org/src/contrib/mlr3tuning_1.2.0.tar.gz
+	md5sums = d0a43875f6cc01bcbe8b75d84f7bc938
+	b2sums = 351824341239192725f7394ea883c016073a3183c9126bbba4050bf673c8ecea813b25022cee18d2d90395b87184809363d29faf695d6ebd1a719cb2b8bd612a
 
 pkgname = r-mlr3tuning
