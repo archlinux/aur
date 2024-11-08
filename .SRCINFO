@@ -1,10 +1,11 @@
 pkgbase = aced-git
 	pkgdesc = Tool to parse and resolve a single targeted Active Directory principal's DACL.
 	pkgver = r60.b5d1ad1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/garrettfoster13/aced
 	arch = any
 	license = custom
+	makedepends = dos2unix
 	makedepends = git
 	makedepends = python-setuptools
 	depends = python

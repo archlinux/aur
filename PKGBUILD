@@ -2,7 +2,7 @@
 pkgname=aced-git
 _pkgname="${pkgname%-git}"
 pkgver=r60.b5d1ad1
-pkgrel=1
+pkgrel=2
 pkgdesc="Tool to parse and resolve a single targeted Active Directory principal's DACL."
 arch=('any')
 url="https://github.com/garrettfoster13/aced"
@@ -11,7 +11,7 @@ depends=('python'
          'impacket'
          'python-ldap3'
          'python-pyasn1')
-makedepends=('git' 'python-setuptools')
+makedepends=('dos2unix' 'git' 'python-setuptools')
 provides=("$_pkgname")
 conflicts=("$_pkgname" "$pkgname-bin")
 source=("git+$url"
