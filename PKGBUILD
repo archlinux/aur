@@ -4,7 +4,7 @@
 
 pkgname=stygiansift-git
 _pkgname="StygianSift"
-pkgver=r111+2539f820a
+pkgver=r111+g2539f820a
 pkgrel=1
 pkgdesc="A highly customizable TUI file explorer"
 arch=("x86_64")
@@ -20,7 +20,7 @@ pkgver(){
   cd "${srcdir}/${_pkgname}"
   _commits=$(git rev-list --count HEAD)
   _short_commit_hash=$(git rev-parse --short=9 HEAD)
-  echo "r${_commits}+${_short_commit_hash}"
+  echo "r${_commits}+g${_short_commit_hash}"
 }
 
 prepare() {
