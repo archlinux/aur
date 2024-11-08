@@ -6,7 +6,7 @@ _module="glean_parser"
 _pkgname="python-${_module//_/-}"
 pkgname="$_pkgname"
 pkgver=15.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Tools for parsing the metadata for Mozilla's glean telemetry SDK"
 url="https://github.com/mozilla/glean_parser"
 license=('MPL-2.0')
@@ -19,6 +19,7 @@ depends=(
   'python-diskcache' # AUR
   'python-jinja'
   'python-jsonschema'
+  'python-platformdirs'
   'python-yaml'
 )
 makedepends=(
