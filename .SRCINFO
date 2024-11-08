@@ -1,6 +1,6 @@
 pkgbase = devscripts
 	pkgdesc = Scripts to make the life of a Debian Package maintainer easier
-	pkgver = 2.24.1
+	pkgver = 2.24.2
 	pkgrel = 1
 	url = https://tracker.debian.org/pkg/devscripts
 	arch = i686
@@ -40,9 +40,9 @@ pkgbase = devscripts
 	provides = checkbashisms
 	conflicts = checkbashisms
 	options = !makeflags
-	source = https://deb.debian.org/debian/pool/main/d/devscripts/devscripts_2.24.1.tar.xz
+	source = https://deb.debian.org/debian/pool/main/d/devscripts/devscripts_2.24.2.tar.xz
 	source = fixes.patch
-	sha256sums = 205122cc0bd28cf3521f80fce87a6efdced83e4ff86c647f4ce018444a2ec52a
+	sha256sums = e0481ec6765ae59f85790b246432ac360fef55f1b54edbc2272707e377cdfcc9
 	sha256sums = f8e7ce50c0d008c5d38c94b93c9fc560e5dd2cc8f06eeb2909b0b1784911b768
 
 pkgname = devscripts

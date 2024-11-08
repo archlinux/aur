@@ -6,7 +6,7 @@
 # Contributor: JD Horelick <jdhore1@gmail.com>
 
 pkgname=devscripts
-pkgver=2.24.1
+pkgver=2.24.2
 pkgrel=1
 pkgdesc="Scripts to make the life of a Debian Package maintainer easier"
 arch=('i686' 'x86_64')
@@ -46,10 +46,17 @@ source=(
     "https://deb.debian.org/debian/pool/main/${pkgname:0:1}/${pkgname}/${pkgname}_${pkgver}.tar.xz"
     fixes.patch
 )
-sha256sums=('205122cc0bd28cf3521f80fce87a6efdced83e4ff86c647f4ce018444a2ec52a'
+sha256sums=('e0481ec6765ae59f85790b246432ac360fef55f1b54edbc2272707e377cdfcc9'
             'f8e7ce50c0d008c5d38c94b93c9fc560e5dd2cc8f06eeb2909b0b1784911b768')
 
 prepare(){
+    # Sometimes there is the version in the tarball, sometimes not.
+    # Ensure we always have the proper directory.
+    if [ ! -d "${pkgname}-${pkgver}" -a -d "${pkgname}" ]
+    then
+        ln -s "${pkgname}" "${pkgname}-${pkgver}"
+    fi
+
     cd "${pkgname}-${pkgver}"
     patch -p1 -i "$srcdir/fixes.patch"
 
