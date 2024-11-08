@@ -1,11 +1,11 @@
 pkgbase = python-django-docs
 	pkgdesc = Documentation for Python Django module.
-	pkgver = 4.2
+	pkgver = 5.1
 	pkgrel = 1
 	url = https://docs.djangoproject.com/
 	arch = any
 	license = GPL
-	source = python-django-docs-4.2.zip::https://media.djangoproject.com/docs/django-docs-4.2-en.zip
-	sha256sums = d1ed9075ebd48d7e381a99f176eaeca17d3f86bf4390ea6860871c69fab40b9d
+	source = python-django-docs-5.1.zip::https://media.djangoproject.com/docs/django-docs-5.1-en.zip
+	sha256sums = ec17fa7454e00efe8b33f64fda2da856f5cb323acd099644cc6a615b849444f2
 
 pkgname = python-django-docs
