@@ -25,7 +25,7 @@ optdepends=('python-cupy: for gpu support'
   'python-rich: for interactive support'
   'python-graphviz: for interactive support')
 source=(${url}/-/archive/release/${pkgver}/${_base}-release-${pkgver}.tar.gz)
-sha512sums=('6197439d676fd74d4074bab2bd2cbe3cbf7e267377224772697f781e425ce88baf61d102381f006bc20ba1878f903565f5f28c51681505f431a1eff7f28d4ad0')
+sha512sums=('c39a4bb02a174f747b2aa694d2e96f3b5a08323610608e669546b43faa11d77b48f81212fd1fa71a7851856b53170b276e789a6f1ebd0ac5c4fb7ed9aa81963b')
 
 prepare() {
   cd ${_base}-release-${pkgver}
