@@ -1,4 +1,5 @@
 pkgbase = geant4-nudexlibdata
+	pkgdesc = Nuclear De-excitation data library for (n,gamma) reactions
 	pkgver = 1.0
 	pkgrel = 1
 	url = http://geant4.cern.ch/
@@ -8,7 +9,7 @@ pkgbase = geant4-nudexlibdata
 	optdepends = geant4>=11.3
 	source = https://cern.ch/geant4-data/datasets/G4NUDEXLIB.1.0.tar.gz
 	source = geant4-nudexlibdata.install
-	sha256sums = 3d7768264ff5a53bcb96087604bbe11c60b7fea90aaac8f7d1252183e1a8e427
-	sha256sums = 35e6e8b298b87976fbc01d933691940b4f95a8e6643bc81f9935f07b0ca8b08c
+	sha256sums = cac7d65e9c5af8edba2b2667d5822e16aaf99065c95f805e76de4cc86395f415
+	sha256sums = 03ca2913324daa4b3d3b3280b171a1ee4061da88c484158a3178e0feee7b2e85
 
 pkgname = geant4-nudexlibdata

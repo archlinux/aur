@@ -5,7 +5,7 @@ _dataname='G4NUDEXLIB'
 _foldername='G4NUDEXLIB'
 pkgver=1.0
 pkgrel=1
-pkgdesc=""
+pkgdesc="Nuclear De-excitation data library for (n,gamma) reactions"
 url="http://geant4.cern.ch/"
 arch=('any')
 license=('GPL')
@@ -13,8 +13,8 @@ optdepends=('geant4>=11.3')
 install="${pkgname}.install"
 source=("https://cern.ch/geant4-data/datasets/${_dataname}.${pkgver}.tar.gz"
         "${pkgname}.install")
-sha256sums=('3d7768264ff5a53bcb96087604bbe11c60b7fea90aaac8f7d1252183e1a8e427'
-            '35e6e8b298b87976fbc01d933691940b4f95a8e6643bc81f9935f07b0ca8b08c')
+sha256sums=('cac7d65e9c5af8edba2b2667d5822e16aaf99065c95f805e76de4cc86395f415'
+            '03ca2913324daa4b3d3b3280b171a1ee4061da88c484158a3178e0feee7b2e85')
 
 ## Remove this if you want to keep an even smaller package
 ## No need to wait for compression when just installing it.
