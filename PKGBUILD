@@ -7,8 +7,8 @@
 # Contributor: Paul Mattal <paul@archlinux.org>
 
 pkgname=ffmpeg-headless
-pkgver=7.0.2
-pkgrel=2
+pkgver=7.1
+pkgrel=1
 epoch=1
 pkgdesc='Complete solution to record, convert and stream audio and video; optimised for server (headless) systems'
 arch=(i686 x86_64 armv7h armv6h aarch64)
@@ -23,6 +23,7 @@ depends=(
   fribidi
   glib2
   glibc
+  glslang
   gmp
   gnutls
   gsm
@@ -107,17 +108,14 @@ provides=(
   ffmpeg
 )
 conflicts=('ffmpeg')
-_tag='a18b979d17fa169a6f93c5be8732533c8e06337d'
+_tag='507a51fbe9732f0f6f12f43ce12431e8faa834b7'
 source=("$pkgname::git+https://git.ffmpeg.org/ffmpeg.git?signed#tag=${_tag}")
-b2sums=('bcc0fb367d2822665f0918292a0cf581e0119d6ba6d2e3d0b6e794b6f74d30c118b5c47e26b5687473f01b346f8ec7e885f80729ce6115e18003b2371ff4553f')
+b2sums=('c7ec6b1db61608195117b79f3f0c8f6323c3abeb39721359da0f10e7d739da8301e04ff5fa83c022f86fc760f66e00066f9a50d97b771f797ccc679f9d912c40')
 validpgpkeys=('DD1EC9E8DE085C629B3E1846B18E8928B3948D64')   # Michael Niedermayer <michael@niedermayer.cc>
 
-prepare() {
-  cd "${pkgname}" || exit 1
-  # Fix VAAPI AV1 performance with Mesa
-  git cherry-pick -n fe9d889dcd79ea18d4dfaa39df4ddbd4c8c3b15c
-  git cherry-pick -n d2d911eb9a2fc6eb8d86b3ae025a56c1a2692fba
-}
+# prepare() {
+#   cd "${pkgname}" || exit 1
+# }
 
 pkgver() {
   cd "${pkgname}" || exit 1
@@ -152,6 +150,7 @@ build() {
     --enable-libdvdread \
     --enable-libfreetype \
     --enable-libfribidi \
+    --enable-libglslang \
     --enable-libgsm \
     --enable-libharfbuzz \
     --enable-libiec61883 \

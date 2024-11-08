@@ -1,7 +1,7 @@
 pkgbase = ffmpeg-headless
 	pkgdesc = Complete solution to record, convert and stream audio and video; optimised for server (headless) systems
-	pkgver = 7.0.2
-	pkgrel = 2
+	pkgver = 7.1
+	pkgrel = 1
 	epoch = 1
 	url = https://ffmpeg.org
 	arch = i686
@@ -28,6 +28,7 @@ pkgbase = ffmpeg-headless
 	depends = fribidi
 	depends = glib2
 	depends = glibc
+	depends = glslang
 	depends = gmp
 	depends = gnutls
 	depends = gsm
@@ -95,9 +96,9 @@ pkgbase = ffmpeg-headless
 	provides = libswscale.so
 	provides = ffmpeg
 	conflicts = ffmpeg
-	source = ffmpeg-headless::git+https://git.ffmpeg.org/ffmpeg.git?signed#tag=a18b979d17fa169a6f93c5be8732533c8e06337d
+	source = ffmpeg-headless::git+https://git.ffmpeg.org/ffmpeg.git?signed#tag=507a51fbe9732f0f6f12f43ce12431e8faa834b7
 	validpgpkeys = DD1EC9E8DE085C629B3E1846B18E8928B3948D64
-	b2sums = bcc0fb367d2822665f0918292a0cf581e0119d6ba6d2e3d0b6e794b6f74d30c118b5c47e26b5687473f01b346f8ec7e885f80729ce6115e18003b2371ff4553f
+	b2sums = c7ec6b1db61608195117b79f3f0c8f6323c3abeb39721359da0f10e7d739da8301e04ff5fa83c022f86fc760f66e00066f9a50d97b771f797ccc679f9d912c40
 
 pkgname = ffmpeg-headless
 	depends = aom
@@ -108,6 +109,7 @@ pkgname = ffmpeg-headless
 	depends = fribidi
 	depends = glib2
 	depends = glibc
+	depends = glslang
 	depends = gmp
 	depends = gnutls
 	depends = gsm
