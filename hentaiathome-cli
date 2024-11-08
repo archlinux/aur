@@ -1,6 +1,19 @@
 #!/usr/bin/env bash
 
-WORKING_DIR=${XDG_CACHE_HOME:-${HOME}/.cache}/hath
+#must be equal separated
+for i in "$@"; do
+  case $i in
+    --cache-dir=*)
+      export WORKING_DIR="${i#*=}"
+      shift # past argument=value
+      ;;
+  esac
+done
+if [ -z $WORKING_DIR ]
+then
+    WORKING_DIR=${XDG_CACHE_HOME:-${HOME}/.cache}/hath;
+fi
+echo $WORKING_DIR
 mkdir -p ${WORKING_DIR}
 cd ${WORKING_DIR}
 for file in HentaiAtHome.jar HentaiAtHomeGUI.jar sqlite-jdbc.jar

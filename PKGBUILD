@@ -4,7 +4,7 @@
 
 pkgname='hentaiathome'
 pkgver=1.6.3
-pkgrel=1
+pkgrel=2
 pkgdesc="An open-source Peer-2-Peer gallery distribution system which reduces the load on the E-Hentai Galleries"
 arch=('x86_64')
 url="https://ehwiki.org/wiki/Hentai@Home"
@@ -20,7 +20,7 @@ source=("HentaiAtHome_${pkgver}.zip::https://repo.e-hentai.org/hath/HentaiAtHome
 sha256sums=('801de4cfdb2f57f9aab27371900b9fab33df82f83811b03e72425595dec45388'
             '5bde26294110d8454c40772ed147238741ab7d992e7c5f8054e2cd139222258f'
             'c50d1fb930990b033445351d7186634ed55bd083dbbb634680507300211145a6'
-            '6f9896d1311cc10a4fe5104e77362422eedd58198ba85b1f9093f7a290189f1e'
+            'd5b74700e1f9e6516114320a209f9236ee573e5543812fd7660a5908025b8a08'
             '809101ea8371bb3a5f8ebd17cd6cd4bf325f32273b44ea186424c6e6e7f4e66e')
 
 build(){
