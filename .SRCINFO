@@ -7,7 +7,7 @@ pkgbase = equibop-bin
 	arch = x86_64
 	license = GPL-3.0-only
 	depends = electron33
-	provides = equibop=2.1.0
+	provides = equibop=2.1.1
 	conflicts = equibop
 	conflicts = equibop-git
 	source = equibop.sh
