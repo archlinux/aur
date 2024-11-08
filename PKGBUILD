@@ -3,17 +3,17 @@ pkgname=geant4-levelgammadata
 _varname='G4LEVELGAMMADATA'
 _dataname="G4PhotonEvaporation"
 _foldername="PhotonEvaporation"
-pkgver=5.7
+pkgver=6.0
 pkgrel=1
 pkgdesc="Data files for photon evaporation"
 url="http://geant4.cern.ch/"
 arch=('any')
 license=('GPL')
-optdepends=('geant4>=10.7')
+optdepends=('geant4>=11.3')
 install="${pkgname}.install"
 source=("https://cern.ch/geant4-data/datasets/${_dataname}.${pkgver}.tar.gz"
         "${pkgname}.install")
-sha256sums=('761e42e56ffdde3d9839f9f9d8102607c6b4c0329151ee518206f4ee9e77e7e5'
+sha256sums=('508f9ce1d1211679ca23bcf521f7f07589d8617c38f84c38d4fe89a15a423f3b'
             'ba83b14b8b6d45cceaaa9eacd015b650d7c9739e98ba04a34b89d6c8db1d7ef1')
 
 ## Remove this if you want to keep an even smaller package
