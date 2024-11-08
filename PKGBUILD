@@ -1,7 +1,7 @@
 # Maintainer: Andrew Simmons <agsimmons0 at gmail dot com>
 
 pkgname=nstool
-pkgver='1.9.0'
+pkgver='1.9.2'
 pkgrel=1
 pkgdesc="General purpose read/extract tool for Nintendo Switch file formats."
 arch=('x86_64' 'i686')
