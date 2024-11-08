@@ -10,7 +10,7 @@ pkgname=(
   gnome-shell-git
   gnome-shell-docs-git
 )
-pkgver=47.1+r19216+b3c16a48c
+pkgver=47.1+r19216+gb3c16a48c
 pkgrel=1
 pkgdesc="Next generation desktop shell - git latest"
 url="https://gitlab.gnome.org/GNOME/gnome-shell"
@@ -53,7 +53,7 @@ depends=(
   libsoup3
   libx11
   libxfixes
-  mutter
+  mutter-git
   pango
   polkit
   systemd-libs
@@ -89,7 +89,7 @@ pkgver() {
   _version=$(git tag --sort=-v:refname --list | grep '^[0-9.]*$' | head -n1)
   _commits=$(git rev-list --count HEAD)
   _short_commit_hash=$(git rev-parse --short=9 HEAD)
-  echo "${_version}+r${_commits}+${_short_commit_hash}"
+  echo "${_version}+r${_commits}+g${_short_commit_hash}"
 }
 
 
