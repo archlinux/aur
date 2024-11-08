@@ -2,7 +2,7 @@
 _pkgver=2
 _pkgname=smaz$_pkgver
 pkgname="$_pkgname-git"
-pkgdesc='compression for very small strings'
+pkgdesc='compression for very very short messages'
 pkgver=2.9.g71ecc43
 pkgrel=1
 arch=('x86_64' 'i686')
