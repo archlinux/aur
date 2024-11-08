@@ -10,7 +10,7 @@ pkgbase = equibop-git
 	depends = electron33
 	optdepends = libnotify: Notifications
 	optdepends = xdg-utils: Open links, files, etc
-	provides = equibop=2.0.9
+	provides = equibop=2.1.1
 	conflicts = equibop
 	conflicts = equibop-bin
 	source = equibop::git+https://github.com/Equicord/Equibop.git
