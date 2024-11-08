@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=linux-assistant-bin
 pkgver=0.5.5
-pkgrel=1
+pkgrel=2
 pkgdesc="A daily linux helper with powerful integrated search, routines checks and administrative tasks. The Project is built with flutter and python.(Prebuilt version)"
 arch=('x86_64')
 url="https://www.linux-assistant.org/"
@@ -26,5 +26,6 @@ build() {
 }
 package() {
     install -Dm755 -d "${pkgdir}/usr"
+    rm -rf "${srcdir}/usr/lib/${pkgname%-bin}/additional/python/__pycache__"
     cp -Pr --no-preserve=ownership "${srcdir}/usr" "${pkgdir}"
 }
