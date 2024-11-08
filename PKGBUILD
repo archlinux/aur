@@ -1,6 +1,6 @@
 # Maintainer: Insidious Fiddler <aur[at]codycody31[dot]dev>
 pkgname=neohtop
-pkgver=1.0.5
+pkgver=1.0.8
 pkgrel=1
 pkgdesc="💪🏻 htop on steroids"
 arch=('x86_64')
@@ -8,7 +8,7 @@ url="https://github.com/Abdenasser/neohtop"
 license=('MIT')
 makedepends=('rust' 'npm' 'nodejs>=16')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz" "neohtop.desktop" "$url/raw/main/app-icon.png")
-sha256sums=('3ed19340477962d6a0f3e9f651ea436d2e36db40fa50c5b0b6af1db9c7a37d85'
+sha256sums=('f47e5947b32bd94025185a7215472931096498c0603c2f97d0d381b4761d6fc8'
             '268edb20d231395da8f724283cd4244facd15ef9564b6705e0324223116eccbc'
             'da490123ad87ff26b96b189eb4ed1b815e5e39ce3bec3b939fcdf331525dcefa')
 
