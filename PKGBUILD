@@ -1,16 +1,15 @@
-
 pkgname=python-openmesh
-pkgver=1.1.3
+pkgver=1.2.1
 pkgrel=1
 pkgdesc="OpenMesh Python bindings"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="http://www.openmesh.org"
 license=('BSD')
 makedepends=('cmake' 'pybind11')
 depends=('openmesh' 'python')
-source=("https://graphics.rwth-aachen.de:9000/OpenMesh/openmesh-python/-/archive/${pkgver}/openmesh-python-${pkgver}.tar.bz2"
+source=("https://gitlab.vci.rwth-aachen.de:9000/OpenMesh/openmesh-python/-/archive/${pkgver}/openmesh-python-${pkgver}.tar.bz2"
         CMakeLists.txt)
-sha256sums=('488bcdcb6f7e392801a3a3fc1021c2ebad298d5da6cc16946bd43276bc88f80f'
+sha256sums=('c852c76a0c6210a8b94c2600b85cf167ea41c4f7583a2ee682e098926f1ac5ed'
             SKIP)
 
 prepare() {
@@ -22,13 +21,11 @@ prepare() {
 
 build() {
   cd "${srcdir}/openmesh-python-${pkgver}"
-  mkdir -p build && cd build
   cmake \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DPYTHON_SITE_PACKAGES=lib/python/3.7/site-packages \
-    ..
-  make
+    -B build .
+  make -C build
 }
 
 package() {

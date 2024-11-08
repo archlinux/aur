@@ -1,32 +1,52 @@
-cmake_minimum_required(VERSION 3.1.0)
+cmake_minimum_required(VERSION 3.10.0)
 
-project(openmesh)
+project(openmesh          
+        VERSION 1.3.0
+        LANGUAGES CXX )
 
-set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 
-find_library (OPENMESH_CORE_LIBRARY NAMES OpenMeshCore OpenMeshCoreStatic)
-find_library (OPENMESH_TOOLS_LIBRARY NAMES OpenMeshTools OpenMeshToolsStatic)
+# add_subdirectory(OpenMesh)
+# add_subdirectory(pybind11)
+find_package(OpenMesh CONFIG REQUIRED)
+find_package(pybind11 CONFIG REQUIRED)
 
-find_package (pybind11 NO_MODULE REQUIRED)
+if (NOT WIN32)
+	set_target_properties(
+		OpenMeshCore OpenMeshTools PROPERTIES
+		EXCLUDE_FROM_ALL ON
+		EXCLUDE_FROM_DEFAULT_BUILD ON
+	)
+endif ()
 
-file (GLOB HEADERS "src/*.hh")
-file (GLOB SOURCES "src/*.cc")
+set( HEADERS
+src/Circulator.hh
+src/Decimater.hh
+src/InputOutput.hh
+src/Iterator.hh
+src/Mesh.hh
+src/MeshTypes.hh
+src/Miscellaneous.hh
+src/Utilities.hh
+)
 
-include_directories(${OPENMESH_INCLUDE_DIRS})
+set( SOURCES
+src/Bindings.cc
+src/InputOutput.cc
+src/Miscellaneous.cc
+)
+
 pybind11_add_module(openmesh ${HEADERS} ${SOURCES})
 
 if (WIN32)
+	target_link_libraries(openmesh PRIVATE OpenMeshCore)
+	target_link_libraries(openmesh PRIVATE OpenMeshTools)
 	target_compile_definitions(openmesh PRIVATE _USE_MATH_DEFINES)
+else ()
+	target_link_libraries(openmesh PRIVATE OpenMeshCore)
+	target_link_libraries(openmesh PRIVATE OpenMeshTools)
 endif ()
-target_link_libraries(openmesh PRIVATE ${OPENMESH_CORE_LIBRARY})
-target_link_libraries(openmesh PRIVATE ${OPENMESH_TOOLS_LIBRARY})
-
-if (NOT DEFINED PYTHON_SITE_PACKAGES)
-  set (PYTHON_SITE_PACKAGES site-packages)
-endif ()
-
-install (TARGETS openmesh DESTINATION ${PYTHON_SITE_PACKAGES})
 
 enable_testing()
 add_test(
@@ -36,5 +56,11 @@ add_test(
 )
 set_tests_properties(
 	discover_tests PROPERTIES
-	ENVIRONMENT PYTHONPATH=${CMAKE_CURRENT_BINARY_DIR}
+	ENVIRONMENT "PYTHONPATH=$<TARGET_FILE_DIR:openmesh>"
 )
+
+include (GNUInstallDirs)
+
+set (INSTALL_PYTHONDIR "${CMAKE_INSTALL_LIBDIR}/python${PYTHON_VERSION_MAJOR}.${PYTHON_VERSION_MINOR}/site-packages" CACHE STRING  "sp dir")
+
+install (TARGETS openmesh DESTINATION ${INSTALL_PYTHONDIR})
