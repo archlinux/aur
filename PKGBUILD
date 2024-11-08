@@ -6,7 +6,7 @@
 _android_arch=armv7a-eabi
 
 pkgname=android-${_android_arch}-cairo
-pkgver=1.18.0
+pkgver=1.18.2
 pkgrel=1
 arch=('any')
 pkgdesc="2D graphics library with support for multiple output devices (Android ${_android_arch})"
@@ -29,10 +29,10 @@ source=("https://gitlab.freedesktop.org/cairo/cairo/-/archive/${pkgver}/cairo-${
         "0001-Added-missing-headers-and-symbols.patch"
         "0002-ipc-rmid-deferred-release.patch"
         "0026-create-argb-fonts.all.patch")
-sha256sums=('39a78afdc33a435c0f2ab53a5ec2a693c3c9b6d2ec9783ceecb2b94d54d942b0'
-            'a73c90af559d4fb2e72bdd80ebc624b19579f3df0e9c0ad6e8af9aef41e7789a'
-            '50143b4a090169b1d086cffdf1f0364c82facc886466e3b2f7fea668520961e8'
-            '6db6c44fbdb4926d09afa978fe80430186c4b7b7d255059602b1f94c6a079975')
+md5sums=('d31c3a866bfdfcd3e97e1bf4ed4bafba'
+         'f56d559a886e4f6cf2c0aa567a0b8645'
+         'ee5b94e1591fe0e1b8cc035f9a699b16'
+         'b4d8fac687dd2b01879ca62452c15732')
 
 prepare() {
     cd "${srcdir}/cairo-${pkgver}"
