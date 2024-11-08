@@ -1,7 +1,7 @@
 # Maintainer: SelfRef <arch@selfref.dev>
 
 pkgname=howdy-git
-pkgver=r562.344eb34
+pkgver=r564.aa75c76
 pkgrel=1
 pkgdesc="Windows Hello style facial authentication for Linux"
 arch=('x86_64')
