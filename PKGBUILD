@@ -2,8 +2,8 @@
 
 pkgname='opensearch-dashboards-gantt-chart-plugin'
 _pluginname='gantt-chart-dashboards-plugin'
-pkgver=2.17.1.0
-_dashboardsver=2.17.1
+pkgver=2.18.0.0
+_dashboardsver=2.18.0
 pkgrel=1
 pkgdesc='OpenSearch Dashboards Gantt Chart Plugin'
 url='https://opensearch.org/docs/latest/dashboards/gantt/'
@@ -16,8 +16,8 @@ source=(
   "git+https://github.com/opensearch-project/dashboards-visualizations.git#tag=${pkgver}"
   "git+https://github.com/opensearch-project/OpenSearch-Dashboards.git#tag=${_dashboardsver}"
 )
-sha256sums=('28154e6cbabf4ddbadddcbc88f657224cc5ca76bef9c6214d9721ef7031bcc39'
-            '8d3826382d89649efd499152f53758b03afbb375d666fee40793bb882bff1a82')
+sha256sums=('280f13598f3c221c72812a4f5a1238a1c890de90cd06984761394467a2a4f17b'
+            '047ea8d8669958d1cd16ee4c6c417088b7295dcf83a7efe855e9b32903eb02e1')
 
 prepare() {
   nodeVersion="$(node -v)"
