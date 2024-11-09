@@ -1,6 +1,6 @@
 pkgbase = r-tidysummarizedexperiment
 	pkgdesc = Brings SummarizedExperiment to the Tidyverse
-	pkgver = 1.14.0
+	pkgver = 1.16.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/tidySummarizedExperiment
 	arch = any
@@ -30,7 +30,7 @@ pkgbase = r-tidysummarizedexperiment
 	optdepends = r-knitr
 	optdepends = r-markdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/tidySummarizedExperiment_1.14.0.tar.gz
-	sha256sums = 2943cd551ac42e9e46a3077260f99c2ae3469779c286f8db3d22438d84b29b2d
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/tidySummarizedExperiment_1.16.0.tar.gz
+	sha256sums = 87b13f2d9a5a1aac01d94b68644500d09004052179002246a0ff78a374935242
 
 pkgname = r-tidysummarizedexperiment
