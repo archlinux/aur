@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=multiWGCNA
-_pkgver=1.2.0
+_pkgver=1.4.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -42,8 +42,8 @@ optdepends=(
   r-vegan
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('49bb403a208f87354b1aef9273ff7d9d')
-b2sums=('c4b37bf83e3f603fb4b1b2be6bee91f28638f27ec81ab44645dc4f962226d982dbe4e9b0df247d6cb350cd208382a87a2168d747496df17fb90c5af246248b95')
+md5sums=('64ba3fa001a82baae932cb76dc19a515')
+b2sums=('92fda82c197d85fa081c50a3675f260a3dc352b82983418ae67951f60876af4bc3aeee6cead9f93ac22ad9709abb7f6290fde0577c4cfd256ec880225af7da3f')
 
 build() {
   mkdir build
