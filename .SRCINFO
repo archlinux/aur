@@ -1,6 +1,6 @@
 pkgbase = r-gloscope
 	pkgdesc = Population-level Representation on scRNA-Seq data
-	pkgver = 1.2.1
+	pkgver = 1.4.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/GloScope
 	arch = any
@@ -19,8 +19,8 @@ pkgbase = r-gloscope
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
 	optdepends = r-zellkonverter
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/GloScope_1.2.1.tar.gz
-	md5sums = ea53f91aee959159dde511a9547742b3
-	b2sums = 9799e92ace78aa91712376017f741aa44cbb90937e127a656f8b75fb2a76ff9fb0990a9063d280b96b728ef739b62f7532ccae0b53837198787520309748b327
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/GloScope_1.4.0.tar.gz
+	md5sums = b1936d66de98c5249f5d5b3fd02e9ec3
+	b2sums = 6a3672b692cb3b1f19fa0cfb30c4a958cfd6bc8e1e2c04716062c332ddda66bcab7b614a98a866c415d6ca3068bba526ae2064b6c0952db2594bcbd2e4960d40
 
 pkgname = r-gloscope
