@@ -1,15 +1,18 @@
-# Maintainer: SO010 <stackoverflow010 at gmail com>
+# Maintainer: John Luebs
 
 pkgname=vapor-toolbox-git
 _pkgname=toolbox
 _binname=vapor
-pkgver=r1144.4a2b9ed
+pkgver=r1191.3e9a23a
 pkgrel=1
 pkgdesc="Vapor Toolbox - A cmdline tool for the Vapor web framework"
 arch=('x86_64')
 url="https://github.com/vapor/toolbox"
 license=('MIT')
-depends=('git' 'swift-language' 'curl')
+depends=('swift-language')
+makedepends=('git')
+conflicts=('vapor-toolbox')
+provides=('vapor-toolbox')
 source=("git+https://github.com/vapor/toolbox.git")
 sha256sums=('SKIP')
 
@@ -22,11 +25,12 @@ pkgver() {
 build() {
   cd "$_pkgname"
 
-  make
+  swift build -c release
 }
 
 package() {
   cd "$_pkgname"
 
-  make DEST="/usr/bin/$_binname" DESTDIR="$pkgdir/" install
+  install -Dm755 .build/release/vapor "$pkgdir/usr/bin/${_binname}"
+  install -Dm644 LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
