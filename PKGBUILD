@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=hipathia
-_pkgver=3.4.0
+_pkgver=3.6.0
 pkgname=r-${_pkgname,,}
-pkgver=3.4.0
+pkgver=3.6.0
 pkgrel=1
 pkgdesc='HiPathia: High-throughput Pathway Analysis'
 arch=('any')
@@ -37,7 +37,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('44656892cded6e591594ff8dd0b3ceccdfc44f388ea0d01211ebd4401b851190')
+sha256sums=('2a11a4119ffbbf23719068f59d08838c8fc2f5350a51c8b3ecf4f5edb60cec40')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
