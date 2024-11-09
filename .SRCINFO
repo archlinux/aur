@@ -1,6 +1,6 @@
 pkgbase = r-adam
 	pkgdesc = ADAM: Activity and Diversity Analysis Module
-	pkgver = 1.20.0
+	pkgver = 1.22.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/ADAM
 	arch = x86_64
@@ -19,7 +19,7 @@ pkgbase = r-adam
 	optdepends = r-biocstyle
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/ADAM_1.20.0.tar.gz
-	sha256sums = 7bd0195e735ae585282b69dd910139553f1bade67133fd09331735e8f8ad197c
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/ADAM_1.22.0.tar.gz
+	sha256sums = 9f22830ae7d32f6c7e293d49df7b65dcf71a4cc202715bb9fe61cfd1a6379910
 
 pkgname = r-adam
