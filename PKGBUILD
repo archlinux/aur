@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=evaluomeR
-_pkgver=1.20.5
+_pkgver=1.22.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -37,8 +37,8 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('58ead9d4642b15f5e541fef1fc5e6a59')
-b2sums=('9adfcb9ecf764b621350e8e9a875bb5f0a40e50f393ab4bb2f263454390d716a85d342b8d56782e8b1ebc5a925cfc206be5415f6ecb524bf50e86f60c99c3dbb')
+md5sums=('0e266ceb6584309cbed2a0e4c5808390')
+b2sums=('cd9fffd6a8688be554b59f4cfbd3e120348fff1b65ddcb8c01212033760f382a03fba58771930b089ee7a4b4dc7ae7bb4615725479c5a8e272507c9d517ec100')
 
 build() {
   mkdir build
