@@ -1,57 +1,55 @@
-# Maintainer: Christian Schendel (doppelhelix@gmail.com)
+# Maintainer: SelfRef <arch@selfref.dev>
+# Contributor: Christian Schendel (doppelhelix@gmail.com)
 
-pkgname=gnome-shell-extension-pano-git
-pkgver=22.r6.g4be918b
-pkgrel=2
-pkgdesc="Next-gen Clipboard Manager"
+_basename=gnome-shell-extension-pano
+pkgname=${_basename}-git
+pkgver=23.alpha3.r4.gd0d71f8
+pkgrel=1
+pkgdesc="Next-gen Clipboard Manager for Gnome Shell"
 arch=('any')
 url="https://github.com/oae/gnome-shell-pano"
-license=(
-  'GPL-2.0-or-later'
-)
+license=('GPL-2.0')
 depends=(
-  'gnome-shell>=1:45'
-  'libgda6'
-  'cogl'
-  'gsound'
+	'gnome-shell>=45'
+	'libgda6'
 )
 makedepends=(
-  'git'
-  'gobject-introspection'
-  'yarn'
-  'appstream'
+	'git'
+	'nvm'
+	'yarn'
 )
-provides=("${pkgname%-git}")
-conflicts=("${pkgname%-git}")
-source=("${pkgname%-git}::git+${url}.git")
-md5sums=('SKIP')
+provides=("$_basename")
+conflicts=("$_basename")
+source=("$_basename::git+https://github.com/oae/gnome-shell-pano.git")
+sha256sums=('SKIP')
+
+_ensure_local_nvm() {
+	which nvm >/dev/null 2>&1 && nvm deactivate && nvm unload
+	export NVM_DIR="${srcdir}/.nvm"
+	source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
+}
 
 pkgver() {
-  cd "${srcdir}/${pkgname%-git}"
-  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+	cd "$_basename"
+	git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
 }
 
 prepare() {
-  cd "${srcdir}/${pkgname%-git}"
-  yarn install
+	cd "$_basename"
+	_ensure_local_nvm
+	nvm install 20
+	yarn install --cache-folder "$srcdir/yarn-cache"
 }
 
 build() {
-  cd "${srcdir}/${pkgname%-git}"
-  NODE_OPTIONS=--max_old_space_size=4096 yarn build
-
+	cd "$_basename"
+	_ensure_local_nvm
+	yarn build
 }
 
 package() {
-  cd "${srcdir}/${pkgname%-git}/dist"
-  local uuid=$(grep -Po '(?<="uuid": ")[^"]*' metadata.json)
-  local schema=$(grep -Po '(?<="settings-schema": ")[^"]*' metadata.json).gschema.xml
-  local destdir="${pkgdir}/usr/share/gnome-shell/extensions/${uuid}"
-  install -dm755 "${destdir}"
-  find . -regextype posix-egrep -regex ".*\.(js|json|xml|css|compiled|svg|png)$" -exec\
-     install -Dm 644 {} ${destdir}/{} \;
-  install -Dm644 "${srcdir}/${pkgname%-git}/dist/schemas/${schema}" \
-    "${pkgdir}/usr/share/glib-2.0/schemas/${schema}"
-  cp -r "${srcdir}/${pkgname%-git}/dist/locale" "$pkgdir/usr/share/"
+	cd "$_basename/dist"
+	mkdir -p "$pkgdir/usr/share/gnome-shell/extensions/pano@elhan.io"
+	cp -r * "$pkgdir/usr/share/gnome-shell/extensions/pano@elhan.io/"
 }
 
