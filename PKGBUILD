@@ -5,10 +5,10 @@
 pkgname=clevo-drivers-dkms-git
 _pkgname=clevo-drivers
 pkgver=4.10.2
-pkgrel=1
-pkgdesc="Kernel module drivers for keyboard, keyboard backlight & general hardware I/O using the SysFS interface for Clevo hardware."
+pkgrel=2
+pkgdesc="Unofficial modification of TUXEDO Computers kernel module drivers for keyboard, keyboard backlight & general hardware I/O using the SysFS interface, to allow it to run on other Clevo hardware. Use at your own risk."
 url="https://github.com/nick42d/clevo-drivers"
-license=("Other")
+license=("GPL-3.0+")
 arch=('x86_64')
 depends=('dkms')
 makedepends=('git')
