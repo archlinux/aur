@@ -1,6 +1,6 @@
 pkgbase = r-survtype
 	pkgdesc = Subtype Identification with Survival Data
-	pkgver = 1.20.0
+	pkgver = 1.22.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/survtype
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = r-survtype
 	optdepends = r-maftools
 	optdepends = r-rmarkdown
 	optdepends = r-scales
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/survtype_1.20.0.tar.gz
-	sha256sums = 144c926c702f718830ad80cbec50ee9f44f248bb57b470555e1d2985fbfcde5f
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/survtype_1.22.0.tar.gz
+	sha256sums = 447a30e0b48a628728b7f0fb35e1a0ff188acc909faeb1fe52e9fd915370162c
 
 pkgname = r-survtype
