@@ -1,7 +1,7 @@
 pkgbase = sysbox-ce
 	pkgdesc = Container runtime with VM-like isolation (run Systemd, Docker, K8s in containers)
-	pkgver = 0.6.4
-	pkgrel = 3
+	pkgver = 0.6.5
+	pkgrel = 1
 	url = https://github.com/nestybox/sysbox
 	install = install.sh
 	arch = x86_64
@@ -16,33 +16,25 @@ pkgbase = sysbox-ce
 	depends = rsync
 	depends = fuse2
 	optdepends = shiftfs: For uid-mapping on very old kernels without idmapped-mounts
-	source = git+https://github.com/nestybox/sysbox.git#tag=v0.6.4
-	source = git+https://github.com/nestybox/dockerfiles.git#commit=5b7ec2230af7fb65eb820277e8c408cfa68f79b7
-	source = git+https://github.com/nestybox/sysbox-fs.git#commit=1a678b72ac430009739fa6596b824f29b1f7fe2e
+	source = git+https://github.com/nestybox/sysbox.git#tag=v0.6.5
+	source = git+https://github.com/nestybox/dockerfiles.git#commit=6f9238079b9b1a9364895da5a429f025528ab033
+	source = git+https://github.com/nestybox/sysbox-fs.git#commit=aeba775e52cc6385fa4807c594fc7ee164ad624c
 	source = git+https://github.com/nestybox/fuse.git#commit=45cd9a3d884448418546d8eaa54ee7d772e576d6
-	source = git+https://github.com/nestybox/sysbox-ipc.git#commit=8ab58c1422bea9fb6c147c032d012e0568695885
-	source = git+https://github.com/nestybox/sysbox-libs.git#commit=a33b350b63db747998d4f0108d13f754de8a12e5
-	source = git+https://github.com/nestybox/sysbox-mgr.git#commit=03f5d7bc584fdcb2319b2c1831bd58581185fc1c
-	source = git+https://github.com/nestybox/sysbox-pkgr.git#commit=a4c76e1348b3bcdddb7847969f99b21f5e9a5f10
-	source = git+https://github.com/nestybox/sysbox-runc.git#commit=085502643ea5281652c6984eed9797872f22698a
-	source = go-get-grpc-v1.63.0-and-tidy-sysbox-fs.patch
-	source = go-get-grpc-v1.63.0-and-tidy-sysbox-ipc.patch
-	source = go-get-grpc-v1.63.0-and-tidy-sysbox-mgr.patch
-	source = go-get-grpc-v1.63.0-and-tidy-sysbox-runc.patch
+	source = git+https://github.com/nestybox/sysbox-ipc.git#commit=f05151f4b4c1df63d7fd241577ca032905c1bd0e
+	source = git+https://github.com/nestybox/sysbox-libs.git#commit=2ccacbeb20a7095b1ea1b6d2916cd0fc5be498bb
+	source = git+https://github.com/nestybox/sysbox-mgr.git#commit=1159d228eac8402efa63bd2cb18cdf9e404ea130
+	source = git+https://github.com/nestybox/sysbox-pkgr.git#commit=eba1006690b26a525a26456bf0e991e6f26a44c7
+	source = git+https://github.com/nestybox/sysbox-runc.git#commit=1b440ff266841f3d2d296e664122a9e29ceb9fd8
 	source = Honor-SOURCE_DATE_EPOCH-for-reproducible-builds.patch
-	sha256sums = 4190cb7cbf96fddab352ded0553d2419935a003780aa39d45f762710bc0ad20b
-	sha256sums = 2b1a7c1af588ee08216a345b5c5ed17d193dc69409464a2f1aa518daf5bc87e9
-	sha256sums = 6a40e69807d4fff706a08c52aee9d7ff19b581beac388a6997d659bbed606a01
+	sha256sums = b10f67f328a9358dc15a3b9f5174496610cb3346877d447af5239b2322c0dcc2
+	sha256sums = 47885d131f44d8ff855882e22893f6108473480ea08b3f0415b014b5b337b367
+	sha256sums = 9f36ffebf1ca252d5374d24e7c4edfab3dda358efadb90c3a94a01e551737d8f
 	sha256sums = a15933541960d09d2f6cc857c95982a735294876bbbdc93fcbc879832e35efee
-	sha256sums = 841a89a2f3c08ae39f036af3ad9609f637ea24c0fda55d68fbc36fba907fddbf
-	sha256sums = 3cc35f712595acd2868a9ef3afe3a6ed4ae01b2c463f58fe74264a446cb53e0e
-	sha256sums = 7e7fb434307e5f8848756227d7eab84d9d1b01cd5ef1fcdbf9bc688608536ea0
-	sha256sums = 79741411d414bad1d7644765357db8dc1642a1d799e0f0335753b1b069a2091d
-	sha256sums = 2dae82c08b0a084ae1b789ac644cd2f1c78081a00519df72dea4d0a782197ed5
-	sha256sums = 7789a83d353abe64c2e952aa000ad09a25ccd32dabe9d422911d5eb3d69a70a4
-	sha256sums = 2be62c1f36a378ee0ea830e0fe5e10e30758047b48d32bc12f5f4c2877f52010
-	sha256sums = 4d7a5b94b1191131187c605d44348153983ebcca61d981f53b85b6963f558048
-	sha256sums = 9d904fe997bcd3ba3ba5f5d9855f7fcb2bc91dfe276292c059bd2c74270ad668
+	sha256sums = 7f7e3e0f9acac2ea6ff2d9702fc4006f679cf005cf8abf2dbbb447c133b8455e
+	sha256sums = 88b1ad675375f17d3c043bb6e56955a4a024cfc6c126eceb98ff65ca763d75ce
+	sha256sums = 80792b4005baf77424cedae905d300317e41de6f690b395bd2762b2ac31ffc24
+	sha256sums = 74ac2f61d8d3b09c2ac3a0a6a0bff3d765ab47007bbac1080fec4a87c6bcffd0
+	sha256sums = 7951a7646cf8e1951d388ecbffea6f1e629de7e4760435d9717ea32f73595484
 	sha256sums = 5264ed0c448868083a9f1bedc2846d744c9ea90e58f8555c50bbc155008512e5
 
 pkgname = sysbox-ce
