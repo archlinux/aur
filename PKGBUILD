@@ -1,6 +1,6 @@
 # Maintainer: Adiee5 <adiee5@adiee5.ct8.pl>
 pkgname=prog8
-pkgver=10.4.2
+pkgver=10.5
 pkgrel=1
 pkgdesc="A high-level programming language designed for 6502 based devices"
 arch=("any")
@@ -13,7 +13,7 @@ optdepends=("x16-emulator: emulating Commander x16"
 #	    "vim: Editing prog8 code"
 #	    "nano: Editing prog8 code"
 	    )
-source=("prog8c-$pkgver.jar::https://github.com/irmen/prog8/releases/download/v$pkgver/prog8compiler-$pkgver-all.jar"
+source=("prog8c-$pkgver.jar::https://github.com/irmen/prog8/releases/download/v$pkgver/prog8c-$pkgver-all.jar"
 	"p8compile"
 	"prog8_detect.vim"
 	"https://raw.githubusercontent.com/irmen/prog8/master/LICENSE"
@@ -22,7 +22,7 @@ source=("prog8c-$pkgver.jar::https://github.com/irmen/prog8/releases/download/v$
 	"https://raw.githubusercontent.com/irmen/prog8/master/syntax-files/Vim/prog8_builtins.vim"
 	"prog8c_var_init")
 noextract=("prog8c-$pkgver.jar")
-sha256sums=("c44c48fa63851bc323f0cfb4f69ce9a39dc12cf92974a6a1945018cf2c901688"
+sha256sums=("4af437045ac065a8ab1d128ffa7027a6ef72929ff38bb4a9daad0e32c9b3581b"
 	    "c5b390a611ce778d8e22b6a2f626d273d424889c1ee7ce5454c66bce35aa888c"
 	    "SKIP"
 	    "SKIP"
