@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=ISLET
-_pkgver=1.6.0
+_pkgver=1.8.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -30,8 +30,8 @@ optdepends=(
   r-runit
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('3f20f6f9e207ab5f955a3f3f52eff688')
-b2sums=('941da50f4c7e91371501dd32c0812b8e22db6905adfedbe40985aa644c0f2b0c5990ec4117031a6d8df724e2ed0ecee390fda9c3b4920ac1dc5a12b09d67cd06')
+md5sums=('dee7246f762794b535f67abf34b9a2d9')
+b2sums=('bed43f4ed48e7966b992215d4072448f3ce1cbe073d1b72533fcacd1177f21bf3e21e91a5a1238d99b0ef1e75f02d51c916eb4c9c4a1bab93635442e067f5c29')
 
 build() {
   mkdir build
