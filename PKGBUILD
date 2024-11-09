@@ -1,7 +1,7 @@
-# Maintainer: Yohann D'Anello <ynerant@crans.org>
+# Maintainer: Emmy D'Anello <emmy@luemy.eu>
 
 pkgname=python-spacy-fr_core_news_sm
-pkgver=3.2.0
+pkgver=3.8.0
 pkgrel=1
 pkgdesc='French pretrained model for spaCy (small)'
 url='https://spacy.io/models/fr#section-en_core_news_sm'
@@ -10,7 +10,7 @@ makedepends=(python-setuptools)
 license=(MIT)
 arch=(any)
 source=("https://github.com/explosion/spacy-models/releases/download/fr_core_news_sm-${pkgver}/fr_core_news_sm-${pkgver}.tar.gz")
-sha256sums=('bcdd2c8c9ccef064f549298d2c5a4f1d22d96ba85011a989125ea4477fad9334')
+sha256sums=('517505e9cd18234405bb6fb481a476462dfb1a8e0f7bbc2d7760831e94cce78c')
 
 build() {
 	cd fr_core_news_sm-${pkgver}
