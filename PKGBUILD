@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=Cepo
-_pkgver=1.10.2
+_pkgver=1.12.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -39,8 +39,8 @@ optdepends=(
   r-upsetr
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('5e301e52bbcb9ad5eaa860386cc0a70e')
-b2sums=('435a42ab6120e72d17fda5a6250cdffb0d5df035303b94d089059786b79740afc7d8164461cff949595e93974136767ba672f7b8aef1a1926569f8ce2cdd9520')
+md5sums=('3af4bf60206bb2421a63d68009a361e0')
+b2sums=('7be12bcfb38ffa8d820a046d0b94830dbc2c8efc1d2dc9e735fc321a4a361ed3a78e682e49f90229b0ce235639cd45a3b4221346abc432c48f049e28ed6e4f50')
 
 build() {
   mkdir build
