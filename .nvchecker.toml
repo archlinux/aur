@@ -1,0 +1,4 @@
+[jupyter_nbextensions_configurator]
+source = "github"
+github = "jupyter-contrib/jupyter_nbextensions_configurator"
+use_max_tag = "true"
