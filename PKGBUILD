@@ -7,6 +7,7 @@ url="https://github.com/gmplot/gmplot"
 license=('MIT')
 depends=('python')
 makedepends=('python-setuptools')
+provides=('python-gmplot')
 source=("git+$url.git#tag=$pkgver")
 sha256sums=('SKIP')
 

@@ -7,6 +7,7 @@ pkgbase = python-gmplot-git
 	license = MIT
 	makedepends = python-setuptools
 	depends = python
+	provides = python-gmplot
 	source = git+https://github.com/gmplot/gmplot.git#tag=1.4.1
 	sha256sums = SKIP
 
