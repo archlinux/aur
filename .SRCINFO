@@ -1,13 +1,14 @@
 pkgbase = fotokilof
 	pkgdesc = GUI for ImageMagick
 	pkgver = 5.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/TeaM-TL/FotoKilof
 	arch = any
 	license = MIT
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-setuptools
+	makedepends = python-wheel
 	depends = imagemagick
 	depends = tk
 	depends = python-pillow

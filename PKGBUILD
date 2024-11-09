@@ -4,10 +4,10 @@ _name=FotoKilof
 
 pkgname=${_name,,}
 pkgver=5.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="GUI for ImageMagick"
 url="https://github.com/TeaM-TL/FotoKilof"
-makedepends=(python-build python-installer python-setuptools)
+makedepends=(python-build python-installer python-setuptools python-wheel)
 depends=('imagemagick' 'tk' 'python-pillow' 'python-wand' 'python-ttkbootstrap' 'python-requests' 'python-findsystemfontsfilename')
 license=('MIT')
 arch=('any')
