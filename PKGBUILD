@@ -1,11 +1,12 @@
 # $Id$
-# Maintainer: Maxime Gauduin <alucryd@archlinux.org>
+# Maintainer: unit73e <unit73e@gmail.com>
+# Contributor: Maxime Gauduin <alucryd@archlinux.org>
 # Contributor: Bartłomiej Piotrowski <bpiotrowski@archlinux.org>
 # Contributor: kfgz <kfgz@interia.pl>
-# Mantainer: Lorenzo Ferrillo <lorenzofer at live dot it>
+# Contributor: Lorenzo Ferrillo <lorenzofer at live dot it>
 
 pkgname=lib32-x265
-pkgver=3.6
+pkgver=4.0
 pkgrel=1
 pkgdesc='Open Source H265/HEVC video encoder. 32bit libraries.'
 arch=('x86_64')
@@ -16,7 +17,7 @@ makedepends=('cmake' 'nasm' 'git')
 provides=('libx265.so')
 _tag=f0c1022b6be121a753ff02853fbe33da71988656
 source=("${pkgname#lib32-*}::git+https://bitbucket.org/multicoreware/x265_git.git#tag=$pkgver")
-sha256sums=('SKIP')
+sha256sums=('633998b9f17d335c24b3ac34eb446ac376971ce7323ef9befb86d134ee3e6453')
 
 build() {
   export CC="gcc -m32"
