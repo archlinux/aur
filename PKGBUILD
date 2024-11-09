@@ -59,6 +59,5 @@ prepare() {
 
 package() {
     install -Dm755 "usr/bin/sunshine-v$pkgver" "$pkgdir/usr/bin/sunshine"
-    install -Dm644 "$_pkgname-$pkgver.desktop" "$pkgdir/usr/share/applications/$_pkgname.desktop"
     cp -r "usr/lib" "usr/share" "$pkgdir/usr"
 }
