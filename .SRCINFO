@@ -1,6 +1,6 @@
 pkgbase = r-hicexperiment
 	pkgdesc = Bioconductor class for interacting with Hi-C files in R
-	pkgver = 1.4.0
+	pkgver = 1.6.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/HiCExperiment
 	arch = any
@@ -27,8 +27,8 @@ pkgbase = r-hicexperiment
 	optdepends = r-rmarkdown
 	optdepends = r-rtracklayer
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/HiCExperiment_1.4.0.tar.gz
-	md5sums = 76c01f658236fe7e31800a0f58d59ef2
-	b2sums = 4ae5fd100963ec83dd28cf7cc3da1cbeada5d7be29aa18980534be685db579858081f6ad60c844b3f1d1eab8c70659d53686d5056383d66046402329206d632f
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/HiCExperiment_1.6.0.tar.gz
+	md5sums = 78ff18f540ccf6d3459097f2575c3ef0
+	b2sums = 5b806e653a63257c8f0ee442dbb701926a913c150a27592182975fab472a2e7c61cc68a92299d85dc5232d22ae922390b4995d22797f79ac6d9283014e7c817d
 
 pkgname = r-hicexperiment
