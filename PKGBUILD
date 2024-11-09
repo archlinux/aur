@@ -2,7 +2,7 @@
 
 _pkgname=libheif
 pkgname=lib32-libheif
-pkgver=1.19.1
+pkgver=1.19.2
 pkgrel=1
 pkgdesc="HEIF file format decoder and encoder (32-bit)"
 arch=('x86_64')
@@ -38,7 +38,7 @@ optdepends=(
 )
 provides=('libheif.so')
 source=("https://github.com/strukturag/libheif/releases/download/v${pkgver}/libheif-${pkgver}.tar.gz")
-sha256sums=('994913eb2a29c00c146d6f3d61e07d9ff0d8e9eccb0624d87e4be8b108c74e4b')
+sha256sums=('f73eb786e75ef1f815ed3d37aca9eadd41dc1d26dfde11f8a4f92f911622d19e')
 options=('debug')
 
 build() {
@@ -56,6 +56,7 @@ build() {
     -DWITH_DAV1D_PLUGIN=ON \
     -DWITH_LIBDE265_PLUGIN=ON \
     -DWITH_X265_PLUGIN=ON \
+    -DWITH_OpenH264_DECODER=OFF
 
   cmake --build build
 }
