@@ -21,7 +21,7 @@ sha256sums=('1b968e3377a33497a77ea75da0e0bbd566e2f2e909985b14be1ef7d5f19ee700' '
 package() {
   install -Dm755 "$srcdir/ai-cli.sh" "$pkgdir/usr/bin/ai-cli.sh"
 
-  install -Dm644 "$srcdir/myscript.js" "$pkgdir/usr/share/ai-cli/main.js"
+  install -Dm644 "$srcdir/main.js" "$pkgdir/usr/share/ai-cli/main.js"
 
   install -Dm644 "$srcdir/.env" "$pkgdir/usr/share/ai-cli/.env"
 
