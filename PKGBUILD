@@ -1,19 +1,19 @@
-# Maintainer: a821
+# Maintainer: a821 at (nospam) mail de
 # Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 # Contributor: John Hamelink <me@johnhame.link>
 
 pkgname=python-tidalapi
 _name=${pkgname#python-}
-pkgver=0.8.0
+pkgver=0.8.1
 pkgrel=1
 pkgdesc='Unofficial API for TIDAL music streaming service.'
 arch=('any')
 url='https://github.com/tamland/python-tidal'
-license=('LGPL-3.0-only')
+license=('LGPL-3.0-or-later')
 depends=('python-requests' 'python-dateutil' 'python-isodate' 'python-mpegdash')
 makedepends=('python-poetry')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha256sums=('da0fca3cb790db6475526d724d868d079554203eb9b0636af7ff60f7e023a690')
+sha256sums=('eb48e42600533513161fd9fc9b1ee06c9788dbe1e111bb8e91b9aa9603ab3a6b')
 
 build() {
 	cd "$_name-$pkgver"
