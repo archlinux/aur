@@ -1,0 +1,18 @@
+pkgbase = gr-timing_utils-git
+	pkgdesc = GNU Radio gr-timing_utils smart meters modules (RECESSIM)
+	pkgver = 3.10
+	pkgrel = 1
+	url = https://github.com/sandialabs/gr-timing_utils/
+	arch = any
+	license = GPL
+	makedepends = git
+	makedepends = cmake
+	makedepends = doxygen
+	depends = gnuradio
+	depends = boost
+	depends = gr-pdu_utils
+	provides = gr-timing_utils
+	source = git+https://github.com/sandialabs/gr-timing_utils.git
+	sha256sums = SKIP
+
+pkgname = gr-timing_utils-git
