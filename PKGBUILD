@@ -2,7 +2,7 @@
 pkgname=ai-cli
 pkgver=1.0.0
 pkgrel=1
-pkgdesc="Google Gemini, but in a command line."
+pkgdesc="Google Gemini, but in a command line. Get your Gemini API key, then do nano /usr/share/ai-cli/.env and insert your api key."
 arch=('any')
 url="https://github.com/x45k/ai-cli/"
 license=('MIT')
@@ -16,7 +16,7 @@ source=(
   'package.json'
 )
 
-sha256sums=('1b968e3377a33497a77ea75da0e0bbd566e2f2e909985b14be1ef7d5f19ee700' '5d72f88d080b6dec1ed75c7c35206d8984c69bafd3fd46b0086a65d280451468' 'b23dc4667f089feca4c9495b5c4f18d2a98f4184632700b94da16dfcd80d277a' 'c0148ade42b1cc0289caf732e8a595ca8c80989c3e6131aff1edbe09909f2ce1')
+sha256sums=('1b968e3377a33497a77ea75da0e0bbd566e2f2e909985b14be1ef7d5f19ee700' '5d72f88d080b6dec1ed75c7c35206d8984c69bafd3fd46b0086a65d280451468' 'SKIP' 'c0148ade42b1cc0289caf732e8a595ca8c80989c3e6131aff1edbe09909f2ce1')
 
 package() {
   install -Dm755 "$srcdir/myscript.sh" "$pkgdir/usr/bin/ai-cli.sh"
