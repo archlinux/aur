@@ -1,12 +1,12 @@
-# Maintainer: Matt Warner <mattwarner001@gmail.com>
 # Maintainer: Helmut Stult <hst[at]e-mail[dot]de>
 # Contributor: Felipe Martin <me@fmartingr.com>
+# Contributor: Matt Warner <mattwarner001@gmail.com>
 
 pkgname="synology-drive"
 pkgver="3.5.1_16102"
 _pkgver="3.5.1-16102"
 _subver="16102"
-pkgrel="2"
+pkgrel="3"
 pkgdesc="Desktop utility of the DSM add-on package, Synology Drive Server"
 arch=('x86_64')
 url="https://www.synology.com/en-global/releaseNote/SynologyDriveClient"
