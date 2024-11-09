@@ -1,0 +1,15 @@
+pkgbase = gnome-shell-extension-pano-bin
+	pkgdesc = Next-gen Clipboard Manager for Gnome Shell
+	pkgver = 23.alpha3
+	pkgrel = 1
+	url = https://github.com/oae/gnome-shell-pano
+	arch = any
+	license = GPL-2.0
+	depends = gnome-shell>=45
+	depends = libgda6
+	provides = gnome-shell-extension-pano
+	conflicts = gnome-shell-extension-pano
+	source = https://github.com/oae/gnome-shell-pano/releases/download/v23-alpha3/pano@elhan.io.zip
+	sha256sums = ad45f4e567af420ef4e18aa1c04231efa9fcb5a40456586b3faa4f8ec4f4982e
+
+pkgname = gnome-shell-extension-pano-bin
