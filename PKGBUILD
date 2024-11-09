@@ -4,10 +4,10 @@ _name=findsystemfontsfilename
 
 pkgname=python-${_name,,}
 pkgver=0.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Find the system fonts filename"
 url="https://github.com/moi15moi/FindSystemFontsFilename/"
-makedepends=(python-build python-installer python-setuptools)
+makedepends=(python-build python-installer python-setuptools python-wheel)
 depends=()
 license=('MIT')
 arch=('any')
