@@ -1,5 +1,5 @@
 pkgbase = inter-doom-git
-	pkgver = 7.x.x.r675
+	pkgver = 8.r777
 	pkgrel = 1
 	url = https://github.com/JNechaevsky/international-doom
 	arch = i686
@@ -12,7 +12,7 @@ pkgbase = inter-doom-git
 	depends = sdl2_mixer>=2.0.2
 	depends = sdl2_net>=2.0.0
 	depends = libsamplerate
-	depends = fluidsynth>=2.2.0
+	depends = fluidsynth
 	source = git+https://github.com/JNechaevsky/international-doom.git
 	source = 001_install_rule.patch
 	b2sums = SKIP

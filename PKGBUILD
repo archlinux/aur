@@ -1,12 +1,12 @@
 # Maintainer: Leonid Murin (Dasperal) <Dasperal1 at gmail dot com>
 pkgbase=inter-doom-git
 pkgname=('inter-doom-git' 'inter-heretic-git' 'inter-hexen-git')
-pkgver=7.x.x.r675
+pkgver=8.r777
 pkgrel=1
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url="https://github.com/JNechaevsky/international-doom"
 license=('GPL-2.0-only')
-depends=('sdl2>=2.0.18' 'sdl2_mixer>=2.0.2' 'sdl2_net>=2.0.0' 'libsamplerate' 'fluidsynth>=2.2.0')
+depends=('sdl2>=2.0.18' 'sdl2_mixer>=2.0.2' 'sdl2_net>=2.0.0' 'libsamplerate' 'fluidsynth')
 makedepends=(cmake)
 source=("git+https://github.com/JNechaevsky/international-doom.git"
         001_install_rule.patch)
@@ -15,7 +15,7 @@ b2sums=('SKIP'
 
 pkgver() {
     cd "$srcdir/international-doom"
-    printf "7.x.x.r%s" "$(git rev-list --count HEAD)"
+    printf "8.r%s" "$(git rev-list --count HEAD)"
 }
 
 prepare() {
