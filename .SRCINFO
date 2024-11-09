@@ -1,6 +1,6 @@
 pkgbase = r-scds
 	pkgdesc = In-Silico Annotation of Doublets for Single Cell RNA Sequencing Data
-	pkgver = 1.20.0
+	pkgver = 1.22.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/scds
 	arch = any
@@ -19,7 +19,7 @@ pkgbase = r-scds
 	optdepends = r-rsvd
 	optdepends = r-rtsne
 	optdepends = r-scater
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/scds_1.20.0.tar.gz
-	sha256sums = 7083be71bdac93a5ee25bf153bfe59d8790c5530847bbc9ba946a35e2751b5a7
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/scds_1.22.0.tar.gz
+	sha256sums = 85cb5511bc30f8617b7b18087af5b36bcac43aaff31855ecdba4357b8b3163a2
 
 pkgname = r-scds
