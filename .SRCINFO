@@ -1,6 +1,6 @@
 pkgbase = r-transformgampoi
 	pkgdesc = Variance Stabilizing Transformation for Gamma-Poisson Models
-	pkgver = 1.10.0
+	pkgver = 1.12.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/transformGamPoi
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = r-transformgampoi
 	optdepends = r-scran
 	optdepends = r-tenxpbmcdata
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/transformGamPoi_1.10.0.tar.gz
-	sha256sums = cc0cc9005ac1377ffc53286bc568e6e37033e7a3fe3ae7b684969af9c569e527
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/transformGamPoi_1.12.0.tar.gz
+	sha256sums = 35f5eda81439ad09923caf409ed35e7052394dbc69ddeecb19063fe0fb112d3f
 
 pkgname = r-transformgampoi
