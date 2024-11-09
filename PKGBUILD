@@ -2,8 +2,8 @@
 
 pkgname=python-openlp-osc-control
 _reponame=openlposccontrol
-pkgver=0.1.6
-pkgrel=2
+pkgver=0.1.7
+pkgrel=1
 pkgdesc="Daemon to allow control of OpenLP using OSC control"
 url="https://github.com/rickprice/openlp-OSC-control"
 arch=(any)
@@ -21,7 +21,7 @@ makedepends=(
 source=("https://pypi.org/packages/source/${_reponame::1}/${_reponame}/${_reponame}-${pkgver}.tar.gz"
         "OpenLPOSCControl@.service")
 
-sha256sums=('5fc4dcd9dd332f2a325f0e69d831416094c343f253a50b52490d7710b2063fdb'
+sha256sums=('0568d1b52f07da7726526e5fc7c4884ec34aee570ce9f020e621233793308a3f'
             'a6e6d767595f32941c73cb1f69a62c572c8febb71aab501aae3bf866b0aeb4ad')
 
 build() {
