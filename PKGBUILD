@@ -2,14 +2,14 @@
 
 pkgname=cptserv-server
 pkgver=4
-pkgrel=1
+pkgrel=2
 pkgdesc="Cross platform data synchronization"
 arch=("x86_64" 'aarch64')
 url="https://github.com/CPTServ/TServ"
 license=("GPL3")
 makedepends=('go')
 _exename=TServ
-provides=(_exename)
+provides=($_exename)
 source=("${url}/releases/download/v${pkgver}/${_exename}"
   "${pkgname}.service"
   "TServ.sh")

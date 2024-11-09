@@ -1,13 +1,13 @@
 pkgbase = cptserv-server
 	pkgdesc = Cross platform data synchronization
 	pkgver = 4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/CPTServ/TServ
 	arch = x86_64
 	arch = aarch64
 	license = GPL3
 	makedepends = go
-	provides = _exename
+	provides = TServ
 	options = !debug
 	source = https://github.com/CPTServ/TServ/releases/download/v4/TServ
 	source = cptserv-server.service
