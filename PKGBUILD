@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=clustifyr
-_pkgver=1.16.2
+_pkgver=1.18.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -45,8 +45,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('3ce075a00bdba5d75946e21236efc235')
-b2sums=('b7d0acf0d1ef312a43eba361582083d93e1f24a19740ffa597bc581cf941de075f38cdd74682b5fab458d21b06b31bb3b919ee809c256f283a8370c19aa50284')
+md5sums=('d77ecc21f83dc756601f836e80765342')
+b2sums=('ba47c45ac9095d4b2c7080dd1e0cd6024c2aa8db4895cd04deeef080e5a4f16538d690843d658b55be5ba1d1e9ad607b784cf3d2b1760ecf8e57699ea79c973d')
 
 build() {
   mkdir build
