@@ -1,6 +1,6 @@
 pkgbase = r-scmet
 	pkgdesc = Bayesian modelling of cell-to-cell DNA methylation heterogeneity
-	pkgver = 1.6.0
+	pkgver = 1.8.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/scMET
 	arch = x86_64
@@ -31,8 +31,8 @@ pkgbase = r-scmet
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/scMET_1.6.0.tar.gz
-	md5sums = e7873f8dd3d34575f4d7f11c364fe1a4
-	b2sums = 28a73e0718e73e8d19d4ba54aa830e0c06a3055e431ebd3df8c6f078995bea44d2d1da01e9227ce0ee6e1fdc278b11df9ac97b32187c0b60be72d067fb03fc79
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/scMET_1.8.0.tar.gz
+	md5sums = 454268faca57a0ade6352837704f5b15
+	b2sums = 3595bacc055ef7f0b3f7d9df121996288e51a9d4803683e6f84db89fa2ef3a4004e78b24421488f076d84aad7019c9484f8b11af75ae1463948815eb0ecc1e8d
 
 pkgname = r-scmet

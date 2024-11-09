@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=scMET
-_pkgver=1.6.0
+_pkgver=1.8.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -44,8 +44,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('e7873f8dd3d34575f4d7f11c364fe1a4')
-b2sums=('28a73e0718e73e8d19d4ba54aa830e0c06a3055e431ebd3df8c6f078995bea44d2d1da01e9227ce0ee6e1fdc278b11df9ac97b32187c0b60be72d067fb03fc79')
+md5sums=('454268faca57a0ade6352837704f5b15')
+b2sums=('3595bacc055ef7f0b3f7d9df121996288e51a9d4803683e6f84db89fa2ef3a4004e78b24421488f076d84aad7019c9484f8b11af75ae1463948815eb0ecc1e8d')
 
 build() {
   mkdir build
