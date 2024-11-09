@@ -1,0 +1,7 @@
+[brlcad-bin]
+source="github"
+github="BRL-CAD/brlcad"
+use_latest_release=true
+prefix="rel-"
+from_pattern = "-"
+to_pattern = "."

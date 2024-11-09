@@ -1,34 +1,25 @@
-#  Maintainer: hrocho <hrocho at vodacionline dot sk>
+# Maintainer: envolution
 pkgname=brlcad-bin
-pkgver=7.26.0
-pkgrel=0
-pkgdesc="An extensive 3D solid modeling system."
-url="http://brlcad.org"
+_pkgname=brlcad
+pkgver=7.40.2
+pkgrel=1
+pkgdesc='An extensive 3D solid modeling system. Binary package'
+url='https://brlcad.org'
 license=('LGPL' 'BSD' 'custom:BDL')
 arch=('x86_64')
-# install=$pkgname.install
-makedepends=('bc' 'cmake' 'libxslt')
-depends=('rpmextract' 'boost' 'flex' 'libgl' 'libpng' 'libpng12' 'mesa' 'tk' 'zlib')
-
-if [ "$CARCH" = "x86_64" ]; then
-	    source=(http://downloads.sourceforge.net/project/brlcad/BRL-CAD%20for%20Linux/$pkgver/BRL-CAD_$pkgver.2_Linux_x86_64.tar.gz)
-		md5sums=('c0f30ca1d5f982292f2988fa798950c6')
-fi
-
+depends=('libgl' 'libxft' 'libxi')
+options=(!strip !debug)
+provides=(brlcad)
+conflicts=(brlcad)
+install="${_pkgname}.install"
+_tag_name="rel-${pkgver//./-}"
+source=(
+  "https://github.com/BRL-CAD/${_pkgname}/releases/download/${_tag_name}/BRL-CAD_${pkgver}_Linux_${CARCH}.tar.bz2"
+)
+sha256sums=('fbfb17dd68ec9066f262473bd984412b5ccc3e9bd57893f7348eae2030aa020e')
 
 package() {
-
-	mkdir --parents "${pkgdir}/opt/${pkgname}"
-	cp -r ${srcdir}/BRL-CAD_7.26.0_Linux_x86_64/* "${pkgdir}/opt/${pkgname}"
-
-
-	mkdir --parents "${pkgdir}/etc/profile.d"
-	mkdir --parents  "${pkgdir}/etc/ld.so.conf.d"
-		
-	echo "export PATH=\"\$PATH:/opt/${pkgname}/bin\"" >"${pkgdir}/etc/profile.d/${pkgname}.sh"
-        chmod u=rwx,go=rx "${pkgdir}/etc/profile.d/${pkgname}.sh"
-        
-	echo "/opt/${pkgname}/lib" >"${pkgdir}/etc/ld.so.conf.d/${pkgname}.conf"
-	chmod u=rwx,go=rx "${pkgdir}/etc/ld.so.conf.d/${pkgname}.conf"
-
+  cd BRL-CAD_${pkgver}_Linux_${CARCH}
+  install -dm755 "$pkgdir/opt/$_pkgname"
+  cp -a * "$pkgdir/opt/$_pkgname/"
 }
