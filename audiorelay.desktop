@@ -9,4 +9,4 @@ Icon=audiorelay
 Terminal=false
 StartupNotify=true
 Categories=Audio;AudioVideo;Utility
-StartupWMClass=com-azefsw-audioconnect-desktop-app-mainkt
+StartupWMClass=com-azefsw-audioconnect-desktop-app-MainKt
