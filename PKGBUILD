@@ -11,13 +11,13 @@ pkgdesc="Desktop utility of the DSM add-on package, Synology Drive Server"
 arch=('x86_64')
 url="https://www.synology.com/en-global/releaseNote/SynologyDriveClient"
 license=('custom:Synology Linux License Grant')
-depends=('glibc' )
+depends=('glibc' 'glib2' 'dbus' 'libx11' 'libxcb' 'libxkbcommon' 'libsm' 'libice' 'libarchive'
+         'hicolor-icon-theme' 'zlib' 'curl' 'sqlite' 'libxrender' 'fontconfig')
 source_x86_64=("https://global.synologydownload.com/download/Utility/SynologyDriveClient/${_pkgver}/Ubuntu/Installer/synology-drive-client-${_subver}.x86_64.deb")
 sha256sums_x86_64=('6f13838d7384f757a3f08db60d640a6d6ef5a088d11d0c7d232bce6a6de3fe2c')
 
 package() {
 	cd "${srcdir}"
 	tar -xJf data.tar.xz -C "${pkgdir}"
-	ls "${pkgdir}"
 	install -Dm 644 "${pkgdir}"/opt/Synology/SynologyDrive/LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
