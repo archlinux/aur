@@ -13,9 +13,9 @@ _devenv=false
 _generic_release=false
 
 ## real pkgrel is the eval one
-pkgver=9.20.w144.s6ae3756
+pkgver=9.21.w1.sf03d32e
 pkgrel=1
-eval pkgrel=3
+eval pkgrel=1
 
 ################################################################################################################################
 ################################################################################################################################
@@ -32,10 +32,10 @@ _enabled_staging=()
 
 ## if all staging patches are to be applied, what (array of) patches to omit?
 ## e.g. "Compiler_Warnings user32-. . ."
-_disabled_staging=(eventfd_synchronization) # added manually from proton
+_disabled_staging=(eventfd_synchronization ntdll-HashLinks) # added manually from proton
 
 ## main AUR version control setting, wine/staging base will be taken from this if custompatches=false (default)
-_patchbase_tag="11-01-2024-ff2070b7-6ae3756a"
+_patchbase_tag="11-08-2024-c9a8333c-f03d32e3"
 
 ## to use this, set this to true, create a "custompatches" folder in the top-level PKGBUILD directory, and place your patches there.
 ## the patches from the wine-osu-patches git repo will no longer be applied, but you can copy them to the
@@ -45,8 +45,8 @@ _custompatches=false
 
 ## (with custompatches) uses wine/staging master if empty, uses given commit or tag if set
 ## (without custompatches) ignored and overwritten by upstream commits from patchbase repo
-_desired_wine_commit=ff2070b79006c74546c24106a02b814a691eba1b
-_desired_staging_commit=6ae3756a4f5023a07870bfcd9b38b148e8527797
+_desired_wine_commit=c9a8333c0f274201faf33d27abda1ebb5ae07cec
+_desired_staging_commit=f03d32e381f829e13a82726cad521d4b1c223b10
 
 ## (with custompatches) ignore the _desired_wine_commit above and take the wine commit from the "upstream-commit" file in the staging repo
 _use_staging_upstream=false
@@ -66,11 +66,11 @@ _strip_package=true
 
 ## for native compilation (non-true is gcc):
 ## true=system clang, bundled=llvm-mingw's clang (requires _use_mingw=llvm), anything else is gcc
-_use_clang=true
+_use_clang=bundled
 
 ## for cross compilation
 ## llvm=llvm-mingw, msvc=clang in msvc-mode, anything else is mingw-gcc
-_use_mingw=msvc
+_use_mingw=llvm
 
 ## leave empty unless you want to manually change the type of build (true: wow64)
 _wow64build=
@@ -88,7 +88,7 @@ if [ "$_wow64build" = "true" ]; then _wowname="-wow64"; else _wowname=""; fi
 if [ "${_generic_release}" = "true" ]; then
   PKGEXT='.pkg.tar.xz'
   COMPRESSXZ=(xz -9 -c -z - --threads=0)
-  _cpu_target="-march=x86-64 -mtune=generic -msse -msse2"
+  _cpu_target="-march=nocona -mtune=core-avx2" # same as Proton
 else
   _cpu_target="-march=native -mtune=native"
 fi
@@ -134,7 +134,7 @@ noextract=()
 ## don't needlessly add the wine-osu-patches repo if we explicitly specify custom ones
 if ! { [ -d "${_where}"/custompatches ] && [ "${_custompatches}" = "true" ] ; }; then
   source+=("git+https://github.com/whrvt/wine-osu-patches.git#tag=${_patchbase_tag}")
-  sha512sums+=('f2cccafcfa1be98086ebc78f60f76fb702c49292c2e2114c0cb6948d227275079f7828729ecaa6d539fa04b9286930f89a82b8891ab4af1eac402be5121b40b7')
+  sha512sums+=('90857f422748d673f574e4e2541b04341379d3b3f7229e0c2a2d16e4050cd12c78cb0f3be95ff3a7ff4a4eacff6a449e35a3633f54f2311a725dc408c37b778b')
 
   if [ "${_custompatches}" = "true" ]; then
     msg2 "WARNING: _custompatches=true but custompatches directory not found. Will be using wine-osu-patches repo."
@@ -237,15 +237,18 @@ if [ "${_use_clang}" = "true" ]; then
 
   #_lto_flags="-flto -Wl,--lto"
   _lto_flags="-fuse-linker-plugin -flto -Wl,--flto,--flto-partition=one"
+  _extra_native_flags="-fgnuc-version=5.99.99"
 elif [ "${_use_clang}" = "bundled" ] && [ "${_use_mingw}" = "llvm" ]; then
   _cc="clang"
   _cxx="clang++"
+
+  _extra_native_flags="-fgnuc-version=5.99.99"
 else
   _cc="/usr/bin/gcc"
   _cxx="/usr/bin/g++"
 
   _lto_flags="-fuse-linker-plugin -fdevirtualize-at-ltrans -flto-partition=one -flto -Wl,-flto"
-  #_extra_native_flags="-floop-nest-optimize -fgraphite-identity -floop-strip-mine" # graphite opts
+  _extra_native_flags="-floop-nest-optimize -fgraphite-identity -floop-strip-mine" # graphite opts
 fi
 
 if [ "${_use_mingw}" = "llvm" ]; then
@@ -265,6 +268,12 @@ if [ "${_use_mingw}" = "llvm" ]; then
     _mingw_path="/opt/llvm-mingw/llvm-mingw-msvcrt/bin"
   else
     _mingw_path="/opt/llvm-mingw/llvm-mingw-ucrt/bin"
+  fi
+
+  if [[ "${_mingw_path}" =~ "msvcrt" ]]; then
+    # set so that we don't use fallback code for __GNUC__ <= 4.2.1
+    # doesn't work with ucrt due to some specific modules failing
+    _extra_common_flags="-fgnuc-version=5.99.99"
   fi
 
   _cross_path="${_mingw_path}":"${PATH}"
@@ -311,9 +320,9 @@ _set_vars() {
 
   export PATH="${_cross_path}"
 
-  # note: using Oz for a smaller memory footprint, otherwise 32bit programs can hit the virtual address space limit quickly
-  _common_cflags="${_cpu_target} -pipe -Oz -mfpmath=sse -fno-strict-aliasing -fomit-frame-pointer -Wno-error=incompatible-pointer-types -Wno-error=implicit-function-declaration -Wno-error=int-conversion -w"
-  _native_common_cflags="${_lto_flags:-} ${_extra_native_flags:-}" # only for the non-mingw side
+  _common_cflags="${_cpu_target} ${_extra_common_flags:-} -std=gnu11 -pipe -O3 -fomit-frame-pointer -fno-semantic-interposition \
+                  -Wno-error=incompatible-pointer-types -Wno-error=implicit-function-declaration -Wno-error=int-conversion -w"
+  _native_common_cflags="-static-libgcc ${_lto_flags:-} ${_extra_native_flags:-}" # only for the non-mingw side
 
   export CPPFLAGS="-U_FORTIFY_SOURCE -D_FORTIFY_SOURCE=0 -DNDEBUG -D_NDEBUG"
   _GCC_FLAGS="${_common_cflags} ${_native_common_cflags} ${CPPFLAGS}"
@@ -540,17 +549,6 @@ prepare() { _set_vars;
 
   _prep_ccache
   autoreconf -fi
-
-  if [ "${_devenv}" = "true" ]; then
-    _confcachedir="${_where}"/.confcaches
-    _compilerwithflagshash="$(sha512sum - < <(printf '%s' "${CFLAGS}${LDFLAGS}${CROSSCFLAGS}${CROSSLDFLAGS}${_compilerhash}") | cut -d ' ' -f 1)"
-    _confcacheprefix="${_confcachedir}"/"${pkgver%.w*}-${pkgrel}-${_compilerwithflagshash}"
-
-    if [ ! -d "${_confcachedir}" ]; then
-      mkdir "${_confcachedir}" || \
-          _failure "Couldn't create an autoconf cache directory in ${_confcachedir#"${_where}/"}. This shouldn't have happened."
-    fi
-  fi
 }
 
 _configure64() { _set_vars64;
@@ -584,6 +582,7 @@ _tools64() { _set_vars64;
     "$@" -C "${mkfile%/Makefile}" CFLAGS="${_tools_flags}" LDFLAGS="${_tools_flags}" CROSSCFLAGS="${_tools_flags}" CROSSLDFLAGS="${_tools_flags}"
   done
   chmod -R +x "${build64dir}"/tools
+  shopt -u globstar
 }
 
 _build64() { _set_vars64;
@@ -603,6 +602,17 @@ _build32() { _set_vars32;
 }
 
 build() { _set_vars;
+  if [ "${_devenv}" = "true" ]; then
+    _confcachedir="${_where}"/.confcaches
+    _compilerwithflagshash="$(sha512sum - < <(printf '%s' "${CFLAGS}${LDFLAGS}${CROSSCFLAGS}${CROSSLDFLAGS}${_compilerhash}") | cut -d ' ' -f 1)"
+    _confcacheprefix="${_confcachedir}"/"${pkgver%.w*}-${pkgrel}-${_compilerwithflagshash}"
+
+    if [ ! -d "${_confcachedir}" ]; then
+      mkdir "${_confcachedir}" || \
+          _failure "Couldn't create an autoconf cache directory in ${_confcachedir#"${_where}/"}. This shouldn't have happened."
+    fi
+  fi
+
   _sharedopts=(
     --prefix=/opt/"${pkgname}"
     --disable-tests
