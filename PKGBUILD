@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=apeglm
-_pkgver=1.26.1
+_pkgver=1.28.0
 pkgname=r-${_pkgname,,}
-pkgver=1.26.1
+pkgver=1.28.0
 pkgrel=1
 pkgdesc='Approximate posterior estimation for GLM coefficients'
 arch=('x86_64')
@@ -26,7 +26,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('7af71782e0a75a27f23c40cfe2b82a053322e11d1c240e4aae62826d0ef2350d')
+sha256sums=('b808f5c49fe2939a8fc3aecf7bbf5e18a286adc545c9eb32a983aae5c945f0f7')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"

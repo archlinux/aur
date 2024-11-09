@@ -1,6 +1,6 @@
 pkgbase = r-apeglm
 	pkgdesc = Approximate posterior estimation for GLM coefficients
-	pkgver = 1.26.1
+	pkgver = 1.28.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/apeglm
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = r-apeglm
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/apeglm_1.26.1.tar.gz
-	sha256sums = 7af71782e0a75a27f23c40cfe2b82a053322e11d1c240e4aae62826d0ef2350d
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/apeglm_1.28.0.tar.gz
+	sha256sums = b808f5c49fe2939a8fc3aecf7bbf5e18a286adc545c9eb32a983aae5c945f0f7
 
 pkgname = r-apeglm
