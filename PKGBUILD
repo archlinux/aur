@@ -6,19 +6,27 @@ pkgname=buoh
 pkgver=0.8.2
 pkgrel=15
 pkgdesc='Online strips comics reader for GNOME'
-arch=('x86_64')
+arch=(x86_64)
 url='http://buoh.steve-o.org/'
-license=('GPL')
-depends=('gtk3' 'libsoup')
-makedepends=('git' 'meson')
-_commit=f4bd061683b5dfccd31748dff43b3710185628c8  # master
-source=("git+https://gitlab.gnome.org/GNOME/buoh.git#commit=$_commit")
-sha256sums=('SKIP')
-
-prepare() {
-  cd $pkgname
-  git cherry-pick -n 39d069ec0bd23e89afab7a69183149bb433ee7bd # Fix build with meson 0.61
-}
+license=(GPL-2.0-or-later)
+depends=(
+  dconf
+  gcc-libs
+  gdk-pixbuf2
+  glib2
+  glibc
+  gtk3
+  hicolor-icon-theme
+  libsoup
+  libxml2
+)
+makedepends=(
+  git
+  glib2-devel
+  meson
+)
+source=(git+https://gitlab.gnome.org/GNOME/buoh.git)
+b2sums=(SKIP)
 
 build() {
   arch-meson $pkgname build
