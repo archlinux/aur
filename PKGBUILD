@@ -2,7 +2,7 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=GOpro
-_pkgver=1.30.0
+_pkgver=1.32.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -36,8 +36,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('66d0fd9baf669ad4eb6e944e09901111')
-b2sums=('a7e8244fe6ce542e7b556a3de429e108b709ffe0cf26f8cd4d467566ae12ada78c612b9233615f8aa1fc1d8da0b627e06564ebcea13a74364e3d4af4c1c3cb75')
+md5sums=('322bf28520208bfae9cbd508ebebd7e2')
+b2sums=('30438c060b817a5ac4ad1b06074aaeef69ecd8d305dfe55514dcf0c0911856a9b315d5c5b4c2d1718ea24cf2affa5f96cb773af21d1ed03021eb39338f9e54c4')
 
 build() {
   mkdir build
