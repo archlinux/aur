@@ -1,6 +1,6 @@
 pkgbase = r-cellscore
 	pkgdesc = Tool for Evaluation of Cell Identity from Transcription Profiles
-	pkgver = 1.24.0
+	pkgver = 1.26.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/CellScore
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = r-cellscore
 	optdepends = r-hgu133plus2cellscore
 	optdepends = r-knitr
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/CellScore_1.24.0.tar.gz
-	sha256sums = 08614f259e1062058af11cf4c70431e0584530982230666c8f5a11ed6cbd5a9d
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/CellScore_1.26.0.tar.gz
+	sha256sums = d156c0cd534c1d0524ce7f2368ec19f1b4313a06a3676acc948e8a115ab78b20
 
 pkgname = r-cellscore
