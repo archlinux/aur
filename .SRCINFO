@@ -1,22 +1,20 @@
 pkgbase = r-modelenv
 	pkgdesc = Provide Tools to Register Models for Use in 'tidymodels'
-	pkgver = 0.1.1
-	pkgrel = 3
+	pkgver = 0.2.0
+	pkgrel = 1
 	url = https://cran.r-project.org/package=modelenv
 	arch = any
 	license = MIT
 	checkdepends = r-testthat
+	depends = r-cli
 	depends = r-glue
 	depends = r-rlang
 	depends = r-tibble
 	depends = r-vctrs
 	optdepends = r-covr
 	optdepends = r-testthat
-	source = https://cran.r-project.org/src/contrib/modelenv_0.1.1.tar.gz
-	source = modelenv-fix-tests.patch::https://github.com/tidymodels/modelenv/commit/10584477d8f6a1161f6460c712141e5e533b6d15.patch
-	md5sums = 3ea3e9365c8c36752036b20aec780a6f
-	md5sums = f820cdd6d2115f0cdd2b25c81a34dc89
-	b2sums = c7031c9fc89c04cc0e1b018ee76cad4fdd0827d0724010f818a4a2a670b32e3c24a68d3f69ef9979d4ea83d3eb1305fb725ab73cb9e468a53322f2dff0ae8c71
-	b2sums = b38322a81486908d8c19e6654edb9e5f716c071d21b1f06f49ed3c576f7324823782e68fefe453fa4cd4edc4cd6675b2d7aa6c08ea2c32e5e14088267ce66462
+	source = https://cran.r-project.org/src/contrib/modelenv_0.2.0.tar.gz
+	md5sums = 8a5cef089fa1b7ff7e466bc1ca96fac3
+	b2sums = 10beb998bc4cb50169d4290946c035558ddc96ec60fbafd996b6db2215c3c176cc651f72e3edef9eeea80b848720596d6d32419ba7800846b5221230ec251d32
 
 pkgname = r-modelenv
