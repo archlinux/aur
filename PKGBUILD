@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=VariantExperiment
-_pkgver=1.18.1
+_pkgver=1.20.0
 pkgname=r-${_pkgname,,}
-pkgver=1.18.1
+pkgver=1.20.0
 pkgrel=1
 pkgdesc='A RangedSummarizedExperiment Container for VCF/GDS Data with GDS Backend'
 arch=('any')
@@ -31,7 +31,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('e90bfd3fea14a6e2a488f34eea85a36862b7cfcb896799d2cb093a265273b073')
+sha256sums=('a064c38baf03edff10ee0746100364c466cb87e951c23fdb7e5ea4406910c8c4')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
