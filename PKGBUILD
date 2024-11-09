@@ -1,7 +1,7 @@
 #Maintainer: memchr
 # FIXME: arabic tashkeel library path
 pkgname=piper-tts-git
-pkgver=2023.11.14.2.r29.e507877
+pkgver=2023.11.14.2.r30.c0670df
 pkgrel=1
 pkgdesc="A fast, local neural text to speech system"
 arch=(x86_64 aarch64)

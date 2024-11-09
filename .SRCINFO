@@ -1,11 +1,12 @@
 pkgbase = piper-tts-git
 	pkgdesc = A fast, local neural text to speech system
-	pkgver = 2023.11.14.2.r29.e507877
+	pkgver = 2023.11.14.2.r30.c0670df
 	pkgrel = 1
 	url = https://github.com/rhasspy/piper
 	arch = x86_64
 	arch = aarch64
 	license = MIT
+	makedepends = git
 	makedepends = cmake
 	makedepends = make
 	depends = onnxruntime
