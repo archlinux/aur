@@ -134,7 +134,7 @@ noextract=()
 ## don't needlessly add the wine-osu-patches repo if we explicitly specify custom ones
 if ! { [ -d "${_where}"/custompatches ] && [ "${_custompatches}" = "true" ] ; }; then
   source+=("git+https://github.com/whrvt/wine-osu-patches.git#tag=${_patchbase_tag}")
-  sha512sums+=('90857f422748d673f574e4e2541b04341379d3b3f7229e0c2a2d16e4050cd12c78cb0f3be95ff3a7ff4a4eacff6a449e35a3633f54f2311a725dc408c37b778b')
+  sha512sums+=('5f512ffee277d0069ec509b9049932d5210e6bb2f4b24b6a34c15a6d047b7acda342a3fe1321005d4e498695354a37084aa6d785a482d4baf97d5d4e0836ea15')
 
   if [ "${_custompatches}" = "true" ]; then
     msg2 "WARNING: _custompatches=true but custompatches directory not found. Will be using wine-osu-patches repo."
