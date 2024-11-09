@@ -1,6 +1,6 @@
 pkgbase = r-vdjdive
 	pkgdesc = Analysis Tools for 10X V(D)J Data
-	pkgver = 1.6.0
+	pkgver = 1.8.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/VDJdive
 	arch = x86_64
@@ -23,8 +23,8 @@ pkgbase = r-vdjdive
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/VDJdive_1.6.0.tar.gz
-	md5sums = 1207027ee0cda0d82755db2892a9a327
-	b2sums = d97b8b2660bbff766d256e449057c1460daf1047f19b0e83c52077db6495b2983906bb6ff16c7780a4006c1708615a1e0795053294bb046f86b0d92cbb718903
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/VDJdive_1.8.0.tar.gz
+	md5sums = e36bca9c91ac3f6a9499e622ee72c775
+	b2sums = afd3ae083615ebd33fd85a97de7a1380c965d3bb402abf1905f161cfa009e53017670834a2fabb58405b1467328d07185ccfd4a58676b216b6974c3b51a7815c
 
 pkgname = r-vdjdive
