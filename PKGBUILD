@@ -2,13 +2,15 @@
 
 pkgname=fcitx5-mellow-themes-git
 _gitname=fcitx5-mellow-themes
-pkgver=r5.e0de133
+pkgver=r13.1154bdb
 pkgrel=1
 pkgdesc="An aesthetic, modern fcitx5 theme featuring rounded rectangle design"
 arch=('any')
 url="https://github.com/sanweiya/fcitx5-mellow-themes"
 license=('BSD-2-Clause')
 depends=('fcitx5')
+makedepends=('git')
+provides=('fcitx5-mellow-themes')
 source=("${_gitname}::git+${url}")
 md5sums=('SKIP')
 
