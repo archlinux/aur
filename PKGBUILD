@@ -4,7 +4,7 @@ _android_arch=armv7a-eabi
 
 pkgname=android-${_android_arch}-ffmpeg
 pkgver=7.0.2
-pkgrel=2
+pkgrel=4
 arch=('any')
 pkgdesc="Complete solution to record, convert and stream audio and video (Android ${_android_arch})"
 url="http://ffmpeg.org/"
@@ -26,6 +26,7 @@ depends=("android-${_android_arch}-alsa-lib"
          "android-${_android_arch}-lame"
          "android-${_android_arch}-libass"
          "android-${_android_arch}-libavc1394"
+         "android-${_android_arch}-libbluray"
          "android-${_android_arch}-libbs2b"
          "android-${_android_arch}-libdrm"
          "android-${_android_arch}-libiec61883"
@@ -63,12 +64,11 @@ depends=("android-${_android_arch}-alsa-lib"
          "android-${_android_arch}-xvidcore"
          "android-${_android_arch}-xz"
          "android-${_android_arch}-zlib")
-#depends+=("android-${_android_arch}-libbluray")
-#depends+=("android-${_android_arch}-librsvg")
-#depends+=("android-${_android_arch}-libssh")
-#depends+=("android-${_android_arch}-srt")
-#depends+=("android-${_android_arch}-vapoursynth")
-#depends+=("android-${_android_arch}-zimg")
+#depends+=("android-${_android_arch}-librsvg"
+#          "android-${_android_arch}-libssh"
+#          "android-${_android_arch}-srt"
+#          "android-${_android_arch}-vapoursynth"
+#          "android-${_android_arch}-zimg")
 makedepends=('android-configure'
              "android-${_android_arch}-avisynthplus"
              "android-${_android_arch}-ladspa"
@@ -151,9 +151,7 @@ build() {
     # extra_options="${extra_options} --enable-libzimg --enable-vapoursynth"
 
     # Disable this features because it makes fail when loading libavformat.
-    # extra_options="${extra_options} --enable-libbluray"
-    # extra_options="${extra_options} --enable-libsrt"
-    # extra_options="${extra_options} --enable-libssh"
+    # extra_options="${extra_options} --enable-libsrt --enable-libssh"
 
     ./configure \
         --prefix=${ANDROID_PREFIX} \
@@ -192,6 +190,7 @@ build() {
         --enable-ladspa \
         --enable-libaom \
         --enable-libass \
+        --enable-libbluray \
         --enable-libbs2b \
         --enable-libdav1d \
         --enable-libdrm \
@@ -213,6 +212,7 @@ build() {
         --enable-libsnappy \
         --enable-libsoxr \
         --enable-libspeex \
+        --enable-libsvtav1 \
         --enable-libtheora \
         --enable-libvidstab \
         --enable-libvmaf \
@@ -225,7 +225,6 @@ build() {
         --enable-libxml2 \
         --enable-libxvid \
         --enable-opencl \
-        --enable-libsvtav1 \
         ${extra_options}
     make $MAKEFLAGS
 }
