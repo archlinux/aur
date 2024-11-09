@@ -21,7 +21,7 @@ _clangbuild=
 
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 pkgbase=linux-ck
-pkgver=6.11.5
+pkgver=6.11.7
 _upstream=arch1
 pkgrel=1
 arch=(x86_64)
@@ -61,10 +61,10 @@ validpgpkeys=(
   ABAF11C65A2970B130ABE3C479BE3E4300411886  # Linus Torvalds
   647F28654894E3BD457199BE38DBBDC86092693E  # Greg Kroah-Hartman
 )
-sha256sums=('471485b3b7f2fb637bd8fe3d00944c4c135c7d8ee02f357f33690baab0752a07'
+sha256sums=('0bf5ec644817d7928920f763581311f5bf258a92759cf2f30985da743af3ebb2'
             'SKIP'
-            '85d7da72a3bfb175caa71ec26393f32c3ac7457477f53be373a94192392caef6'
-            'a2654b42fbca1da939059ae96da323b369f27134aaf149e393f531fb2d8d9aa1'
+            '0de9d7a185ffbae809f3816c9111740ea92ccf7a8a4240185fef4b3307cfc0a5'
+            'e4da4d04fcab3feebd34a1a02e8a593131b083ac690c863605791633fd434271'
             'b3fd8b1c5bbd39a577afcccf6f1119fdf83f6d72119f4c0811801bdd51d1bc61'
             'afa9bf94d6820c86041c7d55c25b04fe7f1aec86adbe45cb282d285901e827b3')
 
