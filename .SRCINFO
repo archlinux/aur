@@ -1,0 +1,20 @@
+pkgbase = gr-fhss_utils-git
+	pkgdesc = GNU Radio fhss_utils smart meters modules (RECESSIM)
+	pkgver = 3.10
+	pkgrel = 1
+	url = https://github.com/sandialabs/gr-fhss_utils
+	arch = x86_64
+	arch = aarch64
+	license = GPL
+	makedepends = git
+	makedepends = cmake
+	makedepends = doxygen
+	depends = gnuradio
+	depends = boost
+	depends = gr-pdu_utils
+	depends = gr-timing_utils
+	provides = gr-fhss_utils
+	source = git+https://github.com/sandialabs/gr-fhss_utils.git
+	sha256sums = SKIP
+
+pkgname = gr-fhss_utils-git
