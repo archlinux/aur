@@ -1,6 +1,6 @@
 pkgbase = r-dmchmm
 	pkgdesc = Differentially Methylated CpG using Hidden Markov Model
-	pkgver = 1.26.0
+	pkgver = 1.28.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/DMCHMM
 	arch = any
@@ -18,7 +18,7 @@ pkgbase = r-dmchmm
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/DMCHMM_1.26.0.tar.gz
-	sha256sums = 7e3979d2c85499126ef7d9081db906929e83bbd4c8482422eb6b1f6711d86167
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/DMCHMM_1.28.0.tar.gz
+	sha256sums = d185f35b079fabcb819380ee495872d4e955eef6a07e4ceb124935f2432d65c1
 
 pkgname = r-dmchmm
