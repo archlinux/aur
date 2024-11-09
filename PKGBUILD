@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=BioNAR
-_pkgver=1.6.3
+_pkgver=1.8.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -51,8 +51,8 @@ optdepends=(
   r-vdiffr
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('a8299de0b2d3052e1f5e51b7e9baacc5')
-b2sums=('1819ce8cf38ef8bd29cc75ee7ab1702b857cac447f193d865d3f951e0d45c779ab843b1b63480477c146c0401f461a78ffb7472414bc926de73ce8c830778ae3')
+md5sums=('6d871ed023436cf01a3eda576b888423')
+b2sums=('bc7e94ee14b28d7277255f0498bb93199f1a47b1b2e88f0c6d1941cae9e3aab366a12b8472b83a5eb85d27d82ecf25a58cac1c6ef72af92d8818e6a5e2459259')
 
 build() {
   mkdir build
