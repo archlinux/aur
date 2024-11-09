@@ -1,7 +1,7 @@
 pkgbase = networkmanager-support
 	pkgdesc = Metapkg for useful NetworkManager packages
 	pkgver = 1
-	pkgrel = 6
+	pkgrel = 8
 	url = https://wiki.archlinux.org/index.php/NetworkManager
 	install = networkmanager-support.install
 	arch = any
@@ -11,7 +11,6 @@ pkgbase = networkmanager-support
 	depends = modemmanager
 	depends = network-manager-sstp
 	depends = networkmanager
-	depends = networkmanager-fortisslvpn
 	depends = networkmanager-l2tp
 	depends = networkmanager-openconnect
 	depends = networkmanager-openvpn
@@ -29,8 +28,8 @@ pkgbase = networkmanager-support
 	optdepends = network-manager-applet: Applet for managing network connections
 	optdepends = nm-tray: A pure QT NetworkManager front-end residing in panels
 	optdepends = modem-manager-gui: A GTK+ Gui for modem manager
-	optdepends = qomui: OpenVPN/WireGuard QT Gui with advanced features and support for multiple providers
 	optdepends = gpsd: Supports querying GPS coordinates from GPS-enabled WWAN cards in ModemManager
 	conflicts = connman-support
+	conflicts = networkmanager-fortisslvpn
 
 pkgname = networkmanager-support

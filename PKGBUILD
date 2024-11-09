@@ -1,8 +1,10 @@
-# Maintainer: Librewish <librewish@gmail.com>
+# Maintainer: Mikhail Velichko <efklid at gmail dot com>
+# Contributor:Librewish <librewish@gmail.com>
+# Contributor: dr460nf1r3 <dr460nf1r3 at garudalinux dot org>
 
 pkgname=networkmanager-support
 pkgver=1
-pkgrel=6
+pkgrel=8
 arch=('any')
 url="https://wiki.archlinux.org/index.php/NetworkManager"
 license=('GPL')
@@ -12,7 +14,6 @@ depends=("dnsmasq"
         "modemmanager"
         "network-manager-sstp"
         "networkmanager"
-        "networkmanager-fortisslvpn"
         "networkmanager-l2tp"
         "networkmanager-openconnect"
         "networkmanager-openvpn"
@@ -30,8 +31,7 @@ depends=("dnsmasq"
 optdepends=('network-manager-applet: Applet for managing network connections'
             'nm-tray: A pure QT NetworkManager front-end residing in panels'
             'modem-manager-gui: A GTK+ Gui for modem manager'
-            'qomui: OpenVPN/WireGuard QT Gui with advanced features and support for multiple providers'
             'gpsd:  Supports querying GPS coordinates from GPS-enabled WWAN cards in ModemManager')
-conflicts=("connman-support")
+conflicts=("connman-support" "networkmanager-fortisslvpn")
 install=$pkgname.install
 
