@@ -6,11 +6,11 @@
 
 pkgname=klick
 pkgver=0.14.2
-pkgrel=2
+pkgrel=3
 pkgdesc='An advanced command line based metronome for JACK'
-arch=(x86_64 aarch64)
+arch=(aarch64 x86_64)
 url='http://das.nasophon.de/klick/'
-license=(GPL)
+license=(GPL-2.0-only)
 depends=(glibc gcc-libs)
 makedepends=(boost jack liblo libsndfile rubberband scons)
 # Fork of upstream with Python 3 and SCons build fixes

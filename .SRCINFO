@@ -1,11 +1,11 @@
 pkgbase = klick
 	pkgdesc = An advanced command line based metronome for JACK
 	pkgver = 0.14.2
-	pkgrel = 2
+	pkgrel = 3
 	url = http://das.nasophon.de/klick/
-	arch = x86_64
 	arch = aarch64
-	license = GPL
+	arch = x86_64
+	license = GPL-2.0-only
 	makedepends = boost
 	makedepends = jack
 	makedepends = liblo
