@@ -1,6 +1,6 @@
 pkgname=waveloggate-git
 pkgdesc="Gateway for connecting WSJT-* and FLRig to Wavelog"
-pkgver=1.0.16
+pkgver=1.0.19
 pkgrel=0
 arch=('x86_64')
 makedepends=(
