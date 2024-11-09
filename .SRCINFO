@@ -1,0 +1,15 @@
+pkgbase = cptserv-cli
+	pkgdesc = Cross platform data synchronization
+	pkgver = 4
+	pkgrel = 1
+	url = https://github.com/CPTServ/TCli
+	arch = x86_64
+	arch = aarch64
+	license = GPL3
+	makedepends = go
+	provides = tcli
+	options = !debug
+	source = https://github.com/CPTServ/TCli/releases/download/v4/tcli_linux64.tar.gz
+	sha256sums = SKIP
+
+pkgname = cptserv-cli
