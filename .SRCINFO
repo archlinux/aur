@@ -1,6 +1,6 @@
 pkgbase = kwin-effects-burn-my-windows-git
 	pkgdesc = Disintegrate your windows with style.
-	pkgver = r1540.1d522a4
+	pkgver = 44.r7.g4538ff3
 	pkgrel = 1
 	url = https://github.com/Schneegans/Burn-My-Windows
 	arch = any
