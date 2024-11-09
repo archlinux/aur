@@ -1,11 +1,11 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=HDF5Array
-_pkgver=1.32.1
+_pkgver=1.34.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
-pkgdesc="HDF5 backend for DelayedArray objects"
+pkgdesc="HDF5 datasets as array-like objects in R"
 arch=(x86_64)
 url="https://bioconductor.org/packages/$_pkgname"
 license=('Artistic-2.0')
@@ -19,6 +19,7 @@ depends=(
   r-rhdf5filters
   r-s4arrays
   r-s4vectors
+  r-sparsearray
   zlib
 )
 makedepends=(
@@ -39,8 +40,8 @@ optdepends=(
   r-zellkonverter
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('4d0dbd18a165dac741481b197a632323')
-b2sums=('0505e6b078870ffa826d3edf2aa8c89240dd9f3e88eeae52c5974ee50c5a101bf83c837da5e7c89cbd3dda0db00e96bc166a5b1924a7d69829d4dd87d9c81042')
+md5sums=('82321c8a1bad0392f898462a6d8a1d60')
+b2sums=('2a169e4f806dbc3d25e3007f19e58af0131c9be397a2a69d7e738fa91d6f94c8fe8fd917e5725d8d3221b7a8a58ee03873d1c390660a7cb59d17dc52c221f809')
 
 build() {
   mkdir build
