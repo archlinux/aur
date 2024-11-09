@@ -9,7 +9,7 @@ Subject: [PATCH] Add -p to copyprj to enable copying of prjconf
  2 files changed, 8 insertions(+)
 
 diff --git a/osc/commandline.py b/osc/commandline.py
-index a1c6bcf872bd6e5ed08c228a3e7c42f25c01fc44..c1eb31f62b45227a586821fffa9d285175f53821 100644
+index a559de4213e0c1ba1fd33564b05226dc04c5832d..b894ebe7ba233c98266bd13aa9ecbfbb3e2ffc62 100644
 --- a/osc/commandline.py
 +++ b/osc/commandline.py
 @@ -2121,6 +2121,8 @@ class Osc(cmdln.Cmdln):
@@ -30,10 +30,10 @@ index a1c6bcf872bd6e5ed08c228a3e7c42f25c01fc44..c1eb31f62b45227a586821fffa9d2851
                       resign = opts.re_sign,
                       now = opts.now,
 diff --git a/osc/core.py b/osc/core.py
-index b9d455773aa846f8d13842560bf030297b8c7d06..8e707a10aa3e2b4dec7066fe4ff3f68dae5e9282 100644
+index fd5306e77271c0ee5e9c78ef92067be6dfdef2ba..06baf9f3e43b583b126a4396ddd4760869ef6e1c 100644
 --- a/osc/core.py
 +++ b/osc/core.py
-@@ -3801,8 +3801,10 @@ def copy_pac(
+@@ -3795,8 +3795,10 @@ def copy_pac(
  def copy_prj(src_apiurl, src_project, dst_project,
               withbinaries = False,
               withhistory = False,
@@ -44,7 +44,7 @@ index b9d455773aa846f8d13842560bf030297b8c7d06..8e707a10aa3e2b4dec7066fe4ff3f68d
               comment = None):
      """
      Create a copy of a project.
-@@ -3816,6 +3818,8 @@ def copy_prj(src_apiurl, src_project, dst_project,
+@@ -3810,6 +3812,8 @@ def copy_prj(src_apiurl, src_project, dst_project,
          query['withbinaries'] = '1'
      if withhistory:
          query['withhistory'] = '1'
@@ -53,7 +53,7 @@ index b9d455773aa846f8d13842560bf030297b8c7d06..8e707a10aa3e2b4dec7066fe4ff3f68d
      if makeolder:
          query['makeolder'] = '1'
      if resign:
-@@ -3824,6 +3828,7 @@ def copy_prj(src_apiurl, src_project, dst_project,
+@@ -3818,6 +3822,7 @@ def copy_prj(src_apiurl, src_project, dst_project,
          query['comment'] = comment
      if now:
          query['nodelay'] = '1'

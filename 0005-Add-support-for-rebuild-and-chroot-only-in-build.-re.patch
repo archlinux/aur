@@ -14,10 +14,10 @@ Subject: [PATCH] Add support for --rebuild and --chroot-only in build.
  2 files changed, 11 insertions(+)
 
 diff --git a/osc/build.py b/osc/build.py
-index 68946ef5ce65748f38a832088ffc9e787a7945fb..97a7ad7a3e6a09927b761951f6feeed049ba074b 100644
+index 962060a6bd598c9b02c7073e9afe069b58201ca7..25d7ab784dedb35a88f55d4520ce6bdfe948b5d2 100644
 --- a/osc/build.py
 +++ b/osc/build.py
-@@ -808,6 +808,13 @@ def main(apiurl, store, opts, argv):
+@@ -798,6 +798,13 @@ def main(apiurl, store, opts, argv):
          buildargs.append('--clean')
      if opts.checks:
          buildargs.append('--checks')
@@ -32,7 +32,7 @@ index 68946ef5ce65748f38a832088ffc9e787a7945fb..97a7ad7a3e6a09927b761951f6feeed0
          buildargs.append('--no-checks')
      if not opts.no_changelog:
 diff --git a/osc/commandline.py b/osc/commandline.py
-index c1eb31f62b45227a586821fffa9d285175f53821..6ed02bdc49cbbd589dc2e84957790b6487867531 100644
+index b894ebe7ba233c98266bd13aa9ecbfbb3e2ffc62..f2759b19311bad5e5cf94f278adc862ea994aa52 100644
 --- a/osc/commandline.py
 +++ b/osc/commandline.py
 @@ -7250,6 +7250,10 @@ Please submit there instead, or use --nodevelproject to force direct submission.

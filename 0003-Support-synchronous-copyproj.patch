@@ -9,7 +9,7 @@ Subject: [PATCH] Support synchronous copyproj
  2 files changed, 7 insertions(+)
 
 diff --git a/osc/commandline.py b/osc/commandline.py
-index 7dae883f95d7a351df0ee3f80c7f3cb3fce6c1cf..a1c6bcf872bd6e5ed08c228a3e7c42f25c01fc44 100644
+index 16a2979faca9aa168dc366cc9a1bd3ea3fc978a5..a559de4213e0c1ba1fd33564b05226dc04c5832d 100644
 --- a/osc/commandline.py
 +++ b/osc/commandline.py
 @@ -2115,6 +2115,8 @@ class Osc(cmdln.Cmdln):
@@ -39,10 +39,10 @@ index 7dae883f95d7a351df0ee3f80c7f3cb3fce6c1cf..a1c6bcf872bd6e5ed08c228a3e7c42f2
          print("done cp")
          print(r)
 diff --git a/osc/core.py b/osc/core.py
-index ab1e0a62ffa34d12ff72de4adc01125bc0e4d538..b9d455773aa846f8d13842560bf030297b8c7d06 100644
+index 7dd42169adad92368050cd69ee8f6513e6593e39..fd5306e77271c0ee5e9c78ef92067be6dfdef2ba 100644
 --- a/osc/core.py
 +++ b/osc/core.py
-@@ -3822,6 +3822,8 @@ def copy_prj(src_apiurl, src_project, dst_project,
+@@ -3816,6 +3816,8 @@ def copy_prj(src_apiurl, src_project, dst_project,
          query['resign'] = '1'
      if comment:
          query['comment'] = comment
