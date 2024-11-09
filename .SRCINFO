@@ -1,6 +1,6 @@
 pkgbase = r-animalcules
 	pkgdesc = Interactive microbiome analysis toolkit
-	pkgver = 1.20.0
+	pkgver = 1.22.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/animalcules
 	arch = any
@@ -42,8 +42,8 @@ pkgbase = r-animalcules
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
 	optdepends = r-usethis
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/animalcules_1.20.0.tar.gz
-	md5sums = 05aa4c774cbe54aa5349a8137c39c34f
-	b2sums = f69f9926dda6f0421eb4eeaedfed20cbacc4df7ebe31ea0e684e66e199b10ffde3e6e0c6b59eefd023b9f8460a904c7ea342053d43359d0359948e50ff24151b
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/animalcules_1.22.0.tar.gz
+	md5sums = b83ed641e1cda8184dcd9d7616199043
+	b2sums = d87772b62ddafb63539f2f91acfef1120f3ff1f6bf8f4bacf948b35afb8cf4606a9ab1ed88184c9950f626f4276e0782b03455dffeb3150715e162f6f2258b20
 
 pkgname = r-animalcules
