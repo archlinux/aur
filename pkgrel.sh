@@ -7,3 +7,5 @@ function pkgrel {
         sed -i 's|^pkgrel=.*$|pkgrel='"${PKGREL}"'|' $f
     done
 }
+
+pkgrel $1
