@@ -1,7 +1,7 @@
 # Maintainer: Michael Rydén
 
 pkgname=libvips-notiff
-pkgver=8.15.3
+pkgver=8.16.0
 pkgrel=1
 pkgdesc="A fast image processing library with low memory needs without TIFF support"
 arch=('x86_64')
@@ -19,7 +19,7 @@ optdepends=('libheif: for heif module'
 conflicts=('libvips')
 provides=('libvips=8.15.3')
 source=("https://github.com/libvips/libvips/releases/download/v$pkgver/vips-$pkgver.tar.xz")
-sha512sums=('7ebeacef00939dff6a03f346e1d7498c9cc6ff84aff3a273dae57ae0b2332cb1da59a94ada1b68d86578af5540c1671badd636f0916e48cc7011b9141f99fc1e')
+sha512sums=('4035c6c08a19cb281ec0d901f8d0c2077e3312a79c1191b5b070aa411e5de0176d7d4e246da8f40c50cd93cf89433ac330b3ee618c1a996a79d58d1d66ec57f4')
 
 
 build() {

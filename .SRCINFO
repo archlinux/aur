@@ -1,6 +1,6 @@
 pkgbase = libvips-notiff
 	pkgdesc = A fast image processing library with low memory needs without TIFF support
-	pkgver = 8.15.3
+	pkgver = 8.16.0
 	pkgrel = 1
 	url = https://libvips.github.io/libvips/
 	arch = x86_64
@@ -34,7 +34,7 @@ pkgbase = libvips-notiff
 	optdepends = libjxl: for jxl module
 	provides = libvips=8.15.3
 	conflicts = libvips
-	source = https://github.com/libvips/libvips/releases/download/v8.15.3/vips-8.15.3.tar.xz
-	sha512sums = 7ebeacef00939dff6a03f346e1d7498c9cc6ff84aff3a273dae57ae0b2332cb1da59a94ada1b68d86578af5540c1671badd636f0916e48cc7011b9141f99fc1e
+	source = https://github.com/libvips/libvips/releases/download/v8.16.0/vips-8.16.0.tar.xz
+	sha512sums = 4035c6c08a19cb281ec0d901f8d0c2077e3312a79c1191b5b070aa411e5de0176d7d4e246da8f40c50cd93cf89433ac330b3ee618c1a996a79d58d1d66ec57f4
 
 pkgname = libvips-notiff
