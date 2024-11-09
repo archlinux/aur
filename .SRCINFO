@@ -1,13 +1,15 @@
 pkgbase = getoptions-git
-	pkgdesc = An elegant option/argument parser for shell scripts (git version)
-	pkgver = 3.3.0
+	pkgdesc = An elegant option/argument parser for shell scripts
+	pkgver = 3.3.2.r0.g139d121
 	pkgrel = 1
 	url = https://github.com/ko1nksm/getoptions
 	arch = any
 	license = CC0-1.0
+	makedepends = git
+	depends = bash
+	provides = getoptions
 	conflicts = getoptions
-	source = git+https://github.com/ko1nksm/getoptions.git
-	md5sums = SKIP
+	source = getoptions::git+https://github.com/ko1nksm/getoptions.git
+	sha256sums = SKIP
 
 pkgname = getoptions-git
-
