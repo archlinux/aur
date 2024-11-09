@@ -1,0 +1,10 @@
+[Desktop Entry]
+
+Type=Application
+Name=PCem
+Exec=/usr/bin/pcem
+Terminal=false
+Icon=/usr/share/pcem/pcem.png
+Categories=Game;Emulator
+StartupWMClass=pcem
+

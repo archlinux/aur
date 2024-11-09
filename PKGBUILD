@@ -2,17 +2,23 @@
 # Based on Aaron Paden <aaronbpaden@gmail.com> PKGBUILD for pcem
 pkgname=pcem-git
 _pkgname=pcem
-pkgver=17.r197.g33a4bc6c
+pkgver=17.r206.g803ccef1
 pkgrel=1
 pkgdesc="Emulator for various IBM PC computers and clones - development version"
 url="http://pcem-emulator.co.uk/"
 arch=('x86_64' 'i686')
-license=('GPL2')
-depends=('wxgtk3' 'openal' 'sdl2' 'alsa-lib')
+license=('GPL-2.0-or-later')
+depends=('wxgtk3' 'openal' 'sdl2' 'alsa-lib' 'libpcap')
 makedepends=('git' 'ninja' 'meson' 'cmake')
 conflicts=('pcem')
-source=("git+https://github.com/sarah-walker-pcem/pcem.git")
-sha256sums=('SKIP')
+source=("git+https://github.com/sarah-walker-pcem/pcem.git"
+        pcem.desktop
+        pcem.png
+        COPYING)
+sha256sums=('SKIP'
+            '8a76c42335a8d102b12a3c12fbcb5969106270a7a04f07f9eff6d9cf5b13b504'
+            '3d241d236527fc01ee8a284d201b95d9ee937f18aa4a4b20a5534853381472e1'
+            '61b65d8be67f0acb3a370ce0826c073b7c54a5c08b502ed6f7ffec94a300477f')
 
 pkgver() {
   cd "$_pkgname"
@@ -31,6 +37,10 @@ build() {
 package() {
   cd "${srcdir}/pcem/build"
   DESTDIR="$pkgdir" ninja install
+  # Based on pcem stable PKGBUILD
+  install -Dm644 ../../COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
+  install -Dm644 ../../pcem.desktop "$pkgdir/usr/share/applications/pcem.desktop"
+  install -Dm644 ../../pcem.png "$pkgdir/usr/share/pcem"
 }
 
 # vim:set ts=2 sw=2 et:
