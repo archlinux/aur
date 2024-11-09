@@ -1,0 +1,13 @@
+pkgbase = python-gmplot-git
+	pkgdesc = A matplotlib-like interface to plot data with Google Maps
+	pkgver = 1.4.1
+	pkgrel = 1
+	url = https://github.com/gmplot/gmplot
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	source = git+https://github.com/gmplot/gmplot.git#tag=1.4.1
+	sha256sums = SKIP
+
+pkgname = python-gmplot-git
