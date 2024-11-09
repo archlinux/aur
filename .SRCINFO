@@ -1,6 +1,6 @@
 pkgbase = r-cytokernel
 	pkgdesc = Differential expression using kernel-based score test
-	pkgver = 1.10.0
+	pkgver = 1.12.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/cytoKernel
 	arch = x86_64
@@ -21,7 +21,7 @@ pkgbase = r-cytokernel
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/cytoKernel_1.10.0.tar.gz
-	sha256sums = c68f6f58ff7e1fc5fc02d80ad9fc7b2095e6f2f7fd9d82e1f715180675d7ec5f
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/cytoKernel_1.12.0.tar.gz
+	sha256sums = 3a39c2277516bb326f3df2aae69159ebaed475a2afcc7d8ef26ac3f1a4ed3e50
 
 pkgname = r-cytokernel
