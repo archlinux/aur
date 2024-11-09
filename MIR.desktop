@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=Madness Interactive Reloaded
+Comment=Moddable action video game based on Madness Combat
+Path=/usr/share/MIR
+Exec=/usr/share/MIR/MIR
+Icon=MIR
+Categories=Game;

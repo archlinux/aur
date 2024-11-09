@@ -1,0 +1,38 @@
+diff --git a/src/MadnessInteractiveReloaded/MIR.csproj b/src/MadnessInteractiveReloaded/MIR.csproj
+index 7c6b41a..94a2564 100644
+--- a/src/MadnessInteractiveReloaded/MIR.csproj
++++ b/src/MadnessInteractiveReloaded/MIR.csproj
+@@ -82,32 +82,8 @@
+ 	</ItemGroup>
+ 	
+ 	<ItemGroup>
+-		<None Update="avcodec-59.dll">
+-			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+-		</None>
+-		<None Update="avdevice-59.dll">
+-			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+-		</None>
+-		<None Update="avformat-59.dll">
+-			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+-		</None>
+-		<None Update="avutil-57.dll">
+-			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+-		</None>
+ 		<None Update="NOTICE.txt">
+ 			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+ 		</None>
+-		<None Update="openAL32.dll">
+-			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+-		</None>
+-		<None Update="nfd.dll">
+-			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+-		</None>
+-		<None Update="swresample-4.dll">
+-			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+-		</None>
+-		<None Update="swscale-6.dll">
+-			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+-		</None>
+ 	</ItemGroup>
+ </Project>
+\ No newline at end of file

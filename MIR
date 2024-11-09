@@ -1,0 +1,19 @@
+#!/bin/sh
+
+# convert --input and --output paths to absolute
+args=()
+while [ -n "$1" ]; do
+    args+=("$1")
+    case "$1" in
+        --input | --output)
+            shift
+            if [ -z "$1" ]; then
+                break
+            fi
+            args+=("$(realpath -m "$1")")
+    esac
+    shift
+done
+
+cd /usr/share/MIR
+./MIR ${args[@]}
