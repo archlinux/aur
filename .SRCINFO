@@ -1,6 +1,6 @@
 pkgbase = sciteco-git
 	pkgdesc = Advanced TECO dialect and interactive screen editor based on Scintilla
-	pkgver = r897.fe62b24
+	pkgver = r1085.b016f78
 	pkgrel = 1
 	url = https://github.com/rhaberkorn/sciteco
 	arch = i686
