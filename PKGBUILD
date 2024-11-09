@@ -1,7 +1,8 @@
 # Contributor: Myt1 <MYT1 @ QQ.com>
 
 pkgname=fcitx5-pinyin-sougou-dict-git
-pkgver=20241031.r1.geeb5373
+_pkgname=sougouscel
+pkgver=20241110.r2.gef10c01
 pkgrel=1
 pkgdesc="Fcitx5-pinyin搜狗官网词库全部词量"
 arch=('any')
@@ -12,12 +13,19 @@ source=(git+https://github.com/maoyaotang12/sougouscel.git)
 sha512sums=('SKIP')
 
 pkgver() {
-    cd sougouscel
+    cd ${_pkgname}
     git describe --long --tags --abbrev=7 | sed 's/^v//;s/-/.r/;s/-/./'
 }
 
+prepare(){
+    cd ${_pkgname}/scel
+    chmod +x txt.sh
+    ./txt.sh
+    rm -r txt.sh
+}
+
 build() {
-	cat sougouscel/*.txt >sougouciku.txt
+	cat ${_pkgname}/scel/*.txt > sougouciku.txt
 	libime_pinyindict sougouciku.txt sougouciku.dict
 }
 
