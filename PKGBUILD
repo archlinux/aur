@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=easier
-_pkgver=1.10.0
+_pkgver=1.12.0
 pkgname=r-${_pkgname,,}
-pkgver=1.10.0
+pkgver=1.12.0
 pkgrel=1
 pkgdesc='Estimate Systems Immune Response from RNA-seq data'
 arch=('any')
@@ -41,7 +41,7 @@ optdepends=(
   r-viper
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('a245228e1b2f466bc7603c6e13badac78f7cd610f0270035bf7905b2b56e8001')
+sha256sums=('a202697c988d90e4e7d36700c393df67695f0620e087671d8f35b5123b1941dc')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"

@@ -1,6 +1,6 @@
 pkgbase = r-easier
 	pkgdesc = Estimate Systems Immune Response from RNA-seq data
-	pkgver = 1.10.0
+	pkgver = 1.12.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/easier
 	arch = any
@@ -32,7 +32,7 @@ pkgbase = r-easier
 	optdepends = r-summarizedexperiment
 	optdepends = r-testthat
 	optdepends = r-viper
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/easier_1.10.0.tar.gz
-	sha256sums = a245228e1b2f466bc7603c6e13badac78f7cd610f0270035bf7905b2b56e8001
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/easier_1.12.0.tar.gz
+	sha256sums = a202697c988d90e4e7d36700c393df67695f0620e087671d8f35b5123b1941dc
 
 pkgname = r-easier
