@@ -1,14 +1,14 @@
 pkgbase = xdg-ninja
 	pkgdesc = A shell script which checks your $HOME for unwanted files and directories
 	pkgver = 0.2.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/b3nj5m1n/xdg-ninja
 	arch = any
 	license = MIT
 	depends = jq
 	optdepends = glow: for rendering markdown in the terminal
 	options = !strip
-	source = xdg-ninja-0.2.0.2.tar.gz::https://github.com/b3nj5m1n/xdg-ninja/archive/v0.2.0.2.tar.gz
+	source = https://github.com/b3nj5m1n/xdg-ninja/archive/v0.2.0.2/xdg-ninja-0.2.0.2.tar.gz
 	sha256sums = 6adfe289821b6b5e3778130e0d1fd1851398e3bce51ddeed6c73e3eddcb806c6
 
 pkgname = xdg-ninja
