@@ -1,6 +1,6 @@
 pkgbase = r-mosaics
 	pkgdesc = MOSAiCS (MOdel-based one and two Sample Analysis and Inference for ChIP-Seq)
-	pkgver = 2.42.0
+	pkgver = 2.44.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/mosaics
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = r-mosaics
 	depends = perl
 	optdepends = r-mosaicsexample
 	optdepends = r-parallel
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/mosaics_2.42.0.tar.gz
-	sha256sums = b2d1a98f602bd422e8cf295a44b0beefe949729ee627f3957f9f5bf4c3e70b00
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/mosaics_2.44.0.tar.gz
+	sha256sums = cc3efcbeadc0a23821915337a784cb2852f1c4254fad110266109a533fb65838
 
 pkgname = r-mosaics
