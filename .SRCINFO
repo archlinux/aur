@@ -1,6 +1,6 @@
 pkgbase = android-armv7a-eabi-libopenmpt
 	pkgdesc = A library to render tracker music to a PCM audio stream (Android armv7a-eabi)
-	pkgver = 0.7.9
+	pkgver = 0.7.11
 	pkgrel = 1
 	url = https://lib.openmpt.org/libopenmpt/
 	arch = any
@@ -17,7 +17,7 @@ pkgbase = android-armv7a-eabi-libopenmpt
 	options = !buildflags
 	options = staticlibs
 	options = !emptydirs
-	source = https://lib.openmpt.org/files/libopenmpt/src/libopenmpt-0.7.9+release.autotools.tar.gz
-	md5sums = 349330b3a923414ed3dd1b8490c6d406
+	source = https://lib.openmpt.org/files/libopenmpt/src/libopenmpt-0.7.11+release.autotools.tar.gz
+	md5sums = ef91eee1c24ddb76e509d3d3ca36c4d6
 
 pkgname = android-armv7a-eabi-libopenmpt
