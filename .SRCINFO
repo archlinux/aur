@@ -45,6 +45,7 @@ pkgbase = shadps4-git
 	source = shadps4-sirit::git+https://github.com/shadps4-emu/sirit.git
 	source = shadps4-tracy::git+https://github.com/shadps4-emu/tracy.git
 	source = zydis::git+https://github.com/zyantific/zydis.git
+	source = bb-hack.patch
 	b2sums = SKIP
 	b2sums = SKIP
 	b2sums = SKIP
@@ -52,6 +53,7 @@ pkgbase = shadps4-git
 	b2sums = SKIP
 	b2sums = SKIP
 	b2sums = SKIP
+	b2sums = 8b96dc4fb2598e8747559a04cde3bb1c669cf563196567105b5871ecb10d3c45bb0e39c24327a5e2c9a6c00d8bda3ca989a3dbb3c39c65fb6b9ae9f48023a100
 
 pkgname = shadps4-git
 	depends = crypto++>=8.9

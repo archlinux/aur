@@ -53,6 +53,7 @@ source=(
 	"$_pkgname-sirit::git+https://github.com/shadps4-emu/sirit.git"
 	"$_pkgname-tracy::git+https://github.com/shadps4-emu/tracy.git"
 	"zydis::git+https://github.com/zyantific/zydis.git"
+	"bb-hack.patch"
 )
 b2sums=(
 	'SKIP'
@@ -62,6 +63,7 @@ b2sums=(
 	'SKIP'
 	'SKIP'
 	'SKIP'
+	'8b96dc4fb2598e8747559a04cde3bb1c669cf563196567105b5871ecb10d3c45bb0e39c24327a5e2c9a6c00d8bda3ca989a3dbb3c39c65fb6b9ae9f48023a100'
 )
 
 pkgver() {
@@ -78,6 +80,7 @@ prepare() {
 	git config submodule.externals/tracy.url ../$_pkgname-tracy
 	git config submodule.externals/zydis.url ../zydis
 	git -c protocol.file.allow=always submodule update
+	# patch -Np1 < ../bb-hack.patch
 }
 
 build() {
