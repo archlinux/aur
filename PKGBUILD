@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=epigenomix
-_pkgver=1.44.0
+_pkgver=1.46.0
 pkgname=r-${_pkgname,,}
-pkgver=1.44.0
+pkgver=1.46.0
 pkgrel=1
 pkgdesc='Epigenetic and gene transcription data normalization and integration with mixture models'
 arch=('any')
@@ -23,7 +23,7 @@ depends=(
   r-summarizedexperiment
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('7388e9b32fdeb0d0c108877b97377ac6ac9d1d85ede030af55c9e045cbe734b0')
+sha256sums=('9d3054cdd1caa2ebc17cfd5942deb8ba67eff4e83ef2cbb59a7e5eef1fd1ab89')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
