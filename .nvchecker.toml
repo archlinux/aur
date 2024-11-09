@@ -1,0 +1,4 @@
+[jupyter_contrib_core]
+source = "github"
+github = "jupyter-contrib/jupyter_contrib_core"
+use_max_tag = "true"
