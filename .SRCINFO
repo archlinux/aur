@@ -1,6 +1,6 @@
 pkgbase = r-mpranalyze
 	pkgdesc = Statistical Analysis of MPRA data
-	pkgver = 1.22.0
+	pkgver = 1.24.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/MPRAnalyze
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = r-mpranalyze
 	depends = r-progress
 	depends = r-summarizedexperiment
 	optdepends = r-knitr
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/MPRAnalyze_1.22.0.tar.gz
-	sha256sums = a484e329230dd91822fdb4f50cfc242fe89a5e665cc2b139120f78328f835cbf
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/MPRAnalyze_1.24.0.tar.gz
+	sha256sums = ee7c753495b27be1f94eec324318bc06105b1638bd53392d1fc3a5d3d8acb076
 
 pkgname = r-mpranalyze
