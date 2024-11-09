@@ -1,7 +1,7 @@
 # Maintainer: Adrian Baumgart <adrian at abmgrt dot dev>
 
 pkgname=keyguard
-pkgver=20240814
+pkgver=20241102
 pkgrel=1
 pkgdesc="Alternative client for the Bitwarden platform, created to provide the best user experience possible."
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('custom')
 depends=()
 makedepends=('jdk17-openjdk' 'dpkg')
 source=("https://github.com/AChep/keyguard-app/archive/refs/tags/r${pkgver}.tar.gz")
-sha256sums=('71def31dd0a0b78465a2205d296e42782a7db79b9b87101694d0b15291dddb1b')
+sha256sums=('551f5dfe991695253329984925c404558ec7389bf443584b936ff3fc9a99c3cd')
 options=('!strip' '!debug')
 
 
