@@ -1,8 +1,8 @@
 # Maintainer: Neko_Rikka <yjzyl9008 at gmail dot com>
 
 pkgname=python-sssekai-git
-pkgver=r113.661ad80
-pkgrel=2
+pkgver=r129.40fa4b9
+pkgrel=1
 pkgdesc="About Project SEKAI Asset Utility."
 arch=('x86_64')
 url="https://github.com/mos9527/sssekai"
@@ -36,8 +36,7 @@ depends=(
   'python-wannacri-git'
 )
 checkdepends=('python-pytest' 'python-pytest-cov')
-makedepends=('git')
-
+makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools' 'git')
 source=("git+https://github.com/mos9527/sssekai.git")
 md5sums=('SKIP')
 
@@ -48,13 +47,12 @@ pkgver() {
 
 check() {
   cd sssekai
-  echo -e "\e[31mNote: The test may take a long time, please be patient...\e[0m"
   pytest -v --cov || true
 }
 
 package() {
   cd sssekai
   python setup.py install --root="$pkgdir/" --prefix=/usr --optimize=1
-  install -Dm 644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-  install -Dm 644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README"
+  install -Dm0644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm0644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README"
 }
