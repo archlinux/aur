@@ -1,0 +1,25 @@
+pkgbase = gr-smart_meters-git
+	pkgdesc = GNU Radio smart meters block (RECESSIM)
+	pkgver = 3.10
+	pkgrel = 1
+	url = https://github.com/BitBangingBytes/gr-smart_meters
+	arch = x86_64
+	arch = aarch64
+	license = GPL
+	makedepends = git
+	makedepends = cmake
+	makedepends = doxygen
+	depends = gnuradio
+	depends = boost
+	depends = graphviz
+	depends = pybind11
+	depends = gr-pdu_utils
+	depends = gr-timing_utils
+	depends = gr-fhss_utils
+	optdepends = gr-fosphor: to view input spectrum
+	optdepends = python-gmplot: plot GPS data on Google Maps
+	provides = gr-smart_meters
+	source = git+https://github.com/BitBangingBytes/gr-smart_meters.git
+	sha256sums = SKIP
+
+pkgname = gr-smart_meters-git
