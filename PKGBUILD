@@ -2,7 +2,7 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=combi
-_pkgver=1.16.0
+_pkgver=1.18.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -34,8 +34,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('f1c083729463ef3f2eaeffc3324aa1c5')
-b2sums=('042c423a1c4252b6dcdcccf388c0cbd9c0b432be6961a094e8ca4b9fa6e1fa4431049c823ff53a9d9e08e37d0a9139c5daee7a6e3008e9b5de48169ed038a08d')
+md5sums=('f5df09ca854e0077d792b7cebc0f7d12')
+b2sums=('9277a4c7a577fdf7d8e97bf4eef0e031e7e5f3871d25c24cf6247eacfbf712a64b7902dc8bf322aefb2dd25357cddbfd2b163547f6f6343d1663b9dc9f3b1981')
 
 build() {
   mkdir build
