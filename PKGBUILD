@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=CTSV
-_pkgver=1.6.0
+_pkgver=1.8.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -25,8 +25,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('6e93a12d20ccf03fd34988d45edfae1b')
-b2sums=('b91d05f0d1d2c58555ce62cc35f8b7b7e8f9eac29ae18ce8dad1e8a91d3fe50a64075c1e1c0431acf1e08bb6b31b64889bdd2cd2dbae70e0000a7f0bed9ac43e')
+md5sums=('d83d4f38dedef85ddf27d656795c72b2')
+b2sums=('998bc1bc2dde0d70b5c51c86c25c6252ad71907679dd4637d24a7297743ca72f962a8f6846f82d68f60a70bc682503c01b67e1e8de48a42c089d3a8f6742fd76')
 
 build() {
   mkdir build
