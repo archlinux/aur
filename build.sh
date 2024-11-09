@@ -8,7 +8,7 @@ docker run \
     --workdir /srv \
     docker.io/archlinux:latest -c '\
         pacman -Sy --noconfirm --needed archlinux-keyring && \
-        pacman -Syu --noconfirm pacman-contrib pacman git sudo binutils go debugedit && \
+        pacman -Syu --noconfirm pacman-contrib pacman git sudo binutils go debugedit fakeroot && \
         git config --global --add safe.directory /srv && \
         git clean -fdx && \
         chmod a+w PKGBUILD .SRCINFO . && \
