@@ -5,7 +5,7 @@
 _android_arch=x86
 
 pkgname=android-${_android_arch}-libnl
-pkgver=3.10.0
+pkgver=3.11.0
 pkgrel=1
 arch=('any')
 pkgdesc="Library for applications dealing with netlink sockets (Android ${_android_arch})"
@@ -16,7 +16,7 @@ depends=('android-ndk')
 makedepends=('android-configure')
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("https://github.com/thom311/libnl/releases/download/libnl${pkgver//./_}/libnl-${pkgver}.tar.gz"{,.sig})
-md5sums=('504f3929a3d878fcaccc8a19f1a5f449'
+md5sums=('0a5eb82b494c411931a47638cb0dba51'
          'SKIP')
 validpgpkeys=('49EA7C670E0850E7419514F629C2366E4DFC5728') # Thomas Haller
 
