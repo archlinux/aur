@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=Nebulosa
-_pkgver=1.14.0
+_pkgver=1.16.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -32,8 +32,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('74449a659e99fe20595c0cf20a19cd3c')
-b2sums=('5c9ecbb64e8fec57572b9ce131cd74a7e48d5eee1542d8725e05e5a7186a77dcdeac6725027ef1db89fedab98869902cbe8c54aebdd8965f26459f333aa4f81f')
+md5sums=('7693058a1cf85b5d099559b2639cde2c')
+b2sums=('8d192070e119c0241c0e7111b9af444b1545dfa91f9e0662f78513a9f31696c2a34518837a893f7e346ed6f7f76beccbec485c727211a0d67c5b21c48d8fef42')
 
 build() {
   mkdir build
