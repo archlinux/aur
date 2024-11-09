@@ -1,13 +1,13 @@
 # Maintainer: SelfRef <arch@selfref.dev>
 
 # INFO: Upstream binary is built with X11 support thus X11 dependencies are required.
-#       To built version for Wayland only either `deskflow` or `deskflow-git` package.
+#       To built version for Wayland only use either `deskflow` or `deskflow-git` package.
 
 _basename=deskflow
 pkgname=${_basename}-bin
-pkgver=1.17.0
-pkgrel=4
-pkgdesc="Deskflow lets you share one mouse and keyboard between multiple computers (binary version)"
+pkgver=1.17.1
+pkgrel=1
+pkgdesc="Deskflow lets you share one mouse and keyboard between multiple computers"
 arch=('x86_64')
 url="https://deskflow.org/"
 license=('GPL-2.0')
@@ -24,6 +24,7 @@ depends=(
 	'qt6-base'
 	'gdk-pixbuf2'
 	'pugixml'
+	'tomlplusplus'
 	# 'libx11' # dependency of libxtst
 	# 'libxext' # dependency of libxtst
 	# 'libxi' # dependency of libxtst
@@ -33,11 +34,11 @@ optdepends=(
 	'gtk3: GTK file/dir picker'
 )
 provides=("$_basename")
-conflicts=("$_basename" 'synergy')
-source=("https://github.com/deskflow/deskflow/releases/download/v$pkgver/deskflow-${pkgver}.0-2_fedora_40_amd64.rpm")
-sha256sums=('35600106827fb24dce0efdc28f252a79fa45ad7108945cd8a0e7f719e5cc4767')
+conflicts=("$_basename")
+source=("https://github.com/deskflow/deskflow/releases/download/v$pkgver/deskflow-$pkgver-arch-x86_64.pkg.tar.zst")
+sha256sums=('eae8163c59ce8ac991eb1a9f59cb123b99ee350176693314e3489247397ef39b')
 
 package() {
 	mkdir "$pkgdir"/usr/
-	cp -r usr/bin usr/share "$pkgdir"/usr/
+	cp -r usr/* "$pkgdir"/usr/
 }
