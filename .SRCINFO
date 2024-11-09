@@ -1,0 +1,16 @@
+pkgbase = python-zenlib-git
+	pkgdesc = Useful python decorators and utilities
+	pkgver = 2.3.2.r0.g09e2cb0
+	pkgrel = 1
+	url = https://github.com/desultory/zenlib
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	source = git+https://github.com/desultory/zenlib
+	sha256sums = SKIP
+
+pkgname = python-zenlib-git
