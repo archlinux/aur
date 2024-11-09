@@ -2,7 +2,7 @@
 
 pkgrealname=webcamoid
 pkgname=webcamoid-git
-pkgver=9.2.0.r0.gbecae6d61
+pkgver=9.2.3.r20.g8c8abcb26
 pkgrel=1
 pkgdesc="Webcamoid is a full featured webcam capture application."
 url='https://webcamoid.github.io/'
@@ -50,7 +50,7 @@ source=("git+https://github.com/${pkgrealname}/${pkgrealname}.git")
 md5sums=('SKIP')
 
 pkgver() {
-    cd "$srcdir/${pkgrealname}"
+    cd "${srcdir}/${pkgrealname}"
     (
         set -o pipefail
         git describe --long --tags --match '[0-9.]*' 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' ||
@@ -59,16 +59,19 @@ pkgver() {
 }
 
 build() {
-    cd "$srcdir/${pkgrealname}"
+    cd "${srcdir}/${pkgrealname}"
+
     cmake \
+        -S . \
+        -B build \
         -DCMAKE_BUILD_TYPE=Release \
         -DCMAKE_INSTALL_PREFIX=/usr \
-        -DDAILY_BUILD=1 \
-        .
-    make $MAKEFLAGS
+        -DDAILY_BUILD=ON
+    make -C build $MAKEFLAGS
 }
 
 package() {
-    cd "$srcdir/${pkgrealname}"
-    make DESTDIR="${pkgdir}" install
+    cd "${srcdir}/${pkgrealname}"
+
+    make -C build DESTDIR="${pkgdir}" install
 }
