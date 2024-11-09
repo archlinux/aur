@@ -1,12 +1,12 @@
 pkgname=openmodelica
 pkgver=1.24.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Open-source Modelica-based modeling and simulation environment"
 url="https://www.openmodelica.org"
 _giturl="https://github.com/OpenModelica/OpenModelica.git"
 license=('OSMC-PL')
 arch=('x86_64')
-depends=('java-environment' 'lapack' 'openscenegraph' 'boost-libs' 'qt6-webengine' 'qt6-svg' 'qt6-tools')
+depends=('java-environment' 'lapack' 'openscenegraph' 'boost-libs' 'qt6-webengine' 'qt6-svg' 'qt6-tools' 'qt6-5compat')
 makedepends=('gcc-fortran' 'cmake' 'git' 'boost')
 options=('!lto')
 source=("${pkgname}::git+${_giturl}#tag=v${pkgver}")
