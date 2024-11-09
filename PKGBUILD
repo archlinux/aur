@@ -12,7 +12,7 @@ license=(MIT)
 makedepends=(git)
 provides=("$_pkgname")
 source=("$_pkgname::git+$url.git" example.c)
-sha256sums=(SKIP SKIP)
+sha256sums=(SKIP 53f34030df94040561b799d350b5540d6029d251b55f01d3ed97064fa2d06614)
 
 pkgver() {
 	printf %s.%s.g%s "$_pkgver" \
@@ -20,9 +20,7 @@ pkgver() {
 	"$(git -C "$srcdir/$_pkgname" rev-parse --short HEAD)"
 }
 
-prepare() {
-	ln -ft "$_pkgname" example.c
-}
+prepare() { ln -ft "$_pkgname" example.c; }
 
 build() { make -C "$srcdir/$_pkgname"; }
 
