@@ -1,15 +1,15 @@
 # Maintainer: Levi Zim (kxxt) <rsworktech@outlook.com>
 _pkgname=aya-tool
 pkgname=$_pkgname-git
-pkgver=0.1.0+aya.0.12.0.r135.g3d57d35
-pkgrel=2
+pkgver=0.1.0+aya.0.13.1.r3.ge3bfeb9
+pkgrel=1
 pkgdesc="tool for inspection and simple manipulation of eBPF programs and maps"
 arch=(x86_64 aarch64 riscv64)
 url="https://aya-rs.dev/book/aya/aya-tool/"
 conflicts=('aya-tool-bin' 'aya-tool')
 provides=('aya-tool')
 license=('MIT OR Apache-2.0')
-depends=('rust-bindgen' 'bpftool')
+depends=('rust-bindgen' 'bpf')
 makedepends=('cargo' 'git' 'jq')
 source=(
     # Source
