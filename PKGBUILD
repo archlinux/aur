@@ -1,7 +1,7 @@
-# Maintainer: Yohann D'Anello <ynerant@crans.org>
+# Maintainer: Emmy D'Anello <emmy@luemy.eu>
 
 pkgname=python-spacy-entity-linker
-pkgver=1.0
+pkgver=1.0.3
 pkgrel=1
 pkgdesc='Linked Entity Pipeline for spaCy'
 url='https://github.com/egerber/spacy-entity-linker'
@@ -10,7 +10,7 @@ makedepends=(python-setuptools)
 license=(MIT)
 arch=(any)
 source=("https://github.com/egerber/spaCy-entity-linker/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('9ad0551b3e2ee37b384c3cbfb73b14c5776c2dda1a789160ce55aef21db13eed')
+sha256sums=('c984c8286c98f24a0ad2926d84496343ee5a66f1a08b2efdd7aeec97af486f78')
 
 build() {
 	cd spaCy-entity-linker-${pkgver}

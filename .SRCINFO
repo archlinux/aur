@@ -1,13 +1,13 @@
 pkgbase = python-spacy-entity-linker
 	pkgdesc = Linked Entity Pipeline for spaCy
-	pkgver = 1.0
+	pkgver = 1.0.3
 	pkgrel = 1
 	url = https://github.com/egerber/spacy-entity-linker
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
 	depends = python-spacy
-	source = https://github.com/egerber/spaCy-entity-linker/archive/refs/tags/v1.0.tar.gz
-	sha256sums = 9ad0551b3e2ee37b384c3cbfb73b14c5776c2dda1a789160ce55aef21db13eed
+	source = https://github.com/egerber/spaCy-entity-linker/archive/refs/tags/v1.0.3.tar.gz
+	sha256sums = c984c8286c98f24a0ad2926d84496343ee5a66f1a08b2efdd7aeec97af486f78
 
 pkgname = python-spacy-entity-linker
