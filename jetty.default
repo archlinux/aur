@@ -1,12 +1,12 @@
-#JAVA_HOME=${JAVA_HOME:-/usr/lib/jvm/java-17-openjdk}
+#JAVA_HOME=${JAVA_HOME:-/usr/lib/jvm/java-23-openjdk}
 #JAVA=$JAVA_HOME/bin/java
 #JAVA_OPTIONS=
 
 #JETTY_ARGS=
 JETTY_PORT=8080
-JETTY_USER=jetty11
-JETTY_HOME=/usr/share/jetty11
-JETTY_PID=/run/jetty11/jetty.pid
+JETTY_USER=jetty
+JETTY_HOME=/usr/share/jetty
+JETTY_PID=/run/jetty/jetty.pid
 
 # Autodetected variables:
 #JETTY_BASE=$JETTY_HOME

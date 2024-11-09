@@ -3,8 +3,8 @@
 # Contributor: Yegorius <yegorius@domic.us>
 # Contributor: Sergey Shatunov <me@prok.pw>
 
-pkgname=jetty11
-pkgver=11.0.19
+pkgname=jetty
+pkgver=12.0.15
 pkgrel=1
 pkgdesc="Jetty is a pure Java-based HTTP server and Java Servlet container"
 arch=('any')
@@ -20,32 +20,33 @@ source=(https://repo1.maven.org/maven2/org/eclipse/jetty/jetty-home/$pkgver/$_di
         jetty.sysusers
         jetty.tmpfiles)
 
-sha256sums=('089a4949e22e14d89db82a624a86b9daf6089dc5a7e7fb4c120315b25242732d'
+sha256sums=('a5b31a563c73725948286441fe5447371fa76bbc6c7b3154b86a560def2fb0bd'
             'SKIP'
-            '4517310a4ed94248403e68b96b1e984d39e7073c6cd1dd9e312d00b9f4d2ca0f'
-            'aef27b34d181f0f31a023e4b31c10347c711d0e45b89b9702e501709bd07689e'
-            '56c318ce307726ffd667ec6024e1488266e70d0a1ed3802a2257e4edbbb0e61c'
-            '425d9c157753129e7d003652ecbb746feb5591ba1a9abf0b4a8428c91b1511da'
-            '3458ab5158f32be90a24c4b005af354403272ad043ab79842b8879f0a7aa57c5')
+            '3a2b6060474bd26dbf18a870f8faec3ef76a629680bbc65588f1e61db2cc14c7'
+            'da0402440e0a3b66e55387700b2c178c294dc65cc4a7bd079c622343845adecb'
+            'b27ef0342c3b22fbf1e3e7d104e23670b53eab9b648c1882cf295bd82ccadc66'
+            '5664891275f3e489f85efd85b9740e36265f5ed3cf9512d245c500bdc31b568a'
+            'a69fa966c33343cb42394d80796ebfb29f5325c7610d8214657cdd17c58cc8d3')
+
 validpgpkeys=('5989BAF76217B843D66BE55B2D0E1FB8FE4B68B4') # Joakim Erdfelt <joakim.erdfelt@gmail.com>
 
 
 package() {
     cd "$srcdir/$_distname"
 
-    install -dm2750 "$pkgdir/etc/$pkgname"
+    install -dm2755 "$pkgdir/etc/$pkgname"
     install -dm755 "$pkgdir/usr/bin"
-    install -dm2750 "$pkgdir/var/log/$pkgname"
-    install -dm2750 "$pkgdir/var/lib/$pkgname/webapps"
+    install -dm2755 "$pkgdir/var/log/$pkgname"
+    install -dm2755 "$pkgdir/var/lib/$pkgname/webapps"
 
     install -Dm755 bin/jetty.sh "$pkgdir/usr/share/$pkgname/bin/jetty.sh"
     cp -r etc/* "$pkgdir/etc/$pkgname"
-    find "$pkgdir/etc/$pkgname" -type f -exec chmod 640 {} + -o -type d -exec chmod 2750 {} +
+    find "$pkgdir/etc/$pkgname" -type f -exec chmod 640 {} + -o -type d -exec chmod 2755 {} +
 
     cp -r {lib,modules,start.jar,README.adoc} "$pkgdir/usr/share/$pkgname/"
-    install -dm2750 "$pkgdir/etc/$pkgname/start.d"
-    install -dm2750 "$pkgdir/etc/$pkgname/resources"
-    install -dm2750 "$pkgdir/var/lib/$pkgname/webapps"
+    install -dm2755 "$pkgdir/etc/$pkgname/start.d"
+    install -dm2755 "$pkgdir/etc/$pkgname/resources"
+    install -dm2755 "$pkgdir/var/lib/$pkgname/webapps"
 
     ln -s /etc/$pkgname "$pkgdir/usr/share/$pkgname/etc"
     ln -s etc/start.d "$pkgdir/usr/share/$pkgname/start.d"
