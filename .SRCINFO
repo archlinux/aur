@@ -1,6 +1,6 @@
 pkgbase = r-slalom
 	pkgdesc = Factorial Latent Variable Modeling of Single-Cell RNA-Seq Data
-	pkgver = 1.26.0
+	pkgver = 1.28.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/slalom
 	arch = x86_64
@@ -20,7 +20,7 @@ pkgbase = r-slalom
 	optdepends = r-rmarkdown
 	optdepends = r-scater
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/slalom_1.26.0.tar.gz
-	sha256sums = 3db54699d3e453fd2261393ead665ff7bf684f35d90ef03f0aefccb3b030a04e
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/slalom_1.28.0.tar.gz
+	sha256sums = c02439d4bc79b7547401134fa57b152c3233c3c0f5c840af61cfbb5db614a983
 
 pkgname = r-slalom
