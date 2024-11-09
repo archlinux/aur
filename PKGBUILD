@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=vsclust
-_pkgver=1.6.0
+_pkgver=1.8.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -31,8 +31,8 @@ optdepends=(
   r-yaml
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('82171a61a9b29573ebe5c4987120fd11')
-b2sums=('bbedd1841c8272acf0603f516fed20543177af241e72ffdb944a64c57f7a53949c567ea7792d9aabd4ae39f58024ab8860f9e2b4e5eac36a95f5752615f03aef')
+md5sums=('5c1a8e08525ed6e692ef423a14d5e9e9')
+b2sums=('3e9e653f98d2ac38f94b62d9d7c93503d689df52ae55b46cecfde6abb6d674a63f39a29c15135f5a11649fb3525e179c0a40421e808ab47b8b2cdc22f5454165')
 
 build() {
   mkdir build
