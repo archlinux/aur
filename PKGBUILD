@@ -6,10 +6,10 @@
 # Contributor: Wilhelm Schuster <wilhelm [aT] wilhelm [.] re>
 # Contributor: The_Decryptor
 
-_commit=f33e03130d58105898557d2b9be59fa86dfe7b5d
+_commit=ad625e659459f17b95088b12263d58913bd3c86b
 pkgname=h2o-git
-pkgver=2.2.0.8071
-pkgrel=3
+pkgver=2.2.0.8076
+pkgrel=1
 pkgdesc="Optimized HTTP server with support for HTTP/1.x and HTTP/2"
 arch=('i686' 'x86_64' 'aarch64')
 # if you want websocket support, you'll also need aur/wslay
@@ -23,7 +23,7 @@ options=('lto')
 source=("git+https://github.com/h2o/h2o.git#commit=${_commit}?signed/"
 #        "neverbleed-fix-when-lacking-engines.patch"
 	'h2o.service')
-sha256sums=('6d28fbe5818a9c0c3147f3c25d1948f079797474a37a9ca63d7499ce7d9e4238'
+sha256sums=('e4e2eea704f9db13f13583a78619eea4c97e8b230049f8cb98b7943c8a3a399f'
             '7fccdeb1a89134b48674764dc243f8967eb1234679e401af93e210fbf0934b62')
 backup=('etc/h2o.conf')
 provides=('h2o' 'libh2o')
