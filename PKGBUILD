@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=satuRn
-_pkgver=1.12.0
+_pkgver=1.14.0
 pkgname=r-${_pkgname,,}
-pkgver=1.12.0
+pkgver=1.14.0
 pkgrel=1
 pkgdesc='Scalable Analysis of Differential Transcript Usage for Bulk and Single-Cell RNA-sequencing Applications'
 arch=('any')
@@ -32,7 +32,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('2827eaf922895ad7b0fa86f2e1d3c743dbcea5cf1696fa813988a7202459b40e')
+sha256sums=('35cdf3a530f6c4fc385671510f293066962d99d5e47269155bf1059aef07d065')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
