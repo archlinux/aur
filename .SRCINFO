@@ -1,6 +1,6 @@
 pkgbase = r-celltrails
 	pkgdesc = Reconstruction, visualization and analysis of branching trajectories
-	pkgver = 1.22.0
+	pkgver = 1.24.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/CellTrails
 	arch = any
@@ -28,7 +28,7 @@ pkgbase = r-celltrails
 	optdepends = r-runit
 	optdepends = r-scater
 	optdepends = r-scran
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/CellTrails_1.22.0.tar.gz
-	sha256sums = 840ae0591f49c878876796199a0143676fb86a9214d6fb4ae23fa9569cff0a5f
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/CellTrails_1.24.0.tar.gz
+	sha256sums = ca1a13bd7a2ff3435661a8d89feb8e17ef9930f982c152ee7809d62c07c18b87
 
 pkgname = r-celltrails
