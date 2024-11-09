@@ -1,7 +1,7 @@
 # Maintainer: MYT1 <MYT1 @ QQ COM>
 pkgname=bilibili-linux-git
 _pkgname=bilibili-linux
-pkgver=r223.d378029
+pkgver=r226.2c0514b
 _electronversion=33
 _nodeversion=23
 pkgrel=1
@@ -39,6 +39,7 @@ sha256sums=('SKIP'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 
 pkgver() {
+    cd "${srcdir}/${_pkgname}"
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
