@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=epidecodeR
-_pkgver=1.12.0
+_pkgver=1.14.0
 pkgname=r-${_pkgname,,}
-pkgver=1.12.0
+pkgver=1.14.0
 pkgrel=1
 pkgdesc='epidecodeR: a functional exploration tool for epigenetic and epitranscriptomic regulation'
 arch=('any')
@@ -25,7 +25,7 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('1ffe36b084b6623f36ec5c497bc5ba5ab1e049e24c53e653d4ef8f44b7acad3e')
+sha256sums=('633ad790ca0d120929a5fdcc184ad6c94d10737ec183899e8f1589acbc73c647')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
