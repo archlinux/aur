@@ -1,6 +1,6 @@
 pkgbase = android-x86-libheif
 	pkgdesc = An HEIF and AVIF file format decoder and encoder (Android x86)
-	pkgver = 1.18.2
+	pkgver = 1.19.2
 	pkgrel = 1
 	url = https://github.com/strukturag/libheif
 	arch = any
@@ -30,7 +30,7 @@ pkgbase = android-x86-libheif
 	options = !buildflags
 	options = staticlibs
 	options = !emptydirs
-	source = https://github.com/strukturag/libheif/releases/download/v1.18.2/libheif-1.18.2.tar.gz
-	md5sums = 5446af621e88be0edc9373c22c198007
+	source = https://github.com/strukturag/libheif/releases/download/v1.19.2/libheif-1.19.2.tar.gz
+	md5sums = 1dba03bbb0d34bc5f80908bdfb1cfe93
 
 pkgname = android-x86-libheif
