@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=MOMA
-_pkgver=1.16.0
+_pkgver=1.18.0
 pkgname=r-${_pkgname,,}
-pkgver=1.16.0
+pkgver=1.18.0
 pkgrel=1
 pkgdesc='Multi Omic Master Regulator Analysis'
 arch=('any')
@@ -35,7 +35,7 @@ optdepends=(
   r-viper
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('9beb71dfea2c763918aa6c9cf200dcf83248224406506216846d4696aa636af5')
+sha256sums=('f0517e4a80e044205f283d6627e84baeec7748f03f4abc47aeafaddce9f5c129')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
