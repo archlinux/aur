@@ -1,7 +1,7 @@
 # Maintainer: Manuel Wiesinger <m {you know what belongs here} mmap {and here} at>
 
 pkgname=quartodoc
-pkgver=0.9.0
+pkgver=0.9.1
 pkgrel=1
 pkgdesc="Generate Python package API reference documentation using Markdown and Quarto"
 arch=('any')
@@ -35,7 +35,7 @@ checkdepends=(
     'python-syrupy'
 )
 source=("${pkgname}-${pkgver}::git+https://github.com/machow/quartodoc.git#tag=v${pkgver}")
-b2sums=('95fe5669328ab6fae6db1c7702d505b01f6cc0407960088dff1257cca9770328db8588e5a5874833151ce7b47c3bedcfa552bc7a0f93c5c9017dbe08349969b8')
+b2sums=('c78c26c206534fbff57895393b695c70616714c5ece4a5c9dfceebc1a44d102a1fd6e1a24a22b6e685a073ecaea5258cadafdf565abf31f8f2cfe034a93e6f94')
 
 check() {
     cd $pkgname-$pkgver
