@@ -3,7 +3,7 @@
 # Contributor: Omri Bornstein <omribor@gmail.com>
 
 pkgname='stalk-bin'
-pkgver=1.0.6
+pkgver=1.0.7
 pkgrel=1
 pkgdesc='Cross-platform file watcher.'
 url='https://github.com/AppleGamer22/stalk'
@@ -14,11 +14,11 @@ conflicts=('stalk')
 depends=('inotify-tools')
 optdepends=('bash' 'fish' 'zsh')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/AppleGamer22/stalk/releases/download/v1.0.6/stalk_1.0.6_linux_arm64.tar.gz")
-sha256sums_aarch64=('4a82c15c00c6b6136c16995c155f02e93f312283cb3da51a23c38b706e7b9f1f')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/AppleGamer22/stalk/releases/download/v1.0.7/stalk_1.0.7_linux_arm64.tar.gz")
+sha256sums_aarch64=('75c3afb5ac836f3be26015139b3d2754fab6788c8683186e77df78a2e022ea50')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/AppleGamer22/stalk/releases/download/v1.0.6/stalk_1.0.6_linux_amd64.tar.gz")
-sha256sums_x86_64=('a326d9b200afdd1ef4fa860bba4ab3eb4c39df6cce797ee0b73b9e674d211a82')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/AppleGamer22/stalk/releases/download/v1.0.7/stalk_1.0.7_linux_amd64.tar.gz")
+sha256sums_x86_64=('67a1cf883fb8f6ba983f9ca37d30e290545c708f49bde7354e0a9b8f07519492')
 
 package() {
   install -Dm755 stalk "${pkgdir}/usr/bin/stalk"
