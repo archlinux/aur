@@ -1,6 +1,6 @@
 pkgbase = rdkit
 	pkgdesc = An open-source toolkit for cheminformatics and machine learning with Python API
-	pkgver = 2024_09_1
+	pkgver = 2024_09_2
 	pkgrel = 1
 	url = http://rdkit.org/
 	arch = i686
@@ -18,7 +18,7 @@ pkgbase = rdkit
 	depends = boost-libs
 	depends = sqlite
 	depends = cairo
-	source = https://github.com/rdkit/rdkit/archive/Release_2024_09_1.tar.gz
-	sha256sums = 034c00d6e9de323506834da03400761ed8c3721095114369d06805409747a60f
+	source = https://github.com/rdkit/rdkit/archive/Release_2024_09_2.tar.gz
+	sha256sums = 0f35a088da9594e362fb7c9c68d96a18af1cff502ddec334ff1d2baf1a4dd6d3
 
 pkgname = rdkit

@@ -2,7 +2,7 @@
 # Maintainer: Vedran Miletic <vedran AT miletic DOT net>
 # Contributor: Samo Turk <samo.turk@gmail.com>
 pkgname=rdkit
-pkgver=2024_09_1
+pkgver=2024_09_2
 pkgrel=1
 pkgdesc="An open-source toolkit for cheminformatics and machine learning with Python API"
 arch=("i686" "x86_64" "armv7h")
@@ -14,7 +14,7 @@ source=(
     "https://github.com/rdkit/rdkit/archive/Release_${pkgver}.tar.gz"
 )
 sha256sums=(
-    '034c00d6e9de323506834da03400761ed8c3721095114369d06805409747a60f'
+    '0f35a088da9594e362fb7c9c68d96a18af1cff502ddec334ff1d2baf1a4dd6d3'
 )
 
 
