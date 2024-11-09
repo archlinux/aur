@@ -2,8 +2,8 @@
 
 _pkgname=browser-stable
 pkgname=yandex-browser
-pkgver=24.7.6.1042
-_pkgver=24.7.6.1042-1
+pkgver=24.10.2.723
+_pkgver=24.10.2.723-1
 pkgrel=1
 #epoch=1
 
@@ -14,21 +14,18 @@ url='https://browser.yandex.com/'
 license=("custom:yandex-browser")
 categories=("network")
 provides=(yandex-browser)
-conflicts=('yandex-browser' 'yandex-browser-stable')
+conflicts=("yandex-browser" "yandex-browser-stable" "yandex-browser-corporate")
 
-depends=( "binutils" "ttf-liberation" "jq" "alsa-lib" "at-spi2-atk" "libcups" "curl" "dbus" "libdrm" "gdbm" "gtk4" "nspr" "nss" "pango"
-"wayland" "libxcomposite" "libxdamage" "libxkbcommon" "libxkbfile" "libxrandr" "squashfs-tools" "wget" "xdg-utils" "harfbuzz-icu")
+depends=( "binutils" "ttf-liberation" "jq" "alsa-lib" "at-spi2-atk" "libcups" "curl" "dbus" "mesa" "gdbm" "gtk4" "nspr" "nss" "pango"
+"wayland" "libxcomposite" "libxdamage" "libxkbcommon" "libxkbfile" "libxrandr" "squashfs-tools" "wget" "xdg-utils" "harfbuzz-icu" "vulkan-driver" "vulkan-icd-loader")
 optdepends=(
-    "speech-dispatcher"
-    "vulkan-driver"
-    "vulkan-icd-loader"
-    "ttf-font"
+    "speech-dispatcher" 
     "gstreamer-meta"
     "cryptopro-csp-k1"
 )
 
 source=("${pkgname}-${_pkgver}.deb::https://repo.yandex.ru/yandex-browser/deb/pool/main/y/yandex-${_pkgname}/yandex-${_pkgname}_${_pkgver}_amd64.deb")
-sha256sums=("9902eab0498e68de42957c2ae6e7cec7e017f036563bb29b53a88012a7c6fb55")
+sha256sums=("3e715e7ea9ea36360401ad12fd49fb950b29add156295d9dd431529d467a6982")
 install=yandex-browser.install
 
 prepare() {
