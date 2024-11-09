@@ -1,7 +1,7 @@
 # Maintainer: Talon Wettstein <diablodev@googlegroups.com>
 pkgname=diablo-project-manager-git
 pkgver=1
-pkgrel=1
+pkgrel=2
 pkgdesc="A CLI Project Manager"
 arch=("x86_64")
 url="https://github.com/diabl0dev/dpm"
@@ -27,6 +27,5 @@ build() {
 package() {
 	cd "$srcdir/$pkgname/build"
 	chmod +x ./install
-	PREFIX="$pkgdir/usr" ./install
-	install -Dm644 "$srcdir/$pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/MIT"
+	PREFIX="$pkgdir/usr" ./install "$pkgname"
 }
