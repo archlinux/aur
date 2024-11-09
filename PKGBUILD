@@ -3,13 +3,13 @@
 pkgbase=libjxl
 pkgname=('libjxl' 'libjxl-doc')
 pkgver=0.11.0
-pkgrel=1
+pkgrel=2
 pkgdesc='JPEG XL image format reference implementation'
 arch=('x86_64')
 url='https://jpeg.org/jpegxl/'
 license=('BSD-3-Clause')
 makedepends=('git' 'cmake' 'brotli' 'gdk-pixbuf2' 'giflib' 'gimp'
-             'gperftools' 'highway' 'libjpeg-turbo' 'libpng' 'openexr'
+             'gperftools' 'highway' 'libjpeg-turbo' 'libpng'
              'gtest' 'java-environment' 'python' 'asciidoc' 'doxygen'
              'graphviz' 'xdg-utils')
 source=("git+https://github.com/libjxl/libjxl.git#tag=v${pkgver}"
@@ -57,6 +57,7 @@ build() {
         -DJPEGXL_ENABLE_BENCHMARK:BOOL='false' \
         -DJPEGXL_ENABLE_EXAMPLES:BOOL='false' \
         -DJPEGXL_ENABLE_FUZZERS:BOOL='false' \
+        -DJPEGXL_ENABLE_OPENEXR:BOOL='false' \
         -DJPEGXL_ENABLE_PLUGINS:BOOL='true' \
         -DJPEGXL_ENABLE_VIEWERS:BOOL='false' \
         -DJPEGXL_FORCE_SYSTEM_BROTLI:BOOL='true' \
@@ -74,7 +75,7 @@ check() {
 }
 
 package_libjxl() {
-    depends=('brotli' 'giflib' 'gperftools' 'highway' 'libjpeg-turbo' 'libpng' 'openexr')
+    depends=('brotli' 'giflib' 'gperftools' 'highway' 'libjpeg-turbo' 'libpng')
     optdepends=('gdk-pixbuf2: for gdk-pixbuf loader'
                 'gimp: for gimp plugin'
                 'java-runtime: for JNI bindings')
