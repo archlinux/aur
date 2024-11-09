@@ -1,6 +1,6 @@
 pkgbase = r-discorhythm
 	pkgdesc = Interactive Workflow for Discovering Rhythmicity in Biological Data
-	pkgver = 1.20.0
+	pkgver = 1.22.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/DiscoRhythm
 	arch = any
@@ -38,7 +38,7 @@ pkgbase = r-discorhythm
 	depends = r-zip
 	depends = pandoc
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/DiscoRhythm_1.20.0.tar.gz
-	sha256sums = eb6cd306e3ad9367ccdb6dcf5950e6da73387d471696adecca469ad1f5cf4c93
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/DiscoRhythm_1.22.0.tar.gz
+	sha256sums = 12d1c734b589bcb0f8c556d01744fda8b045c2063f0cececac87bcadcb59458c
 
 pkgname = r-discorhythm
