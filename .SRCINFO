@@ -1,0 +1,18 @@
+pkgbase = gr-pdu_utils-git
+	pkgdesc = GNU Radio pdu_utils smart meters modules (RECESSIM)
+	pkgver = 3.10
+	pkgrel = 1
+	url = https://github.com/sandialabs/gr-pdu_utils/
+	arch = x86_64
+	arch = aarch64
+	license = GPL
+	makedepends = git
+	makedepends = cmake
+	makedepends = doxygen
+	depends = gnuradio
+	depends = boost
+	provides = gr-pdu_utils
+	source = git+https://github.com/sandialabs/gr-pdu_utils.git
+	sha256sums = SKIP
+
+pkgname = gr-pdu_utils-git
