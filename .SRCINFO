@@ -1,6 +1,6 @@
 pkgbase = r-zfpkm
 	pkgdesc = A suite of functions to facilitate zFPKM transformations
-	pkgver = 1.26.0
+	pkgver = 1.28.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/zFPKM
 	arch = any
@@ -18,7 +18,7 @@ pkgbase = r-zfpkm
 	optdepends = r-printr
 	optdepends = r-rmarkdown
 	optdepends = r-stringr
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/zFPKM_1.26.0.tar.gz
-	sha256sums = 9e8b6c9003658b99d22ce302fd68f381ebf4fbe36a1a06b5682fe1d603e1f5dd
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/zFPKM_1.28.0.tar.gz
+	sha256sums = d86651a9f92665a5da265b588dd1e0c41621e6f5b84c882448d55289fbe914c2
 
 pkgname = r-zfpkm
