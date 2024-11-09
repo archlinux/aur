@@ -1,0 +1,9 @@
+*
+!.gitignore
+!.SRCINFO
+!BUILDING
+!PKGBUILD
+!vscodium-translucent-uri-handler.desktop
+!vscodium-translucent-wayland.desktop
+!vscodium-translucent.desktop
+!translucent.patch

@@ -1,0 +1,112 @@
+diff -Naur a/src/main.ts b/src/main.ts
+--- a/src/main.ts	2024-10-28 09:08:10.000000000 +0100
++++ b/src/main.ts	2024-10-31 09:34:25.117872583 +0100
+@@ -298,6 +298,10 @@
+ 		`FontMatchingCTMigration,${app.commandLine.getSwitchValue('disable-blink-features')}`;
+ 	app.commandLine.appendSwitch('disable-blink-features', blinkFeaturesToDisable);
+ 
++	// Enable visuals for transparent window
++	app.commandLine.appendSwitch('enable-transparent-visuals');
++	app.commandLine.appendSwitch('use-gl', 'desktop');
++
+ 	// Support JS Flags
+ 	const jsFlags = getJSFlags(cliArgs);
+ 	if (jsFlags) {
+diff -Naur a/src/vs/editor/browser/widget/diffEditor/style.css b/src/vs/editor/browser/widget/diffEditor/style.css
+--- a/src/vs/editor/browser/widget/diffEditor/style.css	2023-10-03 06:06:10.000000000 +0200
++++ b/src/vs/editor/browser/widget/diffEditor/style.css	2023-10-04 21:27:43.122393566 +0200
+@@ -161,8 +161,8 @@
+ }
+ 
+ /* colors not externalized: using transparancy on background */
+-.monaco-diff-editor.vs			.diffOverview { background: rgba(0, 0, 0, 0.03); }
+-.monaco-diff-editor.vs-dark		.diffOverview { background: rgba(255, 255, 255, 0.01); }
++.monaco-diff-editor.vs			.diffOverview { background: transparent; }
++.monaco-diff-editor.vs-dark		.diffOverview { background: transparent; }
+ 
+ .monaco-scrollable-element.modified-in-monaco-diff-editor.vs		.scrollbar { background: rgba(0,0,0,0); }
+ .monaco-scrollable-element.modified-in-monaco-diff-editor.vs-dark	.scrollbar { background: rgba(0,0,0,0); }
+diff -Naur a/src/vs/platform/windows/electron-main/windows.ts b/src/vs/platform/windows/electron-main/windows.ts
+--- a/src/vs/platform/windows/electron-main/windows.ts	2024-07-31 13:26:36.000000000 +0200
++++ b/src/vs/platform/windows/electron-main/windows.ts	2024-08-01 20:09:18.467692458 +0200
+@@ -124,6 +124,7 @@
+ 	const windowSettings = configurationService.getValue<IWindowSettings | undefined>('window');
+ 
+ 	const options: electron.BrowserWindowConstructorOptions & { experimentalDarkMode: boolean } = {
++		transparent: true,
+ 		backgroundColor: themeMainService.getBackgroundColor(),
+ 		minWidth: WindowMinimumSize.WIDTH,
+ 		minHeight: WindowMinimumSize.HEIGHT,
+diff -Naur a/src/vs/workbench/common/theme.ts b/src/vs/workbench/common/theme.ts
+--- a/src/vs/workbench/common/theme.ts	2024-10-02 05:59:58.000000000 +0200
++++ b/src/vs/workbench/common/theme.ts	2024-10-04 18:41:24.005864953 +0200
+@@ -7,21 +7,11 @@
+ import { registerColor, editorBackground, contrastBorder, transparent, editorWidgetBackground, textLinkForeground, lighten, darken, focusBorder, activeContrastBorder, editorWidgetForeground, editorErrorForeground, editorWarningForeground, editorInfoForeground, treeIndentGuidesStroke, errorForeground, listActiveSelectionBackground, listActiveSelectionForeground, editorForeground, toolbarHoverBackground, inputBorder, widgetBorder, scrollbarShadow } from '../../platform/theme/common/colorRegistry.js';
+ import { IColorTheme } from '../../platform/theme/common/themeService.js';
+ import { Color } from '../../base/common/color.js';
+-import { ColorScheme } from '../../platform/theme/common/theme.js';
+ 
+ // < --- Workbench (not customizable) --- >
+ 
+ export function WORKBENCH_BACKGROUND(theme: IColorTheme): Color {
+-	switch (theme.type) {
+-		case ColorScheme.LIGHT:
+-			return Color.fromHex('#F3F3F3');
+-		case ColorScheme.HIGH_CONTRAST_LIGHT:
+-			return Color.fromHex('#FFFFFF');
+-		case ColorScheme.HIGH_CONTRAST_DARK:
+-			return Color.fromHex('#000000');
+-		default:
+-			return Color.fromHex('#252526');
+-	}
++	return Color.transparent;
+ }
+ 
+ // < --- Tabs --- >
+@@ -780,6 +770,13 @@
+ 
+ export const NOTIFICATIONS_INFO_ICON_FOREGROUND = registerColor('notificationsInfoIcon.foreground', editorInfoForeground, localize('notificationsInfoIconForeground', "The color used for the icon of info notifications. Notifications slide in from the bottom right of the window."));
+ 
++export const WINDOW_BACKGROUND = registerColor('window.background', {
++	dark: '#252526',
++	light: '#F3F3F3',
++	hcDark: '#000000',
++	hcLight: '#FFFFFF'
++}, localize('windowBackground', "The color used for the background of the window."));
++
+ export const WINDOW_ACTIVE_BORDER = registerColor('window.activeBorder', {
+ 	dark: null,
+ 	light: null,
+diff -Naur a/src/vs/workbench/contrib/splash/browser/partsSplash.ts b/src/vs/workbench/contrib/splash/browser/partsSplash.ts
+--- a/src/vs/workbench/contrib/splash/browser/partsSplash.ts	2023-02-01 05:32:54.000000000 +0100
++++ b/src/vs/workbench/contrib/splash/browser/partsSplash.ts	2023-02-03 08:41:45.193374826 +0100
+@@ -65,12 +65,17 @@
+ 	private _savePartsSplash() {
+ 		const theme = this._themeService.getColorTheme();
+ 
++		const windowBackground = theme.getColor(themes.WINDOW_BACKGROUND) || Color.transparent;
++		const background = windowBackground.isOpaque() ? windowBackground.transparent(0.99)
++				 : windowBackground.isTransparent() ? Color.fromHex('#FFF0')
++				 : windowBackground;
++
+ 		this._partSplashService.saveWindowSplash({
+ 			zoomLevel: this._configService.getValue<undefined>('window.zoomLevel'),
+ 			baseTheme: getThemeTypeSelector(theme.type),
+ 			colorInfo: {
+ 				foreground: theme.getColor(foreground)?.toString(),
+-				background: Color.Format.CSS.formatHex(theme.getColor(editorBackground) || themes.WORKBENCH_BACKGROUND(theme)),
++				background: Color.Format.CSS.formatRGBA(background),
+ 				editorBackground: theme.getColor(editorBackground)?.toString(),
+ 				titleBarBackground: theme.getColor(themes.TITLE_BAR_ACTIVE_BACKGROUND)?.toString(),
+ 				activityBarBackground: theme.getColor(themes.ACTIVITY_BAR_BACKGROUND)?.toString(),
+diff -Naur a/src/vs/workbench/contrib/terminal/browser/xterm/xtermTerminal.ts b/src/vs/workbench/contrib/terminal/browser/xterm/xtermTerminal.ts
+--- a/src/vs/workbench/contrib/terminal/browser/xterm/xtermTerminal.ts	2024-10-28 09:08:10.000000000 +0100
++++ b/src/vs/workbench/contrib/terminal/browser/xterm/xtermTerminal.ts	2024-10-31 09:32:17.961287862 +0100
+@@ -186,6 +186,7 @@
+ 
+ 		this.raw = this._register(new xtermCtor({
+ 			allowProposedApi: true,
++			allowTransparency: true,
+ 			cols: options.cols,
+ 			rows: options.rows,
+ 			documentOverride: layoutService.mainContainer.ownerDocument,
