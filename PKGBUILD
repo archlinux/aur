@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=TissueEnrich
-_pkgver=1.24.1
+_pkgver=1.26.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -22,8 +22,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('dd520f8d4fe7eb07073f64f2df777dad')
-b2sums=('c73ce8666f4ea1a659de0cc8d4ab5a5ab027c7bc2d15e0dbf4e7c73701116460406e9903dfdc84ac3f60f246077b243d9795f2e77d75d1d69452213158a2ce74')
+md5sums=('a5e44caa8db0d86ab6657533fb022638')
+b2sums=('6db810c68b8036bf3a51ee8e5f6780f2d97d5ec697f816bf6a107d96b9d26aa9e9c0de78e4751435cc8264534303b88388d727cd38b5c97900f67f16d5c8ecdc')
 
 build() {
   mkdir build
