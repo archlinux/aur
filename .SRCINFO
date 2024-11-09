@@ -1,16 +1,16 @@
 pkgbase = leetgo-bin
 	pkgdesc = leetgo is a command line tool for leetcode.com. It can help you to login, submit, test, and view your submissions.
-	pkgver = 1.4.10
+	pkgver = 1.4.11
 	pkgrel = 1
 	url = https://github.com/j178/leetgo
 	license = MIT
 	conflicts = leetgo
 	provides = leetgo
 	arch = aarch64
-	source_aarch64 = https://github.com/j178/leetgo/releases/download/v1.4.10/leetgo_linux_arm64.tar.gz
-	sha256sums_aarch64 = 2c8b945a9c53bf27ea8788e2f6260d232fa865a21d3ab40f230522b002512b02
+	source_aarch64 = https://github.com/j178/leetgo/releases/download/v1.4.11/leetgo_linux_arm64.tar.gz
+	sha256sums_aarch64 = aae816dae8eafe1f09d85e7a42d0b7206c41d98f8893d7596c0c3c8f7877a8d6
 	arch = x86_64
-	source_x86_64 = https://github.com/j178/leetgo/releases/download/v1.4.10/leetgo_linux_x86_64.tar.gz
-	sha256sums_x86_64 = 865dd06c163459883861522ad19c643d3fac2a4558718373eb0cc92916e6c3a4
+	source_x86_64 = https://github.com/j178/leetgo/releases/download/v1.4.11/leetgo_linux_x86_64.tar.gz
+	sha256sums_x86_64 = 0da63d7bdbe3ee25690307d6d6209e501cfac35d716fddec6faa5dd05eb9fbd9
 	
 pkgname = leetgo-bin
