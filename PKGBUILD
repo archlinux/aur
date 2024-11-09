@@ -4,8 +4,8 @@
 
 _pkgname='ov'
 pkgname="${_pkgname}-git"
-pkgver=0.36.0.r2.g8571b10
-pkgrel=2
+pkgver=0.37.0.r0.gcf6c046
+pkgrel=1
 epoch=1
 pkgdesc='Feature-rich terminal-based text pager (latest commit)'
 arch=('aarch64' 'arm' 'armv6h' 'armv7h' 'i686' 'x86_64')
@@ -80,7 +80,7 @@ package() {
   install -vDm0755 -t "$pkgdir/usr/bin" \
     build/ov
   install -vDm0644 -t "$pkgdir/usr/share/doc/$pkgname" \
-    *.yaml README.md ov.plugin.zsh
+    ./*.yaml README.md ov.plugin.zsh
   install -vDm0644 -t "$pkgdir/usr/share/licenses/$pkgname" \
     LICENSE
 
