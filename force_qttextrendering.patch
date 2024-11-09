@@ -1,0 +1,23 @@
+diff -ura qqc2-desktop-style-6.8.0/kirigami-plasmadesktop-integration/plasmadesktoptheme.cpp qqc2-desktop-style-6.8.0.new/kirigami-plasmadesktop-integration/plasmadesktoptheme.cpp
+--- qqc2-desktop-style-6.8.0/kirigami-plasmadesktop-integration/plasmadesktoptheme.cpp	2024-11-02 16:50:18.000000000 +0100
++++ qqc2-desktop-style-6.8.0.new/kirigami-plasmadesktop-integration/plasmadesktoptheme.cpp	2024-11-09 12:24:09.472027011 +0100
+@@ -53,11 +53,14 @@
+         // Use NativeTextRendering as the default text rendering type when the scale factor is an integer.
+         // NativeTextRendering is still distorted sometimes with fractional scale factors,
+         // despite https://bugreports.qt.io/browse/QTBUG-67007 being closed.
+-        qreal devicePixelRatio = qGuiApp->devicePixelRatio();
+-        QQuickWindow::TextRenderType defaultTextRenderType =
+-            int(devicePixelRatio) == devicePixelRatio ? QQuickWindow::NativeTextRendering : QQuickWindow::QtTextRendering;
+-        QQuickWindow::setTextRenderType(defaultTextRenderType);
+-
++        // qreal devicePixelRatio = qGuiApp->devicePixelRatio();
++        // QQuickWindow::TextRenderType defaultTextRenderType =
++        //     int(devicePixelRatio) == devicePixelRatio ? QQuickWindow::NativeTextRendering : QQuickWindow::QtTextRendering;
++        // QQuickWindow::setTextRenderType(defaultTextRenderType);
++	
++        // GG: force QtTextRendering
++        QQuickWindow::setTextRenderType(QQuickWindow::QtTextRendering);
++        
+         smallFont = loadSmallFont();
+     }
+ 
