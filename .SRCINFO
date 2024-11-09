@@ -1,0 +1,17 @@
+pkgbase = python-virtualenv-tools3-git
+	pkgdesc = Allows moving a virtualenv to a new location without breaking links.
+	pkgver = v3.1.1.r4.ga57fffe
+	pkgrel = 1
+	url = https://github.com/Yelp/virtualenv-tools
+	arch = any
+	license = BSD-like
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python
+	provides = python-virtualenv-tools3
+	conflicts = python-virtualenv-tools3
+	options = !emptydirs
+	source = virtualenv-tools3::git+https://github.com/Yelp/virtualenv-tools.git
+	sha256sums = SKIP
+
+pkgname = python-virtualenv-tools3-git
