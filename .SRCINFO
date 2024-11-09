@@ -1,6 +1,6 @@
 pkgbase = r-mpra
 	pkgdesc = Analyze massively parallel reporter assays
-	pkgver = 1.26.2
+	pkgver = 1.28.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/mpra
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = r-mpra
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-runit
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/mpra_1.26.2.tar.gz
-	sha256sums = e98f5400cfdd0962cf199d2a8dff1f234c91c8508b4ecf0fa6ec678c50943718
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/mpra_1.28.0.tar.gz
+	sha256sums = f510d5ff27aa8e662350378cdd7db3e6697ac7a0acb8df8ee86ee0058ce96b11
 
 pkgname = r-mpra

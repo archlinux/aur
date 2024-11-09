@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=mpra
-_pkgver=1.26.2
+_pkgver=1.28.0
 pkgname=r-${_pkgname,,}
-pkgver=1.26.2
+pkgver=1.28.0
 pkgrel=1
 pkgdesc='Analyze massively parallel reporter assays'
 arch=('any')
@@ -25,7 +25,7 @@ optdepends=(
   r-runit
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('e98f5400cfdd0962cf199d2a8dff1f234c91c8508b4ecf0fa6ec678c50943718')
+sha256sums=('f510d5ff27aa8e662350378cdd7db3e6697ac7a0acb8df8ee86ee0058ce96b11')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
