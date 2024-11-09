@@ -1,6 +1,6 @@
 pkgbase = r-genomicsupersignature
 	pkgdesc = Interpretation of RNA-seq experiments through robust, efficient comparison to public databases
-	pkgver = 1.12.0
+	pkgver = 1.14.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/GenomicSuperSignature
 	arch = any
@@ -40,7 +40,7 @@ pkgbase = r-genomicsupersignature
 	optdepends = r-usethis
 	optdepends = r-utils
 	optdepends = r-wordcloud
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/GenomicSuperSignature_1.12.0.tar.gz
-	sha256sums = 40c33db08042516569b2e940c7f17d2dfb58b49813057592311d1e7a6ea7375f
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/GenomicSuperSignature_1.14.0.tar.gz
+	sha256sums = 6223ea99e4ea008d81866b323dd21580c7a1370ce7543f8c6225622024f53478
 
 pkgname = r-genomicsupersignature

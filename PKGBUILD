@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=GenomicSuperSignature
-_pkgver=1.12.0
+_pkgver=1.14.0
 pkgname=r-${_pkgname,,}
-pkgver=1.12.0
+pkgver=1.14.0
 pkgrel=1
 pkgdesc='Interpretation of RNA-seq experiments through robust, efficient comparison to public databases'
 arch=('any')
@@ -49,7 +49,7 @@ optdepends=(
   r-wordcloud
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('40c33db08042516569b2e940c7f17d2dfb58b49813057592311d1e7a6ea7375f')
+sha256sums=('6223ea99e4ea008d81866b323dd21580c7a1370ce7543f8c6225622024f53478')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
