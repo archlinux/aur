@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=scDesign3
-_pkgver=1.2.0
+_pkgver=1.4.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -43,8 +43,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('8ee455ffed57d35cfbf4605d48e4d976')
-b2sums=('0db03c2643fd26e92b971d420027f4fd6825b56276f80d316f68b486c7bfb46da52e7ddc20f6d501647c1c0889526e28a901e8f374b50b3e733e9840c03d25d5')
+md5sums=('7a2051e5737f93a928cfe0f983c7ba0f')
+b2sums=('94f437a75340debd0de9717c40174877ab9726d1a984d948ecafb8c76c264c80436e20decc2332563579cd9e45590388dc0d9e4dcfded166767d8270c1f5ddf3')
 
 build() {
   mkdir build
