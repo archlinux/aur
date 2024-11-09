@@ -8,7 +8,7 @@
 readonly _pkgname="SimSIMD"
 
 pkgname="simsimd"
-pkgver="6.0.2"
+pkgver="6.0.3"
 pkgrel="1"
 pkgdesc="Up to 200x faster dot products and similarity metrics."
 arch=("x86_64")
@@ -16,7 +16,7 @@ url="https://github.com/ashvardanian/${_pkgname}"
 license=("Apache-2.0")
 makedepends=("cmake")
 source=("${pkgname}-v${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha512sums=("bbb005845bce900beca5e9f76ba7a16e7dec134c1bb7eaccba07602143aae7f84bb0de5c0a09ef7c6b79ca3d50b8a505ca072af7dd47096c56e80943c6723e23")
+sha512sums=("cc12d00527792cf3e1c3d3cce955f6549eff72db1b7861275448292887c33a09c64963f5befb3de829ccbcb38f072afe105ca39599fd69dbfef0e9bb92b5411a")
 
 _compile()
 {
