@@ -1,20 +1,20 @@
 pkgbase = unciv
 	pkgdesc = Open-source remake of Civilization V
-	pkgver = 4.12.11.REL
-	pkgrel = 1
+	pkgver = 4.14.4.REL
+	pkgrel = 2
 	url = https://github.com/yairm210/Unciv
 	arch = any
 	license = MPL-2.0
 	depends = jdk17-openjdk
 	depends = bash
 	depends = xorg-xrandr
-	noextract = gradle-7.2-bin.zip
-	source = https://github.com/yairm210/Unciv/archive/4.12.11.zip
-	source = https://services.gradle.org/distributions/gradle-7.2-bin.zip
+	noextract = gradle-8.7-bin.zip
+	source = https://github.com/yairm210/Unciv/archive/4.14.4.zip
+	source = https://services.gradle.org/distributions/gradle-8.7-bin.zip
 	source = Unciv.sh
 	source = unciv.desktop
-	md5sums = a5515224e534eb211a3a71c9af96690e
-	md5sums = b5fb25beea6f974e2a5198e079174cd6
+	md5sums = 6bab8103f6d8ad4bfcfe7110d525cbae
+	md5sums = 1f52d7ea57c9aad04446e00adbaac3bd
 	md5sums = e6d812078de30b33ab4698a53118b773
 	md5sums = 42d5f7ea8ee48d2d643d070786f039ba
 
