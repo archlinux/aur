@@ -1,7 +1,7 @@
 # Maintainer: Wilken Gottwalt <wilken dot gottwalt at posteo dot net>
 
 pkgname=ollama-rocm-git
-pkgver=0.4.0.9e83e550
+pkgver=0.4.1.git+c2e8cbaa
 pkgrel=1
 pkgdesc='Create, run and share large language models (LLMs) with ROCm'
 arch=(x86_64)
@@ -25,13 +25,14 @@ pkgver() {
   cd ollama
   local _tag="$(git describe --tags --abbrev=0)"
   local _hash="$(git rev-parse --short HEAD)"
-  echo "${_tag##v}.$_hash"
+  echo "${_tag##v}.git+$_hash"
 }
 
 build() {
   export ROCM_PATH=/opt/rocm/
-  export AMDGPU_TARGETS="gfx1030,gfx1100"
+  export AMDGPU_TARGETS="gfx1030;gfx1100"
   export CFLAGS+=" -fcf-protection=none" CXXFLAGS+=" -fcf-protection=none"
+  export CGO_CFLAGS="$CFLAGS" CGO_CPPFLAGS="$CPPFLAGS" CGO_CXXFLAGS="$CXXFLAGS" CGO_LDFLAGS="$LDFLAGS"
   export OLLAMA_SKIP_CUDA_GENERATE=on
 
   cd ollama
@@ -41,13 +42,12 @@ build() {
 
 package() {
   install -dm755 $pkgdir/var/lib/ollama
-  install -dm755 $pkgdir/usr/lib/ollama/{rocblas/library,runners}
+  install -dm755 $pkgdir/usr/lib/ollama/runners
 
   install -Dm755 ollama/ollama $pkgdir/usr/bin/ollama
   install -Dm644 ollama/LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
   install -Dm755 ollama/dist/linux-amd64/lib/ollama/libggml_rocm.so $pkgdir/usr/lib/ollama/
   cp -r ollama/dist/linux-amd64/lib/ollama/runners $pkgdir/usr/lib/ollama/
-  cp -r ollama/dist/linux-amd64-rocm/lib/ollama/rocblas/library $pkgdir/usr/lib/ollama/rocblas/
 
   install -Dm644 ollama.service $pkgdir/usr/lib/systemd/system/ollama.service
   install -Dm644 sysusers.conf $pkgdir/usr/lib/sysusers.d/ollama.conf
