@@ -356,7 +356,7 @@ if [[ $FFMPEG_OBS_SVT == 'ON' ]]; then
   sha256sums+=(
     '9047e18d34716812d4ea7eafc1d0fd8b376d922a4b6b4dc20237662fcaf0c996'
     'a164ebdc4d281352bf7ad1b179aae4aeb33f1191c444bed96cb8ab333c046f81'
-    'ee9499836808b6f5e583dcc1b21c28598550c58386c53cfaef41d25121ea2022'
+    'e801727b9cfb843db4efc34d3de8cf03ddf5687ff02429ac6c051e1d78d8923e'
   )
   _args+=(--enable-libsvthevc --enable-libsvtvp9)
   provides+=(ffmpeg-svt-hevc ffmpeg-svt-vp9)
