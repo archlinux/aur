@@ -11,6 +11,6 @@ pkgbase = electron-nightly-bin
 	depends = libxss
 	depends = libnotify
 	source = https://github.com/electron/nightlies/releases/download/v35.0.0-nightly.20241108/electron-v35.0.0-nightly.20241108-linux-x64.zip
-	sha256sums = 1b345dac455937917ae7ea1d72629ebe936bf2b59cb1979a4a140da07eb7d6fb
+	sha256sums = a6b65611aece2d5c69ae55e11c2a8a883b1ba239b478dca4b76679e862cf2cd6
 
 pkgname = electron-nightly-bin

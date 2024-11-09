@@ -13,7 +13,7 @@ _ver_main="${pkgver%%.nightly.*}"
 _ver_date="${pkgver##*.}"
 _file_name="electron-v${_ver_main}-nightly.${_ver_date}-linux-x64.zip"
 source=("$url/releases/download/v${_ver_main}-nightly.${_ver_date}/${_file_name}")
-sha256sums=('1b345dac455937917ae7ea1d72629ebe936bf2b59cb1979a4a140da07eb7d6fb')
+sha256sums=('a6b65611aece2d5c69ae55e11c2a8a883b1ba239b478dca4b76679e862cf2cd6')
 
 package() {
     install -dm755 "$pkgdir/usr/lib/$_pkgname" "$pkgdir/usr/bin"
