@@ -1,6 +1,6 @@
 pkgbase = fcitx5-mellow-themes-git
 	pkgdesc = An aesthetic, modern fcitx5 theme featuring rounded rectangle design
-	pkgver = 1
+	pkgver = r5.e0de133
 	pkgrel = 1
 	url = https://github.com/sanweiya/fcitx5-mellow-themes
 	arch = any
