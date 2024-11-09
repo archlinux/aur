@@ -1,6 +1,6 @@
 pkgbase = xfce-winxp-tc-git
 	pkgdesc = Windows XP Total Conversion for XFCE
-	pkgver = r319.d631fe5
+	pkgver = r330.156d592
 	pkgrel = 1
 	url = https://github.com/rozniak/xfce-winxp-tc
 	arch = x86_64
@@ -23,6 +23,7 @@ pkgbase = xfce-winxp-tc-git
 	optdepends = lightdm: LightDM theme
 	optdepends = libcanberra: Sound theme
 	optdepends = libpulse: Volume control in tray
+	optdepends = upower: Battery indicator in tray
 	optdepends = webkit2gtk-4.1: Internet Explorer
 	optdepends = libzip: Browsing ZIP files in Windows Explorer
 	source = xfce-winxp-tc::git+https://github.com/rozniak/xfce-winxp-tc.git
