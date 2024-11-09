@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=AffiXcan
-_pkgver=1.22.0
+_pkgver=1.24.0
 pkgname=r-${_pkgname,,}
-pkgver=1.22.0
+pkgver=1.24.0
 pkgrel=1
 pkgdesc='A Functional Approach To Impute Genetically Regulated Expression'
 arch=('any')
@@ -22,7 +22,7 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('23ddd4df797bbe7d541e2a96838f73846dae8e0a5f3b93b3f2e3923df1dd8188')
+sha256sums=('91adb15fe501c0d28068b690c5fda86fe58375ecbd0a602c030e1d0a51a1e6a8')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
