@@ -1,7 +1,7 @@
 pkgbase = hyprgui
 	pkgdesc = GUI for configuring Hyprland, written in blazingly fast Rust!
-	pkgver = 0.1.7
-	pkgrel = 3
+	pkgver = 0.1.8
+	pkgrel = 1
 	url = https://github.com/nnyyxxxx/hyprgui
 	arch = x86_64
 	license = GPL-2.0
@@ -11,7 +11,7 @@ pkgbase = hyprgui
 	depends = gcc-libs
 	depends = gtk4
 	optdepends = hyprland
-	source = hyprgui-0.1.7.tar.gz::https://github.com/nnyyxxxx/hyprgui/archive/refs/tags/v0.1.7.tar.gz
-	sha256sums = 35f30bbedaea43af9d4463c4b91cc2f3087c13814ee2cb4311904509a138c463
+	source = hyprgui-0.1.8.tar.gz::https://github.com/nnyyxxxx/hyprgui/archive/refs/tags/v0.1.8.tar.gz
+	sha256sums = bb7b739ed4e4f0f04ec2afa83438155ed78cbb9cb799876b7063e4fe0b886cb0
 
 pkgname = hyprgui
