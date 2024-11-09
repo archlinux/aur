@@ -1,22 +1,20 @@
 # Maintainer: Felipe Martin <me@fmartingr.com>
 # Maintainer: Matt Warner <mattwarner001@gmail.com>
+# Maintainer: Helmut Stult <hst[at]e-mail[dot]de>
 
 pkgname="synology-drive"
-pkgver="3.5.1_16101"
+pkgver="3.5.1_16102"
+_pkgver="3.5.1-16102"
+_subver="16102"
 pkgrel="1"
-pkgdesc="Drive for PC, the desktop utility of the DSM add-on package, Drive, allows you to sync and share files owned by you or shared by others between a centralized Synology NAS and multiple client computers."
+pkgdesc="Desktop utility of the DSM add-on package, Synology Drive Server"
 arch=('x86_64')
-url="https://www.synology.com"
-license=('custom')
+url="https://www.synology.com/en-global/releaseNote/SynologyDriveClient"
+license=('custom:Synology Linux License Grant')
 depends=('glibc' )
 optdepends=('nautilus: For nautilus integration' )
-conflicts=()
-source=()
-md5sums=()
-
-
-source_x86_64=(https://global.synologydownload.com/download/Utility/SynologyDriveClient/3.5.1-16101/Ubuntu/Installer/synology-drive-client-16101.x86_64.deb)
-sha256sums_x86_64=('55e4b96cf70c3382430921f9197925e0e8108eb3ca68d0e1e4f7d7dbcff3a9a5')
+source_x86_64=("https://global.synologydownload.com/download/Utility/SynologyDriveClient/${_pkgver}/Ubuntu/Installer/synology-drive-client-${_subver}.x86_64.deb")
+sha256sums_x86_64=('6f13838d7384f757a3f08db60d640a6d6ef5a088d11d0c7d232bce6a6de3fe2c')
 
 package() {
 	cd "${srcdir}"
