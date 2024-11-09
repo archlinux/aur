@@ -1,13 +1,13 @@
 pkgbase = krabby-bin
 	pkgdesc = Print pokemon sprites in your terminal
-	pkgver = 0.2.0
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://github.com/yannjor/krabby
 	arch = x86_64
 	license = GPL-3.0
 	provides = krabby
 	conflicts = krabby
-	source = https://github.com/yannjor/krabby/releases/download/v0.2.0/krabby-0.2.0-x86_64.tar.gz
-	sha256sums = c06872d5c0c9e143768a2eccda8baaf956c532e98f131b8e1a7d3caeb4142001
+	source = https://github.com/yannjor/krabby/releases/download/v0.2.1/krabby-0.2.1-x86_64.tar.gz
+	sha256sums = a5e0fbf1e06c40ad6c2ccb95b7e7608281710940fdb4fce39cd2d37d4fa8244e
 
 pkgname = krabby-bin
