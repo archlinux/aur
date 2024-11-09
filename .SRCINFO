@@ -1,6 +1,6 @@
 pkgbase = wine-staging-wow64
 	pkgdesc = A compatibility layer for running Windows programs
-	pkgver = 9.20
+	pkgver = 9.21
 	pkgrel = 1
 	url = https://www.winehq.org
 	install = wine.install
@@ -48,20 +48,20 @@ pkgbase = wine-staging-wow64
 	optdepends = cups
 	optdepends = samba
 	optdepends = sane
-	provides = wine=9.20
-	provides = wine-staging=9.20
-	provides = wine-wow64=9.20
+	provides = wine=9.21
+	provides = wine-staging=9.21
+	provides = wine-wow64=9.21
 	conflicts = wine
 	options = staticlibs
 	options = !lto
 	backup = usr/lib/binfmt.d/wine.conf
-	source = https://dl.winehq.org/wine/source/9.x/wine-9.20.tar.xz
+	source = https://dl.winehq.org/wine/source/9.x/wine-9.21.tar.xz
 	source = 30-win32-aliases.conf
 	source = wine-binfmt.conf
-	source = git+https://gitlab.winehq.org/wine/wine-staging.git#tag=v9.20
-	b2sums = f2fef5c941284a5f89f92696cb242641ad88ea8a4388dd6d72977d9696ab63c1632b91b678567525527c80e30ad5ef2971e5bcf700e4f2d7db9bf3357488ed34
+	source = git+https://gitlab.winehq.org/wine/wine-staging.git#tag=v9.21
+	b2sums = 2d9b08263d2d3d174cf42ef8cb23d47c4516a394b44c4a2c5b1d220c4680239b84f47dfeea8b28c763593c725289cf7c257ad3f9fe0ee407b725391a2e956e90
 	b2sums = 45db34fb35a679dc191b4119603eba37b8008326bd4f7d6bd422fbbb2a74b675bdbc9f0cc6995ed0c564cf088b7ecd9fbe2d06d42ff8a4464828f3c4f188075b
 	b2sums = e9de76a32493c601ab32bde28a2c8f8aded12978057159dd9bf35eefbf82f2389a4d5e30170218956101331cf3e7452ae82ad0db6aad623651b0cc2174a61588
-	b2sums = e8d5539c1802977aa724863a4236736cb5c0a907f5d74584355bdc2ea67a736bf3d243ebd43a0b6b7dbe9a51ca26ccc0b06e3a2c352cdef67ed19132828434a7
+	b2sums = dfe95c776718ab04338be0e644745277a3ac9c680044dce156eeeb86f06a67b8e19e1e9c656128389479d767936a586cda106ef32b7826000e6ffb83a460cf6b
 
 pkgname = wine-staging-wow64
