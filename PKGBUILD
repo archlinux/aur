@@ -22,7 +22,7 @@ source=(https://repo1.maven.org/maven2/org/eclipse/jetty/jetty-home/$pkgver/$_di
 
 sha256sums=('a5b31a563c73725948286441fe5447371fa76bbc6c7b3154b86a560def2fb0bd'
             'SKIP'
-            '3a2b6060474bd26dbf18a870f8faec3ef76a629680bbc65588f1e61db2cc14c7'
+            'd3190c73096fdb9f3c2aeef00b568c75431b0fbc0c322a2b21b06e829ce1852f'
             'da0402440e0a3b66e55387700b2c178c294dc65cc4a7bd079c622343845adecb'
             'b27ef0342c3b22fbf1e3e7d104e23670b53eab9b648c1882cf295bd82ccadc66'
             '5664891275f3e489f85efd85b9740e36265f5ed3cf9512d245c500bdc31b568a'
