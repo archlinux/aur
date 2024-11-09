@@ -1,6 +1,5 @@
-it turns out the smaz2 executable isn't actually useful at all, working on it
 pkgbase = smaz2-git
-	pkgdesc = compression for very very short messages
+	pkgdesc = compression for very short messages
 	pkgver = 2.9.g71ecc43
 	pkgrel = 1
 	url = https://github.com/antirez/smaz2
@@ -10,6 +9,8 @@ pkgbase = smaz2-git
 	makedepends = git
 	provides = smaz2
 	source = smaz2::git+https://github.com/antirez/smaz2.git
+	source = example.c
+	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = smaz2-git

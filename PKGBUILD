@@ -2,7 +2,7 @@
 _pkgver=2
 _pkgname=smaz$_pkgver
 pkgname="$_pkgname-git"
-pkgdesc='compression for very very short messages'
+pkgdesc='compression for very short messages'
 pkgver=2.9.g71ecc43
 pkgrel=1
 arch=('x86_64' 'i686')
@@ -11,16 +11,17 @@ license=(MIT)
 #depends=()
 makedepends=(git)
 provides=("$_pkgname")
-source=("$_pkgname::git+$url.git")
-sha256sums=(SKIP)
-
-echo "it turns out the smaz2 executable isn't actually useful at all, working on it"
-false 
+source=("$_pkgname::git+$url.git" example.c)
+sha256sums=(SKIP SKIP)
 
 pkgver() {
 	printf %s.%s.g%s "$_pkgver" \
 	"$(git -C "$srcdir/$_pkgname" rev-list  --count HEAD)" \
 	"$(git -C "$srcdir/$_pkgname" rev-parse --short HEAD)"
+}
+
+prepare() {
+	ln -ft "$_pkgname" example.c
 }
 
 build() { make -C "$srcdir/$_pkgname"; }
