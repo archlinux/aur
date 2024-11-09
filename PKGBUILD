@@ -1,6 +1,5 @@
-
 pkgname=mingw-w64-sparsehash
-pkgver=2.0.3
+pkgver=2.0.4
 pkgrel=1
 pkgdesc="Library that contains several hash-map implementations, including implementations that optimize for space or speed. (mingw-w64)"
 arch=("any")
@@ -9,7 +8,7 @@ license=('BSD')
 makedepends=(mingw-w64-configure)
 options=(staticlibs !strip !buildflags)
 source=("https://github.com/sparsehash/sparsehash/archive/sparsehash-$pkgver.tar.gz")
-sha256sums=('05e986a5c7327796dad742182b2d10805a8d4f511ad090da0490f146c1ff7a8c')
+sha256sums=('8cd1a95827dfd8270927894eb77f62b4087735cbede953884647f16c521c7e58')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
