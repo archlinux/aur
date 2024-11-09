@@ -10,12 +10,12 @@
 
 _pack=image-acquisition
 pkgname=octave-${_pack}
-pkgver=0.2.2
-pkgrel=4
-pkgdesc="The Octave-forge Image Aquisition package provides functions to capture images from connected devices. Currently only v4l2 is supported"
+pkgver=0.2.6
+pkgrel=1
+pkgdesc="Functions to capture images from connected devices using Video4Linux (v4l)."
 arch=(any)
 url="https://octave.sourceforge.io/${_pack}"
-license=('GPL3')
+license=(GPL-3.0-or-later)
 groups=('octave-forge')
 depends=('octave>=3.8.0')
 makedepends=('v4l-utils>=0.8.8' 'fltk>=1.1.0')
@@ -26,7 +26,7 @@ install=${pkgname}.install
 _archive=${_pack}-${pkgver}.tar.gz
 source=("https://downloads.sourceforge.net/octave/${_archive}")
 noextract=("$_archive")
-sha512sums=('2b17c7cfbfae079469465b3b4d4284062d4f440805a25515b5340acd53cf7654a88e660d01239c596ccfcff424692e3108416f9ea6804130fc20fd7fccea09c5')
+sha512sums=('9cca06ae7aa874bb042f6897856302ac967b18ba06f2c68f3cec940f0a588765c880297723992d87ce991195f9594b31ff1e1bc8717f3d28abe462f2d0b5a75f')
 
 _octave_run() {
 	octave --no-history --no-init-file --no-window-system -q -f --eval "$*"
