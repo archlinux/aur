@@ -1,6 +1,6 @@
 pkgbase = firefox-nightly-i18n-tl
 	pkgdesc = Tagalog language pack for Firefox Nightly
-	pkgver = 134.0a1.20241108.155652
+	pkgver = 134.0a1.20241109.093230
 	pkgrel = 1
 	url = https://www.mozilla.org/firefox/
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = firefox-nightly-i18n-tl
 	license = GPL
 	license = LGPL
 	depends = firefox-nightly
-	noextract = firefox-nightly-i18n-tl-134.0a1.20241108.155652.xpi
-	source = firefox-nightly-i18n-tl-134.0a1.20241108.155652.xpi::https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/linux-x86_64/xpi/firefox-134.0a1.tl.langpack.xpi
-	sha256sums = 50da772e5407d04118c0f88d12410c8ff1fe85ab1545ecd3da6f27e06e4f0896
+	noextract = firefox-nightly-i18n-tl-134.0a1.20241109.093230.xpi
+	source = firefox-nightly-i18n-tl-134.0a1.20241109.093230.xpi::https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/linux-x86_64/xpi/firefox-134.0a1.tl.langpack.xpi
+	sha256sums = 712f097ae7123a1b8354edfb83b78481cef1a95e7b1c4883315cee683561f05b
 
 pkgname = firefox-nightly-i18n-tl
