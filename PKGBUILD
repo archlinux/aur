@@ -7,7 +7,6 @@ arch=("x86_64")
 url="https://gitlab.com/diablodev/dpm"
 license=('MIT')
 depends=('bash' 'git' 'glibc')
-makedepends=('shc')
 provides=("diablo-project-manager")
 conflicts=("diablo-project-manager-git")
 source=("https://gitlab.com/diablodev/dpm/-/raw/main/VERSION" "https://gitlab.com/diablodev/dpm-bin/-/raw/main/dpm-bin.zip")
