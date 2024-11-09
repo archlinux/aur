@@ -2,7 +2,7 @@
 
 _pkgname=openimageio
 pkgname=mingw-w64-${_pkgname}
-pkgver=2.5.17.0
+pkgver=3.0.0.3
 pkgrel=1
 pkgdesc='A library for reading and writing images, including classes, utilities, and applications (mingw-w64)'
 url='http://www.openimageio.org/'
@@ -26,21 +26,19 @@ depends=(
 	'mingw-w64-libheif'
 	'mingw-w64-ptex'
 )
-makedepends=('mingw-w64-cmake' 'mingw-w64-robin-map' 'mingw-w64-wine' 'mingw-w64-boost' 'ninja')
+makedepends=('mingw-w64-cmake' 'mingw-w64-robin-map' 'mingw-w64-boost' 'ninja')
 #checkdepends=('python')
 arch=('any')
 options=(!strip !buildflags staticlibs)
 optdepends=()
 source=("$_pkgname-$pkgver.tar.gz::https://github.com/OpenImageIO/oiio/archive/v${pkgver}.tar.gz")
-sha256sums=('9cf1b98762ce5aa5f3f7cd34672549034f5716da1eba26eb5173c18aa21e6583')
+sha256sums=('fe96d2f39435f1585fe2ede4279a303e2cef3b28df351e8331fed46bbb251f35')
 
 _srcdir="OpenImageIO-${pkgver}"
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 _flags=(
 	-Wno-dev -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_FLAGS_RELEASE='-DNDEBUG -fpermissive'
 	-DBUILD_DOCS=OFF
-	-DBUILD_MISSING_FMT=OFF
-	-DBUILD_MISSING_ROBINMAP=OFF
 	-DUSE_EXTERNAL_PUGIXML=ON
 	-DCMAKE_CXX_STANDARD=20
 	-DINSTALL_DOCS=OFF
@@ -49,16 +47,10 @@ _flags=(
 	-DUSE_CCACHE=OFF
 	-DUSE_SIMD='sse4.2'
 	-DEMBEDPLUGINS=ON
-	-DSTOP_ON_WARNING=OFF
-	-DOPTIONAL_DEPS=''
-	-DREQUIRED_DEPS='JPEGTurbo;PNG;TBB;GIF;Webp;Libsquish;Freetype;OpenColorIO;OpenCV;FFmpeg;HDF5;LibRaw;Libheif;Ptex' )
+	-DSTOP_ON_WARNING=OFF )
 
 prepare() {
 	cd "${_srcdir}"
-
-	sed -i 's/ + sizeof(m_padding)//' 'src/libtexture/imagecache_pvt.h'
-	sed -i 's/sizeof(\*this) == member_size,/sizeof(*this) == sizeof(*this),/' 'src/libtexture/imagecache_pvt.h'
-	sed -i 's/int m_padding = 0;/#if UINTPTR_MAX > 4294967295\nint m_padding = 0;\n#endif/' 'src/libtexture/imagecache_pvt.h'
 
 	#sed -i 's/os.path.join(OIIO_BUILD_ROOT, "bin", app)/os.path.join(OIIO_BUILD_ROOT, "bin", app, ".exe")/' 'testsuite/runtest.py'
 }
