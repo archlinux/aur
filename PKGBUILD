@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=FuseSOM
-_pkgver=1.6.0
+_pkgver=1.8.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -36,8 +36,8 @@ optdepends=(
   r-singlecellexperiment
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('f73bd6a1428a7e6a477bd5b0624ab436')
-b2sums=('59a20a451a29793f50698d932901dfecfb989a3569b8e60e7f1c0ee23efec3d0ad6f16bdb5087b3b68492a5f75f1edbaab28296ce546086d4f6a087b5510f8b5')
+md5sums=('c3ce10f4ae9e1beeb75462de27e8c7ae')
+b2sums=('4404537077382a63d7e5f4a1f57d529c5f36c38b74a805e44807e9d70e92b3105f297a45f2971a3dbb1ba662b407bc2f3d0f9b07a45864e8419d57b1482b2fe5')
 
 build() {
   mkdir build
