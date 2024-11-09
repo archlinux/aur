@@ -14,6 +14,9 @@ provides=("$_pkgname")
 source=("$_pkgname::git+$url.git")
 sha256sums=(SKIP)
 
+echo "it turns out the smaz2 executable isn't actually useful at all, working on it"
+false 
+
 pkgver() {
 	printf %s.%s.g%s "$_pkgver" \
 	"$(git -C "$srcdir/$_pkgname" rev-list  --count HEAD)" \

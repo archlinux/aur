@@ -1,3 +1,4 @@
+it turns out the smaz2 executable isn't actually useful at all, working on it
 pkgbase = smaz2-git
 	pkgdesc = compression for very very short messages
 	pkgver = 2.9.g71ecc43
