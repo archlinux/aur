@@ -3,17 +3,22 @@
 # INFO: By default this package is configured to use Wayland only.
 #       In order to complile version for use with X11, install optional dependencies for that case.
 
+# TIP: You can speed up compiling process by setting `MAKEFLAGS="-j $(nproc)"` (or a fixed number)
+#      in your `/etc/makepkg.conf` file to use more threads.
+
 _basename=deskflow
 pkgname=${_basename}-git
-pkgver=1.17.0.r153.g3cb1980
+pkgver=1.17.1.r2.g3815bc6
 pkgrel=1
-pkgdesc="Deskflow lets you share one mouse and keyboard between multiple computers (git version)"
+pkgdesc="Deskflow lets you share one mouse and keyboard between multiple computers"
 arch=('x86_64')
 url="https://deskflow.org/"
 license=('GPL-2.0')
 depends=(
 	'libxtst'
 	'libxkbcommon'
+	'libxkbfile'
+	'libxinerama'
 	'libnotify'
 	'libei'
 	'libportal'
@@ -37,8 +42,6 @@ optdepends=(
 	# 'libxext: X11 support' # dependency of libxtst
 	# 'libxi: X11 support' # dependency of libxtst
 	'libxkbcommon-x11: X11 support'
-	'libxkbfile: X11 support'
-	'libxinerama: X11 support'
 	'libxrandr: X11 support'
 )
 provides=("$_basename")
@@ -55,6 +58,7 @@ prepare() {
 	cd "$_basename"
 	cmake -B build \
 		-DCMAKE_INSTALL_PREFIX='/usr' \
+		-DCMAKE_CXX_FLAGS="-Wno-error=deprecated-declarations" \
 		-Wno-dev
 }
 
