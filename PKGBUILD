@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=MultimodalExperiment
-_pkgver=1.4.0
+_pkgver=1.6.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -21,8 +21,8 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('c4f958e0401823680defdf1513b40ee9')
-b2sums=('e881051858714a23efe9434ec47baa2497d398f6ad56ed92dc38a08f5303330c5168e7da35ecf6e75edac09e842bce91cbddae3988c8b115166aee46511c7238')
+md5sums=('48415565bbd9cb96dd8d264d58c7d034')
+b2sums=('fee2f7a7402b3ccd3384748ba6a5fa6f82813fd3f5f00fd6398e779287d9d7f93dd37e56b037f7598865d97d981ce809a6503dc844b97fc51ce9540bf75c36f9')
 
 build() {
   mkdir build
