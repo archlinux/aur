@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=hoodscanR
-_pkgver=1.2.0
+_pkgver=1.4.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -30,8 +30,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('b0b8a128b68416ead2eafb0ddddcde72')
-b2sums=('a6db1fc8e26fcc75f1cef8d0ab6ac05666c69f0530e43f6d1f374e814bdd75c0dd9a599147dc3287f67de92555233eb39327c98a7af00d3f046130e7a9e870ac')
+md5sums=('c61ed5273654b20c204142213c309391')
+b2sums=('0d996984edf16c5b7b13834097f0f72078b133cbd957af87f15ccc267baf72d2468955122938eb4002b6b849702405c9d7281cafa9aec66e3230eb7e6c758870')
 
 build() {
   mkdir build
