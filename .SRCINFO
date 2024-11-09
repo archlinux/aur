@@ -1,10 +1,10 @@
 pkgbase = clevo-drivers-dkms-git
-	pkgdesc = Kernel module drivers for keyboard, keyboard backlight & general hardware I/O using the SysFS interface for Clevo hardware.
+	pkgdesc = Unofficial modification of TUXEDO Computers kernel module drivers for keyboard, keyboard backlight & general hardware I/O using the SysFS interface, to allow it to run on other Clevo hardware. Use at your own risk.
 	pkgver = 4.10.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/nick42d/clevo-drivers
 	arch = x86_64
-	license = Other
+	license = GPL-3.0+
 	makedepends = git
 	depends = dkms
 	optdepends = linux-headers: build modules against Arch kernel
