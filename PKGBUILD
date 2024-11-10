@@ -2,7 +2,7 @@
 # Contributor: 苏向夜 <fu050409@163.com>
 
 pkgname=cyber-legym-git
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="Running a pretty derby with cyber-legym gracefully"
 arch=('any')
@@ -30,8 +30,17 @@ package() {
 
   install -Dm755 usr/bin/pretty-derby-ui "$pkgdir"/usr/bin/cyber-legym
 
+    echo """[Desktop Entry]
+Categories=
+Comment=No one knows what this means
+Exec=WEBKIT_DISABLE_COMPOSITING_MODE=1 cyber-legym
+Icon=cyber-legym
+Name=Pretty Derby
+Terminal=false
+Type=Application""" > usr/share/applications/cyber-legym.desktop
+
     # Install desktop file
-    install -Dm644 usr/share/applications/*.desktop "$pkgdir"/usr/share/applications/cyber-legym.desktop
+    install -Dm644 usr/share/applications/cyber-legym.desktop "$pkgdir"/usr/share/applications/cyber-legym.desktop
 
     # Install icons
     install -Dm644 usr/share/icons/hicolor/128x128/apps/pretty-derby-ui.png "$pkgdir"/usr/share/icons/hicolor/128x128/apps/cyber-legym.png
@@ -39,5 +48,3 @@ package() {
     install -Dm644 usr/share/icons/hicolor/32x32/apps/pretty-derby-ui.png "$pkgdir"/usr/share/icons/hicolor/32x32/apps/cyber-legym.png
   # Extract package data
 }
-
-
