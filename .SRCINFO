@@ -6,10 +6,10 @@ pkgbase = mfaws-bin
 	conflicts = mfaws
 	provides = mfaws
 	arch = aarch64
-	source_aarch64 = https://github.com/pbar1/mfaws/releases/download/1.0.10-rc3/mfaws_Linux_arm64.tar.gz
-	sha256sums_aarch64 = e5ffab0cc165801a606c41e78a7ffbe6bbe559b4bcfd10249d88c7377b43ccd7
+	source_aarch64 = https://github.com/pbar1/mfaws/releases/download/1.0.10-rc4/mfaws_Linux_arm64.tar.gz
+	sha256sums_aarch64 = 0e91acf721896ba6552415230035326e8b2472e0e60e3f8e546ea1fd2838bbbc
 	arch = x86_64
-	source_x86_64 = https://github.com/pbar1/mfaws/releases/download/1.0.10-rc3/mfaws_Linux_x86_64.tar.gz
-	sha256sums_x86_64 = 82c4490b1d5dbd1543e1a57323069849c87aada0ce748b15543695ca0d20dc7a
+	source_x86_64 = https://github.com/pbar1/mfaws/releases/download/1.0.10-rc4/mfaws_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = ed6c34a646f8c92d166f403817de5103c84278ddbf3cfbc157a3928622ec970f
 	
 pkgname = mfaws-bin
