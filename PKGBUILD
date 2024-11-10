@@ -6,7 +6,7 @@
 pkgname=hmcl-new
 _pkgname=HMCL
 _ver=3.5
-_build=9
+_build=10
 _pkgver=release-$_ver.$_build
 pkgver=$_ver.$_build
 pkgrel=1
@@ -14,22 +14,22 @@ pkgdesc='An unofficial build of HMCL that trying to compile and run HMCL with th
 arch=('any')
 url='https://github.com/HMCL-dev/HMCL'
 license=('GPL3')
-depends=('java-runtime>=17' 'java-openjfx>=17' 'hicolor-icon-theme')
-makedepends=('java-environment>=17' 'gradle')
+depends=('java-runtime>=21' 'java-openjfx>=21' 'hicolor-icon-theme')
+makedepends=('java-environment>=21' 'gradle')
 provides=('hmcl')
 conflicts=('hmcl')
 source=('hmcl.desktop'
   'hmcl-launch-script'
   "${url}/raw/${_pkgver}/HMCL/image/hmcl.png"
   "${_pkgname}-${_pkgver}.tar.gz::${url}/archive/refs/tags/${_pkgver}.tar.gz"
-  "0001-Target-Java-17.patch"
+  "0001-Target-Java-21.patch"
   "0002-Cleanup.patch")
 sha256sums=('b4e8aa0f349bb3f5dd15a31c5a13ac3e10e5a5bcd2f97cf390041924275e43ef'
   '4fcd4bf8f8d2ca39cf25a8d59daeb53ffa54fbca0356bd55aa17a5ee31d59a95'
   'd4e56ae2e8c0d991dba01ef3124ef4d38918825f58728338a8bab5e78319306a'
-  '7db1eb0af29bc978c145b8786a50bf47ef18218fff0985fd594e399b04a21682'
-  'ff7e7aa8d3fb8bcd74051d09b97a62ae71c06f7a006b63e5b3bacf044679c786'
-  '28748583aad6b0eb6254fc0474d1f18a8680d4c6d787f13ce41bd5b0f7621cef')
+  '9c94eb49384cdee34f5d7ab7f8da3da81df95ed1ade5a8b2533fd2f6b0fd3768'
+  'd6a5c0226cb3e7b6511af97680a5050be62be018727d59a9072a978227e4da52'
+  'c2eab55b67ef4f21b123fe628099c6d817b71436b73b7467dc48f4743ec1af3c')
 
 prepare() {
   cd "$_pkgname-$_pkgver"

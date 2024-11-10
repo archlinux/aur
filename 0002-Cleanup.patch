@@ -1,21 +1,20 @@
-From 3839c72b2e3fcd028b3df70ea22b3cb57c81f471 Mon Sep 17 00:00:00 2001
+From 83bca2b324458c98be95b4b76fe37a065130ad97 Mon Sep 17 00:00:00 2001
 From: Aviana Cruz <gwencroft@proton.me>
 Date: Sun, 6 Nov 2022 13:33:14 +0800
 Subject: [PATCH 2/2] Cleanup
 
 Co-authored-by: zhaose <weiliang1503@outlook.com>
-Signed-off-by: Aviana Cruz <gwencroft@proton.me>
 ---
  .../java/org/jackhuang/hmcl/Launcher.java     |   9 -
  .../java/org/jackhuang/hmcl/Metadata.java     |   2 -
- .../org/jackhuang/hmcl/countly/Countly.java   |  86 ------
- .../org/jackhuang/hmcl/ui/Controllers.java    |   9 -
+ .../org/jackhuang/hmcl/ui/Controllers.java    |   6 -
  .../org/jackhuang/hmcl/ui/CrashWindow.java    |   3 -
- .../org/jackhuang/hmcl/ui/UpgradeDialog.java  |  76 -----
+ .../org/jackhuang/hmcl/ui/UpgradeDialog.java  |  91 ------
  .../hmcl/ui/account/CreateAccountPane.java    |  16 -
+ .../hmcl/ui/download/VersionsPage.java        |  12 -
  .../jackhuang/hmcl/ui/main/FeedbackPage.java  |  73 -----
  .../hmcl/ui/main/LauncherSettingsPage.java    |  14 +-
- .../org/jackhuang/hmcl/ui/main/MainPage.java  | 135 +--------
+ .../org/jackhuang/hmcl/ui/main/MainPage.java  | 145 +--------
  .../org/jackhuang/hmcl/ui/main/RootPage.java  |  11 -
  .../jackhuang/hmcl/ui/main/SettingsPage.java  |  60 ----
  .../jackhuang/hmcl/ui/main/SettingsView.java  |  58 ----
@@ -28,8 +27,7 @@ Signed-off-by: Aviana Cruz <gwencroft@proton.me>
  .../jackhuang/hmcl/upgrade/UpdateHandler.java | 281 ------------------
  .../jackhuang/hmcl/util/CrashReporter.java    |   5 -
  .../hmcl/game/GameDumpGenerator.java          |   6 +-
- 22 files changed, 3 insertions(+), 1450 deletions(-)
- delete mode 100644 HMCL/src/main/java/org/jackhuang/hmcl/countly/Countly.java
+ 22 files changed, 3 insertions(+), 1398 deletions(-)
  delete mode 100644 HMCL/src/main/java/org/jackhuang/hmcl/ui/UpgradeDialog.java
  delete mode 100644 HMCL/src/main/java/org/jackhuang/hmcl/ui/main/FeedbackPage.java
  delete mode 100644 HMCL/src/main/java/org/jackhuang/hmcl/upgrade/ExecutableHeaderHelper.java
@@ -41,7 +39,7 @@ Signed-off-by: Aviana Cruz <gwencroft@proton.me>
  delete mode 100644 HMCL/src/main/java/org/jackhuang/hmcl/upgrade/UpdateHandler.java
 
 diff --git a/HMCL/src/main/java/org/jackhuang/hmcl/Launcher.java b/HMCL/src/main/java/org/jackhuang/hmcl/Launcher.java
-index 494dda7b3..de7786921 100644
+index 4bd9c2838..f26fb76c6 100644
 --- a/HMCL/src/main/java/org/jackhuang/hmcl/Launcher.java
 +++ b/HMCL/src/main/java/org/jackhuang/hmcl/Launcher.java
 @@ -30,8 +30,6 @@ import org.jackhuang.hmcl.setting.SambaException;
@@ -94,103 +92,11 @@ index 06198bfb9..b8d0d50f1 100644
  
      public static final Path MINECRAFT_DIRECTORY = OperatingSystem.getWorkingDirectory("minecraft");
      public static final Path HMCL_DIRECTORY;
-diff --git a/HMCL/src/main/java/org/jackhuang/hmcl/countly/Countly.java b/HMCL/src/main/java/org/jackhuang/hmcl/countly/Countly.java
-deleted file mode 100644
-index f18b19685..000000000
---- a/HMCL/src/main/java/org/jackhuang/hmcl/countly/Countly.java
-+++ /dev/null
-@@ -1,86 +0,0 @@
--/*
-- * Hello Minecraft! Launcher
-- * Copyright (C) 2020  huangyuhui <huanghongxun2008@126.com> and contributors
-- *
-- * This program is free software: you can redistribute it and/or modify
-- * it under the terms of the GNU General Public License as published by
-- * the Free Software Foundation, either version 3 of the License, or
-- * (at your option) any later version.
-- *
-- * This program is distributed in the hope that it will be useful,
-- * but WITHOUT ANY WARRANTY; without even the implied warranty of
-- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-- * GNU General Public License for more details.
-- *
-- * You should have received a copy of the GNU General Public License
-- * along with this program.  If not, see <https://www.gnu.org/licenses/>.
-- */
--package org.jackhuang.hmcl.countly;
--
--import org.jackhuang.hmcl.util.io.HttpRequest;
--
--import java.io.IOException;
--import java.time.ZonedDateTime;
--import java.util.Calendar;
--import java.util.Locale;
--
--import static org.jackhuang.hmcl.util.Pair.pair;
--
--public class Countly {
--
--    private String deviceId;
--    private String endpoint;
--    private String serverURL;
--
--    public void sendMetric(String metrics) throws IOException {
--        HttpRequest.GET(serverURL + endpoint,
--                pair("begin_session", "1"),
--                pair("session_id", "1"),
--                pair("metrics", metrics),
--                pair("device_id", deviceId),
--                pair("timestamp", Long.toString(System.currentTimeMillis())),
--                pair("tz", Integer.toString(getTimezoneOffset())),
--                pair("hour", Integer.toString(currentHour())),
--                pair("dow", Integer.toString(currentDayOfWeek())),
--                pair("app_key", APP_KEY),
--                pair("sdk_name", "java-native"),
--                pair("sdk_version", "20.11.1"))
--                .getString();
--    }
--
--    private static int getTimezoneOffset() {
--        return ZonedDateTime.now().getOffset().getTotalSeconds() / 60;
--    }
--
--    private static String getLocale() {
--        final Locale locale = Locale.getDefault();
--        return locale.getLanguage() + "_" + locale.getCountry();
--    }
--
--    private static int currentHour() {
--        return Calendar.getInstance().get(Calendar.HOUR_OF_DAY);
--    }
--
--    private int currentDayOfWeek() {
--        int day = Calendar.getInstance().get(Calendar.DAY_OF_WEEK);
--        switch (day) {
--            case Calendar.SUNDAY:
--                return 0;
--            case Calendar.MONDAY:
--                return 1;
--            case Calendar.TUESDAY:
--                return 2;
--            case Calendar.WEDNESDAY:
--                return 3;
--            case Calendar.THURSDAY:
--                return 4;
--            case Calendar.FRIDAY:
--                return 5;
--            case Calendar.SATURDAY:
--                return 6;
--        }
--        return 0;
--    }
--
--    private static final String APP_KEY = "";
--}
 diff --git a/HMCL/src/main/java/org/jackhuang/hmcl/ui/Controllers.java b/HMCL/src/main/java/org/jackhuang/hmcl/ui/Controllers.java
-index af9c01d4a..82758c65e 100644
+index 44e208ac5..96d67623f 100644
 --- a/HMCL/src/main/java/org/jackhuang/hmcl/ui/Controllers.java
 +++ b/HMCL/src/main/java/org/jackhuang/hmcl/ui/Controllers.java
-@@ -386,15 +386,6 @@ public final class Controllers {
+@@ -386,12 +386,6 @@ public final class Controllers {
  
      public static void onHyperlinkAction(String href) {
          if (href.startsWith("hmcl://")) {
@@ -199,15 +105,12 @@ index af9c01d4a..82758c65e 100644
 -                    Controllers.getSettingsPage().showFeedback();
 -                    Controllers.navigate(Controllers.getSettingsPage());
 -                    break;
--                case "hmcl://hide-announcement":
--                    Controllers.getRootPage().getMainPage().hideAnnouncementPane();
--                    break;
 -            }
          } else {
              FXUtils.openLink(href);
          }
 diff --git a/HMCL/src/main/java/org/jackhuang/hmcl/ui/CrashWindow.java b/HMCL/src/main/java/org/jackhuang/hmcl/ui/CrashWindow.java
-index c1f7158d4..60215297a 100644
+index 5af27b6a6..69988b270 100644
 --- a/HMCL/src/main/java/org/jackhuang/hmcl/ui/CrashWindow.java
 +++ b/HMCL/src/main/java/org/jackhuang/hmcl/ui/CrashWindow.java
 @@ -28,7 +28,6 @@ import javafx.scene.layout.StackPane;
@@ -229,10 +132,10 @@ index c1f7158d4..60215297a 100644
          lblCrash.setWrapText(true);
 diff --git a/HMCL/src/main/java/org/jackhuang/hmcl/ui/UpgradeDialog.java b/HMCL/src/main/java/org/jackhuang/hmcl/ui/UpgradeDialog.java
 deleted file mode 100644
-index e8602e394..000000000
+index e6b1e9925..000000000
 --- a/HMCL/src/main/java/org/jackhuang/hmcl/ui/UpgradeDialog.java
 +++ /dev/null
-@@ -1,76 +0,0 @@
+@@ -1,91 +0,0 @@
 -/*
 - * Hello Minecraft! Launcher
 - * Copyright (C) 2021  huangyuhui <huanghongxun2008@126.com> and contributors
@@ -254,63 +157,78 @@ index e8602e394..000000000
 -
 -import com.jfoenix.controls.JFXButton;
 -import com.jfoenix.controls.JFXDialogLayout;
--import javafx.concurrent.Worker;
 -import javafx.scene.control.Label;
--import javafx.scene.web.WebEngine;
--import javafx.scene.web.WebView;
--import org.jackhuang.hmcl.Metadata;
+-import javafx.scene.control.ProgressIndicator;
+-import javafx.scene.control.ScrollPane;
+-import org.jackhuang.hmcl.task.Schedulers;
+-import org.jackhuang.hmcl.task.Task;
 -import org.jackhuang.hmcl.ui.construct.DialogCloseEvent;
+-import org.jackhuang.hmcl.ui.construct.JFXHyperlink;
 -import org.jackhuang.hmcl.upgrade.RemoteVersion;
+-import org.jsoup.Jsoup;
+-import org.jsoup.nodes.Document;
+-import org.jsoup.nodes.Node;
 -
+-import java.io.IOException;
+-import java.net.URL;
 -
 -import static org.jackhuang.hmcl.Metadata.CHANGELOG_URL;
 -import static org.jackhuang.hmcl.ui.FXUtils.onEscPressed;
--import static org.jackhuang.hmcl.util.logging.Logger.LOG;
 -import static org.jackhuang.hmcl.util.i18n.I18n.i18n;
+-import static org.jackhuang.hmcl.util.logging.Logger.LOG;
 -
--public class UpgradeDialog extends JFXDialogLayout {
+-public final class UpgradeDialog extends JFXDialogLayout {
 -    public UpgradeDialog(RemoteVersion remoteVersion, Runnable updateRunnable) {
--        {
--            setHeading(new Label(i18n("update.changelog")));
--        }
+-        setHeading(new Label(i18n("update.changelog")));
+-        setBody(new ProgressIndicator());
 -
--        {
--            String url = CHANGELOG_URL + remoteVersion.getChannel().channelName + ".html#nowchange";
--            try {
--                WebView webView = new WebView();
--                webView.getEngine().setUserDataDirectory(Metadata.HMCL_DIRECTORY.toFile());
--                WebEngine engine = webView.getEngine();
--                engine.load(url);
--                engine.getLoadWorker().stateProperty().addListener((observable, oldValue, newValue) -> {
--                    if (newValue == Worker.State.FAILED) {
--                        LOG.warning("Failed to load update log, trying to open it in browser");
--                        FXUtils.openLink(url);
--                        setBody();
--                    }
--                });
--                setBody(webView);
--            } catch (NoClassDefFoundError | UnsatisfiedLinkError e) {
--                LOG.warning("WebView is missing or initialization failed", e);
+-        String url = CHANGELOG_URL + remoteVersion.getChannel().channelName + ".html";
+-        Task.supplyAsync(Schedulers.io(), () -> {
+-            Document document = Jsoup.parse(new URL(url), 30 * 1000);
+-            Node node = document.selectFirst("#nowchange");
+-            if (node == null)
+-                throw new IOException("Cannot find #nowchange in document");
+-
+-            HTMLRenderer renderer = new HTMLRenderer(uri -> {
+-                LOG.info("Open link: " + uri);
+-                FXUtils.openLink(uri.toString());
+-            });
+-
+-            do {
+-                renderer.appendNode(node);
+-                node = node.nextSibling();
+-            } while (node != null);
+-
+-            return renderer.render();
+-        }).whenComplete(Schedulers.javafx(), (result, exception) -> {
+-            if (exception == null) {
+-                ScrollPane scrollPane = new ScrollPane(result);
+-                scrollPane.setFitToWidth(true);
+-                setBody(scrollPane);
+-            } else {
+-                LOG.warning("Failed to load update log, trying to open it in browser");
 -                FXUtils.openLink(url);
+-                setBody();
 -            }
--        }
+-        }).start();
 -
--        {
--            JFXButton updateButton = new JFXButton(i18n("update.accept"));
--            updateButton.getStyleClass().add("dialog-accept");
--            updateButton.setOnMouseClicked(e -> updateRunnable.run());
+-        JFXHyperlink openInBrowser = new JFXHyperlink(i18n("web.view_in_browser"));
+-        openInBrowser.setExternalLink(url);
 -
--            JFXButton cancelButton = new JFXButton(i18n("button.cancel"));
--            cancelButton.getStyleClass().add("dialog-cancel");
--            cancelButton.setOnMouseClicked(e -> fireEvent(new DialogCloseEvent()));
+-        JFXButton updateButton = new JFXButton(i18n("update.accept"));
+-        updateButton.getStyleClass().add("dialog-accept");
+-        updateButton.setOnAction(e -> updateRunnable.run());
 -
--            setActions(updateButton, cancelButton);
--            onEscPressed(this, cancelButton::fire);
--        }
+-        JFXButton cancelButton = new JFXButton(i18n("button.cancel"));
+-        cancelButton.getStyleClass().add("dialog-cancel");
+-        cancelButton.setOnAction(e -> fireEvent(new DialogCloseEvent()));
+-
+-        setActions(openInBrowser, updateButton, cancelButton);
+-        onEscPressed(this, cancelButton::fire);
 -    }
 -}
 diff --git a/HMCL/src/main/java/org/jackhuang/hmcl/ui/account/CreateAccountPane.java b/HMCL/src/main/java/org/jackhuang/hmcl/ui/account/CreateAccountPane.java
-index 9a17ba55c..606bf4465 100644
+index a5d8bee8b..5ee7e554a 100644
 --- a/HMCL/src/main/java/org/jackhuang/hmcl/ui/account/CreateAccountPane.java
 +++ b/HMCL/src/main/java/org/jackhuang/hmcl/ui/account/CreateAccountPane.java
 @@ -57,7 +57,6 @@ import org.jackhuang.hmcl.ui.FXUtils;
@@ -321,7 +239,7 @@ index 9a17ba55c..606bf4465 100644
  import org.jackhuang.hmcl.util.StringUtils;
  import org.jackhuang.hmcl.util.gson.UUIDTypeAdapter;
  import org.jackhuang.hmcl.util.javafx.BindingMapping;
-@@ -322,12 +321,6 @@ public class CreateAccountPane extends JFXDialogLayout implements DialogAware {
+@@ -323,12 +322,6 @@ public class CreateAccountPane extends JFXDialogLayout implements DialogAware {
                  box.getChildren().setAll(profileLink, birthLink, purchaseLink, deauthorizeLink, forgotpasswordLink, createProfileLink);
                  GridPane.setColumnSpan(box, 2);
  
@@ -334,7 +252,7 @@ index 9a17ba55c..606bf4465 100644
                  vbox.getChildren().addAll(hintPane, box);
  
                  btnAccept.setDisable(false);
-@@ -399,15 +392,6 @@ public class CreateAccountPane extends JFXDialogLayout implements DialogAware {
+@@ -400,15 +393,6 @@ public class CreateAccountPane extends JFXDialogLayout implements DialogAware {
  
              int rowIndex = 0;
  
@@ -350,6 +268,43 @@ index 9a17ba55c..606bf4465 100644
              if (factory instanceof BoundAuthlibInjectorAccountFactory) {
                  this.server = ((BoundAuthlibInjectorAccountFactory) factory).getServer();
  
+diff --git a/HMCL/src/main/java/org/jackhuang/hmcl/ui/download/VersionsPage.java b/HMCL/src/main/java/org/jackhuang/hmcl/ui/download/VersionsPage.java
+index 3d4a3c3ef..5d6702733 100644
+--- a/HMCL/src/main/java/org/jackhuang/hmcl/ui/download/VersionsPage.java
++++ b/HMCL/src/main/java/org/jackhuang/hmcl/ui/download/VersionsPage.java
+@@ -46,7 +46,6 @@ import org.jackhuang.hmcl.ui.SVG;
+ import org.jackhuang.hmcl.ui.animation.ContainerAnimations;
+ import org.jackhuang.hmcl.ui.animation.TransitionPane;
+ import org.jackhuang.hmcl.ui.construct.ComponentList;
+-import org.jackhuang.hmcl.ui.construct.HintPane;
+ import org.jackhuang.hmcl.ui.construct.IconedTwoLineListItem;
+ import org.jackhuang.hmcl.ui.construct.RipplerContainer;
+ import org.jackhuang.hmcl.ui.wizard.Navigation;
+@@ -92,13 +91,6 @@ public final class VersionsPage extends BorderPane implements WizardPage, Refres
+         this.libraryId = libraryId;
+         this.navigation = navigation;
+ 
+-        HintPane hintPane = new HintPane();
+-        hintPane.setText(i18n("sponsor.bmclapi"));
+-        hintPane.getStyleClass().add("sponsor-pane");
+-        FXUtils.onClicked(hintPane, this::onSponsor);
+-        BorderPane.setMargin(hintPane, new Insets(10, 10, 0, 10));
+-        this.setTop(hintPane);
+-
+         root = new TransitionPane();
+         {
+             spinner = new JFXSpinner();
+@@ -261,10 +253,6 @@ public final class VersionsPage extends BorderPane implements WizardPage, Refres
+ 
+     private void onBack() { navigation.onPrev(true); }
+ 
+-    private void onSponsor() {
+-        FXUtils.openLink("https://bmclapidoc.bangbang93.com");
+-    }
+-
+     private static class RemoteVersionListCell extends ListCell<RemoteVersion> {
+         final IconedTwoLineListItem content = new IconedTwoLineListItem();
+         final RipplerContainer ripplerContainer = new RipplerContainer(content);
 diff --git a/HMCL/src/main/java/org/jackhuang/hmcl/ui/main/FeedbackPage.java b/HMCL/src/main/java/org/jackhuang/hmcl/ui/main/FeedbackPage.java
 deleted file mode 100644
 index 23c954eff..000000000
@@ -430,10 +385,10 @@ index 23c954eff..000000000
 -
 -}
 diff --git a/HMCL/src/main/java/org/jackhuang/hmcl/ui/main/LauncherSettingsPage.java b/HMCL/src/main/java/org/jackhuang/hmcl/ui/main/LauncherSettingsPage.java
-index dbcba03c0..32ca4b1db 100644
+index 8e59718fe..c5f3cd9e2 100644
 --- a/HMCL/src/main/java/org/jackhuang/hmcl/ui/main/LauncherSettingsPage.java
 +++ b/HMCL/src/main/java/org/jackhuang/hmcl/ui/main/LauncherSettingsPage.java
-@@ -45,7 +45,6 @@ public class LauncherSettingsPage extends DecoratorAnimatedPage implements Decor
+@@ -48,7 +48,6 @@ public class LauncherSettingsPage extends DecoratorAnimatedPage implements Decor
      private final TabHeader.Tab<DownloadSettingsPage> downloadTab = new TabHeader.Tab<>("downloadSettingsPage");
      private final TabHeader.Tab<HelpPage> helpTab = new TabHeader.Tab<>("helpPage");
      private final TabHeader.Tab<AboutPage> aboutTab = new TabHeader.Tab<>("aboutPage");
@@ -441,18 +396,18 @@ index dbcba03c0..32ca4b1db 100644
      private final TransitionPane transitionPane = new TransitionPane();
  
      public LauncherSettingsPage() {
-@@ -54,9 +53,8 @@ public class LauncherSettingsPage extends DecoratorAnimatedPage implements Decor
+@@ -58,9 +57,8 @@ public class LauncherSettingsPage extends DecoratorAnimatedPage implements Decor
          personalizationTab.setNodeSupplier(PersonalizationPage::new);
          downloadTab.setNodeSupplier(DownloadSettingsPage::new);
          helpTab.setNodeSupplier(HelpPage::new);
 -        feedbackTab.setNodeSupplier(FeedbackPage::new);
          aboutTab.setNodeSupplier(AboutPage::new);
--        tab = new TabHeader(gameTab, settingsTab, personalizationTab, downloadTab, helpTab, feedbackTab, aboutTab);
-+        tab = new TabHeader(gameTab, settingsTab, personalizationTab, downloadTab, helpTab, aboutTab);
+-        tab = new TabHeader(gameTab, javaManagementTab, settingsTab, personalizationTab, downloadTab, helpTab, feedbackTab, aboutTab);
++        tab = new TabHeader(gameTab, javaManagementTab, settingsTab, personalizationTab, downloadTab, helpTab, aboutTab);
  
          tab.select(gameTab);
          gameTab.initializeIfNeeded();
-@@ -100,12 +98,6 @@ public class LauncherSettingsPage extends DecoratorAnimatedPage implements Decor
+@@ -109,12 +107,6 @@ public class LauncherSettingsPage extends DecoratorAnimatedPage implements Decor
                          helpItem.activeProperty().bind(tab.getSelectionModel().selectedItemProperty().isEqualTo(helpTab));
                          helpItem.setOnAction(e -> tab.select(helpTab));
                      })
@@ -465,7 +420,7 @@ index dbcba03c0..32ca4b1db 100644
                      .addNavigationDrawerItem(aboutItem -> {
                          aboutItem.setTitle(i18n("about"));
                          aboutItem.setLeftGraphic(wrap(SVG.INFORMATION_OUTLINE));
-@@ -134,10 +126,6 @@ public class LauncherSettingsPage extends DecoratorAnimatedPage implements Decor
+@@ -143,10 +135,6 @@ public class LauncherSettingsPage extends DecoratorAnimatedPage implements Decor
          tab.select(gameTab);
      }
  
@@ -477,10 +432,10 @@ index dbcba03c0..32ca4b1db 100644
      public ReadOnlyObjectProperty<State> stateProperty() {
          return state.getReadOnlyProperty();
 diff --git a/HMCL/src/main/java/org/jackhuang/hmcl/ui/main/MainPage.java b/HMCL/src/main/java/org/jackhuang/hmcl/ui/main/MainPage.java
-index 6f1cf7f17..c63d73ce9 100644
+index 7cded1d27..aa45c8523 100644
 --- a/HMCL/src/main/java/org/jackhuang/hmcl/ui/main/MainPage.java
 +++ b/HMCL/src/main/java/org/jackhuang/hmcl/ui/main/MainPage.java
-@@ -53,9 +53,6 @@ import org.jackhuang.hmcl.ui.construct.TwoLineListItem;
+@@ -54,9 +54,6 @@ import org.jackhuang.hmcl.ui.construct.TwoLineListItem;
  import org.jackhuang.hmcl.ui.decorator.DecoratorPage;
  import org.jackhuang.hmcl.ui.versions.GameItem;
  import org.jackhuang.hmcl.ui.versions.Versions;
@@ -500,23 +455,33 @@ index 6f1cf7f17..c63d73ce9 100644
      private final ObservableList<Node> versionNodes;
      private Profile profile;
  
--    private VBox announcementPane;
+-    private TransitionPane announcementPane;
 -    private final StackPane updatePane;
      private final JFXButton menuButton;
  
      {
-@@ -101,54 +94,6 @@ public final class MainPage extends StackPane implements DecoratorPage {
+@@ -101,64 +94,6 @@ public final class MainPage extends StackPane implements DecoratorPage {
  
          setPadding(new Insets(20));
  
 -        if (Metadata.isNightly() || (Metadata.isDev() && !Objects.equals(Metadata.VERSION, config().getShownTips().get(ANNOUNCEMENT)))) {
--            announcementPane = new VBox(16);
+-            AnnouncementCard announcementCard = null;
+-
 -            if (Metadata.isNightly()) {
--                announcementPane.getChildren().add(new AnnouncementCard(i18n("update.channel.nightly.title"), i18n("update.channel.nightly.hint")));
+-                announcementCard = new AnnouncementCard(i18n("update.channel.nightly.title"), i18n("update.channel.nightly.hint"), null);
 -            } else if (Metadata.isDev()) {
--                announcementPane.getChildren().add(new AnnouncementCard(i18n("update.channel.dev.title"), i18n("update.channel.dev.hint")));
+-                announcementCard = new AnnouncementCard(i18n("update.channel.dev.title"), i18n("update.channel.dev.hint"), this::hideAnnouncementPane);
 -            }
--            getChildren().add(announcementPane);
+-
+-            if (announcementCard != null) {
+-                VBox announcementBox = new VBox(16);
+-                announcementBox.getChildren().add(announcementCard);
+-
+-                announcementPane = new TransitionPane();
+-                announcementPane.setContent(announcementBox, ContainerAnimations.NONE);
+-
+-                getChildren().add(announcementPane);
+-            }
 -        }
 -
 -        updatePane = new StackPane();
@@ -525,7 +490,7 @@ index 6f1cf7f17..c63d73ce9 100644
 -        FXUtils.setLimitWidth(updatePane, 230);
 -        FXUtils.setLimitHeight(updatePane, 55);
 -        StackPane.setAlignment(updatePane, Pos.TOP_RIGHT);
--        updatePane.setOnMouseClicked(e -> onUpgrade());
+-        FXUtils.onClicked(updatePane, this::onUpgrade);
 -        FXUtils.onChange(showUpdateProperty(), this::showUpdate);
 -
 -        {
@@ -552,7 +517,7 @@ index 6f1cf7f17..c63d73ce9 100644
 -            StackPane.setAlignment(closeUpdateButton, Pos.TOP_RIGHT);
 -            closeUpdateButton.getStyleClass().add("toggle-icon-tiny");
 -            StackPane.setMargin(closeUpdateButton, new Insets(5));
--            closeUpdateButton.setOnMouseClicked(e -> closeUpdateBubble());
+-            closeUpdateButton.setOnAction(e -> closeUpdateBubble());
 -
 -            updatePane.getChildren().setAll(hBox, closeUpdateButton);
 -        }
@@ -560,7 +525,7 @@ index 6f1cf7f17..c63d73ce9 100644
          StackPane launchPane = new StackPane();
          launchPane.getStyleClass().add("launch-pane");
          launchPane.setMaxWidth(230);
-@@ -219,7 +164,7 @@ public final class MainPage extends StackPane implements DecoratorPage {
+@@ -229,7 +164,7 @@ public final class MainPage extends StackPane implements DecoratorPage {
              launchPane.getChildren().setAll(launchButton, separator, menuButton);
          }
  
@@ -569,7 +534,7 @@ index 6f1cf7f17..c63d73ce9 100644
  
          menu.setMaxHeight(365);
          menu.setMaxWidth(545);
-@@ -232,37 +177,6 @@ public final class MainPage extends StackPane implements DecoratorPage {
+@@ -242,40 +177,6 @@ public final class MainPage extends StackPane implements DecoratorPage {
          });
          Bindings.bindContent(menu.getContent(), versionNodes);
      }
@@ -578,10 +543,13 @@ index 6f1cf7f17..c63d73ce9 100644
 -        doAnimation(show);
 -
 -        if (show && getLatestVersion() != null && !Objects.equals(config().getPromptedVersion(), getLatestVersion().getVersion())) {
--            Controllers.dialog("", i18n("update.bubble.title", getLatestVersion().getVersion()), MessageDialogPane.MessageType.INFO, () -> {
--                config().setPromptedVersion(getLatestVersion().getVersion());
--                onUpgrade();
--            });
+-            Controllers.dialog(new MessageDialogPane.Builder("", i18n("update.bubble.title", getLatestVersion().getVersion()), MessageDialogPane.MessageType.INFO)
+-                    .addAction(i18n("button.view"), () -> {
+-                        config().setPromptedVersion(getLatestVersion().getVersion());
+-                        onUpgrade();
+-                    })
+-                    .addCancel(null)
+-                    .build());
 -        }
 -    }
 -
@@ -607,7 +575,7 @@ index 6f1cf7f17..c63d73ce9 100644
      private void launch() {
          Versions.launch(Profiles.getSelectedProfile());
      }
-@@ -271,29 +185,6 @@ public final class MainPage extends StackPane implements DecoratorPage {
+@@ -284,26 +185,6 @@ public final class MainPage extends StackPane implements DecoratorPage {
          popup.show(menuButton, JFXPopup.PopupVPosition.BOTTOM, JFXPopup.PopupHPosition.RIGHT, 0, -menuButton.getHeight());
      }
  
@@ -627,17 +595,14 @@ index 6f1cf7f17..c63d73ce9 100644
 -    public void hideAnnouncementPane() {
 -        if (announcementPane != null) {
 -            config().getShownTips().put(ANNOUNCEMENT, Metadata.VERSION);
--            Pane parent = (Pane) announcementPane.getParent();
--            if (parent != null)
--                parent.getChildren().remove(announcementPane);
--            announcementPane = null;
+-            announcementPane.setContent(new StackPane(), ContainerAnimations.FADE);
 -        }
 -    }
 -
      @Override
      public ReadOnlyObjectWrapper<State> stateProperty() {
          return state;
-@@ -311,30 +202,6 @@ public final class MainPage extends StackPane implements DecoratorPage {
+@@ -321,30 +202,6 @@ public final class MainPage extends StackPane implements DecoratorPage {
          this.currentGame.set(currentGame);
      }
  
@@ -669,7 +634,7 @@ index 6f1cf7f17..c63d73ce9 100644
          FXUtils.checkFxUserThread();
          this.profile = profile;
 diff --git a/HMCL/src/main/java/org/jackhuang/hmcl/ui/main/RootPage.java b/HMCL/src/main/java/org/jackhuang/hmcl/ui/main/RootPage.java
-index abf24d6ce..c892a4180 100644
+index 21301dee7..9c0c12c2f 100644
 --- a/HMCL/src/main/java/org/jackhuang/hmcl/ui/main/RootPage.java
 +++ b/HMCL/src/main/java/org/jackhuang/hmcl/ui/main/RootPage.java
 @@ -42,7 +42,6 @@ import org.jackhuang.hmcl.ui.nbt.NBTEditorPage;
@@ -797,10 +762,10 @@ index 90df9e610..2de8c21d2 100644
      protected void clearCacheDirectory() {
          FileUtils.cleanDirectoryQuietly(new File(Settings.instance().getCommonDirectory(), "cache"));
 diff --git a/HMCL/src/main/java/org/jackhuang/hmcl/ui/main/SettingsView.java b/HMCL/src/main/java/org/jackhuang/hmcl/ui/main/SettingsView.java
-index 39bd0ae17..4eb1fd25b 100644
+index 0bfc1ba6a..2c90a7b77 100644
 --- a/HMCL/src/main/java/org/jackhuang/hmcl/ui/main/SettingsView.java
 +++ b/HMCL/src/main/java/org/jackhuang/hmcl/ui/main/SettingsView.java
-@@ -50,11 +50,6 @@ public abstract class SettingsView extends StackPane {
+@@ -51,11 +51,6 @@ public abstract class SettingsView extends StackPane {
      protected final JFXComboBox<SupportedLocale> cboLanguage;
      protected final MultiFileItem<EnumCommonDirectory> fileCommonLocation;
      protected final ComponentSublist fileCommonLocationSublist;
@@ -812,19 +777,19 @@ index 39bd0ae17..4eb1fd25b 100644
      protected final ScrollPane scroll;
  
      public SettingsView() {
-@@ -70,11 +65,6 @@ public abstract class SettingsView extends StackPane {
+@@ -71,11 +66,6 @@ public abstract class SettingsView extends StackPane {
                  ComponentList settingsPane = new ComponentList();
                  {
                      {
 -                        StackPane sponsorPane = new StackPane();
 -                        sponsorPane.setCursor(Cursor.HAND);
--                        sponsorPane.setOnMouseClicked(e -> onSponsor());
+-                        FXUtils.onClicked(sponsorPane, this::onSponsor);
 -                        sponsorPane.setPadding(new Insets(8, 0, 8, 0));
 -
                          GridPane gridPane = new GridPane();
  
                          ColumnConstraints col = new ColumnConstraints();
-@@ -97,51 +87,7 @@ public abstract class SettingsView extends StackPane {
+@@ -98,51 +88,7 @@ public abstract class SettingsView extends StackPane {
                              GridPane.setColumnIndex(label, 0);
                              gridPane.getChildren().add(label);
                          }
@@ -851,7 +816,7 @@ index 39bd0ae17..4eb1fd25b 100644
 -
 -                    {
 -                        btnUpdate = new JFXButton();
--                        btnUpdate.setOnMouseClicked(e -> onUpdate());
+-                        btnUpdate.setOnAction(e -> onUpdate());
 -                        btnUpdate.getStyleClass().add("toggle-icon4");
 -                        btnUpdate.setGraphic(SVG.UPDATE.createIcon(Theme.blackFill(), 20, 20));
 -
@@ -876,8 +841,8 @@ index 39bd0ae17..4eb1fd25b 100644
                  }
  
                  {
-@@ -205,11 +151,7 @@ public abstract class SettingsView extends StackPane {
-         }
+@@ -219,11 +165,7 @@ public abstract class SettingsView extends StackPane {
+         FXUtils.openFolder(Metadata.HMCL_DIRECTORY.resolve("logs").toFile());
      }
  
 -    protected abstract void onUpdate();
@@ -1535,7 +1500,7 @@ index b4663b0f2..000000000
 -}
 diff --git a/HMCL/src/main/java/org/jackhuang/hmcl/upgrade/UpdateHandler.java b/HMCL/src/main/java/org/jackhuang/hmcl/upgrade/UpdateHandler.java
 deleted file mode 100644
-index d0dccc4f7..000000000
+index ddcd5342f..000000000
 --- a/HMCL/src/main/java/org/jackhuang/hmcl/upgrade/UpdateHandler.java
 +++ /dev/null
 @@ -1,281 +0,0 @@
@@ -1574,7 +1539,7 @@ index d0dccc4f7..000000000
 -import org.jackhuang.hmcl.util.TaskCancellationAction;
 -import org.jackhuang.hmcl.util.io.FileUtils;
 -import org.jackhuang.hmcl.util.io.JarUtils;
--import org.jackhuang.hmcl.util.platform.JavaVersion;
+-import org.jackhuang.hmcl.java.JavaRuntime;
 -import org.jackhuang.hmcl.util.platform.OperatingSystem;
 -
 -import java.io.IOException;
@@ -1718,7 +1683,7 @@ index d0dccc4f7..000000000
 -
 -    private static void startJava(Path jar, String... appArgs) throws IOException {
 -        List<String> commandline = new ArrayList<>();
--        commandline.add(JavaVersion.fromCurrentEnvironment().getBinary().toString());
+-        commandline.add(JavaRuntime.getDefault().getBinary().toString());
 -        for (Map.Entry<Object, Object> entry : System.getProperties().entrySet()) {
 -            Object key = entry.getKey();
 -            if (key instanceof String && ((String) key).startsWith("hmcl.")) {
@@ -1860,5 +1825,5 @@ index 36ab72ee2..eae748add 100644
      }
  }
 -- 
-2.45.2
+2.47.0
 
