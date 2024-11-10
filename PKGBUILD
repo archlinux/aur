@@ -2,7 +2,7 @@
 # Contributor: Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=asciigraph
-pkgver=0.5.6
+pkgver=0.7.3
 pkgrel=1
 pkgdesc="Go package to make lightweight ASCII line graph ╭┈╯ in command line apps with no other dependencies"
 arch=('x86_64')
@@ -10,7 +10,7 @@ url='https://github.com/guptarohit/asciigraph'
 license=('BSD')
 makedepends=('go')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/guptarohit/asciigraph/archive/v${pkgver}.tar.gz")
-sha256sums=('4169785c024cfa9f951cc8edb46996ceee4bacd2faade90a6ceb3ded17e3a899')
+sha256sums=('92a776f601c866c39ff07d7100701ee96af0907f2f70981104907c24cc713304')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
