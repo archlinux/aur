@@ -1,6 +1,6 @@
 pkgbase = python-ansibug
 	pkgdesc = Debug Adapter Protocol for Ansible
-	pkgver = 0.1.2
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/jborean93/ansibug
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = python-ansibug
 	depends = ansible-core
 	depends = python-debugpy
 	depends = python-argcomplete
-	source = https://files.pythonhosted.org/packages/source/a/ansibug/ansibug-0.1.2.tar.gz
-	sha256sums = 24d34cd12e55ad8ae3105d00de89acb2b621bcc693b6d3b71dc8688d94a9faed
+	source = https://files.pythonhosted.org/packages/source/a/ansibug/ansibug-0.2.0.tar.gz
+	sha256sums = b89ea8b41f0547b070b6f4abb0e1d03899425f39bdcfc3a81dc4399e2b47bc93
 
 pkgname = python-ansibug
