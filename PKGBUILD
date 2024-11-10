@@ -4,7 +4,7 @@
 _netflow='ipt-netflow'
 pkgname='ipt_netflow'
 pkgver='2.6'
-pkgrel='4'
+pkgrel='5'
 pkgdesc='Netflow as netfilter extension'
 arch=('any')
 url="https://github.com/aabc/${_netflow}"
@@ -12,9 +12,11 @@ license=('GPL')
 depends=('linux' 'iptables')
 makedepends=('gcc' 'gzip' 'gawk' 'sed')
 source=("${url}/archive/v${pkgver}.tar.gz"
-	"ipt_netflow.2.6_kernel_6.4.patch")
+	"ipt_netflow.2.6_kernel_6.4.patch"
+	"https://patch-diff.githubusercontent.com/raw/aabc/ipt-netflow/pull/230.patch")
 sha256sums=('1ae270ddd0e60449159607c2f413604e31cb446beae516777dfeeee5f9b4931d'
-            'ce4b590306de3f33aeca6c22ae4fb1400c37359cc1f075fe4182a4340babd19e')
+            'ce4b590306de3f33aeca6c22ae4fb1400c37359cc1f075fe4182a4340babd19e'
+            'dd58d38d95bfed1269e534f3add69fb9a22f3433867dac765e8a8a4151874f32')
 # define '-lts' for linux-lts package
 _linux_custom=""
 _kdir="`pacman -Ql linux${_linux_custom} | awk '/(\/modules\/)([0-9.-])+-(.*)'${_linux_custom}'\/$/ {print $2}' | head -n1`"
@@ -22,7 +24,10 @@ _kver="`pacman -Ql linux${_linux_custom} | gawk 'match($0, /(\/usr\/lib\/modules
 
 prepare() {
   cd "${_netflow}-${pkgver}"
+  # Kernel 6.4 compat
   patch -p1 -i "../ipt_netflow.2.6_kernel_6.4.patch"
+  # Kernel 6.8+ compat
+  patch -p1 -i "../230.patch"
 
   ./configure \
     --disable-snmp-agent \

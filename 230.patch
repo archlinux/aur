@@ -1,0 +1,206 @@
+From eaefd3b8d6ef1e54e71f2028d68b533beb9bc5f8 Mon Sep 17 00:00:00 2001
+From: Vadim Fedorenko <vvfedorenko@github.com>
+Date: Sun, 16 Jun 2024 23:31:50 +0100
+Subject: [PATCH] ipt_NETFLOW: add compatibility with 6.8+
+
+* replace strlcpy with strscpy as strlcpy was removed in 6.8
+* replace strtoul with simple_strtoul which exists in all kernels and is
+  proper interface to use
+* inline timeval_to_jiffies to follow new kernel build rules
+* replace check for in{4,6}_pton to remove unneeded functions
+
+Signed-off-by: Vadim Fedorenko <vvfedorenko@github.com>
+---
+ compat.h       | 46 ++++++++--------------------------------------
+ gen_compat_def |  4 ++++
+ ipt_NETFLOW.c  | 19 +++++++++++--------
+ 3 files changed, 23 insertions(+), 46 deletions(-)
+
+diff --git a/compat.h b/compat.h
+index 8461c3d..083f54d 100644
+--- a/compat.h
++++ b/compat.h
+@@ -216,7 +216,7 @@ struct timeval {
+ 	long tv_usec; /* microseconds */
+ };
+ 
+-unsigned long timeval_to_jiffies(const struct timeval *tv)
++static inline unsigned long timeval_to_jiffies(const struct timeval *tv)
+ {
+ 	return timespec64_to_jiffies(&(struct timespec64){
+ 				     tv->tv_sec,
+@@ -225,6 +225,10 @@ unsigned long timeval_to_jiffies(const struct timeval *tv)
+ }
+ #endif
+ 
++#if !defined(HAVE_STRSCPY) && !defined(strscpy)
++#define strscpy strlcpy
++#endif
++
+ #if LINUX_VERSION_CODE < KERNEL_VERSION(2,6,35)
+ # ifdef ktime_to_timeval
+ /* ktime_to_timeval is defined on 64bit and inline on 32bit cpu */
+@@ -380,10 +384,10 @@ static int sockaddr_cmp(const struct sockaddr_storage *sa1, const struct sockadd
+ 	return 0;
+ }
+ 
+-#ifndef IN6PTON_XDIGIT
++#ifndef HAVE_IN6_PTON
+ #define hex_to_bin compat_hex_to_bin
+ /* lib/hexdump.c */
+-int hex_to_bin(char ch)
++static inline int hex_to_bin(char ch)
+ {
+ 	if ((ch >= '0') && (ch <= '9'))
+ 		return ch - '0';
+@@ -593,7 +597,7 @@ int in6_pton(const char *src, int srclen,
+ 		*end = s;
+ 	return ret;
+ }
+-#endif /* IN6PTON_XDIGIT */
++#endif /* HAVE_IN6_PTON */
+ 
+ #if LINUX_VERSION_CODE >= KERNEL_VERSION(4,2,0)
+ # define sock_create_kern(f, t, p, s) sock_create_kern(&init_net, f, t, p, s)
+@@ -712,40 +716,6 @@ static inline void do_gettimeofday(struct timeval *tv)
+ }
+ #endif
+ 
+-#define TOLOWER(x) ((x) | 0x20)
+-unsigned long long strtoul(const char *cp, char **endp, unsigned int base)
+-{
+-	unsigned long long result = 0;
+-
+-	if (!base) {
+-		if (cp[0] == '0') {
+-			if (TOLOWER(cp[1]) == 'x' && isxdigit(cp[2]))
+-				base = 16;
+-			else
+-				base = 8;
+-		} else {
+-			base = 10;
+-		}
+-	}
+-
+-	if (base == 16 && cp[0] == '0' && TOLOWER(cp[1]) == 'x')
+-		cp += 2;
+-
+-	while (isxdigit(*cp)) {
+-		unsigned int value;
+-
+-		value = isdigit(*cp) ? *cp - '0' : TOLOWER(*cp) - 'a' + 10;
+-		if (value >= base)
+-			break;
+-		result = result * base + value;
+-		cp++;
+-	}
+-	if (endp)
+-		*endp = (char *)cp;
+-
+-	return result;
+-}
+-
+ #if LINUX_VERSION_CODE >= KERNEL_VERSION(5,12,0)
+ /*
+  * find_module() is unexported in v5.12:
+diff --git a/gen_compat_def b/gen_compat_def
+index a9cb95e..bbdb4ce 100755
+--- a/gen_compat_def
++++ b/gen_compat_def
+@@ -129,6 +129,10 @@ kbuild_test_ref    totalram_pages linux/mm.h
+ kbuild_test_member nf_ct_event_notifier.ct_event net/netfilter/nf_conntrack_ecache.h
+ # 6.4: 0199849acd07 ("sysctl: remove register_sysctl_paths()")
+ kbuild_test_symbol register_sysctl_paths linux/sysctl.h
++# 6.8: d26270061ae6 ("string: Remove strlcpy()")
++kbuild_test_symbol strscpy linux/string.h
++# 2.6.18 lacks in6_pton and in4_pton
++kbuild_test_symbol in6_pton linux/inet.h
+ 
+ echo "// End of compat_def.h"
+ 
+diff --git a/ipt_NETFLOW.c b/ipt_NETFLOW.c
+index eee8074..2f6e069 100644
+--- a/ipt_NETFLOW.c
++++ b/ipt_NETFLOW.c
+@@ -29,6 +29,10 @@
+ #include <linux/in6.h>
+ #include <linux/inet.h>
+ #include <linux/kernel.h>
++#include <linux/version.h>
++#if LINUX_VERSION_CODE > KERNEL_VERSION(5,10,0)
++#include <linux/kstrtox.h>
++#endif
+ #include <linux/ip.h>
+ #include <linux/udp.h>
+ #include <linux/icmp.h>
+@@ -67,7 +71,6 @@
+ # include <net/netfilter/nf_conntrack.h>
+ # include <net/netfilter/nf_conntrack_core.h>
+ #endif
+-#include <linux/version.h>
+ #include <asm/unaligned.h>
+ #ifdef HAVE_LLIST
+ 	/* llist.h is officially defined since linux 3.1,
+@@ -2396,7 +2399,7 @@ static int add_destinations(const char *ptr)
+ 				++end;
+ 			if (succ &&
+ 			    (*end == ':' || *end == '.' || *end == 'p' || *end == '#'))
+-				sin6->sin6_port = htons(strtoul(++end, (char **)&end, 0));
++				sin6->sin6_port = htons(simple_strtoul(++end, (char **)&end, 0));
+ 			if (succ && *end == '@') {
+ 				++end;
+ 				sout->sin6_family = AF_INET6;
+@@ -2411,7 +2414,7 @@ static int add_destinations(const char *ptr)
+ 			sin->sin_port = htons(2055);
+ 			succ = in4_pton(ptr, len, (u8 *)&sin->sin_addr, -1, &end);
+ 			if (succ && *end == ':')
+-				sin->sin_port = htons(strtoul(++end, (char **)&end, 0));
++				sin->sin_port = htons(simple_strtoul(++end, (char **)&end, 0));
+ 			if (succ && *end == '@') {
+ 				++end;
+ 				sout->sin_family = AF_INET;
+@@ -4087,7 +4090,7 @@ static int ethtool_drvinfo(unsigned char *ptr, size_t size, struct net_device *d
+ 		ops->get_drvinfo(dev, &info);
+ #if LINUX_VERSION_CODE >= KERNEL_VERSION(2,6,37)
+ 	else if (dev->dev.parent && dev->dev.parent->driver) {
+-		strlcpy(info.driver, dev->dev.parent->driver->name, sizeof(info.driver));
++		strscpy(info.driver, dev->dev.parent->driver->name, sizeof(info.driver));
+ 	}
+ #endif
+ 	n = scnprintf(ptr, len, "%s", info.driver);
+@@ -5684,7 +5687,7 @@ static int __init ipt_netflow_init(void)
+ 	if (!destination)
+ 		destination = destination_buf;
+ 	if (destination != destination_buf) {
+-		strlcpy(destination_buf, destination, sizeof(destination_buf));
++		strscpy(destination_buf, destination, sizeof(destination_buf));
+ 		destination = destination_buf;
+ 	}
+ 	if (add_destinations(destination) < 0)
+@@ -5694,7 +5697,7 @@ static int __init ipt_netflow_init(void)
+ 	if (!aggregation)
+ 		aggregation = aggregation_buf;
+ 	if (aggregation != aggregation_buf) {
+-		strlcpy(aggregation_buf, aggregation, sizeof(aggregation_buf));
++		strscpy(aggregation_buf, aggregation, sizeof(aggregation_buf));
+ 		aggregation = aggregation_buf;
+ 	}
+ 	add_aggregation(aggregation);
+@@ -5704,7 +5707,7 @@ static int __init ipt_netflow_init(void)
+ 	if (!sampler)
+ 		sampler = sampler_buf;
+ 	if (sampler != sampler_buf) {
+-		strlcpy(sampler_buf, sampler, sizeof(sampler_buf));
++		strscpy(sampler_buf, sampler, sizeof(sampler_buf));
+ 		sampler = sampler_buf;
+ 	}
+ 	parse_sampler(sampler);
+@@ -5721,7 +5724,7 @@ static int __init ipt_netflow_init(void)
+ 	if (!snmp_rules)
+ 		snmp_rules = snmp_rules_buf;
+ 	if (snmp_rules != snmp_rules_buf) {
+-		strlcpy(snmp_rules_buf, snmp_rules, sizeof(snmp_rules_buf));
++		strscpy(snmp_rules_buf, snmp_rules, sizeof(snmp_rules_buf));
+ 		snmp_rules = snmp_rules_buf;
+ 	}
+ 	add_snmp_rules(snmp_rules);
