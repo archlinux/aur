@@ -5,12 +5,13 @@
 _android_arch=x86-64
 
 pkgname=android-${_android_arch}-snappy
-pkgver=1.1.10
-pkgrel=2
+pkgver=1.2.1
+pkgrel=1
 arch=('any')
 pkgdesc="A fast compressor/decompressor library (Android ${_android_arch})"
 url="https://google.github.io/snappy/"
 license=('BSD')
+groups=('android-snappy')
 depends=('android-ndk')
 makedepends=('android-cmake')
 options=(!strip !buildflags staticlibs !emptydirs)
@@ -18,10 +19,10 @@ source=("https://github.com/google/snappy/archive/${pkgver}/snappy-${pkgver}.tar
         'snappy.pc.in'
         '0001-Add-pkgconfig.patch'
         '0002-Disable-neon.patch')
-sha256sums=('49d831bffcc5f3d01482340fe5af59852ca2fe76c3e05df0e67203ebbe0f1d90'
-            '134f06ca0584a1026538d0fb972fc141c008390ecae1806184b721eca1abbc75'
-            '2a204d7d35509ffc290d80c641fcb7e8488c67ca550aa1695493cff12c53156b'
-            '4ba42f130366ee39d2afba4967c2afde4ebb490b6470d2a39506c630e31d20d4')
+md5sums=('dd6f9b667e69491e1dbf7419bdf68823'
+         '52264b05925281c591daea10f937424d'
+         'de6ce2e289d166971edd67748eedaf3f'
+         '8714d144e2b3e3cf9727fcee26b751f7')
 
 prepare() {
     cd "${srcdir}/snappy-${pkgver}"
@@ -30,6 +31,7 @@ prepare() {
     cp ../snappy.pc.in .
     patch -Np1 -i ../0001-Add-pkgconfig.patch
     patch -Np1 -i ../0002-Disable-neon.patch
+    sed -i 's|cmake_minimum_required(VERSION 3.1)|cmake_minimum_required(VERSION 3.6)|g' CMakeLists.txt
 }
 
 build() {
@@ -47,7 +49,8 @@ build() {
         -DSNAPPY_BUILD_TESTS=OFF \
         -DSNAPPY_BUILD_BENCHMARKS=OFF \
         -DSNAPPY_USE_BUNDLED_GTEST=OFF \
-        -DSNAPPY_USE_BUNDLED_BENCHMARK_LIB=OFF
+        -DSNAPPY_USE_BUNDLED_BENCHMARK_LIB=OFF \
+        -Wno-dev
     make -C build-shared $MAKEFLAGS
 
     android-${_android_arch}-cmake \
@@ -57,7 +60,8 @@ build() {
         -DSNAPPY_BUILD_TESTS=OFF \
         -DSNAPPY_BUILD_BENCHMARKS=OFF \
         -DSNAPPY_USE_BUNDLED_GTEST=OFF \
-        -DSNAPPY_USE_BUNDLED_BENCHMARK_LIB=OFF
+        -DSNAPPY_USE_BUNDLED_BENCHMARK_LIB=OFF \
+        -Wno-dev
     make -C build-static $MAKEFLAGS
 }
 
