@@ -8,19 +8,20 @@
 _android_arch=aarch64
 
 pkgname=android-${_android_arch}-taglib
-pkgver=2.0.1
-pkgrel=2
+pkgver=2.0.2
+pkgrel=1
 arch=('any')
 pkgdesc="A Library for reading and editing the meta-data of several popular audio formats (Android ${_android_arch})"
 url='https://taglib.github.io/'
 license=('LGPL-2.1-only'
          'MPL-1.1')
+groups=('android-taglib')
 depends=("android-${_android_arch}-zlib")
 makedepends=('cmake'
              "android-${_android_arch}-utf8cpp")
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("https://taglib.github.io/releases/taglib-${pkgver}.tar.gz")
-sha256sums=('08c0a27b96aa5c4e23060fe0b6f93102ee9091a9385257b9d0ddcf467de0d925')
+md5sums=('95edea13107ac4cc07b7ad4bd1cb5cd1')
 
 build() {
     cd "${srcdir}/taglib-${pkgver}"

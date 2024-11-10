@@ -1,9 +1,10 @@
 pkgbase = android-aarch64-taglib
 	pkgdesc = A Library for reading and editing the meta-data of several popular audio formats (Android aarch64)
-	pkgver = 2.0.1
-	pkgrel = 2
+	pkgver = 2.0.2
+	pkgrel = 1
 	url = https://taglib.github.io/
 	arch = any
+	groups = android-taglib
 	license = LGPL-2.1-only
 	license = MPL-1.1
 	makedepends = cmake
@@ -13,7 +14,7 @@ pkgbase = android-aarch64-taglib
 	options = !buildflags
 	options = staticlibs
 	options = !emptydirs
-	source = https://taglib.github.io/releases/taglib-2.0.1.tar.gz
-	sha256sums = 08c0a27b96aa5c4e23060fe0b6f93102ee9091a9385257b9d0ddcf467de0d925
+	source = https://taglib.github.io/releases/taglib-2.0.2.tar.gz
+	md5sums = 95edea13107ac4cc07b7ad4bd1cb5cd1
 
 pkgname = android-aarch64-taglib
