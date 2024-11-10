@@ -1,7 +1,7 @@
 # Maintainer: Kimiblock Moe
 pkgname=wechat
-pkgver=4.0.0.21
-pkgrel=6
+pkgver=4.0.0.23
+pkgrel=1
 epoch=
 pkgdesc="微信是一种生活方式. 可选沙盒支持."
 arch=('x86_64' 'aarch64' 'loong64')
@@ -114,9 +114,9 @@ md5sums=('ef6a081e3dc3ad182bfb1484decf23c0'
          'd05ced7a9291cbca5cc30f64d873a4d1'
          'e821fd2d05d6d39c7ecf118916922414'
          'e472d6dd49522bc90fdaf0b4adcdb744')
-md5sums_x86_64=('b2df207e4a27c1a2930c1b07a62332d0')
-md5sums_aarch64=('6e34513d6781c7698ea53c7efcf216a8')
-md5sums_loong64=('6e34513d6781c7698ea53c7efcf216a8')
+md5sums_x86_64=('6a809a53a6b4033ea035bb08075d9bbc')
+md5sums_aarch64=('b008d0ff49176dc0156502627f8d7442')
+md5sums_loong64=('b008d0ff49176dc0156502627f8d7442')
 
 function package_wechat() {
 	conflicts=()
