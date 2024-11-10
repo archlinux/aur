@@ -1,4 +1,5 @@
-# Maintainer: David Runge <dvzrv@archlinux.org>
+# Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dor com>
+# Contributor: David Runge <dvzrv@archlinux.org>
 
 _name=click-option-group
 pkgname=python-click-option-group
