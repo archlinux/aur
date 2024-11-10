@@ -1,6 +1,6 @@
 pkgbase = r-pharmacogx
 	pkgdesc = Analysis of Large-Scale Pharmacogenomic Data
-	pkgver = 3.8.0
+	pkgver = 3.10.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/PharmacoGx
 	arch = x86_64
@@ -33,7 +33,7 @@ pkgbase = r-pharmacogx
 	optdepends = r-r.utils
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/PharmacoGx_3.8.0.tar.gz
-	sha256sums = 01eedaf102e0670f25334e4d2fbd3007174d29b74c1cc01cda86c78e98781f25
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/PharmacoGx_3.10.0.tar.gz
+	sha256sums = fa26d34dc45c4460688f32b099ce3ad82b24cdf2f40885d49dd85100c9d8c7ab
 
 pkgname = r-pharmacogx
