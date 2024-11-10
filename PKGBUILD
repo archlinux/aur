@@ -3,16 +3,18 @@
 
 pkgname=openchrom
 pkgver=1.5.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Visualization and analysis of mass spectrometric and chromatographic data"
 arch=("x86_64")
 url="https://openchrom.net/"
 license=('EPL')
 # Don't build from source as there are no tagged releases and the marketplace is missing.
 source=("https://products.lablicate.com/openchrom/${pkgver}/openchrom-lablicate_linux.x86_64_${pkgver}.tar.gz"
-        "openchrom.desktop")
+        "openchrom.desktop"
+        "openchrom.png")
 # Avoid checksums, because minor release overwrite without change in versioning.
 sha256sums=('SKIP'
+            'SKIP'
             'SKIP')
 depends=('org.freedesktop.secrets' 'webkit2gtk')
 
@@ -23,5 +25,5 @@ package() {
   ln -s "/usr/lib/openchrom/openchrom" "${pkgdir}/usr/bin/openchrom"
 
   install -Dm0644 "openchrom.desktop" "${pkgdir}/usr/share/applications/openchrom.desktop"
-  install -Dm0644 "icon.xpm" "${pkgdir}/usr/share/icons/hicolor/256x256/apps/openchrom.xpm"
+  install -Dm0644 "openchrom.png" "${pkgdir}/usr/share/icons/hicolor/256x256/apps/openchrom.png"
 }
