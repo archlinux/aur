@@ -1,6 +1,6 @@
 pkgbase = gscreenshot
 	pkgdesc = A simple screenshot tool supporting multiple backends
-	pkgver = 3.6.3
+	pkgver = 3.7.0
 	pkgrel = 1
 	url = https://github.com/thenaterhood/gscreenshot
 	arch = any
@@ -21,7 +21,7 @@ pkgbase = gscreenshot
 	optdepends = slurp: for region selecton on Wayland
 	optdepends = wl-clipboard: Wayland clipboard support
 	optdepends = python-dbus: required when using the XDG desktop portal backend
-	source = https://github.com/thenaterhood/gscreenshot/archive/v3.6.3.tar.gz
-	sha256sums = 3f84c71635b9512a1ef7820579213b806ec61796b6224f7a35357008aba27be6
+	source = https://github.com/thenaterhood/gscreenshot/archive/v3.7.0.tar.gz
+	sha256sums = c1ec562c41f98fbc498925ded8863f4ad5e6372c2b02908d5e42faea48708187
 
 pkgname = gscreenshot
