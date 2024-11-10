@@ -1,40 +1,22 @@
 # Maintainer: Cleber Matheus <clebermatheus@outlook.com>
 pkgname=ttf-octicons
 pkgver=19.12.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A scalable set of icons handcrafted with <3 by GitHub"
 arch=('any')
 license=('MIT')
 url="https://octicons.github.com/"
-makedepends=('git' 'npm' 'nvm')
+makedepends=('git' 'npm' 'nodejs>=16.0.0')
 depends=('fontconfig' 'xorg-font-util' 'xorg-mkfontscale')
 source=("${pkgname}_v${pkgver}.tar.gz::https://github.com/primer/octicons/archive/v${pkgver}.tar.gz")
 sha256sums=('08be590886d4440d3ca5acfcb4f994c482053a0047ec8daa43df0f74b0cc71cb')
 install=$pkgname.install
 
-_ensure_local_nvm() {
-    # let's be sure we are starting clean
-    which nvm >/dev/null 2>&1 && nvm deactivate && nvm unload
-    export NVM_DIR="${srcdir}/.nvm"
-
-    # The init script returns 3 if version specified
-    # in ./.nvrc is not (yet) installed in $NVM_DIR
-    # but nvm itself still gets loaded ok
-    source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
-}
-
-prepare() {
-    _ensure_local_nvm
-    nvm install 16.0.0
-}
-
 build() {
-    _ensure_local_nvm
-    npm install
-
-  npm install fantasticon
+  cd "${srcdir}"
+  npm install --prefix ${srcdir} fantasticon
   mkdir -p 'font'
-  npm exec -- fantasticon octicons-${pkgver}/icons -o font -t ttf -n octicons
+  npm exec -- fantasticon ${srcdir}/octicons-${pkgver}/icons -o font -t ttf -n octicons
 }
 
 package() {

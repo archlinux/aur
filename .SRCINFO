@@ -1,14 +1,14 @@
 pkgbase = ttf-octicons
 	pkgdesc = A scalable set of icons handcrafted with <3 by GitHub
 	pkgver = 19.12.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://octicons.github.com/
 	install = ttf-octicons.install
 	arch = any
 	license = MIT
 	makedepends = git
 	makedepends = npm
-	makedepends = nvm
+	makedepends = nodejs>=16.0.0
 	depends = fontconfig
 	depends = xorg-font-util
 	depends = xorg-mkfontscale
