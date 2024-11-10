@@ -2,7 +2,7 @@
 
 pkgname=platypush
 pkgver=1.3.1
-pkgrel=4
+pkgrel=5
 pkgdesc="Universal multi-platform command executor and automation manager"
 arch=('any')
 license=('MIT')
@@ -31,6 +31,7 @@ depends=(
     'python-websockets'
     'python-yaml'
     'python-zeroconf'
+    'zbar'
 )
 
 optdepends=(
@@ -93,8 +94,7 @@ optdepends=(
 	'python-vlc: VLC integration'
 	'python-watchdog: File monitor support'
     'python-weasyprint: PDF generation support'
-	'pyzbar: QR code and barcodes integration'
-    'youtube-dl: Support for downloading/streaming YouTube videos, as well as other video platforms'
+    'yt-dlp: Support for downloading/streaming YouTube videos, as well as other video platforms'
 )
 
 conflicts=("${pkgname}-git")
