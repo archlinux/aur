@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0.1
+Type=Application
+Name=YAMEP
+Comment=Yet Another Markdown Editor in Python
+Exec=yamep %F
+Icon=yamep
+Terminal=false
+Categories=Utilities;TextEditor;

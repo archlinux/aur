@@ -1,0 +1,19 @@
+pkgbase = yamep
+	pkgdesc = YAMEP - Yet Another Markdown Editor in Python
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://codeberg.org/tomsh/yamep
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	depends = pyside6
+	depends = python-markdown
+	depends = python-platformdirs
+	depends = python-pymdown-extensions
+	source = yamep-1.0.1.tar.gz::https://codeberg.org/tomsh/yamep/archive/1.0.1.tar.gz
+	source = yamep.desktop
+	sha256sums = 0422f08b2a1aa49c2fee9c4119f99ae7f88a9e722c63157c3f049022c0b442ab
+	sha256sums = c2d21877504fbb883c44772b430234c64f02cdcf771a9e52f44a83e6786c39a1
+
+pkgname = yamep
