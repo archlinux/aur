@@ -1,7 +1,7 @@
 #Maintainer: Dylan Delgado (dylan1496 at live dot com)
 
 pkgname=python-transitions
-pkgver=0.9.1
+pkgver=0.9.2
 pkgrel=1
 pkgdesc="A lightweight, object-oriented finite state machine implementation in Python"
 url="http://github.com/tyarkoni/transitions"
@@ -10,7 +10,7 @@ license=('MIT')
 makedepends=('python-setuptools')
 depends=('python-six')
 source=("https://github.com/tyarkoni/transitions/archive/${pkgver}.tar.gz")
-sha256sums=('067bda2c498e8a4e5bc55e2b5e44a3fc9672c3ac6713f4de5e073a2758b6eef9')
+sha256sums=('d55cdb5ded548513a36eb745d762b2af304cfab5ee0b143ced3d94921eaa77e3')
 
 prepare() {
   cd "${srcdir}"/transitions-$pkgver
