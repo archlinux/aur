@@ -26,6 +26,7 @@ b2sums=('8edc9e1c7aff7ff03f86fea41a43a37b9605efb11cae402ebaaa18620b21fd50237d929
 
 build() {
   cd $_name-$pkgver
+
   python -m build --wheel --no-isolation
 }
 
@@ -33,6 +34,7 @@ check() {
   local _site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
 
   cd $_name-$pkgver
+
   python -m installer --destdir=test_dir dist/*.whl
   export PYTHONPATH="test_dir/$_site_packages:$PYTHONPATH"
   pytest -vv
@@ -40,7 +42,9 @@ check() {
 
 package() {
   cd "$_name-$pkgver"
+
   python -m installer --destdir="$pkgdir" dist/*.whl
+
   install -vDm 644 {CHANGELOG,README}.md -t "$pkgdir/usr/share/doc/$pkgname/"
   install -vDm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
