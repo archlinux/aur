@@ -4,7 +4,7 @@ pkgname=epson-inkjet-printer-201202w
 _pkgname_filter=epson-inkjet-printer-filter
 _suffix=1lsb3.2.src.rpm
 pkgver=1.0.0
-pkgrel=10
+pkgrel=11
 pkgdesc="Epson printer driver (XP-102, XP-103, XP-202, XP-203, XP-206, XP-205, XP-207, XP-30, XP-33)"
 arch=('i686' 'x86_64')
 url="http://download.ebz.epson.net/dsc/search/01/search/?OSC=LX"
@@ -50,4 +50,4 @@ package() {
   install -m 755 src/epson_inkjet_printer_filter "$pkgdir/opt/$pkgname/cups/lib/filter/epson_inkjet_printer_filter"
 }
 sha256sums=('cd7815690c241d02fe4a6941932d5127d39f9c2f2f493267188bc9a0d517f18c'
-            '85b0493972dcb92befd2bbf8d0ce705fc6280d54d83e985e9f7d0301bb01af50')
+            '4a74f4cb2ec59d3b280b99ca1ae4ab8135c009b53162e76f570488e8eacb860b')

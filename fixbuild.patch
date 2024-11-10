@@ -99,3 +99,20 @@ index 6e621c8..a0811d6 100644
  {
  	int readBytes = 0;
  	if (JobCanceled == 0) {
+@@ -459,14 +459,14 @@
+ 	fprintf(fp, "\n");
+ 	fclose(fp);
+ }*/
+-				if (eps_raster_print(raster_h, image_raw, pageRegion.bytesPerLine, pageRegion.width, (int *)&nraster)) {
++				if (eps_raster_print(raster_h, image_raw, pageRegion.bytesPerLine, pageRegion.width, &nraster)) {
+ 					error  = 1;
+ 					break;
+ 				}
+ 			}
+ 
+ 			// flushing page
+-			eps_raster_print(raster_h, NULL, 0, 0, (int *)&nraster);
++			eps_raster_print(raster_h, NULL, 0, 0, &nraster);
+ 
+ 			bAbort = (error) ? TRUE : FALSE;
+ 			if (epcgEndPage (bAbort)) {
