@@ -1,9 +1,8 @@
 # Maintainer: killab33z <killab33z @ protonmail-dot-ch>
 pkgname=gpowned-git
 _pkgname="${pkgname%-git}"
-_upstream=GPOwned
-pkgver=r11.59fe547
-pkgrel=2
+pkgver=r13.b524eb7
+pkgrel=1
 pkgdesc="Buggy script to play with GPOs"
 arch=('any')
 url="https://github.com/X-C3LL/gpowned/"
@@ -23,6 +22,19 @@ pkgver() {
 
 package() {
   cd "$_pkgname"
-  install -Dm0755 $srcdir/$_pkgname/$_upstream.py "$pkgdir/usr/bin/$_pkgname.py"
+
+  install -dm 755 "$pkgdir/usr/bin"
+  install -Dm 644 requirements.txt "$pkgdir/usr/share/$_pkgname/requirements.txt"
+  install -Dm 644 -t "$pkgdir/usr/share/doc/$_pkgname/" *.md
+
+  cp -a * "$pkgdir/usr/share/$_pkgname/"
+  mv "$pkgdir/usr/share/$_pkgname/GPOwned.py" "$pkgdir/usr/share/$_pkgname/$_pkgname.py"
+
+  cat > "$pkgdir/usr/bin/$_pkgname" << EOF
+#!/bin/sh
+exec python /usr/share/$_pkgname/$_pkgname.py "\$@"
+EOF
+
+  chmod a+x "$pkgdir/usr/bin/$_pkgname"
 }
 

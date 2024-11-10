@@ -1,7 +1,7 @@
 pkgbase = gpowned-git
 	pkgdesc = Buggy script to play with GPOs
-	pkgver = r11.59fe547
-	pkgrel = 2
+	pkgver = r13.b524eb7
+	pkgrel = 1
 	url = https://github.com/X-C3LL/gpowned/
 	arch = any
 	license = custom
