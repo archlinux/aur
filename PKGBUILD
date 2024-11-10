@@ -14,7 +14,7 @@
 # Contributor: Diego Jose <diegoxter1006@gmail.com>
 
 pkgbase=lib32-mesa-amdonly-gaming-git
-pkgver=24.3.0_devel.195384.fd11bbbb90e.d41d8cd
+pkgver=25.0.0_devel.197468.dc1fe83aa52.d41d8cd
 options=(!lto) # LTO is bad for mesa, makes random applications crash on my system
 
 pkgname=(
@@ -147,7 +147,6 @@ build() {
     -D platforms=x11,wayland
     -D rust_std=2021
     -D shared-glapi=enabled
-    -D opencl-spirv=true
     -D valgrind=disabled
     -D video-codecs=all
     -D vulkan-drivers=amd,swrast
