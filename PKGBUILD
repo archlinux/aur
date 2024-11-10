@@ -1,10 +1,10 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=breeze-gtk-git
-pkgver=5.27.80.r512.cbab51e
+pkgver=6.2.80.r541.5b65eb2
 pkgrel=1
 pkgdesc="Breeze widget theme for GTK 2 and 3. (GIT version)"
-arch=('x86_64')
+arch=('any')
 url='https://invent.kde.org/plasma/breeze-gtk'
 license=('LGPL')
 depends=('qt6-base')
