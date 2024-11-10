@@ -1,12 +1,13 @@
 pkgbase = vipsdisp
 	pkgdesc = Tiny libvips / gtk+4 image viewer
 	pkgver = 3.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jcupitt/vipsdisp
 	arch = x86_64
 	license = MIT
 	makedepends = meson
 	makedepends = cmake
+	makedepends = glib2-devel
 	depends = libvips
 	depends = gtk4
 	source = vipsdisp-3.1.0.tar.xz::https://github.com/jcupitt/vipsdisp/releases/download/v3.1.0/vipsdisp-3.1.0.tar.xz
