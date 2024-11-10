@@ -10,7 +10,7 @@ amdgpu_pro="opt/amdgpu-pro/lib/x86_64-linux-gnu/"
 pkgname=opencl-amd-dev
 pkgdesc="OpenCL SDK / HIP SDK / ROCM Compiler. This package needs at least 20GB of disk space."
 pkgver=6.2.4
-pkgrel=1
+pkgrel=2
 epoch=1
 arch=('x86_64')
 url='http://www.amd.com'
@@ -65,10 +65,10 @@ source=(
 "https://repo.radeon.com/rocm/apt/6.2.4/pool/main/r/rocrand-dev/rocrand-dev_3.1.1.60204-139~24.04_amd64.deb"
 "https://repo.radeon.com/rocm/apt/6.2.4/pool/main/r/rocalution/rocalution_3.2.1.60204-139~24.04_amd64.deb"
 "https://repo.radeon.com/rocm/apt/6.2.4/pool/main/r/rocalution-dev/rocalution-dev_3.2.1.60204-139~24.04_amd64.deb"
-"https://repo.radeon.com/rocm/apt/6.2.4/pool/main/r/rocm-hip-libraries/rocm-hip-libraries_6.2.4.60204-139~24.04_amd64.deb"
+#"https://repo.radeon.com/rocm/apt/6.2.4/pool/main/r/rocm-hip-libraries/rocm-hip-libraries_6.2.4.60204-139~24.04_amd64.deb"
 "https://repo.radeon.com/rocm/apt/6.2.4/pool/main/r/rocm-hip-runtime-dev/rocm-hip-runtime-dev_6.2.4.60204-139~24.04_amd64.deb"
 "https://repo.radeon.com/rocm/apt/6.2.4/pool/main/r/rocthrust-dev/rocthrust-dev_3.1.1.60204-139~24.04_amd64.deb"
-"https://repo.radeon.com/rocm/apt/6.2.4/pool/main/r/rocm-hip-sdk/rocm-hip-sdk_6.2.4.60204-139~24.04_amd64.deb"
+#"https://repo.radeon.com/rocm/apt/6.2.4/pool/main/r/rocm-hip-sdk/rocm-hip-sdk_6.2.4.60204-139~24.04_amd64.deb"
 "https://repo.radeon.com/rocm/apt/6.2.4/pool/main/r/rocm-opencl-sdk/rocm-opencl-sdk_6.2.4.60204-139~24.04_amd64.deb"
 "https://repo.radeon.com/rocm/apt/6.2.4/pool/main/r/rocwmma-dev/rocwmma-dev_1.5.0.60204-139~24.04_amd64.deb"
 "https://repo.radeon.com/rocm/apt/6.2.4/pool/main/r/rocprofiler-sdk/rocprofiler-sdk_0.4.0-139~24.04_amd64.deb"
@@ -80,8 +80,8 @@ source=(
 "https://repo.radeon.com/rocm/apt/6.2.4/pool/main/m/miopen-hip-dev/miopen-hip-dev_3.2.0.60204-139~24.04_amd64.deb"
 "https://repo.radeon.com/rocm/apt/6.2.4/pool/main/m/mivisionx/mivisionx_3.0.0.60204-139~24.04_amd64.deb"
 "https://repo.radeon.com/rocm/apt/6.2.4/pool/main/m/mivisionx-dev/mivisionx-dev_3.0.0.60204-139~24.04_amd64.deb"
-"https://repo.radeon.com/rocm/apt/6.2.4/pool/main/r/rocm-ml-libraries/rocm-ml-libraries_6.2.4.60204-139~24.04_amd64.deb"
-"https://repo.radeon.com/rocm/apt/6.2.4/pool/main/r/rocm-ml-sdk/rocm-ml-sdk_6.2.4.60204-139~24.04_amd64.deb"
+#"https://repo.radeon.com/rocm/apt/6.2.4/pool/main/r/rocm-ml-libraries/rocm-ml-libraries_6.2.4.60204-139~24.04_amd64.deb"
+#"https://repo.radeon.com/rocm/apt/6.2.4/pool/main/r/rocm-ml-sdk/rocm-ml-sdk_6.2.4.60204-139~24.04_amd64.deb"
 "https://repo.radeon.com/rocm/apt/6.2.4/pool/main/r/rpp/rpp_1.8.0.60204-139~24.04_amd64.deb"
 "https://repo.radeon.com/rocm/apt/6.2.4/pool/main/r/rpp-dev/rpp-dev_1.8.0.60204-139~24.04_amd64.deb"
 )
@@ -127,10 +127,10 @@ sha256sums=(
 "a85550e1c21c1d67b965bed313b87ba1b2654d2ef9fe98bd63bf08ad9a3fb103"
 "8b21b7a30ad70ff73c9fa110325a68b105c9aabf82e0a10840f128f3cf8fe867"
 "1f6a2592a0ca17476c425b886e943e7730f410eed6ff8a710a04fee5fcf16900"
-"a1b225ed2dce106790f4aa92d61e0fe119ccb426f1aabd07741e8c3937299380"
+#"a1b225ed2dce106790f4aa92d61e0fe119ccb426f1aabd07741e8c3937299380"
 "c648a65b70a24778bebcfbaffbaa0f8528b9dbebcbf775b968169b006ddbc6fb"
 "319e65c958d6c591f9df3215f324d89a61ef2fa15e58a22f8f8a04650de52965"
-"fabbfda05b9597f82762c46de33b802cca9abcb6ba8e22ab25b0f69bdfae9f27"
+#"fabbfda05b9597f82762c46de33b802cca9abcb6ba8e22ab25b0f69bdfae9f27"
 "7147f485c29ba2b9acbb26ddb407fbedeb476ff25ffccc0a4bd9d2f5d20096ef"
 "cf2a71f8f33c23fa8dfeda19c9ea08e750df0da3886c27878d400f96e0ec3a22"
 "a0e729c8c413ec54bee6eb995e153036f38e75aeb8d65644473ae47fc4c0fee1"
@@ -142,8 +142,8 @@ sha256sums=(
 "170f523ba88cf2827f90e827375d73ffbfbcb0d32679b091f7c895274b7532fa"
 "37670bdc359c556b4e9addd417e707a5ea0f5c9b2219cff5963f8ad392cb4b65"
 "871dba88fb95bdfe57c54fe560c4f5bdebba63eec933de221044c74d29ede621"
-"0bb4ccae4c792b8e9092a05a1bcd35a0934305b4f99ac6eceb3e7198460d3e04"
-"4dec530b18a7c437515707691b247dad72cf64c9c4b4476e96f0fe61f71122d7"
+#"0bb4ccae4c792b8e9092a05a1bcd35a0934305b4f99ac6eceb3e7198460d3e04"
+#"4dec530b18a7c437515707691b247dad72cf64c9c4b4476e96f0fe61f71122d7"
 "28cbd9b3838eb0080914246ae3713733bf9f207306b17b2b510f7bf95f6098bd"
 "88516d444671360fbc7f40bd41dea573247904275dd1b4e08406dd21896f6aa1"
 )
@@ -202,12 +202,12 @@ package() {
 	exz "${srcdir}/rocrand-dev_3.1.1.60204-139~24.04_amd64.deb"
 	exz "${srcdir}/rocalution_3.2.1.60204-139~24.04_amd64.deb"
 	exz "${srcdir}/rocalution-dev_3.2.1.60204-139~24.04_amd64.deb"	
-	egz "${srcdir}/rocm-hip-libraries_6.2.4.60204-139~24.04_amd64.deb"
+	#egz "${srcdir}/rocm-hip-libraries_6.2.4.60204-139~24.04_amd64.deb"
 	egz "${srcdir}/rocm-hip-runtime-dev_6.2.4.60204-139~24.04_amd64.deb"
 	exz "${srcdir}/rocsolver_3.26.2.60204-139~24.04_amd64.deb"
 	exz "${srcdir}/rocsolver-dev_3.26.2.60204-139~24.04_amd64.deb"	
 	exz "${srcdir}/rocthrust-dev_3.1.1.60204-139~24.04_amd64.deb"
-	egz "${srcdir}/rocm-hip-sdk_6.2.4.60204-139~24.04_amd64.deb"
+	#egz "${srcdir}/rocm-hip-sdk_6.2.4.60204-139~24.04_amd64.deb"
 	egz "${srcdir}/rocm-opencl-sdk_6.2.4.60204-139~24.04_amd64.deb"
 	exz "${srcdir}/rocwmma-dev_1.5.0.60204-139~24.04_amd64.deb"
 	egz "${srcdir}/rocprofiler-sdk_0.4.0-139~24.04_amd64.deb"
@@ -219,8 +219,8 @@ package() {
 	exz "${srcdir}/miopen-hip-dev_3.2.0.60204-139~24.04_amd64.deb"
 	egz "${srcdir}/mivisionx_3.0.0.60204-139~24.04_amd64.deb"
 	egz "${srcdir}/mivisionx-dev_3.0.0.60204-139~24.04_amd64.deb"
-	egz "${srcdir}/rocm-ml-libraries_6.2.4.60204-139~24.04_amd64.deb"	
-	egz "${srcdir}/rocm-ml-sdk_6.2.4.60204-139~24.04_amd64.deb"
+	#egz "${srcdir}/rocm-ml-libraries_6.2.4.60204-139~24.04_amd64.deb"	
+	#egz "${srcdir}/rocm-ml-sdk_6.2.4.60204-139~24.04_amd64.deb"
 	egz "${srcdir}/rpp_1.8.0.60204-139~24.04_amd64.deb"
 	egz "${srcdir}/rpp-dev_1.8.0.60204-139~24.04_amd64.deb"
 
