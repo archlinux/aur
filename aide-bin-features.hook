@@ -1,0 +1,10 @@
+[Trigger]
+Operation = Install
+Operation = Upgrade
+Type = Package
+Target = aide-bin
+
+[Action]
+Description = [aide-bin-features] Patching product.json...
+Exec = /usr/share/aide-bin-features/patch.py aide-bin-features patch
+When = PostTransaction

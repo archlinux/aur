@@ -1,0 +1,22 @@
+pkgbase = aide-bin-features
+	pkgdesc = Unblock some features in aide-bin
+	pkgver = 1.94.0
+	pkgrel = 1
+	url = https://github.com/microsoft/vscode
+	install = aide-bin-features.install
+	arch = any
+	license = unknown
+	depends = aide-bin
+	depends = python
+	depends = python-requests
+	optdepends = org.freedesktop.secrets: for settings sync feature
+	provides = aide-bin-features
+	conflicts = aide-bin-features
+	source = aide-bin-features.hook
+	source = patch.py
+	source = patch.json
+	md5sums = 47e122a517d034c65bee4ff4dab76d7f
+	md5sums = 3e2b65d9c6feb3c722a3ad00c0b0e609
+	md5sums = cd8c00b19928cbe6d2816bdd0b45fccf
+
+pkgname = aide-bin-features

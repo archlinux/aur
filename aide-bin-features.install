@@ -1,0 +1,16 @@
+post_install() {
+  /usr/share/aide-bin-features/patch.py aide-bin-features patch
+}
+
+pre_upgrade() {
+  /usr/share/aide-bin-features/patch.py aide-bin-features restore
+}
+
+post_upgrade() {
+  /usr/share/aide-bin-features/patch.py aide-bin-features patch
+}
+
+pre_remove() {
+  /usr/share/aide-bin-features/patch.py aide-bin-features restore
+  /usr/bin/rm -f /usr/share/aide-bin-features/cache.json
+}
