@@ -6,9 +6,9 @@ pkgname=papis-git
 _pkgname=papis
 pkgver=0.13.r509.g9b270726
 pkgrel=1
-pkgdesc="Command-line document and bibliography manager"
+pkgdesc='Command-line document and bibliography manager'
 arch=('any')
-url="https://github.com/papis/papis"
+url='https://github.com/papis/papis'
 license=('GPL-3.0-or-later')
 depends=('python'
     'python-arxiv'
@@ -56,34 +56,34 @@ makedepends=('git'
 )
 checkdepends=(
     # For pytest
-    python-pytest
-    python-pytest-cov
+    'python-pytest'
+    'python-pytest-cov'
     # These are optional -- if they're not installed, papis will automatically
     # skip these tests -- and are only necessary if you intend to use the
     # optdeps as well
-    python-jinja
-    python-markdownify
-    python-whoosh
+    'python-jinja'
+    'python-markdownify'
+    'python-whoosh'
 
     # For flake8
-    flake8
-    python-flake8-bugbear
-    python-flake8-polyfill
-    python-flake8-pyproject
-    python-flake8-quotes
-    python-pep8-naming
+    'flake8'
+    'python-flake8-bugbear'
+    'python-flake8-polyfill'
+    'python-flake8-pyproject'
+    'python-flake8-quotes'
+    'python-pep8-naming'
 
     # For mypy
-    mypy
-    python-types-beautifulsoup4
-    python-types-pygments
-    python-types-pyyaml
-    python-types-requests
-    python-types-setuptools
+    'mypy'
+    'python-types-beautifulsoup4'
+    'python-types-pygments'
+    'python-types-pyyaml'
+    'python-types-requests'
+    'python-types-setuptools'
 )
-provides=("papis")
-conflicts=("papis")
-source=("git+https://github.com/papis/papis.git")
+provides=('papis')
+conflicts=('papis')
+source=("git+$url.git")
 sha256sums=('SKIP')
 
 pkgver() {
