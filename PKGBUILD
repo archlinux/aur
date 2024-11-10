@@ -2,19 +2,20 @@
 # Contributor: Pellegrino Prevete (tallero) <pellegrinoprevete@gmail.com>
 
 pkgname=tepl-git
-pkgver=6.9.0.r4.gdec59c9
-pkgrel=1
+pkgver=6.11.0.r16.gd7f7d71
+pkgrel=2
 pkgdesc="Library that eases the development of GtkSourceView-based text editors and IDEs"
 arch=(x86_64)
-url="https://gitlab.gnome.org/swilmet/tepl"
-license=(LGPL2.1)
+url="https://gitlab.gnome.org/World/gedit/libgedit-tepl"
+license=(LGPL-3.0-or-later)
 depends=(
   libgedit-amtk
+  libgedit-gfls
   cairo
   glib2
   glibc
   gsettings-desktop-schemas
-  gtksourceview4
+  gtk3
   icu
   pango
   libhandy
@@ -22,6 +23,7 @@ depends=(
 )
 makedepends=(
   git
+  glib2-devel
   gobject-introspection
   gtk-doc
   meson
@@ -29,16 +31,16 @@ makedepends=(
 checkdepends=(xorg-server-xvfb)
 provides=("tepl=${pkgver}")
 conflicts=(tepl)
-source=("git+${url}.git")
+source=("git+https://gitlab.gnome.org/World/gedit/libgedit-tepl.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "tepl"
+  cd "libgedit-tepl"
   git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  arch-meson "tepl" build
+  arch-meson "libgedit-tepl" build
   meson compile -C build
 }
 
