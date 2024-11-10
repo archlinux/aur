@@ -11,7 +11,7 @@ source=("https://github.com/nickheyer/tore/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('SKIP')
 
 build() {
-    cd "$srcdir/${pkgname}-${pkgver}/src"
+    cd "$srcdir/${pkgname}-${pkgver}"
     gcc -o nob nob.c
     ./nob
 }
