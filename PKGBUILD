@@ -6,7 +6,7 @@
 _pkgname='nimdow'
 pkgname="${_pkgname}-git"
 pkgver=0.7.40.r1.g29a0cd2
-pkgrel=1
+pkgrel=2
 pkgdesc='Tiling window manager written in Nim (latest commit)'
 arch=('x86_64')
 url="https://github.com/avahe-kellenberger/$_pkgname"
@@ -46,6 +46,8 @@ prepare() {
     ;;
     * ) : pass ;;
   esac
+
+  export CHOOSENIM_NO_ANALYTICS=1
 
   PATH="$_path" nimble refresh -l
   PATH="$_path" nimble install -d -l
