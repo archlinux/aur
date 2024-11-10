@@ -1,8 +1,8 @@
 pkgbase = dia-git
 	pkgdesc = A GTK+ based diagram creation program
-	pkgver = 6876.222828925
+	pkgver = 6883.78c75625d
 	pkgrel = 1
-	url = https://wiki.gnome.org/action/show/Apps/Dia
+	url = https://gitlab.gnome.org/GNOME/dia
 	arch = x86_64
 	license = GPL-2.0-or-later
 	makedepends = git
