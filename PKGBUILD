@@ -9,9 +9,10 @@ url="https://github.com/${pkgname}-app/${pkgname}"
 license=('AGPL-3.0-or-later')
 backup=("etc/${pkgname}/${pkgname}.env")
 depends=("chromium" "nodejs<23" "nodejs<>22.8.0" "nodejs<>22.7.0" "pnpm" "redis")
-optdepends=("meilisearch: for full text search"
+optdepends=("${pkgname}-cli: ${pkgname} cli tool"
+            "meilisearch: for full text search"
             "ollama: for automatic tagging"
-            "${pkgname}-cli: ${pkgname} cli tool")
+            "yt-dlp: for download video")
 makedepends=("git" "jq" "pnpm")
 source=("${pkgname}::git+${url}.git#tag=v${pkgver}"
         "${pkgname}.env"

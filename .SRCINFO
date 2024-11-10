@@ -15,9 +15,10 @@ pkgbase = hoarder
 	depends = nodejs<>22.7.0
 	depends = pnpm
 	depends = redis
+	optdepends = hoarder-cli: hoarder cli tool
 	optdepends = meilisearch: for full text search
 	optdepends = ollama: for automatic tagging
-	optdepends = hoarder-cli: hoarder cli tool
+	optdepends = yt-dlp: for download video
 	backup = etc/hoarder/hoarder.env
 	source = hoarder::git+https://github.com/hoarder-app/hoarder.git#tag=v0.19.0
 	source = hoarder.env
