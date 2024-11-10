@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=phenomis
-_pkgver=1.6.4
+_pkgver=1.8.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -47,9 +47,9 @@ optdepends=(
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz"
         "$_pkgname-LICENSE::http://www.cecill.info/licences/Licence_CeCILL_V2-en.txt")
-md5sums=('e40b22138ac05862c136ef7c96159dc1'
+md5sums=('73d059932bb380964ca38e2fa1a550a3'
          '599cf91b33571e942d3ba5f9623b8011')
-b2sums=('a90918bcdea9989449b3dd833142a3522faeac9cbc34c864e0ae5b49b665fb8fc97e4544574d1bde4175101a37fe8dee7371d68f2a9cdc94251d4862814862b7'
+b2sums=('6b1f46403c17ed89388e108ed0e3cfe190bea29e07bae2d7db0415fdab670078b5c76c4e51a87793b57a7abb0238cab71f01f6a7d6ba1d98c80cc7ae3038fd77'
         'ff97dacc39b8597e670dbaf5bc0f0e4db73eada273708433fc227fa72c054a30a67dbc7b2416089d68f09ab65da721e5b30711022c41047d9cf706731d568038')
 
 build() {
