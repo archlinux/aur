@@ -1,7 +1,7 @@
 # Maintainer: William Edwards <shadowapex@gmail.com>
 pkgname=inputplumber-git
 _pkgbase=inputplumber
-pkgver=v0.36.5.r0.gf480d6c
+pkgver=v0.36.6.r0.gc425c44
 pkgrel=1
 pkgdesc="Open source input router and remapper daemon for Linux"
 arch=('x86_64')
