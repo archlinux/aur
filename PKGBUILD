@@ -2,7 +2,7 @@
 
 pkgname=platypush
 pkgver=1.3.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Universal multi-platform command executor and automation manager"
 arch=('any')
 license=('MIT')
@@ -18,6 +18,7 @@ depends=(
     'python-marshmallow'
     'python-pip'
     'python-psutil'
+    'python-pygments'
     'python-pyotp'
     'python-qrcode'
     'python-redis'
