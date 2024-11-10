@@ -1,0 +1,15 @@
+post_install() {
+  /opt/aide/resources/app/patch.py
+}
+
+pre_upgrade() {
+  /opt/aide/resources/app/patch.py -R
+}
+
+post_upgrade() {
+  /opt/aide/resources/app/patch.py
+}
+
+pre_remove() {
+  /opt/aide/resources/app/patch.py -R
+}

@@ -1,0 +1,16 @@
+pkgbase = aide-bin-marketplace
+	pkgdesc = Enable vscode marketplace in aide-bin
+	pkgver = 1.94.0
+	pkgrel = 1
+	url = https://marketplace.visualstudio.com/vscode
+	install = aide-bin-marketplace.install
+	arch = any
+	license = unknown
+	source = aide-bin-marketplace.hook
+	source = patch.py
+	sha256sums = 367fea9b04e28f22b172dc6b8a7609c9322bade89c2e7c07f4c8b2ee65f53259
+	sha256sums = 4e2389a33902dbaef2d526123346dcf40140a8dada56760aef8dc2c12af453af
+
+pkgname = aide-bin-marketplace
+	depends = aide-bin
+	depends = python
