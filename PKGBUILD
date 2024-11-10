@@ -1,4 +1,5 @@
 # Maintainer: kraanzu <kraanzu@gmail.com>
+# Maintainer: Jax Young <jaxvanyang@gmail.com>
 
 pkgname=dooit-extras
 pkgver=0.1.0
