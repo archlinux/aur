@@ -1,8 +1,8 @@
 # Maintainer: Filippo Falezza <filippo dot falezza at outlook dot it>
 
 pkgname='geant4-full'
-pkgver=11.2.1
-pkgrel=3
+pkgver=11.2.2
+pkgrel=1
 pkgdesc="A simulation toolkit for particle physics interactions - includes all the optional libraries"
 depends=(
   'cmake>=3.16'
@@ -48,19 +48,22 @@ options=('!emptydirs')
 source=(
   "http://geant4-data.web.cern.ch/releases/geant4-v${pkgver}.tar.gz"
   'geant4-full.install'
-#  'SoQt.patch'
+  'G4UIQt.patch'
+  'G4OpenGLQtViewer.patch'
 )
 sha256sums=(
-  "835db6543d5cb2e801675958965be96877f66d6907bb521954b598b785deae5e"
-  "5fde7b80dcfa960407b1ecb2b2a2aa817250948cc32490d8ece48a5e5b4035c1"
-#  "1cf456d2d02afb52378ad6882b1901329ae6437989ecef4ebe1333d116efc3e2"
+  'd24f65735b8a0a039c00f9434991e99ef119b86c510d0f2ab21155db82a3491d'
+  '5fde7b80dcfa960407b1ecb2b2a2aa817250948cc32490d8ece48a5e5b4035c1'
+  'SKIP'
+  'SKIP'
 )
 install="geant4-full.install"
 
 prepare()
 {
   cd "${srcdir}"
-  #patch -Np0 -i "${srcdir}"/SoQt.patch
+  patch -Np0 -i "${srcdir}"/G4UIQt.patch
+  patch -Np0 -i "${srcdir}"/G4OpenGLQtViewer.patch
 
 }
 
@@ -111,8 +114,8 @@ setenv G4REALSURFACEDATA /opt/Geant4/Libraries/RealSurface2.2" > Geant4.csh
     -DGEANT4_USE_G3TOG4=ON \
     -DGEANT4_USE_GDML=ON \
     -DGEANT4_USE_FREETYPE=ON \
-    -DGEANT4_USE_INVENTOR_QT=ON \
     -DGEANT4_USE_QT_QT6=ON \
+    -DGEANT4_USE_INVENTOR_QT=ON \
     -DGEANT4_USE_OPENGL_X11=ON \
     -DGEANT4_USE_QT=ON \
     -DGEANT4_USE_RAYTRACER_X11=ON \

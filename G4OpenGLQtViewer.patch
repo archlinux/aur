@@ -1,0 +1,11 @@
+--- geant4-v11.2.2/source/visualization/OpenGL/src/G4OpenGLQtViewer.cc	2024-11-10 20:32:42.733185443 +0000
++++ G4OpenGLQtViewer.cc	2024-11-10 20:32:37.159639372 +0000
+@@ -4611,7 +4611,7 @@
+ 
+ 
+ void G4OpenGLQtViewer::currentTabActivated(int currentTab) {
+-  if (fUiQt->GetViewerTabWidget()->tabText(currentTab) == GetName())  {
++  if (fUiQt->GetViewerTabWidget()->tabText(currentTab) == (QString)GetName())  {
+     createViewerPropertiesWidget();
+     createPickInfosWidget();
+     createSceneTreeWidget();

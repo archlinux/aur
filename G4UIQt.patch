@@ -1,0 +1,11 @@
+--- geant4-v11.2.2/source/interfaces/implementation/src/G4UIQt.cc	2024-11-10 19:56:39.159926611 +0000
++++ G4UIQt.cc	2024-11-10 19:44:46.861065783 +0000
+@@ -4502,7 +4502,7 @@
+   const G4UIOutputString& output, const QString& currentThread, const QString& filter)
+ {
+ #ifdef G4MULTITHREADED
+-  if ((currentThread == "All") || (currentThread == output.fThread)) {
++  if ((currentThread == "All") || (currentThread == (QString)output.fThread)) {
+ #else
+   if (currentThread == "") {
+ #endif
