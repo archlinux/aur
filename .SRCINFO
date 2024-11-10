@@ -1,6 +1,6 @@
 pkgbase = r-kissde
 	pkgdesc = Retrieves Condition-Specific Variants in RNA-Seq Data
-	pkgver = 1.24.0
+	pkgver = 1.26.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/kissDE
 	arch = any
@@ -22,7 +22,7 @@ pkgbase = r-kissde
 	depends = r-shinycssloaders
 	optdepends = r-biocstyle
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/kissDE_1.24.0.tar.gz
-	sha256sums = a93b44ad0b146cbfae3e8d9cbaee4a5bf18199c87f6002938c1a9e4123d4009c
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/kissDE_1.26.0.tar.gz
+	sha256sums = b21bc2f12ddf03cfa42ac382ad96086f1377f472ec2d51fe8e3ed8678c978cf1
 
 pkgname = r-kissde
