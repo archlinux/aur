@@ -1,11 +1,11 @@
 pkgbase = pcsx2
 	pkgdesc = Sony PlayStation 2 emulator
-	pkgver = 2.0.2
+	pkgver = 2.2.0
 	pkgrel = 1
 	url = https://github.com/PCSX2/pcsx2
 	install = pcsx2.install
 	arch = x86_64
-	license = GPL-3.0-only
+	license = GPL-3.0-or-later
 	makedepends = clang
 	makedepends = lld
 	makedepends = llvm
@@ -39,11 +39,9 @@ pkgbase = pcsx2
 	optdepends = qt6-wayland: Wayland support
 	options = !debug
 	options = lto
-	source = pcsx2::git+https://github.com/PCSX2/pcsx2.git#commit=2f46e5a8406e4832ba60c5ab1ba2fd16a074ab1f
+	source = pcsx2::git+https://github.com/PCSX2/pcsx2.git#commit=2d5faa627ff54f3fb2a69a43286181bee071a1c3
 	source = pcsx2_patches::git+https://github.com/PCSX2/pcsx2_patches.git
-	source = ianlancetaylor.libbacktrace::git+https://github.com/ianlancetaylor/libbacktrace.git
 	source = google.shaderc::git+https://github.com/google/shaderc.git
-	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
