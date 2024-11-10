@@ -1,0 +1,17 @@
+pkgbase = snipt-bin
+	pkgdesc = Multiple remote platform snippet-code manager command
+	pkgver = 0.1.5
+	pkgrel = 1
+	url = https://github.com/blacknon/snipt
+	arch = x86_64
+	license = MIT
+	makedepends = gzip
+	depends = glibc
+	provides = snipt
+	conflicts = snipt
+	source = README-0.1.5.md::https://raw.githubusercontent.com/blacknon/snipt/v0.1.5/README.md
+	sha256sums = c807ce8088057e72150cb5d6e61c6476d5d074a3d36afff632233384a7c7c7e2
+	source_x86_64 = https://github.com/blacknon/snipt/releases/download/v0.1.5/snipt_0.1.5_linux_amd64.tar.gz
+	sha256sums_x86_64 = 7b610eb6fe227105351d72aedf0411133c79c6c857a7cef281838a90dfc7ba87
+
+pkgname = snipt-bin
