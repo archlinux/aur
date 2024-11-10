@@ -5,7 +5,8 @@
 # llvm-profdata merge -output=pcsx2-avx-git.profdata *.profraw
 
 ## options
-: ${_commit:=2f46e5a8406e4832ba60c5ab1ba2fd16a074ab1f} # 2.0.2
+: ${_commit:=2d5faa627ff54f3fb2a69a43286181bee071a1c3} # 2.2.0
+: ${_install_path:=opt}
 
 : ${_build_instrumented:=false}
 : ${_build_pgo:=try}
@@ -18,14 +19,14 @@ unset _pkgtype
 [[ "${_build_avx::1}" == "t" ]] && _pkgtype+="-avx"
 [[ "${_build_git::1}" == "t" ]] && _pkgtype+="-git"
 
-# basic info
+## basic info
 _pkgname="pcsx2"
 pkgname="$_pkgname${_pkgtype:-}"
-pkgver=2.1.169.r0.g6c3cf12
+pkgver=2.3.1.r59.g73549038
 pkgrel=1
 pkgdesc='Sony PlayStation 2 emulator'
 url="https://github.com/PCSX2/pcsx2"
-license=('GPL-3.0-only')
+license=('GPL-3.0-or-later')
 arch=('x86_64')
 
 depends=(
@@ -96,11 +97,6 @@ _source_pcsx2_patches() {
   sha256sums+=('SKIP')
 }
 
-_source_backtrace() {
-  source+=("ianlancetaylor.libbacktrace"::"git+https://github.com/ianlancetaylor/libbacktrace.git")
-  sha256sums+=('SKIP')
-}
-
 _source_shaderc() {
   depends+=(
     'glslang'
@@ -151,7 +147,6 @@ _prepare_shaderc() (
 
 _source_pcsx2
 _source_pcsx2_patches
-_source_backtrace
 _source_shaderc
 
 prepare() {
@@ -167,18 +162,6 @@ prepare() {
   _prepare_pcsx2
   _prepare_shaderc
 }
-
-_build_backtrace() (
-  echo "Building libbacktrace..."
-  cd "ianlancetaylor.libbacktrace"
-
-  autoreconf -fi
-  ./configure
-  make
-
-  install -Dm644 .libs/libbacktrace.a -t "$srcdir/deps/"
-  install -Dm644 *.h -t "$srcdir/deps/include/"
-)
 
 _build_shaderc() {
   echo "Building shaderc..."
@@ -210,12 +193,11 @@ _build_pcsx2() {
     -G Ninja
     -DCMAKE_BUILD_TYPE=None
     -DCMAKE_SKIP_RPATH=ON
-    -DLIBBACKTRACE_INCLUDE_DIR="$srcdir/deps/include"
-    -DLIBBACKTRACE_LIBRARY="$srcdir/deps/libbacktrace.a"
     -DSHADERC_INCLUDE_DIR="$srcdir/deps/usr/include"
     -DSHADERC_LIBRARY="$srcdir/deps/usr/lib/libshaderc_shared.so.1"
-    -DENABLE_TESTS=OFF
     -DUSE_ASAN=OFF
+    -DUSE_BACKTRACE=OFF
+    -DENABLE_TESTS=OFF
     -Wno-dev
   )
 
@@ -261,21 +243,20 @@ build() {
     CXXFLAGS="$(echo "$CXXFLAGS" | sed -E 's@(\s*-(march|mtune)=\S+\s*)@ @g;s@\s*-O[0-9]\s*@ @g;s@\s+@ @g') -march=x86-64-v3 -mtune=generic -O3"
   fi
 
-  _build_backtrace
   _build_shaderc
   _build_pcsx2
   _build_pcsx2_patches
 }
 
 package() {
-  install -Dm644 patches.zip -t "$pkgdir/opt/$_pkgname/resources/"
-  cp --reflink=auto -r build_pcsx2/bin/* "$pkgdir/opt/$_pkgname/"
+  install -Dm644 patches.zip -t "$pkgdir/$_install_path/$_pkgname/resources/"
+  cp --reflink=auto -r build_pcsx2/bin/* "$pkgdir/$_install_path/$_pkgname/"
 
   # rpath
-  patchelf --force-rpath --set-rpath "/opt/$_pkgname" "$pkgdir/opt/$_pkgname/$_pkgname-qt"
+  patchelf --force-rpath --set-rpath "/$_install_path/$_pkgname" "$pkgdir/$_install_path/$_pkgname/$_pkgname-qt"
 
   # libraries
-  local _shaderc_patched="$pkgdir/opt/$_pkgname/libshaderc_$_pkgname.so.1"
+  local _shaderc_patched="$pkgdir/$_install_path/$_pkgname/libshaderc_$_pkgname.so.1"
   install -Dm644 "$srcdir/deps/usr/lib/libshaderc_shared.so.1" "$_shaderc_patched"
   patchelf --set-soname "libshaderc_$_pkgname.so.1" "$_shaderc_patched"
 
@@ -286,7 +267,7 @@ package() {
   # script
   install -Dm755 /dev/stdin "$pkgdir/usr/bin/$_pkgname" << END
 #!/usr/bin/env sh
-exec /opt/$_pkgname/$_pkgname-qt "\$@"
+exec /$_install_path/$_pkgname/$_pkgname-qt "\$@"
 END
 
   # launcher
