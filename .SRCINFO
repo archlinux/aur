@@ -20,6 +20,7 @@ pkgbase = waydroid-helper-git
 	depends = gtk4
 	depends = libadwaita
 	depends = python-aiofiles
+	depends = python-dbus
 	optdepends = bindfs: shared folders support
 	provides = waydroid-helper
 	conflicts = waydroid-helper
