@@ -1,9 +1,11 @@
-# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Maintainer: HurricanePooits <hurricanepootis@protonmail.com>
+# Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 # Contributor: Javier Tiá <javier dot tia at gmail dot com>
 
-pkgname=libuev
+pkgbase=libuev
+pkgname=(libuev libuev-docs)
 pkgver=2.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Lightweight event loop library'
 arch=('x86_64')
 url='https://github.com/troglobit/libuev'
@@ -26,10 +28,21 @@ check() {
   make check
 }
 
-package() {
+package_libuev() {
   cd "$pkgname-$pkgver"
   make DESTDIR="$pkgdir" install
   install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
+  rm -rf "$pkgdir/usr/share/doc"
+}
+
+package_libuev-docs() {
+  arch=('any')
+  depends=()
+  provides=()
+  cd "${pkgname::-5}-$pkgver"
+  make DESTDIR="$pkgdir" install
+  install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
+  rm -rf "$pkgdir/usr/include" "$pkgdir/usr/lib"
 }
 
 # vim:set ts=2 sw=2 et:
