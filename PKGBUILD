@@ -5,7 +5,7 @@
 _android_arch=x86-64
 
 pkgname=android-${_android_arch}-liburing
-pkgver=2.7
+pkgver=2.8
 pkgrel=1
 arch=('any')
 pkgdesc="Linux-native io_uring I/O access library (Android ${_android_arch})"
@@ -19,8 +19,8 @@ makedepends=('android-configure')
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("https://github.com/axboe/liburing/archive/refs/tags/liburing-${pkgver}.tar.gz"
         '0001-Fix-libs-install.patch')
-md5sums=('20a95f2edfb9742001ed4772458aa002'
-         'a0de03236c46346326adadb0139bc03d')
+md5sums=('769d83fc56b7316579c361756cbf5ec1'
+         '8134d4faf929451e20da833737788284')
 
 prepare() {
     cd "${srcdir}/liburing-liburing-${pkgver}"
@@ -53,7 +53,7 @@ package() {
     cd "${srcdir}/liburing-liburing-${pkgver}"
     source android-env ${_android_arch}
 
-    make -C "${PWD}/src" DESTDIR="$pkgdir" ENABLE_SHARED=1 install
+    make -C "${PWD}/src" DESTDIR="${pkgdir}" ENABLE_SHARED=1 install
     ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.so
     ${ANDROID_STRIP} -g "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.a || true
 
