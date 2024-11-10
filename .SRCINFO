@@ -1,0 +1,15 @@
+pkgbase = capnproto-dlang
+	pkgdesc = Cap'n Proto compiler for D
+	pkgver = 0.1.2.7a48c3b
+	pkgrel = 1
+	url = https://github.com/capnproto/capnproto-dlang
+	arch = any
+	license = MIT
+	makedepends = dub
+	makedepends = dmd
+	depends = capnproto
+	depends = libphobos
+	source = capnp-src.tar.gz::https://github.com/capnproto/capnproto-dlang/archive/7a48c3ba4def5487d8d282ec894c07ff30d588be.tar.gz
+	sha256sums = f8246ad32e3bd82661c64427e2070868a86048c8b3f908d7890f7addcfbe0787
+
+pkgname = capnproto-dlang
