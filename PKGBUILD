@@ -1,7 +1,7 @@
 # Maintainer: Marcelo Hernandez <marcelohdez.inq at gmail dot com>
-# PKGBUILD heavily inspired by swww's: https://aur.archlinux.org/cgit/aur.git/tree/PKGBUILD?h=swww
+# Maintainer: Gabriel Garcia <gabrielgarciacs at proton dot me>
 pkgname=dim-screen
-pkgver=0.2.2
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="Native Wayland screen dimming tool"
 url="https://github.com/marcelohdez/dim"
@@ -14,12 +14,13 @@ depends=(
 )
 makedepends=(
 	'cargo'
+	'scdoc'
+	'gzip'
 )
 source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate")
-sha256sums=('a9d0ff0487fe6fed3a40524af3914a57abd3aef69b2d9234d65557c1a7d8da37')
+sha256sums=('624c9bca107e891fc36980d8758dd0eac8f33795a5356baf9a525642240bb00c')
 
 _archive="$pkgname-$pkgver"
-_binname="dim"
 
 prepare() {
 	cd "$_archive"
@@ -47,13 +48,25 @@ package() {
 	cd "$_archive"
 
 	# install binary
-	BINDIR='target/release'
-	install -Dm755 "$BINDIR/$_binname" "$pkgdir/usr/bin/$_binname"
+	install -Dm755 "target/release/dim" "$pkgdir/usr/bin/dim"
+	
+	# generate and install completions
+	target/release/dim --gen-completions .
+	
+	mkdir -p "$pkgdir/usr/share/bash-completion/completions"
+	install -Dm644 "dim.bash" "$pkgdir/usr/share/bash-completion/completions/dim.bash"
 
-	# install completion files
-	OUTDIR="$(ls -t "$BINDIR/build/" | grep "$pkgname" | head -1)"
-	COMPDIR="$BINDIR/build/$OUTDIR/out"
+	mkdir -p "$pkgdir/usr/share/elvish/lib"
+	install -Dm644 "dim.elv" "$pkgdir/usr/share/elvish/lib/dim.elv"
 
-	install -Dm644 "$COMPDIR/$_binname.bash" "$pkgdir/usr/share/bash-completion/completions/$_binname"
-	install -Dm644 "$COMPDIR/_$_binname" "$pkgdir/usr/share/zsh/site-functions/_$_binname"
+  	mkdir -p "$pkgdir/usr/share/fish/vendor_completions.d"
+	install -Dm644 "dim.fish" "$pkgdir/usr/share/fish/vendor_completions.d/dim.fish"
+
+  	mkdir -p "$pkgdir/usr/share/zsh/site-functions"
+	install -Dm644 "_dim" "$pkgdir/usr/share/zsh/site-functions/_dim"
+
+	# generate and install man pages
+	scdoc < "man/dim.1.scd" > "man/dim.1"
+	gzip "man/dim.1"
+	install -Dm644 "man/dim.1.gz" "$pkgdir/usr/share/man/man1/dim.1.gz"
 }
