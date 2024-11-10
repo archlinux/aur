@@ -1,7 +1,7 @@
 # Maintainer: Talon Wettstein <diablodev@googlegroups.com>
 pkgname=diablo-project-manager-git
-pkgver=1
-pkgrel=2
+pkgver=r12.79d210b
+pkgrel=1
 pkgdesc="A CLI Project Manager"
 arch=("x86_64")
 url="https://gitlab.com/diablodev/dpm"
@@ -14,7 +14,7 @@ source=($pkgname::git+"https://gitlab.com/diablodev/dpm.git")
 sha256sums=('SKIP')
 
 pkgver() {
-	cd $pkgname
+	cd "$srcdir/$pkgname"
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
