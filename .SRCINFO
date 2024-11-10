@@ -1,6 +1,6 @@
 pkgbase = r-xeva
 	pkgdesc = Analysis of patient-derived xenograft (PDX) data
-	pkgver = 1.20.0
+	pkgver = 1.22.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/Xeva
 	arch = any
@@ -18,7 +18,7 @@ pkgbase = r-xeva
 	optdepends = r-biocstyle
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/Xeva_1.20.0.tar.gz
-	sha256sums = dabf4da0985f5b9acd3aeadc8fb3d6520559192fac19ded9cf2243fd8aeccbd8
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/Xeva_1.22.0.tar.gz
+	sha256sums = cd7080e13b2058ba8b805ec344107e9d61f120ecdad257f2bb0ef3af9d2e418c
 
 pkgname = r-xeva
