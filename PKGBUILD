@@ -1,7 +1,7 @@
 # Maintainer: Hannes Körber <hannes@hkoerber.de>
 pkgname='grm-git'
-pkgver=0.7.15.r6.gea7299a
-pkgrel=2
+pkgver=0.7.21.r1.gfcd315b
+pkgrel=1
 pkgdesc='Manage git repos, worktrees and integrate with GitHub and GitLab'
 arch=('x86_64')
 url='https://github.com/hakoerber/git-repo-manager'
@@ -12,6 +12,8 @@ provides=('grm')
 conflicts=('grm')
 source=("${pkgname}::git+https://github.com/hakoerber/git-repo-manager#branch=develop")
 sha256sums=('SKIP')
+  # https://gitlab.archlinux.org/archlinux/packaging/packages/pacman/-/issues/20
+options=(!lto !debug)
 
 pkgver() {
   cd "${pkgname}"
@@ -29,8 +31,6 @@ build() {
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
   export GRM_RELEASE_VERSION="${pkgver}"
-  # https://gitlab.archlinux.org/archlinux/packaging/packages/pacman/-/issues/20
-  export CFLAGS+=' -ffat-lto-objects'
   cargo build --frozen --release
 }
 
