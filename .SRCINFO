@@ -1,11 +1,11 @@
 pkgbase = coolvlviewer-bin
 	pkgdesc = A third-party viewer for Second Life and OpenSim grids
-	pkgver = 1.32.2.21
+	pkgver = 1.32.2.22
 	pkgrel = 1
 	url = http://sldev.free.fr
 	install = coolvlviewer.install
 	arch = x86_64
-	license = GPL-2.0-only
+	license = GPL-2.0-or-later
 	depends = apr-util
 	depends = atk
 	depends = gconf
@@ -38,10 +38,10 @@ pkgbase = coolvlviewer-bin
 	optdepends = nvidia-utils: for NVIDIA support
 	optdepends = pepper-flash: for inworld Flash support
 	optdepends = wine: for SLVoice support
-	source = http://sldev.free.fr/binaries/CoolVLViewer-1.32.2.21-Linux-x86_64-Setup
+	source = http://sldev.free.fr/binaries/CoolVLViewer-1.32.2.22-Linux-x86_64-Setup
 	source = coolvlviewer.desktop
 	source = coolvlviewer.launcher
-	sha1sums = f7866482f63c88e3db1717c28c2d8ddfbf5f0377
+	sha1sums = 103b8818fb727c92ba7e908aeed67d95441cc197
 	sha1sums = 314763ee16ca2e2224c402ec18bf5b24157ce8b8
 	sha1sums = 3ef1284a00a4437e4c34f809311ee0672604ef04
 
