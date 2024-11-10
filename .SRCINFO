@@ -60,7 +60,7 @@ pkgbase = papis-git
 	optdepends = python-pytest: for papis.testing (used by some plugins)
 	provides = papis
 	conflicts = papis
-	source = git+https://github.com/papis/papis.git
+	source = papis::git+https://github.com/papis/papis.git
 	sha256sums = SKIP
 
 pkgname = papis-git

@@ -90,7 +90,7 @@ checkdepends=(
 )
 provides=('papis')
 conflicts=('papis')
-source=("git+$url.git")
+source=("${_pkgname}::git+$url.git")
 sha256sums=('SKIP')
 
 pkgver() {
