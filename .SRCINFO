@@ -1,9 +1,10 @@
 pkgbase = android-armv7a-eabi-opencl-headers
 	pkgdesc = OpenCL (Open Computing Language) header files (Android armv7a-eabi)
-	pkgver = 2023.04.17
+	pkgver = 2024.05.08
 	pkgrel = 1
 	url = https://www.khronos.org/registry/cl/
 	arch = any
+	groups = android-opencl-headers
 	license = custom
 	makedepends = android-cmake
 	makedepends = python
@@ -12,7 +13,7 @@ pkgbase = android-armv7a-eabi-opencl-headers
 	options = !buildflags
 	options = staticlibs
 	options = !emptydirs
-	source = https://github.com/KhronosGroup/OpenCL-Headers/archive/v2023.04.17.tar.gz
-	sha256sums = 0ce992f4167f958f68a37918dec6325be18f848dee29a4521c633aae3304915d
+	source = https://github.com/KhronosGroup/OpenCL-Headers/archive/v2024.05.08.tar.gz
+	md5sums = 56d28bdc7957be155aa81114ce504794
 
 pkgname = android-armv7a-eabi-opencl-headers
