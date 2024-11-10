@@ -1,6 +1,6 @@
 pkgbase = r-plyinteractions
 	pkgdesc = Extending tidy verbs to genomic interactions
-	pkgver = 1.2.0
+	pkgver = 1.4.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/plyinteractions
 	arch = any
@@ -31,8 +31,8 @@ pkgbase = r-plyinteractions
 	optdepends = r-sessioninfo
 	optdepends = r-testthat
 	optdepends = r-tidyverse
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/plyinteractions_1.2.0.tar.gz
-	md5sums = 096a42786083c5af594646d3102dbc04
-	b2sums = c82591f8f1b21322eb8d296e25792cb478747977eb9fc319854a67df7176ae01405acce71cb40b6d588d6b5fcd488e39dd7f34fd971e15275edb2189309a0b54
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/plyinteractions_1.4.0.tar.gz
+	md5sums = 1dd6aab852245e89ebc7e2b1df6fff25
+	b2sums = dc529b089ae778db2c117ea3a18cd86e75991f462c47aa4fdf4d1fc83edc0873667f7ec1a48a2c6a8cdbaa6d9b09980cf6727a0b076f53496d5280eedb1fc552
 
 pkgname = r-plyinteractions
