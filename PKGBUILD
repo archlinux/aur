@@ -1,7 +1,7 @@
 # Maintainer: Alexander Pohl <alex at ahpohl dot com>
 pkgname=libsunspec
 pkgver=0.1.6
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="A C++ library for SunSpec compatible inverters, meters and batteries" 
 arch=('i686' 'x86_64' 'aarch64' 'armv7h')
@@ -21,7 +21,7 @@ install=
 changelog=
 source=("$pkgname-$pkgver::git+https://github.com/ahpohl/libsunspec.git#tag=v${pkgver}")
 noextract=()
-sha256sums=('SKIP')
+sha256sums=('b0f8d180eb22aec63b534a7b9d10aae0947436b616b71f4f23d210d5e70c791b')
 validpgpkeys=()
 
 build() {
