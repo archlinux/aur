@@ -1,7 +1,7 @@
 pkgbase = alder
 	pkgdesc = A minimal implementation of the UNIX tree command with colors
 	pkgver = 2.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/aweary/alder
 	arch = any
 	license = MIT
