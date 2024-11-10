@@ -16,7 +16,7 @@ makedepends=(
 license=('BSD-3-Clause')
 arch=('any')
 source=("${url}/releases/download/${pkgver}/${_module}-${pkgver}.tar.gz")
-b2sums=('26a890ac303c41924e57770dd7fb17a3d1bf0b20c7c739dcf32b59470626c104')
+b2sums=('fa808d352ec71972bba57fd0ecf21b77d1d4fd2eab6be17cbe2bca857900b9c1c98a24abc989bcfcc90cad03b867f5a24ffcc3d157b7a561c97760a1cf31c427')
 
 build() {
     cd "${srcdir}/${_module}-${pkgver}"
