@@ -4,18 +4,25 @@
 _android_arch=armv7a-eabi
 
 pkgname=android-${_android_arch}-opencl-clhpp
-pkgver=2023.04.17
+pkgver=2024.05.08
 pkgrel=1
 arch=('any')
 pkgdesc="OpenCL C++ header files (Android ${_android_arch})"
 url='https://github.com/KhronosGroup/OpenCL-CLHPP'
 license=('custom')
+groups=('android-opencl-clhpp')
 depends=("android-${_android_arch}-opencl-headers")
 makedepends=('android-cmake'
              "android-${_android_arch}-opencl-headers")
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("https://github.com/KhronosGroup/OpenCL-CLHPP/archive/v${pkgver}.tar.gz")
-sha256sums=('179243843c620ef6f78b52937aaaa0a742c6ff415f9aaefe3c20225ee283b357')
+md5sums=('8f1a8c6f309c565117fc92e591537df9')
+
+prepare() {
+    cd "${srcdir}/OpenCL-CLHPP-${pkgver}"
+
+    sed -i 's|cmake_minimum_required(VERSION 3.1)|cmake_minimum_required(VERSION 3.6)|g' CMakeLists.txt
+}
 
 build() {
     cd "${srcdir}/OpenCL-CLHPP-${pkgver}"
@@ -27,7 +34,8 @@ build() {
         -DBUILD_EXAMPLES=OFF \
         -DBUILD_DOCS=ON \
         -DBUILD_TESTING=OFF \
-        -DOpenCLHeaders_DIR="${ANDROID_PREFIX_SHARE}/cmake/OpenCLHeaders"
+        -DOpenCLHeaders_DIR="${ANDROID_PREFIX_SHARE}/cmake/OpenCLHeaders" \
+        -Wno-dev
     make -C build $MAKEFLAGS
 }
 
@@ -35,5 +43,5 @@ package() {
     cd "${srcdir}/OpenCL-CLHPP-${pkgver}"
     source android-env ${_android_arch}
 
-    make -C build DESTDIR="$pkgdir" install
+    make -C build DESTDIR="${pkgdir}" install
 }
