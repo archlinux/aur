@@ -4,36 +4,30 @@ pkgver=1.0.0
 pkgrel=1
 pkgdesc="A lightweight system information display tool"
 arch=('x86_64')
-url="https://github.com/codiwithsarthak/griptail"
+url="https://github.com/codiwithsarthak/griptai"
 license=('MIT')
 depends=('glibc')
-makedepends=('gcc' 'make')
 
-source=("$pkgname-$pkgver.tar.gz::https://github.com/codiwithsarthak/griptail/archive/v$pkgver.tar.gz")
-sha256sums=('SKIP')  # Replace SKIP with actual checksum after downloading
+# Ensure the URL points to the correct tarball release file
+source=("https://github.com/codiwithsarthak/griptail/releases/download/v1.0.0.tar.gz/griptail-v1.0.0.tar.gz")
 
+# If you have the checksum, replace 'SKIP' with the actual checksum value
+sha256sums=('2112b19a520e591db22f5e19cee903264fba3579360a387e7ca459266c6d1d2b')
+
+# The directory name inside the tarball is assumed to be 'griptail'
+# If it’s different, adjust it accordingly
 prepare() {
-  cd "$pkgname-$pkgver"
+  cd "$srcdir"
+  tar -xvzf "$srcdir/griptail-v${pkgver}.tar.gz"
 }
 
 build() {
-  cd "$pkgname-$pkgver"
+  cd "$srcdir/griptail"
   make
 }
 
 package() {
-  cd "$pkgname-$pkgver"
-
-  # Install the binary
+  cd "$srcdir/griptail"
   install -Dm755 griptail "$pkgdir/usr/bin/griptail"
-
-  # Install license if present
-  if [ -f LICENSE ]; then
-    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-  fi
-
-  # Install documentation if present
-  if [ -f README.md ]; then
-    install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
-  fi
 }
+

@@ -2,13 +2,11 @@ pkgbase = griptail
 	pkgdesc = A lightweight system information display tool
 	pkgver = 1.0.0
 	pkgrel = 1
-	url = https://github.com/codiwithsarthak/griptail
+	url = https://github.com/codiwithsarthak/griptai
 	arch = x86_64
 	license = MIT
-	makedepends = gcc
-	makedepends = make
 	depends = glibc
-	source = griptail-1.0.0.tar.gz::https://github.com/codiwithsarthak/griptail/archive/v1.0.0.tar.gz
-	sha256sums = SKIP
+	source = https://github.com/codiwithsarthak/griptail/releases/download/v1.0.0.tar.gz/griptail-v1.0.0.tar.gz
+	sha256sums = 2112b19a520e591db22f5e19cee903264fba3579360a387e7ca459266c6d1d2b
 
 pkgname = griptail
