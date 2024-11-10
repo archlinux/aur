@@ -31,12 +31,12 @@ build() {
 }
 
 check() {
-  local _site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
-
   cd $_name-$pkgver
 
-  python -m installer --destdir=test_dir dist/*.whl
-  export PYTHONPATH="test_dir/$_site_packages:$PYTHONPATH"
+  #local _site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
+  #python -m installer --destdir=test_dir dist/*.whl
+  #export PYTHONPATH="test_dir/$_site_packages:$PYTHONPATH"
+
   pytest -vv
 }
 
