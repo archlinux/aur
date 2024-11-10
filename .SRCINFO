@@ -1,9 +1,10 @@
 pkgbase = android-x86-64-libxcursor
 	pkgdesc = X cursor management library (Android x86-64)
-	pkgver = 1.2.2
+	pkgver = 1.2.3
 	pkgrel = 1
 	url = https://gitlab.freedesktop.org/xorg/lib/libxcursor
 	arch = any
+	groups = android-libxcursor
 	license = HPND-sell-variant
 	makedepends = android-x86-64-xorg-util-macros
 	depends = android-x86-64-libxfixes
@@ -14,10 +15,7 @@ pkgbase = android-x86-64-libxcursor
 	options = !buildflags
 	options = staticlibs
 	options = !emptydirs
-	source = https://xorg.freedesktop.org//releases/individual/lib/libXcursor-1.2.2.tar.xz
-	source = https://xorg.freedesktop.org//releases/individual/lib/libXcursor-1.2.2.tar.xz.sig
-	validpgpkeys = 4A193C06D35E7C670FA4EF0BA2FB9E081F2D130E
-	md5sums = bf3a43ad8cb91a258b48f19c83af8790
-	md5sums = SKIP
+	source = https://xorg.freedesktop.org//releases/individual/lib/libXcursor-1.2.3.tar.xz
+	md5sums = 5ce55e952ec2d84d9817169d5fdb7865
 
 pkgname = android-x86-64-libxcursor
