@@ -3,7 +3,7 @@
 pkgname=platypush-git
 _pkgname=platypush
 pkgver=1.3.1.r0.gc134f29c
-pkgrel=3
+pkgrel=4
 pkgdesc="A general-purpose, event-driven, plugin-based platform for automation-as-code"
 arch=('any')
 license=('MIT')
@@ -37,6 +37,7 @@ depends=(
     'python-websockets'
     'python-yaml'
     'python-zeroconf'
+    'zbar'
 )
 
 optdepends=(
@@ -99,7 +100,6 @@ optdepends=(
 	'python-vlc: VLC integration'
 	'python-watchdog: File monitor support'
     'python-weasyprint: PDF generation support'
-	'pyzbar: QR code and barcodes integration'
     'yt-dlp: Support for downloading/streaming YouTube videos, as well as other video platforms'
 )
 
