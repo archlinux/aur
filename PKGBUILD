@@ -9,7 +9,7 @@ _noguipkgname="$_projectname-emu-nogui"
 _toolpkgname="$_projectname-emu-tool"
 pkgbase="$_mainpkgname-git"
 pkgname=("$pkgbase" "$_noguipkgname-git" "$_toolpkgname-git")
-pkgver='2409.r292.g7e1074b140'
+pkgver='2409.r299.gd1ef4d5cc1'
 pkgrel='1'
 pkgdesc='A Gamecube / Wii emulator'
 _pkgdescappend=' - git version'
@@ -92,7 +92,7 @@ build() {
 	cd "$srcdir/$_sourcedirectory/"
 
 	# Consider symbols in dependencies of directly specified dynamic libraries as available to fix the build
-	export LDFLAGS="-Wl,--copy-dt-needed-entries"
+	export LDFLAGS="$LDFLAGS -Wl,--copy-dt-needed-entries"
 
 	# CMAKE_BUILD_TYPE - the dolphin-emu package in the repos uses 'None' for some reason, so we use it as well
 	# CMAKE_SKIP_RPATH - do not add run time path information (the package in the repos does it, presumably because of reproducible builds)
