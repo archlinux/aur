@@ -1,4 +1,4 @@
-# Maintainer: Your Name <javierorfo@protonmail.com>
+# Maintainer: Javier Orfo <javierorfo@protonmail.com>
 
 pkgname=rstatusbar
 pkgver=0.1.1
