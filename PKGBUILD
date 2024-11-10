@@ -2,40 +2,23 @@
 pkgname=mmdebstrap
 pkgver=1.5.4
 pkgrel=1
-epoch=
 pkgdesc="create a Debian chroot"
 arch=('any')
 url="https://gitlab.mister-muffin.de/josch/mmdebstrap"
 license=('MIT')
-groups=()
 depends=('apt' 'python' 'perl')
-makedepends=()
-checkdepends=()
 optdepends=(
 	'debian-archive-keyring: Debian PKI support'
 	'ubuntu-keyring: Ubuntu PKI support'
 	'qemu-user-static: foreign-architecture support'
 	'qemu-user-static-binfmt: foreign-architecture support'
 	'arch-test: foreign-architecture support')
-provides=()
-conflicts=()
-replaces=()
-backup=()
-options=()
-install=
-changelog=
 source=("$url/archive/$pkgver.tar.gz")
-noextract=()
 sha256sums=('c6a11530ee713ff4ab8e1554023e81e7654cb8c9f8499c2682181f76a06f5593')
-validpgpkeys=()
 
 prepare() {
 	cd "$pkgname"
 	sed -i 's,/usr/libexec,/usr/lib,g' gpgvnoexpkeysig mmdebstrap
-}
-
-build() {
-	cd "$pkgname"
 }
 
 package() {
