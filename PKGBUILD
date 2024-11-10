@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=MICSQTL
-_pkgver=1.2.2
+_pkgver=1.4.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -34,8 +34,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('5b939b836d4f9d8558944ce8e6152709')
-b2sums=('305aa1eb61988ca53bed71c022bfe3288149f1f7bca062c98d1657e2ed2b3c1ca30a6c575c5fe0bf1e4ba4359826e44178408f556af5897c66d15f71158d9510')
+md5sums=('09eaf773ad8d3777ca46e06d1afcdab9')
+b2sums=('aa147503fc9f5edc2b8005d46373d28cde3c936aefb35f2e69b47f39d38796e188bc948679d74985dbea49e4e4ecb5082041dce81a1c54e5ec2263bb24876365')
 
 build() {
   mkdir build
