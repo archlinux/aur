@@ -4,5 +4,6 @@ pkg/
 *.xz
 *.tgz
 *.gz
+*.zst
 .project
 .settings
