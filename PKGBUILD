@@ -1,6 +1,6 @@
 # Maintainer: Alexander Pohl <alex at ahpohl dot com>
 pkgname=smartmeter
-pkgver=0.3.8
+pkgver=0.3.9
 pkgrel=1
 epoch=
 pkgdesc="Read energy utility meter with IR dongle"
@@ -24,7 +24,7 @@ source=("$pkgname-$pkgver::git+https://github.com/ahpohl/smartmeter.git#tag=v${p
         "sysusers_smartmeter.conf"
         "smartmeter.service")
 noextract=()
-sha256sums=('6114f1e4e6c5cd27a2a522ff191a20e56c1041b84009624e8456a2f1b7d9b27e'
+sha256sums=('81ab42e136f45da8983a347fcc3efa2232b2906976c3b27151de06ad6fb292ec'
             'c5de1caa62617c8a3287a342ec868e00c8a808647f71bef3a606521d76ac318f'
             '625c1f130758a596f3115cf0ae9f7317d323fcd0a7245f950e07cfb2fc574cb4')
 validpgpkeys=()
