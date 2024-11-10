@@ -1,22 +1,17 @@
 pkgbase = gtk-radio
 	pkgdesc = Easily find live radio programs based on geographical location of radio broadcasters on the Internet
-	pkgver = 550.1
+	pkgver = 550.3
 	pkgrel = 1
-	url = https://wiki.gnome.org/Apps/Radio
+	url = https://www.gtkradio.org/
 	arch = x86_64
 	license = GPL3
 	makedepends = intltool
 	makedepends = itstool
-	makedepends = python
 	depends = libchamplain
-	depends = geoclue
 	depends = gst-plugins-base
 	depends = gst-plugins-bad
-	depends = geocode-glib-2
-	depends = libsoup3
 	conflicts = gnome-radio
-	replaces = gnome-radio
-	source = http://www.gtkradio.org/src/gtk-radio-550.1.tar.xz
-	sha256sums = fbadde374e4d1beadc1084adfcdb3953c6f4644ff1f3ac2ae912b587b8b74f42
+	source = http://www.gtkradio.org/src/gtk-radio-550.3.tar.xz
+	sha256sums = 9cefb783eaa11ef4ee2ac7258bb9423d49bfc890235c903a93c878e7f7fb5855
 
 pkgname = gtk-radio
