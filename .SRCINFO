@@ -1,9 +1,10 @@
 pkgbase = android-x86-numactl
-	pkgdesc = Simple NUMA policy support (android)
-	pkgver = 2.0.18
+	pkgdesc = Simple NUMA policy support (Android x86)
+	pkgver = 2.0.19
 	pkgrel = 1
 	url = https://github.com/numactl/numactl
 	arch = any
+	groups = android-numactl
 	license = GPL-2.0-only
 	license = LGPL-2.1-only
 	makedepends = android-configure
@@ -12,9 +13,9 @@ pkgbase = android-x86-numactl
 	options = !buildflags
 	options = staticlibs
 	options = !emptydirs
-	source = https://github.com/numactl/numactl/archive/refs/tags/v2.0.18.tar.gz
+	source = https://github.com/numactl/numactl/archive/refs/tags/v2.0.19.tar.gz
 	source = 0001-Disable-attach_sysvshm.patch
-	md5sums = 4f90cc917d0055c29d85432e5a536f13
+	md5sums = 15ba6026bb8858748033ed87815a9eff
 	md5sums = 78f308cfb3a98f68bd3d07eaef7572dd
 
 pkgname = android-x86-numactl
