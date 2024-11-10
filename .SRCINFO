@@ -1,6 +1,6 @@
 pkgbase = r-spiky
 	pkgdesc = Spike-in calibration for cell-free MeDIP
-	pkgver = 1.10.0
+	pkgver = 1.12.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/spiky
 	arch = any
@@ -27,7 +27,7 @@ pkgbase = r-spiky
 	optdepends = r-markdown
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/spiky_1.10.0.tar.gz
-	sha256sums = 3111ea6426c44a8190bba8bc6c8b23339ba673366f12d0ccb427f84f146e9bb3
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/spiky_1.12.0.tar.gz
+	sha256sums = 9805932ac71b4682483d54210e411ae4732cbf37e4c305675457b804fdb4b2cd
 
 pkgname = r-spiky
