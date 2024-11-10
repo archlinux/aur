@@ -1,0 +1,6 @@
+/src/
+/pkg/
+/trusted-firmware-a/
+/rk3566_ddr.bin
+/v20*.tar.gz
+/uboot-radxa-zero-3-*.pkg.tar.xz
