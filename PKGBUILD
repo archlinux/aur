@@ -10,12 +10,12 @@ depends=('bash' 'git' 'glibc')
 makedepends=('shc')
 provides=("diablo-project-manager")
 conflicts=("diablo-project-manager")
-source=($pkgname::git+$url)
+source=($pkgname::git+"https://gitlab.com/diablodev/dpm.git")
 sha256sums=('SKIP')
 
 pkgver() {
 	cd $pkgname
-	git describe --long --tags --abbrev=7 | sed 's/^foo-//;s/\([^-]*-g\)/r\1/;s/-/./g'
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {

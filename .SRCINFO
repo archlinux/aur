@@ -11,7 +11,7 @@ pkgbase = diablo-project-manager-git
 	depends = glibc
 	provides = diablo-project-manager
 	conflicts = diablo-project-manager
-	source = diablo-project-manager-git::git+https://gitlab.com/diablodev/dpm
+	source = diablo-project-manager-git::git+https://gitlab.com/diablodev/dpm.git
 	sha256sums = SKIP
 
 pkgname = diablo-project-manager-git
