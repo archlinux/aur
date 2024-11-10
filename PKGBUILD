@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=ROCpAI
-_pkgver=1.16.0
+_pkgver=1.18.0
 pkgname=r-${_pkgname,,}
-pkgver=1.16.0
+pkgver=1.18.0
 pkgrel=1
 pkgdesc='Receiver Operating Characteristic Partial Area Indexes for evaluating classifiers'
 arch=('any')
@@ -21,7 +21,7 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('9a250ce2aa98c2f50edb8c2a02ed3f226a077b4ba4c17e61c2a612daaece3ada')
+sha256sums=('bbbb20d34de401d78511796395c47facd23c78fdf288fb6df7ce134bd8664e77')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
