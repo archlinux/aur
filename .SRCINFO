@@ -1,0 +1,19 @@
+pkgbase = lssh-bin
+	pkgdesc = A list-based SSH/SCP/SFTP client supporting single and parallel connections, local bashrc usage on remote machines, and advanced proxying
+	pkgver = 0.6.13
+	pkgrel = 1
+	url = https://github.com/blacknon/lssh
+	arch = x86_64
+	license = MIT
+	makedepends = gzip
+	depends = glibc
+	provides = lssh
+	conflicts = lssh
+	source = LICENSE-0.6.13::https://raw.githubusercontent.com/blacknon/lssh/v0.6.13/LICENSE.md
+	source = README-0.6.13.md::https://raw.githubusercontent.com/blacknon/lssh/v0.6.13/README.md
+	sha256sums = afb11426e09da40a1ae4f8fa17ddcc6b6a52d14df04c29bc5bcd06eb8730624d
+	sha256sums = 7c7ab43e3e6b097606808cf50e994ea5661e8a2dede16a9e7fb564d41989b08e
+	source_x86_64 = https://github.com/blacknon/lssh/releases/download/v0.6.13/lssh_0.6.13_linux_amd64.tar.gz
+	sha256sums_x86_64 = 4cbcb49180fe903d76ce4f3b93e8cecbe8a92a0c3998edd9ca92b46f75dd0a55
+
+pkgname = lssh-bin
