@@ -1,6 +1,6 @@
 pkgbase = limine-dracut-support-git
 	pkgdesc = Install kernel for Limine bootloader.
-	pkgver = r25.d4e64d3
+	pkgver = r31.193a1dc
 	pkgrel = 1
 	url = https://gitlab.com/Zesko/limine-entry-tool
 	arch = x86_64
