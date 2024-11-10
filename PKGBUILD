@@ -27,7 +27,7 @@ source=(aide.desktop
 
 
 sha256sums=('a27c3bde1179b792f5df160b5678342f7273b3784223403065265fa5308ad605'
-            '98abfb232c0528e069a1b58aad57f5c5f2f487da93021ae52bc3e3cc762ca1f8'
+            'f17ea7d221c79c9eaceaec69c0ca0db12f1b54699869b859a169db8ba5364fc5'
             '0d9408b36d84bd3f76c8f563b39fc4da7264bdc0e06b45f42ac1c9d57a7e24b3'
             '909088d192ceefd04076b17947ec9f3c0ce47f189124c2605c2cc5cfbaca2ee8'
             'be509863d44ae3d19cc37b5e3e53822d4b9950543c705d82cdf0b9815c112149')
@@ -67,12 +67,10 @@ package() {
   install -d "${pkgdir}/opt/${_pkgname}"
   install -d "${pkgdir}/usr/bin"
   install -d "${pkgdir}/usr/share/applications"
-  install -d "${pkgdir}/usr/share/icons"
   install -d "${pkgdir}/usr/share/pixmaps"
   install -d "${pkgdir}/usr/share/mime/packages"
 
   install -m644 "${srcdir}/resources/app/LICENSE.txt" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE.txt"
-#   install -m644 "${srcdir}/resources/app/resources/linux/code.png" "${pkgdir}/usr/share/icons/${_pkgname}.png"
   install -m644 "${srcdir}/resources/app/resources/linux/code.png" "${pkgdir}/usr/share/pixmaps/${_pkgname}.png"
   install -m644 "${srcdir}/aide.desktop" "${pkgdir}/usr/share/applications/aide.desktop"
   install -m644 "${srcdir}/aide-wayland.desktop" "${pkgdir}/usr/share/applications/aide-wayland.desktop"
