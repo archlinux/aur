@@ -2,10 +2,9 @@
 
 pkgbase=cubeb
 pkgname=('cubeb' 'cubeb-docs')
-pkgver=20240817
-#_commit=48689ae7a73caeb747953f9ed664dc71d2f918d8
-_commit=8f6c9a01ddd7c1ac8360b9a31c54e24826ad073f
-pkgrel=2
+pkgver=20241024
+_commit=78b2bce70e0d1c21d3c175b72f322c50801b2e94
+pkgrel=1
 pkgdesc="Cross platform audio library"
 arch=('aarch64' 'armv7h' 'i486' 'i686' 'pentium4' 'x86_64')
 url="https://github.com/mozilla/cubeb"
@@ -13,7 +12,7 @@ license=('ISC')
 makedepends=('alsa-lib' 'cmake' 'doxygen' 'git' 'jack' 'libpulse' 'sndio' 'speexdsp')
 conflicts=("$pkgname-git")
 source=(git+$url#commit=$_commit)
-b2sums=('defe0612774d2ca77cc5475c6cb579a67fc144b012a87d0329b30aa5785b5cbb17d29cc32c9fa51f0a4893a3fcb972a108212c21859c7ee0728b53168dcbe3b5')
+b2sums=('6b5aaa17848ecef649dde231bc7eba69a895116114343c57d9e60f0d5f9ab1ced409548fc860f1650a57b49f4c0334324d37cf8eb80b7b9ecc2ca429350e3161')
 
 pkgver() {
     cd "$srcdir/$pkgname"
