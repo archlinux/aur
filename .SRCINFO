@@ -1,0 +1,31 @@
+pkgbase = lightdm-kde-greeter
+	pkgdesc = LightDM Greeter for KDE
+	pkgver = 6.0.1
+	pkgrel = 1
+	url = https://invent.kde.org/plasma/lightdm-kde-greeter
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = cmake
+	makedepends = extra-cmake-modules
+	makedepends = qt6-tools
+	makedepends = gtk2-compat
+	depends = lightdm
+	depends = kdeclarative
+	depends = qt6-5compat
+	depends = kiconthemes
+	depends = kcmutils
+	depends = kpackage
+	depends = kconfig
+	depends = kconfigwidgets
+	depends = networkmanager-qt
+	depends = kcoreaddons
+	depends = ki18n
+	depends = kauth
+	depends = kservice
+	depends = libplasma
+	backup = etc/lightdm/lightdm-kde-greeter.conf
+	source = git+https://invent.kde.org/plasma/lightdm-kde-greeter.git#tag=v6.0.1
+	sha512sums = 0e0e606c5d243f5bab0eb9c53e97948b7ab41df19d5c2d240d2da9816fd2f468a52eb5098e8aeda5f99f7c489649ae4a215f580e6c6c08b604d06e490f9e0154
+
+pkgname = lightdm-kde-greeter
