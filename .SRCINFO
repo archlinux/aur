@@ -1,12 +1,12 @@
 pkgbase = ttf-impallari-dancing-script
 	pkgdesc = Lively casual script where the letters bounce and change size slightly, from Pablo Impallari
-	pkgver = 2.031
+	pkgver = 3.000
 	pkgrel = 1
 	url = http://www.impallari.com/dancing/
 	arch = any
 	groups = impallari-fonts
 	license = custom:OFL
-	source = dancing-script-2.031.zip::https://github.com/impallari/DancingScript/archive/master.zip
-	sha256sums = a8542e3755da46199cbd6b53943205e7106d6668759678f586de2951914ec630
+	source = dancing-script-3.000.zip::https://github.com/impallari/DancingScript/archive/master.zip
+	sha256sums = 4d5f8b95d884345a352b951a53a18a2ac0c0bd7203818ebbc0a6100657da11c1
 
 pkgname = ttf-impallari-dancing-script
