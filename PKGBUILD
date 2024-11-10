@@ -76,7 +76,7 @@ export G4ABLADATA=/opt/Geant4/Libraries/G4ABLA3.3
 export G4LEDATA=/opt/Geant4/Libraries/G4EMLOW8.5
 export G4ENSDFSTATEDATA=/opt/Geant4/Libraries/G4ENSDFSTATE2.3
 export G4INCLDATA=/opt/Geant4/Libraries/G4INCL1.2
-export G4NEUTRONHPDATA=/opt/Geant4/Libraries/G4NDL4.7
+export G4NEUTRONHPDATA=/opt/Geant4/Libraries/G4NDL4.7.1
 export G4PARTICLEXSDATA=/opt/Geant4/Libraries/G4PARTICLEXS4.0
 export G4PIIDATA=/opt/Geant4/Libraries/G4PII1.3
 export G4SAIDXSDATA=/opt/Geant4/Libraries/G4SAIDDATA2.0
@@ -92,7 +92,7 @@ setenv G4ABLADATA /opt/Geant4/Libraries/G4ABLA3.3
 setenv G4LEDATA /opt/Geant4/Libraries/G4EMLOW8.5
 setenv G4ENSDFSTATEDATA /opt/Geant4/Libraries/G4ENSDFSTATE2.3
 setenv G4INCLDATA /opt/Geant4/Libraries/G4INCL1.2
-setenv G4NEUTRONHPDATA /opt/Geant4/Libraries/G4NDL4.7
+setenv G4NEUTRONHPDATA /opt/Geant4/Libraries/G4NDL4.7.1
 setenv G4PARTICLEXSDATA /opt/Geant4/Libraries/G4PARTICLEXS4.0
 setenv G4PIIDATA /opt/Geant4/Libraries/G4PII1.3
 setenv G4SAIDXSDATA /opt/Geant4/Libraries/G4SAIDDATA2.0
