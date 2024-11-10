@@ -13,6 +13,6 @@ pkgbase = smaz2-git
 	source = smaz2.c.patch
 	sha256sums = SKIP
 	sha256sums = 709aa5ff17a83368bbfe34c932b0e9b2fc147a8f31f5ca133071a4fbd99129cd
-	sha256sums = 6aef563bb4791afbf39f140f025b6a2ebf891c6fcfdc5c9084f521299292218e
+	sha256sums = 34c7dbebfe92bbf368f5134c6d32440d2e98f5d30ac19a572769900e4a785056
 
 pkgname = smaz2-git

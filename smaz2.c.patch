@@ -1,5 +1,5 @@
 diff --git a/smaz2.c b/smaz2.c
-index f9dd594..7efdf5e 100644
+index f9dd594..74afc65 100644
 --- a/smaz2.c
 +++ b/smaz2.c
 @@ -6,6 +6,8 @@
@@ -73,3 +73,36 @@ index f9dd594..7efdf5e 100644
              dst[y++] = s[0];
              dst[y-(verblen+1)] = verblen; // Fix the verbatim bytes length.
              if (verblen == 5) verblen = 0; // Start to emit a new sequence.
+@@ -170,17 +171,20 @@ unsigned long smaz2_decompress(unsigned char *dst, unsigned long dstlen, unsigne
+     unsigned long orig_dstlen = dstlen, i = 0;
+ 
+     while (i < len) {
++        unsigned char *_dst = dst;
+         if ((c[i] & 128) != 0) {
+             /* Emit bigram. */
+             unsigned char idx = c[i]&127;
+             if (dstlen && dstlen-- && i < len) *dst++ = bigrams[idx*2];
+             if (dstlen && dstlen-- && i < len) *dst++ = bigrams[idx*2+1];
+             i++;
++            if (debug) fprintf(stderr,"[%c%c]", *(dst-2), *(dst-1));
+         } else if (c[i] > 0 && c[i] < 6) {
+             /* Emit verbatim sequence. */
+             unsigned char vlen = c[i++];
+             while(vlen-- && i < len)
+                 if (dstlen && dstlen--) *dst++ = c[i++];
++            if (debug) fprintf(stderr,"_%.*s", (int)(dst-_dst), _dst);
+         } else if (c[i] > 5 && c[i] < 9) {
+             /* Emit word. */
+             unsigned char escape = c[i];
+@@ -191,9 +195,11 @@ unsigned long smaz2_decompress(unsigned char *dst, unsigned long dstlen, unsigne
+             while(words[idx][j] != 0)
+                 if (dstlen && dstlen--) *dst++ = words[idx][j++];
+             if (dstlen && escape == 7 && dstlen--) *dst++ = ' ';
++            if (debug) fprintf(stderr,"(%.*s)", (int)(dst-_dst), _dst);
+         } else {
+             /* Emit byte as it is. */
+             if (dstlen--) *dst++ = c[i++];
++            if (debug) fprintf(stderr,"{%c}", *(dst-1));
+         }
+     }
+     return orig_dstlen - dstlen;

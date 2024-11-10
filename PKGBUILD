@@ -12,7 +12,7 @@ license=(MIT)
 makedepends=(git)
 provides=("$_pkgname")
 source=("$_pkgname::git+$url.git" example.c smaz2.c.patch)
-sha256sums=(SKIP 709aa5ff17a83368bbfe34c932b0e9b2fc147a8f31f5ca133071a4fbd99129cd 6aef563bb4791afbf39f140f025b6a2ebf891c6fcfdc5c9084f521299292218e)
+sha256sums=(SKIP 709aa5ff17a83368bbfe34c932b0e9b2fc147a8f31f5ca133071a4fbd99129cd 34c7dbebfe92bbf368f5134c6d32440d2e98f5d30ac19a572769900e4a785056)
 
 prepare() {
 	ln -ft "$_pkgname" example.c
@@ -29,6 +29,7 @@ build() { make smaz2 -C "$srcdir/$_pkgname"; }
 
 check() {
 	"$srcdir/$_pkgname/smaz2"<"$srcdir/$_pkgname/README.md"|"$srcdir/$_pkgname/smaz2" -d|diff -q - "$srcdir/$_pkgname/README.md"
+	"$srcdir/$_pkgname/smaz2"<"$srcdir/$_pkgname/smaz2.c"  |"$srcdir/$_pkgname/smaz2" -d|diff -q - "$srcdir/$_pkgname/smaz2.c"
 }
 
 package() {
