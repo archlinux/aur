@@ -1,67 +1,59 @@
-# Maintainer: Vincent Bernardoff <vb AT luminar.eu.org>
-pkgname=nng-git
-pkgver=v1.3.0
+# Maintainer:
+# Contributor: Vincent Bernardoff <vb AT luminar.eu.org>
+
+_pkgname="nng"
+pkgname="$_pkgname-git"
+pkgver=1.9.0.r187.gcbe9a27
 pkgrel=1
 pkgdesc="Rewrite of the SP protocol library known as libnanomsg"
-arch=(arm armv6h armv7h aarch64 x86_64 i686)
-url="https://nanomsg.github.io/nng/"
+url="https://github.com/nanomsg/nng"
 license=('MIT')
-depends=()
-makedepends=('git' 'cmake' 'ninja' 'asciidoctor')
-provides=("${pkgname%-git}")
-conflicts=("${pkgname%-git}")
-install=
-source=('git+https://github.com/nanomsg/nng.git')
-noextract=()
-md5sums=('SKIP')
+arch=('x86_64')
+
+depends=(
+  'mbedtls'
+)
+makedepends=(
+  'cmake'
+  'git'
+  'ninja'
+)
+
+provides=("$_pkgname")
+conflicts=("$_pkgname")
+
+_pkgsrc="$_pkgname"
+source=("$_pkgsrc"::"git+$url.git")
+sha256sums=('SKIP')
 
 pkgver() {
-    cd "$srcdir/${pkgname%-git}"
-    git describe --always --dirty --tags | sed -e 's/-/./g'
-}
-
-prepare() {
-    mkdir -p "$srcdir/${pkgname%-git}/build"
-    cd "$srcdir/${pkgname%-git}/build"
-    cmake -G Ninja -DNNG_ENABLE_TLS=ON -DNNG_STATIC_LIB=OFF -DBUILD_SHARED_LIBS=ON ..
+  cd "$_pkgsrc"
+  git describe --long --tags --abbrev=7 --exclude='*[a-zA-Z][a-zA-Z]*' \
+    | sed -E 's/^[^0-9]*//;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
 build() {
-    cd "$srcdir/${pkgname%-git}/build"
-    ninja
+  local _cmake_options=(
+    -B build
+    -S "$_pkgsrc"
+    -G Ninja
+    -DCMAKE_BUILD_TYPE=None
+    -DCMAKE_INSTALL_PREFIX='/usr'
+    -DNNG_ENABLE_DOC=OFF # missing files
+    -DNNG_ENABLE_TLS=ON
+    -DBUILD_SHARED_LIBS=ON
+    -Wno-dev
+  )
+
+  cmake "${_cmake_options[@]}"
+  cmake --build build
 }
 
 check() {
-    cd "$srcdir/${pkgname%-git}/build"
-    ninja test
-}
-
-generate_man() {
-	declare input=$1
-        declare name=nng
-        declare version=PREVIEW
-        declare MANSOURCE="NNG"
-        declare MANMANUAL="NNG Reference Manual"
-        declare pagename=${input#*.}
-        declare output=${input%.*}
-        output=${output##*/}
-        declare level=${pagename:0:1}
-        declare mandir="$pkgdir/usr/share/man/man$level"
-        install -d $mandir
-
-	asciidoctor -aversion-label=${name} -arevnumber=${version} \
-		-a mansource="${MANSOURCE}" -a manmanual="${MANMANUAL}" \
-		-d manpage -b manpage -o "$mandir/$output" $input
+  ctest --test-dir build --output-on-failure || :
 }
 
 package() {
-    cd "$srcdir/${pkgname%-git}"
-    install -d "$pkgdir/usr/include" "$pkgdir/usr/lib"
-    cp -a include/* "$pkgdir/usr/include"
-    cp -a build/libnng* "$pkgdir/usr/lib"
-    install -Dm755 build/tools/nngcat/nngcat "$pkgdir/usr/bin/nngcat"
-    install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE.txt"
-    for i in docs/man/*.adoc ; do
-        generate_man $i
-    done
+  DESTDIR="$pkgdir" cmake --install build
+  install -Dm644 "$_pkgsrc/LICENSE.txt" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
