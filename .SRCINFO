@@ -1,13 +1,13 @@
 pkgbase = veretino
 	pkgdesc = Data Integrity Checker
-	pkgver = 0.5.1
+	pkgver = 0.5.2
 	pkgrel = 1
 	url = https://github.com/artemvlas/veretino
 	arch = x86_64
 	license = GPL3
 	depends = qt5-base
 	depends = qt5-svg
-	source = https://github.com/artemvlas/veretino/archive/refs/tags/v0.5.1.tar.gz
-	sha256sums = 286cf652264286455259c78bcbf1ba4845b04d6e5bc20e22fe3df6f03d2e4114
+	source = https://github.com/artemvlas/veretino/archive/refs/tags/v0.5.2.tar.gz
+	sha256sums = 93707c91efef3c536e17d019e6c7e1ee5763da9ff28117512e323fa9e02b9e93
 
 pkgname = veretino

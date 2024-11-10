@@ -1,6 +1,6 @@
 # Maintainer: Artem Vlasenko <artemvlas at proton dot me>
 pkgname=veretino
-pkgver=0.5.1
+pkgver=0.5.2
 pkgrel=1
 pkgdesc="Data Integrity Checker"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('GPL3')
 depends=('qt5-base' 'qt5-svg')
 
 source=(https://github.com/artemvlas/veretino/archive/refs/tags/v$pkgver.tar.gz)
-sha256sums=(286cf652264286455259c78bcbf1ba4845b04d6e5bc20e22fe3df6f03d2e4114)
+sha256sums=(93707c91efef3c536e17d019e6c7e1ee5763da9ff28117512e323fa9e02b9e93)
 
 build() {
 	cd "$pkgname-$pkgver"
