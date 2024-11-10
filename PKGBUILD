@@ -9,6 +9,7 @@ url="https://github.com/nickheyer/tore"
 license=('MIT')
 source=("https://github.com/nickheyer/tore/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('SKIP')
+install=tore.install
 
 build() {
     cd "$srcdir/${pkgname}-${pkgver}"
@@ -18,7 +19,4 @@ build() {
 
 package() {
     install -Dm755 "$srcdir/${pkgname}-${pkgver}/build/tore" "$pkgdir/usr/bin/tore"
-    install -d "$pkgdir/etc/profile.d"
-    echo 'tore' > "$pkgdir/etc/profile.d/tore.sh"
-    chmod 644 "$pkgdir/etc/profile.d/tore.sh"
 }
