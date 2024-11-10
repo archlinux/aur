@@ -1,6 +1,6 @@
 pkgbase = r-scclassify
 	pkgdesc = scClassify: single-cell Hierarchical Classification
-	pkgver = 1.16.0
+	pkgver = 1.18.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/scClassify
 	arch = any
@@ -24,7 +24,7 @@ pkgbase = r-scclassify
 	optdepends = r-knitr
 	optdepends = r-pkgdown
 	optdepends = r-rmarkdown
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/scClassify_1.16.0.tar.gz
-	sha256sums = d596d1a6f37dd98f873b9db2dfa4945d02db6f19be8bfd77912ac2da4bedb9fa
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/scClassify_1.18.0.tar.gz
+	sha256sums = 0564f51c0afb8f9252f2f831c3cb5e1ebfeb0f06e7fffbbd0916ebb74ca562b0
 
 pkgname = r-scclassify
