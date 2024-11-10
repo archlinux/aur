@@ -14,7 +14,7 @@
 # You can use TMPDIR in $srcdir by exporting TMPDIR_FIX with some value.
 
 pkgname=telegram-desktop-dev
-pkgver=5.6.3
+pkgver=5.7.2
 pkgrel=1
 pkgdesc='Official Telegram Desktop client - development release'
 arch=(x86_64)
@@ -50,8 +50,10 @@ source=(
     # ...
     # New approach: source tarball, same as the stable Arch package
     "https://github.com/telegramdesktop/tdesktop/releases/download/v${pkgver}/tdesktop-${pkgver}-full.tar.gz"
+    "$pkgname-28611.patch::https://patch-diff.githubusercontent.com/raw/telegramdesktop/tdesktop/pull/28611.patch"
 )
-sha512sums=('0cce16f780f1350199d8a10a9eff6e8052888aede5d3839d3435acdfb34f445098ec24cac21d1950f704350c22bec86020e6c746706bb34c5533e2086e6cb597')
+sha512sums=('55fa4f20ceae71f2b869c00abdcf6a27f505156f7b254e38a68a97ea34b09e2e9deeef1fec6c5633e93043fb2e9e9ea72502ec9daeed319c8de65cbe825ca916'
+            'b959fd3d26734e4361f8f567eacc874cd753b347b55fa0fc2640d10b65f1a6788b677967c601b1f92f636831c8aafe7681145ab35c69c983960ec3b78707f321')
 
 prepare() {
     # Magic submodule configuration, thanks to the Python script
@@ -59,6 +61,8 @@ prepare() {
 
     # Normal preparation here
     cd "$srcdir/tdesktop-$pkgver-full"
+
+    patch -Np1 -i "$srcdir"/$pkgname-28611.patch
 
     # Magic is over!
     # We need the extra flag for this vulnerability:
@@ -93,14 +97,12 @@ build() {
     # Turns out we're allowed to use the official API key that telegram uses for their snap builds:
     # https://github.com/telegramdesktop/tdesktop/blob/8fab9167beb2407c1153930ed03a4badd0c2b59f/snap/snapcraft.yaml#L87-L88
     # Thanks @primeos!
-    #cmake -B build -S tdesktop -G Ninja \
-    #    -DCMAKE_VERBOSE_MAKEFILE=ON \
-    cmake -B build -S "tdesktop-$pkgver-full" -G "Unix Makefiles" \
+    cmake -B build -S tdesktop-$pkgver-full -G Ninja \
+        -DCMAKE_VERBOSE_MAKEFILE=ON \
         -DCMAKE_INSTALL_PREFIX="/usr" \
         -DCMAKE_BUILD_TYPE=Release \
         -DTDESKTOP_API_ID=611335 \
         -DTDESKTOP_API_HASH=d524b414d21f4d37f08684c1df41ac9c
-
     cmake --build build -- $MAKEFLAGS
 }
 
