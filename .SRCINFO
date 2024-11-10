@@ -1,0 +1,17 @@
+pkgbase = meg4-git
+	pkgdesc = Very performant fantasy console with lots of features and multiple languages
+	pkgver = r104.a299272
+	pkgrel = 1
+	url = https://github.com/relector-tuxnix/meg4
+	arch = x86_64
+	arch = armv7h
+	arch = aarch64
+	arch = riscv32
+	arch = riscv64
+	license = GPLv3
+	makedepends = git
+	depends = sdl2
+	source = git+https://github.com/relector-tuxnix/meg4
+	sha256sums = SKIP
+
+pkgname = meg4-git
