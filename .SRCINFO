@@ -1,6 +1,6 @@
 pkgbase = perfetto
 	pkgdesc = System profiling, app tracing and trace analysis
-	pkgver = 39.0
+	pkgver = 48.1
 	pkgrel = 1
 	url = https://perfetto.dev/
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = perfetto
 	depends = gcc-libs
 	provides = perfetto
 	conflicts = perfetto
-	source = https://android.googlesource.com/platform/external/perfetto/+archive/refs/heads/releases/v39.0.tar.gz
-	b2sums = 56a39ad83aa8df00914ef4d5cd9e0ce7a1c1df611d4237396336d97d28bb93b61d5e040cb57d6a32e255e651d70aa047efc352936232a36b97ac76fa6b1bf967
+	source = https://github.com/google/perfetto/archive/refs/tags/v48.1.tar.gz
+	b2sums = d3738557cb56bfaea7c00a6609c94566e346185612237143ea76e9c1f1d9dee12006537c84e87ab93e6f3af7b9793d819ca4fb582fc7309841c026031271860a
 
 pkgname = perfetto

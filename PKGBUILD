@@ -1,6 +1,6 @@
 # Maintainer: haagch <christoph.haag@collabora.com>
 pkgname=perfetto
-pkgver=39.0
+pkgver=48.1
 pkgrel=1
 pkgdesc="System profiling, app tracing and trace analysis"
 arch=(x86_64)
@@ -11,10 +11,12 @@ makedepends=('git' 'python' 'clang')
 provides=('perfetto')
 conflicts=('perfetto')
 options=()
-source=("https://android.googlesource.com/platform/external/perfetto/+archive/refs/heads/releases/v$pkgver.tar.gz")
-b2sums=('56a39ad83aa8df00914ef4d5cd9e0ce7a1c1df611d4237396336d97d28bb93b61d5e040cb57d6a32e255e651d70aa047efc352936232a36b97ac76fa6b1bf967')
+source=("https://github.com/google/perfetto/archive/refs/tags/v$pkgver.tar.gz")
+b2sums=('d3738557cb56bfaea7c00a6609c94566e346185612237143ea76e9c1f1d9dee12006537c84e87ab93e6f3af7b9793d819ca4fb582fc7309841c026031271860a')
 
 build() {
+
+    cd perfetto-$pkgver
 	tools/install-build-deps
 	tools/gn gen --args='is_debug=false' out/linux
 	tools/ninja -C out/linux tracebox traced traced_probes perfetto
@@ -22,6 +24,8 @@ build() {
 }
 
 package() {
+    cd perfetto-$pkgver
+
 	#DESTDIR="$pkgdir/" ninja -C out/linux install
         #install -d -m755 "$pkgdir"/usr/lib/
 	install -D -m644 out/linux/libperfetto.so "$pkgdir"/usr/lib/libperfetto.so
