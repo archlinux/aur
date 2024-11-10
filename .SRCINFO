@@ -1,9 +1,10 @@
 pkgbase = android-x86-libxslt
 	pkgdesc = XML stylesheet transformation library (Android x86)
-	pkgver = 1.1.39
-	pkgrel = 3
+	pkgver = 1.1.42
+	pkgrel = 1
 	url = https://gitlab.gnome.org/GNOME/libxslt/-/wikis/home
 	arch = any
+	groups = android-libxslt
 	license = custom:MIT
 	depends = android-x86-libgcrypt
 	depends = android-x86-libxml2
@@ -13,11 +14,11 @@ pkgbase = android-x86-libxslt
 	options = !buildflags
 	options = staticlibs
 	options = !emptydirs
-	source = https://gitlab.gnome.org/GNOME/libxslt/-/archive/v1.1.39/libxslt-v1.1.39.tar.gz
+	source = https://gitlab.gnome.org/GNOME/libxslt/-/archive/v1.1.42/libxslt-v1.1.42.tar.gz
 	source = 0001-Allow-undefined.patch
 	source = 0002-Disable-programs-test-docs.patch
-	md5sums = 8058ddbcae9bc4a6ab75327e748561de
+	md5sums = 839a3d767b12d37cf716b47a801254ed
 	md5sums = 44cd43c2b6e620197a78aa2973a23f0c
-	md5sums = 4714fbe1c074ab7dc3bc43feeb2ff250
+	md5sums = 054e65c82ccafb95e5fe7b148a153fec
 
 pkgname = android-x86-libxslt

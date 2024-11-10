@@ -9,7 +9,7 @@
  PKG_PROG_PKG_CONFIG
  
  LT_INIT([disable-static win32-dll])
-@@ -554,20 +552,9 @@
+@@ -545,20 +543,10 @@
  libxslt/xsltconfig.h
  libexslt/Makefile
  libexslt/exsltconfig.h
@@ -17,7 +17,7 @@
  python/Makefile
  python/setup.py
  python/tests/Makefile
--tests/Makefile
+ tests/Makefile
 -tests/xmlspec/Makefile
 -tests/multiple/Makefile
 -tests/xinclude/Makefile
@@ -27,9 +27,9 @@
 -doc/Makefile
 -doc/devhelp/Makefile
 -doc/EXSLT/devhelp/Makefile
- libxslt.spec
  ])
  AC_CONFIG_FILES([xslt-config], [chmod +x xslt-config])
+ 
 --- a/Makefile.am
 +++ b/Makefile.am
 @@ -1,11 +1,11 @@
