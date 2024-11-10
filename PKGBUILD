@@ -1,8 +1,8 @@
+# Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dor com>
 # Maintainer: Anty0 <anty150 at gmail dot com>
 
-
 # Helper variables for updaurpkg (https://aur.archlinux.org/packages/updaurpkg-git)
-_upstreamver='3.3.7'
+_upstreamver='4.2.2'
 _upstreamver_regex='^[0-9]+\.[0-9]+\.[0-9]+$'
 _source_type='pypi-releases'
 _pypi_package='greenery'
@@ -23,7 +23,7 @@ makedepends=('python-setuptools'
              'python-installer')
 checkdepends=('python-pytest')
 source=("https://files.pythonhosted.org/packages/source/${_pypi_package::1}/${_pypi_package}/${_pypi_package}-${pkgver}.tar.gz")
-sha256sums=('7818ba0a26c7d16c8be569fe10a00b7cb59f2456adc74118b26c1ff71dcf14b9')
+sha256sums=('6221d5727d19b4f46fc794635aa00b3dbbab33ed7ff1d686a0011d9197a4b7a0')
 
 prepare() {
     cd "${srcdir}/${_pypi_package}-${pkgver}/"
@@ -31,17 +31,18 @@ prepare() {
 
 build() {
     cd "${srcdir}/${_pypi_package}-${pkgver}/"
+
     python -m build --wheel --no-isolation
-    #python setup.py build
 }
 
 check(){
     cd "${srcdir}/${_pypi_package}-${pkgver}/"
-    pytest
+
+    pytest -vv
 }
 
 package() {
     cd "${srcdir}/${_pypi_package}-${pkgver}/"
+
     python -m installer --destdir="$pkgdir" dist/*.whl
-    #python setup.py install --root="${pkgdir}" --optimize=1
 }

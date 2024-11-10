@@ -1,6 +1,6 @@
 pkgbase = python-greenery
 	pkgdesc = Greenery allows manipulation of regular expressions as finite state machines
-	pkgver = 3.3.7
+	pkgver = 4.2.2
 	pkgrel = 1
 	url = https://github.com/qntm/greenery
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = python-greenery
 	makedepends = python-build
 	makedepends = python-installer
 	depends = python
-	source = https://files.pythonhosted.org/packages/source/g/greenery/greenery-3.3.7.tar.gz
-	sha256sums = 7818ba0a26c7d16c8be569fe10a00b7cb59f2456adc74118b26c1ff71dcf14b9
+	source = https://files.pythonhosted.org/packages/source/g/greenery/greenery-4.2.2.tar.gz
+	sha256sums = 6221d5727d19b4f46fc794635aa00b3dbbab33ed7ff1d686a0011d9197a4b7a0
 
 pkgname = python-greenery
