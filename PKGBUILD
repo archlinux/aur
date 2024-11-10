@@ -18,5 +18,6 @@ build() {
 
 package() {
     install -Dm755 "$srcdir/${pkgname}-${pkgver}/build/tore" "$pkgdir/usr/bin/tore"
-    echo "tore" >> "$pkgdir/etc/skel/.bashrc"
+    echo 'tore' > "$pkgdir/etc/profile.d/tore.sh"
+    chmod 644 "$pkgdir/etc/profile.d/tore.sh"
 }
