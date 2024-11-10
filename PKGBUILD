@@ -3,7 +3,7 @@
 pkgname=platypush-git
 _pkgname=platypush
 pkgver=1.3.1.r0.gc134f29c
-pkgrel=1
+pkgrel=2
 pkgdesc="A general-purpose, event-driven, plugin-based platform for automation-as-code"
 arch=('any')
 license=('MIT')
@@ -24,6 +24,8 @@ depends=(
     'python-marshmallow'
     'python-pip'
     'python-psutil'
+    'python-pyotp'
+    'python-qrcode'
     'python-redis'
     'python-requests'
     'python-rsa'
@@ -83,10 +85,8 @@ optdepends=(
 	'python-pycups: Printers integration'
 	'python-pydbus: DBus and Bluetooth integration'
 	'python-pylast: Last.fm scrobbling support'
-	'python-pyotp: OTP support'
 	'python-pyscard: Support for the smart card integration'
 	'python-pyserial: Arduino/serial device support'
-	'python-qrcode: QR code integration'
 	'python-rpi-gpio: Support for GPIO integrations for Raspberry Pi (and compatible) devices'
 	'python-rtmidi: MIDI integration'
 	'python-snowboy: Snowboy integration'
