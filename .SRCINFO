@@ -1,6 +1,6 @@
 pkgbase = perl-math-int64
 	pkgdesc = Manipulate 64 bits integers in Perl
-	pkgver = 0.54
+	pkgver = 0.57
 	pkgrel = 1
 	url = http://search.cpan.org/dist/Math-Int64
 	arch = i686
@@ -9,9 +9,8 @@ pkgbase = perl-math-int64
 	license = GPL
 	depends = perl
 	options = !emptydirs
-	source = http://search.cpan.org/CPAN/authors/id/S/SA/SALVA/Math-Int64-0.54.tar.gz
-	md5sums = 1ad0ce8b5e903dfe9f7ffbabd8a43014
-	sha512sums = 03677df499ebc3924fabefbc6fb863adc2f765341a9697305b03bb24477b391029e65cc492c831a24e282e26e850082abbd0e52dda198aa041f3f4f41cc4f995
+	source = http://search.cpan.org/CPAN/authors/id/S/SA/SALVA/Math-Int64-0.57.tar.gz
+	md5sums = ed431cca1c403b1078fb1b3e2860d8de
+	sha512sums = 2039822523dd7b960b0015e68b9caa1e3061a7434c2931f0cc49c503ee8dd17178cef5cebf69a6907af82564bc1f09946e9817fc4c4b19757b91fe2ef5423b9e
 
 pkgname = perl-math-int64
-
