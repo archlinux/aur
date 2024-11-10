@@ -1,0 +1,15 @@
+pkgbase = genmc
+	pkgdesc = Generic model checker for concurrent C programs
+	pkgver = 0.10.2
+	pkgrel = 1
+	url = https://plv.mpi-sws.org/genmc
+	arch = x86_64
+	license = GPL3
+	license = custom:Apache 2.0 with LLVM Exception
+	makedepends = llvm
+	depends = llvm-libs
+	depends = hwloc
+	source = https://github.com/MPI-SWS/genmc/archive/refs/tags/v0.10.2.tar.gz
+	sha512sums = 208c652ee00fecbee52f061020a381c5d8ab80469a074e714cd54f2a04203e7a99e971b484f286034f41d09b85059e7000d0a378d49097ce8c2887d5a9e2de42
+
+pkgname = genmc
