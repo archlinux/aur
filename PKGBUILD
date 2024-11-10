@@ -6,8 +6,9 @@
 # Maintainer: Kainoa Kanter <kainoa@t1c.dev>
 
 pkgbase=linux-mainline-um5606
-_tag=v6.12-rc6
-pkgver=6.12rc6
+epoch=1
+_tag=v6.12-rc5
+pkgver=6.12rc5
 pkgrel=1
 pkgdesc="Linux Mainline with patches for the Asus UM5606(WA) laptop"
 arch=(x86_64)
