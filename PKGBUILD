@@ -1,7 +1,7 @@
 # Maintainer: Aleksey Maximov <amaxcz@gmail.com>
 
 pkgname=google-gemini-nativefier
-pkgver=32.1.2
+pkgver=33.2.0
 pkgrel=1
 pkgdesc="Google Gemini desktop app (electron)"
 arch=("armv7l" "i686" "x86_64")
