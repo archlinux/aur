@@ -1,0 +1,5 @@
+post_install() {
+    echo "To run 'tore' automatically when a new terminal session is started,"
+    echo "add the command 'tore' to your ~/.bashrc or ~/.zshrc file."
+    echo "Example: echo 'tore' >> ~/.zshrc"
+}
