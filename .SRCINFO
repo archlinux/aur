@@ -1,6 +1,6 @@
 pkgbase = ofinstaller-beans-bin
 	pkgdesc = Installer for Open Fortress
-	pkgver = 1.5.2
+	pkgver = 1.6.0
 	pkgrel = 1
 	url = https://github.com/ktwrd/beans-rs
 	arch = x86_64
@@ -8,9 +8,16 @@ pkgbase = ofinstaller-beans-bin
 	depends = glibc
 	depends = gcc-libs
 	depends = openssl
+	depends = libx11
+	depends = libxinerama
+	depends = glib2
+	depends = libxcursor
+	depends = libxfixes
+	depends = pango
+	depends = cairo
 	provides = ofinstaller-beans
 	conflicts = ofinstaller-beans
-	source = https://github.com/ktwrd/beans-rs/releases/download/v1.5.2/beans-rs
-	sha256sums = 8aa5920df6576c53da7feb4a4104604ae7f44962615e16a189ed998341b38544
+	source = https://github.com/ktwrd/beans-rs/releases/download/v1.6.0/beans-rs
+	sha256sums = f14d6f716a9e3f9aa626de255d6a9f1a58fb5608040a050c426ebbe03ed07a9a
 
 pkgname = ofinstaller-beans-bin
