@@ -1,0 +1,18 @@
+pkgbase = nimdow-git
+	pkgdesc = Tiling window manager written in Nim (latest commit)
+	pkgver = 0.7.40.r1.g29a0cd2
+	pkgrel = 1
+	url = https://github.com/avahe-kellenberger/nimdow
+	arch = x86_64
+	license = GPL-2.0-or-later
+	makedepends = git
+	makedepends = nim>=1.2.0
+	depends = gcc-libs
+	depends = glibc
+	provides = nimdow
+	conflicts = nimdow
+	options = lto
+	source = git+https://github.com/avahe-kellenberger/nimdow.git
+	sha256sums = SKIP
+
+pkgname = nimdow-git
