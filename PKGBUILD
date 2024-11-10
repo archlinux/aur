@@ -12,7 +12,6 @@ depends=("capnproto" "libphobos")
 makedepends=("dub" "dmd")
 source=("capnp-src.tar.gz::https://github.com/capnproto/capnproto-dlang/archive/7a48c3ba4def5487d8d282ec894c07ff30d588be.tar.gz")
 sha256sums=("f8246ad32e3bd82661c64427e2070868a86048c8b3f908d7890f7addcfbe0787")
-OPTIONS=(strip !debug)
 
 build() {
 	cd "capnproto-dlang-"*
