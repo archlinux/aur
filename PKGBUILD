@@ -4,7 +4,7 @@ _appname=NeoHtop
 _pkgauthor=Abdenasser
 _pkgname=neohtop
 pkgname=${_pkgname}-bin
-pkgver=1.0.9
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="💪🏻 htop on steroids"
 arch=('x86_64' 'aarch64')
@@ -20,9 +20,9 @@ source_x86_64=("${url}/releases/download/v${pkgver}/${_appname}_${pkgver}_${arch
 source_aarch64=("${url}/releases/download/v${pkgver}/${_appname}_${pkgver}_${arch[1]}.deb")
 
 sha256sums=('af4f1ed4ec165eb087e3caf30c9b7f68779adfd739ec4a771975fd51db1d5671'
-            '7f093c348427338300849281c50993d64ebb2d1e227a5283ce78577b31d1c9e0')
-sha256sums_x86_64=('e90c7bd1e294fa0a8768b1a7039484978d166c9cf56380e3fb35a6c48997b874')
-sha256sums_aarch64=('d7bcfc6aa5e96e76494628b79d21bfe0a985707a38495cc50e31bca24437f699')
+            'af4bd5f3a78047de6634d2c7c5b5b7b5cd1a2bd82e7a69d467fc411643188f03')
+sha256sums_x86_64=('f62e01f4f26a98fa751cfd9f8555f939ce91a2100a43c815cbfffbbe8afe869b')
+sha256sums_aarch64=('4dfaf77a78858e633af27a5ae77bd8d534c4ee23bd82f17edcf911764145aa47')
 
 
 package() {
