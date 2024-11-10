@@ -3,7 +3,7 @@
 pkgname=platypush-git
 _pkgname=platypush
 pkgver=1.3.1.r0.gc134f29c
-pkgrel=2
+pkgrel=3
 pkgdesc="A general-purpose, event-driven, plugin-based platform for automation-as-code"
 arch=('any')
 license=('MIT')
@@ -24,6 +24,7 @@ depends=(
     'python-marshmallow'
     'python-pip'
     'python-psutil'
+    'python-pygments'
     'python-pyotp'
     'python-qrcode'
     'python-redis'
