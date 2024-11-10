@@ -1,0 +1,16 @@
+pkgbase = map
+	pkgdesc = Map lines from stdin to commands
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/soveran/map
+	arch = x86_64
+	arch = aarch64
+	license = BSD
+	makedepends = gzip
+	makedepends = make
+	makedepends = gcc
+	provides = map
+	source = https://github.com/soveran/map/archive/refs/tags/0.1.1.tar.gz
+	sha256sums = 6903d2bb6d7e0cddceee487cc35b442e5e78a459785aa5ae7c84f13090f193f0
+
+pkgname = map
