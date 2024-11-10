@@ -1,7 +1,7 @@
 pkgname='python-borgstore'
 _module='borgstore'
 pkgver='0.1.0'
-pkgrel=1
+pkgrel=2
 pkgdesc='Borg Backup'\''s backend key/value store'
 url='https://github.com/borgbackup/borgstore/'
 depends=(
@@ -24,5 +24,5 @@ build() {
 
 package() {
     cd "${srcdir}/${_module}-${pkgver}"
-    python -m installer --destdir="${pkgdir}" dist/*.whl
+    python -m installer --compile-bytecode=2 --destdir="${pkgdir}" dist/*.whl
 }
