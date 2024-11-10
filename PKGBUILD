@@ -1,21 +1,19 @@
 # Maintainer: tobiko461 <aur@skillissue.de>
 pkgname=fanbox-dl-bin
-pkgver=0.23.1
+pkgver=0.26.2
 pkgrel=1
 pkgdesc="Pixiv Fanbox Downloader"
 arch=('aarch64' 'i386' 'x86_64')
 url="https://github.com/hareku/fanbox-dl"
 license=('MIT')
 
-source=("https://raw.githubusercontent.com/hareku/fanbox-dl/v$pkgver/README.md" "https://raw.githubusercontent.com/hareku/fanbox-dl/v$pkgver/LICENSE")
-source_aarch64=("${pkgname%-bin}::https://github.com/hareku/${pkgname%-bin}/releases/download/v$pkgver/${pkgname%-bin}_${pkgver}_Linux_arm64")
-source_i386=("${pkgname%-bin}::https://github.com/hareku/${pkgname%-bin}/releases/download/v$pkgver/${pkgname%-bin}_${pkgver}_Linux_i386")
-source_x86_64=("${pkgname%-bin}::https://github.com/hareku/${pkgname%-bin}/releases/download/v$pkgver/${pkgname%-bin}_${pkgver}_Linux_x86_64")
+source_aarch64=("https://github.com/hareku/${pkgname%-bin}/releases/download/v$pkgver/fanbox-dl_Linux_arm64.tar.gz")
+source_i386=("https://github.com/hareku/${pkgname%-bin}/releases/download/v$pkgver/fanbox-dl_Linux_i386.tar.gz")
+source_x86_64=("https://github.com/hareku/${pkgname%-bin}/releases/download/v$pkgver/fanbox-dl_Linux_x86_64.tar.gz")
 
-sha256sums=(SKIP SKIP)
-sha256sums_aarch64=("9559fc9d119eafd8ed70d1176461306720642f308c0f1aff789e53af6dfdd490")
-sha256sums_i386=("8592d60922c1f52c46e73f3f042d7fd51078a7b6bb8a4cb7daadd6b347b007e4")
-sha256sums_x86_64=("8b554d136e2aecec59b1221cd43de3aef38bd30724ef44cfc87e4a34a1229e84")
+sha256sums_aarch64=("fd9a6e67c310567bac8203575d9dc7251e91e5c0d2e65820ce9935db33b5d8c0")
+sha256sums_i386=("1982cc8cd30ad198b00d5ac8bf5e51c4aac9854312d03a37dbcf2fa3e8952d07")
+sha256sums_x86_64=("8ddca3e12d8209f604cb1caa7f3404af6bba4ebc7dec8b426227f3def27dd6cf")
 
 package() {
 	install -Dm755 "${pkgname%-bin}" "$pkgdir/usr/bin/${pkgname%-bin}"
