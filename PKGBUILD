@@ -2,7 +2,7 @@
 pkgname=postpilot-bin
 pkgver=0.1.1
 pkgrel=1
-pkgdesc="PostPilot application"
+pkgdesc="Email and SMTP testing GUI for developers"
 arch=('x86_64')
 url="https://postpilot.watzon.tech"
 license=('MIT')
