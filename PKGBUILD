@@ -1,4 +1,5 @@
-# Maintainer: Carl Smedstad <carsme@archlinux.org>
+# Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dor com>
+# Contributor: Carl Smedstad <carsme@archlinux.org>
 # Contributor: GI Jack <GI_Jack@hackermail.com>\
 
 pkgname=python-rich-click
@@ -36,9 +37,11 @@ build() {
 check() {
   cd "$_archive"
 
+  pytest -vv
+
   # Deselected tests invoke the program via subprocesses which I wasn't able to
   # get working in the build environment.
-  pytest --deselect tests/test_rich_click_cli.py
+  # pytest --deselect tests/test_rich_click_cli.py
 }
 
 package() {
