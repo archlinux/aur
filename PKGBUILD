@@ -3,7 +3,7 @@
 _name="odoo18"
 pkgname="$_name-nightly"
 pkgver=18.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Odoo. Open Source Apps To Grow Your Business."
 url="https://odoo.com/"
 arch=("any")
@@ -20,7 +20,7 @@ source=("https://nightly.odoo.com/$pkgver/nightly/src/odoo_$pkgver.latest.tar.gz
         "odoo.tmpfiles")
 noextract=("odoo_$pkgver.latest.tar.gz")
 sha256sums=(SKIP
-            '301d3b8367929476b9d143d5eca86c58398c0399eb4c4230b2c2d08c829870bc'
+            '7ac5830fec158e162c2efce1a5d3a44be6f6c6cde25ab710ad358826f1a41daa'
             '5474ae3277b32d54699d37d2832231c129c5c7d81f035583b938bcf45ad3fb08'
             'f0c775b551c096197c300df7cdc5a26d1eee4db79f7ddc53482d60de6dce3be5'
             'ac4082eb2a6daabfd28c1d86fb310285b51d5fa2a1be6b6ffacd2cdbd1bb0239')
