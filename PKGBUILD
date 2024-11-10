@@ -38,16 +38,16 @@ build() {
   cmake -DCMAKE_BUILD_TYPE=Release -S . -B build
   cmake --build build -j$(nproc)
   cd build && make || return
-  DOXYGEN_DETECTED=$(which doxygen 2>/dev/null || true)
-  if [[ -n ${DOXYGEN_DETECTED} ]]; then
-    cd ..
-    doxygen src/lmm_Doxyfile
-  fi
+  #DOXYGEN_DETECTED=$(which doxygen 2>/dev/null || true)
+  #if [[ -n ${DOXYGEN_DETECTED} ]]; then
+  #  cd ..
+  #  doxygen src/lmm_Doxyfile
+  #fi
 }
 
 package() {
   cd "${pkgname}" || return
-  install -Dm 755 -t "${pkgdir}/usr/bin" 'build/Limo'
+  install -Dm 755 -t "${pkgdir}/usr/bin" 'build/limo'
   install -Dm 644 -t "${pkgdir}/usr/share/applications" 'flatpak/io.github.limo_app.limo.desktop'
   install -Dm 644 -t "${pkgdir}/usr/share/icons/hicolor/scalable/apps" '../io.github.limo_app.limo.svg'
   for size in {16,22,24,32,48,64,128,256,512}
