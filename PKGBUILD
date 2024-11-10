@@ -1,57 +1,45 @@
-# Maintainer: Wachid Adi Nugroho <wachidadinugroho.maya@gmail.com>
+# Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
+# Contributor: Wachid Adi Nugroho <wachidadinugroho.maya@gmail.com>
 
-_pkgname=mauikit-documents
-pkgname=$_pkgname-git
-pkgver=4.0.0.alpha.20240502
+pkgname=mauikit-documents-git
+pkgver=4.0.0.r4.gcd797cd
 pkgrel=1
-pkgdesc='MauiKit Documents components'
-url='https://invent.kde.org/maui/mauikit-documents'
-arch=(x86_64 i686 arm armv6h armv7h aarch64)
-license=(BSD-2-Clause custom:CC0 LGPL)
-depends=(karchive
-         kconfig
+pkgdesc="MauiKit Documents components"
+arch=(x86_64 i686 armv7h aarch64)
+url="https://invent.kde.org/maui/mauikit-documents"
+license=('BSD-2-Clause AND LGPL-2.1-or-later AND CC0-1.0')
+depends=(glibc gcc-libs
+         karchive
          kcoreaddons
          kguiaddons
          kfilemetadata
-         kiconthemes
          kio
          ki18n
          mauikit-git
          poppler-qt6
          qt6-base
-         qt6-declarative
-         qt6-quickcontrols2
-         zlib)
+         qt6-declarative)
 makedepends=(git extra-cmake-modules)
 groups=(maui)
-provides=($_pkgname)
-conflicts=($_pkgname)
-source=(git+$url.git#branch=qt6)
+provides=(mauikit-documents)
+conflicts=(mauikit-documents)
+source=(git+https://invent.kde.org/maui/mauikit-documents.git)
 sha256sums=('SKIP')
 
 pkgver() {
-  cd $_pkgname
-  if git tag | grep v4
-  then
-  ( set -o pipefail
-    git describe --long 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' ||
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-  )
-  else
-    echo "4.0.0.alpha.`date "+%Y%m%d"`"
-  fi
+  cd mauikit-documents
+  git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  cmake -B build -S $_pkgname \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DBUILD_WITH_QT6=ON -Wno-dev \
-    -DCMAKE_INSTALL_LIBDIR=/usr/lib
+  cmake -B build -S mauikit-documents -Wno-dev \
+    -DCMAKE_BUILD_TYPE=None \
+    -DCMAKE_INSTALL_PREFIX=/usr
+
   cmake --build build
 }
 
 package() {
   DESTDIR="$pkgdir" cmake --install build
-  install -Dm644 $_pkgname/LICENSES/* -t "${pkgdir}"/usr/share/licenses/$_pkgname
+  install -Dm644 mauikit-documents/LICENSES/* -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
