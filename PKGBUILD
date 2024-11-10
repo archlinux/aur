@@ -2,7 +2,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=argc
-pkgver=1.21.0
+pkgver=1.21.1
 pkgrel=1
 pkgdesc="An elegant command-line argument parser"
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('MIT' 'Apache-2.0')
 depends=('gcc-libs')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('a7fda3e4253eed9f92f4f081e0a851d9b6dd3b3d0d3b3d5f688e2393370919cbdc9a634cd9cc44c2bd19f6032f020bd8b7b1bcc72e557831883bf1f97d4f0119')
+sha512sums=('ffdccb870249d177f659243f2e83305db9b3581fdda5f1a3bd7ab24f78198a179a7524054b6464140f28bcaed9e5b2a3c5d6254bae66048d385ab7cad4ee0e03')
 
 prepare() {
   cd "$pkgname-$pkgver"
