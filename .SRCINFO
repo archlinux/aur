@@ -3,7 +3,7 @@
 
 pkgbase = limo-git
 	pkgdesc = A simple Qt based mod manager.
-	pkgver = r60.f5e28e8
+	pkgver = r75.14713ec
 	pkgrel = 1
 	epoch = 0
 	url = https://github.com/limo-app/limo/
@@ -19,6 +19,7 @@ pkgbase = limo-git
 	makedepends = imagemagick
 	makedepends = libarchive
 	makedepends = libloot
+	makedepends = libunrar
 	makedepends = openssl
 	makedepends = pugixml
 	makedepends = qt5-base
@@ -29,6 +30,7 @@ pkgbase = limo-git
 	depends = jsoncpp
 	depends = libarchive
 	depends = libloot
+	depends = libunrar
 	depends = openssl
 	depends = pugixml
 	depends = qt5-base
@@ -36,8 +38,7 @@ pkgbase = limo-git
 	depends = qt5-tools
 	optdepends = doxygen
 	source = limo-git::git+https://github.com/limo-app/limo.git
-	source = unrar-git::git+https://github.com/aawc/unrar.git
 	source = io.github.limo_app.limo.svg
-	cksums = SKIP SKIP 777140566
+	cksums = SKIP 777140566
 
 pkgname = limo-git

@@ -3,23 +3,22 @@
 
 pkgname=limo-git
 pkgdesc='A simple Qt based mod manager.'
-pkgver=r60.f5e28e8
+pkgver=r75.14713ec
 pkgrel=1
 epoch=0
 url='https://github.com/limo-app/limo/'
 arch=('x86_64')
 license=('GPL3')
-makedepends=('boost' 'cbindgen' 'cmake' 'cpr' 'git' 'jsoncpp' 'imagemagick' 'libarchive' 'libloot'
-             'openssl' 'pugixml' 'qt5-base' 'qt5-svg' 'qt5-tools')
-depends=('boost-libs' 'cpr' 'jsoncpp' 'libarchive' 'libloot' 'openssl' 'pugixml'
-         'qt5-base' 'qt5-svg' 'qt5-tools')
+makedepends=('boost' 'cbindgen' 'cmake' 'cpr' 'git' 'jsoncpp' 'imagemagick'
+             'libarchive' 'libloot' 'libunrar' 'openssl' 'pugixml' 'qt5-base'
+             'qt5-svg' 'qt5-tools')
+depends=('boost-libs' 'cpr' 'jsoncpp' 'libarchive' 'libloot' 'libunrar'
+         'openssl' 'pugixml' 'qt5-base' 'qt5-svg' 'qt5-tools')
 
 optdepends=('doxygen')
 source=("${pkgname}::git+https://github.com/limo-app/limo.git"
-        'unrar-git::git+https://github.com/aawc/unrar.git'
         'io.github.limo_app.limo.svg')
 cksums=('SKIP'
-        'SKIP'
         '777140566')
 
 pkgver() {
@@ -27,22 +26,20 @@ pkgver() {
   printf 'r%s.%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-prepare() {
-  mv 'unrar-git' "${pkgname}/unrar"
-  cd "${pkgname}/unrar" && make lib -j$(nproc) || return
-}
-
 build() {
   cd "${pkgname}" || return
   mkdir build
-  cmake -DCMAKE_BUILD_TYPE=Release -S . -B build
+  # Weird way of using unrar if not using system, just use system
+  cmake -DCMAKE_BUILD_TYPE=Release -DUSE_SYSTEM_LIBUNRAR=true -S . -B build
   cmake --build build -j$(nproc)
   cd build && make || return
-  #DOXYGEN_DETECTED=$(which doxygen 2>/dev/null || true)
-  #if [[ -n ${DOXYGEN_DETECTED} ]]; then
-  #  cd ..
-  #  doxygen src/lmm_Doxyfile
-  #fi
+  # They appear not have made up their minds about renaming it to limo
+  mv 'Limo' 'limo' 2>/dev/null || true
+  DOXYGEN_DETECTED=$(which doxygen 2>/dev/null || true)
+  if [[ -n ${DOXYGEN_DETECTED} ]]; then
+    cd ..  # Doxygen doesn't like a relative path below
+    doxygen 'src/lmm_Doxyfile'
+  fi
 }
 
 package() {
