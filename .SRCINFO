@@ -1,0 +1,24 @@
+pkgbase = python-115
+	pkgdesc = Python wrapper for 115 webdisk.
+	pkgver = 0.0.9.8.6
+	pkgrel = 0
+	url = https://pypi.org/project/python-115
+	arch = any
+	license = MIT
+	makedepends = python-poetry
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	depends = python-httpx
+	depends = python-orjson
+	depends = python-requests
+	depends = python-urllib3
+	provides = python_115
+	conflicts = python_115
+	options = !strip
+	source = python_115-0.0.9.8.6.tar.gz::https://files.pythonhosted.org/packages/source/p/python_115/python_115-0.0.9.8.6.tar.gz
+	sha256sums = b50ebc3a6907ac2b4df8b8b97bcafe287ba545961d4882bde6062ae36914b56e
+
+pkgname = python-115
