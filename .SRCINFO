@@ -1,6 +1,6 @@
 pkgbase = python-statemachine
 	pkgdesc = Python finite-state machines made easy
-	pkgver = 0.8.0
+	pkgver = 2.4.0
 	pkgrel = 1
 	url = https://github.com/fgmacedo/python-statemachine
 	arch = any
@@ -8,8 +8,7 @@ pkgbase = python-statemachine
 	makedepends = python-setuptools
 	depends = python
 	provides = python-statemachine
-	source = python-statemachine-0.8.0.tar.gz::https://github.com/fgmacedo/python-statemachine/archive/v0.8.0.tar.gz
-	sha512sums = 3d19355ab29bca5c83c4fe55d6ca4aaf1c71ff2a527cc29e8a9183739f4036240bb21e9b8ebdabd9bf65c7bd1f4c1898bbf81a7ae61e8dfefac3203b6255f4d6
+	source = python-statemachine-2.4.0.tar.gz::https://github.com/fgmacedo/python-statemachine/archive/v2.4.0.tar.gz
+	sha512sums = fc51668efee69a2a59c5f3a5bbb08e6a6647a819175bbd02305e6eac51d0f8ef31c4e89f85dcb7451c24681ee76f0534e676995e134c0cbbed4d680c5418c612
 
 pkgname = python-statemachine
-

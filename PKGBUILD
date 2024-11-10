@@ -1,19 +1,41 @@
-# Maintainer: Richard Tucker <rtucker@mookins.com>
+# Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dor com>
+# Contributor: Richard Tucker <rtucker@mookins.com>
+
 pkgname=python-statemachine
 provides=('python-statemachine')
 pkgdesc="Python finite-state machines made easy"
-url="https://github.com/fgmacedo/python-statemachine"
-pkgver=0.8.0
+url="https://github.com/fgmacedo/$pkgname"
+pkgver=2.4.0
 pkgrel=1
 arch=('any')
 license=('MIT')
-depends=('python')
+depends=('python' 'python-pydot')
 makedepends=('python-setuptools')
 
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('3d19355ab29bca5c83c4fe55d6ca4aaf1c71ff2a527cc29e8a9183739f4036240bb21e9b8ebdabd9bf65c7bd1f4c1898bbf81a7ae61e8dfefac3203b6255f4d6')
+sha512sums=('fc51668efee69a2a59c5f3a5bbb08e6a6647a819175bbd02305e6eac51d0f8ef31c4e89f85dcb7451c24681ee76f0534e676995e134c0cbbed4d680c5418c612')
+
+_archive="python-statemachine-$pkgver"
+
+build() {
+	cd "$_archive"
+
+	python -m build --wheel --no-isolation
+}
+
+check() {
+	pytest \
+		--deselect $_archive/tests/test_contrib_diagram.py::TestQuickChart \
+		--deselect $_archive/tests/test_mock_compatibility.py::test_minimal \
+		--deselect $_archive/tests/test_profiling.py::test_setup_performance \
+		--deselect $_archive/tests/test_profiling.py::test_event_performance \
+		--deselect $_archive/tests/test_statemachine.py::test_machine_should_activate_initial_state
+}
 
 package() {
-	cd "python-statemachine-$pkgver"
-	python setup.py install --root="$pkgdir" --optimize=1
+	cd "$_archive"
+
+	python -m installer --destdir="$pkgdir" dist/*.whl
+
+	install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
 }
