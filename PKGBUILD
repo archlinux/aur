@@ -5,19 +5,20 @@
 _android_arch=x86
 
 pkgname=android-${_android_arch}-opencl-headers
-pkgver=2023.04.17
+pkgver=2024.05.08
 pkgrel=1
 pkgdesc="OpenCL (Open Computing Language) header files (Android ${_android_arch})"
 arch=('any')
 url='https://www.khronos.org/registry/cl/'
 license=('custom')
+groups=('android-opencl-headers')
 depeds=('android-ndk')
 makedepends=('android-cmake'
              'python')
 optdepends=("android-${_android_arch}-opencl-clhpp: C++ support")
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("https://github.com/KhronosGroup/OpenCL-Headers/archive/v${pkgver}.tar.gz")
-sha256sums=('0ce992f4167f958f68a37918dec6325be18f848dee29a4521c633aae3304915d')
+md5sums=('56d28bdc7957be155aa81114ce504794')
 
 build() {
     cd "${srcdir}/OpenCL-Headers-${pkgver}"
@@ -25,7 +26,8 @@ build() {
 
     android-${_android_arch}-cmake \
         -S . \
-        -B build
+        -B build \
+        -Wno-dev
     make -C build $MAKEFLAGS
 }
 
