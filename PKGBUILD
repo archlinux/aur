@@ -3,8 +3,8 @@
 # Contributor: Felix Yan <felixonmars@archlinux.org>
 
 pkgname=python-paginate
-pkgver=0.5.6
-pkgrel=2
+pkgver=0.5.7
+pkgrel=1
 pkgdesc='A simple Python pagination module'
 arch=('any')
 url="https://github.com/Pylons/paginate"
@@ -13,7 +13,7 @@ depends=('python')
 makedepends=('python-setuptools')
 checkdepends=('python-pytest')
 source=("https://github.com/Pylons/paginate/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('6e86c6ae9933711e7fd3ffb009f51df45353beb356c4e610f5cbb83ebf5dbb5f')
+sha256sums=('88eaa65ea111e533542cdd4c8e9f90e5beefaabcf3d62021fb4d1113351bc9c6')
 
 build() {
     cd "$srcdir"/paginate-$pkgver
