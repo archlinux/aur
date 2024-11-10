@@ -1,15 +1,15 @@
-pkgbase = astro
+pkgbase = ereandel
 	pkgdesc = A Gemini web browser using shell script
-	pkgver = 0.25.1
+	pkgver = 0.26.1
 	pkgrel = 1
-	url = https://github.com/blmayer/astro
+	url = https://github.com/blmayer/ereandel
 	arch = any
 	license = MIT
 	depends = sed
 	depends = less
 	depends = openssl
 	depends = coreutils
-	source = https://github.com/blmayer/astro/archive/refs/tags/v0.25.1.tar.gz
-	sha256sums = 01bc8c76d001ef6bfcae0e3a6eb4dcb13d0b09b83e5145f7f775997a49c8abae
+	source = https://github.com/blmayer/ereandel/archive/refs/tags/v0.26.1.tar.gz
+	sha256sums = 78bf4f35500ae9b1bc75ee22174cbdf2ff15eb694d9b46b9d3926ac943786201
 
-pkgname = astro
+pkgname = ereandel
