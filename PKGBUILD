@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=XNAString
-_pkgver=1.12.0
+_pkgver=1.14.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -33,8 +33,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('db4d460d8c4bf061ea721b3214762ded')
-b2sums=('20a806ab6df9647c74a93af3e142baa1fc7719b1e6dc183e2553b39b498d5330d9f299d58399812d089ca40d4b6075ccbc58e8b64b051b422762770456f76810')
+md5sums=('9227299ff22cd0c02824cd16fcfca7b1')
+b2sums=('cca40951d092fb9688f653b30e06fa4fff405f2a6d68711b4c4176cbf1b4b9de57934e2087f881dedb3d867411285aef18fde6462f1fe9b45bb96131877d8c9c')
 
 build() {
   mkdir build
