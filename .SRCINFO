@@ -1,7 +1,7 @@
 pkgbase = otf-aoyagikouzant
 	pkgdesc = Brush font created by calligrapher Kouzan Aoyagi, includes JIS Non-Kanji and level-1 Kanji.
-	pkgver = 2.01
-	pkgrel = 3
+	pkgver = 2.02
+	pkgrel = 1
 	url = https://opentype.jp/aoyagikouzanfontt.htm
 	arch = any
 	license = CUSTOM
