@@ -1,15 +1,24 @@
 pkgbase = dooit
-	pkgdesc = A todo manager that you didn't ask for, but needed!
-	pkgver = 2.2.0
-	pkgrel = 3
-	url = https://github.com/kraanzu/dooit
-	arch = x86_64
-	license = MIT
-	depends = zlib
-	conflicts = dooit-git
-	source = linux-dooit-2.2.0::https://github.com/kraanzu/dooit/releases/download/v2.2.0/linux-dooit
-	source = https://github.com/kraanzu/dooit/raw/v2.2.0/LICENSE
-	sha256sums = 2c078bd844d3b4b1b2ca56d894d739baa0aad5fa809246ec25ee932fd2b8e029
-	sha256sums = 33504ada23da37774e0d02d99a3a61328f3df017a2bf8468525cd30bb86f57ec
+        pkgdesc = A TUI Todo Manager
+        pkgver = 3.0.1
+        pkgrel = 1
+        url = https://github.com/dooit-org/dooit
+        arch = any
+        license = MIT
+        makedepends = python-build
+        makedepends = python-installer
+        makedepends = python-wheel
+        makedepends = python-poetry-core>=1.0.0
+        depends = python>=3.9
+        depends = python-pyperclip>=1.9.0
+        depends = python-yaml>=6.0.2
+        depends = python-tzlocal>=5.2
+        depends = python-textual>=0.85.2
+        depends = python-dateutil>=2.9.0
+        depends = python-sqlalchemy>=2.0.36
+        depends = python-platformdirs>=4.3.6
+        depends = python-click>=8.1.7
+        source = dooit-3.0.1.tar.gz::https://github.com/dooit-org/dooit/archive/v3.0.1.tar.gz
+        sha256sums = SKIP
 
 pkgname = dooit
