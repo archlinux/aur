@@ -1,0 +1,14 @@
+[Unit]
+Description=Odoo Open Source ERP and CRM version 18
+Requires=postgresql.service
+After=postgresql.service network-online.target
+
+[Service]
+Type=simple
+User=odoo18
+Group=odoo18
+ExecStart=/var/lib/odoo18/venv/bin/odoo --config /etc/odoo18/odoo.conf 
+KillMode=mixed
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,28 @@
+pkgbase = odoo18-nightly
+	pkgdesc = Odoo. Open Source Apps To Grow Your Business.
+	pkgver = 18.0
+	pkgrel = 1
+	url = https://odoo.com/
+	install = odoo.install
+	arch = any
+	license = LGPL-3.0-only
+	depends = postgresql>=12.0
+	depends = python>=3.10
+	provides = openerp
+	provides = odoo
+	provides = odoo18
+	noextract = odoo_18.0.latest.tar.gz
+	options = !strip
+	backup = etc/odoo18/odoo.conf
+	source = https://nightly.odoo.com/18.0/nightly/src/odoo_18.0.latest.tar.gz
+	source = odoo.conf
+	source = odoo.service
+	source = odoo.sysusers
+	source = odoo.tmpfiles
+	sha256sums = SKIP
+	sha256sums = 301d3b8367929476b9d143d5eca86c58398c0399eb4c4230b2c2d08c829870bc
+	sha256sums = 5474ae3277b32d54699d37d2832231c129c5c7d81f035583b938bcf45ad3fb08
+	sha256sums = f0c775b551c096197c300df7cdc5a26d1eee4db79f7ddc53482d60de6dce3be5
+	sha256sums = ac4082eb2a6daabfd28c1d86fb310285b51d5fa2a1be6b6ffacd2cdbd1bb0239
+
+pkgname = odoo18-nightly
