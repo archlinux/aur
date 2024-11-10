@@ -1,7 +1,7 @@
 pkgbase = grm-git
 	pkgdesc = Manage git repos, worktrees and integrate with GitHub and GitLab
-	pkgver = 0.7.15.r6.gea7299a
-	pkgrel = 2
+	pkgver = 0.7.21.r1.gfcd315b
+	pkgrel = 1
 	url = https://github.com/hakoerber/git-repo-manager
 	arch = x86_64
 	license = GPL-3.0-only
@@ -14,6 +14,8 @@ pkgbase = grm-git
 	depends = openssl
 	provides = grm
 	conflicts = grm
+	options = !lto
+	options = !debug
 	source = grm-git::git+https://github.com/hakoerber/git-repo-manager#branch=develop
 	sha256sums = SKIP
 
