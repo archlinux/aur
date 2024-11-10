@@ -2,13 +2,13 @@
 # Contributor: Kruemmelbande
 pkgname=slimevr-beta-bin
 pkgver=0.13.2
-pkgrel=1
+pkgrel=2
 pkgdesc="SlimeVR FBT software beta version"
 arch=( 'x86_64')
 url="https://github.com/SlimeVR/SlimeVR-Server/"
 license=('MIT','Apache-2.0')
 
-depends=('gst-plugins-good' 'cairo' 'desktop-file-utils' 'gdk-pixbuf2' 'glib2' 'gtk3' 'hicolor-icon-theme' 'jdk-openjdk' 'libappindicator-gtk3' 'libsoup3' 'webkit2gtk-4.1')
+depends=('gst-plugins-good' 'cairo' 'desktop-file-utils' 'gdk-pixbuf2' 'glib2' 'gtk3' 'hicolor-icon-theme' 'jdk17-openjdk' 'libappindicator-gtk3' 'libsoup3' 'webkit2gtk-4.1')
 options=('!strip' '!emptydirs')
 install=${pkgname}.install
 
