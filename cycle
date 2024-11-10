@@ -1,0 +1,4 @@
+#!/bin/bash
+test -d ~/.cycle || mkdir ~/.cycle
+cd /usr/share/cycle/
+exec ./cycle.py
