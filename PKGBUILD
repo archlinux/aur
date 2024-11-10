@@ -1,18 +1,18 @@
 # Maintainer: devome <evinedeng@hotmail.com>
 
 pkgname=hoarder
-pkgver=0.18.0
+pkgver=0.19.0
 pkgrel=1
 pkgdesc="A self-hostable bookmark-everything app (links, notes and images) with AI-based automatic tagging and full text search"
 arch=("x86_64" "aarch64")
 url="https://github.com/${pkgname}-app/${pkgname}"
 license=('AGPL-3.0-or-later')
 backup=("etc/${pkgname}/${pkgname}.env")
-depends=("chromium" "nodejs" "pnpm" "redis")
+depends=("chromium" "nodejs<23" "nodejs<>22.8.0" "nodejs<>22.7.0" "pnpm" "redis")
 optdepends=("meilisearch: for full text search"
             "ollama: for automatic tagging"
             "${pkgname}-cli: ${pkgname} cli tool")
-makedepends=("git")
+makedepends=("git" "jq" "pnpm")
 source=("${pkgname}::git+${url}.git#tag=v${pkgver}"
         "${pkgname}.env"
         "${pkgname}.sysusers"
@@ -21,7 +21,7 @@ source=("${pkgname}::git+${url}.git#tag=v${pkgver}"
         "${pkgname}-browser.service"
         "${pkgname}-web.service"
         "${pkgname}-workers.service")
-sha256sums=('b74fd32cb3ba0695e530cc19dd7321bc4d0d5a887630eeb72db453d76c50dff6'
+sha256sums=('1942d4f0f3ee8e7eac254b94aa0863b2c2a9c772c8fc62574c15b53eba4948d2'
             '1741afe407c55654462de14b0ec454775668dc42103f20448fc8025f646bf963'
             'bb7cf9d047374376137a9ec5ac5ad653d3569a834de8ccc3e8a6f04a870bc01e'
             '713e248fc61f429a3da627016343d89147dde147f739e51584f7398d11262896'
@@ -31,9 +31,9 @@ sha256sums=('b74fd32cb3ba0695e530cc19dd7321bc4d0d5a887630eeb72db453d76c50dff6'
             'ebbca6d919fdb201177a816e6a9a9d634f2ee3df222a1d43d38b9a280b593544')
 
 prepare() {
-    # fix ERR_PACKAGE_PATH_NOT_EXPORTED error
     cd "${pkgname}"
-    sed -i 's|"execa": "^9.1.0",|"execa": "9.1.0",|' apps/workers/package.json
+    jq '.packageManager = "pnpm" | del(.pnpm)' package.json > package.json.new
+    mv package.json.new package.json
 }
 
 build() {
