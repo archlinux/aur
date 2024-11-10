@@ -75,6 +75,7 @@ package() {
 #   install -m644 "${srcdir}/resources/app/resources/linux/code.png" "${pkgdir}/usr/share/icons/${_pkgname}.png"
   install -m644 "${srcdir}/resources/app/resources/linux/code.png" "${pkgdir}/usr/share/pixmaps/${_pkgname}.png"
   install -m644 "${srcdir}/aide.desktop" "${pkgdir}/usr/share/applications/aide.desktop"
+  install -m644 "${srcdir}/aide-wayland.desktop" "${pkgdir}/usr/share/applications/aide-wayland.desktop"
   install -m644 "${srcdir}/aide-url-handler.desktop" "${pkgdir}/usr/share/applications/aide-url-handler.desktop"
   install -m644 "${srcdir}/aide-workspace.xml" "${pkgdir}/usr/share/mime/packages/${pkgname}-workspace.xml"
   install -Dm 644 "${srcdir}/resources/completions/bash/aide" "${pkgdir}/usr/share/bash-completion/completions/aide"
