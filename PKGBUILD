@@ -1,6 +1,6 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonamil.com>
 pkgname=ofinstaller-beans-git
-pkgver=1.3.1.r132.gf42ff4d
+pkgver=1.3.1.r260.g7588aab
 pkgrel=1
 pkgdesc=" Installer for Open Fortress "
 arch=('x86_64')
@@ -10,8 +10,10 @@ depends=("glibc" "gcc-libs" "openssl")
 makedepends=("cargo-nightly")
 provides=("ofinstaller-beans")
 conflicts=("ofinstaller-beans")
-source=("$pkgname::git+$url.git#branch=develop")
-sha256sums=('SKIP')
+source=("$pkgname::git+$url.git#branch=develop"
+	"fltk.patch")
+sha256sums=('SKIP'
+            '8b51d3482aa4750dd51d6bbdc4c2905c7e281c0b280da989c000dd371109dea4')
 
 pkgver() {
 	cd "$srcdir/$pkgname"
@@ -20,6 +22,7 @@ pkgver() {
 
 prepare() {
 	cd "$srcdir/$pkgname"
+	patch -p1 < "$srcdir/fltk.patch"
 	#export RUSTUP_TOOLCHAIN=nightly
 	cargo fetch --target "$(rustc -vV | sed -n 's/host: //p')"
 }

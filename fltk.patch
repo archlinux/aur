@@ -1,0 +1,23 @@
+--- A/Cargo.toml	2024-11-10 00:43:27.619773562 -0600
++++ B/Cargo.toml	2024-11-10 00:45:09.246216327 -0600
+@@ -35,7 +35,6 @@
+ sentry-log = "0.34.0"
+ chrono = "0.4.38"
+ 
+-fltk = { version = "1.4.32" }
+ fltk-theme = "0.7.2"
+ dark-light = "1.1.1"
+ image = { version = "0.25.1", features = ["png"] }
+@@ -48,6 +47,12 @@
+ winreg = "0.52.0"
+ dunce = "1.0.4"
+ 
++[dependencies.fltk]
++version = "1.4.32"
++features = [
++    "fltk-bundled"
++]
++
+ [dependencies.sentry]
+ version = "0.34.0"
+ default-features = false
