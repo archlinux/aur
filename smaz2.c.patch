@@ -1,0 +1,75 @@
+diff --git a/smaz2.c b/smaz2.c
+index f9dd594..7efdf5e 100644
+--- a/smaz2.c
++++ b/smaz2.c
+@@ -6,6 +6,8 @@
+ #include <ctype.h>
+ #include <stdlib.h>
+ 
++extern int debug;
++
+ /* 128 common bigrams. */
+ const char *bigrams = "intherreheanonesorteattistenntartondalitseediseangoulecomeneriroderaioicliofasetvetasihamaecomceelllcaurlachhidihofonsotacnarssoprrtsassusnoiltsemctgeloeebetrnipeiepancpooldaadviunamutwimoshyoaiewowosfiepttmiopiaweagsuiddoooirspplscaywaigeirylytuulivimabty";
+ 
+@@ -51,7 +53,6 @@ char *words[256] = {
+ unsigned long smaz2_compress(unsigned char *dst, unsigned long dstlen, unsigned char *s, unsigned long len)
+ {
+ 
+-    int debug = 0;       // Log debugging messages.
+     int verblen = 0;     /* Length of the emitted verbatim sequence, 0 if
+                           * no verbating sequence was emitted last time,
+                           * otherwise 1...5, it never reaches 8 even if we have
+@@ -80,17 +81,17 @@ unsigned long smaz2_compress(unsigned char *dst, unsigned long dstlen, unsigned
+              * byte value 8: space + word. */
+             if (i != 256) {
+                 if (s[0] == ' ') {
+-                    if (debug) printf("( %s)", words[i]);
++                    if (debug) fprintf(stderr,"( %s)", words[i]);
+                     if (y < dstlen) dst[y++] = 8; // Space + word.
+                     if (y < dstlen) dst[y++] = i; // Word ID.
+                     s++; len--; // Account for the space.
+                 } else if (len > wordlen && s[wordlen] == ' ') {
+-                    if (debug) printf("(%s )", words[i]);
++                    if (debug) fprintf(stderr,"(%s )", words[i]);
+                     if (y < dstlen) dst[y++] = 7; // Word + space.
+                     if (y < dstlen) dst[y++] = i; // Word ID.
+                     s++; len--; // Account for the space.
+                 } else {
+-                    if (debug) printf("(%s)", words[i]);
++                    if (debug) fprintf(stderr,"(%s)", words[i]);
+                     if (y < dstlen) dst[y++] = 6; // Simple word.
+                     if (y < dstlen) dst[y++] = i; // Word ID.
+                 }
+@@ -120,7 +121,7 @@ unsigned long smaz2_compress(unsigned char *dst, unsigned long dstlen, unsigned
+                 s += 2;
+                 len -= 2;
+                 verblen = 0;
+-                if (debug) printf("[%c%c]", bigrams[i*2], bigrams[i*2+1]);
++                if (debug) fprintf(stderr,"[%c%c]", bigrams[i*2], bigrams[i*2+1]);
+                 continue;
+             }
+         }
+@@ -132,7 +133,7 @@ unsigned long smaz2_compress(unsigned char *dst, unsigned long dstlen, unsigned
+             if (y < dstlen) dst[y++] = s[0];
+ 
+             /* Consume. */
+-            if (debug) printf("{%c}", s[0]);
++            if (debug) fprintf(stderr,"{%c}", s[0]);
+             s++;
+             len--;
+             verblen = 0;
+@@ -144,12 +145,12 @@ unsigned long smaz2_compress(unsigned char *dst, unsigned long dstlen, unsigned
+          * with the escape sequence. */
+         verblen++;
+         if (verblen == 1) {
+-            if (debug) printf("_%c", s[0]);
++            if (debug) fprintf(stderr,"_%c", s[0]);
+             if (y+1 == dstlen) break; /* No room for 2 bytes. */
+             dst[y++] = verblen;
+             dst[y++] = s[0];
+         } else {
+-            if (debug) printf("%c", s[0]);
++            if (debug) fprintf(stderr,"%c", s[0]);
+             dst[y++] = s[0];
+             dst[y-(verblen+1)] = verblen; // Fix the verbatim bytes length.
+             if (verblen == 5) verblen = 0; // Start to emit a new sequence.

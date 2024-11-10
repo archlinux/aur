@@ -11,10 +11,13 @@ license=(MIT)
 #depends=()
 makedepends=(git)
 provides=("$_pkgname")
-source=("$_pkgname::git+$url.git" example.c)
-sha256sums=(SKIP 53f34030df94040561b799d350b5540d6029d251b55f01d3ed97064fa2d06614)
+source=("$_pkgname::git+$url.git" example.c smaz2.c.patch)
+sha256sums=(SKIP 709aa5ff17a83368bbfe34c932b0e9b2fc147a8f31f5ca133071a4fbd99129cd 6aef563bb4791afbf39f140f025b6a2ebf891c6fcfdc5c9084f521299292218e)
 
-prepare() { ln -ft "$_pkgname" example.c; }
+prepare() {
+	ln -ft "$_pkgname" example.c
+	git -C "$_pkgname" apply ../smaz2.c.patch
+}
 
 pkgver() {
 	printf %s.%s.g%s "$_pkgver" \

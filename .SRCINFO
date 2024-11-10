@@ -10,7 +10,9 @@ pkgbase = smaz2-git
 	provides = smaz2
 	source = smaz2::git+https://github.com/antirez/smaz2.git
 	source = example.c
+	source = smaz2.c.patch
 	sha256sums = SKIP
-	sha256sums = 53f34030df94040561b799d350b5540d6029d251b55f01d3ed97064fa2d06614
+	sha256sums = 709aa5ff17a83368bbfe34c932b0e9b2fc147a8f31f5ca133071a4fbd99129cd
+	sha256sums = 6aef563bb4791afbf39f140f025b6a2ebf891c6fcfdc5c9084f521299292218e
 
 pkgname = smaz2-git
