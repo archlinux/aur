@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=ATACseqTFEA
-_pkgver=1.6.0
+_pkgver=1.8.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -36,8 +36,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('deea5b3f5e1d4cbb7e06b9b2ed394fc0')
-b2sums=('31cadbc89c35f2a8e2dbff9aee0a1d370239acd5aa3a79dc0d4e6d93a9cfcdac8286045c344d0dcec4a23a4d413a180be043147677a8a3aee4ba145d55aded75')
+md5sums=('ddd2599383dc600b5a673bbf4b6b9ba5')
+b2sums=('e73b05a150f98a40ca5c66654f994c899db78d3d0e7908a0ba46d3af31af95658e16bd9e30fbed8b6baaf75b45c1c8d5aa63413bac4855cedaf65f6b40e72e62')
 
 build() {
   mkdir build
