@@ -5,6 +5,7 @@ pkgbase = lssh-bin
 	url = https://github.com/blacknon/lssh
 	arch = x86_64
 	license = MIT
+	makedepends = help2man
 	makedepends = gzip
 	depends = glibc
 	provides = lssh

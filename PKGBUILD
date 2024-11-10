@@ -24,7 +24,7 @@ sha256sums_x86_64=('4cbcb49180fe903d76ce4f3b93e8cecbe8a92a0c3998edd9ca92b46f75dd
 prepare() {
   cd "${srcdir}/" || exit
 
-  mkdir man
+  mkdir -p man
 }
 
 build() {
