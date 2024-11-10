@@ -1,0 +1,16 @@
+pkgbase = gnome-shell-extension-system-monitor
+	pkgdesc = Shows system usage information in the top bar.
+	pkgver = 47.0.74.gfde934f
+	pkgrel = 1
+	url = https://extensions.gnome.org/extension/6807/system-monitor/
+	arch = any
+	license = GPL-2.0-or-later
+	makedepends = git
+	makedepends = glib2
+	makedepends = meson
+	makedepends = ninja
+	depends = gnome-shell
+	source = git+https://gitlab.gnome.org/GNOME/gnome-shell-extensions.git
+	sha256sums = SKIP
+
+pkgname = gnome-shell-extension-system-monitor
