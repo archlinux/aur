@@ -2,7 +2,7 @@
 
 _pkgname=kazv
 pkgname="${_pkgname}-git"
-pkgver=0.5.0.r711.20241027.7602d91
+pkgver=0.5.0.r716.20241108.adf5bf1
 pkgrel=1
 pkgdesc="A Qt5 matrix client."
 arch=(
