@@ -1,7 +1,7 @@
 pkgbase = steamdepotdownloader
 	pkgdesc = Steam depot downloader utilizing the SteamKit2 library.
-	pkgver = 2.7.1
-	pkgrel = 2
+	pkgver = 2.7.3
+	pkgrel = 1
 	url = https://github.com/SteamRE/DepotDownloader
 	arch = x86_64
 	arch = armv7h
@@ -12,7 +12,7 @@ pkgbase = steamdepotdownloader
 	depends = gcc-libs
 	depends = zlib
 	options = !strip
-	source = https://github.com/SteamRE/DepotDownloader/archive/refs/tags/DepotDownloader_2.7.1.tar.gz
-	sha256sums = 20d0c14ba00296d147daf019a3be96d07873973f4469c6bd448064cb90de8f09
+	source = https://github.com/SteamRE/DepotDownloader/archive/refs/tags/DepotDownloader_2.7.3.tar.gz
+	sha256sums = ff17209c7bf47627aa1cc2abf2d652b198852f966cd0fa157f8668dd9499a034
 
 pkgname = steamdepotdownloader
