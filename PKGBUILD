@@ -1,7 +1,7 @@
 # Maintainer: Martin Petik
 pkgname=ssysi
-pkgver=1.0.1
-pkgrel=2
+pkgver=1.1.3
+pkgrel=3
 pkgdesc="A lightweight system information tool written in Bash"
 arch=('any')
 url="https://github.com/stuffbymax/ssysi"
