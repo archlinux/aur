@@ -2,7 +2,7 @@
 # Contributor: Marat Moustafine <moustafine-@t-tuta-d.t-io>
 
 pkgname=drogon
-pkgver=1.9.4
+pkgver=1.9.8
 pkgrel=1
 pkgdesc='A C++17 based HTTP web application framework running on Linux/macOS/Unix/Windows'
 arch=('x86_64')
@@ -13,7 +13,7 @@ makedepends=('cmake' 'mariadb' 'postgresql' 'util-linux')
 source=(
 	"$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
 )
-sha256sums=('b23d9d01d36fb1221298fcdbedcf7fd3e1b8b8821bf6fb8ed073c8b0c290d11d')
+sha256sums=('62332a4882cc7db1c7cf04391b65c91ddf6fcbb49af129fc37eb0130809e0449')
 
 build() {
 	cmake -B build -S "$pkgname-$pkgver" \
