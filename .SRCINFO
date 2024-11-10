@@ -1,6 +1,6 @@
 pkgbase = r-rqt
 	pkgdesc = rqt: utilities for gene-level meta-analysis
-	pkgver = 1.28.0
+	pkgver = 1.32.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/rqt
 	arch = any
@@ -17,7 +17,7 @@ pkgbase = r-rqt
 	optdepends = r-biocstyle
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/rqt_1.28.0.tar.gz
-	sha256sums = 5071d7c52b74741377dc307cf3e498786af90baedcc140140fbd0386cce5db0b
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/rqt_1.32.0.tar.gz
+	sha256sums = 363aa4a2415ab09909158856a286549d91395b70e906410b73315105ee498109
 
 pkgname = r-rqt
