@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=ChIPComp
-_pkgver=1.34.0
+_pkgver=1.36.0
 pkgname=r-${_pkgname,,}
-pkgver=1.34.0
+pkgver=1.36.0
 pkgrel=1
 pkgdesc='Quantitative comparison of multiple ChIP-seq datasets'
 arch=('x86_64')
@@ -27,7 +27,7 @@ optdepends=(
   r-runit
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('15c98710b691cc8bed2fb7d99dae822471b02f969d5a503f7e261539dbab7404')
+sha256sums=('e994808333db10f35bd58d7663fe89d44ee09a83dba74d74fb41bcad1ac57fdd')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
