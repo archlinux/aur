@@ -1,9 +1,10 @@
 pkgbase = android-x86-64-pixman
-	pkgdesc = The pixel-manipulation library for X and cairo (Android, x86-64)
-	pkgver = 0.43.4
-	pkgrel = 2
+	pkgdesc = The pixel-manipulation library for X and cairo (Android x86-64)
+	pkgver = 0.44.0
+	pkgrel = 1
 	url = http://xorg.freedesktop.org
 	arch = any
+	groups = android-pixman
 	license = custom
 	makedepends = android-meson
 	makedepends = android-x86-64-libpng
@@ -12,7 +13,7 @@ pkgbase = android-x86-64-pixman
 	options = !buildflags
 	options = staticlibs
 	options = !emptydirs
-	source = http://xorg.freedesktop.org/releases/individual/lib/pixman-0.43.4.tar.xz
-	md5sums = ca6767b8056637d690cd17970daf4b18
+	source = http://xorg.freedesktop.org/releases/individual/lib/pixman-0.44.0.tar.xz
+	md5sums = cf9628e53e9e5e992997c19908d6031e
 
 pkgname = android-x86-64-pixman

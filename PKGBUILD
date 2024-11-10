@@ -4,18 +4,19 @@
 _android_arch=x86-64
 
 pkgname=android-${_android_arch}-pixman
-pkgver=0.43.4
-pkgrel=2
-pkgdesc="The pixel-manipulation library for X and cairo (Android, ${_android_arch})"
+pkgver=0.44.0
+pkgrel=1
 arch=('any')
+pkgdesc="The pixel-manipulation library for X and cairo (Android ${_android_arch})"
 url="http://xorg.freedesktop.org"
-license=("custom")
+license=('custom')
+groups=('android-pixman')
 depends=('android-ndk')
 makedepends=("android-meson"
              "android-${_android_arch}-libpng")
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("http://xorg.freedesktop.org/releases/individual/lib/pixman-${pkgver}.tar.xz")
-md5sums=('ca6767b8056637d690cd17970daf4b18')
+md5sums=('cf9628e53e9e5e992997c19908d6031e')
 
 build() {
     cd "${srcdir}/pixman-${pkgver}"
@@ -27,12 +28,13 @@ build() {
         -D arm-simd=disabled \
         -D neon=disabled \
         -D a64-neon=disabled \
-        -D iwmmxt=disabled \
+        -D rvv=disabled \
         -D mips-dspr2=disabled \
         -D b_lto=false \
         -D gtk=disabled \
         -D strip=false \
-        --default-library both
+        -D tests=disabled \
+        -D demos=disabled
     ninja -C build
 }
 
@@ -41,6 +43,6 @@ package() {
     source android-env ${_android_arch}
 
     DESTDIR="${pkgdir}" ninja -C build install
-    ${ANDROID_STRIP} -g "$pkgdir"/${ANDROID_PREFIX_LIB}/*.a
-    ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}"/${ANDROID_PREFIX_LIB}/*.so
+    ${ANDROID_STRIP} -g "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.a
+    ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.so
 }
