@@ -10,7 +10,7 @@ _nodeversion=20         # As of 2024-10-20, the minimum version of `nodejs` is 2
 _pkgname="schildichat-desktop"
 pkgname="${_pkgname}-git"
 pkgver=1.11.81.sc.0.test.0+16.r516.20241110.122f9d3
-pkgrel=1
+pkgrel=2
 pkgdesc="A Matrix client based on Element with a more traditional instant messaging experience. Build of the latest git checkout."
 arch=(
   "x86_64"
@@ -107,7 +107,10 @@ prepare() {
 pkgver() {
   cd "${_pkgname}"
 
-  _ver="$(git describe --tags | sed -E -e 's|^[vV]||' -e 's|\-g[0-9a-f]*$||' -e 's|-(sc)|.\1|' -e 's|-([0-9]+)$|+\1|')"
+  # _ver="$(git describe --tags | sed -E -e 's|^[vV]||' -e 's|\-g[0-9a-f]*$||' -e 's|-(sc)|.\1|' -e 's|-([0-9]+)$|+\1|')"  # <-- get version from git tags. Might be outdated.
+  _ver="$(grep -E '^[[:space:]]*"version"[[:space:]]*:' "element-web/package.json" | head -n1 | awk -F: '{print $2}' | awk -F\" '{print $2}' | sed -E -e 's|^[vV]||' -e 's|\-g[0-9a-f]*$||' -e 's|-(sc)|.\1|' -e 's|-([0-9]+)$|+\1|')"
+  # "element-web/package.json"   # <-- this file to parse the version from.
+  # "element-web/webapp/version" # <-- this file might directly contain the version.
   _rev="$(git rev-list --count HEAD)"
   _date="$(git log -1 --date=format:"%Y%m%d" --format="%ad")"
   _hash="$(git rev-parse --short HEAD)"
