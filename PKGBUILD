@@ -1,14 +1,14 @@
-# Maintainer: Firebleu <firebleudark@proton.me>
+﻿# Maintainer: Firebleu <firebluedark@proton.me>
 pkgname=autoinstallpackages
-pkgver=2.2.0
+pkgver=3.0.0
 pkgrel=1
-pkgdesc="Script shell pour automatiser l'installation de paquets sur Arch Linux"
+pkgdesc="Shell Script to Automate Package Installation on Arch Linux"
 arch=('x86_64')
 url="https://github.com/Firebleudark/Autoinstallpackages"
 license=('MIT')
 depends=('bash')
-source=("https://github.com/Firebleudark/Autoinstallpackages/archive/refs/tags/Minor-Release.tar.gz")
-sha256sums=('224dc548db7bc86783a01d565e92d57948d2ef30a9b74c2abc9b83fb04a6d2d3') 
+source=("https://github.com/Firebleudark/Autoinstallpackages/archive/refs/tags/mainrelease.tar.gz")
+sha256sums=('bfa8af2e81122c3827e348fb7975344145e930b21c749f2b933ed812272c4c5a') 
 
 build() {
     cd "$srcdir"/*/

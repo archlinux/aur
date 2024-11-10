@@ -1,12 +1,22 @@
 pkgbase = autoinstallpackages
+<<<<<<< HEAD
 	pkgdesc = Script shell pour automatiser l'installation de paquets sur Arch Linux
 	pkgver = 2.2.0
+=======
+	pkgdesc = Shell Script to Automate Package Installation on Arch Linux
+	pkgver = 3.0.0
+>>>>>>> 4eeb8e4 (Autoinstallpackages 3.0)
 	pkgrel = 1
 	url = https://github.com/Firebleudark/Autoinstallpackages
 	arch = x86_64
 	license = MIT
 	depends = bash
+<<<<<<< HEAD
 	source = https://github.com/Firebleudark/Autoinstallpackages/archive/refs/tags/Minor-Release.tar.gz
 	sha256sums = 224dc548db7bc86783a01d565e92d57948d2ef30a9b74c2abc9b83fb04a6d2d3
+=======
+	source = https://github.com/Firebleudark/Autoinstallpackages/archive/refs/tags/mainrelease.tar.gz
+	sha256sums = bfa8af2e81122c3827e348fb7975344145e930b21c749f2b933ed812272c4c5a
+>>>>>>> 4eeb8e4 (Autoinstallpackages 3.0)
 
 pkgname = autoinstallpackages
