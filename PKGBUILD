@@ -3,8 +3,8 @@
 
 pkgname=watchmate
 _app_id=io.gitlab.azymohliad.WatchMate
-pkgver=0.5.2
-pkgrel=2
+pkgver=0.5.3
+pkgrel=1
 pkgdesc="PineTime smart watch companion app for Linux phone and desktop"
 arch=('x86_64' 'aarch64')
 url="https://github.com/azymohliad/watchmate"
@@ -13,14 +13,11 @@ depends=('bluez' 'libadwaita')
 makedepends=('cargo')
 checkdepends=('appstream-glib')
 options=('!lto')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
-        "https://github.com/azymohliad/watchmate/commit/e05edfae94a1973110c6f40f25133d5979f485ab.patch")
-sha256sums=('b04129867339a143c5cdc9f1d87756952a5dff50aa2166406ceb754077a77b69'
-            '478c554358b4de45c79f3a199cdcf0be6ef931b352c0b81b7a1ddc34859356b9')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('640d9460a0dcef70fcdd235ba23196d0e0e8b5648040874162458599ae39fd8b')
 
 prepare() {
   cd "$pkgname-$pkgver"
-  patch -Np1 -i ../e05edfae94a1973110c6f40f25133d5979f485ab.patch
   export CARGO_HOME="$srcdir/cargo-home"
   export RUSTUP_TOOLCHAIN=stable
   cargo fetch --locked --target "$CARCH-unknown-linux-gnu"

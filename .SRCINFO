@@ -1,7 +1,7 @@
 pkgbase = watchmate
 	pkgdesc = PineTime smart watch companion app for Linux phone and desktop
-	pkgver = 0.5.2
-	pkgrel = 2
+	pkgver = 0.5.3
+	pkgrel = 1
 	url = https://github.com/azymohliad/watchmate
 	arch = x86_64
 	arch = aarch64
@@ -11,9 +11,7 @@ pkgbase = watchmate
 	depends = bluez
 	depends = libadwaita
 	options = !lto
-	source = watchmate-0.5.2.tar.gz::https://github.com/azymohliad/watchmate/archive/refs/tags/v0.5.2.tar.gz
-	source = https://github.com/azymohliad/watchmate/commit/e05edfae94a1973110c6f40f25133d5979f485ab.patch
-	sha256sums = b04129867339a143c5cdc9f1d87756952a5dff50aa2166406ceb754077a77b69
-	sha256sums = 478c554358b4de45c79f3a199cdcf0be6ef931b352c0b81b7a1ddc34859356b9
+	source = watchmate-0.5.3.tar.gz::https://github.com/azymohliad/watchmate/archive/refs/tags/v0.5.3.tar.gz
+	sha256sums = 640d9460a0dcef70fcdd235ba23196d0e0e8b5648040874162458599ae39fd8b
 
 pkgname = watchmate
