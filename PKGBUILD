@@ -7,7 +7,7 @@
 
 pkgname=kdeconnect-git
 _pkgname=kdeconnect
-pkgver=24.08.3+r4685+g9e14203f8
+pkgver=24.08.3+r4686+gbe657485d
 pkgrel=2
 pkgdesc='Adds communication between KDE and your smartphone'
 arch=('x86_64')
