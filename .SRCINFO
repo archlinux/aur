@@ -1,6 +1,6 @@
 pkgbase = python-fitsio
 	pkgdesc = A python package for FITS input/output wrapping cfitsio
-	pkgver = 1.2.3
+	pkgver = 1.2.4
 	pkgrel = 1
 	url = https://github.com/esheldon/fitsio
 	arch = i686
@@ -11,7 +11,7 @@ pkgbase = python-fitsio
 	makedepends = python-wheel
 	depends = python
 	depends = python-numpy
-	source = https://github.com/esheldon/fitsio/archive/refs/tags/1.2.3.tar.gz
-	sha1sums = 6f09548e1ce2bce761ec2b26ceef6cd2056b05d4
+	source = https://github.com/esheldon/fitsio/archive/refs/tags/1.2.4.tar.gz
+	sha1sums = 1a43d2324e5f5f909b63ebdc28c83a65c9b78408
 
 pkgname = python-fitsio
