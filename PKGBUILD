@@ -4,7 +4,7 @@
 
 _name="Pianoteq 8"
 pkgname=pianoteq
-pkgver=8.3.2
+pkgver=8.4.0
 pkgrel=1
 pkgdesc="Physical modelling piano instrument as a standalone program, VST2 and LV2 plugin"
 arch=(aarch64 armv7h x86_64)
@@ -23,7 +23,7 @@ conflicts=(pianoteq-stage pianoteq-standard-trial-bin)
 # https://www.modartt.com/download?file=pianoteq_linux_v810.7z
 source=("local://pianoteq_linux_v${pkgver//./}.7z"
         'https://www.pianoteq.com/images/logo/pianoteq_icon_128.png')
-sha256sums=('53d8bd5e064a79df0ac432f57f019b46cdf4c23d084303233fe187d89a5dac9d'
+sha256sums=('643181fd238ecfeb16cfb3feb0dcf26a2a441f8e769fcceae4b95e3b7ced4977'
             '94ee64cf6688a49d74f0bf70d811e7466abac103feeab17496a89f828afcc6d3')
 
 prepare() {
