@@ -1,7 +1,7 @@
 # Maintainer: Alexander Pohl <alex at ahpohl dot com>
 pkgname=froniusd
 pkgver=0.1.4
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Read data from a Fronius inverter"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
@@ -24,7 +24,7 @@ source=("$pkgname-$pkgver::git+https://github.com/ahpohl/froniusd.git#tag=v${pkg
         "sysusers_froniusd.conf"
         "froniusd.service")
 noextract=()
-sha256sums=('SKIP'
+sha256sums=('eb2e9034d619cdd0123f00a93cb75e68a3495129dba1cb67ed4ac56c3186b081'
             '8c96a8c940a94b8b86312873ad93a2f2a01a2e1e9dbc52b074b04375189dc26b'
             'c7e4c04a984a3ea49991c4bf5cf4dac26fa9b2e9eda1a801d20c57e5941d2bfd')
 validpgpkeys=()
