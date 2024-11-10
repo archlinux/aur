@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=PSMatch
-_pkgver=1.8.0
+_pkgver=1.10.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -39,8 +39,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('4bfdef45b7447fec012d92d819f1512d')
-b2sums=('3992d88dcf85c134ee8066c20c1900e7171f3ad45e61099ca04ef48f6ab5b011de5669edd4cbc98d1d8ce85c50bd37765045ed96914aa1433995f62073bc9a4f')
+md5sums=('cf954495b58b7d4bb5af2b1f09f7f572')
+b2sums=('567505922597d28f624a25a6d4af5e74e0928e526e0bcac605253eca7db8cb9f28b70a2b55bb4ceb67b0beefd08e3ef39effb899c865829036f66d2aa27f2962')
 
 build() {
   mkdir build
