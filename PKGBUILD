@@ -2,34 +2,37 @@
 # Contributor: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=libkcddb-git
-pkgver=24.01.75.1.g0719217
+pkgver=24.01.90.46.g4c6da88
 pkgrel=1
-pkgdesc="KDE CDDB library. (GIT version)"
+pkgdesc='KDE CDDB library. (GIT version)'
 arch=('x86_64')
 url='https://invent.kde.org/multimedia/libkcddb'
-license=('GPL' 'LGPL' 'FDL')
+license=(
+  'GPL-2.0-or-later'
+  'LGPL-2.0-or-later'
+)
 depends=(
   'gcc-libs' # libgcc_s.so libstdc++.so
   'glibc' # libc.so
-  'kconfig5' # libKF5ConfigCore.so libKF5ConfigGui.so
-  'kconfigwidgets5' # libKF5ConfigWidgets.so
-  'kcoreaddons5' # libKF5CoreAddons.so
-  'ki18n5' # libKF5I18n.so
-  'kio5' # libKF5KIOCore.so libKF5KIOWidgets.so
-  'kwidgetsaddons5' # libKF5WidgetsAddons.so
-  'qt5-base' # libQt5Core.so libQt5Gui.so ibQt5Network.so libQt5Widgets.so
+  'kconfig' # libKF6ConfigCore.so libKF6ConfigGui.so
+  'kcmutils' # libKF6KCMUtilsCore.so libKF6KCMUtils.so
+  'kcoreaddons' # libKF6CoreAddons.so
+  'ki18n' # libKF6I18n.so
+  'kio' # libKF6KIOCore.so libKF6KIOWidgets.so
+  'kwidgetsaddons' # libKF6WidgetsAddons.so
+  'qt6-base' # libQt6Core.so libQt6Gui.so ibQt6Network.so libQt6Widgets.so
   'libmusicbrainz5' 'libmusicbrainz5.so'
 )
 makedepends=(
   'git'
   'extra-cmake-modules'
-  'kdoctools5'
+  'kdoctools'
   'python'
 )
 checkdepends=('appstream')
 provides=(
   'libkcddb'
-  'libKF5Cddb.so'
+  'libKCddb6.so'
 )
 conflicts=('libkcddb')
 source=('git+https://invent.kde.org/multimedia/libkcddb.git')
@@ -45,13 +48,14 @@ build() {
     -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DKDE_INSTALL_LIBDIR=lib \
-    -DBUILD_TESTING=ON
+    -DBUILD_TESTING=ON \
+    -DQT_MAJOR_VERSION=6
 
   cmake --build build
 }
 
 check() {
-  ctest --test-dir build --output-on-failure || true
+  LC_ALL=C ctest --test-dir build --output-on-failure || true
 }
 
 package() {
