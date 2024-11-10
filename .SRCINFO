@@ -1,0 +1,15 @@
+pkgbase = rstatusbar
+	pkgdesc = Configurable statusbar for Xorg server using xsetroot. System info, volume, weather, date, etc.
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/javiorfo/rstatusbar
+	arch = x86_64
+	license = MIT
+	depends = curl
+	depends = xorg-xsetroot
+	provides = rstatusbar
+	conflicts = rstatusbar
+	source = rstatusbar-0.1.1.tar.gz::https://github.com/javiorfo/rstatusbar/releases/download/0.1.1/rstatusbar-0.1.1.tar.gz
+	sha512sums = 5217bede75e106458e7944727c047715a81bf593f84692ce3f0a5fc687bdf67a61c55793508da0d2b768e4bc8f19ef3f0575a38db76c281c1d5f2bcccae38c84
+
+pkgname = rstatusbar
