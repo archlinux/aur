@@ -1,7 +1,7 @@
 pkgbase = gasmeter
 	pkgdesc = Analog gasmeter readout with an IR dongle
 	pkgver = 0.5.5
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/ahpohl/gasmeter
 	arch = i686
 	arch = x86_64
@@ -24,7 +24,7 @@ pkgbase = gasmeter
 	source = gasmeter-0.5.5::git+https://github.com/ahpohl/gasmeter.git#tag=v0.5.5
 	source = sysusers_gasmeter.conf
 	source = gasmeter.service
-	sha256sums = SKIP
+	sha256sums = 565d61260c2eca8d0028b0bba91a38dfd040d2fbea7fbdd72abf8775536141d4
 	sha256sums = 48f1ce02fdc6b8aa46ac4bcd3d782642e69f0b717a0b8121748329ae02ff831e
 	sha256sums = 26f98848587822c4a707742b7706d71ac123ce1535baf1a80502472f5bdcf191
 

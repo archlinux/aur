@@ -1,7 +1,7 @@
 # Maintainer: Alexander Pohl <alex at ahpohl dot com>
 pkgname=gasmeter
 pkgver=0.5.5
-pkgrel=2
+pkgrel=3
 epoch=
 pkgdesc="Analog gasmeter readout with an IR dongle"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
@@ -24,7 +24,7 @@ source=("$pkgname-$pkgver::git+https://github.com/ahpohl/gasmeter.git#tag=v${pkg
         "sysusers_gasmeter.conf"
         "gasmeter.service")
 noextract=()
-sha256sums=('SKIP'
+sha256sums=('565d61260c2eca8d0028b0bba91a38dfd040d2fbea7fbdd72abf8775536141d4'
             '48f1ce02fdc6b8aa46ac4bcd3d782642e69f0b717a0b8121748329ae02ff831e'
             '26f98848587822c4a707742b7706d71ac123ce1535baf1a80502472f5bdcf191')
 validpgpkeys=()
