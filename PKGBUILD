@@ -2,26 +2,30 @@
 
 pkgname=notesock
 pkgver=0.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Yet another terminal pastebin server"
 arch=(any)
-url="https://github.com/Sir-Photch/notesock"
+url="https://git.sr.ht/~shtrophic/notesock"
 license=(AGPL3)
 makedepends=(cargo)
 optdepends=('nginx: reverse proxy')
 install=notesock.install
 backup=(etc/notesock/notesock.env)
 source=(
-	"$pkgname-$pkgver.tar.gz::https://github.com/Sir-Photch/$pkgname/archive/v$pkgver.tar.gz"
+	"$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz"
+	"$pkgname-$pkgver.tar.gz.asc::$url/archive/$pkgver.tar.gz.asc"
 	"$pkgname.install"
 	"sysusers-$pkgname.conf"
 	"tmpfiles-$pkgname.conf"
 )
 
-sha256sums=('de56535279664a584da701f0406a43c1841138e3f24744d8ab818b63e5161268'
+sha256sums=('6b654e51e2a60943eacf35db41e65baa15ec0e3512c4b10f69b7a81beeda2a30'
+            'SKIP'
             'd0a96a5ed09ff4f4495c51b95e5da6a7755f105b8b3f7ff9ec6f5038d1425f03'
             'e7be2fb5db531367a9c45363ed46bfee783a3be24e99ce3631c6627825e47c89'
             '509f304e8f912f31ed010a46fb3c542b37fa1327a176e066f3c9cab9d16439a0')
+
+validpgpkeys=(10F1CC925057D456798EBF9C1B3EB6FE2D338B4A)
 
 prepare() {
 	cd "$pkgname-$pkgver"
