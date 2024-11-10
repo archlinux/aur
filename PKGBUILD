@@ -1,6 +1,6 @@
 pkgname=planetblupi-bin
 pkgver=1.15.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Planet Blupi game"
 arch=('x86_64' 'aarch64')
 url="https://gitlab.com/linuxbombay/planetblupi/"
@@ -9,22 +9,21 @@ depends=('sdl2' 'sdl2_image' 'sdl2_mixer' 'sdl2_ttf' 'libpng' 'libogg' 'ffmpeg' 
 makedepends=('unzip')
 _pkgrel_x86_64=1
 _pkgrel_aarch64=1
-sha256sums_x86_64=('SKIP'
-                   '0abd54e842b801e5364de597fc1a54e4578730f31f86d6ea7fab2994327c4abe')
-sha256sums_aarch64=('SKIP'
-                    '5bc00034e5df96f453e2a8616252b583a6bc30abd7356558de3fd66ef73bb2a9')
-source_x86_64=("git+$url" "https://gitlab.com/linuxbombay/planetblupi/binaries/$pkgver/-/raw/main/planetblupi-linux-x64.tar.xz")
-source_aarch64=("git+$url" "https://gitlab.com/linuxbombay/planetblupi/binaries/$pkgver/-/raw/main/planetblubi-linux-arm64.tar.xz")
+sha256sums=('176cc1107f67ae085e0d6b7ad93c0696c6b7680d6e3aea4cc73b7d3279271b9c')
+sha256sums_x86_64=('8ad05d22a8fc5fe39ed1fc00e70a86c39fefcd1f15e92847733dbca4feb8ea67')
+sha256sums_aarch64=('82054e5fcc80b3ad6c25ad4e05d5be4b1b5c810ac0a8e044c484e3109ba5df81')
+source=("planetblupi.desktop")                    
+source_x86_64=("https://gitlab.com/linuxbombay/planetblupi/binaries/$pkgver/-/raw/main/planetblupi-linux-x64.tar.xz")
+source_aarch64=("https://gitlab.com/linuxbombay/planetblupi/binaries/$pkgver/-/raw/main/planetblupi-linux-arm64.tar.xz")
 
 package() {
-    install -dm755 "$pkgdir/usr/share"
-    install -dm755 "$pkgdir/usr/share/games/PlanetBlupi"
-    install -dm755 "$pkgdir/usr/share/pixmaps"
+    install -dm755 "$pkgdir/usr/share/planetblupi"
+    install -dm644 "$pkgdir/usr/share/icons"
     install -dm755 "$pkgdir/usr/share/applications"
     install -dm755 "$pkgdir/usr/bin"
-     
-    cp -r "$srcdir/planetblupi/." "$pkgdir/usr/share/games/PlanetBlupi"
-    cp -r "$srcdir/planetblupi/planetblupi" "$pkgdir/usr/bin"
-    cp -r "$srcdir/planetblupi/planetblupi.desktop" "$pkgdir/usr/share/applications"
-    cp -r "$srcdir/planetblupi/share/icons/hicolor/scalable/apps/blupi.svg" "$pkgdir/usr/share/pixmaps/planetblupi.svg"
+    
+    cp -r "$srcdir/planetblupi/share/planetblupi" "$pkgdir/usr/share"
+    cp -r "$srcdir/planetblupi/share/icons/hicolor" "$pkgdir/usr/share/icons"
+    install -Dm755 "planetblupi.desktop" "$pkgdir/usr/share/applications"
+    cp -r "$srcdir/planetblupi/bin/planetblupi" "$pkgdir/usr/bin"
 }
