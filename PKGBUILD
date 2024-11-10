@@ -38,6 +38,7 @@ depends=(
     'ladspa'
     'lame'
     'libavc1394'
+    'lcevcdec'
     'lcms2'
     'lensfun-git'
     'libass'
@@ -157,8 +158,8 @@ sha256sums=('40973d44970dbc83ef302b0609f2e74982be2d85916dd2ee7472d30678a7abe6'
             '9047e18d34716812d4ea7eafc1d0fd8b376d922a4b6b4dc20237662fcaf0c996'
             'a164ebdc4d281352bf7ad1b179aae4aeb33f1191c444bed96cb8ab333c046f81'
             '59da61f2b2c556fbe0cdbf84bcc00977ee3d2447085decb21f6298226559f2aa'
-            'f3918985d0a156ceb2d05903500544eb1cf6df2ee950cbf6aa63718eb10f6abf'
-            'c413f87df4ec496b0e8be705be407ee9c43f09a24ea14b01ea9688d5b410f0f0'
+            'aa0daffc4d234b6621b63c298dc165d29522c5087f8905a923d23ee2d164e9ad'
+            '57697441b8f3ff3be883a2444b4cb89eed452764d24965e74e7b101e6af7f70a'
             '26419f819d1f3e4d0534995b73d05a8195bc7c892b74c37c3880085af027515b'
             '04a7176400907fd7db0d69116b99de49e582a6e176b3bfb36a03e50a4cb26a36')
 validpgpkeys=('FCF986EA15E6E293A5644F10B4322F04D67658D8')
@@ -236,6 +237,7 @@ build() {
         --enable-libklvanc \
         --enable-libkvazaar \
         --enable-liblc3 \
+        --enable-liblcevc-dec \
         --enable-liblensfun \
         --enable-libmodplug \
         --enable-libmp3lame \
