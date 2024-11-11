@@ -1,152 +1,55 @@
-# Maintainer: JinguTech <xiuluo dot android at gmail dot com>
+# Maintainer: Jeff Henson <jeff@henson.io>
+# Old Maintainer: JinguTech <xiuluo dot android at gmail dot com>
 # Contributor: Alkindi42
+
+_electronversion=32
 pkgname=joplin-beta
-pkgver=3.0.2
+pkgver=3.2.1
 pkgrel=1
-pkgdesc="The latest pre-release - open source note taking and to-do application"
-arch=('x86_64')
-depends=('electron' 'gtk3' 'libexif' 'libgsf' 'libjpeg-turbo' 'libwebp' 'libxss' 'nodejs>=17.3'
-         'nss' 'orc' 'rsync')
-optdepends=('libappindicator-gtk3: for tray icon')
-makedepends=('git' 'npm' 'yarn' 'python' 'jq' 'yq' 'node-gyp>=8.4.1')
-source=(
-  "${pkgname%-*}-desktop.sh" "${pkgname%-*}.sh" "${pkgname%-*}.desktop"
-  "${pkgname}-${pkgver}.tar.gz::https://github.com/laurent22/joplin/archive/refs/tags/v${pkgver}.tar.gz"
-  
+pkgdesc="A note taking and to-do application with synchronization capabilities (beta version)"
+arch=("any")
+url="https://joplinapp.org/"
+license=("MIT")
+depends=("electron${_electronversion}" "gtk3" "libexif" "libgsf" "libjpeg-turbo" "libwebp" "libxss"
+	"nss" "orc" "rsync" "libvips")
+optdepends=("libappindicator-gtk3: for tray icon")
+makedepends=(
+	"git" "yarn" "npm" "python" "python-setuptools"
+	# Fails to build with the latest nodejs version
+	"nodejs-lts-iron"
 )
-conflicts=('joplin' 'joplin-desktop' 'joplin-appimage' 'libvips')
-url="https://joplinapp.org"
-license=('MIT')
-
-sha256sums=('18cca699f52f884980646359631bb59a77d190b9f91e9e3e71efa62166772557'
-            'b5c621c425cdf0b5bb07bf0353939f6991a18db81955294a47ec42d0c5593438'
-            'b46dd772eb1adf9327f6c07657acf3c627c6ea204f8de3a4481efa6db0071f5e'
-            'bfb7e326f21ebf9fd6da4d82a00fdeb74e3f4538f08ecc97fccd05e49010bbb9')
-
-
-# local npm cache directory
-_yarn_cache="yarn-cache"
-
-## Sets up a local cache to prevent the redownloding the packages on rebuilds
-_get_cache() {
-  if [[ "${_yarn_cache}" =~ ^/ ]]; then
-    printf "%s" "${_yarn_cache}"
-  else
-    printf "%s" "${srcdir}/${_yarn_cache}"
-  fi
-}
-
-_get_yarn_bin() {
-  local yarn_bin=$(yq ".yarnPath" ${srcdir}/joplin-${pkgver}/.yarnrc.yml)
-  #Remove quotes
-  yarn_bin="${yarn_bin%\"}"
-  yarn_bin="${yarn_bin#\"}"
-  printf "%s" "${srcdir}/joplin-${pkgver}/${yarn_bin}"
-}
+conflicts=('joplin' 'joplin-desktop' 'joplin-appimage')
+source=("joplin-${pkgver}.tar.gz::https://github.com/laurent22/joplin/archive/v${pkgver}.tar.gz"
+        "joplin.desktop"
+        "joplin-desktop.sh")
+sha256sums=('a3594f1eadefcd0ee38c344c105c8e231ff74b9d5e103e6440e797a50454123a'
+            '9e26cd5f41d08c3c2804cf4f34cb867090371423ccbe250a890fac006d405deb'
+            'bd8324d35faaf6815217d1cf31a0b5e4df80692b0312ad17aea20d51f95efd56')
 
 prepare() {
-  local cache=$(_get_cache)
-  local yarn_bin=$(_get_yarn_bin)
-  echo "Yarn cache directory: $cache"
-  echo "Yarn binary: ${yarn_bin}"
-
-  echo "Disabling husky (git hooks)"
-  sed -i '/"husky": ".*"/d' "${srcdir}/joplin-${pkgver}/package.json"
-
-  # There are so many people
-  echo "Checking Node PATH"
-  local w_node=$(which node)
-  if [[ $w_node != "/usr/bin/node" ]]; then
-    echo "WARNING: Using path ${w_node} beware its not the defualt path, check if you are using nvm or similar"
-  fi
-
-  echo "Tweaking .yarnrc"
-  yq -i -y ".cacheFolder=(\"${cache}\")" "${srcdir}/joplin-${pkgver}/.yarnrc.yml"
-
-  echo "Tweaking lerna.json"
-  local tmp_json="$(mktemp --tmpdir="$srcdir")"
-  local lerna_json="${srcdir}/joplin-${pkgver}/lerna.json"
-
-  #echo "Deleting app-mobile"
-  #rm -r "${srcdir}/joplin-${pkgver}/packages/app-mobile"
-  #rm -r "${srcdir}/joplin-${pkgver}/packages/app-clipper"
-
+	sed -i "s|@electronversion@|${_electronversion}|" joplin-desktop.sh
 }
 
 build() {
-  local cache=$(_get_cache)
-  local yarn_bin=$(_get_yarn_bin)
-  echo "Yarn cache directory: $cache"
-  cd "${srcdir}/joplin-${pkgver}"
+	cd "${srcdir}/joplin-${pkgver}"
 
-  # Force Lang
-  # INFO: https://github.com/alfredopalhares/joplin-pkgbuild/issues/25
-  export LANG=en_US.utf8
+	export SHARP_IGNORE_GLOBAL_LIBVIPS=1
+	export YARN_ENABLE_INLINE_BUILDS=1
 
-  echo "Installing dependencies through Yarn 3..."
-  # FSevents is on the optinal dependencies and its Mac Only
-  eval $yarn_bin
-
-  echo "Building the workspace"
-  $yarn_bin workspace @joplin/lib install
-  $yarn_bin workspace @joplin/renderer install
-  $yarn_bin workspace @joplin/app-desktop install
-  $yarn_bin workspace @joplin/app-desktop run electron-builder build --linux
+	yarn workspace @joplin/app-desktop install
+	yarn workspace @joplin/app-desktop dist --linux --publish=never
 }
-
-#FIXME: These checks fail on some machines, even with the exit 0
-# Something related with the number of allowed processes I guess
-check() {
-  cd "${srcdir}/joplin-${pkgver}"
-  echo "Not Running any tests for now"
-  #npm run test || exit 0
-}
-
 
 package() {
+	cd "${srcdir}/joplin-${pkgver}/packages/app-desktop/dist/linux-unpacked/resources"
 
-  # ./generateSha512.js fails if AppImage is not built
-  mkdir -p "${srcdir}/joplin-${pkgver}/packages/app-desktop/dist/"
-  touch "${srcdir}/joplin-${pkgver}/packages/app-desktop/dist/AppImage"
+	install -Dm644 app.asar -t "${pkgdir}/usr/lib/joplin"
+	cp -r build "${pkgdir}/usr/lib/joplin/"
 
-  #cd "${srcdir}/joplin-${pkgver}/packages/app-desktop/node_modules/@joplin/"
-  #ln -sf "../../../fork-uslug" "."
+	for i in 16 32 128 256 512 1024; do
+		install -Dm644 build/icons/${i}x${i}.png "${pkgdir}/usr/share/icons/hicolor/${i}x${i}/apps/joplin.png"
+	done
 
-  echo "Building Desktop with packaged Electron..."
-  cd "${srcdir}/joplin-${pkgver}/packages/app-desktop/"
-  #electron_dir="/usr/lib/electron"
-  #electron_version=$(cat /usr/lib/electron/version)
-  #echo "Using Electron Version ${electron_version}"
-  ## Current version of electron does not work
-  ##USE_HARD_LINKS=false yarn run dist -- --publish=never  --linux  --x64 \
-  #sed -i "s/const forceAbiArgs = '--force-abi 89';/const forceAbiArgs = ''/" tools/electronRebuild.js
-  #gulp electronRebuild
-  ##DEBUG="electron-rebuild" USE_HARD_LINKS=false yarn run dist -- --publish=never \
-  ##  --dir="dist/"
-  # # --dir="dist/" -c.electronDist=$electron_dir -c.electronVersion=$electron_version
-  #    # FIXME: Using packaged electron breaks the interface
-
-  echo "Packaging the desktop..."
-  # TODO: Cleanup app.asar file
-  cd dist/linux-unpacked/
-  mkdir -p "${pkgdir}/usr/share/joplin"
-  cp -R "." "${pkgdir}/usr/share/joplin"
-  echo "Installing LICENSE..."
-  cd "${srcdir}/joplin-${pkgver}/"
-  install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
-
-  echo "Installing startup script and desktop file..."
-  cd "${srcdir}"
-  install -Dm755 ${srcdir}/joplin-desktop.sh "${pkgdir}/usr/bin/joplin-desktop"
-  install -Dm644 ${srcdir}/joplin.desktop -t "${pkgdir}/usr/share/applications"
-
-  echo "Installing icons"
-  local -r src_icon_dir="${srcdir}/joplin-${pkgver}/packages/app-desktop/build/icons"
-  local -i size
-  for size in 16 22 24 32 36 48 64 72 96 128 192 256 512; do
-    [[ -f "${src_icon_dir}/${size}x${size}.png" ]] &&
-      install -Dm644 \
-        "${src_icon_dir}/${size}x${size}.png" \
-        "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/apps/joplin.png"
-  done
+	install -Dm755 "${srcdir}/joplin-desktop.sh" "${pkgdir}/usr/bin/joplin-desktop"
+	install -Dm644 "${srcdir}/joplin.desktop" -t "${pkgdir}/usr/share/applications"
 }

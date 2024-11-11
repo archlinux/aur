@@ -1,7 +1,4 @@
-#!/usr/bin/env bash
-
-readonly joplin_dir="/usr/share/joplin"
-
-cd $joplin_dir || exit 1
-
-./@joplinapp-desktop "$@"
+#!/bin/sh
+export ELECTRON_IS_DEV=0
+cd /usr/lib/joplin
+exec electron@electronversion@ /usr/lib/joplin/app.asar $@
