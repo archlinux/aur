@@ -1,0 +1,20 @@
+pkgbase = ezshare-bin
+	pkgdesc = Easily share files, folders and clipboard over LAN - Like Google Drive but without internet
+	pkgver = 1.11.3
+	pkgrel = 1
+	url = https://github.com/mifi/ezshare
+	arch = x86_64
+	license = MIT
+	makedepends = help2man
+	depends = glibc
+	provides = ezshare
+	conflicts = ezshare
+	options = !strip
+	source = LICENSE-1.11.3::https://raw.githubusercontent.com/mifi/ezshare/v1.11.3/LICENSE
+	source = README-1.11.3.md::https://raw.githubusercontent.com/mifi/ezshare/v1.11.3/README.md
+	sha256sums = 45f0b58ab7c3ea2b8f2be6e31656d4327a5e35d5116ff8e92457c7d672c92321
+	sha256sums = 974a86f0ecc41b3d4c75690907797a891e9f646d26268594f1d0fa528ec4fec1
+	source_x86_64 = https://github.com/mifi/ezshare/releases/download/v1.11.3/ezshare-linux.zip
+	sha256sums_x86_64 = fcf121869534f393be8b3cbb2f83a741c1f9d5613b2a3ec4f54818d9551b8f17
+
+pkgname = ezshare-bin
