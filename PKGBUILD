@@ -13,21 +13,21 @@ source=("https://github.com/artyom-poptsov/$pkgname/archive/v$pkgver/$pkgname-$p
 sha256sums=('c58fcedf023886f39ef9921ad5f5d53f1917bc1d1c77a0535a3d80ff932c3938')
 
 build() {
-	cd "$pkgname-$pkgver"
-	local sitedir=$(guile-config info sitedir)
-	autoreconf -fi
-	./configure \
-		--prefix=/usr \
-		--with-guilesitedir=$sitedir
-	make
+  cd "$pkgname-$pkgver"
+  local sitedir=$(guile-config info sitedir)
+  autoreconf -fi
+  ./configure \
+    --prefix=/usr \
+    --with-guilesitedir=$sitedir
+  make
 }
 
 check() {
-	cd "$pkgname-$pkgver"
-	make -k check
+  cd "$pkgname-$pkgver"
+  make -k check
 }
 
 package() {
-	cd "$pkgname-$pkgver"
-	make DESTDIR="$pkgdir/" install
+  cd "$pkgname-$pkgver"
+  make DESTDIR="$pkgdir/" install
 }
