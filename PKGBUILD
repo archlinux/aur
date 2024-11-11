@@ -4,7 +4,7 @@ pkgver=1.2.4.17
 _googletest_ver=1.14.0
 _libbpf_ver=1.4.1
 _p4runtime_commit=ec4eb5ef70dbcbcbf2f8357a4b2b8c2f218845a5
-pkgrel=1
+pkgrel=2
 pkgdesc="P4 reference compiler"
 arch=('any')
 url="https://github.com/p4lang/p4c"
@@ -51,6 +51,7 @@ build() {
         -DCMAKE_BUILD_TYPE=None \
         -DCMAKE_UNITY_BUILD=ON \
         -DBUILD_LINK_WITH_GOLD=OFF \
+        -DBUILD_LINK_WITH_LLD=OFF \
         -DP4C_USE_PREINSTALLED_PROTOBUF=ON \
         -DENABLE_PROTOBUF_STATIC=OFF \
         -DP4C_USE_PREINSTALLED_ABSEIL=ON \

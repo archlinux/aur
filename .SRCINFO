@@ -1,7 +1,7 @@
 pkgbase = p4lang-p4c
 	pkgdesc = P4 reference compiler
 	pkgver = 1.2.4.17
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/p4lang/p4c
 	arch = any
 	license = Apache
