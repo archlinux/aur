@@ -2,8 +2,8 @@
 _appname=dnschanger
 pkgname="${_appname}-desktop-bin"
 _pkgname=DNS-Changer
-pkgver=2.3.1
-_electronversion=29
+pkgver=2.3.2
+_electronversion=33
 pkgrel=1
 pkgdesc="Gather the best DNS servers in a secure application.(Prebuilt version.Use system-wide electron)"
 arch=("x86_64")
@@ -23,7 +23,7 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/DnsChanger/dnsChanger-desktop/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('12d4d2991b7869dd72f9c815cfc74a55e4c64d6ca41915cf54a74b7187f4821c'
+sha256sums=('33930552b5fcf2cfca25c5a57524a4b0efe2386b2dcd597557b9ad603528c658'
             'd8cd7d03b1c407ad97d6059dd8d6821ce42ab3bd8e9d39caab2fe4e730c8f737'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 build() {
