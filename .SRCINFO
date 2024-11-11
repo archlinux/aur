@@ -1,11 +1,11 @@
 pkgbase = gawk-lmdb
 	pkgdesc = GAWK extension - interface to the LMDB API
 	pkgver = 1.1.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://sourceforge.net/projects/gawkextlib/
 	arch = i686
 	arch = x86_64
-	license = GPL
+	license = GPL-3.0-or-later
 	depends = gawkextlib
 	depends = glibc
 	depends = lmdb
