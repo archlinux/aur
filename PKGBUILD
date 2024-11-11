@@ -3,11 +3,11 @@
 pkgname=gawkextlib
 _project=$pkgname
 pkgver=1.0.4
-pkgrel=4
+pkgrel=5
 pkgdesc="Library containing APIs used by various GAWK extensions"
 arch=('i686' 'x86_64' 'aarch64')
 url="https://sourceforge.net/projects/gawkextlib/"
-license=('GPL')
+license=('GPL-3.0-or-later')
 depends=('glibc')
 source=("https://downloads.sourceforge.net/$_project/$pkgname-$pkgver.tar.gz")
 md5sums=('3beafa6ccb68522fb02f4fd16aa5c1dd')
