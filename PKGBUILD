@@ -14,17 +14,17 @@ md5sums=('3beafa6ccb68522fb02f4fd16aa5c1dd')
 sha256sums=('ecd06c1857f58530f73866dffb74a32f17d1194c045f351b5ab8acad4f77678c')
 
 build() {
-	cd "$pkgname-$pkgver"
-	./configure --prefix=/usr --enable-silent-rules
-	make
+  cd "$pkgname-$pkgver"
+  ./configure --prefix=/usr --enable-silent-rules
+  make
 }
 
 check() {
-	cd "$pkgname-$pkgver"
-	make -k check
+  cd "$pkgname-$pkgver"
+  make -k check
 }
 
 package() {
-	cd "$pkgname-$pkgver"
-	make DESTDIR="$pkgdir/" install
+  cd "$pkgname-$pkgver"
+  make DESTDIR="$pkgdir/" install
 }
