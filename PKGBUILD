@@ -3,7 +3,7 @@
 _pkgname=frida
 pkgname=python-$_pkgname-bin
 pkgver=16.5.6
-pkgrel=1
+pkgrel=2
 
 pkgdesc='Inject JavaScript to explore native apps on Windows, Mac, Linux, iOS and Android. Python 3 binary version from PyPi'
 arch=('i686' 'x86_64' 'armv7l' 'aarch64')
