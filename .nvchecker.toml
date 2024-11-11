@@ -1,0 +1,5 @@
+[superlu_dist]
+source = "github"
+github = "xiaoyeli/superlu_dist"
+use_latest_release = true
+prefix = "v"

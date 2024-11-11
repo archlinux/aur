@@ -1,15 +1,17 @@
 pkgbase = superlu_dist
 	pkgdesc = Distributed memory, MPI based SuperLU
-	pkgver = 9.0.0
+	pkgver = 9.1.0
 	pkgrel = 1
 	url = https://github.com/xiaoyeli/superlu_dist
 	arch = x86_64
-	license = custom
+	license = LicenseRef-Callaway-BSD
 	makedepends = cmake
+	makedepends = gcc-fortran
 	depends = lapack
-	depends = parmetis
+	depends = parmetis-git
+	depends = python-mpi4py
 	options = staticlibs
-	source = superlu_dist-9.0.0.tar.gz::https://github.com/xiaoyeli/superlu_dist/archive/v9.0.0.tar.gz
-	sha512sums = 0e35285780d149e0851d7e62d54d306beed2c81a406d32eaf182c79ba92494b9b87f30fe2e4c4154c8599eacf441329ad93a756ae732bd5b47161cf9aeb7282c
+	source = superlu_dist-9.1.0.tar.gz::https://github.com/xiaoyeli/superlu_dist/archive/v9.1.0.tar.gz
+	sha512sums = 76251ac49ff03ca9b040a9ce34764047fe182f1361d05e5e73b6df92510135170c9c946d15d716dadc3326995515a703b999a56bd762e6f77e9b8749f298fed1
 
 pkgname = superlu_dist
