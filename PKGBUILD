@@ -2,8 +2,8 @@
 # Contributor: George Kiselyov <i[dot]am[at]kiselyov-george[dot]ru>
 
 pkgname=rudesktop
-pkgver=2.7.692
-pkgrel=5
+pkgver=2.7.732
+pkgrel=1
 arch=('x86_64')
 pkgdesc="Ru-Desktop client for home use"
 url="https://rudesktop.ru/downloads/"
@@ -26,4 +26,4 @@ package() {
   install -Dm765 usr/bin/rudesktop "${pkgdir}/usr/bin/rudesktop"
   install -Dm664 usr/lib/libsciter-gtk.so "${pkgdir}/usr/lib/libsciter-gtk.so"
 }
-sha256sums=('1fee1660e9998135328766f170c0c657757664306cff1e1a2dcedfd151260dd2')
+sha256sums=('0c6cc140893a1db8b8efdb93e4f138b1092ca7c1ed8439d83f76f80ecb67d007')
