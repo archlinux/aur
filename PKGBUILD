@@ -3,9 +3,9 @@
 pkgname=gawk-errno
 _project=gawkextlib
 pkgver=1.1.1
-pkgrel=2
+pkgrel=3
 pkgdesc="GAWK extension - convert errno values to strings and vice versa"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="https://sourceforge.net/projects/gawkextlib/"
 license=('GPL-3.0-or-later')
 depends=('glibc')
