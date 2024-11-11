@@ -3,7 +3,7 @@
 
 pkgname=guile-curl
 pkgver=0.9
-pkgrel=1
+pkgrel=2
 pkgdesc='A GNU Guile library for client-side URL transfers based on libcurl'
 arch=('x86_64')
 license=('GPL-3.0-or-later')
@@ -15,7 +15,7 @@ sha256sums=('d241f27c2a6d2ac768ce1ae64fd27e6854b34ace6ce35ce810fb41a2a7b20ed6')
 build() {
   cd "$pkgname-$pkgver"
   autoreconf -fiv
-  ./configure --prefix=/usr
+  ./configure --prefix=/usr --enable-silent-rules
   make
 }
 
