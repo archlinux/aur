@@ -4,29 +4,34 @@
 
 pkgbase=libdxvk
 pkgname=('libdxvk' 'lib32-libdxvk')
-pkgver=2.4.1
+pkgver=2.5.0
 pkgrel=1
-pkgdesc="Native Linux port of DXVK to allow usage without WINE"
+pkgdesc="Vulkan-based implementation of D3D8, 9, 10 and 11 for Linux"
 arch=(x86_64)
 url="https://github.com/doitsujin/dxvk"
 license=(Zlib)
-depends=(sdl2 vulkan-icd-loader lib32-sdl2 lib32-vulkan-icd-loader)
-makedepends=(git glslang meson)
-provides=(libdxvk libdxvk_dxgi.so libdxvk_d3d9.so libdxvk_d3d11.so)
-source=("git+$url.git?signed#tag=v${pkgver}"
+_depends=(glibc sdl2 sdl3 vulkan-icd-loader)
+_32depends=(lib32-glibc lib32-sdl2 lib32-sdl3 lib32-vulkan-icd-loader)
+depends=(${_depends[@]} ${_32depends[@]})
+makedepends=(git glslang meson ${depends[@]})
+provides=(libdxvk_dxgi.so libdxvk_d3d8.so libdxvk_d3d9.so libdxvk_d3d10core.so
+	  libdxvk_d3d11.so)
+source=("git+$url.git#tag=v${pkgver::-2}"
 	"git+https://github.com/Joshua-Ashton/mingw-directx-headers.git"
 	"git+https://github.com/KhronosGroup/Vulkan-Headers.git"
 	"git+https://github.com/KhronosGroup/SPIRV-Headers.git"
-	"git+https://gitlab.freedesktop.org/JoshuaAshton/libdisplay-info.git")
-sha256sums=('31e9e798a65bd3a93668e4e84a47b7158afd47da043a2470ed0769d15f060fd0'
+	"git+https://gitlab.freedesktop.org/JoshuaAshton/libdisplay-info.git"
+	"project-version.patch::$url/commit/e6209d28cd9c51ad371605db4c0de27547c0d28c.patch")
+sha256sums=('5673200b157616580aab6e75086f276b2acc2af31c5553c2269a6a8c1481548b'
             'SKIP'
             'SKIP'
             'SKIP'
-            'SKIP')
-validpgpkeys=('273D040B5113B886D1A090D4C8CC613427A31C99') # Philip Rebohle <philip.rebohle@tu-dortmund.de>
+            'SKIP'
+            '8d74f24ddefb76f2b8260f70aa449b18e25599177c67c882fb766692d59a1dd9')
 
 prepare() {
 	cd dxvk
+	patch -p1 < "$srcdir/project-version.patch"
 	git submodule init
 	git config submodule.include/native/directx.url "$srcdir/mingw-directx-headers"
 	git config submodule.include/vulkan.url "$srcdir/Vulkan-Headers"
@@ -40,18 +45,24 @@ build() {
 }
 
 package_libdxvk() {
-	depends=(sdl2 vulkan-icd-loader)
+	depends=(${_depends[@]})
 
-	find build/dxvk-native-$pkgver/usr/lib -name '*.so' \
-		-exec install -Dm755 '{}' -t "$pkgdir/usr/lib/" \;
+	install -dm755 "$pkgdir/usr/lib"
+	find build/dxvk-native-$pkgver/usr/lib -name '*.so*' \
+		-exec cp -a '{}' "$pkgdir/usr/lib/" \;
+	find "$pkgdir/usr/lib" -name '*.so*' \
+		-exec chmod 755 '{}' \;
 	install -Dm644 dxvk/LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
 }
 
 package_lib32-libdxvk() {
 	pkgdesc+=" (32-bit)"
-	depends=(lib32-sdl2 lib32-vulkan-icd-loader lib32-gcc-libs)
+	depends=(${_32depends[@]})
 
-	find build/dxvk-native-$pkgver/usr/lib32 -name '*.so' \
-		-exec install -Dm755 '{}' -t "$pkgdir/usr/lib32/" \;
+	install -dm755 "$pkgdir/usr/lib32"
+	find build/dxvk-native-$pkgver/usr/lib32 -name '*.so*' \
+		-exec cp -a '{}' "$pkgdir/usr/lib32/" \;
+	find "$pkgdir/usr/lib32" -name '*.so*' \
+		-exec chmod 755 '{}' \;
 	install -Dm644 dxvk/LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
 }
