@@ -4,7 +4,7 @@
 _pkgname="shadowsocks-rust"
 pkgname="$_pkgname-git"
 pkgver=1.21.2.r38.g6900136
-pkgrel=1
+pkgrel=2
 pkgdesc="A Rust port of shadowsocks"
 url="https://github.com/shadowsocks/shadowsocks-rust"
 license=('MIT')
@@ -13,7 +13,6 @@ arch=('x86_64')
 depends=(
   'gcc-libs'
   'glibc'
-  'openssl'
 )
 makedepends=(
   'cargo'
