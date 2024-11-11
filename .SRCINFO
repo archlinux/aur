@@ -1,16 +1,16 @@
 pkgbase = forgejo-runner-bin
 	pkgdesc = Continuous integration for Forgejo
 	pkgver = 4.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://code.forgejo.org/forgejo/runner
 	arch = x86_64
 	arch = aarch64
 	license = MIT
 	provides = forgejo-runner
 	conflicts = forgejo-runner
-	source_x86_64 = forgejo-runner::https://code.forgejo.org/forgejo/runner/releases/download/v4.0.1/forgejo-runner-4.0.1-linux-amd64
+	source_x86_64 = https://code.forgejo.org/forgejo/runner/releases/download/v4.0.1/forgejo-runner-4.0.1-linux-amd64
 	sha256sums_x86_64 = 45f513988b7136c1dc62316d9d635f0791fa0c5be7f6735560980988cf0c5c8a
-	source_aarch64 = forgejo-runner::https://code.forgejo.org/forgejo/runner/releases/download/v4.0.1/forgejo-runner-4.0.1-linux-arm64
+	source_aarch64 = https://code.forgejo.org/forgejo/runner/releases/download/v4.0.1/forgejo-runner-4.0.1-linux-arm64
 	sha256sums_aarch64 = 5aa0373be455637826d6126e3911fe653f3c0538a9e84d97497ba3c416757fca
 
 pkgname = forgejo-runner-bin
