@@ -4,7 +4,7 @@ _gitname="pass-secret-service"
 _pkgname="${_gitname}"
 pkgname="${_pkgname}-git"
 pkgver=0.2+1.r46.20240720.f9dbcbb
-pkgrel=4
+pkgrel=5
 pkgdesc="An org.freedesktop.secrets provider with a pass backend."
 arch=(
   'aarch64'
@@ -42,7 +42,7 @@ provides=(
 )
 conflicts=(
   "${_pkgname}"
-  "org.freedesktop.secrets"
+  "gnome-keyring"
 )
 
 source=(
