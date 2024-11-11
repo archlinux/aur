@@ -113,6 +113,7 @@ build() {
   export PYTHONPATH="$(pwd)/tmp_man_install/${site_packages}:${PYTHONPATH}"
   make -C doc man
 
+  # Needed to add the generated manpages into the wheel
   python -m build --wheel --no-isolation
 }
 
