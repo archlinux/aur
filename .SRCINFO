@@ -1,18 +1,18 @@
 pkgbase = aliyun-cli-bin
 	pkgdesc = A tool to manage and use Alibaba Cloud resources through a command line interface.(Prebuilt version)
-	pkgver = 3.0.228
+	pkgver = 3.0.229
 	pkgrel = 1
 	url = https://github.com/aliyun/aliyun-cli
 	arch = aarch64
 	arch = x86_64
 	license = Apache-2.0
 	depends = glibc>=2.38
-	provides = aliyun-cli=3.0.228
+	provides = aliyun-cli=3.0.229
 	conflicts = aliyun
 	conflicts = aliyun-cli
-	source_aarch64 = aliyun-cli-3.0.228-aarch64.tgz::https://github.com/aliyun/aliyun-cli/releases/download/v3.0.228/aliyun-cli-linux-3.0.228-arm64.tgz
-	sha256sums_aarch64 = 97e1bc22d7b3cb57648e9f64c861d1a5d488fb115bb3b957fee3b31e48338d74
-	source_x86_64 = aliyun-cli-3.0.228-x86_64.tgz::https://github.com/aliyun/aliyun-cli/releases/download/v3.0.228/aliyun-cli-linux-3.0.228-amd64.tgz
-	sha256sums_x86_64 = 80bcc33975ec101bc7f41cc6fa656b0c9645165445286465cdd10c0ea4b12ad8
+	source_aarch64 = aliyun-cli-3.0.229-aarch64.tgz::https://github.com/aliyun/aliyun-cli/releases/download/v3.0.229/aliyun-cli-linux-3.0.229-arm64.tgz
+	sha256sums_aarch64 = 5f1c4b3d9d74344de0dcdfd51c08aa90f0f87fb7528c5d46fbc45fc8b5f92af8
+	source_x86_64 = aliyun-cli-3.0.229-x86_64.tgz::https://github.com/aliyun/aliyun-cli/releases/download/v3.0.229/aliyun-cli-linux-3.0.229-amd64.tgz
+	sha256sums_x86_64 = b9e6f792ba0737edf2973e9279a5f9477d89802a563f2d9139b502daf2aa210b
 
 pkgname = aliyun-cli-bin
