@@ -29,6 +29,9 @@ case "${_android_arch}" in
     x86-64)
         export RUST_TARGET=x86_64-linux-android
         ;;
+    riscv64)
+        export RUST_TARGET=riscv64-linux-android
+        ;;
     *)
         export RUST_TARGET=${_android_arch}-linux-android
         ;;
