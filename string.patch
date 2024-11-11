@@ -1,0 +1,19 @@
+diff --git a/src/system/sdl/main.c b/src/system/sdl/main.c
+index 9848a72f..da7d9c5d 100644
+--- a/src/system/sdl/main.c
++++ b/src/system/sdl/main.c
+@@ -25,6 +25,7 @@
+ 
+ #include <stdlib.h>
+ #include <stdio.h>
++#include <string.h>
+ #include <time.h>
+ 
+ #if defined(CRT_SHADER_SUPPORT)
+@@ -1882,4 +1883,4 @@ int fcntl64(int fd, int cmd)
+     return fcntl(fd, cmd);
+ }
+ 
+-#endif
+\ No newline at end of file
++#endif
