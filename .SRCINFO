@@ -1,0 +1,19 @@
+pkgbase = python-dropboxdrivefs
+	pkgdesc = Dropbox implementation for fsspec module
+	pkgver = 1.4.1
+	pkgrel = 1
+	url = https://github.com/fsspec/dropboxdrivefs
+	arch = any
+	license = BSD-3-Clause
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	makedepends = python-build
+	makedepends = python-installer
+	source = https://files.pythonhosted.org/packages/source/d/dropboxdrivefs/dropboxdrivefs-1.4.1.tar.gz
+	md5sums = 41a00af36264e7306303495a3ac47534
+
+pkgname = python-dropboxdrivefs
+	depends = python>=3.5
+	depends = python-fsspec
+	depends = python-requests
+	depends = python-dropbox
