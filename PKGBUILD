@@ -1,4 +1,4 @@
-# Maintainer: OpenJowel <openjowel AT huenicorn DOT org>
+# Maintainer: OpenJowel <OpenJowel AT proton DOT me>
 #
 # This package installs Huenicorn on the system
 
