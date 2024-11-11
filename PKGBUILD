@@ -1,7 +1,7 @@
 # Maintainer: Moritz Bunkus <moritz@bunkus.org>
 
 pkgname=perl-net-amqp-rabbitmq
-pkgver="2.40013"
+pkgver="2.40014"
 pkgrel='1'
 pkgdesc="interact with RabbitMQ over AMQP using librabbitmq"
 arch=("any")
@@ -11,7 +11,7 @@ options=(!emptydirs)
 depends=('perl-math-int64>=0.34' 'perl-scalar-list-utils')
 makedepends=('perl-devel-checklib')
 source=("https://cpan.metacpan.org/authors/id/M/MS/MSTEMLE/Net-AMQP-RabbitMQ-${pkgver}.tar.gz")
-sha512sums=('05ccef23026a02f9e6e7153e2b08b32809478e098a95376b169c1f1162e6adf3f6c032a30f08e85a59c82ab4c7034b03e7c8b71a023055b3270af12194d6856b')
+sha512sums=('55c12151530221bbeb306d2d6ae34e275fbdb5895277f891da8f5a00584e674a183bdb1c1481d055cfcc08d64ad9d7b345595c47b7c5bd80f3b2a9562b0fec55')
 
 prepare_environment() {
   export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
