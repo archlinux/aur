@@ -70,7 +70,7 @@ prepare() {
 
 build() {
   cd $_gitname
-  arch-meson . build -D openrc=disabled -D libbpf_a=disabled -D bpftool=disabled
+  arch-meson . build -D openrc=disabled -D libbpf_a=disabled -D bpftool=disabled -D cargo_home="$srcdir"/scx
   meson compile -C build
 }
 
