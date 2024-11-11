@@ -4,14 +4,13 @@ _base=ray
 pkgname=python-${_base}
 pkgver=2.38.0
 pkgrel=1
-pkgdesc="A fast and simple framework for building and running distributed
-applications"
+pkgdesc="A fast and simple framework for building and running distributed applications"
 arch=(x86_64)
 url="https://github.com/${_base}-project/${_base}"
 license=(Apache-2.0)
 depends=(psmisc python-click python-filelock python-jsonschema python-msgpack python-packaging
   python-protobuf python-pyaml python-aiosignal python-frozenlist python-requests)
-makedepends=(python-build python-installer python-setuptools-scm python-wheel cython bazel python-pip)
+makedepends=(python-build python-installer python-setuptools-scm python-wheel cython bazel) # python-pip
 optdepends=('python-pandas: for ray[data, tune, rllib]'
   'python-fsspec: for ray[data, tune, rllib]'
   'python-aiohttp: for ray[default, serve]'
@@ -41,13 +40,15 @@ conflicts=(mesa-demos)
 source=(${_base}-${_base}-${pkgver}.tar.gz::${url}/archive/${_base}-${pkgver}.tar.gz)
 sha512sums=('f0fa4f89d9458b8577a3f67d6a3c0ab12b3515607459ef37f652b39d52510ad03a1ccdb6227cc182095a225b98929f3b455388e5fad77522a0bc35bc45c8e61f')
 
-# prepare() {
-#   sed -i '/    runtime_env_agent_pip_packages/,+11 s/^/#/' ${_base}-${_base}-${pkgver}/python/setup.py
-# }
+prepare() {
+  local _bazelversion=$(pacman -Q bazel | sed -e 's/.* //; s/-.*//g')
+  sed -i "s|6.5.0|${_bazelversion}|" ${_base}-${_base}-${pkgver}/.bazelversion
+  sed -i '/    runtime_env_agent_pip_packages/,+11 s/^/#/' ${_base}-${_base}-${pkgver}/python/setup.py
+}
 
 build() {
   cd ${_base}-${_base}-${pkgver}/python
-  export SETUPTOOLS_SCM_PRETEND_VERSION=$pkgver
+  export SETUPTOOLS_SCM_PRETEND_VERSION=${pkgver}
   SKIP_THIRDPARTY_INSTALL=1 python -m build --wheel --skip-dependency-check --no-isolation
 }
 
