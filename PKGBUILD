@@ -7,8 +7,8 @@ pkgdesc="Delimiter-separated values (DSV) format parser for GNU Guile."
 arch=('x86_64')
 url="https://github.com/artyom-poptsov/guile-dsv"
 license=('GPL-3.0-or-later')
-# NOTE: If the build fails, please recompile 'guile-lib' with the
-# "--with-guile-site" configure option.
+# NOTE: If the build fails, please recompile 'guile-lib' first with the
+# "--with-guile-site" configure option, and then recompile this package.
 depends=('guile' 'guile-lib' 'guile-smc')
 makedepends=('help2man')
 source=("https://github.com/artyom-poptsov/$pkgname/archive/v$pkgver/$pkgname-$pkgver.tar.gz")
