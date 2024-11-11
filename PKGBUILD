@@ -1,21 +1,17 @@
 pkgname=go-do-it
 _pkgname=go-do-it
-pkgver=r17.af13ab5
+pkgver=1.0.0.r0.gc5893de
 pkgrel=1
-pkgdesc="a terminal based todo list manager written in go"
+pkgdesc="A simple to-do list written in go"
 arch=('i686' 'x86_64')
 url='https://github.com/hardikkum444/go-do-it'
 source=('git+https://github.com/hardikkum444/go-do-it')
-depends=()
 makedepends=('go')
 sha1sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/$_pkgname"
-  ( set -o pipefail
-    git describe --long --tags 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-  )
+  git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build(){

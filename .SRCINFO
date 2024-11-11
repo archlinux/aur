@@ -1,6 +1,6 @@
 pkgbase = go-do-it
-	pkgdesc = a terminal based todo list manager written in go
-	pkgver = r17.af13ab5
+	pkgdesc = A simple to-do list written in go
+	pkgver = 1.0.0.r0.gc5893de
 	pkgrel = 1
 	url = https://github.com/hardikkum444/go-do-it
 	arch = i686
