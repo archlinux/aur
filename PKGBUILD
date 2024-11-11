@@ -1,14 +1,14 @@
 # Maintainer: Amini Allight <amini dot allight at protonmail dot com>
 
 pkgname=npdfr
-pkgver=0.2.2
+pkgver=0.3.0
 pkgrel=1
 pkgdesc='A command-line PDF reader prioritizing fast searches'
 arch=('x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
 url='https://github.com/amini-allight/npdfr/'
 license=('GPL3')
-depends=('jsoncpp' 'python>=3.8' 'ncurses')
-makedepends=('git' 'cmake' 'make' 'python-pip' 'python-virtualenv')
+depends=('libmupdf' 'ncurses')
+makedepends=('git' 'cmake' 'make')
 source=("git+https://github.com/amini-allight/npdfr.git#tag=${pkgver}")
 md5sums=('SKIP')
 
