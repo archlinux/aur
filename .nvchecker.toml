@@ -1,0 +1,4 @@
+[forgejo-runner-bin]
+source = "git"
+git = "https://code.forgejo.org/forgejo/runner"
+prefix = "v"
