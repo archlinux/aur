@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 # Co-Maintainer: Aaron J. Graves <linux@ajgraves.com>
 pkgname=tutanota-desktop-bin
-pkgver=250.241025.0
+pkgver=251.241108.0
 pkgrel=1
 # branch needs to be one of 'release' or 'hotfix'. Default should be release, but change it to hotfix as upstream does.
 branch="release"
@@ -23,8 +23,8 @@ source=("${pkgname%-bin}-$pkgver.AppImage::https://github.com/tutao/tutanota/rel
         "tutao-pub-$pkgver.pem::https://github.com/tutao/tutanota/raw/${pkgname%-bin}-$branch-$pkgver/tutao-pub.pem")
 provides=("${pkgname%-bin}")
 conflicts=("${pkgname%-bin}" "${pkgname%-bin}-linux")
-sha512sums=('925d85ddaaee784fea9142c996c5b590a2375922dba86b70a87d4a6b6515b1ac9d1d432624fd98775cfc521d4bcf24c71532a8a0d2f77bf155f7a3804f460084'
-            'e34ce7a08613c7b45210e62e2922a349ad9202949b01cd8e35e12c0d0aebd30b4d5a451d62b57b3c844082717b91fe7e0e08d8f2c0705c75b93117d58dbb0099'
+sha512sums=('bf044ac734c923cf46f00579c59fa539fc71027f886a61c0a1d3be1237156e9692f60a9b941fad4595ef36ede2900937cf2edd629ed302da3af0defc87c8fbe5'
+            'b572b6f06d568e9b52d9cb82b1d27893aac5878b57f0f328712a7f7990e110b4b45358d0200cfabe97bfbeb1f9b2eafd433028bd1694efa47fa1ef26a6f90209'
             '7c6cf9f1074c08b4d38567ced95159c0809af025efe01b0163d9bb5107daabfa873064255186c071a7dc3a9177ccd0c1b2fcc8b085bdbff234965a6710b3ae45')
 
 prepare() {
