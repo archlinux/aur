@@ -7,9 +7,9 @@
 #_qmake_args="CONFIG+=debug"
 _building=true
 pkgname=qtcreator-prerelease
-_pkgvermajmin=14.0
-_pkgver=${_pkgvermajmin}.1
-_verpostfix=""
+_pkgvermajmin=15.0
+_pkgver=${_pkgvermajmin}.0
+_verpostfix="beta2"
 pkgver="${_pkgver}${_verpostfix}"
 pkgrel=1
 _urlbase="https://download.qt.io/official_releases"
@@ -38,7 +38,7 @@ optdepends=('qt6-doc: integrated Qt documentation'
             'valgrind: analyze support')
 makedepends=('gcc' 'mold' 'qt6-base' 'patchelf' 'ninja')
 source=("${_urlbase}/qtcreator/${_pkgvermajmin}/${_pkgver}/${_source_archive_name}.tar.xz")
-sha512sums=('5ceacce80cd5cdef99606ca371134e5e8a5897b67ff1a52d202449e74e817bce22ee31b029b6f8643e19700742ddd8e616a48f005aae0720f200c3b03f8eab9a')
+sha512sums=('bf38f1e09f5fd5735fa7dab4aeb11b8e4c6286c2e3b9a0f758b5340642df63a5c1546e0629b9fb279f96453e1b34f7c2237844047cab8883a11e6dd6f92aa495')
 
 prepare() {
   local working_dir=${srcdir}/${_source_archive_name}
