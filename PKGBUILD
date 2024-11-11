@@ -18,7 +18,6 @@ options=('staticlibs')
 # -DTPL_ENABLE_COMBBLASLIB=ON \
 # -DTPL_COMBBLAS_INCLUDE_DIRS="/usr/include/CombBLAS;/usr/include/CombBLAS/Applications/BipartiteMatchings" \
 # -DTPL_COMBBLAS_LIBRARIES="/usr/lib/libCombBLAS.so" \
-# -DCMAKE_Fortran_COMPILER=mpifort \
 
 build() {
   cmake \
@@ -28,7 +27,7 @@ build() {
     -DCMAKE_CXX_STANDARD=11 \
     -DCMAKE_C_COMPILER=mpicc \
     -DCMAKE_CXX_COMPILER=mpicxx \
-    -DCMAKE_Fortran_COMPILER=gfortran \
+    -DCMAKE_Fortran_COMPILER=mpifort \
     -DBUILD_SHARED_LIBS=ON \
     -DCMAKE_BUILD_TYPE=None \
     -DBUILD_STATIC_LIBS=TRUE \
