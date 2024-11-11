@@ -7,6 +7,7 @@ pkgbase = whatmask
 	arch = i686
 	arch = x86_64
 	license = GPL3
+	makedepends = ruby
 	source = whatmask-1.0.9.tar.gz::https://github.com/geezyx/whatmask/archive/v1.0.9.tar.gz
 	source = gem_files.patch
 	md5sums = 06a1b669cc7ab211397d68bb944db7a0

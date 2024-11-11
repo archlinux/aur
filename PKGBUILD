@@ -8,7 +8,7 @@ arch=('i686' 'x86_64')
 url="https://github.com/geezyx/whatmask"
 license=('GPL3')
 depends=()
-makedepends=()
+makedepends=('ruby')
 source=(
   "$pkgname-$pkgver.tar.gz::https://github.com/geezyx/whatmask/archive/v$pkgver.tar.gz"
   'gem_files.patch'
