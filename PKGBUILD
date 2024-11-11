@@ -2,7 +2,7 @@
 
 pkgname=mconf
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Parser for the mconf configuration language"
 arch=("x86_64" "aarch64")
 url="https://github.com/marzeq/mconf"
@@ -10,6 +10,8 @@ license=("WTFPL")
 depends=("go" "git")
 source=("git+https://github.com/marzeq/mconf.git#tag=v$pkgver")
 md5sums=("SKIP")
+provides=("mconf")
+conflicts=("mconf-bin")
 
 build() {
   cd "$srcdir/$pkgname"
