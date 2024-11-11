@@ -1,6 +1,6 @@
 pkgbase = jm-desktop-bin
-	pkgdesc = A jm comic desktop app by react + electron.Prebuilt version.一个禁漫的第三方客户端
-	pkgver = 1.8.1
+	pkgdesc = A jm comic desktop app by react + electron.(Prebuilt version).一个禁漫的第三方客户端
+	pkgver = 1.9.0
 	pkgrel = 1
 	url = https://github.com/Dedicatus546/jm-desktop
 	arch = x86_64
@@ -10,12 +10,12 @@ pkgbase = jm-desktop-bin
 	depends = alsa-lib
 	depends = nspr
 	depends = gtk3
-	provides = jm-desktop=1.8.1
+	provides = jm-desktop=1.9.0
 	conflicts = jm-desktop
-	noextract = jm-desktop-1.8.1.zip
-	source = jm-desktop-1.8.1.zip::https://github.com/Dedicatus546/jm-desktop/releases/download/v1.8.1/jm-desktop-Linux-1.8.1.zip
-	source = jm-desktop-1.8.1.png::https://raw.githubusercontent.com/Dedicatus546/jm-desktop/v1.8.1/public/png/512x512.png
-	sha256sums = 432b84df8554fdc3ed3f06a7331e5ceddfb65242f6cefbb3ed38e2b4e312b366
+	noextract = jm-desktop-1.9.0.zip
+	source = jm-desktop-1.9.0.zip::https://github.com/Dedicatus546/jm-desktop/releases/download/v1.9.0/jm-desktop-Linux-1.9.0.zip
+	source = jm-desktop-1.9.0.png::https://raw.githubusercontent.com/Dedicatus546/jm-desktop/v1.9.0/public/png/512x512.png
+	sha256sums = 8c04fdde5b4fda481620c86756509912306fd14769cd844816053acf9fc20055
 	sha256sums = b09140b89c05bcf1bfa0f0db74aa55f83b4fdbc4cd6955efeb539631f57d4528
 
 pkgname = jm-desktop-bin
