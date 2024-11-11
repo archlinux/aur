@@ -2,7 +2,7 @@
 
 pkgname=sourcegit-bin
 _name=${pkgname%-bin}
-pkgver=8.37
+pkgver=8.38
 pkgrel=1
 pkgdesc="GUI client for GIT users"
 arch=('x86_64')
@@ -11,13 +11,13 @@ license=('MIT')
 provides=('sourcegit')
 conflicts=('sourcegit')
 depends=('git' 'xdg-utils')
-optdepends=('git-credential-manager: third party authentication support')
+optdepends=('git-credential-manager: third-party authentication support')
 makedepends=('desktop-file-utils')
 
 _debrev=1
 source=("https://github.com/sourcegit-scm/sourcegit/releases/download/v${pkgver}/${_name}_${pkgver}-${_debrev}_amd64.deb"
         "https://raw.githubusercontent.com/sourcegit-scm/sourcegit/v${pkgver}/LICENSE")
-sha256sums=('8dcaa867b256e069b8432fdf4d0cd3e74bdb71ee977361270bbeb30ef805a65d'
+sha256sums=('3aa6041f60efd846a9997ae012ce51bab7b53a35a91af1a30102de2505e820b0'
             '6cef41c8a297f46faafe40016ffcce9d968b3722048b81cd768fdbaa1be02ca1')
 
 prepare() {
