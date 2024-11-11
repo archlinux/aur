@@ -1,6 +1,6 @@
 pkgbase = autoinstallpackages
 	pkgdesc = Shell Script to Automate Package Installation on Arch Linux
-	pkgver = 3.0.0
+	pkgver = 3.0.1
 	pkgrel = 1
 	url = https://github.com/Firebleudark/Autoinstallpackages
 	arch = x86_64

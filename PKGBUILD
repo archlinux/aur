@@ -1,6 +1,6 @@
-﻿# Maintainer: Firebleu <firebluedark@proton.me>
+# Maintainer: Firebleu <firebluedark@proton.me>
 pkgname=autoinstallpackages
-pkgver=3.0.0
+pkgver=3.0.1
 pkgrel=1
 pkgdesc="Shell Script to Automate Package Installation on Arch Linux"
 arch=('x86_64')
