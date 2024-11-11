@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=bilibili
-pkgver=1.15.2_1
+pkgver=1.15.2_2
 _electronversion=33
 _nodeversion=18
 pkgrel=1
@@ -34,7 +34,7 @@ source=(
     "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver//_/-}.tar.gz"
     "${pkgname}.sh"
 )
-sha256sums=('7d6b3b2a0de0bb9203df82146293070a1facf3af1ad0cadb6f3c90426f200c44'
+sha256sums=('fb595af8f7bfb783f77830cb5dd69bf70f897a48e2b193c13ea816f52b0ad8f4'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
@@ -48,7 +48,7 @@ build() {
         s/@appname@/${pkgname}/g
         s/@runname@/app.asar/g
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
-        s/@options@//g
+        s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
     " -i "${srcdir}/${pkgname}.sh"
     _ensure_local_nvm
     cd "${srcdir}/${pkgname}-linux-${pkgver//_/-}"
