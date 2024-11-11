@@ -2,7 +2,7 @@
 # Contributor: Florian Pelz <pelzflorian at pelzflorian.de>
 pkgname=guile-commonmark
 pkgver=0.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Guile library for parsing CommonMark"
 arch=('any')
 url="https://github.com/OrangeShark/guile-commonmark"
