@@ -1,7 +1,7 @@
 pkgbase = normcap
 	pkgdesc = OCR powered screen-capture tool to capture information instead of images
-	pkgver = 0.5.8
-	pkgrel = 2
+	pkgver = 0.5.9
+	pkgrel = 1
 	url = https://dynobo.github.io/normcap
 	arch = any
 	license = AGPL-3.0-or-later AND MIT
@@ -22,9 +22,9 @@ pkgbase = normcap
 	optdepends = wl-clipboard: clipboard access for Wayland
 	optdepends = xclip: clipboard access for Xorg
 	optdepends = xsel: alternative Xorg clipboard handler
-	source = normcap-0.5.8.tar.gz::https://github.com/dynobo/normcap/archive/refs/tags/v0.5.8.tar.gz
+	source = normcap-0.5.9.tar.gz::https://github.com/dynobo/normcap/archive/refs/tags/v0.5.9.tar.gz
 	source = eu.dynobo.normcap.desktop
-	sha256sums = 0d7a67954c45c8339c461eb612aadddb88328b0dfb847217641e1aeb52ae0e8a
+	sha256sums = 599763feea6deb805d649452b9393dbb8b63120c26d17a6a74c3b29f36a54f75
 	sha256sums = 29992fdb19773faa7582e44fe4394d4772984d5b7b9b7b347617c387f0a260f9
 
 pkgname = normcap
