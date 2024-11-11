@@ -1,6 +1,6 @@
 pkgbase = glass-git
 	pkgdesc = Simple Frameless Browser! Perfect for consuming media from any location.
-	pkgver = 1.0.3
+	pkgver = 1.1.1
 	pkgrel = 1
 	url = https://github.com/mattmckenzy/glass
 	arch = x86_64
