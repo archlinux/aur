@@ -1,14 +1,15 @@
 pkgbase = guile-dsv
 	pkgdesc = Delimiter-separated values (DSV) format parser for GNU Guile.
-	pkgver = 0.5.1
+	pkgver = 0.7.2
 	pkgrel = 1
 	url = https://github.com/artyom-poptsov/guile-dsv
 	arch = x86_64
-	license = GPL
+	license = GPL-3.0-or-later
+	makedepends = help2man
 	depends = guile
 	depends = guile-lib
-	options = !strip
-	source = https://github.com/artyom-poptsov/guile-dsv/archive/v0.5.1/guile-dsv-0.5.1.tar.gz
-	sha256sums = c58fcedf023886f39ef9921ad5f5d53f1917bc1d1c77a0535a3d80ff932c3938
+	depends = guile-smc
+	source = https://github.com/artyom-poptsov/guile-dsv/archive/v0.7.2/guile-dsv-0.7.2.tar.gz
+	sha256sums = 49cc236d58b9bfb35c795e4a62b0a9cb337ff1880d1d52202ca757d8354d785e
 
 pkgname = guile-dsv

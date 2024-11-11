@@ -1,22 +1,25 @@
 # Maintainer: Patrick McCarty <pnorcks at gmail dot com>
 
 pkgname=guile-dsv
-pkgver=0.5.1
+pkgver=0.7.2
 pkgrel=1
 pkgdesc="Delimiter-separated values (DSV) format parser for GNU Guile."
 arch=('x86_64')
 url="https://github.com/artyom-poptsov/guile-dsv"
-license=('GPL')
-depends=('guile' 'guile-lib')
-options=('!strip')
+license=('GPL-3.0-or-later')
+# NOTE: If the build fails, please recompile 'guile-lib' with the
+# "--with-guile-site" configure option.
+depends=('guile' 'guile-lib' 'guile-smc')
+makedepends=('help2man')
 source=("https://github.com/artyom-poptsov/$pkgname/archive/v$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('c58fcedf023886f39ef9921ad5f5d53f1917bc1d1c77a0535a3d80ff932c3938')
+sha256sums=('49cc236d58b9bfb35c795e4a62b0a9cb337ff1880d1d52202ca757d8354d785e')
 
 build() {
   cd "$pkgname-$pkgver"
   local sitedir=$(guile-config info sitedir)
   autoreconf -fi
   ./configure \
+    --enable-silent-rules \
     --prefix=/usr \
     --with-guilesitedir=$sitedir
   make
