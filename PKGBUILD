@@ -12,7 +12,7 @@ source=($pkgname $pkgname.desktop)
 
 package() {
   install -Dm755 $pkgname         "$pkgdir/usr/bin/$pkgname"
-  RPM_BUILD_ROOT=$pkgdir desktop-file-install $pkgname.desktop
+  desktop-file-install --dir="$pkgdir/usr/share/applications" "$pkgname.desktop"
 }
 
 # vim:set ts=2 sw=2 et:
