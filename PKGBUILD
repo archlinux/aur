@@ -3,23 +3,32 @@
 _mod=rev_161_mod
 pkgname=geepro
 pkgver=0.0.4
-pkgrel=2
+pkgrel=3
 pkgdesc="Willem Programmer software for GNU/Linux"
 arch=('i686' 'x86_64')
-url="http://sourceforge.net/projects/geepro"
+url="https://github.com/enriquebelarte/geepro"
 license=('GPL')
 groups=()
 depends=('cairo' 'gtk3' 'libxml2' 'perl' 'intltool' 'pkg-config' 'gettext')
+makedepends=('python2' 'git')
 provides=('geepro')
 conflicts=('geepro')
-source=(http://downloads.sourceforge.net/${pkgname}/${pkgname}-${pkgver}-${_mod}.tar.gz
+source=(geepro::git+$url.git
         geepro.desktop)
-md5sums=('f7f40bbd9d07b1c9906b3a88cbab36f0'
+md5sums=('SKIP'
          '961938da7fc32b0183e6e7b60349da3c')
 
 build() {
   cd "$srcdir/geepro"
 
+  if [ "$CC" = "clang" ]; then
+       CC="gcc"
+  fi
+  if [ "$CXX" = "clang++" ]; then
+       CXX="g++"
+  fi
+  CFLAGS+=" -fcommon"
+  CXXFLAGS+=" -fcommon"
   python2 waf configure --prefix="$pkgdir/usr"
   python2 waf build
 }
