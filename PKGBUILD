@@ -4,7 +4,7 @@ _gitname="pass-secret-service"
 _pkgname="${_gitname}"
 pkgname="${_pkgname}-git"
 pkgver=0.2+1.r46.20240720.f9dbcbb
-pkgrel=3
+pkgrel=4
 pkgdesc="An org.freedesktop.secrets provider with a pass backend."
 arch=(
   'aarch64'
@@ -38,9 +38,11 @@ checkdepends=(
 )
 provides=(
   "${_pkgname}=${pkgver}"
-  "org.freedesktop.secrets")
+  "org.freedesktop.secrets"
+)
 conflicts=(
   "${_pkgname}"
+  "org.freedesktop.secrets"
 )
 
 source=(
@@ -93,7 +95,7 @@ build() {
   cargo build --offline --all-features --release --examples
   printf '\n'
   printf '%s\n' " --> building tests ..."
-  cargo build --offline --all-features --tests
+  cargo build --offline --all-features --release --tests
 }
 
 check() {
@@ -102,7 +104,7 @@ check() {
   cd "${srcdir}/${_pkgname}"
 
   printf '%s\n' " --> running tests ..."
-  cargo test --offline
+  cargo test --offline --release
 }
 
 package() {
