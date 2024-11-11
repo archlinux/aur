@@ -7,7 +7,7 @@ post_install() {
   printf '%s\n' "To do so, you need to run as the user who uses the"
   printf '%s\n' "extension the following command from the terminal:"
   printf '\n'
-  printf '%s\n' "  nativePass install [extension ID]"
+  printf '%s\n' "  chrome_pass install [extension ID]"
   printf '\n'
   printf '%s\n' "where '[extension ID]' is the ID the 'chrome-pass'"
   printf '%s\n' "extension has in your browser."

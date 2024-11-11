@@ -10,14 +10,14 @@ pkgname=(
 pkgver=1.0.1+2.r94.20241102.d1a3fec
 _mainver="$(sed -E 's|^([^\.]*\.[^\.]*\.[^.+_]*)[\.+_]?.*$|\1|' <<<"${pkgver}")"
 _nextver="$(awk -F. '{print $1"."$2"."$3+1}' <<<"${_mainver}")"
-pkgrel=1
+pkgrel=2
 pkgdesc="Interface programme for the chrome extension 'chrome-pass' for zx2c4's 'pass' password manager."
 arch=(
   'any'
 )
 url="https://github.com/hsanson/chrome-pass"
 license=("MIT")
-depends=()
+depends=() # This is a split package; dependencies are listed in the package_ functions.
 makedepends=(
   'git'
   'python>=3'
@@ -30,8 +30,8 @@ source=(
   'chrome-pass-hostapp.install'
 )
 sha256sums=(
-  'SKIP'
-  '2d6c3d84a8db2ab15fa0cd17abdd258dbf93b17fe5f9ab8a8521bd077cad2701'
+  'SKIP'                                                              # Main upstream git source
+  '63ea0769e471a06d04b0d7a6bf98ffb89b8550b3e211a3df8b172eb58aa73873'  # chrome-pass-hostapp.install
 )
 
 prepare() {
@@ -95,7 +95,9 @@ package_chrome-pass-hostapp-git() {
   optdepends=(
     "chrome-pass>=${_mainver}: The browser extension this hostapp is for (can be installed as Arch Linux package or by the user via chrome webstore)."
     "chrome-pass<${_nextver}"
-    "chrome-pass-docfiles: The documentation files from the source repository of this software."
+    "chrome-pass-docfiles:  The documentation files from the source repository of this software."
+    'pass-otp:              For TOTP multi factor authentication (MFA) support.'
+    'python-pyotp:          For TOTP multi factor authentication (MFA) support.'
   )
   provides=(
     "chrome-pass-hostapp=${pkgver}"
