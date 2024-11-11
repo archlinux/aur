@@ -1,12 +1,12 @@
 pkgbase = gawk-json
 	pkgdesc = GAWK extension - interface to RapidJSON for reading/writing JSON
 	pkgver = 2.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://sourceforge.net/projects/gawkextlib/
 	arch = i686
 	arch = x86_64
 	arch = aarch64
-	license = GPL
+	license = GPL-3.0-or-later
 	makedepends = gawk>=4.2.1
 	makedepends = gawkextlib
 	makedepends = rapidjson
