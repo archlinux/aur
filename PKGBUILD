@@ -40,7 +40,6 @@ depends=(
   'hicolor-icon-theme'
   'gcc-libs'
   'glibc'
-  # 'kactivities5>=5.90.0'
   'kcompletion>=6'
   'ki18n>=6'
   'kcolorscheme'
