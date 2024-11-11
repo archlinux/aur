@@ -93,7 +93,6 @@ makedepends=(
   'kdoctools>=6'
   'kuserfeedback>=6'
   'kwallet>=6'
-  # 'plasma-framework5>=5.90.0'
   'pkgconf'
   # 'python>=3.7' # Needed if `-DBUILD_python=ON`.
   # 'pyside2'     # Needed if `-DBUILD_python=ON`.
