@@ -1,12 +1,12 @@
 # Maintainer: kumen
 
 pkgname="embedded-studio"
-pkgver=8.16a
+pkgver=8.18
 pkgrel=1
 pkgdesc="Segger Embedded Studio"
 arch=('x86_64' 'aarch64')
-makedepends=('libx11')
-depends=('jlink-software-and-documentation')
+makedepends=('freetype2' 'fontconfig' 'libx11' 'libxext' 'libxrender')
+depends=('glibc' 'gcc-libs' 'jlink-software-and-documentation' 'zlib')
 optdepends=()
 conflicts=()
 url="https://www.segger.com/products/development-tools/embedded-studio/"
@@ -16,8 +16,11 @@ options=(!strip)
 source_x86_64=("Setup_EmbeddedStudio_v${pkgver/./}_linux_x64.tar.gz::https://dl.a.segger.com/embedded-studio/Setup_EmbeddedStudio_v${pkgver/./}_linux_x64.tar.gz")
 source_aarch64=("Setup_EmbeddedStudio_v${pkgver/./}_linux_arm64.tar.gz::https://dl.a.segger.com/embedded-studio/Setup_EmbeddedStudio_v${pkgver/./}_linux_arm64.tar.gz")
 	
-md5sums_x86_64=('34a4536142f992d7ad9fda460f861beb')
-md5sums_aarch64=('448aa35e13549353cc2994e99bf17711')
+md5sums_x86_64=('c3d41efd41656a2aae1bd7a74097f74f')
+md5sums_aarch64=('82bde3134eef58c4de62b1cf94568d24')
+
+source=("embedded-studio.desktop")
+sha256sums=('SKIP')
 
 prepare(){
 	# Delete potential previous build
@@ -36,41 +39,30 @@ prepare(){
 }
 
 package() {
-	install -dm 755 "${pkgdir}/opt/SEGGER/Embedded-Studio" \
-		    "${pkgdir}/usr/share/licenses/${pkgname}" \
-		    "${pkgdir}/usr/bin/" \
+	install -dm 755 "${pkgdir}/opt/SEGGER/Embedded-Studio"
+	install -dm 755 "${pkgdir}/usr/share/licenses/${pkgname}"
+	install -dm 755 "${pkgdir}/usr/bin/"
 
 	msg2 'Installing Embedded Studio'
 	"$srcdir"/embedded-studio/install_segger_embedded_studio --copy-files-to ${pkgdir}/opt/SEGGER/Embedded-Studio/  --accept-license --no-upgrade
 
 	msg2 'Redirect library build directory to cache directory'
 	rmdir "${pkgdir}/opt/SEGGER/Embedded-Studio/lib"
-        install -dm777 "${pkgdir}/var/cache/${pkgname}/lib/"
+        install -dm 777 "${pkgdir}/var/cache/${pkgname}/lib/"
         ln -s /var/cache/${pkgname}/lib "${pkgdir}/opt/SEGGER/Embedded-Studio/lib"
         
 	msg2 'Instalation of binary file'
         ln -s /opt/SEGGER/Embedded-Studio/bin/emStudio "${pkgdir}/usr/bin/emStudio"
         ln -s /opt/SEGGER/Embedded-Studio/bin/emBuild "${pkgdir}/usr/bin/emBuild"
-
+	
 	msg2 'Installing desktop shortcut and icon'
+	install -dm 755 "${pkgdir}/usr/share/pixmaps/"
+	install -dm 755 "${pkgdir}/usr/share/applications/"
 	install -Dm 644 "${pkgdir}/opt/SEGGER/Embedded-Studio/bin/StudioIcon.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
-	install -Dm 644 /dev/stdin "$pkgdir/usr/share/applications/${pkgname}.desktop" <<END
-[Desktop Entry]
-Name=Embedded Studio
-Comment=Embedded Studio for ARM and RISC-V
-GenericName=Embedded Studio
-Exec=env GDK_BACKEND=x11 emStudio %F
-Icon=embedded-studio
-Path=/opt/SEGGER/Embedded-Studio/bin
-Terminal=false
-StartupNotify=true
-Type=Application
-Categories=Development
-END
+	install -Dm 644 "${srcdir}/${pkgname}.desktop" "$pkgdir/usr/share/applications/${pkgname}.desktop"
 	
 	msg2 'Instalation of license file'
 	ln -s /opt/SEGGER/Embedded-Studio/html/License.htm "${pkgdir}/usr/share/licenses/${pkgname}/"
-	
 }
 
 #

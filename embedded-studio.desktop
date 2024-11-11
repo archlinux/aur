@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=Embedded Studio
+Comment=Embedded Studio for ARM and RISC-V
+GenericName=Embedded Studio
+Exec=env GDK_BACKEND=x11 emStudio %F
+Icon=embedded-studio
+Path=/opt/SEGGER/Embedded-Studio/bin
+Terminal=false
+StartupNotify=true
+Type=Application
+Categories=Development
