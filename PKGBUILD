@@ -1,11 +1,11 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 # Contributor: kyngs <aurmail at kyngs dot xyz>
 pkgname=miru-git
-pkgver=5.5.6.r11.g6f953a3
-_electronversion=29
+pkgver=5.5.8.r0.gb079e79
+_electronversion=32
 _nodeversion=18
 pkgrel=1
-pkgdesc="Bittorrent streaming software for cats. Stream anime torrents, real-time with no waiting for downloads.Use system-wide electron."
+pkgdesc="Bittorrent streaming software for cats. Stream anime torrents, real-time with no waiting for downloads.(Use system-wide electron)"
 arch=("any")
 url="https://miru.watch/"
 _ghurl="https://github.com/ThaUnknown/miru"
@@ -53,8 +53,8 @@ build() {
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
     " -i "${srcdir}/${pkgname%-git}.sh"
     _ensure_local_nvm
-    gendesk -q -f -n --pkgname="${pkgname%-git}" --pkgdesc="${pkgdesc}" --categories="Utility" --name="${pkgname%-git}" --exec="${pkgname%-git} %U"
-    cd "${srcdir}/${pkgname//-/.}"
+    gendesk -q -f -n --pkgname="${pkgname%-git}" --pkgdesc="${pkgdesc}" --categories="AudioVideo;Video" --name="${pkgname%-git}" --exec="${pkgname%-git} %U"
+    cd "${srcdir}/${pkgname//-/.}/electron"
     electronDist="/usr/lib/electron${_electronversion}"
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
@@ -74,14 +74,12 @@ build() {
             echo 'electron_mirror=https://registry.npmmirror.com/-/binary/electron/'
             echo 'electron_builder_binaries_mirror=https://registry.npmmirror.com/-/binary/electron-builder-binaries/'
         } >> .npmrc
-        cp .npmrc electron/
+        echo ../{capacitor,common,web} | xargs -n 1 cp .npmrc
     fi
-    NODE_ENV=development    pnpm install --no-lockfile
-    cd "${srcdir}/${pkgname//-/.}/electron"
     rm -rf dist node_modules
-    sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g;/aa910d571134/d" package.json
+    sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
     NODE_ENV=development    pnpm install 
-    NODE_ENV=production     pnpm run web:build webpack
+    NODE_ENV=production     pnpm run run web:build
     NODE_ENV=production     pnpm -c exec "electron-builder --linux dir -c.electronDist=${electronDist}"
 }
 package() {
