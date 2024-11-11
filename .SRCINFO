@@ -1,9 +1,8 @@
 pkgbase = sublime-url-handler
 	pkgdesc = Open subl:// and txmt:// URLs in Sublime Text.
 	pkgver = 0.0.4
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/jhass/PKGBUILDs/tree/main/sublime-url-handler
-	install = sublime-url-handler.install
 	arch = any
 	license = MIT
 	depends = desktop-file-utils
@@ -13,4 +12,3 @@ pkgbase = sublime-url-handler
 	sha256sums = cca3fa496ae05bdd5f6c4f4dcc5f63724002489e58c14a58ab0455aa45b06d66
 
 pkgname = sublime-url-handler
-
