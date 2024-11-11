@@ -1,0 +1,7268 @@
+2024.11.06, v18.2.1
+
+feature:
+- a733d814 css: --is-mobile: add
+- f22120dc cloudcmd: prevent unselect being fired on panel click when in mobile view (#422)
+- 1a0af863 docker: add image source label to dockerfiles (#421)
+- 0446a74d docker: add image source label to dockerfiles (#419)
+
+2024.10.27, v18.2.0
+
+feature:
+- ac9abbd3 cloudcmd: eslint-plugin-putout v23.1.0
+- 4bc5a783 cloudcmd: add context menu option to toggle file selection (#420)
+
+2024.08.17, v18.1.0
+
+feature:
+- ddf4542b cloudcmd: add ability to hide dot files (#307)
+
+2024.08.16, v18.0.2
+
+feature:
+- 3d03efbe css: show links in one small screens
+
+2024.08.16, v18.0.1
+
+fix:
+- 62ed8411 bin: validateArgs is not a function (#147)
+
+feature:
+- 9ec94dee cloudcmd: chalk v5.3.0
+
+2024.08.16, v18.0.0
+
+feature:
+- 5e93bcca cloudcmd: rimraf v6.0.1
+- 74d1eb7e drop support of node < 20
+
+2024.08.16, v17.4.4
+
+fix:
+- a6aa9bbc revert rimraf v6.0.1
+
+feature:
+- 282b3d5c cloudcmd: @putout/cli-validate-args v2.0.0
+
+2024.07.27, v17.4.3
+
+feature:
+- 6e8348b8 cloudcmd: rimraf v6.0.1
+- 61ca7f36 cloudcmd: putout v36.0.2
+
+2024.07.03, v17.4.2
+
+feature:
+- ba2d0b36 cloudcmd: just-snake-case v3.2.0
+- 4cc47e30 cloudcmd: just-capitalize v3.2.0
+- d8451e56 cloudcmd: just-pascal-case v3.2.0
+- 6abf327d cloudcmd: package-json v10.0.0
+- 2ae6ad34 docker: Dockerimage update Debian12 (#414)
+- 05ef0ae4 cloudcmd: c8 v10.1.2
+
+2024.05.06, v17.4.1
+
+feature:
+- 154b4bd6 cloudcmd: @cloudcmd/move-files v8.0.0
+- c409a2db cloudcmd: copymitter v9.0.0
+
+2024.04.17, v17.4.0
+
+fix:
+- 6fb21020 server: route: path traversal
+
+feature:
+- 37ab7068 publish container image to GHCR (#409)
+
+2024.04.03, v17.3.3
+
+feature:
+- b088b84e cloudcmd: deepword v10.0.0
+
+2024.03.29, v17.3.2
+
+fix:
+- f7a6a366 typo: Wraped -> Wrapped
+
+2024.03.29, v17.3.1
+
+feature:
+- d7581829 distribute: convert to ESM
+
+2024.03.29, v17.3.0
+
+feature:
+- 6bc4f3ec dark theme: add (#332)
+- 35622082 route: convert to ESM
+
+2024.03.29, v17.2.1
+
+fix:
+- cc134464 client: vim: space
+
+feature:
+- e3f89e88 dark mode: add
+- c45b23fe css: vars: add
+- b1f74c00 css: add vars
+
+2024.03.22, v17.2.0
+
+feature:
+- 3e565109 convert to ESM
+- 770a0812 pack: get rid of mock-require
+- 25d8faea rest: get rid of mock-require
+- 401a669a user-menu: get rid of mock-require
+- 4e32241d terminal: get rid of mock-require
+
+2024.03.21, v17.1.6
+
+feature:
+- e01ee457 server: route: get rid of mock-require
+- c7f90901 root: get rid of mock-require
+- fcce26d4 cloudfunc: get rid of mock-require
+
+2024.03.20, v17.1.5
+
+feature:
+- bf90bf22 server: validate: get rid of mock-require
+
+2024.03.20, v17.1.4
+
+feature:
+- 98d3a4cc server: columns: get rid of mock-require
+
+2024.03.18, v17.1.3
+
+feature:
+- e080a540 server: cloudcmd: get rid of mock-require
+
+2024.03.18, v17.1.2
+
+fix:
+- 857c9700 docker: alpine
+
+feature:
+- bf614e1d cloudcmd: redlint v3.13.1
+
+2024.03.16, v17.1.1
+
+feature:
+- a92a5a0d cloudcmd: restbox v4.0.0
+- c51ba1d8 docker: drop arm v7
+
+2024.03.16, v17.1.0
+
+feature:
+- 10d6d2e2 cloudcmd: @types/node-fetch v2.6.11
+- 2047cb7a cloudcmd: @cloudcmd/dropbox v5.0.1
+- 6b793cca cloudcmd: docker: alpine
+- 5fa9fcc5 cloudcmd: pullout v5.0.0
+- bc617c17 cloudcmd: serve-once v3.0.1
+
+2024.03.12, v17.0.7
+
+feature:
+- 97627dc2 cloudcmd: auto-globals v4.0.0
+- 683c865e cloudcmd: gritty v8.0.0
+
+2024.03.11, v17.0.6
+
+fix:
+- d928c0b8 cloudcmd: ocker: revert alpine (#406)
+
+2024.03.11, v17.0.5
+
+fix:
+- 33201dad cloudcmd: docker: alpine (#406)
+
+2024.02.02, v17.0.4
+
+feature:
+- 7ce95450 cloudcmd: deepword v9.0.0
+- 1c73e525 cloudcmd: edward v15.0.0
+- da967f08 cloudcmd: dword v15.0.0
+- f0a6109a cloudcmd: restafary v12.0.0
+
+2024.02.01, v17.0.3
+
+feature:
+- aca4119f cloudcmd: inly v5.0.0
+
+2024.02.01, v17.0.2
+
+feature:
+- 5324a41a cloudcmd: supertape v10.0.0
+- d453a1b2 cloudcmd: onezip v6.0.1
+- 71b915be cloudcmd: @cloudcmd/fileop v8.0.0
+
+2024.01.25, v17.0.1
+
+feature:
+- d79a5776 cloudcmd: putout v35.0.0
+- 8d92aa91 cloudcmd: package-json v9.0.0
+- 5ab5576e cloudcmd: open v10.0.3
+- c5cfe68c cloudcmd: c8 v9.1.0
+
+2023.12.12, v17.0.0
+
+feature:
+- 154e3b07 cloudcmd: find-up v7.0.0
+- a02d288d cloudcmd: @putout/babel v2.0.0
+- 3314f9b9 drop support of node < 18
+- a6afa205 cloudcmd: supertape v9.0.0
+- e600c05d cloudcmd: eslint-plugin-putout v22.0.0
+- 99c00954 cloudcmd: madrun v10.0.0
+- afdf7434 cloudcmd: putout v34.0.7
+
+2023.12.08, v16.18.0
+
+feature:
+- 4462f269 cloudcmd: markdown-it v14.0.0
+- 0cc76bd4 cloudcmd: philip v3.0.0: decrease bundle size
+- 656ebd87 client: move out set-current
+
+2023.12.04, v16.17.9
+
+fix:
+- fb2d0814 github actions
+
+2023.12.04, v16.17.8
+
+feature:
+- 93aa7278 yaspeller: rm
+- af9c916e cloudcmd: eslint-plugin-putout v21.0.2
+- 01dccbfd cloudcmd: putout v33.13.3
+
+2023.10.12, v16.17.7
+
+feature:
+- 7857fb72 package: rendy v4.1.3
+
+2023.09.22, v16.17.6
+
+feature:
+- 570cb8c0 package: nodemon v3.0.1
+- 828d10a8 package: rimraf v5.0.1
+- 88908b35 package: eslint-plugin-putout v20.0.0
+- 93f4a07e package: putout v32.0.6
+- a5f93523 github actions: use bun
+
+2023.09.06, v16.17.5
+
+feature:
+- 3b0941bc actions: docker/login-action@v2 (#396)
+
+2023.09.05, v16.17.4
+
+feature:
+- 35dedfdf github: update docker actions (#396)
+
+2023.09.05, v16.17.3
+
+feature:
+- 3c93b29b github: docker/build-push-action v4 (#396)
+
+2023.09.04, v16.17.2
+
+fix:
+- 621f52da docker
+
+2023.09.04, v16.17.1
+
+fix:
+- eb3f037a docker: bun -> node
+
+2023.09.04, v16.17.0
+
+feature:
+- 224e5397 docker: use bun instead of node
+- 4b9267f3 package: edward v14.2.0
+
+2023.08.10, v16.16.3
+
+feature:
+- 354c137d package: console-io v14.0.0
+
+2023.08.09, v16.16.2
+
+feature:
+- e353fff7 package: redzip v3.0.0
+
+2023.08.07, v16.16.1
+
+feature:
+- d63169cc package: @putout/babel v1.0.5
+- bb9276be package: eslint-plugin-putout v19.0.3
+- 9aed5f75 package: putout v31.0.3
+
+2023.07.09, v16.16.0
+
+feature:
+- c4f56c59 package: memfs v4.2.0
+- 0e663e1d package: @putout/plugin-cloudcmd v3.1.1
+- ff9265b7 package: c8 v8.0.0
+- 22aa337a package: eslint-plugin-n v16.0.1
+- 13350b55 package: eslint-plugin-putout v18.0.0
+- ce196abf package: putout v30.1.1
+
+2023.05.17, v16.15.0
+
+feature:
+- a1bf40bd package: open v9.1.0
+- ef608853 client: self signed certs on Chrome (#393)
+
+2023.03.21, v16.14.1
+
+feature:
+- b336a472 package: eslint-plugin-putout v17.1.0
+- 019e15b8 package: @cloudcmd/fileop v7.0.0
+- 64354300 package: copymitter v8.0.1
+- 27437880 package: @cloudcmd/move-files v7.0.0
+
+2023.03.08, v16.14.0
+
+feature:
+- 6b22b241 package: putout v29.0.3
+
+2023.01.30, v16.13.1
+
+feature:
+- client: add DIR_DIST
+- client: DIRCLIENT -> DIR_CLIENT
+
+2023.01.29, v16.13.0
+
+feature:
+- client: key: vim: open editor with 'e'
+- client: vim: add ability to show terminal with 'tt'
+
+2023.01.29, v16.12.0
+
+feature:
+- client: vim: add ability to create directory with 'md', and create file with 'mf'
+
+2023.01.22, v16.11.0
+
+fix:
+- lint: eslint-plugin-node -> eslint-plugin-n
+
+feature:
+- user-menu: add support of mov
+- client: user-menu: navigate: add support of \D + [JK] to speed up vim navigation
+
+2023.01.19, v16.10.0
+
+fix:
+- lint: eslint-plugin-node -> eslint-plugin-n
+
+feature:
+- client: user-menu: navigate: add support of \D + [JK] to speed up vim navigation
+
+2023.01.18, v16.9.1
+
+fix:
+- static: user-menu: convert flac to mp3
+
+2023.01.17, v16.9.0
+
+feature:
+- package: scroll-into-view-if-needed v3.0.4
+- package: tar-stream v3.0.0
+- static: user-menu: add recipes from Cookbook
+
+2023.01.16, v16.8.0
+
+feature:
+- package: @putout/plugin-cloudcmd v2.0.0: CloudCmd.loadDir() -> CloudCmd.changeDir()'
+
+2023.01.15, v16.7.0
+
+feature:
+- package: @cloudcmd/modal v3.0.0: add ability to not set cursor when close the modal
+- package: auto-globals v3.0.0
+- package: rimraf v4.0.5
+- user-menu: rm border
+
+2022.10.20, v16.6.1
+
+feature:
+- package: package-json v8.1.0
+- package: supertape v8.1.0
+- package: putout v28.0.0
+
+2022.10.09, v16.6.0
+
+feature:
+- package: @cloudcmd/fileop v6.0.0
+- package: @cloudcmd/move-files v6.0.0
+- package: copymitter v7.0.0
+
+2022.08.06, v16.5.0
+
+feature:
+- client: add Command Line
+- package: add funding
+- (package) gritty v7.0.0
+
+2022.07.20, v16.4.1
+
+feature:
+- (package) eslint-plugin-n v15.2.4
+- (package) putout v27.0.1
+- (package) eslint-plugin-putout v16.0.0
+
+
+2022.07.11, v16.4.0
+
+feature:
+- (cloudcmd) env: add ability to pass 0 and 1
+
+
+2022.07.02, v16.3.1
+
+fix:
+- (client) cloudcmd: rm window.Emitify
+
+
+2022.07.01, v16.3.0
+
+feature:
+- (cloudcmd) terminal-run: return -1, when not load
+
+
+2022.06.17, v16.2.0
+
+feature:
+- (package) markdown-it v13.0.1
+- (cloudcmd) server: convert to ESM
+- (package) thread-it v2.0.0
+
+
+2022.05.12, v16.1.1
+
+feature:
+- (package) edward v14.0.0
+- (package) putout v26.0.1
+
+
+2022.04.23, v16.1.0
+
+feature:
+- (cloudcmd) improve support of NBSP
+
+
+2022.04.22, v16.0.1
+
+feature:
+- (package) dword v14.0.0
+- (package) restafary v11.0.0
+- (package) @cloudcmd/stub v4.0.1
+- (package) win32 v7.0.0
+- (package) eslint-plugin-putout v14.4.0
+
+
+2022.02.19, v16.0.0
+
+feature:
+- (cloudcmd) drop support of node < 16
+- (package) supertape v7.1.0
+- (package) eslint-plugin-putout v13.11.0
+- (package) madrun v9.0.0
+- (package) putout v25.0.1
+
+2022.01.20, v15.9.15
+
+fix:
+- (css) icons (#368)
+
+2022.01.13, v15.9.14
+
+fix:
+- (cloudcmd) client: edit-names in vim mode
+- (docker) images: make dockerfiles use node:lts-buster and node:lts-buster-slim for alpine (#363)
+- (docker) images: make dockerfiles use node:lts-buster-slim as base image (#357)
+feature:
+- (package) eslint-plugin-putout v13.0.1
+- (package) putout v24.0.2
+
+2021.12.23, v15.9.13
+
+feature:
+- (package) putout v23.0.0
+
+2021.12.16, v15.9.12
+
+fix:
+- (client) loadDir: history enabled by default
+
+2021.12.09, v15.9.11
+
+fix:
+- (client) load: Upload stuck for zero byte files (#359)
+
+2021.12.04, v15.9.10
+
+fix:
+- (client) operation: move and copy not working (#358)
+feature:
+- (package) eslint-plugin-putout v12.2.0
+
+2021.11.22, v15.9.9
+
+feature:
+- (package) putout v22.0.2
+- (package) yargs-parser v21.0.0
+- (package) yaspeller v8.0.0
+- (package) eslint-plugin-putout v11.1.0
+- (package) putout v21.1.2
+- (package) eslint v8.0.1
+- (package) eslint-plugin-putout v10.3.0
+- (package) find-up v6.1.0
+- (package) putout v20.5.1
+- (package) supertape v6.9.1
+- (package) eslint-plugin-putout v9.0.1
+
+2021.08.09, v15.9.8
+
+fix:
+- (cloudcmd) args: snake case -> camelCase: yargs strip dashed
+
+
+2021.06.27, v15.9.7
+
+fix:
+- (config) rm broadcast: cannot change config
+- (view) close modals using ESC
+
+feature:
+- (package) package-json v7.0.0
+- (config) add more descriptive titles
+
+
+2021.06.13, v15.9.6
+
+feature:
+- (package) @cloudcmd/move-files v5.0.0
+
+
+2021.06.08, v15.9.5
+
+fix:
+- (load) put: replace #: single -> multiple
+- (server) user-menu: e.message -> errorFind.message
+
+feature:
+- (package) eslint-plugin-putout v8.0.1
+- (package) es6-promisify v7.0.0
+- (package) putout v18.0.1
+- (package) putout v17.0.0
+
+
+2021.04.05, v15.9.4
+feature:
+- (package) socket.io-client v4.0.1
+- (package) open v8.0.5
+- (package) putout v16.4.0
+
+2021.03.17, v15.9.3
+
+fix:
+- (cloudcmd) Docker latest-alpine (15.9.2) stopped with errors (#337)
+
+
+2021.03.16, v15.9.2
+
+fix:
+- (route) unable to navigate between folders (#333)
+
+feature:
+- (package) open v8.0.2
+- (package) socket.io-client v4.0.0
+- (package) socket.io v4.0.0
+
+
+2021.03.01, v15.9.1
+
+feature:
+- (cloudcmd) icons: add archive icon for small screens
+- (cloudcmd) add archive-link image
+
+
+2021.03.01, v15.9.0
+
+feature:
+- feature(cloudcmd) add archive icon
+- feature(client) rm unused loadCurrentTime
+- feature(package) win32 v6.0.0
+- feature(package) redzip v2.0.0
+
+
+
+2021.02.27, v15.8.1
+
+feature:
+- (package) restafary v9.7.0 (#330)
+
+
+2021.02.23, v15.8.0
+
+feature:
+- (cloudcmd) add ability to suggest option, when wrong provided
+- (package) supertape v5.0.0
+
+
+2021.02.21, v15.7.1
+
+fix:
+- (cloudcmd) prefix env has no effect (#328)
+
+
+2021.02.19, v15.7.0
+
+fix:
+- chore(github-actions) add ability to autofix lint
+
+feature:
+- (package) @cloudcmd/move-files v4.0.0
+- (package) putout v15.0.0
+- (package) copymitter v6.0.0
+- (package) @cloudcmd/olark v3.0.2
+- (client) view: unknown file type: method: GET -> HEAD: speed up
+
+
+2021.02.03, v15.6.0
+
+feature:
+- (client) view: add ability to detect file type when extension is missing (coderaiser/cloudcmd#287)
+
+
+2021.02.02, v15.5.2
+
+fix:
+- (client) view: isAudio (#322)
+
+
+2021.01.31, v15.5.1
+
+fix:
+- (cloudcmd) cannot create a directory (#319)
+
+
+2021.01.30, v15.5.0
+
+feature:
+- (package) style-loader v2.0.0
+- (cloudcmd) improve error handling when viewing or editing a file
+- (package) putout v14.0.0
+- (package) eslint-plugin-putout v7.0.0
+
+
+2021.01.26, v15.4.4
+
+feature:
+- (package) win32 v5.1.11
+
+
+2021.01.25, v15.4.3
+
+feature:
+- (package) restbox v3.0.0
+- (package) ponse v6.0.0
+- (package) files-io v4.0.0
+
+
+2021.01.21, v15.4.2
+
+feature:
+- (package) mellow v3.0.0
+- (route) tokenize -> wraptile
+
+
+2021.01.20, v15.4.1
+
+feature:
+- (route) redzip -> win32 (#317)
+
+
+2021.01.19, v15.4.0
+
+feature:
+- (cloudcmd) add abilit to parse markdown inside zip archives
+
+
+2021.01.19, v15.3.4
+
+fix:
+- (docker) images: change alpine images to be part of master image (#316)
+- (dom) bug in Firefox with Imagus extension enabled: change getCurrentName to read from `data-name` instead of `title` (#313)
+
+feature:
+- (package) deepword v8.0.0
+- (package) console-io v13.0.0
+- (package) edward v13.0.0
+- (docker) add support of multi-arch builds (#291)
+
+
+2021.01.18, v15.3.3
+
+fix:
+- (dom) bug in Firefox with Imagus extension enabled: change getCurrentName to read from `data-name` instead of `title` (#313)
+- (client) dom: goToDirectory
+
+
+2021.01.18, v15.3.2
+
+fix:
+- (client) dom: goToDirectory
+
+
+2021.01.17, v15.3.1
+
+fix:
+- (view) view html, pdf
+
+feature:
+- (package) dword v13.0.0
+- (modules) socket.io v3.1.0
+
+
+2021.01.17, v15.3.0
+
+feature:
+- (client) improve vim support: Esc - toggle vim support in editors
+- (client) view: add ability to view raw files using Shift + F3
+- (client) view: show markdown without shift
+- (key) add ability to toggle global vim config on the time of session
+
+
+2021.01.16, v15.2.0
+
+fix:
+- (server) distribute: simplify colors
+
+feature:
+- (cloudcmd) add ability to open html files using F3
+- (cloudcmd) add ability to toggle vim hotkes using Esc
+- (package) @cloudcmd/fileop v5.0.0
+
+
+2021.01.07, v15.1.0
+
+feature:
+- (cloudcmd) add ability to read zip files like directories (#309)
+
+
+2021.01.05, v15.0.4
+
+feature:
+- (package) flop v9.0.0
+- (package) restafary v9.0.1
+
+
+2021.01.05, v15.0.3
+
+fix:
+- (cloudcmd) validateRoot: import -> simport: forEachKey is not a function (#311)
+
+feature:
+- (package) onezip v5.0.0
+- (package) socket.io v3.0.5 (socketio/socket.io#3720)
+
+
+2020.12.31, v15.0.2
+
+fix:
+- (cloudcmd) criton: crash when password set (#310)
+
+
+2020.12.30, v15.0.1
+
+fix:
+- (cloudcmd) css: media query for screen size with width more then 1600 (cloudcmd/console-io#6)
+- (cloudcmd) client: build: optional chaining
+- (cloudcmd) drop support of node < 14
+
+feature:
+- (package) putout v13.0.0
+
+
+2020.12.28, v15.0.0
+
+fix:
+- (cloudcmd) app, help: remove duplicate keys
+- chore(cloudcmd) menu: add lint, :lint, test, coverage
+- (cloudcmd) importListen prevent server from start (#295)
+
+feature:
+- (package) auto-globals v2.0.0
+- (cloudcmd) convert to EcmaScriptModules
+- (package) supertape v4.1.0
+- (package) supertape v3.10.0
+- (package) babel-plugin-macros v3.0.0
+- (package) putout v12.0.0
+- (package) supertape v3.1.3
+- (package) madrun v8.0.0
+- (package) gritty v6.0.0
+- (package) console-io v12.0.0
+- (package) socket.io-client v3.0.1
+- (package) socket.io v3.0.1
+- (package) putout v11.0.2
+- (package) eslint-plugin-putout v6.0.0
+- (package) markdown-it v12.0.0
+- (package) putout v10.0.0
+- (package) gritty v5.0.0
+- (distribute) import: do not import if env variable set
+- (package) drop support of node < 12
+- (package) table v6.0.1
+
+
+2020.08.21, v14.9.3
+
+fix:
+- (client) dom: buffer: get, set -> getJson, setJson (#295)
+
+feature:
+- (storage) rm unused removeMatch
+
+
+2020.08.19, v14.9.2
+
+fix:
+- (cloudcmd) client: edit: json files (#294)
+
+
+2020.08.16, v14.9.1
+
+feature:
+- (cloudcmd) add IO.createDirectory (https://github.com/coderaiser/putout/commit/b54b5486f438804120df261dafa8e6985201a4eb)
+
+
+2020.08.14, v14.9.0
+
+feature:
+- (key) vim: add ability to navigate to next and previous using w and b
+- (key) vim: add ability to navigate using to first and last file using ^ and $
+
+
+2020.08.14, v14.8.0
+
+feature:
+- (cloudcmd) IO.cp -> IO.copy
+- (cloudcmd) IO.mv -> IO.move
+- (package) find-up v5.0.0
+
+
+2020.08.11, v14.7.2
+
+fix:
+- (client) key: F3: search appears
+
+
+2020.08.11, v14.7.1
+
+fix:
+- (view) init config: copy
+
+
+2020.08.10, v14.7.0
+
+fix:
+- (client) user menu: click on user menu title
+- test(cloudcmd) test/server/prefixer -> server/prefixer
+
+feature:
+- (cloudcmd) rest: add rename
+- (rest) mv: improved user errors
+- (client) io: promisify -> async
+- (package) webpack-merge v5.0.8
+- (package) eslint-plugin-putout v5.0.0
+- (package) putout v9.0.0
+- (package) madrun v7.0.0
+
+
+2020.05.20, v14.6.0
+
+feature:
+- (package) markdown-it v11.0.0
+- (cloudcmd) client: add ability to handle existing file while rename (#289)
+- (package) supertape v2.0.0
+- (package) @cloudcmd/stub v3.0.0
+
+
+2020.05.06, v14.5.1
+
+fix:
+- (docker) alpine
+
+
+2020.05.04, v14.5.0
+
+fix:
+- (user-menu) choose using Enter
+
+feature:
+- (package) eslint v7.0.0
+- (package) eslint-plugin-putout v4.0.0
+- (package) putout v8.0.0
+- (package) madrun v6.0.0
+- (client) directory: add abily to show progress dialog on upload
+
+
+2020.04.27, v14.4.0
+
+feature:
+- (user-menu) add ability to run selected items without showing dialog
+
+
+2020.04.13, v14.3.10
+
+fix:
+- (util) getRegExp: multiple dots
+- (cloudcmd) crash on check for update (#286)
+
+feature:
+- (package) yaspeller v7.0.0
+
+
+2020.04.10, v14.3.9
+
+fix:
+- (docker) node -> node:lts (#280)
+- (env) UPPER_CASE first, and then lower_case (#283)
+
+feature:
+- (cloudcmd) promise -> async
+
+
+2020.04.04, v14.3.8
+
+feature:
+- (client) ajaxLoad: callback -> promise
+- (get-json-from-file-table) mv out from client
+
+
+2020.04.03, v14.3.7
+
+fix:
+- (client) dom: getCurrentType
+
+feature:
+- (package) chalk v4.0.0
+
+
+2020.03.31, v14.3.6
+
+fix:
+- (cloudcmd) directoryStorage
+
+
+2020.03.25, v14.3.5
+
+feature:
+- (package) fullstore v3.0.0
+- (package) html-webpack-plugin v4.0.1
+- (package) codegen.macro v4.0.0
+- (package) url-loader v4.0.0
+
+
+2020.03.03, v14.3.4
+
+feature:
+- (package) readjson v2.0.1
+- (package) tryrequire v3.0.0
+- (package) flop v8.0.0
+- (package) writejson v3.0.0
+- (package) try-to-catch v3.0.0
+- (package) try-catch v3.0.0
+
+
+2020.02.23, v14.3.3
+
+feature:
+- (key) vim: split DOM and vim
+
+
+2020.02.21, v14.3.2
+
+feature:
+- (package) serve-once v2.0.0
+- (package) edward v12.0.0
+- (package) dword v12.0.0
+- (package) ponse v5.0.0
+
+
+2020.02.21, v14.3.1
+
+feature:
+- (package) supermenu v4.0.1
+- (package) stylelint-config-standard v20.0.0
+- (package) http-auth v4.1.2
+
+
+2020.01.29, v14.3.0
+
+feature:
+- (listeners) improve file select with ctrl + click (#269)
+- (docker) add Dockerfile for arm based clients such as rpi (#268)
+- (package) @cloudcmd/clipboard v2.0.0
+- (package) stylelint v13.0.0
+- (package) emitify v4.0.1
+- (package) nyc v15.0.0
+- (package) eslint-plugin-node v11.0.0
+
+
+2019.12.21, v14.2.1
+
+feature:
+- (package) for-each-key v2.0.0
+- (package) jonny v3.0.0
+- (package) jaguar v6.0.0
+- (package) ponse v4.0.0
+- (package) ponse v3.5.1
+- (package) memfs v3.0.1
+- (package) url-loader v3.0.0
+- (package) nodemon v2.0.1
+- (package) stylelint v12.0.0
+
+
+2019.11.15, v14.2.0
+
+feature:
+- (cloudcmd) add CLOUDCMD_PREFIX
+- (package) chalk v3.0.0
+- (package) eslint-plugin-putout v3.0.0
+- (package) madrun v5.0.0
+- (package) putout v7.0.0
+- (package) madrun v4.0.0
+- (package) try-to-catch v2.0.0
+
+
+2019.10.16, v14.1.2
+
+fix:
+- (madrun) client test command:  test:client command (#260)
+
+feature:
+- (package) @cloudcmd/fileop v4.0.0
+- (package) inly v4.0.0
+- (package) onezip v4.0.0
+- (package) open v7.0.0
+- (package) multi-rename v2.0.0
+- (package) shortdate v2.0.0
+
+
+2019.10.09, v14.1.1
+
+feature:
+- (package) @cloudcmd/fileop v3.0.0
+- (package) @cloudcmd/move-files v3.0.0
+- (package) copymitter v5.0.0
+
+
+2019.10.02, v14.1.0
+
+feature:
+- (view) add support of webm (#256)
+
+
+2019.09.25, v14.0.2
+
+fix:
+- (client) change directory with enabled dirStorage (#255)
+
+
+2019.09.25, v14.0.1
+
+fix:
+- (cloudcmd) wrong editor root on multi instance
+
+feature:
+- (package) deepword v7.0.0
+- (cloudcmd) rm now (zeit/micro/issues/377)
+
+
+2019.09.22, v14.0.0
+
+feature:
+- (operation) show progress bar on first operation (#253)
+- (package) pullout v4.0.0
+- (package) console-io v11.0.0
+- (package) flop v7.0.0
+- (package) restbox v2.0.0
+- (package) restafary v8.0.0
+- (package) nomine v4.0.0
+- (cloudcmd) drop support of node < 10
+- (cloudcmd) remove --progress option, make always enabled
+
+
+2019.09.21, v13.4.2
+
+fix:
+- (terminal) on -> onKey
+
+
+2019.09.20, v13.4.1
+
+feature:
+- (package) @cloudcmd/olark v3.0.0
+- (package) format-io v2.0.0
+- (package) limier v3.0.0
+- (package) currify v4.0.0
+- (package) limier v2.0.1
+- (package) load.js v3.0.0
+- (package) @cloudcmd/create-element v2.0.0
+- (package) supermenu v3.0.0
+- (package) smalltalk v4.0.0
+- (package) @cloudcmd/modal v2.0.0
+- (package) putout v6.0.0
+- (package) stylelint-config-standard v19.0.0
+- (package) stylelint v11.0.0
+- (package) markdown-it v10.0.0
+- (package) rm version-io
+- (package) fullstore v2.0.2
+- (package) wraptile v3.0.0
+- (package) rendy v3.0.0
+- (package) eslint-plugin-node v10.0.0
+- (package) restafary v7.0.0
+
+
+2019.09.03, v13.4.0
+
+feature:
+- (view) add support of pdf
+- (package) madrun v3.0.1
+
+
+2019.08.28, v13.3.0
+
+fix:
+- feature(client) remove legacy suffix, use modules as is
+- (client) rm additional dialog
+- (user-menu) putout path
+- (edit-names) hide
+- (vim) find
+
+feature:
+- (cloudcmd) decrease bundle size: disable convertion to es5
+- (client) remove legacy suffix, use modules as is
+- (package) es6-promisify v6.0.2
+- (menu) rm mute: has no sense with new ponse headers
+- (markdown) move out parse to worker
+
+
+2019.08.22, v13.2.1
+
+fix:
+- (buffer) copy, cut
+- (key) chrome event double pass
+- (user-menu) processing menu item run error
+
+feature:
+- (user-menu) rm path
+
+
+2019.08.20, v13.2.0
+
+fix:
+- (menu) autoplay on download in firefox
+- (dom) getCurrentData
+
+feature:
+- (user-menu) improve error handling
+- (package) eslint-plugin-putout v2.0.0
+
+
+2019.08.16, v13.1.0
+
+fix:
+- (user-menu) hide load on error
+- (key) keys block
+
+feature:
+- (cloudcmd) add ability to remember position of current file on reload
+- (madrun) disable web workers, while testing
+- (user-menu) speed up user menu parsing with help of worker threads
+- (user-menu) add ability to used EcmaScript Modules, improve error handling
+- (server) add compress: speed up client side load
+
+
+2019.08.14, v13.0.1
+
+fix:
+- (cloudcmd) rm --user-menu: always enabled
+
+feature:
+- (package) rimraf v3.0.0
+
+
+2019.08.14, v13.0.0
+
+fix:
+- (set-listeners) can not continue first error operation error
+- (view) getMediaElement: play video/audio
+
+feature:
+- (cloudcmd) only user menu on f2
+- (cloudcmd) remove plugins
+- (package) putout v5.2.1
+- (package) style-loader v1.0.0
+
+
+2019.08.02, v12.6.3
+
+fix:
+- (operation) first copy after startup fails (close #251)
+- (key) chrome keydown event double pass
+- (client) load
+- (cloudcmd) server start when importListen enabled
+
+feature:
+- (cloudcmd) simplify lint
+- (package) markdown-it v9.0.0
+- (package) deepmerge v4.0.0
+- (package) yaspeller v6.0.0
+- (package) css-loader v3.0.0
+- (babel) remove unused @babel/plugin-syntax-dynamic-import
+- (cloudcmd) rm Promise polyfill
+- (package) rm Object.assign polyfill
+
+
+2019.06.06, v12.6.2
+
+fix:
+- (cloudcmd) config: save -> write (#247)
+
+feature:
+- (package) remove file-loader
+- (package) url-loader v2.0.0
+
+
+2019.06.04, v12.6.1
+
+fix:
+- (config) configManager: totally move away from singletone
+
+
+2019.05.31, v12.6.0
+
+feature:
+- (config-manager) add (#208)
+- (package) add support of cwd in TerminalRun with help of gritty v4.7.0
+- (user-menu) add ability to ignore private methods
+
+
+2019.05.28, v12.5.0
+
+feature:
+- (user-menu) add Compare Directories (#220)
+
+
+2019.05.27, v12.4.0
+
+fix:
+- (terminal-run) resolve before close
+
+feature:
+- (terminal-run) add ability to resolve exit code
+
+
+2019.05.24, v12.3.2
+
+fix:
+- (user-menu) F1 and F keys overlapping
+- (select-by-pattern) crash
+
+
+2019.05.24, v12.3.1
+
+fix:
+- (cloudcmd) copy
+
+
+2019.05.24, v12.3.0
+
+fix:
+- (user-menu) prefix (#244)
+- (dom) renameCurrent: try-to-promise RESTful.mv
+
+feature:
+- (user-menu) hide scroll when small amount of items
+- (user-menu) add ability to run in mobile devices
+- (upload) improve style
+- (user-menu) imrove error output
+- (user-menu) add default user menu
+- (dialog) cancel -> tryToCatch
+- (user-menu) add default option: create user menu
+- (user-menu) add error handling
+- (user-menu) add ability to navigate with j, k
+- (cloudcmd) deprecate plugins
+
+
+2019.05.13, v12.2.0
+
+fix:
+- feature(npmignore) add fixture.json
+- (operation) set-listeners: alert: noCancel -> cancel
+- (cloudcmd) different title
+
+feature:
+- (key) add ability to rename file with Shift + F6
+- (user-menu) add (#221)
+- (package) clean-css-loader v2.0.0
+- (package) edward v11.0.0
+- (npmignore) add fixture.json
+- (package) dword v11.0.0
+- (package) smalltalk v3.4.0
+- (package) eslint v6.0.0-alpha
+- (package) eslint-plugin-node v9.0.1
+- (config) speed up load: series -> parallel
+- (cloudcmd) avoid service worker reoload scripts in dev mode
+- (package) putout v4.23.0
+- (package) nyc v14.0.0
+
+
+2019.04.15, v12.1.0
+
+fix:
+- (heroku) app: add "}" (#236)
+
+feature:
+- (edit-names) add bulk rename (#231)
+- (package) stylelint v10.0.0
+
+
+2019.04.04, v12.0.2
+
+fix:
+- (listeners) any touch open file (#235)
+
+
+2019.04.04, v12.0.1
+
+fix:
+- (listeners) unable to navigate into folders (#235)
+
+
+2019.04.01, v12.0.0
+
+fix:
+- feature(cloudcmd) split prefix and prefixSocket finally
+
+feature:
+- (cloudcmd) drop support of beautify, minify
+- (cloudcmd) improved progress of file operations
+- (cloudcmd) split prefix and prefixSocket finally
+- (cloudcmd) view file on double click or enter
+- (cloudcmd) add ability to change directory using F3
+
+
+2019.03.27, v11.8.6
+
+fix:
+- (operation) progress
+- (terminal) rm IntersectionObserver handling (xtermjs/xterm.js#1929)
+
+feature:
+- (package) opn -> open v6.0.0
+- (package) remove @babel/plugin-proposal-object-rest-spread
+
+
+2019.02.20, v11.8.5
+
+fix:
+- (plugins) set content-type (#230)
+
+feature:
+- (package) putout v4.0.0
+- (package) madrun v2.0.0
+
+
+2019.02.15, v11.8.4
+
+fix:
+- (terminal) chrome does not display anything on first open (#214)
+- (rest) can not read ###files (#223)
+- (help) add --terminal-auto-restart
+- (cloudcmd) read root from custom config (#224)
+- refactor(view) viewImage: href, prefixURL -> prefixURL
+- docs(help) improve English translation of HELP.md (#211)
+
+feature:
+- (package) tar-stream v2.0.0
+- (package) redrun -> madrun
+- (package) unionfs v4.0.0
+- (package) package-json v6.0.0
+- (package) add @putout/eslint-config
+- (package) tape -> supertape
+- (package) add putout
+- (package) add eslint-plugin-tape
+- (package) file-loader v3.0.1
+- (package) css-loader v2.0.1
+- (package) kebabToCamelCase -> just-pascal-case
+- (package) deepmerge v3.0.0
+
+
+2018.12.04, v11.8.3
+
+fix:
+- test(export) defaultConfig: prefix
+- (edit) prefix (#207)
+- feature(package) :lint: add eslint-remove-line
+
+feature:
+- (modules) socket.io v2.2.0
+- (package) clear-module -> mock-require
+- (package) auto-globals v1.7.0
+- (package) fix:lint: add eslint-remove-line
+- (cloudcmd) sinon, sinon-called-with-diff -> @cloudcmd/stub
+
+
+2018.11.22, v11.8.2
+
+fix:
+- (Dockerfile) WORKDIR (#182)
+
+
+2018.11.14, v11.8.1
+
+fix:
+- (validate) corruption of config when root not found
+
+feature:
+- (package) pullout v3.0.0
+- (validate) root: do not validate dropbox root
+
+
+2018.11.09, v11.8.0
+
+fix:
+- (dialog) noFiles: reject on close
+
+feature:
+- (package) add dropbox support
+- (server) add graceful shutdown
+- (package) sinon-called-with-diff v3.0.0
+
+
+2018.11.01, v11.7.1
+
+fix:
+- (cloudcmd) register service worker on http connection (#203)
+- refactor(cloudcmd) PREFIX -> prefix
+- docs(help) example: prefix -> express mount point
+
+feature:
+- (package) criton v2.0.0
+- (package) eslint-plugin-node v8.0.0
+
+
+2018.10.25, v11.7.0
+
+fix:
+- feature(cloudcmd) add ability to set prefix for web sockets connections with --prefix-socket (#200)
+
+feature:
+- (cloudcmd) add ability to set prefix for web sockets connections with --prefix-socket (#200)
+- (package) deepword v5.0.0
+- (package) dword v9.0.0
+- (package) edward v9.0.0
+- (package) console-io v10.0.0
+- (package) ponse v3.0.0
+- (package) files-io v3.0.0
+
+
+2018.10.23, v11.6.0
+
+feature:
+- (cloudcmd) add support of express mounting point (#200)
+
+
+2018.10.23, v11.5.4
+
+fix:
+- docs(changelog) rm 
+
+feature:
+- (package) supermenu v2.1.2
+- (npmignore) add ai, cdr, eps
+
+
+2018.10.19, v11.5.3
+
+feature:
+- (package) console-io v9.0.0
+- (npmignore) add fixture
+
+
+2018.10.19, v11.5.2
+
+fix:
+- (server) open error: exit -> warning (#196, #197, #198)
+
+
+2018.10.17, v11.5.1
+
+fix:
+- (contact) load
+
+feature:
+- (olark) bower -> npm
+
+
+2018.10.16, v11.5.0
+
+feature:
+- (config) add ability to remove auth change from config with help of --config-auth flag
+
+
+2018.10.16, v11.4.1
+
+fix:
+- (Docker) cloudcmd_open false (#197)
+
+feature:
+- (package) sinon v7.0.0
+
+
+2018.10.12, v11.4.0
+
+feature:
+- (cloudcmd) add env variable CLOUDCMD_OPEN
+
+
+2018.10.12, v11.3.1
+
+fix:
+- (server) crash on open error (#196)
+
+feature:
+- (cloudcmd) add unhandledRejection listener
+- (exit) add ability to receive error as argument
+
+
+2018.10.11, v11.3.0
+
+feature:
+- (img) add file-link, directory-link
+- (cloudcmd) show size as <link> for links
+- (cloudcmd) readify: add support of links
+- (package) nomine v3.0.0
+- (package) restafary v5.0.0
+- (package) flop v6.0.0
+- (package) currify v3.0.0
+
+
+2018.10.04, v11.2.3
+
+feature:
+- (package) rm unused join-io
+- (package) apart v2.0.0
+- (server) callback -> await
+
+
+2018.09.28, v11.2.2
+
+fix:
+- (cloudcmd) prefix with leading slash (#195)
+
+
+2018.09.28, v11.2.1
+
+fix:
+- (sw) cache favicon.ico from root (#194)
+
+feature:
+- (package) onezip v3.0.0
+
+
+2018.09.28, v11.2.0
+
+feature:
+- (package) inly v3.0.0
+- (package) jaguar v5.0.0
+- (cloudcmd) add --terminal-auto-restart
+
+
+2018.09.27, v11.1.0
+
+feature:
+- (package) redrun v7.0.0
+- (package) @cloudcmd/read-files-sync v2.0.0
+- (cloudcmd) --terminal-command: command to run in terminal (shell by default)
+- (package) gritty v4.0.0
+- (package) console-io v8.0.0
+
+
+2018.09.26, v11.0.0
+
+feature:
+- (package) babel-eslint v10.0.0
+- (package) deepword v4.0.0
+- (package) edward v8.0.0
+- (package) dword v8.0.0
+- (package) restafary v4.0.0
+- (package) flop v5.0.0
+- (package) @cloudcmd/fileop v2.0.0
+- (package) @cloudcmd/move-files v2.0.1
+- (package) copymitter v4.0.2: add ability to copy symlinks (#191)
+- (config) disable online by default
+- (config) enable open by default
+- (package) set engine to node v8.0.0 LTS
+- (package) package-json v5.0.0
+- (server) drop support of VCAP_APP_PORT
+- (cloudcmd) showUpdateInfo: rm rendy
+- (package) squad v3.0.0
+
+
+2018.09.21, v10.8.2
+
+fix:
+- (distribute) export: config
+- (sw) register: null -> stub
+
+
+2018.09.20, v10.8.1
+
+fix:
+- (view) change elements position when open image
+
+
+2018.09.19, v10.8.0
+
+feature:
+- (package) load -> load.js + @cloudcmd/create/element
+- (cloudcmd) rm jquery
+
+
+2018.09.14, v10.7.0
+
+fix:
+- (cloudcmd) onUpdateFound: doubled prefix for cloudcmd.common.js (#188)
+
+feature:
+- (view) fancybox -> @cloudcmd/modal
+
+
+2018.09.10, v10.6.0
+
+fix:
+- (view) title: xss
+- (sw) navigation error
+
+feature:
+- (events) add ability to remove all added listeners
+- (cloudcmd) add ability update cloudcmd without page reload
+- (cloudcmd) add --show-file-name to add file name title in view and edit (#183)
+
+
+2018.09.08, v10.5.3
+
+fix:
+- (webpack) css: font resource ignores prefix setting (#185)
+- (sw) no auth dialog when serve by service worker
+- (sw) http auth
+
+feature:
+- (package) babel-loader v8.0.0
+- (package) babel v7.0.0
+- (package) table v5.0.2
+- (package) style-loader v0.23.0
+- (package) nyc v13.0.1
+- (package) babel-eslint v9.0.0
+
+
+2018.08.25, v10.5.2
+
+fix:
+- (konsole) try to load console.js when console is disabled
+
+
+2018.08.25, v10.5.1
+
+fix:
+- (log) makeColor: mac os
+
+feature:
+- (export) add config send log
+
+
+2018.08.23, v10.5.0
+
+fix:
+- (edit-file) multiple f4
+- (config) init: load when configDialog disabled
+- (name-size-date) .name width
+- (listeners) isNoCurrent: can not go to root when root is empty
+- (client) parallel -> series: route
+
+feature:
+- (distribute) add ability to import config from remote export server
+- (package) file-loader v2.0.0
+- (package) watch:lint:server
+- (package) add watch:test:server
+- (package) yaspeller v5.0.0
+- (package) style-loader v0.22.0
+- (package) serviceworker-webpack-plugin v1.0.1
+
+
+2018.07.18, v10.4.1
+
+fix:
+- (img) loading: svg minify
+
+
+2018.07.17, v10.4.0
+
+fix:
+- (sw) cache of 401
+- (polyfill) scrollIntoViewIfNeeded in firefox
+
+feature:
+- (package) engines: node v4.5.0
+- (package) eslint-plugin-node v7.0.0
+- (package) @cloudcmd/clipboard v1.0.2
+- (package) rm unused html-webpack-exclude-assets-plugin
+- (package) gritty v3.0.0
+- (package) optimize-css-assets-webpack-plugin v5.0.0
+- (package) @cloudcmd/clipboard v1.0.1
+- (package) clear-module v3.0.0
+- (package) smalltalk v3.1.0
+- (package) css-loader v1.0.0
+- (Dockerfile) mhart/alpine-node -> node:alpine
+
+
+2018.07.02, v10.3.2
+
+fix:
+- (terminal) prevent init when config disabled
+- (operation) next current file after delete
+- (key) vim: do not react on navigation after view hide
+
+feature:
+- (package) codegen.macro v3.0.0
+
+
+2018.06.25, v10.3.1
+
+fix:
+- (npmignore) rm dist*/modules
+
+feature:
+- (package) eslint v5.0.0
+
+
+2018.06.22, v10.3.0
+
+fix:
+- (operation) set next file current when can not delete
+
+feature:
+- (webpack) minimize service worker size
+- (terminal) move out terminal.css from view.css
+- (package) fast-async v7.0.6
+- (cloudcmd) import -> load.js
+- (load-module) add
+
+
+2018.06.21, v10.2.3
+
+fix:
+- (cloudcmd) env variables override (#179)
+- (sw) register when prefix changed
+
+feature:
+- (upload-files) add ability to show error message
+- (gitignore) add jquery-mouse-wheel
+
+
+2018.06.15, v10.2.2
+
+fix:
+- (config) set file mode permissions to readable only by current user (#61)
+
+
+2018.06.13, v10.2.1
+
+fix:
+- (style) .fm: scrolling on ios
+
+feature:
+- (dom) touchstart: set passive listener
+- (package) format-io v1.0.0
+- (package) add domtokenlist-shim from npm
+- (polyfill) add scroll-into-view-if-needed polyfill from npm
+
+
+2018.06.11, v10.2.0
+
+feature:
+- (cloudcmd) add ability to set current file closer to removed files
+- (client) add ability to clear localStorage on logOut
+- (package) sinon v6.0.0
+
+
+2018.06.09, v10.1.2
+
+fix:
+- (dom) saveDataToStorage, getDataFromStorage: localStorage option check (#177)
+
+
+2018.06.08, v10.1.1
+
+fix:
+- (menu) initial position
+
+
+2018.06.07, v10.1.0
+
+fix:
+- (operation) deleteSilent: refresh: on error -> always
+- (edit-file-vim) check is file changed on close
+- (sw) "only-if-cached" can be set only with "same-origin" mode
+
+feature:
+- (edit-names-vim) add
+- (package) pullout v2.0.0
+
+
+2018.06.04, v10.0.3
+
+fix:
+- (index) zoom on tap
+- (client) logout: servicer worker: unregister
+
+feature:
+- (package) webpack-cli v3.0.1
+- (rest) add memory info
+- (package) babel v7
+- (package) nyc v12.0.1
+- (cloudcmd) pullout/legacy -> pullout
+- (package) nomine v2.0.0
+
+
+2018.05.29, v10.0.2
+
+fix:
+- (listeners) copyPath
+- (font) copy path
+
+
+2018.05.29, v10.0.1
+
+fix:
+- (font) terminal icon
+
+
+2018.05.25, v10.0.0
+
+feature:
+- (cloudcmd) --one-panel-mode -> --one-file-panel
+- (cloudcmd) clear storage -> copy path (#173)
+- (config) rm option: htmlDialogs
+- (cloudcmd) add service worker
+- (config) rm option: cache
+- (cloudcmd) rm option: localStorage
+
+
+2018.05.24, v9.6.0
+
+fix:
+- (docker) node v10.1
+- (current-file) getParrentDirPath: path contains "+++"
+
+feature:
+- (cloudcmd) rm global window.exec
+- (package) rm vulnerable fresh-require
+- (package) rm vulnerable nsp
+- (terminal) set fontFamily
+- (modules) socket.io v2.1.1
+
+
+2018.05.15, v9.5.0
+
+fix:
+- (server) mv: rename file
+- (cloudcmd) choose
+- (konsole) Ctrl + P: paste current directory path
+- (operation) set moveFn to RESTful.mv on disconnect
+
+feature:
+- (cloudcmd) deprecate localStorage
+- (key) add ability to copy path with help of Ctrl + p
+- (env) return boolean only
+- (cloudcmd) move out dist from route
+
+
+2018.05.08, v9.4.0
+
+fix:
+- (name-size) margin-right: 0
+
+feature:
+- (cloudcmd) deprecate --one-panel-mode in favour --one-file-panel
+- (cloudcmd) add ability to show progress on move (#157)
+- (package) rm checkup
+- (package) wraptile v2.0.0
+- (package) ponse v2.0.0
+- (package) onezip v2.0.0
+- (package) jaguar v4.0.0
+- (package) files-io v2.0.0
+- (package) inly v2.0.0
+
+
+2018.05.01, v9.3.2
+
+fix:
+- (cloudcmd) cyrillic symbols in names
+- (operation) update file list after error on copy
+
+feature:
+- (package) clean-css-loader v1.0.1
+- (package) copymitter v3.0.0: improved copy accuracy (#157)
+
+
+2018.04.30, v9.3.1
+
+fix:
+- (listeners) onPathElementClick: empty space (#171)
+
+feature:
+- (package) sinon v5.0.1
+- (travis) node_js: add 10
+- (docker) node v10
+
+
+2018.04.27, v9.3.0
+
+feature:
+- (package) smalltalk: bower -> npm
+- (modules) menu-io -> supermenu
+- (package) rendy v2.0.0
+
+
+2018.04.25, v9.2.0
+
+fix:
+- (client) when password changed console and terminal can not authenticate when auth enabled
+
+feature:
+- (cloudcmd) add ability to use not only alphabet and number symbols (#167)
+
+
+2018.04.23, v9.1.6
+
+fix:
+- (cloudfunc) XSS vulnerability: html in file name: allows executing malicious javascript code in the user's browser
+
+feature:
+- (entity) add &quot;
+- (package) add prewisdom
+
+
+2018.04.19, v9.1.5
+
+fix:
+- (terminal) rows and cols
+- (wepback) js: devtoolModuleFilenameTemplate
+- (now) files: add .webpack
+
+feature:
+- (package) style-loader v0.21.0
+- (travis) node_js: rm 6
+
+
+2018.04.17, v9.1.4
+
+fix:
+- (download) download files with "#" in name (#80)
+
+
+2018.04.16, v9.1.3
+
+fix:
+- (view) showImage: left key button in image view (#164)
+- (edit-file-vim) Shift + Esc: task manager
+
+
+2018.04.12, v9.1.2
+
+fix:
+- (operations) for-each-key v1.0.1: update file list after removing file
+
+feature:
+- (webpack) deepmerge -> webpack-merge
+- (webpack) split config to: js, html and css
+
+
+2018.04.10, v9.1.1
+
+fix:
+- (columns) name-size in firefox (#162)
+
+feature:
+- (package) add for-each-key from npm
+- (modules) socket.io v2.1.0
+
+
+2018.04.02, v9.1.0
+
+fix:
+- (client) authCheck: can not connect via web sockets when auth disabled (#160)
+
+feature:
+- (cloudcmd) add --cache cli option
+
+
+2018.03.30, v9.0.0
+
+fix:
+- (cloudcmd) --no-prefix
+- (client) goToParentDir
+- (query) portrait on iphone 6 firefox
+
+feature:
+- (cloudcmd) showKeysPanel -> keysPanel
+- (package) dword v7.0.0
+- (package) deepword v3.0.0
+- (package) edward v7.0.0
+- (package) console-io v7.0.0
+- (cloudcmd) drop support of gritty < v2
+- (config) auth
+- (cloudcmd) spero, ishtar, salam, remedy, omnes -> fileop
+- (for-each-key) add
+- (package) html-webpack-exclude-assets-plugin v0.0.7
+- (query) add support if iphone 6 landscape
+
+
+2018.03.24, v8.5.2
+
+fix:
+- (cloudcmd) rm redundant dir 1
+
+
+2018.03.24, v8.5.1
+
+fix:
+- (operation) progress of copy/move (#155)
+
+
+2018.03.20, v8.5.0
+
+fix:
+- (rest) jonny: node v4 support
+
+feature:
+- (cloudcmd) add --sync-console-path
+- (package) console-io v6.0.1
+- (package) html-webpack-exclude-assets-plugin v0.0.6
+- (package) html-webpack-plugin v3.0.7
+- (cloudcmd) add emitter
+- (package) os-homedir -> os.homedir
+
+
+2018.03.16, v8.4.1
+
+fix:
+- (rest) moveFiles: could not rename (#150)
+
+
+2018.03.14, v8.4.0
+
+feature:
+- (name-size-date) improve view
+- (columns) add name-size (#139)
+- (package) redrun v6.0.0
+- (package) url-loader v1.0.1
+- (app) add CLOUDCMD_COLUMNS
+
+
+2018.03.02, v8.3.0
+
+fix:
+- (route) buildIndex: getIndexPath
+- (listeners) pop: change #hash
+
+feature:
+- (cloudcmd) --columns: add ability to set visible columns (#146)
+- (package) html-webpack-plugin v3.0.4
+- (package) limier v2.0.0
+- (package) webpack v4.0.0
+- (package) rm jscs, jshint
+- (package) jonny v2.0.3
+- (package) flop v4.0.0
+- (package) add mock-require, clear-module
+
+
+2018.02.19, v8.2.2
+
+fix:
+- (directory) upload files with help of dragndrop when root directory is empty (#145)
+
+feature:
+- (package) stylelint v9.0.0
+- (package) squad v2.0.0
+- (package) sinon-called-with-diff v2.0.0
+- (package) tryrequire v2.0.1
+- (package) try-catch v2.0.0
+- (package) eslint-plugin-node v6.0.0
+- (package) es6-promisify v6.0.0
+- (package) style-loader v0.20.1
+
+
+2018.01.23, v8.2.1
+
+fix:
+- (operation) paste files when current file is ".." (#142)
+
+feature:
+- (bower) jquery v3.3.1
+
+
+2018.01.16, v8.2.0
+
+fix:
+- (config) showConfig
+- (now) add quotes
+
+feature:
+- (config) username, password: add autocomplete
+- (config) div -> form
+- (package) mock-require v3.0.1
+
+
+2017.12.08, v8.1.3
+
+fix:
+- (view) Info.files -> Info
+- (config) patch
+- (fancybox) _afterZoomIn: hide
+
+feature:
+- (edit-file-vim) setOption -> setKeyMap
+- (package) stylelint-config-standard v18.0.0
+- (package) nsp v3.1.0
+
+
+2017.10.23, v8.1.2
+
+fix:
+- (operation) update panel after error on delete files
+- (operation) noFilesCheck: false positive: files selected but current is ".."
+
+
+2017.10.19, v8.1.1
+
+fix:
+- (menu) when click on ".." show full menu
+
+feature:
+- (bower) smalltalk v2.5.1
+- (package) lint:js:eslint:client -> lint:client
+
+
+2017.10.19, v8.1.0
+
+fix:
+- (menu) when click on ".." show full menu
+- (menu) show menu on F9 when current is ".."
+- (menu) title: Menu -> Cloud Commander
+- (menu) uploadTo: when error - do nothing, everything already done
+
+feature:
+- (package) lint:js:eslint:client -> lint:client
+- (cloud) filepicker v2
+- (client) log: return str
+
+
+2017.10.13, v8.0.5
+
+feature:
+- (polyfill) clean up old polyfills
+- (events) rm unused dispatch
+
+
+2017.10.10, v8.0.4
+
+feature:
+- (package) deepmerge v2.0.0
+- (bower) smalltalk v2.5.0
+
+
+2017.10.06, v8.0.3
+
+fix:
+- (operation) deleted file do not disappear
+
+
+2017.10.06, v8.0.2
+
+fix:
+- (operation) delete: check no files after ask
+
+feature:
+- (package) url-loader v0.6.1
+- (package) style-loader v0.19.0
+
+
+2017.10.02, v8.0.1
+
+fix:
+- (package) get back file-loader
+
+
+2017.10.02, v8.0.0
+
+feature:
+- (cloudcmd) middleware: password: plain -> encrypted (#136)
+- (package) coveralls v3.0.0
+
+
+2017.09.29, v7.9.0
+
+feature:
+- (cloudcmd) add --confirm-move
+- (cloudcmd) add --confirm-copy
+- (template) add: read all templates on start
+- (package) sinon v4.0.0
+
+
+2017.09.25, v7.8.0
+
+feature:
+- (listeners) add ability to move files via shift + drag
+
+
+2017.09.22, v7.7.3
+
+feature:
+- (bower) smalltalk v2.4.2
+
+
+2017.09.22, v7.7.2
+
+feature:
+- (package) spead up directory upload: philip: bower -> npm
+
+
+2017.09.18, v7.7.1
+
+fix:
+- (operation) RESTful.remove -> RESTful.delete (#132)
+
+feature:
+- (package) babel-preset-2015 -> babel-preset-env
+
+
+2017.09.12, v7.7.0
+
+feature:
+- (cloudcmd) add support of CLOUDCMD_VIM env variable
+
+
+2017.09.11, v7.6.0
+
+feature:
+- (vim) add find support with: "/", "n" and "N"
+- (package) yaspeller v4.0.0
+
+
+2017.09.08, v7.5.2
+
+fix:
+- (config) vim: "false" -> false
+
+
+2017.09.08, v7.5.1
+
+fix:
+- (config) vim enabled by default
+- (cloudcmd) --vim
+
+
+2017.09.08, v7.5.0
+
+feature:
+- (vim) add hot keys
+- (key) add ability to extract archives with Alt + F9
+- (key) add ability to pack files with Alt + F5
+
+
+2017.09.04, v7.4.0
+
+feature:
+- (key) add ability to extract archives with Alt + F9
+- (key) add ability to pack files with Alt + F5
+- (package) docker:rm-old: --cam -> -P
+- (package) scripts: wisdom:type: add support of wisdom 6
+- (package) docker:rm-old: --parallel -> --calm
+- (package) wisdom: rm docker:rm-old
+
+
+2017.08.29, v7.3.2
+
+fix:
+- (operation) pack in old packer type after changin packer without reload
+
+feature:
+- (appveyor) add terminal
+- (cloudcmd) add now demo
+
+
+2017.08.14, v7.3.1
+
+fix:
+- (cloudcmd) empty string in CLOUDCMD_NAME and CLOUDCMD_ROOT
+
+
+2017.08.14, v7.3.0
+
+feature:
+- (cloudcmd) add support of CLOUDCMD_ONE_PANEL_MODE (#64)
+- (cloudcmd) add support of CLOUDCMD_ROOT (#64)
+- (travis) add node v8 condition
+- (cloudcmd) add ability to build docker images with help of travis
+
+
+2017.08.11, v7.2.2
+
+fix:
+- (route) buildIndex: no index.html
+
+feature:
+- (Dockerfile) set package-lock false
+- (dockerignore) yarn-error
+- (package) sinon v3.0.0
+
+
+2017.07.31, v7.2.1
+
+fix:
+- (config) aditional panel
+- (view) no scrallbar on help
+- (package) docker:push:latest: add (#127)
+
+
+2017.07.28, v7.2.0
+
+feature:
+- (cloudcmd) add support of env variable CLOUDCMD_CONSOLE
+- (contact) add ability to hide contact button with --no-contact (#125)
+
+
+2017.07.27, v7.1.1
+
+fix:
+- (view) config: additional panel at the bottom
+- (view) terminal: set .view height
+
+
+2017.07.27, v7.1.0
+
+fix:
+- (route) showKeysPanel
+- (config) additional bar: .view: rm height: 100%
+- (view) key binding after click outside the modal window
+
+feature:
+- (cloudcmd) --name: add ability to set tab name in web browser
+- (Dockerfile) decrease image size: clean npm cache after install
+- (gitignore) add yarn-error.log
+- (package) stylelint-config-standard v17.0.0
+- (package) stylelint v8.0.0
+
+
+2017.07.14, v7.0.2
+
+fix:
+- (cloudcmd) node v4 support: currify, pullout
+- (cloudcmd) socket.io: support of node < 4 (#121)
+
+feature:
+- (package) deepword v2.0.0
+- (package) dword v6.0.0
+- (package) edward v6.0.0
+- (package) restafary v3.0.0
+- (package) remedy v3.0.0
+- (gitignore) add yarn.lock
+- (package) flop v3.0.0
+- (package) join-io v2.0.0
+- (package) add eslint-plugin-node
+- (package) console-io v5.0.0
+- (npmignore) add css, html
+- (auth) add currify
+- (cloudcmd) require es2015 versions of packages
+- (package) opn v5.1.0
+- (package) http-auth v3.2.3
+- (package) package-json v4.0.1
+- (package) chalk v2.0.1
+- (cloudcmd) rm support of node.js < 4.0.0
+- (cloudcmd) rm config option: minify
+- (route) rm minify
+- (package) extract-text-webpack-plugin v3.0.0
+- (package) socket.io v2.0.3
+
+
+2017.07.12, v7.0.1
+
+fix:
+- (cloudcmd) node v4 support: currify, pullout
+
+feature:
+- (package) console-io v5.0.0
+- (npmignore) add css, html
+
+
+2017.07.12, v7.0.0
+
+feature:
+- (auth) add currify
+- (cloudcmd) require es2015 versions of packages
+- (package) opn v5.1.0
+- (package) http-auth v3.2.3
+- (package) package-json v4.0.1
+- (package) chalk v2.0.1
+- (cloudcmd) rm support of node.js < 4.0.0
+- (cloudcmd) rm config option: minify
+- (route) rm minify
+- (package) extract-text-webpack-plugin v3.0.0
+
+
+2017.07.14, v6.15.5
+
+fix:
+- (cloudcmd) socket.io: support of node < 4 (#121)
+
+
+2017.07.10, v6.15.4
+
+feature:
+- (bower) smalltalk v2.4.1 (#117)
+- (package) ishtar v2.0.0
+- (package) remedy v2.0.0
+- (package) spero v2.0.0
+- (package) rm mollify
+- (css) add minification build step
+- (webpack) loaders -> rules
+- (package) dword v5.0.0
+- (package) edward v5.0.0
+- (package) console-io v4.0.0
+
+
+2017.06.26, v6.15.3
+
+fix:
+- (client) save directory path and file list to storage when dirStorage disabled
+- (view) show: close view on ESC
+
+
+2017.06.22, v6.15.2
+
+fix:
+- (konsole) when disabled error occures on second call
+- (config) when disabled error occures on second call
+- (terminal) when disabled, error occures on second call
+
+feature:
+- (package) heroku-postbuild -> heroku-postbuild, postheroku-postbuild
+- (package) webpack v3.0.0
+
+
+2017.06.14, v6.15.1
+
+fix:
+- (client) rigth -> right
+- (client) baseInit: init both panels in OnePanelMode (#116)
+- (Dockerfile) ENTRYPOINT: command -> executable
+
+feature:
+- (modules) socket.io v2.0.3
+- (package) eslint v4.0.0
+- (app) add auth env variables
+
+
+2017.06.06, v6.15.0
+
+fix:
+- (cloudcmd) editor: choose -> env
+
+feature:
+- (show-config) add ability to show config values with --show-config
+- (cloudcmd) add CLOUDCMD_USERNAME
+- (cloudcmd) add CLOUDCMD_PASSWORD
+- (help) add CLOUDCMD_AUTH
+- (modules) socket.io v2.0.2
+- (package) nyc v11.0.2
+- (gitignore) add package-lock.json
+- (package) docker:rm: add -f: force
+- (travis) node_js: 7 -> 8
+- (dockerignore) reduce size of image
+- (package) scripts: docker:tag
+- (npmignore) add bower.json, manifest.yml
+- (Dockerfile) Entrypoint: set absolute: add ability to override WorkDir
+
+
+2017.05.25, v6.14.4
+
+fix:
+- (package) put fullstore in dependencies
+
+feature:
+- (bower) smalltalk v2.4.0
+- (package) rm unused version-io
+
+
+2017.05.22, v6.14.3
+
+fix:
+- (client) dirStorage: save date
+
+feature:
+- (bower) philip v1.3.7
+- (cloudcmd) store -> fullstore
+
+
+2017.05.18, v6.14.2
+
+fix:
+- (edit-file) show editor when access denied
+
+
+2017.05.18, v6.14.1
+
+feature:
+- (edit-file-vim) add ability to reuse edit-file: minimize file size
+
+
+2017.05.17, v6.14.0
+
+fix:
+- (route) termianl -> terminal
+
+feature:
+- (edit-file-vim) editor: add vim mode on shift + f4
+- (bower) smalltalk v2.3.1
+- (package) rm recess
+- (store) add
+
+
+2017.05.15, v6.13.0
+
+fix:
+- (getFilesRange) avoid selecting of ".."
+
+feature:
+- (cloudcmd) add terminal button (#115)
+- (listeners) add get-index, get-range
+- (dom) toggleSelect only when not ".."
+
+
+2017.05.12, v6.12.0
+
+fix:
+- (listeners) getFileRange: select with shift + click
+
+feature:
+- (listeners) add ability to copy files with help of drag n drop (#114)
+- (config) add ability to override absent values in config
+
+
+2017.05.10, v6.11.0
+
+fix:
+- (style) focus on click in IOS Safari
+
+feature:
+- (bower) smalltalk v2.2.1
+- (package) socket.io-client v2.0.1
+- (bower) jquery v3.2.1
+- (package) socket.io v2.0.1
+- (cloudcmd) add ability to override editor with CLOUDCMD_EDITOR environment variable
+- (modules) socket.io v1.7.4
+- (bower) philip v1.3.6
+- (package) emitify v3.0.2
+- (bower) rm emitify
+
+
+2017.04.25, v6.10.1
+
+fix:
+- (webpack) umd -> var: load editor before console
+- (edit-names) deepword: setMode
+- (terminal) config: terminal and terminalPath checked before set
+
+
+2017.04.24, v6.10.0
+
+feature:
+- (operation) add support of unpacking bzip2 archives: .bz2, .tar.bz2, .tbz2
+- (package) babel-loader v7.0.0
+
+
+2017.04.18, v6.9.3
+
+fix:
+- (menu) set current file after upload from cloud
+- (upload-files) upload a file to an empty root directory (#113)
+
+feature:
+- (client) refresh: panel, options, callback -> options, callback: add currentName
+
+
+2017.04.13, v6.9.2
+
+fix:
+- (terminal) rm style height
+
+
+2017.04.12, v6.9.1
+
+fix:
+- (upload-file) PREFIX_URL (#113)
+- (client) route: strBigFirst -> kebabToCamelCase
+
+feature:
+- (upload-file) add wraptile
+- (package) add sinon-called-with-diff
+- (webpack) devtoolModuleFilenameTemplate: webpack:// -> cloudcmd
+- (webpack) output: pathInfo
+- (package) scripts: build:client:dev
+- (Dockerfile) alpine: rm node-pty < 0.6.3 fallback
+- (travis) build client before test
+- (package) scripts: watch:coverage
+
+
+2017.03.23, v6.9.0
+
+feature:
+- (cloudcmd) add ability to override modules (#109)
+- (server) cloudfunc: common -> server
+- (entity) add from cloudfunc
+
+
+2017.03.21, v6.8.1
+
+fix:
+- (style) .panel, .cmd-button: border in Chrome Canary v59: 1.5px -> 1px
+
+
+2017.03.06, v6.8.0
+
+fix:
+- (key) TRA: prevent Terminal of handling ~ key
+
+feature:
+- (cloudcmd) add env var CLOUDCMD_CONFIG_DIALOG
+- (env) add env vars CLOUDCMD_TERMINAL, CLOUDCMD_TERMINAL_PATH
+
+
+2017.03.04, v6.7.0
+
+fix:
+- (client) add join
+
+feature:
+- (terminal) add optional --terminal support
+- (webpack) babelify only for prod
+- (modules) socket.io v1.7.3
+- (bower) fancybox v2.1.6
+- (load-remote) add
+- (select-by-pattern) add from dom
+- (dom-tree) add from dom
+
+
+2017.02.24, v6.6.3
+
+fix:
+- (load) Images
+
+
+2017.02.24, v6.6.2
+
+fix:
+- (listeners) resize: empty root
+
+
+2017.02.24, v6.6.1
+
+fix:
+- (menu) isPath: menu does not open when the root is empty (#108)
+
+feature:
+- (bower) smalltalk v2.2.0
+- (bower) smalltalk v2.1.4
+
+
+2017.02.22, v6.6.0
+
+feature:
+- (config) rm notification: do nothing
+
+
+2017.02.21, v6.5.6
+
+fix:
+- (view) showImage: can not show image
+
+
+2017.02.21, v6.5.5
+
+fix:
+- (docker) ignore: remove client files (#107)
+
+feature:
+- (client) object.assign -> babel-plugin-object-assign: decrease client size by 2kb
+- (images) move out from dom
+- (jshint) ignore reserved words
+- (eslintrc) add no-use-before-define
+
+
+2017.02.17, v6.5.4
+
+fix:
+- (menu) call editor from menu
+
+
+2017.02.17, v6.5.3
+
+fix:
+- (contact) do not open
+- chore(package) scripts: add prefix lint:js to js linters
+
+feature:
+- (webpack) exclude object.assign, promise polyfill from dev build
+- (package) promise-polyfill -> es6-promise
+- (util) rm copyObj
+- (webpack) promise -> polyfill
+- (cloudcmd) add Promise, Object.assign polyfill
+- (package) scripts: watch:lint:client
+
+
+2017.02.15, v6.5.2
+
+fix:
+- (edit-file) save: Format: global -> require
+- (edit-names) menu
+- (edit-names) mode depends on last opened file
+
+
+2017.02.14, v6.5.1
+
+fix:
+- (buffer) dialog
+- (dom) Dialog
+
+
+2017.02.14, v6.5.0
+
+feature:
+- (package) scripts: rm:legacy -> rm:client, rm:server
+- (cloudcmd) NODE_ENV: debug -> development
+- (webpack) turn of uglify when NODE_ENV=debug
+- (package) nyc v10.1.2
+- (package) scripts: 6to5:client: add --progress
+- (package) scripts: add heroku-postbuild
+- (package) watch:client:debug
+- (webpack) put commons to cloudcmd.js
+- (client) es2015-ify
+- (rest) rm rendy
+
+
+2017.02.06, v6.4.0
+
+feature:
+- (sort) add hot keys
+- (package) stylelint-config-standard v16.0.0
+
+
+2017.02.02, v6.3.1
+
+fix:
+- (operation) remove: when can not remove show error -> when can not remove suggest to continue
+
+feature:
+- (package) copymitter v2.0.0
+- (package) flop v2.0.0
+
+
+2017.01.27, v6.3.0
+
+fix:
+- (listeners) header: event.path -> getPath (#101)
+
+feature:
+- (cloudcmd) simplify archive extraction for: zip, tar, gz, tar.gz, tgz
+
+
+2017.01.26, v6.2.2
+
+fix:
+- (cloudcmd) prefix: duplicate (#102)
+- (cloudcmd) showUpdateInfo: unhandled promise rejection
+
+
+2017.01.24, v6.2.1
+
+fix:
+- (cloucmd) sort: handle click on header of passive panel
+
+
+2017.01.24, v6.2.0
+
+fix:
+- (dom) getDataFromStorage: callback called twice
+
+feature:
+- (cloudcmd) add ability to sort by name, size and date (#101)
+
+
+2017.01.20, v6.1.0
+
+fix:
+- (operation) delete: set noContinue: prevent removing node from ui when data not removed
+- (package) scripts: docker:rm -> docker:rm:version
+- (package) scripts: postpublish: docker docker:alpine -> docker
+
+feature:
+- (config) improve speed: decrease config loading count
+- (package) restafary v2.0.0
+
+
+2017.01.17, v6.0.3
+
+fix:
+- (config) auth check
+- (config) config dialog: save changes
+
+
+2017.01.08, v6.0.2
+
+fix:
+- (markdown) DIR_ROOT: help
+
+
+2017.01.06, v6.0.1
+
+fix:
+- (key) Ctrl + A: toggleSelected -> selectAllFiles
+- (dom) getAcitveFiles: include current -> return current when none selected
+- (edit-names) rename files when current file is ".."
+
+feature:
+- (dom) Info.files, Info.filesPasive: array
+
+
+2016.12.29, v6.0.0
+
+fix:
+- (cloudcmd) --editor: do not change editor
+
+feature:
+- (edit-names) add ability to edit file names in editor
+- (edit-file) add
+- (util) Util.type -> itype
+- (util) rm checkType
+- (util) add kebabToCamelCase
+- (util) getStrBigFirst: client -> util
+
+
+2016.12.27, v5.13.0
+
+feature:
+- (cloudcmd) show line number when config is not valid json (closes #98)
+- (edit) add setValue
+- (edit) show: rm this
+
+
+2016.12.23, v5.12.4
+
+fix:
+- (package) main: legacy/lib -> legacy/server
+
+
+2016.12.23, v5.12.3
+
+fix:
+- (cloudcmd) --no-console: console is always enabled (#99)
+- chore(prefixer) es-2015-ify
+
+feature:
+- (cloudcmd) lib/server -> server
+- (package) legacy:json -> legacy:help: optimize size of published package
+
+
+2016.12.19, v5.12.2
+
+fix:
+- (package) scripts: legacy:json:  --help
+
+
+2016.12.19, v5.12.1
+
+fix:
+- (package) currify v2.0.3 (#93)
+
+
+2016.12.16, v5.12.0
+
+fix:
+- (cloudcmd) --html-dialogs: is not cloudcmd option (#97)
+- (plugins) arrow -> function
+- (validate) root: crash when --no-root used
+
+feature:
+- (cloudcmd) lib/client -> client
+
+
+2016.12.05, v5.11.1
+
+fix:
+- (help) --editor: add deepword
+
+feature:
+- (bower) currify v2.0.3
+
+
+2016.12.01, v5.11.0
+
+feature:
+- (cloudcmd) add plugins
+
+
+2016.12.01, v5.10.2
+
+fix:
+- (cloudcmd) --console, --config-dialog: defaults
+
+feature:
+- (bower) currify v2.0.2
+
+
+2016.11.22, v5.10.1
+
+fix:
+- (rest) getPackReg: config zip -> config packer
+- (operation) _initPacker: proceed when error
+
+feature:
+- (package) stylelint-config-standard v15.0.0
+
+
+2016.11.18, v5.10.0
+
+fix:
+- (menu) download: no files selected: title is undefined
+- (man) add deepword
+
+feature:
+- (cloudcmd) add ability to set packer with: --packer: "tar" or "zip"
+- (package) nyc v9.0.1
+- (package) console-io v3.0.0
+- (dom) add setCurrentByName
+- (cloudcmd) add libDist: .js -> .min.js
+- (modules) add currify
+- (cloudcmd) es2015-ify
+
+
+2016.11.10, v5.9.1
+
+fix:
+- (cloudcmd) bring back working --html-dialogs
+
+
+2016.11.10, v5.9.0
+
+feature:
+- (cloudcmd) add ability to disable console with "--no-console" (#65)
+
+
+2016.11.09, v5.8.0
+
+feature:
+- (cloudcmd) add --no-config-dialog: add ability to hide config dialog (#65)
+- (jscs) requireVarDeclFirst: false
+- (package) jaguar v3.0.0
+- (cloudcmd) rm --html-dialogs: do nothing
+- (cloudcmd) rm deprecated long time ago --progress-of-copying
+
+
+2016.11.06, v5.7.6
+
+fix:
+- (key) ALT + LEFT/RIGHT: one panel mode
+- (key) listener: handle of Numpad keys
+
+
+2016.11.06, v5.7.5
+
+fix:
+- (client) baseInit: do not set history when hash preset
+- (client) route: open file with module by hash: string.join -> string
+
+feature:
+- (package) jaguar v2.1.0
+- (package) rm freeport
+
+
+2016.10.27, v5.7.4
+
+fix:
+- (operation) put back setListeners
+
+
+2016.10.27, v5.7.3
+
+fix:
+- (operation) setListeners: leak on copy, pack, delete
+- (rest) pack, extract: put
+- chore(prefixer) rm iife
+- (menu) download: download files and folders with "%" in name
+
+feature:
+- (cloudcmd) pipe-io -> pullout
+- (validate) mv console.log out
+- (gitignore) add swp
+- (package) scripts: watch:test
+- (travis) node_js: add 7
+- (package) stylelint-config-standard v14.0.0
+- (package) edward v4.0.0
+
+
+2016.10.24, v5.7.2
+
+fix:
+- (menu) download: file name containes "#" (#80)
+- (rest) download directory: overwriting response data (#78)
+
+
+2016.10.24, v5.7.1
+
+fix:
+- (yaspeller) Deepword: quotes
+
+feature:
+- (package) dword v4.0.0
+- (gitignore) rm unused
+- (modules) jquery.fancybox.js -> jquery.fancybox.pack.js
+- (bower) jquery v3.1.1
+- (yaspeller) add Deepword
+
+
+2016.10.18, v5.7.0
+
+feature:
+- (cloudcmd) add deepword
+- (package) yaspeller v3.0.0
+- (bower) smalltalk v2.1.3
+- (bower) promise-polyfill v6.0.2
+- (modules) socket.io v1.4.8
+
+
+2016.09.22, v5.6.2
+
+fix:
+- (operation) English spelling: directoris -> directories (#76)
+
+feature:
+- (package) markdown-it v8.0.0
+
+
+2016.09.06, v5.6.1
+
+fix:
+- (auth) blank password results in inability to authenticate
+- (events) dispatch: event -> customEvent
+
+feature:
+- (package) stylelint-config-standard v13.0.0
+- (package) nyc v8.1.0
+- (bower) smalltalk v2.1.2
+- (package) stylelint-config-standard v12.0.0
+- (package) add eslint
+- (jshintrc) add legacy
+- (util) json -> jonny
+- (bower) smalltalk v2.1.1
+- (bower) promise-polyfil v6.0.0
+- (bower) smalltalk v2.1.0
+
+
+2016.07.19, v5.6.0
+
+feature:
+- (package) remedy v1.5.0
+- (package) ishtar v1.5.0
+- (package) spero v1.5.0
+- (package) edward v3.2.0
+- (package) dword v3.2.0
+- (cloudcmd) authCheck: add accept, reject
+- (package) stylelint-config-standard v11.0.0
+- (package) stylelint v7.0.2
+- (bower) smalltalk v2.0.0
+- (edit) add authCheck
+- (bower) emitify v2.1.1
+- (modules) philip v1.3.4
+- (modules) findit v1.1.6
+- (operation) add authCheck
+- (package) dword v3.1.0: add authCheck
+- (package) edward v3.1.0: add authCheck
+- (package) remedy v1.4.0: add authCheck
+- (package) ishtar v1.4.0: add authCheck
+- (package) spero v1.4.0: add authCheck
+- (bower) jquery v3.1.0
+- (package) nyc v7.0.0
+- (package) redrun v5.0.0
+- (package) stylelint-config-standard v10.0.0
+
+
+2016.06.29, v5.5.1
+
+feature:
+- (travis) rm security
+- (package) redrun v4.0.0
+- (package) markdown-it v7.0.0
+- (img) add v5.5.0
+
+
+2016.06.15, v5.5.0
+
+feature:
+- (cloudcmd) add one-panel-mode
+- (json) bin -> help
+- (style) panel width: 97% -> 98%
+- (modules) jquery v3.0.0
+- (package) stylelint-config-standard v9.0.0
+
+
+2016.06.10, v5.4.3
+
+fix:
+- (operation) shift + delete: delete ".." directory
+
+
+2016.06.09, v5.4.2
+
+fix:
+- (edit) Paste: Ctrl+X -> Ctrl+V
+
+feature:
+- (bower) findit v1.1.5
+- (bower) philip v1.3.3
+- (bower) emitify v2.1.0
+- (olark) contact -> bower
+
+
+2016.05.25, v5.4.1
+
+fix:
+- (key) add key.identifier back for chrome <= v51
+
+feature:
+- (rest) rm auth
+- (key) deprecated KeyEvent.keyIdentifier: rm fromCharCode
+- (package) stylelint-config-standard v8.0.0
+- (bower) promise-polyfill v5.2.0
+- (npmignore) app.json, circle.yml
+
+
+2016.05.15, v5.4.0
+
+fix:
+- feature(server) add prefix to url
+
+feature:
+- (package) codestyle: redrun --parallel -> redrun
+- (jscs) requireMultipleVarDecl: false
+- (package) add keywords
+- (package) ~ -> ^
+- (cloudcmd) add --open: open browser when server started
+- (npmignore) add .*
+- (server) add prefix to url
+- (circle) add
+
+
+2016.05.11, v5.3.2
+
+fix:
+- (route) prefix without "/" at beginning in rendered view
+- (key) Alt + G: replace path with "©"
+
+feature:
+- (bower) smalltalk v1.6.8
+- (bower) promise-polyfill v5.1.0
+- (package) stylelint-config-standard v7.0.0
+- (package) redrun v3.0.0
+- (bower) promise-polyfill v5.0.0
+- (travis) add node v6
+- (travis) rm 0.12
+- (package) npm-run-all -> redrun
+- (package) stylelint-config-standard  v6.0.0
+- (package) stylelint v6.1.1
+- (jscsrc) rm disallowUnusedVariables
+- (package) jscs v3.0.1
+- (package) http-auth v2.3.1
+- (package) stylelint-config-standard v5.0.0
+- (query) .name: rm ignored float
+- (package) docker:rm:latest-alpine
+- (package) scripts docker: rm:old -> rm-old
+- (package) add docker:rm:old
+- (package) wisdom: npm-run-all --continue-on-error
+
+
+2016.03.28, v5.3.1
+
+feature:
+- (markdown) throw() -> throw
+
+
+2016.03.28, v5.3.0
+
+feature:
+- (package) scripts: add security
+- (server) port: 0 means any available
+- (package) add docker:rm
+- (docker) entrypoint: npm start -- -> bin/cloudcmd.js
+- (docker) cmd -> entrypoint
+- (docker) add entrypoint
+- (package) docker: add node-alpine build
+- (bower) promise-polyfill v4.0.1
+- (bower) smalltalk v1.6.7
+
+
+2016.03.18, v5.2.3
+
+feature:
+- (style) .current-file box-shadow: 1.5px -> 1px
+- (package) console-io v2.7.1
+- (package) add nodemon
+- (shell) rm secret
+- (package) stylelint v5.0.1
+- (dockefile) add maintainer
+
+
+2016.03.10, v5.2.2
+
+fix:
+- (view) showImage: href
+
+feature:
+- (css) rm a:focus
+- (password) password -> criton
+- (yaspeller) add yml
+- (docker-compose) add
+- (package) stylelint-config-standard v4.0.0
+- (package) nyc v6.0.0
+
+
+2016.03.07, v5.2.1
+
+fix:
+- (edit) setMenu: set focus on editor insted of prompt when "Go To Line" activated
+- (edit) Go To Line: Ctrl+L -> Ctrl+G
+
+feature:
+- (package) dword v3.0.3
+- (package) edward v3.0.0
+- (package) add docker:pull:node
+
+
+2016.03.05, v5.2.0
+
+fix:
+- (directory) percent: when percent should not change it became bigger by 100
+- (key) switch key: add preventDefault on F8
+
+feature:
+- (package) add postpublish
+- (package) add docker:build
+- (directory) uploadFile, uploadDir: rm callback
+- (load) put: rm prefix, apiURL
+- (client) add PREFIX_URL
+- (operation) TITLE: Operation -> CloudCmd.TITLE
+- (stylint) .stylelintrc -> .stylintrc.yml
+- (bower) menu v1.0.2
+- (bower) smalltalk v1.6.6
+- (reset) rm a:hover, a:active: outline
+- (package) add stylelint
+
+
+2016.02.26, v5.1.5
+
+fix:
+- (view) showImage: prefix
+- (package) docker tag: latest -> v`version`
+
+feature:
+- (package) add docker:rm
+
+
+2016.02.25, v5.1.4
+
+fix:
+- (index) prefix: favicon
+
+
+2016.02.24, v5.1.3
+
+fix:
+- (dom) setCurrentName: prefix
+- (travis) npm codestyle -> npm run codestyle
+
+feature:
+- (package) mocha -> tape
+- (style) %: .name: 27 -> 26, .date -> 20 -> 19, .mode: 16 -> 18
+
+
+2016.02.21, v5.1.2
+
+fix:
+- (cloudfunc) buildFromJson: close quote
+
+
+2016.02.21, v5.1.1
+
+fix:
+- (cloudfunc) when no date use --.--.----
+
+
+2016.02.20, v5.1.0
+
+fix:
+- refactor(load) put: prefix
+
+feature:
+- (cloudcmd) add date column
+- (editorconfig) exclude hbs from insert_final_newline
+
+
+2016.02.13, v5.0.15
+
+fix:
+- (menu) download: prefix
+
+feature:
+- (package) markdown-it v6.0.0
+
+
+2016.02.10, v5.0.14
+
+fix:
+- (cloudcmd) createPass: algo, pass -> pass, algo
+
+
+2016.02.10, v5.0.13
+
+fix:
+- (cloudcmd) algo, value -> value, algo
+- (package) scripts: docket -> docker
+
+feature:
+- (package) scripts: publish -> docker
+
+
+2016.02.10, v5.0.12
+
+fix:
+- (password) createHash: algo could be undefined
+
+feature:
+- (config) rm Util
+- (package) publish: docker pull, tag, push
+
+
+2016.02.06, v5.0.11
+
+feature:
+- (bower) menu v1.0.1
+- (bower) menu v1.0.0
+
+
+2016.02.04, v5.0.10
+
+fix:
+- (server) socket path
+
+
+2016.02.02, v5.0.9
+
+fix:
+- (cloudcmd) logout -> prefix + /logout
+- (server) prefix + /socket -> path.join(prefix, /socket)
+
+
+2016.02.01, v5.0.8
+
+fix:
+- (config) /config -> prefix + /config
+- (cloudcmd) loadSocket, loadJquery: prefix
+
+feature:
+- (cloudcmd) prefix: remedy, spero, ishtar
+- (package) spero v1.3.0
+- (package) remedy v1.3.0
+- (package) ishtar v1.3.0
+- (package) dword v2.9.0
+- (package) edward v2.9.0
+- (package) console-io v2.6.0
+- (modules) socket.io v1.4.5
+
+
+2016.01.20, v5.0.7
+
+fix:
+- (pathLink) prefix when js disabled
+- (password) default algo: set password
+
+feature:
+- (bower) promise-polyfill v3.1.0
+
+
+2016.01.15, v5.0.6
+
+fix:
+- (client) goToParentDir: set current dir
+- (dom) getParentDirPath: str -> regexp
+
+feature:
+- (edit) menu: add Cut, Copy and Paste
+- (package) dword v2.8.0
+- (package) edward v2.8.0
+
+
+2016.01.11, v5.0.5
+
+fix:
+- (server) logger
+
+feature:
+- (bower) promise-polyfill v3.0.0
+- (bower) smalltalk v1.6.5
+- (package) markdown-it v5.1.0
+- (package) socket.io v1.4.3
+- (bower) emitify v2.0.0
+- (gulpfile) rm
+
+
+2015.12.26, v5.0.4
+
+fix:
+- (client) LIBDIR, LIBDIRCLIENT: rm PREFIX
+
+feature:
+- (config) fs.writeFile -> writejson
+- (package) rm nupdate
+- (package) rm bupdate
+- (package) rm bower
+- (package) nupdate v3.0.0
+- (package) place v1.1.4
+- (package) morgan v1.6.1
+- (package) gulp -> npm scripts
+- (gulpfile) rm storage
+- (package) yaspeller v2.6.0
+- (package) should v8.0.0
+- (package) package-json v2.3.0
+- (bower) smalltalk v1.6.4
+- (docker) add
+
+
+2015.12.08, v5.0.3
+
+feature:
+- (dword) v2.7.0
+- (package) edward v2.7.0
+- (bower) smalltalk v1.6.3
+- (bower) smalltalk v1.6.2
+
+
+2015.12.01, v5.0.2
+
+feature:
+- (package) edward v2.6.0
+- (package) dword v2.6.0
+- (package) gulp-jshint v2.0.0
+- (package) nupdate v2.1.0
+
+
+2015.11.15, v5.0.1
+
+fix:
+- (dom) deleteSelected: this -> DOM
+
+
+2015.11.15, v5.0.0
+
+fix:
+- feature(cloudcmd) rm deprecated features: --progress-of-copying, prefix -> config.prefix
+
+feature:
+- (gitignore) npm-debug.log -> npm-debug.log*
+- (package) gulp-mocha v2.2.0
+- (package) gulp-recess v1.2.0
+- (config) set htmlDialogs true by default
+- (cloudcmd) rm deprecated features: --progress-of-copying, prefix -> config.prefix
+- (package) nupdate v2.0.0
+- (package) console-io v2.5.0
+
+
+2015.11.11, v4.7.7
+
+fix:
+- (dom) deleteCurrent: this -> DOM
+- (operation) deleteSilent: work with outdated dom elements
+
+
+2015.11.06, v4.7.6
+
+feature:
+- (package) dword v2.5.0
+- (package) edward v2.5.0
+- (package) console-io v2.4.0
+- (bower) smalltalk v1.6.1
+- (bower) smalltalk v1.6.0
+- (travis) rm iojs
+- (travis) node_js: 5
+
+
+2015.10.29, v4.7.5
+
+feature:
+- (cloudcmd) add getPassword
+- (bower) smalltalk v1.5.6
+
+
+2015.10.27, v4.7.4
+
+feature:
+- (bower) execon v1.2.9
+- (bower) smalltalk v1.5.5
+- (package) minify v2.0.0
+- (package) package-json v2.2.0
+
+
+2015.10.24, v4.7.3
+
+fix:
+- (buffer) Dialog.alert -> showMessage
+- (edit) isChanged: create -> beforeClose
+
+feature:
+- (cloudcmd) add execon from bower
+- (package) package-json v2.1.0
+
+
+2015.10.14, v4.7.2
+
+fix:
+- (console) authCheck called once
+
+feature:
+- (bower) rm vk-openapi
+- (bower) rm github
+
+
+2015.10.14, v4.7.1
+
+fix:
+- (rest) onGET: json.parse
+
+feature:
+- (bower) smalltalk v1.5.3
+- (package) package-json v2.0.0
+- (package) markdown-it v5.0.0
+
+
+2015.10.05, v4.7.0
+
+fix:
+- (edit) isChanged: call fn only when ok pressed
+- (edit) isChanged: confirm -> Dialog.confirm
+
+feature:
+- (package) dword v2.4.0
+- (package) edward v2.4.0
+- (config) add authCheck
+- (bower) emitify v1.3.0
+- (bower) smalltalk v1.5.2
+- (cloudcmd) console: add authCheck
+- (package) console-io v2.3.0
+- (markdown) lib/server/rest -> lib/server
+- (bower) smalltalk v1.5.1
+
+
+2015.09.28, v4.6.0
+
+feature:
+- (cloudcmd) add --html-dialogs
+- (package) edward v2.3.0
+- (package) dword v2.3.0
+- (package) bupdate v1.0.4
+- (package) bower v1.5.3
+- (package) gulp-jscs v3.0.0
+
+
+2015.09.27, v4.5.7
+
+fix:
+- (listeners) onPathElementClick: change path of active directory when click on path link of other panel
+
+feature:
+- (cloudcmd) Promise -> Promise.min
+- (edit) addEventListener -> addOnce
+- (edit) setMenu: preventDefault
+- (listeners) contextMenu: document -> fm
+
+
+2015.09.24, v4.5.6
+
+feature:
+- (server) remove extra layer to express
+
+
+2015.09.23, v4.5.5
+
+fix:
+- (config) alert -> Dialog.alert
+- (directory) alert -> Dialog.alert
+- (operation) setListeners: show alert on last file when error
+
+
+2015.09.22, v4.5.4
+
+fix:
+- (operation) deleteShift -> deleteSilent
+
+feature:
+- (package) socket.io v1.3.7
+- (package) edward v2.2.0
+- (package) dword v2.2.1
+- (package) dword v2.1.0
+- (package) edward v2.1.0
+
+
+2015.09.16, v4.5.3
+
+feature:
+- (package) gulp-jscs v2.0.0
+- (travis) node_js: add 4
+- (index) New directory -> New Directory
+
+
+2015.09.03, v4.5.2
+
+fix:
+- (style) .current-file box-shadow: 0.8 -> 1.5
+- (cloudcmd) config save
+
+
+2015.08.28, v4.5.1
+
+feature:
+- (cloud) _filepicker -> cloud
+- (storage) rm vk, skydrive, github, dropbox
+
+
+2015.08.26, v4.5.0
+
+fix:
+- (upload) show: scrollbar
+- (github) script src
+
+feature:
+- (menu) new - uploadFromCloud -> uploadFromCloud
+- (client) execFromModule: exec(fn) -> fn.apply
+- (menu) rework of upload to/from cloud
+- (menu) getUploadTo: remove not working items
+
+
+2015.08.25, v4.4.0
+
+fix:
+- (cloudcmd) prefix -> getPrefix(prefix)
+- (cloudcmd) listen: webconsole
+- (cloudcmd) prefix
+- (cloudcmd) do not save prefix with flag --save
+- (cloudcmd) value -> typeof value
+
+feature:
+- (cloudcmd) improve prefix support
+- (package) edward v2.0.0
+- (package) dword v2.0.0
+- (package) restafary v1.5.0
+- (package) bower v1.5.1
+- (package) minimist v1.2.0
+
+
+2015.08.21, v4.3.5
+
+fix:
+- fix(dom) getCurrentData: when could not get hash call callback with error
+
+
+2015.08.19, v4.3.4
+
+feature:
+- feature(json) add supports
+- feature(supports) add
+- feature(style) .current-file: improve feel in firefox
+
+
+2015.08.17, v4.3.3
+
+fix:
+- fix(cloudcmd) new version message
+
+feature:
+- feature(package) pipe-io v1.2.0
+
+
+2015.08.17, v4.3.2
+
+fix:
+- fix(view) showImage: getSelectedNames -> getFilenames
+
+
+2015.08.13, v4.3.1
+
+fix:
+- fix(directory) entries -> items
+
+feature:
+- feature(bin) change params order
+
+
+2015.08.11, v4.3.0
+
+fix:
+- (directory) show spinner even when no entries
+- (listeners) uploadDirectory: item.kind
+- (client) join: urls check - string -> array
+- (listeners) dragndrop: no check items.length
+- (cloudcmd) typeof undefined -> "undefined"
+- (cloudcmd) pre: add value check
+- (cloudcmd) when params.pre used, put it to options.pre
+- feature(cloudcmd) pre property deprecated
+- feature(cloudcmd) when pre=/ clear pre
+- feature(cloudcmd) add --pre
+- (operation) processFiles: files not defined
+- (dom) getFilenames: allFiles.slice -> slice.call(allFiles
+
+feature:
+- (auth) rm oldName, oldPass
+- (package) restafary v1.4.0
+- (cloudcmd) prefix property deprecated
+- (cloudcmd) when prefix=/ clear prefix
+- (cloudcmd) add --prefix
+- (package) get gulp-jscs v1.6.0 back
+- (package) gulp-jscs v2.0.0
+- (dom) getSelectedNames -> getFilenames
+
+
+2015.07.24, v4.2.0
+
+fix:
+- (buffer) cut: lenght -> length
+
+feature:
+- (listeners) add select on click'
+- (listeners) toggleSelect only when left mouse button
+- (key) rm unselectFiles
+- (dom) add unselectFiles
+- (listeners) add ability to select files with shift+click
+- (listeners) add ability to select files via mouse click
+
+
+2015.07.23, v4.1.2
+
+fix:
+- (key) double slash in path
+
+
+2015.07.23, v4.1.1
+
+fix:
+- (buffer) try copy and cut ".."
+- (key) loadDir: add "/"
+- (dom) uploadFiles: progress
+- (upload) uploadFiles
+- (listeners) onDblClick: add "/"
+- (listeners) onDblClick: add "/"
+
+feature:
+- (bower) menu-io v0.7.9
+- (query) .files height: 90% when window height less then 850px
+- (menu) show alert when try to cut/copy ".."
+- (menu) download: show alert, when ".."
+- (dom) getCurrentData: show alert when ".."
+- (cloudfunc) rm rmLastSlash
+
+
+2015.07.21, v4.1.0
+
+fix:
+- (listeners) dragndrop: toggle -> select/unselect
+- (view) series
+- (edit) show error message twice
+- (client) destroy file view even if we can not read directory
+
+feature:
+- (bower) execon v1.2.5
+- (bower) emitify v1.2.0
+- (dom) uploadFiles progress: every file -> all files
+- (util) exec: each, eachSeries
+- (package) ishtar v1.2.0
+- (package) remedy v1.2.0
+- (package) spero v1.2.0
+- (directory) improve the accuracy of upload progress
+- (bower) philip v1.3.0
+- (package) socket.io v1.3.6
+- (bower) philip v1.2.1
+- (package) add bupdate
+- (package) markdown-it v4.4.0
+- (package) add nupdate
+- (bower) philip v1.2.0
+- (bower) philip v1.1.2
+- (directory) add ability to upload directories via drag n drop in Chrome
+- (dom) uploadFiles: files -> dir, files
+- (operation) speed up
+- (css) get list of files from css.json
+- (query) add
+
+
+2015.07.13, v4.0.0
+
+fix:
+- (listeners) initKeysPanel: name missing
+
+feature:
+- (config) progress: true
+- (package) dword v1.9.0
+- (package) edward v1.9.0
+- (config) show error.message when file exist, but could not be read from home
+- (operation) speed up loading: set delete, copy, pack operations load in order
+- (package) dword v1.8.0
+- (package) edward v1.8.0
+- (package) ishtar v1.1.5
+- (package) remedy v1.1.3
+- (package) spero v1.1.4
+- (iocmd) rm
+- (cloudcmd) add progress of pack/extract operations
+
+
+2015.07.09, v3.8.1
+
+fix:
+- (dom) unpack -> extract
+- (dom) twopack: lengh -> length
+- (menu) delete: Operation.show -> CloudCmd.Operation.show
+- (rest) streamPack: root
+- (files) getConfig promise: add reject
+- (style) file names that conatains Chinese characters breaks the line
+
+feature:
+- (server) add port number check
+- (rest) callback called on success only -> callback called always
+- (listeners) onDragStart: add ability to download directories via drag n drop
+- (package) jaguar v1.1.0
+
+
+2015.07.06, v3.8.0
+
+fix:
+- (buffer) rmCutClass: forEach -> slice, forEach
+
+feature:
+- (view) add ability to view next/previous image
+- (rest) streamPack: add one-click folder download
+- (cloudcmd) disallow to view and edit ".." directory
+- (rest) rm console.log
+
+
+2015.07.04, v3.7.2
+
+fix:
+- (files) getConfig: remove Promise before resolve
+
+
+2015.07.04, v3.7.1
+
+feature:
+- (config) homedir -> os-homedir
+- (package) chalk v1.1.0
+
+
+2015.07.03, v3.7.0
+
+fix:
+- (operation) loading image
+
+feature:
+- (cloudcmd) unpack -> extract
+- (cloudcmd) jag -> jaguar: add ability to pack couple files in one directory
+- (dom) Images: add chaining
+
+
+2015.07.01, v3.6.0
+
+fix:
+- (client) when none files in the root, menu doesn't work
+- (cloudcmd) refresh: panel that would be refreshed depends on current file location
+- (dom) getPanel: when no currentFile panel is undefined
+- (cloudcmd) ignore commandl line options when --save flag set
+
+feature:
+- (config) onKey: onChange on Enter
+- (files) add getTimeoutOnce
+- (menu) show upload in two kinds of menu
+- (package) yaspeller v2.5.0
+- (package) markdown-it v4.3.0
+- (bower) promise-poyfill v2.1.0
+
+
+2015.06.27, v3.5.0
+
+fix:
+- docs(help) pre -> cloudcmd, 31337 -> 1337
+- (cloudcmd) getPre: undefined
+- feature(cloudcmd) pre could be function
+- docs(changelog) pre -> pre
+
+feature:
+- (cloudcmd) --progressOfCopying deprecated
+- (cloudcmd) progress-of-copying -> progress
+- (package) mellow v2.0.0
+- (package) flop v1.3.0
+- (cloudcmd) show progress of files removing
+- (cloudcmd) prefix could be function
+- (config) tryrequire -> readjson
+- (config) socket -> middle
+
+
+2015.06.22, v3.4.0
+
+fix:
+- (modules) domkentlist: cloudcmd -> client
+- (cloudcmd) password: double crypt
+- (cloudcmd) add password
+- feature(cloudcmd) add prefix support
+
+feature:
+- (package) should v7.0.1
+- (validate) add
+- (index) rm DOMContentLoaded
+- (cloudcmd) add prefix support
+- (config) minify: true -> false
+- (package) express v4.13.0
+
+
+2015.06.20, v3.3.0
+
+fix:
+- (auth) always show auth dialog
+
+feature:
+- (cloudcmd) add checkUpdate
+- (bin) add " "
+- (konsole) rm CloudFunc
+- (markdown) rm util
+- (config) mapCondition -> filter
+- (edit) fontSize: style -> setOption
+- (package) dword v1.6.0
+- (input) add
+- (config) add mapCondition
+- (auth) add ability to enable/disable without restart
+- (config) add os.homedir
+- (package) morgan v1.6.0
+
+
+2015.06.12, v3.2.0
+
+feature:
+- (cloudcmd) add logOut
+
+
+2015.06.11, v3.1.4
+
+fix:
+- (listeners) toggleClass -> toggle
+
+feature:
+- (view) add contextmenu to overlayclick
+
+
+2015.06.11, v3.1.3
+
+feature:
+- (tmpl) mv index, auth to html
+- (package) ponse v1.4.0
+- (html) html -> tmpl: 2 x times speed up
+
+
+2015.06.10, v3.1.2
+
+fix:
+- (dom) operation: copy/move buttons do not work
+
+
+2015.06.09, v3.1.1
+
+fix:
+- (rest) markdown: "." -> ";"
+
+
+2015.06.09, v3.1.0
+
+fix:
+- (util) check: isEmpty
+
+feature:
+- (package) checkup v1.3.0
+- (cloudcmd) speedup: execon.series -> express
+- (package) checkup v1.1.0
+- (package) add checkup back
+- (package) v1.1.0
+- (package) rm checkup
+- (package) gulp v3.9.0
+- (listeners) DOM.toggleClass -> classList.toggleClass
+- (bower) add domtokenlist-shim
+- (util) exec.with: callback.bind -> bind.apply
+- (util) exec.with: arguments[0] -> slice.call(arguments)
+- (dom) rm addClass, removeClass
+- (dom) loading, error: DOM.add/removeClass -> classList.add/remove
+- (dom) Images.show.error: jqXHR -> text
+
+
+2015.06.04, v3.0.4
+
+feature:
+- (package) join-io v1.4.0
+- (bower) add vk-openapi
+- (github) add from bower
+- (package) execon v1.2.0
+
+
+2015.06.02, v3.0.3
+
+fix:
+- (cloudcmd) load listener do not removed after load
+- (dom) loadRemote: window[o.name] -> o.name && window[o.name]
+- (listeners) contextMenu: event is undefined
+- (operation) load image do not hide when operation done loading
+
+feature:
+- (style) .fm: cursor default for ff
+- (style) current file: loocks similar on chrome and ff
+- (dom) resize: set current file on left panel, when right panel is active on resizing, and size is to small for two panels
+- (dom) sendDelete: add Images.show
+- (package) yaspeller v2.4.0
+
+
+2015.05.31, v3.0.2
+
+fix:
+- (operation) error listeners do not removed
+
+
+2015.05.29, v3.0.1
+
+fix:
+- (markdown) root -> DIR + root
+- (markdown) set root when reletive path
+- (rest) isRootWin32: no root directory check
+- (markdown) root
+
+feature:
+- (bin) --progress-of-copying, --no-progress-of-copying
+
+
+2015.05.28, v3.0.0
+
+fix:
+- (show) position -> pos
+- (menu) did not show when button pressed
+- (edit) setMenu: try to show before MenuIO loaded
+- (konsole) error when multiple key "~" down
+
+feature:
+- (img) config: progress of copying
+- (cloudcmd) add progress-of-copying
+- (cloudcmd) add progress of copying
+- (dom) processMessage -> message
+- (style) loading::after bottom: 3px -> 5px
+- (listeners) rm online
+- (dom) CurrentInfo: add isOnePanel
+- (konsole) rm DOM.loadJquery
+- (package) gulp-jshint v1.11.0
+- (package) gulp-mocha v2.1.0
+
+
+2015.05.22, v2.9.3
+
+fix:
+- (config) save: json -> jonny
+- (menu) show menu on path
+- (listeners) initKeysPanel: fn not a function
+- (dom) getCurrentByPosition: current not LI
+
+feature:
+- (file) add data-name
+- (listeners) rm onContextMenu
+- (style) body: overflow hidden
+
+
+2015.05.22, v2.9.2
+
+fix:
+- (config) json -> jonny
+
+feature:
+- (bower) Util.render -> rendy
+- (rendy) v1.1.0
+- (files) rm set
+
+
+2015.05.19, v2.9.1
+
+fix:
+- (config) id="auth" -> data-name="js-auth"
+
+feature:
+- (img) add one-panel-mode
+
+
+2015.05.15, v2.9.0
+
+fix:
+- (key) ctrl + u: open view-source of a browser
+- (cloudcmd) could not start because undefined is not supported editor
+
+feature:
+- (package) restafary v1.3.0
+- (cloudcmd) root could be changed without restarting
+- (config) add root
+
+
+2015.05.14, v2.8.0
+
+fix:
+- (dom) processFiles refresh: add callback
+- (cloudcmd) show "root: undefined", when argument "--root" is absent
+- (edit) setValueFirst before edward loaded
+- (dom) getCurrentSize: <dirundefined
+
+feature:
+- (dom) add goToDirectory
+- (package) copymitter v1.8.0
+- (package) copymitter v1.7.0
+- (modules) jquery v2.1.4
+- (style) border: .panel and .cmd-button -> .panel, .cmd-button
+- (dom) add swapPanels
+- (dom) duplicatePanel: show content of directory under cursor in target panel
+- (dom) changePanel: element -> name
+- (client) loadDir: image position on top, when no history
+- (package) yaspeller v2.2.0
+- (listeners) rm appStorage
+- (package) gulp-jscs v1.6.0
+- (package) yaspeller v2.1.0
+- (index) make directory -> new directory
+
+
+2015.04.24, v2.7.1
+
+feature:
+- (package) markdown-it v4.2.0
+
+
+2015.04.24, v2.7.0
+
+fix:
+- (rest) auth: array, name -> name, array
+- (auth) lib/promise.js -> modules/promise-polyfill/Promise.js
+
+feature:
+- (binom) Util.findObjByNameInArr -> binom
+- (binom) add
+- (panel) id -> data-name
+- (cloudfunc) rm LEFT, RIGHT
+- (dom) processFiles: add ask before overwriting
+- (client) rm MousePosition
+- (travis) rm before_install
+- (package) should v6.0.1
+- (package) yaspeller v2.0.1
+
+
+2015.04.17, v2.6.0
+
+fix:
+- (bin) online: string -> boolean
+- (files) config read only once and do not sync with server even when server reloads
+
+feature:
+- (yaspeller) dictionary: add dword, edward
+- (cloudcmd) "port should be a number" -> "cloudcmd --port: should be a number"
+- (cloudcmd) add editor
+- (dword) v1.5.0
+- (package) edward v1.6.0
+- (edit) rm clearSelection
+- (yaspeller) dictionary: add minification
+- (cloudcmd) add --minify, --no-minify
+- (config) add sync via sockets
+
+
+2015.04.14, v2.5.1
+
+fix:
+- (view) images with upper case extension are not recognized as images
+- (contact) window could not be closed
+- (view) audio, video has no focus, when open by mouse
+
+feature:
+- (config) id -> data-name
+- (view) isAudio: add m4a
+- (view) rm FocusWas
+- (exit) add
+- (server) add error listener
+- (cloudcmd) root: add directory check
+- (cloudcmd) args: add check of unknown options
+
+
+2015.04.09, v2.5.0
+
+fix:
+- (root) pathToWin only when root dir
+- (readme) use mini-badge for package-quality instead of large badge
+
+feature:
+- (package) gulp-jscs v1.5.0
+- (man) add
+- (cloudcmd) root: show root, when not "/"
+- (config) add root
+- (cloudcmd) show root directory when used flag --root
+- (root) rm path
+- (client) createFileTable: history -> options (history, noCurrent)
+- (cloudcmd) add command line parameter --root
+- (cloudcmd) dword, edward: add root
+- (root) add condition dir and root
+- (package) mellow v1.3.0
+- (config) tryrequire -> try-catch
+- (package) mellow v1.1.0
+- (package) restafary v1.2.0
+- (cloudcmd) add --root
+- (config) tryrequire -> try-catch
+- (server) rm socket condition
+- (package) gulp-jshint v1.10
+- (package) markdown-it v4.1.0
+- (package) bower v1.4.1
+
+
+2015.04.03, v2.4.2
+
+fix:
+- (bin) add " "
+- (cloudcmd) online: on -> o
+- (bin) --no-online: do not load -> load
+- (bin) --no-online: load -> do not load
+
+feature:
+- (cloudcmd) rendy -> %s
+- (bin) output -> display
+- (bin) options -> configuration
+- (cloudcmd) add -c, --config
+
+
+2015.03.28, v2.4.1
+
+feature:
+- (client) rm throw when no callback
+
+
+2015.03.28, v2.4.0
+
+fix:
+- (client) loadDir: changePanel even when noCurrent is true
+
+feature:
+- (modules) add
+- (bin) -ps -> -p, -p -> --port
+- (rest) onPut: forEach -> RegExp
+
+
+2015.03.26, v2.3.1
+
+fix:
+- (cloudcmd) auth always false
+
+
+2015.03.26, v2.3.0
+
+fix:
+- (listeners) pop: event.state could be null
+- (cloudcmd) port: port -> number
+
+feature:
+- (docs) zip -> tar.gz
+- (bin) add --no-online, --no-auth, --no-server
+- (bin) add --noserver
+- (bin) add --no-server
+- (bin) add --online, --offline
+- (bin) add --auth, --no-auth
+- (bin) add --username, --password, --save
+- (config) save stringify: add 4
+- (config) add algo
+- (package) copymitter v1.6.0
+- (appveyor) io.js: 1.0 -> 1
+- (route) rm checkup
+- (util) rm getTime
+- (util) rm checkExt
+- (util) applyConstructor: util -> client
+- (config) add .full-width
+- (json) rm ext, edit
+
+
+2015.03.19, v2.2.1
+
+fix:
+- (contact) hide: infinite loop
+- (buffer) cut: when cut root directory, it became transparent
+- (dom) processFiles: when names.length !== 1 name is undefined
+- (gulp) add docs
+- (util) render: clean up regexp: lazy -> greedy
+
+feature:
+- (npmignore) add
+- (appveyor) appveyor.yml -> .appveyor.yml
+- (appveyor) add
+- (travis) rm gulp
+- (travis) npm start -> npm test
+- (place) v1.1.2
+- (modules) socket.io v1.3.5
+- (package) markdown-it v4.0.1
+- (yaspeller) dictionary: Dword
+- (package) rm ashify
+- (package) rm patchfile
+- (package) engines: 0.6 -> 0.10
+- (package) publish-io -> wisdom
+- (package) scripts: add publish-io
+- (gulp) rm changelog, package
+- (config) add editor
+- (config) rm span
+- (config) username, password: add title
+- (gulp) add bower support
+- (modules) rm
+
+
+2015.03.13, v2.2.0
+
+fix:
+- (dom) renameCurrent: when there is file with same name - two same names is shown on a panel
+- (travis) script: node -> npm
+- (key) open konsole on mac with cyrillic
+- (key) all keys are dots
+- (key) listener: dot on win
+- (edit) show: name -> Info.name
+- (edit) show: set mode before data set
+- (view) .fancybox-overlay: set z-index: 0
+- (edit) Edit.goToLine -> edward.goToLine
+- (dom) processFiles: change panel in wrong way
+- (util) getRegExp
+- (cloudcmd) twopack: add ".." check
+- (util) some: add return
+
+feature:
+- (yaspeller) add
+- (travis) rm 0.10
+- (package) scripts: add gulp
+- (package) Util.json -> jonny
+- (package) Util.check -> checkup
+- (route) add execon
+- (rest) add try-catch
+- (key) setCurrentByLatter: add "-, +, ="
+- (config) add editor
+- (travis) before_install: add bower
+- (package) dword v1.3.2
+- (edit) go to line: Ctrl+G -> Ctrl+L
+- (package) dword v1.2.0
+- (package) edward v1.4.0
+- (cloudcmd) create: rm predefined key commands
+- (package) marked -> markdown-it
+- (dword) add
+- (package) edward v1.3.0
+- (package) console-io v2.2
+- (package) express v4.12
+- (bower) menu v0.7.8
+- (package) edward v1.2.0
+- (jshintrc) rm indent, not supported anymore by jshint
+- (jshintrc) add indent: 4
+- (jscsrc) add excludeFiles
+- (gulp) add jscs
+- (package) add format-io v0.9.6
+- (bower) add format-io
+- (modules) add promise-polyfill
+- (jscsrc) requireCapitalizedConstructors
+- (terminal) rm
+- (jscsrc) add disallowTrailingComma
+- (jscsrc) add
+- (rest) copy: add progress
+- (util) findObjByNameInArr: add arguments check
+- (package) rm charm
+- (rest) copy: add progress
+- (package) should v5.0.0
+- (package) copymitter v1.5.0
+- (cloudcmd) get back droid sans mono v5: beter better cyrillic support
+- (client) refresh: add noCurrent
+- (rest) flop.cp -> copymitter
+- (travis) add 0.12, iojs
+- (package) socket.io v1.3.3
+- (bower) menu v0.7.7
+- (bower) menu v0.7.6
+- (font) Droid Sans Mono v7
+- (package) rm checkup
+
+
+2015.02.02, v2.1.0
+
+fix:
+- (listeners) dragndrop: upload files from downloads bar
+- (poyfill) removeListener -> Events.remove
+- (modules) pako version: 1.2.1 -> 0.2.5
+- (edward) Options -> Config
+- (dom) getNotCurrentDirPath: getPanel -> getPanel({active:false})
+- (dom) getCurrentName: title || textContent -> innerHTML, decodeEntities
+- (cloudfunc) encodeEntities: add "<", ">"
+- (cloudfunc) encode space before render: " " -> "&nbsp;"
+- (load) add arraybuffer check
+- (events) addOnce: do not remove listener when to arguments
+- (util) render: do not remove empty blocks "{{", "}}"
+- (util) indexOf -> ~indexOf
+
+feature:
+- docs(help) edit: rm s
+- (edit) setMsgChanged: add " "
+- (package) edward v1.1.0
+- (emmet) rm
+- (package) mellow v1.0.0
+- (pako) rm
+- (util) type: regexp speed up
+- (edward) v1.0.0
+- (edward) rm
+- (package) edward v0.6.0
+- (cloudcmd) edward: size, socket -> socket, {size}
+- (package) edward v0.5.0
+- (iocmd) +x
+- (package) edit -> edward
+- (darwin) DOM.getDataFromStorage -> story
+- (events) rm preventDefault
+- (util) rendy: improve speed
+- (util) render: speed up in 10 times
+- (edward) isChanged: rm confirm, save
+- (edward) add on
+- (zip) zip -> zipio
+- (bower) rm google-diff-match-patch
+- (edit) rm showMessage
+- (edit) rm setValueFirst, goToLine
+- (edward) rm CloudFunc
+- (edward) add save, patch from edit
+- (package) socket.io v1.3.2
+- (package) console-io v2.0.0
+- (package) should v4.6
+- (package) express v4.11
+- (package) execon v1.1.0
+- (bower) load v1.1.3
+- (load) add
+- (edward) add jshint, emmet from edit
+- (iocmd) add
+- (package) bin: add iocmd
+- (edward) mv sha from edit
+- (edit) RESTful -> restafary
+- (package) restafary v1.1.0
+- (style) body - rm overflow: hidden
+- (edward) rm hideMenu
+- (edit) mv menu back from edward
+- (edward) add hideMenu
+- (edward) add setMenu
+- (edward) add onDrop
+- (edward) setUseOfWorker
+- (edward) ed -> edward
+- (edit) rm Ace, Session
+- (edward) DOM.load -> documentFragment
+- (edward) add showMessage
+- (edward) add .edward-msg
+- (edward) add
+- (edward) add
+- (util) rm replaceStr
+- (util) rm rmStr
+- (util) rm getDate, getShortDate
+- (util) rm log
+- (client) rm Util.log
+- (server) rm util
+- (package) rm daffy, diff-match-patch
+- (patch) add from npm
+- (patch) util -> checkup, execon
+- (bower) add jsSHA from bower
+- (package) add daffy from npm
+- (patch) rm tryRequire
+- (util) rm strCmp
+- (route) Util.strCmp -> RegExp.test
+- (cloudcmd) Util.render -> rendy
+- (package) add diff-match-patch from npm
+- (polyfill) rm DOM.cssSet
+- (edit) Info.path -> FileName
+- (edit) Util.log -> console.error
+- (jquery) rm duplicate
+- (modules) add pako
+- (modules) menu v0.7.5
+- (bower) add modules
+- (tryrequire) add from npm
+- (link) add title
+- (jshint) add validthis
+- (cloudfunc) entities: add ampersand
+- (cloudfunc) add decodeEntities
+- (modules) jquery v2.1.3
+- (changelog) add "changelog: done"
+- (changelog) add prepend
+- (package) changelog-io v1.3.4
+- (util) type: add null, mv back object
+- (util) rm rmStrOnce
+- (util) rm slice
+- (events) Util.slice -> [].slice, Util.check -> check, Util.type -> type
+- (util) rm forEach
+- (package) should v4.4.1
+- (util) rm ownRender
+- (index) speed up event: load -> DOMContentLoaded
+
+
+2014.12.09, v2.0.0
+
+fix:
+- (github) athorize
+- (cloudfunc) rmLastSlash: remove even when str consist of one slash
+- (config) do not crypt password when save with sockets
+- (put) check -> checkup
+- (edit) err: error -> error.message
+- (config) onLocalStorageChange map: el, number -> getById id, el
+- (config) socket emit: error -> err
+- (edit) wrong file name on win
+- (cloudcmd) join: add dir
+- (edit) could not save when diff disabled in options
+- (tryRequire) tryCatch: return error
+- (storage) if to much data -> exeption
+
+feature:
+- (cloudcmd) speed up: RegExp.test -> indexOf
+- (hash) hash -> ashify
+- (edit) rm tryRequire
+- (route) rm tryRequire
+- (package) rm js-beautify
+- (fs) fs -> restafary
+- (rest) ponse: rm notLog
+- (rest) rm tryRequire
+- (github) github -> faust
+- (packer) packer -> jag
+- (github) rm tryRequire
+- (ssl) change mode
+- (config) rm tryRequire
+- (packer) rm tryRequire
+- (package) join-io v1.3
+- (package) console-io v1.11
+- (package) minify v1.4.0
+- (package) add mollify
+- (dom) Images load: top true -> "top"
+- (dom) images show.load: top true -> "top"
+- (dom) showLoad, showError -> show.load, show.error
+- (config) add traverse
+- (package) http-auth v2.2.3
+- (package) gulp-recess v1.1.1
+- (package) should v4.3.0
+- (package) gulp-mocha v2.0.0
+- (package) gulp-jshint v1.9.0
+- (package) rm dropbox
+- (put) Util -> exec, check
+- (put) rm file
+- (cloudcmd) bin: add minimist
+- (cloudcmd) bin: rm description
+- (package) tryRequire -> require
+- (tryRequire) rm module.parent.filename
+- (cloudcmd) rm tryRequire
+- (config) err: Error -> str
+- (config) log -> alert
+- (beautify) / -> path.sep
+- (package) rm nicki
+- (modules) socket.io v1.2.1
+- (files) add from npm
+- (ponse) add from npm
+- (tryRequire) add module name
+- (pipe) add pipe-io from npm
+- (package) rm mkdirp
+- (package) rm rimraf
+- (join) add from npm
+- (flop) add from npm
+- (edit) socket err: log -> alert
+- (ischanged) rm
+- (mellow) add from npm
+- (tryRequire) options: add exit
+- (time) time.get -> time
+- (size) size.get -> size
+
+
+2014.11.21, v1.5.1
+
+fix:
+- (pipe) if error when write to file -> exeption
+- (storage) if to much data -> exeption
+- (edit) could not save when diff disabled in options
+- (edit) wrong file name on win
+
+feature:
+- (edit) when error: emmit error.message
+- (edit) socket err: log -> alert
+- (ischanged) rm
+
+
+2014.11.19, v1.5.0
+
+fix:
+- (util) check: add check
+- (ncp) call cb only if no case is suitable
+
+feature:
+- (gulp) add place from npm
+- (cl) cl.getVersion -> cl
+- (cl) save Version after first call
+- (gulp) release: add --major, --minor, --patch
+- (put) rm deprecated patch
+- (auth) rm deprecated oldSha
+- (util) exec.if: rm condition
+- (package) minify v1.3.0
+- (package) minify v1.2.0
+- (shell) rm log.sh
+- (util) check: add indexOf undefined
+- (package) console-io v1.10.0
+- (package) minify v1.1.0
+- (dom) loadRemote options: add name
+- (shell) rm install-dev
+- (edit) patch: add socket sync
+- (edit) keep cursor on same position after remote patch
+- (edit) patch: add socket
+- (edit) ace: add elixir, elm
+- (edit) ace v1.1.8
+- (package) add local ncp
+- (package) should v4.2.1
+- (package) morgan v1.5.0
+- (edit) add socket
+- (edit) save -> Edit.save
+- (ponse) send: rm unused isGzip
+- (config) add sockets
+- (dom) loadRemote: add options
+- (load) rm xhr.responseText overwriting
+- (config) set value after receive response about saving
+- (files) set: callback -> Util.exec
+
+
+2014.11.05, v1.4.1
+
+fix:
+- (auth) show deprecated when password wrong
+- (files) if module not received always show error
+- (config) passwd -> password
+- (packer) pack: add error handler
+- (mellow) always add slash to end
+- (dom) when create archive do not set current on it: .gz -> .zip
+- (client) ajaxLoad: when refresh callback not called
+- (dom) renameCurrent: if name ".." show dialog -> alert
+- (client) ajaxLoad: set same current file after refresh
+- (client) createFileTable: when name of subdir same as parrentdir it is became current after changing directory
+
+feature:
+- (util) getShortDate: if day <= 9 add 0
+- (gulp) package add from npm
+- (menu) v0.7.4
+- (font) add woff2
+- (auth) add warning about changing password
+- (menu) rm json
+- (config) rm analytics
+- (util) init Util only if it is not present in global scrope
+- (auth) password: sha1 -> sha512WithRSAEncryption
+- (package) nicki v1.2.0
+- (util) checkArgs -> check
+- (util) checkArgs speed up: rm while
+- (pipe) options: notEnd -> end
+- (util) checkArgs speed up: for -> while
+- (files) add pipeFiles from pipe
+- (pipe) add all
+- (pipe) create: init isFsWrite on start
+- (rest) zip, unzip -> pack, unpack
+- (pipe) rm Util.exec
+- (pipe) pipe.create -> pipe
+- (fstream) rm
+- (gulp) changelog: add from npm
+- (menu) v0.7.3
+- (util) rm convertName
+- (gulp) changelog: changelog should be created if absent
+- (package) console-io v1.9.0
+- (package) socket.io v1.2.0
+- (cloudfunc) rm: addNewLine, rmNewLine
+- (util) mv getStrBigFirst to CloudFunc
+- (util) rm retFalse
+- (util) rm tryLog, logError
+- (util) rm logArray
+- (zip) pako v0.2.5
+- (util) rm isContainStr
+
+
+2014.10.28, v1.4.0
+
+fix:
+- (route) /fs -> ^/fs
+- (mellow) c: -> c:\
+- (server) when no express, middleware no respond but init on every request
+- (rest) read regExp: .? -> \?
+- (key) switchKey: command -> ctrlMeta
+- (edit) setModeForPath: setJsHint after mode was set
+- (cloudcmd) url: /cloudcmd -> /
+- (dom) changePanel: after copy/move on tab, panel changed to ".."
+- (dom) set current file after copy/move
+- (key) firefox: keyIdentifier -> key
+
+feature:
+- (util) rm isContainStrAtBegin
+- (cloudfunc) rm rmFirstSlash
+- (sha) add
+- (package) express v4.10
+- (analygics) ga -> analytics
+- (rest) fs: add PATCH
+- (config) http method: put -> patch
+- (beautify) "Supported file types" -> "File type not supported"
+- (edit) add minify
+- (beautify) add config, that could be read from ~/.beautify.json
+- (beautify) error message
+- (edit) beautify: add clearSelection, moveCursor to begin
+- (beautify) add
+- (edit) add beautify
+- (key) do not set current ".." when dot pressed
+- (key) setCurrentByLetter: add "_"
+- (key) rm disable/enable key bindings keys
+- (key) rm chaining
+- (key) add chaining
+- (config) rm server
+- (cloudcmd) start: isServer, config -> start: config
+- (cloudcmd) isNaN(port): throw -> console.error
+- (server) if !ip in config, log localhost
+- (package) morgan v1.4.0
+- (terminal) pty: rm log
+- (nicki) add from npm
+- (tryRequire) options: add callback
+- (menu) rm keys, becouse of firefox strange behavior
+- (menu) show hot keys in menu
+- (menu) v0.7.0
+- (config) mv serve from rest
+- (dom) getCurrentFileByName -> getCurrentByName
+- (package) ncp v1.0.0
+- (config) default path: ~/.cloudcmd.json
+- (key) ctrl || meta -> ctrlMeta
+- (key) selectByLetter: add "."
+- (key) setCurrentByLetter: add not English chars
+- (key) add Insert for Mac
+- (key) add suport of mac Command key
+- (patch) add
+- (edit) beforeClose: if -> ifExist
+- (util) ifExist: args -> [args]
+- (dom) uploadFiles: set current uploaded file
+- (client) createFileTable: add getCurrentFileByName
+- (config) disable username and password if auth unchecked
+- (config) .config .form-control: rm background-color
+- (config) .config .form-control: add width 200px
+- (client) refresh: current, panel[, callbac]k -> panel[, callback]
+- (rest) write: url, data, callback / url, callback
+- (dom) promptNew: set current new file/folder
+- (edit) add setValue, setMode, setModeForPath
+- (edit) show: rm value
+
+
+2014.10.2, v1.3.2
+
+fix:
+- (buffer) copy, or cut, after cut, do not prevent previous cutting
+- (dom) uploadFiles: checkArgs
+- (edit) twice load edit.json
+- (config) css: add pre
+- (view) css: add pre
+- (edit) jshintrc pre
+- (client) goToParentDir: when parent is root
+
+feature:
+- (config) .config: add padding 0, width: 300 -> 250
+- (konsole) ^P: rm last slash from path
+- (upload) js-upload -> upload-css
+- (dom) uploadFiles: add
+- (modules) add menu cdn
+- (menu) new: "From FilePicker" -> "From Cloud"
+- (icons) add upload icon
+- (upload) add
+- (view) audio: rm width - bad for chrome, add margin-top - good for firefox
+- (util) Util.is* -> Util.type.*
+- (menu) v0.6.4
+- (util) parseJSON -> json.parse, stringifyJSON -> json.stringify
+- (edit) ace v1.1.7
+- (urls) change url: "/" -> "../"
+- (css) add urls
+- (terminal) location.origin -> CloudCmd.HOST
+- (util) rm retParam, removeListener, addListener
+
+
+2014.09.22, v1.3.1
+
+fix:
+- (route) showKeysPanel
+- (cloudcmd) add auth data
+- (cloudcmd) minify: DIR -> DIR_ROOT
+- (express) if !config condition
+- (server) config
+
+feature:
+- (tryRequire) name, callback -> name, options
+- (package) morgan: mv to devDependencies
+- (travis) rm webhooks
+- (package) console-io v1.8.0
+- (auth) add config
+- (edit) edit.json: add prefix
+- (index) add prefix
+- (cloudcmd) add prefix to all urls
+- (cloudcmd) index.html -> lib/client/cloudcmd.js
+- (auth) express -> auth
+- (github) auth -> github
+- (config) rm socket
+- (cloudcmd) add middleware
+- (cloudcmd) cloudcmd -> lib/cloudcmd
+- (dom) add window
+
+
+2014.09.18, v1.3.0
+
+fix:
+- (edit) define -> ace.define
+- (listeners) onDblClick: add rm last slash
+- (client) goToParentDir: rm FS
+- (menu) download: toggle selection of file only if file was selected
+- (key) TRA: add condition
+- (cloudcmd) add gzip to index
+- (server) spdy: return
+- (server) spdy: createServer
+- (ponse) redirect: setHeader -> fillHeader
+- (style) @media height: 640px .fm height: 75%
+- (listeners) Console.show -> Konsole.show
+- (package) scripts start: cloudcmd.js -> bin/cloudcmd.js
+- (socket) require: socket.io, Util -> Util, socket.io
+
+feature:
+- (dom) add pack, unpack -> twopack
+- (client) refresh: add callback
+- (server) "Server runngin" -> "url"
+- (view) add audio width: 100%
+- (ponse) add static
+- (update) rm
+- (cloudcmd) rm win.prepareCodePage
+- (modules) ace v1.1.6
+- (cloudcmd) test: true -> server: false
+- (config) rm logs
+- (main) rm
+- (config) add
+- (server) exports.start -> module.exports
+- (cloudcmd) exports.start -> module.exports
+- (markdown) exports.operate -> module.exports
+- (route) readFiles on every route
+- (route) readFiles: rm callback
+- (route) add
+- (cloudcmd) mv rest to server
+- (modules) ace: noconflict -> min
+- (edit) ace v1.1.6
+- (package) gulp-mocha v1.1.0
+- (socket) rm
+- (terminal) add room /terminal
+- (server) socket -> io
+- (socket) rm
+- (socket) if connected dispatch connect listeners
+- (load) add "-join" if ":" in name
+- (edit) load: load.js([url]) -> load.js(url)
+- (readify) lstat -> stat
+- (cloudcmd) fs: add realpath
+- (ponse) generateHeaders: add Content-Length
+- (ponse) sendFile: if !isGzip add length
+- (pack) add str check
+- (server) webconsole: add isOnline
+- (package) console-io v1.7.0
+- (readify) sort: always, not only on win
+- (package) gulp-mocha v1.0.0
+- (package) express v4.9.0
+- (ssl) rm
+- (shell) rm unused
+- (key) change logs
+- (dom) add getActiveFiles
+- (menu) Zip -> Pack
+- (rest) put response: no gzip, content, content-type: plain text
+- (rest) delete add: gzip: false, name .txt
+- (cloudcmd) when send file from fs: gzip false
+- (pack) add ability pack and unpack folders
+- (client) createFileTable: add error check
+- (tryRequire) add
+- (main) rm DIR, require, etc
+- (update) rm main
+- (server) rm spdy
+- (server) add spdy support
+- (style) body, pre, code: set font
+- (cloudcmd) drop ssl suport
+- (style) @media 360px x 640px .fm, .files
+- (package) morgan v1.3.0
+- (menu) download: selected and current files
+- (style) @media .files: height 90%
+- (style) .fm @media: height
+- (style) .minif-icon @media max-width 600px: padding 1%
+- (style) .fm: height
+- (style) add @media max-height: 400px
+- (package) socket.io v1.1.0
+- (package) rm heroku Procfile
+- (format) rm duplicate
+- (format) permissions if: perms -> perms !== undefined
+- (package) add engine
+- (console) consle -> console-io from npm
+- (console) rm unbind
+- (console) add socket, change socket api: callback last
+- (socket) main -> tryRequire
+- (console) add onMsg
+
+
+2014.08.29, v1.2.0
+
+fix:
+- (dom) processFiles: remove from storage path with slash
+- (dom) processFiles: remove storage only if move
+- (spawnify) setSpawn: addNewLine
+- (dom) panel refresh when buffer used
+- (util) checkArgs: add length check first
+- (markdown) add DIR_ROOT
+- (dom) selectByPattern: last selected file
+- (markdown) rm main
+- (pipe) getBody: call callback twice - error, close
+- (cloudcmd) show help and start
+- (util) exec.parallel double callback
+- (ischanged) add "/" on win
+- (files) add regExp separator
+- (join) regexp: ":" -> "(:|/)"
+- (ischanged) util-io -> util
+- (ischanged) make dir first and then do things
+- (ischanged) path: relative -> absolute
+- (commander) if could not parse /etc/passwd - leave uid
+- (ponse) generateHeaders: ext -> extionsion
+- (client) refresh: init panel
+- (join) ^/join -> ^/join/
+- (files) read: two arguments is a must
+- (ischanged) first argument in callback: error
+- (console) add processing of ";"
+- (console) cd to full path
+- (console) cd to ~ and do something else
+- (console) cd: if error in one of shell commands change directory
+- (console) change dir if current dir removed
+- (console) onCD: add addNewLine
+
+feature:
+- (config) add dirStorage
+- (buffer) if buffer disabled, and copy, cut, paste, clear shows alert
+- (config) add buffer
+- (buffer) paste: "No files selected" -> "Buffer is empty!"
+- (dom) copy, move files: add spinner
+- (buffer) add cut and clear
+- (menu) Cut and Copy only when right click on a file
+- (menu) change menu order
+- (icons) add cut, paste
+- (buffer) move -> cut
+- (menu) add Copy, Move, Paste
+- (buffer) add
+- (key) add copy, cut to buffer; paste from buffer
+- (dom) processFile: rm from storage only if operation is move
+- (spawnfiy) setSpawn: rm addNewLine
+- (spawnify) callback: json -> error, json
+- (server) rm nodester
+- (put) add checkArgs
+- (main) rm diff
+- (main) rm rest
+- (cloudcmd) rm appCache
+- (rest) for-in -> forEach
+- (rest) JSONDIR -> DIR_JSON
+- (fstream) rm main
+- (console) module.exports: rm ret
+- (spawnify) exec, cd -> spawnify, rm onCloudCmd
+- (terminal) exports.init -> module.exports
+- (console) exports.init -> module.exports
+- (console) regExp: match -> test
+- (spawnify) add checkArgs
+- (spawnify) add
+- (pawn) error, stderr, stdout -> error, stdout, stderr
+- (pawn) add
+- (rest) regExp: match -> test
+- (join) regExp: match -> test
+- (console) regExp: match -> test
+- (files) regExp: match -> test
+- (edit) regExp: match -> test
+- (util) checkExt: match -> test
+- (console) add checkArgs
+- (console) Util.exec -> callback
+- (util) rm checkObj, checkObjTrue
+- (ponse) getQuery, checkParams: rm checkObjTrue
+- (ponse) redirect: params -> url, response
+- (rest) isContainStr -> regExp
+- (server) add controller.midle to express app
+- (main) rm CloudFunc
+- (main) rm Util
+- (express) rm main
+- (express) add static
+- (package) minify v1.0.0
+- (package) minify v0.9.0
+- (main) rm crypto, zlib, url
+- (main) rm http, https, querystring
+- (main) rm WIN32
+- (main) rm fs
+- (nicki) users -> nicki
+- (ncp) add from npm v0.6.0
+- (main) rm pipe
+- (console) spawn processes on win
+- (readify) commander.getDirContent -> readify
+- (commander) sort files on win
+- (gulp) mv to files
+- (log) if no s or not fixes do not add to changelog
+- (gulp) if no s or not fixes do not add to changelog
+- (ischanged) add normilize of path
+- (minify) rm isChanged, isExist
+- (minify) update Minify to v0.8.0
+- (package) minify v0.8.0
+- (main) rm crypto
+- (ischanged) try use mkdirp
+- (ischanged) change dir to tmp
+- (ischanged) rm log
+- (ischanged) rm main
+- (ischanged) rm Util.log
+- (users) time -> ischanged
+- (timem) time -> timem
+- (main) rm ischanged
+- (ischanged) ischanged.isFileChanged -> ischanged
+- (join) isJoinFile
+- (join) /join/ -> /join:
+- (join) add
+- (join) mv from cloudfunc
+- (rest) rm checkParams
+- (repl) add
+- (ponse) mv req, res functions to ponse
+- (main) rm checkCallBackParams
+- (main) sendResponse: params, data, notLog -> data, params, notLog
+- (main) gzip only when need
+- (main) sendError: params, error -> error, params
+- (join)  before, req, res, next -> before
+- (cloudfunc) rm isJoinURL
+- (files) readPipe: change arguments order
+- (package) gulp-recess v1.0.0
+- (package) gulp-jshint v1.8.4
+- (load) getIdBySrc: "_" -> "-"
+- (package) express v4.8.2
+- (console) add optional glob for wildcard parsing
+- (console) change directory to ~ + wildcard
+- (console) find path when wildcard present
+- (util) add getRegExp [from wild card]
+- (console) change directory and do something after ";, &&, ||"
+- (console) cd to couple-words-names directories
+- (console) change directory && do something
+- (main) rm console
+- (main) rm express
+- (socket) connect: rm host
+- (package) morgan v1.2
+- (cloudcmd) add -h, --help
+- (package) minify v0.7.0
+- (config) rm rest
+- (cloudcmd) add -p, --port
+
+
+2014.07.18, v1.1.1
+
+fix:
+- (gulp) replaceVersion: add callback
+- (minify) optimize isExist: fs.exists -> fs.lstat
+- (load) load funcError: could be no callback
+- (client) disable localStorage
+- (console) onMessage: change directory to "some-name*"
+- (minify) optimize isExist: error always null
+- (console) check prompt before create
+- (console) setSpawn sendError: send full error
+- (console) addListeners disconnect: check prompt state before abort
+
+feature:
+- (gulp) readme -> docs
+- (gulp) add docs
+- (gulp) add release
+- (gulp) add package
+- (gulp) changelog: add version
+- (config) add onDiffChange
+- (config) unset diff on localStorage disabling
+- (cloudcmd) start: add ability to override default config
+- (package) express v4.6.1
+- (package) gulp-mocha v0.5.0
+- (package) gulp-jshint v1.7.1
+- (cloudcmd) add -v, --version
+- (cloudcmd) test -> --test
+- (cloudcmd) add exports.start
+- (bin) cloudcmd -> cloudcmd.js
+- (edit) ace v1.1.5
+
+
+2014.07.10, v1.1.0
+
+fix:
+- (listeners) onTouch: add path
+- (console) getOnMessage: if isSymbol do not cd
+- (console) onCD callback
+- (console) getOnMessage onCD: if error do not change path
+- (client) loadModule: corrupted CloudCmd[name] on error
+- (dom) getCurrentPath fs: rmStr -> rmStrOnce
+- (commander) getAllStats: do not get response when folder is empty
+- (dom) getCurrentPath: wrong path when width changed panels: two  -> one
+- (mellow) convertPath: add last slash to files
+- (dom) loadCurrentSize: show load
+- (rest) unzip: if !to
+- (rest) zip file if !to
+
+feature:
+- (console) add clear with Ctrl + l
+- (console) add ability to use CD on windows
+- (console) change volume in windows
+- (package) express v4.5
+- (commander) getDirContent: add checkType
+- (util) checkArgs: return this
+- (util) add checkType
+- (util) exec.parallel: add ability to take and return object
+- (commander) add parseStats
+- (win) restore codepage before quit
+- (gitignore) add npm-debug.log
+- (img) update
+- (img) update t v1.0.0
+
+
+2014.07.3, v1.0.0
+
+fix:
+- (console) handler: add new prompt on empty command
+- (console) Ctrl + Z: abort -> setPromptText
+- (dom) processFiles: send request if canceled
+- (console) ctrl + z: abort
+- (console) setSpawn: always send result
+- (console) emit message on cd
+- (listeners) history
+- (server) respond: change funcs before call
+- (client) refresh: add "/"
+- (client) refresh: rm FS
+- (client) ajaxLoad: mv rmStr FS to js-path-link
+- (client) refresh: add nohistory
+- (cloudcmd) add ability work with % path
+- (files) getModules: add FILES_HTML_ROOT to regExp
+- (size) onReaddir: add dir
+- (size) rm isFile
+- (flop) copy: conditions
+- (view) getMediaElement: CloudCmd.getTemplate -> DOM.Files.get
+- (mellow) add last slash only on win
+- (win) getVolumes: add stdin.end
+- (mellow) convertPath: add slash to end
+- (flop) copy: add directory check
+- (put) rm dublicate mellow
+- (rest) onFSGet: sendFile
+- (mellow) getRoot size: 0 -> dir
+- (win) getVolumes callback: error || volumes -> error, volumes
+- (mellow) convertPath: add join
+- (markdown) server -> lib/server/
+- (put) unzip only if query
+- (flop) read: time raw
+- (join) require: main, util
+- (dir) getSize: if error - return error in callback
+- (get) rm CloudFunc.getShortSize
+- (put) flop.read: size -> size raw
+- (put) path -> name
+- (cloudcmd) route: ENOTDIR
+- (files) set: regExp.match -> name.match
+- (config) set: CloudCmd -> DOM.Files
+- (files) multiple loading of config.json
+- (events) (add|remove)EventListener: window -> element
+- (config) CloudCmd.getTemplate -> DOM.Files.get
+- (load) ajax: if data is array - nothing working out
+- (view) onOverLayClick: add event
+- (key) switch key F7: add preventDefault
+- (util) checkExt: add case-insensitive check
+- (view) overlay: show config only ones when click on button
+
+feature:
+- (rest) getWin32RootMsg: add error
+- (rest) add getWin32RootMsg
+- (rest) onPUT: add WIN32_ROOT_MSG
+- (rest) add isRootWin32 check on: copy, move
+- (console) prompt: add " "
+- (console) prompt: add margin 10px
+- (format) mv to lib
+- (console) abort prompt on disconnect
+- (console) paste path of current directory on Ctrl + P
+- (console) change console output on windows
+- (console) prompt: add current directory
+- (util) mv addListener, removeListener from cloudfunc
+- (package) add keywords
+- (format) mv permissions
+- (size) callback once if error
+- Merge pull request #18 from tarzak/patch-1
+- (update) add git check
+- (rest) add ability to work with #-names
+- (path) change refresh, clear icons
+- (win) getVolumes: add checkArgs
+- (size) add options
+- (main) rm getVolumes
+- (mellow) getRoot: set default mode
+- (ncp) add stopedOnError
+- (flop) copy: add ncp check
+- (flop) copy, move: add ncp options
+- (rest) onPUT: add mellow.convertPath
+- (modules) socket.io v1.0.6
+- (mellow) windows: add volumes
+- (win) add convertPath
+- (time) add raw option
+- (size) dir -> size
+- (flop) delete, move: add checkArgs
+- (gulp) add promise to ignore list
+- (flop) read: add size raw
+- (format) mv getShortSize to format
+- (pack) add: gzip, gunzip
+- (flop) create: only dir
+- (flop) mv, cp -> move, copy
+- (flop) mv hash to get
+- (flop) read: rm isFile
+- (commander) readdir: error.toString -> error
+- (flop) read: rm isDir
+- (flop) write: add Buffer
+- (flop) add write
+- (main) rm users
+- (dom) sendDelete: rm ?dir
+- (flop) add mv, delete
+- (flop) add
+- (promise) add
+- (modules) simplify format
+- (files) add showError
+- (files) add
+
+
+2014.06.16, v0.9.2
+
+fix:
+- (menu) show: add Images.hide
+- (listeners) onContextMenu: if menu showed in editor first - it would not be shown on a file
+- (load) ajax xhr.send: p.data -> data
+- (style) .icon: set default mouse cursor in firefox
+
+feature:
+- (load) ajax: stringify if data is object
+- (console) dir: cloudcmd dir -> process curren dir
+
+
+2014.06.11, v0.9.1
+
+fix:
+- (edit) showMessage: mv style to load
+- (edit) showMessage: empty message
+- (view) beforeClose: callback then hide
+
+feature:
+- (edit) showMessage: rm font-size
+- (package) gulp v3.8
+- (package) dropbox: v0.10.3
+- (img) menu update
+
+
+2014.06.10, v0.9.0
+
+fix:
+- (main) generateHeaders: if no cache: max-age - 0
+- (edit) diff: add error check
+- (win) getVolumes: rm chcp
+- (gulp) changelog: execParallel -> exec.parallel
+- (events) remove: type, listener, element -> type, element, listener
+- (menu) download: folders in json
+- (notify) send addClick: focus, notify -> notify, focus
+- (edit) showMessage: add font-size
+- (load) load: func.onload -> func && func.onload
+- (key) preventDefault: DOM -> Events
+- (listeners) changePanel: DOM.getPanel -> Info.panel
+- (key) preventDefault: DOM -> Events
+- (term) stopPropogation, cancelBubble
+- (terminal) init: cssSet -> load.style, jqueryLoad -> loadJquery
+- (listeners) onDrop toggle: add drop
+- (edit) onDrop: files -> Util.slice(files)
+- (put) onPut: add options
+- (pipe) on: memory lick
+- (pipe) on: length -> indexOf
+- (dom) setCurrentName: id -> data-name
+- (view) show: add fs
+- (pipe) create: EventEmitter memory leak
+- (dropbox) load
+- (menu) uploadTo: name
+- (menu) DOM.getIdBySrc -> DOM.load.getIdBySrc
+- (cloudcmd) DOM.jsload -> DOM.load.js
+- (client) load.jquery -> loadJquery
+- (config) show: rm cssLoad
+- (util) slice: array, count -> arra, begin, end
+- (dom) getElement: attr -> attribute
+- (rest) DIR
+- (users) require: time -> ./time
+- (cloudcmd) init: read templates
+- (cloudcmd) init: add path-link
+- (cloudfunc) add " "
+- (client) createFileTable: rm unSetOnPanel
+- (rest) onFSGet: if !isStr stringifyJSON
+- (dom) getCurrentData RESTful.read: rm "?json"
+- (menu) hide on Esc
+- (dom) execParallel -> Util.exec.parallel
+- (listeners) setOnPanel: add preventDefault
+- (util) slice: always return array
+- (rest) read: add dataType
+- (view) getType: add return
+- (view) show switch: path -> type
+- (view) show: mv default to bottom of switch
+- (view) isVideo: isMatch always undefined
+- (cloudcmd) readIndex: add isMinify
+- (menu) add Images
+- (edit) if menu not loaded -> not close
+- (minify) callback: params -> error, params
+- (edit) close menu before close
+- (menu) beforeShow: name -> params.name
+- (view) isAudio, isVideo regExp
+- (util) replaceStr: escape before create
+- (util) replaceStr: isStr -> isString
+- (util) checkExtension: isObject -> isArray
+- (cloudcmd) readIndex: params -> error, params
+- (util) strCmp: indexOf && length
+- (util) rmStr: str.replace -> Util.replace
+- (util) isObject: array was object
+- (dom) setCurrentName: getCurrentDirName -> getCurrentDirPath
+- (dom) setCurrentName: link.href
+- (dom) change url when current dir changed
+- (console) log: type -> typeParam
+- (gulp) jshint: add lib/client
+- (listeners) if click on path of passive panel change content on active panel
+
+feature:
+- (package) should v4.0, gulp v3.7
+- (listeners) onContextMenu: add MenuIO check
+- (dom) loadMenu: add error
+- (load) funcError: rm event
+- (main) terminal: add win32 check
+- (view) {before,after}{show, close} exec: parallel -> series
+- (gulp) rm gulp-concat
+- (modules) cdnjs -> jsdelivr
+- (package) express v4.4
+- (key) switchKey: rm SLASH
+- (modules) ace: add date
+- (modules) add ace
+- (edit) ace v1.1.3
+- (storage) callback(ret) -> callback(error, ret)
+- (storage) get: callback(data) -> callback(error, data)
+- (modules) socket.io v1.0.4
+- (util) callback(arg1...) -> callback(error, arg1...)
+- (modules) add fancybox
+- (terminal) add hide
+- (term) v0.0.4
+- (events) preventDefault: DOM -> Events
+- (console) handler: rm Images: showLoad, hide
+- (modules) socket.io v1.0.3
+- (modules) add jquery, socket
+- (util) findObjByNameInArr: find array in array first
+- (load) rm jquery
+- (socket) init: add config check online
+- (dom) showError: isQuiet
+- (socket) add cdn
+- (pipe) create: params -> read, write, options, callback
+- (minify) rm MinFolder
+- (github) uploadFiles: change messge
+- (events) add
+- (dom) Events: type, element, listener
+- (dom) Events: addLoad
+- (load) loader -> load
+- (loader) anyLoadOnLoad -> loadSeries
+- (view) anyLoadOnLoad -> loadParallel
+- (loader) anyload: not_append -> notAppend
+- (loader) asyncLoad -> loadParallel
+- (console) onConnection: rm "\n"
+- (package) express v4.3
+- (package) morgan v1.1
+- (html) path-link -> pathLink
+- (util) add checkArgs
+- (html) add path-link
+- (cloudfunc) getPathElement -> getPathLinks
+- (listeners) add onPathElementClick
+- (cloudfunc) buildFromJSON: add data-name
+- (listeners) rm changeLinks
+- (cloudfunc) buildFromJSON: change params
+- (cloudcmd) rm ?json
+- (listeners) rm unSetOnPanel
+- (util) bind -> exec.with
+- (util) tryCatch{Log} -> exec.try{Log}
+- (util) rm tryCatch{Debug, Call}
+- (polyfill) add isArray
+- (util) loadOnLoad -> exec.series
+- (util) retExec -> exec.ret
+- (util) ifExec -> exec.if
+- (util) execIfExist -> exec.ifExist
+- (util) asyncCall -> exec.parallel
+- (loader) anyLoadInParallel -> asyncLoad
+- (loader) anyLoadInParallel: simplified
+- (client) createFileTable: make private
+- (dom) setCurrentFile: add options
+- (gulp) rm stylestats
+- (util) add forEach
+- (listeners) add changePanel
+- (client) loadModule: params could not be string
+- (util) slice: add test
+- (util) render: add test
+- (util) asyncCall: add test
+- (cloudfunc) add tests
+- (util) rm execOnMatch
+- (gulp) add test subfolders
+- (util) exec: add test
+- (util) add tests
+- (util) getExtension -> getExt
+- (util) checkExt: add test
+- (test) add util
+- (rest) read: add optional dataType
+- (jshint) bitwise: false
+- (package) express v4.2
+- (socket) v1.0.0
+- (console) make private log, error
+- (view) add getType
+- (package) gulp-jshint v1.6
+- (package) minify v0.6.0
+- (edit) load menu on first request
+- (menu) v0.6.3
+- (edit) menu: add "Delete"
+- (edit) menu: add "Select All"
+- (edit) menu: add close
+- (edit) add "Go To Line"
+- (menu) v0.6.2
+- (menu) v0.6.1
+- (edit) add menu
+- (menu) v0.6.0
+- (listeners) onContextMenu: show menu if not on file
+- (menu) add second menu, when click not on file
+- (menu) v0.5.0
+- (rest) read: log if query
+- docs(help) View: add s, hot keys
+- (util) checkExtension -> checkExt
+- (cloudfunc) removeListener: add return this
+- (dom) rm getCurrentFileContent
+- (config) .config .list : rm text-align; rm .border
+- (config) rm border
+- (menu) change menu module
+- (view) show: data, callback, newConfig -> data, options
+- (edit) add confirm, if file changed and not saved, before close
+- (config) mv apiURL to CloudFunc
+- (config) mv apiURL to CloudFunc
+- (rest) config: add read
+- (util) add back isArrayBuffer
+- (util) rm isArrayBuffer
+- (util) rm for, fori
+- (util) rm forIn
+- (edit) mv theme to json
+- (edit) add tabSize
+- (edit) mv options to file
+- (jshint) do not capitalize names of constructor functions
+- (util) add getType
+- (style) .mini-icon: rm background{position, repeat}
+- (client) loadDir: rm event
+- (client) loadDir: change params
+- (package) express v4.1.1
+- (package) mkdirp v0.5.0
+- (jquery) v2.1.1
+- (jquery) v2.1.1
+- (package) minify v0.5.1
+- (commander) getDirPath -> addSlashToEnd
+- (util) rm paralelExec
+- (server) rm WIN32 check for ip set
+
+
+2014.04.28, v0.8.4
+
+fix:
+- (view) hide fancybox spinner
+- (get) hash -> hex
+- (main) sendResponse: query always undefined
+- (menu) downloadFromMenu: spinner do not hide
+- (dom) Images {set,clear}Progress: get image not show
+- (edit) setUseOfWorker: regExp
+- (client) callBack -> callback
+- chore(edit)  quotes
+- (view) onOverLayClick: add hide
+- (view) overlay -> helpers.overlay
+- (minify) add fs.exists to minified file before send
+- (view) close when click on content in overlay
+- (key) switchKey: empty current
+- (delete) deleteFiles: remove when access denied
+- (edit) rm Key
+- (rest) rmDir -> rmdir
+- (dom) getSelectedNames: if current is ".." not select it
+- (dom) getSelectedFiles: get from active panel
+- (edit) set first undo
+- (style) error::before: position
+- (menu) MenuProto: add start position
+- (key) space twice on selected file do not update size
+- chore(key)  comment
+- (key) BACKevent -> BACKSPACE
+- (view) onOverLayClick on every close
+- (test) ul: add data-name
+- (rest) fse -> copy
+- (main) sendRespons: if not gzip send nothing
+- (view) onAfterShow: only when click on overlay
+- (view) show if music: add afterShow, beforeClose
+- (view) beforeClose -> onClick
+- (main) generate headers: last-modified
+- (menu) clickProcessing: root -> layer
+- (put) add msg, baseName
+- (client) loadModule: path change to wrong after fail loading
+- (menu) clickProcessing: keys do not work after close
+- (menu) clickProcessing: layer -> root
+- (view) set current, only if height view is big enough
+- (fancybox) twice loading of images
+- (view) image was loaded twice
+- (console) getSpawn: add "\n"
+- (console) getSpawn: mv send up
+- (cloudcmd) lKeysPanel -> kesyPanel
+- (files) add callback
+- (key) files not always have parentElement
+- (key) tab after mv
+- (dom) setCurrentFile: add CENTER
+- (dom) isSVG ie10: toString.call(svgNode) -> svgNode.toString()
+- (edit) if patch not str => patch = false
+- (listeners) onTouchEnd -> onTouch
+- (key) tab
+- (util) change the way of detection node.js
+- docs(help) server:  markup
+
+feature:
+- (view) audio -> media
+- (gulp) add test
+- (package) minify v0.4.0
+- (rest) get: add config
+- (package) mkdirp v0.4.0
+- (view) join css only if minify is on
+- (view) use own overlay
+- (gulp) add server subdirs
+- (commander) readDir: stat -> lstat
+- (package) minify v0.3.3
+- (minify) v0.3.2
+- (package) minify v0.3.1
+- (edit) add setUserOfWorker
+- (package) minify v0.3.0
+- (gulp) add server dir
+- (server) minify: params -> error, params
+- (editorconfig) add
+- (jshint) add quotmark: single
+- (zip) pako v0.2.0
+- (path) clear-storage: add data-name
+- (path) links: add data-name
+- (index) keyspanel: add id
+- (listeners) change panel to clicked panel
+- (storage) rm dir -> rm subdirs of dir from storage
+- (rest) copyFiles: add rename
+- (dom) moveCurrent -> moveFiles
+- (rest) cp, mv: add top imgPosition
+- (rest) cp: add ability to copy couple files
+- (key) f3: add parse markdown on shift
+- docs(help) edit: add s
+- (edit) add ability to drop file content
+- (listeners) load files directly to server, without reading them
+- (dom) images: add load progress
+- (util) add convertName
+- (view) add pause/start of music on SPACE pressed
+- (package) express v4.0.0
+- (rest) rm: fs-extra; add: rimraf, mkdirp
+- (jquery) update to v2.1.0
+- (main) add range support
+- (time) add options
+- (ncp) add ncp
+- (cloudfunc) buildFromJSON ul.files:add data-name
+- (edit) add suport of .jshintrc
+- (jshint) add unused
+- (view) add set current file afterClose
+- (view) add preload:0
+- (view) rm image template
+- (client) add getTemplate
+- (view) add audio
+- (travis) add cloudcmd start
+- (gulp) add stylestats
+- (travis) rm node: v0.6.0, v0.8.0
+- (travis) check compat version of gulp before install
+- (test) add gulp
+- (package) express: v3.5
+- (zip) add unescape pollyfill
+- (client) loadDir, ajaxLoad, createFileTable: add panel param
+- (dom) deleteCurrent: return currentNew
+- (client) currentToParent: rm scrollIntoViewIfNeeded
+- (dom) isSVG: detect svg -> detect smil svg
+- (img) spinner: add svg
+- (config) fillTemplate: rm hideLoad
+- (config) fillTemplate: hideLoad -> onShow
+- (config) fillTemplate: li -> input, add focus
+- (config) change: save number, if type number
+- (config) add zip
+- (config) add zip
+- (edit) add unzip
+- (put) add unzip
+- (rest) add unzip
+- (listeners) add (un)setOnPanel
+- (dom) events: add rmClick
+- (listeners) changeLinks: set events to one main files element
+- (listeners) changeLinks touch: if file current -> change dir
+- (link) draggable: true -> "true"
+
+
+2014.03.19, v0.8.3
+
+fix:
+- (test) draggable
+- (test) draggable -> draggable="true
+- (test) add /a
+- (test) span>a -> a
+- (test) data -> data-name
+- (join) response -> res
+- (dom) loadCurrentTime: lCurrent -> current
+- (put) patchFiles: write(name, error) -> onWrite(error)
+- (util) execOnMatch: isMatch -> match
+- (worker-html) addAttributesToElement: attributes could be undefined
+- (cloudfunc) "taget" -> "target "
+- (index) meta: "/>" -> ">"
+- (css) fancybox: stop page jumping on modal window close
+- (ischanged) on asyncCall Times do not changed
+- (server) beforeJoin: exec -> retExec
+- (join) readPipe: add path
+- (join) readPipe: response -> res
+- (server) beforeJoin: funcs -> func = []
+- (rest) onDelete: if Files is empty names = p.name
+- (style) fancybox html: overflow hidden
+- (dom) renameCurrent: add updateCurrentInfo
+- (files) readPipe: add dir
+- (delete) add dir
+- (test) add FS_DIR
+- (cloudcmd) init: nameStr -> names
+- (github) rm code
+
+feature:
+- (cloudfunc) draggable -> draggable="true"
+- (font) droid mono: add eot
+- (index) rm chrome frame
+- (console) rm background-color
+- (rest) add CloudFunc
+- (pipe) getBody: add error handling
+- (pipe) getBody: add error handling
+- (edit) onSave: add setCurrentSize
+- (style) Droid Sans Mono: speed up when minimize
+- (font) Droid Sans: add eot
+- (css) Droid Sans Mono: add more formats
+- (style) add fallback fonts
+- (package) description: web based orthodox
+- (util) add execOnMatch
+- (files) rm dir
+- (nojs) add
+- (join) mv from server
+- (console) jqconsole -> console
+- (dom) add sendDelete
+- (rest) delete: data is optional param
+- (rest) write -> save
+- (rest) add markdown get
+- (markdown) add
+- (rest) mv rest from dom
+- (fancybox) add ico
+- (put) patch: change message
+- (cloudfunc) add MAX_FILE_SIZE
+- (put) pathch: add size check
+- (ace) 1.1.3
+- (markdown) add
+- (dom) rest: add markdown
+- (help) mv css to file
+- (rest) add markdown
+- (edit) set emmet only for html, not for css
+- (util) rm convertArrToObj
+- (pipe) add getBody
+- (put) add getBody
+- (cloudcmd, rest) add NOT_LOG
+- (dir) add isDir
+- (view) style: add overflow-y hidden
+- (panel) div -> section
+- (util) ownRender: clean all params after render
+- (file) add attribute, tag
+
+
+2014.03.03, v0.8.2
+
+fix:
+- (style) .loading: spinner size
+- (server) createRedirect: add sslPort
+- (server) http -> procol
+- (server) start: http -> HTTP
+- (dom) promptDeleteSelected: pCurrentFile -> current
+- (rest) onDelete: func(null, body) -> func
+- (rest) onStat: add var
+- (cloudcmd) change index path
+- (server) start: url -> PREFIX
+- (server) start: SSLPort -> sslPort
+- (server) start: Port -> port
+- (dom) getCurrentDirPath: "," -> ";"
+- (dom) renameCurrent: rm dir listing from Storage
+- (client) loadDir: do not change dir after fail load
+- (cloudcmd) route: add name
+- (style) .files height: 95% -> 85%
+- (dom) setCurrent: set id of li to
+- (client) ajaxLoad: do not save path to history if content not load
+- (path) #js-path -> .js-path: 2 pathes on a page
+
+feature:
+- (package) rm pty.js
+- (view) rm spinner from doBefore, add to view
+- (package) add pty.js
+- (package) minify: v0.2.5 -> 0.2.6
+- (client) initModules doBefore: add filepicker
+- (menu) DOM.Images -> Images, "From Cloud" -> "From FilePicker"
+- (index) change favicon
+- (favicon) add
+- (ext) .ico: vnd.microsoft.icon -> x-icon
+- (index) hide .path-icon when no js
+- (style) .loading top: 1px -> 2px
+- (storage) get: ret -> this
+- (favicon) optimize img
+- (cloudcmd) optimize image
+- (deleteSelected) rm param notSet
+- (fs) add fs folder
+- (style) height < 800px: .fm height: 74%
+- (style) set bigger font for width < 600px
+- (style)if height < 800px: .fm height 85%
+- (css) html: change height
+- (style) show only part of name is to long
+- (index) add style for no js: hide keys, show one panel
+- (style) .cmd-button: height: 30px
+- (polyfill) rm localStorage
+- (refactor) .js-left -> [data=js-left]
+- (rest) add onFSPut
+- (style) change .fm height to 75% on small screen heights
+- (style) change name color on small screens
+- (style) rm duplicate .fm-header
+- (edit) add save on F2
+- (storage) change to async
+- (storage) add
+- (dom) add storage
+- (listeners) change touchend
+- (key) setCurrentByLatter: add numbers
+
+
+2014.02.13, v0.8.1
+
+fix:
+- (commander) changeUIDToName: doesn't work on win
+
+
+2014.02.13, v0.8.0
+
+fix:
+- (test) template
+- (cloudfunc) "draggable" -> "draggable "
+- (cloudfunc) buildFromJSON: lHeader -> header
+- (test) add ""
+- (test) add draggable
+- (test) li -> div
+- (files) p.error -> error
+- (test) add "
+- (path) rm " "
+- (test) JSON_Files -> JSON_FILES
+- (polyfill) args not defined
+- (server) lHost -> host
+- (test) change template
+- (util) retExec: add unshift
+- (rest) onPut: lFiles.password -> lFiles && lFiles.password
+- (console) access to socket before it loads
+- (cloudcmd) pParams -> params
+- (util) Util.exec -> Util.retExec.apply
+- (main) getQuery
+- (css) error position: add left
+- (listeners) changeLinks: pPanelID -> panelId
+- (menu) if menu could not load keys do not working
+- (terminal) resizing
+- (terminal) CHANNEL_RESIZE -> CHANNEL_TERMINAL_RESIZE
+- (terminal) new line
+- (terminal) maxSize
+- (terminal) when back to term, first simbol wasn't wrote
+- (rest) onFS: Util.log -> Util.log.bind(Util)
+- (terminal) onConnection bind: add context
+- (terminal) add rmKeys
+- (polyfill) bind
+- (console) chat do not broadcast
+- (dom) getNotCurrentDirPath: add this
+- (console) io - > exec
+- (users) File -> FILE
+- (config) init: change order
+- (filepicker) change to proto
+- (menu) set key bind when close
+- (github) api_url -> apiURL
+- (loader) anyLoadOnLoad: lParam -> param, callback -> func
+- (console) connNum -> conNum
+- (console) onMessageFunc -> Clients
+- (socket) ret -> io
+- (socket) change onDisconect
+- (socket) lRet -> ret
+- (socket) add removeListeners
+- (cloudfunc) RIGH_TPANE -> RIGHT_PANEL
+- (menu) if ESC current file is one mouse pointer on it
+- (dom) scrollIntoViewIfNeeded: add false
+- (dom) getPanel isLeft check: class -> id
+- (view) ',' -> ';'
+- (client) getJSONfromFileTable: owner -> uid
+- (client) getJSONfromFileTable: i: 2 -> 0
+- (client) baseInit: add 'js-'
+- (client) createFileTable: found -> !found
+- (view) add margin only when view text documents
+- (dom) selectByPattern: show message if not esc
+- (dom) selectByPattern: "." -> "\."
+- (dom) selectByPattern: DOM.alert -> Dialog.alert
+- chore(cloudcmd) fix lint warnings
+- (socket) prevent memory leak
+- (socket) getSpawn: add tryCachLog
+- (edit) add emmet
+- (cloudcmd) minify -> Minify
+- (loader) add Images
+- (client) baseInit: mv setCurrentFile to top
+- (dom) add max length for storage file
+- (express) if username or password is change, auth do not work
+- (listeners) changeLinks: get back current
+- (dom) getById: rm pElement
+- (dom) udpateCurrentInfo: files -> files.children
+- (css) .keyspanel: rm height
+- (css) .delete-button: change icon
+- (key) insert
+- (dom) first 2 files not select
+- (dom) CurrentInfo: prev, next not updates
+- (config) if view is load config do not show
+- (key) ";" -> ","
+- (config) init
+- (dom) getCurrentData: this -> Cmd
+- (edit) DOM.getData -> Info.getData
+- (dom) getFiles: add panel
+- (client) baseInit pCallBack: mv to end
+
+feature:
+- (util) spead improvement; exec: rm condition
+- (cloudfunc) buildFromJSON: rm draggable from header
+- (package) update minify to v0.2.5
+- (util) rm setTimeout
+- (util) rm setValue
+- (util) rm call
+- (main) rm gzipData
+- (rest) create recursive dir
+- (console) update to v2.10.0
+- (rest) add recursiv copy dir (rimraf -> fs-extra)
+- (main) add getPathName
+- (express) add join as express middleware
+- (dom) Images: improved access speed
+- (util) copyObj: from, to -> to, from
+- (listeners) onConextMenu: rm showLoad
+- (style) user-select : rm path
+- (rest) add ability to remove directory with files
+- (util) rm bind
+- (terminal) add info if pty not installed
+- (console) (dis)connected: add "console"
+- (terminal) add connect/disconnect events
+- (terminal) add Size
+- (terminal) dir : home -> DIR
+- (terminal) add update
+- (terminal) add cursor style
+- (main) mrequire: tryCatchLog - > tryCatch
+- (main) mrequire: tryCatch -> tryCatchLog
+- (terminal) add
+- (view) rm afterShow, mv css to style
+- (util) rm retFunc
+- (console) update to v2.8.0
+- (console) rm unused vars
+- (commander) rm file.sort: no use
+- (css) add media print
+- (style) .files: rm cursor
+- (util) add slice
+- (util) loadOnLoad: rm data
+- (key) <shift> + <f7> - add new file
+- (loader) pop -> shift
+- (util) loadOnLoad: rm data
+- (util) loadOnLoad: pop -> shift - change params order
+- (socket) getSpawn: add error sending
+- (socket) addListener: first parameter could be object
+- (console) addEvenets: add connect, disconect
+- (panel) add
+- (cloudfunc) rm Path
+- (key) add Ctrl + \ -> go to root
+- (key) go to parent dir on backspace
+- (style) add .reduce-text
+- (style) prevent text from wrapping in .size and .owner
+- (style) if size to long it reduce
+- (style) if owner name to long - it's reduce
+- (users) add
+- (key) add help call on "?"
+- (commander) uid -> owner
+- (dom) scrollIntViewIfNeeded: add second param
+- (dom) CurrentInfo: add filesPassive
+- (dom) getByClass -> getByClassAll
+- (util) rm bind
+- (files) readPipe: pop -> shift
+- (dom) add getCurrentOwner
+- (style) rm #path
+- (view) add margin
+- (dom) add extended selection (*, +, -)
+- (package) http-auth: 2.1.x
+- (package) minify: v0.2.4
+- (edit) add autocomletion
+- (edit) emmet: add css suport
+- (edit) add emmet
+- (notify) add
+- (loader) add
+- (path) add title with full path
+- (css) style: new line when path to long
+- (listeners) open file on new tab on <ctrl> + click
+- (style) max-width 600px: hide .size, .owner, .mode
+- (style) .cmd-button color : rgb(49,123,249) -> #222
+- (listeners) initKeysPanel: rm i === 12
+- (menu) From Filepicker -> From Cloud
+- (css) icons: add menu icons
+- (menu) getItem: add icon processing
+- (css) mv icons to icons.css
+- (css) add .icon-file
+- (menu) add icons
+- (util) add getStrSmallfirst
+- (menu) getConfig: rm callback
+- (css) .cmd-button width: 9% -> 5%
+- (html) buttons: mv name to title
+- (css) keyspanel: add rename, copy and move icons
+- (css) keyspanel: add icons for: help, view, edit, delete, menu, console and contact
+- (style) cmd-button: add directory icon
+- (font) add config icon
+- (css) style height: .fm 85%, .keyspanel 15%
+- (css) .cmd-button hover: rm border color
+- (config) auth: false
+- (cloudcmd) add http authorization
+- (listeners) ListenersProto: add Info
+- (dom) add CurrentInfo
+- (key) rm lCurrent
+- (config) add Loading
+- (style) .cmd-button focus: add outline
+- (contact) add
+- (cloudfunc) getJoinURL: rm first "/"
+
+2013.12.09, v0.7.0
+
+fix:
+- (dropbox) path -> json.path
+- (dropbox) Drivers -> Dropbox.AuthDriver
+- (key) setCurrentByLetter i: 2 -> 0
+- (key) panel -> files
+- (client) rm last slash before first save to storage
+- (cloudcmd) path -> link
+- (file) rm new line at end
+- (dom) getCurrentData: add isCurrentIsDir
+- (dom) storage set: rm data condition
+- (edit) do not save hash when file update
+- (commander) fillJSON: files -> json.files
+- (client) getJSONfromFileTable: json
+- (edit) add data check condition
+- (edit) set patch only if hashes same
+- (edit) onSave -> getSave
+- (dom) getDataFromStorage: never return hash
+- (dom) checkStorageHash: always equal result, never store data
+- (files) add isFunction condition
+- (commander) fillJSON: add push
+- (key) add !alt, !ctrl condition to setCurrentByLetter
+- (server) combine: write error to pipe if headers sent
+- (main) set Header only if it was not sent
+- (Edit) change patch condition
+- (Edit) length of patch condition
+- (minify) ret -> callback
+- (util) lExtLenght -> lExtLength
+- (server) add gzip
+- (util) lExtLenght -> lExtLength
+- (edit) value size < then patch size -> save value
+- (client) format -> formatMsg
+- (server) redirect port
+- (server) add redirection port
+- (github) CloudCommander -> CloudCmd
+- (edit) saveDataToCache -> saveDataToStorage
+- (edit) set Value befor onSave
+- (dom) getCurrentData
+- (config) change config before setConfig
+- (rest) pErr -> pError
+- (socket) onCD: rm "."
+- (rest) heckSendError -> checkSendError
+- (socket) exit on cloudcmd command
+- (edit) diff
+- (diff) applyPatch: results -> results[0]
+- (cloudcmd)  mv index data to var
+
+feature:
+- (commander) mode: str -> number
+- (cloudfunc) buildFromJSON mode:  -> getSymbolicPermissions(".")
+- (dropbox) readDir json: add mode
+- (dropbox) readDir: add path condition
+- (dropbox) add delete, cp, mv
+- (dropbox) add save
+- (dropbox) add read
+- (dropbox) add getToken, mkDir, writeFile, readFile, readDir
+- (key) add moving by first letter
+- (cloudcmd) add readIndex; when minify - index to
+- (config) add -moz and -o
+- (config) list: add list-style-type
+- (cloudcmd) do not hide path and header when files are scrolling
+- (style) .cmd-button: rm outline
+- (style) rm .current-file > .mini-icon
+- (style) rm GeneralFoundicons
+- (link) add
+- (html) rm link to cloudfunc
+- (file) add className
+- (ssl) add signed ssl
+- (commander) change json structure: [path, files] -> {path: "", files: []}
+- (server) fillJSON path: rm size
+- (edit) add get data from storage before diff
+- (files) add options
+- (commander) fillJSON: add changeOrder
+- (commander) add changeOrder
+- (util) copyObj: add ability take one param
+- (config) add min, max port
+- (cloudcmd) add read index on every request
+- (edit) if storage disabled - hash not getted
+- (client) rm HEIGHT
+- (index) add key
+- (client) mv cloudfunc, listeners to index
+- (key) add setCurrentByLetter
+- (edit) rm setOptions
+- (edit) modelist: add yml
+- (edit) add modelist
+- (edit) add json mode for dir
+- (edit) update ace
+- (edit) add mode
+- (edit) add workers
+- (edit) add snippets
+- (cloudfunc) add getCombineURL, getCombineArray, isCombineURL
+- (edit) diff: anyLoadInParallel -> combineURL
+- (server) add checkExtension
+- (console) add combineURL
+- (edit) anyLoadOnLoad -> combineURL && jsload
+- (dom) add combineLoad
+- (index) add async
+- (index) combine
+- (server) combine: add mainSetHeader
+- (main) exports: add mainSetHeader
+- (files) files, dir, writeStream, callback -> params
+- (server) add minify
+- (server) combine: add minify
+- (pipe) add notEnd
+- (main) sendFile: rm stat
+- (server) add combine
+- (files) readPipe: add dir
+- (pipe) pipe -> on("data")
+- (files) add readPipe
+- (main) mv readFiles -> files.read
+- (cloudcmd) rm CA
+- (ssl) rm ssl.rastakoding.rv.ua cert
+- (dropbox) v0.9.2 -> v0.10.2
+- (dropbox) encodedKey -> key
+- (dom) add loadCurrentTime
+- (edit) rm client sha
+- (dom) add checkStorageHash
+- (dom) getCurrentData: if data from storage do not save it
+- (edit) add go to line
+- (edit) add autocompletion
+- (client) add getType
+- (client) add getExt
+- (dom) rm getTime
+- (config) css line-height: 1.428571429 -> 1.5
+- (config) port, sslPort: add focus:invalid:focus
+- (config) port, sslPort input: add type=number
+- (dom) getDataFromStorage: add isDir condition
+- (dom) Cache -> Storage
+- (time) add
+- (dom) getDataFromCache: add !hash
+- (dom) saveDataToCache: add Cache.get
+- (edit) add saveDataToCache
+- (edit) RESTful.save -> saveCurrentData
+- (dom) saveDataInCache -> saveDataToCache
+- (dom) add saveCurrentData
+- (dom) add getDataFromCache, saveDataInCache
+- (dom) add loadCurrentHash
+- (hash) add handling old node versions
+- (hash) rm Writable.call
+- (rest) add ?hash
+- (edit) if on server would be error with diff, try to save without diff
+- (dom) add Dialog
+- (socket) HOME -> DIR
+- (util) rmNewLine: add "\r"
+- (socket) HOMEPATH -> SYSTEMDRIVE
+- (socket) add Win32 condition
+- (socket) add pwd, homepath
+- (socket) any client could work with own dir
+- (util) isContainStrAtBegin: pStr2 could be array
+- (util) add rmNewLine
+- (socket) add HOME
+- (dom) Notify send: add getConfig
+- (dom) Notify click: add focus
+- (dom) add notify-icon
+- (config) add Notifications
+- (socket) jsonSend: rm console.log
+- (socket) onCloudCmd: add process.exit
+- (socket) add jsonSend
+- (socket) add chat
+- (rest) GET: rm kill, zip; PUT: rm cmd
+- (rest) add checkSendError
+- (client) add setConfig
+- (config) add diff
+- (diff) add
+- (reset) sendMsg: add status
+- (config)  appcache -> appCache
+- (config) api_url -> apiURL
+- (config) appcache -> appCache
+- (config) api_url -> apiURL
+- (config) show_keys_panel -> showKeysPanel
+- (index) rm no-js
+
+
+2013.11.08, v0.6.0
+
+update:
+- minify v0.2.3
+- dropbox: 0.10.1 -> 0.10.2
+- express: 3.4.2 -> 3.4.x
+
+fix:
+- (rest) config: sendError -> main.sendError
+- (socket) if " " at begin execption occurs
+- (socket) error: undefined
+- (rest) crash on /api/v1
+- (main) sendFile callback: add error condition
+- (main) if file not exist - send error; sendFile: add stat, add setHeader
+- (main) header was sended twice
+
+feature:
+- (ind) f10: rm hidden
+- (style) .cmd-button width: 8% -> 9%
+- (dom) rest: add {top: true}
+- (minify) rm setAllowed
+- (config) add saving of config
+- (reset) rm font-size, line-height
+- (cloudcmd) rm config watch
+- (config) port, ssl port: add title
+- (config) rm api_url, server, ip, rest from gui
+- (config) add autosize
+- (config) rm border
+- (minify) rm force flag
+- (cloudocmd) rm minimize
+- (cloudcmd) rm all.min.css
+- (rest) add config
+- (config) add change
+- (config) add template-updating
+- (config) rm checked
+- (util) copyObj: rm copy
+- (config) add
+- (socket) JSON.stringify -> Util.stringifyJSON
+- (socket) exec symbols: add "*"
+- (socket) add "#"
+- (socket) connect: add reconnect limit: 5 seconds
+- (socket) reconnect_failed: mv from options to events
+- (rest) rm proxy
+- (rest) rm " "
+- (rest) rm log lSize
+- (socket) getExec: add lError condition
+- (util) add addNewLine
+- (socket) getSpawn: rm log
+- (express) add
+- (socket) lExecSymbols: add "&"
+- (socket) getSpawn error: add retFalse
+- (socket) add spawn
+- (console) add Buffer
+- (socket) listen: add stringifyJSON
+- (socket) connected -> connected\n
+- (console) rm addNewLine
+- (rest) rm log error (would log later anyway)
+- (server) add express logger (if exist)
+- (server) add express
+- (main) mrequire: error -> no
+- (socket) connect: rm reconnect, reconnect delay
+- (edit) showMessage: ".msg" -> "#view .msg"
+- (edit) show: rm className
+- (asyncCall) add any count of params
+- (client) getSystemFile: rm !pGlobal
+- (dom) Dialog: add confirm
+- (dom) add Dialog
+- (help) show: add cssSet, list-style-type
+- (server) controller log: rm ":"
+- (main) mrequire: add formatMsg
+- (util) checkObj: add trace
+- (cloudcmd) retExec -> retFunc
+- (help) add margin: 25px
+- (dom) addOneTime -> addOnce
+- (server) change socket msg
+- (cloudfunc) formatMsg: add empty name condition
+- (socket) rm flashsocket
+- (main) readFiles: add formatMsg
+- (server) add query
+- (cloudcmd) sendResponse: p -> p, null, true
+- (cloudcmd) change logs: rm pathname, request, name; add method, data
+- (util) log: add if lArg[0]
+
+
+2013.10.17, v0.5.0
+
+feature:
+- (view) rm fancybox spinner
+- (util) ownRedner: { } -> {{ }}
+- (util) render: rm param, it is default
+- (util) replaceStr: add pNotEscape
+- (index) robots: add noindex, nofollow
+- (config) minification -> minify: {} -> true
+- (json) rm " "
+- (util) retExec: add any count of params
+- (util) retFunc: add any count of params
+- (css) rm button width:10%
+- (menu) add "(Un)Select All"
+- (dom) Cmd jqueryLoad: add navigator.onLine
+- (config) add online
+
+upadate:
+- minify: v0.2.1 -> v0.2.2- 
+
+fix:
+- (util) retExec: if param was - use it
+- (util) copyObj
+- (socket) max reconnection attempts: Math.pow(2, 64) -> Math.pow(2, 32)
+- (appcache) addFiles: pFilesNames -> pFileNames
+- (listeners) pop: ajaxLoad -> CloudCmd.ajaxLoad
+- (key) current -> current && current.parent;
+- (dom) Loader: this -> Loader
+- (util) retExec if: "n" -> "n > 1"
+
+refactor:
+- (pipe) create: add ifExec
+- (main) MOVED_PERMANENTLY
+- (key) Tab: add " "
+- (dom) mv set font to listeners
+- (cloudcmd) writeLogsToFile
+
+
+2013.09.27, v0.4.0
+
+feature:
+- (edit) add showMessage
+- (config) add localStorage
+- (config) add analytics
+- (socket) max reconnection attempts: 1000000 -> Math.pow- (2, 64)
+- (css) .cmd-button - (601px - 785px): 15% -> 13%
+- (css) hide f5, f6 on one-panel-view
+- (update) git pull -> git pull --rebase
+- (client) add ability to upload files on drag'n'drop
+- (client) add route
+- (socket) add reconnection delay, max attempts
+- (console) rm jquery-migrate
+- (edit) rm "nothing to save"
+- (menu, dom) add zipFile
+
+update:
+- (view) fancyBox v2.1.4 -> v2.1.5
+
+fix:
+- (client) ajaxLoad fs: removeStr -> removeStrOneTime
+- (cloudcmd) indexProcessing: appcache
+- (rest) onFS: lName -> p.name, p.name -> lName
+- (cloudfunc) ";" -> ","
+- (client) route -> CloudCmd.route
+- (dom) getCurrentFileContent: add dataType check
+- (dom) Loader ajax: add dataType
+- (rest) stream.createPipe -> pipe.create
+- (socket) Win32 -> WIN32
+- (socket) crash on win7
+- (main) add stream
+- (view) show: add createTextNode
+- (css) .icon height: 14.95 -> 14.8- (ie)
+- (css) .icon height: 15 -> 14.95- (ie)
+- (css) .icon height, width: 15.5 -> 15
+- (client) unload, beforeunload
+- (dom) jqueryLoad: pCallBack -> onload: pCallBack
+- (dom) jqueryLoad: add pCallBack
+- (dom) retJSLoad: this -> Loader
+- (test) keyBinding -> key, ie -> polyfill, viewer -> view, editor/_codemirror -> edit, terminal -> console
+- (edit) change ace to noconflict
+- (filepicker) add mimetype "", rm default ".txt" ext
+- (main) sendError
+- (socket) reconnect
+- (server) Dir + Name -> path.join- (Dir, Name)
+- (rest) add lReadStream.on- (error, lError)
+- (css) .icon: {width, height: 16px -> 15.5px}
+
+inside:
+- (dom) DOMTreeProto: add DOM
+- (util) add asyncCall
+- (listeners) appCache: add getConfig
+- (socket) add transports
+- (socket) add browser client etag
+- (socket) lListent: set -> enable
+- (css) rm .error:hover
+- (view,edit,console,menu) add Loading check
+- (index)  rm "if lt IE"
+- (jshint) rm es5:  ES5 option is now set per default
+- (dom) Loader: add xhr.upload progress
+- (jshint) rm forint - (should be wrapped in an if)
+- (dom) Images: add return img
+- (dom) Loader: add responseType
+- (jshint) add expr: "if ExpressionStatement should be allowed as Programs"
+- (clieant) multiple files load, readAsText -> readAsArrayBuffer
+- (util) add isArrayBuffer
+- (util) exec: any count of args
+- (shell) add log
+- (css) .cmd-button: add transition
+- (css) selection -> user-select
+- (cloudcmd) rm no-js redirect
+- (view) add minWidth, minHeight
+- (dom) {setSelected,unsetSelected}File -> toggleSelectedFile
+- (client) add panel backlight on drag
+- (dom) add toggleClass
+- (dom) add DOM.getCurrentFileByName
+- (util) add getStrBigFirst
+- (stream) putFile -> stream.createPipe
+- (css) .current-file: add transition
+- (rest) add zip
+- (cloudfunc) add format
+- (dom) Loader ajax: add TYPE_JSON
+- (client) mv Events.add to listeners
+- (client) google-analytics -> analytics
+- (stream) stream -> pipe
+- (css) display, width, height: .icon -> .loading
+- (css) font-family: .icon -> .error::before
+- (dom) Images showError: rm textStatus, errorThrown
+- (dom) Loader: mv percent, count, msg to if
+- (update) lStdout -> lMsg
+- (css) mv .panel, #right to max-width:1155px
+- (dom) ajax, global XMLHTTP -> local xhr
+- (dom) addClass, removeClass, toggleClass
+- (dom) removeClass: Events -> DOMTree
+- (edit) add initAce, worker condition
+- (dom) Events: process
+- (client) loadModule: getStrBigFirst
+- (rest) put: /fs/file?zip -> /zip
+- (rest) put cp: add putFile
+- (rest) putFile callback: pError, pMsg -> pError
+- (rest) main.sendResponse -> sendMsg
+- (rest) add putFile
+- (css) rm !important
+- (css) path-icon: rm font-family, font-size
+
+
+2013.08.01, v0.3.0
+
+- Changed jquery cdn to one with https suport jquery.com -> google cdn.
+
+- Added Access-Control-Allow-Origin header.
+
+- Added functions in DOM module: createEvent
+(createKeyEvent, createClickEvent, createDblClickEvent),
+dispatch
+(dispatchKeyEvent, dispatchClickEvent, dispatchDblClickEvent)
+
+- Changed object name CloudCommander -> CloudCmd
+
+- Moved loading functions to Loader object in DOM module.
+
+- Added addtables script'
+
+- Fixed typo in README.
+
+- Fixed same background declartion a couple times.
+
+- Changed the way of work with listeners (DOM.addListener to DOM.Events.add).
+
+- Added ability to add a couple events in Events.add.
+
+- Moved jqeuryLoader and socketLoader to CMD object in DOM.
+
+- Fixed bug with deletting in menu js.
+
+- Removed function _editFileName from client.js.
+
+- Removed linuxWatch function from main.js.
+
+- Added tryCatch to fs.watch in cloudcmd.js.
+
+- Set F3 to veiw.
+
+- Renamed KeyBinding -> Key.
+
+- Renamed: set -> setBinded, unSet -> unsetBinded, get -> isBinded.
+
+- Functions maked private: ajaxload, changeLinks, createFileTable,
+getJSONfromFileTable.
+
+- Moved CloudCmd.KEY object data to prototype of CloudCmd.Key.
+
+- Simpified plugins id's.
+
+- Rewrited _codemirror and view modules with prototypes.
+
+- Added hide method to view module.
+
+- Updated socket.io to v0.9.16.
+
+- Removed init property from view and edit.
+
+- FilePicker gets key from modules.json.
+
+- Added ability to put callback to view.
+
+- Added help module.
+
+- Added ability to show help on F1.
+
+- Added ability to set attributes in Loader.anyload.
+
+- Fixed upload function of filepicker.
+
+- fix(DOM) this promptNewFile -> Cmd.promptNewFile
+
+- feature(console) add jq-console
+
+- fix(style) .name{width}: 37% -> 35%
+
+- feature(view) show(pData) -> show(pData, pCallBack)
+
+- doc(license) add
+
+- doc(contribute) add commit message conventions
+
+- fix(socket) log level: debug -> info
+
+- feature(console) jquery-terminal -> jq-console
+
+- fix(help) remove pre
+
+- feature(socket) add disconect
+
+- feature(socket) add minification and gzip
+
+- feature(socket) if id in use - reconnect
+
+- chore(console) remove jquery-terminal
+
+- feature(favicon) add
+
+- fix(style) .mode width: 25% -> 23%
+
+- feature(edit) codemirror -> ace
+
+- feature(edit) add diff
+
+- chore(dom) jquery: v2.0.0 -> v2.0.3
+
+- feature(util) call log with any count of params
+
+- feature(util) add logArray
+
+- feature(socket) add chdir on cd
+
+- feature(dom) add events.add array
+
+- feauture(client) add unload event
+
+- feature(update) exec -> exec(cwd)
+
+- feature(cloudcmd) add bin
+
+- feature(rest) add put patch
+
+- feature(edit) save file only if it was changed
+
+- fix(dom) rm array param from jsload
+
+- feature(main) add to exports checkCallBackParams
+
+- feature(win) diskpart -> wmic
+
+- fix(diff) rm, work bad with win line ending
+
+- fix(dom) this -> Cmd
+
+- fix(css) .cmd-button: "outline:0"
+
+- feature(index) add "~ - console" button
+
+- chore(css) .cmd-button {width: 10% -> 8%}
+
+- feature(index) add "f9 - menu" button
+
+- feature(Events) dispatch: event -> event || eventName
+
+- feature(css) add media-query for .cmd-button
+
+- fix(view) open on f3 cmd button click
+
+- fix(rest) save and create new file
+
+- chore(minify) v0.2.0 -> v0.2.1
+
+
+2013.04.22, v0.2.0
+
+- Added alerting about errors.
+
+- Removed Listeners array for DOM.
+
+- Added ability create folders.
+
+- Added filepicker.
+
+- Added ability to load files to cloud 
+and get them out to file system.
+
+- Added SSL suport.
+
+- jquery updated to v1.9.1.
+
+- Fixed bug with multiple click events on f3 and f4 buttons.
+
+- Added ability to move files.
+
+- Added ability to degradate to http from https.
+
+- Fixed bug of multiple call of sockets.
+
+- If create directory command executed - loading spinner
+would be on top.
+
+- Refactored getShortSize.
+
+- Added update of size on file changing in editor.
+
+- Removed cache control of fs resour.
+
+- Added ability to copy files.
+
+- Fixed bug with saving json to localStorage, it's always
+writed root directory.
+
+- Moved out set current file from cloudfunc to client.js.
+
+- Changed the way file table building. From now templating used.
+
+- Changed sync reading of certs to async.
+
+- Updated dropbox to v0.9.2 and moved to packege.json
+from storage folder.
+
+- Updated socket.io to v0.9.14.
+
+- Fixed Util.time and Util.timeEnd
+
+- Added ability to select files with Insert key.
+
+- Added ability to delete selected files from DOM.
+
+- Added ability to recursivly get current folder size.
+
+- Added ability to get directory size, when space button
+is pressed and current file is directory.
+
+- Added ability to select all files on Ctrl + A
+
+- Fixed the href generation of renamed file.
+
+- Renamed promptNewFolder -> promptNewDir'.
+
+- Added function getSelectedNames.
+
+- Added ability to delete file when f8 key pressed.
+
+- Fixed bug with selectecting root directory with space.
+
+- Fixed bug with processing selected root directory.
+
+- Added ability to delete files.
+
+- Removed modules cache.js.
+
+- Fixed bug with writing new file.
+
+- Updated jquery to v2.0.0.
+
+- Improved CloudFunc module.
+
+- Fixed selection style in opera.
+
+- Fixed header of api fs GET.
+
+- Fixed bug with sending response on
+query other then json on /fs url.
+
+- Fixed bug with getting back to
+directory where file was removed.
+
+
+2013.03.01, v0.1.9
+
+- Changed the way of getting github application id
+(now it's just from config, rest api removed).
+
+- Added ability to upload files to GDrive.
+
+- Added functions DOM.getCurrentFileContent(pCallBack [, pCurrentFile])
+and Util.setTimeout(pFunction [, pCallBack, pTime])
+
+- Added functions in win.js for parsing diskpart output.
+
+- Added function getCurrentDir to DOM module.
+
+- Fixed bug with terminal load.
+
+- From now api url on client readed from config.json.
+
+- If choosen upload to -> Gist, and file in json have
+not '.json' extension, it's added to the and of filename.
+
+- Fixed bug in not fully functional browsers,
+jquery loaded after ie.js, should be before.
+
+- Fixed bug with closing terminal and opening viewer:
+inside event function varible called event do not exist
+(everithing ok on webkit).
+
+- Added ability to upload files to dropbox.
+
+- Added ability to authorize on github thru new window,
+changed redirecting url to /auth and added rout function
+to cloudcmd.js
+
+- DropBox, GDrive and GitHub modules now look the same.
+
+- Fixed bug with pressing Esc when menu showed.
+We could not to now, when key was pressed becaouse of
+stopPropogation function in jquery.contextMenu module.
+Commented stopPropogration.
+```
+keyStop: function(e, opt) {
+    if (!opt.isInput) {
+        e.preventDefault();
+    }
+        
+    //e.stopPropagation();
+}
+```
+- Updated socket.io to v0.9.13.
+
+- Updated jquery-terminal to v0.4.22.
+
+- Refactore viewer module.
+
+- Removed loading spinner by commenting jquery.fancybox.css block
+#fancybox-loading div {
+    width: 44px;
+    height: 44px;
+	background: url('fancybox_loading.gif') center center no-repeat;
+}
+
+- Updated CodeMirror to v2.37.01.
+
+- Updated jquery to v.1.8.3.
+
+- Improved optimizing size of menu.js from 2539 to 2444.
+
+- Fixed bug with height of terminal.
+
+- Added ability to read gdrive key from config.
+
+- Fixed bug with setting curent cursor when
+clicked on menu item.
+
+- Updated dropbox library to v.0.8.1.
+
+- Added ability to authorize on dropbox thru popup.
+
+- Added ability to authorize in vk.com.
+
+- Added vk to menu.
+
+- Updated funcyBox to v2.1.4.
+
+- Updated jquery to v1.9.0.
+
+- Improved modules.json format and parsing.
+
+- Added ability to read storage modules information from menu module.
+
+- Added easy template renderrer system Util.render.
+
+- Added functions DOM.parseJSON and DOM.stringifyJSON
+
+- Improved modules.json.
+
+- Added migrate plugin for jquery.
+
+- Removed getting data from Minify cache.
+
+- Moved jsons to json folder.
+
+- Fixed bug with working links in path panel and
+with clicks on files.
+
+- Changed icons font from octicons to foundicons
+
+- Changed icons font from foundicons to fonteollo
+
+- Removed Octicons font.
+
+- Removed allowed from cache property in config.
+
+- Added ability to hide "Upload To" menu item if
+no storage modules setted up in modules.json.
+
+- From now any file minifying only if last modified
+time was changed.
+
+- Removed ability to cache files in memory.
+
+- Moved extensions from main.js to json/ext.json.
+
+- Commander functions moved out to commander.js from server.js
+
+- Fixed bug with old browsers support.
+
+- Fixed bug with scrolling in opera and firefox.
+
+- Fixed bug with (fake) deleting file.
+
+- Added ability show context menu on right click
+while menu is showing now.
+
+- Added ability to remove /fs/no-js when go up to root
+directory.
+
+- Removed reflows maded by js.
+
+- Fixed bug with setting current file
+after refresh and refreshing dir content.
+
+- Removed part of url thet says that js is disabled, from
+now json data of file structure would be getted from 
+click event with ?json flag. "no-js" part of url
+would not be supported anymore.
+
+- Added ability to add ?json flag only if we work with dir.
+
+- Added ability not to change url if we have no rights
+for reading.
+
+- Fixed bug with pressing enter on file.
+
+- Updated jquery jQuery-contextMenu to v1.6.5.
+
+- Fixed bug with getting showed menu in firefox.
+
+- Added temporary redirection for old no-js urls.
+
+- Changed the way clickProcessing of menu works,
+for now it's much simplier.
+
+- Fixed dblclick selection in firefox.
+
+- Fixed the first show of menu in firefox.
+
+- Added ability to change configs without restart
+(works for js minification only).
+
+- Added ability to disable browser cache from config.json.
+
+- Totaly refactored and leave in commander.js just
+generation of json of directory listing.
+
+- Added ability to upload files.
+
+- Added ability save files on Ctrl+S in CodeMirror.
+
+- Added ability to delete files.
+
+- Added rename menu item.
+
+- Added to html templating.
+
+- Added ability to rename files.
+
+- Added RESTful object to DOM for easy work with
+CloudCmd REST API.
+
+- Added help screen (on F1 after viewer loads).
+
+
+2012.12.12, v0.1.8
+
+- Added ability to shutdown Cloud Commander
+thru terminal command: "cloudcmd exit"
+
+- Fixed bug with showing terminal and viewer
+at the same time.
+
+- Fixed bug with appcache config. Windows reads
+file not just like Linux.
+
+- Added ability to update thru git.
+
+- Added ability to change charset on terminal only if
+it's build in command on win32.
+
+- Fixed bug with testing mode. If was same arguments,
+Cloud Commander works in testing mode and server do not
+started.
+
+- Added more demo mirrors to readme (appfog, cloudfoundry).
+
+- Removed resize event from jquery-terminal.
+
+- Fixed bug with error code of program execution in terminal.
+
+- Fixed bug with menu itmes edit and view.
+
+- Added function jsLoadOnLoad, thet loads js files
+one-by-one, and then calls callback if needed.
+
+- Added function anyloadOnLoad thet loads any files or
+elements one-by-one.
+
+- Added function loadModule thet make it easier to connect
+new module.
+
+- Fixed bug with context menu hiding (on Esc).
+Keys was unbinded.
+
+- Added ability to disable web sockets.
+
+- Moved cloudRequire to srvfunc.js file.
+
+- Fixed bug with directory pathes detection
+(used document.location.href, now using 
+document.location.origin)
+
+- Fixed bug with keybinding in FireFox
+(removed KeyBinding call on window load).
+
+- Fixed bug with getting current url in Firefox.
+
+- Util cleaned up (addClass and removeClass
+moved to ie.js).
+
+- Index processing function moved out from
+server.js to cloudcmd.js.
+
+- Added ability of authorithation in GitHub.
+
+- Rewrited sizing of names if they are to 
+long thru css, from JavaScript.
+
+- Fixed bug with application cahe forming on windows
+and linux.
+
+- Removed unneeded windows check.
+
+- Fixed bug with downloading directory
+listing in json from menu.
+
+- Changed default port to 80.
+
+- Util object moved from client.js to modules
+dom.js and util.js.
+
+- Fixed bug with navigation thru path panel.
+
+- Added functions DOM.addKeyListener and Util.loadOnLoad
+
+- Added buttons panel.
+
+- Fixed bug with config file, when no need to minification.
+
+- Added ability to hide keys panel thru config option.
+
+- CodeMirror upgraded to version 2.35.0.
+
+- Fixed bug with keys panel and fm bottom margin,
+when CodeMirror is open on the right panel.
+
+- Fixed bug with positioning of CodeMirror on the 
+right panel.
+
+- Function generateHeaders moved to main module.
+
+- Setted up auth on GitHub thru rest.
+
+- Fixed bug with context menu. Now it disabled 
+before load menu module to.
+
+- Throw out jquery from github module, moved Cache
+object from client to DOM module, 
+refactored Cache object and added polyfill.
+
+- Added ability to connect github development id,
+to Cloud Commander instance working in any host,
+for this all the needed to be done is:
+set enveronment varibles "oauth_client_id" and 
+"oauth_client_secret" values from github profile.
+
+- Changed funcyBox version to 2.1.3.
+
+- Improved reading file with streams.
+
+- Improved download speed of js and css files by
+adding DOM.anyLoadInParallel function that is
+loading files in parallel and then execute
+callback function.
+
+- Added ability to load a couple scripts after one main,
+in any position in anyLoadOnLoad function.
+
+- Added chainable to Cache object in DOM.
+
+- Changed default ip to null so IP would be geted from
+config.json only if it setted up.
+
+- Fixed bug with starting node from other then projects dir.
+
+- Fixed bug with slashes on win32.
+
+- Fixed bug with editor close, when started from menu.
+
+- Added url change on folder changing.
+
+- Fixed bug with traveling in directories with
+Javascript dissabled.
+
+- client.js and server.js moved to lib directory.
+
+- Improved work with browsers history api.
+
+- Fixed bug with setting path of index.html.
+
+- Added dropbox module.
+
+- Renamed config options ouath_client_id and
+oauth_client_secre to github_id and github_secret.
+Added dropbox_id option.
+
+- Fixed bug in github show function.
+
+- Added ability to call dropbox chooser on <ctr> + <d>.
+
+- Added ability to read dropbox key from config.
+
+- Fixed bug with menu load, when dir other then root.
+
+- Added confirmation before (not real) deleting file.
+
+- Added ability to upload file to gists on github thru menu.
+
+- Added getCurrentPath function to Util module.
+
+- GitHub and DropBox secret's moved out from
+config.json to env.
+
+- Fixed bug with auth in github.
+
+- Fixed bug with opening empty files in CodeMiror.
+Editor window could not be cloused.
+
+- Added windows support on terminal command: "cloudcmd exit".
+
+- Fixed IP on windows.
+
+- Added ability to delete files (not for real for now)
+thru keys panel (F8).
+
+- Changed "Upload" menu item to "Upload to".
+
+- Fixed bug with minified styles.
+
+- If git not installed do not show error.
+Just propose install git and clone from github repo.
+
+- Fixed bug with client.js minifying.
+
+- Fixed bug with appcache.
+
+
+2012.10.01, v0.1.7
+
+- Changed name of menu files, fixed npm and jitsu
+problem with menu showing.
+
+- Fixed bug with empty directorys. If directory
+was empty, we could not go in.
+
+- Removed packed versions of files, uglifing
+would be doing on-a-fly
+
+- Added ability to use ajax without jquery.
+
+- From now jquery not necessary for Cloud Commander
+work, (so start load get faster), but it could be
+loaded any time by any extension.
+
+- Fixed bug with getByClass IE version.
+
+- Fixed bug with keyboard not responding when go deeper
+in file tree thru mouse double click.
+
+- Removed property keyBinded. From not it's private
+member of KeyBinding class.
+
+- Fixed scrolling bug on non-webkit based browsers.
+Function scrollIntoViewIfNeeded was polyfilled.
+
+- Added classic borders to panels.
+
+- Added ability to download files thru drag'n'drop.
+
+- Fixed bug with setting current file when mouse down.
+
+- Improved borders over CodeMirror and panels thru css.
+
+- Added ability to watch is file changed wile server is
+running
+
+- Moved calling api scrollIntoViewIfNeeded to setCurrentFile.
+
+- Added module is-file-changed.
+
+- Added suport of AppCache. So CloudCommander can work totaly
+in offline mode (if connection suddenly lost, all visited
+directories would be cached).
+
+- fixed bug with keyboard not responding when click on file.
+
+- Server.js separated to two files: cloudcmd.js and server.js.
+Start file is - cloudcmd.js
+
+- Refactored and fixed old bugs in function generateHeaders (server.js).
+
+- Added ability to remove files (on the surface, not for real).
+
+- From now right panel would be always shown no matter js enabled or
+disabled in browsers.
+
+- Added plagin terminal ( ` button under TAB).
+
+- Added ability to execute commands on server thru terminal.
+
+- Added appcache paramter to config.json
+
+- Added ability convert charset from win to unicode on win32.
+
+- Added ability to freeze terminal screen on connection lost
+
+- Added serialisation to socket connection.
+
+- Added ability to work with terminal to any number of clients
+
+- Fixed bug with jquery load in viewer. Jquery could be loaded to late.
+
+- Changed version of FuncyBox to 2.1.0.
+
+- Added Ace editor.
+
+- Little bit changed styles. Fixed margins in responsive view.
+
+- Fixed bug with minifying, if file do not minimized so allowed set to none.
+
+- Added fix of 866 charset.
+
+
+2012.08.24, v0.1.6
+ 
+- From now jsload, cssload and anyload suport arrays.
+
+- Added ability to move scrollbar, when Home and
+End buttons pressed.
+
+- Added ability to move with Page Up and Page Down
+buttons.
+
+- Added moving scrolling by cursor ability.
+
+- Fixed bug with go to parent directory: from now,
+if parent directory not in view area, page will
+scroll to needed place.
+
+- Fixed bug with tab key pressed.
+
+- Fixed bug: files now clickable to.
+
+- Fixed bug with double click on files.
+
+- Fixed bug with double click on images.
+
+- Fixed bug with Array.isArray and getElementsByClassName in IE.
+
+- Fixed bug with document.head in IE.
+
+- JQuery 1.7.2 changed to 1.8.0
+
+- Added support of mibile browsers and touch events.
+
+- Fixed bug with ignoring all browser defined keys.
+
+- Moved unSetCurrentfile to setCurrent file.
+All the time one of files must be current, so wen we setting up some file
+current, file that was previously current must be unset automatically.
+
+- Added context menu on shift + F10.
+
+- A little bit beautified css.
+
+- Added function getRefreshButton.
+
+- Fixed bug with refreshing directory, from now current file would not be seeted up to first, after refresh.
+
+- Added ability to view any file.
+
+- Moved error message a little bit lower.
+
+- Added ability to download files.
+
+
+2012.08.06, v0.1.5
+
+- Added tab support.
+
+- Fixed bug with Path links.
+
+- From now CodeMirror js files loads, when f4 key pressed.
+
+- Fixed bug with showing CodeMirror after first show.
+
+- Added ability to read files in CodeMirror.
+
+- Added ability rename files.
+
+- Fixed bug with CodeMirror vertical scroll bar.
+
+- Added loading image when file going to be edited.
+
+- All sync functions changed to async equivalents.
+
+- On f4 key pressed when current-file is folder
+CodeMirror opens json data of folder.
+
+- Fixed bug with response when we have no rihgts
+read dir server sends 404 response for now,
+not 200 ok.
+
+- Fixed bug with forming error of loading dir.
+Was : "not found".
+Now : "Error: EACCES, readdir '/root'"
+
+- Fixed bug with showing loading spinner, when f4 key
+pressed couple times and CodeMirror not loaded fully.
+
+- Setted readOnly mode, when directory opened in CodeMirror.
+
+- Added api for getting curent file, getting active
+and passive panels and show/hide any of panels.
+
+
+2012.07.27, v0.1.4
+
+- Added local version of Droids font for offline mode
+
+- Fixed bug with positioning of cursor when came back 
+from folder whith long name.
+
+- Fixed bug with setting up current file, if a couple of
+files was with the same name on 16-chars, after going
+up on folders, current file would be last.
+
+- Fixed bug with links and titles with spaces in Path of
+current directory.
+
+- Added ability to send 404 response if file not found.
+
+- Fixed bug which occurs when error reading directory happens.
+
+- Fixed bug: ErrorImage.title writes always for now, no matter
+why error occurred.
+
+- Seted up default cursor on file attributes.
+
+- _currentToParent refactored, no more cicles again. Changed
+the way of searching of current root directory, now it shoud
+be more faster, DOM, short, simple and logical.
+
+- Added ability to view images on F3 key pressed.
+
+- Added ability to work view images offline.
+
+- Added async flag to anyload function.
+
+- Added ability remove not loaded scripts from DOM.
+
+
+2012.07.19, v0.1.3
+
+- Fixed bug with nodester (jitsu env.HOME make him go done).
+
+- Fixed bug: gzip do not working out, becouse accessible flag settet
+up to _controller object.
+
+- To every panel added scroll bars which is hiding if do not needed.
+
+- Fixed bug with setting up flag in config.json: do not minimize js.
+
+- Fixed bugs many bugs in _anyload function (client.js).
+
+- Added function cssLoad to client.js
+
+- Added Client Side CodeMirror library with name Cloud Editor.
+
+- Fixed bug with building file table from json data, when we go around
+and come back to root dir.
+If name of a file or directory is more then 16 charactes it shows 
+like 'VERY-LONG-NAME..', so becaouse of on first came we load page
+like no js, so json building from file table thet was genereted on
+server. So if file to long we should take it's name from title
+parameter of <a> tag, it's wasn't, so folder navigation not every
+time was possible.
+
+- Fixed bug with undefined size on root directory of Cloud Commander.
+Now Cloud Commander writes size 0, if can't get size, and besides will
+setted b char: "0b".
+
+- Added supporting of Russian language in directory names.
+
+
+2012.07.14, v0.1.2
+
+- Added suport of jitsu.
+
+- Added module objects.js, Minify and Cache objects moved there.
+
+- Module Minify moved to node_modules dir
+
+- Changed the minimize function calls accroding to Minify 0.1.2 changes.
+
+
+2012.07.11, v0.1.1
+
+- Added onerror parametr to anyload in Clinet Side, so now we can process situation when 
+js-script(or something other) has not loaded.
+
+- Added jquery file, so from now Cloud Commander can totaly work offline.
+
+- Added css-lint to travis ci.
+
+- Fixed bug in object Minify, doit function, more processing function did not
+return final_code so changes was not saving, and clien side loaded keyBinding.js
+and cloudfunc.js full sized versions.
+
+- Changed the way Minify post-processing js-files so, from now in Minify object
+post-processing functions passed like this {'client.js': function(){}}
+
+- Added ability to read file data from Minify Cache, without writing to disk
+
+- Changed the passing MoreProcessing agrument to jsScripts function Minify module, 
+no it passes with a file name, and js file name writing only once.
