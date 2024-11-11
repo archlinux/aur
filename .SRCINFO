@@ -1,6 +1,6 @@
 pkgbase = freeciv21-unstable
 	pkgdesc = Freeciv for the 21st Century (Unstable version from master branch)
-	pkgver = 3.1_beta.2
+	pkgver = 3.1_rc.1
 	pkgrel = 1
 	url = https://github.com/longturn/freeciv21
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = freeciv21-unstable
 	depends = karchive5
 	depends = libertinus-font
 	conflicts = freeciv21
-	source = freeciv21-unstable-3.1_beta.2.tar.gz::https://github.com/longturn/freeciv21/releases/download/v3.1-beta.2/Freeciv21-v3.1-beta.2.tar.gz
-	sha256sums = 9de36d3bace612e009e59585d962a3600147632c6f42b39fd226441e4a6620c6
+	source = freeciv21-unstable-3.1_rc.1.tar.gz::https://github.com/longturn/freeciv21/releases/download/v3.1-rc.1/Freeciv21-v3.1-rc.1.tar.gz
+	sha256sums = 2e3d10c158d24c97138be4e057d05fc8ca2dd05b6e01bf2c3251fb92e409b279
 
 pkgname = freeciv21-unstable
