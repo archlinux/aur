@@ -6,7 +6,7 @@ pkgbase = qtnodes-git
 	arch = x86_64
 	license = BSD
 	makedepends = cmake
-	depends = qt5-base
+	depends = qt6-base
 	source = git+https://github.com/paceholder/nodeeditor.git
 	md5sums = SKIP
 

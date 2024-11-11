@@ -1,6 +1,6 @@
 pkgname=qtnodes-git
 pkgver=3.0.11.r7.gb8ced45
-pkgrel=1
+pkgrel=3
 pkgdesc="Qt-based library aimed at graph-controlled data processing"
 arch=(x86_64)
 url="https://github.com/paceholder/nodeeditor"
