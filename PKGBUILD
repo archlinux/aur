@@ -5,7 +5,7 @@
 _pkgname=v86d
 pkgname="${_pkgname}"
 pkgver=0.1.10
-pkgrel=12
+pkgrel=13
 pkgdesc="userspace helper for uvesafb that runs x86 code in an emulated environment."
 arch=('i686' 'x86_64')
 url="https://github.com/mjanusz/v86d"
@@ -25,6 +25,13 @@ sha256sums=(
 )
 
 build() {
+  _FIXWERROR="-Wno-error=implicit-function-declaration"
+  CFLAGS+=" ${_FIXWERROR}"
+  CXXFLAGS+=" ${_FIXWERROR}"
+  export CFLAGS
+  export CXXFLAGS
+
+
   cd "${srcdir}/${_pkgname}"
   ./configure --with-x86emu
   # we only need /usr/include/video/uvesafb.h
