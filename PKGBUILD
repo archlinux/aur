@@ -1,7 +1,7 @@
 # Maintainer: Keiran keiran0@proton.me
 pkgname=gu
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple CLI file uploader and URL shortener written in Go"
 arch=('x86_64')
 url="https://github.com/KeiranScript/gu"
