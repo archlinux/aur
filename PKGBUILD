@@ -2,8 +2,8 @@
 
 _perlmod='Net-DNS-Paranoid'
 pkgname=perl-net-dns-paranoid
-pkgver=0.09
-pkgrel=2
+pkgver=0.11
+pkgrel=1
 pkgdesc="paranoid dns resolver"
 arch=("any")
 url="http://search.cpan.org/dist/$_perlmod"
@@ -12,7 +12,7 @@ depends=('perl' 'perl-class-accessor-lite' 'perl-net-dns')
 makedepends=('perl-module-build-tiny')
 options=('!emptydirs')
 source=("http://cpan.perl.org/authors/id/T/TO/TOKUHIROM/$_perlmod-$pkgver.tar.gz")
-sha256sums=('a2bbedc3e5a91fdce61f6721ee9591266e4ef95c557f0fcb64fd97e123ed5bdf')
+sha256sums=('667d781c1b6f9a0b8136d5c922e5ab87f6ad128b21d4d9181a340e604777eff9')
 
 build() {
   cd "$srcdir/$_perlmod-$pkgver"
