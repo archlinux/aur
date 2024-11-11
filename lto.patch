@@ -1,0 +1,13 @@
+diff '--color=auto' -rupN cosmic-term.orig/Cargo.toml cosmic-term/Cargo.toml
+--- cosmic-term.orig/Cargo.toml	2024-09-26 19:41:32.601246122 +0200
++++ cosmic-term/Cargo.toml	2024-09-26 19:41:54.151487997 +0200
+@@ -59,6 +59,9 @@ fork = "0.1"
+ default = ["wgpu"]
+ wgpu = ["libcosmic/wgpu", "cosmic-files/wgpu"]
+ 
++[profile.release]
++lto = "thin"
++
+ [profile.release-with-debug]
+ inherits = "release"
+ debug = true
