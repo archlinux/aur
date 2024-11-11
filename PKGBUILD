@@ -5,7 +5,7 @@
 pkgbase="libmp3splt"
 pkgname=("${pkgbase}" "${pkgbase}-docs")
 pkgver=0.9.2
-pkgrel=7
+pkgrel=8
 pkgdesc="Split mp3, ogg, and flac files without decoding - Library"
 arch=('any')
 url="https://mp3splt.sourceforge.net"
@@ -16,7 +16,7 @@ makedepends=('doxygen' 'flac>=1.2.1' 'graphviz' 'libid3tag' 'libmad' 'libogg'
 _pkgsrc="${pkgbase}-${pkgver}"
 source=("${_pkgsrc}.tar.gz::https://downloads.sourceforge.net/sourceforge/mp3splt/${_pkgsrc}.tar.gz"
         "${pkgbase}_fix_informations_spelling.patch::https://sources.debian.org/data/main/${pkgbase::4}/${pkgbase}/${pkgver}-0.1/debian/patches/fix-informations-spelling"
-        "${pkgbase}_fix_ogg_and_vorbis_state_structs_init.patch::https://sources.debian.org/data/main/m/mp3splt/2.6.2%2B20170630-3.2/debian/patches/10_Properly-zero-initialise-the-ogg-and-vorbis-state-st.patch")
+        "${pkgbase}_fix_ogg_and_vorbis_state_structs_init.patch")
 sha256sums=('30eed64fce58cb379b7cc6a0d8e545579cb99d0f0f31eb00b9acc8aaa1b035dc'
             'f6f730a6fc1231571368a3b984b24273bddbe1d9cc902111909ddd1221cca517'
             '6c8721e71937b2f8b83189dad5be190de0bc0ece12bfcc9429e46d03e432e247')
