@@ -346,17 +346,20 @@ fi
 
 if [[ $FFMPEG_OBS_SVT == 'ON' ]]; then
   depends+=(svt-hevc svt-vp9)
+  makedepends+=(patchutils)
   _svt_hevc_ver='ed80959ebb5586aa7763c91a397d44be1798587c'
-  _svt_vp9_ver='1feb760a60bf519973610ad58001273cb55c7d26'
+  _svt_vp9_ver='3b9a3fa43da4cc5fe60c7d22afe2be15341392ea'
   source+=(
     "020-ffmpeg-add-svt-hevc-g${_svt_hevc_ver:0:7}.patch"::"https://raw.githubusercontent.com/OpenVisualCloud/SVT-HEVC/${_svt_hevc_ver}/ffmpeg_plugin/master-0001-lavc-svt_hevc-add-libsvt-hevc-encoder-wrapper.patch"
     "030-ffmpeg-add-svt-hevc-docs-g${_svt_hevc_ver:0:7}.patch"::"https://raw.githubusercontent.com/OpenVisualCloud/SVT-HEVC/${_svt_hevc_ver}/ffmpeg_plugin/0002-doc-Add-libsvt_hevc-encoder-docs.patch"
+    "031-ffmpeg-add-svt-vp9.patch"
     "040-ffmpeg-add-svt-vp9-g${_svt_vp9_ver:0:7}.patch"::"https://raw.githubusercontent.com/OpenVisualCloud/SVT-VP9/${_svt_vp9_ver}/ffmpeg_plugin/master-0001-Add-ability-for-ffmpeg-to-run-svt-vp9.patch"
   )
   sha256sums+=(
     '9047e18d34716812d4ea7eafc1d0fd8b376d922a4b6b4dc20237662fcaf0c996'
     'a164ebdc4d281352bf7ad1b179aae4aeb33f1191c444bed96cb8ab333c046f81'
-    'e801727b9cfb843db4efc34d3de8cf03ddf5687ff02429ac6c051e1d78d8923e'
+    'aa0daffc4d234b6621b63c298dc165d29522c5087f8905a923d23ee2d164e9ad'
+    '59da61f2b2c556fbe0cdbf84bcc00977ee3d2447085decb21f6298226559f2aa'
   )
   _args+=(--enable-libsvthevc --enable-libsvtvp9)
   provides+=(ffmpeg-svt-hevc ffmpeg-svt-vp9)
@@ -441,7 +444,8 @@ prepare() {
     rm -f "libavcodec/"libsvt_{hevc,vp9}.c
     patch -Np1 -i "${srcdir}/020-ffmpeg-add-svt-hevc-g${_svt_hevc_ver:0:7}.patch"
     patch -Np1 -i "${srcdir}/030-ffmpeg-add-svt-hevc-docs-g${_svt_hevc_ver:0:7}.patch"
-    patch -Np1 -i "${srcdir}/040-ffmpeg-add-svt-vp9-g${_svt_vp9_ver:0:7}.patch"
+    patch -Np1 -i "${srcdir}/031-ffmpeg-add-svt-vp9.patch"
+    patch -Np1 -i <(filterdiff -i b/libavcodec/libsvt_vp9.c "${srcdir}/040-ffmpeg-add-svt-vp9-g${_svt_vp9_ver:0:7}.patch")
   fi
 }
 
