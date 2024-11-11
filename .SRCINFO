@@ -1,7 +1,7 @@
 pkgbase = android-x86-freetype2-bootstrap
 	pkgdesc = Font rasterization library (Android x86)
 	pkgver = 2.13.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.freetype.org/
 	arch = any
 	groups = android-freetype2-bootstrap
@@ -9,7 +9,6 @@ pkgbase = android-x86-freetype2-bootstrap
 	makedepends = android-meson
 	depends = android-ndk
 	depends = android-x86-zlib
-	depends = android-x86-bzip2
 	depends = android-x86-brotli
 	depends = android-x86-libpng
 	provides = android-x86-freetype2
