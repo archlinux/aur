@@ -3,8 +3,8 @@
 
 pkgname=stm32cubemonitor
 _pkgname=STM32CubeMon
-_pkg_file_name=en.stm32cubemon-lin-v-1-8-0.zip
-pkgver=1.8.0
+_pkg_file_name=en.stm32cubemon-lin-v-1-9-0.zip
+pkgver=1.9.0
 pkgrel=1
 pkgdesc="Graphical software for helping debug and diagnose STM32 applications while they are running by reading and displaying their variables in real-time"
 arch=('x86_64')
@@ -14,29 +14,23 @@ license=('custom:SLA0048')
 depends=('gtk3' 'nss' 'libxss' 'libnotify' 'libxtst' 'xdg-utils' 'at-spi2-core' 'util-linux-libs' 'stlink')
 options=('!strip')
 
-# cURL inspiration from davinci-resolve package maintained by "Alex S".
-_curl_useragent="User-Agent: Mozilla/5.0 (X11; Linux ${CARCH}) \
-                        AppleWebKit/537.36 (KHTML, like Gecko) \
-                        Chrome/77.0.3865.75 \
-                        Safari/537.36"
-_curl_useragent="$(printf '%s' "$_curl_useragent" | sed 's/[[:space:]]\+/ /g')"
-_useragent_escaped="${_curl_useragent// /\\ }"
-_curl_req_url="https://www.st.com/content/st_com_cx/en/products/development-tools/software-development-tools/stm32-software-development-tools/stm32-performance-and-debuggers/stm32cubemonitor/_jcr_content/get-software/get-software-table-body.nocache.html/st-site-cx/components/containers/product/get-software-table-body.html"
+# Download file with list of URLs to files
+_curl_req_url="https://www.st.com/content/st_com_cx/en/products/development-tools/software-development-tools/stm32-software-development-tools/stm32-performance-and-debuggers/stm32cubemonitor/_jcr_content/get-software/getsw-table-nli.nocache.html/st-site-cx/components/containers/product/get-software-table-body.html"
+_curl_req="$(curl -s --compressed -H "@${srcdir}http_headers" "$_curl_req_url" )"
 
-_curl_req="$(curl -s --compressed -H "$_curl_useragent" "$_curl_req_url")"
+# Extract actual download link to the desired file
 _pkg_url="$(grep -m 1 "${_pkg_file_name}" <<< "$_curl_req")"
 _pkg_url="$(awk -F'"' '{print $4}' <<< "$_pkg_url")"
 _download_path="https://www.st.com""$_pkg_url"
+#echo $_download_path
 
 DLAGENTS=("https::/usr/bin/curl \
-              -gqb '' --retry 3 --retry-delay 3 \
-              -H ${_useragent_escaped} \
-              -o %o --compressed %u")
+            -gqb '' --retry 3 --retry-delay 3 \
+            -H "@${srcdir}http_headers" \
+            -o %o --compressed %u")
               
-   
 source=("${_pkg_file_name}"::"$_download_path")
-sha256sums=('6964b9a02ce0bf6c142246c8c40659a032e2df76652e73e48e77f770666506bb')
-
+sha256sums=('efd5f4ce5cc9b5b44f2be90fd469559f081c6c28f1fe4a095af698b9dccc4adf')
 
 prepare() {
   install -dm755 build
@@ -45,7 +39,7 @@ prepare() {
 }
 
 package() {
-  tar -xf build/data.tar.xz -C ${pkgdir}
+  tar -xf build/data.tar.zst -C ${pkgdir}
   
   install -dm755 ${pkgdir}/opt
   mv ${pkgdir}/usr/lib/${pkgname} ${pkgdir}/opt
