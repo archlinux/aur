@@ -15,6 +15,11 @@ source=(
 sha256sums=('846f8f80619aa0aa5bb9b1465a6bfb94052a8a9b3b5d683be919d51ce8ec3615')
 options=('!strip') # UPX will break this. So we strip manually before upx the binary.
 
+prepare(){
+    cd "${srcdir}/uosc-${pkgver}"
+    go get ./src/ziggy
+}
+
 build(){
     cd "${srcdir}/uosc-${pkgver}"
     export CGO_CPPFLAGS="${CPPFLAGS}"
