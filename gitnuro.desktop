@@ -1,0 +1,11 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Gitnuro
+Comment=A FOSS Git multiplatform client for newbies and pros
+Exec=nohup gitnuro &> /dev/null
+StartupWMClass=com.github.JetpackDuba.Gitnuro
+Icon=gitnuro
+Terminal=false
+Type=Application
+Categories=Development;
+X-Desktop-File-Install-Version=0.1
