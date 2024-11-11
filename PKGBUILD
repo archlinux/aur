@@ -14,6 +14,7 @@ depends=('python' 'nodejs' 'npm')
 makedepends=(python-build python-installer python-wheel python-setuptools)
 optdepends=('python-typing_extensions: for Python <3.8'
             'rustup: for injecting Rust code into targets')
+provides=("python-frida=$pkgver")
 conflicts=('python-frida' 'python2-frida')
 
 # Hashes updated by updpkgsums
