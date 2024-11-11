@@ -1,12 +1,12 @@
 # Maintainer: Cedric Roijakkers <cedric [the at sign goes here] roijakkers [the dot sign goes here] be>.
 # Inspired from the PKGBUILD for ferdi-git.
 
-_electron='electron31'
+_electron='electron33'
 _recipes_commit='f1b2809f88c8f9876cbc39bc32b9a32586508e8e'
 
 pkgname="ferdium-electron"
 pkgver=7.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A messaging browser that allows you to combine your favorite messaging services into one application (git build from latest release) - System-wide Electron edition'
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url="https://ferdium.org/"
