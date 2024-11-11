@@ -5,50 +5,47 @@ pkgname="stm32cubeide"
 pkgver=1.16.1
 _pkgver_ext=1.16.1_22882_20240916_0822
 _pkg_file_name=st-stm32cubeide_1.16.1_22882_20240916_0822_amd64.sh.zip
-pkgrel=2
+pkgrel=3
 pkgdesc="Integrated Development Environment for STM32"
 arch=("x86_64")
 makedepends=('imagemagick')
-depends=('glibc' 'libusb' 'ncurses5-compat-libs' 'webkit2gtk')
+depends=('glibc' 'libusb' 'ncurses5-compat-libs' 'webkit2gtk' 'stlink-server')
 optdepends=('jlink-software-and-documentation' 'stlink' 'arm-none-eabi-gdb')
 conflicts=()
 url="https://www.st.com/en/development-tools/stm32cubeide.html"
 license=('custom:SLA0048')
 options=(!strip)
 
-# Create header file for curl request
-install -Dm 755 /dev/stdin "${srcdir}headers" <<END
-sec-ch-ua: Chromium;v=128, Not;A=Brand;v=24, Google Chrome;v=128
-sec-ch-ua-mobile: ?0
-sec-ch-ua-platform: Linux
-sec-fetch-dest: empty
-sec-fetch-site: same-origin 
-user-agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36
-END
-
 # Download file with list of URLs to files
 _curl_req_url="https://www.st.com/content/st_com_cx/en/products/development-tools/software-development-tools/stm32-software-development-tools/stm32-ides/stm32cubeide/_jcr_content/get-software/getsw-table-nli.nocache.html/st-site-cx/components/containers/product/get-software-table-body.html"
-_curl_req="$(curl -s --compressed -H "@${srcdir}headers" "$_curl_req_url" )"
+_curl_req="$(curl -s --compressed -H "@${srcdir}http_headers" "$_curl_req_url" )"
 
 # Extract actual download link to the desired file
 _pkg_url="$(grep -m 1 "${_pkg_file_name}" <<< "$_curl_req")"
 _pkg_url="$(awk -F'"' '{print $4}' <<< "$_pkg_url")"
-
-#_download_path="https://www.st.com""$_pkg_url"
+_download_path="https://www.st.com""$_pkg_url"
 #echo $_download_path
 
 DLAGENTS=("https::/usr/bin/curl \
               -gqb '' --retry 3 --retry-delay 3 \
-              -H "@${srcdir}headers" \
+              -H "@${srcdir}http_headers" \
               -o %o --compressed %u")
 
-source=("${_pkg_file_name}"::"https://www.st.com""$_pkg_url"
-#	"99-jlink.rules.patch"
+source=("${_pkg_file_name}"::"$_download_path"
+	"99-jlink.rules.patch"
 	"https://www.st.com/resource/en/license/SLA0048_STM32CubeIDE.pdf"
+	"http_headers"
+	"stm32cubeide.desktop"
+	"stm32cubeide"
+	"stm32cubeide_wayland"
 	)
 sha256sums=('a455ab7cfb82990913b1569493b8716f32e953e00450f0f6e484c1b8963a8996'
-#	'0f3f69f7c980a701bf814e94595f5acb51a5d91be76b74e5b632220cfb0e7bb3'
+	'0f3f69f7c980a701bf814e94595f5acb51a5d91be76b74e5b632220cfb0e7bb3'
 	'SKIP'
+	'e390db4335686f4a99f04002625a9dce0058b631cb3205b700c1910bf129d73c'
+	'6648786eb5f998134e686ee27e3c6016e9b4af5558cf1e5ad3faf8dd01a45193'
+	'41e8d15ce488bff2c3da261d3da41699080cc6ed39d7b9ccbd80f21b55db10bc'
+	'03b654889dbfd87730fee8b172246669663b1e6f6c65003dd18aa756d4bafea3'
 )
 
 prepare(){
@@ -69,54 +66,36 @@ package() {
 	cd "$srcdir"
 
 	msg2 'Installing STM32CubeIDE'
-	install -d -m755 "${pkgdir}/opt/${pkgname}"
+	install -dm 755 "${pkgdir}/opt/${pkgname}"
 	tar zxf "./build/st-stm32cubeide_${_pkgver_ext}_amd64.tar.gz" -C "${pkgdir}/opt/${pkgname}"
 
-	msg2 'Installing stlink server'
-	install -d -m755 "${pkgdir}/usr/bin/"
-	cp "${srcdir}/build/stlink-server/stlink-server" "${pkgdir}/usr/bin/"
-	chmod 0755 "${pkgdir}/usr/bin/stlink-server"
-	chown root:root "${pkgdir}/usr/bin/stlink-server"
+	msg2 'Installation of STlink server skipped'
+	#msg2 'Installing STlink server'
+	#install -dm 755 "${pkgdir}/usr/bin/"
+	#install -Dm 755 -o root -g root "${srcdir}/build/stlink-server/stlink-server" "${pkgdir}/usr/bin/"
 
 	msg2 'Installation of STlink udev rules skipped'
 	#msg2 'Installing STlink udev rules'
-	#install -d -m755 "${pkgdir}/usr/lib/udev/rules.d/"
-	#install -D -o root -g root -m 644 -t "${pkgdir}/usr/lib/udev/rules.d/" "$srcdir/build/stlink-udev/fileset/"*.rules
+	#install -dm 755 "${pkgdir}/usr/lib/udev/rules.d/"
+	#install -Dm 644 -o root -g root "$srcdir/build/stlink-udev/"*.rules "${pkgdir}/usr/lib/udev/rules.d/"
 
 	msg2 'Installation of JLink udev rules skipped'
 	#msg2 'Installing JLink udev rules'
-	#install -d -m755 "${pkgdir}/usr/lib/udev/rules.d/"
-	#install -D -o root -g root -m 644 -t "${pkgdir}/usr/lib/udev/rules.d/" "$srcdir/build/jlink-udev/"*.rules
+	#install -dm 755 "${pkgdir}/usr/lib/udev/rules.d/"
+	#install -Dm 644 -o root -g root "$srcdir/build/jlink-udev/"*.rules "${pkgdir}/usr/lib/udev/rules.d/" 
 	#patch -i "${srcdir}/99-jlink.rules.patch" "${pkgdir}/usr/lib/udev/rules.d/99-jlink.rules"
 
 	msg2 'Installation of binary files'
-	install -Dm755 /dev/stdin "${pkgdir}/usr/bin/${pkgname}" <<END
-#!/bin/sh
-/opt/stm32cubeide/stm32cubeide "\$@"
-END
-	install -Dm755 /dev/stdin "${pkgdir}/usr/bin/${pkgname}_wayland" <<END
-#!/bin/sh
-/opt/stm32cubeide/stm32cubeide_wayland "\$@"
-END
+	install -dm 755 "${pkgdir}/usr/bin/"
+	install -Dm 755 "${srcdir}/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
+	install -Dm 755 "${srcdir}/${pkgname}_wayland" "${pkgdir}/usr/bin/${pkgname}_wayland"
 
 	msg2 'Installing desktop shortcut and icon'
 	magick "${pkgdir}/opt/${pkgname}/icon.xpm" "${srcdir}/${pkgname}.png"
+	install -dm 755 "${pkgdir}/usr/share/pixmaps/"
+	install -dm 755 "${pkgdir}/usr/share/applications/"
 	install -Dm 644 "${srcdir}/${pkgname}.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
-	install -Dm 644 /dev/stdin "${pkgdir}/usr/share/applications/${pkgname}.desktop" <<END
-[Desktop Entry]
-Name=STM32CubeIDE
-Comment=STM32CubeIDE ${pkgver}
-GenericName=STM32CubeIDE
-#Exec=env GDK_BACKEND=x11 stm32cubeide %F
-Exec=env WEBKIT_DISABLE_COMPOSITING_MODE=1 stm32cubeide_wayland %F
-#Exec=stm32cubeide_wayland %F
-Icon=${pkgname}
-Path=/opt/${pkgname}/
-Terminal=false
-StartupNotify=true
-Type=Application
-Categories=Development;IDE;Java;
-END
+	install -Dm 644 "${srcdir}/stm32cubeide.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
 
 	#msg2 'Replace GDB by system'
 	#rm "${pkgdir}/opt/stm32cubeide/plugins/"com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32*/tools/bin/arm-none-eabi-gdb
@@ -126,12 +105,12 @@ END
 	
 	msg2 'Create symlink from original directory name'
 	read -r default_install_path < "${srcdir}/build/default_install_path.txt"
-	install -d -m755  "${pkgdir}/opt/st/"
+	install -dm 755  "${pkgdir}/opt/st/"
 	ln -s "/opt/${pkgname}" "${pkgdir}${default_install_path}"
 	
 	msg2 'Installation of license file'
-	install -d -m755 "${pkgdir}/usr/share/licenses/${pkgname}/"
-	install -D -o root -g root -m 644 -t "${pkgdir}/usr/share/licenses/${pkgname}/" "${srcdir}/SLA0048_STM32CubeIDE.pdf"
+	install -dm 755 "${pkgdir}/usr/share/licenses/${pkgname}/"
+	install -Dm 644 -o root -g root "${srcdir}/SLA0048_STM32CubeIDE.pdf" "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
 
 #
