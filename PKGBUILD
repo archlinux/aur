@@ -8,8 +8,7 @@
 # Contributor: wxt1221 <3264117476@qq.com>
 # 感谢 Peternal 对 SVG图标 的授权
 pkgname=bilibili-bin
-_pkgname="io.github.msojocs.${pkgname%-bin}"
-pkgver=1.15.2_1
+pkgver=1.15.2_2
 _electronversion=33
 epoch=5
 pkgrel=1
@@ -27,16 +26,16 @@ depends=(
     "electron${_electronversion}"
     'libappindicator-gtk3'
 )
-source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${url}/releases/download/v${pkgver//_/-}/${_pkgname}_${pkgver//_/-}_arm64.deb")
-source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${url}/releases/download/v${pkgver//_/-}/${_pkgname}_${pkgver//_/-}_amd64.deb")
+source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::${url}/releases/download/v${pkgver//_/-}/${pkgname%-bin}-${pkgver%_2}.aarch64.rpm")
+source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${url}/releases/download/v${pkgver//_/-}/${pkgname%-bin}-${pkgver%_2}.x86_64.rpm")
 source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/msojocs/bilibili-linux/v${pkgver//_/-}/license"
     "${pkgname%-bin}.sh"
 )
 sha256sums=('21668b8229199de1a523b82805c80d6e110a67fef5766aa7cc3c7df4416d1468'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-sha256sums_aarch64=('b3fbbf4968e4f2f7d8195198d05fee8cf70180fa14bb4b18e22b822bee8afd9b')
-sha256sums_x86_64=('49f1fdf5b8914b6bc6d784ddd6e3a7083c6459eac001395cdb97701322af625a')
+sha256sums_aarch64=('d80774663eecabaa429909ca5871e66100d3a139fc5f210eae7c0044065ee4fd')
+sha256sums_x86_64=('f8e8c26e65728bc5c0053171eec7265581c223521c2954753824a963ec312c4e')
 build() {
     sed -e "
         s/@electronversion@/${_electronversion}/g
@@ -45,18 +44,17 @@ build() {
         s/@cfgdirname@/${pkgname%-bin}/g
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
     " -i "${srcdir}/${pkgname%-bin}.sh"
-    bsdtar -xf "${srcdir}/data."*
-    sed -e "
-        s/\/opt\/apps\/${_pkgname}\/files\/bin\/\/bin\/${pkgname%-bin}/${pkgname%-bin}/g
-        s/${_pkgname}/${pkgname%-bin}/g
-    " -i "${srcdir}/opt/apps/${_pkgname}/entries/applications/${_pkgname}.desktop"
+    sed -i "s/\/opt\/${pkgname%-bin}\/${pkgname%-bin}/${pkgname%-bin}/g" -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
-    install -Dm644 "${srcdir}/opt/apps/${_pkgname}/files/bin/app/app.asar" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
-    cp -Pr --no-preserve=ownership "${srcdir}/opt/apps/${_pkgname}/files/bin/app/extensions" "${pkgdir}/usr/lib/${pkgname%-bin}"
-    install -Dm644 "${srcdir}/opt/apps/${_pkgname}/entries/icons/hicolor/scalable/apps/${_pkgname}.svg" \
-        "${pkgdir}/usr/share/icons/hicolor/scalable/apps/${pkgname%-bin}.svg"
-    install -Dm644 "${srcdir}/opt/apps/${_pkgname}/entries/applications/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
+    install -Dm644 "${srcdir}/opt/${pkgname%-bin}/resources/app.asar" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
+    cp -Pr --no-preserve=ownership "${srcdir}/opt/${pkgname%-bin}/resources/extensions" "${pkgdir}/usr/lib/${pkgname%-bin}"
+    _icon_sizes=(16x16 24x24 32x32 48x48 64x64 96x96 128x128 256x256 512x512 1024x1024)
+    for _icons in "${_icon_sizes[@]}";do
+        install -Dm644 "${srcdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname%-bin}.png" \
+            -t "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps"
+    done
+    install -Dm644 "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
     install -Dm644 "${srcdir}/LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
