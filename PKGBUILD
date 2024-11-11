@@ -3,7 +3,7 @@
 _pkgname=libkazv
 pkgname="${_pkgname}-git"
 pkgver=0.7.0+16.r487.20241022.2976174
-pkgrel=1
+pkgrel=2
 pkgdesc="A matrix client sdk built upon lager and the value-oriented design it enables."
 arch=(
   'aarch64'
@@ -12,26 +12,26 @@ arch=(
   'i686'
   'x86_64'
 )
-license=('AGPL3')
+license=('AGPL-3.0-or-later')
 url="https://lily-is.land/kazv/libkazv"
 backup=()
 depends=(
-  'boost-libs'
+  #'boost-libs'
   'crypto++'
   'gcc-libs'
   'glibc'
-  'immer'
-  'lager'
-  'libolm'
-  'nlohmann-json'
-  'zug'
+  'vodozemac-bindings-cpp-kazv'
 )
 makedepends=(
-  'boost'
+  #'boost'
   'cmake'
   # 'cpr' # Currently (2023-08-25) this makes build errors, so disabling.
   'git'
+  'immer'
+  'lager'
   'libhttpserver'
+  'nlohmann-json'
+  'zug'
 )
 ## Disabled until we re-enable `check()`.
 # checkdepends=(
