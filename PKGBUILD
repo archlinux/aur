@@ -8,8 +8,8 @@ _android_arch=armv7a-eabi
 pkgbase=android-${_android_arch}-rubberband
 pkgname=(android-${_android_arch}-rubberband
          android-${_android_arch}-rubberband-{ladspa,lv2,vamp})
-pkgver=3.3.0
-pkgrel=2
+pkgver=4.0.0
+pkgrel=1
 arch=('any')
 pkgdesc="Time-stretching and pitch-shifting audio library and utility"
 url="https://www.breakfastquay.com/rubberband/"
@@ -24,7 +24,7 @@ makedepends=('android-meson'
              "android-${_android_arch}-vamp-plugin-sdk")
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("https://github.com/breakfastquay/rubberband/archive/v${pkgver}.tar.gz")
-md5sums=('1125fda060b757bf1dc8de4b6a19f0fb')
+md5sums=('87ac2e0fcd62f4fa9d2bf83237adbb77')
 
 _pick() {
     local p="$1" f d; shift
