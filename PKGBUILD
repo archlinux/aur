@@ -3,12 +3,12 @@
 
 _name=RaySession
 pkgname=${_name,,}
-pkgver=0.14.3
-pkgrel=2
+pkgver=0.14.4
+pkgrel=1
 pkgdesc="Session manager for audio programs using the Non Session Manager (NSM) API"
 arch=(any)
 url='https://github.com/Houston4444/RaySession'
-license=(GPL)
+license=(GPL-2.0-only)
 depends=(hicolor-icon-theme dbus-python python-pyalsa python-pyqt5 python-pyliblo python-pyxdg qt5-svg)
 makedepends=(qt5-tools)
 optdepends=(
@@ -18,7 +18,7 @@ optdepends=(
 groups=(pro-audio)
 source=("https://github.com/Houston4444/RaySession/releases/download/v$pkgver/$_name-$pkgver-source.tar.gz"
         'raysession-makefile-destdir.patch')
-sha256sums=('dfe835cdd8c6931344a72b8abb1ce1af6a7d8241058d802ca387cf79d6e39a56'
+sha256sums=('72bf64a9976a63a5aaf91933c18c4dadbfcf2c54442948167953482d552473b0'
             '943c821d4d5cae581004ca54030b720ac835a03cd7691492bcbcb6e146bb078a')
 
 prepare() {
