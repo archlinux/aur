@@ -1,0 +1,21 @@
+pkgbase = fir-git
+	pkgdesc = Simple image viewer for Wayland.
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/Treecase/fir
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = cargo
+	makedepends = git
+	makedepends = jq
+	depends = gcc-libs
+	depends = glibc
+	depends = hicolor-icon-theme
+	depends = sdl2
+	provides = fir
+	conflicts = fir
+	options = !debug
+	source = git+https://github.com/Treecase/fir.git
+	sha256sums = SKIP
+
+pkgname = fir-git
