@@ -8,6 +8,7 @@ pkgbase = lxqt-wayland-session-git
 	license = MIT
 	license = GPL-2.0-only
 	license = GPL-3.0-only
+	license = GPL-3.0-or-later
 	license = BSD-3-Clause
 	license = CC-BY-SA-4.0
 	makedepends = git
@@ -22,6 +23,7 @@ pkgbase = lxqt-wayland-session-git
 	optdepends = wayfire
 	optdepends = kwin
 	optdepends = hyprland
+	optdepends = niri
 	optdepends = river
 	optdepends = sway
 	provides = lxqt-wayland-session=0.0.0.r23.7e30673

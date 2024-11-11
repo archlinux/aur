@@ -9,12 +9,13 @@ arch=('any')
 url='https://github.com/lxqt/lxqt-wayland-session'
 # see https://github.com/lxqt/lxqt-wayland-session/blob/master/LICENSE for more details
 license=(
-  'LGPL-2.1-only'   # most files
-  'MIT'             # files adapted from sway and wayfire
-  'GPL-2.0-only'    # files adapted from labwc https://github.com/labwc/labwc/blob/0.8.0/meson.build#L5
-  'GPL-3.0-only'    # files adapted from river (https://codeberg.org/river/river/src/tag/v0.3.5#licensing) and labwc-themes
-  'BSD-3-Clause'    # files adapted from hyprland
-  'CC-BY-SA-4.0'    # wallpapers
+  'LGPL-2.1-only'       # most files
+  'MIT'                 # files adapted from sway and wayfire
+  'GPL-2.0-only'        # files adapted from labwc https://github.com/labwc/labwc/blob/0.8.0/meson.build#L5
+  'GPL-3.0-only'        # files adapted from river (https://codeberg.org/river/river/src/tag/v0.3.5#licensing) and labwc-themes
+  'GPL-3.0-or-later'    # files adopted from niri (https://github.com/YaLTeR/niri/blob/v0.1.9/Cargo.toml#L8)
+  'BSD-3-Clause'        # files adapted from hyprland
+  'CC-BY-SA-4.0'        # wallpapers
 )
 depends=(
   'sh'
@@ -31,6 +32,7 @@ optdepends=(
   'wayfire'
   'kwin'
   'hyprland'
+  'niri'
   'river'
   'sway'
 )
