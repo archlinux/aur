@@ -8,9 +8,11 @@ pkgbase = forgejo-runner-bin
 	license = MIT
 	provides = forgejo-runner
 	conflicts = forgejo-runner
-	source_x86_64 = https://code.forgejo.org/forgejo/runner/releases/download/v4.0.1/forgejo-runner-4.0.1-linux-amd64
+	source = forgejo-runner-4.0.1-LICENSE::https://code.forgejo.org/forgejo/runner/src/tag/v4.0.1/LICENSE
+	sha256sums = dbde5f109f46cfbef2bf33d1a66a788d94adf72dd23ca8fb8b894856d9af1125
+	source_x86_64 = forgejo-runner-4.0.1::https://code.forgejo.org/forgejo/runner/releases/download/v4.0.1/forgejo-runner-4.0.1-linux-amd64
 	sha256sums_x86_64 = 45f513988b7136c1dc62316d9d635f0791fa0c5be7f6735560980988cf0c5c8a
-	source_aarch64 = https://code.forgejo.org/forgejo/runner/releases/download/v4.0.1/forgejo-runner-4.0.1-linux-arm64
-	sha256sums_aarch64 = 5aa0373be455637826d6126e3911fe653f3c0538a9e84d97497ba3c416757fca
+	source_aarch64 = forgejo-runner-4.0.1::https://code.forgejo.org/forgejo/runner/releases/download/v4.0.1/forgejo-runner-4.0.1-linux-arm64
+	sha256sums_aarch64 = 45f513988b7136c1dc62316d9d635f0791fa0c5be7f6735560980988cf0c5c8a
 
 pkgname = forgejo-runner-bin
