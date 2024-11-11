@@ -2,7 +2,7 @@
 # Contributor: FirstAirBender <noblechuk5 [at] web [dot] de>
 
 pkgname=pacman-hook-list-systemd-units
-pkgver=1.1
+pkgver=1.2
 pkgrel=1
 pkgdesc="Prints new systemd units on package installation or upgrade."
 arch=('any')
@@ -10,7 +10,7 @@ license=('Unlicense')
 depends=('systemd')
 makedepends=('pacutils')
 source=('list-systemd-units.sh')
-sha512sums=('0f62364a8bbeb876ebc03c6f242db0cef8cc70564a1b969f5de09e15afd511b24a0d49c495265f8bfa968bba0cacb6d0efa079c2eff990640df6fbac97f48f17')
+sha512sums=('e3b6c1bd3b50c3f61ad8f35501c4e9b9f64b81ef5e1de9ae200d22c251b624fbfb721fbe55ebc2ebfe02606b3cbab1706bc1d5fa1687a2424d4fdc77499e8645')
 
 build() {
 	{
@@ -20,12 +20,10 @@ build() {
 			Type = Path
 		EOF
 
-		rootdir="$(pacconf RootDir)"
-		for p in $(systemd-analyze --global unit-paths; systemd-analyze unit-paths); do
-			p="${p#"$rootdir"}"
-			echo "Target = $p/*.service"
-		done | sort
-
+		{
+			systemd-analyze unit-paths
+			systemd-analyze --global unit-paths
+		} | sed -e "s|^$(pacconf RootDir)|Target = |" -e 's|$|/*.*|' | sort -u
 		echo
 
 		cat <<- EOF
@@ -41,5 +39,5 @@ build() {
 
 package() {
 	install -Dm644 'list-systemd-units.hook' -t "${pkgdir}/usr/share/libalpm/hooks/"
-	install -Dm744 'list-systemd-units.sh' -t "${pkgdir}/usr/share/libalpm/scripts/"
+	install -Dm755 'list-systemd-units.sh' -t "${pkgdir}/usr/share/libalpm/scripts/"
 }
