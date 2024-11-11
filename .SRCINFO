@@ -1,7 +1,7 @@
 pkgbase = android-aarch64-freetype2
 	pkgdesc = Font rasterization library (Android aarch64)
 	pkgver = 2.13.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.freetype.org/
 	arch = any
 	groups = android-freetype2
@@ -9,7 +9,6 @@ pkgbase = android-aarch64-freetype2
 	makedepends = android-meson
 	depends = android-ndk
 	depends = android-aarch64-zlib
-	depends = android-aarch64-bzip2
 	depends = android-aarch64-brotli
 	depends = android-aarch64-libpng
 	depends = android-aarch64-harfbuzz
