@@ -1,25 +1,20 @@
 pkgbase = final2x-bin
-	pkgdesc = 2^x Image Super-Resolution.Prebuilt version.Use system-wide electron.
-	pkgver = 1.3.2
+	pkgdesc = 2^x Image Super-Resolution.(Prebuilt version.Use system-wide electron)
+	pkgver = 2.0.0
 	pkgrel = 1
 	url = https://final2x.tohru.top/
 	arch = x86_64
 	license = BSD-3-Clause
 	depends = electron27
-	depends = python>=3.8
 	depends = nodejs
-	depends = openssl-1.1
-	depends = libice
-	depends = libbsd
-	depends = libsm
 	depends = vulkan-icd-loader
 	conflicts = final2x
 	options = !strip
 	options = !emptydirs
-	source = final2x-1.3.2.deb::https://github.com/Tohrusky/Final2x/releases/download/2024-10-28/Final2x-ubuntu-x64-deb.deb
-	source = LICENSE-1.3.2::https://raw.githubusercontent.com/Tohrusky/Final2x/2024-10-28/LICENSE
+	source = final2x-2.0.0.deb::https://github.com/Tohrusky/Final2x/releases/download/2024-11-09/Final2x-linux-pip-x64-deb.deb
+	source = LICENSE-2.0.0::https://raw.githubusercontent.com/Tohrusky/Final2x/2024-11-09/LICENSE
 	source = final2x.sh
-	sha256sums = 35cc4efe2f83444a0b146b4f423a9e458e9d3b4357032e59c6649d5a9817a40a
+	sha256sums = ed8964f1affb1ab6c8b8604494e6322256bdcd7e38716c6245cee1d0e22de873
 	sha256sums = 7b4e93ff707625a2632519b35d5891035356f551f18dd18539ad94c72f59286a
 	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
 

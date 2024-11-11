@@ -1,11 +1,11 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=final2x-bin
 _pkgname=Final2x
-pkgver=1.3.2
-_date=2024-10-28
+pkgver=2.0.0
+_date=2024-11-09
 _electronversion=27
 pkgrel=1
-pkgdesc="2^x Image Super-Resolution.Prebuilt version.Use system-wide electron."
+pkgdesc="2^x Image Super-Resolution.(Prebuilt version.Use system-wide electron)"
 arch=('x86_64')
 license=('BSD-3-Clause')
 conflicts=("${pkgname%-bin}")
@@ -13,12 +13,7 @@ url="https://final2x.tohru.top/"
 _ghurl="https://github.com/Tohrusky/Final2x"
 depends=(
     "electron${_electronversion}"
-    'python>=3.8'
     'nodejs'
-    'openssl-1.1'
-    'libice'
-    'libbsd'
-    'libsm'
     'vulkan-icd-loader'
 )
 options=(
@@ -26,11 +21,11 @@ options=(
     '!emptydirs'
 )
 source=(
-    "${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/${_date}/${_pkgname}-ubuntu-x64-deb.deb"
+    "${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/${_date}/${_pkgname}-linux-pip-x64-deb.deb"
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/Tohrusky/Final2x/${_date}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('35cc4efe2f83444a0b146b4f423a9e458e9d3b4357032e59c6649d5a9817a40a'
+sha256sums=('ed8964f1affb1ab6c8b8604494e6322256bdcd7e38716c6245cee1d0e22de873'
             '7b4e93ff707625a2632519b35d5891035356f551f18dd18539ad94c72f59286a'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 build() {
