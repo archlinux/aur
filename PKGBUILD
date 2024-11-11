@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc="Guile library for parsing CommonMark"
 arch=('any')
 url="https://github.com/OrangeShark/guile-commonmark"
-license=('LGPL3')
+license=('LGPL-3.0-or-later')
 depends=('guile')
 source=("https://github.com/OrangeShark/guile-commonmark/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz"
 	guile-3.patch)
