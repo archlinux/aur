@@ -2,7 +2,7 @@
 
 _pkgname=context
 pkgname=${_pkgname}-modules
-pkgver=2022.09.11_20.44
+pkgver=2024.11.01_19.19
 pkgrel=1
 pkgdesc='ConTeXt LMTX with all ConTeXt Garden modules'
 arch=('x86_64')
@@ -20,12 +20,13 @@ install=${_pkgname}.install
 prepare() {
   cd "${srcdir}"
 
-  # https://wiki.contextgarden.net/Modules#ConTeXt_LMTX
-  # Synchronize all modules from the ConTeXt Garden in the directory 'modules'
-  rsync --recursive --links --times --info=progress2,remove,symsafe,flist,del --human-readable --del rsync://contextgarden.net/minimals/current/modules/ modules
-
   chmod +x install.sh
   ./install.sh
+
+  (
+    cd "tex"
+    TEXMF="$PWD" ../bin/mtxrun ---script install-modules --install --all
+  )
 }
 
 package() {
@@ -34,8 +35,6 @@ package() {
 
   install -d "$context"
   cp -r texmf texmf-context "$context"
-  # Create the union of all modules in tex/texmf-modules.
-  rsync -rlt --exclude=/VERSION --del ../modules/*/ "$context"/texmf-modules
   install -Dt "${pkgdir}/usr/local/bin" texmf-linux-64/bin/*
 }
 

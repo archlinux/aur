@@ -1,6 +1,6 @@
 pkgbase = context-modules
 	pkgdesc = ConTeXt LMTX with all ConTeXt Garden modules
-	pkgver = 2022.09.11_20.44
+	pkgver = 2024.11.01_19.19
 	pkgrel = 1
 	url = https://wiki.contextgarden.net/Installation
 	install = context.install
