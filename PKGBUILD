@@ -10,7 +10,7 @@ pkgdesc="Free bias lighting driver for Philips Hue™ devices"
 url='https://gitlab.com/openjowelsofts/huenicorn'
 license=('GNU GPLv3')
 source=(
-  "git+https://gitlab.com/openjowelsofts/huenicorn.git#tag=v1.0.8"
+  "git+https://gitlab.com/openjowelsofts/huenicorn.git#tag=v${pkgver}"
   "huenicorn.desktop"
   "huenicorn.sh"
 )
