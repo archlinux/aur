@@ -1,0 +1,22 @@
+pkgbase = novel-tree-desktop-git
+	pkgdesc = A desktop app for Novel Tree.(Use system-wide electron)
+	pkgver = r24.9311d56
+	pkgrel = 1
+	url = https://github.com/novel-tree/novel-tree-desktop
+	arch = any
+	license = LicenseRef-unknown
+	makedepends = gendesk
+	makedepends = npm
+	makedepends = nvm
+	makedepends = git
+	makedepends = curl
+	makedepends = pnpm
+	depends = electron30
+	provides = novel-tree-desktop=r24.9311d56
+	conflicts = novel-tree-desktop
+	source = novel-tree-desktop.git::git+https://github.com/novel-tree/novel-tree-desktop
+	source = novel-tree-desktop.sh
+	sha256sums = SKIP
+	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
+
+pkgname = novel-tree-desktop-git
