@@ -1,0 +1,3 @@
+[vte-git]
+source = "git"
+git = "https://gitlab.gnome.org/GNOME/vte.git"

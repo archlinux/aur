@@ -1,22 +1,21 @@
 pkgbase = vte-git
 	pkgdesc = Virtual Terminal Emulator widget
-	pkgver = 0.75.0.r58.g8ce544e8
+	pkgver = 0.79.0.r39.gd99a527c
 	pkgrel = 1
 	url = https://gitlab.gnome.org/GNOME/vte
 	arch = x86_64
-	license = LGPL
+	license = LGPL-3.0-or-later
+	license = GPL-3.0-or-later
 	makedepends = cairo
-	makedepends = fribidi
+	makedepends = fast_float
 	makedepends = gi-docgen
 	makedepends = git
-	makedepends = gnutls
+	makedepends = glib2-devel
 	makedepends = gobject-introspection
 	makedepends = gperf
 	makedepends = gtk3
 	makedepends = gtk4
 	makedepends = meson
-	makedepends = pcre2
-	makedepends = systemd
 	makedepends = vala
 	options = !lto
 	source = vte::git+https://gitlab.gnome.org/GNOME/vte.git
@@ -24,8 +23,8 @@ pkgbase = vte-git
 
 pkgname = vte-common-git
 	pkgdesc = Virtual Terminal Emulator widget (common files)
-	depends = sh
-	provides = vte-common=0.75.0
+	depends = glibc
+	provides = vte-common=0.79.0
 	conflicts = vte-common
 
 pkgname = vte3-git
@@ -35,9 +34,8 @@ pkgname = vte3-git
 	depends = gnutls
 	depends = gtk3
 	depends = pcre2
-	depends = systemd
 	depends = vte-common
-	provides = vte3=0.75.0
+	provides = vte3=0.79.0
 	provides = libvte-2.91.so
 	conflicts = vte3
 
@@ -48,13 +46,13 @@ pkgname = vte4-git
 	depends = gnutls
 	depends = gtk4
 	depends = pcre2
-	depends = systemd
 	depends = vte-common
-	provides = vte4=0.75.0
+	provides = vte4=0.79.0
 	provides = libvte-2.91-gtk4.so
 	conflicts = vte4
 
 pkgname = vte-docs-git
 	pkgdesc = Virtual Terminal Emulator widget (documentation)
-	provides = vte-docs=0.75.0
+	arch = any
+	provides = vte-docs=0.79.0
 	conflicts = vte-docs

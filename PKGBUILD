@@ -1,11 +1,5 @@
 # Maintainer:
-# Contributor: Pellegrino Prevete <pellegrinoprevete@gmail.com>
-# Contributor: David Garfias <jose.garfias@ingenieria.unam.edu>
-# Contributor: Igor <f2404@yandex.ru>
-# Contributor: Lubosz Sarnecki <lubosz@gmail.com>
-# Contributor: Ionut Biru <ibiru@archlinux.org>
 
-# basic info
 _pkgbase="vte"
 pkgbase="$_pkgbase-git"
 pkgname=(
@@ -14,26 +8,32 @@ pkgname=(
   "vte4-git"
   "vte-docs-git"
 )
-pkgver=0.75.0.r58.g8ce544e8
+pkgver=0.79.0.r39.gd99a527c
 pkgrel=1
 pkgdesc="Virtual Terminal Emulator widget"
 url="https://gitlab.gnome.org/GNOME/vte"
-license=(LGPL)
 arch=(x86_64)
+license=(
+  # Library
+  LGPL-3.0-or-later
+
+  # Demo app, some supporting files
+  GPL-3.0-or-later
+
+  # COPYING.XTERM (X11 license) only applies to the disabled SIXEL code
+)
 
 makedepends=(
   cairo
-  fribidi
+  fast_float
   gi-docgen
   git
-  gnutls
+  glib2-devel
   gobject-introspection
   gperf
   gtk3
   gtk4
   meson
-  pcre2
-  systemd
   vala
 )
 
@@ -65,7 +65,6 @@ pkgver() {
 
 build() {
   local meson_options=(
-    -D b_lto=false
     -D docs=true
   )
 
@@ -78,7 +77,8 @@ check() {
 }
 
 _pick() {
-  local p="$1" f d; shift
+  local p="$1" f d
+  shift
   for f; do
     d="$srcdir/$p/${f#$pkgdir/}"
     mkdir -p "$(dirname "$d")"
@@ -89,7 +89,7 @@ _pick() {
 
 package_vte-common-git() {
   pkgdesc+=" (common files)"
-  depends=(sh)
+  depends=(glibc)
 
   provides+=("${pkgname%-git}=${pkgver%%.r*}")
   conflicts+=("${pkgname%-git}")
@@ -118,7 +118,6 @@ package_vte-common-git() {
   _pick docs usr/share/doc
 }
 
-
 package_vte3-git() {
   pkgdesc+=" (GTK3)"
   depends=(
@@ -127,7 +126,6 @@ package_vte3-git() {
     gnutls
     gtk3
     pcre2
-    systemd
     vte-common
   )
 
@@ -148,7 +146,6 @@ package_vte4-git() {
     gnutls
     gtk4
     pcre2
-    systemd
     vte-common
   )
 
@@ -163,6 +160,7 @@ package_vte4-git() {
 
 package_vte-docs-git() {
   pkgdesc+=" (documentation)"
+  arch=(any)
 
   provides+=("${pkgname%-git}=${pkgver%%.r*}")
   conflicts+=("${pkgname%-git}")
