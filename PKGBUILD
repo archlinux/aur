@@ -29,19 +29,25 @@ sha256sums_aarch64=('7d24accb8581fd5c36c6da3b2822270b935d6f1b286854a84aa9d6edf9d
 prepare() {
   cd "${srcdir}/" || exit
 
-  echo """
+  echo '''
 #!/bin/sh
 
-java -jar /usr/lib/${pkgname}/${_pkgname}.jar "$@"
-  """ > ${_execname}
+me=`realpath $0`
+exec java -jar $me "$@"
+  ''' > header
+}
+
+build() {
+  cd "${srcdir}/" || exit
+
+  cat header "${pkgname}-${CARCH}-${pkgver}.jar" > ${_execname}
+  rm -rf header
 }
 
 package() {
   cd "${srcdir}/" || exit
 
   install -Dm755 "${_execname}" "${pkgdir}/usr/bin/${_execname}"
-
-  install -Dm755 "${pkgname}-${CARCH}-${pkgver}.jar" "${pkgdir}/usr/lib/${pkgname}/${_pkgname}.jar"
 
   install -Dm644 "${_execname}.desktop" "${pkgdir}/usr/share/applications/${_execname}.desktop"
   install -Dm644 "${_execname}.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/${_execname}.svg"
