@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Drova – Forsaken Kin
+Comment=Pixel art action RPG inspired by Celtic mythology and Gothic
+Exec=drova
+Icon=gog-drova-forsaken-kin
+Type=Application
+Terminal=false
+StartupNotify=true
+Categories=Game;
+Encoding=UTF-8
