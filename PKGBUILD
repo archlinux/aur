@@ -6,7 +6,7 @@
 _android_arch=x86
 
 pkgname=android-${_android_arch}-librsvg
-pkgver=2.58.3
+pkgver=2.59.2
 pkgrel=1
 arch=('any')
 pkgdesc="SVG rendering library (Android ${_android_arch})"
@@ -20,18 +20,16 @@ depends=("android-${_android_arch}-cairo"
          "android-${_android_arch}-harfbuzz"
          "android-${_android_arch}-libxml2"
          "android-${_android_arch}-pango")
-makedepends=('android-configure'
+makedepends=('android-meson'
              'android-rust')
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("https://gitlab.gnome.org/GNOME/librsvg/-/archive/${pkgver}/librsvg-${pkgver}.tar.bz2")
-md5sums=('285238be66277c056c4456e779038407')
+md5sums=('f899eab00948aea436debd1e392db1ba')
 
 prepare() {
     cd "${srcdir}/librsvg-${pkgver}"
     source android-rust-env ${_android_arch}
     android_rust_prepare
-
-    NOCONFIGURE=1 ./autogen.sh
 }
 
 # Use LTO
@@ -44,21 +42,20 @@ build() {
     cd "${srcdir}/librsvg-${pkgver}"
     source android-rust-env ${_android_arch}
 
-    export RST2MAN=no
-    export GI_DOCGEN=no
-
-    android-${_android_arch}-configure \
-        --enable-introspection=no \
-        --disable-gtk-doc
-    sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0 /g' libtool
-    make $MAKEFLAGS
+    android-${_android_arch}-meson build \
+        -D triplet=${RUST_TARGET} \
+        -D introspection=disabled \
+        -D pixbuf-loader=disabled \
+        -D docs=disabled \
+        -D tests=false
+    ninja -C build
 }
 
 package() {
     cd "${srcdir}/librsvg-${pkgver}"
     source android-rust-env ${_android_arch}
 
-    make DESTDIR="${pkgdir}" install
+    DESTDIR="${pkgdir}" ninja -C build install
     rm -rf "${pkgdir}/${ANDROID_PREFIX_BIN}"
     rm -rf "${pkgdir}/${ANDROID_PREFIX_SHARE}/"{doc,man}
     ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.so
