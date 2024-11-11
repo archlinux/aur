@@ -1,7 +1,7 @@
 pkgbase = mingw-w64-cppwinrt
 	pkgdesc = C++ language projection for Windows Runtime (WinRT) APIs (mingw-w64)
 	pkgver = 2.0.240405.15
-	pkgrel = 1
+	pkgrel = 2
 	url = https://aka.ms/cppwinrt
 	arch = any
 	license = spdx:MIT

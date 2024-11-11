@@ -7,7 +7,7 @@ _realname=cppwinrt
 pkgname=mingw-w64-${_realname}
 pkgver=2.0.240405.15
 _windows_rs_ver=0.59.0
-pkgrel=1
+pkgrel=2
 arch=('any')
 pkgdesc='C++ language projection for Windows Runtime (WinRT) APIs (mingw-w64)'
 url='https://aka.ms/cppwinrt'
@@ -76,5 +76,5 @@ package() {
     popd
   done
 
-  install -Dm644 "${srcdir}/${_realname}-${pkgver}/LICENSE" "${pkgdir}/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 "${srcdir}/${_realname}-${pkgver}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
