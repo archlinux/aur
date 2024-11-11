@@ -7,7 +7,6 @@ pkgbase = sunloginclient
 	arch = x86_64
 	license = custom
 	depends = libappindicator-gtk3
-	depends = gconf
 	depends = xorg-xhost
 	depends = libcrypt.so=1-64
 	provides = sunlogin

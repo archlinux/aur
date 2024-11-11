@@ -10,7 +10,6 @@ pkgdesc="Proprietary software that supports remote control of mobile devices, Wi
 arch=("x86_64")
 url="https://sunlogin.oray.com"
 depends=("libappindicator-gtk3"
-         "gconf"
          'xorg-xhost'
          'libcrypt.so=1-64')
 license=('custom')
@@ -80,7 +79,7 @@ package() {
   # icon
   install -Dm644 usr/local/${_pkgname}/res/icon/sunlogin_client.png \
                  ${pkgdir}/usr/share/pixmaps/${pkgname}.png
-  
+
   # license
   install -Dm644 ${srcdir}/LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
@@ -88,11 +87,10 @@ package() {
   install -dm755 "$pkgdir/usr/bin"
   ln -sf "/opt/${_pkgname}/bin/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
 
-  # ugly hack
+ # ugly hack
   sed -i "s#/usr/local/sunlogin#///////opt/sunlogin#g" \
           "${pkgdir}/opt/${_pkgname}/bin/${pkgname}" \
           "${pkgdir}/opt/${_pkgname}/bin/${pkgname}_desktop" \
           "${pkgdir}/opt/${_pkgname}/bin/oray_rundaemon"
 }
-# vim: ts=2 sw=2 et: 
-
+# vim: ts=2 sw=2 et:
