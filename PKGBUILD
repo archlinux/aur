@@ -2,7 +2,7 @@
 
 pkgname=python-adafruit-circuitpython-dht
 _pypi_pkgname=adafruit-circuitpython-dht
-pkgver=4.0.4
+pkgver=4.0.5
 pkgrel=0
 pkgdesc="CircuitPython support for DHT11 and DHT22 type temperature/humidity devices"
 arch=('armv6h' 'armv7h')
@@ -12,7 +12,7 @@ makedepends=('python-setuptools' 'python-pip')
 depends=('python' 'python-adafruit-circuitpython-busdevice')
 optdepends=()
 source=("https://pypi.io/packages/source/a/${_pypi_pkgname}/${_pypi_pkgname}-${pkgver}.tar.gz")
-sha256sums=('5004021ed6f1ffbcd1042085a1239133b59d64734bf6250f05b3bb191e1cd7a2')
+sha256sums=('98d7d326ed67302d6d8972970a943f0a9760cc96fd6538da48e17db6cd2456ab')
 
 build() {
     cd "${srcdir}/${_pypi_pkgname}-${pkgver}"
