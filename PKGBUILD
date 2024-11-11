@@ -4,7 +4,7 @@ _gitname="pass-secret-service"
 _pkgname="${_gitname}"
 pkgname="${_pkgname}-git"
 pkgver=0.2+1.r46.20240720.f9dbcbb
-pkgrel=2
+pkgrel=3
 pkgdesc="An org.freedesktop.secrets provider with a pass backend."
 arch=(
   'aarch64'
@@ -38,7 +38,7 @@ checkdepends=(
 )
 provides=(
   "${_pkgname}=${pkgver}"
-)
+  "org.freedesktop.secrets")
 conflicts=(
   "${_pkgname}"
 )
@@ -111,18 +111,7 @@ package() {
   cd "${srcdir}/${_pkgname}"
   printf '%s\n' " --> installing ..."
 
-  ## I give up here trying to download all cargo specific stuff in `prepare()` and compile all in `build()`: This actually needs to download stuff again (so, `--offline` will result in failure) and I could not find a way to download it in `prepare()`. Also, it compiles stuff again.
-  #  On the other side, `cargo build` as above does not generate the file `pass-secret-service` so that we cannot manually copy, but we need `cargo install` actually.
-  cargo install --all-features --profile release --root "${pkgdir}" --path .
-
-  # Remove junk
-  rm "${pkgdir}"/{.crates2.json,.crates.toml}
-  # Use correct directories
-  install -dvm755 "${pkgdir}/usr/bin"
-  install -Dvm755 -t "${pkgdir}/usr/bin"  "${pkgdir}/bin/pass-secret-service"
-  rm "${pkgdir}/bin/pass-secret-service"
-  rmdir "${pkgdir}/bin"
-
+  install -Dvm755 -t "${pkgdir}/usr/bin"                     "target/release/pass-secret-service"
   # Install service files
   install -Dvm744 -t "${pkgdir}/usr/share/dbus-1/services/"  "systemd/org.freedesktop.secrets.service"
   install -Dvm644 -t "${pkgdir}/usr/lib/systemd/user/"       "systemd/pass-secret-service.service"
@@ -158,4 +147,3 @@ package() {
     ln -svr "${pkgdir}/usr/share/licenses/${pkgname}/$(basename "${_licensefile}")" "${pkgdir}/usr/share/doc/${_pkgname}/$(basename "${_licensefile}")"
   done
 }
-
