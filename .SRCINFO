@@ -18,7 +18,7 @@ pkgbase = java-openjfx-nowebkit
 	makedepends = gradle<9
 	makedepends = gtk2
 	makedepends = gtk3
-	makedepends = java-environment-openjdk=22
+	makedepends = java-environment-openjdk=23
 	makedepends = libgl
 	makedepends = libx11
 	makedepends = libxtst

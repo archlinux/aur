@@ -40,8 +40,8 @@ makedepends=(
   "gradle<9"
   "gtk2"
   "gtk3"
-  "java-environment-openjdk=$(("${pkgver%%.*}"-1))" # Needs older version of jdk-openjdk.
-  # "java-environment-openjdk=${pkgver%%.*}"
+  # "java-environment-openjdk=$(("${pkgver%%.*}"-1))" # Needs older version of jdk-openjdk.
+  "java-environment-openjdk=${pkgver%%.*}"
   "libgl"
   "libx11"
   "libxtst"
