@@ -1,0 +1,4 @@
+[hal-emsec-git]
+source = "git"
+git = "https://github.com/emsec/hal.git"
+prefix = "v"
