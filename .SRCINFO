@@ -1,7 +1,7 @@
 pkgbase = ereandel
 	pkgdesc = A Gemini web browser using shell script
 	pkgver = 0.26.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/blmayer/ereandel
 	arch = any
 	license = MIT
