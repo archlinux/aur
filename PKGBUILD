@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 # Contributor: Carl Smedstad <carl.smedstad at protonmail dot com>
 pkgname=tbls-bin
-pkgver=1.79.0
+pkgver=1.79.2
 pkgrel=1
-pkgdesc="CI-Friendly tool for documenting a database.Written in Go.Prebuilt version."
+pkgdesc="CI-Friendly tool for documenting a database.Written in Go.(Prebuilt version)"
 arch=(
   'aarch64'
   'x86_64'
@@ -16,13 +16,12 @@ depends=()
 source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/k1LoW/tbls/v${pkgver}/LICENSE"
 )
-source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}-1_arm64.deb")
-source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}-1_amd64.deb")
+source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}-1_arm64.rpm")
+source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}-1_amd64.rpm")
 sha256sums=('6eefa0bec6e7c3654bdc29cb8f8c4adbc1327d2e912b532aacc68f6e2fa9d63c')
-sha256sums_aarch64=('655d1a73747d092cfdbf2a6c35a17c093949075eb9d6bd9097a676e252df27b1')
-sha256sums_x86_64=('f68f6f1a330351829d17c2c269f9f5037a8e59fe79246a5795c11f13dced2593')
+sha256sums_aarch64=('542bbbc188a0c02148105d29873b44a70e98d0c2b2c78c1de941268c265e3f80')
+sha256sums_x86_64=('39a440f7154500aad63e33e4d824194924604e2e3155665def1cbbf7b67732a4')
 build() {
-    bsdtar -xf "${srcdir}/data."*
     "${srcdir}/usr/bin/${pkgname%-bin}" completion bash > "${srcdir}/${pkgname%-bin}.bash"
     "${srcdir}/usr/bin/${pkgname%-bin}" completion fish > "${srcdir}/${pkgname%-bin}.fish"
     "${srcdir}/usr/bin/${pkgname%-bin}" completion zsh  > "${srcdir}/${pkgname%-bin}.zsh"
