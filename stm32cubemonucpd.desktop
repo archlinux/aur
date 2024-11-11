@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=STM32CubeMonUCPD
+Comment=STM32CubeMonUCPD 1.3.0
+GenericName=STM32CubeMonUCPD
+Exec=stm32cubemonucpd
+Icon=stm32cubemonucpd
+Path=/opt/stm32cubemonucpd/
+Terminal=false
+StartupNotify=true
+Type=Application
+Categories=Development;Java;

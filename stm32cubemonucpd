@@ -1,0 +1,4 @@
+#!/bin/sh
+
+export PATH="/opt/stm32cubemonucpd/jre/bin:$PATH"
+exec java -Djdk.gtk.version=2 -jar /opt/stm32cubemonucpd/STM32CubeMonitor-UCPD.jar ""
