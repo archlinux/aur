@@ -2,10 +2,10 @@
 # Contributor: Xuanwo
 pkgname=follow-bin
 _pkgname=Follow
-pkgver=0.1.2_beta.0
+pkgver=0.2.0_beta.2
 _electronversion=33
 pkgrel=1
-pkgdesc="🧡 Next generation information browser.This software is all about allowing you to follow your favorite websites, blogs, social media accounts, podcasts and notifications in one place. Prebuilt version.Use system-wide electron."
+pkgdesc="🧡 Next generation information browser.This software is all about allowing you to follow your favorite websites, blogs, social media accounts, podcasts and notifications in one place. (Prebuilt version.Use system-wide electron)"
 arch=('x86_64')
 url="https://follow.is/"
 _ghurl="https://github.com/RSSNext/follow"
@@ -22,7 +22,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.AppImage::${_ghurl}/releases/download/v${pkgver//_/-}/${_pkgname}-${pkgver//_/-}-linux-x64.AppImage"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('61afeee5f5aeed662f56330b1a300e0bc4d55a266a0f67f0c9f85102b8a0cbc9'
+sha256sums=('c125b51a992d0b57c961a25357f9a7c94a80d2aa08cf34f4b95e295c517640b0'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 build() {
     sed -e "
