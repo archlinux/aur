@@ -3,7 +3,7 @@
 pkgbase=cloud-fs-bin
 pkgname=clouddrive
 pkgver=0.8.3
-pkgrel=1
+pkgrel=4
 epoch=2
 pkgdesc="CloudDrive - Unlocking the Unlimited Possibilities of Cloud Storage"
 arch=('x86_64' 'aarch64')
@@ -54,7 +54,8 @@ package() {
 export LD_LIBRARY_PATH=/opt/clouddrive:\$LD_LIBRARY_PATH
 
 LOCAL_ROOT_PATH="/media/clouddrive"
-MAX_QSP_115=3
+# The current test can be set 0.9~0.5 which is more stable, there is also test 0.1 available. Adjust the value by yourself.
+MAX_QSP_115=0.9
 
 cd /opt/clouddrive
 ./clouddrive
