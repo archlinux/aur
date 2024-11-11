@@ -1,6 +1,6 @@
 pkgbase = flxvwr-bin
 	pkgdesc = A simple, flexible, image viewer
-	pkgver = 0.0.5
+	pkgver = 0.0.6
 	pkgrel = 1
 	url = https://github.com/justjcurtis/flxvwr
 	arch = x86_64
@@ -11,9 +11,9 @@ pkgbase = flxvwr-bin
 	provides = flxvwr
 	conflicts = flxvwr
 	conflicts = flxvwr-git
-	source = flxvwr-x64-v0.0.5.tar.xz::https://github.com/justjcurtis/flxvwr/releases/download/v0.0.5/flxvwr-x64-v0.0.5.tar.xz
+	source = flxvwr-x64-v0.0.6.tar.xz::https://github.com/justjcurtis/flxvwr/releases/download/v0.0.6/flxvwr-x64-v0.0.6.tar.xz
 	source = LICENSE::https://raw.githubusercontent.com/justjcurtis/flxvwr/main/LICENSE
-	sha256sums = 337da56905344f12697c4fd76d626c2a920f30c4215cbd9cd1067bbe6594f296
+	sha256sums = 0b15bee3ba22c7c007d9c39da8a6968872f7180e2f0ccb09cbebf154aeb95033
 	sha256sums = 40d1955119619603715da88c797f76b52e5e478392b953284b917e04285cf3ef
 
 pkgname = flxvwr-bin
