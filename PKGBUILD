@@ -1,12 +1,12 @@
 # Maintainer: Mark Collins <tera_1225 [aaht] hotmail ðot com>
 pkgname=python-free-proxy
 _name="free_proxy"
-pkgver=1.1.2
+pkgver=1.1.3
 pkgrel=1
 pkgdesc="Free proxy scraper written in python"
 arch=(any)
 url="https://github.com/jundymek/free-proxy"
-license=('LGPL')
+license=('MIT')
 depends=(
   python
   python-lxml
@@ -19,7 +19,7 @@ makedepends=(
     python-wheel
 )
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('f7c361d3b6c82918ab845163c46ea574e6bd4ce54b1342e89804aaf07e53b848')
+sha256sums=('6d82aa112e3df7725bdbf177e2110bccdf5f3bbd6e1c70b8616ec12ae3bbf98c')
 
 build() {
     cd "$_name-$pkgver"
@@ -29,4 +29,6 @@ build() {
 package() {
     cd "$_name-$pkgver"
     python -m installer --destdir="$pkgdir" dist/*.whl
+    mkdir -p "$pkgdir/usr/share/licenses/python-free-proxy/"
+    cp LICENSE "$pkgdir/usr/share/licenses/python-free-proxy/"
 }
