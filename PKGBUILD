@@ -1,5 +1,5 @@
 pkgname=('mingw-w64-z3')
-pkgver=4.13.0
+pkgver=4.13.3
 pkgrel=1
 pkgdesc='High-performance theorem prover (mingw-w64)'
 url='https://github.com/Z3Prover/z3'
@@ -9,7 +9,7 @@ makedepends=('mingw-w64-cmake' 'python')
 options=('!strip' '!buildflags' 'staticlibs')
 depends=('mingw-w64-gmp')
 source=("https://github.com/Z3Prover/z3/archive/z3-${pkgver}.tar.gz")
-sha512sums=('8503787fe0b18592b5a131bcec2cacfa5f5096d76386a1c4fda7a836e472924b154433306d27600ff0d0758ddb710c965901fbfc2e5605919b624b9d4d1bc4fd')
+sha512sums=('c899f57d8cb5450801463b07cd651869d766a920e41a4beedc96c4978e940bfadff9af2fbbb5ba10f94f6742bb33f7abaca0a351f3e1803d778e84d735d6829e')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
