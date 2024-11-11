@@ -27,7 +27,7 @@ depends=(
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${url}/releases/download/v${pkgver}/${pkgname%-bin}-linux-arm64.deb")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${url}/releases/download/v${pkgver}/${pkgname%-bin}-linux-amd64.deb")
 source=("${pkgname%-bin}.sh")
-sha256sums=('28e852632bc479a8c9bb84c2d9b629c35a621618448fbc1e0bbea21dfaef19a1')
+sha256sums=('8e51aff9553628b04cfe30cfaccd883b723730b5e6b5808c0c1cfb325fcc599d')
 sha256sums_aarch64=('58aea587f4c28021a4f37ecd99dee038a090029635fec756aee67e7952a0f37b')
 sha256sums_x86_64=('aea168d5f214a7ff030ce2853d59fbe762dba90eff72b8bb33b0d5f99ae36583')
 build() {
