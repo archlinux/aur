@@ -3,8 +3,8 @@
 _android_arch=x86-64
 
 pkgname=android-${_android_arch}-ffmpeg
-pkgver=7.0.2
-pkgrel=4
+pkgver=7.1
+pkgrel=1
 arch=('any')
 pkgdesc="Complete solution to record, convert and stream audio and video (Android ${_android_arch})"
 url="http://ffmpeg.org/"
@@ -34,11 +34,14 @@ depends=("android-${_android_arch}-alsa-lib"
          "android-${_android_arch}-libmodplug"
          "android-${_android_arch}-libopenmpt"
          "android-${_android_arch}-libraw1394"
+         "android-${_android_arch}-librsvg"
          "android-${_android_arch}-libsoxr"
+         "android-${_android_arch}-libssh"
          "android-${_android_arch}-libtheora"
          "android-${_android_arch}-libva"
          "android-${_android_arch}-libvdpau"
          "android-${_android_arch}-libvorbis"
+         "android-${_android_arch}-libvpl"
          "android-${_android_arch}-libvpx"
          "android-${_android_arch}-libwebp"
          "android-${_android_arch}-libx11"
@@ -46,7 +49,6 @@ depends=("android-${_android_arch}-alsa-lib"
          "android-${_android_arch}-libxext"
          "android-${_android_arch}-libxml2"
          "android-${_android_arch}-libxv"
-         "android-${_android_arch}-libvpl"
          "android-${_android_arch}-ocl-icd"
          "android-${_android_arch}-opencore-amr"
          "android-${_android_arch}-openjpeg2"
@@ -56,6 +58,7 @@ depends=("android-${_android_arch}-alsa-lib"
          "android-${_android_arch}-sdl2"
          "android-${_android_arch}-snappy"
          "android-${_android_arch}-speex"
+         "android-${_android_arch}-srt"
          "android-${_android_arch}-svt-av1"
          "android-${_android_arch}-vid.stab"
          "android-${_android_arch}-vmaf"
@@ -64,11 +67,6 @@ depends=("android-${_android_arch}-alsa-lib"
          "android-${_android_arch}-xvidcore"
          "android-${_android_arch}-xz"
          "android-${_android_arch}-zlib")
-#depends+=("android-${_android_arch}-librsvg"
-#          "android-${_android_arch}-libssh"
-#          "android-${_android_arch}-srt"
-#          "android-${_android_arch}-vapoursynth"
-#          "android-${_android_arch}-zimg")
 makedepends=('android-configure'
              "android-${_android_arch}-avisynthplus"
              "android-${_android_arch}-ladspa"
@@ -81,7 +79,7 @@ optdepends=("android-${_android_arch}-avisynthplus: AviSynthPlus support"
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("http://ffmpeg.org/releases/ffmpeg-${pkgver}.tar.xz"
         'configure.patch')
-md5sums=('e22725fc3738e314d71a7fb32f2336db'
+md5sums=('623aa63a72139a82ccb99cd6ee477b94'
          'c1851376794c16bcb37cfa8918e10cba')
 
 prepare() {
@@ -144,15 +142,6 @@ build() {
     # Not yet available.
     # extra_options="${extra_options} --enable-frei0r"
 
-    # For some unknown reason, librsvg is not exporting any symbol so disable for now.
-    # extra_options="${extra_options} --enable-librsvg"
-
-    # Fail with message 'cannot locate symbol "__eqtf2"' in zimg.
-    # extra_options="${extra_options} --enable-libzimg --enable-vapoursynth"
-
-    # Disable this features because it makes fail when loading libavformat.
-    # extra_options="${extra_options} --enable-libsrt --enable-libssh"
-
     ./configure \
         --prefix=${ANDROID_PREFIX} \
         --enable-shared \
@@ -208,10 +197,13 @@ build() {
         --enable-libopenmpt \
         --enable-libopus \
         --enable-librav1e \
+        --enable-librsvg \
         --enable-librubberband \
         --enable-libsnappy \
         --enable-libsoxr \
         --enable-libspeex \
+        --enable-libsrt \
+        --enable-libssh \
         --enable-libsvtav1 \
         --enable-libtheora \
         --enable-libvidstab \
