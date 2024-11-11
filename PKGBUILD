@@ -2,25 +2,32 @@
 
 pkgname=python-pymbolic
 _module=pymbolic
-pkgver=2022.2
+pkgver=2024.1
 pkgrel=1
 pkgdesc="Pymbolic: A simple package to do symbolic math (focus on code gen and DSLs)"
 url="https://github.com/inducer/pymbolic"
 depends=('python-pytools' 'python-sympy' 'python-symengine')
-makedepends=('python-setuptools')
+makedepends=('python-build' 'python-installer')
 license=('MIT')
 arch=('any')
 source=("https://github.com/inducer/pymbolic/archive/v${pkgver}.tar.gz")
-sha256sums=('7af155472d4ff519afc8756fd83b6921fd5f7eaa5fc391385984b2cb01d4e5c9')
+sha256sums=('265bdefc2cf7b6284ade6afe4337a87337de1f103aeaa729cfa97477386c89ac')
 
 build() {
     cd "${srcdir}/${_module}-${pkgver}"
-    python setup.py build
+    python -m build --wheel --no-isolation
+
 }
 
 package() {
-    depends+=()
+
     cd "${srcdir}/${_module}-${pkgver}"
-    python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
-    install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/license.md"
+
+    python -m installer --destdir="$pkgdir" dist/*.whl
+
+    # Symlink license file
+    local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
+    install -d "$pkgdir"/usr/share/licenses/$pkgname
+    ln -s "$site_packages/${_module}-${pkgver}".dist-info/LICENSE.txt "$pkgdir"/usr/share/licenses/$pkgname/LICENSE.txt
+
 }
