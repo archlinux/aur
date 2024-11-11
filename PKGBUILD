@@ -1,5 +1,5 @@
 pkgname="californium-tools-git"
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="Californium tools, including cf-client, cf-server and cf-browser."
 url="https://eclipse.dev/californium/"
@@ -49,11 +49,12 @@ MimeType=
 
 	add_bin "cf-browser"       "cf-browser/target"
 	add_bin "cf-client"        "cf-client/target"
-	add_bin "cf-coapbench"     "cf-coapbench/target"
 	add_bin "cf-jmeter-plugin" "cf-jmeter-plugin/target"
-	add_bin "cf-polyfill"      "cf-polyfill/target"
 	add_bin "cf-rd"            "cf-rd/target"
-	add_bin "cf-server"        "cf-server/target"
+	# note : These do not produce a target directory.
+	# add_bin "cf-coapbench"     "cf-coapbench/target"
+	# add_bin "cf-polyfill"      "cf-polyfill/target"
+	# add_bin "cf-server"        "cf-server/target"
 	
 	add_app "Californium Browser" "cf-browser"
 }
