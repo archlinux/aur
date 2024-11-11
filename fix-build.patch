@@ -40,6 +40,15 @@ index 2676cb8..4d7f126 100644
  	ENTRY(HPDF_BYTE_TYPE_UNKNOWN, 1)
  	ENTRY(HPDF_TALIGN_LEFT, 1)
  	ENTRY(HPDF_TALIGN_RIGHT, 1)
+@@ -5287,7 +5287,7 @@ do_HPDF_Page_SetDash(int nargs, awk_value_t *result)
+ 		RETURN_NOK;
+ 	}
+ 
+-	if (HPDF_Page_SetDash(page, (const HPDF_UINT16 *)dash_ptn, 
++	if (HPDF_Page_SetDash(page, (const HPDF_REAL *)dash_ptn, 
+ 			num_param.num_value, phase.num_value) != HPDF_OK) {
+ 		set_ERRNO(_("HPDF_Page_SetDash: can't set char spaces."));
+ 		RETURN_NOK;
 diff --git a/pdf.h b/pdf.h
 index ca3e874..7cc998c 100644
 --- a/pdf.h

@@ -17,8 +17,11 @@ sha256sums=('92fb8d83b71de2fe2aec0bc2468459e728290e0c675ca8c19aaf195ba3cad9b6'
             'e9676ac113dee0b3ce4af34618c2793dd6c8c6e869c2157b8b228270b440d962')
 
 prepare() {
-	cd "$pkgname-$pkgver"
-	patch -p1 -i "$srcdir"/fix-build.patch
+  cd "$pkgname-$pkgver"
+  patch -p1 -i "$srcdir"/fix-build.patch
+  # hack to fix build until the extension
+  # is ported to the GAWK 5 API
+  sed -i 's/\([[:blank:]]*do.*, awk_value_t \*result\))$/\1, struct awk_ext_func *unused)/' pdf.c
 }
 
 build() {
