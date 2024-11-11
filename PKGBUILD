@@ -7,7 +7,7 @@
 _pkgname=rsyslog
 pkgname="${_pkgname}-nosystemd-git"
 pkgver=8.2410.0+1.r15573.20241020.2ae102b28
-pkgrel=1
+pkgrel=2
 pkgdesc="An enhanced multi-threaded syslogd with a focus on security and reliability. Without systemd dependencies and supprt, latest git checkout."
 _giturl="https://github.com/rsyslog/rsyslog"
 url="http://www.rsyslog.com/"
@@ -31,7 +31,7 @@ depends=(
   'libestr'
   'libcap-ng.so'
   'libfastjson'
-  'liblogging'
+  #'liblogging'
   'liblognorm'
   'libnet'
   'libpcap'
@@ -49,7 +49,7 @@ makedepends=(
   'gnutls'
   'libestr'
   'libfastjson'
-  'liblogging'
+  #'liblogging'
   'libmariadbclient'
   'librelp'
   'libtool'
