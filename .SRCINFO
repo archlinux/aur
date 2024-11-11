@@ -1,11 +1,11 @@
 pkgbase = gawk-aregex
 	pkgdesc = GAWK extension - approximate regex (fuzzy) matching
 	pkgver = 1.1.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://sourceforge.net/projects/gawkextlib/
 	arch = i686
 	arch = x86_64
-	license = GPL
+	license = GPL-3.0-or-later
 	depends = gawkextlib
 	depends = glibc
 	depends = tre
