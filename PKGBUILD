@@ -1,42 +1,63 @@
-# Maintainer: rustemb <rustemb@systemli.org>
+# Maintainer:
+# Contributor: rustemb
 
-pkgname=shadowsocks-rust-git
-pkgver=r1442.39b3567
-pkgrel=2
-pkgdesc='A Rust port of shadowsocks https://shadowsocks.org/ (git version)'
-arch=('any')
-url='https://github.com/shadowsocks/shadowsocks-rust'
+_pkgname="shadowsocks-rust"
+pkgname="$_pkgname-git"
+pkgver=1.21.2.r38.g6900136
+pkgrel=1
+pkgdesc="A Rust port of shadowsocks"
+url="https://github.com/shadowsocks/shadowsocks-rust"
 license=('MIT')
-depends=('openssl')
-makedepends=('cargo' 'libsodium' 'git')
-provides=('shadowsocks-rust')
-conflicts=('shadowsocks-rust')
-source=(
-    "git+https://github.com/shadowsocks/${pkgname/-git/}.git"
-    'shadowsocks-rust@.service'
-    'shadowsocks-rust-server@.service')
+arch=('x86_64')
 
-sha512sums=('SKIP'
-            'fccb02b922369a6ba01e7d438bd8bf306fe25b15d54e0a91e33832bd2726add8e9c01705f1f7a3afe44f3034f6438c3cc8c0fcad8905d67cb789f4f21feef102'
-            '573df735263cafc37f5eb315aa5de106141a787a3dfb98a47499f8ed196ca32f1873a644188685512f5e58e062049674c4bcdf6ca9a87ee8dfb840614c69bb55')
+depends=(
+  'gcc-libs'
+  'glibc'
+  'openssl'
+)
+makedepends=(
+  'cargo'
+  'git'
+)
+
+provides=("$_pkgname=${pkgver%%.r*}")
+conflicts=("$_pkgname")
+
+options=('!lto')
+
+_pkgsrc="$_pkgname"
+source=(
+  "$_pkgname"::"git+$url.git"
+  'shadowsocks-rust@.service'
+  'shadowsocks-rust-server@.service'
+)
+sha256sums=(
+  'SKIP'
+  '93cd4fffaaf326beefd2657ed4f3c239d85c207210c63882c71ef0d724304da2'
+  'cc1c7c30137e720500206cf0ba4e798ced439e8a01639d28064468e4a1205070'
+)
 
 pkgver() {
-    cd "${srcdir}/${pkgname/-git/}"
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd "$_pkgsrc"
+  git describe --long --tags --abbrev=7 --exclude='*[a-zA-Z][a-zA-Z]*' \
+    | sed -E 's/^[^0-9]*//;s/([^-]*-g)/r\1/;s/-/./g'
+}
+
+prepare() {
+  cd "$_pkgsrc"
+  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
-    cd "${srcdir}/${pkgname/-git/}"
-    cargo build --release
+  cd "$_pkgsrc"
+  cargo build --release --frozen --features full-extra
 }
 
 package() {
-    cd "${srcdir}/${pkgname/-git/}"
-    install -Dm755 "target/release/sslocal" "${pkgdir}/usr/bin/sslocal-rust"
-    install -Dm755 "target/release/ssserver" "${pkgdir}/usr/bin/ssserver-rust"
-    install -Dm755 "target/release/ssurl" "${pkgdir}/usr/bin/ssurl-rust"
-    install -Dm644 "${srcdir}/shadowsocks-rust@.service" "${pkgdir}/usr/lib/systemd/system/shadowsocks-rust@.service"
-    install -Dm644 "${srcdir}/shadowsocks-rust-server@.service" "${pkgdir}/usr/lib/systemd/system/shadowsocks-rust-server@.service"
-    install -Dm644 "examples/config_ext.json" "${pkgdir}/etc/shadowsocks/config_ext_rust.json.example"
-    install -Dm644 "examples/config.json" "${pkgdir}/etc/shadowsocks/config_rust.json.example"
+  cd "$_pkgsrc"
+  install -Dm755 target/release/{sslocal,ssserver,ssurl,ssmanager,ssservice} -t "$pkgdir"/usr/bin/
+  install -Dm644 "$srcdir"/$_pkgname{@,-server@}.service -t "$pkgdir"/usr/lib/systemd/system/
+  install -Dm644 examples/config_ext.json "$pkgdir"/etc/$_pkgname/config_ext_rust.json.example
+  install -Dm644 examples/config.json "$pkgdir"/etc/$_pkgname/config_rust.json.example
+  install -Dm644 LICENSE -t "$pkgdir"/usr/share/licenses/$pkgname/
 }

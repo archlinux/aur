@@ -1,0 +1,4 @@
+[shadowsocks-rust-git]
+source = "git"
+git = "https://github.com/shadowsocks/shadowsocks-rust.git"
+prefix = "v"
