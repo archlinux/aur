@@ -1,7 +1,7 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=blender-bin
 pkgver=4.2.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A fully integrated 3D graphics creation suite (with packaged libraries and python3.11)"
 arch=('x86_64')
 url="https://blender.org"
@@ -16,7 +16,6 @@ license=(
   MPL-2.0
   Zlib
 )
-makedepends=('rsync')
 depends=('glibc' 'bash' 'hicolor-icon-theme'
 'libxkbcommon'
 'libxi'
@@ -42,7 +41,8 @@ depends=('glibc' 'bash' 'hicolor-icon-theme'
 optdepends=('cuda: Cycles renderer CUDA support'
             'intel-compute-runtime: Cycles renderer Intel OneAPI support'
             'libdecor: wayland support'
-	    'rocm-hip-runtime: HIP renderer AMD support')
+	    'rocm-hip-runtime: HIP renderer AMD support'
+	    'libdecor: Wayland Support')
 provides=('blender')
 conflicts=('blender')
 install=$pkgname.install
@@ -60,14 +60,25 @@ package() {
 	install -Dm644 readme.html "${pkgdir}/usr/share/doc/$pkgname/readme.html"
 	install -Dm644 blender.desktop "${pkgdir}/usr/share/applications/blender.desktop"
 	
-	rsync -a -r "${pkgver:0:3}" {lib,textures,usd} "${pkgdir}/usr/lib/${pkgname}"
-	rsync -a -r license/* "${pkgdir}/usr/share/licenses/${pkgname}/"
-	cd "${pkgdir}/usr/lib/${pkgname}/lib"
+	cp -a -r "${pkgver:0:3}" {lib,textures,usd} "${pkgdir}/usr/lib/${pkgname}"
+	pushd "$srcdir/blender-$pkgver-linux-x64/license/"
+	for file in *.txt;
+	do
+		install -Dm644 $file "$pkgdir/usr/share/licenses/${pkgname}/$file"
+	done
+	popd
+	pushd "${pkgdir}/usr/lib/${pkgname}/lib"
 	for file in *.so*;
 	do
 		chmod 755 "$file"
 	done
-	cd "$srcdir/blender-$pkgver-linux-x64"
+	popd
+	pushd "${pkgdir}/usr/lib/${pkgname}/lib/mesa"
+	for file in *.so*;
+	do
+		chmod 755 "$file"
+	done
+	popd
 
 	install -Dm755 blender-launcher "$pkgdir/usr/bin/blender"
 	install -Dm755 blender-softwaregl "$pkgdir/usr/bin/blender-softwaregl"
