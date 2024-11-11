@@ -1,11 +1,11 @@
 pkgbase = gawk-nl_langinfo
 	pkgdesc = GAWK extension - provides access to nl_langinfo(3)
 	pkgver = 1.1.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://sourceforge.net/projects/gawkextlib/
 	arch = i686
 	arch = x86_64
-	license = GPL
+	license = GPL-3.0-or-later
 	makedepends = gawkextlib
 	depends = glibc
 	source = https://downloads.sourceforge.net/gawkextlib/gawk-nl_langinfo-1.1.0.tar.gz
