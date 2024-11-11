@@ -2,16 +2,15 @@
 # Fixes: Brian Bidulock <bidulock at openss7 dot org>
  
 pkgname=linuxptp
-pkgver=4.2
+pkgver=4.4
 pkgrel=1
 pkgdesc='An implementation of the Precision Time Protocol (PTP) according to IEEE standard 1588 for Linux.'
 arch=('i686' 'x86_64')
-url='http://linuxptp.sourceforge.net/'
+url='https://linuxptp.nwtime.org/'
 license=('GPL')
 depends=('glibc')
-makedepends=()
-source=("${pkgname}-${pkgver}.tgz::https://sourceforge.net/projects/${pkgname}/files/v${pkgver}/${pkgname}-${pkgver}.tgz/download")
-sha256sums=('70e38e5d2764e0217443da6f14e8846fe401a472293ac138d8419c07a665447a')
+source=("https://downloads.nwtime.org/linuxptp/${pkgname}-${pkgver}.tgz")
+sha256sums=('61757bc0a58d789b8fcbdddf56c88a0230597184a70dcb2ac05b4c6b619f7d5c')
  
 build() {
   cd ${pkgname}-${pkgver}
