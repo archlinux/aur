@@ -2,7 +2,7 @@
 
 pkgname='lego-bin'
 _pkgname="${pkgname%-bin}"
-pkgver=4.19.0
+pkgver=4.20.2
 pkgrel=1
 pkgdesc='Lets Encrypt client and ACME library written in Go'
 url='https://go-acme.github.io/lego/'
@@ -19,16 +19,16 @@ _basedownloadurl="${_url}/releases/download/v${pkgver}"
 _basearchive="${_pkgname}_v${pkgver}_linux"
 
 source_x86_64=("${_basedownloadurl}/${_basearchive}_amd64.tar.gz")
-sha256sums_x86_64=('926e33001050a8abec58ca8f11f2673283a3ea87451bd4aa4887421214c5ca68')
+sha256sums_x86_64=('bb80ae12458b3e55fc9fa5a2025a607cf546868ede4245c1eeed38f3714b3d7c')
 
 source_i686=("${_basedownloadurl}/${_basearchive}_386.tar.gz")
-sha256sums_i686=('f172f15bfbbdc6f75b21ade742e599343146c4921f5ed81900ab86cef25d4189')
+sha256sums_i686=('a2fb493592f7dbccf42413892ed816f2761c46fc277fc15b33cb910a19232bba')
 
 source_armv7h=("${_basedownloadurl}/${_basearchive}_armv7.tar.gz")
-sha256sums_armv7h=('bf5c387a622be30385aa3e76fcce58f014c83e35edf4f795797fb4ae088f0a9a')
+sha256sums_armv7h=('7eb0ac7fb801fe3c49fea1192f23a60c8a75df56ad70453da5d5cbd3327ef428')
 
 source_aarch64=("${_basedownloadurl}/${_basearchive}_arm64.tar.gz")
-sha256sums_aarch64=('d589dc176a5b8af57024cb32bdbaba477940eb4a6b140766a4c94b98a1a51044')
+sha256sums_aarch64=('01b54f1d8daf456623497d74237a00f92f7653a787663fb6e4d2dac2f131f141')
 
 package() {
 	# Bin
