@@ -1,8 +1,8 @@
 pkgbase = python-cmake-bin
 	pkgdesc = Infrastructure for building CMake Python wheels
 	pkgver = 3.30.5
-	pkgrel = 1
-	url = https://github.com/cikit-build/cmake
+	pkgrel = 2
+	url = https://github.com/scikit-build/cmake-python-distributions
 	arch = x86_64
 	arch = aarch64
 	license = Apache-2.0
