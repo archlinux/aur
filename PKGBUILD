@@ -2,12 +2,14 @@
 
 pkgname=mconf-bin
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Parser for the mconf configuration language"
 arch=("x86_64" "aarch64")
 url="https://github.com/marzeq/mconf"
 license=("WTFPL")
 depends=("glibc")
+provides=("mconf")
+conflicts=("mconf")
 
 source_x86_64=("https://github.com/marzeq/mconf/releases/download/v$pkgver/mconf-linux-amd64")
 source_aarch64=("https://github.com/marzeq/mconf/releases/download/v$pkgver/mconf-linux-arm64")
