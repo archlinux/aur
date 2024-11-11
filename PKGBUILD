@@ -4,7 +4,7 @@ _gitname="pass-secret-service"
 _pkgname="${_gitname}"
 pkgname="${_pkgname}-git"
 pkgver=0.2+1.r46.20240720.f9dbcbb
-pkgrel=1
+pkgrel=2
 pkgdesc="An org.freedesktop.secrets provider with a pass backend."
 arch=(
   'aarch64'
@@ -17,6 +17,7 @@ _githost='github.com'
 _gituser='grimsteel'
 url="https://${_githost}/${_gituser}/${_gitname}"
 license=("GPL-3.0-or-later")
+groups=("pass")
 depends=(
   "gcc-libs"
   "glibc"
@@ -53,7 +54,6 @@ prepare() {
   export CARGO_HOME="${srcdir}/.cargo"
 
   cd "${srcdir}/${_pkgname}"
-  #cargo add futures-util  # Needed in the `cargo install` step.
 
   cargo fetch
 
@@ -82,8 +82,18 @@ build() {
 
   cd "${srcdir}/${_pkgname}"
 
-  #cargo build --offline --release --tests
-  cargo build --offline --release
+  ## no library targets found in package `pass-secret-service`
+  # printf '%s\n' " --> building library ..."
+  # cargo build --offline --all-features --release --lib
+  printf '\n'
+  printf '%s\n' " --> building binaries ..."
+  cargo build --offline --all-features --release --bins
+  printf '\n'
+  printf '%s\n' " --> building examples ..."
+  cargo build --offline --all-features --release --examples
+  printf '\n'
+  printf '%s\n' " --> building tests ..."
+  cargo build --offline --all-features --tests
 }
 
 check() {
@@ -91,7 +101,7 @@ check() {
 
   cd "${srcdir}/${_pkgname}"
 
-  ## This actually compiles stuff again. Even if `--tests` is added to `cargo build`.
+  printf '%s\n' " --> running tests ..."
   cargo test --offline
 }
 
@@ -103,7 +113,7 @@ package() {
 
   ## I give up here trying to download all cargo specific stuff in `prepare()` and compile all in `build()`: This actually needs to download stuff again (so, `--offline` will result in failure) and I could not find a way to download it in `prepare()`. Also, it compiles stuff again.
   #  On the other side, `cargo build` as above does not generate the file `pass-secret-service` so that we cannot manually copy, but we need `cargo install` actually.
-  cargo install --root "${pkgdir}" --path .
+  cargo install --all-features --profile release --root "${pkgdir}" --path .
 
   # Remove junk
   rm "${pkgdir}"/{.crates2.json,.crates.toml}
