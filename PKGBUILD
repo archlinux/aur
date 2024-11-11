@@ -1,11 +1,12 @@
-# Maintainer: Florian Pelz <pelzflorian at pelzflorian.de>
+# Maintainer: Patrick McCarty <pnorcks at gmail.com>
+# Contributor: Florian Pelz <pelzflorian at pelzflorian.de>
 pkgname=haunt
 pkgver=0.2.6
 pkgrel=1
 pkgdesc="Static site generator written in Guile Scheme"
 arch=('any')
 url="https://haunt.dthompson.us"
-license=('GPL3')
+license=('GPL-3.0-or-later')
 depends=('guile')
 optdepends=('guile-reader: Skribe support'
             'guile-commonmark: CommonMark support')
