@@ -1,0 +1,14 @@
+pkgbase = python-kornia-rs
+	pkgdesc = A low level computer vision library in Rust
+	pkgver = 0.1.7
+	pkgrel = 1
+	url = https://github.com/kornia/kornia-rs
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = git
+	makedepends = rust
+	makedepends = cargo
+	source = kornia-rs-0.1.7.tar.gz::https://github.com/kornia/kornia-rs/archive/refs/tags/v0.1.7.tar.gz
+	sha256sums = 547a01735791de4afcfcd6e01de8a72bca5539c3b88857770edaa9d45b7bd728
+
+pkgname = python-kornia-rs

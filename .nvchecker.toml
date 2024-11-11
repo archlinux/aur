@@ -1,0 +1,5 @@
+[python-kornia-rs]
+source="github"
+github="kornia/kornia-rs"
+use_latest_release=true
+prefix="v"
