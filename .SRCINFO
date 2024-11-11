@@ -1,7 +1,7 @@
 pkgbase = android-aarch64-rubberband
 	pkgdesc = Time-stretching and pitch-shifting audio library and utility
-	pkgver = 3.3.0
-	pkgrel = 2
+	pkgver = 4.0.0
+	pkgrel = 1
 	url = https://www.breakfastquay.com/rubberband/
 	arch = any
 	license = GPL2
@@ -17,8 +17,8 @@ pkgbase = android-aarch64-rubberband
 	options = !buildflags
 	options = staticlibs
 	options = !emptydirs
-	source = https://github.com/breakfastquay/rubberband/archive/v3.3.0.tar.gz
-	md5sums = 1125fda060b757bf1dc8de4b6a19f0fb
+	source = https://github.com/breakfastquay/rubberband/archive/v4.0.0.tar.gz
+	md5sums = 87ac2e0fcd62f4fa9d2bf83237adbb77
 
 pkgname = android-aarch64-rubberband
 	pkgdesc = Time-stretching and pitch-shifting audio library and utility - VAMP plugin (Android aarch64)
