@@ -1,23 +1,19 @@
 pkgname=mupen64plus-qt
-pkgver=1.15
-pkgrel=4
+pkgver=1.16
+pkgrel=1
 pkgdesc="A customizable launcher for Mupen64Plus"
 arch=('i686' 'x86_64')
 url="https://github.com/dh4/mupen64plus-qt"
 license=('BSD')
-depends=('quazip' 'mupen64plus' 'hicolor-icon-theme')
+depends=('quazip-qt6' 'mupen64plus' 'hicolor-icon-theme')
 install=mupen64plus-qt.install
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/dh4/${pkgname}/archive/${pkgver}.tar.gz"
-        "quazip-fix.patch")
-sha256sums=('c41448adb7dd6acb6d4f56f7cdd2f25a8fd9a9e9ee23e334c0969b835802f20a'
-            'b1a04d37fbd5f548c1d23824ab1553064cb5f9ffba218b08e951d61dfa756ef2')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/dh4/${pkgname}/archive/${pkgver}.tar.gz")
+sha256sums=('f402ee17ec4e3fd7d5408b9df21db79da9ece3558ee9b9b62fe22490ff721cdd')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
 
-    patch --forward --strip=1 --input="$srcdir/quazip-fix.patch"
-
-    qmake-qt5
+    cmake .
     make
 }
 
