@@ -1,10 +1,10 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=orature-bin
 _pkgname=Orature
-pkgver=3.1.26
-_subver=9711
+pkgver=3.1.28
+_subver=9800
 pkgrel=1
-pkgdesc="An application for creating Narrations and Translations of Audio Bibles, Books, Resources, Commentaries, etc.Prebuilt version."
+pkgdesc="An application for creating Narrations and Translations of Audio Bibles, Books, Resources, Commentaries, etc.(Prebuilt version)"
 arch=("x86_64")
 url="https://github.com/Bible-Translation-Tools/Orature"
 license=("GPL-3.0-only")
@@ -21,15 +21,15 @@ makedepends=(
     'gendesk'
 )
 source=(
-    "${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${pkgname%-bin}-linux-${pkgver}+${_subver}.deb"
+    "${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}-qa/${pkgname%-bin}-linux-${pkgver}-qa+${_subver}.deb"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('47d1bf1bf89fe484f69b20b70658727d590a1f0337748264c36fe24ced7b3642'
+sha256sums=('bf6c0f51942b2443a530b101dab7a040ddafecf0b2bf8d42583081f8a78051d7'
             '2da799c244ab45eb58acdb280a0ee4e8b886977834af2c59f6b9ba2310ff7964')
 build() {
     sed -e "
-        s/@appname@/${pkgname%-bin}/
-        s/@runname@/${pkgname%-bin}/
+        s/@appname@/${pkgname%-bin}/g
+        s/@runname@/${pkgname%-bin}/g
     " -i "${srcdir}/${pkgname%-bin}.sh"
     gendesk -q -f -n --pkgname="${pkgname%-bin}" --pkgdesc="${pkgdesc}" --categories="Development" --name="${_pkgname}" --exec="${pkgname%-bin} %U"
     bsdtar -xf "${srcdir}/data."*
