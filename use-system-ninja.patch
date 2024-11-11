@@ -10,10 +10,10 @@ index 3d8540f7..8bac4513 100644
  
  [tool.pytype]
 diff --git a/pytype/tools/analyze_project/pytype_runner.py b/pytype/tools/analyze_project/pytype_runner.py
-index 2c7dba42..6e2fcd7c 100644
+index a2065c09..3330d990 100644
 --- a/pytype/tools/analyze_project/pytype_runner.py
 +++ b/pytype/tools/analyze_project/pytype_runner.py
-@@ -402,8 +402,7 @@ class PytypeRunner:
+@@ -405,8 +405,7 @@ class PytypeRunner:
      # relpath() prevents possibly sensitive directory info from appearing in
      # ninja's "Entering directory" message.
      c = path_utils.relpath(path_utils.dirname(self.ninja_file))
@@ -24,14 +24,14 @@ index 2c7dba42..6e2fcd7c 100644
        command.append('-v')
      ret = subprocess.call(command)
 diff --git a/setup.cfg b/setup.cfg
-index e9cfac0f..523dcc40 100644
+index 9857d67c..5e2c42d0 100644
 --- a/setup.cfg
 +++ b/setup.cfg
-@@ -38,7 +38,6 @@ install_requires =
-     libcst
-     msgspec
-     networkx
--    ninja
-     pycnite
-     pydot
-     tabulate
+@@ -37,7 +37,6 @@ install_requires =
+     libcst>=1.0.1
+     msgspec>=0.18.6
+     networkx>=2.8
+-    ninja>=1.10.0.post2
+     pycnite>=2024.07.31
+     pydot>=1.4.2
+     tabulate>=0.8.10
