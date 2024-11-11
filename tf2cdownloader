@@ -1,9 +1,16 @@
 #!/bin/bash
-working_dir=$(pwd)
+cd "$HOME/.cache/" || exit
 
-ln -s "/usr/share/tf2cdownloader/tf2cdownloader" "$working_dir/tf2cdownloader"
-"$working_dir/tf2cdownloader"
+
+
+if [[ -d "$HOME/.cache/tf2cdownloader" ]];
+then
+	cd tf2cdownloader
+else
+	mkdir tf2cdownloader && cd tf2cdownloader
+fi
+ln -s "/usr/share/tf2cdownloader/tf2cdownloader" "$HOME/.cache/tf2cdownloader/tf2cdownloader"
+"$HOME/.cache/tf2cdownloader/tf2cdownloader"
 wait
-
-rm "$working_dir/tf2cdownloader"
+rm "$HOME/.cache/tf2cdownloader/tf2cdownloader"
 exit
