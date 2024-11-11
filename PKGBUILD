@@ -8,7 +8,6 @@ url='https://github.com/jhass/PKGBUILDs/tree/main/sublime-url-handler'
 arch=('any')
 license=('MIT')
 depends=('desktop-file-utils')
-install=sublime-url-handler.install
 source=($pkgname $pkgname.desktop)
 
 package() {
