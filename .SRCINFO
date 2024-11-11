@@ -1,0 +1,11 @@
+pkgbase = arad-fonts
+	pkgdesc = Arad - A multilingual, open-source font with 8 weights and 4 dot styles, supporting Farsi, Arabic, Kurdish, Turkish, Urdu, and Mazerouni languages
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/MDarvishi5124/Arad
+	arch = any
+	license = OFL
+	source = https://github.com/MDarvishi5124/Arad/releases/download/1.0.1v/Arad.zip
+	sha256sums = SKIP
+
+pkgname = arad-fonts
