@@ -2,7 +2,7 @@
 
 pkgname=mtk-uartboot-rs
 pkgver=0.1.1
-pkgrel=0
+pkgrel=2
 pkgdesc="A third-party tool to load and execute binaries over UART for Mediatek SoCs."
 arch=(x86_64
     aarch64
@@ -45,5 +45,5 @@ package() {
     cd "${srcdir}/${_pkgname}-${pkgver}/"
     export RUSTUP_TOOLCHAIN=stable
     cargo install --no-track --all-features --root "$pkgdir/usr/" --path .
-#     install -Dm0644 udev.rules "$pkgdir/usr/lib/udev/rules.d/90-cargo-dfu.rules"
+    #     install -Dm0644 udev.rules "$pkgdir/usr/lib/udev/rules.d/90-cargo-dfu.rules"
 }
