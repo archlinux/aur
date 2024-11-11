@@ -10,7 +10,7 @@ pkgname=(
 pkgver=1.0.1+2.r94.20241102.d1a3fec
 _mainver="$(sed -E 's|^([^\.]*\.[^\.]*\.[^.+_]*)[\.+_]?.*$|\1|' <<<"${pkgver}")"
 _nextver="$(awk -F. '{print $1"."$2"."$3+1}' <<<"${_mainver}")"
-pkgrel=2
+pkgrel=3
 pkgdesc="Interface programme for the chrome extension 'chrome-pass' for zx2c4's 'pass' password manager."
 arch=(
   'any'
@@ -91,13 +91,13 @@ package_chrome-pass-hostapp-git() {
     "pinentry"
     "python>=3"
     "python-gnupg"
+    "python-pyotp" # This actually is a required dependency.
   )
   optdepends=(
     "chrome-pass>=${_mainver}: The browser extension this hostapp is for (can be installed as Arch Linux package or by the user via chrome webstore)."
     "chrome-pass<${_nextver}"
     "chrome-pass-docfiles:  The documentation files from the source repository of this software."
     'pass-otp:              For TOTP multi factor authentication (MFA) support.'
-    'python-pyotp:          For TOTP multi factor authentication (MFA) support.'
   )
   provides=(
     "chrome-pass-hostapp=${pkgver}"

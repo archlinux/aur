@@ -1,7 +1,7 @@
 pkgbase = chrome-pass-git
 	pkgdesc = Interface programme for the chrome extension 'chrome-pass' for zx2c4's 'pass' password manager.
 	pkgver = 1.0.1+2.r94.20241102.d1a3fec
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/hsanson/chrome-pass
 	arch = any
 	license = MIT
@@ -22,11 +22,11 @@ pkgname = chrome-pass-hostapp-git
 	depends = pinentry
 	depends = python>=3
 	depends = python-gnupg
+	depends = python-pyotp
 	optdepends = chrome-pass>=1.0.1: The browser extension this hostapp is for (can be installed as Arch Linux package or by the user via chrome webstore).
 	optdepends = chrome-pass<1.0.2
 	optdepends = chrome-pass-docfiles: The documentation files from the source repository of this software.
 	optdepends = pass-otp: For TOTP multi factor authentication (MFA) support.
-	optdepends = python-pyotp: For TOTP multi factor authentication (MFA) support.
 	provides = chrome-pass-hostapp=1.0.1+2.r94.20241102.d1a3fec
 	conflicts = chrome-pass-hostapp
 
