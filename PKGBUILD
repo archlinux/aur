@@ -1,10 +1,11 @@
-# Maintainer:  dreieck (https://aur.archlinux.org/account/dreieck)
+# Maintainer:  Tianhao Wang <i AT shrik3 DOT com>
+# Contributor: dreieck (https://aur.archlinux.org/account/dreieck)
 
 _pkgname=kazv
 pkgname="${_pkgname}-git"
 pkgver=0.5.0.r716.20241108.adf5bf1
-pkgrel=1
-pkgdesc="A Qt5 matrix client."
+pkgrel=2
+pkgdesc="A Qt matrix client."
 arch=(
   'aarch64'
   'armv6h'
@@ -12,34 +13,44 @@ arch=(
   'i686'
   'x86_64'
 )
-license=('AGPL3')
+license=('AGPL-3.0-or-later')
 url="https://lily-is.land/kazv/kazv"
 backup=()
 depends=(
-  'boost-libs>=1.83.0'
+  'boost-libs>=1.86.0'
+  'cmark'
   'fontconfig'
   'freetype2'
   'gcc-libs'
   'glibc'
-  'kconfig5>=5.111.0'
-  'kio5>=5.78'
-  'kirigami2>=5.78'
+  'kconfig>=6.7.0'
+  'kio>=6'
+  'kirigami>=6'
+  'kirigami-addons'
+  'knotifications>=6'
   'libkazv'
-  'nlohmann-json'
-  'qt5-base>=5.15.11'
-  'qt5-declarative>=5.15.11'
-  'qt5-multimedia'
-  'qt5-svg'
-  'qt5-quickcontrols2'
+  'qt6-base>=6.8.0'
+  'qt6-declarative>=6.5.0'
+  'qt6-multimedia>=6.5.0'
+  'qt6-svg>=6.5.0'
 )
 makedepends=(
   'boost>=1.83.0'
   'cmake'
-  'extra-cmake-modules>=5.78'
+  'extra-cmake-modules>=6'
+  'libxkbcommon'
+  'nlohmann-json'
   'git'
   'pkgconf'
+  'zug'
 )
 optdepends=()
+checkdepends=(
+  # A running(!) and accessible(!) graphical environment is needed for 'make test'.
+  # It opens a window.
+  # So we run a virtual X server and direct to there.
+  "xorg-server-xvfb"
+)
 provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}")
 source=(
@@ -66,7 +77,7 @@ pkgver() {
   _date="$(git log -1 --date=format:"%Y%m%d" --format="%ad")"
   _hash="$(git rev-parse --short HEAD)"
 
-  if [ -z "${_ver}" ]; then
+  if [ -z "${_ver_major}" ]; then
     error "Version could not be determined."
     return 1
   else
@@ -86,7 +97,6 @@ build() {
     -DBUILD_COVERAGE=OFF \
     -DBUILD_SHARED_LIBS=ON \
     -DBUILD_TESTING=ON \
-    -DBUILD_WITH_QT6=OFF \
     -DENABLE_BSYMBOLICFUNCTIONS=ON \
     -DKDE_INSTALL_PREFIX_SCRIPT=OFF \
     -DKDE_INSTALL_USE_QT_SYS_PATHS=ON \
@@ -100,9 +110,10 @@ build() {
 check() {
   cd "${srcdir}/${_pkgname}/build"
 
-  ## Actually requires graphical environment to be active!
-  plain "'make test' requires a graphical environment beeing active!"
-  make test || true # Exit true anyway because the test will fail if no graphical environment is active.
+  ## Actually requires graphical environment to be active! It will open a window!
+  plain "Running 'make test' in a virtual X Server ..."
+  ## Redirect to a virtual X server (which we will not see):
+  xvfb-run -d make test
 }
 
 
