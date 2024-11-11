@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=chipstar
-pkgver=1.2
+pkgver=1.2.1
 pkgrel=1
 pkgdesc='Tool for compiling and running HIP/CUDA on SPIR-V via OpenCL or Level Zero APIs'
 arch=('x86_64')
@@ -19,7 +19,7 @@ source=("git+https://github.com/CHIP-SPV/chipStar.git#tag=v${pkgver}"
         'git+https://github.com/CHIP-SPV/H4I-MKLShim.git'
         'git+https://github.com/CHIP-SPV/H4I-HipBLAS.git'
         'git+https://github.com/CHIP-SPV/H4I-HipFFT.git')
-sha256sums=('0a0822e995607f6915d495bf1ebdaa59ea2e27027cb2bd36cc99aa9788fd2db4'
+sha256sums=('84ae11e4330c151fc79121ebf6064425df6f0e4f1d77ae40bbfff58f40ced92d'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -33,7 +33,7 @@ prepare() {
     git -C chipStar submodule init
     
     local _submodule
-    for _submodule in HIP hip-testsuite HIPCC hip-tests H4I-{MKLShim,HipBLAS,HipFFT}
+    for _submodule in HIP hip-testsuite HIPCC hip-tests H4I-{MKLShim,Hip{BLAS,FFT}}
     do
         git -C chipStar config --local "submodule.${_submodule}.url" "${srcdir}/${_submodule}"
     done

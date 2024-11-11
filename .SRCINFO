@@ -1,6 +1,6 @@
 pkgbase = chipstar
 	pkgdesc = Tool for compiling and running HIP/CUDA on SPIR-V via OpenCL or Level Zero APIs
-	pkgver = 1.2
+	pkgver = 1.2.1
 	pkgrel = 1
 	url = https://github.com/CHIP-SPV/chipStar/
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = chipstar
 	depends = spirv-llvm-translator
 	depends = spirv-tools
 	options = !emptydirs
-	source = git+https://github.com/CHIP-SPV/chipStar.git#tag=v1.2
+	source = git+https://github.com/CHIP-SPV/chipStar.git#tag=v1.2.1
 	source = git+https://github.com/CHIP-SPV/HIP.git
 	source = git+https://github.com/CHIP-SPV/hip-testsuite.git
 	source = git+https://github.com/CHIP-SPV/ROCm-Device-Libs.git
@@ -27,7 +27,7 @@ pkgbase = chipstar
 	source = git+https://github.com/CHIP-SPV/H4I-MKLShim.git
 	source = git+https://github.com/CHIP-SPV/H4I-HipBLAS.git
 	source = git+https://github.com/CHIP-SPV/H4I-HipFFT.git
-	sha256sums = 0a0822e995607f6915d495bf1ebdaa59ea2e27027cb2bd36cc99aa9788fd2db4
+	sha256sums = 84ae11e4330c151fc79121ebf6064425df6f0e4f1d77ae40bbfff58f40ced92d
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
