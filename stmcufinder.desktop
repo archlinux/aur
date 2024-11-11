@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=ST MCU Finder
+Comment=ST MCU Finder 6.0.0
+GenericName=ST MCU Finder
+Exec=STMCUFinder %F
+Icon=stmcufinder.png
+Path=/opt/stmcufinder/
+Terminal=false
+StartupNotify=true
+Type=Application
+Categories=Development

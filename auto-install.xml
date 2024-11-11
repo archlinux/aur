@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<AutomatedInstallation langpack="eng">
+	<com.izforge.izpack.panels.checkedhello.CheckedHelloPanel id="checkedhello.panel"/>
+	<com.izforge.izpack.panels.licence.LicencePanel id="licence.panel"/>
+	<com.st.microxplorer.install.FinderTargetPanel id="target.panel">
+		<installpath>/tmp/makepkg/stmcufinder/pkg/stmcufinder/opt/stmcufinder</installpath>
+	</com.st.microxplorer.install.FinderTargetPanel>
+	<com.st.microxplorer.install.MXShortcutPanel id="shortcut.panel"/>
+	<com.st.microxplorer.install.MXInstallPanel id="install.panel"/>
+	<com.st.microxplorer.install.FinderFinishPanel id="finish.panel"/>
+</AutomatedInstallation>
