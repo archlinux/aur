@@ -12,7 +12,7 @@ fi
 ## basic info
 _pkgname="ryujinx-git"
 pkgname="$_pkgname"
-pkgver=r3562.b17e4f79f
+pkgver=r3579.d404a8b05
 pkgrel=1
 pkgdesc="Experimental Nintendo Switch Emulator written in C#"
 url="https://github.com/GreemDev/Ryujinx"
@@ -86,9 +86,6 @@ package() {
   find "$pkgdir" -type f -exec chmod 644 {} \;
   chmod 755 "$pkgdir/$_install_path/ryujinx/Ryujinx"
   chmod 755 "$pkgdir/$_install_path/ryujinx/Ryujinx.sh"
-
-  # writable log directory
-  install -dm777 "$pkgdir/$_install_path/ryujinx/Logs"
 
   # fix desktop file
   desktop-file-edit --set-key="Exec" --set-value="ryujinx %f" "$pkgdir/usr/share/applications/ryujinx.desktop"
