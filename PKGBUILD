@@ -2,8 +2,8 @@
 # Contributor: Zeph <zeph33@gmail.com>
 
 pkgname=pamac-cli
-pkgver=11.7.0
-_commit=035e66944ce8633b6362b45ced879f00ba00a09b
+pkgver=11.7.1
+_commit=e1133adcebb3a5e740422abb0c38ce40eb591fb7
 pkgrel=1
 pkgdesc='Pamac cli frontend for libalpm'
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
@@ -13,7 +13,7 @@ depends=('libpamac')
 makedepends=('vala' 'meson' 'asciidoc' 'git')
 optdepends=('plymouth: offline upgrades')
 source=("git+${url}.git#commit=${_commit}")
-sha256sums=('1d6a07d46bc15d7824f9a1c00e2da89989737f7116c452af1ee4619a61d1853c')
+sha256sums=('ec723cea80399e11dfe1a28819f2e5184f0e01419b7c1fdb8d5d79ef70bb2d8b')
 
 _srcdir="$pkgname"
 
