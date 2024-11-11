@@ -4,7 +4,7 @@
 
 pkgname=papis-git
 _pkgname=papis
-pkgver=0.13.r509.g9b270726
+pkgver=0.14.r4.gc9dc4b82
 pkgrel=1
 pkgdesc='Command-line document and bibliography manager'
 arch=('any')
@@ -32,15 +32,26 @@ depends=('python'
     'python-yaml'
 )
 optdepends=(
-    'fzf: fzf picker'
-    'papis-rofi: integration with rofi'
+    # Alternative pickers
+    'fzf: alternative picker'
+    'papis-rofi: alternative picker'
+
+    # Integrations
+    'git: integration with git'
     'papis-zotero: imports from zotero'
-    'pdfjs: pdf reader in the web app'
+    'python-papis-scihub: imports from scihub'
+
+    # Internally-optional features
+    # papis doesn't make use of the system installation of pdfjs, instead
+    # requiring an installation in $XDG_CONFIG_HOME.
+    # see https://github.com/papis/papis/issues/946
+    # 'pdfjs: pdf reader in the web app'
     'python-chardet: improved encoding autodetection when scraping'
     'python-jinja: jinja formatting'
-    'python-papis-scihub: imports from scihub'
-    'python-markdownify: convert zenodo imports to markdown'
     'python-whoosh: whoosh database backend'
+    'python-markdownify: convert zenodo imports to markdown'
+
+    # Plugin helpers used by some plugins
     'python-docutils: for papis.sphinx_ext (used by some plugins)'
     'python-sphinx: for papis.sphinx_ext (used by some plugins)'
     'python-sphinx-click: for papis.sphinx_ext (used by some plugins)'
@@ -58,9 +69,10 @@ checkdepends=(
     # For pytest
     'python-pytest'
     'python-pytest-cov'
-    # These are optional -- if they're not installed, papis will automatically
-    # skip these tests -- and are only necessary if you intend to use the
-    # optdeps as well
+    # These are needed for the integration tests against the corresponding
+    # optdepends, papis will autoskip the relevant tests if they're not
+    # installed
+    'git'
     'python-jinja'
     'python-markdownify'
     'python-whoosh'
