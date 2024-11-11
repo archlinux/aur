@@ -2,17 +2,21 @@
 # Thanks to https://aur.archlinux.org/packages/factorio/ for authentication code
 
 pkgname=fmodengine
-pkgver=2.02.24
-pkgrel=3
-pkgdesc="FMOD Engine API and tools."
+pkgver=2.02.25
+pkgrel=1
+pkgdesc="FMOD Engine API and tools - Audio engine and toolset for games."
 arch=('x86_64')
 url="https://www.fmod.com/"
 license=('custom')
-makedepends=('jq')
+makedepends=('jq'
+             'patchelf')
 depends=('glibc')
 options=('!strip')
 _filename="fmodstudioapi${pkgver//./}linux.tar.gz"
-_sha256="118d82791746344e8d909b79b679453d33003810fce3a99c4aa2da1acce00c71"
+_sha256="ccb333c9f87920fd91f82977988ae11d36c901c49fca781ca56dd39d804768d7"
+source=('LICENSE.html')
+sha256sums=('6288db3085c1d1dbefaa3a4c93cd0e8f5a3f589849cc6f5b8812c80fafac474c')
+noextract=("$_filename")
 
 build() {
     local file="${SRCDEST}/${_filename}"
@@ -59,7 +63,7 @@ build() {
         echo "Downloading $_filename..."
         if output=$(curl -G "https://fmod.com/api-get-download-link" \
                     --data-urlencode path="files/fmodstudio/api/Linux/" \
-                    --data-urlencode filename="$_filename" \
+                    --data-urlencode filename="$(basename "$file")" \
                     -H "Authorization: FMOD $token") &&
                     downloadurl=$(echo "$output" | jq -r '.url | strings') && [[ -n $downloadurl ]]
         then
@@ -87,8 +91,17 @@ build() {
 }
 
 package() {
+    cd "$srcdir"
+    tar -xzf "${SRCDEST}/${_filename}"
+    
+    local e
+    for e in "$srcdir/fmodstudioapi${pkgver//./}linux/bin/"{fmodprofiler,fsbank,fsbank_gui} ; do
+        patchelf --add-rpath /usr/lib/fmodengine "$e"
+        chmod 0755 "$e"
+    done
+    
     install -d "${pkgdir}/opt/$pkgname"
-    tar -xzf "${SRCDEST}/${_filename}" -C "${pkgdir}/opt/$pkgname" --strip-components=1
+    cp -r "fmodstudioapi${pkgver//./}linux/"* "${pkgdir}/opt/$pkgname/"
     
     install -d "${pkgdir}/usr/bin"
     ln -s "/opt/$pkgname/bin/fmodprofiler" "${pkgdir}/usr/bin/fmodprofiler"
@@ -102,4 +115,6 @@ package() {
             ln -s "/opt/$pkgname/api/$d/lib/$CARCH/$(basename "$i")" "$pkgdir/usr/lib/$pkgname"
         done
     done
+
+    install -Dm0644 LICENSE.html "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.html"
 }
