@@ -1,6 +1,6 @@
 pkgbase = celeste-studio-git
 	pkgdesc = A TAS editor for the video game Celeste. (source release)
-	pkgver = v3.41.6.r1.g6220e22
+	pkgver = v3.41.7.r3.g1e8d39c
 	pkgrel = 1
 	url = https://github.com/EverestAPI/CelesteTAS-EverestInterop
 	arch = x86_64
@@ -11,12 +11,13 @@ pkgbase = celeste-studio-git
 	makedepends = hicolor-icon-theme
 	makedepends = gcc-libs
 	makedepends = glibc
+	makedepends = skia-sharp
 	options = !strip
 	options = !debug
-	source = celeste-studio-git-v3.41.6.r1.g6220e22::git+https://github.com/EverestAPI/CelesteTAS-EverestInterop.git
+	source = celeste-studio-git-v3.41.7.r3.g1e8d39c::git+https://github.com/EverestAPI/CelesteTAS-EverestInterop.git#commit=1e8d39c363dac3312ab7bc4f90b5222e332dfa78
 	source = git+https://github.com/SomeoneSom/Featherline_StudioV3.git
 	source = CelesteStudio.desktop
-	sha256sums = SKIP
+	sha256sums = d88ec74eb7e30aa66631026d658d77864d8896ebd76153f10fede5c23a960a9d
 	sha256sums = SKIP
 	sha256sums = bb45423bbc74d8718bb5cfeb8b745c94b201bf64a51bcb0bfd601e131543b670
 
