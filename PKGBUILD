@@ -1,8 +1,8 @@
 # Maintainer: Razer <razer@neuf.fr>
 pkgname=python-pylint-django
-_pypi_pkgname=pylint_django
+_pypi_pkgname=pylint-django
 pkgver=2.6.1
-pkgrel=0
+pkgrel=1
 pkgdesc="A Pylint plugin to help Pylint understand the Django web framework"
 arch=('any')
 url="https://github.com/landscapeio/pylint-django"
@@ -28,6 +28,6 @@ build() {
 package() {
   cd "${_pypi_pkgname}-${pkgver}"
   python -m installer --destdir="$pkgdir" dist/*.whl
-  install -vDm644 -t "$pkgdir/usr/share/license/$pkgname" LICENSE
+  #install -vDm644 -t "$pkgdir/usr/share/license/$pkgname" LICENSE
 }
 # vim:set ts=2 sw=2 et:
