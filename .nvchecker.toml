@@ -1,0 +1,5 @@
+[screenpipe]
+source="github"
+github="mediar-ai/screenpipe"
+use_latest_release=true
+prefix="v"
