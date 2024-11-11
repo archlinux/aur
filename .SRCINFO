@@ -1,0 +1,16 @@
+pkgbase = airlift-bin
+	pkgdesc = Upload & Merge Data with Attachments to Airtable.(Prebuilt version)
+	pkgver = 1.1.4
+	pkgrel = 1
+	url = https://github.com/TheAcharya/Airlift
+	arch = x86_64
+	license = MIT
+	provides = airlift=1.1.4
+	conflicts = airlift
+	options = !strip
+	source = airlift-1.1.4.tar.gz::https://github.com/TheAcharya/Airlift/releases/download/v1.1.4/bin_airlift_1.1.4_linux_x64.tar.gz
+	source = LICENSE-1.1.4::https://raw.githubusercontent.com/TheAcharya/Airlift/v1.1.4/LICENSE
+	sha256sums = 038e4328013de72af59407accbf8f7164a0b5f71276bf871228ce584876450d8
+	sha256sums = 67067a59e0c9762bb67f448315f48a9d759a47544280ac323f6f02f741459fa2
+
+pkgname = airlift-bin
