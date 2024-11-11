@@ -15,5 +15,6 @@ pkgbase = moonbit-bin
 	source = https://cli.moonbitlang.cn/binaries/latest/moonbit-linux-x86_64.tar.gz
 	source = https://cli.moonbitlang.cn/cores/core-latest.tar.gz
 	source = moon.sh
+	sha512sums = SKIP
 
 pkgname = moonbit-bin
