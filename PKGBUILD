@@ -1,8 +1,8 @@
 # Maintainer: Razer <razer@neuf.fr>
 pkgname=python-pylint-django
 _pypi_pkgname=pylint_django
-pkgver=2.5.5
-pkgrel=2
+pkgver=2.6.1
+pkgrel=0
 pkgdesc="A Pylint plugin to help Pylint understand the Django web framework"
 arch=('any')
 url="https://github.com/landscapeio/pylint-django"
@@ -18,7 +18,7 @@ makedepends=(
 'python-poetry'
 )
 source=("https://pypi.io/packages/source/p/${_pypi_pkgname}/${_pypi_pkgname}-${pkgver}.tar.gz")
-sha256sums=('2f339e4bf55776958283395c5139c37700c91bd5ef1d8251ef6ac88b5abbba9b')
+sha256sums=('19e8c85a8573a04e3de7be2ba91e9a7c818ebf05e1b617be2bbae67a906b725f')
 
 build() {
   cd "${_pypi_pkgname}-${pkgver}"
