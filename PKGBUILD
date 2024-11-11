@@ -7,6 +7,8 @@ pkgdesc="GNU Guile state machine compiler"
 arch=('x86_64')
 url="https://github.com/artyom-poptsov/guile-smc"
 license=('GPL-3.0-or-later')
+# NOTE: If the build fails, please recompile 'guile-lib' first with the
+# "--with-guile-site" configure option, and then recompile this package.
 depends=('guile' 'guile-lib')
 makedepends=('help2man')
 source=("https://github.com/artyom-poptsov/$pkgname/archive/v$pkgver/$pkgname-$pkgver.tar.gz")
