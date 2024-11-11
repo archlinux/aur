@@ -3,7 +3,7 @@
 pkgname=web-greeter-theme-shikai-git
 pkgbase=web-greeter-theme-shikai-git
 pkgver=v1.5.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Modern lightdm webkit2 theme"
 arch=('any')
 url="https://github.com/TheWisker/Shikai"
