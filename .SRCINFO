@@ -1,7 +1,7 @@
 pkgbase = electron33-bin
 	pkgdesc = Build cross platform desktop apps with web technologies — prebuilt
 	pkgver = 33.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://electronjs.org
 	arch = aarch64
 	arch = armv7h
