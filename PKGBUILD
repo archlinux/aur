@@ -1,8 +1,8 @@
 # Maintainer: Razer <razer[AT]neuf[DOT]fr>
 
 pkgname=python-adafruit-circuitpython-bitmap-font
-_pypi_pkgname=adafruit_circuitpython_bitmap_font
-pkgver=2.1.2
+_pypi_pkgname=adafruit-circuitpython-bitmap_font
+pkgver=2.1.3
 pkgrel=0
 pkgdesc="Loads bitmap fonts into CircuitPython displayio"
 arch=('any')
@@ -17,7 +17,7 @@ makedepends=(
 depends=()
 optdepends=()
 source=("https://pypi.io/packages/source/a/${_pypi_pkgname}/${_pypi_pkgname}-${pkgver}.tar.gz")
-sha256sums=('7c02885c3e916532e4791fa51aeab3a3f6f3e6f96bf86ee3fe950a2d05fca1ec')
+sha256sums=('fce77b5c37550a3e608a920a5323d793162ff2e98b7b269d2d0158f16c8cf723')
 
 build() {
     cd "${srcdir}/${_pypi_pkgname}-${pkgver}"
