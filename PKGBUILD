@@ -3,9 +3,9 @@
 pkgname=gawk-lmdb
 _project=gawkextlib
 pkgver=1.1.3
-pkgrel=2
+pkgrel=3
 pkgdesc="GAWK extension - interface to the LMDB API"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="https://sourceforge.net/projects/gawkextlib/"
 license=('GPL-3.0-or-later')
 depends=('gawkextlib' 'glibc' 'lmdb')
