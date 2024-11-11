@@ -1,21 +1,20 @@
 # Maintainer: sukanka <su975853527@gmail.com>
 
 _pkgname=CVXR
-_pkgver=1.0-14
+_pkgver=1.0-15
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=2
 pkgdesc="Disciplined Convex Optimization"
 arch=(x86_64)
 url="https://cran.r-project.org/package=$_pkgname"
 license=('Apache-2.0')
 depends=(
   r-bit64
-  r-clarabel
+  r-cli
   r-ecosolver
   r-gmp
   r-osqp
-  r-r6
   r-rcpp
   r-rmpfr
   r-scs
@@ -32,8 +31,8 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('6b4ccbcd7a936ea6fef53ca2a957a982')
-b2sums=('2c8bad0528bbae308458838288852b2daff6e18943ce6fe8f15ace8e96d76b8b5ff4fd66879cb5dc33492c394aa07952cbcd2d07b6cf19e2c9ce64651a2e21e3')
+md5sums=('b474e937e03e7f7b876d33fc959ed800')
+b2sums=('c7a8e9b0e2552054f6a250bcb994f482a39888c7d815e943cd46adb2c3411c8f57949626ee0a2aaf1393ae22e7add303a6bcc6e68fb74a2abc00f8d07e13bb4b')
 
 build() {
   mkdir build
