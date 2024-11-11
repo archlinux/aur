@@ -1,16 +1,16 @@
-# Maintainer: Dreieck
+# Maintainer: dreieck
 # Contributor: Roberto Nobrega <rwnobrega@gmail.com>
 
 _pkgname='gr-rds'
 pkgname="${_pkgname}-git"
 epoch=1
 pkgver=3.10+r349.20241108.da8dd99
-pkgrel=1
+pkgrel=2
 pkgdesc="An FM-RDS Receiver for GNU Radio"
 arch=('i686' 'x86_64')
-license=('GPL3')
-depends=('gnuradio>=3.9' 'libvolk')
-makedepends=('boost' 'cmake' 'doxygen' 'git' 'pygccxml' 'swig')
+license=('GPL-3.0-or-later')
+depends=('boost-libs' 'gcc-libs' 'glibc' 'gnuradio>=3.9' 'python>=3' 'python-pyqt5')
+makedepends=('boost' 'cmake' 'doxygen' 'fmt' 'git' 'libvolk' 'pybind11' 'python-pygccxml' 'spdlog' 'swig')
 optdepends=()
 provides=("${_pkgname}" "${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}" "${_pkgname}-doc")
