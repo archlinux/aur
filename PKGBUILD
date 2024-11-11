@@ -1,32 +1,36 @@
 # Maintainer: Lukas Spies <lukas_dot_spies_at_web_dot_de>
 
-_pkgname=libqpsd
 pkgname=libqpsd-git
-pkgver=20220215
+pkgver=2.3.0.r1.f4ad69b
 pkgrel=1
-pkgdesc="PSD & PSB Plugin for Qt/C++ (Qt4/Qt5) "
-arch=("x86_64")
+epoch=1
+pkgdesc="PSD & PSB Plugin for Qt/C++"
+arch=(x86_64)
 url="https://github.com/Code-ReaQtor/libqpsd"
-license=("LGPL")
-depends=("qt5-base")
-# depends=("qt4")	# use this depends instead of the above for Qt4 build
-makedepends=("git")
+license=(LGPL-2.1-only)
+depends=(qt6-base)
+makedepends=(git)
 source=("git+https://github.com/Code-ReaQtor/libqpsd")
 sha256sums=("SKIP")
 
+pkgver() {
+	cd "libqpsd"
+	git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
 prepare() {
-	cd "$srcdir/$_pkgname"
-
+	cd "libqpsd"
 	sed -i "s|\$\$\[QT_INSTALL_PLUGINS\]|/usr/lib/qt/plugins|" QPsdPlugin.pro
-
 	mkdir -p build
-	cd build
-	qmake ..
+}
+
+build() {
+	cd "libqpsd/build"
+	qmake6 ..
 	make
 }
 
 package() {
-	cd "$srcdir/$_pkgname"
-	cd build
+	cd "libqpsd/build"
 	make INSTALL_ROOT="$pkgdir" install
 }

@@ -1,12 +1,13 @@
 pkgbase = libqpsd-git
-	pkgdesc = PSD & PSB Plugin for Qt/C++ (Qt4/Qt5)
-	pkgver = 20220215
+	pkgdesc = PSD & PSB Plugin for Qt/C++
+	pkgver = 2.3.0.r1.f4ad69b
 	pkgrel = 1
+	epoch = 1
 	url = https://github.com/Code-ReaQtor/libqpsd
 	arch = x86_64
-	license = LGPL
+	license = LGPL-2.1-only
 	makedepends = git
-	depends = qt5-base
+	depends = qt6-base
 	source = git+https://github.com/Code-ReaQtor/libqpsd
 	sha256sums = SKIP
 
