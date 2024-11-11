@@ -56,8 +56,10 @@ build() {
 
   OPTFLAGS='-O3 -march=native'
   CONFOPTS="--with-shared-libraries=1 \
-            --with-mpi-f90module-visibility=0 \
             --with-petsc4py=1 \
+            --with-mpi-f90module-visibility=0 \
+            --with-bison=0 \
+            --with-cmake=0 \
             --with-mpi-dir=/usr \
             --with-zfp=0 \
             --with-netcdf=1 \
@@ -67,8 +69,7 @@ build() {
             --with-gsl=1 \
             --with-zlib=1 \
             --with-superlu-lib=-lsuperlu --with-superlu-include=/usr/include/superlu \
-            --with-suitesparse-include=/usr/include/suitesparse \
-            --with-suitesparse-lib=[libamd.so,libbtf.so,libcamd.so,libccolamd.so,libcholmod.so,libcolamd.so,libcxsparse.so,libgraphblas.so,libklu.so,libklu_cholmod.so,liblagraph.so,liblagraphx.so,libldl.so,libparu.so,librbio.so,libspex.so,libspqr.so,libsuitesparse_mongoose.so,libsuitesparseconfig.so,libumfpack.so] \
+            --with-suitesparse=1 \
             --with-hdf5=1 --with-hdf5-fortran-bindings=1 \
             --with-scalar-type=complex \
             $(sh ${srcdir}/test_optdepends.sh)"
