@@ -1,4 +1,4 @@
-pkgname=go-do-it-git
+pkgname=go-do-it
 _pkgname=go-do-it
 pkgver=r17.af13ab5
 pkgrel=1
