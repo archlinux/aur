@@ -1,13 +1,13 @@
 # Maintainer: Florian Hülsmann <fh@cbix.de>
 
 pkgname=tantrix
-pkgver=2.13
+pkgver=20240926.1609
 pkgrel=1
 pkgdesc='Abstract strategy board game'
 arch=(any)
 url='https://www.tantrix.com/'
 license=(unknown)
-depends=()
+depends=(java-runtime)
 makedepends=()
 _base='https://www.tantrix.com/Tantrix/TGame'
 source=("$_base/jws/Launcher.jar"
@@ -23,7 +23,8 @@ source=("$_base/jws/Launcher.jar"
         'tantrix.desktop'
         'tantrix-discovery.desktop'
         'tantrix-reviewer.desktop'
-        'tantrix.xml')
+        'tantrix.xml'
+        'GetVersion.java')
 sha256sums=('231e8c7055cb4ac7d8ae8725b96eb67168aee8fb1d8a2815d39cdc5efac65a2a'
             'f4376ad456935cb48156dff8e338cbf7770a46c5946425b47294999623827b84'
             '0b63a116e33903807c46dbf74d10c5aebf3206b9c40b6472aff3001aa1ed7b1b'
@@ -37,11 +38,20 @@ sha256sums=('231e8c7055cb4ac7d8ae8725b96eb67168aee8fb1d8a2815d39cdc5efac65a2a'
             'f492efa1e032bc4bd7c701e5c06c66619d23098cf1f2acafaed441ba4d8f30e0'
             '593cd009514144534b15bebe36c8e393adbfbbd63eac054eea54f20e1c362621'
             '5f8a776872a98933c5f0c7681d5cc3606b3a84290235a909d46fe2e1a1f4eb48'
-            '1fe5802975ac5579e2b9fc3c9ec50f2334b9ed1a22dfd1bb9fad251850f06661')
+            '1fe5802975ac5579e2b9fc3c9ec50f2334b9ed1a22dfd1bb9fad251850f06661'
+            'a3d8c2a14dd319e77b854957b6c0b053bf83682997739e1709becd4bce957968')
 noextract=(*.jar)
 
+pkgver() {
+  local build
+  if build="$(java -cp OnlineLobby.jar GetVersion.java 2> /dev/null)"; then
+       date -d "$build" +%Y%m%d.%H%M
+  else
+       echo $pkgver
+  fi
+}
+
 package() {
-  depends+=(java-runtime)
   install -Dm644 *.jar -t "$pkgdir"/usr/share/java/$pkgname
   install -Dm755 tantrix -t "$pkgdir"/usr/bin
   install -Dm644 tantrix{,-discovery,-reviewer}.desktop -t "$pkgdir"/usr/share/applications
