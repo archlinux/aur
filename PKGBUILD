@@ -5,7 +5,7 @@ _android_arch=x86-64
 
 pkgname=android-${_android_arch}-freetype2
 pkgver=2.13.3
-pkgrel=1
+pkgrel=2
 arch=('any')
 pkgdesc="Font rasterization library (Android ${_android_arch})"
 url='https://www.freetype.org/'
@@ -13,10 +13,11 @@ license=('GPL')
 groups=('android-freetype2')
 depends=("android-ndk"
          "android-${_android_arch}-zlib"
-         "android-${_android_arch}-bzip2"
          "android-${_android_arch}-brotli"
          "android-${_android_arch}-libpng"
          "android-${_android_arch}-harfbuzz")
+# FIXME: It does not properly locate bzip2, disabling for now.
+#depends+=("android-${_android_arch}-bzip2")
 provides=("android-${_android_arch}-freetype2-boostrap")
 conflicts=("android-${_android_arch}-freetype2-boostrap")
 makedepends=('android-meson')
@@ -46,20 +47,9 @@ build() {
     cd "${srcdir}/freetype-${pkgver}"
     source android-env ${_android_arch}
 
-    bzip2opt=enabled
-
-    # Platform specific patches
-    case "${_android_arch}" in
-        x86)
-            bzip2opt=disabled
-            ;;
-        *)
-            ;;
-    esac
-
     android-${_android_arch}-meson build \
         -D zlib=enabled \
-        -D bzip2="${bzip2opt}" \
+        -D bzip2=disabled \
         -D png=enabled \
         -D harfbuzz=enabled \
         -D brotli=enabled \
