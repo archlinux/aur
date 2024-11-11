@@ -1,7 +1,7 @@
 pkgbase = android-rust
 	pkgdesc = Script providing common environment variables and functions for Rust build on Android.
 	pkgver = 2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://aur.archlinux.org/packages/android-rust
 	arch = any
 	license = MIT
