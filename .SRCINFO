@@ -1,12 +1,12 @@
 pkgbase = android-aarch64-librsvg
 	pkgdesc = SVG rendering library (Android aarch64)
-	pkgver = 2.58.3
+	pkgver = 2.59.2
 	pkgrel = 1
 	url = https://wiki.gnome.org/Projects/LibRsvg
 	arch = any
 	groups = android-librsvg
 	license = LGPL-2.1-or-later
-	makedepends = android-configure
+	makedepends = android-meson
 	makedepends = android-rust
 	depends = android-aarch64-cairo
 	depends = android-aarch64-freetype2
@@ -19,7 +19,7 @@ pkgbase = android-aarch64-librsvg
 	options = !buildflags
 	options = staticlibs
 	options = !emptydirs
-	source = https://gitlab.gnome.org/GNOME/librsvg/-/archive/2.58.3/librsvg-2.58.3.tar.bz2
-	md5sums = 285238be66277c056c4456e779038407
+	source = https://gitlab.gnome.org/GNOME/librsvg/-/archive/2.59.2/librsvg-2.59.2.tar.bz2
+	md5sums = f899eab00948aea436debd1e392db1ba
 
 pkgname = android-aarch64-librsvg
