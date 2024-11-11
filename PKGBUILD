@@ -2,7 +2,7 @@
 
 pkgname=android-rust
 pkgver=2
-pkgrel=3
+pkgrel=4
 arch=('any')
 pkgdesc="Script providing common environment variables and functions for Rust build on Android."
 url='https://aur.archlinux.org/packages/android-rust'
@@ -11,7 +11,7 @@ depends=('android-environment'
          'cargo-c'
          'rustup')
 source=('android-rust-env.sh')
-md5sums=('4cc929e923ae879b94ea8214c624df04')
+md5sums=('f146f5b7d4cce68804e7341db0b754d9')
 
 package() {
     install -d "${pkgdir}/usr/bin"

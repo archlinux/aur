@@ -40,6 +40,7 @@ esac
 export CARGO_HOME="${HOME}/.android-cargo/${_android_arch}/${ANDROID_NDK_PLATFORM}"
 
 android_rust_prepare() {
+    rustup target add "${RUST_TARGET}" || true
     rustup default "${RUST_CHANNEL}" && rustup update
 
     mkdir -p "${CARGO_HOME}"
