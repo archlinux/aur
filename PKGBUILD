@@ -2,25 +2,22 @@
 # Contributor: Mick Elliot <micke@sfu.ca>
 # Contributor: Damir Perisa <damir.perisa@bluewin.ch>
 pkgname=muscle
-pkgver=5.2
+pkgver=5.3
 pkgrel=1
 pkgdesc="Multiple sequence comparison by log-expectation"
 arch=('i686' 'x86_64')
 url="https://github.com/rcedgar/muscle"
 license=('GPL-3.0-or-later')
-source=(Makefile $pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz)
-sha256sums=('d4f9c3230bb6a612e34ac3219993ab8d874ee058e284bb221d1a9d1a40aff529'
-            '7aff1473241a36da94a88f37920a343fae91d2b6faae22e15c06591d1d0339b6')
+makedepends=(python)
+source=($pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz
+        https://raw.githubusercontent.com/rcedgar/vcxproj_make/806d016/vcxproj_make.py)
+sha256sums=('74b22a94e630b16015c2bd9ae83aa2be2c2048d3e41f560b2d4a954725c81968'
+            '902735703004c47705ffa389329378f237fecb154945b489edf6abe260c6694f')
 
 prepare() {
-  # Project does not come with a Makefile, but downloads a python script that
-  # writes a Makefile. Provide it in sources instead, and create also generated
-  # gitver.txt
-
-  cd "$srcdir"/$pkgname-$pkgver
-  # -static flag does not find -lgomp (part of gcc-libs)
-  sed "/LDFLAGS += -static/s:-static::" ../Makefile > src/Makefile
-  echo '"0"' > src/gitver.txt
+  cd "$srcdir"/$pkgname-$pkgver/src
+  python ../../vcxproj_make.py --openmp
+  sed -i "/LDFLAGS += -static/s:-static::" Makefile # no static -lgomp
 }
 
 build() {
