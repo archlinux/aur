@@ -1,7 +1,7 @@
 # Contributor: Matthias Fulz < mfulz [at] olznet [dot] de >
 
 pkgname=openvas-scanner
-pkgver=23.10.1
+pkgver=23.11.0
 pkgrel=1
 pkgdesc='Vulnerability scanning Daemon'
 arch=('x86_64')
@@ -16,7 +16,7 @@ options=(!lto)
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz"
         ${pkgname}-${pkgver}.tar.gz.asc::${url}/releases/download/v${pkgver}/${pkgname}-v${pkgver}.tar.gz.asc
         openvas-scanner.tmpfiles)
-sha512sums=('2afa79299ddaf5ea522365435547eef8144a9c2496f778261970bf67abc597ca7d1ce71b580bfa83e6d959c59bde9aad13a46a7fff39158b06a2d5642dcdc825'
+sha512sums=('ab8205fe7aefeacaac03493b2845d161e7f9173df9e55ad97181e09e0c059089a0a274a6866f3e75ddbf0ad934c4c30bc1ac93d608370bc3d0191ed505c95e24'
             'SKIP'
             '3df08a3e16f16a1735a4d6aa09b34fd0c04e4af95ef4264002a7f50447d9e200531551f162571b59e0c61707c09ca25f66e8a17baa8a42e2745752a5a6717672')
 validpgpkeys=('8AE4BE429B60A59B311C2E739823FAA60ED1E580') # GVM Transfer Integrity
