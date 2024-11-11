@@ -4,7 +4,7 @@ provides=(librewolf)
 conflicts=(librewolf)
 __pkgname=librewolf
 _pkgname=LibreWolf
-pkgver=131.0.2
+pkgver=132.0.1
 pkgrel=1
 pkgdesc="Librewolf with the privacy.override_rfp_for_color_scheme about:config option added, which (if enabled) let's you change the color scheme even if rfp is turned on"
 url="https://librewolf.net/"
@@ -96,10 +96,10 @@ source=(
   allow_dark.patch
 )
 
-sha256sums=('74e4bbcd9108d7f04c8be6a52ab96aa23d6eef7e1a396215444b2028a0db5ae7'
+sha256sums=('f86f40574ad33e2cb1c9f52921481fdcbcce9b0bd581603a295bd97ec47fe1fc'
             '7d01d317b7db7416783febc18ee1237ade2ec86c1567e2c2dd628a94cbf2f25d'
             '959c94c68cab8d5a8cff185ddf4dca92e84c18dccc6dc7c8fe11c78549cdc2f1'
-            'a16086637b0998fcd872a7b37b9a9a03834512b5d87b62cf9a3d9938d845a968')
+            '63de7bba34f7f6d7596dbbea84a4b2b09a3337976d5a2f47816f34765046612d')
 validpgpkeys=('034F7776EF5E0C613D2F7934D29FBD5F93C0CFC3') # maltej(?)
 
 # change this to false if you do not want to run a PGO build for aarch64 or x86_64
@@ -232,6 +232,7 @@ END
     # LIBGL_ALWAYS_SOFTWARE=true \
     LLVM_PROFDATA=llvm-profdata \
       JARLOG_FILE="$PWD/jarlog" \
+      dbus-run-session \
       xvfb-run -s "-screen 0 1920x1080x24 -nolisten local" \
       ./mach python build/pgo/profileserver.py
 
