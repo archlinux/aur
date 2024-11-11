@@ -1,0 +1,65 @@
+From 18f018cd774cb931116ce06a520dc0c5f9443932 Mon Sep 17 00:00:00 2001
+From: Ron <ron@debian.org>
+Date: Wed, 27 Sep 2017 03:36:51 +0930
+Subject: [PATCH] Properly zero initialise the ogg and vorbis state structs
+
+This prevents things from exploding in flames if an error occurs and the
+code tries to unwind before the codec and container initialiser functions
+can all be called.  It fixes the second issue indicated in CVE-2017-11333,
+which isn't the fault of libvorbis, it's caused by us passing junk data
+to vorbis_block_clear() when an invalid file is detected and we bail out
+before vorbis_block_init() gets called.
+
+Ideally, we should simplify all of this and get rid of most of the malloc
+farm there by embedding the needed structs in splt_ogg_state (instead of
+pointers to them), then just do a single malloc and memset for the whole
+lot - but that would be a much more intrusive change, so for now just
+ensure the allocated memory is all safely zeroed in the simplest manner.
+---
+ libmp3splt/plugins/ogg.c | 10 ++++++++++
+ 1 file changed, 10 insertions(+)
+
+diff --git a/libmp3splt/plugins/ogg.c b/libmp3splt/plugins/ogg.c
+index 50cc495..57745f1 100644
+--- a/libmp3splt/plugins/ogg.c
++++ b/libmp3splt/plugins/ogg.c
+@@ -212,26 +212,36 @@ static splt_ogg_state *splt_ogg_v_new(int *error)
+     goto error;
+   }
+   memset(oggstate, 0, sizeof(splt_ogg_state));
++
+   if ((oggstate->sync_in = malloc(sizeof(ogg_sync_state)))==NULL)
+   {
+     goto error;
+   }
++  memset(oggstate->sync_in, 0, sizeof(ogg_sync_state));
++
+   if ((oggstate->stream_in = malloc(sizeof(ogg_stream_state)))==NULL)
+   {
+     goto error;
+   }
++  memset(oggstate->stream_in, 0, sizeof(ogg_stream_state));
++
+   if ((oggstate->vd = malloc(sizeof(vorbis_dsp_state)))==NULL)
+   {
+     goto error;
+   }
++  memset(oggstate->vd, 0, sizeof(vorbis_dsp_state));
++
+   if ((oggstate->vi = malloc(sizeof(vorbis_info)))==NULL)
+   {
+     goto error;
+   }
++  memset(oggstate->vi, 0, sizeof(vorbis_info));
++
+   if ((oggstate->vb = malloc(sizeof(vorbis_block)))==NULL)
+   {
+     goto error;
+   }
++  memset(oggstate->vb, 0, sizeof(vorbis_block));
+ 
+   if ((oggstate->headers = malloc(sizeof(splt_v_packet) * TOTAL_HEADER_PACKETS))==NULL)
+   {
+-- 
+2.29.2
+
