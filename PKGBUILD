@@ -2,7 +2,7 @@
 
 pkgname=pytype-git
 _pkgname="${pkgname%-git}"
-pkgver=2024.04.11.r144.g092cda5
+pkgver=2024.10.11.r26.g62a983d
 pkgrel=1
 pkgdesc='Static type analyzer for Python code'
 arch=('x86_64' 'aarch64')
@@ -23,7 +23,7 @@ depends=(
 	'python-tabulate'
 	'python-toml'
 	'python-typing_extensions'
-	'python-typed-ast' # only for <3.8
+	# 'python-typed-ast' # only for <3.8
 )
 makedepends=(
 	'git'
@@ -32,10 +32,6 @@ makedepends=(
 	'python-setuptools'
 	'python-wheel'
 	'pybind11'
-)
-checkdepends=(
-	'python-pylint'
-	'cmake'
 )
 conflicts=("$_pkgname")
 provides=("$_pkgname")
@@ -85,8 +81,10 @@ build() {
 
 check() {
 	cd "$_pkgname"
-	# python build_scripts/ci_script.py
-	echo 'test is disabled for now'
+	# disable for now
+	# python build_scripts/run_tests.py -f -v
+	# python out/bin/pytype -j auto
+	python out/bin/pytype --version
 }
 
 package() {
