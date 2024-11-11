@@ -3,9 +3,9 @@
 pkgname=gawk-haru
 _project=gawkextlib
 pkgver=1.0.2
-pkgrel=5
+pkgrel=6
 pkgdesc="GAWK extension - interface to the libharu PDF library"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="https://sourceforge.net/projects/gawkextlib/"
 license=('GPL-3.0-or-later')
 depends=('gawkextlib' 'glibc' 'libharu')
@@ -18,10 +18,12 @@ sha256sums=('92fb8d83b71de2fe2aec0bc2468459e728290e0c675ca8c19aaf195ba3cad9b6'
 
 prepare() {
   cd "$pkgname-$pkgver"
+  # Ports the code to work with newer libharu
   patch -p1 -i "$srcdir"/fix-build.patch
-  # hack to fix build until the extension
-  # is ported to the GAWK 5 API
-  sed -i 's/\([[:blank:]]*do.*, awk_value_t \*result\))$/\1, struct awk_ext_func *unused)/' pdf.c
+  # Temporary workaround to allow the extension to build (with warnings). These
+  # warnings are issued because the code has yet to be ported to the Gawk 5
+  # API.
+  sed -i 's/\(.*do_HPDF.*(.*, awk_value_t \*result\))$/\1, struct awk_ext_func *unused)/' pdf.c
 }
 
 build() {
