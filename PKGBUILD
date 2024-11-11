@@ -1,0 +1,23 @@
+# Maintainer: marzeq <marzeqmarzeq at gmail dot com>
+
+pkgname=mconf
+pkgver=1.1.0
+pkgrel=1
+pkgdesc="Parser for the mconf configuration language"
+arch=("x86_64" "aarch64")
+url="https://github.com/marzeq/mconf"
+license=("WTFPL")
+depends=("go" "git")
+source=("git+https://github.com/marzeq/mconf.git#tag=v$pkgver")
+md5sums=("SKIP")
+
+build() {
+  cd "$srcdir/$pkgname"
+  go build -o mconf
+}
+
+package() {
+  cd "$srcdir/$pkgname"
+  install -Dm755 mconf "$pkgdir/usr/bin/mconf"
+}
+
