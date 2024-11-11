@@ -8,7 +8,7 @@ _pkgname=ninja
 pkgname=$_pkgname-jobserver
 provides=(ninja)
 conflicts=(ninja)
-pkgver=r3149.34398e7
+pkgver=r3151.1b327ac
 pkgrel=1
 pkgdesc='Small build system with a focus on speed (with job server and client patch)'
 arch=(x86_64)
@@ -18,9 +18,21 @@ depends=(gcc-libs)
 makedepends=(cmake python re2c emacs-nox git)
 checkdepends=(gtest)
 _srcdir='ninja-digit-google'
-_commit='34398e7634255377eb2988feffe17da646a80e38'
-source=("${_srcdir}::git+https://github.com/digit-google/ninja.git#commit=$_commit")
-sha256sums=('1be0cd16f982dee75bd13cf0ecf035c2764ceb933af3a1d9ac12cb5d141135b4')
+_commit='1b327ac6fd66690d7cd676072300ccbdca72227f'
+source=(
+  "${_srcdir}::git+https://github.com/digit-google/ninja.git#commit=$_commit"
+  "${_srcdir}-jobserver-1.patch::https://github.com/digit-google/ninja/commit/99e2383ba33002f515f51aa5c7ee545fa843de6d.patch"
+  "${_srcdir}-jobserver-2.patch::https://github.com/digit-google/ninja/commit/15d54e25ee3f9c89af0a54cad11644d7f38b296e.patch")
+sha256sums=('0a4e6c80e0e048222d9f4ec7f1568e08fa9dde4d04c2cc533d0596aa0db67e37'
+            '49e61486bfd9a23079136723caceecabe7dc321e8d66805abbee6e8879eac233'
+            'ad5257bff7b48d747b10a848c01a65da3fd7638b1504bed6dd020fc37394fb11')
+
+prepare() {
+  cd "${_srcdir}"
+
+  patch -p1 -i "${srcdir}/${_srcdir}-jobserver-1.patch"
+  patch -p1 -i "${srcdir}/${_srcdir}-jobserver-2.patch"
+}
 
 pkgver() {
 	cd "${_srcdir}"
@@ -49,7 +61,6 @@ package() {
   local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
 
   install -m755 -D build-cmake/ninja "$pkgdir/usr/bin/ninja"
-  install -m755 -D 'misc/jobserver_pool.py' "$pkgdir/usr/bin/jobserver-pool"
   install -m644 -D doc/manual.asciidoc "$pkgdir/usr/share/doc/ninja/manual.asciidoc"
   install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
 
