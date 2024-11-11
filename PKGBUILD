@@ -1,7 +1,7 @@
 # Contributor: Jonas Heinrich <onny@project-insanity.org>
 
 pkgname=outline
-pkgver=0.80.2
+pkgver=0.81.0
 pkgrel=1
 pkgdesc="Wiki and knowledge base for growing teams"
 arch=('x86_64')
@@ -15,7 +15,7 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/outline/outline/archive
 	"outline.sysusers"
         "outline-db-create"
         "outline-db-migrate")
-sha512sums=('f8c7efd31713fd9241041a0640deb59c18fd1a19de01a7f72f7bc50b44cd06174dc99a9fce2abdfff83d6c9ceb08fb2c2237f0f85b7e9b287a7aad37f0fc48a4'
+sha512sums=('3cfe564f559f9a303652c995200584fb14a084de85b42d8c78380e38ad83700b285fadc8fff56f3786875ea97972dc4c318b9cd16b0846bdb82d9a6d9936ba90'
             'dc980bc23336c6ea7949bf27e0a3c22a56d50bd4db8b64b9a2ab585d1afba40b2260a4d2a99d7e492fde898a58dfa31d422f27722939f92d7a643500d035ebe2'
             'a9849e480b280e04d58e949a1b0f4daa548cd8e2ee3e567524ebe5b04815211294a16aadffa6c7f02e1be87dd13120fad6a551abd040d827a84b42945965efb3'
             '69d8676411e9747f61597d26dd65afeb8942eec30a45e4e63ddea0e005b00822e25bde43460a35e04013b7e4d288bf93175eecfe9368c4a71a674a67372a915b'
