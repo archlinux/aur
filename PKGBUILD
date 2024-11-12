@@ -3,7 +3,7 @@
 pkgname='matterircd'
 _github_path="github.com/42wim/${pkgname}"
 _go_pkg_path="src/${_github_path}"
-pkgver='0.27.0'
+pkgver='0.28.0'
 pkgrel='1'
 pkgdesc='Minimal IRC server which integrates with mattermost and slack'
 arch=('x86_64' 'armv7h')
