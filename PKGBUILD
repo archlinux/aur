@@ -6,7 +6,7 @@
 
 pkgname=dlib-cuda-git
 _pkgname=dlib
-pkgver=19.24.6
+pkgver=19.24.6+r8287+g39240959f
 pkgrel=1
 pkgdesc="Cross-platform C++ library using contract programming and modern C++ techniques"
 arch=('x86_64')
@@ -21,7 +21,7 @@ depends=('cblas'
          'libwebp'
          'libx11'
          'cuda'
-         'cudann'
+         'cudnn'
 )
 optdepends=('ffmpeg: for FFmpeg support'
             'giflib: for GIF support'
@@ -31,6 +31,13 @@ source=(
   "${_pkgname}::git+https://github.com/davisking/dlib.git"
 )
 sha256sums=('SKIP')
+pkgver(){
+  cd "${_pkgname}"
+  _version=$(git tag --sort=-v:refname --list | grep '^v[0-9.]*$' | head -n1 )
+  _commits=$(git rev-list --count HEAD)
+  _short_commit_hash=$(git rev-parse --short=9 HEAD)
+  echo "${_version#'v'}+r${_commits}+g${_short_commit_hash}"
+}
 
 build() {
     mkdir -p build && cd build
@@ -45,15 +52,7 @@ build() {
     ninja ${MAKEFLAGS:--j1}
 }
 
-package_dlib-git() {
-    cd "build"
-    DESTDIR=${pkgdir} ninja install
-    install -Dm644 "../${_pkgname}/dlib/LICENSE.txt" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
-    # remove redundant external libraries
-    rm -r "${pkgdir}/usr/include/dlib/external"
-}
-
-package_dlib-cuda-git() {
+package() {
     cd "build"
     DESTDIR=${pkgdir} ninja install
     install -Dm644 "../${_pkgname}/dlib/LICENSE.txt" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
