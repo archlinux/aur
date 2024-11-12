@@ -1,6 +1,6 @@
 # Maintainer: Thorsten Roth <elthoro@gmx.de>
 pkgname=stackandconquer
-pkgver=0.10.1
+pkgver=0.11.0
 pkgrel=1
 pkgdesc='A challenging tower conquest board game.'
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('GPL-3.0-or-later')
 makedepends=('cmake' 'qt6-tools')
 depends=('qt6-declarative' 'qt6-svg' 'hicolor-icon-theme')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ElTh0r0/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('3bca84d87981c34bf6f38aa653e6ca3b133f905d8fa6edc3cfc64fac7136c718')
+sha256sums=('c7fda94be5912c50b504076d800ff3de275c2b715f7aef96fe59ef6c0bf05c47')
 
 build() {
     cmake -B build-cmake -S "${pkgname}-${pkgver}" \
