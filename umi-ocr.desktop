@@ -1,8 +1,8 @@
 [Desktop Entry]
 Name=umiocr
 Comment="免费，开源，可批量的离线OCR软件 Free, open source, batch-capable offline OCR software, Free, open source, offline OCR software that can batch"
-Icon=umi-ocr
-Exec=umi-ocr
+Icon=~/.local/share/Umi-OCR_Linux_Paddle_2.1.4/UmiOCR-data/qt_res/images/icons/umiocr.ico
+Exec=~/.local/share/Umi-OCR_Linux_Paddle_2.1.4/umi-ocr.sh
 Terminal=false
 Type=Application
 StartupNotify=true
