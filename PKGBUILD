@@ -2,11 +2,11 @@
 # Orginally Packaged By: Mantas Mikulėnas <grawity@gmail.com>
 pkgname=rasdaemon
 pkgver=0.8.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Logging daemon for Platform Reliability, Availability and Serviceability (RAS), replacing mcelog"
 arch=(i686 x86_64)
 url="https://github.com/mchehab/rasdaemon"
-license=(GPL2)
+license=('GPL-2.0-or-later')
 depends=(
   # For rasdaemon:
   libtraceevent
