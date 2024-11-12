@@ -1,0 +1,4 @@
+[guile-lib]
+source = "regex"
+url = "https://download.savannah.gnu.org/releases/guile-lib/"
+regex = "guile-lib-(\\d+(?:\\.\\d+(?:\\.\\d+(?:\\.\\d+)?)?)?)\\.tar\\.(?:gz|bz2|xz|zst)"
