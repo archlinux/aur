@@ -1,0 +1,16 @@
+pkgbase = rem-player-bin
+	pkgdesc = Network music player based on netease music api.(Prebuild version.Use system-wide electron)
+	pkgver = 0.2.4
+	pkgrel = 1
+	url = https://github.com/reallyGoodBaker/REM
+	arch = x86_64
+	license = GPL-2.0-only
+	depends = electron33
+	conflicts = rem-player
+	options = !emptydirs
+	source = rem-player-0.2.4.deb::https://github.com/reallyGoodBaker/REM/releases/download/v0.2.4/rem_0.2.4_amd64.deb
+	source = rem-player.sh
+	sha256sums = 85f1c70385489f7c78f0949e3330325995d485b0188c146d576627f53cc786e6
+	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
+
+pkgname = rem-player-bin
