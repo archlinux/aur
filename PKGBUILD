@@ -2,9 +2,9 @@
 _appname=proxy-pin
 pkgname="${_appname//-/}-bin"
 _pkgname=ProxyPin
-pkgver=1.1.5
+pkgver=1.1.6
 pkgrel=1
-pkgdesc="Open source free packet capture tool.Prebuilt version."
+pkgdesc="Open source free packet capture tool.(Prebuilt version)"
 arch=('x86_64')
 url="https://github.com/wanghongenpin/network_proxy_flutter"
 _gturl="https://gitee.com/wanghongenpin/network-proxy-flutter"
@@ -16,10 +16,10 @@ depends=(
     'gtk3'
 )
 source=(
-    "${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/V${pkgver}/${_pkgname}-Linux.deb"
+    "${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${_pkgname}-Linux.deb"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('a7a95bd8e4d61f54869970f243ffdcecaa5e025bb0788fba8e72348563825bd6'
+sha256sums=('eca3b648546628c5684a241796c008289ee9b73f6b83b0496386abe330771e6b'
             '4b46d4c46f133f057b7859149b9e45689638ad849c4f0a8efabf2aacd6bf9142')
 build() {
     sed -e "
