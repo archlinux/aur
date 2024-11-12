@@ -3,34 +3,32 @@
 pkgname=deepin-control-center-git
 _pkgname=deepin-control-center
 sourcename=dde-control-center
-pkgver=6.0.40.r1.gf8b4814d0
+pkgver=6.0.73.r5.g00bc9d945
 pkgrel=1
 pkgdesc='New control center for linux deepin'
 arch=('x86_64' 'aarch64')
 url="https://github.com/linuxdeepin/dde-control-center"
 license=('GPL3')
 depends=(
-    'dtkwidget'
     'deepin-account-faces'
     'libpwquality'
     'startdde'
     'deepin-daemon'
     'deepin-qt-dbus-factory'
     'deepin-pw-check'
-    'qt5-wayland'
-    'dtkcore'
-    'dtkwidget'
-    'dtkgui'
+    'qt6-wayland'
+    'dtk6core'
+    'dtk6widget'
+    'dtk6gui'
 )
 makedepends=(
     'git'
     'cmake'
     'ninja'
-    'qt5-tools'
-    'qt5-base'
-    'qt5-x11extras'
-    'qt5-multimedia'
-    'qt5-svg'
+    'qt6-tools'
+    'qt6-base'
+    'qt6-multimedia'
+    'qt6-svg'
     'dtkcommon'
     'gtest'
     'gmock'
@@ -63,7 +61,8 @@ build() {
                 -DDISABLE_ACTIVATOR=YES \
                 -DCMAKE_INSTALL_PREFIX=/usr \
                 -DCMAKE_INSTALL_LIBDIR=/usr/lib \
-                -DDISABLE_AUTHENTICATION=ON
+                -DDISABLE_AUTHENTICATION=ON \
+                -DBUILD_DCC_OLD=OFF
   cmake --build build
 }
 
