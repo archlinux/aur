@@ -1,7 +1,7 @@
 pkgbase=navicat-premium-lite
 pkgname=("${pkgbase}-en" "${pkgbase}-cs")
 provides=("${pkgbase}")
-pkgver=17.1.0
+pkgver=17.1.4
 pkgrel=1
 pkgdesc="Navicat Premium Lite"
 arch=('x86_64' 'aarch64')
@@ -15,10 +15,10 @@ source_aarch64=(
 	"${pkgbase}-en-aarch64-${pkgver}.AppImage::https://dn.navicat.com/download/navicat17-premium-lite-en-aarch64.AppImage"
 	"${pkgbase}-cs-aarch64-${pkgver}.AppImage::https://dn.navicat.com/download/navicat17-premium-lite-cs-aarch64.AppImage"
 )
-sha256sums_x86_64=('8b99d7e0d124287efa869ddf32769e522e5292fc1da67386a5e3fb2c7545ed08'
-                   'f1c0fd14cfa0b04462c110ac4d07b9b21c553078f25b44897cb348f1d69a8f13')
-sha256sums_aarch64=('6565819a439757bcd951ea33ebadaea33fecf90cdfba5bdef7bfb78d8e55524d'
-                    'ef8812e98294b79349d000c7c59b45ab43a6bc5126b41c22de27fa8824ce95b0')
+sha256sums_x86_64=('30acee897387710dd0860f67acdc3683fa08904b48391704e17010da29801a73'
+                   'bc579c71bb02fe92434ca5dcb67e17220625a7a946d2a6bea84a6e890d19c724')
+sha256sums_aarch64=('db5cc6c97afaf9d890c6fc1ca9891246b4217e0f190f90746e9747b3a2ff102f'
+                    '6bb0d0922d136d033701761731bceb858a4e98d2a34d62d29ff75d3500fb7dd4')
 
 package_navicat-premium-lite-en() {
 	pkgdesc='Navicat Premium Lite is a compact version of Navicat'
