@@ -27,3 +27,19 @@ post_install() {
 post_upgrade() {
     post_install
 }
+
+pre_remove() {
+    binpid=$(ps axco pid,command | awk '$2 == "TrueConf" {print $1; }')
+    if [ -n "$binpid" ]; then
+        for process in $binpid; do
+            kill "$process" 
+        done
+    fi
+
+    startupbin=$(ps axco pid,command | awk '$2 == "trueconf" {print $1; }')
+    if [ -n "$startupbin" ]; then
+        for process in $startupbin; do
+            kill "$process"
+        done
+    fi
+}
