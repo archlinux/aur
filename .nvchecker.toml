@@ -1,0 +1,4 @@
+[gawk-abort]
+source = "regex"
+url = "https://sourceforge.net/projects/gawkextlib/files/"
+regex = "gawk-abort-(\\d+\\.\\d+\\.\\d+)\\.tar\\.gz"
