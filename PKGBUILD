@@ -2,7 +2,7 @@
 
 pkgname=obs-studio-tytan652
 pkgver=30.2.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Free and open source software for video recording and live streaming. With everything except service integrations. Plus my bind interface PR, and sometimes backported fixes"
 arch=("x86_64" "aarch64")
 url="https://github.com/obsproject/obs-studio"
@@ -139,6 +139,9 @@ prepare() {
 
   ## Add network interface binding for RTMP on Linux (https://github.com/tytan652/obs-studio/commits/bind_iface_eyeballed)
   patch -Np1 < "$srcdir/bind_iface_eyeballed.patch"
+
+  # obs-ffmpeg: Avoid setting negative bitrate for lossless audio codec
+  sed -i 's/enc->context->bit_rate = -1;/enc->context->bit_rate = 0;/g' plugins/obs-ffmpeg/obs-ffmpeg-audio-encoders.c
 
   cd "$srcdir"
   make PREFIX="$srcdir/nv-prefix" -C supported-nv-codec-headers install
