@@ -2,8 +2,8 @@
 # Co-Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 
 pkgname=cosmic-applibrary-git
-pkgver=1.0.0.alpha.2.r0.gde55dc5
-pkgrel=2
+pkgver=1.0.0.alpha.3.r0.g3dd148d
+pkgrel=1
 pkgdesc="An application launcher for the COSMIC desktop"
 arch=('x86_64' 'aarch64')
 url="https://github.com/pop-os/cosmic-applibrary"
@@ -17,8 +17,8 @@ makedepends=(
   'just'
   'mold'
 )
-provides=("${pkgname%-git}")
-conflicts=("${pkgname%-git}")
+provides=("${pkgname%-git}" 'cosmic-app-library')
+conflicts=("${pkgname%-git}" 'cosmic-app-library')
 source=('git+https://github.com/pop-os/cosmic-applibrary.git')
 sha256sums=('SKIP')
 
