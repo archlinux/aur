@@ -3,7 +3,7 @@
 pkgname=obs-studio-rc
 _pkgver=31.0.0-beta3
 pkgver="${_pkgver//-/_}"
-pkgrel=2
+pkgrel=3
 epoch=9
 pkgdesc="Beta cycle of the free and open source software for video recording and live streaming. With everything except service integration"
 arch=("x86_64" "aarch64")
@@ -132,6 +132,9 @@ prepare() {
   git config submodule.plugins/obs-browser.url $srcdir/obs-browser
   git config submodule.plugins/obs-websocket.url $srcdir/obs-websocket
   git -c protocol.file.allow=always submodule update
+
+  # obs-ffmpeg: Avoid setting negative bitrate for lossless audio codec
+  sed -i 's/enc->context->bit_rate = -1;/enc->context->bit_rate = 0;/g' plugins/obs-ffmpeg/obs-ffmpeg-audio-encoders.c
 }
 
 build() {
