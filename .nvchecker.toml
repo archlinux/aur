@@ -1,0 +1,4 @@
+[gawk-haru]
+source = "regex"
+url = "https://sourceforge.net/projects/gawkextlib/files/"
+regex = "gawk-haru-(\\d+\\.\\d+\\.\\d+)\\.tar\\.gz"
