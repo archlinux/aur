@@ -1,0 +1,4 @@
+[guile-curl]
+source = "git"
+git = "https://github.com/spk121/guile-curl"
+prefix = "v"
