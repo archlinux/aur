@@ -6,7 +6,7 @@ pkgdesc="Computer Modern in TTF (deprecated)"
 url="http://www.mozilla.org/projects/mathml/fonts/"
 arch=('any')
 license=('custom:BakoMa')
-source=(http://distfiles.gentoo.org/distfiles/texcm-ttf.zip
+source=(https://dev.gentoo.org/~mgorny/dist/texcm-ttf-1.0.zip
         license.txt)
         
 md5sums=('7bd39b8860b09c8d5e507dae70484b80'
