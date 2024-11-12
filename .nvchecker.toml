@@ -1,0 +1,5 @@
+[playfair-font]
+source = "github"
+github = "clauseggers/Playfair"
+use_max_tag = true
+prefix = "v"
