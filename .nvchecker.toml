@@ -1,0 +1,5 @@
+[verovio]
+source = "git"
+git = "https://github.com/rism-digital/verovio"
+ignored = "2.6.0"
+prefix = "version-"
