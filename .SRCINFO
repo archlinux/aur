@@ -1,0 +1,15 @@
+pkgbase = cpp-pinyin
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/wolfgitpr/cpp-pinyin
+	arch = i686
+	arch = x86_64
+	arch = arm
+	arch = aarch64
+	license = Apache-2.0
+	makedepends = cmake
+	makedepends = ninja
+	source = https://github.com/wolfgitpr/cpp-pinyin/archive/1.0.0.tar.gz
+	sha256sums = abfeeac54288e15bc24af020512f13e82a4b933b82b371cc8eea00ceb4b2d2b2
+
+pkgname = cpp-pinyin

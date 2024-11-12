@@ -1,0 +1,4 @@
+[cpp-pinyin]
+source = "github"
+github = "wolfgitpr/cpp-pinyin"
+use_latest_release = true
