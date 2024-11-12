@@ -1,6 +1,6 @@
 # Maintainer: Nico <d3sox at protonmail dot com>
 pkgname=anydesk-bin
-pkgver=6.3.3
+pkgver=6.4.0
 pkgrel=1
 pkgdesc="The Fast Remote Desktop Application"
 arch=('x86_64')
@@ -12,7 +12,7 @@ conflicts=('anydesk')
 provides=('anydesk')
 options=('!strip')
 source=("https://download.anydesk.com/linux/anydesk-${pkgver}-amd64.tar.gz")
-sha256sums=('b92a2d9053a9b82d9adac4536a063d285c771765499a0aec9fe7416b9c9c75c9')
+sha256sums=('c86cd3a9bbf74904fa57f0dc63c1af4435e2958ad95d5b2640e9eacbfe7e7aff')
 
 package() {
     # install binary
