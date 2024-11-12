@@ -2,14 +2,17 @@
 
 pkgname=xfel-git
 pkgver=1.3.2.r35.ga02562b
-pkgrel=1
+pkgrel=3
 pkgdesc="Tiny FEL tools for allwinner SOC, support RISC-V D1 chip."
-arch=('x86_64')
+arch=(x86_64
+    aarch64
+    riscv64)
 url="https://github.com/xboot/xfel"
 license=('MIT')
 provides=(${pkgname%-git})
 conflicts=(${pkgname%-git})
-depends=('libusb')
+depends=('libusb'
+    'glibc')
 makedepends=('git' 'gcc')
 source=("${pkgname%-git}::git+${url}.git")
 sha256sums=('SKIP')
@@ -17,6 +20,11 @@ sha256sums=('SKIP')
 pkgver() {
     cd "${srcdir}/${pkgname%-git}"
     git describe --long --tags | sed 's/^v//g' | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare()
+{
+    git -C "${srcdir}/${pkgname%-git}" clean -dfx
 }
 
 build() {
