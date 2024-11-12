@@ -1,8 +1,8 @@
 # Maintainer: Adrian Perez de Castro <aperez@igalia.com>
 pkgdesc='BASIC language cross-compiler for ColecoVision/SG1000/MSX and other 8 bit computers'
 pkgname=cvbasic
-pkgver=0.7.0
-_commit=002fa74204b5f20c43012272c970e851e00ec88b
+pkgver=0.7.1
+_commit=9b56f5a00b0e0fbc51f7b5ac2db86f873d64c3d7
 pkgrel=1
 url=https://nanochess.org/cvbasic.html
 arch=(x86_64)
@@ -10,15 +10,8 @@ license=(BSD-2-Clause)
 depends=(glibc)
 makedepends=(git)
 optdepends=('gasm80: Assembler needed to build Z80/6502 binaries')
-source=("$pkgname-$pkgver::git+https://github.com/nanochess/CVBasic.git#commit=$_commit"
-        0001-Allow-setting-a-default-library_path-at-build-time.patch)
-b2sums=('7dff015f9ff15fce9234c2c55a27b903e30a89257eb8bbe7a912bcae5a7907aca329b91777c8c3cc3995f69d3e999cfa1de15b0868cdb78ea999d534700b2dfe'
-        '36947d4028463875e0bd298764e902011b02f7f43630ca1ee64568487bb1e1beb88682ffca930ffaaab8e83ffda81dc69144e82f5ad7b2790de2f732b18aea40')
-
-prepare () {
-	cd "$pkgname-$pkgver"
-	git apply "$srcdir/0001-Allow-setting-a-default-library_path-at-build-time.patch"
-}
+source=("$pkgname-$pkgver::git+https://github.com/nanochess/CVBasic.git#commit=$_commit")
+b2sums=('e47ce2e0b94b3eea25459bc1a3a7ca9756d68f114ae202f198e883df34d63b3158e0e7f9b64e75c4645eb35e4a088b8b2d2917a7eab3a5e56680f3e70168d615')
 
 build () {
 	cd "$pkgname-$pkgver"
@@ -32,6 +25,6 @@ package () {
 	install -Dm644 -t "$pkgdir/usr/share/cvbasic" cvbasic_{,6502_,9900_}{pro,epi}logue.asm
 	install -Dm755 -t "$pkgdir/usr/bin" cvbasic
 
-	install -Dm644 -t "$pkgdir/usr/share/doc/cvbasic" README.md manual.txt 'README - TI99.md'
+	install -Dm644 -t "$pkgdir/usr/share/doc/cvbasic" README.md manual.txt 'README - TI99.md' linkticart.py
 	install -Dm644 -t "$pkgdir/usr/share/doc/cvbasic/examples" examples/*
 }
