@@ -1,7 +1,7 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
 pkgname="posting"
-pkgver=2.0.1
+pkgver=2.1.1
 pkgrel=1
 pkgdesc="The modern API client that lives in your terminal"
 arch=('any')
@@ -16,7 +16,7 @@ depends=('python>=3.11' 'python-click>=8.1.7' 'python-click-default-group>=1.2.4
          'python-watchfiles>=0.24' 'python-xdg-base-dirs>=6.0.1' 'python-yaml>=6.0.2')
 _pkgsrc="${pkgname}-${pkgver}"
 source=("${_pkgsrc}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-sha256sums=('c714aa2a1c78152ba3d97a34a76e591c1d3f6cc21bab209c7850152d8c7bd079')
+sha256sums=('4da02de09a313abc01b994622937d74b68015289a925cab970db1643043c88cb')
 
 # prepare() {
 #   cd "${srcdir}/${_pkgsrc}/src/${pkgname}"
