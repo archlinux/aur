@@ -1,13 +1,13 @@
 pkgbase = timoni-bin
 	pkgdesc = Timoni is a package manager for Kubernetes, powered by CUE and inspired by Helm.
-	pkgver = 0.22.0
+	pkgver = 0.22.1
 	pkgrel = 1
 	url = https://github.com/stefanprodan/timoni
 	arch = x86_64
 	license = Apache 2
 	provides = timoni-bin
 	conflicts = timoni
-	source = timoni-0.22.0.tar.gz::https://github.com/stefanprodan/timoni/releases/download/v0.22.0/timoni_0.22.0_linux_amd64.tar.gz
-	sha256sums = 5113199c99b7afa555f990488252bf29d0c751a8cf82450e6ab918e1648b1f40
+	source = timoni-0.22.1.tar.gz::https://github.com/stefanprodan/timoni/releases/download/v0.22.1/timoni_0.22.1_linux_amd64.tar.gz
+	sha256sums = 9f3ba1c55065e1360807ab77b0db1b105d725235068a67f58141df0dcb5217db
 
 pkgname = timoni-bin
