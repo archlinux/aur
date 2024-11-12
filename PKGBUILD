@@ -1,7 +1,6 @@
 # Maintainer: Mohamed Amine Zghal (medaminezghal) <medaminezghal at outlook dot com>
 
-pkgname=plasma6-applets-thermal-monitor-git
-_pkgname=${pkgname%-git}
+pkgname=plasma6-applets-thermal-monitor
 pkgver=0.1.7
 pkgrel=1
 pkgdesc="A KDE Plasmoid for displaying system temperatures."
