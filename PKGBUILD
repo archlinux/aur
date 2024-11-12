@@ -1,7 +1,7 @@
 # Maintainer: Vladislav Grechannik <vgrechannik@gmail.com>
 
 pkgname=xbyak
-pkgver=7.21
+pkgver=7.22
 pkgrel=1
 pkgdesc='A C++ JIT assembler for x86 (IA32), x64 (AMD64, x86-64)'
 arch=('any')
@@ -11,7 +11,7 @@ makedepends=('git' 'cmake')
 # tests require multilib repository
 #checkdepends=('nasm' 'yasm' 'boost')
 source=("$pkgname::git+$url#tag=v$pkgver")
-b2sums=('226af658ef991ffaac41536a0e0a46b2144d27061efbc7fa051e0ad8b0fb8e231e891a843a88f1c99702342c559a84a1e5fdbf01429a4d48f7af7a42d27d7f6e')
+b2sums=('0541b74044b53c58f3427cc24a19bb04ae688f56d9467ab83bed9cf464418a4b055867f95832315aa1e77fea008401b638b100606bbf2ad2ef795875038b0bbe')
 
 pkgver() {
   cd "$pkgname"
