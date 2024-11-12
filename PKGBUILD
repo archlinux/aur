@@ -2,12 +2,12 @@
 _pkgname=github-desktop
 _appname="GitHub Desktop"
 pkgname="${_pkgname}-zh-bin"
-pkgver=3.4.3_linux1
+pkgver=3.4.8_linux1
 #_zhpkgver="${pkgver%_linux2}"
 _zhpkgver=3.4.8
 _electronversion=30
-pkgrel=5
-pkgdesc="GUI for managing Git and GitHub.Chinese SC Version.Use system-wide electron.Github Desktop 汉化版."
+pkgrel=1
+pkgdesc="GUI for managing Git and GitHub.Chinese SC Version.(Use system-wide electron).Github Desktop 汉化版."
 arch=(
     'aarch64'
     'armv7h'
@@ -30,9 +30,9 @@ depends=(
     'expat'
 )
 options=('!strip')
-source_aarch64=("${_pkgname}-${pkgver}-aarch64.deb::${_ghurl}/releases/download/release-${pkgver//_/-}/${_appname// /}-linux-arm64-${pkgver//_/-}.deb")
-source_armv7h=("${_pkgname}-${pkgver}-armv7h.deb::${_ghurl}/releases/download/release-${pkgver//_/-}/${_appname// /}-linux-armhf-${pkgver//_/-}.deb")
-source_x86_64=("${_pkgname}-${pkgver}-x86_64.deb::${_ghurl}/releases/download/release-${pkgver//_/-}/${_appname// /}-linux-amd64-${pkgver//_/-}.deb")
+source_aarch64=("${_pkgname}-${pkgver}-aarch64.rpm::${_ghurl}/releases/download/release-${pkgver//_/-}/${_appname// /}-linux-aarch64-${pkgver//_/-}.rpm")
+source_armv7h=("${_pkgname}-${pkgver}-armv7h.rpm::${_ghurl}/releases/download/release-${pkgver//_/-}/${_appname// /}-linux-armv7l-${pkgver//_/-}.rpm")
+source_x86_64=("${_pkgname}-${pkgver}-x86_64.rpm::${_ghurl}/releases/download/release-${pkgver//_/-}/${_appname// /}-linux-x86_64-${pkgver//_/-}.rpm")
 source=(
     "${_pkgname}-${_zhpkgver}-zh.7z::${_ghzhurl}/releases/download/${_zhpkgver}/${_appname// /}.7z"
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/shiftkey/desktop/release-${pkgver//_/-}/LICENSE"
@@ -41,9 +41,9 @@ source=(
 sha256sums=('e38ea0b3d5a0fa5368a70d76b630dc62ad3a9a4ba1243a7bc25996f6f0aceb86'
             '891d678cd6aa67c0712f663b5fee690f24d11d360795300814f7bf2eb91ba530'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-sha256sums_aarch64=('da070a8379dda95cceb6c2a331fde7d33d56feee31de647e334435d34c6cfb22')
-sha256sums_armv7h=('44b85e5a3fdb1c575b6ee6101f45c97680554f143add2dec330104575e10468b')
-sha256sums_x86_64=('e2c8aa0ee4f67b1d12e96080fef4dd342b0fd7aa619ead158f1e48cd5123c238')
+sha256sums_aarch64=('dded19a62f087d179f9676c6f900a8f23edfe9dc0df960b70c6972b0be84b3c3')
+sha256sums_armv7h=('0cb4db9152f7a17a394f147b4bb955b41777540f1c00a4c41dc07493e8083231')
+sha256sums_x86_64=('df0d8f3482021770aa7fd2790232c5a199cd8e0ec0519320495791184132348c')
 build() {
     sed -e "
         s/@electronversion@/${_electronversion}/g
@@ -52,7 +52,6 @@ build() {
         s/@cfgdirname@/${_pkgname}/g
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
     " -i "${srcdir}/${pkgname%-bin}.sh"
-    bsdtar -xf "${srcdir}/data."*
     install -Dm644 "${srcdir}/GithubDesktop汉化工具/Linux/"* -t "${srcdir}/usr/lib/${_pkgname}/resources/app"
     sed -e "
         5i\Name[zh_CN]=Github桌面版
