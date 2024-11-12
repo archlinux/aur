@@ -1,18 +1,17 @@
 pkgbase = sph-db-guile-git
 	pkgdesc = guile bindings to sph-db
-	pkgver = 36
+	pkgver = 41.rae5f762
 	pkgrel = 1
-	url = http://sph.mn
+	url = https://github.com/sph-mn/sph-db-guile
 	arch = any
-	license = gpl3+
+	license = GPL3
 	makedepends = git
 	makedepends = gcc
 	depends = sph-db
 	depends = guile
-	provides = sph-db-guile
+	provides = sph-db-guile=41.rae5f762
 	conflicts = sph-db-guile
-	source = git://git.sph.mn/sph-db-guile
+	source = git+https://github.com/sph-mn/sph-db-guile.git
 	md5sums = SKIP
 
 pkgname = sph-db-guile-git
-
