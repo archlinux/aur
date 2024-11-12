@@ -1,16 +1,16 @@
 # Maintainer: Michał Wojdyła < micwoj9292 at gmail dot com >
 pkgname=python-cmap
 _pkgname=${pkgname#python-}
-pkgver=0.3.0
+pkgver=0.4.0
 pkgrel=1
 pkgdesc='Scientific colormaps for python, without dependencies'
 arch=('any')
-url='https://github.com/tlambert03/cmap'
+url='https://github.com/pyapp-kit/cmap'
 license=('BSD 3-Clause')
 depends=('python-numpy')
 makedepends=('python-build' 'python-hatch-vcs' 'python-installer')
 source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('28d5c99de241648d3985ca69f65b4a43d342ddaf23ce28313f2f24e2b4c664d7')
+sha256sums=('e8174736cc6e8b46557687f48a1dfeee1f03af5606d94ff48144271329e6e59c')
 
 build() {
     cd "${_pkgname}-${pkgver}"
