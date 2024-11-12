@@ -36,10 +36,10 @@ containsElement () {
 
 pkgname=e-modules-extra-git
 pkgver=20241111
-pkgrel=1
+pkgrel=2
 pkgdesc="Enlightenment modules: Extra unsupported modules in Git not already packaged elsewhere"
 arch=('i686' 'x86_64')
-url="http://www.enlightenment.org"
+url="https://git.enlightenment.org/"
 license=('GPL' 'MIT')
 
 depends=('enlightenment')
