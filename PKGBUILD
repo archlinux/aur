@@ -3,7 +3,7 @@
 _name="gurobipy"
 _py=cp312
 pkgname="python-${_name}"
-pkgver=11.0.3
+pkgver=12.0.0
 pkgrel=1
 pkgdesc="Python interface to Gurobi"
 arch=('x86_64' 'aarch64')
@@ -14,8 +14,8 @@ depends=('glibc' 'gurobi' 'python>=3.8' 'python-numpy' 'python-scipy')
 noextract=("${_name//-/_}-${pkgver}-${_py}-${_py}-manylinux2014_"{x86_64.manylinux_2_17_x86_64,aarch64.manylinux_2_17_aarch64}".whl")
 source_x86_64=("https://files.pythonhosted.org/packages/${_py}/${_name::1}/${_name}/${_name//-/_}-${pkgver}-${_py}-${_py}-manylinux2014_x86_64.manylinux_2_17_x86_64.whl")
 source_aarch64=("https://files.pythonhosted.org/packages/${_py}/${_name::1}/${_name}/${_name//-/_}-${pkgver}-${_py}-${_py}-manylinux2014_aarch64.manylinux_2_17_aarch64.whl")
-sha256sums_x86_64=('d08a69a9884b2c7ab843c9967b44770c17c73ac5726db7a8794ae85d7c1fc446')
-sha256sums_aarch64=('b752a8a4d898a3cc59b0670aa449dee8e2159d4f420f30033baf96f14a36516d')
+sha256sums_x86_64=('90bba495efb25cff5a3826158aff7be29637d2e80accc3a89a98cb8630856106')
+sha256sums_aarch64=('f8287de7535c3b9c97f4aa8716969d70302a972bd09e9d3b6fbd7266ca0eab72')
 
 package() {
   local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
