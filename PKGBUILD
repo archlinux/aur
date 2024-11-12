@@ -77,6 +77,9 @@ build() {
 
     python -m installer --destdir=tmp_install dist/*.whl
     local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
+
+    # NOTE: This does not work with paru/yay etc because of a bug in quarto-cli
+    # https://github.com/quarto-dev/quarto-cli/issues/3186
     PYTHONPATH="${PWD}/tmp_install/${site_packages}" make docs-build
 }
 
