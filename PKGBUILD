@@ -3,7 +3,7 @@
 
 pkgname=python-django-multiselectfield
 pkgver=0.1.12
-pkgrel=3
+pkgrel=4
 pkgdesc="A Multiple Choice model field"
 arch=('any')
 url="https://github.com/goinnn/django-multiselectfield"
@@ -16,6 +16,7 @@ makedepends=(
   'git'
   'python-build'
   'python-installer'
+  'python-setuptools'
   'python-wheel'
 )
 source=("${pkgname}::git+${url}#tag=v${pkgver}")
