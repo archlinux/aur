@@ -1,7 +1,7 @@
 # Maintainer: ganelonhb <worcesterzj@gmail.com>
 
 pkgname=qdiceroller-git
-pkgver=1.0.0.r0.g332f325f88
+pkgver=1.0.0.r0.geea6ca01ab
 pkgrel=1
 pkgdesc='A dice roller that uses Qt'
 arch=(x86_64)
@@ -22,17 +22,9 @@ depends=(
 
 makedepends=(
     make
-    cmake
-    extra-cmake-modules
-    clang
     lld
-    llvm
     git
-    ninja
-    ccache
-    libjpeg-turbo
     qt6-tools
-    qt6-wayland
 )
 
 optdepends=(
@@ -44,7 +36,7 @@ source=(
 )
 
 pkgver() {
-    printf 1.0.0.r0.g332f325f88
+    printf 1.0.0.r0.geea6ca01ab
 }
 
 build() {
