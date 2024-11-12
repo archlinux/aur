@@ -8,7 +8,7 @@ pkgname=(
   'scala3'
 )
 pkgver=3.5.2
-pkgrel=2
+pkgrel=3
 pkgdesc='The Scala 3 compiler, also known as Dotty.'
 arch=('any')
 url='http://dotty.epfl.ch'
@@ -18,10 +18,11 @@ source=("https://github.com/lampepfl/dotty/releases/download/${pkgver}/scala3-${
 sha256sums=('899de4f9aca56989ce337d8390fbf94967bc70c9e8420e79f375d1c2ad00ff99')
 
 package_scala3() {
-  install -d    "${pkgdir}/usr/bin"        "${pkgdir}/usr/share/scala3/bin"
-  cp      -r    "scala3-${pkgver}/lib"     "${pkgdir}/usr/share/scala3"
-  install -m755 "scala3-${pkgver}/bin/"*   "${pkgdir}/usr/share/scala3/bin"
-  install -m644 "scala3-${pkgver}/VERSION" "${pkgdir}/usr/share/scala3/VERSION"
+  cd "${pkgname}-${pkgver}" 
+  install -d    "${pkgdir}/usr/bin"
+  install -d    "${pkgdir}/usr/share/scala3"
+  cp -r "./"*   "${pkgdir}/usr/share/scala3/"
+  chmod -R 755  "${pkgdir}/usr/share/scala3/bin/"*
 
   # Scala 3 symlinks in /usr/bin
   ln -s "../share/scala3/bin/scala"  "${pkgdir}/usr/bin/scala3"

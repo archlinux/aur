@@ -1,7 +1,7 @@
 pkgbase = scala-dotty
 	pkgdesc = The Scala 3 compiler, also known as Dotty.
 	pkgver = 3.5.2
-	pkgrel = 2
+	pkgrel = 3
 	url = http://dotty.epfl.ch
 	arch = any
 	license = Apache-2.0
