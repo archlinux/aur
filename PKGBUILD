@@ -1,7 +1,7 @@
 # Maintainer: hrdl <aur@hrdl.eu>
 
 pkgname=zotero-translation-server-git
-pkgver=20221208.0329031
+pkgver=20240914.0a9199e
 pkgrel=1
 pkgdesc='The Zotero translation server lets you use Zotero translators without the Zotero client.'
 arch=('x86_64')
@@ -55,6 +55,9 @@ prepare() {
 
 package() {
   npm install --location global --prefix "$pkgdir"/usr ./"$_src_dir_1" --install-links
+
+  # Avoid collisions with other packages
+  sed -i "s|Utils = require('util')|Utils = require('../../util')|" "$pkgdir"/usr/lib/node_modules/translation-server/node_modules/config/lib/config.js
 
   # Non-deterministic race in npm gives 777 permissions to random directories.
   # See https://github.com/npm/cli/issues/1103 for details.

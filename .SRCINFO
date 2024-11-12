@@ -1,6 +1,6 @@
 pkgbase = zotero-translation-server-git
 	pkgdesc = The Zotero translation server lets you use Zotero translators without the Zotero client.
-	pkgver = 20221208.0329031
+	pkgver = 20240914.0a9199e
 	pkgrel = 1
 	url = https://github.com/zotero/translation-server
 	arch = x86_64
