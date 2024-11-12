@@ -1,5 +1,6 @@
 # Maintainer: Patrick McCarty <pnorcks at gmail.com>
 # Contributor: Florian Pelz <pelzflorian at pelzflorian.de>
+
 pkgname=guile-commonmark
 pkgver=0.1.2
 pkgrel=2
@@ -21,7 +22,7 @@ prepare() {
 build() {
   cd "$pkgname"-"$pkgver"
   autoreconf -fi
-  ./configure --prefix=/usr
+  ./configure --prefix=/usr --enable-silent-rules
   make
 }
 
