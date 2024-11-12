@@ -2,20 +2,20 @@
 # Contributor: Stefan Husmann <Stefan-Husmann@t-online.de>
 
 pkgname=emacs-ess
-pkgver=1.8
+pkgver=24.01.1
 pkgrel=1
 epoch=2
 pkgdesc="Emacs Speaks Statistics: A Universal Interface for Statistical Analysis"
 url="http://ess.r-project.org/"
 arch=('any')
-license=('GPL')
+license=('GPL-3.0-only')
 depends=('emacs' 'r')
-makedepends=('wget')
+makedepends=()
 install=ess.install
-source=("https://github.com/emacs-ess/ESS/archive/refs/tags/ESSRv${pkgver}.tar.gz")
-sha256sums=('7046b2011bf960a732d74943de5a8bd93dd6b1f68389d545fe6eeff5fd09c3d0')
+source=("https://github.com/emacs-ess/ESS/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('72ec1b81bdec34fd8f48ae15342ca8273c317012794195103deeaa58a7721f90')
 
 package() {
-  cd "ESS-ESSRv$pkgver"
+  cd "ESS-$pkgver"
   make DESTDIR="$pkgdir"/usr INFODIR="$pkgdir"/usr/share/info/ install
 }
