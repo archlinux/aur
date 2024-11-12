@@ -1,16 +1,39 @@
 # Maintainer: Sven Rademakers <sven@turingpi.com>
 pkgname=tpi
 pkgver=1.0.7
-pkgrel=1
 pkgdesc='Official Turing-Pi2 CLI tool'
+source=("git+https://github.com/turing-machines/tpi.git#tag=v1.0.7")
+pkgrel=2
 url=https://turingpi.com/
 license=('Apache')
-arch=('x86_64' 'aarch64')
-source_x86_64=("https://github.com/turing-machines/tpi/releases/download/${pkgver}/tpi-x86_64-unknown-linux-gnu.tar.gz")
-source_aarch64=("https://github.com/turing-machines/tpi/releases/download/${pkgver}/tpi-aarch64-unknown-linux-gnu.tar.gz")
+makedepends=('cargo')
+arch=('any')
 
-package() {
-    tar -xzf "${srcdir}/tpi-${CARCH}-unknown-linux-gnu.tar.gz" -C "${pkgdir}"
+prepare() {
+    cd $pkgname
+    export RUSTUP_TOOLCHAIN=stable
+    cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
-sha256sums_x86_64=('71e8c61f00b6197e4e0264b2a5dafe842ac1ea270d746187802d88792b1f7c74')
-sha256sums_aarch64=('320138a2d2eb10778922c63b84db22f2fc247d023d753d1030ee8affb255a392')
+
+build() {
+    cd $pkgname
+    export RUSTUP_TOOLCHAIN=stable
+    export CARGO_TARGET_DIR=target
+    cargo build --frozen --release --target "$CARCH-unknown-linux-gnu"
+}
+
+check() {
+    cd $pkgname
+    export RUSTUP_TOOLCHAIN=stable
+    cargo test --frozen
+}
+package() {
+    TARGET=$CARCH-unknown-linux-gnu
+mkdir -p ${pkgdir}/usr/bin
+mkdir -p ${pkgdir}/usr/share/doc/tpi
+install -m 755 ${srcdir}/${pkgname}/target/${TARGET}/release/tpi ${pkgdir}/usr/bin/tpi
+install -m 644 ${srcdir}/${pkgname}/README.md ${pkgdir}/usr/share/doc/tpi/README.md
+install -m 644 ${srcdir}/${pkgname}/LICENSE ${pkgdir}/usr/share/doc/tpi/copyright\n
+}
+md5sums=('bbaa8d11bc6a2a0b2abe16a4f9813e59')
+
