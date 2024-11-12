@@ -1,6 +1,7 @@
 # Contributor: Dirk Sohler <spam@0x7be.de>
 # Maintainer: Dirk Sohler <spam@0x7be.de>
 
+pkgbase='luanti-modern'
 pkgname=('luanti-client' 'luanti-server' 'luanti-common' 'luanti-documentation')
 pkgver=5.10.0
 pkgrel=1
