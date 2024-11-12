@@ -1,0 +1,17 @@
+pkgbase = sshpass-totp
+	pkgdesc = A tool for non-interactivly performing password authentication
+	pkgver = r64
+	pkgrel = 2
+	url = https://github.com/dora38/sshpass
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = subversion
+	depends = glibc
+	depends = openssh
+	provides = sshpass=r64
+	conflicts = sshpass
+	source = git+https://github.com/dora38/sshpass.git
+	sha256sums = SKIP
+
+pkgname = sshpass-totp
