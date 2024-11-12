@@ -1,0 +1,4 @@
+[guile-commonmark]
+source = "git"
+git = "https://github.com/OrangeShark/guile-commonmark"
+prefix = "v"
