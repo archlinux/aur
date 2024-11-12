@@ -3,11 +3,11 @@
 # Contributor: ston <2424284164@qq.com>
 pkgname=go-musicfox
 pkgver=4.5.7
-pkgrel=2
+pkgrel=3
 pkgdesc='Command-line Netease Cloud Music written in Go.'
 url='https://github.com/anhoder/go-musicfox'
 license=('MIT')
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 provides=('musicfox')
 conflicts=('go-musicfox-bin' 'musicfox')
 depends=('flac' 'alsa-lib')
