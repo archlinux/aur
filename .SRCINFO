@@ -1,7 +1,7 @@
 pkgbase = naga-cli
 	pkgdesc = Shader translation command line tool
 	pkgver = 23.0.0
-	pkgrel = 2
+	pkgrel = 1
 	url = https://github.com/gfx-rs/wgpu/tree/trunk/naga-cli
 	arch = x86_64
 	arch = i686
