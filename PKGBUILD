@@ -1,5 +1,8 @@
-pkgname=ttyplot-git
-pkgver=r22.ac8c3c3
+# Maintainer: gilcu3
+
+_pkgname=ttyplot
+pkgname=$_pkgname-git
+pkgver=r446.ec32294
 pkgrel=1
 pkgdesc="A realtime plotting utility for terminal with data input from stdin"
 arch=('x86_64')
@@ -9,18 +12,18 @@ source=('git+https://github.com/tenox7/ttyplot.git')
 sha256sums=('SKIP')
 depends=('ncurses')
 
-
 pkgver() {
- 	cd $srcdir/ttyplot
+ 	cd $srcdir/$_pkgname
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-	cd $srcdir/ttyplot
+	cd $srcdir/$_pkgname
 	make
 }
 
 package() {
-	cd $srcdir/ttyplot
-	install -D -m755 ttyplot  $pkgdir/usr/bin/ttyplot
+	cd $srcdir/$_pkgname
+    install -Dm644 $_pkgname.1 ${pkgdir}/usr/share/man/man1/$_pkgname.1
+	install -D -m755 $_pkgname  $pkgdir/usr/bin/$_pkgname
 }
