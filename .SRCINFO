@@ -1,7 +1,7 @@
 pkgbase = guile-smc
 	pkgdesc = GNU Guile state machine compiler
 	pkgver = 0.6.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/artyom-poptsov/guile-smc
 	arch = x86_64
 	license = GPL-3.0-or-later
