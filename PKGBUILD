@@ -3,7 +3,7 @@
 pkgname=youtube-downloader-bin
 _pkgname=youtube-downloader
 pkgver=3.9.9.96
-pkgrel=6
+pkgrel=7
 pkgdesc='YouTube Downloader by MediaHuman'
 arch=('x86_64')
 url="https://www.mediahuman.com/download.html"
@@ -16,8 +16,15 @@ depends=('hicolor-icon-theme'
          'ffmpeg')
 provide=('youtube-downloader')
 conflicts=('youtube-downloader')
-source_x86_64=("http://schinfo.synology.me/public/MediaHuman/${_pkgname}-${pkgver}.deb")
-sha256sums_x86_64=('45310c65fb2a61bd972fc39ecb9b469001c0fb26710b3b69757611e754326e64')
+source_x86_64=("${pkgname}-$(date +%F-%H).amd64.deb::https://schinfo.de/MediaHuman/YouTubeDownloader.amd64.deb")
+sha256sums_x86_64=('f8a24bf6a59deb42df76ab6a01b08f4873440ccc605d045d8972ff40458a2d81')
+
+pkgver() {
+  bsdtar -xf control.tar.xz -C .
+  actpkgverlong="$(cat "control" | grep "Version: ")"
+  actpkgver=${actpkgverlong##*: }
+  echo "$actpkgver"
+}
 
 package() {
   bsdtar -xf data.tar.xz -C ${pkgdir}/
