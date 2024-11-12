@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=bbg-bin
-pkgver=20240613
-_electronversion=30
+pkgver=20241112
+_electronversion=33
 pkgrel=1
-pkgdesc="A static blog generator based on Electron Technology"
+pkgdesc="A static blog generator based on Electron Technology(Prebuilt version.Use system-wide electron)"
 arch=(
     'aarch64'
     'x86_64'
@@ -23,23 +23,27 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('436a6d536138f203ac333858cff92a568be62797752b3adb94bcaa0f6ffe7ef6'
-            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
-sha256sums_aarch64=('31280e813f5ed2d0a20d1f1b9f9f475eef01052587c2463a417613e18a49de19')
-sha256sums_x86_64=('e6900e9095787fc4b1d75c21827cc61132e6bfaffbebdf64e04117c8f822baa6')
+            '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
+sha256sums_aarch64=('a7436b4f207914dc45dc6ff151c572f54e1c28af477bcb04efa536989b94f419')
+sha256sums_x86_64=('7b918cace3e17a0301eab98428c1285ef8e32ea1df443d0eaf1c60d9e2ead80d')
 build() {
-    sed -e "s|@electronversion@|${_electronversion}|" \
-        -e "s|@appname@|${pkgname%-bin}|g" \
-        -e "s|@runname@|app.asar|g" \
-        -e "s|@cfgdirname@|${pkgname%-bin}|g" \
-        -e "s|@options@||g" \
-        -i "${srcdir}/${pkgname%-bin}.sh"
+    sed -e "
+        s/@electronversion@/${_electronversion}/g
+        s/@appname@/${pkgname%-bin}/g
+        s/@runname@/app.asar/g
+        s/@cfgdirname@/${pkgname%-bin}/g
+        s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
+    " -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
-    sed "s|/opt/${pkgname%-bin}/${pkgname%-bin}|${pkgname%-bin} %U|g;s|/usr/share/icons/${pkgname%-bin}.png|${pkgname%-bin}|g" \
-        -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
+    sed -e "
+        s/\/opt\/${pkgname%-bin}\/${pkgname%-bin}/${pkgname%-bin} %U/g
+        s/\/usr\/share\/icons\/${pkgname%-bin}.png/${pkgname%-bin}/g
+    " -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm644 "${srcdir}/opt/${pkgname%-bin}/resources/app.asar" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
+    cp -Pr --no-preserve=ownership "${srcdir}/opt/${pkgname%-bin}/resources/app.asar.unpacked" "${pkgdir}/usr/lib/${pkgname%-bin}"
     install -Dm644 "${srcdir}/LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     install -Dm644 "${srcdir}/usr/share/icons/${pkgname%-bin}.png" -t "${pkgdir}/usr/share/pixmaps"
     install -Dm644 "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
