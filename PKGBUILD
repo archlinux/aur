@@ -1,12 +1,12 @@
 # Maintainer: Ashley Bone <ashley DOT bone AT pm DOT me>
 pkgname='organizr-git'
 _pkgname='organizr'
-pkgver=r3941.e79b6d39
+pkgver=r4018.b8344ba5
 pkgrel=1
 pkgdesc='HTPC/HomeLab services organizer (git version).'
 arch=('any')
 url='https://github.com/causefx/Organizr'
-license=('GPL3')
+license=('GPL-3.0-or-later')
 depends=('php-sqlite-interpreter')
 optdepends=('fail2ban')
 provides=('organizr')
@@ -14,7 +14,7 @@ conflicts=('organizr')
 install='organizr.install'
 source=("${pkgname}::git+https://github.com/causefx/Organizr.git#branch=v2-master" "organizr.install")
 sha256sums=('SKIP'
-	    '0eb1fc73141105b51e6ced331057b2f2661d915878c641893c64cd28b861bc45')
+            '0eb1fc73141105b51e6ced331057b2f2661d915878c641893c64cd28b861bc45')
 
 pkgver() {
     cd "${pkgname}"
