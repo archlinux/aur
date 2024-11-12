@@ -1,0 +1,4 @@
+[gawk-redis]
+source = "regex"
+url = "https://sourceforge.net/projects/gawkextlib/files/"
+regex = "gawk-redis-(\\d+\\.\\d+\\.\\d+)\\.tar\\.gz"
