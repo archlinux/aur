@@ -1,0 +1,4 @@
+[gawk-pgsql]
+source = "regex"
+url = "https://sourceforge.net/projects/gawkextlib/files/"
+regex = "gawk-pgsql-(\\d+\\.\\d+\\.\\d+)\\.tar\\.gz"
