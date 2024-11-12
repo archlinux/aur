@@ -1,6 +1,6 @@
 pkgbase = jitsi-meet-turnserver-nightly-bin
 	pkgdesc = Jitsi Meet Prosody Plugins nightly binary
-	pkgver = 1.0.8206
+	pkgver = 1.0.8247
 	pkgrel = 1
 	url = https://jitsi.org/jitsi-meet/
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = jitsi-meet-turnserver-nightly-bin
 	provides = jitsi-meet-turnserver-nightly
 	conflicts = jitsi-meet-turnserver-nightly
 	options = !strip
-	source = https://download.jitsi.org/unstable/jitsi-meet-turnserver_1.0.8206-1_all.deb
-	sha256sums = 6c8b11da9345f906667337cebb1442f7425f1379d125608a6d52e439c89a70cb
+	source = https://download.jitsi.org/unstable/jitsi-meet-turnserver_1.0.8247-1_all.deb
+	sha256sums = 66af65a173016a2d17aba8491e25b9e25a32cbe30aaf760e91e4bf9cd7d5d00a
 
 pkgname = jitsi-meet-turnserver-nightly-bin
