@@ -1,0 +1,14 @@
+pkgbase = python-autopxd
+	pkgdesc = automatically generate Cython pxd files from C headers
+	pkgver = 2.4.0
+	pkgrel = 1
+	url = https://github.com/elijahr/autopxd
+	arch = any
+	license = MIT
+	makedepends = python-installer
+	depends = python-pycparser
+	depends = python-click
+	source = https://files.pythonhosted.org/packages/source/a/autopxd2/autopxd2-2.4.0.tar.gz
+	sha256sums = 863370d5d2e62e544f3e1155a03330f05cc846d5331f71f2c45ca9b8cdb84d66
+
+pkgname = python-autopxd
