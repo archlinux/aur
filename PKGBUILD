@@ -14,6 +14,7 @@ source_aarch64=(${pkgname}-${pkgver}-aarch64.AppImage::https://github.com/emqx/M
 md5sums_x86_64=("SKIP")
 md5sums_aarch64=("SKIP")
 _install_path="/opt/mqttx"
+_app="${pkgname}-${pkgver}-${CARCH}.AppImage"
 
 # pkgver() {
 # 	curl https://api.github.com/repos/emqx/MQTTX/releases/latest | grep tag_name | awk -F '\"' '{print $4}' | awk -F 'v' '{print $2}'
@@ -21,8 +22,6 @@ _install_path="/opt/mqttx"
 
 package() {
 	cd "${srcdir}" && rm -rf "squashfs-root"
-
-	_app="${pkgname}-${pkgver}-${CARCH}.AppImage"
 
 	chmod +x "${_app}" && ./"${_app}" --appimage-extract > /dev/null
 	sed -i "/^Exec=/c\Exec=/usr/bin/mqttx" "${srcdir}/squashfs-root/mqttx.desktop"
