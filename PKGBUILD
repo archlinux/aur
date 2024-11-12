@@ -4,7 +4,7 @@
 # shellcheck shell=bash disable=SC2034,SC2154,SC2164
 
 pkgname=borgreport
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="Summarize the status of multiple BorgBackup repositories in one report"
 arch=('x86_64' 'aarch64')
@@ -13,7 +13,7 @@ license=('GPL-3.0-or-later')
 makedepends=('cargo' 'cargo-about' 'grep' 'groff' 'help2man' 'sed')
 install=borgreport.install
 source=("${pkgname}-${pkgver}.tar.gz::${url}//releases/download/v${pkgver}/borgreport-${pkgver}.tar.gz")
-b2sums=('720c5d7f6a775c34715f34588ec0ae5dc26321a69c62a206e59eaeae8f04c193999feb97e25877defb50413d82d97c97b743318680ed64c6cea8936287e0d8ac')
+b2sums=('30304b00a36ebfbc7ea227bbe6a5f85c292ed028faaa7115bb33e485bdec58c65baf646f0b0ab8c81c9aa821ef778f086c260e4ee760c1ff3600af602c865cc3')
 
 prepare() {
 	cd "${pkgname}-${pkgver}"
