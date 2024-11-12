@@ -10,7 +10,7 @@
 pkgname=cpp-pinyin
 pkgver=1.0.0
 pkgrel=1
-pkgdesc=""
+pkgdesc="a lightweight Chinese/Cantonese to Pinyin library"
 arch=(i686 x86_64 arm aarch64)
 url=https://github.com/wolfgitpr/$pkgname
 license=(Apache-2.0)
