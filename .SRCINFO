@@ -1,6 +1,6 @@
 pkgbase = python-pyfftw
 	pkgdesc = A pythonic wrapper around FFTW
-	pkgver = 0.14.0
+	pkgver = 0.15.0
 	pkgrel = 1
 	url = https://github.com/pyFFTW/pyFFTW
 	arch = x86_64
@@ -19,7 +19,7 @@ pkgbase = python-pyfftw
 	depends = openmp
 	optdepends = python-scipy: scipy.fftpack support
 	optdepends = python-dask: dask.fft support
-	source = pyFFTW-0.14.0.tar.gz::https://github.com/pyFFTW/pyFFTW/archive/v0.14.0.tar.gz
-	sha256sums = 337e7cba161a78f0cdfc7903cb483d7ddc519e648c1b2e27ff9737f1e7d35854
+	source = pyFFTW-0.15.0.tar.gz::https://github.com/pyFFTW/pyFFTW/archive/v0.15.0.tar.gz
+	sha256sums = e73f30803272f7fda0952a2e6368358ed15b985ae2e9fe2d63937790b56b5607
 
 pkgname = python-pyfftw
