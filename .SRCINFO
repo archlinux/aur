@@ -1,0 +1,20 @@
+pkgbase = plasma6-applets-thermal-monitor-git
+	pkgdesc = A KDE Plasmoid for displaying system temperatures.
+	pkgver = 0.1.7
+	pkgrel = 1
+	url = https://invent.kde.org/olib/thermalmonitor
+	arch = any
+	license = MIT
+	makedepends = cmake>=3.16
+	makedepends = extra-cmake-modules
+	depends = plasma-workspace
+	depends = ksystemstats
+	depends = libksysguard
+	depends = kitemmodels
+	depends = kdeclarative
+	provides = plasma6-applets-thermal-monitor-git
+	conflicts = plasma6-applets-thermal-monitor-git-git
+	source = plasma6-applets-thermal-monitor-git.tar.gz::https://invent.kde.org/olib/thermalmonitor/-/archive/v0.1.7/thermalmonitor-v0.1.7.tar.gz
+	b2sums = 6cf986903bc9962f4def3f04d6ebcc07526a1ab65c3ec1f26b1e68e99d5b432d1a4ba45135fb1171c1819a7df07eeaee9bb77596d49d85de532c8a1c7947f6ea
+
+pkgname = plasma6-applets-thermal-monitor-git
