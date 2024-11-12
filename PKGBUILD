@@ -2,11 +2,11 @@
 # Co-maintainer: Edu4rdSHL <edu4rdshl@protonmail.com>
 pkgname=waveterm-git
 _pkgname=Wave
-pkgver=0.9.0.r0.gb56d154
+pkgver=0.9.2.r0.g0fcc39c
 _electronversion=32
 _nodeversion=22
 pkgrel=1
-pkgdesc="An open-source, cross-platform terminal for seamless workflows.Use system-wide electron."
+pkgdesc="An open-source, cross-platform terminal for seamless workflows.(Git version.Use system-wide electron)"
 arch=('any')
 url="https://www.waveterm.dev/"
 _ghurl="https://github.com/wavetermdev/waveterm"
@@ -94,7 +94,7 @@ build() {
         /- build:server:windows/d
         s/ && yarn electron-builder -c electron-builder.config.cjs -p never//g
     " -i Taskfile.yml
-    sed -i "139,146d;123,130d" Taskfile.yml
+    sed -i "142,149d;126,133d" Taskfile.yml
     gem install fpm
     _yarnver=`grep "yarn@" package.json | awk '{print $2}' | sed "s/\"//g;s/yarn@//g;s/,//g"`
     corepack enable yarn
