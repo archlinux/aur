@@ -1,0 +1,16 @@
+pkgbase = python-oncalendar
+	pkgdesc = A python systemd OnCalendar expression parser and evaluator.
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/cuu508/oncalendar
+	arch = any
+	license = BSD-3-Clause
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/o/oncalendar/oncalendar-1.1.tar.gz
+	sha256sums = 3122aa811786c313568a53745015729aa650e35054b689c08b6db4b1ee891287
+
+pkgname = python-oncalendar
