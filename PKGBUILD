@@ -4,12 +4,13 @@
 pkgname=miniforge
 pkgver=24.9.0.0
 _pkgver=${pkgver%.*}-${pkgver##*.}
-pkgrel=1
+pkgrel=2
 pkgdesc="Conda and Mamba package managers configured to use conda-forge"
 arch=(x86_64 aarch64 powerpc64le)
 url="https://github.com/conda-forge/miniforge"
 license=(BSD-3-Clause)
 provides=(conda mamba)
+replaces=(mambaforge)
 source_x86_64=(${url}/releases/download/${_pkgver}/Miniforge3-${_pkgver}-Linux-x86_64.sh)
 source_aarch64=(${url}/releases/download/${_pkgver}/Miniforge3-${_pkgver}-Linux-aarch64.sh)
 source_powerpc64le=(${url}/releases/download/${_pkgver}/Miniforge3-${_pkgver}-Linux-ppc64le.sh)
