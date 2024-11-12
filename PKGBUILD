@@ -6,9 +6,9 @@
 # Contributor: Wilhelm Schuster <wilhelm [aT] wilhelm [.] re>
 # Contributor: The_Decryptor
 
-_commit=ad625e659459f17b95088b12263d58913bd3c86b
+_commit=959cf8fbfdcdc05ec0d9d838eb0a5c425406d24f
 pkgname=h2o-git
-pkgver=2.2.0.8076
+pkgver=2.2.0.8110
 pkgrel=1
 pkgdesc="Optimized HTTP server with support for HTTP/1.x and HTTP/2"
 arch=('i686' 'x86_64' 'aarch64')
@@ -22,20 +22,20 @@ options=('lto')
 #source=("git+https://github.com/h2o/h2o.git"
 source=("git+https://github.com/h2o/h2o.git#commit=${_commit}?signed/"
 #        "neverbleed-fix-when-lacking-engines.patch"
-	'h2o.service')
-sha256sums=('e4e2eea704f9db13f13583a78619eea4c97e8b230049f8cb98b7943c8a3a399f'
+        'h2o.service')
+sha256sums=('8130a50d34d55c335ca4e35da4261d8399fe2e35c5ddca9f568a15a0a749ec2e'
             '7fccdeb1a89134b48674764dc243f8967eb1234679e401af93e210fbf0934b62')
 backup=('etc/h2o.conf')
 provides=('h2o' 'libh2o')
 conflicts=('h2o' 'libh2o')
 
 pkgver() {
-	cd "$srcdir/h2o"
-	git describe --tags | sed -e 's/^v//g' -e 's/-g.*$//g' -e 's/-/./g'
+    cd "$srcdir/h2o"
+    git describe --tags | sed -e 's/^v//g' -e 's/-g.*$//g' -e 's/-/./g'
 }
 
 prepare() {
-	cd "$srcdir/h2o"
+    cd "$srcdir/h2o"
 
         git config core.autocrlf false
         git submodule update --init --recursive
@@ -43,10 +43,10 @@ prepare() {
         # libressl-3.8(OPENSSL_NO_ENGINE)
         #git apply ${srcdir}/neverbleed-fix-when-lacking-engines.patch
 
-	# set CMake minimal version to 3.9 to set CMP0039 to new
-	sed -i 's/VERSION 2.8.12/VERSION 3.9/g' CMakeLists.txt
+    # set CMake minimal version to 3.9 to set CMP0039 to new
+    sed -i 's/VERSION 2.8.12/VERSION 3.9/g' CMakeLists.txt
 
-	sed -i 's|example|/usr/share/doc/h2o/example|' examples/h2o/h2o.conf
+    sed -i 's|example|/usr/share/doc/h2o/example|' examples/h2o/h2o.conf
 
         #if [[ "$CC" == "clang" ]] ;then
         #    export LD="clang"
@@ -79,7 +79,7 @@ prepare() {
 }
 
 build() {
-	cd "$srcdir/h2o"
+    cd "$srcdir/h2o"
 
     #if [[ "$CC" == "clang" ]] ;then
     #    export LD="clang"
@@ -88,14 +88,14 @@ build() {
         export GEM_HOME="$(gem env user_gemhome)"
         export PATH="$PATH:$GEM_HOME/bin"
     fi
-	make DESTDIR="$pkgdir" -j
+    cmake --build .
 }
 
 package() {
-	cd "$srcdir/h2o"
+    cd "$srcdir/h2o"
 
-	install -Dm 644 LICENSE "$pkgdir/usr/share/licenses/h2o-git/LICENSE"
-	install -Dm 644 "$srcdir/h2o.service" "$pkgdir/usr/lib/systemd/system/h2o.service"
-	install -Dm 644 examples/h2o/h2o.conf "$pkgdir/etc/h2o.conf"
-	make DESTDIR="$pkgdir" install
+    install -Dm 644 LICENSE "$pkgdir/usr/share/licenses/h2o-git/LICENSE"
+    install -Dm 644 "$srcdir/h2o.service" "$pkgdir/usr/lib/systemd/system/h2o.service"
+    install -Dm 644 examples/h2o/h2o.conf "$pkgdir/etc/h2o.conf"
+    DESTDIR="$pkgdir" cmake --install .
 }
