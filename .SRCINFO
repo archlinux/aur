@@ -1,13 +1,15 @@
 pkgbase = kraken_desktop
 	pkgdesc = Kraken desktop application
 	pkgver = 1.0.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.kraken.com/desktop
 	arch = aarch64
 	arch = armv7
 	arch = x86_64
 	license = custom: commercial
 	provides = kraken_desktop
+	source = kraken.png
+	sha256sums = 6fc49c5128736ffa958ded6d12f3a1fa819bce5b563e768d479ca01a67517148
 	source_aarch64 = https://desktop-downloads.kraken.com/latest/kraken-aarch64-unknown-linux-gnu.zip
 	sha256sums_aarch64 = 1d21e7b9188fd414ca732bd9acbee788b68a45c9f5e9de7bba20c8d3e503e0ff
 	source_armv7 = https://desktop-downloads.kraken.com/latest/kraken-armv7-unknown-linux-gnueabihf.zip
