@@ -6,7 +6,7 @@ pkgname=('nextcloud-app-socialsharing-diaspora'
          'nextcloud-app-socialsharing-facebook'
          'nextcloud-app-socialsharing-telegram'
          'nextcloud-app-socialsharing-twitter')
-pkgver=3.1.0
+pkgver=3.2.0
 pkgrel=1
 arch=("any")
 url="https://github.com/nextcloud/socialsharing"
@@ -15,7 +15,7 @@ makedepends=("npm" "composer" "yq")
 groups=('nextcloud-apps')
 source=("$_appname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
 		"$pkgbase.patch")
-sha512sums=('c6038a8c39573eec1161ab233bfd9bc02c14716f94e3418cd98736c3264cc0abb1fea9473f54964884bf98f7cd858b6ac231c9f8deef8bf40e7b699153564565'
+sha512sums=('4884087ddd9fc0cfe1ce5a3bd048896a32b3752c8cd9b5970d8d9e9b92057c7d40d9c64aaafb26cb9403bdd6b1aac3d1cb5294cb101a6302dca764c6fa8504c9'
             'b9065297bc55390cb83ac5a9c07aa80321399a25fb6bd801a9e53b7e1395091f1eb35f1b493577e1d6b91d6977231ba15f3067117ce46ffa80fd41850124c85b')
 
 prepare() {
