@@ -1,0 +1,4 @@
+[guile-dsv]
+source = "git"
+git = "https://github.com/artyom-poptsov/guile-dsv"
+prefix = "v"
