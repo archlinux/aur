@@ -1,9 +1,8 @@
 pkgbase = cflow
 	pkgdesc = A C program flow analyzer
 	pkgver = 1.7
-	pkgrel = 4
+	pkgrel = 5
 	url = https://www.gnu.org/software/cflow/
-	arch = i686
 	arch = x86_64
 	license = GPL-3.0-or-later
 	depends = glibc
@@ -14,8 +13,3 @@ pkgbase = cflow
 	b2sums = SKIP
 
 pkgname = cflow
-
-pkgname = cflow-docs
-	pkgdesc = Documentation for the program flow analyzer
-	arch = any
-	depends = 
