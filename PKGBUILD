@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=nipaplay-bin
 _pkgname=NipaPlay
-pkgver=1.6.11
+pkgver=1.6.12
 _electronversion=29
 pkgrel=1
 pkgdesc="Local bullet screen video player. Play the Meal Replacement.(Prebuilt version.Use system-wide electron)一款本地弹幕视频播放器."
@@ -25,7 +25,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.zip::${url}/releases/download/${pkgver}/${_pkgname}-${pkgver}-linux-x64.zip"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('ab6c0d1dc6d40f9d4d58a21591b797b5157f2f4e17247ca95d91709cd946bbe8'
+sha256sums=('0a625d1f129ebe69a3c4b7f7b87c9895305ce9a6a196748be77ac2a74dfc0d85'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 build() {
     sed -e "
