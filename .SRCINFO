@@ -1,6 +1,6 @@
 pkgbase = python-langchain-community
 	pkgdesc = Community contributed LangChain integrations.
-	pkgver = 0.3.6
+	pkgver = 0.3.7
 	pkgrel = 1
 	url = https://github.com/langchain-ai/langchain
 	arch = any
@@ -21,7 +21,7 @@ pkgbase = python-langchain-community
 	depends = python-requests
 	depends = python-sqlalchemy
 	depends = python-tenacity
-	source = langchain-community-0.3.6.tar.gz::https://files.pythonhosted.org/packages/source/l/langchain_community/langchain_community-0.3.6.tar.gz
-	sha256sums = 467b19f2bb89dccc552791d6a3ba788077ac4981a6e549873d7aa9a8ee6ca8d3
+	source = langchain-community-0.3.7.tar.gz::https://files.pythonhosted.org/packages/source/l/langchain_community/langchain_community-0.3.7.tar.gz
+	sha256sums = 5b7a5cea82bedbf3ea276eac56128e00dbaf86561991cfc80fb21175a343c9a3
 
 pkgname = python-langchain-community
