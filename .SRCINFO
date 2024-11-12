@@ -1,0 +1,20 @@
+pkgbase = postpilot
+	pkgdesc = A sleek local SMTP testing environment for developers
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://github.com/watzon/postpilot
+	arch = x86_64
+	arch = aarch64
+	license = custom
+	makedepends = go
+	makedepends = wails
+	makedepends = npm
+	makedepends = nodejs>=16
+	depends = gtk3
+	depends = webkit2gtk
+	source = postpilot-0.1.2.tar.gz::https://github.com/watzon/postpilot/archive/refs/tags/v0.1.2.tar.gz
+	source = postpilot.desktop
+	sha256sums = 2bdb81491d5c4eed34ffb24c8ecd25523173c74cc98d311352f6da5967bf114f
+	sha256sums = a862a97f3e5844306d428dd8f659cd078f0bb8d1552d5d79303896381b1c749b
+
+pkgname = postpilot

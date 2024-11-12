@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=PostPilot
+Comment=A sleek local SMTP testing environment for developers
+Exec=/usr/bin/postpilot
+Icon=postpilot
+Terminal=false
+Type=Application
+Categories=Development;
