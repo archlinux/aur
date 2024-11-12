@@ -1,0 +1,13 @@
+pkgbase = gawk-reclen
+	pkgdesc = GAWK extension - fixed-length record input parser
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://sourceforge.net/projects/gawkextlib/
+	arch = x86_64
+	license = GPL-3.0-or-later
+	depends = gawk
+	depends = glibc
+	source = https://downloads.sourceforge.net/gawkextlib/gawk-reclen-1.0.1.tar.gz
+	sha256sums = ad7631e2745d5fe3553e009e188ceaf4ff3a4653e4ce9baac731623d5decad77
+
+pkgname = gawk-reclen
