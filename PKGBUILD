@@ -3,7 +3,7 @@
 # Maintainer: Joshua Taillon <jat255 AT gmail DOT com>
 pkgname=python-hyperspy
 pkgshort=hyperspy
-pkgver=2.1.1
+pkgver=2.2.0
 pkgrel=1
 pkgdesc="Hyperspectral data analysis"
 arch=('any')
@@ -12,10 +12,10 @@ license=('GPL3')
 
 depends=('python'
          'python-cloudpickle'
-         'python-dask>=2021.3.1'
+         'python-dask>=2021.5.1'
          'python-importlib-metadata>=3.6'
          'python-jinja'
-         'python-matplotlib>=3.1.3'
+         'python-matplotlib>=3.6'
          'python-natsort'
          'python-numpy>=1.20.0'
          'python-packaging'
@@ -83,4 +83,4 @@ package() {
   python -m installer --destdir="$pkgdir" dist/*.whl
 }
 
-md5sums=('814cae5ac970e3ec364b78f73bc0d14b')
+md5sums=('cb3c92ceb0edd8d366099fda4c8f3560')
