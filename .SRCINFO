@@ -1,6 +1,6 @@
 pkgbase = guile-git-lib
 	pkgdesc = Guile bindings for libgit2
-	pkgver = 0.8.0
+	pkgver = 0.9.0
 	pkgrel = 1
 	url = https://gitlab.com/guile-git/guile-git
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = guile-git-lib
 	depends = guile
 	depends = guile-bytestructures
 	depends = libgit2>=1.3.0
-	source = guile-git-lib-0.8.0.tar.gz::https://gitlab.com/guile-git/guile-git/-/archive/v0.8.0/guile-git-v0.8.0.tar.gz
-	sha256sums = 0d9bf45794848d7b17664700e4c126d379ef0661af4ca31cd303a37808d9ee2b
+	source = guile-git-lib-0.9.0.tar.gz::https://gitlab.com/guile-git/guile-git/-/archive/v0.9.0/guile-git-v0.9.0.tar.gz
+	sha256sums = 5b822e10f5ed4dbc5cd452694e1d6ea0670f4f95e2922dad150f909f0a0a5ff8
 
 pkgname = guile-git-lib
