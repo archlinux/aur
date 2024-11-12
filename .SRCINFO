@@ -1,6 +1,6 @@
 pkgbase = qbpm-git
 	pkgdesc = A profile manager for qutebrowser
-	pkgver = 1.0.rc2.r2
+	pkgver = 1.0.rc2.r3
 	pkgrel = 1
 	url = https://github.com/pvsr/qbpm
 	arch = any
@@ -12,8 +12,8 @@ pkgbase = qbpm-git
 	makedepends = python-setuptools
 	makedepends = scdoc
 	depends = python
-	depends = python-pyxdg
 	depends = python-click
+	depends = python-xdg-base-dirs
 	provides = qbpm
 	source = git+https://github.com/pvsr/qbpm
 	sha512sums = SKIP

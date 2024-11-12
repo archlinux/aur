@@ -1,14 +1,14 @@
 # Maintainer: Peter Rice <{first name}@peterrice.xyz>
 
 pkgname=qbpm-git
-pkgver=1.0.rc2.r2
+pkgver=1.0.rc2.r3
 pkgrel=1
 pkgdesc="A profile manager for qutebrowser"
 url="https://github.com/pvsr/qbpm"
 license=('GPL')
 sha512sums=('SKIP')
 arch=('any')
-depends=('python' 'python-pyxdg' 'python-click')
+depends=('python' 'python-click' 'python-xdg-base-dirs')
 makedepends=('git' 'python-build' 'python-installer' 'python-wheel' 'python-setuptools' 'scdoc')
 provides=('qbpm')
 source=("git+https://github.com/pvsr/qbpm")
@@ -40,5 +40,5 @@ package() {
   install -d "$pkgdir/usr/share/"{bash-completion/completions,zsh/site-functions}
   local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
   PYTHONPATH=${pkgdir}/${site_packages} _QBPM_COMPLETE=bash_source ${pkgdir}/usr/bin/qbpm > ${pkgdir}/usr/share/bash-completion/completions/qbpm
-  PYTHONPATH=${pkgdir}/${site_packages} _QBPM_COMPLETE=zsh_source  ${pkgdir}/usr/bin/qbpm > ${pkgdir}/usr/share/zsh/site-functions/qbpm
+  PYTHONPATH=${pkgdir}/${site_packages} _QBPM_COMPLETE=zsh_source  ${pkgdir}/usr/bin/qbpm > ${pkgdir}/usr/share/zsh/site-functions/_qbpm
 }
