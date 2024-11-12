@@ -9,8 +9,8 @@
 
 _pkgname="wings3d"
 pkgname="$_pkgname"
-pkgver=2.3
-pkgrel=3
+pkgver=2.4
+pkgrel=1
 pkgdesc='3D modeler using the winged edge data structure'
 url="https://www.wings3d.com/"
 license=('GPL-2.0-or-later')
@@ -27,24 +27,17 @@ optdepends=(
   'povray: render scenes with POV-Ray'
 )
 
-_pkgsrc="${_pkgname%3d}-$pkgver"
+_pkgsrc="wings-$pkgver"
 _pkgext="tar.gz"
 source=(
   "$_pkgname-$pkgver.$_pkgext"::"https://github.com/dgud/wings/archive/refs/tags/v$pkgver.$_pkgext"
 )
 sha256sums=(
-  'd8d7751a898afa983b017fe9cd6bdc47dc430e0d86125da782344d4cf1be0f1d'
+  '266e016ae5d1705e41c3f33c1a94ee345354f1429b6f35c5dd470f85fb55c4a1'
 )
 
 prepare() {
   sed -e "/desktop-id/ s/com.wings3d.WINGS.desktop/$pkgname.desktop/" -i "$_pkgsrc/unix/wings.appdata.xml"
-
-  # fix excess quotes
-  sed -e '/material[0-9]/ s/""//g' -i "$_pkgsrc/plugins_src/import_export/wpc_yafaray.erl"
-
-  # quote reserved word: maybe
-  sed -Ee 's&\bmaybe\b&'\''maybe'\''&' -i "$_pkgsrc/src/wings_draw.erl"
-  sed -Ee '/invalidate/s&\bmaybe\b&'\''maybe'\''&;s&'\'\''&'\''&g' -i "$_pkgsrc/src/wings_proxy.erl"
 }
 
 build() {
