@@ -2,7 +2,7 @@
 pkgname=kraken_desktop
 pkgver=1.0.2
 pkgrel=3
-pkgdesc="Kraken desktop application"
+pkgdesc="Kraken crypto exchange desktop application"
 arch=('aarch64' 'armv7' 'x86_64')
 url="https://www.kraken.com/desktop"
 license=('custom: commercial')

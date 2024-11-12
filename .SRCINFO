@@ -1,5 +1,5 @@
 pkgbase = kraken_desktop
-	pkgdesc = Kraken desktop application
+	pkgdesc = Kraken crypto exchange desktop application
 	pkgver = 1.0.2
 	pkgrel = 3
 	url = https://www.kraken.com/desktop
