@@ -1,0 +1,19 @@
+pkgbase = zipunicode-git
+	pkgdesc = Extract zip file with correct encoding, standalone binary and python package
+	pkgver = r10.412b942
+	pkgrel = 1
+	url = https://github.com/Dragon2fly/ZipUnicode
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	depends = python-chardet
+	provides = zipunicode
+	conflicts = zipunicode
+	source = zipunicode::git+https://github.com/Dragon2fly/ZipUnicode
+	sha256sums = SKIP
+
+pkgname = zipunicode-git
