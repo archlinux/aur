@@ -7,7 +7,7 @@
 pkgname=dlib-git
 _pkgname=dlib
 pkgver=19.24.6+r8287+g39240959f
-pkgrel=1
+pkgrel=2
 pkgdesc="Cross-platform C++ library using contract programming and modern C++ techniques"
 arch=('x86_64')
 url="http://dlib.net"
@@ -37,13 +37,15 @@ pkgver(){
 }
 
 build() {
+    #Test avx capabilities
+    grep -q 'flags.*avx' /proc/cpuinfo && _AVX=ON || _AVX=OFF
     mkdir -p build && cd build
     cmake -GNinja \
         -DCMAKE_INSTALL_PREFIX:PATH=/usr \
         -DCMAKE_INSTALL_LIBDIR:PATH=/usr/lib \
         -DBUILD_SHARED_LIBS=ON \
         -DCMAKE_BUILD_TYPE=Release \
-        -DUSE_AVX_INSTRUCTIONS=OFF \
+        -DUSE_AVX_INSTRUCTIONS=$_AVX \
         -DDLIB_USE_CUDA=OFF \
         "../${_pkgname}"
     ninja ${MAKEFLAGS:--j1}
