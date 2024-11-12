@@ -5,10 +5,10 @@
 # Contributor: codekoala <codekoala at gmail dot com>
 
 pkgname=etcd
-pkgver=3.5.16
+pkgver=3.5.17
 pkgrel=1
 pkgdesc='A highly-available key value store for shared configuration and service discovery.'
-arch=('x86_64' 'armv6h' 'armv7h')
+arch=('x86_64' 'armv6h' 'armv7h' 'aarch64')
 url='https://github.com/etcd-io/etcd'
 license=('Apache')
 makedepends=('go' 'git')
@@ -18,7 +18,7 @@ options=(!lto)
 source=("${pkgname}"-"${pkgver}".tar.gz::https://github.com/etcd-io/"${pkgname}"/archive/v"${pkgver}".tar.gz
          10-EnvironmentFile.conf
          etcd.env)
-b2sums=('0b375aa86b245e8ca36f1f14b8e006a1194b5867cb0babee8399561550e1e709352ff1c5b89c0eaf8f47006328827a9c859392b33df82edc07a69fb6a3994a6a'
+b2sums=('9602c31369cfd5604ac7283307b712ffb5468e6264731a78d6a598752d533b18906d22d44aafe70027da217b85220376972b5305fad562f0a80704f30637381c'
         '754d5e84506b9aff7629b9b08743e609d8e9db5926d5dd1ef22366a2eeffd4b9e56903284c3b6081bc2a3035e75922a009174aa612517d93e0f6a48fd6345729'
         '71f207c4ef1643dc70eecea6bdba4dcd7226626813d2a9f3330059f1b9f78ea2d3607b8b15b67b1afec0d201b01c10f6db3267695118732621a05f967a56a65a')
 
