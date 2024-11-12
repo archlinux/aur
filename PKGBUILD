@@ -1,19 +1,20 @@
 # Maintainer: Brian Bidulock <bidulock@openss7.org>
 # Contributor: tantalum <tantalum at online dot de>
+
 pkgname=guile-lib
-pkgver=0.2.7
-pkgrel=2
+pkgver=0.2.8.1
+pkgrel=1
 pkgdesc='Repository of useful code written in Guile Scheme'
-arch=('i686' 'x86_64')
-license=('GPL3' 'LGPL3')
+arch=('x86_64')
+license=('GPL-3.0-or-later AND LGPL-3.0-or-later')
 depends=('guile')
 url="http://www.nongnu.org/guile-lib/"
-source=("http://download.savannah.gnu.org/releases/$pkgname/$pkgname-$pkgver.tar.gz")
-md5sums=('e52648afc567f202352e07e0ab732d79')
+source=("https://download.savannah.gnu.org/releases/$pkgname/$pkgname-$pkgver.tar.gz")
+sha256sums=('1374c2d839e6a33d190cd1dabd9c7f87753f8384f55b866f3e142155c22b49b1')
 
 build(){
   cd ${pkgname}-${pkgver}
-  ./configure --prefix=/usr
+  ./configure --prefix=/usr --enable-silent-rules --with-guile-site
   make
 }
 
