@@ -2,15 +2,15 @@
 pkgname=ttf-computer-modern-fonts
 pkgver=1
 pkgrel=3
-pkgdesc="Computer Modern in TTF (deprecated)"
-url="http://www.mozilla.org/projects/mathml/fonts/"
+pkgdesc="Computer Modern in TTF"
+url="https://www-archive.mozilla.org/projects/mathml/fonts/"
 arch=('any')
 license=('custom:BakoMa')
-source=(https://dev.gentoo.org/~mgorny/dist/texcm-ttf-1.0.zip
-        license.txt)
+source=(https://www-archive.mozilla.org/projects/mathml/fonts/bakoma/texcm-ttf.zip
+        https://www-archive.mozilla.org/projects/mathml/fonts/bakoma/license.txt)
         
 md5sums=('7bd39b8860b09c8d5e507dae70484b80'
-         '5f5d31d821e847fbeb2f32ea39186d10')
+         '3ae8d75400a0078db5d7276366c776b0')
 
 package() {
   cd "$srcdir"/texcm-ttf
