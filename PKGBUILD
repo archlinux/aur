@@ -2,13 +2,13 @@
 
 pkgname=hoarder
 pkgver=0.19.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A self-hostable bookmark-everything app (links, notes and images) with AI-based automatic tagging and full text search"
 arch=("x86_64" "aarch64")
 url="https://github.com/${pkgname}-app/${pkgname}"
 license=('AGPL-3.0-or-later')
 backup=("etc/${pkgname}/${pkgname}.env")
-depends=("chromium" "nodejs<23" "nodejs<>22.8.0" "nodejs<>22.7.0" "pnpm" "redis")
+depends=("chromium" "nodejs>=20" "nodejs<23" "nodejs<>22.8.0" "nodejs<>22.7.0" "pnpm" "redis")
 optdepends=("${pkgname}-cli: ${pkgname} cli tool"
             "meilisearch: for full text search"
             "ollama: for automatic tagging"
@@ -27,9 +27,9 @@ sha256sums=('1942d4f0f3ee8e7eac254b94aa0863b2c2a9c772c8fc62574c15b53eba4948d2'
             'bb7cf9d047374376137a9ec5ac5ad653d3569a834de8ccc3e8a6f04a870bc01e'
             '713e248fc61f429a3da627016343d89147dde147f739e51584f7398d11262896'
             'cd2b58e13dd928925db21819a74052b98c4dd82cf6353f6b9181b41cc93e8848'
-            '67e540e691362a4696e2d7575fd4cf269eaa16a032fd4bf974ae41733bdc6be2'
-            '1c42c86c6245c04f9da4d97fc4cb0100ce8a69784692fe2b30069940a4de31bf'
-            'ebbca6d919fdb201177a816e6a9a9d634f2ee3df222a1d43d38b9a280b593544')
+            'eabf61d0cc9cf94bc535230160f870bc77437a58657e58cde261f667e35d7496'
+            '669f00792831f6d10bc883fdde43d344f60da1d650c344ce5c675e1a24c34488'
+            '39aca79bad2f567a39c24eaac8dd1412bcefbc7387ed49ac63a8f218b8be882f')
 
 prepare() {
     cd "${pkgname}"

@@ -11,6 +11,7 @@ EnvironmentFile = -/etc/hoarder/hoarder.env
 WorkingDirectory = /usr/share/hoarder/apps/workers
 ExecStart = /usr/bin/pnpm run start:prod
 TimeoutStopSec = 5
+SyslogIdentifier = hoarder-workers
 
 [Install]
 WantedBy = multi-user.target

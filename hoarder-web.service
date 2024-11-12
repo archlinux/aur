@@ -13,6 +13,7 @@ WorkingDirectory = /usr/share/hoarder/db_migrations
 ExecStartPre = /usr/bin/node index.js
 ExecStart = /usr/bin/node /usr/share/hoarder/apps/web/server.js
 TimeoutStopSec = 5
+SyslogIdentifier = hoarder-web
 
 [Install]
 WantedBy = multi-user.target
