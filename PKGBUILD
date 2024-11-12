@@ -3,7 +3,7 @@
 # Contributor: Xavier Devlamynck <magicrhesus@ouranos.be>
 
 pkgname=kamailio
-pkgver=5.8.3
+pkgver=5.8.4
 pkgrel=1
 pkgdesc='SIP Server for large VoIP and real-time communication platforms'
 arch=('x86_64')
@@ -44,7 +44,7 @@ optdepends=('rtpengine: the sipwise media proxy for kamailio')
 options=('!emptydirs')
 source=("https://www.kamailio.org/pub/kamailio/${pkgver}/src/kamailio-${pkgver}_src.tar.gz"
         'kamailio.sysusers')
-sha256sums=('b99ed2b8a1f26b0a4f6afa048c8fc52fbd3b3685362965f0459dadf794e2df5c'
+sha256sums=('666e8570f98491bcf4743248f1b2c13c5171dcdb8228796cfff40b9aeba9fe91'
             'e2ad5c2f3213f2ce7de9524da378d062525ce99e2b401590ec0394c521a3d0c8')
 
 package() {
@@ -102,8 +102,9 @@ package() {
     dialplan lcr outbound utils regex uuid
   )
 
-  make PREFIX=/usr bin_dir=bin/ LIBDIR=lib cfg_prefix="${pkgdir}" \
-    BASEDIR="${pkgdir}" run_prefix=/run run_dir=${pkgname} cfg_target=/etc/${pkgname}/ \
+  make \
+    mode="release" bin_dir=bin/ cfg_target=/etc/${pkgname}/ cfg_prefix="${pkgdir}" \
+    BASEDIR="$pkgdir" PREFIX=/usr LIBDIR=lib run_prefix=/run run_dir=${pkgname} \
     include_modules='${KAMODULES[@]}' install
 
   install -Dm644 COPYING "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"
@@ -112,4 +113,4 @@ package() {
   install -Dm644 pkg/kamailio/obs/kamailio.tmpfiles "$pkgdir/usr/lib/tmpfiles.d/kamailio.conf"
 }
 
-# vim:set sw=2 sts=-1 et:
+# vim:set ts=2 sw=2 et:
