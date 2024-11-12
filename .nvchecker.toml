@@ -1,0 +1,4 @@
+[haunt]
+source = "regex"
+url = "https://dthompson.us/projects/haunt.html"
+regex = "haunt-(\\d+\\.\\d+(?:\\.\\d+)?)\\.tar\\.gz"
