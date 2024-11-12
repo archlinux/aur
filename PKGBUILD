@@ -1,7 +1,7 @@
 # Maintainer: snemc snemc @3112671039@qq.com
 
-pkgname=umi-ocr
-_pkgname=${pkgname%-bin}
+pkgname=umi-ocr-bin
+_pkgname=${pkgname}
 pkgrel=1
 pkgver=2.1.4
 pkgdesc="免费，开源，可批量的离线OCR软件 Free, open source, batch-capable offline OCR software, Free, open source, offline OCR software that can batch"
