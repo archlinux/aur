@@ -1,0 +1,10 @@
+pkgbase = python-keyrings.google-artifactregistry-auth
+	pkgdesc = Keyring backend for Google Auth tokens
+	pkgver = 1.1.2
+	pkgrel = 1
+	url = https://github.com/GoogleCloudPlatform/artifact-registry-python-tools
+	arch = any
+	makedepends = python
+	makedepends = python-pip
+
+pkgname = python-keyrings.google-artifactregistry-auth
