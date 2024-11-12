@@ -6,7 +6,7 @@ pkgbase = sshpass-totp
 	arch = i686
 	arch = x86_64
 	license = GPL
-	makedepends = subversion
+	makedepends = base-devel
 	depends = glibc
 	depends = openssh
 	provides = sshpass=r64

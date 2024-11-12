@@ -8,7 +8,7 @@ arch=('i686' 'x86_64')
 url="https://github.com/dora38/sshpass"
 license=('GPL')
 depends=('glibc' 'openssh')
-makedepends=('')
+makedepends=('base-devel')
 provides=("sshpass=$pkgver")
 conflicts=('sshpass')
 source=("git+https://github.com/dora38/sshpass.git")
