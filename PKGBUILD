@@ -21,6 +21,8 @@ sha256sums=('0dae3a93eb4fc8da23097944f403d143430ec27a91ce3fa563ac5d363b69246e')
 
 
 package() {
-  install -d "${pkgdir}"/~/.local/share
-  cp -r "${srcdir}"  "${pkgdir}"/~/.local/share
+  install -d "${pkgdir}/$(whoami)/.local/share"
+  cp -r "${srcdir}"  "${pkgdir}/$(whoami)/.local/share"
 }
+  
+
