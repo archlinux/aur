@@ -1,4 +1,4 @@
-pkgbase = umi-ocr-bin
+pkgbase = umi-ocr
 	pkgdesc = 免费，开源，可批量的离线OCR软件 Free, open source, batch-capable offline OCR software, Free, open source, offline OCR software that can batch
 	pkgver = 2.1.4
 	pkgrel = 1
@@ -10,4 +10,4 @@ pkgbase = umi-ocr-bin
 	source = Umi-OCR_Linux_Paddle_2.1.4.tar.xz::https://github.com/hiroi-sora/Umi-OCR/releases/download/v2.1.4/Umi-OCR_Linux_Paddle_2.1.4.tar.xz
 	sha256sums = 0dae3a93eb4fc8da23097944f403d143430ec27a91ce3fa563ac5d363b69246e
 
-pkgname = umi-ocr-bin
+pkgname = umi-ocr
