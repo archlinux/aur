@@ -18,11 +18,11 @@ depends=(
 optdepends=('jsonnet: experimental jsonnet support')
 provides=('semgrep')
 options=('!strip')
-source=("https://files.pythonhosted.org/packages/ba/3f/c72ae967d46b7334ee1f6afc7883837472e081c13b07ff0af274637364c5/semgrep-1.93.0-cp38.cp39.cp310.cp311.py37.py38.py39.py310.py311-none-any.whl")
-sha256sums=('41c3df47c84e2ef064becad233bf619d98824f46787109a7e247fa1266429732')
+source=("https://files.pythonhosted.org/packages/fb/e0/58235d6a1077185bad67079fd57ba0d1f15d6875386c821c3bb8e76ba80e/semgrep-1.96.0-cp38.cp39.cp310.cp311.py37.py38.py39.py310.py311-none-any.whl")
+sha256sums=('b55c70f4a8c1aaa8040e4ecb2d36f358f8c1320da6470b5b55ef78110901604a')
 
 package() {
-  PIP_CONFIG_FILE=/dev/null pip install --isolated --root="$pkgdir" --ignore-installed --no-deps semgrep-${pkgver}-cp38.cp39.cp310.cp311.py37.py38.py39.py310.py311-none-any.whl
+  PIP_CONFIG_FILE=/dev/null pip install --isolated --root="$pkgdir" --ignore-installed --no-deps semgrep-1.96.0-cp38.cp39.cp310.cp311.py37.py38.py39.py310.py311-none-any.whl
   python -O -m compileall "${pkgdir}"
 }
 
