@@ -4,7 +4,7 @@ _pyname="aardwolfgui"
 _pkgname="${_pyname}"
 pkgname="${_pkgname}-git"
 pkgver=0.0.8.r28.20240905.c144cb8
-pkgrel=1
+pkgrel=2
 pkgdesc="Asynchronous RDP protocol implementation for python: GUI."
 arch=(
   'any'
@@ -12,7 +12,7 @@ arch=(
 _githost='github.com'
 _gituser='skelsec'
 url="https://${_githost}/${_gituser}/${_pyname}"
-license=("custom: MIT")
+license=("MIT")
 depends=(
   'python>=3.7'
   'python-aardwolf>=0.2.5'
