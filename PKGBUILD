@@ -1,7 +1,7 @@
 # Maintainer: Enmanuel Moreira <enmanuelmoreira@gmail.com>
 
 pkgname=timoni
-pkgver=0.20.0
+pkgver=0.22.1
 pkgrel=1
 pkgdesc="Timoni is a package manager for Kubernetes, powered by CUE and inspired by Helm."
 arch=('x86_64')
@@ -9,9 +9,9 @@ url="https://github.com/stefanprodan/timoni"
 conflicts=('timoni-bin')
 provides=('timoni')
 license=('Apache 2')
-makedepends=('go>=1.21' 'make' 'git' 'gzip' 'tar' 'gcc')
+makedepends=('go>=1.22' 'make' 'git' 'gzip' 'tar' 'gcc')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('ef8fc731d551e952c2a18bbedd5dee714e0971cbb1ef61926a005f393c0887b4')
+sha256sums=('17b7f0603591bdf2402450ffd099d0f65da7c1d34eeb00d726e1d70fa013d889')
 
 build() {
 	cd "${pkgname}-${pkgver}"
