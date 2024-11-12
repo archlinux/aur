@@ -42,7 +42,7 @@ pkgbase = obs-studio-tytan652
 	depends = libxcb
 	depends = libxcomposite
 	depends = libxkbcommon
-	depends = mbedtls>=3.6
+	depends = mbedtls>=3.6.1
 	depends = pciutils
 	depends = qrcodegencpp-cmake
 	depends = qt6-base>=6.6.2
@@ -104,7 +104,6 @@ pkgbase = obs-studio-tytan652
 	source = supported-nv-codec-headers::git+https://github.com/FFmpeg/nv-codec-headers.git#tag=n12.1.14.0
 	source = bind_iface_eyeballed.patch
 	source = v4l2_by-path.patch
-	source = 0004-Max_tls_v1_2_mbedtls_3_6_0_workaround.patch
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
@@ -112,6 +111,5 @@ pkgbase = obs-studio-tytan652
 	sha256sums = SKIP
 	sha256sums = 91ec5b6bec66c6d85c1f88f7f5fbdbe4bdbb820be5c2e7828f328f570bfdc845
 	sha256sums = ee54b9c6f7e17fcc62c6afc094e65f18b2e97963c2fe92289b2b91972ac206e5
-	sha256sums = c397a8da291547c757a42f7727a5e6650aa70e6e531f2ef150356eb9eb1fb49c
 
 pkgname = obs-studio-tytan652

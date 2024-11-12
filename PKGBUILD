@@ -11,7 +11,7 @@ license=('GPL-2.0-or-later')
 _qtver=6.6.2
 _libajantv2ver=17.0.1
 _libdatachannelver=0.21
-_mbedtlsver=3.6
+_mbedtlsver=3.6.1
 _pythonver=3.12
 depends=(
   "alsa-lib" # Deps of ALSA plugin and CEF
@@ -115,7 +115,6 @@ source=(
   "supported-nv-codec-headers::git+https://github.com/FFmpeg/nv-codec-headers.git#tag=n12.1.14.0"
   "bind_iface_eyeballed.patch" # Based on https://github.com/tytan652/obs-studio/commits/bind_iface_eyeballed
   "v4l2_by-path.patch" # https://patch-diff.githubusercontent.com/raw/obsproject/obs-studio/pull/3437.patch
-  "0004-Max_tls_v1_2_mbedtls_3_6_0_workaround.patch"
 )
 sha256sums=(
   "SKIP"
@@ -125,7 +124,6 @@ sha256sums=(
   "SKIP"
   "91ec5b6bec66c6d85c1f88f7f5fbdbe4bdbb820be5c2e7828f328f570bfdc845"
   "ee54b9c6f7e17fcc62c6afc094e65f18b2e97963c2fe92289b2b91972ac206e5"
-  "c397a8da291547c757a42f7727a5e6650aa70e6e531f2ef150356eb9eb1fb49c"
 )
 
 if [[ ${CARCH/%_v?/} == 'x86_64' ]]; then
@@ -138,9 +136,6 @@ prepare() {
   git config submodule.plugins/obs-websocket.url $srcdir/obs-websocket
   git config submodule.plugins/obs-outputs/ftl-sdk.url $srcdir/ftl-sdk
   git -c protocol.file.allow=always submodule update
-
-  # MbedTLS 3.6.0 broke stuff with TLS v1.3
-  patch -Np1 -i "$srcdir/0004-Max_tls_v1_2_mbedtls_3_6_0_workaround.patch"
 
   ## Add network interface binding for RTMP on Linux (https://github.com/tytan652/obs-studio/commits/bind_iface_eyeballed)
   patch -Np1 < "$srcdir/bind_iface_eyeballed.patch"
