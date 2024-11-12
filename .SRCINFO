@@ -1,6 +1,6 @@
 pkgbase = erg
 	pkgdesc = Statically typed language that builds upon the Python ecosystem
-	pkgver = 0.6.46
+	pkgver = 0.6.47
 	pkgrel = 1
 	url = https://github.com/erg-lang/erg
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = erg
 	makedepends = cargo
 	makedepends = git
 	depends = python
-	source = erg-0.6.46.tar.gz::https://github.com/erg-lang/erg/archive/v0.6.46.tar.gz
-	sha256sums = f9f81267dad4f145b3faafe258441cb8673619fe03f1464361385ac244e1df85
+	source = erg-0.6.47.tar.gz::https://github.com/erg-lang/erg/archive/v0.6.47.tar.gz
+	sha256sums = ee47187e7de9f12c3b4630cd81ca0e4eabfcb7ffc48bd957d4e0ba8ef14c8839
 
 pkgname = erg
