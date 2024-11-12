@@ -13,7 +13,7 @@
 # basic info
 _pkgname='beeper'
 pkgname="$_pkgname${_pkgtype:-}"
-pkgver=3.109.1
+pkgver=3.110.1
 pkgrel=1
 pkgdesc="A unified messaging app"
 url="https://beeper.com/"
