@@ -1,4 +1,5 @@
-MegaLogViewer_*.tar.gz
-*.pkg.tar.xz
+MegaLogViewerHD_*.tar.gz
+*.jar
+*.pkg.tar.*
 src/
 pkg/

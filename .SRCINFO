@@ -1,16 +1,19 @@
 pkgbase = megalogviewer
 	pkgdesc = Viewer for TunerStudio/MegaSquirt logs
-	pkgver = 4.5.05
+	pkgver = 4.5.21
 	pkgrel = 1
 	arch = any
 	license = proprietary
-	makedepends = imagemagick
+	makedepends = imagemagick>=7
 	depends = java-runtime
-	source = http://www.tunerstudio.com/downloads2/MegaLogViewerHD_v4.5.05.tar.gz
+	noextract = MegaLogViewer_v4.5.21.jar
+	source = https://www.tunerstudio.com/downloads2/MegaLogViewerHD_v4.5.05.tar.gz
+	source = https://www.tunerstudio.com/appupdates/MegaLogViewer/MegaLogViewer_v4.5.21.jar
 	source = megalogviewer.sh
 	source = megalogviewer.desktop
 	sha256sums = 99e8e8df9465d1ed89d8593d518955e72eff9f1c3ee5fae62ef9ef9abd89d034
-	sha256sums = fa7f28b0b9363fd535d596e861a2f4c2708949d724e41c365aeb0058e51fe4a2
+	sha256sums = 0b800e20c139de3bb9baac16b2ae5a7069408d1dea0c174d91240f81cf0eb542
+	sha256sums = eff5b0c79e345d1b77b80908deba8805959a878e990601e91ac69a01b8582a5c
 	sha256sums = 6c6238646f60a076ebe0549228b59d7d9f20bc7019a0e7d8b5df2089ba50a396
 
 pkgname = megalogviewer
