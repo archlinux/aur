@@ -1,0 +1,4 @@
+[gawk-reclen]
+source = "regex"
+url = "https://sourceforge.net/projects/gawkextlib/files/"
+regex = "gawk-reclen-(\\d+\\.\\d+\\.\\d+)\\.tar\\.gz"
