@@ -1,14 +1,16 @@
-# Maintainer: Your Name <ahoyiski@gmail.com>
+# Contributor: Your Name <ahoyiski@gmail.com>
+
 pkgname=wayfire-firedecor-git
-pkgver=1.14.b4a4029
+pkgver=1.95.68a701d
 pkgrel=1
 pkgdesc="An advanced window decoration plugin for the wayfire window manager."
 arch=('any')
 url="https://github.com/AhoyISki/wayfire-firedecor.git"
 license=('MIT')
-depends=('wayfire-git' 'librsvg' 'boost')
-makedepends=('git' 'meson' 'ninja')
-provides=('wayfire-firedecor-git' 'wayfire-firedecor')
+depends=('wayfire-git' 'librsvg' 'boost-libs')
+makedepends=('git' 'meson' 'ninja' 'boost')
+provides=('wayfire-firedecor')
+conflicts=('wayfire-firedecor')
 source=('git+https://github.com/AhoyISki/wayfire-firedecor.git')
 sha256sums=('SKIP')
 
@@ -18,12 +20,10 @@ pkgver() {
 }
 
 build() {
-    cd "$srcdir/wayfire-firedecor"
-	meson build
-	meson compile -C build
+    arch-meson build ${pkgname%-git}
+    ninja -C build
 }
 
 package() {
-    cd "$srcdir/wayfire-firedecor"
-	sudo meson install -C build
+    DESTDIR="$pkgdir" ninja -C install
 }
