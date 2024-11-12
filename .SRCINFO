@@ -1,12 +1,12 @@
 pkgbase = metalctl-bin
 	pkgdesc = A command line tool for metal-stack services
-	pkgver = 0.17.3
+	pkgver = 0.17.4
 	pkgrel = 1
 	url = https://github.com/metal-stack/metalctl
 	arch = x86_64
 	license = MIT
 	provides = metalctl
-	source = metalctl-0.17.3-1::https://github.com/metal-stack/metalctl/releases/download/v0.17.3/metalctl-linux-amd64
-	md5sums = 95d8d4ea253c3d306b0c40adef6af3a2
+	source = metalctl-0.17.4-1::https://github.com/metal-stack/metalctl/releases/download/v0.17.4/metalctl-linux-amd64
+	md5sums = 6dc5d038967fc8f5587c0af5d5b198d2
 
 pkgname = metalctl-bin
