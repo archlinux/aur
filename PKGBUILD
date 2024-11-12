@@ -3,9 +3,9 @@
 
 pkgname=qt5-connectivity
 _basever=5.15.15
-pkgver=5.15.15+kde+r3
+pkgver=5.15.15+kde+r4
 pkgrel=1
-_commit=f2a9c5d1235d88cc26f2cfa348a037b65e31a5ae
+_commit=8645b259784c940ac0c0c9c8376f088d6801a8ff
 arch=('x86_64')
 url='https://www.qt.io'
 license=('GPL3' 'LGPL3' 'FDL' 'custom')
@@ -16,7 +16,7 @@ optdepends=('qt5-declarative: QML bindings')
 groups=('qt5')
 _pkgfqn=${pkgname/5-/}
 source=(kde-$_pkgfqn::git+https://invent.kde.org/qt/qt/$_pkgfqn#commit=$_commit)
-sha256sums=('37c90538f6c9bf560af6029314b58b53a7782d00015be3e4aef058f2fcd67c09')
+sha256sums=('ce69a1b5e748de1626a51375542cfed3a369c48a5698509d3c060014d5a83173')
 
 pkgver() {
   cd kde-$_pkgfqn
