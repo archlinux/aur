@@ -50,6 +50,8 @@ package() {
     install -D openacs-config.tcl ${pkgdir}/etc/naviserver/openacs-config.tcl
     #cgi-bin
     install -d ${pkgdir}/usr/lib/naviserver/cgi-bin
+    #logs
+    install -d ${pkgdir}/usr/lib/naviserver/logs
     #inc
     install -d ${pkgdir}/usr/lib/naviserver/include
     install -D include/*.h ${pkgdir}/usr/lib/naviserver/include/
