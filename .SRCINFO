@@ -1,7 +1,7 @@
 pkgbase = ckan-bin
 	pkgdesc = The Comprehensive Kerbal Archive Network
 	pkgver = 1.35.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ksp-ckan/ckan/
 	arch = any
 	license = MIT
