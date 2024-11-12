@@ -1,12 +1,12 @@
 # Maintainer: Nico <d3sox at protonmail dot com>
 pkgname=anydesk-bin
 pkgver=6.4.0
-pkgrel=2
+pkgrel=3
 pkgdesc="The Fast Remote Desktop Application"
 arch=('x86_64')
 url="https://anydesk.com"
 license=('custom')
-depends=('fakeroot' 'minizip' 'gtkglext' 'libglvnd' 'gtk3' 'libx11' 'glibc' 'glib2' 'gdk-pixbuf2' 'libxcb' 'cairo' 'pango' 'libxi' 'libxrender' 'libxrandr' 'libxtst' 'libxext' 'libxfixes' 'libxdamage' 'libxkbfile' 'gcc-libs' 'lsb-release' 'polkit')
+depends=('fakeroot' 'minizip' 'libglvnd' 'gtk3' 'libx11' 'glibc' 'glib2' 'gdk-pixbuf2' 'libxcb' 'cairo' 'pango' 'libxi' 'libxrender' 'libxrandr' 'libxtst' 'libxext' 'libxfixes' 'libxdamage' 'libxkbfile' 'gcc-libs' 'lsb-release' 'polkit')
 optdepends=('libpulse: audio support' 'gnome-themes-extra: adwaita theme')
 conflicts=('anydesk')
 provides=('anydesk')
