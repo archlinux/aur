@@ -1,10 +1,10 @@
 [Desktop Entry]
 Type=Application
 Name=Feishin
-Comment=Rewrite of Sonixd
+Comment=A modern music player
 Exec=/usr/bin/feishin
 Icon=iipython-feishin
 StartupWMClass=feishin
 Terminal=false
 Categories=Network;Audio;Music
-Keywords=Music;Jellyfin;Audio;Stream;Sonixd
+Keywords=Music;Jellyfin;Audio
