@@ -1,11 +1,11 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=swarm-desktop
 _pkgname="Swarm Desktop"
-pkgver=0.43.2
+pkgver=0.44.0
 _electronversion=18
 _nodeversion=18
 pkgrel=1
-pkgdesc="Electron Desktop app that helps you easily spin up and manage Swarm node.Use system-wide electron."
+pkgdesc="Electron Desktop app that helps you easily spin up and manage Swarm node.(Use system-wide electron)"
 arch=(
     'aarch64'
     'armv7h'
@@ -29,7 +29,7 @@ source=(
     "${pkgname}-${pkgver}.tar.gz::${_ghurl}/archive/refs/tags/v${pkgver}.tar.gz"
     "${pkgname}.sh"
 )
-sha256sums=('15e4ae23d2df4cac6b04dc10f9817fc12861240c437dab1f07523eda0a7ddb65'
+sha256sums=('b3cf9631f44b5535792986f434b52e57b251fa430f27fdce5b78465c43bf2c32'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
@@ -48,6 +48,7 @@ build() {
     _ensure_local_nvm
     gendesk -q -f -n --pkgname="${pkgname}" --pkgdesc="${pkgdesc}" --categories="Utility" --name="${_pkgname}" --exec="${pkgname} %U"
     cd "${srcdir}/${pkgname}-${pkgver}"
+    electronDist="/usr/lib/electron${_electronversion}"
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
     HOME="${srcdir}/.electron-gyp"
@@ -66,8 +67,11 @@ build() {
         cp .npmrc ui/
     fi
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
+    sed -i "22i\    useElectronBinary: true," forge.config.js
     NODE_ENV=development    npm install
     NODE_ENV=production     npm run build:desktop
+    rm -rf node_modules/.bin/electron
+    ln -sf "${electronDist}/electron" node_modules/.bin/electron
     cd "${srcdir}/${pkgname}-${pkgver}/ui"
     NODE_ENV=development    npm install
     NODE_ENV=production     npm run build
