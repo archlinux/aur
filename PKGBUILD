@@ -1,11 +1,8 @@
-# Contributor: Doug Newgard <scimmia at archlinux dot info>
-# Contributor: Cravix < dr dot neemous at gmail dot org >
-# Contributor: Ronald van Haren <ronald.archlinux.org>
-# Contributor: Michal Wojdyla < micwoj9292 at gmail dot com >
+# Maintainer: Mike Pento <mpento@darkforge.net>
 
 # IMPORTANT!!! Modify this list for your specific installation
 _module_list=(
-  'alarm'
+#  'alarm'		# fails to compile (implicit-funcion-declaration)
   'cpu'
   'desksanity'
 # 'diskio'               # not compatible with EFL >= 1.13
@@ -15,7 +12,7 @@ _module_list=(
 # 'empris'               # not compatible with Enlightenment >= 0.19.0, adds dep on e_dbus
 # 'everything-places'    # fails to compile
 # 'everything-websearch' # fails to compile, adds dep on e_dbus
-  'eweather'
+#  'eweather'		# libeweather(?), not compatible with E >= 0.18.0
 # 'forecasts'            # not compatible with Enlightenment < 0.19.99
 # 'mail'                 # not compatible with Enlightenment >= 0.19.0
   'mem'
@@ -26,9 +23,9 @@ _module_list=(
 # 'penguins'		 # fails to compile
 # 'photo'                # not compatible with Enlightenment >= 0.18.0
 # 'share'                # not compatible with Enlightenment >= 0.19.0, adds dep on libbsd
-  'tclock'
+#  'tclock'		# fails to compile (implicit-function-declaration)
 # 'wallpaper2'           # not compatible with Enlightenment < 0.19.99
-  'wlan'
+#  'wlan'		# fails to compile (implicit-function-declaration)
 )
 
 containsElement () {
@@ -38,8 +35,8 @@ containsElement () {
 }
 
 pkgname=e-modules-extra-git
-pkgver=20200822
-pkgrel=2
+pkgver=20241111
+pkgrel=1
 pkgdesc="Enlightenment modules: Extra unsupported modules in Git not already packaged elsewhere"
 arch=('i686' 'x86_64')
 url="http://www.enlightenment.org"
@@ -55,7 +52,7 @@ depends=('enlightenment')
 makedepends=('git')
 provides=("${pkgname%-*}")
 for _module in ${_module_list[@]}; do
-  source+=("git+https://git.enlightenment.org/enlightenment/modules/$_module.git")
+  source+=("git+https://git.enlightenment.org/enlightenment/enlightenment-module-$_module.git")
   sha256sums+=('SKIP')
 done
 
@@ -72,7 +69,7 @@ prepare() {
 
 build() {
   for _module in ${_module_list[@]}; do
-    cd "$srcdir/$_module"
+    cd "$srcdir/enlightenment-module-$_module"
 
     msg2 "Building $_module"
 
@@ -86,7 +83,7 @@ build() {
 
 package() {
   for _module in ${_module_list[@]}; do
-    cd "$srcdir/$_module"
+    cd "$srcdir/enlightenment-module-$_module"
 
     msg2 "Installing $_module"
 
