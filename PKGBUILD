@@ -41,13 +41,11 @@ build() {
 	cargo build --release --frozen --all-features
 }
 
-## check() cannot run automatically, it requires manual intervention.
-## And check() will not affect the build, so comment it out here.
-# check() {
-# 	cd "$_pkgname"
-# 	export RUSTUP_TOOLCHAIN=stable
-# 	cargo test --frozen --all-features --workspace
-# }
+check() {
+	cd "$_pkgname"
+	export RUSTUP_TOOLCHAIN=stable
+	cargo test --frozen --all-features --workspace
+}
 
 package() {
 	cd "$_pkgname"
