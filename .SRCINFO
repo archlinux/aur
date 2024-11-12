@@ -1,6 +1,6 @@
 pkgbase = python-cx-freeze
 	pkgdesc = Create standalone executables from Python scripts
-	pkgver = 7.2.4
+	pkgver = 7.2.5
 	pkgrel = 1
 	url = https://marcelotduarte.github.io/cx_Freeze
 	arch = x86_64
@@ -24,7 +24,7 @@ pkgbase = python-cx-freeze
 	provides = python-cx_freeze
 	conflicts = python-cx_freeze
 	replaces = python-cx_freeze
-	source = https://github.com/marcelotduarte/cx_Freeze/archive/7.2.4/python-cx-freeze-7.2.4.tar.gz
-	sha512sums = 393fc84e35bbade716fd6f67cd17a820252d27a0212417740cea555671ce5965641defe80d3860279a99311a2cb429b8f3fe0af692181bfd923445f28a95dfda
+	source = https://github.com/marcelotduarte/cx_Freeze/archive/7.2.5/python-cx-freeze-7.2.5.tar.gz
+	sha512sums = a442084d1b25aba8bf536106b5da591cbb63297f88c2eeb79484f45ae5d288b166068817c29919af6d9ce7b5da2fd24be3f4678a0fef46863b69abe3ad27e281
 
 pkgname = python-cx-freeze

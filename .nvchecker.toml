@@ -1,0 +1,3 @@
+[python-cx-freeze]
+source="pypi"
+pypi="cx-freeze"

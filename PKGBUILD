@@ -1,4 +1,5 @@
-# Maintainer: Self Denial <selfdenial@pm.me>
+# Maintainer: envolution
+# Contributor: Self Denial <selfdenial@pm.me>
 # Contributor: Brian Thompson <brianrobt@pm.me>
 # Contributor: Felix Yan <felixonmars@archlinux.org>
 # Contributor: Alexander Rødseth <rodseth@gmail.com>
@@ -9,7 +10,7 @@
 # Contributor: Julien Duponchelle <julien@gns3.net>
 
 pkgname=python-cx-freeze
-pkgver=7.2.4
+pkgver=7.2.5
 pkgrel=1
 pkgdesc='Create standalone executables from Python scripts'
 arch=('x86_64')
@@ -24,7 +25,7 @@ replaces=('python-cx_freeze')
 provides=('python-cx_freeze')
 conflicts=('python-cx_freeze')
 source=("https://github.com/marcelotduarte/cx_Freeze/archive/$pkgver/$pkgname-$pkgver.tar.gz")
-sha512sums=('393fc84e35bbade716fd6f67cd17a820252d27a0212417740cea555671ce5965641defe80d3860279a99311a2cb429b8f3fe0af692181bfd923445f28a95dfda')
+sha512sums=('a442084d1b25aba8bf536106b5da591cbb63297f88c2eeb79484f45ae5d288b166068817c29919af6d9ce7b5da2fd24be3f4678a0fef46863b69abe3ad27e281')
 
 prepare() {
   sed -e 's|75|80|g' -i cx_Freeze-$pkgver/pyproject.toml # Support setuptools 75

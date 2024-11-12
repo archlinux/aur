@@ -1,6 +1,0 @@
-.python-version
-*.tar.gz
-*.tar.zst
-src/
-pkg/
-venv/
