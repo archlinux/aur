@@ -1,6 +1,6 @@
 pkgbase = yass-proxy-gtk3
 	pkgdesc = lightweight http/socks proxy
-	pkgver = 1.15.3
+	pkgver = 1.16.0
 	pkgrel = 1
 	url = https://github.com/Chilledheart/yass
 	arch = x86_64
@@ -29,7 +29,7 @@ pkgbase = yass-proxy-gtk3
 	optdepends = libayatana-appindicator
 	provides = yass-proxy
 	conflicts = yass-proxy-git
-	source = https://github.com/Chilledheart/yass/releases/download/1.15.3/yass-1.15.3.tar.zst
-	sha256sums = 139ee3f67f24df1af460d7a4017ca46518c5ce81cb3bfad92444df2718fc2c10
+	source = https://github.com/Chilledheart/yass/releases/download/1.16.0/yass-1.16.0.tar.zst
+	sha256sums = fdb6b801c0852aaae17a20d0cbda5b565be38605c0bc56a1d8c614633da8ecdd
 
 pkgname = yass-proxy-gtk3
