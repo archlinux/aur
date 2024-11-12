@@ -1,0 +1,4 @@
+[guile-smc]
+source = "git"
+git = "https://github.com/artyom-poptsov/guile-smc"
+prefix = "v"
