@@ -1,10 +1,10 @@
 pkgbase = python-portalocker
 	pkgdesc = Easy, portable file locking API.
 	pkgver = 2.10.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/WoLpH/portalocker
 	arch = any
-	license = PSF
+	license = BSD-3-Clause
 	checkdepends = python-pytest
 	checkdepends = python-pytest-cov
 	checkdepends = python-pytest-timeout
