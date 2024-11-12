@@ -1,6 +1,6 @@
 pkgbase = jitsi-meet
 	pkgdesc = Jitsi Meet Web
-	pkgver = 1.0.8206
+	pkgver = 1.0.8242
 	pkgrel = 1
 	url = https://jitsi.org/jitsi-meet/
 	install = install
@@ -14,7 +14,7 @@ pkgbase = jitsi-meet
 	options = !strip
 	backup = etc/webapps/jitsi-meet/config.js
 	backup = etc/webapps/jitsi-meet/interface_config.js
-	source = jitsi-meet::git+https://github.com/jitsi/jitsi-meet#tag=8206
-	sha256sums = 409ecbb36498bb3fded019dc72f4698a3fe09eb0c653e526338e3d7d7d3211ce
+	source = jitsi-meet::git+https://github.com/jitsi/jitsi-meet#tag=8242
+	sha256sums = 831ba870b78e277ebc3baad408fd89b79decdb531a443f0d4b5063cb925ed29a
 
 pkgname = jitsi-meet
