@@ -3,7 +3,7 @@
 pkgname=cypherock-cysync-appimage
 _basename=cypherock-cysync
 pkgver=2.0.11
-pkgrel=1
+pkgrel=2
 pkgdesc="The all-in-one-app to manage your Crypto assets with the Cypherock X1."
 arch=('x86_64')
 url="https://www.cypherock.com/cysync"
@@ -21,8 +21,9 @@ prepare() {
     rm -rf squashfs-root
     chmod 0755 ${_basename}-${pkgver}.AppImage
     ./${_basename}-${pkgver}.AppImage --appimage-extract
-    sed -i -e "s|Exec=.\+|Exec=env APPIMAGELAUNCHER_DISABLE=1 DESKTOPINTEGRATION=0 /usr/bin/${_basename}|" "squashfs-root/Cypherock CySync.desktop"
+    sed -i -e "s|Exec=.\+|Exec=env APPIMAGELAUNCHER_DISABLE=1 DESKTOPINTEGRATION=0 ${_basename} %u|" "squashfs-root/Cypherock CySync.desktop"
     sed -i -e "s|Icon=.\+|Icon=cypherock-cysync|" "squashfs-root/Cypherock CySync.desktop"
+    echo "MimeType=x-scheme-handler/cypherock;" >> "squashfs-root/Cypherock CySync.desktop"
 }
 
 package() {
