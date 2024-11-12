@@ -1,4 +1,4 @@
-pkgbase = luanti-client
+pkgbase = luanti-modern
 	pkgdesc = Luanti (formerly “Minetest”) as split-package build for server and client and common data and documentation, using a more modern and strict approach and explicitly trying to only use the new name only.
 	pkgver = 5.10.0
 	pkgrel = 1
