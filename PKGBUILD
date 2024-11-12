@@ -1,7 +1,7 @@
 # Maintainer: rpx <rpx at clearlight dot systems>
 # Contributor: acxz <akashpatel2008 at yahoo doxt com>
 pkgname=openvsp
-pkgver=3.40.1
+pkgver=3.41.1
 pkgrel=1
 pkgdesc='A parametric aircraft geometry tool'
 arch=('i686' 'x86_64')
@@ -14,22 +14,22 @@ depends=(
   'gcc'
   'git'
   'glew'
-  'libxml2'
-  'pandoc')
+  'libxml2')
 optdepends=(
   'doxygen: generate documentation'
   'graphviz: generate documentation'
   'python: python API module'
   'swig: build interface to APIs')
 makedepends=('cmake' 'unzip')
-#_name=OpenVSP-OpenVSP_${pkgver}
-_name=OpenVSP-main
 
+#_name=OpenVSP-main
+_name=OpenVSP-OpenVSP_${pkgver}
 
-source=("${pkgname}-${pkgver}.zip"::"https://github.com/rpxpx/OpenVSP/archive/refs/heads/main.zip")
-sha256sums=('d3bcdacb23d62f0ceb94356adb332a1512b8c8c2173f43955092b4bb2bab8601')
+#source=("${pkgname}-${pkgver}.zip"::"https://github.com/rpxpx/OpenVSP/archive/refs/heads/main.zip")
+#sha256sums=('d3bcdacb23d62f0ceb94356adb332a1512b8c8c2173f43955092b4bb2bab8601')
 
-#source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/OpenVSP/OpenVSP/archive/OpenVSP_${pkgver}.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/OpenVSP/OpenVSP/archive/OpenVSP_${pkgver}.tar.gz")
+sha256sums=('a9e1a9e37903ae6f15baca9d1fc89fe49b4a0306d9594552ee28a55eb4517a8e')
 #sha256sums=('ba42e2bad11f086787fb06eee2300c8a2a106d410791508447a380131e576fb2')
 
 prepare() {
