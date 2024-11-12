@@ -7,7 +7,7 @@
 
 pkgname=obs-studio-browser
 pkgver=30.2.3
-pkgrel=3
+pkgrel=4
 pkgdesc="Free and open source software for video recording and live streaming. With everything except service integration"
 arch=("x86_64" "aarch64")
 url="https://github.com/obsproject/obs-studio"
@@ -137,6 +137,9 @@ prepare() {
   git config submodule.plugins/obs-websocket.url $srcdir/obs-websocket
   git config submodule.plugins/obs-outputs/ftl-sdk.url $srcdir/ftl-sdk
   git -c protocol.file.allow=always submodule update
+
+  # obs-ffmpeg: Avoid setting negative bitrate for lossless audio codec
+  sed -i 's/enc->context->bit_rate = -1;/enc->context->bit_rate = 0;/g' plugins/obs-ffmpeg/obs-ffmpeg-audio-encoders.c
 
   cd "$srcdir"
   make PREFIX="$srcdir/nv-prefix" -C supported-nv-codec-headers install
