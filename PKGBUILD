@@ -13,7 +13,7 @@
 _pkgname="quaternion"
 pkgname="$_pkgname"
 pkgver=0.0.96.1
-pkgrel=3
+pkgrel=4
 pkgdesc='Qt-based IM client for the Matrix protocol'
 url="https://github.com/quotient-im/Quaternion"
 license=('GPL-3.0-or-later' 'LGPL-2.1-or-later')
@@ -32,6 +32,8 @@ makedepends=(
   ninja
   qt6-tools
 )
+
+options=('!emptydirs')
 
 _pkgsrc="$_pkgname"
 source=(
@@ -89,4 +91,11 @@ package() {
   )
 
   DESTDIR="$pkgdir" cmake --install build
+
+  # conflicts with extra/libquotient
+  rm "$pkgdir/usr/lib/libQuotientQt6.a"
+  rm "$pkgdir/usr/lib/pkgconfig/QuotientQt6.pc"
+  rm "$pkgdir/usr/share/ndk-modules/Android.mk"
+  rm -rf "$pkgdir/usr/include/Quotient"
+  rm -rf "$pkgdir/usr/lib/cmake/QuotientQt6"
 }
