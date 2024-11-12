@@ -1,54 +1,58 @@
-# Maintainer: Martin Sandsmark <martin.sandsmark@kde.org>
+# Maintainer: envolution
+# Contributor: pingplug < aur at pingplug dot me >
+# Contributor: Martin Sandsmark <martin.sandsmark@kde.org>
+# Contributor: Adrià Arrufat <swiftscythe@gmail.com>
+# Contributor: perlawk
 
 pkgname=dlib-git
 _pkgname=dlib
+pkgver=19.24.6+r8287+g39240959f
 pkgrel=1
-pkgver=r7718.b0e3c360
-pkgdesc="General purpose C++ library using contract programming and modern C++ techniques"
-arch=('i686' 'x86_64')
-url="http://www.dlib.net/"
-license=('Boost Software License')
-depends=('glibc')
-optdepends=('cblas: for BLAS support'
-            'cuda: for CUDA support'
+pkgdesc="Cross-platform C++ library using contract programming and modern C++ techniques"
+arch=('x86_64')
+url="http://dlib.net"
+license=('BSL-1.0')
+depends=('cblas'
+         'lapack'
+         'blas'
+         'libjpeg-turbo'
+         'libjxl'
+         'libpng'
+         'libwebp'
+         'libx11')
+optdepends=('ffmpeg: for FFmpeg support'
             'giflib: for GIF support'
-            'lapack: for LAPACK support'
-            'libjpeg-turbo: for JPEG support'
-            'libpng: for PNG support'
             'sqlite: for sqlite support')
-source=('git+https://github.com/davisking/dlib')
-sha256sums=(SKIP)
-makedepends=('cmake' 'git')
-provides=('dlib')
-conflicts=('dlib')
-replaces=('dlib')
-
-pkgver() {
-    cd "${srcdir}/${_pkgname}"
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+makedepends=('cmake' 'ninja')
+source=(
+  "${_pkgname}::git+https://github.com/davisking/dlib.git"
+)
+sha256sums=('SKIP')
+pkgver(){
+  cd "${_pkgname}"
+  _version=$(git tag --sort=-v:refname --list | grep '^v[0-9.]*$' | head -n1 )
+  _commits=$(git rev-list --count HEAD)
+  _short_commit_hash=$(git rev-parse --short=9 HEAD)
+  echo "${_version#'v'}+r${_commits}+g${_short_commit_hash}"
 }
 
 build() {
-    cd "${srcdir}/${_pkgname}"
     mkdir -p build && cd build
-    cmake \
+    cmake -GNinja \
         -DCMAKE_INSTALL_PREFIX:PATH=/usr \
         -DCMAKE_INSTALL_LIBDIR:PATH=/usr/lib \
-        -DBUILD_SHARED_LIBS:BOOL=ON \
-        -DCUDA_HOST_COMPILER='/opt/cuda/bin/gcc' \
+        -DBUILD_SHARED_LIBS=ON \
         -DCMAKE_BUILD_TYPE=Release \
-        ..
-    if [[ -f "/usr/lib/ccache/bin/nvcc-ccache" ]] ; then
-        cmake \
-          -DCUDA_NVCC_EXECUTABLE=/usr/lib/ccache/bin/nvcc-ccache \
-          -DCUDA_HOST_COMPILER=/usr/lib/ccache/bin/gcc \
-          ..
-    fi
-    make
+        -DUSE_AVX_INSTRUCTIONS=OFF \
+        -DDLIB_USE_CUDA=OFF \
+        "../${_pkgname}"
+    ninja ${MAKEFLAGS:--j1}
 }
 
 package() {
-    cd "${srcdir}/${_pkgname}/build"
-
-    make DESTDIR="${pkgdir}" install
+    cd "build"
+    DESTDIR=${pkgdir} ninja install
+    install -Dm644 "../${_pkgname}/dlib/LICENSE.txt" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
+    # remove redundant external libraries
+    rm -r "${pkgdir}/usr/include/dlib/external"
 }

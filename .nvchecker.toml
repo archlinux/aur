@@ -1,0 +1,4 @@
+[dlib-git]
+source="cmd"
+cmd="~/nvchecker/github_version.sh davisking dlib"
+prefix="v"
