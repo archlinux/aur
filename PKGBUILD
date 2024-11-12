@@ -8,7 +8,7 @@
 readonly _pkgname="StringZilla"
 
 pkgname="stringzilla"
-pkgver="3.10.9"
+pkgver="3.10.10"
 pkgrel="1"
 pkgdesc="Up to 10x faster strings for C, C++, Python, Rust and Swift."
 arch=("x86_64")
@@ -16,7 +16,7 @@ url="https://github.com/ashvardanian/${_pkgname}"
 license=("Apache-2.0")
 makedepends=("cmake")
 source=("${pkgname}-v${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha512sums=("03a3a71a0f7f40273c559a79d758f922fd9727eae6f01f3df5c4c69890906ff24f288805a564a596453abd8f92be94536887866d732dd92a35b8de33b549e1bf")
+sha512sums=("8009fe2e25c514628a299a74716e8fd6aa298fc4846495dff4f6c22d67c0a7d4062bfa74e8c18a20e1aa95d233fdedbd14f788881fcd4e2ce48ead9596c9d62b")
 
 _compile()
 {
