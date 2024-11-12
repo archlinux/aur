@@ -6,7 +6,7 @@
 # Contributor : Patrick McCarty  <pnorcks at gmail dot com>
 
 pkgname=osc
-pkgver=1.9.2
+pkgver=1.10.1
 pkgrel=1
 pkgdesc="Command line client for the openSUSE Build Service"
 arch=(any)
@@ -36,16 +36,16 @@ source=("https://github.com/openSUSE/${pkgname}/archive/${pkgver}.tar.gz"
         0008-Fix-hdrmd5-check-of-downloaded-packages-from-DoD-rep.patch
         0009-Add-buildlog-option-to-fetch-buildlog-not-relative-t.patch
        )
-sha256sums=('c32bcf47c8a0f23a722fca781959ef2b1f865d0d4ed32be237f3e4444e671864'
-            '32084060ed4ccb88199e24b42cc42c91aaa26a84ee1f97096ab4354b43f7c9c0'
-            'b70c482a550691008061f1d7c7833b152f5f689840184bbeb1b662b20cc49600'
-            'fb92668a337e16bbdc1d466d1afe0dc7186d91f9ee21561714f4d9e19967c1b3'
-            '7c446b0d9ee765347787cbcbd0a7f003fb6b28dabd8244747ce5a9d95e06b1ac'
-            '4346341c9b3cf17fa53c8c8d937080fff6b35cf414c85f6c4ca36e0aec0b6eb7'
+sha256sums=('20ee481f7ed9b3355cbdee5f590819b491e9c08992f3f7da0d96ca4495bc68db'
+            '9ce6cf5cff4168a1b6df99c9a9684812934872f6da84407f70ec26b65e7c0de0'
+            '353f4059fac5a423bfba47763e7b9acb4963131d4be24a6e8b6890e3d311d4ba'
+            '157f35d2707b1282f59382727f778aa81f3b7a251dbefcc5b1621b28469079d6'
+            '4ce2727df761460ecbc9ff75883c3799ed07f9c123f616b04516139c9eb15f97'
+            '03a67b38363e1e51a79db9806f83d2a063a8c90f105939e59684453c56289532'
             '579b110f3dc03001b7eac3581264200612dac66c2186e6841eda3573f455daf1'
-            'aa4da837fcb18540250a634a247bb00c8a284ca35cdfb05e3b265dda019c0f53'
+            'fb647150bc061cea192f0d0616373ffa34ac68643011a2a7a8c3fc282b4d8591'
             'f01d7d59bebe114f6031f297f78456bef96b7003f55fe7ac48827e1eca7138c1'
-            '2aaf415f42b5987e31f429cfed2309ad86909b5615536319d13e6799618ad898')
+            'a41248a119a1b952eb47cf9a7127e09974313c0624ad1a1f90c1e3eb112a48b9')
 
 
 prepare() {

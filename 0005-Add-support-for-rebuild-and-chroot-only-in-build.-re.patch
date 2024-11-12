@@ -14,10 +14,10 @@ Subject: [PATCH] Add support for --rebuild and --chroot-only in build.
  2 files changed, 11 insertions(+)
 
 diff --git a/osc/build.py b/osc/build.py
-index 962060a6bd598c9b02c7073e9afe069b58201ca7..25d7ab784dedb35a88f55d4520ce6bdfe948b5d2 100644
+index 0547fa9459abf169e616325fbc0c550c2d41d111..bc264d31f8a33eb962b76c9148217b80f789803d 100644
 --- a/osc/build.py
 +++ b/osc/build.py
-@@ -798,6 +798,13 @@ def main(apiurl, store, opts, argv):
+@@ -810,6 +810,13 @@ def main(apiurl, store, opts, argv):
          buildargs.append('--clean')
      if opts.checks:
          buildargs.append('--checks')
@@ -32,10 +32,10 @@ index 962060a6bd598c9b02c7073e9afe069b58201ca7..25d7ab784dedb35a88f55d4520ce6bdf
          buildargs.append('--no-checks')
      if not opts.no_changelog:
 diff --git a/osc/commandline.py b/osc/commandline.py
-index b894ebe7ba233c98266bd13aa9ecbfbb3e2ffc62..f2759b19311bad5e5cf94f278adc862ea994aa52 100644
+index 9469532416b8562936f12afa27e2f8d33fb5aa40..eb5cf45c6b605874f0ac512c0e62a13fee17dc5e 100644
 --- a/osc/commandline.py
 +++ b/osc/commandline.py
-@@ -7250,6 +7250,10 @@ Please submit there instead, or use --nodevelproject to force direct submission.
+@@ -7013,6 +7013,10 @@ Please submit there instead, or use --nodevelproject to force direct submission.
                    help='Skip initialization of build root and start with build immediately.')
      @cmdln.option('--checks', action='store_true',
                    help='Run checks even if disabled in the build config')

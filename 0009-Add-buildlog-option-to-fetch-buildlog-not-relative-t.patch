@@ -12,10 +12,10 @@ Signed-off-by: Björn Bidar <bjorn.bidar@jolla.com>
  1 file changed, 68 insertions(+), 9 deletions(-)
 
 diff --git a/osc/commandline.py b/osc/commandline.py
-index 82b7980c9529775cf9bbc5fd32e2d9a6c10d94d6..c86767b83dbb17ce308be2f36a6e43fa4236ec1d 100644
+index 8d046122dfeea90255fb25348f5281c41b227294..d96c197a72255a8d2d9a442a9405d7accba0e844 100644
 --- a/osc/commandline.py
 +++ b/osc/commandline.py
-@@ -6373,6 +6373,10 @@ Please submit there instead, or use --nodevelproject to force direct submission.
+@@ -6132,6 +6132,10 @@ Please submit there instead, or use --nodevelproject to force direct submission.
                    help='get log start or end from the offset')
      @cmdln.option('-s', '--strip-time', action='store_true',
                          help='strip leading build time from the log')
@@ -26,7 +26,7 @@ index 82b7980c9529775cf9bbc5fd32e2d9a6c10d94d6..c86767b83dbb17ce308be2f36a6e43fa
      def do_buildlog(self, subcmd, opts, *args):
          """
          Shows the build log of a package
-@@ -6388,31 +6392,54 @@ Please submit there instead, or use --nodevelproject to force direct submission.
+@@ -6147,31 +6151,54 @@ Please submit there instead, or use --nodevelproject to force direct submission.
          results' output. If the buildlog url is used buildlog command has the
          same behavior as remotebuildlog.
  
@@ -61,7 +61,7 @@ index 82b7980c9529775cf9bbc5fd32e2d9a6c10d94d6..c86767b83dbb17ce308be2f36a6e43fa
 +                    if not package and is_project_dir(cwd):
 +                        package = args[0]
 +                        prj = Project(cwd)
-+                        if package not in prj.pacs_available:
++                        if package not in prj.pacs_avialable:
 +                            raise oscerr.WrongArgs(f'Package {package} doesn\'t exist in {project}')
 +                        repo_arg_offset = 1
 +            if not package and is_package_dir(cwd):
@@ -89,7 +89,7 @@ index 82b7980c9529775cf9bbc5fd32e2d9a6c10d94d6..c86767b83dbb17ce308be2f36a6e43fa
  
          if opts.multibuild_package:
              package = package + ":" + opts.multibuild_package
-@@ -6437,7 +6464,39 @@ Please submit there instead, or use --nodevelproject to force direct submission.
+@@ -6196,7 +6223,39 @@ Please submit there instead, or use --nodevelproject to force direct submission.
          elif opts.offset:
              offset = int(opts.offset)
          strip_time = opts.strip_time or conf.config['buildlog_strip_time']

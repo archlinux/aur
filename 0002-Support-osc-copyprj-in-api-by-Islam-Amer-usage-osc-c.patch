@@ -13,10 +13,10 @@ Subject: [PATCH] Support 'osc copyprj' in api by Islam Amer usage: osc copyprj
  2 files changed, 80 insertions(+)
 
 diff --git a/osc/commandline.py b/osc/commandline.py
-index d2c66d04088d604cae2a2644973bdc9214d904f9..16a2979faca9aa168dc366cc9a1bd3ea3fc978a5 100644
+index 50955aedc5bf81fc240b78a920dab62a2f19867e..6efe9bf32d4278d1a56a1c6af0bf87d5e8427c1f 100644
 --- a/osc/commandline.py
 +++ b/osc/commandline.py
-@@ -2113,6 +2113,58 @@ class Osc(cmdln.Cmdln):
+@@ -1864,6 +1864,58 @@ class Osc(cmdln.Cmdln):
              else:
                  raise oscerr.WrongOptions('The --delete switch is only for pattern metadata or attributes.')
  
@@ -76,10 +76,10 @@ index d2c66d04088d604cae2a2644973bdc9214d904f9..16a2979faca9aa168dc366cc9a1bd3ea
  
      @cmdln.option('-m', '--message', metavar='TEXT',
 diff --git a/osc/core.py b/osc/core.py
-index b399c45cd91347b7f98fc41fdb4e4c494e854e0f..7dd42169adad92368050cd69ee8f6513e6593e39 100644
+index 265f883608f8c72731e4ad03c9628428f248500a..f4ea0181ed4c36f792d444d28a47d3e9753389c7 100644
 --- a/osc/core.py
 +++ b/osc/core.py
-@@ -3792,6 +3792,34 @@ def copy_pac(
+@@ -3814,6 +3814,34 @@ def copy_pac(
              raise oscerr.APIError(f"failed to copy: {', '.join(todo)}")
          return 'Done.'
  
