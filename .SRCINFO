@@ -1,16 +1,16 @@
 pkgbase = sph-db-git
 	pkgdesc = minimal nosql database for records and relations
-	pkgver = 128
+	pkgver = 140.r8fdf4b3
 	pkgrel = 1
-	url = http://sph.mn
+	url = https://github.com/sph-mn/sph-db
 	arch = any
-	license = gpl3+
+	license = GPL3
 	makedepends = git
 	makedepends = gcc
 	depends = lmdb
-	provides = sph-db
-	source = git://git.sph.mn/sph-db
+	provides = sph-db=140.r8fdf4b3
+	conflicts = sph-db
+	source = git+https://github.com/sph-mn/sph-db.git
 	md5sums = SKIP
 
 pkgname = sph-db-git
-

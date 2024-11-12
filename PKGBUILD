@@ -1,23 +1,28 @@
 pkgname=sph-db-git
-pkgver=128
+pkgver=140.r8fdf4b3
 pkgrel=1
 pkgdesc="minimal nosql database for records and relations"
-arch=(any)
-license=(gpl3+)
-makedepends=(git gcc)
-depends=(lmdb)
-provides=(sph-db)
-source=("git://git.sph.mn/sph-db")
-url="http://sph.mn"
-md5sums=(SKIP)
+arch=('any')
+license=('GPL3')
+depends=('lmdb')
+makedepends=('git' 'gcc')
+provides=("sph-db=$pkgver")
+conflicts=('sph-db')
+url="https://github.com/sph-mn/sph-db"
+source=("git+https://github.com/sph-mn/sph-db.git")
+md5sums=('SKIP')
 
 pkgver() {
-  cd sph-db
-  git rev-list --count HEAD
+  cd "${srcdir}/sph-db"
+  printf "%s.r%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+build() {
+  cd "${srcdir}/sph-db"
+  ./exe/compile-c
 }
 
 package() {
-  cd sph-db
-  ./exe/compile-c
+  cd "${srcdir}/sph-db"
   ./exe/install "${pkgdir}"
 }
