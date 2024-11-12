@@ -1,7 +1,7 @@
 # Maintainer: Enmanuel Moreira <enmanuelmoreira@gmail.com>
 
 pkgname=lima
-pkgver=0.20.1
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Linux virtual machines, typically on macOS, for running containerd."
 arch=('x86_64')
@@ -11,7 +11,7 @@ provides=('lima')
 license=('Apache')
 makedepends=('go>=1.18' 'git' 'gzip' 'tar' 'gcc' 'make')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/lima-vm/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('3e8b16572a23d69ad16ef72f15b1697c35b5eacaf6c1f0943b6ebfb8bfaf1fd7')
+sha256sums=('82e9bfcfdf7423baaf4c712a3123237818c26b0f22abb38b73591b28a36b754e')
 
 build() {
 	cd "${pkgname}-${pkgver}"
@@ -35,7 +35,9 @@ package() {
   mkdir -p ${pkgdir}/usr/share/${pkgname}/templates/
   install -Dm644 _output/share/lima/lima-guestagent.Linux-$(uname -m | sed -e s/arm64/aarch64/) \
 	${pkgdir}/usr/share/lima/${pkgname}-guestagent.Linux-$(uname -m | sed -e s/arm64/aarch64/)
-  cp -rv examples/* ${pkgdir}/usr/share/${pkgname}/templates/
+  cp -rv templates/* ${pkgdir}/usr/share/${pkgname}/templates/
+  mkdir -p ${pkgdir}/usr/share/doc/${pkgname}/
+  cp -rv docs/* ${pkgdir}/usr/share/doc/${pkgname}/
   install -Dm644 README.md ${pkgdir}/usr/share/doc/${pkgname}/README.md
   install -Dm644 LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
 }
