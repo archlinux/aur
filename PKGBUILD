@@ -2,7 +2,7 @@
 pkgname=python-django-stubs-ext
 _pkgname=django-stubs
 pkgver=5.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Extensions and monkey-patching for django-stubs."
 arch=('any')
 url="https://github.com/typeddjango/django-stubs"
@@ -23,4 +23,5 @@ build() {
 package() {
     cd "${srcdir}/${_pkgname}-${pkgver}/ext"
     python -m installer --destdir="${pkgdir}" dist/*.whl
+    install -Dm 644 LICENSE.md -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }

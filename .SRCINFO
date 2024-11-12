@@ -1,7 +1,7 @@
 pkgbase = python-django-stubs-ext
 	pkgdesc = Extensions and monkey-patching for django-stubs.
 	pkgver = 5.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/typeddjango/django-stubs
 	arch = any
 	license = MIT
