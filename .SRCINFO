@@ -1,0 +1,22 @@
+pkgbase = brotab
+	pkgdesc = Control your browser's tabs from the command line
+	pkgver = 1.4.2
+	pkgrel = 1
+	url = https://github.com/balta2ar/brotab
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	checkdepends = python-pytest-cov
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python
+	depends = python-flask
+	depends = python-requests
+	depends = python-psutil
+	provides = brotab
+	conflicts = brotab-bin
+	conflicts = brotab-git
+	source = brotab-1.4.2.tar.gz::https://github.com/balta2ar/brotab/archive/refs/tags/1.4.2.tar.gz
+	sha256sums = d078a3ea5e0c5cc960e3ca9d0be767fa739355e096f5836b13f4c4352a58f262
+
+pkgname = brotab
