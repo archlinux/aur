@@ -1,7 +1,7 @@
 # Maintainer: Insidious Fiddler <aur[at]codycody31[dot]dev>
 pkgname=postpilot
 pkgver=0.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A sleek local SMTP testing environment for developers"
 arch=('x86_64' 'aarch64')
 url="https://github.com/watzon/postpilot"
@@ -15,6 +15,8 @@ sha256sums=('2bdb81491d5c4eed34ffb24c8ecd25523173c74cc98d311352f6da5967bf114f'
 prepare() {
     cd "$srcdir/$pkgname-$pkgver/frontend"
     npm install
+    cd "$srcdir/$pkgname-$pkgver"
+    go mod tidy
 }
 
 build() {

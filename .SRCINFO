@@ -1,7 +1,7 @@
 pkgbase = postpilot
 	pkgdesc = A sleek local SMTP testing environment for developers
 	pkgver = 0.1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/watzon/postpilot
 	arch = x86_64
 	arch = aarch64
