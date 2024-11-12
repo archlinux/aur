@@ -1,15 +1,18 @@
 # Maintainer: Patrick McCarty <pnorcks at gmail.com>
 # Contributor: Florian Pelz <pelzflorian at pelzflorian.de>
+
 pkgname=haunt
 pkgver=0.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Static site generator written in Guile Scheme"
 arch=('any')
 url="https://haunt.dthompson.us"
 license=('GPL-3.0-or-later')
 depends=('guile')
 optdepends=('guile-reader: Skribe support'
-            'guile-commonmark: CommonMark support')
+            'guile-commonmark: CommonMark support'
+            'rsync: integrated publishing with rsync'
+            'hut: integrated publishing to Sourcehut')
 makedepends=('guile-reader' 'guile-commonmark')
 source=("https://files.dthompson.us/haunt/${pkgname}-${pkgver}.tar.gz"
         "https://files.dthompson.us/haunt/${pkgname}-${pkgver}.tar.gz.asc")
