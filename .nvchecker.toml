@@ -1,0 +1,4 @@
+[gawkextlib]
+source = "regex"
+url = "https://sourceforge.net/projects/gawkextlib/files/"
+regex = "gawkextlib-(\\d+\\.\\d+\\.\\d+)\\.tar\\.gz"
