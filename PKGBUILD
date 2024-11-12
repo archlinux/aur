@@ -2,7 +2,7 @@
 
 pkgname=d8
 pkgver=8.9
-pkgrel=0
+pkgrel=1
 _commit=eaf64f278dd6de99cc2963842e99f718a894e596
 pkgdesc='D8 is a dexer that converts java byte code to dex code.'
 url='https://gitlab.com/android_translation_layer/d8'
