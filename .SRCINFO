@@ -1,0 +1,16 @@
+pkgbase = fumofetch-git
+	pkgdesc = FumoFumo?
+	pkgver = 2024.11.12
+	pkgrel = 1
+	url = https://github.com/System64fumo/fumofetch
+	arch = aarch64
+	arch = riscv64
+	arch = x86_64
+	license = WTFPL
+	makedepends = git
+	makedepends = gcc
+	makedepends = make
+	source = git+https://github.com/System64fumo/fumofetch
+	sha256sums = SKIP
+
+pkgname = fumofetch-git
