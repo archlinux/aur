@@ -1,0 +1,21 @@
+pkgbase = asmsx-bin
+	pkgdesc = Z80 cross-assembler for MSX
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://www.msx.org/wiki/AsMSX
+	arch = x86_64
+	arch = armv7h
+	license = GPL-3.0-or-later
+	depends = glibc
+	provides = asmsx
+	conflicts = asmsx
+	source = README-1.1.0.md::https://github.com/Fubukimaru/asMSX/raw/1ad043b60da9c46c22b563e55f51b5645256ce6e/README.md
+	source = LICENSE-1.1.0.md::https://github.com/Fubukimaru/asMSX/raw/1ad043b60da9c46c22b563e55f51b5645256ce6e/LICENSE.md
+	sha256sums = 03d4c94d3d8a2bab79cd087aa3ea2854eb7e5b417eaf4b73aa79931d2ecdfa17
+	sha256sums = a046cfdd1afe7b4c844c78c23bb66c4318ffeb42f9b563eb813a7fa5159b5030
+	source_x86_64 = asmsx-1.1.0-x86_64::https://github.com/Fubukimaru/asMSX/releases/download/1.1.0-RUN/asmsx-linux-x86_64
+	sha256sums_x86_64 = ff28d7fb39d6bcf27b3fb1a3fcc15bd64c6530bd16a21af4937e5a83f8e17ab0
+	source_armv7h = asmsx-1.1.0-armv7h::https://github.com/Fubukimaru/asMSX/releases/download/1.1.0-RUN/asmsx-linux-armhf
+	sha256sums_armv7h = ed86d05112a19f8dc0939abfce36d1c6a58ccfc98772c8ea28bb1eae03108012
+
+pkgname = asmsx-bin
