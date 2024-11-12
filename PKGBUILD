@@ -1,27 +1,35 @@
-# Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
+# Maintainer: mapleafgo <mapleafgo@163.com>
 pkgname=mqttx-appimage
-pkgver=1.9.3
+pkgver=1.11.0
 pkgrel=1
-pkgdesc="Powerful cross-platform MQTT 5.0 Desktop, CLI, and WebSocket client tools"
-arch=('x86_64')
-url="https://mqttx.app/"
-_githuburl="https://github.com/emqx/MQTTX"
-license=('Apache')
-depends=('zlib' 'glibc')
-_install_path="/opt/appimages"
-options=(!strip)
-conflicts=("${pkgname%-appimage}")
-source=("${pkgname%-appimage}-${pkgver}.AppImage::${_githuburl}/releases/download/v${pkgver}/MQTTX-${pkgver}.AppImage")
-sha256sums=('2444302ea38ffa4385233bf1377813488ceaf43322c08a12d798fdb46f72bd5a')
+pkgdesc="A Powerful and All-in-One MQTT 5.0 client toolbox for Desktop, CLI and WebSocket."
+arch=('x86_64' 'aarch64')
+url="https://github.com/emqx/MQTTX"
+license=('Apache 2.0')
+conflicts=('mqttx-bin'
+		'mqttx-git'
+		'mqttx-clean-bin')
+source_x86_64=(${pkgname}-${pkgver}-x86_64.AppImage::https://github.com/emqx/MQTTX/releases/download/v${pkgver}/MQTTX-${pkgver}.AppImage)
+source_aarch64=(${pkgname}-${pkgver}-aarch64.AppImage::https://github.com/emqx/MQTTX/releases/download/v${pkgver}/MQTTX-${pkgver}-arm64.AppImage)
+md5sums_x86_64=("SKIP")
+md5sums_aarch64=("SKIP")
+_install_path="/opt/mqttx"
 
-prepare() {
-    chmod a+x "${pkgname%-appimage}-${pkgver}.AppImage"
-    "./${pkgname%-appimage}-${pkgver}.AppImage" --appimage-extract > /dev/null
-    sed 's|AppRun|/opt/appimages/mqttx.AppImage|g' -i "${srcdir}/squashfs-root/${pkgname%-appimage}.desktop"
-}
+# pkgver() {
+# 	curl https://api.github.com/repos/emqx/MQTTX/releases/latest | grep tag_name | awk -F '\"' '{print $4}' | awk -F 'v' '{print $2}'
+# }
 
 package() {
-    install -Dm755 "${srcdir}/${pkgname%-appimage}-${pkgver}.AppImage" "${pkgdir}/${_install_path}/${pkgname%-appimage}.AppImage"
-    install -Dm644 "${srcdir}/squashfs-root/usr/share/icons/hicolor/0x0/apps/${pkgname%-appimage}.png" -t "${pkgdir}/usr/share/pixmaps"
-	install -Dm644 "${srcdir}/squashfs-root/${pkgname%-appimage}.desktop" -t "${pkgdir}/usr/share/applications"
+	cd "${srcdir}" && rm -rf "squashfs-root"
+
+	_app="${pkgname}-${pkgver}-${CARCH}.AppImage"
+
+	chmod +x "${_app}" && ./"${_app}" --appimage-extract > /dev/null
+	sed -i "/^Exec=/c\Exec=/usr/bin/mqttx" "${srcdir}/squashfs-root/mqttx.desktop"
+
+	_pkgroot_path="${pkgdir}/${_install_path}"
+	install -d "${_pkgroot_path}" && cp -a "${srcdir}/squashfs-root/." "${_pkgroot_path}" && chmod -R 755 "${_pkgroot_path}"
+	install -Dm644 "${srcdir}/squashfs-root/mqttx.desktop" "${pkgdir}/usr/share/applications/mqttx.desktop"
+	install -Dm644 "${srcdir}/squashfs-root/usr/share/icons/hicolor/0x0/apps/mqttx.png" "${pkgdir}/usr/share/icons/hicolor/512x512/apps/mqttx.png"
+	install -dm755 "${pkgdir}/usr/bin" && ln -sf "${_install_path}/AppRun" "${pkgdir}/usr/bin/mqttx"
 }
