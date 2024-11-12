@@ -1,6 +1,6 @@
 pkgbase = geeqie-git
 	pkgdesc = Lightweight image viewer
-	pkgver = 2.4.r207.g1464215
+	pkgver = 2.5.r25.gd81c5de
 	pkgrel = 1
 	url = https://github.com/BestImageViewer/geeqie
 	arch = x86_64
@@ -21,6 +21,7 @@ pkgbase = geeqie-git
 	makedepends = python
 	makedepends = vim
 	makedepends = yelp-tools
+	depends = cfitsio
 	depends = clutter
 	depends = clutter-gtk
 	depends = djvulibre
@@ -43,7 +44,7 @@ pkgbase = geeqie-git
 	optdepends = imagemagick: command-line tools for various (plugin) operations
 	optdepends = librsvg: SVG rendering
 	optdepends = perl-image-exiftool: for the jpeg extraction plugin
-	provides = geeqie=2.4
+	provides = geeqie=2.5
 	conflicts = geeqie
 	source = geeqie::git+https://github.com/BestImageViewer/geeqie.git
 	sha256sums = SKIP
