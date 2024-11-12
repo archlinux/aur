@@ -3,7 +3,7 @@
 # Contributor: ajbura, hbarsaiyan
 
 pkgname='cinny-desktop-bin'
-pkgver='4.2.2'
+pkgver='4.2.3'
 pkgrel='1'
 pkgdesc='Matrix client focusing primarily on a simple, elegant and secure interface (binary release)'
 arch=('x86_64')
@@ -27,8 +27,8 @@ conflicts=('cinny-desktop')
 provides=('cinny-desktop')
 
 source_x86_64=("${pkgname}-${pkgver}-x86_64.deb::https://github.com/cinnyapp/cinny-desktop/releases/download/v${pkgver}/Cinny_desktop-x86_64.deb")
-sha256sums_x86_64=('8313943bad14b7637b05435fb2dc339b50a3f31cdcb9aefd22082a456c76d8ea')
-sha512sums_x86_64=('3f467cec1dd1004591db308aaa1fef8a0efc4d5ca5415250c38888f2d82496fddee8c0f84d0031c9e349fec8038dafec9b637fef4b8467ca1a33e27f608c127b')
+sha256sums_x86_64=('95b1b31de1fac4965b6007d81425189d027393b07d468f8e8bc862e772e4b3da')
+sha512sums_x86_64=('263494c654f86e717bf2b5aeed168aed90339963b06725ab97be0fc34c4446cd002079837c35272fad6a30164ba42f0c5a65a5f067d36d1f5a10e81d65ce98f3')
 
 install="${pkgname}.install"
 
