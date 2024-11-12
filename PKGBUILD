@@ -10,7 +10,7 @@ makedepends=()
 optdepends=()
 depends=('findutils')
 source=("https://www-verimag.imag.fr/DIST-TOOLS/SYNCHRONE/lustre-v6/pre-compiled/x86_64-Linux-lv6-bin-dist.tgz")
-sha256sums=("8eb998ac91719a93477864337757d645320e6e8c476dd0d9a3d2df1ae00492c1")
+sha256sums=("12ac7fda82c1ec0a027b334861a34b5cc4bf759f996ea52ff70d6adeb0adb7c1")
 
 build() {
 	cd "$srcdir/lv6-bin-dist"
