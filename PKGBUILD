@@ -2,12 +2,12 @@
 
 ## options
 : ${_widgets=qt6}
-: ${_commit=2a48cd1421634f2fdd4ab83bf4e4a5933effcbf0} # 10.0.0
+: ${_commit=c68f4cda022fed633c1b51cbe7718d60c58da2ba} # 10.1.0
 
 _pkgname="peazip"
 pkgname="$_pkgname"
-pkgver=10.0.0
-pkgrel=3
+pkgver=10.1.0
+pkgrel=1
 pkgdesc="Cross-platform file and archive manager (${_widgets^})"
 url="https://github.com/peazip/PeaZip"
 license=('LGPL-3.0-or-later')
@@ -71,14 +71,12 @@ prepare() {
 }
 
 build() {
-  mkdir -p build
-
   local _laz_opts=(
     --build-all
     --cpu="$CARCH"
-    --lazarusdir="/usr/lib/lazarus"
-    --os=linux
-    --primary-config-path=build
+    --lazarusdir='/usr/lib/lazarus'
+    --os='linux'
+    --primary-config-path='config'
     --widgetset="$_widgets"
   )
 
@@ -95,27 +93,27 @@ package() {
   )
   depends+=('hicolor-icon-theme')
 
-  local _current_path
+  local _path_src
 
   # binaries
-  _current_path="$_pkgsrc/peazip-sources/dev"
-  install -Dm755 "$_current_path/peazip" "$pkgdir/usr/bin/peazip"
-  install -Dm755 "$_current_path/pea" "$pkgdir/usr/bin/pea"
+  _path_src="$_pkgsrc/peazip-sources/dev"
+  install -Dm755 "$_path_src/peazip" "$pkgdir/usr/bin/peazip"
+  install -Dm755 "$_path_src/pea" "$pkgdir/usr/bin/pea"
 
   # icons
-  _current_path="$_pkgsrc/peazip-sources/res/share/icons"
-  install -Dm644 "$_current_path"/peazip_{7z,rar,zip}.png -t "$pkgdir/usr/share/icons/hicolor/256x256/mimetypes"
-  install -Dm644 "$_current_path"/peazip_{add,extract,browse,convert}.png -t "$pkgdir/usr/share/icons/hicolor/256x256/actions"
+  _path_src="$_pkgsrc/peazip-sources/res/share/icons"
+  install -Dm644 "$_path_src"/peazip_{7z,rar,zip}.png -t "$pkgdir/usr/share/icons/hicolor/256x256/mimetypes"
+  install -Dm644 "$_path_src"/peazip_{add,extract,browse,convert}.png -t "$pkgdir/usr/share/icons/hicolor/256x256/actions"
 
   # launcher
-  _current_path="$_pkgsrc/peazip-sources/res/share/batch/freedesktop_integration"
-  install -Dm644 "$_current_path"/peazip.png -t "${pkgdir}/usr/share/icons/hicolor/256x256/apps"
-  install -Dm644 "$_current_path"/peazip.desktop -t "$pkgdir/usr/share/applications"
+  _path_src="$_pkgsrc/peazip-sources/res/share/batch/freedesktop_integration"
+  install -Dm644 "$_path_src"/peazip.png -t "${pkgdir}/usr/share/icons/hicolor/256x256/apps"
+  install -Dm644 "$_path_src"/peazip.desktop -t "$pkgdir/usr/share/applications"
 
   # res
-  _current_path="$_pkgsrc/peazip-sources/res/share"
+  _path_src="$_pkgsrc/peazip-sources/res/share"
   install -dm755 "$pkgdir/usr/share/$_pkgname"
-  cp --reflink=auto -a "$_current_path"/{icons,lang,themes} "$pkgdir/usr/share/$_pkgname/"
+  cp --reflink=auto -a "$_path_src"/{icons,lang,themes} "$pkgdir/usr/share/$_pkgname/"
 
   # permissions
   chmod -R u+rwX,go+rX,go-w "$pkgdir/"
