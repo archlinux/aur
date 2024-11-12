@@ -1,31 +1,27 @@
 # Maintainer: Technochips <thetechnochips at protonmail dot com>
 
 pkgname=madness-interactive-reloaded
-pkgver=0.49.4_beta
+pkgver=0.50.0_beta
 pkgrel=1
 pkgdesc='Moddable action video game based on Madness Combat'
 arch=('x86_64')
 url='https://studiominus.nl/madness-interactive-reloaded.html'
-license=('GPL-3.0-only', 'MIT')
-depends=('dotnet-runtime-8.0' 'ffmpeg5.1' 'skia-sharp' 'openal' 'xdg-utils')
+license=('GPL-3.0-only' 'MIT' 'Apache-2.0')
+depends=('dotnet-runtime-8.0' 'ffmpeg5.1' 'skia-sharp' 'openal' 'xdg-utils' 'bash')
 makedepends=('dotnet-sdk-8.0' 'git')
 
 repover=v${pkgver//_/-}
 source=('MIR'
 	'MIR.desktop'
 	'do-not-copy-windows-blobs.patch'
-	'use-local-dependencies.patch'
 	"git+https://github.com/studio-minus/${pkgname}.git#tag=${repover}"
-	'git+https://github.com/mestiez/BigGustave.git#commit=49327bfce72485c6e006066b1438adc7a2af5b71'
-	'git+https://github.com/mestiez/Walgelijk.git#commit=d44f0292d258d0599689b87e6616e54798d8c9fd')
+	'git+https://github.com/mestiez/BigGustave.git#commit=49327bfce72485c6e006066b1438adc7a2af5b71')
 
-sha256sums=('153307fb91e5927968776276594ab14b6f9dc590337a43b1f427b2214baa9e3e'
-	'b44d8dc9eaa7643276b224d000fdbef15f149adff4e2dfc2d6bb4185226bc7a9'
-	'4254ae3c14d2cd6d73fcb29a898dc09da6f67ca2074f3b233f6b69a87e054b72'
-	'08c92ccf349b4f68e6847b41bd58f82ba0816406574696537dc5b2e16fefe6ef'
-	'4d4554c77cd280fb0d97933a722f26b4e4eed85c76b56f3014e1757eacd5f1b8'
-	'9749d429a80e2b960e5ffa50f73c20cca2e45ec5613a38e6fa2752a3f6653397'
-	'724de654123d6d6106279500206c6ecf574981fbf5d9ded925dfc3448a192eb6')
+sha256sums=('3228bd564d9ab3044dfcb3a60f94ba29c320580afd8a4809be9f82e1cca599f8'
+            'b44d8dc9eaa7643276b224d000fdbef15f149adff4e2dfc2d6bb4185226bc7a9'
+            '4254ae3c14d2cd6d73fcb29a898dc09da6f67ca2074f3b233f6b69a87e054b72'
+            'aafc05cbf4bbb4ff16ca58f515a6363dbed060124d0ecf3b863a8077dee0fb6c'
+            '9749d429a80e2b960e5ffa50f73c20cca2e45ec5613a38e6fa2752a3f6653397')
 
 prepare() {
 	cd "$srcdir/$pkgname"
@@ -35,38 +31,17 @@ prepare() {
 	git config submodule.src/BigGustave.url "$srcdir/BigGustave"
 	git -c protocol.file.allow=always submodule update
 
-	ln -sf "$srcdir/Walgelijk/Walgelijk" src/.
-
-	# apply patches
-	
-	# backport multiple linux-related crash fixes. see:
-	# https://github.com/studio-minus/madness-interactive-reloaded/pull/342
-	# https://github.com/studio-minus/madness-interactive-reloaded/pull/361
-	# https://github.com/studio-minus/madness-interactive-reloaded/issues/358
 	echo "Applying backport patches..."
-	git config advice.mergeConflict false # don't display warning, everything's fine.
-	git cherry-pick -n 896ae8c37aa7de99c09a127a75d62b0b3e4e2cdd
-	git cherry-pick -n 7cf59fb2e9d49fc904be6b1774c750d3356a45ba
-	git cherry-pick -n 3447b7dbf06e77c20f62b20bb4e8c8bf7734c32c
-	git cherry-pick -n da6b758e4a15cb70b3f1982e4c9f6aa8bf35f498
-	git cherry-pick -n 7df8a849e7a608552641245d3a2a4dcc28dac7b7 || {
-		git checkout --ours src/MadnessInteractiveReloaded/MIR.csproj
-		git add src/MadnessInteractiveReloaded/MIR.csproj
-	}
-	git cherry-pick -n 9004d8f8b8403fdab6f1d64318d23ac9f1454de4
-	git cherry-pick -n c0a4703bd618334bdaf0a4ceb63a4b10f7fd5442
-	git cherry-pick -n 21ca77ecc8886b8290916930e0a74e98d40044bc
+
+	# fix linux-related crash, see: https://github.com/studio-minus/madness-interactive-reloaded/pull/365
+	git cherry-pick -n 1ac21c5ecf0ffd64f5ffb76047eb2a81006996ec
 
 	# the project copies over ffmpeg dll files by default. we don't need those.
 	patch -Np1 -i "$srcdir/do-not-copy-windows-blobs.patch"
-
-	# we want to use the local walgelijk repo, which has additional linux crashes fixed. see:
-	# https://github.com/mestiez/Walgelijk/pull/23
-	patch -Np1 -i "$srcdir/use-local-dependencies.patch"
 }
 build() {
 	cd "$srcdir/$pkgname/src/MadnessInteractiveReloaded"
-	dotnet build -c Release --os linux -a x64
+	dotnet build -c Release --no-self-contained --runtime linux-x64
 
 	cd bin/Release/net8.0/linux-x64
 

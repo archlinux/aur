@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # convert --input and --output paths to absolute
 args=()
@@ -10,10 +10,10 @@ while [ -n "$1" ]; do
             if [ -z "$1" ]; then
                 break
             fi
-            args+=("$(realpath -m "$1")")
+            args+=("`realpath -m "$1"`")
     esac
     shift
 done
 
 cd /usr/share/MIR
-./MIR ${args[@]}
+./MIR "${args[@]}"
