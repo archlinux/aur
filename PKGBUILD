@@ -1,39 +1,45 @@
-# Maintainer: otaj
+# Maintainer: envolution
+# Contributor: otaj
 # If you also want to test GPU portion of the package, set this to 1. Make sure you have a capable GPU with large enough memory
 TEST_GPU=0
 
 pkgname=python-kornia
 _name=kornia
-pkgver=0.7.0
-pkgrel=1
+pkgver=0.7.4
+pkgrel=2
 arch=(any)
 url='https://github.com/kornia/kornia'
 pkgdesc='Open Source Differentiable Computer Vision Library for PyTorch'
-license=(Apache)
+license=(Apache-2.0)
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-pytest-runner')
 depends=('python-pytorch')
-optdepends=('python-accelerate: To be able to train')
-checkdepends=('python-pytest' 'python-pytest-cov' 'python-pytest-mypy' 'python-pytest-flake8' 'python-scipy' 'python-opencv')
+optdepends=(
+  'python-accelerate: To be able to train'
+  'python-onnx: To use onnx models'
+  'python-onnxruntime: To use onnx runtime'
+  'python-kornia-rs: Low-level Computer Vision library - rust bindings'
+)
+checkdepends=('python-kornia-rs' 'python-accelerate' 'python-pytest' 'python-pytest-cov' 'python-pytest-mypy' 'python-scipy' 'python-opencv')
 options=(!emptydirs)
-# because kornia does not ship `pytest.ini` with their release, we have to get a fat copy of full repo
 source=("${_name}-${pkgver}.zip::${url}/archive/refs/tags/v${pkgver}.zip")
-sha256sums=('a0497c29f2612de9b4fe4266ef6a65c98c45ba04c6c90671bb58a1f0d39d5028')
+sha256sums=('9d9840f0940e277086b8bd183355762ccf25e4e7bc8d87497d2b0d9857938c1a')
 
 build() {
-	cd "${srcdir}/${_name}-${pkgver}"
+	cd "${_name}-${pkgver}"
 	python -m build --wheel --no-isolation
 }
 
 check() {
-	cd "${srcdir}/${_name}-${pkgver}"
-	pytest -v --device cpu --dtype float32,float64 --cov=kornia test/
+        _ignore_tests=("tests/onnx") #array for text exclusion
+	cd "${_name}-${pkgver}"
+	pytest $(printf -- '--ignore=%s ' "${_ignore_tests[@]}") -v -x --device cpu --dtype float32,float64 --cov-fail-under=50 --cov=kornia tests/
 	if ! [ "$TEST_GPU" -eq "0" ]; then
-		pytest -v --device cuda --dtype all --cov=kornia test/
+		pytest $(printf -- '--ignore=%s ' "${_ignore_tests[@]}") -v -x --device cuda --dtype all --cov-fail-under=50 --cov=kornia tests/
 	fi
 }
 
 package() {
-	cd "${srcdir}/${_name}-${pkgver}"
+	cd "${_name}-${pkgver}"
 	python -m installer --destdir="$pkgdir" dist/*.whl
 	install -Dm 644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
