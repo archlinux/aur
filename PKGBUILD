@@ -2,13 +2,13 @@
 # Contributor: Edgar Luque <git@edgarluque.com>
 pkgname=digital
 pkgver=0.31
-pkgrel=3
+pkgrel=4
 pkgdesc="A digital logic designer and circuit simulator."
 arch=('x86_64')
 url="https://github.com/hneemann/Digital"
 license=('GPL-3.0-or-later')
 makedepends=('git' 'maven')
-depends=('java-runtime')
+depends=('java-runtime' 'fontconfig' 'ttf-font')
 source=("$pkgname::git+https://github.com/hneemann/Digital.git")
 sha256sums=("SKIP")
 
