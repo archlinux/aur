@@ -5,8 +5,8 @@
 
 # Maintainer: João Freitas <joaj.freitas at gmail dot com>
 pkgname=plotjuggler
-pkgver='3.9.2'
-pkgrel=4
+pkgver='3.9.3'
+pkgrel=1
 epoch=
 pkgdesc="The Time Series Visualization Tool that you deserve. Without ROS dependencies."
 arch=('x86_64')
@@ -19,7 +19,7 @@ makedepends=(cmake clang)
 _dir="PlotJuggler-${pkgver}"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/facontidavide/PlotJuggler/archive/${pkgver}.tar.gz")
 noextract=()
-sha256sums=('d2edba7aae2c64776cc99f5ccfd80ee158ebb12fe4ebbf8b14063f295649c018')
+sha256sums=('7081fa14e11bc2b84394c707f9c7938088f02fc8239c7ef06175df8c0a60ba2b')
 validpgpkeys=()
 
 prepare() {
