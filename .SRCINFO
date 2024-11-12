@@ -1,0 +1,16 @@
+pkgbase = curl-static-bin
+	pkgdesc = Static musl-compiled curl with the latest features enabled
+	pkgver = 8.11.0
+	pkgrel = 1
+	url = https://github.com/stunnel/static-curl
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = curl-static
+	conflicts = curl-static
+	source_x86_64 = https://github.com/stunnel/static-curl/releases/download/8.11.0/curl-linux-x86_64-musl-8.11.0.tar.xz
+	sha256sums_x86_64 = dde4f793fe38fe095810dc4ad555d6754d76d2624a88ad94a17afb24f570ffaf
+	source_aarch64 = https://github.com/stunnel/static-curl/releases/download/8.11.0/curl-linux-aarch64-musl-8.11.0.tar.xz
+	sha256sums_aarch64 = c78a0ed1832f768c699cefb8c74becf04d51056616a94012cdd05d797664a1ed
+
+pkgname = curl-static-bin
