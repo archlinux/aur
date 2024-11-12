@@ -1,0 +1,4 @@
+[gawk-mpfr]
+source = "regex"
+url = "https://sourceforge.net/projects/gawkextlib/files/"
+regex = "gawk-mpfr-(\\d+\\.\\d+\\.\\d+)\\.tar\\.gz"
