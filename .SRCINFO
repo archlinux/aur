@@ -1,7 +1,7 @@
 pkgbase = python-great-tables
 	pkgdesc = Make awesome display tables using Python
-	pkgver = 0.13.0
-	pkgrel = 4
+	pkgver = 0.14.0
+	pkgrel = 1
 	url = https://posit-dev.github.io/great-tables/
 	arch = any
 	license = MIT
@@ -22,7 +22,7 @@ pkgbase = python-great-tables
 	makedepends = python-pyarrow
 	makedepends = python-pydantic
 	makedepends = quarto
-	makedepends = quartodoc
+	makedepends = quartodoc>=0.8.1
 	depends = ipython
 	depends = python-babel>=2.13.1
 	depends = python-commonmark>=0.9.1
@@ -36,8 +36,8 @@ pkgbase = python-great-tables
 	depends = python-selenium
 	depends = python-typing_extensions>=3.10.0.0
 	depends = python>=3.9
-	source = python-great-tables-0.13.0::git+https://github.com/posit-dev/great-tables.git#tag=3bafd96c87e3593f51e2344f3da4c01c4112913b
-	b2sums = 6d7fcdb2175e22fe0b2d3c480f92199a2d2a590e0f0642e87c9c9aa7b2d8bcef99f8e320b0cb08494cd1721bbc025a096d2e25900bc13e59cccca39f6f8c53f3
+	source = python-great-tables-0.14.0::git+https://github.com/posit-dev/great-tables.git#tag=5913c570b9bc6fc882498755409d32472e8b9994
+	b2sums = 192af743b1e9bff3a8131e552fdc12cd6ada485b6a4dd32390a0de2db94e10e27dd18c5257868449ef9f6f8bd4ac9a12f601679ad35c237b94991b408e48d94b
 
 pkgname = python-great-tables
 

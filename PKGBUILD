@@ -3,11 +3,11 @@
 _name=great-tables
 pkgbase=python-$_name
 pkgname=($pkgbase $pkgbase-docs)
-pkgver=0.13.0
+pkgver=0.14.0
 # setup-tools-scm doesn't get the dependencies right from the tarball sources
 # https://wiki.archlinux.org/title/Talk:Python_package_guidelines#Prefer_VCS_source_for_setuptools-scm_and_friends
-_tag=3bafd96c87e3593f51e2344f3da4c01c4112913b # git rev-parse "v${pkgver}"
-pkgrel=4
+_tag=5913c570b9bc6fc882498755409d32472e8b9994 # git rev-parse "v${pkgver}"
+pkgrel=1
 pkgdesc="Make awesome display tables using Python"
 arch=('any')
 url="https://posit-dev.github.io/great-tables/"
@@ -25,7 +25,7 @@ makedepends=(
     'python-pyarrow'
     'python-pydantic'
     'quarto'
-    'quartodoc'
+    'quartodoc>=0.8.1'
 )
 depends=(
     'ipython'
@@ -52,12 +52,14 @@ checkdepends=(
     'selenium-manager'
 )
 source=("$pkgname-$pkgver::git+https://github.com/posit-dev/great-tables.git#tag=$_tag")
-b2sums=('6d7fcdb2175e22fe0b2d3c480f92199a2d2a590e0f0642e87c9c9aa7b2d8bcef99f8e320b0cb08494cd1721bbc025a096d2e25900bc13e59cccca39f6f8c53f3')
+b2sums=('192af743b1e9bff3a8131e552fdc12cd6ada485b6a4dd32390a0de2db94e10e27dd18c5257868449ef9f6f8bd4ac9a12f601679ad35c237b94991b408e48d94b')
 
 prepare() {
-    # Remove artifacts of previous builds
-    # https://wiki.archlinux.org/title/Python_package_guidelines#Standards_based_(PEP_517)
-   git -C $srcdir/$pkgbase-$pkgver clean -dfx
+    git -C $pkgbase-$pkgver clean -dfx
+
+    # Remove incomplete (work in progress?) documentation that prevents documentation from building
+    # https://github.com/posit-dev/great-tables/issues/507
+    rm -rf $srcdir/$pkgbase-$pkgver/docs/a-latex_examples
 }
 
 check() {
@@ -73,9 +75,9 @@ build() {
     cd $srcdir/$pkgbase-$pkgver
     python -m build --wheel --skip-dependency-check --no-isolation
 
-    cd docs
-    PYTHONPATH=$srcdir/$pkgbase-$pkgver quartodoc build --verbose
-    PYTHONPATH=$srcdir/$pkgbase-$pkgver quarto render
+    python -m installer --destdir=tmp_install dist/*.whl
+    local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
+    PYTHONPATH="${PWD}/tmp_install/${site_packages}" make docs-build
 }
 
 package_python-great-tables() {
@@ -94,5 +96,5 @@ package_python-great-tables-docs() {
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
     cd docs/_site
-    find . -exec install -Dm644 {} "${pkgdir}/usr/share/doc/${pkgbase}/html/{}" \;
+    find . -type f -exec install -Dm644 {} "${pkgdir}/usr/share/doc/${pkgbase}/html/{}" \;
 }
