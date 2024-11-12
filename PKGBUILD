@@ -28,7 +28,7 @@ conflicts=("$pkgname-git")
 provides=("$pkgname")
 
 source=(
-	"https://github.com/$_gituser/$pkgname/archive/refs/tags/v$pkgver.tar.gz"
+	"$pkgname-$pkgver.tar.gz::https://github.com/$_gituser/$pkgname/archive/refs/tags/v$pkgver.tar.gz"
 	run.sh
 )
 sha512sums=(
