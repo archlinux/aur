@@ -1,0 +1,26 @@
+pkgbase = dlib-cuda-git
+	pkgdesc = Cross-platform C++ library using contract programming and modern C++ techniques
+	pkgver = 19.24.6
+	pkgrel = 1
+	url = http://dlib.net
+	arch = x86_64
+	license = BSL-1.0
+	makedepends = cmake
+	makedepends = ninja
+	depends = cblas
+	depends = lapack
+	depends = blas
+	depends = libjpeg-turbo
+	depends = libjxl
+	depends = libpng
+	depends = libwebp
+	depends = libx11
+	depends = cuda
+	depends = cudann
+	optdepends = ffmpeg: for FFmpeg support
+	optdepends = giflib: for GIF support
+	optdepends = sqlite: for sqlite support
+	source = dlib::git+https://github.com/davisking/dlib.git
+	sha256sums = SKIP
+
+pkgname = dlib-cuda-git
