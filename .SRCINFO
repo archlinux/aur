@@ -1,0 +1,23 @@
+pkgbase = clouddm-personal-bin
+	pkgdesc = One-stop multi-source development management tool.(Prebuilt version.Use system-wide electron)一站式多数据源开发管理工具
+	pkgver = 2.9.0
+	pkgrel = 1
+	url = https://www.clougence.com/clouddm-personal
+	arch = x86_64
+	license = LicenseRef-custom
+	makedepends = fuse2
+	depends = electron22
+	depends = nodejs
+	depends = java-runtime
+	provides = clouddm-personal=2.9.0
+	conflicts = clouddm-personal
+	options = !strip
+	options = !emptydirs
+	source = clouddm-personal-2.9.0.AppImage::https://github.com/zxp19821005/My_AUR_Files/releases/download/CloudDM2.9.0/CloudDM-v2.9.0.AppImage
+	source = LICENSE.html::https://www.clougence.com/cc-doc/protocol/terms_of_use
+	source = clouddm-personal.sh
+	sha256sums = 4eafd3a5cbd0f25950a73b4a150b031b9b37b0e9c1762b120181495cc7ec0e59
+	sha256sums = 343936e6d2fe9819c90fcd27d696c98de0b116f915bd303b59d21cf0d1121da7
+	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
+
+pkgname = clouddm-personal-bin
