@@ -4,13 +4,13 @@
 
 pkgname=sncli
 pkgver=0.4.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Simplenote Command Line Interface"
 arch=('any')
 url="https://github.com/insanum/sncli"
 license=('MIT')
 depends=('python-simperium' 'python-urwid')
-makedepends=(python-build python-installer python-wheel)
+makedepends=(python-build python-installer python-wheel python-setuptools)
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/insanum/sncli/archive/refs/tags/${pkgver}.tar.gz", "parser.patch")
 sha256sums=('a155cdc6c05d03a4ceb2212670fff657bc5021e358931679d805eb2e8c227731'
             'b5e6aee48cd5a11d738d829a6671b7528242d2c460e88010d1032480e84749ff')
