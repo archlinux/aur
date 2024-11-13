@@ -2,7 +2,7 @@
 
 pkgbase=meridius-bin-git
 pkgname=("${pkgbase}" "${pkgbase}-electron")
-pkgver=v2.9.7
+pkgver=v3.1.3
 pkgrel=1
 pkgdesc="Free and modern music player for VK. Meridius - it is a beautiful music player for vk.com"
 arch=('x86_64')
@@ -20,6 +20,7 @@ pkgver(){
     releases=(`git tag --sort=-refname`) # sadly not every release has linux version
     for i in ${releases[*]}
     do
+    	[[ "$i" == *"beta"* ]] && continue
         _url="$sourceUrl/releases/download/$i/meridius-${i//v}.tar.gz"
         [[ "$i" == "$pkgver" ]] && break
         curl -o /dev/null --silent --head --fail "$_url" && break
