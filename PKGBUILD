@@ -8,7 +8,7 @@ pkgname=(
 )
 pkgbase=vencord-bin
 _dirname=builds
-pkgver=1.10.6
+pkgver=1.10.7
 pkgrel=1
 pkgdesc="The cutest Discord client mod"
 arch=(any)
@@ -19,9 +19,9 @@ makedepends=(
   git
   unzip
 )
-_commit="4175fee"
+_commit="76ae629"
 source=("git+$_ghurl.git#commit=$_commit")
-sha256sums=('724dee59012dd473e00928a31c396ca3e30ee27fc0257c5c990a55001fb71372')
+sha256sums=('284129b06ff991a4734311683b6a1078081f13789b62d2fa42529754a8477bd3')
 
 package_vencord-bin() {
   depends=(vesktop)
