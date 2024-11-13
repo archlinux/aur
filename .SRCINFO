@@ -1,0 +1,14 @@
+pkgbase = ringfairy
+	pkgdesc = Static webring generator.
+	pkgver = 0.1.3
+	pkgrel = 1
+	url = https://github.com/k3rs3d/ringfairy
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = cargo
+	source = ringfairy-0.1.3-alpha.tar.gz::https://github.com/k3rs3d/ringfairy/archive/refs/tags/v0.1.3-alpha.tar.gz
+	source = ringfairy.toml
+	sha256sums = 38b6777000fa49f627dc3b126d392863c0c2293ce0138f2d748864fbd3a3ef9c
+	sha256sums = fcccc35d4d63489b7ed7dd856b8f03a7fe709976c59c05d3b7d2ab474ff3da32
+
+pkgname = ringfairy

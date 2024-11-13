@@ -1,0 +1,24 @@
+# base_url = "https://webring.domain.tld"
+# ring_name = "Webring"
+# ring_description = "A webring to connect member sites."
+# ring_owner = "Webring Organization / Person"
+# ring_owner_site = "https://domain.tld"
+# path_output = "./webring"           # Generated files will be saved in this folder.
+
+# An example of the filepath list can be found at this URL. You should copy it
+# somewhere else instead of updating the default example.
+# filepath_list = "/usr/share/ringfairy/defaults/websites.json"   # Website list
+
+path_assets = "/usr/share/ringfairy/assets"      # All contents of the asset folder will be copied directly into the output directory
+path_templates = "/us/share/ringfairy/templates" # The folder containing HTML templates to use, ie, anything with {{ tags }}
+
+client_user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.212 Safari/537.36"
+client_header = "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8"
+audit_retries_delay = 100
+audit_retries_max = 2
+
+shuffle = false         # Randomizes website sequence when generating
+verbose = false         # Enables verbose logging
+skip_minify = false     # If your generated HTML have issues, or you want hand-editable output, try skip minification
+skip_verify = false     # Skips verification of the URLs in the list. Might be unwise!
+dry_run = false         # Perform a dry run without writing any files. Can be used to check the site audit for example. 
