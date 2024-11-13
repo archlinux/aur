@@ -2,7 +2,7 @@
 # Contributor: BigfootACA <bigfoot@classfun.cn>
 
 pkgname=python-oslo-policy
-pkgver=4.4.0
+pkgver=4.5.0
 pkgrel=1
 pkgdesc="Rules engine to enforce access control policy"
 arch=(any)
@@ -32,7 +32,7 @@ makedepends=('python-build'
 checkdepends=('python-stestr'
               'python-coverage')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-b2sums=('ee601235332f1bf114b2aa7d5ac3a2137dd7d9f8eb17022059d7a9a113f341292b2d271821ecfc38616dd99d9c46053ee7bdc9eb45220002b2794174e201f2cd')
+b2sums=('c0759467eb12589b25ed0f67e2232a2765521e746831f3be169a4d20f192d45ffd34d05545d52ae19b13444e804a12d2db1db515a68d20ebd8629e4e2dbb7b7d')
 
 prepare() {
     tar zxvf "$pkgname-$pkgver.tar.gz" --strip-components=1 --one-top-level

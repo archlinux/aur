@@ -1,0 +1,3 @@
+[python-oslo-policy]
+source = "git"
+git = "https://opendev.org/openstack/oslo.policy.git"
