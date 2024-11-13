@@ -3,7 +3,7 @@
 _pkgbase=yafu
 pkgname=yafu-git
 pkgrel=1
-pkgver=r617.5b17db8
+pkgver=r640.ee519b2
 pkgdesc="Automated integer factorization."
 url=https://github.com/bbuhrow/yafu
 license=("MIT")
@@ -42,7 +42,7 @@ pkgver() {
 
 build() {
 	cd ${srcdir}/ytools
-    make CC=gcc CFLAGS="$CFLAGS -Wno-error=implicit-function-declaration"
+    make CC=gcc CFLAGS="$CFLAGS -Wno-error=implicit-function-declaration -Wno-error=incompatible-pointer-types"
 	cp libytools.a ${srcdir}/ysieve/
 
 	cd ${srcdir}/ysieve
