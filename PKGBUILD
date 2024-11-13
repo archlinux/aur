@@ -12,7 +12,7 @@ optdepends=("python-seekpath")
 makedepends=(python
              nanobind
              python-build
-             python-installer
+             python-pip
              python-scikit-build-core
              python-setuptools-scm)
 
