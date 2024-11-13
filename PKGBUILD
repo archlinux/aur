@@ -3,7 +3,7 @@
 pkgname=encore
 pkgver=0.1.0rc3
 _pkgver=0.1.0-rc3
-pkgrel=2
+pkgrel=3
 pkgdesc="A lightweight TUI music player."
 arch=('i686' 'x86_64' 'aarch64')
 url="https://github.com/WilliamAnimate/echotune"
@@ -14,21 +14,24 @@ source=("git+https://github.com/WilliamAnimate/echotune.git")
 sha256sums=('SKIP')
 
 prepare() {
-  cd "$pkgname"
+  # cd "$pkgname"
+  cd echotune # FIXME: upstream is yet to rename
   git config --local advice.detachedHead false
   git checkout tags/v${_pkgver}
   git submodule update --remote --init --recursive
 }
 
 build() {
-  cd "$pkgname"
+  # cd "$pkgname"
+  cd echotune # FIXME: upstream is yet to rename
   export RUSTUP_TOOLCHAIN=stable
   cargo build --profile release
 }
 
 package() {
-  cd "$pkgname"
-  install -Dm755 "target/release/encore" "$pkgdir/usr/bin/encore"
+  # cd "$pkgname"
+  cd echotune # FIXME: upstream is yet to rename
+  install -Dm755 "target/release/echotune" "$pkgdir/usr/bin/encore"
   install -Dm644 "README.md" "$pkgdir/usr/share/doc/${pkgname}/README.md"
   install -Dm644 "LICENSE-APACHE" "$pkgdir/usr/share/licenses/${pkgname}/LICENSE-APACHE"
   install -Dm644 "LICENSE-MIT" "$pkgdir/usr/share/licenses/${pkgname}/LICENSE-MIT"

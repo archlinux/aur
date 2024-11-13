@@ -1,7 +1,7 @@
 pkgbase = encore
 	pkgdesc = A lightweight TUI music player.
 	pkgver = 0.1.0rc3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/WilliamAnimate/echotune
 	arch = i686
 	arch = x86_64
