@@ -1,0 +1,18 @@
+pkgbase = python-genio-tools
+	pkgdesc = Tools for flashing boards using MediaTek Genio SoCs
+	pkgver = 1.4.2
+	pkgrel = 1
+	url = https://pypi.org/project/genio-tools
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	options = !strip
+	options = !debug
+	source = https://files.pythonhosted.org/packages/py3/g/genio-tools/genio_tools-1.4.2-py3-none-any.whl
+	sha256sums = 3c8b6dc48892a6f9a88a9ff081caac31dd1f29e31466a8bfa06ed686f05068c0
+
+pkgname = python-genio-tools
