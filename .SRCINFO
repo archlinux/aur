@@ -8,6 +8,6 @@ pkgbase = matugen-bin
 	provides = matugen
 	conflicts = matugen
 	source = https://github.com/InioX/matugen/releases/download/v2.4.0/matugen-2.4.0-x86_64.tar.gz
-	sha256sums = 4d65abd50893d3de488e153f33dddbd36bd05fcb9f6637a3c64d1d46f5c00630
+	sha256sums = 39dfc14a4e96e0ec0c28138ebf3e40ca6f6cf97496c0abf1142ff4ee684d2a30
 
 pkgname = matugen-bin
