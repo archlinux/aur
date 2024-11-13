@@ -1,7 +1,7 @@
 # Contributer: abcfy2 <abcfy2@163.com>
 
 pkgname='deepin-wine8-stable'
-_pkgver=8.16deepin16-1
+_pkgver=8.16deepin25-1
 pkgver=${_pkgver//-/_}
 pkgrel=1
 pkgdesc="Deepin wine8 stable"
@@ -10,27 +10,27 @@ url="http://www.deepin.org"
 license=('Proprietary')
 makedepends=('tar')
 source=(
-    "https://com-store-packages.uniontech.com/appstore/pool/appstore/d/deepin-wine8-stable/deepin-wine8-stable_${_pkgver}_amd64.deb"
+    "https://com-store-packages.uniontech.com/appstorev23/pool/appstore/d/deepin-wine8-stable/deepin-wine8-stable_${_pkgver}_amd64.deb"
 )
 noextract=(
     "deepin-wine8-stable_${_pkgver}_amd64.deb"
 )
-sha256sums=('cf8dc82adfc1e210ae2b0d9658efd645d2f6b3f4a9dd0da6365c2057d65ed145')
+sha256sums=('a272fe1259eab5dc2df4eb32212a1b580a8138bb312a18b0662f54d44592b167')
 depends=(
     alsa-lib                   # libasound2 (>= 1.0.16)
-    glibc                       # libc6 (>= 2.26)
-    libcapi                     # libcapi20-3
+    glibc                       # libc6 (>= 2.38)
+    #libcapi                     # libcapi20-3
     dbus                        # libdbus-1-3 (>= 1.9.16)
-    gcc-libs                    # libgcc1 (>= 1:3.0)
-    glib2                       # libglib2.0-0 (>= 2.37.3)
+    gcc-libs                    # libgcc-s1 (>= 3.0)
+    #glib2                       # libglib2.0-0 (>= 2.37.3)
     libgphoto2                  # libgphoto2-6 (>= 2.5.10),  libgphoto2-port12 (>= 2.5.10)
-    gst-plugins-base            # libgstreamer-plugins-base1.0-0 (>= 1.0.0)
-    gstreamer                   # libgstreamer1.0-0 (>= 1.4.0)
+    #gst-plugins-base            # libgstreamer-plugins-base1.0-0 (>= 1.0.0)
+    #gstreamer                   # libgstreamer1.0-0 (>= 1.4.0)
     libpulse                    # libpulse0 (>= 0.99.1)
-    sane                        # libsane (>= 1.0.24)
+    sane                        # libsane (>= 1.0.27)
     systemd-libs                # libudev1 (>= 183)
-    libusb                      # libusb-1.0-0 (>= 2:1.0.21)
-    wayland                     # libwayland-client0 (>= 1.11.0)
+    #libusb                      # libusb-1.0-0 (>= 2:1.0.21)
+    wayland                     # libwayland-client0 (>= 1.20.0)
     libx11                      # libx11-6
     libxext                     # libxext6
     ocl-icd                     # ocl-icd-libopencl1 | libopencl1,  ocl-icd-libopencl1 (>= 1.0) | libopencl-1.2-1
