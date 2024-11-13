@@ -1,4 +1,4 @@
-# Maintainer: Sven-Hendrik Haase <svenstaro@gmail.com>
+# Maintainer: bartus <arch-user-repoᘓbartus.33mail.com>
 
 pkgname=opencollada
 pkgver=1.6.68
