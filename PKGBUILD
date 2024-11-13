@@ -1,10 +1,10 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=pguirestore-bin
 _pkgname=PgUiRestore
-pkgver=1.3.12
+pkgver=1.3.14
 _electronversion=28
 pkgrel=1
-pkgdesc="Utility to restore postgreSQL backup.Prebuilt version.Use system-wide electron."
+pkgdesc="Utility to restore postgreSQL backup.(Prebuilt version.Use system-wide electron)"
 arch=('x86_64')
 url="https://github.com/RolandoHidalgo/pg-restore-electron"
 license=('LicenseRef-custom')
@@ -21,7 +21,7 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/RolandoHidalgo/pg-restore-electron/v${pkgver}/license.md"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('63b71b0aed10281e8fd6d6b0ba8b2bee460bf6ad0671704f30dfd874049efea7'
+sha256sums=('e6e47c87e976e6a1a06c5cd057672e3e6a415b3b7765c0a8bcde320604dd6d01'
             '52ddca006886ab01105b407d7552255026da4410f42d61c7fd6060a412a6066a'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 build() {
