@@ -1,7 +1,7 @@
 # Maintainer: Trey Blancher $(base64 -d <<< dHJleUBibGFuY2hlci5uZXQK)
 pkgname=nri-mysql-bin
 _pkg=${pkgname/-bin/}
-pkgver=1.10.11
+pkgver=1.11.0
 pkgrel=1
 pkgdesc="MySQL integration for New Relic"
 arch=(aarch64 armv7h x86_64)
@@ -15,9 +15,9 @@ changelog=CHANGELOG
 source_aarch64=(https://github.com/newrelic/${_pkg}/releases/download/v${pkgver}/${_pkg}_linux_${pkgver}_arm64.tar.gz)
 source_armv7h=(https://github.com/newrelic/${_pkg}/releases/download/v${pkgver}/${_pkg}_linux_${pkgver}_arm.tar.gz)
 source_x86_64=(https://github.com/newrelic/${_pkg}/releases/download/v${pkgver}/${_pkg}_linux_${pkgver}_amd64.tar.gz)
-sha256sums_aarch64=('6dd8deaba74bc8fa23c1002d7378e3232d3255918d50fbf1c71bd8fd672fcec8')
-sha256sums_armv7h=('1988d02277a21a6ddaa6a81035c586250633016271f51cb5abd82cc533e2513c')
-sha256sums_x86_64=('677b067cded5cdc123acfec940d1b1a6fad4126557321604ffab8d158257cca8')
+sha256sums_aarch64=('2cc1ca7bcc162afa1b37bab5e7422a95745fd146b74f88da869fec509857f224')
+sha256sums_armv7h=('a78a7f1dd87750a89fd2a22b46d03913cbd38b159e970b638faaccf1de5333d5')
+sha256sums_x86_64=('83426428d433c759c60c354af74eb616043128dff89f28a70433f4bd9b6e44bb')
 
 package() {
     mkdir -p ${pkgdir}/etc/newrelic-infra/integrations.d
