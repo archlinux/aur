@@ -4,11 +4,11 @@
 _pkgname=basilisk
 pkgname=${_pkgname}-bin
 epoch=1
-_buildid_x86_64=20240912184357
-_buildid_i686=20240912184341
-_buildid_aarch64=20240912185821
-_date=2024.09.13
-pkgver=52.9.2024.09.13
+_buildid_x86_64=20241023020251
+_buildid_i686=20241023020234
+_buildid_aarch64=20241023135454
+_date=2024.10.24
+pkgver=52.9.2024.10.24
 pkgrel=1
 pkgdesc="A XUL-based web-browser demonstrating the Unified XUL Platform (UXP)."
 url="https://www.basilisk-browser.org"
@@ -23,12 +23,12 @@ source_x86_64=(https://archive.basilisk-browser.org/${_date}/linux/x86_64/gtk3/b
 source_aarch64=(https://archive.basilisk-browser.org/${_date}/linux/aarch64/gtk3/basilisk-${_buildid_aarch64}.linux-aarch64-gtk3.{tar.xz,json})
 source_i686=(https://archive.basilisk-browser.org/${_date}/linux/i686/gtk3/basilisk-${_buildid_i686}.linux-i686-gtk3.{tar.xz,json})
 sha256sums=('c4223e966bc404467fece4a524cc2db3e99c12455087da2ade9a47b8d99d3a45')
-sha256sums_x86_64=('ac680d08e163aa0f102e5e45b06bfefced7ca058ba6651832c9020cc2f7de196'
-                   'eadfcbddbe71a735510ebf8576268ec553ee72fb0570ce3a957322cf3d4f96ea')
-sha256sums_aarch64=('ac8ba9bb88f42532b554b4913724ed5b8fa75e2b7f0366548a40510144ae8e6f'
-                    '6551b6aed384175a313e8b9f4f38e99c84f5b3ceaebb65c8b77f478a569f9a8a')
-sha256sums_i686=('5f96921ed30e4746213eae5c77cfee219d36ac9b0115228db7e563e8a7dc71ce'
-                 '68f3ce6892501826afb499809d50ad8de326cb5ad0225a50abb370d727120b76')
+sha256sums_x86_64=('429d9a71aab0db3cb1d923a2a302ca3e72574960ade815ca2fa9a58f6de7de99'
+                   'eef976b2893a7b0342692e617a6391f3dd8f30d690c3075aeaf1b9fcf1cd76b4')
+sha256sums_aarch64=('82313299cf2fa2ac385132f11ef9d34966da541a984758fcaaf36ef83f5c3957'
+                    '3d00e632c3af28f4cbf295cbd5710f6b0bce62bd017017bede5ee976845effa3')
+sha256sums_i686=('668c17b8dc33930d2e09f793add8204be9642a1e0a39b38c90c39ad58266ccf7'
+                 '5e6834bcdbf8a317baead07f2b0b59e3ccc9ed1339c9dfd2d2c40cf60e912c49')
 provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}")
 
