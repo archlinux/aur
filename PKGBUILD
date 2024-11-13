@@ -2,7 +2,7 @@
 # Maintainer: Gabe Cook <gabe565@gmail.com>
 
 pkgname='cli-of-life-bin'
-pkgver=0.4.1
+pkgver=0.4.2
 pkgrel=1
 pkgdesc='Play Conways Game of Life in your terminal'
 url='https://github.com/gabe565/cli-of-life'
@@ -11,14 +11,14 @@ license=('Apache2')
 provides=('cli-of-life')
 conflicts=('cli-of-life')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/gabe565/cli-of-life/releases/download/v0.4.1/cli-of-life_0.4.1_linux_arm64.tar.gz")
-sha256sums_aarch64=('08100664d75044a2cfc5bb8df0999932528da41cda29bd192ccedc62a35124eb')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/gabe565/cli-of-life/releases/download/v0.4.2/cli-of-life_0.4.2_linux_arm64.tar.gz")
+sha256sums_aarch64=('0afb3576262f589b7c02f6a36e0aee2247245bdf97733f27ff2526b6ade0483e')
 
-source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/gabe565/cli-of-life/releases/download/v0.4.1/cli-of-life_0.4.1_linux_armv7.tar.gz")
-sha256sums_armv7h=('8e8f3df8cf0acbb9d6ba85a988db3643cca2611518feb08b0d0790dc540150f1')
+source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/gabe565/cli-of-life/releases/download/v0.4.2/cli-of-life_0.4.2_linux_armv7.tar.gz")
+sha256sums_armv7h=('b576fb4baad6da1e479e052eef0311b0adf3f70ed1fafafb6fa4d3691b3a323e')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/gabe565/cli-of-life/releases/download/v0.4.1/cli-of-life_0.4.1_linux_amd64.tar.gz")
-sha256sums_x86_64=('a6262fc2be566fc42797dfa9623ea5001f4f5ee5e4b62de410d331835f877b14')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/gabe565/cli-of-life/releases/download/v0.4.2/cli-of-life_0.4.2_linux_amd64.tar.gz")
+sha256sums_x86_64=('af9244f5cfd70dd0ca2b57b04da1e76b1a8afbdb3918c3341f8b97cd60fe0574')
 
 package() {
   # bin
