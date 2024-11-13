@@ -1,4 +1,5 @@
-# Maintainer: revsuine <paradoor at protonmail dot com>
+# Maintainer: revsuine <pid1 at revsuine dot xyz>
+
 _pkgname=wayneko
 pkgname=$_pkgname-git
 pkgver=r29.c1919dc
