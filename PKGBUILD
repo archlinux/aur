@@ -3,12 +3,12 @@
 pkgname=php-uv
 _extname=uv
 pkgver=0.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="PHP libuv wrapper"
 arch=(any)
 url="https://github.com/amphp/ext-uv"
 license=('PHP')
-depends=('php')
+depends=('php' 'libuv')
 source=("http://pecl.php.net/get/$_extname-$pkgver.tgz")
 backup=("etc/php/conf.d/$_extname.ini")
 packager="Daniil Gentili <daniil@daniil.it>"
