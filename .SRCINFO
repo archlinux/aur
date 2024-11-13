@@ -1,16 +1,16 @@
 pkgbase = fortio-bin
-	pkgdesc = Fortio load testing library, command line tool, advanced echo server and web UI in go (golang). Allows to specify a set query-per-second load and record latency histograms and other useful stats
-	pkgver = 1.67.1
+	pkgdesc = Fortio load testing library, command line tool, advanced echo server and web UI in go (golang). Allows to specify a set query-per-second load and record latency histograms and other useful stats.(Prebuilt version)
+	pkgver = 1.68.0
 	pkgrel = 1
 	url = https://fortio.org
 	arch = aarch64
 	arch = x86_64
 	license = Apache-2.0
-	provides = fortio=1.67.1
+	provides = fortio=1.68.0
 	conflicts = fortio
-	source_aarch64 = fortio-1.67.1-aarch64.deb::https://github.com/fortio/fortio/releases/download/v1.67.1/fortio_1.67.1_arm64.deb
-	sha256sums_aarch64 = 44e175c5ac60b4d507c5048ccbb17f34f428c24abf0eac9324f4a6477d8673bb
-	source_x86_64 = fortio-1.67.1-x86_64.deb::https://github.com/fortio/fortio/releases/download/v1.67.1/fortio_1.67.1_amd64.deb
-	sha256sums_x86_64 = 0dc7dc2651a6a295dc4e199e4c31f9cb769ae9befef2219d429190773e2a56bd
+	source_aarch64 = fortio-1.68.0-aarch64.deb::https://github.com/fortio/fortio/releases/download/v1.68.0/fortio_1.68.0_arm64.deb
+	sha256sums_aarch64 = 0f9bf17734cc4e3b9981275dba115fb2b1bab2b60d2fa6b478650187ed05745b
+	source_x86_64 = fortio-1.68.0-x86_64.deb::https://github.com/fortio/fortio/releases/download/v1.68.0/fortio_1.68.0_amd64.deb
+	sha256sums_x86_64 = 8e87ea0dc3e320b425345743491638c6fdb5cd66fe2c795b75abd7dcc3e2a794
 
 pkgname = fortio-bin
