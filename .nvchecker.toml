@@ -1,0 +1,5 @@
+[boosteroid]
+source="cmd"
+cmd='''
+curl -A 'Mozilla' -fLC - --retry 3 --retry-delay 3 https://boosteroid.com/linux/installer/boosteroid-install-x64.md5 | grep -oP "Boosteroid-\K[^-]+"
+'''
