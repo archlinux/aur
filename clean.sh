@@ -1,6 +1,6 @@
 #!/bin/bash
 
-rm *.tar.zst
-rm *.tar.gz
-rm -r src/
-rm -r pkg/
+rm -f *.tar.zst
+rm -f *.tar.gz
+rm -f -r src/
+rm -f -r pkg/

@@ -1,6 +1,6 @@
 # Maintainer: Daniil Redchin <redchindaniil@gmail.com> <github.com/USSURATONCACHI>
 pkgname=novpn
-pkgver=1.3.0
+pkgver=1.3.1
 pkgrel=1
 pkgdesc="CLI tool to easily run programs with access to only one network device"
 arch=('any')
@@ -14,7 +14,7 @@ makedepends=('coreutils')
 install=novpn.install
 
 source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('3840b1d61f2b4a9b1834dbc011a44ac8d8dc54bb44f0c0e0e16e9fa8e8c26ba3')
+sha256sums=('c1c20ff5bebddb8bc6615d156cf052bdfa46cf892ff2f35ca8e01ef5e686639a')
 
 
 package() {
