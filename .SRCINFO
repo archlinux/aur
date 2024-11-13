@@ -1,0 +1,15 @@
+pkgbase = go-webring-git
+	pkgdesc = Simple webring implementation created for Fediring.
+	pkgver = r59.0b80d60636e1
+	pkgrel = 1
+	url = https://git.sr.ht/~amolith/go-webring
+	arch = x86_64
+	license = BSD-style
+	makedepends = git
+	makedepends = go
+	provides = go-webring
+	conflicts = go-webring
+	source = git+https://git.sr.ht/~amolith/go-webring
+	sha256sums = SKIP
+
+pkgname = go-webring-git
