@@ -1,12 +1,13 @@
 pkgbase = libnfc-nci-pn5xx-git
-	pkgdesc = Linux NFC stack for NCI based NXP NFC Controllers (PN7150, PN7120). For i2c transport. Patched for Thinkpad NPC300/PN548 NXP I2C module.
-	pkgver = 1.0.0
+	pkgdesc = NFC stack for NXP NFC Controllers targeting NPC300/PN548 with i2c transport
+	pkgver = 1.0.0.r74.g7ce9c8a
 	pkgrel = 1
 	url = https://github.com/StarGate01/linux_libnfc-nci
 	arch = any
-	license = GPL2
+	license = Apache-2.0
 	makedepends = git
-	depends = nxp-pn5xx-dkms-git
+	depends = nxp-pn5xx-dkms
+	provides = libnfc-nci-pn5xx=1.0.0.r74.g7ce9c8a
 	conflicts = libnfc-nci-lpcusbsio
 	conflicts = libnfc-nci-i2c
 	conflicts = libnfc-nci-alt
