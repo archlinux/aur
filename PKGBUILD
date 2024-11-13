@@ -3,14 +3,14 @@
 pkgbase=ente
 _pkgbase=ente-photos
 pkgname=(ente-server ente-web) 
-pkgver=0.9.16
+pkgver=0.9.53
 pkgrel=0
 pkgdesc="End to End Encrypted alternative to Google Photos" 
 arch=('x86_64')
 url="https://github.com/ente-io/ente"
 license=('AGPLv3')
 depends=('libsodium')
-makedepends=('go' 'git' 'nodejs' 'yarn')
+makedepends=('go' 'git' 'nodejs-lts-iron' 'yarn')
 source=("${_pkgbase}-$pkgver.tar.gz::$url/archive/refs/tags/photos-v${pkgver}.tar.gz"
         "ente-museum.service"
         "sysusers.conf"
@@ -19,7 +19,7 @@ source=("${_pkgbase}-$pkgver.tar.gz::$url/archive/refs/tags/photos-v${pkgver}.ta
         "git+https://github.com/ente-io/PhotoSwipe.git"
         "git+https://github.com/abhinavkgrd/ffmpeg.wasm.git")
 backup=('etc/ente/configurations/local.yaml')
-sha256sums=('9ab2e9334231d299faade89f5c5e320c8fc23d0809e75096cc6dfdc49e644f2a'
+sha256sums=('94b8b8722b46a20c47023a3008bded65cd62c7889e9fa64e5e8d8359b48bd293'
             'd632886a9068ee4a2cdd6bccbd7cf87dc196660b45a0888d5b50f4565365af1c'
             '49f07f3e3519b242b12aaa7d8d10c5e1fa934a6ccdf8bfda0bd41c55654c37c2'
             'eb8f5dbec1e34ef68b733cb73d93cb854e81fea278727b5f914dab2d578371e0'
@@ -64,6 +64,7 @@ build() {
 # web
     echo "Build web"
     cd "$srcdir/${_pkgbase}-v$pkgver/web"
+    git submodule update --init --recursive
     yarn install
     yarn next telemetry disable
 #    NEXT_PUBLIC_ENTE_ENDPOINT=http://localhost:8080 yarn build
