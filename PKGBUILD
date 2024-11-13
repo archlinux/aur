@@ -7,7 +7,7 @@ _TESTS=0 #Set to 1 to enable tests.  Warning - they are slow and won't work well
 
 pkgname='testssl.sh-git'
 _pkgname='testssl.sh'
-pkgver=v3.2rc3+r4638+g245ad2ae4
+pkgver=3.2rc3+r4638+g245ad2ae4
 pkgrel=1
 pkgdesc="Testing TLS/SSL encryption (git version)"
 arch=('any')
@@ -32,7 +32,7 @@ pkgver() {
   _version=$(git tag --sort=-v:refname --list | head -n1)
   _commits=$(git rev-list --count HEAD)
   _short_commit_hash=$(git rev-parse --short=9 HEAD)
-  echo "${_version}+r${_commits}+g${_short_commit_hash}"
+  echo "${_version#'v'}+r${_commits}+g${_short_commit_hash}"
 }
 
 prepare() {
@@ -42,7 +42,7 @@ prepare() {
 }
 
 check() {
-  #These tests can take an extrelely long time and rely on external services
+  #These tests can take an extremely long time and rely on external services
   #and assume no port filtering both ways.  Default to off even if makepkg has
   #it enabled
   if [ $_TESTS == 1 ]; then
