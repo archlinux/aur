@@ -1,5 +1,7 @@
 [boosteroid]
 source="cmd"
+#curl -A 'Mozilla' -fLC - --retry 3 --retry-delay 3 https://boosteroid.com/linux/installer/boosteroid-install-x64.md5 | grep -oP "Boosteroid-\K[^-]+"
+#changed to Updates.xml as recommended by Mark@Boosteroid
 cmd='''
-curl -A 'Mozilla' -fLC - --retry 3 --retry-delay 3 https://boosteroid.com/linux/installer/boosteroid-install-x64.md5 | grep -oP "Boosteroid-\K[^-]+"
+curl -A 'Mozilla' -fLC - --retry 3 --retry-delay 3 https://boosteroid.com/linux/client/Updates.xml | xmllint --xpath 'string(//PackageUpdate[Name="Boosteroid"]/Version)' -
 '''
