@@ -3,12 +3,12 @@
 _pkgname=owncloud-client-desktop-shell-integration-dolphin
 pkgname=${_pkgname}-git
 pkgver=r21.f0e60f4
-pkgrel=1
+pkgrel=2
 pkgdesc='ownCloud Dolphin integration'
 url="https://github.com/owncloud/client-desktop-shell-integration-dolphin"
 license=('GPL-2.0')
 arch=('any')
-depends=('owncloud-client' 'owncloud-client-desktop-shell-integration-resources-git')
+depends=('owncloud-client')
 makedepends=('git' 'cmake' 'extra-cmake-modules>=5.52.0')
 source=("${_pkgname}::git+${url}.git")
 sha256sums=('SKIP')
@@ -20,6 +20,7 @@ pkgver() {
 
 build() {
   cd "$srcdir/$_pkgname"
+  git apply ../../dependency.patch
   mkdir -p build
   cd build
   cmake -DCMAKE_BUILD_TYPE=release ..
