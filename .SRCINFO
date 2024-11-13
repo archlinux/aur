@@ -1,0 +1,17 @@
+pkgbase = perl-object-pad
+	pkgdesc = a simple syntax for lexical field-based objects
+	pkgver = 0.813
+	pkgrel = 1
+	url = https://metacpan.org/pod/Object::Pad
+	arch = any
+	license = Artistic-1.0-Perl
+	license = GPL-1.0-or-later
+	makedepends = perl-module-build
+	depends = perl-file-sharedir
+	depends = perl-xs-parse-keyword
+	depends = perl-xs-parse-sublike
+	options = !emptydirs
+	source = https://cpan.metacpan.org/authors/id/P/PE/PEVANS/Object-Pad-0.813.tar.gz
+	sha512sums = 3a40263a5b12cf73675dd1d5981a1e9fdc8048baaefd0ee47c100dfe55e91a3a9ff6d26937b59567a9e72d3bb8d7e02507bb474cf5d9b8afe7f9bce1cef7b12b
+
+pkgname = perl-object-pad
