@@ -1,17 +1,17 @@
 # Maintainer: mark.blakeney at bullet-systems dot net
 pkgname=pystand
-pkgver=1.12
+pkgver=2.0
 pkgrel=1
 pkgdesc="Install Python Versions From The Python-Build-Standalone Project"
 url="https://github.com/bulletmark/$pkgname"
 license=(GPL-3.0-or-later)
 arch=(any)
 depends=("python>=3.8" "python-argcomplete" "python-packaging"
-         "python-platformdirs" "python-pygithub")
+         "python-platformdirs" "python-pygithub" "python-zstandard")
 makedepends=(python-setuptools python-build python-installer
              python-wheel python-setuptools-scm)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha1sums=('e289fd73010392e54c3f5e40e55416bbcd214096')
+sha1sums=('aa1ad4ed2f3cc41dddd0512dff31da9e4949a68e')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
