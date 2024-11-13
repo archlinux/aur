@@ -1,5 +1,5 @@
 pkgname=rustybrain
-pkgver=0.1.1
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="A CLI based Task Management App for Archlinux"  # Replace with an actual description
 arch=('x86_64')
