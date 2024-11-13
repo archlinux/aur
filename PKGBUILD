@@ -3,7 +3,7 @@
 # Contributor : Kr1ss $(echo \<kr1ss+x-yandex+com\>|sed s/\+/./g\;s/\-/@/)
 # Contributor : mickael9 <mickael9 at gmail dot com>
 pkgname=wapiti
-pkgver=3.2.0
+pkgver=3.2.1
 pkgrel=1
 pkgdesc='Comprehensive web app vulnerability scanner written in Python'
 arch=('any')
@@ -20,7 +20,7 @@ depends=(
 )
 makedepends=(
   'python-setuptools'
-  'git'
+  'python-pip'
 )
 optdepends=(
   'python-requests-kerberos: Kerberos authentication'
@@ -30,11 +30,11 @@ options=(
   'zipman'
 )
 source=(
-  "${pkgname}.git::git+${_ghurl}.git#tag=${pkgver}"
+  "${pkgname}-${pkgver}.tar.gz::${_ghurl}/archive/refs/tags/${pkgver}.tar.gz"
 )
-sha256sums=('6ae95dbe20c13c308409f757ef2af31d6d361b2861805f83e3756f0d64c01980')
+sha256sums=('07f966ccb4a408b56f373730a78ccbe83b00f78ed73d87e9cea9490534c4095c')
 package() {
-    cd "${srcdir}/${pkgname}.git"
+    cd "${srcdir}/${pkgname}-${pkgver}"
     # Use pip to install the package into the pkg directory
     python -m pip install . --no-deps --ignore-installed --no-warn-script-location \
         --prefix=/usr --root="${pkgdir}"
