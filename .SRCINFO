@@ -1,12 +1,12 @@
 pkgbase = tpi
 	pkgdesc = Official Turing-Pi2 CLI tool
 	pkgver = 1.0.7
-	pkgrel = 2
+	pkgrel = 1
 	url = https://turingpi.com/
 	arch = any
 	license = Apache
 	makedepends = cargo
 	source = git+https://github.com/turing-machines/tpi.git#tag=v1.0.7
-	md5sums = bbaa8d11bc6a2a0b2abe16a4f9813e59
+	sha256sums = SKIP
 
 pkgname = tpi

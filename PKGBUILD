@@ -3,27 +3,27 @@ pkgname=tpi
 pkgver=1.0.7
 pkgdesc='Official Turing-Pi2 CLI tool'
 source=("git+https://github.com/turing-machines/tpi.git#tag=v1.0.7")
-pkgrel=2
+pkgrel=1
 url=https://turingpi.com/
 license=('Apache')
 makedepends=('cargo')
 arch=('any')
 
 prepare() {
-    cd $pkgname
+    cd tpi
     export RUSTUP_TOOLCHAIN=stable
     cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
 build() {
-    cd $pkgname
+    cd tpi
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
     cargo build --frozen --release --target "$CARCH-unknown-linux-gnu"
 }
 
 check() {
-    cd $pkgname
+    cd tpi
     export RUSTUP_TOOLCHAIN=stable
     cargo test --frozen
 }
@@ -33,7 +33,8 @@ mkdir -p ${pkgdir}/usr/bin
 mkdir -p ${pkgdir}/usr/share/doc/tpi
 install -m 755 ${srcdir}/${pkgname}/target/${TARGET}/release/tpi ${pkgdir}/usr/bin/tpi
 install -m 644 ${srcdir}/${pkgname}/README.md ${pkgdir}/usr/share/doc/tpi/README.md
-install -m 644 ${srcdir}/${pkgname}/LICENSE ${pkgdir}/usr/share/doc/tpi/copyright\n
+install -m 644 ${srcdir}/${pkgname}/LICENSE ${pkgdir}/usr/share/doc/tpi/copyright
 }
-md5sums=('bbaa8d11bc6a2a0b2abe16a4f9813e59')
 
+sha256sums=('SKIP')
+sha256sums=('SKIP')
