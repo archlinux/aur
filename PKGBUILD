@@ -6,10 +6,10 @@ _git_branch="master"
 pkgname="${_pkgbase}-dkms-git"
 pkgver=0.0.1.r9.g32ed027
 pkgrel=1
-pkgdesc="NXP's NFC Open Source Kernel mode driver with ACPI autodiscovery."
+pkgdesc="Kernel mode driver for NXP pn5xx NFC readers with ACPI autodiscovery"
 arch=('any')
 url="https://github.com/jr64/nxp-pn5xx"
-license=('GPL2')
+license=('GPL-2.0-only')
 depends=('dkms')
 provides=("${_pkgbase}-dkms=${pkgver}")
 conflicts=("${_pkgbase}")
