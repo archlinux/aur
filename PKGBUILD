@@ -44,7 +44,6 @@ function prepare(){
 	pnpm i
 	pnpm check
 	cd "${srcdir}/clash-nyanpasu/backend/tauri"
-	cargo update
 	cd "${srcdir}/clash-nyanpasu"
 	pnpm -r build
 }
