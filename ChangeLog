@@ -1030,3 +1030,12 @@ Fixes:
 Fixes:
 - It was not possible to add vide conferencing to Scheduling links and Open Invites. This has been rectified in v. 3.5.13.
 
+
+=== Morgen 3.6.0
+New Features:
+- Morgen's AI Planner creates daily to weekly plans, recommending when to work on which tasks. Daily plans are designed based on your capacity, task priorities and upcoming due dates, and preferred way of structuring your day. It can plan your day with tasks from your integrated tools and Morgen tasks. Before the recommended plan is scheduled, you can adjust it so it's just right. Morgen AI Planner is available in the Morgen Pro plan.
+- Use Frames to template your ideal ordinary week. Each Frame is a block of time devoted to a certain type of task you want to tackle - be it for protected deep work, quick wins, personal to-dos, or learning goals. You can use Frames as guidance for manually scheduling your tasks or paired with the AI Planner to ensure the right types of tasks will be time-blocked at those times.
+
+Fixes:
+- The date picker now respects the "First day of the week" setting.
+- Obsidian "Lowest" priority now correctly maps to Low priority in Morgen.
