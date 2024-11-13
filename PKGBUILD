@@ -1,4 +1,4 @@
-# Maintainer: Sven Rademakers <sven@turingpi.com>
+# Maintainer: Sven Rademakers <sven.rademakers@gmail.com>
 pkgname=tpi-git
 pkgver=1.0.7
 pkgdesc='Official Turing-Pi2 CLI tool'
@@ -29,12 +29,13 @@ check() {
     cargo test --frozen
 }
 package() {
-    TARGET=$CARCH-unknown-linux-gnu
+TARGET=$CARCH-unknown-linux-gnu
+pkgname=tpi
 mkdir -p ${pkgdir}/usr/bin
 mkdir -p ${pkgdir}/usr/share/doc/tpi
-install -m 755 ${srcdir}/tpi/target/${TARGET}/release/tpi ${pkgdir}/usr/bin/tpi
-install -m 644 ${srcdir}/tpi/README.md ${pkgdir}/usr/share/doc/tpi/README.md
-install -m 644 ${srcdir}/tpi/LICENSE ${pkgdir}/usr/share/doc/tpi/copyright
+install -m 755 ${srcdir}/${pkgname}/target/${TARGET}/release/tpi ${pkgdir}/usr/bin/tpi
+install -m 644 ${srcdir}/${pkgname}/README.md ${pkgdir}/usr/share/doc/tpi/README.md
+install -m 644 ${srcdir}/${pkgname}/LICENSE ${pkgdir}/usr/share/doc/tpi/copyright
 }
 
 sha256sums=('SKIP')
