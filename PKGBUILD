@@ -2,7 +2,7 @@
 
 pkgname=vv
 pkgver=1.0
-pkgrel=2
+pkgrel=3
 license=(BSD-3-Clause)
 url="https://github.com/wolfpld/vv"
 pkgdesc="Terminal image viewer"
@@ -24,14 +24,14 @@ depends=(
 )
 
 source=(
-	"$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v1.0.tar.gz"
+	"$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
 	"base64::git+https://github.com/aklomp/base64.git#tag=v0.5.2"
-	"tracy::git+https://github.com/wolfpld/tracy.git#tag=master"
+	"tracy::git+https://github.com/wolfpld/tracy.git" # master
 	"stb::git+https://github.com/nothings/stb.git#tag=2e2bef463a5b53ddf8bb788e25da6b8506314c08"
 )
 sha256sums=('c2c94e4d2fb02a9e14ebb3d1fbf2f31a4c6b1f923cbd44108311389c16e317d0'
             'c2139ed6cc36779410ebf291df9f231145ed1c8ee0f16b6046331daa686058b7'
-            '37652d6c629f45b4476b19c8b42fe601ef303a3f1d10b902c683e15825fdb4aa'
+            'SKIP'
             'e2e76a8585a9b52cd0d774a4637a55f0ab9edb3ba10f852f69e1243134c17b90')
 
 build() {
