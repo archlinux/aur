@@ -2,12 +2,17 @@
 # Maintainer: Dirk Sohler <spam@0x7be.de>
 
 pkgbase='luanti-modern'
+
 pkgname=('luanti-client' 'luanti-server' 'luanti-common' 'luanti-documentation')
+conflicts=('minetest>5.9' 'minetest-server>5.9' 'minetest-common>5.9')
+
 pkgver=5.10.0
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
+
 url='https://luanti.org/'
 license=('LGPL')
+
 pkgdesc='Luanti (formerly “Minetest”) as split-package build for server and client and common data and documentation, using a more modern and strict approach and explicitly trying to only use the new name only.'
 
 
@@ -105,8 +110,6 @@ build() {
 
 package_luanti-client() {
     pkgdesc='Luanti voxel game engine client'
-    conflicts=('minetest')
-    provides=('minetest')
     depends=(
         'curl'
         'desktop-file-utils'
@@ -133,6 +136,7 @@ package_luanti-client() {
 
     # Remove unwanted files
     rm "${pkgdir}/usr/share/applications/net.minetest.minetest.desktop"
+    rm "${pkgdir}"/usr/bin/minetest
     rm -rf "${pkgdir}"/usr/share/{luanti,doc,man}
 
     # Fix metainfo
@@ -145,8 +149,6 @@ package_luanti-client() {
 
 package_luanti-server() {
     pkgdesc='Server for the Luanti voxel game engine'
-    conflicts=('minetest-server')
-    provides=('minetest-server')
     depends=(
         'curl'
         'hiredis'
@@ -162,7 +164,6 @@ package_luanti-server() {
     # Build Luanti server
     cd build_luanti-server
     DESTDIR="${pkgdir}" ninja install
-    rm -rf "${pkgdir}/usr/share/"
 
     # Server files
     install -d "${pkgdir}/etc/luanti"
@@ -170,16 +171,15 @@ package_luanti-server() {
     install -Dm644 "${srcdir}/tmpfiles.d" "${pkgdir}/usr/lib/tmpfiles.d/luanti-server.conf"
     install -Dm644 "${srcdir}/sysusers.d" "${pkgdir}/usr/lib/sysusers.d/luanti-server.conf"
 
-    # Set up alias to support old name dependencies
-    ln -s '/etc/luanti' "${pkgdir}/etc/minetest"
+    # Remove unwanted files
+    rm -rf "${pkgdir}/usr/share/"
+    rm "${pkgdir}"/usr/bin/minetestserver
 }
 
 
 package_luanti-common() {
     pkgdesc='Common files for the Luanti client and server'
     license=('custom')
-    conflicts=('minetest-common')
-    provides=('minetest-common')
 
     # Shared files/directories
     cd luanti-${pkgver}
@@ -187,16 +187,12 @@ package_luanti-common() {
     install -Dm644 LICENSE.txt "${pkgdir}/usr/share/licenses/luanti/LICENSE.txt"
     cp -r games builtin client fonts textures "${pkgdir}"/usr/share/luanti/
     cp -r "${srcdir}/build_luanti-client/locale" "${pkgdir}/usr/share/luanti/"
-
-    # Set up alias to support old name dependencies
-    ln -s '/usr/share/luanti' "${pkgdir}/usr/share/minetest"
 }
 
 
 package_luanti-documentation() {
     pkgdesc='(Mostly) Markdown documentation for the Luanti voxel game engine, including client and server manpages'
     license=('custom')
-    depends=('luanti-common')
 
     cd ${srcdir}/luanti-${pkgver}
 
@@ -213,7 +209,7 @@ package_luanti-documentation() {
     install -dm644 "${pkgdir}/usr/share/man/man6/"
     install -Dm644 doc/luanti{,server}.6 "${pkgdir}/usr/share/man/man6/"
 
-    # Remove unneeded files
+    # Remove unwanted files
     rm "${pkgdir}/usr/share/luanti/doc/lua_api.txt"
     rm "${pkgdir}/usr/share/luanti/doc/lgpl-2.1.txt"
 }
