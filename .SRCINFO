@@ -1,11 +1,11 @@
 pkgbase = testssl.sh-git
 	pkgdesc = Testing TLS/SSL encryption (git version)
-	pkgver = v3.0.r711.ge35f0e8
-	pkgrel = 2
+	pkgver = 3.2rc3+r4638+g245ad2ae4
+	pkgrel = 1
 	url = https://github.com/drwetter/testssl.sh
 	install = testssl.sh.install
 	arch = any
-	license = GPL2
+	license = GPL-2.0-or-later
 	checkdepends = perl-data-dump
 	checkdepends = perl-json
 	checkdepends = perl-test-base

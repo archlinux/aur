@@ -1,49 +1,64 @@
-# Maintainer: Johannes Schleifenbaum <johannes [at] js-webcoding [dot] de>
+# Maintainer: envolution
+# Contributor: Johannes Schleifenbaum <johannes [at] js-webcoding [dot] de>
 # Please report issues at https://github.com/jojosch/pkgbuilds
 # fixed by Timo Sarawinski <muhviehstarr>
 
+_TESTS=0 #Set to 1 to enable tests.  Warning - they are slow and won't work well past firewalls
+
 pkgname='testssl.sh-git'
-pkgver=v3.0.r711.ge35f0e8
-pkgrel=2
+_pkgname='testssl.sh'
+pkgver=v3.2rc3+r4638+g245ad2ae4
+pkgrel=1
 pkgdesc="Testing TLS/SSL encryption (git version)"
 arch=('any')
 url="https://github.com/drwetter/testssl.sh"
-license=("GPL2")
+license=("GPL-2.0-or-later")
 depends=('perl' 'bash' 'coreutils' 'util-linux' 'openssl' 'bind-tools' 'procps-ng')
 makedepends=('git')
 checkdepends=('perl-data-dump' 'perl-json' 'perl-test-base')
 conflicts=('testssl.sh')
 provides=('testssl.sh')
-install="${pkgname/-git/}.install"
+install="${_pkgname}.install"
 source=(
-    "${pkgname}::git+https://github.com/drwetter/${pkgname/-git/}.git"
-    'set-install-dir.patch'
+  "${pkgname}::git+https://github.com/drwetter/testssl.sh.git"
+  'set-install-dir.patch'
 )
 sha256sums=('SKIP'
             'ed81981de5d8f41de3a36f30fca283d2f668d62da1eda71d3799aa10bd49b617')
 
-pkgver () {
-    cd "${srcdir}/${pkgname}"
-    git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+pkgver() {
+  cd ${pkgname}
+
+  _version=$(git tag --sort=-v:refname --list | head -n1)
+  _commits=$(git rev-list --count HEAD)
+  _short_commit_hash=$(git rev-parse --short=9 HEAD)
+  echo "${_version}+r${_commits}+g${_short_commit_hash}"
 }
 
 prepare() {
-    cd "${srcdir}/${pkgname}"
-    patch -p0 < "${srcdir}/set-install-dir.patch"
-    rm bin/openssl.Linux*
+  #this patch edits the main command file to tell it
+  #that we've installed to /usr/share/$pkgname
+  patch -p0 -d ${pkgname} -i ../"set-install-dir.patch"
 }
 
 check() {
-    cd "${srcdir}/${pkgname}"
-  # the bundled openssl segfaults in the tests
-  # TESTSSL_INSTALL_DIR="$(pwd)" prove -v
+  #These tests can take an extrelely long time and rely on external services
+  #and assume no port filtering both ways.  Default to off even if makepkg has
+  #it enabled
+  if [ $_TESTS == 1 ]; then
+    cd "${pkgname}"
+    TESTSSL_INSTALL_DIR="$(pwd)" prove -v
+  else
+    msg2 "Skipping check() based on PKGBUILD default.  Edit the PKGBUILD to enable"
+  fi
 }
 
 package() {
-    cd "${srcdir}/${pkgname}"
+  cd "${pkgname}"
 
-    install -Dm 755 testssl.sh "${pkgdir}/usr/bin/testssl"
-    install -Dm 644 etc/* -t "${pkgdir}/usr/share/testssl.sh/etc"
-    install -Dm 644 Readme.md doc/testssl.1.md -t "${pkgdir}/usr/share/doc/${pkgname}"
-    install -Dm 644 doc/testssl.1 -t "${pkgdir}/usr/share/man/man1"
+  install -Dm 755 testssl.sh          "${pkgdir}/usr/bin/testssl"
+  install -Dm 644 etc/* -t            "${pkgdir}/usr/share/testssl.sh/etc"
+  install -Dm 644 Readme.md -t        "${pkgdir}/usr/share/doc/${pkgname}"
+  install -Dm 644 doc/testssl.1.md -t "${pkgdir}/usr/share/doc/${pkgname}"
+  install -Dm 644 doc/testssl.1 -t    "${pkgdir}/usr/share/man/man1"
 }

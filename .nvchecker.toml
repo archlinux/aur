@@ -1,0 +1,3 @@
+["testssl.sh-git"]
+source="cmd"
+cmd="~/nvchecker/github_version.sh drwetter testssl.sh v"
