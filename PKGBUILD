@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=NLP
-_pkgver=0.3-0
+_pkgver=0.3-1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -13,8 +13,8 @@ depends=(
   r
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('ef20c55ef50dedbf07c6fc441ad2d8f9')
-b2sums=('f09750e5afe10e405ea4fef42c7ab57f0fc11a3553045b369bd120a1bdd3fae7b511ea0bea84bb65bddcd54adc1d0a1646935ce1ea979a5d71bd5be7fb35a64e')
+md5sums=('df9776011515424117dfa2d0018f284f')
+b2sums=('41bc397f0dbcf109be25b9503b498affda2e8edc8204510d31c94d16a4874af4c86a02ac132b3deaa76c69ae6d97a6d2214741a297036494df4d935fe31b5349')
 
 build() {
   mkdir build
