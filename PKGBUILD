@@ -1,27 +1,30 @@
-#!/usr/bin/env bash
-# Maintainer: Xenose <xenose@live.com>
-# Contributor: Xenose
+# Contributor: Xenose <xenose@live.com>
+
 pkgname=split-run-git
-pkgver=1.0.0
+pkgver=r9.b3cbe12
 pkgrel=1
-arch=('any')
-url="https://gitlab.com/Xenose/split-run.git"
-license=('GPL3')
-depends=()
-makedepends=('clang' 'git' 'make')
-arch=('any')
+arch=('x86_64')
 pkgdesc="Launches programs from the terminal and the closes the terminal automatically"
-provides=('srun')
-conflicts=('srun')
-source=("git+$url")
+url="https://gitlab.com/Xenose/split-run"
+license=('GPL-3.0-or-later')
+depends=('glibc')
+makedepends=('git')
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
+source=("git+$url.git")
 md5sums=('SKIP')
+
+pkgver() {
+	cd split-run
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
 
 build() {
 	cd split-run
-	make
+	gcc -o srun $CFLAGS $LDFLAGS Source.c
 }
 
 package() {
 	cd split-run
-	sudo make install
+	install -Dm755 srun -t "$pkgdir/usr/bin"
 }
