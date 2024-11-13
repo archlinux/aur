@@ -1,8 +1,9 @@
 pkgbase = ncam-git
 	pkgdesc = Open Source Conditional Access Module software
-	pkgver = 0e88b8d9
+	pkgver = e358cb4e
 	pkgrel = 1
 	url = https://github.com/fairbird/NCam
+	install = ncam.install
 	arch = x86_64
 	arch = i686
 	arch = arm

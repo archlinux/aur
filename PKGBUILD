@@ -3,7 +3,7 @@
 # Contributer: Julian Xhokaxhiu <info@julianxhokaxhiu.com>
 
 pkgname=ncam-git
-pkgver=0e88b8d9
+pkgver=e358cb4e
 pkgrel=1
 pkgdesc="Open Source Conditional Access Module software"
 url="https://github.com/fairbird/NCam"
@@ -13,6 +13,7 @@ depends=('curl' 'libusb' 'openssl' 'glibc' 'pcsclite')
 makedepends=('git' 'cmake' 'ninja')
 optdepends=('ccid: PC/SC reader generic dsudriver')
 provides=('ncam')
+install=ncam.install
 backup=('etc/ncam/ncam.conf')
 source=("$pkgname::git+https://github.com/fairbird/NCam.git"
         'ncam.service'

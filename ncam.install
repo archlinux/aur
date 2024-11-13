@@ -1,0 +1,4 @@
+post_install() {
+  chown -R root:ncam /etc/ncam
+  chmod -R 750 /etc/ncam
+}
