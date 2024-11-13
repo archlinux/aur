@@ -1,5 +1,5 @@
 # Maintainer: rpx <rpx at clearlight dot systems>
-# Contributor: acxz <akashpatel2008 at yahoo doxt com>
+# Contributor: acxz <akashpatel2008 at yahoo dot com>
 pkgname=openvsp
 pkgver=3.41.1
 pkgrel=1
@@ -14,7 +14,8 @@ depends=(
   'gcc'
   'git'
   'glew'
-  'libxml2')
+  'libxml2'
+  'pandoc')
 optdepends=(
   'doxygen: generate documentation'
   'graphviz: generate documentation'

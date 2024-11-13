@@ -15,6 +15,7 @@ pkgbase = openvsp
   depends = git
 	depends = glew
 	depends = libxml2
+  depends = pandoc
 	optdepends = doxygen: generate documentation
 	optdepends = graphviz: generate documentation
 	optdepends = python: python API module
