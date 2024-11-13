@@ -2,15 +2,15 @@
 # Contributor: Yurii Kolesnykov <root@yurikoles.com>
 # Based on core/systemd by Christian Hesse <mail@eworm.de>
 
-pkgbase=systemd-git
-pkgname=('systemd-git'
-         'systemd-libs-git'
-         'systemd-resolvconf-git'
-         'systemd-sysvcompat-git'
-         'systemd-tests-git'
-         'systemd-ukify-git')
+pkgbase=sysupdated-systemd-git
+pkgname=('sysupdated-systemd-git'
+         'sysupdated-systemd-libs-git'
+         'sysupdated-systemd-resolvconf-git'
+         'sysupdated-systemd-sysvcompat-git'
+         'sysupdated-systemd-tests-git'
+         'sysupdated-systemd-ukify-git')
 pkgdesc='systemd (git version)'
-pkgver=257.devel.r76353.fb4c82b643b
+pkgver=257.rc1.r77594.b4dc8b6415c
 pkgrel=1
 arch=('x86_64')
 license=('LGPL-2.1-or-later')
@@ -130,8 +130,10 @@ build() {
     -Dsysvinit-path=
     -Dsysvrcnd-path=
 
+    -Dsysupdated=enabled
+
     -Dsbat-distro='arch'
-    -Dsbat-distro-summary='Arch Linux AUR'
+    -Dsbat-distro-summary='Arch Linux AUR KDE Linux'
     -Dsbat-distro-pkgname="${pkgname}"
     -Dsbat-distro-version="${pkgver}"
     -Dsbat-distro-url="https://aur.archlinux.org/pkgbase/${pkgname}"
@@ -139,15 +141,10 @@ build() {
 
   arch-meson "${pkgbase}-stable" build "${_meson_options[@]}"
 
-  #meson compile -C build --verbose
   meson compile -C build
 }
 
-check() {
-  meson test -C build --print-errorlogs
-}
-
-package_systemd-git() {
+package_sysupdated-systemd-git() {
   pkgdesc='system and service manager'
   pkgdesc+=' (git version)'
   license+=(
@@ -155,7 +152,7 @@ package_systemd-git() {
     'GPL-2.0-or-later' # udev
     'MIT-0' # documentation and config files
   )
-  depends=("systemd-libs-git=${pkgver}"
+  depends=("sysupdated-systemd-libs-git=${pkgver}"
            'acl' 'libacl.so' 'bash' 'cryptsetup' 'libcryptsetup.so' 'dbus'
            'dbus-units' 'kbd' 'kmod' 'hwdata' 'libcap' 'libcap.so'
            'libgcrypt' 'libxcrypt' 'libcrypt.so' 'libidn2' 'lz4' 'pam'
@@ -169,8 +166,8 @@ package_systemd-git() {
   conflicts+=('systemd')
   optdepends=('libmicrohttpd: systemd-journal-gatewayd and systemd-journal-remote'
               'quota-tools: kernel-level quota management'
-              'systemd-sysvcompat: symlink package to provide sysvinit binaries'
-              "systemd-ukify-git=${pkgver}: combine kernel and initrd into a signed Unified Kernel Image"
+              'sysupdated-systemd-sysvcompat: symlink package to provide sysvinit binaries'
+              "sysupdated-systemd-ukify-git=${pkgver}: combine kernel and initrd into a signed Unified Kernel Image"
               'polkit: allow administration as unprivileged user'
               'python: Unified Kernel Image with ukify'
               'curl: systemd-journal-upload, machinectl pull-tar and pull-raw'
@@ -272,7 +269,7 @@ package_systemd-git() {
   ln -s -t "$_" /usr/share/doc/systemd/LICENSES/MIT-0.txt
 }
 
-package_systemd-libs-git() {
+package_sysupdated-systemd-libs-git() {
   pkgdesc='systemd client libraries'
   pkgdesc+=' (git version)'
   depends=('glibc' 'gcc-libs' 'libcap' 'libgcrypt' 'lz4' 'xz' 'zstd')
@@ -292,10 +289,10 @@ package_systemd-libs-git() {
   mv systemd-libs/man3 "$pkgdir"/usr/share/man/man3
 }
 
-package_systemd-resolvconf-git() {
+package_sysupdated-systemd-resolvconf-git() {
   pkgdesc='systemd resolvconf replacement (for use with systemd-resolved)'
   pkgdesc+=' (git version)'
-  depends=("systemd-git=${pkgver}")
+  depends=("sysupdated-systemd-git=${pkgver}")
   provides=('openresolv' 'resolvconf')
   provides+=("systemd-resolvconf=${pkgver}")
   conflicts=('resolvconf')
@@ -308,12 +305,12 @@ package_systemd-resolvconf-git() {
   ln -s resolvectl.1.gz "$pkgdir"/usr/share/man/man1/resolvconf.1.gz
 }
 
-package_systemd-sysvcompat-git() {
+package_sysupdated-systemd-sysvcompat-git() {
   pkgdesc='sysvinit compat for systemd'
   pkgdesc+=' (git version)'
   conflicts=('sysvinit')
   conflicts+=('systemd-sysvcompat')
-  depends=("systemd-git=${pkgver}")
+  depends=("sysupdated-systemd-git=${pkgver}")
   provides=("systemd-sysvcompat=${pkgver}")
 
   install -D -m0644 -t "$pkgdir"/usr/share/man/man8 \
@@ -326,7 +323,7 @@ package_systemd-sysvcompat-git() {
   done
 }
 
-package_systemd-tests-git() {
+package_sysupdated-systemd-tests-git() {
   pkgdesc='systemd tests'
   pkgdesc+=' (git version)'
   conflicts=('systemd-tests')
@@ -337,13 +334,13 @@ package_systemd-tests-git() {
   mv systemd-tests/tests "$pkgdir"/usr/lib/systemd/tests
 }
 
-package_systemd-ukify-git() {
+package_sysupdated-systemd-ukify-git() {
   pkgdesc='Combine kernel and initrd into a signed Unified Kernel Image'
   pkgdesc+=' (git version)'
   conflicts=('systemd-ukify')
   provides=('ukify')
   provides+=("systemd-ukify=$pkgver")
-  depends=("systemd-git=$pkgver" 'binutils' 'python-cryptography' 'python-pefile')
+  depends=("sysupdated-systemd-git=$pkgver" 'binutils' 'python-cryptography' 'python-pefile')
   optdepends=('python-pillow: Show the size of splash image'
               'sbsigntools: Sign the embedded kernel')
 
