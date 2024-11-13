@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=clue
-_pkgver=0.3-65
+_pkgver=0.3-66
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=3
+pkgrel=1
 pkgdesc="Cluster Ensembles"
 arch=(x86_64)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -19,8 +19,8 @@ optdepends=(
   r-relations
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('ee836dd0f273667e53d2e2208e57a07d')
-b2sums=('eea36f37da03b79c47af655ad06f68a0e072d1863229704c6eb6202fb89dc57cfc2f7974512cc63bc5bfbb3a3a92bd0927de3a5fa93b3964705a7a66affed31a')
+md5sums=('26a78e428a10f61bdee5affc4b0679b4')
+b2sums=('6ac95fe2679afb7e5a4612b9d5a3c76f44625b9ae224ef4c52debdac251379dd1bbd907fa9f6053e29c381a9917a1152b187fcdaeae8f1edaebd757fa2975bf2')
 
 build() {
   mkdir build
