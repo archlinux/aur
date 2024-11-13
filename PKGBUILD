@@ -1,14 +1,14 @@
 # Maintainer: Elias Elwyn <a@jthv.ai>
 
 pkgname=perl-debug-adapter
-pkgver=1.0.11
+pkgver=1.0.12
 pkgrel=1
 pkgdesc='Debug Adapter Protocol server for Perl'
 license=('MIT')
 
 url='https://github.com/Nihilus118/perl-debug-adapter'
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Nihilus118/perl-debug-adapter/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('d1c4b1a96ee937fba24fd85628d50e95b5ca6d0f5118e5f02adb9325fd52079e')
+sha256sums=('ce25f70dbd19f0ff09ad0e339734c9f43cefd1be633d09a440430d68ac68c3ab')
 
 arch=(any)
 depends=(nodejs perl perl-padwalker sh)
