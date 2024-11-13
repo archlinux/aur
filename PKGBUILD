@@ -3,7 +3,7 @@
 pkgname='veracrypt-inyourlanguage'
 _pkgname='VeraCrypt'
 pkgver=1.26.14
-pkgrel=2
+pkgrel=3
 pkgdesc='Disk encryption with strong security based on TrueCrypt 7.1a. Supporting 40+ languages, changeable while running the program.'
 url='https://www.veracrypt.fr'
 arch=('x86_64' 'i686' 'arm64' 'armhf' 'aarch64')
@@ -11,7 +11,7 @@ license=('custom')
 provides=('veracrypt')
 conflicts=('veracrypt' 'veracrypt-console-bin' 'veracrypt-git' 'veracrypt-trans')
 depends=('fuse2>=2.8.0' 'wxwidgets-gtk3' 'libsm' 'device-mapper')
-makedepends=('git' 'yasm' 'libxml2' 'coreutils')
+makedepends=('git' 'yasm')
 optdepends=('sudo: mounting encrypted volumes as nonroot users' 'pcsclite: providing support for smartcards')
 source=(https://launchpad.net/veracrypt/trunk/${pkgver}/+download/${_pkgname}_${pkgver}_Source.tar.bz2
 UserInterface.patch)

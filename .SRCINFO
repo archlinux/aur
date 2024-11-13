@@ -1,7 +1,7 @@
 pkgbase = veracrypt-inyourlanguage
 	pkgdesc = Disk encryption with strong security based on TrueCrypt 7.1a. Supporting 40+ languages, changeable while running the program.
 	pkgver = 1.26.14
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.veracrypt.fr
 	arch = x86_64
 	arch = i686
@@ -11,8 +11,6 @@ pkgbase = veracrypt-inyourlanguage
 	license = custom
 	makedepends = git
 	makedepends = yasm
-	makedepends = libxml2
-	makedepends = coreutils
 	depends = fuse2>=2.8.0
 	depends = wxwidgets-gtk3
 	depends = libsm
