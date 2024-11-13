@@ -1,7 +1,7 @@
 # Maintainer: leejuyuu <leejuyuu at gmail dot com>
 
 pkgname=spectral-cli
-pkgver=6.11.1
+pkgver=6.14.0
 pkgrel=1
 pkgdesc='JSON/YAML linter with custom rulesets'
 arch=('any')
@@ -11,7 +11,7 @@ depends=('nodejs' 'bash')
 makedepends=('npm')
 _npmscope=@stoplight
 source=("http://registry.npmjs.org/${_npmscope}/${pkgname}/-/${pkgname}-${pkgver}.tgz")
-b2sums=('32eff4ffd6fd37881311bf00c3423ced27afe329f4ee3e084d0e447d228a8e118513876c21b13725850d522908bc5330d3ee876583fccf0a38323703c2ea6483')
+b2sums=('6a205f417bf083d2210f6de08f12359ae80c4d9d11e95126f561544b95145c5757bac14bcf3ec66968d8e7cdfe03039c175436ee5f79a7537f2e625e478e58c0')
 noextract=("${pkgname}-${pkgver}.tgz")
 
 package() {
