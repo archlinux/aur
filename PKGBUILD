@@ -4,7 +4,7 @@
 # Contributor: Luís Ferreira <net dot lsferreira at contact, backwards>
 
 pkgname=railwayapp-cli
-pkgver=3.17.10
+pkgver=3.18.0
 pkgrel=1
 pkgdesc="Command Line Interface for Railway.app"
 arch=('x86_64' 'aarch64' 'i686')
@@ -17,25 +17,25 @@ source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 sha256sums=('SKIP')
 
 prepare() {
-	cd "cli-$pkgver"
-	cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+  cd "cli-$pkgver"
+  cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
 build() {
-	cd "cli-$pkgver"
-	export RUSTUP_TOOLCHAIN=stable
-	export CARGO_TARGET_DIR=target
-	cargo build --release --frozen --all-features
+  cd "cli-$pkgver"
+  export RUSTUP_TOOLCHAIN=stable
+  export CARGO_TARGET_DIR=target
+  cargo build --release --frozen --all-features
 }
 
 check() {
-	cd "cli-$pkgver"
-	export RUSTUP_TOOLCHAIN=stable
-	cargo test --frozen --all-features
+  cd "cli-$pkgver"
+  export RUSTUP_TOOLCHAIN=stable
+  cargo test --frozen --all-features
 }
 
-package(){
-	cd "cli-$pkgver"
-	install -Dv "target/release/railway" -t "$pkgdir/usr/bin/"
-	install -Dvm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
+package() {
+  cd "cli-$pkgver"
+  install -Dv "target/release/railway" -t "$pkgdir/usr/bin/"
+  install -Dvm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
