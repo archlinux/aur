@@ -11,6 +11,7 @@ arch=('any')
 url="https://github.com/jr64/nxp-pn5xx"
 license=('GPL2')
 depends=('dkms')
+provides=("${_pkgbase}-dkms=${pkgver}")
 conflicts=("${_pkgbase}")
 makedepends=("git")
 source=("${_pkgbase}::git+${_git_repo}#branch=${_git_branch}"
