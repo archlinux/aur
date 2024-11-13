@@ -1,11 +1,12 @@
 pkgbase = projectorrays
 	pkgdesc = A decompiler for Adobe (formerly Macromedia) Shockwave and Director.
 	pkgver = 0.2.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/ProjectorRays/ProjectorRays
 	arch = x86_64
 	license = MPL-2.0
 	makedepends = boost>=1.72.0
+	makedepends = vim
 	depends = zlib
 	depends = mpg123
 	conflicts = projectorrays-git
