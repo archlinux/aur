@@ -2,11 +2,11 @@
 pkgname=thorium-reader-git
 _pkgname="Thorium Reader"
 _appname="EDRLab.${_pkgname// /}"
-pkgver=3.0.0.r78.g6c4b08a
+pkgver=3.0.0.r105.g323875f
 _electronversion=33
 _nodeversion=20
 pkgrel=1
-pkgdesc="Cross-platform desktop reading app based on the Readium Desktop toolkit.Use system-wide electron."
+pkgdesc="Cross-platform desktop reading app based on the Readium Desktop toolkit.(Use system-wide electron)"
 arch=('any')
 url="https://github.com/edrlab/thorium-reader"
 license=('BSD-3-Clause')
@@ -64,7 +64,6 @@ build() {
     if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
         {
             echo 'registry=https://registry.npmmirror.com'
-            echo 'disturl=https://registry.npmmirror.com/-/binary/node/'
             echo 'electron_mirror=https://registry.npmmirror.com/-/binary/electron/'
             echo 'electron_builder_binaries_mirror=https://registry.npmmirror.com/-/binary/electron-builder-binaries/'
         } >> .npmrc
