@@ -1,6 +1,6 @@
 pkgbase = wl-screenrec
 	pkgdesc = High performance hardware accelerated wlroots screen recorder
-	pkgver = 0.1.5
+	pkgver = 0.1.6
 	pkgrel = 1
 	url = https://github.com/russelltg/wl-screenrec
 	arch = i686
@@ -16,7 +16,7 @@ pkgbase = wl-screenrec
 	depends = glibc
 	provides = wl-screenrec
 	conflicts = wl-screenrec-git
-	source = https://github.com/russelltg/wl-screenrec/archive/refs/tags/v0.1.5.tar.gz
-	sha256sums = b28a013d7418491da82efe25101f0a778e47c34d195f88d48c3132f9d223190d
+	source = https://github.com/russelltg/wl-screenrec/archive/refs/tags/v0.1.6.tar.gz
+	sha256sums = f24c474aeee96fe59bf5520045c56534f0dd2cdc2d9ab5f2477ad3dfd5b2d71c
 
 pkgname = wl-screenrec
