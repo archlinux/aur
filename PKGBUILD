@@ -1,10 +1,11 @@
-# Maintainer: Reylyer <reylyercross@gmail.com> | https://github.com/Reylyer
+# Maintainer: Daniela <pikalp32@gmail.com> | https://github.com/danielah05
+# Contributor: Reylyer <reylyercross@gmail.com> | https://github.com/Reylyer
 
 # Package name
 pkgname=gamemaker-beta-bin
 
 # Version
-pkgver=2024.400.0.526
+pkgver=2024.1100.0.674
 pkgrel=2
 
 # Generic
@@ -14,7 +15,14 @@ url="https://gamemaker.io"
 license=('custom')
 
 # Dependencies
-depends=('linuxdeploy')
+depends=(
+    'linuxdeploy'
+    'appimagetool'
+    'clang'
+    'openal'
+    'unzip'
+    'zip'
+)
 
 # Package relations
 provides=('gamemaker-beta')
@@ -30,7 +38,7 @@ source=(
     "LICENSE.txt"    
 )
 sha256sums=(
-    'aba9c6dc9994275077cc6900cf66faf0884ea48d670eb8c542a08ddddea862a1'
+    'a4570f49852cdcf9023226b56aeb8bd07ac857181197857805ddc80ded14b66f'
     '9ebe45546ac7bb43156c62f42947ccaf660f96cd4fcc684f42df49754aaeac51'
 )
 
