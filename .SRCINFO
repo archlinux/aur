@@ -1,6 +1,6 @@
 pkgbase = clipton
 	pkgdesc = Clipboard manager with a Rofi frontend
-	pkgver = 47
+	pkgver = 51
 	pkgrel = 1
 	url = https://github.com/madprops/clipton
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = clipton
 	depends = xclip
 	provides = clipton
 	conflicts = clipton-git
-	source = clipton-47.tar.gz::https://github.com/madprops/clipton/archive/refs/tags/v47.tar.gz
-	sha256sums = 6a702466e292c71017c329919ad5d1272228ce2d889306fb6bee7085c2b3396a
+	source = clipton-51.tar.gz::https://github.com/madprops/clipton/archive/refs/tags/v51.tar.gz
+	sha256sums = c6faa40dad96354d0de5e184edb3990c3b3a6015b070382fc4530a734a703197
 
 pkgname = clipton
