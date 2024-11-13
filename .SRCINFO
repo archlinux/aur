@@ -1,0 +1,20 @@
+pkgbase = quatter-git
+	pkgdesc = A digital version of the Quarto boardgame by Blaise Müller, made using the Dry game engine and other open source software.
+	pkgver = r156.85330f0
+	pkgrel = 1
+	url = https://gitlab.com/luckeyproductions/games/quatter
+	arch = x86_64
+	license = GPL-2.0-or-later
+	license = CC0-1.0
+	license = CC-BY-4.0
+	license = CC-BY-SA-4.0
+	makedepends = git
+	makedepends = qt5-base
+	depends = dry
+	depends = hicolor-icon-theme
+	provides = quatter
+	conflicts = quatter
+	source = quatter-git::git+https://gitlab.com/luckeyproductions/games/quatter.git
+	sha512sums = SKIP
+
+pkgname = quatter-git
