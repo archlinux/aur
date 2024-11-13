@@ -1,0 +1,24 @@
+diff --git a/DAEValidator/library/src/DaeValidator.cpp b/DAEValidator/library/src/DaeValidator.cpp
+index 715d9034..38e220eb 100644
+--- a/DAEValidator/library/src/DaeValidator.cpp
++++ b/DAEValidator/library/src/DaeValidator.cpp
+@@ -8,6 +8,7 @@
+ #include "no_warning_iostream"
+ #include <set>
+ #include "no_warning_sstream"
++#include <cstdint>
+ 
+ using namespace std;
+ 
+diff --git a/DAEValidator/library/src/XmlDoc.cpp b/DAEValidator/library/src/XmlDoc.cpp
+index 863166a2..a93c7ca6 100644
+--- a/DAEValidator/library/src/XmlDoc.cpp
++++ b/DAEValidator/library/src/XmlDoc.cpp
+@@ -11,6 +11,7 @@
+ #include "no_warning_fstream"
+ #include "no_warning_vector"
+ #include <sys/stat.h>
++#include <cstdint>
+ 
+ using namespace std;
+ 

@@ -12,15 +12,18 @@ depends=('libxml2' 'pcre')
 makedepends=('git' 'cmake')
 source=('opencollada.conf'
         'pcre.patch'
+        'gcc.patch'
         "git+https://github.com/KhronosGroup/OpenCOLLADA.git#tag=v${pkgver}")
 sha256sums=('2fc9656a2b881ca4528416daa91fc525adaa97d73e96a18b41aa7856270eba1f'
             'f37a7cbadcaa06b70133f76c509c61bdcf13715bc13aed11b5db83ef594813b3'
-            'SKIP')
+            'ea2b2de957055e9d9fc2cad31f7f82810816e2f935db8f72fe5538642574926a'
+            'b201b99935d817b18bd1588cce824d6e891102d1d8dbe272cbd9a4ce91ec4f8e')
 
 prepare() {
   cd OpenCOLLADA
 
   patch -Np1 -i "$srcdir"/pcre.patch
+  patch -Np1 -i "$srcdir"/gcc.patch
 }
 
 build() {
