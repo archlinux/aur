@@ -1,13 +1,16 @@
 pkgbase = fvwm3-git
 	pkgdesc = A powerful ICCCM2 compliant multiple virtual desktop window manager for X11
-	pkgver = 1.0.4.r106.gf4848b95
+	pkgver = 1.1.0.r120.g3e0d960d1
 	pkgrel = 1
 	url = http://www.fvwm.org
 	arch = i686
 	arch = x86_64
 	license = GPL
 	makedepends = git
+	makedepends = go
 	makedepends = libxslt
+	makedepends = asciidoctor
+	makedepends = xtrans
 	depends = fribidi
 	depends = libxpm
 	depends = librsvg
