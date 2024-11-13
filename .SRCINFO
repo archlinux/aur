@@ -1,0 +1,20 @@
+pkgbase = ifdnfc-nci-git
+	pkgdesc = PC/SC IFD Handler for PCSClite. This stack targets the NXP PN54x chipset
+	pkgver = 1.0.0.r12.ga6f946f
+	pkgrel = 1
+	url = https://github.com/StarGate01/ifdnfc-nci
+	install = ifdnfc-nci.install
+	arch = any
+	license = GPL-3.0-only
+	makedepends = git
+	depends = pcsclite
+	depends = libnfc-nci-pn5xx
+	provides = ifdnfc-nci=1.0.0.r12.ga6f946f
+	source = ifdnfc-nci::git+https://github.com/StarGate01/ifdnfc-nci#branch=master
+	source = ifdnfc-nci.conf
+	source = pcscd-resume-wakeup.service
+	sha256sums = SKIP
+	sha256sums = aece644dbe7ca08f22963011f9f75d8ea0e6a6bccc7a17d25e9201d58b25a080
+	sha256sums = 2b1477791c71903b7cddef28f2cf5092a02f6e052eebdebf1cfe624d22925ed9
+
+pkgname = ifdnfc-nci-git

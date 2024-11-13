@@ -1,0 +1,12 @@
+[Unit]
+After=suspend.target hibernate.target hybrid-sleep.target suspend-then-hibernate.target
+Description=Wakeup PCSC after sleep
+ConditionActive=pcscd.service
+
+[Service]
+ExecStart=systemctl restart pcscd.service
+TimeoutStopSec=10
+Type=oneshot
+
+[Install]
+WantedBy=suspend.target hibernate.target hybrid-sleep.target suspend-then-hibernate.target

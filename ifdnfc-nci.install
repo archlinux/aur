@@ -1,0 +1,10 @@
+post_install() {
+	systemctl daemon-reload
+	if systemctl is-active --quiet pcscd.service; then
+		systemctl restart pcscd.service
+	fi
+	systemctl enable pcscd-resume-wakeup.service
+	systemctl start pcscd-resume-wakeup.service
+}
+
+
