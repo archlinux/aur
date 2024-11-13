@@ -1,10 +1,11 @@
 pkgbase = patchage
 	pkgdesc = A modular patch bay for audio and MIDI systems based on Jack and Alsa
 	pkgver = 1.0.10
-	pkgrel = 3
+	pkgrel = 4
 	url = https://drobilla.net/software/patchage.html
 	arch = x86_64
 	license = GPL-3.0-or-later
+	makedepends = dbus-glib
 	makedepends = meson>=0.56
 	makedepends = reuse
 	depends = alsa-lib

@@ -7,14 +7,14 @@
 
 pkgname="patchage"
 pkgver=1.0.10
-pkgrel=3
+pkgrel=4
 pkgdesc="A modular patch bay for audio and MIDI systems based on Jack and Alsa"
 arch=('x86_64')
 url="https://drobilla.net/software/patchage.html"
 license=('GPL-3.0-or-later')
 depends=('alsa-lib' 'atkmm' 'ganv' 'gcc-libs' 'glib2' 'glibc' 'glibmm' 'gtk2'
          'gtkmm' 'hicolor-icon-theme' 'jack' 'libsigc++') # 'fmt9'
-makedepends=('meson>=0.56' 'reuse')
+makedepends=('dbus-glib' 'meson>=0.56' 'reuse')
 _pkgsrc="${pkgname}-${pkgver}"
 source=("${_pkgsrc}.tar.xz::https://download.drobilla.net/${_pkgsrc}.tar.xz"
         "${_pkgsrc}.tar.xz.sig::https://download.drobilla.net/${_pkgsrc}.tar.xz.sig")
