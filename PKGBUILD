@@ -1,6 +1,6 @@
 # Maintainer: meanlint <meanlint@outlook.com>
 pkgname=xivlauncher-cn-git
-pkgver=1.1.0.3.r569.82434c8
+pkgver=1.1.0.4.r573.c1f3899
 pkgrel=1
 pkgdesc="Custom Launcher for Final Fantasy XIV Online CN"
 arch=('x86_64')

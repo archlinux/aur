@@ -1,6 +1,6 @@
 pkgbase = xivlauncher-cn-git
 	pkgdesc = Custom Launcher for Final Fantasy XIV Online CN
-	pkgver = 1.1.0.3.r569.82434c8
+	pkgver = 1.1.0.4.r573.c1f3899
 	pkgrel = 1
 	url = https://github.com/ottercorp/XIVLauncher.Core
 	arch = x86_64
@@ -27,7 +27,7 @@ pkgbase = xivlauncher-cn-git
 	depends = libpcap
 	depends = desktop-file-utils
 	depends = jxrlib
-	provides = xivlauncher=1.1.0.3.r569.82434c8
+	provides = xivlauncher=1.1.0.4.r573.c1f3899
 	conflicts = xivlauncher
 	options = !strip
 	source = XIVLauncher.Core::git+https://github.com/ottercorp/XIVLauncher.Core.git
