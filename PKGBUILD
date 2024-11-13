@@ -2,7 +2,7 @@
 
 _gemname=minima
 pkgname=ruby-$_gemname
-pkgver=2.5.1
+pkgver=2.5.2
 pkgrel=1
 pkgdesc='A beautiful, minimal theme for Jekyll'
 arch=(any)
@@ -13,7 +13,7 @@ makedepends=('ruby-rake')
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha256sums=('520e52bc631fb16cbb8100660f6caa44f97859e2fa7e397d508deb18739567be')
+sha256sums=('9c434e3b7bc4a0f0ab488910438ed3757a0502ff1060d172f361907fc38aa45a')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
