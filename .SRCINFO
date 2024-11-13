@@ -1,6 +1,6 @@
 pkgbase = geeqie-git
 	pkgdesc = Lightweight image viewer
-	pkgver = 2.5.r25.gd81c5de
+	pkgver = 2.5.r26.g2b88951
 	pkgrel = 1
 	url = https://github.com/BestImageViewer/geeqie
 	arch = x86_64
@@ -35,6 +35,7 @@ pkgbase = geeqie-git
 	depends = libjxl.so
 	depends = libraw
 	depends = lua
+	depends = openexr
 	depends = openjpeg2
 	depends = poppler-glib
 	optdepends = evince: for print preview

@@ -4,7 +4,7 @@
 
 _pkgname="geeqie"
 pkgname="$_pkgname-git"
-pkgver=2.5.r25.gd81c5de
+pkgver=2.5.r26.g2b88951
 pkgrel=1
 pkgdesc='Lightweight image viewer'
 url="https://github.com/BestImageViewer/geeqie"
@@ -26,6 +26,7 @@ depends=(
   libjxl.so
   libraw
   lua
+  openexr
   openjpeg2
   poppler-glib
 )
@@ -63,10 +64,6 @@ conflicts=("$_pkgname")
 _pkgsrc="$_pkgname"
 source=("$_pkgname"::"git+$url.git")
 sha256sums=('SKIP')
-
-prepare() {
-  sed -e 's& -r & &g' -i "$_pkgsrc"/org.geeqie.Geeqie.desktop.in
-}
 
 pkgver() {
   cd "$_pkgsrc"
