@@ -1,7 +1,7 @@
 # Maintainer: cysp74 at gmail dot com
 _name=pocl
 pkgname="${_name}-git"
-pkgver=3.1.RC1.r160.g8a4830d1
+pkgver=6.0.RC2.r506.gdc61b6ea8
 pkgrel=1
 epoch=1
 pkgdesc="Portable OpenCL is an open-source implementation of OpenCL which can be easily adapted for new targets (git version)"
