@@ -2,12 +2,13 @@
 
 pkgname=python-comtool
 _name=COMTool
-pkgver=3.3.1
+pkgver=3.4.1
 pkgrel=1
 epoch=
 pkgdesc="A cross platform serial debug tools written by python"
 arch=('any')
-url="https://pypi.org/project/COMTool"
+# url="https://pypi.org/project/COMTool"
+url="https://github.com/Neutree/COMTool"
 license=('LGPL-3.0-or-later')
 groups=()
 depends=('python'
@@ -31,17 +32,19 @@ makedepends=('python-build'
     'python-wheel')
 checkdepends=()
 optdepends=()
-provides=('COMTool' 'comtool')
-conflicts=('comtool' 'python-comtool')
+provides=('COMTool' 'comtool' 'python-comtool')
+conflicts=('COMTool' 'comtool' 'python-comtool')
 replaces=()
 backup=()
 options=()
 install=$pkgname.install
 changelog=
-source=("${_name}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz"
+source=(
+    "${_name}-${pkgver}.tar.gz::${url}/archive/refs/tags/v$pkgver.tar.gz"
+    #     "${_name}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz"
     $pkgname.install)
 noextract=()
-sha256sums=('8a8423a8de41239f3878f79372ed29e604d7a699f25ac504c4f00fd1d810c6c7'
+sha256sums=('fcaeeedcf2d84268d1fb601f070f4cfbfe456a947777f2fc2457f33892daa523'
             '45b92e9788ac186a4fa2bad728fe7956b2afb52c4f4b01481ddd2b26ed47bdc3')
 #validpgpkeys=()
 
