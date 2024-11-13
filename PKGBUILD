@@ -1,7 +1,8 @@
 # Maintainer: Viaken <viaken@gmail.com>
+# Maintainer: Kamack38 <kamack38.biznes@gmail.com>
 pkgname=passwdqc-utils
 realpkgname=passwdqc
-pkgver=1.3.1
+pkgver=2.0.3
 pkgrel=1
 pkgdesc="pwqcheck (password strength checker) and pwqgen (random passphrase generator) from passwdqc"
 arch=('any')
