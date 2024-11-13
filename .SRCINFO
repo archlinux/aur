@@ -1,0 +1,21 @@
+pkgbase = schedrem
+	pkgdesc = A cross-platform task scheduler and reminder configured in YAML.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/hikyae/schedrem
+	arch = any
+	license = MIT
+	checkdepends = python-freezegun
+	checkdepends = python-pytest
+	makedepends = python-hatchling
+	makedepends = python-installer
+	depends = python
+	depends = python-psutil
+	depends = python-pyaudio
+	depends = python-pydantic
+	depends = python-pyyaml
+	depends = python-watchdog
+	source = schedrem-1.0.0.tar.gz::https://github.com/hikyae/schedrem/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = 8e8757154455cb0d3d5b3bee8a461ef412e5b71de7cf1a0808bce41bbc659878
+
+pkgname = schedrem
