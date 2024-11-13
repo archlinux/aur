@@ -2,14 +2,13 @@
 
 pkgname=techmino
 pkgver="0.17.21"
-_ccloader_ver="11.4.2"
+_ccloader_ver="11.5"
 _coldclear_ver="23c1cd6e4aa44f2a61daa839ae08dfd3cd5f9da3"
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="A collection of various modern block game rules, more ways to play, and some new things added for a new experience."
 arch=(x86_64)
-# HTTPS cert of https://www.studio26f.org has expired since 2023-11-29 :/
-url="https://github.com/26F-Studio/Techmino"
+url="https://www.studio26f.org"
 license=("LGPL3")
 groups=()
 depends=(love)
@@ -31,7 +30,7 @@ source=("techmino-$pkgver.tar.gz::https://github.com/26F-Studio/Techmino/archive
         "techmino.desktop")
 noextract=()
 sha256sums=("b887cf9e6685759ee881527a8dcd5ea28555543a901f72dd2ebdf796e1308141"
-            "dc70324e88927763cc68eb86f73374a585d63cdb9773f2776c4ed679944742b5"
+            "64a5ae611befcaaac3f254f7623b5504d76984e09911c2f0aa1525665d0deb65"
             SKIP
             "9c8ac53a1264722b037ee8c72f5d0bc187ef9d106a3c2f949fb20537fb4c95f7"
             "d08469240ce6e919f250a205a47b9916bbdb464604d198f4fb8b37b91212da5e")
