@@ -1,0 +1,18 @@
+pkgbase = nxp-pn5xx-dkms-git
+	pkgdesc = NXP's NFC Open Source Kernel mode driver with ACPI autodiscovery.
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/jr64/nxp-pn5xx
+	arch = any
+	license = GPL2
+	makedepends = git
+	depends = dkms
+	conflicts = nxp-pn5xx
+	source = nxp-pn5xx::git+https://github.com/jr64/nxp-pn5xx#branch=master
+	source = dkms.conf
+	source = nxp-pn5xx.conf
+	sha256sums = SKIP
+	sha256sums = 3c8c4215ba5d17a252b8a74f36adb6a7dc2fe3c4a18b3d3790703505a5662f82
+	sha256sums = 20b96902d6741ba2b165fbc6348740cf407d42839a3af2d89c358da5558b83ea
+
+pkgname = nxp-pn5xx-dkms-git
