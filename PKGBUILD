@@ -1,7 +1,7 @@
 # Maintainer: justbispo <aur.fyxy0@slmail.me>
 
 pkgname=aegisub-arch1t3cht-appimage
-pkgver=feature_11
+pkgver=feature_12
 pkgrel=1
 pkgdesc="A general-purpose subtitle editor with ASS/SSA support (arch1t3cht fork) (AppImage version)"
 arch=('x86_64')
@@ -17,7 +17,7 @@ source=(
   $url/releases/download/$pkgver/Ubuntu.AppImage.zip
   $url/raw/$pkgver/LICENCE
 )
-sha256sums=('6c26bfc3f5af9ef5f043fe0157dbe457466c1315b54d9f9e1a11c574804dc756'
+sha256sums=('11a260a797f29733b4b07bbe97698d53decc9497a262f46d236d89086a36c031'
             'dac4a32575f6272a1285e03e957d5f67cd8682db717cab92d83c55a9dadbe748')
 
 prepare() {
