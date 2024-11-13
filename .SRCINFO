@@ -1,6 +1,6 @@
 pkgbase = ticker
 	pkgdesc = Terminal stock ticker with live updates and position tracking
-	pkgver = 4.6.3
+	pkgver = 4.7.1
 	pkgrel = 1
 	url = https://github.com/achannarasappa/ticker
 	arch = i686
@@ -11,9 +11,7 @@ pkgbase = ticker
 	license = GPL3
 	makedepends = go
 	depends = glibc
-	provides = ticker
-	conflicts = ticker
-	source_x86_64 = ticker-4.6.3.tar.gz::https://github.com/achannarasappa/ticker/archive/v4.6.3.tar.gz
-	sha256sums_x86_64 = 09e228b38b3da55e870b194bc6780af027c47bd0fdf39d146459a372a8956b87
+	source_x86_64 = ticker-4.7.1.tar.gz::https://github.com/achannarasappa/ticker/archive/v4.7.1.tar.gz
+	sha256sums_x86_64 = e5adf107c1a38e9e5235a654eeede491c9dc01e25460270d092e937de3a16d68
 
 pkgname = ticker
