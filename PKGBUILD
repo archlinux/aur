@@ -3,12 +3,13 @@
 #
 pkgname=libunique
 pkgver=1.1.6
-pkgrel=11
+pkgrel=12
 pkgdesc="Library for writing single instance applications"
 arch=('i686' 'x86_64')
 license=('LGPL')
 depends=('gtk2')
 makedepends=('gtk-doc' 'glib2' 'glib2-devel' 'gobject-introspection')
+options=(!lto) #
 url="https://wiki.gnome.org/Attic/LibUnique"
 source=(
         "https://download.gnome.org/sources/${pkgname}/1.1/${pkgname}-${pkgver}.tar.bz2"
