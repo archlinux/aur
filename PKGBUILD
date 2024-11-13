@@ -1,16 +1,17 @@
 # Maintainer: John Regan <john@jrjrtech.com>
 pkgname=perl-net-async-websocket
-pkgver=0.13
-pkgrel=2
+pkgver=0.14
+pkgrel=1
 pkgdesc='Perl Net::Async::WebSocket CPAN module'
 _dist=Net-Async-WebSocket
 arch=('any')
 url="https://metacpan.org/release/$_dist"
 license=('GPL' 'PerlArtistic')
-depends=('perl' 'perl-io-async' 'perl-protocol-websocket')
+depends=('perl' 'perl-io-async' 'perl-protocol-websocket' 'perl-uri-ws' 'perl-meta')
+makedepends=('perl-module-build')
 options=('!emptydirs' purge)
 source=("https://cpan.metacpan.org/authors/id/P/PE/PEVANS/${_dist}-${pkgver}.tar.gz")
-md5sums=('3b4bd23e760bd944a9e79e5a0be7773e')
+md5sums=('da9fd7b0451b95e86d02b231e0793bdf')
 
 build() {
   cd "$srcdir/$_dist-$pkgver"
