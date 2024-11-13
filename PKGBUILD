@@ -4,13 +4,13 @@
 pkgname=svd2rust
 pkgdesc="Generate Rust register maps (\`struct\`s) from SVD files"
 pkgrel=1
-pkgver=0.34.0
+pkgver=0.35.0
 arch=('any')
 url="https://github.com/japaric/svd2rust"
 license=('Apache' 'MIT')
 makedepends=('rust' 'cargo')
 source=("https://github.com/rust-embedded/svd2rust/archive/v${pkgver}.tar.gz")
-md5sums=('dd454478281bfe36dd6d00c03a87d003')
+md5sums=('6afee9684433f240d566124fb3288f7c')
 
 build() {
 	cd $srcdir/$pkgname-$pkgver
