@@ -1,14 +1,13 @@
 pkgbase = rpcs3
 	pkgdesc = An open-source PlayStation 3 emulator/debugger written in C++
 	pkgver = 0.0.34
-	pkgrel = 1
+	pkgrel = 2
 	url = https://rpcs3.net
 	arch = x86_64
 	license = GPL-2.0-only
 	makedepends = cmake>=3.28
 	makedepends = libglvnd
 	makedepends = llvm
-	makedepends = python>=3.6
 	depends = alsa-lib
 	depends = curl
 	depends = faudio

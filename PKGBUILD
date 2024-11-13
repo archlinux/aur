@@ -5,7 +5,7 @@
 
 pkgname="rpcs3"
 pkgver=0.0.34
-pkgrel=1
+pkgrel=2
 pkgdesc="An open-source PlayStation 3 emulator/debugger written in C++"
 arch=('x86_64')
 url="https://rpcs3.net"
@@ -18,7 +18,7 @@ depends=('alsa-lib' 'curl' 'faudio' 'ffmpeg' 'flatbuffers>=2' 'gcc-libs' 'glew'
          'qt6-declarative' 'qt6-multimedia' 'qt6-svg' 'vulkan-icd-loader'
          'zlib')
          # 'libavcodec.so' 'libavformat.so' 'libavutil.so' 'libswscale.so' 'libswresample.so'
-makedepends=('cmake>=3.28' 'libglvnd' 'llvm' 'python>=3.6')
+makedepends=('cmake>=3.28' 'libglvnd' 'llvm')
 optdepends=('vulkan-validation-layers'
             'rpcs3-udev: support DualShock 3, 4 and DualSense controllers')
 options=('!lto' '!strip')
@@ -198,6 +198,6 @@ package() {
   DESTDIR="${pkgdir}" cmake --install "${_pkgsrc}/build"
 
   cd "${_pkgsrc}"
-  install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
-  install -Dm644 "LICENSE"   "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -vDm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+  install -vDm644 "LICENSE"   "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
