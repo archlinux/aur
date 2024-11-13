@@ -13,7 +13,7 @@ conflicts=('aide')
 install=$pkgname.install
 # lsof: needed for terminal splitting, see https://github.com/Microsoft/vsaide/issues/62991
 # xdg-utils: needed for opening web links with xdg-open
-depends=(libxkbfile gnupg gtk3 libsecret nss gcc-libs libnotify libxss glibc lsof shared-mime-info xdg-utils alsa-lib)
+depends=(fontconfig libxtst gtk3 python cairo alsa-lib nss gcc libnotify libxss glibc libxkbfile gnupg libsecret lsof shared-mime-info xdg-utils)
 optdepends=('glib2: Needed for move to trash functionality'
             'libdbusmenu-glib: Needed for KDE global menu'
             'org.freedesktop.secrets: Needed for settings sync'
