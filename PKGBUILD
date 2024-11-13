@@ -3,12 +3,12 @@
 _pkgname=Text-Layout
 pkgname=perl-text-layout
 pkgver=0.038
-pkgrel=1
+pkgrel=2
 pkgdesc="Pango style markup formatting"
 arch=('any')
 license=('Artistic-2.0')
 options=('!emptydirs')
-depends=()
+depends=('perl-pdf-api2' 'perl-object-pad')
 url='https://metacpan.org/pod/Text::Layout'
 source=("https://cpan.metacpan.org/authors/id/J/JV/JV/${_pkgname}-${pkgver}.tar.gz")
 sha512sums=('2da708bad4b39c6b66b2eec0857816901ba1f27e0a9201b58519e93b1934a3dd173dd9f6b1c5ec3e935a02387d5cdc14f9d79b499d316544df8776cb51be45e5')
