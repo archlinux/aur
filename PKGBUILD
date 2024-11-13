@@ -5,16 +5,17 @@ pkgname=perl-conf-libconfig
 _perl_namespace=Conf
 _perl_module=Libconfig
 _perl_author_path=C/CN/CNANGEL
-pkgver=0.101
+pkgver=1.0.3
 pkgrel=1
 pkgdesc=" Conf::Libconfig Perl extension for libconfig"
 arch=('any')
 url="https://metacpan.org/release/${_perl_namespace}-${_perl_module}"
 license=('BSD')
 depends=('perl' 'libconfig')
+makedepends=('perl-test-pod' 'perl-test-pod-coverage' 'perl-test-deep' 'perl-test-warn' 'perl-test-exception')
 
 source=("https://cpan.metacpan.org/authors/id/${_perl_author_path}/${_perl_namespace}-${_perl_module}-${pkgver}.tar.gz")
-sha256sums=('aa58e07503d9b34c8e7b7c4eff6461452cb24607e5736ba1c2af9009d61cad85')
+sha256sums=('e107f4b3d09f2b37db5a38ccce36ad945b82b89e5202b6bd01d3bb50a5965a1a')
 options=('!emptydirs')
 
 build() {
@@ -25,13 +26,12 @@ build() {
   make
 }
 
-# tests are known to fail https://github.com/cnangel/Conf-Libconfig/issues/3
-# check() {
-#   cd "${_perl_namespace}-${_perl_module}-${pkgver}"
-#   unset PERL5LIB PERL_MM_OPT PERL_MB_OPT PERL_LOCAL_LIB_ROOT
-#   export PERL_MM_USE_DEFAULT=1
-#   make test
-# }
+check() {
+  cd "${_perl_namespace}-${_perl_module}-${pkgver}"
+  unset PERL5LIB PERL_MM_OPT PERL_MB_OPT PERL_LOCAL_LIB_ROOT
+  export PERL_MM_USE_DEFAULT=1
+  make test
+}
 
 package() {
   cd "${_perl_namespace}-${_perl_module}-${pkgver}"

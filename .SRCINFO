@@ -1,14 +1,19 @@
 pkgbase = perl-conf-libconfig
 	pkgdesc = Conf::Libconfig Perl extension for libconfig
-	pkgver = 0.101
+	pkgver = 1.0.3
 	pkgrel = 1
 	url = https://metacpan.org/release/Conf-Libconfig
 	arch = any
 	license = BSD
+	makedepends = perl-test-pod
+	makedepends = perl-test-pod-coverage
+	makedepends = perl-test-deep
+	makedepends = perl-test-warn
+	makedepends = perl-test-exception
 	depends = perl
 	depends = libconfig
 	options = !emptydirs
-	source = https://cpan.metacpan.org/authors/id/C/CN/CNANGEL/Conf-Libconfig-0.101.tar.gz
-	sha256sums = aa58e07503d9b34c8e7b7c4eff6461452cb24607e5736ba1c2af9009d61cad85
+	source = https://cpan.metacpan.org/authors/id/C/CN/CNANGEL/Conf-Libconfig-1.0.3.tar.gz
+	sha256sums = e107f4b3d09f2b37db5a38ccce36ad945b82b89e5202b6bd01d3bb50a5965a1a
 
 pkgname = perl-conf-libconfig
