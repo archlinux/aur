@@ -1,0 +1,4 @@
+[guile-ini]
+source = "git"
+git = "https://github.com/artyom-poptsov/guile-ini"
+prefix = "v"
