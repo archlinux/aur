@@ -7,5 +7,6 @@
     <magic>
       <match type="string" offset="14:18" value="GM[17]"/>
     </magic>
+    <sub-class-of type="text/plain"/>
   </mime-type>
 </mime-info>
