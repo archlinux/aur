@@ -32,7 +32,7 @@ conflicts=('gamemaker-beta')
 options=(!strip)
 
 # Sources
-# https://gms.yoyogames.com/GameMaker-Beta-2023.1100.0.450.deb
+# https://gms.yoyogames.com/GameMaker-Beta-2024.1100.0.674.deb
 source=(
     "https://gms.yoyogames.com/GameMaker-Beta-${pkgver}.deb"
     "LICENSE.txt"    
