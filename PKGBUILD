@@ -1,4 +1,4 @@
-# Maintainer: revsuine <paradoor at protonmail dot com>
+# Maintainer: revsuine <pid1 at revsuine dot xyz>
 pkgname=ckb-next-runit
 pkgver=1.0.0
 pkgrel=2
