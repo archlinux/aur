@@ -5,20 +5,20 @@
 # Contributor: Frikilinux <frikilinux at gmail dot com>
 
 pkgname=gnome-shell-extension-appindicator-git
-pkgver=43+0+gc49dde6
+pkgver=59+2+g557dbdd
 pkgrel=1
 epoch=1
 pkgdesc='AppIndicator/KStatusNotifierItem support for GNOME Shell'
 url='https://github.com/ubuntu/gnome-shell-extension-appindicator'
-license=('GPL')
+license=('GPL-2.0-or-later')
 arch=('any')
 conflicts=(${pkgname%-git})
 provides=(${pkgname%-git})
 depends=('gnome-shell>=3.34')
-makedepends=('git' 'jq' 'meson')
-optdepends=(
-  'libappindicator-gtk2: support GTK+2 applications'
-  'libappindicator-gtk3: support GTK+3 applications'
+makedepends=(
+  'git'
+  'jq'
+  'meson'
 )
 source=("${pkgname}::git+${url}.git")
 sha512sums=('SKIP')
@@ -29,10 +29,12 @@ pkgver() {
 }
 
 build() {
-	arch-meson -Dlocal_install=disabled "${pkgname}" build
+	arch-meson "${pkgname}" build -Dlocal_install=disabled
+	meson compile -C build
 }
 
 package() {
 	meson install -C build --destdir="${pkgdir}"
+	# this file is generated at pkg install time
 	rm "${pkgdir}/usr/share/glib-2.0/schemas/gschemas.compiled"
 }
