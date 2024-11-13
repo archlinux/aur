@@ -1,9 +1,8 @@
 pkgbase = nri-nginx-bin
 	pkgdesc = nginx integration for New Relic
 	pkgver = 3.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/newrelic/nri-nginx
-	changelog = CHANGELOG
 	arch = aarch64
 	arch = armv7h
 	arch = x86_64
