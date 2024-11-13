@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=hugin-messenger-bin
 _pkgname="Hugin Messenger"
-pkgver=0.6.1
+pkgver=0.6.2
 _electronversion=19
 pkgrel=1
 pkgdesc="The new version of the private messaging desktop application powered by the Kryptokrona Blockchain.(Prebuilt version.Use system-wide electron)"
@@ -18,7 +18,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('667cc43120b9e6cc5bb83690c48aa9668da3bf0352ee9ea6dd40a3995ae55c45'
+sha256sums=('cc5044f550e313e1f3c915f0ebf68ebaa2264efccff566f0d362b30bd084d6c6'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 build() {
     sed -e "
