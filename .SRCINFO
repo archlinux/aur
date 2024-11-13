@@ -1,13 +1,13 @@
 pkgbase = quarkuscli-bin
 	pkgdesc = Create projects, manage extensions and perform build and development tasks for Quarkus, the Kubernetes Native Java stack tailored for OpenJDK HotSpot and GraalVM.
-	pkgver = 3.16.2
+	pkgver = 3.16.3
 	pkgrel = 1
 	url = https://github.com/quarkusio/quarkus
 	arch = x86_64
 	license = Apache
 	depends = java-runtime
 	provides = quarkus
-	source_x86_64 = https://github.com/quarkusio/quarkus/releases/download/3.16.2/quarkus-cli-3.16.2.tar.gz
-	sha256sums_x86_64 = 830c8e5b9ddfa3cdd15559edf340a900a13c0cf9edb86e25a205ae587b2c5f0f
+	source_x86_64 = https://github.com/quarkusio/quarkus/releases/download/3.16.3/quarkus-cli-3.16.3.tar.gz
+	sha256sums_x86_64 = 343eff717022ae2d2ca565d013d699bd2c4aa2c6fe8a448c1f1b759b2b2c75f4
 
 pkgname = quarkuscli-bin
