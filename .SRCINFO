@@ -1,0 +1,12 @@
+pkgbase = 51-android-git
+	pkgdesc = Google USB Driver
+	pkgver = 2.0.r24.g376b896
+	pkgrel = 1
+	url = https://github.com/snowdream/51-android
+	arch = any
+	license = custom
+	makedepends = android-sdk-platform-tools
+	source = git+https://github.com/snowdream/51-android.git
+	sha512sums = SKIP
+
+pkgname = 51-android-git
