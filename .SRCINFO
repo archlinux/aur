@@ -1,18 +1,20 @@
 pkgbase = pmbootstrap-git
 	pkgdesc = Sophisticated chroot/build/flash tool to develop and install postmarketOS (git)
-	pkgver = 1.42.0.r12.gfaf52391
+	pkgver = 3.0.0.r0.g79c6e4c
 	pkgrel = 1
 	url = https://postmarketos.org
 	arch = any
-	license = GPL
+	license = GPL-3.0-only
 	makedepends = python-build
 	makedepends = python-installer
+	makedepends = python-setuptools
 	makedepends = python-wheel
 	makedepends = git
-	depends = python-setuptools
+	depends = python
+	depends = python-argcomplete
 	provides = pmbootstrap
 	conflicts = pmbootstrap
-	source = git+https://gitlab.com/postmarketOS/pmbootstrap.git
+	source = git+https://gitlab.postmarketos.org/postmarketOS/pmbootstrap.git
 	md5sums = SKIP
 
 pkgname = pmbootstrap-git

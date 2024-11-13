@@ -1,17 +1,18 @@
-# Maintainer: katt <magunasu.b97@gmail.com>
+# Contributor: katt <magunasu.b97@gmail.com>
+# Maintainer: fossdd <fossdd@pwned.life>
 
 pkgname=pmbootstrap-git
-pkgver=1.42.0.r12.gfaf52391
+pkgver=3.0.0.r0.g79c6e4c
 pkgrel=1
 pkgdesc='Sophisticated chroot/build/flash tool to develop and install postmarketOS (git)'
 arch=(any)
 url=https://postmarketos.org
-license=(GPL)
-depends=(python-setuptools)
-makedepends=(python-build python-installer python-wheel git)
+license=(GPL-3.0-only)
+depends=(python python-argcomplete)
+makedepends=(python-build python-installer python-setuptools python-wheel git)
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=(git+https://gitlab.com/postmarketOS/pmbootstrap.git)
+source=(git+https://gitlab.postmarketos.org/postmarketOS/pmbootstrap.git)
 md5sums=(SKIP)
 
 pkgver() {
