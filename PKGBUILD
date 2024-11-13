@@ -4,20 +4,20 @@
 # Contributor: Loqs (bbs.archlinux.org) 
 pkgname=zpaqfranz-git
 pkgver=git
-pkgrel=1
+pkgrel=2
 pkgdesc="Swiss army knife for backup and disaster recovery, like 7z or RAR on steroids, with deduplicated 'snapshots' (versions). Conceptually similar to the Mac time machine, but much more efficiently. zpaq 7.15 fork"
 arch=('i686' 'x86_64')
 url="https://github.com/fcorbelli/zpaqfranz"
 license=('MIT')
 depends=('gcc-libs' 'glibc')
-makedepends=('git' 'grep' 'awk')
+makedepends=('git' 'grep' 'awk' 'sed')
 conflicts=('zpaqfranz')
 source=("git+https://github.com/fcorbelli/zpaqfranz.git")
 sha256sums=('SKIP')
 pkgver() 
 {
   cd "zpaqfranz"
-  _tag=$(grep "#define ZPAQ_VERSION" zpaqfranz.cpp |awk '{gsub(/"/, "", $3); print $3}')
+  _tag=$(grep "#define ZPAQ_VERSION" zpaqfranz.cpp |awk '{gsub(/"/, "", $3); print $3}' | sed 's/[^0-9]//g')
   printf "%s" "$_tag"
 }
 build() 

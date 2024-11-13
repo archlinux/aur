@@ -1,7 +1,7 @@
 pkgbase = zpaqfranz-git
 	pkgdesc = Swiss army knife for backup and disaster recovery, like 7z or RAR on steroids, with deduplicated 'snapshots' (versions). Conceptually similar to the Mac time machine, but much more efficiently. zpaq 7.15 fork
 	pkgver = git
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/fcorbelli/zpaqfranz
 	arch = i686
 	arch = x86_64
@@ -9,6 +9,7 @@ pkgbase = zpaqfranz-git
 	makedepends = git
 	makedepends = grep
 	makedepends = awk
+	makedepends = sed
 	depends = gcc-libs
 	depends = glibc
 	conflicts = zpaqfranz
