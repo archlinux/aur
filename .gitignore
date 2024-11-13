@@ -1,6 +1,4 @@
-*.swp
-
-# makepkg
 pkg/
-src
-*.pkg.tar.xz
+*.pkg.tar.zst
+src/
+*.tar.gz

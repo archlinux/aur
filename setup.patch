@@ -1,0 +1,10 @@
+--- setup.cfg	2024-10-07 13:02:06.000000000 -0400
++++ setup2.cfg	2024-11-13 13:43:59.153312218 -0500
+@@ -34,7 +34,3 @@
+ 
+ [options.packages.find]
+ where=src
+-
+-[options.data_files]
+-requirements =
+-    requirements.txt
