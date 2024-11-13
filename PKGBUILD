@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=hugin-messenger-bin
 _pkgname="Hugin Messenger"
-pkgver=0.6.2
+pkgver=0.6.3
 _electronversion=19
 pkgrel=1
 pkgdesc="The new version of the private messaging desktop application powered by the Kryptokrona Blockchain.(Prebuilt version.Use system-wide electron)"
@@ -18,7 +18,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('cc5044f550e313e1f3c915f0ebf68ebaa2264efccff566f0d362b30bd084d6c6'
+sha256sums=('638c3353ce5a58688cbc369b84ea549151edb287bd2f446a5832d1e3111fe932'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 build() {
     sed -e "
@@ -33,6 +33,7 @@ build() {
         s/\"\/opt\/${_pkgname}\/${pkgname%-bin}\"/${pkgname%-bin}/g
         s/Utility/Network/g
     " -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
+    find "${srcdir}/opt/${_pkgname}/resources" -type d -name "*arm*" -exec rm -rf {} +
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
