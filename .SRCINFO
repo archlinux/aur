@@ -1,15 +1,15 @@
 pkgbase = geminicommit-bin
 	pkgdesc = A CLI that writes your git commit messages for you with Google Gemini AI
-	pkgver = 0.1.0
+	pkgver = 0.2.3
 	pkgrel = 1
 	url = https://github.com/tfkhdyt/geminicommit
 	arch = x86_64
 	arch = aarch64
 	license = GPL3
 	depends = git
-	source_x86_64 = geminicommit-bin-v0.1.0.tar.gz::https://github.com/tfkhdyt/geminicommit/releases/download/v0.1.0/geminicommit-v0.1.0-linux-amd64.tar.gz
-	sha256sums_x86_64 = b502ff4136c57ecd55d89d18c01e0f101a7b90e8eb238b3d393bbdec83c72e3c
-	source_aarch64 = geminicommit-bin-v0.1.0.tar.gz::https://github.com/tfkhdyt/geminicommit/releases/download/v0.1.0/geminicommit-v0.1.0-linux-arm64.tar.gz
-	sha256sums_aarch64 = 1e5e14cb4bacacdf3f3a315be6d8171fd9fe25032426d63c2fb25e26314bcbe8
+	source_x86_64 = geminicommit-bin-v0.2.3.tar.gz::https://github.com/tfkhdyt/geminicommit/releases/download/v0.2.3/geminicommit-v0.2.3-linux-amd64.tar.gz
+	sha256sums_x86_64 = 98c5496c0ccabe738128e85eee95478d88e9c487d535ae2defc4f73778ccf642
+	source_aarch64 = geminicommit-bin-v0.2.3.tar.gz::https://github.com/tfkhdyt/geminicommit/releases/download/v0.2.3/geminicommit-v0.2.3-linux-arm64.tar.gz
+	sha256sums_aarch64 = 089796f469490d6de94334e3ee00ba64262aeaadc1bdf4c14d176dabce2bc0cf
 
 pkgname = geminicommit-bin

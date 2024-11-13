@@ -9,10 +9,10 @@ url='https://github.com/tfkhdyt/geminicommit'
 license=('GPL3')
 depends=('git')
 source_x86_64=("${pkgname}-v${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/geminicommit-v${pkgver}-linux-amd64.tar.gz")
-sha256sums_x86_64=('b502ff4136c57ecd55d89d18c01e0f101a7b90e8eb238b3d393bbdec83c72e3c')
+sha256sums_x86_64=('98c5496c0ccabe738128e85eee95478d88e9c487d535ae2defc4f73778ccf642')
 
 source_aarch64=("${pkgname}-v${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/geminicommit-v${pkgver}-linux-arm64.tar.gz")
-sha256sums_aarch64=('1e5e14cb4bacacdf3f3a315be6d8171fd9fe25032426d63c2fb25e26314bcbe8')
+sha256sums_aarch64=('089796f469490d6de94334e3ee00ba64262aeaadc1bdf4c14d176dabce2bc0cf')
 
 build() {
 	./geminicommit completion bash >geminicommit.bash
