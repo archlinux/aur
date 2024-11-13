@@ -15,7 +15,6 @@ NAMES = [
 ]
 
 URLS = {
-        "community": f"https://archlinux.org/packages/community/{ARCH}/$/",
         "core":      f"https://archlinux.org/packages/core/{ARCH}/$/",
         "extra":     f"https://archlinux.org/packages/extra/{ARCH}/$/",
         "aur":       f"https://aur.archlinux.org/packages/$",

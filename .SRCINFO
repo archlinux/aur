@@ -1,6 +1,6 @@
 pkgbase = pacman-python
 	pkgdesc = Shows you archlinux packages for the specific pip package
-	pkgver = 2
+	pkgver = 3
 	pkgrel = 0
 	url = https://aur.archlinux.org/packages/pacman-python
 	arch = any
@@ -8,6 +8,6 @@ pkgbase = pacman-python
 	depends = python
 	depends = python-requests
 	source = pacman-python.py
-	sha512sums = 5a7336d56d5dbf0f0b384daf429912b597bc48d32f04323227ea37543c752c2bc178fb7c2a7da9acbf193fa87af7ad1daffa5e5cb8d6d959cb458fd876d59ce4
+	sha512sums = 62ea669ca816925460315ce98465eddb880b8ee4cd1ea0b1029ff888b868ac03cfd15e2386e092ed8f644e1cd22e8260a9ad452465f3688f302a1eaf7eca29c4
 
 pkgname = pacman-python

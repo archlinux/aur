@@ -1,7 +1,7 @@
 # Maintainer: fossdd <fossdd@pwned.life>
 
 pkgname=pacman-python
-pkgver=2
+pkgver=3
 pkgrel=0
 pkgdesc="Shows you archlinux packages for the specific pip package"
 depends=('python' 'python-requests')
@@ -9,7 +9,7 @@ arch=('any')
 url="https://aur.archlinux.org/packages/pacman-python"
 source=("pacman-python.py")
 license=('Unlicense')
-sha512sums=('5a7336d56d5dbf0f0b384daf429912b597bc48d32f04323227ea37543c752c2bc178fb7c2a7da9acbf193fa87af7ad1daffa5e5cb8d6d959cb458fd876d59ce4')
+sha512sums=('62ea669ca816925460315ce98465eddb880b8ee4cd1ea0b1029ff888b868ac03cfd15e2386e092ed8f644e1cd22e8260a9ad452465f3688f302a1eaf7eca29c4')
 
 package() {
     install -Dm755 "pacman-python.py" "$pkgdir/usr/bin/pacman-python"
