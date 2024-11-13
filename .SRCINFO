@@ -1,12 +1,11 @@
 pkgbase = ocaml-sedlex
 	pkgdesc = Unicode-friendly OCaml lexer generator
 	pkgver = 3.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ocaml-community/sedlex
 	arch = x86_64
 	arch = aarch64
 	license = MIT
-	checkdepends = ocaml-ppx_expect
 	makedepends = dune>=3.0.0
 	depends = ocaml>=4.08.0
 	depends = ocaml-gen
