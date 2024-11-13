@@ -3,7 +3,7 @@
 
 _pkgname=wolframalpha
 pkgname=python-$_pkgname
-pkgver=5.0.0
+pkgver=5.1.3
 pkgrel=1
 pkgdesc="Wolfram|Alpha 2.0 API client"
 url="https://github.com/jaraco/wolframalpha"
@@ -11,7 +11,7 @@ license=("MIT")
 arch=("any")
 depends=('python' 'python-six' 'python-xmltodict')
 source=($url/archive/refs/tags/v$pkgver.tar.gz)
-sha256sums=('16098fff0f299bb97cbd241f31c8b844479e9cd210015e530e3e022b312c1c17')
+sha256sums=('2904733064f70dd1c9133e84fe5554729c07901216febb306c2207cb832f91ce')
 
 
 build() {
