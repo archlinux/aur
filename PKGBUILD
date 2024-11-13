@@ -2,7 +2,7 @@
 pkgname=nri-docker-bin
 _pkg=nri-docker
 pkgver=2.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Docker integration for New Relic"
 arch=(aarch64 armv7h x86_64)
 url="https://github.com/newrelic/${_pkg}"
@@ -11,7 +11,7 @@ groups=(newrelic)
 depends=(newrelic-infra)
 provides=( ${_pkg} )
 conflicts=( ${_pkg} )
-changelog=CHANGELOG
+#changelog=CHANGELOG
 source_aarch64=(https://github.com/newrelic/nri-docker/releases/download/v${pkgver}/${_pkg}_linux_${pkgver}_arm64.tar.gz)
 source_armv7h=(https://github.com/newrelic/nri-docker/releases/download/v${pkgver}/${_pkg}_linux_${pkgver}_arm.tar.gz)
 source_x86_64=(https://github.com/newrelic/nri-docker/releases/download/v${pkgver}/${_pkg}_linux_${pkgver}_amd64.tar.gz)

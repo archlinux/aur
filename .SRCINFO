@@ -1,9 +1,8 @@
 pkgbase = nri-docker-bin
 	pkgdesc = Docker integration for New Relic
 	pkgver = 2.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/newrelic/nri-docker
-	changelog = CHANGELOG
 	arch = aarch64
 	arch = armv7h
 	arch = x86_64
