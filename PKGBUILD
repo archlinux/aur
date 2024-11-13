@@ -2,11 +2,11 @@
 _appname=hugin
 pkgname="${_appname}-messenger"
 _pkgname="Hugin Messenger"
-pkgver=0.5.0
+pkgver=0.6.1
 _electronversion=19
-_nodeversion=16
-pkgrel=5
-pkgdesc="The new version of the private messaging desktop application powered by the Kryptokrona Blockchain.Use system-wide electron."
+_nodeversion=18.20.4
+pkgrel=1
+pkgdesc="The new version of the private messaging desktop application powered by the Kryptokrona Blockchain.(Use system-wide electron)"
 arch=('any')
 url="https://hugin.chat/"
 _ghurl="https://github.com/kryptokrona/hugin-desktop"
@@ -24,10 +24,10 @@ makedepends=(
     'curl'
 )
 source=(
-    "${pkgname}-${pkgver}.tar.gz::${_ghurl}/archive/refs/tags/v${pkgver}.tar.gz"
+    "${pkgname}-${pkgver}.tar.gz::${_ghurl}/archive/refs/tags/${pkgver}.tar.gz"
     "${pkgname}.sh"
 )
-sha256sums=('4a700ea9785ea4dfc9346d1c4ecadf253fefec5fb45f467d2214fea19e688e2c'
+sha256sums=('aaf6bf9b01fca35e9fab49326112035bf1b1d75e8d97cf4bdb44fafb354ca6d7'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
@@ -58,7 +58,6 @@ build() {
     if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
         {
             echo 'registry=https://registry.npmmirror.com'
-            #echo 'disturl=https://registry.npmmirror.com/-/binary/node/'
             echo 'electron_mirror=https://registry.npmmirror.com/-/binary/electron/'
             echo 'electron_builder_binaries_mirror=https://registry.npmmirror.com/-/binary/electron-builder-binaries/'
         } >> .npmrc
@@ -73,7 +72,7 @@ build() {
 package() {
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
     install -Dm644 "${srcdir}/${_appname}-desktop-${pkgver}/dist/linux-"*/resources/app.asar -t "${pkgdir}/usr/lib/${pkgname}"
-    install -Dm644 "${srcdir}/${_appname}-desktop-${pkgver}/dist/linux-"*/resources/bin/*.png -t "${pkgdir}/usr/lib/${pkgname}/bin"
+    cp -Pr --no-preserve=ownership "${srcdir}/${_appname}-desktop-${pkgver}/dist/linux-"*/resources/{app.asar.unpacked,bin} "${pkgdir}/usr/lib/${pkgname}"
     install -Dm644 "${srcdir}/${_appname}-desktop-${pkgver}/build/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
     install -Dm644 "${srcdir}/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
 }
