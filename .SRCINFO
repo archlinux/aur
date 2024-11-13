@@ -1,9 +1,8 @@
 pkgbase = nri-mysql-bin
 	pkgdesc = MySQL integration for New Relic
 	pkgver = 1.11.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/newrelic/nri-mysql
-	changelog = CHANGELOG
 	arch = aarch64
 	arch = armv7h
 	arch = x86_64
