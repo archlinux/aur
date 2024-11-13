@@ -1,7 +1,7 @@
 # Maintainer:  Orhun Parmaksız <orhun@archlinux.org>
 
 pkgname=rio-git
-pkgver=0.1.17.r154.g7855417a0
+pkgver=0.1.17.r177.g29484e7a2
 pkgrel=1
 pkgdesc="A hardware-accelerated GPU terminal emulator powered by WebGPU (git)"
 arch=('x86_64')
@@ -26,32 +26,32 @@ makedepends=(
 )
 conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}")
-source=("$pkgname-$pkgver::git+${url}")
+source=("$pkgname::git+${url}")
 sha512sums=('SKIP')
 options=('!lto')
 
 pkgver() {
-  cd "$pkgname-$pkgver"
+  cd "$pkgname"
   git describe --long --tags --match="v[0-9]*" | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
-  cd "$pkgname-$pkgver"
+  cd "$pkgname"
   cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
-  cd "$pkgname-$pkgver"
+  cd "$pkgname"
   cargo build --frozen --release --all-features
 }
 
 check() {
-  cd "$pkgname-$pkgver"
+  cd "$pkgname"
   cargo test --frozen --workspace
 }
 
 package() {
-  cd "$pkgname-$pkgver"
+  cd "$pkgname"
   install -Dm0755 -t "${pkgdir}/usr/bin/" "target/release/${pkgname%-git}"
   install -Dm0644 -t "${pkgdir}/usr/share/doc/${pkgname}/" "README.md"
   install -Dm0644 -t "${pkgdir}/usr/share/licenses/${pkgname}/" "LICENSE"

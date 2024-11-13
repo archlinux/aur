@@ -1,6 +1,6 @@
 pkgbase = rio-git
 	pkgdesc = A hardware-accelerated GPU terminal emulator powered by WebGPU (git)
-	pkgver = 0.1.17.r154.g7855417a0
+	pkgver = 0.1.17.r177.g29484e7a2
 	pkgrel = 1
 	url = https://github.com/raphamorim/rio
 	arch = x86_64
@@ -20,7 +20,7 @@ pkgbase = rio-git
 	provides = rio
 	conflicts = rio
 	options = !lto
-	source = rio-git-0.1.17.r154.g7855417a0::git+https://github.com/raphamorim/rio
+	source = rio-git::git+https://github.com/raphamorim/rio
 	sha512sums = SKIP
 
 pkgname = rio-git
