@@ -7,7 +7,6 @@ pkgname=$_srcname-git
 pkgdesc="Python bindings for Valgrind's VEX IR"
 url="https://github.com/angr/pyvex"
 pkgver=9.2.129.dev0.r1140.10d953f
-_devver="${pkgver%\.r[0-9]*}"
 pkgrel=1
 arch=('x86_64')
 depends=(
