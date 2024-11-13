@@ -1,0 +1,14 @@
+post_install() {
+	systemctl daemon-reload
+	if systemctl is-active --quiet ModemManager.service; then
+		systemctl restart ModemManager.service
+	fi
+}
+
+post_upgrade() {
+	systemctl daemon-reload
+	if systemctl is-active --quiet ModemManager.service; then
+		systemctl restart ModemManager.service
+	fi
+}
+
