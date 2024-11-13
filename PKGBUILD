@@ -1,4 +1,4 @@
-# Maintainer: revsuine <paradoor at protonmail dot com>
+# Maintainer: revsuine <pid1 at revsuine dot xyz>
 _pkgname=disable-c6-runit
 pkgname=$_pkgname-git
 pkgver=1.r0.g4dc1fd1
