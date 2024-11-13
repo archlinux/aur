@@ -1,0 +1,22 @@
+pkgbase = bizhawk-preview-latest-bin
+	pkgdesc = A multi-platform emulator with full re-recording support and Lua scripting (Nightly build)
+	pkgver = 2.9.1
+	pkgrel = 1
+	url = https://tasvideos.org/BizHawk
+	arch = x86_64
+	license = LicenseRef-BizHawk
+	license = MIT
+	makedepends = gendesk
+	makedepends = icoutils
+	depends = glibc
+	depends = mono
+	depends = openal
+	depends = lua>=5.4
+	depends = lsb-release
+	provides = bizhawk
+	source = https://nightly.link/TASEmulators/BizHawk/workflows/ci/master/BizHawk-dev-linux.zip
+	source = https://raw.githubusercontent.com/TASEmulators/BizHawk/master/LICENSE
+	md5sums = SKIP
+	md5sums = 2d15d8df1b4ec039a8fac3202a418a3c
+
+pkgname = bizhawk-preview-latest-bin
