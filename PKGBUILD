@@ -1,6 +1,6 @@
 # Maintainer: swearchnick <swearchnick[at]gmail[dot]com>
 pkgname="pdf-xchange"
-pkgver="10.4.3.391"
+pkgver="10.4.4.392"
 pkgrel="1"
 pkgdesc="Feature-rich PDF editor/viewer. Create, view, edit and annotate plus much more."
 license=('Custom')
@@ -19,7 +19,7 @@ _redactpatterns="$_commonfiles/RedactPatterns"
 _tesseract="$_commonfiles/Tesseract"
 
 source=("$pkgname-$pkgver.msi::$_downloadsource/$_x64file")
-sha256sums=('c37e587a487a07a0327ccb09e6a6bde3edc40fc20e6e4e9ee624ce413ab8f3f9')
+sha256sums=('cba2b13a67cb51b418b8bf4a83fb862fc24ad4816d5499cec2f2f08f1bc8caac')
 
 prepare()
 {
@@ -338,8 +338,19 @@ package()
  install -Dm644 "$srcdir/FID_GD_zh_CN" "$pkgdir${_installdir}/$pkgname/${_languages}/GoogleDrive.zh-CN.xcl"
  install -Dm644 "$srcdir/FID_GD_zh_TW" "$pkgdir${_installdir}/$pkgname/${_languages}/GoogleDrive.zh-TW.xcl"
  install -Dm644 "$srcdir/FID_HTML_az_Latn_AZ" "$pkgdir${_installdir}/$pkgname/${_languages}/Html2Pdf.az-Latn-AZ.xcl"
+ install -Dm644 "$srcdir/FID_HTML_ca_ES" "$pkgdir${_installdir}/$pkgname/${_languages}/Html2Pdf.ca-ES.xcl"
  install -Dm644 "$srcdir/FID_HTML_da_DK" "$pkgdir${_installdir}/$pkgname/${_languages}/Html2Pdf.da-DK.xcl"
+ install -Dm644 "$srcdir/FID_HTML_de_DE" "$pkgdir${_installdir}/$pkgname/${_languages}/Html2Pdf.de-DE.xcl"
+ install -Dm644 "$srcdir/FID_HTML_fi_FI" "$pkgdir${_installdir}/$pkgname/${_languages}/Html2Pdf.fi-FI.xcl"
+ install -Dm644 "$srcdir/FID_HTML_fr_FR" "$pkgdir${_installdir}/$pkgname/${_languages}/Html2Pdf.fr-FR.xcl"
+ install -Dm644 "$srcdir/FID_HTML_hu_HU" "$pkgdir${_installdir}/$pkgname/${_languages}/Html2Pdf.hu-HU.xcl"
  install -Dm644 "$srcdir/FID_HTML_ko_KR" "$pkgdir${_installdir}/$pkgname/${_languages}/Html2Pdf.ko-KR.xcl"
+ install -Dm644 "$srcdir/FID_HTML_lt_LT" "$pkgdir${_installdir}/$pkgname/${_languages}/Html2Pdf.lt-LT.xcl"
+ install -Dm644 "$srcdir/FID_HTML_nl_NL" "$pkgdir${_installdir}/$pkgname/${_languages}/Html2Pdf.nl-NL.xcl"
+ install -Dm644 "$srcdir/FID_HTML_pl_PL" "$pkgdir${_installdir}/$pkgname/${_languages}/Html2Pdf.pl-PL.xcl"
+ install -Dm644 "$srcdir/FID_HTML_ru_RU" "$pkgdir${_installdir}/$pkgname/${_languages}/Html2Pdf.ru-RU.xcl"
+ install -Dm644 "$srcdir/FID_HTML_tr_TR" "$pkgdir${_installdir}/$pkgname/${_languages}/Html2Pdf.tr-TR.xcl"
+ install -Dm644 "$srcdir/FID_HTML_uk_UA" "$pkgdir${_installdir}/$pkgname/${_languages}/Html2Pdf.uk-UA.xcl"
  install -Dm644 "$srcdir/FID_IF_az_Latn_AZ" "$pkgdir${_installdir}/$pkgname/${_languages}/IdentifyForms.az-Latn-AZ.xcl"
  install -Dm644 "$srcdir/FID_IF_ca_ES" "$pkgdir${_installdir}/$pkgname/${_languages}/IdentifyForms.ca-ES.xcl"
  install -Dm644 "$srcdir/FID_IF_cs_CZ" "$pkgdir${_installdir}/$pkgname/${_languages}/IdentifyForms.cs-CZ.xcl"
