@@ -6,7 +6,7 @@
 
 _pkgname=cjdns
 pkgname=$_pkgname-git
-pkgver=22.r7.g2faa4c83
+pkgver=21.3.r434.g4be793cb
 pkgrel=1
 pkgdesc='A routing engine designed for security, scalability, speed and ease of use'
 url='https://github.com/cjdelisle/cjdns'
@@ -23,7 +23,7 @@ optdepends=(
 
 provides=("$_pkgname")
 conflicts=("$_pkgname")
-source=("git+$url#branch=master")
+source=("git+$url#branch=crashey")
 sha512sums=('SKIP')
 
 pkgver() {
