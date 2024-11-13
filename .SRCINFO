@@ -1,7 +1,7 @@
 pkgbase = wine-osu-spectator-wow64
 	pkgdesc = A compatibility layer for running Windows programs, but with osu! specific patches (doesn't conflict with other Wine installations) (WoW64 version)
-	pkgver = 9.21.w1.sf03d32e
-	pkgrel = 1
+	pkgver = 9.21.w54.s32abf9f
+	pkgrel = 2
 	url = http://www.winehq.com
 	install = wine-wow64.install
 	arch = x86_64
@@ -116,22 +116,18 @@ pkgbase = wine-osu-spectator-wow64
 	options = !debug
 	options = !strip
 	source = winestart
-	source = 30-win32-aliases.conf
-	source = wine-binfmt.conf
 	source = Makefile.single
 	source = lto-fixup.patch
 	source = buildiswow64
-	source = wine::git+https://gitlab.winehq.org/wine/wine.git#commit=c9a8333c0f274201faf33d27abda1ebb5ae07cec
-	source = wine-staging::git+https://github.com/wine-staging/wine-staging.git#commit=f03d32e381f829e13a82726cad521d4b1c223b10
-	source = git+https://github.com/whrvt/wine-osu-patches.git#tag=11-08-2024-c9a8333c-f03d32e3
+	source = wine::git+https://gitlab.winehq.org/wine/wine.git#commit=60ddc9613b0a48b20fd1180409bea849f02961ef
+	source = wine-staging::git+https://github.com/wine-staging/wine-staging.git#commit=32abf9fc9756ad912b39acb93bcf60f448942a20
+	source = git+https://github.com/whrvt/wine-osu-patches.git#tag=11-12-2024-60ddc961-32abf9fc
 	sha512sums = 2d431b8830f783b9973ef3df50606b3dae705dffe3cd6106a7daa3b5ad89eaecd6b0e7da835ebf18985a6f3c9c1c952866f39126e34fb6503935baa91a9e8189
-	sha512sums = 6e54ece7ec7022b3c9d94ad64bdf1017338da16c618966e8baf398e6f18f80f7b0576edf1d1da47ed77b96d577e4cbb2bb0156b0b11c183a0accf22654b0a2bb
-	sha512sums = bdde7ae015d8a98ba55e84b86dc05aca1d4f8de85be7e4bd6187054bfe4ac83b5a20538945b63fb073caab78022141e9545685e4e3698c97ff173cf30859e285
 	sha512sums = 59920a54e9bd8d1f73c15675f7df29829680b59f4d1c4fc74fe710e4b596fd6a96f3b43994eb5da0fd1e50299b0ada933c6f3796e1d0698febb7870995f7f266
 	sha512sums = c949136c1dca345ab4e86cb7ac6d0f02595e09a9f0c344dc9ca454cfa3aab8845a2e1f36f27e9357f3a6a3ead0d6b7f1ffb1444246cd3b76aedbe30942d20859
 	sha512sums = SKIP
 	sha512sums = SKIP
 	sha512sums = SKIP
-	sha512sums = 0db2682dac72e5ddd2c9201a26e4440a56b0a5c399b1065fc2a93b2deb72f868dcb1c61062559f302e4576a6f959637b8c80d76f659afbe5d368b8cbfd3fd5b0
+	sha512sums = daef9232d634f54fd349729b332cbad5776ec4c526ea1ad09e5d68cc512d2b568da324abe7fdc67b0c488c0485b7e4e7e7c46d421a549d4365eb3d9adb8ae671
 
 pkgname = wine-osu-spectator-wow64

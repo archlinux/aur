@@ -13,9 +13,9 @@ _devenv=false
 _generic_release=false
 
 ## real pkgrel is the eval one
-pkgver=9.21.w1.sf03d32e
+pkgver=9.21.w54.s32abf9f
 pkgrel=1
-eval pkgrel=1
+eval pkgrel=2
 
 ################################################################################################################################
 ################################################################################################################################
@@ -32,10 +32,10 @@ _enabled_staging=()
 
 ## if all staging patches are to be applied, what (array of) patches to omit?
 ## e.g. "Compiler_Warnings user32-. . ."
-_disabled_staging=(eventfd_synchronization ntdll-HashLinks) # added manually from proton
+_disabled_staging=(eventfd_synchronization) # added manually from proton
 
 ## main AUR version control setting, wine/staging base will be taken from this if custompatches=false (default)
-_patchbase_tag="11-08-2024-c9a8333c-f03d32e3"
+_patchbase_tag="11-12-2024-60ddc961-32abf9fc"
 
 ## to use this, set this to true, create a "custompatches" folder in the top-level PKGBUILD directory, and place your patches there.
 ## the patches from the wine-osu-patches git repo will no longer be applied, but you can copy them to the
@@ -45,8 +45,8 @@ _custompatches=false
 
 ## (with custompatches) uses wine/staging master if empty, uses given commit or tag if set
 ## (without custompatches) ignored and overwritten by upstream commits from patchbase repo
-_desired_wine_commit=c9a8333c0f274201faf33d27abda1ebb5ae07cec
-_desired_staging_commit=f03d32e381f829e13a82726cad521d4b1c223b10
+_desired_wine_commit=60ddc9613b0a48b20fd1180409bea849f02961ef
+_desired_staging_commit=32abf9fc9756ad912b39acb93bcf60f448942a20
 
 ## (with custompatches) ignore the _desired_wine_commit above and take the wine commit from the "upstream-commit" file in the staging repo
 _use_staging_upstream=false
@@ -110,8 +110,6 @@ options=('!buildflags' '!staticlibs' 'ccache' '!lto' '!debug' '!strip')
 
 source=(
   "winestart"
-  "30-win32-aliases.conf"
-  "wine-binfmt.conf"
   "Makefile.single"
   "lto-fixup.patch"
   "buildiswow64"
@@ -121,8 +119,6 @@ source=(
 
 sha512sums=(
   '2d431b8830f783b9973ef3df50606b3dae705dffe3cd6106a7daa3b5ad89eaecd6b0e7da835ebf18985a6f3c9c1c952866f39126e34fb6503935baa91a9e8189'
-  '6e54ece7ec7022b3c9d94ad64bdf1017338da16c618966e8baf398e6f18f80f7b0576edf1d1da47ed77b96d577e4cbb2bb0156b0b11c183a0accf22654b0a2bb'
-  'bdde7ae015d8a98ba55e84b86dc05aca1d4f8de85be7e4bd6187054bfe4ac83b5a20538945b63fb073caab78022141e9545685e4e3698c97ff173cf30859e285'
   '59920a54e9bd8d1f73c15675f7df29829680b59f4d1c4fc74fe710e4b596fd6a96f3b43994eb5da0fd1e50299b0ada933c6f3796e1d0698febb7870995f7f266'
   'c949136c1dca345ab4e86cb7ac6d0f02595e09a9f0c344dc9ca454cfa3aab8845a2e1f36f27e9357f3a6a3ead0d6b7f1ffb1444246cd3b76aedbe30942d20859'
   'SKIP'
@@ -134,7 +130,7 @@ noextract=()
 ## don't needlessly add the wine-osu-patches repo if we explicitly specify custom ones
 if ! { [ -d "${_where}"/custompatches ] && [ "${_custompatches}" = "true" ] ; }; then
   source+=("git+https://github.com/whrvt/wine-osu-patches.git#tag=${_patchbase_tag}")
-  sha512sums+=('0db2682dac72e5ddd2c9201a26e4440a56b0a5c399b1065fc2a93b2deb72f868dcb1c61062559f302e4576a6f959637b8c80d76f659afbe5d368b8cbfd3fd5b0')
+  sha512sums+=('daef9232d634f54fd349729b332cbad5776ec4c526ea1ad09e5d68cc512d2b568da324abe7fdc67b0c488c0485b7e4e7e7c46d421a549d4365eb3d9adb8ae671')
 
   if [ "${_custompatches}" = "true" ]; then
     msg2 "WARNING: _custompatches=true but custompatches directory not found. Will be using wine-osu-patches repo."
@@ -320,7 +316,7 @@ _set_vars() {
 
   export PATH="${_cross_path}"
 
-  _common_cflags="${_cpu_target} ${_extra_common_flags:-} -std=gnu11 -pipe -O3 -fomit-frame-pointer -fno-semantic-interposition \
+  _common_cflags="${_cpu_target} ${_extra_common_flags:-} -std=gnu11 -pipe -O3 -fomit-frame-pointer -fno-semantic-interposition -fwrapv -fno-strict-aliasing \
                   -Wno-error=incompatible-pointer-types -Wno-error=implicit-function-declaration -Wno-error=int-conversion -w"
   _native_common_cflags="-static-libgcc ${_lto_flags:-} ${_extra_native_flags:-}" # only for the non-mingw side
 
@@ -703,14 +699,6 @@ package() { _set_vars;
     libdir="${pkgdir}"/opt/"${pkgname}"/lib64 \
     dlldir="${pkgdir}"/opt/"${pkgname}"/lib64/wine $_installtype || _failure "Wine-64 installation failed"
 
-  ## Font aliasing settings for Win32 applications
-  install -d "${pkgdir}"/usr/share/fontconfig/conf.{avail,default}
-  install -m644 "${srcdir}"/30-win32-aliases.conf "${pkgdir}"/usr/share/fontconfig/conf.avail/30-win32-aliases"${_wowname}"-spec.conf
-  ln -s ../conf.avail/30-win32-aliases.conf "${pkgdir}"/usr/share/fontconfig/conf.default/30-win32-aliases"${_wowname}"-spec.conf
-
-  ## Install wine binary format
-  install -Dm 644 "${srcdir}"/wine-binfmt.conf "${pkgdir}"/usr/lib/binfmt.d/wine"${_wowname}"-spec.conf
-
   if [ "${_strip_package}" = "true" ]; then
     msg "Stripping symbols from libraries"
 
@@ -739,17 +727,8 @@ package() { _set_vars;
 
 ## more random helpers
 
-_exit_cleanup() {
-  if [ "$_cleanbuildfolders" = "true" ]; then
-    msg2 "_cleanbuildfolders=true, removing src and package folders."
-    rm -rf "${_where}"/{src,pkg}
-  fi
-}
-
 _failure() {
   if [ -n "$*" ]; then msg "$*"; fi
   error "Exiting."
   exit 1
 }
-
-trap _exit_cleanup EXIT
