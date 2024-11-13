@@ -81,7 +81,6 @@ makedepends+=(
 )
 
 checkdepends=()
-replaces=("wechat-universal-bwrap" "wechat-beta-bwrap" "wechat")
 
 source=(
 	wechat.sh
