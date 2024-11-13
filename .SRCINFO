@@ -9,5 +9,7 @@ pkgbase = luckey-games-meta
 	depends = hexon
 	depends = opensaucer
 	depends = tux
+	depends = quatter
+	depends = luckeypark
 
 pkgname = luckey-games-meta
