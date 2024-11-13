@@ -1,8 +1,0 @@
-#!/bin/bash
-if [ -z "$1" ]; then
-    echo "Usage: $0 [command]"
-    exit 1
-fi
-
-source novpn_ns params
-firejail --noprofile --netns=${NS} "$@"

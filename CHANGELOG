@@ -1,4 +1,0 @@
-Version 1.1.0
-- Made novpn enable IP forwarding on start.
-- Made novpn wait for other device before start
-- Moved all the utils into a single command `novpn_ns`
