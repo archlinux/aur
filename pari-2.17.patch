@@ -56,7 +56,7 @@ index 76f0570a819..0e4d13ef889 100644
                  sage: gcd(t, i)
                  Traceback (most recent call last):
 diff --git a/src/sage/dynamics/arithmetic_dynamics/berkovich_ds.py b/src/sage/dynamics/arithmetic_dynamics/berkovich_ds.py
-index 6995f61f463..457b0ba2253 100644
+index 0c27d8e2bde..9ab595f4356 100644
 --- a/src/sage/dynamics/arithmetic_dynamics/berkovich_ds.py
 +++ b/src/sage/dynamics/arithmetic_dynamics/berkovich_ds.py
 @@ -690,10 +690,10 @@ class DynamicalSystem_Berkovich_projective(DynamicalSystem_Berkovich):
@@ -73,7 +73,7 @@ index 6995f61f463..457b0ba2253 100644
          if self.domain().is_padic_base():
              return DynamicalSystem_Berkovich(self._system.conjugate(M, adjugate=adjugate))
 diff --git a/src/sage/dynamics/arithmetic_dynamics/projective_ds.py b/src/sage/dynamics/arithmetic_dynamics/projective_ds.py
-index 262c063a35d..e2c43cc73f8 100644
+index a74efd9129a..151f9e71335 100644
 --- a/src/sage/dynamics/arithmetic_dynamics/projective_ds.py
 +++ b/src/sage/dynamics/arithmetic_dynamics/projective_ds.py
 @@ -1790,7 +1790,7 @@ class DynamicalSystem_projective(SchemeMorphism_polynomial_projective_space,
@@ -167,10 +167,10 @@ index 1ed571cd4b9..bd8dc9641d2 100644
      sage: nf = pari('x^2 + 1').nfinit()
      sage: nf.nfrootsof1()
 diff --git a/src/sage/matrix/matrix2.pyx b/src/sage/matrix/matrix2.pyx
-index 0c257cfaf33..780cae7fbf2 100644
+index 3682c2be14e..1a6580f8fc3 100644
 --- a/src/sage/matrix/matrix2.pyx
 +++ b/src/sage/matrix/matrix2.pyx
-@@ -16583,7 +16583,7 @@ cdef class Matrix(Matrix1):
+@@ -16584,7 +16584,7 @@ cdef class Matrix(Matrix1):
              ....:   -2*a^2 + 4*a - 2, -2*a^2 + 1, 2*a, a^2 - 6, 3*a^2 - a ])
              sage: r,s,p = m._echelon_form_PID()
              sage: s[2]
@@ -608,7 +608,7 @@ index c974c3df6ff..ee53ca6d674 100644
              Traceback (most recent call last):
              ...
 diff --git a/src/sage/rings/number_field/number_field.py b/src/sage/rings/number_field/number_field.py
-index bb16476980e..3a98a997962 100644
+index 767acd8ebc5..715f84da95f 100644
 --- a/src/sage/rings/number_field/number_field.py
 +++ b/src/sage/rings/number_field/number_field.py
 @@ -3627,7 +3627,7 @@ class NumberField_generic(WithEqualityById, number_field_base.NumberField):
@@ -988,7 +988,7 @@ index bb16476980e..3a98a997962 100644
              ]
          """
          return self._subfields_helper(degree=degree, name=name,
-@@ -12694,12 +12700,12 @@ def _splitting_classes_gens_(K, m, d):
+@@ -12729,12 +12735,12 @@ def _splitting_classes_gens_(K, m, d):
          sage: L = K.subfields(20)[0][0]
          sage: L.conductor()                                                             # needs sage.groups
          101
@@ -1003,7 +1003,7 @@ index bb16476980e..3a98a997962 100644
          [37]
  
          sage: K = CyclotomicField(44)
-@@ -12711,7 +12717,7 @@ def _splitting_classes_gens_(K, m, d):
+@@ -12746,7 +12752,7 @@ def _splitting_classes_gens_(K, m, d):
           with zeta44_0 = 3.837971894457990?
          sage: L.conductor()                                                             # needs sage.groups
          11
@@ -1052,7 +1052,7 @@ index 27432813b2b..1a676ee087b 100644
          An absolute example::
  
 diff --git a/src/sage/rings/number_field/number_field_ideal.py b/src/sage/rings/number_field/number_field_ideal.py
-index d62ae34fb95..72e14adb3af 100644
+index 3686840ccba..b269045cf96 100644
 --- a/src/sage/rings/number_field/number_field_ideal.py
 +++ b/src/sage/rings/number_field/number_field_ideal.py
 @@ -75,7 +75,7 @@ class NumberFieldIdeal(Ideal_generic):
@@ -1196,7 +1196,7 @@ index d62ae34fb95..72e14adb3af 100644
          1
          sage: quotient_char_p(I, 13)[0]
 diff --git a/src/sage/rings/number_field/number_field_ideal_rel.py b/src/sage/rings/number_field/number_field_ideal_rel.py
-index 7f6cfd9b1b7..0bae4e74e13 100644
+index 7f6cfd9b1b7..eb39f6f4d12 100644
 --- a/src/sage/rings/number_field/number_field_ideal_rel.py
 +++ b/src/sage/rings/number_field/number_field_ideal_rel.py
 @@ -11,7 +11,7 @@ EXAMPLES::
@@ -1226,25 +1226,33 @@ index 7f6cfd9b1b7..0bae4e74e13 100644
              sage: N.parent()
              Monoid of ideals of Number Field in a with defining polynomial x^2 + 6
              sage: N.ring()
-@@ -410,7 +410,7 @@ class NumberFieldFractionalIdeal_rel(NumberFieldFractionalIdeal):
+@@ -409,8 +409,10 @@ class NumberFieldFractionalIdeal_rel(NumberFieldFractionalIdeal):
+             sage: K.<a> = NumberField(2*x^2 - 1/3)
              sage: L.<b> = K.extension(5*x^2 + 1)
              sage: P = L.primes_above(2)[0]
-             sage: P.relative_norm()
+-            sage: P.relative_norm()
 -            Fractional ideal (6*a + 2)
++            sage: rn = P.relative_norm(); rn # random
 +            Fractional ideal (6*a - 2)
++            sage: rn in [K.ideal(6*a - 2), K.ideal(-6*a -2)]
++            True
          """
          L = self.number_field()
          K = L.base_field()
-@@ -529,7 +529,7 @@ class NumberFieldFractionalIdeal_rel(NumberFieldFractionalIdeal):
+@@ -528,8 +530,10 @@ class NumberFieldFractionalIdeal_rel(NumberFieldFractionalIdeal):
+             sage: K.<a> = NumberField(2*x^2 - 1/3)
              sage: L.<b> = K.extension(5*x^2 + 1)
              sage: P = L.primes_above(2)[0]
-             sage: P.ideal_below()
+-            sage: P.ideal_below()
 -            Fractional ideal (6*a + 2)
++            sage: ib = P.ideal_below(); ib # random
 +            Fractional ideal (6*a - 2)
++            sage: ib in [K.ideal(6*a - 2), K.ideal(-6*a -2)]
++            True
          """
          L = self.number_field()
          K = L.base_field()
-@@ -548,14 +548,12 @@ class NumberFieldFractionalIdeal_rel(NumberFieldFractionalIdeal):
+@@ -548,14 +552,12 @@ class NumberFieldFractionalIdeal_rel(NumberFieldFractionalIdeal):
              sage: x = polygen(ZZ, 'x')
              sage: K.<a, b> = QQ.extension([x^2 + 11, x^2 - 5])
              sage: K.factor(5)
@@ -1263,7 +1271,7 @@ index 7f6cfd9b1b7..0bae4e74e13 100644
  
              sage: PQ.<X> = QQ[]
              sage: F.<a, b> = NumberFieldTower([X^2 - 2, X^2 - 3])
-@@ -914,7 +912,7 @@ def is_NumberFieldFractionalIdeal_rel(x):
+@@ -914,7 +916,7 @@ def is_NumberFieldFractionalIdeal_rel(x):
          sage: is_NumberFieldFractionalIdeal_rel(I)
          True
          sage: N = I.relative_norm(); N
@@ -1273,7 +1281,7 @@ index 7f6cfd9b1b7..0bae4e74e13 100644
          False
      """
 diff --git a/src/sage/rings/number_field/number_field_rel.py b/src/sage/rings/number_field/number_field_rel.py
-index 9ab6fd4c261..6e9bf71baf4 100644
+index 7ea070b113e..a1d5ab38176 100644
 --- a/src/sage/rings/number_field/number_field_rel.py
 +++ b/src/sage/rings/number_field/number_field_rel.py
 @@ -233,21 +233,21 @@ class NumberField_relative(NumberField_generic):
@@ -1323,7 +1331,7 @@ index 9ab6fd4c261..6e9bf71baf4 100644
          """
          return QQ['x'](self._pari_rnfeq()[0])
  
-@@ -2721,7 +2721,7 @@ class NumberField_relative(NumberField_generic):
+@@ -2724,7 +2724,7 @@ class NumberField_relative(NumberField_generic):
              sage: x = polygen(ZZ, 'x')
              sage: K.<a, b> = NumberField([x^2 + 23, x^2 - 3])
              sage: P = K.prime_factors(5)[0]; P
@@ -1333,7 +1341,7 @@ index 9ab6fd4c261..6e9bf71baf4 100644
              sage: u.valuation(P)
              1
 diff --git a/src/sage/rings/number_field/order.py b/src/sage/rings/number_field/order.py
-index e54d2f454af..85fb330d254 100644
+index 55db3bbbcbf..8b69baf5464 100644
 --- a/src/sage/rings/number_field/order.py
 +++ b/src/sage/rings/number_field/order.py
 @@ -495,7 +495,7 @@ class Order(IntegralDomain, sage.rings.abc.Order):
@@ -1373,7 +1381,7 @@ index e54d2f454af..85fb330d254 100644
          -0.500000000000000 + 0.866025403784439*I
          sage: omega.minpoly()
 diff --git a/src/sage/rings/number_field/selmer_group.py b/src/sage/rings/number_field/selmer_group.py
-index acdf2954fdf..7da6b58a209 100644
+index 5204cfc80b6..33f23ff8f2c 100644
 --- a/src/sage/rings/number_field/selmer_group.py
 +++ b/src/sage/rings/number_field/selmer_group.py
 @@ -71,7 +71,7 @@ def _ideal_generator(I):
@@ -1500,7 +1508,7 @@ index e12977e8464..c5bf39a1c73 100644
          Note that all the returned values live where we expect them to::
  
 diff --git a/src/sage/rings/qqbar.py b/src/sage/rings/qqbar.py
-index 47365a9a8c6..7fd8c6f0c05 100644
+index 300d64b8279..08c04e6e234 100644
 --- a/src/sage/rings/qqbar.py
 +++ b/src/sage/rings/qqbar.py
 @@ -2776,11 +2776,12 @@ def number_field_elements_from_algebraics(numbers, minimal=False,
@@ -1620,7 +1628,7 @@ index 7434659b5a2..df076ed62b6 100755
          sage: check_prime(K, L.ideal(5))
          Traceback (most recent call last):
 diff --git a/src/sage/schemes/elliptic_curves/ell_number_field.py b/src/sage/schemes/elliptic_curves/ell_number_field.py
-index 8ccdbcd452d..ffdc95bc92d 100755
+index eea2e5cc243..cceab500959 100755
 --- a/src/sage/schemes/elliptic_curves/ell_number_field.py
 +++ b/src/sage/schemes/elliptic_curves/ell_number_field.py
 @@ -229,9 +229,9 @@ class EllipticCurve_number_field(EllipticCurve_field):
@@ -1635,7 +1643,7 @@ index 8ccdbcd452d..ffdc95bc92d 100755
  
          ::
  
-@@ -286,7 +286,7 @@ class EllipticCurve_number_field(EllipticCurve_field):
+@@ -277,7 +277,7 @@ class EllipticCurve_number_field(EllipticCurve_field):
              sage: E.simon_two_descent()  # long time (4s on sage.math, 2013)
              (3,
               3,
@@ -1644,7 +1652,7 @@ index 8ccdbcd452d..ffdc95bc92d 100755
                (0 : 0 : 1)])
          """
          verbose = int(verbose)
-@@ -881,7 +881,7 @@ class EllipticCurve_number_field(EllipticCurve_field):
+@@ -872,7 +872,7 @@ class EllipticCurve_number_field(EllipticCurve_field):
              sage: K.<i> = NumberField(x^2 + 1)
              sage: E = EllipticCurve([1 + i, 0, 1, 0, 0])
              sage: E.local_data()
@@ -1653,7 +1661,7 @@ index 8ccdbcd452d..ffdc95bc92d 100755
                 Reduction type: bad non-split multiplicative
                 Local minimal model: Elliptic Curve defined by y^2 + (i+1)*x*y + y = x^3
                                      over Number Field in i with defining polynomial x^2 + 1
-@@ -889,7 +889,7 @@ class EllipticCurve_number_field(EllipticCurve_field):
+@@ -880,7 +880,7 @@ class EllipticCurve_number_field(EllipticCurve_field):
                 Conductor exponent: 1
                 Kodaira Symbol: I1
                 Tamagawa Number: 1,
@@ -1662,7 +1670,7 @@ index 8ccdbcd452d..ffdc95bc92d 100755
                 Reduction type: bad split multiplicative
                 Local minimal model: Elliptic Curve defined by y^2 + (i+1)*x*y + y = x^3
                                      over Number Field in i with defining polynomial x^2 + 1
-@@ -907,7 +907,7 @@ class EllipticCurve_number_field(EllipticCurve_field):
+@@ -898,7 +898,7 @@ class EllipticCurve_number_field(EllipticCurve_field):
                Kodaira Symbol: I0
                Tamagawa Number: 1
              sage: E.local_data(2*i + 1)
@@ -1671,7 +1679,7 @@ index 8ccdbcd452d..ffdc95bc92d 100755
                Reduction type: bad non-split multiplicative
                Local minimal model: Elliptic Curve defined by y^2 + (i+1)*x*y + y = x^3
                                     over Number Field in i with defining polynomial x^2 + 1
-@@ -1465,8 +1465,10 @@ class EllipticCurve_number_field(EllipticCurve_field):
+@@ -1456,8 +1456,10 @@ class EllipticCurve_number_field(EllipticCurve_field):
              sage: K.<a> = NumberField(x^2 - 5)
              sage: E = EllipticCurve([20, 225, 750, 625*a + 6875, 31250*a + 46875])
              sage: bad_primes = E.discriminant().support(); bad_primes
@@ -1684,16 +1692,23 @@ index 8ccdbcd452d..ffdc95bc92d 100755
              sage: [E.kodaira_symbol(P) for P in bad_primes]
              [I0, I1, I1, II]
              sage: K.<a> = QuadraticField(-11)
-@@ -1492,7 +1494,7 @@ class EllipticCurve_number_field(EllipticCurve_field):
+@@ -1483,10 +1485,12 @@ class EllipticCurve_number_field(EllipticCurve_field):
  
              sage: K.<i> = NumberField(x^2 + 1)
              sage: EllipticCurve([i, i - 1, i + 1, 24*i + 15, 14*i + 35]).conductor()
 -            Fractional ideal (21*i - 3)
 +            Fractional ideal (3*i + 21)
              sage: K.<a> = NumberField(x^2 - x + 3)
-             sage: EllipticCurve([1 + a, -1 + a, 1 + a, -11 + a, 5 - 9*a]).conductor()
-             Fractional ideal (-6*a)
-@@ -2593,8 +2595,8 @@ class EllipticCurve_number_field(EllipticCurve_field):
+-            sage: EllipticCurve([1 + a, -1 + a, 1 + a, -11 + a, 5 - 9*a]).conductor()
+-            Fractional ideal (-6*a)
++            sage: cond = EllipticCurve([1 + a, -1 + a, 1 + a, -11 + a, 5 - 9*a]).conductor(); cond # random
++            Fractional ideal (6*a)
++            sage: cond == K.ideal(6*a)
++            True
+ 
+         A not so well known curve with everywhere good reduction::
+ 
+@@ -2584,8 +2588,8 @@ class EllipticCurve_number_field(EllipticCurve_field):
              sage: [E1.ainvs() for E1 in C]
              [(0, 0, 0, 0, -27),
              (0, 0, 0, 0, 1),
@@ -1704,7 +1719,7 @@ index 8ccdbcd452d..ffdc95bc92d 100755
  
          The matrix of degrees of cyclic isogenies between curves::
  
-@@ -2625,13 +2627,13 @@ class EllipticCurve_number_field(EllipticCurve_field):
+@@ -2616,13 +2620,13 @@ class EllipticCurve_number_field(EllipticCurve_field):
              sage: [((i,j), isogs[i][j].x_rational_map())
              ....:  for i in range(4) for j in range(4) if isogs[i][j] != 0]
              [((0, 1), (1/9*x^3 - 12)/x^2),
@@ -1724,7 +1739,7 @@ index 8ccdbcd452d..ffdc95bc92d 100755
  
          The isogeny class may be visualized by obtaining its graph and
          plotting it::
-@@ -3112,10 +3114,10 @@ class EllipticCurve_number_field(EllipticCurve_field):
+@@ -3103,10 +3107,10 @@ class EllipticCurve_number_field(EllipticCurve_field):
              sage: K.<i> = QuadraticField(-1)
              sage: E1 = EllipticCurve([i + 1, 0, 1, -240*i - 400, -2869*i - 2627])
              sage: E1.conductor()
@@ -1737,7 +1752,7 @@ index 8ccdbcd452d..ffdc95bc92d 100755
              sage: E1.is_isogenous(E2) # long time
              True
              sage: E1.is_isogenous(E2, proof=False) # faster  (~170ms)
-@@ -3442,8 +3444,8 @@ class EllipticCurve_number_field(EllipticCurve_field):
+@@ -3433,8 +3437,8 @@ class EllipticCurve_number_field(EllipticCurve_field):
              sage: Q = E(0,-1)
              sage: E.lll_reduce([P,Q])
              (
@@ -1748,7 +1763,7 @@ index 8ccdbcd452d..ffdc95bc92d 100755
              )
  
          ::
-@@ -3454,9 +3456,10 @@ class EllipticCurve_number_field(EllipticCurve_field):
+@@ -3445,9 +3449,10 @@ class EllipticCurve_number_field(EllipticCurve_field):
              ....:           E.point([-17/18*a - 1/9, -109/108*a - 277/108])]
              sage: E.lll_reduce(points)
              (
@@ -1763,19 +1778,18 @@ index 8ccdbcd452d..ffdc95bc92d 100755
          """
          r = len(points)
 diff --git a/src/sage/schemes/elliptic_curves/ell_point.py b/src/sage/schemes/elliptic_curves/ell_point.py
-index 0da080ffdbe..34615bb46b8 100755
+index d9b7189552e..6cb6569d5c6 100755
 --- a/src/sage/schemes/elliptic_curves/ell_point.py
 +++ b/src/sage/schemes/elliptic_curves/ell_point.py
-@@ -142,7 +142,7 @@ lazy_import('sage.schemes.generic.morphism', 'SchemeMorphism')
+@@ -142,7 +142,6 @@ lazy_import('sage.schemes.generic.morphism', 'SchemeMorphism')
  
  try:
      from sage.libs.pari.all import pari, PariError
 -    from cypari2.pari_instance import prec_words_to_bits
-+    from cypari2.pari_instance import prec_pari_to_bits
  except ImportError:
      PariError = ()
  
-@@ -2672,10 +2672,10 @@ class EllipticCurvePoint_number_field(EllipticCurvePoint_field):
+@@ -2679,10 +2678,10 @@ class EllipticCurvePoint_number_field(EllipticCurvePoint_field):
              sage: K.<i> = NumberField(x^2 + 1)
              sage: E = EllipticCurve(K, [0,1,0,-160,308])
              sage: P = E(26, -120)
@@ -1790,20 +1804,20 @@ index 0da080ffdbe..34615bb46b8 100755
               Fractional ideal (3)]
              sage: [E.tamagawa_exponent(p) for p in E.discriminant().support()]
              [1, 4, 4, 4]
-@@ -3705,7 +3705,7 @@ class EllipticCurvePoint_number_field(EllipticCurvePoint_field):
+@@ -3712,7 +3711,7 @@ class EllipticCurvePoint_number_field(EllipticCurvePoint_field):
          E_pari = E_work.pari_curve()
          log_pari = E_pari.ellpointtoz(pt_pari, precision=working_prec)
  
 -        while prec_words_to_bits(log_pari.precision()) < precision:
-+        while prec_pari_to_bits(log_pari.precision()) < precision:
++        while log_pari.bitprecision() < precision:
              # result is not precise enough, re-compute with double
              # precision. if the base field is not QQ, this
              # requires modifying the precision of the embedding,
 diff --git a/src/sage/schemes/elliptic_curves/ell_rational_field.py b/src/sage/schemes/elliptic_curves/ell_rational_field.py
-index 1b7a52b0ed0..466f55960f6 100755
+index d00187d49a2..fd8980f8b0d 100755
 --- a/src/sage/schemes/elliptic_curves/ell_rational_field.py
 +++ b/src/sage/schemes/elliptic_curves/ell_rational_field.py
-@@ -1844,7 +1844,7 @@ class EllipticCurve_rational_field(EllipticCurve_number_field):
+@@ -1848,7 +1848,7 @@ class EllipticCurve_rational_field(EllipticCurve_number_field):
              sage: E = EllipticCurve('389a1')
              sage: E._known_points = []  # clear cached points
              sage: E.simon_two_descent()
@@ -1840,13 +1854,13 @@ index a4eb66a6df7..8b597e41595 100755
      # imaginary quadratic fields have no principal primes of norm < disc / 4
      start = K.discriminant().abs() // 4 if principal_only and K.signature() == (0,1) else 2
 diff --git a/src/sage/schemes/elliptic_curves/gp_simon.py b/src/sage/schemes/elliptic_curves/gp_simon.py
-index 729380dccf1..d18f753c76c 100644
+index 6be377e2f74..4134ae1b7a6 100644
 --- a/src/sage/schemes/elliptic_curves/gp_simon.py
 +++ b/src/sage/schemes/elliptic_curves/gp_simon.py
-@@ -59,7 +59,7 @@ def simon_two_descent(E, verbose=0, lim1=None, lim3=None, limtriv=None,
-         sage: import sage.schemes.elliptic_curves.gp_simon
-         sage: E = EllipticCurve('389a1')
-         sage: sage.schemes.elliptic_curves.gp_simon.simon_two_descent(E)
+@@ -49,7 +49,7 @@ def simon_two_descent(E, verbose=0, lim1=None, lim3=None, limtriv=None,
+         doctest:warning...:
+         DeprecationWarning: please use the 2-descent algorithm over QQ inside pari
+         See https://github.com/sagemath/sage/issues/38461 for details.
 -        (2, 2, [(5/4 : 5/8 : 1), (-3/4 : 7/8 : 1)])
 +        (2, 2, [(-3/4 : 7/8 : 1), (5/4 : 5/8 : 1)])
  
