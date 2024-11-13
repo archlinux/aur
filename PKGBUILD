@@ -4,7 +4,7 @@
 # Maintainer: Ľubomír 'the-k' Kučera <lubomir.kucera.jr at gmail.com>
 
 pkgname=cronet
-pkgver=130.0.6723.116
+pkgver=131.0.6778.69
 pkgrel=1
 _manual_clone=1
 _system_abseil=1
@@ -18,6 +18,7 @@ depends=('nss' 'libffi')
 makedepends=('python' 'gn' 'ninja' 'clang' 'lld' 'rust' 'rust-bindgen' 'git')
 options=('!lto') # Chromium adds its own flags for ThinLTO
 source=(https://commondatastorage.googleapis.com/chromium-browser-official/chromium-$pkgver.tar.xz
+        unbundle-icu-target.patch
         compiler-rt-adjust-paths.patch
         increase-fortify-level.patch
         abseil-fix-missing-algorithm.patch
@@ -28,6 +29,7 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
         fix-trust-store-segfault.patch
         fix-undeclared-isnan.patch)
 sha256sums=('720a1196410080056cd97a1f5ec34d68ba216a281d9b5157b7ea81ea018ec661'
+            '67de7744b92cbfa6fcbf43a71ba531eb5a7b00381d96703d8dc3dfdadaebf67d'
             'b3de01b7df227478687d7517f61a777450dca765756002c80c4915f271e2d961'
             'd634d2ce1fc63da7ac41f432b1e84c59b7cceabf19d510848a7cff40c8025342'
             SKIP
@@ -183,6 +185,9 @@ prepare() {
     tools/generate_shim_headers/generate_shim_headers.py
 
   # Upstream fixes
+
+  # Fixes from Gentoo
+  patch -Np1 -i ../unbundle-icu-target.patch
 
   if (( _system_clang )); then
     # Allow libclang_rt.builtins from compiler-rt >= 16 to be used

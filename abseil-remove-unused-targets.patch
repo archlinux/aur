@@ -1,8 +1,8 @@
 These targets are dead code and they aren't available with system Abseil. Based on:
 https://build.opensuse.org/package/view_file/openSUSE:Factory:ARM/nodejs-electron
 
---- third_party/abseil-cpp/BUILD.gn	2024-10-17 01:08:50.915834000 +0200
-+++ third_party/abseil-cpp/BUILD.gn	2024-10-17 10:26:07.284144830 +0200
+--- third_party/abseil-cpp/BUILD.gn	2024-11-13 10:38:27.497315967 +0100
++++ third_party/abseil-cpp/BUILD.gn	2024-11-13 10:47:47.490304905 +0100
 @@ -62,7 +62,6 @@
      "//third_party/abseil-cpp/absl/base",
      "//third_party/abseil-cpp/absl/base:config",
@@ -37,7 +37,7 @@ https://build.opensuse.org/package/view_file/openSUSE:Factory:ARM/nodejs-electro
    ]
  
    if (is_component_build) {
-@@ -289,12 +282,8 @@
+@@ -278,12 +271,8 @@
          "absl/algorithm:container_test",
          "absl/base:config_test",
          "absl/base:no_destructor_test",
@@ -50,7 +50,7 @@ https://build.opensuse.org/package/view_file/openSUSE:Factory:ARM/nodejs-electro
          "absl/cleanup:cleanup_test",
  
          # TODO(mbonadei): Fix issue with EXPECT_DEATH and uncomment.
-@@ -305,8 +294,6 @@
+@@ -294,8 +283,6 @@
          "absl/container:flat_hash_set_test",
          "absl/container:hash_function_defaults_test",
          "absl/container:inlined_vector_test",
@@ -59,7 +59,7 @@ https://build.opensuse.org/package/view_file/openSUSE:Factory:ARM/nodejs-electro
          "absl/container:node_slot_policy_test",
          "absl/container:raw_hash_set_allocator_test",
          "absl/container:raw_hash_set_test",
-@@ -315,11 +302,8 @@
+@@ -304,11 +291,8 @@
          "absl/crc:crc_cord_state_test",
          "absl/crc:crc_memcpy_test",
          "absl/crc:non_temporal_memcpy_test",
@@ -71,7 +71,7 @@ https://build.opensuse.org/package/view_file/openSUSE:Factory:ARM/nodejs-electro
          "absl/flags:flag_test",
          "absl/functional:any_invocable_test",
          "absl/functional:function_ref_test",
-@@ -382,11 +366,7 @@
+@@ -371,11 +355,7 @@
          "absl/strings:str_format_test",
          "absl/strings:str_replace_test",
          "absl/strings:string_view_test",
