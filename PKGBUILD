@@ -2,10 +2,10 @@
 # Contributor: sukanka <su975853527@gmail.com>
 
 _pkgname=MatchIt
-_pkgver=4.5.5
+_pkgver=4.6.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=3
+pkgrel=1
 pkgdesc="Nonparametric Preprocessing for Parametric Causal Inference"
 arch=(x86_64)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -42,8 +42,8 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('868543cc83c7567510e676e52daf3819')
-b2sums=('6597495f6815ddb2f4e7e0355043263da776bbcdc31cb189ce19ad484d4ab350345c0af89b2d9695800b46082303cc1f10bbcda6171bc00931d1c0f71360d65f')
+md5sums=('8171ad2752f974abfafdc544e5bfa757')
+b2sums=('42f0cda67349fc7f5732cb52b5aff36a827ee8fd76d293676d4877c539b3df6ef0ef134ab7406ffda2d4813116ca5398f0720b1f3f233886fdc7ae5042c1d54f')
 
 build() {
   mkdir build
