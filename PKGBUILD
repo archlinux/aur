@@ -17,14 +17,14 @@ source=("${_pkgbase}::git+${_git_repo}#branch=${_git_branch}")
 sha256sums=('SKIP')
 
 build() {
-        cd ${_pkgbase}
+	cd ${_pkgbase}
 	./bootstrap
-	./configure --enable-i2c --sysconfdir=/etc
+	./configure --enable-i2c --sysconfdir=/etc --prefix=/usr --sbindir=/usr/bin
 	make
 }
 
 package() {
-        cd ${_pkgbase}
+	cd ${_pkgbase}
 	make DESTDIR="$pkgdir/" install
 }
 
