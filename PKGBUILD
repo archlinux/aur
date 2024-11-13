@@ -2,7 +2,7 @@
 
 pkgname=('python-phonopy')
 pkgver=2.30.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Phonopy is an open source package for phonon calculations at harmonic and quasi-harmonic levels"
 arch=('any')
 url="https://github.com/phonopy/phonopy"
@@ -29,5 +29,5 @@ build() {
 
 package() {
   cd "$srcdir"/phonopy-$pkgver
-  python -m installer --destdir="$pkgdir" dist/*.whl
+  PIP_CONFIG_FILE=/dev/null pip install --isolated --root="$pkgdir" --ignore-installed --no-deps dist/*.whl
 }
