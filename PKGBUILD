@@ -2,7 +2,7 @@
 # Maintainer: Pedro Henrique Quitete Barreto <pedrohqb@gmail.com>
 pkgname=shrinkpdf
 pkgver=1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Tiny shell script to shrink an image pdf"
 arch=('any')
 url="https://github.com/aklomp/shrinkpdf"
@@ -19,7 +19,5 @@ package() {
 	sed -ne '/Copyright/,/POSSIBILITY OF SUCH DAMAGE/p' shrinkpdf.sh > LICENSE
 	install -D LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
-	install -D shrinkpdf.sh "$pkgdir/usr/bin/shrinkpdf.sh"
 	install -D shrinkpdf.sh "$pkgdir/usr/bin/shrinkpdf"
 }
-

@@ -1,7 +1,7 @@
 pkgbase = shrinkpdf
 	pkgdesc = Tiny shell script to shrink an image pdf
 	pkgver = 1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/aklomp/shrinkpdf
 	arch = any
 	license = BSD
