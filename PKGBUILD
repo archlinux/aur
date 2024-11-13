@@ -4,7 +4,7 @@
 
 pkgname=otf-ibm-plex
 epoch=1
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="IBM Plex typefaces in otf format"
 url="https://github.com/IBM/plex"
@@ -25,19 +25,19 @@ source=(
     "https://github.com/IBM/plex/releases/download/%40ibm%2Fplex-sans-thai-looped%40${pkgver}/ibm-plex-sans-thai-looped.zip"
     "https://github.com/IBM/plex/releases/download/%40ibm%2Fplex-serif%40${pkgver}/ibm-plex-serif.zip"
 )
-sha256sums=('3a4f0beec798d1b3300f0d31f1bd9772ebaf284eaf9fc09187d87606b3cf56a6'
-            '06ef4a7638fe20e96fe8fbea55f6f54a297352298e5cb74479cb1ceb7339fc1a'
-            '4aef1ff11b58892e1fb18383c1ea45544f87c9793b95216a357d4009ed927361'
-            '759e7a77c4dbae38371e5d3b1016e2ee5f75a164e708a960bb69d8949f0c3593'
-            '4c3298d50688e08ebbc9f238a1f1dfe907f9bcdabaf0c2c3aab0fbeaa3e1d38d'
-            '33d7517d3a67968f4db557a369861680c8f93e68c925754a5d7893e371d4c6c8'
-            '06ad64c91a9e485a80b2c16f38e60659f0e75c0cfe3ceae23dd7830adde667c2'
-            '6946948f66b511560786fd0ec7d561de985a1f6d8692b0ed44fbf7d880a994fa'
-            'b977effaabce2328f888db8590f0989c162cb9a9aad9d70949f3910552e6652b'
-            '38f4b86e52b5735eb926b6a0a41293ace6708632e41a0280618939d601dd5aaf'
-            '1a39b37654916260791073046aa811450fd9bea63c2acb4413546636939c43a1'
-            '734b854b745c715123713b283a077d587800c1de0e2d6c84e524862d58a649e6'
-            'bb11f1cfe119d93e4a8d915d2d27e98c57a18f538e6fa88c5e31ea852a41233f')
+sha256sums=('d85ed404394ced3a79a519af24611acdee9cc0483363c07cd5ac0656c06db42a'
+            '4bfc936d0e1fd19db6327a3786eabdbc3dc0d464500576f6458f6706df68d26c'
+            'fb365d910566e6d199cc2c15579a7dd9a267128e18431a394ed81f1970c69200'
+            'f03915581aea37d82792c188b08064023a73494d679b8e19f85f5971db714013'
+            'c172bedb417831bc6ba35ccb727f33959b7f2f8382902386947660bcd66a8077'
+            'effc4a35b2908c80806c97a4d5033e63f437611d17a3e09b237edd5c33d8ac94'
+            'd7d490b8a767b972a7f361055fdcf60ad7cb7c270b38ff1bf859562a021369fd'
+            '96e7b8af07b5b38fad9c531c11854559c47332b45de7e65c45672b5415f3cd55'
+            '9837800c8e5aedf4123775e1d767afa482c983321bd2fc606c985f405d24562e'
+            'b79600d3c9155fa05c9024eb81cfe2fbdd8cd068503dfafd79405ea577aa9fec'
+            'd7203f43c20f9abd40487f845c48db4077d2056ea18632c8959591c6815d7fb9'
+            '26c453e3a4341026e2f5525cd498c5aa214e57bdb9db99bc3816826a36be157f'
+            '76f1a272b084d2beedcd22aaaa653bc6f92b71b5689081aef9c5b05d0a470e1b')
 
 package() {
   install -Dm644 ibm-plex-sans/LICENSE.txt "$pkgdir"/usr/share/licenses/${pkgname}/LICENSE.txt
