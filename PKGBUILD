@@ -1,9 +1,9 @@
 # Maintainer: Kef Schecter <furrykef@gmail.com>
 
 pkgname=pyboy
-pkgver=2.4.0
+pkgver=2.4.1
 pkgrel=1
-pkgdesc='A Game Boy emulator written in Python'
+pkgdesc='A scriptable Game Boy emulator written in Python'
 arch=('x86_64')
 url='https://github.com/Baekalfen/PyBoy'
 license=('LGPL-3.0-only')
@@ -12,8 +12,8 @@ makedepends=('cython' 'python-build' 'python-installer' 'python-wheel')
 optdepends=('python-opengl: OpenGL support'
             'python-pillow: video recording support')
 #checkdepends=('python-cryptography' 'python-filelock' 'python-pytest' 'python-pytest-lazy-fixtures' 'python-pytest-xdist')
-source=("$pkgname-$pkgver.zip::https://github.com/Baekalfen/PyBoy/archive/refs/tags/v$pkgver.zip")
-b2sums=('a8c04e755401932df01a82c0b1d21f40d28f5c9a2d82422d6d65b88cedf7f0bb274c3ea1203f17022bca09f726dfdf70d663be7bcf6e4806ddc72cc42f4f50b1')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/Baekalfen/PyBoy/archive/refs/tags/v$pkgver.tar.gz")
+b2sums=('90cb9c20464b27660d972f7c7df412ba6e09bd0db9fe34a307784a684442d6c68a849f1bb213312eca4832f0ed34293e2dc709828f708bad0c33a0d8fee55863')
 
 build() {
     cd "PyBoy-$pkgver"
