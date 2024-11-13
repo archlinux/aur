@@ -1,6 +1,6 @@
 pkgbase = aide-bin
 	pkgdesc = The open-source AI-native IDE
-	pkgver = 1.94.2.24313
+	pkgver = 1.94.2.24317
 	pkgrel = 1
 	url = https://aide.dev/
 	install = aide-bin.install
@@ -37,11 +37,11 @@ pkgbase = aide-bin
 	sha256sums = 0d9408b36d84bd3f76c8f563b39fc4da7264bdc0e06b45f42ac1c9d57a7e24b3
 	sha256sums = 909088d192ceefd04076b17947ec9f3c0ce47f189124c2605c2cc5cfbaca2ee8
 	sha256sums = be509863d44ae3d19cc37b5e3e53822d4b9950543c705d82cdf0b9815c112149
-	source_x86_64 = aide_x64_1.94.2.24313.tar.gz::https://github.com/codestoryai/binaries/releases/download/1.94.2.24313/Aide-linux-x64-1.94.2.24313.tar.gz
-	sha256sums_x86_64 = 27d604e1ee1e2e3454af79b440e333521412d5e291063631cdb7783f83f133a1
-	source_aarch64 = aide_arm64_1.94.2.24313.tar.gz::https://github.com/codestoryai/binaries/releases/download/1.94.2.24313/Aide-linux-arm64-1.94.2.24313.tar.gz
-	sha256sums_aarch64 = 75d1399520ebc1efd3c4ad90b667c05d0816a1dd5d6ccd14d32b0a8cb3585ccb
-	source_armv7h = aide_armhf_1.94.2.24313.tar.gz::https://github.com/codestoryai/binaries/releases/download/1.94.2.24313/Aide-linux-armhf-1.94.2.24313.tar.gz
-	sha256sums_armv7h = 9c69cb4bebd61bce30281f4c09f4d0d7f948d923b5a670bf0f1bd8da9747de19
+	source_x86_64 = aide_x64_1.94.2.24317.tar.gz::https://github.com/codestoryai/binaries/releases/download/1.94.2.24317/Aide-linux-x64-1.94.2.24317.tar.gz
+	sha256sums_x86_64 = bb38ed9453c8128c76cef502b624a21a2e042ef0e14e07c8d9ec17ce011fcc91
+	source_aarch64 = aide_arm64_1.94.2.24317.tar.gz::https://github.com/codestoryai/binaries/releases/download/1.94.2.24317/Aide-linux-arm64-1.94.2.24317.tar.gz
+	sha256sums_aarch64 = 53cb63a4d37a6f11e6f3d798df7473fbf1ec885218a92c2a64e5a77002710526
+	source_armv7h = aide_armhf_1.94.2.24317.tar.gz::https://github.com/codestoryai/binaries/releases/download/1.94.2.24317/Aide-linux-armhf-1.94.2.24317.tar.gz
+	sha256sums_armv7h = 9f245116d5b8c041f9847b506968d90557de4db0d4d8b2374c88778283d121ea
 
 pkgname = aide-bin

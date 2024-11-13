@@ -2,7 +2,7 @@
 
 pkgname=aide-bin
 _pkgname=aide
-pkgver=1.94.2.24313
+pkgver=1.94.2.24317
 pkgrel=1
 pkgdesc="The open-source AI-native IDE"
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -34,9 +34,9 @@ sha256sums=('a27c3bde1179b792f5df160b5678342f7273b3784223403065265fa5308ad605'
 source_x86_64=(aide_x64_${pkgver}.tar.gz::https://github.com/codestoryai/binaries/releases/download/${pkgver}/Aide-linux-x64-${pkgver}.tar.gz)
 source_aarch64=(aide_arm64_${pkgver}.tar.gz::https://github.com/codestoryai/binaries/releases/download/${pkgver}/Aide-linux-arm64-${pkgver}.tar.gz)
 source_armv7h=(aide_armhf_${pkgver}.tar.gz::https://github.com/codestoryai/binaries/releases/download/${pkgver}/Aide-linux-armhf-${pkgver}.tar.gz)
-sha256sums_x86_64=("27d604e1ee1e2e3454af79b440e333521412d5e291063631cdb7783f83f133a1")
-sha256sums_aarch64=("75d1399520ebc1efd3c4ad90b667c05d0816a1dd5d6ccd14d32b0a8cb3585ccb")
-sha256sums_armv7h=("9c69cb4bebd61bce30281f4c09f4d0d7f948d923b5a670bf0f1bd8da9747de19")
+sha256sums_x86_64=("bb38ed9453c8128c76cef502b624a21a2e042ef0e14e07c8d9ec17ce011fcc91")
+sha256sums_aarch64=("53cb63a4d37a6f11e6f3d798df7473fbf1ec885218a92c2a64e5a77002710526")
+sha256sums_armv7h=("9f245116d5b8c041f9847b506968d90557de4db0d4d8b2374c88778283d121ea")
 
 _pkg() {
   if [ "${CARCH}" = "aarch64" ]; then
@@ -82,7 +82,7 @@ package() {
   cp -r "${srcdir}/"* "${pkgdir}/opt/${_pkgname}"
 
   # Launcher
-	install -m755 "${srcdir}/${_pkgname}-bin.sh" "${pkgdir}/usr/bin/aide"
+  install -m755 "${srcdir}/${_pkgname}-bin.sh" "${pkgdir}/usr/bin/aide"
 
   # Clean Symlinks
   find "${pkgdir}/opt/${_pkgname}/" -type l -delete
