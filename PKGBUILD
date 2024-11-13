@@ -4,11 +4,12 @@
 pkgname=ceserver
 _srcfile=cheat-engine
 pkgver=7.5
-pkgrel=8
+pkgrel=9
 pkgdesc='Cheat Engine Server.'
 url='https://github.com/cheat-engine/cheat-engine/tree/master/Cheat%20Engine/ceserver'
 arch=('i686' 'pentium4' 'x86_64')
 license=('custom')
+makedepends=('lib32-gcc-libs' 'lib32-glibc' 'lib32-zlib')
 depends=('glibc' 'zlib')
 install="${pkgname}".install
 source=(

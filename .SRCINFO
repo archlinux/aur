@@ -1,13 +1,16 @@
 pkgbase = ceserver
 	pkgdesc = Cheat Engine Server.
 	pkgver = 7.5
-	pkgrel = 8
+	pkgrel = 9
 	url = https://github.com/cheat-engine/cheat-engine/tree/master/Cheat%20Engine/ceserver
 	install = ceserver.install
 	arch = i686
 	arch = pentium4
 	arch = x86_64
 	license = custom
+	makedepends = lib32-gcc-libs
+	makedepends = lib32-glibc
+	makedepends = lib32-zlib
 	depends = glibc
 	depends = zlib
 	conflicts = ceserver-bin
