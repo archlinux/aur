@@ -1,0 +1,17 @@
+pkgbase = perl-meta
+	pkgdesc = perl meta-programming API
+	pkgver = 0.012
+	pkgrel = 1
+	url = https://metacpan.org/release/meta
+	arch = i686
+	arch = x86_64
+	license = GPL
+	license = PerlArtistic
+	makedepends = perl-module-build
+	depends = perl
+	options = !emptydirs
+	options = purge
+	source = https://cpan.metacpan.org/authors/id/P/PE/PEVANS/meta-0.012.tar.gz
+	md5sums = 0946e65cca5f929c6210d2ee28b6287c
+
+pkgname = perl-meta
