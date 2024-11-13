@@ -1,15 +1,15 @@
 # Maintainer: Alexander Kobel <a-kobel@a-kobel.de>
 
 pkgname=opendetex
-pkgver=2.8.9
+pkgver=2.8.11
 pkgrel=1
 pkgdesc="Improved version of Detex - tool for extracting plain text from TeX and LaTeX sources (Piotr Kubowicz's fork)"
 url="https://github.com/pkubowicz/opendetex"
 arch=('i686' 'x86_64')
 depends=('glibc')
-license=('custom')
+license=('LicenseRef-opendetex')
 source=("${url}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.bz2")
-sha256sums=('0d6b8cb1f3394b790dd757b0171ad8b398c48e306fa6339e86ed8303c51df084')
+sha256sums=('f5771afc607134f65d502d733552cbc79ef06eee44601ae8077b79d852daa05f')
 
 build () {
   cd ${srcdir}
