@@ -1,15 +1,15 @@
 pkgbase = nodenv-node-build
 	pkgdesc = Install NodeJS versions
-	pkgver = 5.3.16
+	pkgver = 5.3.18
 	pkgrel = 1
 	url = https://github.com/nodenv/node-build
 	arch = any
 	license = MIT
 	conflicts = nodenv-node-build-git
 	conflicts = node-build
-	source = https://github.com/nodenv/node-build/archive/v5.3.16.tar.gz
+	source = https://github.com/nodenv/node-build/archive/v5.3.18.tar.gz
 	source = https://raw.githubusercontent.com/nodenv/node-build/master/LICENSE
-	sha256sums = 85ce8df43feee353a623096351fff238f33b219e19f5d64506d8206dbeefac6b
+	sha256sums = f76895c66af7023d8a91678e255383abc13659683ca9ce0f5d3458ff04815ea7
 	sha256sums = 8549b8425f7e169ea9bd6bd02f3c97f57a74792609485b0c868bb53d5bf0cb9d
 
 pkgname = nodenv-node-build
