@@ -1,0 +1,18 @@
+pkgbase = pls-git
+	pkgdesc = Prettier `ls` for the pros (git)
+	pkgver = 0.0.1.beta.9.r5.gf6517cd
+	pkgrel = 1
+	url = https://github.com/pls-rs/pls
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	depends = gcc-libs
+	depends = zlib
+	provides = pls
+	conflicts = pls
+	options = !lto
+	source = git+https://github.com/pls-rs/pls
+	sha512sums = SKIP
+
+pkgname = pls-git
