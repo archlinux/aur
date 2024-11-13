@@ -6,10 +6,16 @@ _srcname=python-$_pyname
 pkgname=$_srcname-git
 pkgdesc="An abstraction layer for constraint solvers."
 url="https://github.com/angr/claripy"
-pkgver=9.2.126.r2398.8662617b
-pkgrel=2
+pkgver=9.2.129.dev0.r2411.c7d8d827
+_devver="${pkgver%\.r[0-9]*}"
+pkgrel=1
 arch=('any')
-depends=('python-cachetools' 'python-typing_extensions' 'python-z3-solver' 'python>=3.10')
+depends=(
+    'python-cachetools'
+    'python-typing_extensions'
+    'python-z3-solver'
+    'python>=3.10'
+)
 makedepends=(
     'git'
     'python-build'
@@ -38,10 +44,10 @@ pkgver() {
     cd $srcdir/$pkgname
 
     # Versions are orphaned branches with tags ...
-    version=$(git tag --sort=-version:refname | head -n1 | sed -e 's/v//')
+    _version=$(grep -e '^__version__' $_pyname/__init__.py  | cut -f 2 -d '"')
     rev_num="$(git rev-list --count HEAD)"
     last_commit="$(git rev-parse --short HEAD)"
-    echo "${version}.r${rev_num}.${last_commit}"
+    echo "${_version}.r${rev_num}.${last_commit}"
 }
 
 check() {
