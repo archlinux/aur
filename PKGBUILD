@@ -1,7 +1,7 @@
 # Maintainer: Stuart Cardall <developer at it-offshore.co.uk>
 pkgname=python-pygubu
 _pkgname=pygubu
-pkgver=0.25
+pkgver=0.35.5
 pkgrel=0
 pkgdesc="python pygubu core library"
 url="https://github.com/alejandroautalan/pygubu"
@@ -9,7 +9,7 @@ arch=('i686' 'x86_64')
 license=('GPL')
 depends=('python' 'tk' 'python-appdirs')
 source=("{$pkgname}-${pkgver}.tar.gz::https://github.com/alejandroautalan/${_pkgname}/archive/v${pkgver}.tar.gz")
-md5sums=('d7ed0bb17d08d4b2e8ef46bac22e8062')
+md5sums=('9c1b558c4d692e6b3af9b3a82f603bea')
 
 package() {
   cd "$srcdir/$_pkgname-$pkgver"
