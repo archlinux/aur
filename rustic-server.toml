@@ -1,0 +1,24 @@
+[server]
+listen = "127.0.0.1:8000"
+
+[storage]
+data-dir = "/var/lib/rustic-server"
+
+[auth]
+htpasswd-file = "/var/lib/rustic-server/.htpasswd"
+# Set to true to skip authorization
+disable-auth = false
+
+[acl]
+#acl-path = "/etc/rustic-server/acl.toml"
+# Set to true to enable ACL
+private-repo = false
+# Set to true if you want to limit to append, regardless of the ACL file
+# content
+append-only = false
+
+# Optional TLS block, to enable it you must have a certificate
+#[tls]
+#tls = true
+#tls-cert = "/etc/rustic-server/cert.pem"
+#tls-key = "/etc/rustic-server/key.pem"

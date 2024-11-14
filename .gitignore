@@ -1,8 +1,8 @@
 *
 !.gitignore
 !PKGBUILD
-!rustic-server.conf
 !rustic-server.service
 !rustic-server.sysusers
 !rustic-server.tmpfiles
+!rustic-server.toml
 !.SRCINFO

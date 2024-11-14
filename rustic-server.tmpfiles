@@ -1,2 +1,2 @@
 d /var/lib/rustic-server 0700 rustic-server rustic-server
-f /var/lib/rustic-server/.htpasswd 0664 rustic-server rustic-server
+f /var/lib/rustic-server/.htpasswd 0600 rustic-server rustic-server

@@ -8,8 +8,7 @@ After=network-online.target
 Type=simple
 User=rustic-server
 Group=rustic-server
-EnvironmentFile=/etc/rustic-server/rustic-server.conf
-ExecStart=/usr/bin/rustic-server -l $RUSTIC_SERVER_LISTEN -p $RUSTIC_SERVER_PATH $RUSTIC_SERVER_OPTS
+ExecStart=/usr/bin/rustic-server -c /etc/rustic-server/rustic-server.toml serve
 Restart=always
 
 [Install]

@@ -1,6 +1,6 @@
 pkgbase = rustic-server
 	pkgdesc = A REST server built in rust for use with rustic/restic
-	pkgver = 2024.02.18
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/rustic-rs/rustic_server
 	arch = arm
@@ -10,19 +10,20 @@ pkgbase = rustic-server
 	arch = i686
 	arch = x86_64
 	license = AGPL-3.0-or-later
+	makedepends = git
 	makedepends = rust
 	depends = gcc-libs
 	options = !lto
 	backup = etc/rustic-server/rustic-server.conf
-	source = rustic-server-2024.02.18.tar.gz::https://github.com/rustic-rs/rustic_server/archive/5fec1d1a99f66e4f545542622d113a95ece4321d.tar.gz
-	source = rustic-server.conf
+	source = rustic-server::git+https://github.com/rustic-rs/rustic_server.git#tag=v0.2.0
 	source = rustic-server.service
 	source = rustic-server.sysusers
 	source = rustic-server.tmpfiles
-	b2sums = 063efa71af355e6580d8be6577b842221f2f1311fea666e9fa576477e80701bc9880fbb9d35c1e35fddf5e888792fb0db0ad34af047f58f18247b345c3bbae7f
-	b2sums = bbbf59fe785699691e5442e36cdc7d1a87a62aaaec3baf73bf000332ac05676cbde61796b87d963fc2d6633ee0bc2e066329acfbf59974192cec52424e9870c9
-	b2sums = 8b5cab1031349b33300b3f41fe1635fb665e406a7dbe7c00a7bc984b9adcae5ab8a63c39ba211c6e3ad884fd78b84c38542bf5431a6c27c7e0a1a3c5ad13972c
+	source = rustic-server.toml
+	b2sums = fd65b16586a1f4d534a1f594a130eeec5c76708ea820779465d45133cb1c41a0cd96049724c7344c24ea76fe7ff766f99a7ce626cb4cf24cea8000b1028b6570
+	b2sums = 716f59b0ed3981b8d495c521a8f675a7f2427f5f07d0d06350c1d7579c2fc42fe74c6b07aadb60f505a5c442b7eb020620fabb15f6948386e8c21bab1de00231
 	b2sums = 612d6f5bad1c236be078c377db8e00536677860cbc0597c57017630908c7130738e59237660c76e56306691cdcf39c88b9ad97ef99f70a9562d4512aa89e89aa
-	b2sums = c59c53a663c85f9c8ef2cbaee3a0e8e742f1db768df91a997e3abcfa19790405209d1286ecdff3accb2f664f70af8a92b074a0595cb55f455c1b4193bd21bdaf
+	b2sums = 6fe53d86b4580fc90f3ef46310d89b4d08c1374077606b94c887e92807a97f3bd8af91b68efeec5d3506ba588f648b493820268bd001538355d591c4ae5c470b
+	b2sums = 16fc5c67e8911ffe8d831a5bf1458ae604bb679695f8788bcd0bbd667072fa43029d747a94c147095d7d739aa13ba467975b1140a1fa660936f14770586ae24e
 
 pkgname = rustic-server
