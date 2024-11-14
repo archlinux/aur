@@ -3,11 +3,12 @@
 
 pkgbase='luanti-modern'
 
-pkgname=('luanti-client' 'luanti-server' 'luanti-common' 'luanti-documentation')
+pkgname=('luanti-modern-client' 'luanti-modern-server' 'luanti-modern-common' 'luanti-modern-documentation')
 conflicts=('minetest>5.9' 'minetest-server>5.9' 'minetest-common>5.9')
+conflicts+=('luanti' 'luanti-client' 'luanti-server' 'luanti-common')
 
 pkgver=5.10.0
-pkgrel=2
+pkgrel=1
 arch=('x86_64')
 
 url='https://luanti.org/'
@@ -74,7 +75,7 @@ prepare() {
 
 
 build() {
-    cd build_luanti-client
+    cd build_luanti-modern-client
     cmake -G Ninja ../luanti-${pkgver} \
         -DBUILD_DOCUMENTATION=0 \
         -DBUILD_UNITTESTS=0 \
@@ -90,7 +91,7 @@ build() {
         -DVERSION_EXTRA=$( [ "${_use_sdl2}" -eq 1 ] && echo 'sdl2' )
     ninja
 
-    cd ../build_luanti-server
+    cd ../build_luanti-modern-server
     cmake -G Ninja ../luanti-${pkgver} \
         -DBUILD_CLIENT=0 \
         -DBUILD_DOCUMENTATION=0 \
@@ -108,7 +109,7 @@ build() {
 }
 
 
-package_luanti-client() {
+package_luanti-modern-client() {
     pkgdesc='Luanti voxel game engine client'
     depends=(
         'curl'
@@ -130,7 +131,7 @@ package_luanti-client() {
     )
 
     # Build Luanti client
-    cd build_luanti-client
+    cd build_luanti-modern-client
     DESTDIR="${pkgdir}" ninja install
     install -Dm644 ${srcdir}/luanti-${pkgver}/misc/net.minetest.minetest.desktop "${pkgdir}/usr/share/applications/net.luanti.luanti.desktop"
 
@@ -147,7 +148,7 @@ package_luanti-client() {
 }
 
 
-package_luanti-server() {
+package_luanti-modern-server() {
     pkgdesc='Server for the Luanti voxel game engine'
     depends=(
         'curl'
@@ -162,7 +163,7 @@ package_luanti-server() {
     )
 
     # Build Luanti server
-    cd build_luanti-server
+    cd build_luanti-modern-server
     DESTDIR="${pkgdir}" ninja install
 
     # Server files
@@ -177,7 +178,7 @@ package_luanti-server() {
 }
 
 
-package_luanti-common() {
+package_luanti-modern-common() {
     pkgdesc='Common files for the Luanti client and server'
     license=('custom')
 
@@ -190,7 +191,7 @@ package_luanti-common() {
 }
 
 
-package_luanti-documentation() {
+package_luanti-modern-documentation() {
     pkgdesc='(Mostly) Markdown documentation for the Luanti voxel game engine, including client and server manpages'
     license=('custom')
 
