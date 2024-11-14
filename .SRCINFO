@@ -1,6 +1,6 @@
 pkgbase = python-rlp
 	pkgdesc = A package for encoding and decoding data in and from Recursive Length Prefix notation
-	pkgver = 4.0.0
+	pkgver = 4.0.1
 	pkgrel = 1
 	url = https://pypi.org/project/rlp/
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = python-rlp
 	makedepends = python-wheel
 	depends = python
 	depends = python-eth-utils
-	source = https://files.pythonhosted.org/packages/source/r/rlp/rlp-4.0.0.tar.gz
-	sha256sums = 61a5541f86e4684ab145cb849a5929d2ced8222930a570b3941cf4af16b72a78
+	source = https://files.pythonhosted.org/packages/source/r/rlp/rlp-4.0.1.tar.gz
+	sha256sums = bcefb11013dfadf8902642337923bd0c786dc8a27cb4c21da6e154e52869ecb1
 
 pkgname = python-rlp
