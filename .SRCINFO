@@ -1,6 +1,6 @@
 pkgbase = beammp-launcher-git
 	pkgdesc = Multiplayer Launcher/Client for BeamMP, providing multiplayer for BeamNG.drive
-	pkgver = r433.00bd5be
+	pkgver = r435.811fe41
 	pkgrel = 1
 	url = https://github.com/BeamMP/BeamMP-Launcher
 	arch = x86_64

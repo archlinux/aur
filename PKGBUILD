@@ -1,7 +1,7 @@
 # Maintainer: Lukas "DerGeneralFluff" Lichten <lichtenrider@hotmail.de>
 _reponame=BeamMP-Launcher
 pkgname=beammp-launcher-git
-pkgver=r433.00bd5be
+pkgver=r435.811fe41
 pkgrel=1
 pkgdesc="Multiplayer Launcher/Client for BeamMP, providing multiplayer for BeamNG.drive"
 arch=('x86_64')
@@ -25,15 +25,20 @@ pkgver() {
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
+prepare() {
+	cd "$srcdir/${_reponame}"
+	git submodule update --init --recursive
+}
+
 build() {
 	export VCPKG_ROOT="$srcdir/vcpkg"
-	vcpkg install --downloads-root="$VCPKG_ROOT/cache" --vcpkg-root="$VCPKG_ROOT" --binarysource=clear zlib nlohmann-json openssl cpp-httplib[openssl]
+	vcpkg install --downloads-root="$srcdir/cache" --vcpkg-root="$VCPKG_ROOT" --binarysource=clear zlib nlohmann-json openssl cpp-httplib[openssl]
 	cd "$srcdir/${_reponame}"
 	cmake -DCMAKE_BUILD_TYPE=Release . -B bin -DCMAKE_TOOLCHAIN_FILE="$VCPKG_ROOT/scripts/buildsystems/vcpkg.cmake" -DVCPKG_TARGET_TRIPLET=x64-linux
 
-	cd "$srcdir/${_reponame}/bin"
-	# cmake --build . --config Release
-	make
+	# cd "$srcdir/${_reponame}/bin"
+	cmake --build bin --parallel --config Release
+	# make
 }
 
 package() {
