@@ -14,5 +14,8 @@ install: PKGBUILD .SRCINFO
 	make build
 	makepkg --install
 
+changelog:
+	git cliff -o
+
 clean:
 	rm -rf pkg src *.tar.*
