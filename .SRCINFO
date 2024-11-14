@@ -1,7 +1,7 @@
 pkgbase = zsh-abbr
 	pkgdesc = The zsh manager for auto-expanding abbreviations, inspired by fish shell.
 	pkgver = 6.0.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/olets/zsh-abbr
 	changelog = CHANGELOG.md
 	arch = any
