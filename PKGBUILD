@@ -5,7 +5,7 @@
 
 _pkgname="forkgram"
 pkgname="$_pkgname"
-pkgver=5.7.2
+pkgver=5.7.3
 pkgrel=1
 pkgdesc="Fork of the Telegram Desktop messaging app"
 url="https://github.com/Forkgram/tdesktop"
@@ -71,17 +71,10 @@ _pkgsrc="frk-v$pkgver-full"
 _pkgext="tar.gz"
 source=(
   "$_pkgname-$pkgver.$_pkgext"::"https://github.com/Forkgram/tdesktop/releases/download/v$pkgver/$_pkgsrc.$_pkgext"
-  '28583-ffmpeg.patch'
 )
 sha256sums=(
-  '17132ac73cb1f36332b54e0c33bf8b0d8273223229d7d8f49dff83479f433cc2'
-  'd3a1561ab2d1e48132df3ef422e418d5ffcf71ab44f6423a4e8da2cc76a3a3c6'
+  '2a22305585c1eb9dcdb1508deb7fe47add08d965015ce01cb91be36f5b76884c'
 )
-
-prepare() {
-  cd "$_pkgsrc"
-  patch -Np1 -F100 -i "$srcdir"/28583-ffmpeg.patch
-}
 
 build() {
   local _cmake_options=(
