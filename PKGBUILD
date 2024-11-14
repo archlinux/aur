@@ -9,7 +9,7 @@
 _commit=959cf8fbfdcdc05ec0d9d838eb0a5c425406d24f
 pkgname=h2o-git
 pkgver=2.2.0.8110
-pkgrel=1
+pkgrel=2
 pkgdesc="Optimized HTTP server with support for HTTP/1.x and HTTP/2"
 arch=('i686' 'x86_64' 'aarch64')
 # if you want websocket support, you'll also need aur/wslay
