@@ -1,0 +1,21 @@
+[Unit]
+Description=Reader Pro Single User Mode
+After=network.target
+
+[Service]
+User=reader-pro
+Group=reader-pro
+WorkingDirectory=/var/lib/reader-pro
+Environment=JAVA_HOME=/usr/lib/jvm/default
+ExecStart=/usr/bin/reader-pro -m single
+SuccessExitStatus=143
+Restart=on-failure
+RestartSec=5
+TimeoutStartSec=30
+TimeoutStopSec=½
+StandardOutput=journal+console
+StandardError=journal+console
+LimitNOFILE=65536
+
+[Install]
+WantedBy=multi-user.target
