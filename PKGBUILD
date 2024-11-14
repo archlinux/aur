@@ -5,25 +5,23 @@
 
 # Decide for what type of installation to build.
 #
-# If you have a modern (i.e. reflecting the 5.10.0 name change to Luanti)
-# installation using `/usr/share/luanti`, then `luanti` is set here.
+# If you have a modern (i.e. reflecting the 5.10.0 name change to
+# Luanti) installation using the new name directories, then you need
+# to set `luanti` here.
 #
-# If you use a legacy/old installation using `/usr/share/mintest` directly,
-# and having the `minetest-common` package installed, then `minetest` is
-# set here.
+# If you use a legacy/old installation use `mintest`.
+#
+# If you use the luanti-modern-common package from the AUR, use `luanti-modern`
 #
 # This defines the dependency package name as well as the target directory
 # for the game files.
-#
-# If this breaks on your system, just replace the `$(...)` with either
-# `luanti` or `minetest`, depending on your installation.
-_type=$( [ -d '/usr/share/luanti' ] && echo luanti || echo minetest )
+_type='luanti-modern'
 
 
 pkgname=minetest-game-cdb
 pkgver=20241017
-pkgrel=2
-pkgdesc='Latest version of “Minetest Game” from the Luanti Content Database, but installed system-wide as a regular Arch package.'
+pkgrel=3
+pkgdesc='Latest version of “Minetest Game” from the Luanti Content Database, but installed system-wide as a regular Arch package based on Luanti or Minetest installation type.'
 
 
 url='https://content.luanti.org/packages/Minetest/minetest_game/'
@@ -62,7 +60,7 @@ build() {
 
 
 package() {
-    location="usr/share/${_type}/games"
+    location="usr/share/${_type%-modern}/games"
     install -d "${pkgdir}/${location}"
     cp -r "${srcdir}/minetest_game" "${pkgdir}/${location}/minetest_game"
 }

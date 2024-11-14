@@ -1,14 +1,14 @@
 pkgbase = minetest-game-cdb
-	pkgdesc = Latest version of “Minetest Game” from the Luanti Content Database, but installed system-wide as a regular Arch package.
+	pkgdesc = Latest version of “Minetest Game” from the Luanti Content Database, but installed system-wide as a regular Arch package based on Luanti or Minetest installation type.
 	pkgver = 20241017
-	pkgrel = 2
+	pkgrel = 3
 	url = https://content.luanti.org/packages/Minetest/minetest_game/
 	arch = any
 	license = LGPL-2.1
 	makedepends = curl
 	makedepends = unzip
 	makedepends = jq
-	depends = luanti-common
+	depends = luanti-modern-common
 	source = minetest_cdb_icon.png
 	sha256sums = 77883f101d4b46e3ed37bfc6095e1b2143a79ff852c702d6d98509b6d998ca6b
 
