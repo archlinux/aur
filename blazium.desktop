@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Blazium
+Comment=Application for making games
+Exec=/usr/bin/blazium %U
+Icon=blazium
+Terminal=false
+Type=Application
+Categories=Development;
