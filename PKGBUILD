@@ -1,50 +1,36 @@
 # Maintainer: kotontrion <kotontrion@tutanota.de>
 pkgname=aylurs-gtk-shell-git
 _pkgname=ags
-pkgver=1.8.2.r10.g344ea72
+pkgver=2.0.0.r2.gfb47b50
 pkgrel=1
 pkgdesc="Aylurs's Gtk Shell (AGS), An eww inspired gtk widget system."
 arch=('x86_64')
 url="https://github.com/Aylur/ags"
 license=('GPL-3.0-only')
-makedepends=('git' 'gobject-introspection' 'glib2-devel' 'meson' 'npm' 'typescript')
-depends=('gjs' 'glib2' 'glibc' 'gtk3' 'gtk-layer-shell' 'libpulse' 'pam')
-optdepends=('gnome-bluetooth-3.0: required for bluetooth service'
-            'greetd: required for greetd service'
-            'libdbusmenu-gtk3: required for systemtray service'
-            'libsoup3: required for the Utils.fetch feature'
-            'libnotify: required for sending notifications'
-            'networkmanager: required for network service'
-            'power-profiles-daemon: required for powerprofiles service'
-            'upower: required for battery service')
+makedepends=('git' 'go')
+depends=('gjs' 'libastal-gjs' 'libastal-meta' 'npm')
+source=("git+${url}.git")
+sha256sums=('SKIP')
 conflicts=('aylurs-gtk-shell')
-backup=('etc/pam.d/ags')
-source=("git+${url}.git"
-        "git+https://gitlab.gnome.org/GNOME/libgnome-volume-control.git")
-sha256sums=('SKIP'
-            'SKIP')
 
 pkgver(){
   cd $srcdir/$_pkgname
   git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-prepare() {
-  cd $srcdir/$_pkgname
-  git submodule init
-  git config submodule.subprojects/gvc.url "$srcdir/libgnome-volume-control"
-  git -c protocol.file.allow=always submodule update
-}
-
 build() {
   cd $srcdir/$_pkgname
-  npm install
-  arch-meson build --libdir "lib/$_pkgname" -Dbuild_types=true
-  meson compile -C build
+  export CGO_CPPFLAGS="${CPPFLAGS}"
+  export CGO_CFLAGS="${CFLAGS}"
+  export CGO_CXXFLAGS="${CXXFLAGS}"
+  export CGO_LDFLAGS="${LDFLAGS}"
+  export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+  go build -o ${_pkgname}
 }
 
 package() {
   cd $srcdir/$_pkgname
-  meson install -C build --destdir "$pkgdir"
-  ln -sf /usr/share/com.github.Aylur.ags/com.github.Aylur.ags ${pkgdir}/usr/bin/ags
+  install -Dm755 ${_pkgname} "$pkgdir"/usr/bin/${_pkgname}
 }
+
+
