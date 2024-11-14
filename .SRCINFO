@@ -1,0 +1,18 @@
+pkgbase = python-shgo-git
+	pkgdesc = Simplicial Homology Global Optimization
+	pkgver = 0.4.3.r70.g47936c6
+	pkgrel = 1
+	url = https://github.com/Stefan-Endres/shgo
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	depends = python-numpy
+	depends = python-scipy
+	provides = python-shgo
+	conflicts = python-shgo
+	source = shgo::git+https://github.com/Stefan-Endres/shgo.git
+	sha512sums = SKIP
+
+pkgname = python-shgo-git
