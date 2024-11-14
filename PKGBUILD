@@ -4,7 +4,7 @@ pkgver=r43.224677e
 pkgrel=1
 epoch=
 pkgdesc="Lightweight Simple CAmera MOtion DETection application."
-arch=('any')
+arch=('x86_64')
 url="https://github.com/oyzzo/camodet"
 license=(GPL-3.0-or-later)
 provides=(camodet)
@@ -14,13 +14,15 @@ options=()
 makedepends+=()
 
 depends=(
-	"gtk2"
 	"pkgconf"
 	"ffmpeg"
+	"gcc-libs"
+	"glibc"
 	"opencv"
 )
 
 optdepends=(
+	"gtk2"
 	'cuda'
 	"python"
 	"numpy"
