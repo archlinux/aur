@@ -1,11 +1,11 @@
 # Maintainer: Alexis BRENON <brenon.alexis+arch at gmail dot com>
 pkgname=sweethome3d-3dmodels-blendswap-ccby
-pkgver=1.9.1
+pkgver=1.9.3
 pkgrel=2
 pkgdesc="Free 3D models advertised on SweetHome3D website"
 arch=('any')
 url="http://www.sweethome3d.com/freeModels.jsp"
-license=("custom:CC-BY")
+license=("CC-BY-3.0")
 optdepends=("sweethome3d: Models rendering"
 "sweethome3d-3dmodels-blendswap-cc0: More 3D models"
 "sweethome3d-3dmodels-contributions: More 3D models"
@@ -17,8 +17,8 @@ optdepends=("sweethome3d: Models rendering"
 "sweethome3d-textures-contributions: More textures"
 "sweethome3d-textures-scopia: More textures")
 install="$pkgname.install"
-source=("http://prdownloads.sourceforge.net/sweethome3d/3DModels-BlendSwap-CC-BY-1.9.1.zip")
-sha1sums=("a14ba68663985c31a56a379c8e9e2ec8e496419b")
+source=("http://prdownloads.sourceforge.net/sweethome3d/3DModels-BlendSwap-CC-BY-1.9.3.zip")
+sha1sums=("a88664fb01927bcd1feed63aec7c9b36ad4e9448")
 
 package() {
     mkdir -p $pkgdir/usr/share/eteks/sweethome3d/furniture/3dmodels-blendswap-ccby
