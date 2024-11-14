@@ -1,7 +1,7 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=casile-git
-pkgver=0.14.3.r4.g12efab6
+pkgver=0.14.4.r0.g5da4c8d
 pkgrel=1
 pkgdesc='Caleb’s SILE publishing toolkit'
 arch=(x86_64)
@@ -47,7 +47,6 @@ depends=(bc
          ripgrep
          sassc
          sile
-         sile-decasify
          sqlite
          tex-gyre-fonts
          texlive-basic
@@ -72,10 +71,12 @@ _pydeps=(isbnlib
          pantable
          ruamel-yaml
          usfm2osis-cw-git)
+_siledeps=(decasify)
 depends+=("${_luadeps[@]/#/lua-}"
           "${_luadeps[@]/#/lua51-}"
           "${_perldeps[@]/#/perl-}"
-          "${_pydeps[@]/#/python-}")
+          "${_pydeps[@]/#/python-}"
+          "${_siledeps[@]/#/sile-}")
 makedepends=(cargo
              node-prune
              yarn)
