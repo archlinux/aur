@@ -1,7 +1,7 @@
 # Maintainer: Tuure Piitulainen <tuure.piitulainen@gmail.com>
 
 pkgname="vivify"
-pkgver="0.6.1"
+pkgver="0.6.2"
 pkgrel=1
 pkgdesc="Markdown preview tool which can be used standalone or plug into an editor like (Neo)Vim"
 arch=("x86_64")
@@ -10,7 +10,7 @@ license=("GPL-3.0-or-later")
 depends=("gcc-libs" "sh")
 makedepends=("yarn" "nvm" "zip")
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/jannis-baum/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=("c88d5be47d020e598145de5b04b763a2e1c228325c5418e175b033c36c4001d7")
+sha256sums=("adbd0efc77ddfe23410c9e01b55c24bc757df71df8bfb71a55ab339977b7c30d")
 
 # Stripping 'unneeded symbols' causes vivify-server executable to break
 # (segmentation fault)
@@ -31,7 +31,11 @@ build() {
         # Using system node results in a segfaulting binary
         # As a workaround, use latest node from nvm
         _ensure_local_nvm
-        nvm install node
+
+        # v23.1.0 instead of v23.2.0
+        # Workaround for:
+        # https://github.com/nodejs/node/issues/55826
+        nvm install 23.1.0
 
         yarn install
         VIV_VERSION="v${pkgver}-${pkgrel}-aur" make linux
