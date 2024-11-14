@@ -3,8 +3,8 @@ LANG_LINE='GenericLanguage   "pl" "pl_PL" "utf-8"'
 VOICE_LINE='AddVoice "pl" "MALE1" "pl/pl_PL/darkman/medium/pl_PL-darkman-medium"'
 
 post_install() {
-  # Check if the speech-dispatcher directory exists
-  if [ -d /etc/speech-dispatcher ]; then
+  # Check if the piper-generic.conf file exists
+  if [ -f /etc/speech-dispatcher/modules/piper-generic.conf ]; then
     # Add the lines only if they do not already exist
     if ! grep -Fxq "$LANG_LINE" /etc/speech-dispatcher/modules/piper-generic.conf; then
       echo "$LANG_LINE" >> /etc/speech-dispatcher/modules/piper-generic.conf
@@ -16,8 +16,8 @@ post_install() {
 }
 
 post_remove() {
-  # Check if the speech-dispatcher directory exists
-  if [ -d /etc/speech-dispatcher ]; then
+  # Check if the piper-generic.conf file exists
+  if [ -f /etc/speech-dispatcher/modules/piper-generic.conf ]; then
     # Remove the lines if they exist
     sed -i "/^$LANG_LINE$/d" /etc/speech-dispatcher/modules/piper-generic.conf
     sed -i "/^$VOICE_LINE$/d" /etc/speech-dispatcher/modules/piper-generic.conf
