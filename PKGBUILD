@@ -1,11 +1,11 @@
 # Maintainer: Alexis BRENON <brenon.alexis+arch at gmail dot com>
 pkgname=sweethome3d-3dmodels-contributions
-pkgver=1.9.1
+pkgver=1.9.3
 pkgrel=2
 pkgdesc="Free 3D models advertised on SweetHome3D website"
 arch=('any')
 url="http://www.sweethome3d.com/freeModels.jsp"
-license=("custom:FreeArtLicence")
+license=("LicenseRef-FreeArtLicence")
 optdepends=("sweethome3d: Models rendering"
 "sweethome3d-3dmodels-blendswap-cc0: More 3D models"
 "sweethome3d-3dmodels-blendswap-ccby: More 3D models"
@@ -17,8 +17,8 @@ optdepends=("sweethome3d: Models rendering"
 "sweethome3d-textures-contributions: More textures"
 "sweethome3d-textures-scopia: More textures")
 install="$pkgname.install"
-source=("http://prdownloads.sourceforge.net/sweethome3d/3DModels-Contributions-1.9.1.zip")
-sha1sums=("a1b7741fc3e7333cb13fadac730d2d63d3c87fbc")
+source=("http://prdownloads.sourceforge.net/sweethome3d/3DModels-Contributions-1.9.3.zip")
+sha1sums=("b972502cdd9b61b8435ae122c1ff4b5b5629c9f1")
 
 package() {
     mkdir -p $pkgdir/usr/share/eteks/sweethome3d/furniture/3dmodels-contributions
