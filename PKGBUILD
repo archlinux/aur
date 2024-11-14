@@ -3,17 +3,17 @@
 pkgname=adwaita-colors-icon-theme-git
 _reponame=Adwaita-colors
 pkgver=2.2.r0.a6f658f
-pkgrel=1
+pkgrel=2
 pkgdesc="Adwaita Colors enhances the Adwaita icon theme by integrating GNOME’s accent color feature. It ensures that your Adwaita icons reflect the same accent color as your GNOME theme."
 arch=(any)
 url="https://github.com/dpejoh/$_reponame"
 license=(GPL3)
-depends=("adwaita-icon-theme" "adwaita-icon-theme-legacy" "hicolor-icon-theme")
+depends=("adwaita-icon-theme" "adwaita-icon-theme-legacy")
 makedepends=("git")
-provides=("morewaita-icon-theme" "morewaita")
+provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=("git+$url")
-md5sums=('SKIP')
+md5sums=(SKIP)
 
 pkgver() {
 	cd "$srcdir/$_reponame"
