@@ -4,7 +4,7 @@
 _gitname=pywal16
 pkgname=python-${_gitname}
 pkgver=3.6.0
-pkgrel=2
+pkgrel=3
 epoch=1
 pkgdesc='Generate and change color-schemes on the fly (fork that uses 16 colors)'
 arch=('any')
