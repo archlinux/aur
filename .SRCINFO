@@ -1,0 +1,14 @@
+pkgbase = piper-voices-de-de
+	pkgdesc = Voices for Piper text to speech system (de_DE)
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://huggingface.co/rhasspy/piper-voices
+	install = piper-voices-de-de.install
+	arch = any
+	groups = piper-voices
+	license = MIT
+	makedepends = git-lfs
+	depends = piper-voices-common
+	provides = piper-voices
+
+pkgname = piper-voices-de-de
