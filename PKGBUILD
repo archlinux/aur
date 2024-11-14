@@ -2,7 +2,7 @@
 # Co-Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=gnome-extensions-cli
 pkgver=0.10.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Command line tool to manage your GNOME Shell extensions"
 arch=('any')
 url="https://github.com/essembeh/gnome-extensions-cli"
@@ -13,6 +13,7 @@ depends=(
   'python-packaging'
   'python-pydantic'
   'python-requests'
+  'python-tqdm'
 )
 makedepends=(
   'python-build'
