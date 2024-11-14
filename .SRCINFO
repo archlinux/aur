@@ -12,6 +12,7 @@ pkgbase = foo2zjs-nightly
 	makedepends = bc
 	makedepends = wget
 	makedepends = foomatic-db-engine
+	makedepends = ghostscript
 	depends = psutils
 	depends = cups
 	optdepends = tix: required by hplj10xx_gui.tcl
