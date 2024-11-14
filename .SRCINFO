@@ -1,6 +1,6 @@
 pkgbase = llama.cpp-git
 	pkgdesc = Port of Facebook's LLaMA model in C/C++
-	pkgver = b4078.r1.4a8ccb37a
+	pkgver = b4080
 	pkgrel = 1
 	url = https://github.com/ggerganov/llama.cpp
 	arch = armv7h
@@ -10,6 +10,7 @@ pkgbase = llama.cpp-git
 	makedepends = clblast
 	makedepends = cmake
 	makedepends = cuda
+	makedepends = gcc13
 	makedepends = git
 	makedepends = intel-oneapi-basekit
 	makedepends = openblas

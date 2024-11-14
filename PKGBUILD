@@ -11,7 +11,7 @@ pkgname=(
   "${_name}-sycl-f32-git"
   "${_name}-vulkan-git"
 )
-pkgver=b4078.r1.4a8ccb37a
+pkgver=b4080
 pkgrel=1
 pkgdesc="Port of Facebook's LLaMA model in C/C++"
 arch=('armv7h' 'aarch64' 'x86_64')
@@ -22,6 +22,7 @@ makedepends=(
   'clblast'
   'cmake'
   'cuda'
+  'gcc13'
   'git'
   'intel-oneapi-basekit'
   'openblas'
