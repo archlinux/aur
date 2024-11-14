@@ -1,6 +1,6 @@
 pkgbase = moodle-dl
 	pkgdesc = A Moodle downloader that downloads course content fast from Moodle (eg. lecture pdfs)
-	pkgver = 2.3.11
+	pkgver = 2.3.13
 	pkgrel = 1
 	url = https://github.com/C0D3D3V/Moodle-DL
 	arch = any
@@ -23,7 +23,7 @@ pkgbase = moodle-dl
 	depends = python-sentry_sdk>=0.13.5
 	depends = python-xmpppy>=0.7.1
 	depends = yt-dlp>=2021.10.22
-	source = https://github.com/C0D3D3V/Moodle-DL/archive/2.3.11.tar.gz
-	b2sums = dc05a5b920cb89002e802ec5590c044a9b87017f35e9eee96dce7dc066b4d7878b327b4a7b61b15c214e2b765181ad3ed807c310c5b61c5a539f7302aa588638
+	source = $url/archive/$pkgver.tar.gz
+	b2sums = SKIP
 
 pkgname = moodle-dl

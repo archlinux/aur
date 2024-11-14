@@ -1,8 +1,8 @@
-# Maintainer: Marco Rubin <marco.rubin@protonmail.com>
+# Maintainer: Max Ebert <Pesticide3902@proton.me>
 
 _name=Moodle-DL
 pkgname=moodle-dl
-pkgver=2.3.11
+pkgver=2.3.13
 pkgrel=1
 pkgdesc='A Moodle downloader that downloads course content fast from Moodle (eg. lecture pdfs)'
 arch=('any')
@@ -23,16 +23,16 @@ depends=('ffmpeg'
          'python-xmpppy>=0.7.1'
          'yt-dlp>=2021.10.22')
 makedepends=(python-build python-installer python-setuptools python-wheel)
-source=("$url/archive/$pkgver.tar.gz")
-b2sums=('dc05a5b920cb89002e802ec5590c044a9b87017f35e9eee96dce7dc066b4d7878b327b4a7b61b15c214e2b765181ad3ed807c310c5b61c5a539f7302aa588638')
+source=('$url/archive/$pkgver.tar.gz')
+b2sums=('SKIP')
 
 build() {
-    cd $_name-$pkgver
+    cd "${srcdir}/$_name-$pkgver"
     python -m build --wheel --no-isolation
 }
 
 package() {
-    cd $_name-$pkgver
+    cd "${srcdir}/$_name-$pkgver"
     python -m installer --destdir="$pkgdir" dist/*.whl
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
