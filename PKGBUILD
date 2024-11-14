@@ -2,7 +2,7 @@
 # Maintainer: Hristos N. Triantafillou <me@hristos.co>
 
 pkgname=openmw-validator
-pkgver=1.12
+pkgver=1.14
 pkgrel=1
 pkgdesc='Validate your OpenMW configuration file by checking it for various errors, also give various useful stats about data file usage.'
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('GPL3')
 depends=('glibc')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::$url/-/archive/${pkgver}/openmw-validator-${pkgver}.tar.gz")
-sha512sums=('fa66b927185f09d5a53f9b6727233768905b803b8d3cdeda5727bc767064c2b9b1553caada289e2a95397a77123f01cbfa4f89fb0b472e944ba1c3a5871b1226')
+sha512sums=('f1750c0d4a606cf64aa82ddf4b4f8714071c2796b4e9a8b698b13f81207d4b38789bb89727d53ac9fd539cb1db4abcecab61dcfc666c32185a4121c28ebb6aa2')
 
 build() {
     export CGO_CPPFLAGS="${CPPFLAGS}"
