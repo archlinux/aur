@@ -1,6 +1,6 @@
 pkgbase = hwatch-bin
 	pkgdesc = A modern alternative to the watch command
-	pkgver = 0.3.16
+	pkgver = 0.3.17
 	pkgrel = 1
 	url = https://github.com/blacknon/hwatch
 	arch = x86_64
@@ -9,11 +9,11 @@ pkgbase = hwatch-bin
 	depends = glibc
 	provides = hwatch
 	conflicts = hwatch
-	source = LICENSE-0.3.16::https://raw.githubusercontent.com/blacknon/hwatch/0.3.16/LICENSE
-	source = README-0.3.16.md::https://raw.githubusercontent.com/blacknon/hwatch/0.3.16/README.md
+	source = LICENSE-0.3.17::https://raw.githubusercontent.com/blacknon/hwatch/0.3.17/LICENSE
+	source = README-0.3.17.md::https://raw.githubusercontent.com/blacknon/hwatch/0.3.17/README.md
 	sha256sums = 83e4dd21429a91fb7cea67a476032a9641425e5355df2e0f589a738b6ec9fd2c
 	sha256sums = 2edc5c3f59f0d2b285a657bf962f4d5bff4a73999e8455caed3ae0729ed5cd09
-	source_x86_64 = https://github.com/blacknon/hwatch/releases/download/0.3.16/hwatch-0.3.16.x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = 13e18396e8c76d60aaad532876c1f9e6faa640d00b25f8902f31b42f7302654f
+	source_x86_64 = https://github.com/blacknon/hwatch/releases/download/0.3.17/hwatch-0.3.17.x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 736435012d0a33ca9a83d59e60d87de019bb3aa13b07d9f79a37ce3411a16d94
 
 pkgname = hwatch-bin
