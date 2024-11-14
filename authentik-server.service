@@ -1,0 +1,13 @@
+[Unit]
+Description=Authentik Server (web/api/sso)
+
+[Service]
+ExecStart=/bin/bash -c 'source /opt/authentik/lib/bin/activate && cd /opt/authentik/src && python -m lifecycle.migrate && ./authentik-server'
+WorkingDirectory=/opt/authentik/src
+User=authentik
+Group=authentik
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target

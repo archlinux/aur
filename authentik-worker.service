@@ -1,0 +1,14 @@
+[Unit]
+Description=Authentik Worker (background tasks)
+
+[Service]
+Environment=DJANGO_SETTINGS_MODULE=authentik.root.settings
+ExecStart=/bin/bash -c 'source /opt/authentik/lib/bin/activate && exec celery -A authentik.root.celery worker -Ofair --max-tasks-per-child=1 --autoscale 3,1 -E -B -s /tmp/celerybeat-schedule -Q authentik,authentik_scheduled,authentik_events'
+WorkingDirectory=/opt/authentik/src
+User=authentik
+Group=authentik
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target

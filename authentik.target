@@ -1,0 +1,7 @@
+[Unit]
+Description=Authentik services
+After=network.target
+Wants=authentik-server.service authentik-worker.service
+
+[Install]
+WantedBy=multi-user.target
