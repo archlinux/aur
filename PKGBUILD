@@ -5,7 +5,7 @@
 # https://github.com/michaellass/AUR
 
 pkgname=openafs
-pkgver=1.8.12.2
+pkgver=1.8.13
 pkgrel=1
 pkgdesc="Open source implementation of the AFS distributed file system"
 arch=('i686' 'x86_64' 'armv7h')
@@ -25,8 +25,8 @@ source=(http://openafs.org/dl/openafs/${pkgver}/${pkgname}-${pkgver}-src.tar.bz2
         http://openafs.org/dl/openafs/${pkgver}/${pkgname}-${pkgver}-doc.tar.bz2
         tmpfiles.d-openafs.conf
         0001-Adjust-RedHat-config-and-service-files.patch)
-sha256sums=('1164194cc6ffd75c063c420fb37344e844c1e2edc155529f815ba4c781f45cab'
-            '4540194a1d67196966ecf6525653f56f23eaec739628b7971dd00da5faf28318'
+sha256sums=('79100170ca2490b1295d9b8b13058f30e23d7abb897bf1a071755d767078bdd1'
+            'd4f3d42f4e576647db215dab73c365d2043d326ad3d21a80f8c47319d3e43fe5'
             '18d7b0173bbffbdc212f4e58c5b3ce369adf868452aabc3485f2a6a2ddb35d68'
             'c15539241045e96252d6af4901311f3c494eae42c64edaaa1dcd1c70ef118624')
 
