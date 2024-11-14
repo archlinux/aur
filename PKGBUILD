@@ -1,4 +1,4 @@
-# Maintainer: Watzon <cawatson1993@gmail.com>
+# Maintainer: Chris Watson <cawatson1993@gmail.com>
 
 pkgname=windsurf
 pkgver=1.0.2
@@ -34,9 +34,7 @@ depends=(
     'xdg-utils'
 )
 optdepends=('vulkan-icd-loader: Vulkan support')
-provides=('visual-studio-windsurf')
-conflicts=('visual-studio-windsurf')
-replaces=('visual-studio-windsurf')
+provides=('windsurf')
 options=(!strip)
 
 source=("https://windsurf-stable.codeiumdata.com/wVxQEIWkwPUEAGf3/apt/pool/main/w/windsurf/Windsurf-linux-x64-${pkgver}.deb")
