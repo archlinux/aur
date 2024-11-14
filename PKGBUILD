@@ -2,7 +2,7 @@
 
 _name=scikit-base
 pkgname=python-${_name,,}
-pkgver=0.11.0
+pkgver=0.12.0
 pkgrel=1
 pkgdesc='Base classes for sklearn-like parametric objects'
 arch=('any')
@@ -12,7 +12,7 @@ depends=('python' 'python-numpy' 'python-scipy' 'python-scikit-learn' 'python-nu
 makedepends=('python-installer' 'python-wheel')
 _whl="${_name//-/_}-$pkgver-py3-none-any.whl"
 source=("https://files.pythonhosted.org/packages/py3/${_name::1}/$_name/${_name//-/_}-$pkgver-py3-none-any.whl")
-sha256sums=(752b27d500c0c24af166bf1d574971c309aa4e92b61c4c215ebda2cc206157bb)
+sha256sums=(a0679305131ac4753ff6ee72877f831bc68597b7884feede0ab4b32ff520e018)
 
 noextract=("$_whl")
 package() {
