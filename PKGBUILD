@@ -2,35 +2,32 @@
 
 _pkgname=nvchad
 pkgname=${_pkgname}-git
-pkgver=r1700.4a2cefa5
+pkgver=r28.d0c602f
 pkgrel=1
 pkgdesc="NvChad is a neovim config written in lua aiming to provide a base configuration with very beautiful UI and blazing fast startuptime."
 arch=('any')
 url="https://github.com/NvChad/NvChad"
 license=('GPL3')
-depends=("neovim>=0.7.0" "xclip")
-source=("nvchad::git+${url}.git" "starter::git+https://github.com/NvChad/starter" "nvchad.vim.template")
-sha256sums=('SKIP' 'SKIP' '030ba362f0f362ae7e7b43d6c32c5f9f660d67877c96fd1302f310538c2ae357')
+depends=("neovim>=0.7.0" "xclip" "ripgrep" "ttf-jetbrains-mono-nerd")
+source=("starter::git+https://github.com/NvChad/starter" "init.lua")
+sha256sums=('SKIP' 'e6be24a89a95769bec9d7decbcf0e5690b64795413cc6f769d8c3675d22292b6')
 conflicts=("${_pkgname}")
 provides=("${_pkgname}")
 
 pkgver() {
-	cd nvchad
+	cd starter
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
 	install_dir="/usr/share/nvchad"
-	root_nvim_dir="/usr/share/nvim/runtime/"
-	mkdir -p "${pkgdir}/usr/share/nvim/" && touch "${pkgdir}/usr/share/nvim/archlinux.lua"
-	echo -e "$(cat nvchad.vim.template)" >> "${pkgdir}/usr/share/nvim/archlinux.lua"
-	rm "${pkgdir}/usr/share/nvim/runtime/plugin/nvchad.vim" || true
-	cd "nvchad"
-	install -Dm 644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-	cd ..
-	mkdir -p "${pkgdir}${install_dir}"
-	mkdir -p "${pkgdir}${root_nvim_dir}"
-	cd starter
-	cp -r {init.lua,lua,.stylua.toml} "${pkgdir}${install_dir}"
-	cp -rf {init.lua,lua,.stylua.toml} "${pkgdir}${root_nvim_dir}"
+	root_nvim_dir="/usr/share/nvim/runtime/plugin"
+	install -d "${pkgdir}${install_dir}"
+	install -d "${pkgdir}${root_nvim_dir}/nvchad-starter"
+
+	install -Dm755 "${srcdir}/starter/init.lua" "${pkgdir}${install_dir}/init.lua"
+	install -d "${pkgdir}${install_dir}/lua"
+	cp -r "${srcdir}/starter/lua" "${pkgdir}${install_dir}"
+	install -Dm755 "${srcdir}/init.lua" "${pkgdir}${root_nvim_dir}/nvchad-starter/init.lua"
 }
+
