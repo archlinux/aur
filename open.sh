@@ -12,15 +12,15 @@ if [ ${trashAppUnsafe} ]; then
 	exit $?
 else
 	if [[ "$(echo $@ | cut -c '1-8' )" =~ 'file://' ]]; then
-		fakeDirBase="${XDG_DOCUMENTS_DIR}/xwechat_files"
-		realDirBase="${XDG_DATA_HOME}/WeChat_Data/Documents/xwechat_files"
+		fakeDirBase="${HOME}"
+		realDirBase="${XDG_DATA_HOME}/WeChat_Data"
 		link=$(echo "$1" | sed "s|${fakeDirBase}|${realDirBase}|g")
 		echo "[Info] received a file open request: $1, translated to ${link}"
 		/usr/lib/flatpak-xdg-utils/xdg-open "${link}"
 		exit $?
 	else
-		fakeDirBase="${XDG_DOCUMENTS_DIR}/xwechat_files"
-		realDirBase="${XDG_DATA_HOME}/WeChat_Data/Documents/xwechat_files"
+		fakeDirBase="${HOME}"
+		realDirBase="${XDG_DATA_HOME}/WeChat_Data"
 		link=$(echo "$2" | sed "s|${fakeDirBase}|${realDirBase}|g")
 	fi
 fi
