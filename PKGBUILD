@@ -1,6 +1,6 @@
 # Maintainer: Stuart Cardall <developer at it-offshore.co.uk>
 pkgname=pygubu-designer
-pkgver=0.30
+pkgver=0.39.3
 pkgrel=0
 pkgdesc="A simple GUI designer for the python tkinter module"
 url="https://github.com/alejandroautalan/pygubu-designer"
@@ -11,7 +11,7 @@ depends=('python' 'python-pygubu' 'python-mako' 'python-black' 'python-screeninf
 source=("${pkgname}-${pkgver}::https://github.com/alejandroautalan/${pkgname}/archive/v${pkgver}.tar.gz"
         "tk-logo.svg"
         "pygubu-designer.desktop")
-md5sums=('191a9f1f3a8ccc3e9778d695e12df14e'
+md5sums=('42591d6a0cdcdfc94b9e62a47121b921'
          'f60d13e5f87d15d764276387fc4627c2'
          'e745be7853e0343ff34e97d17607ec18')
 

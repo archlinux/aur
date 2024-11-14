@@ -1,6 +1,6 @@
 pkgbase = pygubu-designer
 	pkgdesc = A simple GUI designer for the python tkinter module
-	pkgver = 0.30
+	pkgver = 0.39.3
 	pkgrel = 0
 	url = https://github.com/alejandroautalan/pygubu-designer
 	arch = i686
@@ -14,10 +14,10 @@ pkgbase = pygubu-designer
 	depends = python-screeninfo
 	depends = tk
 	depends = python-appdirs
-	source = pygubu-designer-0.30::https://github.com/alejandroautalan/pygubu-designer/archive/v0.30.tar.gz
+	source = pygubu-designer-0.39.3::https://github.com/alejandroautalan/pygubu-designer/archive/v0.39.3.tar.gz
 	source = tk-logo.svg
 	source = pygubu-designer.desktop
-	md5sums = 191a9f1f3a8ccc3e9778d695e12df14e
+	md5sums = 42591d6a0cdcdfc94b9e62a47121b921
 	md5sums = f60d13e5f87d15d764276387fc4627c2
 	md5sums = e745be7853e0343ff34e97d17607ec18
 
