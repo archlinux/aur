@@ -1,9 +1,9 @@
 # Maintainer: Manuel Wiesinger <m {you know what belongs here} mmap {and here} at>
 
 pkgbase=bitwuzla
-pkgname=("${pkgbase}" "${pkgbase}-doc")
+pkgname=("${pkgbase}" "${pkgbase}-docs")
 pkgver=0.6.1
-pkgrel=2
+pkgrel=3
 pkgdesc='SMT solver for the theories of fixed-size bit-vectors, floating-point arithmetic, arrays and uninterpreted functions and their combinations'
 arch=('x86_64')
 url='https://bitwuzla.github.io'
@@ -85,7 +85,7 @@ package_bitwuzla() {
     DESTDIR="${pkgdir}" ninja install
 }
 
-package_bitwuzla-doc() {
+package_bitwuzla-docs() {
     pkgdesc="Documentation for the Bitwuzla SMT solver"
     arch=('any')
     depends=()
