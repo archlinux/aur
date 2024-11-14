@@ -2,14 +2,16 @@
 pkgbase=damask
 pkgname=('damask' 'damask-grid' 'damask-mesh' 'python-damask')
 pkgver=3.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc='DAMASK - The Duesseldorf Advanced Material Simulation Kit'
 arch=('x86_64')
 url='https://damask-multiphysics.org'
 license=('AGPL-3.0-or-later')
-makedepends=('cmake' 'python-setuptools'
+makedepends=('gcc-fortran' 'cmake'
+             'python-build' 'python-installer' 'python-wheel' 'python-setuptools'
              'petsc<3.23' 'hdf5-openmpi' 'fftw-openmpi' 'zlib' 'libfyaml'
-             'python-pandas' 'python-numpy' 'python-scipy' 'python-h5py' 'vtk' 'python-matplotlib' 'python-pyaml')
+             'python-pandas' 'python-numpy' 'python-scipy' 'python-h5py-openmpi' 'python-matplotlib' 'python-pyaml'
+             'vtk' 'fmt' 'verdict')
 optdepends=('paraview: post-processing')
 source=(https://damask-multiphysics.org/download/damask-${pkgver}.tar.xz
        'DAMASK_grid.1'
@@ -68,7 +70,7 @@ check() {
 
 package_damask-grid() {
   pkgdesc='Grid solver for DAMASK'
-  depends=('petsc<3.22' 'openmpi' 'hdf5-openmpi' 'libfyaml' 'zlib' 'fftw-openmpi')
+  depends=('petsc<3.23' 'openmpi' 'hdf5-openmpi' 'libfyaml' 'zlib' 'fftw-openmpi')
   optdepends=('dream3d: pre-processing')
 
   install -m 644 -D ${pkgbase}-${pkgver}/examples/grid/* -t "${pkgdir}"/usr/share/doc/${pkgname}/
@@ -79,7 +81,7 @@ package_damask-grid() {
 
 package_damask-mesh() {
   pkgdesc='Mesh solver for DAMASK'
-  depends=('petsc<3.22' 'openmpi' 'hdf5-openmpi' 'libfyaml')
+  depends=('petsc<3.23' 'openmpi' 'hdf5-openmpi' 'libfyaml')
   optdepends=('neper: pre-processing')
 
   install -m 644 -D ${pkgbase}-${pkgver}/examples/mesh/* -t "${pkgdir}"/usr/share/doc/${pkgname}/
@@ -90,7 +92,7 @@ package_damask-mesh() {
 
 package_python-damask() {
   pkgdesc='Pre- and post-processing tools for DAMASK'
-  depends=('python-pandas' 'python-numpy' 'python-scipy' 'python-h5py' 'vtk' 'python-matplotlib' 'python-pyaml')
+  depends=('python-pandas' 'python-numpy' 'python-scipy' 'python-h5py-openmpi' 'vtk' 'python-matplotlib' 'python-pyaml')
   optdepends=('python-seaborn: post-processing'
               'jupyterlab: comfortable shell'
               'ipython: comfortable shell')
