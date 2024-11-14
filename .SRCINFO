@@ -1,4 +1,4 @@
-pkgbase = ddev-test-bin
+pkgbase = ddev-test-edge-bin
 	pkgdesc = DDEV: a local web development environment
 	pkgver = 1.23.5
 	pkgrel = 1
@@ -16,4 +16,4 @@ pkgbase = ddev-test-bin
 	source_x86_64 = https://github.com/ddev/ddev/releases/download/v1.23.5/ddev_linux-amd64.v1.23.5.tar.gz
 	sha256sums_x86_64 = 15319d073452e77d7342c8b9176fff63d890c3e06a65e31b6f1995f7ac4c26f5
 	
-pkgname = ddev-test-bin
+pkgname = ddev-test-edge-bin
