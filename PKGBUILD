@@ -1,17 +1,17 @@
-# Maintainer: AlphaJack <alphajack at tuta dot io>
+# Maintainer: Daniel Gustaw <gustaw.daniel@gmail.com>
 
 # to create a package for another locale, check the available locales from
 # https://huggingface.co/rhasspy/piper-voices/tree/main
 # then copy this PKGBUILD and adjust $_lang and $_region accordingly
 
-_lang="it"
-_region="IT"
+_lang="ru"
+_region="RU"
 
 _regionSmall=${_region,,}
 _locale="${_lang}_${_region}"
 pkgname="piper-voices-${_lang}-${_regionSmall}"
 pkgver=1.0.0
-pkgrel=2
+pkgrel=1
 pkgdesc="Voices for Piper text to speech system ($_locale)"
 url="https://huggingface.co/rhasspy/piper-voices"
 license=("MIT")

@@ -1,0 +1,25 @@
+# Define the lines to be added or removed
+LANG_LINE='GenericLanguage   "ru" "ru_RU" "utf-8"'
+VOICE_LINE='AddVoice "ru" "MALE1"    "ru/ru_RU/denis/medium/ru_RU-denis-medium"'
+
+post_install() {
+  # Check if the piper-generic.conf file exists
+  if [ -f /etc/speech-dispatcher/modules/piper-generic.conf ]; then
+    # Add the lines only if they do not already exist
+    if ! grep -Fxq "$LANG_LINE" /etc/speech-dispatcher/modules/piper-generic.conf; then
+      echo "$LANG_LINE" >> /etc/speech-dispatcher/modules/piper-generic.conf
+    fi
+    if ! grep -Fxq "$VOICE_LINE" /etc/speech-dispatcher/modules/piper-generic.conf; then
+      echo "$VOICE_LINE" >> /etc/speech-dispatcher/modules/piper-generic.conf
+    fi
+  fi
+}
+
+post_remove() {
+  # Check if the piper-generic.conf file exists
+  if [ -f /etc/speech-dispatcher/modules/piper-generic.conf ]; then
+    # Remove the lines if they exist
+    sed -i "/^$LANG_LINE$/d" /etc/speech-dispatcher/modules/piper-generic.conf
+    sed -i "/^$VOICE_LINE$/d" /etc/speech-dispatcher/modules/piper-generic.conf
+  fi
+}

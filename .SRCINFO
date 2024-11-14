@@ -1,7 +1,7 @@
-pkgbase = piper-voices-it-it
-	pkgdesc = Voices for Piper text to speech system (it_IT)
+pkgbase = piper-voices-ru-ru
+	pkgdesc = Voices for Piper text to speech system (ru_RU)
 	pkgver = 1.0.0
-	pkgrel = 2
+	pkgrel = 1
 	url = https://huggingface.co/rhasspy/piper-voices
 	arch = any
 	groups = piper-voices
@@ -10,4 +10,4 @@ pkgbase = piper-voices-it-it
 	depends = piper-voices-common
 	provides = piper-voices
 
-pkgname = piper-voices-it-it
+pkgname = piper-voices-ru-ru
