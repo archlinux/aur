@@ -4,7 +4,7 @@
 # Contributor: Aaron Lindsay <aaron@aclindsay.com>
 
 pkgname=seahub
-pkgver=11.0.12
+pkgver=11.0.13
 pkgrel=1
 pkgdesc='The web frontend for seafile server'
 arch=('any')
@@ -47,16 +47,20 @@ source=(
     "$pkgname-$pkgver-server.tar.gz::$url/archive/v$pkgver-server.tar.gz"
     'seahub@.service'
     'nginx.example.conf'
+    'fix_avatar_storage.diff'
 )
 sha256sums=(
-    'cf416030f113b1b857ca17ee1160259373da19e93605b828a0a73bc6b95fe127'
+    '8a07eb2feec86604750442d4a8f34be708eb14ea9531a015aff3f6e1d3c97089'
     '67bb375871ce908b48bef53277284c9d8f80ee2e733efc89cb66d987647195e4'
     '461591ba500d012523d6fdecbcc230461f6fd8d708b92eefdedc8b93b1542171'
+    '371f9c01a31691167b76c43e29277c266a4b3aec985fb29ff8a0180a8db5b59f'
 )
 options=('!strip')
 
 prepare() {
     cd "$srcdir/$pkgname-$pkgver-server"
+
+    patch -p1 -i "$srcdir/fix_avatar_storage.diff"
 
     # Remove useless files and directories
     rm -rf \

@@ -1,0 +1,19 @@
+diff --git a/seahub/avatar/util.py b/seahub/avatar/util.py
+index 7ad1cbdcd..101144506 100644
+--- a/seahub/avatar/util.py
++++ b/seahub/avatar/util.py
+@@ -1,7 +1,7 @@
+ # Copyright (c) 2012-2016 Seafile Ltd.
+ from django.conf import settings
+ from django.core.cache import cache
+-from django.core.files.storage import default_storage, get_storage_class
++from django.core.files.storage import default_storage, DefaultStorage
+ from urllib.parse import quote
+ 
+ from seahub.base.accounts import User
+@@ -125,4 +125,4 @@ def get_avatar_file_storage():
+             'data_column': 'data',
+             'size_column': 'size',
+             }
+-        return get_storage_class(AVATAR_FILE_STORAGE)(options=dbs_options)
++        return DefaultStorage(AVATAR_FILE_STORAGE)(options=dbs_options)
