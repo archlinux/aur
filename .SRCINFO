@@ -1,11 +1,11 @@
 pkgbase = sweethome3d-3dmodels-scopia
 	pkgdesc = Free 3D models advertised on SweetHome3D website
-	pkgver = 1.9.1
+	pkgver = 1.9.3
 	pkgrel = 2
 	url = http://www.sweethome3d.com/freeModels.jsp
 	install = sweethome3d-3dmodels-scopia.install
 	arch = any
-	license = custom:CC-BY
+	license = CC-BY-3.0
 	optdepends = sweethome3d: Models rendering
 	optdepends = sweethome3d-3dmodels-blendswap-cc0: More 3D models
 	optdepends = sweethome3d-3dmodels-blendswap-ccby: More 3D models
@@ -16,7 +16,7 @@ pkgbase = sweethome3d-3dmodels-scopia
 	optdepends = sweethome3d-3dmodels-trees: More 3D models
 	optdepends = sweethome3d-textures-contributions: More textures
 	optdepends = sweethome3d-textures-scopia: More textures
-	source = http://prdownloads.sourceforge.net/sweethome3d/3DModels-Scopia-1.9.1.zip
-	sha1sums = 202d891e152d1d548ff6f6014e5105fdc511ef88
+	source = http://prdownloads.sourceforge.net/sweethome3d/3DModels-Scopia-1.9.3.zip
+	sha1sums = f6927008c33c8778864089cfe334ff6ec4eeb954
 
 pkgname = sweethome3d-3dmodels-scopia
