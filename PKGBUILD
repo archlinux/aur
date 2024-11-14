@@ -5,7 +5,7 @@
 
 pkgname=kubebuilder-bin
 pkgdesc="SDK for building Kubernetes APIs"
-pkgver=3.14.0
+pkgver=4.3.1
 pkgrel=1
 arch=('x86_64' 'aarch64')
 url="https://github.com/kubernetes-sigs/kubebuilder"
@@ -14,10 +14,10 @@ conflicts=('kubebuilder')
 provides=('kubebuilder')
 
 sha256sums_x86_64=(
-    '702dce3c115f78a5c3e7372787a2894ab80cb6f2c7bd66fd83cbc88c79bc8768'
+    '42cc63d37285d69cf7f308fd6b58d5be85a5d96a47ca60e17a20f4e86643697b'
 )
 sha256sums_aarch64=(
-    '441a0e3023024e3b97c92f7f76cd1b926da0f01b32c909ed8df83579410ae5ee'
+    'b9e087f7df8d0565008efc3f4ec1b5247d6ce78fb419ac7db3f1dbb3f7796204'
 )
 
 source_x86_64=(
