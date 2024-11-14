@@ -14,7 +14,7 @@ depends=(
 	"libkeybinder3"
 	"libsoup"
 )
-makedepends=(git meson)
+makedepends=(git meson glib2-devel)
 source=("$pkgname::git+$url.git")
 sha256sums=('SKIP')
 conflicts=(goodvibes)

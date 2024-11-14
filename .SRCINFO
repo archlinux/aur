@@ -8,6 +8,7 @@ pkgbase = goodvibes-git
 	license = GPL
 	makedepends = git
 	makedepends = meson
+	makedepends = glib2-devel
 	depends = gst-plugins-base
 	depends = gst-plugins-good
 	depends = gst-plugins-ugly
