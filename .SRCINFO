@@ -1,0 +1,16 @@
+pkgbase = python-proton-vpn-local-agent-bin
+	pkgdesc = A python module which implements a client for the Proton Local Agent API.
+	pkgver = 1.1.4
+	pkgrel = 1
+	url = https://github.com/ProtonVPN/local-agent-rs
+	arch = x86_64
+	arch = aarch64
+	license = GPL3
+	provides = local_agent.abi3.so
+	conflicts = python-proton-vpn-local-agent
+	source_x86_64 = https://repo.protonvpn.com/debian/dists/stable/main/binary-amd64/python3-proton-vpn-local-agent_1.1.4_amd64.deb
+	sha256sums_x86_64 = ae43ef3251aeac35f495325a93dffef88ea34c743a5db4894b1e8bbd86fdffe0
+	source_aarch64 = https://repo.protonvpn.com/debian/dists/stable/main/binary-arm64/python3-proton-vpn-local-agent_1.1.4_arm64.deb
+	sha256sums_aarch64 = 23641305c77a752964c3824cc0174fff249bdcf63ca1213b4325fb9482218273
+
+pkgname = python-proton-vpn-local-agent-bin
