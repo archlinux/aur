@@ -1,6 +1,6 @@
 pkgbase = libastal-lua-git
 	pkgdesc = Lua bindings for libastal.
-	pkgver = r540.c5eba25
+	pkgver = r580.d538d8e
 	pkgrel = 1
 	url = https://github.com/Aylur/astal
 	arch = x86_64
@@ -15,6 +15,7 @@ pkgbase = libastal-lua-git
 	makedepends = luarocks
 	depends = libastal-git
 	depends = libastal-4-git
+	provides = libastal-lua
 	source = git+https://github.com/Aylur/astal.git
 	sha256sums = SKIP
 

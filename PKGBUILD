@@ -1,7 +1,7 @@
 # Maintainer: kotontrion <kotontrion@tutanota.de>
 pkgbase=libastal-lua-git
 pkgname=("libastal-lua-git" "libastal-lua51-git" "libastal-lua53-git")
-pkgver=r540.c5eba25
+pkgver=r580.d538d8e
 pkgrel=1
 pkgdesc="Lua bindings for libastal."
 arch=("x86_64")
@@ -13,8 +13,9 @@ makedepends=(
   "luarocks")
 depends=("libastal-git" "libastal-4-git")
 groups=("libastal")
+provides=(libastal-lua)
 source=("git+${url}.git")
-sha256sums=("SKIP")
+sha256sums=('SKIP')
 _rockname=astal-dev-1.rockspec
 
 pkgver(){
