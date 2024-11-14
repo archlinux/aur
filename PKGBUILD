@@ -2,14 +2,14 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 _pkgname="mandarine"
 pkgname=$_pkgname-git
-pkgver=r10226.2d2f998
+pkgver=r10253.e6f0b73
 pkgrel=1
 arch=('x86_64')
 pkgdesc='3ds emulator - citra fork with tweaks/enhancements'
 url='https://github.com/mandarine3ds/mandarine'
 license=("GPL-2.0-or-later")
 depends=('sdl2' 'mbedtls' 'speexdsp' 'qt6-multimedia' 'ffmpeg' 'libfdk-aac' 'libusb' 'openssl' 'glibc' 'gcc-libs' 'sndio' 'zstd' 'soundtouch' 'fmt' 'libinih' 'openal' 'enet' 'boost-libs')
-makedepends=('git' 'cmake' 'python' 'doxygen' 'rapidjson' 'llvm' 'qt6-tools' 'gcc' 'glslang' 'vulkan-headers' 'nlohmann-json' 'catch2' 'clang' 'ninja' 'boost')
+makedepends=('git' 'cmake' 'python' 'doxygen' 'rapidjson' 'llvm' 'qt6-tools' 'gcc' 'glslang' 'vulkan-headers' 'nlohmann-json' 'catch2' 'clang' 'ninja' 'boost' 'spirv-tools')
 conflicts=('mandarine')
 provides=('mandarine')
 source=("git+https://github.com/mandarine3ds/mandarine"
@@ -45,11 +45,13 @@ source=("git+https://github.com/mandarine3ds/mandarine"
 	"git+https://github.com/bylaws/libadrenotools"
 	"git+https://github.com/merryhime/oaknut.git"
 	"git+https://github.com/google/oboe.git"
+	"SPIRV-Tools::git+https://github.com/KhronosGroup/SPIRV-Tools.git"
 	"git+https://github.com/google/googletest" # cubeb
 	"git+https://github.com/arsenm/sanitizers-cmake" # cubeb
 	"git+https://github.com/KhronosGroup/SPIRV-Headers" # sirit
 	"git+https://github.com/bylaws/liblinkernsbypass") # libadrenotools
 sha256sums=('SKIP'
+            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -94,7 +96,7 @@ pkgver() {
 prepare() {
     cd "$srcdir/$_pkgname"
     git submodule init
-    for submodule in {boost,nihstro,soundtouch,catch2,dynarmic,xbyak,fmt,enet,inih,libressl,libusb,cubeb,discord-rpc,cpp-jwt,teakra,lodepng,zstd,libyuv,sdl2,cryptopp-cmake,cryptopp,dds-ktx,openal-soft,glslang,vma,vulkan-headers,sirit,faad2,library-headers,libadrenotools,oaknut};
+    for submodule in {boost,nihstro,soundtouch,catch2,dynarmic,xbyak,fmt,enet,inih,libressl,libusb,cubeb,discord-rpc,cpp-jwt,teakra,lodepng,zstd,libyuv,sdl2,cryptopp-cmake,cryptopp,dds-ktx,openal-soft,glslang,vma,vulkan-headers,sirit,faad2,library-headers,libadrenotools,oaknut,SPIRV-Tools};
     do
     git config submodule.${submodule}.url "$srcdir/${submodule}"
     done
@@ -126,15 +128,14 @@ build() {
     cmake -B build -S "$_pkgname" -G Ninja \
 	-DCMAKE_INSTALL_PREFIX=/usr \
 	-DCMAKE_BUILD_TYPE=None \
-    	-DCMAKE_CXX_COMPILER=clang++ \
-    	-DCMAKE_C_COMPILER=clang \
     	-DENABLE_QT_TRANSLATION=ON \
     	-DUSE_DISCORD_PRESENCE=ON \
+    	-DCMAKE_CXX_COMPILER=clang++ \
+    	-DCMAKE_C_COMPILER=clang \
 	-DCMAKE_CXX_FLAGS="$CXXFLAGS" \
 	-DCMAKE_C_FLAGS="$CFLAGS" \
 	-DUSE_SYSTEM_CATCH2=ON \
 	-DUSE_SYSTEM_FMT=ON \
-	-DUSE_SYSTEM_GLSLANG=ON \
 	-DUSE_SYSTEM_INIH=ON \
 	-DUSE_SYSTEM_JSON=ON \
 	-DUSE_SYSTEM_LIBUSB=ON \
@@ -151,3 +152,5 @@ package() {
     rm -rf $pkgdir/usr/include/
     rm -rf $pkgdir/usr/lib/
 }
+
+
