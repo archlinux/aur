@@ -1,6 +1,6 @@
 pkgbase = bitwuzla-git
 	pkgdesc = SMT solver for the theories of fixed-size bit-vectors, floating-point arithmetic, arrays and uninterpreted functions and their combinations
-	pkgver = 0.4.0.r51.g31330f2
+	pkgver = 0.6.1.r1.g67230d5
 	pkgrel = 1
 	url = https://bitwuzla.github.io
 	arch = x86_64
@@ -28,12 +28,14 @@ pkgbase = bitwuzla-git
 	depends = kissat
 	optdepends = cryptominisat5: Support for the CryptoMiniSat SAT solver
 	optdepends = python>=3.7: Python bindings
-	provides = bitwuzla=0.4.0.r51.g31330f2
+	provides = bitwuzla
+	provides = bitwuzla-docs
 	provides = libbitwuzlabv.so
 	provides = libbitwuzlabb.so
 	provides = libbitwuzlals.so
 	provides = libbitwuzla.so
 	conflicts = bitwuzla
+	conflicts = bitwuzla-docs
 	options = !lto
 	source = git+https://github.com/bitwuzla/bitwuzla.git
 	source = 0001-Use-installed-libraries.patch
