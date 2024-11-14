@@ -2,16 +2,16 @@
 
 pkgname=reader-pro-bin
 pkgver=3.2.10
-pkgrel=0
+pkgrel=1
 epoch=
 pkgdesc="Read 3 Server Edition"
 arch=(any)
-url="https://github.com/hectorqin/reader/"
+url="https://github.com/hectorqin/reader"
 license=('GPL-3.0-or-later')
 groups=()
 depends=(sh
     java-runtime)
-makedepends=("gcc")
+makedepends=()
 checkdepends=()
 optdepends=()
 provides=(${pkgname%-bin})
@@ -21,7 +21,7 @@ backup=(usr/share/java/reader-pro/conf/application.properties)
 options=('!debug')
 install=
 changelog=
-source=("reader-server-${pkgver}.zip::https://github.com/hectorqin/reader/releases/download/v${pkgver}/reader-server-${pkgver}.zip"
+source=("reader-server-${pkgver}.zip::${url}/releases/download/v${pkgver}/reader-server-${pkgver}.zip"
     reader-pro.sh
     reader-pro.sysusers
     reader-pro.tmpfiles

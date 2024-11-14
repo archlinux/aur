@@ -1,11 +1,10 @@
 pkgbase = reader-pro-bin
 	pkgdesc = Read 3 Server Edition
 	pkgver = 3.2.10
-	pkgrel = 0
-	url = https://github.com/hectorqin/reader/
+	pkgrel = 1
+	url = https://github.com/hectorqin/reader
 	arch = any
 	license = GPL-3.0-or-later
-	makedepends = gcc
 	depends = sh
 	depends = java-runtime
 	provides = reader-pro
