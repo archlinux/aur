@@ -1,9 +1,9 @@
-# Maintainer: Balló György <ballogyor+arch at gmail dot com>
+# Contributor: Balló György <ballogyor+arch at gmail dot com>
 
 _pkgname=getkey
 pkgname=python-getkey
 pkgver=0.6.5
-pkgrel=6
+pkgrel=7
 pkgdesc='Python library to easily read single chars and key strokes'
 arch=('any')
 url='https://github.com/kcsaff/getkey'
@@ -33,4 +33,7 @@ package() {
   cd $_pkgname-$pkgver
   python -m installer --destdir="$pkgdir" dist/*.whl
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+
+  # Remove installed tests
+  rm -r "$pkgdir$(python -c 'import site; print(site.getsitepackages()[0])')"/tests/
 }

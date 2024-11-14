@@ -1,7 +1,7 @@
 pkgbase = python-getkey
 	pkgdesc = Python library to easily read single chars and key strokes
 	pkgver = 0.6.5
-	pkgrel = 6
+	pkgrel = 7
 	url = https://github.com/kcsaff/getkey
 	arch = any
 	license = MIT
