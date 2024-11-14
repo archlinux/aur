@@ -1,7 +1,7 @@
 pkgbase = fontproof
 	pkgdesc = A font design testing class and CLI tool for SILE
-	pkgver = 2.2.2
-	pkgrel = 3
+	pkgver = 2.2.3
+	pkgrel = 1
 	url = https://github.com/sile-typesetter/fontproof
 	arch = any
 	license = MIT
@@ -9,10 +9,10 @@ pkgbase = fontproof
 	depends = lua51-cliargs
 	depends = luajit
 	depends = sile
-	source = https://github.com/sile-typesetter/fontproof/releases/download/v2.2.2/fontproof-2.2.2-1.src.rock
-	source = https://github.com/sile-typesetter/fontproof/releases/download/v2.2.2/fontproof-2.2.2-1.src.rock.asc
+	source = https://github.com/sile-typesetter/fontproof/releases/download/v2.2.3/fontproof-2.2.3-1.src.rock
+	source = https://github.com/sile-typesetter/fontproof/releases/download/v2.2.3/fontproof-2.2.3-1.src.rock.asc
 	validpgpkeys = 9F377DDB6D3153A48EB3EB1E63CC496475267693
-	sha256sums = 73dd9bae627c484e91d3101a2db8b2a89d46b098a51adac1877347d3b73821c9
+	sha256sums = e6a6841cfd0a5cfe6f69cdee5ec57e4c2f5c1acdab8223c91589e031bad06437
 	sha256sums = SKIP
 
 pkgname = fontproof
