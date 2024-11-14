@@ -1,0 +1,7 @@
+diff -rU1 open-av4ms.orig/usr/local/bin/av4config open-av4ms/usr/local/bin/av4config
+--- open-av4ms.orig/usr/local/bin/av4config	2024-11-14 23:21:12.549639155 +0100
++++ open-av4ms/usr/local/bin/av4config	2024-11-14 23:22:54.422968897 +0100
+@@ -1,2 +1,2 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ #-*-coding: utf-8 -*-

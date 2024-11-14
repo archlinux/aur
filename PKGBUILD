@@ -3,7 +3,7 @@
 _pkgname=open-av4ms
 pkgname="${_pkgname}-git"
 pkgver=1.5+1.r7.20181017.e7ac570
-pkgrel=5
+pkgrel=6
 pkgdesc="Log and monitor the serial output of the MiMH/ NiCd battery chargers 'AV4m+'/ 'AV4ms'."
 url='https://gitlab.com/corbolais/open-av4ms'
 arch=(
@@ -43,11 +43,13 @@ options=('emptydirs')
 source=(
   "${_pkgname}::git+${url}.git"
   "arch-adaption.patch"
+  "python2.patch"
   "${install}"
 )
 sha256sums=(
   'SKIP'
   'ee58fc4f947f307dbb1e424809ee691acb68391af6be8369286dae8fc08e234d'
+  '68f44564cfe7bb9199e3a9d781ca681a645d5c50a1dd9ea6875a030a78177264'
   '01760fc8c5b37a86c4b37f48923bde6aaad302a94161f84bb253671d613beaf3'
 )
 
@@ -57,8 +59,8 @@ prepare() {
   msg2 "Patching software Arch Linux ready ..."
   patch -N -p1 --follow-symlinks -i "${srcdir}/arch-adaption.patch"
 
-  #msg2 "Patching for Python 3 ..."
-  #patch -N -p1 --follow-symlinks -i "${srcdir}/python3.patch"
+  msg2 "Patching shabeng line to bne explicitly 'python2' ..."
+  patch -N -p1 --follow-symlinks -i "${srcdir}/python2.patch"
 
   printf '%s\n' "${url}" > "${srcdir}/website.url"
   git log > "${srcdir}/git.log"
