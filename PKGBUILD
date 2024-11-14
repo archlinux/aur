@@ -4,7 +4,7 @@
 
 pkgname=zsh-abbr
 pkgver=6.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc='The zsh manager for auto-expanding abbreviations, inspired by fish shell.'
 arch=('any')
 url='https://github.com/olets/zsh-abbr'
@@ -28,6 +28,7 @@ package() {
 	cd "$pkgname-$pkgver"
 	install -Dvm644 zsh-abbr{,.plugin}.zsh -t "$pkgdir/usr/share/zsh/plugins/$pkgname/"
 	install -Dvm644 zsh-job-queue/zsh-job-queue{,.plugin}.zsh -t "$pkgdir/usr/share/zsh/plugins/$pkgname/zsh-job-queue/"
+	install -Dvm644 completions/_abbr -t "$pkgdir/usr/share/zsh/site-functions/"
 	install -Dvm755 man/man1/abbr.1 -t "$pkgdir/usr/share/man/man1/"
 	install -Dvm644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
 	install -Dvm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
