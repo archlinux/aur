@@ -3,7 +3,7 @@
 
 
 pkgname=eddie-cli-git
-pkgver=2.24.3
+pkgver=2.24.4
 pkgrel=1
 pkgdesc='Eddie - VPN tunnel - CLI'
 arch=('x86_64' 'aarch64' 'armv7l')
@@ -11,13 +11,13 @@ url=https://eddie.website
 license=(GPLv3)
 depends=(curl openvpn sudo)
 optdepends=('stunnel: VPN over SSL' 'openssh: VPN over SSH')
-makedepends=(cmake patchelf dotnet-sdk)
+makedepends=(git cmake patchelf dotnet-sdk)
 provides=('eddie-cli')
 conflicts=('airvpn' 'airvpn-beta-bin' 'airvpn-git')
 install=eddie-cli.install
 source=('git+https://github.com/AirVPN/Eddie.git')
 sha1sums=('SKIP')
-options=('!strip') # Incompatible with net7
+options=('!strip') # Incompatible with net8
 
 
 
@@ -46,7 +46,7 @@ build() {
 
     cd "src/App.CLI.Linux/"
 
-    dotnet publish App.CLI.Linux.net7.csproj --configuration ${CONFIG} --runtime ${RID} --self-contained true -p:PublishTrimmed=true -p:EnableCompressionInSingleFile=true    
+    dotnet publish App.CLI.Linux.net8.csproj --configuration ${CONFIG} --runtime ${RID} --self-contained true -p:PublishTrimmed=true -p:EnableCompressionInSingleFile=true    
 
     cd "../../"
   fi
@@ -54,7 +54,7 @@ build() {
   # UI
   if [ "cli" = "ui" ]; then
     FRAMEWORK="net4" # Forced for now
-    if [ $FRAMEWORK = "net7" ]; then
+    if [ $FRAMEWORK = "net8" ]; then
         chmod +x src/App.UI.Linux/build.sh
         "src/App.UI.Linux/build.sh" Release        
     elif [ $FRAMEWORK = "net4" ]; then
@@ -66,7 +66,7 @@ build() {
         RULESETPATH="src/ruleset/norules.ruleset"
         SOLUTIONPATH="src/App.Forms.Linux//App.Forms.Linux.sln"
         
-        # clean temporary files from net7 compilation above, otherwise throw 'Your project does not reference ".NETFramework,Version=v4.8"'
+        # clean temporary files from net8 compilation above, otherwise throw 'Your project does not reference ".NETFramework,Version=v4.8"'
         rm -rf "src/Lib.Core/bin"
         rm -rf "src/Lib.Core/obj"
         rm -rf "src/Lib.Platform.Linux/bin"
@@ -110,12 +110,12 @@ build() {
 
   # Generate changelog
   curl "https://eddie.website/changelog/?software=client&format=debian&hidden=yes" -o "changelog"
-  gzip -n -9 "changelog"
+  gzip -n -9 -f "changelog"
   
   if [ "cli" = "cli" ]; then
     # Generate man
-    "src/App.CLI.Linux/bin/Release/net7.0/${RID}/publish/eddie-cli" --path.resources="../../../../../../resources" --help --help.format=man >"eddie-cli.8"
-    gzip -n -9 "eddie-cli.8"
+    "src/App.CLI.Linux/bin/Release/net8.0/${RID}/publish/eddie-cli" --path.resources="../../../../../../resources" --help --help.format=man >"eddie-cli.8"
+    gzip -n -9 -f "eddie-cli.8"
   fi
 
 }
@@ -150,16 +150,16 @@ package() {
   
   install -Dm644 "changelog.gz" "$pkgdir/usr/share/doc/eddie-cli/changelog.gz"
 
-  install -Dm755 "src/App.CLI.Linux/bin/Release/net7.0/${RID}/libLib.Platform.Linux.Native.so" "$pkgdir/usr/lib/eddie-cli/libLib.Platform.Linux.Native.so"
-  install -Dm755 "src/App.CLI.Linux/bin/Release/net7.0/${RID}/eddie-cli-elevated" "$pkgdir/usr/lib/eddie-cli/eddie-cli-elevated"
-  install -Dm755 "src/App.CLI.Linux/bin/Release/net7.0/${RID}/eddie-cli-elevated-service" "$pkgdir/usr/lib/eddie-cli/eddie-cli-elevated-service"
-  install -Dm755 "src/App.CLI.Linux/bin/Release/net7.0/${RID}/publish/eddie-cli" "$pkgdir/usr/lib/eddie-cli/eddie-cli"
+  install -Dm755 "src/App.CLI.Linux/bin/Release/net8.0/${RID}/libLib.Platform.Linux.Native.so" "$pkgdir/usr/lib/eddie-cli/libLib.Platform.Linux.Native.so"
+  install -Dm755 "src/App.CLI.Linux/bin/Release/net8.0/${RID}/eddie-cli-elevated" "$pkgdir/usr/lib/eddie-cli/eddie-cli-elevated"
+  install -Dm755 "src/App.CLI.Linux/bin/Release/net8.0/${RID}/eddie-cli-elevated-service" "$pkgdir/usr/lib/eddie-cli/eddie-cli-elevated-service"
+  install -Dm755 "src/App.CLI.Linux/bin/Release/net8.0/${RID}/publish/eddie-cli" "$pkgdir/usr/lib/eddie-cli/eddie-cli"
 
   if [ "cli" = "cli" ]; then
     install -Dm644 "eddie-cli.8.gz" "$pkgdir/usr/share/man/man8/eddie-cli.8.gz"
   elif [ "cli" = "ui" ]; then
     FRAMEWORK="net4" # Forced for now
-    if [ $FRAMEWORK = "net7" ]; then
+    if [ $FRAMEWORK = "net8" ]; then
       echo TODO
     elif [ $FRAMEWORK = "net4" ]; then        
       install -Dm755 "src/App.Forms.Linux.Tray/bin/eddie-tray" "$pkgdir/usr/lib/eddie-cli/eddie-tray"      
