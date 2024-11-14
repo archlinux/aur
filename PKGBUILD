@@ -8,11 +8,17 @@ pkgdesc='SMT solver for the theories of fixed-size bit-vectors, floating-point a
 arch=('x86_64')
 url='https://bitwuzla.github.io'
 license=('MIT')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/bitwuzla/bitwuzla/archive/refs/tags/${pkgver}.tar.gz"
-	"0001-Use-installed-libraries.patch"
-	"0002-Skip-Test-based-on-timeout.patch"
-       )
-depends=('gcc-libs' 'glibc' 'gmp>=6.1' 'kissat')
+source=(
+    "$pkgname-$pkgver.tar.gz::https://github.com/bitwuzla/bitwuzla/archive/refs/tags/${pkgver}.tar.gz"
+    "0001-Use-installed-libraries.patch"
+    "0002-Skip-Test-based-on-timeout.patch"
+)
+depends=(
+    'gcc-libs'
+    'glibc'
+    'gmp>=6.1'
+    'kissat'
+)
 makedepends=(
     'cadical>=1.5.0'
     'cmake'
@@ -39,7 +45,8 @@ provides=(
     'libbitwuzlabv.so'
     'libbitwuzlabb.so'
     'libbitwuzlals.so'
-    'libbitwuzla.so')
+    'libbitwuzla.so'
+)
 b2sums=('03bf6b28d2aacd870ed2f5deb4d1d08edfccecbbfb885f60fe49ce097c42b49c7c41b37c9e14d335e70e012e60bb278f74318e9afe790bddd174002b1e052771'
         '0ebea6754d4fc270c268d4088af9bcb93596fe5ec7b1065f83d39e5c56eef93d567592443ec0a460a34bf5829b5b54f2c9971644f6fbbebbf9c43a1b440ac54d'
         '7728ab77cb234b4427e7cf493817a24bf97440304efb4fc4300125ec470a0bf15430b4416d3c5fdea51dc91441640d05995ed4a08d4c628f97f4d4dc08538d7e')
