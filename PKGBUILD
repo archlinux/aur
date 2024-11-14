@@ -1,7 +1,7 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=casile
-pkgver=0.14.3
+pkgver=0.14.4
 pkgrel=1
 pkgdesc='Caleb’s SILE publishing toolkit'
 arch=(x86_64)
@@ -71,16 +71,18 @@ _pydeps=(isbnlib
          pantable
          ruamel-yaml
          usfm2osis-cw-git)
+_siledeps=(decasify)
 depends+=("${_luadeps[@]/#/lua-}"
           "${_luadeps[@]/#/lua51-}"
           "${_perldeps[@]/#/perl-}"
-          "${_pydeps[@]/#/python-}")
+          "${_pydeps[@]/#/python-}"
+          "${_siledeps[@]/#/sile-}")
 makedepends=(cargo
              node-prune
              yarn)
 _archive="$pkgname-$pkgver"
 source=("$url/releases/download/v$pkgver/$_archive.tar.zst"{,.asc})
-sha256sums=('0de2be36060e022080f91f093885037bbedfc459e14998fa1afe4014804b0a61'
+sha256sums=('b2bf648548b4964f2b94c4f7acf95407338974c3b794ec229c0848f94b36003c'
             'SKIP')
 validpgpkeys=('9F377DDB6D3153A48EB3EB1E63CC496475267693') # Caleb Maclennan <caleb@alerque.com> (@alerque)
 
