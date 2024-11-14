@@ -1,6 +1,6 @@
 pkgbase = kconnect
 	pkgdesc = CLI utility that can be used to discover and securely access Kubernetes clusters across multiple operating environments.
-	pkgver = 0.5.17
+	pkgver = 0.5.18
 	pkgrel = 1
 	url = https://github.com/fidelity/kconnect
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = kconnect
 	optdepends = azure-cli: interactive authentication to Azure AKS clusters
 	provides = kconnect
 	conflicts = kconnect-bin
-	source = kconnect_0.5.17.tar.gz::https://github.com/fidelity/kconnect/archive/refs/tags/0.5.17.tar.gz
-	sha256sums = 80bae6a567a444b987fd26c00365b2369a438178372b0e58ed9f27860f5fc5ed
+	source = kconnect_0.5.18.tar.gz::https://github.com/fidelity/kconnect/archive/refs/tags/0.5.18.tar.gz
+	sha256sums = 8136026ba0ceef658b1b6c13c3bd2eac65d7bbcde12f72758e0d834c39d9d8a8
 
 pkgname = kconnect
