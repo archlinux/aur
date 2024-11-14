@@ -6,8 +6,8 @@
 # Contributor: Fredy García <frealgagu at gmail dot com>
 
 pkgname=wiredtiger
-pkgver=11.2.0
-pkgrel=2
+pkgver=11.3.0
+pkgrel=1
 pkgdesc="High performance, scalable, NoSQL, extensible platform for data management"
 arch=("x86_64")
 url="https://github.com/wiredtiger/wiredtiger"
@@ -15,7 +15,7 @@ license=("GPL")
 depends=("lz4" "snappy" "zlib" "zstd")
 makedepends=("cmake" "swig" "python")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/wiredtiger/$pkgname/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=("90d1392a9b10dae5bda02d476cb3204331dcf94b3e47ce5e2ab4d4d9b4dd198c")
+sha256sums=("c3678f53171bae89088690bbcc014b096a0b2c26a4bf888a29dd6861b6cfcc9f")
 
 build() {
     cd "$pkgname-$pkgver"
