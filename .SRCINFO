@@ -1,6 +1,6 @@
 pkgbase = fnm-bin
 	pkgdesc = Fast and simple Node.js version manager, built in Rust
-	pkgver = 1.37.2
+	pkgver = 1.38.0
 	pkgrel = 1
 	url = https://github.com/Schniz/fnm
 	arch = x86_64
@@ -10,11 +10,11 @@ pkgbase = fnm-bin
 	provides = fnm
 	conflicts = fnm-git
 	conflicts = fnm
-	source_x86_64 = fnm-1.37.2-x86_64.zip::https://github.com/Schniz/fnm/releases/download/v1.37.2/fnm-linux.zip
-	sha256sums_x86_64 = 439ccbc11e65df970500833e152b896c107f3f3014ea7aaf42213241b403338c
-	source_aarch64 = fnm-1.37.2-aarch64.zip::https://github.com/Schniz/fnm/releases/download/v1.37.2/fnm-arm64.zip
-	sha256sums_aarch64 = 8db196f4bcbb2f27b4742bd5a898ab79d444006d121f888d9201bb3690419763
-	source_armv7h = fnm-1.37.2-aarch64.zip::https://github.com/Schniz/fnm/releases/download/v1.37.2/fnm-arm32.zip
-	sha256sums_armv7h = 8db196f4bcbb2f27b4742bd5a898ab79d444006d121f888d9201bb3690419763
+	source_x86_64 = fnm-1.38.0-x86_64.zip::https://github.com/Schniz/fnm/releases/download/v1.38.0/fnm-linux.zip
+	sha256sums_x86_64 = e67e5d7ffb7699506198f9cb54dabd95073cdb54397fa3930155593490f71d2a
+	source_aarch64 = fnm-1.38.0-aarch64.zip::https://github.com/Schniz/fnm/releases/download/v1.38.0/fnm-arm64.zip
+	sha256sums_aarch64 = d71b2c57d9d4b443d16c0e2d4e6bac6a43967d34c12eed1b4e74de5f9d194a99
+	source_armv7h = fnm-1.38.0-aarch64.zip::https://github.com/Schniz/fnm/releases/download/v1.38.0/fnm-arm32.zip
+	sha256sums_armv7h = d71b2c57d9d4b443d16c0e2d4e6bac6a43967d34c12eed1b4e74de5f9d194a99
 
 pkgname = fnm-bin
