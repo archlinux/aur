@@ -1,0 +1,8 @@
+/src
+/BeamMP-Launcher
+/vcpkg
+/pkg
+*.pkg.tar.zst
+
+Launcher.cfg
+Launcher.log
