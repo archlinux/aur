@@ -7,14 +7,14 @@ pkgdesc='Highly accurate C64/Amiga emulator - Git version'
 url='https://sourceforge.net/projects/deniseemu/'
 license=('GPL-3.0-or-later')
 pkgver=r1796.0c7a30f
-pkgrel=1
+pkgrel=2
 epoch=1
 source=('git+https://bitbucket.org/piciji/denise.git')
 sha256sums=('SKIP')
 provides=('denise')
 conflicts=('denise-bin' 'denise')
 depends=('libpulse' 'openal' 'gtk3')
-makedepends=('git')
+makedepends=('git' 'cmake')
 arch=('i686' 'x86_64')
 
 pkgver() {
