@@ -16,7 +16,6 @@ depends=('python'
 
 makedepends=('git'
 	'go'
-	'yq'
 	'libffi'
 	'tk'
 	'python-xmlsec'
