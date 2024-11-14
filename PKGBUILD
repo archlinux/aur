@@ -1,7 +1,7 @@
 # Maintainer: Hristos N. Triantafillou <me@hristos.co>
 
 pkgname=momw-configurator
-pkgver=1.4
+pkgver=1.6
 pkgrel=1
 pkgdesc="Generates fully functional openmw.cfg and settings.cfg for any mod list from Modding-OpenMW.com and runs modding tools with appropriate handling for your selected mod list. Intended to be used alongside umo for the website's Automatic Install Guide."
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('glibc')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::$url/-/archive/${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha512sums=('49f19f7028380da43a1b9f137bfb7e2db379a97d445efde65860f8dc5fa5e9e3de0979c5368ec4e39646af1d74b0094599cb35d6298471a7ada97adba2573c75')
+sha512sums=('f537208ab0bfe19ea58fb7a7e847803e68d265a5e019c3b6281c930005f7d5c8b0f5f590074f6358a2d67e09070fc4364d16a716141e2510d82c82ccd122ecf6')
 
 build() {
     ## From Go package guidelines
