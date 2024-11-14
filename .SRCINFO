@@ -1,6 +1,6 @@
 pkgbase = python-pyfmi
 	pkgdesc = A package for working with dynamic models compliant with the FMI standard.
-	pkgver = 2.14.1
+	pkgver = 2.15.0
 	pkgrel = 1
 	url = https://github.com/modelon-community/PyFMI
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = python-pyfmi
 	depends = fmilib
 	depends = python-scipy
 	depends = python-assimulo
-	source = https://github.com/modelon/PyFMI/archive/PyFMI-2.14.1.tar.gz
-	sha256sums = 5cd6c92c144fdf847f06ea3c17e112462dfccc20718c3af6133e23decb6cfe3f
+	source = https://github.com/modelon/PyFMI/archive/PyFMI-2.15.0.tar.gz
+	sha256sums = 32c9fa3fb83e8101048f3bfeb1639ba1b119084c5bd738f0fe65d4d4f925ae09
 
 pkgname = python-pyfmi
