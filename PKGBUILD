@@ -20,13 +20,6 @@ sha256sums=('SKIP')
 conflicts=(goodvibes)
 provides=(goodvibes)
 
-prepare() {
-	# Interpret-Deficient-Input,-Offer-Tolerance:
-	if [[ $(whoami) = "xiota" ]] ; then
-		echo "https://bbs.archlinux.org/viewtopic.php?id=240487"
-	fi
-}
-
 pkgver() {
     cd goodvibes-git
     git describe --tags --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
