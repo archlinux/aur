@@ -1,7 +1,7 @@
 pkgbase = denise-bin
 	pkgdesc = Highly accurate C64/Amiga emulator - binary release
 	pkgver = 2.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://sourceforge.net/projects/deniseemu/
 	arch = x86_64
 	license = GPL-3.0-or-later
@@ -9,7 +9,6 @@ pkgbase = denise-bin
 	depends = openal
 	depends = libpulse
 	provides = denise
-	conflicts = denise-git
 	conflicts = denise
 	source = denise-bin-2.4.deb::https://sourceforge.net/projects/deniseemu/files/v%202.4/denise_ubuntu2004_v2.4.deb
 	sha256sums = cba842e17e1a3dd9bfad0cf2384eefeefa73255d12efb14fc4be83ecf342aa7b

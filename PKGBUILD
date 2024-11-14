@@ -6,7 +6,7 @@ pkgdesc='Highly accurate C64/Amiga emulator - binary release'
 url='https://sourceforge.net/projects/deniseemu/'
 license=('GPL-3.0-or-later')
 pkgver=2.4
-pkgrel=1
+pkgrel=2
 
 _pkgname='denise'
 _filename="${_pkgname}_ubuntu2004_v${pkgver}"
@@ -14,7 +14,7 @@ source=("$pkgname-$pkgver.deb::https://sourceforge.net/projects/deniseemu/files/
 sha256sums=('cba842e17e1a3dd9bfad0cf2384eefeefa73255d12efb14fc4be83ecf342aa7b')
 
 provides=('denise')
-conflicts=('denise-git' 'denise')
+conflicts=('denise')
 depends=('gtk3' 'openal' 'libpulse')
 arch=('x86_64')
 
