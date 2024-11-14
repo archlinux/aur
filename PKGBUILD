@@ -3,7 +3,7 @@
 _pkgname=tuxedo-drivers
 pkgname=tuxedo-drivers-dkms
 pkgver=4.11.2
-pkgrel=1
+pkgrel=2
 pkgdesc="TUXEDO Computers kernel module drivers for keyboard, keyboard backlight & general hardware I/O using the SysFS interface"
 url="https://github.com/tuxedocomputers/tuxedo-drivers"
 license=("GPL3")
@@ -38,6 +38,7 @@ sha512sums=('a725fa794fa487577068f06bcfbd7140c8a788a44cf173c4be5e69347f1c0c0cdbd
 package() {
   mkdir -p "${pkgdir}/usr/src/${_pkgname}-${pkgver}"
   mkdir -p "${pkgdir}/etc/udev/rules.d/"
+  mkdir -p "${pkgdir}/usr/lib/udev/hwdb.d"
   sed -i "s/#MODULE_VERSION#/${pkgver}/" dkms.conf
   install -Dm644 dkms.conf -t "$pkgdir/usr/src/${_pkgname%}-$pkgver/"
   install -Dm644 "${_pkgname%}-$pkgver"/Makefile -t "$pkgdir/usr/src/${_pkgname%}-$pkgver/"
@@ -46,4 +47,6 @@ package() {
   #cp -avr "${_pkgname%}-$pkgver"/* "$pkgdir/usr/src/${_pkgname%}-$pkgver/"
   cp -avr "${_pkgname%}-$pkgver"/src/* "$pkgdir/usr/src/${_pkgname%}-$pkgver/"
   install -Dm644 "${_pkgname%}-$pkgver"/99-z-tuxedo-systemd-fix.rules -t "$pkgdir/etc/udev/rules.d/"
+  install -Dm644 "${_pkgname%}-$pkgver"/99-infinityflex-touchpanel-toggle.rules  -t "$pkgdir/etc/udev/rules.d/"
+  install -Dm644 "${_pkgname%}-$pkgver"/61-sensor-infinityflex.hwdb -t "$pkgdir/usr/lib/udev/hwdb.d"
 }
