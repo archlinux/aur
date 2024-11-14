@@ -3,7 +3,7 @@
 pkgname=python-genio-tools
 _name=${pkgname#python-}
 pkgver=1.4.2
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Tools for flashing boards using MediaTek Genio SoCs"
 arch=('any')
@@ -21,7 +21,7 @@ _pydeps=(
     pyftdi)
 depends=(
     python
-    "${_pymakedeps[@]/#/python-}")
+    "${_pydeps[@]/#/python-}")
 _pymakedeps=(
     build
     installer
