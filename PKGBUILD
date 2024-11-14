@@ -2,7 +2,7 @@
 # Maintainer: L0Wigh <mathiotthomas@gmail.com>
 
 pkgname=newm-next-git
-pkgver=0.4.1
+pkgver=0.4.2
 pkgrel=1
 license=('MIT')
 pkgdesc="newm-next Wayland compositor"
