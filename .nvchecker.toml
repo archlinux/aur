@@ -1,0 +1,5 @@
+[wxmaxima-git]
+source = "git"
+git = "https://github.com/wxmaxima-developers/wxmaxima.git"
+include_regex = 'Version-.*'
+prefix = "Version-"

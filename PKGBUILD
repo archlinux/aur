@@ -1,44 +1,55 @@
-# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
+# Maintainer:
+# Contributor: Stefan Husmann <stefan-husmann@t-online.de>
 
-pkgname=wxmaxima-git
-pkgver=23.04.0.r2.g11028a1f3
+_pkgname="wxmaxima"
+pkgname="$_pkgname-git"
+pkgver=24.11.0.r0.g9898330
 pkgrel=1
-epoch=1
-pkgdesc="A document based interface for the computer algebra system Maxima."
+pkgdesc="A document based interface for the computer algebra system Maxima"
+url="https://github.com/wxmaxima-developers/wxmaxima"
+license=('GPL-2.0-or-later')
 arch=('i686' 'x86_64')
-url="https://wxmaxima-developers.github.io/wxmaxima/"
-license=('GPL2')
-depends=('maxima' 'wxwidgets-common' 'openmp')
-makedepends=('git' 'texi2html' 'cmake' 'po4a' 'perl-syntax-keyword-try')
-optdepends=('gnuplot: for plotting'
-	    'bash-completion: for completion when using bash'
-	    'man-db: manual pages for wxMaxima')
-conflicts=('wxmaxima')
-provides=('wxmaxima')
-source=("git+https://github.com/wxMaxima-developers/wxmaxima.git")
+
+depends=(
+  'maxima'
+  'webkit2gtk-4.1'
+  'wxwidgets-gtk3'
+)
+makedepends=(
+  'cmake'
+  'git'
+  'ninja'
+)
+
+provides=("$_pkgname=${pkgver%%.r*}")
+conflicts=("$_pkgname")
+
+_pkgsrc="$_pkgname"
+source=("$_pkgsrc"::"git+$url.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd ${pkgname%-git}
-  git describe --tags --long | cut -c9- | sed 's+-+.r+' |tr - . |tr _ .
+  cd "$_pkgsrc"
+  git describe --long --tags --abbrev=7 --exclude='*-*[a-zA-Z][a-zA-Z]*' \
+    | sed -E 's/^[^0-9]*//;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
 build() {
-  cd ${pkgname%-git}
-  [ -d build ] || mkdir build
-  cd build
-  
-  cmake -DCMAKE_INSTALL_PREFIX:PATH=/usr \
-	-DCMAKE_BUILD_TYPE=None \
-	-DCMAKE_INSTALL_PREFIX=/usr \
-	-DCMAKE_CXX_STANDARD=14 \
-	-DCMAKE_CXX_COMPILER=g++ \
-	-DwxWidgets_CONFIG_EXECUTABLE=/usr/bin/wx-config \
-	-Wno-dev ..
-  cmake --build .
+  local _cmake_options=(
+    -B build
+    -S "$_pkgsrc"
+    -G Ninja
+    -DCMAKE_BUILD_TYPE=None
+    -DCMAKE_INSTALL_PREFIX='/usr'
+    -DwxWidgets_CONFIG_EXECUTABLE=/usr/bin/wx-config
+    -DWXM_INTERPROCEDURAL_OPTIMIZATION=ON
+    -Wno-dev
+  )
+
+  cmake "${_cmake_options[@]}"
+  cmake --build build
 }
 
 package() {
-  cd ${pkgname%-git}/build
-  make DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" cmake --install build
 }

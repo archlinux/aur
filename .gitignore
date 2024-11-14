@@ -1,4 +1,4 @@
-/*.pkg.tar.xz
-/wxmaxima
-/pkg
-/src
+*
+!PKGBUILD
+!.SRCINFO
+!.gitignore

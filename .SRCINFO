@@ -1,26 +1,20 @@
 pkgbase = wxmaxima-git
-	pkgdesc = A document based interface for the computer algebra system Maxima.
-	pkgver = 23.04.0.r2.g11028a1f3
+	pkgdesc = A document based interface for the computer algebra system Maxima
+	pkgver = 24.11.0.r0.g9898330
 	pkgrel = 1
-	epoch = 1
-	url = https://wxmaxima-developers.github.io/wxmaxima/
+	url = https://github.com/wxmaxima-developers/wxmaxima
 	arch = i686
 	arch = x86_64
-	license = GPL2
-	makedepends = git
-	makedepends = texi2html
+	license = GPL-2.0-or-later
 	makedepends = cmake
-	makedepends = po4a
-	makedepends = perl-syntax-keyword-try
+	makedepends = git
+	makedepends = ninja
 	depends = maxima
-	depends = wxwidgets-common
-	depends = openmp
-	optdepends = gnuplot: for plotting
-	optdepends = bash-completion: for completion when using bash
-	optdepends = man-db: manual pages for wxMaxima
-	provides = wxmaxima
+	depends = webkit2gtk-4.1
+	depends = wxwidgets-gtk3
+	provides = wxmaxima=24.11.0
 	conflicts = wxmaxima
-	source = git+https://github.com/wxMaxima-developers/wxmaxima.git
+	source = wxmaxima::git+https://github.com/wxmaxima-developers/wxmaxima.git
 	sha256sums = SKIP
 
 pkgname = wxmaxima-git
