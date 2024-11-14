@@ -1,0 +1,16 @@
+pkgbase = lf-file-handler-git
+	pkgdesc = Allow the lf file explorer to handle 'show in explorer' requests from GUI applications
+	pkgver = 1.0.0.r1.g5b0094b
+	pkgrel = 1
+	url = https://github.com/JoaoCostaIFG/lf-file-handler
+	arch = x86_64
+	license = custom:MIT
+	makedepends = pkgconf
+	makedepends = git
+	depends = dbus
+	provides = lf-file-handler-git
+	conflicts = lf-file-handler
+	source = lf-file-handler::git+https://github.com/JoaoCostaIFG/lf-file-handler.git
+	sha256sums = SKIP
+
+pkgname = lf-file-handler-git
