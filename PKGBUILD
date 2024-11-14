@@ -2,7 +2,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=tuisky
-pkgver=0.1.3
+pkgver=0.1.4
 pkgrel=1
 pkgdesc="A TUI client for Bluesky"
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('gcc-libs' 'openssl')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('e14b2099d1ac7e570801ec7b371bc9c3b662b3d99a07fb770c909781c173f2c653c4620203a29f71bbc7ccc28b9a20eaa890baaba9f0d91144e43722ead5b0f9')
+sha512sums=('03bddc957ccd93db41419f7671b5c2f4a944b6e5e4fad568dd4599af103183ed4a5586089624eba1b9e845679eb82be824d68bc82605ce215da6f71b76f14e88')
 
 prepare() {
   cd "$pkgname-$pkgver"
