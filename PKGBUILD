@@ -3,13 +3,14 @@
 # Contributor: Raphael Amorim <rapha850@gmail.com>
 
 pkgname=rio
-pkgver=0.1.17
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="A hardware-accelerated GPU terminal emulator powered by WebGPU"
 arch=('x86_64')
 url="https://github.com/raphamorim/rio"
 license=('MIT')
 # https://raphamorim.io/rio/install/#arch-linux
+options=('!lto')
 depends=(
   'gcc-libs'
   'fontconfig'
@@ -26,7 +27,7 @@ makedepends=(
   'python'
 )
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha512sums=('82e4e1d50e44a9c7d5cf274b0817ef844c3563f7c92e4045d6518029fe7374bb6d452c835889f5d93e2b0d7d89825e3dbef31c0fd6152977d7554e8dc323cbfc')
+sha512sums=('9dc2ae72229008c62f9de3859f9e2d0283eb466d57bd5927cfdc612d809f8c3d4c46d5208ee5d68191ab0cce02eef3ff4d865181b82ef35c67c79b8f7e4f2414')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
