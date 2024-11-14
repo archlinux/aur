@@ -1,6 +1,6 @@
 # Maintainer: Cyril Waechter <cyril[at]biminsight[dot]ch>
 pkgname=ifcopenshell
-pkgver=0.8.1_alpha2410210627
+pkgver=0.8.1_alpha2411141331
 _vername=bonsai
 pkgrel=1
 pkgdesc="Open source IFC library and geometry engine. Provides static libraries, python3 wrapper and blender addon."
@@ -13,7 +13,7 @@ depends=(
   'hicolor-icon-theme'
   'mpfr'
   'opencascade'
-  'opencollada'
+  # 'opencollada' # dropped from extra
   'python'
   'python-numpy'
   'python-jinja'
@@ -65,24 +65,22 @@ source=("https://github.com/IfcOpenShell/IfcOpenShell/archive/refs/tags/${_verna
   "bpypolyskel-1.1.2.tar.gz::https://github.com/prochitecture/bpypolyskel/archive/refs/tags/v1.1.2.tar.gz"
 
   "001-libsvgfill.patch::https://github.com/sukanka/svgfill/commit/47a6016.patch"
-  "002-fix-for-cgal6.0.patch::https://github.com/sukanka/IfcOpenShell/commit/02c9034.patch"
   "003-skip-install-python-package-only-install-wrapper.patch::https://github.com/sukanka/IfcOpenShell/commit/725d509.patch"
   "004-add-shared-libs.patch::https://github.com/sukanka/IfcOpenShell/commit/0a6ff03.patch"
   "005-install-missing-files-skip-redundant-files.patch::https://github.com/sukanka/IfcOpenShell/commit/fcc902b.patch"
   "006-fix-rpath.patch::https://github.com/sukanka/IfcOpenShell/commit/96b6f8d.patch"
 
 )
-sha256sums=('afdca4ec52dc1ead7618c94838ce4e2d76c8c20393b5a96f0f8efbac183ac0b7'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'f000262395449808c32e10664468ec2acd2a22e04b202037f15e03611506cfc5'
-            '1651288a6a618b018277e1b3417502e1a6965a51b557e60d9f1eae4fda768da3'
-            'ed53b683ccf6ca7e114558a3c75cdc97fe5e4935712ce7c7499738dd39edaea7'
-            'b18d6a595985e066e070373c2f8a6e8c9a18666ce46156cdc532d29292da85e5'
-            '8604fb3c0f733839435e2d6c91b2b5abaa5198ad3f034121fa10145ac9763919'
-            'edb7d3610d52e05cdaf98b7c2939b2deeabfed238fee641d0c62b30b88a878b4'
-            '75504aabcc4c05d058537a3bfc6384ca242732c71e15c4f716783eebbdb06f83')
+sha256sums=('bc5fcd8ba78bae5b7ede755af6fd2742b4940771e2994c0e547a14924c408f54'
+  'SKIP'
+  'SKIP'
+  'SKIP'
+  'f000262395449808c32e10664468ec2acd2a22e04b202037f15e03611506cfc5'
+  '1651288a6a618b018277e1b3417502e1a6965a51b557e60d9f1eae4fda768da3'
+  'b18d6a595985e066e070373c2f8a6e8c9a18666ce46156cdc532d29292da85e5'
+  '8604fb3c0f733839435e2d6c91b2b5abaa5198ad3f034121fa10145ac9763919'
+  'edb7d3610d52e05cdaf98b7c2939b2deeabfed238fee641d0c62b30b88a878b4'
+  '75504aabcc4c05d058537a3bfc6384ca242732c71e15c4f716783eebbdb06f83')
 
 _iosdir="IfcOpenShell-${_vername}-${pkgver//_/-}"
 
@@ -92,7 +90,6 @@ prepare() {
   cp -ar svgfill/* ${_iosdir}/src/svgfill
   cp -ar ifc-to-cityjson/* ${_iosdir}/src/ifcconvert/cityjson
   cd ${_iosdir}
-  patch --strip=1 --ignore-whitespace <../002-fix-for-cgal6.0.patch
   patch --strip=1 --ignore-whitespace <../003-skip-install-python-package-only-install-wrapper.patch
   patch --strip=1 --ignore-whitespace <../004-add-shared-libs.patch
   patch --strip=1 --ignore-whitespace <../005-install-missing-files-skip-redundant-files.patch
@@ -101,10 +98,6 @@ prepare() {
   patch --strip=1 --ignore-whitespace <${srcdir}/001-libsvgfill.patch
   popd
   sed -i src/ifcwrap/CMakeLists.txt -e 's|libsvgfill|svgfill|g'
-  sed -i 's|AABB_traits|AABB_traits_3|g' \
-    src/ifcconvert/validate_space_boundaries.cpp \
-    src/ifcconvert/validation_utils.h \
-    src/ifcconvert/cityjson/global_execution_context.h
 }
 _build_pymodules() {
 
@@ -147,6 +140,7 @@ build() {
     -DCMAKE_BUILD_TYPE=None
     -DBUILD_SHARED_LIBS=ON
     -DGLTF_SUPPORT=ON
+    -DCOLLADA_SUPPORT=OFF
   )
   cmake "${CMAKE_ARGS[@]}"
 
