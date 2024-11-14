@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=bitwarden-bin
-pkgver=2024.10.2
+pkgver=2024.11.0
 pkgrel=1
 pkgdesc="A secure and free password manager for all of your devices."
 arch=('x86_64')
@@ -19,7 +19,7 @@ depends=(
 provides=("${pkgname%-bin}")
 conflicts=("${pkgname%-bin}")
 source=("https://github.com/bitwarden/clients/releases/download/desktop-v$pkgver/Bitwarden-$pkgver-amd64.deb")
-sha512sums=('101caa53e5a2bd50a9ade0d60a4e3b1a420c1d41891028115b8ffead5a8911f6e34f549231eeec6f522a61014f97556640384913587bc522435cfa7570f18aa0')
+sha512sums=('e6161f01a7238f337a13c92d67bcda602486f277016c2403e4e0a212e19b719bbae8fe0a05cf03dcc014572399498bb886a4e7ce79a7d1bc52d5297d27b06c8e')
 
 package() {
 	bsdtar xf data.tar.xz -C "$pkgdir"
