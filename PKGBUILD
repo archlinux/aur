@@ -10,7 +10,7 @@
 
 pkgname=ungoogled-chromium
 pkgver=131.0.6778.69
-pkgrel=1
+pkgrel=2
 _launcher_ver=8
 _manual_clone=1
 _system_clang=1
@@ -51,7 +51,7 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
         unbundle-icu-target.patch
         const-atomicstring-conversion.patch)
 sha256sums=('720a1196410080056cd97a1f5ec34d68ba216a281d9b5157b7ea81ea018ec661'
-            '68f51cd5666e16f578506c072ae595740237426a2447221e8bb1ef758404b578'
+            '84820f9d9167d0d3ef440d1ca32890ab3af9e0723b28b3151f7ce2d71d826dbe'
             '213e50f48b67feb4441078d50b0fd431df34323be15be97c55302d3fdac4483a'
             'b3de01b7df227478687d7517f61a777450dca765756002c80c4915f271e2d961'
             'd634d2ce1fc63da7ac41f432b1e84c59b7cceabf19d510848a7cff40c8025342'
