@@ -1,0 +1,4 @@
+[intentrace]
+source = "git"
+git = "https://github.com/sectordistrict/intentrace.git"
+prefix = "v"
