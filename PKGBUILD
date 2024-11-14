@@ -4,7 +4,7 @@
 
 pkgname=luola
 pkgver=1.3.2
-pkgrel=3
+pkgrel=4
 pkgdesc="A cavern-flying game for 1-4 players"
 arch=('i686' 'x86_64')
 license=('GPL')
@@ -21,6 +21,7 @@ md5sums=('029f48e8fb8d104e9634cf20c4493460'
 prepare() {
 	cd "$srcdir/$pkgname-$pkgver"
 	sed -i 's/^struct Pilot/typedef struct Pilot/' src/pilot.h
+	sed -i '28i #include <string.h>' tools/im_vwing.c
 }
 
 package() {
