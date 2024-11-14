@@ -6,20 +6,20 @@ _pkgname='denise'
 pkgdesc='Highly accurate C64/Amiga emulator - Git version'
 url='https://sourceforge.net/projects/deniseemu/'
 license=('GPL-3.0-or-later')
-pkgver=r1796.0c7a30f
-pkgrel=2
-epoch=1
+pkgver=2.4.r32.g0c7a30f
+pkgrel=1
+epoch=2
 source=('git+https://bitbucket.org/piciji/denise.git')
 sha256sums=('SKIP')
 provides=('denise')
 conflicts=('denise-bin' 'denise')
 depends=('libpulse' 'openal' 'gtk3')
 makedepends=('git' 'cmake')
-arch=('i686' 'x86_64')
+arch=('x86_64')
 
 pkgver() {
   cd "$srcdir/$_pkgname"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+  git describe --tags --long --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
