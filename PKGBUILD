@@ -3,7 +3,7 @@
 
 pkgname=libtorch-cuda
 _name="${pkgname%%-cuda}"
-pkgver=2.4.1
+pkgver=2.5.1
 _ver=cu124
 pkgrel=1
 pkgdesc='PyTorch C++ API'
@@ -13,7 +13,7 @@ license=('BSD')
 provides=("${_name}")
 conflicts=("${_name}")
 source=("${_name}_${_ver}-${pkgver}.zip"::"https://download.pytorch.org/libtorch/${_ver}/libtorch-shared-with-deps-${pkgver}%2B${_ver}.zip")
-b2sums=('1d84546cdbe1c3b8a3bae114ec9cfd2866b7c4625c4abf8d2aa87b0f908c27fe82b0b28bdfe08ca35632693774c033c95d54ad2a54470e1f72a17b5b3120ef23')
+b2sums=('605b0030befe019549a8d08a9f5714e7b8f52018c57493474c069a27affdf69239594fa5cb70d6e23fb96be49e84c7a16ff3ab0544d77ff9b91869f987077133')
 options=(!strip libtool staticlibs !debug)
 
 package() {
