@@ -20,14 +20,17 @@ create_chroot_directory() {
 
 create_chroot_environment() {
     if [[ ! -d "$CHROOT/root" ]]; then
-        mkarchroot -M /etc/makepkg.conf "$CHROOT/root" base-devel
+        mkarchroot -M ~/.config/pacman/makepkg.conf "$CHROOT/root" base-devel
     fi
 }
 
 build_package(){
     arch-nspawn "$CHROOT/root" pacman -Syu
-    makechrootpkg -c -r "$CHROOT" -- -Asf .
-    makepkg --printsrcinfo >.SRCINFO
+    if makechrootpkg -c -r "$CHROOT" -- -Asf . ; then
+        makepkg --printsrcinfo >.SRCINFO
+    else
+        delete_chroot_environment && echo -e "\n\e[1;31m==> BUILD FAILED: \e[1;37m$CHROOT removed\e[0m " && exit 1
+    fi
 }
 
 sign_package(){
@@ -41,6 +44,7 @@ delete_chroot_environment() {
             sudo btrfs subvolume delete "$CHROOT/root/var/lib/portables"
             sudo btrfs subvolume delete "$CHROOT/root/var/lib/machines"
             sudo btrfs subvolume delete "$CHROOT/root"
+            sudo rm -Rf $CHROOT
         } >>/dev/null 2>&1
     elif [ "$(stat -f --format=%T "$CHROOT")" == "tmpfs" ]; then
         sudo umount -f $CHROOT
@@ -54,8 +58,5 @@ create_chroot_environment
 build_package
 sign_package
 delete_chroot_environment
-
-shopt -s extglob
-rm -Rf -- !(keys)/ *.log *.gz
 
 # vim: set ts=4 sw=4 et:
