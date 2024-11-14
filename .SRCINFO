@@ -1,0 +1,25 @@
+pkgbase = ugm-bin
+	pkgdesc = A terminal based UNIX user and group browser
+	pkgver = 1.6.0
+	pkgrel = 1
+	url = https://github.com/ariasmn/ugm
+	arch = x86_64
+	arch = i686
+	arch = aarch64
+	license = MIT
+	makedepends = help2man
+	depends = glibc
+	provides = ugm
+	conflicts = ugm
+	source = LICENSE-1.6.0::https://raw.githubusercontent.com/ariasmn/ugm/v1.6.0/LICENSE
+	source = README-1.6.0.md::https://raw.githubusercontent.com/ariasmn/ugm/v1.6.0/README.md
+	sha256sums = f948894f617a6490d2ad9c84673cc1b1fb746ba0d08b263046c9ca78a9d60b8d
+	sha256sums = 8deecbb70d79901cd0ad6f66ac76c645f23a12d4188f3fc7f0386bbeadbf1c73
+	source_x86_64 = ugm-1.6.0-x86_64::https://github.com/ariasmn/ugm/releases/download/v1.6.0/ugm_1.6.0_linux_amd64
+	sha256sums_x86_64 = 13fa663ed5fd1e7ba1d3de8866809fc06e20dad8432032264ef82c3a1a91d2fc
+	source_i686 = ugm-1.6.0-i686::https://github.com/ariasmn/ugm/releases/download/v1.6.0/ugm_1.6.0_linux_386
+	sha256sums_i686 = f68c38cb407d3f874b2a516f340b2f23efbbf06ea12f288eb2e76516fbf2cb03
+	source_aarch64 = ugm-1.6.0-aarch64::https://github.com/ariasmn/ugm/releases/download/v1.6.0/ugm_1.6.0_linux_arm64
+	sha256sums_aarch64 = e779922cea6cc14ecb5d21d4e41005c844178f0ca74abfd97fb742d06641e436
+
+pkgname = ugm-bin
