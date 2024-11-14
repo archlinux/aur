@@ -1,11 +1,11 @@
 # Maintainer: Alexis BRENON <brenon.alexis+arch at gmail dot com>
 pkgname=sweethome3d-textures-contributions
-pkgver=1.3
+pkgver=1.3.1
 pkgrel=2
 pkgdesc="Free textures advertised on SweetHome3D website"
 arch=('any')
 url="http://www.sweethome3d.com/importTextures.jsp"
-license=("custom:CC-BY")
+license=("CC-BY-3.0")
 optdepends=("sweethome3d: Models rendering"
 "sweethome3d-3dmodels-blendswap-cc0: More 3D models"
 "sweethome3d-3dmodels-blendswap-ccby: More 3D models"
@@ -17,8 +17,8 @@ optdepends=("sweethome3d: Models rendering"
 "sweethome3d-3dmodels-trees: More 3D models"
 "sweethome3d-textures-scopia: More textures")
 install="$pkgname.install"
-source=("http://prdownloads.sourceforge.net/sweethome3d/Textures-Contributions-1.3.zip")
-sha1sums=("dcc66b950dedb60863cea793c292ab86eb88cc17")
+source=("http://prdownloads.sourceforge.net/sweethome3d/Textures-Contributions-1.3.1.zip")
+sha1sums=("99adeb37de2d8aa8775c5156ecf1693a9f28b9aa")
 
 package() {
     mkdir -p $pkgdir/usr/share/eteks/sweethome3d/textures/textures-contributions
