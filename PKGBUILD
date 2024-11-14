@@ -32,8 +32,8 @@ sha256sums=('ef9dc27b075e00698f7322c8b729b769548aeeb7833573d30563e9a530df38eb'
             '20ec09cb6a0938212df8dabf5509f595f8f7c0f73394dbee3bf6b77f84509a6e'
             '059e68054efc84a19644366a3006c0501ac75cc5d5db9e2a3b8fac476bac3d8c'
             '250551acd0680c5ea1082803341524316a461c21e3576daa2da666fcd9c71f0c'
-            '66e6282814e485fdd38b7ad5cb0c4d20abf2965db749e5f58f7a884fb0cd8b63'
-            '71712a0738f0f2c7a4404325cf19a9395e8b49cf319c1c3ca22ee21b728f37ad')
+            '2c5e488e2ec6231eb8028f2e0438b3cca21057bbeb9ab8f73fa3926087d7de40'
+            '1071efb65cfd86dae0a854242a755bf340ef5cb0e4a7c76ef09c653b73b9e94d')
 #validpgpkeys=()
 build() {
     mkdir -pv ${srcdir}/reader-server-${pkgver}
