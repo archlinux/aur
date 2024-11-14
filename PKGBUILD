@@ -1,4 +1,5 @@
-# Maintainer: Dimitris Kiziridis <ragouel at outlook dot com>
+# Maintainer: Jonas Nydahl <nydahl98 at gmail dot com>
+# Contributor: Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=moonpanoramamaker
 pkgver=1.0.1
@@ -33,8 +34,8 @@ package() {
   install -Dm644 "${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
   install -d "${pkgdir}/usr/bin"
   ln -s /opt/MoonPanoramaMaker/MoonPanoramaMaker "${pkgdir}/usr/bin/moonpanoramamaker"
-  install -Dm644 MoonPanoramaMaker/MoonPanoramaMaker_User-Guide.pdf "${pkgdir}/usr/share/doc/${pkgname}"
-  convert -verbose MoonPanoramaMaker/MoonPanoramaMaker.jpg moonpanoramamaker.png
+  install -Dm644 ${pkgdir}/opt/MoonPanoramaMaker/MoonPanoramaMaker_User-Guide.pdf "${pkgdir}/usr/share/doc/${pkgname}"
+  magick -verbose ${pkgdir}/opt/MoonPanoramaMaker/MoonPanoramaMaker.jpg moonpanoramamaker.png
   install -Dm644 moonpanoramamaker.png -t "${pkgdir}/usr/share/pixmaps/"
   chown -R root:root "${pkgdir}"
   rm "${pkgdir}/opt/MoonPanoramaMaker/MoonPanoramaMaker_User-Guide.pdf"
