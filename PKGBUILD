@@ -1,7 +1,7 @@
 # Contributor: Sam Day <me@samcday.com>
 
 pkgname=dnf5
-pkgver=5.2.6.2
+pkgver=5.2.7.0
 pkgrel=1
 pkgdesc="Next-generation RPM package management system"
 arch=('x86_64')
@@ -22,7 +22,7 @@ backup=('etc/dnf/dnf.conf'
         'etc/dnf/libdnf5-plugins/actions.conf')
 options=('!emptydirs')
 source=("$url/archive/$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('3e23f517852fba7c3bdebc9c90f34d34a3b1e901a2e74af0d666159d80613605')
+sha256sums=('8e7972c94ad8a2d2144411bbecb8ac59c36bc0c3d5ad8f215d57048e3f37f32f')
 
 build() {
 	cd "$pkgname-$pkgver"
