@@ -2,7 +2,7 @@
 
 pkgname=regexxer
 pkgver=0.10
-pkgrel=11
+pkgrel=12
 pkgdesc='Interactive search and replace tool for GNOME'
 arch=(x86_64)
 url='https://regexxer.sourceforge.net/'
@@ -16,6 +16,7 @@ depends=(
   glibmm
   gtk3
   gtkmm3
+  gtksourceview4
   gtksourceviewmm
   hicolor-icon-theme
   libsigc++
@@ -27,10 +28,12 @@ makedepends=(
 )
 source=(
   "git+https://gitlab.gnome.org/Archive/$pkgname.git#tag=$pkgname-$pkgver"
+  regexxer-gtksourceviewmm4.patch
   regexxer.appdata.xml
 )
 b2sums=(
   9192c07e2152d87a2b36fa077981d62dc48138775578fb2c23593a9aa8529b5552138e503be82252904551747dbf4425b50ebcc3b285574977a73c6fe2365318
+  8465c61df06c830264eea9b1624bc957ff00c61f818d6b5d36cc70b659415cd66d5651c2249f9be3caf5204e66d372beb57a2a719101df09bedfd970fc02000d
   1b8878c5fbfaccefd3f1157e9905b8e7cc022c9e5def6aa22b7f9dc06b8cad8b632962bf1aac1da763bedee702e14d373119ac66e2f9c07bde22beb9097086a3
 )
 
@@ -45,6 +48,9 @@ prepare() {
 
   # Don't try to compile GSettings schemas when packaging
   sed -i '/GLIB_COMPILE_SCHEMAS/ d' Makefile.am
+
+  # Port to gtksourceviewmm4
+  git apply -3 ../regexxer-gtksourceviewmm4.patch
 
   autoreconf -fi
 }

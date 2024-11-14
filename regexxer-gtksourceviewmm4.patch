@@ -1,0 +1,44 @@
+From cd5c1834d0018040df57a540eaf3eefe926b1c8b Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Ball=C3=B3=20Gy=C3=B6rgy?= <ballogyor@gmail.com>
+Date: Thu, 14 Nov 2024 03:51:01 +0100
+Subject: [PATCH] Port to gtksourceviewmm4
+
+---
+ configure.ac      | 2 +-
+ src/mainwindow.cc | 7 +++++--
+ 2 files changed, 6 insertions(+), 3 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index 0dcf4d8..8f8a7d8 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -37,7 +37,7 @@ AM_GLIB_GNU_GETTEXT
+ 
+ PKG_CHECK_MODULES([REGEXXER_MODULES],
+                   [gtkmm-3.0 >= 3.0.0 glibmm-2.4 >= 2.27.94
+-                  gtksourceviewmm-3.0 >= 2.91.5])
++                  gtksourceviewmm-4.0 >= 2.91.5])
+ 
+ DK_PKG_PATH_PROG([GDK_PIXBUF_CSOURCE], [gdk-pixbuf-2.0], [gdk-pixbuf-csource])
+ DK_PKG_PATH_PROG([GTK_UPDATE_ICON_CACHE], [gtk+-2.0], [gtk-update-icon-cache])
+diff --git a/src/mainwindow.cc b/src/mainwindow.cc
+index 2596f5a..3ae1256 100644
+--- a/src/mainwindow.cc
++++ b/src/mainwindow.cc
+@@ -248,8 +248,11 @@ void MainWindow::initialize(const InitState& init)
+   textview_->set_show_line_numbers(settings->get_boolean(conf_key_show_line_numbers));
+   textview_->set_highlight_current_line(settings->get_boolean(conf_key_highlight_current_line));
+   textview_->set_auto_indent(settings->get_boolean(conf_key_auto_indentation));
+-  textview_->set_draw_spaces(static_cast<Gsv::DrawSpacesFlags>
+-                              (settings->get_flags(conf_key_draw_spaces)));
++
++  GtkSourceSpaceDrawer* space_drawer = gtk_source_view_get_space_drawer(textview_->gobj());
++  gtk_source_space_drawer_set_types_for_locations(space_drawer, GTK_SOURCE_SPACE_LOCATION_ALL,
++                                                   static_cast<GtkSourceSpaceTypeFlags>(settings->get_flags(conf_key_draw_spaces)));
++  gtk_source_space_drawer_set_enable_matrix(space_drawer, TRUE);
+ 
+   std::string folder;
+ 
+-- 
+2.47.0
+
