@@ -1,6 +1,6 @@
 pkgbase = goodvibes-git
 	pkgdesc = Lightweight internet radio player
-	pkgver = 0.7.6.r159.g539bf0f
+	pkgver = 0.8.1.r3.g8486def
 	pkgrel = 1
 	url = https://gitlab.com/goodvibes/goodvibes
 	arch = i686

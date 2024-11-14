@@ -1,7 +1,7 @@
 # Contributor: Étienne Deparis <etienne@depar.is> (stable goodvibes AUR pkg)
 
 pkgname=goodvibes-git
-pkgver=0.7.6.r159.g539bf0f
+pkgver=0.8.1.r3.g8486def
 pkgrel=1
 pkgdesc="Lightweight internet radio player"
 arch=('i686' 'x86_64')
