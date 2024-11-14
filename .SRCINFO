@@ -1,7 +1,7 @@
 pkgbase = prm
 	pkgdesc = Pull Request Manager for Maintainers
-	pkgver = 3.5.1
-	pkgrel = 3
+	pkgver = 3.6.0
+	pkgrel = 1
 	url = https://ldez.github.io/prm/
 	arch = x86_64
 	arch = i686
@@ -12,8 +12,8 @@ pkgbase = prm
 	makedepends = go
 	depends = git
 	provides = prm
-	source = prm-v3.5.1.tar.gz::https://github.com/ldez/prm/archive/refs/tags/v3.5.1.tar.gz
-	sha512sums = 0841ce762b70fcc987371f1237ed9cc595afa4b5cb0be876f28c05f2076639f69224d5a16bd06b1da2158ebf001c62c5119dceb9e5252f5f2d358c53fe1585a6
-	b2sums = a51fed40b370fe206acc78bd1e960298aa15ed414750f5952cdb85f7e22920da9a49bda84241ca8b25d20fdeb330aff031166f5f09f1d6786e411024423386f2
+	source = prm-v3.6.0.tar.gz::https://github.com/ldez/prm/archive/refs/tags/v3.6.0.tar.gz
+	sha512sums = 4413e5188a92717c88326435c6f7624a6c4d9f6c1ac47f0099ad84197564a6b1776296d3002f73f84acd1e23d93793ba890f6351d93838853fcf14b4e9ea1cc1
+	b2sums = 21275aa2eb01b9defeb3cbb2d152eb9544078657c2c21b9044ae00581b5a15c4f472bcf3e4e32d94943925217a3898b0096262d3983355648f65b3b70206fed5
 
 pkgname = prm
