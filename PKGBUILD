@@ -2,8 +2,8 @@
 
 pkgname=python-115
 _name=${pkgname//-/_}
-pkgver=0.0.9.8.6
-pkgrel=0
+pkgver=0.0.9.8.7
+pkgrel=1
 epoch=
 pkgdesc="Python wrapper for 115 webdisk."
 arch=('any')
@@ -27,7 +27,7 @@ makedepends=(
 options=('!strip')
 source=("${_name}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 noextract=()
-sha256sums=('b50ebc3a6907ac2b4df8b8b97bcafe287ba545961d4882bde6062ae36914b56e')
+sha256sums=('023a0315993bdf0303b4d214c74b65d1e68418a56a35fa8e32c05d376dce3382')
 
 build() {
     cd "${srcdir}/${_name}-${pkgver}"
