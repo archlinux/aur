@@ -3,8 +3,9 @@
 pkgname=qefientrymanager-git
 _pkgname=${pkgname%-git}
 _srcname=QEFIEntryManager
-pkgver=0.3.0.r16.g645d5ce
+pkgver=0.3.1.1.r0.g0d8e013
 pkgrel=1
+epoch=1
 pkgdesc="A userspace cross-platform EFI boot entry management GUI App based on Qt"
 arch=('x86_64' 'aarch64' 'riscv64')
 url="https://github.com/Inokinoki/${_srcname}"
@@ -22,7 +23,7 @@ sha256sums=('SKIP'
 
 pkgver() {
 	cd "${_srcname}/"
-	git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/v.//'
+	git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/v//;s/_/./'
 }
 
 prepare() {
