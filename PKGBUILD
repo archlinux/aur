@@ -29,12 +29,12 @@ prepare() {
 }
 
 build() {
-    cd "$srcdir/library-converter"
+    cd "$srcdir/$pkgname"
 	pkg main.js --target node22-linux-x64
 }
 
 package() {
-    cd "$srcdir/library-converter"
+    cd "$srcdir/$pkgname"
 	sudo cp main /usr/bin/library-converter
 }
 
