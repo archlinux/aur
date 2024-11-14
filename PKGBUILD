@@ -3,7 +3,7 @@
 pkgname=bruno-git
 _pkgname=bruno
 pkgdesc="Opensource API Client for Exploring and Testing APIs"
-pkgver=1.33.0.r0.gdce96e0f
+pkgver=1.34.2.r2.g40001949
 pkgrel=1
 arch=('x86_64')
 url="https://www.usebruno.com/"
@@ -56,6 +56,9 @@ prepare() {
     sed -i -e 's/"husky":.*//g' -e 's/"husky install"/"true"/g' package.json
 
     npm install --cache "${srcdir}/npm-cache"
+
+    npm install electron-builder --save-dev --cache "${srcdir}/npm-cache"
+    npm install node-addon-api --save-dev --cache "${srcdir}/npm-cache"
 }
 
 build() {
