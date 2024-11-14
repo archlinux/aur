@@ -2,7 +2,7 @@
 pkgname=sirikali
 _name=SiriKali
 pkgver=1.7.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A Qt/C++ GUI front end to sshfs, ecryptfs-simple, cryfs, gocryptfs, securefs, fscrypt and encfs"
 arch=('i686' 'x86_64' 'aarch64')
 url="https://mhogomchungu.github.io/sirikali/"
