@@ -7,6 +7,10 @@
 
 Musoq lets you use SQL-like queries on files, directories, images and other data sources without a database. It's designed to simplify data analysis for developers and IT professionals.
 
+## 🚀 Quick Start
+
+To try out Musoq, follow the instructions in [CLI repository](https://github.com/Puchaczov/Musoq.CLI).
+
 ## 🌟 Key Features
 
 - Query files and directories using familiar SQL-like syntax
@@ -28,22 +32,48 @@ Musoq is designed to simplify data querying across various sources using SQL-lik
 - Handling small to medium-sized datasets efficiently
 
 ### 🤔 Consider Alternatives If You Need:
-- Full SQL standard compliance (we prioritize user-friendly syntax over strict standards)
+- Full SQL standard compliance (I prioritize user-friendly syntax over strict standards)
 - High-performance processing of large datasets
 - A mature, unchanging API
 
-### 🤝 Community:
+### 🤝 Community
 - Your feedback and contributions are welcome to shape the project's future
 
 If Musoq aligns with your needs, I'm excited to have you on board! If not, I appreciate your interest and welcome any suggestions for improvement.
 
-## 🚀 Quick Start
+## 📑 Documentation
 
-To try out Musoq, follow the instructions in our [CLI repository](https://github.com/Puchaczov/Musoq.CLI).
+Look at the documentation for Musoq at https://puchaczov.github.io/Musoq/. What's inside: 
+
+- How to run this tool
+- Practical examples
+- Available Tables & Methods
 
 ## 💡 Where To Use It
 
 Musoq might be using in various places, including:
+
+### ⎇ Git analysis
+
+```sql
+-- How many commits does the repositroy have
+select
+    Count(1) as CommitsCount
+from #git.repository('D:\repos\efcore') r
+cross apply r.Commits c
+group by 'fake'
+
+-- Top 10 authors by number of commits
+select
+    c.AuthorEmail,
+    Count(c.Sha) as CommitCount
+from #git.repository('/path/to/repo') r
+cross apply r.Commits c
+group by c.AuthorEmail
+having Count(c.Sha) > 10
+order by Count(c.Sha) desc
+take 10
+```
 
 ### 🧮 Solution analysis
 
