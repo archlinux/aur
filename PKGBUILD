@@ -60,7 +60,7 @@ _firmware=(
 )
 
 pkgver() {
-	local date=$(curl -s https://foo2zjs.linkevich.net | grep 'Current\ version' | awk '{print $3}')
+	local date=$(curl -s https://foo2zjs.linkevich.net | grep 'Current version' | awk '{print $3}')
 	if ! [[ "$date" ]]; then
 		error "Could not extract package last modification date '$date', please report this to the maintainer"
 		return 1
