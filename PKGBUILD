@@ -1,7 +1,7 @@
 # Maintainer: Tobias Bachmann <tobachmann@gmx.de>
 pkgname=python-indexed-gzip
 pkgver=1.8.8
-pkgrel=1
+pkgrel=2
 pkgdesc="Drop-in replacement for the built-in python gzip.GzipFile class (IndexedGzipFile); written to allow fast random access of compressed NIfTI files"
 _name=indexed_gzip
 arch=('x86_64')
@@ -9,7 +9,7 @@ url="https://github.com/pauldmccarthy/indexed_gzip"
 license=('ZLIB')
 groups=()
 depends=('python' 'cython')
-makedepends=('python-wheel' 'python-build' 'python-installer')
+makedepends=('python-wheel' 'python-build' 'python-installer' 'python-setuptools')
 provides=()
 conflicts=()
 replaces=()
