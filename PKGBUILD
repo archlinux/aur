@@ -2,7 +2,7 @@
 
 _name=repod
 pkgname=nextcloud-app-repod
-pkgver=3.4.0
+pkgver=3.4.1
 pkgrel=1
 pkgdesc="Podcast manager for Nextcloud"
 arch=(any)
@@ -13,8 +13,8 @@ makedepends=(nextcloud yq)
 groups=(nextcloud-apps)
 options=(!strip)
 source=($pkgname-$pkgver.tar.gz::$url/releases/download/$pkgver/$_name.tar.gz)
-sha256sums=('920697a276dbf55b91aa08ab959fcc3911710242ded595d8959bba1d19e574b2')
-b2sums=('71f2f70707c7e2650e697a308a3e31fc9b66b5cedfa73124993ff5baf1f6ce36d9dcc5f24940b8012b295b4076c072beb75ff75abd5f45de8697693b5f88dedb')
+sha256sums=('4573102afa189a084a151300f163ab5f216b2b1e591051cacd9d0857597c79ff')
+b2sums=('9ca4d523e170fca828e553e8531b81a832520bf28882867bf07b34b7b1434df1f57769caac86294ff13ca40b80135232bc5f83adee243f7adac127b94d07e529')
 
 # BEGIN boilerplate nextcloud app version clamping, see also other packages in group
 # 1. Call respective function helpers in check() and package() *after* cd'ing to the source directory
