@@ -1,5 +1,5 @@
-pkg/
-src/
-ntfy/
-*.tar.gz
-*.tar.xz
+*
+
+!.gitignore
+!.SRCINFO
+!PKGBUILD
