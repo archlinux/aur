@@ -187,7 +187,7 @@ package_luanti-modern-common() {
     install -d "${pkgdir}"/usr/share/luanti
     install -Dm644 LICENSE.txt "${pkgdir}/usr/share/licenses/luanti/LICENSE.txt"
     cp -r games builtin client fonts textures "${pkgdir}"/usr/share/luanti/
-    cp -r "${srcdir}/build_luanti-client/locale" "${pkgdir}/usr/share/luanti/"
+    cp -r "${srcdir}/build_luanti-modern-client/locale" "${pkgdir}/usr/share/luanti/"
 }
 
 
