@@ -1,4 +1,5 @@
 [helm-synth]
-source = "git"
-git = "https://github.com/mtytel/helm.git"
+source = "github"
+github = "mtytel/helm"
+use_latest_tag = true
 prefix = "v"
