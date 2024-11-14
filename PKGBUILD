@@ -3,7 +3,7 @@
 
 pkgname=tuxpaint-git
 _pkgname=tuxpaint
-pkgver=0.9.24.r2171.g5de3c87
+pkgver=0.9.34.r0.g5de3c87
 pkgrel=1
 arch=(i686 x86_64 aarch64)
 pkgdesc="A free drawing program designed for young children. Checkout from git"
@@ -26,8 +26,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "${_pkgname}"
-
-  git describe --long --abbrev=7 | sed 's/^tuxpaint-//;s/_/./g;s/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --tags --long --abbrev=7 | cut -f2,6,7 -d- | sed 's/\([^-]*-g\)/r\1/;s/[-_]/./g'
 }
 
 prepare() {
