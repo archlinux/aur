@@ -24,19 +24,17 @@ noextract=()
 md5sums=('SKIP') #generate with 'makepkg -g'
 
 prepare() {
+    cd "$srcdir/library-converter" 
     npm install
 	sudo npm install @yao-pkg/pkg
 }
 
 build() {
-    cd "$srcdir/$pkgname"
+    cd "$srcdir/library-converter"
 	pkg main.js --target node22-linux-x64
 }
 
 package() {
-    cd "$srcdir/$pkgname"
+    cd "$srcdir/library-converter"
 	sudo cp main /usr/bin/library-converter
 }
-
-# cd "$srcdir/$pkgname-$pkgver"
-# make DESTDIR="$pkgdir/" install
