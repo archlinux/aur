@@ -1,0 +1,5 @@
+[tubeup]
+source = "github"
+github = "bibanon/tubeup"
+use_max_tag = true
+prefix = "v"
