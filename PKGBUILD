@@ -1,38 +1,35 @@
-# Maintainer: Daniel Milde <daniel@milde.cz>
-# Contributor: Daniel Pereira <daniel@garajau.com.br>
-# Contributor: Florian Mounier aka paradoxxxzero <paradoxxx.zero@gmail.com>
-# Contributor: Michael Schubert <mschu.dev at gmail>
+# Maintainer: Darkest Medium <darkestmedium@gmail.com>
 
-_reponame=gnome-shell-system-monitor-applet
 pkgname=gnome-shell-extension-system-monitor-git
-pkgver=1160.b359d88
+extensionname=system-monitor
+pkgver=47.0.74.gfde934f
 pkgrel=1
-pkgdesc="System monitor extension for Gnome-Shell (display mem swap cpu usage)"
-arch=('any')
-url="http://github.com/paradoxxxzero/gnome-shell-system-monitor-applet"
-license=('GPL3')
-depends=('gnome-shell>=3.10' 'libgtop' 'networkmanager')
-makedepends=('git')
-provides=("system-monitor-applet" "gnome-shell-system-monitor-applet-git")
-replaces=("gnome-shell-system-monitor-applet-git")
-conflicts=("gnome-shell-system-monitor-applet-git")
-install="gschemas.install"
-source=('git+https://github.com/paradoxxxzero/gnome-shell-system-monitor-applet.git')
-sha256sums=('SKIP')
+pkgdesc="Shows system usage information in the top bar."
+arch=("any")
+url="https://extensions.gnome.org/extension/6807/system-monitor/"
+license=("GPL-2.0-or-later")
+depends=("gnome-shell")
+makedepends=("git" "glib2" "meson" "ninja")
+source=("git+https://gitlab.gnome.org/GNOME/gnome-shell-extensions.git")
+sha256sums=("SKIP")
 
-package() {
-  cd "$srcdir/$_reponame"
-
-  # Install the extension
-  install -d "$pkgdir/usr/share/gnome-shell/extensions/"
-  cp -R "system-monitor@paradoxxx.zero.gmail.com" "$pkgdir/usr/share/gnome-shell/extensions"
-
-  # Install the gschema
-  install -d "$pkgdir/usr/share/glib-2.0/schemas"
-  install -m 644 "system-monitor@paradoxxx.zero.gmail.com/schemas/org.gnome.shell.extensions.system-monitor.gschema.xml" "$pkgdir/usr/share/glib-2.0/schemas/"
+# Automatically update pkgver based on latest Git commit
+pkgver() {
+	cd "${srcdir}/gnome-shell-extensions"
+	git describe --tags | sed 's/^v//;s/-/./g'
 }
 
-pkgver() {
-  cd $_reponame
-  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+build() {
+	cd "${srcdir}/gnome-shell-extensions"
+	# Configure meson to build only the desired extension
+	meson setup build --prefix=/usr \
+		-Denable_extensions="${extensionname}"
+	meson compile -C build
+}
+
+package() {
+	cd "${srcdir}/gnome-shell-extensions"
+	meson install -C build --destdir "${pkgdir}"
+	# Remove shared localization files to avoid conflicts with other shell-extensions
+	rm -rf "${pkgdir}/usr/share/locale"/*
 }

@@ -1,20 +1,16 @@
 pkgbase = gnome-shell-extension-system-monitor-git
-	pkgdesc = System monitor extension for Gnome-Shell (display mem swap cpu usage)
-	pkgver = 1160.b359d88
+	pkgdesc = Shows system usage information in the top bar.
+	pkgver = 47.0.74.gfde934f
 	pkgrel = 1
-	url = http://github.com/paradoxxxzero/gnome-shell-system-monitor-applet
-	install = gschemas.install
+	url = https://extensions.gnome.org/extension/6807/system-monitor/
 	arch = any
-	license = GPL3
+	license = GPL-2.0-or-later
 	makedepends = git
-	depends = gnome-shell>=3.10
-	depends = libgtop
-	depends = networkmanager
-	provides = system-monitor-applet
-	provides = gnome-shell-system-monitor-applet-git
-	conflicts = gnome-shell-system-monitor-applet-git
-	replaces = gnome-shell-system-monitor-applet-git
-	source = git+https://github.com/paradoxxxzero/gnome-shell-system-monitor-applet.git
+	makedepends = glib2
+	makedepends = meson
+	makedepends = ninja
+	depends = gnome-shell
+	source = git+https://gitlab.gnome.org/GNOME/gnome-shell-extensions.git
 	sha256sums = SKIP
 
 pkgname = gnome-shell-extension-system-monitor-git
