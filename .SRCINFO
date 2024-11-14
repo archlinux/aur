@@ -1,6 +1,6 @@
 pkgbase = r2modman-appimage
 	pkgdesc = A simple and easy to use mod manager for several Unity games using Thunderstore.
-	pkgver = 3.1.52
+	pkgver = 3.1.53
 	pkgrel = 1
 	url = https://github.com/ebkr/r2modmanPlus
 	arch = x86_64
@@ -11,9 +11,9 @@ pkgbase = r2modman-appimage
 	provides = r2modman
 	options = !strip
 	options = !debug
-	source = https://github.com/ebkr/r2modmanPlus/releases/download/v3.1.52/r2modman-3.1.52.AppImage
+	source = https://github.com/ebkr/r2modmanPlus/releases/download/v3.1.53/r2modman-3.1.53.AppImage
 	source = r2modman.desktop
-	sha256sums = 55b8adefe9f3682b6f02550869ff965e7b574ec05edca51a37aaec2fd79b6865
+	sha256sums = 9cf9a51f11152ad9530a4e1dab1762bc04e6d78cc660ad3e9045ab7de18a6116
 	sha256sums = 3e14229ab6f1d04da82dfb9c941de696f4936ad9694b3acf616fb04dcb6f54e9
 
 pkgname = r2modman-appimage
