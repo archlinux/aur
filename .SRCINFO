@@ -1,0 +1,27 @@
+pkgbase = linuxqq-bin
+	pkgdesc = New Linux QQ based on Electron
+	pkgver = 3.2.13_29456
+	pkgrel = 1
+	url = https://im.qq.com/linuxqq-bin
+	arch = x86_64
+	arch = aarch64
+	arch = loong64
+	license = LicenseRef-QQ
+	depends = nss
+	depends = alsa-lib
+	depends = gtk3
+	depends = gjs
+	depends = at-spi2-core
+	depends = libvips
+	depends = openjpeg2
+	depends = openslide
+	optdepends = libappindicator-gtk3: Allow QQ to extend a menu via Ayatana indicators in Unity, KDE or Systray (GTK+ 3 library).
+	conflicts = linuxqq-bin-nt-bwrap
+	options = !strip
+	options = !debug
+	source = linuxqq.sh
+	sha512sums = f463c5cb3323b86d9ea312d75f1e53d064885dabde2d1d6a554e083e15b5ff7fc548a96670284e5e996456c7a2ce4a25e9acb80bf48459ea47a8813d62203cb4
+	source_x86_64 = https://dldir1.qq.com/qqfile/qq/QQNT/e379390a/linuxqq_3.2.13-29456_amd64.deb
+	sha512sums_x86_64 = ed5270344ffdb002e3bfbbc2ca7453d04817193caae3e00383f93fa52c665682c5911f7d4ca1525f632cd26ebef653a49400be680150ddbdc29e381d33104791
+
+pkgname = linuxqq-bin
