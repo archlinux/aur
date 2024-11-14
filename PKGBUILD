@@ -1,8 +1,8 @@
 # Maintainer: Fernandez Ludovic <lfernandez dot dev at gmail dot com>
 
 pkgname='gcg'
-pkgver=1.7.8
-pkgrel=2
+pkgver=1.7.11
+pkgrel=1
 pkgdesc='A GitHub Changelog Generator. '
 url='https://github.com/ldez/gcg'
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
@@ -16,16 +16,16 @@ _basedownloadurl="${url}/releases/download/v${pkgver}"
 _basearchive="${pkgname}_v${pkgver}_linux"
 
 source_x86_64=("${_basedownloadurl}/${_basearchive}_amd64.tar.gz")
-sha256sums_x86_64=('e2cd77550bed8890066e2a0eb6f8ad43f5c4400b7e71bff6b027460a603a3128')
+sha256sums_x86_64=('7d9d29e0781b6c7b5384ce766315333de8d735acb57b8620bb01d50650bd8d04')
 
 source_i686=("${_basedownloadurl}/${_basearchive}_386.tar.gz")
-sha256sums_i686=('4472919e75e4e4e946069ac2358ffc46ebe9b2576ac7c5d77dbad2ab5f56e3f8')
+sha256sums_i686=('05f75f9938ac6184551234e3026695faa5df4cde47e8243635f0d0cff43f69f7')
 
 source_armv7h=("${_basedownloadurl}/${_basearchive}_armv7.tar.gz")
-sha256sums_armv7h=('f205ce7ccc23ca4ddd4b4dab139ab8cf9fc2684ef2e9db761cf586dfe756dfc8')
+sha256sums_armv7h=('ca80a463d459b399a9f4361196ec39edde96b7b119e44b44cc157db24c0a3d51')
 
 source_aarch64=("${_basedownloadurl}/${_basearchive}_arm64.tar.gz")
-sha256sums_aarch64=('46d825abba95cb9679f560277da3e7acab059075b89bd105539e19b4bdf1c9a7')
+sha256sums_aarch64=('330e99a5080049f279dd0d4507e5df851c65ed81b4d7f6f5c857126441e6a282')
 
 package() {
 	# Bin
