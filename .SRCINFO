@@ -1,0 +1,18 @@
+pkgbase = yr
+	pkgdesc = Get the weather delivered to your command-line, or use as a Go package
+	pkgver = 0.0.6
+	pkgrel = 1
+	url = https://git.sr.ht/~timharek/yr
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	arch = aarch64
+	license = GPL-3.0-only
+	makedepends = go
+	depends = glibc
+	options = strip
+	options = buildflags
+	source = yr-0.0.6.tar.gz::https://git.sr.ht/~timharek/yr/archive/v0.0.6.tar.gz
+	sha256sums = 97d5556582728b38e4e629dfc4515579e9f933596f41607e7a4addc3a5f8a9ad
+
+pkgname = yr
