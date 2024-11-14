@@ -69,7 +69,7 @@ pre_install() {
 
 
 prepare() {
-    install -d build_luanti-{client,server}
+    install -d build_luanti-modern-{client,server}
     mv minetest-${pkgver} luanti-${pkgver} # The extracted package is still named `minetest-...`
 }
 
