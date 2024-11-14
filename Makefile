@@ -1,6 +1,9 @@
 srcinfo: PKGBUILD
 	makepkg --printsrcinfo > .SRCINFO
 
+sums: PKGBUILD .SRCINFO
+	makepkg --geninteg
+
 build: PKGBUILD .SRCINFO
 	make srcinfo
 	makepkg --cleanbuild --force

@@ -31,6 +31,7 @@ conventional_commits = false
 commit_parsers = [
   { message = "^Add", group = "Added" },
   { message = "^Support", group = "Added" },
+  { message = "^Update", group = "Added" },
   { message = "^Remove", group = "Removed" },
   { message = "^Delete", group = "Removed" },
   { message = "^Test", group = "Fixed" },
