@@ -1,4 +1,4 @@
-pkgbase = ddev-bin
+pkgbase = ddev-test-bin
 	pkgdesc = DDEV: a local web development environment
 	pkgver = 1.23.5
 	pkgrel = 1
