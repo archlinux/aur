@@ -1,6 +1,6 @@
 pkgbase = hardware-audio-processing-git
 	pkgdesc = Valve Hardware Audio Processing
-	pkgver = 0.55.r0.g44a66e8
+	pkgver = 0.56.r2.g024e0d1
 	pkgrel = 1
 	url = https://gitlab.com/evlaV/valve-hardware-audio-processing
 	arch = x86_64
@@ -21,6 +21,12 @@ pkgbase = hardware-audio-processing-git
 	depends = noise-suppression-for-voice
 	source = git+https://gitlab.com/evlaV/valve-hardware-audio-processing.git
 	source = 001-lib64-ladspa.patch
+	source = 002-confdir.patch
+	source = pipewire-workaround.service
+	source = wireplumber-workaround.service
+	b2sums = SKIP
+	b2sums = SKIP
+	b2sums = SKIP
 	b2sums = SKIP
 	b2sums = SKIP
 

@@ -1,7 +1,7 @@
 _pkgname=hardware-audio-processing
 _reponame=valve-$_pkgname
 pkgname=${_pkgname}-git
-pkgver=0.55.r0.g44a66e8
+pkgver=0.56.r2.g024e0d1
 pkgrel=1
 pkgdesc='Valve Hardware Audio Processing'
 arch=(x86_64)
@@ -28,16 +28,16 @@ makedepends=(
 source=(
     "git+${url}.git"
     "001-lib64-ladspa.patch"
-    # "002-confdir.patch"
-    # "pipewire-workaround.service"
-    # "wireplumber-workaround.service"
+    "002-confdir.patch"
+    "pipewire-workaround.service"
+    "wireplumber-workaround.service"
     )
 b2sums=(
     'SKIP'
     'SKIP'
-    # 'SKIP'
-    # 'SKIP'
-    # 'SKIP'
+    'SKIP'
+    'SKIP'
+    'SKIP'
     )
 
 pkgver() {
@@ -66,8 +66,8 @@ package() {
     make DEST_DIR="$pkgdir" LIB_DIR="$pkgdir/usr/lib" install
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
-    # xz --check=crc32 "$pkgdir/usr/lib/firmware/amd/sof/*" || true
-    # xz --check=crc32 "$pkgdir/usr/lib/firmware/amd/sof-tplg/*" || true
+    xz --check=crc32 "$pkgdir/usr/lib/firmware/amd/sof/*" || true
+    xz --check=crc32 "$pkgdir/usr/lib/firmware/amd/sof-tplg/*" || true
 
     rm -f "$pkgdir/usr/lib/systemd/system/multi-user.target.wants/wireplumber-sysconf.service"
     rm -f "$pkgdir/etc/wireplumber"
@@ -75,12 +75,12 @@ package() {
     rm -f "$pkgdir/etc/pipewire"
 
     # mkdir -p "$pkgdir/usr/libexec/hwsupport"
-    # install -dm755 "$pkgdir/usr/libexec/hwsupport"
-    # mv "$pkgdir/usr/share/wireplumber/hardware-profiles/wireplumber-hwconfig" "$pkgdir/usr/libexec/hwsupport/wireplumber-hwconfig"
-    # mv "$pkgdir/usr/share/pipewire/hardware-profiles/pipewire-hwconfig" "$pkgdir/usr/libexec/hwsupport/pipewire-hwconfig"
+    install -dm755 "$pkgdir/usr/libexec/hwsupport"
+    mv "$pkgdir/usr/share/wireplumber/hardware-profiles/wireplumber-hwconfig" "$pkgdir/usr/libexec/hwsupport/wireplumber-hwconfig"
+    mv "$pkgdir/usr/share/pipewire/hardware-profiles/pipewire-hwconfig" "$pkgdir/usr/libexec/hwsupport/pipewire-hwconfig"
 
-    # install -Dm644 "$srcdir/pipewire-workaround.service" "$pkgdir/usr/lib/systemd/system/pipewire-workaround.service"
-    # install -Dm644 "$srcdir/wireplumber-workaround.service" "$pkgdir/usr/lib/systemd/system/wireplumber-workaround.service"
+    install -Dm644 "$srcdir/pipewire-workaround.service" "$pkgdir/usr/lib/systemd/system/pipewire-workaround.service"
+    install -Dm644 "$srcdir/wireplumber-workaround.service" "$pkgdir/usr/lib/systemd/system/wireplumber-workaround.service"
 
     rm "$pkgdir/usr/share/wireplumber/hardware-profiles/default"
     rm "$pkgdir/usr/share/pipewire/hardware-profiles/default"
