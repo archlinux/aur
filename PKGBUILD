@@ -11,7 +11,7 @@ pkgname=(
   "${_name}-sycl-f32-git"
   "${_name}-vulkan-git"
 )
-pkgver=b3943
+pkgver=b4078.r1.4a8ccb37a
 pkgrel=1
 pkgdesc="Port of Facebook's LLaMA model in C/C++"
 arch=('armv7h' 'aarch64' 'x86_64')
@@ -120,6 +120,7 @@ build() {
   echo "Build ${pkgbase} with CUBlas (NVIDIA CUDA)"
   cd "${srcdir}/${_name}-cublas"
   export PATH+=":/opt/cuda/bin"
+  export NVCC_CCBIN="gcc-13"
   cmake "${_cmake_cublas_args[@]}"
   cmake --build build
 
@@ -181,13 +182,13 @@ package_llama.cpp-cublas-git() {
   provides=("${_name}")
   conflicts=("${_name}")
 
-  cd "${_name}-clblas"
+  cd "${_name}-cublas"
   _package
 }
 
 package_llama.cpp-hipblas-git() {
   pkgdesc="$pkgdesc (with AMD ROCm optimizations)"
-  depends+=('rocm-hip-runtime')
+  depends+=('hipblas')
   provides=("${_name}")
   conflicts=("${_name}")
 
