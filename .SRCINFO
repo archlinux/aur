@@ -1,0 +1,16 @@
+pkgbase = gnome-shell-extension-launch-new-instance-git
+	pkgdesc = Changes application icons to always launch a new instance when activated.
+	pkgver = 47.0.74.gfde934f
+	pkgrel = 1
+	url = https://extensions.gnome.org/extension/600/launch-new-instance/
+	arch = any
+	license = GPL-2.0-or-later
+	makedepends = git
+	makedepends = glib2
+	makedepends = meson
+	makedepends = ninja
+	depends = gnome-shell
+	source = git+https://gitlab.gnome.org/GNOME/gnome-shell-extensions.git
+	sha256sums = SKIP
+
+pkgname = gnome-shell-extension-launch-new-instance-git
