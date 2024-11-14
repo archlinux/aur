@@ -1,8 +1,9 @@
 # Maintainer: zocker_160 <zocker1600 at posteo dot net>
 
 pkgname=keyboard-center2
+_pkgname=keyboard-center
 pkgver=2.0.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Application to map G-keys on (some) Logitech Gaming Keyboards"
 arch=('x86_64')
 url="https://github.com/zocker-160/keyboard-center"
@@ -24,6 +25,7 @@ optdepends=(
   'ydotool: type strings using uinput'
   'wtype: type strings for Wayland'
 )
+conflicts=('keyboard-center' 'keyboard-center-git')
 makedepends=('git')
 source=("$pkgname-$pkgver::git+https://github.com/zocker-160/keyboard-center.git#tag=$pkgver")
 sha256sums=('SKIP')
@@ -44,12 +46,12 @@ package() {
   cd "$srcdir/$pkgname-$pkgver"
 
   mkdir -p "$pkgdir/opt"
-  cp -r src/. "$pkgdir/opt/$pkgname"
+  cp -r src/. "$pkgdir/opt/$_pkgname"
 
   install -D -m644 linux_packaging/60-keyboard-center.rules -t "$pkgdir/usr/lib/udev/rules.d"
-  install -D -m644 linux_packaging/uinput-keyboard-center.conf "$pkgdir/usr/lib/modules-load.d/$pkgname.conf"
+  install -D -m644 linux_packaging/uinput-keyboard-center.conf "$pkgdir/usr/lib/modules-load.d/$_pkgname.conf"
 
-  install -D -m755 linux_packaging/assets/keyboard-center.sh "$pkgdir/usr/bin/$pkgname"
+  install -D -m755 linux_packaging/assets/keyboard-center.sh "$pkgdir/usr/bin/$_pkgname"
   install -D -m644 linux_packaging/assets/keyboard-center.png -t "$pkgdir/usr/share/icons/hicolor/512x512/apps"
   install -D -m644 linux_packaging/assets/keyboard-center.desktop -t "$pkgdir/usr/share/applications"
 
