@@ -13,8 +13,8 @@ index fc6ff22..70592d7 100644
 +++ b/pyproject.toml
 @@ -2,6 +2,7 @@
  name = "pydeck"
- version = "0.8.0b4"
- requires-python = ">=3.7"
+ version = "0.9.1"
+ requires-python = ">=3.8"
 +dynamic = ["description", "readme", "license", "authors", "keywords", "classifiers", "dependencies", "optional-dependencies"]
  
  [build-system]
