@@ -3,7 +3,7 @@
 pkgname=keyboard-center2
 _pkgname=keyboard-center
 pkgver=2.0.5
-pkgrel=2
+pkgrel=3
 pkgdesc="Application to map G-keys on (some) Logitech Gaming Keyboards"
 arch=('x86_64')
 url="https://github.com/zocker-160/keyboard-center"
@@ -55,5 +55,5 @@ package() {
   install -D -m644 linux_packaging/assets/keyboard-center.png -t "$pkgdir/usr/share/icons/hicolor/512x512/apps"
   install -D -m644 linux_packaging/assets/keyboard-center.desktop -t "$pkgdir/usr/share/applications"
 
-  install -D -m644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -D -m644 LICENSE "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
 }
