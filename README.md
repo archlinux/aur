@@ -14,14 +14,16 @@ If you're not running Arch as your main OS, you can perform the `makepkg` steps
 inside of a docker container like so:
 
 ```bash
-docker run --rm --mount type=bind,source=$(pwd),target=/tmp/ddev-bin --workdir=/tmp/ddev-bin -it archlinux:latest bash
+docker run --rm --mount type=bind,source=$(pwd),target=/tmp/ddev-bin --workdir=/tmp/ddev-bin -it --platform=linux/amd64 archlinux:latest bash
 ```
 
 Once the container comes up, you'll need to install a couple of things:
 
 ```bash
-pacman -Sy sudo binutils fakeroot docker docker-compose
+pacman -Sy sudo binutils fakeroot docker docker-compose vim mkcert
 ```
+
+Edit `/etc/makepkg.conf` to change the OPTIONS line; change `debug` to `!debug`
 
 You need sudo because `makepkg` refuses to run as root. `binutils` and `fakeroot`
 are dependencies of `makepkg` that are somehow not installed in the Docker image
@@ -29,12 +31,10 @@ by default. `docker` and `docker-compose` are needed as dependencies of the `dde
 package, but you don't need to do anything special with them other than install
 the packages so that `makepkg` doesn't complain.
 
-You'll also need to set a password for `nobody` because `fakeroot` uses `sudo`:
+You need to set a password for `nobody` (set it to `nobody`) because `fakeroot` uses `sudo`:
 
 ```bash
 passwd nobody
 ```
 
-When you run `makepkg -s`, you'll be prompted for this password.
-
-Finally, you'll need to preface the `makepkg` steps with `sudo -u nobody`.
+Now `sudo -u nobody makepkg -s`; you'll be prompted for the password.
