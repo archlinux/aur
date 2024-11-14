@@ -1,7 +1,7 @@
 pkgbase = bitwuzla
 	pkgdesc = SMT solver for the theories of fixed-size bit-vectors, floating-point arithmetic, arrays and uninterpreted functions and their combinations
 	pkgver = 0.6.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://bitwuzla.github.io
 	arch = x86_64
 	license = MIT
@@ -31,6 +31,7 @@ pkgbase = bitwuzla
 	provides = libbitwuzlabb.so
 	provides = libbitwuzlals.so
 	provides = libbitwuzla.so
+	options = !lto
 	source = bitwuzla-0.6.1.tar.gz::https://github.com/bitwuzla/bitwuzla/archive/refs/tags/0.6.1.tar.gz
 	source = 0001-Use-installed-libraries.patch
 	source = 0002-Skip-Test-based-on-timeout.patch
