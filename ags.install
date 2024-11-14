@@ -1,0 +1,15 @@
+
+## arg 1:  the new package version
+## arg 2:  the old package version	
+post_upgrade() {
+  if [ "$(vercmp $2 2.0.0)" -lt 0 ]; then
+    echo ""
+    echo "ags v2 includes many breaking changes."
+    echo ""
+    echo "If your ags config is large, I recommend installing this:"
+    echo "https://github.com/kotontrion/PKGBUILDS/blob/main/agsv1/PKGBUILD"
+    echo "alongside this package. So you can use your old config while migrating."
+    echo ""
+  fi
+	
+}

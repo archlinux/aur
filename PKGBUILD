@@ -1,36 +1,31 @@
 # Maintainer: kotontrion <kotontrion@tutanota.de>
 pkgname=aylurs-gtk-shell
 _pkgname=ags
-pkgver=1.8.2
-pkgrel=3
+pkgver=2.0.0
+pkgrel=1
 pkgdesc="Aylurs's Gtk Shell (AGS), An eww inspired gtk widget system."
 arch=('x86_64')
 url="https://github.com/Aylur/ags"
 license=('GPL-3.0-only')
-makedepends=('gobject-introspection' 'meson' 'glib2-devel' 'npm' 'typescript')
-depends=('gjs' 'glib2' 'glibc' 'gtk3' 'gtk-layer-shell' 'libpulse' 'pam')
-optdepends=('gnome-bluetooth-3.0: required for bluetooth service'
-            'greetd: required for greetd service'
-            'libdbusmenu-gtk3: required for systemtray service'
-            'libsoup3: required for the Utils.fetch feature'
-            'libnotify: required for sending notifications'
-            'networkmanager: required for network service'
-            'power-profiles-daemon: required for powerprofiles service'
-            'upower: required for battery service')
+makedepends=('go')
+depends=('gjs' 'libastal-gjs' 'libastal-meta' 'npm')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/Aylur/ags/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('9e103b3087bd2a568779d5ca99caf9b4f2685f8ba8097733c6ee2057c3fc570f')
 conflicts=('aylurs-gtk-shell-git')
-backup=('etc/pam.d/ags')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/Aylur/ags/releases/download/v${pkgver}/ags-v${pkgver}.tar.gz")
-sha256sums=('ea0a706bef99578b30d40a2d0474b7a251364bfcf3a18cdc9b1adbc04af54773')
+install=ags.install
 
 build() {
-  cd $srcdir/$_pkgname
-  npm install
-  arch-meson build --libdir "lib/$_pkgname" -Dbuild_types=true
-  meson compile -C build
+  cd "$srcdir/$_pkgname-$pkgver"
+  export CGO_CPPFLAGS="${CPPFLAGS}"
+  export CGO_CFLAGS="${CFLAGS}"
+  export CGO_CXXFLAGS="${CXXFLAGS}"
+  export CGO_LDFLAGS="${LDFLAGS}"
+  export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+  go build -o ${_pkgname}
 }
 
 package() {
-  cd $srcdir/$_pkgname
-  meson install -C build --destdir "$pkgdir"
-  ln -sf /usr/share/com.github.Aylur.ags/com.github.Aylur.ags ${pkgdir}/usr/bin/ags
+  cd "$srcdir/$_pkgname-$pkgver"
+  install -Dm755 ${_pkgname} "$pkgdir"/usr/bin/${_pkgname}
 }
+
