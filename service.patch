@@ -1,15 +1,20 @@
---- asus_numberpad_driver.service	2024-03-16 21:09:42.901692226 +0100
-+++ cos.service	2024-03-16 21:09:34.521623561 +0100
-@@ -3,9 +3,9 @@
+diff --git a/asus_numberpad_driver.wayland.service b/asus_numberpad_driver.wayland.service
+index a84a399..85126ea 100644
+--- a/asus_numberpad_driver.wayland.service
++++ b/asus_numberpad_driver.wayland.service
+@@ -5,7 +5,7 @@ StartLimitIntervalSec=300
  
  [Service]
  Type=simple
--ExecStart=/usr/share/asus-numberpad-driver/.env/bin/python3 /usr/share/asus-numberpad-driver/numberpad.py $LAYOUT_NAME $CONFIG_FILE_DIR_PATH
--StandardOutput=append:$ERROR_LOG_FILE_PATH
--StandardError=append:$ERROR_LOG_FILE_PATH
-+ExecStart=python3 /usr/share/asus-numberpad-driver/numberpad.py $LAYOUT_NAME /usr/share/asus-numberpad-driver
-+StandardOutput=append:/var/log/asus-numberpad-driver
-+StandardError=append:/var/log/asus-numberpad-driver
+-ExecStart=$INSTALL_DIR_PATH/.env/bin/python3 $INSTALL_DIR_PATH/numberpad.py $LAYOUT_NAME $CONFIG_FILE_DIR_PATH
++ExecStart=python3 /usr/share/asus-numberpad-driver/numberpad.py $LAYOUT_NAME $CONFIG_FILE_DIR_PATH
  TimeoutSec=5
  Restart=on-failure
- Environment="DISPLAY=$DISPLAY"
+ RestartSec=1
+@@ -19,4 +19,4 @@ Environment="XDG_RUNTIME_DIR=$XDG_RUNTIME_DIR"
+ Environment="XDG_SESSION_TYPE=$XDG_SESSION_TYPE"
+ 
+ [Install]
+-WantedBy=default.target
+\ No newline at end of file
++WantedBy=default.target
