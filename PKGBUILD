@@ -5,11 +5,12 @@
 pkgname=stygiansift-git
 _pkgname="StygianSift"
 pkgver=r137+g95506d465
-pkgrel=1
+pkgrel=2
 pkgdesc="A highly customizable TUI file explorer"
 arch=("x86_64")
 url="https://github.com/Mauitron/StygianSift"
 license=("Custom")
+depends=(ttf-jetbrains-mono-nerd)
 makedepends=("git" "rust" "cargo")
 provides=("stygiansift")
 conflicts=("stygiansift")
