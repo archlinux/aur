@@ -1,9 +1,10 @@
 # Maintainer: Butui Hu <hot123tea123@gmail.com>
+# Maintainer: redponike <proton (dot) me>
 
 _pkgname=pydeck
 pkgname=python-pydeck
-pkgver=0.8.0
-pkgrel=3
+pkgver=0.9.1
+pkgrel=1
 pkgdesc='Widget for deck.gl maps'
 arch=('any')
 url='https://pypi.org/project/pydeck'
@@ -26,8 +27,8 @@ makedepends=(
 source=("${_pkgname}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz"
         "0001-fix-pyproject.toml.patch"
 )
-sha512sums=('117ba93c3338ab53b34afd9974b4b6408f4287d2f2db340ffa63a6bbe1ca6632939ea50dd5e81d04d76c69634b486a4d34a119eb3a3ad3fa7cb4087c87f8c932'
-            '58b6fb016175dcf9c388ee2f9d9a867863592ec71fa044be10b0888f4df0912d553269b4d48da888546b93d192eb9b7c4e3f05e5522f38006384e39f1d81e909')
+sha512sums=('a9eb637f1fb999e69ac13172162f8d81dc4490498992dbd5ede444855d47b7ff77c7bd93648d42a069b02b3adb16ad9b31a1089239ddc7633dd58f29fac525df'
+            'c5937cf870e2eb291a2c1cf7fa2e621a83bff61bd562c7f280b1ccb498ffccba0d721d71490141c44cef848ddf9eb20cd273b13823564889cbc682923201532f')
 
 prepare() {
   cd "${_pkgname}-${pkgver}"
