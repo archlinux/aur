@@ -1,4 +1,4 @@
-# Maintainer: AlphaJack <alphajack at tuta dot io>
+# Maintainer: Daniel Gustaw <gustaw.daniel@gmail.com>
 
 # to create a package for another locale, check the available locales from
 # https://huggingface.co/rhasspy/piper-voices/tree/main
