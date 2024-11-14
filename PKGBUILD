@@ -1,7 +1,7 @@
 # Maintainer: VCalV
 pkgname=mergiraf
-pkgver=0.3.0
-pkgrel=2
+pkgver=0.3.1
+pkgrel=1
 pkgdesc="A syntax-aware git merge driver for a growing collection of programming languages and file formats"
 arch=('x86_64')
 url="https://mergiraf.org/"
@@ -12,12 +12,12 @@ depends=(glibc gcc-libs)
 conflicts=("$pkgname-bin")
 provides=("$pkgname")
 source=("$pkgname-$pkgver.tar.gz::https://codeberg.org/mergiraf/mergiraf/archive/v$pkgver.tar.gz")
-sha512sums=('1fc79bf8ffb39cbcae11a038cfb9661dec86daf7f31970d893eb83d5d27371eee0c9d5bfedc9029548ed06bd6f7a586abb175abf99ce2880cbfe222c5465bfc5')
+sha512sums=('7d5733517db1f1599399ebb2f665f228ea56ec7b52373644c18312ab3ea3285b44de664f798c00ce9fe77f3cc72422b490f6251dba1fb3466b4a8d5e5050c27b')
 
 prepare() {
     cd "$pkgname"
     export RUSTUP_TOOLCHAIN=stable
-    cargo update
+    #cargo update
     cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
@@ -39,7 +39,8 @@ package() {
     cd "$pkgname"
     export RUSTUP_TOOLCHAIN=stable 
     #cargo install --no-track --frozen --all-features --root "$pkgdir/usr/" --path .
-    cargo install --no-track --all-features --root "$pkgdir/usr/" --path .
+    #cargo install --no-track --all-features --root "$pkgdir/usr/" --path .
+    cargo install --no-track --offline --all-features --root "$pkgdir/usr/" --path .
     install -Dm444 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
     install -Dm444 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
     install -Dm444 GOVERNANCE.md "$pkgdir/usr/share/doc/$pkgname/GOVERNANCE.md"
