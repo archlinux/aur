@@ -1,0 +1,15 @@
+pkgbase = library-converter-git
+	pkgdesc = A music library format converter, to make holding archival and compressed copies of music libraries easier.
+	pkgver = 3.3.0
+	pkgrel = 1
+	url = https://github.com/Starbuck7410/library-converter.git
+	arch = x86_64
+	license = GPL
+	makedepends = nodejs
+	makedepends = npm
+	depends = ffmpeg
+	provides = library-converter
+	source = git+https://github.com/Starbuck7410/library-converter.git
+	md5sums = SKIP
+
+pkgname = library-converter-git
