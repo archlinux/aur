@@ -23,7 +23,7 @@ depends=('ffmpeg'
          'python-xmpppy>=0.7.1'
          'yt-dlp>=2021.10.22')
 makedepends=(python-build python-installer python-setuptools python-wheel)
-source=('$url/archive/$pkgver.tar.gz')
+source=("https://github.com/C0D3D3V/Moodle-DL/archive/$pkgver.tar.gz")
 b2sums=('SKIP')
 
 build() {
