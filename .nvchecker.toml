@@ -1,0 +1,6 @@
+[imagemagick6]
+source="github"
+github="ImageMagick/ImageMagick6"
+use_max_tag=true
+from_pattern="-"
+to_pattern="."

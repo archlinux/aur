@@ -1,4 +1,4 @@
-# Maintainer: 
+# Maintainer: envolution
 # Contributor: Mark Wagie <mark dot wagie at proton dot me>
 # Contributor: Xuanrui Qi <me@xuanruiqi.com>
 # Contributor: bartus <arch-user-repoᘓbartus.33mail.com>
@@ -6,8 +6,8 @@
 
 pkgname=libmagick6
 pkgbase=imagemagick6
-_pkgver=6.9.13-10
-pkgver=${_pkgver//-/.}
+pkgver=6.9.13.18
+_pkgver="${pkgver%.*}-${pkgver##*.}"
 pkgrel=1
 pkgdesc="An image viewing/manipulation program (legacy 6.9.13-* series)"
 url="https://legacy.imagemagick.org/"
@@ -50,7 +50,7 @@ checkdepends=(
 )
 source=("https://legacy.imagemagick.org/archive/releases/ImageMagick-${_pkgver}.tar.gz"{,.asc}
         'arch-fonts.diff')
-sha256sums=('05d6474b3209a77d5181573d08f57d360c0525d078f424e8054d30f9b4d3eee3'
+sha256sums=('45c3e3ae255668390022f97d8a0c67f4fa7a1ed3f2d3be942f1e73732b516b75'
             'SKIP'
             'a85b744c61b1b563743ecb7c7adad999d7ed9a8af816650e3ab9321b2b102e73')
 validpgpkeys=('D8272EF51DA223E4D05B466989AB63D48277377A') # Lexie Parsimoniae (ImageMagick code signing key) <lexie.parsimoniae@imagemagick.org>
