@@ -1,0 +1,15 @@
+pkgbase = zpy
+	pkgdesc = Manage Python environments in Zsh, with uv or pip-tools
+	pkgver = 0.3.10
+	pkgrel = 1
+	url = https://andydecleyre.github.io/zpy/
+	arch = any
+	license = Unlicense
+	depends = zsh
+	optdepends = fzf: fuzzy finding
+	optdepends = skim: fuzzy finding
+	optdepends = uv: faster operation
+	source = zpy-0.3.10.tar.gz::https://github.com/AndydeCleyre/zpy/archive/refs/tags/0.3.10.tar.gz
+	b2sums = 3a32cf9d5bafb76d168369d55332c3a8adebd15a745d92b8213e321284fc2ae4b2c1597c4a01799b1ffce648ed8d35b748289f1d13b65c24db7ca647211717aa
+
+pkgname = zpy
