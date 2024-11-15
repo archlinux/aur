@@ -1,8 +1,8 @@
 # Maintainer: Nikos Toutountzoglou <nikos dot toutou at protonmail dot com>
 
 pkgname=imibrowser
-pkgver=15.0.5010
-pkgrel=2
+pkgver=15.0.5012
+pkgrel=1
 pkgdesc="iReasoning Freeware MIB browser tool for SNMP API"
 url="https://www.ireasoning.com/mibbrowser.shtml"
 arch=('x86_64')
@@ -12,7 +12,7 @@ makedepends=('imagemagick')
 source=("${pkgname}-${pkgver}.zip::https://www.ireasoning.com/download/mibfree/mibbrowser.zip"
         'iMIBrowser.desktop'
         'SLA')
-sha256sums=('996adcf0a547fa65a2bdc322223530bcadc9557207084487ea0b024f45187d26'
+sha256sums=('84cf060bd970c9859653a30c9947696d9820af052e62ba3cae71cb7a2e7578f0'
             'ecfc557a66cb3e11f50c0034019fff55960d4b9551ba0639754ed14647cb6446'
             'f15a61ab9c02cdab41460763608bfd5b5f0624826724e0f80120ecef3285acfa')
 
@@ -58,7 +58,7 @@ package() {
   cp -a --no-preserve='ownership' "${srcdir}/ireasoning/mibbrowser"/{config,docs,images,lib,mibs} "${pkgdir}/opt/${pkgname}"
 
   # Install license files
-  install -Dm644 "$srcdir/ireasoning/mibbrowser/license.txt" \
+  install -Dm644 "${srcdir}/ireasoning/mibbrowser/license.txt" \
     "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   install -Dm644 "${srcdir}/ireasoning/mibbrowser/THIRDPARTYLICENSEREADME.txt" \
     "${pkgdir}/usr/share/licenses/${pkgname}/THIRDPARTY_LICENSE"
