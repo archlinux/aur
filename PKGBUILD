@@ -1,7 +1,7 @@
 # Maintainer: drakkan <nicola.murino at gmail dot com>
 # Contributor: drakkan <nicola.murino at gmail dot com>
 pkgname=sftpgo
-pkgver=2.6.2
+pkgver=2.6.3
 pkgrel=1
 pkgdesc='Full-featured and highly configurable SFTP, HTTP/S, FTP/S and WebDAV server - S3, Google Cloud Storage, Azure Blob'
 arch=('i686' 'x86_64' 'aarch64')
@@ -21,7 +21,7 @@ source=("git+https://github.com/drakkan/${pkgname}#tag=v${pkgver}"
   "sftpgo.json"
   "sftpgo.sysusers")
 sha256sums=('SKIP'
-  '41231f900789d4dcb7e43d2fc9f698a8a9087444670999f54db3d104b64b6184'
+  '9137b31f66ae0400029472e39f53cadb8acd6644bebf921d1a4c4d1ef94408eb'
   '44658210043f805057c2e4b473653637a91204e4da17954b08081292c72edcb8')
 
 _uid_sftpgo=315
@@ -29,7 +29,7 @@ _gid_sftpgo=315
 
 build() {
   cd "${pkgname}"
-  go build -trimpath -tags nopgxregisterdefaulttypes,unixcrypt -ldflags "-s -w -X github.com/drakkan/sftpgo/v2/internal/version.commit=`git describe --always --abbrev=8 --dirty` -X github.com/drakkan/sftpgo/v2/internal/version.date=`date --utc +%FT%TZ`" -o sftpgo
+  go build -trimpath -tags nopgxregisterdefaulttypes,unixcrypt,disable_grpc_modules -ldflags "-s -w -X github.com/drakkan/sftpgo/v2/internal/version.commit=`git describe --always --abbrev=8 --dirty` -X github.com/drakkan/sftpgo/v2/internal/version.date=`date --utc +%FT%TZ`" -o sftpgo
   ./sftpgo gen completion bash > sftpgo-completion.bash
   ./sftpgo gen man -d man1
   gzip man1/*
@@ -53,6 +53,7 @@ package() {
   echo "" >> "${pkgdir}"/usr/share/doc/${pkgname}/README
   echo "https://github.com/drakkan/sftpgo/blob/v${pkgver}/README.md" >> "${pkgdir}"/usr/share/doc/${pkgname}/README
   install -Dm 644 LICENSE "$pkgdir"/usr/share/licenses/${pkgname}/LICENSE
+  install -Dm 644 NOTICE "$pkgdir"/usr/share/licenses/${pkgname}/NOTICE
   install -Dm 644 sftpgo-completion.bash "${pkgdir}/usr/share/bash-completion/completions/sftpgo"
   install -d "${pkgdir}/usr/share/man"
   cp -r man1 "${pkgdir}/usr/share/man/"
