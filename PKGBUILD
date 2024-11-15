@@ -12,7 +12,7 @@ makedepends=('git')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=("$pkgname::git+$url")
-sha512sums=('SKIP')
+b2sums=('SKIP')
 
 _sourcedirectory="$pkgname"
 

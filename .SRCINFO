@@ -12,6 +12,6 @@ pkgbase = gnome-keyring-import-export-git
 	provides = gnome-keyring-import-export
 	conflicts = gnome-keyring-import-export
 	source = gnome-keyring-import-export-git::git+https://github.com/spookylukey/gnome-keyring-import-export
-	sha512sums = SKIP
+	b2sums = SKIP
 
 pkgname = gnome-keyring-import-export-git
