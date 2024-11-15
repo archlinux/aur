@@ -16,7 +16,7 @@ pkgname=(
 	$_basename-server
 	$_basename-unixd-clients
 )
-pkgver=1.3.3
+pkgver=1.4.2
 _realver=${pkgver/_/-}
 pkgrel=1
 pkgdesc='A identity management service and clients.'
@@ -26,14 +26,14 @@ arch=(x86_64 aarch64)
 license=(MPL-2.0)
 makedepends=(cargo systemd)
 options=(!buildflags)
-sha256sums=('8af0194446e5e551c59138e4181991b449517d45e3d65b60922d3558733926b0')
+sha256sums=('5b8bebb860220cdff95d41c0fa252cf2f8320584d7f825ebdadd94f662c3e923')
 
 
 build () {
   cd ${pkgbase}-$_realver
 
   export KANIDM_BUILD_PROFILE="release_linux"
-  cargo build --locked --release --target-dir target \
+  cargo build --release --target-dir target \
 	--package daemon \
 	--package kanidm-ipa-sync \
 	--package kanidm_tools \
@@ -90,8 +90,8 @@ package_kanidm-server () {
 
 
   # add web-ui files
-  install -dv "${pkgdir}/usr/share/kanidm/ui/"
-  cp -r server/web_ui/pkg "${pkgdir}/usr/share/kanidm/ui/"
+  install -dv "${pkgdir}/usr/share/kanidm/ui/hpkg"
+  cp -r server/core/static/* "${pkgdir}/usr/share/kanidm/ui/hpkg"
 }
 
 package_kanidm-unixd-clients () {
