@@ -2,7 +2,7 @@
 # Contributor: drakkan <nicola.murino at gmail dot com>
 pkgname=sftpgo-bin
 _pkgname=sftpgo
-pkgver=2.6.2
+pkgver=2.6.3
 pkgrel=1
 pkgdesc='Full-featured and highly configurable SFTP, HTTP/S, FTP/S and WebDAV server - S3, Google Cloud Storage, Azure Blob'
 arch=('x86_64')
@@ -25,8 +25,8 @@ install=${pkgname}.install
 source=("https://github.com/drakkan/sftpgo/releases/download/v${pkgver}/sftpgo_v${pkgver}_linux_x86_64.tar.xz"
   "sftpgo.json"
   "sftpgo.sysusers")
-sha256sums=('ff5be49258bb5c0ea0fd87d14e79e77ec68870da19a0e2577ae77b0287fd250e'
-  '41231f900789d4dcb7e43d2fc9f698a8a9087444670999f54db3d104b64b6184'
+sha256sums=('34f8e01099f274d64b15c434ae7526b58ff50ecd2ec9561f5a414afac752647c'
+  '9137b31f66ae0400029472e39f53cadb8acd6644bebf921d1a4c4d1ef94408eb'
   '44658210043f805057c2e4b473653637a91204e4da17954b08081292c72edcb8')
 
 _uid_sftpgo=315
@@ -49,6 +49,7 @@ package() {
   install -Dm 644 "$srcdir/sftpgo.json" "${pkgdir}/usr/share/doc/${_pkgname}/sftpgo.json.default"
   install -Dm 644 README.txt "${pkgdir}"/usr/share/doc/${_pkgname}/README
   install -Dm 644 LICENSE "$pkgdir"/usr/share/licenses/${_pkgname}/LICENSE
+  install -Dm 644 NOTICE "$pkgdir"/usr/share/licenses/${_pkgname}/NOTICE
   install -Dm 644 bash_completion/sftpgo "${pkgdir}/usr/share/bash-completion/completions/sftpgo"
   install -d "${pkgdir}/usr/share/man"
   cp -r man/man1 "${pkgdir}/usr/share/man/"
