@@ -4,8 +4,8 @@
 
 pkgname="paperless-ngx-venv"
 _pkgname="paperless-ngx"
-pkgver=2.13.4
-pkgrel=3
+pkgver=2.13.5
+pkgrel=1
 pkgdesc="A supercharged version of paperless: scan, index and archive all your physical documents (version with bundled dependencies)"
 url="https://docs.paperless-ngx.com/"
 license=("GPL3")
@@ -50,7 +50,7 @@ source=("https://github.com/$_pkgname/$_pkgname/releases/download/v$pkgver/$_pkg
         "requirements.patch"
         "whoosh-filters.patch"
         "whoosh-intraword.patch")
-b2sums=('948521ce122c898c40d03e77a34605619243a9349570d5032dc2617edebd1447cb779811cf13b0d864348fe962c102444f6374aa185dbb844aaab2ff2f7f1c30'
+b2sums=('5677607bfc09832642707eb438f87e9237beb01b97f6097f6eaf891f84cc0ec9a0b554c893685daf9e89017843321cdb0cff05e064a695a9a4d145c332356fb0'
         '747a8b8774fa48073e58b9b3ba55b28ca505b193cf180467b1bcbbe3a2c44931a198f355163b377219299c8b43f0a74550e241f835d9941c594fe318ae5235cd'
         '586ad775e26aef216716c33d8951e00044a7f6866167d27dceab39d51b4fd46527693dfe4e085dc20d2e9193679122ad2b9ac8a1c03a98df747af15ecca24ca2'
         '4a59f0a0c6a4abad23cba01e216909f45a7064e93911b8ba3e3b394f52379e41898b8c9e1246ba034bc8d2fe6dc83f5cad926e265a17da7c7093d997cfe8b4f3'
