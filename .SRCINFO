@@ -1,6 +1,6 @@
 pkgbase = micropython-git
 	pkgdesc = A Python implementation for microcontrollers and constrained systems (UNIX git version)
-	pkgver = 1.23.0.r368.gfa23e4b093
+	pkgver = 1.25.0.r33.g611d8f9ce8
 	pkgrel = 1
 	epoch = 1
 	url = https://micropython.org/
@@ -19,7 +19,7 @@ pkgbase = micropython-git
 	conflicts = mpy-cross
 	source = micropython::git+https://github.com/micropython/micropython.git
 	source = berkeley-db-1.xx::git+https://github.com/micropython/berkeley-db-1.xx.git
-	source = libffi::git+https://github.com/atgreen/libffi.git
+	source = libffi::git+https://github.com/libffi/libffi.git
 	source = mbedtls::git+https://github.com/ARMmbed/mbedtls.git
 	source = micropython-lib::git+https://github.com/micropython/micropython-lib.git
 	sha256sums = SKIP

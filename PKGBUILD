@@ -4,7 +4,7 @@
 
 _pkgname=micropython
 pkgname=$_pkgname-git
-pkgver=1.23.0.r368.gfa23e4b093
+pkgver=1.25.0.r33.g611d8f9ce8
 pkgrel=1
 epoch=1
 pkgdesc='A Python implementation for microcontrollers and constrained systems (UNIX git version)'
@@ -19,7 +19,7 @@ conflicts=($_pkgname mpy-cross)
 optdepends=('mpremote: to install micropython-lib and third-party modules')
 source=("$_pkgname::git+https://github.com/micropython/$_pkgname.git"
         'berkeley-db-1.xx::git+https://github.com/micropython/berkeley-db-1.xx.git'
-        'libffi::git+https://github.com/atgreen/libffi.git'
+        'libffi::git+https://github.com/libffi/libffi.git'
         'mbedtls::git+https://github.com/ARMmbed/mbedtls.git'
         'micropython-lib::git+https://github.com/micropython/micropython-lib.git'
 )
