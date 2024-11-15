@@ -1,7 +1,7 @@
 pkgbase = obs-vertical-canvas
 	pkgdesc = Add vertical canvas to OBS
 	pkgver = 1.4.10
-	pkgrel = 1
+	pkgrel = 2
 	url = https://aitum.tv/products/vertical
 	arch = x86_64
 	arch = x86_64_v3

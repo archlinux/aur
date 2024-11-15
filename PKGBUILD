@@ -1,7 +1,7 @@
 # Maintainer: Frederik “Freso” S. Olesen <archlinux at freso.dk>
 pkgname=obs-vertical-canvas
 pkgver=1.4.10
-pkgrel=1
+pkgrel=2
 pkgdesc='Add vertical canvas to OBS'
 arch=('x86_64' 'x86_64_v3')
 url='https://aitum.tv/products/vertical'
@@ -13,7 +13,7 @@ b2sums=('e4931ddf62c3871532901c0e7f4d59ffb7c51f44fc39c1db17b27775640a2096611eaed
 
 build() {
   cd $pkgname-$pkgver
-  cmake -S . -B build -DBUILD_OUT_OF_TREE=On --install-prefix "$pkgdir/usr" -DCMAKE_BUILD_TYPE=Release
+  cmake -S . -B build -DBUILD_OUT_OF_TREE=On --install-prefix "$pkgdir/usr" -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_FLAGS="-Wno-error=deprecated-declarations"
   cmake --build build
 }
 
