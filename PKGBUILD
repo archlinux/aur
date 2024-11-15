@@ -4,7 +4,7 @@
 pkgname=python-beartype
 _pkgname=${pkgname#python-}
 pkgver=0.19.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Unbearably fast near-real-time hybrid runtime-static type-checking in pure Python"
 arch=(any)
 url="https://github.com/beartype/beartype"
@@ -36,10 +36,11 @@ build() {
 check() {
   cd "$_pkgname-$pkgver"
   rm -rf tmp_install
+
   python -m installer --destdir=tmp_install dist/*.whl
   local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
   export PYTHONPATH="$PWD/tmp_install/$site_packages"
-  pytest --deselect beartype_test/a90_func/pep/test_pep561_static.py
+  pytest --deselect beartype_test/a90_func/pep/test_pep561_static.py -p asyncio
 }
 
 package() {
