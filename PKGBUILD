@@ -1,28 +1,27 @@
-# Maintainer: Charles Milette <charles.milette@gmail.com>
+# Contributor: Charles Milette <charles.milette@gmail.com>
 
-_gitname=terminology-themes
-pkgname=${_gitname}-git
-pkgver=r92.39f406f
+pkgname=terminology-themes-git
+pkgver=r119.e1ddd06
 pkgrel=1
-pkgdesc="Color schemes for the Terminology terminal emulator "
+pkgdesc="Color schemes for the Terminology terminal emulator"
 arch=('any')
-url="https://github.com/sylveon/${_gitname}"
-license=('GPL3')
-makedepends=('efl')
-source=("git://github.com/sylveon/${_gitname}.git")
+url="https://github.com/sylveon/terminology-themes"
+license=('GPL-3.0-or-later')
+makedepends=('efl' 'git')
+source=("git+${url}.git")
 sha256sums=('SKIP')
 
 pkgver() {
-	cd "${srcdir}/${_gitname}"
+	cd "${pkgname%-git}"
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-	cd "${srcdir}/${_gitname}"
+	cd "${pkgname%-git}"
 	make all
 }
 
 package() {
-	cd "${srcdir}/${_gitname}"
+	cd "${pkgname%-git}"
 	make DESTDIR="$pkgdir" install
 }

@@ -1,13 +1,13 @@
 pkgbase = terminology-themes-git
 	pkgdesc = Color schemes for the Terminology terminal emulator
-	pkgver = r92.39f406f
+	pkgver = r119.e1ddd06
 	pkgrel = 1
 	url = https://github.com/sylveon/terminology-themes
 	arch = any
-	license = GPL3
+	license = GPL-3.0-or-later
 	makedepends = efl
-	source = git://github.com/sylveon/terminology-themes.git
+	makedepends = git
+	source = git+https://github.com/sylveon/terminology-themes.git
 	sha256sums = SKIP
 
 pkgname = terminology-themes-git
-
