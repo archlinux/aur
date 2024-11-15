@@ -8,7 +8,7 @@ export PIP_DISABLE_PIP_VERSION_CHECK=true
 pkgname=worky
 epoch=
 pkgver=1.0.2
-pkgrel=00
+pkgrel=1
 pkgdesc='Worky is a tool that helps to define and load project workspaces.'
 arch=(any)
 url=https://github.com/ZappaBoy/worky
@@ -126,6 +126,7 @@ _package() {
     if [[ -f LICENSE ]]; then
         install -D -m644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
     fi
+    install -Dm644 completion/bash/worky "${pkgdir}/usr/share/bash-completion/completions/worky"
 }
 
 package() { _package; }
