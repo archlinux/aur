@@ -35,6 +35,7 @@ package() {
   cd "$srcdir/domo/"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"
   install -Dm644 README.md "$pkgdir/usr/share/doc/${pkgname}/README.md"
+  install -Dm644 completion/bash/domo "${pkgdir}/usr/share/bash-completion/completions/domo"
   python -m installer --destdir="$pkgdir/domo/" dist/*.whl
   instructions
 }
