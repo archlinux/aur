@@ -1,7 +1,7 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=source2viewer-bin
 pkgver=10.2
-pkgrel=3
+pkgrel=4
 pkgdesc="Valve's Source 2 resource file format parser, decompiler, and exporter."
 arch=('x86_64')
 url="https://github.com/ValveResourceFormat/ValveResourceFormat"
@@ -13,8 +13,8 @@ provides=(source2viewer)
 replaces=(valveresourceformat)
 options=(!strip !debug)
 install=$pkgname.install
-source=("$url/releases/download/$pkgver/Decompiler-linux-x64.zip"
-	"$url/releases/download/$pkgver/Source2Viewer.exe"
+source=(Decompiler-linux-x64-${pkgver}.zip::"$url/releases/download/$pkgver/Decompiler-linux-x64.zip"
+	"Source2Viewer-${pkgver}.exe::$url/releases/download/$pkgver/Source2Viewer.exe"
 	"$url/archive/refs/tags/$pkgver.tar.gz")
 sha256sums=('f6782347c994783f7f8608cdf5db7d18f75c46adae0cf102bfdace58b1831186'
             '2df456c6e370bcc92d88e9e95c5ff31a1c49048c7abcff81e6638997107d99ff'
@@ -34,7 +34,7 @@ package() {
 
 	install -Dm755 Decompiler "$pkgdir/usr/bin/${pkgname::-3}cli"
 
-	install -Dm644 "$srcdir/Source2Viewer.exe" "$pkgdir/usr/lib/$pkgname/${pkgname::-4}.exe"
+	install -Dm644 "$srcdir/Source2Viewer-${pkgver}.exe" "$pkgdir/usr/lib/$pkgname/${pkgname::-4}.exe"
 	cat >> "$pkgdir/usr/bin/${pkgname::-4}" <<-EOF
 #!/usr/bin/env bash
 export WINEPREFIX="\$HOME/.${pkgname::-4}/wine"
