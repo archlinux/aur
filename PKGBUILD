@@ -4,9 +4,9 @@ _appname=NeoHtop
 _pkgauthor=Abdenasser
 _pkgname=neohtop
 pkgname=${_pkgname}-bin
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
-pkgdesc="💪🏻 htop on steroids"
+pkgdesc="htop on steroids"
 arch=('x86_64' 'aarch64')
 url="https://github.com/${_pkgauthor}/${_pkgname}"
 _urlraw="https://raw.githubusercontent.com/${_pkgauthor}/${_pkgname}/v${pkgver}"
@@ -20,9 +20,9 @@ source_x86_64=("${url}/releases/download/v${pkgver}/${_appname}_${pkgver}_${arch
 source_aarch64=("${url}/releases/download/v${pkgver}/${_appname}_${pkgver}_${arch[1]}.deb")
 
 sha256sums=('af4f1ed4ec165eb087e3caf30c9b7f68779adfd739ec4a771975fd51db1d5671'
-            'af4bd5f3a78047de6634d2c7c5b5b7b5cd1a2bd82e7a69d467fc411643188f03')
-sha256sums_x86_64=('f62e01f4f26a98fa751cfd9f8555f939ce91a2100a43c815cbfffbbe8afe869b')
-sha256sums_aarch64=('4dfaf77a78858e633af27a5ae77bd8d534c4ee23bd82f17edcf911764145aa47')
+            '18a928337762f9c5d233a36bc9310b582e7d2fa19aa2498621780c93675aa144')
+sha256sums_x86_64=('6297c2c080f8d6b80732fd387bc60f9cd439eccf91f8d9bb233f69f121f31b9d')
+sha256sums_aarch64=('d6501216387050252037f15d503080a9d8b34e1f925b9b79b1c47d69079694ed')
 
 
 package() {
