@@ -1,6 +1,6 @@
 # Maintainer: PanNNN <cool.panjianhao@gmail.com>
 pkgname=frame0
-pkgver=1.0.0~beta.3
+pkgver=1.0.0~beta.4
 pkgrel=1
 pkgdesc="A Balsamiq-alternative wireframming tool for modern apps"
 arch=('x86_64')
@@ -22,7 +22,7 @@ optdepends=(
     'pulseaudio'
 )
 source=("https://files.frame0.app/releases/linux/x64/frame0_${pkgver}_amd64.deb")
-sha256sums=('fc5f1227eaaf0257d92ef8d8275c27a1688c410962926c06b4cf25cf03a94fd3') 
+sha256sums=('3d5c7078f336e037332afe0ea548d6034df191b99502a18de4018ab130606d45') 
 
 package() {
     cd "${srcdir}"
@@ -31,3 +31,4 @@ package() {
     # Extract the data.tar.xz file
     bsdtar -xf data.tar.xz -C "${pkgdir}"
   }
+
