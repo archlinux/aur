@@ -1,0 +1,15 @@
+pkgbase = python-multiformats-config
+	pkgdesc = Pre-loading configuration module for the 'multiformats' package
+	pkgver = 0.3.1
+	pkgrel = 1
+	url = https://github.com/hashberg-io/multiformats-config
+	arch = any
+	license = MIT
+	makedepends = python-setuptools-scm>=6.2
+	makedepends = python-build
+	makedepends = python-installer
+	source = https://files.pythonhosted.org/packages/source/m/multiformats-config/multiformats-config-0.3.1.tar.gz
+	md5sums = 18cadff458c6b8aececd914840890d71
+
+pkgname = python-multiformats-config
+	depends = python>=3.7
