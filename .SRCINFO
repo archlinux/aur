@@ -1,0 +1,10 @@
+pkgbase = clap-host-dummy
+	pkgdesc = Empty package to satisfy the dependencies of clap plugins for manually installed clap hosts
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/free-audio/clap
+	arch = any
+	license = CC0
+	provides = clap-host
+
+pkgname = clap-host-dummy
