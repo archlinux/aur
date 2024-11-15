@@ -3,57 +3,79 @@
 
 pkgname=caddy-trojan
 pkgver=2.8.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Caddy web server with trojan support"
 arch=('x86_64' 'aarch64')
 url="https://github.com/imgk/caddy-trojan"
-license=('GPL3')
-makedepends=('go' 'xcaddy')
-provides=("caddy=$pkgver")
+license=('GPL-3.0-only')
+depends=("glibc")
+makedepends=('go')
+provides=("caddy=${pkgver}")
 conflicts=("caddy")
-source=(
-    "caddy.hook"
-    "caddy.sysusers"
-    "caddy.tmpfiles"
-    "https://raw.githubusercontent.com/caddyserver/dist/v${pkgver}/init/caddy.service"
-    "https://raw.githubusercontent.com/caddyserver/dist/v${pkgver}/init/caddy-api.service"
-    "https://raw.githubusercontent.com/caddyserver/dist/v${pkgver}/config/Caddyfile"
-    "https://raw.githubusercontent.com/caddyserver/dist/v${pkgver}/welcome/index.html"
-)
+source=("caddy.hook"
+        "caddy.sysusers"
+        "caddy.tmpfiles"
+        "https://raw.githubusercontent.com/caddyserver/dist/v${pkgver}/init/caddy.service"
+        "https://raw.githubusercontent.com/caddyserver/dist/v${pkgver}/init/caddy-api.service"
+        "https://raw.githubusercontent.com/caddyserver/dist/v${pkgver}/config/Caddyfile"
+        "https://raw.githubusercontent.com/caddyserver/dist/v${pkgver}/welcome/index.html"
+        "caddy-${pkgver}.tar.gz::https://github.com/caddyserver/caddy/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('dfadb1f4a1f82024a11c110624680f98b3818305a16dd013363ca398020611ad'
             'a9294eeba17a8fd57cf11cef21e2eb3719a016646eeac0764a0d9f9f380a40ef'
             '99282b1a57857d23b97883dfd7dd147005956cc04405630d6e4d73bb7069f5ba'
             '6c271e030644bd36a0c8956885934f16c928f88202bc126f12cde519ef9693ff'
             'a794bbf7d890eb9e1231bbad251890f87870815a96e3820b28a71819ba9f9c14'
             '66177d46fa761acb07208065db9b0274cb1b12c02ac43b9bfc9857b698b1ccfe'
-            '46e68c485ddce12932910cdc4034a7c2cda77d4de1df0f7b809b93a9153bcd3e')
+            '46e68c485ddce12932910cdc4034a7c2cda77d4de1df0f7b809b93a9153bcd3e'
+            '5c2e95ad9e688a18dd9d9099c8c132331e01e0bebd401183e8d9123372cf4fcc')
 
-build() {
-    MODULES=(
+prepare() {
+    local -a MODULES=(
         github.com/caddy-dns/route53
         github.com/caddy-dns/cloudflare
         github.com/caddy-dns/alidns
         github.com/caddy-dns/vultr
         github.com/caddy-dns/dnspod
         github.com/caddy-dns/duckdns
-        #github.com/caddy-dns/gandi
-        # Checksum mismatch issue, see https://github.com/libdns/gandi/issues/9
+        github.com/caddy-dns/gandi
         github.com/hairyhenderson/caddy-teapot-module
         github.com/caddyserver/transform-encoder
         github.com/mholt/caddy-webdav
-        github.com/imgk/caddy-trojan@caddy-2.8.0-rc.1
+        github.com/imgk/caddy-trojan
         github.com/imgk/caddy-pprof
-        # Let caddy truse CDN's X-Forwarded-For header
+        # Let caddy trust CDN's X-Forwarded-For header
         # Only cloudflare is found now.
         github.com/WeidiDeng/caddy-cloudflare-ip
     )
-    # shellcheck disable=SC2068
-    xcaddy build v${pkgver} ${MODULES[@]/#/--with }
+    cd "${srcdir}/caddy-${pkgver}/cmd/caddy"
+    for m in "${MODULES[@]}"
+    do
+        echo "Adding module $m..."
+        sed -i "/plug in Caddy modules here/a _ \"$m\"" main.go
+        go get "$m"
+    done
+    go get .
+}
+build() {
+    cd "${srcdir}/caddy-${pkgver}/cmd/caddy"
+    export CGO_LDFLAGS="${LDFLAGS}"
+    export CGO_CPPFLAGS="${CPPFLAGS}"
+    export CGO_CFLAGS="${CFLAGS}"
+    export CGO_CXXFLAGS="${CXXFLAGS}"
+    export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+    go build .
+
+    for i in zsh bash fish; do
+        ./caddy completion $i >caddy.${i}
+    done
 
 }
 
 package() {
-    install -Dm755 caddy "${pkgdir}/usr/bin/caddy"
+    install -Dm755 "${srcdir}/caddy-${pkgver}/cmd/caddy/caddy" "${pkgdir}/usr/bin/caddy"
+    install -Dm644 "${srcdir}/caddy-${pkgver}/cmd/caddy/caddy.zsh" "${pkgdir}/usr/share/zsh/site-functions/_caddy"
+    install -Dm644 "${srcdir}/caddy-${pkgver}/cmd/caddy/caddy.bash" "${pkgdir}/usr/share/bash-completion/completions/caddy"
+    install -Dm644 "${srcdir}/caddy-${pkgver}/cmd/caddy/caddy.fish" -t "${pkgdir}/usr/share/fish/vendor_completions.d"
 
     install -Dm644 "${srcdir}/Caddyfile" "${pkgdir}/usr/share/caddy/Caddyfile"
     install -Dm644 "${srcdir}/index.html" "${pkgdir}/usr/share/caddy/index.html"
