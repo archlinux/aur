@@ -5,11 +5,11 @@ pkgver=0.1.8
 pkgrel=1
 pkgdesc='GUI for configuring Hyprland, written in blazingly fast Rust!'
 arch=('x86_64')
-url='https://github.com/nnyyxxxx/hyprgui'
+url='https://github.com/hyprutils/hyprgui'
 license=('GPL-2.0')
-source=("$_pkgname-$pkgver::https://github.com/nnyyxxxx/$_pkgname/releases/download/v$pkgver/$_pkgname"
-    "https://raw.githubusercontent.com/nnyyxxxx/$_pkgname/refs/tags/v$pkgver/$_pkgname.desktop"
-    "https://raw.githubusercontent.com/nnyyxxxx/$_pkgname/refs/tags/v$pkgver/$_pkgname.png")
+source=("$_pkgname-$pkgver::https://github.com/hyprutils/$_pkgname/releases/download/v$pkgver/$_pkgname"
+    "https://raw.githubusercontent.com/hyprutils/$_pkgname/refs/tags/v$pkgver/$_pkgname.desktop"
+    "https://raw.githubusercontent.com/hyprutils/$_pkgname/refs/tags/v$pkgver/$_pkgname.png")
 sha256sums=('c9e7063ada69cfb040ef50b2b7d8864df32313dfb9d2c18dd38a2ce924207477' 'SKIP' 'SKIP')
 depends=('glibc' 'gcc-libs' 'gtk4')
 optdepends=('hyprland')
