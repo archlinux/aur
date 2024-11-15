@@ -1,26 +1,77 @@
-pkgname=python-pure-protobuf
-_gitname=protobuf
-pkgver=3.0.1
+# Maintainer: Astro Benzene <universebenzene at sina dot com>
+
+pkgbase=python-pure-protobuf
+_pname=${pkgbase#python-}
+_pyname=${_pname//-/_}
+pkgname=("python-${_pname}")
+#"python-${_pname}-doc")
+pkgver=3.1.3
 pkgrel=1
 pkgdesc='Python implementation of Protocol Buffers data types with dataclasses support.'
 arch=('any')
-url="https://github.com/eigenein/protobuf"
+url="https://eigenein.github.io/protobuf"
 license=('MIT')
-depends=('python')
-makedepends=(
-  git
-  python-poetry-dynamic-versioning
-)
+makedepends=('python-poetry-dynamic-versioning'
+             'python-build'
+             'python-installer')
+#            'mkdocstrings'
+#            'mkdocs-material'
+#            'mkdocs-git-revision-date-localized-plugin'
+#            'python-pillow'
+#            'python-cairosvg'
+#            'mkdocs-autorefs'
+#            'python-pymdown-extensions')
+checkdepends=('python-pytest'
+#             'python-pytest-xdist'
+              'python-pytest-benchmark'
+              'python-pydantic')
+#source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
+source=("https://github.com/eigenein/protobuf/archive/refs/tags/${pkgver}.tar.gz")
+sha512sums=('f6de2d15ba97700a502174f8e48f313bd33c05f7d33ae028e532b237fe6850c16473adc6bded080bf332cecbec9ae5f0e0b2d7e88c10b127d6d1ba91840e271f')
 
-source=("${_gitname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha512sums=('d710a242e6e9cadc86dcaae2f28174477f76053bda501c077868fdd09597568eb52dbce02e4b463ef8cb3c9e2401d6754e333bec55614cfca1c7dc1cd7c211dd')
+prepare() {
+#   cd ${srcdir}/${_pyname}-${pkgver}
+    cd ${srcdir}/protobuf-${pkgver}
+
+    sed -i -e "s/0.0.0/${pkgver}/" -e "/enable/s/true/false/" -e '/--cov/d' pyproject.toml
+##   sed -i -e '/-\ git-rev/a \      fallback_to_build_date: true' \
+##      -e '/-\ git-rev/s/$/:/' -e '$a use_directory_urls: false' mkdocs.yml
+#    sed -i -e '/-\ git-rev/a \      fallback_to_build_date: true' mkdocs.yml
+}
 
 build() {
-  cd "${srcdir}/${_gitname}-${pkgver}"
-  POETRY_CACHE_DIR="${srcdir}/poetry-cache" POETRY_DYNAMIC_VERSIONING_BYPASS="${pkgver}" poetry build
+#   cd ${srcdir}/${_pyname}-${pkgver}
+    cd ${srcdir}/protobuf-${pkgver}
+    python -m build --wheel --no-isolation
+
+#   msg "Building Docs"
+#   mkdocs build
 }
 
-package() {
-  cd "${srcdir}/${_gitname}-${pkgver}"
-  python -m installer --destdir="${pkgdir}" dist/*.whl
+check() {
+#   cd ${srcdir}/${_pyname}-${pkgver}
+    cd ${srcdir}/protobuf-${pkgver}
+
+    pytest || warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count -p xdist -n 4 #
 }
+
+package_python-pure-protobuf() {
+    depends=('python>=3.7' 'python-typing_extensions>=4.4.0')
+#   optdepends=('python-pure-protobuf-doc: Documentation for pure-protobuf')
+#   cd ${srcdir}/${_pyname}-${pkgver}
+    cd ${srcdir}/protobuf-${pkgver}
+
+    install -D -m644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -D -m644 README.md -t "${pkgdir}/usr/share/doc/${pkgname}"
+    python -m installer --destdir="${pkgdir}" dist/*.whl
+}
+
+#package_python-pure-protobuf-doc() {
+#    pkgdesc="Documentation for Python pure-protobuf"
+##   cd ${srcdir}/${_pyname}-${pkgver}
+#    cd ${srcdir}/protobuf-${pkgver}
+#
+#    install -D -m644 ../../LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
+#    install -d -m755 "${pkgdir}/usr/share/doc/${pkgbase}"
+#    cp -a site "${pkgdir}/usr/share/doc/${pkgbase}"
+#}
