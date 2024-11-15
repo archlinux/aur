@@ -1,7 +1,7 @@
 pkgbase = caps-log-bin
 	pkgdesc = A small, terminal-based journaling tool
-	pkgver = 1.0.1
-	pkgrel = 2
+	pkgver = 1.1.0
+	pkgrel = 1
 	url = https://github.com/NikolaDucak/caps-log
 	arch = x86_64
 	license = MIT
@@ -12,11 +12,11 @@ pkgbase = caps-log-bin
 	depends = libgit2
 	provides = caps-log
 	conflicts = caps-log
-	source = README-1.0.1.md::https://github.com/NikolaDucak/caps-log/raw/1.0.1/README.md
-	source = LICENSE-1.0.1::https://github.com/NikolaDucak/caps-log/raw/1.0.1/LICENCE
-	sha256sums = 2259205a6b50054f0ccdf9e282cdc8915599dcf47ce02d1110993c900f4785d5
+	source = README-1.1.0.md::https://github.com/NikolaDucak/caps-log/raw/1.1.0/README.md
+	source = LICENSE-1.1.0::https://github.com/NikolaDucak/caps-log/raw/1.1.0/LICENCE
+	sha256sums = 782323e0c9ae7954ff0f1c141330de164009845b92713a2ddac004e1ec29bf3e
 	sha256sums = 9fd4f46b0ba1940805ca00a8cb34c60ed94d646a99d3650b69c0a60004990e18
-	source_x86_64 = caps-log-1.0.1-x86_64.tar.gz::https://github.com/NikolaDucak/caps-log/releases/download/1.0.1/caps-log-linux.tar.gz
-	sha256sums_x86_64 = e284eecb409620e224dfc031c77a9c44727e47fca32415ab90ab67488fac96ef
+	source_x86_64 = caps-log-1.1.0-x86_64.tar.gz::https://github.com/NikolaDucak/caps-log/releases/download/1.1.0/caps-log-linux.tar.gz
+	sha256sums_x86_64 = a94a9199a43a49ef5f88d7d6c083e7b36aa3ac803741be0dfb24d5d63112d025
 
 pkgname = caps-log-bin

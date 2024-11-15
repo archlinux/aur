@@ -1,24 +1,24 @@
-# Maintainer: vitaliikuzhdin <vitaliikuzhdin@gmail.com>
+# Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
 _pkgname="caps-log"
 pkgname="${_pkgname}-bin"
-pkgver=1.0.1
-pkgrel=2
+pkgver=1.1.0
+pkgrel=1
 pkgdesc="A small, terminal-based journaling tool"
 arch=('x86_64')
 url="https://github.com/NikolaDucak/${_pkgname}"
 license=('MIT')
+depends=('boost-libs' 'gcc-libs' 'glibc' 'libgit2')
 makedepends=('patchelf')
-depends=('glibc' 'gcc-libs' 'boost-libs' 'libgit2')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 _pkgsrc="${_pkgname}-${pkgver}"
 source=("README-${pkgver}.md::${url}/raw/${pkgver}/README.md"
         "LICENSE-${pkgver}::${url}/raw/${pkgver}/LICENCE")
 source_x86_64=("${_pkgsrc}-x86_64.tar.gz::${url}/releases/download/${pkgver}/${_pkgname}-linux.tar.gz")
-sha256sums=('2259205a6b50054f0ccdf9e282cdc8915599dcf47ce02d1110993c900f4785d5'
+sha256sums=('782323e0c9ae7954ff0f1c141330de164009845b92713a2ddac004e1ec29bf3e'
             '9fd4f46b0ba1940805ca00a8cb34c60ed94d646a99d3650b69c0a60004990e18')
-sha256sums_x86_64=('e284eecb409620e224dfc031c77a9c44727e47fca32415ab90ab67488fac96ef')
+sha256sums_x86_64=('a94a9199a43a49ef5f88d7d6c083e7b36aa3ac803741be0dfb24d5d63112d025')
 
 build() {
   cd "${srcdir}"
