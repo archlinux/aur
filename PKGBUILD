@@ -1,7 +1,7 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=blender-bin
 pkgver=4.2.3
-pkgrel=2
+pkgrel=3
 pkgdesc="A fully integrated 3D graphics creation suite (with packaged libraries and python3.11)"
 arch=('x86_64')
 url="https://blender.org"
@@ -46,8 +46,10 @@ optdepends=('cuda: Cycles renderer CUDA support'
 provides=('blender')
 conflicts=('blender')
 install=$pkgname.install
-source=("https://download.blender.org/release/Blender${pkgver:0:3}/blender-${pkgver}-linux-x64.tar.xz")
-sha256sums=('3a64efd1982465395abab4259b4091d5c8c56054c7267e9633e4f702a71ea3f4')
+source=("https://download.blender.org/release/Blender${pkgver:0:3}/blender-${pkgver}-linux-x64.tar.xz"
+	"x-blender.xml")
+sha256sums=('3a64efd1982465395abab4259b4091d5c8c56054c7267e9633e4f702a71ea3f4'
+            '230fc11e49d647215f4735117761d887756823ee1c8fab08987218fd037de75c')
 validpgpkeys=()
 
 package() {
@@ -59,6 +61,7 @@ package() {
 	install -Dm644 copyright.txt "${pkgdir}/usr/share/licenses/$pkgname/copyright.txt"
 	install -Dm644 readme.html "${pkgdir}/usr/share/doc/$pkgname/readme.html"
 	install -Dm644 blender.desktop "${pkgdir}/usr/share/applications/blender.desktop"
+	install -Dm644 "$srcdir/x-blender.xml" "${pkgdir}/usr/share/mime/application/x-blender.xml"
 	
 	cp -a -r "${pkgver:0:3}" {lib,textures,usd} "${pkgdir}/usr/lib/${pkgname}"
 	pushd "$srcdir/blender-$pkgver-linux-x64/license/"

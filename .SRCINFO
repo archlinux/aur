@@ -1,7 +1,7 @@
 pkgbase = blender-bin
 	pkgdesc = A fully integrated 3D graphics creation suite (with packaged libraries and python3.11)
 	pkgver = 4.2.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://blender.org
 	install = blender-bin.install
 	arch = x86_64
@@ -46,6 +46,8 @@ pkgbase = blender-bin
 	provides = blender
 	conflicts = blender
 	source = https://download.blender.org/release/Blender4.2/blender-4.2.3-linux-x64.tar.xz
+	source = x-blender.xml
 	sha256sums = 3a64efd1982465395abab4259b4091d5c8c56054c7267e9633e4f702a71ea3f4
+	sha256sums = 230fc11e49d647215f4735117761d887756823ee1c8fab08987218fd037de75c
 
 pkgname = blender-bin
