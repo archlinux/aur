@@ -1,12 +1,14 @@
 pkgbase = aylurs-gtk-shell-git
 	pkgdesc = Aylurs's Gtk Shell (AGS), An eww inspired gtk widget system.
-	pkgver = 2.0.0.r2.gfb47b50
-	pkgrel = 1
+	pkgver = 2.0.1.r0.gd8c2748
+	pkgrel = 2
 	url = https://github.com/Aylur/ags
 	arch = x86_64
 	license = GPL-3.0-only
 	makedepends = git
 	makedepends = go
+	depends = blueprint-compiler
+	depends = dart-sass
 	depends = gjs
 	depends = libastal-gjs
 	depends = libastal-meta
