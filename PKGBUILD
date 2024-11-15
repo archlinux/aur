@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=curatedTCGAData
-_pkgver=1.28.0
+_pkgver=1.28.1
 pkgname=r-${_pkgname,,}
-pkgver=1.28.0
+pkgver=1.28.1
 pkgrel=1
 pkgdesc='Curated Data From The Cancer Genome Atlas (TCGA) as MultiAssayExperiment Objects'
 arch=('any')
@@ -28,7 +28,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/data/experiment/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('78a05d648518d7f7f2c3c3d6953dff0fecbabdd26a3f6f57ed745c7f130acc00')
+sha256sums=('84e3f548d504969e9458767965ad1452526531ee4d94b7e8f04310b152f410bd')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
