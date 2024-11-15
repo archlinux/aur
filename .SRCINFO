@@ -1,0 +1,12 @@
+pkgbase = minitrust
+	pkgdesc = Tool that verifies minisign signatures using public keys from a trusted list
+	pkgver = 0.1.4
+	pkgrel = 1
+	url = https://github.com/igoose1/minitrust/
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = go
+	source = minitrust-0.1.4.tar.gz::https://github.com/igoose1/minitrust/archive/refs/tags/v0.1.4.tar.gz
+	sha512sums = e0891c65612ec69f89037d58553b3c005ba6fed1c7acfe567831a1ca7c6e295b22aaa152ffe9cf8e1db5a1f15fe2268df212425de65252e6778a16d19875533b
+
+pkgname = minitrust
