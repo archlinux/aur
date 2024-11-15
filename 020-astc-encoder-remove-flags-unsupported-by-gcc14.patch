@@ -22,7 +22,7 @@
              $<${is_gnu_fe}:-Wno-cast-function-type>
  
              # Force DWARF4 for Valgrind profiling
-@@ -366,7 +359,7 @@ macro(astcenc_set_properties ASTCENC_TARGET_NAME ASTCENC_VENEER_TYPE)
+@@ -367,7 +360,7 @@ macro(astcenc_set_properties ASTCENC_TARGET_NAME ASTCENC_VENEER_TYPE)
                  $<${is_clangcl}:-msse2>
                  $<${is_gnu_fe}:-msse2>
                  $<${is_gnu_fe}:-mno-sse4.1>
@@ -31,7 +31,7 @@
  
      elseif(${ASTCENC_ISA_SIMD} MATCHES "sse4.1")
          target_compile_definitions(${ASTCENC_TARGET_NAME}
-@@ -384,13 +377,13 @@ macro(astcenc_set_properties ASTCENC_TARGET_NAME ASTCENC_VENEER_TYPE)
+@@ -386,13 +379,13 @@ macro(astcenc_set_properties ASTCENC_TARGET_NAME ASTCENC_VENEER_TYPE)
                  PRIVATE
                      $<${is_gnu_fe}:-msse2>
                      $<${is_gnu_fe}:-mno-sse4.1>
@@ -47,7 +47,7 @@
          endif()
  
      elseif(${ASTCENC_ISA_SIMD} MATCHES "avx2")
-@@ -409,14 +402,14 @@ macro(astcenc_set_properties ASTCENC_TARGET_NAME ASTCENC_VENEER_TYPE)
+@@ -415,14 +408,14 @@ macro(astcenc_set_properties ASTCENC_TARGET_NAME ASTCENC_VENEER_TYPE)
                  PRIVATE
                      $<${is_gnu_fe}:-msse2>
                      $<${is_gnu_fe}:-mno-sse4.1>
@@ -64,7 +64,7 @@
          endif()
  
          # Non-invariant builds enable us to loosen the compiler constraints on
-@@ -457,20 +450,13 @@ string(CONCAT EXTERNAL_CXX_FLAGS
+@@ -463,20 +456,13 @@ string(CONCAT EXTERNAL_CXX_FLAGS
         " $<${is_gnu_fe}: -Wno-old-style-cast>"
         " $<${is_gnu_fe}: -Wno-double-promotion>"
         " $<${is_gnu_fe}: -Wno-zero-as-null-pointer-constant>"
