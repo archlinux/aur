@@ -1,7 +1,7 @@
 # Maintainer: Martin Reboredo <yakoyoku@gmail.com>
 
 pkgname=mongosh
-pkgver=2.2.1
+pkgver=2.3.3
 pkgrel=1
 pkgdesc='Rich Node.js REPL for interacting with MongoDB instances.'
 arch=('x86_64')
@@ -14,7 +14,7 @@ source=(
   https://registry.npmjs.org/$pkgname/-/$pkgname-$pkgver.tgz
 )
 noextract=($pkgname-$pkgver.tgz)
-sha256sums=('e92d5aab0c2dcc200dc7ab4b43874917ef8e57129ad2c29bc86e342668821c1e')
+sha256sums=('52b9d71ee1026d515b1d86dd791f58eb6f45382c8e1ca85bb9b5601e38dc6d1c')
 
 package() {
   export PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=1
