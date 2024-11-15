@@ -8,7 +8,7 @@ pkgname=("${pkgbase}" "${pkgbase}-opt" "${pkgbase}-cuda" "${pkgbase}-opt-cuda" "
 # When updating pytorch, also check the compatibility table for torchvision
 # https://github.com/pytorch/vision?tab=readme-ov-file#installation
 pkgver=2.5.1
-pkgrel=3
+pkgrel=4
 _pkgdesc='Tensors and Dynamic neural networks in Python with strong GPU acceleration'
 pkgdesc="${_pkgdesc}"
 arch=('x86_64')
@@ -285,7 +285,7 @@ build() {
   export USE_CUDA=0
   export USE_CUDNN=0
   export USE_ROCM=0
-  echo "add_definitions(-march=haswell)" >> cmake/MiscCheck.cmake
+  echo "add_definitions(-march=x86-64-v3)" >> cmake/MiscCheck.cmake
   # same horrible hack as above
   python setup.py build || python setup.py build
 
@@ -308,7 +308,7 @@ build() {
   export USE_ROCM=0
   export MAGMA_HOME=/opt/cuda/targets/x86_64-linux
   _prepare
-  echo "add_definitions(-march=haswell)" >> cmake/MiscCheck.cmake
+  echo "add_definitions(-march=x86-64-v3)" >> cmake/MiscCheck.cmake
   # same horrible hack as above
   python setup.py build || python setup.py build
 
@@ -336,7 +336,7 @@ build() {
   export USE_CUDNN=0
   export USE_ROCM=1
   export MAGMA_HOME=/opt/rocm
-  echo "add_definitions(-march=haswell)" >> cmake/MiscCheck.cmake
+  echo "add_definitions(-march=x86-64-v3)" >> cmake/MiscCheck.cmake
   # Conversion of CUDA to ROCm source files
   python tools/amd_build/build_amd.py
   patch -Np1 -i "$srcdir/pytorch-rocm-jit.patch"
