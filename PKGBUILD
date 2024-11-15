@@ -1,7 +1,7 @@
 # Maintainer: ZappaBoy <federico.zappone@justanother.group>
 pkgname=domo-git
 pkgbase=domo-git
-pkgver=1.0.0
+pkgver=1.0.3
 pkgrel=1
 epoch=
 pkgdesc="Simple tool to manage IoT devices"
