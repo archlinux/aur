@@ -18,6 +18,6 @@ pkgbase = bitw-git
 	provides = org.freedesktop.secrets
 	conflicts = bitw
 	source = bitw-git::git+https://github.com/mvdan/bitw
-	sha512sums = SKIP
+	b2sums = SKIP
 
 pkgname = bitw-git

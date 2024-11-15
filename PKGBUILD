@@ -16,7 +16,7 @@ optdepends=(
 provides=("$_pkgname" 'org.freedesktop.secrets')
 conflicts=("$_pkgname")
 source=("$pkgname::git+$url")
-sha512sums=('SKIP')
+b2sums=('SKIP')
 
 _sourcedirectory="$pkgname"
 _bindir="$pkgname-bin"
