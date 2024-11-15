@@ -2,8 +2,8 @@
 
 pkgname=libastal-battery-git
 _pkgname=battery
-pkgver=r250.2927230
-pkgrel=1
+pkgver=r580.d538d8e
+pkgrel=2
 provides=(astal-battery libastal-battery libastal-battery.so=0-64)
 pkgdesc="DBus proxy library for upower daemon"
 arch=(x86_64)
@@ -12,6 +12,7 @@ url="https://github.com/Aylur/astal"
 depends=(
   glib2
   glibc
+  json-glib
 )
 makedepends=(
   meson
