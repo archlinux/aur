@@ -1,0 +1,24 @@
+diff --git a/Makefile b/Makefile
+index 4734af7..71b8594 100644
+--- a/Makefile
++++ b/Makefile
+@@ -1,6 +1,6 @@
+ CXX=g++
+-CXXFLAGS=-std=c++2b -Iinclude -Wno-narrowing -Wno-enum-compare
+-LDFLAGS=
++CXXFLAGS += -std=c++2b -Iinclude -Wno-narrowing -Wno-enum-compare
++LDFLAGS +=
+ TARGET=unpac
+ LIBTARGET=lib$(TARGET).so
+ 
+@@ -16,8 +16,8 @@ $(TARGET):
+ 	$(CXX) src/*.cpp $(CXXFLAGS) $(LDFLAGS) -o $(TARGET)
+ 
+ libunpac:
+-	$(CXX) src/ap.cpp src/archive.cpp src/estream.cpp src/g03.cpp src/lzss.cpp src/util.cpp src/vcra.cpp -Iinclude -fPIC -c -std=c++2b
+-	$(CXX) -shared -o $(LIBTARGET) *.o
++	$(CXX) $(CXXFLAGS) src/ap.cpp src/archive.cpp src/estream.cpp src/g03.cpp src/lzss.cpp src/util.cpp src/vcra.cpp -Iinclude -fPIC -c -std=c++2b
++	$(CXX) $(LDFLAGS) -shared -o $(LIBTARGET) *.o
+ 
+ install: $(TARGET)
+ ifeq ($(OS),Windows_NT)

@@ -1,3 +1,0 @@
-pre_remove() {
-    rm -rf /bin/unpac /lib/libunpac.so /usr/include/unpac
-}
