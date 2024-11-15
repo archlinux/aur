@@ -22,16 +22,14 @@ sha512sums=(a4423f0b74b1f3a87e7013c9c5892dd188c39bdbcb37c9f1b6d483ffa90def879008
 	90103d36dfbc4d5da1c16774a9474c5e4b9bcc9d9354d35060187aa89176989119a7ec83bd36beca9e79103aae5329db72bf981a622be1daf248bb6dffceae5c)
 install="${pkgname}.install"
 
-verify() {
+build() {
 	local jdkver=$(archlinux-java get)
 	if [[ ! $jdkver = java-21* ]]; then
 		echo Haveno can currently only be built with JDK 21.
 		echo Please select a JDK with version 21 using archlinux-java.
-		return 1
+		exit 1
 	fi
-}
 
-build() {
 	cd "${srcdir}"/"${pkgname}"-"${pkgver}"/ || exit 1
 	./gradlew -F lenient -x test build
 }
