@@ -10,7 +10,7 @@ pkgname=('systemd-git'
          'systemd-tests-git'
          'systemd-ukify-git')
 pkgdesc='systemd (git version)'
-pkgver=257.devel.r76353.fb4c82b643b
+pkgver=257.rc1.r77650.bae936b418e
 pkgrel=1
 arch=('x86_64')
 license=('LGPL-2.1-or-later')
@@ -46,7 +46,7 @@ source=("$pkgbase-stable::git+https://github.com/systemd/systemd"
         '30-systemd-udev-reload.hook'
         '30-systemd-update.hook')
 sha512sums=('SKIP'
-            '54fa62f9d1c4a45a4d0300ba0c235f9655e60ff88734504ec19f6fae2404ce3656026054f3fdd43c47db826e43d566d91b3a6a3ebebed7675da215b42bd7c846'
+            '72fe24d4178441fbad7f8a949cbbce05f7aae51a7b1579aa6427f76c9aa376b42596a59e94ef67a0f52c57e007e92e074e22fdd2afe9c72af5a6c40b8937eef9'
             '61032d29241b74a0f28446f8cf1be0e8ec46d0847a61dadb2a4f096e8686d5f57fe5c72bcf386003f6520bc4b5856c32d63bf3efe7eb0bc0deefc9f68159e648'
             'c416e2121df83067376bcaacb58c05b01990f4614ad9de657d74b6da3efa441af251d13bf21e3f0f71ddcb4c9ea658b81da3d915667dc5c309c87ec32a1cb5a5'
             '5a1d78b5170da5abe3d18fdf9f2c3a4d78f15ba7d1ee9ec2708c4c9c2e28973469bc19386f70b3cf32ffafbe4fcc4303e5ebbd6d5187a1df3314ae0965b25e75'

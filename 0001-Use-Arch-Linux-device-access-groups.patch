@@ -185,11 +185,11 @@ index 52611357c2..3067f7996c 100644
 @@ -35,7 +35,7 @@ in_files = [
          ['20-systemd-stub.conf',          'ENABLE_EFI'],
          ['20-systemd-userdb.conf',        'ENABLE_SSH_USERDB_CONFIG'],
-         ['etc.conf',                      ''],
+         ['etc.conf'],
 -        ['legacy.conf',                   'HAVE_SYSV_COMPAT'],
-+        ['legacy.conf',                   ''],
-         ['static-nodes-permissions.conf', ''],
-         ['systemd.conf',                  ''],
-         ['var.conf',                      ''],
++        ['legacy.conf'],
+         ['static-nodes-permissions.conf'],
+         ['systemd.conf'],
+         ['var.conf'],
 --
 
