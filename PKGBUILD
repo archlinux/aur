@@ -1,7 +1,7 @@
 # Maintainer: Wraient <rushikeshwastaken@gmail.com>
 pkgname='buttercup'
-pkgver=v1.0.0
-pkgrel=1
+pkgver=1.1.0
+pkgrel=2
 pkgdesc="Watch TV Shows / Movies from torrent."
 arch=("x86_64")
 url="https://github.com/Wraient/buttercup"
@@ -14,12 +14,12 @@ pkgver() {
     # Fetch the latest release tag from GitHub and set it as pkgver
     local latest_release
     latest_release=$(curl -s https://api.github.com/repos/Wraient/buttercup/releases/latest | grep -Po '"tag_name": "\K.*?(?=")')
-    echo "$latest_release"
+    echo "${latest_release#v}"
 }
 
 build() {
-    # Install peerflix globally via npm
-    npm install -g peerflix
+    # Install webtorrent-cli globally via npm
+    npm install -g webtorrent-cli
 }
 
 package() {

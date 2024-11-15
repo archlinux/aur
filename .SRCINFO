@@ -1,7 +1,7 @@
 pkgbase = buttercup
 	pkgdesc = Watch TV Shows / Movies from torrent.
-	pkgver = v1.0.0
-	pkgrel = 1
+	pkgver = 1.1.0
+	pkgrel = 2
 	url = https://github.com/Wraient/buttercup
 	arch = x86_64
 	license = GPL
