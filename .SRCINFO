@@ -1,0 +1,26 @@
+pkgbase = llama.cpp-cublas-git
+	pkgdesc = Port of Facebook's LLaMA model in C/C++ (with NVIDIA CUDA optimizations)
+	pkgver = b4082.r11.4047be74d
+	pkgrel = 1
+	url = https://github.com/ggerganov/llama.cpp
+	arch = armv7h
+	arch = aarch64
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = cuda
+	makedepends = gcc13
+	makedepends = git
+	depends = cuda
+	provides = llama.cpp
+	conflicts = llama.cpp
+	source = llama.cpp::git+https://github.com/ggerganov/llama.cpp
+	source = kompute::git+https://github.com/nomic-ai/kompute.git
+	source = llama.cpp.conf
+	source = llama.cpp.service
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = 53fa70cfe40cb8a3ca432590e4f76561df0f129a31b121c9b4b34af0da7c4d87
+	sha256sums = 1fc9d4f0cfa407404acc3859c26c53a79d14f5e5bc72f21084d87dde04e36f20
+
+pkgname = llama.cpp-cublas-git
