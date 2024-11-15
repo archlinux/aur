@@ -1,7 +1,7 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
 pkgname="caps-log"
-pkgver=1.1.0
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="A small, terminal-based journaling tool"
 arch=('x86_64')
@@ -12,7 +12,7 @@ makedepends=('boost' 'cmake' 'ftxui')
 _pkgsrc="${pkgname}-${pkgver}"
 source=("${_pkgsrc}.tar.gz::${url}/archive/${pkgver}.tar.gz"
         "${pkgname}_fix_openssl.patch")
-sha256sums=('722cc8bee072dc7acbbe00213387c181cb3474a30384d0295cbf1f34ea389abe'
+sha256sums=('c159122b8da60becac3e31c1b335a6faeab9f978b899887fabd0a0594304292b'
             'b86336c24292ecbf3a627129a0f6c416d121c16ea93ec5735d2a8049572de1e7')
 
 prepare() {

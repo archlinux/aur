@@ -1,6 +1,6 @@
 pkgbase = caps-log
 	pkgdesc = A small, terminal-based journaling tool
-	pkgver = 1.1.0
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://github.com/NikolaDucak/caps-log
 	arch = x86_64
@@ -14,9 +14,9 @@ pkgbase = caps-log
 	depends = glibc
 	depends = libgit2
 	depends = openssl
-	source = caps-log-1.1.0.tar.gz::https://github.com/NikolaDucak/caps-log/archive/1.1.0.tar.gz
+	source = caps-log-1.2.0.tar.gz::https://github.com/NikolaDucak/caps-log/archive/1.2.0.tar.gz
 	source = caps-log_fix_openssl.patch
-	sha256sums = 722cc8bee072dc7acbbe00213387c181cb3474a30384d0295cbf1f34ea389abe
+	sha256sums = c159122b8da60becac3e31c1b335a6faeab9f978b899887fabd0a0594304292b
 	sha256sums = b86336c24292ecbf3a627129a0f6c416d121c16ea93ec5735d2a8049572de1e7
 
 pkgname = caps-log
