@@ -1,7 +1,7 @@
 pkgbase = python-mando
 	pkgdesc = Python library wrapping argparse to help write flexible CLI applications
-	pkgver = 0.7.1
-	pkgrel = 3
+	pkgver = 0.8.2
+	pkgrel = 1
 	url = https://mando.readthedocs.org/
 	arch = any
 	license = MIT
@@ -13,7 +13,7 @@ pkgbase = python-mando
 	depends = python
 	optdepends = python-rst2ansi: ReST formatting of console help output
 	optdepends = python-sphinx: run unit tests
-	source = https://files.pythonhosted.org/packages/source/m/mando/mando-0.7.1.tar.gz
-	sha256sums = 18baa999b4b613faefb00eac4efadcf14f510b59b924b66e08289aa1de8c3500
+	source = https://files.pythonhosted.org/packages/source/m/mando/mando-0.8.2.tar.gz
+	sha256sums = 539659d9a2fdc6c9a188211c58f381e0dafe9597085174c5472eb1ed0224b6b5
 
 pkgname = python-mando

@@ -2,8 +2,8 @@
 
 _name=mando
 pkgname=python-$_name
-pkgver=0.7.1
-pkgrel=3
+pkgver=0.8.2
+pkgrel=1
 pkgdesc='Python library wrapping argparse to help write flexible CLI applications'
 arch=(any)
 url='https://mando.readthedocs.org/'
@@ -16,7 +16,7 @@ optdepends=(
 )
 makedepends=(python-build python-installer python-rst2ansi python-setuptools python-wheel)
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('18baa999b4b613faefb00eac4efadcf14f510b59b924b66e08289aa1de8c3500')
+sha256sums=('539659d9a2fdc6c9a188211c58f381e0dafe9597085174c5472eb1ed0224b6b5')
 
 build() {
   cd $_name-$pkgver
