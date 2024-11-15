@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=escrcpy
-pkgver=1.26.3
+pkgver=1.26.4
 _electronversion=33
 _nodeversion=20
 pkgrel=1
@@ -27,7 +27,7 @@ source=(
     "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
     "${pkgname}.sh"
 )
-sha256sums=('bb12e2760fb3bf80ecb11ed580dd68f2fc4dee70bc4e2156c4d2e0c276c46128'
+sha256sums=('add8e6d7a9582ef67d1161b4c2a47a53980830ee8d3087b57d36f4d66b331898'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
@@ -72,7 +72,7 @@ build() {
     sed "s/logo\.icns/logo\.png/" -i electron-builder.json
     NODE_ENV=development    pnpm install
     NODE_ENV=production     pnpm vite build
-    NODE_ENV=production     pnpm -c exec "electron-builder --linux dir -c.electronDist=${electronDist}"
+    NODE_ENV=production     pnpm -c exec "electron-builder --linux dir -c.electronDist=${electronDist} --config electron-builder.json"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
