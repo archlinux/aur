@@ -3,7 +3,7 @@
 
 _pkgname="memos"
 pkgname="${_pkgname}-git"
-pkgver=0.22.5+r3119+g378b6a51c
+pkgver=0.22.5+r3120+g80785de90
 pkgrel=2
 pkgdesc="A privacy-first, lightweight note-taking service. Easily capture and share your great thoughts."
 url="https://github.com/usememos/${_pkgname}"
