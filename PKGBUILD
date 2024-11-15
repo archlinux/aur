@@ -8,7 +8,7 @@
 
 pkgname=clamav-git
 _pkgname=clamav
-pkgver=1.4.1+r11250+g52b201762
+pkgver=1.4.1+r11251+gd6d25c33d
 pkgrel=1
 pkgdesc='Anti-virus toolkit for Unix - Git latest'
 url='https://www.clamav.net/'
@@ -127,7 +127,7 @@ pkgver() {
   _version=$(git tag --sort=-v:refname --list 'clamav-*.*' | head -n1)
   _commits=$(git rev-list --count HEAD)
   _short_commit_hash=$(git rev-parse --short=9 HEAD)
-  echo "${_version#'clamav-'}+r${_commits}+${_short_commit_hash}"
+  echo "${_version#'clamav-'}+r${_commits}+g${_short_commit_hash}"
 }
 
 package() {
