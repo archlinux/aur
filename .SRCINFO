@@ -1,0 +1,12 @@
+pkgbase = pickpx
+	pkgdesc = Get the color of a specific pixel on the screen via the command line (often used together with xdotool).
+	pkgver = 0.1
+	pkgrel = 1
+	arch = x86_64
+	license = Unlicense
+	source = pickpx.c
+	source = LICENSE
+	sha256sums = 487141138ec1a9cba67ec2eb5993066a2af00071b49468345f1b7f367fd28ab6
+	sha256sums = b5065838cbac452dfc855ba6e6e031481ad2c68406f70d21ead9321374653e6c
+
+pkgname = pickpx
