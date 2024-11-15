@@ -1,0 +1,5 @@
+[cozy-desktop]
+source = "git"
+git = "https://github.com/cozy-labs/cozy-desktop"
+prefix = "v"
+include_regex = '^v\d+\.\d+\.\d+$'
