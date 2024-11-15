@@ -1,4 +1,5 @@
 # Maintainer: Thore Bödecker <foxxx0@archlinux.org>
+# Maintainer: Carl Smedstad <carsme@archlinux.org>
 
 pkgname='python-pytest-freezegun'
 _pkgbase="${pkgname//python-/}"
