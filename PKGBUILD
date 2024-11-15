@@ -17,7 +17,7 @@ options=('!strip') # UPX will break this. So we strip manually before upx the bi
 
 prepare(){
     cd "${srcdir}/uosc-${pkgver}"
-    go get ./src/ziggy
+    go get -modcacherw ./src/ziggy
 }
 
 build(){
