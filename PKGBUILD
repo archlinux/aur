@@ -3,7 +3,7 @@
 
 pkgname=ruby-unicode-name
 _name="${pkgname#ruby-}"
-pkgver=1.13.3
+pkgver=1.13.5
 pkgrel=1
 pkgdesc='[Unicode 15.1.0] Returns the name, aliases, or label of a Unicode code point'
 arch=(any)
@@ -13,7 +13,7 @@ depends=(ruby 'ruby-unicode-types')
 options=(!emptydirs)
 source=("https://rubygems.org/downloads/${_name}-${pkgver}.gem")
 noextract=("${_name}-${pkgver}.gem")
-sha256sums=(cd3c3d68604a4db1f385bdb5c674d2cdddf1d39eaf60ebc0c71b92c8a6df7abd)
+sha256sums=(f6b6905db8c81441a8aec99d1fd8187456ed4fa1bf9954c0aa6b6e4aaea12259)
 
 package() {
     local _gemdir="$(ruby -e'puts Gem.default_dir')"
