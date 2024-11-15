@@ -1,0 +1,23 @@
+diff --unified --recursive --text --new-file pytest-freezegun-0.4.2.orig/pytest_freezegun.py pytest-freezegun-0.4.2/pytest_freezegun.py
+--- pytest-freezegun-0.4.2.orig/pytest_freezegun.py	2024-11-15 09:42:43.131442145 +0100
++++ pytest-freezegun-0.4.2/pytest_freezegun.py	2024-11-15 09:58:07.176155869 +0100
+@@ -2,7 +2,6 @@
+ 
+ import pytest
+ 
+-from distutils.version import LooseVersion
+ from freezegun import freeze_time
+ 
+ 
+@@ -14,10 +13,7 @@
+     """
+     Get our marker, regardless of pytest version
+     """
+-    if LooseVersion(pytest.__version__) < LooseVersion('3.6.0'):
+-        return node.get_marker('freeze_time')
+-    else:
+-        return node.get_closest_marker('freeze_time')
++    return node.get_closest_marker('freeze_time')
+ 
+ 
+ @pytest.fixture(name=FIXTURE_NAME)
