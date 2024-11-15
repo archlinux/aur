@@ -1,10 +1,10 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=solidtime-bin
 _pkgname=Solidtime
-pkgver=0.0.38
+pkgver=0.0.39
 _electronversion=31
 pkgrel=1
-pkgdesc="Desktop Application for Solidtime - The modern open-source time-tracker.Prebuilt version.Use system-wide electron."
+pkgdesc="Desktop Application for Solidtime - The modern open-source time-tracker.(Prebuilt version.Use system-wide electron)"
 arch=(
     'aarch64'
     'x86_64'
@@ -25,8 +25,8 @@ source=(
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::${url}/releases/download/v${pkgver}/${pkgname%-bin}-aarch64.rpm")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${url}/releases/download/v${pkgver}/${pkgname%-bin}-x86_64.rpm")
 sha256sums=('291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-sha256sums_aarch64=('0d030ad6c4077627020a2cf4bbc90266842d97974eb10dcd5f85b8f26aebd495')
-sha256sums_x86_64=('acd53a6bc37d6c0130e26139461cbc9ee3252af00cc5ace3322f71e4568c65e9')
+sha256sums_aarch64=('8cb00e559c632f9878ba6ec98bdefffe908bb5ca66747c642a7d8430cf8756af')
+sha256sums_x86_64=('bfd4c693dc66f61fed425257df4defc0867fc8d29bbf05f618f543617f8a5239')
 build() {
     sed -e "
         s/@electronversion@/${_electronversion}/g
