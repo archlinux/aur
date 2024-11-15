@@ -1,5 +1,5 @@
-# Maintainer: 
-# Contributor: Mark Wagie <mark dot wagie at proton dot me>
+# Maintainer: David Čudek <inzenyrak at seznam dot cz> 
+# Contributor: David Čudek <inzenyrak at seznam dot cz>
 pkgname=gst-plugin-viper4linux-git
 _gitname=gst-plugin-viperfx
 pkgver=r36.a5c1b03
@@ -24,6 +24,8 @@ build() {
   cmake -B build -S gst-plugin-viperfx \
     -DCMAKE_BUILD_TYPE='None' \
     -DCMAKE_INSTALL_PREFIX='/usr' \
+    -DCMAKE_C_FLAGS="-Wno-incompatible-pointer-types -fpermissive" \
+    -DCMAKE_CXX_FLAGS="-Wno-incompatible-pointer-types -fpermissive" \
     -Wno-dev
   make -C build
 }
