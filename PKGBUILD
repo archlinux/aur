@@ -19,10 +19,10 @@ set -u
 pkgname='comcom32'
 #pkgname+='-git'
 _pkgver='alpha-3'
-_opt_commit='#commit=4e5190ce8d846abee6ffd79ee61dc77cd8509ba1' # only applies to non git
-# pkgver="0.0.${_pkgver//-/_}" # copy this line and add commit
-pkgver=0.0.alpha.3.r343.g248d344 # copy this line and add commit
-pkgrel=1
+_opt_commit='#commit=6cca478862e3d25f5fdad6aba7804934d4ab72ec' # only applies to non git
+# pkgver="0.0.${_pkgver//-/_}" # copy this line and set _opt_commit
+pkgver="0.0.${_pkgver//-/_}" # copy this line and set _opt_commit
+pkgrel=2
 pkgdesc="${_opt_bits} bit command interpreter for fdpp and dosemu2"
 arch=('any')
 url='https://github.com/dosemu2/comcom64'
@@ -39,9 +39,9 @@ _srcdir="comcom64-${_pkgver%.r*}"
 source=(
   "${_srcdir}.tar.gz::${url}/archive/${_pkgver}.tar.gz"
 )
-md5sums=('e812710b72dfa9518f7cc30d6ecc3c79')
-sha256sums=('aa5857cb552ed09af41fe57f9d7b0d72522b238d606572c009864d190c01aac1')
-b2sums=('11edf198af71fc00409a43e729af57ca975ab7fcffb25f82c14a97ce5ba42b9ee8ca0e67a3382653f1f381b6350c928eb2eeb602b092f606fadfdec121ae3a75')
+md5sums=('e88107a6cefb8cd4565c4a747e840c8f')
+sha256sums=('35f60a46b97c106a24c43920dc2c23e4f127d5b0e89f03157edefd1714c7a44b')
+b2sums=('7dff12078ef8d59ed53f3d674f835478111ead5ac61a568ce3c936efc1bcce34c36b4ff26cf3c39146888ea50033efcd150f3ad19d4bc171350a3d2d52133842')
 
 if [ "${pkgname%-git}" != "${pkgname}" ]; then
   _opt_commit=''
@@ -55,6 +55,7 @@ if [ "${pkgname%-git}" != "${pkgname}" ] || [ ! -z "${_opt_commit}" ]; then
   conflicts+=("${pkgname%-git}")
   provides+=("${pkgname%-git}=${pkgver%%.r*}")
   _srcdir="comcom64"
+  #source[0]="comcom64.severach::git+https://github.com/severach/comcom64.git${_opt_commit}"; _srcdir+='.severach'
 if [ "${pkgname%-git}" != "${pkgname}" ]; then
 pkgver() {
   cd "${_srcdir}"
