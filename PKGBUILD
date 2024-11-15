@@ -5,7 +5,7 @@
 
 pkgname=shotcut-git
 pkgdesc='Cross-platform Qt based Video Editor - Git latest'
-pkgver=24.10.29+r6398+g44c28ec3c
+pkgver=24.10.29+r6399+g66ea20741
 pkgrel=1
 arch=('x86_64')
 url='https://www.shotcut.org'
