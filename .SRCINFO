@@ -7,6 +7,7 @@ pkgbase = ouou-dictation
 	arch = aarch64
 	license = Apache-2.0 OR MIT
 	makedepends = cargo
+	makedepends = clang
 	makedepends = libspeechd
 	depends = speech-dispatcher
 	optdepends = festival: Speech output using Festival

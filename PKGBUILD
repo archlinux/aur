@@ -9,7 +9,7 @@ arch=('x86_64' 'aarch64')
 url="https://github.com/OuOu2021/${pkgname}"
 license=('Apache-2.0 OR MIT')
 depends=('speech-dispatcher')
-makedepends=('cargo' 'libspeechd')
+makedepends=('cargo' 'clang' 'libspeechd')
 optdepends=('festival: Speech output using Festival'
 	'espeak-ng: Speech output using ESpeak-ng')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${_pkgver}.tar.gz")
