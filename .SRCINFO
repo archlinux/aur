@@ -1,6 +1,6 @@
 pkgbase = kf6-servicemenus-imagetools
 	pkgdesc = KDE service menus for image file processing
-	pkgver = 5
+	pkgver = 6
 	pkgrel = 1
 	url = https://github.com/marco-mania/kf6-servicemenus-imagetools
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = kf6-servicemenus-imagetools
 	conflicts = kf5-servicemenus-imagetools
 	replaces = kde-servicemenus-imagetools
 	replaces = kf5-servicemenus-imagetools
-	source = https://github.com/marco-mania/kf6-servicemenus-imagetools/archive/refs/tags/v5.tar.gz
-	sha256sums = e00836943f27e54ed56e669f7bc1d29a03ba774007ab5393d6b7f8f3a4c1cdec
+	source = https://github.com/marco-mania/kf6-servicemenus-imagetools/archive/refs/tags/v6.tar.gz
+	sha256sums = 0d054c9145cb05f1418f0d8953f1c8f8eb3dec7c16cea496ac3c48873bd64b5c
 
 pkgname = kf6-servicemenus-imagetools
