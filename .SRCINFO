@@ -1,6 +1,6 @@
 pkgbase = horde3d
 	pkgdesc = Horde3D is a small 3D rendering and animation engine. It is written in an effort to create an engine being as lightweight and conceptually clean as possible.
-	pkgver = 2.0.0
+	pkgver = 2.0.2
 	pkgrel = 1
 	url = http://www.horde3d.org/
 	arch = i686
@@ -10,9 +10,7 @@ pkgbase = horde3d
 	makedepends = ninja
 	depends = libgl
 	depends = glfw-x11
-	source = https://github.com/horde3d/Horde3D/archive/refs/tags/v2.0.0.tar.gz
-	source = fix-building-under-linux-and-gcc-10.patch
-	sha512sums = 0c267a4ce80c6db4cc18064759aae69761cf39a232e31cc24674092eb35c13439a7df0b984c46a2b93dee446cecc5c266f4a47e78f24577a491bee6582782927
-	sha512sums = 15cac2942803297591ead6cbfa597699b4dffd210bee750a6508338cca98d2bd5e61c6b603a249c780e2119fa6671797839fdf787b217f3619fb72597490f10c
+	source = https://github.com/horde3d/Horde3D/archive/refs/tags/v2.0.2.tar.gz
+	sha512sums = aa920e4dedbbc9a105fea77848ca0053ee99df50ae2d259268300840eec8516fd005ba7f8595c3405db63c09598ecd261e124a24232585ad190c8fd789086d9d
 
 pkgname = horde3d
