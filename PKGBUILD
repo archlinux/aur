@@ -2,7 +2,7 @@
 
 pkgname=highs
 pkgver=1.8.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Linear optimization software"
 arch=('i686' 'x86_64')
 _pkgname=HiGHS
@@ -14,33 +14,24 @@ source=("https://github.com/ERGO-Code/HiGHS/archive/refs/tags/v${pkgver}.tar.gz"
 sha256sums=('a0d09371fadb56489497996b28433be1ef91a705e3811fcb1f50a107c7d427d1')
 
 prepare() {
-    cd "$srcdir/${_pkgname}-${pkgver}"
-    mkdir -p "build"
-    cd "build"
-
-    cmake \
+    cmake -B build -S "$srcdir/${_pkgname}-${pkgver}" \
       -DCMAKE_C_FLAGS="${CFLAGS}" \
       -DCMAKE_CXX_FLAGS="${CXXFLAGS}" \
       -DCMAKE_EXE_LINKER_FLAGS="${LDFLAGS}" \
       -DCMAKE_SHARED_LINKER_FLAGS="${LDFLAGS}" \
       -DCMAKE_INSTALL_PREFIX=/usr \
-      ..
+      -Wno-dev
 }
 
 build() {
-    cd "$srcdir/${_pkgname}-${pkgver}/build"
-    make
+    cmake --build build
 }
 
 check() {
-    cd "$srcdir/${_pkgname}-${pkgver}/build"
-    make test
+    cmake --build build --target test
 }
 
 package() {
-    cd "$srcdir/${_pkgname}-${pkgver}/build"
-    make DESTDIR="$pkgdir/" install
-
-    cd "$srcdir/${_pkgname}-${pkgver}"
-    install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    DESTDIR="$pkgdir/" cmake --install build
+    install -Dm644 "$srcdir/${_pkgname}-${pkgver}/LICENSE.txt" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
