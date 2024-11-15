@@ -14,7 +14,7 @@ pkgbase = equibop-bin
 	sha256sums = 4549a54cf532dbca791f3c51e70bfb5900a5d742ceb9f60498d8dfe26b4e57bf
 	source_aarch64 = equibop-2.1.1-arm64.deb::https://github.com/Equicord/Equibop/releases/download/v2.1.1/Equibop-linux-arm64.deb
 	sha256sums_aarch64 = 58aea587f4c28021a4f37ecd99dee038a090029635fec756aee67e7952a0f37b
-	source_x86_64 = equibop-2.1.1-x86_64.deb::https://github.com/Equicord/Equibop/releases/download/v2.1.1/Equibop-linux-amd64.deb
+	source_x86_64 = equibop-2.1.1-amd64.deb::https://github.com/Equicord/Equibop/releases/download/v2.1.1/Equibop-linux-amd64.deb
 	sha256sums_x86_64 = 8e51aff9553628b04cfe30cfaccd883b723730b5e6b5808c0c1cfb325fcc599d
 
 pkgname = equibop-bin

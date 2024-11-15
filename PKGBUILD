@@ -29,7 +29,7 @@ source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${url}/releases/download/v
 source=("${pkgname%-bin}.sh")
 sha256sums=('8e51aff9553628b04cfe30cfaccd883b723730b5e6b5808c0c1cfb325fcc599d')
 sha256sums_aarch64=('58aea587f4c28021a4f37ecd99dee038a090029635fec756aee67e7952a0f37b')
-sha256sums_x86_64=('aea168d5f214a7ff030ce2853d59fbe762dba90eff72b8bb33b0d5f99ae36583')
+sha256sums_x86_64=('8e51aff9553628b04cfe30cfaccd883b723730b5e6b5808c0c1cfb325fcc599d')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
