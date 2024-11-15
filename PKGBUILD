@@ -1,18 +1,18 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
 pkgname="caps-log"
-pkgver=1.0.1
-pkgrel=2
+pkgver=1.1.0
+pkgrel=1
 pkgdesc="A small, terminal-based journaling tool"
-arch=('any')
+arch=('x86_64')
 url="https://github.com/NikolaDucak/${pkgname}"
 license=('MIT')
-makedepends=('cmake' 'boost' 'ftxui')
-depends=('glibc' 'gcc-libs' 'boost-libs' 'libgit2' 'openssl' 'fmt')
+depends=('boost-libs' 'fmt' 'gcc-libs' 'glibc' 'libgit2' 'openssl')
+makedepends=('boost' 'cmake' 'ftxui')
 _pkgsrc="${pkgname}-${pkgver}"
 source=("${_pkgsrc}.tar.gz::${url}/archive/${pkgver}.tar.gz"
         "${pkgname}_fix_openssl.patch")
-sha256sums=('e8424e706146b46fa0f94c73c5834cc2085f692a5b25e1d8a794ef6008d6b3f1'
+sha256sums=('722cc8bee072dc7acbbe00213387c181cb3474a30384d0295cbf1f34ea389abe'
             'b86336c24292ecbf3a627129a0f6c416d121c16ea93ec5735d2a8049572de1e7')
 
 prepare() {
