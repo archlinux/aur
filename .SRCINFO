@@ -1,7 +1,7 @@
 pkgbase = python-instructor
 	pkgdesc = Structured outputs for LLMs
-	pkgver = 1.6.3
-	pkgrel = 3
+	pkgver = 1.6.4
+	pkgrel = 1
 	url = https://github.com/jxnl/instructor
 	arch = any
 	license = MIT
@@ -29,7 +29,8 @@ pkgbase = python-instructor
 	depends = python-typing_extensions
 	optdepends = python-anthropic: support for Anthropic models
 	optdepends = python-cohere: support for Cohere models
-	source = python-instructor-1.6.3.tar.gz::https://github.com/jxnl/instructor/archive/1.6.3.tar.gz
-	sha256sums = 4f1b7a1d4d6573bd921c9c12192b0dbcee8a17b8a1c76a089e433d8b09e9932f
+	optdepends = python-google-generativeai: support for Google Gemini models
+	source = python-instructor-1.6.4.tar.gz::https://github.com/jxnl/instructor/archive/1.6.4.tar.gz
+	sha256sums = 4d42ca856b1bbcc7d7f191c2d1fb10ba47bd8d40ff4a73dabc9f65a57930c0fe
 
 pkgname = python-instructor

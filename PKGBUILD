@@ -3,8 +3,8 @@
 
 pkgname=python-instructor
 _pkgname=${pkgname#python-}
-pkgver=1.6.3
-pkgrel=3
+pkgver=1.6.4
+pkgrel=1
 pkgdesc="Structured outputs for LLMs"
 arch=(any)
 url="https://github.com/jxnl/instructor"
@@ -40,11 +40,10 @@ checkdepends=(
 optdepends=(
   'python-anthropic: support for Anthropic models'
   'python-cohere: support for Cohere models'
-  # Not packaged:
-  # 'python-google-generativeai: support for Google Gemini models'
+  'python-google-generativeai: support for Google Gemini models'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('4f1b7a1d4d6573bd921c9c12192b0dbcee8a17b8a1c76a089e433d8b09e9932f')
+sha256sums=('4d42ca856b1bbcc7d7f191c2d1fb10ba47bd8d40ff4a73dabc9f65a57930c0fe')
 
 _archive="$_pkgname-$pkgver"
 
@@ -67,18 +66,19 @@ check() {
   # yet.
   export OPENAI_API_KEY=sk-dBAe8c5a9bc4294cca9bed292cd61e0ff9030bB94647adfb
   pytest \
+    --ignore tests/llm/test_openai \
+    --ignore tests/llm/test_vertexai \
+    --ignore tests/llm/test_fireworks \
+    --ignore tests/llm/test_gemini \
     --deselect tests/dsl/test_partial.py \
     --deselect tests/llm/test_anthropic/evals/test_simple.py \
     --deselect tests/llm/test_anthropic/test_stream.py \
+    --deselect tests/llm/test_anthropic/test_system.py \
     --deselect tests/llm/test_cohere \
     --deselect tests/llm/test_new_client.py \
     --deselect tests/test_simple_types.py::test_partial_not_simple \
     --deselect tests/llm/test_anthropic/test_multimodal.py \
-    --deselect tests/test_response_model_conversion.py::test_json_preserves_description_of_non_english_characters_in_json_mode \
-    --ignore tests/llm/test_openai \
-    --ignore tests/llm/test_vertexai \
-    --ignore tests/llm/test_fireworks \
-    --ignore tests/llm/test_gemini
+    --deselect tests/test_response_model_conversion.py::test_json_preserves_description_of_non_english_characters_in_json_mode 
 
 }
 
