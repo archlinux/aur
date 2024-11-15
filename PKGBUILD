@@ -1,7 +1,7 @@
 # Maintainer: linkfrg
 pkgname=ignis-git
 _pkgname=ignis
-pkgver=0.2.r56.g5e3311d
+pkgver=0.3.r1.g24fd6ab
 pkgrel=1
 pkgdesc="Full-featured Python framework for building desktop shells using GTK4."
 arch=('x86_64')
