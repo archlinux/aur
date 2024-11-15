@@ -18,6 +18,8 @@ depends=(
 makedepends=(
     'nvm'
     'asar'
+    'python-setuptools'
+    'python'
 )
 
 pkgver() {
