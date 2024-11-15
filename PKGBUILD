@@ -2,8 +2,8 @@
 
 pkgname=adwaita-colors-icon-theme-git
 _reponame=Adwaita-colors
-pkgver=2.2.r0.a6f658f
-pkgrel=3
+pkgver=2.3.r0.b1f38e0
+pkgrel=1
 pkgdesc="Adwaita Colors enhances the Adwaita icon theme by integrating GNOME’s accent color feature. It ensures that your Adwaita icons reflect the same accent color as your GNOME theme."
 arch=(any)
 url="https://github.com/dpejoh/$_reponame"
@@ -21,12 +21,17 @@ pkgver() {
 }
 
 package() {
+	# Find all directories starting with "Adwaita-" in $_reponame
+	find $_reponame -type d -name "Adwaita-*" | while read -r dir; do
+		# Construct the full path to the "index.theme" file
+		file="$dir/index.theme"
+		# Check if the file exists and contains the target text
+		if [ -f "$file" ] && grep -q "Inherits=Adwaita," "$file"; then
+			# Replace the text using sed
+			sed -i 's/Inherits=Adwaita,/Inherits=MoreWaita,Adwaita,/g' "$file"
+		fi
+	done
 	local themedir="$pkgdir/usr/share/icons"
 	install -d "$themedir"
-#	if pacman -Qsq '^morewaita$' &> /dev/null; then
-#		echo "yes"
-#	else
-#		echo "no"
-#	fi
 	cp -r "$_reponame/Adwaita"*      "$themedir"
 }
