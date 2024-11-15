@@ -1,3 +1,4 @@
-pkg
-src
-electron-*.zip
+*
+!PKGBUILD
+!.SRCINFO
+!gitignore
