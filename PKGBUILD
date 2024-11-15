@@ -1,7 +1,7 @@
 # Maintainer: witt <1989161762 at qq dot com>
 
 pkgname=eco-paste-bin
-pkgver=0.3.0
+pkgver=0.4.0
 pkgrel=3
 pkgdesc="🎉跨平台的剪贴板管理工具 | Cross-platform clipboard management tool ."
 arch=('any')
@@ -26,7 +26,7 @@ source=(
   "${pkgname%-bin}-${pkgver}_amd64.deb::${url}/releases/download/v${pkgver}/EcoPaste_${pkgver}_amd64.deb"
   "LICENSE::https://raw.githubusercontent.com/EcoPasteHub/EcoPaste/refs/heads/master/LICENSE"
 )
-sha256sums=('b90d4c13c56cb6181d2b011ad3762504e30333b013e97ec992f0a8282928a7fb'
+sha256sums=('3973874e5d2cb2d8fa4720b8970b5edebb074d709211ca08c61d4fd001d73e3a'
             'c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4')
 
 build() {
