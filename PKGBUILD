@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=zebar-bin
 _pkgname=Zebar
-pkgver=2.5.0
+pkgver=2.5.1
 pkgrel=1
 pkgdesc="A tool for creating customizable and cross-platform taskbars, desktop widgets, and popups.(Prebuilt version)"
 arch=('x86_64')
@@ -18,7 +18,7 @@ depends=(
 source=(
     "${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${pkgname%-bin}-v${pkgver}-opt4-x64.deb"
 )
-sha256sums=('763031e89ce457ce1308a5d29228f6ad4b40e5f83f1cad2b85adb9a151695cdf')
+sha256sums=('7503fe0630b18157711ba62ad54539d29ef5d2d1e5177567e2a2ca331c73923b')
 build() {
     bsdtar -xf "${srcdir}/data."*
 }
