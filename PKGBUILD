@@ -52,9 +52,9 @@ prepare() {
     do
         echo "Adding module $m..."
         sed -i "/plug in Caddy modules here/a _ \"$m\"" main.go
-        go get "$m"
+        go get -modcacherw "$m"
     done
-    go get .
+    go get -modcacherw .
 }
 build() {
     cd "${srcdir}/caddy-${pkgver}/cmd/caddy"

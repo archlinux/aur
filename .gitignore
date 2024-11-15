@@ -5,3 +5,4 @@ Caddyfile
 index.html
 *.service
 *.log
+*.tar.gz
