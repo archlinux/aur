@@ -1,0 +1,18 @@
+pkgbase = rsflex-bin
+	pkgdesc = A super fast system information displayer written in Rust
+	pkgver = 0.3.1
+	pkgrel = 1
+	url = https://github.com/curlpipe/rsflex
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	provides = rsflex
+	conflicts = rsflex
+	source = LICENSE-0.3.1::https://raw.githubusercontent.com/curlpipe/rsflex/0.3.1/LICENSE
+	source = README-0.3.1.md::https://raw.githubusercontent.com/curlpipe/rsflex/0.3.1/README.md
+	sha256sums = 1f256ecad192880510e84ad60474eab7589218784b9a50bc7ceee34c2b91f1d5
+	sha256sums = 3f2ba964ce4484b06b75dca25b1c0a5d99f5bd9989e623ef390f9d6436e1b613
+	source_x86_64 = rsflex-0.3.1::https://github.com/curlpipe/rsflex/releases/download/0.3.1/rsflex
+	sha256sums_x86_64 = 213a38242e17493d216a58a96f3eeb93de9ac0b76c2af5f24a307ee3f9e8c27b
+
+pkgname = rsflex-bin
