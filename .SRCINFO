@@ -1,0 +1,21 @@
+pkgbase = tuime-bin
+	pkgdesc = A colorful and fun TUI clock written in Rust, with a screensaver mode
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/nthnd/tuime
+	arch = x86_64
+	license = MIT
+	makedepends = help2man
+	depends = glibc
+	depends = gcc-libs
+	optdepends = cfonts: sexy and colorful fonts for the console
+	provides = tuime
+	conflicts = tuime
+	source = LICENSE-1.0.1::https://raw.githubusercontent.com/nthnd/tuime/v1.0.1/LICENSE
+	source = README-1.0.1.md::https://raw.githubusercontent.com/nthnd/tuime/v1.0.1/README.md
+	sha256sums = 3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986
+	sha256sums = a4edbd476a449cb477785ff3bc0d904da155ae94e527c4394b7c25949a244d85
+	source_x86_64 = tuime-1.0.1.tar.xz::https://github.com/nthnd/tuime/releases/download/v1.0.1/tuime_v1.0.1_x86_64-unknown-linux-musl.tar.xz
+	sha256sums_x86_64 = 7e5de45bc6899475fdbdc59a3a778a4c82ed986e69055301bf819406e664d2cc
+
+pkgname = tuime-bin
