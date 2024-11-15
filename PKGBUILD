@@ -1,3 +1,4 @@
+# Maintainer: Koro <koro@kzxiv.net>
 # Maintainer: Rhinoceros <https://aur.archlinux.org/account/rhinoceros>
 # Contributor: Marcos Heredia <chelqo@gmail.com>
 
@@ -5,24 +6,19 @@ _font='cantora'
 _group='impallari'
 pkgname=ttf-${_group}-${_font}
 pkgver=1.002
-pkgrel=1
-pkgdesc="Cantora ('Singer' in Spanish) is a friendly semi-formal, semi-condensed, semi–sans-serif font, from Pablo Impallari"
+pkgrel=2
+pkgdesc="Cantora ('Singer' in Spanish) is a friendly semi-formal, semi-condensed, semi-sans-serif font, from Pablo Impallari"
 arch=(any)
 url='https://fonts.google.com/specimen/Cantora+One'
 license=('OFL')
 groups=("${_group}-fonts")
-# source=("Cantora_One.zip::https://fonts.google.com/download?family=Cantora%20One")
-# The official Google source above now obfuscates the download link, which changes on each download.
-# These sites have the older 1.001 version:
-#   https://www.fonts4free.net/cantora-one-font.html
-#   https://fontmeme.com/fonts/cantora-one-font/
-#   https://www.1001freefonts.com/cantora-one.font
-#   https://www.urbanfonts.com/fonts/Cantora_One.font
-#   https://www.fontmirror.com/cantora-one
-# The following has the newer 1.002 version, as per Google, although the size is slightly different. It also lacks the licence, so I'll just bundle the Google version into this package itself.
-source=("Cantora_One.${pkgver-pkgrel}.zip::https://font.download/dl/font/cantora-one.zip"
+# The official Google source above obfuscates the download link, but it can be found using Developer Tools or by doing:
+#  curl -s -H 'Accept: application/json' 'https://fonts.google.com/download/list?family=Cantora+One' | tail -n +2 | jq -r '.manifest.fileRefs[0].url'
+# The link seems to stay stable over time and from different source IPs.
+# It also lacks the licence, which is bundled into this package instead.
+source=("CantoraOne-Regular.ttf::https://fonts.gstatic.com/s/cantoraone/v19/gyB4hws1JdgnKy56GB_JX6zdZ4vZVbgZ.ttf"
         'OFL.txt')
-sha256sums=('0a6bf27e748154fc94ea86c267881b1795e71964928a203d30987102260970a7'
+sha256sums=('a236619be1a6025c7dfde232821f0ef8658ae35e7becde543c34cade9c6dca61'
             '22ef36d651a87c85f2f8f04007d9e9a9bba75106151f39163844ef61ea023843')
 
 package() {
