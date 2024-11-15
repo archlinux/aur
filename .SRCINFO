@@ -1,12 +1,12 @@
 pkgbase = cglm
 	pkgdesc = OpenGL Mathematics (glm) for C
-	pkgver = 0.9.2
+	pkgver = 0.9.4
 	pkgrel = 1
 	url = https://github.com/recp/cglm
 	arch = x86_64
 	license = MIT
 	makedepends = cmake
-	source = cglm-0.9.2.tar.gz::https://github.com/recp/cglm/archive/v0.9.2.tar.gz
-	md5sums = c7a571da4f5c3738d167c2bc5233b304
+	source = cglm-0.9.4.tar.gz::https://github.com/recp/cglm/archive/v0.9.4.tar.gz
+	md5sums = e9e1fbadd7f0022c6ad9c5d280241fee
 
 pkgname = cglm
