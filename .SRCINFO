@@ -1,0 +1,20 @@
+pkgbase = python-pyskein
+	pkgdesc = Implementation of the Skein hash function
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://pythonhosted.org/pyskein/
+	arch = i686
+	arch = x86_64
+	license = GPL-3.0-only
+	checkdepends = python-pytest
+	makedepends = python-setuptools
+	source = https://files.pythonhosted.org/packages/source/p/pyskein/pyskein-1.0.tar.gz
+	md5sums = e99c3e87375347dc27dedeef0b383b98
+
+pkgname = python-pyskein
+	depends = python>=3.1
+	optdepends = python-pyskein-doc: Documentation for PySkein
+
+pkgname = python-pyskein-doc
+	pkgdesc = Documentation for Python Skein
+	arch = any
