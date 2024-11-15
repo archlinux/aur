@@ -2,8 +2,8 @@
 # Contributor: YuLong Yao <feilongphone@gmail.com>
 
 pkgname=devpod-bin
-pkgver=0.5.21
-pkgrel=4
+pkgver=0.6.0
+pkgrel=1
 pkgdesc="Codespaces but open-source, client-only, and unopinionated - unofficial package"
 arch=('x86_64')
 url="https://github.com/loft-sh/devpod"
@@ -26,7 +26,7 @@ options=('!strip')
 source=(
     "${pkgname}-${pkgver}.tar.gz::https://github.com/loft-sh/devpod/releases/download/v${pkgver}/DevPod_linux_x86_64.tar.gz"
 )
-sha256sums=('9ecb2a03e6bc7edaa17c48a8268949075a8416c1da030b5c40e1b6271579d44a')
+sha256sums=('10b4791fd76f55b29781112c5688952d5c669c596bc7c66146df817b7711b39a')
 
 package() {
     tar -xvf ${pkgname}-${pkgver}.tar.gz
