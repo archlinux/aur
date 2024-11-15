@@ -9,9 +9,6 @@ url="https://codeium.com"
 license=('custom')
 depends=(
     'alsa-lib'
-    'at-spi2-core'
-    'cairo'
-    'cups'
     'dbus'
     'expat'
     'gcc-libs'
@@ -24,12 +21,10 @@ depends=(
     'libxext'
     'libxfixes'
     'libxkbcommon'
-    'libxkbfile'
     'libxrandr'
     'mesa'
     'nspr'
     'nss'
-    'pango'
     'gtk3'
     'xdg-utils'
 )
