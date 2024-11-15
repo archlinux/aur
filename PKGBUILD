@@ -23,7 +23,8 @@ pkgver() {
 
 package() {
     cd "$srcdir/$_pkgname"
-    # Makefile's prefix is /usr/local which seems less standard
+    # Makefile's prefix is /usr/local which is for manually installed software
+    # only; /usr is for packaged software
     prefix="/usr"
     
     make DESTDIR="$pkgdir" PREFIX="$prefix" install
