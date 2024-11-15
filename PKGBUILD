@@ -5,7 +5,7 @@
 
 pkgname=boosteroid
 pkgver=1.9.8
-pkgrel=3
+pkgrel=4
 pkgdesc="Boosteroid client desktop"
 arch=('x86_64')
 url="https://boosteroid.com/downloads"
@@ -47,7 +47,7 @@ prepare() {
 
   #this is the system desktop, which later becomes obsolete as the binary creates a user version in $HOME
   msg2 "Customising desktop file..."
-  sed -i "s/Exec=.*/Exec=\/usr\/bin\/$pkgname/g" usr/share/applications/Boosteroid.desktop
+  sed -i "s/Exec=.*/Exec=\/usr\/bin\/${pkgname}/g" usr/share/applications/Boosteroid.desktop
   sed -i "s/Icon=.*/Icon=\/usr\/share\/icons\/hicolor\/scalable\/apps\/${pkgname}.svg/g" usr/share/applications/Boosteroid.desktop
 }
 
@@ -57,7 +57,7 @@ package() {
   install -dm755 "$pkgdir"/usr/share/{applications,icons/Boosteroid,licenses/Boosteroid}
   install -m755  "opt/BoosteroidGamesS.R.L./bin/Boosteroid" "$pkgdir"/usr/bin/"$pkgname".bin #Isolate the binary for our wrapper boosteroid.sh
   install -m755  boosteroid.sh                              "$pkgdir"/usr/bin/"${pkgname^}"  #The program binary creates a user desktop file pointing to /usr/bin/Boosteroid
-  ln      -s     "$pkgdir"/usr/bin/"${pkgname^}"            "$pkgdir"/usr/bin/"${pkgname}"   #we link to /usr/bin/boosteroid
+  ln      -s     "${pkgname^}"                              "$pkgdir"/usr/bin/"${pkgname}"   #we link to /usr/bin/boosteroid
   install -m644 usr/share/applications/Boosteroid.desktop   "$pkgdir"/usr/share/applications/Boosteroid.desktop
   install -m644 usr/share/icons/Boosteroid/icon.svg         "$pkgdir"/usr/share/icons/hicolor/scalable/apps/boosteroid.svg
   install -m644 opt/BoosteroidGamesS.R.L./bin/ToU.txt       "$pkgdir"/usr/share/licenses/Boosteroid/ToU.txt

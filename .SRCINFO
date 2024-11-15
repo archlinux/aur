@@ -1,7 +1,7 @@
 pkgbase = boosteroid
 	pkgdesc = Boosteroid client desktop
 	pkgver = 1.9.8
-	pkgrel = 3
+	pkgrel = 4
 	url = https://boosteroid.com/downloads
 	arch = x86_64
 	license = custom
