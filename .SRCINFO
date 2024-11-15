@@ -1,22 +1,18 @@
 pkgbase = llama.cpp-git
 	pkgdesc = Port of Facebook's LLaMA model in C/C++
-	pkgver = b4080
+	pkgver = b4082.r11.4047be74d
 	pkgrel = 1
 	url = https://github.com/ggerganov/llama.cpp
 	arch = armv7h
 	arch = aarch64
 	arch = x86_64
 	license = MIT
-	makedepends = clblast
 	makedepends = cmake
-	makedepends = cuda
-	makedepends = gcc13
 	makedepends = git
-	makedepends = intel-oneapi-basekit
 	makedepends = openblas
 	makedepends = openblas64
-	makedepends = rocm-hip-sdk
-	makedepends = vulkan-headers
+	depends = openblas
+	depends = openblas64
 	provides = llama.cpp
 	conflicts = llama.cpp
 	source = llama.cpp::git+https://github.com/ggerganov/llama.cpp
@@ -29,43 +25,3 @@ pkgbase = llama.cpp-git
 	sha256sums = 1fc9d4f0cfa407404acc3859c26c53a79d14f5e5bc72f21084d87dde04e36f20
 
 pkgname = llama.cpp-git
-	pkgdesc = Port of Facebook's LLaMA model in C/C++ (with OPENBlas CPU optimizations)
-	depends = openblas
-	depends = openblas64
-	provides = llama.cpp
-
-pkgname = llama.cpp-cublas-git
-	pkgdesc = Port of Facebook's LLaMA model in C/C++ (with NVIDIA CUDA optimizations)
-	depends = cuda
-	provides = llama.cpp
-	conflicts = llama.cpp
-
-pkgname = llama.cpp-clblas-git
-	pkgdesc = Port of Facebook's LLaMA model in C/C++ (with OpenCL optimizations)
-	depends = clblast
-	provides = llama.cpp
-	conflicts = llama.cpp
-
-pkgname = llama.cpp-hipblas-git
-	pkgdesc = Port of Facebook's LLaMA model in C/C++ (with AMD ROCm optimizations)
-	depends = hipblas
-	provides = llama.cpp
-	conflicts = llama.cpp
-
-pkgname = llama.cpp-sycl-f16-git
-	pkgdesc = Port of Facebook's LLaMA model in C/C++ (with Intel SYCL GPU optimizations and F16)
-	depends = intel-oneapi-basekit
-	provides = llama.cpp
-	conflicts = llama.cpp
-
-pkgname = llama.cpp-sycl-f32-git
-	pkgdesc = Port of Facebook's LLaMA model in C/C++ (with Intel SYCL GPU optimizations and F32)
-	depends = intel-oneapi-basekit
-	provides = llama.cpp
-	conflicts = llama.cpp
-
-pkgname = llama.cpp-vulkan-git
-	pkgdesc = Port of Facebook's LLaMA model in C/C++ (with Vulkan GPU optimizations)
-	depends = vulkan-icd-loader
-	provides = llama.cpp
-	conflicts = llama.cpp

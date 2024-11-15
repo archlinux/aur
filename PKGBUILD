@@ -1,60 +1,39 @@
 # Maintainer: robertfoster
 
-_name=llama.cpp
-pkgbase="${_name}-git"
-pkgname=(
-  "${pkgbase}"
-  "${_name}-cublas-git"
-  "${_name}-clblas-git"
-  "${_name}-hipblas-git"
-  "${_name}-sycl-f16-git"
-  "${_name}-sycl-f32-git"
-  "${_name}-vulkan-git"
-)
-pkgver=b4080
+pkgname=llama.cpp-git
+pkgver=b4082.r11.4047be74d
 pkgrel=1
 pkgdesc="Port of Facebook's LLaMA model in C/C++"
 arch=('armv7h' 'aarch64' 'x86_64')
 url="https://github.com/ggerganov/llama.cpp"
 license=("MIT")
-depends=()
+depends=('openblas'
+  'openblas64')
 makedepends=(
-  'clblast'
   'cmake'
-  'cuda'
-  'gcc13'
   'git'
-  'intel-oneapi-basekit'
   'openblas'
   'openblas64'
-  'rocm-hip-sdk'
-  'vulkan-headers'
 )
-conflicts=("${_name}")
-provides=("${_name}")
-source=("${_name}::git+${url}"
+conflicts=("llama.cpp")
+provides=("llama.cpp")
+source=("llama.cpp::git+${url}"
   "kompute::git+https://github.com/nomic-ai/kompute.git"
-  "${_name}.conf"
-  "${_name}.service"
+  "llama.cpp.conf"
+  "llama.cpp.service"
 )
 
 pkgver() {
-  cd "${srcdir}/${_name}"
+  cd "${srcdir}/llama.cpp"
 
   printf "%s" "$(git describe --tags | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
 }
 
 prepare() {
-  cd "${srcdir}/${_name}"
+  cd "${srcdir}/llama.cpp"
   git submodule init
   git config submodule.kompute.url "${srcdir}/kompute"
   git -c protocol.file.allow=always submodule update
-
-  for _pkg in "${pkgname[@]}"; do
-    if [ ! -d "${srcdir}/${_pkg%-git}" ]; then
-      cp -r "${srcdir}/${_name}" "${srcdir}/${_pkg%-git}"
-    fi
-  done
 }
 
 build() {
@@ -63,168 +42,26 @@ build() {
     -S .
     -DCMAKE_INSTALL_PREFIX=/usr
     -DCMAKE_BUILD_TYPE=Release
-  )
-
-  local _cmake_clblas_args=(
-    "${_cmake_args[@]}"
-    -DGGML_CLBLAST=ON
-  )
-
-  local _cmake_cublas_args=(
-    "${_cmake_args[@]}"
-    -DGGML_CUDA=ON
-  )
-
-  local _cmake_hipblas_args=(
-    "${_cmake_args[@]}"
-    -DGGML_HIPBLAS=ON
-  )
-
-  local _cmake_openblas_args=(
-    "${_cmake_args[@]}"
     -DGGML_BLAS=ON
     -DGGML_BLAS_VENDOR=OpenBLAS
   )
 
-  local _cmake_sycl_32_args=(
-    "${_cmake_args[@]}"
-    -DCMAKE_C_COMPILER=icx
-    -DCMAKE_CXX_COMPILER=icpx
-    -DGGML_SYCL=ON
-  )
-
-  local _cmake_sycl_16_args=(
-    "${_cmake_sycl_32_args[@]}"
-    -DGGML_SYCL_F16=ON
-  )
-
-  local _cmake_vulkan_args=(
-    "${_cmake_args[@]}"
-    -DGGML_VULKAN=ON
-  )
-
-  echo "Build ${pkgbase} with OPENBlas"
-  cd "${srcdir}/${_name}"
-  cmake "${_cmake_openblas_args[@]}"
-  cmake --build build
-
-  echo "Build ${pkgbase} with OpenCL"
-  cd "${srcdir}/${_name}-clblas"
-  cmake "${_cmake_clblas_args[@]}"
-  cmake --build build
-
-  echo "Build ${pkgbase} with Vulkan"
-  cd "${srcdir}/${_name}-vulkan"
-  cmake "${_cmake_vulkan_args[@]}"
-  cmake --build build
-
-  echo "Build ${pkgbase} with CUBlas (NVIDIA CUDA)"
-  cd "${srcdir}/${_name}-cublas"
-  export PATH+=":/opt/cuda/bin"
-  export NVCC_CCBIN="gcc-13"
-  cmake "${_cmake_cublas_args[@]}"
-  cmake --build build
-
-  echo "Build ${pkgbase} with HIPBlas (AMD ROCm)"
-  cd "${srcdir}/${_name}-hipblas"
-  export CXXFLAGS+="$CXXFLAGS -fcf-protection=none"
-  CC=/opt/rocm/llvm/bin/clang CXX=/opt/rocm/llvm/bin/clang++ \
-    cmake "${_cmake_hipblas_args[@]}"
-  cmake --build build
-
-  echo "Build ${pkgbase} with Intel SYCL (f16)"
-  source /opt/intel/oneapi/setvars.sh
-  cd "${srcdir}/${_name}-sycl-f16"
-  cmake "${_cmake_sycl_16_args[@]}"
-  cmake --build build
-
-  echo "Build ${pkgbase} with Intel SYCL (f32)"
-  source /opt/intel/oneapi/setvars.sh
-  cd "${srcdir}/${_name}-sycl-f32"
-  cmake "${_cmake_sycl_32_args[@]}"
+  cd "${srcdir}/llama.cpp"
+  cmake "${_cmake_args[@]}"
   cmake --build build
 }
 
-_package() {
+package() {
+  cd "${srcdir}/llama.cpp"
   DESTDIR="${pkgdir}" cmake --install build
 
   # systemd
-  install -D -m644 "${srcdir}/${_name}.conf" \
-    "${pkgdir}/etc/conf.d/${_name}"
-  install -D -m644 "${srcdir}/${_name}.service" \
+  install -D -m644 "${srcdir}/llama.cpp.conf" \
+    "${pkgdir}/etc/conf.d/llama.cpp"
+  install -D -m644 "${srcdir}/llama.cpp.service" \
     -t "${pkgdir}/usr/lib/systemd/system"
 
   rm "${pkgdir}/usr/include/"ggml*
-}
-
-package_llama.cpp-git() {
-  pkgdesc="$pkgdesc (with OPENBlas CPU optimizations)"
-  depends+=('openblas'
-    'openblas64')
-  provides=("${_name}")
-
-  cd "${_name}"
-  _package
-}
-
-package_llama.cpp-clblas-git() {
-  pkgdesc="$pkgdesc (with OpenCL optimizations)"
-  depends+=('clblast')
-  provides=("${_name}")
-  conflicts=("${_name}")
-
-  cd "${_name}-clblas"
-  _package
-}
-
-package_llama.cpp-cublas-git() {
-  pkgdesc="$pkgdesc (with NVIDIA CUDA optimizations)"
-  depends+=('cuda')
-  provides=("${_name}")
-  conflicts=("${_name}")
-
-  cd "${_name}-cublas"
-  _package
-}
-
-package_llama.cpp-hipblas-git() {
-  pkgdesc="$pkgdesc (with AMD ROCm optimizations)"
-  depends+=('hipblas')
-  provides=("${_name}")
-  conflicts=("${_name}")
-
-  cd "${_name}-hipblas"
-  _package
-}
-
-package_llama.cpp-sycl-f16-git() {
-  pkgdesc="$pkgdesc (with Intel SYCL GPU optimizations and F16)"
-  depends+=('intel-oneapi-basekit')
-  provides=("${_name}")
-  conflicts=("${_name}")
-
-  cd "${_name}-sycl-f16"
-  _package
-}
-
-package_llama.cpp-sycl-f32-git() {
-  pkgdesc="$pkgdesc (with Intel SYCL GPU optimizations and F32)"
-  depends+=('intel-oneapi-basekit')
-  provides=("${_name}")
-  conflicts=("${_name}")
-
-  cd "${_name}-sycl-f32"
-  _package
-}
-
-package_llama.cpp-vulkan-git() {
-  pkgdesc="$pkgdesc (with Vulkan GPU optimizations)"
-  depends+=('vulkan-icd-loader')
-  provides=("${_name}")
-  conflicts=("${_name}")
-
-  cd "${_name}-vulkan"
-  _package
 }
 
 sha256sums=('SKIP'
