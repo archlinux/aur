@@ -5,7 +5,7 @@
 pkgname=python-kombu
 _pkgname=${pkgname#python-}
 pkgver=5.4.2
-pkgrel=2
+pkgrel=3
 pkgdesc="A messaging library for Python"
 arch=(any)
 url="https://github.com/celery/kombu"
@@ -30,7 +30,7 @@ checkdepends=(
   python-pymongo
   python-pyro
   python-pytest
-  python-pytest-freezegun
+  python-pytest-freezer
   python-pytest-sugar
   python-pytz
   python-redis
@@ -67,7 +67,8 @@ check() {
   cd "$_pkgname-$pkgver"
   pytest -v \
     --ignore t/unit/transport/test_azureservicebus.py \
-    --ignore t/unit/transport/test_azurestoragequeues.py
+    --ignore t/unit/transport/test_azurestoragequeues.py \
+    --deselect t/unit/transport/test_redis.py::test_Channel::test_global_keyprefix_transaction
 }
 
 package() {

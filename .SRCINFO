@@ -1,7 +1,7 @@
 pkgbase = python-kombu
 	pkgdesc = A messaging library for Python
 	pkgver = 5.4.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/celery/kombu
 	arch = any
 	license = BSD-3-Clause
@@ -13,7 +13,7 @@ pkgbase = python-kombu
 	checkdepends = python-pymongo
 	checkdepends = python-pyro
 	checkdepends = python-pytest
-	checkdepends = python-pytest-freezegun
+	checkdepends = python-pytest-freezer
 	checkdepends = python-pytest-sugar
 	checkdepends = python-pytz
 	checkdepends = python-redis
