@@ -2,7 +2,7 @@
 
 set -u
 pkgname='djstub-git'
-pkgver=0.0.r84.a9b4c98
+pkgver=0.0.r130.40bd05f
 pkgrel=1
 pkgdesc='Stub for dj64'
 arch=('x86_64')
