@@ -1,7 +1,7 @@
 # Maintainer: Bin Jin <bjin@ctrl-d.org>
 
 pkgname=vetu
-pkgver=0.5.3
+pkgver=0.9.1
 pkgrel=1
 pkgdesc="virtualization toolset to effortlessly run Cloud Hypervisor-backed virtual machines on Linux hosts"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('Fair')
 depends=('glibc')
 makedepends=('go')
 source=("https://github.com/cirruslabs/vetu/archive/v${pkgver}.tar.gz")
-sha256sums=('13caf3fcd4d6d60ae2eb33dff502ec588ccd72918fe15cb8530837f745a4b170')
+sha256sums=('17afb62aa43c2081504b30abadc9ec0a376c2faf1529cfa680e3e97ddc83db4e')
 install=vetu.install
 
 build() {
