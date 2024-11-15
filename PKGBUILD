@@ -11,7 +11,7 @@ provides=('noto-fonts')
 conflicts=('noto-fonts'
            'noto-fonts-extra')
 source=("https://www.markusweimar.de/public/noto-fonts-main-${pkgver}.tar.zst")
-sha256sums=('e6ad6913361f4c518236795d6a720ad5e4e4dc09e3e93781f0d720cd92b3d927')
+sha256sums=('82c6690e21cd3900f7eef6fcc4f5389da0b8f30b2a353fd0e24fcf088c0c9c54')
 
 package() {
     install -d ${pkgdir}/usr/share/fonts/TTF/
