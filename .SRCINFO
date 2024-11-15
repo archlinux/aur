@@ -1,6 +1,6 @@
 pkgbase = pt-plugin-plus-bin
 	pkgdesc = Microsoft Edge, Google Chrome, Firefox browser plugin (Web Extensions), which is mainly used to assist the seeds of downloading PT station.
-	pkgver = 1.6.1.2765
+	pkgver = 1.6.1.2771
 	pkgrel = 1
 	url = https://github.com/pt-plugins/PT-Plugin-Plus
 	arch = any
@@ -9,9 +9,9 @@ pkgbase = pt-plugin-plus-bin
 	optdepends = microsoft-edge-stable-bin
 	provides = pt-plugin-plus
 	options = !strip
-	source = pt-plugin-plus-1.6.1.2765.zip::https://github.com/pt-plugins/PT-Plugin-Plus/releases/download/v1.6.1.2765/PT-Plugin-Plus-1.6.1.2765.zip
+	source = pt-plugin-plus-1.6.1.2771.zip::https://github.com/pt-plugins/PT-Plugin-Plus/releases/download/v1.6.1.2771/PT-Plugin-Plus-1.6.1.2771.zip
 	source = https://raw.githubusercontent.com/pt-plugins/PT-Plugin-Plus/master/LICENSE
-	sha256sums = 8db8364ac6de071b3a2a9a0e6ef55e9c0f2f89e537d2922ff0113bcd41b64603
+	sha256sums = a6f904d7a80a0efffcc8d571f13ae0feb98054646c2e63cbf88ca9bc1f740dc4
 	sha256sums = b4b8cd767ca469a9e62345c044a03a86a569cce9feee86181621bb3b23339604
 
 pkgname = pt-plugin-plus-bin
