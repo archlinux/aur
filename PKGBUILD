@@ -2,7 +2,7 @@
 
 _pkgname=zellij-selector
 pkgname=$_pkgname-git
-pkgver=2.5.0.r13.g2b2843f
+pkgver=2.6.0.r1.g1f7f130
 pkgrel=1
 pkgdesc='Select zellij session'
 arch=('any')
@@ -28,12 +28,12 @@ prepare() {
     cd "$_pkgname"
 
     ./bootstrap
-    ./configure --prefix=/usr
 }
 
 build() {
     cd "$_pkgname"
 
+    ./configure --prefix=/usr
     make
 }
 
