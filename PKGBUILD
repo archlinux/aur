@@ -1,6 +1,6 @@
 # Maintainer: linkfrg
 pkgname=ignis
-pkgver=0.2
+pkgver=0.3
 pkgrel=1
 pkgdesc="Full-featured Python framework for building desktop shells using GTK4."
 arch=('x86_64')
@@ -16,7 +16,7 @@ optdepends=('gst-plugin-pipewire: required for recorder service'
             
 conflicts=('ignis-git')
 source=("$pkgname-$pkgver.tar.gz::$url/releases/download/v${pkgver}/ignis-v${pkgver}.tar.gz")
-sha256sums=('85fc781adcf147ea5285b7dd260cacdd55dd16d4247d9c035c05f7e747be1812')
+sha256sums=('dc8a8d76b80bea19497f6029b8ab816e5eceb2f2ff9697675bd1ac87ada70513')
 
 build() {
   cd $srcdir/$pkgname
