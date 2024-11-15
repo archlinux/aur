@@ -1,0 +1,24 @@
+pkgbase = zulu-23-bin
+	pkgdesc = Azul Zulu builds of OpenJDK are open source, TCK-tested and certified builds of OpenJDK.
+	pkgver = 23.0.1
+	pkgrel = 1
+	url = https://www.azul.com/downloads/
+	install = zulu-23-bin.install
+	arch = aarch64
+	arch = x86_64
+	license = custom
+	depends = java-environment-common>=3
+	depends = java-runtime-common>=3
+	depends = ca-certificates-utils
+	provides = java-environment=23
+	provides = java-environment-openjdk=23
+	provides = java-runtime-headless=23
+	provides = java-runtime-headless-openjdk=23
+	provides = java-runtime=23
+	provides = java-runtime-openjdk=23
+	source_aarch64 = https://cdn.azul.com/zulu/bin/zulu23.30.13-ca-jdk23.0.1-linux_aarch64.tar.gz
+	sha256sums_aarch64 = 62c5834b9e97c41a9569c9fc1e889484f2f76e89e098eca3e6d4a4379451116f
+	source_x86_64 = https://cdn.azul.com/zulu/bin/zulu23.30.13-ca-jdk23.0.1-linux_x64.tar.gz
+	sha256sums_x86_64 = ac016766bf3e6b6f6fad79925f0510eeb817e86f0380fbc08a81d2754eb89092
+
+pkgname = zulu-23-bin
