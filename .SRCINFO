@@ -1,6 +1,6 @@
 pkgbase = katvan
 	pkgdesc = A bare-bones editor for Typst files, with a bias for RTL editing
-	pkgver = 0.7.1
+	pkgver = 0.8.0
 	pkgrel = 1
 	url = https://github.com/IgKh/katvan
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = katvan
 	depends = glibc
 	depends = hicolor-icon-theme
 	options = !lto
-	source = https://github.com/IgKh/katvan/releases/download/v0.7.1/katvan-0.7.1-src.tar.gz
-	sha256sums = 0476ac18c51ebe5661380637596920d952e6e680645d151828bf3991ea6de7c2
+	source = https://github.com/IgKh/katvan/releases/download/v0.8.0/katvan-0.8.0-src.tar.gz
+	sha256sums = b4c7131dfa166a44d16b84e5bea7bb2e4e31c2e993782400448ab2c354a03f09
 
 pkgname = katvan
