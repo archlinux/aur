@@ -2,7 +2,7 @@
 
 pkgname=eco-paste-bin
 pkgver=0.4.0
-pkgrel=3
+pkgrel=1
 pkgdesc="🎉跨平台的剪贴板管理工具 | Cross-platform clipboard management tool ."
 arch=('any')
 url="https://github.com/EcoPasteHub/EcoPaste"
