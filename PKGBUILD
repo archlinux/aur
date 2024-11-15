@@ -4,7 +4,7 @@
 # Contributor : mickael9 <mickael9 at gmail dot com>
 pkgname=wapiti
 pkgver=3.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Comprehensive web app vulnerability scanner written in Python'
 arch=('any')
 url="https://wapiti-scanner.github.io"
@@ -17,6 +17,15 @@ depends=(
   'python-setuptools'
   'python-beautifulsoup4'
   'python-httpx'
+  'python-aiocache'
+  'python-sqlalchemy'
+  'python-browser-cookie3'
+  'python-tld'
+  'python-loguru'
+  'python-yaswfp'
+  'mitmproxy'
+  'python-arsenic'
+  'python-prance'
 )
 makedepends=(
   'python-setuptools'
