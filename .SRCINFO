@@ -1,6 +1,6 @@
 pkgbase = waydroid-helper-git
 	pkgdesc = A GUI application for Waydroid configuration and extension installation
-	pkgver = r30.072b2fe
+	pkgver = r66.5279fe3
 	pkgrel = 1
 	url = https://github.com/ayasa520/waydroid-helper
 	arch = any

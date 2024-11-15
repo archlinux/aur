@@ -1,7 +1,7 @@
 # Maintainer: Rikka <ayasa0520@gmail.com>
 _pkgname="waydroid-helper"
 pkgname="waydroid-helper-git"
-pkgver=r30.072b2fe
+pkgver=r66.5279fe3
 pkgrel=1
 pkgdesc="A GUI application for Waydroid configuration and extension installation"
 arch=('any')
