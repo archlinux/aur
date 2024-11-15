@@ -2,12 +2,12 @@
 # Contributor: Kaan Kasım <kaankasim88@gmail.com>
 
 pkgname=doomretro-git
-pkgver=5.5.1.r294.g18a7482b3
+pkgver=5.5.1.r346.gd041a18a0
 pkgrel=1
 pkgdesc='The classic, refined DOOM source port (git version)'
 arch=('i686' 'x86_64')
 url='http://doomretro.com'
-license=('GPL3')
+license=('GPL-3.0-or-later')
 depends=('sdl2_image' 'sdl2_mixer')
 makedepends=('cmake' 'git')
 optdepends=('timidity++: for music playback')
