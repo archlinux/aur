@@ -127,8 +127,8 @@ md5sums=(
     SKIP
 )
 
+options=('!strip' '!debug')
 # Takes forever for probably minimal gain
-options=('!strip')
 
 prepare() {
     rm -rf "$srcdir/installer_temp"

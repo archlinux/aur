@@ -19,6 +19,7 @@ pkgbase = vivado
 	optdepends = matlab: Model Composer
 	optdepends = qt4: Model Composer
 	options = !strip
+	options = !debug
 	source = file:///FPGAs_AdaptiveSoCs_Unified_2024.1_0522_2023.tar.gz
 	source = spoof_homedir.c
 	source = install_config-vitis.txt
