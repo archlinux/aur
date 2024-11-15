@@ -1,8 +1,8 @@
 # Maintainer: dec05eba <dec05eba@protonmail.com>
 
-pkgname=vr-video-player-git
+pkgname=vr-video-player
 pkgver=r136.bba2604
-pkgrel=1
+pkgrel=2
 pkgdesc='A virtual reality video player for Linux'
 arch=('x86_64')
 url="https://git.dec05eba.com/vr-video-player"
