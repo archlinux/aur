@@ -9,11 +9,11 @@
  WriteMakefile(
      dist	 => {
  	             PREOP	=> 'pod2text XS.pm | tee README >$(DISTVNAME)/README; chmod -R u=rwX,go=rX . ;',
-@@ -15,6 +13,6 @@
-        common::sense     => 0,
-        Types::Serialiser => 0,
+@@ -20,7 +18,6 @@
      },
--    CONFIGURE_REQUIRES => { ExtUtils::MakeMaker => 6.52, Canary::Stability => 0 },
-+    CONFIGURE_REQUIRES => { ExtUtils::MakeMaker => 6.52 },
+     CONFIGURE_REQUIRES => {
+        ExtUtils::MakeMaker => 6.64,
+-       Canary::Stability   => 0,
+     },
  );
  

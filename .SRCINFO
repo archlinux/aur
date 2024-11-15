@@ -1,6 +1,6 @@
 pkgbase = perl-cbor-xs
 	pkgdesc = Concise Binary Object Representation
-	pkgver = 1.86
+	pkgver = 1.87
 	pkgrel = 1
 	url = https://metacpan.org/release/CBOR-XS
 	arch = x86_64
@@ -10,9 +10,9 @@ pkgbase = perl-cbor-xs
 	depends = perl-types-serialiser
 	depends = perl-common-sense
 	options = !emptydirs
-	source = https://cpan.metacpan.org/authors/id/M/ML/MLEHMANN/CBOR-XS-1.86.tar.gz
+	source = https://cpan.metacpan.org/authors/id/M/ML/MLEHMANN/CBOR-XS-1.87.tar.gz
 	source = kill-canary.patch
-	sha512sums = 44fa695d5c4f8cce121d4a31cc0a51625b21423a20e241557206216a7f6129cc13062f1c98e9f5b77b032898858a998e4c00d1139724bfaee8a21e0f13ca787c
-	sha512sums = 930bea1d5cfad6bfdf09db9a6532ce4eb584adda3182d34d00f547bc918a0c9eb7cefbd2ace5a8eb7acda9275f4143961b0581747d6cc795988891e99c638ead
+	sha512sums = ed63d0df608b0f983854e2be657171ddf937770b1ed13b78817b1cd044fe8e28e50b02f790810e615f8903fed9ea0f4560bfe4e1748bebd177056410cc060002
+	sha512sums = 9661c1d101968f575b4455c896b30968ba9a4d2d15dcc0305ebc210a769ce94881a2661c06c83464aede3df2e258ebea711976390a0986422a433089c574f54b
 
 pkgname = perl-cbor-xs
