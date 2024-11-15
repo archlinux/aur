@@ -18,6 +18,7 @@ options=(!strip)
 depends=('libpurple')
 source=('slack-libpurple::git+https://github.com/dylex/slack-libpurple.git')
 sha256sums=('SKIP')
+provides=('libslack.so')
 
 build() {
   cd "$srcdir/slack-libpurple/"
