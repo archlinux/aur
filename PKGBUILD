@@ -1,7 +1,7 @@
 # Maintainer: Martin Schwan <mschwan@posteo.de>
 
 pkgname=partup
-pkgver=2.1.0
+pkgver=2.2.0
 pkgrel=1
 pkgdesc="System initialization program formatting and writing flash devices"
 arch=(x86_64)
@@ -22,7 +22,7 @@ makedepends=(
   pkgconf
 )
 source=("https://github.com/phytec/$pkgname/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=("712d7d45df970a9c0c9ab6d14094b9f33016c4ae708ae7c52bb1fe74adbe868d")
+sha256sums=("466cd7e1bd6cdab3a379ec3e46d13432578b8e3ddee7faf32d7af68c58982a64")
 
 prepare() {
   cd $pkgname-$pkgver
