@@ -10,33 +10,34 @@ arch=('any')
 license=('MIT')
 url="https://github.com/ktosiek/pytest-freezegun"
 depends=(
-  'python-pytest'
   'python-freezegun'
+  'python-pytest'
 )
-makedepends=('python-setuptools-scm')
+makedepends=(
+  'python-build'
+  'python-installer'
+  'python-setuptools'
+  'python-setuptools-scm'
+  'python-wheel'
+)
 source=("${_pkgbase}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
 sha512sums=('2bea7746e4e6a7f2a979cbc5c6d7a2576e0e2631a4e1d5abb7f27f76d6c32b0520a277474c092c5e05ce257f2ba19091918f67e28b7a2da1d5829037c6b70c55')
 
-# setuptools won't find version from git tag
-export SETUPTOOLS_SCM_PRETEND_VERSION="${pkgver}"
-
 build() {
   cd "${srcdir}/${_pkgbase}-${pkgver}"
-  python setup.py build
+  export SETUPTOOLS_SCM_PRETEND_VERSION="${pkgver}"
+  python -m build --wheel --no-isolation
 }
 
 check() {
   cd "${srcdir}/${_pkgbase}-${pkgver}"
-  # lookup path, i.e. "/usr/lib/python3.10"
-  local python_stdlib_basepath="$(python -c "from sysconfig import get_path; print(get_path('stdlib'))")"
-  # Hack entry points by installing it
-  python setup.py install --root="${PWD}/tmp_install" --optimize=1
-  export PYTHONPATH="${PWD}/tmp_install/${python_stdlib_basepath/\//}/site-packages:${PYTHONPATH}:${PWD}/tests"
-  py.test
+  python -m installer --destdir=tmp_install dist/*.whl
+  local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
+  PYTHONPATH="$PWD/tmp_install/${site_packages}" pytest
 }
 
 package() {
   cd "${srcdir}/${_pkgbase}-${pkgver}"
-  python setup.py install --root="${pkgdir}" --optimize=1
-  install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}/"
+  python -m installer --destdir="${pkgdir}" dist/*.whl
+  install -vDm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE
 }
