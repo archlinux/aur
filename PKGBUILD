@@ -1,7 +1,7 @@
 # Maintainer: yms_hi <yms_hi@Outlook.com>
 pkgname=('cangjie-beta-bin' 'cangjie-beta-tools-bin' 'cangjie-beta-runtime-bin')
 pkgver="0.53.13"
-pkgrel=3
+pkgrel=4
 epoch=
 arch=('x86_64' 'aarch64')
 pkgdesc='Cangjie(Beta Channel)'
@@ -37,15 +37,16 @@ package_cangjie-beta-runtime-bin(){
         conflicts=('cangjie-runtime')
         pkgdesc='Runtime for Cangjie(Beta Channel)'
         cd "$srcdir/cangjie"
-        mkdir -p "$pkgdir/opt/cangjie/runtime/lib/linux_x86_64_llvm/"
+        mkdir -p "$pkgdir/opt/cangjie/runtime/lib/linux_${CARCH}_llvm/"
         mkdir -p "$pkgdir/usr/lib"
-        cp -r "./runtime/lib/linux_x86_64_llvm/" "$pkgdir/opt/cangjie/runtime/lib/"
-        chmod 755 "$pkgdir/opt/cangjie/runtime/lib/linux_x86_64_llvm/" -R
+        cp -r "./runtime/lib/linux_${CARCH}_llvm/" "$pkgdir/opt/cangjie/runtime/lib/"
+        chmod 755 "$pkgdir/opt/cangjie/runtime/lib/linux_${CARCH}_llvm/" -R
 
-        for file in "$pkgdir/opt/cangjie/runtime/lib/linux_x86_64_llvm/"/*;
+        cd "$pkgdir/usr/lib"
+        for file in "$pkgdir/opt/cangjie/runtime/lib/linux_${CARCH}_llvm/"/*;
         do
             _link_path=$(basename "$file")
-            ln -s "$file" "$pkgdir/usr/lib/$_link_path"
+            ln -s "../../opt/cangjie/runtime/lib/linux_${CARCH}_llvm/$_link_path" "./$_link_path"
             chmod 755 "$pkgdir/usr/lib/$_link_path"
         done
 }
@@ -73,5 +74,6 @@ package_cangjie-beta-tools-bin(){
         cd "$srcdir/cangjie"
         install -d "$pkgdir/opt/cangjie/tools"
         cp -r './tools' "$pkgdir/opt/cangjie/"
+        cp './envsetup.sh' "$pkgdir/opt/cangjie/"
         chmod 755 "$pkgdir/opt/cangjie/" -R
 }
