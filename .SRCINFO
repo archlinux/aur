@@ -1,24 +1,24 @@
 pkgbase = dooit
-        pkgdesc = A TUI Todo Manager
-        pkgver = 3.0.2
-        pkgrel = 1
-        url = https://github.com/dooit-org/dooit
-        arch = any
-        license = MIT
-        makedepends = python-build
-        makedepends = python-installer
-        makedepends = python-wheel
-        makedepends = python-poetry-core>=1.0.0
-        depends = python>=3.9
-        depends = python-pyperclip>=1.9.0
-        depends = python-yaml>=6.0.2
-        depends = python-tzlocal>=5.2
-        depends = python-textual>=0.85.2
-        depends = python-dateutil>=2.9.0
-        depends = python-sqlalchemy>=2.0.36
-        depends = python-platformdirs>=4.3.6
-        depends = python-click>=8.1.7
-        source = dooit-3.0.2.tar.gz::https://github.com/dooit-org/dooit/archive/v3.0.2.tar.gz
-        sha256sums = d01cab81282c7594973f19b009d13720b79d57d430d7e0632e6b70d7ab0a1fa0
+	pkgdesc = A TUI Todo Manager
+	pkgver = 3.0.3
+	pkgrel = 1
+	url = https://github.com/dooit-org/dooit
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-poetry-core>=1.0.0
+	depends = python>=3.9
+	depends = python-pyperclip>=1.9.0
+	depends = python-yaml>=6.0.2
+	depends = python-tzlocal>=5.2
+	depends = python-textual>=0.85.2
+	depends = python-dateutil>=2.9.0
+	depends = python-sqlalchemy>=2.0.36
+	depends = python-platformdirs>=4.3.6
+	depends = python-click>=8.1.7
+	source = dooit-3.0.3.tar.gz::https://github.com/dooit-org/dooit/archive/v3.0.3.tar.gz
+	sha256sums = c7802b1da268594571d9798d85a17011d44642791702c274ac94d84db459efdf
 
 pkgname = dooit
