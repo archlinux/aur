@@ -1,0 +1,20 @@
+pkgbase = openshockclock-git
+	pkgdesc = GTK4/Libadwaita alarm clock application for OpenShock devices
+	pkgver = r13.78f1e56
+	pkgrel = 1
+	url = https://github.com/arxari/openshockclock-gtk
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = python
+	depends = python-gobject
+	depends = gtk4
+	depends = libadwaita
+	depends = python-requests
+	depends = python-dotenv
+	provides = openshockclock
+	conflicts = openshockclock
+	source = git+https://github.com/arxari/openshockclock-gtk.git
+	sha256sums = SKIP
+
+pkgname = openshockclock-git
