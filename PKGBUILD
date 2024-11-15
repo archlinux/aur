@@ -2,11 +2,11 @@
 pkgname=udeler
 _pkgname=Udeler
 _appname=udemy-downloader-gui
-pkgver=1.13.2
+pkgver=1.13.3
 _electronversion=11
 _nodeversion=18
 pkgrel=3
-pkgdesc="An unofficail desktop application for downloading Udemy Courses.Use system-wide electron."
+pkgdesc="An unofficail desktop application for downloading Udemy Courses.(Use system-wide electron)"
 arch=('any')
 url="https://github.com/heliomarpm/udemy-downloader-gui"
 license=('MIT')
@@ -27,7 +27,7 @@ source=(
     "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
     "${pkgname}.sh"
 )
-sha256sums=('45f95dbd082704a202f26b383eca237e68378b06802d9e9ba6a40436723c0a5c'
+sha256sums=('ed382975f3933f2fba7591333387ef387bb1ec4f137c5742be2edaf9cd4663a3'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
