@@ -4,7 +4,7 @@
 pkgname=authpass-bin
 pkgver=1.9.12
 _subver=2031
-pkgrel=2
+pkgrel=3
 pkgdesc='Password Manager based on Flutter for all platforms. Keepass 2.x (kdbx 3.x) compatible.'
 arch=('x86_64')
 url="https://authpass.app/"
@@ -40,5 +40,5 @@ package() {
     install -Dm755 -d "${pkgdir}/usr/lib"
     cp -Pr --no-preserve=ownership "${srcdir}/opt/${pkgname%-bin}" "${pkgdir}/usr/lib"
     install -Dm644 "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
-    install -Dm644 "${srcdir}/opt/${pkgname%-bin}/icon.svg" "${pkgdir}/usr/share/hicolor/scalable/apps/${pkgname%-bin}.svg"
+    install -Dm644 "${srcdir}/opt/${pkgname%-bin}/icon.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/${pkgname%-bin}.svg"
 }
