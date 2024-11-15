@@ -1,12 +1,12 @@
 pkgbase = source2viewer-git
 	pkgdesc = Valve's Source 2 resource file format parser, decompiler, and exporter.
-	pkgver = 10.2.r14.g658054b
-	pkgrel = 2
+	pkgver = 10.2.r51.g2ba33e3
+	pkgrel = 1
 	url = https://github.com/ValveResourceFormat/ValveResourceFormat
 	install = source2viewer-git.install
 	arch = x86_64
 	license = MIT
-	makedepends = dotnet-sdk>=8.0.8.sdk401
+	makedepends = dotnet-sdk-bin
 	makedepends = git
 	makedepends = gendesk
 	depends = glibc

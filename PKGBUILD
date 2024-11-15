@@ -1,13 +1,13 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=source2viewer-git
-pkgver=10.2.r14.g658054b
-pkgrel=2
+pkgver=10.2.r51.g2ba33e3
+pkgrel=1
 pkgdesc="Valve's Source 2 resource file format parser, decompiler, and exporter."
 arch=('x86_64')
 url="https://github.com/ValveResourceFormat/ValveResourceFormat"
 license=('MIT')
 depends=('glibc' 'gcc-libs' 'zlib' 'bash' 'hicolor-icon-theme' 'wine')
-makedepends=('dotnet-sdk>=8.0.8.sdk401' #dotnet-sdk-bin
+makedepends=('dotnet-sdk-bin' #dotnet-sdk-bin
 		'git' 'gendesk')
 options=(!strip !debug)
 provides=("${pkgname::-4}")
