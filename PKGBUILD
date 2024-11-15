@@ -1,11 +1,11 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=udeler-git
 _pkgname=Udeler
-pkgver=1.13.2.r3.ga6d1ff7
+pkgver=1.13.3.r0.g53f0bd8
 _electronversion=11
 _nodeversion=18
 pkgrel=1
-pkgdesc="An unofficail desktop application for downloading Udemy Courses.Use system-wide electron."
+pkgdesc="An unofficail desktop application for downloading Udemy Courses.(Use system-wide electron)"
 arch=('any')
 url="https://github.com/heliomarpm/udemy-downloader-gui"
 license=('MIT')
