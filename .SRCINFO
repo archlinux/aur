@@ -16,6 +16,6 @@ pkgbase = hlsdl-git
 	provides = hlsdl
 	conflicts = hlsdl
 	source = hlsdl-git::git+https://github.com/selsta/hlsdl
-	sha512sums = SKIP
+	b2sums = SKIP
 
 pkgname = hlsdl-git
