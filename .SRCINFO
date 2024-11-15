@@ -1,26 +1,30 @@
 pkgbase = python-slycot
 	pkgdesc = Python wrapper for selected SLICOT routines, notably including solvers for Riccati, Lyapunov and Sylvester equations.
-	pkgver = 0.5.0.0
+	pkgver = 0.6.0
 	pkgrel = 1
 	url = http://github.com/python-control/Slycot
 	arch = i686
 	arch = x86_64
-	license = GPL2
-	checkdepends = python-pytest
+	license = GPL-2
 	checkdepends = python-scipy
-	makedepends = blas
-	makedepends = cmake
+	checkdepends = python-pytest
+	makedepends = python>=3.10
+	makedepends = python-numpy>=1.23.1
+	makedepends = python-scikit-build>=0.15
+	makedepends = cmake>=3.14
 	makedepends = gcc-fortran
+	makedepends = blas
 	makedepends = lapack
-	makedepends = python-build
-	makedepends = python-installer
-	makedepends = python-scikit-build>=0.14.1
-	makedepends = python-setuptools
-	makedepends = python-numpy<1.23.0
-	depends = python-numpy
+	makedepends = python-setuptools>=45
+	makedepends = python-setuptools-scm>=8
+	makedepends = python-wheel
+	makedepends = python-scikit-build>=0.15
+	depends = python>=3.10
+	depends = python-numpy>=1.23.1
 	provides = python-slycot
 	conflicts = python-slycot-git
-	source = https://files.pythonhosted.org/packages/source/s/slycot/slycot-0.5.0.0.tar.gz
-	sha256sums = 8c80e45d09000bf41a5f30794608844d4aa3410df6442cbe92e82d5ff7c2f330
+	conflicts = python-slycot-mkl
+	source = https://files.pythonhosted.org/packages/a8/18/96acf7dcdc931d0c9a165a8aa3a6f3e6b145d0d69aea43ecef82b8611888/slycot-0.6.0.tar.gz
+	sha256sums = 98ecf19cad0c6ce0d6f4db95169efc14f89a285ac24a4a8da1ca5b96b9da3c23
 
 pkgname = python-slycot
