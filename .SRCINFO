@@ -1,0 +1,15 @@
+pkgbase = latex-listings-rust-git
+	pkgdesc = A Rust language and style specification for the LaTeX-package listings
+	pkgver = r8.d52a3d9
+	pkgrel = 1
+	url = https://github.com/denki/listings-rust
+	arch = any
+	license = BSD
+	makedepends = git
+	depends = texlive-core
+	provides = latex-listings-rust
+	conflicts = latex-listings-rust
+	source = git+https://github.com/denki/listings-rust.git
+	md5sums = SKIP
+
+pkgname = latex-listings-rust-git
