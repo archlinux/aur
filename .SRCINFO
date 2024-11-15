@@ -1,0 +1,36 @@
+pkgbase = python-multiformats
+	pkgdesc = Python implementation of multiformats protocols
+	pkgver = 0.3.1.post4
+	pkgrel = 1
+	url = https://multiformats.readthedocs.io
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	checkdepends = python-pyskein
+	checkdepends = python-blake3
+	checkdepends = python-mmh3
+	checkdepends = python-pycryptodomex
+	makedepends = python-setuptools-scm>=6.2
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-sphinx
+	makedepends = python-sphinx_rtd_theme
+	makedepends = python-bases
+	makedepends = python-multiformats-config
+	source = https://files.pythonhosted.org/packages/source/m/multiformats/multiformats-0.3.1.post4.tar.gz
+	md5sums = 63c9331d1ed581b2b6a8026abb5e0f12
+
+pkgname = python-multiformats
+	depends = python>=3.7
+	depends = python-typing_extensions>=4.6.0
+	depends = python-typing-validation>=1.1.0
+	depends = python-bases>=0.3.0
+	depends = python-multiformats-config>=0.3.0
+	optdepends = python-blake3: for the skein hash functions
+	optdepends = python-pyskein: for the blake3 hash function
+	optdepends = python-mmh3: for the murmur3 hash functions
+	optdepends = python-pycryptodomex: for the ripemd-160 hash function, the kangarootwelve hash function, the keccak hash functions and the sha2-512-224/sha2-512-256 hash functions.
+	optdepends = python-multiformats-doc: Documentation for multiformats
+
+pkgname = python-multiformats-doc
+	pkgdesc = Documentation for Python multiformats
