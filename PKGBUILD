@@ -1,6 +1,6 @@
 # Maintainer: dec05eba <dec05eba@protonmail.com>
 
-pkgname=gpu-screen-recorder-git
+pkgname=gpu-screen-recorder
 pkgver=r890.4d3e95d
 pkgrel=1
 pkgdesc='A shadowplay-like screen recorder for Linux. The fastest screen recorder for Linux'
