@@ -3,10 +3,10 @@
 
 pkgname='nfpm'
 pkgver=2.41.0
-pkgrel=1
-pkgdesc='A simple deb and rpm packager written in Go '
+pkgrel=2
+pkgdesc='nFPM is a simple, 0-dependencies, deb, rpm and apk packager.'
 url='https://github.com/goreleaser/nfpm'
-arch=('x86_64')
+arch=('aarch64' 'x86_64')
 license=('MIT')
 
 depends=()

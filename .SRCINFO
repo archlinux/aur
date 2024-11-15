@@ -1,8 +1,9 @@
 pkgbase = nfpm
-	pkgdesc = A simple deb and rpm packager written in Go
+	pkgdesc = nFPM is a simple, 0-dependencies, deb, rpm and apk packager.
 	pkgver = 2.41.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/goreleaser/nfpm
+	arch = aarch64
 	arch = x86_64
 	license = MIT
 	makedepends = git
