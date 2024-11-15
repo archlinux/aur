@@ -1,0 +1,24 @@
+pkgbase = cute-sway-recorder-git
+	pkgdesc = A small graphical screen recorder for wl-roots, leveraging wf-recorder and slurp
+	pkgver = r69.8a098f4
+	pkgrel = 1
+	url = https://github.com/it-is-wednesday/cute-sway-recorder
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-poetry
+	depends = python
+	depends = pyside6
+	depends = wf-recorder
+	depends = slurp
+	provides = cute-sway-recorder
+	conflicts = cute-sway-recorder
+	conflicts = cute-sway-recorder-git
+	source = git+https://github.com/it-is-wednesday/cute-sway-recorder.git
+	source = cute-sway-recorder.desktop
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = cute-sway-recorder-git
