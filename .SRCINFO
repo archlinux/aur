@@ -1,0 +1,16 @@
+pkgbase = llama.cpp-bin
+	pkgdesc = LLM inference in C/C++ (precompiled Linux binaries)
+	pkgver = b4082
+	pkgrel = 1
+	url = https://github.com/ggerganov/llama.cpp
+	arch = x86_64
+	license = MIT
+	depends = curl
+	depends = gcc-libs
+	provides = llama.cpp
+	conflicts = llama.cpp
+	conflicts = llama.cpp-git
+	source = llama.cpp-b4082.zip::https://github.com/ggerganov/llama.cpp/releases/download/b4082/llama-b4082-bin-ubuntu-x64.zip
+	sha256sums = 485ec511ff8baceadd77b70ddca2a1b4782296fbd6e3ec6470a73e8cce884ee0
+
+pkgname = llama.cpp-bin
