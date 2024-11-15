@@ -3,7 +3,7 @@
 # Contributor: Conor Anderson <conor@conr.ca>
 
 pkgname=wire-desktop
-pkgver=3.36.3462
+pkgver=3.36.3579
 pkgrel=1
 pkgdesc="End-to-end encrypted messenger with file sharing, voice calls and video conferences"
 arch=(any)
@@ -28,10 +28,10 @@ source=(
   "$pkgname.desktop"
   "$pkgname.sh"
 )
-sha256sums=('d96d5512072f21652fa973a1558677ab716a256160adac40c1e7d3a0d3f0c455'
+sha256sums=('42f0265fc0c2693040012ca0c945f19e7983c3411741ec877acdc7fe3c1ee10e'
             'SKIP'
             '53f37e99d4c2f41a3e31fd70154d82ba06a4af578c68df86af4906f7f37ec787'
-            '39133f29fd442da4d71e7b16d832b616da080ad1740c680a964db8521fd5a624')
+            'e443d426819fb647b7fb4a2db36e3f03589c990bd443a0d3d0ff05e5485ea39e')
 validpgpkeys=('ABBA007D6E14E2DB5B283C45D599C1AA126762B1') # Wire Releases Signing Key <releases@wire.com>
 
 prepare() {
