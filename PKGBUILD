@@ -28,6 +28,6 @@ build() {
 
 package() {
 	cd "${pkgname}-${_pkgver}/"
-	install -Dm755 "target/release/${pkgname}" -t "${pkgdir}/usr/bin/"
+	install -Dm755 "target/release/${pkgname/-/_}" "${pkgdir}/usr/bin/${pkgname}"
 	install -Dm644 LICENSE-{APACHE,MIT} -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
