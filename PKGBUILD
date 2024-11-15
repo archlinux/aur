@@ -1,17 +1,17 @@
 # Maintainer: Martin Kröning (mkroening) <m.kroening@hotmail.de>
 
 pkgname=edu-sync-git
-pkgver=0.1.1.r6.g9f0e853
+pkgver=0.2.3.r0.g3a82e44
 pkgrel=1
 pkgdesc="A command line application for synchronizing the contents of Moodle instances to your computer."
 arch=('x86_64')
 url="http://edu-sync.org/"
 license=('GPL3')
-depends=('dbus')
+depends=()
 makedepends=('cargo' 'git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-options=(!strip)
+options=(!strip !lto)
 source=("${pkgname%-git}::git+https://github.com/${pkgname%-git}/${pkgname%-git}")
 sha256sums=('SKIP')
 
