@@ -2,13 +2,18 @@
 pkgname=aylurs-gtk-shell
 _pkgname=ags
 pkgver=2.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Aylurs's Gtk Shell (AGS), An eww inspired gtk widget system."
 arch=('x86_64')
 url="https://github.com/Aylur/ags"
 license=('GPL-3.0-only')
 makedepends=('go')
-depends=('gjs' 'libastal-gjs' 'libastal-meta' 'npm')
+depends=('blueprint-compiler'
+         'dart-sass'
+         'gjs'
+         'libastal-gjs'
+         'libastal-meta'
+         'npm')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Aylur/ags/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('1ea1e80b626e3fa69ca11f1fa2149f5ad3aae2c1cffc7d549d44728236c2daf6')
 conflicts=('aylurs-gtk-shell-git')
