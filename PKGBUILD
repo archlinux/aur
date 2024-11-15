@@ -2,7 +2,7 @@
 
 pkgname=dimland-git
 pkgver=r36.3934c32
-pkgrel=2
+pkgrel=3
 pkgdesc='Wayland screen dimmer'
 arch=('any')
 url='https://github.com/keifufu/dimland.git'
