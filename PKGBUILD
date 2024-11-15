@@ -2,8 +2,8 @@
 
 _gitname=lk-jwt-service
 pkgname="element-${_gitname}-git"
-pkgver=r30.4a29504
-pkgrel=2
+pkgver=r47.61190e3
+pkgrel=1
 pkgdesc='LiveKit Management Service for Element Call'
 arch=(x86_64)
 url='https://github.com/vector-im/lk-jwt-service/'
