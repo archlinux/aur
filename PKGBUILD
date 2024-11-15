@@ -13,7 +13,7 @@ options=("!strip" "!debug")
 source=('https://oss.hexhub.cn/plugin/HexHub-amd64-appimage-1.1.8.AppImage')
 sha256sums=('3bc1c37df7e189f5fc7d6e121040be950fd1ec617b8d156496d01a8cfa79ab35')
 
-_pkgname=(HexHub-amd64-appimage-1.1.8.AppImage)
+_pkgname=HexHub-amd64-appimage-1.1.8.AppImage
 noextract=("$_pkgname")
 
 prepare() {
