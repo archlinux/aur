@@ -1,9 +1,10 @@
-# Maintainer: mosh5382 <arch@moshermail.com>
+# Maintainer: tklee <arch at tklee dot com>
+# Original Maintainer: mosh5382 <arch@moshermail.com>
 # Contributor: Frederic Bezies <fred bezies at gmail dot com>
 pkgname=gsplus-git
 _name=gsplus
 pkgver=r556.4805720
-pkgrel=2
+pkgrel=3
 pkgdesc="Modern cross-platform Apple IIgs emulator"
 arch=('x86_64')
 url="http://apple2.gs/plus/"
@@ -15,10 +16,12 @@ optdepends=('alsa-oss' 'git')
 makedepends=('cmake' 'pkgconfig' 're2c')
 install=$_name.install
 source=("git+https://github.com/digarok/gsplus"
+        "rawnetsupp.patch"
         "gsplus.png"
         "README.txt"
         "gsplus.install")
 sha256sums=("SKIP"
+            "d1b8c2e7e5fb8ac1402cb0956eebc9948be0b4fc309fdaec5a8bf2156f1f2a8e"
             "d332c858a9517a9adc6f581718e9c5288ee83a0a93a872414cfda8776a2a38ae"
             "fdd15bff85e06c8f9d948cf986d22051bd3c1201b9f4b831947bf3cf0c5adc53"
             "b49a30685334485d0d6fea480a90c36c6d5ed2821bfe90490ed5bb971fe6735a")
@@ -45,28 +48,29 @@ MimeType=application/x-gsplus;
 Keywords=apple,simulator;
 EOF
 
-#   cd "$srcdir/$_name/src"
+    cd "$srcdir/$_name/src"
 #   ln -s vars_x86linux_x11 vars
 #   make clean ; make
-    mkdir "$srcdir"/$_name/build ; cd "$srcdir"/$_name/build
+    git apply "$srcdir"/../rawnetsupp.patch
+    mkdir -p "$srcdir"/$_name/build ; cd "$srcdir"/$_name/build
     cmake ..
     make
 }
 
 package() {
-        # Creating directories for pkgbuild
-        mkdir -pm 755 "$pkgdir"/usr/share/$_name
-        mkdir -pm 755 "$pkgdir"/usr/bin
+    # Creating directories for pkgbuild
+    mkdir -pm 755 "$pkgdir"/usr/share/$_name
+    mkdir -pm 755 "$pkgdir"/usr/bin
     mkdir -pm 755 "$pkgdir"/usr/share/$_name/docs
     mkdir -pm 755 "$pkgdir"/usr/share/$_name/images
 
-        # Install config file in /etc/gsplus - NOT NEEDED
+    # Install config file in /etc/gsplus - NOT NEEDED
     # install -m 755 "$srcdir"/$_name/config.template "$pkgdir"/usr/share/$_name/config.txt
 
     install -m 755 "$srcdir"/$_name/build/bin/GSplus "$pkgdir"/usr/share/$_name/GSplus 
     ln -s /usr/share/$_name/GSplus $pkgdir/usr/bin/gsplus
     install -m 755 "$srcdir"/README.txt "$pkgdir"/usr/share/$_name/docs/README.txt
-#   install -m 755 "$srcdir"/gsplusmanual.pdf "$pkgdir"/usr/share/$_name/docs/gsplusmanual.pdf
+    #install -m 755 "$srcdir"/gsplusmanual.pdf "$pkgdir"/usr/share/$_name/docs/gsplusmanual.pdf
 
     #msg2 "Install desktop application entry in /usr/share/applications..."
     install -Dm644 "$srcdir"/$_name.desktop "$pkgdir"/usr/share/applications/$_name.desktop

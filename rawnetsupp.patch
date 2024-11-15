@@ -1,0 +1,17 @@
+diff --git a/src/rawnet/rawnetarch_unix.c b/src/rawnet/rawnetarch_unix.c
+index 0609995..033e6d2 100644
+--- a/src/rawnet/rawnetarch_unix.c
++++ b/src/rawnet/rawnetarch_unix.c
+@@ -66,9 +66,12 @@
+ #include "rawnetsupp.h"
+
+ #if defined(__linux__)
++#include <unistd.h> //support for close
++#include <arpa/inet.h> //support for close
+ #include <sys/socket.h>
+ #include <sys/ioctl.h>
+ #include <net/if.h>
++
+ #endif
+
+ /*
