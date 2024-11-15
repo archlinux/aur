@@ -1,7 +1,7 @@
 # Maintainer: Todd E Johnson <todd@toddejohnson.net>
 
 pkgname=automatic-ripping-machine
-pkgver=2.9.0
+pkgver=2.9.1
 pkgrel=1
 pkgdesc="Automatic Ripping Machine (ARM) Scripts."
 arch=('any') 
@@ -44,7 +44,7 @@ makedepends=('python-build')
 source=("https://github.com/automatic-ripping-machine/automatic-ripping-machine/archive/${pkgver}.tar.gz"
         "automatic-ripping-machine.sysusers"
         "automatic-ripping-machine.tmpfiles")
-sha256sums=('8c232693c8e8f9e8bb66ab5d1658033a2cf938eb7a76f1df0052e8b3f4573b00'
+sha256sums=('26a7489c83f117e4ffbe2bcc8a7bee2ee71375803ed083bc2452f8fcf5621b32'
             '03f0bd4ebd30343780624371fbce478df0a3ecc5504545108ee6147a107bd513'
             '393a764229cd84985f8a37f22e7e0ff8e8544a2d1da0b08805a92c8b674acf9a')
 backup=('etc/arm/config/arm.yaml'
