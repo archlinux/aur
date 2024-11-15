@@ -1,17 +1,27 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=gnome-shell-extension-material-you-colors-git
 _uuid=material-you-colors@francescocaracciolo.github.io
-pkgver=r134.3f6a005
-pkgrel=2
+pkgver=28.r1.g4596665
+pkgrel=1
 pkgdesc="Applies generated libadwaita theme from wallpaper using Material You"
 arch=('any')
 url="https://github.com/FrancescoCaracciolo/material-you-colors"
 license=('GPL-3.0-or-later')
-depends=('adw-gtk-theme' 'gnome-shell' 'nodejs')
-makedepends=('git' 'npm')
-optdepends=('gdm-tools: GDM theming'
-            'gnome-shell-extensions: GNOME Shell theming via User Themes extension'
-            'python-pywal: Pywal theming')
+depends=(
+  'adw-gtk-theme'
+  'gnome-shell'
+  'nodejs'
+)
+makedepends=(
+  'git'
+  'npm'
+)
+optdepends=(
+  'gdm-tools: GDM theming'
+  'gnome-shell-extensions: GNOME Shell theming via User Themes extension'
+  'python: Python backend'
+  'python-pywal: Pywal theming'
+)
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}" 'gnome-shell-extension-material-you-theme')
 source=('git+https://github.com/FrancescoCaracciolo/material-you-colors.git')
@@ -19,7 +29,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd material-you-colors
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
