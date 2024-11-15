@@ -2,7 +2,7 @@
 
 set -u
 pkgname='dj64-git'
-pkgver=0.0.r3822.75e0182
+pkgver=0.0.r4103.783e59c
 pkgrel=1
 pkgdesc='djgpp 64 bit compiler'
 arch=('x86_64')

@@ -1,6 +1,6 @@
 pkgbase = dj64-git
 	pkgdesc = djgpp 64 bit compiler
-	pkgver = 0.0.r3822.75e0182
+	pkgver = 0.0.r4103.783e59c
 	pkgrel = 1
 	url = https://github.com/stsp/dj64dev
 	arch = x86_64
