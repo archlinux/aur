@@ -8,6 +8,7 @@ pkgbase = slack-libpurple-git
 	license = GPL3
 	makedepends = git
 	depends = libpurple
+	provides = libslack.so
 	options = !strip
 	source = slack-libpurple::git+https://github.com/dylex/slack-libpurple.git
 	sha256sums = SKIP
