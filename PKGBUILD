@@ -10,7 +10,7 @@
 
 pkgname=python-simple-term-menu
 pkgver=1.6.4
-pkgrel=2
+pkgrel=3
 pkgdesc='A Python package which creates simple interactive menus on the command line.'
 arch=('any')
 url='https://github.com/IngoMeyer441/simple-term-menu'
