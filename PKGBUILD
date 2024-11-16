@@ -19,7 +19,7 @@ fi
 
 pkgname=${_pkgname}-dkms-staging-git
 pkgver=2.2.6.r0.gbaa5031456
-pkgrel=2
+pkgrel=3
 pkgdesc="Kernel modules for the Zettabyte File System (release staging branch) with compatibility patches for latest stable kernel."
 arch=('any')
 url="https://zfsonlinux.org/"
@@ -29,14 +29,24 @@ provides=("ZFS-MODULE" "SPL-MODULE" "zfs-dkms" "zfs")
 conflicts=("zfs-dkms")
 makedepends=("git")
 source=("${_pkgname}::git+${_git_repo}#${_git_branch}"
-       "linux610-fix-tracepoints-definitions.patch::https://github.com/openzfs/zfs/commit/90af1e83e8abb89668b82d859940a596b195fe75.patch?full_index=1"
-       "linux610-zfs_log-add-flex-array-fields-to-log-record-structs.patch"
-       "linux610-lua-add-flex-array-field-to-TString-type.patch::https://github.com/openzfs/zfs/commit/c84a37ae93b5f2b32d30bee1cb942627c4c6caab.patch?full_index=1"
+	"linux610-zfs_log-add-flex-array-fields-to-log-record-structs.patch::https://github.com/darkbasic/zfs/commit/a296afc40d2a3666545a5689a438eb85ad06652b.patch?full_index=1"
+	"linux610-fix-tracepoints-definitions.patch::https://github.com/darkbasic/zfs/commit/ccf64c2c577e346603e4e301d9f1e55cba03cbd7.patch?full_index=1"
+	"linux610-lua-add-flex-array-field-to-TString-type.patch::https://github.com/darkbasic/zfs/commit/1480930a764dc6fb752d9ea4efc730d23719d2e4.patch?full_index=1"
+	"linux612-avoid-kmem_cache_create-redefinition.patch::https://github.com/darkbasic/zfs/commit/25ca775c0ef72a6e2a1e09cf8531605f54268a08.patch?full_index=1"
+	"linux612-support-3arg-dequeue_signal-without-task-param.patch::https://github.com/darkbasic/zfs/commit/2999a90d2b75bf08a18f0ce5574461c3c1074436.patch?full_index=1"
+	"linux612-FMODE_UNSIGNED_OFFSET-is-now-FOP_UNSIGNED_OFFSET.patch::https://github.com/darkbasic/zfs/commit/6850e8ad5b561e2754fb6328239885a367aeba29.patch?full_index=1"
+	"linux612-f_version-removed-from-struct-file.patch::https://github.com/darkbasic/zfs/commit/f72a302a04af3618adfc0235ebaff9a76093817b.patch?full_index=1"
+	"linux612-PG_error-flag-was-removed.patch::https://github.com/darkbasic/zfs/commit/e66472495cc3a97f715edb7935ccecef459f19f0.patch?full_index=1"
         "0001-only-build-the-module-in-dkms.conf.patch")
 sha256sums=('SKIP'
-            '46448a080544be0492d4a4e45af9871f6fc773f49d594fcab8deb5df63b0e5ff'
             '1887592564e682353cd2049b6595c0a1fcfbb662c06feb9757251a8e551eee12'
-            '0750502bece069b82189347e6530fb569ace8a708246f2c4ec5c54e221950bcb'
+            'a7ec0f62024c6644117786d30589e0d6ca3ad5993a3837f2b31afb42bdd5c0a2'
+            'd8a4101f7c3c4809d8c9b9b8195296331eaaa34c48c3176b3d654a808a8b466d'
+            'd760602951c48c7968cf5cad046fe8595c742abc225829e7b2b70844185e70bf'
+            'cd05bcaedda55c83d03bbe0ef8561dc6e86f8ec977297af831de8d245cf8eebe'
+            '7c45ab517dde1571a4fe3f13708fec930e922596cf0e81f4fad04edb7f2aa0f1'
+            '9db4e43925488aa76a5b4f4a779adacc77f88c19a72aca42e0be4dacf98eb379'
+            'a831262f11a663700b979f397d41e6b6fcaaed42dce08bb6db4563d003f79636'
             '8d5c31f883a906ab42776dcda79b6c89f904d8f356ade0dab5491578a6af55a5')
 
 prepare() {
