@@ -1,0 +1,19 @@
+pkgbase = hextoggle-bin
+	pkgdesc = Easily view and edit hex files
+	pkgver = 1.0.6
+	pkgrel = 1
+	url = https://github.com/printfn/hextoggle
+	arch = x86_64
+	license = MIT
+	makedepends = help2man
+	depends = glibc
+	provides = hextoggle
+	conflicts = hextoggle
+	source = LICENSE-1.0.6::https://raw.githubusercontent.com/printfn/hextoggle/v1.0.6/LICENSE
+	source = README-1.0.6.md::https://raw.githubusercontent.com/printfn/hextoggle/v1.0.6/README.md
+	sha256sums = 0d7dd92639e4a348dc4109cc18aa9bf47c89dd2dc80baaefde2bf049ea27c4a9
+	sha256sums = 69f6401c4eaabd44d393da2deab424d7a6d08c4fabf374b940fd9fff5deb943d
+	source_x86_64 = https://github.com/printfn/hextoggle/releases/download/v1.0.6/hextoggle-x86_64-linux-gnu.zip
+	sha256sums_x86_64 = 4f590604d633e4d724181a3fb016b6f125b8bcb09355e35f04467292174ec115
+
+pkgname = hextoggle-bin
