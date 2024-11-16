@@ -1,0 +1,25 @@
+From 04184895a3bc85409e68b1214dca45ce44e7f150 Mon Sep 17 00:00:00 2001
+From: Wu Zhenyu <wuzhenyu@ustc.edu>
+Date: Mon, 17 Jul 2023 22:08:13 +0800
+Subject: [PATCH 1/2] Fix #8, remove mkaurball
+
+---
+ gem2arch.rb | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/gem2arch.rb b/gem2arch.rb
+index 5a4e314..819373a 100755
+--- a/gem2arch.rb
++++ b/gem2arch.rb
+@@ -144,7 +144,7 @@ def makepackage
+ 
+   def upload
+     dir = File.dirname(@filename)
+-    `cd #{dir} && rm -f *.src.tar.gz && mkaurball -f && burp #{to_s()}-#{@version}-#{@release}.src.tar.gz`
++    `cd #{dir} && rm -f *.src.tar.gz && burp #{to_s()}-#{@version}-#{@release}.src.tar.gz`
+     return $?.success?
+   end
+ end
+-- 
+2.47.0
+

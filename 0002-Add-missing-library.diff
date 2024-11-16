@@ -1,0 +1,24 @@
+From 59ed23f8cae5a100c1c12dec059d2ca41237b73f Mon Sep 17 00:00:00 2001
+From: A Farzat <a@farzat.xyz>
+Date: Sat, 16 Nov 2024 16:35:39 +0900
+Subject: [PATCH 2/2] Add missing library
+
+---
+ gem2arch.rb | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/gem2arch.rb b/gem2arch.rb
+index 819373a..46cf221 100755
+--- a/gem2arch.rb
++++ b/gem2arch.rb
+@@ -3,6 +3,7 @@
+ require 'digest/sha1'
+ require 'erubis'
+ require 'json'
++require 'net/http'
+ require 'optparse'
+ require 'ostruct'
+ require 'rubygems/name_tuple'
+-- 
+2.47.0
+

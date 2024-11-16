@@ -1,14 +1,19 @@
 pkgbase = gem2arch
 	pkgdesc = Create PKGBUILD from Ruby Gem Package
 	pkgver = 0.11
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/anatol/gem2arch
 	arch = any
 	license = GPL3
+	makedepends = patch
 	depends = ruby
 	depends = ruby-erubis
 	optdepends = git: for --git support
 	source = gem2arch-0.11.zip::https://github.com/anatol/gem2arch/archive/0.11.zip
+	source = 0001-Fix-8-remove-mkaurball.diff
+	source = 0002-Add-missing-library.diff
 	sha1sums = 9fe76219255f251f85df7080ceece0dfe766b885
+	sha1sums = 482ed5bcd7211f6c0dfb80c5fbc119045489c15e
+	sha1sums = c06c576debb3c5159e00d66cc76b0cb279904a75
 
 pkgname = gem2arch
