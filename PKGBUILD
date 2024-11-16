@@ -1,19 +1,30 @@
 # Maintainer: iff <iff@ik.me>
 pkgname="pay-respects"
-pkgver=0.5.2
-pkgrel=2
+pkgver=0.5.3
+pkgrel=1
 pkgdesc="Terminal command correction, alternative to thefuck written in Rust."
 arch=("x86_64")
 url="https://github.com/iffse/pay-respects"
 license=('AGPL')
 makedepends=('cargo' 'git')
+optdepends=(
+	'which: for rules checking executable availability'
+)
 source=("$pkgname::git+https://github.com/iffse/pay-respects#tag=v$pkgver")
-sha1sums=('SKIP')
+sha1sums=('4604446bd37d5fe996e1b745a8db0e4728013174')
 replaces=('pay_respects')
+
+prepare() {
+	cd "$pkgname"
+	export RUSTUP_TOOLCHAIN=stable
+	cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+}
 
 build() {
 	cd "$pkgname"
-	cargo build --release --all-features
+	export RUSTUP_TOOLCHAIN=stable
+	export CARGO_TARGET_DIR=target
+	cargo build --frozen --release --all-features
 }
 
 package() {
