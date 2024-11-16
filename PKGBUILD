@@ -1,7 +1,7 @@
 # Maintainer: mapleafgo <mapleafgo@163.com>
 pkgname=mqttx-appimage
 pkgver=1.11.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A Powerful and All-in-One MQTT 5.0 client toolbox for Desktop, CLI and WebSocket."
 arch=('x86_64' 'aarch64')
 url="https://github.com/emqx/MQTTX"
@@ -24,7 +24,7 @@ package() {
 	cd "${srcdir}" && rm -rf "squashfs-root"
 
 	chmod +x "${_app}" && ./"${_app}" --appimage-extract > /dev/null
-	sed -i "/^Exec=/c\Exec=/usr/bin/mqttx" "${srcdir}/squashfs-root/mqttx.desktop"
+	sed -i "/^Exec=/c\Exec=/usr/bin/mqttx %U" "${srcdir}/squashfs-root/mqttx.desktop"
 
 	_pkgroot_path="${pkgdir}/${_install_path}"
 	install -d "${_pkgroot_path}" && cp -a "${srcdir}/squashfs-root/." "${_pkgroot_path}" && chmod -R 755 "${_pkgroot_path}"
