@@ -6,7 +6,7 @@
 
 pkgname=wxmaxima
 pkgver=24.11.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A wxWidgets GUI for the computer algebra system Maxima"
 arch=(x86_64)
 url="https://github.com/${pkgname}-developers/${pkgname}"
@@ -16,11 +16,8 @@ makedepends=(cmake)
 checkdepends=(xorg-server-xvfb)
 optdepends=('bash-completion: for completion when using bash'
   'man-db: manual pages for wxMaxima')
-source=(${pkgname}-${pkgver}::${url}/archive/Version-${pkgver}/${pkgname}-Version-${pkgver}.tar.gz
-  ${pkgname}-${pkgver}.asc::${url}/releases/download/Version-${pkgver}/Version-${pkgver}.tar.gz.asc)
-validpgpkeys=('53F047CE66B91B0F724C545D5C86C0E4211D5B8E') # Gunter Königsmann <wxmaxima@physikbuch.de>
-sha512sums=('2e0a46c9cedc938cfa9deb444b9f3f222c2f49db762b617deba0ee67710454e5cecb1611bfac64385b4161724a1356eae57fd433e5c44486df799d3675dcd8c4'
-            'SKIP')
+source=(${pkgname}-Version-${pkgver}.tar.gz::${url}/archive/Version-${pkgver}.tar.gz)
+sha512sums=('ff547154f172c0f008febb10d1258d7ee1635b1dc6f3ae9e1b39cfad4ac65ab4710c3d65318fc0c6b7f04a4c9d0d0ac66553e7a98e4fe5b05b5f4e6c8854077e')
 
 build() {
   cmake \
