@@ -1,7 +1,7 @@
 # Maintainer: Carl Smedstad <carsme@archlinux.org>
 
 pkgname=markdown-link-check
-pkgver=3.12.2
+pkgver=3.13.6
 pkgrel=1
 pkgdesc="Checks aliveness of hyperlinks in markdown documents"
 arch=(any)
@@ -11,7 +11,7 @@ depends=(nodejs)
 makedepends=(npm)
 source=("https://registry.npmjs.org/$pkgname/-/$pkgname-$pkgver.tgz")
 noextract=("$pkgname-$pkgver.tgz")
-sha256sums=('8cb9c0a70f368f976f2b6ea8b641c209124d18c1311244b45b13202188800cbf')
+sha256sums=('337aba8e3f0a7c5efbc63c45cc6cf156ade0448271769cad046bb02739081aaf')
 
 package() {
   npm install --global \
