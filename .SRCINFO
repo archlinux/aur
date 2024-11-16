@@ -1,7 +1,7 @@
 pkgbase = python-evalidate
 	pkgdesc = Safe and fast evaluation of untrusted user-supplied python expressions
 	pkgver = 2.0.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/yaroslaff/evalidate
 	arch = any
 	license = MIT
