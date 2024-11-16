@@ -1,5 +1,4 @@
-# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
-# Contributor: TransistorLogic <liuhongwu2003@outlook.com>
+# Maintainer: Sving1024 <sving1024@outlook.com>
 
 _name=xeger
 pkgname=python-$_name-git
