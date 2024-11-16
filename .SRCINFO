@@ -1,7 +1,7 @@
 pkgbase = python-pywal
 	pkgdesc = Generate and change colorschemes on the fly
 	pkgver = 3.3.0
-	pkgrel = 9
+	pkgrel = 10
 	url = https://github.com/dylanaraps/pywal/
 	arch = any
 	license = MIT
