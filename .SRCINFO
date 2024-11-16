@@ -1,7 +1,7 @@
 pkgbase = python-hs-dbus-signature
 	pkgdesc = dbus signature hypothesis strategy generator
 	pkgver = 0.7
-	pkgrel = 7
+	pkgrel = 8
 	url = https://pypi.org/project/hs-dbus-signature/
 	arch = any
 	license = MPL-2.0

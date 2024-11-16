@@ -3,7 +3,7 @@
 pkgname=python-hs-dbus-signature
 _pkgname=hs-dbus-signature
 pkgver=0.7
-pkgrel=7
+pkgrel=8
 pkgdesc="dbus signature hypothesis strategy generator"
 url="https://pypi.org/project/hs-dbus-signature/"
 depends=('python-hypothesis')
