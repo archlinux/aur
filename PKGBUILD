@@ -1,7 +1,7 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
 pkgname="nak"
-pkgver=0.7.9
+pkgver=0.8.0
 pkgrel=1
 pkgdesc="A command line tool for doing all things nostr"
 arch=('x86_64' 'aarch64' 'riscv64')
@@ -11,7 +11,7 @@ depends=('glibc')
 makedepends=('go')
 _pkgsrc="${pkgname}-${pkgver}"
 source=("${_pkgsrc}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-b2sums=('e8bea798ae689daf71ce1e56746e5fbdca23083a29ed4632dfd0d042d0f9869debd31a8f091f66fa1bf19c43cdb0c18b3b08b654d36276a526a6c4b6032d3810')
+b2sums=('c26bbfd36a6e6da450bd10a58bd0a0c93c04f26c54e567146d94a09ef162419e0b0dd70b6afbcde291ef958df7e1f25745e71cf16bbe452a8ff515eb7482b15c')
 
 prepare() {
   cd "${srcdir}/${_pkgsrc}"
@@ -35,7 +35,7 @@ build() {
 
 package() {
   cd "${srcdir}/${_pkgsrc}"
-  install -Dm755 "build/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
-  install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
-  install -Dm644 "LICENSE"   "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -vDm755 "build/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
+  install -vDm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+  install -vDm644 "LICENSE"   "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
