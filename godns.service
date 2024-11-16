@@ -1,0 +1,12 @@
+[Unit]
+Description=GoDNS Service
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/godns -c /etc/conf.d/godns.json
+Restart=always
+KillMode=process
+RestartSec=2s
+
+[Install]
+WantedBy=multi-user.target

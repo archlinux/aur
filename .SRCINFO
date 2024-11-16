@@ -7,8 +7,10 @@ pkgbase = godns-bin
 	license = Apache
 	provides = godns
 	source = godns-bin-3.1.6.tar.gz::https://github.com/TimothyYe/godns/releases/download/v3.1.6/godns_3.1.6_linux_amd64.tar.gz
-	source = godns.conf::https://raw.githubusercontent.com/TimothyYe/godns/v3.1.6/configs/config_sample.json
+	source = godns.json::https://raw.githubusercontent.com/TimothyYe/godns/v3.1.6/configs/config_sample.json
+	source = godns.service
 	sha256sums = 830d12cf299acc38c19eb288abd65158bf8537a1b47a44b06053830f544966ad
 	sha256sums = 4fa9de0eb97f6cdb0198654c60643acaa4c637637af5c0a05c9b6acd6ddfaaf7
+	sha256sums = e3a93f1a4a64e6753ea36d7ee4cccdc209f4449251c6a1e6cf19b38f62bc6127
 
 pkgname = godns-bin
