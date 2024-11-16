@@ -7,10 +7,10 @@
 # The source is about 200 MiB, with an extra ~11 GiB of dependencies downloaded in Setup.sh, and may take several hours to compile.
 # If you want additional options, there are switches below.
 pkgname=unreal-engine
-pkgver=5.4.4
+pkgver=5.5.0
 pkgrel=0
 ## Check unreal-engine/Engine/Config/Linux/Linux_SDK.json (MainVersion value) for what the below should be set to
-UE_SDK_VERSION="native-linux-v22_clang-16.0.6-centos7"
+UE_SDK_VERSION="native-linux-v23_clang-18.1.0-rockylinux8"
 pkgdesc='A 3D game engine by Epic Games which can be used non-commercially for free.'
 arch=('x86_64' 'x86_64_v2' 'x86_64_v3' 'x86_64_v4' 'aarch64')
 url=https://www.unrealengine.com/
@@ -33,7 +33,7 @@ source=("${UE_SDK_VERSION}.tar.gz::https://cdn.unrealengine.com/Toolchain_Linux/
         'use_system_clang.patch'
         'unreal-engine-5-pacman-cache.hook'
         'ue5editor.svg')
-sha256sums=('ee7888e5e4209402c8d795fbec91a238ecd5de0d284422f77c5adfc0d15929be'
+sha256sums=('048ad147d66e45b9dcfcbc986770f8df1ccbf94de11480877e72d2b3b1b48087'
             '55a8ad79c2e502bc5919249b9d1804ad405795b36630ab2f23aeb99dd218e5f4'
             'c04c03b2c5c933b7eb1af283d607934ad95fd57f44d62b83719061b555a85dca'
             'b0a57db9a44d0001dc76ca8504d93e273af30093c6a993a5969d82b0ace54b98'
