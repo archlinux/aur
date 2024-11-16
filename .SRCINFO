@@ -1,7 +1,7 @@
 pkgbase = walker-bin
 license = MIT
 pkgdesc = wayland application runner
-pkgver = 0.8.10
+pkgver = 0.8.11
 pkgrel = 1
 depends = gtk4-layer-shell
 optdepends = wl-clipboard: for clipboard module
@@ -10,7 +10,7 @@ url = https://github.com/abenz1267/walker
 arch = x86_64
 provides = walker
 conflicts = walker
-source_x86_64 = https://github.com/abenz1267/walker/releases/download/v0.8.10/walker_.0.8.10_Linux_x86_64.tar.gz
-sha256sums_x86_64 = 50a7a5a89d18f24bace79bd0f15033fe89ae6cbf40d9c9b1ede21571fb23052e
+source_x86_64 = https://github.com/abenz1267/walker/releases/download/v0.8.11/walker_.0.8.11_Linux_x86_64.tar.gz
+sha256sums_x86_64 = 5005f126af05c04eab9ec8d6a31451fe21e8e19d3b93b9d15c6b5ddd61f756bf
 
 pkgname = walker-bin
