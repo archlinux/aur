@@ -6,7 +6,7 @@
 # Contributor: Stefan Husmann <stefan-husmann at t-online dot de>
 
 pkgname=sagemath-git
-pkgver=10.5.beta9.r0.g209ae4c3a43
+pkgver=10.5.rc0.r0.g39ebbe45ca5
 pkgrel=1
 pkgdesc='Open Source Mathematics Software, free alternative to Magma, Maple, Mathematica, and Matlab'
 arch=(x86_64)
@@ -115,6 +115,7 @@ optdepends=('benzene: for generating fusenes and benzenoids'
             'python-pynormaliz: Normaliz backend for polyhedral computations'
             'python-pyscipopt: SCIP mixed integer linear programming backend'
             'rubiks: Rubiks cube algorithms'
+            'sage-data-cunningham_tables: list of prime numbers in the Cunningham table'
             'sage-notebook-exporter: convert flask notebooks to Jupyter'
             'sagemath-doc: HTML documentation'
             'shared_meataxe: faster matrix arithmetic over finite fields'
@@ -140,7 +141,7 @@ source=(git+https://github.com/sagemath/sage#branch=develop
         eclib-20241112.patch)
 sha256sums=('SKIP'
             'f1dd7fea298f38be0f03f46ed4bc9281267f03ec3eee2582edb385ca4cb5db09'
-            '1780a8869fd2d87204cef90b21006ad4931ba489f0b1ba5c6bfddda540b6e399'
+            '69766672b6d836e013a4c9885594e8219ceefc3350255ed1f528ff4847a813ec'
             '702ef91be4049f7f533fae9d6799837114aacdee677f2d4889e4c7c415b5bd28')
 _pkgs=(standard
        bliss
