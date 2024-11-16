@@ -1,0 +1,3 @@
+[python-iso639]
+source = "git"
+git = "https://github.com/noumar/iso639.git"
