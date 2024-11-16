@@ -1,0 +1,22 @@
+pkgbase = outils-split
+	pkgdesc = OpenBSD tools ported via outils (split packages)
+	pkgver = 0.13
+	pkgrel = 1
+	url = https://github.com/leahneukirchen/outils
+	arch = x86_64
+	license = BSD
+	depends = glibc
+	source = outils-0.13.tar.gz::https://github.com/leahneukirchen/outils/archive/refs/tags/v0.13.tar.gz
+	sha256sums = 49d46211fe84a5b96cf55d689696d190b7aba7d3e043c8c8dc9f5ff9af8f927a
+
+pkgname = outils-apply
+	pkgdesc = OpenBSD 'apply' command, ported via outils
+	provides = apply
+	conflicts = apply
+	conflicts = outils
+
+pkgname = outils-rdate
+	pkgdesc = OpenBSD rdate with SNTP support, ported via outils
+	provides = rdate
+	conflicts = rdate
+	conflicts = outils
