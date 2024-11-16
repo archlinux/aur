@@ -1,4 +1,4 @@
-# Maintainer: Sving1024 <piano5432@outlook.com>
+# Maintainer: Sving1024 <sving1024@outlook.com>
 _name=accesser
 pkgname=python-${_name}
 pkgver=0.10.0
