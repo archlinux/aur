@@ -5,7 +5,7 @@
 
 _pkgname="forkgram"
 pkgname="$_pkgname"
-pkgver=5.7.3
+pkgver=5.7.4
 pkgrel=1
 pkgdesc="Fork of the Telegram Desktop messaging app"
 url="https://github.com/Forkgram/tdesktop"
@@ -73,7 +73,7 @@ source=(
   "$_pkgname-$pkgver.$_pkgext"::"https://github.com/Forkgram/tdesktop/releases/download/v$pkgver/$_pkgsrc.$_pkgext"
 )
 sha256sums=(
-  '2a22305585c1eb9dcdb1508deb7fe47add08d965015ce01cb91be36f5b76884c'
+  '2e45230d82621d5f05dafed735018a74799a33b4504bb828b2187b2dd5be0a76'
 )
 
 build() {
@@ -97,7 +97,6 @@ build() {
 
 package() {
   DESTDIR="$pkgdir" cmake --install build
-  #install -Dm644 /dev/null "$pkgdir/etc/tdesktop/externalupdater"
 
   # remove unwanted files
   find "$pkgdir/usr/share/icons" -name '*.png' -delete
