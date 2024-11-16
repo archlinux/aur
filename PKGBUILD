@@ -7,8 +7,8 @@ export PIP_DISABLE_PIP_VERSION_CHECK=true
 
 pkgname=worky
 epoch=
-pkgver=1.0.3
-pkgrel=2
+pkgver=1.0.4
+pkgrel=0
 pkgdesc='Worky is a tool that helps to define and load project workspaces.'
 arch=(any)
 url=https://github.com/ZappaBoy/worky
@@ -22,9 +22,9 @@ conflicts=(${provides%=*})  # No quotes, to avoid an empty entry.
 source=(PKGBUILD_EXTRAS)
 md5sums=('d41d8cd98f00b204e9800998ecf8427e')
 noextract=()
-source+=(https://files.pythonhosted.org/packages/90/8a/c4a3aa7b95fada470b99eb327afdf2c1360eca83c2b0df8949765fbe1365/worky-1.0.3-py3-none-any.whl)
-md5sums+=(52d0ec79ad4177d1872699029aa1293f)
-noextract+=(worky-1.0.3-py3-none-any.whl)
+source+=(https://files.pythonhosted.org/packages/36/12/122d7ecc53dced7ca556a4d6200801d722e5585e32b196651ba5de79ba2b/worky-1.0.4-py3-none-any.whl)
+md5sums+=(7ffe86dda0939b6d2a8223411a1340c8)
+noextract+=(worky-1.0.4-py3-none-any.whl)
 
 _first_source() {
     echo " ${source_i686[@]} ${source_x86_64[@]} ${source[@]}" |
@@ -106,6 +106,19 @@ _check() {
     /usr/bin/python setup.py -q test
 }
 
+instructions() {
+  /bin/cat << EOF
+After the installation add the completion using the following command:
+
+      worky --completion | sudo tee /usr/share/bash-completion/completions/worky
+
+Or directly add the completion to your shell configuration file:
+
+      echo 'eval "$(worky --completion)"' >> ~/.bashrc
+
+EOF
+}
+
 _package() {
     cd "$srcdir"
     # pypa/pip#3063: pip always checks for a globally installed version.
@@ -126,6 +139,8 @@ _package() {
     if [[ -f LICENSE ]]; then
         install -D -m644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
     fi
+
+    instructions
 }
 
 package() { _package; }
