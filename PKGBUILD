@@ -2,7 +2,7 @@
 
 pkgname=python-lazrs
 pkgdesc="Python bindings for laz-rs (LAZ compression)"
-pkgver=0.6.1
+pkgver=0.6.2
 pkgrel=1
 url='https://github.com/laz-rs/laz-rs-python'
 arch=('x86_64')
@@ -16,7 +16,7 @@ source=(
   "https://files.pythonhosted.org/packages/source/${_pypi::1}/$_pypi/$_pypi-$pkgver.tar.gz"
 )
 sha256sums=(
-  'bbaaae8255a67e591e4afae1c4bda7ae10c44729cd4207f7e2c72a82f29a1133'
+  'e8581313c8f438b802baf92654bd0fde3cf4ecb8f881bdf4906934344bda3a9b'
 )
 
 build() {
