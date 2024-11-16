@@ -1,6 +1,6 @@
 pkgbase = fnm
 	pkgdesc = Fast and simple Node.js version manager, built with Rust
-	pkgver = 1.37.1
+	pkgver = 1.38.0
 	pkgrel = 1
 	url = https://github.com/Schniz/fnm
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = fnm
 	depends = bzip2
 	depends = gcc-libs
 	conflicts = fnm-bin
-	source = fnm-1.37.1.tar.gz::https://github.com/Schniz/fnm/archive/v1.37.1.tar.gz
-	sha256sums = 56a170304ab281439a71e541c4db878848c3a891078ae3c2dcc84017cd0306b4
+	source = fnm-1.38.0.tar.gz::https://github.com/Schniz/fnm/archive/v1.38.0.tar.gz
+	sha256sums = 1bf4552dd6a4eb63fa49c739d0ee18bf06c2c023a5ac00958aadf71e24fe8a49
 
 pkgname = fnm

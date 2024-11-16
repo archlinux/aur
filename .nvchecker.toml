@@ -1,0 +1,6 @@
+[fnm]
+source = "github"
+github = "Schniz/fnm"
+host = "github.com"
+use_max_tag = true
+prefix = "v"

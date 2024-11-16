@@ -1,0 +1,8 @@
+!PKGBUILD
+!.SRCINFO
+!.nvchecker.toml
+!.gitignore
+*.tar.zst
+*.tar.gz
+src
+pkg
