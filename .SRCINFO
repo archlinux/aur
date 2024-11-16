@@ -1,7 +1,7 @@
 pkgbase = pnpm-cli
 	pkgdesc = Fast, disk space efficient package manager (Pure Packaging, no dependencies)
 	pkgver = 9.13.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/pnpm/pnpm
 	arch = x86_64
 	arch = aarch64
@@ -9,8 +9,8 @@ pkgbase = pnpm-cli
 	conflicts = pnpm
 	options = !strip
 	source_x86_64 = pnpm-cli-9.13.2-x86_64::https://github.com/pnpm/pnpm/releases/download/v9.13.2/pnpm-linux-x64
-	sha256sums_x86_64 = SKIP
+	sha256sums_x86_64 = 63fe24681366d01f0870ad2cb79ab1943ffdaac944d50398c9f65aa77f71a3ef
 	source_aarch64 = pnpm-cli-9.13.2-aarch64::https://github.com/pnpm/pnpm/releases/download/v9.13.2/pnpm-linux-arm64
-	sha256sums_aarch64 = SKIP
+	sha256sums_aarch64 = 395b9b5a8d3cc6813715af0b3be38e6cd2583352ef7ab9665d677a901abab34d
 
 pkgname = pnpm-cli
