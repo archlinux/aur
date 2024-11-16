@@ -4,8 +4,8 @@
 _pkgauthor=sachaos
 _pkgname=viddy
 pkgname=${_pkgname}-bin
-pkgver=1.2.0
-pkgrel=2
+pkgver=1.2.1
+pkgrel=1
 pkgdesc='A modern watch command. Time machine and pager.'
 url="https://github.com/${_pkgauthor}/${_pkgname}"
 _urlraw="https://raw.githubusercontent.com/${_pkgauthor}/${_pkgname}/v${pkgver}"
@@ -21,10 +21,10 @@ source_x86_64=("${url}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-linux
 source_i686=("${url}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-linux-i686.tar.gz")
 source_aarch64=("${url}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-linux-arm64.tar.gz")
 sha256sums=('e6eea22d4e9e0aa6a78d0f9126009ec041ea047f94b320c003c34a631821f953'
-            '4530e9a15fabd39218b1f1cf15fdf9eef7f38a2016f2727a27ed6e2a7e9d354a')
-sha256sums_x86_64=('bbdb111b375ded1650d6e686eabf8b458554c8b78a96e4c346b8f0b2d219c300')
-sha256sums_i686=('c86d1c666807cf4581285998dc3dbeedca855e0e02ef0081640b2d2421c16cde')
-sha256sums_aarch64=('36298c6371b641725a3c04c0990fc28e2e7dec33ecf19c057f35dab908529a94')
+            '7567c2af1ba85c647acc7231837e27ec277c96d96464a8e97e0e67f926a2750b')
+sha256sums_x86_64=('a4483c3e8e1c5eafadc02f39db80b0b793c95a16dfa04e96a271d70c2670a391')
+sha256sums_i686=('e65c41da96ba1d6b1a8a51576a62fa52dc7ccd96254fb5c1ca456cfb1990a6f3')
+sha256sums_aarch64=('ab6e8cc723e7b0835c3f04278cbb455738a6da8c31f557c9c342bb1c614ec703')
 
 build() {
   cd "${srcdir}/" || exit
