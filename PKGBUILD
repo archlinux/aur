@@ -2,8 +2,8 @@
 # Contributor: Jan de Groot <jgc@archlinux.org>
 
 pkgname=rarian
-pkgver=0.8.5
-pkgrel=6
+pkgver=0.8.6
+pkgrel=1
 pkgdesc="Documentation meta-data library, designed as a replacement for Scrollkeeper"
 arch=(
   x86_64
@@ -15,28 +15,24 @@ depends=(
   bash
   gcc-libs
   glibc
-  tinyxml
+  tinyxml2
 )
 makedepends=(
   check # Here instead of checkdepends since configure fails without it
   libxslt
 )
 options=(!emptydirs)
-
 source=(
   "$pkgname-$pkgver.tar.gz::$url/-/archive/$pkgver/$pkgname-$pkgver.tar.gz"
   "remove-failing-tests.patch"
 )
 sha256sums=(
-  'd480de82f61feab390e9f69c640a1b8a71b6a8d1d0c5f8c4480829e743f0c4a4'
+  '4678f1c169f86b8a098e6e32a5fffec86efe2ac86949c4aaf1c79ca69701d12f'
   'a58398bdd86a37a8b7f69b86630f05418f272cd4a51d8b03892364f7c6ff7c44'
 )
 
-_archive="$pkgname-$pkgver"
-
 prepare() {
-  cd "$_archive"
-
+  cd $pkgname-$pkgver
   # The man tests seem to be flaky
   sed -i '/srunner_add_suite(sr, rarian_man_suite());/d' tests/check-main.c
 
@@ -46,8 +42,7 @@ prepare() {
 }
 
 build() {
-  cd "$_archive"
-
+  cd $pkgname-$pkgver
   export LANG=C LC_ALL=C
   ./autogen.sh
   ./configure \
@@ -61,14 +56,12 @@ build() {
 }
 
 check() {
-  cd "$_archive"
-
+  cd $pkgname-$pkgver
   export LANG=C LC_ALL=C
   make check
 }
 
 package() {
-  cd "$_archive"
-
+  cd $pkgname-$pkgver
   make DESTDIR="$pkgdir" install
 }
