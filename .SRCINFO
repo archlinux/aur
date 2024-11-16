@@ -1,7 +1,7 @@
 pkgbase = python-handy-archives
 	pkgdesc = Handy archive helpers for Python
 	pkgver = 0.2.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://handy-archives.readthedocs.io/
 	arch = any
 	license = MIT
