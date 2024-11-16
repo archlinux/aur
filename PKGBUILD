@@ -1,8 +1,8 @@
 # Maintainer: mapleafgo <mapleafgo at 163 dot com>
 pkgname=pnpm-cli
 pkgver=9.13.2
-pkgrel=1
-pkgdesc="Fast, disk space efficient package manager"
+pkgrel=2
+pkgdesc="Fast, disk space efficient package manager (Pure Packaging, no dependencies)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/pnpm/pnpm"
 license=('MIT')

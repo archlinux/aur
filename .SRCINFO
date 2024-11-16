@@ -1,7 +1,7 @@
 pkgbase = pnpm-cli
-	pkgdesc = Fast, disk space efficient package manager
+	pkgdesc = Fast, disk space efficient package manager (Pure Packaging, no dependencies)
 	pkgver = 9.13.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/pnpm/pnpm
 	arch = x86_64
 	arch = aarch64
