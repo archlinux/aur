@@ -1,37 +1,37 @@
-# Maintainer: Hurstel Alexandre <a.hurstel@unistra.fr>
-_pkgname=ASTex
+# Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
+# Contributor: Hurstel Alexandre <a.hurstel@unistra.fr>
+
 pkgname=astex-git
-pkgver=r14.457e085
+pkgver=r461.3c1e70c
 pkgrel=1
 pkgdesc="ASTex is an open-source library for texture analysis and synthesis."
-arch=('i686' 'x86_64')
+arch=(i686 x86_64)
 url="https://astex-icube.github.io"
-license=('GPL')
-depends=('insight-toolkit' 'libpng' 'openexr')
-makedepends=('git' 'cmake>=3.0.0' 'gcc>=4.9')
-provides=('astex')
-conflicts=('astex')
-source=(
-        "git://github.com/ASTex-ICube/ASTex.git"
-)
+license=(LGPL-2.1-or-later)
+depends=()
+makedepends=(git cmake cgal glfw glu glew eigen boost insight-toolkit libpng openexr suitesparse onetbb)
+provides=(astex)
+conflicts=(astex)
+options=(!lto)
+source=("git+https://github.com/ASTex-ICube/ASTex.git")
+b2sums=('SKIP')
 
 pkgver() {
-  cd "${srcdir}/$_pkgname"
+  cd "ASTex"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-	cd "${srcdir}/${_pkgname}"
-	mkdir -p "${_pkgname}-build"
-	cd "${_pkgname}-build"
-	cmake ..
-	make
+  export CFLAGS+=" -Wno-error=format-security"
+  export CXXFLAGS+=" -Wno-error=format-security"
+
+  cmake -B build -S "ASTex" -Wno-dev \
+    -DCMAKE_BUILD_TYPE=None \
+    -DCMAKE_INSTALL_PREFIX=/usr
+
+  cmake --build build
 }
 
 package() {
-	cd "${srcdir}/${_pkgname}/${_pkgname}-build"
-	make DESTDIR="$pkgdir/" install
+  DESTDIR="${pkgdir}" cmake --install build
 }
-
-md5sums=('SKIP')
-

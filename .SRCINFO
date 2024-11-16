@@ -1,21 +1,28 @@
 pkgbase = astex-git
 	pkgdesc = ASTex is an open-source library for texture analysis and synthesis.
-	pkgver = r14.457e085
+	pkgver = r461.3c1e70c
 	pkgrel = 1
 	url = https://astex-icube.github.io
 	arch = i686
 	arch = x86_64
-	license = GPL
+	license = LGPL-2.1-or-later
 	makedepends = git
-	makedepends = cmake>=3.0.0
-	makedepends = gcc>=4.9
-	depends = insight-toolkit
-	depends = libpng
-	depends = openexr
+	makedepends = cmake
+	makedepends = cgal
+	makedepends = glfw
+	makedepends = glu
+	makedepends = glew
+	makedepends = eigen
+	makedepends = boost
+	makedepends = insight-toolkit
+	makedepends = libpng
+	makedepends = openexr
+	makedepends = suitesparse
+	makedepends = onetbb
 	provides = astex
 	conflicts = astex
-	source = git://github.com/ASTex-ICube/ASTex.git
-	md5sums = SKIP
+	options = !lto
+	source = git+https://github.com/ASTex-ICube/ASTex.git
+	b2sums = SKIP
 
 pkgname = astex-git
-
