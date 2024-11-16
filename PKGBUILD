@@ -3,7 +3,7 @@
 pkgname=python-justbases
 _pkgname=justbases
 pkgver=0.15.2
-pkgrel=1
+pkgrel=2
 pkgdesc="conversion of ints and rationals to any base"
 url="https://github.com/mulkieran/justbases"
 depends=('python')

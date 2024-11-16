@@ -1,7 +1,7 @@
 pkgbase = python-justbases
 	pkgdesc = conversion of ints and rationals to any base
 	pkgver = 0.15.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mulkieran/justbases
 	arch = any
 	license = LGPL-2.1-or-later
