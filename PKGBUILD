@@ -2,7 +2,7 @@
 
 pkgname=i915-sriov-dkms
 pkgver=2024.09.21
-pkgrel=1
+pkgrel=2
 pkgdesc="Linux i915 module patched with SR-IOV support"
 arch=('x86_64')
 url="https://github.com/strongtz/i915-sriov-dkms"
@@ -10,10 +10,11 @@ license=('GPL-2.0-only')
 depends=('dkms')
 makedepends=('git')
 conflicts=("${pkgname}-git" "${pkgname}-bbaa")
+backup=("etc/tmpfiles.d/i915-set-sriov-numvfs.conf")
 install=${pkgname}.install
 source=("git+https://github.com/strongtz/i915-sriov-dkms.git#commit=e26ce8952e465762fc0743731aa377ec0b2889ff" "i915-set-sriov-numvfs.conf")
 sha256sums=('585fbdbe99c9f3c54e14ae464e3139c54baafa4e8e957236fe75cd7404039d21'
-            '6068373d5e00128eea3b59c787a28abdba643a187cdd41a3cd4287b5d9062c12')
+            'e85e4d4c97cb1f6e825c47ea5e3a9c18f10761714307985f67b58c8e55a1e2c2')
 
 package() {
   cd "$srcdir/$pkgname"
@@ -25,7 +26,7 @@ package() {
   cp -rv ${srcdir}/$pkgname/* "${pkgdir}/usr/src/${pkgname}-${pkgver}"
 
   cd "$srcdir"
-  install -Dm644 i915-set-sriov-numvfs.conf "${pkgdir}/usr/lib/tmpfiles.d/i915-set-sriov-numvfs.conf"
+  install -Dm644 i915-set-sriov-numvfs.conf "${pkgdir}/etc/tmpfiles.d/i915-set-sriov-numvfs.conf"
 }
 
 pkgver() {
