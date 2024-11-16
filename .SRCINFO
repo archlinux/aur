@@ -1,6 +1,6 @@
 pkgbase = python-iteration-utilities
 	pkgdesc = Utilities based on Pythons iterators and generators.
-	pkgver = 0.12.1
+	pkgver = 0.13.0
 	pkgrel = 1
 	url = https://iteration-utilities.readthedocs.io
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = python-iteration-utilities
 	makedepends = python-setuptools
 	makedepends = python-wheel
 	depends = python
-	source = https://files.pythonhosted.org/packages/source/i/iteration_utilities/iteration_utilities-0.12.1.tar.gz
-	sha256sums = a17bd698bc65b796b265e56f02a8d71f517716dc066a4c507e12563795bfe3bd
+	source = https://files.pythonhosted.org/packages/source/i/iteration_utilities/iteration_utilities-0.13.0.tar.gz
+	sha256sums = 4be84b9846b5dcd607be769fd014daa107824d7f64c09694a22bf3cd5ab881dc
 
 pkgname = python-iteration-utilities

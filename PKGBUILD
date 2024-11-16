@@ -2,7 +2,7 @@
 # Contributor: Andrej Radović <r.andrej@gmail.com>
 
 pkgname=python-iteration-utilities
-pkgver=0.12.1
+pkgver=0.13.0
 pkgrel=1
 pkgdesc="Utilities based on Pythons iterators and generators."
 url='https://iteration-utilities.readthedocs.io'
@@ -18,7 +18,7 @@ source=(
   "https://files.pythonhosted.org/packages/source/${_pypi::1}/$_pypi/$_pypi-$pkgver.tar.gz"
 )
 sha256sums=(
-  'a17bd698bc65b796b265e56f02a8d71f517716dc066a4c507e12563795bfe3bd'
+  '4be84b9846b5dcd607be769fd014daa107824d7f64c09694a22bf3cd5ab881dc'
 )
 
 build() {
