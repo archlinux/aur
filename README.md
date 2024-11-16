@@ -1,7 +1,6 @@
+# Dashlane CLI GitHub Repository
 
-# Dashlane CLI Git AUR package
-
-This project provides a command-line interface (CLI) for Dashlane, built with the local Node.js version installed. It is the GitHub version of the Dashlane CLI.
+This repository contains the necessary files to build and maintain the Dashlane CLI package for Arch User Repository (AUR).
 
 ## Caution
 
@@ -25,33 +24,51 @@ Install the package using the `just` command:
 just install
 ```
 
+## Justfile Recipes
+
+The `justfile` contains several recipes for building and maintaining the package. Some of these recipes are private and are prefixed with an underscore `_`.
+
+### Public Recipes
+
+- `default`: Choose a recipe to run.
+- `build`: Build the package using `makepkg`.
+- `rebuild`: Force rebuild the package using `makepkg -f`.
+- `nobuild`: Build the package without cleaning the build directory using `makepkg -o`.
+- `prepare`: Prepare the package by running `rebuild`, `_bump-pkgrel`, `_checksum`, and `_srcinfo`.
+- `publish`: Publish the new version by running `prepare`, committing, tagging, and pushing to the AUR.
+
+### Private Recipes
+
+- `_delete-src`: Delete the `src` directory.
+- `_delete-pkg`: Delete the `pkg` directory.
+- `_delete-build-packages`: Delete the built package files.
+- `_delete-pkgbase`: Delete the package base directory.
+- `_delete-all`: Run `_delete-build-packages`, `_delete-src`, `_delete-pkg`, and `_delete-pkgbase`.
+- `_cleanbuild`: Clean build by running `_delete-all` and `makepkg -C`.
+- `_commit-count`: Get the commit count from the git repository.
+- `_bump-pkgrel`: Bump the package release number based on the commit count.
+- `_srcinfo`: Generate the `.SRCINFO` file.
+- `_checksum`: Update the checksums in the PKGBUILD.
+- `_install`: Install the built package using `pacman`.
+- `_uninstall`: Uninstall the package using `pacman`.
+- `_src-version`: Get the source version from the git repository.
+- `_tag-name`: Generate the tag name based on the source version and commit count.
+- `_dcli-bundle-version`: Get the version of the Dashlane CLI bundle.
+- `_dcli-bundle-sync`: Sync the Dashlane CLI bundle.
+- `_clean`: Show what would be cleaned by `git clean -dX -n`.
+- `_clean-force`: Force clean by running `_delete-all` and `git clean -dX -f`.
+- `_set-remote-master-to-aur-branch`: Set the remote master branch to the AUR branch.
+- `_remote-add-aur`: Add the AUR remote.
+- `_clone-empty-aur`: Clone the empty AUR repository.
+
+### Testing
+
+- `test-local`: Run local tests by rebuilding the package and running `_dcli-bundle-version` and `_dcli-bundle-sync`.
+- `test`: Run tests by preparing the package, installing it, and then uninstalling it.
+
 ## Usage
 
-You can use the `just _<task-name>_` command to perform various tasks:
-
-- `just build`: Build the package.
-- `just rebuild`: Rebuild the package.
-- `just install`: Install the package.
-- `just uninstall`: Uninstall the package.
-- `just test`: Test the package installation.
-- `just publish`: Publish the package.
-- `just push:` Push to the AUR remote.
-- `just dcli-bundle-version`: Check the version of the Dashlane CLI bundle.
-- `just dcli-bundle-sync`: Sync the Dashlane CLI bundle.
-- `just test-local`: Test the local build.
-- `just test`: Test the package installation.
-- `just clean`: Clean the Git repository.
-- `just clean-force`: Force clean the Git repository.
-- `just set-remote-master-to-aur-branch`: Set the remote master branch to the AUR branch.
-- `just remote-add-aur`: Add the AUR remote.
-- `just clone-empty-aur`: Clone the empty AUR repository.
-
-
-Use only the `just` command to see the list of available tasks:
-
-```zsh
-just
-```
+To use the `justfile`, you need to have `just` installed. You can then run the recipes using the `just` command.
 
 ## Contributing
 

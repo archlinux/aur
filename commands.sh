@@ -60,8 +60,10 @@ prepare_commands() {
   awk '{print $1}' .tool-versions | xargs -n 1 asdf plugin-add
   asdf install
 
+  git clone git@github.com:Dashlane/dashlane-cli.git "$srcdir/$pkgname"
+
   cd "$srcdir/$pkgname"
-  yarn install
+  yarn install --immutable --immutable-cache --check-cache
 }
 
 build_commands() {

@@ -3,6 +3,9 @@ pkgbase:="dashlane-cli-git"
 default:
     @just --choose
 
+_install-pacman-contrib:
+    @sudo pacman -S pacman-contrib --noconfirm
+
 build:
     @makepkg
 
@@ -12,55 +15,55 @@ rebuild:
 nobuild:
     @makepkg -o
 
-delete-src:
+_delete-src:
     @rm -rf src || true
 
-delete-pkg:
+_delete-pkg:
     @rm -rf pkg || true
 
-delete-build-packages:
+_delete-build-packages:
     @rm -f *.pkg.tar.zst || true
 
-delete-pkgbase:
+_delete-pkgbase:
     @rm -rf {{ pkgbase }} || true
 
-delete-all: delete-build-packages delete-src delete-pkg delete-pkgbase
+_delete-all: _delete-build-packages _delete-src _delete-pkg _delete-pkgbase
 
-cleanbuild: delete-all
+_cleanbuild: _delete-all
     @makepkg -C
 
-commit-count:
+_commit-count:
     @git rev-list --count HEAD
 
-bump-pkgrel:
-    @sed -i "s/pkgrel=[0-9]*/pkgrel=$(just commit-count)/" PKGBUILD
+_bump-pkgrel:
+    @sed -i "s/pkgrel=[0-9]*/pkgrel=$(just _commit-count)/" PKGBUILD
 
-srcinfo:
+_srcinfo:
     @makepkg --printsrcinfo > .SRCINFO
 
-checksum:
+_checksum:
     @updpkgsums
 
-install:
+_install:
     @sudo pacman -U *.pkg.tar.zst --noconfirm
 
-uninstall:
+_uninstall:
     @sudo pacman -R {{ pkgbase }} --noconfirm
 
-src-version:
+_src-version:
     @cd src/{{ pkgbase }} && git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 
-tag-name:
-    @echo "$(just src-version).$(just commit-count)"
+_tag-name:
+    @echo "$(just _src-version).$(just _commit-count)"
 
-prepare: rebuild bump-pkgrel checksum srcinfo
+prepare: _install-pacman-contrib _bump-pkgrel _checksum _srcinfo rebuild
 
 publish: prepare
-    @echo -e "\e[36mNew version: $(just src-version).$(just commit-count)\e[0m"
+    @echo -e "\e[36mNew version: $(just _src-version).$(just _commit-count)\e[0m"
     @git add .
     @echo -e "\e[36mCommitting and tagging...\e[0m"
-    @git tag -af $(just tag-name) -m "bump: $(just src-version).$(just commit-count)"
-    @git commit -m "bump: $(just src-version).$(just commit-count)"
+    @git tag -af $(just _tag-name) -m "bump: $(just _src-version).$(just _commit-count)"
+    @git commit -m "bump: $(just _src-version).$(just _commit-count)"
     @echo -e "\e[36mPushing to origin...\e[0m"
     @git push || true
     @git push --tags --force
@@ -73,35 +76,35 @@ publish: prepare
     @echo -e "\e[36mSwitching back to main...\e[0m"
     @git checkout main
 
-dcli-bundle-version:
+_dcli-bundle-version:
+    @echo "Checking version..."
     @./src/{{ pkgbase }}/bundle/dcli-linux --version
 
-dcli-bundle-sync:
+_dcli-bundle-sync:
+    @echo "Syncing..."
     @./src/{{ pkgbase }}/bundle/dcli-linux sync
 
-test-local: rebuild dcli-bundle-version dcli-bundle-sync
+test-local: rebuild _dcli-bundle-version _dcli-bundle-sync
 
-test: prepare install && uninstall
-    @dcli --version
-
+test: prepare _install && _dcli-bundle-version _dcli-bundle-sync _uninstall
+    @echo "Testing..."
 
 # Maintainance commands
 
-clean:
+_clean:
     @git clean -dX -n
 
-clean-force: delete-all
+_clean-force: _delete-all
     @git clean -dX -f
 
-
 #########################################################
-set-remote-master-to-aur-branch:
+_set-remote-master-to-aur-branch:
     @git branch master --set-upstream-to aur/master
 # One-time command to add the aur remote - no further use
-remote-add-aur:
+_remote-add-aur:
     @git remote add aur ssh://aur@aur.archlinux.org/{{ pkgbase }}.git || true
 
 # One-time command to clone the aur repo - no further use
-clone-empty-aur:
+_clone-empty-aur:
     @git -c init.defaultbranch=master clone ssh://aur@aur.archlinux.org/{{ pkgbase }}.git
 

@@ -1,7 +1,7 @@
 # Maintainer: Stephan Koglin-Fischer <stephan dot koglin-fischer at funzt dot dev>
 pkgname=dashlane-cli-git
-pkgver=v1.15.1.r0.g8368d87
-pkgrel=68
+pkgver=v6.2436.0.r7.gbcfde0b
+pkgrel=69
 pkgdesc="Dashlane CLI GitHub repository version bundled with asdf-vm to ensure using the correct node version."
 arch=('x86_64')
 url="https://github.com/Dashlane/dashlane-cli"
@@ -11,8 +11,8 @@ makedepends=('git')
 source=("$pkgname::git+$url.git" '.tool-versions' 'commands.sh')
 install=".INSTALL"
 b2sums=('SKIP'
-        '7d947ad3269a67f0987a277e10b082931ecce24330e82debd0d147f3ea24a0d9c04a91c0f711fce286a17a789c883bb626685bc08ac78040c28a5ca677a0cbf8'
-        'fd7d42a58b56480eeb448a1af00934ce056a10f5fd3f80f23a61882ba8692b89a2aa84bd5664148dfc67091af00c9708208519d187abd2a6799b7ddbad3ab306')
+        '15cd4aecbcf30e547e140204252a8bdf76f1ddc7493bca478d8fbb08359041342c060ad72e8fc2354fe1d2ac691820b7ef04467d2d80638d0082a828c754bd56'
+        '60251685340f3bfe5d0c91820f0c218c7012e1ceb686a8381fcacd8b86a6c483fe76e0df22a8d29c7af951ccbeb6149ffcb606ffeda92da305c0c778acee95d4')
 # option strip is important for dcli to work properly and avoid
 # 'Pkg: Error reading from file.' error in production
 options=(!strip)
