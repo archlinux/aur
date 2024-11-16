@@ -1,7 +1,7 @@
 # Maintainer: soloturn <soloturn@gmail.com>
 # Co-Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 
-pkgname=cosmic-applibrary-git
+pkgname=cosmic-app-library-git
 pkgver=1.0.0.alpha.3.r0.g3dd148d
 pkgrel=1
 pkgdesc="An application launcher for the COSMIC desktop"
