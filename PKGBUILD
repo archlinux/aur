@@ -5,7 +5,7 @@
 
 pkgname=ffmpeg-amd-full
 pkgver=7.1
-pkgrel=1
+pkgrel=2
 _svt_hevc_ver='ed80959ebb5586aa7763c91a397d44be1798587c'
 _svt_vp9_ver='3b9a3fa43da4cc5fe60c7d22afe2be15341392ea'
 pkgdesc='Complete solution to record, convert and stream audio and video (all possible features for AMD)'
@@ -127,6 +127,7 @@ depends=(
     'shine'
     'uavs3d-git'
     'vo-amrwbenc'
+    'vvenc'
     'xavs'
     'xavs2'
     'xevd'
