@@ -42,6 +42,6 @@ package() {
     install -Dm 644 src/resources/.desktop "$pkgdir/usr/share/applications/glass.desktop"
     install -Dm 644 src/resources/logo.png "$pkgdir/usr/share/pixmaps/glass.png"
     install -Dm 644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-    mkdir -p "$pkgdir/usr/bin/glass"
+    mkdir -p "$pkgdir/usr/bin"
     ln -sf /opt/glass/glass "$pkgdir/usr/bin/glass"
 }
