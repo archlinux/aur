@@ -1,7 +1,7 @@
 # Maintainer: Li Hua <lihua@email.com>
 pkgname=hybridfilexfer-git
 pkgver=r27.89241d9
-pkgrel=5
+pkgrel=6
 pkgdesc="多轨快传，同时使用USB和5G与2.4GWIFI等通道传输文件到电脑，榨干手机IO！ "
 arch=('any')
 url='https://github.com/weixiansen574/HybridFileXfer'
@@ -19,8 +19,8 @@ pkgver() {
 
 build() {
 	cd "$srcdir/${pkgname%-git}/HybridFileXfer-PC/src"
-	javac -d . top/weixiansen574/hybirdfilexfer/Main.java
-	jar cfm "$srcdir/HybridFileXfer.jar" "META-INF/MANIFEST.MF" $(find . -name '*.class')
+	javac -verbose -d . top/weixiansen574/hybirdfilexfer/Main.java
+	jar vcfm "$srcdir/HybridFileXfer.jar" "META-INF/MANIFEST.MF" $(find . -name '*.class')
 }
 
 package() {
