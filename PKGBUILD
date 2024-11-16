@@ -4,30 +4,22 @@
 # Contributor: Orlando Garcia Feal <rodland at gmail dot com>
 
 pkgname=gnudatalanguage
-pkgver=1.0.6
+pkgver=1.1
 pkgrel=1
 pkgdesc="An IDL (Interactive Data Language) compatible incremental compiler (ie. runs IDL programs)"
 arch=("i686" "x86_64")
 url="https://gnudatalanguage.github.io/"
 license=("GPL-2.0-or-later")
 depends=("eccodes" "expat" "fftw" "gcc-libs" "glibc" "glpk" "graphicsmagick" "gsl" "hdf4" "hdf5"
-         "libgeotiff" "libpng" "libtiff" "libtirpc" "libx11" "openmpi" "plplot" "proj" "python"
+         "libgeotiff" "libpng" "libtiff" "libtirpc" "openmpi" "proj" "python"
          "readline" "shapelib" "udunits" "wxwidgets-common" "wxwidgets-gtk3" "zlib")
-makedepends=("cmake" "eigen" "python-numpy")
+makedepends=("cmake" "eigen" "python-numpy" "qhull")
 checkdepends=("openssh")
 optdepends=("cuda")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/gnudatalanguage/gdl/releases/download/v${pkgver}/gdl-v${pkgver}.tar.gz"
-        "gdl.profile"
-        "gdl-cmake.patch")
-sha512sums=("8a10e2d33d99aa2d29a085957a726b7d1af8e73fdb7c725508c929b5dbbff55e3fbb9265e9aa9c14e73bf72f6409aac24817032bd81007b694ebb689c02aa75a"
-            "b3a3589d2ce8eb5d49c902aa9bc43df0a0fcc369d17deb060026d34fa821881a212ce6aa02edc7ea6c0476b2faacc7455e467af7b5baf672e2653b71b162190f"
-            "bcb0f55f7f5a203a3f976e7b258019f425aeb8bb1534a381e4b586ad35d62620d5e7d3f5fe7918e29a0634a6df99a5f86a2caa4f62ce4a1e8ef4c647ea860f65")
-
-prepare() {
-    cd "${srcdir}/gdl-v${pkgver}"
-
-    patch -p1 -i ../gdl-cmake.patch
-}
+        "gdl.profile")
+sha512sums=("304aa2a8e39c3966c2ac006cbacfa5b49d9b1fc5d55446a5f645792427b7c05a67dab2b13ba9119a8d69940334ac3225dd494c23685c290844acd07b4562c141"
+            "b3a3589d2ce8eb5d49c902aa9bc43df0a0fcc369d17deb060026d34fa821881a212ce6aa02edc7ea6c0476b2faacc7455e467af7b5baf672e2653b71b162190f")
 
 build() {
     cd "${srcdir}/gdl-v${pkgver}"
@@ -37,10 +29,9 @@ build() {
     mkdir build
     cd build
 
-    cmake -Wno-dev -DCMAKE_INSTALL_PREFIX=/usr -DGDL_LIB_DIR="/lib/${pkgname}" \
-        -DEIGEN3=ON -DFFTW=ON -DGLPK=ON -DGRAPHICSMAGICK=ON -DGRIB=ON -DHDF5=ON \
-        -DHDF=ON -DHDFDIR=/opt/hdf4 -DLIBPROJ=ON -DMAGICK=OFF -DMPI=ON -DNETCDF=OFF \
-        -DPYTHON=ON -DPYTHONVERSION=3 -DPYTHON_MODULE=OFF -DQHULL=ON -DREADLINE=ON \
+    cmake -Wno-dev -DCMAKE_INSTALL_PREFIX=/usr -DEIGEN3=ON -DFFTW=ON -DGLPK=ON -DGRAPHICSMAGICK=ON \
+        -DGRIB=ON -DHDF5=ON -DHDF=ON -DHDFDIR=/opt/hdf4 -DLIBPROJ=ON -DMAGICK=OFF -DMPI=ON \
+        -DNETCDF=OFF -DPYTHON=ON -DPYTHONVERSION=3 -DPYTHON_MODULE=OFF -DQHULL=ON -DREADLINE=ON \
         -DSHAPELIB=ON -DUDUNITS2=ON ..
 
     make
@@ -48,14 +39,8 @@ build() {
 
 check() {
     cd "${srcdir}/gdl-v${pkgver}/build"
-    
-    # we need *..driver_info files, those are installed but not in 
-    while IFS= read -r -d '' file
-    do
-        base=$(basename "${file}" .so)
-        cp ../src/plplotdriver/"${base}".driver_info src/plplotdriver/"${base}".driver_info
-    done < <(find src/plplotdriver -name \*.so -print0)
-    PLPLOT_DRV_DIR="src/plplotdriver/" ctest --output-on-failure
+    # setting the evn variable is a temporary fix/hack for https://github.com/gnudatalanguage/gdl/issues/1907
+    PLPLOT_LIB="${srcdir}/gdl-v${pkgver}/src/plplot/data/" ctest --output-on-failure
 }
 
 package() {
