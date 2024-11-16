@@ -1,19 +1,21 @@
 pkgbase = python-astrodendro-git
 	pkgdesc = Python package for computation of astronomical dendrograms
-	pkgver = 0.2.0.r36.g75ec031
+	pkgver = 0.3.1.r1.gabeff7d
 	pkgrel = 1
 	url = https://dendrograms.readthedocs.io
 	arch = any
 	license = MIT
 	checkdepends = python-pytest
 	checkdepends = python-h5py
+	checkdepends = qt5-svg
+	checkdepends = python-pyqt5
 	makedepends = python-setuptools-scm
 	makedepends = git
-	makedepends = python-wheel
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-sphinx-automodapi
 	makedepends = python-numpydoc
+	makedepends = python-matplotlib
 	makedepends = python-aplpy
 	source = git+https://github.com/dendrograms/astrodendro
 	md5sums = SKIP
@@ -21,9 +23,9 @@ pkgbase = python-astrodendro-git
 pkgname = python-astrodendro-git
 	depends = python
 	depends = python-numpy>=1.24
-	depends = python-astropy>4
-	depends = python-matplotlib>3
-	depends = python-h5py>3
+	depends = python-astropy>=5
+	depends = python-matplotlib>=3.3
+	depends = python-h5py>=3
 	optdepends = python-astrodendro-doc-git: Documentation for astrodendro
 	provides = python-astrodendro
 	conflicts = python-astrodendro

@@ -3,7 +3,7 @@
 pkgbase=python-astrodendro-git
 _gitname=astrodendro
 pkgname=("python-${_gitname}-git" "python-${_gitname}-doc-git")
-pkgver=0.2.0.r36.g75ec031
+pkgver=0.3.1.r1.gabeff7d
 pkgrel=1
 pkgdesc="Python package for computation of astronomical dendrograms"
 arch=('any')
@@ -11,14 +11,16 @@ url="https://dendrograms.readthedocs.io"
 license=('MIT')
 makedepends=('python-setuptools-scm'
              'git'
-             'python-wheel'
              'python-build'
              'python-installer'
              'python-sphinx-automodapi'
              'python-numpydoc'
-             'python-aplpy')
+             'python-matplotlib'
+             'python-aplpy')  # wheel required by new setuptools
 checkdepends=('python-pytest'
-              'python-h5py') # 'python-astropy' 'python-matplotlib' by aplpy
+              'python-h5py'
+              'qt5-svg'
+              'python-pyqt5') # 'python-astropy' 'python-matplotlib' by aplpy
 source=("git+https://github.com/dendrograms/astrodendro")
 md5sums=('SKIP')
 
@@ -42,11 +44,11 @@ build() {
 check() {
     cd ${srcdir}/${_gitname}
 
-    pytest || warning "Tests failed" # -vv --color=yes
+    pytest || warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count -p xdist -n 4 #
 }
 
 package_python-astrodendro-git() {
-    depends=('python' 'python-numpy>=1.24' 'python-astropy>4' 'python-matplotlib>3' 'python-h5py>3')
+    depends=('python' 'python-numpy>=1.24' 'python-astropy>=5' 'python-matplotlib>=3.3' 'python-h5py>=3')
     optdepends=('python-astrodendro-doc-git: Documentation for astrodendro')
     provides=("${pkgname%-git}")
     conflicts=("${pkgname%-git}")
