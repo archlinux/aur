@@ -12,11 +12,11 @@
 
 pkgname="vlc-git"
 pkgdesc="Multi-platform MPEG, VCD/DVD, and DivX player"
-pkgver=4.0.0.r29905.gc347fed91e
-pkgrel=1
+pkgver=4.0.0.r31756.g76cd807c24
+pkgrel=2
 url='https://code.videolan.org/videolan/vlc'
 arch=('i686' 'x86_64')
-license=('LGPL2.1' 'GPL2')
+license=('GPL-2.0-or-later' 'LGPL-2.1-or-later')
 depends=('a52dec' 'libdvbpsi' 'libxpm' 'libdca' 'libproxy' 'lua52'
          'libmatroska' 'taglib' 'libmpcdec' 'ffmpeg' 'faad2' 'libupnp' 'libmad'
          'libmpeg2' 'xcb-util-keysyms' 'libxinerama' 'libsecret'
@@ -98,8 +98,8 @@ optdepends=('avahi: service discovery using bonjour protocol'
             'dav1d: dav1d AV1 decoder')
 
 _name=vlc
-conflicts=("${_name}")
-provides=("${_name}=${pkgver}")
+provides=("${_name}=${pkgver}" "lib${_name}=${pkgver}")
+conflicts=("${_name}" "lib${_name}")
 options=(!emptydirs)
 source=('git+https://code.videolan.org/videolan/vlc.git'
         'vlc-live-media-2021.patch'
