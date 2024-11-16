@@ -1,0 +1,15 @@
+pkgbase = smriti
+	pkgdesc = Keep track of the commands your memory missed
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/aspasht/smriti
+	arch = x86_64
+	license = MIT
+	makedepends = rustup
+	makedepends = glibc
+	makedepends = gcc-libs
+	depends = sqlite
+	source = smriti-1.0.0.tar.gz::https://github.com/aspasht/smriti/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = 8737b248cd1b12413a7589c820dd280f14e84c1eaa806a752134e48fd1633683
+
+pkgname = smriti
