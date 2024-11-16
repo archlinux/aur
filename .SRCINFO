@@ -1,7 +1,7 @@
 pkgbase = python-urwid_readline
 	pkgdesc = Text input widget for urwid that supports readline shortcuts
-	pkgver = 0.14
-	pkgrel = 2
+	pkgver = 0.15.1
+	pkgrel = 1
 	url = https://github.com/rr-/urwid_readline
 	arch = any
 	license = MIT
@@ -11,7 +11,7 @@ pkgbase = python-urwid_readline
 	makedepends = python-setuptools
 	makedepends = python-wheel
 	depends = python-urwid
-	source = urwid_readline-0.14.tar.gz::https://github.com/rr-/urwid_readline/archive/0.14.tar.gz
-	sha256sums = 4d4c9667f5ce1a62f39e4e705c0ed3b3bb846386b1f30be5a69b37b019664493
+	source = urwid_readline-0.15.1.tar.gz::https://github.com/rr-/urwid_readline/archive/0.15.1.tar.gz
+	sha256sums = f721cbf7825d2dfdb80df2eec1b8a28f4def56db84ce6af94f2392341b4befbb
 
 pkgname = python-urwid_readline

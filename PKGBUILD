@@ -2,8 +2,8 @@
 # Contributor: Anty0 <anty150 at gmail dot com>
 
 pkgname=python-urwid_readline
-pkgver=0.14
-pkgrel=2
+pkgver=0.15.1
+pkgrel=1
 pkgdesc="Text input widget for urwid that supports readline shortcuts"
 url="https://github.com/rr-/urwid_readline"
 depends=('python-urwid')
@@ -12,7 +12,7 @@ checkdepends=('python-pytest')
 license=('MIT')
 arch=('any')
 source=("urwid_readline-$pkgver.tar.gz::${url}/archive/${pkgver}.tar.gz")
-sha256sums=('4d4c9667f5ce1a62f39e4e705c0ed3b3bb846386b1f30be5a69b37b019664493')
+sha256sums=('f721cbf7825d2dfdb80df2eec1b8a28f4def56db84ce6af94f2392341b4befbb')
 
 build() {
     cd "urwid_readline-$pkgver"
