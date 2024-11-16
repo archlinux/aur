@@ -13,7 +13,7 @@ license=('Apache 2.0')
 depends=('bash')
 makedepends=('python' 'bazel' 'git' 'm4' 'flex' 'bison')
 provides=('verible')
-conflicts=('verible-git')
+conflicts=('verible-git' 'verible-bin')
 source=(
   "verible.tar.gz::https://github.com/chipsalliance/verible/archive/refs/tags/${_gittag}.tar.gz"
 )
