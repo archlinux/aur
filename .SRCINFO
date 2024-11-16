@@ -1,0 +1,15 @@
+pkgbase = plasma6-applets-analog24hclock
+	pkgdesc = Analog 24h clock
+	pkgver = r6.c6c5eb5
+	pkgrel = 1
+	url = https://github.com/sleepywitti/analog24hclock-plasmoid/
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = plasma-workspace
+	depends = plasma5support
+	conflicts = plasma5-applets-analog24hclock
+	source = plasma6-applets-analog24hclock::git+https://github.com/sleepywitti/analog24hclock-plasmoid.git#commit=c6c5eb50ce5108ba34a4bb936f81eff416c1e6d3
+	md5sums = SKIP
+
+pkgname = plasma6-applets-analog24hclock
