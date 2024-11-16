@@ -1,10 +1,11 @@
 pkgbase = python-iso639
 	pkgdesc = Python library for ISO 639 standard
 	pkgver = 0.4.5
-	pkgrel = 6
+	pkgrel = 7
 	url = https://github.com/noumar/iso639
 	arch = any
 	license = AGPL-3.0-only
+	makedepends = python-poetry
 	depends = python
 	depends = python-setuptools
 	source = iso639-0.4.5.tar.gz::https://github.com/noumar/iso639/archive/0.4.5.tar.gz
