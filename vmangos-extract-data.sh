@@ -42,8 +42,8 @@ kill_jobs () {
 cleanup_and_exit () {
     kill_jobs
     [[ -d "$DATA_DIR/dbc" ]] && mv "$DATA_DIR/dbc" "$DATA_DIR/5875/dbc"
-    rm -rf "$DATA_DIR/Buildings"
-    rm -rf "$DATA_DIR/Cameras"
+    [[ -d "$DATA_DIR/Buildings" ]] && rm -rf "$DATA_DIR/Buildings"
+    [[ -d "$DATA_DIR/Cameras" ]] && rm -rf "$DATA_DIR/Cameras"
     exit 0
 }
 
