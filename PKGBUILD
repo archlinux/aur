@@ -28,8 +28,8 @@ b2sums=('SKIP'
 install="$_pkgname.install"
 
 pkgver() {
-  cd "$srcdir/$_pkgname"
-  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+ cd "$_pkgname"
+ git rev-parse --verify HEAD
 }
 
 build(){
