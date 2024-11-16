@@ -1,7 +1,7 @@
 pkgbase = dg
 	pkgdesc = A simple language that compiles to CPython bytecode
 	pkgver = 1.1.0.20160916
-	pkgrel = 9
+	pkgrel = 10
 	url = https://pyos.github.io/dg
 	arch = any
 	license = MIT
