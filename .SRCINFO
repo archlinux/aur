@@ -24,7 +24,7 @@ pkgbase = mozc-with-jp-dict
 	source = git+https://github.com/hiroyuki-komatsu/japanese-usage-dictionary.git#commit=e5b3425
 	source = git+https://github.com/protocolbuffers/protobuf.git#commit=7cc670c18
 	source = git+https://github.com/microsoft/wil.git#commit=fc5dbf5
-	source = git+https://github.com/phoepsilonix/dict-to-mozc.git#commit=26c2bbfa9f84c349547efa5bb94b74f41dcd7bbe
+	source = git+https://github.com/phoepsilonix/dict-to-mozc.git#commit=a1e4aea075e190e1dad65c09a66348958284edfb
 	source = http://sudachi.s3-website-ap-northeast-1.amazonaws.com/sudachidict-raw/20241021/small_lex.zip
 	source = http://sudachi.s3-website-ap-northeast-1.amazonaws.com/sudachidict-raw/20241021/core_lex.zip
 	source = http://sudachi.s3-website-ap-northeast-1.amazonaws.com/sudachidict-raw/20241021/notcore_lex.zip
@@ -42,7 +42,7 @@ pkgbase = mozc-with-jp-dict
 	sha512sums = 91b878735e767ddf6f1fe3de61486c1e78936a0f683855e7c34a21c711f405899d3de369d2ff0a1910d65b1afc8c225d8d8b9398cf98d760f3afcfe42644fca2
 	sha512sums = b9fade4c8cfe60915c51433c1acd4b253b947dd2fabe7b70dd53c92cd751322fb007ef68e04d5551315f3bc2f52048fb8b9babf40455309ab7b38d9f3efd348a
 	sha512sums = 504066a457f77b510f492626c919b6fd7b61f77948bdddef0f7e43ae09bb4bf03cea7000fba91ae0123a94d3b39cac6dfac2010126849afe0a183727fe7b0fc1
-	sha512sums = 741424477ca39a158b807c4a1c60befcc587829f63a19dd1fa87162e82e23a922a413b77eb62b07d80baa5d57f9ef28a9d53bc18fdac790a5212050160c2bd95
+	sha512sums = 8ee0eebbe52e72ca3eb67bb33bebe291d53d3685a28fc2dd51f6dc0ad588037e10b24b9b25c031ba344856499223e275372c8538812c4f7eb01e5319461d446f
 	sha512sums = 807b68f18e0f9093ccca368fcd4a209a0723167be7aa48e04217f053bc0911399f3bb86b95cb118e64bb9f53f5242c9c51bcff14f81d94ed68db2448c9386b32
 	sha512sums = f3ea37e785d604d614b8fa27bf03d1b669240b7c28c293d953a3ac40b6faff56893b42f8e082ccc7723edb5b27a4613a99343477a34fc76afd458912025555e9
 	sha512sums = 384a8c55e928323a4a6b3f83a6845199c67cd3766ca586ea936c41aeb6728020b2430daeb88de3cc19413b6111db5971552f8a538826d3718ab33b7281226ff8
