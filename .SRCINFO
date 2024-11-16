@@ -1,6 +1,6 @@
 pkgbase = caligula-git
 	pkgdesc = A user-friendly, lightweight TUI for disk imaging
-	pkgver = 0.4.7
+	pkgver = 0.4.7.r11.g5b3b9f4
 	pkgrel = 1
 	url = https://github.com/ifd3f/caligula
 	arch = x86_64
