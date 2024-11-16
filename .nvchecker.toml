@@ -1,0 +1,6 @@
+[git-credential-manager-bin]
+source = "github"
+github = "git-ecosystem/git-credential-manager"
+host = "github.com"
+use_max_tag = true
+prefix = "v"
