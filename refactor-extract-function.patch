@@ -1,12 +1,8 @@
 diff --git a/clang-tools-extra/clangd/refactor/tweaks/ExtractFunction.cpp b/clang-tools-extra/clangd/refactor/tweaks/ExtractFunction.cpp
-index 0302839c5825..1f183d209bec 100644
+index cd07cbf73635..2033e76c65ad 100644
 --- a/clang-tools-extra/clangd/refactor/tweaks/ExtractFunction.cpp
 +++ b/clang-tools-extra/clangd/refactor/tweaks/ExtractFunction.cpp
-@@ -56,9 +56,12 @@
- #include "clang/AST/ASTContext.h"
- #include "clang/AST/Decl.h"
- #include "clang/AST/DeclBase.h"
-+#include "clang/AST/ExprCXX.h"
+@@ -60,6 +60,8 @@
  #include "clang/AST/NestedNameSpecifier.h"
  #include "clang/AST/RecursiveASTVisitor.h"
  #include "clang/AST/Stmt.h"
@@ -15,8 +11,8 @@ index 0302839c5825..1f183d209bec 100644
  #include "clang/Basic/LangOptions.h"
  #include "clang/Basic/SourceLocation.h"
  #include "clang/Basic/SourceManager.h"
-@@ -73,6 +76,9 @@
- #include "llvm/Support/raw_os_ostream.h"
+@@ -73,6 +75,9 @@
+ #include "llvm/Support/Error.h"
  #include <optional>
  
 +#include <algorithm>
@@ -25,7 +21,7 @@ index 0302839c5825..1f183d209bec 100644
  namespace clang {
  namespace clangd {
  namespace {
-@@ -95,6 +101,208 @@ enum FunctionDeclKind {
+@@ -95,6 +100,208 @@ enum FunctionDeclKind {
    OutOfLineDefinition
  };
  
@@ -214,7 +210,7 @@ index 0302839c5825..1f183d209bec 100644
 +    for (const auto *SelNode : Operands.Operands) {
 +      auto Matches{ast_matchers::match(Matcher, SelNode->ASTNode, Cont)};
 +      for (const auto &Match : Matches)
-+        if (const DeclRefExpr * Ref{Match.getNodeAs<DeclRefExpr>("ref")}; Ref)
++        if (const DeclRefExpr *Ref{Match.getNodeAs<DeclRefExpr>("ref")}; Ref)
 +          Refs.push_back(Ref);
 +    }
 +    return Refs;
@@ -231,10 +227,10 @@ index 0302839c5825..1f183d209bec 100644
 +  return ExtractedBinarySubexpressionSelection{*this, getSelectedOperands()};
 +}
 +
- // A RootStmt is a statement that's fully selected including all it's children
- // and it's parent is unselected.
+ // A RootStmt is a statement that's fully selected including all its children
+ // and its parent is unselected.
  // Check if a node is a root statement.
-@@ -122,11 +330,14 @@ bool isRootStmt(const Node *N) {
+@@ -125,11 +332,14 @@ bool isRootStmt(const Node *N) {
  // begins in selection range, ends in selection range and any scope that begins
  // outside the selection range, ends outside as well.
  const Node *getParentOfRootStmts(const Node *CommonAnc) {
@@ -251,7 +247,7 @@ index 0302839c5825..1f183d209bec 100644
      // Typically a block, with the { and } unselected, could also be ForStmt etc
      // Ensure all Children are RootStmts.
      Parent = CommonAnc;
-@@ -152,6 +363,7 @@ const Node *getParentOfRootStmts(const Node *CommonAnc) {
+@@ -155,6 +365,7 @@ const Node *getParentOfRootStmts(const Node *CommonAnc) {
  
  // The ExtractionZone class forms a view of the code wrt Zone.
  struct ExtractionZone {
@@ -259,7 +255,7 @@ index 0302839c5825..1f183d209bec 100644
    // Parent of RootStatements being extracted.
    const Node *Parent = nullptr;
    // The half-open file range of the code being extracted.
-@@ -162,6 +374,8 @@ struct ExtractionZone {
+@@ -165,6 +376,8 @@ struct ExtractionZone {
    SourceRange EnclosingFuncRange;
    // Set of statements that form the ExtractionZone.
    llvm::DenseSet<const Stmt *> RootStmts;
@@ -268,7 +264,7 @@ index 0302839c5825..1f183d209bec 100644
  
    SourceLocation getInsertionPoint() const {
      return EnclosingFuncRange.getBegin();
-@@ -292,20 +506,12 @@ computeEnclosingFuncRange(const FunctionDecl *EnclosingFunction,
+@@ -295,20 +508,12 @@ computeEnclosingFuncRange(const FunctionDecl *EnclosingFunction,
    return toHalfOpenFileRange(SM, LangOpts, EnclosingFunction->getSourceRange());
  }
  
@@ -294,7 +290,7 @@ index 0302839c5825..1f183d209bec 100644
  }
  
  // FIXME: Check we're not extracting from the initializer/condition of a control
-@@ -313,17 +519,30 @@ bool validSingleChild(const Node *Child, const FunctionDecl *EnclosingFunc) {
+@@ -316,17 +521,30 @@ bool validSingleChild(const Node *Child, const FunctionDecl *EnclosingFunc) {
  std::optional<ExtractionZone> findExtractionZone(const Node *CommonAnc,
                                                   const SourceManager &SM,
                                                   const LangOptions &LangOpts) {
@@ -329,7 +325,7 @@ index 0302839c5825..1f183d209bec 100644
      return std::nullopt;
    if (auto FuncRange =
            computeEnclosingFuncRange(ExtZone.EnclosingFunction, SM, LangOpts))
-@@ -367,6 +586,7 @@ struct NewFunction {
+@@ -370,6 +588,7 @@ struct NewFunction {
    bool Static = false;
    ConstexprSpecKind Constexpr = ConstexprSpecKind::Unspecified;
    bool Const = false;
@@ -337,7 +333,7 @@ index 0302839c5825..1f183d209bec 100644
  
    // Decides whether the extracted function body and the function call need a
    // semicolon after extraction.
-@@ -495,8 +715,11 @@ std::string NewFunction::getFuncBody(const SourceManager &SM) const {
+@@ -498,8 +717,11 @@ std::string NewFunction::getFuncBody(const SourceManager &SM) const {
    // - hoist decls
    // - add return statement
    // - Add semicolon
@@ -351,7 +347,7 @@ index 0302839c5825..1f183d209bec 100644
  }
  
  std::string NewFunction::Parameter::render(const DeclContext *Context) const {
-@@ -530,6 +753,7 @@ struct CapturedZoneInfo {
+@@ -533,6 +755,7 @@ struct CapturedZoneInfo {
    // FIXME: Capture type information as well.
    DeclInformation *createDeclInfo(const Decl *D, ZoneRelative RelativeLoc);
    DeclInformation *getDeclInfoFor(const Decl *D);
@@ -359,7 +355,7 @@ index 0302839c5825..1f183d209bec 100644
  };
  
  CapturedZoneInfo::DeclInformation *
-@@ -543,7 +767,14 @@ CapturedZoneInfo::createDeclInfo(const Decl *D, ZoneRelative RelativeLoc) {
+@@ -546,7 +769,14 @@ CapturedZoneInfo::createDeclInfo(const Decl *D, ZoneRelative RelativeLoc) {
  
  CapturedZoneInfo::DeclInformation *
  CapturedZoneInfo::getDeclInfoFor(const Decl *D) {
@@ -375,7 +371,7 @@ index 0302839c5825..1f183d209bec 100644
    auto Iter = DeclInfoMap.find(D);
    if (Iter == DeclInfoMap.end())
      return nullptr;
-@@ -664,12 +895,29 @@ CapturedZoneInfo captureZoneInfo(const ExtractionZone &ExtZone) {
+@@ -667,12 +897,29 @@ CapturedZoneInfo captureZoneInfo(const ExtractionZone &ExtZone) {
    return Result;
  }
  
@@ -410,7 +406,7 @@ index 0302839c5825..1f183d209bec 100644
    for (const auto &KeyVal : CapturedInfo.DeclInfoMap) {
      const auto &DeclInfo = KeyVal.second;
      // If a Decl was Declared in zone and referenced in post zone, it
-@@ -677,20 +925,16 @@ bool createParameters(NewFunction &ExtractedFunc,
+@@ -680,20 +927,16 @@ bool createParameters(NewFunction &ExtractedFunc,
      // FIXME: Support Decl Hoisting.
      if (DeclInfo.DeclaredIn == ZoneRelative::Inside &&
          DeclInfo.IsReferencedInPostZone)
@@ -436,7 +432,7 @@ index 0302839c5825..1f183d209bec 100644
      // FIXME: Need better qualifier checks: check mutated status for
      // Decl(e.g. was it assigned, passed as nonconst argument, etc)
      // FIXME: check if parameter will be a non l-value reference.
-@@ -698,12 +942,61 @@ bool createParameters(NewFunction &ExtractedFunc,
+@@ -701,12 +944,61 @@ bool createParameters(NewFunction &ExtractedFunc,
      // pointers, etc by reference.
      bool IsPassedByReference = true;
      // We use the index of declaration as the ordering priority for parameters.
@@ -503,7 +499,7 @@ index 0302839c5825..1f183d209bec 100644
  }
  
  // Clangd uses open ranges while ExtractionSemicolonPolicy (in Clang Tooling)
-@@ -723,29 +1016,47 @@ getSemicolonPolicy(ExtractionZone &ExtZone, const SourceManager &SM,
+@@ -726,29 +1018,47 @@ getSemicolonPolicy(ExtractionZone &ExtZone, const SourceManager &SM,
    return SemicolonPolicy;
  }
  
@@ -545,7 +541,7 @@ index 0302839c5825..1f183d209bec 100644
 +  }
 +  // If the selected code is an expression, then take the return type of it.
 +  if (const auto &Node{*ExtZone.Parent}; Node.Children.size() == 1) {
-+    if (const Expr * Expression{ExtZone.getLastRootStmt()->ASTNode.get<Expr>()};
++    if (const Expr *Expression{ExtZone.getLastRootStmt()->ASTNode.get<Expr>()};
 +        Expression) {
 +      if (const auto *Call{llvm::dyn_cast_or_null<CallExpr>(Expression)};
 +          Call) {
@@ -562,7 +558,7 @@ index 0302839c5825..1f183d209bec 100644
  }
  
  void captureMethodInfo(NewFunction &ExtractedFunc,
-@@ -791,14 +1102,25 @@ llvm::Expected<NewFunction> getExtractedFunction(ExtractionZone &ExtZone,
+@@ -794,14 +1104,25 @@ llvm::Expected<NewFunction> getExtractedFunction(ExtractionZone &ExtZone,
      ExtractedFunc.ForwardDeclarationSyntacticDC = ExtractedFunc.SemanticDC;
    }
  
@@ -593,23 +589,12 @@ index 0302839c5825..1f183d209bec 100644
    return ExtractedFunc;
  }
  
-@@ -913,8 +1235,8 @@ Expected<Tweak::Effect> ExtractFunction::apply(const Selection &Inputs) {
- 
-       tooling::Replacements OtherEdit(
-           createForwardDeclaration(*ExtractedFunc, SM));
--      if (auto PathAndEdit = Tweak::Effect::fileEdit(SM, SM.getFileID(*FwdLoc),
--                                                 OtherEdit))
-+      if (auto PathAndEdit =
-+              Tweak::Effect::fileEdit(SM, SM.getFileID(*FwdLoc), OtherEdit))
-         MultiFileEffect->ApplyEdits.try_emplace(PathAndEdit->first,
-                                                 PathAndEdit->second);
-       else
 diff --git a/clang-tools-extra/clangd/tool/CMakeLists.txt b/clang-tools-extra/clangd/tool/CMakeLists.txt
-index 5a1556b813b5..77cbd52cffaf 100644
+index 850a82833e44..0970fb945203 100644
 --- a/clang-tools-extra/clangd/tool/CMakeLists.txt
 +++ b/clang-tools-extra/clangd/tool/CMakeLists.txt
-@@ -16,6 +16,7 @@ endif()
- clang_target_link_libraries(clangd
+@@ -23,6 +23,7 @@ endif()
+ clang_target_link_libraries(clangdMain
    PRIVATE
    clangAST
 +  clangASTMatchers
@@ -617,7 +602,7 @@ index 5a1556b813b5..77cbd52cffaf 100644
    clangFormat
    clangFrontend
 diff --git a/clang-tools-extra/clangd/unittests/tweaks/ExtractFunctionTests.cpp b/clang-tools-extra/clangd/unittests/tweaks/ExtractFunctionTests.cpp
-index dec63d454d52..a9604cfb4bd5 100644
+index eff4d0f43595..07663c0ceb24 100644
 --- a/clang-tools-extra/clangd/unittests/tweaks/ExtractFunctionTests.cpp
 +++ b/clang-tools-extra/clangd/unittests/tweaks/ExtractFunctionTests.cpp
 @@ -24,8 +24,6 @@ TEST_F(ExtractFunctionTest, FunctionTest) {
@@ -629,11 +614,10 @@ index dec63d454d52..a9604cfb4bd5 100644
    // We don't support extraction from lambdas.
    EXPECT_EQ(apply("auto lam = [](){ [[int x;]] }; "), "unavailable");
    // Partial statements aren't extracted.
-@@ -190,6 +188,16 @@ F (extracted();)
-     }]]
+@@ -191,6 +189,16 @@ F (extracted();)
    )cpp";
    EXPECT_EQ(apply(CompoundFailInput), "unavailable");
-+
+ 
 +  std::string CompoundWithMultipleStatementsFailInput = R"cpp(
 +    void f() [[{
 +      int a = 1;
@@ -643,10 +627,11 @@ index dec63d454d52..a9604cfb4bd5 100644
 +    }]]
 +  )cpp";
 +  EXPECT_EQ(apply(CompoundWithMultipleStatementsFailInput), "unavailable");
- }
- 
- TEST_F(ExtractFunctionTest, DifferentHeaderSourceTest) {
-@@ -571,6 +579,795 @@ int getNum(bool Superstitious, int Min, int Max) {
++
+   ExtraArgs.push_back("-std=c++14");
+   // FIXME: Expressions are currently not extracted
+   EXPECT_EQ(apply(R"cpp(
+@@ -630,6 +638,795 @@ int main() {
    EXPECT_EQ(apply(Before), After);
  }
  

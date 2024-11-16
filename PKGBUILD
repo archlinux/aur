@@ -141,7 +141,7 @@
 : ${CLANGD_INLAYHINTSIGNOREEVIDENT:=$CLANGD_DEFAULT_PATCH_STATE}
 
 pkgname=clangd-opt-git
-pkgver=20.r8839.gc9a1cffd3d21
+pkgver=20.r12369.g0d38f64e7df9
 pkgrel=1
 pkgdesc='Trunk version of standalone clangd binary, with custom patches (look AUR page or PKGBUILD comments)'
 arch=('x86_64')
@@ -184,7 +184,7 @@ sha256sums=('SKIP'
     '9e5dd128cedc8f37724d9c39c0f8f7efc826b0fd367f3a03c2564ff9f514ced7'  # hover-resolve-forward-params
     '85cec3889f7a818fcc998c3564cdd9b01fbeb95855d64ea999d6df5af9ebe817'  # lsp-codelens
     '7eef87c878abf154548ed635cdc801004efff41facb7c0320ba31ebe50471316'  # postfix-completion-trunk
-    'f719fb52edee98f54ba40786d2ecac6ef63f56797c8f52d4d7ce76a3825966eb'  # refactor-extract-function
+    'fd1f752f7a5a29bc18432ba60b0a9faa0381b3fee49febc53fc8f8f177d61f5d'  # refactor-extract-function
     '2db1f319f850858ecebdcda1c1600d6dd523f171c5b019740298d43607d5fa00'  # inlay-hints-paddings
     'ba47bb7ac05487a5a083094247eaa369f89404924172a4af40147507b15b90aa'  # hover-hex-formats
     'e0c86d8cd1d1c4d68c07ed5843593a51607a268c39ccd76e7fe17bc168bf16f4'  # hover-bit-fields-mask
@@ -194,7 +194,7 @@ sha256sums=('SKIP'
     '4c610c149b6ca59ab5fad137a221d5d527a50f141fb782359cc2f9e5de7e68cd'  # resolve-depend-type
     '3365392bf7d95a02e2fb22dffbba011a3fa1179543426a2558b9ac61a300a7a7'  # inlay-hints-blockend-linelimit10
     '991fac650864bbf16832a8c8a0689ee44ef2959a79c9b950ff6200cb4c51beff'  # resolve-incomplete-header-includes
-    '459bc42c7366305e562fa710551de909b581aa2358ca739585a0477dd06ebd6d'  # lsp-remove-files-from-cdb
+    '63e951edbafca684984c6878a7650570dc20021198622e627d374692b1b6e8eb'  # lsp-remove-files-from-cdb
     '0f5f7cc7f984988824bca66a2d08b0fa2b1b6ccdfcc1917e5cb0ed810036cfe7'  # hover-record-paddings
     '87f2550596309a893fdb7774be16bd0189ad041ba9a7d8050ee467f89f488373'  # config-include-style
     '9dceaa36e551e13c4145b45baf694b04369ed525e34baa3b7f14c15f3e248e5f'  # implement-abstract-class
