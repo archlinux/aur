@@ -5,24 +5,25 @@ pkgver=4.1.12
 pkgrel=1
 pkgdesc="Software developed in order to help students learn about logic circuits."
 arch=('x86_64')
-url="https://gibis-unifesp.github.io/wiRedPanda/"
+url="https://gibis-unifesp.github.io/wiredpanda-site/"
 license=('GPL-3.0-or-later')
-depends=('git' 'qt5-base' 'qt5-multimedia')
-makedepends=('git')
+depends=('qt5-base' 'qt5-multimedia')
+makedepends=('git' 'make')
 backup=('etc/pacman.conf')
-source=("https://github.com/GIBIS-UNIFESP/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
+source=("$pkgname::git+https://github.com/GIBIS-UNIFESP/wiRedPanda.git")
 sha256sums=('SKIP')
 validpgpkeys=()
 
 build() {
-  mv "$pkgver" "$pkgname-$pkgver"
-	cd "$pkgname-$pkgver"
-  mkdir build/ && cd build/
-  qmake ../WPanda.pro
-	make -j
+	cd "$srcdir/$pkgname"
+	mkdir -p build
+	cd build
+	qmake ../WPanda.pro
+	make
 }
 
 package() {
-	cd "$pkgname-$pkgver"
-	make DESTDIR="$pkgdir/" install
+	cd "$srcdir/$pkgname/build"
+	make
+	install -Dm755 "$srcdir/$pkgname/build/app/wiredpanda" "$pkgdir/usr/bin/wiredpanda"
 }
