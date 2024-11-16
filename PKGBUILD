@@ -1,4 +1,4 @@
-# Maintainer: xiota / aur.chaotic.cx
+# Maintainer:
 # Contributor: Darvin Delgado <dnmodder@gmail.com>
 # Contributor: Mesmer <mesmer@fisica.if.uff.br>
 # Contributor: Emmanuel Gil Peyrot <linkmauve@linkmauve.fr>
@@ -7,7 +7,7 @@
 _pkgname="decaf-emu"
 pkgname="$_pkgname-git"
 pkgver=r5222.e6c528a
-pkgrel=1
+pkgrel=2
 pkgdesc="An experimental open-source Nintendo Wii U emulator"
 url="https://github.com/decaf-emu/decaf-emu"
 license=('GPL-3.0-or-later')
@@ -20,19 +20,11 @@ depends=(
   'qt6-base'
   'qt6-svg'
   'vulkan-icd-loader'
-
-  ## implicit
-  #curl
-  #libxcb
-  #openssl
-  #sdl2
-  #zlib
 )
 makedepends=(
   'clang'
   'cmake'
   'git'
-  'mold'
   'ninja'
   'python'
 )
@@ -101,6 +93,8 @@ pkgver() {
 }
 
 prepare() {
+  local _submodules submodule
+
   # decaf-emu submodules
   cd "$_pkgsrc"
   _submodules=(
@@ -145,20 +139,15 @@ prepare() {
     git -c protocol.file.allow=always submodule update ${submodule}
   done
 
-  # any remaining submodules
   cd "$srcdir/$_pkgname"
-  git submodule sync
-  git submodule update --init --recursive
-
-  # Force Qt5
-  #sed -Ei -e 's@find_package\(Qt6 COMPONENTS@find_package(Qt5 5.15 COMPONENTS@' CMakeLists.txt
+  sed -E -e 's&vk::resultCheck&vk::detail::resultCheck&' \
+    -i src/libgpu/src/vulkan/vulkan_driver.h
 }
 
 build() {
-  export CC CXX CFLAGS CXXFLAGS LDFLAGS
+  export CC CXX
   CC=clang
   CXX=clang++
-  LDFLAGS+=" -fuse-ld=mold"
 
   local _cmake_options=(
     -B build
