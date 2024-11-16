@@ -3,15 +3,19 @@
 _program_name="rapidgzip"
 pkgname="python-${_program_name}"
 pkgver=0.14.3
-pkgrel=2
+pkgrel=3
 pkgdesc="A parallelized gzip decoder with seek capability"
 arch=('x86_64')
 url="https://github.com/mxmlnkn/${_program_name}"
 license=(
-    'Apache'
+    'Apache-2.0'
     'MIT'
 )
-depends=('python>=3.9')
+depends=(
+    'python>=3.9'
+    'glibc'
+    'gcc-libs'
+)
 makedepends=(
     'nasm'
     'python-build'
