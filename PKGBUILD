@@ -3,7 +3,7 @@
 pkgbase=python-stcal
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}" "python-${_pyname}-doc")
-pkgver=1.9.0
+pkgver=1.10.0
 pkgrel=1
 pkgdesc="STScI tools and algorithms used in calibration pipelines"
 arch=('i686' 'x86_64')
@@ -19,12 +19,14 @@ makedepends=('python-setuptools-scm>=3.4'
              'python-drizzle'
              'python-scikit-image'
              'python-gwcs'
-             'python-tweakwcs')
+             'python-tweakwcs'
+             'graphviz')
 #checkdepends=('python-pytest-doctestplus'
 ##             'python-pytest-xdist'
-#              'python-opencv')   # gwcs(requests) tweakwcs drizzle skimage(requests) already in makedepends
+#              'python-opencv'
+#             )   # gwcs(requests) tweakwcs drizzle skimage(requests) already in makedepends
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('414c8aac7d48e520538144c53164da1b')
+md5sums=('33c3faa3894ba75dc37cf393d5cf0626')
 
 get_pyver() {
     python -c "import sys; print('$1'.join(map(str, sys.version_info[:2])))"
@@ -32,7 +34,7 @@ get_pyver() {
 
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}
-    python -m build --wheel --no-isolation --skip-dependency-check
+    python -m build --wheel --no-isolation #--skip-dependency-check
 
     msg "Building Docs"
     PYTHONPATH="../build/lib.linux-${CARCH}-cpython-$(get_pyver)" make -C docs html
