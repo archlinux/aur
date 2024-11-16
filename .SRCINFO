@@ -1,7 +1,7 @@
 pkgbase = python-pythondata-cpu-lm32
 	pkgdesc = Python module containing verilog files for lm32 cpu (for use with LiteX)
 	pkgver = 2022.08
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/litex-hub/pythondata-cpu-lm32
 	arch = any
 	license = custom:Lattice
