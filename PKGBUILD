@@ -13,7 +13,7 @@ conflicts=("${pkgname}-git" "${pkgname}-bbaa")
 install=${pkgname}.install
 source=("git+https://github.com/strongtz/i915-sriov-dkms.git#commit=e26ce8952e465762fc0743731aa377ec0b2889ff" "i915-set-sriov-numvfs.conf")
 sha256sums=('585fbdbe99c9f3c54e14ae464e3139c54baafa4e8e957236fe75cd7404039d21'
-            'b71ffb09e1345542e0137a8895ccca256c41f8e401964d23b08b337b882a811a')
+            '6068373d5e00128eea3b59c787a28abdba643a187cdd41a3cd4287b5d9062c12')
 
 package() {
   cd "$srcdir/$pkgname"
