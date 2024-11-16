@@ -10,15 +10,15 @@ htpasswd-file = "/var/lib/rustic-server/.htpasswd"
 disable-auth = false
 
 [acl]
-#acl-path = "/etc/rustic-server/acl.toml"
-# Set to true to enable ACL
-private-repo = false
+acl-path = "/etc/rustic-server/acl.toml"
+# Set to false to enable ACL
+disable-acl = true
 # Set to true if you want to limit to append, regardless of the ACL file
 # content
 append-only = false
 
 # Optional TLS block, to enable it you must have a certificate
 #[tls]
-#tls = true
+#disable-tls = false
 #tls-cert = "/etc/rustic-server/cert.pem"
 #tls-key = "/etc/rustic-server/key.pem"

@@ -1,6 +1,6 @@
 pkgbase = rustic-server
 	pkgdesc = A REST server built in rust for use with rustic/restic
-	pkgver = 0.2.0
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/rustic-rs/rustic_server
 	arch = arm
@@ -15,15 +15,15 @@ pkgbase = rustic-server
 	depends = gcc-libs
 	options = !lto
 	backup = etc/rustic-server/rustic-server.conf
-	source = rustic-server::git+https://github.com/rustic-rs/rustic_server.git#tag=v0.2.0
+	source = rustic-server::git+https://github.com/rustic-rs/rustic_server.git#tag=v0.3.0
 	source = rustic-server.service
 	source = rustic-server.sysusers
 	source = rustic-server.tmpfiles
 	source = rustic-server.toml
-	b2sums = fd65b16586a1f4d534a1f594a130eeec5c76708ea820779465d45133cb1c41a0cd96049724c7344c24ea76fe7ff766f99a7ce626cb4cf24cea8000b1028b6570
+	b2sums = 953ac9f5f17bd120ff895c310811804c5099eb7379c5f61290bbe384bd5070745baa0dcf63107a0e72a251ad00427acdca90e0f83106eb33576f273d46084a4a
 	b2sums = 716f59b0ed3981b8d495c521a8f675a7f2427f5f07d0d06350c1d7579c2fc42fe74c6b07aadb60f505a5c442b7eb020620fabb15f6948386e8c21bab1de00231
 	b2sums = 612d6f5bad1c236be078c377db8e00536677860cbc0597c57017630908c7130738e59237660c76e56306691cdcf39c88b9ad97ef99f70a9562d4512aa89e89aa
 	b2sums = 6fe53d86b4580fc90f3ef46310d89b4d08c1374077606b94c887e92807a97f3bd8af91b68efeec5d3506ba588f648b493820268bd001538355d591c4ae5c470b
-	b2sums = 16fc5c67e8911ffe8d831a5bf1458ae604bb679695f8788bcd0bbd667072fa43029d747a94c147095d7d739aa13ba467975b1140a1fa660936f14770586ae24e
+	b2sums = 289a73218df2a38476ab80450702399d011afa193511272fc7a641f7983a42ae11f2563fe9410ec2fe90edbb985f915abc644a92756e80eafa88b66b3975f711
 
 pkgname = rustic-server
