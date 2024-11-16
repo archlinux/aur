@@ -1,7 +1,7 @@
 pkgbase = python-vagrant
 	pkgdesc = Python bindings for interacting with Vagrant virtual machines.
 	pkgver = 1.1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/todddeluca/python-vagrant
 	arch = any
 	license = MIT
