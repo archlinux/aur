@@ -1,6 +1,6 @@
 # Maintainer: Alex D'Andrea <alex at dandrea dot io>
 pkgname=json-log-viewer
-pkgver=1.1.0
+pkgver=1.2.1
 pkgrel=1
 pkgdesc='Interactive viewer for JSON logs.'
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('glibc')
 makedepends=('go' 'git')
 source=("git+$url#tag=v$pkgver")
-sha256sums=('b0158a3a04fe2786f473e145ea8eb795839a0e30c2f1c1a9ba8ff51f56e145e8')
+sha256sums=('71596ce805c90a132dd7036426e70c24ac39edf064fb1ca547f41a002cd9ad3a')
 options=('!lto')
 
 prepare() {
@@ -26,7 +26,7 @@ build() {
   export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
 
   go build -o ./build/jlv \
-		--ldflags "-s -w -X main.version=${VERSION}" \
+		--ldflags "-s -w -X main.version=${pkgver}" \
 		./cmd/jlv
 }
 
