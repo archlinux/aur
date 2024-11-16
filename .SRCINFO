@@ -1,0 +1,18 @@
+pkgbase = fcitx5-theme-ayaya
+	pkgdesc = pink style fcitx5 theme
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/witt-bit/fcitx5-theme-ayaya
+	arch = any
+	license = Apache-2.0
+	optdepends = ttf-lxgw-wenkai-screen: LXGW WenKai fonts suitable for screen display
+	optdepends = ttf-lxgw-wenkai: LXGW WenKai fonts
+	provides = fcitx5-theme-ayaya
+	conflicts = fcitx5-theme-ayaya
+	options = !strip
+	source = themes.tar.gz::https://github.com/witt-bit/fcitx5-theme-ayaya/archive/refs/tags/v0.0.1.tar.gz
+	source = license::https://github.com/witt-bit/fcitx5-theme-ayaya/raw/main/LICENSE
+	sha256sums = 1390108e966c55f4f4cec1770bf5d6e3da60faaaba73146d002db136368b14bc
+	sha256sums = c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4
+
+pkgname = fcitx5-theme-ayaya
