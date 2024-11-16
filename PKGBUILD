@@ -1,7 +1,7 @@
 # Maintainer: iff <iff@ik.me>
 pkgname="pay-respects"
 pkgver=0.5.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Terminal command correction, alternative to thefuck written in Rust."
 arch=("x86_64")
 url="https://github.com/iffse/pay-respects"
@@ -13,7 +13,7 @@ replaces=('pay_respects')
 
 build() {
 	cd "$pkgname"
-	cargo build --release
+	cargo build --release --all-features
 }
 
 package() {
