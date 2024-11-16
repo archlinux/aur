@@ -24,9 +24,10 @@ pkgbase = python-accesser-git
 	conflicts = python-accesser
 	backup = etc/accesser/pac
 	backup = etc/accesser/config.toml
+	backup = etc/accesser/rules.toml
 	source = accesser::git+https://github.com/URenko/Accesser.git
 	source = accesser.service
 	sha256sums = SKIP
-	sha256sums = b3301c3c86a293991f3a2c647b299d935d57be1c90c6c811ba3ad3da18589432
+	sha256sums = cb16c9771c4fbaf70b6b8f898475d8d024dd57ab385cfecfe364cb678dcbbabe
 
 pkgname = python-accesser-git
