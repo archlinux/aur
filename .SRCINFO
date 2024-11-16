@@ -1,7 +1,7 @@
 pkgbase = linutil
 	pkgdesc = Chris Titus Tech's Linutil is a distro-agnostic toolbox designed to simplify everyday Linux tasks.
-	pkgver = 2024.09.28
-	pkgrel = 3
+	pkgver = 2024.10.31
+	pkgrel = 1
 	url = https://github.com/ChrisTitusTech/linutil
 	arch = x86_64
 	arch = aarch64
@@ -14,11 +14,7 @@ pkgbase = linutil
 	depends = tree-sitter
 	depends = tree-sitter-bash
 	optdepends = ttf-nerd-fonts-symbols: symbols and icons
-	source = linutil-2024.09.28.tar.gz::https://github.com/ChrisTitusTech/linutil/archive/refs/tags/2024.09.28.tar.gz
-	source = https://raw.githubusercontent.com/ChrisTitusTech/linutil/refs/heads/main/linutil.desktop
-	source = https://raw.githubusercontent.com/ChrisTitusTech/linutil/refs/heads/main/man/linutil.1
-	sha256sums = f618ff87a4ce9b18c10e1c35b60e1bfc59c95826f75b49e5eeac8ae5b4672940
-	sha256sums = SKIP
-	sha256sums = SKIP
+	source = linutil-2024.10.31.tar.gz::https://github.com/ChrisTitusTech/linutil/archive/refs/tags/2024.10.31.tar.gz
+	sha256sums = fb7a15723d6b481c743201051457c3c92dca51d3a293f849397dddf626f7de25
 
 pkgname = linutil
