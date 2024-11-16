@@ -1,0 +1,19 @@
+pkgbase = rjsupplicant
+	pkgdesc = Ruijie Supplicant for Linux 锐捷认证客户端 Linux 版 v4.90
+	pkgver = 4.90
+	pkgrel = 1
+	url = https://www.ruijie.com.cn/
+	arch = i686
+	arch = x86_64
+	license = proprietary
+	makedepends = unzip
+	depends = bash
+	depends = krb5
+	depends = glibc
+	depends = gcc-libs
+	depends = zlib
+	depends = e2fsprogs
+	source = RG_SU_For_Linux_4_90_Setup1.zip::https://github.com/stevezxc/rjsupplicant/raw/refs/heads/main/RG_SU_For_Linux_4_90_Setup1.zip
+	sha256sums = 18dac58c315999507cc278a8b33053a4aeb231669d3896f452720fd887c739a9
+
+pkgname = rjsupplicant
