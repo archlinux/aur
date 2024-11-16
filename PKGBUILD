@@ -2,7 +2,7 @@
 
 pkgname=quickmedia
 pkgver=r1438.29c346f
-pkgrel=3
+pkgrel=4
 pkgdesc='A rofi inspired native client for web services. Supports youtube, peertube, lbry, soundcloud, nyaa.si, 4chan, matrix, saucenao, hotexamples, anilist, dramacool and several manga sites.'
 arch=('x86_64')
 url="https://git.dec05eba.com/QuickMedia"
@@ -19,8 +19,6 @@ optdepends=(
     'source-highlight: For syntax highlighting in matrix codeblocks'
     'yt-dlp: To download soundcloud music'
 )
-provides=('quickmedia' 'qm' 'quickmedia-video-player')
-conflicts=('quickmedia' 'qm' 'quickmedia-video-player')
 source=(
     "${pkgname}-${pkgver}.tar.gz::https://dec05eba.com/snapshot/QuickMedia.git.${pkgver}.tar.gz"
     "twemoji-2.tar.gz::https://dec05eba.com/files/twemoji.tar.gz"
