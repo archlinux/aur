@@ -1,7 +1,7 @@
 pkgbase = python-pythondata-software-compiler_rt
 	pkgdesc = Python module containing data files for compiler_rt software (for use with LiteX)
 	pkgver = 2022.08
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/litex-hub/pythondata-software-compiler_rt
 	arch = any
 	license = MIT
