@@ -1,6 +1,4 @@
 src
 pkg
 
-*.tar.gz
-*.pkg.tar.zst
-*.AppImage
+/mqttx*

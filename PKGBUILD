@@ -1,7 +1,7 @@
 # Maintainer: mapleafgo <mapleafgo@163.com>
 pkgname=mqttx-appimage
 pkgver=1.11.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A Powerful and All-in-One MQTT 5.0 client toolbox for Desktop, CLI and WebSocket."
 arch=('x86_64' 'aarch64')
 url="https://github.com/emqx/MQTTX"
@@ -11,14 +11,8 @@ conflicts=('mqttx-bin'
 		'mqttx-clean-bin')
 source_x86_64=(${pkgname}-${pkgver}-x86_64.AppImage::https://github.com/emqx/MQTTX/releases/download/v${pkgver}/MQTTX-${pkgver}.AppImage)
 source_aarch64=(${pkgname}-${pkgver}-aarch64.AppImage::https://github.com/emqx/MQTTX/releases/download/v${pkgver}/MQTTX-${pkgver}-arm64.AppImage)
-md5sums_x86_64=("SKIP")
-md5sums_aarch64=("SKIP")
 _install_path="/opt/mqttx"
 _app="${pkgname}-${pkgver}-${CARCH}.AppImage"
-
-# pkgver() {
-# 	curl https://api.github.com/repos/emqx/MQTTX/releases/latest | grep tag_name | awk -F '\"' '{print $4}' | awk -F 'v' '{print $2}'
-# }
 
 package() {
 	cd "${srcdir}" && rm -rf "squashfs-root"
@@ -32,3 +26,5 @@ package() {
 	install -Dm644 "${srcdir}/squashfs-root/usr/share/icons/hicolor/0x0/apps/mqttx.png" "${pkgdir}/usr/share/icons/hicolor/512x512/apps/mqttx.png"
 	install -dm755 "${pkgdir}/usr/bin" && ln -sf "${_install_path}/AppRun" "${pkgdir}/usr/bin/mqttx"
 }
+sha256sums_x86_64=('d58a50b2bb9a765743fd9f5de3ae6bb2af4592c6af9a5fdb083f69de517d8676')
+sha256sums_aarch64=('dfc4c84d47db8257c99193aa1e5ff87063a28c4b8463abee44418ec4667848bb')
