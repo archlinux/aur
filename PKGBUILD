@@ -3,7 +3,7 @@
 pkgname="collada-dom"
 provides=("colladadom")
 pkgver=2.5.0
-pkgrel=4
+pkgrel=5
 pkgdesc="An API that provides a C++ object representation of a COLLADA XML instance document."
 url="https://github.com/rdiankov/collada-dom/"
 license=("custom")
@@ -11,11 +11,20 @@ arch=("x86_64" "aarch64")
 depends=("libxml2"
          "boost-libs"
          "pcre"
-		 "minizip")
+         "minizip"
+         "gcc-libs"
+         "glibc")
 makedepends=("cmake"
              "boost")
-source=("${pkgname}.${pkgver}.tar.gz::https://github.com/rdiankov/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=("3be672407a7aef60b64ce4b39704b32816b0b28f61ebffd4fbd02c8012901e0d")
+source=("${pkgname}.${pkgver}.tar.gz::https://github.com/rdiankov/${pkgname}/archive/v${pkgver}.tar.gz"
+        "fix-compatibility-with-boost-1.85.patch")
+sha256sums=("3be672407a7aef60b64ce4b39704b32816b0b28f61ebffd4fbd02c8012901e0d"
+            "cfab02f0048b45eea59286d1d054db2e5d7beaea675cd2b22130cac955713955")
+
+prepare() {
+    cd $pkgname-$pkgver
+    patch -Np1 -i "$srcdir/fix-compatibility-with-boost-1.85.patch"
+}
 
 build() {
     cmake -B build -S "${pkgname}-${pkgver}" \

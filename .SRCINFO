@@ -1,7 +1,7 @@
 pkgbase = collada-dom
 	pkgdesc = An API that provides a C++ object representation of a COLLADA XML instance document.
 	pkgver = 2.5.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/rdiankov/collada-dom/
 	arch = x86_64
 	arch = aarch64
@@ -12,8 +12,12 @@ pkgbase = collada-dom
 	depends = boost-libs
 	depends = pcre
 	depends = minizip
+	depends = gcc-libs
+	depends = glibc
 	provides = colladadom
 	source = collada-dom.2.5.0.tar.gz::https://github.com/rdiankov/collada-dom/archive/v2.5.0.tar.gz
+	source = fix-compatibility-with-boost-1.85.patch
 	sha256sums = 3be672407a7aef60b64ce4b39704b32816b0b28f61ebffd4fbd02c8012901e0d
+	sha256sums = cfab02f0048b45eea59286d1d054db2e5d7beaea675cd2b22130cac955713955
 
 pkgname = collada-dom
