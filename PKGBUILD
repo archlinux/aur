@@ -14,9 +14,9 @@ sha256sums_x86_64=("SKIP")
 sha256sums_aarch64=("SKIP")
 _app=${pkgname}-${pkgver}-${CARCH}
 
-pkgver() {
-	curl https://api.github.com/repos/pnpm/pnpm/releases/latest | grep tag_name | awk -F '\"' '{print $4}' | awk -F 'v' '{print $2}'
-}
+# pkgver() {
+# 	curl https://api.github.com/repos/pnpm/pnpm/releases/latest | grep tag_name | awk -F '\"' '{print $4}' | awk -F 'v' '{print $2}'
+# }
 
 package() {
 	install -Dm755 "${srcdir}/${_app}" "${pkgdir}/usr/bin/pnpm"
