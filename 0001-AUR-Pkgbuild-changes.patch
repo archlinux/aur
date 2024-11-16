@@ -1,4 +1,4 @@
-From b14cda4df29024c82b6b1d41308167e9d883baef Mon Sep 17 00:00:00 2001
+From 48a685cbe7c7458677050f3b806290fdbd9c803e Mon Sep 17 00:00:00 2001
 From: Stelios Tsampas <loathingkernel@gmail.com>
 Date: Tue, 7 Feb 2023 22:00:48 +0200
 Subject: [PATCH 1/7] AUR Pkgbuild changes
@@ -481,7 +481,7 @@ index 5c3b59a3..ed6589e0 100644
  	winebuild --$(lastword $(subst ., ,$(4))) --fake-module -E "$(basename $(4)).spec" -o "$(4).fake"
  	mkdir -p $$($(2)_LIBDIR$(3))/$(LIBDIR_WINE_$(3))
 diff --git a/proton b/proton
-index 3e9549b8..c15f7da3 100755
+index 9e89995c..b3b3716b 100755
 --- a/proton
 +++ b/proton
 @@ -595,7 +595,6 @@ class Proton:
