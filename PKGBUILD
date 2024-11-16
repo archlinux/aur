@@ -2,10 +2,10 @@
 
 pkgname=python-aiohttp-session
 pkgdesc='Web sessions for aiohttp.web'
-pkgver=2.12.0
+pkgver=2.12.1
 pkgrel=1
 url='http://aiohttp-session.readthedocs.io/'
-license=('Apache')
+license=('Apache-2.0')
 arch=('any')
 depends=('python-aiohttp')
 optdepends=(
@@ -18,18 +18,18 @@ makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel
 
 _pypi=aiohttp-session
 source=(
-  "https://files.pythonhosted.org/packages/source/${_pypi::1}/$_pypi/$_pypi-$pkgver.tar.gz"
+  "https://files.pythonhosted.org/packages/source/${_pypi::1}/$_pypi/${_pypi/-/_}-$pkgver.tar.gz"
 )
 sha256sums=(
-  '0ccd11a7c77cb9e5a61f4daacdc9170d561112f9cfaf9e9a2d9867c0587d1950'
+  '15e6e0288e9bcccd4b1d0c28aae9c20e19a252b12d0cb682223ca9c83180e899'
 )
 
 build() {
-  cd "aiohttp-session-$pkgver"
+  cd "aiohttp_session-$pkgver"
   python -m build --wheel --no-isolation
 }
 
 package() {
-  cd "aiohttp-session-$pkgver"
+  cd "aiohttp_session-$pkgver"
   python -m installer --destdir="$pkgdir" dist/*.whl
 }
