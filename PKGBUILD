@@ -1,4 +1,4 @@
-pkgname=text-viewer-bin
+pkgname=text-viewer
 pkgver=1.0
 pkgrel=1
 pkgdesc="Simple read only text viewer."

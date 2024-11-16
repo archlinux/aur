@@ -1,4 +1,4 @@
-pkgbase = text-viewer-bin
+pkgbase = text-viewer
 	pkgdesc = Simple read only text viewer.
 	pkgver = 1.0
 	pkgrel = 1
@@ -8,4 +8,4 @@ pkgbase = text-viewer-bin
 	source = https://raw.githubusercontent.com/YOLOKIT/text-viewer/refs/heads/main/text-viewer.zip
 	sha256sums = SKIP
 
-pkgname = text-viewer-bin
+pkgname = text-viewer
