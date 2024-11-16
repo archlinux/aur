@@ -1,7 +1,7 @@
 pkgbase = python-docutils-stubs
 	pkgdesc = PEP 561 based Type information for docutils
 	pkgver = 0.0.22
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/tk0miya/docutils-stubs
 	arch = any
 	license = custom:Unlicense
