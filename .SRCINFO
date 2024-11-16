@@ -1,15 +1,15 @@
 pkgbase = oracle-instantclient-odbc
 	pkgdesc = Additional libraries for enabling ODBC applications with Instant Client
-	pkgver = 23.5.0.24.07
+	pkgver = 23.6.0.24.10
 	pkgrel = 1
 	url = https://www.oracle.com/at/database/technologies/instant-client/downloads.html
 	arch = x86_64
 	license = custom:OTN
-	depends = oracle-instantclient-basic=23.5.0.24.07
+	depends = oracle-instantclient-basic=23.6.0.24.10
 	replaces = instantclient-odbc
 	options = !strip
-	source = https://download.oracle.com/otn_software/linux/instantclient/2350000/instantclient-odbc-linux.x64-23.5.0.24.07.zip
-	md5sums = 5df518c213dc6756170bd939254010db
-	sha256sums = 0f07e149c1badf882380e45f18814860002c041f1912a31be9b4bebca833b7eb
+	source = https://download.oracle.com/otn_software/linux/instantclient/2360000/instantclient-odbc-linux.x64-23.6.0.24.10.zip
+	md5sums = 1321e987ae48e1ca4fd8a68c5a52e022
+	sha256sums = 0da3d4623fb5357c820ab3ac7417ce0e642201bd510a1c63c9d341a91334d000
 
 pkgname = oracle-instantclient-odbc
