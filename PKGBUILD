@@ -35,7 +35,7 @@ source=(
     "accesser.service"
 )
 sha256sums=('b11965b1a52adf1fc55e313f08d6a38f224c21a4597833a04c3fe1f784cd4691'
-            'f943fdd6f112eb32a5630c60383470bcb344db66d0a116cdcbcc22f533815690')
+            'cb16c9771c4fbaf70b6b8f898475d8d024dd57ab385cfecfe364cb678dcbbabe')
 backup=(
     'etc/accesser/pac'
     'etc/accesser/config.toml'
