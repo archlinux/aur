@@ -1,0 +1,14 @@
+pkgbase = svg-join
+	pkgdesc = Join svg files in symbol collection.
+	pkgver = 1.2.1
+	pkgrel = 1
+	url = https://github.com/Climenty/svg-join#readme
+	arch = any
+	license = MIT
+	makedepends = npm
+	depends = nodejs
+	noextract = svg-join-1.2.1.tgz
+	source = https://registry.npmjs.org/svg-join/-/svg-join-1.2.1.tgz
+	sha1sums = fe9ce08fc8f64313f6f58abe7377582e7af26b87
+
+pkgname = svg-join
