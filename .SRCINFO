@@ -1,6 +1,6 @@
 pkgbase = libsignal-ffi
 	pkgdesc = Library for the Signal Protocol (ffi component)
-	pkgver = 0.58.3
+	pkgver = 0.62.0
 	pkgrel = 1
 	url = https://github.com/signalapp/libsignal/tree/main/rust/bridge/ffi
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = libsignal-ffi
 	makedepends = git
 	depends = gcc-libs
 	options = !lto
-	source = libsignal-ffi-0.58.3.tar.gz::https://github.com/signalapp/libsignal/archive/refs/tags/v0.58.3.tar.gz
-	sha256sums = 57130eb534f30fa6dbd6e5ca41da84f16532b62ac502c609421a5f098f4b1071
+	source = libsignal-ffi-0.62.0.tar.gz::https://github.com/signalapp/libsignal/archive/refs/tags/v0.62.0.tar.gz
+	sha256sums = 1f04eac98fcd6b34ab61ce6fc65f6c46eceab0f1b407a65d95207a8a5050594c
 
 pkgname = libsignal-ffi
