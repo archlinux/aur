@@ -1,7 +1,7 @@
 pkgbase = text-viewer
 	pkgdesc = Simple read only text viewer.
 	pkgver = 1.0
-	pkgrel = 1
+	pkgrel = 2
 	arch = x86_64
 	depends = gtk3
 	depends = unzip

@@ -1,6 +1,6 @@
 pkgname=text-viewer
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple read only text viewer."
 arch=('x86_64')
 depends=('gtk3' 'unzip')
@@ -12,4 +12,5 @@ prepare() {
   sudo install -Dm644 "$srcdir/text-viewer.png" /usr/share/applications
   sudo install -Dm644 "$srcdir/text-viewer.desktop" /usr/share/applications
   sudo install -Dm644 "$srcdir/text-viewer" /bin
+  sudo chmod +x /bin/text-viewer
 }
