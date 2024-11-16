@@ -12,7 +12,7 @@ optdepends=(
   )
 makedepends=('python-setuptools') 
 source=("https://github.com/ShibamRoy9826/easyfeh/releases/download/alpha/easyfeh-v0.1.0.tar.gz")
-sha256sums=('6fa366e2444e5125de179b35370f6a9259ae7fed4006c900f33fbcfd69f2deb1')
+sha256sums=('ecd250a30c86aa8dc0811ff86c0f12fa592138352be100c7160604b75aca396d')
 
 package() {
     cd "$srcdir/easyfeh-$pkgver"
