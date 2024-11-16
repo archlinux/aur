@@ -1,6 +1,6 @@
 pkgbase = deptry
 	pkgdesc = Find unused, missing and transitive dependencies in a Python project
-	pkgver = 0.20.0
+	pkgver = 0.21.1
 	pkgrel = 1
 	url = https://github.com/fpgmaas/deptry
 	arch = x86_64
@@ -16,7 +16,8 @@ pkgbase = deptry
 	depends = glibc
 	depends = python
 	depends = python-click
-	source = deptry::git+https://github.com/fpgmaas/deptry.git#tag=0.20.0
-	sha256sums = 70bd65b1d7c06c3c8c313f5e96d73b8e949e62172f4d1797123ddcb930b01159
+	depends = python-requirements-parser
+	source = deptry::git+https://github.com/fpgmaas/deptry.git#tag=0.21.1
+	sha256sums = 56a12e966750f06e7f9d64663470fadb790c2e88c5c3e294ea2016a8d309724d
 
 pkgname = deptry
