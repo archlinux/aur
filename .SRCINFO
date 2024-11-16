@@ -1,6 +1,6 @@
 pkgbase = r-msa2dist
 	pkgdesc = MSA2dist calculates pairwise distances between all sequences of a DNAStringSet or a AAStringSet using a custom score matrix and conducts codon based analysis
-	pkgver = 1.10.0
+	pkgver = 1.10.1
 	pkgrel = 1
 	url = https://bioconductor.org/packages/MSA2dist
 	arch = x86_64
@@ -28,8 +28,8 @@ pkgbase = r-msa2dist
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/MSA2dist_1.10.0.tar.gz
-	md5sums = a7b7b619a8a9eacfca84d05e1499b4dc
-	b2sums = af9490e668f63c199211da67389ee387bc46bbb3bd25db419355a36e7660f2732090bfba88f7995247bae4820dcb1f7c7ecfc1094e5315e800ffe36f89e265d4
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/MSA2dist_1.10.1.tar.gz
+	md5sums = c63fc410efbb47ba6056d30a8ead7160
+	b2sums = d640b3e3cc419ba7488a9c07106b6acdeea146c5272547d49c7551426e96f9c7bf5dc34b08950c0da0c2102a23ddbea272f75b244a26f7d89089b1fb039cb66b
 
 pkgname = r-msa2dist
