@@ -1,7 +1,7 @@
 # Maintainer: Mattias Andrée <m@`base64 -d`(bWFhbmRyZWU).se>
 
 pkgname=git-rediff
-pkgver=1.0.1
+pkgver=1.0.3
 pkgrel=1
 pkgdesc='Reduce partially resolved merge conflicts'
 url='https://codeberg.org/maandree/git-rediff'
@@ -10,7 +10,7 @@ license=('custom:ISC')
 depends=(diffutils libsimple)
 makedepends=(libsimple)
 source=($pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz)
-sha512sums=(45aca51a8b67c6f2669c1db3434298b2997cdff9680d9acb062ac87d8d8aba03c3230ec446f7ae9ea411126a0a4b50bb8715d68f62dbe1787a63a7db9ef1546e)
+sha256sums=(ba165e337685ba050a96e865bdb116b19ae0c4c1afae3c21ba213757112bd8bf)
 
 build () {
 	cd "$srcdir/git-rediff"
