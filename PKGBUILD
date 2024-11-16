@@ -2,7 +2,7 @@
 
 pkgname=python-evalidate
 pkgver=2.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Safe and fast evaluation of untrusted user-supplied python expressions'
 arch=(any)
 url='https://github.com/yaroslaff/evalidate'
