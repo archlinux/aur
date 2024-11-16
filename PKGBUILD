@@ -2,7 +2,7 @@
 
 pkgname=python-glfw
 pkgver=2.7.0
-pkgrel=3
+pkgrel=4
 pkgdesc='Module for OpenGL, OpenGL ES, Vulkan, window and input support (pyGLFW)'
 arch=(any)
 url='https://github.com/FlorianRhiem/pyGLFW'
