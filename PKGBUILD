@@ -12,13 +12,13 @@ provides=('go-live-server')
 conflicts=('go-live-server')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/coolapso/go-live-server/releases/download/v1.0.0/go-live-server_1.0.0_linux_arm64.tar.gz")
-sha256sums_aarch64=('7c0129256692a317ce17fc330354e27a19f0b27ab1562b54e9ad65ce008a0f48')
+sha256sums_aarch64=('4d928e2f9be06d7c0a8b3bddc5d81b084bdc4e90b8ecd9b89382ae6a9c301e90')
 
 source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/coolapso/go-live-server/releases/download/v1.0.0/go-live-server_1.0.0_linux_386.tar.gz")
-sha256sums_i686=('6033a70db618a301d69cdb843633517ceddef5cc87a04e0378813dd9afa5172e')
+sha256sums_i686=('db57f251040b2c9f31781d2dd0abeac6d2691e4124590b85a6f4f310f5f6b0da')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/coolapso/go-live-server/releases/download/v1.0.0/go-live-server_1.0.0_linux_amd64.tar.gz")
-sha256sums_x86_64=('af4382a6397ff7890b4e73a9122b1808a945f396e9ebd69c5e628ce1e42e8da9')
+sha256sums_x86_64=('80b82967645e4a6b1d98f820b893d8424ac8d429c131209e9956135151ee84f4')
 
 package() {
   install -Dm755 "./live-server" "${pkgdir}/usr/bin/live-server"
