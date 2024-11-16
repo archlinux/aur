@@ -2,7 +2,7 @@
 # Maintainer: SphericalKat <contact@kat.bio>
 
 pkgname='gopherpress-bin'
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc='CLI tool for creating epubs from markdown files (with links to HTML pages)'
 url='https://github.com/SphericalKat/gopherpress'
@@ -11,17 +11,17 @@ license=('GPL3')
 provides=('gopherpress')
 conflicts=('gopherpress')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.binary::https://github.com/SphericalKat/gopherpress/releases/download/v0.2.0/gopherpress_linux_arm64")
-sha256sums_aarch64=('1820f495671fd4062d378f99c5f0450f438eb1b7a87792187e109495db28201e')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.binary::https://github.com/SphericalKat/gopherpress/releases/download/v0.2.1/gopherpress_linux_arm64")
+sha256sums_aarch64=('99c33c2aecfa629fec579aaf8604eb35caa593d2db2040f55f295811acd5b57d')
 
-source_armv7h=("${pkgname}_${pkgver}_armv7h.binary::https://github.com/SphericalKat/gopherpress/releases/download/v0.2.0/gopherpress_linux_armv7")
-sha256sums_armv7h=('213060bb209c4cbe70d4e24390a9c81e55ca988b430cc7607f64dfae9582f375')
+source_armv7h=("${pkgname}_${pkgver}_armv7h.binary::https://github.com/SphericalKat/gopherpress/releases/download/v0.2.1/gopherpress_linux_armv7")
+sha256sums_armv7h=('e660a0ac3841af2e39b1c6497b05393f0c4172e37dc6bfeb5afd126d50929587')
 
-source_i686=("${pkgname}_${pkgver}_i686.binary::https://github.com/SphericalKat/gopherpress/releases/download/v0.2.0/gopherpress_linux_386")
-sha256sums_i686=('54b0924fffafda9e0615d2a524f41eef9bea087aa112bbf75d1278d700307c06')
+source_i686=("${pkgname}_${pkgver}_i686.binary::https://github.com/SphericalKat/gopherpress/releases/download/v0.2.1/gopherpress_linux_386")
+sha256sums_i686=('3b5cc1d67231e011e5460c21058c25fbd632035ac307060ae5bfdd4bd72240ef')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.binary::https://github.com/SphericalKat/gopherpress/releases/download/v0.2.0/gopherpress_linux_amd64")
-sha256sums_x86_64=('42843ca69171f9cc6ba68db59c3621045f73d4fd0d5e97f3e8b62fd0c65668da')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.binary::https://github.com/SphericalKat/gopherpress/releases/download/v0.2.1/gopherpress_linux_amd64")
+sha256sums_x86_64=('193ae3f96182527b8861b956b6bfa57b91b10e8e28da47fefbe6128aca1f46a9')
 
 package() {
   install -Dm755 "./${pkgname}_${pkgver}_${CARCH}.binary" "${pkgdir}/usr/bin/gopherpress"
