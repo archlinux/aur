@@ -2,17 +2,24 @@
 
 pkgname=python-erddapy
 pkgdesc='Retrieve scientific datasets from ERDDAP servers'
-pkgver=2.2.0
+pkgver=2.2.3
 pkgrel=1
 url='https://ioos.github.io/erddapy/'
 arch=('any')
-license=('BSD')
+license=('BSD-3-Clause')
 
 depends=(
-  'python-httpx' 'python-netcdf4' 'python-pandas' 'python-pytz' 'python-xarray'
+  'python-httpx'
+  'python-netcdf4'
+  'python-pandas'
+  'python-pytz'
+  'python-xarray'
 )
 makedepends=(
-  'python-build' 'python-installer' 'python-setuptools' 'python-setuptools-scm'
+  'python-build'
+  'python-installer'
+  'python-setuptools'
+  'python-setuptools-scm'
   'python-wheel'
 )
 optdepends=(
@@ -24,7 +31,7 @@ source=(
   "https://files.pythonhosted.org/packages/source/${_pypi::1}/$_pypi/$_pypi-$pkgver.tar.gz"
 )
 sha256sums=(
-  'c76b115fb27a248e1a463db7358ec886b1252bde8857669679b4c507b1a1570d'
+  '0206dcba3954340281a9e283d9bc3925581205492531d98775c65a61cb23bb90'
 )
 
 build() {
