@@ -1,7 +1,7 @@
 pkgbase = python-vine
 	pkgdesc = Promises, promises, promises
 	pkgver = 5.1.0
-	pkgrel = 5
+	pkgrel = 6
 	url = https://github.com/celery/vine
 	arch = any
 	license = BSD-3-Clause
