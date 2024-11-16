@@ -5,7 +5,7 @@
 pkgname=python-unidiff
 # https://github.com/matiasb/python-unidiff/blob/master/HISTORY
 pkgver=0.7.5
-pkgrel=4
+pkgrel=5
 pkgdesc='Simple Python library to parse and interact with unified diff data'
 arch=('any')
 url="https://github.com/matiasb/python-unidiff"
