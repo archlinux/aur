@@ -1,7 +1,7 @@
 pkgbase = python-pythondata-cpu-vexriscv
 	pkgdesc = Python module containing verilog files for vexriscv cpu (for use with LiteX)
 	pkgver = 2022.08
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/litex-hub/pythondata-cpu-vexriscv
 	arch = any
 	license = MIT
