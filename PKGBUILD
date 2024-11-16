@@ -2,7 +2,7 @@
 
 pkgname=tantrix
 pkgver=20240926.1609
-pkgrel=3
+pkgrel=4
 pkgdesc='Abstract strategy board game'
 arch=(any)
 url='https://www.tantrix.com/'
@@ -38,7 +38,7 @@ sha256sums=('231e8c7055cb4ac7d8ae8725b96eb67168aee8fb1d8a2815d39cdc5efac65a2a'
             'f492efa1e032bc4bd7c701e5c06c66619d23098cf1f2acafaed441ba4d8f30e0'
             '593cd009514144534b15bebe36c8e393adbfbbd63eac054eea54f20e1c362621'
             '5f8a776872a98933c5f0c7681d5cc3606b3a84290235a909d46fe2e1a1f4eb48'
-            'd214e7ccb735bb94e6c3c255453ca6968894650dcf1a444d3d4cd53f0204335b'
+            '2b0bea34e3fe8fabff48a913952f4112f96f11e359ec93327ca3a15bc32cfaf1'
             'a3d8c2a14dd319e77b854957b6c0b053bf83682997739e1709becd4bce957968')
 noextract=(*.jar)
 
