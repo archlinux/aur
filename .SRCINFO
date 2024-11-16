@@ -1,7 +1,7 @@
 pkgbase = verible
 	pkgdesc = Suite of SystemVerilog developer tools. Including a style-linter, indexer, formatter, and language server
 	pkgver = 0.0.r3841.g5eb8aa34
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/chipsalliance/verible
 	arch = x86_64
 	license = Apache 2.0

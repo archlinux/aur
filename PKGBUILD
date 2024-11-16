@@ -1,11 +1,11 @@
 # Maintainer: poscat
 
-_gittag=v0.0-3841-g5eb8aa34
+_gittag="v0.0-3841-g5eb8aa34"
 _tardir="verible-${_gittag/v/}"
 
 pkgname=verible
 pkgver="$(echo ${_gittag} | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/v//g')"
-pkgrel=1
+pkgrel=2
 pkgdesc="Suite of SystemVerilog developer tools. Including a style-linter, indexer, formatter, and language server"
 arch=('x86_64')
 url='https://github.com/chipsalliance/verible'
