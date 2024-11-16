@@ -2,7 +2,7 @@
 
 pkgname="stardust-xr-telescope"
 pkgver="0.1.0"
-pkgrel="1"
+pkgrel="2"
 pkgdesc="See the stars! Simple Stardust XR overlay setup."
 arch=("any")
 url="https://github.com/StardustXR/telescope"
@@ -10,9 +10,10 @@ license=("MIT")
 depends=(
 	"bash"
 	"stardust-xr-server"
+	"stardust-xr-flatland"
 	"stardust-xr-gravity"
-	"stardust-xr-black-hole"
 	"stardust-xr-protostar"
+	"stardust-xr-black-hole"
 	"xwayland-satellite"
 )
 makedepends=(
