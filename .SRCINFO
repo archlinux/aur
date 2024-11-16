@@ -1,6 +1,6 @@
 pkgbase = verible
 	pkgdesc = SystemVerilog(Verilog) Parser, Style-Linter, and Formatter from Google
-	pkgver = 0.0r2037.g4cccc6b2
+	pkgver = 0.0r3841.g5eb8aa34
 	pkgrel = 1
 	url = https://github.com/chipsalliance/verible
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = verible
 	depends = bash
 	provides = verible
 	conflicts = verible-git
-	source = verible::git+https://github.com/chipsalliance/verible.git#tag=v0.0-2037-g4cccc6b2
+	source = verible::git+https://github.com/chipsalliance/verible.git#tag=v0.0-3841-g5eb8aa34
 	sha256sums = SKIP
 
 pkgname = verible
