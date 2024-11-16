@@ -1,10 +1,10 @@
 # Maintainer: Lev Lybin <lev.lybin@gmail.com>
-# Maintainer: Marcus Kida <reinigt.chintz.0n@icloud.com>
+# Maintainer: Marcus Kida <aur@kimar.mozmail.com>
 # Contributor: Lev Lybin <lev.lybin@gmail.com>
 
 pkgname=connectiq-sdk-manager
 pkgver=7.3.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Garmin Connect IQ SDK Manager"
 arch=('x86_64')
 url="https://developer.garmin.com/connect-iq/sdk/"
