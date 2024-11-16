@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=wlink
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="wlink - WCH-Link(RV) command line tool"
 arch=(x86_64
@@ -25,7 +25,7 @@ backup=()
 options=('!strip' '!debug')
 install=
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('b0d28175c4895c5846fc840bef78d9ff35b59f5c54cf62a49ed6e749bbc0fccb')
+sha256sums=('817adff68df1883d489cfe698ab8b05495ed666bd5cab4d2df67a5198b55a9a3')
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}/"
