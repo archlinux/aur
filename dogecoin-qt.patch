@@ -1,0 +1,15 @@
+--- old/dogecoin-1.14.8/src/net.cpp	2024-11-16 15:46:15.862456418 +0100
++++ src/dogecoin-1.14.8/src/net.cpp	2024-11-16 15:44:49.240548550 +0100
+@@ -1488,7 +1488,12 @@
+     struct IGDdatas data;
+     int r;
+ 
++#if MINIUPNPC_API_VERSION <= 17
+     r = UPNP_GetValidIGD(devlist, &urls, &data, lanaddr, sizeof(lanaddr));
++#else
++    r = UPNP_GetValidIGD(devlist, &urls, &data, lanaddr, sizeof(lanaddr), nullptr, 0);
++#endif
++
+     if (r == 1)
+     {
+         if (fDiscover) {

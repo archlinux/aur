@@ -1,11 +1,12 @@
-#Maintainer thermi
+#Maintainer mauritiusdadd
+#Contributor thermi
 #I Used the packet "dogecoin-qt-git" of Gee as a base for this one
 #Based of primecoin-qt by Daniel Spies
 
 pkgname=dogecoin-qt
 _binname=dogecoin
-pkgver=1.14.6
-pkgrel=4
+pkgver=1.14.8
+pkgrel=1
 pkgdesc="Cryptocurrency"
 arch=('x86_64' 'i686')
 url="http://dogecoin.com/"
@@ -14,24 +15,27 @@ provides=('dogecoin-daemon' 'dogecoin-tx' 'dogecoin-cli' )
 depends=('miniupnpc' 'boost-libs' 'protobuf' 'openssl' 'db' 'libevent' 'qt5-base')
 makedepends=('boost' 'gcc' 'make' 'git' 'qt5-tools' 'miniupnpc' 'boost-libs' 'protobuf' 'openssl' 'db')
 source=("https://github.com/$_binname/$_binname/archive/v${pkgver}.tar.gz"
-        "$_binname.desktop")
+        "$_binname.desktop"
+	"${pkgname}.patch")
 install=$_binname.install
-sha256sums=('341088d4d59c5086a430ec64ce81c92a9629146ef50d6c4a4d868b31ce2cef79'
-            '04d41773462ad6609658e291d22b15cd8d58b8eb5e4391a80cd1dae75e7df0e6')
+sha256sums=('f88dc488535f02b98012c83a824002d0879fd2796443c6218dfd647aaec7cf61'
+            '04d41773462ad6609658e291d22b15cd8d58b8eb5e4391a80cd1dae75e7df0e6'
+            'e45fb9f27d1e091a04c77aa7594b100531bc631b44de116474ccc5ed655650fa')
 options=(!lto)
 
-#prepare() {
-	#cd "$srcdir/$_binname-$pkgver"
-#}
+prepare() {
+    cd "$srcdir"
+    patch -p1 -i "${pkgname}.patch"
+}
 
 build() {
     cd "$srcdir/$_binname-$pkgver/"
 
     LDFLAGS=${LDFLAGS/-static/}
 
-    ./autogen.sh
+    ./autogen.sh 
 
-    ./configure --with-incompatible-bdb --prefix=/usr \
+    ./configure --with-incompatible-bdb --enable-c++17 --prefix=/usr \
 	--sbindir=/usr/bin --sysconfdir=/etc --libexecdir=/usr/lib --with-gui=qt5
 
     make
