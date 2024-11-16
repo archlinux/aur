@@ -7,7 +7,10 @@ pkgbase = glass-git
 	license = MIT
 	makedepends = git
 	makedepends = npm
-	depends = electron
+	depends = gtk3
+	depends = alsa-lib
+	depends = nspr
+	depends = nss
 	source = git+https://github.com/mattmckenzy/glass.git
 	sha256sums = SKIP
 
