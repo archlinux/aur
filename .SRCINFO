@@ -1,0 +1,19 @@
+pkgbase = open
+	pkgdesc = Use the open command to open a folder in a GUI window
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/witt-bit/pc-guide
+	arch = any
+	license = Apache-2.0
+	provides = open
+	provides = open-command
+	conflicts = open
+	conflicts = open-git
+	conflicts = open-bin
+	options = !strip
+	source = open.sh::https://github.com/witt-bit/pc-guide/releases/download/v0.0.1/open.sh
+	source = license::https://github.com/witt-bit/pc-guide/raw/master/LICENSE
+	sha256sums = 94433b13e265a88bc69395abd15a499054bccb43684d2aeb51aae8097cbe4e62
+	sha256sums = c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4
+
+pkgname = open
