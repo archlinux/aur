@@ -1,6 +1,6 @@
 pkgbase = netscripts-atzlinux-git
 	pkgdesc = some simple network scripts no need any parameter
-	pkgver = 1.0.9.r0.ga802eb5
+	pkgver = 1.0.9.r2.g52e906b
 	pkgrel = 6
 	url = https://www.atzlinux.com
 	install = netscripts-atzlinux-git.install
@@ -12,6 +12,7 @@ pkgbase = netscripts-atzlinux-git
 	depends = net-tools
 	depends = iproute2
 	depends = gawk
+	provides = netscripts-atzlinux
 	source = git+https://gitee.com/atzlinux/netscripts-atzlinux.git
 	source = netscripts-atzlinux-git.install
 	sha256sums = SKIP

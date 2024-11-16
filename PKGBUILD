@@ -1,10 +1,12 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=netscripts-atzlinux-git
-pkgver=1.0.9.r0.ga802eb5
+pkgver=1.0.9.r2.g52e906b
 pkgrel=6
 pkgdesc="some simple network scripts no need any parameter"
 arch=("any")
+provides=(${pkgname%-git})
+conflicts=(${pkgname%-git})
 groups=()
 depends=('git' 'curl' 'iftop' 'net-tools' 'iproute2' 'gawk')
 makedepends=()
@@ -17,10 +19,9 @@ install=${pkgname}.install
 source=("git+https://gitee.com/atzlinux/netscripts-atzlinux.git"
     "${pkgname}.install")
 sha256sums=('SKIP'
-            '6067b7e16b3c8193729e9620983c183de05d12d6f669d05cb2af591a52e5adea')
+    '6067b7e16b3c8193729e9620983c183de05d12d6f669d05cb2af591a52e5adea')
 
-pkgver()
-{
+pkgver() {
     cd "${srcdir}/${pkgname%-git}"
     git describe --long --tags | sed 's|^debian/||g;s|atzlinux/||g;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
