@@ -9,6 +9,7 @@ pkgbase = python-xeger-git
 	makedepends = python-setuptools
 	depends = python
 	provides = python-xeger
+	conflicts = python-xeger
 	source = xeger::git+https://github.com/crdoconnor/xeger.git
 	sha256sums = SKIP
 
