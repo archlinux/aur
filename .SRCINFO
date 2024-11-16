@@ -1,7 +1,7 @@
 pkgbase = m17-cxx-demod-git
 	pkgdesc = M17 Demodulator in C++
-	pkgver = v2.3.r16.g7e30f06
-	pkgrel = 2
+	pkgver = kalman.v1.0.r22.g5ff1187
+	pkgrel = 1
 	url = https://github.com/mobilinkd/m17-cxx-demod
 	arch = x86_64
 	arch = aarch64
@@ -10,6 +10,7 @@ pkgbase = m17-cxx-demod-git
 	makedepends = git
 	makedepends = patch
 	makedepends = boost
+	makedepends = blaze
 	depends = codec2
 	depends = boost-libs
 	depends = gcc-libs
