@@ -1,13 +1,13 @@
 pkgbase = ntopng-data
 	pkgdesc = Web-based traffic monitoring
-	pkgver = 6.1.240720
+	pkgver = 6.3.241116
 	pkgrel = 1
 	url = Geolocation databases for ntopng and other ntop software packaged from https://db-ip.com
 	arch = any
 	license = GPL3
 	depends = ntopng
 	options = !strip
-	source = https://packages.ntop.org/apt/bookworm/all/ntopng-data_6.1.240720_all.deb
-	b2sums = 2ac1b60576c3a5a2838a3525c7647d148fa9a2334c562823ea923f810a2457908542171c82e25b0c3d45413af301cf631db9d4d6aaa8c2fc441e947bb648c9f8
+	source = https://packages.ntop.org/apt/bookworm/all/ntopng-data_6.3.241116_all.deb
+	b2sums = e6ea1c3e265cd05c84f8f00f0b58d7cbdbf6c157ceabc0c35500f8e6deb6f22e353e2e36310eec009bd58abf5968fb40f7bd95aaeb7a71afe66003afd3875c64
 
 pkgname = ntopng-data
