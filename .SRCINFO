@@ -1,0 +1,16 @@
+pkgbase = soapyrtltcp-git
+	pkgdesc = SoapySDR module to emulate RTL TCP protocol
+	pkgver = r2.3422042
+	pkgrel = 1
+	url = https://github.com/pothosware/SoapyRTLTCP
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = cmake
+	depends = soapysdr
+	provides = soapyrtltcp
+	conflicts = soapyrtltcp
+	source = soapyrtltcp-git::git+https://github.com/pothosware/SoapyRTLTCP.git
+	sha256sums = SKIP
+
+pkgname = soapyrtltcp-git
