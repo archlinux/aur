@@ -1,0 +1,14 @@
+pkgbase = eedid-tool
+	pkgdesc = A tool to scan, read, write (E-)EDIDs on Linux using the i2c-dev driver.
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/acscd/eedid-tool
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = gzip
+	depends = glibc
+	depends = i2c-tools
+	source = eedid-tool-0.0.1.tar.gz::https://git.sr.ht/~acd2048/eedid-tool/archive/v0.0.1.tar.gz
+	sha256sums = 48520e0840da2141d945efcd561226086e4c50fb08032baaf9d15a757efd016d
+
+pkgname = eedid-tool
