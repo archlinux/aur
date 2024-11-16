@@ -18,21 +18,28 @@ pkgname=(
 )
 pkgver=1.4.2
 _realver=${pkgver/_/-}
-pkgrel=1
+pkgrel=2
 pkgdesc='A identity management service and clients.'
 url='https://github.com/kanidm/kanidm'
-source=("$_basename-$pkgver.tar.gz::https://github.com/$_basename/$_basename/archive/refs/tags/v${_realver}.tar.gz")
+source=(
+  "$_basename-$pkgver.tar.gz::https://github.com/$_basename/$_basename/archive/refs/tags/v${_realver}.tar.gz"
+  "remove-shadow-from-supplementarygroups.patch"
+)
 arch=(x86_64 aarch64)
 license=(MPL-2.0)
 makedepends=(cargo systemd)
 options=(!buildflags)
-sha256sums=('5b8bebb860220cdff95d41c0fa252cf2f8320584d7f825ebdadd94f662c3e923')
+sha256sums=(
+  '5b8bebb860220cdff95d41c0fa252cf2f8320584d7f825ebdadd94f662c3e923'
+  '984607ad2a74b24ff1fbb17d3235c0ead2c4ac813b3c1b1df689448e7a28ff6d'
+)
 
 
 build () {
   cd ${pkgbase}-$_realver
 
   export KANIDM_BUILD_PROFILE="release_linux"
+  patch -p0 -i "${srcdir}/remove-shadow-from-supplementarygroups.patch"
   cargo build --release --target-dir target \
 	--package daemon \
 	--package kanidm-ipa-sync \

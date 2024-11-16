@@ -1,0 +1,11 @@
+--- platform/opensuse/kanidm-unixd.service.orig	2024-11-16 10:12:18.591927833 -0800
++++ platform/opensuse/kanidm-unixd.service	2024-11-16 10:12:29.031968775 -0800
+@@ -12,7 +12,7 @@ Conflicts=nscd.service
+ 
+ [Service]
+ DynamicUser=yes
+-SupplementaryGroups=tss shadow
++SupplementaryGroups=tss
+ UMask=0027
+ CacheDirectory=kanidm-unixd
+ RuntimeDirectory=kanidm-unixd
