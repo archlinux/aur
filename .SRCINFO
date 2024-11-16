@@ -1,7 +1,7 @@
 pkgbase = python-anyjson
 	pkgdesc = Wraps the best available JSON implementation available in a common interface
 	pkgver = 0.3.3
-	pkgrel = 19
+	pkgrel = 20
 	url = https://pypi.python.org/pypi/anyjson
 	arch = any
 	license = BSD
