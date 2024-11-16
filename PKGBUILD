@@ -11,7 +11,7 @@ license=('BSD')
 arch=('any')
 url="https://github.com/crdoconnor/xeger"
 depends=('python')
-makedepends=('python-setuptools')
+makedepends=('python-installer')
 checkdepends=('python-pytest')
 source=("https://files.pythonhosted.org/packages/py3/${_name::1}/$_name/${_name//-/_}-$pkgver-py3-none-any.whl"
         "LICENSE::$url/raw/master/LICENSE.txt")
