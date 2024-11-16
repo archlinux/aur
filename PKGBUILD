@@ -6,7 +6,7 @@
 
 _pkgname=chromium
 pkgname=chromium-no-extras
-pkgver=130.0.6723.116
+pkgver=131.0.6778.69
 pkgrel=1
 _launcher_ver=8
 _manual_clone=1
@@ -32,14 +32,20 @@ optdepends=('pipewire: WebRTC desktop sharing under Wayland'
 options=('!lto') # Chromium adds its own flags for ThinLTO
 source=(https://commondatastorage.googleapis.com/chromium-browser-official/chromium-$pkgver.tar.xz
         https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver/chromium-launcher-$_launcher_ver.tar.gz
+        unbundle-add-enable_freetype.patch
+        unbundle-icu-target.patch
+        const-atomicstring-conversion.patch
         compiler-rt-adjust-paths.patch
         increase-fortify-level.patch
         use-oauth2-client-switches-as-default.patch)
 sha256sums=('720a1196410080056cd97a1f5ec34d68ba216a281d9b5157b7ea81ea018ec661'
             '213e50f48b67feb4441078d50b0fd431df34323be15be97c55302d3fdac4483a'
+            'f6e05adc80bd2f22b766d41a91739276c62201e47272c561f18a099c4a809e37'
+            '67de7744b92cbfa6fcbf43a71ba531eb5a7b00381d96703d8dc3dfdadaebf67d'
+            'ac0c9e366ca6afe0839f9ecb6bc42614747349da0c3dc46408e5053dcb7ada76'
             'b3de01b7df227478687d7517f61a777450dca765756002c80c4915f271e2d961'
             'd634d2ce1fc63da7ac41f432b1e84c59b7cceabf19d510848a7cff40c8025342'
-            'a9b417b96daec33c9059065e15b3a92ae1bf4b59f89d353659b335d9e0379db6')
+            '6de648d449159dd579e42db304aca0a36243f2ac1538f8d030473afbbc8ff475')
 
 if (( _manual_clone )); then
   source[0]=fetch-chromium-release
@@ -117,6 +123,11 @@ prepare() {
   patch -Np1 -i ../use-oauth2-client-switches-as-default.patch
 
   # Upstream fixes
+  patch -Np1 -i ../unbundle-add-enable_freetype.patch
+
+  # Fixes from Gentoo
+  patch -Np1 -i ../unbundle-icu-target.patch
+  patch -Np1 -i ../const-atomicstring-conversion.patch
 
   # Allow libclang_rt.builtins from compiler-rt >= 16 to be used
   patch -Np1 -i ../compiler-rt-adjust-paths.patch
