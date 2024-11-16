@@ -1,11 +1,12 @@
 # Maintainer: Astro Benzene <universebenzene at sina dot com>
+
 pkgbase=python-jupyter-cache
 #_pname=${pkgbase#python-}
 #_pyname=${_pname//-/_}
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}")
 #"python-${_pyname}-doc")
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="A defined interface for working with a cache of jupyter notebooks"
 arch=('any')
@@ -17,10 +18,10 @@ makedepends=('python-flit-core'
 #            'python-sphinx-copybutton'
 #            'python-sphinx-book-theme'
 #            'python-myst-nb'
-##           'python-myst-parser<0.19'
 #            'python-jupytext'
 #            'python-nbdime')   # myst-nb: circular dep
 checkdepends=('python-pytest'
+#             'python-pytest-xdist'
               'python-click'
               'python-importlib-metadata'
               'python-jupytext'
@@ -32,7 +33,7 @@ checkdepends=('python-pytest'
               'python-yaml')
 #source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
 source=("https://github.com/executablebooks/jupyter-cache/archive/refs/tags/v${pkgver}.tar.gz")
-md5sums=('f09de465ec4aacaecab782d054263de6')
+md5sums=('239f1ec9f47fb544d321a5c5de7717d2')
 
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}
@@ -47,7 +48,7 @@ check() {
 
     mkdir -p dist/lib
     bsdtar -xpf dist/${_pyname/-/_}-${pkgver}-py3-none-any.whl -C dist/lib
-    PYTHONPATH="dist/lib" pytest || warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count
+    PYTHONPATH="dist/lib" pytest || warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count -p xdist -n 4 #
 #       --deselect=tests/test_cache.py::test_execution_jupytext
 }
 
