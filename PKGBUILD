@@ -2,8 +2,9 @@
 pkgname=airvpn-suite
 _pkgname=AirVPN-Suite
 pkgver=1.3.0
-pkgrel=2
-_commit="ef5ce5ad8fff24f3476f3a072f44d31a5cd1d3fc"
+pkgrel=3
+_commit_suite="1c47cac6218b5268769038a54c2a60474f74e58d"
+_commit_openvpn='63f028de99548f2ed9d61bc9fb908c6fec6326d4'
 pkgdesc="AirVPN client software collection – stable"
 arch=('x86_64')
 url="https://gitlab.com/AirVPN/$_pkgname"
@@ -11,36 +12,27 @@ license=('GPL3')
 provides=('hummingbird' 'hummingbird-bin' 'airvpn-suite-bin' 'airvpn-suite-beta-bin')
 conflicts=('hummingbird' 'hummingbird-bin' 'airvpn-suite-bin' 'airvpn-suite-beta-bin')
 depends=('dbus' 'libxml2' 'crypto++' 'curl' 'zlib' 'lz4' 'openssl' 'zstd' 'xz' 'glibc' 'gcc-libs')
-makedepends=('git' 'wget' 'wireguard-tools')
+makedepends=('git' 'wget' 'wireguard-tools' 'asio')
 source=(
-    "git+$url.git#commit=$_commit"
-    'openvpn3-airvpn-source::git+https://github.com/AirVPN/openvpn3-airvpn.git')
-sha256sums=('c7c823d7bb813ac384cd8feb2854bff37c03c295b3a0ed2835ac21c46485b1ff'
-            'SKIP')
+    "git+$url.git#commit=$_commit_suite"
+    "git+https://github.com/AirVPN/openvpn3-airvpn.git#commit=$_commit_openvpn")
+sha256sums=('933e0cf26da5dd394b1179a775899e974c74ff9711c26ff095b1f7aaa9384586'
+            'cdadf843ac5950a6b652f38b58b10b9adffbd821356227ee97ea29c085f604f0')
 backup=('etc/airvpn/bluetit.rc')
 install="$pkgname.install"
 changelog="Changelog-Suite.txt"
 
+prepare() {
+    sed -i 's|-I${ASIO}/asio/include||' "$_pkgname/build-hummingbird.sh" "$_pkgname/build-bluetit.sh"
+    sed -i 's|-DASIO_STANDALONE|${CXXFLAGS} ${LDFLAGS} -Wno-error=format-security|' "$_pkgname/build-hummingbird.sh" "$_pkgname/build-bluetit.sh"
+    sed -i 's|-Wno-shift-count-overflow|-Wno-shift-count-overflow ${CXXFLAGS} ${LDFLAGS} -Wno-error=format-security|' "$_pkgname/build-goldcrest.sh"
+}
+
 build() {
-    # set vars needed by original OpenVPN3 build scripts
-    export O3="$srcdir/O3" && mkdir "$O3"
-    export DEP_DIR="$O3/deps" && mkdir "$DEP_DIR"
-    export DL="$O3/dl" && mkdir "$DL"
-    cd "$O3"
-
-    # build OpenVPN3 core
-    ln -sf "$srcdir/openvpn3-airvpn-source" 'core'
-    cd core/scripts/linux
-    ./build-all
-
-    # move directories around for the suite build scripts
-    rm -rf "$srcdir/openvpn3-airvpn" && mv "$O3/core" "$srcdir/openvpn3-airvpn"
-    rm -rf "$srcdir/asio" && mv "$O3/deps/asio" "$srcdir"
-
     # build the suite
-    cd "$_pkgname"
-    mkdir obj
-    cp /usr/share/wireguard-tools/examples/embeddable-wg-library/wireguard.? src/
+    cd "$srcdir/$_pkgname"
+    mkdir -p obj
+    gcc $CFLAGS -c /usr/share/wireguard-tools/examples/embeddable-wg-library/wireguard.c -o obj/wireguard.o
     cp /usr/share/wireguard-tools/examples/embeddable-wg-library/wireguard.h src/include/
     ./build-bluetit.sh
     ./build-goldcrest.sh
