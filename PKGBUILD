@@ -11,8 +11,6 @@ license=('MIT')
 url='https://github.com/indigo-dc/oidc-agent'
 makedepends=('help2man')
 depends=('libmicrohttpd'
-         'libseccomp'
-         'libsecret'
          'libsodium'
          'curl'
          'qrencode'
