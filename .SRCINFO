@@ -1,6 +1,6 @@
 pkgbase = python-pyncm
 	pkgdesc = NeteaseCloudMusic APIs for Python 3.x 适用于 Python 3 的网易云音乐 API
-	pkgver = 1.6.16
+	pkgver = 1.6.18
 	pkgrel = 1
 	url = https://github.com/mos9527/pyncm
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = python-pyncm
 	optdepends = python-mutagen: Metadata modification support
 	optdepends = python-tqdm: Downlopython-setuptoolsad progress bar support
 	optdepends = python-coloredlogs: Colored terminal output support
-	source = https://files.pythonhosted.org/packages/source/p/pyncm/pyncm-1.6.16.tar.gz
-	sha256sums = 4815017a078b1db29997b88f7b517ac087f4c4533095cdab4c18d004a6eff1e8
+	source = https://files.pythonhosted.org/packages/source/p/pyncm/pyncm-1.6.18.tar.gz
+	sha256sums = 004e02004dab797a37e7e9416d57b6644155b71e9806baae21a82e3b80529a55
 
 pkgname = python-pyncm
