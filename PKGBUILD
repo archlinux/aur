@@ -2,7 +2,7 @@
 
 pkgname=python-oset
 pkgver=0.1.3
-pkgrel=11
+pkgrel=12
 pkgdesc="Ordered sets for Python"
 arch=('any')
 url="https://pypi.org/project/oset/"
