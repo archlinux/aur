@@ -2,7 +2,7 @@
 # Maintainer: coolapso <coolapso@coolapso.tech>
 
 pkgname='go-live-server-bin'
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc='Simple development webserver with live reload'
 url='https://github.com/coolapso/go-live-server'
@@ -11,14 +11,14 @@ license=('MIT')
 provides=('go-live-server')
 conflicts=('go-live-server')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/coolapso/go-live-server/releases/download/v0.1.0/go-live-server_0.1.0_linux_arm64.tar.gz")
-sha256sums_aarch64=('6e320423c5f0e6e9ac4d3d68e007665f8cc8f1b2b638b37cdcedb0763ca4135d')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/coolapso/go-live-server/releases/download/v0.2.0/go-live-server_0.2.0_linux_arm64.tar.gz")
+sha256sums_aarch64=('340e3e271c2cd89d4c41af7c42bb89496a90c8daf04b0c0c2cf18ecd6b94ecd1')
 
-source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/coolapso/go-live-server/releases/download/v0.1.0/go-live-server_0.1.0_linux_386.tar.gz")
-sha256sums_i686=('a87413b48b0fe672a96b8ca76092c1b8afd3b834ad5fa8b311653bbc56ee47b0')
+source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/coolapso/go-live-server/releases/download/v0.2.0/go-live-server_0.2.0_linux_386.tar.gz")
+sha256sums_i686=('8bab395c73bee97b45342c6ce243019bc804245ab810b43ae297bffd5a3e0244')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/coolapso/go-live-server/releases/download/v0.1.0/go-live-server_0.1.0_linux_amd64.tar.gz")
-sha256sums_x86_64=('3720529ce50daa5d3bebecb13ebbe69b74f98cb8870bf0d55fef0360b1bcb5b5')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/coolapso/go-live-server/releases/download/v0.2.0/go-live-server_0.2.0_linux_amd64.tar.gz")
+sha256sums_x86_64=('c4e2a576a278ad8e35b0dd7e9e5ab5e99e7312cd3caea9b63e862ea9ad1c696d')
 
 package() {
   install -Dm755 "./live-server" "${pkgdir}/usr/bin/live-server"
