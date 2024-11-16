@@ -15,7 +15,12 @@ url="https://github.com/luogu-dev/cyaron"
 license=('LGPL3')
 arch=('any')
 depends=('python' 'python-colorful' 'python-xeger')
-makedepends=('python-setuptools')
+makedepends=(
+	'python-build'
+	'python-installer'
+	'python-setuptools'
+	'python-wheel'
+)
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name//-/_}/${_name//-/_}-$pkgver.tar.gz")
 sha256sums=('c9aa6449cb4a2738120662f05a7112978a6f379c89bdf304e418ad73606f86f6')
 validpgpkeys=('517E4E3C364C6C55C907284915AC252CE20E3FC8')
