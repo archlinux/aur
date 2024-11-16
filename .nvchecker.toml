@@ -1,0 +1,4 @@
+[mylar3-bin]
+source = "git"
+git = "https://github.com/mylar3/mylar3.git"
+prefix = "v"

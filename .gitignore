@@ -1,5 +1,5 @@
-/*.bz2
-/*.gz
-/*.xz
-/src/
-/pkg/
+*
+!PKGBUILD
+!.SRCINFO
+!.gitignore
+!.nvchecker.toml
