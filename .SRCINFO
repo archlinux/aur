@@ -1,7 +1,7 @@
 pkgbase = python-pythondata-cpu-mor1kx
 	pkgdesc = Python module containing verilog files for mor1kx cpu (for use with LiteX)
 	pkgver = 2022.08
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/litex-hub/pythondata-cpu-mor1kx
 	arch = any
 	license = custom:OHDL
