@@ -1,6 +1,6 @@
 pkgbase = python-peewee-migrate
 	pkgdesc = Simple migration engine for Peewee
-	pkgver = 1.12.2
+	pkgver = 1.13.0
 	pkgrel = 1
 	url = https://github.com/klen/peewee_migrate
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = python-peewee-migrate
 	provides = pw-migrate
 	provides = pw_migrate
 	options = !strip
-	source = python-peewee-migrate-1.12.2.tar.gz::https://github.com/klen/peewee_migrate/archive/1.12.2.tar.gz
-	b2sums = 29b2082e490dd160b46eac5a73ff1c62f9600b497fef10255074cd660878a0482fea9e8c246bce6770c692bf83aa9ff4ec85c011303131812f1b92cadedba1ad
+	source = python-peewee-migrate-1.13.0.tar.gz::https://github.com/klen/peewee_migrate/archive/1.13.0.tar.gz
+	b2sums = 6b13a936445524102916d5bc2d40cc859e205e445a22b003149f6c71509799477d9b5fe6b8db645305043734043cef1afabebf457560b158561f6f70565b3912
 
 pkgname = python-peewee-migrate
