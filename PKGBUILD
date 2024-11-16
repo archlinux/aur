@@ -13,7 +13,7 @@ optdepends=(
 provides=('pay-respects')
 conflicts=('pay-respects')
 source=("$pkgname-$pkgver-$pkgrel::https://github.com/iffse/pay-respects/releases/download/v$pkgver/pay-respects-ubuntu-latest.zip")
-sha1sums=('69bc123c61286118e75a052810a7edc60392b520')
+sha1sums=('6c5fb04c6f7b3b84c98e59dbcd0b581d6e06a5a1')
 replaces=("pay_respects-bin")
 
 package() {
