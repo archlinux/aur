@@ -5,7 +5,7 @@ _pname=${pkgbase#python-}
 _pyname=${_pname//-/_}
 pkgname=("python-${_pname}")
 #"python-${_pname}-doc")
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="Griffe extension for inheriting docstrings."
 arch=('any')
@@ -17,7 +17,7 @@ makedepends=('python-pdm-backend'
 checkdepends=('python-pytest'
               'python-griffe')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('a5f6aa4f2bb62e2c8fd53ef2be8afc75')
+md5sums=('6645085c7b1577a99089a5246e9dfb3f')
 
 #prepare() {
 #    cd ${srcdir}/${_pyname}-${pkgver}
