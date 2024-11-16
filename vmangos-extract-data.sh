@@ -35,7 +35,7 @@ run_extractors () {
 
 kill_jobs () {
     for pid in $(jobs -p); do
-        kill "$pid"
+        kill "$pid" 2>/dev/null | true
     done
 }
 

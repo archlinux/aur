@@ -2,7 +2,7 @@
 
 pkgname=vmangos-git
 pkgver=r6390.e37b60804
-pkgrel=1
+pkgrel=2
 pkgdesc="MMORPG server emulator"
 arch=('x86_64')
 url="https://github.com/vmangos/"
@@ -49,7 +49,7 @@ sha256sums=('SKIP'
             '9d99c70255ec8749a8d59010c53d76c41251783acfccf6c335c5dffa63b5d037'
             'c3cee4cb049545cb9c0857f8977120d219d8afcf5c1cb0531546d38ecde98783'
             'e2fb357832eda6c7c7467d36251c5c817b79320416a0dd13defe86000349cf2d'
-            '9cbc844eb661f7cad602fbfa92fe8a4d849fe27320d53b3ca1557c4193d22ccc')
+            '0957e84352ad8ca81c9aa97433f97dfe8951d02caa5170702e1a0c3922008eb4')
 
 pkgver() {
     cd "$srcdir/$pkgname"
