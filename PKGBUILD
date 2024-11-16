@@ -4,14 +4,13 @@ pkgbase=python-roman-datamodels
 _pname=${pkgbase#python-}
 _pyname=${_pname//-/_}
 pkgname=("python-${_pname}" "python-${_pname}-doc")
-pkgver=0.20.0
+pkgver=0.22.0
 pkgrel=1
 pkgdesc="Datamodel support for the roman calibration pipeline"
 arch=('any')
 url="https://roman-datamodels.readthedocs.io"
 license=('BSD-3-Clause')
-makedepends=('python-setuptools-scm'
-             'python-wheel'
+makedepends=('python-setuptools-scm>=3.4'
              'python-build'
              'python-installer'
              'python-sphinx-automodapi'
@@ -19,13 +18,13 @@ makedepends=('python-setuptools-scm'
              'python-sphinx_rtd_theme'
              'python-pytest-doctestplus'
              'python-rad'
-             'graphviz')
+             'graphviz')  # wheel required by new setuptools
 checkdepends=('python-pytest-doctestplus'
               'python-pytest-env'
-              'python-pytest-xdist'
+#             'python-pytest-xdist'
               'python-gwcs') # rad already in makedepends
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('3a18fa9cb33234fe80bfef1f9ab2728e')
+md5sums=('a9a6cb72ab24561dc720546a208c0543')
 
 get_pyver() {
     python -c "import sys; print('$1'.join(map(str, sys.version_info[:2])))"
@@ -44,11 +43,11 @@ check() {
 
     ln -rs ${srcdir}/${_pyname}-${pkgver}/src/${_pyname/-/_}*egg-info \
         build/lib/${_pyname/-/_}-${pkgver}-py$(get_pyver .).egg-info
-    PYTHONPATH="build/lib" pytest || warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count
+    PYTHONPATH="build/lib" pytest || warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count -p xdist -n 4 #
 }
 
 package_python-roman-datamodels() {
-    depends=('python>=3.10' 'python-asdf-astropy>=0.5.0' 'python-gwcs>=0.18.1' 'python-rad>=0.20.0')
+    depends=('python>=3.10' 'python-asdf-astropy>=0.5.0' 'python-gwcs>=0.19.0' 'python-rad>=0.22.0')
     optdepends=('python-roman-datamodels-doc: Documentation for Roman Datamodels')
     cd ${srcdir}/${_pyname}-${pkgver}
 
