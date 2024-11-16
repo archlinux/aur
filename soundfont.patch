@@ -1,0 +1,12 @@
+diff -ura qabc-1.13.orig/config.h.in qabc-1.13.new/config.h.in
+--- qabc-1.13.orig/config.h.in	2024-11-14 13:03:39.000000000 +0100
++++ qabc-1.13.new/config.h.in	2024-11-16 20:04:19.095984849 +0100
+@@ -17,7 +17,7 @@
+ #define ABC2MIDI \"/usr/bin/abc2midi\"
+ 
+ #define SYNTH_KEY \"ABC/synth\"
+-#define FLUIDSYNTH \"/usr/bin/fluidsynth --no-shell --audio-driver=alsa /usr/share/sounds/sf2/FluidR3_GM.sf2\"
++#define FLUIDSYNTH \"/usr/bin/fluidsynth --no-shell --audio-driver=alsa /usr/share/soundfonts/FluidR3_GM.sf2\"
+ 
+ #define VIEWER_KEY \"ABC/viewer\"
+ #define PSVIEWER \"/usr/bin/evince\"
