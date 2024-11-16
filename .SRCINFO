@@ -1,0 +1,16 @@
+pkgbase = pnpm-cli
+	pkgdesc = Fast, disk space efficient package manager
+	pkgver = 9.13.2
+	pkgrel = 1
+	url = https://github.com/pnpm/pnpm
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	conflicts = pnpm
+	options = !strip
+	source_x86_64 = pnpm-cli-9.13.2-x86_64::https://github.com/pnpm/pnpm/releases/download/v9.13.2/pnpm-linux-x64
+	sha256sums_x86_64 = SKIP
+	source_aarch64 = pnpm-cli-9.13.2-aarch64::https://github.com/pnpm/pnpm/releases/download/v9.13.2/pnpm-linux-arm64
+	sha256sums_aarch64 = SKIP
+
+pkgname = pnpm-cli
