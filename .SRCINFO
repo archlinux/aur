@@ -1,20 +1,20 @@
 pkgbase = legcord-bin
 	pkgdesc = Discord client with builtin client mod & theme support.
-	pkgver = 1.0.2
-	pkgrel = 2
+	pkgver = 1.0.4
+	pkgrel = 1
 	url = https://github.com/Legcord/Legcord
 	arch = x86_64
 	arch = aarch64
 	license = OSL-3.0
 	provides = legcord
 	conflicts = legcord
-	noextract = Legcord-1.0.2-linux-x86_64.zip
+	noextract = Legcord-1.0.4-linux-x86_64.zip
 	options = !strip
 	source = legcord.png
 	sha256sums = 2ac8985edf862912d42083007d1687cb6679f755b5e27ccd015d8266da51eb81
-	source_x86_64 = Legcord-1.0.2-linux-x86_64.zip::https://github.com/Legcord/Legcord/releases/download/v1.0.2/Legcord-1.0.2-linux-x64.zip
-	sha256sums_x86_64 = 770257a252d9a031b7b8b1d762e8517272285849b050f03c76530b7950a867f9
-	source_aarch64 = Legcord-1.0.2-linux-aarch64.zip::https://github.com/Legcord/Legcord/releases/download/v1.0.2/Legcord-1.0.2-linux-arm64.zip
-	sha256sums_aarch64 = 2962030163d0cf91466b52a5ec5de5298d97ec90bd0cc21cd9493bdb260f0d3f
+	source_x86_64 = Legcord-1.0.4-linux-x86_64.zip::https://github.com/Legcord/Legcord/releases/download/v1.0.4/Legcord-1.0.4-linux-x64.zip
+	sha256sums_x86_64 = b8b8f2c03fc46e0c826c3f047fd6356c9e85489f69ffe44acd154a46a4e91b24
+	source_aarch64 = Legcord-1.0.4-linux-aarch64.zip::https://github.com/Legcord/Legcord/releases/download/v1.0.4/Legcord-1.0.4-linux-arm64.zip
+	sha256sums_aarch64 = f1e7de556bf1a6c1f85c68b667bf03cb404ef27211aee15d47aa66fb20a4260c
 
 pkgname = legcord-bin
