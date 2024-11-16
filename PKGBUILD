@@ -1,7 +1,7 @@
 pkgname=devilutionx-bin
 _pkgname=DevilutionX-bin
 pkgver=1.5.3
-pkgrel=1
+pkgrel=2
 _pkgrel_x86_64=1
 _pkgrel_i386=1
 _pkgrel_pentium4=1
@@ -27,10 +27,10 @@ source_aarch64=("https://github.com/diasurgical/devilutionX/releases/download/$p
 
 
 package() {
-	install -dm755 "$pkgdir/usr/share/games/DevilutionX"
+	install -dm755 "$pkgdir/usr/share/diasurgical/devilutionx"
    install -dm755 "$pkgdir/usr/bin"
    install -dm755 "$pkgdir/usr/lib"
-   destdir="$pkgdir/usr/share/games/DevilutionX"
+   destdir="$pkgdir/usr/share/diasurgical/devilutionx"
    find $srcdir -type f \( -name "*.so" -o -name "*.sh" \) -exec cp {} $destdir \;
    find $srcdir -type f -name "*.so" -exec cp {} $pkgdir/usr/lib \;
    ln -s /usr/lib/libsodium.so "$pkgdir/usr/lib/libsodium.so.23"
