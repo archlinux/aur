@@ -1,7 +1,7 @@
 pkgbase = python-husl
 	pkgdesc = A Python implementation of HUSL (revision 3)
 	pkgver = 4.0.3
-	pkgrel = 12
+	pkgrel = 13
 	url = https://pypi.org/project/husl/
 	arch = any
 	license = MIT
