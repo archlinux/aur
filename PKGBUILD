@@ -1,4 +1,4 @@
-# Maintainer: Sving1024 <piano5432@outlook.com>
+# Maintainer: Sving1024 <sving1024@outlook.com>
 _name=accesser
 pkgname=python-${_name}-git
 pkgver=0.9.5.r0.g6b9a557
