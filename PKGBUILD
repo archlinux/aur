@@ -3,7 +3,7 @@
 
 # basic info
 pkgname="lightly-qt6"
-pkgver=0.5.6 # change this to match the name of the release tag you want to build from
+pkgver=0.5.7 # change this to match the name of the release tag you want to build from
 pkgrel=3
 pkgdesc="Bali10050's fork of Lightly (A modern style for qt applications)"
 url="https://github.com/Bali10050/lightly"
@@ -26,7 +26,8 @@ source=(
 
 # use makepkg -g to generate the sha256sum for the release tag
 sha256sums=(
-  'f027395b14c96acb4b79ecb6e3b16e7e1dbeb17737ee021318e86a0a548ff619'  # 0.5.6 tag
+   'c72ab191271a2ea5dc460cffe02c1deea1634eb9477a178f7ddb437e6ca0cb93' # 0.5.7 tag
+  #'f027395b14c96acb4b79ecb6e3b16e7e1dbeb17737ee021318e86a0a548ff619' # 0.5.6 tag
   #'a9edb01977d9baaf7fd030ff1c84a90219c7159dcd48ad654bd955552a5ca950' # 0.5.5 tag
   #'d94128c6b8e25426a482f2fe83f21fd3c664d4d57fe0cec7ab2c42ecda001616' # 0.5.4 tag
   #'c23cee3e707a35df4301d55a9de1f809c633618546e2fcd59175d4af0bcca79f' # 0.5.3 tag
