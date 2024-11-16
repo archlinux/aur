@@ -7,10 +7,13 @@ arch=("x86_64")
 url="https://github.com/iffse/pay-respects"
 license=('AGPL')
 makedepends=()
+optdepends=(
+	'which: for rules checking executable availability'
+)
 provides=('pay-respects')
 conflicts=('pay-respects')
 source=("$pkgname-$pkgver-$pkgrel::https://github.com/iffse/pay-respects/releases/download/v$pkgver/pay-respects-ubuntu-latest.zip")
-sha1sums=("SKIP")
+sha1sums=('69bc123c61286118e75a052810a7edc60392b520')
 replaces=("pay_respects-bin")
 
 package() {
