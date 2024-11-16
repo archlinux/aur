@@ -5,7 +5,7 @@
 # Contributor: Michael Straube <straubem@gmx.de> (previous brewtarget-git package)
 
 pkgname=brewtarget-git
-pkgver=4.0.2.r0.g0b1b936
+pkgver=4.0.10.r0.g9559f8c
 pkgrel=1
 pkgdesc="Brewing recipe designer and calculator (Git version)"
 url='https://www.brewtarget.beer/'
@@ -15,9 +15,10 @@ license=('GPL-3.0-or-later AND WTFPL AND (CC-BY-SA-3.0 OR LGPL-3.0-or-later) AND
 conflicts=('brewtarget')
 provides=('brewtarget')
 depends=(
-  'qt5-base'
-  'qt5-multimedia'
-  'qt5-svg'
+  'openssl'
+  'qt6-base'
+  'qt6-multimedia'
+  'qt6-svg'
   'xalan-c'
   'xerces-c'
 )
@@ -26,11 +27,13 @@ optdepends=(
 )
 makedepends=(
   'boost'
+  'clang'
   'cmake'
   'git'
   'meson'
-  'pandoc-bin'
-  'qt5-tools'
+  'pandoc'
+  'qt6-declarative'
+  'qt6-tools'
 )
 
 source=(
@@ -73,7 +76,9 @@ prepare() {
 }
 
 build() {
-  meson setup --prefix=/usr brewtarget build
+  # Ensure lupdate can be found; the executable in /usr/bin is currently
+  # part of qt5-tools on Arch.
+  PATH="/usr/lib/qt6/bin/:$PATH" meson setup --prefix=/usr brewtarget build
   meson compile -C build
 }
 
