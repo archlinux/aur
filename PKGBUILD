@@ -1,41 +1,60 @@
-# Maintainer: Kyle Keen <keenerd@gmail.com>
+# Maintainer:
+# Contributor: Kyle Keen <keenerd@gmail.com>
 
-pkgname=airspy-git
-pkgver=20141216
+_pkgname="airspy"
+pkgname="$_pkgname-git"
+pkgver=1.0.10.r24.g43570b6
 pkgrel=1
-pkgdesc="Host code for Airspy SDR."
+pkgdesc="Host code for Airspy SDR"
+url="https://github.com/airspy/host"
+license=('GPL-2.0-or-later')
 arch=('i686' 'x86_64')
-url="http://www.airspy.com"
-license=('GPL2')
-depends=('libusb>=1.0')
-provides=('airspy')
-conflicts=('airspy')
-makedepends=('git' 'cmake')
-source=("git+https://github.com/airspy/host"
-        "airspy.conf")
-md5sums=('SKIP'
-         '29e481d56bfc56cface4f1457ca6df23')
 
-_gitname="host"
+depends=(
+  'libusb'
+)
+makedepends=(
+  'cmake'
+  'git'
+  'ninja'
+)
+
+provides=("$_pkgname")
+conflicts=("$_pkgname")
+
+_pkgsrc="airspyone_host"
+source=(
+  "$_pkgsrc"::"git+$url.git"
+  "airspy.conf"
+)
+sha256sums=(
+  'SKIP'
+  'b210dd0698c3bb8ad59f0393c12a74e1ed8fe1b16a2faabc38467f68ebed0120'
+)
 
 pkgver() {
-  cd "$srcdir/$_gitname"
-  git show -s --format="%ci" HEAD | sed -e 's/-//g' -e 's/ .*//'
+  cd "$_pkgsrc"
+  git describe --long --tags --abbrev=7 --exclude='*[a-zA-Z][a-zA-Z]*' \
+    | sed -E 's/^[^0-9]*//;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
 build() {
-  cd "$srcdir/$_gitname"
-  mkdir -p build
-  cd build
-  cmake -DCMAKE_INSTALL_PREFIX:PATH=/usr -Wno-dev ../
-  make
+  local _cmake_options=(
+    -B build
+    -S "$_pkgsrc"
+    -G Ninja
+    -DCMAKE_BUILD_TYPE=None
+    -DCMAKE_INSTALL_PREFIX='/usr'
+    -Wno-dev
+  )
+
+  cmake "${_cmake_options[@]}"
+  cmake --build build
 }
 
 package() {
-  cd "$srcdir/$_gitname/build"
-  make DESTDIR="$pkgdir" install
-  install -Dm644 "../airspy-tools/52-airspy.rules" "$pkgdir/usr/lib/udev/rules.d/52-airspy.rules"
-  install -Dm644 "$srcdir/airspy.conf" "$pkgdir/etc/modprobe.d/airspy.conf"
-}
+  DESTDIR="$pkgdir" cmake --install build
 
-# vim:set ts=2 sw=2 et:
+  install -Dm644 "$_pkgsrc/airspy-tools/52-airspy.rules" -t "$pkgdir/usr/lib/udev/rules.d/"
+  install -Dm644 "airspy.conf" -t "$pkgdir/etc/modprobe.d/"
+}
