@@ -1,7 +1,7 @@
 # Maintainer: devome <evinedeng@hotmail.com>
 
 pkgname=flatnotes
-pkgver=5.3.0
+pkgver=5.3.1
 pkgrel=1
 pkgdesc="A self-hosted, database-less note taking web app that utilises a flat folder of markdown files for storage."
 arch=("any")
@@ -15,7 +15,7 @@ source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz"
         "${pkgname}.service"
         "${pkgname}.sysusers"
         "${pkgname}.tmpfiles")
-sha256sums=('e6949d73145b569b6c188cc2c2ab64e96cb4b330de4c3019f0dff24557a65aa2'
+sha256sums=('69210c18d2816cfbc0d45e437c8866e52e2c9d24c58379b54de42d91b1ac4295'
             '59e9f26dca4d316d580b86afb09afec3f949a4debfdbd4de9fdaed4868abbb78'
             '44b35a9f08962eb6e8fd7a48a9d9213cf2119e48eb5d4766a349244d221e8a15'
             '2d62cb21e34fd41277c1b9cd8692c68cf4980fd1c3d94330f2b79ddbc4349c1a'
