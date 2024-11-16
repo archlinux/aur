@@ -4,7 +4,7 @@
 
 _name=VSTPlugins-UhhyouPlugins
 pkgname=uhhyou-plugins
-pkgver=0.64.0
+pkgver=0.65.0
 pkgrel=1
 pkgdesc='A collection of synthesizer and effect VST3 plugins'
 arch=(aarch64 x86_64)
@@ -22,7 +22,7 @@ source=(
   "pocketfft-$_pocketfft_ref.tar.gz::https://gitlab.mpcdf.mpg.de/mtr/pocketfft/-/archive/$_pocketfft_ref/pocketfft-$_pocketfft_ref.tar.gz"
   "vcl-$_vcl_ref.tar.gz::https://github.com/vectorclass/version2/archive/$_vcl_ref.tar.gz"
 )
-sha256sums=('abea8ebb74f264a56ef5f3c237f6682d0e2218acc7dc3433148294014a316a5d'
+sha256sums=('ad1961f01924d56f91d0d48b0cab68f327cbfc8386fb67b018a90f722339df8d'
             '1e9aa6022bd23affd36d21e0e8c874d08cda5701a102f8da865ca66ff2309dc7'
             'd2a36ccedf4585b33fdba6cb38000aaa022c5b5306efeff2ad58cca52999c827')
 
