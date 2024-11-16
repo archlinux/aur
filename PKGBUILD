@@ -1,7 +1,7 @@
 # Maintainer: devome <evinedeng@hotmail.com>
 
 pkgname="webhookd"
-pkgver=1.20.0
+pkgver=1.20.1
 pkgrel=1
 pkgdesc="A very simple webhook server launching scripts."
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64' 'riscv64')
@@ -12,7 +12,7 @@ backup=("etc/default/${pkgname}")
 source=("${pkgname}::git+${url}.git#tag=v${pkgver}"
         "${pkgname}.service"
         "${pkgname}.user.service")
-sha256sums=('b74a94d17342fa9142926377262d2d72dce5265e388dd147c97fd4927cfcb6be'
+sha256sums=('f9689036fd4b010be1124ed381cbacd354c768490020a145904080ac6fb96728'
             'b24d5dfc84bf7b1cceea963b96de3085b6ed079c8f99c56225d8125c791d3543'
             '714e9e219b51af192208500b6936f748ad86a5ec79d5e5683cab1e81fbeae09c')
 
