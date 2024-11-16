@@ -1,0 +1,16 @@
+pkgbase = fcitx5-theme-wechat
+	pkgdesc = WeChat style fcitx5 theme
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/witt-bit/fcitx5-theme-wechat
+	arch = any
+	license = Apache-2.0
+	provides = fcitx5-theme-wechat
+	conflicts = fcitx5-theme-wechat
+	options = !strip
+	source = themes.tar.gz::https://github.com/witt-bit/fcitx5-theme-wechat/archive/refs/tags/v0.0.1.tar.gz
+	source = license::https://github.com/witt-bit/fcitx5-theme-wechat/raw/main/LICENSE
+	sha256sums = 61e62886b7d0ed2e4a5d7211cdda098b72c5c4186a3641982e117fd2dd574458
+	sha256sums = c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4
+
+pkgname = fcitx5-theme-wechat
