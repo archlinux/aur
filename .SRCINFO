@@ -1,7 +1,7 @@
 pkgbase = hybridfilexfer-git
 	pkgdesc = 多轨快传，同时使用USB和5G与2.4GWIFI等通道传输文件到电脑，榨干手机IO！
 	pkgver = r27.89241d9
-	pkgrel = 6
+	pkgrel = 7
 	url = https://github.com/weixiansen574/HybridFileXfer
 	arch = any
 	license = GPL-3.0-or-later

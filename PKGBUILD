@@ -1,7 +1,7 @@
 # Maintainer: Li Hua <lihua@email.com>
 pkgname=hybridfilexfer-git
 pkgver=r27.89241d9
-pkgrel=6
+pkgrel=7
 pkgdesc="多轨快传，同时使用USB和5G与2.4GWIFI等通道传输文件到电脑，榨干手机IO！ "
 arch=('any')
 url='https://github.com/weixiansen574/HybridFileXfer'
@@ -26,8 +26,7 @@ build() {
 package() {
 	cd "$srcdir"
 	mkdir -vp "$pkgdir/usr/bin"
-	mkdir -vp "$pkgdir/opt/HybridFileXfer"
-	cp -v HybridFileXfer.jar "$pkgdir/opt/HybridFileXfer"
+	install -Dvm644 HybridFileXfer.jar "$pkgdir/opt/HybridFileXfer"
 	echo '#!/bin/sh' > "$pkgdir/usr/bin/hybridfilexfer"
 	echo 'java -Duser.dir="$(dirname $(which adb))" -jar /opt/HybridFileXfer/HybridFileXfer.jar $@' >> "$pkgdir/usr/bin/hybridfilexfer"
 	chmod -v 755 "$pkgdir/usr/bin/hybridfilexfer"
