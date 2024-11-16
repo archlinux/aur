@@ -1,15 +1,15 @@
 pkgname=diablo
 _pkgname=Diablo
-pkgver=1.0.2
+pkgver=1.0.3
 pkgrel=1
 pkgdesc="Diablo is an action role-playing video game developed by Blizzard North and released by Blizzard Entertainment Powered by the Devilution engine"
 arch=('x86_64' 'i686' 'pentium4' 'aarch64')
 url="https://gitlab.com/linuxbombay/diablo"
 license=('GPL')
-depends=('devilutionx-bin' 'git' 'aria2' 'yad' 'p7zip')
+depends=('devilutionx-bin' 'git' 'zenity' 'yad')
 makedepends=('unzip')
 source=("$url/-/archive/$pkgver/diablo-$pkgver.tar.bz2")
-sha256sums=('f8c8ed0b18b9a00b40ff2fc975c48254183d4d9b8be4cb501f7c44bc069cec69')
+sha256sums=('8ccfe871b2301ee3612fdfce82bda632cd4841ae0c7c60e8c8ca09e96b93cd8b')
 
 package() {
     install -dm755 "$pkgdir/usr/share/games/$_pkgname"

@@ -1,6 +1,6 @@
 pkgbase = diablo
 	pkgdesc = Diablo is an action role-playing video game developed by Blizzard North and released by Blizzard Entertainment Powered by the Devilution engine
-	pkgver = 1.0.2
+	pkgver = 1.0.3
 	pkgrel = 1
 	url = https://gitlab.com/linuxbombay/diablo
 	arch = x86_64
@@ -11,10 +11,9 @@ pkgbase = diablo
 	makedepends = unzip
 	depends = devilutionx-bin
 	depends = git
-	depends = aria2
+	depends = zenity
 	depends = yad
-	depends = p7zip
-	source = https://gitlab.com/linuxbombay/diablo/-/archive/1.0.2/diablo-1.0.2.tar.bz2
-	sha256sums = f8c8ed0b18b9a00b40ff2fc975c48254183d4d9b8be4cb501f7c44bc069cec69
+	source = https://gitlab.com/linuxbombay/diablo/-/archive/1.0.3/diablo-1.0.3.tar.bz2
+	sha256sums = 8ccfe871b2301ee3612fdfce82bda632cd4841ae0c7c60e8c8ca09e96b93cd8b
 
 pkgname = diablo
