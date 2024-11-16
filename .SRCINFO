@@ -1,0 +1,12 @@
+pkgbase = smriti-bin
+	pkgdesc = Keep track of the commands your memory missed
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/aspasht/smriti
+	arch = x86_64
+	license = MIT
+	depends = sqlite
+	source = smriti-1.0.0.tar.xz::https://github.com/aspasht/smriti/releases/download/v1.0.0/cli-x86_64-unknown-linux-gnu.tar.xz
+	sha256sums = SKIP
+
+pkgname = smriti-bin
