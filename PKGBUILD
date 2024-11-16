@@ -10,7 +10,10 @@ pkgver=6.8.0
 pkgrel=1
 arch=(x86_64)
 url='https://www.qt.io'
-license=(GPL3 LGPL3 FDL custom)
+license=(GPL-3.0-only
+         LGPL-3.0-only
+         LicenseRef-Qt-Commercial
+         Qt-GPL-exception-1.0)
 pkgdesc='A cross-platform application and UI framework'
 depends=(brotli
          dbus
