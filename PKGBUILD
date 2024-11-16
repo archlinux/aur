@@ -1,7 +1,7 @@
 # Maintainer: Kimiblock Moe
 pkgname=wechat
 pkgver=4.0.0.23
-pkgrel=3
+pkgrel=4
 epoch=
 pkgdesc="微信是一种生活方式. 可选沙盒支持."
 arch=('x86_64' 'aarch64' 'loong64')
@@ -17,7 +17,7 @@ replaces+=(wechat-uos-bwrap wechat-uos-qt wechat-bin wechat-universal wechat-uni
 
 depends=(
 	#"wechat-uos-qt"
-
+	"vlc"
 	"xdg-user-dirs"
 	"xorg-xhost"
 	"findutils"
@@ -55,7 +55,8 @@ depends=(
 	"cairo"
 	"libx11"
 	"expat"
-	"at-spi2-core"
+	"libvlc"
+	"pipewire-jack"
 	"libxdamage"
 	"libdrm"
 	"mesa"
@@ -74,6 +75,8 @@ optdepends=(
 	'ttf-twemoji: An emoji font that will work with WeChat'
 	'at-spi2-core: accessibility'
 	'orca: screen reader'
+	'libpulse'
+	'libglvnd'
 )
 
 makedepends+=(
@@ -107,7 +110,7 @@ source_loong64=(
 )
 
 
-md5sums=('ef6a081e3dc3ad182bfb1484decf23c0'
+md5sums=('b61a308c70ab5cdfd7c24e12989f1e38'
          '89ae77c95f205d0a7f9347f8251ce742'
          '468e0367346707c026e577e7bf3e3a82'
          'c99c42e49fb1650df340f3a38bd86d5e'

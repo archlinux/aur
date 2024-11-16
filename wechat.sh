@@ -192,8 +192,6 @@ function execApp() {
 	-p EnvironmentFile="${XDG_DATA_HOME}"/WeChat_Data/wechat.env \
 	-p Environment=GTK_IM_MODULE="${GTK_IM_MODULE}" \
 	-p Environment=QT_IM_MODULE="${QT_IM_MODULE}" \
-	-p IPAddressDeny=localhost \
-	-p IPAddressDeny=link-local \
 	-p IPAddressDeny=multicast \
 	-p SystemCallFilter=~@clock \
 	-p SystemCallFilter=~@cpu-emulation \
@@ -210,6 +208,8 @@ function execApp() {
 	-p RestrictAddressFamilies=AF_INET6 \
 	-p NoNewPrivileges=yes \
 	-p RestrictNamespaces=~net \
+	-p ProtectKernelLogs=yes \
+	-p ProtectHostname=yes \
 	-p RestrictNamespaces=~pid \
 	-p RestrictNamespaces=~uts \
 	-p RestrictNamespaces=~ipc \
@@ -394,15 +394,31 @@ function dbusProxy() {
 			"${busDir}/bus" \
 			--filter \
 			--own=org.kde.* \
-			--talk=org.freedesktop.portal.Flatpak \
-			--talk=org.freedesktop.portal.Desktop \
-			--talk=org.freedesktop.portal.* \
-			--talk=org.freedesktop.Notifications \
+			--own=com.belmoussaoui.ashpd.demo \
+			--talk=org.freedesktop.portal.Camera \
+			--call=org.freedesktop.portal.Camera=* \
+			--talk=org.freedesktop.portal.Documents \
+			--call=org.freedesktop.portal.Documents=* \
+			--talk=org.freedesktop.portal.FileTransfer \
+			--call=org.freedesktop.portal.FileTransfer=* \
+			--talk=org.freedesktop.portal.Notification \
+			--call=org.freedesktop.portal.Notification=* \
+			--talk=org.freedesktop.portal.Print \
+			--call=org.freedesktop.portal.Print=* \
+			--talk=org.freedesktop.portal.Trash \
+			--call=org.freedesktop.portal.Trash=* \
 			--talk=org.freedesktop.FileManager1 \
+			--call=org.freedesktop.FileManager1=* \
 			--talk=org.kde.StatusNotifierWatcher \
+			--call=org.kde.StatusNotifierWatcher=* \
 			--talk=org.freedesktop.portal.OpenURI \
-			--talk=org.freedesktop.portal.OpenURI.* \
-			--call=org.freedesktop.portal.*=* \
+			--call=org.freedesktop.portal.OpenURI=* \
+			--talk=org.freedesktop.portal.OpenURI.OpenURI \
+			--call=org.freedesktop.portal.OpenURI.OpenURI=* \
+			--talk=org.freedesktop.portal.OpenURI.OpenFile \
+			--call=org.freedesktop.portal.OpenURI.OpenFile=* \
+			--talk=org.freedesktop.portal.Settings.Read \
+			--talk=org.freedesktop.portal.Desktop \
 			--own="${busName}" \
 			--broadcast=org.freedesktop.portal.*=@/org/freedesktop/portal/* \
 			--call=org.a11y.atspi.Registry=org.a11y.atspi.DeviceEventController.NotifyListenersAsync@/org/a11y/atspi/registry/deviceeventcontroller \
