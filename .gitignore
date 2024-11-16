@@ -1,3 +1,5 @@
 !PKGBUILD
 !.SRCINFO
 !git-credential-manager.install
+!.nvchecker.toml
+*
