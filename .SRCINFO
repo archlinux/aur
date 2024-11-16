@@ -1,7 +1,7 @@
 pkgbase = linux-mainline-um5606
 	pkgdesc = Linux Mainline with patches for the Asus UM5606(WA) laptop
 	pkgver = 6.12rc7
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://kernel.org/
 	arch = x86_64
@@ -27,7 +27,7 @@ pkgbase = linux-mainline-um5606
 	validpgpkeys = 83BC8889351B5DEBBB68416EB8AC08600F108CDF
 	sha256sums = SKIP
 	sha256sums = db35dc40884ec866a32225b2f7916fa7ae24273e08f9e204cddb010816255e17
-	sha256sums = 3dfea6ee17a195d87210762d5801e54ce60c154f376693f526ed08a98e7e0622
+	sha256sums = 9df944b0e918daa40ed6940aededbabcbc61b5c196bced7d029c1cd2de8c672a
 	sha256sums = b3904e19a49ea46fe4e281c686076b5c8ed3740a477a374f66506d32f9b5cdc0
 
 pkgname = linux-mainline-um5606
