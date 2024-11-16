@@ -2,15 +2,17 @@
 
 pkgname=openarc-unofficial-patches-git
 _pkgname=openarc
-pkgver=1.0.0.r30.gf298e7b
-pkgrel=5
+pkgver=1.1.0.r17.g3ff4b07
+pkgrel=2
 pkgdesc="OpenARC with patches and improvements from not-yet-merged PRs - by flowerysong"
 arch=(x86_64)
 url="https://github.com/flowerysong/OpenARC"
 license=('BSD-2-Clause' 'LicenseRef-Sendmail-1.1')
 depends=('sh' 'glibc' 'jansson' 'openssl' 'libbsd' 'libmilter' 'libidn2')
 optdepends=('smtp-server: for using a local mail server'
-	    'bind: required only for signature verification (alternatives available)')
+	    'bind: required only for signature verification (alternatives available)'
+	    'dkimpy-milter: for optional tests'
+	    'perl-mail-dkim: for optional tests')
 makedepends=('git' 'python-miltertest')
 provides=('openarc')
 conflicts=('openarc' 'openarc-unofficial-patches')
@@ -33,7 +35,7 @@ pkgver() {
 
 prepare() {
   cd "$srcdir/OpenARC"
-  autoreconf -i
+  autoreconf -fvi
 }
 
 build() {
@@ -44,7 +46,7 @@ build() {
      --sysconfdir="/etc/$_pkgname" \
      --localstatedir=/var \
      --disable-static
-  make
+  make -j1
 }
 
 check() {
