@@ -3,22 +3,37 @@
 
 pkgname=python-pudb-git
 _pkgname=pudb
-pkgver=2022.1.3.r14.g6739956
+pkgver=2024.1.3.r0.gf0b2aa5
 pkgrel=1
 pkgdesc="A full-screen, console-based Python debugger"
 url="https://documen.tician.de/pudb/"
 arch=('any')
 license=('MIT')
-depends=('python-jedi' 'python-packaging' 'python-pygments' 'python-urwid' 'python-urwid_readline')
-makedepends=('git' 'python-build' 'python-installer' 'python-setuptools' 'python-wheel')
-checkdepends=('python-pytest' 'python-pytest-mock')
+provides=('python-pudb')
+conflicts=('python-pudb')
+
+depends=(
+  'python-jedi'
+  'python-packaging'
+  'python-pygments'
+  'python-urwid'
+  'python-urwid_readline'
+)
+makedepends=(
+  'git'
+  'python-build'
+  'python-hatchling'
+  'python-installer'
+)
+checkdepends=(
+  'python-pytest'
+  'python-pytest-mock'
+)
 optdepends=(
   'bpython: bpython shell'
   'ptpython: shell based on prompt_toolkit'
   'ipython: shell embedding IPython'
 )
-provides=('python-pudb')
-conflicts=('python-pudb')
 
 source=("git+https://github.com/inducer/pudb.git")
 sha256sums=('SKIP')
@@ -44,6 +59,9 @@ package() {
   cd "$srcdir"/"$_pkgname"
   python -m installer --destdir="$pkgdir" dist/*.whl
   install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+
+  local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
+  rm -r "$pkgdir/$site_packages/pudb/test"
 }
 
 # vim: set ft=sh ts=2 sw=2 et:
