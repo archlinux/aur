@@ -5,10 +5,11 @@ pkgbase = pay-respects-bin
 	url = https://github.com/iffse/pay-respects
 	arch = x86_64
 	license = AGPL
+	optdepends = which: for rules checking executable availability
 	provides = pay-respects
 	conflicts = pay-respects
 	replaces = pay_respects-bin
 	source = pay-respects-bin-0.5.2-1::https://github.com/iffse/pay-respects/releases/download/v0.5.2/pay-respects-ubuntu-latest.zip
-	sha1sums = SKIP
+	sha1sums = 69bc123c61286118e75a052810a7edc60392b520
 
 pkgname = pay-respects-bin
