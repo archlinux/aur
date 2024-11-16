@@ -1,9 +1,10 @@
 pkgbase = libmp3splt
 	pkgdesc = Split mp3, ogg, and flac files without decoding - Library
 	pkgver = 0.9.2
-	pkgrel = 8
+	pkgrel = 9
 	url = https://mp3splt.sourceforge.net
-	arch = any
+	arch = x86_64
+	arch = i686
 	license = GPL-2.0-or-later
 	makedepends = doxygen
 	makedepends = flac>=1.2.1
@@ -15,13 +16,16 @@ pkgbase = libmp3splt
 	makedepends = pcre
 	source = libmp3splt-0.9.2.tar.gz::https://downloads.sourceforge.net/sourceforge/mp3splt/libmp3splt-0.9.2.tar.gz
 	source = libmp3splt_fix_informations_spelling.patch::https://sources.debian.org/data/main/libm/libmp3splt/0.9.2-0.1/debian/patches/fix-informations-spelling
-	source = libmp3splt_fix_ogg_and_vorbis_state_structs_init.patch
+	source = libmp3splt_fix_ogg_and_vorbis_state_structs_init.patch::https://github.com/mp3splt/mp3splt/pull/359.patch
+	source = libmp3splt_fix_snprintf_overflow.patch::https://github.com/mp3splt/mp3splt/pull/368.patch
+	source = libmp3splt_fix_flac_slience_trimming.patch::https://github.com/mp3splt/mp3splt/pull/369.patch
 	sha256sums = 30eed64fce58cb379b7cc6a0d8e545579cb99d0f0f31eb00b9acc8aaa1b035dc
 	sha256sums = f6f730a6fc1231571368a3b984b24273bddbe1d9cc902111909ddd1221cca517
-	sha256sums = 6c8721e71937b2f8b83189dad5be190de0bc0ece12bfcc9429e46d03e432e247
+	sha256sums = 0ca5c1fc3ec11e673f5ee2b3efa94e1954d45ef66b15010c78ad512deb19b0a3
+	sha256sums = 097e0e70bccee9ea2f03f265f3d086b46ce4b05df4c5ec1ad2a88b336184ff0d
+	sha256sums = 0716a1da460ed7e0ab2779ce33495bb7c6cd4690e9113de7976bbee6a22a19c0
 
 pkgname = libmp3splt
-	arch = x86_64
 	depends = flac>=1.2.1
 	depends = glibc
 	depends = libid3tag
@@ -30,6 +34,11 @@ pkgname = libmp3splt
 	depends = libltdl
 	depends = libvorbis
 	depends = pcre
+	provides = libmp3splt.so
+	provides = libsplt_mp3.so
+	provides = libsplt_ogg.so
+	provides = libsplt_flac.so
 
 pkgname = libmp3splt-docs
-	pkgdesc = HTML documentation for libmp3splt
+	pkgdesc = Split mp3, ogg, and flac files without decoding - Library (documentation)
+	arch = any

@@ -5,10 +5,11 @@
 pkgbase="libmp3splt"
 pkgname=("${pkgbase}" "${pkgbase}-docs")
 pkgver=0.9.2
-pkgrel=8
+pkgrel=9
 pkgdesc="Split mp3, ogg, and flac files without decoding - Library"
-arch=('any')
+arch=('x86_64' 'i686')
 url="https://mp3splt.sourceforge.net"
+_url="https://github.com/mp3splt/mp3splt"
 license=('GPL-2.0-or-later')
 makedepends=('doxygen' 'flac>=1.2.1' 'graphviz' 'libid3tag' 'libmad' 'libogg'
              'libvorbis' 'pcre')
@@ -16,22 +17,25 @@ makedepends=('doxygen' 'flac>=1.2.1' 'graphviz' 'libid3tag' 'libmad' 'libogg'
 _pkgsrc="${pkgbase}-${pkgver}"
 source=("${_pkgsrc}.tar.gz::https://downloads.sourceforge.net/sourceforge/mp3splt/${_pkgsrc}.tar.gz"
         "${pkgbase}_fix_informations_spelling.patch::https://sources.debian.org/data/main/${pkgbase::4}/${pkgbase}/${pkgver}-0.1/debian/patches/fix-informations-spelling"
-        "${pkgbase}_fix_ogg_and_vorbis_state_structs_init.patch")
+        "${pkgbase}_fix_ogg_and_vorbis_state_structs_init.patch::${_url}/pull/359.patch"
+        "${pkgbase}_fix_snprintf_overflow.patch::${_url}/pull/368.patch"
+        "${pkgbase}_fix_flac_slience_trimming.patch::${_url}/pull/369.patch")
 sha256sums=('30eed64fce58cb379b7cc6a0d8e545579cb99d0f0f31eb00b9acc8aaa1b035dc'
             'f6f730a6fc1231571368a3b984b24273bddbe1d9cc902111909ddd1221cca517'
-            '6c8721e71937b2f8b83189dad5be190de0bc0ece12bfcc9429e46d03e432e247')
+            '0ca5c1fc3ec11e673f5ee2b3efa94e1954d45ef66b15010c78ad512deb19b0a3'
+            '097e0e70bccee9ea2f03f265f3d086b46ce4b05df4c5ec1ad2a88b336184ff0d'
+            '0716a1da460ed7e0ab2779ce33495bb7c6cd4690e9113de7976bbee6a22a19c0')
 
 prepare() {
-  cd "${srcdir}"
-  find . -name '*.patch' -exec sed -i 's#\(a\|b\)/libmp3splt#\1#g' {} +
+  cd "${srcdir}/${_pkgsrc}"
+  patch -Np1 -i "../${pkgbase}_fix_informations_spelling.patch"
+  patch -Np2 -i "../${pkgbase}_fix_ogg_and_vorbis_state_structs_init.patch"
+  patch -Np2 -i "../${pkgbase}_fix_snprintf_overflow.patch"
+  patch -Np2 -i "../${pkgbase}_fix_flac_slience_trimming.patch"
 
-  cd "${_pkgsrc}"
-  for _patch in "${srcdir}/${pkgbase}"*".patch"; do
-    patch -p1 -i "${_patch}"
-  done
-
-  sed -i 's/FreeSans\.ttf//g' "doc/Doxyfile_api.in"
-  sed -i 's/FreeSans\.ttf//g' "doc/Doxyfile_all.in"
+  cd "doc"
+  sed -i 's/FreeSans\.ttf//g' "Doxyfile_api.in"
+  sed -i 's/FreeSans\.ttf//g' "Doxyfile_all.in"
 }
 
 build() {
@@ -39,6 +43,7 @@ build() {
   ./autogen.sh
   ./configure \
     --prefix='/usr'
+  sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool # Fix overlinking
   make
 }
 
@@ -48,9 +53,9 @@ build() {
 # }
 
 package_libmp3splt() { 
-  arch=('x86_64')
   depends=('flac>=1.2.1' 'glibc' 'libid3tag' 'libmad' 'libogg' 'libltdl'
            'libvorbis' 'pcre')
+  provides=("${pkgbase}.so" "libsplt_"{mp3,ogg,flac}".so")
 
   cd "${srcdir}/${_pkgsrc}"
   make DESTDIR="${pkgdir}" install
@@ -63,12 +68,13 @@ package_libmp3splt() {
   install -Dm644 "README"    "${pkgdir}/usr/share/doc/${pkgbase}/README"
   # install -Dm644 "NEWS"      "${pkgdir}/usr/share/doc/${pkgbase}/NEWS"
   install -Dm644 "ChangeLog" "${pkgdir}/usr/share/doc/${pkgbase}/CHANGELOG"
+  install -Dm644 "AUTHORS"   "${pkgdir}/usr/share/doc/${pkgbase}/AUTHORS"
   install -Dm644 "COPYING"   "${pkgdir}/usr/share/licenses/${pkgbase}/COPYING"
-  install -Dm644 "AUTHORS"   "${pkgdir}/usr/share/licenses/${pkgbase}/AUTHORS"
 }
 
 package_libmp3splt-docs() {
-  pkgdesc="HTML documentation for ${pkgbase}"
+  pkgdesc+=" (documentation)"
+  arch=('any')
 
   cd "${srcdir}/${_pkgsrc}/doc"
   make DESTDIR="${pkgdir}" install
