@@ -1,4 +1,4 @@
-# Maintainer: gao <gao66@sdf.org>
+# Maintainer: gao <gao66 at sdf dot org>
 
 _java=21
 _pkgname=dragonwell
