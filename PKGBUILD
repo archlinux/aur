@@ -11,7 +11,7 @@ url="https://developer.garmin.com/connect-iq/sdk/"
 license=('MIT')
 source=(https://developer.garmin.com/downloads/connect-iq/sdk-manager/connectiq-sdk-manager-linux.zip)
 sha256sums=('83ae7bd762e124d4b686f40ef57a5cd2cab5b6a01c05177eb6ca5d25f309094f')
-depends=('webkit2gtk>=2.46.3')
+depends=('webkit2gtk')
 package() {
     cd "$srcdir"
 
