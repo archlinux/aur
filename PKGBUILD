@@ -13,7 +13,7 @@
 pkgdesc='A fancy custom distribution of Valves Proton with various patches'
 pkgname=proton-ge-custom-rtsp-bin
 pkgver=GE_Proton9_20_rtsp15
-pkgrel=1
+pkgrel=2
 epoch=1
 arch=('x86_64')
 license=('BSD' 'LGPL' 'zlib' 'MIT' 'MPL' 'custom')
@@ -74,7 +74,7 @@ backup=("${_protoncfg}")
 
 ## sources
 url='https://github.com/SpookySkeletons/proton-ge-rtsp'
-source=("${_pkgver}_${pkgrel}.tar.gz::${url}/releases/download/${_pkgver}-${pkgrel}/${_pkgver}.tar.gz"
+source=("${_pkgver}_${pkgrel}.tar.gz::${url}/releases/download/${_pkgver}-${epoch}/${_pkgver}.tar.gz"
   'user_settings.py'
   'launcher.sh'
   'pam_limits.conf')
@@ -85,8 +85,8 @@ sha512sums=('f10ec1ec566c3a073ee58bd3b70c069187b799a76738930ec328a42c9b22a60cb42
 
 build() {
   ## patches
-sed -i "s|_proton=echo|_proton=/${_protondir}/proton|" "${srcdir}"/launcher.sh
-  sed -i -r 's|"GE-Proton.*"|"Proton-GE"|' "${_srcdir}"/compatibilitytool.vdf
+  sed -i "s|_proton=echo|_proton=/${_protondir}/proton|" "${srcdir}"/launcher.sh
+  sed -i -r 's|"GE-Proton.*"|"Proton-GE-RTSP"|' "${_srcdir}"/compatibilitytool.vdf
   ## fixes from namcap inspection
   strip --preserve-dates --strip-unneeded "${_srcdir}"/files/bin/wine*
 }

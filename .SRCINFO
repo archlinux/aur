@@ -1,7 +1,7 @@
 pkgbase = proton-ge-custom-rtsp-bin
 	pkgdesc = A fancy custom distribution of Valves Proton with various patches
 	pkgver = GE_Proton9_20_rtsp15
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://github.com/SpookySkeletons/proton-ge-rtsp
 	install = pleasenote.install
@@ -47,7 +47,7 @@ pkgbase = proton-ge-custom-rtsp-bin
 	options = !strip
 	options = emptydirs
 	backup = usr/share/steam/compatibilitytools.d/proton-ge-custom-rtsp/user_settings.py
-	source = GE-Proton9-20-rtsp15_1.tar.gz::https://github.com/SpookySkeletons/proton-ge-rtsp/releases/download/GE-Proton9-20-rtsp15-1/GE-Proton9-20-rtsp15.tar.gz
+	source = GE-Proton9-20-rtsp15_2.tar.gz::https://github.com/SpookySkeletons/proton-ge-rtsp/releases/download/GE-Proton9-20-rtsp15-1/GE-Proton9-20-rtsp15.tar.gz
 	source = user_settings.py
 	source = launcher.sh
 	source = pam_limits.conf
