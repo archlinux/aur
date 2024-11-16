@@ -1,11 +1,11 @@
 # Maintainer: Li Hua <lihua@email.com>
 pkgname=hybridfilexfer-git
 pkgver=r27.89241d9
-pkgrel=2
+pkgrel=4
 pkgdesc="多轨快传，同时使用USB和5G与2.4GWIFI等通道传输文件到电脑，榨干手机IO！ "
 arch=('any')
 url='https://github.com/weixiansen574/HybridFileXfer'
-license=(GPL-3.0-only)
+license=(GPL-3.0-or-later)
 depends=('jdk21-openjdk' 'android-tools')
 makedepends=('git')
 provides=("${pkgname%-git}")
