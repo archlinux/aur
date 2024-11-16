@@ -1,6 +1,6 @@
 # Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 # Contributor: TransistorLogic <liuhongwu2003@outlook.com>
-# Maintainer: Sving1024 <piano5432@outlook.com>
+# Maintainer: Sving1024 <sving1024@outlook.com>
 
 # Author: Luogu Development Team <k@luogu.org> (https://github.com/luogu-dev)
 # The copyright of this library belongs to Luogu (https://www.luogu.com.cn/).
