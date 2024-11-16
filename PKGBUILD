@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=HGNChelper
-_pkgver=0.8.14
+_pkgver=0.8.15
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -19,8 +19,8 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('b5f3acc9de7700bc7c3a95b2d0023286')
-b2sums=('03a2d06e8c79519dc73dc295beb252d18fdd8bbe9dee201bcc43fcf64e5f3a7fdd1ea027d3c2595ccc20fd00fb13bb96a3ccf78bd93c9a490f01797b8fe9404c')
+md5sums=('ca00878c677895623099319039684286')
+b2sums=('8946541b990367cbcd57130b2c3a871b4268ab3c4fcf673dd22a0b3feb27b2240c9d44969ac5e817d7a1b29279a39d7b16a367f73932c5b3c214937f43ba2753')
 
 build() {
   mkdir build
