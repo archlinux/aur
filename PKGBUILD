@@ -38,6 +38,7 @@ prepare() {
 }
 
 build() {
+    export NODE_OPTIONS=--openssl-legacy-provider
     cd "${srcdir}/YesPlayMusic-${pkgver}"
     # 构建项目
     npm run build
