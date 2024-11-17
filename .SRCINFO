@@ -1,0 +1,21 @@
+pkgbase = cadet-process
+	pkgdesc = Modeling and simulation framework for biotechnology processes – python frontend
+	pkgver = 0.9.1
+	pkgrel = 1
+	url = https://cadet-process.readthedocs.io/en/latest/
+	arch = any
+	license = GPL-3.0-only
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	source = git+https://github.com/fau-advanced-separations/CADET-Process#tag=v0.9.1
+	sha256sums = fd2b6f8510ae0df0487ae5bc700812f2643a1cac2dfcad29597371c760d32ebc
+
+pkgname = cadet-process
+	depends = python
+	depends = cadet-core
+	depends = python-numpy
+	depends = python-psutil
+	depends = python-pytest
