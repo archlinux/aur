@@ -2,12 +2,12 @@
 # Contributor: Colin Unger <mastakata 3 at yahoo dot com>
 
 _pyname=pyvex
-_srcname=python-$_pyname
-pkgname=$_srcname-git
+_basename=python-$_pyname
+pkgname=$_basename-git
 pkgdesc="Python bindings for Valgrind's VEX IR"
 url="https://github.com/angr/pyvex"
 pkgver=9.2.129.dev0.r1140.10d953f
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 depends=(
     'glibc'
@@ -25,18 +25,11 @@ makedepends=(
     'python-wheel'
 )
 checkdepends=('python-pytest')
-# angr projects all have the same version and mutually support only that
-# version. So we provide both, the -git package, for other angr related -git
-# packages and the normal package, for packages not requiring a specific version.
-provides=($_srcname)
-conflicts=("${_srcname}")
+provides=($_basename)
+conflicts=($_basename)
 license=('BSD-2-Clause')
 source=("$pkgname::git+https://github.com/angr/pyvex.git")
 b2sums=('SKIP')
-
-prepare() {
-    git -C $srcdir/$pkgname clean -dfx
-}
 
 pkgver() {
     cd $srcdir/$pkgname
@@ -49,13 +42,15 @@ pkgver() {
 }
 
 prepare() {
+    git -C $srcdir/$pkgname clean -dfx
+
     cd $srcdir/$pkgname
     git submodule update --init --filter=tree:0 --recursive
 }
 
 check() {
     cd $srcdir/$pkgname
-    PYTHONPATH=$PWD pytest
+    PYTHONPATH=build/lib pytest
 }
 
 build() {
@@ -66,6 +61,8 @@ build() {
 }
 
 package() {
+    provides+=($_basename=${pkgver%\.r[0-9]*})
+
     cd $srcdir/$pkgname
 
     python -m installer --destdir="$pkgdir" dist/*.whl
