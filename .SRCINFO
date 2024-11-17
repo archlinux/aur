@@ -8,6 +8,7 @@ pkgbase = python-pdf2bib
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
+	makedepends = curl
 	depends = python
 	depends = python-bibtexparser
 	depends = python-pyperclip
