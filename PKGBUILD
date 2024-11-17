@@ -3,7 +3,7 @@
 
 pkgname=vscodium-translucent
 # Make sure the pkgver matches the git tags in vscodium and vscode git repo's!
-pkgver=1.95.2.24313
+pkgver=1.95.3.24321
 pkgrel=1
 pkgdesc="Free/Libre Open Source Software Binaries of VSCode with the translucent patch applied (git build from latest release)."
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -49,7 +49,7 @@ source=(
 sha256sums=('3a5bc109974fcf408855c13965f6d6be0997655c5b359de0bfd19a678c00844e'
             'ef5759114cb0bada639bf89b778679bc7cf4d829151dc5fbf95eb33df4addcd6'
             '6eef345b65bf2679c928c763529540435ab9c6e1836917319810a7a2d484ae1b'
-            'a2b80f97892af82abf7c92d75f53cdb7772b45fd0848d1831caf250362d7e20d'
+            '427edb655f9fe4398cd41493e48492e3fd112683ad0d6a2a31decbc869813bbf'
 			'2aa74b7477edb3517d7afb1294aae96ee3341e9d85ce0872e2e509ff8a70c02a')
 provides=(
     'codium'
