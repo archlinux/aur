@@ -1,10 +1,10 @@
 # Maintainer: WorMzy Tykashi <wormzy.tykashi@gmail.com>
 
 pkgname=chiaki-ng
-pkgver=1.9.0
-_commit="cb979c551f8240094fd45ba7fd680e3b7ce38e37"
-pkgrel=2
-pkgdesc="Unofficial PlayStation 4 remote play client"
+pkgver=1.9.1
+_commit="4159e47df0d7d6143e3608e88935b1a19eb3c371"
+pkgrel=1
+pkgdesc="Free and Open Source PlayStation Remote Play Client"
 arch=(i686 x86_64)
 url="https://streetpea.github.io/chiaki-ng/"
 license=('LicenseRef-AGPL-3.0-only-OpenSSL')
