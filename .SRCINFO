@@ -1,9 +1,9 @@
 pkgbase = ftxui
 	pkgdesc = A C++ Functional Terminal User Interface
 	pkgver = 5.0.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/ArthurSonzogni/FTXUI
-	arch = any
+	arch = x86_64
 	license = MIT
 	makedepends = benchmark>=1.8.2
 	makedepends = cmake>=3.12
@@ -11,22 +11,21 @@ pkgbase = ftxui
 	makedepends = graphviz
 	makedepends = gtest>=1.10
 	source = FTXUI-5.0.0.tar.gz::https://github.com/ArthurSonzogni/FTXUI/archive/v5.0.0.tar.gz
-	source = ftxui_make_examples_installable.patch::https://sources.debian.org/data/main/f/ftxui/5.0.0-2/debian/patches/make-examples-installable.diff
 	source = ftxui_build_docs_target_all.patch::https://sources.debian.org/data/main/f/ftxui/5.0.0-2/debian/patches/build-docs-with-library.diff
+	source = ftxui_make_examples_installable.patch::https://sources.debian.org/data/main/f/ftxui/5.0.0-2/debian/patches/make-examples-installable.diff
 	source = ftxui_remove_non-existent_include_path.patch::https://sources.debian.org/data/main/f/ftxui/5.0.0-2/debian/patches/remove-non-existent-include-path.diff
 	b2sums = aaf6060641c3f63814002fcba3c17ad7a0d3d0681bc2f31cec8e666b25e35c55a4f0fdd9e2855ea91e9e546edcc2cad2c172e8a06dbc55ed7caf9ce9178b2302
-	b2sums = c7e9e43b5d9b7f3ad825a150afa3976743f4d22fb0a443da8ed636b2323dc70137ac471ec24127dfbfa1556646967687cb9890e893c9aa3315ff7c365715f596
 	b2sums = 6e06886a3d23764715d3c6e63d94a32c4474dc83387954c622380d268e4a63416b78258ad94da69863160bb0fc0ab9822848177f5a1df0239436ea142b76bbf0
+	b2sums = c7e9e43b5d9b7f3ad825a150afa3976743f4d22fb0a443da8ed636b2323dc70137ac471ec24127dfbfa1556646967687cb9890e893c9aa3315ff7c365715f596
 	b2sums = 09ff76b33069c1e3670331eac32a09487974e5230b41f62005661a1333080eb4ed71abf70a00ab65d0412005948744e60d6581d402cae3336b93f137d42b0167
 
 pkgname = ftxui
-	arch = x86_64
 
 pkgname = ftxui-docs
 	pkgdesc = A C++ Functional Terminal User Interface (documentation)
+	arch = any
 
 pkgname = ftxui-examples
 	pkgdesc = A C++ Functional Terminal User Interface (examples)
-	arch = x86_64
 	depends = gcc-libs
 	depends = glibc
