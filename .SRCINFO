@@ -1,0 +1,13 @@
+pkgbase = plymouth-theme-nekopara-chocola-git
+	pkgdesc = Plymouth theme for Chocola Boot animation, NEKOPARA
+	pkgver = r2.9f19c0c
+	pkgrel = 1
+	url = https://github.com/AMDRadeonRin/plymouth-theme-nekopara-chocola
+	arch = any
+	license = LicenseRef
+	makedepends = git
+	depends = plymouth
+	source = git+https://github.com/AMDRadeonRin/plymouth-theme-nekopara-chocola.git
+	sha256sums = SKIP
+
+pkgname = plymouth-theme-nekopara-chocola-git
