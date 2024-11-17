@@ -4,9 +4,9 @@ pkgname=slpct
 
 pkgver=1.32.1
 
-pkgrel=1
+pkgrel=2
 
-pkgdesc="redattore atti gratuito per il Processo Civile Telematico"
+pkgdesc="free tool for pct  - redattore atti gratuito per il Processo Civile Telematico"
 
 arch=('any')
 
@@ -21,7 +21,7 @@ depends=('java-runtime' 'jdk8-openjdk' 'bash' 'xdg-utils' 'git' 'base-devel')
 
 source=('git+https://github.com/Marx79/Slpct.git')
 
-sha256sums=('SKIP')
+sha256sums=('e9a5411c6ba316bd57a48dd34c1e37a35aea984ff79bf2d9ba113195daa4dea1')
 
 
 
