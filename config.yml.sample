@@ -1,0 +1,17 @@
+#codai requires a config.yml file in the root of your working directory or using environment 
+#variables to set below configs globally as a configuration.
+#The config file should be like following example base on your AI provider:
+
+# https://github.com/meysamhadeli/codai
+
+ai_provider_config:
+  provider_name: "openai"     # openai | ollama | azure-openai
+  base_url: "https://api.openai.com"     # "http://localhost:11434" | "https://test,openai.azure.com"
+  chat_completion_model: "gpt-4o"
+  embedding_model: "text-embedding-3-small"     #(Optional, If you want use RAG.)
+  chat_api_version: "2024-04-01-preview"     #(Optional, If your AI provider like AzureOpenai has chat api version.)
+  embeddings_api_version: "2024-01-01-preview"     #(Optional, If your AI provider like AzureOpenai has embeddings api version.)
+  temperature: 0.2
+  threshold: 0.3     #(Optional, If you want use RAG.)
+theme: "dracula"
+rag: true     #(Optional, If you want use RAG.)

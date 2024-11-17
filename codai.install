@@ -1,0 +1,22 @@
+## Setting Up Environment Variables for Codai
+post_install() {
+    note() {
+        all_off="$(tput sgr0)"
+        bold="${all_off}$(tput bold)"
+        blue="${bold}$(tput setaf 4)"
+        yellow="${bold}$(tput setaf 3)"
+
+        echo "${blue}==>${yellow} NOTE:${bold} ${1}${all_off}"
+    }
+
+    note '1. **Create the configuration file**:'
+    note '   If this is the first time running `codai`, the wrapper script will automatically create a configuration file from the sample. If you want to manually set it up, create the following directory and file:'
+    note '   mkdir -p ~/.config/codai'
+    note '   cp /usr/share/codai/codai.env.sample ~/.config/codai/codai.env'
+    note '** populate the environment variables'
+    note '2. **Create a config.yml file in the root of your project **'
+    note '   cp /usr/share/codai/config.yml.sample /path/to/your/project'
+    note '** make appropriate changes to the config '
+    note 'see https://github.com/meysamhadeli/codai for updated instructions'
+
+}
