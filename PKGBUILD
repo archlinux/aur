@@ -1,6 +1,6 @@
 # Maintainer: Gergő Sályi <salyigergo94@gmail.com>
 pkgname=multibg-sway
-pkgver=0.1.9
+pkgver=0.1.10
 pkgrel=1
 pkgdesc='Set a different wallpaper for the background of each Sway workspace'
 arch=('x86_64' 'i686' 'pentium4' 'armv7h' 'aarch64')
@@ -10,15 +10,18 @@ depends=('gcc-libs' 'glibc')
 makedepends=('cargo')
 optdepends=('sway: window manager to set the wallpapers with')
 source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate")
-sha256sums=('17d904c958303e69978e499d8f907794cb69086f77cc11953b19d03280c5551a')
+sha256sums=('2b087124ea07635e53d411e707f7d22f73c69b40f3986a42c841f9cc19fc2d51')
 
 prepare() {
     cd "$pkgname-$pkgver"
-    cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+    export RUSTUP_TOOLCHAIN=stable
+    cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
     cd "$pkgname-$pkgver"
+    export RUSTUP_TOOLCHAIN=stable
+    export CARGO_TARGET_DIR=target
     cargo build --frozen --release
 }
 

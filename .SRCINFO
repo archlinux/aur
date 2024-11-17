@@ -1,6 +1,6 @@
 pkgbase = multibg-sway
 	pkgdesc = Set a different wallpaper for the background of each Sway workspace
-	pkgver = 0.1.9
+	pkgver = 0.1.10
 	pkgrel = 1
 	url = https://github.com/gergo-salyi/multibg-sway
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = multibg-sway
 	depends = gcc-libs
 	depends = glibc
 	optdepends = sway: window manager to set the wallpapers with
-	source = multibg-sway-0.1.9.tar.gz::https://static.crates.io/crates/multibg-sway/multibg-sway-0.1.9.crate
-	sha256sums = 17d904c958303e69978e499d8f907794cb69086f77cc11953b19d03280c5551a
+	source = multibg-sway-0.1.10.tar.gz::https://static.crates.io/crates/multibg-sway/multibg-sway-0.1.10.crate
+	sha256sums = 2b087124ea07635e53d411e707f7d22f73c69b40f3986a42c841f9cc19fc2d51
 
 pkgname = multibg-sway
