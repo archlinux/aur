@@ -1,0 +1,17 @@
+pkgbase = nesasm-clusterm-git
+	pkgdesc = ClusterM's fork of Tim Hentenaar's fork of Bob Rost's fork of MagicKit's nesasm 2.51.
+	pkgver = 3.6.084c0cd
+	pkgrel = 1
+	url = https://github.com/ClusterM/nesasm
+	arch = x86
+	arch = x86_64
+	license = Unknown
+	makedepends = gcc
+	makedepends = make
+	depends = glibc
+	conflicts = nesasm-git
+	options = !emptydirs
+	source = nesasm::git+https://github.com/ClusterM/nesasm
+	md5sums = SKIP
+
+pkgname = nesasm-clusterm-git
