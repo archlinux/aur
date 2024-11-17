@@ -2,13 +2,12 @@
 # Maintainer: Manuel Wiesinger <m {you know what belongs here} mmap {and here} at>
 
 _pyname=claripy
-_srcname=python-$_pyname
-pkgname=$_srcname-git
+_basename=python-$_pyname
+pkgname=$_basename-git
 pkgdesc="An abstraction layer for constraint solvers."
 url="https://github.com/angr/claripy"
 pkgver=9.2.129.dev0.r2411.c7d8d827
-_devver="${pkgver%\.r[0-9]*}"
-pkgrel=1
+pkgrel=2
 arch=('any')
 depends=(
     'python-cachetools'
@@ -27,11 +26,8 @@ makedepends=(
     'python-wheel'
 )
 checkdepends=('python-pytest')
-# angr projects all have the same version and mutually support only that
-# version. So we provide both, the -git package, for other angr related -git
-# packages and the normal package, for packages not requiring a specific version.
-provides=($_srcname $pkgname)
-conflicts=($_srcname)
+provides=($pkgname $_basename)
+conflicts=($_basename)
 license=('BSD-2-Clause')
 source=("$pkgname::git+https://github.com/angr/claripy.git#branch=master")
 b2sums=('SKIP')
@@ -52,7 +48,7 @@ pkgver() {
 
 check() {
     cd $srcdir/$pkgname
-    PYTHONPATH=$PWD pytest
+    PYTHONPATH=build/lib pytest
 }
 
 build() {
@@ -62,6 +58,8 @@ build() {
 }
 
 package() {
+    provides+=($_basename=${pkgver%\.r[0-9]*})
+
     cd $srcdir/$pkgname
     python -m installer --destdir="$pkgdir" dist/*.whl
 
