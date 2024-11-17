@@ -3,7 +3,7 @@
 # Contributor: Andrey Vlasovskikh <andrey.vlasovskikh@gmail.com>
 
 pkgname="vim-command-t"
-pkgver=5.0.3
+pkgver=5.0.5
 pkgrel=1
 pkgdesc="an extremely fast, intuitive mechanism for opening files and buffers with a minimal number of keystrokes"
 arch=("i686" "x86_64")
@@ -14,7 +14,7 @@ depends=("vim" "ruby")
 install="vimdoc.install"
 
 source=("https://github.com/wincent/Command-T/archive/$pkgver.tar.gz")
-sha256sums=('33ed18497ed117186b727a2608e2c4b96d312c7581ec7175b869f953ea17bfc8')
+sha256sums=('5c63d5b427b09fbae43ed11688d22ec8c4f51a945d19556bba9951c8e74893f6')
 
 build() {
   cd "$srcdir/command-t-$pkgver/ruby/command-t/ext/command-t"
