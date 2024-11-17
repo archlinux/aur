@@ -1,0 +1,15 @@
+pkgbase = python-kthread
+	pkgdesc = Killable threads in Python!
+	pkgver = 0.2.3
+	pkgrel = 1
+	url = https://github.com/munshigroup/kthread
+	arch = any
+	license = custom:MIT License
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	source = https://files.pythonhosted.org/packages/18/9b/aa1b48c3cf6e1a914ee5eee1fed77cd7217fb0a35c07c345da4ec5215cae/kthread-0.2.3.tar.gz
+	sha256sums = 90e194e6a7ff903040c4133d3ea9037c908c4296bf5f582c7fdcf6325a04f9b4
+
+pkgname = python-kthread
