@@ -2,7 +2,7 @@
 
 pkgname="vivify"
 pkgver="0.6.2"
-pkgrel=2
+pkgrel=3
 pkgdesc="Markdown preview tool which can be used standalone or plug into an editor like (Neo)Vim"
 arch=("x86_64")
 url="https://github.com/jannis-baum/vivify"
@@ -31,7 +31,11 @@ build() {
         # Using system node results in a segfaulting binary
         # As a workaround, use latest node from nvm
         _ensure_local_nvm
-        nvm install node
+
+        # v23.1.0 instead of v23.2.0
+        # Workaround for:
+        # https://github.com/nodejs/node/issues/55826
+        nvm install 23.1.0
 
         yarn install
         VIV_VERSION="v${pkgver}-${pkgrel}-aur" make linux

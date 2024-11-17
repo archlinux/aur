@@ -1,7 +1,7 @@
 pkgbase = vivify
 	pkgdesc = Markdown preview tool which can be used standalone or plug into an editor like (Neo)Vim
 	pkgver = 0.6.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/jannis-baum/vivify
 	arch = x86_64
 	license = GPL-3.0-or-later
