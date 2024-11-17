@@ -1,14 +1,12 @@
 pkgbase = codai
 	pkgdesc = AI code assistant that helps developers through a session CLI
 	pkgver = 1.7.1
-	pkgrel = 1
-	url = https://github.com/meysamhadeli/codai@1.7.1
+	pkgrel = 2
+	url = https://github.com/meysamhadeli/codai
 	install = codai.install
 	arch = x86_64
 	license = Apache-2.0
-	makedepends = git
-	makedepends = rust
-	makedepends = cargo
+	makedepends = go
 	options = !debug
 	source = codai-1.7.1.tar.gz::https://github.com/meysamhadeli/codai/archive/refs/tags/v1.7.1.tar.gz
 	source = codai-wrapper.sh
