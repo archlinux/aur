@@ -1,0 +1,4 @@
+[hide-client]
+source = "git"
+git = "https://github.com/eventure/hide.client.linux.git"
+prefix = "v"
