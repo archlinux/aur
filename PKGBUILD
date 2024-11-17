@@ -1,7 +1,7 @@
 # Maintainer: bbaa <bbaa@bbaa.fun>
 _pkgname=i915-sriov-dkms
 pkgname=i915-sriov-dkms-bbaa-git
-pkgver=2024.10.07
+pkgver=2024.11.16
 pkgrel=1
 pkgdesc="Linux i915 module patched with SR-IOV support"
 arch=('x86_64')
@@ -9,11 +9,12 @@ url="https://github.com/bbaa-bbaa/i915-sriov-dkms"
 license=('GPL-2.0-only')
 depends=('dkms')
 makedepends=('git')
+backup=("etc/tmpfiles.d/i915-set-sriov-numvfs.conf")
 conflicts=("${_pkgname}" "${_pkgname}-git")
 install=${_pkgname}.install
 source=("git+https://github.com/bbaa-bbaa/i915-sriov-dkms.git" "i915-set-sriov-numvfs.conf")
 sha256sums=('SKIP'
-            'b71ffb09e1345542e0137a8895ccca256c41f8e401964d23b08b337b882a811a')
+            'e85e4d4c97cb1f6e825c47ea5e3a9c18f10761714307985f67b58c8e55a1e2c2')
 
 package() {
   cd "$srcdir/$_pkgname"
@@ -25,7 +26,7 @@ package() {
   cp -rv ${srcdir}/$_pkgname/* "${pkgdir}/usr/src/${_pkgname}-${pkgver}"
 
   cd "$srcdir"
-  install -Dm644 i915-set-sriov-numvfs.conf "${pkgdir}/usr/lib/tmpfiles.d/i915-set-sriov-numvfs.conf"
+  install -Dm644 i915-set-sriov-numvfs.conf "${pkgdir}/etc/tmpfiles.d/i915-set-sriov-numvfs.conf"
 }
 
 pkgver() {
