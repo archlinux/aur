@@ -1,28 +1,28 @@
 pkgname=python-wyoming-piper
 _pkgname=wyoming-piper
 pkgdesc="Wyoming Server for Piper"
-pkgver=1.5.0
+pkgver=1.5.2
 pkgrel=1
 arch=(any)
 url="https://github.com/rhasspy/wyoming-piper"
 license=('MIT')
 depends=(python python-wyoming piper-tts)
-makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools')
+makedepends=('git' 'python-build' 'python-installer' 'python-wheel' 'python-setuptools')
 backup=(etc/conf.d/wyoming-piper)
-source=("$url/archive/refs/tags/v$pkgver.tar.gz"
+source=("git+https://github.com/rhasspy/wyoming-piper.git#tag=v${pkgver}"
         wyoming-piper.conf
         wyoming-piper.service)
-sha256sums=('7e3c73ba1ee582109c49f55762f9fcf01984bc7918873a6ffe44c62dcc530ec7'
-            'dc68021f9b7cb96e85195e9925229cc49954c18917292e3e881f270f5f2623ee'
-            '0c8852bb4380ef9b246718de2a5e9a78a9c56cd6598c3f3975c61cfa544a3e52')
+b2sums=('06df8a4acd0b61173c58b66426e9318ae24672de2bfc17a905235331eeb7bc652742b2388323c93f6df4b1b7cae307aae0c319e5f713e1b9e893f5e9fd54016e'
+        'd81867797c195e91d22cf0d8a93d63c07ecfa2f7bffe2fc67ccb00c988e6184deba12317b2cf5f049478fbb884e2f73a42072528629cf903f1bfef8cfcd02ac9'
+        '705dc0c29558e10a3d0bc035c1cc5eb913e87c03210c9d3d1f6cc418d2bad03c91ac53b7ed178f07ae8c0bd9054eb84f3848c2232df04cd6890180cfa1c46665')
 
 build() {
-  cd $_pkgname-$pkgver
+  cd $_pkgname
   python -m build --wheel --no-isolation
 }
 
 package() {
-  cd $_pkgname-$pkgver
+  cd $_pkgname
   python -m installer --destdir="$pkgdir" dist/*.whl
 
   install -Dm644 ../wyoming-piper.service -t "$pkgdir/usr/lib/systemd/system"
