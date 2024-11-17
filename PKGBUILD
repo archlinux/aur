@@ -2,12 +2,12 @@
 
 pkgname=kf6-servicemenus-imagetools
 pkgver=7
-pkgrel=1
+pkgrel=2
 pkgdesc='KDE service menus for image file processing'
 arch=('any')
 url='https://github.com/marco-mania/kf6-servicemenus-imagetools'
 license=('GPL')
-depends=('dolphin' 'kdialog' 'imagemagick' 'perl-image-exiftool' 'optipng' 'pngquant' 'libjxl')
+depends=('dolphin' 'kdialog' 'imagemagick' 'perl-image-exiftool' 'optipng' 'pngquant' 'libjxl' 'jpegoptim')
 conflicts=("kde-servicemenus-imagetools" "kf5-servicemenus-imagetools")
 replaces=("kde-servicemenus-imagetools" "kf5-servicemenus-imagetools")
 
