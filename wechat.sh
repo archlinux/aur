@@ -48,7 +48,7 @@ function detectXauth() {
 	if [ ! ${XAUTHORITY} ]; then
 		echo '[Warn] No ${XAUTHORITY} detected! Do you have any X server running?'
 		export XAUTHORITYpath="/$(uuidgen)/$(uuidgen)"
-		xhost +
+		xhost +localhost
 	else
 		export XAUTHORITYpath="${XAUTHORITY}"
 	fi
@@ -119,7 +119,7 @@ function execApp() {
 		LD_PRELOAD=""
 	fi
 	if [[ ${wechatXserverPatch} = 1 ]]; then
-		xhost +
+		xhost +localhost
 	fi
 	if [[ $(fc-match emoji) =~ Twemoji ]]; then
 		echo "[Info] Emoji already set to Twemoji"
@@ -146,7 +146,7 @@ function execApp() {
 	if [ ${XDG_SESSION_TYPE} = wayland ]; then
 		echo "[Info] Skipping Xhost operation"
 	else
-		xhost + #Unlock the XServer for X11 users
+		xhost +localhost #Unlock the XServer for X11 users
 	fi
 	if [ ! ${unitName} ]; then
 		unitName="wechat"
