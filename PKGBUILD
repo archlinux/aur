@@ -3,7 +3,7 @@
 _pkgname="app2unit"
 pkgname="$_pkgname-git"
 pkgver=r5.7a88a4a
-pkgrel=1
+pkgrel=2
 pkgdesc="Utility to launch commands as systemd user units"
 url="https://github.com/Vladimir-csp/app2unit"
 license=('GPL-3.0-only')
@@ -17,6 +17,9 @@ depends=(
 makedepends=(
   git
 )
+
+provides=("$_pkgname")
+conflicts=("$_pkgname")
 
 _pkgsrc="$_pkgname"
 source=("$_pkgsrc"::"git+$url.git")

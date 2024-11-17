@@ -1,7 +1,7 @@
 pkgbase = app2unit-git
 	pkgdesc = Utility to launch commands as systemd user units
 	pkgver = r5.7a88a4a
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Vladimir-csp/app2unit
 	arch = any
 	license = GPL-3.0-only
@@ -9,6 +9,8 @@ pkgbase = app2unit-git
 	depends = libnotify
 	depends = sh
 	depends = systemd
+	provides = app2unit
+	conflicts = app2unit
 	source = app2unit::git+https://github.com/Vladimir-csp/app2unit.git
 	sha256sums = SKIP
 
