@@ -1,10 +1,10 @@
 [Desktop Entry]
-Name=ARM GC
-Name[ru_RU]=АРМ ГС
-Comment=ARM GC | SREDA
-Comment[ru_RU]=АРМ ГС | СРЕДА
-Exec=/opt/armgs/sreda %U
-Icon=armgs
+Name=SREDA
+Name[ru_RU]=СРЕДА
+Comment=SREDA
+Comment[ru_RU]=СРЕДА
+Exec=/opt/sreda/sreda %U
+Icon=sreda
 Terminal=false
 Type=Application
 Categories=Network;Chat;InstantMessaging;
