@@ -393,7 +393,6 @@ function dbusProxy() {
 			"${DBUS_SESSION_BUS_ADDRESS}" \
 			"${busDir}/bus" \
 			--filter \
-			--log \
 			--own=org.kde.* \
 			--see=org.kde.kwin \
 			--talk=org.freedesktop.portal.Camera \
