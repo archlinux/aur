@@ -2,7 +2,7 @@
 
 pkgname=python-traits
 pkgver=6.4.1
-pkgrel=4
+pkgrel=5
 pkgdesc="Explicitly typed attributes for Python"
 arch=('x86_64')
 url="https://github.com/enthought/traits"
@@ -17,6 +17,7 @@ sha256sums=('974b682d112dfb531136d1185fe8d5f05ffd9e54a76b6dcd9715de85655ee30c')
 build() {
   cd traits-$pkgver
 
+  CFLAGS+=" -Wno-implicit-function-declaration" \
   python -m build --wheel --no-isolation
 }
 

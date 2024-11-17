@@ -1,7 +1,7 @@
 pkgbase = python-traits
 	pkgdesc = Explicitly typed attributes for Python
 	pkgver = 6.4.1
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/enthought/traits
 	arch = x86_64
 	license = BSD
