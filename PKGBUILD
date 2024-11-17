@@ -10,6 +10,7 @@ license=('mit')
 depends=('cairo' 'desktop-file-utils' 'gdk-pixbuf2' 'glib2' 'gtk3' 'hicolor-icon-theme' 'libsoup' 'pango' 'webkit2gtk')
 makedepends=('curl' 'jq')
 options=('!strip' '!emptydirs')
+provides=('project-graph')
 conflicts=('project-graph' 'project-graph-git')
 package() {
   GITHUB_TOKEN="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"
