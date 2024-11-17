@@ -2,14 +2,14 @@
 
 pkgname=codai
 pkgver=1.7.1
-pkgrel=1
+pkgrel=2
 pkgdesc="AI code assistant that helps developers through a session CLI"
 arch=("x86_64")
 url="https://github.com/meysamhadeli/codai"
 license=("Apache-2.0")
 install=codai.install
 options=(!debug)
-makedepends=("git" "rust" "cargo")
+makedepends=("go")
 source=(
   "$pkgname-$pkgver.tar.gz::https://github.com/meysamhadeli/codai/archive/refs/tags/v${pkgver}.tar.gz"
   "codai-wrapper.sh"
@@ -17,7 +17,6 @@ source=(
   "config.yml.sample"
   "codai.install"
 )
-url="https://github.com/meysamhadeli/codai@${pkgver}"
 sha256sums=('1e73fe8072fcdabb4a683f8182473d190082ff560014f9baafdcb1a00a5601e2'
             '678cfc4e7653b954d33a64118591f8f37568c6b801d541138b7f315cef19d313'
             '0045a2a6c2dfe2b2931d7e3009f32a16fcb6ec55fb6cc46fc98f03fe64a0a26b'
