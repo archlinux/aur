@@ -420,16 +420,13 @@ function dbusProxy() {
 			--call=org.freedesktop.portal.OpenURI.OpenURI=* \
 			--talk=org.freedesktop.portal.OpenURI.OpenFile \
 			--call=org.freedesktop.portal.OpenURI.OpenFile=* \
-			--talk=org.freedesktop.portal.Settings \
-			--call=org.freedesktop.portal.Settings=* \
-			--see=org.freedesktop.DBus.Properties \
-			--talk=org.freedesktop.portal.Settings.* \
-			--call=org.freedesktop.portal.Settings.*=* \
-			--talk=org.freedesktop.impl.portal.Settings \
-			--call=org.freedesktop.impl.portal.Settings=* \
-			--talk=org.freedesktop.portal.Request \
-			--talk=org.freedesktop.portal.* \
-			--call=org.freedesktop.portal.*=* \
+			--talk=org.freedesktop.portal.Fcitx \
+			--call=org.freedesktop.portal.Fcitx=* \
+			--talk=org.freedesktop.portal.Fcitx.* \
+			--call=org.freedesktop.portal.Fcitx.*=* \
+			--talk=org.fcitx.Fcitx.InputMethod1.CreateInputContext \
+			--call=org.fcitx.Fcitx.InputMethod1.CreateInputContext=* \
+			--call=*=/org/freedesktop/portal/inputcontext/* \
 			--talk=org.fcitx.Fcitx.InputContext1 \
 			--call=org.fcitx.Fcitx.InputContext1=* \
 			--talk=org.fcitx.Fcitx.InputContext1.* \
