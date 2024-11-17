@@ -1,6 +1,6 @@
 # Maintainer: kumax <kumax2048@pm.me>
 pkgname=wechat-devtools-bin
-pkgver=1.06.2409140_1
+pkgver=1.06.2409140_2
 pkgrel=1
 epoch=2
 pkgdesc="WeChat Devtools For Linux."
@@ -16,7 +16,7 @@ source=(
     "wechat-devtools.desktop"
     "wechat-devtools.svg"
 )
-md5sums=('6276e850ed9188a4717c3219083a1ca2'
+md5sums=('351fccceafeff1547a1aa77039aebfc6'
          '08b27001217b9732289cd0e33f8f8d58'
          '945fac0a68c298b66f3808f2f1694c98')
 
