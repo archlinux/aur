@@ -3,7 +3,7 @@
 _pkgname=migen
 pkgname=python-$_pkgname
 pkgver=0.9.2
-pkgrel=8
+pkgrel=9
 pkgdesc='A Python toolbox for building complex digital hardware'
 arch=('any')
 url='https://github.com/m-labs/migen'
