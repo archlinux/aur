@@ -9,7 +9,7 @@ url="https://github.com/halsschmerzen/quickrice"
 license=('MIT')
 depends=('python')
 makedepends=('git')
-source=("git+https://github.com/halsschmerzen/quickrice.git#tag=v${pkgver}")
+source=("git+https://github.com/halsschmerzen/quickrice.git")
 sha256sums=('SKIP')
 
 package() {
