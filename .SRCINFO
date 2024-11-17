@@ -1,0 +1,19 @@
+pkgbase = cadet-core
+	pkgdesc = Modeling and simulation framework for biotechnology processes – simulation backend
+	pkgver = 5.0.1
+	pkgrel = 1
+	url = https://github.com/cadet/CADET-Core
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = cmake
+	makedepends = git
+	depends = blas
+	depends = gcc-libs
+	depends = glibc
+	depends = hdf5
+	depends = lapack
+	depends = suitesparse
+	source = git+https://github.com/cadet/CADET-Core#tag=v5.0.1
+	sha256sums = 8d86ee2774560db6946a16b41c6fc7861e79e8e25f158fd00e8e8f44c72c36f7
+
+pkgname = cadet-core
