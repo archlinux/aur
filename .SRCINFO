@@ -1,0 +1,17 @@
+pkgbase = slpct
+	pkgdesc = redattore atti gratuito per il Processo Civile Telematico
+	pkgver = 1.32.1
+	pkgrel = 1
+	url = https://github.com/Marx79/Slpct
+	arch = any
+	license = GPL-3.0-or-later
+	depends = java-runtime
+	depends = jdk8-openjdk
+	depends = bash
+	depends = xdg-utils
+	depends = git
+	depends = base-devel
+	source = git+https://github.com/Marx79/Slpct.git
+	sha256sums = SKIP
+
+pkgname = slpct
