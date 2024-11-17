@@ -1,0 +1,17 @@
+pkgbase = lact-headless-bin
+	pkgdesc = Linux GPU Configuration Tool (headless binary release)
+	pkgver = 0.6.0
+	pkgrel = 1
+	url = https://github.com/ilya-zlobintsev/LACT
+	arch = x86_64
+	license = MIT
+	depends = libdrm
+	depends = hwdata
+	provides = lact-headless
+	conflicts = lact
+	conflicts = lact-headless
+	conflicts = lact-libadwaita
+	source = https://github.com/ilya-zlobintsev/LACT/releases/download/v0.6.0/lact-headless-0.6.0-0.amd64.ubuntu-2404.deb
+	sha256sums = c1c9d2da34fd9ff53aba005e9b1637d6a0d2940272db19800b0b316b8c870a5d
+
+pkgname = lact-headless-bin
