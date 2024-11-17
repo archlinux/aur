@@ -1,7 +1,7 @@
 # Maintainer: Harry Youd <harry at youd dot family>
 pkgname=threadfin
 _reponame=Threadfin
-pkgver=1.2.0
+pkgver=1.2.16
 pkgrel=1
 pkgdesc="M3U Proxy for Plex DVR and Emby Live TV."
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64' 'riscv64')
@@ -13,7 +13,7 @@ source=("${pkgname}-${pkgver}.tar.gz::${_url}/archive/refs/tags/${pkgver}.tar.gz
         "${pkgname}.service"
         "${pkgname}.sysusers"
         "${pkgname}.tmpfiles")
-sha256sums=('85eaeecbfb771f16d5dd370994371c6ec98f94d2dbe49cce1045ce88e9346677'
+sha256sums=('07d22bb57ce8a062b1e186bbd630cd6804976373b5b1709a6baef7f588d68efc'
             'ebdde77c4a0352bf51d82698d6748a2af1c234ef30b6d959d97a72837f66b039'
             '9a7a0900cd204a8df5a8e97ebef76180525c66233cad37dfb9e1773296a07846'
             '8edf5061f950b1027e0790f19d1e5d7cea8ab347b938fd8d9865412652573319')
