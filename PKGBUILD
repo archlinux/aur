@@ -1,35 +1,17 @@
-# This is an example PKGBUILD file. Use this as a start to creating your own,
-# and remove these comments. For more information, see 'man PKGBUILD'.
-# NOTE: Please fill out the license field for your package! If it is unknown,
-# then please put 'unknown'.
-
-# Maintainer: Your Name <youremail@domain.com>
+# Maintainer: Leo <i@setuid0.dev>
 pkgname=payload-dumper-go
-pkgver=1.2.2
+pkgver=1.3.0
 pkgrel=1
 epoch=
 pkgdesc="An Android OTA payload dumper written in Go."
 arch=(x86_64)
 url="https://github.com/ssut/payload-dumper-go"
-license=('Apache')
-groups=()
-depends=()
-makedepends=("go>=1.14")
-checkdepends=()
-optdepends=()
-provides=()
-conflicts=()
-replaces=()
-backup=()
+license=(Apache-2.0)
+depends=('xz')
+makedepends=('go>=1.18')
 options=(!buildflags)
-install=
-changelog=
-source=(
-	$pkgname-$pkgver.tar.gz::https://github.com/ssut/$pkgname/archive/refs/tags/$pkgver.tar.gz
-)
-noextract=()
+source=("$pkgname-$pkgver.tar.gz::https://github.com/ssut/$pkgname/archive/refs/tags/$pkgver.tar.gz")
 md5sums=(SKIP)
-validpgpkeys=()
 
 prepare() {
 	export GOPATH="$srcdir"/gopath
