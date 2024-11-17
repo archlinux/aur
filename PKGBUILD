@@ -1,7 +1,7 @@
 # Maintainer: "Amhairghin" Oscar Garcia Amor (https://ogarcia.me)
 
 pkgname=rustic-server
-pkgver=0.3.0
+pkgver=0.4.0
 pkgrel=1
 pkgdesc='A REST server built in rust for use with rustic/restic'
 arch=('arm' 'armv6h' 'armv7h' 'aarch64' 'i686' 'x86_64')
@@ -16,7 +16,7 @@ source=("${pkgname}::git+https://github.com/rustic-rs/${pkgname//-/_}.git#tag=v$
         "${pkgname}.sysusers"
         "${pkgname}.tmpfiles"
         "${pkgname}.toml")
-b2sums=('953ac9f5f17bd120ff895c310811804c5099eb7379c5f61290bbe384bd5070745baa0dcf63107a0e72a251ad00427acdca90e0f83106eb33576f273d46084a4a'
+b2sums=('865b73a52afefc6680d9243b554235b6e552bf312f12a48c72001e19144b88b88171d09beafe49d243765d6a82695ab40c68553a38b30247b014048167dfa6d8'
         '716f59b0ed3981b8d495c521a8f675a7f2427f5f07d0d06350c1d7579c2fc42fe74c6b07aadb60f505a5c442b7eb020620fabb15f6948386e8c21bab1de00231'
         '612d6f5bad1c236be078c377db8e00536677860cbc0597c57017630908c7130738e59237660c76e56306691cdcf39c88b9ad97ef99f70a9562d4512aa89e89aa'
         '6fe53d86b4580fc90f3ef46310d89b4d08c1374077606b94c887e92807a97f3bd8af91b68efeec5d3506ba588f648b493820268bd001538355d591c4ae5c470b'
