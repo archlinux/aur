@@ -1,5 +1,5 @@
-pkgname='samplerate'
 _module='samplerate'
+pkgname=python-$_module
 _src_folder='samplerate-0.2.1'
 pkgver='0.2.1'
 pkgrel=1
