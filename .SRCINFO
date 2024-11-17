@@ -10,7 +10,7 @@ pkgbase = photoprism-tensorflow-nvidia-jetson-bin
 	conflicts = photoprism-tensorflow
 	conflicts = tensorflow115
 	replaces = tensorflow115
-	source = https://dl.photoprism.org/tensorflow/nvidia-jetson/libtensorflow-jetson-nano-1.15.2.tar.gz
+	source = https://dl.photoprism.app/tensorflow/nvidia-jetson/libtensorflow-jetson-nano-1.15.2.tar.gz
 	sha256sums = 1b51b462094e79422268248f3ac33363d38224df9cee48e9a86a5b28c475c95f
 
 pkgname = photoprism-tensorflow-nvidia-jetson-bin
