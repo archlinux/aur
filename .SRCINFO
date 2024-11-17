@@ -1,7 +1,7 @@
 pkgbase = python-colorthief
 	pkgdesc = Python module for grabbing the color palette from an image
 	pkgver = 0.2.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/fengsp/color-thief-py
 	arch = any
 	license = BSD-3-Clause
