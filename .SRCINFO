@@ -1,6 +1,6 @@
 pkgbase = genometools
 	pkgdesc = A unified set of bioinformatics tools for analyzing genomes
-	pkgver = 1.6.2
+	pkgver = 1.6.5
 	pkgrel = 1
 	url = http://genometools.org/
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = genometools
 	depends = pango
 	provides = genometools
 	conflicts = genometools
-	source = https://github.com/genometools/genometools/archive/v1.6.2.tar.gz
-	md5sums = dbce09fdd27c315d98707669386dbd8e
+	source = https://github.com/genometools/genometools/archive/refs/tags/v1.6.5.tar.gz
+	sha512sums = e6d2341210805c392a2d14181d40edeaf68f752044712caa002c810941f7eee69641a0864d8ea6ad33af72d8a9748787468b2d66c9e26da34b46a1b30758fbf6
 
 pkgname = genometools
