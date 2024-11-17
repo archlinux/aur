@@ -1,0 +1,13 @@
+pkgbase = ofxstatement-revolut
+	pkgdesc = A plugin for ofxstatement to convert CSV-formatted Revolut exports to OFX format.
+	pkgver = 2.0.4
+	pkgrel = 1
+	url = https://github.com/mlaitinen/ofxstatement-revolut
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = python-setuptools
+	depends = ofxstatement
+	source = ofxstatement-revolut-2.0.4.tar.gz::https://github.com/mlaitinen/ofxstatement-revolut/archive/v2.0.4.tar.gz
+	sha256sums = 0216c8cfaffa382767d223a158842801fad6964d83584b90791112d5a31c497e
+
+pkgname = ofxstatement-revolut
