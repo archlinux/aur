@@ -12,6 +12,7 @@ options=('!strip' '!emptydirs')
 install=${pkgname}.install
 source_x86_64=("https://github.com/LiRenTech/project-graph/releases/download/v$pkgver/Project.Graph_"$pkgver"_amd64.deb")
 sha256sums_x86_64=('SKIP')
+conflicts=('project-graph-nightly' 'project-graph-git')
 package() {
 
   # Extract package data
