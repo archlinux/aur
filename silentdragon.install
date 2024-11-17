@@ -1,0 +1,15 @@
+#!/bin/sh
+
+_silentdragon_install='NOTE: This wallet requires either the hush3 or the hush3-bin 
+AUR package which contains the needed sapling files for operation. Please install 
+hush3 or hush3-bin.'
+
+post_install()
+{
+	echo "$_silentdragon_install"
+}
+
+post_upgrade()
+{
+	echo "$_silentdragon_install"
+}
