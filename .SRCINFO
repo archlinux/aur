@@ -1,0 +1,25 @@
+pkgbase = python-pdf2doi
+	pkgdesc = A python library/command-line tool to extract the DOI or other identifiers of a scientific paper from a pdf file.
+	pkgver = 1.7
+	pkgrel = 1
+	url = https://github.com/MicheleCotrufo/pdf2doi
+	arch = any
+	license = unknown
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	depends = python-google
+	depends = python-requests
+	depends = python-pypdf2
+	depends = python-pdftitle
+	depends = python-feedparser
+	depends = python-pyperclip
+	depends = python-easygui
+	depends = python-pdfminer
+	depends = python-pymupdf
+	depends = python-pypdf
+	source = https://files.pythonhosted.org/packages/c5/6f/867dd20a2467f5f7a17ef10b514219fcc7e6b2ae872e1f792ca22f2fb1e1/pdf2doi-1.7.tar.gz
+	sha256sums = 54d257bce59397ef577c588c8bc8a35930ffd1e7d05e7c3c454423bf5679bf2e
+
+pkgname = python-pdf2doi
