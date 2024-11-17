@@ -1,7 +1,7 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
 pkgname="posting"
-pkgver=2.1.1
+pkgver=2.2.0
 pkgrel=1
 pkgdesc="The modern API client that lives in your terminal"
 arch=('any')
@@ -41,8 +41,8 @@ package() {
   cd "${srcdir}/${_pkgsrc}"
   python -m installer --destdir="${pkgdir}" dist/*.whl
 
-  install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
-  install -d "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -vDm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+  install -vd "${pkgdir}/usr/share/licenses/${pkgname}"
   ln -s "${site_packages}/${_pkgsrc}.dist-info/licenses/LICENSE" \
     "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   ln -s "${site_packages}/${_pkgsrc}.dist-info/licenses/NOTICE" \
