@@ -1,4 +1,4 @@
-pkgbase = yesplaymusic
+pkgbase = yesplaymusic-new
 	pkgdesc = A third party music application for Netease Music
 	pkgver = 0.4.9
 	pkgrel = 1
@@ -22,4 +22,4 @@ pkgbase = yesplaymusic
 	source = YesPlayMusic-0.4.9.tar.gz::https://github.com/qier222/YesPlayMusic/archive/refs/tags/v0.4.9.tar.gz
 	sha256sums = 9b240d6b605d547c9dbc7d6222a0d2f28bfb0586201e01181e1d0e25bb83885a
 
-pkgname = yesplaymusic
+pkgname = yesplaymusic-new
