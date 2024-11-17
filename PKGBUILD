@@ -1,7 +1,7 @@
 # Maintainer: zty012 <me@zty012.de>
 # Maintainer: Littlefean <2385190373@qq.com>
 pkgname=project-graph-git
-pkgver=0.1.0
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="A simple tool to create topology diagrams."
 arch=('any')
@@ -10,7 +10,7 @@ license=('mit')
 depends=('cairo' 'desktop-file-utils' 'gdk-pixbuf2' 'glib2' 'gtk3' 'hicolor-icon-theme' 'libsoup' 'pango' 'webkit2gtk')
 makedepends=('git' 'file' 'openssl' 'appmenu-gtk-module' 'libappindicator-gtk3' 'librsvg' 'base-devel' 'curl' 'wget' 'rustup' 'npm' 'nodejs' 'dpkg' 'pnpm')
 provides=('project-graph')
-conflicts=('project-graph')
+conflicts=('project-graph' 'project-graph-nightly')
 options=('!strip' '!emptydirs')
 source=('git+https://github.com/LiRenTech/project-graph')
 sha256sums=('SKIP')

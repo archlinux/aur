@@ -1,6 +1,6 @@
 pkgbase = project-graph-git
 	pkgdesc = A simple tool to create topology diagrams.
-	pkgver = 0.1.0
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://github.com/LiRenTech/project-graph
 	arch = any
@@ -30,6 +30,7 @@ pkgbase = project-graph-git
 	depends = webkit2gtk
 	provides = project-graph
 	conflicts = project-graph
+	conflicts = project-graph-nightly
 	options = !strip
 	options = !emptydirs
 	source = git+https://github.com/LiRenTech/project-graph
