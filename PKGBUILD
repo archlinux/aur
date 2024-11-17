@@ -13,7 +13,7 @@ _kernel=$(pacman -Q linux-hardened | awk '{print $2}' | sed "s,.[a-zA-Z].*,,g")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/amnezia-vpn/amneziawg-linux-kernel-module/archive/refs/tags/v${pkgver}.tar.gz"
         "https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-${_kernel}.tar.xz")
 sha512sums=('0d0dde7324088f2f3eff2cff9679e7f25b20d9796462da9949e6fc97af320a43ace27f9dfbd32cc2995449a68b313d6877ced6aa0ad3fbd02f15b1338e62fdff'
-            '4e6c985e817342024f253db478d97c575f27c4b199f59930421c120150292b6c6bdfae5724cc52e4775b426f274905876a51efe0fcb7a325c3fa288a368bd1f5')
+            'SKIP')
 install="amneziawg-linux-hardened.install"
 
 build() {
