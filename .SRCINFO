@@ -19,7 +19,6 @@ pkgbase = tribler-bin
 	depends = python-marshmallow
 	depends = python-netifaces
 	depends = python-networkx
-	depends = python-pony
 	depends = python-psutil
 	depends = python-pyasn1
 	depends = python-pydantic

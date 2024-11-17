@@ -22,7 +22,6 @@ python-lz4
 python-marshmallow
 python-netifaces
 python-networkx
-python-pony
 python-psutil
 python-pyasn1
 python-pydantic
