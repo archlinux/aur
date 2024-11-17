@@ -1,0 +1,14 @@
+pkgbase = ofxstatement-paypal
+	pkgdesc = A plugin for ofxstatement to convert CSV-formatted Paypal exports to OFX format.
+	pkgver = 2.1.2
+	pkgrel = 1
+	url = https://pypi.org/project/ofxstatement-paypal/
+	arch = any
+	license = Apache-2.0
+	makedepends = python-setuptools
+	depends = ofxstatement
+	depends = python-click
+	source = https://files.pythonhosted.org/packages/source/o/ofxstatement-paypal/ofxstatement-paypal-2.1.2.tar.gz
+	sha256sums = f535a8eb401abb01c1c0ebb6f44c5eba2fa2567df8bd6c65dab111daa061cc3f
+
+pkgname = ofxstatement-paypal
