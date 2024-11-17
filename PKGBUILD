@@ -17,7 +17,6 @@ replaces+=(wechat-uos-bwrap wechat-uos-qt wechat-bin wechat-universal wechat-uni
 
 depends=(
 	#"wechat-uos-qt"
-	"vlc"
 	"xdg-user-dirs"
 	"xorg-xhost"
 	"findutils"
@@ -56,7 +55,7 @@ depends=(
 	"libx11"
 	"expat"
 	"libvlc"
-	"pipewire-jack"
+	"jack"
 	"libxdamage"
 	"libdrm"
 	"mesa"
@@ -110,7 +109,7 @@ source_loong64=(
 )
 
 
-md5sums=('b61a308c70ab5cdfd7c24e12989f1e38'
+md5sums=('424da0ba353d7dbea5ed96549a5ad211'
          '89ae77c95f205d0a7f9347f8251ce742'
          '468e0367346707c026e577e7bf3e3a82'
          'c99c42e49fb1650df340f3a38bd86d5e'
