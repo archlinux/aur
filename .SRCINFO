@@ -1,7 +1,7 @@
 pkgbase = kf6-servicemenus-imagetools
 	pkgdesc = KDE service menus for image file processing
 	pkgver = 7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/marco-mania/kf6-servicemenus-imagetools
 	arch = any
 	license = GPL
@@ -12,6 +12,7 @@ pkgbase = kf6-servicemenus-imagetools
 	depends = optipng
 	depends = pngquant
 	depends = libjxl
+	depends = jpegoptim
 	conflicts = kde-servicemenus-imagetools
 	conflicts = kf5-servicemenus-imagetools
 	replaces = kde-servicemenus-imagetools
