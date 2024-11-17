@@ -1,7 +1,7 @@
 # Maintainer: Debucquoy Anthony (tonitch) <d.tonitch@gmail.com>
 pkgname=wickedengine
 _pkgname=WickedEngine
-pkgver=0.71.532
+pkgver=0.71.613
 pkgrel=1
 pkgdesc="3D engine with modern graphics "
 arch=('any')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=("sdl2")
 makedepends=("cmake" "sdl2" "gcc")
 source=("https://github.com/turanszkij/${_pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('aebd608c321808ed4735155800bacad02e50b8f0c505e9e13ec352dea678ecc3')
+sha256sums=('9ff4a760af98f16d81a8c2de6ae880dac569ea3345b30ba629554dba814cedeb')
 
 prepare(){
 	sed -i "/-Wmaybe-uninitialized/d" $srcdir/${_pkgname}-${pkgver}/WickedEngine/CMakeLists.txt
