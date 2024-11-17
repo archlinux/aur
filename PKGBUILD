@@ -3,12 +3,10 @@
 pkgname=('python-odoo17-jid' 'python-odoo18-jid')
 pkgbase='python-odoo-jid'
 pkgver=0.0.1
-pkgrel=2
+pkgrel=3
 pkgdesc="An Odoo plugin for adding an XMPP address to contacts."
 arch=('any')
-url="https://apps.odoo.com/apps/modules/18.0/jid"
 license=('GPL-3.0-only')
-depends=('odoo')
 makedepends=('python-build'
              'python-installer'
              'python-poetry'
@@ -23,8 +21,6 @@ noextract=("python-odoo18-jid-$pkgver.tar.gz"
            "python-odoo17-jid-$pkgver.tar.gz")
 sha256sums=('be9aa0cf1bd927ad40b68d89d54a6207429f86e0b86a7783800692ab83f7af45'
             'be8c42a8b99ad13cb6ffd14c1ed8b85c223ff5603025a8daa74c2fa2ea170821')
-provides=("odoo-jid")
-conflicts=("odoo-jid")
 
 prepare() {
   # Extract manually to avoid both sources extracting to the same output
@@ -42,11 +38,19 @@ build() {
 }
 
 package_python-odoo17-jid() {
+  depends=('odoo17')
+  url="https://apps.odoo.com/apps/modules/17.0/jid"
+  provides=("odoo-jid" "odoo17-jid")
+  conflicts=("odoo-jid" "odoo17-jid")
   cd "${pkgname}-$pkgver"
   python -m installer --destdir="$pkgdir" dist/*.whl
 }
 
 package_python-odoo18-jid() {
+  depends=('odoo18')
+  url="https://apps.odoo.com/apps/modules/18.0/jid"
+  provides=("odoo-jid" "odoo18-jid")
+  conflicts=("odoo-jid" "odoo18-jid")
   cd "${pkgname}-$pkgver"
   python -m installer --destdir="$pkgdir" dist/*.whl
 }

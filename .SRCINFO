@@ -1,17 +1,13 @@
 pkgbase = python-odoo-jid
 	pkgdesc = An Odoo plugin for adding an XMPP address to contacts.
 	pkgver = 0.0.1
-	pkgrel = 2
-	url = https://apps.odoo.com/apps/modules/18.0/jid
+	pkgrel = 3
 	arch = any
 	license = GPL-3.0-only
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-poetry
 	makedepends = python-wheel
-	depends = odoo
-	provides = odoo-jid
-	conflicts = odoo-jid
 	noextract = python-odoo18-jid-0.0.1.tar.gz
 	noextract = python-odoo17-jid-0.0.1.tar.gz
 	source = python-odoo18-jid-0.0.1.tar.gz::https://codeberg.org/atlbikeshed/odoo-jid/archive/18.0.tar.gz
@@ -20,5 +16,17 @@ pkgbase = python-odoo-jid
 	sha256sums = be8c42a8b99ad13cb6ffd14c1ed8b85c223ff5603025a8daa74c2fa2ea170821
 
 pkgname = python-odoo17-jid
+	url = https://apps.odoo.com/apps/modules/17.0/jid
+	depends = odoo17
+	provides = odoo-jid
+	provides = odoo17-jid
+	conflicts = odoo-jid
+	conflicts = odoo17-jid
 
 pkgname = python-odoo18-jid
+	url = https://apps.odoo.com/apps/modules/18.0/jid
+	depends = odoo18
+	provides = odoo-jid
+	provides = odoo18-jid
+	conflicts = odoo-jid
+	conflicts = odoo18-jid
