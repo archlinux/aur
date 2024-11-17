@@ -1,7 +1,7 @@
 pkgbase = tribler-bin
 	pkgdesc = P2P/Bittorrent/YouTube client
 	pkgver = 7.14.0
-	pkgrel = 2
+	pkgrel = 3
 	url = http://tribler.org
 	arch = x86_64
 	license = GPL3

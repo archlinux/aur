@@ -1,7 +1,7 @@
 pkgname=tribler-bin
 _pkgname=tribler-bin
 pkgver=7.14.0
-pkgrel=2
+pkgrel=3
 pkgdesc="P2P/Bittorrent/YouTube client"
 arch=("x86_64")
 url="http://tribler.org"
