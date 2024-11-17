@@ -23,22 +23,19 @@ prepare() {
     npm i
 }
 
-build() {
-    cd "$_pkgname" || exit
-    npm run package
-}
-
 check() {
     cd "$_pkgname" || exit
-    test -e out/glass-linux-x64/glass
+    test -e glass
 }
 
 package() {
     cd "$_pkgname" || exit
-    (
-        cd out/glass-linux-x64 || exit
-        find . -type f -exec install -Dm 755 "{}" "$pkgdir/opt/glass/{}" \;
-    )
+    
+    find . -mindepth 1 -maxdepth 1 \
+        \( -name 'src' -or -name 'glass' -or -name 'node_modules' -or -name 'package.json' \
+        -or -name 'README.md' -or -name 'CHANGELOG.md' -or -name 'LICENSE' \) \
+        -exec install -Dm 755 "{}" "$pkgdir/opt/glass/{}" \;
+    
     install -Dm 644 src/resources/.desktop "$pkgdir/usr/share/applications/glass.desktop"
     install -Dm 644 src/resources/logo.png "$pkgdir/usr/share/pixmaps/glass.png"
     install -Dm 644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
