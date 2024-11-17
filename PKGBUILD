@@ -3,10 +3,11 @@
 
 pkgname=eedid-tool
 pkgver=0.0.1
+#remember to regen .SRCINFO
 pkgrel=1
 pkgdesc="A tool to scan, read, write (E-)EDIDs on Linux using the i2c-dev driver."
 arch=('x86_64')
-url="https://github.com/acscd/eedid-tool"
+url="https://git.sr.ht/~acd2048/eedid-tool"
 license=('GPL-3.0-or-later')
 #GPL-3.0-only
 groups=()
