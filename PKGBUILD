@@ -9,7 +9,7 @@ url="https://pypi.org/project/quickrice/"
 license=('MIT')
 depends=('python')
 makedepends=('python-setuptools' 'git')
-source=("git+https://github.com/halsschmerzen/quickrice.git#tag=v${pkgver}")
+source=("git+https://github.com/halsschmerzen/quickrice.git")
 sha256sums=('SKIP')
 
 package() {

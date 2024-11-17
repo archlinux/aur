@@ -8,7 +8,7 @@ pkgbase = quickrice
 	makedepends = python-setuptools
 	makedepends = git
 	depends = python
-	source = git+https://github.com/halsschmerzen/quickrice.git#tag=v1.0.3
+	source = git+https://github.com/halsschmerzen/quickrice.git
 	sha256sums = SKIP
 
 pkgname = quickrice
