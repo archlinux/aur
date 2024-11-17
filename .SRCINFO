@@ -1,6 +1,6 @@
 pkgbase = odin
 	pkgdesc = The Data-Oriented Language for Sane Software Development.
-	pkgver = dev_2024_10
+	pkgver = dev_2024_11
 	pkgrel = 1
 	url = https://odin-lang.org/
 	arch = x86_64
@@ -13,6 +13,6 @@ pkgbase = odin
 	depends = llvm-libs
 	provides = odin
 	conflicts = odin
-	source = https://github.com/odin-lang/Odin/archive/refs/tags/dev-2024-09.tar.gz
-	sha256sums = 00e7a033129006fb339b5514955dc0d7fafa712919db9f32e1a6d5bededb8a19
+	source = https://github.com/odin-lang/Odin/archive/refs/tags/dev-2024-11.tar.gz
+	sha256sums = 6774b78069a36ab6d5b3db805e51c27397c8591a334db9a80fb13d4f090abebf
 pkgname = odin
