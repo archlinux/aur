@@ -41,10 +41,10 @@ package() {
         find . -type f -exec install -Dm 755 "{}" "$pkgdir/opt/glass/src/{}" \;
     )
 
-    install -Dm 755 CHANGELOG.md "$pkgdir/opt/glass/glass"
-    install -Dm 644 CHANGELOG.md "$pkgdir/opt/glass/package.json"
+    install -Dm 755 glass "$pkgdir/opt/glass/glass"
+    install -Dm 644 package.json "$pkgdir/opt/glass/package.json"
     install -Dm 644 CHANGELOG.md "$pkgdir/opt/glass/CHANGELOG.md"
-    install -Dm 644 CHANGELOG.md "$pkgdir/opt/glass/README.md"
+    install -Dm 644 README.md "$pkgdir/opt/glass/README.md"
 
     install -Dm 644 src/resources/.desktop "$pkgdir/usr/share/applications/glass.desktop"
     install -Dm 644 src/resources/logo.png "$pkgdir/usr/share/pixmaps/glass.png"
