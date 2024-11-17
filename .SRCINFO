@@ -1,7 +1,7 @@
 pkgbase = python-odoo-jid
 	pkgdesc = An Odoo plugin for adding an XMPP address to contacts.
 	pkgver = 0.0.1
-	pkgrel = 3
+	pkgrel = 5
 	arch = any
 	license = GPL-3.0-only
 	makedepends = python-build
@@ -17,7 +17,7 @@ pkgbase = python-odoo-jid
 
 pkgname = python-odoo17-jid
 	url = https://apps.odoo.com/apps/modules/17.0/jid
-	depends = odoo17
+	depends = odoo-17
 	provides = odoo-jid
 	provides = odoo17-jid
 	conflicts = odoo-jid
