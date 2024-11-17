@@ -1,7 +1,7 @@
 pkgbase = python-sphinxcontrib-newsfeed
 	pkgdesc = News Feed extension for Sphinx
 	pkgver = 0.1.4
-	pkgrel = 15
+	pkgrel = 16
 	url = https://github.com/Cyclododecene/newsfeed
 	arch = any
 	license = BSD
