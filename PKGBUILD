@@ -1,13 +1,13 @@
 # Maintainer: Adam Perkowski <adas1per@protonmail.com>
 pkgname='hyprlauncher'
-pkgver=0.1.8
+pkgver=0.1.9
 pkgrel=1
 pkgdesc='GUI for launching applications, written in blazingly fast Rust!'
 arch=('x86_64')
 url="https://github.com/hyprutils/$pkgname"
 license=('GPL-2.0')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/hyprutils/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('c368165b6fb3a667cb0acfd3167035dd37f53477bc513952159a79a182da182c')
+sha256sums=('556b4fc473b40b816696e793d4b5ed84fc7aadb0026ca0400147cdcdd5a29748')
 makedepends=('rustup' 'glibc' 'gcc-libs')
 depends=('gtk4' 'gtk4-layer-shell')
 
