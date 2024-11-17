@@ -1,4 +1,4 @@
-# Maintainer: Skylar Chan <schance995@proton.me>
+# Maintainer: Skylar Chan <schance995 at proton dot me>
 _pkgname=pennylane
 pkgname=python-${_pkgname}
 pkgver='0.39.0'
