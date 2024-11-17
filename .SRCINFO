@@ -1,10 +1,14 @@
 pkgbase = python-pysubs2-git
 	pkgdesc = A Python library for editing subtitle files
 	pkgver = 1.7.3.r2.g04837a4
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/tkarabela/pysubs2
 	arch = any
 	license = MIT
+	checkdepends = python-pytest
+	checkdepends = python-pytest-ruff
+	checkdepends = python-pytest-mypy
+	checkdepends = python-pytest-timeout
 	makedepends = git
 	makedepends = python-build
 	makedepends = python-installer

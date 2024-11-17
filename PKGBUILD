@@ -2,7 +2,7 @@
 _pkgname=pysubs2
 pkgname=python-pysubs2-git
 pkgver=1.7.3.r2.g04837a4
-pkgrel=2
+pkgrel=3
 pkgdesc="A Python library for editing subtitle files"
 arch=('any')
 url="https://github.com/tkarabela/pysubs2"
@@ -10,6 +10,7 @@ license=('MIT')
 groups=()
 depends=('python')
 makedepends=('git' 'python-build' 'python-installer' 'python-wheel' 'python-setuptools')
+checkdepends=('python-pytest' 'python-pytest-ruff' 'python-pytest-mypy' 'python-pytest-timeout')
 source=("$pkgname::git+$url.git")
 sha256sums=('SKIP')
 provides=('python-pysubs2=1.7.3')
@@ -23,6 +24,11 @@ pkgver() {
 build() {
     cd "$srcdir/$pkgname"
     python -m build --wheel --no-isolation
+}
+
+check() {
+    cd "$srcdir/$pkgname"
+    pytest -vv
 }
 
 package() {
