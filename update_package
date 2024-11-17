@@ -13,7 +13,7 @@ if [ "$1" != "--skip-dl" ]; then
     current=`cat current_version`
     echo -e "$col2 Getting latest version..." >/dev/stderr
     latest=`basename $(curl -Ls -o /dev/null -w "%{url_effective}" "$url/releases/latest")`
-    latest="v0.8.2"
+    latest="v0.8.6"
 
     if [ "$current" = "" ]; then
         current="(nothing)"

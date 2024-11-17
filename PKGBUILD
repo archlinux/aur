@@ -12,7 +12,7 @@ provides=(inochi-creator)
 depends=(unzip)
 conflicts=()
 options=()
-source=("$pkgname-$_pkgver.zip::https://github.com/Inochi2D/inochi-creator/releases/download/$_pkgver/inochi-creator-linux-x86_64.zip"
+source=("$pkgname-$_pkgver.zip::https://github.com/Inochi2D/inochi-creator/releases/download/$_pkgver/inochi-creator-linux.zip"
         "$pkgname-16x16.png::https://raw.githubusercontent.com/Inochi2D/branding/main/creator/Inochi-Creator.iconset/icon_16x16.png"
         "$pkgname-32x32.png::https://raw.githubusercontent.com/Inochi2D/branding/main/creator/Inochi-Creator.iconset/icon_32x32.png"
         "$pkgname-64x64.png::https://raw.githubusercontent.com/Inochi2D/branding/main/creator/Inochi-Creator.iconset/icon_32x32@2x.png"
@@ -21,7 +21,7 @@ source=("$pkgname-$_pkgver.zip::https://github.com/Inochi2D/inochi-creator/relea
         "$pkgname-512x512.png::https://raw.githubusercontent.com/Inochi2D/branding/main/creator/Inochi-Creator.iconset/icon_512x512.png"
         "$pkgname.xml"
         "$pkgname.desktop")
-sha256sums=('e3e0c08c8596ed033de4426d7cb47766a013e8abcb7857dcc2db308392addf1e'
+sha256sums=('799b989d5fece71f50eafb480f6efbc95d80b0cb79e907b486b39dd9e4eef86f'
             '37c155d83e2fcce788330af9e5f48779def980f4811f4e5ba77827e92811a59d'
             '51cbc6bb2a05cf400ecbecea36549b693b50b72b401f2083f09925657123a8ed'
             '40ab94b16ab88330352b1848de5a3698093bd041550defc56636c5415d2ca857'
