@@ -43,8 +43,6 @@ prepare() {
 
   cd "${srcdir}/librsvg"
   cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
-
-  cp meson/cargo_wrapper.py meson/cargo_wrapper_bak
 }
 
 build() {
@@ -66,13 +64,13 @@ build() {
     if [[ ${_arch} = i686-w64-mingw32 ]] ; then
       export RUST_TARGET=i686-pc-windows-gnu
       cp meson/cargo_wrapper_bak meson/cargo_wrapper.py
-      sed -i 's|print(f"command: {cargo_cmd}")|print(f"command: {cargo_cmd}")\npath_list = env["PATH"].split(":")\npath_list.remove("/usr/i686-w64-mingw32/bin")\npath_list.remove("/usr/i686-w64-mingw32/bin")\npath_list.remove("/usr/i686-w64-mingw32/bin")\nnew_path = ":".join(path_list)\nenv["PATH"] = new_path\nprint(f"env: {env}")|g' meson/cargo_wrapper.py
     fi
     if [[ ${_arch} = x86_64-w64-mingw32 ]] ; then
       export RUST_TARGET=x86_64-pc-windows-gnu
-      cp meson/cargo_wrapper_bak meson/cargo_wrapper.py
-      sed -i 's|print(f"command: {cargo_cmd}")|print(f"command: {cargo_cmd}")\npath_list = env["PATH"].split(":")\npath_list.remove("/usr/x86_64-w64-mingw32/bin")\npath_list.remove("/usr/x86_64-w64-mingw32/bin")\npath_list.remove("/usr/x86_64-w64-mingw32/bin")\nnew_path = ":".join(path_list)\nenv["PATH"] = new_path\nprint(f"env: {env}")|g' meson/cargo_wrapper.py
     fi
+    # do not add host bindir to PATH
+    # https://gitlab.gnome.org/GNOME/librsvg/-/issues/1141
+    sed -i "s|extra_env.prepend('PATH', x)|# skip|g" meson.build
     mkdir -p build-${_arch} && pushd build-${_arch}
     ${_arch}-meson \
       -Dintrospection=disabled \
