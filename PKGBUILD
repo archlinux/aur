@@ -43,7 +43,8 @@ build() {
     npm run build
 }
 
-package() {
+package() {	
+    export NODE_OPTIONS=--openssl-legacy-provider
     cd "${srcdir}/YesPlayMusic-${pkgver}"
     
     # 创建安装目录
