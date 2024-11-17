@@ -2,7 +2,7 @@
 # Co-Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 
 pkgname=cosmic-app-library-git
-pkgver=1.0.0.alpha.3.r0.g3dd148d
+pkgver=1.0.0.alpha.3.r1.g676656d
 pkgrel=1
 pkgdesc="An application launcher for the COSMIC desktop"
 arch=('x86_64' 'aarch64')
@@ -17,24 +17,24 @@ makedepends=(
   'just'
   'mold'
 )
-provides=("${pkgname%-git}" 'cosmic-app-library')
-conflicts=("${pkgname%-git}" 'cosmic-app-library')
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}" 'cosmic-applibrary')
 source=('git+https://github.com/pop-os/cosmic-applibrary.git')
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "${pkgname%-git}"
+  cd cosmic-applibrary
   git describe --long --tags --abbrev=7 | sed 's/^epoch-//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
-  cd "${pkgname%-git}"
+  cd cosmic-applibrary
   export RUSTUP_TOOLCHAIN=stable
   cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
-  cd "${pkgname%-git}"
+  cd cosmic-applibrary
   export RUSTUP_TOOLCHAIN=stable
 
   # use mold instead of lld to speed up build
@@ -45,6 +45,6 @@ build() {
 }
 
 package() {
-  cd "${pkgname%-git}"
+  cd cosmic-applibrary
   just rootdir="$pkgdir" install
 }
