@@ -19,7 +19,7 @@ source=(
 #noextract=()
 sha256sums=(
 	'1cf4c77f15b7e1c54faae05c28b0e94e76efdb6b1c29e6b0b2d09095e2d9a209'
-	'83d954aa581fb9a4f3f9675512ad4a19bbe62fef203d523125601108decdf4c3'
+	'9d9e0c0431f1e5e162809c8995cc878b0d0eafe8e594311b4105f5b0c53ec6bf'
 )
 
 package() {
