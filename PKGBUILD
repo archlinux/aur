@@ -1,9 +1,9 @@
 # Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dor com>
 
-_pkgauthor=jamesob
+_pkgauthor=bernd
 _pkgname=desk
 pkgname=${_pkgname}
-pkgver=0.6.0
+pkgver=0.7.0.beta.1
 pkgrel=1
 pkgdesc="A lightweight workspace manager for the shell"
 arch=('any')
@@ -13,8 +13,8 @@ license=('MIT')
 provides=("${pkgname}")
 makedepends=('rust' 'gzip' 'help2man')
 
-source=(git+"https://github.com/${_pkgauthor}/${_pkgname}.git#tag=v${pkgver}")
-sha256sums=('9865c7f4498a267f534cc415bbdab7ca0d594ec5b0785984123de0eb06a7ed93')
+source=(git+"https://github.com/${_pkgauthor}/${_pkgname}.git#tag=v${pkgver//.beta/-beta}")
+sha256sums=('61a6cfd74e75bfeae7c1b51464ee292f075fd18ccac9aad999048b525023adfb')
 
 
 package() {
