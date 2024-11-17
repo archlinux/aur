@@ -15,6 +15,6 @@ pkgbase = codetantra-sea
 	source = https://github.com/ct-code/sea/releases/download/v3.0.5/codetantra-sea_3.0.5_amd64.deb
 	source = sea.sh
 	sha256sums = a9637e1cdf84b0692814fae64719d99263f13abbae2b758b9f9163b3b32729c7
-	sha256sums = 02f2d0e3bb16c5d370ffd0d680f5f386cf22418c0d89b8fdfb84d142d41b3880
+	sha256sums = 2aeb4451e650a3cd3b69d4154c14795acd1ad9e2683e476e3452e721e25a0979
 
 pkgname = codetantra-sea
