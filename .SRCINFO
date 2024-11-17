@@ -1,0 +1,17 @@
+pkgbase = fcitx5-theme-macos12
+	pkgdesc = pink style fcitx5 theme
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/witt-bit/fcitx5-theme-macos12
+	arch = any
+	license = Apache-2.0
+	optdepends = otf-apple-pingfang: pingfang fonts
+	provides = fcitx5-theme-macos12
+	conflicts = fcitx5-theme-macos12
+	options = !strip
+	source = themes.tar.gz::https://github.com/witt-bit/fcitx5-theme-macos12/archive/refs/tags/v0.0.1.tar.gz
+	source = license::https://github.com/witt-bit/fcitx5-theme-macos12/raw/main/LICENSE
+	sha256sums = 02da7d2cb6410d910db4941f8667875ffb65fd7634c7c34e812177721ca2e9fe
+	sha256sums = c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4
+
+pkgname = fcitx5-theme-macos12
