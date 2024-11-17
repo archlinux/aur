@@ -1,0 +1,16 @@
+pkgbase = python-pdftitle
+	pkgdesc = pdftitle is a small utility to extract the title from a PDF file
+	pkgver = 0.16
+	pkgrel = 1
+	url = https://github.com/metebalci/pdftitle
+	arch = any
+	license = GPLv3
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	depends = python-pdfminer
+	source = https://files.pythonhosted.org/packages/b1/3b/7a71962cc31c515562256361cce465a349ce3531f6484bf30fef2baa9ca6/pdftitle-0.16.tar.gz
+	sha256sums = 6b036efefc7045799e3c677a0d5c0694ce0d294e0feb6c219ba77dbd3f86e8f8
+
+pkgname = python-pdftitle
