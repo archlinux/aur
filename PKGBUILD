@@ -2,7 +2,7 @@
 
 _pkgname=luckeypark
 pkgname=${_pkgname}-git
-pkgver=r411.df5dec7
+pkgver=r442.bca8b7f
 pkgrel=1
 pkgdesc="It's just a ride"
 arch=('x86_64')
@@ -28,10 +28,9 @@ build() {
 
 package() {
   cd "${srcdir}/${pkgname}"
-  install -Dm 644 park.svg ${pkgdir}/usr/share/icons/hicolor/scalable/apps/${_pkgname}.svg
-  install -Dm 755 park ${pkgdir}/usr/bin/${_pkgname}
-  sed -i s/park/luckeypark/g  park.desktop
-  install -Dm 755 park.desktop ${pkgdir}/usr/share/applications/${_pkgname}.desktop
-  mkdir -p ${pkgdir}/usr/share/luckey/park
-  cp -R "${srcdir}/${pkgname}/Resources/." ${pkgdir}/usr/share/luckey/park/
+  install -Dm 644 ${_pkgname}.svg ${pkgdir}/usr/share/icons/hicolor/scalable/apps/${_pkgname}.svg
+  install -Dm 755 ${_pkgname} ${pkgdir}/usr/bin/${_pkgname}
+  install -Dm 755 ${_pkgname}.desktop ${pkgdir}/usr/share/applications/${_pkgname}.desktop
+  mkdir -p ${pkgdir}/usr/share/luckey/${_pkgname}
+  cp -R "${srcdir}/${pkgname}/Resources/." ${pkgdir}/usr/share/luckey/${_pkgname}/
 }
