@@ -1,0 +1,19 @@
+pkgbase = python-pure-protobuf2
+	pkgdesc = Implementation of Protocol Buffers with dataclass-based schemaʼs
+	pkgver = 2.3.0
+	pkgrel = 1
+	url = https://github.com/eigenein/protobuf/tree/2.3.0
+	arch = any
+	license = MIT
+	checkdepends = python-pytest-benchmark
+	makedepends = python-hatchling
+	makedepends = python-hatch-vcs
+	makedepends = python-build
+	makedepends = python-installer
+	source = https://github.com/eigenein/protobuf/archive/refs/tags/2.3.0.tar.gz
+	sha512sums = 60857977f56833262244cd6d406d1f021e1e7ebb78f5fd71276faaab37393a49d1dbdf8c9006933715dbc52e154c050fbabb139ff336cd1e3b4239dc8a3fdee1
+
+pkgname = python-pure-protobuf2
+	depends = python>=3.7
+	provides = python-pure-protobuf=2.3.0
+	conflicts = python-pure-protobuf
