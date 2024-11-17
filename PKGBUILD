@@ -8,12 +8,12 @@ arch=('any')
 url="https://pypi.org/project/quickrice/"
 license=('MIT')
 depends=('python')
-makedepends=('python-setuptools' 'git')
+makedepends=('python-setuptools' 'git' 'python-pip')
 source=("git+https://github.com/halsschmerzen/quickrice.git")
 sha256sums=('SKIP')
 
 package() {
-    cd "$srcdir/quickrice"
+    cd "$srcdir/quickrice-$pkgver"
     python -m pip install --root="$pkgdir" --prefix=/usr --ignore-installed --no-cache-dir .
     install -Dm755 "$pkgdir/usr/bin/quickrice" "$pkgdir/usr/bin/quickrice"
 
