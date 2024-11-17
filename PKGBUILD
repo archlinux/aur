@@ -3,7 +3,7 @@ _pkgname=torzu
 _branch=main
 pkgname=torzu-git
 pkgver=r27184.5de1cb53b
-pkgrel=1
+pkgrel=2
 pkgdesc="Torzu is a fork of yuzu, the world's most popular, open-source, Nintendo Switch emulator. It is written in C++ with portability in mind."
 arch=(x86_64)
 url=https://notabug.org/litucks/torzu
@@ -111,6 +111,7 @@ build() {
     -DENABLE_COMPATIBILITY_LIST_DOWNLOAD=ON \
     -DENABLE_QT_TRANSLATION=OFF \
     -DENABLE_QT6=ON \
+    -DYUZU_USE_FASTER_LD=OFF \
     -DYUZU_USE_EXTERNAL_VULKAN_SPIRV_TOOLS=OFF \
     -DYUZU_ENABLE_COMPATIBILITY_REPORTING=${ENABLE_COMPATIBILITY_REPORTING:-"OFF"} \
     -DYUZU_USE_BUNDLED_FFMPEG=OFF \
