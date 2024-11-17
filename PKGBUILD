@@ -2,7 +2,7 @@
 
 _pkgname=glass
 pkgname="$_pkgname-git"
-pkgver=1.2.5
+pkgver=1.3.1
 pkgrel=1
 pkgdesc="Simple Frameless Browser! Perfect for consuming media from any location."
 arch=('x86_64')
