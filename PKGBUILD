@@ -3,12 +3,12 @@
 # Contributor: William Brown <glowinthedarkcia at horsefucker dot org>
 
 pkgname=ftb-app-bin
-pkgver=1.25.18
+pkgver=1.26.2
 pkgrel=1
 epoch=
 pkgdesc="A new Modpack launcher for FTB and Curse modpacks."
 arch=(x86_64 aarch64)
-url="https://feed-the-beast.com/app"
+url="https://feed-the-beast.com/ftb-app"
 license=("LGPL-2.1-only")
 groups=()
 depends=("alsa-lib" "nss" "gtk3")
@@ -26,8 +26,8 @@ changelog=
 source_x86_64=("https://piston.feed-the-beast.com/app/ftb-app-${pkgver}-amd64.deb")
 source_aarch64=("https://piston.feed-the-beast.com/app/ftb-app-${pkgver}-arm64.deb")
 noextract=()
-sha256sums_x86_64=(c5262e1a7896d100c31b837bf226c7498bb5691ff6d0bb80141748a1d4cc4e3c)
-sha256sums_aarch64=(713e0babfdaa7de9e2c0e409000c3f10c93daf071aea8771c78465f7eccc8a04)
+sha256sums_x86_64=(119c3868924470311df9f82189ca5db08b7f8ddd23d4e3619a7fcef8352c4e55)
+sha256sums_aarch64=(92f9cd0824f7ab37482dc5a9a82af07a970d36086ec1b2950996a2d600202861)
 validpgpkeys=()
 
 package() {
