@@ -20,6 +20,7 @@ makedepends=(
 	'python-installer'
 	'python-setuptools'
 	'python-wheel'
+    'python-poetry-core'
 )
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name//-/_}/${_name//-/_}-$pkgver.tar.gz")
 sha256sums=('c9aa6449cb4a2738120662f05a7112978a6f379c89bdf304e418ad73606f86f6')
