@@ -1,7 +1,7 @@
 pkgbase = mojave-gtk-theme
 	pkgdesc = A Mac OSX like theme for GTK 3, GTK 2 and Gnome-Shell which supports GTK 3 and GTK 2 based desktop environments like Gnome, Pantheon, XFCE, Mate, etc.
-	pkgver = 2024_11_15
-	pkgrel = 1
+	pkgver = 2024.11.15
+	pkgrel = 2
 	url = https://github.com/vinceliuice/Mojave-gtk-theme
 	arch = any
 	license = GPL3
@@ -12,7 +12,7 @@ pkgbase = mojave-gtk-theme
 	conflicts = mojave-gtk-theme-git
 	conflicts = mojave-gtk-theme-git-new
 	options = !strip
-	source = mojave-gtk-theme-2024-11-15.tar.gz::https://github.com/vinceliuice/Mojave-gtk-theme/archive/2024-11-15.tar.gz
+	source = Mojave-gtk-theme-2024-11-15.tar.gz::https://github.com/vinceliuice/Mojave-gtk-theme/archive/2024-11-15.tar.gz
 	sha512sums = c8ea006c0258e981f223fb7dff4036e3e042c4dfaccca578ad6db6e9ac6f3ff8728838d218acacf549085b6dd22649e18952aaf67920b3ce54deb31f17d9de52
 
 pkgname = mojave-gtk-theme
