@@ -2,7 +2,7 @@
 _pkgname=ValveResourceFormat
 pkgname=source2viewer
 pkgver=10.2
-pkgrel=4
+pkgrel=5
 pkgdesc="Valve's Source 2 resource file format parser, decompiler, and exporter."
 arch=('x86_64')
 url="https://github.com/ValveResourceFormat/ValveResourceFormat"
@@ -16,6 +16,21 @@ replaces=('valveresourcefromat')
 install=$pkgname.install
 source=("$url/archive/refs/tags/${pkgver}.tar.gz")
 sha256sums=('61fa22f19141f15ac3fb533b75db10bb93b55622af038d82cd7e8949b28e2ee0')
+
+prepare() {
+	cd "$srcdir/$_pkgname-$pkgver"
+	# Ensure dotnet 8.0 is being used
+	cat > global.json <<EOF
+{
+  "sdk": {
+    "version": "8.0.400",
+    "rollForward": "latestFeature"
+  }
+}
+EOF
+}
+
+
 
 build() {
 	cd "$srcdir/$_pkgname-$pkgver/Decompiler"
