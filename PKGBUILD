@@ -8,7 +8,7 @@
 
 _pkgname="musicpod"
 pkgname="$_pkgname"
-pkgver=2.3.0
+pkgver=2.4.0
 pkgrel=1
 _flutterver=3.24.3
 pkgdesc="Music, radio, television and podcast player"
@@ -31,7 +31,7 @@ _pkgsrc="$_pkgname-$pkgver"
 _pkgext="tar.gz"
 source=("$_pkgsrc.$_pkgext"::"$url/archive/refs/tags/v$pkgver.$_pkgext")
 provides=("${_pkgname}")
-sha256sums=('cc2819811f83f4f1ef6564a9d60bcf9a0d4031f4b483e80d0751247ef9504960')
+sha256sums=('bf1d6b10348deccf0cca6fea698b78b5fb268910cecbdc57b5ace82f6646f6af')
 
 build() {
   export FVM_CACHE_PATH="$SRCDEST/fvm-cache"
@@ -72,7 +72,7 @@ package() {
    # icon
   install -Dm644 "$srcdir/$_pkgsrc/snap/gui/$pkgname.png" \
     "$pkgdir/usr/share/pixmaps/$_pkgname.png"
-  
+
   # .desktop file
   install -Dm644 /dev/stdin "$pkgdir/usr/share/applications/$_pkgname.desktop" << END
 [Desktop Entry]

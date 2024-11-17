@@ -1,6 +1,6 @@
 pkgbase = musicpod
 	pkgdesc = Music, radio, television and podcast player
-	pkgver = 2.3.0
+	pkgver = 2.4.0
 	pkgrel = 1
 	url = https://github.com/ubuntu-flutter-community/musicpod
 	arch = x86_64
@@ -26,7 +26,7 @@ pkgbase = musicpod
 	depends = gtk3
 	depends = gcc-libs
 	provides = musicpod
-	source = musicpod-2.3.0.tar.gz::https://github.com/ubuntu-flutter-community/musicpod/archive/refs/tags/v2.3.0.tar.gz
-	sha256sums = cc2819811f83f4f1ef6564a9d60bcf9a0d4031f4b483e80d0751247ef9504960
+	source = musicpod-2.4.0.tar.gz::https://github.com/ubuntu-flutter-community/musicpod/archive/refs/tags/v2.4.0.tar.gz
+	sha256sums = bf1d6b10348deccf0cca6fea698b78b5fb268910cecbdc57b5ace82f6646f6af
 
 pkgname = musicpod
