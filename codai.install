@@ -11,8 +11,8 @@ post_install() {
     note '   mkdir -p ~/.config/codai'
     note '   cp /usr/share/codai/codai.env.sample ~/.config/codai/codai.env'
     note '** populate the environment variables'
-    note '2. **Create a config.yml file in the root of your project **'
-    note '   cp /usr/share/codai/codai-config.yml.sample /path/to/your/project'
+    note '2. **Create a codai-config.yml file in the root of your project **'
+    note '   cp /usr/share/codai/codai-config.yml.sample /path/to/your/project/codai-config.yml'
     note '** make appropriate changes to the config '
     note 'see https://github.com/meysamhadeli/codai for updated instructions'
 
@@ -20,5 +20,5 @@ post_install() {
 post_upgrade() {
   note 'Since version 1.7.2'
   note '-------------------'
-  note 'config.yml codai config files have been renamed to codai-config.yml.  You should rename these where they esist'
+  note 'config.yml codai config files have been renamed to codai-config.yml.  You should rename these where they exist'
 }

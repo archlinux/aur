@@ -1,7 +1,7 @@
 pkgbase = codai
 	pkgdesc = AI code assistant that helps developers through a session CLI
 	pkgver = 1.7.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/meysamhadeli/codai
 	install = codai.install
 	arch = x86_64
@@ -17,6 +17,6 @@ pkgbase = codai
 	sha256sums = 678cfc4e7653b954d33a64118591f8f37568c6b801d541138b7f315cef19d313
 	sha256sums = 0045a2a6c2dfe2b2931d7e3009f32a16fcb6ec55fb6cc46fc98f03fe64a0a26b
 	sha256sums = c0177646a2285135f7f223d40352cbecc840ac22e7eb776c96de0fc017ccc07f
-	sha256sums = 4c4bda225a1e45ec01638d4b23e9e42aeb1f95b3654d1e82f466156b466ef6c1
+	sha256sums = bb49a7159d9fbdb7e798d7113c6ee783639c86c2482ca0cf45d0b4e01b7488cd
 
 pkgname = codai

@@ -2,7 +2,7 @@
 
 pkgname=codai
 pkgver=1.7.2
-pkgrel=1
+pkgrel=2
 pkgdesc="AI code assistant that helps developers through a session CLI"
 arch=("x86_64")
 url="https://github.com/meysamhadeli/codai"
@@ -21,7 +21,7 @@ sha256sums=('d439145904026d61eb3ef5e6b832b9ff47a4fa7bbc0550f6a3e84e3e79eb8278'
             '678cfc4e7653b954d33a64118591f8f37568c6b801d541138b7f315cef19d313'
             '0045a2a6c2dfe2b2931d7e3009f32a16fcb6ec55fb6cc46fc98f03fe64a0a26b'
             'c0177646a2285135f7f223d40352cbecc840ac22e7eb776c96de0fc017ccc07f'
-            '4c4bda225a1e45ec01638d4b23e9e42aeb1f95b3654d1e82f466156b466ef6c1')
+            'bb49a7159d9fbdb7e798d7113c6ee783639c86c2482ca0cf45d0b4e01b7488cd')
 
 prepare() {
   cd "$pkgname-$pkgver"
