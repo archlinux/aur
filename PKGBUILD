@@ -1,4 +1,5 @@
 # Maintainer: exu <aur _a_ frm01 _d_ net>
+# Maintainer: Joshua Prince <aur _a_ jtprince _d_ com>
 
 pkgname=kopia-ui-bin
 pkgdesc='A cross-platform backup-tool with encryption, deduplication, compression and cloud support.'
