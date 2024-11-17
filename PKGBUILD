@@ -20,7 +20,7 @@ changelog=
 source=("${pkgname}-${pkgver}::git+https://github.com/TheWisker/Shikai#tag=${pkgver}")
 noextract=()
 validpgpkeys=()
-sha512sums=('SKIP')
+sha512sums=('eac2d86cc77e27901a2cb1e0a79128ae9dbaeb4b36c053d159dc5ad5fdb8ea63bfbc2ac9d4d908bce34a72ceccb0d83b5338ae75ca6aba80c7ce083596f0fa90')
 
 prepare() {
     sed -i 's/window.__is_debug = true/window.__is_debug = false/' "${srcdir}/${pkgname}-${pkgver}/dist/index.html"
