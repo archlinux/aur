@@ -1,7 +1,7 @@
 # Maintainer: zty012 <me@zty012.de>
 # Contributor: Littlefean <2385190373@qq.com>
 pkgname=project-graph
-pkgver=0.4.0
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="A simple tool to create topology diagrams."
 arch=('x86_64')
