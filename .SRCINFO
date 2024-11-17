@@ -1,0 +1,16 @@
+pkgbase = samplerate
+	pkgdesc = Monolithic python wrapper for libsamplerate based on pybind11 and NumPy
+	pkgver = 0.2.1
+	pkgrel = 1
+	arch = any
+	license = custom:MIT License
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools-scm
+	depends = python
+	depends = libsndfile
+	source = https://files.pythonhosted.org/packages/bf/9c/d8978b13b8af2f28fdc425e2893f7419d1d6429da1c6a850be83ad095d4f/samplerate-0.2.1.tar.gz
+	sha256sums = 464d3574412024184fb7428ecbaa1b2e207bddf5fbc10a5d9ddc3fc1c7b7ab1e
+
+pkgname = samplerate
