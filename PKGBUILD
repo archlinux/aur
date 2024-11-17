@@ -1,5 +1,5 @@
 
-pkgname=yesplaymusic
+pkgname=yesplaymusic-new
 pkgver=0.4.9
 pkgrel=1
 pkgdesc="A third party music application for Netease Music"
