@@ -1,6 +1,6 @@
 pkgname=go-do-it
 _pkgname=go-do-it
-pkgver=1.0.1.r0.g720f5b4
+pkgver=2.0.0.r0.g720f5b4
 pkgrel=1
 pkgdesc="A simple to-do list written in go"
 arch=('i686' 'x86_64')
