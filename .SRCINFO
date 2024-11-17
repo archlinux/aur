@@ -1,0 +1,12 @@
+pkgbase = tinyc
+	pkgdesc = Compiler for the Tiny-C language, a stripped down version of C
+	pkgver = 20241117
+	pkgrel = 1
+	url = https://www-labs.iro.umontreal.ca/~felipe/IFT2030-Automne2002
+	arch = x86_64
+	license = custom
+	depends = glibc
+	source = tinyc.c::https://www.iro.umontreal.ca/~felipe/IFT2030-Automne2002/Complements/tinyc.c
+	sha256sums = 73856d66a6e101bc6df22c21fa0e445bafa6f2cce6df223cb4de249238ed2c1f
+
+pkgname = tinyc
