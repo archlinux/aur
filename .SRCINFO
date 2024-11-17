@@ -1,34 +1,37 @@
 pkgbase = virt-manager-git
-	pkgdesc = Console user interface for managing virtual machines
-	pkgver = 4.1.0.r323.gb83a1b0d0
+	pkgver = 4.1.0.r448.gf211e1a56
 	pkgrel = 1
-	url = http://virt-manager.org/
+	url = https://virt-manager.org/
 	arch = any
 	license = GPL
 	makedepends = git
-	makedepends = intltool
-	makedepends = python-setuptools
+	makedepends = meson
+	makedepends = ninja
+	makedepends = gtk-update-icon-cache
 	makedepends = python-cairo
 	makedepends = python-docutils
-	depends = python-gobject
-	depends = libvirt-glib
-	depends = libvirt-python
-	depends = python-requests
-	depends = libosinfo
-	depends = python-tqdm
 	source = git+https://github.com/virt-manager/virt-manager.git
 	sha512sums = SKIP
 
 pkgname = virt-install-git
+	pkgdesc = Command line tool for creating new KVM , Xen, or Linux container guests using the libvirt hypervisor
+	depends = libosinfo
+	depends = libvirt-python
+	depends = python-gobject
+	depends = python-requests
+	depends = cpio
+	depends = libisoburn
 	provides = virt-install
 	conflicts = virt-install
 
 pkgname = virt-manager-git
 	pkgdesc = Desktop user interface for managing virtual machines
-	depends = virt-install-git=4.1.0.r323.gb83a1b0d0
-	depends = vte3
+	depends = virt-install-git=4.1.0.r448.gf211e1a56
 	depends = gtk-vnc
+	depends = libvirt-glib
 	depends = spice-gtk
+	depends = vte3
 	depends = python-cairo
+	depends = gtksourceview4
 	provides = virt-manager
 	conflicts = virt-manager
