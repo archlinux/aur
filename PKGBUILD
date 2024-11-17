@@ -25,7 +25,10 @@ prepare() {
 
 build() {
   cd "$srcdir/$_pkgname-$pkgver"
-  python setup.py build
+  # Workaround for `-Wint-conversion` error in build.
+  #   Reported here: https://aur.archlinux.org/packages/python-pylzma#comment-998803
+  #   Fix here: https://github.com/fancycode/pylzma/issues/80
+  CFLAGS=-Wno-int-conversion python setup.py build
 }
 
 # This package itself needs to be installed for the check to work, so I'm just going to disable it
