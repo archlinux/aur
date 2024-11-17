@@ -1,7 +1,7 @@
 pkgbase = clipboard
 	pkgdesc = Cut, copy, and paste anything in your terminal.
-	pkgver = 0.9.1
-	pkgrel = 2
+	pkgver = 0.10.0
+	pkgrel = 1
 	url = https://getclipboard.app
 	arch = x86_64
 	arch = aarch64
@@ -16,7 +16,7 @@ pkgbase = clipboard
 	optdepends = libx11: X11 support
 	optdepends = wayland: Wayland support
 	optdepends = wayland-protocols: Wayland support
-	source = clipboard-0.9.1.tar.gz::https://github.com/Slackadays/Clipboard/archive/0.9.1.tar.gz
-	sha256sums = b59f7111c2de0369d80a379503ac056e33c59be34596d72cda600e4115002b60
+	source = clipboard-0.10.0.tar.gz::https://github.com/Slackadays/Clipboard/archive/0.10.0.tar.gz
+	sha256sums = 741717ee505a7852fab5c69740b019e2b33f81d948232894ce294ed0a55e70fb
 
 pkgname = clipboard
