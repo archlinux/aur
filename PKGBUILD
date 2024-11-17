@@ -5,7 +5,7 @@
 
 # Maintainer: tkpmonke 
 pkgname=implosion
-pkgver="0.1.1.1"
+pkgver="0.1.2"
 pkgrel=1
 epoch=
 pkgdesc="A Fast and Powerful FOSS Game Engine"
@@ -25,7 +25,7 @@ options=()
 install=
 changelog=
 noextract=()
-sha256sums=('927f1554b5d7e961a23b01f081c1763b73cc6bf371be300b580730a8852bdf26')
+sha256sums=('cdef4b90e19720fef2267f461196446b4e636477d35018fcec232c9a57a55481')
 validpgpkeys=()
 
 _pkgstate="alpha"
