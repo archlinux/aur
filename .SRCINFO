@@ -1,15 +1,16 @@
 pkgbase = python-cle-git
 	pkgdesc = A binary loader in Python
-	pkgver = 9.2.124.r1638.fe38470
+	pkgver = 9.2.129.dev0.r1646.d73ce74
 	pkgrel = 1
 	url = https://github.com/angr/cle
 	arch = any
 	license = BSD-2-Clause
+	checkdepends = python-bitstring
+	checkdepends = python-cffi
 	checkdepends = python-pytest
 	checkdepends = python-minidump
 	checkdepends = python-pyxbe
 	checkdepends = python-arpy
-	checkdepends = python-claripy
 	checkdepends = python-pyaxmlparser
 	checkdepends = python-cart
 	makedepends = git
@@ -19,10 +20,8 @@ pkgbase = python-cle-git
 	makedepends = python-setuptools
 	makedepends = python-sphinx-autodoc-typehints
 	makedepends = python-wheel
-	depends = python-archinfo-git
 	depends = python-pefile
 	depends = python-pyelftools
-	depends = python-pyvex-git
 	depends = python-sortedcontainers
 	depends = python>=3.10
 	optdepends = python-arpy: ar file format
@@ -35,11 +34,20 @@ pkgbase = python-cle-git
 	optdepends = soot: Java Bytecode
 	optdepends = uefi-firmware-parser: BIOS/Intel ME/UEFI firmware
 	provides = python-cle
-	provides = python-cle-git
 	conflicts = python-cle
 	source = python-cle-git::git+https://github.com/angr/cle.git#branch=master
 	source = angr-binaries.git::git+https://github.com/angr/binaries.git#branch=master
+	source = archinfo.git::git+https://github.com/angr/archinfo.git#branch=master
+	source = pyvex.git::git+https://github.com/angr/pyvex.git#branch=master
+	b2sums = SKIP
+	b2sums = SKIP
 	b2sums = SKIP
 	b2sums = SKIP
 
 pkgname = python-cle-git
+	depends = python-pefile
+	depends = python-pyelftools
+	depends = python-sortedcontainers
+	depends = python>=3.10
+	depends = python-claripy=9.2.129.dev0
+	depends = python-pyvex=9.2.129.dev0
