@@ -1,0 +1,5 @@
+[ipget]
+source = "github"
+github = "ipfs/ipget"
+use_max_tag = true
+prefix = "v"
