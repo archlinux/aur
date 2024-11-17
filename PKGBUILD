@@ -3,13 +3,15 @@
 pkgname=caligula-git
 _pkgname=${pkgname%-git}
 pkgver=0.4.7.r11.g5b3b9f4
-pkgrel=1
+pkgrel=3
 pkgdesc="A user-friendly, lightweight TUI for disk imaging"
 arch=('x86_64' 'aarch64' 'riscv64')
 url="https://github.com/ifd3f/${_pkgname}"
 license=('GPL-3.0-or-later')
 depends=('gcc-libs')
 makedepends=('git' 'cargo')
+conflicts=("${_pkgname}")
+provides=("${_pkgname}")
 source=("git+${url}.git")
 sha256sums=('SKIP')
 options=('!lto')
