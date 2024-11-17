@@ -1,6 +1,6 @@
 pkgbase = xdelta3-cross-gui-bin
 	pkgdesc = A cross-platform GUI for creating xDelta3 patches (binary release)
-	pkgver = 1.6.2
+	pkgver = 1.7.1
 	pkgrel = 1
 	url = https://github.com/dan0v/xdelta3-cross-gui
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = xdelta3-cross-gui-bin
 	optdepends = xdelta3: to use the system version instead of the bundled one
 	provides = xdelta3-cross-gui
 	conflicts = xdelta3-cross-gui
-	source = xdelta3-cross-gui-1.6.2.tar.gz::https://github.com/dan0v/xdelta3-cross-gui/releases/download/1.6.2/xdelta3-cross-gui_linux_AppImage_x86_64.tar.gz
-	sha256sums = 8de414362d71863d1c9bd7e6d8316dd14cb3efefa71d8ec9062f3868f1639c49
+	source = xdelta3-cross-gui-1.7.1.tar.gz::https://github.com/dan0v/xdelta3-cross-gui/releases/download/1.7.1/xdelta3-cross-gui_linux_AppImage_x86_64.tar.gz
+	sha256sums = cdf3d79d60cd4b29c943441935a9479a55125fd7b5c857c78bf85fe1fcb7dace
 
 pkgname = xdelta3-cross-gui-bin
