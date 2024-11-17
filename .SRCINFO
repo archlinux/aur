@@ -1,4 +1,4 @@
-pkgbase = ttf-adobe-source-han-sans-variables
+pkgbase = ttf-adobe-source-han-sans-cn-fonts
 	pkgver = 2.004R
 	pkgrel = 1
 	url = https://source.typekit.com/source-han-sans/
