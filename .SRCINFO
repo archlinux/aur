@@ -1,16 +1,17 @@
 pkgbase = cryptmount
 	pkgdesc = Utility allowing an ordinary user to mount an encrypted file system
-	pkgver = 6.2.0
+	pkgver = 6.3.0
 	pkgrel = 1
-	url = http://cryptmount.sourceforge.net/
+	url = https://github.com/rwpenney/cryptmount
 	arch = i686
 	arch = x86_64
 	license = GPL
 	depends = libgcrypt
 	depends = device-mapper
 	depends = util-linux
+	depends = autoconf
 	backup = etc/cryptmount/cmtab
-	source = http://downloads.sourceforge.net/project/cryptmount/cryptmount/cryptmount-6.2/cryptmount-6.2.0.tar.gz
-	sha512sums = 005d9333792a567515ce6d487d2dfa18f19cb077a64d9c356562acefc1947581d2d0f584ad623e0aab8aed1b34f1614af3a42f0c582d31e0831cdb8eb22bb7ce
+	source = https://github.com/rwpenney/cryptmount/archive/refs/tags/v6.3.0.tar.gz
+	sha512sums = 15f19a1ff7409b35be2cde3d791c8d476c98ffcaf3dd9217076703b0e0baafe999a0608a88cc51039ba2e9c26cb297261128a5efeacd1a6397c5d3300886ac4d
 
 pkgname = cryptmount

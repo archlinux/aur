@@ -1,21 +1,22 @@
-# Maintainer: Harriet O'Brien <harrietobrien at pm dot me>
+# Maintainerc: Harriet O'Brien <harrietobrien at protonmail dot me>
 # Contributor: Mike Sampson <mike at sambodata dot com>
 # Contributor: Andrea Benazzo <andy@qitty.net>
 pkgname=cryptmount
-pkgver=6.2.0
-_pkgver=6.2
+pkgver=6.3.0
+_pkgver=6.3
 pkgrel=1
 pkgdesc="Utility allowing an ordinary user to mount an encrypted file system"
 arch=('i686' 'x86_64')
-url="http://cryptmount.sourceforge.net/"
+url="https://github.com/rwpenney/cryptmount"
 license=('GPL')
-depends=(libgcrypt device-mapper util-linux)
-source=(http://downloads.sourceforge.net/project/cryptmount/cryptmount/cryptmount-$_pkgver/cryptmount-$pkgver.tar.gz)
+depends=(libgcrypt device-mapper util-linux autoconf)
+source=(https://github.com/rwpenney/cryptmount/archive/refs/tags/v$pkgver.tar.gz)
 backup=('etc/cryptmount/cmtab')
-sha512sums=('005d9333792a567515ce6d487d2dfa18f19cb077a64d9c356562acefc1947581d2d0f584ad623e0aab8aed1b34f1614af3a42f0c582d31e0831cdb8eb22bb7ce')
+sha512sums=('15f19a1ff7409b35be2cde3d791c8d476c98ffcaf3dd9217076703b0e0baafe999a0608a88cc51039ba2e9c26cb297261128a5efeacd1a6397c5d3300886ac4d')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
+  autoreconf -v -i
   ./configure --prefix=/usr --sbindir=/usr/bin --sysconfdir=/etc
   make
 }
