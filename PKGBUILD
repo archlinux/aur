@@ -65,10 +65,10 @@ EOF
     chmod +x "${pkgdir}/usr/bin/yesplaymusic"
     
     # 复制桌面文件
-    install -Dm644 public/yesplaymusic.desktop "${pkgdir}/usr/share/applications/yesplaymusic.desktop"
+    #install -Dm644 public/yesplaymusic.desktop "${pkgdir}/usr/share/applications/yesplaymusic.desktop"
     
     # 复制图标
-    install -Dm644 public/yesplaymusic.png "${pkgdir}/usr/share/icons/hicolor/128x128/apps/yesplaymusic.png"
+    #install -Dm644 public/yesplaymusic.png "${pkgdir}/usr/share/icons/hicolor/128x128/apps/yesplaymusic.png"
     
     # Make KDE happy :)
     echo 'Comment[zh_CN]=高颜值的第三方网易云播放器' >>"${pkgdir}/usr/share/applications/yesplaymusic.desktop"
