@@ -1,0 +1,168 @@
+--- exec.c.orig	2011-06-28 04:04:57.000000000 +0200
++++ exec.c	2024-11-17 19:24:46.625608425 +0100
+@@ -517,6 +517,7 @@
+ 
+ int AppendToTmpStr2(psz1, psz2, tg2)
+    char *psz1, *psz2;
++   int tg2;
+ {
+    int len1=strlen(psz1), len2=strlen(psz2), rc=0;
+    char *psz=(char*)malloc((len1+len2+1)*sizeof(char));
+--- file.c.orig	2011-06-28 04:04:57.000000000 +0200
++++ file.c	2024-11-17 19:27:00.925609597 +0100
+@@ -4724,6 +4724,7 @@
+    int ObjFile; /* equals TRUE if the file is an OBJ file */
+                 /* equals FALSE if the file is a SYM or PIN file */
+                 /* equals -1 if the file is an temporary OBJ file */
++   int GzippedObjFile;
+ {
+    struct ObjRec *obj_ptr=NULL;
+    char tmp_filename[MAXPATHLENGTH+1], tmp_filefullpath[MAXPATHLENGTH+1];
+--- import.c.orig	2011-06-28 04:04:57.000000000 +0200
++++ import.c	2024-11-17 19:30:01.245611194 +0100
+@@ -1372,7 +1372,7 @@
+ static
+ int FinishImport(remote_file, remote_tmp_fname, local_fname, which, pn_image_w,
+       pn_image_h)
+-   int remote_file, *pn_image_w, *pn_image_h;
++   int remote_file, which, *pn_image_w, *pn_image_h;
+    char *remote_tmp_fname, *local_fname;
+ {
+    char xpm_fname[MAXPATHLENGTH+1], *rest=NULL, *psz_format=NULL;
+--- polygon.c.orig	2011-06-28 04:04:58.000000000 +0200
++++ polygon.c	2024-11-17 19:32:18.258945725 +0100
+@@ -1007,7 +1007,7 @@
+ static
+ void EraseStructSplineLinesForContAndUpdateSvs(OrigX, OrigY, grid_x, grid_y,
+       pev, num_pts, psv, sn, psv2, sn2, pipt_prev, pipt_first)
+-   int OrigX, OrigY, grid_x, grid_y, sn, sn2;
++   int OrigX, OrigY, grid_x, grid_y, num_pts, sn, sn2;
+    XEvent *pev;
+    XPoint **psv, **psv2;
+    IntPointTriplet *pipt_prev, *pipt_first;
+--- rect.c.orig	2011-06-28 04:04:58.000000000 +0200
++++ rect.c	2024-11-17 19:39:09.355615997 +0100
+@@ -37,7 +37,7 @@
+ 
+ void DumpRectPath(FP, LtX, LtY, RbX, RbY, Indent, LastLF)
+    FILE *FP;
+-   int LtX, LtY, RbX, RbY, Indent;
++   int LtX, LtY, RbX, RbY, Indent, LastLF;
+ {
+    register int i;
+ 
+--- ruler.c.orig	2011-06-28 04:04:58.000000000 +0200
++++ ruler.c	2024-11-17 19:40:47.698950190 +0100
+@@ -510,6 +510,7 @@
+ 
+ static
+ void DrawVRuleTick(YOff)
++   int YOff;
+ {
+    XDrawLine(mainDisplay, vRuleWindow, revDefaultGC, 0, YOff, rulerLen, YOff);
+ }
+--- scroll.c.orig	2011-06-28 04:04:58.000000000 +0200
++++ scroll.c	2024-11-17 19:57:15.448958780 +0100
+@@ -152,7 +152,8 @@
+ 
+ int TgGetScrollHit(x, y, orientation, scroll_area_w, scroll_area_h,
+       start_frac, length, total, pn_btn_offset)
+-   int x, y, scroll_area_w, scroll_area_h, length, total, *pn_btn_offset;
++   int x, y, orientation, scroll_area_w, scroll_area_h, length, total;
++   int *pn_btn_offset;
+    double start_frac;
+ {
+    int block_start=0, block_size=0, min_block_size=1+(windowPadding<<1);
+@@ -210,7 +211,7 @@
+       scroll_area_h, start_frac, length, total)
+    Display *dpy;
+    Window win;
+-   int x_off, y_off, scroll_area_w, scroll_area_h, length, total;
++   int orientation, x_off, y_off, scroll_area_w, scroll_area_h, length, total;
+    double start_frac;
+ {
+    int block_start=0, block_size=0, min_block_size=1+(windowPadding<<1);
+--- spline.c.orig	2011-06-28 04:04:58.000000000 +0200
++++ spline.c	2024-11-17 19:45:04.632285748 +0100
+@@ -795,7 +795,7 @@
+ } *MultiSplineRecPtr;
+ 
+ XPoint *MakeMultiSplinePolyVertex(Curved, N, Smooth, XOff, YOff, NumVs, Vs)
+-   int *N, XOff, YOff, NumVs;
++   int Curved, *N, XOff, YOff, NumVs;
+    char *Smooth;
+    IntPoint *Vs;
+ {
+--- stretch.c.orig	2011-06-28 04:04:59.000000000 +0200
++++ stretch.c	2024-11-17 19:46:11.888952996 +0100
+@@ -4247,7 +4247,7 @@
+ 
+ static
+ void DoSizeAllSelToGivenWidthHeight(abs_w, abs_h, do_width, do_height)
+-   int abs_h, do_width, do_height;
++   int abs_w, abs_h, do_width, do_height;
+ {
+    struct SelRec *saved_top_sel=topSel, *saved_bot_sel=botSel, *sel_ptr=NULL;
+    int saved_h_align=horiAlign, saved_v_align=vertAlign, num_to_resize=0;
+--- tdgtbtn.c.orig	2011-06-28 04:04:59.000000000 +0200
++++ tdgtbtn.c	2024-11-17 19:48:13.765620736 +0100
+@@ -491,7 +491,7 @@
+       v_pad, btn_type, btn_style, state, font_style, str, pmosi)
+    Window parent_win;
+    TidgetInfo *parent_tidgetinfo;
+-   int ctl_id, x, y, w, h, h_pad, v_pad, state, font_style;
++   int ctl_id, x, y, w, h, h_pad, v_pad, btn_type, btn_style, state, font_style;
+    char *str;
+    MouseOverStatusInfo *pmosi;
+ {
+--- tdgtlist.c.orig	2011-06-28 04:04:59.000000000 +0200
++++ tdgtlist.c	2024-11-17 19:58:58.398959676 +0100
+@@ -1039,7 +1039,8 @@
+       v_pad, num_visible_lines, can_select, multicolor, auto_scroll_on_insert)
+    Window parent_win;
+    TidgetInfo *parent_tidgetinfo;
+-   int ctl_id, x, y, w, h_pad, v_pad, num_visible_lines, auto_scroll_on_insert;
++   int ctl_id, x, y, w, h_pad, v_pad, num_visible_lines, can_select, multicolor;
++   int auto_scroll_on_insert;
+ {
+    int bg_pixel=(threeDLook ? myLtGryPixel : myBgPixel), h=0, content_h=0;
+    TdgtList *pTdgtList=NULL;
+--- text.c.orig	2011-06-28 04:04:59.000000000 +0200
++++ text.c	2024-11-17 19:53:50.645623659 +0100
+@@ -2058,7 +2058,7 @@
+       pressed_in_same_text, obj_ptr, double_clicked, saved_text_highlight,
+       skip_post_processing, click_time)
+    int drag, from_cursor_keys, x_off, y_off, pressed_in_same_text;
+-   int double_clicked, saved_text_highlight;
++   int double_clicked, saved_text_highlight, skip_post_processing;
+    struct ObjRec *obj_ptr;
+    Time click_time;
+ {
+@@ -4759,7 +4759,7 @@
+    char *color_str;
+    int num_lines, has_ps_bitmap, cur_sb_font, cur_db_font;
+    int double_byte, db_mod_bytes, db_vertical, direction;
+-   int x, baseline_y, *pn_max_len, *pn_max_h;
++   int x, baseline_y, text_w, *pn_max_len, *pn_max_h;
+    /*
+     * (Note: text_w is only used for fileVersion <= 36)
+     */
+--- wb.c.orig	2011-06-28 04:04:59.000000000 +0200
++++ wb.c	2024-11-17 20:12:52.445633681 +0100
+@@ -20,13 +20,13 @@
+ 
+ #define _INCLUDE_FROM_WB_C_
+ 
++#include "tgifdefs.h"
++#include "cmdids.h"
++
+ #if (defined(PTHREAD) || defined(HAVE_LIBPTHREAD))
+ #include <pthread.h>
+ #endif /* (defined(PTHREAD) || defined(HAVE_LIBPTHREAD)) */
+ 
+-#include "tgifdefs.h"
+-#include "cmdids.h"
+-
+ #ifdef _HAS_STREAMS_SUPPORT
+ #include <stropts.h>
+ #include <sys/types.h>
