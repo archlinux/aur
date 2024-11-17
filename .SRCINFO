@@ -7,6 +7,7 @@ pkgbase = flatnotes
 	license = MIT
 	makedepends = npm
 	depends = python-aiofiles
+	depends = python-cryptography
 	depends = python-fastapi
 	depends = python-jose
 	depends = python-pyotp
