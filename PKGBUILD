@@ -30,12 +30,22 @@ check() {
 
 package() {
     cd "$_pkgname" || exit
-    
-    find . -mindepth 1 -maxdepth 1 \
-        \( -name 'src' -or -name 'glass' -or -name 'node_modules' -or -name 'package.json' \
-        -or -name 'README.md' -or -name 'CHANGELOG.md' -or -name 'LICENSE' \) \
-        -exec install -Dm 755 "{}" "$pkgdir/opt/glass/{}" \;
-    
+
+    (
+        cd node_modules || exit
+        find . -type f -exec install -Dm 755 "{}" "$pkgdir/opt/glass/node_modules/{}" \;
+    )
+
+    (
+        cd src || exit
+        find . -type f -exec install -Dm 755 "{}" "$pkgdir/opt/glass/src/{}" \;
+    )
+
+    install -Dm 755 CHANGELOG.md "$pkgdir/opt/glass/glass"
+    install -Dm 644 CHANGELOG.md "$pkgdir/opt/glass/package.json"
+    install -Dm 644 CHANGELOG.md "$pkgdir/opt/glass/CHANGELOG.md"
+    install -Dm 644 CHANGELOG.md "$pkgdir/opt/glass/README.md"
+
     install -Dm 644 src/resources/.desktop "$pkgdir/usr/share/applications/glass.desktop"
     install -Dm 644 src/resources/logo.png "$pkgdir/usr/share/pixmaps/glass.png"
     install -Dm 644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
