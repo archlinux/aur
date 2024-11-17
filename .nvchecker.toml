@@ -1,5 +1,5 @@
 [python-sdmetrics]
 source = "github"
 github = "sdv-dev/SDMetrics"
-use_latest_release = "true"
+use_max_tag = "true"
 prefix = "v"
