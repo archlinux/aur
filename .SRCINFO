@@ -1,7 +1,7 @@
 pkgbase = perl-future
 	pkgdesc = Perl module to represent an operation awaiting completion
 	pkgver = 0.51
-	pkgrel = 2
+	pkgrel = 1
 	url = https://metacpan.org/release/Future
 	arch = any
 	license = GPL

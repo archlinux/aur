@@ -1,7 +1,7 @@
 # Contributor: loserMcloser <reebydobalina@gmail.com>
 pkgname=perl-future
 pkgver=0.51
-pkgrel=2
+pkgrel=1
 pkgdesc='Perl module to represent an operation awaiting completion'
 _dist=Future
 arch=('any')
