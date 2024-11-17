@@ -5,7 +5,7 @@ pkgbase = photoprism-nsfw
 	url = https://github.com/photoprism/photoprism
 	arch = any
 	license = AGPL-3.0-or-later
-	source = https://dl.photoprism.org/tensorflow/nsfw.zip
+	source = https://dl.photoprism.app/tensorflow/nsfw.zip
 	sha256sums = eb5e5d22e37961c3192a4757efff883f77bc989c0efceabb1395e0959d966f14
 
 pkgname = photoprism-nsfw

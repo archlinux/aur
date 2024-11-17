@@ -9,7 +9,7 @@ pkgdesc="PhotoPrism's ${_pkgsuff} pre-training model"
 arch=("any")
 url="https://github.com/${_pkgname}/${_pkgname}"
 license=('AGPL-3.0-or-later')
-source=("https://dl.photoprism.org/tensorflow/${_pkgsuff}.zip")
+source=("https://dl.photoprism.app/tensorflow/${_pkgsuff}.zip")
 sha256sums=('eb5e5d22e37961c3192a4757efff883f77bc989c0efceabb1395e0959d966f14')
 
 package() {
