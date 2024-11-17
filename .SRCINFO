@@ -16,6 +16,8 @@ pkgbase = project-graph-nightly
 	depends = libsoup
 	depends = pango
 	depends = webkit2gtk
+	conflicts = project-graph
+	conflicts = project-graph-git
 	options = !strip
 	options = !emptydirs
 
