@@ -13,7 +13,7 @@ source=("git+https://github.com/halsschmerzen/quickrice.git")
 sha256sums=('SKIP')
 
 package() {
-    cd "$srcdir/quickrice-$pkgver"
+    cd "$srcdir/quickrice"
     python -m pip install --root="$pkgdir" --prefix=/usr --ignore-installed --no-cache-dir .
     install -Dm755 "$pkgdir/usr/bin/quickrice" "$pkgdir/usr/bin/quickrice"
 
