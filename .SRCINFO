@@ -12,11 +12,11 @@ pkgbase = photoprism-tensorflow-cpu-bin
 	conflicts = photoprism-tensorflow
 	conflicts = tensorflow115
 	replaces = tensorflow115
-	source_x86_64 = https://dl.photoprism.org/tensorflow/amd64/libtensorflow-amd64-1.15.2.tar.gz
+	source_x86_64 = https://dl.photoprism.app/tensorflow/amd64/libtensorflow-amd64-1.15.2.tar.gz
 	sha256sums_x86_64 = 6d9002dcf271a9c8ee18ce1170db7362d920dc50f74ab3b96de0ec3e829e9f37
-	source_aarch64 = https://dl.photoprism.org/tensorflow/arm64/libtensorflow-arm64-1.15.2.tar.gz
+	source_aarch64 = https://dl.photoprism.app/tensorflow/arm64/libtensorflow-arm64-1.15.2.tar.gz
 	sha256sums_aarch64 = aa78f8be149682b93c4888f3207d7fe3068cc4cb31314bea75864f6926942519
-	source_armv7h = https://dl.photoprism.org/tensorflow/arm/libtensorflow-arm-1.15.2.tar.gz
+	source_armv7h = https://dl.photoprism.app/tensorflow/arm/libtensorflow-arm-1.15.2.tar.gz
 	sha256sums_armv7h = a7685f592fb6491610d001154678a28cec77ca1f8710cac12f77ac02ea2ac01d
 
 pkgname = photoprism-tensorflow-cpu-bin
