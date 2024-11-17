@@ -1,0 +1,19 @@
+pkgbase = carch-bin
+	pkgdesc = An automated script for quick & easy Arch Linux system setup
+	pkgver = v3.0.7
+	pkgrel = 4
+	url = https://github.com/harilvfs/carch
+	arch = x86_64
+	license = Apache-2.0
+	depends = bash
+	depends = gum
+	depends = figlet
+	depends = pacman
+	provides = carch
+	conflicts = carch
+	source = https://github.com/harilvfs/carch/releases/download/v3.0.7/carch
+	source = https://raw.githubusercontent.com/harilvfs/carch/refs/heads/main/carch.desktop
+	sha256sums = 47cef8973be3ff95c96b4a187c99fa29b43d7ac11b04786fcb479e99861d72be
+	sha256sums = SKIP
+
+pkgname = carch-bin
