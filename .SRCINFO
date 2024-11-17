@@ -1,7 +1,7 @@
 pkgbase = kf6-servicemenus-pdftools
 	pkgdesc = KDE service menus for PDF file processing
 	pkgver = 1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/marco-mania/kf6-servicemenus-pdftools
 	arch = any
 	license = GPL
@@ -15,8 +15,7 @@ pkgbase = kf6-servicemenus-pdftools
 	depends = texlive-latexrecommended
 	conflicts = kde-servicemenus-imagetools
 	conflicts = kf5-servicemenus-imagetools
-	replaces = kde-servicemenus-imagetools
-	replaces = kf5-servicemenus-imagetools
+	replaces = kf5-servicemenus-pdf
 	source = https://github.com/marco-mania/kf6-servicemenus-pdftools/archive/refs/tags/v1.tar.gz
 	sha256sums = 82c0d6c937d36a4e9e88ba0b9a988204f215ff99d8a399b463f032a45c31780b
 

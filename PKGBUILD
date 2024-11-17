@@ -2,14 +2,14 @@
 
 pkgname=kf6-servicemenus-pdftools
 pkgver=1
-pkgrel=1
+pkgrel=2
 pkgdesc='KDE service menus for PDF file processing'
 arch=('any')
 url='https://github.com/marco-mania/kf6-servicemenus-pdftools'
 license=('GPL')
 depends=('dolphin' 'kdialog' 'ghostscript' 'texlive-bin' 'poppler' 'pdftk' 'texlive-binextra' 'texlive-latexrecommended')
 conflicts=("kde-servicemenus-imagetools" "kf5-servicemenus-imagetools")
-replaces=("kde-servicemenus-imagetools" "kf5-servicemenus-imagetools")
+replaces=("kf5-servicemenus-pdf")
 
 source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
 
