@@ -5,7 +5,7 @@
 basename='rq'
 pkgname='python-rq'
 pkgver=2.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Simple job queues for Python"
 arch=(any)
 license=("BSD")
@@ -16,7 +16,7 @@ source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
 
 build() {
     cd "$srcdir/$basename-$pkgver"
-    hatch build -t wheel
+    hatch build -c -t wheel
 }
 
 package() {
