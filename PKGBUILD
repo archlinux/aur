@@ -34,7 +34,7 @@ sha256sums=('9b240d6b605d547c9dbc7d6222a0d2f28bfb0586201e01181e1d0e25bb83885a') 
 prepare() {
     cd "${srcdir}/YesPlayMusic-${pkgver}"
     # 安装项目依赖
-    npm install
+    npm install --legacy-peer-deps
 }
 
 build() {
