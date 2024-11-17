@@ -34,7 +34,6 @@ depends=(
   'python-wand'
   'python-unidecode'
   'python-blinker'
-  'python-iso639'
   'python-lxml'
   'python-pycountry'
 )

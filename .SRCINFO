@@ -29,7 +29,6 @@ pkgbase = calibre-web
 	depends = python-wand
 	depends = python-unidecode
 	depends = python-blinker
-	depends = python-iso639
 	depends = python-lxml
 	depends = python-pycountry
 	optdepends = python-jsonschema: kobo sync support
