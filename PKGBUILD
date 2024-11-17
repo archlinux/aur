@@ -1,41 +1,24 @@
-# Maintainer: Chih-Hsuan Yen <base64_decode("eWFuMTIxMjUgQVQgYXJjaGxpbnV4IERPVCBvcmc=")>
-
-pkgname=python-onnx2pytorch
-pkgver=0.4.1
+_module='onnx2pytorch'
+pkgname=python-$_module
+_src_folder='onnx2pytorch-0.5.1'
+pkgver='0.5.1'
 pkgrel=1
-pkgdesc='Library to transform onnx model to pytorch'
-arch=(any)
-url='https://github.com/ToriML/onnx2pytorch'
-license=(Apache)
-depends=(python python-pytorch python-onnx python-torchvision)
-makedepends=(python-setuptools python-build python-installer python-wheel)
-checkdepends=(python-pytest python-onnxruntime)
-source=("https://github.com/ToriML/onnx2pytorch/archive/v$pkgver/onnx2pytorch-v$pkgver.tar.gz"
-        onnxruntime-specify-provider.diff)
-sha256sums=('afda9f25f3ea639de57a3b432c970ed62878a73084db5febac5c6c2c4c98ba9b'
-            'e446bd33cfb0ad000d2d4b73e16feb8bbdb245f41b8635be9a9a52d7a911fc52')
-
-prepare() {
-  cd onnx2pytorch-$pkgver
-  patch -Np1 -i ../onnxruntime-specify-provider.diff
-}
+pkgdesc="Library to transform onnx model to pytorch."
+url="https://github.com/ToriML/onnx2pytorch"
+depends=('python' 'python-pytorch' 'python-onnx' 'python-torchvision')
+makedepends=('python-build' 'python-installer' 'python-wheel')
+license=('custom:Apache Software License')
+arch=('any')
+source=("https://files.pythonhosted.org/packages/66/85/ff182f63c81419607182184d4dc7da3bbfc244dcdef3ac4aea2f1ab6b1a0/onnx2pytorch-0.5.1.tar.gz")
+sha256sums=('5c3ddf004838e67793817751affb426d77955290e473b492a058fc6edcee8d14')
 
 build() {
-  cd onnx2pytorch-$pkgver
-  python -m build --wheel --no-isolation
-}
-
-check() {
-  cd onnx2pytorch-$pkgver
-  # InstanceNorm is broken with pytorch 1.11, in which relevant classes are changed
-  # test_lstm crashes with current pytorch https://bugs.archlinux.org/task/74593
-  PYTHONPATH="$PWD" pytest tests \
-    --ignore tests/onnx2pytorch/operations/test_instancenorm.py \
-    --ignore tests/onnx2pytorch/convert/test_lstm.py
+    cd "${srcdir}/${_src_folder}"
+    python -m build --wheel --no-isolation
 }
 
 package() {
-  cd onnx2pytorch-$pkgver
-  python -m installer --destdir="$pkgdir" dist/*.whl
-  install -Dm644 LICENSE -t "$pkgdir"/usr/share/licenses/$pkgname
+
+    cd "${srcdir}/${_src_folder}"
+    python -m installer --destdir="${pkgdir}" dist/*.whl
 }
