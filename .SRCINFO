@@ -1,13 +1,26 @@
 pkgbase = howdy-bin
-	pkgdesc = Windows Hello™ style facial authentication for Linux
-	pkgver = 2.6.0
+	pkgdesc = Windows Hello style facial authentication for Linux
+	pkgver = 2.6.1
 	pkgrel = 1
 	url = https://github.com/boltgolt/howdy
+	install = howdy.install
 	arch = x86_64
-	groups = base-devel
 	license = MIT
-	source = https://github.com/boltgolt/howdy/releases/download/v2.6.0/howdy_2.6.0.deb
-	md5sums = 06e40cb2509db50c62924eb59f64e256
+	depends = libinih
+	depends = libevdev
+	depends = python
+	depends = python-dlib
+	depends = python-opencv
+	provides = howdy
+	conflicts = howdy
+	backup = usr/lib/security/howdy/config.ini
+	source = howdy.deb::https://github.com/boltgolt/howdy/releases/download/v2.6.1/howdy_2.6.1.deb
+	source = https://github.com/davisking/dlib-models/raw/master/dlib_face_recognition_resnet_model_v1.dat.bz2
+	source = https://github.com/davisking/dlib-models/raw/master/mmod_human_face_detector.dat.bz2
+	source = https://github.com/davisking/dlib-models/raw/master/shape_predictor_5_face_landmarks.dat.bz2
+	md5sums = b3b67e38359aba3860e4931d5dd3340b
+	md5sums = 1b31cc4419cc8f1018117249b64bd683
+	md5sums = 5edccec8ac713d743be4865ff6ead7f7
+	md5sums = ef591cf713630226b35b11d0e1733118
 
 pkgname = howdy-bin
-
