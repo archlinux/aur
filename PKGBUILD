@@ -1,5 +1,5 @@
 # Maintainer: btstream <btstream@gmail.com>
-pkgbase=ttf-adobe-source-han-sans-variables
+pkgbase=ttf-adobe-source-han-sans-cn-fonts
 pkgname=(ttf-adobe-source-han-sans-{cn,hk,tw,jp,kr}-variables)
 pkgver=2.004R
 pkgrel=1
