@@ -7,8 +7,7 @@ pkgdesc="An automated script for quick & easy Arch Linux system setup"
 arch=('x86_64')
 url="https://github.com/harilvfs/$_pkgname"
 license=('Apache-2.0')
-depends=('bash' 'pacman')
-optdepends=('gum' 'figlet')
+depends=('bash' 'gum' 'figlet' 'pacman')
 source=(
     "https://github.com/harilvfs/$_pkgname/releases/download/$pkgver/$_pkgname"
     "https://raw.githubusercontent.com/harilvfs/$_pkgname/refs/heads/main/$_pkgname.desktop"
