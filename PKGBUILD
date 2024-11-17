@@ -6,12 +6,14 @@
 # Contributor: maleadt <tim dot besard at gmail dot com>
 pkgname="turbovnc"
 pkgdesc="A derivative of Virtual Network Computing that is tuned to provide peak performance for 3D and video workloads"
-pkgver=3.1.2
+pkgver=3.1.3
 pkgrel=2
 arch=('i686' 'x86_64' 'aarch64' 'armv7h')
 url="http://www.turbovnc.org/"
 license=('GPL-2.0-or-later')
-depends=('hicolor-icon-theme'
+depends=('bash'
+         'glibc'
+         'hicolor-icon-theme'
          'java-runtime>11'
          'libglvnd'
          'libjpeg-turbo'
@@ -37,11 +39,9 @@ makedepends=('cmake>=3.12'
 conflicts=('tigervnc' 'tigervnc-git' 'tightvnc' 'tightvnc-git')
 backup=(etc/turbovnc/turbovncserver.conf
         etc/turbovnc/turbovncserver-security.conf)
-source=("https://github.com/TurboVNC/turbovnc/releases/download/$pkgver/$pkgname-$pkgver.tar.gz"{,.sig}
-        'vncserver.service')
-sha256sums=('09809ac107ac038bd896c3a89d3988d5222e8d0f26bcbb62e92b65bced5b30e8'
-            'd01405273c3d4e350dd792f33afc65186aa572709789efead0fc9c7f73e084f5'
-            'ccadf1fc708fad601e6113464d6c533a629f6dc9116f6071347cd0b465c1f48b')
+source=("https://github.com/TurboVNC/turbovnc/releases/download/$pkgver/$pkgname-$pkgver.tar.gz"{,.sig})
+sha256sums=('fa5df2691ad0755cec790f631727791abfec7a35684b2ae23283e4ae4376adae'
+            'ee7aff6aa7904b5f928cb42ff967c234c056d4265193992fd011ab32f7a61058')
 validpgpkeys=(AE1A7BA4EFFF9A9987E1474C4BACCAB36E7FE9A1) # The VirtualGL Project <information@VirtualGL.org>
 
 build() {
@@ -62,9 +62,12 @@ build() {
 }
 
 package() {
-	install -D -m644 vncserver.service "${pkgdir}"/usr/lib/systemd/system/vncserver.service
 	cd build
 	make DESTDIR="${pkgdir}" install
-	rm -f "${pkgdir}"/usr/share/man/man1/Xserver.1
-	rm -r "${pkgdir}"/etc/turbovnc/init.d
+	rm -f "${pkgdir}/usr/share/man/man1/Xserver.1"
+	rm -r "${pkgdir}/etc/turbovnc/init.d"
+	printf "[Desktop Entry]\nName=TurboVNC Viewer\nComment=TurboVNC client application\n\
+Exec=/usr/bin/vncviewer\nTerminal=false\nIcon=turbovnc\nType=Application\n\
+Categories=Application;Utility;\n" >> tvncviewer.desktop
+	install -Dm755 tvncviewer.desktop "${pkgdir}/usr/share/applications/tvncviewer.desktop"
 }
