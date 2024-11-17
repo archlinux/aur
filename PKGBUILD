@@ -1,5 +1,5 @@
 # Maintainer: McKay Humpherys <mckaybhumpherys@gmail.com>
-# Maintainter: Eric Busch <me@etbus.ch>
+# Maintainer: Eric Busch <me@etbus.ch>
 # Contributor: McKay
 pkgname=digitalwatchdog-client
 pkgver=5.1.5.39242
