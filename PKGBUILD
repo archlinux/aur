@@ -2,7 +2,7 @@
 
 pkgname=ascii-battleship
 pkgver=1.6
-pkgrel=2
+pkgrel=3
 pkgdesc="An ASCII Battleship game built in Java that can be played in the terminal."
 url="https://github.com/allancoding/ascii-battleship"
 license=('Apache-2.0')
@@ -14,7 +14,11 @@ package() {
     install -d "${pkgdir}/usr/share/java/${pkgname}"
     install -Dm644 "${srcdir}/Ascii_Battleship.jar" "${pkgdir}/usr/share/java/${pkgname}/Ascii_Battleship.jar"
     echo "#!/bin/sh" > "${srcdir}/ascii-battleship.sh"
+    echo 'if [ "$1" = "-v" ]; then' >> "${srcdir}/ascii-battleship.sh"
+    echo "echo 'Version ${pkgver}-${pkgrel}'" >> "${srcdir}/ascii-battleship.sh"
+    echo "else" >> "${srcdir}/ascii-battleship.sh"
     echo "java -jar /usr/share/java/${pkgname}/Ascii_Battleship.jar" >> "${srcdir}/ascii-battleship.sh"
+    echo "fi" >> "${srcdir}/ascii-battleship.sh"
     chmod +x "${srcdir}/ascii-battleship.sh"
     install -Dm755 "${srcdir}/ascii-battleship.sh" "${pkgdir}/usr/bin/ascii-battleship"
 }

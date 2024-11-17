@@ -1,0 +1,4 @@
+pkg/*
+src/*
+Ascii_Battleship.jar
+*.pkg.tar.zst

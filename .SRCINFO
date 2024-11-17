@@ -1,7 +1,7 @@
 pkgbase = ascii-battleship
 	pkgdesc = An ASCII Battleship game built in Java that can be played in the terminal.
 	pkgver = 1.6
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/allancoding/ascii-battleship
 	arch = any
 	license = Apache-2.0
