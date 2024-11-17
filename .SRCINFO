@@ -1,0 +1,23 @@
+pkgbase = ttf-adobe-source-han-sans-variables
+	pkgver = 2.004R
+	pkgrel = 1
+	url = https://source.typekit.com/source-han-sans/
+	arch = any
+	license = OFL-1.1
+	source = https://github.com/adobe-fonts/source-han-sans/releases/download/2.004R/SourceHanSans-VF.zip
+	sha256sums = 49c35b06645c8df7be3795be1b55363fa863b2fbd6f296340fdc61a37492ddc5
+
+pkgname = ttf-adobe-source-han-sans-cn-variables
+	pkgdesc = Adobe Source Han Sans Subset TTF - Simplified Chinese TrueType fonts
+
+pkgname = ttf-adobe-source-han-sans-hk-variables
+	pkgdesc = Adobe Source Han Sans Subset TTF - Traditional Chinese (Hong Kong) TrueType fonts
+
+pkgname = ttf-adobe-source-han-sans-tw-variables
+	pkgdesc = Adobe Source Han Sans Subset TTF - Traditional Chinese (Taiwan) Chinese TrueType fonts
+
+pkgname = ttf-adobe-source-han-sans-jp-variables
+	pkgdesc = Adobe Source Han Sans Subset TTF - Japanese TrueType fonts
+
+pkgname = ttf-adobe-source-han-sans-kr-variables
+	pkgdesc = Adobe Source Han Sans Subset TTF - Korean TrueType fonts
