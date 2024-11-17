@@ -10,7 +10,7 @@ pkgbase = photoprism-tensorflow-avx-bin
 	conflicts = photoprism-tensorflow
 	conflicts = tensorflow115
 	replaces = tensorflow115
-	source = https://dl.photoprism.org/tensorflow/amd64/libtensorflow-amd64-avx-1.15.2.tar.gz
+	source = https://dl.photoprism.app/tensorflow/amd64/libtensorflow-amd64-avx-1.15.2.tar.gz
 	sha256sums = 00f2ea3828be9b8048e2fa0bf8e7c940c41a5cf504fe1c7e412f3fe5715995e0
 
 pkgname = photoprism-tensorflow-avx-bin

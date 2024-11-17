@@ -11,7 +11,7 @@ pkgdesc="PhotoPrism Tensorflow 1.15 with CPU AVX support"
 arch=("x86_64")
 url="https://github.com/tensorflow/tensorflow"
 license=('Apache-2.0')
-source=("https://dl.photoprism.org/tensorflow/amd64/libtensorflow-amd64-avx-${pkgver}.tar.gz")
+source=("https://dl.photoprism.app/tensorflow/amd64/libtensorflow-amd64-avx-${pkgver}.tar.gz")
 sha256sums=("00f2ea3828be9b8048e2fa0bf8e7c940c41a5cf504fe1c7e412f3fe5715995e0")
 
 package() {
