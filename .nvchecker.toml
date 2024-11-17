@@ -1,0 +1,4 @@
+[victoriametrics]
+source = "git"
+git = "https://github.com/VictoriaMetrics/VictoriaMetrics.git"
+prefix = "v"
