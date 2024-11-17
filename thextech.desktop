@@ -1,0 +1,13 @@
+[Desktop Entry]
+Name=TheXTech
+GenericName=TheXTech
+Comment=The modern C++ port and successor of the SMBX engine
+Encoding=UTF-8
+Version=1.0
+Type=Application
+Terminal=false
+Icon=thextech
+Exec=thextech %F
+Categories=Game;
+StartupWMClass=thextech
+
