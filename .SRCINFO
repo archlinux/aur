@@ -1,0 +1,16 @@
+pkgbase = python-odoo-bikeshop
+	pkgdesc = An Odoo 18 plugin for managing a bicycle shop.
+	pkgver = 0.0.2
+	pkgrel = 1
+	url = https://apps.odoo.com/apps/modules/18.0/bikeshop
+	arch = any
+	license = GPL-3.0-only
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-poetry
+	makedepends = python-wheel
+	depends = odoo
+	source = python-odoo-bikeshop-0.0.2.tar.gz::https://codeberg.org/atlbikeshed/odoo-bikeshop/archive/v0.0.2.tar.gz
+	sha256sums = 3be558f53a563583267959a3f73de907931ab355c203cedef2021e99be545574
+
+pkgname = python-odoo-bikeshop
