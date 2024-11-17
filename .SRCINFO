@@ -1,11 +1,11 @@
 pkgbase = python-rq
 	pkgdesc = Simple job queues for Python
 	pkgver = 2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/rq/rq
 	arch = any
 	license = BSD
-	makedepends = python-build
+	makedepends = python-hatch
 	makedepends = python-installer
 	depends = python
 	depends = python-click

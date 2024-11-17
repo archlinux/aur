@@ -5,18 +5,18 @@
 basename='rq'
 pkgname='python-rq'
 pkgver=2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple job queues for Python"
 arch=(any)
 license=("BSD")
 url="https://github.com/rq/rq"
-makedepends=("python-build" "python-installer")
+makedepends=("python-hatch" "python-installer")
 depends=('python' 'python-click' 'python-redis')
 source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
 
 build() {
     cd "$srcdir/$basename-$pkgver"
-    python -m build --wheel --no-isolation
+    hatch build -t wheel
 }
 
 package() {
