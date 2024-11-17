@@ -1,6 +1,6 @@
 pkgbase = motionplus
 	pkgdesc = Monitor and record video signals from many types of cameras
-	pkgver = 0.2.0
+	pkgver = 0.2.2
 	pkgrel = 1
 	url = https://github.com/Motion-Project/motionplus
 	arch = x86_64
@@ -19,9 +19,9 @@ pkgbase = motionplus
 	depends = fftw
 	optdepends = gettext: native language support
 	backup = etc/motionplus/motionplus.conf
-	source = motionplus-0.2.0.tar.gz::https://github.com/Motion-Project/motionplus/archive/refs/tags/release-0.2.0.tar.gz
+	source = motionplus-0.2.2.tar.gz::https://github.com/Motion-Project/motionplus/archive/refs/tags/release-0.2.2.tar.gz
 	source = motionplus.service
-	b2sums = 196d6ea51cb76428986be84463616c4136c63de12eb9e2f0dd8b43dd37533cd6a83aef363441dd254fbcc2d3dd256589e8bda090e2861e2844a611a6ef17ff32
+	b2sums = 0a1be21e97a88008e9002e9a54e6257681f1e3bbcd670319fec24aa1d4bb1bed94670fcc88380dd9fa57694531102c626d81eaa7f1dcfbf742d211da140bd571
 	b2sums = baf8c1cd1b742b834e3faa45315d7187e89d2e439751ee8a99fbde117fd504830d5990540be96c9672ec03efdc9c8fd2b87bd507ab74fe73a30cf16826a3f4f6
 
 pkgname = motionplus
