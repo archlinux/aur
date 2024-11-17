@@ -5,7 +5,7 @@ pkgver=2.1.2
 pkgrel=1
 pkgdesc='A plugin for ofxstatement to convert CSV-formatted Paypal exports to OFX format.'
 arch=('any')
-url="https://pypi.org/project/ofxstatement-paypal/"
+url="https://github.com/EtsBiz4Africa/ofxstatement-paypal"
 license=('Apache-2.0')
 depends=(
 	ofxstatement
@@ -14,8 +14,8 @@ depends=(
 makedepends=(
 	python-setuptools
 )
-source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('f535a8eb401abb01c1c0ebb6f44c5eba2fa2567df8bd6c65dab111daa061cc3f')
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
+sha256sums=('ebb7a5fa63e4d4ef990c3a2a42790481b01495b63ed198711a48e5476e685809')
 
 build() {
 	cd ${pkgname}-${pkgver}
