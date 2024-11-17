@@ -432,6 +432,10 @@ function dbusProxy() {
 			--call=org.fcitx.Fcitx.InputContext1.*=* \
 			--call=org.freedesktop.portal.Request=* \
 			--talk=org.freedesktop.portal.Desktop \
+			--talk=org.freedesktop.IBus.Portal \
+			--talk=org.freedesktop.IBus.Portal.* \
+			--call=org.freedesktop.IBus.Portal=* \
+			--call=org.freedesktop.IBus.Portal.*=* \
 			--own="${busName}" \
 			--broadcast=org.freedesktop.portal.*=@/org/freedesktop/portal/* \
 			--call=org.a11y.atspi.Registry=org.a11y.atspi.DeviceEventController.NotifyListenersAsync@/org/a11y/atspi/registry/deviceeventcontroller \
