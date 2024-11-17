@@ -16,7 +16,7 @@ pkgbase = openfreebuds
 	depends = python-qasync
 	depends = python-aiohttp
 	depends = python-pillow
-	source = openfreebuds-0.15.0::git+https://github.com/melianmiko/openfreebuds.git#tag=v0.15.0-1
+	source = openfreebuds-0.15.0::git+https://github.com/melianmiko/openfreebuds.git
 	md5sums = SKIP
 
 pkgname = openfreebuds
