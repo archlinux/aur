@@ -1,0 +1,10 @@
+--- a/src/main.cc	2024-11-17 17:00:13.267422962 -0500
++++ b/src/main.cc_patched	2024-11-17 17:00:06.277579782 -0500
+@@ -229,6 +229,7 @@
+       render_it (gc, flags, width, height, scale);
+ 
+       Image img (Geometry (gc.width, gc.height), timing::vColor_Bg);
++      img.font(timing::vFont);
+       gc.draw (img);
+       img.write (outfile);
+ #endif /* ! LITE */

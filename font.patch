@@ -1,0 +1,11 @@
+--- a/src/timing.cc	2024-11-17 16:42:57.382941174 -0500
++++ b/src/timing.cc_patched	2024-11-17 16:42:43.026690662 -0500
+@@ -37,7 +37,7 @@
+ int timing::vLineWidth = 1;
+ int timing::vCellHt = 32;
+ int timing::vCellW = 64;
+-std::string timing::vFont = "Helvetica";
++std::string timing::vFont = "Noto-Sans-Thin";
+ std::string timing::vColor_Bg = "white";
+ std::string timing::vColor_Fg = "black";
+ std::string timing::vColor_Dep = "blue";
