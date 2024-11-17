@@ -1,9 +1,10 @@
-# Maintainer: Chris Down <chris@chrisdown.name>
+# Maintainer: Pranav Sharma <pranav.sharma.ama@gmail.com>
+# Contributor: Chris Down <chris@chrisdown.name>
 # Contributor: Vladimir Chizhov <jagoterr@gmail.com>
 # Contributor: Jochen Schalanda <jochen+aur (-AT-) schalanda.name>
 # Contributor: Ichimonji10 <Ichimonji10@gmail.com>
 pkgname=rbenv
-pkgver=1.2.0
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="Simple Ruby version manager"
 arch=('any')
@@ -15,7 +16,7 @@ conflicts=('rbenv-git')
 install="rbenv.install"
 noextract=("v${pkgver}")
 source=("https://github.com/rbenv/rbenv/tarball/v${pkgver}")
-md5sums=('3ef4eea80b9a4f85f3978beb25665a2a')
+md5sums=('a7a67a60320cde5616b3a532a24f3756')
 
 build() {
     cd $srcdir
