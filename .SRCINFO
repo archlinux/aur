@@ -1,0 +1,14 @@
+pkgbase = quickrice
+	pkgdesc = A simple CLI Tool to change GTK Based desktops
+	pkgver = 1.0.3
+	pkgrel = 1
+	url = https://pypi.org/project/quickrice/
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = git
+	depends = python
+	source = git+https://github.com/halsschmerzen/quickrice.git#tag=v1.0.3
+	sha256sums = SKIP
+
+pkgname = quickrice
