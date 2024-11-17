@@ -1,4 +1,5 @@
-pkg/
-src/
-howdy_*.deb
-howdy-bin-*.pkg.tar
+*/
+*.dat.bz2
+*.pkg.tar.zst
+*.deb
+*.tar.xz
