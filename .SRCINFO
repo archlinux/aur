@@ -1,0 +1,17 @@
+pkgbase = thextech-assetpack-aod
+	pkgdesc = Adventures of Demo game assets for TheXTech
+	pkgver = v1.3.7.beta
+	pkgrel = 1
+	url = https://github.com/Wohlstand/TheXTech
+	arch = any
+	license = custom
+	makedepends = p7zip
+	depends = thextech
+	provides = thextech-assetpack
+	conflicts = thextech-supermariobrosx
+	noextract = assets.7z
+	options = !strip
+	source = assets.7z::https://github.com/TheXTech/TheXTech/releases/download/v1.3.7-beta/thextech-adventure-of-demo-assets-full-v1.3.7-beta.7z
+	sha256sums = 6484e481a929ec5764b250ab8a053f1b5d0f938fdcd5fd0a9986b7671b31af42
+
+pkgname = thextech-assetpack-aod
