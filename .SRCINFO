@@ -1,5 +1,5 @@
 pkgbase = lq-bin
-	pkgdesc = jq compatible yq implementation in rust
+	pkgdesc = jq compatible yq/tq implementation in rust
 	pkgver = 0.12.2
 	pkgrel = 1
 	url = https://github.com/clux/lq
