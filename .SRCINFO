@@ -1,0 +1,11 @@
+pkgbase = zeon-k98_pro-conffix
+	pkgdesc = ZEON K98 or K98 Pro config fix [Fn] for driver
+	pkgver = 1.0.0
+	pkgrel = 1
+	arch = any
+	license = GPLv3
+	depends = base
+	source = zeonk98_pro.conf
+	sha256sums = 576f3eddbd002c0f8fe6548b7f9e864d57ad23f6f7bd1ef8b49f3c6f27a762d0
+
+pkgname = zeon-k98_pro-conffix
