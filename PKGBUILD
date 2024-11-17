@@ -71,8 +71,8 @@ EOF
     #install -Dm644 public/yesplaymusic.png "${pkgdir}/usr/share/icons/hicolor/128x128/apps/yesplaymusic.png"
     
     # Make KDE happy :)
-    echo 'Comment[zh_CN]=高颜值的第三方网易云播放器' >>"${pkgdir}/usr/share/applications/yesplaymusic.desktop"
-    sed -i -E "s|Categories=Music;|Categories=Music;AudioVideo;Player;|" "${pkgdir}/usr/share/applications/yesplaymusic.desktop"
+    #echo 'Comment[zh_CN]=高颜值的第三方网易云播放器' >>"${pkgdir}/usr/share/applications/yesplaymusic.desktop"
+    #sed -i -E "s|Categories=Music;|Categories=Music;AudioVideo;Player;|" "${pkgdir}/usr/share/applications/yesplaymusic.desktop"
 }
 
 post_install() {
