@@ -9,6 +9,7 @@ pkgbase = python-cyaron-git
 	makedepends = python-installer
 	makedepends = python-setuptools
 	makedepends = python-wheel
+	makedepends = python-poetry-core
 	depends = python
 	depends = python-colorful
 	depends = python-xeger

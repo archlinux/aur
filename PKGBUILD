@@ -20,6 +20,7 @@ makedepends=(
 	'python-installer'
 	'python-setuptools'
 	'python-wheel'
+    'python-poetry-core'
 )
 source=("${_name}::git+https://github.com/luogu-dev/cyaron.git")
 sha256sums=('SKIP')
