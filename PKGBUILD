@@ -1,8 +1,8 @@
 # Maintainer : envolution
 
 pkgname=codai
-pkgver=1.7.1
-pkgrel=2
+pkgver=1.7.2
+pkgrel=1
 pkgdesc="AI code assistant that helps developers through a session CLI"
 arch=("x86_64")
 url="https://github.com/meysamhadeli/codai"
@@ -17,11 +17,11 @@ source=(
   "config.yml.sample"
   "codai.install"
 )
-sha256sums=('1e73fe8072fcdabb4a683f8182473d190082ff560014f9baafdcb1a00a5601e2'
+sha256sums=('d439145904026d61eb3ef5e6b832b9ff47a4fa7bbc0550f6a3e84e3e79eb8278'
             '678cfc4e7653b954d33a64118591f8f37568c6b801d541138b7f315cef19d313'
             '0045a2a6c2dfe2b2931d7e3009f32a16fcb6ec55fb6cc46fc98f03fe64a0a26b'
             'c0177646a2285135f7f223d40352cbecc840ac22e7eb776c96de0fc017ccc07f'
-            '5abf1acb4c09aa88a51ba5062ca9e0c3795edb4f5e990293f0e4e81e5de9bfca')
+            '4c4bda225a1e45ec01638d4b23e9e42aeb1f95b3654d1e82f466156b466ef6c1')
 
 prepare() {
   cd "$pkgname-$pkgver"
@@ -46,7 +46,7 @@ check() {
 package() {
   install -Dm755 "codai-wrapper.sh" "$pkgdir/usr/bin/codai"
   install -Dm644 "codai.env.sample" "$pkgdir/usr/share/codai/codai.env.sample"
-  install -Dm644 "config.yml.sample" "$pkgdir/usr/share/codai/config.yaml.sample"
+  install -Dm644 "config.yml.sample" "$pkgdir/usr/share/codai/codai-config.yml.sample"
   cd "$pkgname-$pkgver"
   install -Dm755 "build/codai" "$pkgdir/usr/bin/codai-bin"
   install -Dm644 "README.md" "$pkgdir/usr/share/doc/$pkgname/README.md"
