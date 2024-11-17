@@ -1,7 +1,7 @@
 # Maintainer: Yakov P potapovj(at)gmail(dot)com
 pkgname=sreda
-pkgver=24.5.0
-pkgrel=3
+pkgver=24.5.4.47626
+pkgrel=1
 pkgdesc="SREDA"
 arch=('x86_64')
 url="https://sreda.digital.gov.ru/"
@@ -13,7 +13,7 @@ _archive_name="${pkgname}.tar.xz"
 _app_name="${pkgname}.tar.xz"
 
 source=(
-	"https://dl.armgs.team/downloads/linux/x64/latest/${_app_name}"
+	"https://dl.armgs.team/downloads/linux/x64/${pkgver}/${_app_name}"
 	"sreda.desktop"
 )
 sha256sums=(
