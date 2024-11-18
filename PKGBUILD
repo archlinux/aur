@@ -1,18 +1,19 @@
-# Maintainer: Vojtěch Aschenbrenner <v@asch.cz>
+# Maintainer: envolution
+# Contributor: Vojtěch Aschenbrenner <v@asch.cz>
 
 _gemname=ncursesw
-pkgname=ruby-$_gemname
-pkgver=1.4.9
+pkgname=ruby-ncursesw
+pkgver=1.4.11
 pkgrel=1
-pkgdesc='This wrapper provides access to the functions, macros, global variables and constants of the ncurses library.  These are mapped to a Ruby Module named "Ncurses":  Functions and external variables are implemented as singleton functions of the Module Ncurses.'
+pkgdesc='wraps functions, macros, global variables and constants of the ncurses library.'
 arch=(i686 x86_64)
 url='http://github.com/sup-heliotrope/ncursesw-ruby'
-license=(LGPL-2.1)
+license=(GPL-2.0-or-later)
 depends=(ruby)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha1sums=('18ae6580bf8ead6a48ed1e63eb2b44dc71dc0002')
+sha1sums=('72d2c0ebeab9616fdc7582c37fd0f9262c023054')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
