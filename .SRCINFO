@@ -1,6 +1,6 @@
 pkgbase = fastanime-git
 	pkgdesc = FastAnime, anime site experience from the terminal.
-	pkgver = 2.7.7
+	pkgver = 2.7.9
 	pkgrel = 1
 	url = https://github.com/Benex254/FastAnime
 	arch = x86_64
@@ -8,6 +8,7 @@ pkgbase = fastanime-git
 	makedepends = python>=3.10
 	makedepends = git
 	makedepends = uv
+	makedepends = python-installer
 	optdepends = mpv: video player
 	optdepends = webtorrent-cli: nyaa torrents
 	optdepends = ffmpeg: download hls streams
