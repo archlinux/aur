@@ -1,12 +1,11 @@
-# Maintainer: Mikael Blomstrand <gmail: kmbloms>
-# Contributor: MaryJaneInChain <gmail.com@maryjaneinchain>
+# Maintainer: envolution
 # Contributor: Michael Goehler <somebody dot here at gmx dot de>
 
 pkgname=remarkable
-pkgver=1.87
-pkgrel=7
+pkgver=1.95
+pkgrel=1
 pkgdesc="A free fully featured markdown editor for Linux."
-arch=('any')
+arch=('i686' 'x86_64')
 url="http://remarkableapp.github.io"
 license=('MIT')
 depends=('python'
@@ -14,50 +13,52 @@ depends=('python'
          'python-gobject'
          'python-markdown'
          'python-beautifulsoup4'
-         'python-lxml'
-         'python-setuptools'
-         'webkit2gtk'
-         'wkhtmltopdf'
-         'gtksourceview3'
-         )
-makedepends=('python')
-optdepends=('python-lxml: export to HTML format support'
-            'python-gtkspellcheck: Spellcheck (might cause problems)')
-
-install="remarkable.install"
-source=("https://github.com/jamiemcg/Remarkable/archive/v${pkgver}.tar.gz"
-        "stable.patch::https://github.com/jamiemcg/Remarkable/compare/v1.87...mbloms:stable.patch"
-        "https://patch-diff.githubusercontent.com/raw/jamiemcg/Remarkable/pull/369.patch"
-        "remarkable.install")
-
-sha1sums=('a492dc5d0a276f36846a99287ae93c02e22a5cd8'
-          '8c052787c16a81b9d4c325d2270cdd3412951f6c'
-          '0011947d35909e001e24b13f2f65d3e25061c9c2'
-          'bdbfb750df9e5fb3022f47a46a80555259628cd1')
-
-prepare() {
-    msg2 "Applying patches for webkit2gtk..."
-    cat *.patch | patch -p1 -d "${srcdir}/Remarkable-${pkgver}"
-}
+         'python-gtkspellcheck'
+         'webkitgtk-6.0'
+         'wkhtmltopdf-static')
+options=('!emptydirs' '!strip')
+install="${pkgname}.install"
+source=(
+  "${pkgname}-${pkgver}.tar.gz::https://github.com/jamiemcg/Remarkable/archive/refs/tags/v${pkgver}.tar.gz"
+  "${pkgname}.install"
+)
+md5sums=('206c28415fddc594cb6162cbe51cb793'
+         '4230de2876e8789bcd5a7cdc84b2a30b')
 
 package() {
-    _python_site=$(python -c 'import site; print(site.getsitepackages()[0]);')
-    [ -z ${_python_site} ] && echo "error: could not identify python site_packages directory" && return 1
+    cd "$srcdir/${pkgname^}-${pkgver}"
 
-    
-    cd "Remarkable-${pkgver}"
+    # Install the main binary
+    install -Dm755 bin/remarkable "$pkgdir/usr/share/$pkgname/$pkgname.bin"
+    install -Dm755 /dev/stdin "$pkgdir/usr/bin/${pkgname}" << EOF
+#!/bin/bash
+export PYTHONPATH="/usr/share/${pkgname}:/usr/share/${pkgname}/${pkgname}:\$PYTHONPATH"
+exec /usr/share/${pkgname}/remarkable.bin "\$@"
+EOF
 
-    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-    
-    install -Dm 755 "bin/remarkable" "${pkgdir}/usr/bin/remarkable"
-    install -D "debian/remarkable.mime" "${pkgdir}/usr/lib/mime/packages/remarkable"
-    install -D "data/media/remarkable.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/remarkable.svg"
-    install -D remarkable.desktop "${pkgdir}/usr/share/applications/remarkable.desktop"
-    
-    mv data/glib-2.0 "${pkgdir}/usr/share/"
+    # Install desktop entry
+    install -Dm644 ${pkgname}.desktop "$pkgdir/usr/share/applications/${pkgname}.desktop"
 
-    install -d "${pkgdir}/${_python_site}"
-    mv markdown pdfkit remarkable remarkable_lib "${pkgdir}/${_python_site}/"
+    # Install icons
+    install -Dm644 data/media/remarkable.png "$pkgdir/usr/share/pixmaps/${pkgname}.png"
+    install -Dm644 data/media/remarkable.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/${pkgname}.svg"
 
-    mv data "${pkgdir}/usr/share/remarkable/"
+    # Install glib schema
+    install -Dm644 data/glib-2.0/schemas/net.launchpad.remarkable.gschema.xml \
+        "$pkgdir/usr/share/glib-2.0/schemas/net.launchpad.remarkable.gschema.xml"
+
+    # Recursively copy all necessary directories and files
+    for dir in data remarkable remarkable_lib pdfkit; do
+        if [[ -d $dir ]]; then
+            cp -r "$dir" "$pkgdir/usr/share/${pkgname}/"
+        fi
+    done
+
+    # Install additional scripts if present
+    [[ -f run.sh ]] && install -Dm755 run.sh "$pkgdir/usr/share/${pkgname}/run.sh"
+
+    # License and documentation
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"
+    install -Dm644 README.md "$pkgdir/usr/share/doc/${pkgname}/README.md"
 }
+
