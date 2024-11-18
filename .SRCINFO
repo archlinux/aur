@@ -1,5 +1,5 @@
 pkgbase = opentelemetry-python-contrib
-	pkgver = 0.49b1
+	pkgver = 0.49b2
 	pkgrel = 1
 	arch = any
 	license = Apache-2.0
@@ -8,8 +8,8 @@ pkgbase = opentelemetry-python-contrib
 	makedepends = python-installer
 	makedepends = python-setuptools
 	makedepends = python-wheel
-	source = opentelemetry-python-contrib-0.49b1.tar.gz::https://github.com/open-telemetry/opentelemetry-python-contrib/archive/refs/tags/v0.49b1.tar.gz
-	sha256sums = c8a07007d845f9ad05d20acc981a0f3c0c13a83c99863baf04d1c08ede3dbbe2
+	source = opentelemetry-python-contrib-0.49b2.tar.gz::https://github.com/open-telemetry/opentelemetry-python-contrib/archive/refs/tags/v0.49b2.tar.gz
+	sha256sums = ebc6eadc8a3b1b79a38ba821e5911349b98494d4767007fcf0177d918e351b3e
 
 pkgname = python-opentelemetry-contrib-instrumentations
 	pkgdesc = OpenTelemetry Contrib Instrumentation Packages
