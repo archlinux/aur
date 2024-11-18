@@ -1,5 +1,4 @@
-# Maintainer: akac <akac DOT x AT tuta DOT io>
-# Contributor: akac <akac DOT x AT tuta DOT io>
+# Maintainer: saxophonedev <me@saxophone.is-a.dev>
 
 # options
 if [ -n "$_srcinfo" ] || [ -n "$_pkgver" ] ; then
@@ -24,10 +23,30 @@ arch=('x86_64')
 _main_package() {
   _update_version
 
+  depends=(
+    'gtk3'
+    'libx11'
+    'libxt'
+    'dbus-glib'
+    'glib2'
+    'nss'
+    'sqlite'
+    'libvpx'
+    'icu'
+    'libevent'
+    'startup-notification'
+    'ffmpeg'
+  )
+
   optdepends=(
-    'hunspell: Spell checking'
-    'hyphen: Hyphenation'
-    'networkmanager: Location detection via available WiFi networks'
+    'networkmanager: For network connectivity detection'
+    'pulseaudio: For sound support'
+    'pipewire: Alternative sound support'
+    'libnotify: For desktop notifications'
+    'gst-plugins-good: For media decoding'
+    'gst-libav: For additional media formats'
+    'hunspell: For spell checking'
+    'xdg-desktop-portal: For desktop integration'
   )
 
   options=('!emptydirs' '!strip')
@@ -41,74 +60,12 @@ _main_package() {
   sha256sums=('489d6601bdfd1da4a4de90aff33d63046add2024bbe505529b106eb7cf10b855')
 }
 
-# common functions
 pkgver() {
   echo "${_pkgver:?}"
 }
 
 prepare() {
-  # desktop
-  install -Dvm644 /dev/stdin "$_pkgname.desktop" <<END
-[Desktop Entry]
-Version=1.0
-Name=Mercury
-Comment=Browse the World Wide Web
-GenericName=Web Browser
-Keywords=Internet;WWW;Browser;Web;Explorer;Mercury
-Exec=$_pkgname %u
-StartupWMClass=mercury-default
-Terminal=false
-X-MultipleArgs=true
-Type=Application
-Icon=$_pkgname
-Categories=GNOME;GTK;Network;WebBrowser;
-MimeType=text/html;text/xml;application/xhtml+xml;application/xml;application/rss+xml;application/rdf+xml;image/gif;image/jpeg;image/png;x-scheme-handler/http;x-scheme-handler/https;x-scheme-handler/ftp;x-scheme-handler/chrome;video/webm;application/x-xpinstall;
-StartupNotify=true
-Actions=NewWindow;NewPrivateWindow;TempUserDir;
-
-[Desktop Action NewWindow]
-Name=New Window
-Exec=$_pkgname -new-window
-
-[Desktop Action NewPrivateWindow]
-Name=New Private Window
-Exec=$_pkgname -private-window
-
-[Desktop Action TempUserDir]
-Name=Open With Temporary User Profile
-Exec=$_pkgname --temp-profile
-END
-
-  install -Dvm644 /dev/stdin "$_pkgname.sh" <<END
-#!/usr/bin/env bash
-
-# check microprocessor architecture level
-if grep -qE '\bsse4_2\b' /proc/cpuinfo ; then
-  _message=''
-  _message+=\$'The fastest Firefox fork on Earth.'
-else
-  _message=''
-  _message+=\$'Your processor does not support SSE4.2 instructions.\n'
-  _message+=\$'mercury-browser may not work on your computer.'
-fi
-
-# Allow users to override command-line options
-XDG_CONFIG_HOME=\${XDG_CONFIG_HOME:-~/.config}
-_FLAGFILE="\$XDG_CONFIG_HOME/mercury-flags.conf"
-if [[ -f "\$_FLAGFILE" ]]; then
-  _USER_FLAGS=\$(cat "\$_FLAGFILE")
-fi
-
-# display processor support message
-if tty -s ; then
-  echo "\$_message"
-else
-  [ ! -e "\$HOME/.mercury" ] && notify-send -a "mercury-browser" -t 7500 "\$_message"
-fi
-
-# Launch
-exec /opt/$_pkgname/mercury \$_USER_FLAGS "\$@"
-END
+  true
 }
 
 package() {
@@ -120,29 +77,7 @@ package() {
     'alsa-lib'
     'dbus-glib'
     'gtk3'
-    'libnotify' # notify-send
-
-    ## implicit
-    #at-spi2-core
-    #cairo
-    #dbus
-    #fontconfig
-    #freetype2
-    #gcc-libs
-    #gdk-pixbuf2
-    #glib2
-    #glibc
-    #libx11
-    #libxcb
-    #libxcomposite
-    #libxcursor
-    #libxdamage
-    #libxext
-    #libxfixes
-    #libxi
-    #libxrandr
-    #libxrender
-    #pango
+    'libnotify'
   )
 
   local _filetype="zip"
@@ -156,38 +91,30 @@ package() {
     _package_deb
   fi
 
-  # script
   rm -rf "$pkgdir/usr/bin/mercury-browser"
-  install -Dm755 "$_pkgname.sh" "$pkgdir/usr/bin/$_pkgname"
+  install -Dm755 "${srcdir}/../mercury-browser-sse4.sh" "$pkgdir/usr/bin/$_pkgname"
 
-  # icon
   install -Dm644 "$pkgdir/opt/$_pkgname/browser/chrome/icons/default/default128.png" "$pkgdir/usr/share/pixmaps/$_pkgname.png"  
 
-  # .desktop
   rm -rf "$pkgdir/usr/share/applications/mercury-browser.desktop"
-  install -Dm644 "$_pkgname.desktop" "$pkgdir/usr/share/applications/$_pkgname.desktop"
+  install -Dm644 "${srcdir}/../mercury-browser-sse4.desktop" "$pkgdir/usr/share/applications/$_pkgname.desktop"
 
-  # symlink duplicate file
   ln -sf "/usr/bin/$_pkgname" "$pkgdir/opt/$_pkgname/mercury-bin"
 
-  # remove unnecessary folders
   rm -rf "$pkgdir/usr/lib/"
   rm -rf "$pkgdir/usr/share/doc/"
   rm -rf "$pkgdir/usr/share/icons"
   rm -rf "$pkgdir/usr/share/lintian/"
   rm -rf "$pkgdir/usr/share/man/"
 
-  # fix permissions
   chmod -R u+rwX,go+rX,go-w "$pkgdir/"
 }
 
 _package_deb() {
-  # extract archive
   bsdtar -xf "$_dl_filename" data.tar.*
   bsdtar -xf data.tar.gz -C "$pkgdir/"
   rm data.tar.gz
 
-  # move files from /lib to /opt
   install -dm755 "$pkgdir/opt/$_pkgname"
   mv "$pkgdir/usr/lib/mercury"/* "$pkgdir/opt/$_pkgname/"
 }
@@ -198,12 +125,10 @@ _package_zip() {
       | tr -cd '/' | wc -c
   )
 
-  # extract archive
   install -dm755 "$pkgdir/opt/$_pkgname"
   bsdtar --strip-components="$_depth" -C "$pkgdir/opt/$_pkgname/" -xf "$_dl_filename" '*/mercury/*'
 }
 
-# update version
 _update_version() {
   : ${_pkgver:=${pkgver%%.r*}}
 
@@ -214,7 +139,7 @@ _update_version() {
   local _blacklist _response _tags _tag _pkgver_new
 
   _blacklist=(
-    "v.121.0.2" # windows only
+    "v.121.0.2"
   )
   _response=$(curl -Ssf "$url/releases.atom" --tlsv1.3)
   _tags=$(
@@ -229,7 +154,6 @@ _update_version() {
   _tag=$(printf '%s' "$_tags" | sort -rV | head -1)
   _pkgver_new="${_tag#v.}"
 
-  # update _pkgver
   if [ "$_pkgver" != "${_pkgver_new:?}" ] ; then
     _pkgver="${_pkgver_new:?}"
   fi
@@ -237,3 +161,4 @@ _update_version() {
 
 # execute
 _main_package
+
