@@ -2,12 +2,12 @@
 # Contributor: Colin Unger <mastakata 3 at yahoo dot com>
 
 _pyname=cle
-_srcname=python-$_pyname
-pkgname=$_srcname-git
+_basename=python-$_pyname
+pkgname=$_basename-git
 pkgdesc="A binary loader in Python"
 url="https://github.com/angr/cle"
 pkgver=9.2.129.dev0.r1646.d73ce74
-pkgrel=1
+pkgrel=2
 arch=('any')
 depends=(
     'python-pefile'
@@ -51,11 +51,8 @@ optdepends=(
     #  There are no packages for
     # 'python-pyxdia: Microsoft Program database (PDB)'
 )
-# angr projects all have the same version and mutually support only that
-# version. So we provide both, the -git package, for other angr related -git
-# packages and the normal package, for packages not requiring a specific version.
-provides=($_srcname)
-conflicts=($_srcname)
+provides=($_basename)
+conflicts=($_basename)
 license=('BSD-2-Clause')
 source=(
     "$pkgname::git+https://github.com/angr/cle.git#branch=master"
@@ -98,6 +95,8 @@ check() {
 }
 
 package() {
+    provides+=($_basename=${pkgver%\.r[0-9]*})
+
     # All angr projects share the same version. Upstream exclusively supports
     # using projects with the same version number together. Before package()
     # pkgver might be outdated. Thus, run time dependencies on the pkgver are
