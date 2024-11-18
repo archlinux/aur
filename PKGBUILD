@@ -27,9 +27,6 @@ optdepends=(
     'python-pyvex: Valgrind VEX support'
     'python-unicorn: Unicorn engine support'
 )
-# angr projects all have the same version and mutually support only that
-# version. So we provide both, the -git package, for other angr related -git
-# packages and the normal package, for packages not requiring a specific version.
 provides=($_basename)
 conflicts=($_basename)
 license=('BSD-2-Clause')
