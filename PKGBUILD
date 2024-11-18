@@ -2,7 +2,7 @@
 
 pkgname=ros2-jazzy-base
 pkgver=2024.09.19
-pkgrel=2
+pkgrel=3
 _rosdist="Jazzy Jalisco"
 _rosdist_short_upper=${_rosdist%% *}
 _rosdist_short=${_rosdist_short_upper,}
@@ -27,7 +27,6 @@ depends=(
     'python-numpy'
     'python-psutil'
     'python-yaml'
-    'spdlog'
     'tinyxml2'
 )
 makedepends=(
