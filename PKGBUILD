@@ -8,11 +8,11 @@ arch=('any')
 url="https://github.com/Kimiblock/moeOS-pinyin"
 license=('GPL-3.0-or-later')
 depends=("fcitx5-pinyin-moegirl-rime" "rime-pinyin-zhwiki")
-makedepends=("git")
+makedepends=("git" "git-lfs")
 provides=('rime-moe-pinyin')
 conflicts=('rime-moe-pinyin')
 source=("git+https://github.com/Kimiblock/moeOS-pinyin.git")
-sha256sums=("SKIP")
+sha256sums=('SKIP')
 
 function pkgver() {
 	cd moeOS-pinyin
