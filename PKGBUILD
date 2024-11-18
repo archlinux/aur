@@ -45,6 +45,9 @@ pkgver() {
 }
 
 build() {
+  # fixes issue where it cannot create directories for crashreporting
+  export XDG_STATE_HOME="$PWD"
+
   PREPARE_ONLY_EMBEDS=ON OS_OVERRIDE=arch ${pkgname}/scripts/install-deps.sh
 
   cmake -S"${pkgname}" -Bbuild \
