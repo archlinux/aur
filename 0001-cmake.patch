@@ -1,0 +1,49 @@
+Only in PotreeConverter-2.1.1: build
+diff -wura PotreeConverter-2.1.1.orig/CMakeLists.txt PotreeConverter-2.1.1/CMakeLists.txt
+--- PotreeConverter-2.1.1.orig/CMakeLists.txt	2022-11-29 14:29:35.000000000 +0100
++++ PotreeConverter-2.1.1/CMakeLists.txt	2024-11-18 15:50:36.713291564 +0100
+@@ -6,6 +6,7 @@
+ set(CMAKE_CXX_STANDARD 20)
+ set(CMAKE_CXX_STANDARD_REQUIRED True)
+ set(CMAKE_BUILD_TYPE "Release" CACHE STRING "" FORCE)
++set(CMAKE_CXX_FLAGS_RELEASE "-O2")
+
+ #message(${PROJECT_SOURCE_DIR})
+
+@@ -38,14 +39,10 @@
+ 	${HEADER_FILES}
+ )
+
+-set(LASZIP_DIR "${PROJECT_SOURCE_DIR}/Converter/libs/laszip")
+-add_subdirectory(${LASZIP_DIR})
+ target_link_libraries(PotreeConverter laszip)
+
+-set(BROTLI_DIR "${PROJECT_SOURCE_DIR}/Converter/libs/brotli")
+-add_subdirectory(${BROTLI_DIR})
+-target_link_libraries(PotreeConverter brotlienc-static)
+-target_link_libraries(PotreeConverter brotlidec-static)
++target_link_libraries(PotreeConverter brotlienc)
++target_link_libraries(PotreeConverter brotlidec)
+
+
+ target_include_directories(PotreeConverter PRIVATE "./Converter/include")
+@@ -80,18 +77,6 @@
+ add_custom_command(
+ 	TARGET PotreeConverter POST_BUILD
+ 	COMMAND ${CMAKE_COMMAND} -E copy
+-		${LASZIP_DIR}/COPYING
+-		$<TARGET_FILE_DIR:${PROJECT_NAME}>/licenses/license_laszip.txt)
+-
+-add_custom_command(
+-	TARGET PotreeConverter POST_BUILD
+-	COMMAND ${CMAKE_COMMAND} -E copy
+-		${BROTLI_DIR}/LICENSE
+-		$<TARGET_FILE_DIR:${PROJECT_NAME}>/licenses/license_brotli.txt)
+-
+-add_custom_command(
+-	TARGET PotreeConverter POST_BUILD
+-	COMMAND ${CMAKE_COMMAND} -E copy
+ 		${PROJECT_SOURCE_DIR}/Converter/libs/json/LICENSE
+ 		$<TARGET_FILE_DIR:${PROJECT_NAME}>/licenses/license_json.txt)
+
+Only in PotreeConverter-2.1.1: CMakeLists.txt.orig
