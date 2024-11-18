@@ -1,0 +1,5 @@
+[python-numpy-mkl]
+source = "github"
+github = "numpy/numpy"
+use_latest_release = "true"
+prefix = "v"
