@@ -1,0 +1,5 @@
+pkg/
+src/
+adt-*.pkg.tar.*
+adt-*.src.tar.gz
+adt-*-source.tar.gz

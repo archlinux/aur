@@ -1,0 +1,23 @@
+pkgbase = adt
+	pkgdesc = An automatic double tracking, multi-format audio effect plugin
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/SpotlightKid/adt
+	arch = x86_64
+	arch = aarch64
+	groups = clap-plugins
+	groups = lv2-plugins
+	groups = pro-audio
+	groups = vst3-plugins
+	license = MIT
+	checkdepends = kxstudio-lv2-extensions
+	checkdepends = lv2lint
+	depends = gcc-libs
+	depends = glibc
+	optdepends = clap-host: for loading the CLAP plugin
+	optdepends = lv2-host: for loading the LV2 plugin
+	optdepends = vst3-host: for loading the VST3 plugin
+	source = https://github.com/SpotlightKid/adt/releases/download/v0.2.0/adt-0.2.0-source.tar.gz
+	sha256sums = 2a28b5641d78517d056c9da39ff72b84e30178660c2bc3f8df9f25e1c14f045f
+
+pkgname = adt
