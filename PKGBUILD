@@ -10,7 +10,7 @@ license=('unknown')
 install="${pkgname}.install"
 source=('windsurf-bin-marketplace.hook'
         'patch.py')
-sha256sums=('26234b8261784f87a5cf230a567e8c7f2582e8dfdb9b9ddb971a5057252ad1cd'
+ sha256sums=('a3e4ec03672d510f895523f194a1a62cb8b6225ddf86c0f156420e0d33dbda97'
           '33347cd676decbc3882845a86d6cbc4cc3defd6dc350d03281c0aa429e9b2412')
 
 package() {
