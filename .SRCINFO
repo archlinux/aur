@@ -1,7 +1,7 @@
 pkgbase = python-tubes
 	pkgdesc = A data-processing and flow-control engine for event-driven programs
 	pkgver = 0.2.1
-	pkgrel = 6
+	pkgrel = 7
 	url = https://github.com/twisted/Tubes
 	arch = any
 	license = MIT
