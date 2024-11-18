@@ -9,6 +9,8 @@ pkgdesc='Python-Tool to communicate with the AVM Fritz!Box.'
 license=('MIT')
 arch=('any')
 url='https://github.com/kbr/fritzconnection'
+provides=("python-fritzconnection=${pkgver}")
+conflicts=('python-fritzconnection')
 depends=(
   'python-requests'
 )
