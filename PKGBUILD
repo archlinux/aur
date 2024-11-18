@@ -2,9 +2,9 @@
 
 pkgname=chiaki-ng-git
 _gitname=chiaki-ng
-pkgver=1.9.0.r78.gc5246b05
+pkgver=1.9.1.r42.gd7568d71
 pkgrel=1
-pkgdesc="Unofficial PlayStation 4 remote play client"
+pkgdesc="Free and Open Source PlayStation Remote Play Client"
 arch=(i686 x86_64)
 url="https://streetpea.github.io/chiaki-ng/"
 license=('LicenseRef-AGPL-3.0-only-OpenSSL')
