@@ -4,7 +4,7 @@
 
 pkgname=perl-audio-flac-header
 pkgver=2.4
-pkgrel=10
+pkgrel=11
 pkgdesc='Audio::FLAC::Header - Access to FLAC audio metadata'
 _dist=Audio-FLAC-Header
 arch=(any)
