@@ -2,7 +2,7 @@
 from sys import argv
 from json import load, dump, JSONDecodeError
 
-PRODUCT_JSON_LOCATION = "/usr/share/windsurf/resources/app/product.json"
+PRODUCT_JSON_LOCATION = "/opt/windsurf/resources/app/product.json"
 
 
 if __name__ == "__main__":
