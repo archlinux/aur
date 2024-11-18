@@ -2,7 +2,7 @@
 
 _pkgname=stackablectl
 pkgname="${_pkgname}-bin"
-pkgver=24.7.1
+pkgver=24.11.0
 pkgrel=1
 pkgdesc="Command line tool to interact with a Stackable Data Platform"
 arch=('x86_64')
@@ -10,7 +10,7 @@ url="https://github.com/stackabletech/stackable-cockpit/"
 license=('Apache-2.0')
 depends=('gcc-libs' 'glibc')
 source=("https://github.com/stackabletech/stackable-cockpit/releases/download/stackablectl-${pkgver}/stackablectl-$CARCH-unknown-linux-gnu")
-b2sums=('cd2cfd3397bb6cf5b92ed984fbb5e96366c7a5663f7531a37816a708ed9e1a9c3f608ec8361e43e38323c17597da4e48e1d853c0113a83924d9b1703366872bb')
+b2sums=('c77a20114c6fe6eca79c2f38a7de63db3cae6ee8c2ca97830554c37f7038b1774e7a5077efbdd38a3086f2472e08f93db19871b79f6aaf7439a693da65acec42')
 provides=(${_pkgname})
 conflicts=(${_pkgname})
 
