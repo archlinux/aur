@@ -1,0 +1,6 @@
+#!/bin/sh
+exec 2>&1; set -e
+
+[ -d /var/log/immich-machine-learning ] || install -dm 755 /var/log/immich-machine-learning
+
+exec svlogd -tt /var/log/immich-machine-learning

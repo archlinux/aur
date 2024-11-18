@@ -1,0 +1,9 @@
+#!/bin/sh
+
+cd /usr/lib/immich/app/server
+
+set -a
+. /etc/immich.conf
+set +a
+
+exec chpst -u immich node dist/main

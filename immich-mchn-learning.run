@@ -1,0 +1,12 @@
+#!/bin/sh
+
+cd /opt/immich-machine-learning
+
+set -a
+. /etc/immich.conf
+set +a
+
+NODE_ENV=production exec chpst -u immich /opt/immich-machine-learning/venv/bin/gunicorn app.main:app \
+-k uvicorn.workers.UvicornWorker \
+-w 1 -b 0.0.0.0:3003 -t 120 \
+--log-config-json log_conf.json

@@ -1,0 +1,6 @@
+#!/bin/sh
+exec 2>&1; set -e
+
+[ -d /var/log/immich-server ] || install -dm 755 /var/log/immich-server
+
+exec svlogd -tt /var/log/immich-server
