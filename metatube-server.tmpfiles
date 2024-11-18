@@ -1,0 +1,2 @@
+d /var/lib/metatube-server 0755 metatube-server metatube-server -
+Z /var/lib/metatube-server -    metatube-server metatube-server -
