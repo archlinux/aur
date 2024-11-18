@@ -1,8 +1,8 @@
 pkgbase = ruby-unicode
 	pkgdesc = Unicode normalization library.
 	pkgver = 0.4.4.5
-	pkgrel = 1
-	url = http://www.yoshidam.net/Ruby.html#unicode
+	pkgrel = 2
+	url = https://github.com/blackwinter/unicode
 	arch = i686
 	arch = x86_64
 	license = custom:none

@@ -4,10 +4,10 @@
 _gemname=unicode
 pkgname=ruby-unicode
 pkgver=0.4.4.5
-pkgrel=1
+pkgrel=2
 pkgdesc='Unicode normalization library.'
 arch=(i686 x86_64)
-url='http://www.yoshidam.net/Ruby.html#unicode'
+url='https://github.com/blackwinter/unicode'
 license=(custom:none)
 depends=(ruby)
 options=(!emptydirs)
