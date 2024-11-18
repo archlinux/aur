@@ -7,7 +7,9 @@ pkgdesc="MemProcFS is an easy and convenient way of viewing physical memory as f
 arch=('x86_64' 'aarch64')
 url="https://github.com/ufrisk/MemProcFS"
 license=('GPL3')
-depends=('fuse' 'python')
+depends=('fuse' 'lz4' 'openssl' 'libusb')
+optdepends=('python: for python bindings')
+
 source_x86_64=("https://github.com/ufrisk/MemProcFS/releases/download/v5.12/MemProcFS_files_and_binaries_v${pkgver}-linux_x64-20241115.tar.gz")
 source_aarch64=("https://github.com/ufrisk/MemProcFS/releases/download/v5.12/MemProcFS_files_and_binaries_v${pkgver}-linux_aarch64-20241115.tar.gz")
 sha512sums_x86_64=('5cacdd3da66c45fee3c3f77f094ec3ebb214aa3457476adfb90a9bbda51d397170951c1832c3b345fcada0b534697d23e2786842707c246457f72a32db09fc6b')
