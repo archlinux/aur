@@ -1,12 +1,12 @@
 pkgbase = keepass-it
 	pkgdesc = Italian locale for keepass
-	pkgver = 2.56
+	pkgver = 2.57.1
 	pkgrel = 1
 	url = https://keepass.info/translations.html
 	arch = any
 	license = GPL-2.0-or-later
 	depends = keepass
-	source = https://downloads.sourceforge.net/keepass/KeePass-2.56-Italian.zip
-	sha256sums = 183dbaa31b220a29716a781c70dc80d26b6dda0e05c466f9052cae0959eba837
+	source = https://downloads.sourceforge.net/keepass/KeePass-2.57.1-Italian.zip
+	sha256sums = 533de6aec9e11f872a9908e8579161970dd93d5f9fedd9a2f3cb49fbbbfbb682
 
 pkgname = keepass-it
