@@ -1,0 +1,9 @@
+post_install(){
+    ## copy in required files. The script does not copy these over.
+    echo "For magic-tape.sh to function properly, you need to run these commands:"
+    echo "mkdir -p ~/.cache/magic-tape/history/ ~/.cache/magic-tape/jpg/ ~/.cache/magic-tape/json/ ~/.cache/magic-tape/search/video/ ~/.cache/magic-tape/comments/"
+    echo "mkdir -p ~/.cache/magic-tape/search/channels/ ~/.cache/magic-tape/subscriptions/jpg/ ~/.config/magic-tape/ ~/.local/share/magic-tape/"
+    echo "touch ~/.cache/magic-tape/history/watch_history.txt ~/.cache/magic-tape/subscriptions/subscriptions.txt"
+    echo "cp -r /usr/share/magic-tape/png/ ~/.local/share/magic-tape/"
+    echo "cp /etc/magic-tape.conf ~/.config/magic-tape/magic-tape.conf"
+}
