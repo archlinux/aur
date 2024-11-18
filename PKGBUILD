@@ -1,5 +1,5 @@
 # Maintainer: Cysec <cysec@msn.com>
-
+# updated 11/17/2024 to use nvidia-open for future compatibility
 pkgname=lutris-world-of-warcraft-dependencies-nvidia
 pkgver=1.1
 pkgrel=1
@@ -60,7 +60,7 @@ depends=(lib32-gnutls
 	lib32-vulkan-icd-loader
 	cups
 	samba
-	nvidia
+	nvidia-open
 	nvidia-utils
 	lib32-nvidia-utils
 	vulkan-icd-loader
