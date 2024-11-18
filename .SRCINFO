@@ -1,6 +1,6 @@
 pkgbase = en-croissant-bin
 	pkgdesc = A Modern Chess Database
-	pkgver = 0.11.1
+	pkgver = 0.11.2
 	pkgrel = 1
 	url = https://github.com/franciscoBSalgueiro/en-croissant
 	arch = x86_64
