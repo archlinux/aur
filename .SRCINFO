@@ -1,6 +1,6 @@
 pkgbase = libdxvk
 	pkgdesc = Vulkan-based implementation of D3D8, 9, 10 and 11 for Linux
-	pkgver = 2.5.0
+	pkgver = 2.5.1
 	pkgrel = 1
 	url = https://github.com/doitsujin/dxvk
 	arch = x86_64
@@ -16,31 +16,21 @@ pkgbase = libdxvk
 	makedepends = lib32-sdl2
 	makedepends = lib32-sdl3
 	makedepends = lib32-vulkan-icd-loader
-	depends = glibc
-	depends = sdl2
-	depends = sdl3
-	depends = vulkan-icd-loader
-	depends = lib32-glibc
-	depends = lib32-sdl2
-	depends = lib32-sdl3
-	depends = lib32-vulkan-icd-loader
 	provides = libdxvk_dxgi.so
 	provides = libdxvk_d3d8.so
 	provides = libdxvk_d3d9.so
 	provides = libdxvk_d3d10core.so
 	provides = libdxvk_d3d11.so
-	source = git+https://github.com/doitsujin/dxvk.git#tag=v2.5
+	source = git+https://github.com/doitsujin/dxvk.git#tag=v2.5.1
 	source = git+https://github.com/Joshua-Ashton/mingw-directx-headers.git
 	source = git+https://github.com/KhronosGroup/Vulkan-Headers.git
 	source = git+https://github.com/KhronosGroup/SPIRV-Headers.git
 	source = git+https://gitlab.freedesktop.org/JoshuaAshton/libdisplay-info.git
-	source = project-version.patch::https://github.com/doitsujin/dxvk/commit/e6209d28cd9c51ad371605db4c0de27547c0d28c.patch
-	sha256sums = 5673200b157616580aab6e75086f276b2acc2af31c5553c2269a6a8c1481548b
+	sha256sums = f97561db57859e548a222d57a3763b43a9ab87567a23a4dc4ce8371882fafb07
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = 8d74f24ddefb76f2b8260f70aa449b18e25599177c67c882fb766692d59a1dd9
 
 pkgname = libdxvk
 	depends = glibc
@@ -54,3 +44,4 @@ pkgname = lib32-libdxvk
 	depends = lib32-sdl2
 	depends = lib32-sdl3
 	depends = lib32-vulkan-icd-loader
+	optdepends = libdxvk: DXVK headers
