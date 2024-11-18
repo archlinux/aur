@@ -5,7 +5,7 @@
 pkgname=hyperrogue-git
 _pkgname=hyperrogue
 pkgver=13.0v+r11110+g0137175d4
-pkgrel=1
+pkgrel=2
 pkgdesc="You are a lone outsider in a strange, non-Euclidean hyperbolic world"
 arch=('i686' 'x86_64')
 url="http://www.roguetemple.com/z/hyper.php"
@@ -18,16 +18,10 @@ makedepends=('glu' 'glew')
 source=(
   "git+https://github.com/zenorogue/hyperrogue.git"
   "hyperrogue.sh"
-  "starts_with.patch"
 )
 sha256sums=('SKIP'
-            'd8b6b3d6d8bfe7d7ce97e2fd2a35d148505890dc9c6ea972a7ecb2453245b032'
-            '7fed0a2763738156828e103df441522ba2a7ee5a18605b0b72e7b95e6426534f')
+            'd8b6b3d6d8bfe7d7ce97e2fd2a35d148505890dc9c6ea972a7ecb2453245b032')
 
-prepare() {
-  cd "$_pkgname"
-  patch -Np2 -i ../starts_with.patch || true #sent a pull request so this patch should be obsolete soon
-}
 build() {
     cd "$_pkgname"
     export HYPERROGUE_USE_GLEW=1

@@ -1,7 +1,7 @@
 pkgbase = hyperrogue-git
 	pkgdesc = You are a lone outsider in a strange, non-Euclidean hyperbolic world
 	pkgver = 13.0v+r11110+g0137175d4
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.roguetemple.com/z/hyper.php
 	arch = i686
 	arch = x86_64
@@ -19,9 +19,7 @@ pkgbase = hyperrogue-git
 	options = !debug
 	source = git+https://github.com/zenorogue/hyperrogue.git
 	source = hyperrogue.sh
-	source = starts_with.patch
 	sha256sums = SKIP
 	sha256sums = d8b6b3d6d8bfe7d7ce97e2fd2a35d148505890dc9c6ea972a7ecb2453245b032
-	sha256sums = 7fed0a2763738156828e103df441522ba2a7ee5a18605b0b72e7b95e6426534f
 
 pkgname = hyperrogue-git
