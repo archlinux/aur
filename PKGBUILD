@@ -1,10 +1,10 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=koala-client-bin
 _pkgname=KoalaClient
-pkgver=2.1.0
+pkgver=2.1.1
 _electronversion=28
-pkgrel=2
-pkgdesc="OpenAI API user interface allowing seamless integration of generative AI into your workflow"
+pkgrel=1
+pkgdesc="OpenAI API user interface allowing seamless integration of generative AI into your workflow.(Prebuilt version.Use system-wide electron)"
 arch=('x86_64')
 url="https://client.koaladev.io/"
 _ghurl="https://github.com/jackschedel/KoalaClient"
@@ -18,21 +18,22 @@ makedepends=(
     'fuse2'
 )
 source=(
-    "${pkgname%-bin}-${pkgver}.AppImage::${_ghurl}/releases/download/ae8839d68752de962ab3db1ac574a0fdad126bee-7950588014/${_pkgname}-${pkgver}-linux-${CARCH}.AppImage"
+    "${pkgname%-bin}-${pkgver}.AppImage::${_ghurl}/releases/download/f250677133bca22bd36de4a46eb351bc807fa7ec-11876220306/${_pkgname}-${pkgver}-linux-${CARCH}.AppImage"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('898dcf14e8152bbb9df09b304c397e5d7d83ff092dff091274acdbebf5f0df36'
-            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
+sha256sums=('9d515dd13850975565cb330c84d61bca7d66078118b9ce9e1ace9eac846057c6'
+            '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 build() {
-    sed -e "s|@electronversion@|${_electronversion}|g" \
-        -e "s|@appname@|${pkgname%-bin}|g" \
-        -e "s|@runname@|app.asar|g" \
-        -e "s|@cfgdirname@|${pkgname%-bin}|g" \
-        -e "s|@options@|env ELECTRON_OZONE_PLATFORM_HINT=auto|g" \
-        -i "${srcdir}/${pkgname%-bin}.sh"
+    sed -e "
+        s/@electronversion@/${_electronversion}/g
+        s/@appname@/${pkgname%-bin}/g
+        s/@runname@/app.asar/g
+        s/@cfgdirname@/${pkgname%-bin}/g
+        s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
+    " -i "${srcdir}/${pkgname%-bin}.sh"
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
-    sed "s|AppRun --no-sandbox|${pkgname%-bin}|g;s|Chat;|Utility;|g" -i "${srcdir}/squashfs-root/${pkgname%-bin}.desktop"
+    sed -i "s/AppRun --no-sandbox/${pkgname%-bin}/g;s/Chat;/Utility;/g" "${srcdir}/squashfs-root/${pkgname%-bin}.desktop"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
