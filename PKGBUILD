@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=mq3t-bin
 _pkgname=MQ3T
-pkgver=1.8.8
+pkgver=1.9.0
 _electronversion=33
 pkgrel=1
 pkgdesc="The last MQTT development tool you'll ever need(Prebuilt version.Use system-wide electron)."
@@ -26,9 +26,9 @@ source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${_ghurl}/releases/downl
 source_armv7h=("${pkgname%-bin}-${pkgver}-armv7h.deb::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-armv7l.deb")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-amd64.deb")
 sha256sums=('291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-sha256sums_aarch64=('6b37c313eec7ddd6070707e516bb1882c9a901ec7041fd9ab1741c4867831a02')
-sha256sums_armv7h=('2bf6c7c5d87526670f95cfdf0ca67e3c50d0dced992394257f1c7eccca70cfe1')
-sha256sums_x86_64=('5b479f7ab45d11af2ed0685dd53ce4d6ed7e363ab9979bf4df35d9328512641e')
+sha256sums_aarch64=('fa8fa55f8621053835b56599f306a05158d5844e4f7f38d32a80e7865afad84a')
+sha256sums_armv7h=('f93be0e238132a6bf4c3db1d7f46725a4c243a56e42c7ca8fe400e645baa3e4e')
+sha256sums_x86_64=('96535239efce1d6c3c75b5c0eed0f177843995dad32dfeb0388895d98d4c2499')
 build() {
     sed -e "
         s/@electronversion@/${_electronversion}/g
