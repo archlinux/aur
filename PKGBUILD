@@ -17,6 +17,6 @@ package() {
   depends=('windsurf-bin' 'python')
 
   install -Dm 644 "${srcdir}"/windsurf-bin-marketplace.hook "${pkgdir}"/usr/share/libalpm/hooks/windsurf-bin-marketplace.hook
-  install -Dm 755 "${srcdir}"/patch.py "${pkgdir}"/usr/share/windsurf-bin/resources/app/patch.py
+  install -Dm 755 "${srcdir}"/patch.py "${pkgdir}"/opt/windsurf/resources/app/patch.py
 }
 
