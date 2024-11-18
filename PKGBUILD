@@ -1,7 +1,7 @@
 # Maintainer: su226 <thesu226 at outlook dot com>
 
 pkgname=dev-sidecar-git
-pkgver=1.8.1.Pre.release.2024.04.15.r72.g371fe4f
+pkgver=1.8.9.r31.g77dcf77
 pkgrel=1
 epoch=
 pkgdesc="开发者边车，github打不开，github加速，git clone加速，git release下载加速，stackoverflow加速"
@@ -11,7 +11,7 @@ license=("MPL-2.0")
 groups=()
 _electron=electron17
 depends=("$_electron")
-makedepends=(git npm libxcrypt-compat)
+makedepends=(git pnpm python-setuptools libxcrypt-compat)
 checkdepends=()
 optdepends=()
 provides=(dev-sidecar)
@@ -38,13 +38,12 @@ prepare() {
   local _electronDist="/usr/lib/$_electron"
   local _electronVersion="$(<$_electronDist/version)"
   sed -i "/^\s*builderOptions: {$/a electronDist: \"$_electronDist\", electronVersion: \"$_electronVersion\"," packages/gui/vue.config.js
-  npm install
-  npm exec lerna bootstrap
+  pnpm install
 }
 
 build() {
   cd dev-sidecar/packages/gui
-  npm --node-options --openssl-legacy-provider run electron:build -- --dir
+  pnpm run electron:build --dir
 }
 
 package() {

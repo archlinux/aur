@@ -1,12 +1,13 @@
 pkgbase = dev-sidecar-git
 	pkgdesc = 开发者边车，github打不开，github加速，git clone加速，git release下载加速，stackoverflow加速
-	pkgver = 1.8.1.Pre.release.2024.04.15.r72.g371fe4f
+	pkgver = 1.8.9.r31.g77dcf77
 	pkgrel = 1
 	url = https://github.com/docmirror/dev-sidecar
 	arch = any
 	license = MPL-2.0
 	makedepends = git
-	makedepends = npm
+	makedepends = pnpm
+	makedepends = python-setuptools
 	makedepends = libxcrypt-compat
 	depends = electron17
 	provides = dev-sidecar
