@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=notepad--
 _pkgname=NotePad--
-pkgver=2.20
+pkgver=2.20.1
 pkgrel=1
 pkgdesc="A text editor written in C++,to eventually surpass Notepad++.一个国产跨平台,轻量级的文本编辑,是替换notepad++的一种选择.其内置强大的代码对比功,让你丢掉付费的beyond compare."
 arch=('x86_64')
@@ -25,7 +25,7 @@ makedepends=(
 source=(
     "${pkgname}-${pkgver}.tar.gz::${_ghurl}/archive/refs/tags/notepad-v${pkgver}.tar.gz"
 )
-sha256sums=('36f410affd895107106f6f2ab01a75c095ba109a6a311aaf82955bce9dfabd59')
+sha256sums=('e6f4ff228ceb24b6eec1edc3242a936c1c17630c7a6f76cb067fc1bceb0eb086')
 build() {
     cd "${srcdir}/${pkgname}-notepad-v${pkgver}"
     sed -i "s/intptr_t/__intptr_t/g" src/qscint/src/xmlMatchedTagsHighlighter.cpp
