@@ -9,6 +9,17 @@ arch=('x86_64')
 url="https://github.com/Benex254/FastAnime"
 license=('Unlicense')
 makedepends=('python>=3.10' 'git' 'uv' 'python-installer')
+depends=('python'
+         'python-click'
+         'python-fastapi'
+         'python-inquirerpy'
+         'libtorrent'
+         'python-plyer'
+         'python-pytest'
+         'python-requests'
+         'python-rich'
+         'python-thefuzz'
+         'yt-dlp')
 optdepends=('mpv: video player'
             'webtorrent-cli: nyaa torrents'
             'ffmpeg: download hls streams' 
