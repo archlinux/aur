@@ -3,16 +3,17 @@
 
 pkgname="ofxstatement"
 pkgver=0.9.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Tool to convert proprietary bank statement to OFX format, suitable for importing to GnuCash"
 arch=("any")
 url="https://github.com/kedder/ofxstatement"
 license=("GPL")
 depends=("python-appdirs"
-         "python-importlib-metadata")
-makedepends=("python-build" "python-packaging" "python-wheel" "python-setuptools")
-source=("$pkgname-$pkgver.tar.gz::https://github.com/kedder/ofxstatement/archive/$pkgver.tar.gz")
-b2sums=('1a9110828e9f26fb625a027cbcdb2280fe86d80b870df70f9fd454f4e86a68bc4875cebcaa01671b0f24ae360a64dbb3304f1801550d8cd5aea65ef8e9cf488c')
+         "python-importlib-metadata"
+         "python-setuptools")
+makedepends=("python-build" "python-packaging" "python-wheel" "python-installer")
+source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz")
+b2sums=('d7ee1e25c7950e4b98139da70550ac4f7efe730c740410b3ca56cda95a5dbd0ed49588e778fa382808bcc8787874d49daed7f99af0e271cd5f71c30a383573bf')
 
 build(){
  cd "$pkgname-$pkgver"
