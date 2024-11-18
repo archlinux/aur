@@ -1,18 +1,17 @@
 pkgbase = jpeg2png-git
-	pkgdesc = Finds the smoothest PNG that encodes to the given JPEG file, aka. a good JPEG decoder.
-	pkgver = r144.04054a2
+	pkgdesc = Silky smooth JPEG decoder
+	pkgver = 1.01.r5.g7ae6e42
 	pkgrel = 1
-	url = https://github.com/sandsmark/jpeg2png
+	url = https://github.com/ImageProcessing-ElectronicPublications/jpeg2png
 	arch = x86_64
 	arch = i686
-	license = GPL3
+	license = GPL-3.0-or-later
 	makedepends = git
 	depends = libjpeg
 	depends = libpng
 	provides = jpeg2png
 	conflicts = jpeg2png
-	source = git+https://github.com/sandsmark/jpeg2png.git
-	md5sums = SKIP
+	source = ipep.jpeg2png::git+https://github.com/ImageProcessing-ElectronicPublications/jpeg2png.git
+	sha256sums = SKIP
 
 pkgname = jpeg2png-git
-

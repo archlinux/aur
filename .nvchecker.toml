@@ -1,0 +1,4 @@
+[jpeg2png-git]
+source = "git"
+git = "https://github.com/ImageProcessing-ElectronicPublications/jpeg2png.git"
+prefix = "v"

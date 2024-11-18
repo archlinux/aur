@@ -1,33 +1,41 @@
-# Maintainer: Martin Sandsmark <martin.sandsmark@kde.org>
+# Maintainer:
+# Contributor: Martin Sandsmark <martin.sandsmark@kde.org>
 
-pkgname=jpeg2png-git
-pkgver=r144.04054a2
+_pkgname="jpeg2png"
+pkgname="$_pkgname-git"
+pkgver=1.01.r5.g7ae6e42
 pkgrel=1
-_abiver=5
-pkgdesc='Finds the smoothest PNG that encodes to the given JPEG file, aka. a good JPEG decoder.'
+pkgdesc='Silky smooth JPEG decoder'
+url="https://github.com/ImageProcessing-ElectronicPublications/jpeg2png"
+license=('GPL-3.0-or-later')
 arch=('x86_64' 'i686')
-url='https://github.com/sandsmark/jpeg2png'
-license=('GPL3')
-depends=('libjpeg' 'libpng')
-makedepends=('git')
-conflicts=(jpeg2png)
-provides=(jpeg2png)
-source=('git+https://github.com/sandsmark/jpeg2png.git')
-md5sums=('SKIP')
+
+depends=(
+  'libjpeg'
+  'libpng'
+)
+makedepends=(
+  'git'
+)
+
+provides=("$_pkgname")
+conflicts=("$_pkgname")
+
+_pkgsrc="ipep.jpeg2png"
+source=("$_pkgsrc"::"git+$url.git")
+sha256sums=('SKIP')
 
 pkgver() {
-    cd jpeg2png
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd "$_pkgsrc"
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-    cd jpeg2png
-    make
+  cd "$_pkgsrc"
+  make
 }
 
-
 package() {
-    cd jpeg2png
-    make DESTDIR="$pkgdir" install
-    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/jpeg2png/LICENSE"
+  cd "$_pkgsrc"
+  make DESTDIR="$pkgdir" install
 }
