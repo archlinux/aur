@@ -1,7 +1,7 @@
 pkgbase = python-sshpubkeys
 	pkgdesc = OpenSSH public key parser for Python
 	pkgver = 3.3.1
-	pkgrel = 5
+	pkgrel = 6
 	url = https://github.com/ojarva/python-sshpubkeys
 	arch = any
 	license = BSD
