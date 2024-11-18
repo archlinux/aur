@@ -7,13 +7,14 @@
 
 _pkgbase=iftop
 pkgname=${_pkgbase}-git
-pkgver=r286.77901c8
-pkgrel=1
+pkgver=r287.8d76ef0
+pkgrel=2
 pkgdesc="Display bandwidth usage on an interface - git version"
 arch=('x86_64')
 url="http://www.ex-parrot.com/~pdw/iftop/"
 license=('GPL')
 depends=('libpcap' 'ncurses')
+makedepends=('git')
 provides=('iftop')
 conflicts=('iftop')
 source=("git+https://code.blinkace.com/pdw/iftop.git")
@@ -49,4 +50,3 @@ package() {
 
   make DESTDIR="$pkgdir" install
 }
-
