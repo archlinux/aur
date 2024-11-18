@@ -1,13 +1,13 @@
 pkgbase = openstack_tui
 	pkgdesc = Terminal User Interface for the OpenStack written in Rust
-	pkgver = 0.1.6
+	pkgver = 0.9.0
 	pkgrel = 1
 	url = https://github.com/gtema/openstack
 	arch = x86_64
 	license = Apache-2.0
 	makedepends = cargo
 	options = !lto
-	source = git+https://github.com/gtema/openstack.git#tag=openstack_tui-v0.1.6
-	sha256sums = 1072954e108dec2d9de69c936ac76be71d1123d1718cb35cc9d63af765a072d5
+	source = git+https://github.com/gtema/openstack.git#tag=openstack_tui-v0.9.0
+	sha256sums = d47d8b0c31c6a0d95ceb01f18d921d8adee58024b1b7a0aa88de1fa5b034d4fc
 
 pkgname = openstack_tui
