@@ -2,7 +2,7 @@
 
 pkgname=ros2-iron-base
 pkgver=2024.07.12
-pkgrel=2
+pkgrel=3
 _rosdist="Iron Irwini"
 _rosdist_short_upper=${_rosdist%% *}
 _rosdist_short=${_rosdist_short_upper,}
@@ -26,7 +26,6 @@ depends=(
     'python-netifaces'
     'python-numpy'
     'python-yaml'
-    'spdlog'
     'tinyxml'  # urdfdom
     'tinyxml2'
 )
