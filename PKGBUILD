@@ -1,12 +1,12 @@
 # Maintainer: Manuel Wiesinger <m {you know what belongs here} mmap {and here} at>
 
 _pyname=ailment
-_srcname=python-$_pyname
-pkgname=$_srcname-git
+_basename=python-$_pyname
+pkgname=$_basename-git
 pkgdesc="angr intermediate language"
 url="https://github.com/angr/ailment"
 pkgver=9.2.129.dev0.r526.63c9a1c
-pkgrel=1
+pkgrel=2
 arch=('any')
 depends=(
     'python-pypcode'
@@ -21,12 +21,28 @@ makedepends=(
     'python-sphinx-autodoc-typehints'
     'python-wheel'
 )
-checkdepends=('python-pytest')
-provides=($_srcname)
-conflicts=($_srcname)
+checkdepends=(
+    'python-cppheaderparser'
+    'python-itanium-demangler'
+    'python-mulpyplexer'
+    'python-nampa'
+    'python-networkx'
+    'python-pyformlang'
+    'python-pytest'
+    'python-sympy'
+)
+provides=($pkgname $_basename)
+conflicts=($_basename)
 license=('BSD-2-Clause')
-source=("$pkgname::git+https://github.com/angr/ailment#branch=master")
-b2sums=('SKIP')
+source=(
+    "$pkgname::git+https://github.com/angr/ailment#branch=master"
+    # We cannot (reliably) specify the pkgver in checkdepends, see comment in package()
+    "archinfo.git::git+https://github.com/angr/archinfo.git#branch=master"
+    "cle.git::git+https://github.com/angr/cle.git#branch=master"
+    "pyvex.git::git+https://github.com/angr/pyvex.git#branch=master"
+    "angr.git::git+https://github.com/angr/angr.git#branch=master"
+)
+b2sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
 
 pkgver() {
     cd $srcdir/$pkgname
@@ -42,8 +58,13 @@ prepare() {
 }
 
 check() {
+    # build pyvex module
+    cd $srcdir/pyvex.git
+    git submodule update --init
+    python -m build --wheel --no-isolation
+
     cd $srcdir/$pkgname
-    PYTHONPATH=:$PWD pytest
+    PYTHONPATH="../angr.git:../cle.git:../archinfo.git:../pyvex.git/build/lib:./build/lib" pytest tests
 }
 
 build() {
@@ -53,13 +74,15 @@ build() {
 }
 
 package() {
+    provides+=($_basename=${pkgver%\.r[0-9]*})
+
     # All angr projects share the same version. Upstream exclusively supports
     # using projects with the same version number together. Before package()
     # pkgver might be outdated. Thus, run time dependencies on the pkgver are
     # defined here.
     depends+=(
 	"python-claripy=${pkgver%\.r[0-9]*}"
-	"python-pyvex-git=${pkgver%\.r[0-9]*}"
+	"python-pyvex=${pkgver%\.r[0-9]*}"
     )
 
     cd $srcdir/$pkgname

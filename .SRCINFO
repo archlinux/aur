@@ -1,11 +1,18 @@
 pkgbase = python-ailment-git
 	pkgdesc = angr intermediate language
 	pkgver = 9.2.129.dev0.r526.63c9a1c
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/angr/ailment
 	arch = any
 	license = BSD-2-Clause
+	checkdepends = python-cppheaderparser
+	checkdepends = python-itanium-demangler
+	checkdepends = python-mulpyplexer
+	checkdepends = python-nampa
+	checkdepends = python-networkx
+	checkdepends = python-pyformlang
 	checkdepends = python-pytest
+	checkdepends = python-sympy
 	makedepends = git
 	makedepends = python-build
 	makedepends = python-installer
@@ -15,13 +22,25 @@ pkgbase = python-ailment-git
 	makedepends = python-wheel
 	depends = python-pypcode
 	depends = python>=3.10
+	provides = python-ailment-git
 	provides = python-ailment
 	conflicts = python-ailment
 	source = python-ailment-git::git+https://github.com/angr/ailment#branch=master
+	source = archinfo.git::git+https://github.com/angr/archinfo.git#branch=master
+	source = cle.git::git+https://github.com/angr/cle.git#branch=master
+	source = pyvex.git::git+https://github.com/angr/pyvex.git#branch=master
+	source = angr.git::git+https://github.com/angr/angr.git#branch=master
+	b2sums = SKIP
+	b2sums = SKIP
+	b2sums = SKIP
+	b2sums = SKIP
 	b2sums = SKIP
 
 pkgname = python-ailment-git
 	depends = python-pypcode
 	depends = python>=3.10
 	depends = python-claripy=9.2.129.dev0
-	depends = python-pyvex-git=9.2.129.dev0
+	depends = python-pyvex=9.2.129.dev0
+	provides = python-ailment-git
+	provides = python-ailment
+	provides = python-ailment=9.2.129.dev0
