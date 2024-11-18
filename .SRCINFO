@@ -1,39 +1,43 @@
 pkgbase = python-manimgl
 	pkgdesc = Animation engine for explanatory math videos
-	pkgver = 1.6.1
-	pkgrel = 4
+	pkgver = 1.7.1
+	pkgrel = 1
 	url = https://github.com/3b1b/manim
 	arch = any
 	license = MIT
 	makedepends = python-build
 	makedepends = python-installer
+	makedepends = python-setuptools
 	makedepends = python-wheel
 	depends = ffmpeg
+	depends = ipython>=8.18.0
 	depends = texlive-core
-	depends = python
+	depends = python>=3.12
 	depends = python-colour
-	depends = python-numpy<1.25
+	depends = python-fonttools
+	depends = python-matplotlib
+	depends = python-numpy
+	depends = python-opengl
 	depends = python-pillow
+	depends = python-pygments
+	depends = python-pyperclip
+	depends = python-pyyaml
+	depends = python-rich
 	depends = python-scipy
 	depends = python-sympy
 	depends = python-tqdm
-	depends = python-matplotlib
-	depends = python-pygments
-	depends = python-pyyaml
-	depends = python-rich
 	depends = python-validators
-	depends = ipython
-	depends = python-opengl
 	depends = python-mapbox-earcut
 	depends = python-moderngl
 	depends = python-moderngl-window
 	depends = python-skia-pathops
 	depends = python-pydub
+	depends = python-pyrr
 	depends = python-screeninfo
-	depends = python-manimpango
+	depends = python-manimpango>=0.6.0
 	depends = python-isosurfaces
-	depends = python-svgelements
-	source = https://github.com/3b1b/manim/archive//v1.6.1.tar.gz
-	b2sums = 70c0d4b893e1b15b536fd98e0584d2e5676802e2165407ed0cd62878120ce7f3ff43bf7eec8e16c12c95494322118215689f4138ff9dc190c86be206aa57124c
+	depends = python-svgelements>=1.8.1
+	source = https://github.com/3b1b/manim/archive/v1.7.1.tar.gz
+	b2sums = 7021b20445ef9fdd2ffc718cd0bcc27cd5f0c9d8be7d03fc4fdbd854ff6a53fe4c6a1bb3e04b14a3eae8f169b2a2f18f3a091c32ff175ffd045b7033c0a96aa6
 
 pkgname = python-manimgl
