@@ -7,7 +7,7 @@ pkgname=$_basename-git
 pkgdesc="Python bindings for Valgrind's VEX IR"
 url="https://github.com/angr/pyvex"
 pkgver=9.2.129.dev0.r1140.10d953f
-pkgrel=3
+pkgrel=4
 arch=('x86_64')
 depends=(
     'glibc'
@@ -25,7 +25,7 @@ makedepends=(
     'python-wheel'
 )
 checkdepends=('python-pytest')
-provides=($pkgname $_basename)
+provides=($_basename)
 conflicts=($_basename)
 license=('BSD-2-Clause')
 source=("$pkgname::git+https://github.com/angr/pyvex.git")
