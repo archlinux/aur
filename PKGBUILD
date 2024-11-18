@@ -1,8 +1,8 @@
-# $Id$
-
-# Maintainer: Chris Fordham <chris [at] fordham-nagy [dot] [id] [dot] [au]> aka flaccid
-# Contributor: Ido Rosen <ido@kernel.org>
+# Maintainer: envolution
 # Contributor: Sébastien "Seblu" Luttringer
+# Contributor: Morten Linderud <foxboron@archlinux.org>
+# Contributor: Chris Fordham <chris [at] fordham-nagy [dot] [id] [dot] [au]> aka flaccid
+# Contributor: Ido Rosen <ido@kernel.org>
 # Contributor: Marcel Wysocki <maci@satgnu.net>
 # Contributor: Daniel YC Lin <dlin.tw@gmail>
 # Contributor: Joerg <joerg@higgsboson.tk>
@@ -13,201 +13,138 @@
 
 pkgname=docker-git
 _pkgname=docker
-pkgver=r46893.a908460adb
+pkgver=27.3.1+r50521+gfc68ffcb1
 pkgrel=1
-epoch=1
-pkgdesc='Pack, ship and run any application as a lightweight container.'
-arch=('i686' 'x86_64')
-url="https://github.com/docker/docker"
-license=('Apache License Version 2.0')
-depends=('bridge-utils' 'iproute2' 'sqlite' 'systemd')
-optdepends=('vndr' 'device-mapper')
-makedepends=('glibc' 'git' 'go' 'btrfs-progs' 'go-md2man' 'cmake' 'device-mapper')
-provides=('docker')
-conflicts=('docker' 'containerd' 'containerd-git' 'runc' 'runc-git')
-replaces=('docker' 'containerd' 'containerd-git' 'runc' 'runc-git')
-install='docker.install'
-# don't strip binaries! A sha1 is used to check binary consistency.
-options=('!strip')
-source=('moby::git+https://github.com/moby/moby.git'
-        'docker-ce::git+https://github.com/docker/docker-ce'
-        'containerd::git+https://github.com/containerd/containerd.git'
-        'runc::git+https://github.com/opencontainers/runc.git'
-        'libnetwork::git+https://github.com/docker/libnetwork.git'
-        'tini::git+https://github.com/krallin/tini.git'
-        'docker.install')
+pkgdesc='Pack, ship and run any application as a lightweight container -git latest'
+arch=('x86_64' 'aarch64')
+url='https://www.docker.com/'
+license=('Apache-2.0')
+provides=(docker)
+conflicts=(docker containerd runc)
+depends=('glibc' 'bridge-utils' 'iproute2' 'device-mapper' 'sqlite' 'systemd-libs'
+         'libseccomp' 'libtool' 'runc' 'containerd')
+makedepends=('git' 'go' 'btrfs-progs' 'cmake' 'systemd' 'go-md2man' 'sed')
+optdepends=('btrfs-progs: btrfs backend support'
+            'pigz: parallel gzip compressor support'
+            'docker-scan: vulnerability scanner'
+            'docker-buildx: extended build capabilities')
+options=(!lto)
+_TINI_COMMIT=de40ad007797e0dcd8b7126f27bb87401d224240
+source=("git+https://github.com/docker/cli.git"
+        "git+https://github.com/moby/moby.git"
+        "git+https://github.com/krallin/tini.git"
+        "${_pkgname}.sysusers")
 sha256sums=('SKIP'
             'SKIP'
             'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'e9c4e8ffb92f0464a5cad4fb1a1e2a3925667ba6703dd0e5b3efc0dca6f5fcad')
+            'SKIP')
 
-pkgver() {
-  pushd "$srcdir/moby" > /dev/null
-    ( set -o pipefail;
-      printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)" )
-  popd > /dev/null
+pkgver(){
+  cd "$_pkgname"
+  _version=$(git tag --sort=-v:refname --list | grep '^v[0-9.]*$' | head -n1 )
+  _commits=$(git rev-list --count HEAD)
+  _short_commit_hash=$(git rev-parse --short=9 HEAD)
+  echo "${_version#'v'}+r${_commits}+g${_short_commit_hash}"
 }
 
-prepare() {
-  export GOPATH="$srcdir/go"
+# create a fake go path directory and pushd into it
+# $1 real directory
+# $2 gopath directory
+_fake_gopath_pushd() {
+  mkdir -p "$GOPATH/src/${2%/*}"
+  rm -f "$GOPATH/src/$2"
+  ln -rsT "$1" "$GOPATH/src/$2"
+  pushd  "$GOPATH/src/$2" >/dev/null
+}
 
-  # prepare go src directories
-  mkdir -p "$srcdir/go/src/github.com/docker"
-  mkdir -p "$srcdir/go/src/github.com/moby"
-  mkdir -p "$srcdir/go/src/github.com/containerd"
-  mkdir -p "$srcdir/go/src/github.com/opencontainers"
-
-  # apply any patches for runc
-  pushd "$srcdir/runc" >/dev/null
-    # apply patch from the source array (should be a pacman feature)
-    local filename
-    for filename in "${source[@]}"; do
-      if [[ "$filename" =~ \.patch$ ]]; then
-        msg2 "Applying patch ${filename##*/}"
-        patch -p1 -N -i "$srcdir/${filename##*/}"
-      fi
-    done
-    :
-  popd
+_fake_gopath_popd() {
+  popd >/dev/null
 }
 
 build() {
-  export GOPATH="$srcdir/go"
+  ### check my mistakes on commit version
+  echo 'Checking commit mismatch'
+  (
+  local _cfile
+  for _cfile in tini; do
+    . "moby/hack/dockerfile/install/$_cfile.installer"
+  done
+  local _commit _pkgbuild _dockerfile
+  err=0
+  # FIXME: Do not check TINI anymore, use tag instead of commit
+  # TODO: libnetwork is removed
+  # for _commit in LIBNETWORK; do
+  #   _pkgbuild=_${_commit}_COMMIT
+  #   _dockerfile=${_commit}_COMMIT
+  #   if [[ ${!_pkgbuild} != ${!_dockerfile} ]]; then
+  #     echo "Invalid $_commit commit, should be ${!_dockerfile}" >&2
+  #     err=$(($err + 1))
+  #   fi
+  # done
+  return $err
+  )
 
-  # runc
-  msg2 'building runc'
-  ln -sf "$srcdir/runc" "$GOPATH/src/github.com/opencontainers/"
-  pushd "$GOPATH/src/github.com/opencontainers/runc" >/dev/null
-    : "${RUNC_BUILDTAGS:=seccomp apparmor selinux}"
-    make BUILDTAGS="$RUNC_BUILDTAGS"
-    msg2 'generating runc manpages'
-    man/md2man-all.sh 2>/dev/null
-  popd >/dev/null
+  ### globals
+  export GOPATH="$srcdir"
+  export PATH="$GOPATH/bin:$PATH"
+  export CGO_CPPFLAGS="${CPPFLAGS}"
+  export CGO_CFLAGS="${CFLAGS}"
+  export CGO_CXXFLAGS="${CXXFLAGS}"
+  export CGO_LDFLAGS="${LDFLAGS}"
+  export LDFLAGS=''
+  export GOFLAGS='-buildmode=pie -trimpath -mod=readonly -modcacherw -ldflags=-linkmode=external -ldflags=-compressdwarf=false -ldflags=-B=gobuildid'
+  export GO111MODULE=off
+  export DISABLE_WARN_OUTSIDE_CONTAINER=1
 
-  # containerd
-  msg2 'building containerd'
-  ln -sf "$srcdir/containerd" "$GOPATH/src/github.com/containerd/"
-  pushd "$GOPATH/src/github.com/containerd/containerd" >/dev/null
-    LDFLAGS= make
-  popd >/dev/null
+  ### cli
+  echo 'Building cli'
+  _fake_gopath_pushd cli github.com/docker/cli
+  make VERSION=$pkgver dynbinary
+  make manpages
+  _fake_gopath_popd
 
-  # docker-proxy (from libnetwork)
-  msg2 'building docker-proxy'
-  ln -sf "$srcdir/libnetwork" "$GOPATH/src/github.com/docker/"
-  pushd "$GOPATH/src/github.com/docker/libnetwork" >/dev/null
-    : "${PROXY_LDFLAGS:=-linkmode=external}"
-    export AUTO_GOPATH=1
-    go build -ldflags="$PROXY_LDFLAGS" -o ./bin/docker-proxy 'github.com/docker/libnetwork/cmd/proxy'
-  popd >/dev/null
+  ### daemon
+  echo 'Building daemon'
+  _fake_gopath_pushd moby github.com/docker/docker
+  DOCKER_GITCOMMIT=$(cd "$srcdir"/moby && git rev-parse --short HEAD) \
+    DOCKER_BUILDTAGS='seccomp journald apparmor' \
+    VERSION=$pkgver \
+    hack/make.sh dynbinary
+  _fake_gopath_popd
 
-  # docker cli
-  : "${DOCKERCLI_VERSION:=17.06.0-ce}"
-  msg2 "building docker cli ($DOCKERCLI_VERSION)"
-  ln -sf "$srcdir/docker-ce" "$GOPATH/src/github.com/docker/"
-  pushd docker-ce >/dev/null
-    git checkout -q "v$DOCKERCLI_VERSION"
-    ln -sf "$srcdir/docker-ce/components/cli" "$GOPATH/src/github.com/docker/"
-  popd >/dev/null
-  pushd "$GOPATH/src/github.com/docker/cli" >/dev/null
-    go build -o ./build/docker github.com/docker/cli/cmd/docker
-    msg2 'generating cli manpages'
-    man/md2man-all.sh 2>/dev/null
-  popd >/dev/null
-
-  # docker
-  msg2 'building dockerd'
-  pushd moby >/dev/null
-    export AUTO_GOPATH=1
-    ./hack/make.sh dynbinary
-  popd >/dev/null
-
-  # tini (docker-init)
-  msg2 'building docker-init'
-  pushd tini >/dev/null
-    cmake .
-    make tini-static
-  popd >/dev/null
+  ### docker-init
+  echo 'Building docker-init'
+  _fake_gopath_pushd tini github.com/krallin/tini
+  cmake .
+  # we must use the static binary because it's started in a foreign os
+  make tini-static
+  _fake_gopath_popd
 }
 
-# TODO: complete tests for all
-# check() {
-#   cd runc
-#   make test
-# }
-
 package() {
-  export GOPATH="$srcdir/go"
-
-  msg2 'runc binary'
-  install -Dm755 "$GOPATH/src/github.com/opencontainers/runc/runc" "$pkgdir/usr/bin/runc"
-
-  msg2 'containerd binaries'
-  pushd "$GOPATH/src/github.com/containerd/containerd/bin" >/dev/null
-    for file in $(find . -type f -print); do
-      install -Dm755 "$file" "$pkgdir/usr/bin/$file"
-    done
-  popd >/dev/null
-
-  msg2 'docker-proxy binary'
-  install -Dm755 "$GOPATH/src/github.com/docker/libnetwork/bin/docker-proxy" "$pkgdir/usr/bin/docker-proxy"
-
-  msg2 'dockerd binary'
-  pushd "$srcdir/moby/bundles/dynbinary-daemon" >/dev/null
-    install -Dm755 "dockerd-dev" "$pkgdir/usr/bin/dockerd"
-  popd >/dev/null
-
-  msg2 'docker cli binary'
-  install -Dm755 "$GOPATH/src/github.com/docker/cli/build/docker" "$pkgdir/usr/bin/docker"
-
-  msg2 'docker-init binary'
-  install -Dm755 "$srcdir/tini/tini-static" "$pkgdir/usr/bin/docker-init"
-
-  msg2 'additional softlinks'
-  # symlink containerd/run (nice integration...)
-  ln -s containerd "$pkgdir/usr/bin/docker-containerd"
-  ln -s containerd-shim "$pkgdir/usr/bin/docker-containerd-shim"
-  ln -s ctr "$pkgdir/usr/bin/docker-containerd-ctr"
-  ln -s runc "$pkgdir/usr/bin/docker-runc"
-
-  msg2 'completion files'
-  pushd "$srcdir/docker-ce" >/dev/null
-    install -Dm644 "components/cli/contrib/completion/bash/docker" "$pkgdir/usr/share/bash-completion/completions/docker"
-    install -Dm644 "components/cli/contrib/completion/zsh/_docker" "$pkgdir/usr/share/zsh/site-functions/_docker"
-    install -Dm644 "components/cli/contrib/completion/fish/docker.fish" "$pkgdir/usr/share/fish/completions/docker.fish"
-  popd >/dev/null
-
-  # systemd
-  msg2 'systemd files'
-  pushd "$srcdir/moby" >/dev/null
-    install -Dm644 'contrib/init/systemd/docker.service' "$pkgdir/usr/lib/systemd/system/docker.service"
-    install -Dm644 'contrib/init/systemd/docker.socket' "$pkgdir/usr/lib/systemd/system/docker.socket"
-  popd >/dev/null
-  install -Dm644 "$startdir/docker.sysusers" "$pkgdir/usr/lib/sysusers.d/$pkgname.conf"
-
-  msg2 'manpages'
-  pushd "$srcdir/runc/man/man8" >/dev/null
-    for i in *; do
-      install -Dm644 "$i" "$pkgdir/usr/share/man/man8/$i"
-    done
-  popd >/dev/null
-  pushd "$srcdir/docker-ce/components/cli/man/man1" >/dev/null
-    for i in *; do
-      install -Dm644 "$i" "$pkgdir/usr/share/man/man1/$i"
-    done
-  popd >/dev/null
-  pushd "$srcdir/docker-ce/components/cli/man/man5" >/dev/null
-    for i in *; do
-      install -Dm644 "$i" "$pkgdir/usr/share/man/man5/$i"
-    done
-  popd >/dev/null
-  pushd "$srcdir/docker-ce/components/cli/man/man8" >/dev/null
-    for i in *; do
-      install -Dm644 "$i" "$pkgdir/usr/share/man/man8/$i"
-    done
-  popd >/dev/null
+  ### init
+  install -Dm755 tini/tini-static "$pkgdir/usr/bin/docker-init"
+  ### dockerd
+  install -Dm755 moby/bundles/dynbinary-daemon/dockerd "$pkgdir"/usr/bin/dockerd
+  install -Dm755 moby/bundles/dynbinary-daemon/docker-proxy "$pkgdir/usr/bin/docker-proxy"
+  ### systemd units
+  cd "$srcdir"/moby/contrib
+  install -Dm644 'init/systemd/docker.service' "$pkgdir/usr/lib/systemd/system/docker.service"
+  install -Dm644 'init/systemd/docker.socket' "$pkgdir/usr/lib/systemd/system/docker.socket"
+  # systemd rules
+  install -Dm644 'udev/80-docker.rules' "$pkgdir/usr/lib/udev/rules.d/80-docker.rules"
+  install -Dm644 "$srcdir/${_pkgname}.sysusers" "$pkgdir/usr/lib/sysusers.d/${_pkgname}.conf"
+  ### cli
+  cd "$srcdir"/cli
+  # binary
+  install -Dm755 build/docker "$pkgdir/usr/bin/docker"
+  # completion (see FS#79067)
+  install -Dm644 <(build/docker completion bash) "$pkgdir/usr/share/bash-completion/completions/docker"
+  install -Dm644 <(build/docker completion zsh) "$pkgdir/usr/share/zsh/site-functions/_docker"
+  install -Dm644 <(build/docker completion fish) "$pkgdir/usr/share/fish/vendor_completions.d/docker.fish"
+  # man
+  install -dm755 "$pkgdir/usr/share/man"
+  cp -r man/man* "$pkgdir/usr/share/man"
 }
 
 # vim:set ts=2 sw=2 et:
