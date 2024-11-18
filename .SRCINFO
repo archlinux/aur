@@ -1,7 +1,7 @@
 pkgbase = openshot
 	pkgdesc = An award-winning free and open-source video editor
 	pkgver = 3.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.openshot.org/
 	arch = any
 	license = GPL-3.0-Only
