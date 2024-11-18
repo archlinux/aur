@@ -1,14 +1,14 @@
 # Maintainer: Kevin Meagher <kmeagher at icecube dot wisc dot edu>
 pkgname=healpix
-pkgver='3.82'
-_pkgdate='2022Jul28'
-pkgrel=1
+pkgver='3.83'
+_pkgdate='2024Nov13'
+pkgrel=0
 pkgdesc="Software for pixelization, hierarchical indexation, synthesis, analysis, and visualization of data on the sphere."
 arch=('x86_64')
 url="https://healpix.jpl.nasa.gov/"
-license=('GPL2')
+license=('GPL-2.0-or-later')
 groups=()
-depends=(cfitsio)
+depends=(glibc gcc-libs cfitsio)
 makedepends=()
 provides=()
 conflicts=(libsharp)
@@ -17,9 +17,9 @@ backup=()
 options=(!emptydirs)
 install=
 source=("https://downloads.sourceforge.net/project/healpix/Healpix_${pkgver}/Healpix_${pkgver}_${_pkgdate}.tar.gz")
-md5sums=('f71ffbccd3009f5e602fb48b4fa134d5')
-sha1sums=('57b9963340af7c983040892c84d8f6d1a72dd22a')
-sha256sums=('47629f057a2daf06fca3305db1c6950edb9e61bbe2d7ed4d98ff05809da2a127')
+md5sums=('8eb74bc9b002c8c821dd42499138111b')
+sha1sums=('afb8874eb580ae8d1b320a244bbcc7c19cd8db7b')
+sha256sums=('8876c18efc596fd706b2a004ac15f2fb60b795f2db6fbabea9d8ccf549531dda')
 
 build() {
     cd "${srcdir}/Healpix_${pkgver}/src/C/autotools"
