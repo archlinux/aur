@@ -19,18 +19,20 @@ provides=('windsurf')
 conflicts=('windsurf')
 options=(!strip)
 
-source=("https://windsurf-stable.codeiumdata.com/wVxQEIWkwPUEAGf3/apt/pool/main/w/windsurf/Windsurf-linux-x64-${pkgver}.deb")
-sha256sums=('75a0862508baf5c4f253a4584654c21a16c751ed7efc5c72bfe2d832b3ee2ef8')
+source=("https://windsurf-stable.codeiumdata.com/wVxQEIWkwPUEAGf3/apt/pool/main/w/windsurf/Windsurf-linux-x64-${pkgver}.deb"
+        ${_pkgname}-bin.sh)
+sha256sums=("75a0862508baf5c4f253a4584654c21a16c751ed7efc5c72bfe2d832b3ee2ef8"
+            "bed47ba135c4b45ef1cba3aeac28260d508162d6e85922b120dfd82794cf1b1b")
 
 prepare() {
 	bsdtar -xvf "${srcdir}/data.tar.xz" -C "${srcdir}/"
 }
 
 build() {
-	sed -e 's|Exec=/usr/share/windsurf/windsurf %F|Exec=/opt/windsurf/windsurf %F|' \
-        -e 's|Exec=/usr/share/windsurf/windsurf --new-window %F|Exec=/opt/windsurf/windsurf --new-window %F|' \
+	sed -e 's|Exec=/usr/share/windsurf/windsurf %F|Exec=//usr/bin/windsurf %F|' \
+        -e 's|Exec=/usr/share/windsurf/windsurf --new-window %F|Exec=/usr/bin/windsurf --new-window %F|' \
 		-i "${srcdir}/usr/share/applications/windsurf.desktop"
-    sed -e 's|Exec=/usr/share/windsurf/windsurf --open-url %U|Exec=/opt/windsurf/windsurf --open-url %U|' \
+    sed -e 's|Exec=/usr/share/windsurf/windsurf --open-url %U|Exec=/usr/bin/windsurf --open-url %U|' \
 		-i "${srcdir}/usr/share/applications/windsurf-url-handler.desktop"
 }
 
@@ -43,5 +45,5 @@ package() {
     cp -r "${srcdir}/usr/share/windsurf/" "${pkgdir}/opt/"
     rm -rf "${srcdir}/usr/share/windsurf"
     cp -r "${srcdir}/usr/share/" "${pkgdir}/usr/"
-    ln -s /opt/windsurf/windsurf "${pkgdir}/usr/bin/windsurf"
+    install -m755 "${srcdir}/${_pkgname}-bin.sh" "${pkgdir}/usr/bin/windsurf"
 }
