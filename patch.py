@@ -7,7 +7,7 @@ import os
 pkt_name = sys.argv[1]
 operation = sys.argv[2]
 
-product_path = "/usr/share/windsurf/resources/app/product.json"
+product_path = "/opt/windsurf/resources/app/product.json"
 patch_path = "/usr/share/%s/patch.json" % pkt_name
 cache_path = "/usr/share/%s/cache.json" % pkt_name
 

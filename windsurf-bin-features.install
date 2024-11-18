@@ -1,0 +1,16 @@
+post_install() {
+  /usr/share/windsurf-bin-features/patch.py windsurf-bin-features patch
+}
+
+pre_upgrade() {
+  /usr/share/windsurf-bin-features/patch.py windsurf-bin-features restore
+}
+
+post_upgrade() {
+  /usr/share/windsurf-bin-features/patch.py windsurf-bin-features patch
+}
+
+pre_remove() {
+  /usr/share/windsurf-bin-features/patch.py windsurf-bin-features restore
+  /usr/bin/rm -f /usr/share/windsurf-bin-features/cache.json
+}
