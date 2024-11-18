@@ -2,7 +2,7 @@
 pkgname=orature-bin
 _pkgname=Orature
 pkgver=3.1.28
-_subver=9800
+_subver=9802
 pkgrel=1
 pkgdesc="An application for creating Narrations and Translations of Audio Bibles, Books, Resources, Commentaries, etc.(Prebuilt version)"
 arch=("x86_64")
@@ -21,10 +21,10 @@ makedepends=(
     'gendesk'
 )
 source=(
-    "${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}-qa/${pkgname%-bin}-linux-${pkgver}-qa+${_subver}.deb"
+    "${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${pkgname%-bin}-linux-${pkgver}+${_subver}.deb"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('bf6c0f51942b2443a530b101dab7a040ddafecf0b2bf8d42583081f8a78051d7'
+sha256sums=('72b0c99daaea838eff4b3fe1d42ce94b6384c6f4dd05586e7c385177f3eb6fac'
             '2da799c244ab45eb58acdb280a0ee4e8b886977834af2c59f6b9ba2310ff7964')
 build() {
     sed -e "
