@@ -1,0 +1,34 @@
+pkgbase = dbeaver-ce-latest
+	pkgdesc = Free universal SQL Client for developers and database administrators (community edition)
+	pkgver = 24.2.5
+	pkgrel = 1
+	url = https://dbeaver.io/
+	install = dbeaver.install
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = maven
+	makedepends = java-environment>=17
+	depends = java-runtime>=17
+	depends = gtk3
+	depends = gtk-update-icon-cache
+	depends = libsecret
+	optdepends = dbeaver-plugin-office: export data in Microsoft Office Excel format
+	optdepends = dbeaver-plugin-svg-format: save diagrams in SVG format
+	provides = dbeaver
+	provides = dbeaver-debug
+	provides = dbeaver-plugin-sshj-lib
+	conflicts = dbeaver-plugin-sshj-lib
+	conflicts = dbeaver
+	conflicts = dbeaver-ce-bin
+	source = dbeaver-ce-24.2.5.linux.gtk.x86_64-nojdk.tar.gz::https://github.com/dbeaver/dbeaver/releases/download/24.2.5/dbeaver-ce-24.2.5-linux.gtk.x86_64-nojdk.tar.gz
+	source = io.dbeaver.DBeaver.desktop
+	source = dbeaver.sh
+	source = dbeaver.hook
+	source = dbeaver.install
+	sha256sums = 2e726adb7a3ad1cf98b34578e9eb0fd5b224727ce3dba850501bb752df5b3093
+	sha256sums = 9480a7d08f680e10c399db070c5a04cbabf282442602a2ef83d1159fe7c3e88b
+	sha256sums = 406a2980806c394670e88b1ae70134900be376c2ea4a4216610591cc8b557526
+	sha256sums = f8b763ca210bfa4d9a4e407b656ba4f5d1bf2f3f54c67044f7a4dd0c3625fc22
+	sha256sums = f8d65dd933049b587a5815ea75a30ef944300b812df383ca1c2dcd68280bc7ab
+
+pkgname = dbeaver-ce-latest
