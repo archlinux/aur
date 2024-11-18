@@ -3,7 +3,7 @@ _pkgname=butterfly
 pkgname="linwood-${_pkgname}-bin"
 _appname="dev.linwood.${_pkgname}"
 pkgver=2.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Powerful, minimalistic, cross-platform, opensource note-taking app.(Prebuilt version)"
 arch=("x86_64")
 url="https://docs.butterfly.linwood.dev/"
@@ -31,7 +31,7 @@ sha256sums=('755121a7bf9611bca8d7d044ba7818025d76457ad00dd173e39b69775014a916'
 build() {
     sed -e "
         s/@appname@/${pkgname%-bin}/g
-        s/@runname@/${_pkgname}/g
+        s/@runname@/${pkgname%-bin}/g
     " -i "${srcdir}/${pkgname%-bin}.sh"
     sed -e "
         s/\/usr\/bin\/${pkgname%-bin}/${pkgname%-bin}/g

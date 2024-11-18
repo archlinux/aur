@@ -1,7 +1,7 @@
 pkgbase = linwood-butterfly-bin
 	pkgdesc = Powerful, minimalistic, cross-platform, opensource note-taking app.(Prebuilt version)
 	pkgver = 2.2.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://docs.butterfly.linwood.dev/
 	arch = x86_64
 	license = AGPL-3.0-only
