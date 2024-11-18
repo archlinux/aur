@@ -392,9 +392,8 @@ function dbusProxy() {
 			-- /usr/bin/xdg-dbus-proxy \
 			"${DBUS_SESSION_BUS_ADDRESS}" \
 			"${busDir}/bus" \
-			--log \
 			--filter \
-			--own=org.kde.* \
+			--own=org.kde.* \需要 XDG Desktop Portal 正常工作
 			--talk=org.freedesktop.portal.Camera \
 			--call=org.freedesktop.portal.Camera=* \
 			--talk=org.freedesktop.portal.Documents \
