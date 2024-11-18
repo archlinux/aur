@@ -1,6 +1,6 @@
 pkgbase = follow
 	pkgdesc = 🧡 Next generation information browser.This software is all about allowing you to follow your favorite websites, blogs, social media accounts, podcasts and notifications in one place.
-	pkgver = 0.2.1_beta.0
+	pkgver = 0.2.2_beta.0
 	pkgrel = 1
 	url = https://follow.is/
 	arch = any
@@ -12,9 +12,9 @@ pkgbase = follow
 	makedepends = pnpm
 	makedepends = python-setuptools
 	depends = electron33
-	source = follow-0.2.1_beta.0.tar.gz::https://github.com/RSSNext/follow/archive/refs/tags/v0.2.1-beta.0.tar.gz
+	source = follow-0.2.2_beta.0.tar.gz::https://github.com/RSSNext/follow/archive/refs/tags/v0.2.2-beta.0.tar.gz
 	source = follow.sh
-	sha256sums = 1b7759a4634f7337adee606bc0dd33b6eda9fdc07cb2333556a32062d44d6598
+	sha256sums = 03b988d46f70569e86db813dc82371af5b54cf62b925e273e0d87b3c303616af
 	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
 
 pkgname = follow
