@@ -20,7 +20,7 @@ arch=('x86_64' 'aarch64')
 url='https://www.docker.com/'
 license=('Apache-2.0')
 provides=(docker)
-conflicts=(docker containerd runc)
+conflicts=(docker)
 depends=('glibc' 'bridge-utils' 'iproute2' 'device-mapper' 'sqlite' 'systemd-libs'
          'libseccomp' 'libtool' 'runc' 'containerd')
 makedepends=('git' 'go' 'btrfs-progs' 'cmake' 'systemd' 'go-md2man' 'sed')
