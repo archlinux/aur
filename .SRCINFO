@@ -1,7 +1,7 @@
 pkgbase = botan2
 	pkgdesc = Crypto library written in C++ (legacy version)
 	pkgver = 2.19.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://botan.randombit.net/
 	arch = x86_64
 	license = BSD
