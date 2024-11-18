@@ -1,13 +1,13 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=sciteco-git
-pkgver=r1085.b016f78
+pkgver=r1097.52d66c5
 pkgrel=1
 pkgdesc='Advanced TECO dialect and interactive screen editor based on Scintilla'
 arch=('i686' 'x86_64')
 url='https://github.com/rhaberkorn/sciteco'
 license=('GPL3')
 makedepends=('git' 'groff')
-depends=('ncurses' 'glibc' 'gtk3')
+depends=('ncurses')
 conflicts=("${pkgname%-*}")
 source=("$pkgname::git+$url")
 md5sums=('SKIP')
@@ -25,6 +25,9 @@ prepare() {
 
 build() {
 	cd "$srcdir/$pkgname"
+	export CFLAGS="$CFLAGS -O3 -flto"
+	export CXXFLAGS="$CXXFLAGS -O3 -flto"
+	export LDFLAGS="$LDFLAGS -flto"
 	./configure --prefix=/usr \
 	            --with-scitecodatadir=/usr/share/sciteco
 	make
