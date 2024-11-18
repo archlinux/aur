@@ -1,0 +1,12 @@
+pkgbase = commitmsgfmt
+	pkgdesc = Formats commit messages better than fmt(1) and Vim
+	pkgver = 1.6.0
+	pkgrel = 1
+	url = https://github.com/commonquail/commitmsgfmt
+	arch = any
+	license = MIT
+	makedepends = rust
+	source = source-1.6.0.tar.gz::https://github.com/commonquail/commitmsgfmt/archive/refs/tags/v1.6.0.tar.gz
+	sha512sums = 19e08a913aedeece681edd85874a3b9bc215dae6918823f0bb7d1ed5bac37ef197e9f5d20188f0657c886b27754ea60735f31171f6a1d19fd54814a7279c1c30
+
+pkgname = commitmsgfmt
