@@ -1,0 +1,14 @@
+pkgbase = royalguard-bin
+	pkgdesc = Command Line Scientific Calculator
+	pkgver = 0.4.3
+	pkgrel = 1
+	url = https://github.com/zahash/royalguard
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	provides = royalguard
+	conflicts = royalguard
+	source_x86_64 = https://github.com/zahash/royalguard/releases/download/v0.4.3/royalguard-x86_64-unknown-linux-gnu.tar.xz
+	sha256sums_x86_64 = 1e8336d8d690542fe14eadb8681b13d30ca00f0c5ffa5e879b81ffb3ecee53e9
+
+pkgname = royalguard-bin
