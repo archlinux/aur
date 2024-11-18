@@ -10,7 +10,7 @@
 _name=gajim
 pkgname="$_name-git"
 epoch=1
-pkgver=r21899.1df51e4c5
+pkgver=r21904.d997efc17
 pkgrel=1
 pkgdesc="Jabber/XMPP instant messenger client written in Python with GTK+"
 arch=('any')
@@ -21,15 +21,13 @@ depends=('gtk4' 'gtksourceview5' 'python-cairo' 'python-gobject' 'python-keyring
         'python-pillow' 'python-gssapi' 'python-netifaces' 'python-qrcode' 'python-omemo-dr' 'python-packaging'
         'pango' 'sqlite' 'python-sqlalchemy' 'python-setuptools' 'python-emoji')
 makedepends=('git' 'python-build' 'python-installer' 'python-wheel')
-optdepends=('python-dbus: to have gajim-remote working'
-            'python-sentry_sdk: for Sentry error reporting to dev.gajim.org (users decide whether to send reports or not)'
-            'gspell: for spell checking support'
+optdepends=('python-sentry_sdk: for Sentry error reporting to dev.gajim.org (users decide whether to send reports or not)'
+            'libspelling: for spell checking support'
             'libsecret: for GNOME Keyring or KDE support as password storage'
             'gupnp-igd: for better NAT traversing'
             'networkmanager: for network lose detection'
             'geoclue2: share current location'
             'gsound: Notification Sounds'
-            'libayatana-appindicator: for App Indicator on Wayland'
             'farstream: for video and audio calls'
             'gstreamer: for video and audio calls'
             'gst-plugins-base: for video and audio calls'
