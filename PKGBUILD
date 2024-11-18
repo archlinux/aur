@@ -26,6 +26,9 @@ build() {
     ### NOTE
     # In the future we should use CMAKE_INSTALL_PREFIX=/usr
     # However, as of 2024-04-16, this does not work as expected.
+    #
+    # TODO: avoid -DCMAKE_BUILD_TYPE=Release
+    # (See CMake package guidelines on ArchWiki)
     cmake .. \
         -DCMAKE_INSTALL_PREFIX=/opt/cytopia \
         -DCMAKE_BUILD_TYPE=Release \
