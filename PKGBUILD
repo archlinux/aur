@@ -1,6 +1,6 @@
 # Maintainer: iff <iff@ik.me>
 pkgname="pay-respects-bin"
-pkgver=0.5.4
+pkgver=0.5.5
 pkgrel=1
 pkgdesc="Terminal command correction, alternative to thefuck written in Rust."
 arch=("x86_64")
@@ -13,7 +13,7 @@ optdepends=(
 provides=('pay-respects')
 conflicts=('pay-respects')
 source=("$pkgname-$pkgver-$pkgrel::https://github.com/iffse/pay-respects/releases/download/v$pkgver/pay-respects-ubuntu-latest.zip")
-sha1sums=('89f3c731dc7dd55619ef545b9f83b4b17a678633')
+sha1sums=('bf8d65e3189fbdc15608c436906d6abc35ab653d')
 replaces=("pay_respects-bin")
 
 package() {
