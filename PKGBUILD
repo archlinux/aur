@@ -23,10 +23,30 @@ arch=('x86_64')
 _main_package() {
   _update_version
 
+  depends=(
+    'gtk3'          # GTK toolkit for rendering the interface
+    'libx11'        # X11 support
+    'libxt'         # X Toolkit Intrinsics library
+    'dbus-glib'     # D-Bus support
+    'glib2'         # Core library for GNOME
+    'nss'           # Network Security Services for SSL/TLS
+    'sqlite'        # For storing data like cookies and history
+    'libvpx'        # VP8/VP9 video codec
+    'icu'           # Unicode support
+    'libevent'      # Asynchronous event notification
+    'startup-notification' # Notification support for startup events
+    'ffmpeg'        # Multimedia support
+  )
+
   optdepends=(
-    'hunspell: Spell checking'
-    'hyphen: Hyphenation'
-    'networkmanager: Location detection via available WiFi networks'
+    'networkmanager: For network connectivity detection'
+    'pulseaudio: For sound support'
+    'pipewire: Alternative sound support'
+    'libnotify: For desktop notifications'
+    'gst-plugins-good: For media decoding'
+    'gst-libav: For additional media formats'
+    'hunspell: For spell checking'
+    'xdg-desktop-portal: For desktop integration'
   )
 
   options=('!emptydirs' '!strip')
