@@ -6,11 +6,11 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 # Contributor: Gaetan Bisson <bisson@archlinux.org>
 # Contributor: Dave Reisner <dreisner@archlinux.org>
-# Maintainer: Ray Song <i@maskray.me>
+# Maintainer: Denis Speranskiy <speranskiy@gmx.com>
 
 pkgname=bitlbee-libpurple-unicode-channel
 _pkgname=bitlbee
-pkgver=3.5.1
+pkgver=3.6
 pkgrel=1
 pkgdesc='Brings instant messaging (XMPP, MSN, Yahoo!, AIM, ICQ, Twitter) to IRC. libpurple enabled. (patched for unicode channel names)'
 url='http://www.bitlbee.org/'
@@ -23,10 +23,11 @@ optdepends=('skype4py: to use skyped'
 provides=("bitlbee=${pkgver}")
 conflicts=('bitlbee' 'bitlbee-libpurple')
 source=("http://get.bitlbee.org/src/${_pkgname}-${pkgver}.tar.gz"
-        'bitlbee.tmpfiles' 'unicode-channel.patch')
-sha1sums=('de0767facdb7729253ae4d6ef6e3637ebd54939a'
+        'bitlbee.tmpfiles' 'unicode-channel.patch' '0001-Replace-libgcrypt-configure-with-pkg-config.patch')
+sha1sums=('e3f7e0d7f49d4e8f56ff22bf3e2bb6ac907d823c'
           '3695ed2fe22436c4d0fc3ead829f7d1f89bc491c'
-          'a3f9bc95b5f1518cf619e220e2f8be6110fb3e40')
+          'a3f9bc95b5f1518cf619e220e2f8be6110fb3e40'
+          '2e9ae1f98016bddc20fdb6be706e3b990a443b17')
 backup=('etc/bitlbee/bitlbee.conf'
         'etc/bitlbee/motd.txt')
 install=${_pkgname}.install
@@ -34,6 +35,7 @@ install=${_pkgname}.install
 prepare() {
   cd "${_pkgname}-$pkgver"
   patch -p1 < $srcdir/unicode-channel.patch
+  patch -p1 < $srcdir/0001-Replace-libgcrypt-configure-with-pkg-config.patch
 }
 
 build() {
