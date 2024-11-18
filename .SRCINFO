@@ -1,7 +1,7 @@
 pkgbase = pyqt5-webengine
 	pkgdesc = Python bindings for QtWebEngine
 	pkgver = 5.15.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.riverbankcomputing.com/software/pyqtwebengine/intro
 	arch = x86_64
 	groups = pyqt5
