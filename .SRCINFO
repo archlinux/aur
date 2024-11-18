@@ -1,7 +1,8 @@
 pkgbase = ironbar-git
 	pkgdesc = Customisable wlroots/sway bar written in rust
-	pkgver = v0.15.0.r0.bba0e86
+	pkgver = v0.16.1.r0.bdf6b3b
 	pkgrel = 1
+	url = https://ironb.ar
 	arch = i686
 	arch = x86_64
 	arch = armv6h
@@ -13,9 +14,14 @@ pkgbase = ironbar-git
 	makedepends = openssl
 	makedepends = libpulse
 	makedepends = luajit
+	makedepends = libdbusmenu-gtk3
 	depends = gtk3
 	depends = gtk-layer-shell
 	depends = lua51-lgi
+	depends = libdbusmenu-glib
+	depends = libdbusmenu-gtk3
+	provides = ironbar
+	conflicts = ironbar
 	source = git+https://github.com/JakeStanger/ironbar
 	md5sums = SKIP
 
