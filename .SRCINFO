@@ -1,0 +1,22 @@
+pkgbase = windsurf-features
+	pkgdesc = Unblock some features in windsurf
+	pkgver = 1.94.0
+	pkgrel = 1
+	url = https://github.com/microsoft/vscode
+	install = windsurf-features.install
+	arch = any
+	license = unknown
+	depends = windsurf
+	depends = python
+	depends = python-requests
+	optdepends = org.freedesktop.secrets: for settings sync feature
+	provides = windsurf-features
+	conflicts = windsurf-features
+	source = windsurf-features.hook
+	source = patch.py
+	source = patch.json
+	sha256sums = 78fd2ae98bb8f3da45206b6d980b81d588506b2b478f2977eaeafeca1a154318
+	sha256sums = 97e93d12e5ff5a24f7d96f722b601ce88a696291174af055d5897275467718e3
+	sha256sums = d30965a5f2b93ea121a9ecf2a54c7f435572dd9adfe906e7429c9f3ac74e0c4e
+
+pkgname = windsurf-features

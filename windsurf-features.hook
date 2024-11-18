@@ -1,0 +1,10 @@
+[Trigger]
+Operation = Install
+Operation = Upgrade
+Type = Package
+Target = windsurf
+
+[Action]
+Description = [windsurf-features] Patching product.json...
+Exec = /usr/share/windsurf-features/patch.py windsurf-features patch
+When = PostTransaction
