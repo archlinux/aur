@@ -1,23 +1,23 @@
 # Maintainer: Yigit Sever <yigit at yigitsever dot com>
 pkgname=python-html-text
 _pkgname=html-text
-pkgver=0.5.2
+pkgver=0.6.2
 pkgrel=1
 pkgdesc="Python library to extract text from HTML"
 arch=('any')
-url="https://github.com/TeamHG-Memex/html-text"
+url="https://github.com/zytedata/html-text"
 license=('MIT')
-depends=('python-lxml')
-makedepends=('python-setuptools')
+depends=(python-lxml)
+makedepends=(python-build python-installer python-wheel)
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-sha256sums=('c75a1da10d649f55162446de57f98374059a998071110a343815841286a442f9')
+sha256sums=('2bda73192e3009bacb626c8feacc9ab5f0685947eb5847e181fb1d330410bcc3')
 
 build() {
   cd "${_pkgname}-${pkgver}"
-	python setup.py build
+  python -m build --wheel --no-isolation
 }
 
 package() {
 	cd "${_pkgname}-${pkgver}"
-	python setup.py install --root="$pkgdir" --optimize=1
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
