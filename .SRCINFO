@@ -1,6 +1,6 @@
 pkgbase = python-pystack
 	pkgdesc = Analysis of the stack of remote python processes
-	pkgver = 1.4.0
+	pkgver = 1.4.1
 	pkgrel = 1
 	url = https://github.com/bloomberg/pystack
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = python-pystack
 	makedepends = python-setuptools
 	makedepends = python-wheel
 	depends = python
-	source = https://github.com/bloomberg/pystack/archive/v1.4.0.tar.gz
-	b2sums = a8f5c79313dfb7576edae0d5f5cd1763edba33758b3024312e9fce52ae805c2b1efc0616a36a76a2f250496e5e11525479b2f60e46f2850763969a65e0c07e4a
+	source = https://github.com/bloomberg/pystack/archive/v1.4.1.tar.gz
+	b2sums = 4ef3bc71055cd3241f9de396c068de6e1003606e8dd053656d7f75550b0af1555481ed8e42dedead34e5f817f07707dd0d9c25d2d67176bc667508e6ae7242d0
 
 pkgname = python-pystack
