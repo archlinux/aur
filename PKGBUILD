@@ -2,7 +2,7 @@
 
 _pkgname="sui"
 pkgname="${_pkgname}-bin"
-pkgver=1.36.2
+pkgver=1.37.3
 pkgrel=1
 pkgdesc="A next-generation smart contract platform with high throughput, low latency, and an asset-oriented programming model"
 arch=('x86_64')
@@ -20,7 +20,7 @@ source=("README-${pkgver}.md::${_url}/raw/mainnet-v${pkgver}/README.md"
 source_x86_64=("${_pkgsrc}-x86_64.tar.gz::${_url}/releases/download/mainnet-v${pkgver}/${_pkgname}-mainnet-v${pkgver}-ubuntu-x86_64.tgz")
 b2sums=('7bc970b23c6f45ededef3d736898072b891a6e8bbb03d184db4495ab6f08a6557605866c7238ea5279ef96cbaa0b5fa484ce43ae000d43ff0643102b763fb3c7'
         '43452dd4216bba835bff542c02fcd0a80b77fef97a6f1042adcbbbcf312bb856b0707c35b2f1af356e0b4262e501a159f06bf1f947f182d0023cdd4aefbd8a85')
-b2sums_x86_64=('20e8504f210b1fe199987599674147a7d91948cac990459daf2f91e96268c9f85fc773284d91cfe11f020e530ba2234fcfd7374fae39c1aac334653e1631ac30')
+b2sums_x86_64=('8c3d91dbbb71bbca103665e7df16ce54c200a9c157b9847ad179ffe29748f3f3fb6947ea63ae4c146349d8a661972cd912602562df05d831b802e83221273891')
 
 prepare() {
   cd "${srcdir}"
@@ -30,9 +30,9 @@ prepare() {
 
 package() {
   cd "${srcdir}"
-  install -Dm644 "README-${pkgver}.md" "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
-  install -Dm644 "LICENSE-${pkgver}"   "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
+  install -vDm644 "README-${pkgver}.md" "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
+  install -vDm644 "LICENSE-${pkgver}"   "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 
   cd "${_pkgsrc}-${CARCH}"
-  find "bin" -type f -exec install -Dm755 "{}" "${pkgdir}/usr/{}" \;
+  find "bin" -type f -exec install -vDm755 "{}" "${pkgdir}/usr/{}" \;
 }
