@@ -2,7 +2,7 @@
 
 pkgname=htrace.sh
 pkgver=1.1.7
-pkgrel=3
+pkgrel=4
 pkgdesc="A shell script for http/https troubleshooting and profiling"
 arch=('any')
 url="https://github.com/trimstray/htrace.sh"
@@ -24,9 +24,9 @@ depends=('bind-tools'
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/trimstray/htrace.sh/archive/v${pkgver}.tar.gz"
         "01-rename-testssl.patch"
         "02-relocation-tmp-and-log-folder.patch")
-sha256sums=('bc8ed23f247d7ae45dd65bdc844c4681215d27016f4b90957493ecbac9e2b743'
-            '76ea3e6c1271089f8773c0da066a1b4678082b196b9bab51c24fcd3e73c96035'
-            '8feae39f2f3a4fb2b0c24734bdfdd778aa8b12848b4f2d7c81fe3a04eb7553ff')
+b2sums=('dae75488c1ca21d2dcf50c15b531bca7682e91345f48059680c46fe15083e763c70ffa5d52db4d1620e1029daa1cb400dd67ab8215e9c1bbfd5984fb222b8e15'
+        '743882707b94e4628835686edea998f5232e45cd6100c7b635db70ea0f31f80806d08d1e29816e6fcab5f1be8015209cc4e95487fcbf5e86a7bf184bb89e4aa9'
+        '147cc9b5dbdb84ef84f65f5d651daa88ec89d89a1be9b3973ce233c637cecde509e6f66bf45151c6c25dd0f56932b8a5f1630b66c77d2406d46d5027269fda49')
 
 prepare() {
   cd $pkgname-$pkgver

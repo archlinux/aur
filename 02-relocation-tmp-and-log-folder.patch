@@ -13,3 +13,16 @@ index 125f078..549bdc5 100755
  
  # shellcheck disable=SC1090
  source "${_src}/../config"
+diff --git a/lib/DomainChainCheck b/lib/DomainChainCheck
+index b54544b..a35d886 100644
+--- a/lib/DomainChainCheck
++++ b/lib/DomainChainCheck
+@@ -41,7 +41,7 @@ function DomainChainCheck() {
+   echo | \
+   $_openssl s_client -showcerts -verify 5 -servername "$_ssl_domain_name" \
+   -connect "$_ssl_remote_socket" 2>&1 | \
+-  awk '/BEGIN CERTIFICATE/,/END CERTIFICATE/{ if(/BEGIN CERTIFICATE/){a++}; out="../tmp/cert"a".crt"; print >out}'
++  awk "/BEGIN CERTIFICATE/,/END CERTIFICATE/{ if(/BEGIN CERTIFICATE/){a++}; out="${_tmp}/cert"a".crt"; print >out}"
+
+   # shellcheck disable=SC2154
+   for _c_fd in "${_tmp}"/*.crt ; do
