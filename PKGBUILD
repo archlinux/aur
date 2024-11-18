@@ -2,14 +2,14 @@
 
 pkgname=stm32cubemonucpd
 _pkgname=STM32CubeMonUCPD
-_pkg_file_name=en.STM32CubeMonUCPD_Lin.zip
-pkgver=1.3.0
-pkgrel=3
+_pkg_file_name=en.stm32cubemonucpd-lin.zip
+pkgver=1.4.0
+pkgrel=1
 pkgdesc="Monitoring and configuration software tool for STM32 USB-C and Power Delivery 3.0 applications"
 arch=('x86_64')
 url="https://www.st.com/en/development-tools/stm32cubemonucpd.html"
 license=('custom:SLA0048')
-# package stlink provides stlink udev files
+depends=('stlink')
 #depends=('java-runtime=8' 'java8-openjfx')
 options=('!strip')
 
@@ -23,15 +23,12 @@ _pkg_url="$(awk -F'"' '{print $4}' <<< "$_pkg_url")"
 _download_path="https://www.st.com""$_pkg_url"
 #echo $_download_path
 
-DLAGENTS=("https::/usr/bin/curl \
-              -gqb '' --retry 3 --retry-delay 3 \
-              -H "@${srcdir}http_headers" \
-              -o %o --compressed %u")
+DLAGENTS=("https::/usr/bin/curl -gqb '' --retry 3 --retry-delay 3 -H "@${srcdir}http_headers" -o %o --compressed %u")
 
 source=("${_pkg_file_name}"::"https://www.st.com""$_pkg_url"
 	"stm32cubemonucpd.desktop"
 	"stm32cubemonucpd")
-sha256sums=('8cf22650111ace170eb841cace7a028cad1c68a9e3ec8abab7f739c0a0f47b0a'
+sha256sums=('493afa45e1acda8279681e3a3d200ad748fd63313d8a4661c04d70503cf914cb'
 	    'SKIP'
 	    'SKIP')
 
