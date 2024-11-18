@@ -1,0 +1,18 @@
+pkgbase = cronicle-git
+	pkgdesc = A simple, distributed task scheduler and runner
+	pkgver = v0.9.61.r494.g48490e0
+	pkgrel = 1
+	url = https://github.com/jhuckaby/Cronicle
+	install = cronicle-git.install
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = nodejs
+	depends = npm
+	provides = cronicle
+	conflicts = cronicle
+	backup = opt/cronicle/conf/config.json
+	source = git+https://github.com/jhuckaby/Cronicle.git
+	sha256sums = SKIP
+
+pkgname = cronicle-git
