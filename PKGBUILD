@@ -2,7 +2,7 @@
 
 pkgname=perl-ogg-vorbis-header-pureperl
 pkgver=1.05
-pkgrel=1
+pkgrel=2
 pkgdesc='Perl/CPAN module Ogg::Vorbis::Header::PurePerl - An object-oriented interface to Ogg Vorbis info and comments'
 _dist=Ogg-Vorbis-Header-PurePerl
 arch=(any)
