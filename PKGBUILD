@@ -9,7 +9,7 @@
 _pkgname=htop
 pkgname=$_pkgname-solarized
 _tag='4dbd0b5c87f4225495d6e0591a1d7227f120ead1' # git rev-parse ${pkgver}
-pkgver=3.2.2
+pkgver=3.3.0
 pkgrel=1
 pkgdesc='Interactive process viewer with solarized patch'
 arch=('i686' 'x86_64' 'armv7h')
@@ -25,13 +25,39 @@ conflicts=('htop')
 options=('!emptydirs')
 validpgpkeys=('F7ABE8761E6FE68638E6283AFE0842EE36DD8C0C'  # Nathan Scott <nathans@debian.org>
               '0D316B6ABE022C7798D0324BF1D35CB9E8E12EAD') # Benny Baumann <BenBE@geshi.org>
-source=("git+https://github.com/htop-dev/htop.git#tag=${_tag}?signed"
+source=("git+https://github.com/htop-dev/htop.git#tag=${pkgver}"
         'htop-solarized.patch')
-sha256sums=('SKIP'
-            '2b8e0b3949abd5b45c862963bde55504cd55845e734ff24fb8a310ca091c40f5')
+sha256sums=('a894206ecef4b690b97813d7b1626c98bacc9c82129b372d84680da8f6225761'
+            '30e1703d2662734d4094ea17cbabf029b251287b1d502b75893041debb36e3f3')
+
+_backports=(
+  # Fix the display of number of running tasks
+  'b6b9384678fa111d47a8d3074c31490863619d12'
+  # Undo too-aggressive code collapsing from tree mode refactoring
+  '5d778eaacc78c69d5597b57afb4f98062d8856ef'
+  # Clicking on column headers needs to also update the sort direction arrow
+  '91990b1a34927a4136a85e4ff9adcdbfa500286a'
+  # Disable basename matching for kernel threads
+  '71b099a8df9e8c2bf4361a9a93bebc409f513460'
+)
+
+_reverts=(
+)
 
 prepare() {
   cd "${_pkgname}"
+
+  local _c _l
+  for _c in "${_backports[@]}"; do
+    if [[ "${_c}" == *..* ]]; then _l='--reverse'; else _l='--max-count=1'; fi
+    git log --oneline "${_l}" "${_c}"
+    git cherry-pick --mainline 1 --no-commit "${_c}"
+  done
+  for _c in "${_reverts[@]}"; do
+    if [[ "${_c}" == *..* ]]; then _l='--reverse'; else _l='--max-count=1'; fi
+    git log --oneline "${_l}" "${_c}"
+    git revert --mainline 1 --no-commit "${_c}"
+  done
 
   autoreconf -fi
 
