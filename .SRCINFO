@@ -1,0 +1,14 @@
+pkgbase = quarantine
+	pkgdesc = quickly and easily create sandbox to run untrusted code
+	pkgver = 0.1.3
+	pkgrel = 1
+	url = https://github.com/zahash/quarantine
+	arch = x86_64
+	license = MIT
+	makedepends = rustup
+	makedepends = glibc
+	makedepends = gcc-libs
+	source = quarantine-0.1.3.tar.gz::https://github.com/zahash/quarantine/archive/refs/tags/v0.1.3.tar.gz
+	sha256sums = 3b6f51171714db1f7b92b008f92a963d46fb3fc4d4da3cc25bb43d21cfa14e36
+
+pkgname = quarantine
