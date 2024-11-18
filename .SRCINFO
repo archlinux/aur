@@ -1,7 +1,7 @@
 pkgbase = lc3tools-electron-bin
 	pkgdesc = LC3 emulator GUI
 	pkgver = 2.0.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/chiragsakhuja/lc3tools
 	arch = x86_64
 	arch = aarch64
