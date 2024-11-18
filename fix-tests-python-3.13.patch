@@ -1,0 +1,30 @@
+diff --unified --recursive --text --new-file calmjs-3.4.4.orig/src/calmjs/tests/test_argparse.py calmjs-3.4.4/src/calmjs/tests/test_argparse.py
+--- calmjs-3.4.4.orig/src/calmjs/tests/test_argparse.py	2024-11-18 06:57:10.555417502 +0100
++++ calmjs-3.4.4/src/calmjs/tests/test_argparse.py	2024-11-18 07:02:48.931181190 +0100
+@@ -108,7 +108,7 @@
+         stream = StringIO()
+         parser.print_help(file=stream)
+         options = [
+-            line.split()[0]
++            line.split()[0].rstrip(',')
+             for line in stream.getvalue().splitlines() if
+             '--' in line
+         ]
+@@ -126,7 +126,7 @@
+         stream = StringIO()
+         parser.print_help(file=stream)
+         options = [
+-            line.split()[0]
++            line.split()[0].rstrip(',')
+             for line in stream.getvalue().splitlines() if
+             '--' in line
+         ]
+@@ -145,7 +145,7 @@
+         stream = StringIO()
+         parser.print_help(file=stream)
+         options = [
+-            line.split()[0]
++            line.split()[0].rstrip(',')
+             for line in stream.getvalue().splitlines() if
+             '--' in line and '[' not in line
+         ]
