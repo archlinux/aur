@@ -1,0 +1,13 @@
+pkgbase = lc3tools-electron-bin
+	pkgdesc = LC3 emulator GUI
+	pkgver = 2.0.2
+	pkgrel = 1
+	url = https://github.com/chiragsakhuja/lc3tools
+	arch = x86_64
+	arch = aarch64
+	license = Apache 2.0
+	options = !debug
+	source = https://github.com/chiragsakhuja/lc3tools/releases/download/v2.0.2/LC3Tools-2.0.2.AppImage
+	sha256sums = 410b352109bf54f9e8260c34f9cbb67ab7e4eec3877bff9b913f459b716e57f4
+
+pkgname = lc3tools-electron-bin
