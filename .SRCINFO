@@ -1,7 +1,7 @@
 pkgbase = perl-ogg-vorbis-header-pureperl
 	pkgdesc = Perl/CPAN module Ogg::Vorbis::Header::PurePerl - An object-oriented interface to Ogg Vorbis info and comments
 	pkgver = 1.05
-	pkgrel = 1
+	pkgrel = 2
 	url = https://metacpan.org/release/Ogg-Vorbis-Header-PurePerl
 	arch = any
 	license = GPL-2.0-or-later
