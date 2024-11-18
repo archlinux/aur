@@ -2,13 +2,13 @@
 
 pkgname=surrealist-bin
 pkgver=3.0.8
-pkgrel=1
+pkgrel=2
 pkgdesc="Surrealist is the ultimate way to visually manage your SurrealDB database"
 arch=("x86_64")
 url="https://github.com/surrealdb/surrealist"
 license=("MIT")
 groups=()
-depends=("webkit2gtk" "gtk3")
+depends=("webkit2gtk-4.1" "gtk3")
 provides=("surrealist")
 conflicts=("surrealist")
 source=("https://github.com/surrealdb/surrealist/releases/download/surrealist-v${pkgver//_/-}/surrealist_${pkgver//_/-}_amd64.deb")
