@@ -1,16 +1,17 @@
 pkgbase = python-ml-collections
-	pkgdesc = A library of Python Collections designed for ML use cases
-	pkgver = 0.1.1
+	pkgdesc = ML Collections is a library of Python collections designed for ML usecases.
+	pkgver = 1.0.0
 	pkgrel = 1
-	url = https://github.com/google/ml_collections
+	url = None
 	arch = any
-	license = Apache
-	makedepends = python-setuptools
+	license = custom:Apache Software License
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
 	depends = absl-py
-	depends = python-contextlib2
 	depends = python-six
 	depends = python-yaml
-	source = ml_collections-0.1.1.tar.gz::https://github.com/google/ml_collections/archive/refs/tags/v0.1.1.tar.gz
-	sha512sums = 4ee02a53ab597acb2a239d0764412ad1f9a9959b8ab486ed18fc96837013a5a475bb73c1ee04419852af5f5ecdb7b4a33db36e4ec431d549c9fa2bc5934676d8
+	source = https://files.pythonhosted.org/packages/31/f9/74689ff3e3ff6e4ec8616887cb00c9c66bca7e6243fd328358ea3665d547/ml_collections-1.0.0.tar.gz
+	sha256sums = 00b11a1a339dd6c2d9b7f0daab47ab17e10e29ca1b2a656058605e2b7210897f
 
 pkgname = python-ml-collections

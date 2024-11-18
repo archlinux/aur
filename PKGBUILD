@@ -1,32 +1,30 @@
+# Maintainer: yznnyz <yzniu1@gmail.com>
 # Maintainer: Butui Hu <hot123tea123@gmail.com>
-
-_pkgname=ml_collections
-pkgname=python-ml-collections
-pkgver=0.1.1
+_module='ml-collections'
+pkgname=python-$_module
+_src_folder='ml_collections-1.0.0'
+pkgver='1.0.0'
 pkgrel=1
-pkgdesc='A library of Python Collections designed for ML use cases'
-arch=('any')
-url='https://github.com/google/ml_collections'
-license=('Apache')
+pkgdesc="ML Collections is a library of Python collections designed for ML usecases."
+url="None"
 depends=(
   absl-py
-  python-contextlib2
   python-six
   python-yaml
 )
-makedepends=(
-  python-setuptools
-)
-source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/google/ml_collections/archive/refs/tags/v${pkgver}.tar.gz")
-sha512sums=('4ee02a53ab597acb2a239d0764412ad1f9a9959b8ab486ed18fc96837013a5a475bb73c1ee04419852af5f5ecdb7b4a33db36e4ec431d549c9fa2bc5934676d8')
+makedepends=('python-build' 'python-installer' 'python-wheel')
+license=('custom:Apache Software License')
+arch=('any')
+source=("https://files.pythonhosted.org/packages/31/f9/74689ff3e3ff6e4ec8616887cb00c9c66bca7e6243fd328358ea3665d547/ml_collections-1.0.0.tar.gz")
+sha256sums=('00b11a1a339dd6c2d9b7f0daab47ab17e10e29ca1b2a656058605e2b7210897f')
 
 build() {
-  cd "${_pkgname}-${pkgver}"
-  python setup.py build
+    cd "${srcdir}/${_src_folder}"
+    python -m build --wheel --no-isolation
 }
 
 package() {
-  cd "${_pkgname}-${pkgver}"
-  python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
+
+    cd "${srcdir}/${_src_folder}"
+    python -m installer --destdir="${pkgdir}" dist/*.whl
 }
-# vim:set ts=2 sw=2 et:
