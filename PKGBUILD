@@ -1,14 +1,15 @@
+# Maintainer: envolution
 # Contributor: Marcell Meszaros < marcell.meszaros AT runbox.eu >
 # Contributor: Vojtěch Aschenbrenner <v@asch.cz>
 
 _gemname="sup"
 pkgname="${_gemname}"
 pkgver=1.2
-pkgrel=2
+pkgrel=3
 pkgdesc='Console-based email client for people with a lot of email. Great mutt alternative.'
 arch=('any')
 url='http://sup-heliotrope.github.io/'
-license=('GPL2')
+license=('GPL-2.0-or-later')
 depends=(
   'ruby'
   'ruby-chronic'
@@ -21,13 +22,12 @@ depends=(
   'ruby-rmail>=1.1.2'           'ruby-rmail<2'
   'ruby-unicode>=0.4.4'         'ruby-unicode<0.5'
   'ruby-unicode-display_width'
-  'ruby-xapian-ruby>=1.2'       'ruby-xapian-ruby<2'
+  'ruby-xapian-ruby'
 )
 makedepends=('ruby-rake')
 optdepends=(
   'ruby-gpgme>=2.0.2: PGP support'
 )
-conflicts=('sup-git')
 source=("https://rubygems.org/downloads/${_gemname}-${pkgver}.gem")
 noextract=("${_gemname}-${pkgver}.gem")
 b2sums=('2ec78cfd84973671759479a9197355903e881ef5f1324c9946b785711eeff1fce3a2dbea993dedf90d0b37dad95fa07051d627e587515e9c54193206eabcb14e')
@@ -40,4 +40,6 @@ package() {
 
   gem install --no-user-install --ignore-dependencies -i "${pkgdir}/$_gemdir" -n "${pkgdir}/usr/bin" \
     "${_gemname}-${pkgver}.gem"
+  install -D -m644 "$pkgdir/$_gemdir/gems/$_gemname-$pkgver/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+
 }
