@@ -5,7 +5,7 @@
 # Contributor : Bryce Nordgren <bnordgren at gmail dot com>
 pkgname=hdfview-bin
 _pkgname=HDFView
-pkgver=3.3.1
+pkgver=3.3.2
 pkgrel=1
 pkgdesc="a GUI browser for reading hdf5 files - prebuilt binaries from the HDF group"
 arch=('x86_64')
@@ -14,38 +14,22 @@ license=('custom')
 provides=('hdfview')
 replaces=('hdfview-beta')
 conflicts=('hdfview-beta' 'hdfview')
-source=("https://support.hdfgroup.org/ftp/HDF5/releases/HDF-JAVA/hdfview-${pkgver}/bin/${_pkgname}-${pkgver}-centos7_64.tar.gz"
-        HDFView.svg)
-sha512sums=('c63e45b8936f887c245943e8530e89c9f010ff206971891a472e35e35f376b701587ecd44b60cc105a3ff166edd37977a131b27f9c14765e8e14ef8136f4fb16'
-            '649eb81f33a3b38a7ae2ee9a7f286ffa489d0bd7a9f37a0face64fe7956863dcab2131be3792c45dc03b1a6955fda2b37d168698922e938b73c90d24fee7a8c4')
+source=("https://github.com/HDFGroup/hdfview/releases/download/v${pkgver}/${_pkgname}-${pkgver}-Linux-x86_64.tar.gz")
+sha512sums=('444101f4cb77a1b94477852dab52163c08fc3f6be23cbfd46efdf0f2572a5df3067b9db91b4afdd90d95eb42526c6491d23d9c1859a088c17132834965ba2924')
 
 package() {
 
-  # Extract RPM
-  bsdtar -xf "${srcdir}/hdfview-${pkgver}-1.x86_64.rpm" -C "${pkgdir}"
+  bsdtar -xf "${srcdir}/hdfview_${pkgver}_amd64.deb" -C "${srcdir}"
+  bsdtar -xf "${srcdir}/data.tar.zst" -C ${pkgdir}
 
-  # Add permissions for non-root users:
-  chmod -R go+rX "${pkgdir}/opt/hdfview"
-
-  # Launcher:
   mkdir -p "${pkgdir}/usr/bin"
   ln -s "/opt/hdfview/bin/HDFView" "${pkgdir}/usr/bin/hdfview"
 
-  # Higher res icon:
-  rm "${pkgdir}/opt/hdfview/lib/HDFView.png"
-  install -D -m 644 "${srcdir}/HDFView.svg" "${pkgdir}/opt/hdfview/lib/HDFView.svg"
-  sed -i 's/png/svg/g' "${pkgdir}/opt/hdfview/lib/hdfview-HDFView.desktop"
-
-  # Desktop file:
-  # Add missing %F to exec line:
-  sed -i 's:bin/HDFView:bin/HDFView %F:g' "${pkgdir}/opt/hdfview/lib/hdfview-HDFView.desktop"
   mkdir -p "${pkgdir}/usr/share/applications"
-  mv "${pkgdir}/opt/hdfview/lib/hdfview-HDFView.desktop" "${pkgdir}/usr/share/applications/"
+  ln -s "/opt/hdfview/lib/hdfview-HDFView.desktop" "${pkgdir}/usr/share/applications/"
   
-  # Mimetypes:
   mkdir -p "${pkgdir}/usr/share/mime/application"
-  mv "${pkgdir}/opt/hdfview/lib/hdfview-HDFView-MimeInfo.xml" "${pkgdir}/usr/share/mime/application/"
+  ln -s "/opt/hdfview/lib/hdfview-HDFView-MimeInfo.xml" "${pkgdir}/usr/share/mime/application/"
 
-  # License:
   install -D -m 644 "${srcdir}/COPYING" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
