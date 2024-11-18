@@ -6,7 +6,7 @@
 # Contributor: Michael Fellinger <m.fellinger@gmail.com>
 
 pkgname=sqlitebrowser-git
-pkgver=continuous.r0.g8cbf5795
+pkgver=continuous.r0.gf37031e6
 pkgrel=1
 pkgdesc="DB Browser for SQLite"
 arch=('i686' 'x86_64')
@@ -14,8 +14,8 @@ url="http://sqlitebrowser.org/"
 license=('GPL3')
 provides=('sqlitebrowser')
 conflicts=('sqlitebrowser')
-depends=('qt5-base' 'sqlite' 'libxkbcommon-x11')
-makedepends=('cmake' 'qt5-tools' 'git')
+depends=('qt6-base' 'sqlite' 'libxkbcommon-x11')
+makedepends=('cmake' 'qt6-tools' 'git')
 install=sqlitebrowser.install
 source=($pkgname'::git+https://github.com/sqlitebrowser/sqlitebrowser.git')
 md5sums=('SKIP')
@@ -27,7 +27,7 @@ pkgver() {
 
 build() {
 	cd $srcdir/$pkgname
-	cmake -DUSE_QT5=TRUE -DCMAKE_INSTALL_PREFIX=/usr .
+	cmake -DQT_MAJOR=Qt6 -DCMAKE_INSTALL_PREFIX=/usr .
 	make
 }
 
