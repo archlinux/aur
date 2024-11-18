@@ -1,0 +1,14 @@
+pkgbase = passepartui
+	pkgdesc = A TUI for pass
+	pkgver = 0.1.3
+	pkgrel = 1
+	url = https://github.com/kardwen/passepartui
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	depends = gcc-libs
+	depends = pass
+	source = passepartui-0.1.3.tar.gz::https://github.com/kardwen/passepartui/archive/v0.1.3.tar.gz
+	sha512sums = 97b86ecb6dfd3f545460246c1ca6084702acd531e3b3ec5f2acf5722ae6ea087a5425353ac42bcd2b3c2dbaa2155f65781a96a49ee6ef3983f444dc032b0fb4f
+
+pkgname = passepartui
