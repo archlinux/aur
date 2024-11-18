@@ -1,6 +1,6 @@
 pkgbase = projectforge-bin
 	pkgdesc = Project Forge helps you build applications with Go(Prebuilt version).
-	pkgver = 1.5.28
+	pkgver = 1.5.29
 	pkgrel = 1
 	url = https://projectforge.dev/
 	arch = aarch64
@@ -8,17 +8,17 @@ pkgbase = projectforge-bin
 	arch = i686
 	arch = x86_64
 	license = MIT
-	provides = projectforge=1.5.28
+	provides = projectforge=1.5.29
 	conflicts = projectforge
-	source = LICENSE-1.5.28.md::https://raw.githubusercontent.com/kyleu/projectforge/v1.5.28/LICENSE.md
+	source = LICENSE-1.5.29.md::https://raw.githubusercontent.com/kyleu/projectforge/v1.5.29/LICENSE.md
 	sha256sums = c13f88f8f26e1959cebd757842d7c7b067c7ec10a637fed994ccf7f6f6d6763e
-	source_aarch64 = projectforge-1.5.28-aarch64.rpm::https://github.com/kyleu/projectforge/releases/download/v1.5.28/projectforge_1.5.28_linux_arm64.rpm
-	sha256sums_aarch64 = 255995a9486df575bc8a9fa82238c9ac8e962ea34e7e72e6d96b91e7b3d061fc
-	source_armv7h = projectforge-1.5.28-armv7h.rpm::https://github.com/kyleu/projectforge/releases/download/v1.5.28/projectforge_1.5.28_linux_armv7.rpm
-	sha256sums_armv7h = 8d5890402b452f0a4d72b25024cd68b13a02c28980df8bb39930b13d4ad90575
-	source_i686 = projectforge-1.5.28-i686.rpm::https://github.com/kyleu/projectforge/releases/download/v1.5.28/projectforge_1.5.28_linux_386.rpm
-	sha256sums_i686 = a9f9acf07ba6d80d1866cef6faae6e387fa64bbf1273534d2ab6f317bf209d18
-	source_x86_64 = projectforge-1.5.28-x86_64.rpm::https://github.com/kyleu/projectforge/releases/download/v1.5.28/projectforge_1.5.28_linux_amd64.rpm
-	sha256sums_x86_64 = f90f56fc128144b8cf1c8daa659c8e1e1a09dde517131f497bae3a080cdc1d91
+	source_aarch64 = projectforge-1.5.29-aarch64.rpm::https://github.com/kyleu/projectforge/releases/download/v1.5.29/projectforge_1.5.29_linux_arm64.rpm
+	sha256sums_aarch64 = 786a4addd8e13bdf154bd40c4208fe3d87c646d3f97b420998bdead15ac41b2a
+	source_armv7h = projectforge-1.5.29-armv7h.rpm::https://github.com/kyleu/projectforge/releases/download/v1.5.29/projectforge_1.5.29_linux_armv7.rpm
+	sha256sums_armv7h = 60d60a502934717e462405deaaf64da1930aea6a36859e581712b0cb1aa1de88
+	source_i686 = projectforge-1.5.29-i686.rpm::https://github.com/kyleu/projectforge/releases/download/v1.5.29/projectforge_1.5.29_linux_386.rpm
+	sha256sums_i686 = ec1dca23f12941653c7542d34a46e8a5fbf8be580ed35a8ca1b6e3aca81ba174
+	source_x86_64 = projectforge-1.5.29-x86_64.rpm::https://github.com/kyleu/projectforge/releases/download/v1.5.29/projectforge_1.5.29_linux_amd64.rpm
+	sha256sums_x86_64 = d8585502dffe1b326dba797c185c9e80c6f608587750a14a73cb1cc12dec2512
 
 pkgname = projectforge-bin
