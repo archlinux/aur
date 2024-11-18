@@ -1,6 +1,6 @@
 pkgbase = dlib-cuda-git
 	pkgdesc = Cross-platform C++ library using contract programming and modern C++ techniques
-	pkgver = 19.24.6+r8287+g39240959f
+	pkgver = 19.24.6+r8288+gdfbee6d3c
 	pkgrel = 2
 	url = http://dlib.net
 	arch = x86_64
