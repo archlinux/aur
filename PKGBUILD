@@ -8,7 +8,7 @@ pkgdesc="FastAnime, anime site experience from the terminal."
 arch=('x86_64')
 url="https://github.com/Benex254/FastAnime"
 license=('Unlicense')
-makedepends=('python>=3.10' 'git' 'uv')
+makedepends=('python>=3.10' 'git' 'uv' 'python-installer')
 optdepends=('mpv: video player'
             'webtorrent-cli: nyaa torrents'
             'ffmpeg: download hls streams' 
@@ -23,10 +23,16 @@ optdepends=('mpv: video player'
             'feh: image viewer (for manga mode)')
 source=("git+${url}.git")
 
+build() {
+    cd "${srcdir}" || exit
+    cd FastAnime || exit
+    uv build
+}
+
 package() {
     cd "${srcdir}" || exit
     cd FastAnime || exit
-    uv tool install .
+    python -m installer --destdir="$pkgdir" dist/*.whl
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"
 }
 sha256sums=('SKIP')
