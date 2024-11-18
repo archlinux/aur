@@ -1,0 +1,21 @@
+pkgbase = focusclock-git
+	pkgdesc = A clock that sits on top of all windows to help you focus.
+	pkgver = r6.eece4cb
+	pkgrel = 1
+	url = https://github.com/KorigamiK/focusclock
+	arch = x86_64
+	arch = i686
+	arch = aarch64
+	arch = armv7h
+	arch = armv6h
+	license = GPL3
+	makedepends = cmake
+	makedepends = git
+	depends = gtk4-layer-shell
+	depends = gtkmm-4.0
+	provides = focusclock
+	conflicts = focusclock
+	source = git+https://github.com/KorigamiK/focusclock.git
+	sha512sums = SKIP
+
+pkgname = focusclock-git
