@@ -3,13 +3,13 @@
 replaces=('pepper')
 pkgname=crown
 pkgver=0.52.0
-pkgrel=1
-pkgdesc="The Flexible Game Engine"
+pkgrel=2
+pkgdesc="Crown is a complete and cross-platform game engine designed for flexibility, performance, and fast-iterations."
 arch=(x86_64)
 url="https://www.crownengine.org"
 license=('MIT' 'GPL3')
 depends=('glib2>=2.48.2'
-         'gtk3>=3.16'
+         'gtk3>=3.24'
          'libgee'
          'libgl'
          'libpulse'
@@ -24,7 +24,8 @@ source=("https://github.com/crownengine/crown/releases/download/v$pkgver/$pkgnam
 sha256sums=('3442daab2d0e5402b891c9ac1c4d9c72b90f638a13869b9aa323d3c62e5e01d0'
             '0c4170cc61e5f802763ab335dcc151a0dcf421c21e624225d28ce025fe666a91'
             'e8950a977117d524b56c5103126938430d787dbada535c9efaba266666ad3624'
-            '375b5408a928ed0b752c43f9cb52209a81223f788ae26f991987bcb4341f5847')
+            '18a3bbbd9cedbc1e988270003b857add433cc2d140fb2462b4d129a99283824c')
+options=('!strip')
 
 package() {
     install -d "$pkgdir"/opt
@@ -38,8 +39,5 @@ package() {
 
     # .desktop and icons
     install -D -m644 crown.desktop "${pkgdir}/usr/share/applications/crown.desktop"
-    for _res in 512x512 256x256 128x128 64x64 48x48 32x32 16x16; do
-        install -D -m644 icons/$_res/apps/crown.png "${pkgdir}/usr/share/icons/hicolor/$_res/apps/crown.png"
-    done
-    install -D -m644 icons/crown.svg "${pkgdir}/usr/share/icons/hicolor/scalable/apps/crown.svg"
+    install -D -m644 icons/crown-black-socket.svg "${pkgdir}/usr/share/icons/hicolor/scalable/apps/crown.svg"
 }
