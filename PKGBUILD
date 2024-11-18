@@ -3,8 +3,8 @@
 pkgname=windterm-bin
 _pkgname=WindTerm
 pkgver=2.6.1
-pkgrel=2
-pkgdesc='A Quicker and better SSH/Telnet/Serial/Shell/Sftp client for DevOps.'
+pkgrel=3
+pkgdesc="A Quicker and better SSH/Telnet/Serial/Shell/Sftp client for DevOps.(Prebuilt version)"
 arch=('x86_64')
 license=('Apache-2.0')
 url='https://github.com/kingToolbox/WindTerm/'
@@ -27,12 +27,14 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('2704ec7d49044a5daf531e3c4da9ca6003955b0eaae31198fa2d0facdf467e90'
-            '612bb2919e8389fe46f4d8cae00d6c18ec4a3b2cfc065c12266273205b75c112')
+            '6ae1477e3b2024bebd32731fbe0cb299ca86388afea45367b2ffb2a9eb57a9d1')
 build() {
-    sed -e "s|@appname@|${pkgname%-bin}|g" \
-        -e "s|@runname@|${_pkgname}|g" \
-        -i "${srcdir}/${pkgname%-bin}.sh"
-    sed "s|/usr/bin/${pkgname%-bin}|${pkgname%-bin} %U|g" -i "${srcdir}/${_pkgname}_${pkgver}/${pkgname%-bin}.desktop"
+    sed -e "
+        s/@appname@/${pkgname%-bin}/g
+        s/@runname@/${_pkgname}/g
+    " -i "${srcdir}/${pkgname%-bin}.sh"
+    sed "s/\/usr\/bin\/${pkgname%-bin}/${pkgname%-bin} %U/g" -i "${srcdir}/${_pkgname}_${pkgver}/${pkgname%-bin}.desktop"
+    find "${srcdir}/${_pkgname}_${pkgver}/terminal" -type d \( -name macos -o -name windows -o -name cmd -o -name powershell -o -name wsl \) -exec rm -rf {} +
     find "${srcdir}/${_pkgname}_${pkgver}/" -type d -exec chmod 755 {} \;
     find "${srcdir}/${_pkgname}_${pkgver}/global" -type f -exec chmod 644 {} \;
     find "${srcdir}/${_pkgname}_${pkgver}/lib" -type f -exec chmod 644 {} \;
@@ -48,9 +50,8 @@ build() {
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
-    install -Dm755 -d "${pkgdir}/opt/${pkgname%-bin}"
-    cp -r "${srcdir}/${_pkgname}_${pkgver}/"* "${pkgdir}/opt/${pkgname%-bin}"
+    install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
+    cp -Pr --no-preserve=ownership "${srcdir}/${_pkgname}_${pkgver}/"* "${pkgdir}/usr/lib/${pkgname%-bin}"
     install -Dm644 "${srcdir}/${_pkgname}_${pkgver}/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
     install -Dm644 "${srcdir}/${_pkgname}_${pkgver}/${pkgname%-bin}.png" -t "${pkgdir}/usr/share/pixmaps"
-    chown -R "${USER}":"${USER}" "${pkgdir}/opt/${pkgname%-bin}"
 }
