@@ -1,13 +1,16 @@
 # Maintainer: Neko_Rikka <yjzyl9008 at gmail dot com>
+# 感谢 https://aur.archlinux.org/packages/liteloader-qqnt-git 的参考
 
 pkgname=napcatqq-git
 _pkgname=NapCatQQ
 pkgver=r3054.0222664d
-pkgrel=3
+pkgrel=4
 pkgdesc="现代化的基于 NTQQ 的 Bot 协议端实现"
-arch=('x86_64')
+arch=('x86_64'
+      'aarch64'
+      'loong64')
 url="https://github.com/NapNeko/NapCatQQ"
-license=('GPL3')
+license=('GPL2')
 depends=('linuxqq')
 makedepends=('git' 'nodejs')
 options=('!strip')
