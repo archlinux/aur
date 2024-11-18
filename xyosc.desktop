@@ -1,0 +1,12 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=xyosc
+GenericName=xyosc
+Comment=A simple XY-oscilloscope written in Go.
+Exec=xyosc
+Icon=xyosc
+Terminal=false
+Categories=AudioVideo;Video;Audio
+Keywords=media;video;audio;
+StartupNotify=true

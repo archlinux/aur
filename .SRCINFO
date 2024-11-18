@@ -1,6 +1,6 @@
 pkgbase = ontake-xyosc-git
 	pkgdesc = A simple XY-oscilloscope written in Go.
-	pkgver = r7.g1a312e5
+	pkgver = r19.g53cef14
 	pkgrel = 1
 	url = https://github.com/make-42/xyosc
 	arch = x86_64

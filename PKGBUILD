@@ -2,7 +2,7 @@
 # Contributor: Louis Dalibard <ontake@ontake.dev>
 _pkgbase="ontake-xyosc"
 pkgname="$_pkgbase-git"
-pkgver=r7.g1a312e5
+pkgver=r19.g53cef14
 pkgrel=1
 pkgdesc="A simple XY-oscilloscope written in Go."
 arch=("x86_64" "armv7h" "aarch64")
@@ -35,5 +35,8 @@ build() {
 }
 	
 package() {
-	install -Dm755 "${srcdir}/xyosc/xyosc" "${pkgdir}"/usr/bin/xyosc
+	cd ${srcdir}
+	install -Dm755 "xyosc/xyosc" "${pkgdir}"/usr/bin/xyosc
+	install -Dm644 "xyosc/icons/assets/icon.svg" "$pkgdir/usr/share/icons/hicolor/symbolic/apps/xyosc.svg"
+  	install -Dm644 "../xyosc.desktop" "$pkgdir/usr/share/applications/xyosc.desktop"
 }
