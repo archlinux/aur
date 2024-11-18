@@ -1,0 +1,4 @@
+[ruby-lockfile]
+source="cmd"
+cmd="echo 2.1.8"
+# This is pinned as we're using patches and a different version than rubygems.org reports

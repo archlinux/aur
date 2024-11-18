@@ -1,0 +1,155 @@
+Only in lockfile-master_new: .gitignore
+diff -ur lockfile-master_old/lib/lockfile.rb lockfile-master_new/lib/lockfile.rb
+--- lockfile-master_old/lib/lockfile.rb	2014-03-04 01:28:03.000000000 -0500
++++ lockfile-master_new/lib/lockfile.rb	2023-03-30 14:25:55.000000000 -0400
+@@ -6,7 +6,7 @@
+ 
+   class Lockfile
+ 
+-    VERSION = '2.1.3'
++    VERSION = '2.1.8'
+     def Lockfile.version() Lockfile::VERSION end
+     def version() Lockfile::VERSION end
+ 
+@@ -163,6 +163,15 @@
+       open(path, *a, &b)
+     end
+ 
++    def self.finalizer_proc(file)
++      pid = Process.pid
++      lambda do |id|
++        File.unlink file if Process.pid == pid
++      rescue
++        nil
++      end
++    end
++
+     def initialize(path, opts = {}, &block)
+       @klass = self.class
+       @path  = path
+@@ -183,9 +192,12 @@
+       @dont_use_lock_id = getopt 'dont_use_lock_id' , @klass.dont_use_lock_id
+       @debug            = getopt 'debug'            , @klass.debug
+ 
++      @semaphore = Mutex.new
++
+       @sleep_cycle = SleepCycle.new @min_sleep, @max_sleep, @sleep_inc 
+ 
+-      @clean    = @dont_clean ? nil : lambda{ File.unlink @path rescue nil }
++      @clean    = @dont_clean ? nil : Lockfile.finalizer_proc(@path)
++
+       @dirname  = File.dirname @path
+       @basename = File.basename @path
+       @thief    = false
+@@ -297,7 +309,13 @@
+               end
+             ensure
+               begin
+-                @refresher.kill if @refresher and @refresher.status
++                begin
++                  @semaphore.synchronize do
++                    @refresher.kill 
++                  end 
++                rescue
++                    @refresher.kill 
++                end if @refresher and @refresher.status
+                 @refresher = nil
+               ensure
+                 unlock unless stolen
+@@ -367,11 +385,18 @@
+     def unlock
+       raise UnLockError, "<#{ @path }> is not locked!" unless @locked
+ 
+-      @refresher.kill if @refresher and @refresher.status
++      begin
++        @semaphore.synchronize do
++          @refresher.kill 
++        end 
++      rescue
++        @refresher.kill 
++      end if @refresher and @refresher.status
++
+       @refresher = nil
+ 
+       begin
+-        File.unlink @path
++        File.unlink @path 
+       rescue Errno::ENOENT
+         raise StolenLockError, @path
+       ensure
+@@ -388,7 +413,11 @@
+             touch path
+             trace{"touched <#{ path }> @ <#{ Time.now.to_f }>"}
+             unless dont_use_lock_id
+-              loaded = load_lock_id(IO.read(path))
++              txt = nil
++              @semaphore.synchronize do
++                txt = IO.read(path)
++              end
++              loaded = load_lock_id(txt)
+               trace{"loaded <\n#{ loaded.inspect }\n>"}
+               raise unless loaded == @lock_id 
+             end
+diff -ur lockfile-master_old/lockfile.gemspec lockfile-master_new/lockfile.gemspec
+--- lockfile-master_old/lockfile.gemspec	2014-03-04 01:28:03.000000000 -0500
++++ lockfile-master_new/lockfile.gemspec	2023-03-30 14:25:55.000000000 -0400
+@@ -3,7 +3,7 @@
+ 
+ Gem::Specification::new do |spec|
+   spec.name = "lockfile"
+-  spec.version = "2.1.3"
++  spec.version = "2.1.8"
+   spec.platform = Gem::Platform::RUBY
+   spec.summary = "lockfile"
+   spec.description = "a ruby library for creating perfect and NFS safe lockfiles"
+@@ -38,8 +38,7 @@
+ 
+   spec.extensions.push(*[])
+ 
+-  spec.rubyforge_project = "codeforpeople"
+-  spec.author = "Ara T. Howard"
++  spec.author = "Ara T. Howard - Modified by Miguel Vazquez"
+   spec.email = "ara.t.howard@gmail.com"
+-  spec.homepage = "https://github.com/ahoward/lockfile"
++  spec.homepage = "https://github.com/mikisvaz/lockfile"
+ end
+Only in lockfile-master_old: pkg
+diff -ur lockfile-master_old/rakefile lockfile-master_new/rakefile
+--- lockfile-master_old/rakefile	2014-03-04 01:28:03.000000000 -0500
++++ lockfile-master_new/rakefile	2023-03-30 14:25:55.000000000 -0400
+@@ -1,7 +1,7 @@
+ This.rubyforge_project = 'codeforpeople'
+-This.author = "Ara T. Howard"
++This.author = "Ara T. Howard - Modified by Miguel Vazquez"
+ This.email = "ara.t.howard@gmail.com"
+-This.homepage = "https://github.com/ahoward/#{ This.lib }"
++This.homepage = "https://github.com/mikisvaz/#{ This.lib }"
+ 
+ task :license do
+   open('LICENSE', 'w'){|fd| fd.puts "Ruby"}
+@@ -99,7 +99,7 @@
+     This.extensions = []
+     extensions = This.extensions
+     %w( Makefile configure extconf.rb ).each do |ext|
+-      extensions << ext if File.exists?(ext)
++      extensions << ext if File.exist?(ext)
+     end
+   end
+   extensions = [extensions].flatten.compact
+@@ -145,7 +145,6 @@
+ 
+             spec.extensions.push(*<%= extensions.inspect %>)
+ 
+-            spec.rubyforge_project = <%= This.rubyforge_project.inspect %>
+             spec.author = <%= This.author.inspect %>
+             spec.email = <%= This.email.inspect %>
+             spec.homepage = <%= This.homepage.inspect %>
+@@ -297,7 +296,7 @@
+ 
+ # discover full path to this ruby executable
+ #
+-  c = Config::CONFIG
++  c = RbConfig::CONFIG
+   bindir = c["bindir"] || c['BINDIR']
+   ruby_install_name = c['ruby_install_name'] || c['RUBY_INSTALL_NAME'] || 'ruby'
+   ruby_ext = c['EXEEXT'] || ''
