@@ -1,5 +1,5 @@
 pkgbase = royalguard-bin
-	pkgdesc = Command Line Scientific Calculator
+	pkgdesc = Secure Ergonomic Command Line Password Manager
 	pkgver = 0.4.3
 	pkgrel = 1
 	url = https://github.com/zahash/royalguard
