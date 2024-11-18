@@ -1,6 +1,6 @@
 post_install() {
   echo 'The zenstats kernel module will be available on reboot. To load it now, run "modprobe -r k10temp && modprobe zenstats" as root'
-  echo 'If you're coming from zenpower, you *must* reboot for zenstats to be available'
+  echo 'If you're coming from zenpower, you must reboot for zenstats to be available'
 }
 
 post_remove() {
