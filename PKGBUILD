@@ -1,7 +1,7 @@
 # Author: futpib <futpib@gmail.com>
 
 pkgname=youtube-tv-git
-pkgver=1.0.0.r9.g2b22762
+pkgver=1.0.0.r10.g6419d8d
 pkgrel=1
 pkgdesc="Desktop YouTube TV app"
 arch=('x86_64')
@@ -35,9 +35,10 @@ package() {
 
     appdir="usr/lib/$_pkgname"
     install -d "$pkgdir/$(dirname "$appdir")"
+    install -d "$pkgdir/$appdir"
     cp -r . "$pkgdir/$appdir"
 
-    install -dm755 "$pkgdir/usr/bin"
+    install -d "$pkgdir/usr/bin"
     ln -s "/$appdir/$_pkgname" "$pkgdir/usr/bin/$_pkgname"
 
     install -Dm0644 -t "${pkgdir}/usr/share/applications" "$srcdir/$_pkgname/resources/youtube-tv.desktop"
