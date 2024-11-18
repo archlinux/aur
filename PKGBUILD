@@ -3,7 +3,7 @@
 pkgname=napcatqq-git
 _pkgname=NapCatQQ
 pkgver=r3054.0222664d
-pkgrel=2
+pkgrel=3
 pkgdesc="现代化的基于 NTQQ 的 Bot 协议端实现"
 arch=('x86_64')
 url="https://github.com/NapNeko/NapCatQQ"
@@ -38,9 +38,10 @@ package() {
     mkdir -p "${pkgdir}/etc/pacman.d/hooks"
 
     mv dist "${pkgdir}/opt/QQ/resources/app/napcat"
-    find "${pkgdir}/opt/QQ/resources/app/napcat" -name "*.bat" -delete
-    find "${pkgdir}/opt/QQ/resources/app/napcat" -name "*.dll" -delete
-    find "${pkgdir}/opt/QQ/resources/app/napcat" -name "*.exe" -delete
+    local file_extensions=("bat" "dll" "exe")
+    for ext in "${file_extensions[@]}"; do
+        find "${pkgdir}/opt/QQ/resources/app/napcat" -name "*.${ext}" -delete
+    done
 
     mv "${pkgdir}/opt/QQ/resources/app/napcat/loadNapCat.js" "${pkgdir}/opt/QQ/resources/app/"
     install -Dm0755 /dev/stdin "${pkgdir}/opt/QQ/resources/app/napcat/napcatqq-patcher.sh" << 'EOF'
