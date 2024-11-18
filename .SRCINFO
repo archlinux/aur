@@ -1,0 +1,27 @@
+pkgbase = stereocrossdelay
+	pkgdesc = A stereo delay, multi-format audio effect plugin with feedback and cross-mixing
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/SpotlightKid/stereocrossdelay
+	arch = x86_64
+	arch = aarch64
+	groups = clap-plugins
+	groups = ladspa-plugins
+	groups = lv2-plugins
+	groups = pro-audio
+	groups = vst-plugins
+	groups = vst3-plugins
+	license = MIT
+	checkdepends = kxstudio-lv2-extensions
+	checkdepends = lv2lint
+	depends = gcc-libs
+	depends = glibc
+	optdepends = clap-host: for loading the CLAP plugin
+	optdepends = ladspa-host: for loading the LADSPA plugin
+	optdepends = lv2-host: for loading the LV2 plugin
+	optdepends = vst-host: for loading the VST2 plugin
+	optdepends = vst3-host: for loading the VST3 plugin
+	source = https://github.com/SpotlightKid/stereocrossdelay/releases/download/v0.2.0/stereocrossdelay-0.2.0-source.tar.gz
+	sha256sums = 61b49a0aa77d2d29deeb763ab90d8dd82cd96a5897466a66960a4b59ef396bb8
+
+pkgname = stereocrossdelay

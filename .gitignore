@@ -1,0 +1,5 @@
+pkg/
+src/
+stereocrossdelay-*.pkg.tar.*
+stereocrossdelay-*.src.tar.gz
+stereocrossdelay-*-source.tar.gz
