@@ -1,7 +1,7 @@
 pkgbase = toph
 	pkgdesc = A minimal and extensible pixel editor
 	pkgver = 1.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Dream-Imperium/toph
 	arch = x86_64
 	license = Unlicense
