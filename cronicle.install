@@ -1,0 +1,21 @@
+post_install() {
+    cat << EOF
+
+Cronicle installed. Please review the configuration file at /opt/cronicle/conf/config.json. 
+Next, if this is a master server, type: 'sudo /opt/cronicle/bin/control.sh setup' to init storage. 
+Then, to start the service, type: 'sudo /opt/cronicle/bin/control.sh start'. 
+For full docs, please visit: http://github.com/jhuckaby/Cronicle.
+
+Enjoy!
+
+EOF
+}
+
+post_upgrade() {
+    cat << EOF
+
+Cronicle upgraded. Please review the configuration file at /opt/cronicle/conf/config.json. 
+For full docs, please visit: http://github.com/jhuckaby/Cronicle.
+
+EOF
+}
