@@ -2,7 +2,7 @@
 
 pkgname=ruby-trenni
 pkgver=3.14.0
-pkgrel=4
+pkgrel=5
 pkgdesc='A fast native templating system that compiles directly to Ruby code'
 arch=(x86_64)
 url='https://github.com/ioquatix/trenni'
@@ -44,18 +44,32 @@ build() {
     --install-dir "tmp_install/$_gemdir" \
     --bindir "tmp_install/usr/bin" \
     trenni-$pkgver.gem
-  find "tmp_install/$_gemdir/gems/" \
+
+  # remove unreproducible files
+  rm --force --recursive --verbose \
+    "tmp_install${_gemdir}/cache/" \
+    "tmp_install${_gemdir}/gems/${_gemname}-${pkgver}/vendor/" \
+    "tmp_install${_gemdir}/doc/${_gemname}-${pkgver}/ri/ext/"
+
+  find "tmp_install${_gemdir}/gems/" \
     -type f \
     \( \
-        -iname "*.o" -o \
-        -iname "*.c" -o \
-        -iname "*.so" -o \
-        -iname "*.time" -o \
-        -iname "gem.build_complete" -o \
-        -iname "Makefile" \
+      -iname "*.o" -o \
+      -iname "*.c" -o \
+      -iname "*.so" -o \
+      -iname "*.time" -o \
+      -iname "gem.build_complete" -o \
+      -iname "Makefile" \
     \) \
     -delete
-  rm -r tmp_install/$_gemdir/cache
+
+  find "tmp_install${_gemdir}/extensions/" \
+    -type f \
+    \( \
+      -iname "mkmf.log" -o \
+      -iname "gem_make.out" \
+    \) \
+    -delete
 }
 
 check() {
