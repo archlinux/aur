@@ -5,11 +5,11 @@
 _electronversion=32
 pkgname=joplin-beta
 pkgver=3.2.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A note taking and to-do application with synchronization capabilities (beta version)"
 arch=("any")
 url="https://joplinapp.org/"
-license=("MIT")
+license=("AGPL-3.0-or-later")
 depends=("electron${_electronversion}" "gtk3" "libexif" "libgsf" "libjpeg-turbo" "libwebp" "libxss"
 	"nss" "orc" "rsync" "libvips")
 optdepends=("libappindicator-gtk3: for tray icon")

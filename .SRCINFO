@@ -1,10 +1,10 @@
 pkgbase = joplin-beta
 	pkgdesc = A note taking and to-do application with synchronization capabilities (beta version)
 	pkgver = 3.2.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://joplinapp.org/
 	arch = any
-	license = MIT
+	license = AGPL-3.0-or-later
 	makedepends = git
 	makedepends = yarn
 	makedepends = npm
