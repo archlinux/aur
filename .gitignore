@@ -1,4 +1,4 @@
-*.sig
-*.tar.bz2
-*.pkg.*
-*.log
+*
+!PKGBUILD
+!.SRCINFO
+!.gitignore
