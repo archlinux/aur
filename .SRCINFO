@@ -1,0 +1,26 @@
+pkgbase = fastanime-git
+	pkgdesc = FastAnime, anime site experience from the terminal.
+	pkgver = 2.7.7
+	pkgrel = 1
+	url = https://github.com/Benex254/FastAnime
+	arch = x86_64
+	license = Unlicense
+	makedepends = python>=3.10
+	makedepends = git
+	makedepends = uv
+	optdepends = mpv: video player
+	optdepends = webtorrent-cli: nyaa torrents
+	optdepends = ffmpeg: download hls streams
+	optdepends = rofi: alternative ui
+	optdepends = fzf: alternative ui
+	optdepends = chafa: terminal image viewer
+	optdepends = icat: kitty terminal image viewer
+	optdepends = bash: preview script language
+	optdepends = ani-skip-git: skip anime openings
+	optdepends = ffmpegthumbnailer: local previews
+	optdepends = syncplay: watch with friends
+	optdepends = feh: image viewer (for manga mode)
+	source = git+https://github.com/Benex254/FastAnime.git
+	sha256sums = SKIP
+
+pkgname = fastanime-git
