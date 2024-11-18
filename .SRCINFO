@@ -1,13 +1,13 @@
 pkgbase = mariebuild
 	pkgdesc = A simple build system with support for incremental builds
-	pkgver = 0.6.2
+	pkgver = 0.6.3
 	pkgrel = 1
 	url = https://github.com/FelixEcker/mariebuild
 	arch = x86_64
 	license = BSD-3
 	depends = clang
 	depends = glibc>=2.39
-	source = mariebuild-0.6.2.tar.gz::https://github.com/FelixEcker/mariebuild/archive/refs/tags/0.6.2.tar.gz
-	sha256sums = bc50e8df7950680e7d8609f8006dc481c47395947abe57bd3fa641027f26b3df
+	source = mariebuild-0.6.3.tar.gz::https://github.com/FelixEcker/mariebuild/archive/refs/tags/0.6.3.tar.gz
+	sha256sums = 7f7042a971625acf76c9bd2788e1b78bca0f305cd11abeca3eb5021ae0b0bc8b
 
 pkgname = mariebuild
