@@ -1,6 +1,6 @@
 pkgbase = bitlbee-libpurple-unicode-channel
 	pkgdesc = Brings instant messaging (XMPP, MSN, Yahoo!, AIM, ICQ, Twitter) to IRC. libpurple enabled. (patched for unicode channel names)
-	pkgver = 3.5.1
+	pkgver = 3.6
 	pkgrel = 1
 	url = http://www.bitlbee.org/
 	install = bitlbee.install
@@ -16,17 +16,18 @@ pkgbase = bitlbee-libpurple-unicode-channel
 	depends = libpurple
 	optdepends = skype4py: to use skyped
 	optdepends = libotr: for OTR encryption support
-	provides = bitlbee=3.5.1
+	provides = bitlbee=3.6
 	conflicts = bitlbee
 	conflicts = bitlbee-libpurple
 	backup = etc/bitlbee/bitlbee.conf
 	backup = etc/bitlbee/motd.txt
-	source = http://get.bitlbee.org/src/bitlbee-3.5.1.tar.gz
+	source = http://get.bitlbee.org/src/bitlbee-3.6.tar.gz
 	source = bitlbee.tmpfiles
 	source = unicode-channel.patch
-	sha1sums = de0767facdb7729253ae4d6ef6e3637ebd54939a
+	source = 0001-Replace-libgcrypt-configure-with-pkg-config.patch
+	sha1sums = e3f7e0d7f49d4e8f56ff22bf3e2bb6ac907d823c
 	sha1sums = 3695ed2fe22436c4d0fc3ead829f7d1f89bc491c
 	sha1sums = a3f9bc95b5f1518cf619e220e2f8be6110fb3e40
+	sha1sums = 2e9ae1f98016bddc20fdb6be706e3b990a443b17
 
 pkgname = bitlbee-libpurple-unicode-channel
-
