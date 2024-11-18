@@ -1,0 +1,11 @@
+--- a/src/timing.cc	2024-11-18 17:06:38.032245941 -0500
++++ b/src/timing.cc_patched	2024-11-18 17:08:15.941979510 -0500
+@@ -730,7 +730,7 @@
+ // ------------------------------------------------------------
+ 
+ void magick_gc::font (const std::string& name) {
+-  drawables.push_back (DrawableFont (name, AnyStyle, 100, AnyStretch));
++  drawables.push_back (DrawableFont (name));
+ }
+ 
+ // ------------------------------------------------------------
