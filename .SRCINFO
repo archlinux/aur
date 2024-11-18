@@ -1,6 +1,6 @@
 pkgbase = xst-git
 	pkgdesc = st fork fork with xresources support and other patches
-	pkgver = 0.8.4.1.r34.g293b895
+	pkgver = 0.10.0.r0.g1d2f295
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/neeasade/xst

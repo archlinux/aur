@@ -4,7 +4,7 @@
 _pkgname=xst
 pkgname=${_pkgname}-git
 epoch=1
-pkgver=0.8.4.1.r34.g293b895
+pkgver=0.10.0.r0.g1d2f295
 pkgrel=1
 pkgdesc='st fork fork with xresources support and other patches'
 url='https://github.com/neeasade/xst'
