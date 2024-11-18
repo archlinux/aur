@@ -1,4 +1,4 @@
-pkgbase = memprocfs-bin
+pkgbase = memprocfs
 	pkgdesc = MemProcFS is an easy and convenient way of viewing physical memory as files in a virtual file system.
 	pkgver = 5.12.7
 	pkgrel = 1
@@ -10,4 +10,4 @@ pkgbase = memprocfs-bin
 	source_x86_64 = https://github.com/ufrisk/MemProcFS/releases/download/v5.12/MemProcFS_files_and_binaries_v5.12.7-linux_x64-20241115.tar.gz
 	sha512sums_x86_64 = 5cacdd3da66c45fee3c3f77f094ec3ebb214aa3457476adfb90a9bbda51d397170951c1832c3b345fcada0b534697d23e2786842707c246457f72a32db09fc6b
 
-pkgname = memprocfs-bin
+pkgname = memprocfs

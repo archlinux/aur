@@ -1,5 +1,5 @@
 # Maintainer: Your Name <your.email@domain.com>
-pkgname=memprocfs-bin
+pkgname=memprocfs
 providers=(memprocfs)
 pkgver=5.12.7
 pkgrel=1
