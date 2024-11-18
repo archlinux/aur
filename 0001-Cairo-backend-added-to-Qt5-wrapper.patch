@@ -1,4 +1,4 @@
-From 11d7c2b692bfc7a169630aa1c7e622da66795f0f Mon Sep 17 00:00:00 2001
+From 22e910672666ec2cbcceccc425c16369835e380d Mon Sep 17 00:00:00 2001
 From: Paul Gideon Dann <pdgiddie@gmail.com>
 Date: Wed, 4 Apr 2018 16:36:56 +0100
 Subject: [PATCH 1/2] Cairo backend added to Qt5 wrapper
@@ -12,7 +12,7 @@ Subject: [PATCH 1/2] Cairo backend added to Qt5 wrapper
  5 files changed, 95 insertions(+), 1 deletion(-)
 
 diff --git a/qt5/src/CMakeLists.txt b/qt5/src/CMakeLists.txt
-index 836dbf51..282580f9 100644
+index 5b15cfb2..795784df 100644
 --- a/qt5/src/CMakeLists.txt
 +++ b/qt5/src/CMakeLists.txt
 @@ -5,6 +5,11 @@ include_directories(
@@ -24,10 +24,10 @@ index 836dbf51..282580f9 100644
 +  add_definitions(${CAIRO_CFLAGS})
 +endif (HAVE_CAIRO)
 +
- set(CMAKE_C_VISIBILITY_PRESET hidden)
- set(CMAKE_CXX_VISIBILITY_PRESET hidden)
- set(CMAKE_VISIBILITY_INLINES_HIDDEN 1)
-@@ -36,6 +41,13 @@ set(poppler_qt5_SRCS
+ configure_file(poppler-version.h.in ${CMAKE_CURRENT_BINARY_DIR}/poppler-version.h @ONLY)
+ 
+ set(poppler_qt5_SRCS
+@@ -32,6 +37,13 @@ set(poppler_qt5_SRCS
    QPainterOutputDev.cc
    poppler-version.cpp
  )
@@ -40,8 +40,8 @@ index 836dbf51..282580f9 100644
 +endif(HAVE_CAIRO)
  add_library(poppler-qt5 ${poppler_qt5_SRCS})
  generate_export_header(poppler-qt5 BASE_NAME poppler-qt5 EXPORT_FILE_NAME "${CMAKE_CURRENT_BINARY_DIR}/poppler-export.h")
- set_target_properties(poppler-qt5 PROPERTIES VERSION 1.36.0 SOVERSION 1)
-@@ -44,6 +56,9 @@ if(MINGW AND BUILD_SHARED_LIBS)
+ set_target_properties(poppler-qt5 PROPERTIES VERSION 1.37.0 SOVERSION 1)
+@@ -40,6 +52,9 @@ if(MINGW AND BUILD_SHARED_LIBS)
      set_target_properties(poppler-qt5 PROPERTIES SUFFIX "-${POPPLER_QT5_SOVERSION}${CMAKE_SHARED_LIBRARY_SUFFIX}")
  endif()
  target_link_libraries(poppler-qt5 poppler Qt5::Core Qt5::Gui Qt5::Xml Freetype::Freetype)
@@ -66,7 +66,7 @@ index ffa93fde..439c54e1 100644
  }
  
 diff --git a/qt5/src/poppler-page.cc b/qt5/src/poppler-page.cc
-index cd3c1c51..e54248c8 100644
+index 7c206f57..721f5ed8 100644
 --- a/qt5/src/poppler-page.cc
 +++ b/qt5/src/poppler-page.cc
 @@ -58,6 +58,7 @@
@@ -87,7 +87,7 @@ index cd3c1c51..e54248c8 100644
  
  #include "poppler-private.h"
  #include "poppler-page-transition-private.h"
-@@ -606,6 +610,69 @@ QImage Page::renderToImage(double xres, double yres, int xPos, int yPos, int w,
+@@ -629,6 +633,69 @@ QImage Page::renderToImage(double xres, double yres, int xPos, int yPos, int w,
          img = tmpimg;
          break;
      }
@@ -157,7 +157,7 @@ index cd3c1c51..e54248c8 100644
      }
  
      if (shouldAbortRenderCallback && shouldAbortRenderCallback(payload)) {
-@@ -631,6 +698,9 @@ bool Page::renderToPainter(QPainter *painter, double xres, double yres, int x, i
+@@ -654,6 +721,9 @@ bool Page::renderToPainter(QPainter *painter, double xres, double yres, int x, i
  
          return renderToQPainter(&qpainter_output, painter, m_page, xres, yres, x, y, w, h, rotate, flags);
      }
@@ -198,5 +198,5 @@ index e610413a..26c45088 100644
    string(REPLACE "-" "" test_name ${exe})
    set(${test_name}_SOURCES
 -- 
-2.46.1
+2.47.0
 
