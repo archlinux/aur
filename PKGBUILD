@@ -2,10 +2,10 @@
 _appname=tomato
 pkgname="${_appname}-radio-automation-bin"
 _pkgname="Tomato Radio Automation"
-pkgver=0.12.5
+pkgver=0.12.6
 _electronversion=33
 pkgrel=1
-pkgdesc="Tomato Radio Automation desktop client. Dead simple radio ads.Prebuilt version.Use system-wide electron."
+pkgdesc="Tomato Radio Automation desktop client. Dead simple radio ads.(Prebuilt version.Use system-wide electron)"
 arch=(
     'aarch64'
     'x86_64'
@@ -28,8 +28,8 @@ source=(
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${_ghurl}/releases/download/v${pkgver}/${_appname}-client-v${pkgver}-linux_arm64.deb")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${_ghurl}/releases/download/v${pkgver}/${_appname}-client-v${pkgver}-linux_amd64.deb")
 sha256sums=('291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-sha256sums_aarch64=('8ffba9114e6a019f699dc8405fc6827e6e1f1078053c9b29759702d9bcb48bdb')
-sha256sums_x86_64=('59cce395d8e4f9f2a35ac59d135abcbfecdb203e494e265b8751f55ba589622c')
+sha256sums_aarch64=('a33d6182134164bbb22f85bfdd5cb8619d69bbea7dfb0e6fe0923fb37fb91b6e')
+sha256sums_x86_64=('062b541f442a25d9abed6aca461dcf670143907e4a8c457dbed6e3fe8f3f9530')
 build() {
     sed -e "
         s/@electronversion@/${_electronversion}/g
