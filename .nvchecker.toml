@@ -1,0 +1,5 @@
+[doom_ascii]
+source="github"
+github="wojciech-graj/doom-ascii"
+use_latest_release=true
+prefix="v"
