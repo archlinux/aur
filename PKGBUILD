@@ -6,7 +6,7 @@ pkgname=$_basename-git
 pkgdesc="angr intermediate language"
 url="https://github.com/angr/ailment"
 pkgver=9.2.129.dev0.r526.63c9a1c
-pkgrel=2
+pkgrel=3
 arch=('any')
 depends=(
     'python-pypcode'
@@ -31,7 +31,7 @@ checkdepends=(
     'python-pytest'
     'python-sympy'
 )
-provides=($pkgname $_basename)
+provides=($_basename)
 conflicts=($_basename)
 license=('BSD-2-Clause')
 source=(

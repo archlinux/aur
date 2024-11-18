@@ -1,7 +1,7 @@
 pkgbase = python-ailment-git
 	pkgdesc = angr intermediate language
 	pkgver = 9.2.129.dev0.r526.63c9a1c
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/angr/ailment
 	arch = any
 	license = BSD-2-Clause
@@ -22,7 +22,6 @@ pkgbase = python-ailment-git
 	makedepends = python-wheel
 	depends = python-pypcode
 	depends = python>=3.10
-	provides = python-ailment-git
 	provides = python-ailment
 	conflicts = python-ailment
 	source = python-ailment-git::git+https://github.com/angr/ailment#branch=master
@@ -41,6 +40,5 @@ pkgname = python-ailment-git
 	depends = python>=3.10
 	depends = python-claripy=9.2.129.dev0
 	depends = python-pyvex=9.2.129.dev0
-	provides = python-ailment-git
 	provides = python-ailment
 	provides = python-ailment=9.2.129.dev0
