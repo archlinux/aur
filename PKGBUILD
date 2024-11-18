@@ -7,7 +7,7 @@
 
 _pkgname=armagetronad
 pkgname=${_pkgname}-git
-pkgver=r5807.e9f81456
+pkgver=r5817.c67aeca0
 pkgrel=1
 pkgdesc='A Tron Clone in 3D.'
 arch=('x86_64')
