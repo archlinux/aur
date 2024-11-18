@@ -6,5 +6,5 @@ Target = windsurf-bin
 
 [Action]
 Description = [windsurf-bin-marketplace] Patching product.json...
-Exec = /usr/share/windsurf-bin/resources/app/patch.py
+Exec = /opt/windsurf-bin/resources/app/patch.py
 When = PostTransaction

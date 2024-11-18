@@ -8,7 +8,7 @@ pkgbase = windsurf-bin-marketplace
 	license = unknown
 	source = windsurf-bin-marketplace.hook
 	source = patch.py
-	sha256sums = 9427e3b8d6d2ae18d23143f6d1915d65cbabca673cce7a090d822934c2cd4eba
+	sha256sums = 26234b8261784f87a5cf230a567e8c7f2582e8dfdb9b9ddb971a5057252ad1cd
 	sha256sums = 33347cd676decbc3882845a86d6cbc4cc3defd6dc350d03281c0aa429e9b2412
 
 pkgname = windsurf-bin-marketplace
