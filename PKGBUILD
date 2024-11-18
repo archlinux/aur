@@ -2,7 +2,7 @@
 
 pkgname=python-txrequests
 pkgver=0.9.6
-pkgrel=10
+pkgrel=11
 pkgdesc='Asynchronous Python HTTP Requests for Humans using twisted'
 license=('Apache')
 arch=(any)

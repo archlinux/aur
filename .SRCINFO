@@ -1,7 +1,7 @@
 pkgbase = python-txrequests
 	pkgdesc = Asynchronous Python HTTP Requests for Humans using twisted
 	pkgver = 0.9.6
-	pkgrel = 10
+	pkgrel = 11
 	url = https://github.com/tardyp/txrequests
 	arch = any
 	license = Apache
