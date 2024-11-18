@@ -1,0 +1,14 @@
+[Unit]
+Description=Fido2 to HID bridge
+After=auditd.service syslog.target network.target local-fs.target pcscd.service
+Requires=pcscd.service
+
+[Service]
+ExecStart=/usr/bin/fido2-hid-bridge
+Type=simple
+Restart=on-failure
+RestartSec=60s
+
+[Install]
+WantedBy=multi-user.target
+

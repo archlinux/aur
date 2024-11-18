@@ -1,0 +1,22 @@
+pkgbase = fido2-hid-bridge
+	pkgdesc = This allows using authenticators over PC/SC from applications that only support USB-HID, such as Firefox; with this program running you can use NFC authenticators or Smartcards.
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/BryanJacobs/fido2-hid-bridge
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-poetry-core
+	depends = python
+	depends = python-fido2
+	depends = python-pyscard
+	source = git+https://github.com/BryanJacobs/fido2-hid-bridge.git#commit=6aa6c203f25132da4cc35207f4967b65683bac99
+	source = uhid.py::https://raw.githubusercontent.com/FFY00/python-uhid/1addc8ac84443bc5a58f72128218a4e139b42ee4/src/uhid/__init__.py
+	source = fido2-hid-bridge.service
+	sha256sums = 806eb6b7b9e5a15dfbe7248e7da3bead5a578c14a99f916bc7db37c9f22adf4e
+	sha256sums = 7fad13e22f2c96fb4fb626e59a1f868badee29dd7ce03992b859d77d1e2bccaf
+	sha256sums = 5463b8d0c25bfa8ca9bef534e204be5e1b431268d6b5b5bdb14a70217b375904
+
+pkgname = fido2-hid-bridge
