@@ -2,27 +2,27 @@
 
 pkgbase=jack-audio-tools
 pkgname=("$pkgbase-common" "$pkgbase-transport" "$pkgbase-lv2" "$pkgbase-carla" "$pkgbase-dbus")
-pkgver=0.4.0
+pkgver=0.4.1
 pkgrel=1
 pkgdesc="A collection of utilities and tools for the JACK audio ecosystem."
 arch=('any')
 url="https://github.com/SpotlightKid/jack-audio-tools"
 license=('MIT')
-makedepends=('python-setuptools' 'lv2' 'python-rtmidi' 'python-dbus' 'python-gobject')
+makedepends=(python-build python-installer python-wheel 'lv2' 'python-rtmidi' 'python-dbus' 'python-gobject')
 depends=('jack' 'lilv' 'python-rdflib')
 source=("https://files.pythonhosted.org/packages/source/${pkgbase::1}/$pkgbase/$pkgbase-$pkgver.tar.gz")
-sha256sums=('95d6c255c797dd256bccde99b25f5fbb5075627059198188d0b4ef78871ed932')
+sha256sums=('030ea28165551f801d7c9170c1fd06da5fa7b0473d7c9d37f7bc4351b0955191')
 
 build() {
   cd "$pkgbase-$pkgver"
 
-  python setup.py build
+  python -m build --wheel --no-isolation
 }
 
 package_jack-audio-tools-common() {
   cd "$pkgbase-$pkgver"
 
-  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+  python -m installer --destdir="$pkgdir" dist/*.whl
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
   local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
@@ -36,7 +36,7 @@ package_jack-audio-tools-transport() {
 
   cd "$pkgbase-$pkgver"
 
-  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+  python -m installer --destdir="$pkgdir" dist/*.whl
 
   local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
 
@@ -50,7 +50,7 @@ package_jack-audio-tools-lv2() {
 
   cd "$pkgbase-$pkgver"
 
-  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+  python -m installer --destdir="$pkgdir" dist/*.whl
 
   local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
 
@@ -64,7 +64,7 @@ package_jack-audio-tools-carla() {
 
   cd "$pkgbase-$pkgver"
 
-  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+  python -m installer  --destdir="$pkgdir" dist/*.whl
 
   local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
 
@@ -78,7 +78,7 @@ package_jack-audio-tools-dbus() {
 
   cd "$pkgbase-$pkgver"
 
-  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+  python -m installer --destdir="$pkgdir" dist/*.whl
 
   local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
 
