@@ -1,7 +1,7 @@
 pkgbase = perl-mp4-info
 	pkgdesc = Fetch info from MPEG-4 files (.mp4, .m4a, .m4p, .3gp)
 	pkgver = 1.13
-	pkgrel = 2
+	pkgrel = 3
 	url = https://metacpan.org/release/MP4-Info
 	arch = any
 	license = GPL-1.0-or-later
