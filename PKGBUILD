@@ -1,3 +1,5 @@
+# Maintainer: yznnyz <yzniu1@gmail.com>
+# Maintainer: Chih-Hsuan Yen <base64_decode("eXUzYWN0eHQydHR0ZmlteEBjaHllbi5jYwo=")>
 _module='onnx2pytorch'
 pkgname=python-$_module
 _src_folder='onnx2pytorch-0.5.1'
