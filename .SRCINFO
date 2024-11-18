@@ -1,0 +1,21 @@
+pkgbase = cafeobj
+	pkgdesc = New generation algebraic specification and programming language
+	pkgver = 1.6.2
+	pkgrel = 1
+	url = https://cafeobj.org/
+	arch = x86_64
+	license = BSD-2-Clause
+	license = MIT
+	license = GPL-1.0-only
+	makedepends = sbcl
+	makedepends = automake
+	makedepends = autoconf-archive
+	depends = zstd
+	conflicts = cafeobj-sbcl
+	options = !strip
+	source = https://cafeobj.org/files/1.6.2/cafeobj-1.6.2.tar.gz
+	source = cafeobj.desktop
+	sha256sums = a086c43f5f886175a580b6ddff9c430a535a1da8db202986f7555ba8d2ce50fe
+	sha256sums = 995d18d3e4bd96cd0eab29205c5c561e653fca8124e976c0433afe8cb11cbc32
+
+pkgname = cafeobj

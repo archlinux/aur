@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=CafeOBJ
+Comment=New generation algebraic specification and programming language
+Exec=cafeobj
+Icon=/usr/share/doc/cafeobj/cafeobj-logo-small.png
+Terminal=true
+X-MultipleArgs=false
+Type=Application
+Categories=Development;
