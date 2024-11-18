@@ -1,7 +1,7 @@
 # Maintainer: Maksim Kurnosenko <asusx2@mail.ru>
 
 pkgname=anylogic-university
-pkgver=8.9.1
+pkgver=8.9.2
 pkgrel=1
 pkgdesc="AnyLogic University Edition - for public research in universities"
 arch=(x86_64)
@@ -16,7 +16,7 @@ conflicts=('anylogic')
 options=(!strip)
 source=("https://files.anylogic.com/$pkgname-$pkgver.linux.x86_64.tgz.bin"
         "$pkgname.desktop")
-sha256sums=('34861626942a5988f98ba22c4c89f0ed18f3e317cad490929253a00eb02e5464'
+sha256sums=('0b23b9d92294e90c9c978100ba89127cc1f202c40c979d66fbe55eaf7b59f144'
             'f0d4b44dd6f53d0aa940b730d1c0dfac77ab3aea4cca6ab185abc7e458a8c135')
 
 prepare() {
