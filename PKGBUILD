@@ -1,8 +1,8 @@
 # Maintainer : Mikhail Velichko  <efklid@gmail.com>
 
 pkgname=r7-office
-pkgver=7.1.1
-pkgrel=10
+pkgver=7.2.2.40
+pkgrel=11
 pkgdesc='An enterprise office suite that combines text, spreadsheet and presentation editors'
 arch=('x86_64')
 url='https://r7-office.ru/'
