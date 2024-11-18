@@ -22,9 +22,13 @@ package() {
     install -dm755 "$pkgdir/usr/bin"
     install -dm755 "$pkgdir/usr/lib"
     install -dm755 "$pkgdir/usr/share/memprocfs"
+    install -dm755 "$pkgdir/usr/include"
 
     # Install binaries
     install -Dm755 memprocfs "$pkgdir/usr/bin/memprocfs"
+
+    # Install headers
+    install -Dm644 *.h "$pkgdir/usr/include"
 
     # Install libraries
     install -Dm755 *.so "$pkgdir/usr/lib/"
