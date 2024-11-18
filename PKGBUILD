@@ -3,7 +3,7 @@
 pkgname=napcatqq-git
 _pkgname=NapCatQQ
 pkgver=r3054.0222664d
-pkgrel=1
+pkgrel=2
 pkgdesc="现代化的基于 NTQQ 的 Bot 协议端实现"
 arch=('x86_64')
 url="https://github.com/NapNeko/NapCatQQ"
@@ -53,18 +53,25 @@ else
 fi
 EOF
 
+    install -Dm644 /dev/stdin "${pkgdir}/etc/pacman.d/hooks/napcatqq-permission.hook" << 'EOF'
+[Trigger]
+Type=Package
+Operation=Install
+Operation=Upgrade
+Target=napcatqq-git
+
+[Action]
+Description=Fix NapCat permissions
+When=PostTransaction
+Exec=/bin/sh -c 'chown -R $(logname):$(logname) /opt/QQ/resources/app/napcat /opt/QQ/resources/app/loadNapCat.js'
+EOF
+
     install -Dm644 /dev/stdin "${pkgdir}/etc/pacman.d/hooks/napcatqq-patch.hook" << 'EOF'
 [Trigger]
 Type=Package
 Operation=Install
 Operation=Upgrade
 Target=napcatqq-git
-Target=linuxqq
-
-[Trigger]
-Type=Package
-Operation=Install
-Operation=Upgrade
 Target=linuxqq
 
 [Action]
@@ -82,6 +89,6 @@ Target=napcatqq-git
 [Action]
 Description=Unpatch QQ for NapCat
 When=PreTransaction
-Exec=/bin/sh -c '/opt/QQ/resources/app/napcat/napcatqq-patcher.sh restore; echo "Unpatch done, but it\'s recommended to reinstall linuxqq.";'
+Exec=/bin/sh -c '/opt/QQ/resources/app/napcat/napcatqq-patcher.sh restore && rm -rf /opt/QQ/resources/app/napcat && echo -e "\e[32mUnpatch done, but it\'s recommended to reinstall linuxqq.\e[0m";'
 EOF
 }
