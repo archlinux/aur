@@ -1,12 +1,12 @@
 # Maintainer: Manuel Stoeckl <com dоt mstoeckl аt wppkgb>
 pkgname=waypipe-git
-pkgver=0.8.3.r0.gf37c6658
+pkgver=0.9.1.r8.g8d35d76
 pkgrel=1
 pkgdesc='A proxy for Wayland protocol applications; like ssh -X'
 license=('MIT')
 # minimal build: only 'meson' 'ninja' + C compiler/libc
 makedepends=('git' 'meson' 'ninja' 'scdoc' 'libdrm' 'pkgconf' 'cmake')
-depends=('lz4' 'zstd' 'mesa' 'ffmpeg' 'libva')
+depends=('lz4' 'zstd' 'mesa' 'ffmpeg' 'libva' 'wayland')
 optdepends=(
 	'openssh: recommended transport'
 	'systemtap: a makedepend, for tracing hooks'
