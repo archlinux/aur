@@ -2,8 +2,10 @@
 # Contributor SamWhited <sam@samwhited.com>
 
 pkgname="odoo-venv"
-pkgver=18.0
-pkgrel=2
+_major=18.0
+pkgrel=1
+# updated automatically via pkgver()
+pkgver=18.0.20241118
 pkgdesc="Open Source Apps To Grow Your Business"
 url="https://odoo.com/"
 arch=("any")
@@ -17,13 +19,13 @@ optdepends=("postgresql: local database"
 makedepends=("python-build"
              "python-wheel"
              "python-setuptools")
-source=("https://nightly.odoo.com/$pkgver/nightly/src/odoo_$pkgver.latest.tar.gz"
+source=("https://nightly.odoo.com/$_major/nightly/src/odoo_$_major.latest.tar.gz"
         "odoo.conf"
         "odoo.logrotate"
         "odoo.service"
         "odoo.sysusers"
         "odoo.tmpfiles")
-noextract=("odoo_$pkgver.latest.tar.gz")
+noextract=("odoo_$_major.latest.tar.gz")
 b2sums=(SKIP
         '69a96f6bdc83189cba45999789b3cfe4e00160623ceade2d7b69711ce20a471f182f083131099d2ac950c45a7a6ca93dfba95846a611a45fd8d82b140274a6cf'
         '1ef682d87ba12dd8a185ba36701b737f8feb0c1e6eb4b23302a0dc5930ef63c990af65bc45a36313f879a29a23cbdb602e7fc34ba9cee2e46d9a3d8407d5751a'
@@ -34,19 +36,25 @@ backup=("etc/odoo/odoo.conf")
 install="odoo.install"
 options=("!strip")
 
+pkgver(){
+ # retrieve date from the most recent archive
+ curl "https://nightly.odoo.com/$_major/nightly/src/" | grep -oP 'odoo_\K(\d{2}\.\d{1}.\d{8})'| sort | tail -1
+}
+
 prepare(){
- # Extract manually to avoid a folder name that includes the download date.
- rm -rf "odoo-$pkgver"
- tar -xzf "odoo_$pkgver.latest.tar.gz" --one-top-level="odoo-$pkgver" --strip-components 1
+ # extract manually to avoid a folder name that includes the download date
+ rm -rf "odoo-$_major"
+ tar -xzf "odoo_$_major.latest.tar.gz" --one-top-level="odoo-$_major" --strip-components 1
 }
 
 build(){
- cd "odoo-$pkgver"
+ # generate the wheel using the system python-build
+ cd "odoo-$_major"
  python -m build --no-isolation --wheel
 }
 
 package(){
- cd "odoo-$pkgver"
+ cd "odoo-$_major"
 
  # create virtual environment
  export PIP_DISABLE_PIP_VERSION_CHECK=1
