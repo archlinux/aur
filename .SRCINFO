@@ -1,0 +1,22 @@
+pkgbase = potreeconverter-git
+	pkgdesc = Generator for octrees LOD structures for streaming and real-time rendering of massive point clouds
+	pkgver = 2.1.1.r7.gc2328c4
+	pkgrel = 1
+	url = https://potree.org
+	arch = x86_64
+	license = BSD-2-Clause
+	makedepends = cmake>=3.16
+	makedepends = git
+	depends = brotli
+	depends = gcc-libs
+	depends = glibc
+	depends = laszip
+	depends = onetbb
+	provides = potreeconverter
+	conflicts = potreeconverter
+	source = git+https://github.com/potree/PotreeConverter.git
+	source = 0001-cmake.patch
+	b2sums = SKIP
+	b2sums = a1cbb7f16b781468d6a3b5854a01596643f8cf259eccb18c07b39e7949b3049d03acefbb34f034716462cf7646b5d98aec7f800118a08db51f30de446d81516b
+
+pkgname = potreeconverter-git
