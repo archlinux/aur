@@ -1,18 +1,16 @@
 pkgbase = stmcufinder
 	pkgdesc = STM32 and STM8 product finder for desktops
-	pkgver = 6.0.0
-	pkgrel = 2
+	pkgver = 6.1.0
+	pkgrel = 1
 	url = https://www.st.com/en/development-tools/st-mcu-finder.html
 	arch = x86_64
 	license = Commercial
 	optdepends = stm32cubemx
 	options = !strip
-	source = en.st-mcu-finderlin-v6-0-0.zip::https://www.st.com/content/ccc/resource/technical/software/sw_development_suite/group0/b2/5e/2a/6c/2a/10/4b/53/st-mcu-finderlin-v6-0-0/files/st-mcu-finderlin-v6-0-0.zip/jcr:content/translations/en.st-mcu-finderlin-v6-0-0.zip
+	source = en.st-mcu-finderlin-v6-1-0.zip::https://www.st.com/content/ccc/resource/technical/software/sw_development_suite/group1/bc/e7/29/51/21/17/4a/9c/st-mcu-finderlin-v6-1-0/files/st-mcu-finderlin-v6-1-0.zip/jcr:content/translations/en.st-mcu-finderlin-v6-1-0.zip
 	source = stmcufinder.desktop
 	source = stmcufinder
-	source = auto-install.xml
-	sha256sums = 0b7de8dcbaac1608b48d110d32635ebf7c715c769218352fc1653a5a57135637
-	sha256sums = SKIP
+	sha256sums = 0d0602f3a52526e395d5bc59c074cc35e9740bd83e3cccf2a25723a8c952f0ee
 	sha256sums = SKIP
 	sha256sums = SKIP
 

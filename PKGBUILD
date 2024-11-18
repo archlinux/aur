@@ -1,8 +1,9 @@
 # Maintainer: kumen
+
 pkgname="stmcufinder"
-pkgver=6.0.0
-_pkg_file_name=en.st-mcu-finderlin-v6-0-0.zip
-pkgrel=2
+pkgver=6.1.0
+_pkg_file_name=en.st-mcu-finderlin-v6-1-0.zip
+pkgrel=1
 pkgdesc="STM32 and STM8 product finder for desktops"
 arch=("x86_64")
 depends=()
@@ -29,12 +30,25 @@ DLAGENTS=("https::/usr/bin/curl \
 
 source=("${_pkg_file_name}"::"$_download_path"
 	"stmcufinder.desktop"
-	"stmcufinder"
-	"auto-install.xml")
-sha256sums=('0b7de8dcbaac1608b48d110d32635ebf7c715c769218352fc1653a5a57135637'
-	    'SKIP'
+	"stmcufinder")
+sha256sums=('0d0602f3a52526e395d5bc59c074cc35e9740bd83e3cccf2a25723a8c952f0ee'
 	    'SKIP'
 	    'SKIP')
+prepare(){
+	install -Dm 644 /dev/stdin "${srcdir}/auto-install.xml" <<END
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<AutomatedInstallation langpack="eng">
+	<com.izforge.izpack.panels.checkedhello.CheckedHelloPanel id="checkedhello.panel"/>
+	<com.izforge.izpack.panels.licence.LicencePanel id="licence.panel"/>
+	<com.st.microxplorer.install.FinderTargetPanel id="target.panel">
+		<installpath>/tmp/makepkg/stmcufinder/pkg/stmcufinder/opt/stmcufinder</installpath>
+	</com.st.microxplorer.install.FinderTargetPanel>
+	<com.st.microxplorer.install.MXShortcutPanel id="shortcut.panel"/>
+	<com.st.microxplorer.install.MXInstallPanel id="install.panel"/>
+	<com.st.microxplorer.install.FinderFinishPanel id="finish.panel"/>
+</AutomatedInstallation>
+END
+}
 
 package() {
 	cd "$srcdir"
