@@ -1,4 +1,5 @@
-# Maintainer : Mikhail Velichko  <efklid@gmail.com>
+# Maintainer: Yakov Potapov <potapovj(at)gmail(dot)com>
+# Contributor : Mikhail Velichko  <efklid@gmail.com>
 
 pkgname=r7-office
 pkgver=7.2.2.40
