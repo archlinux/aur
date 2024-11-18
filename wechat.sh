@@ -392,9 +392,9 @@ function dbusProxy() {
 			-- /usr/bin/xdg-dbus-proxy \
 			"${DBUS_SESSION_BUS_ADDRESS}" \
 			"${busDir}/bus" \
+			--log \
 			--filter \
 			--own=org.kde.* \
-			--see=org.kde.kwin \
 			--talk=org.freedesktop.portal.Camera \
 			--call=org.freedesktop.portal.Camera=* \
 			--talk=org.freedesktop.portal.Documents \
@@ -423,6 +423,10 @@ function dbusProxy() {
 			--call=org.freedesktop.portal.Fcitx=* \
 			--talk=org.freedesktop.portal.Fcitx.* \
 			--call=org.freedesktop.portal.Fcitx.*=* \
+			--talk=org.freedesktop.portal.IBus \
+			--call=org.freedesktop.portal.IBus=* \
+			--talk=org.freedesktop.portal.IBus.* \
+			--call=org.freedesktop.portal.IBus.*=* \
 			--talk=org.fcitx.Fcitx.InputMethod1.CreateInputContext \
 			--call=org.fcitx.Fcitx.InputMethod1.CreateInputContext=* \
 			--call=*=/org/freedesktop/portal/inputcontext/* \
@@ -432,10 +436,6 @@ function dbusProxy() {
 			--call=org.fcitx.Fcitx.InputContext1.*=* \
 			--call=org.freedesktop.portal.Request=* \
 			--talk=org.freedesktop.portal.Desktop \
-			--talk=org.freedesktop.IBus.Portal \
-			--talk=org.freedesktop.IBus.Portal.* \
-			--call=org.freedesktop.IBus.Portal=* \
-			--call=org.freedesktop.IBus.Portal.*=* \
 			--own="${busName}" \
 			--broadcast=org.freedesktop.portal.*=@/org/freedesktop/portal/* \
 			--call=org.a11y.atspi.Registry=org.a11y.atspi.DeviceEventController.NotifyListenersAsync@/org/a11y/atspi/registry/deviceeventcontroller \

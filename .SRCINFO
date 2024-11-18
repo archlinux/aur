@@ -1,7 +1,7 @@
 pkgbase = wechat
 	pkgdesc = 微信是一种生活方式. 可选沙盒支持.
 	pkgver = 4.0.0.23
-	pkgrel = 5
+	pkgrel = 7
 	url = https://weixin.qq.com/
 	arch = x86_64
 	arch = aarch64
@@ -85,7 +85,7 @@ pkgbase = wechat
 	source = wechat.env
 	source = mimeapps.list
 	source = flatpak-info
-	md5sums = 139006ac629ff55b03ede8e973179f59
+	md5sums = c65ed2f710973ca492b25af514a4118b
 	md5sums = 89ae77c95f205d0a7f9347f8251ce742
 	md5sums = 468e0367346707c026e577e7bf3e3a82
 	md5sums = c99c42e49fb1650df340f3a38bd86d5e
