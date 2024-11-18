@@ -1,6 +1,6 @@
 pkgbase = devtoys-bin
 	pkgdesc = A Swiss Army knife for developers.
-	pkgver = 2.0.5.0
+	pkgver = 2.0.8.0
 	pkgrel = 1
 	url = https://github.com/DevToys-app/DevToys
 	arch = x86_64
@@ -12,9 +12,9 @@ pkgbase = devtoys-bin
 	conflicts = devtoys
 	source = devtoys.desktop
 	sha256sums = 0c9daf652ca76bd6433572e431ac7bd0f20958e9c542e60f6389bd56936fedc1
-	source_x86_64 = devtoys-2.0.5.0_x64.deb::https://github.com/DevToys-app/DevToys/releases/download/v2.0.5.0/devtoys_linux_x64.deb
-	sha256sums_x86_64 = b29ca658c8f8601ef6c6d20b12fa2b201b42a4542b02870651a73e037f8b36a3
-	source_aarch64 = devtoys-2.0.5.0_arm.deb::https://github.com/DevToys-app/DevToys/releases/download/v2.0.5.0/devtoys_linux_arm.deb
-	sha256sums_aarch64 = 21abd976599c480fe737508117887d00e59b75a59492fc1711e60a692ac996e4
+	source_x86_64 = devtoys-2.0.8.0_x64.deb::https://github.com/DevToys-app/DevToys/releases/download/v2.0.8.0/devtoys_linux_x64.deb
+	sha256sums_x86_64 = 8fe24a5ba261a285f564c273aeac14daeb6df0e9ab8d440b26501d2877e60807
+	source_aarch64 = devtoys-2.0.8.0_arm.deb::https://github.com/DevToys-app/DevToys/releases/download/v2.0.8.0/devtoys_linux_arm.deb
+	sha256sums_aarch64 = b41c524bcd60cd8ac482eddbc5fad13fbaeba6c1251acd6e7730df9c2d80d2bf
 
 pkgname = devtoys-bin
