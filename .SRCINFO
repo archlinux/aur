@@ -1,6 +1,6 @@
 pkgbase = arrowdl
 	pkgdesc = A mass download manager that helps you to select, organize, prioritize and run your downloads in parallel.
-	pkgver = 4.0.2
+	pkgver = 4.0.3
 	pkgrel = 1
 	url = https://www.arrow-dl.com/ArrowDL
 	arch = x86_64
@@ -8,11 +8,12 @@ pkgbase = arrowdl
 	makedepends = boost
 	makedepends = cmake
 	makedepends = qt6-tools
+	depends = hicolor-icon-theme
 	depends = libtorrent-rasterbar
 	depends = qt6-base
 	depends = yt-dlp
 	conflicts = downzemall
-	source = arrowdl-4.0.2.tar.gz::https://github.com/setvisible/ArrowDL/archive/v4.0.2.tar.gz
-	sha256sums = 14dd870d4f5d9a749e77a79167e01044a552d77fbe66e878ac5e10b47f336e41
+	source = arrowdl-4.0.3.tar.gz::https://github.com/setvisible/ArrowDL/archive/v4.0.3.tar.gz
+	sha256sums = 6fd1dabcbfac585e5572c7773d51ca57d9591326c79d77005094f8166d1737f7
 
 pkgname = arrowdl
