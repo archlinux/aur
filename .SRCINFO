@@ -1,6 +1,6 @@
 pkgbase = python-inventree-part-import
 	pkgdesc = CLI to import parts from into your InvenTree instance
-	pkgver = 1.6
+	pkgver = 1.7
 	pkgrel = 3
 	url = https://github.com/30350n/inventree_part_import
 	arch = any
@@ -21,7 +21,7 @@ pkgbase = python-inventree-part-import
 	depends = python-tablib
 	depends = python-thefuzz
 	depends = python-yaml
-	source = https://files.pythonhosted.org/packages/source/i/inventree_part_import/inventree_part_import-1.6.tar.gz
-	sha256sums = bb30358e8c311cf3c015e9c5400471157998742c5af0042c88092d20c38b07cb
+	source = https://files.pythonhosted.org/packages/source/i/inventree_part_import/inventree_part_import-1.7.tar.gz
+	sha256sums = 8a65b5b418783b171c314e6ac80242f7bc24ad60902e501c7ad141ab220b65df
 
 pkgname = python-inventree-part-import
