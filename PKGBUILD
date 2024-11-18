@@ -4,7 +4,7 @@
 
 pkgname=cronicle
 pkgver=0.9.61
-pkgrel=3
+pkgrel=4
 pkgdesc="A simple, distributed task scheduler and runner"
 arch=('any')
 url="https://github.com/jhuckaby/Cronicle"
@@ -14,6 +14,9 @@ install="$pkgname.install"
 source=("https://github.com/jhuckaby/Cronicle/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('278819d02bc530f8ef564d8baea9f9fd302924a034f3b085a976b1042402ee6a')
 backup=('opt/cronicle/conf/config.json')
+
+conflicts=('cronicle')
+provides=('cronicle')
 
 prepare() {
     cd "$srcdir/Cronicle-$pkgver"
@@ -29,6 +32,8 @@ package() {
     cd "$srcdir/Cronicle-$pkgver"
     install -d "$pkgdir/opt/cronicle"
     cp -a ./* "$pkgdir/opt/cronicle/"
+
+    install -Dm0644 -t "$pkgdir/usr/share/licenses/${pkgname}" LICENSE.md
 
     rm -rf "$pkgdir/opt/cronicle/.git"
 }
