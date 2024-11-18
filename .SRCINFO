@@ -1,0 +1,19 @@
+pkgbase = ttdl-bin
+	pkgdesc = TTDL - Terminal Todo List Manager. A CLI tool to manage todo lists in todo.txt format.
+	pkgver = 4.5.0
+	pkgrel = 1
+	url = https://github.com/VladimirMarkelov/ttdl
+	arch = x86_64
+	license = MIT
+	makedepends = help2man
+	depends = glibc
+	provides = ttdl
+	conflicts = ttdl
+	source = LICENSE-4.5.0::https://raw.githubusercontent.com/VladimirMarkelov/ttdl/v4.5.0/LICENSE
+	source = README-4.5.0.md::https://raw.githubusercontent.com/VladimirMarkelov/ttdl/v4.5.0/README.md
+	sha256sums = 234f3f9b9f2d3d402a89072e424f4d69625d831ce858d7cdd5c4e57169b96211
+	sha256sums = c828458bef65dfa7eb77d3ca4f07c3536a87ae7013c6a01d4d2d30a6483646bf
+	source_x86_64 = https://github.com/VladimirMarkelov/ttdl/releases/download/v4.5.0/ttdl_4.5.0_linux-x64-musl.tar.gz
+	sha256sums_x86_64 = ed810989b11b4e57753dc9e7fc74183b8cb39fb9173f1d20030698170449c59e
+
+pkgname = ttdl-bin
