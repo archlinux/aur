@@ -9,7 +9,7 @@
 # Contributor: Geoffroy Carrier <geoffroy.carrier@koon.fr>
 
 pkgname=qbittorrent-libtorrent-v1
-pkgver=5.0.1
+pkgver=5.0.2
 pkgrel=1
 provides=('qbittorrent')
 conflicts=('qbittorrent')
@@ -30,7 +30,7 @@ depends=(
 makedepends=(cmake boost qt6-tools)
 optdepends=('python: needed for torrent search tab')
 source=("https://downloads.sourceforge.net/sourceforge/qbittorrent/qbittorrent-$pkgver.tar.xz")
-sha256sums=('03435c292091cc953ff078da8fd224b9e45074842ea72caa82a4ead72b402e69')
+sha256sums=('29514d59ff8f40b4e1afd7fbb2b34f7671875d51d00069d41dcba80032f946ca')
 
 build() {
   cmake -B build -S "qbittorrent-$pkgver" \
