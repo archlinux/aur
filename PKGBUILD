@@ -3,7 +3,7 @@
 _pkgname='boost-histogram'
 pkgname="python-${_pkgname}"
 pkgver='1.4.1'
-pkgrel=5
+pkgrel=6
 pkgdesc="Python bindings for Boost's Histogram library."
 arch=('x86_64')
 url='https://github.com/scikit-hep/boost-histogram'
@@ -57,7 +57,8 @@ build() {
 check() {
   cd "${srcdir}/${pkgname}"
   local python_version=$(python -c 'import sys; print("".join(map(str, sys.version_info[:2])))')
-  PYTHONPATH="$PWD/build/lib.linux-$CARCH-cpython-${python_version}" pytest
+  PYTHONPATH="$PWD/build/lib.linux-$CARCH-cpython-${python_version}" pytest \
+    --override-ini="filterwarnings=ignore::DeprecationWarning"
 }
 
 package() {
