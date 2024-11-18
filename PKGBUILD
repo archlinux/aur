@@ -2,7 +2,7 @@
 # Maintainer: Jax Young <jaxvanyang@gmail.com>
 
 pkgname=dooit-extras
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="A collection of utilities to customize your dooit!"
 url="https://github.com/dooit-org/dooit-extras"
@@ -10,7 +10,7 @@ arch=('any')
 license=('MIT')
 depends=(
     'python>=3.9'
-    'dooit>=3.0.1'
+    'dooit>=3.0.4'
 )
 makedepends=(
     'python-build'
@@ -19,7 +19,7 @@ makedepends=(
     'python-poetry-core>=1.0.0'
 )
 source=("$pkgname-$pkgver.tar.gz::${url}/archive/v$pkgver.tar.gz")
-sha256sums=('752a4e9562f2ddfe77ae93f46f795e0c850ecdd356d3f7b6b7fd76871b6dc63b')
+sha256sums=('0d9fbdff03b1b41b51106e0887da7dceea8e339435a00e71d7327d7cf4423a0c')
 
 build() {
     cd "$pkgname-$pkgver"

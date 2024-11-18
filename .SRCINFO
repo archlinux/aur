@@ -1,17 +1,17 @@
 pkgbase = dooit-extras
-        pkgdesc = A collection of utilities to customize your dooit!
-        pkgver = 0.1.0
-        pkgrel = 1
-        url = https://github.com/dooit-org/dooit-extras
-        arch = any
-        license = MIT
-        makedepends = python-build
-        makedepends = python-installer
-        makedepends = python-wheel
-        makedepends = python-poetry-core>=1.0.0
-        depends = python>=3.9
-        depends = dooit>=3.0.1
-        source = dooit-extras-0.1.0.tar.gz::https://github.com/dooit-org/dooit-extras/archive/v0.1.0.tar.gz
-        sha256sums = 752a4e9562f2ddfe77ae93f46f795e0c850ecdd356d3f7b6b7fd76871b6dc63b
+	pkgdesc = A collection of utilities to customize your dooit!
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/dooit-org/dooit-extras
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-poetry-core>=1.0.0
+	depends = python>=3.9
+	depends = dooit>=3.0.4
+	source = dooit-extras-0.2.0.tar.gz::https://github.com/dooit-org/dooit-extras/archive/v0.2.0.tar.gz
+	sha256sums = 0d9fbdff03b1b41b51106e0887da7dceea8e339435a00e71d7327d7cf4423a0c
 
 pkgname = dooit-extras
