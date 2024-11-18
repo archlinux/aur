@@ -2,7 +2,7 @@
 # shellcheck disable=SC2034
 # Maintainer:  Chmouel Boudjnah <chmouel@chmouel.com>
 pkgname=mongars
-pkgver=1.4.4
+pkgver=1.4.5
 pkgrel=1
 pkgdesc="Count inbox emails using Gnome Online Accounts or Google GMAIL API"
 arch=('any')
@@ -11,8 +11,8 @@ license=('Apache')
 optdepends=('gum' 'python-gobject' 'evolution-data-server')
 depends=('python-google-api-core' 'python-google-api-python-client' 'python-google-auth' 'python-google-auth-httplib2' 'python-google-auth-oauthlib' 'python-googleapis-common-protos' 'pass' 'libnotify')
 source=("https://github.com/chmouel/${pkgname}/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('4543c958332fd476ae5a64426fb177f9d0550c29ab8f35ace031ad720081c596')
-makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel' 'uv')
+sha256sums=('7607318ed870cd4efd017ebf0f9800f43af35f9e1c21a08df61595d76d0df6cf')
+makedepends=('python-build' 'python-installer' 'python-wheel' 'python-hatchling')
 
 build() {
   cd "$pkgname-$pkgver" || exit
