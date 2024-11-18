@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 
-hc-manage prunepings
-hc-manage prunenotifications
+hc-manage prunepingsslow
 hc-manage pruneusers
 hc-manage prunetokenbucket
-hc-manage pruneflips
+hc-manage pruneobjects
