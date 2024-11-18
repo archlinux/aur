@@ -2,7 +2,7 @@
 # Contributor: Alexis Janon <kardyne -at- gmail -dot- com>
 _pkgname=fluentui-system-icons
 pkgname="ttf-${_pkgname}"
-pkgver=1.1.261
+pkgver=1.1.265
 pkgrel=1
 pkgdesc="A collection of familiar, friendly and modern icons from Microsoft."
 arch=("any")
@@ -13,7 +13,7 @@ license=('MIT')
 source=(
     "${pkgname}-${pkgver}.tar.gz::${_ghurl}/archive/refs/tags/${pkgver}.tar.gz"
 )
-sha256sums=('d9227a9b99aa37fcef5ce8de812976f424f46981719b116442be17d3ad603ebf')
+sha256sums=('9a8378735be234853bbafc3efa40a556bc9e04c966c67b41d856e16cbc50668f')
 package() {
     find "${srcdir}/${_pkgname}-${pkgver}/fonts" -type f -name "*.ttf" -exec install -Dm644 -t "${pkgdir}/usr/share/fonts/TTF" {} +
     install -Dm644 "${srcdir}/${_pkgname}-${pkgver}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
