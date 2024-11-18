@@ -61,6 +61,7 @@ optdepends=(
 	'python-pychromecast: Chromecast stream support'
 	'python-jxlpy: JPEG XL image support'    # AUR
 	'python-tekore: Spotify feature support' # AUR
+	'python-tidalapi: Tidal feature support' # AUR
 	'librespot: Spotify audio playback'      # AUR
 )
 
