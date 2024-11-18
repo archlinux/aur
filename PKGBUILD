@@ -1,9 +1,10 @@
-# Maintainer:  Marcell Meszaros < marcell.meszaros AT runbox.eu >
+# Maintainer: envolution
+# Contributor: Marcell Meszaros < marcell.meszaros AT runbox.eu >
 # Contributor: Vojtech Aschenbrenner <v@asch.cz>
 
 _gemname=xapian-ruby
-pkgname=ruby-$_gemname
-pkgver=1.4.18
+pkgname=ruby-xapian-ruby
+pkgver=1.4.22
 pkgrel=1
 pkgdesc='Xapian libraries and Ruby bindings'
 arch=('i686' 'x86_64')
@@ -17,7 +18,7 @@ makedepends=('ruby-rake' 'ruby-rdoc')
 options=('!emptydirs')
 source=("https://rubygems.org/downloads/$_gemname-$pkgver.gem")
 noextract=("$_gemname-$pkgver.gem")
-sha256sums=('f776cfb494e09f18b93d5b5310d4096d5dbe2a8c5ad898f637925ad0a6cc0afd')
+sha256sums=('026a866b431a96e6503ca2090cd5090aef564f37efd21bb5b2f6e8a8c57c9f76')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
