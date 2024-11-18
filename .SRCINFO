@@ -1,22 +1,22 @@
 pkgbase = filen-desktop-bin
-	pkgdesc = Desktop client including Syncing, Virtual Drive mounting, S3, WebDAV, File Browsing, Chats, Notes, Contacts and more.Prebuilt version.Use system-wide electron.
-	pkgver = 2.0.24
-	pkgrel = 2
+	pkgdesc = Desktop client including Syncing, Virtual Drive mounting, S3, WebDAV, File Browsing, Chats, Notes, Contacts and more.(Prebuilt version.Use system-wide electron)
+	pkgver = 3.0.32
+	pkgrel = 1
 	url = https://filen.io/
 	arch = aarch64
 	arch = x86_64
 	license = AGPL-3.0-only
-	makedepends = fuse2
-	depends = electron21
-	provides = filen-desktop-bin=2.0.24
+	makedepends = asar
+	depends = electron33
+	provides = filen-desktop-bin=3.0.32
 	conflicts = filen-desktop
 	options = !strip
 	options = !emptydirs
 	source = filen-desktop.sh
 	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
-	source_aarch64 = filen-desktop-2.0.24-aarch64.AppImage::https://cdn.filen.io/desktop/release/filen_arm64.AppImage
-	sha256sums_aarch64 = c1111680459956a3772c96c02c361b3eb3966843677e959503edd55ec76d4589
-	source_x86_64 = filen-desktop-2.0.24-x86_64.AppImage::https://cdn.filen.io/desktop/release/filen_x86_64.AppImage
-	sha256sums_x86_64 = e6f927753f55ffcd5f51dcd2f8a4df0233c018ed08251c7c42137104d1bc9e75
+	source_aarch64 = filen-desktop-3.0.32-aarch64.rpm::https://github.com/FilenCloudDienste/filen-desktop/releases/download/v3.0.32/Filen_linux_aarch64.rpm
+	sha256sums_aarch64 = 0e08f2e937e9c5816330809a71cffe4f3d2037cf1618e6b59071c1f5f06b79f5
+	source_x86_64 = filen-desktop-3.0.32-x86_64.rpm::https://github.com/FilenCloudDienste/filen-desktop/releases/download/v3.0.32/Filen_linux_x86_64.rpm
+	sha256sums_x86_64 = b369c0100c85448273e3cfafa64d849bf869e58b8103fa50c0c4f754740bccae
 
 pkgname = filen-desktop-bin

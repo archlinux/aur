@@ -1,10 +1,11 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=filen-desktop-bin
-_pkgname="Filen Desktop"
-pkgver=2.0.24
-_electronversion=21
-pkgrel=2
-pkgdesc="Desktop client including Syncing, Virtual Drive mounting, S3, WebDAV, File Browsing, Chats, Notes, Contacts and more.Prebuilt version.Use system-wide electron."
+_pkgname=Filen
+_appname="@filendesktop"
+pkgver=3.0.32
+_electronversion=33
+pkgrel=1
+pkgdesc="Desktop client including Syncing, Virtual Drive mounting, S3, WebDAV, File Browsing, Chats, Notes, Contacts and more.(Prebuilt version.Use system-wide electron)"
 arch=(
     'aarch64'
     'x86_64'
@@ -18,7 +19,7 @@ depends=(
     "electron${_electronversion}"
 )
 makedepends=(
-    'fuse2'
+    'asar'
 )
 options=(
     '!strip'
@@ -27,32 +28,33 @@ options=(
 source=(
     "${pkgname%-bin}.sh"
 )
-source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.AppImage::https://cdn.filen.io/desktop/release/filen_arm64.AppImage")
-source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.AppImage::https://cdn.filen.io/desktop/release/filen_x86_64.AppImage")
+source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::${_ghurl}/releases/download/v${pkgver}/${_pkgname}_linux_aarch64.rpm")
+source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${_ghurl}/releases/download/v${pkgver}/${_pkgname}_linux_x86_64.rpm")
 sha256sums=('291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-sha256sums_aarch64=('c1111680459956a3772c96c02c361b3eb3966843677e959503edd55ec76d4589')
-sha256sums_x86_64=('e6f927753f55ffcd5f51dcd2f8a4df0233c018ed08251c7c42137104d1bc9e75')
+sha256sums_aarch64=('0e08f2e937e9c5816330809a71cffe4f3d2037cf1618e6b59071c1f5f06b79f5')
+sha256sums_x86_64=('b369c0100c85448273e3cfafa64d849bf869e58b8103fa50c0c4f754740bccae')
 build() {
     sed -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-bin}/g
         s/@runname@/app/g
-        s/@cfgdirname@/${_pkgname}/g
-        s/@options@//g
+        s/@cfgdirname@/${_appname%desktop}/g
+        s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
     " -i "${srcdir}/${pkgname%-bin}.sh"
-    chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage"
-    "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage" --appimage-extract > /dev/null
-    sed -i "s/AppRun --no-sandbox/${pkgname%-bin}/g" "${srcdir}/squashfs-root/${pkgname%-bin}.desktop"
-    find "${srcdir}/squashfs-root/resources" -type d -exec chmod 755 {} \;
+    sed -e "
+        s/\"\/opt\/${_pkgname}\/${_appname}\"/${pkgname%-bin}/g
+        s/Icon=${_appname}/Icon=${pkgname%-bin}/g
+    " -i "${srcdir}/usr/share/applications/${_appname}.desktop"
+    find "${srcdir}/opt/${_pkgname}/resources" -type d -exec chmod 755 {} \;
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
-    install -Dm644 "${srcdir}/squashfs-root/usr/lib/"* -t "${pkgdir}/usr/lib/${pkgname%-bin}/lib"
-    cp -Pr --no-preserve=ownership "${srcdir}/squashfs-root/resources/app" "${pkgdir}/usr/lib/${pkgname%-bin}"
+    install -Dm644 "${srcdir}/opt/${_pkgname}/resources/app.asar" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
+    cp -Pr --no-preserve=ownership "${srcdir}//opt/${_pkgname}/resources/"{app.asar.unpacked,public} "${pkgdir}/usr/lib/${pkgname%-bin}"
     _icon_sizes=(16x16 24x24 32x32 48x48 64x64 128x128 256x256 512x512 1024x1024)
     for _icons in "${_icon_sizes[@]}"; do
-        install -Dm644 "${srcdir}/squashfs-root/usr/share/icons/hicolor/${_icons}/apps/${pkgname%-bin}.png" \
-           -t "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps"
+        install -Dm644 "${srcdir}/usr/share/icons/hicolor/${_icons}/apps/${_appname}.png" \
+           "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname%-bin}.png"
     done
-    install -Dm644 "${srcdir}/squashfs-root/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
+    install -Dm644 "${srcdir}/usr/share/applications/${_appname}.desktop" -t "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
