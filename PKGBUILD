@@ -1,27 +1,27 @@
 # Maintainer: CupIvan <mail@cupivan.ru>
+# Maintainer: Moritz Warning <moritzwarning@web.de>
 
 pkgname=kadnode
 pkgver=2.4.0
-pkgrel=1
+pkgrel=2
 
-pkgdesc="P2P DNS with content key, crypto key and PKI support. DynDNS alternative."
+pkgdesc='A P2P based DNS resolver'
 arch=('x86_64' 'i686')
-url="http://github.com/mwarning/KadNode"
+url='http://github.com/mwarning/KadNode'
 license=('MIT')
 depends=('mbedtls')
+
+backup=('etc/kadnode/kadnode.conf' 'etc/kadnode/peers.txt')
 
 source=("https://github.com/mwarning/KadNode/archive/v${pkgver}.tar.gz")
 md5sums=('589b6c4ce0b5205c5d062ee474c1edbd')
 
-backup=('etc/kadnode/kadnode.conf' 'etc/kadnode/peers.txt')
 install="kadnode.install"
 
-build()
-{
+build() {
 	cd ${srcdir}/KadNode-${pkgver}
-	LDFLAGS=
 	make clean
-	make
+	make FEATURES="tls bob cmd lpd nss"
 }
 
 package() {
