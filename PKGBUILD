@@ -1,12 +1,13 @@
-# Maintainer: Jérémy "Vrakfall" Lecocq <jeremy [dot] lecocq [at] protonmail [dot] com>
+# Maintainer: Karl Ludwig Brennan <karlludwigbrennan@outlook.com>
+# Contributor: Jérémy "Vrakfall" Lecocq <jeremy [dot] lecocq [at] protonmail [dot] com>
 # Contributor: Sven-Hendrik Haase <svenstaro@archlinux.org>
 # Contributor: Felix Yan <felixonmars@archlinux.org>
 # Contributor: Thomas Baechler <thomas@archlinux.org>
 
 _pkgmainbranch=nvidia
 pkgname=nvidia-525xx
-pkgver=525.116.04
-pkgrel=8
+pkgver=525.147.05
+pkgrel=1
 pkgdesc="NVIDIA drivers for linux, 525 branch"
 arch=('x86_64')
 url="https://www.nvidia.com/"
