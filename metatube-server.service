@@ -1,0 +1,12 @@
+[Unit]
+Description = MetaTube Server
+After = network.target
+
+[Service]
+Restart = on-failure
+User = metatube-server
+EnvironmentFile = -/etc/conf.d/metatube-server.env
+ExecStart = /usr/bin/metatube-server
+
+[Install]
+WantedBy = multi-user.target
