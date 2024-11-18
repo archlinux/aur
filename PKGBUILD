@@ -3,8 +3,8 @@
 
 pkgname=napcatqq-git
 _pkgname=NapCatQQ
-pkgver=r3054.0222664d
-pkgrel=4
+pkgver=r3056.e9fe6f28
+pkgrel=1
 pkgdesc="现代化的基于 NTQQ 的 Bot 协议端实现"
 arch=('x86_64'
       'aarch64'
@@ -57,7 +57,7 @@ else
 fi
 EOF
 
-    install -Dm644 /dev/stdin "${pkgdir}/etc/pacman.d/hooks/napcatqq-permission.hook" << 'EOF'
+    install -Dm0644 /dev/stdin "${pkgdir}/etc/pacman.d/hooks/napcatqq-permission.hook" << 'EOF'
 [Trigger]
 Type=Package
 Operation=Install
@@ -70,7 +70,7 @@ When=PostTransaction
 Exec=/bin/sh -c 'chown -R $(logname):$(logname) /opt/QQ/resources/app/napcat /opt/QQ/resources/app/loadNapCat.js'
 EOF
 
-    install -Dm644 /dev/stdin "${pkgdir}/etc/pacman.d/hooks/napcatqq-patch.hook" << 'EOF'
+    install -Dm0644 /dev/stdin "${pkgdir}/etc/pacman.d/hooks/napcatqq-patch.hook" << 'EOF'
 [Trigger]
 Type=Package
 Operation=Install
@@ -84,7 +84,7 @@ When=PostTransaction
 Exec=/bin/sh -c '/opt/QQ/resources/app/napcat/napcatqq-patcher.sh'
 EOF
 
-    install -Dm644 /dev/stdin "${pkgdir}/etc/pacman.d/hooks/napcatqq-depatch.hook" << 'EOF'
+    install -Dm0644 /dev/stdin "${pkgdir}/etc/pacman.d/hooks/napcatqq-depatch.hook" << 'EOF'
 [Trigger]
 Operation=Remove
 Type=Package
