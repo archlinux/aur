@@ -7,6 +7,7 @@ pkgbase = dput-ng
 	license = GPL2
 	makedepends = python-setuptools
 	depends = python-debian
+	depends = python-distro-info
 	provides = dput
 	conflicts = dput
 	source = http://http.debian.net/debian/pool/main/d/dput-ng/dput-ng_1.33.tar.xz
