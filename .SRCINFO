@@ -1,0 +1,14 @@
+pkgbase = csc-bin
+	pkgdesc = Command Line Scientific Calculator
+	pkgver = 0.1.9
+	pkgrel = 1
+	url = https://github.com/zahash/csc
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	provides = csc
+	conflicts = csc
+	source_x86_64 = https://github.com/zahash/csc/releases/download/v0.1.9/csc-x86_64-unknown-linux-gnu.tar.xz
+	sha256sums_x86_64 = de8e27dc845dfdf636fe9b335feb03010f9d6532e2db013976d159d55d2f15eb
+
+pkgname = csc-bin
