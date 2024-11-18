@@ -1,11 +1,11 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=miteiru
 _pkgname=Miteiru
-pkgver=5.6.0
+pkgver=5.7.0
 _electronversion=31
 _nodeversion=20
 pkgrel=1
-pkgdesc="An open source Electron video player to learn Chinese,Cantonese,and Japanese.It can play all Youtube and HTML 5 supported format videos,and lots of supports on other subtitle formats."
+pkgdesc="An open source Electron video player to learn Chinese,Cantonese,and Japanese.It can play all Youtube and HTML 5 supported format videos,and lots of supports on other subtitle formats.(Use system-wide electron)"
 arch=('any')
 url="https://miteiru.hocky.id/"
 _ghurl="https://github.com/hockyy/miteiru"
@@ -32,7 +32,7 @@ source=(
     "${pkgname}-${pkgver}.tar.gz::${_ghurl}/archive/refs/tags/v${pkgver}.tar.gz"
     "${pkgname}.sh"
 )
-sha256sums=('21972a40867347e41dc8ea770918f7d187971c22c606773d556df8402a378251'
+sha256sums=('bf93bd75baf04175edc4c0d98d26b842df1fb1b02af7d3f27ff63fe9401ef711'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
@@ -69,7 +69,7 @@ build() {
     fi
     icotool -i 1 -x resources/icon.ico -o resources/icon.png
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
-    sed -i "s/icon.icns/icon.png/g;s/\"deb\", \"AppImage\"/\"dir\"/g" buildConfig/linux22.config.json
+    sed -i "s/icon\.icns/icon\.png/g;s/\"deb\", \"AppImage\"/\"dir\"/g" buildConfig/linux22.config.json
     NODE_ENV=development    npm install
     NODE_ENV=production     npm run build:linux22
 }
