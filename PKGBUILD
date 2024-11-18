@@ -2,9 +2,10 @@
 # Contributor: giver <ryan01234keroro56789@gmail.com>
 
 _pyname=angr
-pkgname=python-${_pyname}-git
-pkgver=9.2.123.r12662.c693201d1
-pkgrel=1
+_basename=python-$_pyname
+pkgname=$_basename-git
+pkgver=9.2.129.dev0.r12727.058d8f18a
+pkgrel=2
 pkgdesc='A powerful and user-friendly binary analysis platform'
 url='https://github.com/angr/angr'
 license=('BSD-2-Clause')
@@ -12,13 +13,9 @@ arch=('x86_64')
 depends=(
     'gcc-libs'
     'glibc'
-    'python-ailment-git'
-    'python-archinfo'
     'python-cachetools'
     'python-capstone'
     'python-cffi'
-    'python-claripy-git'
-    'python-cle-git'
     'python-cppheaderparser'
     'python-gitpython'
     'python-itanium_demangler'
@@ -32,7 +29,6 @@ depends=(
     'python-pyelftools'
     'python-pyformlang'
     'python-pypcode'
-    'python-pyvex-git'
     'python-rich'
     'python-sortedcontainers'
     'python-sqlalchemy'
@@ -57,19 +53,23 @@ makedepends=(
     'python-myst-parser'
     'python-sphinx-autodoc-typehints'
 )
-provides=(${pkgname%%-git})
-conflicts=(${pkgname%%-git})
+provides=($_basename)
+conflicts=($_basename)
 source=("$pkgname::git+https://github.com/angr/angr.git")
 b2sums=('SKIP')
 
 pkgver() {
     cd $srcdir/$pkgname
 
-    # Versions are orphaned branches with tags ...
-    _version=$(git tag --sort=-version:refname | head -n1 | sed -e 's/v//')
+    _version=$(grep -e '^__version__' $_pyname/__init__.py  | cut -f 2 -d '"')
     rev_num="$(git rev-list --count HEAD)"
     last_commit="$(git rev-parse --short HEAD)"
     echo "${_version}.r${rev_num}.${last_commit}"
+}
+
+
+prepare() {
+    git -C $srcdir/$pkgname clean -dfx
 }
 
 build() {
@@ -79,6 +79,19 @@ build() {
 }
 
 package() {
+    provides+=($_basename=${pkgver%\.r[0-9]*})
+
+    # All angr projects share the same version. Upstream exclusively supports
+    # using projects with the same version number together. Before package()
+    # pkgver might be outdated. Thus, run time dependencies on the pkgver are
+    # defined here.
+    depends+=(
+	"python-ailment=${pkgver%\.r[0-9]*}"
+	"python-archinfo=${pkgver%\.r[0-9]*}"
+	"python-claripy=${pkgver%\.r[0-9]*}"
+	"python-cle=${pkgver%\.r[0-9]*}"
+	"python-pyvex=${pkgver%\.r[0-9]*}"
+    )
     cd $srcdir/$pkgname
     python -m installer --destdir="$pkgdir" dist/*.whl
     install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
