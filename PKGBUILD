@@ -4,7 +4,7 @@
 # Contributor: Daniil Kovalev <daniil@kovalev.website>
 pkgname=64gram-desktop
 _pkgname=64Gram
-pkgver=1.1.46
+pkgver=1.1.48
 pkgrel=1
 epoch=1
 pkgdesc='Unofficial desktop version of Telegram messaging app'
@@ -26,16 +26,14 @@ optdepends=('webkit2gtk: embedded browser features'
 source=("https://github.com/TDesktop-x64/tdesktop/releases/download/v${pkgver}/${_pkgname}-${pkgver}-full.tar.gz"
         "block-sponsored_messages.patch"
         "fix-lzma-link.patch"
-        "io.github.tdesktop_x64.TDesktop.desktop"
-        "$pkgname-28611.patch::https://patch-diff.githubusercontent.com/raw/telegramdesktop/tdesktop/pull/28611.patch")
+        "io.github.tdesktop_x64.TDesktop.desktop")
 
 noextract=("${_pkgname}-${pkgver}-full.tar.gz")
 
-sha512sums=('274b4de242da4ef812c32fc74fc0ee612f994ff90ae5c45d87245ddb785453be51d8ccd51c5f53f87c746fa5e9d0bcb78750e862d75a16a21dd8bc76c849cff4'
+sha512sums=('c7ccc9ef0fb44eabe94849cf553dd1787e39e00ca30c29da8a30610efe8872245aac2ece4e0e0934b3e6c3e706b4ea00cf0c6740f48420112cb4f82a33dee705'
             '0e0f0dcb99ed6c7566e7a75404e39e16c27658eb5999e041a82aa975447ce8719ce6703cc36efc039e16a3ff3721f4a7c76df24f0ead9aa48ce5e23001142072'
             'd813a5ac6ff2208b693ecf494d7bf036087e223662f9f34aaaeafea0afe0fe798e867b9610f7221ea80319865502c20b61310d5a31634b888793873d63322463'
-            'ea027bc2d40c74507adf32380444207210a8c31cdba57f3f468d23d8e9c7376647cc8c713f188660f9b1dacd9041227aafd5a27c7889f47ea3985712b6b74b8b'
-            'b959fd3d26734e4361f8f567eacc874cd753b347b55fa0fc2640d10b65f1a6788b677967c601b1f92f636831c8aafe7681145ab35c69c983960ec3b78707f321')
+            'ea027bc2d40c74507adf32380444207210a8c31cdba57f3f468d23d8e9c7376647cc8c713f188660f9b1dacd9041227aafd5a27c7889f47ea3985712b6b74b8b')
 
 prepare() {
     LANG=C.UTF-8 bsdtar -xf ${_pkgname}-${pkgver}-full.tar.gz
@@ -43,7 +41,6 @@ prepare() {
     #patch -Np1 --binary -i ../block-sponsored_messages.patch
     patch -p1 --binary < ../fix-lzma-link.patch
     find "${srcdir}"/ -type f -exec dos2unix {} \;
-    patch -Np1 -d . -i "$srcdir"/$pkgname-28611.patch
 }
 
 build() {
