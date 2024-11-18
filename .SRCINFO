@@ -1,7 +1,7 @@
 pkgbase = magic-tape.sh-git
 	pkgdesc = Magic-tape is an image supporting fuzzy finder command line interface YouTube client.
 	pkgver = r152.ea64473
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/christosangel/magic-tape.git
 	install = magic-tape.install
 	arch = x86_64

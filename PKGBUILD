@@ -1,7 +1,7 @@
 # Maintainer: 0fflineuser <0fflineuser@cock.li>
 pkgname="magic-tape.sh-git"
 pkgver=r152.ea64473
-pkgrel=1
+pkgrel=2
 pkgdesc="Magic-tape is an image supporting fuzzy finder command line interface YouTube client."
 arch=('x86_64')
 url="https://gitlab.com/christosangel/magic-tape.git"
