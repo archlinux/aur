@@ -1,5 +1,4 @@
-# Maintainer: akac <akac DOT x AT tuta DOT io>
-# Contributor: akac <akac DOT x AT tuta DOT io>
+# Maintainer: saxophonedev <me@saxophone.is-a.dev>
 
 # options
 if [ -n "$_srcinfo" ] || [ -n "$_pkgver" ] ; then
@@ -41,74 +40,13 @@ _main_package() {
   sha256sums=('5be9cadb44466b6b63b73393443af064b5a0340a8f1bef88420f3c053582ac2d')
 }
 
-# common functions
 pkgver() {
   echo "${_pkgver:?}"
 }
 
 prepare() {
-  # desktop
-  install -Dvm644 /dev/stdin "$_pkgname.desktop" <<END
-[Desktop Entry]
-Version=1.0
-Name=Mercury
-Comment=Browse the World Wide Web
-GenericName=Web Browser
-Keywords=Internet;WWW;Browser;Web;Explorer;Mercury
-Exec=$_pkgname %u
-StartupWMClass=mercury-default
-Terminal=false
-X-MultipleArgs=true
-Type=Application
-Icon=$_pkgname
-Categories=GNOME;GTK;Network;WebBrowser;
-MimeType=text/html;text/xml;application/xhtml+xml;application/xml;application/rss+xml;application/rdf+xml;image/gif;image/jpeg;image/png;x-scheme-handler/http;x-scheme-handler/https;x-scheme-handler/ftp;x-scheme-handler/chrome;video/webm;application/x-xpinstall;
-StartupNotify=true
-Actions=NewWindow;NewPrivateWindow;TempUserDir;
-
-[Desktop Action NewWindow]
-Name=New Window
-Exec=$_pkgname -new-window
-
-[Desktop Action NewPrivateWindow]
-Name=New Private Window
-Exec=$_pkgname -private-window
-
-[Desktop Action TempUserDir]
-Name=Open With Temporary User Profile
-Exec=$_pkgname --temp-profile
-END
-
-  install -Dvm644 /dev/stdin "$_pkgname.sh" <<END
-#!/usr/bin/env bash
-
-# check microprocessor architecture level
-if grep -qE '\bavx2\b' /proc/cpuinfo ; then
-  _message=''
-  _message+=\$'The fastest Firefox fork on Earth.'
-else
-  _message=''
-  _message+=\$'Your processor does not support AVX2 instructions.\n'
-  _message+=\$'mercury-browser may not work on your computer.'
-fi
-
-# Allow users to override command-line options
-XDG_CONFIG_HOME=\${XDG_CONFIG_HOME:-~/.config}
-_FLAGFILE="\$XDG_CONFIG_HOME/mercury-flags.conf"
-if [[ -f "\$_FLAGFILE" ]]; then
-  _USER_FLAGS=\$(cat "\$_FLAGFILE")
-fi
-
-# display processor support message
-if tty -s ; then
-  echo "\$_message"
-else
-  [ ! -e "\$HOME/.mercury" ] && notify-send -a "mercury-browser" -t 7500 "\$_message"
-fi
-
-# Launch
-exec /opt/$_pkgname/mercury \$_USER_FLAGS "\$@"
-END
+  # No need to copy files - they're already in the right place
+  true
 }
 
 package() {
@@ -121,28 +59,6 @@ package() {
     'dbus-glib'
     'gtk3'
     'libnotify' # notify-send
-
-    ## implicit
-    #at-spi2-core
-    #cairo
-    #dbus
-    #fontconfig
-    #freetype2
-    #gcc-libs
-    #gdk-pixbuf2
-    #glib2
-    #glibc
-    #libx11
-    #libxcb
-    #libxcomposite
-    #libxcursor
-    #libxdamage
-    #libxext
-    #libxfixes
-    #libxi
-    #libxrandr
-    #libxrender
-    #pango
   )
 
   local _filetype="zip"
@@ -158,14 +74,14 @@ package() {
 
   # script
   rm -rf "$pkgdir/usr/bin/mercury-browser"
-  install -Dm755 "$_pkgname.sh" "$pkgdir/usr/bin/$_pkgname"
+  install -Dm755 "${srcdir}/../mercury-browser-avx2.sh" "$pkgdir/usr/bin/$_pkgname"
 
   # icon
   install -Dm644 "$pkgdir/opt/$_pkgname/browser/chrome/icons/default/default128.png" "$pkgdir/usr/share/pixmaps/$_pkgname.png"  
 
   # .desktop
   rm -rf "$pkgdir/usr/share/applications/mercury-browser.desktop"
-  install -Dm644 "$_pkgname.desktop" "$pkgdir/usr/share/applications/$_pkgname.desktop"
+  install -Dm644 "${srcdir}/../mercury-browser-avx2.desktop" "$pkgdir/usr/share/applications/$_pkgname.desktop"
 
   # symlink duplicate file
   ln -sf "/usr/bin/$_pkgname" "$pkgdir/opt/$_pkgname/mercury-bin"
@@ -203,7 +119,6 @@ _package_zip() {
   bsdtar --strip-components="$_depth" -C "$pkgdir/opt/$_pkgname/" -xf "$_dl_filename" '*/mercury/*'
 }
 
-# update version
 _update_version() {
   : ${_pkgver:=${pkgver%%.r*}}
 
