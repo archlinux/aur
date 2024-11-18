@@ -1,0 +1,14 @@
+pkgbase = piper-voices-pt-br
+	pkgdesc = Voices for Piper text to speech system (pt_BR)
+	pkgver = 1.0.0
+	pkgrel = 3
+	url = https://huggingface.co/rhasspy/piper-voices
+	arch = any
+	groups = piper-voices
+	license = MIT
+	makedepends = git-lfs
+	depends = piper-voices-common
+	provides = piper-voices
+	conflicts = piper-voices-minimal
+
+pkgname = piper-voices-pt-br
