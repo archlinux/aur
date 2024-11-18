@@ -1,0 +1,4 @@
+[hyperrogue]
+source="cmd"
+cmd="~/nvchecker/github_version.sh zenorogue hyperrogue"
+prefix="v"
