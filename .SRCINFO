@@ -1,0 +1,22 @@
+pkgbase = sequin-bin
+	pkgdesc = Human-readable ANSI sequences.
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://charm.sh/
+	license = MIT
+	conflicts = sequin
+	provides = sequin
+	arch = aarch64
+	source_aarch64 = https://github.com/charmbracelet/sequin/releases/download/v0.1.1/sequin_0.1.1_Linux_arm64.tar.gz
+	sha256sums_aarch64 = 07678372a6b07b3549d00c6736e7657ffe2ed5c9df4e5d0ca313cdea07525419
+	arch = armv7h
+	source_armv7h = https://github.com/charmbracelet/sequin/releases/download/v0.1.1/sequin_0.1.1_Linux_arm.tar.gz
+	sha256sums_armv7h = 09ced7db4cb344165a84f3580ed17acf76300d7a98b0ec73da4f992201d1ab6b
+	arch = i686
+	source_i686 = https://github.com/charmbracelet/sequin/releases/download/v0.1.1/sequin_0.1.1_Linux_i386.tar.gz
+	sha256sums_i686 = a331f2501c55eb644d2eb4fd3347444d3d119928914b14c29d9b97f64fabe171
+	arch = x86_64
+	source_x86_64 = https://github.com/charmbracelet/sequin/releases/download/v0.1.1/sequin_0.1.1_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = 47e804fb43827536f02835add697116eb64eb063aec46c49ea7417e883e87d5e
+	
+pkgname = sequin-bin
