@@ -2,12 +2,12 @@
 # Co-maintainer: Nebulosa <nebulosa2007 at yandex dot ru>
 
 pkgname=cassette-git
-pkgver=0.2.0.r9.ga0a1bcb
+pkgver=0.2.0.r33.g3bed575
 pkgrel=1
 pkgdesc="GTK4/Adwaita application that allows you to use Yandex Music service on Linux operating systems"
 arch=(aarch64 x86_64)
 url="https://gitlab.gnome.org/Rirusha/${pkgname%-git}"
-license=(GPL-3.0-only)
+license=(GPL-3.0-or-later)
 depends=(
   cairo
   dconf
