@@ -1,14 +1,14 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=vpkedit
 pkgver=4.3.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A library and CLI/GUI tool to create, read, and write several pack file formats"
 arch=('x86_64')
 url="https://github.com/craftablescience/VPKEdit"
 optdepends=('qt6-wayland: Wayland support')
 license=('MIT')
 depends=('gcc-libs' 'glibc' 'qt6-base' 'qt6-svg' 'hicolor-icon-theme')
-makedepends=('cmake' 'git' 'clang' 'qt6-tools')
+makedepends=('cmake' 'git' 'clang' 'qt6-tools' 'ninja')
 source=("$pkgname::git+$url.git#tag=v${pkgver}"
 	"argparse::git+https://github.com/p-ranav/argparse.git"
 	"indicators::git+https://github.com/p-ranav/indicators.git"
@@ -58,7 +58,7 @@ prepare() {
 build() {
 	cd "$srcdir"
 	cmake -B build \
-	-S "$pkgname" \
+	-S "$pkgname" -G Ninja \
 	-DCMAKE_INSTALL_PREFIX=/usr/lib/$pkgname \
 	-DCMAKE_BUILD_TYPE=None \
 	-DCMAKE_C_COMPILER=clang \
