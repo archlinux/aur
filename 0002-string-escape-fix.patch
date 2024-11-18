@@ -1,0 +1,20 @@
+--- a/extcap/nrf_sniffer_ble.py
++++ b/extcap/nrf_sniffer_ble.py
+@@ -184,7 +184,7 @@
+           "{tooltip=Advertising channel hop sequence. "
+           "Change the order in which the sniffer switches advertising channels. "
+           "Valid channels are 37, 38 and 39 separated by comma.}"
+-          "{validation=^\s*((37|38|39)\s*,\s*){0,2}(37|38|39){1}\s*$}{required=true}" % CTRL_ARG_ADVHOP)
++          r"{validation=^\s*((37|38|39)\s*,\s*){0,2}(37|38|39){1}\s*$}{required=true}" % CTRL_ARG_ADVHOP)
+     print("control {number=%d}{type=button}{display=Clear}{tooltop=Clear or remove device from Device list}" % CTRL_ARG_DEVICE_CLEAR)
+     print("control {number=%d}{type=button}{role=help}{display=Help}{tooltip=Access user guide (launches browser)}" % CTRL_ARG_HELP)
+     print("control {number=%d}{type=button}{role=restore}{display=Defaults}{tooltip=Resets the user interface and clears the log file}" % CTRL_ARG_RESTORE)
+@@ -713,7 +713,7 @@
+ def parse_capture_filter(capture_filter):
+     """"Parse given capture filter"""
+     global rssi_filter
+-    m = re.search("^\s*rssi\s*(>=?)\s*(-?[0-9]+)\s*$", capture_filter, re.IGNORECASE)
++    m = re.search(r"^\s*rssi\s*(>=?)\s*(-?[0-9]+)\s*$", capture_filter, re.IGNORECASE)
+     if m:
+         rssi_filter = int(m.group(2))
+         if rssi_filter > -10 or rssi_filter < -256:
