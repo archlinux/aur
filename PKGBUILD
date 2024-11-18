@@ -3,7 +3,7 @@
 
 pkgname=quran-companion-git
 _pkgname=quran-companion
-pkgver=1.3.1
+pkgver=1.3.2
 pkgrel=1
 pkgdesc="Cross-platform desktop offline Quran reader and player"
 arch=('x86_64')
