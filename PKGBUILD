@@ -2,7 +2,7 @@
 
 pkgname=htrace.sh
 pkgver=1.1.7
-pkgrel=4
+pkgrel=5
 pkgdesc="A shell script for http/https troubleshooting and profiling"
 arch=('any')
 url="https://github.com/trimstray/htrace.sh"
@@ -14,7 +14,6 @@ depends=('bind-tools'
          'bc'
          'jq'
          'testssl.sh'
-         'observatory-cli'
          'ssllabs-scan'
          'mixed-content-scan'
          'nmap'
