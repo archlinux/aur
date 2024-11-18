@@ -1,6 +1,6 @@
 pkgbase = cronicle-git
 	pkgdesc = A simple, distributed task scheduler and runner
-	pkgver = v0.9.61.r494.g48490e0
+	pkgver = 0.9.61.r1.g48490e0
 	pkgrel = 1
 	url = https://github.com/jhuckaby/Cronicle
 	install = cronicle-git.install

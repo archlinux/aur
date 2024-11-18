@@ -2,7 +2,7 @@
 
 pkgname=cronicle-git
 _pkgname=Cronicle
-pkgver=v0.9.61.r494.g48490e0
+pkgver=0.9.61.r1.g48490e0
 pkgrel=1
 pkgdesc="A simple, distributed task scheduler and runner"
 arch=('any')
@@ -20,8 +20,7 @@ provides=('cronicle')
 
 pkgver() {
     cd "$srcdir/$_pkgname"
-    printf "%s.r%s.g%s" "$(git tag --sort=-v:refname | head -n 1)" \
-        "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    git describe --long --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
@@ -37,11 +36,11 @@ build() {
 
 package() {
     cd "$srcdir/$_pkgname"
-    install -d "$pkgdir/opt/cronicle"
-    cp -a ./* "$pkgdir/opt/cronicle/"
+    install -d "$pkgdir/opt/cronicle-git"
+    cp -a ./* "$pkgdir/opt/cronicle-git/"
 
     install -Dm0644 -t "$pkgdir/usr/share/licenses/${pkgname}" LICENSE.md
 
-    rm -rf "$pkgdir/opt/cronicle/.git"
+    rm -rf "$pkgdir/opt/cronicle-git/.git"
 }
 
