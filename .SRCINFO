@@ -1,7 +1,7 @@
 pkgbase = python-django-fake-model
 	pkgdesc = Simple library for creating fake Django models in the unit tests
 	pkgver = 0.1.4
-	pkgrel = 8
+	pkgrel = 9
 	url = https://github.com/erm0l0v/django-fake-model
 	arch = any
 	license = BSD
