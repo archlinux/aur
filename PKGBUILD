@@ -2,12 +2,12 @@
 
 pkgname=plexamp-headless
 pkgver=4.11.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Headless music client for Plex"
 provides=('plexamp-headless')
 conflicts=('plexamp-headless')
 arch=('aarch64')
-depends=('nodejs-lts-iron' 'pipewire-alsa')
+depends=('pipewire-alsa' 'nvm')
 url="https://plexamp.com"
 options=(!debug !strip)
 _filename=Plexamp-Linux-headless-v${pkgver}.tar.bz2
@@ -15,8 +15,8 @@ source=("https://plexamp.plex.tv/headless/${_filename}"
 	'plexamp-headless.service'
 	'plexamp-headless.sh')
 sha512sums=('715812f2fc5a76dd2f699189ed7fd7e88c9a061076159f03c8fa935460a51b750905194089f281ec92a7299a80db981e9be53068b44592faba477da4732dd315'
-            '10412eecd39a2c8226b18f75089ff342653fa95c68d0e5f33393e1f34a08323f897e96c3f7a68348ecc040c4d35d29acd9368b151f2a6f2ae531cbb18063cf2c'
-	    '26dd3d4c66fc267ae2f365f8cc2b0c46c12a1a5a96346cbfe0853675545e23723156b6d30b1208598dd406a488222035441179ff18b3716451146f1b0d87a114')
+            '83a94e4b933981eae7b944ae7ad822a6da6502c0a22b7fb2af845787ee0bf272eeae6853074ac1b1b2711c2c39e1b6506394dedc159b318c12c8f0cb04c220ea'
+	    '6d9208af95e016b1c59ba1e2629913a7dfc9f138e3ff4fd5a4e491b17c825d5837e23756c8e3d7b4d4cb8544b1cb614cc179677d97168fcf77a1a4b17182983e')
 
 prepare() {
   rm -rf "$srcdir"/plexamp/plexamp.service "$srcdir"/plexamp/upgrade.sh

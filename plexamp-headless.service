@@ -5,7 +5,7 @@ Requires=pipewire.socket
 
 [Service]
 Type=simple
-ExecStart=node /opt/plexamp-headless/js/index.js
+ExecStart=/usr/bin/plexamp-headless
 Restart=on-failure
 
 [Install]
