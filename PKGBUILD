@@ -8,8 +8,8 @@ _pkgname="python_${_pkg}"
 pkgname=(
   "python-${_pkg}")
 pkgbase="${pkgname}"
-pkgver=0.9.4
-pkgrel=2
+pkgver=0.9.5
+pkgrel=1
 pkgdesc="Whois querying and parsing of domain registration information"
 arch=(
   any
@@ -33,7 +33,7 @@ source=(
   "${_pypi_repo}/p/${_pkgname}/${_pkgname}-${pkgver}.tar.gz"
   "LICENSE"
 )
-sha512sums=('a96a68e6ab8f1de181fd401895e6c46cdce8185a0b1815df5fb96ac0f68e12d04d7050aecc64a63b114e6b836a6adc824ee2f5c645da48c26e06af1bdea0e97b'
+sha512sums=('aff3f2990f2f06559ae85037e6c44ab0ad22fbdb34cee78ce836804f94ecd10dc562bdba9cf531ee47db4b6909d510550ea928de04d9d6166af88f7dc6f27f1f'
             '8cf4065e880c751354fffe41f513b95c6bad6bd28033d7a660bd52636cae0c313f9b60f4c53234320699fc0b44d9e4b42bb06f543733b41e0de07a68068099d1')
 
 package_python-whois() {
