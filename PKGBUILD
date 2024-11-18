@@ -3,7 +3,7 @@
 # Contributor: Peter Kurfer <peter.kurfer@gmail.com>
 
 pkgname='git-age-keyring-agent-bin'
-pkgver=0.1.6
+pkgver=0.1.7
 pkgrel=1
 pkgdesc='git-age-keyring-agent is an agent for git-age to store keys in the OS keychain
 '
@@ -14,11 +14,11 @@ provides=('git-age-keyring-agent')
 conflicts=('git-age-keyring-agent')
 optdepends=('git' 'git-age-bin')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/prskr/git-age-keyring-agent/releases/download/v0.1.6/git-age-keyring-agent_Linux_arm64.tar.gz")
-sha256sums_aarch64=('c2961d82a6e80311b5f51dc7a0ce1537be23cbd57537150142e3a3062f94d6ad')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/prskr/git-age-keyring-agent/releases/download/v0.1.7/git-age-keyring-agent_Linux_arm64.tar.gz")
+sha256sums_aarch64=('4404eaa1af19b06527d3f49ffd64dc1e23f77edbdb8ee7c3fdaa45f163e97cb1')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/prskr/git-age-keyring-agent/releases/download/v0.1.6/git-age-keyring-agent_Linux_x86_64.tar.gz")
-sha256sums_x86_64=('e3cdbcb27616845292222d0afa9ad46a3272a61d1ef734338b30acae560f8ee7')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/prskr/git-age-keyring-agent/releases/download/v0.1.7/git-age-keyring-agent_Linux_x86_64.tar.gz")
+sha256sums_x86_64=('5322a2ddadd870f090867f8bf01972f700e36ac69539b6fd2eacb9a6d3048d11')
 
 package() {
   # bin
