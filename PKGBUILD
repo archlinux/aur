@@ -6,10 +6,10 @@
 pkgname=hdfview-bin
 _pkgname=HDFView
 pkgver=3.3.2
-pkgrel=1
+pkgrel=2
 pkgdesc="a GUI browser for reading hdf5 files - prebuilt binaries from the HDF group"
 arch=('x86_64')
-url="https://www.hdfgroup.org/downloads/hdfview/"
+url="https://github.com/HDFGroup/hdfview/"
 license=('custom')
 provides=('hdfview')
 replaces=('hdfview-beta')
