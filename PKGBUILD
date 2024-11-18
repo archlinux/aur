@@ -5,7 +5,7 @@
 
 pkgname=lib32-sdl3
 pkgver=3.1.6
-pkgrel=2
+pkgrel=3
 epoch=1
 pkgdesc="Simple Directmedia Layer (Version 3)"
 arch=('x86_64' 'i686')
@@ -20,8 +20,8 @@ optdepends=('lib32-alsa-lib: ALSA audio driver'
 	    'lib32-pipewire: PipeWire audio driver'
 	    'lib32-sndio: MIDI audio driver'
 	    'lib32-libdecor: Wayland client decorations')
-source=("git+https://github.com/libsdl-org/SDL.git#tag=preview-${pkgver}")
-sha256sums=('b135e1999ee24aecc7f39c5e55fb73851b19088742c2786eba0a436d8290fd26')
+source=("https://github.com/libsdl-org/SDL/archive/refs/tags/preview-${pkgver}.tar.gz")
+sha256sums=('5da5e265c150b954d007bf1465b155d9df1d0d52f10115a49bb918dc8fe2826a')
 
 build() {
 	cd "$srcdir"
@@ -30,22 +30,22 @@ build() {
 	export CXXFLAGS+=" -m32"
 	export LDFLAGS+=" -m32"
 	export PKG_CONFIG_PATH='/usr/lib32/pkgconfig'
-	cmake -S SDL -B build -G Ninja \
+	cmake -S SDL-preview-${pkgver} \
+	-B build -G Ninja \
 	-D CMAKE_BUILD_TYPE=None \
 	-D SDL_HIDAPI_LIBUSB=ON \
 	-D CMAKE_INSTALL_PREFIX=/usr \
 	-D CMAKE_INSTALL_LIBDIR=lib32 \
 	-D SDL_STATIC=OFF \
-	-D SDL_RPATH=OFF
+	-D SDL_RPATH=OFF \
+	-D SDL_TEST_LIBRARY=OFF
 	cmake --build build
 }
 
 package() {
 	cd "$srcdir"
 	DESTDIR="${pkgdir}" cmake --install build
-	rm -rf "${pkgdir}/usr/lib/cmake"
 	rm -rf "${pkgdir}/usr/include"
 	rm -rf "${pkgdir}/usr/share/man"
-	mv "${pkgdir}/usr/share/licenses/SDL3" "${pkgdir}/usr/share/licenses/lib32-sdl3-git"
+	mv "${pkgdir}/usr/share/licenses/SDL3" "${pkgdir}/usr/share/licenses/lib32-sdl3"
 }
-
