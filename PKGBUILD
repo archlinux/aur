@@ -2,7 +2,7 @@
 
 pkgname=lc3tools-electron-bin
 pkgver=2.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="LC3 emulator GUI"
 arch=('x86_64' 'aarch64')
 url='https://github.com/chiragsakhuja/lc3tools'
@@ -18,7 +18,9 @@ prepare() {
   chmod +x "$AppImage"
   "$AppImage" --appimage-extract
 
-  sed -i 's|Exec=AppRun|Exec=/opt/lc3tools/bin/lc3tools|g' squashfs-root/lc3tools.desktop
+  sed -i 's|Exec=AppRun|Exec=/opt/lc3tools/lc3tools|g' squashfs-root/lc3tools.desktop
+
+  find squashfs-root/usr/share/icons -type d -exec chmod 755 {} +
 }
 
 package() {
