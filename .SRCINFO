@@ -1,0 +1,27 @@
+pkgbase = cchorus
+	pkgdesc = A versatile stereo chorus, multi-format audio effect plugin
+	pkgver = 2.2.0
+	pkgrel = 1
+	url = https://github.com/SpotlightKid/cchorus
+	arch = x86_64
+	arch = aarch64
+	groups = clap-plugins
+	groups = ladspa-plugins
+	groups = lv2-plugins
+	groups = pro-audio
+	groups = vst-plugins
+	groups = vst3-plugins
+	license = MIT
+	checkdepends = kxstudio-lv2-extensions
+	checkdepends = lv2lint
+	depends = gcc-libs
+	depends = glibc
+	optdepends = clap-host: for loading the CLAP plugin
+	optdepends = ladspa-host: for loading the LADSPA plugin
+	optdepends = lv2-host: for loading the LV2 plugin
+	optdepends = vst-host: for loading the VST2 plugin
+	optdepends = vst3-host: for loading the VST3 plugin
+	source = https://github.com/SpotlightKid/cchorus/releases/download/v2.2.0/cchorus-2.2.0-source.tar.gz
+	sha256sums = c5913aebc49fca27c02e623322521d146f04c0a0d016b595077fc4a6e4e3ba10
+
+pkgname = cchorus

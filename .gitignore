@@ -1,0 +1,5 @@
+pkg/
+src/
+cchorus-*.pkg.tar.*
+cchorus-*.src.tar.gz
+cchorus-*-source.tar.gz
