@@ -1,16 +1,20 @@
 pkgbase = toph
 	pkgdesc = A minimal and extensible pixel editor
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Dream-Imperium/toph
 	arch = x86_64
-	license = unlicense
+	license = Unlicense
+	makedepends = cargo
+	makedepends = cmake
 	depends = gtk3
 	depends = libxss
 	depends = nss
-	provides = toph
-	source = https://github.com/Dream-Imperium/toph/archive/v1.0.0.tar.gz
+	depends = libxdmcp
+	depends = libxau
+	depends = libxcb
+	options = !lto
+	source = toph-1.0.0.tar.gz::https://github.com/Dream-Imperium/toph/archive/v1.0.0.tar.gz
 	sha256sums = cd0cdeb804b60022fb96b6831727ebd93513dd2b9d4fb4d42bff9cb3ef65bfd3
 
 pkgname = toph
-
