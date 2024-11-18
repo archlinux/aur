@@ -1,7 +1,7 @@
 # Maintainer: Klaus Alexander Seiﬆrup <klaus at seistrup dot dk>
 pkgname=dooble-git
 _pkgname=Dooble
-pkgver=2024.09.29.r0.g836702a
+pkgver=2024.11.17.r0.g14fe723
 pkgrel=1
 pkgdesc="Web browser based on QtWebEngine"
 arch=("x86_64")
