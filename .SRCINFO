@@ -1,7 +1,7 @@
 pkgbase = silentdragon-bin
 	pkgdesc = HUSH (Privacy Cryptocurrency) desktop full node GUI wallet that supports z-addresses
 	pkgver = 1.4.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://git.hush.is/hush/silentdragon
 	arch = x86_64
 	license = GPL-3.0-or-later
@@ -15,3 +15,4 @@ pkgbase = silentdragon-bin
 	sha512sums = 2d3eac468855f3b7d5cec91c7af8119ba15b7c5f634642f4e10a7c69ab08f32d40b12eab8986cc8dbc80cbcd3d6697159723a25e56915f66ea50179caae69553
 
 pkgname = silentdragon-bin
+	install = silentdragon-bin.install
