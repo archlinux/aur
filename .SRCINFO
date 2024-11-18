@@ -1,0 +1,18 @@
+pkgbase = zenstats-dkms
+	pkgdesc = Linux kernel driver for reading sensors for AMD Zen and Ryzen family CPUs
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/Sid127/zenstats
+	install = zenstats.install
+	arch = x86_64
+	arch = i686
+	license = GPL2
+	depends = dkms
+	provides = zenpower3
+	conflicts = zenpower3
+	source = zenstats-0.1.0.tar.gz::https://github.com/Sid127/zenstats/archive/v0.1.0.tar.gz
+	source = zenstats.conf
+	sha256sums = 20477fe7a63b8e7950ed0f2cd2455732e1bb45a5a67e34d882b3593a78b96d91
+	sha256sums = 7bff3a5ea2c8b8abf56ce1d79b9724b1aea89e2564d244e09691070113d60f6a
+
+pkgname = zenstats-dkms
