@@ -3,25 +3,24 @@
 #  - Mike Javorski (javmorin) <mike.javorski gmail com>
 #
 pkgname=dput-ng
-pkgver=1.15
+pkgver=1.33
 pkgrel=1
 pkgdesc='Next generation Debian package upload tool'
 url='https://people.debian.org/~paultag/dput-ng/'
-makedepends=('python2-setuptools')
-depends=('python2-debian')
+makedepends=('python-setuptools')
+depends=('python-debian')
 license=('GPL2')
 arch=('any')
 provides=('dput')
 conflicts=('dput')
 source=("http://http.debian.net/debian/pool/main/d/${pkgname}/${pkgname}_${pkgver}.tar.xz")
-sha256sums=('36e6075a705ecc653e428babdb691beba39485718e46083fb5ecc781d5e09dd4')
+sha256sums=('d881055539a2ee70ed254398f6cb93893f4a07a6c4327adddbdbddbd136ef635')
 
 
 package() {
   cd "$pkgname-$pkgver"
-  sed -i 's/#!\/usr\/bin\/env python$/#!\/usr\/bin\/env python2/' bin/* $(find -name '*.py')
 
-  python2 setup.py install --root="$pkgdir/" --optimize=1
+  python setup.py install --root="$pkgdir/" --optimize=1
 
   install -d "${pkgdir}/usr/bin"
   install -m755 bin/{dput,dcut,dirt} "${pkgdir}/usr/bin"
