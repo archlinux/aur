@@ -1,18 +1,19 @@
-# Maintainer: Vojtěch Aschenbrenner <v@asch.cz>
+# Maintainer: envolution
+# Contributor: Vojtěch Aschenbrenner <v@asch.cz>
 
 _gemname=unicode
-pkgname=ruby-$_gemname
-pkgver=0.4.4.2
+pkgname=ruby-unicode
+pkgver=0.4.4.5
 pkgrel=1
 pkgdesc='Unicode normalization library.'
 arch=(i686 x86_64)
 url='http://www.yoshidam.net/Ruby.html#unicode'
-license=(Ruby)
+license=(custom:none)
 depends=(ruby)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha1sums=('7cf8ea4a38a1f1acf38009dff147628e024786eb')
+sha1sums=('89dd3d0e8511e41e56f798fb18c3d84d52ad69aa')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
