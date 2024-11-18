@@ -7,7 +7,7 @@ _pkgname=thunderbird-beta
 pkgver=133.0b5
 _major=${pkgver/rc*}
 _build=${pkgver/*rc}
-pkgrel=1
+pkgrel=2
 pkgdesc="Standalone Mail/News reader - Bleeding edge binary version"
 arch=('x86_64')
 url="https://www.mozilla.org/thunderbird"
@@ -18,7 +18,7 @@ optdepends=('hyphen: Hyphenation'
 provides=("thunderbird=$pkgver")
 conflicts=('thunderbird-beta')
 install=$pkgname.install
-source=("https://archive.mozilla.org/pub/thunderbird/candidates/133.0b5-candidates/build1/linux-x86_64/en-US/thunderbird-133.0b5.tar.bz2"
+source=("https://archive.mozilla.org/pub/thunderbird/candidates/133.0b5-candidates/build2/linux-x86_64/en-US/thunderbird-133.0b5.tar.bz2"
         'org.mozilla.thunderbird-beta-bin.desktop'
         'vendor.js')
 sha512sums=('4b757df9beb03ff0355cbabe6d81c30abad17b2266b97995ea5acbdcfdc4658758e3dbd6ca8fea677ee5b851f6b87e2ccf83381ce2bc09b9adaf444d6f9c5359'
