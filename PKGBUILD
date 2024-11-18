@@ -3,10 +3,10 @@
 pkgname=python-ilorest-library
 _pkgname=ilorest-library
 pkgver=5.3.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="The python-ilorest-library is a python library built for interacting with the Redfish API remotely to any BMC that implements a Redfish API or any HPE system locally."
 arch=(x86_64)
-url="https://support.hpe.com/connect/s/softwaredetails?language=en_US&softwareId=MTX_1225e57e3b4b4c4582f654f782&tab=releaseNotes"
+url="https://github.com/HewlettPackard/python-ilorest-library/"
 depends=('bash' 'libxcrypt-compat' 'python')
 makedepends=("python-pip")
 groups=(hpproliant)
