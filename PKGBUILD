@@ -1,7 +1,7 @@
 # Maintainer: iff <iff@ik.me>
 pkgname="pay-respects"
 pkgver=0.5.5
-pkgrel=3
+pkgrel=4
 pkgdesc="Terminal command correction, alternative to thefuck written in Rust."
 arch=("x86_64")
 url="https://github.com/iffse/pay-respects"
@@ -11,7 +11,7 @@ optdepends=(
 	'which: for rules checking executable availability'
 )
 source=("$pkgname::git+https://github.com/iffse/pay-respects#tag=v$pkgver")
-sha1sums=('8794a271335fa6467de44ff3b5e7651c10809401')
+sha1sums=('59b466fe0e9f6467b965fdb5f9ba07095aaf01f3')
 replaces=('pay_respects')
 
 prepare() {
