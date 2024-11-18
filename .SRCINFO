@@ -1,6 +1,6 @@
 pkgbase = puncia
 	pkgdesc = The Panthera(P.)uncia of Cybersecurity - Subdomain & Exploit Hunter powered by AI
-	pkgver = 0.11
+	pkgver = 0.24
 	pkgrel = 1
 	url = https://pypi.org/project/puncia/
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = puncia
 	makedepends = python-wheel
 	makedepends = python-setuptools
 	depends = python-requests
-	source = https://files.pythonhosted.org/packages/source/p/puncia/puncia-0.11.tar.gz
-	b2sums = f8ea5bb34c2295627ce0538879e0962e600d28b392f812225eacbf71a1c4075b897125919669e673317ab2bb5b118e49b7f926d7cd4643e62743592cd3418a00
+	source = https://files.pythonhosted.org/packages/source/p/puncia/puncia-0.24.tar.gz
+	b2sums = 8dc5acfb7ca4f973d1eba0a37ee626697c0df9ac35834b739d048a1d2c59e0714e3cfc8fcd94768022be6a2f15a5032c0b38563b6ddbc1ffb08e649bb6927aba
 
 pkgname = puncia
