@@ -1,26 +1,21 @@
-# Maintainer: Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
+# Maintainer: envolution
+# Contributor: Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
 pkgname="doom_ascii"
-pkgver=0.1.1
-pkgrel=2
+pkgver=0.2.0
+pkgrel=1
 pkgdesc="Text-based DOOM in your terminal! Source-port of doomgeneric. Does not have sound."
 arch=('any')
 url="https://github.com/wojciech-graj/doom-ascii"
 license=('GPL-2.0-or-later')
 depends=('glibc' 'sh')
+install=doom_ascii.install
 _pkgsrc="doom-ascii-${pkgver}"
 source=("${_pkgsrc}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
-        "${pkgname}.sh"
-        "${pkgname}_fix_w_wad_c.patch")
-sha256sums=('34c4116d687cac91dc1e23bd580a6211ff490bcbbf85d6f00df0f4fe1fa886e6'
-            '27864d019900aa0728c95d77e70dfd94869e44a65e6657ef04110c5f5c1cc202'
-            'c1bb903467e5c012662e77ff4b9347c7fb6c966a1798e2af5400d0318b5a78e4')
-backup=("opt/${pkgname}/.default.cfg")
-
-prepare() {
-  cd "${srcdir}/${_pkgsrc}/src"
-  patch -p1 -i "${srcdir}/${pkgname}_fix_w_wad_c.patch"
-}
+        "${pkgname}.sh")
+sha256sums=('fb4790d968559dc208290a689378381bfb121406873eadc53e912047b805a61f'
+            '7e4817fcb8bcd5038f648e0f8291ca073a3f111fba6e133984b906cc26dfafc1')
+backup=("usr/lib/${pkgname}/.default.cfg")
 
 build() {
   cd "${srcdir}/${_pkgsrc}/src"
@@ -28,12 +23,12 @@ build() {
 }
 
 package() {
-  cd "${srcdir}"
-  install -Dm755 "${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
-
+  install -Dm755 "${pkgname}.sh"        "${pkgdir}/usr/bin/${pkgname}"
   cd "${_pkgsrc}"
-  install -Dm755 "${pkgname}/${pkgname}" "${pkgdir}/opt/${pkgname}/${pkgname}"
-  install -Dm644 "src/.default.cfg"      "${pkgdir}/opt/${pkgname}/.default.cfg"
-  install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
-  install -Dm644 "LICENSE"   "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm755 "${pkgname}/${pkgname}" "${pkgdir}/usr/share/bin/${pkgname}.bin"
+  install -Dm666 "src/.default.cfg"      "${pkgdir}/usr/lib/${pkgname}/.default.cfg"
+  ln -s          .default.cfg            "${pkgdir}/usr/lib/${pkgname}/default.cfg"
+  install -dm777                         "${pkgdir}/usr/lib/${pkgname}/.savegame"
+  install -Dm644 "README.md"             "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+  install -Dm644 "LICENSE"               "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }

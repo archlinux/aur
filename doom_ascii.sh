@@ -2,5 +2,5 @@
 
 trap 'printf "\033[0m"' EXIT
 
-cd /opt/doom_ascii || exit 1
-./doom_ascii "$@"
+cd /usr/lib/doom_ascii || exit 1
+/usr/share/bin/doom_ascii.bin "$@"
