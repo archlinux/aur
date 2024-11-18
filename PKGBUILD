@@ -2,11 +2,11 @@
 pkgname=steamachievementnotifier-bin
 _pkgname="Steam Achievement Notifier"
 _mainver=1.9
-_subver=14
+_subver=15
 pkgver="${_mainver}.${_subver}"
-_electronversion=32
+_electronversion=33
 pkgrel=1
-pkgdesc="Shows fully customisable notifications when you unlock any achievement on Steam!"
+pkgdesc="Shows fully customisable notifications when you unlock any achievement on Steam!(Prebuilt version.Use system-wide electron)"
 arch=('x86_64')
 url="https://github.com/SteamAchievementNotifier/SteamAchievementNotifier"
 license=('LicenseRef-unknown')
@@ -24,7 +24,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.AppImage::${url}/releases/download/${pkgver}/${_pkgname// /}_V${pkgver}.AppImage"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('b33c80395723fb5fac0017cab7a88c13c30e5687173dee40013c7d691f11b0ea'
+sha256sums=('cdd3c8a15119fda26225e0165e0e81e3b54d109c6a40434e48f0ab4cd128cd73'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 build() {
     sed -e "
