@@ -3,7 +3,7 @@
 
 pkgname="odoo-venv"
 pkgver=18.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Open Source Apps To Grow Your Business"
 url="https://odoo.com/"
 arch=("any")
@@ -14,7 +14,7 @@ conflicts=("odoo" "odoo-nightly" "odoo18-nightly")
 depends=("python")
 optdepends=("postgresql: local database"
             "wkhtmltopdf: generate PDFs")
-makedepends=("python-builder"
+makedepends=("python-build"
              "python-wheel"
              "python-setuptools")
 source=("https://nightly.odoo.com/$pkgver/nightly/src/odoo_$pkgver.latest.tar.gz"
