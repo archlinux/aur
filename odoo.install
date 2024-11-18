@@ -1,0 +1,56 @@
+post_install(){
+ cat <<INFO
+
+On the first install you'll need to set your Odoo database connection details in /etc/odoo/odoo.conf.
+
+If you haven't created a postgres database yet, run:
+
+    sudo pacman -S postgresql
+    sudo -u postgres initdb -D /var/lib/postgres/data --locale=C.UTF-8 --encoding=UTF8 --data-checksums
+    sudo systemctl enable --now postgresql
+    sudo -u postgres psql
+
+From the psql prompt, enter:
+
+    CREATE USER odoo WITH PASSWORD 'odoo';
+    CREATE DATABASE odoo OWNER odoo;
+    GRANT ALL PRIVILEGES ON DATABASE odoo TO odoo;
+    quit
+
+Then, initialize the Odoo database:
+
+    sudo -u odoo bash
+    cd /var/lib/odoo
+    export HOME=/var/lib/odoo
+    odoo --config /etc/odoo/odoo.conf -i base --stop-after-init
+    exit
+
+As root, start the Odoo service:
+
+    sudo systemctl enable --now odoo
+
+Finally, you can login from http://127.0.0.1:8200/ with these credentials:
+
+    Email: admin
+    Password: admin
+
+INFO
+}
+
+post_upgrade(){
+ cat <<INFO
+
+Since Odoo has been updated, you will need to update your database by running:
+
+    sudo -u odoo bash
+    cd /var/lib/odoo
+    export HOME=/var/lib/odoo
+    odoo --config /etc/odoo/odoo.conf -u all --stop-after-init
+    exit
+
+For major version upgrades (e.g. 18.0 -> 19.0), see the Odoo website for further instructions:
+
+    https://www.odoo.com/documentation/latest/administration/upgrade.html
+
+INFO
+}
