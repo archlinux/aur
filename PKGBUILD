@@ -1,4 +1,5 @@
 # Maintainer: envolution
+# Contributor: lottieratworld <lottieratworld at proton mail dot com>
 # Contributor: Kyle Keen <keenerd@gmail.com>
 
 pkgname=hyperrogue-git
