@@ -6,6 +6,7 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 # Contributor: Gaetan Bisson <bisson@archlinux.org>
 # Contributor: Dave Reisner <dreisner@archlinux.org>
+# Contributor: Ray Song <i@maskray.me>
 # Maintainer: Denis Speranskiy <speranskiy at gmx dot com>
 
 pkgname=bitlbee-libpurple-unicode-channel
