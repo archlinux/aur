@@ -1,7 +1,7 @@
 # Maintainer: Aikawa Yataro <aikawayataro at protonmail dot com>
 
 pkgname=sourcegit
-pkgver=8.38
+pkgver=8.39
 pkgrel=1
 pkgdesc="GUI client for GIT users"
 arch=('x86_64')
@@ -11,14 +11,17 @@ depends=('dotnet-runtime-8.0' 'git' 'xdg-utils')
 optdepends=('git-credential-manager: third-party authentication support')
 makedepends=('dotnet-sdk-8.0' 'desktop-file-utils')
 
-source=("$pkgname-$pkgver.tar.gz::https://github.com/sourcegit-scm/sourcegit/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('458a9a29608f95feef60ab48700a8c4ba543ad07d58826f22be78bf99a84b3e5')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/sourcegit-scm/sourcegit/archive/refs/tags/v$pkgver.tar.gz"
+        "net8.patch")
+sha256sums=('ff401c4b9346772e4dd1c7fc56ad5c06cbcb795c07b30fc6cf1d7252f8c14c44'
+            '64b66f744bbc620512fdb0933a19abb93d8b2a7dd850a5a6d0cbac3c29365041')
 
 
 
 prepare() {
     cd "$pkgname-$pkgver"
 
+    patch -p 1 -i ../net8.patch # use .NET 8
     desktop-file-edit build/resources/_common/applications/sourcegit.desktop \
         --set-icon=sourcegit --set-key=Exec --set-value=sourcegit
 }
