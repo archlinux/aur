@@ -1,14 +1,14 @@
 # Maintainer: Max Gautier <mg@max.gautier.name>
 pkgname=kubectl-slice
-pkgver=1.3.1
+pkgver=1.4.1
 pkgrel=1
 pkgdesc='Split multiple Kubernetes files into smaller files with ease'
 arch=('x86_64')
 url="https://github.com/patrickdappollonio/$pkgname"
 license=('MIT')
 makedepends=('go')
-source=("$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('1a2dd917655d2648a935633ee4b4d6015784eda596129f84b23baacb33039155')
+source=("$pkgname-$pkgver:$url/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('c177d6947a25dba28e1e9474bc2663706938fb87e41eaf01d215a4972663e340')
 
 prepare(){
   cd "$pkgname-$pkgver"

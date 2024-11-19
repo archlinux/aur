@@ -1,12 +1,12 @@
 pkgbase = kubectl-slice
 	pkgdesc = Split multiple Kubernetes files into smaller files with ease
-	pkgver = 1.3.1
+	pkgver = 1.4.1
 	pkgrel = 1
 	url = https://github.com/patrickdappollonio/kubectl-slice
 	arch = x86_64
 	license = MIT
 	makedepends = go
-	source = https://github.com/patrickdappollonio/kubectl-slice/archive/refs/tags/v1.3.1.tar.gz
-	sha256sums = 1a2dd917655d2648a935633ee4b4d6015784eda596129f84b23baacb33039155
+	source = kubectl-slice-1.4.1:https://github.com/patrickdappollonio/kubectl-slice/archive/refs/tags/v1.4.1.tar.gz
+	sha256sums = c177d6947a25dba28e1e9474bc2663706938fb87e41eaf01d215a4972663e340
 
 pkgname = kubectl-slice
