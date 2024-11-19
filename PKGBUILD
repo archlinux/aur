@@ -1,7 +1,7 @@
 # Maintainer Adam Perkowski <adas1per@protonmail.com>
 # https://github.com/adamperkowski/PKGBUILDs
 _pkgname=amdguid-wayland
-pkgname=amdguid-wayland-bin
+pkgname="$_pkgname-bin"
 _pkgver=1.0.12
 pkgver=1.0.13
 pkgrel=2
