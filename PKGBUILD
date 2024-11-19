@@ -3,7 +3,7 @@
 # Contributor: taij33n <bwbuiz@gmail.com>
 pkgname=picolisp
 pkgver=24.10.16
-pkgrel=1
+pkgrel=2
 pkgdesc="Fast and tiny 64-bit Lisp interpreter: OO, dynamic and functional (database, prolog, coroutines)."
 url="https://picolisp.com"
 arch=(x86_64)
@@ -22,10 +22,16 @@ prepare() {
 
 build() {
   cd "$srcdir/pil21/src"
-  # Working around awkward cyclic dependencies in Makefile
-  touch *.ll
+
   sed -i 's/^.SILENT:$//g' Makefile
+
+  # Always build serially to work around broken dependency structure:
+  sed -i "2 s/.*/&\n.NOTPARALLEL:/" Makefile
+
+  # Working around awkward cyclic dependencies:
+  touch *.ll
   make ../bin/picolisp
+
   make -B
 }
 
