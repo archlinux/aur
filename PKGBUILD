@@ -1,7 +1,7 @@
 # Maintainer: Marek <mail@marek.onl>
 
 pkgname=zebrad
-pkgver=1.9.0
+pkgver=2.0.1
 pkgrel=1
 pkgdesc="A Zcash full-node"
 url='https://github.com/ZcashFoundation/zebra'

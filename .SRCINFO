@@ -1,6 +1,6 @@
 pkgbase = zebrad
 	pkgdesc = A Zcash full-node
-	pkgver = 1.9.0
+	pkgver = 2.0.1
 	pkgrel = 1
 	url = https://github.com/ZcashFoundation/zebra
 	arch = aarch64
@@ -12,7 +12,7 @@ pkgbase = zebrad
 	makedepends = pkgconf
 	options = !debug
 	options = !lto
-	source = zebra-1.9.0.tar.gz::https://github.com/ZcashFoundation/zebra/archive/refs/tags/v1.9.0.tar.gz
+	source = zebra-2.0.1.tar.gz::https://github.com/ZcashFoundation/zebra/archive/refs/tags/v2.0.1.tar.gz
 	sha256sums = SKIP
 
 pkgname = zebrad
