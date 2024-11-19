@@ -1,5 +1,7 @@
+*.zst
+bash
+LICENSE
+mtracker*
 pkg
 src
-LICENSE
-mtracker
-*.zst
+zsh
