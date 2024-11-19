@@ -7,12 +7,12 @@ arch=(aarch64 armv7h x86_64)
 url='https://warpstreamlabs.github.io/bento/'
 _url='https://github.com/warpstreamlabs/bento'
 _branch='main'
-pkgver=1.2.0
+pkgver=1.3.0
 pkgrel=0
 license=('MIT')
 makedepends=(go)
 source=("${pkgname}-${pkgver}.tar.gz::${_url}/archive/v${pkgver}.tar.gz")
-sha256sums=('9980b425b486860a164399f078ea123e6c0798b3b2ccea00514011b31225e7ab')
+sha256sums=('acb6dff9c6351fc4e074a1c8150f660061b2b63e8605f6736fbf5fb5f550a1fe')
 provides=($pkgname)
 conflicts=($pkgname)
 
@@ -24,12 +24,6 @@ build() {
   export CGO_CPPFLAGS="${CPPFLAGS}"
   export CGO_CXXFLAGS="${CXXFLAGS}"
   export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
-
-  # Upgrading parquet-go dependency from v0.20.0 -> v0.23.0 fixes linker error with Go 1.23:
-  # link: github.com/parquet-go/parquet-go/hashprobe/aeshash: invalid reference to runtime.aeskeysched
-  # Reported upstream: https://github.com/warpstreamlabs/bento/pull/105
-  # FIXME: remove next line once fixed in next release
-  go get -u github.com/parquet-go/parquet-go@v0.23.0 && go mod tidy
 
   go build -o bento cmd/bento/main.go
 }
