@@ -1,15 +1,15 @@
 # Maintainer: quietvoid <tcChlisop0@gmail.com>
 
 pkgname=hdr10plus_tool-git
-pkgver=1.6.0.r11.gcfa5c36
+pkgver=1.6.1.r0.g5a5b835
 pkgrel=1
 pkgdesc='CLI utility to work with HDR10+ in HEVC files'
 arch=('x86_64')
 url='https://github.com/quietvoid/hdr10plus_tool'
 license=('MIT')
 makedepends=('git' 'cargo')
-conflicts=('hdr10plus_tool')
-provides=('hdr10plus_tool')
+conflicts=('hdr10plus-tool')
+provides=('hdr10plus-tool')
 source=(git+https://github.com/quietvoid/hdr10plus_tool.git)
 sha256sums=('SKIP')
 
