@@ -2,7 +2,7 @@
 # Contributor: Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
 pkgname="doom_ascii"
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="Text-based DOOM in your terminal! Source-port of doomgeneric. Does not have sound."
 arch=('any')
@@ -13,7 +13,7 @@ install=doom_ascii.install
 _pkgsrc="doom-ascii-${pkgver}"
 source=("${_pkgsrc}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
         "${pkgname}.sh")
-sha256sums=('fb4790d968559dc208290a689378381bfb121406873eadc53e912047b805a61f'
+sha256sums=('063a61c3fb75c371065ee457d10a937b1dc99065e0852ac759438f434e234642'
             '7e4817fcb8bcd5038f648e0f8291ca073a3f111fba6e133984b906cc26dfafc1')
 backup=("usr/lib/${pkgname}/.default.cfg")
 
