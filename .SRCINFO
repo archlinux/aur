@@ -17,6 +17,6 @@ pkgbase = windsurf-bin-features
 	source = patch.json
 	sha256sums = 314ec90f7378ad23f4e5119961b7168f41caf75d3315108080f0673bed872df4
 	sha256sums = a344013e6580fd6f73312c08c5930f56e9f6f95ed14af82b83681efe96ffcd7b
-	sha256sums = d30965a5f2b93ea121a9ecf2a54c7f435572dd9adfe906e7429c9f3ac74e0c4e
+	sha256sums = 04783af3e89f5f5b7502b0d60dd2eef322683073545d30b7bb58618d77865b31
 
 pkgname = windsurf-bin-features
