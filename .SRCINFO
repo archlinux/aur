@@ -8,6 +8,6 @@ pkgbase = pica-comic-bin
 	depends = gtk3
 	depends = webkit2gtk-4.1
 	source = https://github.com/Pacalini/PicaComic/releases/download/v4.1.7/PicaComic-4.1.7-amd64.deb
-	sha256sums = SKIP
+	sha256sums = 762c4bb7edf8bc1afe78862f2b01f3755bceca7224e704e34409c8bce1e167ac
 
 pkgname = pica-comic-bin
