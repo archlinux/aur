@@ -23,7 +23,9 @@ build() {
   export CGO_CFLAGS="${CFLAGS}"
   export CGO_CPPFLAGS="${CPPFLAGS}"
   export CGO_CXXFLAGS="${CXXFLAGS}"
-  export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+  BENTO_BUILDFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
+  BENTO_LDFLAGS="'-ldflags=-linkmode=external -X=main.Version=v${pkgver} -X=main.DateBuilt=$(date +%Y-%m-%dT%H:%M:%SZ)'"
+  export GOFLAGS="${BENTO_BUILDFLAGS} ${BENTO_LDFLAGS}"
 
   go build -o bento cmd/bento/main.go
 }
