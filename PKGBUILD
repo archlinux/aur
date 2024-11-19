@@ -3,10 +3,10 @@
 # Contributor: articpenguin <julia.schweinz at mailfence dot com>
 
 _pkgname=findpython
-_pkgver=1.0.8
+_pkgver=1.0.9
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=4
+pkgrel=1
 pkgdesc="Functions to Find an Acceptable Python Binary"
 arch=(any)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -23,8 +23,8 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('5ca1c2cb21b5e747182c14d92691912b')
-b2sums=('6152daa7b775c87831d9c494b2f56303120b449f9de5a3fa595892f419bb676c34d77b4ae448bdba19a76b87cdab5b6e9f35b33d9db4631b67c9255ac9464ebf')
+md5sums=('80dc3f16f7e55e9de30591abc264f1b1')
+b2sums=('9c67b308f8f687743d668702acaaad608284d9c92210fecb9f493f3f4d790e103a0819c25d66ce9479826f66976a1eb285d3cb09c7730e93ec45b21bd2bc7e91')
 
 build() {
   mkdir build
