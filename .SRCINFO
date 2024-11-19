@@ -1,6 +1,6 @@
 pkgbase = journalctl-desktop-notification-git
-	pkgdesc = It notifies you on Desktop when any error message appears in Journalctl log.
-	pkgver = r20.644a2b1
+	pkgdesc = Notifies you on the desktop when any error message appears in the Journalctl log.
+	pkgver = r28.6dc74ad
 	pkgrel = 1
 	url = https://gitlab.com/Zesko/journalctl-desktop-notification
 	arch = any
