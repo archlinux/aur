@@ -1039,3 +1039,21 @@ New Features:
 Fixes:
 - The date picker now respects the "First day of the week" setting.
 - Obsidian "Lowest" priority now correctly maps to Low priority in Morgen.
+
+
+
+
+=== Morgen 3.6.1
+Improvement:
+- We resolved a performance regression in the previous version, increasing the efficiency of event rendering. Improved performance is particularly noticeable when displaying a large number of events, such as in the Month view.
+- The Morgen Priority Factor model has been refined to better address tasks due today. The AI Planner now ensures that even low-priority tasks due today are prioritized appropriately.
+
+ 
+Fixes:
+- An issue with updating all-day Outlook events in certain time zones has been resolved.
+- The creation of recurring Google events with custom recurrence rules including an end date has been corrected.
+- The deduplication logic for the Menu Bar has been adjusted to display events with identical titles correctly.
+- A problem that occasionally prevents updates to recurring Outlook events has been fixed.
+- The upload of custom branding logos for booking pages now functions as intended.
+- An issue that made it difficult to add reminders when the first reminder was set to the event's start time has been rectified.
+- Due date placeholders that unintentionally were displayed with a duration have been corrected.
