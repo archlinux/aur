@@ -4,7 +4,7 @@ pkgdesc="Print current layout in Xorg"
 url="https://git.nakidai.ru/nakidai/mycfetch"
 license=("BSD-2-Clause")
 
-pkgver=1.0
+pkgver=1.1
 pkgrel=1
 
 arch=("x86_64")
@@ -12,7 +12,7 @@ depends=("glibc")
 makedepends=("gcc" "libx11" "libxkbfile")
 
 source=("https://git.nakidai.ru/nakidai/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('a52a1370ac15e0824b735e0c3039fa972b2ab50303d91576349f4d8b563d6b52')
+sha256sums=('9b892b973023796a61b2957cc681155d4b50c69007c33572d71582e00faa89e7')
 
 build() {
     cd "$pkgname"
