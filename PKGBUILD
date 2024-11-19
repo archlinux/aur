@@ -1,7 +1,7 @@
 # Maintainer: Shibam Roy <royshibam9826@gmail.com>
 pkgname=easyfeh
 pkgver=0.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="An easy, and user-friendly feh wrapper"
 arch=('any')               
 url="https://github.com/ShibamRoy9826/easyfeh"
