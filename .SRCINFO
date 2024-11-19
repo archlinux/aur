@@ -1,8 +1,8 @@
 pkgbase = hyprwall
 	pkgdesc = GUI for setting wallpapers on Wayland (multiple backends). Written in blazingly fast Rust!
 	pkgver = 0.1.8
-	pkgrel = 2
-	url = https://github.com/nnyyxxxx/hyprwall
+	pkgrel = 3
+	url = https://github.com/hyprutils/hyprwall
 	install = hyprwall.install
 	arch = x86_64
 	license = GPL-2.0
@@ -16,7 +16,7 @@ pkgbase = hyprwall
 	optdepends = swww
 	optdepends = wallutils
 	optdepends = feh
-	source = hyprwall-0.1.8.tar.gz::https://github.com/nnyyxxxx/hyprwall/archive/refs/tags/v0.1.8.tar.gz
+	source = hyprwall-0.1.8.tar.gz::https://github.com/hyprutils/hyprwall/archive/refs/tags/v0.1.8.tar.gz
 	sha256sums = 72f6b2744a6f9fe8f09400bcbf6a589b53265bd6c430ffed3965122409127f57
 
 pkgname = hyprwall
