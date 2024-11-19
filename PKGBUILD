@@ -2,7 +2,7 @@
 
 pkgname=windsurf-bin
 _pkgname=windsurf
-pkgver=1.0.2
+pkgver=1.0.3
 pkgrel=1
 pkgdesc="Tomorrow's Editor, Today. Built to keep you in flow state with instant, invaluable AI developer assistance."
 arch=('x86_64')
@@ -21,7 +21,7 @@ options=(!strip)
 
 source=("https://windsurf-stable.codeiumdata.com/wVxQEIWkwPUEAGf3/apt/pool/main/w/windsurf/Windsurf-linux-x64-${pkgver}.deb"
         ${_pkgname}-bin.sh)
-sha256sums=("75a0862508baf5c4f253a4584654c21a16c751ed7efc5c72bfe2d832b3ee2ef8"
+sha256sums=("279d3ce0400bdbce753a2cc5fe95f097a85487e980a163a3f6892e65322f7665"
             "bed47ba135c4b45ef1cba3aeac28260d508162d6e85922b120dfd82794cf1b1b")
 
 prepare() {
