@@ -2,7 +2,7 @@
 _pkgname='hyprlauncher'
 pkgname='hyprlauncher-bin'
 pkgver=0.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc='GUI for launching applications, written in blazingly fast Rust!'
 arch=('x86_64')
 url="https://github.com/hyprutils/$_pkgname"
@@ -18,7 +18,7 @@ provides=("$_pkgname")
 
 package() {
     cd "$srcdir"
-    install -Dm0755 "$_pkgname-$pkgver" -t "$pkgdir/usr/bin"
+    install -Dm0755 "$_pkgname-$pkgver" -t "$pkgdir/usr/bin/$_pkgname"
     install -Dm644 "LICENSE-$pkgver" -t "$pkgdir/usr/share/licenses/$_pkgname"
     install -Dm644 "README-$pkgver" -t "$pkgdir/usr/share/doc/$_pkgname"
 }
