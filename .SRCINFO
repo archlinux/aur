@@ -1,6 +1,6 @@
 pkgbase = hyprlauncher
 	pkgdesc = GUI for launching applications, written in blazingly fast Rust!
-	pkgver = 0.2.1
+	pkgver = 0.2.2
 	pkgrel = 1
 	url = https://github.com/hyprutils/hyprlauncher
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = hyprlauncher
 	makedepends = gcc-libs
 	depends = gtk4
 	depends = gtk4-layer-shell
-	source = hyprlauncher-0.2.1.tar.gz::https://github.com/hyprutils/hyprlauncher/archive/refs/tags/v0.2.1.tar.gz
-	sha256sums = c8b27f80e277efcf5fcfadd9a0237dac06d0095c205759f3137c0f30ccae4eff
+	source = hyprlauncher-0.2.2.tar.gz::https://github.com/hyprutils/hyprlauncher/archive/refs/tags/v0.2.2.tar.gz
+	sha256sums = 5f535407175a8e0adc68d2ec762503231cd2c163ea9cf2825b0f3c1333bedf20
 
 pkgname = hyprlauncher
