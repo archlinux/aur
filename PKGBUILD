@@ -19,6 +19,6 @@ provides=("$_pkgname")
 package() {
     cd "$srcdir"
     install -Dm0755 "$_pkgname-$pkgver" "$pkgdir/usr/bin/$_pkgname"
-    install -Dm644 "LICENSE-$pkgver" "$pkgdir/usr/share/licenses/$_pkgname"
-    install -Dm644 "README-$pkgver" "$pkgdir/usr/share/doc/$_pkgname"
+    install -Dm644 "LICENSE-$pkgver" -t "$pkgdir/usr/share/licenses/$_pkgname"
+    install -Dm644 "README-$pkgver" -t "$pkgdir/usr/share/doc/$_pkgname"
 }
