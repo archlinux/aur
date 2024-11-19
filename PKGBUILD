@@ -45,4 +45,17 @@ package() {
     # Create symlink in /usr/bin
     install -dm755 "${pkgdir}/usr/bin"
     ln -s /usr/share/windsurf/windsurf "${pkgdir}/usr/bin/windsurf"
+    
+    # Add desktop entry
+    install -dm755 "${pkgdir}/usr/share/applications"
+    cat <<EOF >"${pkgdir}/usr/share/applications/windsurf.desktop"
+[Desktop Entry]
+Name=Windsurf
+Comment=Tomorrow's Editor, Today
+Exec=/usr/bin/windsurf
+Icon=/usr/share/windsurf/resources/app/resources/linux/code.png
+Terminal=false
+Type=Application
+Categories=Development;IDE;
+EOF
 }
