@@ -1,12 +1,13 @@
 pkgbase = luvi-bin
 	pkgdesc = A project in-between luv and luvit
 	pkgver = 2.15.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/luvit/luvi
 	arch = i686
 	arch = x86_64
 	arch = aarch64
-	license = Apache
+	license = Apache-2.0
+	depends = glibc
 	depends = gcc-libs
 	provides = luvi
 	conflicts = luvi
