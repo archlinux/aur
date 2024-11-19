@@ -1,0 +1,15 @@
+pkgbase = tukai
+	pkgdesc = interactive typing experience with switchable templates, designed to help users improve their typing speed and accuracy
+	pkgver = 1.r0.g173a792
+	pkgrel = 1
+	url = https://github.com/hlsxx/tukai
+	arch = x86_64
+	license = MIT
+	makedepends = rustup
+	makedepends = glibc
+	makedepends = gcc-libs
+	makedepends = git
+	source = git+https://github.com/hlsxx/tukai
+	sha256sums = SKIP
+
+pkgname = tukai
