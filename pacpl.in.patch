@@ -1,0 +1,87 @@
+--- src/pacpl-code/pacpl.in	2021-02-09 19:21:19.000000000 +0100
++++ src.new/pacpl-code/pacpl.in	2024-11-19 10:22:00.085233759 +0100
+@@ -17,12 +17,15 @@
+ #    You should have received a copy of the GNU General Public License
+ #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ 
++use utf8;
+ use strict;
+ use warnings;
++use Encode qw(encode);
+ use Getopt::Long;
+ use File::Basename;
+ use File::Find;
+ use File::Spec::Functions qw(rel2abs);
++use File::Util qw(escape_filename);
+ use Parallel::ForkManager;
+ use String::ShellQuote;
+ 
+@@ -31,7 +34,10 @@
+ no if $] >= 5.018, warnings => "experimental::smartmatch";
+ 
+ # Tagging modules
++use Ogg::Vorbis::Header;
+ use MP3::Tag;
++MP3::Tag->config(write_v24 => 1);
++
+ use Audio::FLAC::Header;
+ use Audio::Scan;
+ 
+@@ -3111,18 +3117,17 @@
+                               }
+ 
+          when (/^ogg$|^oga$/) {
+-                                  $tag_m = '';
+-                                  
+-                                  $tag_m = "$tag_m -t \"TITLE=$tag_name{title}\""       if $tag_name{title};
+-                                  $tag_m = "$tag_m -t \"TRACKNUMBER=$tag_name{track}\"" if $tag_name{track};
+-                                  $tag_m = "$tag_m -t \"ARTIST=$tag_name{artist}\""     if $tag_name{artist};
+-                                  $tag_m = "$tag_m -t \"ALBUM=$tag_name{album}\""       if $tag_name{album};
+-                                  $tag_m = "$tag_m -t \"COMMENT=$tag_name{comment}\""   if $tag_name{comment};
+-                                  $tag_m = "$tag_m -t \"YEAR=$tag_name{year}\""         if $tag_name{year};
+-                                  $tag_m = "$tag_m -t \"GENRE=$tag_name{genre}\""       if $tag_name{genre};
+-                            
+-				  my $out_file_q = shell_quote $out_file;
+-                                  system("vorbiscomment -w $tag_m $out_file_q") if $tag_m ne ''; 
++                                    $tag_m = Ogg::Vorbis::Header->new("$out_file");
++                                    $tag_m->add_comments(
++                                        "TITLE" => $tag_name{title},
++                                        "TRACKNUMBER" => $tag_name{track},
++                                        "ARTIST" => $tag_name{artist},
++                                        "ALBUM" => $tag_name{album},
++                                        "COMMENT" => $tag_name{comment},
++                                        "YEAR" => $tag_name{year},
++                                        "GENRE" => $tag_name{genre});
++                                        
++                                    $tag_m->write_vorbis();
+                             
+                                   return 0;
+                               }
+@@ -3326,6 +3331,18 @@
+       print $ripconfig{CDDB_HOST};
+ 
+       %cd = get_cddb(\%ripconfig);
++      
++      # Encode cddb metadata into utf-8 format
++      $cd{artist}  = encode("utf8",$cd{artist}) if $cd{artist};
++      my $i; my @encoded_tracks;
++      foreach $i ( @{ $cd{track} } ) {
++        push(@encoded_tracks,encode("utf8",$i));
++      }
++      $cd{track} = \@encoded_tracks;
++      $cd{genre}   = encode("utf8",$cd{cat}) if $cd{cat};
++      $cd{album}   = encode("utf8",$cd{title}) if $cd{title};
++      $cd{year}    = encode("utf8",$cd{year}) if $cd{year};
++      $cd{comment} = encode("utf8",$cd{comment}) if $cd{comment};;
+ 
+       if (not $cd{title}) {
+           pnotice("no_cddb","",2);
+@@ -3372,7 +3389,7 @@
+         pnotice("ripping_track","$tno",2);    
+  
+         $on =~ s/\//_/g;
+-
++        
+         say "\ncdparanoia -d $device $tno $on.wav\n"  if $dryrun;
+ 	my $on_q = shell_quote "$on.wav";
+         system("cdparanoia -d $device $tno $on_q >/dev/null 2>&1")  if not $dryrun;

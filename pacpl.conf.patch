@@ -1,0 +1,11 @@
+--- src/pacpl-code/pacpl.conf	2019-08-22 22:53:09.000000000 +0200
++++ src.new/pacpl-code/pacpl.conf	2024-11-19 10:20:33.265302024 +0100
+@@ -139,7 +139,7 @@
+ #
+ USE_CDDB = 1
+ 
+-CDDB_HOST = freedb.freedb.org
++CDDB_HOST = gnudb.gnudb.org
+ CDDB_PORT = 8880
+ 
+ # cddb or http
