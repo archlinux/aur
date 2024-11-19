@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=nvm-desktop-git
 _pkgname="NVM Desktop"
-pkgver=alpha.r0.gde4d587
+pkgver=4.0.4.r0.g67f735a
 _nodeversion=20
 pkgrel=1
 pkgdesc="A version management desktop client for the Nodejs."
@@ -74,7 +74,6 @@ build() {
 	    export RUSTUP_UPDATE_ROOT=https://mirrors.ustc.edu.cn/rust-static/rustup
         {
             echo 'registry=https://registry.npmmirror.com'
-            echo 'disturl=https://registry.npmmirror.com/-/binary/node/'
         } >> .npmrc
     fi
     NODE_ENV=development    pnpm install
@@ -84,7 +83,7 @@ package() {
     _sourcedir="${srcdir}/${pkgname%-git}.git/src-tauri/target/release/bundle/deb"
     install -Dm755 "${_sourcedir}/${_pkgname}_"*/data/usr/bin/"${pkgname%-git}" -t "${pkgdir}/usr/bin"
     install -Dm755 -d "${pkgdir}/usr/lib"
-    cp -r "${_sourcedir}/${_pkgname}_"*/data/usr/lib/"${_pkgname}" "${pkgdir}/usr/lib"
+    cp -Pr --no-preserve=ownership "${_sourcedir}/${_pkgname}_"*/data/usr/lib/"${_pkgname}" "${pkgdir}/usr/lib"
     install -Dm644 "${_sourcedir}/${_pkgname}_"*/data/usr/share/applications/"${_pkgname}.desktop" \
         "${pkgdir}/usr/share/applications/${pkgname%-git}.desktop"
     install -Dm644 "${srcdir}/${pkgname%-git}.git/src-tauri/icons/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-git}.png"
