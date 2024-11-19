@@ -2,23 +2,21 @@
 
 pkgname=python-healpy
 _pyname=${pkgname#python-}
-pkgver=1.16.6
-pkgrel=2
+pkgver=1.18.0
+pkgrel=1
 pkgdesc="Python package to manipulate healpix maps"
 arch=('i686' 'x86_64')
 url="http://healpy.readthedocs.io"
 license=('GPL-2.0-only')
-depends=('python>=3.8' 'python-numpy>=1.19' 'python-scipy' 'python-matplotlib' 'python-astropy' 'cfitsio>=4.1.0' 'healpix>=3.82')
-makedepends=('python-setuptools-scm>=6.2'
-             'cython'
-             'python-wheel'
+depends=('python>=3.10' 'python-numpy>=1.19' 'python-scipy' 'python-matplotlib' 'python-astropy' 'cfitsio>=4.5.0' 'healpix>=3.83')
+makedepends=('python-setuptools-scm>=8.0'
+             'cython>=0.16'
              'python-build'
-             'python-installer')
+             'python-installer')  # wheel required by new setuptools
 optdepends=('python-healpy-doc: Documentation for healpy')
-checkdepends=('python-pytest-cython'
-             'python-pytest-doctestplus')   # requests -> pooch -> scipy
+checkdepends=('python-pytest')   # requests -> pooch -> scipy
 source=("https://files.pythonhosted.org/packages/source/h/healpy/healpy-${pkgver}.tar.gz")
-md5sums=('3ce7788da61cc6e8ad38c9cd0267ed04')
+md5sums=('7ab4d77330bf48e4b0f51e5b8a81c06e')
 
 get_pyver() {
     python -c "import sys; print('$1'.join(map(str, sys.version_info[:2])))"
@@ -27,8 +25,8 @@ get_pyver() {
 prepare() {
     cd ${srcdir}/${_pyname}-${pkgver}
 
-    sed -i -e "/pykg/d" -e "/\"numpy>=1.25\"/s/,/\]/" pyproject.toml
-    sed -i -e "s/import trapz/import trapezoid as trapz/" healpy/sphtfunc.py
+    sed -i -e "/pykg/d" -e "/\"numpy>=2.0.0rc1\"/s/,/\]/" pyproject.toml
+#   sed -i -e "s/import trapz/import trapezoid as trapz/" healpy/sphtfunc.py
 }
 
 build() {
@@ -41,8 +39,9 @@ check() {
     cd ${srcdir}/${_pyname}-${pkgver}
 
     # skip tests that cost lots of time
-    pytest "build/lib.linux-${CARCH}-cpython-$(get_pyver)" \
-        --deselect=build/lib.linux-${CARCH}-cpython-$(get_pyver)/healpy/test/test_pixelweights.py::test_pixelweights_local_datapath || warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count
+    cp build/lib.linux-${CARCH}-cpython-$(get_pyver)/${_pyname}/*-$(get_pyver)-*.so lib/healpy
+    pytest \
+        --deselect=test/test_pixelweights.py::test_pixelweights_local_datapath || warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count #
 }
 
 package() {
