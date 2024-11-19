@@ -1,0 +1,20 @@
+pkgbase = duniter
+	pkgdesc = Crypto-currency software (based on Substrate framework) to operate Ğ1 libre currency
+	pkgver = 0.8.1
+	pkgrel = 1
+	url = https://duniter.org/
+	install = duniter.install
+	arch = any
+	license = AGPL3
+	makedepends = rustup
+	makedepends = cargo
+	makedepends = git
+	makedepends = make
+	makedepends = protobuf
+	depends = clang
+	depends = curl
+	backup = etc/$pkgname/env_file
+	source = duniter-0.8.1.tar.gz::https://git.duniter.org/nodes/rust/duniter-v2s/-/archive/gdev-803/duniter-v2s-gdev-803.tar.gz
+	sha256sums = 4499459b390f2e548f06b80666714121c2796f4d2c5dbb776f0f21234e8ce353
+
+pkgname = duniter

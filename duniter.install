@@ -1,0 +1,30 @@
+pkgname=duniter
+
+post_install() {
+  # Add group if it doesn't exist
+  getent group $pkgname >/dev/null 2>&1 || sudo groupadd --system $pkgname
+
+  # Add user if it doesn't exist
+  getent passwd $pkgname >/dev/null 2>&1 || \
+    sudo useradd --system -g $pkgname -m $pkgname
+
+  # Ensure the home directory exists and has correct permissions
+  if [ ! -d "/home/$pkgname" ]; then
+    mkdir /home/$pkgname
+    chown $pkgname:$pkgname /home/$pkgname
+    chmod 700 /home/$pkgname
+  fi
+}
+
+post_remove() {
+  # Remove the user if it exists
+  if getent passwd $pkgname >/dev/null 2>&1; then
+    echo "Removing user: $pkgname"
+    sudo userdel ${pkgname}
+  fi
+
+  # Remove the group if no other users belong to it
+  if ! getent passwd | grep -q ':.*:.*:.*:.*$pkgname'; then
+    sudo groupdel ${pkgname}
+  fi
+}
