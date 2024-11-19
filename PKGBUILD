@@ -1,4 +1,4 @@
-# Maintainer: Christoph Liebender <christoph@liebender.dev>
+# Maintainer: shtrophic <aur at shtrophic dot net>
 
 _pkgname=3dtk
 pkgname="$_pkgname-svn"
