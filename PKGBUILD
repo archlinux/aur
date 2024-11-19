@@ -9,21 +9,21 @@ pkgdesc='a fast CPAN module installer'
 arch=('any')
 license=('PerlArtistic' 'GPL')
 depends=(
-	perl-class-tiny
-	perl-command-runner
-	perl-cpan-common-index
-	perl-cpan-distnameinfo
-	perl-cpan-meta
-	perl-extutils-installpaths
-	perl-file-copy-recursive
-	perl-file-pushd
-	perl-http-tinyish
-	perl-json-pp
-	perl-local-lib
-	perl-menlo-legacy
-	perl-module-cpanfile
-	perl-parallel-pipes
-	perl-parse-pmfile
+  perl-class-tiny
+  perl-command-runner
+  perl-cpan-common-index
+  perl-cpan-distnameinfo
+  perl-cpan-meta
+  perl-extutils-installpaths
+  perl-file-copy-recursive
+  perl-file-pushd
+  perl-http-tinyish
+  perl-json-pp
+  perl-local-lib
+  perl-menlo-legacy
+  perl-module-cpanfile
+  perl-parallel-pipes
+  perl-parse-pmfile
 )
 url="https://metacpan.org/release/${_pkgname}"
 source=(https://cpan.metacpan.org/authors/id/${_lastauthor}/${_pkgname}-${pkgver}.tar.gz)
@@ -47,4 +47,3 @@ package() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
   perl Build install
 }
-
