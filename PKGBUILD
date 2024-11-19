@@ -6,7 +6,7 @@ pkgname=(
   'dsp56300-emulator-lv2'
   'dsp56300-emulator-vst3'
 )
-pkgver=1.3.21
+pkgver=1.4.0
 pkgrel=1
 pkgdesc='Emulates musical devices that used the Motorola 56300 DSPs'
 arch=('x86_64')
@@ -45,7 +45,7 @@ source=(
   'skip-cpack.patch'
   'skip-tests.patch'
 )
-sha512sums=('e1cce79c2ff1f751c97ff7dc19d3c43a53e1dd04c6a51068ddd51d684fd74e8fe3c39ba8d97628689567f25aa846d4ef68171678ca042a0c93e4a09615606184'
+sha512sums=('cb03604cc75fb3da899bc3959fa03a55f29fe512c4acc4264f971bd559829660fbaa76edfab2c794b56974bb10c6d8d9b0262a119537542e81597ce611f02031'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -56,7 +56,7 @@ sha512sums=('e1cce79c2ff1f751c97ff7dc19d3c43a53e1dd04c6a51068ddd51d684fd74e8fe3c
             '07033d6171eabf8a57318c0e441d4c2c591f67ae6add2e6c4817224fe4c87c4c9563f1c2cb6db3282229a6e10415e13a986cc4a976373a493fbcbc302a4ee888'
             '9264c532fdd430f29341461555cf392d199bf58eddf63dfa6b8f88a37775ccba0ad287c8a36410bb7c5c5aac16a9c1ca1c47ab69d71955f12ebc83176872b0cf'
             '2334010c663b5e90e6b63a0e3ca73871609b2bc1d01116ea56dd896972f66a704cf910cfb61d44c922541376a1add69562f31ccc2457f1e16badbc932f0e4a45')
-b2sums=('ad018fe25c389215096a5946026051db32e046c7593c9dc7726acef8fb7cdd3c8c91d078913a9bca7dc50c2f204d4d777ba75fb09b65bfdd8c69a64376d8ca9f'
+b2sums=('1331c9d7d84100b95d92fddbf29a20281356f4bd6f5627e30443f1733a48b752f07999cdd3640ce624756fdc6b0c257dccd0de9b47feae57775ebcafee8fdc3f'
         'SKIP'
         'SKIP'
         'SKIP'
