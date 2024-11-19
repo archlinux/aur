@@ -4,7 +4,7 @@
 pkgname=microsoft-identity-broker-bin
 _pkgname=microsoft-identity-broker
 pkgver=2.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Broker for authentication between device and Microsoft Intune"
 url="https://packages.microsoft.com/ubuntu/20.04/prod/pool/main/m/${_pkgname}"
 license=("Unknown")
@@ -14,7 +14,7 @@ provides=("msft-identity-broker=${pkgver}" "${_pkgname}")
 conflicts=("msft-identity-broker" "${_pkgname}")
 replaces=("msft-identity-broker" "${_pkgname}")
 source_x86_64=("$url/${_pkgname}_${pkgver}_amd64.deb")
-sha256sums_x86_64=('4bd4a95fbe8d5a3d17142621fe8b61e771e2a0fd8637481519b7467f8fa29c6d')
+sha256sums_x86_64=('7ed7cb4bc6c984161a4fb489d764ea0dafb2c4a0499d3c0c5a0b3e5f115bb02b')
 install=${pkgname}.install
 
 package() {
