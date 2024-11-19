@@ -33,7 +33,7 @@ prepare() {
 
     echo -e ")\n$oldinstall" >> "$startdir/$install"
 
-    echo "Version=$pkgver" >> "$pkgname.desktop"
+    echo "Version=$pkgver" >> "$pkgname-$pkgver.desktop"
 }
 
 package() {
