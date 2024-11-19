@@ -1,7 +1,7 @@
 pkgbase = perl-tk-xft
 	pkgdesc = A graphical user interface toolkit for Perl with libxft support
 	pkgver = 804.036
-	pkgrel = 1
+	pkgrel = 2
 	url = https://search.cpan.org/dist/Tk
 	arch = x86_64
 	license = PerlArtistic
@@ -18,6 +18,8 @@ pkgbase = perl-tk-xft
 	provides = perl-tk
 	conflicts = perl-tk
 	source = https://www.cpan.org/authors/id/S/SR/SREZIC/Tk-804.036.tar.gz
+	source = gcc-14.patch
 	sha512sums = 7d8b82127a5fdbb2f0387f541af8844a09f1230f377b92d511ecb12e81bfd5ef56d4fe925cac064a798a96a003bb8465b6df37cff18a960f3631bb3a214cd812
+	sha512sums = 01d5e58314bd25cd2bd6aed990dca2c0a36c0f9a9cc069cb5842d437f6f85260cf1ef08f04c61b4ef132657f92bd5d026915cf8cceddc6e054ca20f8f8c21d48
 
 pkgname = perl-tk-xft
