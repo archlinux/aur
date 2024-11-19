@@ -1,0 +1,5 @@
+*.tar.gz
+*.tar.zst
+src/
+pkg/
+grr-linux-amd64
