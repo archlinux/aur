@@ -1,6 +1,7 @@
 pkgbase = davinci-convert
 	pkgdesc = A video converter for Davinci Resolve using FFmpeg
 	pkgver = 1.0.1
+	PKGBUILDver = 1.0.5
 	pkgrel = 1
 	url = https://github.com/tkmxqrdxddd/davinci-video-converter
 	arch = x86_64
