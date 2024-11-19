@@ -1,0 +1,21 @@
+pkgbase = speedtest-ui-bin
+	pkgdesc = A modern and elegant speedtest tool built with Tauri and React, based on Speedtest® CLI.
+	pkgver = 0.0.2
+	pkgrel = 1
+	url = https://github.com/zhangyu1818/speedtest-ui
+	arch = x86_64
+	license = MIT
+	makedepends = binutils
+	depends = webkit2gtk-4.1
+	depends = appmenu-gtk-module
+	depends = libappindicator-gtk3
+	depends = librsvg
+	depends = glib2
+	depends = gtk3
+	depends = hicolor-icon-theme
+	provides = speedtest-ui
+	conflicts = speedtest-ui
+	source = https://github.com/zhangyu1818/speedtest-ui/releases/download/app-v0.0.2/Speedtest.UI_0.0.2_amd64.deb
+	sha256sums = SKIP
+
+pkgname = speedtest-ui-bin
