@@ -1,0 +1,12 @@
+pkgbase = downloads-sorter
+	pkgdesc = A simple tool to sort your downloaded files into folders based on their file extension and age.
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/NikomitK/DownloadsSorter
+	arch = any
+	license = MIT
+	depends = java-runtime
+	source = https://github.com/NikomitK/DownloadsSorter/releases/download/v0.3.0-beta/downloads-sorter-0.3.0-beta.jar
+	sha256sums = 929a8cf7814b49225979bb5dfdadc6f754a63b9bd370a95d5e061af0e9cad6bb
+
+pkgname = downloads-sorter
