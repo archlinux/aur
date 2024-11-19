@@ -1,0 +1,7 @@
+pkg
+src
+hyprlauncher*
+LICENSE*
+README*
+*.tar*
+*.zst
