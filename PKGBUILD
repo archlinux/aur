@@ -1,6 +1,6 @@
 # Maintainer: aarto <aarto@archlinux.org>
 pkgname=mtracker
-pkgver=0.4.0
+pkgver=0.5.0
 pkgrel=1
 pkgdesc='cli movie tracker - keep track of watched movies and series'
 url='https://github.com/r-unruh/mtracker'
@@ -10,7 +10,7 @@ makedepends=(cargo)
 provides=('mtracker')
 conflicts=('mtracker')
 source=("https://github.com/r-unruh/mtracker/archive/refs/tags/v$pkgver.tar.gz")
-b2sums=('ae35aa5aa21024a76dfa1b186de307227b18ed3e12e00a1f605c39ff2953521d0f32e56a8bd422799e67e41ed5b84896f462fc66f4507267d2e96735a243c18a')
+b2sums=('cfa106ff76fe92e1307b3ebd485cc9c248a5fb23cae978ef322f277009004e3358d1c62ea506e8ea03791ff45b7344fe438d590eb875d17fed1f16a18fcc0ff6')
 
 prepare() {
     cd "$pkgname-$pkgver"
@@ -29,4 +29,8 @@ package() {
     cd "$pkgname-$pkgver"
     install -Dm755 -t "$pkgdir/usr/bin/" "target/release/$pkgname"
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+
+    # Shell autocompletion scripts
+    install -Dm644 completions/bash "$pkgdir/usr/share/bash-completion/completions/$pkgname"
+    install -Dm644 completions/zsh "$pkgdir/usr/share/zsh/site-functions/_$pkgname"
 }
