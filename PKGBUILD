@@ -2,10 +2,11 @@
 # Contributor: Gyara <laxect39@gmail.com>
 _pkgname=helio
 pkgname="${_pkgname}-workstation-bin"
+_debname="fm.${_pkgname}.Workstation"
 _appname=Helio
-pkgver=3.12
+pkgver=3.14
 pkgrel=1
-pkgdesc="A free and open-source music sequencer for desktop and mobile platforms"
+pkgdesc="A free and open-source music sequencer for desktop and mobile platforms.(Prebuilt version)"
 arch=('x86_64')
 url="https://helio.fm/"
 _ghurl="https://github.com/helio-fm/helio-sequencer"
@@ -16,6 +17,7 @@ depends=(
     'libcurl-gnutls'
     'alsa-lib'
     'libglvnd'
+    'freetype2'
 )
 options=(
     '!strip'
@@ -23,16 +25,19 @@ options=(
 source=(
     "${pkgname%-bin}-${pkgver}.deb::https://ci.helio.fm/${_pkgname}-${pkgver}-x64.deb"
 )
-sha256sums=('65f02cd4c926e1b4419edc429660bd3848dcfcbdd914b4c4dbb44a189d52f872')
+sha256sums=('d96a6481c3ecbe3e95d9a97d986e955f8c77750f927c1e3b714e7f4a5701cbda')
 build() {
     bsdtar -xf "${srcdir}/data."*
-    sed "s|/usr/bin/${_pkgname}|${pkgname%-bin}|g" -i "${srcdir}/usr/share/applications/${_appname}.desktop"
+    sed -i "s/\/usr\/bin\/${_pkgname}/${pkgname%-bin}/g" "${srcdir}/usr/share/applications/${_appname}.desktop"
+    sed -i "s/${_debname}/${pkgname%-bin}/g" "${srcdir}/usr/share/metainfo/${_debname}.metainfo.xml"
 }
 package(){
     install -Dm755 "${srcdir}/usr/bin/${_pkgname}" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm755 "${srcdir}/usr/share/applications/${_appname}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
-    for _icons in 16x16 32x32 48x48 128x128 256x256; do
+    _icon_sizes=(16x16 32x32 48x48 128x128 256x256)
+    for _icons in "${_icon_sizes[@]}";do
         install -Dm644 "${srcdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname%-bin}.png" \
             -t "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps"
     done
+    install -Dm644 "${srcdir}/usr/share/metainfo/${_debname}.metainfo.xml" "${pkgdir}/usr/share/metainfo/${pkgname%-bin}.metainfo.xml"
 }
