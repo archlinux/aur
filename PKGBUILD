@@ -1,7 +1,7 @@
 # Maintainer:  CloverGit <clovergit@hotmail.com>
 
 pkgname=image2display
-pkgver=1.0.0.r0.g7ea0251
+pkgver=1.1.2.0.r0.g47c212a
 pkgrel=1
 pkgdesc='A cross-platform image and font data processing tool for generating data usable by microcontrollers'
 arch=('x86_64' 'aarch64')
