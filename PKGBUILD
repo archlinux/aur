@@ -1,7 +1,7 @@
 # Maintainer: Benjamin Gallois <benjamin.gallois at fasttrack dot sh>
 pkgbase=fasttrack
 pkgname=(fasttrack fasttrack-cli)
-pkgver=6.3.1
+pkgver=6.3.4
 pkgrel=1
 pkgdesc='Multiple objects tracking software, easy to use, and performant.'
 arch=(any)
@@ -10,7 +10,7 @@ license=(GPL3)
 groups=()
 depends=('opencv>=4.0.0' qt6-base qt6-webengine qt6-svg gcc-libs)
 source=(${pkgbase}-${pkgver}.tar.gz::https://github.com/FastTrackOrg/FastTrack/archive/refs/tags/v$pkgver.tar.gz)
-sha256sums=('40864090be3647672eba2e35b41f952e17005cbde7d80fa890a7025411acdce9')
+sha256sums=('7ce8ca265178cb689d677b02c76ab77ba18e1a35ad59ca9d14cf11728f8ffad8')
 
 prepare() {
   mv "FastTrack-$pkgver" "$pkgbase-$pkgver"
