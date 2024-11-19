@@ -2,10 +2,10 @@
 # Contributor ZorinArch <zorinarch@protonmail.com>
 pkgname=penpot-desktop-bin
 _pkgname='Penpot Desktop'
-pkgver=0.4.0
+pkgver=0.4.1
 _electronversion=33
 pkgrel=1
-pkgdesc="An unofficial desktop application for the open-source design tool, Penpot(Prebuilt version.Use system-wide electron)."
+pkgdesc="An unofficial desktop application for the open-source design tool, Penpot(Prebuilt version.Use system-wide electron)"
 arch=(
     'aarch64'
     'x86_64'
@@ -24,8 +24,8 @@ source=("${pkgname%-bin}.sh")
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::${url}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}.aarch64.rpm")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${url}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}.x86_64.rpm")
 sha256sums=('291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-sha256sums_aarch64=('302d6efbf524d8f8ba9ee200abd04aeaf92baf667b463c578d1f3d78be4f7c4b')
-sha256sums_x86_64=('9996cc954fe48912910bbfc87866ca26a3c9fbe4563b4da9c5f291e343daaad1')
+sha256sums_aarch64=('ee6c4cacebad997962de5b2fbf4f448386b8a5d4fe63ecc56ef55eb3548a48a2')
+sha256sums_x86_64=('56355c17bd0cdeadd541c706fe89c3298f2bf2216d455703ea3ad272d987bb2a')
 build() {
     sed -e "
         s/@electronversion@/${_electronversion}/g
