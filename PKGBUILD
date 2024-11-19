@@ -4,12 +4,13 @@
 
 pkgname=cronicle
 pkgver=0.9.61
-pkgrel=4
+pkgrel=5
 pkgdesc="A simple, distributed task scheduler and runner"
 arch=('any')
 url="https://github.com/jhuckaby/Cronicle"
 license=('MIT')
-depends=('nodejs' 'npm')
+depends=('nodejs')
+makedepends=('npm')
 install="$pkgname.install"
 source=("https://github.com/jhuckaby/Cronicle/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('278819d02bc530f8ef564d8baea9f9fd302924a034f3b085a976b1042402ee6a')
