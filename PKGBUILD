@@ -7,8 +7,8 @@
 # Contributor: Hexchain Tong <i at hexchain dot org>
 
 pkgname=megasync
-pkgver=5.5.0.0
-pkgrel=2
+pkgver=5.6.1.0
+pkgrel=1
 pkgdesc='Official MEGA desktop application for syncing with MEGA Cloud Drive'
 arch=('x86_64')
 url='https://github.com/meganz/MEGAsync/'
@@ -43,16 +43,25 @@ source=("git+https://github.com/meganz/MEGAsync.git#tag=v${pkgver}_Linux"
         '010-megasync-freeimage-remove-obsolete-ffmpeg-macros.patch'
         '020-megasync-sdk-fix-cmake-dependencies-detection.patch'
         '030-megasync-app-fix-cmake-dependencies-detection.patch')
-sha256sums=('e8100bb0626de0b6f06b73ff73327ec1ab64d0f0c3eeec801fabf50f10cee57f'
+sha256sums=('0a25283efac4088acd2eb1ba2ec60dcd7064ca81d3cae2e1a816b56e94477a11'
             'SKIP'
-            '3df5d43ca1951c9e48dbb7f8e221bc8fff1a9fb1b7c934cb5ea7f195ae8f2e04'
+            'bbb7483b2257ff3c1bea4f771b424d2976c5884930d8ebd71101306ff89429c0'
             '2da83bb6a20aa19b58b4115646bacb9d76e2504b45b5094abeba94beac2301fb'
             'a5883be2d00dbacaacf78231bfeeac27f4e8a471c3256370e94fec3e55b1d171')
 
 prepare() {
-    git -C MEGAsync submodule init
-    git -C MEGAsync config --local submodule.src/MEGASync/mega.url "${srcdir}/meganz-sdk"
-    git -C MEGAsync -c protocol.file.allow='always' submodule update
+    #git -C MEGAsync submodule init
+    #git -C MEGAsync config --local submodule.src/MEGASync/mega.url "${srcdir}/meganz-sdk"
+    #git -C MEGAsync -c protocol.file.allow='always' submodule update
+    
+    # https://github.com/meganz/MEGAsync/issues/1010
+    # https://github.com/meganz/MEGAsync/blob/v5.6.1.0_Linux/src/MEGASync/control/Version.h
+    # https://github.com/meganz/MEGAsync/commit/8bc07bd1762c483a5626895ef5614c624cb527f4
+    # besides upstream issue #1010, there is no public commit ecc873026fcc0355f6d490b8529c9f22d5a4fd8c in the sdk git repository, using nearest tag
+    git -C meganz-sdk config advice.detachedHead false
+    git -C meganz-sdk checkout v7.12.0
+    rm -r MEGAsync/src/MEGASync/mega
+    ln -sf ../../../meganz-sdk MEGAsync/src/MEGASync/mega
     
     patch -d MEGAsync/src/MEGASync/mega -Np1 -i "${srcdir}/010-megasync-freeimage-remove-obsolete-ffmpeg-macros.patch"
     patch -d MEGAsync/src/MEGASync/mega -Np1 -i "${srcdir}/020-megasync-sdk-fix-cmake-dependencies-detection.patch"
@@ -66,6 +75,7 @@ build() {
         -DCMAKE_BUILD_TYPE:STRING='None' \
         -DCMAKE_MODULE_PATH:PATH="${srcdir}/MEGAsync/src/MEGASync/mega/contrib/cmake/modules/packages" \
         -DCMAKE_SKIP_INSTALL_RPATH:BOOL='YES' \
+        -DENABLE_DESIGN_TOKENS_IMPORTER:BOOL='OFF' \
         -Wno-dev
     cmake --build build --target MEGAsync
 }
