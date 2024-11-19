@@ -1,0 +1,22 @@
+pkgbase = voidsprite-bin
+	pkgdesc = Free pixelart editor made in SDL2 C++
+	pkgver = 19.10.2024+alpha
+	pkgrel = 1
+	url = https://github.com/counter185/voidsprite
+	arch = x86_64
+	license = GPL-2.0-only
+	makedepends = unzip
+	depends = sdl2
+	depends = sdl2_image
+	depends = sdl2_ttf
+	depends = libpng
+	depends = pugixml
+	depends = xdg-utils
+	provides = voidsprite=19.10.2024
+	conflicts = voidsprite
+	source = https://github.com/counter185/voidsprite/releases/download/alpha19.10.2024/voidsprite-19.10.2024-linux-x86_64.zip
+	source = voidsprite
+	sha256sums = d7e3a6184a8ef7bb02f45521988369895547fa1f279fd116073db1e4887df3d9
+	sha256sums = 230652d0b71431c0daf1040fcaff57b402ab62ce55cb5fd1eac90011769f88da
+
+pkgname = voidsprite-bin
