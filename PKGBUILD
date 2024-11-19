@@ -1,6 +1,6 @@
 # Maintainer: Patrick Hechler <patrjprof-git.aur@ph.anderemails.de>
 pkgname=patrjprof-git
-pkgver=1.2.3r149
+pkgver=1.3.0.snapshot_r193
 pkgrel=1
 pkgdesc="A Free Java profiler written in Java"
 arch=('any')
@@ -8,10 +8,11 @@ url="https://git.rwth-aachen.de/patrick_laszlo.hechler/patr-java-profiler"
 license=('AGPL-3.0-or-later')
 groups=()
 depends=('java-runtime-headless>=8')
-makedepends=('git' 'maven' 'java-environment>=8')
+makedepends=('git' 'java-environment>=8')
 optdepends=('java-runtime-headless>=16: support for socket files for server/client communication'
            'java-runtime>=8: graphical user interface'
            'java-runtime>=16: socket files + graphical user interface'
+           'java-runtime=23: the new class-file API (also needed during build time)'
            )
 provides=("patrjprof=${pkgver}")
 conflicts=('patrjprof')
@@ -20,9 +21,12 @@ backup=()
 options=()
 install=
 changelog=
-source=('git+https://git.rwth-aachen.de/patrick_laszlo.hechler/patr-java-profiler.git#branch=latest-snapshot')
-noextract=()
-sha512sums=('SKIP')
+_pjb_version=2.5.4
+source=('git+https://git.rwth-aachen.de/patrick_laszlo.hechler/patr-java-profiler.git#branch=latest-snapshot'
+        "https://nexuspat.hechler.de/repository/maven-releases/de/hechler/patrick/build/patr-java-build/$_pjb_version/patr-java-build-$_pjb_version.jar")
+noextract=(patr-java-build-$_pjb_version.jar)
+sha512sums=('SKIP'
+            '14d0501b01010e7b24a129ef7138339f7405511b6bd1de4ab3ac67e035b5f53c6460f2273e4f2f3e275d7f0102eaed4a96ac390efb69e54d4ada64068c2f950c')
 
 pkgver() {
   cd "patr-java-profiler"
@@ -34,40 +38,26 @@ build() {
 
   echo "build() called, pgkver=${pkgver}"
   echo 'start package'
-  mvn package -Dmaven.test.skip=true
+  java -jar "$srcdir"/patr-java-build-$_pjb_version.jar package
   echo 'finished package'
 }
 
 check() {
   cd "$srcdir"/patr-java-profiler
 
-  echo 'start test'
-  mvn test
-  echo 'finished test'
-
   export JAVA=java
   export WD="$srcdir"/patr-java-profiler
   export VERSION=$(cat VERSION)
 
-  export AGENT_FOLDER=
-  export BOOTSTRAP_FOLDER=
-  export SERVER_FOLDER=
-  export CLIENT_FOLDER=
-
-  export BOOTSTRAP_FNAME=
-  export AGENT_FNAME=
-  export SERVER_FNAME=
-  export CLIENT_FNAME=
-
-  export AGENT_JAR=
-  export BOOTSTRAP_JAR=
-  export SERVER_JAR=
-  export CLIENT_JAR=
+  export AGENT_JAR="$WD/patr-java-profiler-agent/dst/pkg/main/patr-java-profiler-agent.jar"
+  export BOOTSTRAP_JAR="$WD/patr-java-profiler-bootstrap/dst/pkg/main/patr-java-profiler-bootstrap.jar"
+  export SERVER_JAR="$WD/patr-java-profiler-server/dst/pkg/main/patr-java-profiler-server.jar"
+  export CLIENT_JAR="$WD/patr-java-profiler-client/dst/pkg/main/patr-java-profiler-client.jar"
 
   echo 'start test2'
-  ./patr-java-prof.sh --no-server --no-client --no-defaults -cp "patr-java-profiler-test/target/patr-java-profiler-test-$VERSION.jar" de.hechler.patrick.profiler.test.PHPTestMain
+  "$WD"/patr-java-prof-help.sh --no-server --no-client --no-defaults -jar "$WD/patr-java-profiler-test/dst/pkg/main/patr-java-profiler-test.jar" 11
   echo 'validate test2'
-  ./patr-java-prof.sh --only-client --validate patr-java-profiler-output.data
+  "$WD"/patr-java-prof-help.sh --only-client --validate patr-java-profiler-output.data
   echo 'finished test2'
 }
 
@@ -79,16 +69,16 @@ package() {
   # copy original files
   mkdir -p "$pkgdir"/usr/share/java/patrjprof
 
-  cp -T patr-java-profiler-agent/target/patr-java-profiler-agent-$VERSION-jar-with-dependencies.jar \
+  cp -T patr-java-profiler-agent/dst/pkg/main/patr-java-profiler-agent.jar \
     "$pkgdir"/usr/share/java/patrjprof/patr-java-profiler-agent.jar
 
-  cp -T patr-java-profiler-bootstrap/target/patr-java-profiler-bootstrap-$VERSION.jar \
+  cp -T patr-java-profiler-bootstrap/dst/pkg/main/patr-java-profiler-bootstrap.jar \
     "$pkgdir"/usr/share/java/patrjprof/patr-java-profiler-bootstrap.jar
 
-  cp -T patr-java-profiler-server/target/patr-java-profiler-server-$VERSION.jar \
+  cp -T patr-java-profiler-server/dst/pkg/main/patr-java-profiler-server.jar \
     "$pkgdir"/usr/share/java/patrjprof/patr-java-profiler-server.jar
 
-  cp -T patr-java-profiler-client/target/patr-java-profiler-client-$VERSION.jar \
+  cp -T patr-java-profiler-client/dst/pkg/main/patr-java-profiler-client.jar \
     "$pkgdir"/usr/share/java/patrjprof/patr-java-profiler-client.jar
 
   # create script which starts the profiler
