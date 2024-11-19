@@ -1,10 +1,10 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=siyuan-git
-pkgver=3.1.10.r0.g1d0d065
+pkgver=3.1.13.r0.g928c1d4
 _electronversion=32
 _nodeversion=20
 pkgrel=1
-pkgdesc="A privacy-first, self-hosted, fully open source personal knowledge management software, written in typescript and golang.Use system-wide electron."
+pkgdesc="A privacy-first, self-hosted, fully open source personal knowledge management software, written in typescript and golang.(Use system-wide electron)"
 arch=('x86_64')
 url="https://b3log.org/siyuan"
 _ghurl="https://github.com/siyuan-note/siyuan"
@@ -79,7 +79,6 @@ build() {
     if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
         {
             echo 'registry=https://registry.npmmirror.com'
-            echo 'disturl=https://registry.npmmirror.com/-/binary/node/'
             echo 'electron_mirror=https://registry.npmmirror.com/-/binary/electron/'
             echo 'electron_builder_binaries_mirror=https://registry.npmmirror.com/-/binary/electron-builder-binaries/'
         } >> .npmrc
