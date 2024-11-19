@@ -2,7 +2,7 @@
 
 _plug=resize2
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=r17.6a23fe4
+pkgver=r18.f2c97f8
 pkgrel=1
 pkgdesc="Plugin for VapourSynth: ${_plug} (GIT version)"
 arch=('x86_64')
@@ -12,10 +12,8 @@ depends=('vapoursynth' 'zimg')
 makedepends=('git' 'meson' 'ninja')
 provides=("vapoursynth-plugin-${_plug}")
 conflicts=("vapoursynth-plugin-${_plug}")
-source=("${_plug}::git+https://github.com/Jaded-Encoding-Thaumaturgy/vapoursynth-resize2.git#commit=6a23fe401b971a5f86c25c64622b899835fd4c03"
-  "zimg::git+https://bitbucket.org/the-sekrit-twc/zimg.git"
-)
-sha256sums=('SKIP' 'SKIP')
+source=("${_plug}::git+https://github.com/Jaded-Encoding-Thaumaturgy/vapoursynth-resize2.git")
+sha256sums=('SKIP')
 
 pkgver() {
   cd "${_plug}"
@@ -23,17 +21,12 @@ pkgver() {
 }
 
 prepare() {
-  cd zimg
-  git submodule update --init --recursive
-  cd "../${_plug}"
-  rm -f zimg
-  ln -s ../zimg zimg
+  cd "${_plug}"
+  meson subprojects download
   # The build script hardcodes -static and a local vapoursynth include dir,
   # but -static builds for this fail on Arch, and we want to use the system vapoursynth
   sed -i "s|link_args: \['-static'],|#link_args: \['-static'],|" meson.build
   sed -i "s|include_directories('vapoursynth/include'),|#include_directories('vapoursynth/include'),|" meson.build
-  cp zimg.patch ./zimg
-  git -C zimg apply zimg.patch
   arch-meson build \
     --buildtype=release \
     --libdir /usr/lib/vapoursynth
