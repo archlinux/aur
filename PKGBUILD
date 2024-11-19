@@ -13,7 +13,7 @@ license=('Apache' 'MIT')
 depends=('gtk3' 'libxcb' 'zlib' 'libxcb' 'alsa-lib' 'libxkbcommon-x11')
 makedepends=('unzip')
 conflicts=(ruffle-git)
-sha256sums=('4da1a2f223e0eb2311200d301b4355b6325af1359e47c9ad95de38803f5b6830'
+sha256sums=('7670a14a3a9ffd2a231abd9232f09c817b6312b60049175324ec4d374dffc6b8'
             'f5c8c21286d89f26c4f101e317641df02bf1af0529b6ca0897f9cebc3d654d7a')
 sha256sums_i386=('50b8ffd52f56062a4a5a4a9511b258b876b3ae22143975edc45ff1b9ee3d0a1e')
 sha256sums_pentium4=('50b8ffd52f56062a4a5a4a9511b258b876b3ae22143975edc45ff1b9ee3d0a1e')
