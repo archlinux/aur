@@ -7,16 +7,7 @@ pkgrel=2
 optdepends=('hyprland')
 pkgdesc='GUI for setting wallpapers on Wayland (multiple backends). Written in blazingly fast Rust!'
 arch=('x86_64')
-<<<<<<< Updated upstream
 url="https://github.com/hyprutils/$_pkgname"
-license=('GPL-2.0')
-source=("$_pkgname-$pkgver::https://github.com/hyprutils/$_pkgname/releases/download/v$pkgver/$_pkgname"
-    "https://raw.githubusercontent.com/hyprutils/$_pkgname/refs/tags/v$pkgver/man/$_pkgname.1"
-    "https://raw.githubusercontent.com/hyprutils/$_pkgname/refs/tags/v$pkgver/$_pkgname.png"
-    "https://raw.githubusercontent.com/hyprutils/$_pkgname/refs/tags/v$pkgver/$_pkgname.desktop")
-sha256sums=('2b55eea2ac096dddd9c9d17871b517842c03be94f87d8ac15ee685008d5da5ab' 'SKIP' 'SKIP' 'SKIP')
-=======
-url="https://github.com/nnyyxxxx/$_pkgname"
 url_raw="https://raw.githubusercontent.com/$(echo "$url" | awk -F'/' '{print $4 "/" $5}')"
 license=('GPL-2.0')
 source=("$_pkgname-$pkgver::$url/releases/download/v$pkgver/$_pkgname"
@@ -26,7 +17,6 @@ source=("$_pkgname-$pkgver::$url/releases/download/v$pkgver/$_pkgname"
     "LICENSE-$pkgver::$url_raw/refs/tags/v$pkgver/LICENSE"
     "README-$pkgver.md::$url_raw/refs/tags/v$pkgver/readme.md")
 sha256sums=('2b55eea2ac096dddd9c9d17871b517842c03be94f87d8ac15ee685008d5da5ab' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
->>>>>>> Stashed changes
 depends=('glibc' 'gcc-libs' 'gtk4')
 optdepends=('hyprpaper' 'swaybg' 'swww' 'wallutils' 'feh')
 conflicts=("$_pkgname")
