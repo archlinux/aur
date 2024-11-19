@@ -23,6 +23,7 @@ depends=(
 )
 makedepends=(
   git
+  glib2-devel
   meson
 )
 _commit=bd573742e4272e72cd2150ccb82a514c69f20f44  # master
