@@ -1,20 +1,35 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=blender-bin
-pkgver=4.2.3
-pkgrel=3
+pkgver=4.3.0
+pkgrel=1
 pkgdesc="A fully integrated 3D graphics creation suite (with packaged libraries and python3.11)"
 arch=('x86_64')
 url="https://blender.org"
 license=(
   Apache-2.0
+  Bitstream-Vera
   BSD-2-Clause
   BSD-3-Clause
+  BSL-1.0
+  bzip2-1.0.6
+  FTL
   GPL-2.0-or-later
   GPL-3.0-or-later
   LGPL-2.1-or-later
+  libpng-2.0
+  libtiff
+  MIT-Khronos-Old
   MIT
   MPL-2.0
+  NCSA
+  OFL-1.1
+  Python-2.0
+  SGI-B-2.0
   Zlib
+  LicenseRef-Arev-Fonts
+  LicenseRef-ICS
+  LicenseRef-LLVM-exception
+  LicenseRef-TOST-1.0
 )
 depends=('glibc' 'bash' 'hicolor-icon-theme'
 'libxkbcommon'
@@ -48,7 +63,7 @@ conflicts=('blender')
 install=$pkgname.install
 source=("https://download.blender.org/release/Blender${pkgver:0:3}/blender-${pkgver}-linux-x64.tar.xz"
 	"x-blender.xml")
-sha256sums=('3a64efd1982465395abab4259b4091d5c8c56054c7267e9633e4f702a71ea3f4'
+sha256sums=('6264ff4cf50baf6be6091a28d3c29cf25dc38d8daa3082874ce94d520d3e6ab6'
             '230fc11e49d647215f4735117761d887756823ee1c8fab08987218fd037de75c')
 validpgpkeys=()
 
@@ -64,12 +79,7 @@ package() {
 	install -Dm644 "$srcdir/x-blender.xml" "${pkgdir}/usr/share/mime/application/x-blender.xml"
 	
 	cp -a -r "${pkgver:0:3}" {lib,textures,usd} "${pkgdir}/usr/lib/${pkgname}"
-	pushd "$srcdir/blender-$pkgver-linux-x64/license/"
-	for file in *.txt;
-	do
-		install -Dm644 $file "$pkgdir/usr/share/licenses/${pkgname}/$file"
-	done
-	popd
+	cp -a -r -T license "${pkgdir}/usr/share/licenses/${pkgname}"
 	pushd "${pkgdir}/usr/lib/${pkgname}/lib"
 	for file in *.so*;
 	do
@@ -85,7 +95,9 @@ package() {
 
 	install -Dm755 blender-launcher "$pkgdir/usr/bin/blender"
 	install -Dm755 blender-softwaregl "$pkgdir/usr/bin/blender-softwaregl"
+	install -Dm755 blender-system-info.sh "$pkgdir/usr/bin/blender-system-info"
 	ln -s "/usr/lib/$pkgname/blender-thumbnailer" "$pkgdir/usr/bin/blender-thumbnailer"
 	sed -i 's/\$(dirname "\$(readlink -f "\$0")")/\/usr\/lib\/blender-bin/g' "$pkgdir/usr/bin/blender"
 	sed -i 's/BF_DIST_BIN=\$(dirname "\$0")/BF_DIST_BIN=\/usr\/lib\/blender-bin/g' "$pkgdir/usr/bin/blender-softwaregl"
+	sed -i 's/BASE_DIR=\$(dirname "\$0")/BASE_DIR=\/usr\/lib\/blender-bin/g' "$pkgdir/usr/bin/blender-system-info"
 }
