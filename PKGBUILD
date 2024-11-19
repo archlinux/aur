@@ -1,4 +1,4 @@
-# Maintainer: shtrophic <christoph at liebender dot dev>
+# Maintainer: shtrophic <aur at shtrophic dot net>
 
 pkgname=spinnaker-sdk
 _pkgname=spinnaker
