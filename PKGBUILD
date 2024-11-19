@@ -2,7 +2,7 @@
 # https://aur.archlinux.org/packages/steam-boilr-gui
 pkgname=steam-boilr-gui
 _app_id=io.github.philipk.boilr
-pkgver=1.9.4
+pkgver=1.9.6
 pkgrel=1
 pkgdesc="Synchronize games from other platforms into your Steam library"
 arch=('x86_64')
@@ -13,7 +13,7 @@ makedepends=('cargo' 'cmake')
 checkdepends=('desktop-file-utils' 'appstream-glib')
 options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v.$pkgver.tar.gz")
-sha256sums=('3f4f6f462879f7fdb9e571609ddf53a2cbcf23e97ad954da56119a455e9ff31b')
+sha256sums=('4149b80ab4b04027bc22cb80e1ae0f5aa95225dd441a51131b825de602ec85c3')
 
 prepare() {
   cd "BoilR-v.$pkgver"
