@@ -19,7 +19,7 @@ options=(!lto)
 source=("$pkgname::git+https://github.com/stackabletech/stackable-cockpit.git")
 b2sums=('SKIP')
 provides=(${_pkgname})
-conflicts=(${_pkgname})
+conflicts=(${_pkgname} ${_pkgname}-bin)
 
 pkgver() {
   cd "$pkgname"
