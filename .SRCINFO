@@ -1,0 +1,16 @@
+pkgbase = ruby-request_store
+	pkgdesc = Per-request global storage for Rack.
+	pkgver = 1.7.0
+	pkgrel = 1
+	url = https://github.com/steveklabnik/request_store
+	arch = any
+	license = MIT
+	checkdepends = ruby-minitest
+	makedepends = ruby-rake
+	makedepends = ruby-bundler
+	depends = ruby-rack
+	options = !emptydirs
+	source = https://github.com/steveklabnik/request_store/archive/v1.7.0/ruby-request_store-1.7.0.tar.gz
+	sha512sums = c644d6bb405327c04cf172a88189791db934e8359ea7f2ea186040b01774bbeeb90d7db3858be8d3cc49a3f51d19277d944370017ef92f88561812fd3d94495e
+
+pkgname = ruby-request_store
