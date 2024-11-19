@@ -8,8 +8,8 @@ pkgdesc="Autoupdate iptv sources"
 arch=('any')
 url="https://github.com/HerbertHe/iptv-sources"
 license=('GPL-3.0')
-depends=('nodejs' 'npm' 'pm2')
-makedepends=('git')
+depends=('nodejs' 'pm2')
+makedepends=('git' 'npm')
 optdepends=(
     'iptv-checker: Node.js CLI tool for checking links in IPTV playlists'
 )
