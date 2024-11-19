@@ -4,7 +4,7 @@ pkgver=0.9.12
 pkgrel=0
 pkgdesc="A forensics tool to examine Thumbs.db files"
 arch=('any')
-url="https://github.com/google-gemini/generative-ai-python"
+url="https://github.com/AtesComp/Vinetto"
 license=('GPL3')
 makedepends=('python-setuptools')
 source=("python-vinetto-${pkgver}.tar.gz::https://github.com/AtesComp/Vinetto/archive/refs/tags/v${pkgver}.tar.gz")
@@ -20,4 +20,3 @@ package() {
   cd "Vinetto-${pkgver}"
   python setup.py install --skip-build --root="${pkgdir}" --optimize=1
 }
-
