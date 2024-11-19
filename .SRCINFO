@@ -1,6 +1,6 @@
 pkgbase = droidstar-git
 	pkgdesc = This software connects to M17, Fusion (YSF/FCS, DN and VW modes are supported), DMR, P25, NXDN, D-STAR (REF/XRF/DCS) reflectors and AllStar nodes (as an IAX2 client) over UDP.
-	pkgver = r61.7463728
+	pkgver = r80.31614da
 	pkgrel = 1
 	url = https://github.com/nostar/DroidStar
 	arch = i686
@@ -8,6 +8,7 @@ pkgbase = droidstar-git
 	license = GPL2 GPL3
 	makedepends = gcc
 	makedepends = git
+	makedepends = cmake
 	depends = qt6-declarative
 	depends = qt6-multimedia
 	depends = qt6-serialport

@@ -1,14 +1,14 @@
 # Maintainer: Tadeusz Magura-Witkowski <tadeuszmw gmail>
 
 pkgname=droidstar-git
-pkgver=r61.7463728
+pkgver=r80.31614da
 pkgrel=1
 pkgdesc="This software connects to M17, Fusion (YSF/FCS, DN and VW modes are supported), DMR, P25, NXDN, D-STAR (REF/XRF/DCS) reflectors and AllStar nodes (as an IAX2 client) over UDP."
 arch=('i686' 'x86_64')
 url="https://github.com/nostar/DroidStar"
 license=('GPL2 GPL3')
 depends=('qt6-declarative' 'qt6-multimedia' 'qt6-serialport' 'qt6-base' 'make')
-makedepends=('gcc' 'git')
+makedepends=('gcc' 'git' 'cmake')
 conflicts=('droidstar')
 provides=('droidstar')
 source=("$pkgname"::'git+https://github.com/nostar/DroidStar'
@@ -26,13 +26,13 @@ pkgver() {
 
 build() {
     cd "$srcdir/$pkgname"
-    qmake6
-    make
+    cmake -B build
+    cmake --build build
 }
 
 package() {
     install -Dm644 "droidstar.desktop" "$pkgdir/usr/share/applications/droidstar.desktop"
     install -Dm644 "droidstar.png" "$pkgdir/usr/share/pixmaps/droidstar.png"
     cd "$srcdir/$pkgname"
-    qmake6 -install qinstall -exe DroidStar ${pkgdir}/usr/bin/droidstar
+    install -Dm755 build/DroidStar ${pkgdir}/usr/bin/droidstar
 }
