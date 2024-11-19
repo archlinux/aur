@@ -1,5 +1,5 @@
-# Maintainer: Sir-Photch <sir-photch at posteo dot me>
-# PKGBUILD adapted from: Hans Gaiser <hansg91@gmail.com>
+# Maintainer: shtrophic <aur at shtrophic dot net>
+# Contributor: Hans Gaiser <hansg91@gmail.com>
 
 pkgname=ids-peak-ueyetl
 pkgdesc="IDS peak is a modern, free software development kit for all USB3 Vision and GigE Vision compliant industrial cameras from any manufacturer. (Version with uEye transport layer)"
