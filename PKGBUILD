@@ -1,4 +1,4 @@
-# Maintainer: shtrophic <christoph at liebender dot dev>
+# Maintainer: shtrophic <aur at shtrophic dot net>
 
 _name="dt-apriltags"
 pkgname="python-$_name-git"
