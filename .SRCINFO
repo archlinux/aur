@@ -1,14 +1,14 @@
 pkgbase = virtio-win
 	pkgdesc = virtio drivers for Windows 7 and newer guests
-	pkgver = 0.1.262.2
+	pkgver = 0.1.266.1
 	pkgrel = 1
 	url = https://docs.fedoraproject.org/en-US/quick-docs/creating-windows-virtual-machines-using-virtio-drivers/index.html
 	changelog = virtio-win.changelog
 	arch = any
 	license = BSD-3-Clause
 	optdepends = qemu
-	noextract = virtio-win-0.1.262-2.iso
-	source = virtio-win-0.1.262-2.iso::https://fedorapeople.org/groups/virt/virtio-win/direct-downloads/archive-virtio/virtio-win-0.1.262-2/virtio-win.iso
-	sha256sums = bdc2ad1727a08b6d8a59d40e112d930f53a2b354bdef85903abaad896214f0a3
+	noextract = virtio-win-0.1.266-1.iso
+	source = virtio-win-0.1.266-1.iso::https://fedorapeople.org/groups/virt/virtio-win/direct-downloads/archive-virtio/virtio-win-0.1.266-1/virtio-win.iso
+	sha256sums = 57b0f6dc8dc92dc2ae8621f8b1bfbd8a873de9bedc788c4c4b305ea28acc77cd
 
 pkgname = virtio-win
