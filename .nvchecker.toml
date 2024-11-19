@@ -1,0 +1,5 @@
+[hydra-launcher-bin]
+source = "github"
+github = "hydralauncher/hydra"
+use_max_tag = true
+prefix = "v"

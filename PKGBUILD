@@ -1,28 +1,52 @@
-# Maintainer: vinfehring <vinfehring at gmail dot com>
+# Maintainer:
+# Contributor: vinfehring <vinfehring at gmail dot com>
 # Contributor: Fhilipe Coelho <fhilipecoelho.dev@gmail.com>
 
 pkgname=hydra-launcher-bin
-_pkgname=hydra-launcher
-pkgver=2.0.3
+pkgver=3.0.5
 pkgrel=1
-pkgdesc="A game launcher with its own embedded bittorrent client and a self-managed repack scraper."
+pkgdesc="A game launcher with its own embedded bittorrent client"
 arch=('x86_64')
 url="https://github.com/hydralauncher/hydra"
 license=('MIT')
-provides=('hydra-launcher')
-options=(debug !strip)
-depends=('lutris')
-
-source=()
-
-source_x86_64=("https://github.com/hydralauncher/hydra/releases/download/v${pkgver}/hydralauncher_${pkgver}_amd64.deb")
-sha256sums_x86_64=('SKIP')
+provides=("${pkgname%-bin}")
+depends=('alsa-lib'
+         'at-spi2-core'
+         'bash'
+         'cairo'
+         'dbus'
+         'expat'
+         'gcc-libs'
+         'glib2'
+         'glibc'
+         'gtk3'
+         'hicolor-icon-theme'
+         'libcups'
+         'libdrm'
+         'libx11'
+         'libxcb'
+         'libxcomposite'
+         'libxdamage'
+         'libxext'
+         'libxfixes'
+         'libxkbcommon'
+         'libxrandr'
+         'libxrender'
+         'mesa'
+         'nspr'
+         'nss'
+         'pango'
+         'zlib')
+options=('!strip')
+source=("${url}/releases/download/v${pkgver}/hydralauncher_${pkgver}_amd64.deb"
+        "${pkgname}-LICENSE::${url}/raw/refs/tags/v${pkgver}/LICENSE")
+sha256sums=('57fadd22a18766c6ed79ff8463dc89b797c23e808a575d9489e6fa7ddf7bfb2e'
+            '32619612c2e0223e86c4908747ec14bef64c3c423fee80910c1aa944769b66f9')
 
 package() {
-  tar -xvf 'data.tar.xz' -C "${pkgdir}"
-  install -dv "${pkgdir}/usr/bin"
-  ln -sfv "/opt/Hydra/hydralauncher" -t "${pkgdir}/usr/bin"
-  install -Dvm644 "${pkgdir}/opt/Hydra/"LICENSES.chromium.html \
-    -t "${pkgdir}/usr/share/licenses/hydra-launcher"
+    bsdtar -xf data.tar.xz -C "${pkgdir}" --no-same-permissions
+    install -d "${pkgdir}/usr/bin"
+    ln -s /opt/Hydra/hydralauncher -t "${pkgdir}/usr/bin"
+    install -Dm644 "${pkgname}-LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
