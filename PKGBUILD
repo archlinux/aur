@@ -1,7 +1,7 @@
 # Maintainer: peippo <christoph+aur@christophfink.com>
 
 _cranname=RMariaDB
-_cranver=1.3.2
+_cranver=1.3.3
 pkgname=r-${_cranname,,}
 pkgdesc="Database Interface and MariaDB Driver"
 url="https://cran.r-project.org/package=${_cranname}"
@@ -32,37 +32,23 @@ optdepends=(
     "r-withr"
 )
 
-# The unittests for `r-rmariadb` have multiple circular
-# dependency chains.
-
-# As such, the tests can not be run on first build.
-# While R packages from CRAN, generally, are well-tested
-# before they are released, in some situations, you want to
-# have thorough testing on your own end.
-
-# To run the tests, first build this package without `check()`
-# (i.e., as-is) to bootstrap `r-rmariadb`. Then, on subsequent builds,
-# (assumining you have a local repository that is accessible from
-# the build chroot), uncomment the lines defining `checkdepends`, below,
-# as well as the `check()` function further down
-
-# checkdepends=(
-#     "${optdepends[@]}"
-#     "r-testthat"
-# )
+checkdepends=(
+    "${optdepends[@]}"
+    "r-testthat"
+)
 
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-b2sums=("a7a9cfe33f7c66d2a860821db7e739b942b3371e4ebdb1f5a17c0ac17cc13f208617378c8c82dba624433ee6e6861e2255754e8918eba79cff639d53e1249566")
+b2sums=("97a79a9d104d3600801415b2b7c74065282f6a58235ac625a2336fa6e69f591961d1dffd0f4289b26d9c83501c0d1f993931e322a3997995b43ed75da55afc73")
 
 build() {
     mkdir -p "${srcdir}/build/"
     R CMD INSTALL ${_cranname}_${_cranver}.tar.gz -l "${srcdir}/build/"
 }
 
-# check() {
-#     export R_LIBS="build/"
-#     R CMD check --no-manual "${_cranname}"
-# }
+check() {
+    export R_LIBS="build/"
+    R CMD check --no-manual "${_cranname}"
+}
 
 package() {
     install -dm0755 "${pkgdir}/usr/lib/R/library"
