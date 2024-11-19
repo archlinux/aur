@@ -29,7 +29,7 @@ prepare() {
 }
 
 build() {
-	sed -e 's|Exec=/usr/share/windsurf/windsurf %F|Exec=//usr/bin/windsurf %F|' \
+	sed -e 's|Exec=/usr/share/windsurf/windsurf %F|Exec=/usr/bin/windsurf %F|' \
         -e 's|Exec=/usr/share/windsurf/windsurf --new-window %F|Exec=/usr/bin/windsurf --new-window %F|' \
 		-i "${srcdir}/usr/share/applications/windsurf.desktop"
     sed -e 's|Exec=/usr/share/windsurf/windsurf --open-url %U|Exec=/usr/bin/windsurf --open-url %U|' \
