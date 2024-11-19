@@ -1,4 +1,4 @@
-# Maintainer: Sir-Photch <sir-photch@posteo.me>
+# Maintainer: shtrophic <aur at shtrophic dot net>
 
 pkgname=notesock
 pkgver=0.2.2
@@ -6,7 +6,7 @@ pkgrel=2
 pkgdesc="Yet another terminal pastebin server"
 arch=(any)
 url="https://git.sr.ht/~shtrophic/notesock"
-license=(AGPL3)
+license=(AGPL-3.0-or-later)
 makedepends=(cargo)
 optdepends=('nginx: reverse proxy')
 install=notesock.install
