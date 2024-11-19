@@ -8,8 +8,8 @@ pkgdesc="raider.io desktop client for Linux"
 arch=('x86_64' 'arm64')
 depends=("fuse2")
 url="https://raider.io/"
-source=("$_pkgapp-x86_64-{{__version__}}.AppImage::https://github.com/RaiderIO/raiderio-client-builds/releases/download/v4.6.2/RaiderIO_Installer_Linux_x86_64.AppImage"
-        "$_pkgapp-arm64-{{__version__}}.AppImage::https://github.com/RaiderIO/raiderio-client-builds/releases/download/v4.6.2/RaiderIO_Installer_Linux_arm64.AppImage"
+source=("$_pkgapp-x86_64-v4.6.2.AppImage::https://github.com/RaiderIO/raiderio-client-builds/releases/download/v4.6.2/RaiderIO_Installer_Linux_x86_64.AppImage"
+        "$_pkgapp-arm64-v4.6.2.AppImage::https://github.com/RaiderIO/raiderio-client-builds/releases/download/v4.6.2/RaiderIO_Installer_Linux_arm64.AppImage"
         'start')
 license=('custom' 'MIT' 'custom:chromium-licenses')
 options=(!strip)
@@ -20,18 +20,18 @@ sha512sums=('b91d536e4537d73cad342698def1123e5fda48e46aa93134b3354bbf614ae0b3548
 
 pkgver() {
     cd ${srcdir}
-    chmod +x ${srcdir}/${_pkgapp}-${CARCH}-{{__version__}}.AppImage
-    ${srcdir}/${_pkgapp}-${CARCH}-{{__version__}}.AppImage --appimage-extract >/dev/null
+    chmod +x ${srcdir}/${_pkgapp}-${CARCH}-v4.6.2.AppImage
+    ${srcdir}/${_pkgapp}-${CARCH}-v4.6.2.AppImage --appimage-extract >/dev/null
     cat ${srcdir}/squashfs-root/${_pkgapp}.desktop | grep 'X-AppImage-Version' | sed 's!^X-AppImage-Version=!!g'
 }
 
 package() {
     cd ${srcdir}
-    chmod +x ${srcdir}/${_pkgapp}-${CARCH}-{{__version__}}.AppImage
-    ./${_pkgapp}-${CARCH}-{{__version__}}.AppImage --appimage-extract >/dev/null
+    chmod +x ${srcdir}/${_pkgapp}-${CARCH}-v4.6.2.AppImage
+    ./${_pkgapp}-${CARCH}-v4.6.2.AppImage --appimage-extract >/dev/null
     sed -i 's/Exec=.*/Exec=\/usr\/bin\/'${_pkgapp}' %U/' squashfs-root/${_pkgapp}.desktop
 
-    install -Dm755 ${_pkgapp}-${CARCH}-{{__version__}}.AppImage "${pkgdir}/opt/${_pkgapp}/${_pkgapp}.AppImage"
+    install -Dm755 ${_pkgapp}-${CARCH}-v4.6.2.AppImage "${pkgdir}/opt/${_pkgapp}/${_pkgapp}.AppImage"
     install -Dm755 "start" "${pkgdir}/usr/bin/${_pkgapp}"
     install -dm755 "${pkgdir}/usr/share/applications/"
     install -dm755 "${pkgdir}/usr/share/icons/hicolor/scalable/apps/"
