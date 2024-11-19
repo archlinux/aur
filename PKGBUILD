@@ -3,7 +3,7 @@
 # Contributor: David Birks <david@birks.dev>
 
 pkgname=aws-iam-authenticator
-pkgver=0.6.27
+pkgver=0.6.28
 pkgrel=1
 pkgdesc='A tool to use AWS IAM credentials to authenticate to a Kubernetes cluster'
 arch=('x86_64' 'aarch64')
@@ -13,7 +13,7 @@ makedepends=('go')
 provides=("${pkgname}")
 conflicts=("${pkgname}-bin" "${pkgname}-git")
 source=("${pkgname}_${pkgver}.tar.gz::https://github.com/kubernetes-sigs/aws-iam-authenticator/archive/v$pkgver.tar.gz")
-sha512sums=('5940b02a4b8dd46a3ce0b2d5ed55bbe15ebcbd7431d53449986ce33501a38b71cf9db5ab7d5c6d4969b91b5d89d2a2bb5acc6648a9e552c100c58aba568c98ba')
+sha512sums=('2e506dd2f0c28e74df8d7da4ceb4dd6407b5f975fb72c2b1ea34ebae6eaba4c447efdf2e37a161198befcb1a77e7bb6352becf3296a033148d5e51934c290704')
 
 export GGO_ENABLED="0"
 export CGO_CPPFLAGS="${CPPFLAGS}"
