@@ -1,7 +1,7 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
 pkgname="cunicu"
-pkgver=0.5.58
+pkgver=0.5.61
 pkgrel=1
 pkgdesc="A zeroconf peer-to-peer mesh VPN using Wireguard® and Interactive Connectivity Establishment (ICE)"
 arch=('x86_64' 'aarch64' 'i686' 'armv7h')
@@ -15,7 +15,7 @@ makedepends=('git' 'go' 'protoc-gen-go' 'protoc-gen-go-grpc') # 'golangci-lint'
 optdepends=('wireguard-tools: for controlling WireGuard interfaces')
 _pkgsrc="${pkgname}-${pkgver}"
 source=("${_pkgsrc}::git+${_url}.git#tag=v${pkgver}")
-b2sums=('5738f16e2d356b06c8c1e5c68d4610e06d39cdffaf8c9c8f0e928f47471277ce8ba0b8ca86c726d80f43fd8cd694bfa2873f132b41c7252b8d1c7d833fa393ec')
+b2sums=('0424994374b13079e8b93ddb4cf92f986d1d3585cd3137a9b75aa8f50a663a474461369c9c44d1a476182d8134baffb2b03c49a165dcd641c84fbc3b318400a7')
 
 prepare() {
   cd "${srcdir}/${_pkgsrc}"
