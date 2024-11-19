@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=nvm-desktop
 _pkgname=NVM-Desktop
-pkgver=4.0.3
+pkgver=4.0.4
 _nvmdver="${pkgver}"
 _nodeversion=20
 pkgrel=1
@@ -34,9 +34,9 @@ source_x86_64=("nvmd-${_nvmdver}-x86_64::${_nvmdurl}/releases/download/v${_nvmdv
 source=(
     "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
 )
-sha256sums=('835adcd83963491d2d2adb5671485da2e5f3dc3b4c4b7564633c8ac768451801')
-sha256sums_aarch64=('82162d328948177cb6f604b4bd8a63ef160034f793d44948e6ce227f7ba99fbb')
-sha256sums_x86_64=('e2d35fad9db26be90286e7dd44d53c048410b2c08f041174c704f4b891faaf0d')
+sha256sums=('a7c76584accb2257bd2eb0c830c645d7f4401c540cbf9f4fd700cf7f9ad11bbb')
+sha256sums_aarch64=('fa0002a185d1b1e5786bae6cbcdfc60f05394ee6f6ccd0c5773ae4ba4c9279d5')
+sha256sums_x86_64=('ef0dcca06f2bb6f929a3fd44779c487a3dc446e17de0fe72682642f954c253eb')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
@@ -48,8 +48,6 @@ build() {
     gendesk -f -n -q --pkgname="${pkgname}" --pkgdesc="${pkgdesc}" --categories="Development" --name="${pkgname}" --exec="${pkgname} %U"
     cd "${srcdir}/${pkgname}-${pkgver}"
     install -Dm755 "${srcdir}/nvmd-${_nvmdver}-${CARCH}" "${srcdir}/${pkgname}-${pkgver}/src-tauri/resources/nvmd"
-    export ELECTRON_SKIP_BINARY_DOWNLOAD=1
-    export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
     HOME="${srcdir}/.electron-gyp"
     {
         echo -e '\n'
@@ -64,7 +62,6 @@ build() {
 	    export RUSTUP_UPDATE_ROOT=https://mirrors.ustc.edu.cn/rust-static/rustup
         {
             echo 'registry=https://registry.npmmirror.com'
-            echo 'disturl=https://registry.npmmirror.com/-/binary/node/'
         } >> .npmrc
     fi
     NODE_ENV=development    pnpm install
