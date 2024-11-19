@@ -34,7 +34,7 @@ pkgver() {
 }
 
 prepare() {
-  cd "$pkgname"
+  cd "lowkey"
 }
 
 build() {
