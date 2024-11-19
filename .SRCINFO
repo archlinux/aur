@@ -10,6 +10,7 @@ pkgbase = abcl
 	makedepends = inetutils
 	depends = sh
 	depends = java-environment
+	optdepends = maven: asdf dependency resolution
 	provides = common-lisp
 	source = https://abcl.org/releases/1.9.2/abcl-src-1.9.2.tar.gz
 	source = abcl.sh

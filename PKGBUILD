@@ -1,4 +1,5 @@
-# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
+# Maintainer: Wiktor W. <wykwit@disroot.org>
+# Contributor: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=abcl
 pkgver=1.9.2
@@ -9,6 +10,7 @@ url="https://common-lisp.net/project/armedbear/"
 license=('GPL')
 depends=('sh' 'java-environment')
 makedepends=('ant' 'net-tools' 'inetutils')
+optdepends=('maven: asdf dependency resolution')
 provides=('common-lisp')
 source=("https://abcl.org/releases/$pkgver/$pkgname-src-$pkgver.tar.gz" abcl.sh)
 sha256sums=('4e2f4b8f85e2d95d95e5bdbcd9fa17ad6131a17e2fcf12bc19ffb97b48bc1d38'
