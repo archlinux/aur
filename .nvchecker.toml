@@ -1,0 +1,4 @@
+[meli]
+source = "git"
+git = "https://git.meli-email.org/meli/meli.git"
+prefix = "v"
