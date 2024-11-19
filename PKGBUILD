@@ -3,7 +3,7 @@
 
 pkgname=bento-bin
 _pkgname=${pkgname%-bin}
-pkgdesc='Fancy stream processing made operationally mundane.'
+pkgdesc='Fancy stream processing made operationally mundane'
 url='https://warpstreamlabs.github.io/bento/'
 _url='https://github.com/warpstreamlabs/bento'
 _branch='main'
