@@ -1,14 +1,13 @@
 pkgbase = isz-tool-git
-	pkgdesc = A command line utility to manipulate ISZ files (.isz)
-	pkgver = git
+	pkgdesc = A command line utility to manipulate ISZ files (.isz), including .isz to .iso conversion.
+	pkgver = r3.1c8541e
 	pkgrel = 1
-	url = https://github.com/oserres/isz-tool
-	arch = any
-	license = GPL3
+	url = https://github.com/oserres/isz-tool.git
+	arch = x86_64
+	license = GPL-3.0-or-later
 	makedepends = git
-	depends = python
-	source = git+https://github.com/oserres/isz-tool.git
+	depends = python>=3.2
+	source = isz-tool-git::git+https://github.com/oserres/isz-tool.git
 	sha1sums = SKIP
 
 pkgname = isz-tool-git
-
