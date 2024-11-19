@@ -1,0 +1,3 @@
+[python-wekan]
+source = "git"
+git = "https://github.com/bastianwenske/python-wekan.git"
