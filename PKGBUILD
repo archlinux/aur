@@ -1,7 +1,7 @@
 # Maintainer: Victor Lavaud <victor.lavaud@pm.me>
 pkgname=python-vinetto
 pkgver=0.9.12
-pkgrel=0
+pkgrel=1
 pkgdesc="A forensics tool to examine Thumbs.db files"
 arch=('any')
 url="https://github.com/AtesComp/Vinetto"
