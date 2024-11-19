@@ -1,5 +1,5 @@
-# Maintainer: Sir-Photch <sir-photch at posteo dot me>
-# Adapted from xwayland-satellite by Nebulosa <nebulosa2007-at-yandex-dot-ru>
+# Maintainer: shtrophic <aur at shtrophic dot net>
+# Contributor: Nebulosa <nebulosa2007-at-yandex-dot-ru>
 
 _pkgname=xwayland-satellite
 pkgname="$_pkgname-git"
