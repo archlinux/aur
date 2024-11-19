@@ -1,6 +1,5 @@
-
 # Maintainer: Douglas Creager <dcreager at dcreager dot net>
-# Co-Maintainer: shtrophic <christoh at liebender dot dev>
+# Co-Maintainer: shtrophic <aur at shtrophic dot net>
 
 pkgname=gmid
 pkgver=2.1.1
