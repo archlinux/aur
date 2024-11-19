@@ -23,7 +23,7 @@ depends=(
   'libdbusmenu-gtk3'
   # aur:
   'grimblast-git'
-  'gpu-screen-recorder-git'
+  'gpu-screen-recorder'
   'hyprpicker'
   'matugen-bin'
   'aylurs-gtk-shell'
