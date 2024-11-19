@@ -1,7 +1,7 @@
 # Maintainer: Wiktor W. <wykwit@disroot.org>
 
 pkgname=redress
-pkgver=1.2.4
+pkgver=1.2.5
 pkgrel=1
 pkgdesc="A tool for analyzing stripped Go binaries"
 arch=('any')
@@ -9,7 +9,7 @@ url="https://github.com/goretk/redress"
 license=('AGPL')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v${pkgver}.tar.gz")
-sha256sums=('fb0ed565116c5f92a91dea7cdc47e394d6e5fb207e77147dce2e821742c0d9ee')
+sha256sums=('6bc1ccaeb268df58f22b21808e0cd019feb9f1a53e6886079d2bd780cfb14ce1')
 
 build() {
   export GOPATH="$srcdir"/gopath
