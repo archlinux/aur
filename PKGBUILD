@@ -1,4 +1,4 @@
-# Maintainer: Sir-Photch < aur at liebender dot dev >
+# Maintainer: shtrophic <aur at shtrophic dot net>
 
 pkgname=fedi-fetcher
 pkgver=7.1.12
