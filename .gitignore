@@ -1,5 +1,7 @@
 /.project
 /patrjprof-*-any.pkg.tar.zst
 /patr-java-profiler/
+/patr-java-build-*.jar
+/patrjprof-git-*.log
 /src/
 /pkg/
