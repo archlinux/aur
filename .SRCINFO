@@ -1,6 +1,6 @@
 pkgbase = libpdfium-nojs
 	pkgdesc = Open-source PDF rendering engine.
-	pkgver = 6367.r1.7b90b15a21
+	pkgver = 6778.r0.7a8409531f
 	pkgrel = 1
 	url = https://pdfium.googlesource.com/pdfium/
 	arch = x86_64
@@ -9,6 +9,7 @@ pkgbase = libpdfium-nojs
 	makedepends = python
 	makedepends = gn
 	makedepends = ninja
+	makedepends = fast_float
 	depends = freetype2
 	depends = lcms2
 	depends = libjpeg

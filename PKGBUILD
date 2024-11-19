@@ -1,7 +1,7 @@
 # Maintainer: Felix Kauselmann <licorn@gmail.com>
 
 pkgname=libpdfium-nojs
-pkgver=6367.r1.7b90b15a21
+pkgver=6778.r0.7a8409531f
 pkgrel=1
 pkgdesc="Open-source PDF rendering engine."
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('BSD')
 depends=('freetype2' 'lcms2' 'libjpeg' 'openjpeg2' 'icu')
 conflicts=('libpdfium-bin')
 provides=('libpdfium')
-makedepends=('git' 'python' 'gn' 'ninja')
+makedepends=('git' 'python' 'gn' 'ninja' 'fast_float')
 
 source=("git+https://pdfium.googlesource.com/pdfium"
     "git+https://chromium.googlesource.com/chromium/src/build.git"
@@ -40,7 +40,7 @@ prepare() {
 
   ln -sf $srcdir/build build
   ln -sf $srcdir/abseil-cpp third_party/abseil-cpp
-
+  
   # Pdfium is developed alongside Chromium and does not provide releases
   # Upstream recommends using Chromium's dev channels instead
 
@@ -70,6 +70,10 @@ prepare() {
   # Patch abseil build to be static
   sed -i 's/component(/static_library(/' BUILD.gn
   sed -i 's/is_component_build(/false/' BUILD.gn
+
+# Use system fast_float 
+  mkdir -p third_party/fast_float/src/include/
+  ln -sf /usr/include/fast_float third_party/fast_float/src/include/
 
   # Use system provided icu library (unbundling)
   mkdir -p "$srcdir/pdfium/third_party/icu"
@@ -110,7 +114,6 @@ build() {
       'use_system_lcms2=true'
       'use_system_libpng=true'
       'use_custom_libcxx=false'
-      'enable_safe_libcxx=false'
       'pdf_is_standalone = true'
       'use_system_libopenjpeg2 = true'
       'is_component_build = true'
@@ -120,7 +123,7 @@ build() {
   gn gen out/Release --args="${_flags[*]}"
   ninja -C out/Release pdfium
 
-  # set pdfium version in pc file
+  # Set pdfium version in pc file
   sed "s/@VERSION@/${pkgver}/g" -i "${srcdir}/libpdfium.pc"
 
 }
