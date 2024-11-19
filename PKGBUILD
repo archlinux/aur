@@ -1,9 +1,9 @@
 # Maintainer: Neko_Rikka <yjzyl9008 at gmail dot com>
-# 感谢 https://aur.archlinux.org/packages/liteloader-qqnt-git 的参考
+# 感谢 https://aur.archlinux.org/packages/liteloader-qqnt-git 的hook参考
 
 pkgname=napcatqq-git
 _pkgname=NapCatQQ
-pkgver=r3056.e9fe6f28
+pkgver=r3061.12cb5008
 pkgrel=1
 pkgdesc="现代化的基于 NTQQ 的 Bot 协议端实现"
 arch=('x86_64'
@@ -25,6 +25,7 @@ pkgver() {
 }
 
 build() {
+    echo -e "\e[32mNote: The build may take a long time, please be patient...\e[0m"
     cd "${srcdir}/${_pkgname}"
     
     npm i
