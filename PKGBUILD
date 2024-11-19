@@ -1,7 +1,7 @@
 # Maintainer: weilinfox <sakurakaze.fox at gmail.com>
 
 pkgname=ruyi
-pkgver=0.21.0
+pkgver=0.22.0
 pkgrel=1
 pkgdesc="RuyiSDK Package Manager"
 arch=(any)
@@ -44,11 +44,9 @@ optdepends=(
 )
 source=(
   "${pkgname}-${pkgver}.tar.gz::https://github.com/ruyisdk/ruyi/archive/refs/tags/${pkgver}.tar.gz"
-  "ruyi"
   "config.toml"
 )
-sha512sums=('a160efe7a5dae0b0e3567c7186cbcb024e6f68c3ffd93db2c165d04628a686297650d25b4009a335514c073b97ce528f8e4f778709696a9a8165dbdde7d3b394'
-            '49d2d53b91e343d029d20b4830098dbcfb04161d323f6fa9c3e1fdc0c02df1335871d0f44627916e076a2062fcb97d52ea87368e6cabc0d7167591022ce293ea'
+sha512sums=('a0fbc2ec70092d4d75cf431b834c6accc80bfa851ca6b5b81d45c24147823beb9c243a328e129c470fccc0a9454a9209b6475318098cefb3ea47fba6a3d7a391'
             '03b9a18c495c37203e5c56518e1ab94118b3bf99e83c99924f3eeca7be64ac3b03d744c105ac99ab703c40e570195a7ed39785e5beef5f619bdf868bd6add6f6')
 provides=(python-ruyi)
 
@@ -74,5 +72,4 @@ package() {
   install -Dm644 LICENSE*.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
   install -Dm644 ../config.toml -t "${pkgdir}/usr/share/${pkgname}/"
-  install -Dm755 ../ruyi "${pkgdir}/usr/bin/ruyi"
 }
