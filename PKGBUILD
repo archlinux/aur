@@ -1,4 +1,4 @@
-# Maintainer: Sir-Photch <sir-photch at posteo dot me>
+# Maintainer: shtrophic <aur at shtrophic dot net>
 
 _name=pyRANSAC-3D
 pkgname="python-pyransac3d"
