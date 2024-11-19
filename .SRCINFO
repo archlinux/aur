@@ -19,5 +19,7 @@ pkgbase = hyprgui-bin
 	sha256sums = 7bf8ad6db74750417febd30d6ce97ccfe67ad8af918fc0654633a1c33b85ecaf
 	sha256sums = SKIP
 	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
 
 pkgname = hyprgui-bin
