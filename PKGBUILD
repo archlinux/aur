@@ -1,11 +1,11 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=cherry-studio-git
 _pkgname="Cherry Studio"
-pkgver=0.8.5.r5.g241dcdd
+pkgver=0.8.15.r0.gaefb089
 _electronversion=28
 _nodeversion=20
 pkgrel=1
-pkgdesc="🍒 Cherry Studio is a desktop client that supports for multiple LLM providers.Use system-wide electron."
+pkgdesc="🍒 Cherry Studio is a desktop client that supports for multiple LLM providers.(Use system-wide electron)"
 arch=('any')
 url="https://cherry-ai.com/"
 _ghurl="https://github.com/kangfenmao/cherry-studio"
