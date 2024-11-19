@@ -12,11 +12,11 @@
 
 _pkgname=cockroachdb
 pkgname="$_pkgname-bin"
-pkgver=24.2.4
+pkgver=24.2.5
 pkgrel=1
 pkgdesc="Cloud-native, distributed SQL database"
 url='https://www.cockroachlabs.com'
-license=('Apache-2.0' 'BUSL-1.1' 'LicenseRef-CCL')
+license=('LicenseRef-CockroachDB')
 arch=('x86_64')
 
 depends=('glibc')
@@ -34,12 +34,10 @@ _pkgsrc_source="cockroach-$pkgver"
 source=(
   "$_pkgname-$pkgver.tar.gz"::"https://binaries.cockroachdb.com/$_pkgsrc.tgz"
   "LICENSE-$pkgver"::"https://github.com/cockroachdb/cockroach/raw/v$pkgver/LICENSE"
-  "LICENSE.CCL-$pkgver"::"https://github.com/cockroachdb/cockroach/raw/v$pkgver/licenses/CCL.txt"
 )
 sha256sums=(
-  'fa4a5696f0abd766993d5ded9b6c2cc899701be56afbf6d737baf4841c9e7bc1'
-  '0384efdf47789c3548e7eff949c5c2c9c4ee95741f805a39cdb6f02035919889'
-  '25ec687608539ef745809b39ed1af6f34520855d74db2a1367f6e6c6adbf43de'
+  '720a334954be6f98917f88802a3b485f40c2b454da0dd91d383cfdab6908afb7'
+  'cb4f34a516b09ec1815bd8376a34de7ea5e6da06c70bed756110943ad1b340e4'
 )
 
 build() {
@@ -115,5 +113,4 @@ END
 
   # licenses
   install -Dm644 "LICENSE-$pkgver" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-  install -Dm644 "LICENSE.CCL-$pkgver" "$pkgdir/usr/share/licenses/$pkgname/LICENSE.CCL"
 }
