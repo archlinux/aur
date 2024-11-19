@@ -8,7 +8,7 @@
 readonly _pkgname="SimSIMD"
 
 pkgname="simsimd"
-pkgver="6.0.5"
+pkgver="6.0.6"
 pkgrel="1"
 pkgdesc="Up to 200x faster dot products and similarity metrics."
 arch=("x86_64")

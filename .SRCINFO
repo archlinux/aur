@@ -1,12 +1,12 @@
 pkgbase = simsimd
 	pkgdesc = Up to 200x faster dot products and similarity metrics.
-	pkgver = 6.0.5
+	pkgver = 6.0.6
 	pkgrel = 1
 	url = https://github.com/ashvardanian/SimSIMD
 	arch = x86_64
 	license = Apache-2.0
 	makedepends = cmake
-	source = simsimd-v6.0.5.tar.gz::https://github.com/ashvardanian/SimSIMD/archive/refs/tags/v6.0.5.tar.gz
+	source = simsimd-v6.0.6.tar.gz::https://github.com/ashvardanian/SimSIMD/archive/refs/tags/v6.0.6.tar.gz
 	sha512sums = c2f9fc10c8d8a7bb1c052eaad4645e85ce8d8d885b279d455e63b7b10b99feaf9c02b6d90e678166a7dde8d2fbc97e9a0afba61d781b301c1f8ab691a3996674
 
 pkgname = simsimd
