@@ -1,14 +1,13 @@
 # Maintainer: Munzir Taha <munzirtaha@gmail.com>
 
-pkgbase=amiri
-pkgname=ttf-${pkgbase}
+pkgname=ttf-amiri
 pkgver=1.001
 pkgrel=1
-pkgdesc="A Classical Arabic Naskh typeface pioneered by Amiria/Bulaq Press in Cairo"
+pkgdesc="Amiri (أميري) is a body text Naskh typeface"
 arch=('any')
 url="http://www.amirifont.org/"
 license=('OFL-1.1')
-source=(https://github.com/aliftype/$pkgbase/releases/download/$pkgver/$pkgbase-$pkgver.zip)
+source=(https://github.com/aliftype/amiri/releases/download/$pkgver/Amiri-$pkgver.zip)
 sha256sums=('cae999a9fc5638cb69cf0812e8bca1437ef1ebbf094f8b3c5b3f0a3ea2ef8c3a')
 
 package() {
