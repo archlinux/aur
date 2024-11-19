@@ -1,11 +1,11 @@
-pkgbase = ttf-amiri
+pkgbase = amiri
 	pkgdesc = A Classical Arabic Naskh typeface pioneered by Amiria/Bulaq Press in Cairo
-	pkgver = 1.000
-	pkgrel = 4
+	pkgver = 1.001
+	pkgrel = 1
 	url = http://www.amirifont.org/
 	arch = any
-	license = OFL
-	source = https://github.com/aliftype/amiri/releases/download/1.000/Amiri-1.000.zip
-	sha256sums = 926fe1bd7dfde8e55178281f645258bfced6420c951c6f2fd532fd21691bca30
+	license = OFL-1.1
+	source = https://github.com/aliftype/amiri/releases/download/1.001/amiri-1.001.zip
+	sha256sums = cae999a9fc5638cb69cf0812e8bca1437ef1ebbf094f8b3c5b3f0a3ea2ef8c3a
 
 pkgname = ttf-amiri

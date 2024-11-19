@@ -1,0 +1,3 @@
+[ttf-amiri]
+source = "git"
+git = "https://github.com/aliftype/amiri.git"
