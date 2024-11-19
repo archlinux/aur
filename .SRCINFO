@@ -1,7 +1,7 @@
 pkgbase = python-pyswip
 	pkgdesc = Python wrapper for SWI-Prolog
 	pkgver = 0.2.10
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/yuce/pyswip
 	arch = any
 	license = MIT
