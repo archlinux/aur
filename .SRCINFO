@@ -1,5 +1,5 @@
-pkgbase = riscv64-linux-gnu-gcc
-	pkgdesc = Cross compiler for 32-bit and 64-bit RISC-V
+pkgbase = riscv64-linux-gnu-gcc-full
+	pkgdesc = Cross compiler for 32-bit and 64-bit RISC-V, full language support
 	pkgver = 14.2.0
 	pkgrel = 1
 	url = https://gcc.gnu.org/
@@ -13,6 +13,10 @@ pkgbase = riscv64-linux-gnu-gcc
 	depends = libmpc
 	depends = libisl
 	depends = zstd
+	depends = gcc-ada
+	depends = rust
+	provides = riscv64-linux-gnu-gcc
+	conflicts = riscv64-linux-gnu-gcc
 	options = !emptydirs
 	options = !strip
 	options = staticlibs
@@ -21,4 +25,4 @@ pkgbase = riscv64-linux-gnu-gcc
 	sha256sums = a7b39bc69cbf9e25826c5a60ab26477001f7c08d85cec04bc0e29cabed6f3cc9
 	b2sums = 87baf2a06dfa75d8fb6cd62c747ef1f57d3b9bbbe33a360d9ed3de4b4dbeaa8d920504c67e409bd9863414202c14fd854b46108e984418171205119216d03d3b
 
-pkgname = riscv64-linux-gnu-gcc
+pkgname = riscv64-linux-gnu-gcc-full

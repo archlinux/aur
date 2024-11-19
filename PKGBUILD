@@ -1,18 +1,22 @@
-# Maintainer: Felix Yan <felixonmars@archlinux.org>
-# Maintainer: Filipe Laíns (FFY00) <lains@archlinux.org>
+# Maintainer: Estela ad Astra <i@estela.moe>
+# Modified on the basis of the official PKGBUILD
+# Contributor: Felix Yan <felixonmars@archlinux.org>
+# Contributor: Filipe Laíns (FFY00) <lains@archlinux.org>
 # Contributor: Alexander F. Rødseth <xyproto@archlinux.org>
 # Contributor: Emil Renner Berthing <aur@esmil.dk>
 
 _target=riscv64-linux-gnu
-pkgname=$_target-gcc
+pkgname=$_target-gcc-full
 pkgver=14.2.0
 pkgrel=1
-pkgdesc='Cross compiler for 32-bit and 64-bit RISC-V'
+pkgdesc='Cross compiler for 32-bit and 64-bit RISC-V, full language support'
 arch=('x86_64')
 url='https://gcc.gnu.org/'
 license=('GPL' 'LGPL' 'FDL')
 groups=('risc-v')
-depends=("$_target-binutils" "$_target-glibc" 'libmpc' 'libisl' 'zstd')
+provides=("$_target-gcc")
+conflicts=("$_target-gcc") # conflicts with the official package
+depends=("$_target-binutils" "$_target-glibc" 'libmpc' 'libisl' 'zstd' 'gcc-ada' 'rust')
 options=(!emptydirs !strip  staticlibs !lto)
 source=("https://gcc.gnu.org/pub/gcc/releases/gcc-$pkgver/gcc-$pkgver.tar.xz")
 sha256sums=('a7b39bc69cbf9e25826c5a60ab26477001f7c08d85cec04bc0e29cabed6f3cc9')
@@ -67,13 +71,14 @@ build() {
       --disable-libssp \
       --disable-multilib \
       --disable-werror \
-      --enable-languages=c,c++ \
+      --enable-languages=ada,c,c++,fortran,go,lto,objc,obj-c++,rust \
       --enable-shared \
       --enable-threads=posix \
       --enable-__cxa_atexit \
       --enable-clocale=gnu \
       --enable-gnu-unique-object \
       --enable-linker-build-id \
+      --enable-libada \
       --enable-lto \
       --enable-plugin \
       --enable-install-libiberty \
@@ -85,7 +90,7 @@ build() {
 
 package() {
   make -C gcc-build DESTDIR="$pkgdir" \
-    install-gcc install-target-{libgcc,libstdc++-v3,libgomp,libgfortran,libquadmath,libatomic}
+    install-gcc install-target-{libgcc,libstdc++-v3,libgomp,libgfortran,libquadmath,libatomic,libada,libgo}
 
   # Strip target binaries
   find "$pkgdir/usr/lib/gcc/$_target/" "$pkgdir/usr/$_target/lib" -type f \
