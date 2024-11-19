@@ -1,4 +1,4 @@
-# Maintainer: Sir-Photch < aur@liebender.dev >
+# Maintainer: shtrophic <aur at shtrophic dot net>
 
 _pkgname=libsgm
 pkgname=libsgm-git
