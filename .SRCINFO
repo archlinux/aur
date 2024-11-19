@@ -1,0 +1,13 @@
+pkgbase = reliq
+	pkgdesc = html parsing and searching tool
+	pkgver = 2.7.9b2ee74
+	pkgrel = 1
+	url = https://github.com/TUVIMEN/reliq
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = git
+	provides = reliq
+	source = git+https://github.com/TUVIMEN/reliq
+	sha256sums = SKIP
+
+pkgname = reliq
