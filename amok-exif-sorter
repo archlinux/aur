@@ -1,3 +1,2 @@
 #!/bin/sh
-exec java -cp '/usr/share/java/amok-exif-sorter/exifsorter.jar:/usr/share/java/amok-exif-sorter/*' am.amok.exifsorter.Exifsorter
-
+exec java -cp '/usr/share/java/amok-exif-sorter/exifsorter.jar:/usr/share/java/amok-exif-sorter/*' exifsorter.Exifsorter
