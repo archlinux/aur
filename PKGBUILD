@@ -1,7 +1,7 @@
 # Maintainer: aarto <aarto@archlinux.org>
 pkgname=mtracker-git
 _pkgname=mtracker
-pkgver=0.4.0.r2.g497e6b3
+pkgver=0.5.0.r1.g0a09e14
 pkgrel=1
 pkgdesc='cli movie tracker - keep track of watched movies and series'
 url='https://github.com/r-unruh/mtracker'
@@ -30,6 +30,10 @@ package() {
     cd "$_pkgname"
     install -Dm755 -t "$pkgdir/usr/bin/" "target/release/$_pkgname"
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+
+    # Shell autocompletion scripts
+    install -Dm644 completions/bash "$pkgdir/usr/share/bash-completion/completions/$_pkgname"
+    install -Dm644 completions/zsh "$pkgdir/usr/share/zsh/site-functions/_$_pkgname"
 }
 
 pkgver() {
