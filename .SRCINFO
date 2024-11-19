@@ -1,14 +1,13 @@
 pkgbase = ksvnupdater
 	pkgdesc = Utility oriented to KDE translation teams. You can have various local repository copies, generate projects for Lokalize, checks and corrections using Pology and more.
 	pkgver = 3.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.eloihr.net/ksvnupdater
 	arch = x86_64
 	arch = i686
 	license = GPL-2.0-or-later
 	makedepends = extra-cmake-modules
 	makedepends = kdoctools
-	depends = kfilemetadata
 	depends = karchive
 	depends = kio
 	depends = kitemviews
