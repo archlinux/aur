@@ -1,0 +1,111 @@
+pkgbase = zen-browser
+	pkgdesc = Experience tranquillity while browsing the web without people tracking you
+	pkgver = 1.0.1_a.19
+	pkgrel = 2
+	url = https://zen-browser.app/
+	arch = x86_64
+	license = MPL-2.0
+	makedepends = git
+	makedepends = pnpm
+	makedepends = rsync
+	makedepends = cbindgen
+	makedepends = clang
+	makedepends = diffutils
+	makedepends = imake
+	makedepends = jack
+	makedepends = lld
+	makedepends = llvm
+	makedepends = mesa
+	makedepends = nasm
+	makedepends = nodejs
+	makedepends = python
+	makedepends = rust
+	makedepends = unzip
+	makedepends = wasi-compiler-rt
+	makedepends = wasi-libc
+	makedepends = wasi-libc++
+	makedepends = wasi-libc++abi
+	makedepends = xorg-server-xvfb
+	makedepends = yasm
+	makedepends = zip
+	depends = alsa-lib
+	depends = at-spi2-core
+	depends = bash
+	depends = cairo
+	depends = dbus
+	depends = ffmpeg
+	depends = fontconfig
+	depends = freetype2
+	depends = gcc-libs
+	depends = gdk-pixbuf2
+	depends = glib2
+	depends = glibc
+	depends = gtk3
+	depends = hicolor-icon-theme
+	depends = libpulse
+	depends = libx11
+	depends = libxcb
+	depends = libxcomposite
+	depends = libxdamage
+	depends = libxext
+	depends = libxfixes
+	depends = libxrandr
+	depends = libxss
+	depends = libxt
+	depends = mime-types
+	depends = nspr
+	depends = nss
+	depends = pango
+	depends = ttf-font
+	optdepends = hunspell-en_US: Spell checking, American English
+	optdepends = libnotify: Notification integration
+	optdepends = networkmanager: Location detection via available WiFi networks
+	optdepends = speech-dispatcher: Text-to-Speech
+	optdepends = xdg-desktop-portal: Screensharing with Wayland
+	noextract = firefox-132.0.1.source.tar.xz
+	options = !emptydirs
+	options = !lto
+	options = !makeflags
+	options = !debug
+	source = git+https://github.com/zen-browser/desktop.git#tag=1.0.1-a.19
+	source = git+https://github.com/mozilla-l10n/firefox-l10n
+	source = https://archive.mozilla.org/pub/firefox/releases/132.0.1/source/firefox-132.0.1.source.tar.xz
+	source = desktop.patch
+	source = enable-jack-instead-of-pulseaudio.patch
+	source = download-language-packs.patch
+	source = do-not-auto-disable-extensions-in-system-directories.patch
+	sha256sums = 148680d55e075d8a22f2a188e73d3d7a4b69d416872fae08b5ac61af6a38649f
+	sha256sums = SKIP
+	sha256sums = 5c031b572c1da726677e2ff97b6ad5a7e3b23387a6fc3963391cb562f80a5e48
+	sha256sums = fb8a1373a1e9f1b8b1443f75368b647f370735e5b95da82bab106000ef71fa76
+	sha256sums = d5f41103ed28b1abf4f7cffed1d53708dbff39d2c2b8db4d9ddff10530a13edb
+	sha256sums = f2a917dea2c5cbd702da69c0c8648047f2f28ae77c5807350f4cb4d2dd5fe4fb
+	sha256sums = 8c1dec4e17516ecc737cb4fd37a215a59a4a3dea49770290125973038d987e01
+
+pkgname = zen-browser-generic
+	pkgdesc = Experience tranquillity while browsing the web without people tracking you
+	provides = zen-browser=1.0.1_a.19
+	conflicts = zen-browser
+
+pkgname = zen-browser-specific
+	pkgdesc = Experience tranquillity while browsing the web without people tracking you (optimized for modern devices)
+	provides = zen-browser=1.0.1_a.19
+	conflicts = zen-browser
+
+pkgname = zen-browser-i18n-zh-cn
+	pkgdesc = Language pack for Zen Browser (zh-CN)
+	arch = any
+	depends = zen-browser>=1.0.1_a.19
+	optdepends = 
+
+pkgname = zen-browser-i18n-zh-tw
+	pkgdesc = Language pack for Zen Browser (zh-TW)
+	arch = any
+	depends = zen-browser>=1.0.1_a.19
+	optdepends = 
+
+pkgname = zen-browser-i18n-ja
+	pkgdesc = Language pack for Zen Browser (ja)
+	arch = any
+	depends = zen-browser>=1.0.1_a.19
+	optdepends = 
