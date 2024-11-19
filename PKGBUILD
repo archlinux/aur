@@ -2,7 +2,7 @@
 # Adapted from benthos: https://aur.archlinux.org/packages/benthos
 
 pkgname=bento
-pkgdesc='Fancy stream processing made operationally mundane.'
+pkgdesc='Fancy stream processing made operationally mundane'
 arch=(aarch64 armv7h x86_64)
 url='https://warpstreamlabs.github.io/bento/'
 _url='https://github.com/warpstreamlabs/bento'
