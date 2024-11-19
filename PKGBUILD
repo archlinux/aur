@@ -3,7 +3,7 @@
 pkgname=perl-app-cpm
 _lastauthor=S/SK/SKAJI
 _pkgname=App-cpm
-pkgver=0.997017
+pkgver=0.997019
 pkgrel=1
 pkgdesc='a fast CPAN module installer'
 arch=('any')
