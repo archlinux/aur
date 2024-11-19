@@ -1,15 +1,17 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=ueli-git
 _pkgname=Ueli
-pkgver=9.8.0.r0.g9c867b4
+pkgver=9.10.0.r0.g26803f6
 _electronversion=33
 _nodeversion=20
 pkgrel=1
-pkgdesc="Cross-Platform Keystroke Launcher.Use system-wide electron."
+pkgdesc="Cross-Platform Keystroke Launcher.(Use system-wide electron)"
 arch=('any')
 url="https://ueli.app/"
 _ghurl="https://github.com/oliverschwendener/ueli"
 license=('MIT')
+conflicts=("${pkgname%-git}")
+provides=("${pkgname%-git}=${pkgver%.r*}")
 depends=(
     "electron${_electronversion}"
 )
@@ -60,7 +62,6 @@ build() {
     if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
         {
             echo 'registry=https://registry.npmmirror.com'
-            echo 'disturl=https://registry.npmmirror.com/-/binary/node/'
             echo 'electron_mirror=https://registry.npmmirror.com/-/binary/electron/'
             echo 'electron_builder_binaries_mirror=https://registry.npmmirror.com/-/binary/electron-builder-binaries/'
         } >> .npmrc
