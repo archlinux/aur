@@ -1,0 +1,12 @@
+[Desktop Entry]
+Name=Windsurf - URL Handler
+Comment=Tomorrow's Editor, Today.
+GenericName=Text Editor
+Exec=/usr/bin/windsurf --open-url %U
+Icon=windsurf
+Type=Application
+NoDisplay=true
+StartupNotify=true
+Categories=Utility;TextEditor;Development;IDE;
+MimeType=x-scheme-handler/windsurf;
+Keywords=vscode;
