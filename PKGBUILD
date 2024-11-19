@@ -10,10 +10,10 @@ url='https://github.com/limo-app/limo/'
 arch=('x86_64')
 license=('GPL3')
 makedepends=('boost' 'cbindgen' 'cmake' 'cpr' 'git' 'jsoncpp' 'imagemagick'
-             'libarchive' 'libloot' 'libunrar' 'openssl' 'pugixml' 'qt5-base'
-             'qt5-svg' 'qt5-tools')
+             'libarchive' 'libloot' 'libunrar' 'openssl' 'pugixml' 'spdlog'
+             'qt5-base' 'qt5-svg' 'qt5-tools')
 depends=('boost-libs' 'cpr' 'jsoncpp' 'libarchive' 'libloot' 'libunrar'
-         'openssl' 'pugixml' 'qt5-base' 'qt5-svg' 'qt5-tools')
+         'openssl' 'pugixml' 'spdlog' 'qt5-base' 'qt5-svg' 'qt5-tools')
 
 optdepends=('doxygen')
 source=("${pkgname}::git+https://github.com/limo-app/limo.git"
