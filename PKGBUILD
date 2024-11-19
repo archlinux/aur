@@ -11,7 +11,7 @@
 _bldtype=Release
 _mozc_commit=0eec7239bb541dff10a2f9a7415ba24a99ea87c4
 _bcr_commit=a175a5fda814bf6e9805d9e3367392211e3db81a
-_dict_to_mozc_commit=a9e04d44c3b08183fef4baf1f17a5eaf937248f6
+_dict_to_mozc_commit=50fcd75e03832907b6927deaa4aeccf190a82fca
 _branch=fcitx
 # Sudachi Dictionary
 _sudachidict_date=20241021
@@ -66,7 +66,7 @@ sha512sums=('c87e58be97c9857c3f30b3b09193effaebf6aae5f718b2f5e7ddb4bd2d5f905a08c
             '91b878735e767ddf6f1fe3de61486c1e78936a0f683855e7c34a21c711f405899d3de369d2ff0a1910d65b1afc8c225d8d8b9398cf98d760f3afcfe42644fca2'
             'b9fade4c8cfe60915c51433c1acd4b253b947dd2fabe7b70dd53c92cd751322fb007ef68e04d5551315f3bc2f52048fb8b9babf40455309ab7b38d9f3efd348a'
             '504066a457f77b510f492626c919b6fd7b61f77948bdddef0f7e43ae09bb4bf03cea7000fba91ae0123a94d3b39cac6dfac2010126849afe0a183727fe7b0fc1'
-            '5e8f7debc7844d8c8a54ca8d150a0eeed8ef8d911bbc5e8d6615e49c180652224600bddd0960a2e2be515cb2c84aabe73a73eb190213421a6235c9175782c257'
+            'b6cf5df0b0125bb14233c38d6e3e0cb9b907b243a18c595815deab374ef444d4f2a52bae0182637edc58d7abb4483e14c323ddb59c9e93e99faddd94739c22ad'
             '807b68f18e0f9093ccca368fcd4a209a0723167be7aa48e04217f053bc0911399f3bb86b95cb118e64bb9f53f5242c9c51bcff14f81d94ed68db2448c9386b32'
             'f3ea37e785d604d614b8fa27bf03d1b669240b7c28c293d953a3ac40b6faff56893b42f8e082ccc7723edb5b27a4613a99343477a34fc76afd458912025555e9'
             '384a8c55e928323a4a6b3f83a6845199c67cd3766ca586ea936c41aeb6728020b2430daeb88de3cc19413b6111db5971552f8a538826d3718ab33b7281226ff8'
@@ -110,7 +110,7 @@ prepare() {
   msg '1. Build the rust program(mozcdict-ext), it may take some time...'
   rustup target list --installed | grep $(rustc -vV | sed -e 's|host: ||' -e 's|-gnu||p' -n) | grep -v musl && TARGET=$(rustup target list --installed | grep $(rustc -vV | sed -e 's|host: ||' -e 's|-gnu||p' -n)|grep -v musl|head -n1) || TARGET=$(rustup target list --installed | grep $(rustc -vV | sed -e 's|host: ||' -e 's|-gnu||p' -n)|grep musl|head -n1)
   unset RUSTC
-  cargo build --release --target $TARGET
+  cargo build --release --target $TARGET --config config.toml
   msg '2. Convert SudachiDict to Mozc System Dictionary format. It may take some time...'
   cat "${srcdir}"/mozc/src/data/dictionary_oss/dictionary*.txt > all-dict.txt
   cat ${srcdir}/small_lex.csv ${srcdir}/core_lex.csv ${srcdir}/notcore_lex.csv > all.csv
