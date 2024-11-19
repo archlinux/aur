@@ -2,22 +2,22 @@
 # Contributor: Stefan Tatschner <stefan@rumpelsepp.org>
 
 pkgname=meli
-pkgver=0.8.7
+pkgver=0.8.8
 pkgrel=1
 pkgdesc='A MUA for the terminal aiming for configurability and extensibility with sane defaults'
 arch=(x86_64)
 url=https://meli.delivery/
 license=(GPL-3.0-only)
-depends=(dbus-glib)
+depends=(dbus-glib
+         gcc-libs
+         glibc)
 makedepends=(cargo
              mandoc)
 source=("$pkgname-$pkgver.tag.gz::https://git.meli.delivery/meli/meli/archive/v$pkgver.tar.gz")
-sha256sums=('3d7067ec336c58f96c6c1ebaf7a7817a86dbc40cf2133114b1788a10088bdbc2')
+sha256sums=('4927427072d0a4c9607ed39db36b334966eb43647035b864581d58191ef05629')
 
 prepare() {
 	cd "$pkgname"
-	# Upstream pinned dependencies don't build on 1.80
-	cargo update
 	cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
@@ -25,7 +25,7 @@ build() {
 	cd "$pkgname"
 	export RUSTUP_TOOLCHAIN=stable
 	export CARGO_TARGET_DIR=target
-	CFLAGS+=" -ffat-lto-objects"
+	CFLAGS+=' -ffat-lto-objects'
 	cargo build --frozen --release --features dbus-notifications,jmap
 }
 
