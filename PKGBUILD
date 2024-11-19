@@ -1,7 +1,7 @@
 # Maintainer: Adam Perkowski <adas1per@protonmail.com>
 pkgname='hyprlauncher'
 pkgver=0.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc='GUI for launching applications, written in blazingly fast Rust!'
 arch=('x86_64')
 url="https://github.com/hyprutils/$pkgname"
@@ -27,6 +27,6 @@ build() {
 package() {
     cd "$pkgname-$pkgver"
     install -Dm0755 "target/release/$pkgname" -t "$pkgdir/usr/bin"
-    install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname"
+    install -Dm644 readme.md -t "$pkgdir/usr/share/doc/$pkgname"
     install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
 }
