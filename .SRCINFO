@@ -1,7 +1,7 @@
 pkgbase = s5cmd
 	pkgdesc = Parallel S3 and local filesystem execution tool
 	pkgver = 2.2.2
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/peak/s5cmd
 	arch = x86_64
 	arch = aarch64
