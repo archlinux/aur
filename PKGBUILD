@@ -3,7 +3,7 @@
 pkgbase=python-reproject
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}" "python-${_pyname}-doc")
-pkgver=0.14.0
+pkgver=0.14.1
 pkgrel=1
 pkgdesc="Python-based Astronomical image reprojection"
 arch=('i686' 'x86_64')
@@ -12,16 +12,16 @@ license=('BSD-3-Clause')
 makedepends=('cython>=3.0.4'
              'python-setuptools-scm'
              'python-extension-helpers'
-             'python-wheel'
              'python-build'
              'python-installer'
+             'python-tomli'
              'python-numpy'
              'python-sphinx-astropy'
              'python-matplotlib'
              'python-astropy-healpix'
              'python-dask'
              'python-scipy'
-             'python-pyvo')
+             'python-pyvo')  # wheel required by new setuptools
 #            'python-mimeparse')    # numpy for package itself
 #checkdepends=('python-pytest-arraydiff'
 #              'python-pytest-astropy-header'
@@ -34,7 +34,7 @@ makedepends=('cython>=3.0.4'
 #              'python-shapely'
 #              'python-zarr')     # astropy-healpix dask scipy already in makedep
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('eae73f9972c996ff1c0eda6e0b4aaebe')
+md5sums=('a09c29e849824d5867d614bfdc530730')
 
 get_pyver() {
     python -c "import sys; print('$1'.join(map(str, sys.version_info[:2])))"
