@@ -3,7 +3,7 @@
 
 pkgname=hotspot
 pkgver=1.5.1
-pkgrel=2
+pkgrel=3
 epoch=1
 pkgdesc="The Linux perf GUI for performance analysis"
 arch=('x86_64')
@@ -15,6 +15,7 @@ depends=(
     'kconfigwidgets'
     'kcoreaddons'
     'kddockwidgets-qt6'
+    'kgraphviewer'
     'ki18n'
     'kio'
     'kitemmodels'
@@ -22,18 +23,16 @@ depends=(
     'kparts'
     'libelf'
     'perf'
-    # 'qcustomplot' # currently it doesn't build
+    'qcustomplot' # need the header file for qcustomplot-qt6
+    'qcustomplot-qt6'
     'qt6-base>=6.4'
     'solid'
     'syntax-highlighting'
     'threadweaver'
 )
 makedepends=('cmake>=3.16.0' 'desktop-file-utils' 'extra-cmake-modules')
-optdepends=(
-    'binutils: Support for annotating individual instructions'
-    'kgraphviewer: Call graph in the caller/callee tab'
-    'rustc-demangle>=0.1.18-2: Demangling of Rust symbols'
-)
+optdepends=('binutils: Support for annotating individual instructions'
+            'rustc-demangle>=0.1.18-2: Demangling of Rust symbols')
 source=("$url/releases/download/v$pkgver/$pkgname-v$pkgver.tar.gz"
         "$url/releases/download/v$pkgver/$pkgname-perfparser-v$pkgver.tar.gz"
         "$url/releases/download/v$pkgver/$pkgname-PrefixTickLabels-v$pkgver.tar.gz")
