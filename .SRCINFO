@@ -1,0 +1,18 @@
+pkgbase = iptv-sources-git
+	pkgdesc = Autoupdate iptv sources
+	pkgver = r224.10c78d9
+	pkgrel = 1
+	url = https://github.com/HerbertHe/iptv-sources
+	install = iptv-sources-git.install
+	arch = any
+	license = GPL-3.0
+	makedepends = git
+	depends = nodejs
+	depends = npm
+	depends = pm2
+	optdepends = iptv-checker: Node.js CLI tool for checking links in IPTV playlists
+	backup = etc/pm2/conf.d/iptv-sources.json
+	source = git+https://github.com/HerbertHe/iptv-sources.git
+	sha256sums = SKIP
+
+pkgname = iptv-sources-git

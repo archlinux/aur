@@ -1,0 +1,6 @@
+*
+
+!.gitignore
+!iptv-sources-git.install
+!PKGBUILD
+!.SRCINFO
