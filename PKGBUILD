@@ -1,7 +1,7 @@
 # Maintainer: Piroro-hs
 
 pkgname=hyprland-nox
-pkgver=0.45.0
+pkgver=0.45.1
 pkgrel=1
 pkgdesc="An independent, highly customizable, dynamic tiling Wayland compositor that doesn't sacrifice on its looks. (w/o XWayland support)"
 arch=('x86_64')
@@ -42,7 +42,7 @@ backup=()
 source=("$pkgname::git+$url#tag=v$pkgver"
         "${pkgname}_hyprland-protocols::git+https://github.com/hyprwm/hyprland-protocols.git"
         "${pkgname}_udis86::git+https://github.com/canihavesomecoffee/udis86.git")
-sha256sums=('4fca85e8c27effe33c1f4ea328a0a1e6d86550ece659be7882eb946e385c55ad'
+sha256sums=('1d973d5ed28f8fc3b80b6f7e0511ff4b79c6fd50b7e6128c555acf3dfcd0df95'
             'SKIP'
             'SKIP')
 
