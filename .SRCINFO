@@ -1,5 +1,5 @@
 pkgbase = spotify-electron-bin
-	pkgdesc = A cross-platform music streaming desktop app made with Electron-React frontend and Python-FastAPI-MongoDB. The main goal is to reproduce the original Spotify functionality while adding new ones like uploading songs.(Prebuilt version.Use system-wide electron)
+	pkgdesc = A cross-platform music streaming desktop app.The main goal is to reproduce the original Spotify functionality while adding new ones like uploading songs.(Prebuilt version.Use system-wide electron)
 	pkgver = 2.01
 	pkgrel = 1
 	url = https://antoniomrtz.github.io/SpotifyElectron_Web/
