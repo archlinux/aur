@@ -1,7 +1,7 @@
 pkgbase = python-simplesat
 	pkgdesc = SAT solver for use in Enstaller, based on the MiniSat implementation
 	pkgver = 0.8.2
-	pkgrel = 7
+	pkgrel = 8
 	url = https://github.com/enthought/sat-solver
 	arch = any
 	license = MIT
