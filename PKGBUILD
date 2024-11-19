@@ -3,7 +3,7 @@
 _binname="flow"
 _pkgname="${_binname}-cli"
 pkgname="${_pkgname}-bin"
-pkgver=2.0.10
+pkgver=2.1.1
 pkgrel=1
 pkgdesc="A command-line interface that provides useful utilities for building Flow applications"
 arch=('x86_64' 'aarch64')
@@ -16,8 +16,8 @@ conflicts=("${_pkgname}")
 _pkgsrc="${_pkgname}-${pkgver}"
 source_x86_64=("${_pkgsrc}-x86_64.tar.gz::${_url}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-linux-amd64.tar.gz")
 source_aarch64=("${_pkgsrc}-aarch64.tar.gz::${_url}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-linux-arm64.tar.gz")
-b2sums_x86_64=('bbd47a01794b5eaa2d6a4ec120199ecdb160f114e903e2110dad9089dda5523bf75cb6da6a1bf41860de314239da8d7656f927e99f5cfd8a2d90013d171b0474')
-b2sums_aarch64=('b0649a23c802fc208f8854a25c285449de0527a4e9f13a2e6cddf25029f94ac86f07d9abf5d93b0a54edde21711d425e9f60a13ed6220dfe92bcb3b0b2cd0291')
+b2sums_x86_64=('9a8b213f2992d9b45a1196062961cf6db7b39ef78318f25a5c1f6245da311bd9111af620bb99f56ef847a9986b0fb5b406ba108fcc283d30053b3790a88b32b3')
+b2sums_aarch64=('5a47cf54da0cfb2889eaa403bb7c8d19d0eb102a88fb280128178a89979898d46e282ec815701fe42c597cd11685c7976d131e4597ebdf34dc0d4437903f6596')
 
 prepare() {
   cd "${srcdir}"
@@ -34,13 +34,13 @@ build() {
 
 package() {
   cd "${srcdir}"
-  install -Dm755 "${_binname}" "${pkgdir}/usr/bin/${_binname}"
-  install -Dm644 "README.md"   "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
-  install -Dm644 "LICENSE"     "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
+  install -vDm755 "${_binname}" "${pkgdir}/usr/bin/${_binname}"
+  install -vDm644 "README.md"   "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
+  install -vDm644 "LICENSE"     "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 
   cd "completions"
-  install -Dm644 "${_binname}.bash"       "${pkgdir}/usr/share/bash-completion/completions/${_binname}"
-  install -Dm644 "${_binname}.fish"       "${pkgdir}/usr/share/fish/vendor_completions.d/${_binname}.fish"
-  install -Dm644 "${_binname}.zsh"        "${pkgdir}/usr/share/zsh/site-functions/_${_binname}"
-  install -Dm644 "${_binname}.powershell" "${pkgdir}/usr/share/powershell/Modules/${_binname}/${_binname}.ps1"
+  install -vDm644 "${_binname}.bash"       "${pkgdir}/usr/share/bash-completion/completions/${_binname}"
+  install -vDm644 "${_binname}.fish"       "${pkgdir}/usr/share/fish/vendor_completions.d/${_binname}.fish"
+  install -vDm644 "${_binname}.zsh"        "${pkgdir}/usr/share/zsh/site-functions/_${_binname}"
+  install -vDm644 "${_binname}.powershell" "${pkgdir}/usr/share/powershell/Modules/${_binname}/${_binname}.ps1"
 }
