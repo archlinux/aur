@@ -4,11 +4,11 @@
 # Contributor: Christian Finnberg <christian@finnberg.net>
 pkgname=notesnook-git
 _pkgname=Notesnook
-pkgver=3.0.20.r10.gb7ddae6
-_electronversion=30
+pkgver=3.0.21.r0.g86bf8f6
+_electronversion=31
 _nodeversion=22
 pkgrel=1
-pkgdesc="A fully open source & end-to-end encrypted note taking alternative to Evernote.Use system-wide electron."
+pkgdesc="A fully open source & end-to-end encrypted note taking alternative to Evernote.(Use system-wide electron)"
 arch=(
     'aarch64'
     'x86_64'
@@ -30,6 +30,7 @@ makedepends=(
     'gcc'
     'curl'
     'yarn'
+    'python-setuptools'
 )
 source=(
     "${pkgname//-/.}::git+${_ghurl}.git"
@@ -73,13 +74,12 @@ build() {
     if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
         {
             echo 'registry=https://registry.npmmirror.com'
-            echo 'disturl=https://registry.npmmirror.com/-/binary/node/'
             echo 'electron_mirror=https://registry.npmmirror.com/-/binary/electron/'
             echo 'electron_builder_binaries_mirror=https://registry.npmmirror.com/-/binary/electron-builder-binaries/'
         } >> .npmrc
         find ./ -type f -name "package-lock.json" -exec sed -i "s/registry.npmjs.org/registry.npmmirror.com/g" {} +
+        echo apps/{desktop,web} packages/{crypto,editor,logger,streamable-fs,theme,ui,sodium,clipper} servers/theme | xargs -n 1 cp .npmrc
     fi
-    echo apps/desktop apps/web | xargs -n 1 cp .npmrc
     cd "${srcdir}/${pkgname//-/.}"
     sed -i "s/npm \${/NODE_ENV=development npm \${/g" scripts/bootstrap.mjs
     # Install packages
@@ -90,7 +90,7 @@ build() {
     NODE_ENV=production     npm run bootstrap -- --scope=desktop
     # Build Electron wrapper
     cd "${srcdir}/${pkgname//-/.}/apps/desktop"
-    sed -i "s/process.execPath/\'\/usr\/lib\/${pkgname%-git}\/${pkgname%-git}\'/g" src/utils/asset-manager.ts
+    find src -type f -exec sed -i "s/process.resourcesPath/\'\/usr\/lib\/${pkgname%-git}\'/g" {} +
     sed -i "s/\"asar\": false,/\"asar\": true,/g;s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
     NODE_ENV=production     npx nx run release --project @notesnook/desktop
     NODE_ENV=production     npm exec -c "electron-builder --linux dir -c.electronDist=${electronDist}"
