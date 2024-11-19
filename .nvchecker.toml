@@ -1,0 +1,4 @@
+[tauon-music-box]
+source = "git"
+git = "https://github.com/Taiko2k/Tauon.git"
+prefix = "v"
