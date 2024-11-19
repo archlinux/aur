@@ -1,7 +1,7 @@
 pkgbase = telegram-desktop-kdefix
 	pkgdesc = Telegram Desktop client with KDE unread counter bug reverted
-	pkgver = 5.7.2
-	pkgrel = 3
+	pkgver = 5.8.1
+	pkgrel = 1
 	url = https://desktop.telegram.org/
 	arch = x86_64
 	license = GPL3
@@ -54,11 +54,9 @@ pkgbase = telegram-desktop-kdefix
 	provides = telegram-desktop
 	conflicts = telegram-desktop
 	options = !debug
-	source = https://github.com/telegramdesktop/tdesktop/releases/download/v5.7.2/tdesktop-5.7.2-full.tar.gz
+	source = https://github.com/telegramdesktop/tdesktop/releases/download/v5.8.1/tdesktop-5.8.1-full.tar.gz
 	source = 0001-kde-theme-injection-fix.patch
-	source = 0002-fix-round-video-recorder-ffmpeg.patch
-	sha512sums = 55fa4f20ceae71f2b869c00abdcf6a27f505156f7b254e38a68a97ea34b09e2e9deeef1fec6c5633e93043fb2e9e9ea72502ec9daeed319c8de65cbe825ca916
+	sha512sums = 68c8cb704520f0825b2f1054822e157fcb708e115e67f5cc5906dfda6bac75f27ec931c7d287ffd5f36e87d3f07194017a8dfbf70ec540462d1cbb41511b36a5
 	sha512sums = 6cfe49956da17cb7d7fa108cb922bab78865cddfe1863238c64b9ef22d2c138b24491de091f011d723babc4ed771a60d4e5a3a78dd9472ed3600b19aaf79ae65
-	sha512sums = 7bfd91382605d89e22065b745f5c41465b92235ed145f6c4b639fbc6fcea6ae4ee8ce616967ac4a3c8b3b64e2d36d045c1f28c350e628a65d2cea0a060508736
 
 pkgname = telegram-desktop-kdefix
