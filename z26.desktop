@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=z26
+Exec=/usr/bin/z26
+Icon=/usr/share/icons/default/32x32/apps/z26icon.png
+Comment=An Atari 2600 Emulator
+Categories=Game;
