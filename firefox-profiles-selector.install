@@ -1,0 +1,15 @@
+post_install() {
+    cat <<EOF
+
+==> Copy the `config.ini.dist` to `config.ini` in /opt/firefox-profiles-selector/ and adjust the 
+    profiles_path to ~/.mozilla/firefox/profiles.ini if your not using snap
+
+
+==> Set your default browser to this selector using:
+
+    xdg-settings set default-web-browser firefox-profiles-selector.desktop
+
+
+EOF
+}
+

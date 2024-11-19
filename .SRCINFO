@@ -1,0 +1,12 @@
+pkgbase = firefox-profiles-selector
+	pkgdesc = Allow to select firefox profile when open an external link
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = https://github.com/linhx/firefox-profiles-selector
+	install = firefox-profiles-selector.install
+	arch = any
+	license = GPL3
+	source = https://github.com/linhx/firefox-profiles-selector/releases/download/v.1.0.2/firefox-profiles-selector_v1.0.2.tar.gz
+	sha512sums = 26f151d032408a44b43ccc216a5e476140569f07fac49d24a49af84ffd9d05b0c6f5200e8d27b9ef475517a59e5577a0a3c2a0642e44b54c8416162c22c01734
+
+pkgname = firefox-profiles-selector
