@@ -1,0 +1,18 @@
+pkgbase = spotify-electron-bin
+	pkgdesc = A cross-platform music streaming desktop app made with Electron-React frontend and Python-FastAPI-MongoDB. The main goal is to reproduce the original Spotify functionality while adding new ones like uploading songs.(Prebuilt version.Use system-wide electron)
+	pkgver = 2.01
+	pkgrel = 1
+	url = https://antoniomrtz.github.io/SpotifyElectron_Web/
+	arch = x86_64
+	license = CC-BY-NC-SA-4.0
+	makedepends = fuse2
+	makedepends = asar
+	depends = electron25
+	provides = spotify-electron=2.01
+	conflicts = spotify-electron
+	source = spotify-electron-2.01.AppImage::https://github.com/AntonioMrtz/SpotifyElectron/releases/download/v2.01/SpotifyElectron.AppImage
+	source = spotify-electron.sh
+	sha256sums = 53f81f88ddfedf7a331c4468058cb25c2cd2edca360aa995c0cda7a8980fd8fd
+	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
+
+pkgname = spotify-electron-bin
