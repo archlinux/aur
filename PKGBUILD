@@ -5,10 +5,10 @@
 _pkgname=siyuan
 pkgname="${_pkgname}-note-bin"
 _appname=SiYuan
-pkgver=3.1.11
+pkgver=3.1.13
 _electronversion=32
 pkgrel=1
-pkgdesc="A local-first personal knowledge management system.Prebuilt version.Use system-wide electron."
+pkgdesc="A local-first personal knowledge management system.(Prebuilt version.Use system-wide electron)"
 arch=(
     'aarch64'
     'x86_64'
@@ -33,8 +33,8 @@ source=(
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-arm64.deb")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux.deb")
 sha256sums=('291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-sha256sums_aarch64=('020bbd22d8d84c6db435cff7bc70edcecfb0ffeee3d26ff8e737b1fa88f839ce')
-sha256sums_x86_64=('a774f378c1115105232c6ddcb97aa07b7e8fed02d1099b4a899be38a973d6c2f')
+sha256sums_aarch64=('2ed92e7e99dd91956538833a0b5367593c080e5a2d7a9cdb4841602c67d1ee53')
+sha256sums_x86_64=('a0b945d2f08dfb7f22b0d152a5682f24e0feff6d2c551595c95fb0d4b835b7b1')
 build() {
     sed -e "
         s/@electronversion@/${_electronversion}/g
