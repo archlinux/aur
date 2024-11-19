@@ -1,0 +1,12 @@
+pkgbase = dbus-codegen-go
+	pkgdesc = Code generator for D-Bus introspection data format for Go.
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/amenzhinsky/dbus-codegen-go
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	source = dbus-codegen-go-0.2.0.tar.gz::https://github.com/amenzhinsky/dbus-codegen-go/archive/refs/tags/v0.2.0.tar.gz
+	sha256sums = 02e25e3fd0ad864685b9a301ab268c1fe3be54bb4394184159bd508a68fb6143
+
+pkgname = dbus-codegen-go
