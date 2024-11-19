@@ -10,9 +10,6 @@ url="https://github.com/HerbertHe/iptv-sources"
 license=('GPL-3.0')
 depends=('nodejs' 'pm2')
 makedepends=('git' 'npm')
-optdepends=(
-    'iptv-checker: Node.js CLI tool for checking links in IPTV playlists'
-)
 install="$pkgname.install"
 source=("git+$url.git")
 sha256sums=(SKIP)

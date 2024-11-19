@@ -10,7 +10,6 @@ pkgbase = iptv-sources-git
 	makedepends = npm
 	depends = nodejs
 	depends = pm2
-	optdepends = iptv-checker: Node.js CLI tool for checking links in IPTV playlists
 	backup = etc/pm2/conf.d/iptv-sources.json
 	source = git+https://github.com/HerbertHe/iptv-sources.git
 	sha256sums = SKIP
