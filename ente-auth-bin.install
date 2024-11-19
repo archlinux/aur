@@ -1,18 +1,6 @@
-post_install() {
-	gtk-update-icon-cache -q -t -f usr/share/icons/hicolor
-	if [ ! -e /usr/bin/ente_auth ]; then
-		ln -s /usr/share/ente_auth/ente_auth /usr/bin/ente_auth
-		chmod +x /usr/bin/ente_auth
+pre_upgrade() {
+	# Needed to prevent orphaned files when upgrading from ente-auth-bin <= 4.0.2
+	if [ "$(readlink /usr/bin/ente_auth)" = "/usr/share/ente_auth/ente_auth" ]; then
+    	rm /usr/bin/ente_auth
 	fi
-	update-desktop-database -q
-}
-
-post_upgrade() {
-	post_install
-}
-
-post_remove() {
-	gtk-update-icon-cache -q -t -f usr/share/icons/hicolor
-	rm /usr/bin/ente_auth
-	update-desktop-database -q
 }
