@@ -1,6 +1,6 @@
 pkgbase = oama-bin
 	pkgdesc = Provide OAuth2 renewal and authorization capabilities
-	pkgver = 0.15
+	pkgver = 0.16
 	pkgrel = 1
 	url = https://github.com/pdobsan/oama
 	install = .INSTALL
@@ -22,9 +22,9 @@ pkgbase = oama-bin
 	conflicts = oama
 	conflicts = oama-git
 	replaces = mailctl-bin
-	source_x86_64 = https://github.com/pdobsan/oama/releases/download/0.15/oama-0.15-Linux-x86_64.tgz
-	sha256sums_x86_64 = fa8169ad96a66f173800fd8ba5426ef77c695707b8396c7813d5fcc38f222eea
-	source_aarch64 = https://github.com/pdobsan/oama/releases/download/0.15/oama-0.15-Linux-aarch64.tgz
-	sha256sums_aarch64 = ef6f7ebd10dd3aa4f30ad98e7e076b47a32a62d2001be64516ccfea9ca8d732a
+	source_x86_64 = https://github.com/pdobsan/oama/releases/download/0.16/oama-0.16-Linux-x86_64.tgz
+	sha256sums_x86_64 = 9704443168d699bef08e034363e14f08f4030115c971adce59d9dfa5684f242a
+	source_aarch64 = https://github.com/pdobsan/oama/releases/download/0.16/oama-0.16-Linux-aarch64.tgz
+	sha256sums_aarch64 = b885e6eebac59d6e203b13cbcb3aad782057d48cf1ba337e9f21ba579e1c360f
 
 pkgname = oama-bin
