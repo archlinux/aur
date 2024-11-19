@@ -1,4 +1,4 @@
-# Maintainer: shtrophic <christoph at liebender dot dev>
+# Maintainer: shtrophic <aur at shtrophic dot net>
 
 _pkgname=shgo
 pkgname="python-$_pkgname-git"
