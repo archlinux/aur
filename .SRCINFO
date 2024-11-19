@@ -1,7 +1,7 @@
 pkgbase = hyprgui
 	pkgdesc = GUI for configuring Hyprland, written in blazingly fast Rust!
 	pkgver = 0.1.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/hyprutils/hyprgui
 	arch = x86_64
 	license = GPL-2.0
