@@ -16,12 +16,12 @@ sha256sums=('9d73dd38c1d941981e6140ebb034a9f66543e08bce196f1659f7a01c46e38b81')
 backup=("etc/webapps/$pkgname/config.env")
 
 package(){
-    cd "$srcdir/$_pkgname-$pkgver"
+    cd "$srcdir"
     COMPOSER_ALLOW_SUPERUSER=1 composer install --no-scripts --no-dev --ignore-platform-reqs
 
     install -d "$pkgdir/usr/share/webapps/$pkgname" "$pkgdir/usr/share/licenses/$pkgname" "$pkgdir/etc/webapps/$pkgname"
     cp -rv * "$pkgdir/usr/share/webapps/$pkgname"
-    install -D "$srcdir/$_pkgname-$pkgver/LICENSE" "$pkgdir/usr/share/licenses/$pkgname"
+    install -D "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/$pkgname"
 
     cp -v .env.example "$pkgdir/etc/webapps/$pkgname/.env"
     mv -v "$pkgdir/etc/webapps/$pkgname/.env" "$pkgdir/etc/webapps/$pkgname/config.env"
