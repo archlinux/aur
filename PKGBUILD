@@ -4,7 +4,7 @@
 pkgname=bruno-electron
 _pkgname=bruno
 pkgdesc="Bruno, an opensource API Client for Exploring and Testing APIs using the system provided Electron"
-pkgver=1.28.0
+pkgver=1.34.2
 pkgrel=1
 conflicts=('bruno')
 provides=('bruno')
@@ -14,11 +14,12 @@ license=('MIT')
 _electron=electron
 depends=(
     "${_electron}>=31.2.0"
-    "nodejs>=20.15.0"
+#    "nodejs>=20.9.0"
 )
 
 makedepends=(
     'asar'
+    'nvm' # where did that bring you? back to me.
 )
 
 source=(
@@ -26,25 +27,50 @@ source=(
    com.usebruno.app.Bruno.desktop
 )
 
-sha256sums=('0a4034a163a99680d046c3c922f2f79d29f20344e0c0ab21cdc47c3b0eaaa8e5'
+sha256sums=('ab8720a4c958f6f102c1464900d239cedb7eeb3b696f1d710b01a5c8d83a480d'
             '7bad0d66e67fdaaf99d1b7b32ba2f119b7d6dba12ecfdb398c39ee3c81bbe051')
 
+_ensure_local_nvm() {
+    # let's be sure we are starting clean
+    which nvm >/dev/null 2>&1 && nvm deactivate && nvm unload
+    export NVM_DIR="${srcdir}/.nvm"
+
+    # The init script returns 3 if version specified
+    # in ./.nvrc is not (yet) installed in $NVM_DIR
+    # but nvm itself still gets loaded ok
+    source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
+}
+
 prepare() {
+    _ensure_local_nvm
+
     cd "${_pkgname}-${pkgver}"
 
     export HUSKY=0
 
+    nvm install
     npm install --cache "${srcdir/npm-cache}"
+
+    # WHY DO I HAVE TO INSTALL THIS MANUALLY?
+    npm install node-addon-api --cache "${srcdir/npm-cache}"
 }
 
 build() {
+    _ensure_local_nvm
+    
     export NODE_ENV=production
 
     cd "${_pkgname}-${pkgver}"
 
+    # build packages
     npm run build:graphql-docs
     npm run build:bruno-query
     npm run build:bruno-common
+
+    # bundle js sandbox libraries
+    npm run sandbox:bundle-libraries --workspace=packages/bruno-js
+
+    # build app
     npm run build:web
 
     electronDist="/usr/lib/${_electron}"
