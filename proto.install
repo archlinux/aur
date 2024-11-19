@@ -1,0 +1,13 @@
+post_install(){
+  ## Create required directorie.
+  echo "For radion to function properly, you need to run these commands:"
+  echo "mkdir -p ~/.config/radion/"
+  echo "[[ -e ~/.config/mpv/scripts/ ]]||mkdir -p ~/.config/mpv/scripts/"
+  echo "if [[ ! -d ~/Music/radion/ ]];then mkdir -p ~/Music/radion/ ;fi"
+  ## Copy in required files.
+  echo "cp /usr/share/radion/stations.txt ~/.config/radion/"
+  echo "cp /etc/radion.conf ~/.config/radion/"
+  echo "cp /usr/share/radion/radion-rofi-theme.rasi ~/.config/radion/"
+  echo "cp -r /usr/share/radion/png/ ~/.config/radion/"
+  echo "cp /usr/share/radion/mpv/icecast-logger.lua -t ~/.config/mpv/scripts/"
+}

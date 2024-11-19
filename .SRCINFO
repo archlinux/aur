@@ -1,0 +1,19 @@
+pkgbase = radion
+	pkgdesc = CLI internet radio client in Bash.
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://gitlab.com/christosangel/radion
+	install = proto.install
+	arch = x86_64
+	license = GPL-2.0-or-later
+	depends = bash
+	depends = mpv
+	depends = sox
+	depends = yad
+	optdepends = fzf
+	optdepends = rofi
+	optdepends = dmenu
+	source = radion-1.2.0.tar.gz::https://gitlab.com/christosangel/radion/-/archive/1.2.0/radion-1.2.0.tar.gz
+	sha256sums = d35101f0be1d242b8fbf3c68148f524588f6faf8647bd70f82ca266bb58fc0ea
+
+pkgname = radion
