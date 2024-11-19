@@ -4,7 +4,7 @@
 # Contributor: Sebastien Duthil <duthils@free.fr>
 
 pkgname=factorio-space-age-experimental
-pkgver=2.0.19
+pkgver=2.0.20
 pkgrel=1
 pkgdesc="A 2D game about building and maintaining factories (experimental branch w/ Space Age expansion)."
 arch=('x86_64')
