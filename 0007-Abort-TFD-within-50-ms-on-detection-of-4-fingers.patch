@@ -1,4 +1,4 @@
-From dcfdc55c160dbb48ec8b6154d02aafe2afa3131e Mon Sep 17 00:00:00 2001
+From 147b65a7e8784d9fb8f70f6f7cd57a10578d7725 Mon Sep 17 00:00:00 2001
 From: abc def <24701-abcdef@users.noreply.gitlab.freedesktop.org>
 Date: Mon, 14 Feb 2022 13:59:11 +0100
 Subject: [PATCH 7/7] Abort TFD within 50 ms on detection of 4+ fingers
@@ -368,7 +368,7 @@ index 33fb4a06..681beedf 100644
  }
  
 diff --git a/src/evdev-mt-touchpad.h b/src/evdev-mt-touchpad.h
-index f439c94d..54bcd1b5 100644
+index ec64b747..5553726d 100644
 --- a/src/evdev-mt-touchpad.h
 +++ b/src/evdev-mt-touchpad.h
 @@ -141,16 +141,22 @@ enum tp_tfd_state {
@@ -398,5 +398,5 @@ index f439c94d..54bcd1b5 100644
  	TFD_STATE_POSSIBLE_RESUME,
  };
 -- 
-2.46.1
+2.47.0
 

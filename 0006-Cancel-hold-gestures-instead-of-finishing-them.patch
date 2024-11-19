@@ -1,4 +1,4 @@
-From 3c74a94547c073a13bd1383a6d664bda44de2566 Mon Sep 17 00:00:00 2001
+From ab91137cc60bbfcffb7b59256ef4ed0fe0ef200c Mon Sep 17 00:00:00 2001
 From: abc def <24701-abcdef@users.noreply.gitlab.freedesktop.org>
 Date: Mon, 7 Feb 2022 16:19:01 +0100
 Subject: [PATCH 6/7] Cancel hold gestures instead of finishing them
@@ -32,5 +32,5 @@ index d9a27c8a..33fb4a06 100644
  		tp_gesture_cancel(tp, time);
  		break;
 -- 
-2.46.1
+2.47.0
 

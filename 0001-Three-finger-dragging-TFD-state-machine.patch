@@ -1,4 +1,4 @@
-From 3f713826eedeeab946556250674a2af6a0f548e7 Mon Sep 17 00:00:00 2001
+From 989182cb75fc80ded5caebf4953bc0a51542e74b Mon Sep 17 00:00:00 2001
 From: abc def <24701-abcdef@users.noreply.gitlab.freedesktop.org>
 Date: Fri, 17 Dec 2021 00:42:50 +0100
 Subject: [PATCH 1/7] Three finger dragging (TFD) state machine
@@ -18,10 +18,10 @@ Signed-off-by: Temp Name <test@example.com>
  create mode 100644 src/evdev-mt-touchpad-tfd.c
 
 diff --git a/meson.build b/meson.build
-index dccc32c2..9e29012d 100644
+index 74fa82a6..d4a9f5e7 100644
 --- a/meson.build
 +++ b/meson.build
-@@ -350,6 +350,7 @@ src_libinput = src_libfilter + [
+@@ -364,6 +364,7 @@ src_libinput = src_libfilter + [
  	'src/evdev-middle-button.c',
  	'src/evdev-mt-touchpad.c',
  	'src/evdev-mt-touchpad-tap.c',
@@ -30,10 +30,10 @@ index dccc32c2..9e29012d 100644
  	'src/evdev-mt-touchpad-buttons.c',
  	'src/evdev-mt-touchpad-edge-scroll.c',
 diff --git a/src/evdev-mt-touchpad-gestures.c b/src/evdev-mt-touchpad-gestures.c
-index e92b9f4a..74d637ea 100644
+index d557353b..d7f04dd1 100644
 --- a/src/evdev-mt-touchpad-gestures.c
 +++ b/src/evdev-mt-touchpad-gestures.c
-@@ -1303,7 +1303,7 @@ tp_gesture_post_events(struct tp_dispatch *tp, uint64_t time,
+@@ -1567,7 +1567,7 @@ tp_gesture_post_events(struct tp_dispatch *tp, uint64_t time,
  	 * physical button is down, don't allow gestures unless the button
  	 * is held down by a *thumb*, specifically.
  	 */
@@ -42,7 +42,7 @@ index e92b9f4a..74d637ea 100644
  	    (tp->buttons.is_clickpad && tp->buttons.state &&
  	     tp->thumb.state == THUMB_STATE_FINGER)) {
  		if (tp->gesture.state != GESTURE_STATE_POINTER_MOTION) {
-@@ -1430,7 +1430,8 @@ tp_gesture_handle_state(struct tp_dispatch *tp, uint64_t time)
+@@ -1715,7 +1715,8 @@ tp_gesture_update_finger_state(struct tp_dispatch *tp, uint64_t time)
  			active_touches++;
  	}
  
@@ -53,7 +53,7 @@ index e92b9f4a..74d637ea 100644
  		if (active_touches == 0) {
  			tp_gesture_stop(tp, time);
 diff --git a/src/evdev-mt-touchpad-tap.c b/src/evdev-mt-touchpad-tap.c
-index 299cd554..963eb1c1 100644
+index 3c76c3d6..c689cdc1 100644
 --- a/src/evdev-mt-touchpad-tap.c
 +++ b/src/evdev-mt-touchpad-tap.c
 @@ -143,10 +143,14 @@ tp_tap_notify(struct tp_dispatch *tp,
@@ -1384,7 +1384,7 @@ index 00000000..54fca8fe
 +}
 +
 diff --git a/src/evdev-mt-touchpad.c b/src/evdev-mt-touchpad.c
-index 9bc6bf6a..c0292aff 100644
+index 9c219a68..74727a15 100644
 --- a/src/evdev-mt-touchpad.c
 +++ b/src/evdev-mt-touchpad.c
 @@ -846,6 +846,10 @@ tp_touch_active_for_gesture(const struct tp_dispatch *tp, const struct tp_touch
@@ -1417,7 +1417,7 @@ index 9bc6bf6a..c0292aff 100644
  	tp_init_buttons(tp, device);
  	tp_init_dwt(tp, device);
 diff --git a/src/evdev-mt-touchpad.h b/src/evdev-mt-touchpad.h
-index 26588dbb..0430c8b2 100644
+index 48d1b113..26593cf7 100644
 --- a/src/evdev-mt-touchpad.h
 +++ b/src/evdev-mt-touchpad.h
 @@ -134,6 +134,20 @@ enum tp_tap_state {
@@ -1441,7 +1441,7 @@ index 26588dbb..0430c8b2 100644
  enum tp_tap_touch_state {
  	TAP_TOUCH_STATE_IDLE = 16,	/**< not in touch */
  	TAP_TOUCH_STATE_TOUCH,		/**< touching, may tap */
-@@ -250,6 +264,13 @@ struct tp_touch {
+@@ -253,6 +267,13 @@ struct tp_touch {
  		bool is_palm;
  	} tap;
  
@@ -1455,7 +1455,7 @@ index 26588dbb..0430c8b2 100644
  	struct {
  		enum tp_edge_scroll_touch_state edge_state;
  		uint32_t edge;
-@@ -440,6 +461,31 @@ struct tp_dispatch {
+@@ -442,6 +463,31 @@ struct tp_dispatch {
  		unsigned int nfingers_down;	/* number of fingers down for tapping (excl. thumb/palm) */
  	} tap;
  
@@ -1487,7 +1487,7 @@ index 26588dbb..0430c8b2 100644
  	struct {
  		struct libinput_device_config_dwtp config;
  		bool dwtp_enabled;
-@@ -625,6 +671,12 @@ tp_touch_active_for_gesture(const struct tp_dispatch *tp,
+@@ -627,6 +673,12 @@ tp_touch_active_for_gesture(const struct tp_dispatch *tp,
  int
  tp_tap_handle_state(struct tp_dispatch *tp, uint64_t time);
  
@@ -1501,5 +1501,5 @@ index 26588dbb..0430c8b2 100644
  tp_tap_post_process_state(struct tp_dispatch *tp);
  
 -- 
-2.46.1
+2.47.0
 

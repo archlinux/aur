@@ -1,4 +1,4 @@
-From 9f769486da4da4b9ab93bc96209cc8a05e956a44 Mon Sep 17 00:00:00 2001
+From 396064f0d8961476d8a7ad4060d874a277a545fd Mon Sep 17 00:00:00 2001
 From: abc def <24701-abcdef@users.noreply.gitlab.freedesktop.org>
 Date: Mon, 7 Feb 2022 15:44:00 +0100
 Subject: [PATCH 5/7] Debounce for 4+ fingers before drag starts
@@ -153,7 +153,7 @@ index c1c32862..d9a27c8a 100644
  			break;
  	}
 diff --git a/src/evdev-mt-touchpad.h b/src/evdev-mt-touchpad.h
-index 34b19b56..f439c94d 100644
+index 3e464869..ec64b747 100644
 --- a/src/evdev-mt-touchpad.h
 +++ b/src/evdev-mt-touchpad.h
 @@ -141,8 +141,10 @@ enum tp_tfd_state {
@@ -170,5 +170,5 @@ index 34b19b56..f439c94d 100644
  	TFD_STATE_DRAG,
  	/* [debounce] drag-lock; 1 finger touching, possibly going to 0 fingers */
 -- 
-2.46.1
+2.47.0
 

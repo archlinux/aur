@@ -1,4 +1,4 @@
-From 119ce402ead7dda1b4e2689c72dfc3dde5d0887a Mon Sep 17 00:00:00 2001
+From fb395257246cb0cbbdfe9f0bf7a2d54e644335c9 Mon Sep 17 00:00:00 2001
 From: abc def <24701-abcdef@users.noreply.gitlab.freedesktop.org>
 Date: Thu, 6 Jan 2022 13:22:42 +0100
 Subject: [PATCH 3/7] TFD: add debounce state for touch count decrease
@@ -172,7 +172,7 @@ index c12bc27b..49c576bd 100644
  		case TFD_STATE_POSSIBLE_RESUME:
  			tp_tfd_handle_event(tp, NULL, TFD_EVENT_TAP, time, tp->tfd.finger_count);
 diff --git a/src/evdev-mt-touchpad.h b/src/evdev-mt-touchpad.h
-index 7025ee11..34b19b56 100644
+index 2b820b41..3e464869 100644
 --- a/src/evdev-mt-touchpad.h
 +++ b/src/evdev-mt-touchpad.h
 @@ -136,15 +136,20 @@ enum tp_tap_state {
@@ -201,5 +201,5 @@ index 7025ee11..34b19b56 100644
  };
  
 -- 
-2.46.1
+2.47.0
 
