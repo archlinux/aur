@@ -1,17 +1,18 @@
 pkgbase = amdguid-wayland-bin
 	pkgdesc = AMDGPU temperature and fan speed monitoring tool
 	pkgver = 1.0.13
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Eraden/amdgpud
 	arch = x86_64
 	license = MIT
 	license = Apache-2.0
-	makedepends = tar
 	depends = amdfand
 	optdepends = amdmond
 	optdepends = amdvold
 	provides = amdguid-wayland
 	provides = amdguid
+	conflicts = amdguid-wayland
+	conflicts = amdguid
 	source = amdguid-wayland-bin-1.0.13.tar.gz::https://github.com/Eraden/amdgpud/releases/download/v1.0.12/amdguid-wayland-archlinux-latest-1.0.13.zip
 	md5sums = ce25a6c319f0cf839e20a70547619622
 
