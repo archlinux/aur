@@ -1,7 +1,7 @@
 # Maintainer: moj <contact (cat) moritzj (dog) de>
 # Contributor: Clansty <i@gao4.pw>
 pkgname=postman-agent
-pkgver=0.4.17
+pkgver=0.4.32
 pkgrel=1
 pkgdesc="The Postman agent overcomes the Cross Object Resource Sharing (CORS) limitations of browsers, and facilitates API request sending from your browser version of Postman. Using the system electron"
 arch=('any')
@@ -12,7 +12,7 @@ source=(
 	"postman-agent.desktop"
 )
 depends=(electron)
-sha256sums=('904fbfe9aa6a64cb34f407fa007fe66ba1f17021a5080f1f7eac3b1e9d0537a1'
+sha256sums=('335a24c2fb990749d99f59331a7741cc6bcadda4c805fa3cf1c139aee4556840'
             '1a4b04c499d03296049104a06863eb2b9341d93e7fddaa8b22b0a89b2e1b0525')
 package() {
 	install -d "${pkgdir}/usr/share"
@@ -21,4 +21,4 @@ package() {
     install -d "${pkgdir}/usr/share/postman-agent"
     install -Dm644 "postman-agent.desktop" "${pkgdir}/usr/share/applications/postman-agent.desktop"
     install -Dm644 "Postman Agent/app/icons/icon_128x128.png" "${pkgdir}/usr/share/icons/hicolor/128x128/apps/postman-agent.png"
-} 
+}
