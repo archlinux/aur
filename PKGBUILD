@@ -1,4 +1,4 @@
-# Maintainer: Sir-Photch < sir-photch at posteo dot me >
+# Maintainer: shtrophic <aur at shtrophic dot net>
 
 _pkgname=bass
 pkgname="fish-$_pkgname-git"
@@ -15,8 +15,8 @@ source=("git+$url.git")
 sha256sums=(SKIP)
 
 pkgver() {
-  	cd "$srcdir/$_pkgname"
-  	git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+	cd "$srcdir/$_pkgname"
+	git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 check() {
