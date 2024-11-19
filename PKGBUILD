@@ -1,4 +1,4 @@
-# Maintainer: Sir-Photch <aur@liebender.dev>
+# Maintainer: shtrophic <aur at shtrophic dot net>
 
 pkgname=wicuvanity
 pkgver=1.1
