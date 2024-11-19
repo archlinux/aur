@@ -1,0 +1,21 @@
+diff --git a/machine/machine.c b/machine/machine.c
+index f0054cc..8ca69ee 100644
+--- a/machine/machine.c
++++ b/machine/machine.c
+@@ -142,14 +142,14 @@ char debug_line[256];
+ 			}
+ 			else {
+ 				printf("FILE NOT FOUND.\n");
+-				disk_load_to("boot.bin",&memory[0x200]);
++				disk_load_to("/usr/share/minicube64/boot.bin",&memory[0x200]);
+ 			}
+ 		}
+ 	}
+ 	else
+ 	{
+ 		printf("NO CART LOADED.\n");
+-		disk_load_to("boot.bin",&memory[0x200]);
++		disk_load_to("/usr/share/minicube64/boot.bin",&memory[0x200]);
+ 	}
+ 	reset6502();
+ 	pc = 0x200;

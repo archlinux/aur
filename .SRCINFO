@@ -1,7 +1,7 @@
 pkgbase = minicube64
 	pkgdesc = a fantasy console style emulator based on 6502, with the intention of helping people learn how games were made for older systems
 	pkgver = 0.0.2.35BDA
-	pkgrel = 2
+	pkgrel = 3
 	url = https://aeriform.gitbook.io/minicube64
 	arch = x86_64
 	arch = aarch64
@@ -19,6 +19,8 @@ pkgbase = minicube64
 	makedepends = gcc
 	depends = sdl2
 	source = https://github.com/aeriform-io/minicube64/archive/refs/tags/0.0.2.35BDA.tar.gz
+	source = boot_bin.patch
 	sha256sums = 1eabde96f76466ace4969e834e27ee2bd3c4d436d16356a4c58b1dc5c4cee5e0
+	sha256sums = 9180486109053b5efe73cee84ca720d72498f200a8a928269bbf62db82a98624
 
 pkgname = minicube64
