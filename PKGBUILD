@@ -1,8 +1,8 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
 pkgname="posting"
-pkgver=2.2.0
-pkgrel=2
+pkgver=2.3.0
+pkgrel=1
 pkgdesc="The modern API client that lives in your terminal"
 arch=('any')
 url="https://github.com/darrenburns/${pkgname}"
@@ -16,7 +16,7 @@ depends=('python>=3.11' 'python-click>=8.1.7' 'python-click-default-group>=1.2.4
          'python-watchfiles>=0.24' 'python-xdg-base-dirs>=6.0.1' 'python-yaml>=6.0.2')
 _pkgsrc="${pkgname}-${pkgver}"
 source=("${_pkgsrc}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-sha256sums=('52a5a0570d6c01bd83d73a6a3af4d2001cd218d02285a00806beb878e6e3ef29')
+sha256sums=('960b95c8bb2ae11db3cc4cb6b7ec20af87cd47218f77b62b80a527c8c590a595')
 
 # prepare() {
 #   cd "${srcdir}/${_pkgsrc}/src/${pkgname}"
