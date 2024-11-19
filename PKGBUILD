@@ -1,8 +1,8 @@
 # Maintainer: Zesko
 pkgname=btrfs-desktop-notification-git
-pkgver=r18.df4d25e
+pkgver=r21.e47efa8
 pkgrel=1
-pkgdesc="It notifies you on Desktop when booting into snapshot or BTRFS warning/error message appears from dmesg log"
+pkgdesc="Notifies you on the desktop when booting into a read-only system or when BTRFS warning/error messages appear in the dmesg log."
 arch=('any')
 url="https://gitlab.com/Zesko/btrfs-desktop-notification.git"
 license=('GPL3')

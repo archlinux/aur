@@ -1,6 +1,6 @@
 pkgbase = btrfs-desktop-notification-git
-	pkgdesc = It notifies you on Desktop when booting into snapshot or BTRFS warning/error message appears from dmesg log
-	pkgver = r18.df4d25e
+	pkgdesc = Notifies you on the desktop when booting into a read-only system or when BTRFS warning/error messages appear in the dmesg log.
+	pkgver = r21.e47efa8
 	pkgrel = 1
 	url = https://gitlab.com/Zesko/btrfs-desktop-notification.git
 	arch = any
