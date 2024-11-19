@@ -1,0 +1,19 @@
+diff -ru a/deps/lua-openssl.cmake b/deps/lua-openssl.cmake
+--- a/deps/lua-openssl.cmake	2024-11-19 16:15:45.171435672 -0600
++++ b/deps/lua-openssl.cmake	2024-11-19 16:15:37.301411063 -0600
+@@ -6,6 +6,7 @@
+   ${CMAKE_BINARY_DIR}/include
+   ${LUA_OPENSSL_DIR}/deps/auxiliar
+   ${LUA_OPENSSL_DIR}/deps/lua-compat
++  ${LUA_OPENSSL_DIR}/deps/lua-compat/c-api
+   ${LUA_OPENSSL_DIR}/src
+ )
+ 
+@@ -13,6 +14,7 @@
+   add_compile_definitions(WIN32_LEAN_AND_MEAN)
+   add_compile_definitions(_CRT_SECURE_NO_WARNINGS)
+ else()
++  add_compile_options(-Wno-incompatible-pointer-types)
+   find_package(Threads)
+ endif()
+ 

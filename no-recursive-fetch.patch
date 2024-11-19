@@ -1,0 +1,24 @@
+diff -ru a/Makefile b/Makefile
+--- a/Makefile	2024-11-19 15:42:07.811668416 -0600
++++ b/Makefile	2024-11-19 15:42:18.823714993 -0600
+@@ -198,17 +198,17 @@
+ 	@echo "Please run 'make tiny' or 'make regular' first to configure"
+ 
+ # In case the user forgot to pull in submodules, grab them.
+-deps/luv/CMakeLists.txt:
++deps/miniz/CMakeLists.txt:
+ 	git submodule update --init --recursive
+ 
+ ### Configuration targets
+ 
+ # Configure the build with minimal dependencies
+-tiny: deps/luv/CMakeLists.txt
++tiny: deps/miniz/CMakeLists.txt
+ 	$(CMAKE) -H. -B$(BUILD_PREFIX) $(CONFIGURE_FLAGS) $(EXTRA_CONFIGURE_FLAGS)
+ 
+ # Configure the build with any libraries requested
+-regular: deps/luv/CMakeLists.txt
++regular: deps/miniz/CMakeLists.txt
+ 	$(CMAKE) -H. -B$(BUILD_PREFIX) $(CONFIGURE_REGULAR_FLAGS) $(EXTRA_CONFIGURE_FLAGS)
+ 
+ ### Phony targets
