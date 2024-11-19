@@ -5,19 +5,19 @@
 # Contributor: christhemonkey <christhemonkey at gmail dot com>
 
 pkgname="raul"
-pkgver=2.0.0
+pkgver=2.0.1
+_commit="9cf7d1b3ca055fcfadc34bd269ef5f7227e155d8" # 2.0.1
 pkgrel=1
 pkgdesc="A header-only C++ real-time audio utility library"
 arch=('any')
 url="https://drobilla.net/software/raul.html"
+_url="https://gitlab.com/drobilla/${pkgname}"
 license=('GPL-3.0-or-later')
 makedepends=('meson>=0.49.2')
-_pkgsrc="${pkgname}-${pkgver}"
-source=("${_pkgsrc}.tar.xz::https://download.drobilla.net/${_pkgsrc}.tar.xz"
-        "${_pkgsrc}.tar.xz.sig::https://download.drobilla.net/${_pkgsrc}.tar.xz.sig")
-b2sums=('2fac6a15f1419652bc537a2450e358565b48510dcbc4b9e5e514dab5caeb03aafb35b49d35c4b0013512be5c004aba5a37158f98620d28b6fa5592693b7b076b'
-        'SKIP')
-validpgpkeys=('907D226E7E13FA337F014A083672782A9BF368F3') # David Robillard <d@drobilla.net>
+_pkgsrc="${pkgname}-${_commit}"
+source=("${_pkgsrc}.tar.gz::${_url}/-/archive/${_commit}/${_commit}.tar.gz")
+b2sums=('ec17c41e50fd5ac2fca58ce1f3e8e3f1e5460ab562564909a35454a687aea39a5432257696ab9e798da0814242ccaf2b0d84679d205ff6117c8318e7b3e538e5')
+# validpgpkeys=('907D226E7E13FA337F014A083672782A9BF368F3') # David Robillard <d@drobilla.net>
 
 build() {
   cd "${srcdir}"
