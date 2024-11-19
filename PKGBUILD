@@ -2,7 +2,7 @@
 
 pkgname="posting"
 pkgver=2.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="The modern API client that lives in your terminal"
 arch=('any')
 url="https://github.com/darrenburns/${pkgname}"
@@ -16,7 +16,7 @@ depends=('python>=3.11' 'python-click>=8.1.7' 'python-click-default-group>=1.2.4
          'python-watchfiles>=0.24' 'python-xdg-base-dirs>=6.0.1' 'python-yaml>=6.0.2')
 _pkgsrc="${pkgname}-${pkgver}"
 source=("${_pkgsrc}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-sha256sums=('4da02de09a313abc01b994622937d74b68015289a925cab970db1643043c88cb')
+sha256sums=('52a5a0570d6c01bd83d73a6a3af4d2001cd218d02285a00806beb878e6e3ef29')
 
 # prepare() {
 #   cd "${srcdir}/${_pkgsrc}/src/${pkgname}"
@@ -42,9 +42,9 @@ package() {
   python -m installer --destdir="${pkgdir}" dist/*.whl
 
   install -vDm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+
   install -vd "${pkgdir}/usr/share/licenses/${pkgname}"
-  ln -s "${site_packages}/${_pkgsrc}.dist-info/licenses/LICENSE" \
-    "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-  ln -s "${site_packages}/${_pkgsrc}.dist-info/licenses/NOTICE" \
-    "${pkgdir}/usr/share/licenses/${pkgname}/NOTICE"
+  cd "${pkgdir}/usr/share/licenses/${pkgname}"
+  ln -s "${site_packages}/${_pkgsrc}.dist-info/licenses/LICENSE" "LICENSE"
+  ln -s "${site_packages}/${_pkgsrc}.dist-info/licenses/NOTICE"  "NOTICE"
 }
