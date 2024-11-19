@@ -1,0 +1,18 @@
+pkgbase = torge
+	pkgdesc = A shell script for searching for links on torrent sites
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/TUVIMEN/torge
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = git
+	depends = curl
+	depends = reliq
+	optdepends = jq: json support
+	optdepends = xclip: clipboard support
+	optdepends = xsel: clipboard support
+	provides = torge
+	source = git+https://github.com/TUVIMEN/torge
+	sha256sums = SKIP
+
+pkgname = torge
