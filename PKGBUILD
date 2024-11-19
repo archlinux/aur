@@ -1,11 +1,11 @@
 # Maintainer: Mike Swanson <mikeonthecomputer@gmail.com>
 
 pkgname=eternity-engine
-pkgver=4.04.01
+pkgver=4.04.02
 pkgrel=1
 pkgdesc="An advanced Doom port with vanilla compatibility"
 url="http://eternity.youfailit.net/"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 license=('GPL3')
 depends=('sdl2' 'sdl2_mixer' 'sdl2_net' 'zlib')
 makedepends=('git' 'cmake')
