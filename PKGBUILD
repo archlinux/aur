@@ -2,7 +2,7 @@
 pkgname=lowkey-git
 pkgver=r5.67be110
 pkgrel=1
-pkgdesc="A customizable notification daemon"
+pkgdesc="A customizable battery notification daemon"
 arch=('x86_64')
 url="https://github.com/ZaneFerns360/lowkey"
 license=('MIT')
