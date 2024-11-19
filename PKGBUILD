@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=xc-music-git
 _pkgname=XCMusic
-pkgver=0.2.2.r14.g9dcad48
+pkgver=0.2.6.r1.g8a73323
 _electronversion=13
 _nodeversion=16
 pkgrel=1
@@ -51,7 +51,6 @@ build() {
     _ensure_local_nvm
     gendesk -q -f -n --pkgname="${pkgname%-git}" --pkgdesc="${pkgdesc}" --categories="AudioVideo" --name="${pkgname%-git}" --exec="${pkgname%-git} %U"
     cd "${srcdir}/${pkgname%-git}.git"
-    #export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
     HOME="${srcdir}/.electron-gyp"
     {
@@ -69,10 +68,11 @@ build() {
     fi
     find src -type f -exec sed -i "s/icon\.ico/icon\.png/g" {} +
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
+    sed -i "18i\          target: ['dir']," vue.config.js
     rm -rf dist_electron
     NODE_ENV=development    npm install
     NODE_ENV=production     npx node babel_cmds.js
-    NODE_ENV=production     npm run electron:build -l dir
+    NODE_ENV=production     npm run electron:build
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
