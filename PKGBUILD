@@ -8,7 +8,7 @@ url="https://github.com/tkmxqrdxddd/davinci-video-converter"
 license=('MIT')
 depends=('ffmpeg')
 makedepends=('gcc' 'make')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/tkmxqrdxddd/davinci-video-converter/archive/refs/tags/1.0.0.tar.gz")  # Updated source URL
+source=("$pkgname-$pkgver.tar.gz::https://github.com/tkmxqrdxddd/davinci-video-converter/archive/refs/tags/$pkgver.tar.gz")  # Updated source URL
 sha256sums=('SKIP')  # Replace with the actual checksum after generating
 
 build() {
