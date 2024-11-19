@@ -1,5 +1,5 @@
 pkgbase = zebrad
-	pkgdesc = Permissionless financial system employing zero-knowledge security
+	pkgdesc = A Zcash full-node
 	pkgver = 1.9.0
 	pkgrel = 1
 	url = https://github.com/ZcashFoundation/zebra

@@ -3,7 +3,7 @@
 pkgname=zebrad
 pkgver=1.9.0
 pkgrel=1
-pkgdesc="Permissionless financial system employing zero-knowledge security"
+pkgdesc="A Zcash full-node"
 url='https://github.com/ZcashFoundation/zebra'
 source=("zebra-${pkgver//_/-}.tar.gz::${url}/archive/refs/tags/v${pkgver//_/-}.tar.gz")
 arch=('aarch64' 'x86_64')
