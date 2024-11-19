@@ -1,0 +1,45 @@
+pkgbase = blisk-browser-stable
+	pkgdesc = The browser from blisk.io. Blisk is the first developer-oriented browser. It provides teams and freelancers with a workspace to develop and test modern web applications at least twice faster.
+	pkgver = 23.0.185.91
+	pkgrel = 1
+	url = https://blisk.io
+	arch = i686
+	arch = x86_64
+	depends = alsa-lib
+	depends = at-spi2-core
+	depends = bash-completion
+	depends = ca-certificates
+	depends = cairo>=1.6.0
+	depends = curl
+	depends = dbus>=1.9.14
+	depends = desktop-file-utils
+	depends = expat>=2.1beta3
+	depends = gcc-libs
+	depends = glib2>=2.39.4
+	depends = glibc>=2.17
+	depends = gtk3
+	depends = gtk4
+	depends = hicolor-icon-theme
+	depends = libcups>=1.6.0
+	depends = libcurl-gnutls
+	depends = libdrm>=2.4.75
+	depends = libx11>=1.4.99.1
+	depends = libxcb>=1.9.2
+	depends = libxcomposite>=0.4.4
+	depends = libxdamage>=1.1
+	depends = libxext
+	depends = libxfixes
+	depends = libxrandr
+	depends = mesa>=17.1.0rc2
+	depends = nspr>=4.9
+	depends = nss>=3.35
+	depends = pango
+	depends = ttf-liberation
+	depends = xdg-utils>=1.0.2
+	provides = blisk-browser-stable
+	options = !strip
+	options = !emptydirs
+	source_x86_64 = https://blisk.io/download/installer/?os=linux-rpm
+	sha512sums_x86_64 = SKIP
+
+pkgname = blisk-browser-stable
