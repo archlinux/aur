@@ -1,0 +1,15 @@
+pkgbase = sylixos-uploader
+	pkgdesc = A command-line tool for uploading SylixOS projects via CORBA.
+	pkgver = 0.0.2
+	pkgrel = 1
+	url = https://cdn.git.acosail.cc/go-sylixos/sylixos-uploader
+	arch = x86_64
+	arch = aarch64
+	license = custom
+	provides = sylixos-uploader
+	source_x86_64 = sylixos-uploader::https://cdn.git.acosail.cc/go-sylixos/sylixos-uploader/releases/download/v0.0.2/sylixos-uploader-linux-amd64-v0.0.2
+	sha256sums_x86_64 = SKIP
+	source_aarch64 = sylixos-uploader::https://cdn.git.acosail.cc/go-sylixos/sylixos-uploader/releases/download/v0.0.2/sylixos-uploader-linux-arm64-v0.0.2
+	sha256sums_aarch64 = SKIP
+
+pkgname = sylixos-uploader
