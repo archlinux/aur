@@ -1,4 +1,4 @@
-# Maintainer: Sir-Photch <aur@liebender.dev>
+# Maintainer: shtrophic <aur at shtrophic dot net>
 
 pkgname=gmlgcd
 pkgver=2.1
