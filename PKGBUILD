@@ -27,7 +27,7 @@ depends=(
 )
 url="https://metacpan.org/release/${_pkgname}"
 source=(https://cpan.metacpan.org/authors/id/${_lastauthor}/${_pkgname}-${pkgver}.tar.gz)
-sha256sums=('3998ac451276113f4ff2e33fd20bc7cdbccab069ee20a7b35d980d845b467297')
+sha256sums=('1be7391d3f30ab2417fb569f971d58941ce623dc23dfa02673b602297588c5cd')
 
 build() {
   export PERL_MM_USE_DEFAULT=1 PERL_AUTOINSTALL="--skipdeps" \
