@@ -1,7 +1,7 @@
 pkgbase = hyprlauncher
 	pkgdesc = GUI for launching applications, written in blazingly fast Rust!
 	pkgver = 0.2.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/hyprutils/hyprlauncher
 	arch = x86_64
 	license = GPL-2.0
