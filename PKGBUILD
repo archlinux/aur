@@ -27,6 +27,6 @@ build() {
 package() {
     cd "$pkgname-$pkgver"
     install -Dm0755 "target/release/$pkgname" -t "$pkgdir/usr/bin"
-    install -Dm644 readme.md "$pkgdir/usr/share/doc/$pkgname"
-    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname"
+    install -Dm644 readme.md -t "$pkgdir/usr/share/doc/$pkgname"
+    install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
 }
