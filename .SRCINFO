@@ -10,6 +10,9 @@ pkgbase = stackablectl
 	makedepends = git
 	depends = gcc-libs
 	depends = glibc
+	provides = stackablectl
+	conflicts = stackablectl-bin
+	conflicts = stackablectl-git
 	options = !lto
 	source = stackablectl::git+https://github.com/stackabletech/stackable-cockpit.git#commit=885b3472e65454a5e6994aa3956e8c74711bea28
 	b2sums = SKIP

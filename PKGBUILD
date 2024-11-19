@@ -13,6 +13,8 @@ url="https://github.com/stackabletech/stackable-cockpit/"
 license=('Apache-2.0')
 depends=('gcc-libs' 'glibc')
 makedepends=('go' 'cargo' 'git')
+provides=('stackablectl')
+conflicts=('stackablectl-bin' 'stackablectl-git')
 
 # Needed due to https://github.com/briansmith/ring/issues/1444 & https://gitlab.archlinux.org/archlinux/packaging/packages/pacman/-/issues/20
 options=(!lto)
