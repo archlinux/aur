@@ -1,6 +1,6 @@
 # Maintainer: Jean-Michaël Celerier <jeanmichael.celerier at gmail dot com>
 pkgname=ossia-score
-pkgver=3.2.4
+pkgver=3.3.2
 pkgrel=1
 pkgdesc="ossia score, an interactive sequencer for the intermedia arts"
 arch=('x86_64')
@@ -13,7 +13,7 @@ provides=("$pkgname=$pkgver")
 conflicts=('ossia-score-git')
 replaces=('i-score')
 source=("https://github.com/ossia/score/releases/download/v${pkgver}/ossia.score-${pkgver}-src.tar.xz")
-sha512sums=('c66de47bbd299eae6f03101b8b81a63f22162a743d2db7ad0598e5e8c863b2338bcead1d540018f895a4f45d372c2a7528eccfc18e12e0910e865f234327886d')
+sha512sums=('a2123644d1f249415acc244b1de7478491c6e3191170c023959791115e1114d8acadc648bc7245cbdcffb98b6fa6aa9e2a94234faff57323a2d8146f243dcec2')
 build() {
   cmake \
   -S "$srcdir/ossia-score-$pkgver" \
