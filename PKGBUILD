@@ -2,7 +2,7 @@
 # Private key generated with `openssl genrsa 2048| openssl pkcs8 -topk8 -nocrypt -traditional`
 
 pkgname=chromium-extension-ublock-origin
-pkgver=1.61.0
+pkgver=1.61.2
 pkgrel=1
 pkgdesc="chromium uBlock Origin extension"
 arch=('any')
@@ -11,7 +11,7 @@ license=('GPL-3.0-only')
 makedepends=('chromium' 'openssl' 'jq')
 source=("${pkgname}-${pkgver}.zip::${url}/releases/download/${pkgver}/uBlock0_${pkgver}.chromium.zip"
         "uBlock0.chromium.pem")
-sha256sums=('4a3273a60769a7aa4a3c7d677bfa0baf3f01f6fb39427f00492c2dc936115fa1'
+sha256sums=('f7963bdff83e4832a989ce9abd61ec05b1e318f0eb87b391d145ede1cac4a616'
             '804e431b5601a5d0bd9d7e1d27ea8396c6cc87f2523d6d857f1abf368df3a06f')
 
 build() {
