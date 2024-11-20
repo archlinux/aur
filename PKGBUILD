@@ -2,7 +2,7 @@
 
 pkgname=sonix-flasher-git
 _name=${pkgname%-git}
-pkgver=v0.2.5.r5.g6d76040
+pkgver=v0.2.5.r8.g7ded3d4
 pkgrel=1
 pkgdesc="Sonix Keyboard Flasher"
 arch=('any')
@@ -17,6 +17,7 @@ depends=('python-altgraph'
          'python-pyqt5'
          'python-pyqt5-sip'
          'hicolor-icon-theme')
+makedepends=('git')
 source=("sonix-flasher.sh"
         "sonix-flasher.desktop"
         "0001-fix-Wayland-taskbar-icon.patch"
