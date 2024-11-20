@@ -2,7 +2,7 @@
 
 pkgname=python-flask-restful
 pkgver=0.3.10
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple framework for creating REST APIs"
 url="https://github.com/flask-restful/flask-restful"
 license=('BSD')
