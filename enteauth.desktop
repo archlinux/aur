@@ -1,10 +1,11 @@
 [Desktop Entry]
 Type=Application
-Name=Auth
-GenericName=Ente Authentication
-Icon=ente_auth
-Exec=ente_auth %U
+Name=Ente Auth
+GenericName=Ente Authenticator
+Icon=enteauth
+Exec=enteauth %U
 MimeType=x-scheme-handler/enteauth;
 Categories=Utility;
 Keywords=Authentication;2FA;
 StartupNotify=false
+StartupWMClass=Io.ente.auth

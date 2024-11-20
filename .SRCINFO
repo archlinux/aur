@@ -1,6 +1,6 @@
 pkgbase = ente-auth
 	pkgdesc = Open source 2FA authenticator, with end-to-end encrypted backups
-	pkgver = 4.0.2
+	pkgver = 4.1.1
 	pkgrel = 1
 	url = https://ente.io/auth
 	arch = x86_64
@@ -8,28 +8,28 @@ pkgbase = ente-auth
 	license = AGPL-3.0-or-later
 	makedepends = clang
 	makedepends = cmake
-	makedepends = fvm
 	makedepends = git
 	makedepends = ninja
+	makedepends = unzip
 	depends = gtk3
 	depends = libayatana-appindicator
 	depends = libsecret
 	depends = libsodium
 	depends = sqlite
 	depends = webkit2gtk
-	source = git+https://github.com/ente-io/ente.git#tag=auth-v4.0.2
+	source = git+https://github.com/ente-io/ente.git#tag=auth-v4.1.1
 	source = git+https://github.com/ente-io/sentry-dart.git
 	source = git+https://github.com/flutter/flutter.git
 	source = git+https://github.com/simple-icons/simple-icons.git
 	source = git+https://github.com/abhinavkgrd/ffmpeg.wasm.git
 	source = git+https://github.com/ente-io/PhotoSwipe.git
-	source = ente_auth.desktop
-	sha256sums = ffb5c750bb8e371ac966716cf3b42fa60771b0d57dbc90724c9ed2282740736b
+	source = enteauth.desktop
+	sha256sums = 1e9ee6bc3fd7d5e348bb9f592bcfab1b77a98488c5dec08f3fb7f12d95897e80
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = 92368080b3a0381ede798c4fc76bce22dc3b4bdc0f2c01b317bb20f77aaf4fd6
+	sha256sums = cc06c91a260d04fd7f62396a253702fb44c93125492235af022d2d417b2dcf78
 
 pkgname = ente-auth
