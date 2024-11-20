@@ -1,6 +1,6 @@
 pkgbase = fjordlauncher-unlocked
 	pkgdesc = Prism Launcher fork with support for alternative auth servers
-	pkgver = 8.4.2
+	pkgver = 9.1.0
 	pkgrel = 1
 	url = https://github.com/hero-persson/FjordLauncherUnlocked
 	arch = i686
@@ -31,7 +31,7 @@ pkgbase = fjordlauncher-unlocked
 	optdepends = xorg-xrandr: for older minecraft versions
 	optdepends = java-runtime=8: for older minecraft versions
 	optdepends = flite: minecraft voice narration
-	source = https://github.com/hero-persson/FjordLauncherUnlocked/releases/download/8.4.2/FjordLauncher-8.4.2.tar.gz
-	sha256sums = b1e3c943f0b8f7f0fa5f50968d8a91c93e09416b12a2f433556c247e27da1f7b
+	source = https://github.com/hero-persson/FjordLauncherUnlocked/releases/download/9.1.0/FjordLauncher-9.1.0.tar.gz
+	sha256sums = 7f5bdf2a28ddb517c928a248191d4157b94c49f1afb5be0046798b22445e5c64
 
 pkgname = fjordlauncher-unlocked

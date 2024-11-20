@@ -10,7 +10,7 @@
 # Contributor: dada513 <dada513@protonmail.com>
 
 pkgname=fjordlauncher-unlocked
-pkgver=8.4.2
+pkgver=9.1.0
 pkgrel=1
 pkgdesc="Prism Launcher fork with support for alternative auth servers"
 arch=('i686' 'x86_64' 'aarch64')
@@ -25,7 +25,7 @@ optdepends=('glfw: to use system GLFW libraries'
             'java-runtime=8: for older minecraft versions'
             'flite: minecraft voice narration')
 source=("${url}/releases/download/${pkgver}/FjordLauncher-${pkgver}.tar.gz")
-sha256sums=('b1e3c943f0b8f7f0fa5f50968d8a91c93e09416b12a2f433556c247e27da1f7b')
+sha256sums=('7f5bdf2a28ddb517c928a248191d4157b94c49f1afb5be0046798b22445e5c64')
 
 prepare() {
   cd "FjordLauncher-${pkgver}"
@@ -51,6 +51,9 @@ check() {
 }
 
 package() {
+
+
+
   cd "FjordLauncher-${pkgver}/build"
   DESTDIR="${pkgdir}" cmake --install .
   mv "${pkgdir}/usr/share/mime/packages/modrinth-mrpack-mime.xml" \
