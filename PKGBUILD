@@ -1,7 +1,7 @@
 # Maintainer: Helio Loureiro <helio@loureiro.eng.br>
 pkgname=doh-relay-git
 pkgver=1.0.0.r89.20240412.68c3226
-pkgrel=2
+pkgrel=3
 gittag=v1.0.0
 pkgdesc="DNS-over-HTTPS relay service."
 arch=(
@@ -13,7 +13,7 @@ arch=(
 )
 url="https://github.com/tinkernels/doh-relay"
 license=('Apache-2.0')
-depends=('go>=1.20')
+depends=('go>=1.23')
 makedepends=('go' 'git')
 provides=("doh-relay=${pkgver}")
 source=('git+https://github.com/tinkernels/doh-relay.git')
