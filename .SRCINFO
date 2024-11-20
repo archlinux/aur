@@ -1,7 +1,7 @@
 pkgbase = huawei-pixlab-series
 	pkgdesc = Driver support for HUAWEI pixlab series printers
-	pkgver = 1.0_71
-	pkgrel = 2
+	pkgver = 1.0_86
+	pkgrel = 1
 	url = https://consumer.huawei.com/cn/support/printers/pixlab-x1/
 	arch = x86_64
 	license = custom
@@ -10,7 +10,7 @@ pkgbase = huawei-pixlab-series
 	depends = cups-filters
 	depends = cups-pdf
 	depends = dbus
-	source = huawei-pixlab-series-1.0_71.zip::https://consumer-tkbdownload.huawei.com/ctkbfm/servlet/download/downloadServlet/H4sIAAAAAAAAAD2QS0_DMBCE_4vPTbWOjR-ccBJH4kKRWsSxcmqbrhTSKA9aivjvuFXEbWc1n2Y0P2Qew7D77gN5JDlZEX86d4sUSUZsw4v7vMnj7M4Bsx4vrWuyRGEY93QNmaT7i-DrK_YL8OqmYwK48gfFuNIMItcsakeFkkw2kcnoPEvuBq_PPlm3m6d3AMglVZDehyG4CU_dDm_JVIDmDDjQZFmRET86N83DvaKx3CqbW6mFqZTmRVnnBnJTWA0PYKhOjBBSaspqySqjispaVdZFyWy6U9aXa9G__Y8wDXO491pG2G7I7x9yg6VOJQEAAA%3D%3D.zip
-	md5sums = 7b72ea74d2f5a6dcbca249d58eb17dbb
+	source = huawei-pixlab-series-1.0_86.zip::https://consumer-tkbdownload.huawei.com/ctkbfm/servlet/download/downloadServlet/H4sIAAAAAAAAAD2Qy2rDMBRE_0XrOFzJV7LUVR3LgmyaQlK6DFIsNwLHMX40aUr_vXIxXc4whxnmm0yD7w9fnSdPhJEVqa63dpEiyjo0_sVeZnme7M2HpAv3xrokUsEPR7qGRIrjXeD6EboFeLXjOQIKUWW1ghPnNTIUTiisraMsrYRzMLe58NhWMbrfPb8DgECQs33qvR3DtT2EuZkKUJgCAo2RFRnCR2vHqZ835UWaKwaKAxqAHDmTUgsAvlHcsAJLjao0qAsORpa5ASyZ2jDIMp1mVMvY9WmbUL39nzD2k__btZyw35GfX1-X_kwlAQAA.zip
+	sha256sums = e498bb9066d5fab236511cf6809f23abf40485e32b36d3d06967d4653dfa0776
 
 pkgname = huawei-pixlab-series

@@ -1,7 +1,7 @@
 # Maintainer: david <xuwd1@hotmail.com>
 pkgname=huawei-pixlab-series
-pkgver=1.0_71
-pkgrel=2
+pkgver=1.0_86
+pkgrel=1
 epoch=
 pkgdesc="Driver support for HUAWEI pixlab series printers"
 arch=('x86_64')
@@ -24,11 +24,11 @@ options=()
 install=
 changelog=
 source=(
-	"${pkgname}-${pkgver}.zip::https://consumer-tkbdownload.huawei.com/ctkbfm/servlet/download/downloadServlet/H4sIAAAAAAAAAD2QS0_DMBCE_4vPTbWOjR-ccBJH4kKRWsSxcmqbrhTSKA9aivjvuFXEbWc1n2Y0P2Qew7D77gN5JDlZEX86d4sUSUZsw4v7vMnj7M4Bsx4vrWuyRGEY93QNmaT7i-DrK_YL8OqmYwK48gfFuNIMItcsakeFkkw2kcnoPEvuBq_PPlm3m6d3AMglVZDehyG4CU_dDm_JVIDmDDjQZFmRET86N83DvaKx3CqbW6mFqZTmRVnnBnJTWA0PYKhOjBBSaspqySqjispaVdZFyWy6U9aXa9G__Y8wDXO491pG2G7I7x9yg6VOJQEAAA%3D%3D.zip"
+	"${pkgname}-${pkgver}.zip::https://consumer-tkbdownload.huawei.com/ctkbfm/servlet/download/downloadServlet/H4sIAAAAAAAAAD2Qy2rDMBRE_0XrOFzJV7LUVR3LgmyaQlK6DFIsNwLHMX40aUr_vXIxXc4whxnmm0yD7w9fnSdPhJEVqa63dpEiyjo0_sVeZnme7M2HpAv3xrokUsEPR7qGRIrjXeD6EboFeLXjOQIKUWW1ghPnNTIUTiisraMsrYRzMLe58NhWMbrfPb8DgECQs33qvR3DtT2EuZkKUJgCAo2RFRnCR2vHqZ835UWaKwaKAxqAHDmTUgsAvlHcsAJLjao0qAsORpa5ASyZ2jDIMp1mVMvY9WmbUL39nzD2k__btZyw35GfX1-X_kwlAQAA.zip"
 )
 noextract=()
-md5sums=(
-	'7b72ea74d2f5a6dcbca249d58eb17dbb'
+sha256sums=(
+	'e498bb9066d5fab236511cf6809f23abf40485e32b36d3d06967d4653dfa0776'
 )
 validpgpkeys=()
 
@@ -38,7 +38,7 @@ prepare() {
 	unzip ${srcdir}/${pkgname}_${_hypen_pkgver}_x64/${pkgname}_${_hypen_pkgver}_x64.zip 2>&1 > /dev/null
 	mv ${srcdir}/${pkgname}_${_hypen_pkgver}_x64/x86_64 ${srcdir}/${pkgname}-${pkgver}
 	cd ${pkgname}-${pkgver}
-	rpm2archive *.rpm
+	rpm2archive *.rpm 
 	tar -xzf *.rpm.tgz
 	cd ${srcdir}
 	echo " -> Now it's much better"
@@ -65,7 +65,9 @@ package() {
 	mkdir -p ${pkgdir}/usr/share/pixmaps
 	cp ${srcdir}/${pkgname}-${pkgver}/usr/share/pixmaps/* ${pkgdir}/usr/share/pixmaps
 	mkdir -p ${pkgdir}/usr/share/applications
-	cp ${srcdir}/${pkgname}-${pkgver}/usr/share/applications/hwthrvop.desktop ${pkgdir}/usr/share/applications
+	install -Dm644 ${srcdir}/${pkgname}-${pkgver}/usr/share/applications/hwthrvop.desktop ${pkgdir}/usr/share/applications/hwthrvop.desktop
+	sed -i 's|^Exec=/usr/share/hwthrvop/hwthrvop.sh|Exec=env QT_AUTO_SCREEN_SCALE_FACTOR=1 /usr/share/hwthrvop/hwthrvop.sh|' ${pkgdir}/usr/share/applications/hwthrvop.desktop
+
 	
 	#license
 	mkdir -p ${pkgdir}/usr/share/licenses/${pkgname}
