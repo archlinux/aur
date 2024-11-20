@@ -1,17 +1,19 @@
+# Maintainer: fossdd <fossdd@pwned.life>
 # Contributor: Atte Lautanala <atte@lautana.la>
 pkgname=pyonji
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="An easy-to-use tool to send e-mail patches"
-arch=('x86_64')
+arch=('x86_64' 'aarch64' 'riscv64')
 url="https://sr.ht/~emersion/pyonji"
-license=('GPL3')
+license=('GPL-3.0-only')
+depends=('git')
 makedepends=('go')
-source=("$pkgname-$pkgver.tar.gz::https://git.sr.ht/~emersion/pyonji/archive/v$pkgver.tar.gz")
-b2sums=('2a87bac1646937956b01a52f239b43e58918cf3044b777788b4793d60ff2fd51440a0e646005bbffd832da257510c771c2111fc127fdc8df2ddf6b465dbfb918')
+source=("https://git.sr.ht/~emersion/pyonji/refs/download/v$pkgver/pyonji-$pkgver.tar.gz")
+b2sums=('2a4d946f4167e5f698734179acbd1191592702ded29ef6d94686c802333fb8ce14365acf8d8b51c9f38a9fcf160e76b9d05be30b979f32549dbf1a18f1e5aa5e')
 
 build() {
-  cd "${pkgname}-v${pkgver}"
+  cd $pkgname-$pkgver
 
   export CGO_LDFLAGS="${LDFLAGS}"
   export CGO_CFLAGS="${CFLAGS}"
@@ -22,5 +24,6 @@ build() {
 }
 
 package() {
-  install -Dm755 "$srcdir/$pkgname-v$pkgver/$pkgname" "$pkgdir/usr/bin/$pkgname"
+  install -Dm755 "$srcdir"/$pkgname-$pkgver/pyonji \
+	  -t "$pkgdir"/usr/bin/
 }
