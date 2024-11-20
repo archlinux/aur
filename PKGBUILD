@@ -1,6 +1,6 @@
 # Maintainer: Cyril Waechter <cyril[at]biminsight[dot]ch>
 pkgname=ifcopenshell
-pkgver=0.8.1_alpha2411141331
+pkgver=0.8.1_alpha2411201056
 _vername=bonsai
 pkgrel=1
 pkgdesc="Open source IFC library and geometry engine. Provides static libraries, python3 wrapper and blender addon."
@@ -64,23 +64,21 @@ source=("https://github.com/IfcOpenShell/IfcOpenShell/archive/refs/tags/${_verna
   "git+https://github.com/IfcOpenShell/ifc-to-cityjson.git"
   "bpypolyskel-1.1.2.tar.gz::https://github.com/prochitecture/bpypolyskel/archive/refs/tags/v1.1.2.tar.gz"
 
-  "001-libsvgfill.patch::https://github.com/sukanka/svgfill/commit/47a6016.patch"
-  "003-skip-install-python-package-only-install-wrapper.patch::https://github.com/sukanka/IfcOpenShell/commit/725d509.patch"
-  "004-add-shared-libs.patch::https://github.com/sukanka/IfcOpenShell/commit/0a6ff03.patch"
-  "005-install-missing-files-skip-redundant-files.patch::https://github.com/sukanka/IfcOpenShell/commit/fcc902b.patch"
-  "006-fix-rpath.patch::https://github.com/sukanka/IfcOpenShell/commit/96b6f8d.patch"
+  "003-skip-install-python-package-only-install-wrapper.patch::https://github.com/sukanka/IfcOpenShell/commit/e6ceb758.patch"
+  "004-add-shared-libs.patch::https://github.com/sukanka/IfcOpenShell/commit/9ec690d.patch"
+  "005-install-missing-files-skip-redundant-files.patch::https://github.com/sukanka/IfcOpenShell/commit/1349d8e.patch"
+  "006-fix-rpath.patch::https://github.com/sukanka/IfcOpenShell/commit/b0c80ed.patch"
 
 )
-sha256sums=('bc5fcd8ba78bae5b7ede755af6fd2742b4940771e2994c0e547a14924c408f54'
-  'SKIP'
-  'SKIP'
-  'SKIP'
-  'f000262395449808c32e10664468ec2acd2a22e04b202037f15e03611506cfc5'
-  '1651288a6a618b018277e1b3417502e1a6965a51b557e60d9f1eae4fda768da3'
-  'b18d6a595985e066e070373c2f8a6e8c9a18666ce46156cdc532d29292da85e5'
-  '8604fb3c0f733839435e2d6c91b2b5abaa5198ad3f034121fa10145ac9763919'
-  'edb7d3610d52e05cdaf98b7c2939b2deeabfed238fee641d0c62b30b88a878b4'
-  '75504aabcc4c05d058537a3bfc6384ca242732c71e15c4f716783eebbdb06f83')
+sha256sums=('76ec95940f72c733b0a27a79226ea17f9629ae115c1ff5e618cd417cd402ad6b'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'f000262395449808c32e10664468ec2acd2a22e04b202037f15e03611506cfc5'
+            '2efdab4233e3d58a0ac03a746b57fcad1017a3db39abed12d4f2ccf33768674b'
+            'e54ff840fef44ae9d746e418d409db31e10e591ef0f9808708f56260adea53da'
+            'd32e61dadac3177b98de40d9587206fe9d03d987ac08323bc67f10512620ef91'
+            '1b4be552fadad11362e09103c6fdf6f9400b969ca6dad9128a0f8dd35ab4026c')
 
 _iosdir="IfcOpenShell-${_vername}-${pkgver//_/-}"
 
@@ -94,10 +92,6 @@ prepare() {
   patch --strip=1 --ignore-whitespace <../004-add-shared-libs.patch
   patch --strip=1 --ignore-whitespace <../005-install-missing-files-skip-redundant-files.patch
   patch --strip=1 --ignore-whitespace <../006-fix-rpath.patch
-  pushd src/svgfill
-  patch --strip=1 --ignore-whitespace <${srcdir}/001-libsvgfill.patch
-  popd
-  sed -i src/ifcwrap/CMakeLists.txt -e 's|libsvgfill|svgfill|g'
 }
 _build_pymodules() {
 
