@@ -1,15 +1,9 @@
-# Maintainer: Levente Polyak <anthraxx[at]archlinux[dot]org>
-# Maintainer: T.J. Townsend <blakkheim@archlinux.org>
-# Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
-# Contributor: Bartłomiej Piotrowski <bpiotrowski@archlinux.org>
-# Contributor: Thorsten Töpper <atsutane-tu@freethoughts.de>
-# Contributor: Thayer Williams <thayer@archlinux.org>
-# Contributor: Jeff 'codemac' Mickey <jeff@archlinux.org>
+# Maintainer: oatmealraisin <archlinux at oatmealrais dot in>
 
-pkgname=dmenu
+pkgname=dmenu-fuzzymatch
 pkgver=5.3
 pkgrel=3
-pkgdesc='Generic menu for X'
+pkgdesc='Generic menu for X with fuzzymatch patch'
 url='https://tools.suckless.org/dmenu/'
 arch=('x86_64')
 license=('MIT')
@@ -18,16 +12,24 @@ depends=('sh' 'glibc' 'coreutils' 'libx11' 'libxinerama' 'libxft' 'freetype2' 'f
 source=("git+https://git.suckless.org/dmenu#tag=${pkgver}")
 sha512sums=('781f4aab2bb32c39e79a2269b62fdb8cacdcebc162f73844e0ff86f8d084fd151eb63811e0f4de906ae5b3ca3a02f12c82fbf4d9f5f3e4a9b5d847de787aefd4')
 b2sums=('6da7112a8975c152038f7694f1a658674f92c2d5a9340f97e8b64430a2fce612c87effd361078b66ce77510d6bb6478c47ea3b1d6ee0adfafa1e8c0d62f1adb5')
+conflicts=("dmenu")
 
 prepare() {
-  cd ${pkgname}
+  cd "dmenu"
   echo "CPPFLAGS+=${CPPFLAGS}" >> config.mk
   echo "CFLAGS+=${CFLAGS}" >> config.mk
   echo "LDFLAGS+=${LDFLAGS}" >> config.mk
+  # to use a custom config.h, place it in the package directory
+  if [[ -f ${SRCDEST}/config.h ]]; then
+    cp "${SRCDEST}/config.h" .
+  fi
+
+  cp "${SRCDEST}/dmenu-fuzzymatch-5.3.diff" .
+  git apply dmenu-fuzzymatch-5.3.diff
 }
 
 build() {
-  cd ${pkgname}
+  cd dmenu
   make \
 	  X11INC=/usr/include/X11 \
 	  X11LIB=/usr/lib/X11 \
@@ -35,7 +37,7 @@ build() {
 }
 
 package() {
-  cd ${pkgname}
+  cd dmenu
   make PREFIX=/usr DESTDIR="${pkgdir}" install
   install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
