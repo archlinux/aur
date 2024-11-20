@@ -3,7 +3,7 @@
 # Contributor: Stephen304
 
 pkgname=crowdsec
-pkgver=1.6.3
+pkgver=1.6.4
 pkgrel=1
 pkgdesc="The open-source and collaborative security suite"
 arch=('aarch64' 'x86_64')
@@ -17,7 +17,7 @@ backup=(etc/crowdsec/{acquis,config,console,profiles,simulation}.yaml
         etc/crowdsec/notifications/{email,file,http,sentinel,slack,splunk}.yaml)
 install=crowdsec.install
 source=("git+https://github.com/crowdsecurity/crowdsec.git#tag=v${pkgver}")
-sha256sums=('25be7e4352e8645d756d036162c2613e9fbdac82ab8e5e35d75fb1d7bdaf7396')
+sha256sums=('a1f350ef2e0f7c68b5e4c567974092ac1ddb3706889052473f64d6c8f7cbeada')
 
 prepare() {
     cd "${pkgname}/config"
