@@ -1,7 +1,7 @@
 pkgbase = scrt-sfx-opt-bin
 	pkgdesc = SecureCRT + SecureFX 9.0 Bundle
-	pkgver = 9.5.2
-	pkgrel = 3325
+	pkgver = 9.6.0
+	pkgrel = 3472
 	url = https://www.vandyke.com/
 	arch = x86_64
 	license = custom:VanDyke
@@ -11,7 +11,7 @@ pkgbase = scrt-sfx-opt-bin
 	depends = icu70
 	provides = SecureCRT
 	provides = SecureFX
-	source = file://scrt-sfx-9.5.2-3325.ubuntu22-64.x86_64.deb
-	sha512sums = 1fde763ca27315355c1b7358ebecdb915a85ea14a319348e21aa8bd47266ccd9aa22ade282c42351de71f9b0e2303eca748d1849f98764963d309582f31eacdc
+	source = file://scrt-sfx-9.6.0-3472.ubuntu22-64.x86_64.deb
+	sha512sums = 258083b2971f08bd2710eb42d6191598dee9659c66093f047b79d8527a58c240fb731aa2a763879a5abf0da5498cf9ebdccabf70a499f5323da82abb373225b3
 
 pkgname = scrt-sfx-opt-bin

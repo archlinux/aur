@@ -1,16 +1,24 @@
 # Maintainer:
 pkgname=scrt-sfx-opt-bin
-pkgver=9.5.2
-pkgrel=3325
+pkgver=9.6.0
+pkgrel=3472
 pkgdesc='SecureCRT + SecureFX 9.0 Bundle'
 arch=('x86_64')
 url='https://www.vandyke.com/'
 license=('custom:VanDyke')
-depends=('glibc' 'openssl' 'qt5-base' 'icu70')
-provides=('SecureCRT' 'SecureFX')
+depends=(
+	'glibc'
+	'openssl'
+	'qt5-base'
+	'icu74'
+)
+provides=(
+	'SecureCRT'
+	'SecureFX'
+)
 
 _bundle_name=scrt-sfx
-_tarball_base_name=${_bundle_name}-${pkgver}-${pkgrel}.ubuntu22-64
+_tarball_base_name=${_bundle_name}-${pkgver}-${pkgrel}.ubuntu24-64
 _tarball_name=${_tarball_base_name}.x86_64.deb
 
 source=(
@@ -18,7 +26,7 @@ source=(
 )
 
 sha512sums=(
-	"1fde763ca27315355c1b7358ebecdb915a85ea14a319348e21aa8bd47266ccd9aa22ade282c42351de71f9b0e2303eca748d1849f98764963d309582f31eacdc"
+	"258083b2971f08bd2710eb42d6191598dee9659c66093f047b79d8527a58c240fb731aa2a763879a5abf0da5498cf9ebdccabf70a499f5323da82abb373225b3"
 )
 
 package() {
