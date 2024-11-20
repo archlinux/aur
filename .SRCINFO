@@ -1,6 +1,6 @@
 pkgbase = fastflix
 	pkgdesc = Simple and friendly GUI for encoding videos
-	pkgver = 5.8.1
+	pkgver = 5.8.2
 	pkgrel = 1
 	url = https://github.com/cdgriffith/FastFlix
 	arch = x86_64
@@ -15,9 +15,9 @@ pkgbase = fastflix
 	optdepends = x264: encoding to H264/AVC
 	optdepends = rav1e: encoding to AV1
 	optdepends = libwebp: encoding to WebP
-	source = git+https://github.com/cdgriffith/FastFlix.git#tag=5.8.1
+	source = git+https://github.com/cdgriffith/FastFlix.git#tag=5.8.2
 	source = FastFlix.desktop
-	sha256sums = SKIP
+	sha256sums = cfc4ac34d5ca92042430afe4eabfed31ef51076629de871a2a5122fb69588a15
 	sha256sums = cbcb6f228b858a69a860aa6a3283f0f4293e1246485566d20f60a93030f1f847
 
 pkgname = fastflix
