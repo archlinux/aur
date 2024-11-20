@@ -1,6 +1,6 @@
 pkgname=python-duckduckgo-search
 _name=duckduckgo_search
-pkgver=6.3.3
+pkgver=6.3.5
 pkgrel=1
 pkgdesc='Search for words, documents, images, news, maps and text translation using the DuckDuckGo.com search engine.'
 arch=('any')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('python-click' 'python-primp')
 makedepends=('python-build' 'python-installer' 'python-wheel' )
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('4d49508f01f85c8675765fdd4cc25eedbb3450e129b35209897fded874f6568f')
+sha256sums=('bc7604859d6f17b88ec634f322b1920207fe3d62aa61ee6dccecb19d6dda6beb')
 
 build() {
 	cd $_name-$pkgver
