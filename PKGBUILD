@@ -1,4 +1,4 @@
-# Maintainer: Jakob (XDjackieXD) <aur at chaosfield dot at>
+# Maintainer: Lander
 pkgname=rmfakecloud
 pkgver=0.0.17
 pkgrel=1
