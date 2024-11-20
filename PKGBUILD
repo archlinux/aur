@@ -1,6 +1,6 @@
 # Maintainer: Zane Fernandes
 pkgname=lowkey-git
-pkgver=r5.67be110
+pkgver=r10.c2552b7
 pkgrel=1
 pkgdesc="A customizable battery notification daemon"
 arch=('x86_64')
@@ -29,16 +29,12 @@ source=("git+$url.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/$pkgname"
+  cd "$srcdir/lowkey"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-prepare() {
-  cd "lowkey"
-}
-
 build() {
-  cmake -B build -S "$pkgname" \
+  cmake -B build -S "$srcdir/lowkey" \
     -DCMAKE_BUILD_TYPE=None
   cmake --build build
 }

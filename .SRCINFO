@@ -1,6 +1,6 @@
 pkgbase = lowkey-git
 	pkgdesc = A customizable battery notification daemon
-	pkgver = r5.67be110
+	pkgver = r10.c2552b7
 	pkgrel = 1
 	url = https://github.com/ZaneFerns360/lowkey
 	arch = x86_64
