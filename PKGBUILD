@@ -1,8 +1,9 @@
 # Maintainer: Adam Perkowski <adas1per@protonmail.com>
+# https://github.com/adamperkowski/PKGBUILDs
 _pkgname='Smriti'
 pkgname='smriti'
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Keep track of the commands your memory missed'
 arch=('x86_64')
 url="https://github.com/aspasht/$pkgname"
@@ -29,4 +30,6 @@ build() {
 package() {
     cd "$pkgname-$pkgver"
     install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/$pkgname"
+    install -Dm644 "LICENSE" -t "$pkgdir/usr/share/licenses/$_pkgname"
+    install -Dm644 "README.md" -t "$pkgdir/usr/share/doc/$_pkgname"
 }
