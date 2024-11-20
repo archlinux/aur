@@ -1,8 +1,8 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 # Contributor: Dimitris Kiziridis <ragouel at outlook dot com>
 pkgname=ludusavi
-_app_id="com.github.mtkennerly.$pkgname"
-pkgver=0.26.0
+_app_id="com.mtkennerly.$pkgname"
+pkgver=0.27.0
 pkgrel=1
 pkgdesc="Backup tool for PC game saves"
 arch=('x86_64')
@@ -11,6 +11,7 @@ license=('MIT')
 depends=(
   'bzip2'
   'gcc-libs'
+  'gtk3'
   'hicolor-icon-theme'
 )
 makedepends=(
@@ -29,8 +30,8 @@ optdepends=(
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
         "$url/releases/download/v$pkgver/$pkgname-v$pkgver-legal.zip")
-sha256sums=('87b7fc9010429e43f4173062ecb4beada7789855e113c914b3f605549e5f3c27'
-            '7343768b6ecd1a957f7bdf85d50c4260252fe8b7eb371d4c3fbfc115b331b2eb')
+sha256sums=('787849cddb03ae4d91000a4139a0abb07c6f3e938506af2c2138e3819fc03af3'
+            'b9ec6df18e44d2c3d0cef6f014b3fd0e226191f4880942eff6455c589a30a707')
 
 prepare() {
   cd "$pkgname-$pkgver"
@@ -51,19 +52,19 @@ check() {
   export RUSTUP_TOOLCHAIN=stable
   cargo test --frozen --all-features
 
-  appstreamcli validate --no-net "assets/${_app_id}.metainfo.xml"
-  desktop-file-validate "assets/$pkgname.desktop"
+  appstreamcli validate --no-net "assets/linux/${_app_id}.metainfo.xml"
+  desktop-file-validate "assets/linux/${_app_id}.desktop"
 }
 
 package() {
   cd "$pkgname-$pkgver"
   install -Dm755 "target/release/$pkgname" -t "$pkgdir/usr/bin/"
-  install -Dm644 "assets/${_app_id}.metainfo.xml" -t "$pkgdir/usr/share/metainfo/"
+  install -Dm644 "assets/linux/${_app_id}.metainfo.xml" -t "$pkgdir/usr/share/metainfo/"
   install -Dm644 assets/icon.png \
     "$pkgdir/usr/share/icons/hicolor/64x64/apps/$pkgname.png"
   install -Dm644 assets/icon.svg \
     "$pkgdir/usr/share/icons/hicolor/scalable/apps/$pkgname.svg"
-  install -Dm644 "assets/$pkgname.desktop" \
+  install -Dm644 "assets/linux/${_app_id}.desktop" \
     "$pkgdir/usr/share/applications/${_app_id}.desktop"
   install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
   install -Dm644 "$srcdir/$pkgname-v$pkgver-legal.txt" \
