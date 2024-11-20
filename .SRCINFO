@@ -1,6 +1,6 @@
 pkgbase = katalogue-git
 pkgdesc = Catalog to track maintenance events and todos for your home, car, and otherwise
-pkgver = r5.227d5b732e736c0e34235efcc5a3c9442d2fe7fc
+pkgver = r6.228ac945305b6e009de0ce6b7eb93dbe2c984b64
 pkgrel = 1
 url = https://github.com/kd8bny/katalogue
 arch = x86_64
