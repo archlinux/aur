@@ -2,7 +2,7 @@
 # Contributor: Yurenev Nikolay <yurnik2004 at gmail.com>
 
 pkgname='zvm'
-pkgver='0.7.9'
+pkgver='0.8.1'
 pkgrel='1'
 pkgdesc='Version manager for Zig compilers'
 arch=('x86_64' 'armv7h')
@@ -13,7 +13,7 @@ source=(
     "$pkgname-$pkgver.tar.gz::https://github.com/tristanisham/zvm/archive/refs/tags/v$pkgver.tar.gz"
 )
 
-md5sums=('8ed29138649d648ecea0575f0f8299c9')
+md5sums=('2cda741e2021765c85fdc2763f13b52f')
 
 build() {
     cd $pkgname-$pkgver
@@ -25,4 +25,3 @@ package() {
     mkdir -p "$pkgdir/usr/bin"
     cp zvm "$pkgdir/usr/bin"
 }
-md5sums=('8ed29138649d648ecea0575f0f8299c9')
