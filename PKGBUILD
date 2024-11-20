@@ -1,39 +1,67 @@
 # Maintainer: Mahdi Sarikhani <mahdisarikhani@outlook.com>
 # Contributor: Mattia Borda <mattiagiovanni.borda@icloud.com>
 
-pkgname=parabolic
-pkgver=2024.5.0
+pkgbase=parabolic
+pkgname=(parabolic-gtk parabolic-qt)
+pkgver=2024.11.1
 pkgrel=1
 pkgdesc="Download web video and audio"
 arch=('x86_64')
 url="https://github.com/NickvisionApps/Parabolic"
 license=('MIT')
-depends=('bash' 'dotnet-runtime' 'ffmpeg' 'gcc-libs' 'glibc' 'hicolor-icon-theme' 'python-psutil' 'yt-dlp')
-makedepends=('blueprint-compiler' 'dotnet-sdk' 'git' 'libadwaita')
+makedepends=('boost' 'cmake' 'gtk4' 'libadwaita' 'libnick' 'libsecret' 'libxml++-5.0' 'qt6-base' 'qt6-svg')
 provides=('tube-converter')
 conflicts=('tube-converter')
 replaces=('tube-converter')
-source=("git+${url}#tag=${pkgver}"
-        "git+https://github.com/NickvisionApps/CakeScripts")
-sha256sums=('b5a674b4769ca5e2bcb215d409a12869329bd2a5897c33d5aa451c5e62b1c19a'
-            'SKIP')
-
-prepare() {
-    cd "${pkgname^}"
-    git submodule init
-    git config submodule.CakeScripts.url "${srcdir}/CakeScripts"
-    git -c protocol.file.allow=always submodule update
-    dotnet tool restore
-}
+source=("${pkgbase}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
+sha256sums=('d334c52fb23b7e56ae369b59276c0748e95537c2ed4b7d0f229c2e63a2b34228')
 
 build() {
-    cd "${pkgname^}"
-    dotnet cake --target=Publish --prefix=/usr --ui=gnome
+    cmake -B build-gtk -S "${pkgbase^}-${pkgver}" \
+        -DCMAKE_BUILD_TYPE=Release \
+        -DCMAKE_INSTALL_PREFIX=/usr \
+        -DUI_PLATFORM=gnome \
+        -Wno-dev
+    cmake --build build-gtk
+
+    cmake -B build-qt -S "${pkgbase^}-${pkgver}" \
+        -DCMAKE_BUILD_TYPE=Release \
+        -DCMAKE_INSTALL_PREFIX=/usr \
+        -DUI_PLATFORM=qt \
+        -Wno-dev
+    cmake --build build-qt
 }
 
-package() {
-    cd "${pkgname^}"
-    dotnet cake --target=Install --destdir="${pkgdir}"
-    ln -s org.nickvision.tubeconverter "${pkgdir}/usr/bin/${pkgname}"
-    install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE
+package_parabolic-gtk() {
+    depends=('bash'
+             'boost-libs'
+             'curl'
+             'gcc-libs'
+             'glib2'
+             'glibc'
+             'gtk4'
+             'hicolor-icon-theme'
+             'libadwaita'
+             'libsecret'
+             'libxml++-5.0'
+             'openssl')
+
+    DESTDIR="${pkgdir}" cmake --install build-gtk
+    install -Dm644 "${pkgbase^}-${pkgver}/COPYING" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+}
+
+package_parabolic-qt() {
+    depends=('bash'
+             'boost-libs'
+             'curl'
+             'gcc-libs'
+             'glib2'
+             'glibc'
+             'hicolor-icon-theme'
+             'libsecret'
+             'openssl'
+             'qt6-base')
+
+    DESTDIR="${pkgdir}" cmake --install build-qt
+    install -Dm644 "${pkgbase^}-${pkgver}/COPYING" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
