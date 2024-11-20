@@ -1,11 +1,11 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=mustang
 _pkgname=Mustang
-pkgver=0.6.12
+pkgver=0.6.13
 _electronversion=32
 _nodever=20
 pkgrel=1
-pkgdesc="New full-featured desktop email, chat and video conference client.Use system-wide electron."
+pkgdesc="New full-featured desktop email, chat and video conference client.(Use system-wide electron)"
 arch=('any')
 url="https://mustang.im/"
 _ghurl="https://github.com/mustang-im/mustang"
@@ -22,7 +22,7 @@ source=(
     "${pkgname}-${pkgver}.tar.gz::${_ghurl}/archive/refs/tags/v${pkgver}.tar.gz"
     "${pkgname}.sh"
 )
-sha256sums=('a3b3cbab6a078da74b0aa0a3fef21ccc74ac1b04201acdb26d2a2cc721cb0db1'
+sha256sums=('8be933156e67944b01e60a35a84f683556a439656670517733e581eb6e4ce10b'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
@@ -51,14 +51,13 @@ build() {
     if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
         {
             echo 'registry=https://registry.npmmirror.com'
-            echo 'disturl=https://registry.npmmirror.com/-/binary/node/'
             echo 'electron_mirror=https://registry.npmmirror.com/-/binary/electron/'
             echo 'electron_builder_binaries_mirror=https://registry.npmmirror.com/-/binary/electron-builder-binaries/'
         } >> .npmrc
         echo '[url "https://github.moeyy.xyz/https://github.com/"]' >> "${srcdir}/${pkgname}-${pkgver}/app/.gitconfig"
         echo '    insteadof = https://github.com/' >> "${srcdir}/${pkgname}-${pkgver}/app/.gitconfig"
+        echo app  lib backend e2 | xargs -n 1 cp .npmrc
     fi
-    echo app  lib backend e2 | xargs -n 1 cp .npmrc
     cd "${srcdir}/${pkgname}-${pkgver}/app/build"
     sh "${pkgname}-brand.sh"
     cd "${srcdir}/${pkgname}-${pkgver}/app"
@@ -68,18 +67,17 @@ build() {
     cd "${srcdir}/${pkgname}-${pkgver}/backend"
     NODE_ENV=development    npm install
     cd "${srcdir}/${pkgname}-${pkgver}/e2"
-    sed -i "/- AppImage/d;/- snap/d;/- rpm/d;s/- deb/- dir/g" electron-builder.yml
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
     cp build/icon.png resources/
     NODE_ENV=development    npm install --legacy-peer-deps
     NODE_ENV=development    npm install -D semver
     NODE_ENV=production     npm run build
-    NODE_ENV=production     npm exec -c "electron-builder --linux dir -c.electronDist=${electronDist}"
+    NODE_ENV=production     npm exec -c "electron-builder --linux dir -c.electronDist=${electronDist} --config electron-builder.yml"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
     install -Dm644 "${srcdir}/${pkgname}-${pkgver}/e2/dist/linux-"*/resources/app.asar -t "${pkgdir}/usr/lib/${pkgname}"
-    cp -Pr --no-preserve=ownership "${srcdir}/${pkgname}-${pkgver}/e2/dist/linux-"*/resources/app.asar.unpacked "${pkgdir}/usr/lib/${pkgname}"
+    install -Dm644 "${srcdir}/${pkgname}-${pkgver}/e2/build/icon.png" -t "${pkgdir}/usr/lib/${pkgname}/app.asar.unpacked/resources"
     install -Dm644 "${srcdir}/${pkgname}-${pkgver}/e2/build/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
     install -Dm644 "${srcdir}/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
     install -Dm644 "${srcdir}/${pkgname}-${pkgver}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
