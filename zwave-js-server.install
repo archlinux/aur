@@ -1,0 +1,7 @@
+post_upgrade() {
+    cat <<EOF
+    NOTE: Version 1.40.0-2 introduces a breaking change in the service file!!  The service template
+    now takes a configuration file name instead of a device path.
+    See /etc/conf.d/zwave-js-server/zwave-device.conf.example for details.
+EOF
+}

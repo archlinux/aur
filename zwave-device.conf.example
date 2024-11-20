@@ -1,0 +1,15 @@
+# zwave-device.conf.example
+
+# Files in this directory are loaded by instances of the zwave-js-server@.service template.  For example,
+# zwave-js-server@homeseer.service looks for the file /etc/conf.d/zwave-js-server/homeseer.conf.
+# The file should define ZWAVE_JS_SERVER_ARGS with the device path and other options.
+
+# Configuration files for the zwave server itself should be placed in /etc/zwave-js-server.
+
+#Examples
+
+#ZWAVE_JS_SERVER_ARGS="/dev/ttyUSB0"
+
+#ZWAVE_JS_SERVER_ARGS="/dev/serial/by-id/<zwave device>
+
+#ZWAVE_JS_SERVER_ARGS="/dev/serial/by-id/<zwave device> --host=zwave --port=3000 --config=/etc/zwave-js-server/homeseer.js"

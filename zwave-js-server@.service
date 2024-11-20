@@ -3,7 +3,8 @@ Description=ZWave-JS Server Daemon "%i" instance
 Before=home-assistant.service
 
 [Service]
-ExecStart=/usr/bin/zwave-server /dev/%I
+EnvironmentFile=/etc/conf.d/zwave-js-server/%I.conf
+ExecStart=/usr/bin/zwave-server $ZWAVE_JS_SERVER_ARGS
 
 [Install]
 WantedBy=multi-user.target
