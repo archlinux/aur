@@ -1,7 +1,7 @@
 pkgbase = oama-bin
 	pkgdesc = Provide OAuth2 renewal and authorization capabilities
 	pkgver = 0.16
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/pdobsan/oama
 	install = .INSTALL
 	arch = x86_64

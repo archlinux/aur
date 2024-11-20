@@ -5,12 +5,9 @@ post_install() {
 
 -----------------------------------------------------------------------------
 
-oama version 0.15
+oama version 0.16
 
-If you are using the GPG backend then this relaese is a BREAKING change!
-Manual intervention is needed.
-
-See release notes at: https://github.com/pdobsan/oama/releases/tag/0.15
+See release notes at: https://github.com/pdobsan/oama/releases/tag/0.16
 
 -----------------------------------------------------------------------------
 
