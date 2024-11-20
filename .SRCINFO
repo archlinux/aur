@@ -1,5 +1,5 @@
 pkgbase = fafarunner-bin
-	pkgdesc = A game developed using flutter and flame
+	pkgdesc = Enjoy smooth gameplay, stunning graphics, and endless fun
 	pkgver = 1.0.2
 	pkgrel = 366
 	url = https://github.com/fafarunner/fafarunner
