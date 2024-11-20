@@ -1,6 +1,6 @@
 # Maintainer: iff <iff@ik.me>
 pkgname="pay-respects"
-pkgver=0.5.10
+pkgver=0.5.11
 pkgrel=1
 pkgdesc="Terminal command suggestion, alternative to thefuck written in Rust with AI support"
 arch=("x86_64")
@@ -9,7 +9,7 @@ license=('AGPL')
 makedepends=('cargo' 'git')
 optdepends=()
 source=("$pkgname::git+https://github.com/iffse/pay-respects#tag=v$pkgver")
-sha1sums=('add16a384273aeb48791c0e07c7e60a02e2b423d')
+sha1sums=('e74a582a82eabc807652cd4b9d54e35f2cf8965a')
 replaces=('pay_respects')
 
 prepare() {
