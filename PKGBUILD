@@ -1,6 +1,6 @@
 # Maintainer: Lander
 pkgname=rmfakecloud
-pkgver=0.0.17
+pkgver=0.0.21
 pkgrel=1
 pkgdesc="host your own cloud for the remarkable"
 arch=('x86_64')
@@ -18,9 +18,11 @@ source=(
   "rmfakecloud.service"
   "rmfakecloud.conf"
 )
-sha256sums=('26c08be128ba329f6b9fd389705b28885c5e8b9c345ea5e3204b6feec662984a'
-            '5f5ba109ab19df8f00bae6300f0f7028a7995f2b54d0505e703dd5f04d83468a'
-            'f992a133142f9706e700531fc23ea7eb8ba7f2bfda97626bcccd121e06610a10')
+sha256sums=(
+  'd28d7550ae11d11108b309c17898d91a1ddb4972178c03c9f572ef4c756f1dab'
+  '5f5ba109ab19df8f00bae6300f0f7028a7995f2b54d0505e703dd5f04d83468a'
+  'f992a133142f9706e700531fc23ea7eb8ba7f2bfda97626bcccd121e06610a10'
+)
 backup=(
   'etc/rmfakecloud.conf'
 )
@@ -44,4 +46,3 @@ package() {
   install -Dm644 "${srcdir}/rmfakecloud.service" "${pkgdir}/usr/lib/systemd/system/rmfakecloud.service"
   install -Dm644 "${srcdir}/rmfakecloud.conf" "${pkgdir}/etc/rmfakecloud.conf"
 }
-
