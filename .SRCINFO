@@ -1,6 +1,6 @@
 pkgbase = dotbackup
 	pkgdesc = YAML config based backup utility
-	pkgver = 1.2.1
+	pkgver = 1.2.2
 	pkgrel = 1
 	url = https://github.com/jaxvanyang/dotbackup
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = dotbackup
 	makedepends = asciidoctor
 	depends = python-ruamel-yaml
 	depends = python>=3.8
-	source = dotbackup-1.2.1.tar.gz::https://github.com/jaxvanyang/dotbackup/archive/v1.2.1.tar.gz
-	sha256sums = b04c68f96c3b66c1c68e684d561a799c323c9fd6a5a116898ec67854fe0c24c8
+	source = dotbackup-1.2.2.tar.gz::https://github.com/jaxvanyang/dotbackup/archive/v1.2.2.tar.gz
+	sha256sums = 294b45f0a744e62305c5e773b012505dbd8d2dbe8463e0f73c31d546093fedbb
 
 pkgname = dotbackup
