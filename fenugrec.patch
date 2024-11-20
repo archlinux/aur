@@ -1,0 +1,776 @@
+diff -urN drawtiming_old/configure.ac drawtiming_new/configure.ac
+--- drawtiming_old/configure.ac	1969-12-31 19:00:00.000000000 -0500
++++ drawtiming_new/configure.ac	2024-11-17 15:44:55.375165004 -0500
+@@ -0,0 +1,24 @@
++AC_INIT([drawtiming],[0.7.1])
++AC_CONFIG_SRCDIR([src/main.cc])
++AM_INIT_AUTOMAKE
++
++AC_CONFIG_HEADERS(config.h)
++AC_PROG_CC
++AC_PROG_CXX
++AC_PROG_YACC
++AC_PROG_LEX([noyywrap])
++AC_PROG_INSTALL
++AC_C_CONST
++AC_CHECK_LIB(gnugetopt, getopt_long)
++AC_CHECK_HEADERS(getopt.h)
++
++AC_ARG_WITH([magick],
++  [AS_HELP_STRING([--without-magick], [Build lite version without ImageMagick])],
++  [], [with_magick=check])
++
++AS_IF([test "x$with_magick" != "xno"],
++  [PKG_CHECK_MODULES([MAGICKXX], [Magick++])],
++  [AC_DEFINE([LITE],[1],[Build without ImageMagick])])
++
++AC_CONFIG_FILES([Makefile drawtiming.spec src/Makefile doc/Makefile samples/Makefile])
++AC_OUTPUT
+diff -urN drawtiming_old/doc/drawtiming.1 drawtiming_new/doc/drawtiming.1
+--- drawtiming_old/doc/drawtiming.1	2009-03-28 11:29:18.000000000 -0400
++++ drawtiming_new/doc/drawtiming.1	2024-11-17 15:44:55.375165004 -0500
+@@ -30,7 +30,11 @@
+ .Op Fl -aspect
+ .Op Fl -cell-height Ar H
+ .Op Fl -cell-width Ar W
++.Op Fl -color-bg Ar Cbg
++.Op Fl -color-fg Ar Cfg
++.Op Fl -color-dep Ar Cdp
+ .Op Fl -font-size Ar pts
++.Op Fl -highlight-rows
+ .Op Fl -line-width Ar W
+ .Fl -output Ar target
+ .Ar
+@@ -56,13 +60,21 @@
+ .It Fl -pagesize Ar WidthxHeight
+ Scale the diagram to fit given image size.
+ .It Fl -aspect
+-Maintain fixed aspect ratio if --pagesize given.
++Maintain fixed aspect ratio if \-\-pagesize given.
+ .It Fl -cell-height Ar H
+ Height of the each signal in pixels. Default is 32.
+ .It Fl -cell-width Ar W
+-Width for the time unit in pixels. Defaults is 64.
++Width for the time unit in pixels. Default is 64.
++.It Fl -color-bg Ar Cbg
++Background color name. Default is white.
++.It Fl -color-fg Ar Cfg
++Foreground color name. Default is black.
++.It Fl -color-dep Ar Cdp
++Dependency color name. Default is blue.
+ .It Fl -font-size Ar pts
+ Font size in pts. Default is 18.
++.It Fl -highlight-rows
++Highlight alternating rows to improve readability.
+ .It Fl -line-width Ar W
+ Line width for drawings in pixels. Default is 1.
+ .It Fl -output Ar target
+@@ -101,23 +113,23 @@
+ changing its value.
+ .El
+ .Pp
+-Statements are seperated by the following symbols:
++Statements are separated by the following symbols:
+ .Bl -tag -width "-tD>"
+ .It ,
+-The comma seperator is used to seperate statements without
++The comma separator is used to separate statements without
+ affecting the dependency list or clock (ie: the next statement will
+ add to the dependency list).
+ .It ;
+-The semicolon seperator resets the list of dependencies without
++The semicolon separator resets the list of dependencies without
+ incrementing the clock
+ .It .
+-The period seperator resets the list of dependencies and
++The period separator resets the list of dependencies and
+ increments the clock.
+ .It =>
+-The "causes" seperator renders dependency arrows based on the
++The "causes" separator renders dependency arrows based on the
+ current list of dependencies and then resets the dependency list.
+ .It -tD>
+-The "delay" seperator renders a delay arrow from the last dependency
++The "delay" separator renders a delay arrow from the last dependency
+ with the annotation 
+ .Em tD .
+ .El
+@@ -156,7 +168,7 @@
+ FIRE => COUNT="N+1".
+ .Ed
+ .Pp
+-This input file descibes the changes in five signals over a period of
++This input file describes the changes in five signals over a period of
+ seven clock cycles.  The end of each clock cycle is indicated with a
+ period.  For example, the following line indicates a single signal,
+ named
+@@ -173,7 +185,7 @@
+ value if their initial value is not given.  
+ .Pp
+ Independent signal transitions which occur simultaneously are normally
+-seperated by commas. Since signals aren't normally expected to change
++separated by commas. Since signals aren't normally expected to change
+ simultaneously, the initial state is a good example of this:
+ .Pp
+ .Dl POWER=0, FIRE=0, ARMED=0, LED=OFF, COUNT=N.
+@@ -194,7 +206,7 @@
+ .Pp
+ .Dl POWER=1 => LED=GREEN.
+ .Pp
+-For signal state changes with multiple dependencies, seperate the
++For signal state changes with multiple dependencies, separate the
+ dependencies with commas:
+ .Pp
+ .Dl FIRE, ARMED => LED=RED.
+diff -urN drawtiming_old/samples/Makefile.am drawtiming_new/samples/Makefile.am
+--- drawtiming_old/samples/Makefile.am	2009-03-28 11:29:24.000000000 -0400
++++ drawtiming_new/samples/Makefile.am	2024-11-17 15:44:55.375165004 -0500
+@@ -1,4 +1,4 @@
+-TESTS = runsamples.sh
++TESTS = runsamples.sh runlite.sh
+ EXTRA_DIST = runsamples.sh memory.txt sample.txt statement1.txt guenter.txt
+ CLEANFILES = memory.gif sample.gif statement1.gif sample640x480.gif guenter.gif
+ 
+diff -urN drawtiming_old/samples/runlite.sh drawtiming_new/samples/runlite.sh
+--- drawtiming_old/samples/runlite.sh	1969-12-31 19:00:00.000000000 -0500
++++ drawtiming_new/samples/runlite.sh	2024-11-17 15:44:55.375165004 -0500
+@@ -0,0 +1,8 @@
++#!/bin/sh -ex
++# this script is meant to be executed by running "make check" 
++
++../src/drawtiming -o sample.ps $srcdir/sample.txt
++../src/drawtiming -o statement1.ps $srcdir/statement1.txt
++../src/drawtiming -x 1.5 -o memory.ps $srcdir/memory.txt
++../src/drawtiming -p 640x480 -o sample640x480.ps $srcdir/sample.txt
++../src/drawtiming -o guenter.ps $srcdir/guenter.txt
+diff -urN drawtiming_old/src/globals.h drawtiming_new/src/globals.h
+--- drawtiming_old/src/globals.h	2009-04-02 23:00:00.000000000 -0400
++++ drawtiming_new/src/globals.h	2024-11-17 15:44:55.375165004 -0500
+@@ -22,7 +22,7 @@
+ #define YYSTYPE std::string
+ 
+ extern unsigned n;
+-extern timing::data data;
++extern timing::data tdata;
+ extern timing::signal_sequence deps;
+ 
+ #endif
+diff -urN drawtiming_old/src/main.cc drawtiming_new/src/main.cc
+--- drawtiming_old/src/main.cc	2009-04-02 23:01:53.000000000 -0400
++++ drawtiming_new/src/main.cc	2024-11-17 15:44:55.375165004 -0500
+@@ -35,6 +35,7 @@
+ #define FLAG_PAGESIZE 1
+ #define FLAG_SCALE 2
+ #define FLAG_ASPECT 4
++#define FLAG_HIGHLIGHT_ROWS 8
+ 
+ extern FILE *yyin;
+ extern int yydebug;
+@@ -44,7 +45,7 @@
+ static void freesoft (void);
+ 
+ unsigned n;
+-timing::data data;
++timing::data tdata;
+ timing::signal_sequence deps;
+ string outfile;
+ int verbose = 0;
+@@ -55,7 +56,11 @@
+     OPT_CELL_WIDTH,
+     OPT_FONT,
+     OPT_FONT_SIZE,
++	OPT_COLOR_BACKGROUND,
++	OPT_COLOR_FOREGROUND,
++	OPT_COLOR_DEPEND,
+     OPT_HELP,
++    OPT_HIGHLIGHT_ROWS,
+     OPT_LINE_WIDTH,
+     OPT_OUTPUT,
+     OPT_SCALE,
+@@ -70,9 +75,13 @@
+   {"aspect", no_argument, NULL, OPT_ASPECT},
+   {"cell-height", required_argument, NULL, OPT_CELL_HEIGHT},
+   {"cell-width", required_argument, NULL, OPT_CELL_WIDTH},
++  {"color-bg", required_argument, NULL, OPT_COLOR_BACKGROUND},
++  {"color-fg", required_argument, NULL, OPT_COLOR_FOREGROUND},
++  {"color-dep", required_argument, NULL, OPT_COLOR_DEPEND},
+   {"font", required_argument, NULL, OPT_FONT},
+   {"font-size", required_argument, NULL, OPT_FONT_SIZE},
+   {"help", no_argument, NULL, OPT_HELP},
++  {"highlight-rows",no_argument, NULL, OPT_HIGHLIGHT_ROWS},
+   {"line-width", required_argument, NULL, OPT_LINE_WIDTH},
+   {"output", required_argument, NULL, OPT_OUTPUT},
+   {"scale", required_argument, NULL, OPT_SCALE},
+@@ -87,9 +96,9 @@
+     		       int width, int height, double scale)
+ {
+   if (flags & FLAG_PAGESIZE)
+-    render (gc, data, width, height, (flags & FLAG_ASPECT));
++    render (gc, tdata, width, height, (flags & FLAG_ASPECT),(flags & FLAG_HIGHLIGHT_ROWS));
+   else
+-    render (gc, data, scale);
++    render (gc, tdata, scale,(flags & FLAG_HIGHLIGHT_ROWS));
+ }
+ 
+ int main (int argc, char *argv[]) {
+@@ -108,6 +117,15 @@
+     case OPT_CELL_HEIGHT:
+       timing::vCellHt = atoi (optarg);
+       break;
++	case OPT_COLOR_BACKGROUND:
++	  timing::vColor_Bg=optarg;
++	  break;
++	case OPT_COLOR_FOREGROUND:
++	  timing::vColor_Fg=optarg;
++	  break;
++	case OPT_COLOR_DEPEND:
++	  timing::vColor_Dep=optarg;
++	  break;
+     case OPT_FONT:
+       timing::vFont = optarg;
+       break;
+@@ -151,7 +169,10 @@
+     case 'w':
+     case OPT_CELL_WIDTH:
+       timing::vCellW = atoi (optarg);
+-      break;    
++      break;
++    case OPT_HIGHLIGHT_ROWS:
++      flags |= FLAG_HIGHLIGHT_ROWS;
++      break;
+     }
+ 
+   if (optind >= argc) {
+@@ -190,9 +211,9 @@
+       }
+     }
+ 
+-    data.pad (n);
++    tdata.pad (n);
+     if (verbose)
+-      cout << data;
++      cout << tdata;
+ 
+     if (outfile.empty ())
+       return 0;
+@@ -207,7 +228,7 @@
+       timing::magick_gc gc;
+       render_it (gc, flags, width, height, scale);
+ 
+-      Image img (Geometry (gc.width, gc.height), "white");
++      Image img (Geometry (gc.width, gc.height), timing::vColor_Bg);
+       gc.draw (img);
+       img.write (outfile);
+ #endif /* ! LITE */
+@@ -274,13 +295,21 @@
+        << "-v" << endl
+        << "--verbose" << endl
+        << "    Increases the quantity of diagnostic output." << endl
++       << "--highlight-rows" << endl
++       << "    Whether rows should be highlighted different colors for readability." << endl
+        << "-c" << endl
+        << "--cell-height" << endl
+        << "    Height of the signal (pixels) [48]." << endl
+        << "-w" << endl
+        << "--cell-width" << endl
+        << "    Width of the time unit (pixels) [64]." << endl
+-       << "--font <name>" << endl
++       << "--color-bg" << endl
++	   << "    Background color name [white]." << endl
++       << "--color-fg" << endl
++	   << "    Foreground color name [black]." << endl
++       << "--color-dep" << endl
++	   << "    Dependency ground color name [blue]." << endl
++	   << "--font <name>" << endl
+        << "    Font [Helvetica]" << endl
+        << "-f" << endl
+        << "--font-size" << endl
+diff -urN drawtiming_old/src/Makefile.am drawtiming_new/src/Makefile.am
+--- drawtiming_old/src/Makefile.am	2009-03-28 11:29:25.000000000 -0400
++++ drawtiming_new/src/Makefile.am	2024-11-17 15:44:55.375165004 -0500
+@@ -1,10 +1,10 @@
+-AM_CXXFLAGS = @MAGICK_CFLAGS@ -DYYDEBUG=1
++AM_CXXFLAGS = @MAGICKXX_CFLAGS@ -DYYDEBUG=1
+ AM_YFLAGS = -d
+ 
+ bin_PROGRAMS = drawtiming
+ drawtiming_SOURCES = main.cc globals.h parser.yy scanner.ll timing.cc timing.h
+-drawtiming_LDFLAGS = @MAGICK_LIBS@
++drawtiming_LDADD = @MAGICKXX_LIBS@
+ 
+-EXTRA_DIST = parser.h
+-BUILT_SOURCES = parser.h
+-parser.h: parser.cc
++EXTRA_DIST = parser.hh
++BUILT_SOURCES = parser.hh
++parser.hh: parser.cc
+diff -urN drawtiming_old/src/parser.yy drawtiming_new/src/parser.yy
+--- drawtiming_old/src/parser.yy	2009-04-02 23:00:03.000000000 -0400
++++ drawtiming_new/src/parser.yy	2024-11-17 15:44:55.375165004 -0500
+@@ -24,6 +24,8 @@
+ void yyerror (const char *s);
+ extern int yylineno;
+ int yylex (void);
++
++using namespace timing;
+ %}
+ 
+ %token SYMBOL STRING CAUSE DELAY
+@@ -42,13 +44,13 @@
+ statement { $$ = $1; deps.push_back ($1); }
+ | statements ',' statement { $$ = $3; deps.push_back ($3); }
+ | statements ';' statement { $$ = $3; deps.clear (); deps.push_back ($3); }
+-| statements CAUSE statement { $$ = $3; data.add_dependencies ($3, deps); 
++| statements CAUSE statement { $$ = $3; tdata.add_dependencies ($3, deps);
+     deps.clear (); deps.push_back ($3); }
+-| statements DELAY statement { $$ = $3; data.add_delay ($3, $1, $2); }
++| statements DELAY statement { $$ = $3; tdata.add_delay ($3, $1, $2); }
+ 
+ statement:
+-SYMBOL '=' SYMBOL { $$ = $1; data.set_value ($1, n, timing::sigvalue ($3)); }
+-| SYMBOL '=' STRING { $$ = $1; data.set_value ($1, n, timing::sigvalue ($3, timing::STATE)); }
++SYMBOL '=' SYMBOL { $$ = $1; tdata.set_value ($1, n, timing::sigvalue ($3)); }
++| SYMBOL '=' STRING { $$ = $1; tdata.set_value ($1, n, timing::sigvalue ($3, timing::STATE)); }
+ | SYMBOL { $$ = $1; };
+ 
+ %%
+diff -urN drawtiming_old/src/scanner.ll drawtiming_new/src/scanner.ll
+--- drawtiming_old/src/scanner.ll	2009-04-02 22:59:55.000000000 -0400
++++ drawtiming_new/src/scanner.ll	2024-11-17 15:44:55.375165004 -0500
+@@ -21,7 +21,7 @@
+ #  include <config.h>
+ #endif
+ #include "globals.h"
+-#include "parser.h"
++#include "parser.hh"
+ %}
+ 
+ %option yylineno
+diff -urN drawtiming_old/src/timing.cc drawtiming_new/src/timing.cc
+--- drawtiming_old/src/timing.cc	2009-04-02 23:02:21.000000000 -0400
++++ drawtiming_new/src/timing.cc	2024-11-17 15:44:55.375165004 -0500
+@@ -23,15 +23,24 @@
+ #include "timing.h"
+ #include <map>
+ #include <fstream>
+-using namespace std;
++#include <string.h>
++
+ using namespace timing;
+ using namespace Magick;
++using namespace std;    //"not recommended"
++// is this seriously the alternative to "namespace std" ?
++//using std::endl;
++//using std::ofstream;
++//using std::ostream;
+ 
+ int timing::vFontPointsize = 12;
+ int timing::vLineWidth = 1;
+ int timing::vCellHt = 32;
+ int timing::vCellW = 64;
+-string timing::vFont = "Helvetica";
++std::string timing::vFont = "Helvetica";
++std::string timing::vColor_Bg = "white";
++std::string timing::vColor_Fg = "black";
++std::string timing::vColor_Dep = "blue";
+ 
+ static int vCellHsep, vCellH, vCellHtxt, vCellHdel, vCellHtdel, vCellWtsep,
+             vCellWrm;
+@@ -121,7 +130,7 @@
+ 
+ // ------------------------------------------------------------
+ 
+-data &data::operator= (const data &d) {
++timing::data &data::operator= (const data &d) {
+   maxlen = d.maxlen;
+   signals = d.signals;
+   sequence = d.sequence;
+@@ -174,7 +183,7 @@
+ 
+ // ------------------------------------------------------------
+ 
+-void data::add_delay (const signame &name, const signame &dep, const string &text) {
++void data::add_delay (const signame &name, const signame &dep, const std::string &text) {
+   // a delay always indicates a dependency
+   // (but would require a way to select which is rendered)
+   // add_dependency (name, dep);
+@@ -249,7 +258,7 @@
+ 
+ // ------------------------------------------------------------
+ 
+-ostream &operator<< (ostream &f, const data &data) {
++ostream &operator<< (ostream &f, const timing::data &data) {
+   f << "signals: " << endl;
+   for (signal_sequence::const_iterator i = data.sequence.begin ();
+        i != data.sequence.end (); ++ i) 
+@@ -287,7 +296,7 @@
+ // ------------------------------------------------------------
+ // calculate the required label width
+ 
+-static int label_width (const data &d) {
++static int label_width (const timing::data &d) {
+   int labelWidth = 0;
+ 
+ #ifndef LITE
+@@ -318,7 +327,7 @@
+ // ------------------------------------------------------------
+ // calculate the basic height and width required before scaling
+ 
+-static void base_size (const data &d, int &w, int &h) {
++static void base_size (const timing::data &d, int &w, int &h) {
+ 
+   vCellHsep = vCellHt / 8;
+   vCellH=vCellHt-vCellHsep;
+@@ -341,7 +350,7 @@
+ // ------------------------------------------------------------
+ // add text to the diagram
+ 
+-static void push_text (gc &gc, double xpos, double ypos, const string &text) {
++static void push_text (gc &gc, double xpos, double ypos, const std::string &text) {
+   gc.stroke_width (1);
+   gc.text (int (xpos), int (ypos), text);
+   gc.stroke_width (vLineWidth);
+@@ -516,10 +525,10 @@
+ // ------------------------------------------------------------
+ 
+ static void draw_dependency (gc &gc, int x0, int y0, int x1, int y1) {
+-  list<Coordinate> shaft, head;
++  CoordinateList shaft, head;
+ 
+   gc.push ();
+-  gc.stroke_color ("blue");
++  gc.stroke_color (timing::vColor_Dep);
+ 
+   if (x0 == x1) {
+     int w = vCellW/20, h = vCellHt/6, h2 = vCellHt/10;
+@@ -527,7 +536,7 @@
+     if (y0 < y1) {
+       y1 -= vCellHt/4;
+       gc.line (x0, y0, x1, y1);
+-      gc.fill_color ("blue");
++      gc.fill_color (timing::vColor_Dep);
+       head.push_back (Coordinate (x1, y1));
+       head.push_back (Coordinate (x1 - w, y1 - h));
+       head.push_back (Coordinate (x1, y1 - h2));
+@@ -537,7 +546,7 @@
+     else {
+       y1 += vCellHt/4;
+       gc.line (x0, y0, x1, y1);
+-      gc.fill_color ("blue");
++      gc.fill_color (timing::vColor_Dep);
+       head.push_back (Coordinate (x1, y1));
+       head.push_back (Coordinate (x1 - w, y1 + h));
+       head.push_back (Coordinate (x1, y1 + h2));
+@@ -555,7 +564,7 @@
+     shaft.push_back (Coordinate ((x0 + x1) / 2, y1));
+     shaft.push_back (Coordinate (x1, y1));
+     gc.bezier (shaft);
+-    gc.fill_color ("blue");
++    gc.fill_color (timing::vColor_Dep);
+     head.push_back (Coordinate (x1, y1));
+     head.push_back (Coordinate (x1 - w1, y1 - h));
+     head.push_back (Coordinate (x1 - w2, y1));
+@@ -569,11 +578,11 @@
+ // ------------------------------------------------------------
+ 
+ static void draw_delay (gc &gc, int x0, int y0, int x1, int y1, int y2,
+-			const string &text) {
+-  list<Coordinate> head;
++			const std::string &text) {
++  std::vector<Coordinate> head;
+ 
+   gc.push ();
+-  gc.stroke_color ("blue");
++  gc.stroke_color (timing::vColor_Dep);
+ 
+   if (x0 == x1) 
+     gc.line (x0, y0, x1, y1);
+@@ -582,7 +591,7 @@
+     gc.line (x0, y0, x0, y2 + vCellHt/8);
+     gc.line (x1, y1, x1, y2 - vCellHt/8);
+     gc.line (x0, y2, x1, y2);
+-    gc.fill_color ("blue");
++    gc.fill_color (timing::vColor_Dep);
+     head.push_back (Coordinate (x1, y2));
+     head.push_back (Coordinate (x1 - vCellW/12, y2 - vCellHt/10));
+     head.push_back (Coordinate (x1 - vCellW/20, y2));
+@@ -595,7 +604,7 @@
+ 
+ // ------------------------------------------------------------
+ 
+-static void render_common (gc& gc, const data &d,
++static void render_common (gc& gc, const timing::data &d,
+     			   double hscale, double vscale) {
+ 
+   gc.push ();
+@@ -603,19 +612,32 @@
+   gc.font (vFont);
+   gc.point_size (vFontPointsize);
+   gc.stroke_width (vLineWidth);
+-  gc.stroke_color ("black");
++  gc.stroke_color (timing::vColor_Fg);
+ 
+   int labelWidth = label_width (d);
+ 
+   // draw a "scope-like" diagram for each signal
+   map<signame,int> ypos;
+   int y = 0;
++  const int num_row_colors = 4;
++  string row_colors[] = { "white","grey", "white","CornflowerBlue"};
++  int cur_row_color_idx = 0;
+   for (signal_sequence::const_iterator i = d.sequence.begin ();
+        i != d.sequence.end (); ++ i) {
+     const sigdata &sig = d.find_signal (*i);
+-    push_text (gc, vCellWrm, y + vCellHtxt, *i);
+     ypos[*i] = y;
+     int x = labelWidth + vCellWtsep;
++    if (gc.highlightRows) {
++      string cur_row_color = row_colors[cur_row_color_idx];
++      gc.stroke_color (cur_row_color);
++      gc.fill_color(cur_row_color);
++      gc.drawrect(0,y,x+sig.data.size()*vCellW,y+vCellHt);
++      gc.stroke_color ("black");
++      gc.fill_color("black");
++      cur_row_color_idx++;
++      cur_row_color_idx = cur_row_color_idx%num_row_colors;
++    }
++    push_text (gc, vCellWrm, y + vCellHtxt, *i);
+     sigvalue last;
+     for (value_sequence::const_iterator j = sig.data.begin ();
+ 	 j != sig.data.end (); ++ j) {
+@@ -649,24 +671,26 @@
+ 
+ // ------------------------------------------------------------
+ 
+-void timing::render (gc &gc, const data &d, double scale) {
++void timing::render (gc &gc, const data &d, double scale, bool highlightRows) {
+   int base_width, base_height;
+   base_size (d, base_width, base_height);
+ 
+   gc.width = (int)(scale * base_width);
+   gc.height = (int)(scale * base_height);
++  gc.highlightRows = highlightRows;
+ 
+   render_common (gc, d, scale, scale);
+ }
+ 
+ // ------------------------------------------------------------
+ 
+-void timing::render (gc &gc, const data &d, int w, int h, bool fixAspect) {
++void timing::render (gc &gc, const data &d, int w, int h, bool fixAspect, bool highlightRows) {
+   int base_width, base_height;
+   base_size (d, base_width, base_height);
+ 
+   gc.width = w;
+   gc.height = h;
++  gc.highlightRows = highlightRows;
+ 
+   double hscale = w / (double)base_width;
+   double vscale = h / (double)base_height;
+@@ -687,7 +711,7 @@
+ 
+ // ------------------------------------------------------------
+ 
+-void magick_gc::bezier (const std::list<Magick::Coordinate> &points) {
++void magick_gc::bezier (const Magick::CoordinateList &points) {
+   drawables.push_back (DrawableBezier (points));
+ }
+ 
+@@ -715,6 +739,10 @@
+   drawables.push_back (DrawableLine (x1, y1, x2, y2));
+ }
+ 
++void magick_gc::drawrect(int x1, int y1, int x2, int y2) {
++  drawables.push_back (DrawableRectangle (x1,y1,x2,y2));
++}
++
+ // ------------------------------------------------------------
+ 
+ void magick_gc::point_size (int size) {
+@@ -723,7 +751,7 @@
+ 
+ // ------------------------------------------------------------
+ 
+-void magick_gc::polygon (const std::list<Magick::Coordinate> &points)
++void magick_gc::polygon (const Magick::CoordinateList &points)
+ {
+   drawables.push_back (DrawablePolygon (points));
+ }
+@@ -789,8 +817,8 @@
+ 
+ // ------------------------------------------------------------
+ 
+-void postscript_gc::bezier (const std::list<Magick::Coordinate> &points) {
+-  std::list<Magick::Coordinate>::const_iterator i = points.begin();
++void postscript_gc::bezier (const Magick::CoordinateList &points) {
++  std::vector<Magick::Coordinate>::const_iterator i = points.begin();
+ 
+   ps_text << "newpath\n";
+   ps_text << i->x () << ' ' << (height - i->y ()) << " moveto\n";
+@@ -831,6 +859,17 @@
+   ps_text << "stroke\n";
+ }
+ 
++void postscript_gc::drawrect(int x1, int y1, int x2, int y2) {
++  Magick::CoordinateList points;
++  points.push_back (Magick::Coordinate (x1, y1));
++  points.push_back (Magick::Coordinate (x1, y2));
++  points.push_back (Magick::Coordinate (x2, y2));
++  points.push_back (Magick::Coordinate (x2, y1));
++  points.push_back (Magick::Coordinate (x1, y1));
++  
++  polygon (points);
++}
++
+ // ------------------------------------------------------------
+ 
+ void postscript_gc::point_size (int size) {
+@@ -839,9 +878,9 @@
+ 
+ // ------------------------------------------------------------
+ 
+-void postscript_gc::polygon (const std::list<Magick::Coordinate> &points) {
++void postscript_gc::polygon (const Magick::CoordinateList &points) {
+   static const char *ops[] = {"stroke", "fill"};
+-  std::list<Magick::Coordinate>::const_iterator i;
++  Magick::CoordinateList::const_iterator i;
+   int j;
+ 
+   for (j = 0; j < 2; j++) {
+diff -urN drawtiming_old/src/timing.h drawtiming_new/src/timing.h
+--- drawtiming_old/src/timing.h	2009-04-02 23:02:40.000000000 -0400
++++ drawtiming_new/src/timing.h	2024-11-17 15:44:55.375165004 -0500
+@@ -27,22 +27,35 @@
+ #include <exception>
+ #ifndef LITE
+ #include <Magick++.h>
+-#else /* LITE */
+ 
+-namespace Magick
+-{
+-  struct Coordinate
+-  {
+-    double _x, _y;
+-
+-    Coordinate (double x, double y) {
+-      _x = x;
+-      _y = y;
+-    }
++#else /* LITE */
+ 
+-    double x (void) const { return _x; }
+-    double y (void) const { return _y; }
++#include <vector>
++namespace Magick {
++  class Coordinate {
++  public:
++     Coordinate(void)
++        : _x(0),
++	  _y(0) {}
++  
++      Coordinate(double x_,double y_)
++        : _x(x_),
++	  _y(y_) {}
++  
++      virtual ~Coordinate() {}
++  
++      void x(double x_) { _x=x_; }
++      double x(void) const { return _x; }
++  
++      void y(double y_) { _y=y_; }
++      double y(void) const { return _y; }
++  
++    private:
++      double _x;
++      double _y;
+   };
++
++  typedef std::vector<Magick::Coordinate> CoordinateList;
+ };
+ 
+ #endif /* LITE */
+@@ -65,7 +78,7 @@
+   typedef std::list<sigvalue> value_sequence;
+ 
+   extern int vFontPointsize, vLineWidth, vCellHt, vCellW;
+-  extern std::string vFont;
++  extern std::string vFont, vColor_Bg, vColor_Fg, vColor_Dep;
+ 
+   class exception : public std::exception {
+   };
+@@ -125,39 +138,42 @@
+   class gc {
+   public:
+     int width, height;
++    bool highlightRows;
+ 
+     gc (void) : width(0), height(0) { }
+     virtual ~gc() { }
+ 
+-    virtual void bezier (const std::list<Magick::Coordinate> &points) = 0;
++    virtual void bezier (const Magick::CoordinateList &points) = 0;
+     virtual void fill_color (const std::string &name) = 0;
+     virtual void fill_opacity (int op) = 0;
+     virtual void font (const std::string &name) = 0;
+     virtual void line (int x1, int y1, int x2, int y2) = 0;
+     virtual void point_size (int size) = 0;
+-    virtual void polygon (const std::list<Magick::Coordinate> &points) = 0;
++    virtual void polygon (const Magick::CoordinateList &points) = 0;
+     virtual void pop (void) = 0;
+     virtual void push (void) = 0;
+     virtual void scaling (double hscale, double vscale) = 0;
+     virtual void stroke_color (const std::string &name) = 0;
+     virtual void stroke_width (int w) = 0;
+     virtual void text (int x, int y, const std::string &text) = 0;
++    virtual void drawrect (int x1, int y1, int x2, int y2) = 0;
+   };
+ 
+ #ifndef LITE
+   class magick_gc : public gc {
+-    std::list<Magick::Drawable> drawables;
++    std::vector<Magick::Drawable> drawables;
+ 
+   public:
+     ~magick_gc (void);
+ 
+-    void bezier (const std::list<Magick::Coordinate> &points);
++    void bezier (const Magick::CoordinateList &points);
+     void fill_color (const std::string &name);
+     void fill_opacity (int op);
+     void font (const std::string &name);
+     void line (int x1, int y1, int x2, int y2);
++    void drawrect (int x1, int y1, int x2, int y2);
+     void point_size (int size);
+-    void polygon (const std::list<Magick::Coordinate> &points);
++    void polygon (const Magick::CoordinateList &points);
+     void pop (void);
+     void push (void);
+     void scaling (double hscale, double vscale);
+@@ -176,13 +192,14 @@
+     postscript_gc (void);
+     ~postscript_gc (void);
+ 
+-    void bezier (const std::list<Magick::Coordinate> &points);
++    void bezier (const Magick::CoordinateList &points);
+     void fill_color (const std::string &name);
+     void fill_opacity (int op);
+     void font (const std::string &name);
+     void line (int x1, int y1, int x2, int y2);
++    void drawrect (int x1, int y1, int x2, int y2);
+     void point_size (int size);
+-    void polygon (const std::list<Magick::Coordinate> &points);
++    void polygon (const Magick::CoordinateList &points);
+     void pop (void);
+     void push (void);
+     void scaling (double hscale, double vscale);
+@@ -196,8 +213,8 @@
+     static bool has_ps_ext (const std::string& filename);
+   };
+ 
+-  void render (gc &gc, const data &d, double scale);
+-  void render (gc &gc, const data &d, int w, int h, bool fixAspect);
++  void render (gc &gc, const data &d, double scale, bool highlightRows);
++  void render (gc &gc, const data &d, int w, int h, bool fixAspect,bool highlightRows);
+ };
+ 
+ std::ostream &operator<< (std::ostream &f, const timing::data &d);
