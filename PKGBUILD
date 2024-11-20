@@ -1,28 +1,23 @@
-# Maintainer: JSH <jsh 6 7 8 9 at google>
+# Maintainer: JSH <jsh6789 at google>
 _pkgname=youtube-transcript-api
 pkgname=python-youtube-transcript-api
-pkgver=0.6.2
+pkgver=0.6.3
 pkgrel=1
 pkgdesc="A Python API which allows you to get the transcripts/subtitles for a given YouTube video."
 arch=('any')
 url="https://github.com/jdepoix/youtube-transcript-api"
 license=('MIT')
-depends=('python-requests')
-makedepends=('python-setuptools')
+depends=('python-requests' 'python-defusedxml')
+makedepends=('python-build' 'python-installer' 'python-poetry-core' 'python-wheel')
 source=("$_pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('f261ebab5cd8e859ab584508464eb384b27b7898bee8af76c9c64a489be99bcc')
+sha256sums=('ccb325510a686226b2f0df9981d5873062212a9b555551d4b30560902aeb7792')
 
 build() {
     cd "$srcdir/$_pkgname-$pkgver"
-    python setup.py build
+    python -m build --wheel --no-isolation
 }
-
-#check() {
-#    cd "$srcdir/$_pkgname-$pkgver"
-#    python setup.py test
-#}
 
 package() {
     cd "$srcdir/$_pkgname-$pkgver"
-    python setup.py install --root="$pkgdir" --optimize=1
+    python -m installer --destdir="$pkgdir" dist/*.whl
 }
