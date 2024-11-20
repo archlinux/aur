@@ -1,0 +1,22 @@
+pkgbase = python-propcache
+	pkgdesc = Accelerated property cache
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/pgvector/pgvector-python
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	arch = ppc64le
+	arch = s390x
+	license = Apache-2.0
+	makedepends = python-build
+	makedepends = python-expandvars
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = cython
+	source = propcache-0.2.0.tar.gz::https://files.pythonhosted.org/packages/source/p/propcache/propcache-0.2.0.tar.gz
+	sha256sums = df81779732feb9d01e5d513fad0122efb3d53bbc75f61b2a4f29a020bc985e70
+
+pkgname = python-propcache
