@@ -1,7 +1,7 @@
 pkgbase = smriti-bin
 	pkgdesc = Keep track of the commands your memory missed
 	pkgver = 1.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/aspasht/smriti
 	arch = x86_64
 	license = MIT
