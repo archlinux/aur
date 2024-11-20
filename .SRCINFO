@@ -9,6 +9,8 @@ pkgbase = eclipselock
 	makedepends = make
 	depends = openssl
 	source = eclipselock-1.0.0.tar.gz::https://github.com/tkmxqrdxddd/EclipseLock/archive/v1.0.0.tar.gz
+	source = LICENSE
+	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = eclipselock
