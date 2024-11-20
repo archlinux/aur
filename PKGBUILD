@@ -3,10 +3,10 @@
 _java=21
 _pkgname=dragonwell
 pkgname=jdk$_java-$_pkgname-standard-bin
-pkgver=21.0.4.0.4
-_pkgver=21.0.4.0.4+7
-_pkgver_=21.0.4.0.4.7
-__pkgver=21.0.4
+pkgver=21.0.5.0.5
+_pkgver=21.0.5.0.5+9
+_pkgver_=21.0.5.0.5.9
+__pkgver=21.0.5
 ___pkgver=21
 pkgrel=1
 pkgdesc="an in-house OpenJDK implementation at Alibaba (Standard Edition)"
