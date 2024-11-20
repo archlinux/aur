@@ -1,0 +1,12 @@
+--- cps/web.py.orig	2024-11-20 09:53:17.041632565 -0800
++++ cps/web.py	2024-11-20 09:53:33.192060201 -0800
+@@ -87,8 +87,7 @@
+ 
+ 
+ sql_version = importlib.metadata.version("sqlalchemy")
+-sqlalchemy_version2 = ([int(x) for x in sql_version.split('.')] >= [2, 0, 0])
+-
++sqlalchemy_version2 = ([int(x) if x.isnumeric() else 0 for x in sql_version.split('.')[:3]] >= [2, 0, 0])
+ 
+ @app.after_request
+ def add_security_headers(resp):
