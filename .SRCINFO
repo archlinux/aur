@@ -1,6 +1,6 @@
 pkgbase = pay-respects-bin
 	pkgdesc = Terminal command suggestion, alternative to thefuck written in Rust with AI support
-	pkgver = 0.5.10
+	pkgver = 0.5.11
 	pkgrel = 1
 	url = https://github.com/iffse/pay-respects
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = pay-respects-bin
 	provides = pay-respects
 	conflicts = pay-respects
 	replaces = pay_respects-bin
-	source = pay-respects-bin-0.5.10-1::https://github.com/iffse/pay-respects/releases/download/v0.5.10/pay-respects-ubuntu-latest.zip
-	sha1sums = 20d759ed915f95551296eb3050e0aaf32be08a5c
+	source = pay-respects-bin-0.5.11-1::https://github.com/iffse/pay-respects/releases/download/v0.5.11/pay-respects-ubuntu-latest.zip
+	sha1sums = a2d9fdeaf60d5066dcbd6feb01b873009d7df975
 
 pkgname = pay-respects-bin
