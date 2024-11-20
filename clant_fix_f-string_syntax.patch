@@ -1,0 +1,11 @@
+--- a/clant/clant.py
++++ b/clant/clant.py
+@@ -170,7 +170,7 @@
+ 
+     if options.auto_headers:
+         extensions = _header_extensions(source)
+-        pattern = "|".join([f"^\\.\\./.*\\.{x for x in extensions}$"])
++        pattern = "|".join([f"^\\.\\./.*\\.{x}$" for x in extensions])
+         cmd += [f"--header-filter={pattern}"]
+ 
+     cmd += [source]

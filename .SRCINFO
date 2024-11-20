@@ -1,0 +1,20 @@
+pkgbase = clant
+	pkgdesc = A fast and easy to use wrapper script for checking C and C++ code with the clang-based tools
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://gitlab.com/drobilla/clant
+	arch = any
+	license = ISC
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = clang
+	depends = include-what-you-use
+	depends = python
+	source = clant-e0bf66dba64daa9856ec79022bba31669e07344d.tar.gz::https://gitlab.com/drobilla/clant/-/archive/e0bf66dba64daa9856ec79022bba31669e07344d/e0bf66dba64daa9856ec79022bba31669e07344d.tar.gz
+	source = clant_fix_f-string_syntax.patch
+	sha256sums = 5327f788ab42874898d188d30926ef3e46d828a82b8b850d8d58cd6d0764817b
+	sha256sums = d48fc17a8ac9da82ce718c3f3660158fe9fdcd32df5154864a55dd88a31be9ee
+
+pkgname = clant
