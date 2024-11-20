@@ -3,13 +3,13 @@
 pkgname=lib32-sdl12-compat-git
 _pkgbase=sdl12-compat
 pkgver=1.2.68.r16.g6f0f603
-pkgrel=1
+pkgrel=2
 pkgdesc="An SDL-1.2 compatibility layer that uses SDL 2.0 behind the scenes."
 arch=("x86_64" "i686")
 url="https://github.com/libsdl-org/sdl12-compat"
 license=('Zlib AND MIT-0')
 depends=('lib32-sdl2' 'lib32-glibc' 'lib32-glu')
-makedepends=('cmake' 'git')
+makedepends=('cmake' 'git' 'ninja')
 conflicts=('lib32-sdl')
 provides=('lib32-sdl=1.12.15')
 conflicts=('lib32-sdl' 'lib32-sdl12-compat')
@@ -29,6 +29,7 @@ build() {
 
 	cmake -S $_pkgbase -B build \
 	-DCMAKE_BUILD_TYPE=None \
+	-G Ninja \
 	-DCMAKE_C_FLAGS="$CFLAGS -m32" \
 	-DCMAKE_INSTALL_PREFIX="/usr" \
 	-DCMAKE_INSTALL_LIBDIR="lib32" \
