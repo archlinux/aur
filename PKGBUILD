@@ -1,7 +1,7 @@
 # Maintainer: Tyler Veness <calcmogul at gmail dot com>
 
 pkgname=sleipnirgroup-sleipnir-git
-pkgver=0.0.1.r226.g9699463
+pkgver=0.0.1.r254.g791d6a0
 pkgrel=1
 pkgdesc="A sparsity and linearity-exploiting interior-point solver, now with readable internals"
 arch=('x86_64')
@@ -27,7 +27,7 @@ prepare() {
 build() {
   cmake -B build -S "Sleipnir" \
     -DUSE_SYSTEM_EIGEN=ON \
-    -DUSE_SYSTEM_PYBIND=ON \
+    -DUSE_SYSTEM_NANOBIND=ON \
     -DCMAKE_INSTALL_PREFIX='/usr'
   cmake --build build
 
