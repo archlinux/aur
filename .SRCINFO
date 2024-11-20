@@ -1,6 +1,6 @@
 pkgbase = faugus-launcher-git
 	pkgdesc = A simple and lightweight app for running Windows games using UMU-Launcher
-	pkgver = r205.9a58fc9
+	pkgver = r208.24d0be0
 	pkgrel = 1
 	url = https://github.com/Faugus/faugus-launcher
 	arch = x86_64
@@ -13,6 +13,7 @@ pkgbase = faugus-launcher-git
 	depends = umu-launcher
 	depends = imagemagick
 	depends = icoextract
+	depends = libappindicator-gtk3
 	provides = faugus-launcher
 	conflicts = faugus-launcher
 	source = git+https://github.com/Faugus/faugus-launcher.git
