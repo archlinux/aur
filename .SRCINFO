@@ -1,0 +1,24 @@
+pkgbase = python-qdrant-client
+	pkgdesc = Client library for the Qdrant vector search engine
+	pkgver = 1.12.1
+	pkgrel = 1
+	url = https://github.com/qdrant/qdrant-client
+	arch = any
+	license = Apache-2.0
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-poetry-core
+	makedepends = python-wheel
+	depends = python-grpcio
+	depends = python-grpcio-tools
+	depends = python-httpx
+	depends = python-numpy
+	depends = python-portalocker
+	depends = python-pydantic
+	depends = python-urllib3
+	optdepends = python-fastembed
+	optdepends = python-fastembed-gpu
+	source = qdrant-client-1.12.1.tar.gz::https://files.pythonhosted.org/packages/source/q/qdrant-client/qdrant_client-1.12.1.tar.gz
+	sha256sums = 35e8e646f75b7b883b3d2d0ee4c69c5301000bba41c82aa546e985db0f1aeb72
+
+pkgname = python-qdrant-client
