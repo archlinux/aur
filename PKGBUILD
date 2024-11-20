@@ -23,8 +23,8 @@ build(){
 
 	cat <<-EOF
 		===========================================================
-		If you want support for an even earlier versions of OpenGL,
-		change the version in the PKGBUILD file.
+		If you want support for even earlier versions of OpenGL,
+		then change the version in the PKGBUILD file.
 		===========================================================
 	EOF
 
