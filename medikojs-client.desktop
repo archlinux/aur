@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Mediko
+Exec=medikojs-client %U
+Terminal=false
+Type=Application
+Icon=medikojs-client
+StartupWMClass=Mediko
+Comment=A solution te help users store and analyze health data (body parameters, diet, medications schema)
+Categories=Utility;Health
