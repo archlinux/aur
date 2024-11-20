@@ -1,10 +1,10 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=mustang-bin
 _pkgname=Mustang
-pkgver=0.6.12
+pkgver=0.6.13
 _electronversion=32
 pkgrel=1
-pkgdesc="New full-featured desktop email, chat and video conference client.Binary version.Use system-wide electron."
+pkgdesc="New full-featured desktop email, chat and video conference client.(Prebuilt version.Use system-wide electron)"
 arch=('x86_64')
 url="https://mustang.im/"
 _ghurl="https://github.com/mustang-im/mustang"
@@ -15,11 +15,11 @@ depends=(
     "electron${_electronversion}"
 )
 source=(
-    "${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb"
+    "${pkgname%-bin}-${pkgver}.rpm::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}.${CARCH}.rpm"
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/mustang-im/mustang/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('db770d12fcf8ffb69efba342096d6cf85a11b45d692a1495208cd752c2bfa578'
+sha256sums=('a6572e9f02799b4525cfbe280c2b2f4d1ffa65f92de17ee15939c8ad0f4355b4'
             '2fd5ca53adf527bacbae9e973b329aa522de8c1d51aac853ce07276922ed7c4d'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 build() {
@@ -30,7 +30,6 @@ build() {
         s/@cfgdirname@/${_pkgname}/g
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
     " -i "${srcdir}/${pkgname%-bin}.sh"
-    bsdtar -xf "${srcdir}/data."*
     sed -i "s/\/opt\/${_pkgname}\/${pkgname%-bin}/${pkgname%-bin}/g" "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
 package() {
