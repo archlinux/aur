@@ -9,9 +9,9 @@
 
 ## Mozc compile option
 _bldtype=Release
-_mozc_commit=0eec7239bb541dff10a2f9a7415ba24a99ea87c4
-_bcr_commit=a175a5fda814bf6e9805d9e3367392211e3db81a
-_dict_to_mozc_commit=e9aa5e68e5ec681712c32aee8aad3a77047d8276
+_mozc_commit=00c2d0156d0bb253b2d3755cd7fde78431eaea61
+_bcr_commit=03521643797d22188f39206089525e4fa90d0960
+_dict_to_mozc_commit=96271c07749f040dbf64f16f4b4ad65e00841ace
 _branch=fcitx
 # Sudachi Dictionary
 _sudachidict_date=20241021
@@ -28,7 +28,7 @@ _wil_commit=fc5dbf5
 pkgbase=mozc-with-jp-dict
 pkgname=("fcitx-$pkgbase")
 pkgver=2.30.5618.102
-pkgrel=16
+pkgrel=17
 arch=('x86_64')
 url="https://github.com/fcitx/mozc"
 license=('Apache-2.0 AND BSD-2-Clause AND BSD-3-Clause AND MIT AND NAIST-2003 AND Unicode-3.0 AND LicenseRef-Okinawa-Dictionary')
@@ -57,8 +57,8 @@ source=("git+$url.git#commit=${_mozc_commit}"
         LICENSE-MeCab-ipadic-Neologd::https://github.com/neologd/mecab-ipadic-neologd/raw/refs/heads/master/COPYING
         )
 
-sha512sums=('c87e58be97c9857c3f30b3b09193effaebf6aae5f718b2f5e7ddb4bd2d5f905a08c209a28ca014a4e12192e007107540ab55999d57881a6179c18efab85f10ad'
-            '465f5ded645213564d3f40a5c15df022225585efb3995607c69cac6dc2915ce7d771d22c428ccbc1dd7aa103a53a7747d34147011126dd4b90fbbd9497c026da'
+sha512sums=('9ae6dff1b657077bccbf2911d4178d2beae882d531bdb72e18d807c8c27401cb57fe0a5d031e145225547c7595a0f23ddf1288ebb3ef5a31b8970a4d453f93d0'
+            '20e754b1be89ce0d8798b2bcc17577c187def5d870a96a32d9e16f3c0cda1bb020cadb97efa439b6a2e1cf2720785ba1dec7d6f06b32788a68a0b1aea17f4655'
             '83a6fa68645d138af64ddddcfd15da567c4c46f92fb69be6c10bc5989c3aa6ab85776dfb3fcccdc9e7c32ca9f8260be121ceb7d329792d28ec9a66417a903a68'
             'f69046af8c37a2a8a441a258d5b8677016966cb43d8a3bb48badc78123a885d6179ff77d7885fd6c84130136a1b8931a98d35f9fcce3d03ed31a37a72ece0b9d'
             '44db7d4a09aa7d36f1fb5a89be2234834a58834c76e445f8e9f7bc5685f6a76005b19fc758842c63641e476fa97c10eb968fa13965312fafca25843181fd025b'
@@ -66,7 +66,7 @@ sha512sums=('c87e58be97c9857c3f30b3b09193effaebf6aae5f718b2f5e7ddb4bd2d5f905a08c
             '91b878735e767ddf6f1fe3de61486c1e78936a0f683855e7c34a21c711f405899d3de369d2ff0a1910d65b1afc8c225d8d8b9398cf98d760f3afcfe42644fca2'
             'b9fade4c8cfe60915c51433c1acd4b253b947dd2fabe7b70dd53c92cd751322fb007ef68e04d5551315f3bc2f52048fb8b9babf40455309ab7b38d9f3efd348a'
             '504066a457f77b510f492626c919b6fd7b61f77948bdddef0f7e43ae09bb4bf03cea7000fba91ae0123a94d3b39cac6dfac2010126849afe0a183727fe7b0fc1'
-            '90f98f5a9bd426f095c85cdbe26d508036194979e1996d6c7e0b1e6dd7d57659c5f46b3bfec94ee17a280e9bd64d8e14fd58ff494625065b95685911b4d44a0a'
+            '664c24c3c8a82802a9418a039a4cbda54de2d1f7d1635e71e6bcec18e20d69552779b3c027b726a0b9f87666a114459cfe4a39a8fc72e037270bf770c86916e0'
             '807b68f18e0f9093ccca368fcd4a209a0723167be7aa48e04217f053bc0911399f3bb86b95cb118e64bb9f53f5242c9c51bcff14f81d94ed68db2448c9386b32'
             'f3ea37e785d604d614b8fa27bf03d1b669240b7c28c293d953a3ac40b6faff56893b42f8e082ccc7723edb5b27a4613a99343477a34fc76afd458912025555e9'
             '384a8c55e928323a4a6b3f83a6845199c67cd3766ca586ea936c41aeb6728020b2430daeb88de3cc19413b6111db5971552f8a538826d3718ab33b7281226ff8'
@@ -107,6 +107,8 @@ prepare() {
 
   rustup update stable
   cd "${srcdir}/dict-to-mozc/" || exit
+  #sed -e "s|channel *=.*|channel = \"stable\"|" -i rust-toolchain.toml
+  #sed -e "/components.*/d" -i rust-toolchain.toml
   # すだちを優先
   msg '1. Build the rust program(mozcdict-ext), it may take some time...'
   rustup target list --installed | grep $(rustc -vV | sed -e 's|host: ||' -e 's|-gnu||p' -n) | grep -v musl && TARGET=$(rustup target list --installed | grep $(rustc -vV | sed -e 's|host: ||' -e 's|-gnu||p' -n)|grep -v musl|head -n1) || TARGET=$(rustup target list --installed | grep $(rustc -vV | sed -e 's|host: ||' -e 's|-gnu||p' -n)|grep musl|head -n1)
