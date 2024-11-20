@@ -45,8 +45,6 @@ check() {
 package_coal() {
     DESTDIR="$pkgdir/" cmake --build "build-$pkgver" -t install
     rm -rf "$pkgdir/usr/share/doc"
-    #sed -i 's=;/usr/\.\./include/include==' "$pkgdir/usr/lib/cmake/hpp-fcl/hpp-fclTargets.cmake"
-    #sed -i '/Boost COMPONENTS/s/python3//' "$pkgdir/usr/lib/cmake/hpp-fcl/hpp-fclConfig.cmake"
     install -Dm644 "$pkgbase-$pkgver/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
