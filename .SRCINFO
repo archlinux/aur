@@ -1,7 +1,7 @@
 pkgbase = drawtiming
 	pkgdesc = Tool that converts ASCII to UML Timing Diagrams. IM7 patches
 	pkgver = 0.7.1
-	pkgrel = 5
+	pkgrel = 6
 	url = http://drawtiming.sourceforge.net/
 	arch = x86_64
 	license = GPL-2.0-or-later
@@ -12,13 +12,11 @@ pkgbase = drawtiming
 	options = !lto
 	options = !debug
 	source = https://downloads.sourceforge.net/project/drawtiming/drawtiming/0.7.1/drawtiming-0.7.1.tar.gz
-	source = fenugrec.patch
+	source = fenugrec-v2.patch
 	source = defaultfont.patch
-	source = applyfont.patch
 	validpgpkeys = 3ABAC00311517945BAF0491140DDCDFB3BF52988
 	sha256sums = ae35a369f71f03b219d23f56329ced73100f79ffda38dd8d31d1e9e510f3cf6e
-	sha256sums = 105b6c82a4aa72d3675c772b70fe794ff79a9d8c5a284f3c9823fe45d2d8cf48
+	sha256sums = dcaf7bd20d9a80e2ffb6af77b15f8d8395d4e41155f9738db3e635a375586c26
 	sha256sums = bbd8498530d60c551a19d7bf22af81f1dea2fc2a824b8547082535f661a63609
-	sha256sums = 450ed90457ded502eff46c1db305cf61799ca2f5754155858f69ea52ce2a5c4f
 
 pkgname = drawtiming

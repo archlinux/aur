@@ -1,6 +1,6 @@
-diff -urN drawtiming_old/configure.ac drawtiming_new/configure.ac
---- drawtiming_old/configure.ac	1969-12-31 19:00:00.000000000 -0500
-+++ drawtiming_new/configure.ac	2024-11-17 15:44:55.375165004 -0500
+diff -urN drawtiming-0.7.1/configure.ac drawtiming-master/configure.ac
+--- drawtiming-0.7.1/configure.ac	1969-12-31 19:00:00.000000000 -0500
++++ drawtiming-master/configure.ac	2024-11-19 09:32:20.000000000 -0500
 @@ -0,0 +1,24 @@
 +AC_INIT([drawtiming],[0.7.1])
 +AC_CONFIG_SRCDIR([src/main.cc])
@@ -26,22 +26,23 @@ diff -urN drawtiming_old/configure.ac drawtiming_new/configure.ac
 +
 +AC_CONFIG_FILES([Makefile drawtiming.spec src/Makefile doc/Makefile samples/Makefile])
 +AC_OUTPUT
-diff -urN drawtiming_old/doc/drawtiming.1 drawtiming_new/doc/drawtiming.1
---- drawtiming_old/doc/drawtiming.1	2009-03-28 11:29:18.000000000 -0400
-+++ drawtiming_new/doc/drawtiming.1	2024-11-17 15:44:55.375165004 -0500
-@@ -30,7 +30,11 @@
+diff -urN drawtiming-0.7.1/doc/drawtiming.1 drawtiming-master/doc/drawtiming.1
+--- drawtiming-0.7.1/doc/drawtiming.1	2009-03-28 11:29:18.000000000 -0400
++++ drawtiming-master/doc/drawtiming.1	2024-11-19 09:32:20.000000000 -0500
+@@ -30,7 +30,12 @@
  .Op Fl -aspect
  .Op Fl -cell-height Ar H
  .Op Fl -cell-width Ar W
 +.Op Fl -color-bg Ar Cbg
 +.Op Fl -color-fg Ar Cfg
 +.Op Fl -color-dep Ar Cdp
++.Op Fl -font Ar fontname
  .Op Fl -font-size Ar pts
 +.Op Fl -highlight-rows
  .Op Fl -line-width Ar W
  .Fl -output Ar target
  .Ar
-@@ -56,13 +60,21 @@
+@@ -56,13 +61,23 @@
  .It Fl -pagesize Ar WidthxHeight
  Scale the diagram to fit given image size.
  .It Fl -aspect
@@ -58,6 +59,8 @@ diff -urN drawtiming_old/doc/drawtiming.1 drawtiming_new/doc/drawtiming.1
 +Foreground color name. Default is black.
 +.It Fl -color-dep Ar Cdp
 +Dependency color name. Default is blue.
++.It Fl -font Ar fontname
++Set font for text elements. If using magick backend, run 'magick list -font' to see available options. Font must be specified by name (replacing spaces with dashes), not by family, e.g. 'arial', 'helvetica-bold', etc.
  .It Fl -font-size Ar pts
  Font size in pts. Default is 18.
 +.It Fl -highlight-rows
@@ -65,7 +68,7 @@ diff -urN drawtiming_old/doc/drawtiming.1 drawtiming_new/doc/drawtiming.1
  .It Fl -line-width Ar W
  Line width for drawings in pixels. Default is 1.
  .It Fl -output Ar target
-@@ -101,23 +113,23 @@
+@@ -101,23 +116,23 @@
  changing its value.
  .El
  .Pp
@@ -95,7 +98,7 @@ diff -urN drawtiming_old/doc/drawtiming.1 drawtiming_new/doc/drawtiming.1
  with the annotation 
  .Em tD .
  .El
-@@ -156,7 +168,7 @@
+@@ -156,7 +171,7 @@
  FIRE => COUNT="N+1".
  .Ed
  .Pp
@@ -104,7 +107,7 @@ diff -urN drawtiming_old/doc/drawtiming.1 drawtiming_new/doc/drawtiming.1
  seven clock cycles.  The end of each clock cycle is indicated with a
  period.  For example, the following line indicates a single signal,
  named
-@@ -173,7 +185,7 @@
+@@ -173,7 +188,7 @@
  value if their initial value is not given.  
  .Pp
  Independent signal transitions which occur simultaneously are normally
@@ -113,7 +116,7 @@ diff -urN drawtiming_old/doc/drawtiming.1 drawtiming_new/doc/drawtiming.1
  simultaneously, the initial state is a good example of this:
  .Pp
  .Dl POWER=0, FIRE=0, ARMED=0, LED=OFF, COUNT=N.
-@@ -194,7 +206,7 @@
+@@ -194,7 +209,7 @@
  .Pp
  .Dl POWER=1 => LED=GREEN.
  .Pp
@@ -122,18 +125,78 @@ diff -urN drawtiming_old/doc/drawtiming.1 drawtiming_new/doc/drawtiming.1
  dependencies with commas:
  .Pp
  .Dl FIRE, ARMED => LED=RED.
-diff -urN drawtiming_old/samples/Makefile.am drawtiming_new/samples/Makefile.am
---- drawtiming_old/samples/Makefile.am	2009-03-28 11:29:24.000000000 -0400
-+++ drawtiming_new/samples/Makefile.am	2024-11-17 15:44:55.375165004 -0500
+diff -urN drawtiming-0.7.1/.gitignore drawtiming-master/.gitignore
+--- drawtiming-0.7.1/.gitignore	1969-12-31 19:00:00.000000000 -0500
++++ drawtiming-master/.gitignore	2024-11-19 09:32:20.000000000 -0500
+@@ -0,0 +1,55 @@
++*.o
++*.d
++
++# http://www.gnu.org/software/automake
++
++Makefile.in
++/ar-lib
++/mdate-sh
++/py-compile
++/test-driver
++/ylwrap
++.deps/
++.dirstamp
++
++# http://www.gnu.org/software/autoconf
++
++autom4te.cache
++/autoscan.log
++/autoscan-*.log
++/aclocal.m4
++/compile
++/config.cache
++/config.guess
++/config.h.in
++/config.log
++/config.status
++/config.sub
++/configure
++/configure.scan
++/depcomp
++/install-sh
++/missing
++/stamp-h1
++
++# https://www.gnu.org/software/libtool/
++
++/ltmain.sh
++
++# http://www.gnu.org/software/texinfo
++
++/texinfo.tex
++
++# http://www.gnu.org/software/m4/
++
++m4/libtool.m4
++m4/ltoptions.m4
++m4/ltsugar.m4
++m4/ltversion.m4
++m4/lt~obsolete.m4
++
++# Generated Makefile
++# (meta build system like autotools,
++# can automatically generate from config.status script
++# (which is called by configure script))
++Makefile
+\ No newline at end of file
+diff -urN drawtiming-0.7.1/samples/Makefile.am drawtiming-master/samples/Makefile.am
+--- drawtiming-0.7.1/samples/Makefile.am	2009-03-28 11:29:24.000000000 -0400
++++ drawtiming-master/samples/Makefile.am	2024-11-19 09:32:20.000000000 -0500
 @@ -1,4 +1,4 @@
 -TESTS = runsamples.sh
 +TESTS = runsamples.sh runlite.sh
  EXTRA_DIST = runsamples.sh memory.txt sample.txt statement1.txt guenter.txt
  CLEANFILES = memory.gif sample.gif statement1.gif sample640x480.gif guenter.gif
  
-diff -urN drawtiming_old/samples/runlite.sh drawtiming_new/samples/runlite.sh
---- drawtiming_old/samples/runlite.sh	1969-12-31 19:00:00.000000000 -0500
-+++ drawtiming_new/samples/runlite.sh	2024-11-17 15:44:55.375165004 -0500
+diff -urN drawtiming-0.7.1/samples/runlite.sh drawtiming-master/samples/runlite.sh
+--- drawtiming-0.7.1/samples/runlite.sh	1969-12-31 19:00:00.000000000 -0500
++++ drawtiming-master/samples/runlite.sh	2024-11-19 09:32:20.000000000 -0500
 @@ -0,0 +1,8 @@
 +#!/bin/sh -ex
 +# this script is meant to be executed by running "make check" 
@@ -143,9 +206,9 @@ diff -urN drawtiming_old/samples/runlite.sh drawtiming_new/samples/runlite.sh
 +../src/drawtiming -x 1.5 -o memory.ps $srcdir/memory.txt
 +../src/drawtiming -p 640x480 -o sample640x480.ps $srcdir/sample.txt
 +../src/drawtiming -o guenter.ps $srcdir/guenter.txt
-diff -urN drawtiming_old/src/globals.h drawtiming_new/src/globals.h
---- drawtiming_old/src/globals.h	2009-04-02 23:00:00.000000000 -0400
-+++ drawtiming_new/src/globals.h	2024-11-17 15:44:55.375165004 -0500
+diff -urN drawtiming-0.7.1/src/globals.h drawtiming-master/src/globals.h
+--- drawtiming-0.7.1/src/globals.h	2009-04-02 23:00:00.000000000 -0400
++++ drawtiming-master/src/globals.h	2024-11-19 09:32:20.000000000 -0500
 @@ -22,7 +22,7 @@
  #define YYSTYPE std::string
  
@@ -155,9 +218,9 @@ diff -urN drawtiming_old/src/globals.h drawtiming_new/src/globals.h
  extern timing::signal_sequence deps;
  
  #endif
-diff -urN drawtiming_old/src/main.cc drawtiming_new/src/main.cc
---- drawtiming_old/src/main.cc	2009-04-02 23:01:53.000000000 -0400
-+++ drawtiming_new/src/main.cc	2024-11-17 15:44:55.375165004 -0500
+diff -urN drawtiming-0.7.1/src/main.cc drawtiming-master/src/main.cc
+--- drawtiming-0.7.1/src/main.cc	2009-04-02 23:01:53.000000000 -0400
++++ drawtiming-master/src/main.cc	2024-11-19 09:32:20.000000000 -0500
 @@ -35,6 +35,7 @@
  #define FLAG_PAGESIZE 1
  #define FLAG_SCALE 2
@@ -285,9 +348,9 @@ diff -urN drawtiming_old/src/main.cc drawtiming_new/src/main.cc
         << "    Font [Helvetica]" << endl
         << "-f" << endl
         << "--font-size" << endl
-diff -urN drawtiming_old/src/Makefile.am drawtiming_new/src/Makefile.am
---- drawtiming_old/src/Makefile.am	2009-03-28 11:29:25.000000000 -0400
-+++ drawtiming_new/src/Makefile.am	2024-11-17 15:44:55.375165004 -0500
+diff -urN drawtiming-0.7.1/src/Makefile.am drawtiming-master/src/Makefile.am
+--- drawtiming-0.7.1/src/Makefile.am	2009-03-28 11:29:25.000000000 -0400
++++ drawtiming-master/src/Makefile.am	2024-11-19 09:32:20.000000000 -0500
 @@ -1,10 +1,10 @@
 -AM_CXXFLAGS = @MAGICK_CFLAGS@ -DYYDEBUG=1
 +AM_CXXFLAGS = @MAGICKXX_CFLAGS@ -DYYDEBUG=1
@@ -304,9 +367,9 @@ diff -urN drawtiming_old/src/Makefile.am drawtiming_new/src/Makefile.am
 +EXTRA_DIST = parser.hh
 +BUILT_SOURCES = parser.hh
 +parser.hh: parser.cc
-diff -urN drawtiming_old/src/parser.yy drawtiming_new/src/parser.yy
---- drawtiming_old/src/parser.yy	2009-04-02 23:00:03.000000000 -0400
-+++ drawtiming_new/src/parser.yy	2024-11-17 15:44:55.375165004 -0500
+diff -urN drawtiming-0.7.1/src/parser.yy drawtiming-master/src/parser.yy
+--- drawtiming-0.7.1/src/parser.yy	2009-04-02 23:00:03.000000000 -0400
++++ drawtiming-master/src/parser.yy	2024-11-19 09:32:20.000000000 -0500
 @@ -24,6 +24,8 @@
  void yyerror (const char *s);
  extern int yylineno;
@@ -334,9 +397,9 @@ diff -urN drawtiming_old/src/parser.yy drawtiming_new/src/parser.yy
  | SYMBOL { $$ = $1; };
  
  %%
-diff -urN drawtiming_old/src/scanner.ll drawtiming_new/src/scanner.ll
---- drawtiming_old/src/scanner.ll	2009-04-02 22:59:55.000000000 -0400
-+++ drawtiming_new/src/scanner.ll	2024-11-17 15:44:55.375165004 -0500
+diff -urN drawtiming-0.7.1/src/scanner.ll drawtiming-master/src/scanner.ll
+--- drawtiming-0.7.1/src/scanner.ll	2009-04-02 22:59:55.000000000 -0400
++++ drawtiming-master/src/scanner.ll	2024-11-19 09:32:20.000000000 -0500
 @@ -21,7 +21,7 @@
  #  include <config.h>
  #endif
@@ -346,9 +409,9 @@ diff -urN drawtiming_old/src/scanner.ll drawtiming_new/src/scanner.ll
  %}
  
  %option yylineno
-diff -urN drawtiming_old/src/timing.cc drawtiming_new/src/timing.cc
---- drawtiming_old/src/timing.cc	2009-04-02 23:02:21.000000000 -0400
-+++ drawtiming_new/src/timing.cc	2024-11-17 15:44:55.375165004 -0500
+diff -urN drawtiming-0.7.1/src/timing.cc drawtiming-master/src/timing.cc
+--- drawtiming-0.7.1/src/timing.cc	2009-04-02 23:02:21.000000000 -0400
++++ drawtiming-master/src/timing.cc	2024-11-19 09:32:20.000000000 -0500
 @@ -23,15 +23,24 @@
  #include "timing.h"
  #include <map>
@@ -576,6 +639,15 @@ diff -urN drawtiming_old/src/timing.cc drawtiming_new/src/timing.cc
    drawables.push_back (DrawableBezier (points));
  }
  
+@@ -706,7 +730,7 @@
+ // ------------------------------------------------------------
+ 
+ void magick_gc::font (const std::string& name) {
+-  drawables.push_back (DrawableFont (name, AnyStyle, 100, AnyStretch));
++  drawables.push_back (DrawableFont (name));
+ }
+ 
+ // ------------------------------------------------------------
 @@ -715,6 +739,10 @@
    drawables.push_back (DrawableLine (x1, y1, x2, y2));
  }
@@ -637,9 +709,9 @@ diff -urN drawtiming_old/src/timing.cc drawtiming_new/src/timing.cc
    int j;
  
    for (j = 0; j < 2; j++) {
-diff -urN drawtiming_old/src/timing.h drawtiming_new/src/timing.h
---- drawtiming_old/src/timing.h	2009-04-02 23:02:40.000000000 -0400
-+++ drawtiming_new/src/timing.h	2024-11-17 15:44:55.375165004 -0500
+diff -urN drawtiming-0.7.1/src/timing.h drawtiming-master/src/timing.h
+--- drawtiming-0.7.1/src/timing.h	2009-04-02 23:02:40.000000000 -0400
++++ drawtiming-master/src/timing.h	2024-11-19 09:32:20.000000000 -0500
 @@ -27,22 +27,35 @@
  #include <exception>
  #ifndef LITE
