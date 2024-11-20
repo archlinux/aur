@@ -20,6 +20,8 @@ pkgbase = hoffice-2022-beta
 	depends = qt5-base
 	depends = qt5-x11extras
 	depends = zlib
+	provides = hoffice-2022-beta=${pkgver}
+	conflicts = hoffice
 	source = https://download943.mediafire.com/4bv21q243r6gAxUO5iOVhRQaG9MZ6nENExMN57zbgI0Eyx0t9zW-NCFIpFInW46MwKCRkmGl_ArofJ4Qauv0RqvAKcaPEgz2YGQKDD-Q0mlVvV1utOH0O49djayFrML-JhGpZlZrkvchRiQwl8f1snNGIBRDLlwKoZDH9xcz3UfbbA/74beldrv8vkq3ga/1732118678_hoffice_11.20.0.1520_amd64.deb
 	source = LICENSE
 	source = libqt5im-nimf.so
