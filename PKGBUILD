@@ -3,12 +3,10 @@
 pkgbase=nvidia-flip-cuda-git
 pkgname=("$pkgbase")
 pkgdesc="A Tool for Visualizing and Communicating Errors in Rendered Images - CUDA version"
-pkgver="r219.22aa24f"
-pkgver() {
-  cd "$pkgbase"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
-}
+pkgver="v1.6"
+_versionhash="79675788aa642fbb4732effe2b45b082ff4c4d52"
 pkgrel=1
+epoch=1
 url="https://github.com/NVlabs/flip"
 arch=('x86_64')
 license=("BSD-3-Clause")
@@ -20,14 +18,11 @@ depends=(cuda)
 
 prepare() {
     cd "$pkgbase"
-
-    # GCC 13 compatibility
-    sed -i '55a\#include <cstdint>' cpp/tool/pooling.h
-    sed -i '54a\#include <cstdint>' cpp/tool/filename.h
+    git checkout $_versionhash
 }
 
 build() {
-    cd "$pkgbase"
+    cd "$pkgbase/src"
 
     mkdir -p build
     cd build
@@ -38,5 +33,5 @@ build() {
 
 package() {
     cd "$pkgbase"
-    install -Dm755 "build/flip" "$pkgdir/usr/bin/flip-cuda-cli"
+    install -Dm755 "src/build/flip" "$pkgdir/usr/bin/flip-cuda-cli"
 }
