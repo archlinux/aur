@@ -1,7 +1,7 @@
 pkgbase = ags-hyprpanel-git
 	pkgdesc = A Bar/Panel for Hyprland with extensive customizability
-	pkgver = r292.f2985e7
-	pkgrel = 2
+	pkgver = r386.c10c9d0
+	pkgrel = 1
 	url = https://hyprpanel.com/
 	install = hyprpanel.install
 	arch = x86_64
@@ -31,7 +31,7 @@ pkgbase = ags-hyprpanel-git
 	optdepends = pywal: Pywal hook for wallpapers
 	optdepends = pacman-contrib: Checking for pacman updates
 	optdepends = power-profiles-daemon: Switch power profiles
-	source = git+https://github.com/Jas-SinghFSU/HyprPanel.git
+	source = git+https://github.com/Jas-SinghFSU/HyprPanel.git#branch=master
 	sha256sums = SKIP
 
 pkgname = ags-hyprpanel-git

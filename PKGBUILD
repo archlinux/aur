@@ -1,7 +1,7 @@
 # Maintainer: cat_nm
 pkgname=ags-hyprpanel-git
-pkgver=r292.f2985e7
-pkgrel=2
+pkgver=r386.c10c9d0
+pkgrel=1
 pkgdesc="A Bar/Panel for Hyprland with extensive customizability"
 arch=('x86_64')
 url="https://hyprpanel.com/"
@@ -40,8 +40,14 @@ optdepends=(
   'pacman-contrib: Checking for pacman updates'
   'power-profiles-daemon: Switch power profiles'
 )
-source=('git+https://github.com/Jas-SinghFSU/HyprPanel.git')
+source=('git+https://github.com/Jas-SinghFSU/HyprPanel.git#branch=master')
 sha256sums=('SKIP')
+
+prepare() {
+  cd "$srcdir/HyprPanel"
+
+  ./make_agsv1.sh
+}
 
 pkgver() {
   cd "$srcdir/HyprPanel"
