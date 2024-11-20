@@ -1,4 +1,4 @@
-# Maintainer: Parker Johansen <johansen.parker@gmail.com>
+# Maintainer: Aria Vesta <dev@ariavesta.com>
 # Contributor: Jonathan "nekonyuu" Raffre <nk@nyuu.eu>
 pkgname=inkdrop
 _pkgname=inkdrop
