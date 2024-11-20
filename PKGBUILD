@@ -2,29 +2,30 @@
 # https://github.com/adamperkowski/PKGBUILDs
 pkgname=linutil-bin
 _pkgname=linutil
-pkgver=2024.09.28
-pkgrel=6
+pkgver=2024.10.31
+pkgrel=1
 pkgdesc="Chris Titus Tech's Linutil is a distro-agnostic toolbox designed to simplify everyday Linux tasks."
-arch=('x86_64' 'aarch64')
+#arch=('x86_64' 'aarch64')
+arch=('x86_64')
 url="https://github.com/ChrisTitusTech/$_pkgname"
 url_raw="https://raw.githubusercontent.com/$(echo "$url" | awk -F'/' '{print $4 "/" $5}')"
 license=('MIT')
 source_x86_64=("$_pkgname-$pkgver::$url/releases/download/$pkgver/$_pkgname"
-    "$_pkgname-$pkgver.1::$url_raw/refs/tags/v$pkgver/man/$_pkgname.1"
-    "$_pkgname-$pkgver.desktop::$url_raw/refs/tags/v$pkgver/$_pkgname.desktop"
-    "LICENSE-$pkgver::$url_raw/refs/tags/v$pkgver/LICENSE"
-    "README-$pkgver.md::$url_raw/refs/tags/v$pkgver/readme.md")
+    "$_pkgname-$pkgver.1::$url_raw/refs/tags/$pkgver/man/$_pkgname.1"
+    "$_pkgname-$pkgver.desktop::$url_raw/refs/tags/$pkgver/$_pkgname.desktop"
+    "LICENSE-$pkgver::$url_raw/refs/tags/$pkgver/LICENSE"
+    "README-$pkgver.md::$url_raw/refs/tags/$pkgver/README.md")
 source_aarch64=("$_pkgname-$pkgver::$url/releases/download/$pkgver/$_pkgname-aarch64"
-    "$_pkgname-$pkgver.1::$url_raw/refs/tags/v$pkgver/man/$_pkgname.1"
-    "$_pkgname-$pkgver.desktop::$url_raw/refs/tags/v$pkgver/$_pkgname.desktop"
-    "LICENSE-$pkgver::$url_raw/refs/tags/v$pkgver/LICENSE"
-    "README-$pkgver.md::$url_raw/refs/tags/v$pkgver/readme.md")
+    "$_pkgname-$pkgver.1::$url_raw/refs/tags/$pkgver/man/$_pkgname.1"
+    "$_pkgname-$pkgver.desktop::$url_raw/refs/tags/$pkgver/$_pkgname.desktop"
+    "LICENSE-$pkgver::$url_raw/refs/tags/$pkgver/LICENSE"
+    "README-$pkgver.md::$url_raw/refs/tags/$pkgver/README.md")
 depends=('git' 'pacman')
 optdepends=('ttf-nerd-fonts-symbols: symbols and icons')
 conflicts=("$_pkgname")
 provides=("$_pkgname")
-sha256sums_x86_64=('224fe5f878cf5e5b0d98cbff886340af3519b968187cc641cfcfcd7f904c59b3' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
-sha256sums_aarch64=('d1db3fe53c7c2258a1bb181bdd4afa9b96de21365d412c4f90c034104671f97b' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
+sha256sums_x86_64=('f6942b5bdcfc770f4853c50669146d9332415169f6f5ea6caa8b9dfc221ead1e' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
+sha256sums_aarch64=('0' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
 
 prepare() {
     echo "Version=$pkgver" >> "$_pkgname-$pkgver.desktop"

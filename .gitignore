@@ -1,5 +1,7 @@
 pkg
 src
 linutil-*
+LICENSE*
+README*
 *.tar*
 *.zst
