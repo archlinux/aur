@@ -1,0 +1,20 @@
+pkgbase = python-milvus-lite-bin
+	pkgdesc = A lightweight version of Milvus wrapped with Python.
+	pkgver = 2.4.10
+	pkgrel = 1
+	url = https://github.com/milvus-io/milvus-lite
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	makedepends = python-installer
+	depends = python-tqdm
+	provides = python-milvus-lite
+	conflicts = python-milvus-lite
+	noextract = milvus_lite-2.4.10-py3-none-manylinux2014_x86_64.whl
+	noextract = milvus_lite-2.4.10-py3-none-manylinux2014_aarch64.whl
+	source_x86_64 = https://files.pythonhosted.org/packages/py3/m/milvus-lite/milvus_lite-2.4.10-py3-none-manylinux2014_x86_64.whl
+	sha256sums_x86_64 = 211d2e334a043f9282bdd9755f76b9b2d93b23bffa7af240919ffce6a8dfe325
+	source_aarch64 = https://files.pythonhosted.org/packages/py3/m/milvus-lite/milvus_lite-2.4.10-py3-none-manylinux2014_aarch64.whl
+	sha256sums_aarch64 = 240c7386b747bad696ecb5bd1f58d491e86b9d4b92dccee3315ed7256256eddc
+
+pkgname = python-milvus-lite-bin
