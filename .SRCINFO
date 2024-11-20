@@ -1,6 +1,6 @@
 pkgbase = fortunate
 	pkgdesc = A fortune-mod powered motivational app that delivers uplifting quotes and thoughtful messages.
-	pkgver = 1.0.3
+	pkgver = 1.0.4
 	pkgrel = 1
 	url = http://github.com/zquestz/fortunate
 	arch = i686
@@ -17,7 +17,7 @@ pkgbase = fortunate
 	makedepends = libxi
 	depends = fortune-mod
 	provides = fortunate
-	source = https://github.com/zquestz/fortunate/archive/v1.0.3.tar.gz
-	sha256sums = c70d01dffc0206b67a2b8795da1feb048874c5b888fb69b9c268b16dec951022
+	source = https://github.com/zquestz/fortunate/archive/v1.0.4.tar.gz
+	sha256sums = 1b96a25fa20d9a3448538aaf9aaf395579d12d360a341e86fa5a6fe75a36dc40
 
 pkgname = fortunate
