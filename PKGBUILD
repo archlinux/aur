@@ -2,17 +2,18 @@
 # -*- mode: sh -*-
 
 pkgname='gut'
-pkgver=0.3.0
-pkgrel=2
+pkgver=0.3.1
+pkgrel=1
 pkgdesc='An easy-to-use git client'
 arch=('aarch64' 'x86_64')
 url="https://github.com/julien040/$pkgname"
-license=('MIT')
+license=('MIT')  # SPDX-License-Identifier: MIT
 depends=('glibc')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
 options=('lto')
-_pkgdate='2023-11-01'
+
+_pkgdate='2024-11-20'
 _pkgver="$pkgver ($_pkgdate)"
 
 prepare() {
@@ -31,8 +32,8 @@ build() {
   # 🔗 https://rfc.archlinux.page/0023-pack-relative-relocs/
   #
   # ld(1) says: “Supported for i386 and x86-64.”
-  case "${CARCH:-unknown}" in
-    'x86_64' | 'i386' )
+  case "Z${CARCH:-unknown}" in
+    'Zx86_64' | 'Zi386' )
       export LDFLAGS="$LDFLAGS -Wl,-z,pack-relative-relocs"
     ;;
     * ) : pass ;;
@@ -52,21 +53,29 @@ build() {
      .
 }
 
+check() {
+  cd "$pkgname-$pkgver"
+
+  go test ./...
+  ./gut --version
+}
+
 package() {
   cd "$pkgname-$pkgver"
 
-  install -Dm0755 "$pkgname"   "$pkgdir/usr/bin/$pkgname"
-  for _doc in README SECURITY future_of_gut; do
-    install -Dm0644 "$_doc.md" "$pkgdir/usr/share/doc/$pkgname/$_doc.md"
-  done
-  install -Dm0644 "LICENSE"    "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -vDm0755 -t "$pkgdir/usr/bin" \
+    "$pkgname"
+  install -vDm0644 -t "$pkgdir/usr/share/doc/$pkgname" \
+    {CONTRIBUTING,README,SECURITY,future_of_gut}.md
+  install -vDm0644 -t "$pkgdir/usr/share/licenses/$pkgname" \
+    LICENSE
 }
 
 sha256sums=(
-  '3a419379fd27bb6d7b8383a684d29ec2ab137a17f3f9102c6d1dcc7670467d05'
+  '6e9f8bed00dcdf6ccb605384cb3b46afea8ad16c8b4a823c0cc631f9e92a9535'
 )
 b2sums=(
-  '4a302c6b07aaad5f96b4c695fc3285bfed8b2223eb1f77677017d07aff2c6e3635f854d20c555024dd004e387fb1665db4366a3909d31302ff7895f164233203'
+  'a584190a8a1bb30d66853403d6c1ffa8e89024ded406a67d828969bb68bba6d211e8d082fa167500981ec7c05256686b910db8cdee2ebf5daf3045c46ee58987'
 )
 
 # eof

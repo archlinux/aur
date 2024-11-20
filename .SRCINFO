@@ -1,7 +1,7 @@
 pkgbase = gut
 	pkgdesc = An easy-to-use git client
-	pkgver = 0.3.0
-	pkgrel = 2
+	pkgver = 0.3.1
+	pkgrel = 1
 	url = https://github.com/julien040/gut
 	arch = aarch64
 	arch = x86_64
@@ -9,8 +9,8 @@ pkgbase = gut
 	makedepends = go
 	depends = glibc
 	options = lto
-	source = gut-0.3.0.tar.gz::https://github.com/julien040/gut/archive/refs/tags/0.3.0.tar.gz
-	sha256sums = 3a419379fd27bb6d7b8383a684d29ec2ab137a17f3f9102c6d1dcc7670467d05
-	b2sums = 4a302c6b07aaad5f96b4c695fc3285bfed8b2223eb1f77677017d07aff2c6e3635f854d20c555024dd004e387fb1665db4366a3909d31302ff7895f164233203
+	source = gut-0.3.1.tar.gz::https://github.com/julien040/gut/archive/refs/tags/0.3.1.tar.gz
+	sha256sums = 6e9f8bed00dcdf6ccb605384cb3b46afea8ad16c8b4a823c0cc631f9e92a9535
+	b2sums = a584190a8a1bb30d66853403d6c1ffa8e89024ded406a67d828969bb68bba6d211e8d082fa167500981ec7c05256686b910db8cdee2ebf5daf3045c46ee58987
 
 pkgname = gut
