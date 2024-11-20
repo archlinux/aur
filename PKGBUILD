@@ -35,7 +35,7 @@
 # `install_config-{vitis,vivado}.txt` are included. If you want to create the
 # install configuration yourself, follow the following steps:
 #
-# 1. tar xf *.tar.gz
+# 1. tar xf *.tar
 # 2. ./xsetup -b ConfigGen
 # 3. edit the generated config file.
 #    You don't have to modify `Destination`. It is overridden by the
@@ -89,8 +89,8 @@ pkgname=(vivado)
 #pkgname=(vitis_)  # To avoid name clash with the AUR package
 
 _srcname=FPGAs_AdaptiveSoCs_Unified
-pkgver=2024.1
-_more_ver=0522_2023
+pkgver=2024.2
+_more_ver=1113_1001
 pkgrel=1
 pkgdesc="FPGA/CPLD design suite for AMD devices"
 url="https://www.xilinx.com/products/design-tools/vivado.html"
@@ -112,14 +112,14 @@ optdepends=('fxload'
     'qt4: Model Composer'
 )
 source=(
-    "file:///${_srcname}_${pkgver}_${_more_ver}.tar.gz"
+    "file:///${_srcname}_${pkgver}_${_more_ver}.tar"
     "spoof_homedir.c"
     "install_config-vitis.txt"
     "install_config-vivado.txt"
 )
 
 md5sums=(
-    '372c0b184e32001137424e395823de3c'
+    '0ca31a787bbdff82b55213522e604446'
     # Checksum from https://www.xilinx.com/support/download.html
 
     '69d14ad64f6ec44e041eaa8ffcb6f87c'
