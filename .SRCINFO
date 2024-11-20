@@ -1,6 +1,6 @@
 pkgbase = python-orbax-export
 	pkgdesc = Orbax provides common utility libraries for JAX users (export).
-	pkgver = 0.0.3
+	pkgver = 0.0.5
 	pkgrel = 1
 	url = https://github.com/google/orbax
 	arch = any
@@ -13,12 +13,13 @@ pkgbase = python-orbax-export
 	depends = python-dataclasses-json
 	depends = python-etils
 	depends = python-jax
+	depends = python-jaxtyping
 	depends = python-numpy
-	depends = python-orbax-checkpoint
-	depends = python-typing_extensions
 	depends = python-yaml
 	optdepends = python-tensorflow: Execution engine for saved models.
-	source = orbax-export-0.0.3.tar.gz::https://files.pythonhosted.org/packages/12/71/c661d9fca562fff222cc2b216697c3bee6941b2e8da04f88e19e648a7f78/orbax_export-0.0.3.tar.gz
-	sha256sums = f0a8f06795457cb58eb5979a6b2f36df33a866b1b66a2361195092ce830d1eef
+	conflicts = python-orbax
+	replaces = python-orbax
+	source = orbax-export-0.0.5.tar.gz::https://github.com/google/orbax/archive/refs/tags/v0.9.1.tar.gz
+	sha256sums = 1c14a6a662fca717210238f156b9951d5f35389569f9174c9501f480186fc7d1
 
 pkgname = python-orbax-export
