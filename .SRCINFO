@@ -9,9 +9,9 @@ pkgbase = hy3
 	makedepends = cmake
 	depends = gcc-libs
 	depends = glibc
-	depends = hyprland=0.45.0
+	depends = hyprland=0.45.2
 	conflicts = hyprland-git
 	source = hy3-0.45.0.tar.gz::https://github.com/outfoxxed/hy3/archive/refs/tags/hl0.45.0.tar.gz
-	sha256sums = f8e1c9324ef58bcbb1c1f1894514a839a86e86f71759b04daf9ce8e899809a52
+	sha256sums = ea5250e4a571e2c982bac13e3d51ebe5846329fb71b56cfd35c0f9128a9f24ba
 
 pkgname = hy3
