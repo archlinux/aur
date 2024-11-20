@@ -5,7 +5,7 @@
 _simplifiedpkgname=dbeaver
 _fullpkgname=${_simplifiedpkgname}-ce
 pkgname=${_fullpkgname}-bin
-pkgver=24.2.3
+pkgver=24.2.5
 pkgrel=1
 _COMMON_COMMIT_ID='5437f631851ca28a4aca9b2f578d670f4d1d2571'
 pkgdesc="Free universal SQL Client for developers and database administrators (community edition)"
@@ -24,7 +24,7 @@ source=("${_fullpkgname}-${pkgver}.linux.gtk.${arch}-nojdk.tar.gz"::"https://git
         "${_simplifiedpkgname}.sh"
         "${_simplifiedpkgname}.hook"
         "${_simplifiedpkgname}.install")
-sha256sums=('4ef0e9a047276414bc3918201702ccf34157b09f045cabd148f527f95b4d4e4f'
+sha256sums=('2e726adb7a3ad1cf98b34578e9eb0fd5b224727ce3dba850501bb752df5b3093'
             '9480a7d08f680e10c399db070c5a04cbabf282442602a2ef83d1159fe7c3e88b'
             '406a2980806c394670e88b1ae70134900be376c2ea4a4216610591cc8b557526'
             'f8b763ca210bfa4d9a4e407b656ba4f5d1bf2f3f54c67044f7a4dd0c3625fc22'
