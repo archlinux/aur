@@ -1,0 +1,21 @@
+pkgbase = r-widyr
+	pkgdesc = Encapsulates the pattern of untidying data into a wide matrix, performing some processing, then turning it back into a tidy form.
+	pkgver = 0.1.5
+	pkgrel = 1
+	url = https://cran.r-project.org/package=widyr
+	arch = any
+	license = MIT
+	makedepends = gcc
+	depends = r
+	depends = r-broom
+	depends = r-dyplyr
+	depends = r-matrix
+	depends = r-purr
+	depends = r-reshape2
+	depends = r-tibble
+	depends = r-tidyr
+	depends = r-tidytext
+	source = https://cran.r-project.org/src/contrib/widyr_0.1.5.tar.gz
+	sha256sums = d61906589bfd24ff3e4cb0db7a1be5e337a1057dbdaeffbbc2faba4c35046014
+
+pkgname = r-widyr
