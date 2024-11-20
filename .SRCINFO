@@ -8,7 +8,7 @@ pkgbase = promtail-git
 	makedepends = git
 	makedepends = go
 	makedepends = make
-	source = promtail-git::git+https://github.com/grafana/loki.git#branch=v3.3.0
+	source = promtail-git::git+https://github.com/grafana/loki.git
 	sha256sums = SKIP
 
 pkgname = promtail-git
