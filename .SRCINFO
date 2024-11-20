@@ -1,11 +1,11 @@
 pkgbase = dove-policies
 	pkgdesc = Standard Dove policies for Mozilla Thunderbird
-	pkgver = 20241027
+	pkgver = 20241119
 	pkgrel = 1
 	url = https://dove.celenity.dev
 	arch = any
 	license = GPL3
-	source = git+https://codeberg.org/celenity/Dove.git#commit=676b29563f26d115e79a610ac43f4438a3578d87
+	source = git+https://codeberg.org/celenity/Dove.git#commit=eaf0c64a275c56a669a0ed244eb07650f3812b7f
 	sha512sums = SKIP
 
 pkgname = dove-policies
