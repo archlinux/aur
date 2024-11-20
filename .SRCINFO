@@ -1,0 +1,22 @@
+pkgbase = desktop-wakatime-bin
+	pkgdesc = A system tray app for automatic time tracking and metrics generated from your Figma, Postman, etc. usage.(Prebuilt version.Use system-wide electron)
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://wakatime.com/windows
+	arch = aarch64
+	arch = x86_64
+	license = BSD-3-Clause
+	makedepends = fuse2
+	depends = electron32
+	provides = desktop-wakatime=2.0.0
+	conflicts = desktop-wakatime
+	source = LICENSE-2.0.0::https://raw.githubusercontent.com/wakatime/desktop-wakatime/v2.0.0/LICENSE
+	source = desktop-wakatime.sh
+	sha256sums = e24e2e299e12cd69f5703c98bc70bde26642b4be896f36bc1e4ca00bb497e399
+	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
+	source_aarch64 = desktop-wakatime-2.0.0-aarch64.AppImage::https://github.com/wakatime/desktop-wakatime/releases/download/v2.0.0/wakatime-linux-arm64.AppImage
+	sha256sums_aarch64 = fb3b5915b71604e00605e457a793f5fbe53ce0a51eb947f02c30cd4ca2858cac
+	source_x86_64 = desktop-wakatime-2.0.0-x86_64.AppImage::https://github.com/wakatime/desktop-wakatime/releases/download/v2.0.0/wakatime-linux-x86_64.AppImage
+	sha256sums_x86_64 = 5f77847a35fcedd49253353cf0643e32e8835c849e6aaf1535b2c89c1e4111fc
+
+pkgname = desktop-wakatime-bin
