@@ -2,7 +2,7 @@
 
 pkgbase=writerside-eap
 pkgname=(writerside-eap writerside-eap-jre)
-pkgver=242.21870.138
+pkgver=243.21565.432
 pkgrel=1
 pkgdesc="Documentation authoring IDE from JetBrains. Early Access Program."
 arch=("x86_64")
@@ -13,7 +13,7 @@ _pkgname="writerside"
 
 source=(https://download.jetbrains.com/${_pkgname}/${_pkgname}-${pkgver}.tar.gz
         writerside-eap.desktop)
-sha256sums=("89d1f4bda404bb81c315600f6b673f89e2798066f68b661a904c9e30db45b4e8"
+sha256sums=("651491afd8a42431045b8d6af13954c001aa45f59f905481b1b3b821f140b60b"
             "edba515d4fc04bf417fa9ab2da31cccebfe3c00cb8013cede909f6550650df7f")
 
 package_writerside-eap() {
