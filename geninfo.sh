@@ -9,7 +9,7 @@ pytoml="src/${_pipname}-${pkgver}/pyproject.toml"
 
 makepkg -do
 pkgdesc=$(yq eval -o=json "$pytoml" | jq -r '.project.description')
-depends=$(yq eval -o=json "$pytoml" | jq -r '.project.dependencies[]' | grep -vP 'python_version<=|win32' | awk -F '>|=|<' '{print $1}' | tr 'A-Z' 'a-z' | sort -u | sed 's|^|python-|' | sed 's|python-python-|python-|' | sed '/^python-python$/d' | tr '\n' ' ' | sed 's| $||')
+depends=$(yq eval -o=json "$pytoml" | jq -r '.project.dependencies[]' | grep -vP 'python_version<=' | awk -F '>|=|<' '{print $1}' | tr 'A-Z' 'a-z' | sort -u | sed 's|^|python-|' | sed 's|python-python-|python-|' | sed '/^python-python$/d' | tr '\n' ' ' | sed 's| $||')
 
 sed -e "s|^pkgdesc=.*|pkgdesc=\"$pkgdesc\"|" \
     -e "s|^depends=.*|depends=(${depends})|" \
