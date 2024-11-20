@@ -1,0 +1,4 @@
+[libnick]
+source = "github"
+github = "NickvisionApps/libnick"
+use_max_tag = true
