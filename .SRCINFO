@@ -1,7 +1,7 @@
 pkgbase = btrfs-desktop-notification
-	pkgdesc = It notifies you on Desktop when booting into snapshot or BTRFS warning/error message appears from dmesg log
-	pkgver = 1.0.0
-	pkgrel = 2
+	pkgdesc = Notifies you on the desktop when booting into a read-only system or when BTRFS warning/error messages appear in the dmesg log.
+	pkgver = 1.0.1
+	pkgrel = 1
 	url = https://gitlab.com/Zesko/btrfs-desktop-notification
 	arch = any
 	license = GPL3
@@ -13,7 +13,7 @@ pkgbase = btrfs-desktop-notification
 	conflicts = btrfs-desktop-notification-git
 	conflicts = snapper-snapshot-notification-git
 	backup = etc/btrfs-desktop-notification.conf
-	source = btrfs-desktop-notification-1.0.0.tar.gz::https://gitlab.com/Zesko/btrfs-desktop-notification/-/archive/Release-1.0.0/btrfs-desktop-notification-Release-1.0.0.tar.gz
-	sha256sums = d19252c2fb17fcc1956241829c70ed086a29e85ba1a42b0ceea8877c0a2f099d
+	source = btrfs-desktop-notification-1.0.1.tar.gz::https://gitlab.com/Zesko/btrfs-desktop-notification/-/archive/1.0.1/btrfs-desktop-notification-1.0.1.tar.gz
+	sha256sums = aa62506196b5fa53d4200dea1bd06eab35256a685fba57aff88483c0b316c4a5
 
 pkgname = btrfs-desktop-notification
