@@ -1,6 +1,6 @@
 pkgbase = linux-next-git
 	pkgdesc = Linux NEXT
-	pkgver = 20241119.r0.g414c97c966b6
+	pkgver = 20241120.r0.gac24e26aa08f
 	pkgrel = 1
 	url = http://www.kernel.org/
 	arch = x86_64
@@ -33,6 +33,7 @@ pkgname = linux-next-git
 	optdepends = wireless-regdb: to set the correct wireless channels of your country
 	optdepends = linux-firmware: firmware images needed for some devices
 	optdepends = modprobed-db: Keeps track of EVERY kernel module that has ever been probed - useful for those of us who make localmodconfig
+	optdepends = scx-scheds: to use sched-ext schedulers
 	provides = VIRTUALBOX-GUEST-MODULES
 	provides = WIREGUARD-MODULE
 	provides = KSMBD-MODULE
