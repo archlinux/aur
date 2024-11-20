@@ -4,7 +4,7 @@
 _pkgname='cpplint'
 pkgname="python-${_pkgname}"
 pkgver='1.6.1'
-pkgrel=4
+pkgrel=5
 pkgdesc="Command-line tool to check C/C++ files for style issues following Google's C++ style guide."
 arch=('any')
 url='https://github.com/cpplint/cpplint'
