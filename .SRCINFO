@@ -1,6 +1,6 @@
 pkgbase = proto
 	pkgdesc = Pluggable multi-language version manager
-	pkgver = 0.42.1
+	pkgver = 0.42.2
 	pkgrel = 1
 	url = https://github.com/moonrepo/proto
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = proto
 	depends = gcc-libs
 	depends = xz
 	options = !lto
-	source = proto-0.42.1-9f47f9d.tar.gz::https://api.github.com/repos/moonrepo/proto/tarball/9f47f9d60c9d7f74b38bfc96ced8be1e012422fb
-	sha256sums = e9ffc6a1743e0064698dd1e3eea6b909df07b6602571fb220d4621dcfb543747
+	source = proto-0.42.2-b218f80.tar.gz::https://api.github.com/repos/moonrepo/proto/tarball/b218f80cc8ed947e128fc66fc6a90a0626b05ab8
+	sha256sums = eb9c9cde93b35a079f70cf9c3927bbae29fa4ac830f2d85a56c8776282c9ef8a
 
 pkgname = proto

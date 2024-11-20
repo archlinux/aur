@@ -2,9 +2,9 @@
 
 pkgname=proto
 pkgdesc='Pluggable multi-language version manager'
-_sha='9f47f9d60c9d7f74b38bfc96ced8be1e012422fb'
+_sha='b218f80cc8ed947e128fc66fc6a90a0626b05ab8'
 _short_sha="${_sha::7}"
-pkgver=0.42.1
+pkgver=0.42.2
 pkgrel=1
 arch=('x86_64' 'aarch64')
 _gh_owner='moonrepo'
@@ -15,12 +15,12 @@ depends=('git' 'gcc-libs' 'xz')
 makedepends=('cargo')
 options=('!lto')
 source=("${pkgname}-${pkgver}-${_short_sha}.tar.gz::https://api.github.com/repos/${_gh_owner}/${_gh_repo}/tarball/${_sha}")
-sha256sums=('e9ffc6a1743e0064698dd1e3eea6b909df07b6602571fb220d4621dcfb543747')
+sha256sums=('eb9c9cde93b35a079f70cf9c3927bbae29fa4ac830f2d85a56c8776282c9ef8a')
 
 prepare() {
   cd "${_gh_owner}-${_gh_repo}-${_short_sha}"
   export RUSTUP_TOOLCHAIN="stable"
-  cargo fetch --locked --target "${CARCH}-unknown-linux-gnu"
+  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
@@ -39,6 +39,7 @@ package() {
   cd "${_gh_owner}-${_gh_repo}-${_short_sha}"
   install -Dm 755 "target/release/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
   install -Dm 755 "target/release/${pkgname}-shim" "${pkgdir}/usr/bin/${pkgname}-shim"
+
   install -Dm 644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
   install -Dm 644 "completions/bash" "${pkgdir}/usr/share/bash-completion/completions/${pkgname}"
