@@ -1,19 +1,20 @@
 pkgbase = python-tyro
 	pkgdesc = Strongly typed, zero-effort CLI interfaces
-	pkgver = 0.8.14
+	pkgver = 0.9.1
 	pkgrel = 1
 	url = https://github.com/brentyi/tyro
 	arch = any
 	license = MIT
 	makedepends = python-build
 	makedepends = python-installer
-	makedepends = python-setuptools
+	makedepends = python-hatchling
 	makedepends = python-wheel
+	depends = python-colorama
 	depends = python-docstring-parser
 	depends = python-rich
 	depends = python-shtab
 	depends = python-typing_extensions
-	source = python-tyro-0.8.14.tar.gz::https://github.com/brentyi/tyro/archive/refs/tags/v0.8.14.tar.gz
-	sha256sums = bc9445e203b24200cdc35c369d8d5cbfccd8a1cc1724687590a7d641d03d9cde
+	source = python-tyro-0.9.1.tar.gz::https://github.com/brentyi/tyro/archive/refs/tags/v0.9.1.tar.gz
+	sha256sums = 47edbbbf1aabd84830490eac7b04174b827154a603c04e459f331fcb41597cce
 
 pkgname = python-tyro
