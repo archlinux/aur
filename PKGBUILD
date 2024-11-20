@@ -8,7 +8,7 @@ pkgrel=1
 pkgdesc='ISO 639 library.'
 arch=('any')
 url='https://pypi.org/project/iso-639/'
-license=('GPL3')
+license=('AGPL-3.0')
 depends=('python')
 makedepends=(
   'python-setuptools'
