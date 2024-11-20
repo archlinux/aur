@@ -5,10 +5,10 @@
 # Maintainer: Matheus <matheusgwdl@protonmail.com>
 # Contributor: Matheus <matheusgwdl@protonmail.com>
 
-declare -r _tag="4ed46e8500cffa79f1bd3d39c0e36b2893020504"
+declare -r _tag="3d7a9017b6326178c7d9cc87742b8b064388b702"
 
 pkgname="usearch"
-pkgver="2.16.4"
+pkgver="2.16.5"
 pkgrel="1"
 pkgdesc="Fast open-source search and clustering engine for vectors."
 arch=("x86_64")
@@ -20,7 +20,7 @@ source=("${pkgname}::git+${url}.git#tag=${_tag}"
     "git+https://github.com/Maratyszcza/FP16.git"
     "git+https://github.com/ashvardanian/SimSIMD.git"
     "git+https://github.com/ashvardanian/StringZilla.git")
-sha512sums=("7a1fcb2f5121219f2ac3613a46e597e7cd2161207a819c7b5fb2490f0a1758dc309082d041744d771038486f6747bc9b1f43ea954931c68ae9aa9ddce815806a"
+sha512sums=("9a238a710369a44dabadbe764dec07dac762e8e67cf2a589dba4bb2dbe5040d24a5df05456d5d80936cc700b0138b6fe0828b812988e41f93253516c5e56fe48"
     "SKIP"
     "SKIP"
     "SKIP")
