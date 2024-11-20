@@ -41,5 +41,6 @@ package() {
     chmod 777 "$pkgdir/opt/psiphonlinuxgui/resources/app/configs/psiphon.config"
   fi
 
-  sudo ln -sf /opt/psiphonlinuxgui/psiphonlinuxgui /usr/local/bin/psiphonlinuxgui
+  mkdir -p "$pkgdir/usr/local/bin/"
+  ln -sf "/opt/psiphonlinuxgui/psiphonlinuxgui" "$pkgdir/usr/local/bin/psiphonlinuxgui"
 }
