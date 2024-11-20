@@ -1,6 +1,6 @@
 # Maintainer: bitSheriff <root@bitsheriff.dev>
 pkgname=dunst-timer
-pkgver=1.00.05
+pkgver=1.00.06
 pkgrel=1
 pkgdesc="A Python script for setting timers with progress bar notifications in Dunst"
 arch=('any')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('python' 'dunst')
 makedepends=('python' 'pyinstaller')
 source=("https://github.com/bitSheriff/dunst-timer/archive/v$pkgver.tar.gz")
-sha256sums=('3fd9cedc900332904dcd265a866326e4f01dfa1f2e901f8565edbc7037c1a08d')
+sha256sums=('b99e2da01abd1ff46f37e5680e5a35c3d7d0ea6c558c2d9d9ec0da93f9d992d2')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
