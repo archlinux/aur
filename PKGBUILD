@@ -10,7 +10,7 @@ arch=('any')
 url="https://github.com/janeczku/calibre-web"
 license=('GPL3')
 depends=(
-  'magic'
+  'file'
   'python'
   'python-apscheduler'
   'python-babel'
