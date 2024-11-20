@@ -4,9 +4,9 @@
 
 pkgname='dex-idp'
 pkgdesc='OpenID Connect Identity (OIDC) and OAuth 2.0 Provider with Pluggable Connectors'
-pkgver='2.40.0'
-_tag=23efe9200ccd9e0a69242bf61cd221462370d1f4
-pkgrel='1'
+pkgver=2.40.1
+_tag=43956db7fd75c488a82c70cf231f44287300a75d
+pkgrel=1
 url="https://github.com/dexidp/dex"
 license=('Apache')
 arch=('x86_64')
@@ -21,17 +21,19 @@ sha256sums=('SKIP'
             '610ae818f2ff08ac41f6beb227510bff5c55699041e94cbcfec44dfa5553e688')
 prepare () {
   export GOPATH="${srcdir}"
+  export PACKAGE_ROOT="${srcdir}/src/github.com/dexidp/dex"
   mkdir -p src/github.com/dexidp/
   mv "dex" "src/github.com/dexidp/dex"
-  export PACKAGE_ROOT="${GOPATH}/src/github.com/dexidp/dex"
 }
 
 build () {
+  export PACKAGE_ROOT="${srcdir}/src/github.com/dexidp/dex"
   cd "$PACKAGE_ROOT"
   make build
 }
 
 package () {
+  export PACKAGE_ROOT="${srcdir}/src/github.com/dexidp/dex"
   cd "$PACKAGE_ROOT"
   install -Dm755 bin/dex "${pkgdir}/usr/bin/dex" &&
   install -Dm644 config.yaml.dist "${pkgdir}/etc/dex.yaml" &&
