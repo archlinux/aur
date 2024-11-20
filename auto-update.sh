@@ -19,10 +19,10 @@ curl -sL \
   -H "Accept: application/vnd.github+json" \
   -H "Authorization: Bearer $GITHUB_TOKEN" \
   -H "X-GitHub-Api-Version: 2022-11-28" \
-  $URL/latest > $temp_file || \
+  $URL > $temp_file || \
   die "Failed to fetch data from latest release"
 
-tag_name=$(jq -r .tag_name < $temp_file)
+tag_name=$(jq -r ".[0].tag_name" < $temp_file)
 echo "tag_name: $tag_name"
 
 current_tag=$(grep "^pkgver" PKGBUILD | cut -d= -f2)
@@ -33,6 +33,14 @@ if [ "$current_tag" = "$tag_name" ];then
   rm -f $temp_file
   exit 0
 fi
+
+## fetching specific data
+curl -sL \
+  -H "Accept: application/vnd.github+json" \
+  -H "Authorization: Bearer $GITHUB_TOKEN" \
+  -H "X-GitHub-Api-Version: 2022-11-28" \
+  $URL/tags/$tag_name > $temp_file || \
+  die "Failed to fetch data from latest release"
 
 cat $temp_file
 
