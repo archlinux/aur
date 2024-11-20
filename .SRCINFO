@@ -1,6 +1,6 @@
 pkgbase = promtail-git
 	pkgdesc = Promtail - Logshipper for Loki
-	pkgver = 3.2.1
+	pkgver = 3.3.0
 	pkgrel = 0
 	url = https://github.com/grafana/loki
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = promtail-git
 	makedepends = git
 	makedepends = go
 	makedepends = make
-	source = promtail-git::git+https://github.com/grafana/loki.git#branch=v3.2.1
+	source = promtail-git::git+https://github.com/grafana/loki.git#branch=v3.3.0
 	sha256sums = SKIP
 
 pkgname = promtail-git
