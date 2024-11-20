@@ -12,4 +12,5 @@ sha256sums=('5d7d73178a55ae00bd4980376a4843995f85e36b3b41e05087cab30b5d111ef9')
 
 package() {
     install -Dm755 "$srcdir/$pkgname-$pkgver/dunst-timer.py" "$pkgdir/usr/bin/dunst-timer"
+    chmod +x "$pkgdir/usr/bin/dunst-timer"
 }

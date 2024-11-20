@@ -32,3 +32,6 @@ release:
 
 
 
+# Build and install the package
+install:
+    makepkg -si
