@@ -8,6 +8,6 @@ pkgbase = dunst-timer
 	depends = python
 	depends = dunst
 	source = https://github.com/bitSheriff/dunst-timer/archive/v1.00.05.tar.gz
-	sha256sums = 5d7d73178a55ae00bd4980376a4843995f85e36b3b41e05087cab30b5d111ef9
+	sha256sums = 3fd9cedc900332904dcd265a866326e4f01dfa1f2e901f8565edbc7037c1a08d
 
 pkgname = dunst-timer

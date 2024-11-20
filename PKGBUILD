@@ -8,7 +8,7 @@ url="https://github.com/bitSheriff/dunst-timer"
 license=('MIT')
 depends=('python' 'dunst')
 source=("https://github.com/bitSheriff/dunst-timer/archive/v$pkgver.tar.gz")
-sha256sums=('5d7d73178a55ae00bd4980376a4843995f85e36b3b41e05087cab30b5d111ef9')
+sha256sums=('3fd9cedc900332904dcd265a866326e4f01dfa1f2e901f8565edbc7037c1a08d')
 
 package() {
     install -Dm755 "$srcdir/$pkgname-$pkgver/dunst-timer.py" "$pkgdir/usr/bin/dunst-timer"
