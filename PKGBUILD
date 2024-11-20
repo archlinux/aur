@@ -1,4 +1,4 @@
-# Maintainer: Parker Johansen <johansen.parker@gmail.com>
+# Maintainer: Aria Vesta <dev@ariavesta.com>
 pkgname=kubelogin
 pkgver=1.31.0
 pkgrel=1
