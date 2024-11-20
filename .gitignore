@@ -1,0 +1,6 @@
+/src/
+/pkg/
+/trusted-firmware-a.tar.gz
+/rk35_ddr.bin
+/v20*.tar.gz
+/uboot-cm3588-nas-*.pkg.tar.xz
