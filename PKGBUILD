@@ -3,13 +3,13 @@
 pkgname=inkdrop
 _pkgname=inkdrop
 pkgver=5.8.1
-pkgrel=1
+pkgrel=2
 pkgdesc="The Note-taking App with Robust Markdown Editor"
 arch=('x86_64')
 url="https://www.inkdrop.app/"
 license=('custom')
 depends=('gnome-keyring' 'gtk3' 'libsecret' 'libxss' 'nss')
-optdepends=('python' 'node')
+optdepends=('python' 'nodejs')
 
 source=(
     'inkdrop.png'
