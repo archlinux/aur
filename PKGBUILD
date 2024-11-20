@@ -7,6 +7,7 @@ arch=('any')
 url="https://github.com/bitSheriff/dunst-timer"
 license=('MIT')
 depends=('python' 'dunst')
+makedepends=('python' 'pyinstaller')
 source=("https://github.com/bitSheriff/dunst-timer/archive/v$pkgver.tar.gz")
 sha256sums=('3fd9cedc900332904dcd265a866326e4f01dfa1f2e901f8565edbc7037c1a08d')
 
