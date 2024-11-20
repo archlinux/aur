@@ -2,7 +2,7 @@
 
 pkgname=llama.cpp-opencl
 _pkgname="${pkgname%-opencl}"
-pkgver=b4142
+pkgver=b4143
 pkgrel=1
 pkgdesc="Port of Facebook's LLaMA model in C/C++ (with OpenCL optimizations)"
 arch=(x86_64 armv7h aarch64)
@@ -37,7 +37,7 @@ source=(
   llama.cpp.conf
   llama.cpp.service
 )
-sha256sums=('9234c7a3be2fdd622f629a4aecb9f2098ff7f0668f9751f353733804c991fdd6'
+sha256sums=('b588d0ef0573093d94fd54a52b86cb24e6106d8c931506cee427749158ebeb1e'
             'SKIP'
             '53fa70cfe40cb8a3ca432590e4f76561df0f129a31b121c9b4b34af0da7c4d87'
             '065f69ccd7ac40d189fae723b58d6de2a24966e9b526e0dbfa3035a4c46a7669')
