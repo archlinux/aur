@@ -1,0 +1,18 @@
+pkgbase = ycg
+	pkgdesc = merges and templates yaml files
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/racccoooon/ycg
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	depends = python-yaml
+	depends = python-jinja
+	source = ycg-1.0.0.tar.gz::https://files.pythonhosted.org/packages/source/y/ycg/ycg-1.0.0.tar.gz
+	sha256sums = 6a6a5049742b8d35531735a0c8d960f9015b1b0404975050ad59a525d5bb412b
+
+pkgname = ycg
