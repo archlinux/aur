@@ -1,0 +1,7 @@
+pkg
+src
+youtube-tui*
+README*
+LICENSE*
+*.tar*
+*.zst

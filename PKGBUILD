@@ -1,30 +1,30 @@
-# This is an example PKGBUILD file. Use this as a start to creating your own,
-# and remove these comments. For more information, see 'man PKGBUILD'.
-# NOTE: Please fill out the license field for your package! If it is unknown,
-# then please put 'unknown'.
-
-# Maintainer: Zaedus <thezaedus@proton.me>
+# Maintainer: Adam Perkowski <adas1per@protonmail.com>
+# https://github.com/adamperkowski/PKGBUILDs
 _pkgname="youtube-tui"
-pkgname="${_pkgname}-nodefaults-bin"
-pkgver=0.6.0
+pkgname="$_pkgname-nodefaults-bin"
+pkgver=0.8.1
 pkgrel=1
 pkgdesc="An aesthetically pleasing TUI frontend to browsing YouTube written in Rust. (Binary)"
 arch=('x86_64')
-url="https://github.com/Siriusmart/youtube-tui"
-license=('GPL3')
+url="https://github.com/Siriusmart/$_pkgname"
+url_raw="https://raw.githubusercontent.com/$(echo "$url" | awk -F'/' '{print $4 "/" $5}')"
+license=('GPL-3.0')
 depends=('libxcb')
 optdepends=(
   'mpv: default video player'
   'konsole: default terminal emulator'
   'yt-dlp: default youtube downloader'
 )
-makedepends=()
-provides=("${_pkgname}")
-conflicts=("${_pkgname}")
-source=("${_pkgname}-${pkgver}::https://github.com/Siriusmart/youtube-tui/releases/download/v${pkgver}/${_pkgname}-nodefaults_arch-x86_64")
-sha512sums=('1729ee091dcc264f81ff6a901409fdad6c123a26dc5c2c22d4e2319bade82898f7853479b1e496e86db1127592f42fec310cb34310019ff7c023cd5a5affddd8')
+provides=("$_pkgname")
+conflicts=("$_pkgname")
+source=("$_pkgname-$pkgver::$url/releases/download/v$pkgver/$_pkgname-nodefaults_arch-x86_64.youtube-tui-nodefaults_arch-x86_64"
+    "LICENSE-$pkgver::$url_raw/refs/tags/v$pkgver/LICENSE"
+    "README-$pkgver.md::$url_raw/refs/tags/v$pkgver/README.md")
+sha256sums=('6829d9d672455a1d531093e139ad23aa6d0b7b1814775bf2752e4278dc62654a' 'SKIP' 'SKIP')
 
 package() {
-  cd "${srcdir}"
-  install -Dm 755 "${_pkgname}-${pkgver}" "${pkgdir}/usr/bin/${_pkgname}"
+    cd "$srcdir"
+    install -Dm0755 "$_pkgname-$pkgver" "$pkgdir/usr/bin/$_pkgname"
+    install -Dm644 "LICENSE-$pkgver" "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
+    install -Dm644 "README-$pkgver.md" "$pkgdir/usr/share/doc/$_pkgname/README.md"
 }
