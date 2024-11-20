@@ -1,6 +1,6 @@
 pkgbase = python-grpcio-status
 	pkgdesc = Status proto mapping for gRPC
-	pkgver = 1.66.1
+	pkgver = 1.68.0
 	pkgrel = 1
 	url = https://grpc.io
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = python-grpcio-status
 	depends = python-google-auth
 	depends = python-grpcio
 	options = !emptydirs
-	source = https://files.pythonhosted.org/packages/source/g/grpcio_status/grpcio_status-1.66.1.tar.gz
-	sha256sums = b3f7d34ccc46d83fea5261eea3786174459f763c31f6e34f1d24eba6d515d024
+	source = https://files.pythonhosted.org/packages/source/g/grpcio_status/grpcio_status-1.68.0.tar.gz
+	sha256sums = 8369823de22ab6a2cddb3804669c149ae7a71819e127c2dca7c2322028d52bea
 
 pkgname = python-grpcio-status
