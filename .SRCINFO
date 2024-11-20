@@ -1,6 +1,6 @@
 pkgbase = flowfox
 	pkgdesc = Fork of Firefox with minimal changes, including rebinding of default keyboard shortcuts to better match Chromium. Not affiliated with Mozilla. (Source version.)
-	pkgver = 131.0.4
+	pkgver = 133.0.0
 	pkgrel = 1
 	url = https://github.com/Troplo/ffox
 	arch = x86_64
@@ -76,7 +76,7 @@ pkgbase = flowfox
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
-	source_x86_64 = https://github.com/Troplo/ffox/archive/refs/tags/131.0.4-1.tar.gz
+	source_x86_64 = https://github.com/Troplo/ffox/archive/refs/tags/133.0.0-1.tar.gz
 	sha256sums_x86_64 = SKIP
 
 pkgname = flowfox
