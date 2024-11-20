@@ -1,7 +1,7 @@
 # Maintainer: GANPI <some.kind@of.mail>
 pkgname=yarc-launcher-bin
 _binname=${pkgname%-bin}
-pkgver=1.0.0
+pkgver=1.0.1
 _appimage=$_binname\_$pkgver\_amd64.AppImage
 pkgrel=1
 pkgdesc='The official launcher for YARG (a.k.a. Yet Another Launcher or YAL)'
@@ -32,7 +32,7 @@ source=(
 	https://raw.githubusercontent.com/YARC-Official/YARC-Launcher/master/LICENSE
 )
 sha256sums=(
-	663439bc5ec3d56456d522de135e0e6dce76f9bcf7e6b4001663a076fe4d6ab4
+	476084ff2be88ecba8cb7f04dfd6c2cd023f7260ff4b1cce62b28c2cb76a34ca
 	c4660da2255accdcdee8346b065fc7e4e6b354c5e61d05f3c1c19ff62acd0c01
 )
 
