@@ -6,7 +6,7 @@
 
 _pkgname=cura
 pkgname=$_pkgname-bin
-pkgver=5.8.1
+pkgver=5.9.0
 pkgrel=1
 pkgdesc='State-of-the-art slicer app to prepare your 3D models for your 3D printer'
 url='https://ultimaker.com/software/ultimaker-cura'
@@ -26,8 +26,8 @@ source=(
 )
 
 sha512sums=(
-  '7d50eb25690ab0c8beb350d50fcd8cc5435d61f599b2bf9046e476cc7efb88b50821b4333ef33ffc6f428d700a2c3afee924d9b57eefe49c4131a9e6dbfa5000'
-  '833f5d8e73ed142bfe67dc0b22b10dc914bd2a5208c83301387a590ba59909e047ad8bb2b3e3b916fe81d673374f90fbfdf003bcb2d336efa2c1fb0ce9c2d072'
+  '53a350de79c1be6132f388c0e54430c646cdc9dca3bfee7ae6995f1e52e7784b6a130543bc7eced33ffd796129134ed7933d5c78885210cbb0cb7a6c3a3c92be'
+  'de8a5af894c2b8dc7cd3bffd8909c5bce52aee65c04b3cb3c95828827f040a2e1339534c056ebcc729ae9a98d19336a33afc3e4a7aa3f89a1c36d935b055bfc0'
   '706bfd5d7f46ba859fa1caddefe18504a8e82cd494d0279b5207191cdf2bca102e47bb4feee94d93d41a36e2f4aa5d71d2d2a398cbdcee8fd5c3d22b6b00a2de'
 )
 
@@ -41,7 +41,7 @@ prepare() {
   sed -i 's|^Icon=|Icon=/usr/share/pixmaps/|' com.ultimaker.cura.desktop
   printf '%s\n' 'MimeType=model/stl;application/vnd.ms-3mfdocument;application/prs.wavefront-obj;image/bmp;image/gif;image/jpeg;image/png;text/x-gcode;application/x-amf;application/x-ply;application/x-ctm;model/vnd.collada+xml;model/gltf-binary;model/gltf+json;model/vnd.collada+xml+zip;' >> com.ultimaker.cura.desktop
   printf '%s\n' 'Keywords=3D;Printing;' >> com.ultimaker.cura.desktop
-  patch -p1 < ../AppRun.env.patch
+  # patch -p1 < ../AppRun.env.patch
 }
 
 package() {
