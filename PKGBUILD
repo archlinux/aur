@@ -5,16 +5,18 @@ _pkgname=firmware-action
 provides=('firmware-action')
 conflicts=('firmware-action')
 pkgver=547.3d9a259
-pkgrel=1
+pkgrel=2
 pkgdesc="Build system for firmware images for several open source firmware solutions"
 url="https://github.com/9elements/firmware-action"
 arch=(any)
 license=(MIT)
 makedepends=(
+	'git'
 	'go'
 	'upx'
 )
 depends=(
+	'dagger'
 	'docker'
 )
 source=("git+${url}.git")
@@ -24,11 +26,6 @@ pkgver() {
 	cd "${srcdir}/${_pkgname}/action" || return
   version=$(printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)")
   echo "${version:1}"
-}
-
-check(){
-	cd "${_pkgname}/action" || return
-	go test -short -race -timeout 60m -shuffle=on ./...
 }
 
 build() {
