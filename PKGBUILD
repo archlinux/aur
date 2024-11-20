@@ -7,12 +7,12 @@ pkgver=2.54.1
 pkgrel=1
 pkgdesc="A client library for accessing langfuse"
 arch=('any')
-url="https://github.com/langchain-ai/langchain"
+url="https://github.com/langfuse/langfuse-python"
 license=('MIT')
 depends=(python-anyio python-backoff python-httpx python-idna python-packaging python-pydantic python-wrapt)
 makedepends=('python-build' 'python-installer' 'python-poetry-core' 'python-wheel')
 optdepends=(python-langchain python-llama-index python-openai)
-source=("${_pkgname}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_pipname::1}/${_pipname}/${_pipname}-${pkgver}.tar.gz")
+source=("${_pkgname}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pipname}-${pkgver}.tar.gz")
 sha256sums=('7efc70799740ffa0ac7e04066e0596fb6433e8e501fc850c6a4e7967de6de8a7')
 
 build() {
