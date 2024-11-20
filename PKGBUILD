@@ -3,7 +3,7 @@
 
 pkgname=napcatqq-git
 _pkgname=NapCatQQ
-pkgver=r3061.12cb5008
+pkgver=r3066.3a6748ae
 pkgrel=1
 pkgdesc="现代化的基于 NTQQ 的 Bot 协议端实现"
 arch=('x86_64'
@@ -51,9 +51,9 @@ package() {
     install -Dm0755 /dev/stdin "${pkgdir}/opt/QQ/resources/app/napcat/napcatqq-patcher.sh" << 'EOF'
 #!/bin/bash
 TargetFile="/opt/QQ/resources/app/package.json"
-if [ -z "$1" ]; then
+if [ "$1" = "patch" ]; then
     sed -i 's#"main": *"[^"]*"#"main": "./loadNapCat.js"#' "$TargetFile"
-else
+elif [ "$1" = "unpatch" ]; then
     sed -i 's#"main": *"[^"]*"#"main": "./application.asar/app_launcher/index.js"#' "$TargetFile"
 fi
 EOF
@@ -62,11 +62,10 @@ EOF
 [Trigger]
 Type=Package
 Operation=Install
-Operation=Upgrade
 Target=napcatqq-git
 
 [Action]
-Description=Fix NapCat permissions
+Description=Fix NapCat Permissions
 When=PostTransaction
 Exec=/bin/sh -c 'chown -R $(logname):$(logname) /opt/QQ/resources/app/napcat /opt/QQ/resources/app/loadNapCat.js'
 EOF
@@ -80,20 +79,20 @@ Target=napcatqq-git
 Target=linuxqq
 
 [Action]
-Description=Patch QQ for NapCat
+Description=Patch QQ For NapCat
 When=PostTransaction
-Exec=/bin/sh -c '/opt/QQ/resources/app/napcat/napcatqq-patcher.sh'
+Exec=/bin/sh -c '/opt/QQ/resources/app/napcat/napcatqq-patcher.sh patch'
 EOF
 
-    install -Dm0644 /dev/stdin "${pkgdir}/etc/pacman.d/hooks/napcatqq-depatch.hook" << 'EOF'
+    install -Dm0644 /dev/stdin "${pkgdir}/etc/pacman.d/hooks/napcatqq-unpatch.hook" << 'EOF'
 [Trigger]
 Operation=Remove
 Type=Package
 Target=napcatqq-git
 
 [Action]
-Description=Unpatch QQ for NapCat
+Description=Unpatch QQ For NapCat
 When=PreTransaction
-Exec=/bin/sh -c '/opt/QQ/resources/app/napcat/napcatqq-patcher.sh restore && rm -rf /opt/QQ/resources/app/napcat && echo -e "\e[32mUnpatch done, but it\'s recommended to reinstall linuxqq.\e[0m";'
+Exec=/bin/sh -c '/opt/QQ/resources/app/napcat/napcatqq-patcher.sh unpatch && rm -rf /opt/QQ/resources/app/napcat && echo -e "\e[32mUnpatch done, but it\'s recommended to reinstall linuxqq.\e[0m";'
 EOF
 }
