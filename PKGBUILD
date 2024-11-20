@@ -3,7 +3,7 @@
 pkgname=stardrop
 _pkgname=Stardrop
 pkgver=1.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc='An open-source, cross-platform mod manager for Stardew Valley'
 url='https://github.com/Floogen/Stardrop'
 arch=("x86_64")
@@ -28,5 +28,5 @@ package() {
 
     cd $srcdir/$_pkgname-$pkgver/out
     cp -a * $pkgdir/opt/$pkgname
-    ln -sf $pkgdir/opt/$pkgname/$_pkgname $pkgdir/usr/bin/$pkgname
+    ln -sf /opt/$pkgname/$_pkgname $pkgdir/usr/bin/$pkgname
 }
