@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # script: iptvorg-epg (https://github.com/iptv-org/epg)
 # author: Nikos Toutountzoglou, nikos.toutou@protonmail.com
-# rev.date: 06/09/2024
+# rev.date: 20/11/2024
 
 # Variables
 EPG_USR=$(whoami)
@@ -16,7 +16,7 @@ EPG_VER="2023.12.1"
 # Functions
 checkReq() {
 	# Check all requirements
-	local packages=(libxml2 nodejs)
+	local packages=(libxml2 nodejs npm)
 	for p in ${packages[@]}; do
 		if ! pacman -Qs ${p} >/dev/null; then
 			printf "'${p}' package is not installed. Exiting.\n"
