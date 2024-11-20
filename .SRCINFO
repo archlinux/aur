@@ -1,6 +1,6 @@
 pkgbase = jdk21-jetbrains-bin
 	pkgdesc = OpenJDK development kit with some fixes and enhancements by JetBrains
-	pkgver = 21.0.4b631.2
+	pkgver = 21.0.5b631.19
 	pkgrel = 1
 	url = https://github.com/JetBrains/JetBrainsRuntime/releases
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = jdk21-jetbrains-bin
 	provides = java-environment-openjdk=21
 	replaces = intellij-jdk
 	replaces = jdk-jetbrains
-	source = jbrsdk_jcef-21.0.4-linux-x64-b631.2.tar.gz::https://cache-redirector.jetbrains.com/intellij-jbr/jbrsdk_jcef-21.0.4-linux-x64-b631.2.tar.gz
-	sha512sums = 236c1ec5ed93c4c5d7dd2300e65c379f6830b41c124725f0a8219eeaaa072fb61f28b0a8cf16badc112f1526dfdc5944e2af7ed80c3dcfb17db58223ddec138e
+	source = jbrsdk_jcef-21.0.5-linux-x64-b631.19.tar.gz::https://cache-redirector.jetbrains.com/intellij-jbr/jbrsdk_jcef-21.0.5-linux-x64-b631.19.tar.gz
+	sha512sums = 57da2b7dc2af5550772887127f2213207012646c43cadfeec4c653fe32f228999dc5d7829a3b9a578ac5bd576783a411529e63aa81094696c240102ae33768b0
 
 pkgname = jdk21-jetbrains-bin
