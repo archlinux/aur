@@ -6,7 +6,7 @@
 
 pkgname=python-nose
 pkgver=1.3.7
-pkgrel=16
+pkgrel=17
 pkgdesc="A discovery-based unittest extension"
 arch=('any')
 url='https://readthedocs.org/docs/nose/'
@@ -35,6 +35,8 @@ source=(
   python-nose-py311.patch
   python-nose-py311-doctest.patch
   python-nose-py312.patch
+  python-nose-2to3.patch
+  python-nose-setuptools74.patch
 )
 sha512sums=('e65c914f621f8da06b9ab11a0ff2763d6e29b82ce2aaed56da0e3773dc899d9deb1f20015789d44c65a5dad7214520f5b659b3f8d7695fb207ad3f78e5cf1b62'
             '10d217ecebc97ee1740c0e057b63e2adcdb64779bbd98d37560304ea9bafff8ab9116311a5842bb58eb6307a3a5f689413ad60522f6fae328250dfec0c08e156'
@@ -46,7 +48,9 @@ sha512sums=('e65c914f621f8da06b9ab11a0ff2763d6e29b82ce2aaed56da0e3773dc899d9deb1
             '14a2e328b0d29425f176d857b6451a8245a730e74abe59156b4b6e2392388a703283bf1351e8a78a33fe901c5b5323a9d58d6079a53af096f59537dd92f5069c'
             '1f4d776d4de08a2977fe14108d217c7d86ef9c851dd1842c62ac86f0858452bbbeb07403e0853cb28558373157c667b9de404a8b20746c8c03ab3c539ca5f9a9'
             'ab5abb49b8da8f4178788a0d57ea0a35236b769e7715e06ba74d2a8d3639f4b9ff5855f47721835051be4eb06b08ad79fa94c779877a5a21b2943e0d1c820911'
-            '628a63b454a8ab7dfdfd879404bbe383889d75894f6cdc973d3ecc4796e58417e40e82644a3a6ca5a79d2c61ca83a4c40fffb5b122e23c5fbab0f109302caee3')
+            '628a63b454a8ab7dfdfd879404bbe383889d75894f6cdc973d3ecc4796e58417e40e82644a3a6ca5a79d2c61ca83a4c40fffb5b122e23c5fbab0f109302caee3'
+            '666c09c06f52f0928100592c0dce5d3efe205e4114343368c27facb9b0b2293d29216a8f7fef6303182da2f847d499995c148b78bb7901124dee5a8263bd7502'
+            'e1a7166b6187a5a8f40019bd5a82972e36c23315563fe5dc27bd2fd7a496dff3914e8b4531a8a720ee25b66018846dc48298b9d18e8da2681359f3f337509223')
 #validpgpkeys=('58B277C0D208F7AC460C07C84548B3A8C0D70C12') # John Szakmeister <john@szakmeister.net>
 
 prepare() {
@@ -62,8 +66,6 @@ prepare() {
   done
 
   dos2unix examples/attrib_plugin.py
-  2to3 --write --nobackups --no-diffs .
-  2to3 --write --nobackups --no-diffs -d $(find . -name '*.rst')
 }
 
 build() {
