@@ -1,7 +1,7 @@
 pkgbase = memegen-git
 	pkgdesc = A posix shell script to generate memes from the command line
 	pkgver = 1.r0.g8cd7c18
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Vendicated/memegen
 	arch = any
 	license = GPL-3.0
