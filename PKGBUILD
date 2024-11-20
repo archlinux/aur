@@ -1,10 +1,10 @@
 # Maintainer: RaphGL <raphfl.dev@gmail.com>
 pkgname=tuckr-git
 pkgver=0.10.0
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="A super powered replacement for GNU Stow"
-arch=('any')
+arch=('x86_64' 'i686' 'aarch64')
 url="https://github.com/RaphGL/Tuckr"
 license=('GPLv3')
 makedepends=('cargo' 'git')
