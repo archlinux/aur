@@ -2,16 +2,16 @@
 # Contributor:
 
 pkgname=ospray-studio
-pkgver=1.0.0
-pkgrel=1
+pkgver=1.1.0
+pkgrel=0
 pkgdesc="A visualization application that leverages Intel OSPRay as its core rendering engine"
 arch=(x86_64)
-url="https://www.ospray.org/"
+url="https://www.ospray.org/ospray_studio"
 license=(Apache)
 depends=('glfw' 'ospray' 'openimagedenoise' 'openimageio' 'python' 'intel-oneapi-tbb' 'draco')
 makedepends=(cmake)
 source=("https://github.com/ospray/ospray_studio/archive/v${pkgver}.tar.gz")
-sha256sums=('a9ca51e834a5e444d2d4da267716b2c50ce314a9a741714aadf21d806f69fecd')
+sha256sums=('68309ae22cbc7341b2fafd899ae2e882b7a3732df939e8fd10c5e97232a2fa92')
 provides=("ospray-studio=${pkgver}")
 
 prepare() {
@@ -20,7 +20,7 @@ prepare() {
 
 build() {
     cd build
-    cmake ../ospray_studio-${pkgver} \
+    cmake ../ospray-studio-${pkgver} \
         -DCMAKE_INSTALL_PREFIX='/usr' \
         -DCMAKE_BUILD_TYPE=Release \
         -DCMAKE_SKIP_RPATH='YES' \

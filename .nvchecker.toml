@@ -1,0 +1,4 @@
+[ospray-studio]
+source = "git"
+git = "https://github.com/ospray/ospray_studio.git"
+prefix = "v"
