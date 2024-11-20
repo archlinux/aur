@@ -1,0 +1,16 @@
+pkgbase = python-pgvector
+	pkgdesc = pgvector support for Python
+	pkgver = 0.3.6
+	pkgrel = 1
+	url = https://github.com/pgvector/pgvector-python
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python-numpy
+	source = pgvector-0.3.6.tar.gz::https://files.pythonhosted.org/packages/source/p/pgvector/pgvector-0.3.6.tar.gz
+	sha256sums = 31d01690e6ea26cea8a633cde5f0f55f5b246d9c8292d68efdef8c22ec994ade
+
+pkgname = python-pgvector
