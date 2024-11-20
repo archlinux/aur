@@ -1,7 +1,7 @@
 pkgbase = freefilesync-bin
 	pkgdesc = Folder comparison and synchronization
 	pkgver = 13.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://freefilesync.org
 	install = .install
 	arch = i686

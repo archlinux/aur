@@ -3,7 +3,7 @@
 pkgname=freefilesync-bin
 _pkgname=freefilesync
 pkgver=13.8
-pkgrel=1
+pkgrel=2
 pkgdesc="Folder comparison and synchronization"
 arch=("i686" "x86_64")
 url="https://freefilesync.org"
@@ -77,4 +77,7 @@ package() {
             "$tmpl" > "$f"
         install -Dm644 -t "$pkgdir/usr/share/applications/" "$f"
     done
+    # fix icon and categories in FreeFileSync-edit-with.desktop
+    sed -e 's#^X-KDE-Priority=TopLevel$#X-KDE-Priority=TopLevel\nIcon=FreeFileSync.png\nCategories=Utility;FileTools;Archiving;#' \
+        -i "$pkgdir/usr/share/applications/FreeFileSync-edit-with.desktop"
 }
