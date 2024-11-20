@@ -4,7 +4,7 @@
 pkgname=python-nspektr
 pkgver=0.5.0
 _commit=82b973da8e4fb9e8095347ea86ef17adbd7d9159
-pkgrel=2
+pkgrel=3
 pkgdesc="A distribution package dependency inspector"
 arch=('any')
 url="https://github.com/jaraco/nspektr"
