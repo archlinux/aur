@@ -5,9 +5,9 @@ pkgname='python-niquests-git'
 _pkgname="${pkgname/-git/}"
 _srcname="${_pkgname/python-/}"
 _srcdir="${_srcname/-/.}"
-pkgver=3.6.2.r1.g11487134
-pkgrel=2
-pkgdesc='Simple, yet elegant, Python HTTP library: a drop-in replacement for python-requests (built from latest commit)'
+pkgver=3.11.0.r0.gdd70717e
+pkgrel=1
+pkgdesc='Simple, yet elegant, Python HTTP library: a drop-in replacement for python-requests (latest git commit)'
 arch=('any')
 url='https://github.com/jawah/niquests'
 license=('Apache-2.0')  # SPDX-License-Identifier: Apache-2.0
@@ -56,8 +56,8 @@ package() {
 
   python -m installer --destdir="$pkgdir" dist/*.whl
 
-  install -Dm0644 LICENSE   "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-  install -Dm0644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
+  install -vDm0644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
+  install -vDm0644 -t "$pkgdir/usr/share/doc/$pkgname" README.md
 }
 
 # eof
