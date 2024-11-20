@@ -1,0 +1,18 @@
+pkgbase = python-oxmsg
+	pkgdesc = Extract attachments from Outlook .msg files.
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/scanny/python-oxmsg
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python-click
+	depends = python-olefile
+	depends = python-typing_extensions
+	source = python-oxmsg-0.0.1.tar.gz::https://files.pythonhosted.org/packages/source/p/python-oxmsg/python_oxmsg-0.0.1.tar.gz
+	sha256sums = b65c1f93d688b85a9410afa824192a1ddc39da359b04a0bd2cbd3874e84d4994
+
+pkgname = python-oxmsg
