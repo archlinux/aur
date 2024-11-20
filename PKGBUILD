@@ -1,6 +1,6 @@
 # Maintainer: Zesko
 pkgname=btrfs-desktop-notification
-pkgver=1.0.1
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="Notifies you on the desktop when booting into a read-only system or when BTRFS warning/error messages appear in the dmesg log."
 arch=('any')
@@ -12,7 +12,7 @@ provides=("${pkgname}")
 conflicts=("${pkgname}-git" "snapper-snapshot-notification-git")
 backup=("etc/${pkgname}.conf")
 source=("$pkgname-$pkgver.tar.gz::$url/-/archive/$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('aa62506196b5fa53d4200dea1bd06eab35256a685fba57aff88483c0b316c4a5')
+sha256sums=('256900a5d343217815d47f99bdf5bc4172b4ee91730c50cf6f47a342773bcfa6')
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
