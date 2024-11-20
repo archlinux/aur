@@ -11,6 +11,10 @@ makedepends=('python' 'pyinstaller')
 source=("https://github.com/bitSheriff/dunst-timer/archive/v$pkgver.tar.gz")
 sha256sums=('3fd9cedc900332904dcd265a866326e4f01dfa1f2e901f8565edbc7037c1a08d')
 
+build() {
+    cd "$srcdir/$pkgname-$pkgver"
+    pyinstaller --onefile dunst-timer.py
+}
 package() {
     install -Dm755 "$srcdir/$pkgname-$pkgver/dunst-timer.py" "$pkgdir/usr/bin/dunst-timer"
     chmod +x "$pkgdir/usr/bin/dunst-timer"
