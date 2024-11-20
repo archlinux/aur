@@ -1,0 +1,16 @@
+pkgbase = firmware-action-git
+	pkgdesc = Build system for firmware images for several open source firmware solutions
+	pkgver = 547.3d9a259
+	pkgrel = 1
+	url = https://github.com/9elements/firmware-action
+	arch = any
+	license = MIT
+	makedepends = go
+	makedepends = upx
+	depends = docker
+	provides = firmware-action
+	conflicts = firmware-action
+	source = git+https://github.com/9elements/firmware-action.git
+	sha256sums = SKIP
+
+pkgname = firmware-action-git
