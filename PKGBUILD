@@ -21,6 +21,7 @@ prepare() {
   # Use system directories
   sed -i 's|{home}/.local/share/savedesktop/translations|/usr/share/savedesktop/translations|g' \
     src/localization.py
+  sed -i 's|{Path.home()}/.local/share/savedesktop|/usr/share/savedesktop|g' "$pkgname"
 }
 
 check() {
