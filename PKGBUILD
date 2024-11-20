@@ -1,7 +1,7 @@
 # Maintainer: Kimiblock Moe
 pkgname=wechat
 pkgver=4.0.0.23
-pkgrel=8
+pkgrel=9
 epoch=
 pkgdesc="微信是一种生活方式. 可选沙盒支持."
 arch=('x86_64' 'aarch64' 'loong64')
@@ -109,7 +109,7 @@ source_loong64=(
 )
 
 
-md5sums=('d565ba734b2f8f2307507abfdb9485b8'
+md5sums=('226583623f3730ea7b23d7502666905f'
          '89ae77c95f205d0a7f9347f8251ce742'
          '468e0367346707c026e577e7bf3e3a82'
          'c99c42e49fb1650df340f3a38bd86d5e'
