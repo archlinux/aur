@@ -16,6 +16,5 @@ build() {
     pyinstaller --onefile dunst-timer.py
 }
 package() {
-    install -Dm755 "$srcdir/$pkgname-$pkgver/dunst-timer.py" "$pkgdir/usr/bin/dunst-timer"
-    chmod +x "$pkgdir/usr/bin/dunst-timer"
+    install -Dm755 "$srcdir/$pkgname-$pkgver/dist/dunst-timer" "$pkgdir/usr/bin/dunst-timer"
 }
