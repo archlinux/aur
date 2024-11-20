@@ -4,9 +4,9 @@ _binname=threema
 _variant=consumer
 _appname="Threema"
 pkgdesc="Threema Desktop (Threema Web in Electron)."
-pkgver=1.2.45
+pkgver=1.2.46
 pkgrel=1
-_threema_web_ver=2.5.5 # Keep in sync with version used by threema-desktop
+_threema_web_ver=2.5.7 # Keep in sync with version used by threema-desktop
 arch=('any')
 url="https://github.com/threema-ch/threema-web-electron"
 license=('AGPL')
@@ -18,8 +18,8 @@ source=(
   "threema.desktop"
 )
 sha256sums=(
-  'b59b385fc57cdd594d079a1c952caf6075bd800e8d80a94c82d9330c1eed948b'
-  'f6be0be0107a035d2f2f859fe9164920f0a159b46480eaf44c6aadf7236ccd12'
+  '73b097501cf8a6fd94beb48245972ef71c8510d916ea412b199c8bc57e6ca1d8'
+  'bd28449a35c144b49c34a16f23d6de1638660017c8a3f4e87b34ea7b341c7230'
   '9fed7fdd6f9b6e4b53caafc9ef8608b7bd73c1272ab4380d5d6839c3c60deb8b'
 )
 
@@ -49,7 +49,7 @@ build() {
   _target_os=linux-deb
   _target_dist=linux:deb
   node tools/patches/post-patch-threema-web.js $_target_os $_variant
-  if [ "$_variant" = "blue" ]; then tools/patches/blue-patch-threema-web.sh; fi
+  if [ "$_variant" = "blue" ]; then node tools/patches/blue-patch-threema-web.js; fi
   npm run electron:dist:$_target_dist:$_variant
 }
 

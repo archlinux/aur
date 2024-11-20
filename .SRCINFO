@@ -1,6 +1,6 @@
 pkgbase = threema-desktop
 	pkgdesc = Threema Desktop (Threema Web in Electron).
-	pkgver = 1.2.45
+	pkgver = 1.2.46
 	pkgrel = 1
 	url = https://github.com/threema-ch/threema-web-electron
 	arch = any
@@ -9,11 +9,11 @@ pkgbase = threema-desktop
 	makedepends = nodejs-lts-iron
 	makedepends = git
 	depends = electron30
-	source = threema-web-electron-v1.2.45-1.tar.gz::https://github.com/threema-ch/threema-web-electron/archive/refs/tags/1.2.45.tar.gz
-	source = threema-web-v2.5.5.tar.gz::https://github.com/threema-ch/threema-web/archive/refs/tags/v2.5.5.tar.gz
+	source = threema-web-electron-v1.2.46-1.tar.gz::https://github.com/threema-ch/threema-web-electron/archive/refs/tags/1.2.46.tar.gz
+	source = threema-web-v2.5.7.tar.gz::https://github.com/threema-ch/threema-web/archive/refs/tags/v2.5.7.tar.gz
 	source = threema.desktop
-	sha256sums = b59b385fc57cdd594d079a1c952caf6075bd800e8d80a94c82d9330c1eed948b
-	sha256sums = f6be0be0107a035d2f2f859fe9164920f0a159b46480eaf44c6aadf7236ccd12
+	sha256sums = 73b097501cf8a6fd94beb48245972ef71c8510d916ea412b199c8bc57e6ca1d8
+	sha256sums = bd28449a35c144b49c34a16f23d6de1638660017c8a3f4e87b34ea7b341c7230
 	sha256sums = 9fed7fdd6f9b6e4b53caafc9ef8608b7bd73c1272ab4380d5d6839c3c60deb8b
 
 pkgname = threema-desktop
