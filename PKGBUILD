@@ -2,14 +2,14 @@
 
 pkgname=iceshrimp
 pkgver=v2023.12.10
-pkgrel=1
+pkgrel=2
 pkgdesc="YAMF (Yet another Misskey fork) bringing you no-nonsense fixes, features & improvements you actually want since 2023"
 arch=(x86_64 aarch64)
 url="https://iceshrimp.dev/iceshrimp/iceshrimp"
 license=(AGPL3)
 
 makedepends=(makepkg-git-lfs-proto npm)
-depends=(nodejs)
+depends=(nodejs-lts-iron)
 optdepends=(
   "ffmpeg: for video transcoding"
 )
