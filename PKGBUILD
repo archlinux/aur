@@ -23,7 +23,6 @@ depends=(
   'python-flask-limiter'
   'python-flask-principal'
   'python-flask-wtf'
-  'python-iso639'
   'python-lxml'
   'python-netifaces-plus'
   'python-pycountry'

@@ -18,7 +18,6 @@ pkgbase = calibre-web
 	depends = python-flask-limiter
 	depends = python-flask-principal
 	depends = python-flask-wtf
-	depends = python-iso639
 	depends = python-lxml
 	depends = python-netifaces-plus
 	depends = python-pycountry
