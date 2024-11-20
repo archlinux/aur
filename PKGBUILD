@@ -1,7 +1,7 @@
 # Maintainer: Saurabh Kumar Sharma <imesskayesss@protonmail.com>
 
 pkgname=lolminer
-notagver=1.91
+notagver=1.92
 pkgtag=
 pkgver=${notagver}${pkgtag}
 pkgrel=1
