@@ -23,7 +23,7 @@ build() {
 }
 
 package() {
-    depends=("linux=$(pacman -Q linux | awk '{print $2}')")
+    depends+=("linux=$(pacman -Q linux | awk '{print $2}')")
     cd ${srcdir}/amneziawg-linux-kernel-module-${pkgver}/src
     install -Dm644 "${srcdir}/amneziawg-linux-kernel-module-${pkgver}/src/amneziawg.ko" "$pkgdir/usr/lib/modules/$(ls /usr/lib/modules/ | grep arch | sort -u | tail -1)/kernel/drivers/net/wireguard/amneziawg.ko"
 }
