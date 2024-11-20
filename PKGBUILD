@@ -2,7 +2,7 @@
 
 pkgname=fcitx5-mellow-themes-git
 _gitname=fcitx5-mellow-themes
-pkgver=r13.1154bdb
+pkgver=r24.9694953
 pkgrel=1
 pkgdesc="An aesthetic, modern fcitx5 theme featuring rounded rectangle design"
 arch=('any')
@@ -24,5 +24,5 @@ package() {
     install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
     
     install -dm755 "${pkgdir}"/usr/share/fcitx5/themes/
-    find . -name "mellow-*" -type d -exec cp -ar {} "${pkgdir}"/usr/share/fcitx5/themes/ \;
+    find . -name "*mellow-*" -type d -exec cp -ar {} "${pkgdir}"/usr/share/fcitx5/themes/ \;
 }
