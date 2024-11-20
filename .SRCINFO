@@ -1,10 +1,14 @@
 pkgbase = mustang-git
 	pkgdesc = New full-featured desktop email, chat and video conference client
-	pkgver = 0.6.12.r1.g9e3a022
+	pkgver = 0.6.13.r3.gfe15e2f
 	pkgrel = 1
 	url = https://mustang.im/
 	arch = any
 	license = LicenseRef-EUPL-1.2
+	makedepends = npm
+	makedepends = nvm
+	makedepends = curl
+	makedepends = git
 	depends = electron32
 	conflicts = mustang
 	source = mustang.git::git+https://github.com/mustang-im/mustang.git

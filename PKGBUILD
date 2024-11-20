@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=mustang-git
 _pkgname=Mustang
-pkgver=0.6.12.r1.g9e3a022
+pkgver=0.6.13.r3.gfe15e2f
 _electronversion=32
 _nodeversion=20
 pkgrel=1
@@ -14,6 +14,12 @@ conflicts=("${pkgname%-git}")
 prodives=("${pkgname%-git}=${pkgver%.r*}")
 depends=(
     "electron${_electronversion}"
+)
+makedepends=(
+    'npm'
+    'nvm'
+    'curl'
+    'git'
 )
 source=(
     "${pkgname//-/.}::git+${_ghurl}.git"
@@ -56,12 +62,13 @@ build() {
     if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
         {
             echo 'registry=https://registry.npmmirror.com'
-            echo 'disturl=https://registry.npmmirror.com/-/binary/node/'
             echo 'electron_mirror=https://registry.npmmirror.com/-/binary/electron/'
             echo 'electron_builder_binaries_mirror=https://registry.npmmirror.com/-/binary/electron-builder-binaries/'
         } >> .npmrc
-    fi
-    echo app  lib backend e2 | xargs -n 1 cp .npmrc
+        echo app  lib backend e2 | xargs -n 1 cp .npmrc
+        echo '[url "https://github.moeyy.xyz/https://github.com/"]' >> "${srcdir}/${pkgname}-${pkgver}/app/.gitconfig"
+        echo '    insteadof = https://github.com/' >> "${srcdir}/${pkgname}-${pkgver}/app/.gitconfig"
+    fi    
     cd "${srcdir}/${pkgname//-/.}/app/build"
     sh "${pkgname%-git}-brand.sh"
     cd "${srcdir}/${pkgname//-/.}/app"
@@ -71,18 +78,16 @@ build() {
     cd "${srcdir}/${pkgname//-/.}/backend"
     NODE_ENV=development    npm install
     cd "${srcdir}/${pkgname//-/.}/e2"
-    sed -i "/- AppImage/d;/- snap/d;/- rpm/d;s/- deb/- dir/g" electron-builder.yml
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
-    cp build/icon.png resources/
     NODE_ENV=development    npm install --legacy-peer-deps
     NODE_ENV=development    npm install -D semver
     NODE_ENV=production     npm run build
-    NODE_ENV=production     npm exec -c "electron-builder --linux dir -c.electronDist=${electronDist}"
+    NODE_ENV=production     npm exec -c "electron-builder --linux dir -c.electronDist=${electronDist} --config electron-builder.yml"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
     install -Dm644 "${srcdir}/${pkgname//-/.}/e2/dist/linux-"*/resources/app.asar -t "${pkgdir}/usr/lib/${pkgname%-git}"
-    cp -r "${srcdir}/${pkgname//-/.}/e2/dist/linux-"*/resources/app.asar.unpacked "${pkgdir}/usr/lib/${pkgname%-git}"
+    install -Dm644 "${srcdir}/${pkgname//-/.}/e2/build/icon.png" -t "${pkgdir}/usr/lib/${pkgname%-git}/app.asar.unpacked/resources"
     install -Dm644 "${srcdir}/${pkgname//-/.}/e2/build/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-git}.png"
     install -Dm644 "${srcdir}/${pkgname%-git}.desktop" -t "${pkgdir}/usr/share/applications"
     install -Dm644 "${srcdir}/${pkgname//-/.}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
