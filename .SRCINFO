@@ -1,13 +1,14 @@
 pkgbase = vtex2
 	pkgdesc = A VTF converter and editor
 	pkgver = 0.3.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/StrataSource/vtex2
 	arch = x86_64
 	license = MIT
 	makedepends = cmake
 	makedepends = git
 	makedepends = qt6-svg
+	makedepends = ninja
 	depends = gcc-libs
 	depends = glibc
 	depends = qt6-base

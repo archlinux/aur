@@ -1,13 +1,13 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com
 pkgname=vtex2
 pkgver=0.3.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A VTF converter and editor"
 arch=('x86_64')
 url="https://github.com/StrataSource/vtex2"
 license=('MIT')
 depends=('gcc-libs' 'glibc' 'qt6-base' 'hicolor-icon-theme')
-makedepends=('cmake' 'git' 'qt6-svg')
+makedepends=('cmake' 'git' 'qt6-svg' 'ninja')
 source=("git+$url.git#tag=v${pkgver}"
 	"vtflib::git+https://github.com/StrataSource/VTFLib.git"
 	"fmtlib::git+https://github.com/fmtlib/fmt.git")
@@ -29,6 +29,7 @@ build() {
 	cd "$srcdir"
 	cmake -B build \
 	-S $pkgname \
+	-G Ninja \
 	-DCMAKE_INSTALL_PREFIX=/usr \
 	-DCMAKE_BUILD_TYPE=None \
 	-DBUILD_GUI=1
