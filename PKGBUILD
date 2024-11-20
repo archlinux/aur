@@ -2,7 +2,7 @@
 
 pkgname=aide-bin
 _pkgname=aide
-pkgver=1.94.2.24322
+pkgver=1.94.2.24324
 pkgrel=1
 pkgdesc="The open-source AI-native IDE"
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -19,24 +19,21 @@ optdepends=('glib2: Needed for move to trash functionality'
             'org.freedesktop.secrets: Needed for settings sync'
              # See https://github.com/MicrosoftDocs/live-share/issues/4650
             'icu69: Needed for live share' )
-source=(aide.desktop
-        aide-wayland.desktop
-        aide-url-handler.desktop
-        aide-workspace.xml
-        ${_pkgname}-bin.sh)
 
+source=(aide.desktop aide-url-handler.desktop aide-workspace.xml ${_pkgname}-bin.sh)
 
-sha256sums=('a27c3bde1179b792f5df160b5678342f7273b3784223403065265fa5308ad605'
-            'f17ea7d221c79c9eaceaec69c0ca0db12f1b54699869b859a169db8ba5364fc5'
-            '0d9408b36d84bd3f76c8f563b39fc4da7264bdc0e06b45f42ac1c9d57a7e24b3'
-            '909088d192ceefd04076b17947ec9f3c0ce47f189124c2605c2cc5cfbaca2ee8'
-            'be509863d44ae3d19cc37b5e3e53822d4b9950543c705d82cdf0b9815c112149')
 source_x86_64=(aide_x64_${pkgver}.tar.gz::https://github.com/codestoryai/binaries/releases/download/${pkgver}/Aide-linux-x64-${pkgver}.tar.gz)
 source_aarch64=(aide_arm64_${pkgver}.tar.gz::https://github.com/codestoryai/binaries/releases/download/${pkgver}/Aide-linux-arm64-${pkgver}.tar.gz)
 source_armv7h=(aide_armhf_${pkgver}.tar.gz::https://github.com/codestoryai/binaries/releases/download/${pkgver}/Aide-linux-armhf-${pkgver}.tar.gz)
-sha256sums_x86_64=("fe8a1822e93fc4028f52f96f65b3de2b254ae9939824bee7bf0d9205179fa9b2")
-sha256sums_aarch64=("27d2a132d07dcc513d7c4d916302e8a97cec233dac925210d8183b3ba7af10b8")
-sha256sums_armv7h=("2f4316afc47f2d99a2d8bbff53e2027a7132204e022e07077499e5a6cb840d66")
+
+sha256sums=('a27c3bde1179b792f5df160b5678342f7273b3784223403065265fa5308ad605'
+            '0d9408b36d84bd3f76c8f563b39fc4da7264bdc0e06b45f42ac1c9d57a7e24b3'
+            '909088d192ceefd04076b17947ec9f3c0ce47f189124c2605c2cc5cfbaca2ee8'
+            'be509863d44ae3d19cc37b5e3e53822d4b9950543c705d82cdf0b9815c112149')
+
+sha256sums_x86_64=("b8aec7643b0030e8183ae686fb26694a6fbe1ac74afb15235259cc1f2ecb7402")
+sha256sums_aarch64=("SKIP")
+sha256sums_armv7h=("SKIP")
 
 _pkg() {
   if [ "${CARCH}" = "aarch64" ]; then
@@ -73,7 +70,6 @@ package() {
   install -m644 "${srcdir}/resources/app/LICENSE.txt" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE.txt"
   install -m644 "${srcdir}/resources/app/resources/linux/code.png" "${pkgdir}/usr/share/pixmaps/${_pkgname}.png"
   install -m644 "${srcdir}/aide.desktop" "${pkgdir}/usr/share/applications/aide.desktop"
-  install -m644 "${srcdir}/aide-wayland.desktop" "${pkgdir}/usr/share/applications/aide-wayland.desktop"
   install -m644 "${srcdir}/aide-url-handler.desktop" "${pkgdir}/usr/share/applications/aide-url-handler.desktop"
   install -m644 "${srcdir}/aide-workspace.xml" "${pkgdir}/usr/share/mime/packages/${pkgname}-workspace.xml"
   install -Dm 644 "${srcdir}/resources/completions/bash/aide" "${pkgdir}/usr/share/bash-completion/completions/aide"
