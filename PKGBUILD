@@ -1,21 +1,21 @@
-# Maintainer  : Chris Billington <chrisjbillington@gmail.com>
+# Maintainer: Carlos Aznarán <caznaranl@uni.pe>
+# Contributor: Chris Billington <chrisjbillington@gmail.com>
 pkgname=python-mkl-service-bin
 _pkgname=mkl-service
 _pkgver=2.4.0
-_build=py311h5eee18b_1
+_build=py312h5eee18b_1
 pkgver="${_pkgver}.anaconda${_build##*_}"
-pkgrel=3
-epoch=1
+pkgrel=1
 pkgdesc="Python bindings to MKL service functions - prebuilt binaries from Anaconda"
-arch=('x86_64')
+arch=(x86_64)
+license=(BSD-3-Clause)
 url="https://github.com/IntelPython/mkl-service"
-license=('custom')
-provides=('python-mkl-service')
-conflicts=('python-mkl-service')
-depends=('python' 'intel-mkl')
-makedepends=('jq')
-source=("https://repo.anaconda.com/pkgs/main/linux-64/${_pkgname}-${_pkgver}-${_build}.tar.bz2")
-sha256sums=('2aef0876d0df033f7fae8cddbd25d95fc1bfc067e60dd143bd8000fec0768b21')
+provides=("python-mkl-service=$_pkgver")
+conflicts=(python-mkl-service)
+depends=(python intel-oneapi-mkl)
+makedepends=(jq)
+source=(https://repo.anaconda.com/pkgs/main/linux-64/${_pkgname}-${_pkgver}-${_build}.tar.bz2)
+sha256sums=('450923edf22abeeb3891cf3c5943ebd8df78d81e24c09769f14b2fd3c3015f9f')
 
 prepare() {
   # Prefix replacement
