@@ -1,11 +1,11 @@
 pkgbase = loki-bin
 	pkgdesc = Loki: like Prometheus, but for logs.
-	pkgver = 3.2.1
+	pkgver = 3.3.0
 	pkgrel = 0
 	url = https://github.com/grafana/loki
 	arch = x86_64
 	license = AGPL-3.0-only
-	source_x86_64 = https://github.com/grafana/loki/releases/download/v3.2.1/loki-linux-amd64.zip
-	sha256sums_x86_64 = 4f2465fdf2065ad71688f3c5c6dcad7a527f1f6e13b9f55735c0cabc6507fbcd
+	source_x86_64 = https://github.com/grafana/loki/releases/download/v3.3.0/loki-linux-amd64.zip
+	sha256sums_x86_64 = 1e0108065e17e7c5e625071def7f9a6d80eff345affe0505a3626ac080345dff
 
 pkgname = loki-bin
