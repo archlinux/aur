@@ -49,7 +49,7 @@ build() {
 }
 
 package() {
-    install -Dm755 "$srcdir/$_starter" "$pkgdir/usr/bin/$_starter"
+    install -Dm755 "$srcdir/$_starter" "$pkgdir/usr/bin/wemeet-wayland-screenshare"
     install -Dm755 "$srcdir/$_pkgname/build/$_libhook" "$pkgdir/usr/lib/wemeet/$_libhook"
     mkdir -p $pkgdir/usr/share/applications
     install -Dm644 "$srcdir/$_desktop_entry_file" "$pkgdir/usr/share/applications/$_desktop_entry_file"
