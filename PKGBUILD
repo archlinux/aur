@@ -8,7 +8,7 @@ pkgdesc="A complete and cross-platform game engine designed for flexibility, per
 arch=(x86_64)
 url="https://www.crownengine.org"
 license=('MIT' 'GPL3')
-depends=('glib2>=2.48.2'
+depends=('glib2>=2.64.6'
          'gtk3>=3.24'
          'libgee'
          'libgl'
