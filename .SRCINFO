@@ -1,0 +1,12 @@
+pkgbase = clang17-bin
+	pkgver = 17.0.6
+	pkgrel = 1
+	url = https://llvm.org/
+	install = clang.install
+	arch = x86_64
+	license = Apache-2.0-with-LLVM-Exception
+	options = !debug
+	source = clang17-bin-17.0.6.tar.xz::https://github.com/llvm/llvm-project/releases/download/llvmorg-17.0.6/clang+llvm-17.0.6-x86_64-linux-gnu-ubuntu-22.04.tar.xz
+	sha512sums = 675328267d98d64fee680d2cdb0bfb0a7d870e7ae8bf6983202ed400996cc1d691b116ec9055eba20218271bb6beeb49f14562b0eb0b75816319daa11e59920e
+
+pkgname = clang17-bin
