@@ -1,7 +1,7 @@
 pkgbase = imgbrd-grabber
 	pkgdesc = Very customizable imageboard/booru downloader with powerful filenaming features.
 	pkgver = 7.12.2
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/Bionus/imgbrd-grabber
 	arch = x86_64
 	license = Apache-2.0
@@ -12,6 +12,7 @@ pkgbase = imgbrd-grabber
 	makedepends = qt6-shadertools
 	makedepends = clang
 	makedepends = jq
+	makedepends = ninja
 	depends = qt6-multimedia
 	depends = qt6-declarative
 	depends = nodejs
