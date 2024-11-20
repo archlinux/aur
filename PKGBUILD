@@ -1,6 +1,6 @@
 # Maintainer: Parker Johansen <johansen.parker@gmail.com>
 pkgname=kubelogin
-pkgver=1.30.1
+pkgver=1.31.0
 pkgrel=1
 pkgdesc="Kubectl plugin for Kubernetes OpenID Connect authentication (oidc-login)"
 arch=('x86_64' 'aarch64')
@@ -9,8 +9,8 @@ license=('Apache')
 depends=('kubectl' 'glibc')
 source_x86_64=(${pkgname}-${pkgver}.zip::https://github.com/int128/kubelogin/releases/download/v${pkgver}/kubelogin_linux_amd64.zip)
 source_aarch64=(${pkgname}-${pkgver}.zip::https://github.com/int128/kubelogin/releases/download/v${pkgver}/kubelogin_linux_arm64.zip)
-sha256sums_x86_64=('36297a69b10664003ec8c9ca53fa56c37b72596cc104a9b55e7145542683532b')
-sha256sums_aarch64=('97e59a21e95c7229bfedbbeed4d828aabb80fc140954b33aaa00320c74a6227a')
+sha256sums_x86_64=('6cf3cfaa6b81305ebbc83cf1119fa60c079f6cd9756a9baf4169103b811ef86b')
+sha256sums_aarch64=('e68cd375d07b963c2456b43265499a543eca8332391d80fa482057f295dbd9f2')
 
 package() {
     install ${srcdir}/kubelogin -Dm755 "${pkgdir}/usr/bin/kubelogin"
