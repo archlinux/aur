@@ -1,6 +1,6 @@
 # Maintainer: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
 pkgname=oblivion-desktop-git
-pkgver=1.6.15.r0.g0327506
+pkgver=1.14.0.r0.gc501d7c
 pkgrel=1
 pkgdesc="Unofficial Warp Client for Windows/Mac/Linux (GitHub Version)"
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
@@ -25,6 +25,7 @@ prepare() {
     sed -i 's|../../assets|assets|' src/main/main.ts
     sed -i "s#path.join(process.resourcesPath, 'assets')#path.join(app.getAppPath().replace('/app.asar', ''), 'assets')#" \
         src/main/main.ts
+    sed -i 's/"devEngines"/"engines"/' package.json
     gendesk -f -n \
         --pkgname "${pkgname%-git}" \
         --pkgdesc "${pkgdesc}" \
