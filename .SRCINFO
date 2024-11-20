@@ -1,0 +1,23 @@
+pkgbase = midi2.0-workbench-git
+	pkgdesc = A free tool from MIDI Association Members to help developers develop, debug (and deploy) MIDI 2.0 Applications and Devices.(Use system-wide electron)
+	pkgver = 1.5.6p.r9.g3b74597
+	pkgrel = 1
+	url = https://github.com/midi2-dev/MIDI2.0Workbench
+	arch = any
+	license = MIT
+	makedepends = gendesk
+	makedepends = npm
+	makedepends = nvm
+	makedepends = git
+	makedepends = curl
+	makedepends = yarn
+	makedepends = gcc
+	depends = electron19
+	provides = midi2.0-workbench=1.5.6p
+	conflicts = midi2.0-workbench
+	source = midi2.0-workbench.git::git+https://github.com/midi2-dev/MIDI2.0Workbench
+	source = midi2.0-workbench.sh
+	sha256sums = SKIP
+	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
+
+pkgname = midi2.0-workbench-git
