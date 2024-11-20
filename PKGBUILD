@@ -1,5 +1,5 @@
 #!/bin/bash
-# Maintainer: Jumps Are Op <jumpsareop@gmail.com>
+# Maintainer: 3bd <3bd3bdr@gmail.com>
 # Change minimal OpenGL version from 3.3 to 2.1 (2006)
 
 _pkgname=raylib
