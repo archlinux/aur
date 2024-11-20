@@ -1,6 +1,6 @@
 pkgbase = chezmoi_modify_manager
 	pkgdesc = Tools for chezmoi to handle mixed settings and state
-	pkgver = 3.5.0
+	pkgver = 3.5.1
 	pkgrel = 1
 	url = https://github.com/VorpalBlade/chezmoi_modify_manager
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = chezmoi_modify_manager
 	license = GPL-3.0-only
 	makedepends = cargo
 	depends = dbus
-	source = chezmoi_modify_manager-3.5.0.tar.gz::https://static.crates.io/crates/chezmoi_modify_manager/chezmoi_modify_manager-3.5.0.crate
-	sha256sums = fbfd2869471bd116b004ad1c54c555b4502af760019c6bf1b408c0fce1e8d003
+	source = chezmoi_modify_manager-3.5.1.tar.gz::https://static.crates.io/crates/chezmoi_modify_manager/chezmoi_modify_manager-3.5.1.crate
+	sha256sums = 9af3a961ce9a6fe026d125d2adb1b28e678263e0d96b83af655ea350bb080446
 
 pkgname = chezmoi_modify_manager
