@@ -2,18 +2,18 @@
 
 _name="textual-autocomplete"
 pkgname="python-${_name}"
-pkgver=3.0.0a12
+pkgver=3.0.0a13
 pkgrel=1
 pkgdesc="Easily add autocomplete dropdowns to your Textual apps"
 arch=('any')
 url="https://github.com/darrenburns/${_name}"
 license=('MIT')
-makedepends=('python-build' 'python-installer' 'python-poetry-core')
-depends=('python>=3.8.1' 'python-textual>=0.83' 'python-rich'
+makedepends=('python-build' 'python-hatchling' 'python-installer')
+depends=('python>=3.8.1' 'python-textual>=0.86.2' 'python-rich'
          'python-typing_extensions>=4.5')
 _pkgsrc="${_name//-/_}-${pkgver}"
 source=("${_pkgsrc}.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/${_name//-/_}/${_name//-/_}-${pkgver}.tar.gz")
-sha256sums=('1d2c9e4d24c7f575abc8c612cb6abfff4706f6aaab9b939506b95dae84549309')
+sha256sums=('db5a4ae956dd7d6dece53f7f695e97f2ab75819dd96b8a1c064ec5966b3ab113')
 
 build() {
   cd "${srcdir}/${_pkgsrc}"
@@ -26,8 +26,9 @@ package() {
   cd "${srcdir}/${_pkgsrc}"
   python -m installer --destdir="${pkgdir}" dist/*.whl
 
-  install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
-  install -d "${pkgdir}/usr/share/licenses/${pkgname}"
-  ln -s "${site_packages}/${_pkgsrc}.dist-info/LICENSE" \
-    "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -vDm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+
+  install -vd "${pkgdir}/usr/share/licenses/${pkgname}"
+  cd "${pkgdir}/usr/share/licenses/${pkgname}"
+  ln -vs "${site_packages}/${_pkgsrc}.dist-info/LICENSE" "LICENSE"
 }
