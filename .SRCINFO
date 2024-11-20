@@ -1,6 +1,6 @@
 pkgbase = go-hass-agent-bin
-	pkgdesc = A Home Assistant, native app integration for desktop/laptop devices.Written in Go.Prebuilt version.
-	pkgver = 10.4.0
+	pkgdesc = A Home Assistant, native app integration for desktop/laptop devices.Written in Go.(Prebuilt version)
+	pkgver = 10.5.0
 	pkgrel = 1
 	url = https://github.com/joshuar/go-hass-agent
 	arch = aarch64
@@ -9,13 +9,13 @@ pkgbase = go-hass-agent-bin
 	license = MIT
 	depends = libx11
 	depends = libglvnd
-	provides = go-hass-agent=10.4.0
+	provides = go-hass-agent=10.5.0
 	conflicts = go-hass-agent
-	source_aarch64 = go-hass-agent-10.4.0-aarch64.rpm::https://github.com/joshuar/go-hass-agent/releases/download/v10.4.0/go-hass-agent-10.4.0-1.aarch64.rpm
-	sha256sums_aarch64 = 8767a4411cced80d92278020b4bd7d72ca15cfa1913d59971aa7dc5a1db58367
-	source_armv7h = go-hass-agent-10.4.0-armv7h.rpm::https://github.com/joshuar/go-hass-agent/releases/download/v10.4.0/go-hass-agent-10.4.0-1.armv7hl.rpm
-	sha256sums_armv7h = 0a0b9fd101732ba02b4ee3e244b89c4099b8b562685463830679d11a6f4ec109
-	source_x86_64 = go-hass-agent-10.4.0-x86_64.rpm::https://github.com/joshuar/go-hass-agent/releases/download/v10.4.0/go-hass-agent-10.4.0-1.x86_64.rpm
-	sha256sums_x86_64 = 4f79c09296a3e5a36f26614996991d01fa8ccf839c10be8be852a6c2ede219d4
+	source_aarch64 = go-hass-agent-10.5.0-aarch64.rpm::https://github.com/joshuar/go-hass-agent/releases/download/v10.5.0/go-hass-agent-10.5.0-1.aarch64.rpm
+	sha256sums_aarch64 = 2c8481987ff5ed88e9be8b39e991204ac68d0a15b03ced60eb54d6c0fb8c140f
+	source_armv7h = go-hass-agent-10.5.0-armv7h.rpm::https://github.com/joshuar/go-hass-agent/releases/download/v10.5.0/go-hass-agent-10.5.0-1.armv7hl.rpm
+	sha256sums_armv7h = 424e28149f7ecf13335f9fb1cac1b230d200fff3926deb253492b1429d7714af
+	source_x86_64 = go-hass-agent-10.5.0-x86_64.rpm::https://github.com/joshuar/go-hass-agent/releases/download/v10.5.0/go-hass-agent-10.5.0-1.x86_64.rpm
+	sha256sums_x86_64 = c0f1a36a2e627946c743c4c1fe365913ceebd90d9b0d53fa4cb8253fb1c25b20
 
 pkgname = go-hass-agent-bin
