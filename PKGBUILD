@@ -1,83 +1,56 @@
-# Maintainer: Dominik Opyd <d.opyd@oad.earth>
-# Contributor: thisischrys <thisischrys+aur@gmail.com>
-# Contributor: Nitroretro <nitroretro@protonmail.com>
+# Maintainer: Brian Elder <gth747m@gmail.com>
 
-# Based on the `minecraft-server` AUR package by:
-## Maintainer: Gordian Edenhofer <gordian.edenhofer@gmail.com>
-## Contributor: Philip Abernethy <chais.z3r0@gmail.com>
-## Contributor: sowieso <sowieso@dukun.de>
-
-minver=1.19
-srvpath=/srv/forge
-
-pkgver=41.1.0
-pkgrel=2
 pkgname=forge-server
 pkgdesc="Forge is a free, open-source modding API all of your favourite mods use!"
 url="https://minecraftforge.net"
-arch=('any')
-license=("custom")
-depends=("jdk-openjdk" "tmux" "forge-hooks")
-makedepends=("jdk-openjdk")
-optdepends=("tar: needed in order to create world backups"
-						"netcat: required in order to suspend an idle server")
-provides=("forge-server=${pkgver}")
-backup=("etc/conf.d/forge")
-install=forge-server.install
-source=(git+https://github.com/Edenhofer/minecraft-server
-				https://raw.githubusercontent.com/MinecraftForge/MinecraftForge/${minver}.x/LICENSE.txt
-				https://maven.minecraftforge.net/net/minecraftforge/forge/1.19-41.1.0/forge-1.19-41.1.0-installer.jar)
-noextract=(forge-${minver}-${pkgver}-installer.jar)
-sha512sums=('SKIP'
-            '3da10d63a5edee4bc8bcd3d5c2730771062f7fa58626a8c51635fbe96bfbceca3ff6937cfaad3e17f16a94ef95137f7c78cc6dac1c846a6b9a8f18d3c6355973'
-            'f3a383a994d72edf047a3dfc3391f635b412c34ea1641a9af41f26682839acacf2d4cf6cb9700dc9b46df887912db211adb9ed6b0cbd6548728227aeca63db2b')
 
-frgpath=${srvpath}/libraries/net/minecraftforge/forge/${minver}-${pkgver}
+pkgver=53.0.19
+pkgrel=1
+_minecraftver=1.21.3
+_licensever=1.21.x
+_srvpath="/opt"
+
+arch=("any")
+license=("custom")
+depends=("jdk-openjdk")
+optdepends=("tar: needed in order to create world backups")
+provides=("forge-server=${forge_major}.${forge_minor}.${forge_patch}")
+backup=("opt/forge-server/banned-ips.json"
+        "opt/forge-server/banned-players.json"
+        "opt/forge-server/config"
+        "opt/forge-server/eula.txt"
+        "opt/forge-server/logs"
+        "opt/forge-server/mods"
+        "opt/forge-server/ops.json"
+        "opt/forge-server/server.properties"
+        "opt/forge-server/usercache.json"
+        "opt/forge-server/user_jvm_args.txt"
+        "opt/forge-server/whitelist.json"
+        "opt/forge-server/world")
+install="forge-server.install"
+source=("https://raw.githubusercontent.com/MinecraftForge/MinecraftForge/${_licensever}/LICENSE.txt"
+        "https://maven.minecraftforge.net/net/minecraftforge/forge/${_minecraftver}-${pkgver}/forge-${_minecraftver}-${pkgver}-installer.jar"
+        "forge-server.service"
+        "eula.txt")
+noextract=("forge-${_minecraftver}-${pkgver}-installer.jar")
+sha512sums=("ecee0462a1cad389def4cd1ce1f24f7b5cf0bb1552f45db0482ac0fa7badc54a251adb735977a1dce3412a09716ce44b0ddf81c37dcfad3a5ac5d8e3516be3c8"
+            "531705795bac5e96a17bb84d9245786e2760dc8fe524a1bb646c9723fa52698dcdef207a6a378d0ce524b1d6d22730b2c421e5b97965b0bc1c3b1eb7f19e3273"
+            "6e4e7f4d9486ece03e812d3373220d93d1934f1f3bcc86f4075cde6fb0ee76fb6ff7a2d3c19f884602ee89a6b46934bd1f90334c577e560de0d065a5c7449a05"
+            "68205ffc60327c67a5ebe778598c3350d64b48aad9dacf52fcde435a535a074ba2056db30dff1b18e3c8e38510acd6ececa298b13cd4c4203636560fa4cf70cb")
 
 prepare() {
-	mkdir -p forge-server && cd forge-server
-
-	java -jar ../forge-${minver}-${pkgver}-installer.jar --installServer
+    mkdir -p forge-server || exit
 }
 
 build() {
-	cd minecraft-server
-
-	make \
-		GAME=forge \
-		INAME=forged \
-		SERVER_ROOT=${srvpath} \
-		SERVER_START_CMD="java @${frgpath}/user_jvm_args.txt @${frgpath}/unix_args.txt" \
-		MAIN_EXECUTABLE=forge-${minver}-${pkgver}-server.jar \
-	all
+    java -jar "./forge-${_minecraftver}-${pkgver}-installer.jar" --installServer ./forge-server
 }
 
 package() {
-	cd minecraft-server
-
-	make \
-		GAME=forge \
-		INAME=forged \
-		DESTDIR=$pkgdir \
-	install
-	
-	cd ../forge-server
-
-	rm *.log *.bat
-
-	rm libraries/net/minecraftforge/forge/${minver}-${pkgver}/win_args.txt
-
-	find libraries -type f -print0 | xargs -0 -i@ install -Dm644 "@" "${pkgdir}${srvpath}/@"
-
-	install -Dm 644 user_jvm_args.txt ${pkgdir}${frgpath}/user_jvm_args.txt
-	install -Dm 644 $srcdir/LICENSE.txt ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
-
-	mkdir -p $pkgdir/var/log/
-
-	install -dm2755 $pkgdir$srvpath/logs
-	install -dm2755 $pkgdir$srvpath/mods
-
-	ln -s ${srvpath}/logs $pkgdir/var/log/forge
-
-	chmod g+ws $pkgdir$srvpath
+    install -d "${pkgdir}/${_srvpath}/${pkgname}"
+    install -Dm444 "LICENSE.txt" "${pkgdir}/${_srvpath}/${pkgname}"
+    install -Dm644 "eula.txt" "${pkgdir}/${_srvpath}/${pkgname}"
+    cp -r "./${pkgname}" "${pkgdir}/${_srvpath}"
+    ln -s "forge-${_minecraftver}-${pkgver}-shim.jar" "${pkgdir}/${_srvpath}/${pkgname}/forge-server.jar"
+    install -Dm644 "${srcdir}/forge-server.service" "${pkgdir}/usr/lib/systemd/system/forge-server.service"
 }
