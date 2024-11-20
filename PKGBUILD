@@ -16,6 +16,10 @@ sha512sums=('0d0dde7324088f2f3eff2cff9679e7f25b20d9796462da9949e6fc97af320a43ace
             'SKIP')
 install="amneziawg-linux.install"
 
+prepare() {
+    _linux=$(pacman -Q linux | awk '{print $2}')
+}
+
 build() {
     cd ${srcdir}/amneziawg-linux-kernel-module-${pkgver}/src
     ln -s ${srcdir}/linux-${_kernel} kernel
@@ -23,7 +27,7 @@ build() {
 }
 
 package() {
-    depends+=("linux=$(pacman -Q linux | awk '{print $2}')")
+    depends+=("linux=$_linux")
     cd ${srcdir}/amneziawg-linux-kernel-module-${pkgver}/src
     install -Dm644 "${srcdir}/amneziawg-linux-kernel-module-${pkgver}/src/amneziawg.ko" "$pkgdir/usr/lib/modules/$(ls /usr/lib/modules/ | grep arch | sort -u | tail -1)/kernel/drivers/net/wireguard/amneziawg.ko"
 }
