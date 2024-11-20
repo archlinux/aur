@@ -4,14 +4,14 @@
 
 pkgname=calibre-web
 pkgver=0.6.24
-pkgrel=1
+pkgrel=2
 pkgdesc="Web app for browsing, reading and downloading eBooks stored in a Calibre database"
 arch=('any')
 url="https://github.com/janeczku/calibre-web"
 license=('GPL3')
 depends=(
+  'magic'
   'python'
-  'python-advocate'
   'python-apscheduler'
   'python-babel'
   'python-bleach'
@@ -21,21 +21,22 @@ depends=(
   'python-flask-babel'
   'python-flask-httpauth'
   'python-flask-limiter'
-  'python-flask-login'
   'python-flask-principal'
   'python-flask-wtf'
-  'python-magic'
+  'python-iso639'
+  'python-lxml'
+  'python-netifaces-plus'
+  'python-pycountry'
   'python-pypdf'
+  'python-magic'
   'python-pytz'
   'python-regex'
   'python-requests'
   'python-sqlalchemy'
   'python-tornado'
-  'python-wand'
   'python-unidecode'
-  'python-blinker'
-  'python-lxml'
-  'python-pycountry'
+  'python-urllib3'
+  'python-wand'
 )
 optdepends=(
   'python-jsonschema: kobo sync support'
