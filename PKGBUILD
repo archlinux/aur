@@ -4,10 +4,10 @@
 pkgname=stlink-server
 _pkgname=st-link-server
 pkgver=2.1.1
-pkgrel=3
+pkgrel=4
 pkgdesc="An application to share the debug interface of a single ST-LINK board among several host applications, typically a debugging tool and a monitoring tool"
 arch=('x86_64')
-url="'https://www.st.com/en/development-tools/st-link-server.html"
+url="https://www.st.com/en/development-tools/st-link-server.html"
 license=('custom:SLA0048')
 # stlink provides stlink udev rules
 depends=("stlink"
@@ -43,7 +43,7 @@ DLAGENTS=("https::/usr/bin/curl \
 source=("${_pkg_zip_name}::${_download_path}"
         "https://www.st.com/resource/en/license/${_pkg_license_name}")
 sha256sums=('a84a0ada7c9b6343e559dacd37e42a815c500d0f4a517db3d1e511d056903bf6'
-            '89c26988b9c0533f86d4ce84b683ce6075ac7cdd42c69b92c2f8ea156f0db3ac')
+            'f9270b447c7d223007703f800292d58ca2716a041ceae250d3e3c5e3fc2bd4f8')
 
 _bundle_sh_extract() {
   local bundle_sh="$1"
