@@ -1,7 +1,7 @@
 pkgbase = arrayfire
 	pkgdesc = High performance software library for parallel computing with an easy-to-use API
 	pkgver = 3.9.0
-	pkgrel = 8
+	pkgrel = 9
 	url = https://arrayfire.com
 	arch = x86_64
 	license = BSD
@@ -23,7 +23,7 @@ pkgbase = arrayfire
 	depends = glfw
 	depends = glew
 	depends = intel-oneapi-mkl
-	depends = intel-oneapi-tbb
+	depends = onetbb
 	depends = spdlog
 	optdepends = cuda: Required for using CUDA backend
 	optdepends = nvidia-utils: Required for using CUDA backend

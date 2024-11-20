@@ -2,12 +2,12 @@
 
 pkgname=arrayfire
 pkgver=3.9.0
-pkgrel=8
+pkgrel=9
 pkgdesc="High performance software library for parallel computing with an easy-to-use API"
 arch=('x86_64')
 url='https://arrayfire.com'
 license=('BSD')
-depends=('cblas' 'fftw' 'lapacke' 'forge' 'glfw' 'glew' 'intel-oneapi-mkl' 'intel-oneapi-tbb' 'spdlog')
+depends=('cblas' 'fftw' 'lapacke' 'forge' 'glfw' 'glew' 'intel-oneapi-mkl' 'onetbb' 'spdlog')
 makedepends=('cmake' 'graphviz' 'doxygen' 'opencl-headers' 'python' 'ocl-icd' 'cuda' 'cudnn' 'git' 'ninja' 'boost')
 optdepends=('cuda: Required for using CUDA backend'
             'nvidia-utils: Required for using CUDA backend'
