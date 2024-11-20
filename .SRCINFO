@@ -1,7 +1,7 @@
 pkgbase = pinocchio
 	pkgdesc = Dynamic computations using Spatial Algebra
 	pkgver = 3.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/stack-of-tasks/pinocchio
 	arch = i686
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = pinocchio
 	makedepends = cmake
 	makedepends = boost
 	makedepends = doxygen
-	depends = hpp-fcl
+	depends = coal
 	depends = eigenpy
 	depends = urdfdom
 	depends = python
