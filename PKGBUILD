@@ -2,8 +2,8 @@
 
 pkgbase=purc-git
 pkgname=purc-git
-pkgver=0.9.18.r2.g9759a6772
-pkgrel=4
+pkgver=0.9.19.r26.g1e47c60c2
+pkgrel=1
 pkgdesc="The prime HVML interpreter for C/C++ Language."
 arch=(x86_64
     aarch64
@@ -12,7 +12,7 @@ arch=(x86_64
     powerpc
     powerpc64le)
 url="https://github.com/HVML/PurC"
-license=('LGPL-3.0')
+license=('LGPL-3.0-only')
 groups=(hvml-git
     hybridos2-git)
 provides=(${pkgbase%-git}
@@ -32,7 +32,7 @@ replaces=(domruler
 depends=(glib2
     glibc)
 makedepends=(
-#     avahi
+    #     avahi
     bison
     cmake
     flex
@@ -40,7 +40,7 @@ makedepends=(
     ninja
     ccache
     curl
-#     gcc
+    #     gcc
     clang
     llvm
     gperf
@@ -57,13 +57,15 @@ makedepends=(
     libxml2
     libxslt
     libsoup3
+    linux-api-headers
     icu
-#     libmariadbclient
+    #     libmariadbclient
     openssl
     sqlite
     systemd
     pkgconf
     python
+    xorgproto
     zlib)
 checkdepends=(check
     gtest
@@ -74,35 +76,40 @@ optdepends=('python-numpy: Scientific tools for Python'
     'xguipro: xGUI (the X Graphics User Interface) Pro is a modern, cross-platform, and advanced HVML renderer which is based on tailored WebKit.')
 source=("${pkgname}::git+${url}.git")
 sha256sums=('SKIP')
-options=('!strip')
+options=()
 
 pkgver() {
     cd "${srcdir}/${pkgname}/"
     git describe --long --tags | sed 's/ver.//g;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-prepare()
-{
+prepare() {
     git -C "${srcdir}/${pkgname}" clean -dfx
 }
 
 build() {
+    export LDFLAGS="-L/lib64"
+    if test -n "$LD_LIBRARY_PATH"; then
+        export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/lib64"
+    else
+        export LD_LIBRARY_PATH=/lib64
+    fi
     cd "${srcdir}/${pkgname}"
 
-#     sed -i 's|0 9 14|0 9 15|g' CMakeLists.txt
-# see：https://wiki.archlinux.org/title/CMake_package_guidelines
-#     cmake -DCMAKE_BUILD_TYPE=Release \
-# gcc build
-#     cmake -DCMAKE_BUILD_TYPE=None \
-#         -DPORT=Linux \
-#         -DENABLE_CHINESE_NAMES=ON \
-#         -DCMAKE_INSTALL_PREFIX=/usr \
-#         -DCMAKE_INSTALL_LIBDIR=lib \
-#         -DCMAKE_INSTALL_LIBEXECDIR=lib \
-#         -B build \
-#         -G Ninja
+    #     sed -i 's|0 9 14|0 9 15|g' CMakeLists.txt
+    # see：https://wiki.archlinux.org/title/CMake_package_guidelines
+    #     cmake -DCMAKE_BUILD_TYPE=Release \
+    # gcc build
+    #     cmake -DCMAKE_BUILD_TYPE=None \
+    #         -DPORT=Linux \
+    #         -DENABLE_CHINESE_NAMES=ON \
+    #         -DCMAKE_INSTALL_PREFIX=/usr \
+    #         -DCMAKE_INSTALL_LIBDIR=lib \
+    #         -DCMAKE_INSTALL_LIBEXECDIR=lib \
+    #         -B build \
+    #         -G Ninja
 
-# clang llvm build
+    # clang llvm build
     cmake -DCMAKE_BUILD_TYPE=None \
         -DPORT=Linux \
         -DENABLE_CHINESE_NAMES=ON \
@@ -111,6 +118,7 @@ build() {
         -DCMAKE_INSTALL_LIBEXECDIR=lib \
         -DCMAKE_CXX_COMPILER=clang++ \
         -DCMAKE_C_COMPILER=clang \
+        -Wno-dev \
         -B build \
         -G Ninja
 
