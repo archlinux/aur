@@ -6,7 +6,9 @@ pkgver=17.0.6
 pkgrel=1
 arch=('x86_64')
 url="https://llvm.org/"
+pkgdesc="Official clang+llvm binary package - 4.5gb installed to /opt"
 options=(!debug)
+provides=("clang=${pkgver}" clang-17)
 license=('Apache-2.0-with-LLVM-Exception')
 source=(
         "${pkgname}-${pkgver}.tar.xz::https://github.com/llvm/llvm-project/releases/download/llvmorg-${pkgver}/clang+llvm-${pkgver}-x86_64-linux-gnu-ubuntu-22.04.tar.xz"
