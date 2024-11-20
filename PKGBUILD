@@ -1,15 +1,15 @@
 # Maintainer: zotan <aur@zotan.email>
 
 pkgname=iceshrimp-git
-pkgver=v2023.12.6.r0.g85cdfb8f3
-pkgrel=1
+pkgver=v2023.12.11.r0.g617f27d63
+pkgrel=2
 pkgdesc="YAMF (Yet another Misskey fork) bringing you no-nonsense fixes, features & improvements you actually want since 2023"
 arch=(x86_64 aarch64)
 url="https://iceshrimp.dev/iceshrimp/iceshrimp"
 license=(AGPL3)
 
 makedepends=(makepkg-git-lfs-proto npm)
-depends=(nodejs)
+depends=(nodejs-lts-iron)
 optdepends=(
   "ffmpeg: for video transcoding"
 )
