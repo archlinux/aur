@@ -6,45 +6,48 @@
 pkgbase='transgui'
 pkgname=("${pkgbase}-qt" "${pkgbase}-gtk")
 pkgver='5.18.0'
-pkgrel='2'
-pkgdesc='A feature rich cross platform Transmission BitTorrent client. Faster and has more functionality than the built-in web GUI.'
-arch=('i686' 'x86_64')
+pkgrel='3'
+pkgdesc='Transmission BitTorrent client'
+arch=('x86_64' 'aarch64')
 url="https://github.com/transmission-remote-gui/${pkgbase}"
 license=("GPL")
-makedepends=('lazarus' 'qt5pas' 'gtk2')
+makedepends=('lazarus' 'qt6pas' 'gtk2')
 source=("${url}/archive/v${pkgver}.tar.gz"
         "${pkgbase}.desktop"
-        "https://github.com/transmission-remote-gui/transgui/pull/1329.patch")
+        "https://s3.e2e4.ru/k0ste/pkgbuild/${pkgver}_5_year_patch.patch")
 sha256sums=('d1cbb16eb35d41e76f4a171a3887053899e8dc6a1124afc21615b5038ea60d78'
-            '6c1723e084bd4afc908957e005dea60f919b42426d82cbcdee89239c64c6093d'
-            'f50857a783950421bb22b8c59923a84196968bac6c9488bcf241bb005298a390')
+            '6ee61ee4b01445ef67cc76abaee051c17043b57a743a977a2528a4c78a9a638b'
+            '1f7ca6679390043c950e3ff68acdb0c340e400dcd4fa2272028c526acc7a8130')
 
 prepare() {
-  cd "${srcdir}/${pkgbase}-${pkgver}"
-  patch -p1 -i "${srcdir}/1329.patch"
-  mkdir "${srcdir}/build-qt" "${srcdir}/build-gtk"
+  cd "${pkgbase}-${pkgver}"
+# The patch over master branch for 5 years. No new releases since 2019
+  patch -p1 -i "../${pkgver}_5_year_patch.patch"
+  mkdir "../build-qt" "../build-gtk"
 }
 
 package_transgui-qt() {
-  depends=('qt5pas')
+  depends=('qt6pas')
   conflicts=('transgui-gtk2-git' 'transgui-qt4-git' 'transmission-remote-gui-qt4'
-	    'transmission-remote-gui-gtk2' 'transmission-remote-gui-bin' 'transgui-gtk')
+             'transmission-remote-gui-gtk2' 'transmission-remote-gui-bin' 'transgui-gtk')
 
-  cd "${srcdir}/${pkgbase}-${pkgver}"
+  cd "${pkgbase}-${pkgver}"
   make clean
 
   lazbuild "${pkgbase}.lpi" \
   --lazarusdir="/usr/lib/lazarus" \
-  --widgetset="qt5" \
-  --primary-config-path=../build-qt
+  --widgetset="qt6" \
+  --primary-config-path="../build-qt"
 
-  install -Dm755 "units/${pkgbase}" "${pkgdir}/usr/bin/${pkgbase}"
-  install -dm755 "${pkgdir}/usr/share/${pkgbase}/lang"
-  install -Dm644 "lang"/transgui.* "${pkgdir}/usr/share/${pkgbase}/lang" 
-  install -dm755 "${pkgdir}/usr/share/doc/${pkgbase}"
-  install -Dm644 README.md history.txt LICENSE "${pkgdir}/usr/share/doc/${pkgbase}"
-  install -Dm644 "${pkgbase}.png" "${pkgdir}/usr/share/pixmaps/${pkgbase}.png"
-  install -Dm644 "${srcdir}/${pkgbase}.desktop" "${pkgdir}/usr/share/applications/${pkgbase}.desktop"
+  install -Dm0755 "units/${pkgbase}" -t "${pkgdir}/usr/bin"
+  install -dm0755 "${pkgdir}/usr/share/${pkgbase}/lang"
+  install -Dm0644 "lang/${pkgbase}".* "${pkgdir}/usr/share/${pkgbase}/lang"
+  install -dm0755 "${pkgdir}/usr/share/doc/${pkgbase}"
+  install -Dm0644 "README.md" -t "${pkgdir}/usr/share/doc/${pkgbase}"
+  install -Dm0644 "history.txt" -t "${pkgdir}/usr/share/doc/${pkgbase}"
+  install -Dm0644 "LICENSE" -t "${pkgdir}/usr/share/doc/${pkgbase}"
+  install -Dm0644 "${pkgbase}.png" -t "${pkgdir}/usr/share/pixmaps"
+  install -Dm0644 "../${pkgbase}.desktop" -t "${pkgdir}/usr/share/applications"
 
   rm "${pkgdir}/usr/share/${pkgbase}/lang/transgui.template"
 }
@@ -52,23 +55,25 @@ package_transgui-qt() {
 package_transgui-gtk() {
   depends=('gtk2')
   conflicts=('transgui-gtk2-git' 'transgui-qt4-git' 'transmission-remote-gui-qt4'
-	    'transmission-remote-gui-gtk2' 'transmission-remote-gui-bin' 'transgui-qt')
+             'transmission-remote-gui-gtk2' 'transmission-remote-gui-bin' 'transgui-qt')
 
-  cd "${srcdir}/${pkgbase}-${pkgver}"
+  cd "${pkgbase}-${pkgver}"
   make clean
 
   lazbuild "${pkgbase}.lpi" \
   --lazarusdir="/usr/lib/lazarus" \
   --widgetset="gtk2" \
-  --primary-config-path=../build-gtk
+  --primary-config-path="../build-gtk"
 
-  install -Dm755 "units/${pkgbase}" "${pkgdir}/usr/bin/${pkgbase}"
-  install -dm755 "${pkgdir}/usr/share/${pkgbase}/lang"
-  install -Dm644 "lang"/transgui.* "${pkgdir}/usr/share/${pkgbase}/lang" 
-  install -dm755 "${pkgdir}/usr/share/doc/${pkgbase}"
-  install -Dm644 README.md history.txt LICENSE "${pkgdir}/usr/share/doc/${pkgbase}"
-  install -Dm644 "${pkgbase}.png" "${pkgdir}/usr/share/pixmaps/${pkgbase}.png"
-  install -Dm644 "${srcdir}/${pkgbase}.desktop" "${pkgdir}/usr/share/applications/${pkgbase}.desktop"
+  install -Dm0755 "units/${pkgbase}" -t "${pkgdir}/usr/bin"
+  install -dm0755 "${pkgdir}/usr/share/${pkgbase}/lang"
+  install -Dm0644 "lang/${pkgbase}".* "${pkgdir}/usr/share/${pkgbase}/lang"
+  install -dm0755 "${pkgdir}/usr/share/doc/${pkgbase}"
+  install -Dm0644 "README.md" -t "${pkgdir}/usr/share/doc/${pkgbase}"
+  install -Dm0644 "history.txt" -t "${pkgdir}/usr/share/doc/${pkgbase}"
+  install -Dm0644 "LICENSE" -t "${pkgdir}/usr/share/doc/${pkgbase}"
+  install -Dm0644 "${pkgbase}.png" -t "${pkgdir}/usr/share/pixmaps"
+  install -Dm0644 "../${pkgbase}.desktop" -t "${pkgdir}/usr/share/applications"
 
   rm "${pkgdir}/usr/share/${pkgbase}/lang/transgui.template"
 }
