@@ -2,7 +2,7 @@
 pkgname=savedesktop
 _app_id=io.github.vikdevelop.SaveDesktop
 pkgver=3.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Save and load KDE Plasma, Xfce and GNOME-based DE configuration"
 arch=('any')
 url="https://github.com/vikdevelop/SaveDesktop"
