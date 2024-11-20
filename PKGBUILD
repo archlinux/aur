@@ -7,7 +7,7 @@ pkgname=('systemd-fml'
          'systemd-sysvcompat-fml'
          'systemd-ukify-fml')
 pkgdesc='systemd with machine id from hw patch: https://github.com/systemd/systemd/pull/32086'
-_tag='256.7'
+_tag='256.8'
 # Upstream versioning is incompatible with pacman's version comparisons, one
 # way or another. So we replace dashes and tildes with the empty string to
 # make sure pacman's version comparing does the right thing for rc versions:
@@ -50,7 +50,7 @@ source=("$pkgbase::git+https://github.com/systemd/systemd#tag=v${_tag}"
         '30-systemd-tmpfiles.hook'
         '30-systemd-udev-reload.hook'
         '30-systemd-update.hook')
-sha512sums=('468f772b3dfa83483da75516499c50159206dc5f8e26d7a62fc08437c93a4e536c0b27ee7fa5ac11fb1bc27a9c0e41315261751e5cc7428629a30849aeb23386'
+sha512sums=('4ffda9aee045ac793e87a86cdee1d089960542e21b44993381095399baacdf79c1867d36cdc242767acee725603ea70f942f8fd61e0a69fe0c888b0e4dd17a37'
             '3ccf783c28f7a1c857120abac4002ca91ae1f92205dcd5a84aff515d57e706a3f9240d75a0a67cff5085716885e06e62597baa86897f298662ec36a940cf410e'
             'b7d42b3fdfeb688d2b8bd3419fe2c5f3ba5fc71b89348ea716574b676b8c42167c6cf499ff733eb221438485f5ae084e2486fa3b4d07171086b7461731b5721f'
             '61032d29241b74a0f28446f8cf1be0e8ec46d0847a61dadb2a4f096e8686d5f57fe5c72bcf386003f6520bc4b5856c32d63bf3efe7eb0bc0deefc9f68159e648'
