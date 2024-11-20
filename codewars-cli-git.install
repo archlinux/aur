@@ -1,0 +1,8 @@
+post_install() {
+  cat >&2 << 'EOF'
+
+    You need to set the CW_SESSION_ID and CW_REMEMBER_USER_TOKEN
+    environment variables, which you can grab from your cookies.
+
+EOF
+}

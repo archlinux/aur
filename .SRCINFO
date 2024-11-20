@@ -1,0 +1,23 @@
+pkgbase = codewars-cli-git
+	pkgdesc = Unofficial Codewars CLI by kappq
+	pkgver = r10.4e825fb
+	pkgrel = 1
+	url = https://github.com/kappq/codewars-cli
+	install = codewars-cli-git.install
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-poetry-core
+	depends = python
+	depends = python-beautifulsoup4
+	depends = python-click
+	depends = python-cloudscraper
+	depends = python-rich
+	provides = codewars-cli=r10.4e825fb
+	conflicts = codewars-cli
+	source = codewars-cli::git+https://github.com/kappq/codewars-cli.git
+	sha512sums = SKIP
+
+pkgname = codewars-cli-git
