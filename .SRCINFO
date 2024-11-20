@@ -16,6 +16,7 @@ pkgbase = hoffice-2022-beta
 	depends = libcups
 	depends = libcurl-gnutls
 	depends = libxcb
+	depends = openssl-1.1
 	depends = qt5-base
 	depends = qt5-x11extras
 	depends = zlib
