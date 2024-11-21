@@ -8,7 +8,6 @@ arch=('any')
 url="https://github.com/Kraftland/portable"
 license=(GPL-3.0-or-later)
 provides=(portable)
-conflicts=(portable)
 groups=()
 options=(!debug !strip)
 
