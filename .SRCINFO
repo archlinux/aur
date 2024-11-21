@@ -1,0 +1,16 @@
+pkgbase = python-usb-devices
+	pkgdesc = Tools for mapping, describing, and resetting USB devices
+	pkgver = 0.4.5
+	pkgrel = 1
+	url = https://github.com/Bluetooth-Devices/usb-devices
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-poetry-core
+	makedepends = python-wheel
+	depends = python
+	source = usb-devices-0.4.5.tar.gz::https://files.pythonhosted.org/packages/source/u/usb-devices/usb_devices-0.4.5.tar.gz
+	sha256sums = 9b5c7606df2bc791c6c45b7f76244a0cbed83cb6fa4c68791a143c03345e195d
+
+pkgname = python-usb-devices
