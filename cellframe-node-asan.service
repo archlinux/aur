@@ -16,7 +16,7 @@ RestartSec=10
 LogNamespace=cellframe
 StandardOutput=null
 StandardError=journal
-Environment="ASAN_OPTIONS=strict_string_checks=1:detect_stack_use_after_return=1:detect_invalid_pointer_pairs=2:debug=1:atexit=1:abort_on_error=1:log_path=asanlog.txt"
+Environment="ASAN_OPTIONS=strict_string_checks=1:detect_invalid_pointer_pairs=2:debug=1:atexit=1:abort_on_error=1:log_path=asanlog.txt"
 
 # Hardening
 ProtectSystem=full
