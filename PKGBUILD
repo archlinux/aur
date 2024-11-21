@@ -3,7 +3,7 @@
 pkgname=texmacs-guile3-git
 _pkgname=texmacs
 pkgver=2.1.4_r13455.75ff83898
-pkgrel=1
+pkgrel=2
 pkgdesc="Free scientific text editor, inspired by TeX and GNU Emacs. WYSIWYG
 editor and CAS-interface. Pulled from github.com/hammerfunctor/texmacs"
 arch=('x86_64')
