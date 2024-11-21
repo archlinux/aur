@@ -1,55 +1,56 @@
 # Maintainer: envolution
-# Contributor: Donald Carr <sirspudd at gmail dot com>
-
-pkgname=clang17-bin
+pkgname=clang-17
 pkgver=17.0.6
-pkgrel=1
-arch=('x86_64')
-url="https://llvm.org/"
-pkgdesc="Official clang+llvm binary package - 4.5gb installed to /opt"
-options=(!debug)
-provides=("clang=${pkgver}" clang-17)
-license=('Apache-2.0-with-LLVM-Exception')
-source=(
-        "${pkgname}-${pkgver}.tar.xz::https://github.com/llvm/llvm-project/releases/download/llvmorg-${pkgver}/clang+llvm-${pkgver}-x86_64-linux-gnu-ubuntu-22.04.tar.xz"
+pkgrel=18
+pkgdesc="C, C++ and Objective-C compiler - sourced from Debian sid"
+arch=(x86_64)
+options=(!strip)
+depends=(patchelf libedit z3)
+url="https://www.llvm.org/"
+license=('Apache-2.0-LLVM-Exception')
+_packages=(
+    clang-17
+    libclang1-17t64
+    libclang-common-17-dev
+    libclang-cpp17t64
+    libllvm17t64
+    llvm-17-linker-tools
 )
-sha512sums=('675328267d98d64fee680d2cdb0bfb0a7d870e7ae8bf6983202ed400996cc1d691b116ec9055eba20218271bb6beeb49f14562b0eb0b75816319daa11e59920e')
-install=clang.install
-
-_prefix_path="/opt/clang17"
-_install_dir="${pkgver}-official"
-_pkgdir="clang+llvm-${pkgver}-x86_64-linux-gnu-ubuntu-22.04"
-
-_prepare_install_script() {
-	cp ${startdir}/.clang.install ${startdir}/clang.install
-	sed -i "s,CLANG_PREFIX,${_prefix_path},g" ${startdir}/clang.install
-	sed -i "s,CLANG_VERSION,${_install_dir},g" ${startdir}/clang.install
-}
+source=(
+    ${_packages[0]}-${pkgver}-${pkgrel}.deb::http://deb.debian.org/debian/pool/main/l/llvm-toolchain-17/${_packages[0]}_${pkgver}-${pkgrel}_amd64.deb
+    ${_packages[1]}-${pkgver}-${pkgrel}.deb::http://deb.debian.org/debian/pool/main/l/llvm-toolchain-17/${_packages[1]}_${pkgver}-${pkgrel}_amd64.deb
+    ${_packages[2]}-${pkgver}-${pkgrel}.deb::http://deb.debian.org/debian/pool/main/l/llvm-toolchain-17/${_packages[2]}_${pkgver}-${pkgrel}_amd64.deb
+    ${_packages[3]}-${pkgver}-${pkgrel}.deb::http://deb.debian.org/debian/pool/main/l/llvm-toolchain-17/${_packages[3]}_${pkgver}-${pkgrel}_amd64.deb
+    ${_packages[4]}-${pkgver}-${pkgrel}.deb::http://deb.debian.org/debian/pool/main/l/llvm-toolchain-17/${_packages[4]}_${pkgver}-${pkgrel}_amd64.deb
+    ${_packages[5]}-${pkgver}-${pkgrel}.deb::http://deb.debian.org/debian/pool/main/l/llvm-toolchain-17/${_packages[5]}_${pkgver}-${pkgrel}_amd64.deb
+)
+noextract=(
+    ${_packages[0]}-${pkgver}-${pkgrel}.deb
+    ${_packages[1]}-${pkgver}-${pkgrel}.deb
+    ${_packages[2]}-${pkgver}-${pkgrel}.deb
+    ${_packages[3]}-${pkgver}-${pkgrel}.deb
+    ${_packages[4]}-${pkgver}-${pkgrel}.deb
+    ${_packages[5]}-${pkgver}-${pkgrel}.deb
+)
+sha256sums=('de7aed46e704d46e46ca02ac8ed2f111338993d7c6b02dde23d8621bd3b13900'
+            'ec49ef1945b9b6a2b1fe978544af09705a05036b283036a3aaba01dc12908969'
+            '86f5e4dfc41055ea3c8d5fe5d4c60dbb9512a854ae9caca198f491a05e9590df'
+            'f17e493249e614d5f5db11c60690eefa366f5efbc28d75640a311a570a16ace1'
+            '55f9668899c968e790412f1e0a014ae2d9e8beba7f0611841093859064cbe4dc'
+            '78c11daa6465b688bd27e7d4489cd732352a80ecc27f521e318b7a8d1ab8a328')
 
 package() {
-    _prepare_install_script
-    local install_path="${pkgdir}/${_prefix_path}/${_install_dir}"
-    mkdir -p ${install_path}
-    mv ${_pkgdir}/* ${install_path}
-    rm $install_path/lib/*.a
-    local tools=("clang" "clang++" "clangd" "clang-format" "clang-tidy" \
-                 "llvm-ar" "llvm-nm" "llvm-objdump" "llvm-cov")
-    local version="17"
-    local src_dir="/opt/clang17/latest/bin"
-    local lib_path="/opt/clang17/latest/lib"
-    local dest_dir="${pkgdir}/usr/bin"
+    bsdtar -xOf "${_packages[0]}-${pkgver}-${pkgrel}.deb" data.tar.xz | bsdtar -xJf - -C "${pkgdir}"
+    bsdtar -xOf "${_packages[1]}-${pkgver}-${pkgrel}.deb" data.tar.xz | bsdtar -xJf - -C "${pkgdir}"
+    bsdtar -xOf "${_packages[2]}-${pkgver}-${pkgrel}.deb" data.tar.xz | bsdtar -xJf - -C "${pkgdir}"
+    bsdtar -xOf "${_packages[3]}-${pkgver}-${pkgrel}.deb" data.tar.xz | bsdtar -xJf - -C "${pkgdir}"
+    bsdtar -xOf "${_packages[4]}-${pkgver}-${pkgrel}.deb" data.tar.xz | bsdtar -xJf - -C "${pkgdir}"
+    bsdtar -xOf "${_packages[5]}-${pkgver}-${pkgrel}.deb" data.tar.xz | bsdtar -xJf - -C "${pkgdir}"
 
-    # Ensure destination directory exists
-    mkdir -p "$dest_dir"
-
-    # Create versioned wrappers
-    for tool in "${tools[@]}"; do
-        wrapper_path="${dest_dir}/${tool}-${version}"
-        cat << EOF > "$wrapper_path"
-#!/bin/bash
-export LD_LIBRARY_PATH="${lib_path}:\$LD_LIBRARY_PATH"
-exec ${src_dir}/${tool} "\$@"
-EOF
-        chmod 755 "$wrapper_path"
-    done
+    mv "${pkgdir}"/usr/lib/x86_64-linux-gnu/* "${pkgdir}"/usr/lib/
+    rmdir "${pkgdir}"/usr/lib/x86_64-linux-gnu
+    patchelf --add-rpath /usr/lib/llvm-17/lib "${pkgdir}/usr/bin/clang"*
+    ln -s /usr/lib/libz3.so "${pkgdir}"/usr/lib/llvm-17/lib/libz3.so.4
+    ln -s /usr/lib/libedit.so "${pkgdir}"/usr/lib/llvm-17/lib/libedit.so.2
+    install -Dm644 ${pkgdir}/usr/share/doc/${_packages[0]}/copyright "${pkgdir}"/usr/share/licenses/${_packages[0]}/LICENSE
 }
