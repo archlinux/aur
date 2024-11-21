@@ -2,6 +2,16 @@
 
 set -x
 
-updpkgsums
-makepkg --printsrcinfo > .SRCINFO
-# rm *.zip
+
+case "$1" in
+  "" )
+    updpkgsums
+    makepkg --printsrcinfo > .SRCINFO
+    # rm *.zip
+  ;;
+  download )
+    pkgver=$(grep pkgver= PKGBUILD | sed -Er 's/.*=(.*)/\1/')
+    curl -LO --user-agent exodus-aur "https://downloads.exodus.com/releases/exodus-linux-x64-${pkgver}.zip"
+  ;;
+esac
+

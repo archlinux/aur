@@ -2,3 +2,4 @@
 *.pkg.tar.zst
 src
 pkg
+.DS_Store
