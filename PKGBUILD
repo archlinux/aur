@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=concessio
-pkgver=0.1.8
+pkgver=0.1.9
 pkgrel=1
 pkgdesc="Understand File Permissions"
 arch=('any')
@@ -9,7 +9,7 @@ license=('GPL-3.0-or-later')
 depends=('gjs' 'libadwaita')
 makedepends=('meson')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('c3175a008242869d710d2b2bb4be5797a68ac8a3f9af59b5ce626be880e1f53d')
+sha256sums=('0f6d03e982fba22007d46aa62496b400de2ea925019d51b4627d487854527d81')
 
 build() {
   arch-meson "$pkgname-$pkgver" build
