@@ -19,6 +19,6 @@ pkgbase = tuxsuite
 	depends = python-flask
 	depends = python-flask-restful
 	source = https://files.pythonhosted.org/packages/source/t/tuxsuite/tuxsuite-1.42.2.tar.gz
-	sha256sums = SKIP
+	sha256sums = 50e27f3f77353deeddf1e4eec5b7d32015af37158315c34232303af3b248e839
 
 pkgname = tuxsuite
