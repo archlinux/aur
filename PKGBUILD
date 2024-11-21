@@ -90,4 +90,4 @@ function package() {
 	install -Dm755 mimeapps.list ${pkgdir}/usr/lib/portable/mimeapps.list
 	install -Dm755 flatpak-info ${pkgdir}/usr/lib/portable/flatpak-info
 }
-sha256sums=('c059e90f9fa78c1d46340a59dfe7ff2dc02c8a5007fbbf57d0c0ed3ef7c3476b')
+sha256sums=('e680d6f68570333cdfdb70f090f30266cbddd88c00dc2985f6958fb1a2dcc400')
