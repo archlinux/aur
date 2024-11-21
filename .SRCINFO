@@ -1,7 +1,7 @@
 pkgbase = ffmpeg-dektec
 	pkgdesc = FFmpeg Integration for DekTec Devices
 	pkgver = 2024.05.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://www.dektec.com/products/SDK/ffmpeg/
 	arch = x86_64
 	license = LicenseRef-nonfree-and-unredistributable
@@ -22,8 +22,8 @@ pkgbase = ffmpeg-dektec
 	depends = zlib
 	noextract = FFmpeg_v2024.05.0.tar.gz
 	source = FFmpeg_v2024.05.0.tar.gz::https://www.dektec.com/products/SDK/ffmpeg/linux/downloads/FFmpeg_v2024.05.0.tar.gz
-	source = LinuxSDK_v2024.06.1.tar.gz::https://www.dektec.com/products/SDK/DTAPI/Downloads/LinuxSDK_v2024.06.1.tar.gz
+	source = LinuxSDK_v2024.11.0.tar.gz::https://www.dektec.com/products/SDK/DTAPI/Downloads/LinuxSDK_v2024.11.0.tar.gz
 	sha256sums = c07d952c210967896bb3ab87753e15191936a87b68840034a876b850f423cbf6
-	sha256sums = 903772f0ef251dad1871e6110bd17409dab502ad7c1e49dfcf2882df3f082d98
+	sha256sums = 4f33e0ea6ded407f026c1e6cd4a3f17601adef23181f268fc53d67d2098e1c87
 
 pkgname = ffmpeg-dektec
