@@ -1,8 +1,8 @@
 pkgbase = iptv-sources-git
 	pkgdesc = Autoupdate iptv sources
-	pkgver = r224.10c78d9
+	pkgver = r226.136e01a
 	pkgrel = 1
-	url = https://github.com/HerbertHe/iptv-sources
+	url = https://github.com/GrandDuke1106/iptv-sources
 	install = iptv-sources-git.install
 	arch = any
 	license = GPL-3.0
@@ -10,8 +10,9 @@ pkgbase = iptv-sources-git
 	makedepends = npm
 	depends = nodejs
 	depends = pm2
+	optdepends = iptv-checker-rs-git: Checking links in IPTV playlists written in Rust
 	backup = etc/pm2/conf.d/iptv-sources.json
-	source = git+https://github.com/HerbertHe/iptv-sources.git
+	source = git+https://github.com/GrandDuke1106/iptv-sources.git#branch=main
 	sha256sums = SKIP
 
 pkgname = iptv-sources-git

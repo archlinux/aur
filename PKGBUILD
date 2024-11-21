@@ -2,16 +2,17 @@
 
 pkgname=iptv-sources-git
 _pkgname=iptv-sources
-pkgver=r224.10c78d9
+pkgver=r226.136e01a
 pkgrel=1
 pkgdesc="Autoupdate iptv sources"
 arch=('any')
-url="https://github.com/HerbertHe/iptv-sources"
+url="https://github.com/GrandDuke1106/iptv-sources"
 license=('GPL-3.0')
 depends=('nodejs' 'pm2')
 makedepends=('git' 'npm')
+optdepends=('iptv-checker-rs-git: Checking links in IPTV playlists written in Rust')
 install="$pkgname.install"
-source=("git+$url.git")
+source=("git+$url.git#branch=main")
 sha256sums=(SKIP)
 backup=("etc/pm2/conf.d/${_pkgname}.json")
 
@@ -19,11 +20,6 @@ backup=("etc/pm2/conf.d/${_pkgname}.json")
 pkgver() {
     cd "$srcdir/$_pkgname"
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
-}
-
-prepare() {
-    cd "$srcdir/$_pkgname"
-    git submodule update --init --recursive
 }
 
 build() {
