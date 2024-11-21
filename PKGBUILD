@@ -29,7 +29,7 @@ get_pyver() {
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}
 #   cd ${srcdir}/${_pname}-${pkgver}
-    python -m build --wheel --no-isolation #--skip-dependency-check
+    python -m build --wheel --no-isolation --skip-dependency-check
 
 #   msg "Building Docs"
 #   PYTHONPATH="../build/lib.linux-${CARCH}-cpython-$(get_pyver)" make -C docs html
