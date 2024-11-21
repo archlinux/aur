@@ -7,7 +7,7 @@
 # Contributor: hexchain <i@hexchain.org>
 
 pkgname=telegram-desktop-altscroll
-pkgver=5.6.3
+pkgver=5.8.2
 pkgrel=1
 conflicts=('telegram-desktop')
 provides=('telegram-desktop')
@@ -28,7 +28,7 @@ optdepends=('webkit2gtk: embedded browser features'
             'xdg-desktop-portal: desktop integration')
 source=("https://github.com/telegramdesktop/tdesktop/releases/download/v${pkgver}/tdesktop-${pkgver}-full.tar.gz"
         "mediaview-altscroll.patch") # https://github.com/telegramdesktop/tdesktop/pull/27245
-sha512sums=('0cce16f780f1350199d8a10a9eff6e8052888aede5d3839d3435acdfb34f445098ec24cac21d1950f704350c22bec86020e6c746706bb34c5533e2086e6cb597'
+sha512sums=('686d5eae922f3be1198931add00aa9716161a360242cb812a9078a771c40a64d3a396ddf1f922f0e76eaf7b1f7c909ce55aac9ad50ebf3db19d80c9cea00b6d8'
             '38ff8627090ac9766a8d409fa26cbd4381640e08abcb677f4524a5305d011aa0f6ce81d69313a01f0db5c1a3794805bff2a059095258f5e8d9bd1133550cca2e')
 
 prepare() {
