@@ -1,9 +1,10 @@
-# Maintainer: LinArcX <Linarcx at gmail . com>
-# Maintainer: Nathan Owens <ndowens @ artixlinux.org>
+# Maintainer: a821 at (nospam) mail de
+# Contributor: LinArcX <Linarcx at gmail . com>
+# Contributor: Nathan Owens <ndowens @ artixlinux.org>
 
 pkgname=python-pytvmaze
 pkgver=2.0.8
-pkgrel=5
+pkgrel=6
 pkgdesc="Python interface to the TV Maze API"
 arch=(any)
 url="http://pypi.python.org/pypi/pytvmaze"
@@ -20,7 +21,7 @@ sha512sums=('9d628942255adf9d0183554e02a3d58e0ac392507578f62c7bf534eafc7a75064c2
 prepare() {
   cd "pytvmaze-$pkgver"
   patch -p1 < ../fix_aka_class.patch
-  sed -i 's/description-file/description_file/' setup.cfg
+  sed -i 's/description-file/description_file/; 4,6d' setup.cfg
 }
 
 build() {
