@@ -1,11 +1,11 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=witsy-git
 _pkgname=Witsy
-pkgver=1.18.0.r16.g98de02f
+pkgver=1.23.0.r0.g4d2747b
 _electronversion=32
 _nodeversion=20
 pkgrel=1
-pkgdesc="Generative AI desktop application.Use system-wide electron."
+pkgdesc="Generative AI desktop application.(Use system-wide electron)"
 arch=('any')
 url="https://github.com/nbonamy/witsy"
 license=('Apache-2.0')
@@ -61,7 +61,6 @@ build() {
     if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
         {
             echo 'registry=https://registry.npmmirror.com'
-            echo 'disturl=https://registry.npmmirror.com/-/binary/node/'
             echo 'electron_mirror=https://registry.npmmirror.com/-/binary/electron/'
             echo 'electron_builder_binaries_mirror=https://registry.npmmirror.com/-/binary/electron-builder-binaries/'
         } >> .npmrc
