@@ -1,0 +1,14 @@
+pkgbase = fcitx5-inflex-themes-git
+	pkgdesc = An aesthetic, modern fcitx5 theme featuring rounded rectangle design
+	pkgver = r4.86d0a36
+	pkgrel = 1
+	url = https://github.com/sanweiya/fcitx5-inflex-themes
+	arch = any
+	license = BSD-2-Clause
+	makedepends = git
+	depends = fcitx5
+	provides = fcitx5-inflex-themes
+	source = fcitx5-inflex-themes::git+https://github.com/sanweiya/fcitx5-inflex-themes
+	md5sums = SKIP
+
+pkgname = fcitx5-inflex-themes-git
