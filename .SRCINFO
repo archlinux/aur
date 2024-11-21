@@ -1,0 +1,16 @@
+pkgbase = python-uart-devices
+	pkgdesc = UART Devices for Linux
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/bdraco/uart-devices
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-poetry-core
+	makedepends = python-wheel
+	depends = python
+	source = uart-devices-0.1.0.tar.gz::https://files.pythonhosted.org/packages/source/u/uart-devices/uart_devices-0.1.0.tar.gz
+	sha256sums = 7f0342c0ba0bc2a4c13c9ead5462dc9feeaca507e5c7017ebd074a69567ad9b1
+
+pkgname = python-uart-devices
