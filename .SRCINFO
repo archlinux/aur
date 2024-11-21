@@ -13,7 +13,7 @@ pkgbase = catgirl-engine
 	conflicts = catgirl-engine-git
 	options = !strip
 	options = !debug
-	source = catgirl-engine-0.14.35-alpha.tar.gz::https://static.crates.io/crates/catgirl-engine/catgirl-engine-0.14.35-alpha.crate
+	source = catgirl-engine-0.14.35.tar.gz::https://static.crates.io/crates/catgirl-engine/catgirl-engine-0.14.35.crate
 	b2sums = SKIP
 
 pkgname = catgirl-engine
