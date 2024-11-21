@@ -1,0 +1,17 @@
+pkgbase = python-webrtc-models
+	pkgdesc = Python WebRTC models
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/home-assistant-libs/python-webrtc-models
+	arch = any
+	license = Apache-2.0
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-hatchling
+	makedepends = python-wheel
+	depends = python-mashumaro
+	depends = python-orjson
+	source = webrtc-models-0.3.0.tar.gz::https://files.pythonhosted.org/packages/source/w/webrtc-models/webrtc_models-0.3.0.tar.gz
+	sha256sums = 559c743e5cc3bcc8133be1b6fb5e8492a9ddb17151129c21cbb2e3f2a1166526
+
+pkgname = python-webrtc-models
