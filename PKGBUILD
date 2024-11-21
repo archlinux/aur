@@ -1,7 +1,7 @@
 # Maintainer: mekb https://github.com/mekb-turtle
 # shellcheck disable=SC2034
 pkgname=foto-git
-pkgver=2.0.2.r2.g5b60f73
+pkgver=3.0.0.r0.g311a055
 pkgrel=1
 pkgdesc='Simple image viewer written in C - Git release'
 arch=('any')
@@ -15,10 +15,14 @@ provides=('foto')
 conflicts=('foto')
 
 package() {
-	install -Dm755 "$srcdir/foto/build/release/bin/foto" "$pkgdir/usr/bin/foto"
+	cd "$srcdir/foto" || exit 1
+	meson install -C build
+	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 build() {
-	make RELEASE=1 -C "$srcdir/foto" build man
+	cd "$srcdir/foto" || exit 1
+	meson setup build --prefix="$pkgdir/usr"
+	meson compile -C build
 }
 pkgver() {
 	cd foto && git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
