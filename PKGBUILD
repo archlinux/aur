@@ -12,7 +12,7 @@ conflicts=(portable)
 groups=()
 options=(!debug !strip)
 
-makedepends+=()
+makedepends+=(git)
 
 depends=(
 	"xxd"
