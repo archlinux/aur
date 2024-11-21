@@ -22,14 +22,14 @@ source=(
 url='https://github.com/Ein420/hoffice-2022-beta/'
 
 license=('custom:hoffice')
-
+makedepends=('wget')
 depends=('cairo' 'fontconfig' 'freetype2' 'gcc-libs' 'glibc' 'glu' 'harfbuzz' 'harfbuzz-icu' 'libcups' 'libcurl-gnutls' 'libxcb' 'openssl-1.1' 'qt5-base' 'qt5-x11extras' 'zlib')
 provides=('hoffice-2022-beta=${pkgver}')
 conflicts=('hoffice')
 
 sha256sums=('1ecb2f82e915b49706d1f5f6d206f8bd4a9384fda2bd56798c94046865fe5730'
-            '09b74399a45cde2b28e672784dbd1eb6397454a025e05a51fb3367eadb834583'
-            'd246c02a20a1e4ea123f9c2275dfc4a2ea091a65032ddbbe8a59bfc71418f60c')
+  '09b74399a45cde2b28e672784dbd1eb6397454a025e05a51fb3367eadb834583'
+  'd246c02a20a1e4ea123f9c2275dfc4a2ea091a65032ddbbe8a59bfc71418f60c')
 
 post_install() {
   xdg-icon-resource forceupdate --theme hicolor &>/dev/null
