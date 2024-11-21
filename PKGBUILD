@@ -3,7 +3,7 @@
 
 pkgref=keyd
 pkgname=keyd-openrc
-pkgver=2.4.3.r63.02c77af
+pkgver=2.5.0.r3.393d341
 pkgrel=1
 arch=('x86_64' 'aarch64')
 pkgdesc='A key remapping daemon for linux'
@@ -13,13 +13,11 @@ makedepends=(git)
 depends=(openrc)
 provides=($pkgref)
 conflicts=($pkgref)
+install=$pkgref.install
 optdepends=('python3: for keyd-application-mapper')
-sha256sums=('SKIP' 'SKIP' 'SKIP')
-source=(
-	'git+https://github.com/rvaiya/keyd.git'
-	tweaks.patch
-	keyd.init
-)
+source=('git+https://github.com/rvaiya/keyd.git'
+	Makefile.patch keyd.install keyd.init usb-gadget.init)
+sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
 
 pkgver() {
 	cd $srcdir/$pkgref
@@ -31,7 +29,8 @@ pkgver() {
 }
 
 prepare(){ 
-	patch -p0 -d $srcdir/$pkgref -i $srcdir/tweaks.patch
+	cd $srcdir
+	patch $pkgref/Makefile Makefile.patch
 }
 
 build() {
@@ -40,11 +39,16 @@ build() {
 }
 
 package() {
-	cd $srcdir
-	install -Dm755 $pkgref.init $pkgdir/etc/init.d/$pkgref
-	install -dm755 $pkgdir/usr/share/libinput
-	
-	cd $pkgref
+	cd $srcdir/$pkgref
+
 	make DESTDIR=$pkgdir PREFIX=/usr install
-	install -Dm644 LICENSE -t ${pkgdir}/usr/share/licenses/$pkgref
+	install -Dm644 LICENSE -t $pkgdir/usr/share/licenses/keyd
+
+	install -Dm755 $srcdir/keyd.init $pkgdir/etc/init.d/keyd
+	if [ "$VKBD" = "usb-gadget" ]; then
+		install -Dm755 $srcdir/usb-gadget.init $pkgdir/etc/init.d/keyd-usb-gadget
+	fi
+	
+	# Set permissions for libinput quirks
+	install -dm755 $pkgdir/usr/share/libinput
 }

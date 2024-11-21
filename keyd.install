@@ -1,0 +1,10 @@
+post_install() {
+  printf '%s\n' "  -> Adding 'keyd' user group ..."
+  printf '%s\n' "     You must belong to this group for application specific mappings"
+  groupadd -f keyd
+}
+
+post_remove() {
+  printf '%s\n' "  -> Removing 'keyd' user group ..."
+  groupdel keyd 2>/dev/null
+}

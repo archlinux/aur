@@ -1,6 +1,6 @@
 #!/sbin/openrc-run
 
-name="keyd"
+name=$RC_SVCNAME
 description="A key remapping deamon"
 
 : ${error_logger="logger -t $name -p daemon.warning >/dev/null 2>&1"}

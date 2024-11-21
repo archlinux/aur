@@ -1,0 +1,11 @@
+#!/sbin/openrc-run
+
+name=$RC_SVCNAME
+description="Keyd service for usb gadget setup"
+
+command="/bin/bash"
+command_args="/usr/bin/keyd-usb-gadget.sh"
+
+depend() {
+	before keyd 
+}

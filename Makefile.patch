@@ -1,0 +1,19 @@
+51,58d50
+< 	@if [ -e /run/systemd/system ]; then \
+< 		sed -e 's#@PREFIX@#$(PREFIX)#' keyd.service.in > keyd.service; \
+< 		mkdir -p $(DESTDIR)$(PREFIX)/lib/systemd/system/; \
+< 		install -Dm644 keyd.service $(DESTDIR)$(PREFIX)/lib/systemd/system/keyd.service; \
+< 	else \
+< 		echo "NOTE: systemd not found, you will need to manually add keyd to your system's init process."; \
+< 	fi
+< 
+60,61d51
+< 		sed -e 's#@PREFIX@#$(PREFIX)#' src/vkbd/usb-gadget.service.in > src/vkbd/usb-gadget.service; \
+< 		install -Dm644 src/vkbd/usb-gadget.service $(DESTDIR)$(PREFIX)/lib/systemd/system/keyd-usb-gadget.service; \
+73d62
+< 	-groupadd keyd
+83,84c72
+< 	-groupdel keyd
+< 	rm -rf $(DESTDIR)$(PREFIX)/lib/systemd/system/keyd.service \
+---
+> 	rm -rf \
