@@ -2,15 +2,15 @@
 
 _org='stack-of-tasks'
 _pkgname='pinocchio'
-_pkgver=3.0.0
+_pkgver=3.3.0
 pkgname="$_pkgname-git"
-pkgver=3.0.0.r8685.9c107bb
+pkgver=3.3.0.r9236.2921dc6
 pkgrel=1
 pkgdesc="Dynamic computations using Spatial Algebra"
 arch=('i686' 'x86_64')
 url="https://github.com/$_org/$_pkgname"
 license=('BSD-2-Clause')
-depends=('hpp-fcl' 'eigenpy' 'urdfdom' 'python' 'boost-libs' 'gcc-libs' 'glibc' 'eigen' 'python-numpy')
+depends=('coal' 'eigenpy' 'urdfdom' 'python' 'boost-libs' 'gcc-libs' 'glibc' 'eigen' 'python-numpy' 'casadi')
 optdepends=('lua52' 'cppad' 'cppadcodegen')
 makedepends=('cmake' 'boost' 'doxygen' 'git')
 conflicts=('pinocchio')
@@ -30,6 +30,7 @@ prepare() {
 build() {
     cmake -B build -S $_pkgname \
         -DBUILD_WITH_COLLISION_SUPPORT=ON \
+        -DBUILD_WITH_CASADI_SUPPORT=ON \
         -DBUILD_UTILS=ON \
         -DPYTHON_EXECUTABLE=/usr/bin/python \
         -DBUILD_WITH_AUTODIFF_SUPPORT=OFF \
@@ -38,7 +39,7 @@ build() {
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DGENERATE_PYTHON_STUBS=ON \
         -Wno-dev
-    cmake --build build
+    cmake --build build -j 1
 }
 
 check() {
@@ -46,8 +47,14 @@ check() {
     cmake --build build -t test
 }
 
-package() {
+package_pinocchio-git() {
     DESTDIR="$pkgdir/" cmake --build build -t install
-    sed -i 's=;/usr/\.\./include/include==' "$pkgdir/usr/lib/cmake/pinocchio/pinocchioTargets.cmake"
-    install -Dm644 "$_pkgname/COPYING.LESSER" "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
+    rm -rf $pkgdir/usr/share/doc
+    install -Dm644 "$_pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+}
+
+package_pinocchio-git-docs() {
+    DESTDIR="$pkgdir/" cmake --build "build-$pkgver" -t install
+    rm -rf $pkgdir/usr/{lib,include,bin,share/{"$_pkgname",ament,ament_index}}
+    install -Dm644 "$pkgbase-$pkgver/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
