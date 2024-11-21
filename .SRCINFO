@@ -9,7 +9,7 @@ pkgbase = clang17-bin
 	depends = libedit
 	depends = z3
 	provides = clang=17.0.6
-	provides = clang-17
+	provides = clang17
 	noextract = clang-17-17.0.6-18.deb
 	noextract = libclang1-17t64-17.0.6-18.deb
 	noextract = libclang-common-17-dev-17.0.6-18.deb
