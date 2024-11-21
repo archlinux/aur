@@ -70,7 +70,6 @@ depends=(
 )
 
 optdepends=(
-	'wechat-key-block: Block keyboard shortcuts'
 	'ttf-twemoji: An emoji font that will work with WeChat'
 	'at-spi2-core: accessibility'
 	'orca: screen reader'
@@ -108,12 +107,12 @@ source_loong64=(
 )
 
 
-md5sums=('926b47bbfc62670188340d1b57e88cf2'
+md5sums=('f7385ec61a99a052ccd6e11aa861627d'
          '89ae77c95f205d0a7f9347f8251ce742'
          '468e0367346707c026e577e7bf3e3a82'
          'c99c42e49fb1650df340f3a38bd86d5e'
          '38e98220da64adc1d8f9dc17d04b3a39'
-         'd05ced7a9291cbca5cc30f64d873a4d1'
+         '9d365b052a3d40ef70a9ecf807744b38'
          'e821fd2d05d6d39c7ecf118916922414'
          'e472d6dd49522bc90fdaf0b4adcdb744')
 md5sums_x86_64=('6a809a53a6b4033ea035bb08075d9bbc')

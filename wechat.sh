@@ -116,17 +116,6 @@ function cameraDect() {
 
 function execApp() {
 	# Wayland is not available for now
-	if [ -f /usr/lib/wechat/keyBlocker.so ]; then
-		if [ ! ${LD_PRELOAD} ]; then
-			echo "[Info] Key blocker enabled"
-			LD_PRELOAD=/usr/lib/wechat/keyBlocker.so
-		else
-			echo "[Info] Key blocker enabled, appending LD_PRELOAD"
-			LD_PRELOAD="/usr/lib/wechat/keyBlocker.so:${LD_PRELOAD}"
-		fi
-	else
-		LD_PRELOAD=""
-	fi
 	if [[ $(fc-match emoji) =~ Twemoji ]]; then
 		echo "[Info] Emoji already set to Twemoji"
 	else
@@ -451,9 +440,7 @@ function execAppUnsafe() {
 	bwrap \
 		--dev-bind / / \
 		--setenv QT_QPA_PLATFORM xcb \
-		--setenv LD_LIBRARY_PATH /opt/wechat/files:/usr/lib/wechat/so:/usr/lib/wechat/so \
 		--setenv QT_AUTO_SCREEN_SCALE_FACTOR 1 \
-		--setenv PATH /sandbox:"${PATH}" \
 		--setenv QT_PLUGIN_PATH "/usr/lib/qt/plugins /opt/wechat/files/wechat" \
 		"${launchTarget}"
 }
