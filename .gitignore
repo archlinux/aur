@@ -1,0 +1,8 @@
+*
+
+!.gitignore
+!.SRCINFO
+!0001-update-openssl-dependency.patch
+!iptv-checker-rs-git.install
+!iptv-checker-rs.service
+!PKGBUILD
