@@ -235,9 +235,7 @@ function execApp() {
 	-p BindReadOnlyPaths=/usr/bin/true:/usr/bin/lsblk \
 	-p BindReadOnlyPaths=/dev/null:/proc/cpuinfo \
 	-p BindReadOnlyPaths=/dev/null:/proc/meminfo \
-	-p BindReadOnlyPaths=/opt/wechat/files:/usr/lib/license \
 	-p BindReadOnlyPaths=-/run/systemd/resolve/stub-resolv.conf \
-	-p BindReadOnlyPaths=/usr/share/wechat/license/etc/os-release:"${osRel}" \
 	-p BindReadOnlyPaths=/usr/lib/wechat/flatpak-info:"${XDG_RUNTIME_DIR}/.flatpak-info" \
 	-p Environment=PATH=/sandbox:"${PATH}" \
 	-p Environment=XAUTHORITY="${HOME}/.XAuthority" \
@@ -293,9 +291,6 @@ function execApp() {
 			/sandbox/xdg-open \
 		--ro-bind /usr/lib/wechat/open \
 			/sandbox/open \
-		--ro-bind /usr/share/wechat/license/var/ /var/ \
-		--ro-bind /usr/share/wechat/license/etc/lsb-release \
-			/etc/lsb-release \
 		--ro-bind /usr/lib/wechat/user-dirs.dirs \
 			"${XDG_CONFIG_HOME}"/user-dirs.dirs \
 		--ro-bind-try "${XDG_CONFIG_HOME}"/fontconfig \
@@ -455,14 +450,6 @@ function execAppUnsafe() {
 	echo "QT_IM_MODULE is ${QT_IM_MODULE}"
 	bwrap \
 		--dev-bind / / \
-		--bind /opt/wechat/files \
-			/usr/lib/license \
-		--ro-bind /usr/share/wechat/license/var/ \
-			/var/ \
-		--ro-bind /usr/share/wechat/license/etc/os-release \
-			"${osRel}" \
-		--ro-bind /usr/share/wechat/license/etc/lsb-release \
-			/etc/lsb-release \
 		--setenv QT_QPA_PLATFORM xcb \
 		--setenv LD_LIBRARY_PATH /opt/wechat/files:/usr/lib/wechat/so:/usr/lib/wechat/so \
 		--setenv QT_AUTO_SCREEN_SCALE_FACTOR 1 \

@@ -89,7 +89,6 @@ source=(
 	wechat.desktop
 	wechat.svg
 	open.sh
-	license.tar.gz
 	user-dirs.dirs
 	wechat.env
 	mimeapps.list
@@ -109,11 +108,10 @@ source_loong64=(
 )
 
 
-md5sums=('7aac9dbbed208bbbad378b42b5480dd4'
+md5sums=('926b47bbfc62670188340d1b57e88cf2'
          '89ae77c95f205d0a7f9347f8251ce742'
          '468e0367346707c026e577e7bf3e3a82'
          'c99c42e49fb1650df340f3a38bd86d5e'
-         '6b159c6e9d21a98925489bc37a9aea43'
          '38e98220da64adc1d8f9dc17d04b3a39'
          'd05ced7a9291cbca5cc30f64d873a4d1'
          'e821fd2d05d6d39c7ecf118916922414'
@@ -143,12 +141,6 @@ function package_wechat() {
 		"${pkgdir}/usr/share/icons/hicolor/scalable/apps/wechat.svg"
 	install -Dm644 mimeapps.list \
 		"${pkgdir}/usr/lib/wechat/mimeapps.list"
-	mkdir -p \
-		"${pkgdir}/usr/share/wechat/license"
-	install -d "${pkgdir}/usr/lib/license"
-	chmod 0755 "${pkgdir}/usr/lib/license" -R
-	cp "${srcdir}/license"/* -r "${pkgdir}/usr/share/wechat/license"
-	chmod 0755 -R "${pkgdir}/usr/share/wechat/license"
 	install -d "${pkgdir}/usr/share/licenses/${pkgname}/"
 	echo "https://www.wechat.com/us/service_terms.html" \
 		>"${pkgdir}/usr/share/licenses/${pkgname}/ToS.txt"
