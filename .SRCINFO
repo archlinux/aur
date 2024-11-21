@@ -1,0 +1,21 @@
+pkgbase = elemental-notes-git
+	pkgdesc = A powerful and intuitive markdown note-taking application designed specifically for developers and power users.(Use system-wide electron)
+	pkgver = 1.1.0.alpha.r0.gfa94f46
+	pkgrel = 1
+	url = https://github.com/harryfrzz/Elemental-Notes
+	arch = any
+	license = MIT
+	makedepends = gendesk
+	makedepends = npm
+	makedepends = nvm
+	makedepends = git
+	makedepends = curl
+	depends = electron32
+	provides = elemental-notes=1.1.0.alpha
+	conflicts = elemental-notes
+	source = elemental-notes.git::git+https://github.com/harryfrzz/Elemental-Notes
+	source = elemental-notes.sh
+	sha256sums = SKIP
+	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
+
+pkgname = elemental-notes-git
