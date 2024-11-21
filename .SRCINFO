@@ -1,7 +1,7 @@
 pkgbase = python-jsonpath-python
 	pkgdesc = A more powerful JSONPath implementation in modern python
 	pkgver = 1.0.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/zhangxianbing/jsonpath-python
 	arch = any
 	license = MIT
@@ -9,7 +9,7 @@ pkgbase = python-jsonpath-python
 	makedepends = python-installer
 	makedepends = python-setuptools
 	makedepends = python-wheel
-	depends = python-jsonpatch
+	depends = python
 	source = jsonpath-python-1.0.6.tar.gz::https://files.pythonhosted.org/packages/source/j/jsonpath-python/jsonpath-python-1.0.6.tar.gz
 	sha256sums = dd5be4a72d8a2995c3f583cf82bf3cd1a9544cfdabf2d22595b67aff07349666
 
