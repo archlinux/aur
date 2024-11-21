@@ -1,0 +1,18 @@
+pkgbase = python-fnv-hash-fast
+	pkgdesc = A fast version of fnv1a
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = https://github.com/bdraco/fnv-hash-fast
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-poetry-core
+	makedepends = python-wheel
+	depends = python-fnvhash
+	source = fnv-hash-fast-1.0.2.tar.gz::https://files.pythonhosted.org/packages/source/f/fnv-hash-fast/fnv_hash_fast-1.0.2.tar.gz
+	sha256sums = d4c528bfb0daa751afb17419a244b913b094b9f0634f9bd19aeffcdc60192589
+
+pkgname = python-fnv-hash-fast
