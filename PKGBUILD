@@ -8,7 +8,7 @@ license=('MIT')
 depends=('dotnet-runtime>=8.0')
 makedepends=('dotnet-sdk')
 
-source=("git+https://github.com/SkEditorTeam/SkEditor#branch=main")
+source=("https://github.com/SkEditorTeam/SkEditor#branch=main")
 md5sums=('SKIP' )
 
 pkgver() {
