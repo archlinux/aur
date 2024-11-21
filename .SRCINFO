@@ -1,7 +1,7 @@
 pkgbase = zed-preview
 	pkgdesc = A high-performance, multiplayer code editor from the creators of Atom and Tree-sitter
 	pkgver = 0.163.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://zed.dev
 	arch = x86_64
 	license = GPL-3.0-or-later
@@ -23,6 +23,7 @@ pkgbase = zed-preview
 	depends = libxcb
 	depends = libxkbcommon
 	depends = libxkbcommon-x11
+	depends = nodejs>=18
 	depends = openssl
 	depends = libcrypto.so
 	depends = libssl.so
