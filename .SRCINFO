@@ -14,9 +14,6 @@ pkgbase = python-bluetooth-adapters
 	depends = python-dbus-fast
 	depends = python-uart-devices
 	depends = python-usb-devices
-	optdepends = python-myst-parser
-	optdepends = python-sphinx
-	optdepends = python-sphinx-rtd-theme
 	source = bluetooth-adapters-0.20.2.tar.gz::https://files.pythonhosted.org/packages/source/b/bluetooth-adapters/bluetooth_adapters-0.20.2.tar.gz
 	sha256sums = 88bfba4ab8678c1bb3416851b3e6f497d4b8a368c8de1bc4e517743081ad2f55
 

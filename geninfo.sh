@@ -16,5 +16,4 @@ depends=$(yq eval -o=json "$pytoml" | jq '.tool.poetry.dependencies | keys' | jq
 sed -e "s|^pkgdesc=.*|pkgdesc=\"$pkgdesc\"|" \
     -e "s|^url=.*|url=\"${url}\"|" \
     -e "s|^depends=.*|depends=(${depends})|" \
-    -e "s|^optdepends=.*|optdepends=(${optdepends})|" \
     -i PKGBUILD
