@@ -1,49 +1,45 @@
 pkgname=mingw-w64-libxml2
-pkgver=2.13.4
+pkgver=2.13.5
 pkgrel=1
 arch=('any')
-pkgdesc="XML parsing library, version 2 (mingw-w64)"
+pkgdesc='XML C parser and toolkit (mingw-w64)'
+url='https://gitlab.gnome.org/GNOME/libxml2/-/wikis/home'
 depends=('mingw-w64-crt' 'mingw-w64-libiconv' 'mingw-w64-zlib' 'mingw-w64-xz')
-makedepends=('mingw-w64-configure')
+makedepends=('git' 'mingw-w64-configure')
 options=('!buildflags' '!strip' 'staticlibs')
-license=('LGPL')
-url="http://www.xmlsoft.org/"
+license=(MIT)
 source=("https://download.gnome.org/sources/libxml2/${pkgver::4}/libxml2-${pkgver}.tar.xz")
-sha256sums=('65d042e1c8010243e617efb02afda20b85c2160acdbfbcb5b26b80cec6515650')
+sha256sums=('74fc163217a3964257d3be39af943e08861263c4231f9ef5b496b6f6d4c7b2b6')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 prepare () {
-  cd "${srcdir}/libxml2-${pkgver}"
+  cd libxml2-${pkgver}
+
+  # avoid `ld.lld: error: unknown argument '--enable-auto-image-base'` when using LLVM-based toolchain
+  [[ $pkgname =~ .*-clang-.* ]] && \
+    find . -name 'libtool.m4' -exec sed -i -e 's|$wl--enable-auto-image-base||g' {} \+
 
   # disable doc & examples
   sed -i "s| doc example | |g" Makefile.am
   autoreconf -vfi
 }
 
-build()
-{
-  cd "${srcdir}/libxml2-${pkgver}"
+build() {
+  cd libxml2-${pkgver}
+
   for _arch in ${_architectures}; do
     mkdir -p build-${_arch} && pushd build-${_arch}
-    ${_arch}-configure \
-      --without-python
+    ${_arch}-configure --without-python
     make
-
-    # deps symbols are not included in static lib:
-    ${_arch}-ar x /usr/${_arch}/lib/libiconv.a
-    ${_arch}-ar x /usr/${_arch}/lib/liblzma.a
-    ${_arch}-ar x /usr/${_arch}/lib/libz.a
-    ${_arch}-ar x /usr/${_arch}/lib/libws2_32.a
-    ${_arch}-ar cru .libs/libxml2.a *.o 
-    ${_arch}-ranlib .libs/libxml2.a
-
     popd
   done
 }
 
-package()
-{
+package() {
+  cd libxml2-${pkgver}
+  install -Dm644 Copyright -t "$pkgdir/usr/share/licenses/$pkgname"
+
   for _arch in ${_architectures}; do
     cd "${srcdir}/libxml2-${pkgver}/build-${_arch}"
     make install DESTDIR="${pkgdir}"
