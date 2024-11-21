@@ -11,7 +11,6 @@ url="https://github.com/bdraco/bluetooth-data-tools"
 license=("Apache-2.0")
 depends=(python-cryptography)
 makedepends=('python-build' 'python-installer' 'python-poetry-core' 'python-wheel')
-optdepends=(python-myst-parser python-sphinx python-sphinx-rtd-theme)
 source=("${_pkgname}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pipname}-${pkgver}.tar.gz")
 sha256sums=('1c11aca1a25e045e0baf1f88ebb0de53d2844e357d6017dc6c143c20e20b3436')
 

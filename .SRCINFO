@@ -12,9 +12,6 @@ pkgbase = python-bluetooth-data-tools
 	makedepends = python-poetry-core
 	makedepends = python-wheel
 	depends = python-cryptography
-	optdepends = python-myst-parser
-	optdepends = python-sphinx
-	optdepends = python-sphinx-rtd-theme
 	source = bluetooth-data-tools-1.20.0.tar.gz::https://files.pythonhosted.org/packages/source/b/bluetooth-data-tools/bluetooth_data_tools-1.20.0.tar.gz
 	sha256sums = 1c11aca1a25e045e0baf1f88ebb0de53d2844e357d6017dc6c143c20e20b3436
 
