@@ -1,0 +1,14 @@
+pkgbase = borealis
+	pkgdesc = The elegant and consistent programming language.
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/Usbac/borealis
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	provides = borealis
+	conflicts = borealis
+	source = borealis-0.3.0::https://github.com/Usbac/borealis/archive/v0.3.0.tar.gz
+	sha256sums = 1c3b696a9f1ca560d0eea5669fbd5787aaa8661d19f7b66c287109c8f6101404
+
+pkgname = borealis
