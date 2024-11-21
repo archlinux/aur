@@ -1,0 +1,16 @@
+pkgbase = python-psutil-home-assistant
+	pkgdesc = Wrapper for psutil to allow it to be used several times in the same process.
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/home-assistant-libs/psutil-home-assistant
+	arch = any
+	license = Apache-2.0
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python-psutil
+	source = psutil-home-assistant-0.0.1.tar.gz::https://files.pythonhosted.org/packages/source/p/psutil-home-assistant/psutil-home-assistant-0.0.1.tar.gz
+	sha256sums = ebe4f3a98d76d93a3140da2823e9ef59ca50a59761fdc453b30b4407c4c1bdb8
+
+pkgname = python-psutil-home-assistant
