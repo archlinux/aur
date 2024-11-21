@@ -1,0 +1,18 @@
+pkgbase = python-aiohttp-fast-zlib
+	pkgdesc = Use the fastest installed zlib compatible library with aiohttp
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/bdraco/aiohttp-fast-zlib
+	arch = any
+	license = Apache-2.0
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python-aiohttp
+	optdepends = python-isal
+	optdepends = python-zlib-ng
+	source = aiohttp-fast-zlib-0.2.0.tar.gz::https://files.pythonhosted.org/packages/source/a/aiohttp-fast-zlib/aiohttp_fast_zlib-0.2.0.tar.gz
+	sha256sums = e2e6c27a7ffc825cdd50d6f80e302ebbc025b43c876c00f01dc2ae759905dce8
+
+pkgname = python-aiohttp-fast-zlib
