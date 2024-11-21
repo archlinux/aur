@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=leavepad-git
 _pkgname=Leavepad
-pkgver=1.2.7.r0.g8619a84
+pkgver=1.2.8.r0.g3ba630e
 _electronversion=31
 _nodeversion=20
 pkgrel=1
@@ -83,7 +83,7 @@ package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
     install -Dm644 "${srcdir}/${pkgname//-/.}/dist/linux-"*/resources/app.asar -t "${pkgdir}/usr/lib/${pkgname%-git}"
     install -Dm644 "${srcdir}/${pkgname//-/.}/dist/linux-"*/resources/app.asar.unpacked/resources/icon.png \
-        -t "${pkgdir}/usr/lib/${pkgname%-git}/app.asar.unpacked/resources/icon.png"
+        -t "${pkgdir}/usr/lib/${pkgname%-git}/app.asar.unpacked/resources"
     install -Dm644 "${srcdir}/${pkgname//-/.}/resources/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-git}.png"
     install -Dm644 "${srcdir}/${pkgname%-git}.desktop" -t "${pkgdir}/usr/share/applications"
     install -Dm644 "${srcdir}/${pkgname//-/.}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname%-git}"

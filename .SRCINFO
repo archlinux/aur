@@ -1,6 +1,6 @@
 pkgbase = leavepad-git
 	pkgdesc = A multi-platform notepad. focuses on writing memos. File editing is not supported.(Use system-wide electron)
-	pkgver = 1.2.7.r0.g8619a84
+	pkgver = 1.2.8.r0.g3ba630e
 	pkgrel = 1
 	url = https://github.com/kaishuu0123/leavepad
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = leavepad-git
 	makedepends = curl
 	makedepends = git
 	depends = electron31
-	provides = leavepad=1.2.7
+	provides = leavepad=1.2.8
 	conflicts = leavepad
 	source = leavepad.git::git+https://github.com/kaishuu0123/leavepad.git
 	source = leavepad.sh
