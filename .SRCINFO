@@ -1,0 +1,19 @@
+pkgbase = neovim-qt6-git
+	pkgdesc = GUI for Neovim (git version)
+	pkgver = 0.2.16.r257.g3e4e2b7
+	pkgrel = 1
+	url = https://github.com/equalsraf/neovim-qt
+	arch = x86_64
+	license = ISC
+	makedepends = cmake
+	makedepends = git
+	makedepends = ninja
+	depends = neovim
+	depends = qt6-svg
+	depends = hicolor-icon-theme
+	provides = neovim-qt
+	conflicts = neovim-qt
+	source = neovim-qt6-git::git+https://github.com/equalsraf/neovim-qt
+	b2sums = SKIP
+
+pkgname = neovim-qt6-git
