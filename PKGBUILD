@@ -2,13 +2,13 @@
 # Contributor: Josef Miegl <josef@miegl.cz>
 
 pkgname=libosmo-abis-git
-pkgver=1.6.0.r0.g4bd83df
+pkgver=1.6.0.r32.gfb1a37f
 pkgrel=1
 pkgdesc="Osmocom library for A-bis interface"
 url="https://osmocom.org/projects/libosmo-abis"
 arch=('i686' 'x86_64' 'aarch64' 'armv7h')
 license=('GPL-2.0-or-later AND LGPL-2.1-only AND AGPL-3.0-or-later')
-depends=('libosmocore-git' 'ortp' 'talloc')
+depends=('libosmocore-git' 'libosmo-netif-git' 'ortp' 'talloc')
 makedepends=('git')
 provides=("${pkgname%-git}=${pkgver}"
           "libosmoabis.so=13-64"
