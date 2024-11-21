@@ -1,7 +1,7 @@
 # Maintainer: Andrew Krasichkov <dev@buglloc.cc>
 
 pkgname=mr.duppl
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="The DupplCAP application to integrate Mr.Duppl with Wireshark or something"
 arch=("x86_64")
@@ -13,7 +13,7 @@ makedepends=(
 )
 options=("!lto")
 source=("https://github.com/buglloc/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('4355aa196802882f91d62aa5bfc761ac240b9361aa5141abbb277751bb64e5c3')
+sha256sums=('5c16491593d70576b62b6efc4679867a7952c0ea5e23cb2251a247821d3a0b39')
 
 prepare() {
   cd "$pkgname-$pkgver/software"
