@@ -1,0 +1,16 @@
+pkgbase = python-voluptuous-openapi
+	pkgdesc = Convert voluptuous schemas to OpenAPI Schema object
+	pkgver = 0.0.5
+	pkgrel = 1
+	url = https://github.com/home-assistant-libs/voluptuous-openapi
+	arch = any
+	license = Apache-2.0
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python-voluptuous
+	source = voluptuous-openapi-0.0.5.tar.gz::https://files.pythonhosted.org/packages/source/v/voluptuous-openapi/voluptuous_openapi-0.0.5.tar.gz
+	sha256sums = 1619cd298da0024fa01338ac5a9ce3b3b7059205ce3c69230c24803b11308fb0
+
+pkgname = python-voluptuous-openapi
