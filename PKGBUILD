@@ -1,6 +1,6 @@
 # Maintainer: Kimiblock Moe
 pkgname=portable
-pkgver=1.1
+pkgver=1.1.1
 pkgrel=1
 epoch=
 pkgdesc="Portable Sandboxing framework"
