@@ -3,7 +3,7 @@
 _pkgname=mimic
 _pkgbase=$_pkgname-bpf
 pkgname=($_pkgbase-git $_pkgbase-dkms-git)
-pkgver=0.4.1.r0.6dc4578
+pkgver=0.6.0.r2.d851ddf
 pkgrel=1
 pkgdesc="eBPF UDP -> TCP obfuscator"
 arch=('x86_64' 'aarch64' 'riscv64')
@@ -25,6 +25,9 @@ prepare() {
 		-e 's|@@MIMIC_CONFIG_PATH@@|/etc/mimic|' \
     -e 's|@@MIMIC_RUNTIME_DIR@@|mimic|' \
 		> install/mimic@.service
+  sed kmod/dkms.conf.in \
+    -e 's|@@EXTRA_OPTS@@||' \
+    > kmod/dkms.conf
 }
 
 build() {
