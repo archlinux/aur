@@ -2,7 +2,7 @@
 
 pkgname=fortunate
 pkgver=1.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A fortune-mod powered motivational app that delivers uplifting quotes and thoughtful messages."
 arch=('i686' 'x86_64')
 url="http://github.com/zquestz/fortunate"
@@ -11,7 +11,7 @@ makedepends=('make' 'go' 'gcc' 'pkg-config' 'xorg-server-devel' 'libxcursor' 'li
 depends=('fortune-mod')
 provides=("fortunate")
 source=("https://github.com/zquestz/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('3ab03ab8f45324ee6b79b3b6db8b0a1f8312e1ad7e500760fb735de883595ff8')
+sha256sums=('45a689a38a600d4af6dcc51bf72a675c9920f4266639fd717c79e67346270b4c')
 
 build() {
   mkdir -p "${srcdir}/go/src/github.com/zquestz"
