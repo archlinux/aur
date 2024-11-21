@@ -11,7 +11,6 @@ url="https://github.com/bluetooth-devices/bluetooth-auto-recovery"
 license=("MIT")
 depends=(python-bluetooth-adapters python-btsocket python-pyric python-usb-devices)
 makedepends=('python-build' 'python-installer' 'python-poetry-core' 'python-wheel')
-optdepends=(python-myst-parser python-sphinx python-sphinx-rtd-theme)
 source=("${_pkgname}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pipname}-${pkgver}.tar.gz")
 sha256sums=('7146bacf1864b07c6ef0ed989b8e7784aa5597426a80c05735558f72b255b7d8')
 

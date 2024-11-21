@@ -13,9 +13,6 @@ pkgbase = python-bluetooth-auto-recovery
 	depends = python-btsocket
 	depends = python-pyric
 	depends = python-usb-devices
-	optdepends = python-myst-parser
-	optdepends = python-sphinx
-	optdepends = python-sphinx-rtd-theme
 	source = bluetooth-auto-recovery-1.4.2.tar.gz::https://files.pythonhosted.org/packages/source/b/bluetooth-auto-recovery/bluetooth_auto_recovery-1.4.2.tar.gz
 	sha256sums = 7146bacf1864b07c6ef0ed989b8e7784aa5597426a80c05735558f72b255b7d8
 
