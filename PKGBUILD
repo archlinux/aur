@@ -1,17 +1,18 @@
-# Maintainer: Jean Lucas <jean@4ray.co>
+# Contributor: Jean Lucas <jean@4ray.co>
+# Maintainer: tee < teeaur at duck dot com >
 
 pkgname=bb-rs
 _pkgname=${pkgname/-rs}
-pkgver=0.4.3
+pkgver=0.4.4
 pkgrel=1
 pkgdesc='Simple process viewer in Rust'
 arch=(x86_64 aarch64)
-url=https://nessuent.xyz/bb.html
+url='https://nessuent.xyz/bb.html'
 license=(GPL3)
 depends=(gcc-libs)
 makedepends=(rust)
-source=($pkgname-$pkgver.tar.gz::https://github.com/epilys/$_pkgname/archive/$pkgver.tar.gz)
-sha512sums=('62567c74b54a197ae7a65ec7313a539b03f723364a931207a6cd86f172075a2e6f7655fdae21f9997f96fa08d2f4150830ac82f6a0ad08c41fd86a4cf9c4fbd7')
+source=($pkgname-$pkgver.tar.gz::https://github.com/epilys/$_pkgname/archive/v$pkgver.tar.gz)
+b2sums=('cc40490abef8badbfa613ae009f6fb1e44ddd6058baf72a4676271fe26665573f670a7ae9e617c0d2ea9b81c1dacb70bf65e97aadfeb9dc6f6f6cd522badda95')
 
 prepare() {
 	if [[ $CARCH = aarch64 ]]; then
@@ -36,3 +37,4 @@ package() {
 	install -D target/release/$_pkgname -t "$pkgdir"/usr/bin
 	install -Dm 644 README.md -t "$pkgdir"/usr/share/doc/$pkgname
 }
+# vim:set noet sts=0 sw=4 ts=4 ft=PKGBUILD:
