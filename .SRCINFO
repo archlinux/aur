@@ -1,0 +1,16 @@
+pkgbase = python-sysconfigpatcher
+	pkgdesc = Patch sysconfigdata and pkgconfig files in a python installation from indygreg's python builds.
+	pkgver = 0.3.1
+	pkgrel = 1
+	url = https://github.com/bluss/sysconfigpatcher
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-hatchling
+	makedepends = python-installer
+	depends = python
+	source = git+https://github.com/bluss/sysconfigpatcher.git#tag=0.3.1
+	sha256sums = 30b1db731f8e2d0d4d6d7ddc75b116772cf7d3a98943da6aab8c360bcd5f9dee
+
+pkgname = python-sysconfigpatcher
