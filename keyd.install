@@ -1,6 +1,6 @@
 post_install() {
-  printf '%s\n' "  -> Adding 'keyd' user group ..."
-  printf '%s\n' "     You must belong to this group for application specific mappings"
+  printf '%s\n' "  -> Adding 'keyd' user group:"
+  printf '%s\n' "  You must belong to this group for application specific mappings"
   groupadd -f keyd
 }
 
