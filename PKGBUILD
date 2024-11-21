@@ -7,13 +7,13 @@ pkgname=('brave-extension-bitwarden-git'
          'firefox-extension-bitwarden-git'
          'librewolf-extension-bitwarden-git'
          'opera-extension-bitwarden-git')
-pkgver=2024.6.3.r15578.gc755512
+pkgver=2024.11.1.r16705.g34e20b7
 pkgrel=1
 pkgdesc='Bitwarden browser extensions'
 arch=('any')
 url='https://github.com/bitwarden/clients'
 license=('GPL-3.0-or-later')
-makedepends=('git' 'nodejs' 'npm' 'unzip')
+makedepends=('git' 'nodejs' 'npm' 'p7zip')
 source=('git+https://github.com/bitwarden/clients.git')
 sha256sums=('SKIP')
 
@@ -30,7 +30,16 @@ prepare() {
 
 build() {
   cd clients/apps/browser || exit
-  npm run dist:chrome dist:firefox dist:opera
+  rm --force --recursive dist
+  mkdir --parents dist
+
+  npm run build:prod:chrome
+  mv build dist/chrome
+  npm run build:prod:firefox
+  mv build dist/firefox
+  7z a -tzip dist/dist-firefox.zip "${PWD}"/dist/firefox/*
+  npm run build:prod:opera
+  mv build dist/opera
 }
 
 check() {
@@ -45,8 +54,8 @@ package_brave-extension-bitwarden-git() {
   pkgdesc='Bitwarden browser extension for Brave'
   provides=('brave-extension-bitwarden')
 
-  install -dm755 "${pkgdir}/usr/share/${pkgname}"
-  unzip -qq clients/apps/browser/dist/dist-chrome.zip -d "${pkgdir}/usr/share/${pkgname}"
+  install -dm755 "${pkgdir}/usr/share"
+  cp -av clients/apps/browser/dist/chrome "${pkgdir}/usr/share/${pkgname}"
 }
 
 package_chrome-extension-bitwarden-git() {
@@ -56,8 +65,8 @@ package_chrome-extension-bitwarden-git() {
   pkgdesc='Bitwarden browser extension for Chrome'
   provides=('chrome-extension-bitwarden')
 
-  install -dm755 "${pkgdir}/usr/share/${pkgname}"
-  unzip -qq clients/apps/browser/dist/dist-chrome.zip -d "${pkgdir}/usr/share/${pkgname}"
+  install -dm755 "${pkgdir}/usr/share"
+  cp -av clients/apps/browser/dist/chrome "${pkgdir}/usr/share/${pkgname}"
 }
 
 package_chromium-extension-bitwarden-git() {
@@ -67,8 +76,8 @@ package_chromium-extension-bitwarden-git() {
   pkgdesc='Bitwarden browser extension for Chromium'
   provides=('chromium-extension-bitwarden')
 
-  install -dm755 "${pkgdir}/usr/share/${pkgname}"
-  unzip -qq clients/apps/browser/dist/dist-chrome.zip -d "${pkgdir}/usr/share/${pkgname}"
+  install -dm755 "${pkgdir}/usr/share"
+  cp -av clients/apps/browser/dist/chrome "${pkgdir}/usr/share/${pkgname}"
 }
 
 package_firefox-extension-bitwarden-git() {
@@ -77,6 +86,7 @@ package_firefox-extension-bitwarden-git() {
   groups=('firefox-addons')
   pkgdesc='Bitwarden browser extension for Firefox'
   provides=('firefox-extension-bitwarden')
+
   install -Dm644 clients/apps/browser/dist/dist-firefox.zip "${pkgdir}/usr/lib/firefox/browser/extensions/{446900e4-71c2-419f-a6a7-df9c091e268b}.xpi"
 }
 
@@ -85,6 +95,7 @@ package_librewolf-extension-bitwarden-git() {
   optdepends=('librewolf')
   pkgdesc='Bitwarden browser extension for LibreWolf'
   provides=('librewolf-extension-bitwarden')
+
   install -Dm644 clients/apps/browser/dist/dist-firefox.zip "${pkgdir}/usr/lib/librewolf/browser/extensions/{446900e4-71c2-419f-a6a7-df9c091e268b}.xpi"
 }
 
@@ -95,6 +106,6 @@ package_opera-extension-bitwarden-git() {
   pkgdesc='Bitwarden browser extension for Opera'
   provides=('opera-extension-bitwarden')
 
-  install -dm755 "${pkgdir}/usr/share/${pkgname}"
-  unzip -qq clients/apps/browser/dist/dist-opera.zip -d "${pkgdir}/usr/share/${pkgname}"
+  install -dm755 "${pkgdir}/usr/share"
+  cp -av clients/apps/browser/dist/opera "${pkgdir}/usr/share/${pkgname}"
 }
