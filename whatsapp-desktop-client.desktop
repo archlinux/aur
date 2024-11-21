@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Name=WhatsApp Desktop
+Comment=A cross-platform desktop application that allows you to use WhatsApp directly on your computer, making it easier to chat with friends and family while working
+Type=Application
+Exec=whatsapp-desktop-client %F
+Icon=whatsapp-desktop-client
+Categories=Network;InstantMessaging;
+Terminal=false
