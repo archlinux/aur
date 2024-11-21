@@ -1,32 +1,26 @@
-# Maintainer: Atom Long <atom.long@hotmail.com>
+# Maintainer: devome <evinedeng@hotmail.com>
+# Contributor: Atom Long <atom.long@hotmail.com>
 
 _pkgname=hass-nabucasa
-pkgname=python-hass-nabucasa
-pkgver=0.50.0
+_pipname="${_pkgname//-/_}"
+pkgname="python-${_pkgname}"
+pkgver=0.84.0
 pkgrel=1
-pkgdesc='Home Assistant cloud integration by Nabu Casa, Inc.'
-url='https://github.com/NabuCasa/hass-nabucasa'
+pkgdesc="Home Assistant cloud integration by Nabu Casa, Inc."
 arch=('any')
-license=('GPL-3.0')
-depends=('python')
-makedepends=('python-setuptools' 'python-pip' 'python-wheel')
-checkdepends=('python-pytest' 'python-pytest-runner' 'python-pytest-mock' 'python-pytest-timeout')
-source=(${_pkgname}-${pkgver}.tar.gz::"https://github.com/NabuCasa/hass-nabucasa/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('82cd34aabf127c3f5097d7fb55f3f50b7c9e236fa3889e9e30998dc7b07a0aad')
+url="https://github.com/NabuCasa/hass-nabucasa"
+license=("GPL-3.0-or-later")
+depends=(python-acme python-aiohttp python-atomicwrites-homeassistant python-attrs python-ciso8601 python-cryptography python-pycognito python-pyjwt python-snitun python-webrtc-models)
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
+source=("${_pkgname}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pipname}-${pkgver}.tar.gz")
+sha256sums=('ea048e0fadb56c025ba89c49d1e367317e04d52531b4d18082e3361647be10ef')
 
 build() {
-  cd ${_pkgname}-${pkgver}
-  python setup.py build
-}
-
-check() {
-  cd ${_pkgname}-${pkgver}
-  python setup.py test
+    cd "${_pipname}-${pkgver}"
+    python -m build --wheel --no-isolation
 }
 
 package() {
-  cd ${_pkgname}-${pkgver}
-  python setup.py install --root="${pkgdir}" -O1 --skip-build
+    cd "${_pipname}-${pkgver}"
+    python -m installer --destdir="${pkgdir}" dist/*.whl
 }
-
-# vim: ts=2 sw=2 et:
