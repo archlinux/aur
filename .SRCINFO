@@ -12,6 +12,6 @@ pkgbase = acter-nightly-bin
 	depends = libayatana-appindicator
 	conflicts = acter-bin
 	source = https://github.com/acterglobal/a3/releases/download/v1.24.11210/acter-linux-x64-1.24.11210.tar.bz2
-	md5sums = 52e4e061f739a0f50eb29535e951448f
+	md5sums = 28652134cc9daa2a633ab579f346e77f
 
 pkgname = acter-nightly-bin
