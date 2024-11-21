@@ -1,7 +1,7 @@
-# Maintainer: ATE
+# Maintainer: Ali <ali205412@github.com>
 
 pkgname=yamli-editor
-pkgver=0.1.2
+pkgver=0.0.4
 pkgrel=1
 pkgdesc="A native Yamli editor for Wayland"
 arch=('x86_64')
@@ -31,12 +31,9 @@ package() {
   # Install config file
   install -Dm644 "config.toml" "$pkgdir/etc/$pkgname/config.toml"
   
-  # Install documentation
-  install -Dm644 "README.md" "$pkgdir/usr/share/doc/$pkgname/README.md"
+  # Install desktop file
+  install -Dm644 "yamli-editor.desktop" "$pkgdir/usr/share/applications/yamli-editor.desktop"
   
   # Install license
   install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-
-  # Install desktop file
-  install -Dm644 "$srcdir/$pkgname-$pkgver/yamli-editor.desktop" "$pkgdir/usr/share/applications/yamli-editor.desktop"
 }

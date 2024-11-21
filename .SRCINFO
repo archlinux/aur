@@ -1,6 +1,6 @@
 pkgbase = yamli-editor
 	pkgdesc = A native Yamli editor for Wayland
-	pkgver = 0.1.2
+	pkgver = 0.0.4
 	pkgrel = 1
 	url = https://github.com/ali205412/yamli-editor
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = yamli-editor
 	makedepends = cargo
 	depends = gtk3
 	depends = webkit2gtk
-	source = yamli-editor-0.1.2.tar.gz::https://github.com/ali205412/yamli-editor/archive/v0.1.2.tar.gz
+	source = yamli-editor-0.0.4.tar.gz::https://github.com/ali205412/yamli-editor/archive/v0.0.4.tar.gz
 	sha256sums = SKIP
 
 pkgname = yamli-editor
