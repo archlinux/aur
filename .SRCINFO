@@ -1,7 +1,7 @@
 pkgbase = windsurf-bin
 	pkgdesc = Tomorrow's Editor, Today. Built to keep you in flow state with instant, invaluable AI developer assistance.
 	pkgver = 1.0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://codeium.com/windsurf
 	install = windsurf-bin.install
 	arch = x86_64
@@ -29,6 +29,8 @@ pkgbase = windsurf-bin
 	optdepends = icu69: Needed for live share
 	provides = windsurf
 	conflicts = windsurf
+	options = !strip
+	options = !debug
 	source = windsurf.desktop
 	source = windsurf-url-handler.desktop
 	source = windsurf-workspace.xml
