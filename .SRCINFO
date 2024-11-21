@@ -1,0 +1,23 @@
+pkgbase = python-habluetooth
+	pkgdesc = High availability Bluetooth
+	pkgver = 3.6.0
+	pkgrel = 1
+	url = https://github.com/bluetooth-devices/habluetooth
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-poetry-core
+	makedepends = python-wheel
+	depends = python-async-interrupt
+	depends = python-bleak
+	depends = python-bleak-retry-connector
+	depends = python-bluetooth-adapters
+	depends = python-bluetooth-auto-recovery
+	depends = python-bluetooth-data-tools
+	source = habluetooth-3.6.0.tar.gz::https://files.pythonhosted.org/packages/source/h/habluetooth/habluetooth-3.6.0.tar.gz
+	sha256sums = df79914d9037456b370ba790bac71ca23fd16871c202aac93df5f800119137e6
+
+pkgname = python-habluetooth
