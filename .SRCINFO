@@ -1,0 +1,19 @@
+pkgbase = python-aiohasupervisor
+	pkgdesc = Asynchronous python client for Home Assistant Supervisor.
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://github.com/home-assistant-libs/python-supervisor-client
+	arch = any
+	license = Apache-2.0
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python-aiohttp
+	depends = python-mashumaro
+	depends = python-orjson
+	depends = python-yarl
+	source = aiohasupervisor-0.2.1.tar.gz::https://files.pythonhosted.org/packages/source/a/aiohasupervisor/aiohasupervisor-0.2.1.tar.gz
+	sha256sums = a1242165fd255796c961dadfbb88fc1f0d45f8441f8af10f42899ab478b1cbd9
+
+pkgname = python-aiohasupervisor
