@@ -1,7 +1,7 @@
 # Maintainer: Trevor Last <trevorclast at gmail dot com>
 pkgname=fir-git
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Simple image viewer for Wayland.'
 arch=('x86_64')
 url='https://github.com/Treecase/fir'
@@ -50,7 +50,7 @@ build() {
 package() {
     cd "$srcdir/${pkgname%-git}"
     install -Dm0755 -t "${pkgdir}/usr/bin/" "target/release/${pkgname%-git}"
-    install -DTm0644 "data/fir.desktop" "${pkgdir}/usr/share/applications/com.github.treecase.fir.desktop"
-    install -DTm0644 "data/fir.png" "${pkgdir}/usr/share/icons/hicolor/48x48/apps/com.github.treecase.fir.png"
-    install -DTm0644 "data/fir.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/com.github.treecase.fir.svg"
+    install -Dm0644 -t "${pkgdir}/usr/share/applications" "data/com.github.treecase.fir.desktop"
+    install -Dm0644 -t "${pkgdir}/usr/share/icons/hicolor/48x48/apps" "data/com.github.treecase.fir.png"
+    install -Dm0644 -t "${pkgdir}/usr/share/icons/hicolor/scalable/apps" "data/com.github.treecase.fir.svg"
 }
