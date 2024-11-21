@@ -5,6 +5,7 @@ pkgbase = arkenfox-hook-git
 	url = https://github.com/aartoni/arkenfox-hooks
 	arch = any
 	license = Unlicense
+	depends = arkenfox-user.js
 	provides = arkenfox-hook
 	conflicts = arkenfox-hook
 	backup = usr/share/libalpm/hooks/arkenfox.hook
