@@ -1,0 +1,15 @@
+pkgbase = lazyorg-bin
+	pkgdesc = A simple terminal-based calendar and note-taking application.
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/HubertBel/lazyorg
+	license = MIT
+	depends = glibc
+	depends = sqlite
+	conflicts = lazyorg
+	provides = lazyorg
+	arch = x86_64
+	source_x86_64 = https://github.com/HubertBel/lazyorg/releases/download/v1.0.1/lazyorg_1.0.1_linux_amd64.tar.gz
+	sha256sums_x86_64 = 77e864ec63d4ac6a724460120ec5d1aff5f42b32fb28a6adce14bf68ba8bf192
+	
+pkgname = lazyorg-bin
