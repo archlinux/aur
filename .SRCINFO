@@ -1,0 +1,14 @@
+pkgbase = mr.duppl
+	pkgdesc = The DupplCAP application to integrate Mr.Duppl with Wireshark or something
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/buglloc/mr.duppl
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	depends = glibc
+	options = !lto
+	source = https://github.com/buglloc/mr.duppl/archive/refs/tags/v1.0.1.tar.gz
+	sha256sums = 4355aa196802882f91d62aa5bfc761ac240b9361aa5141abbb277751bb64e5c3
+
+pkgname = mr.duppl
