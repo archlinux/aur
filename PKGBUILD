@@ -3,7 +3,7 @@
 _pkgname=mimic
 _pkgbase=$_pkgname-bpf
 pkgname=($_pkgbase $_pkgbase-dkms)
-pkgver=0.4.2
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="eBPF UDP -> TCP obfuscator"
 arch=('x86_64' 'aarch64' 'riscv64')
@@ -11,7 +11,7 @@ url="https://github.com/hack3ric/$_pkgname"
 license=('GPL-2.0-only')
 makedepends=('git' 'clang' 'bpf' 'ruby-ronn-ng' 'libbpf' 'libffi')
 source=("$_pkgname-$pkgver.tar.gz::https://github.com/hack3ric/$_pkgname/archive/refs/tags/v$pkgver.tar.gz")
-b2sums=('f2c7816fd8b087a7c72277fd220f5147c20d9676486ce3255d5275de3717d46c261ac679573bfc7694620964f6e8a7b9d263a0ee378ade8859678f6fbe5e7af8')
+b2sums=('8112687fc106c5c4a718fea9dda1f8dfa857df344723a5cc5e022d80080da7949d029c2868a689ba40f4d6894e952ce181231d6743d799c89874acd985402765')
 
 prepare() {
   cd $_pkgname-$pkgver
@@ -20,11 +20,14 @@ prepare() {
 		-e 's|@@MIMIC_CONFIG_PATH@@|/etc/mimic|' \
     -e 's|@@MIMIC_RUNTIME_DIR@@|mimic|' \
 		> install/mimic@.service
+  sed kmod/dkms.conf.in \
+    -e 's|@@EXTRA_OPTS@@||' \
+    > kmod/dkms.conf
 }
 
 build() {
   cd $_pkgname-$pkgver
-  make MODE=release build-cli generate-manpage
+  make MODE= build-cli generate-manpage
 }
 
 package_mimic-bpf() {
