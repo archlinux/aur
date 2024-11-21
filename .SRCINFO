@@ -1,0 +1,18 @@
+pkgbase = filepack
+	pkgdesc = Command-line file hashing and verification utility written in Rust
+	pkgver = 0.0.6
+	pkgrel = 1
+	url = https://github.com/casey/filepack
+	arch = x86_64
+	license = custom:CC0
+	makedepends = cargo
+	makedepends = help2man
+	makedepends = libgit2
+	makedepends = libssh2
+	depends = glibc
+	provides = filepack
+	conflicts = filepack
+	source = https://github.com/casey/filepack/archive/0.0.6.tar.gz
+	sha256sums = c4bbaf85629c3a21421668cb7b9c7a009085addc90a7e2a5e88531d359c35d10
+
+pkgname = filepack
