@@ -9,7 +9,7 @@ echo "Latest  :" $LATEST_COMMIT
 echo "LibreSSL:" $LIBRESSL_LATEST
 # PKGBUILD
 COMMIT=$(grep "^_commit" PKGBUILD|cut -f2 -d"=")
-echo "Current:" $COMMIT
+echo "Current :" $COMMIT
 echo "LibreSSL:" $LIBRESSL_CURRENT
 
 UPDATED=0
