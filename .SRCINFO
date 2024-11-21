@@ -1,7 +1,7 @@
 pkgbase = steamlink
 	pkgdesc = Steam Link client
 	pkgver = 1.3.12.269
-	pkgrel = 1
+	pkgrel = 2
 	url = https://store.steampowered.com/remoteplay#anywhere
 	arch = x86_64
 	license = custom
@@ -10,7 +10,9 @@ pkgbase = steamlink
 	depends = fontconfig
 	depends = freetype2
 	depends = harfbuzz
-	depends = icu73
+	depends = libicudata.so=75
+	depends = libicui18n.so=75
+	depends = libicuuc.so=75
 	depends = libdrm
 	depends = libglvnd
 	depends = libice

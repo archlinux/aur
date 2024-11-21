@@ -1,7 +1,7 @@
 pkgname=steamlink
 _name=steamlink
 pkgver=1.3.12.269
-pkgrel=1
+pkgrel=2
 pkgdesc="Steam Link client"
 arch=('x86_64')
 url="https://store.steampowered.com/remoteplay#anywhere"
@@ -10,7 +10,7 @@ depends=(
 	'fontconfig'
 	'freetype2'
 	'harfbuzz'
-	'icu73'
+	libicu{data,i18n,uc}.so=75
 	'libdrm'
 	'libglvnd'
 	'libice'
