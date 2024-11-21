@@ -1,7 +1,8 @@
-# Maintainer: Gavin Lloyd <gavinhungry@gmail.com>
+# Maintainer: redponike <proton dot me>
+# Contributor: Gavin Lloyd <gavinhungry@gmail.com>
 
 pkgname=mixbench-cuda-git
-pkgver=0.193.v0.03.8.gbab3fb7
+pkgver=0.224.v0.04.13.g597b700
 pkgrel=1
 pkgdesc="GPU benchmark tool for evaluating GPUs on mixed operational intensity kernels (CUDA implementation)"
 url="https://github.com/ekondis/mixbench"
@@ -18,7 +19,7 @@ warn_build_references() {
 
 pkgver () {
   cd "${srcdir}/${pkgname}"
-  echo "0.$(git rev-list --count HEAD).$(git describe --always | sed 's|-|.|g')"
+  echo "0.$(git rev-list --count HEAD).$(git describe --always --tags | sed 's|-|.|g')"
 }
 
 build() {
@@ -33,5 +34,5 @@ build() {
 
 package() {
   cd "${srcdir}/${pkgname}/build"
-  install -Dm755 "mixbench-cuda-ro" "${pkgdir}/usr/bin/mixbench-cuda"
+  install -Dm755 "mixbench-cuda" "${pkgdir}/usr/bin/mixbench-cuda"
 }
