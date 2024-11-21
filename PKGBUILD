@@ -1,12 +1,12 @@
 # Maintainer: Tyler Veness <calcmogul at gmail dot com>
 
 pkgname=wpimath-git
-pkgver=2024.1.1.beta.4.r20.gd1793f077d
+pkgver=2025.1.1.beta.2.r0.g0a3ccf93c6
 pkgrel=1
 pkgdesc="WPILib's mathematics and controls library"
 arch=('x86_64')
 url='https://github.com/wpilibsuite/allwpilib'
-depends=('fmt' 'eigen' 'protobuf')
+depends=('fmt' 'eigen-git' 'protobuf')
 makedepends=('cmake')
 provides=('wpimath')
 conflicts=('wpimath')
