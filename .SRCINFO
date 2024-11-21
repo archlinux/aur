@@ -1,0 +1,23 @@
+pkgbase = overlay-spirit-git
+	pkgdesc = An Electron app that displays motivational messages based on screen content.(Use system-wide electron)
+	pkgver = r6.78444ee
+	pkgrel = 1
+	url = https://github.com/Rahul-Sahani04/overlay-spirit
+	arch = any
+	license = LicenseRef-Unknown
+	makedepends = gendesk
+	makedepends = bun
+	makedepends = nvm
+	makedepends = git
+	makedepends = curl
+	makedepends = imagemagick
+	depends = electron32
+	depends = nodejs
+	provides = overlay-spirit=r6.78444ee
+	conflicts = overlay-spirit
+	source = overlay-spirit.git::git+https://github.com/Rahul-Sahani04/overlay-spirit
+	source = overlay-spirit.sh
+	sha256sums = SKIP
+	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
+
+pkgname = overlay-spirit-git
