@@ -1,7 +1,7 @@
 pkgbase = aws-rotate-key
 	pkgdesc = Easily rotate your AWS access key. 🔑
-	pkgver = 1.1.0
-	pkgrel = 2
+	pkgver = 1.2.0
+	pkgrel = 1
 	url = https://github.com/stefansundin/aws-rotate-key
 	arch = i686
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = aws-rotate-key
 	arch = riscv64
 	license = MIT
 	makedepends = go
-	source = https://github.com/stefansundin/aws-rotate-key/archive/v1.1.0.tar.gz
-	sha256sums = 0ecb4830dde426702629430889a8bcd4acddae9aab2d8f03ddab6514a3f966ef
+	source = https://github.com/stefansundin/aws-rotate-key/archive/v1.2.0.tar.gz
+	sha256sums = 91568ad7aeb849454ac066c44303e2b97e158dc094a90af43c8c9b3dc5cc4ed7
 
 pkgname = aws-rotate-key
