@@ -1,0 +1,18 @@
+pkgbase = notebook-bin
+	pkgdesc = A powerful application designed to streamline your note-taking experience. With its intuitive interface and robust features, Notebook provides a seamless platform for organizing your thoughts, ideas, and tasks.(Prebuild version.Use system-wide electron)
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/akash2061/NoteBook-app
+	arch = x86_64
+	license = MIT
+	depends = electron28
+	conflicts = notebook
+	options = !emptydirs
+	source = notebook-1.1.0.deb::https://github.com/akash2061/NoteBook-app/releases/download/v1.1.0/NoteBook_1.1.0_amd64.deb
+	source = LICENSE-1.1.0::https://raw.githubusercontent.com/akash2061/NoteBook-app/v1.1.0/LICENSE
+	source = notebook.sh
+	sha256sums = 14a80cfca1e7a5af4a3a70bb7fecb21ceb2b4c1e1a73f1c9c590a7051afafb74
+	sha256sums = 2d318a6705771bcfb3d6950490be56f7ab1a431ae2e6884d588a1f7190c81a02
+	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
+
+pkgname = notebook-bin
