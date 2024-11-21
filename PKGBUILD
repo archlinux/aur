@@ -1,7 +1,7 @@
 # Maintainer: Kimiblock Moe
 pkgname=wechat
 pkgver=4.0.0.23
-pkgrel=11
+pkgrel=12
 epoch=
 pkgdesc="微信是一种生活方式. 可选沙盒支持."
 arch=('x86_64' 'aarch64' 'loong64')
@@ -106,7 +106,7 @@ function package_wechat() {
 	mkdir -p "${pkgdir}"/opt
 	cp -r opt/apps/com.tencent.wechat \
 		"${pkgdir}"/opt/wechat
-	install -Dm644 portable-config $pkgdir/usr/lib/wechat/portable
+	install -Dm644 portable-config $pkgdir/usr/lib/wechat/portable-config
 	install -Dm644 wechat.desktop \
 		"${pkgdir}/usr/share/applications/wechat.desktop"
 	install -Dm755 wechat.sh \
