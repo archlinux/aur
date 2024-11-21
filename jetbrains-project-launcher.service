@@ -1,0 +1,10 @@
+[Unit]
+Description=JetBrains Project Launcher
+After=default.target
+
+[Service]
+ExecStart=/usr/bin/jetbrains-project-launcher
+Restart=on-failure
+
+[Install]
+WantedBy=default.target

@@ -1,0 +1,17 @@
+pkgbase = jetbrains-project-launcher
+	pkgdesc = Automatically creates desktop entries for JetBrains IDEs
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/OliverLiebmann/jetbrains-project-launcher
+	arch = any
+	license = MIT
+	depends = bash
+	depends = inotify-tools
+	source = jetbrains-project-launcher.sh
+	source = jetbrains-project-launcher.service
+	source = jetbrains-project-launcher.conf
+	sha256sums = 5bda5e6c01bb1cdabbc235b6528e38f282b2503462449b61e96aadc8f195a5c4
+	sha256sums = e7ea6c434c1268c98c0463e42a2ab013f63690d1a21d384cfd013cf91331a16c
+	sha256sums = f69b6f8ef539ad989b92287f22e08ac91e87d4e850df042fd783ce197d080aa9
+
+pkgname = jetbrains-project-launcher
