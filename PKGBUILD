@@ -1,13 +1,11 @@
 # Maintainer: Zepman <the*UNDERSCOREHERE*zep*UNDERSCOREHERE*man@hotmail.com>
 # Contributor: George Rawlinson <grawlinson@archlinux.org>
-#
-# PKGBUILD generated on: 2023-11-16T11:25:08+00:00
 
 pkgname=lldap-bin
 _pkgname=lldap
-pkgver=0.5.0
+pkgver=0.6.0
 pkgrel=1
-pkgdesc='Light LDAP implementation - binary release'
+pkgdesc='Light LDAP implementation for authentication - binary release'
 arch=('x86_64' 'aarch64' 'armv7h')
 url='https://github.com/lldap/lldap'
 license=('GPL3')
@@ -21,20 +19,20 @@ source=(
   'sysusers.conf'
   'tmpfiles.conf'
 )
-_source_bin_base="${url}/releases/download/v${pkgver}"
-source_x86_64=("${_source_bin_base}/amd64-lldap.tar.gz")
-source_aarch64=("${_source_bin_base}/aarch64-lldap.tar.gz")
-source_armv7h=("${_source_bin_base}/armhf-lldap.tar.gz")
+_source_base="${url}/releases/download/v${pkgver}"
+source_x86_64=("${_source_base}/amd64-lldap.tar.gz")
+source_aarch64=("${_source_base}/aarch64-lldap.tar.gz")
+source_armv7h=("${_source_base}/armhf-lldap.tar.gz")
 
-b2sums=('5b2b2a78d3efbf981fb53b7a41733caf7b3ef138a65d06b0410618e81d68dfba4af26f08efa84d1ae4f98c1442e037b6bb31da7453c391cfe8ac95f83357f3a1'
-        '3c1a5d25ecd028b11c42ef92dd4e9763d2817c63157fb9b31e1e6283cd1195063eeb7fb0867362cfd585921c09a1010e3a2c8545e69cd2d304d708d385a2da2c'
+b2sums=('901c9f4bc3204fd33df0b59edd2fa29c525d5c1ef34936b8c56487af88393b289512944e4428dfad517a1fa13680e1caa5e16b3c6717a637b572751e4c7826ba'
+        '0460040b0541b4cf388ee4a81adbbfbb331a4fc52d484b7a4f4ba918cb7664e98ef3ae8a21a8eeb92f124f57a0d5a7814004a7d59a4282c22b89c3855b757ce8'
         '9d2688aae8e36d56759c407e76816f4d2a450c92fd956b92145fc0ba52902c32283d8a939478e6f866ba6624f1c11a47e243208f3aa11bfb453d5a937be3c914'
         'e491337a2ba4ca68ed6afe3a0779a608f718da4107547276562582bc24b7ab21af724b4026adfe3b845ef9e81284bb54da548b8f48b4b1b1bf8525316f990f82'
         '1caff6be850db02f3dcd8d4ca12a2f18acf40c2900cb2d0866cf3a3c131bda9c9bf5d32a072f250f1d0700ac7dd3e43f05d4d33dd2e5f21c6a983a57e1c5adcc')
 
-b2sums_x86_64=('96d856ede15e1c83e7a94b33e5aa5143d3f7ebab824b4cfb8ba3d1e6804e28282859c56c906cc34fa357b0be67f958d481a31969bd8e6e2e7c74d4b47aa939b4')
-b2sums_aarch64=('11bd4f6f13a571f10defa07c3efc2d7b1b1919cffefa0240cc1add90d9fa74d7111599dca1580e84eb5627a80a308ff5ef3139d68e3cff9442939782b467660a')
-b2sums_armv7h=('e354d13abfe76cdfbbba34d4c6697cb031eafd04079bde38c4dd521f0b8f0b0f61b9721e1c131f4eb4627476e00e0ef9f5816366a75250bcc74414f7efa2f493')
+b2sums_x86_64=('09d7bdeed9727317dfcdedfc096651450b99a54b81e4f43d35e1820ab47fcac174dcbd6a0320332a50f78761495f062ec0893c68378dcb63457fbbea451f42a6')
+b2sums_aarch64=('084b1d52f0ee837968a19899659b03ec3feaacdc0ec337241c0218fb3c9e764886d7cf3aa4802bd0f16ed13a685e1c5eb11d10d865320af1efdf8d59efe39604')
+b2sums_armv7h=('54244a1e90a7a1b686083c3c184e3258b15807cdad71e4b2bb1518f7ecdff934d77b27d1b29df4af6a414a5df855425094bda105f2d009b3d33422dd28474c21')
 
 prepare() {
   cd lldap-*
