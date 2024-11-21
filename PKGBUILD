@@ -4,7 +4,7 @@
 # Contributor: Mark Lee <mark at markelee dot com>
 
 pkgname=jupyterhub
-pkgver=5.1.0
+pkgver=5.2.1
 pkgrel=1
 pkgdesc="Multi-user server for Jupyter notebooks"
 url="https://jupyter.org/hub"
@@ -44,6 +44,7 @@ checkdepends=(
   'python-cryptography'
   'python-jsonschema'
   'python-pytest'
+  'python-pytest-asyncio'
   'python-pytest-rerunfailures'
   'python-requests-mock'
   'python-playwright'
@@ -66,7 +67,7 @@ source=(
   'tests_use_random_ports.patch'
 )
 sha256sums=(
-  '5b870c3d2aed3262b4e9f8cb5c81a39372d54a12c0dc5c40502d3d66bcbac29f'
+  '5b35444c2c254e60563887d1d59c2376813d16a166ec6e0a410c773cdbd37ebd'
   'f851dac9e098afa1dfcf30169b23414e7384559984eb7090aaf3c4f9c1c84997'
   'f5efb4d2e64fa9e98121b8ae0473a7366f8e727176addb0b92f568e3c6d5c66b'
 )
@@ -143,19 +144,8 @@ check() {
   testargs+=('-k' "${karg:5}")  # Trim the leading ' and '.
 
   # Install into a local temporary virtual environment and run the tests there.
-  #
-  # New versions of pytest-asyncio (including the version in the Arch
-  # repositories) have a breaking change not supported by JupyterHub yet. See
-  #   https://github.com/jupyterhub/jupyterhub/pull/4663
-  #   https://github.com/jupyterhub/jupyterhub/pull/4664
-  #   https://github.com/pytest-dev/pytest-asyncio/issues/718
-  # This is only needed for check(), and is installed to a virtual environment
-  # that will not impact any other processes, hence using pip and not creating
-  # an AUR package with an old version and dealing with package conflicts.
   python -m venv --system-site-packages test-env
-  test-env/bin/python -m pip install --no-deps --ignore-installed 'pytest-asyncio>=0.17,<0.23'
   test-env/bin/python -m installer "dist/jupyterhub-$pkgver"-*.whl
-
   test-env/bin/python ci/check_installed_data.py
   test-env/bin/python -m pytest -v jupyterhub "${testargs[@]}"
 }
@@ -167,8 +157,8 @@ package() {
   python -m installer --destdir="$pkgdir" "dist/jupyterhub-$pkgver"-*.whl
   install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname/" COPYING.md
 
-  # Remove unit tests from the final package.
-  rm -rf "$pkgdir/"usr/lib/python*/site-packages/jupyterhub/tests
+  # Previously we removed unit tests from the final package. However, some plugins,
+  # e.g., jupyterhub-nativeauthenticator, reuse some fixtures etc so now we keep them.
 
   # Remove $srcdir references from npm metadata.
   find "$pkgdir" -name package.json -print0 | xargs -r -0 sed -i '/_where/d'
