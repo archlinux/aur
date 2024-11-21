@@ -1,8 +1,8 @@
 # Maintainer : Karl-Felix Glatzer <karl[dot]glatzer[at]gmx[dot]de>
 
 pkgname=mingw-w64-ffmpeg
-pkgver=7.0.2
-pkgrel=3
+pkgver=7.1
+pkgrel=1
 epoch=1
 pkgdesc="Complete solution to record, convert and stream audio and video (mingw-w64)"
 arch=('any')
@@ -16,6 +16,7 @@ depends=(
   'mingw-w64-dav1d'
   'mingw-w64-fontconfig'
   'mingw-w64-fribidi'
+  'mingw-w64-glslang'
   'mingw-w64-gmp'
   'mingw-w64-gnutls'
   'mingw-w64-gsm'
@@ -47,6 +48,7 @@ depends=(
   'mingw-w64-sdl2'
   'mingw-w64-snappy'
   'mingw-w64-speex'
+  'mingw-w64-spirv-tools' # required by glslang
   'mingw-w64-srt'
   'mingw-w64-vulkan-icd-loader'
   'mingw-w64-x264'
@@ -55,6 +57,8 @@ depends=(
   'mingw-w64-zimg'
   'mingw-w64-zlib'
 )
+
+# 'mingw-w64-zeromq'
 # 'mingw-w64-rubberband'
 # 'mingw-w64-vapoursynth'
 # 'mingw-w64-opencl-icd'
@@ -62,12 +66,12 @@ depends=(
 options=(!strip !buildflags staticlibs !debug)
 makedepends=('mingw-w64-amf-headers' 'mingw-w64-avisynthplus' 'mingw-w64-frei0r-plugins' 'mingw-w64-gcc' 'mingw-w64-pkg-config' 'mingw-w64-vulkan-headers' 'git' 'yasm')
 # 'mingw-w64-opencl-headers'
-_tag=a18b979d17fa169a6f93c5be8732533c8e06337d
+_tag=507a51fbe9732f0f6f12f43ce12431e8faa834b7
 #source=("git+https://git.ffmpeg.org/ffmpeg.git#tag=n${pkgver}"
 source=(git+https://git.ffmpeg.org/ffmpeg.git?signed#tag=${_tag}
         add-av_stream_get_first_dts-for-chromium.patch
         configure.patch)
-b2sums=('bcc0fb367d2822665f0918292a0cf581e0119d6ba6d2e3d0b6e794b6f74d30c118b5c47e26b5687473f01b346f8ec7e885f80729ce6115e18003b2371ff4553f'
+b2sums=('c7ec6b1db61608195117b79f3f0c8f6323c3abeb39721359da0f10e7d739da8301e04ff5fa83c022f86fc760f66e00066f9a50d97b771f797ccc679f9d912c40'
         '555274228e09a233d92beb365d413ff5c718a782008075552cafb2130a3783cf976b51dfe4513c15777fb6e8397a34122d475080f2c4483e8feea5c0d878e6de'
         '7171cf5055c4356f9aeb42a5bb550b3380cad20fff8dc4e9114d4fbb17e95bfe40c1057c3b7188641a1d7b9d026105e3eb0175789d7af30c5999793dfddf97fb')
 validpgpkeys=(DD1EC9E8DE085C629B3E1846B18E8928B3948D64) # Michael Niedermayer <michael@niedermayer.cc>
@@ -126,6 +130,7 @@ build() {
       --enable-libfreetype \
       --enable-frei0r \
       --enable-libfribidi \
+      --enable-libglslang \
       --enable-libgsm \
       --enable-libharfbuzz \
       --enable-libjxl \
@@ -161,12 +166,15 @@ build() {
       --enable-version3 \
       --enable-vulkan \
       --disable-doc \
+      --disable-w32threads \
       --x86asmexe=yasm
 
       # fix linking of mbedtls
       sed -i -e 's/-lmbedtls/-lmbedtls -lmbedx509 -lmbedcrypto/' ./ffbuild/config.mak
       sed -i -e 's/-lmbedtls/-lmbedtls -lmbedx509 -lmbedcrypto/' ./ffbuild/config.sh
 
+# TODO: mingw-w64-zeromq static library missing from package (also out-of-date)
+# --enable-libzmq \
 # Requires vsscript (which depends on cross compiling vapoursynth python modules)
 #      --enable-vapoursynth \
 # Enable opencl if mingw-w64-opencl-icd works
