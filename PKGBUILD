@@ -1,9 +1,8 @@
-# Maintainer: Eli Schwartz <eschwartz@archlinux.org>
-
-# All my PKGBUILDs are managed at https://github.com/eli-schwartz/pkgbuilds
+# Maintainer: envolution
+# Contributor: Eli Schwartz <eschwartz@archlinux.org>
 
 pkgname=vim-sensible
-pkgver=1.2
+pkgver=2.0
 pkgrel=1
 pkgdesc="vim defaults everyone can agree on"
 arch=('any')
@@ -12,7 +11,7 @@ license=('custom:vim')
 groups=('vim-plugins')
 depends=('vim')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('3b83f8f6445fff628cab4a5571984eb853fe9c3d53297ff3e8a647d1576940f3')
+sha256sums=('1cfb72afe7c291f4b44e1b703cc52b0ac62a6a5aa82238fc3599f360505730f2')
 
 package() {
     cd "${srcdir}/${pkgname}-${pkgver}"
