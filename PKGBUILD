@@ -4,8 +4,8 @@ HNCCONTEXT=opt/hnc/hoffice11/Bin/qt/plugins/platforminputcontexts
 NIMFLIB=libqt5im-nimf.so
 KIMELIB=libkime-qt-5.11.3.so
 
-_host='Host: cdn.hancom.com'
-_referer='Referer: https://www.hancom.com/cs_center'
+_host='Host: mediafire.com'
+_referer='Referer: https://www.mediafire.com/file/74beldrv8vkq3ga/1732118678_hoffice_11.20.0.1520_amd64.deb/file'
 DLAGENTS=("https::/usr/bin/curl -# -o %o -H ${_referer// /\\ } -H ${_host// /\\} %u")
 
 pkgname='hoffice-2022-beta'
@@ -14,7 +14,7 @@ pkgrel=4
 pkgdesc='Office document editor for Linux. Hancom Office Editor is an application to allow you to edit office documents that is developed and distributed by Hancom Inc.'
 arch=('x86_64')
 source=(
-  'https://download943.mediafire.com/23qptb6d8wwgdUTv4TEK0jj2Q3ImndvB4Gpo2MPELYbe1UeR-VgDHWvQR4uho05MDtCxjpoqrENH3D2JAk5Uqh2GootTnC6a17pBZVxHRivOb1HjRV2QE2_m1XMXJHbPkV1QuiOTOk7PdGxQcg7G5qt1iS2GZHI7REIay_rc_u2EbA/74beldrv8vkq3ga/1732118678_hoffice_11.20.0.1520_amd64.deb'
+  'https://download943.mediafire.com/i031bw4pavfg4VM2k5pak7-itFP5SMYB-kKdMopQGSuojFmwygiqLL-3BmdCGltNdi0WbHNAVblvfp2qf6gn9ypFjQpJ1tCLsnxrY0SL1d9C677AWldRSS9xGpp_7D_R3iMQYMIoFpYxcB_y4wPJCV2CMUXqgj-4ceERNdyR4Twmlg/74beldrv8vkq3ga/1732118678_hoffice_11.20.0.1520_amd64.deb'
   'LICENSE'
   'libqt5im-nimf.so'
 )

@@ -22,7 +22,7 @@ pkgbase = hoffice-2022-beta
 	depends = zlib
 	provides = hoffice-2022-beta=${pkgver}
 	conflicts = hoffice
-	source = https://download943.mediafire.com/23qptb6d8wwgdUTv4TEK0jj2Q3ImndvB4Gpo2MPELYbe1UeR-VgDHWvQR4uho05MDtCxjpoqrENH3D2JAk5Uqh2GootTnC6a17pBZVxHRivOb1HjRV2QE2_m1XMXJHbPkV1QuiOTOk7PdGxQcg7G5qt1iS2GZHI7REIay_rc_u2EbA/74beldrv8vkq3ga/1732118678_hoffice_11.20.0.1520_amd64.deb
+	source = https://download943.mediafire.com/i031bw4pavfg4VM2k5pak7-itFP5SMYB-kKdMopQGSuojFmwygiqLL-3BmdCGltNdi0WbHNAVblvfp2qf6gn9ypFjQpJ1tCLsnxrY0SL1d9C677AWldRSS9xGpp_7D_R3iMQYMIoFpYxcB_y4wPJCV2CMUXqgj-4ceERNdyR4Twmlg/74beldrv8vkq3ga/1732118678_hoffice_11.20.0.1520_amd64.deb
 	source = LICENSE
 	source = libqt5im-nimf.so
 	sha256sums = 1ecb2f82e915b49706d1f5f6d206f8bd4a9384fda2bd56798c94046865fe5730
