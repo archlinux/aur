@@ -1,0 +1,17 @@
+pkgbase = minestar-launcher-appimage
+	pkgdesc = Minestar Launcher for the minestar project.
+	pkgver = 1.5.1
+	pkgrel = 1
+	url = https://minestar.com.ua/
+	arch = x86_64
+	license = EULA
+	depends = glibc
+	depends = hicolor-icon-theme
+	depends = zlib
+	provides = minestar-launcher
+	options = !strip
+	options = !emptydirs
+	source_x86_64 = minestar-launcher-appimage-1.5.1.AppImage::https://github.com/MinestarUA/launcher-releases/releases/download/v1.5.1/minestar-launcher-1.5.1.AppImage
+	b2sums_x86_64 = 2ad1a434f6bf1adce2a7508af3b308a801577106ba692167767464bd3a3a5b200bbbd3ed4c264621235c273194adba963dce565a33b7aad2cd27d9415fcf06ed
+
+pkgname = minestar-launcher-appimage
