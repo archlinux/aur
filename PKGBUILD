@@ -19,7 +19,7 @@ source=(
   'libqt5im-nimf.so'
 )
 
-url='https://github.com/Ein420/hoffice-2022-beta/'
+url='https://www.hancom.com'
 
 license=('custom:hoffice')
 makedepends=('wget')
