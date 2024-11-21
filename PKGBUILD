@@ -1,5 +1,6 @@
 # Maintainer: KUHTOXO https://aur.archlinux.org/account/kuhtoxo
-# Contributor: Zoddo <archlinux+aur@zoddo.fr>
+# Maintainer: Zoddo <archlinux+aur@zoddo.fr>
+# Contributor: void09 <sgmihai at gmail dot com>
 # Contributor: taotieren <admin@taotieren.com>
 # Contributor: Leon Möller <jkhsjdhjs at totally dot rip>
 
@@ -10,7 +11,7 @@ pkgrel=1
 pkgdesc="Yet another remote desktop software, written in Rust. Works out of the box, no configuration required."
 url="https://github.com/rustdesk/rustdesk"
 license=('AGPL-3.0')
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 provides=("${pkgname%-bin}")
 conflicts=("${pkgname%-bin}")
 depends=(
@@ -30,8 +31,10 @@ optdepends=(
     'libayatana-appindicator: tray icon'
 )
 options=('!strip' '!lto' '!debug')
-source=("${pkgbase%-bin}-${pkgver}-$CARCH.pkg.tar.zst::$url/releases/download/${pkgver/_/-}/rustdesk-${pkgver/_/-}-0-$CARCH.pkg.tar.zst")
-sha256sums=('c782d9837d25fbb7a073a658d61325213a8585e982508b4679b0c317c7a8412d')
+source_x86_64=("${pkgbase%-bin}-${pkgver}-x86_64.pkg.tar.zst::$url/releases/download/${pkgver/_/-}/rustdesk-${pkgver/_/-}-0-x86_64.pkg.tar.zst")
+source_aarch64=("${pkgbase%-bin}-${pkgver}-aarch64.rpm::$url/releases/download/${pkgver/_/-}/rustdesk-${pkgver/_/-}-0.aarch64.rpm")
+sha256sums_x86_64=('c782d9837d25fbb7a073a658d61325213a8585e982508b4679b0c317c7a8412d')
+sha256sums_aarch64=('ff38adae4b92dbf1cd546a0a8ef5fb5e573e3c81942c8913f96fad06e0f6bd9b')
 
 install=$pkgname.install
 
