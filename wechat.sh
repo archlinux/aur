@@ -257,10 +257,10 @@ function execApp() {
 		--ro-bind /sys/dev/char /sys/dev/char \
 		--ro-bind /sys/devices /sys/devices \
 		--dir /sandbox \
-		--ro-bind /usr/lib/portable/open \
-			/sandbox/chromium \
-		--ro-bind /usr/lib/portable/open \
-			/sandbox/firefox \
+		--ro-bind /usr/lib/wechat/open \
+			/sandbox/open \
+		--ro-bind /usr/lib/wechat/open \
+			/sandbox/open \
 		--ro-bind /usr/lib/wechat/mimeapps.list \
 			"${XDG_DATA_HOME}"/WeChat_Data/.config/mimeapps.list \
 		--proc /proc \

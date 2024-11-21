@@ -1,7 +1,7 @@
 # Maintainer: Kimiblock Moe
 pkgname=wechat
 pkgver=4.0.0.23
-pkgrel=9
+pkgrel=10
 epoch=
 pkgdesc="微信是一种生活方式. 可选沙盒支持."
 arch=('x86_64' 'aarch64' 'loong64')
@@ -16,7 +16,7 @@ provides+=(wechat-uos-bwrap wechat-uos-qt wechat-bin wechat-universal wechat-uni
 replaces+=(wechat-uos-bwrap wechat-uos-qt wechat-bin wechat-universal wechat-universal-bwrap)
 
 depends=(
-	#"wechat-uos-qt"
+	#"xxd"
 	"xdg-user-dirs"
 	"xorg-xhost"
 	"findutils"
@@ -109,7 +109,7 @@ source_loong64=(
 )
 
 
-md5sums=('226583623f3730ea7b23d7502666905f'
+md5sums=('7aac9dbbed208bbbad378b42b5480dd4'
          '89ae77c95f205d0a7f9347f8251ce742'
          '468e0367346707c026e577e7bf3e3a82'
          'c99c42e49fb1650df340f3a38bd86d5e'
