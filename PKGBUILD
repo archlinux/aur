@@ -2,7 +2,7 @@
 
 pkgname=dektec-utilities
 pkgver=17.06.24
-pkgrel=4
+pkgrel=5
 pkgdesc="DekTec utilities DtEpc, DtPlay, DtRecord and DtInfoCL"
 arch=('x86_64')
 url="https://www.dektec.com/downloads/utilities/"
@@ -13,14 +13,14 @@ _dtepc=2.13.1
 _dtplay=4.18.0
 _dtrecord=4.15.1
 _dtinfocl=1.5.2
-_sdk=2024.09.0
+_sdk=2024.11.0
 source=("https://www.dektec.com/products/SDK/DTAPI/Downloads/LinuxSDK_v${_sdk}.tar.gz"
         "https://www.dektec.com/products/applications/DtEpc/downloads/DtEpc-${_dtepc}.zip"
         "https://www.dektec.com/products/applications/DtInfoCL/downloads/DtInfoCL_v${_dtinfocl}.zip"
         "https://www.dektec.com/products/applications/DtPlay/downloads/DtPlay_v${_dtplay}.zip"
         "https://www.dektec.com/products/applications/DtRecord/downloads/DtRecord_v${_dtrecord}.zip")
 noextract=("DtPlay_v${_dtplay}.zip" "DtRecord_v${_dtrecord}.zip")
-sha256sums=('da4763b3174cfa2e4817bb52818d72e5941ba0a6a083cb2be4714aa8bd520623'
+sha256sums=('4f33e0ea6ded407f026c1e6cd4a3f17601adef23181f268fc53d67d2098e1c87'
             '4fbbfe09d55b3528a6a45bc6a2effce3ba0431d7ac141bf190423accc7c4a435'
             'd93fd5372e3ae09942a6d21c363f3eb4c527d2ae631a103df81487942dbdfbce'
             '5ddeff15b4a425c85b07fec14773adde88330326c601a7393f4337b8bb73bd00'
