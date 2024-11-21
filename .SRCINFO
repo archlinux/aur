@@ -1,7 +1,7 @@
 pkgbase = revolt-desktop
 	pkgdesc = User-first chat platform built with modern web technologies.(Use system-wide electron)
 	pkgver = 1.0.8
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/revoltchat/desktop
 	arch = any
 	license = AGPL-3.0-only

@@ -5,7 +5,7 @@ pkgname=revolt-desktop
 pkgver=1.0.8
 _electronversion=33
 _nodeversion=20
-pkgrel=3
+pkgrel=4
 pkgdesc="User-first chat platform built with modern web technologies.(Use system-wide electron)"
 url="https://github.com/revoltchat/desktop"
 license=('AGPL-3.0-only')
@@ -60,9 +60,9 @@ build() {
         export disturl=https://registry.npmmirror.com/-/binary/node/
     fi
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
-    NODE_ENV=development    npx yarn install
-    NODE_ENV=production     npx yarn run build:bundle
-    NODE_ENV=production     npx yarn electron-builder --linux dir -c.electronDist="${electronDist}"
+    NODE_ENV=development    yarn install
+    NODE_ENV=production     yarn run build:bundle
+    NODE_ENV=production     yarn electron-builder --linux dir -c.electronDist="${electronDist}"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
