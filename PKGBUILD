@@ -8,7 +8,6 @@ pkgdesc='Post-install hook to update the arkenfox user.js'
 url='https://github.com/aartoni/arkenfox-hooks'
 license=('Unlicense')
 arch=('any')
-makedepends=(cargo)
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 backup=('usr/share/libalpm/hooks/arkenfox.hook')
