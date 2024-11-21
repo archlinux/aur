@@ -1,0 +1,11 @@
+pkgbase = fast-cpp-csv-parser-git
+	pkgdesc = Fast C++ CSV Parser
+	pkgver = r70.758f566
+	pkgrel = 1
+	url = https://github.com/ben-strasser/fast-cpp-csv-parser
+	arch = any
+	license = BSD
+	source = git+https://github.com/ben-strasser/fast-cpp-csv-parser.git
+	sha256sums = SKIP
+
+pkgname = fast-cpp-csv-parser-git
