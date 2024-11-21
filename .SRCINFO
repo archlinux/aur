@@ -1,0 +1,16 @@
+pkgbase = python-home-assistant-bluetooth
+	pkgdesc = Home Assistant Bluetooth Models and Helpers
+	pkgver = 1.13.0
+	pkgrel = 1
+	url = https://github.com/home-assistant-libs/home-assistant-bluetooth
+	arch = any
+	license = Apache-2.0
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-poetry-core
+	makedepends = python-wheel
+	depends = python-habluetooth
+	source = home-assistant-bluetooth-1.13.0.tar.gz::https://files.pythonhosted.org/packages/source/h/home-assistant-bluetooth/home_assistant_bluetooth-1.13.0.tar.gz
+	sha256sums = 3fa8a0d05a844063501a37e0b98501337e7035623b345d5c285a778e9416fd93
+
+pkgname = python-home-assistant-bluetooth
