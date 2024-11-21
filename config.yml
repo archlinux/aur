@@ -10,4 +10,5 @@ credentials:
   legacy_username_password:
     username: username
     password: password
+vpn: false
 

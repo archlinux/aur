@@ -2,7 +2,7 @@
 
 pkgname=geph5-client
 pkgver=0.2.18
-pkgrel=1
+pkgrel=2
 pkgdesc="The command-line Geph5 client"
 arch=('x86_64')
 url="https://github.com/geph-official/geph5"
@@ -17,9 +17,9 @@ source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgn
         "geph5-client.user.service"
         'geph5-client.service')
 md5sums=('2725c1af360bcac2ec71058a5828026e'
-         '6ab04b99d6def04c2d6a06c4ba037f8e'
+         '94b60374b70a387cf6bc34f58fde6d37'
          '186cca941b1c4a510a71bf79a0ef8921'
-         'd922cdc2a992ee2cd4241808fa30aba1')
+         '6077536cadaf8f80a15f62b60071efdb')
 
 prepare() {
   export RUSTUP_TOOLCHAIN=stable
