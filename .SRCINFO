@@ -1,0 +1,16 @@
+pkgbase = python-btsocket
+	pkgdesc = Python library for BlueZ Bluetooth Management API
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/ukBaz/python-btsocket
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	source = btsocket-0.3.0.tar.gz::https://files.pythonhosted.org/packages/source/b/btsocket/btsocket-0.3.0.tar.gz
+	sha256sums = 7ea495de0ff883f0d9f8eea59c72ca7fed492994df668fe476b84d814a147a0d
+
+pkgname = python-btsocket
