@@ -3,9 +3,9 @@
 # Following: https://wiki.archlinux.org/title/Rust_package_guidelines
 # Take the commit from the releases at https://github.com/stackabletech/stackable-cockpit/releases/
 
-_commit=885b3472e65454a5e6994aa3956e8c74711bea28
+_commit=55e80876079076b384b984f01a7f78f0bb754812
 pkgname=stackablectl
-pkgver=24.11.0
+pkgver=24.11.1
 pkgrel=1
 pkgdesc="Command line tool to interact with a Stackable Data Platform"
 arch=('x86_64')
