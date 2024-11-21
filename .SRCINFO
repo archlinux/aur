@@ -1,0 +1,25 @@
+pkgbase = filepack-bin
+	pkgdesc = Command-line file hashing and verification utility written in Rust
+	pkgver = 0.0.6
+	pkgrel = 1
+	url = https://github.com/casey/filepack
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	provides = filepack
+	conflicts = filepack
+	source = LICENSE-0.0.6::https://raw.githubusercontent.com/casey/filepack/0.0.6/LICENSE
+	source = README-0.0.6.md::https://raw.githubusercontent.com/casey/filepack/0.0.6/README.md
+	source = DESIGN-0.0.6.md::https://raw.githubusercontent.com/casey/filepack/0.0.6/DESIGN.md
+	source = CHANGELOG-0.0.6.md::https://raw.githubusercontent.com/casey/filepack/0.0.6/CHANGELOG.md
+	sha256sums = a2010f343487d3f7618affe54f789f5487602331c0a8d03f49e9a7c547cf0499
+	sha256sums = 3ad90a75ac9f0bd68fa11298c9ddf1fda286d050776ddc8a705bfc29ed5974b4
+	sha256sums = c1865d4420ca204ea3fbc52444ae4ff44d3f1d8d356512fca242fcaa78ee9fcb
+	sha256sums = 3d6644688f86710083ba97ae293d210a327fe4ca7190cae92402ca4adfa44f03
+	source_x86_64 = https://github.com/casey/filepack/releases/download/0.0.6/filepack-0.0.6-x86_64-unknown-linux-musl.tar.gz
+	sha256sums_x86_64 = dc7424aad8b4544599a0ba419b54b5370974224ce8bf451615b8dc9475832bdc
+	source_aarch64 = https://github.com/casey/filepack/releases/download/0.0.6/filepack-0.0.6-aarch64-unknown-linux-musl.tar.gz
+	sha256sums_aarch64 = 20980513a35efed491b69e18d9e7cf058b77c56fa0a2ef1419f6719617b6a6b4
+
+pkgname = filepack-bin
