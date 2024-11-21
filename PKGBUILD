@@ -1,7 +1,7 @@
 # Maintainer: Vyacheslav Konovalov <🦀vk@protonmail.com>
 
 pkgname=nym-wallet
-pkgver=1.2.14
+pkgver=1.2.15
 pkgrel=1
 pkgdesc='The next generation of privacy infrastructure (Nym Wallet)'
 arch=('x86_64')
