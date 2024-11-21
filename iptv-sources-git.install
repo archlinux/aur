@@ -9,13 +9,13 @@ You can review and modify configuration at /etc/pm2/conf.d/${_pkgname}.json.
 Detail Environment Variables at https://github.com/HerbertHe/iptv-sources.
 
 You can manually start the services using the following commands:
-  pm2 start /etc/pm2/conf.d/${_pkgname}.json
-  pm2 save
+  sudo pm2 start /etc/pm2/conf.d/${_pkgname}.json
+  sudo pm2 save
 
 Then you can use it with http://127.0.0.1:8080 or http://[::1]:8080.
 
 To enable PM2 startup on boot, run:
-  pm2 startup
+  sudo pm2 startup
 
 Refer to the PM2 documentation for more details:
   https://pm2.keymetrics.io/docs/usage/quick-start
@@ -31,10 +31,10 @@ post_upgrade() {
 PM2 configuration for ${pkgname} has been updated.
 
 If the services are already running, restart them manually using:
-  pm2 delete ${_pkgname}-serve
-  pm2 delete ${_pkgname}-m3u
-  pm2 start /etc/pm2/conf.d/${_pkgname}.json
-  pm2 save
+  sudo pm2 delete ${_pkgname}-serve
+  sudo pm2 delete ${_pkgname}-m3u
+  sudo pm2 start /etc/pm2/conf.d/${_pkgname}.json
+  sudo pm2 save
 
 EOF
 }
@@ -42,9 +42,9 @@ EOF
 pre_remove() {
     cat <<EOF
 If you no longer need the PM2 services, remove them manually using:
-  pm2 delete ${_pkgname}-serve
-  pm2 delete ${_pkgname}-m3u
-  pm2 save
+  sudo pm2 delete ${_pkgname}-serve
+  sudo pm2 delete ${_pkgname}-m3u
+  sudo pm2 save
 
 This ensures a clean removal of PM2 configurations.
 EOF
