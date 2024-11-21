@@ -1,6 +1,6 @@
 pkgbase = postgresql-git
 	pkgdesc = Sophisticated object-relational DBMS (Git version)
-	pkgver = 17.beta2.r224.gd3cc5ffe81
+	pkgver = 17.beta2.r1114.gda94e871e8
 	pkgrel = 1
 	url = https://www.postgresql.org/
 	arch = x86_64
@@ -44,7 +44,7 @@ pkgbase = postgresql-git
 	source = postgresql.tmpfiles
 	sha512sums = SKIP
 	sha512sums = 9f82c8e6982cc1ab4e5048c485a0c5a75fef32bf610bfeaccb8c4c28bb84ff0ebca8de83efc03044cf98275296babdcd9e12119f5320cedd899285e8a6f48b00
-	sha512sums = 524bafe0efd9ba9dc23af38deb3bfbf24c60368ad7cd89f525c3891dfe0beeb6aadd52a0465c64d70c841f7b554e35032d1ba1f461fd452b1dd73a0e4e75b400
+	sha512sums = 7c38d6b468ad4502b741e72c8e5109c1ef8c561f52d2c4d96a030620659fd4b0e7e3d2438d31273318cef07a6f30f9134e18bb0419e324b40e62c35846b7b6e3
 	sha512sums = 1e6183ab0eb812b3ef687ac2c26ce78f7cb30540f606d20023669ac00ba04075487fb72e4dc89cc05dab0269ff6aca98fc1167cc75669c225b88b592482fbf67
 	sha512sums = 9ab4da01337ffbab8faec0e220aaa2a642dbfeccf7232ef2645bdc2177a953f17ee3cc14a4d8f8ebd064e1dae8b3dba6029adbffb8afaabea383963213941ba8
 	sha512sums = c8350510e73dd6af9e4779ce68ba26991d11ecde17dee61143c3baa858f7931b3a3980114b3c74cffc57309f636fcb7b9205ce95f96ba68a107c2dba55e7dbb5

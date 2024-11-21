@@ -1,5 +1,5 @@
 diff --git a/src/pl/plperl/GNUmakefile b/src/pl/plperl/GNUmakefile
-index 51f8890d15..00d05a5e86 100644
+index 558c764aad..8e85d64265 100644
 --- a/src/pl/plperl/GNUmakefile
 +++ b/src/pl/plperl/GNUmakefile
 @@ -60,6 +60,9 @@ ifeq ($(PORTNAME), cygwin)
@@ -9,6 +9,6 @@ index 51f8890d15..00d05a5e86 100644
 +# Force rpath to be used even though we disable it everywhere else
 +SHLIB_LINK += $(rpath)
 +
- REGRESS_OPTS = --dbname=$(PL_TESTDB)
+ REGRESS_OPTS = --dbname=$(PL_TESTDB) --dlpath=$(top_builddir)/src/test/regress
  REGRESS = plperl_setup plperl plperl_lc plperl_trigger plperl_shared \
  	plperl_elog plperl_util plperl_init plperlu plperl_array \
