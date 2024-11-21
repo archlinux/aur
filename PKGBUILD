@@ -2,7 +2,7 @@
 
 _pkgname=ia
 pkgname=${_pkgname}-bin
-pkgver=4.1.0
+pkgver=5.0.4
 pkgrel=1
 pkgdesc="A Python and Command-Line Interface to Archive.org"
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('GPL')
 provides=(${pkgname})
 conflicts=(${pkgname})
 source=("${_pkgname}-${pkgver}::https://archive.org/download/ia-pex/ia")
-sha512sums=('961724a3c52b5c5504da6fa9d5e4aa418259c40b9b7aa887a019258547ca4cad390a8aeb6d9e4f8db0071b99abb62300e8fa80109ebd0ab2a43bf0fbefc970c0')
+sha512sums=('5924af30319894b6c37acd16f3b625ae037d426148dacebf51756fe3e9db3388fbb00a290ea3f816d8b2240ddacba853952ab0e248b3b684b67d8106897bb796')
 noextract=("${_pkgname}-${pkgver}")
 
 package() {
