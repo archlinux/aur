@@ -2,13 +2,13 @@
 # Contributor: Josef Miegl <josef@miegl.cz>
 
 pkgname=libosmo-netif-git
-pkgver=1.5.1.r0.g01a7d40
-pkgrel=2
+pkgver=1.5.1.r7.g75813dd7
+pkgrel=1
 pkgdesc="Osmocom's abstract network interfacing library"
 url="http://osmocom.org/projects/libosmo-netif"
 arch=('i686' 'x86_64' 'aarch64' 'armv7h')
 license=('GPL-2.0-or-later')
-depends=('lksctp-tools' 'libpcap' 'libosmocore-git' 'libosmo-abis-git')
+depends=('lksctp-tools' 'libpcap' 'libosmocore-git')
 makedepends=('git')
 provides=("${pkgname%-git}=${pkgver}"
           'libosmonetif.so=11-64')

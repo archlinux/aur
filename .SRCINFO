@@ -1,7 +1,7 @@
 pkgbase = libosmo-netif-git
 	pkgdesc = Osmocom's abstract network interfacing library
-	pkgver = 1.5.1.r0.g01a7d40
-	pkgrel = 2
+	pkgver = 1.5.1.r7.g75813dd7
+	pkgrel = 1
 	url = http://osmocom.org/projects/libosmo-netif
 	arch = i686
 	arch = x86_64
@@ -12,8 +12,7 @@ pkgbase = libosmo-netif-git
 	depends = lksctp-tools
 	depends = libpcap
 	depends = libosmocore-git
-	depends = libosmo-abis-git
-	provides = libosmo-netif=1.5.1.r0.g01a7d40
+	provides = libosmo-netif=1.5.1.r7.g75813dd7
 	provides = libosmonetif.so=11-64
 	conflicts = libosmo-netif
 	source = git+https://gitea.osmocom.org/osmocom/libosmo-netif.git
