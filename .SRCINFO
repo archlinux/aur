@@ -1,7 +1,7 @@
 pkgbase = rime-tupa-sp
 	pkgdesc = TUPA-SP input for RIME
 	pkgver = 0.1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/syimyuzya/rime-tupa-sp
 	arch = x86_64
 	license = CC0

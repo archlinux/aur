@@ -2,7 +2,7 @@
 
 pkgname=rime-tupa-sp
 pkgver=0.1.2
-pkgrel=1
+pkgrel=2
 _commit=64215f0303045ca1cf92981630f857e243b12825
 pkgdesc="TUPA-SP input for RIME"
 arch=('x86_64')
@@ -32,5 +32,5 @@ package() {
   find . -type l -delete
   rm build/*.txt
   install -Dm644 *.yaml -t "$pkgdir"/usr/share/rime-data/
-  install -Dm644 build/tupa_sp.*.yaml -t "$pkgdir"/usr/share/rime-data/build/
+  install -Dm644 build/tupa_sp.* -t "$pkgdir"/usr/share/rime-data/build/
 }
