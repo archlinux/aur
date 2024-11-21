@@ -13,12 +13,12 @@ sha256sums=('43faf7e93e2cb66393686df59927df52e1405122f50544d0cb3e5571016b1f26')
 options=('!debug')
 
 prepare() {
-  cd $pkgname
+  cd "$pkgname-$pkgver"
   GOFLAGS="-mod=readonly" go mod vendor -v
 }
 
 build() {
-  cd $pkgname
+  cd "$pkgname-$pkgver"
   export CGO_LDFLAGS="$LDFLAGS"
   export CGO_CFLAGS="$CFLAGS"
   export CGO_CXXFLAGS="$CXXFLAGS"
@@ -35,12 +35,12 @@ build() {
 }
 
 check() {
-  cd $pkgname
+  cd "$pkgname-$pkgver"
   go test ./...
 }
 
 package() {
-  cd $pkgname
+  cd "$pkgname-$pkgver"
   install -Dm755 "$pkgname" "$pkgdir/usr/bin/$pkgname"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
