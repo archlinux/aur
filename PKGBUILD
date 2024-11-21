@@ -1,12 +1,13 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=kibot
-pkgver=1.7.0
+_name=${pkgname}
+pkgver=1.8.2
 pkgrel=1
 epoch=
 pkgdesc="KiCad automation utility"
 arch=('any')
-url="https://github.com/INTI-CMNB/KiBot"
+url="https://pypi.org/project/kibot"
 license=('AGPL-3.0-or-later')
 groups=()
 depends=(
@@ -21,7 +22,6 @@ depends=(
     kicad-pcb-diff
     kicost
     pandoc
-    pcbdraw
     python
     python-kiauto
     python-kibom
@@ -35,11 +35,12 @@ depends=(
     python-pyaml
     python-qrcodegen
     python-requests
+    python-svgpathtools
     python-xlsxwriter
     python-xvfbwrapper
     python-yaml
     xorg-server-xvfb
-    )
+)
 makedepends=('python-build'
     'python-installer'
     'python-setuptools'
@@ -49,25 +50,25 @@ checkdepends=(python-pytest)
 optdepends=('kicad-interactivehtmlbom: Interactive HTML BOM generation plugin for KiCad'
     'kicad-library: KiCad symbol, footprint and template libraries'
     'kicad-library-3d: KiCad 3D model libraries')
-provides=(kibot)
-conflicts=(kibot kibot-git)
+provides=(kibot pcbdraw)
+conflicts=(kibot pcbdraw)
 replaces=()
 backup=()
 options=()
 install=
 changelog=
-source=("KiBot-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
+source=("${_name}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 noextract=()
-sha256sums=('f4f0cf1f8e3da3f3919957ae3e041ce1e44f752aa281798f0c1ddedb95e70c5e')
+sha256sums=('9bb6f20d9c84ee430f5d5cfcb72303219e86bf27d83b94d8246440d2103e665c')
 #validpgpkeys=()
 
 build() {
-    cd "${srcdir}/KiBot-${pkgver}"
+    cd "${srcdir}/${_name}-${pkgver}"
     python -m build --wheel --no-isolation
 }
 
 package() {
-    cd "${srcdir}/KiBot-${pkgver}"
+    cd "${srcdir}/${_name}-${pkgver}"
     # python setup.py install --no-compile --root="$pkgdir"
     python -m installer --destdir="${pkgdir}" dist/*.whl
 }
