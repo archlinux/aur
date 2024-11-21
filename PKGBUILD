@@ -4,7 +4,7 @@
 
 _name=files_antivirus
 pkgname=nextcloud-app-files-antivirus
-pkgver=5.6.0
+pkgver=5.6.1
 pkgrel=1
 pkgdesc="Antivirus app for Nextcloud"
 arch=(any)
@@ -15,8 +15,8 @@ makedepends=(nextcloud yq)
 groups=(nextcloud-apps)
 options=(!strip)
 source=(${pkgname}-${pkgver}.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz)
-sha256sums=('4cbadffaf50ad41ceb990013da4ed907cc60f9692994b0aa2fff335115f5370e')
-b2sums=('26f83dc65c334128ca4a045ce13aec4a293e689800079fdcb27a3474aecde97b4084fe5f1fb75992ec1700d18af2804df0021acac7fe276052f6ab6b7be9a35b')
+sha256sums=('66eab5c357c0fa6784821c2e7b6f0a2e5114354c783f28a04c32fa53dc7745d2')
+b2sums=('2f6ebb089d7250b16c4278c208d9df989c3ef630719c7227cf6ee5ae4a78878a6a901c876dd252bec8d217aa1992677f5458f3adfe24930e85d94029aaa6f25e')
 
 # BEGIN boilerplate nextcloud app version clamping, see also other packages in group
 # 1. Call respective function helpers in check() and package() *after* cd'ing to the source directory
