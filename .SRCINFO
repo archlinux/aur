@@ -24,6 +24,6 @@ pkgbase = moodle-dl
 	depends = python-xmpppy>=0.7.1
 	depends = yt-dlp>=2021.10.22
 	source = https://github.com/C0D3D3V/Moodle-DL/archive/2.3.13.tar.gz
-	b2sums = SKIP
+	b2sums = f7991d7583828ec313cc62214a300ec5d3df29101fb59d71b70b6105db47f0e308ad57fc6730e8e870f62123f7d023a6749eaafe074886bda9a0e5f75575a116
 
 pkgname = moodle-dl
