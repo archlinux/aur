@@ -27,7 +27,7 @@ pkgname=('graphite-gtk-theme-git'
          'graphite-gtk-theme-nord-rimless-normal-compact-git'
          'graphite-gtk-theme-black-rimless-normal-compact-git')
 _reponame='Graphite-gtk-theme'
-pkgver=2023.05.17.r8.gb2e9ce2
+pkgver=2024.07.15.r18.g52d8e00
 pkgrel=1
 pkgdesc='Graphite gtk theme'
 arch=("any")
@@ -64,8 +64,8 @@ package_graphite-gtk-theme-wallpaper-git() {
     mkdir -p "${dist2}"
     cp Graphite-backgrounds.xml "${dist2}"
     cd "${srcdir}/${_reponame}/wallpaper"
-    cp Graphite-nord/* "${dist}"
-    cp Graphite/* "${dist}"
+    cp wallpapers-nord/* "${dist}"
+    cp wallpapers/* "${dist}"
 }
 package_graphite-gtk-theme-nord-git() {
     dist="${pkgdir}/usr/share/themes"
