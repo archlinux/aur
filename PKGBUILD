@@ -45,7 +45,8 @@ prepare() {
   done
 
   for f in ../../*.patch; do
-    git apply < $f
+    #git apply < $f
+    echo $f
   done
 }
 
