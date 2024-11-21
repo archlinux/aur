@@ -9,7 +9,7 @@ url='https://github.com/mekb-turtle/Foto'
 license=('MPL-2.0')
 source=("foto::git+${url}.git#tag=v$pkgver")
 sha256sums=(SKIP)
-makedepends=('git' 'pandoc')
+makedepends=('git' 'meson')
 depends=('sdl2' 'sdl2_image')
 provides=('foto')
 
