@@ -3,7 +3,7 @@
 pkgname=texmacs-guile3-git
 _pkgname=texmacs
 pkgver=2.1.4_r13455.75ff83898
-pkgrel=3
+pkgrel=4
 pkgdesc="Free scientific text editor, inspired by TeX and GNU Emacs. WYSIWYG
 editor and CAS-interface. Pulled from github.com/hammerfunctor/texmacs"
 arch=('x86_64')
@@ -19,7 +19,7 @@ optdepends=('transfig: convert images using fig2ps'
 makedepends=('ghostscript' 'cmake' 'git' 'gcc')
 _commit=75ff838984008e545b07f7c4d21cf25f1ff77137
 source=("${_pkgname}::git+https://github.com/hammerfunctor/texmacs#commit=$_commit")
-sha256sums=('SKIP')
+sha256sums=('19238e3d8d4b5894b8c9752b1f530a6be4a1d517000c85dc6c4efb4969e0b945')
 options=('!emptydirs')
 provides=('texmacs')
 conflicts=('texmacs')
@@ -64,6 +64,8 @@ build() {
 package() {
   cd "${srcdir}/${_pkgname}/build"
   make DESTDIR="$pkgdir" install
+  # fix the KDE/plasma on wayland clipboard bug
+  sed -i '$ s/texmacs.bin/texmacs.bin $([[ $XDG_CURRENT_DESKTOP == KDE ]] \&\& [[ $XDG_SESSION_TYPE == wayland ]] \&\& echo -platform wayland)/g' "$pkgdir"/usr/bin/texmacs
 
   # fix fig2ps script
   #sed -i 's|${prefix}|/usr|' "$pkgdir"/usr/bin/fig2ps
