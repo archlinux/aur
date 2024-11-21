@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=text-diff-view-bin
 _pkgname="Text Diff View"
-pkgver=1.4.1
+pkgver=1.4.2
 _electronversion=31
 pkgrel=1
 pkgdesc="Multi-platform text diff (text comparison) view electron app and web. Text-only.(Prebuilt version.Use system-wide electron)"
@@ -22,7 +22,7 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/kaishuu0123/text-diff-view/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('820d32ee3268582a79e6c19c8bccf9d18745145c8aee6e3a886673e6879fbdf7'
+sha256sums=('c58c7ab8482b75fd10692f26d3c56f8d534274290833f8a81008d6aaac6c3bf9'
             '2db6d2f8319742e183737299159ca2a72096629542c080492f13770b7d305c3b'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 build() {
