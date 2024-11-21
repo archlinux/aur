@@ -9,7 +9,7 @@
 
 _pkgname=exo
 pkgname="${_pkgname}-git"
-pkgver=4.19.0.r23.g804f7656
+pkgver=4.20pre1.r21.gcce2b58d
 pkgrel=1
 pkgdesc="Extensions to Xfce originally developed by os-cillation."
 arch=('i686' 'x86_64')
@@ -27,7 +27,10 @@ epoch=2
 
 pkgver(){
   cd "${_pkgname}"
-  git describe --long --tags | sed "s/^${_pkgname}-//g;s/\([^-]*-g\)/r\1/;s/-/./g"
+  # Pre-release versions include `xfce` in the version string;
+  # other packages have this too
+  # Error reported by user:shadeLight
+  git describe --long --tags | sed "s/^\(${_pkgname}\|xfce\)-//g;s/\([^-]*-g\)/r\1/;s/-/./g"
 
 }
 
