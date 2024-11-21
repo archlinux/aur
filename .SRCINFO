@@ -1,7 +1,7 @@
 pkgbase = lldap
-	pkgdesc = Light LDAP implementation
-	pkgver = 0.5.0
-	pkgrel = 2
+	pkgdesc = Light LDAP implementation for authentication
+	pkgver = 0.6.0
+	pkgrel = 1
 	url = https://github.com/lldap/lldap
 	arch = x86_64
 	license = GPL3
@@ -14,14 +14,14 @@ pkgbase = lldap
 	depends = gcc-libs
 	options = !lto
 	backup = etc/lldap.toml
-	source = lldap::git+https://github.com/lldap/lldap#commit=6f04530700cbe00e979c84483a8310b1339e9d6e
+	source = lldap::git+https://github.com/lldap/lldap#commit=098745ebc900788adb3ffdafc3dd196b7f5201aa
 	source = config-template.patch
 	source = systemd.service
 	source = sysusers.conf
 	source = tmpfiles.conf
 	b2sums = SKIP
-	b2sums = 3c1a5d25ecd028b11c42ef92dd4e9763d2817c63157fb9b31e1e6283cd1195063eeb7fb0867362cfd585921c09a1010e3a2c8545e69cd2d304d708d385a2da2c
-	b2sums = a03e0d02f423626e3c5796f2867b7a8f2207949987cb655967c85952db2f283c5fd0a5d1bc869332aec04ede54aa0f9740b507110ac5b604eb5703afe315f43a
+	b2sums = 0460040b0541b4cf388ee4a81adbbfbb331a4fc52d484b7a4f4ba918cb7664e98ef3ae8a21a8eeb92f124f57a0d5a7814004a7d59a4282c22b89c3855b757ce8
+	b2sums = 9d2688aae8e36d56759c407e76816f4d2a450c92fd956b92145fc0ba52902c32283d8a939478e6f866ba6624f1c11a47e243208f3aa11bfb453d5a937be3c914
 	b2sums = e491337a2ba4ca68ed6afe3a0779a608f718da4107547276562582bc24b7ab21af724b4026adfe3b845ef9e81284bb54da548b8f48b4b1b1bf8525316f990f82
 	b2sums = 1caff6be850db02f3dcd8d4ca12a2f18acf40c2900cb2d0866cf3a3c131bda9c9bf5d32a072f250f1d0700ac7dd3e43f05d4d33dd2e5f21c6a983a57e1c5adcc
 
