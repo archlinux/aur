@@ -106,7 +106,7 @@ function package_wechat() {
 	mkdir -p "${pkgdir}"/opt
 	cp -r opt/apps/com.tencent.wechat \
 		"${pkgdir}"/opt/wechat
-	install -Dm 644 portable-config $pkgdir/usr/lib/wechat/portable
+	install -Dm644 portable-config $pkgdir/usr/lib/wechat/portable
 	install -Dm644 wechat.desktop \
 		"${pkgdir}/usr/share/applications/wechat.desktop"
 	install -Dm755 wechat.sh \
