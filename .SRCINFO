@@ -1,0 +1,11 @@
+pkgbase = rapidcsv
+	pkgdesc = C++ CSV parser library
+	pkgver = 8.84
+	pkgrel = 1
+	url = https://github.com/d99kris/rapidcsv
+	arch = any
+	license = BSD
+	source = https://raw.githubusercontent.com/d99kris/rapidcsv/refs/tags/v8.84/src/rapidcsv.h
+	sha256sums = 85828a386ec331db48b67d8042a834ca35fd8ac58e8e70f72733689bc6383563
+
+pkgname = rapidcsv
