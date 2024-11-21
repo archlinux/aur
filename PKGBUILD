@@ -46,4 +46,16 @@ build() {
 package() {
   cd "$_pkbase-$pkgver"
   install -Dm755 "build/$pkgname" "$pkgdir/usr/bin/$pkgname"
+
+ # bash completion
+ install -dm 755 "$pkgdir/usr/share/bash-completion/completions"
+ "build/$pkgname" completion bash > "$pkgdir/usr/share/bash-completion/completions/$pkgname"
+
+  # fish completion
+  install -dm 755 "$pkgdir/usr/share/fish/completions"
+  "build/$pkgname" completion fish > "$pkgdir/usr/share/fish/completions/$pkgname.fish"
+
+  # zsh completion
+  install -dm 755 "$pkgdir/usr/share/zsh/site-functions"
+  "build/$pkgname" completion zsh > "$pkgdir/usr/share/zsh/site-functions/_$pkgname"
 }
