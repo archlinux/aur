@@ -3,7 +3,7 @@
 pkgbase=purc-git
 pkgname=purc-git
 pkgver=0.9.19.r26.g1e47c60c2
-pkgrel=1
+pkgrel=2
 pkgdesc="The prime HVML interpreter for C/C++ Language."
 arch=(x86_64
     aarch64
@@ -29,8 +29,18 @@ provides=(${pkgbase%-git}
 conflicts=(${pkgbase%-git})
 replaces=(domruler
     purc-fetcher)
-depends=(glib2
-    glibc)
+depends=(
+    gcc-libs
+    glib2
+    glibc
+    libgcrypt
+    libsoup3
+    libxml2
+    ncurses
+    sqlite
+    openssl
+    python
+    zlib)
 makedepends=(
     #     avahi
     bison
@@ -45,8 +55,6 @@ makedepends=(
     llvm
     gperf
     lua-lgi
-    ncurses
-    libgcrypt
     libjpeg-turbo
     libnotify
     libmanette
@@ -54,19 +62,13 @@ makedepends=(
     libsecret
     libseccomp
     libpsl
-    libxml2
     libxslt
-    libsoup3
     linux-api-headers
     icu
     #     libmariadbclient
-    openssl
-    sqlite
     systemd
     pkgconf
-    python
-    xorgproto
-    zlib)
+    xorgproto)
 checkdepends=(check
     gtest
     valgrind)
