@@ -15,7 +15,7 @@ _src_prefix="${pkgname%-bin}_${pkgver/_/-}"
 source_x86_64=("https://dldir1.qq.com/qqfile/qq/QQNT/${_md5_prefix}/${_src_prefix}_amd64.deb")
 source=("${pkgname%-bin}.sh")
 sha512sums=('f463c5cb3323b86d9ea312d75f1e53d064885dabde2d1d6a554e083e15b5ff7fc548a96670284e5e996456c7a2ce4a25e9acb80bf48459ea47a8813d62203cb4')
-sha512sums_x86_64=('7ca8e441441d05b8df7fc40a201af2fe7321c1d7fed38238433333455b8cdfdea0c881c577e6b300e160011ac44f3200ff8c128887eeb7eea8ab6feb54799395')
+sha512sums_x86_64=('4f9d513127b126c0daa78d32bdb8cc4777a9d9e2bbd01bee39273039379692267dabab521edb6acd9660be86cdacb686dbcb10cc36acdb9858b8f8d2cdf68f16')
 options=('!strip' '!debug')
 
 package() {
