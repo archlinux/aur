@@ -19,7 +19,7 @@ fi
 
 pkgname=${_pkgname}-dkms-staging-git
 pkgver=2.2.6.r0.gbaa5031456
-pkgrel=3
+pkgrel=4
 pkgdesc="Kernel modules for the Zettabyte File System (release staging branch) with compatibility patches for latest stable kernel."
 arch=('any')
 url="https://zfsonlinux.org/"
@@ -30,8 +30,8 @@ conflicts=("zfs-dkms")
 makedepends=("git")
 source=("${_pkgname}::git+${_git_repo}#${_git_branch}"
 	"linux610-zfs_log-add-flex-array-fields-to-log-record-structs.patch::https://github.com/darkbasic/zfs/commit/a296afc40d2a3666545a5689a438eb85ad06652b.patch?full_index=1"
-	"linux610-fix-tracepoints-definitions.patch::https://github.com/darkbasic/zfs/commit/ccf64c2c577e346603e4e301d9f1e55cba03cbd7.patch?full_index=1"
-	"linux610-lua-add-flex-array-field-to-TString-type.patch::https://github.com/darkbasic/zfs/commit/1480930a764dc6fb752d9ea4efc730d23719d2e4.patch?full_index=1"
+	"linux610-fix-tracepoints-definitions-bp.patch::https://github.com/darkbasic/zfs/commit/ccf64c2c577e346603e4e301d9f1e55cba03cbd7.patch?full_index=1"
+	"linux610-lua-add-flex-array-field-to-TString-type-bp.patch::https://github.com/darkbasic/zfs/commit/1480930a764dc6fb752d9ea4efc730d23719d2e4.patch?full_index=1"
 	"linux612-avoid-kmem_cache_create-redefinition.patch::https://github.com/darkbasic/zfs/commit/25ca775c0ef72a6e2a1e09cf8531605f54268a08.patch?full_index=1"
 	"linux612-support-3arg-dequeue_signal-without-task-param.patch::https://github.com/darkbasic/zfs/commit/2999a90d2b75bf08a18f0ce5574461c3c1074436.patch?full_index=1"
 	"linux612-FMODE_UNSIGNED_OFFSET-is-now-FOP_UNSIGNED_OFFSET.patch::https://github.com/darkbasic/zfs/commit/6850e8ad5b561e2754fb6328239885a367aeba29.patch?full_index=1"
