@@ -1,7 +1,7 @@
 # Maintainer: Andrew Rabert <ar@nullsum.net>
 
 pkgbase=linux-flowx13
-pkgver=6.11.7.arch1
+pkgver=6.12.arch1
 pkgrel=1
 pkgdesc='Linux (with patches for the Asus Flow X13)'
 url='https://github.com/archlinux/linux'
@@ -43,17 +43,17 @@ validpgpkeys=(
   83BC8889351B5DEBBB68416EB8AC08600F108CDF  # Jan Alexander Steffens (heftig)
 )
 # https://www.kernel.org/pub/linux/kernel/v6.x/sha256sums.asc
-sha256sums=('0bf5ec644817d7928920f763581311f5bf258a92759cf2f30985da743af3ebb2'
+sha256sums=('b1a2562be56e42afb3f8489d4c2a7ac472ac23098f1ef1c1e40da601f54625eb'
             'SKIP'
-            'e4da4d04fcab3feebd34a1a02e8a593131b083ac690c863605791633fd434271'
+            '01ec2cb2dfa8877a900420076c06f58956f9fa1f570e5e7057d20c3f0fe9fc67'
             'SKIP'
-            'f5f3364c06ede1b448320c95fddbcad618a74c336d95411fa50517544e3cd5bf'
+            'ded6cabb59f50327234aa46d84dcfb3ffdc5621eb71ef763f21c69a034a921de'
             '508f90cbe81a9a145cc540703470f1e6b5d21c7a7b9166d2ce6e56b401262b04')
-b2sums=('4d1aec68c93f3159099ac02a6d4bbc46f207383079ea3117102b9d657964132d946b9579e4e8582a0cf9c79170de0b7a0c5fac2b6e1b36aabd5e66340bec3c18'
+b2sums=('b2ec2fc69218cacabbbe49f78384a5d259ca581b717617c12b000b16f4a4c59ee348ea886b37147f5f70fb9a7a01c1e2c8f19021078f6b23f5bc62d1c48d5e5e'
         'SKIP'
-        '933094ded4faddf05a96cf7a6c3c07b751c3d9bb59dcadd2a98428b813d38dd01b54073701d811089ce4eb8312b7b90b66a00905f4d6b471d1b30266bc1457f8'
+        '5e9bc2bb11b5af108e1b821afaeb0103220b2615d125a0942a23415dbd3fabebbee389012852688351d78f05e00d4ab43ad13af94115c15b82d56398af7f3fbb'
         'SKIP'
-        '414392c94a717000449fb57790bd9d7222582c89588451cd7fac0a7f8c6980ef02c1fedb07ee40d3975488bc9b705721c74801081ac2e8437854116af6a1dd9f'
+        '4e18288c251d640403e23697162308c9529c7d9574ea14c846f49224eebd034de30a96509b020afdcd3269d35e058b02eb5b289c7aaf1873bd2294282311acd6'
         'c0090c819342838fbb242f41ee057612ade9c1e564ea250bcd454d57677196a590e392ee6ef0b45d8d9463ab92a8ae3b3668f162c45a8d0e714747235d1cccff')
 
 
@@ -108,6 +108,7 @@ _package() {
   optdepends=(
     'wireless-regdb: to set the correct wireless channels of your country'
     'linux-firmware: firmware images needed for some devices'
+    'scx-scheds: to use sched-ext schedulers'
   )
   provides=(
     KSMBD-MODULE
