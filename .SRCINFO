@@ -9,6 +9,7 @@ pkgbase = filen-cli-bin
 	provides = filen-cli
 	conflicts = filen-cli
 	conflicts = filen-cli-git
+	options = !strip
 	source_x86_64 = https://github.com/FilenCloudDienste/filen-cli/releases/download/v0.0.17/filen-cli-v0.0.17-linux-x64
 	sha256sums_x86_64 = 21a60c00b92ac74cc3b9978461e5c982940f9a6d24f801fe99eaa993e0c29a9e
 	source_aarch64 = https://github.com/FilenCloudDienste/filen-cli/releases/download/v0.0.17/filen-cli-v0.0.17-linux-arm64
