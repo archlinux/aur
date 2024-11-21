@@ -5,6 +5,7 @@ pkgbase = portable-git
 	url = https://github.com/Kraftland/portable
 	arch = any
 	license = GPL-3.0-or-later
+	makedepends = git
 	makedepends = libarchive
 	depends = xxd
 	depends = xorg-xauth
