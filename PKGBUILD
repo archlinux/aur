@@ -1,10 +1,11 @@
 # Maintainer: envolution
-pkgname=clang-17
+pkgname=clang17-bin
 pkgver=17.0.6
 pkgrel=18
 pkgdesc="C, C++ and Objective-C compiler - sourced from Debian sid"
 arch=(x86_64)
 options=(!strip)
+provides=("clang=${pkgver}" clang-17)
 depends=(patchelf libedit z3)
 url="https://www.llvm.org/"
 license=('Apache-2.0-LLVM-Exception')

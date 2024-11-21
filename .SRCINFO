@@ -1,4 +1,4 @@
-pkgbase = clang-17
+pkgbase = clang17-bin
 	pkgdesc = C, C++ and Objective-C compiler - sourced from Debian sid
 	pkgver = 17.0.6
 	pkgrel = 18
@@ -8,6 +8,8 @@ pkgbase = clang-17
 	depends = patchelf
 	depends = libedit
 	depends = z3
+	provides = clang=17.0.6
+	provides = clang-17
 	noextract = clang-17-17.0.6-18.deb
 	noextract = libclang1-17t64-17.0.6-18.deb
 	noextract = libclang-common-17-dev-17.0.6-18.deb
@@ -28,4 +30,4 @@ pkgbase = clang-17
 	sha256sums = 55f9668899c968e790412f1e0a014ae2d9e8beba7f0611841093859064cbe4dc
 	sha256sums = 78c11daa6465b688bd27e7d4489cd732352a80ecc27f521e318b7a8d1ab8a328
 
-pkgname = clang-17
+pkgname = clang17-bin
