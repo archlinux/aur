@@ -1,6 +1,6 @@
 pkgname=steamlink
 _name=steamlink
-pkgver=1.3.9.258
+pkgver=1.3.12.269
 pkgrel=1
 pkgdesc="Steam Link client"
 arch=('x86_64')
@@ -36,7 +36,7 @@ source=(
     "steamlink.sh"
 )
 # Ensuring we're serving the correct image
-_ostree_commit=c38dc06ca1e65683b9a0c2809fa8ba9214a84a8cacc3c32209a5175fd090af79
+_ostree_commit=c81e2b03cf1e908f075f70047febfafa9176c253168aebecc56f79e4497ec344
 sha256sums=('8bdc20abc4e19c0796460beb5bfe0e7aa4138716999e19c6f2dbdd78cc41aeaa'
             '4d5bd2835b7ccf71e53e0f6f2c4bc9a3fe2477345cb51517f05b019dd63b8fe8')
 
