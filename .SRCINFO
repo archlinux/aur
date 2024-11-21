@@ -1,6 +1,6 @@
 pkgbase = nsight-systems
 	pkgdesc = A system-wide performance analysis tool for CPUs and GPUs
-	pkgver = 2024.6.1
+	pkgver = 2024.7.1
 	pkgrel = 1
 	url = https://developer.nvidia.com/nsight-systems
 	arch = x86_64
@@ -32,10 +32,10 @@ pkgbase = nsight-systems
 	depends = xcb-util-keysyms
 	depends = xcb-util-renderutil
 	depends = xcb-util-wm
-	source = https://developer.nvidia.com/downloads/assets/tools/secure/nsight-systems/2024_6/NsightSystems-linux-public-2024.6.1.90-3490548.run
+	source = https://developer.nvidia.com/downloads/assets/tools/secure/nsight-systems/2024_7/NsightSystems-linux-public-2024.7.1.84-3512561.run
 	source = nsight-systems.png::https://developer.download.nvidia.com/images/nvidia-nsight-systems-icon-gbp-shaded-256.png
 	source = nsight-systems.desktop
-	sha256sums = af782a5f78c104b0487c791ac4e81009777ec51bb1ed2a63215e56e4c4f7422b
+	sha256sums = 2872acf7b4d725346c3faaf94c93fc9bd03938045111672a8ba083e86175a9be
 	sha256sums = 38cd754a193f1715095837f97bee3a274831142dc19169240ed23d527dd4c815
 	sha256sums = ba75a6ec16a49c5a8484b4e48eb676d16da3c7c7e8382c98d761f8fdc4460007
 
