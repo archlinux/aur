@@ -4,7 +4,7 @@
 # Contributor: Christian Finnberg <christian@finnberg.net>
 pkgname=notesnook-git
 _pkgname=Notesnook
-pkgver=3.0.21.r0.g86bf8f6
+pkgver=3.0.22.r0.g67a61dd
 _electronversion=31
 _nodeversion=22
 pkgrel=1
@@ -56,7 +56,7 @@ build() {
     sed -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-git}/g
-        s/@runname@/app.asar/g
+        s/@runname@/app/g
         s/@cfgdirname@/${_pkgname}/g
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
     " -i "${srcdir}/${pkgname%-git}.sh"
@@ -91,16 +91,14 @@ build() {
     # Build Electron wrapper
     cd "${srcdir}/${pkgname//-/.}/apps/desktop"
     find src -type f -exec sed -i "s/process.resourcesPath/\'\/usr\/lib\/${pkgname%-git}\'/g" {} +
-    sed -i "s/\"asar\": false,/\"asar\": true,/g;s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
+    sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
     NODE_ENV=production     npx nx run release --project @notesnook/desktop
     NODE_ENV=production     npm exec -c "electron-builder --linux dir -c.electronDist=${electronDist}"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
-    install -Dm644  "${srcdir}/${pkgname//-/.}/apps/desktop/output/linux-"*/resources/app.asar -t "${pkgdir}/usr/lib/${pkgname%-git}"
-    cp -Pr --no-preserve=ownership "${srcdir}/${pkgname//-/.}/apps/desktop/output/linux-"*/resources/app.asar.unpacked "${pkgdir}/usr/lib/${pkgname%-git}"
-    install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-git}/resources"
-    cp -Pr --no-preserve=ownership "${srcdir}/${pkgname//-/.}/apps/desktop/output/linux-"*/resources/assets "${pkgdir}/usr/lib/${pkgname%-git}/resources"
+    install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-git}"
+    cp -Pr --no-preserve=ownership "${srcdir}/${pkgname//-/.}/apps/desktop/output/linux-"*/resources/{app,assets} "${pkgdir}/usr/lib/${pkgname%-git}"
     _icon_sizes=(16x16 24x24 32x32 48x48 64x64 128x128 256x256 512x512 1024x1024)
     for _icons in "${_icon_sizes[@]}";do
         install -Dm644 "${srcdir}/${pkgname//-/.}/apps/desktop/assets/icons/${_icons}.png" \
