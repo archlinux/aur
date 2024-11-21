@@ -1,0 +1,18 @@
+pkgbase = python-atomicwrites-homeassistant
+	pkgdesc = Atomic file writes on POSIX (homeassistant fork)
+	pkgver = 1.4.1
+	pkgrel = 1
+	url = https://pypi.org/project/atomicwrites-homeassistant
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	provides = python-atomicwrites
+	conflicts = python-atomicwrites
+	source = atomicwrites-homeassistant-1.4.1.tar.gz::https://files.pythonhosted.org/packages/source/a/atomicwrites-homeassistant/atomicwrites-homeassistant-1.4.1.tar.gz
+	sha256sums = 256a672106f16745445228d966240b77b55f46a096d20305901a57aa5d1f4c2f
+
+pkgname = python-atomicwrites-homeassistant
