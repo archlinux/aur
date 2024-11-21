@@ -7,6 +7,7 @@ pkgbase = sane-break
 	license = GPL-3.0-or-later
 	makedepends = cmake
 	depends = qt6-base
+	depends = qt6-multimedia
 	depends = hicolor-icon-theme
 	depends = libx11
 	depends = libxss

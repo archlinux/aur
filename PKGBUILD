@@ -8,6 +8,7 @@ url="https://github.com/AllanChain/sane-break"
 license=('GPL-3.0-or-later')
 depends=(
   "qt6-base"
+  "qt6-multimedia"
   "hicolor-icon-theme" # needed for hicolor theme hierarchy
   "libx11"
   "libxss"
