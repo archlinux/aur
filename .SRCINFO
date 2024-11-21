@@ -1,0 +1,14 @@
+pkgbase = arkenfox-hook-git
+	pkgdesc = Post-install hook to update the arkenfox user.js
+	pkgver = r2.2c3c397
+	pkgrel = 1
+	url = https://github.com/aartoni/arkenfox-hooks
+	arch = any
+	license = Unlicense
+	provides = arkenfox-hook
+	conflicts = arkenfox-hook
+	backup = usr/share/libalpm/hooks/arkenfox.hook
+	source = git+https://github.com/aartoni/arkenfox-hooks
+	b2sums = SKIP
+
+pkgname = arkenfox-hook-git
