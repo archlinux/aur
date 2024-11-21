@@ -1,0 +1,15 @@
+[Desktop Entry]
+Type=Application
+Version=3.0.0
+Name=ViTables
+GenericName=PyTables & HDF5 Files Visualizer
+GenericName[ca]=Visualitzador de fitxers PyTables i HDF5
+GenericName[es]=Visualizador de ficheros PyTables y HDF5
+Exec=vitables %U
+Icon=vitables
+#There is not mime-type yet for HDF5
+#MimeType=application/x-hdf5
+#Set this to the vitables documentation files
+#DocPath=vitables/index.html
+Terminal=false
+Categories=Qt;Database;DataVisualization;Science;Education

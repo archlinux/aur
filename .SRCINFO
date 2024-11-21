@@ -1,0 +1,25 @@
+pkgbase = vitables-git
+	pkgdesc = A GUI browser and editor for PyTables/HDF5 files
+	pkgver = 3.0.3
+	pkgrel = 3
+	url = https://vitables.org
+	arch = any
+	license = GPL3
+	makedepends = python-hatch
+	makedepends = python-sphinx
+	depends = python-build
+	depends = python-installer
+	depends = python-wheel
+	depends = python-setuptools-scm
+	depends = python-pyqt5
+	depends = python-qtpy
+	depends = python-pytables
+	conflicts = vitables
+	source = git+https://github.com/uvemas/ViTables.git
+	source = vitables.desktop
+	source = vitables.svg
+	sha256sums = SKIP
+	sha256sums = dd793f85d81591edd837a5fb94642dbf3ba488c69c605cbc2c87f74baea8676c
+	sha256sums = 0be6fdeb2c1f40fe2c478b0a6b9f99bad170d69f1210300d736bb98a5b9edcd8
+
+pkgname = vitables-git
