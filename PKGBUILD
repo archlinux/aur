@@ -16,14 +16,8 @@ provides+=(wechat-uos-bwrap wechat-uos-qt wechat-bin wechat-universal wechat-uni
 replaces+=(wechat-uos-bwrap wechat-uos-qt wechat-bin wechat-universal wechat-universal-bwrap)
 
 depends=(
-	#"xxd"
-	"xdg-user-dirs"
-	"xorg-xhost"
-	"findutils"
-	"zenity"
-	"xdg-dbus-proxy"
+	"portable"
 	"nss"
-	"bubblewrap"
 	"xcb-util-renderutil"
 	"xcb-util-keysyms"
 	"xcb-util-image"
@@ -41,7 +35,6 @@ depends=(
 	"zlib"
 	"libxcomposite"
 	"glib2"
-	"wayland"
 	"libxrender"
 	"libxext"
 	"alsa-lib"
@@ -59,14 +52,9 @@ depends=(
 	"libxdamage"
 	"libdrm"
 	"mesa"
-	"hicolor-icon-theme"
 	"bash"
 	"lsb-release"
 	"psmisc"
-	"wmctrl"
-	"flatpak-xdg-utils"
-	"xdg-desktop-portal"
-	"xdg-desktop-portal-gtk"
 )
 
 optdepends=(
@@ -87,11 +75,6 @@ source=(
 	wechat.sh
 	wechat.desktop
 	wechat.svg
-	open.sh
-	user-dirs.dirs
-	wechat.env
-	mimeapps.list
-	flatpak-info
 )
 
 source_x86_64=(
@@ -107,14 +90,9 @@ source_loong64=(
 )
 
 
-md5sums=('f7385ec61a99a052ccd6e11aa861627d'
-         '89ae77c95f205d0a7f9347f8251ce742'
-         '468e0367346707c026e577e7bf3e3a82'
-         'c99c42e49fb1650df340f3a38bd86d5e'
-         '38e98220da64adc1d8f9dc17d04b3a39'
-         '9d365b052a3d40ef70a9ecf807744b38'
-         'e821fd2d05d6d39c7ecf118916922414'
-         'e472d6dd49522bc90fdaf0b4adcdb744')
+md5sums=('d031b81d43da65de2c4e5b779537eb87'
+         '43a2aa627136c1ff464425bb44875ac9'
+         '468e0367346707c026e577e7bf3e3a82')
 md5sums_x86_64=('6a809a53a6b4033ea035bb08075d9bbc')
 md5sums_aarch64=('b008d0ff49176dc0156502627f8d7442')
 md5sums_loong64=('b008d0ff49176dc0156502627f8d7442')
@@ -130,19 +108,9 @@ function package_wechat() {
 		"${pkgdir}/usr/share/applications/wechat.desktop"
 	install -Dm755 wechat.sh \
 		"${pkgdir}/usr/bin/wechat.sh"
-	install -Dm644 user-dirs.dirs \
-		"${pkgdir}/usr/lib/wechat/user-dirs.dirs"
-	install -Dm755 open.sh \
-		"${pkgdir}/usr/lib/wechat/open"
-	install -Dm644 wechat.env \
-		"${pkgdir}/usr/lib/wechat/envs"
 	install -Dm644 wechat.svg \
 		"${pkgdir}/usr/share/icons/hicolor/scalable/apps/wechat.svg"
-	install -Dm644 mimeapps.list \
-		"${pkgdir}/usr/lib/wechat/mimeapps.list"
 	install -d "${pkgdir}/usr/share/licenses/${pkgname}/"
 	echo "https://www.wechat.com/us/service_terms.html" \
 		>"${pkgdir}/usr/share/licenses/${pkgname}/ToS.txt"
-	install -Dm644 "${srcdir}/flatpak-info" \
-		"${pkgdir}/usr/lib/wechat/flatpak-info"
 }
