@@ -19,12 +19,28 @@ prepare(){
 
 build() {
   cd "$_pkbase-$pkgver"
+  local pattern='([0-9]+)\.([0-9]+)\.[0-9]+.*'
+  [[ $pkgver =~ $pattern ]]
+  local major=${BASH_REMATCH[1]}
+  local minor=${BASH_REMATCH[2]}
+  local ld_flags=(
+    -linkmode=external
+    -X "sigs.k8s.io/cluster-api/version.gitVersion=$pkgver"
+    -X "sigs.k8s.io/cluster-api/version.gitMajor=$major"
+    -X "sigs.k8s.io/cluster-api/version.gitMinor=$minor"
+  )
+  local go_flags=(
+    -buildmode=pie
+    -trimpath
+    "-ldflags=${ld_flags[*]}"
+    -mod=readonly
+    -modcacherw
+  )
   export CGO_CPPFLAGS="${CPPFLAGS}"
   export CGO_CFLAGS="${CFLAGS}"
   export CGO_CXXFLAGS="${CXXFLAGS}"
   export CGO_LDFLAGS="${LDFLAGS}"
-  export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
-  go build -o build ./cmd/clusterctl
+  go build "${go_flags[@]}" -o build ./cmd/clusterctl
 }
 
 package() {
