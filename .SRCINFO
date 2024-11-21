@@ -29,7 +29,6 @@ pkgbase = windsurf-bin
 	optdepends = icu69: Needed for live share
 	provides = windsurf
 	conflicts = windsurf
-	options = !strip
 	options = !debug
 	source = windsurf.desktop
 	source = windsurf-url-handler.desktop

@@ -11,19 +11,18 @@ download_url="https://windsurf-stable.codeiumdata.com/linux-x64/stable/8700dafef
 license=('custom')
 provides=('windsurf')
 conflicts=('windsurf')
-options=("!strip" "!debug")
+options=("!debug")
 install=$pkgname.install
-# lsof: needed for terminal splitting, see https://github.com/Microsoft/vswindsurf/issues/62991
+# lsof: needed for terminal splitting, see https://github.com/Microsoft/vscode/issues/62991
 # xdg-utils: needed for opening web links with xdg-open
 depends=(fontconfig libxtst gtk3 python cairo alsa-lib nss gcc-libs libnotify libxss glibc libxkbfile gnupg libsecret lsof shared-mime-info xdg-utils)
 optdepends=('glib2: Needed for move to trash functionality'
             'libdbusmenu-glib: Needed for KDE global menu'
             'org.freedesktop.secrets: Needed for settings sync'
-             # See https://github.com/MicrosoftDocs/live-share/issues/4650
+            # See https://github.com/MicrosoftDocs/live-share/issues/4650
             'icu69: Needed for live share' )
 
 source=(windsurf.desktop windsurf-url-handler.desktop windsurf-workspace.xml ${_pkgname}-bin.sh)
-
 source_x86_64=(windsurf_x64_${pkgver}.tar.gz::$download_url/Windsurf-linux-x64-${pkgver}.tar.gz)
 
 sha256sums=('aabcf260e913a2faa9195f0eb72b62be94f276d5e90672d2f7c8435eb41bff66'
