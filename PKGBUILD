@@ -2,9 +2,9 @@
 pkgname=filen-desktop-bin
 _pkgname=Filen
 _appname="@filendesktop"
-pkgver=3.0.32
+pkgver=3.0.34
 _electronversion=33
-pkgrel=2
+pkgrel=1
 pkgdesc="Desktop client including Syncing, Virtual Drive mounting, S3, WebDAV, File Browsing, Chats, Notes, Contacts and more.(Prebuilt version.Use system-wide electron)"
 arch=(
     'aarch64'
@@ -31,8 +31,8 @@ source=(
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::${_ghurl}/releases/download/v${pkgver}/${_pkgname}_linux_aarch64.rpm")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${_ghurl}/releases/download/v${pkgver}/${_pkgname}_linux_x86_64.rpm")
 sha256sums=('291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-sha256sums_aarch64=('0e08f2e937e9c5816330809a71cffe4f3d2037cf1618e6b59071c1f5f06b79f5')
-sha256sums_x86_64=('b369c0100c85448273e3cfafa64d849bf869e58b8103fa50c0c4f754740bccae')
+sha256sums_aarch64=('940a3ed9d93d5461cdc3f9aeec44daf59900005458fb5b11664196b342ab3d0d')
+sha256sums_x86_64=('7bd3be12edc2dc4e8bc3decaf48144e7e17727980d18ba7d6ecc7f019120e6bb')
 build() {
     sed -e "
         s/@electronversion@/${_electronversion}/g
