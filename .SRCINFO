@@ -1,0 +1,33 @@
+pkgbase = hoffice-hwp
+	pkgdesc = .HWP/HWPX Office document editor for Linux, exlcuding the Hancom Office suite and only installs hoffice-hwp editor. Hancom Office Editor is an application to allow you to edit office documents that is developed and distributed by Hancom Inc.
+	pkgver = 11.20.0.1520
+	pkgrel = 4
+	url = https://github.com/Ein420/hoffice-2022-beta/
+	arch = x86_64
+	license = custom:hoffice
+	makedepends = wget
+	depends = cairo
+	depends = fontconfig
+	depends = freetype2
+	depends = gcc-libs
+	depends = glibc
+	depends = glu
+	depends = harfbuzz
+	depends = harfbuzz-icu
+	depends = libcups
+	depends = libcurl-gnutls
+	depends = libxcb
+	depends = openssl-1.1
+	depends = qt5-base
+	depends = qt5-x11extras
+	depends = zlib
+	provides = hoffice-2022-beta=${pkgver}
+	conflicts = hoffice
+	source = https://dl.dropbox.com/scl/fi/288hastrkhbhtnv9qblhd/1732214553_hoffice-hwp_11.20.0.989_amd64.deb?rlkey=ytc0p85vam1q01wa17xaasw0x&st=669rlhj0&dl=0
+	source = LICENSE
+	source = libqt5im-nimf.so
+	sha256sums = 04299dfe60458d42c0f77b3aeece0eeda3cfcedbcd077d55a3b795662bc6b3ae
+	sha256sums = 09b74399a45cde2b28e672784dbd1eb6397454a025e05a51fb3367eadb834583
+	sha256sums = d246c02a20a1e4ea123f9c2275dfc4a2ea091a65032ddbbe8a59bfc71418f60c
+
+pkgname = hoffice-hwp
