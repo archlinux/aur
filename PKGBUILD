@@ -2,7 +2,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=glues
-pkgver=0.4.0
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="Vim-inspired TUI note-taking app with Git, MongoDB support"
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('Apache-2.0')
 depends=('gcc-libs')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('36492bb833d8ce46ab5845691d4b2614664e5adae10c58a4763fe0c20a9470944810c304a0128b03e6eb1518ee885ed20ab0544fdd13d0e1aea5cc63a4a1c62e')
+sha512sums=('32e8e3ed6e5e29f2421e0ceeecc01925bea8596cefc80a1e0ca3490272097aea24b8aa6bb77100472fc2504e7a3af998332e42178ac3f34dd8a84ccefa86e927')
 options=('!lto')
 
 prepare() {
