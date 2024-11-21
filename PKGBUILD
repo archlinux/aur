@@ -5,6 +5,7 @@ pkgdesc="Fast C++ CSV Parser"
 arch=('any')
 url="https://github.com/ben-strasser/fast-cpp-csv-parser"
 license=('BSD')
+makedepends=('git')
 source=("git+https://github.com/ben-strasser/fast-cpp-csv-parser.git")
 sha256sums=('SKIP')
 
