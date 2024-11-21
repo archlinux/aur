@@ -19,7 +19,7 @@ source=(
   'libqt5im-nimf.so'
 )
 
-url='www.hancom.com'
+url='https://www.hancom.com'
 
 license=('custom:hoffice')
 makedepends=('wget')
