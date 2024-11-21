@@ -1,0 +1,23 @@
+pkgbase = iio-sensor-proxy-tuxedo
+	pkgdesc = IIO accelerometer sensor to input device proxy with Tuxedo patches
+	pkgver = 3.5.5tux1
+	pkgrel = 1
+	url = https://gitlab.com/tuxedocomputers/development/tuxedo_os/tuxedo-packages/iio-sensor-proxy
+	arch = x86_64
+	license = GPL-2.0+
+	makedepends = gtk3
+	makedepends = meson
+	depends = systemd
+	depends = libgudev
+	depends = glib2
+	depends = polkit
+	provides = iio-sensor-proxy
+	conflicts = iio-sensor-proxy
+	source = https://deb.tuxedocomputers.com/ubuntu/pool/main/i/iio-sensor-proxy/iio-sensor-proxy_3.5.orig.tar.gz
+	source = https://deb.tuxedocomputers.com/ubuntu/pool/main/i/iio-sensor-proxy/iio-sensor-proxy_3.5-5tux1.debian.tar.xz
+	source = iio-sensor-proxy-tuxedo.install
+	sha256sums = 8689425f2287626a95d95b1e1e5b62e497d09dd08cf411084ed22166d4a49da5
+	sha256sums = 4b04bdedaec13417d25d0ccc2e2c281986fc1e5006c702437cc34d48b5599d67
+	sha256sums = 1afad7b6a787a70d7f127933b0fe7c26e685f140e528c4bd4735b5b6fae627a9
+
+pkgname = iio-sensor-proxy-tuxedo
