@@ -2,7 +2,7 @@
 
 _pkgname="osdctl"
 pkgname="${_pkgname}-bin"
-pkgver=0.38.0
+pkgver=0.39.0
 pkgrel=1
 pkgdesc="CLI for the OSD utilities"
 arch=('x86_64' 'aarch64')
@@ -13,8 +13,8 @@ conflicts=("${_pkgname}")
 _pkgsrc="${_pkgname}-${pkgver}"
 source_x86_64=("${_pkgsrc}-x86_64.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_Linux_x86_64.tar.gz")
 source_aarch64=("${_pkgsrc}-aarch64.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_Linux_arm64.tar.gz")
-sha256sums_x86_64=('2f548ac28db95e75b947c1d38fc7982dbcf11133f70988eaeea6f8d461a5dd5d')
-sha256sums_aarch64=('7365b08633adf92051f7d3446e4ca9bd064935a0fc386086a601d3dff274c8b2')
+sha256sums_x86_64=('642f1f247244b0b11e5f55668124e86d1e0d3d327d0e98fcb40d0c32feecc0ae')
+sha256sums_aarch64=('393185b32345b45c961c24c132417d6ab09f6cff2dfe4addf12eb8de4767bbe5')
 
 prepare() {
   cd "${srcdir}"
@@ -30,13 +30,13 @@ build() {
 
 package() {
   cd "${srcdir}"
-  install -Dm755 "${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
-  install -Dm644 "README.md"   "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
-  install -Dm644 "LICENSE"     "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
+  install -vDm755 "${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
+  install -vDm644 "README.md"   "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
+  install -vDm644 "LICENSE"     "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 
   cd "completions"
-  install -Dm644 "${_pkgname}.bash"       "${pkgdir}/usr/share/bash-completion/completions/${_pkgname}"
-  install -Dm644 "${_pkgname}.fish"       "${pkgdir}/usr/share/fish/vendor_completions.d/${_pkgname}.fish"
-  install -Dm644 "${_pkgname}.zsh"        "${pkgdir}/usr/share/zsh/site-functions/_${_pkgname}"
-  install -Dm644 "${_pkgname}.powershell" "${pkgdir}/usr/share/powershell/Completions/${_pkgname}.ps1"
+  install -vDm644 "${_pkgname}.bash"       "${pkgdir}/usr/share/bash-completion/completions/${_pkgname}"
+  install -vDm644 "${_pkgname}.fish"       "${pkgdir}/usr/share/fish/vendor_completions.d/${_pkgname}.fish"
+  install -vDm644 "${_pkgname}.zsh"        "${pkgdir}/usr/share/zsh/site-functions/_${_pkgname}"
+  install -vDm644 "${_pkgname}.powershell" "${pkgdir}/usr/share/powershell/Completions/${_pkgname}.ps1"
 }
