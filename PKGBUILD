@@ -3,8 +3,8 @@
 pkgname=fcitx5-inflex-themes-git
 _gitname=fcitx5-inflex-themes
 pkgver=r4.86d0a36
-pkgrel=1
-pkgdesc="An aesthetic, modern fcitx5 theme featuring rounded rectangle design"
+pkgrel=2
+pkgdesc="An aesthetic, modern fcitx5 theme featuring sharp-edged rectangle design."
 arch=('any')
 url="https://github.com/sanweiya/fcitx5-inflex-themes"
 license=('BSD-2-Clause')
