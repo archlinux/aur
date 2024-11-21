@@ -1,6 +1,6 @@
 # Maintainer: Nguyễn Quang Minh <minhnbnt at gmail dot com>
 pkgname=java-debug
-pkgver=0.53.0
+pkgver=0.53.1
 pkgrel=1
 pkgdesc="The debug server implementation for Java."
 arch=(any)
@@ -10,7 +10,7 @@ license=('EPL-1.0')
 depends=('java-runtime>=17')
 makedepends=('java-environment-openjdk')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/microsoft/java-debug/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('df7a420d7d5efc79ac2e6db5d0cc119db1ae6f4fbe84cc24f6bab4aa6791ef37')
+sha256sums=('8a16e39837b1d21826cc31160c294e6bf87ede050b2a3fb8c985b50819841646')
 
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
