@@ -1,5 +1,6 @@
-# Maintainer: Mario Ortiz Manero <marioortizmanero@gmail.com>
-# Maintainer: Kyle Laker <kyle+aur@laker.email>
+# Maintainer: Lars Niesen <lars.niesen@mailbox.org>
+# Contributor: Mario Ortiz Manero <marioortizmanero@gmail.com>
+# Contributor: Kyle Laker <kyle+aur@laker.email>
 pkgname=python-readchar
 pkgver=4.2.1
 pkgrel=1
