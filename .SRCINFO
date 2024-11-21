@@ -1,7 +1,7 @@
 pkgbase = java-openjfx-bin
 	pkgdesc = Java OpenJFX 23.0.1 client application platform (Gluon build).
 	pkgver = 23
-	pkgrel = 1
+	pkgrel = 2
 	url = https://openjfx.io/
 	arch = x86_64
 	license = GPL2
@@ -13,6 +13,7 @@ pkgbase = java-openjfx-bin
 	depends = webkit2gtk
 	provides = java-openjfx=23
 	conflicts = java23-openjfx
+	conflicts = java-openjfx
 	options = !strip
 	source = https://download2.gluonhq.com/openjfx/23.0.1/openjfx-23.0.1_linux-x64_bin-sdk.zip
 	source = https://download2.gluonhq.com/openjfx/23.0.1/openjfx-23.0.1_linux-x64_bin-jmods.zip
