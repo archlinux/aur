@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=witsy
 _pkgname=Witsy
-pkgver=1.22.1
+pkgver=1.23.0
 _electronversion=32
 _nodeversion=20
 pkgrel=1
@@ -23,7 +23,7 @@ source=(
     "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
     "${pkgname}.sh"
 )
-sha256sums=('3091e2ad15518371d14ee7eb156342517594f4b272c72535705ed9808b508683'
+sha256sums=('e81d5707408bea7a5f4a784eed34e433bedc00f9a9adb971804cb1adca95dcc4'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
@@ -53,7 +53,6 @@ build() {
     if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
         {
             echo 'registry=https://registry.npmmirror.com'
-            echo 'disturl=https://registry.npmmirror.com/-/binary/node/'
             echo 'electron_mirror=https://registry.npmmirror.com/-/binary/electron/'
             echo 'electron_builder_binaries_mirror=https://registry.npmmirror.com/-/binary/electron-builder-binaries/'
         } >> .npmrc
