@@ -11,7 +11,7 @@ DLAGENTS=("https::/usr/bin/wget %u")
 pkgname='hoffice-hwp'
 pkgver=11.20.0.1520
 pkgrel=4
-pkgdesc='.HWP/HWPX Office document editor for Linux, excluding the Hancom Office suite and only installs hoffice-hwp editor. Hancom Office Editor is an application to allow you to edit office documents that is developed and distributed by Hancom Inc.'
+pkgdesc='.HWP/HWPX Office document editor for Linux, excluding the Hancom Office suite and only installs hoffice-hwp editor.'
 arch=('x86_64')
 source=(
   'https://dl.dropbox.com/scl/fi/288hastrkhbhtnv9qblhd/1732214553_hoffice-hwp_11.20.0.989_amd64.deb?rlkey=ytc0p85vam1q01wa17xaasw0x&st=669rlhj0&dl=0'
@@ -19,7 +19,7 @@ source=(
   'libqt5im-nimf.so'
 )
 
-url='https://github.com/Ein420/hoffice-2022-beta/'
+url='www.hancom.com'
 
 license=('custom:hoffice')
 makedepends=('wget')
