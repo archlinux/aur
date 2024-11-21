@@ -2,7 +2,7 @@
 
 _pkgbase=snd-hda-scodec-cs35l41-sandwalker
 pkgname=${_pkgbase}-dkms-git
-pkgver=r1.dfaa7ba
+pkgver=r3.a52d846
 pkgrel=1
 pkgdesc="Patched cs35l41 HDA driver for HP Sandwalker"
 url="https://github.com/nicholascw/aur-snd-hda-scodec-cs35l41-sandwalker"
@@ -25,12 +25,13 @@ package() {
   cd "$srcdir/${pkgname}"
   local install_dir="${pkgdir}"/usr/src/${_pkgbase}-${pkgver}
 
+  install -Dm644 dkms.conf "${install_dir}/dkms.conf"
+
   # Set name and version
   sed -e "s/@_PKGBASE@/${_pkgbase}/" \
       -e "s/@PKGVER@/${pkgver}/" \
       -i "${install_dir}"/dkms.conf
 
-  install -Dm644 dkms.conf "${install_dir}/"
   install -Dm644 Makefile "${install_dir}/"
 
   for i in $(ls -1 *.c *.h | xargs); do
