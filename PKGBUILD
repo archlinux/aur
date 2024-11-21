@@ -14,7 +14,7 @@ checkdepends=(python-pytest-asyncio python-pytest-httpserver)
 provides=(python-virustotal)
 replaces=(python-virustotal-api)
 source=(${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz)
-sha512sums=('61a9efd5585ed0ea7d50061dfe8a699d1d9a105fcf1ea68ec84b06ee89ef4154e152b056c3e204d2082360d1fd80630ba4dc56ffa5ea737be297de7ad6d77919')
+sha512sums=('5a8b4bf3c3ccdb7161cbb415455d13bb84211abebe9fe10ec1d37fca99f85a12a0ac4ec9516c57a048a0e2b8ad221d5c47be7462a1aaea0183046e2ca6945dd1')
 
 prepare() {
   sed -i '/setup_requires/d' ${_base}-${pkgver}/setup.py
