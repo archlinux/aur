@@ -1,0 +1,11 @@
+pkgbase = vincentlaucsb-csv-parser
+	pkgdesc = A high-performance, fully-featured CSV parser and serializer for modern C++
+	pkgver = 2.3.0
+	pkgrel = 1
+	url = https://github.com/vincentlaucsb/csv-parser
+	arch = any
+	license = MIT
+	source = https://github.com/vincentlaucsb/csv-parser/blob/2.3.0/include/csv.hpp
+	sha256sums = bf30d556c1d628d527b0b96aac538a7db71806d5340ca2d387eb1827aadcb924
+
+pkgname = vincentlaucsb-csv-parser
