@@ -1,0 +1,16 @@
+pkgbase = python-aiooui
+	pkgdesc = Async OUI lookups
+	pkgver = 0.1.7
+	pkgrel = 1
+	url = https://github.com/Bluetooth-Devices/aiooui
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-poetry-core
+	makedepends = python-wheel
+	depends = python
+	source = aiooui-0.1.7.tar.gz::https://files.pythonhosted.org/packages/source/a/aiooui/aiooui-0.1.7.tar.gz
+	sha256sums = b390c9e602de1faecf3c1f0b98270a95e2d00a4da208a62d507a9635ab8a5d05
+
+pkgname = python-aiooui
