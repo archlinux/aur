@@ -13,7 +13,7 @@ arch=(
 )
 url="https://runjs.app/"
 _ghurl="https://github.com/lukehaas/RunJS"
-license=('MIT')
+license=('LicenseRef-custom')
 conflicts=(
     "${_appname}"
     "${pkgname%-bin}"
