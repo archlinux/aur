@@ -1,6 +1,6 @@
 pkgbase = python-eltetrado
 	pkgdesc = Find and classify tetrads and quadruplexes in DNA/RNA 3D structures
-	pkgver = 1.5.17
+	pkgver = 1.5.18
 	pkgrel = 1
 	url = https://github.com/tzok/eltetrado
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = python-eltetrado
 	depends = python-numpy>=1.26.1
 	depends = python-orjson>=3.9.10
 	depends = python-rnapolis>=0.2.0
-	source = https://files.pythonhosted.org/packages/source/e/eltetrado/eltetrado-1.5.17.tar.gz
-	sha256sums = a9d353d1b8f6d635ae1662356b19626c627439d0793bf2777b1e1902ee5cdfa4
+	source = https://files.pythonhosted.org/packages/source/e/eltetrado/eltetrado-1.5.18.tar.gz
+	sha256sums = 2e394298385a2a6120d6ec32f8a3773340eea23a70002c37097283ca208261ed
 
 pkgname = python-eltetrado
