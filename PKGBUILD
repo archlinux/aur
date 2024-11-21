@@ -1,6 +1,6 @@
 pkgname=skeditor-git
 pkgver=auto.ver
-pkgrel=1
+pkgrel=2
 pkgdesc="SkEditor"
 arch=('x86_64')
 url="https://github.com/SkEditorTeam/SkEditor"
