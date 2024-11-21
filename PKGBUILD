@@ -3,7 +3,7 @@
 _pkbase=cluster-api
 pkgname=clusterctl
 pkgver=1.8.5
-pkgrel=1
+pkgrel=2
 pkgdesc='Cluster API command line interface'
 arch=('x86_64')
 url="https://cluster-api.sigs.k8s.io/"

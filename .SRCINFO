@@ -1,7 +1,7 @@
 pkgbase = clusterctl
 	pkgdesc = Cluster API command line interface
 	pkgver = 1.8.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cluster-api.sigs.k8s.io/
 	arch = x86_64
 	license = Apache-2.0
