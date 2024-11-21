@@ -1,41 +1,28 @@
-# Maintainer: Maxime Gauduin <alucryd@archlinux.org>
+# Maintainer: devome <evinedeng@hotmail.com>
+# Contributor: Maxime Gauduin <alucryd@archlinux.org>
 # Contributor: Guillaume Horel <guillaume.horel@gmail.com>
 
-pkgname=python-lru-dict
+_pkgname=lru-dict
+_pipname="${_pkgname}"
+pkgname="python-${_pkgname}"
 pkgver=1.3.0
 pkgrel=2
-pkgdesc='A fast and memory efficient LRU cache for Python'
-arch=(x86_64)
-url=https://github.com/amitdev/lru-dict
-license=(MIT)
-depends=(
-  glibc
-  python
-)
-makedepends=(
-  git
-  python-build
-  python-installer
-  python-setuptools
-  python-wheel
-)
-_tag=51c2761d94fd6fc85faea550240814938d1594f9
-source=(git+https://github.com/amitdev/lru-dict.git#tag=${_tag})
-b2sums=(SKIP)
-
-pkgver() {
-  cd lru-dict
-  git describe --tags | sed 's/^v//'
-}
+pkgdesc="An Dict like LRU container."
+arch=('i686' 'x86_64' 'aarch64')
+url="https://github.com/amitdev/lru-dict"
+license=("MIT")
+depends=("python")
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
+source=("${_pkgname}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pipname}-${pkgver}.tar.gz")
+sha256sums=('54fd1966d6bd1fcde781596cb86068214edeebff1db13a2cea11079e3fd07b6b')
 
 build() {
-  cd lru-dict
-  python -m build --wheel --no-isolation
+    cd "${_pipname}-${pkgver}"
+    python -m build --wheel --no-isolation
 }
 
 package() {
-  python -m installer --destdir="${pkgdir}" lru-dict/dist/*.whl
-  install -Dm 644 lru-dict/LICENSE -t "${pkgdir}"/usr/share/licenses/python-lru-dict/
+    cd "${_pipname}-${pkgver}"
+    python -m installer --destdir="${pkgdir}" dist/*.whl
+    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
-
-# vim: ts=2 sw=2 et:
