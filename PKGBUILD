@@ -16,7 +16,7 @@ source=("git+$url.git"
         "iptv-checker-rs.service")
 sha256sums=('SKIP'
             '034a5daec5e21305fd2a3dc2300e74c77049985887f8552aef02c90fd9794c8c'
-            'ccf9cc994d38a2f758569e3443f06bd1ab4749dfbde8e6d2dc6c6c473c05f46c')
+            '3d65f14bc276cc78164d01de311cc9f5a6b08b0341a6e9f836bdda84171d3494')
 backup=("usr/share/${_pkgname}/tasks.json"
         "usr/lib/systemd/system/iptv-checker-rs.service")
 conflicts=('iptv-checker-rs')
