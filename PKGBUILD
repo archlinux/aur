@@ -1,11 +1,11 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=rocketchat-desktop-git
 _pkgname=Rocket.Chat
-pkgver=4.1.1.r0.gba14487
+pkgver=4.1.2.r0.g1106a88
 _electronversion=31
 _nodeversion=20
 pkgrel=1
-pkgdesc="The Ultimate Open Source WebChat Platform.Use system-wide electron."
+pkgdesc="The Ultimate Open Source WebChat Platform.(Use system-wide electron)"
 arch=('any')
 url="https://rocket.chat/"
 _ghurl="https://github.com/RocketChat/Rocket.Chat.Electron"
@@ -76,12 +76,9 @@ build() {
         export npm_config_electron_builder_binaries_mirror=https://registry.npmmirror.com/-/binary/electron-builder-binaries/
 	fi
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
-    _yarnver=`grep "yarn@" package.json | awk '{print $2}' | sed "s/\"//g;s/yarn@//"`
-    corepack enable yarn
-    echo y | yarn version "${_yarnver}"
     NODE_ENV=development    yarn install
     NODE_ENV=production     yarn run build
-    NODE_ENV=production     npm exec -c "electron-builder --linux dir -c.electronDist=${electronDist}"
+    NODE_ENV=production     yarn electron-builder --linux dir -c.electronDist="${electronDist} --config electron-builder.json"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
