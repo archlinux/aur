@@ -1,0 +1,21 @@
+pkgbase = swingmusic-git
+	pkgdesc = Swing Music is a beautiful, self-hosted music player for your local audio files
+	pkgver = r1120.a263736
+	pkgrel = 1
+	url = https://swingmx.com/
+	arch = any
+	license = MIT
+	makedepends = python311
+	makedepends = yarn
+	makedepends = glibc
+	makedepends = libnghttp2
+	makedepends = icu
+	makedepends = git
+	optdepends = ffmpeg: audio silence skip feature
+	provides = swingmusic
+	source = swingmusic::git+https://github.com/swingmx/swingmusic.git
+	source = swingmusic-client::git+https://github.com/swingmx/webclient
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = swingmusic-git
