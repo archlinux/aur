@@ -1,0 +1,8 @@
+*.deb
+*.png
+*.desktop
+*.tar.bz2
+*.tar
+*.log
+pkg/
+src/
