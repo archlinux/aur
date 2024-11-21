@@ -2,7 +2,7 @@
 pkgname=diablo-project-manager
 pkgver=git
 pkgrel=1
-pkgdesc="A CLI Project Manager"
+pkgdesc="A Basic Project Manager"
 arch=("x86_64")
 url="https://gitlab.com/diablodev/dpm"
 license=('MIT')
@@ -15,12 +15,15 @@ sha256sums=('SKIP')
 
 pkgver() {
 	cd "$srcdir/$pkgname"
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+	( set -o pipefail
+    	git describe --long --abbrev=7 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+    	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+  	)
 }
 
 build() {
 	cd "$srcdir/$pkgname"
-	make PACKAGE="$pkgname" build
+	make PACKAGE="$pkgname" PREFIX="/usr" build
 }
 
 package() {
