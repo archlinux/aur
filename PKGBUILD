@@ -1,7 +1,7 @@
 # Maintainer: MYT1 <myt1 @ qq.com>
 
 pkgname=linuxqq-bin
-pkgver=3.2.13_29725
+pkgver=3.2.13_29927
 pkgrel=1
 pkgdesc="New Linux QQ based on Electron"
 arch=('x86_64' 'aarch64' 'loong64')
@@ -10,7 +10,7 @@ license=('LicenseRef-QQ')
 conflicts=("${pkgname}-nt-bwrap")
 depends=('nss' 'alsa-lib' 'gtk3' 'gjs' 'at-spi2-core' 'libvips' 'openjpeg2' 'openslide')
 optdepends=('libappindicator-gtk3: Allow QQ to extend a menu via Ayatana indicators in Unity, KDE or Systray (GTK+ 3 library).')
-_md5_prefix=4a705495
+_md5_prefix=833d113c
 _src_prefix="${pkgname%-bin}_${pkgver/_/-}"
 source_x86_64=("https://dldir1.qq.com/qqfile/qq/QQNT/${_md5_prefix}/${_src_prefix}_amd64.deb")
 source=("${pkgname%-bin}.sh")
