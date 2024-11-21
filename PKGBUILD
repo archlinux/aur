@@ -2,35 +2,54 @@
 
 pkgname=jupyterhub-nativeauthenticator
 pkgdesc="Authenticator for storing users in the JupyterHub database"
-pkgver=1.2.0
+pkgver=1.3.0
 pkgrel=1
 url="https://github.com/jupyterhub/nativeauthenticator"
-license=('BSD')
+license=('BSD-3-Clause')
 arch=('any')
 
-depends=('jupyterhub' 'python-bcrypt' 'python-onetimepass')
-makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
-checkdepends=('python-pytest' 'python-pytest-asyncio' 'jupyter-notebook')
+depends=(
+  'jupyterhub'
+  'python-bcrypt'
+  'python-onetimepass'
+)
+makedepends=(
+  'python-build'
+  'python-installer'
+  'python-setuptools'
+  'python-wheel'
+)
+checkdepends=(
+  'python-pytest'
+  'python-pytest-asyncio'
+  'jupyter-notebook'
+)
 
+_pyname="${pkgname/-/_}"
 source=(
-  "https://files.pythonhosted.org/packages/source/j/$pkgname/$pkgname-$pkgver.tar.gz"
+  "https://files.pythonhosted.org/packages/source/j/$pkgname/$_pyname-$pkgver.tar.gz"
 )
 sha256sums=(
-  '826228e6e9ca37736361e2e60c5723e245ec72e34fdc42cc218fc54a67f968e1'
+  '67d49d6a04658494a658466dbe4c6418b68ae6577324855afe5fc8abdf86ef89'
 )
 
 build() {
-  cd "$pkgname-$pkgver"
+  cd "$_pyname-$pkgver"
   python -m build --wheel --no-isolation
 }
 
 check() {
-  cd "$pkgname-$pkgver"
-  pytest -v
+  cd "$_pyname-$pkgver"
+  python -m venv --system-site-packages test-env
+  test-env/bin/python -m installer "dist/$_pyname-$pkgver"-*.whl
+  test-env/bin/python -m pytest -v
 }
 
 package() {
-  cd "$pkgname-$pkgver"
-  python -m installer --destdir="$pkgdir" dist/*.whl
+  cd "$_pyname-$pkgver"
+  python -m installer --destdir="$pkgdir" "dist/$_pyname-$pkgver"-*.whl
   install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+
+  # Don't package the unit tests.
+  rm -rf "$pkgdir/"usr/lib/python*/site-packages/nativeauthenticator/tests
 }
