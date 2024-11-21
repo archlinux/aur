@@ -1,10 +1,10 @@
 # Maintainer: mutantmonkey <aur@mutantmonkey.mx>
 pkgname=golinx
 pkgver=1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A client for linx-server written in Go"
 url="https://github.com/mutantmonkey/golinx"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 license=('GPL3')
 makedepends=('git' 'go')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/mutantmonkey/${pkgname}/archive/v${pkgver}.tar.gz")
@@ -16,10 +16,9 @@ build() {
   export CGO_CFLAGS="${CFLAGS}"
   export CGO_CXXFLAGS="${CXXFLAGS}"
   export CGO_LDFLAGS="${LDFLAGS}"
-  export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+  export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
 
   cd "$srcdir/$pkgname-$pkgver"
-  go get -v -d
   go build .
 }
 
