@@ -24,8 +24,8 @@ url='https://github.com/Ein420/hoffice-2022-beta/'
 license=('custom:hoffice')
 makedepends=('wget')
 depends=('cairo' 'fontconfig' 'freetype2' 'gcc-libs' 'glibc' 'glu' 'harfbuzz' 'harfbuzz-icu' 'libcups' 'libcurl-gnutls' 'libxcb' 'openssl-1.1' 'qt5-base' 'qt5-x11extras' 'zlib')
-provides=('hoffice-2022-beta=${pkgver}')
-conflicts=('hoffice')
+provides=('hoffice-hwp=${pkgver}')
+conflicts=('hoffice-2022-beta' 'hoffice')
 
 sha256sums=('04299dfe60458d42c0f77b3aeece0eeda3cfcedbcd077d55a3b795662bc6b3ae'
   '09b74399a45cde2b28e672784dbd1eb6397454a025e05a51fb3367eadb834583'

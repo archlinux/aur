@@ -21,7 +21,8 @@ pkgbase = hoffice-hwp
 	depends = qt5-base
 	depends = qt5-x11extras
 	depends = zlib
-	provides = hoffice-2022-beta=${pkgver}
+	provides = hoffice-hwp=${pkgver}
+	conflicts = hoffice-2022-beta
 	conflicts = hoffice
 	source = https://dl.dropbox.com/scl/fi/288hastrkhbhtnv9qblhd/1732214553_hoffice-hwp_11.20.0.989_amd64.deb?rlkey=ytc0p85vam1q01wa17xaasw0x&st=669rlhj0&dl=0
 	source = LICENSE
