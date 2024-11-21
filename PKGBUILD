@@ -2,7 +2,7 @@
 # Maintainer: Alexander Jung <alex at unikraft dot io>
 
 pkgname='kraftkit-bin'
-pkgver=0.9.3
+pkgver=0.9.4
 pkgrel=1
 pkgdesc='Build and use highly customized and ultra-lightweight unikernels'
 url='https://kraftkit.sh'
@@ -11,11 +11,11 @@ license=('BSD-3-Clause')
 provides=('kraftkit')
 conflicts=('kraftkit')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/unikraft/kraftkit/releases/download/v0.9.3/kraft_0.9.3_linux_arm64.tar.gz")
-sha256sums_aarch64=('4bfdfc12424ba0e9480b105eb52ac7b06b7be0de38acf4ad6fa302b09b7b1230')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/unikraft/kraftkit/releases/download/v0.9.4/kraft_0.9.4_linux_arm64.tar.gz")
+sha256sums_aarch64=('e6a8939f1d12dc5c9e811c9e2cedd11f0e98ea814b77bf1c23b76e7299c10ccf')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/unikraft/kraftkit/releases/download/v0.9.3/kraft_0.9.3_linux_amd64.tar.gz")
-sha256sums_x86_64=('eabe3f02a5a16ef4022b974b8e151e99a7fd4aa557f5f8df5e561e942c9bd213')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/unikraft/kraftkit/releases/download/v0.9.4/kraft_0.9.4_linux_amd64.tar.gz")
+sha256sums_x86_64=('6c235c38e4696525a7ab311ab27bbd98b1848f4e54cf001671409e7479acf894')
 
 package() {
   # kraft
