@@ -6,8 +6,8 @@
 pkgname='offpunk-git'
 _pkgname='offpunk'
 epoch=5
-pkgver=2.3.r23.gfee3445
-pkgrel=2
+pkgver=2.4.r0.g9c1a42e
+pkgrel=1
 pkgdesc='Fork of the command-line Gemini client AV-98 with added offline capabilities (latest git commit)'
 arch=('any')
 url='https://git.sr.ht/~lioploum/offpunk'
@@ -21,6 +21,7 @@ depends=(
   'python-cryptography'
   'python-feedparser'
   'python-lxml-html-clean'
+  'python-pillow'
   'python-readability-lxml'
   'python-requests'
   'python-setproctitle'
