@@ -1,0 +1,62 @@
+From feb1ce0f9d2e852d0d49b308cc680bc23afd9df8 Mon Sep 17 00:00:00 2001
+From: a821 <a821@nospam.mail.de>
+Date: Thu, 21 Nov 2024 22:16:29 +0100
+Subject: [PATCH 2/2] tests: it should use assertEqual
+
+---
+ tests/adapters/test_archive_read.py  | 2 +-
+ tests/adapters/test_archive_write.py | 4 ++--
+ tests/types/test_archive_entry.py    | 4 ++--
+ 3 files changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/tests/adapters/test_archive_read.py b/tests/adapters/test_archive_read.py
+index 96d89dc..8e8e97b 100644
+--- a/tests/adapters/test_archive_read.py
++++ b/tests/adapters/test_archive_read.py
+@@ -86,4 +86,4 @@ class TestArchiveRead(unittest.TestCase):
+                     u'README.rst': u'libarchive/resources/README.rst',
+                 }
+ 
+-                self.assertEquals(index, expected)
++                self.assertEqual(index, expected)
+diff --git a/tests/adapters/test_archive_write.py b/tests/adapters/test_archive_write.py
+index 3a96e77..3265b5f 100644
+--- a/tests/adapters/test_archive_write.py
++++ b/tests/adapters/test_archive_write.py
+@@ -51,7 +51,7 @@ class TestArchiveWrite(unittest.TestCase):
+                 'libarchive/resources/requirements.txt',
+             ]
+ 
+-            self.assertEquals(actual, expected)
++            self.assertEqual(actual, expected)
+ 
+     def test_create_file__unicode(self):
+         with libarchive.test_support.chdir(_APP_PATH):
+@@ -101,4 +101,4 @@ class TestArchiveWrite(unittest.TestCase):
+                 unicode_test_filepath.lstrip(os.sep),
+             ]
+ 
+-            self.assertEquals(actual, expected)
++            self.assertEqual(actual, expected)
+diff --git a/tests/types/test_archive_entry.py b/tests/types/test_archive_entry.py
+index 8597b23..bcf640b 100644
+--- a/tests/types/test_archive_entry.py
++++ b/tests/types/test_archive_entry.py
+@@ -29,7 +29,7 @@ class TestArchiveEntry(unittest.TestCase):
+             libarchive.constants.archive_entry.AE_IFBLK | \
+             libarchive.constants.archive_entry.AE_IFMT
+ 
+-        self.assertEquals(n, expected_n)
++        self.assertEqual(n, expected_n)
+ 
+         recovered = libarchive.types.archive_entry.int_to_ef(n)
+ 
+@@ -43,4 +43,4 @@ class TestArchiveEntry(unittest.TestCase):
+                 IFDIR=True,
+                 IFIFO=True)
+ 
+-        self.assertEquals(recovered, expected_ef)
++        self.assertEqual(recovered, expected_ef)
+-- 
+2.47.0
+

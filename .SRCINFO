@@ -1,11 +1,10 @@
 pkgbase = python-libarchive
 	pkgdesc = Python adapter for universal, libarchive-based archive access.
 	pkgver = 0.4.7
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/dsoprea/PyEasyArchive
 	arch = any
 	license = MIT
-	checkdepends = python-nose2
 	makedepends = python-setuptools
 	makedepends = python-build
 	makedepends = python-installer
@@ -14,6 +13,10 @@ pkgbase = python-libarchive
 	depends = python
 	conflicts = python-libarchive-c
 	source = python-libarchive-0.4.7.tar.gz::https://github.com/dsoprea/PyEasyArchive/archive/refs/tags/0.4.7.tar.gz
+	source = 0001-fix-use-find_namespace_packages-instead.patch
+	source = 0002-tests-it-should-use-assertEqual.patch
 	sha256sums = eee84dc111b7af061f2efbc7470223206ce0f4ba3ce7b69e9bc0f46bc32bf222
+	sha256sums = 2b7df66bb485a632d7dcd1bab2a06632af089d301834485ea052e76d4117b55d
+	sha256sums = d22ac8e9234273e876e5c923bcd053cdef060623057d0608a0fdc6247346a7f3
 
 pkgname = python-libarchive

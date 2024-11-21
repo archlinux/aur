@@ -1,0 +1,25 @@
+From 07a1eaea00dc75e92cac2a6a1d2283888a22b39d Mon Sep 17 00:00:00 2001
+From: a821 <a821@nospam.mail.de>
+Date: Thu, 21 Nov 2024 22:08:40 +0100
+Subject: [PATCH 1/2] fix: use find_namespace_packages instead
+
+---
+ setup.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/setup.py b/setup.py
+index c8d82b8..1911aaa 100644
+--- a/setup.py
++++ b/setup.py
+@@ -40,7 +40,7 @@ setuptools.setup(
+     author_email='myselfasunder@gmail.com',
+     url='https://github.com/dsoprea/PyEasyArchive',
+     license='GPL 2',
+-    packages=setuptools.find_packages(exclude=['dev', 'tests']),
++    packages=setuptools.find_namespace_packages(exclude=['dev', 'tests*']),
+     include_package_data=True,
+     zip_safe=False,
+     package_data={
+-- 
+2.47.0
+
