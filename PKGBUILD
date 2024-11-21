@@ -2,7 +2,7 @@
 
 _pkgname="sui"
 pkgname="${_pkgname}-bin"
-pkgver=1.37.3
+pkgver=1.37.4
 pkgrel=1
 pkgdesc="A next-generation smart contract platform with high throughput, low latency, and an asset-oriented programming model"
 arch=('x86_64')
@@ -20,7 +20,7 @@ source=("README-${pkgver}.md::${_url}/raw/mainnet-v${pkgver}/README.md"
 source_x86_64=("${_pkgsrc}-x86_64.tar.gz::${_url}/releases/download/mainnet-v${pkgver}/${_pkgname}-mainnet-v${pkgver}-ubuntu-x86_64.tgz")
 b2sums=('7bc970b23c6f45ededef3d736898072b891a6e8bbb03d184db4495ab6f08a6557605866c7238ea5279ef96cbaa0b5fa484ce43ae000d43ff0643102b763fb3c7'
         '43452dd4216bba835bff542c02fcd0a80b77fef97a6f1042adcbbbcf312bb856b0707c35b2f1af356e0b4262e501a159f06bf1f947f182d0023cdd4aefbd8a85')
-b2sums_x86_64=('8c3d91dbbb71bbca103665e7df16ce54c200a9c157b9847ad179ffe29748f3f3fb6947ea63ae4c146349d8a661972cd912602562df05d831b802e83221273891')
+b2sums_x86_64=('2fe4d62ae1b9098a5fcf69929a30a5d1345c79b5ad4df16de6e064c6944bed8ffeefeb15352ec319f32f6e6ef0fec9327ed76fc5a16032453814e9b8350cd35b')
 
 prepare() {
   cd "${srcdir}"
