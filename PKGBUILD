@@ -1,12 +1,13 @@
 # Maintainer: Ranadeep B < mail at rnbguy dot at >
 
 _pkgname=apalache
+_prjname=$_pkgname-mc
 pkgname=$_pkgname-bin
 pkgver=0.44.11
 pkgrel=1
 pkgdesc="A symbolic model checker for TLA+"
 arch=('any')
-url="https://${_pkgname}.informal.systems/"
+url="https://${_prjname}.org"
 license=('Apache')
 provides=(${_pkgname})
 conflicts=(${_pkgname})
@@ -15,7 +16,7 @@ depends=('java-runtime>=11'
          'coreutils'
          'util-linux')
 makedepends=('patch')
-source=("https://github.com/informalsystems/${_pkgname}/releases/download/v${pkgver}/${_pkgname}-${pkgver}.tgz"
+source=("https://github.com/${_prjname}/${_pkgname}/releases/download/v${pkgver}/${_pkgname}-${pkgver}.tgz"
         'sys-install.patch'
         'apalache.service')
 sha256sums=('173a683707c2a639c955328746461cad39e4b8a5adff95e156ce3bf376ba293b'
