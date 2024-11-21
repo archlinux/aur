@@ -1,0 +1,19 @@
+pkgbase = tcpterm-bin
+	pkgdesc = A packet visualizer in TUI.
+	pkgver = 0.0.2
+	pkgrel = 1
+	url = https://github.com/sachaos/tcpterm
+	arch = x86_64
+	license = MIT
+	makedepends = help2man
+	depends = glibc
+	provides = tcpterm
+	conflicts = tcpterm
+	source = LICENSE
+	source = README-0.0.2.md::https://raw.githubusercontent.com/sachaos/tcpterm/v0.0.2/README.md
+	sha256sums = ec47d46b24ee9d8a58af1c6f75e3dae84afacaa303c40d12d378e870b1f4fd51
+	sha256sums = 6fcbefe8d40e664f37c372ad961774177ab76273f3a725d2ef392945f4b6dd97
+	source_x86_64 = tcpterm-0.0.2::https://github.com/sachaos/tcpterm/releases/download/v0.0.2/tcpterm_linux_amd64
+	sha256sums_x86_64 = f54d102afa5e5211a948a421f98877db7164f893dde369b8dbfa1985dec80a4d
+
+pkgname = tcpterm-bin
