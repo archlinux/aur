@@ -3,7 +3,7 @@
 author=s-n-alexeyev
 pkgname=yvt
 _gitname=yvt
-pkgver=1.2.0.r0.g1595192
+pkgver=1.2.0.r1.g63aa5a7
 pkgrel=1
 pkgdesc='Yandex Video Translate. The script downloads videos from most popular video hosting platforms. It performs translation of video using Yandex neural network into one of the three available languages: Russian (by default), English, and Kazakh.'
 arch=('any')
