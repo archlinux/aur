@@ -1,6 +1,6 @@
 pkgbase = jikkou-bin
 	pkgdesc = Open Source Resource as Code framework for Apache Kafka
-	pkgver = 0.35.3
+	pkgver = 0.35.4
 	pkgrel = 1
 	url = https://www.jikkou.io/
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = jikkou-bin
 	depends = zlib
 	provides = jikkou
 	conflicts = jikkou
-	source = https://github.com/streamthoughts/jikkou/releases/download/v0.35.3/jikkou-0.35.3-linux-.tar.gz
-	sha256sums = 0542742851c0a5479db7e5167667d3a62f96cb36b2f2661f5a46c98c358df890
+	source = https://github.com/streamthoughts/jikkou/releases/download/v0.35.4/jikkou-0.35.4-linux-x86_64.tar.gz
+	sha256sums = da510d8ba601b85f87a08b5af2669573a26cf5202978b2508c777aa58958ba12
 
 pkgname = jikkou-bin
