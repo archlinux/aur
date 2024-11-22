@@ -1,0 +1,5 @@
+[gridformat]
+source = "github"
+github = "dglaeser/gridformat"
+use_latest_release = "true"
+prefix = "v"
