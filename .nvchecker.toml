@@ -1,0 +1,4 @@
+[wit-bindgen]
+source = "git"
+git = "https://github.com/bytecodealliance/wit-bindgen.git"
+prefix = "v"
