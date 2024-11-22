@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=trezor-suite-bin
 _pkgname=Trezor-Suite
-pkgver=24.11.1
+pkgver=24.11.2
 _electronversion=33
 pkgrel=1
 pkgdesc="desktop app for Trezor hardware wallets.(Prebuilt version.Use system-wide electron)"
@@ -29,8 +29,8 @@ source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.AppImage::${_ghurl}/releases/
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-x86_64.AppImage")
 sha256sums=('0bb9e6855d6aa4f013a87ed9ceb2ef47b6eddc44858cc85ed3faf5d53677f67a'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-sha256sums_aarch64=('d19d897a78af556e08b86a09416f23f43c3da61c8f692bef0cd37d08be3cae1c')
-sha256sums_x86_64=('a986b8304829c658ebf41137848837186980725429037bc376d449e0064e581d')
+sha256sums_aarch64=('539459c73856289d7f2e72c9ec7c1d7d4f8f2847f5cff0827bfb5c67f9d36e95')
+sha256sums_x86_64=('7c20fe539ab1aa428bc0e9f4acf64832bbcd26dbdfd88d11f6ab948a393b2b08')
 build() {
     sed -e "
         s/@electronversion@/${_electronversion}/g
@@ -46,6 +46,7 @@ build() {
     find "${srcdir}/app.asar.unpacked/dist" -type f -exec sed -i "s/process.resourcesPath/\'\/usr\/lib\/${pkgname%-bin}\'/g" {} +
     asar p "${srcdir}/app.asar.unpacked" "${srcdir}/app.asar"
     find "${srcdir}/squashfs-root/resources" -type d -exec chmod 755 {} +
+    find "${srcdir}/squashfs-root/resources/app.asar.unpacked" \( -name "darwin-*" -o -name "win32-*" -o -name "android-*" \) -type d -exec rm -rf {} +
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
