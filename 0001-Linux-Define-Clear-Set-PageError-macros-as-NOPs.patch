@@ -1,0 +1,118 @@
+From df2e89879bcaf45123233bc2d95acdfb6a4a5ee8 Mon Sep 17 00:00:00 2001
+From: Cheyenne Wills <cwills@sinenomine.net>
+Date: Fri, 8 Nov 2024 21:32:46 -0700
+Subject: [PATCH 1/3] Linux: Define Clear/Set PageError macros as NOPs
+
+The Linux 6.12 commit 'mm: remove PG_error' (09022bc196d23) removed
+the PG_error page flag and the associated ClearPageError() and
+SetPageError() functions (via removing the PAGEFLAG(Error, ...) macro).
+The PG_error flag has not been used by core VFS/MM Linux code for some
+time, possibly ever, and so our calls to these functions do not have any
+practical effect, since we also do not check for the PG_error flag.
+While we could simply remove these calls, play it safe and keep them
+around until ClearPageError()/SetPageError() are removed.
+
+The specific semantics of the PG_error flag are not completely well
+defined in the Linux kernel, which appears to be one of the motivations
+for its removal. Some Linux commits that mention some details on how the
+flag is not useful for read errors include:
+
+  7edf1ec5b249 ceph: don't SetPageError on readpage errors
+  41a638a1b3fc affs: convert affs_symlink_read_folio() to use the folio
+  2b2553f12355 btrfs: stop setting PageError in the data I/O path
+
+Add a configure test to see if ClearPageError()/SetPageError() are
+available in the Linux kernel; if they are not, define
+ClearPageError()/SetPageError() as no-ops.
+
+Reviewed-on: https://gerrit.openafs.org/15876
+Tested-by: BuildBot <buildbot@rampaginggeek.com>
+Tested-by: Cheyenne Wills <cwills@sinenomine.net>
+Reviewed-by: Michael Meffie <mmeffie@sinenomine.net>
+Reviewed-by: Mark Vitale <mvitale@sinenomine.net>
+Reviewed-by: Marcio Brito Barbosa <mbarbosa@sinenomine.net>
+Reviewed-by: Andrew Deason <adeason@sinenomine.net>
+(cherry picked from commit ec146905313aaef5998b7bdfe44e86ce541a73cf)
+
+Change-Id: I2c65a2a9efe380cd2ba211ae033392fc0597b898
+---
+ src/afs/LINUX/osi_compat.h   | 13 +++++++++++++
+ src/afs/LINUX/osi_pagecopy.c |  4 ++++
+ src/cf/linux-kernel-func.m4  | 16 ++++++++++++++++
+ 3 files changed, 33 insertions(+)
+
+diff --git a/src/afs/LINUX/osi_compat.h b/src/afs/LINUX/osi_compat.h
+index 44bcb440e..e8b8f100e 100644
+--- a/src/afs/LINUX/osi_compat.h
++++ b/src/afs/LINUX/osi_compat.h
+@@ -31,6 +31,19 @@
+ # endif
+ #endif
+ 
++#if defined(HAVE_LINUX_NO_SETPAGEERROR)
++static inline void
++ClearPageError(struct page *p)
++{
++    return;
++}
++static inline void
++SetPageError(struct page *p)
++{
++    return;
++}
++#endif
++
+ #if !defined(HAVE_LINUX_KTHREAD_COMPLETE_AND_EXIT)
+ # define kthread_complete_and_exit complete_and_exit
+ #endif
+diff --git a/src/afs/LINUX/osi_pagecopy.c b/src/afs/LINUX/osi_pagecopy.c
+index 42f5e38e0..061d8c640 100644
+--- a/src/afs/LINUX/osi_pagecopy.c
++++ b/src/afs/LINUX/osi_pagecopy.c
+@@ -56,12 +56,16 @@
+ #include <afsconfig.h>
+ #include "afs/param.h"
+ 
++#include "afs/sysincludes.h"
++#include "afsincludes.h"
++
+ #include <linux/pagemap.h>
+ #include <linux/kthread.h>
+ #include <linux/wait.h>
+ #include <linux/workqueue.h>
+ #include <linux/slab.h>
+ #include "osi_pagecopy.h"
++#include "osi_compat.h"
+ 
+ static DECLARE_WAIT_QUEUE_HEAD (afs_pagecopy_wq);
+ static spinlock_t afs_pagecopy_lock;
+diff --git a/src/cf/linux-kernel-func.m4 b/src/cf/linux-kernel-func.m4
+index 69b79c5cf..71a0c2c39 100644
+--- a/src/cf/linux-kernel-func.m4
++++ b/src/cf/linux-kernel-func.m4
+@@ -300,6 +300,22 @@ AC_CHECK_LINUX_FUNC([no_generic_file_splice_read],
+ 		    [[static char buff[10], *ap;
+ 		      ap = generic_file_splice_read(buff); ]])
+ 
++dnl Linux 6.12 removed the PG_error flag from the page flags along with the
++dnl associated functions ClearPageError() and SetPageError().  Check to see if
++dnl these functions are present in the kernel.
++dnl
++dnl To check if ClearPageError() and SetPageError() are missing, define our own
++dnl functions with the same name but with a conflicting signature. If we can
++dnl define them, the real functions must be missing.
++AC_CHECK_LINUX_FUNC([no_setpageerror],
++		    [[#include <asm/page.h>
++		      #include <linux/page-flags.h>
++		      static inline char ClearPageError(char c) { return c;}
++		      static inline char SetPageError(char c) { return c;}]],
++		    [[static char r;
++		      r = ClearPageError('x');
++		      r = SetPageError('x');]])
++
+ dnl Consequences - things which get set as a result of the
+ dnl                above tests
+ AS_IF([test "x$ac_cv_linux_func_d_alloc_anon" = "xno"],
+-- 
+2.47.0
+
