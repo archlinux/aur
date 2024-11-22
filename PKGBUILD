@@ -1,6 +1,7 @@
 # Maintainer: envolution
 
 pkgname=libsql-sqlite3
+_pkgname=libsql
 pkgver=0.24.28
 pkgrel=2
 pkgdesc='libsql sqlite3 compatibility libraries and executables'
@@ -13,7 +14,7 @@ arch=('i686' 'x86_64')
 source=("https://github.com/tursodatabase/libsql/archive/refs/tags/libsql-server-v${pkgver}.tar.gz")
 b2sums=('ff520abc812e0f85663b9e683954066808cb6d576424c456fdae95dce76d471f3176cd7d9c0af6a55e00c20b307e64276ce831c2710e5f78908eb958fafb532c')
 
-_pkgdir="${pkgbase}-libsql-server-v${pkgver}"
+_pkgdir="${_pkgname}-libsql-server-v${pkgver}"
 prepare() {
   cd $_pkgdir
   export RUSTUP_TOOLCHAIN=stable
