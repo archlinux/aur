@@ -1,12 +1,13 @@
 # Maintainer : 00ein00 <Ein420@proton.me>
 
+HNCDIR=opt/hnc
 HNCCONTEXT=opt/hnc/hoffice11/Bin/qt/plugins/platforminputcontexts
 NIMFLIB=libqt5im-nimf.so
 KIMELIB=libkime-qt-5.11.3.so
 
 _host='Host: dropbox.com'
 _referer='Referer: https://www.hancom.com/cs_center'
-DLAGENTS=("https::/usr/bin/wget %u")
+DLAGENTS=("https::/usr/bin/wget -N --timestamping %u")
 
 pkgname='hoffice-hwp'
 pkgver=11.20.0.1520
@@ -43,6 +44,7 @@ post_upgrade() {
 pre_remove() {
   if [[ -f "/${HNCCONTEXT}/${NIMFLIB}" ]]; then
     rm -vf "/${HNCCONTEXT}/${NIMFLIB}"
+    rm -rf "/${HNCDIR}"
   fi
 }
 
@@ -64,4 +66,8 @@ package() {
     install -Dm755 -t "${pkgdir}/${HNCCONTEXT}" "${srcdir}/${NIMFLIB}"
   fi
 
+  mkdir -p "$pkgdir"/usr/bin/
+  echo "Creating symbolic link: /opt/hnc/hoffice11/Bin/hwp -> /usr/bin/hwp"
+  echo '"/opt/hnc/hoffice11/Bin/hwp" $@' >"$pkgdir"/usr/bin/hwp
+  chmod +x "$pkgdir"/usr/bin/hwp
 }
