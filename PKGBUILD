@@ -4,7 +4,7 @@
 pkgname=qt5-connectivity
 _basever=5.15.16
 pkgver=5.15.16+kde+r1
-pkgrel=1
+pkgrel=2
 _commit=c8a0f0b1f6dd4c63dbc015f63dc6856895e46ba3
 arch=('x86_64')
 url='https://www.qt.io'
