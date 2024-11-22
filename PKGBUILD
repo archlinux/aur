@@ -2,7 +2,7 @@
 pkgname=rabbitremotecontrol-bin
 _pkgname=RabbitRemoteControl
 _debname=org.Rabbit.RemoteControl
-pkgver=0.0.27
+pkgver=0.0.28
 pkgrel=1
 pkgdesc="Remote control. Support VNC, RDP, Terminal, SSH, TELNET etc.(Prebuilt version)"
 arch=('x86_64')
@@ -24,7 +24,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_amd64.deb"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('80655533f44ac00dd110a695e71522d2c9f43bb228f26da3dfc9f22599f673f8'
+sha256sums=('cea7b3485564fe1b8caaa29d2a1d7bfb6d5074baebb2e4a98f0a3548c47f54fe'
             'b6255be5cbf5685c1195a41cdad5a2490c403d6641c56c065040d5dbd3589aad')
 build() {
     sed -e "
