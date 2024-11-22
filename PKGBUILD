@@ -2,14 +2,14 @@
 
 pkgname="xsnow-bin"
 pkgver=3.7.8
-pkgrel=1
+pkgrel=2
 pkgdesc="Let it snow on your desktop"
 url="https://www.ratrabbit.nl/ratrabbit/xsnow/"
 license=("GPL3")
 arch=("x86_64" "aarch64")
 provides=("xsnow")
 conflicts=("xsnow" "xsnow-legacy" "xsnow-comp-patch-git")
-depends=("atk" "cairo" "gsl<2.6" "gtk3" "libx11" "libxpm" "libxml2")
+depends=("atk" "cairo" "gsl" "gtk3" "libx11" "libxpm" "libxml2")
 # replaced sourceforce with results from https://pkgs.org/search/?q=xsnow
 source_x86_64=("http://ftp.de.debian.org/debian/pool/main/x/xsnow/xsnow_$pkgver-1+b2_amd64.deb")
 source_aarch64=("http://ftp.de.debian.org/debian/pool/main/x/xsnow/xsnow_$pkgver-1+b2_arm64.deb")
