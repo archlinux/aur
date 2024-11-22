@@ -1,4 +1,4 @@
-# Maintainer: yuik <yui@kotegawa.org>
+# Maintainer: yuik <ali205412@github.com>
 pkgname=wf-recorder-gui
 pkgver=0.1.0
 pkgrel=1
