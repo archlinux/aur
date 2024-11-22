@@ -1,7 +1,7 @@
 # Maintainer: n0vella <n0vella@outlook.com>
 # This PKGBUILD compiles and installs the latest tag of the git repository
 pkgname=cardo
-pkgver=1.8.0
+pkgver=1.9.0
 pkgrel=1
 pkgdesc="Cardo podcast client"
 arch=('x86_64')
@@ -13,27 +13,23 @@ makedepends=('git' 'cargo' 'pnpm' 'nodejs')
 options=('!lto') # https://github.com/toeverything/AFFiNE/issues/6280#issuecomment-2041484627
 provides=("cardo")
 conflicts=("cardo")
-source=("git+$url")
-sha256sums=('SKIP')
+source=("https://github.com/cardo-podcast/cardo/archive/refs/tags/$pkgver.tar.gz" 'cardo.desktop')
+sha256sums=('90f55fe2105fcffb8946dfa8960bacac897020b1c24f101fccb05e7930098081' 'SKIP')
 
-
-pkgver() {
-	cd "$srcdir/${pkgname}"
-	git tag -l --sort=-creatordate | head -n 1
-}
-
-prepare() {
-	cd "$srcdir/${pkgname}"
-	git checkout $pkgver
-	pnpm i
-}
 
 build() {
-	cd "$srcdir/${pkgname}"
-	pnpm run tauri build -b 'deb'
+	cd "$srcdir/$pkgname-$pkgver"
+    pnpm install --frozen-lockfile
+	pnpm run tauri build -b none
 }
 
 
 package() {
- 	cp -rT "$srcdir/${pkgname}/src-tauri/target/release/bundle/deb/${pkgname}_${pkgver}_amd64/data" "$pkgdir"
+    cd "$srcdir/$pkgname-$pkgver"
+
+    install -Dm644 $srcdir/cardo.desktop "$pkgdir/usr/share/applications/$pkgname.desktop"
+    install -Dm755 "src-tauri/target/release/$pkgname" "$pkgdir/usr/bin/$pkgname"
+    install -Dm644 icon.png "$pkgdir/usr/share/icons/$pkgname.png"
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+
 }
