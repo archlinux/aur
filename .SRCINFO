@@ -1,0 +1,13 @@
+pkgbase = chicago-kare
+	pkgdesc = A Faithful Reproduction of the Bitmap Version of the Chicago Typeface
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://chicagokare.xyz/
+	arch = any
+	license = MIT
+	source = chicago-kare::git+https://github.com/KingDuane/Chicago-Kare.git#commit=bc29a39aec9768acec001ebfd9aec83fc769aaae
+	b2sums = e543ab53aa4a519b0ef29f479eaa5391592922e3aeedb3dfeff52e14cc579eabb5e19f1124c0bbcb4f65f7e136da4e0c318fa82beb99cf11ee79328a0edc471a
+
+pkgname = otf-chicago-kare
+
+pkgname = ttf-chicago-kare
