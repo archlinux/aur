@@ -27,6 +27,7 @@ prepare() {
 
 build() {
   msg2 "Building for $pkgbase - $pkgname"
+  env
   cd $_pkgdir
   unset RUSTFLAGS
   unset DEBUG_RUSTFLAGS
