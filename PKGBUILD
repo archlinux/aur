@@ -13,33 +13,35 @@ arch=('i686' 'x86_64')
 source=("https://github.com/tursodatabase/libsql/archive/refs/tags/libsql-server-v${pkgver}.tar.gz")
 b2sums=('ff520abc812e0f85663b9e683954066808cb6d576424c456fdae95dce76d471f3176cd7d9c0af6a55e00c20b307e64276ce831c2710e5f78908eb958fafb532c')
 
-_pkgdir="${pkgname}-libsql-server-v${pkgver}"
+###
+_build_libsql=0         #if manually running and want both, set to 1
+_build_libsql_sqlite3=0 #if manually running and want both, set to 1
+###
 
+_pkgdir="${pkgname}-libsql-server-v${pkgver}"
 prepare() {
   cd $_pkgdir
   export RUSTUP_TOOLCHAIN=stable
   cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
-build_libsql() {
+build() {
   cd $_pkgdir
-
-  # TODO: figure out what flag is causing the build failure, possibly force-frame-pointer?
   unset RUSTFLAGS
   unset DEBUG_RUSTFLAGS
 
   export CARGO_TARGET_DIR=target
   export RUSTUP_TOOLCHAIN=stable
-  cargo build --release --frozen
-  cargo xtask build --frozen --release
-}
 
-build_libsql-sqlite3() {
-  makedepends=(gcc make cargo)
-  cd $_pkgdir
-  export CARGO_TARGET_DIR=target
-  export RUSTUP_TOOLCHAIN=stable
-  cargo xtask build --frozen --release
+  if [ "$pkgname" == "libsql" ] || [ -z "$_build_libsql" ]; then
+    # TODO: figure out what flag is causing the build failure, possibly force-frame-pointer?
+    cargo build --release --frozen
+    cargo xtask build --frozen --release
+  fi
+
+  if [ "$pkgname" == "libsql-sqlite3" ] || [ -z "$_build_libsql_sqlite3" ]; then
+    cargo xtask build --frozen --release
+  fi
 }
 
 package_libsql() {
