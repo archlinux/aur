@@ -1,0 +1,36 @@
+pkgbase = r-keras3
+	pkgdesc = R interface to Keras
+	pkgver = 1.2.0
+	pkgrel = 5
+	url = https://cran.r-project.org/package=keras3
+	arch = any
+	license = MIT
+	checkdepends = r-testthat
+	depends = r-generics
+	depends = r-reticulate
+	depends = r-tensorflow
+	depends = r-tfruns
+	depends = r-magrittr
+	depends = r-zeallot
+	depends = r-fastmap
+	depends = r-glue
+	depends = r-cli
+	depends = r-rlang
+	optdepends = r-ggplot2
+	optdepends = r-testthat
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	optdepends = r-callr
+	optdepends = r-tfdatasets
+	optdepends = r-withr
+	optdepends = r-png
+	optdepends = r-jsonlite
+	optdepends = r-purrr
+	optdepends = r-rstudioapi
+	optdepends = r-r6
+	optdepends = r-jpeg
+	source = https://cran.r-project.org/src/contrib/keras3_1.2.0.tar.gz
+	md5sums = d979562710408f2429d4e0f9b51bcf5c
+	b2sums = ce1ab0c5cb4fdd42ec777140cd16940d521cca7fa4a71376b0ebb99184a2af620110c4397aa773f90673025b65b8c986059cb06bd9a98b65fa8325c0688c387e
+
+pkgname = r-keras3
