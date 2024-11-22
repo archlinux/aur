@@ -1,10 +1,10 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=batch-explorer-bin
 _pkgname=BatchExplorer
-pkgver=2.20.0_stable.966
-_electronversion=26
-pkgrel=4
-pkgdesc="A client tool to help create, debug and monitor Azure Batch Applications.Prebuilt version.Use system-wide electron."
+pkgver=2.21.0_stable.1069
+_electronversion=29
+pkgrel=1
+pkgdesc="A client tool to help create, debug and monitor Azure Batch Applications.(Prebuilt version)"
 arch=("x86_64")
 url="https://azure.github.io/BatchExplorer/"
 _ghurl="https://github.com/Azure/BatchExplorer"
@@ -26,13 +26,12 @@ options=(
     '!emptydirs'
 )
 source=(
-    "${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/v${pkgver//_/-}/${pkgname%-bin}_${pkgver//_/-}_amd64.deb"
+    "${pkgname%-bin}-${pkgver}.rpm::${_ghurl}/releases/download/v${pkgver//_/-}/${pkgname%-bin}-${pkgver//_/-}.${CARCH}.rpm"
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/Azure/BatchExplorer/v${pkgver//_/-}/LICENSE"
 )
-sha256sums=('2d4a1b57f8c3d83e47233f533d71340aeaac11c3e03be0beea0fd6a49c7acb60'
+sha256sums=('0c3c0e70d3597e4d22a34b4918878f767000333960be24e56d15c5be8c7da522'
             '0b9ebab8a849f3ae8ed5bd7a35022bff9dce901efeeb53e855e91c02c8500ab0')
 build() {
-    bsdtar -xf "${srcdir}/data."*
     sed -i "s/\/opt\/${_pkgname}\/${pkgname%-bin}/${pkgname%-bin}/g" "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
 package() {
