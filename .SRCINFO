@@ -1,0 +1,16 @@
+pkgbase = mdx-notes-bin
+	pkgdesc = ⛷ Cross-platform note-taking software, public layout editor, using MDX ⛷ 跨平台笔记软件，公众号排版编辑器，使用MDX来排版.(Prebuilt version)
+	pkgver = 1.0.3
+	pkgrel = 1
+	url = https://mdxnotes.com/
+	arch = x86_64
+	license = GPL-3.0-only
+	depends = gtk3
+	depends = gdk-pixbuf2
+	depends = webkit2gtk-4.1
+	provides = mdx-notes=1.0.3
+	conflicts = mdx-notes
+	source = mdx-notes-1.0.3.deb::https://github.com/maqi1520/mdx-notes/releases/download/v1.0.3/MDX.Notes_1.0.3_amd64.deb
+	sha256sums = 49a34a452f7a6ba91987dc5fa5da99ba390dd89612beee4eb252ba94209bf56d
+
+pkgname = mdx-notes-bin
