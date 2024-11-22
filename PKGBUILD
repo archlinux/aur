@@ -50,7 +50,7 @@ depends=(
 )
 
 makedepends=(
-	'miniaudio'
+	'miniaudio' # AUR, only -git is packaged, which happens to be identical to the latest available release as of 2024-11-22 since it's a year old
 	'git'
 	'pkg-config'
 	'python-build'
@@ -73,13 +73,13 @@ optdepends=(
 source=(
 	"${pkgname%-git}"::'git+https://github.com/Taiko2k/Tauon.git'
 	"kissfft-${_kissfftver}.tar.gz::https://github.com/mborgerding/kissfft/archive/refs/tags/${_kissfftver}.tar.gz"
-	"miniaudio-${_miniaudiocommit}.tar.gz::https://github.com/mackron/miniaudio/archive/${_miniaudiocommit}.tar.gz"
+#	"miniaudio-${_miniaudiocommit}.tar.gz::https://github.com/mackron/miniaudio/archive/${_miniaudiocommit}.tar.gz"
 )
 
 sha256sums=(
 	'SKIP'
-	'76c1aac87ddb7258f34b08a13f0eebf9e53afa299857568346aa5c82bcafaf1a'
-	'aacb63f571608210e69c5562eb8a9e3d1cb936bdee7a2eb8ffbc40f63888d8e8')
+	'76c1aac87ddb7258f34b08a13f0eebf9e53afa299857568346aa5c82bcafaf1a')
+#	'aacb63f571608210e69c5562eb8a9e3d1cb936bdee7a2eb8ffbc40f63888d8e8')
 
 pkgver() {
 	cd "${srcdir}/${pkgname%-git}"
@@ -88,7 +88,7 @@ pkgver() {
 
 prepare() {
 	cp -r kissfft-${_kissfftver}/* ${pkgname%-git}/src/phazor/kissfft/
-	cp -r miniaudio-${_miniaudiocommit}/* ${pkgname%-git}/src/phazor/miniaudio/
+#	cp -r miniaudio-${_miniaudiocommit}/* ${pkgname%-git}/src/phazor/miniaudio/
 #	cd "${pkgname%-git}"
 #	patch -Np1 -i "${srcdir}"/phazor.patch
 #	patch -Rp1 -i "${srcdir}"/phazor.patch
