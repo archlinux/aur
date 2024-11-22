@@ -2,12 +2,13 @@
 
 pkgname=clifm
 pkgver=1.21
-pkgrel=1
+pkgrel=2
 pkgdesc="The command line file manager"
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'aarch64' 'armv7h')
 url="https://github.com/leo-arch/${pkgname}"
 license=(GPL2)
 provides=('clifm')
+conflicts=('clifm-bin' 'clifm-git' 'clifm-nerd')
 depends=('libcap' 'readline' 'acl' 'file')
 makedepends=('make' 'gzip')
 optdepends=(

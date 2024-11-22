@@ -1,7 +1,7 @@
 pkgbase = clifm
 	pkgdesc = The command line file manager
 	pkgver = 1.21
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/leo-arch/clifm
 	arch = i686
 	arch = pentium4
@@ -25,6 +25,9 @@ pkgbase = clifm
 	optdepends = udevil: (un)mount storage devices
 	optdepends = udisks2: (un)mount storage devices
 	provides = clifm
+	conflicts = clifm-bin
+	conflicts = clifm-git
+	conflicts = clifm-nerd
 	source = clifm-1.21.tar.gz::https://github.com/leo-arch/clifm/archive/v1.21.tar.gz
 	sha256sums = cb219ca6ce1b4a31ec98701a43da51142c8bc7f15a22cb81dda93f881e6f6877
 
