@@ -8,7 +8,6 @@ pkgbase = sqlitestudio-bin
 	makedepends = gendesk
 	depends = qt5-base
 	depends = gtk3
-	depends = openssl-1.1
 	provides = sqlitestudio=3.4.5
 	conflicts = sqlitestudio
 	options = !strip

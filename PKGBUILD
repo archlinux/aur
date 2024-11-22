@@ -13,7 +13,6 @@ conflicts=("${pkgname%-bin}")
 depends=(
     'qt5-base'
     'gtk3'
-    'openssl-1.1'
 )
 makedepends=(
     'gendesk'
