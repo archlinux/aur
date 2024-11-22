@@ -19,7 +19,7 @@ makedepends=("meson" "git")
 
 licence=" GPL-3.0-or-later"
 
-url="https://github.com/JeanSchoeller/iio-hyprland/"
+url="https://github.com/JeanSchoeller/iio-hyprland.git"
 
 source=("iio-hyprland::git+https://github.com/JeanSchoeller/iio-hyprland.git")
 sha1sums=(
