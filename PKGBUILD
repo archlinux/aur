@@ -1,6 +1,6 @@
 # Maintainer: Xarth <g@lzzz.ink>
 pkgname=clipboard-go
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="Share clipboard between 💻Linux & 📱iOS"
 arch=('any')
@@ -10,7 +10,7 @@ makedepends=('go')
 depends=('xclip')
 backup=(etc/clipboard-go/config.json)
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Xarth-Mai/Clipboard-Go/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('cebe7263d7484e60caffc8c2e0356b73dd8dec5932cb877f35278a14baa06b26')
+sha256sums=('3d6e69b3b0acf5beaf081e971103b989dfb7e7b82988a8431e8c1732d556cd6d')
 
 build() {
   cd "$srcdir/Clipboard-Go-${pkgver}"
