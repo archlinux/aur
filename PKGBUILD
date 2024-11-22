@@ -1,40 +1,40 @@
-# Maintainer: carstene1ns <arch carsten-teibes de> - http://git.io/ctPKG
+# Maintainer: envolution
+# Contributor: carstene1ns <arch carsten-teibes de> - http://git.io/ctPKG
 # Contributor: trya <tryagainprod@gmail.com>
 # Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 # Contributor: Tom Newsom <Jeepster@gmx.co.uk>
 
 pkgname=lib32-sdl_sound
-pkgver=1.0.3
-pkgrel=7
+pkgver=2.0.2
+pkgrel=1
 pkgdesc="A library to decode several popular sound file formats, such as .WAV and .MP3 (32 bit)"
-arch=('x86_64')
+arch=('x86_64' 'i686')
 url="http://icculus.org/SDL_sound/"
 license=('LGPL')
-depends=('lib32-sdl' 'lib32-libmikmod' 'libvorbis' 'lib32-flac' 'lib32-speex' 'lib32-smpeg'
-         'lib32-libmodplug' 'sdl_sound')
-source=("http://icculus.org/SDL_sound/downloads/SDL_sound-$pkgver.tar.gz")
-sha256sums=('3999fd0bbb485289a52be14b2f68b571cb84e380cc43387eadf778f64c79e6df')
-
-prepare() {
-  # renamed since physfs 2.1.1
-  sed 's/__EXPORT__/PHYSFS_DECL/g' -i SDL_sound-$pkgver/playsound/physfsrwops.h
-}
+depends=('lib32-sdl' sdl_sound)
+source=(https://github.com/icculus/SDL_sound/archive/refs/tags/v${pkgver}.tar.gz)
+sha256sums=('5f92600de48ec640985d13e50d111af9ac30be797bc9a36eafa5d8cecc7e1f60')
 
 build() {
   cd SDL_sound-$pkgver
 
-  export CC="gcc -m32"
-  export CXX="g++ -m32"
   export PKG_CONFIG_PATH="/usr/lib32/pkgconfig"
   export SDL_CONFIG=/usr/bin/sdl-config-32
-  export CPPFLAGS="$CPPFLAGS -I/usr/include/smpeg"
-  ./configure --prefix=/usr --libdir=/usr/lib32 --disable-static
-  make
+  cmake -DCMAKE_C_FLAGS="-m32 -L/usr/lib32" \
+    -DCMAKE_CXX_FLAGS="-m32 -L/usr/lib32" \
+    -DCMAKE_EXE_LINKER_FLAGS="-m32 -L/usr/lib32" \
+    -DCMAKE_FIND_LIBRARY_SUFFIXES=".so" \
+    -DCMAKE_INSTALL_PREFIX="/usr" \
+    -DCMAKE_INSTALL_LIBDIR="/usr/lib32" \
+    -S ./ \
+    -B ./build
+  cmake --build build
+
 }
 
 package() {
-  cd SDL_sound-$pkgver
+  cd SDL_sound-$pkgver/build
   make DESTDIR="$pkgdir" install
   # remove stuff already present in sdl_sound package
-  rm -rf "$pkgdir"/usr/{bin,include}
+  rm -rf "$pkgdir"/usr/{bin,include,lib}
 }
