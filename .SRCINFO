@@ -1,6 +1,6 @@
 pkgbase = python-etebase
 	pkgdesc = Etebase Python library
-	pkgver = 0.31.7
+	pkgver = 0.31.8
 	pkgrel = 1
 	url = https://github.com/etesync/etebase-py
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = python-etebase
 	depends = openssl
 	depends = python-msgpack
 	depends = libsodium
-	source = python-etebase::git+https://github.com/etesync/etebase-py.git#tag=v0.31.7
+	source = python-etebase::git+https://github.com/etesync/etebase-py.git#tag=v0.31.8
 	source = 0001-Link-against-system-openssl-libsodium.patch
 	source = python-3.12-compat.patch
 	sha256sums = a85f5886d898f4eefeafd4983f495677e0e2bf94bab5c8edb8a2e5c91b0c7425
