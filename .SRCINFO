@@ -1,0 +1,12 @@
+pkgbase = shlike-toggle
+	pkgdesc = A simple bash script to toggle blocks of code within shell-like files (that use '#' for comment lines).
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/oleasteo/shlike-toggle
+	arch = any
+	license = MIT
+	depends = bash
+	source = shlike-toggle-1.0.0.tar.gz::https://github.com/oleasteo/shlike-toggle/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = 6e911f60fac6843c343c911ffcb18a2b396aad2cec01ed872430ad203ced2094
+
+pkgname = shlike-toggle
