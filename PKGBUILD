@@ -1,7 +1,7 @@
 # Maintainter: Woshiluo Luo <woshiluo.luo@outlook.com>
 pkgname=phantun
-pkgver=0.6.0
-pkgrel=2
+pkgver=0.7.0
+pkgrel=1
 pkgdesc="Transforms UDP stream into (fake) TCP streams\
 		 that can go through Layer 3 & Layer 4 (NAPT) firewalls/NATs."
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('APACHE')
 makedepends=('git' 'rust')
 source=(https://github.com/dndx/phantun/archive/refs/tags/v${pkgver}.zip)
 
-sha256sums=('22bc5c970f28387e3c5d3fe32d284b4c9fe23c61e599504b5647153fa0d8551f')
+sha256sums=('d719a779be4e7a7d8e152e3beb7cbe4002227310529830a83b6fe6339a6b7a8c')
 
 build() {
 	cd "$srcdir/$pkgname-$pkgver"
