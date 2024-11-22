@@ -1,0 +1,27 @@
+pkgbase = viper4linux-gui-bin
+	pkgdesc = Official UI for Viper4Linux
+	pkgver = 2.2
+	pkgrel = 1
+	url = https://github.com/Audio4Linux/Viper4Linux-GUI
+	arch = x86_64
+	license = GPL-3.0-or-later
+	depends = gcc-libs
+	depends = glibc
+	depends = gst-plugins-bad-libs
+	depends = gstreamer
+	depends = mesa
+	depends = qt5-base
+	depends = qt5-multimedia
+	depends = qt5-svg
+	depends = viper4linux
+	provides = viper4linux-gui
+	conflicts = viper4linux-gui
+	noextract = viper4linux-gui-2.2-x86_64.deb
+	source = README-2.2.md::https://github.com/Audio4Linux/Viper4Linux-GUI/raw/refs/tags/2.2/README.md
+	source = LICENSE-2.2::https://github.com/Audio4Linux/Viper4Linux-GUI/raw/refs/tags/2.2/LICENSE
+	sha256sums = 1486917f2584f3e94df0fec725b16515e1974f6699266d30e4a2a737bfcb0039
+	sha256sums = 3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986
+	source_x86_64 = viper4linux-gui-2.2-x86_64.deb::https://raw.githubusercontent.com/timschneeb/PPA-Repository/57cab600c37e16d7441747034e03c1058f7779e9/viper4linux-gui_2.2-43.deb
+	sha256sums_x86_64 = dbe29f9cfc0b59eb74b7351c0c9ed163952e39c36343b4dce8bd714f466d48ae
+
+pkgname = viper4linux-gui-bin
