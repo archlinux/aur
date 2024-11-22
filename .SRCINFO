@@ -1,6 +1,6 @@
 pkgbase = icingaweb2
 	pkgdesc = Icinga Web 2 Interface
-	pkgver = 2.12.1
+	pkgver = 2.12.2
 	pkgrel = 1
 	url = https://icinga.com/
 	install = icingaweb2.install
@@ -13,7 +13,7 @@ pkgbase = icingaweb2
 	optdepends = php-imagick: graphs in PDF exports
 	optdepends = php-intl: support for internationalization
 	optdepends = php-pgsql: for PostgreSQL backend
-	source = icingaweb2-2.12.1.tar.gz::https://github.com/Icinga/icingaweb2/archive/v2.12.1.tar.gz
-	sha256sums = 4640b8cf38265c9c74689701c5e8e1a3b1938ad1ac9ad71674393d2ff3c2dc7f
+	source = icingaweb2-2.12.2.tar.gz::https://github.com/Icinga/icingaweb2/archive/v2.12.2.tar.gz
+	sha256sums = b15687a499f1774aaf953216990c5c94639a19a68977c288847b857541c84649
 
 pkgname = icingaweb2
