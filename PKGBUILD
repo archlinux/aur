@@ -18,7 +18,7 @@ depends=(
   'glibc'
   'glu'
   'gtk3'
-  'libglvnd'a
+  'libglvnd'
   'harfbuzz'
   'hicolor-icon-theme'
   'opencascade'
