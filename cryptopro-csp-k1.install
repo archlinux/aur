@@ -253,6 +253,9 @@ post_install() {
     cpconfig -hardware media -configure TRUSTD -add hex mask ffff0000ffffffffffffffff
     cpconfig -hardware media -configure TRUSTD -add string folders "A\\B\\C\\D\\E\\F\\G\\H"
 
+    cpconfig -ini '\config\Parameters\SmartcardReaders\filterAncud' -add string filter '(ANCUD|Ancud).*RNG.*'
+    cpconfig -ini '\config\Parameters\SmartcardReaders\filterAncud' -add long protocol 1
+
     not_solaris=1
     if test ! -z "$not_solaris"; then
         search_dirs=''
@@ -323,6 +326,13 @@ post_install() {
     cpconfig -hardware media -add $NAME -name 'Aladdin R.D. JaCarta' > /dev/null
     cpconfig -hardware media -configure $NAME -add hex atr 3bdc18ff8191fe1fc38073c821136601061159000128
     cpconfig -hardware media -configure $NAME -add hex mask ffffffffffffffffffffffffffffffffffffffffffff
+    cpconfig -hardware media -configure $NAME -add string folders 'CC00\CC01\CC02\CC03\CC04\CC05\CC06\CC07\CC08\CC09'
+
+    NAME="jacarta_nfc"
+    cpconfig -ini "\config\KeyCarriers\\$NAME" -add string DLL $LIBNAME.so
+    cpconfig -hardware media -add $NAME -name 'Aladdin R.D. JaCarta NFC' > /dev/null
+    cpconfig -hardware media -configure $NAME -add hex atr 3B8C80018073C82113660106115900012C
+    cpconfig -hardware media -configure $NAME -add hex mask ffffffffffffffffffffffffffffffffff
     cpconfig -hardware media -configure $NAME -add string folders 'CC00\CC01\CC02\CC03\CC04\CC05\CC06\CC07\CC08\CC09'
 
     NAME="jacarta_lt"
