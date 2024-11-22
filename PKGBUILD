@@ -2,7 +2,7 @@
 
 pkgname=(libsql libsql-sqlite3)
 pkgver=0.24.28
-pkgrel=1
+pkgrel=2
 pkgdesc='Fork of SQLite that is both Open Source, and Open Contributions'
 url='https://turso.tech/libsql'
 license=(MIT)
@@ -36,7 +36,6 @@ build() {
   if [ "$pkgname" == "libsql" ] || [ -z "$_build_libsql" ]; then
     # TODO: figure out what flag is causing the build failure, possibly force-frame-pointer?
     cargo build --release --frozen
-    cargo xtask build --frozen --release
   fi
 
   if [ "$pkgname" == "libsql-sqlite3" ] || [ -z "$_build_libsql_sqlite3" ]; then

@@ -1,7 +1,7 @@
 pkgbase = libsql
 	pkgdesc = Fork of SQLite that is both Open Source, and Open Contributions
 	pkgver = 0.24.28
-	pkgrel = 1
+	pkgrel = 2
 	url = https://turso.tech/libsql
 	arch = i686
 	arch = x86_64
