@@ -11,7 +11,7 @@ optdepends=(
 	'curl: for fetching AI suggestions'
 )
 source=("$pkgname::git+https://github.com/iffse/pay-respects#tag=v$pkgver")
-sha1sums=('531d2ed2ee73553a1e382537cd8d72607f26f8e8')
+sha1sums=('f3a4384e7986c572982c4ff5dd2cdd3b58cc286d')
 replaces=('pay_respects')
 
 prepare() {
