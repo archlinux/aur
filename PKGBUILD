@@ -69,7 +69,7 @@ package_libsql() {
 }
 
 package_libsql-sqlite3() {
-  provides=(sqlite3)
+  provides=(sqlite3 'libsqlite3.so')
   conflicts=(sqlite3)
   pkgdesc="A compatibility binary for SQLite3 using libsql"
 

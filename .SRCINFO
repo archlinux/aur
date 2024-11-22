@@ -17,4 +17,5 @@ pkgname = libsql
 pkgname = libsql-sqlite3
 	pkgdesc = A compatibility binary for SQLite3 using libsql
 	provides = sqlite3
+	provides = libsqlite3.so
 	conflicts = sqlite3
