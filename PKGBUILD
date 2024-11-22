@@ -1,15 +1,15 @@
 # Maintainer: archcrack <leo.clifm@outlook.com>
 
 pkgname=clifm-bin
-_pkgname="${pkgname%-bin}"
+_pkgname=clifm
 pkgver=1.21
-pkgrel=1
+pkgrel=2
 pkgdesc="The command line file manager (binary version)"
 arch=('i686' 'x86_64' 'armv7h')
 url="https://github.com/leo-arch/${_pkgname}"
 license=(GPL2)
-provides=("${_pkgname}")
-conflicts=("${_pkgname}")
+provides=('clifm')
+conflicts=('clifm' 'clifm-git' 'clifm-nerd')
 depends=('libcap' 'readline' 'acl' 'file')
 makedepends=('make' 'gzip')
 optdepends=(
