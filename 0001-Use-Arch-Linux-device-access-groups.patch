@@ -169,27 +169,5 @@ index 4f2c0d7c43..62e2ae0986 100644
  # hence without use on SysV-less systems.
 
 
-From b36b8d0be260ad289d2b572f679a3dc03595d964 Mon Sep 17 00:00:00 2001
-From: Thorsten Toepper <atsutane-aur@freethoughts.de>
-Date: Thu, 12 Sep 2024 19:49:37 +0200
-Subject: [PATCH] application of legacy.conf in meson.build segment failed.
-
----
- tmpfiles.d/meson.build | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/tmpfiles.d/meson.build b/tmpfiles.d/meson.build
-index 52611357c2..3067f7996c 100644
---- a/tmpfiles.d/meson.build
-+++ b/tmpfiles.d/meson.build
-@@ -35,7 +35,7 @@ in_files = [
-         ['20-systemd-stub.conf',          'ENABLE_EFI'],
-         ['20-systemd-userdb.conf',        'ENABLE_SSH_USERDB_CONFIG'],
-         ['etc.conf'],
--        ['legacy.conf',                   'HAVE_SYSV_COMPAT'],
-+        ['legacy.conf'],
-         ['static-nodes-permissions.conf'],
-         ['systemd.conf'],
-         ['var.conf'],
 --
 
