@@ -1,5 +1,4 @@
 pkgbase = ttype
-		pkgname = ttype
     pkgdesc = A terminal-based typing test application
     pkgver = 1.0.0
     pkgrel = 1
