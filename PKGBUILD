@@ -2,7 +2,7 @@
 # Contributor: Malte Rabenseifner <mail@malte-rabenseifner.de>
 
 pkgname=icingaweb2-module-director
-pkgver=1.11.1
+pkgver=1.11.2
 pkgrel=1
 pkgdesc="Manage Icinga 2 configuration from Icinga Web 2"
 license=('GPL')
