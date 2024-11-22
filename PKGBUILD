@@ -176,6 +176,13 @@ apply_patches() {
     done
 }
 
+# Allows user to modify the kernel config
+modify_defconfig() {
+    [[ -n "$_makemenuconfig" ]] && make ${BUILD_FLAGS[*]} menuconfig
+    [[ -n "$_makexconfig" ]] && make ${BUILD_FLAGS[*]} xconfig
+    [[ -n "$_makenconfig" ]] && make ${BUILD_FLAGS[*]} nconfig
+}
+
 # Copies the kernel config
 copy_defconfig() {
     local "_cur_major_ver=$(zcat /proc/config.gz | grep Linux | grep -o '[0-9]*[0-9]\.[0-9]*[0-9]')"
@@ -186,6 +193,9 @@ copy_defconfig() {
         # modprobe configs
         zcat /proc/config.gz > ./.config
         make ${BUILD_FLAGS[*]} olddefconfig
+
+        # If a user wants to modify the config based on the current one
+        modify_defconfig
     else
         warning "Your kernel was not compiled with IKCONFIG_PROC."
         warning "Unable to read kernel configuration, aborting."
@@ -293,9 +303,7 @@ update_defconfig() {
     [[ -z "${_subarch}" ]] && make ${BUILD_FLAGS[*]} oldconfig
 
     # Open configuration editors
-    [[ -n "$_makemenuconfig" ]] && make ${BUILD_FLAGS[*]} menuconfig
-    [[ -n "$_makexconfig" ]] && make ${BUILD_FLAGS[*]} xconfig
-    [[ -n "$_makenconfig" ]] && make ${BUILD_FLAGS[*]} nconfig
+    modify_defconfig
 
     # Save configuration
     # shellcheck disable=SC2015
