@@ -1,7 +1,7 @@
 # Maintainer: envolution
 pkgname=artisan-roaster-scope
 _appname='artisan'
-pkgver=3.0.2
+pkgver=3.1.0
 pkgrel=2
 pkgdesc="Artisan is a software that helps coffee roasters record, analyze, and control roast profiles."
 arch=("x86_64")
@@ -13,7 +13,7 @@ source=(
 	"https://github.com/artisan-roaster-scope/artisan/releases/download/v${pkgver}/artisan-linux-${pkgver}.AppImage"
 )
 
-sha256sums=('a2168bddf64c97708e35fffcea2222810cdd6841934a84a9644a423d0f970387')
+sha256sums=('3e4aea5f609f952091d5efb86382b5da2b82ad8a8331e703d6f7fc18acf54ad4')
 
 options+=(!strip !debug) 
 
