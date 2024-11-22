@@ -1,10 +1,13 @@
 pkgbase = python-ipython-sql
 	pkgdesc = RDBMS access via IPython
 	pkgver = 0.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pypi.python.org/pypi/ipython-sql
 	arch = any
 	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
 	makedepends = python-setuptools
 	depends = ipython
 	depends = python-sqlalchemy
