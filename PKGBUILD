@@ -3,10 +3,10 @@
 # Contributor: frichtlm <frichtlm@gmail.com>
 
 _pkgname=bindr
-_pkgver=0.1.1
+_pkgver=0.1.2
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=3
+pkgrel=1
 pkgdesc="Parametrized Active Bindings"
 arch=(any)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -21,8 +21,8 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('cfa02c563196a79bf8bb4db2e66585fd')
-b2sums=('e0b2f10f92aaaaaf2dbc01aed9198143609d2ee1e1e8b720713aea2dd1087eb0883bfcab5be7df8c08135391ebed075dd37ac1590d589d00a60a4a6ca92d2634')
+md5sums=('2e707ad431db6f3bda28f5686fc4d09b')
+b2sums=('29e20f59a43dc57bdc0448c0ad6f514fc28bc28b548d671c546f37f6e93483771b0714e82a1739cc194c65901b0c049966dee9c47c47185efa28861ebdfb09c1')
 
 build() {
   mkdir build
