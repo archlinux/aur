@@ -1,11 +1,11 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=atlassify-git
 _pkgname=Atlassify
-pkgver=1.7.0.r2.g6635195
+pkgver=1.8.0.r3.g04984a4
 _electronversion=33
 _nodeversion=20
 pkgrel=1
-pkgdesc="Atlassian notifications on your menu bar.Use system-wide electron."
+pkgdesc="Atlassian notifications on your menu bar.(Use system-wide electron)"
 arch=('any')
 url="https://atlassify.io/"
 _ghurl="https://github.com/setchy/atlassify"
@@ -77,7 +77,7 @@ build() {
         } >> .npmrc
     fi
     icotool -i 9 -x assets/images/app-icon.ico -o assets/images/app-icon.png
-    sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g;s/\"AppImage\", \"deb\", \"rpm\"/\"dir\"/g" package.json
+    sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
     NODE_ENV=development    pnpm install
     NODE_ENV=production     pnpm run build
     NODE_ENV=development    pnpm prepare:remove-source-maps
