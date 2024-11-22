@@ -3,13 +3,13 @@
 pkgname=osu-lazer-extracted-bin
 _pkgname=${pkgname%-extracted-bin}
 pkgver=2024.1115.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A free-to-win rhythm game. Rhythm is just a *click* away!"
 arch=(x86_64)
 url="https://osu.ppy.sh"
 license=("LicenseRef-custom")
 depends=(
-  "libgl"
+  "opengl-driver"
   "vulkan-driver"
   "lttng-ust2.12"
 )
