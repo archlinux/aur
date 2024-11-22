@@ -1,0 +1,16 @@
+[Unit]
+Description=Forge Server Unstable
+After=network.target
+
+[Service]
+User=forge
+WorkingDirectory=/opt/forge-server-unstable
+ExecStart=/usr/bin/java @user_jvm_args.txt -jar forge-server.jar nogui
+Restart=on-failure
+RestartSec=10s
+StartLimitInterval=300s
+StartLimitBurst=5
+
+[Install]
+WantedBy=multi-user.target
+
