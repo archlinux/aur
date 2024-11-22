@@ -9,13 +9,13 @@ pkgbase = python-extract-msg
 	makedepends = python-installer
 	makedepends = python-setuptools
 	makedepends = python-wheel
-	depends = python-olefile
-	depends = python-tzlocal
+	depends = python-beautifulsoup4
 	depends = python-compressed-rtf
 	depends = python-ebcdic
-	depends = python-beautifulsoup4
-	depends = python-rtfde
+	depends = python-olefile
 	depends = python-red-black-tree-mod
+	depends = python-rtfde
+	depends = python-tzlocal
 	source = extract-msg-0.52.0.tar.gz::https://files.pythonhosted.org/packages/source/e/extract_msg/extract_msg-0.52.0.tar.gz
 	sha256sums = c21c548c43e1f0cdce5616102d33e590e2b46fbdc9d04f21af4eb62dcbf296dd
 
