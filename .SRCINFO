@@ -1,7 +1,7 @@
-pkgbase = bindiff
-	pkgdesc = A comparison tool for binary files that assists vulnerability researchers and engineers to quickly find differences and similarities in disassembled code.
+pkgbase = bindiff-ida9-bin
+	pkgdesc = bindiff fork with IDA 9 support
 	pkgver = 8
-	pkgrel = 2
+	pkgrel = 1
 	url = https://www.zynamics.com/bindiff.html
 	arch = x86_64
 	license = Apache-2.0
@@ -10,8 +10,10 @@ pkgbase = bindiff
 	backup = etc/opt/bindiff/bindiff.json
 	source = https://github.com/google/bindiff/releases/download/v8/bindiff_8_amd64.deb
 	source = https://github.com/google/bindiff/releases/download/v8/bindiff_8_amd64.deb.asc
+	source = https://github.com/cs2-analysis/bindiff/releases/download/ida-9/BinDiff-Linux.zip
 	validpgpkeys = EB4C1BFD4F042F6DDDCCEC917721F63BD38B4796
 	sha256sums = 821990e3974a9df6733794370e485486ac276ba5d777a06b4ebe575f092f4dda
 	sha256sums = SKIP
+	sha256sums = d7a9e94438a5b8d810b11ff7cbf4da62448c31d33724ef927a68bd79b4038826
 
-pkgname = bindiff
+pkgname = bindiff-ida9-bin
