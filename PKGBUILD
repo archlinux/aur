@@ -3,8 +3,8 @@
 
 pkgname='lego-bin'
 pkgver=4.20.4
-pkgrel=1
-pkgdesc='Let's Encrypt client and ACME library written in Go'
+pkgrel=2
+pkgdesc='Let s Encrypt client and ACME library written in Go'
 url='https://go-acme.github.io/lego/'
 arch=('aarch64' 'armv7h' 'i686' 'x86_64')
 license=('APACHE')
@@ -25,7 +25,7 @@ sha256sums_x86_64=('fed2cd32fa0042feda44a4a81d73e76f51d692a779f689d3df8082dcadcc
 
 package() {
   # Bin
-  install -Dm755 "./prm" "${pkgdir}/usr/bin/lego"
+  install -Dm755 "./lego" "${pkgdir}/usr/bin/lego"
 
   # License
   install -Dm644 "./LICENSE" "${pkgdir}/usr/share/licenses/lego/LICENSE"
