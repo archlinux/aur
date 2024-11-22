@@ -4,7 +4,7 @@
 
 pkgname=smlsharp
 pkgver=4.1.0
-pkgrel=2
+pkgrel=1
 pkgdesc="A new programming language in the Standard ML family"
 arch=('x86_64')
 url="https://smlsharp.github.io/"
