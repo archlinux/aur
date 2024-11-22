@@ -5,7 +5,7 @@
 : ${_pkgtype:=-latest-bin}
 
 pkgname="affine$_pkgtype"
-pkgver=0.17.0_beta.4
+pkgver=0.18.1
 pkgrel=1
 pkgdesc="Auto get the latest version(maybe canary maybe not) of AFFiNE(A privacy-focussed, local-first, open-source, and ready-to-use alternative for Notion & Miro.)"
 arch=("x86_64")
@@ -14,9 +14,9 @@ url="https://github.com/toeverything/AFFiNE"
 
 _main(){
 
-    _json=`curl -s "https://api.github.com/repos/toeverything/AFFiNE/releases?per_page=1"`
+    _json=$(curl -s "https://api.github.com/repos/toeverything/AFFiNE/releases?per_page=1")
     
-    _pkgver=`echo "$_json" | sed -n '/"name"/p' | head -n 1 | awk -F'"' '{print $4}' | sed -n 's/-/_/1p'`
+    _pkgver=$(jq -r '.[0].name' <<< $_json)
 
     _AppImage_url=`echo "$_json" | sed -n '/browser_download_url.*linux.*\.[Aa]pp[Ii]mage/p' | awk -F'"' '{print $4}'`
     
@@ -28,7 +28,7 @@ pkgver(){
         echo "Can't get the package info from https://api.github.com/repos/toeverything/AFFiNE/releases?per_page=1"
         exit
     else
-        echo "$_pkgver"
+        echo $_pkgver
     fi
 
 }
