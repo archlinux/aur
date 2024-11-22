@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=escrcpy-bin
 _pkgname=Escrcpy
-pkgver=1.26.4
+pkgver=1.27.0
 _electronversion=33
 pkgrel=1
 pkgdesc="📱 Graphical Scrcpy to display and control Android, devices powered by Electron(Prebuilt version.Use system-wide electron).使用图形化的 Scrcpy 显示和控制您的 Android 设备，由 Electron 驱动。"
@@ -26,8 +26,8 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-sha256sums_aarch64=('96946b098ef5413d13186d66b00f662bbe450b0876e2e73a1326c6ed2f6b10e4')
-sha256sums_x86_64=('e187ce7bbc9754fa4389182b03613546458f6f7fcc4da71ad07eec1c9ed4cf74')
+sha256sums_aarch64=('020ba8bdd5aaa961efbb8cdbc6cf93fb0e376ac174feaba30816a56cb479f316')
+sha256sums_x86_64=('99b75b9fd3b656249162c11ecc2c82e9002930452ba6675e0219324f274abfbc')
 build() {
     sed -e "
         s/@electronversion@/${_electronversion}/
@@ -37,12 +37,9 @@ build() {
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/
     " -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
-    sed "s/\/opt\/${_pkgname}\/${pkgname%-bin}/${pkgname%-bin}/" -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
-    cd "${srcdir}/opt/${_pkgname}/resources/extra/linux"
-    chmod 755 android-platform-tools/{adb,etc1tool,fastboot,hprof-conv,make_f2fs,make_f2fs_casefold,mke2fs,sqlite3} \
-              gnirehtet/gnirehtet
+    sed -i "s/\/opt\/${_pkgname}\/${pkgname%-bin}/${pkgname%-bin}/g" "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
     asar e "${srcdir}/opt/${_pkgname}/resources/app.asar" "${srcdir}/app.asar.unpacked"
-    find "${srcdir}/app.asar.unpacked/"{dist,dist-electron} -type f -exec sed -i "s/process.resourcesPath/\"\/usr\/lib\/${pkgname%-bin}\"/" {} \;
+    find "${srcdir}/app.asar.unpacked/"{dist,dist-electron} -type f -exec sed -i "s/process.resourcesPath/\"\/usr\/lib\/${pkgname%-bin}\"/g" {} +
     asar p "${srcdir}/app.asar.unpacked" "${srcdir}/app.asar"
 }
 package() {
