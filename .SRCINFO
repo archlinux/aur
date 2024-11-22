@@ -7,8 +7,8 @@ pkgbase = riffa-git
 	arch = i686
 	arch = x86_64
 	license = custom
-	makedepends = linux-headers=6.9.3.arch1-1
-	depends = linux=6.9.3.arch1-1
+	makedepends = linux-headers=6.11.9.arch1-1
+	depends = linux=6.11.9.arch1-1
 	source = git+https://github.com/drichmond/riffa.git
 	source = riffa.install
 	source = 99-riffa.rules

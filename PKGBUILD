@@ -54,16 +54,16 @@ build() {
 
 package() {
 
-	install -Dm0755 "${srcdir}/99-riffa.rules" "${pkgdir}/etc/udev/rules.d/99-riffa.rules"
+	install -Dm0644 -t "${pkgdir}/etc/udev/rules.d/" "${srcdir}/99-riffa.rules"
 
 	cd "${srcdir}/riffa/driver/linux"
 
-	install -D riffa.ko "${pkgdir}/usr/lib/modules/$(uname -r)/kernel/drivers/riffa/riffa.ko"
+	install -D -t "${pkgdir}/usr/lib/modules/$(uname -r)/kernel/drivers/riffa/" riffa.ko
 
-	install -Dm0644 riffa.h        "${pkgdir}/usr/include/riffa.h"
-	install -Dm0644 riffa_driver.h "${pkgdir}/usr/include/riffa_driver.h"
+	install -Dm0644 -t "${pkgdir}/usr/include/" riffa.h
+	install -Dm0644 -t "${pkgdir}/usr/include/" riffa_driver.h
 
-	install -Dm0755 libriffa.so.1.0 "${pkgdir}/usr/lib/libriffa.so.1.0"
+	install -Dm0755  -t "${pkgdir}/usr/lib/" libriffa.so.1.0
 	ln -sf "/usr/lib/libriffa.so.1.0" "${pkgdir}/usr/lib/libriffa.so.1"
 	ln -sf "/usr/lib/libriffa.so.1.0" "${pkgdir}/usr/lib/libriffa.so"
 
