@@ -35,7 +35,7 @@ source=("https://raw.githubusercontent.com/MinecraftForge/MinecraftForge/${_lice
 noextract=("forge-${_minecraftver}-${pkgver}-installer.jar")
 sha512sums=("ecee0462a1cad389def4cd1ce1f24f7b5cf0bb1552f45db0482ac0fa7badc54a251adb735977a1dce3412a09716ce44b0ddf81c37dcfad3a5ac5d8e3516be3c8"
             "531705795bac5e96a17bb84d9245786e2760dc8fe524a1bb646c9723fa52698dcdef207a6a378d0ce524b1d6d22730b2c421e5b97965b0bc1c3b1eb7f19e3273"
-            "61b138d41977b1d338ec24e97597a3fdd21758e3384f72a126c51b368bf95be6968fc3a5b439dc998b7f885dedb4e3262eb74061807e400ec7d540c72afcc65d"
+            "bfda8a268b2fcb9877fe716d2d3f68b6bc11ba056d8890178c40e51995fa067b2b4f2e1865c0dcc7489dd037f22fe95ae8b5d50b9cb7000ce4854c48072c042d"
             "68205ffc60327c67a5ebe778598c3350d64b48aad9dacf52fcde435a535a074ba2056db30dff1b18e3c8e38510acd6ececa298b13cd4c4203636560fa4cf70cb")
 
 prepare() {

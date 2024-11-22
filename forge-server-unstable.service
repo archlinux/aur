@@ -5,7 +5,7 @@ After=network.target
 [Service]
 User=forge
 WorkingDirectory=/opt/forge-server-unstable
-ExecStart=/usr/bin/java @user_jvm_args.txt -jar forge-server.jar nogui
+ExecStart=/usr/bin/java @user_jvm_args.txt -jar forge-server-unstable.jar nogui
 Restart=on-failure
 RestartSec=10s
 StartLimitInterval=300s
