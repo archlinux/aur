@@ -11,6 +11,7 @@ pkgbase = carch-git
 	depends = pacman
 	depends = unzip
 	depends = python
+	depends = gtk
 	provides = carch
 	conflicts = carch
 	source = https://github.com/harilvfs/carch/releases/download/v3.0.8/scripts.zip
