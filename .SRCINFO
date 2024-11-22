@@ -13,6 +13,7 @@ pkgbase = easyfeh
 	depends = python-beautifulsoup4
 	depends = python-rich
 	optdepends = swww: Enables wayland support
+	conflicts = easyfeh-git
 	source = https://github.com/ShibamRoy9826/easyfeh/releases/download/beta2/easyfeh-v0.1.2.tar.gz
 	sha256sums = SKIP
 

@@ -4,6 +4,7 @@ pkgver=0.1.2
 pkgrel=1
 pkgdesc="An easy, and user-friendly feh wrapper"
 arch=('any')               
+conflicts=('easyfeh-git')
 url="https://github.com/ShibamRoy9826/easyfeh"
 license=('MIT')           
 depends=('feh' 'python' 'python-toml' 'python-requests' 'python-beautifulsoup4' 'python-rich')       
