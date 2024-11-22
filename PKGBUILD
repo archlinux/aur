@@ -1,4 +1,9 @@
 # Maintainer: lafleur <lafleur at boum dot org>
+
+# The makepkg --geninteg command doesn't fetch the aarch64 binary under an x86_64 machine.
+# You need to manually fetch it and sha256sum it with its URL, updating its version :
+# https://gitlab.com/api/v4/projects/famedly%2Fconduit/jobs/artifacts/v0.8.0/raw/aarch64-unknown-linux-musl?job=artifacts
+
 pkgname=conduit-bin
 _pkgname=${pkgname/-bin/}
 pkgver=0.8.0
