@@ -1,7 +1,7 @@
 # Maintainer: Popolon <popolon@popoplon.org>
 
 pkgname=snac2
-pkgver=2.62
+pkgver=2.63
 pkgrel=1
 pkgdesc='A simple, minimalistic ActivityPub instance'
 arch=('x86_64' 'armv7h' 'aarch64' 'riscv32' 'riscv64')
@@ -9,7 +9,7 @@ url='https://codeberg.org/grunfink/snac2'
 license=('MIT')
 depends=('openssl' 'curl')
 source=("https://codeberg.org/grunfink/${pkgname}/archive/${pkgver}.tar.gz")
-sha512sums=('424f7a0f6c4c18b7ad5399389416f3405276999e0af6bc1dcfc2d644c2a048cd8b6b4d986e9bf1582229c237899b5d076d2fc43c7b6c1f3c627274f21027b7d1')
+sha512sums=('23aebff6261872e3ffb5ce0a5b55d0f1f032e55b435f0ae2350cbb7e4a82b278d2d0f8a37b354ad1adaa6db09f29ef725dfd740b6b4218c2aa3e6239720089a8')
 
 prepare() {
    sed -i 's/\/local//g' ${pkgname}/Makefile
