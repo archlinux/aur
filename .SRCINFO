@@ -1,0 +1,15 @@
+pkgbase = swingmusic-x64-bin
+	pkgdesc = Swing Music is a beautiful, self-hosted music player for your local audio files
+	pkgver = 1.4.8
+	pkgrel = 1
+	url = https://swingmx.com/
+	arch = x86_64
+	license = MIT
+	optdepends = ffmpeg: audio silence skip feature
+	provides = swingmusic
+	source = https://github.com/swingmx/swingmusic/releases/download/v1.4.8/swingmusic
+	source = https://raw.githubusercontent.com/swingmx/swingmusic/refs/heads/master/LICENSE
+	sha256sums = 5d1e25b280fe8fe7340e4b01f005e614851c234ad214b33ef298369871cc59d1
+	sha256sums = 30b0f446384bbda0c6d6b8ca0655e3fe76194828ec4065a9ffffe876c8944fda
+
+pkgname = swingmusic-x64-bin
