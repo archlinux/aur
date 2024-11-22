@@ -1,10 +1,10 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=atlassify-bin
 _pkgname=Atlassify
-pkgver=1.7.1
+pkgver=1.8.0
 _electronversion=33
 pkgrel=1
-pkgdesc="Atlassian notifications on your menu bar.Prebuilt version.Use system-wide electron."
+pkgdesc="Atlassian notifications on your menu bar.(Prebuilt version.Use system-wide electron)"
 arch=('x86_64')
 url="https://atlassify.io/"
 _ghurl="https://github.com/setchy/atlassify"
@@ -18,11 +18,11 @@ options=(
     '!emptydirs'
 )
 source=(
-    "${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb"
+    "${pkgname%-bin}-${pkgver}.rpm::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}.${CARCH}.rpm"
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/setchy/atlassify/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('46d31ce2029f0ce1ede7e362da4dc33ee90ca17ffae9be62429be568e4a93b66'
+sha256sums=('bd656ce8a0d6a59a60999b124f5e656be089a5f3a0689f7d9fbdc18e73f34e22'
             '8f2d641cd26495f3e20d1e09b49e47eb022b94b3a68c6944144aadccb6f123e2'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 build() {
@@ -33,7 +33,6 @@ build() {
         s/@cfgdirname@/${_pkgname}/g
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
     " -i "${srcdir}/${pkgname%-bin}.sh"
-    bsdtar -xf "${srcdir}/data."*
     sed -e "
         s/\/opt\/${_pkgname}\/${pkgname%-bin}/${pkgname%-bin}/g
         s/Productivity/Productivity;Utility/g
