@@ -1,7 +1,7 @@
 pkgbase = openafs-modules-dkms
 	pkgdesc = Kernel module for OpenAFS (dkms)
 	pkgver = 1.8.13
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.openafs.org
 	arch = i686
 	arch = x86_64
@@ -17,7 +17,13 @@ pkgbase = openafs-modules-dkms
 	options = !emptydirs
 	source = http://openafs.org/dl/openafs/1.8.13/openafs-1.8.13-src.tar.bz2
 	source = dkms.conf
+	source = 0001-Linux-Define-Clear-Set-PageError-macros-as-NOPs.patch
+	source = 0002-Linux-Refactor-afs_linux_write_begin-variants.patch
+	source = 0003-Linux-Use-folios-for-aops-write_begin-end.patch
 	sha256sums = 79100170ca2490b1295d9b8b13058f30e23d7abb897bf1a071755d767078bdd1
 	sha256sums = 5ea5e184f9b44f5ed45817d2b5a10149d15c8c54f49e0b5b4b773652673cb9b0
+	sha256sums = 69253f4cf09a6187057e8855c81b3a61de6798a736f3f62b5b06c32399fa5108
+	sha256sums = e85a83dac75b48b40ec4e7b4492923002b1836fc34e84e4891c12b800de3abca
+	sha256sums = eda1be96e172efbc80610e3465690f3706f84d720dfa8a13ea34123afc62f779
 
 pkgname = openafs-modules-dkms
