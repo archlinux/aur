@@ -1,0 +1,15 @@
+pkgbase = bestfetch-git
+	pkgdesc = the best system fetch ever, powered by nim
+	pkgver = r65.ac98fb2
+	pkgrel = 1
+	url = https://gitlab.com/Maxb0tbeep/bestfetch
+	arch = x86_64
+	license = GPLv3
+	makedepends = nim
+	makedepends = git
+	provides = bestfetch
+	conflicts = bestfetch
+	source = git+https://gitlab.com/Maxb0tbeep/bestfetch
+	md5sums = SKIP
+
+pkgname = bestfetch-git
