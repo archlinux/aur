@@ -1,9 +1,14 @@
+# Maintainer: David Xu <xuwd1@hotmail.com>
+
+# Huge thanks to:
+# Maintainer of package wemeet-bin: sukanka
+# Contributor of package wemeet-bin: Sam L. Yes
 
 _pkgname=wemeet-wayland-screenshare
 pkgname=wemeet-wayland-screenshare-git
 provides=('wemeet-wayland-screenshare')
 pkgver=3.19.2.400_hooked
-pkgrel=2
+pkgrel=3
 pkgdesc='Hooked wemeet that enables screenshare on KDE Wayland. 实现KDE Wayland下腾讯会议屏幕共享.'
 arch=('x86_64')
 license=('MIT')
@@ -15,7 +20,7 @@ source=(
 )
 sha1sums=(
     'SKIP'
-    '954148cf491bd81fea5ae2e54a5a26a91b45c998'
+    '2932140a95db996285d3415f353200e199fbe7ee'
     '5e2b7c2283812336a0c97f6cf64593aee84cf5ee'
 )
 depends=(
@@ -25,6 +30,8 @@ depends=(
     'xdg-desktop-portal'
     'xdg-desktop-portal-kde'
     'qt5-wayland'
+    'xdotool'
+    'xwaylandvideobridge'
 )
 makedepends=(
     'cmake'
