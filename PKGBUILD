@@ -1,4 +1,5 @@
 # Maintainer: lafleur <lafleur at boum dot org>
+# shellcheck disable=2034
 
 # The makepkg --geninteg command doesn't fetch the aarch64 binary under an x86_64 machine.
 # You need to manually fetch it and sha256sum it with its URL, updating its version :
