@@ -5,7 +5,7 @@ _appdataprefix="/var/opt"
 
 pkgname=open-webui
 pkgver=0.4.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Web UI and OpenAI API for various LLM runners, including Ollama"
 arch=('any')
 url="https://github.com/open-webui/open-webui"
@@ -70,7 +70,7 @@ package() {
     find "$pkgdir/${_appprefix}/$pkgname" -type f -exec chmod 644 {} \;
 
     echo "Setting permissions for $pkgdir${_appdataprefix}/$pkgname"
-    chmod 755 "$pkgdir/${_appdataprefix}/$pkgname"
-    find "$pkgdir/${_appdataprefix}/$pkgname" -type d -exec chmod 775 {} \;
+    chmod 700 "$pkgdir/${_appdataprefix}/$pkgname"
+    find "$pkgdir/${_appdataprefix}/$pkgname" -type d -exec chmod 700 {} \;
     find "$pkgdir/${_appdataprefix}/$pkgname" -type f -exec chmod 664 {} \;
 }
