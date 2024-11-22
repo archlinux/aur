@@ -1,0 +1,4 @@
+[podman-desktop-bin]
+source = "git"
+git = "https://github.com/containers/podman-desktop.git"
+prefix = "v"
