@@ -1,7 +1,7 @@
 pkgbase = rusticlone
 	pkgdesc = 3-2-1 backups using Rustic and RClone
 	pkgver = 1.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/AlphaJack/rusticlone
 	arch = any
 	license = GPL3
@@ -12,6 +12,8 @@ pkgbase = rusticlone
 	depends = python
 	depends = rclone>=1.67.0
 	depends = rustic<=0.10.0
+	depends = python-importlib-metadata
+	depends = python-configargparse
 	source = rusticlone-1.4.0.tar.gz::https://files.pythonhosted.org/packages/source/r/rusticlone/rusticlone-1.4.0.tar.gz
 	b2sums = 9d992bb410be0cbe25b703fbf8950bdce5c25edbe4d878ca0fbfcbae0713c4db7f22ad5d5f07a904f203ab4e9d05e9c167d0e50203d1ae1f8393ab3543fd31b8
 
