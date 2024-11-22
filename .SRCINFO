@@ -1,6 +1,6 @@
 pkgbase = conduit-bin
 	pkgdesc = stable, binary, static versions of the Conduit server (Matrix protocol)
-	pkgver = 0.8.0
+	pkgver = 0.9.0
 	pkgrel = 1
 	url = https://conduit.rs
 	arch = x86_64
@@ -17,9 +17,9 @@ pkgbase = conduit-bin
 	sha256sums = 1c5f53cc49bae88b80281ab6edcf08e18430e5db668eaa186b8be4928f850594
 	sha256sums = 4316952810a2295b81d7faf3e28c371dd63629671c4b7e3c39bfbae5ab9e2db6
 	sha256sums = 0f454a2a5af857fe978e2276798fb357b4578c6ee705664a794426c8b7576a4c
-	source_x86_64 = conduit::https://gitlab.com/api/v4/projects/famedly%2Fconduit/jobs/artifacts/master/raw/x86_64-unknown-linux-musl?job=artifacts
-	sha256sums_x86_64 = eb085e2a43e9225da1fafe01956b361a48b48a1dce9370c3e09bbc120ff6998d
-	source_aarch64 = conduit::https://gitlab.com/api/v4/projects/famedly%2Fconduit/jobs/artifacts/master/raw/aarch64-unknown-linux-musl?job=artifacts
-	sha256sums_aarch64 = 371a6572c370f82810e41666fe71bdacfd7b611b245310d6465392e9da7c3130
+	source_x86_64 = conduit::https://gitlab.com/api/v4/projects/famedly%2Fconduit/jobs/artifacts/v0.9.0/raw/x86_64-unknown-linux-musl?job=artifacts
+	sha256sums_x86_64 = ae67b0fa1b74571de0363cb1a0c47930e615c340290215cbbbff6f8a60bbca0d
+	source_aarch64 = conduit::https://gitlab.com/api/v4/projects/famedly%2Fconduit/jobs/artifacts/v0.9.0/raw/aarch64-unknown-linux-musl?job=artifacts
+	sha256sums_aarch64 = f88477fb05d73df068116595783ab628aff94f4857f8de8d5818bb55ece5fb49
 
 pkgname = conduit-bin
