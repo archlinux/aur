@@ -33,15 +33,15 @@ prepare() {
 package() {
     cd "$srcdir"
 
-    install -d "$pkgdir/usr/bin"
+    install -d "$pkgdir/usr/bin/scripts"
 
-    unzip "$srcdir/scripts.zip" -d "$pkgdir/usr/bin"
+    unzip "$srcdir/scripts.zip" -d "$pkgdir/usr/bin/scripts"
 
-    install -Dm755 "$srcdir/$_pkgname" "$pkgdir/usr/bin/$_pkgname"
+    install -dm755 "$srcdir/$_pkgname" "$pkgdir/usr/bin/$_pkgname"
 
-    install -Dm755 "$srcdir/carch-gtk" "$pkgdir/usr/bin/carch-gtk"
-    install -Dm755 "$srcdir/carch-gtk.py" "$pkgdir/usr/bin/carch-gtk.py"
+    install -dm755 "$srcdir/carch-gtk" "$pkgdir/usr/bin/carch-gtk"
+    install -dm755 "$srcdir/carch-gtk.py" "$pkgdir/usr/bin/carch-gtk.py"
 
-    install -Dm644 "$srcdir/$_pkgname.desktop" "$pkgdir/usr/share/applications/$_pkgname.desktop"
+    install -dm644 "$srcdir/$_pkgname.desktop" "$pkgdir/usr/share/applications/$_pkgname.desktop"
 }
 
