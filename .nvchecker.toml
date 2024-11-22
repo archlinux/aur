@@ -1,0 +1,3 @@
+[neoss]
+source = "npm"
+npm= "neoss"

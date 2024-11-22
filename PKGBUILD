@@ -1,7 +1,7 @@
 # Maintainer: Carlos Aznarán <caznaranl@uni.pe>
 # Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 pkgname=neoss
-pkgver=1.1.10
+pkgver=1.1.11
 pkgrel=1
 pkgdesc="Unix tool with terminal UI for visualizing socket statistics"
 arch=(any)
@@ -11,7 +11,7 @@ depends=(nodejs)
 makedepends=(npm)
 source=(${pkgname}-${pkgver}.tgz::https://registry.npmjs.org/${pkgname}/-/${pkgname}-${pkgver}.tgz)
 noextract=(${pkgname}-${pkgver}.tgz)
-sha512sums=('8aadeb0cb753b76f4c061eb007151712832e4b7b80c3903ddb47b1a4e545843ffb1d623203fa406d87aed294f0e4899ebfffada8b25ead800827268df4a5e67e')
+sha512sums=('3bd5a6862d20fcadb1c580042c1e17011d920fd56d237522e5a3d24991db32b4e981d2708f29ee2c9dfb3dc9a1100530ec38df280cb6c015a36d84a549e61483')
 PURGE_TARGETS=(*.gif *.yml)
 
 package() {
