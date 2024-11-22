@@ -1,6 +1,6 @@
 pkgbase = cppreference
 	pkgdesc = A complete reference for the features in the C++ Standard Library. HTML book.
-	pkgver = 20190607
+	pkgver = 20241110
 	pkgrel = 1
 	url = http://en.cppreference.com/
 	arch = any
@@ -8,8 +8,7 @@ pkgbase = cppreference
 	depends = ttf-dejavu
 	options = !strip
 	options = !emptydirs
-	source = http://upload.cppreference.com/mwiki/images/1/16/html_book_20190607.tar.xz
-	sha256sums = acab0d5d6943ccf18912a35a92243641cf644d1bf246468c52ef52e30cbe3047
+	source = https://github.com/PeterFeicht/cppreference-doc/releases/download/v20241110/html-book-20241110.tar.xz
+	sha256sums = 431e80862eb70fd4793a60d7d3b6c13c8605284978f9ea0529572e8fd1562cc6
 
 pkgname = cppreference
-
