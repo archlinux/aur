@@ -1,0 +1,13 @@
+pkgbase = devlix
+	pkgdesc = A lightweight, customizable window manager based on dwm.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/Mohamed1242012/devlix
+	arch = any
+	license = MIT
+	depends = git
+	provides = devlix
+	conflicts = devlix
+	source = git+https://github.com/Mohamed1242012/devlix.git
+
+pkgname = devlix

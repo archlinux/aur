@@ -11,7 +11,7 @@
 # Source: https://github.com/Mohamed1242012/devlix.git
 # SHA256: SKIP
 
-pkgname=devlix-git
+pkgname=devlix
 pkgver=1.0.0
 pkgrel=1
 pkgdesc="A lightweight, customizable window manager based on dwm."
