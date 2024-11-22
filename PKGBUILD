@@ -21,7 +21,7 @@ depends=(
     'util-linux-libs'
     'libsecret'
     'libappindicator-gtk3')
-source=("GPL-3.0")
+source=("LICENSE")
 source_x86_64=("https://github.com/modstart-lib/linkandroid/releases/download/$_pkgver/${_pkgname}-${pkgver}-linux-amd64.deb")
 source_arm64=("https://github.com/modstart-lib/linkandroid/releases/download/$_pkgver/${_pkgname}-${pkgver}-linux-arm64.deb")
 options=('!strip' '!debug')
