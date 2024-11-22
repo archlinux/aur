@@ -10,51 +10,22 @@
 _pkgname=Flexget
 pkgname=${_pkgname,,}
 pkgver=3.11.58
-pkgrel=1
+pkgrel=2
 pkgdesc="A multipurpose automation tool for all of your media"
 arch=(any)
-url="https://github.com/$_pkgname/$_pkgname"
+url="https://github.com/${_pkgname}/${_pkgname}"
 license=(MIT)
-depends=(
-    python-apscheduler
-    python-beautifulsoup4
-    python-certifi
-    python-cherrypy
-    python-feedparser
-    python-flask-compress
-    python-flask-cors
-    python-flask-login
-    python-flask-restx
-    python-guessit
-    python-html5lib
-    python-loguru
-    python-pendulum
-    python-psutil
-    python-pynzb
-    python-pyparsing
-    python-pyrss2gen
-    python-pyyaml
-    python-requests
-    python-rich
-    python-rpyc
-    python-soupsieve
-    python-sqlalchemy
-    python-zstandard
-    python-zxcvbn
-)
+# run './geninfo.sh' to auto generate 'depends' variable after run 'updpkgsums'
+depends=(python-aniso8601 python-apscheduler python-attrs python-autocommand python-babelfish python-beautifulsoup4 python-blinker python-brotli python-certifi python-charset-normalizer python-cheroot python-cherrypy python-click python-colorama python-dateutil python-feedparser python-flask python-flask-compress python-flask-cors python-flask-login python-flask-restx python-greenlet python-guessit python-html5lib python-idna python-importlib_resources python-itsdangerous python-jaraco.collections python-jaraco.context python-jaraco.functools python-jaraco.text python-jinja python-jsonschema python-jsonschema-specifications python-loguru python-markdown-it-py python-markupsafe python-mdurl python-more-itertools python-packaging python-pendulum python-plumbum python-portend python-psutil python-pygments python-pynzb python-pyparsing python-pyrss2gen python-pytz python-pyyaml python-rebulk python-referencing python-requests python-rich python-rpds-py python-rpyc python-setuptools python-sgmllib3k python-six python-soupsieve python-sqlalchemy python-tempora python-typing_extensions python-tzdata python-tzlocal python-urllib3 python-webencodings python-werkzeug python-zc.lockfile python-zstandard python-zxcvbn)
 makedepends=(python-build python-installer python-setuptools python-wheel)
-optdepends=("$pkgname-webui: webui v2"
-            "$pkgname-webui-v1: webui v1"
-            "python-boto3: SNS output plugin"
-            "python-plexapi: plex support"
-            "python-pysftp: sftp support"
-            "subliminal: subtitles support")
-source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
-        "$pkgname.service"
-        "$pkgname@.service"
-        "$pkgname.user.service"
-        "$pkgname.sysusers"
-        "$pkgname.tmpfiles")
+optdepends=('flexget-webui: webui v2'
+            'flexget-webui-v1: webui v1')
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz"
+        "${pkgname}.service"
+        "${pkgname}@.service"
+        "${pkgname}.user.service"
+        "${pkgname}.sysusers"
+        "${pkgname}.tmpfiles")
 sha256sums=('a67ee2e1f26a9fe4aea739c13cdd25f68821aaa7ec6f0c5db9482ab0c1f64dde'
             'b7578417ab5f671def7021133ae68900d82aaa81b5e80a2fec4d85e46eb1f8e9'
             'b9d354f6095aafe7a29cb8e90239b662a2584903a85fe3770f2b99bb8bdfff4a'
@@ -64,22 +35,22 @@ sha256sums=('a67ee2e1f26a9fe4aea739c13cdd25f68821aaa7ec6f0c5db9482ab0c1f64dde'
 options=("!strip")
 
 build() {
-    cd "$_pkgname-$pkgver"
+    cd "${_pkgname}-${pkgver}"
     python -m build --wheel --no-isolation
 }
 
 package() {
     local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
 
-    install -Dm644 "$pkgname.service"      "$pkgdir/usr/lib/systemd/system/$pkgname.service"
-    install -Dm644 "$pkgname@.service"     "$pkgdir/usr/lib/systemd/system/$pkgname@.service"
-    install -Dm644 "$pkgname.user.service" "$pkgdir/usr/lib/systemd/user/$pkgname.service"
-    install -Dm644 "$pkgname.sysusers"     "$pkgdir/usr/lib/sysusers.d/$pkgname.conf"
-    install -Dm644 "$pkgname.tmpfiles"     "$pkgdir/usr/lib/tmpfiles.d/$pkgname.conf"
+    install -Dm644 "${pkgname}.service"       "${pkgdir}/usr/lib/systemd/system/${pkgname}.service"
+    install -Dm644 "${pkgname}@.service"      "${pkgdir}/usr/lib/systemd/system/${pkgname}@.service"
+    install -Dm644 "${pkgname}.user.service"  "${pkgdir}/usr/lib/systemd/user/${pkgname}.service"
+    install -Dm644 "${pkgname}.sysusers"      "${pkgdir}/usr/lib/sysusers.d/${pkgname}.conf"
+    install -Dm644 "${pkgname}.tmpfiles"      "${pkgdir}/usr/lib/tmpfiles.d/${pkgname}.conf"
 
-    cd "$_pkgname-$pkgver"
-    python -m installer --destdir="$pkgdir" dist/*.whl
-    install -Dm644 LICENSE                 "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-    ln -sf "/usr/share/flexget-webui/v1/app"  "$pkgdir/$site_packages/$pkgname/ui/v1/app"
-    ln -sf "/usr/share/flexget-webui/v2/dist" "$pkgdir/$site_packages/$pkgname/ui/v2/dist"
+    cd "${_pkgname}-${pkgver}"
+    python -m installer --destdir="${pkgdir}" dist/*.whl
+    install -Dm644 LICENSE                    "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    ln -sf "/usr/share/flexget-webui/v1/app"  "${pkgdir}/${site_packages}/${pkgname}/ui/v1/app"
+    ln -sf "/usr/share/flexget-webui/v2/dist" "${pkgdir}/${site_packages}/${pkgname}/ui/v2/dist"
 }
