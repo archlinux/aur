@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=input-remapper-bin
 pkgver=2.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A tool to change and program the mapping of your input device buttons.(Prebuilt version)"
 arch=('x86_64')
 url="https://github.com/sezanzeb/input-remapper/"
@@ -33,6 +33,8 @@ build() {
     sed -i "s/\/usr\/share\/${pkgname%-bin}\/${pkgname%-bin}.svg/${pkgname%-bin}/g" \
         {"${srcdir}/etc/xdg/autostart/${pkgname%-bin}-autoload.desktop","${srcdir}/usr/share/applications/${pkgname%-bin}-gtk.desktop"}
     rm -rf "${srcdir}/usr/local"
+    mv "${srcdir}/usr/lib/python3/dist-packages" "${srcdir}/usr/lib/python3/site-packages"
+    mv "${srcdir}/usr/lib/python3" "${srcdir}/usr/lib/python3.12"
 }
 package() {
 	cp -Pr --no-preserve=ownership "${srcdir}/"{etc,usr} "${pkgdir}"
