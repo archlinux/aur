@@ -1,9 +1,9 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 _pkgname=rpcsx
 pkgname=$_pkgname-git
-pkgver=r600.7d4380b
+pkgver=r730.84026f1
 pkgrel=1
-pkgdesc="Sony PlayStation 4 emulator"
+pkgdesc="Sony PlayStation 4 and PlayStation 5 emulator"
 arch=('x86_64')
 url="https://rpcsx.github.io/rpcsx-site/"
 license=('GPL-2.0-only AND MIT')
