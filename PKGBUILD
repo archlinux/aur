@@ -2,8 +2,8 @@
 # Co-maintainer: Edu4rdSHL <edu4rdshl@protonmail.com>
 pkgname=waveterm-git
 _pkgname=Wave
-pkgver=0.9.2.r0.g0fcc39c
-_electronversion=32
+pkgver=0.9.3.r2.g2e91ee8
+_electronversion=33
 _nodeversion=22
 pkgrel=1
 pkgdesc="An open-source, cross-platform terminal for seamless workflows.(Git version.Use system-wide electron)"
@@ -90,11 +90,11 @@ build() {
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
     sed -i "s/build\/icons.icns/build\/appicon.png/g" electron-builder.config.cjs
     sed -e "
-        /- build:server:macos/d
-        /- build:server:windows/d
+        /- task: build:server:macos/d
+        /- task: build:server:windows/d
         s/ && yarn electron-builder -c electron-builder.config.cjs -p never//g
     " -i Taskfile.yml
-    sed -i "142,149d;126,133d" Taskfile.yml
+    sed -i "191,198d;175,182d" Taskfile.yml
     gem install fpm
     _yarnver=`grep "yarn@" package.json | awk '{print $2}' | sed "s/\"//g;s/yarn@//g;s/,//g"`
     corepack enable yarn
