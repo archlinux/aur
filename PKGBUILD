@@ -4,7 +4,7 @@
 pkgname=qt5-virtualkeyboard
 _basever=5.15.16
 pkgver=5.15.16
-pkgrel=1
+pkgrel=2
 _commit=365f79ee89c6a57f205fe6c89817c51ff52ea059
 arch=('x86_64')
 url='https://www.qt.io'
