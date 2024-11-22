@@ -2,6 +2,7 @@ lv2/
 NeuralAmpModelerCore/
 NeuralAudio/
 RTNeural/
+RTNeural-NAM/
 neural-amp-modeler-lv2/
 neural-amp-modeler-lv2-git-*.pkg.tar.*
 pkg/

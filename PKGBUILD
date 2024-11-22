@@ -3,7 +3,7 @@
 
 _pkgname=neural-amp-modeler-lv2
 pkgname=$_pkgname-git
-pkgver=0.1.5.r4.69bfdb4
+pkgver=0.1.5.r21.f14faca
 pkgrel=1
 pkgdesc='Neural Amp Modeler (NAM) LV2 plugin (git version)'
 arch=(aarch64 armv7h i686 pentium4 riscv64 riscv x86_64)
@@ -18,8 +18,10 @@ source=("$_pkgname::git+https://github.com/mikeoliphant/$_pkgname.git"
         'NeuralAudio::git+https://github.com/mikeoliphant/NeuralAudio.git'
         'NeuralAmpModelerCore::git+https://github.com/mikeoliphant/NeuralAmpModelerCore.git'
         'RTNeural::git+https://github.com/mikeoliphant/RTNeural.git'
+        'RTNeural-NAM::git+https://github.com/mikeoliphant/RTNeural-NAM.git'
 )
 sha256sums=('SKIP'
+            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -41,7 +43,7 @@ prepare() {
     git -c protocol.file.allow=always submodule update deps/$submodule
   done
   cd deps/NeuralAudio
-  for submodule in NeuralAmpModelerCore RTNeural; do
+  for submodule in NeuralAmpModelerCore RTNeural RTNeural-NAM; do
     git submodule init deps/$submodule
     git submodule set-url deps/$submodule "$srcdir"/$submodule
     git -c protocol.file.allow=always submodule update deps/$submodule
