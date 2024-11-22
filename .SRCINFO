@@ -1,6 +1,6 @@
 pkgbase = python-swiglpk
 	pkgdesc = A Python interface to the GLPK optimization solver
-	pkgver = 5.0.10
+	pkgver = 5.0.11
 	pkgrel = 1
 	url = https://github.com/biosustain/swiglpk
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = python-swiglpk
 	depends = python
 	depends = glpk
 	conflicts = python-swiglpk-git
-	source = https://github.com/biosustain/swiglpk/archive/5.0.10.tar.gz
-	sha256sums = 4df7cc42ed2ea83f389577e77272c607503bb92b3bab769c86fc78bfc32cbab7
+	source = https://github.com/biosustain/swiglpk/archive/5.0.11.tar.gz
+	sha256sums = 04f1832b54c8faa2c6b2acb475c540d213486d8c425e42c9b3c40022ebb87a01
 
 pkgname = python-swiglpk
