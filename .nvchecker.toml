@@ -1,0 +1,4 @@
+[wasm-tools]
+source = "git"
+git = "https://github.com/bytecodealliance/wasm-tools.git"
+prefix = "v"
