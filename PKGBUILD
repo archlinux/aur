@@ -2,7 +2,7 @@
 pkgname=drawio-desktop-appimage
 _pkgname=drawio
 pkgver=24.7.17
-pkgrel=2
+pkgrel=3
 pkgdesc="Diagram drawing application built on web technology"
 arch=('x86_64' 'aarch64')
 url="https://www.diagrams.net/"
@@ -20,7 +20,7 @@ prepare() {
     chmod a+x "${_pkgname}-${pkgver}.AppImage"
     "./${_pkgname}-${pkgver}.AppImage" --appimage-extract
     sed 's/Exec=/\#Exec=/g' -i "${srcdir}/squashfs-root/${_pkgname}.desktop"
-    echo "Exec=${_install_path}/${_pkgname}.AppImage --no-sandbox %U" >> "${srcdir}/squashfs-root/${_pkgname}.desktop"
+    echo "Exec=${_pkgname} --no-sandbox %U" >> "${srcdir}/squashfs-root/${_pkgname}.desktop"
 }
 package() {
     install -Dm755 "${srcdir}/${_pkgname}-${pkgver}.AppImage" "${pkgdir}/${_install_path}/${_pkgname}.AppImage"
@@ -28,4 +28,7 @@ package() {
         install -Dm644 "${srcdir}/squashfs-root/usr/share/icons/hicolor/${icons}/apps/${_pkgname}.png" "${pkgdir}/usr/share/icons/hicolor/${icons}/apps/${_pkgname}.png"
     done
     install -Dm644 "${srcdir}/squashfs-root/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
+
+    install -dm755 "${pkgdir}/usr/bin"
+    ln -s "${_install_path}/${_pkgname}.AppImage" "${pkgdir}/usr/bin/${_pkgname}"
 }

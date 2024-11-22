@@ -1,7 +1,7 @@
 pkgbase = drawio-desktop-appimage
 	pkgdesc = Diagram drawing application built on web technology
 	pkgver = 24.7.17
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.diagrams.net/
 	arch = x86_64
 	arch = aarch64
