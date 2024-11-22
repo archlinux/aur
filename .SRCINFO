@@ -1,6 +1,6 @@
 pkgbase = rsrpc-git
 	pkgdesc = Rust implementation of Discord RPC server
-	pkgver = r119.77644d4
+	pkgver = r177.0b3b2a3
 	pkgrel = 1
 	url = https://github.com/SpikeHD/rsRPC
 	install = rsrpc.install

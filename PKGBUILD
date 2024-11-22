@@ -2,7 +2,7 @@
 
 pkgname=rsrpc-git
 _pkgname=rsrpc
-pkgver=r119.77644d4
+pkgver=r177.0b3b2a3
 pkgrel=1
 pkgdesc="Rust implementation of Discord RPC server"
 arch=("x86_64")
@@ -35,7 +35,7 @@ build() {
   cd "${srcdir}/${_pkgname}"
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
-  cargo build --frozen --release --features binary
+  cargo build --release --features binary
 }
 
 package() {
