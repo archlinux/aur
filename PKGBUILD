@@ -8,6 +8,7 @@ url='https://turso.tech/libsql'
 license=(MIT)
 makedepends=(cargo)
 optdepends=('libsql-sqlite3: use libsql for your sqlite3 needs')
+options=(!lto)
 arch=('i686' 'x86_64')
 source=("https://github.com/tursodatabase/libsql/archive/refs/tags/libsql-server-v${pkgver}.tar.gz")
 b2sums=('ff520abc812e0f85663b9e683954066808cb6d576424c456fdae95dce76d471f3176cd7d9c0af6a55e00c20b307e64276ce831c2710e5f78908eb958fafb532c')
@@ -27,6 +28,7 @@ build() {
 
   export CARGO_TARGET_DIR=target
   export RUSTUP_TOOLCHAIN=stable
+  cargo clean
   cargo build --release --frozen
 }
 
