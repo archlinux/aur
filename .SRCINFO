@@ -1,0 +1,31 @@
+pkgbase = r-tsfeatures
+	pkgdesc = Time Series Feature Extraction
+	pkgver = 1.1.1
+	pkgrel = 5
+	url = https://cran.r-project.org/package=tsfeatures
+	arch = any
+	license = GPL-3
+	checkdepends = r-testthat
+	depends = r-fracdiff
+	depends = r-forecast
+	depends = r-furrr
+	depends = r-future
+	depends = r-purrr
+	depends = r-rcpproll
+	depends = r-stats
+	depends = r-tibble
+	depends = r-tseries
+	depends = r-urca
+	optdepends = r-dplyr
+	optdepends = r-ggally
+	optdepends = r-ggplot2
+	optdepends = r-knitr
+	optdepends = r-mcomp
+	optdepends = r-rmarkdown
+	optdepends = r-testthat
+	optdepends = r-tidyr
+	source = https://cran.r-project.org/src/contrib/tsfeatures_1.1.1.tar.gz
+	md5sums = 275dc66ba646f24c9e8a44d4eb0818ff
+	b2sums = deaba526a5b1bc05ba3b704dc2039dee6df4d32783031d24e027a8ac2cfaa69376b1284aa4f04ace6cc9a585455709ec79be9b84a6130022653e57e125d771dd
+
+pkgname = r-tsfeatures
