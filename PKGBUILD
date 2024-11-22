@@ -13,7 +13,7 @@ sha256sums=('SKIP')
 
 prepare() {
   cd "$pkgname-$pkgver"
-  cargo fetch --locked
+  cargo fetch  --offline
 }
 
 build() {
