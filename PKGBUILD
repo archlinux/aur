@@ -1,10 +1,10 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=quba-bin
 _pkgname=Quba
-pkgver=1.4.1
+pkgver=1.4.2
 _electronversion=33
 pkgrel=1
-pkgdesc="A viewer for electronic invoices.Prebuilt version.Use system-wide electron."
+pkgdesc="A viewer for electronic invoices.(Prebuilt version.Use system-wide electron)"
 arch=('x86_64')
 url="https://github.com/ZUGFeRD/quba-viewer"
 license=('Apache-2.0')
@@ -20,7 +20,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.AppImage::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}.AppImage"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('1dcc931bf9254e4e1c41f8f571a822dc8b09d797bae39be3e56c79892399eaa1'
+sha256sums=('de0a0c58de4679068b26299429b8e8cc963fcc99aa73d32fcb6fba6d54add69d'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 build() {
     sed -e "
