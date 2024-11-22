@@ -1,8 +1,8 @@
-# Maintainer:
+# Maintainer: envolution
 
 pkgname=wkhtmltopdf
 pkgver=0.12.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Command line tools to render HTML into PDF and various image formats"
 arch=('x86_64')
 url="https://wkhtmltopdf.org/"
@@ -10,10 +10,18 @@ license=('LGPL3')
 depends=('qt5-webkit' 'qt5-svg' 'qt5-xmlpatterns')
 makedepends=('git')
 optdepends=('xorg-server: wkhtmltopdf needs X or Xvfb to operate')
-source=("git+https://github.com/wkhtmltopdf/wkhtmltopdf.git#tag=$pkgver?signed")
-sha256sums=('SKIP')
+source=(
+  "git+https://github.com/wkhtmltopdf/wkhtmltopdf.git#tag=$pkgver?signed"
+  disable_shared_lib.patch
+)
+sha256sums=('247abeeea1a58fbc0d897b1caddf4d974254d4c21c64141f9ca93ccf1b6f6818'
+  '83b2eafdb08fc30b369ea94960abe205489f8187c5505fa7893fc6ab554112d3')
 validpgpkeys=('76C0969C076A23EC4849F462D3E3E8ACF99DE8EA') # Ashish Kulkarni (Open Source) <ashish@kulkarni.dev>
 
+prepare() {
+  cd $pkgname
+  patch -Np1 -i ../disable_shared_lib.patch
+}
 build() {
   cd $pkgname
   qmake-qt5 wkhtmltopdf.pro

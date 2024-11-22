@@ -1,0 +1,57 @@
+Description: Disable linking with the shared library
+ The shared library is not mature enough to be packaged
+Author: Ashish Kulkarni <kulkarni.ashish@gmail.com>
+Origin: upstream
+Forwarded: not-needed
+Last-Update: 2014-03-25
+---
+This patch header follows DEP-3: http://dep.debian.net/deps/dep3/
+--- a/src/image/image.pro
++++ b/src/image/image.pro
+@@ -26,6 +26,7 @@
+ unix {
+     man.path=$$INSTALLBASE/share/man/man1
+     man.extra=LD_LIBRARY_PATH=../../bin/ ../../bin/wkhtmltoimage --manpage | gzip > $(INSTALL_ROOT)$$INSTALLBASE/share/man/man1/wkhtmltoimage.1.gz
++    man.extra=../../bin/wkhtmltoimage --manpage | gzip > $(INSTALL_ROOT)/share/man/man1/wkhtmltoimage.1.gz
+ 
+     QMAKE_EXTRA_TARGETS += man
+     INSTALLS += man
+@@ -39,12 +40,7 @@
+ target.path=$$INSTALLBASE/bin
+ 
+ include(../shared/shared.pri)
+-
+-CONFIG(shared, shared|static) {
+-  LIBS += -L../../bin -lwkhtmltox
+-} else {
+-  include(../lib/lib.pri)
+-}
++include(../lib/lib.pri)
+ 
+ # Input
+ SOURCES += wkhtmltoimage.cc imagearguments.cc imagecommandlineparser.cc imagedocparts.cc
+--- a/src/pdf/pdf.pro
++++ b/src/pdf/pdf.pro
+@@ -25,7 +25,7 @@
+ 
+ unix {
+     man.path=$$INSTALLBASE/share/man/man1
+-    man.extra=LD_LIBRARY_PATH=../../bin/ ../../bin/wkhtmltopdf --manpage | gzip > $(INSTALL_ROOT)$$INSTALLBASE/share/man/man1/wkhtmltopdf.1.gz
++    man.extra=../../bin/wkhtmltopdf --manpage | gzip > $(INSTALL_ROOT)/share/man/man1/wkhtmltopdf.1.gz
+ 
+     QMAKE_EXTRA_TARGETS += man
+     INSTALLS += man
+@@ -39,12 +39,7 @@
+ target.path=$$INSTALLBASE/bin
+ 
+ include(../shared/shared.pri)
+-
+-CONFIG(shared, shared|static) {
+-  LIBS += -L../../bin -lwkhtmltox
+-} else {
+-  include(../lib/lib.pri)
+-}
++include(../lib/lib.pri)
+ 
+ #Application part
+ SOURCES += wkhtmltopdf.cc pdfarguments.cc pdfcommandlineparser.cc \
