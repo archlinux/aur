@@ -5,7 +5,8 @@ buildarch=8
 
 pkgname=uboot-radxa-zero-3
 pkgver=2024.10
-pkgrel=1
+pkgrel=2
+_trusted_firmware_ver='2.12.0'
 pkgdesc="U-Boot for Radxa Zero 3E/3W"
 arch=('aarch64')
 url='https://docs.u-boot.org/en/latest/'
@@ -14,22 +15,21 @@ backup=('boot/boot.txt' 'boot/boot.scr')
 makedepends=('bc' 'git' 'python' 'python-setuptools' 'python-pyelftools' 'swig' 'dtc' 'uboot-tools')
 install=${pkgname}.install
 source=("https://github.com/u-boot/u-boot/archive/refs/tags/v${pkgver}.tar.gz"
-        # TODO: Replace with a tagged release once available
-        "git+https://github.com/TrustedFirmware-A/trusted-firmware-a.git#commit=9fd9f1d024872b440e3906eded28037330b6f422"
+        "trusted-firmware-a.tar.gz::https://github.com/TrustedFirmware-A/trusted-firmware-a/archive/refs/tags/v${_trusted_firmware_ver}.tar.gz"
         # Source: https://github.com/radxa-repo/bsp/blob/fa92bfa/u-boot/latest/fork.conf#L119
         'rk3566_ddr.bin::https://github.com/rockchip-linux/rkbin/raw/7c35e21a8529b3758d1f051d1a5dc62aae934b2b/bin/rk35/rk3566_ddr_1056MHz_v1.23.bin'
         'boot.txt'
         'mkscr')
 md5sums=('f1ef24a7d9907c0aeedde50938726598'
-         '739fe2caea8f905c15b6e9d5b0d65b64'
+         '22b488cc61647f556f9b50a8f2db1129'
          '9aef462eee359e8cf7ac1367dfd0f8d8'
          '5612457aece4c5ca8a168f9066e0abdd'
          '021623a04afd29ac3f368977140cfbfd')
 
 prepare() {
-  cd ${srcdir}/trusted-firmware-a
+  cd "${srcdir}/trusted-firmware-a-${_trusted_firmware_ver}"
   make realclean
-  make PLAT=rk3568 all
+  make CROSS_COMPILE=aarch64-unknown-linux-gnu- PLAT=rk3568 bl31
 }
 
 build() {
@@ -39,7 +39,7 @@ build() {
 
   UBOOT_MAKE_EXTRA=()
   UBOOT_MAKE_EXTRA+=("EXTRAVERSION=-${pkgrel}")
-  UBOOT_MAKE_EXTRA+=("BL31=${srcdir}/trusted-firmware-a/build/rk3568/release/bl31/bl31.elf")
+  UBOOT_MAKE_EXTRA+=("BL31=${srcdir}/trusted-firmware-a-${_trusted_firmware_ver}/build/rk3568/release/bl31/bl31.elf")
   # For some SoCs U-Boot sources lack support to initialize DRAM. In these
   # cases, to get a fully functional image [...] use DDR binary provided by
   # Rockchip rkbin repository as ROCKCHIP_TPL when building U-Boot.
