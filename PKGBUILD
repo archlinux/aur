@@ -13,7 +13,7 @@
 
 pkgname=codelite-git
 _gitname=codelite
-pkgver=17.10.0.r33.g4364c23ac
+pkgver=17.12.1.r103.g143ad4724
 pkgrel=1
 pkgdesc="Cross platform IDE for C, C++, Rust, Python, PHP and Node.js written in C++"
 arch=('i686' 'x86_64' 'aarch64')
@@ -56,15 +56,15 @@ conflicts=('codelite')
 
 source=(
     ${_gitname}::git+https://github.com/eranif/codelite.git
-    http://repos.codelite.org/wxCrafterLibs/wxgui.zip
+    #http://repos.codelite.org/wxCrafterLibs/wxgui.zip
 )
 
 sha256sums=(
     'SKIP'
-    'SKIP'
+    #'SKIP'
 )
 
-noextract=('wxgui.zip')
+#noextract=('wxgui.zip')
 
 #
 #
@@ -137,7 +137,9 @@ package() {
   DESTDIR="${pkgdir}" cmake --install "${BUILD_DIR}"
 
   install -m 644 -D "${srcdir}/${_gitname}/LICENSE" "${pkgdir}/usr/share/licenses/codelite/LICENSE"
-  install -m 644 -D "${srcdir}/wxgui.zip" "${pkgdir}/usr/share/codelite/wxgui.zip"
+  if test -f "${srcdir}/wxgui.zip"; then
+    install -m 644 -D "${srcdir}/wxgui.zip" "${pkgdir}/usr/share/codelite/wxgui.zip"
+  fi;
 }
 
 #

@@ -1,6 +1,6 @@
 pkgbase = codelite-git
 	pkgdesc = Cross platform IDE for C, C++, Rust, Python, PHP and Node.js written in C++
-	pkgver = 17.10.0.r33.g4364c23ac
+	pkgver = 17.12.1.r103.g143ad4724
 	pkgrel = 1
 	url = https://codelite.org/
 	arch = i686
@@ -29,10 +29,7 @@ pkgbase = codelite-git
 	optdepends = cscope: CScope Integration for CodeLite
 	provides = codelite
 	conflicts = codelite
-	noextract = wxgui.zip
 	source = codelite::git+https://github.com/eranif/codelite.git
-	source = http://repos.codelite.org/wxCrafterLibs/wxgui.zip
-	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = codelite-git
