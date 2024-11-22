@@ -1,0 +1,20 @@
+pkgbase = deepl-linux-electron-bin
+	pkgdesc = DeepL Integration for Linux. Select text in any application and simply press Ctrl+C and another shortcut to translate it.(Prebuilt version.Use system-wide electron)
+	pkgver = 1.5.0
+	pkgrel = 1
+	url = https://github.com/kumakichi/Deepl-linux-electron
+	arch = x86_64
+	license = MIT
+	makedepends = asar
+	makedepends = fuse2
+	depends = electron32
+	provides = deepl-linux-electron=1.5.0
+	conflicts = deepl-linux-electron
+	source = deepl-linux-electron-1.5.0.AppImage::https://github.com/kumakichi/Deepl-linux-electron/releases/download/v1.5.0/Deepl-Linux-Electron-1.5.0.AppImage
+	source = LICENSE-1.5.0::https://raw.githubusercontent.com/kumakichi/Deepl-linux-electron/v1.5.0/LICENSE
+	source = deepl-linux-electron.sh
+	sha256sums = a51731447a078efcb43a748145a0a53f9aa4307a42357fef636ed41a2b1f4c26
+	sha256sums = fdeeb2c5f8251d1ff82fbdc1426b7381301586ab351d337bb78fa136436deb74
+	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
+
+pkgname = deepl-linux-electron-bin
