@@ -27,6 +27,7 @@ makedepends=(
   flatpak
   geoclue
   git
+  glib2-devel
   libportal
   meson
   python-dbus
