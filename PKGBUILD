@@ -1,7 +1,7 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 _pkgname=shadps4
 pkgname=$_pkgname-git
-pkgver=0.4.0.r17.g176d2225
+pkgver=0.4.0.r55.g15d6b095
 pkgrel=1
 pkgdesc="Sony PlayStation 4 emulator"
 arch=('aarch64' 'x86_64')
@@ -15,7 +15,6 @@ depends=(
 	'hicolor-icon-theme'
 	'pugixml>=1.14'
 	'sdl3>=1:3.1.3'
-	'zlib-ng>=2.1.7'
 )
 makedepends=(
 	'boost>=1.84'
@@ -37,6 +36,8 @@ makedepends=(
 	'vulkan-memory-allocator>=3.1'
 	'xbyak>=7.07'
 	'xxhash>=0.8.2'
+	'zlib'
+	'zlib-ng>=2.1.7'
 	'zycore-c' # 'zydis>=5'
 )
 optdepends=(
@@ -52,8 +53,8 @@ source=(
 	"$_pkgname-libatrac9::git+https://github.com/shadps4-emu/ext-LibAtrac9.git"
 	"$_pkgname-sirit::git+https://github.com/shadps4-emu/sirit.git"
 	"$_pkgname-tracy::git+https://github.com/shadps4-emu/tracy.git"
+	"libpng::git+https://github.com/pnggroup/libpng.git"
 	"zydis::git+https://github.com/zyantific/zydis.git"
-	"bb-hack.patch"
 )
 b2sums=(
 	'SKIP'
@@ -63,7 +64,7 @@ b2sums=(
 	'SKIP'
 	'SKIP'
 	'SKIP'
-	'8b96dc4fb2598e8747559a04cde3bb1c669cf563196567105b5871ecb10d3c45bb0e39c24327a5e2c9a6c00d8bda3ca989a3dbb3c39c65fb6b9ae9f48023a100'
+	'SKIP'
 )
 
 pkgver() {
@@ -76,11 +77,12 @@ prepare() {
 	git config submodule.externals/dear_imgui.url ../$_pkgname-imgui
 	git config submodule.externals/discord-rpc.url ../$_pkgname-discord-rpc
 	git config submodule.externals/LibAtrac9.url ../$_pkgname-libatrac9
+	git config submodule.externals/libpng.url ../libpng
 	git config submodule.externals/sirit.url ../$_pkgname-sirit
 	git config submodule.externals/tracy.url ../$_pkgname-tracy
 	git config submodule.externals/zydis.url ../zydis
 	git -c protocol.file.allow=always submodule update
-	# patch -Np1 < ../bb-hack.patch
+	sed -i '/\/zlib-ng/d' externals/CMakeLists.txt
 }
 
 build() {
@@ -106,6 +108,7 @@ package() {
 		'libswresample.so'
 		'libswscale.so'
 		'libxxhash.so'
+		'libz.so'
 		# 'libZydis.so'
 		'qt6-base'
 		'qt6-multimedia'
