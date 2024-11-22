@@ -3,16 +3,16 @@
 _base=textual-dev
 pkgname=python-${_base}
 pkgdesc="Development tools for working with Textual"
-pkgver=1.5.1
-pkgrel=2
+pkgver=1.7.1
+pkgrel=1
 arch=(any)
 url="https://github.com/Textualize/${_base}"
 license=(MIT)
-depends=(python-textual python-aiohttp python-click python-msgpack python-typing_extensions)
+depends=(python-textual python-textual-serve python-aiohttp python-click python-msgpack python-typing_extensions)
 makedepends=(python-build python-installer python-poetry-core python-wheel)
 checkdepends=(python-pytest-aiohttp python-pytest-asyncio python-time-machine)
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('d34100a0bf92a43088f3f5ac7c911cc9e8aaa9f5eb04b9aab328518e66fb54e29ed47617323cc3c39fd77255f08b3f33087909f97d0e60d987706d991caca8b1')
+sha512sums=('421076c1e512d65f0fcb02f7f2889ed5c81ebff5abe59488f6cfe236f9ea24b3203a6cb42b837718bd8d457f9bdb1afaed5d5a87f50b2f6bd5e23fe39a29a91d')
 
 build() {
   cd ${_base}-${pkgver}
