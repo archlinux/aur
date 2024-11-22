@@ -1,0 +1,24 @@
+pkgbase = r-padr
+	pkgdesc = Quickly Get Datetime Data Ready for Analysis
+	pkgver = 0.6.3
+	pkgrel = 5
+	url = https://cran.r-project.org/package=padr
+	arch = any
+	license = MIT
+	checkdepends = r-testthat
+	depends = r-rcpp
+	depends = r-dplyr
+	depends = r-lubridate
+	depends = r-rlang
+	optdepends = r-data.table
+	optdepends = r-ggplot
+	optdepends = r-knitr
+	optdepends = r-lazyeval
+	optdepends = r-rmarkdown
+	optdepends = r-testthat
+	optdepends = r-tidyr
+	source = https://cran.r-project.org/src/contrib/padr_0.6.3.tar.gz
+	md5sums = 1f89f33c6dbad215af0e7c8945ebae23
+	b2sums = d5edf02a67ccb607f5c42209d2de151e9fecb7be3cc02995709f86621590a31a57fece826b052db0e02285fee47ad68b5c53605b05e10114332af8407788bd88
+
+pkgname = r-padr
