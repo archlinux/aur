@@ -1,6 +1,6 @@
 pkgbase = jupyter-nbgrader
 	pkgdesc = A system for assigning and grading notebooks
-	pkgver = 0.9.3
+	pkgver = 0.9.4
 	pkgrel = 1
 	url = https://github.com/jupyter/nbgrader
 	arch = any
@@ -25,7 +25,7 @@ pkgbase = jupyter-nbgrader
 	depends = python-requests
 	depends = python-sqlalchemy
 	depends = python-pyaml
-	source = nbgrader-0.9.3.tar.gz::https://github.com/jupyter/nbgrader/archive/v0.9.3.tar.gz
-	sha512sums = 3e298ad1bca529f0e708fd4561173ea5fa60a90d5ff8e62714549d1a38b643c17e1120c39fb85dffe34e1ce6caad6fb2839f28f118c844b5bd8a005f33e8520c
+	source = nbgrader-0.9.4.tar.gz::https://github.com/jupyter/nbgrader/archive/v0.9.4.tar.gz
+	sha512sums = 4284a37e9092f5d1d306da200021458ea09b276c828141ca0c1acef1a2496af7427cc254e4d67d2f892c417d17c750b9be32d824bc50729d5e551e76affc3f29
 
 pkgname = jupyter-nbgrader
