@@ -1,5 +1,5 @@
 pkgbase = snd-hda-scodec-cs35l41-sandwalker-dkms-git
-	pkgdesc = Patched cs35l41 HDA driver for HP Sandwalker
+	pkgdesc = Patched cs35l41 HDA driver for HP Sandwalker (HP Dragonfly 13.5 inch G4)
 	pkgver = r4.cf3a619
 	pkgrel = 1
 	url = https://github.com/nicholascw/aur-snd-hda-scodec-cs35l41-sandwalker
