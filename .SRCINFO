@@ -1,7 +1,7 @@
 pkgbase = clifm-git
 	pkgdesc = The command line file manager (development version)
 	pkgver = 1.1.r346.gec633a5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/leo-arch/clifm
 	arch = i686
 	arch = pentium4
@@ -24,6 +24,8 @@ pkgbase = clifm-git
 	optdepends = udisks2: (un)mount storage devices
 	provides = clifm
 	conflicts = clifm
+	conflicts = clifm-bin
+	conflicts = clifm-nerd
 	source = git+https://github.com/leo-arch/clifm.git
 	sha256sums = SKIP
 

@@ -3,13 +3,13 @@
 pkgname=clifm-git
 _pkgname=clifm
 pkgver=1.1.r346.gec633a5
-pkgrel=1
+pkgrel=2
 pkgdesc="The command line file manager (development version)"
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'aarch64' 'armv7h')
 url="https://github.com/leo-arch/clifm"
 license=(GPL2)
 provides=('clifm')
-conflicts=('clifm')
+conflicts=('clifm' 'clifm-bin' 'clifm-nerd')
 depends=('libcap' 'readline' 'acl' 'file')
 makedepends=('git')
 optdepends=(
