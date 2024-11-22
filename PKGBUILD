@@ -13,7 +13,7 @@
 ## Contributor: Philip Abernethy <chais.z3r0@gmail.com>
 ## Contributor: sowieso <sowieso@dukun.de>
 
-_ver="1.21.3_1.0.1_0.16.7-1"
+_ver="1.21.3_1.0.1_0.16.9-1"
 _minecraft_ver_latest="1.21.3"
 
 IFS="-" read -ra _ver_temp <<<"$_ver"
