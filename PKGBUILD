@@ -34,7 +34,8 @@ package() {
     cd "$srcdir"
 
     install -d "$pkgdir/usr/bin"
-    unzip scripts.zip -d "$pkgdir/usr/bin"
+
+    unzip "$srcdir/scripts.zip" -d "$pkgdir/usr/bin"
 
     install -Dm755 "$srcdir/$_pkgname" "$pkgdir/usr/bin/$_pkgname"
 
