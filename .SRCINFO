@@ -1,21 +1,21 @@
 pkgbase = numara-bin
 	pkgdesc = Simple notepad calculator built on Electron, powered by Math.js.(Prebuilt version.Use system-wide electron)
-	pkgver = 5.7.0
+	pkgver = 5.7.1
 	pkgrel = 1
 	url = https://numara.io/
 	arch = aarch64
 	arch = x86_64
 	license = MIT
 	depends = electron33
-	provides = numara=5.7.0
+	provides = numara=5.7.1
 	conflicts = numara
-	source = LICENSE-5.7.0::https://raw.githubusercontent.com/bornova/numara-calculator/v5.7.0/LICENSE
+	source = LICENSE-5.7.1::https://raw.githubusercontent.com/bornova/numara-calculator/v5.7.1/LICENSE
 	source = numara.sh
 	sha256sums = b944c7642b6a0ccf0c24e98d199d8bf4c8d556ebc7d87ddb9af98cab67b378b5
 	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
-	source_aarch64 = numara-5.7.0-aarch64.rpm::https://github.com/bornova/numara-calculator/releases/download/v5.7.0/Numara-5.7.0-aarch64.rpm
-	sha256sums_aarch64 = 0468614366ec0e2363078117fc62657c7952a5f759e9e4a6709c5e34e7e89303
-	source_x86_64 = numara-5.7.0-x86_64.rpm::https://github.com/bornova/numara-calculator/releases/download/v5.7.0/Numara-5.7.0-x86_64.rpm
-	sha256sums_x86_64 = 94ba71300a706a0c95cf986502d83e4e2f947e94606b2ddb992564d49477f646
+	source_aarch64 = numara-5.7.1-aarch64.rpm::https://github.com/bornova/numara-calculator/releases/download/v5.7.1/Numara-5.7.1-aarch64.rpm
+	sha256sums_aarch64 = 19c624752fb7a46b6280a277b1fee347e10e2f531d2eb575ee6a7d1fc6e37a83
+	source_x86_64 = numara-5.7.1-x86_64.rpm::https://github.com/bornova/numara-calculator/releases/download/v5.7.1/Numara-5.7.1-x86_64.rpm
+	sha256sums_x86_64 = f170d02020f0aba31de3870d999a749581c3bf6f3bddd83ebd173e74b3323fa9
 
 pkgname = numara-bin
