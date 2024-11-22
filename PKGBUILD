@@ -69,16 +69,16 @@ package() {
 
   mkdir -p "$pkgdir"/usr/bin/
   echo "Creating symbolic link: /opt/hnc/hoffice11/Bin/hwp -> /usr/bin/hwp"
-  echo "/opt/hnc/hoffice11/Bin/hwp" >"$pkgdir"/usr/bin/hwp
+  echo '"/opt/hnc/hoffice11/Bin/hwp" $@' >"$pkgdir"/usr/bin/hwp
   chmod +x "$pkgdir"/usr/bin/hwp
   echo "Creating symbolic link: /opt/hnc/hoffice11/Bin/hsl -> /usr/bin/hsl"
-  echo "/opt/hnc/hoffice11/Bin/hsl" >"$pkgdir"/usr/bin/hsl
+  echo '"/opt/hnc/hoffice11/Bin/hsl" $@' >"$pkgdir"/usr/bin/hsl
   chmod +x "$pkgdir"/usr/bin/hsl
   echo "Creating symbolic link: /opt/hnc/hoffice11/Bin/hword -> /usr/bin/hword"
-  echo "/opt/hnc/hoffice11/Bin/hword" >"$pkgdir"/usr/bin/hword
+  echo '"/opt/hnc/hoffice11/Bin/hword" $@' >"$pkgdir"/usr/bin/hword
   chmod +x "$pkgdir"/usr/bin/hword
   echo "Creating symbolic link: /opt/hnc/hoffice11/Bin/hcl -> /usr/bin/hcl"
-  echo "/opt/hnc/hoffice11/Bin/hcl" >"$pkgdir"/usr/bin/hcl
+  echo '"/opt/hnc/hoffice11/Bin/hcl" $@' >"$pkgdir"/usr/bin/hcl
   chmod +x "$pkgdir"/usr/bin/hcl
 
 }
