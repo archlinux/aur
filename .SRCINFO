@@ -1,8 +1,8 @@
 pkgbase = clifm-nerd
-	pkgdesc = The command line file manager
+	pkgdesc = The command line file manager (with Nerd fonts icons support)
 	pkgver = 1.21
-	pkgrel = 1
-	url = https://github.com/leo-arch/clifm-nerd
+	pkgrel = 2
+	url = https://github.com/leo-arch/clifm
 	arch = i686
 	arch = pentium4
 	arch = x86_64
@@ -26,7 +26,8 @@ pkgbase = clifm-nerd
 	optdepends = udisks2: (un)mount storage devices
 	provides = clifm
 	conflicts = clifm
-	source = clifm-1.21.tar.gz::https://github.com/leo-arch/clifm-nerd/archive/v1.21.tar.gz
+	conflicts = clifm-bin
+	source = clifm-1.21.tar.gz::https://github.com/leo-arch/clifm/archive/v1.21.tar.gz
 	sha256sums = cb219ca6ce1b4a31ec98701a43da51142c8bc7f15a22cb81dda93f881e6f6877
 
 pkgname = clifm-nerd

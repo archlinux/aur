@@ -1,15 +1,15 @@
 # Maintainer: archcrack <leo.clifm@outlook.com>
 
 pkgname=clifm-nerd
-_pkgname="${pkgname%-nerd}"
+_pkgname=clifm
 pkgver=1.21
-pkgrel=1
-pkgdesc="The command line file manager"
+pkgrel=2
+pkgdesc="The command line file manager (with Nerd fonts icons support)"
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'aarch64' 'armv7h')
-url="https://github.com/leo-arch/${pkgname}"
+url="https://github.com/leo-arch/${_pkgname}"
 license=(GPL2)
-provides=("${_pkgname}")
-conflicts=("${_pkgname}")
+provides=('clifm')
+conflicts=('clifm' 'clifm-bin')
 depends=('libcap' 'readline' 'acl' 'file')
 makedepends=('make' 'gzip')
 optdepends=(
