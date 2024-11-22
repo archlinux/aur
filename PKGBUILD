@@ -1,7 +1,7 @@
 # Maintainer: Jeff Dickey <releases-usage at jdx dot dev>
 
 pkgname=usage
-pkgver=1.3.2
+pkgver=1.3.3
 pkgrel=1
 pkgdesc='A specification for CLIs'
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('MIT')
 makedepends=('cargo')
 provides=('usage')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/jdx/$pkgname/archive/v$pkgver.tar.gz")
-sha512sums=('fd368d712c4674497eb14df3498d3b96ea70d6428e5f763588484104ee106035d90b2b7d43b0791960d1c6ae4b9425a6ddd905a09076dca793a51c943c50bf9d')
+sha512sums=('ea5dd05c8497b5c8d455e9e73286deafb513332e01079956d49927c314f00fcff27fbffb2dcc05833bdff63ce824086615c64347e2d7c41fe27711676dffaad6')
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
