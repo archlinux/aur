@@ -1,7 +1,7 @@
 # Maintainer: AlphaJack <alphajack at tuta dot io>
 
 pkgname="xsnow-bin"
-pkgver=3.7.6
+pkgver=3.7.8
 pkgrel=1
 pkgdesc="Let it snow on your desktop"
 url="https://www.ratrabbit.nl/ratrabbit/xsnow/"
@@ -10,10 +10,11 @@ arch=("x86_64" "aarch64")
 provides=("xsnow")
 conflicts=("xsnow" "xsnow-legacy" "xsnow-comp-patch-git")
 depends=("atk" "cairo" "gsl<2.6" "gtk3" "libx11" "libxpm" "libxml2")
-source_x86_64=("http://ftp.de.debian.org/debian/pool/main/x/xsnow/xsnow_$pkgver-1_amd64.deb")
-source_aarch64=("http://ftp.de.debian.org/debian/pool/main/x/xsnow/xsnow_$pkgver-1_arm64.deb")
-b2sums_x86_64=('78dcf2ca2e3fce60f8cd4d5625e67e8dff0e7ce02b770e6d3477c50a7239ab7cc30f0bef4f2b7959f6e3e46c8b2aff9277882c596631939c5da00bd97bbc91d1')
-b2sums_aarch64=('e4da5f558cf7383fbd01b100a33e625f47839b0f8a33336257864c9f087d12385874f1ff818a084091cec0720c3b24c5a1aa3e1d97d7650a41f543b2d5a7d471')
+# replaced sourceforce with results from https://pkgs.org/search/?q=xsnow
+source_x86_64=("http://ftp.de.debian.org/debian/pool/main/x/xsnow/xsnow_$pkgver-1+b2_amd64.deb")
+source_aarch64=("http://ftp.de.debian.org/debian/pool/main/x/xsnow/xsnow_$pkgver-1+b2_arm64.deb")
+b2sums_x86_64=('26ce253b19c08e7ce390e51e72320ff19394ab4f60ad620f40b9bdc173cea5295ca7631608e22ee3b8562ba36b84e0de26272f904229a414c515379d1d5c9929')
+b2sums_aarch64=('3260c02191a3b47025172dbee0703c31fd78f89ed3bae80601addf5ad0bc3a3e5d93a53c6997b3589da8abd51e4be19ca478dc807e2cc0f770d2397f4b3daa22')
 
 prepare(){
  tar -xf "data.tar.xz"
