@@ -15,12 +15,11 @@ makedepends=('python' 'bazel' 'git' 'm4' 'flex' 'bison')
 provides=('verible')
 conflicts=('verible-git' 'verible-bin')
 source=(
-  "verible.tar.gz::https://github.com/chipsalliance/verible/archive/refs/tags/${_gittag}.tar.gz"
+  "verible-${pkgver}.tar.gz::https://github.com/chipsalliance/verible/archive/refs/tags/${_gittag}.tar.gz"
 )
 sha256sums=('fbc9cb32aa8a64ba60f24dc89e8573c8ea62c45d76113a0f2ab5b73babed5990')
 
 build() {
-  ls -la "$srcdir"
   cd "${srcdir:?}/${_tardir}" || (
     echo -e "\E[1;31mCan't change working directory to ${srcdir}/verible! Build Failed!\E[0m"
     exit 1
@@ -30,7 +29,6 @@ build() {
 }
 
 check() {
-  ls -la "$srcdir"
   cd "${srcdir:?}/${_tardir}" || (
     echo -e "\E[1;31mCan't change working directory to ${srcdir}/verible! Check Failed!\E[0m"
     exit 1
