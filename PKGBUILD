@@ -1,21 +1,23 @@
-# Maintainer: Matt R <dev at rhoatech.com>
+# Maintainer: envolution
+# Contributor: Matt R <dev at rhoatech.com>
 # Contributor: Christian Hesse <mail at eworm.de>
 # Contributor: Sergej Pupykin <pupykin.s+arch at gmail.com> ([community] package)
 
 pkgname=remmina-git
-pkgver=1.4.35.r97.g0c1ee9fd1
+_pkgbase=remmina
+pkgver=1.4.36+r10003+gb07e28ee4
 pkgrel=1
 pkgdesc='A remote desktop client written in GTK+ - git checkout'
 arch=(i686 x86_64)
 url='http://www.remmina.org/'
 license=('GPL-2.0-or-later')
 depends=('zlib' 'libjpeg' 'libssh' 'avahi' 'vte3'
-	'libgcrypt' 'libxdmcp' 'libvncserver'
-	'libsecret' 'webkit2gtk-4.1' 'libsodium')
+  'libgcrypt' 'libxdmcp' 'libvncserver'
+  'libsecret' 'webkit2gtk-4.1' 'libsodium')
 makedepends=('git' 'intltool' 'pkgconfig' 'cmake' 'avahi'
-    'libxkbfile' 'freerdp' 'gobject-introspection'
-    'spice' 'spice-gtk' 'spice-protocol' 'kwallet5' 'gtk-vnc'
-    'docbook-xsl' 'libpulse' 'libappindicator-gtk3')
+  'libxkbfile' 'freerdp' 'gobject-introspection'
+  'spice' 'spice-gtk' 'spice-protocol' 'kwallet5' 'gtk-vnc'
+  'docbook-xsl' 'libpulse' 'libappindicator-gtk3')
 optdepends=('avahi' 'libxkbfile' 'gobject-introspection' 'spice' 'spice-gtk' 'spice-protocol' 'pyhoca-cli')
 provides=('remmina' 'grdc' "grdc=${pkgver}" 'remmina-plugins')
 conflicts=('remmina' 'grdc')
@@ -24,40 +26,31 @@ source=('git+https://gitlab.com/remmina/remmina.git')
 sha256sums=('SKIP')
 
 pkgver() {
-	cd remmina/
-
-	if GITTAG="$(git describe --abbrev=0 --tags 2>/dev/null)"; then
-		printf '%s.r%s.g%s' \
-			"$(sed -e "s/^${pkgname%%-git}//" -e 's/^[-_/a-zA-Z]\+//' -e 's/^\.//' -e 's/[-_+]/./g' <<< ${GITTAG})" \
-			"$(git rev-list --count ${GITTAG}..)" \
-			"$(git rev-parse --short HEAD)"
-	else
-		printf '0.r%s.g%s' \
-			"$(git rev-list --count master)" \
-			"$(git rev-parse --short HEAD)"
-	fi
+  cd "${_pkgbase}"
+  _version=$(git tag --sort=-v:refname --list | grep '^v[0-9.]*$' | head -n1)
+  _commits=$(git rev-list --count HEAD)
+  _short_commit_hash=$(git rev-parse --short=9 HEAD)
+  echo "${_version#'v'}+r${_commits}+g${_short_commit_hash}"
 }
 
 build() {
-	cd remmina/
+  cd $_pkgbase
+  mkdir build
+  cmake -B build -S ./ \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_INSTALL_LIBDIR=lib \
+    -DWITH_FREERDP3=ON \
+    -DWITH_CUPS=ON \
+    -DWITH_LIBSSH=ON \
+    -DWITH_NEWS=ON \
+    -DWITH_KF5WALLET=ON \
+    -DWITH_PYTHONLIBS=ON \
+    -DWITH_GVNC=ON \
+    -DWITH_X2GO=ON
 
-	cmake \
-		-DCMAKE_INSTALL_PREFIX=/usr \
-		-DCMAKE_INSTALL_LIBDIR=lib \
-        -DWITH_FREERDP3=ON \
-        -DWITH_CUPS=ON \
-	-DWITH_LIBSSH=ON \
-        -DWITH_NEWS=ON \
-        -DWITH_KF5WALLET=ON \
-        -DWITH_PYTHONLIBS=OFF \
-        -DWITH_GVNC=ON \
-        -DWITH_X2GO=ON \
-		.
-	make
 }
 
 package() {
-	cd remmina/
-
-	make DESTDIR="${pkgdir}/" install
+  cd "$_pkgbase/build"
+  DESTDIR="${pkgdir}" make install
 }
