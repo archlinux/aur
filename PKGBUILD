@@ -13,17 +13,17 @@ sha256sums=('SKIP')
 
 prepare() {
     cd "$pkgname-$pkgver"
-    cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+    cargo fetch --target "$CARCH-unknown-linux-gnu"
 }
 
 build() {
     cd "$pkgname-$pkgver"
-    cargo build --release --frozen
+    cargo build --release
 }
 
 check() {
     cd "$pkgname-$pkgver"
-    cargo test --frozen
+    cargo test
 }
 
 package() {
