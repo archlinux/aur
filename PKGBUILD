@@ -4,8 +4,8 @@
 _pkgbase=serve
 pkgname=nodejs-$_pkgbase
 pkgdesc='Quick HTTP server'
-pkgver=14.2.3
-pkgrel=3
+pkgver=14.2.4
+pkgrel=1
 arch=('any')
 url='https://github.com/zeit/serve'
 license=('MIT')
@@ -28,4 +28,4 @@ package() {
   rm -fr "$pkgdir"/usr/lib/node_modules/serve/node_modules/clipboardy/fallbacks
 }
 
-sha512sums=('56a505302ecadcb0c67869c933d879e83dd718a6fa28680ec3471536d036eb26171c2729c5fdf1c024d4690a169554bb8bc25d8771a3424381db7aac5f28e8c9')
+sha512sums=('ab2d52df83c9fdf718f208d51accc307711788f4a4e452a151aeed41ed143d175dc5189d73657a70d1cf35ec1b1350fb3009202ee584b77570e7abd8cbbdedcd')
