@@ -1,7 +1,7 @@
 # Maintainer: Timur Bagautdinov <mr.bagautdinov14 at gmail dot com>
 
 pkgname="gog-stardew-valley-smapi"
-pkgver=4.0.8
+pkgver=4.1.7
 pkgrel=1
 pkgdesc="The modding API for Stardew Valley."
 url="https://github.com/Pathoschild/SMAPI"
@@ -19,9 +19,9 @@ source=(
 )
 
 sha256sums=(
-    "3ed5422e014bef1b1abbcd853248ca84728f0db1d812cef590afb39d31e65d0a"
+    "ecc62a7092c838ca4f1e857ab2d6654f1f288cccbaa5c8a7c1f20f99e91d7086"
     "dd4e8a2c62d5be1d2aa14d95ffeb7154646eb92916cdc9a9bea41f72b16e887d"
-    "22ed2c0b9e05f211bc5e2e756a1766bf1fbe11def9368cb5f94fb09424fc1e56"
+    "9f496b90f30549170189a990d1c13b7a6d66c5b21189617c9f3b666a32b7c7b5"
 )
 
 prepare() {
@@ -47,54 +47,54 @@ build() {
     cd "$srcdir/SMAPI-$pkgver"
 
     # SMAPI on linux
-    dotnet publish "src/SMAPI" --configuration "Release" -v minimal --runtime "linux-x64" -p:OS="Unix" -p:GamePath="/opt/gog-stardew-valley" -p:CopyToGameFolder="false" --self-contained true
+    dotnet publish "src/SMAPI" --configuration "Release" -v minimal --runtime "linux-x64" -p:OS="Unix" -p:GamePath="/opt/gog-stardew-valley/game" -p:CopyToGameFolder="false" --self-contained true
 
     # ConsoleCommands for SMAPI on linux
-    dotnet publish "src/SMAPI.Mods.ConsoleCommands" --configuration "Release" -v minimal --runtime "linux-x64" -p:OS="Unix" -p:GamePath="/opt/gog-stardew-valley" -p:CopyToGameFolder="false" --self-contained false
+    dotnet publish "src/SMAPI.Mods.ConsoleCommands" --configuration "Release" -v minimal --runtime "linux-x64" -p:OS="Unix" -p:GamePath="/opt/gog-stardew-valley/game" -p:CopyToGameFolder="false" --self-contained false
 
     # SaveBackup for SMAPI on linux
-    dotnet publish "src/SMAPI.Mods.SaveBackup" --configuration "Release" -v minimal --runtime "linux-x64" -p:OS="Unix" -p:GamePath="/opt/gog-stardew-valley" -p:CopyToGameFolder="false" --self-contained false
+    dotnet publish "src/SMAPI.Mods.SaveBackup" --configuration "Release" -v minimal --runtime "linux-x64" -p:OS="Unix" -p:GamePath="/opt/gog-stardew-valley/game" -p:CopyToGameFolder="false" --self-contained false
 }
 
 package() {
     install -d "$pkgdir/usr/bin/"
     install -d "$pkgdir/usr/share/applications/"
     install -d "$pkgdir/usr/share/icons/hicolor/256x256/apps/"
-    install -d "$pkgdir/opt/gog-stardew-valley/smapi-internal"
-    install -d "$pkgdir/opt/gog-stardew-valley/smapi-internal/i18n"
-    install -d "$pkgdir/opt/gog-stardew-valley/Mods/ConsoleCommands"
-    install -d "$pkgdir/opt/gog-stardew-valley/Mods/SaveBackup"
+    install -d "$pkgdir/opt/gog-stardew-valley/game/smapi-internal"
+    install -d "$pkgdir/opt/gog-stardew-valley/game/smapi-internal/i18n"
+    install -d "$pkgdir/opt/gog-stardew-valley/game/Mods/ConsoleCommands"
+    install -d "$pkgdir/opt/gog-stardew-valley/game/Mods/SaveBackup"
 
     # SMAPI
-    install -m 755 "$srcdir/SMAPI-$pkgver/src/SMAPI/bin/Release/linux-x64/StardewModdingAPI" "$pkgdir/opt/gog-stardew-valley/StardewModdingAPI"
-    install -m 644 "$srcdir/SMAPI-$pkgver/src/SMAPI/bin/Release/linux-x64/StardewModdingAPI.dll" "$pkgdir/opt/gog-stardew-valley/StardewModdingAPI.dll"
-    install -m 644 "$srcdir/SMAPI-$pkgver/src/SMAPI/bin/Release/linux-x64/StardewModdingAPI.xml" "$pkgdir/opt/gog-stardew-valley/StardewModdingAPI.xml"
-    install -m 644 "$srcdir/SMAPI-$pkgver/src/SMAPI.Installer/assets/runtimeconfig.json" "$pkgdir/opt/gog-stardew-valley/StardewModdingAPI.runtimeconfig.json"
-    ln -s "/opt/gog-stardew-valley/Stardew Valley.deps.json" "$pkgdir/opt/gog-stardew-valley/StardewModdingAPI.deps.json"
+    install -m 755 "$srcdir/SMAPI-$pkgver/src/SMAPI/bin/Release/linux-x64/StardewModdingAPI" "$pkgdir/opt/gog-stardew-valley/game/StardewModdingAPI"
+    install -m 644 "$srcdir/SMAPI-$pkgver/src/SMAPI/bin/Release/linux-x64/StardewModdingAPI.dll" "$pkgdir/opt/gog-stardew-valley/game/StardewModdingAPI.dll"
+    install -m 644 "$srcdir/SMAPI-$pkgver/src/SMAPI/bin/Release/linux-x64/StardewModdingAPI.xml" "$pkgdir/opt/gog-stardew-valley/game/StardewModdingAPI.xml"
+    install -m 644 "$srcdir/SMAPI-$pkgver/src/SMAPI.Installer/assets/runtimeconfig.json" "$pkgdir/opt/gog-stardew-valley/game/StardewModdingAPI.runtimeconfig.json"
+    ln -s "/opt/gog-stardew-valley/game/Stardew Valley.deps.json" "$pkgdir/opt/gog-stardew-valley/game/StardewModdingAPI.deps.json"
 
 
     # SMAPI Mods
     ## ConsoleCommands
-    install -m 644 "$srcdir/SMAPI-$pkgver/src/SMAPI.Mods.ConsoleCommands/bin/Release/linux-x64/ConsoleCommands.dll" "$pkgdir/opt/gog-stardew-valley/Mods/ConsoleCommands/ConsoleCommands.dll"
-    install -m 644 "$srcdir/SMAPI-$pkgver/src/SMAPI.Mods.ConsoleCommands/bin/Release/linux-x64/manifest.json" "$pkgdir/opt/gog-stardew-valley/Mods/ConsoleCommands/manifest.json"
+    install -m 644 "$srcdir/SMAPI-$pkgver/src/SMAPI.Mods.ConsoleCommands/bin/Release/linux-x64/ConsoleCommands.dll" "$pkgdir/opt/gog-stardew-valley/game/Mods/ConsoleCommands/ConsoleCommands.dll"
+    install -m 644 "$srcdir/SMAPI-$pkgver/src/SMAPI.Mods.ConsoleCommands/bin/Release/linux-x64/manifest.json" "$pkgdir/opt/gog-stardew-valley/game/Mods/ConsoleCommands/manifest.json"
     ## SaveBackup
-    install -m 644 "$srcdir/SMAPI-$pkgver/src/SMAPI.Mods.SaveBackup/bin/Release/linux-x64/SaveBackup.dll" "$pkgdir/opt/gog-stardew-valley/Mods/SaveBackup/SaveBackup.dll"
-    install -m 644 "$srcdir/SMAPI-$pkgver/src/SMAPI.Mods.SaveBackup/bin/Release/linux-x64/manifest.json" "$pkgdir/opt/gog-stardew-valley/Mods/SaveBackup/manifest.json"
+    install -m 644 "$srcdir/SMAPI-$pkgver/src/SMAPI.Mods.SaveBackup/bin/Release/linux-x64/SaveBackup.dll" "$pkgdir/opt/gog-stardew-valley/game/Mods/SaveBackup/SaveBackup.dll"
+    install -m 644 "$srcdir/SMAPI-$pkgver/src/SMAPI.Mods.SaveBackup/bin/Release/linux-x64/manifest.json" "$pkgdir/opt/gog-stardew-valley/game/Mods/SaveBackup/manifest.json"
 
 
     # smapi-internal
     ## i18n
-    cp -r "$srcdir/SMAPI-$pkgver/src/SMAPI/bin/Release/linux-x64/i18n/"* "$pkgdir/opt/gog-stardew-valley/smapi-internal/i18n/"
+    cp -r "$srcdir/SMAPI-$pkgver/src/SMAPI/bin/Release/linux-x64/i18n/"* "$pkgdir/opt/gog-stardew-valley/game/smapi-internal/i18n/"
 
     ## config & metadata .json
-    install -m 644 "$srcdir/SMAPI-$pkgver/src/SMAPI/bin/Release/linux-x64/SMAPI.config.json" "$pkgdir/opt/gog-stardew-valley/smapi-internal/config.json"
-    install -m 644 "$srcdir/SMAPI-$pkgver/src/SMAPI/bin/Release/linux-x64/SMAPI.metadata.json" "$pkgdir/opt/gog-stardew-valley/smapi-internal/metadata.json"
+    install -m 644 "$srcdir/SMAPI-$pkgver/src/SMAPI/bin/Release/linux-x64/SMAPI.config.json" "$pkgdir/opt/gog-stardew-valley/game/smapi-internal/config.json"
+    install -m 644 "$srcdir/SMAPI-$pkgver/src/SMAPI/bin/Release/linux-x64/SMAPI.metadata.json" "$pkgdir/opt/gog-stardew-valley/game/smapi-internal/metadata.json"
     ## Disable update check
-    sed -i 's|"CheckForUpdates": true,|"CheckForUpdates": false,|' "$pkgdir/opt/gog-stardew-valley/smapi-internal/config.json"
+    sed -i 's|"CheckForUpdates": true,|"CheckForUpdates": false,|' "$pkgdir/opt/gog-stardew-valley/game/smapi-internal/config.json"
 
     ## other important stuff
     for file in "0Harmony.dll" "0Harmony.xml" "Mono.Cecil.dll" "Mono.Cecil.Mdb.dll" "Mono.Cecil.Pdb.dll" "MonoMod.Common.dll" "Newtonsoft.Json.dll" "Pathoschild.Http.Client.dll" "Pintail.dll" "TMXTile.dll" "SMAPI.Toolkit.dll" "SMAPI.Toolkit.xml" "SMAPI.Toolkit.CoreInterfaces.dll" "SMAPI.Toolkit.CoreInterfaces.xml" "System.Net.Http.Formatting.dll"; do
-        install -m 644 "$srcdir/SMAPI-$pkgver/src/SMAPI/bin/Release/linux-x64/$file" "$pkgdir/opt/gog-stardew-valley/smapi-internal/$file"
+        install -m 644 "$srcdir/SMAPI-$pkgver/src/SMAPI/bin/Release/linux-x64/$file" "$pkgdir/opt/gog-stardew-valley/game/smapi-internal/$file"
     done
 
 

@@ -19,4 +19,4 @@ else
     kdialog --icon "smapi" --title "SMAPI" --passivepopup "Game will starts soon..." 10 &
 fi
 
-/opt/gog-stardew-valley/StardewModdingAPI --mods-path "$SMAPI_MODS_PATH" "$@"
+/opt/gog-stardew-valley/game/StardewModdingAPI --mods-path "$SMAPI_MODS_PATH" "$@"
