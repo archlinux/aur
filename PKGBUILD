@@ -26,6 +26,7 @@ prepare() {
 }
 
 build() {
+  msg2 "Building for $pkgbase - $pkgname"
   cd $_pkgdir
   unset RUSTFLAGS
   unset DEBUG_RUSTFLAGS
@@ -34,11 +35,13 @@ build() {
   export RUSTUP_TOOLCHAIN=stable
 
   if [ "$pkgname" == "libsql" ] || [ -z "$_build_libsql" ]; then
+    msg2 "Package selected $pkgname"
     # TODO: figure out what flag is causing the build failure, possibly force-frame-pointer?
     cargo build --release --frozen
   fi
 
   if [ "$pkgname" == "libsql-sqlite3" ] || [ -z "$_build_libsql_sqlite3" ]; then
+    msg2 "Package selected $pkgname"
     cargo xtask build --frozen --release
   fi
 }
