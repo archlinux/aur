@@ -2,10 +2,10 @@
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=qt5-scxml
-_basever=5.15.15
-pkgver=5.15.15
+_basever=5.15.16
+pkgver=5.15.16
 pkgrel=1
-_commit=02e1e963ec9492bb1620b3ac3fc6ffc2ff280778
+_commit=64398dfca74a6d4c37d51b56ecfcd1d7ccb6e533
 arch=('x86_64')
 url='https://www.qt.io'
 license=('GPL3' 'LGPL3' 'FDL' 'custom')
@@ -15,7 +15,7 @@ makedepends=('git')
 groups=('qt5')
 _pkgfqn=${pkgname/5-/}
 source=(kde-$_pkgfqn::git+https://invent.kde.org/qt/qt/$_pkgfqn#commit=$_commit)
-sha256sums=('3c02a6b446d9712159049943c85123377c8f50ba2c02f1a2aedb811d74f57ffc')
+sha256sums=('1d0b739eea61c795de8f6d72fbc2f3ae118b25d868ba1170dbc1a1d003b29e3f')
 
 pkgver() {
   cd kde-$_pkgfqn
