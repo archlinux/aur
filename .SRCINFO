@@ -1,7 +1,7 @@
 pkgbase = walker
 license = MIT
 pkgdesc = extensible and fast wayland application runner
-pkgver = 0.9.2
+pkgver = 0.9.3
 pkgrel = 1
 url = https://github.com/abenz1267/walker
 arch = x86_64
@@ -11,8 +11,8 @@ makedepends = go
 depends = gtk4-layer-shell
 optdepends = wl-clipboard: for clipboard module
 optdepends = libqalculate: for calculator module
-source = https://github.com/abenz1267/walker/archive/refs/tags/v0.9.2.tar.gz
-sha256sums = 2d0e2611a48d35e73cbad4074d8ff75d4c39a02979f8daddbd9035f3600453df
-b2sums = 76a63b0d8cc2f908b90e713973d5871e9006aa3ad49608af332ec4e0342594d371f87e017e8f811643aff36df8b8414cea365d40d46f220c8c0ba445d0efab62
+source = https://github.com/abenz1267/walker/archive/refs/tags/v0.9.3.tar.gz
+sha256sums = 0fc2dc9f40f0186557c6e8f137d0d21002eb4ecf34fcc1da8ef4cc75b560c70f
+b2sums = bdf6897ffa6f842aae5d5ca6fbf772f08e796d00e5f25cc46e079a482e0401f5543a3736187d2cbc0e85ba8e031121755f2366378773a3e23a8f4ca605084f07
 
 pkgname = walker
