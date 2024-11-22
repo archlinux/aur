@@ -1,25 +1,33 @@
 # Maintainer: Łukasz Pożarlik <lpozarlik@gmail.com>
 # Contributor: Vincent Hourdin <vh|at|free-astro=DOT=vinvin.tf>
 # Contributor: Marc-Olivier Barre <mobarre-archlinux|at|snarchi|dot|io>
+# Contributor: Michael Lass <bevan@bi-co.net>
 
 pkgname=siril
-pkgver='1.2.3'
+pkgver='1.2.5'
 pkgrel=1
 pkgdesc="An astronomical image processing software for Linux. (IRIS clone)"
+url="https://www.siril.org/"
 arch=('x86_64')
 license=('GPL3')
-depends=('gtk3' 'json-glib' 'fftw' 'cfitsio' 'gsl' 'libconfig' 'opencv' 'exiv2' 'gnuplot' 'ffms2')
-makedepends=('meson' 'cmake' 'ninja')   
-url="https://www.siril.org/"
-optdepends=('libpng: PNG import'
-            'libjpeg: JPEG import and export'
+depends=('gtk3' 'lcms2' 'cfitsio' 'wcslib' 'fftw' 'gsl' 'opencv' 'json-glib' 'ffms2')
+makedepends=('meson' 'cmake' 'ninja')
+optdepends=('gvfs: web access'
+            'exiv2: get thumbnails from files'
+            'libraw: DSLR RAW files import'
             'libtiff: TIFF import and export'
-            'libraw: DSLR RAW images import'
-            'libcurl-gnutls: check for updates'
-            'gnuplot: photometry graphs creation')
+            'libxisf: XISF format support'
+            'libjpeg: JPEG import and export'
+            'libjxl: JPEG XL format support'
+            'libheif: HEIF format files import'
+            'libpng: PNG format support'
+            'ffmpeg: avi export support'
+            'libgit2: git integration to sync with the official siril-scripts repository')
+
+options=(!lto)
 
 source=("https://free-astro.org/download/siril-${pkgver}.tar.bz2")
-sha256sums=('8ac660542d2bec5d608eaf9bf25a25e6ba574b58b5410bdb6ad401e1f86fa756')
+sha256sums=('698be7f689cffa0d657261f67990e7de7d02d527f999cedfa48af523dcd74270')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver/"
@@ -27,7 +35,7 @@ build() {
   ninja -C _build
 }
 
-package() {  
+package() {
   cd "$srcdir/$pkgname-$pkgver/"
   meson install -C _build --destdir "$pkgdir"
 }
