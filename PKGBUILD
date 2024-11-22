@@ -4,7 +4,7 @@
 # Contributor: Timur Bagautdinov <mr.bagautdinov14 at gmail dot com>
 
 pkgname='gog-stardew-valley'
-pkgver=1.6.13
+pkgver=1.6.14
 pkgrel=1
 # Fix upstream versioning shenanigans:
 epoch=1
@@ -18,11 +18,11 @@ options=('!strip' 'staticlibs')
 source=(
   "${pkgname}"
   "${pkgname}.desktop"
-  'local:///stardew_valley_1_6_13_24313_8303763006_77623.sh'
+  'local:///stardew_valley_1_6_14_24317_8331381720_77745.sh'
 )
 sha256sums=('9f51b56b351824493c381731f29175b0897fa0dc4169a9b9160b5a12003883dc'
             '83e20ff00d527e4016e0b964e5c423d6e72d6c3ee4208da87b925772ba7311dd'
-            '06207864a7a9c6a8306af475d4e363e5d42a0b638d7a22168fbd81f06c573d58')
+            '8393ae405ace219d6e448129dc561a12dc461436760f8a52264c1ed729660849')
 
 
 package() {
