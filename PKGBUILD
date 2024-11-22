@@ -2,10 +2,10 @@
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=qt5-remoteobjects
-_basever=5.15.15
-pkgver=5.15.15
+_basever=5.15.16
+pkgver=5.15.16
 pkgrel=1
-_commit=289bbabdff28b4362351f3d91abf75130c9cf666
+_commit=aa61cc683979ea1413222e64a03aae9971392e3d
 arch=(x86_64)
 url='https://www.qt.io'
 license=(GPL3 LGPL3 FDL custom)
@@ -16,7 +16,7 @@ optdepends=('qt5-declarative: QML bindings')
 groups=(qt5)
 _pkgfqn=${pkgname/5-/}
 source=(kde-$_pkgfqn::git+https://invent.kde.org/qt/qt/$_pkgfqn#commit=$_commit)
-sha256sums=('51bf9783ef53d9b070bfe15c18e79535da026c6e5ca81f5a5c04b99f6578dd77')
+sha256sums=('6f66fa251a76ad7e122a357a8f4cc9e8bbab1a3cc64d52d96f22cd21c426af36')
 
 pkgver() {
   cd kde-$_pkgfqn
