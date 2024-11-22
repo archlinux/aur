@@ -1,10 +1,10 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=spacemesh-bin
 _pkgname=Spacemesh
-pkgver=1.7.7
+pkgver=1.7.8
 _electronversion=25
 pkgrel=1
-pkgdesc="Spacemesh App (Smesher + Wallet).Prebuilt version.Use system-wide electron."
+pkgdesc="Spacemesh App (Smesher + Wallet).(Prebuilt version.Use system-wide electron)"
 arch=(
     'aarch64'
     'x86_64'
@@ -25,8 +25,8 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-sha256sums_aarch64=('4eb0aa0a5841d8b7eba2f9198a74e63bbe5cb4735a6b4e780ecc74ac022ed6fe')
-sha256sums_x86_64=('52d52353847e38dc3ed8976fbf2119e965ad9637c784f3374c7715e9651e914e')
+sha256sums_aarch64=('b78a14c1462ea28bfbd8661e682d4bb8c3bece40abc3d00dcb31834634dffa28')
+sha256sums_x86_64=('1919371fe424ad37858d98a797eb28e7207484638aa47c4400c16640eeb6922e')
 build() {
     sed -e "
         s/@electronversion@/${_electronversion}/g

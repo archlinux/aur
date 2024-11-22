@@ -1,6 +1,6 @@
 pkgbase = spacemesh-bin
-	pkgdesc = Spacemesh App (Smesher + Wallet).Prebuilt version.Use system-wide electron.
-	pkgver = 1.7.7
+	pkgdesc = Spacemesh App (Smesher + Wallet).(Prebuilt version.Use system-wide electron)
+	pkgver = 1.7.8
 	pkgrel = 1
 	url = https://spacemesh.io/
 	arch = aarch64
@@ -8,13 +8,13 @@ pkgbase = spacemesh-bin
 	license = Apache-2.0
 	depends = electron25
 	depends = ocl-icd
-	provides = spacemesh=1.7.7
+	provides = spacemesh=1.7.8
 	conflicts = spacemesh
 	source = spacemesh.sh
 	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
-	source_aarch64 = spacemesh-1.7.7-aarch64.deb::https://smapp.spacemesh.network/dist/v1.7.7/spacemesh_app_1.7.7_arm64.deb
-	sha256sums_aarch64 = 4eb0aa0a5841d8b7eba2f9198a74e63bbe5cb4735a6b4e780ecc74ac022ed6fe
-	source_x86_64 = spacemesh-1.7.7-x86_64.deb::https://smapp.spacemesh.network/dist/v1.7.7/spacemesh_app_1.7.7_amd64.deb
-	sha256sums_x86_64 = 52d52353847e38dc3ed8976fbf2119e965ad9637c784f3374c7715e9651e914e
+	source_aarch64 = spacemesh-1.7.8-aarch64.deb::https://smapp.spacemesh.network/dist/v1.7.8/spacemesh_app_1.7.8_arm64.deb
+	sha256sums_aarch64 = b78a14c1462ea28bfbd8661e682d4bb8c3bece40abc3d00dcb31834634dffa28
+	source_x86_64 = spacemesh-1.7.8-x86_64.deb::https://smapp.spacemesh.network/dist/v1.7.8/spacemesh_app_1.7.8_amd64.deb
+	sha256sums_x86_64 = 1919371fe424ad37858d98a797eb28e7207484638aa47c4400c16640eeb6922e
 
 pkgname = spacemesh-bin
