@@ -7,7 +7,7 @@ KIMELIB=libkime-qt-5.11.3.so
 
 _host='Host: dropbox.com'
 _referer='Referer: https://www.hancom.com/cs_center'
-DLAGENTS=("https::/usr/bin/wget %u")
+DLAGENTS=("https::/usr/bin/wget -N --timestamping %u")
 
 pkgname='hoffice-2022-beta'
 pkgver=11.20.0.1520
