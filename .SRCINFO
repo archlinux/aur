@@ -1,7 +1,7 @@
 pkgbase = lego-bin
-	pkgdesc = Let s Encrypt client and ACME library written in Go
+	pkgdesc = Lets Encrypt client and ACME library written in Go
 	pkgver = 4.20.4
-	pkgrel = 2
+	pkgrel = 3
 	url = https://go-acme.github.io/lego/
 	arch = aarch64
 	arch = armv7h

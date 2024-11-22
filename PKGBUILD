@@ -3,8 +3,8 @@
 
 pkgname='lego-bin'
 pkgver=4.20.4
-pkgrel=2
-pkgdesc='Let s Encrypt client and ACME library written in Go'
+pkgrel=3
+pkgdesc='Lets Encrypt client and ACME library written in Go'
 url='https://go-acme.github.io/lego/'
 arch=('aarch64' 'armv7h' 'i686' 'x86_64')
 license=('APACHE')
