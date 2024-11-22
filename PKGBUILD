@@ -33,3 +33,5 @@ package() {
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
 }
+sha256sums=('90f55fe2105fcffb8946dfa8960bacac897020b1c24f101fccb05e7930098081'
+            '9d9b2d1bb6643f5940085e9df3f7853203f4b70a3ac1a94972284f565849f62b')
