@@ -1,0 +1,13 @@
+pkgbase = python-py-emmet
+	pkgdesc = Emmet is a web-developer’s toolkit for boosting HTML & CSS code writing.
+	pkgver = 1.3.1
+	pkgrel = 1
+	url = https://pypi.org/project/py-emmet/
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python>=3.3
+	source = py-emmet-1.3.1.tar.gz::https://github.com/emmetio/py-emmet/archive/refs/tags/v1.3.1.tar.gz
+	b2sums = 73a3ca3444c6108f3d1fb28e15ef4010966f485ec961af49e8901a3f14d6d35534b6c934cc064becfdcf663a63d1f95bb3034db40dcfb4a07a7bc502fe469c33
+
+pkgname = python-py-emmet
