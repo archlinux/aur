@@ -1,6 +1,6 @@
 pkgbase = windscribe-v2-bin
 	pkgdesc = Windscribe GUI tool for Linux
-	pkgver = 2.11.11
+	pkgver = 2.12.7
 	pkgrel = 1
 	url = https://windscribe.com/guides/linux
 	install = windscribe-v2-bin.install
@@ -32,7 +32,7 @@ pkgbase = windscribe-v2-bin
 	conflicts = windscribe-cli
 	conflicts = windscribe
 	options = !strip
-	source = https://deploy.totallyacdn.com/desktop-apps/2.11.11/windscribe_2.11.11_x86_64.pkg.tar.zst
-	sha1sums = 92ab3f2a0a66e5f9abe360a48fbbcb4e3f9178aa
+	source = https://deploy.totallyacdn.com/desktop-apps/2.12.7/windscribe_2.12.7_x86_64.pkg.tar.zst
+	sha1sums = b4302443f1e23dc4c7ac8b7d2ea806c9707c7934
 
 pkgname = windscribe-v2-bin
