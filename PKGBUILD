@@ -1,7 +1,8 @@
 # Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=alist
-pkgver=3.39.4
+pkgver=3.40.0
+_web_pkgver=3.39.2
 pkgrel=1
 pkgdesc="File list program that supports multiple storage"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'arm7vh' 'aarch64' 'riscv64' 'loong64')
@@ -12,13 +13,13 @@ makedepends=('go')
 backup=('etc/alist/config.json')
 install=alist.install
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
-    "dist-$pkgver.tar.gz::https://github.com/alist-org/alist-web/releases/download/${pkgver%.*}.0/dist.tar.gz"
+    "dist-$pkgver.tar.gz::${url}-web/releases/download/${_web_pkgver}/dist.tar.gz"
     'alist.service'
     'alist.tmpfiles'
     'alist.sysusers'
     'config.json')
-sha256sums=('7dd11b1d4213d8992b5058bc00ee6f22be96659a450ada3f2e6389c94840490c'
-            '59f5dae6fed76ca708b12a7a6323ef85cdee48861ffafb8864c785b7d7c36e89'
+sha256sums=('350f6d0610cebb70c645e52a87aaf0e8cb5bb275593ee22778ed8348da48b005'
+            'd998315aff5544e7d7248214d02a3b04a92366bf0ac50fb4791b23833e8b543a'
             '5712b21aebf669fe9fb5d47dd685809d4d9670b1bb1d5e6fef962b9d11ba9d72'
             'c6b62c4a750ab921c2e8f965e4baeee28855c9a969b00eddd346670f2fdf12de'
             '3658370660806f73c3d9bc5f1b6e2a013c9520d34ffc4462df99f7692473613d'
