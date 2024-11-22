@@ -1,8 +1,8 @@
 # Maintainer: Daniel Bershatsky <bepshatsky@yandex.ru>
 pkgname=python-orbax-export
 _pkgname=${pkgname#python-}
-pkgver=0.0.5
-_pkgver=0.9.1
+pkgver=0.0.6
+_pkgver=0.10.0
 pkgrel=1
 pkgdesc='Orbax provides common utility libraries for JAX users (export).'
 arch=('any')
@@ -25,7 +25,7 @@ optdepends=(
 conflicts=('python-orbax')
 replaces=('python-orbax')
 source=("$_pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$_pkgver.tar.gz")
-sha256sums=('1c14a6a662fca717210238f156b9951d5f35389569f9174c9501f480186fc7d1')
+sha256sums=('fe5ab7eb72dff38f3639750892a2d69220a34822372b910b51bf672157145fc5')
 
 build() {
     python -m build -nw orbax-$_pkgver/export
