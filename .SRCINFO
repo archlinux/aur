@@ -1,7 +1,7 @@
 pkgbase = forge-server
 	pkgdesc = Forge is a free, open-source modding API all of your favourite mods use!
 	pkgver = 50.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://minecraftforge.net
 	install = forge-server.install
 	arch = any

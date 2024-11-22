@@ -1,0 +1,5 @@
+**/*.jar
+src/
+pkg/
+**/*.zst
+LICENSE.txt

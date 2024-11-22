@@ -5,7 +5,7 @@ pkgdesc="Forge is a free, open-source modding API all of your favourite mods use
 url="https://minecraftforge.net"
 
 pkgver=50.1.0
-pkgrel=1
+pkgrel=2
 _minecraftver=1.20.6
 _licensever=1.20.x
 _srvpath="/opt"
