@@ -4,7 +4,7 @@
 pkgname=qt5-sensors
 _basever=5.15.16
 pkgver=5.15.16
-pkgrel=1
+pkgrel=2
 _commit=55398471a3b46db2727b462776c137bced1dfdd6
 arch=('x86_64')
 url='https://www.qt.io'
