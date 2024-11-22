@@ -2,7 +2,7 @@
 
 pkgname=python-speechrecognition
 _pkg=speechrecognition
-pkgver=3.10.4
+pkgver=3.11.0
 pkgrel=1
 pkgdesc="Google-powered speech recognition for Python"
 arch=('any')
@@ -13,7 +13,7 @@ optdepends=('pocketsphinx' 'python-vosk' 'python-whisper')
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 provides=('python-speech_recognition')
 source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/${_pkg::1}/$_pkg/$_pkg-$pkgver.tar.gz")
-sha256sums=('986bafcf61f14625c2f3cea6a471838edd379ed68aeed7b8f3c0fb41e21f1125')
+sha256sums=('a5ecc0bb61d7d9bf0ca70427cd4fea07c38e26c647b5577137596033677b5f34')
 
 prepare() {
 	cd "$_pkg-$pkgver"
