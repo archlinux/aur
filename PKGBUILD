@@ -3,7 +3,7 @@ pkgname="iio-hyprland-git"
 
 _pkgname="iio-hyprland"
 
-pkgbase="iio-hyprland-git"
+pkgbase="iio-hyprland"
 
 pkgver=r32.286e009
 
