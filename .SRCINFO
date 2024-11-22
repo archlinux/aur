@@ -1,7 +1,7 @@
-pkgbase = openarc
-	pkgdesc = Open source implementation of the ARC email authentication system.
+pkgbase = openarc-legacy
+	pkgdesc = Open source implementation of the ARC email authentication system (legacy version)
 	pkgver = 1.0.0.Beta3
-	pkgrel = 12
+	pkgrel = 1
 	url = https://github.com/trusteddomainproject/OpenARC
 	arch = x86_64
 	license = BSD-2-Clause
@@ -32,4 +32,4 @@ pkgbase = openarc
 	sha256sums = 31c399c0e3a69bb845b033ab5c0ad92d44cacb0fd58e0113cd1901e75900515e
 	sha256sums = a27619fe3bbea2a0fd7c555851089722b1d67818bc014d1dce20620b5eb4bbc5
 
-pkgname = openarc
+pkgname = openarc-legacy

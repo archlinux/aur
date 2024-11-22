@@ -1,10 +1,10 @@
 # Maintainer: Edmund Lodewijks <e.lodewijks at gmail.com>
 
-pkgname=openarc
+pkgname=openarc-legacy
 pkgver=1.0.0.Beta3
-pkgrel=12
+pkgrel=1
 _commit=eb430dbdeee9f502295fe7a7d5041dfca3f00745
-pkgdesc="Open source implementation of the ARC email authentication system."
+pkgdesc="Open source implementation of the ARC email authentication system (legacy version)"
 arch=(x86_64)
 url="https://github.com/trusteddomainproject/OpenARC"
 license=('BSD-2-Clause' 'LicenseRef-Sendmail-1.1')
