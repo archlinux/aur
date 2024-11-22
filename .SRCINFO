@@ -4,8 +4,13 @@ pkgbase = ttype
     pkgver = 1.0.0
     pkgrel = 1
     arch = x86_64
+		arch = aarch64
     url = https://github.com/Srinath10X/ttype
     license = GPL3
     makedepends = git
+		makedepends = make
+		makedepends = base-devel
     source = git+https://github.com/Srinath10X/ttype.git#tag=v1.1.0
     sha256sums = SKIP
+
+pkgname = ttype
