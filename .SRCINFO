@@ -1,0 +1,17 @@
+pkgbase = repak
+	pkgdesc = Unreal Engine .pak file library and CLI in rust
+	pkgver = 0.2.2
+	pkgrel = 1
+	url = https://github.com/trumank/repak
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	license = Apache-2.0
+	license = MIT
+	makedepends = cargo
+	options = !lto
+	source = git+https://github.com/trumank/repak#tag=v0.2.2
+	sha256sums = 20dc367f1316ec56f4bd0379a85ae62a71ff1de1b768ae96758cf6bd2ced4528
+
+pkgname = repak
