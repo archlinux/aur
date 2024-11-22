@@ -2,7 +2,7 @@
 _base=adios4dolfinx
 pkgname=python-${_base}
 pkgdesc="Wrappers for reading/writing DOLFINx meshes/functions with ADIOS2"
-pkgver=0.9.0
+pkgver=0.9.1
 pkgrel=1
 arch=(any)
 url="https://github.com/jorgensd/${_base}"
@@ -11,7 +11,7 @@ depends=(python-fenics-dolfinx adios2)
 makedepends=(python-build python-installer python-setuptools python-wheel)
 checkdepends=(python-pytest python-ipyparallel)
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('ecebeffc0c7ab7b9d83d38f2f475e6460728bec2f9d02d14dd6dc0d9962d2fa856b97e035a01396ad220cb239090aef42c11ec0647731b126b1f9e48c92bc3a3')
+sha512sums=('81f921cd401f2a122cd010482799669da0f314308d1f54d3328d12ddb2be5a359b6fa50067fe9c4632b76a5d1d0ffb0972160d31a472642f9235f97a3f2454f4')
 
 build() {
   cd ${_base}-${pkgver}
