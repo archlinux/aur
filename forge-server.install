@@ -9,11 +9,12 @@ post_install() {
 
     chown -R "${_user}:${_user}" "$_server_root"
 
-    echo "The world data is stored under ${_server_root} and the server runs as ${_user} user to increase security."
-    echo "Prior to starting the server must accept the EULA in ${_server_root}/eula.txt !"
+    echo "The world data is stored under ${_server_root} and the server runs as ${_user} user."
+    echo "Prior to starting the server must accept the EULA in ${_server_root}/eula.txt."
     echo "Use systemctl to enable, start, stop, or check the status of the forge-server."
     echo "Adjust launch arguments with ${_server_root}/user_jvm_args.txt to your liking."
-    echo "Adjust the server  configuration file under ${_server_root}/server.properties to your liking."
+    echo "Adjust the server configuration file under ${_server_root}/server.properties to your liking."
+
 }
 
 post_upgrade() {
