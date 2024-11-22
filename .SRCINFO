@@ -1,11 +1,14 @@
 pkgbase = jsonnet-bundler-bin
 	pkgdesc = jsonnet package manager
 	pkgver = 0.6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jsonnet-bundler/jsonnet-bundler
 	arch = x86_64
-	license = Apache
-	source = jb-v0.6.0::https://github.com/jsonnet-bundler/jsonnet-bundler/releases/download/v0.6.0/jb-linux-amd64
-	sha256sums = 78e54afbbc3ff3e0942b1576b4992277df4f6beb64cddd58528a76f0cd70db54
+	arch = aarch64
+	license = Apache-2.0
+	source_x86_64 = jb-v0.6.0-x86_64::https://github.com/jsonnet-bundler/jsonnet-bundler/releases/download/v0.6.0/jb-linux-amd64
+	sha256sums_x86_64 = 78e54afbbc3ff3e0942b1576b4992277df4f6beb64cddd58528a76f0cd70db54
+	source_aarch64 = jb-v0.6.0-aarch64::https://github.com/jsonnet-bundler/jsonnet-bundler/releases/download/v0.6.0/jb-linux-arm64
+	sha256sums_aarch64 = 19f2da64816137cd87a82dd963c752ff4b7c8701fc1ed7b979c356321dcf3f5a
 
 pkgname = jsonnet-bundler-bin
