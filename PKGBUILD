@@ -2,7 +2,7 @@
 
 pkgname=vv
 pkgver=2.0
-pkgrel=1
+pkgrel=2
 license=(BSD-3-Clause)
 url="https://github.com/wolfpld/vv"
 pkgdesc="Terminal image viewer"
@@ -25,7 +25,7 @@ depends=(
 	zlib
 )
 optdepends=(
-	poppler
+	poppler-glib
 )
 
 source=(
