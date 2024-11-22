@@ -10,12 +10,13 @@ arch=('x86_64')
 url="http://www.texmacs.org/"
 license=('GPL3')
 depends=('perl' 'guile' 'texlive-basic' 'python' 'libxext' 'freetype2'
-	 'qt5-svg' 'hicolor-icon-theme' 'gawk' 'python-lxml')
+	 'qt6-svg' 'hicolor-icon-theme' 'gawk')
 optdepends=('transfig: convert images using fig2ps'
             'ghostscript: rendering ps files'
             'imagemagick: convert images'
             'aspell: spell checking'
-            'inkscape: svg convertion')
+            'inkscape: svg convertion'
+            'python-lxml: inkscape editting')
 makedepends=('ghostscript' 'cmake' 'git' 'gcc')
 _commit=75ff838984008e545b07f7c4d21cf25f1ff77137
 source=("${_pkgname}::git+https://github.com/hammerfunctor/texmacs#commit=$_commit")
