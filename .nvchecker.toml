@@ -1,0 +1,3 @@
+[python-spark-parser]
+source = "pypi"
+pypi = "spark_parser"
