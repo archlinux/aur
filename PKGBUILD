@@ -1,10 +1,10 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=jan-bin
 _pkgname=Jan
-pkgver=0.5.8
+pkgver=0.5.9
 _electronversion=30
 pkgrel=1
-pkgdesc="Run AI on your own PC.(Prebuilt version.Use system-wide electron)"
+pkgdesc="An open source alternative to ChatGPT that runs 100% offline on your computer. Multiple engine support (llama.cpp, TensorRT-LLM).(Prebuilt version.Use system-wide electron)"
 arch=("x86_64")
 url="https://jan.ai/"
 _ghurl="https://github.com/janhq/jan"
@@ -18,7 +18,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-linux-amd64-${pkgver}.deb"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('1feb486413e5573cb9fa96d92cb0835f057c336823b5484657683d46c6526517'
+sha256sums=('24b2ae0fc5c9110a6fae331ef86952ad70dcba1692bc4591ac84d12e3d5ddd82'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 build() {
     sed -e "
