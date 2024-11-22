@@ -1,5 +1,6 @@
 # Maintainer : 00ein00 <Ein420@proton.me>
 
+HNCDIR=opt/hnc
 HNCCONTEXT=opt/hnc/hoffice11/Bin/qt/plugins/platforminputcontexts
 NIMFLIB=libqt5im-nimf.so
 KIMELIB=libkime-qt-5.11.3.so
@@ -28,8 +29,8 @@ provides=('hoffice-2022-beta=${pkgver}')
 conflicts=('hoffice')
 
 sha256sums=('1ecb2f82e915b49706d1f5f6d206f8bd4a9384fda2bd56798c94046865fe5730'
-  '09b74399a45cde2b28e672784dbd1eb6397454a025e05a51fb3367eadb834583'
-  'd246c02a20a1e4ea123f9c2275dfc4a2ea091a65032ddbbe8a59bfc71418f60c')
+            '09b74399a45cde2b28e672784dbd1eb6397454a025e05a51fb3367eadb834583'
+            'd246c02a20a1e4ea123f9c2275dfc4a2ea091a65032ddbbe8a59bfc71418f60c')
 
 post_install() {
   xdg-icon-resource forceupdate --theme hicolor &>/dev/null
@@ -41,8 +42,10 @@ post_upgrade() {
 }
 
 pre_remove() {
+  echo "Removing installed files..."
   if [[ -f "/${HNCCONTEXT}/${NIMFLIB}" ]]; then
     rm -vf "/${HNCCONTEXT}/${NIMFLIB}"
+    rm -rf "/${HNCDIR}"
   fi
 }
 
@@ -63,5 +66,15 @@ package() {
     install -Dm755 -t "${pkgdir}/${HNCCONTEXT}" "${srcdir}/${KIMELIB}"
     install -Dm755 -t "${pkgdir}/${HNCCONTEXT}" "${srcdir}/${NIMFLIB}"
   fi
+
+  mkdir -p "$pkgdir"/usr/bin/
+  echo "Creating symbolic link: /opt/hnc/hoffice11/Bin/hwp -> /usr/bin/hwp"
+  ln -sf /opt/hnc/hoffice11/Bin/hwp "$pkgdir"/usr/bin/hwp
+  echo "Creating symbolic link: /opt/hnc/hoffice11/Bin/hsl -> /usr/bin/hsl"
+  ln -sf /opt/hnc/hoffice11/Bin/hsl "$pkgdir"/usr/bin/hsl
+  echo "Creating symbolic link: /opt/hnc/hoffice11/Bin/hword -> /usr/bin/hword"
+  ln -sf /opt/hnc/hoffice11/Bin/hword "$pkgdir"/usr/bin/hword
+  echo "Creating symbolic link: /opt/hnc/hoffice11/Bin/hcl -> /usr/bin/hcl"
+  ln -sf /opt/hnc/hoffice11/Bin/hcl "$pkgdir"/usr/bin/hcl
 
 }
