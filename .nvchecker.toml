@@ -1,0 +1,4 @@
+[openarc]
+source = "github"
+github = "trusteddomainproject/OpenARC"
+use_latest_release = true

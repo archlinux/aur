@@ -1,0 +1,12 @@
+--- libopenarc/arc.c
++++ libopenarc/arc.c.new
+@@ -1670,8 +1670,7 @@ arc_process_set(ARC_MESSAGE *msg, arc_kvsettype_t type, u_char *str,
+ 		    arc_param_get(set, (u_char *) "b") == NULL ||
+ 		    arc_param_get(set, (u_char *) "s") == NULL ||
+ 		    arc_param_get(set, (u_char *) "d") == NULL ||
+-		    arc_param_get(set, (u_char *) "a") == NULL ||
+-		    arc_param_get(set, (u_char *) "t") == NULL)
++		    arc_param_get(set, (u_char *) "a") == NULL)
+ 		{
+ 			arc_error(msg, "missing parameter(s) in %s data",
+ 			          settype);
