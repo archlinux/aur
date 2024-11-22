@@ -1,8 +1,8 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=turtle
 _app_id="de.philippun1.$pkgname"
-pkgver=0.10
-pkgrel=3
+pkgver=0.11
+pkgrel=1
 pkgdesc="Manage your git repositories with easy-to-use dialogs in Nautilus."
 arch=('any')
 url="https://gitlab.gnome.org/philippun1/turtle"
@@ -32,7 +32,7 @@ optdepends=(
 )
 conflicts=('turtlegit')
 source=("$url/-/archive/$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('a4398d95dd4d91965d7c8a703189cee9df3eb6ab9c61c977993229d4abbc3afd')
+sha256sums=('152ff3d3fe039762c37a5fa562e088b84ac890c6db2e1072c3c1aa3fab03ff39')
 
 prepare() {
   cd "$pkgname-$pkgver"
