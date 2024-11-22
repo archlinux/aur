@@ -3,19 +3,19 @@
 #     Updated: Yuki Chiba <yuki.from.akita@gmail.com>
 
 pkgname=smlsharp
-pkgver=4.0.0
-pkgrel=1
+pkgver=4.1.0
+pkgrel=2
 pkgdesc="A new programming language in the Standard ML family"
 arch=('x86_64')
 url="https://smlsharp.github.io/"
 license=('MIT')
 depends=('gmp'
-         'massivethreads=1.00'
-         'llvm>=3.9.1')
+         'massivethreads=1.02'
+         'llvm>=7.1')
 makedepends=('chrpath')
 source=("https://github.com/smlsharp/smlsharp/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz"
         remove-tz-test.patch)
-sha256sums=('0b44fb1f369f7cfced197c68f0d3102e940dbe5288adc3bdf618a5a3ec3165db'
+sha256sums=('b19543a42654f4bda1d690c6ea6e4d9ee16dc7544b95828f8a7c649e0919a8a1'
             '9ad167dd7582349a84218c1d61347376e439d476cca1ffa26b6addeaf162dc6c')
 options=(libtool staticlibs)
 
