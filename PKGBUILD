@@ -1,16 +1,18 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=qed-git
-pkgver=r163.16a095b
+pkgver=r29.69fe7a6
 pkgrel=1
-pkgdesc="UTF-8/Unicode-aware port of Rob Pike's QED editor for Unix"
+epoch=1
+pkgdesc="A new, improved, port of the Qed editor for Unix, with UTF-8 processing"
 arch=('i686' 'x86_64')
-url="https://github.com/phonologus/QED"
+url="https://github.com/phonologus/qed-new"
 license=('unknown')
 makedepends=('git')
 provides=("${pkgname%-*}")
 conflicts=("${pkgname%-*}")
-source=("$pkgname::git+$url")
-md5sums=('SKIP')
+source=("$pkgname::git+$url"
+        "git+https://github.com/phonologus/QED")
+md5sums=('SKIP' 'SKIP')
 
 pkgver() {
 	cd "$srcdir/$pkgname"
@@ -24,8 +26,9 @@ build() {
 
 package() {
 	cd "$srcdir/$pkgname"
-	make INSTALLD="$pkgdir/usr" install
+	make LOCALD="$pkgdir/usr" LIBDIR="$pkgdir/usr/lib/qed" MANDIR="$pkgdir/usr/share/man/man1" install
 	install -D -m644 README.md $pkgdir/usr/share/doc/${pkgname%-*}/README.md
-	cp --no-preserve=mode -r q doc/historical $pkgdir/usr/share/doc/${pkgname%-*}
+	cd "$srcdir/QED"
+	cp --no-preserve=mode -r doc/historical $pkgdir/usr/share/doc/${pkgname%-*}
 	install -D -m644 doc/qed-tutorial.pdf $pkgdir/usr/share/doc/${pkgname%-*}/qed-tutorial.pdf
 }
