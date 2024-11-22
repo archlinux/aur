@@ -2,7 +2,7 @@
 # Contributor: Shalygin Konstantin <k0ste@k0ste.ru>
 
 pkgname='barman'
-pkgver='3.11.1'
+pkgver='3.12.0'
 pkgrel='1'
 pkgdesc="Backup and recovery manager for PostgreSQL"
 arch=('x86_64' 'aarch64')
@@ -15,16 +15,10 @@ makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-sphin
 optdepends=('python-boto3' 'python-botocore')
 source=("https://github.com/EnterpriseDB/${pkgname}/archive/refs/tags/release/${pkgver}.tar.gz"
 	"${pkgname}.crond"
-	"${pkgname}.logrotate"
-	"passive-server.conf-template"
-	"ssh-server.conf-template"
-	"streaming-server.conf-template")
-sha256sums=('61a5d687a56b42c2a9adeb6dd3760d2654990f0760230c721cc8a73a910a9f0a'
+	"${pkgname}.logrotate")
+sha256sums=('060fc3d4f10697ff1e889033d54e63e23b2c8c6209a3e4bce2f137096a9ffb4a'
             '43e90f39b167b682aa98e753c1803cf6244ba6c1eeb5738270fcb47837c25147'
-            '723ba6c8ddce9284d48243787e6d24c40db98933f28bf6a79ce53a2c15bb261c'
-            '631afa66223a705db3c1d5a4749b8f60368f86b72a3c0fc7eef9ca48af312c50'
-            '0c014a7232f33444dde368da6b8a61e10d0f7c346a240ffdcbbf46ed77ac2366'
-            '28895cd3a857d98d14ac4b86fb1f968c49834fd22310c4de676fdda2ea75c855')
+            '723ba6c8ddce9284d48243787e6d24c40db98933f28bf6a79ce53a2c15bb261c')
 
 build() {
   cd "${pkgname}-release-${pkgver}"
@@ -38,16 +32,16 @@ package() {
   mkdir -p "${pkgdir}/usr/share/bash-completion/completions"
   mkdir -p "${pkgdir}/usr/share/doc/${pkgname}/etc/"{cron.d,${pkgname}.d,logrotate.d}
 
-  install -Dm0644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-  install -Dm0644 "README.rst" "${pkgdir}/usr/share/doc/${pkgname}/README.rst"
+  install -Dm0644 "LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -Dm0644 "README.rst" -t "${pkgdir}/usr/share/doc/${pkgname}"
   install -Dm0644 "scripts/${pkgname}.bash_completion" \
 "${pkgdir}/usr/share/bash-completion/completions/${pkgname}"
-  install -Dm0644 "doc/${pkgname}.conf" "${pkgdir}/usr/share/doc/${pkgname}/etc/${pkgname}.conf"
+  install -Dm0644 "docs/${pkgname}.conf" "${pkgdir}/usr/share/doc/${pkgname}/etc/${pkgname}.conf"
+  install -Dm0644 "docs/${pkgname}.d/passive-server.conf-template" "${pkgdir}/usr/share/doc/${pkgname}/etc/${pkgname}.d"
+  install -Dm0644 "docs/${pkgname}.d/ssh-server.conf-template" "${pkgdir}/usr/share/doc/${pkgname}/etc/${pkgname}.d"
+  install -Dm0644 "docs/${pkgname}.d/streaming-server.conf-template" "${pkgdir}/usr/share/doc/${pkgname}/etc/${pkgname}.d"
 
   popd
   install -Dm0644 "${pkgname}.crond" "${pkgdir}/usr/share/doc/${pkgname}/etc/cron.d/${pkgname}"
   install -Dm0644 "${pkgname}.logrotate" "${pkgdir}/usr/share/doc/${pkgname}/etc/logrotate.d/${pkgname}"
-  install -Dm0644 "passive-server.conf-template" "${pkgdir}/usr/share/doc/${pkgname}/etc/${pkgname}.d"
-  install -Dm0644 "ssh-server.conf-template" "${pkgdir}/usr/share/doc/${pkgname}/etc/${pkgname}.d"
-  install -Dm0644 "streaming-server.conf-template" "${pkgdir}/usr/share/doc/${pkgname}/etc/${pkgname}.d"
 }
