@@ -7,7 +7,7 @@ pkgdesc="An automated script for quick & easy Arch Linux system setup"
 arch=('x86_64')
 url="https://github.com/harilvfs/$_pkgname"
 license=('Apache-2.0')
-depends=('bash' 'gum' 'figlet' 'pacman' 'unzip' 'python' 'gtk')
+depends=('bash' 'gum' 'figlet' 'pacman' 'unzip' 'python' 'gtk3')
 source=(
     "https://github.com/harilvfs/$_pkgname/releases/download/$pkgver/scripts.zip"
     "https://github.com/harilvfs/$_pkgname/releases/download/$pkgver/carch-gtk"
