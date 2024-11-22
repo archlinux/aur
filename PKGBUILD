@@ -2,7 +2,7 @@
 _appname=hugin
 pkgname="${_appname}-messenger"
 _pkgname="Hugin Messenger"
-pkgver=0.6.3
+pkgver=0.6.4
 _electronversion=19
 _nodeversion=18.20.4
 pkgrel=1
@@ -22,12 +22,13 @@ makedepends=(
     'cmake'
     'gcc'
     'curl'
+    'python-setuptools'
 )
 source=(
     "${pkgname}-${pkgver}.tar.gz::${_ghurl}/archive/refs/tags/${pkgver}.tar.gz"
     "${pkgname}.sh"
 )
-sha256sums=('6753f497831fb8b44360feef05e28b71693f653baef915b2068ca86628755656'
+sha256sums=('68dd2dd69a700d2bf29e4c905af5d543b84081d32c628f401af7af671c2fbd2f'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
