@@ -23,8 +23,8 @@ prepare() {
 
 package() {
   install -d "${pkgdir}/opt/${name}"
+  chown -R $USER:$USER "${pkgdir}/opt/${name}"
   cp -r "${srcdir}/${name}/." "${pkgdir}/opt/${name}"
-
+  chown -R $USER:$USER "${pkgdir}/opt/${name}"
   install -Dm755 "${srcdir}/UVR.sh" "${pkgdir}/usr/bin/UVR"
-
 }
