@@ -1,0 +1,20 @@
+pkgbase = vapoursynth-plugin-stgfunc-git
+	pkgdesc = Plugin for Vapoursynth: stgfunc (GIT version)
+	pkgver = v3.1.1.3.ge97b7e3
+	pkgrel = 1
+	url = https://github.com/Jaded-Encoding-Thaumaturgy/stgfunc
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-wheel
+	makedepends = python-installer
+	makedepends = python-setuptools
+	depends = python-numpy
+	depends = vapoursynth-plugin-vstools-git
+	provides = vapoursynth-plugin-stgfunc
+	conflicts = vapoursynth-plugin-stgfunc
+	source = stgfunc::git+https://github.com/Jaded-Encoding-Thaumaturgy/stgfunc.git
+	sha256sums = SKIP
+
+pkgname = vapoursynth-plugin-stgfunc-git
