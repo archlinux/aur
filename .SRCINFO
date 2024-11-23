@@ -1,4 +1,4 @@
-pkgbase = clash-verge-rev-bin
+pkgbase = clash-verge-rev-latest
 	pkgdesc = Continuation of Clash Verge | A Clash Meta GUI based on Tauri
 	pkgver = 2.0.0
 	pkgrel = 1
@@ -25,4 +25,4 @@ pkgbase = clash-verge-rev-bin
 	source_armv7h = clash-verge-rev-2.0.0-armv7h.deb::https://github.com/clash-verge-rev/clash-verge-rev/releases/download/v2.0.0/Clash-Verge_2.0.0_armhf.deb
 	sha512sums_armv7h = 2e834c05b20625a6c4686e2e9bd6d4f6a2b98d4e66efe2bcd3216455835fd814f5363a591c53bbaac8519e420cef7155cbd2fba26f514f379b0665bb9a942d23
 
-pkgname = clash-verge-rev-bin
+pkgname = clash-verge-rev-latest
