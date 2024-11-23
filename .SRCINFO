@@ -1,12 +1,13 @@
 pkgbase = ocaml-js_of_ocaml
 	pkgdesc = Compiler from OCaml to Javascript
-	pkgver = 5.8.2
-	pkgrel = 2
+	pkgver = 5.9.0
+	pkgrel = 1
 	url = https://github.com/ocsigen/js_of_ocaml
 	arch = x86_64
 	arch = aarch64
 	license = LGPL-2.1-or-later WITH OCaml-LGPL-linking-exception
-	makedepends = dune>=3.7.0
+	checkdepends = ocaml-qcheck
+	makedepends = dune>=3.15.0
 	depends = ocaml>=4.08.0
 	depends = ocaml-cmdliner>=1.1.0
 	depends = ocaml-graphics
@@ -14,15 +15,15 @@ pkgbase = ocaml-js_of_ocaml
 	depends = ocaml-lwt_log
 	depends = ocaml-menhir
 	depends = ocaml-ppxlib>=0.22.0
-	depends = ocaml-react>=1.2.1
+	depends = ocaml-react>=1.2.2
 	depends = ocaml-reactivedata>=0.2
-	depends = ocaml-sedlex>=2.3
+	depends = ocaml-sedlex>=3.3
 	depends = ocaml-tyxml>=4.6
 	depends = ocaml-yojson
 	depends = ocaml-findlib>=1.5.1
 	depends = zstd
 	options = !strip
-	source = ocaml-js_of_ocaml-5.8.2.tar.gz::https://github.com/ocsigen/js_of_ocaml/archive/5.8.2.tar.gz
-	b2sums = 93a58d8b63dee116752831cb5a0f1b6878c33e7aa2f2a0daba2ae1671f81d5c60a35a7f0698913be9bf336253555a1ae51f6dc05aa1969711100e04ff9695dd0
+	source = ocaml-js_of_ocaml-5.9.0.tar.gz::https://github.com/ocsigen/js_of_ocaml/archive/5.9.0.tar.gz
+	b2sums = 3850e97ff43611e54f4af6bb3d355abb0915ba9f4516c85e2b2661b8fdfe4f029eea573a883d24636768abff5be7cd23c8e9144b484d6a12a82859eefd93de78
 
 pkgname = ocaml-js_of_ocaml
