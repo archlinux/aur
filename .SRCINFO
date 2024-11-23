@@ -1,6 +1,6 @@
 pkgbase = surrealdb
 	pkgdesc = A scalable, distributed, collaborative, document-graph database, for the realtime web
-	pkgver = 2.0.4
+	pkgver = 2.1.0
 	pkgrel = 1
 	url = https://github.com/surrealdb/surrealdb
 	arch = x86_64
@@ -19,9 +19,9 @@ pkgbase = surrealdb
 	depends = glibc
 	provides = surrealdb
 	conflicts = surrealdb-bin
-	source = https://github.com/surrealdb/surrealdb/releases/download/v2.0.4/LICENSE
-	source = surrealdb-2.0.4.tar.gz::https://github.com/surrealdb/surrealdb/archive/refs/tags/v2.0.4.tar.gz
+	source = https://github.com/surrealdb/surrealdb/releases/download/v2.1.0/LICENSE
+	source = surrealdb-2.1.0.tar.gz::https://github.com/surrealdb/surrealdb/archive/refs/tags/v2.1.0.tar.gz
 	sha256sums = dd98c688e54be8b85ad79e603f5112449b9789dfc031db94eb5c7dc843702aef
-	sha256sums = ff6cbd3566439c3552196cc5b3b4382b6083aa81f03f1b18f4991da588522efe
+	sha256sums = 86b9e650670138955c721d78f62e34d0f6f2198a02df5c25a1a25732853202fc
 
 pkgname = surrealdb
