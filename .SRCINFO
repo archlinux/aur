@@ -32,6 +32,7 @@ pkgbase = fastanime
 	optdepends = ffmpegthumbnailer: local previews
 	optdepends = syncplay: watch with friends
 	optdepends = feh: image viewer (for manga mode)
+	provides = fastanime
 	source = https://github.com/Benex254/FastAnime/archive/refs/tags/v2.8.3.tar.gz
 	sha256sums = SKIP
 
