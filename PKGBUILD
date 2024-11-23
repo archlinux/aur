@@ -3,7 +3,7 @@
 _pkgname=fastanime
 pkgname="${_pkgname}-git"
 pkgver=2.8.3
-pkgrel=1
+pkgrel=2
 pkgdesc="FastAnime, anime site experience from the terminal."
 arch=('x86_64')
 url="https://github.com/Benex254/FastAnime"
@@ -19,7 +19,8 @@ depends=('python'
          'python-requests'
          'python-rich'
          'python-thefuzz'
-         'yt-dlp')
+         'yt-dlp'
+         'python-dbus')
 optdepends=('mpv: video player'
             'webtorrent-cli: nyaa torrents'
             'ffmpeg: download hls streams' 
