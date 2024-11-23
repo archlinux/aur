@@ -4,7 +4,7 @@
 
 pkgname=soci
 pkgver=4.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Database access library for C++"
 arch=('i686' 'x86_64')
 url="http://soci.sf.net"
@@ -18,7 +18,7 @@ optdepends=('oracle-instantclient-basic: support for oracle databases'
             'unixodbc: support for ODBC databases'
             'libmysqlclient'
             'boost-libs')
-options=('staticlibs')
+options=('staticlibs' '!debug' '!lto')
 source=("http://downloads.sourceforge.net/project/soci/soci/${pkgname}-${pkgver}/${pkgname}-${pkgver}.zip")
 sha1sums=('e76d5862f90cfa8a0f9fe6ce477c3c7fa669af62')
 
