@@ -5,11 +5,11 @@
 pkgname=python-plexapi
 _name=plexapi
 pkgver=4.16.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Python bindings for the Plex API."
 arch=('any')
 url="https://github.com/pkkid/python-plexapi"
-license=('BSD')
+license=('BSD-3-Clause')
 depends=('python-requests' 'python-tqdm' 'python-websocket-client')
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
