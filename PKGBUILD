@@ -1,14 +1,16 @@
 # Maintainer: Joan Bruguera Micó <joanbrugueram@gmail.com>
 pkgname=woof-doom
 _pkgname=woof
-pkgver=14.5.0
+pkgver=15.0.0
 pkgrel=1
 pkgdesc="Woof! is a continuation of Lee Killough's Doom source port MBF targeted at modern systems"
 arch=(x86_64)
 url="https://github.com/fabiangreffrath/woof"
 license=('GPL2')
-depends=(sdl2 sdl2_net openal libsndfile)
+depends=(sdl2 sdl2_net openal libebur128 libsndfile)
 # FluidSynth is optional, but can not be an optdepends since it gets linked to the built executable
+# Required for some ID24 lumps (https://doomwiki.org/wiki/ID24), you probably want it.
+depends+=(yyjson)
 # Required for high-quality MIDI music, you probably want it.
 depends+=(fluidsynth)
 # Ditto for libxmp with respect to optdepends. Required for tracker music, you may not want it
@@ -18,7 +20,7 @@ install=install.sh
 makedepends=(cmake python3)
 conflicts=(woof-doom-git)
 source=("https://github.com/fabiangreffrath/${_pkgname}/archive/refs/tags/${_pkgname}_${pkgver}.tar.gz")
-sha256sums=(1ad9e27ffeb70a60344e98f08bf17650856ffb51aa32cffd94468dacd9f1d42a)
+sha256sums=(7e9bbdb54033afcb5c4347ee81e1cdef4fad94519f29c12af4bb554b5dad0b75)
 
 build() {
     # Use `-ffile-prefix-map` to avoid 'WARNING: Package contains reference to $srcdir' due to assert(...)
