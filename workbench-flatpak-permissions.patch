@@ -1,26 +1,17 @@
-From d0b64495ef35558236b67f404d7711f1a673cb92 Mon Sep 17 00:00:00 2001
+From dbc0bea2d1f0097ce769ccdfdea8da21e8cd27cf Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Ball=C3=B3=20Gy=C3=B6rgy?= <ballogyor@gmail.com>
 Date: Sat, 23 Nov 2024 14:05:27 +0100
 Subject: [PATCH] Don't check for missing Flatpak permissions
 
 ---
- src/Permissions/Permissions.js | 18 +-----------------
- 1 file changed, 1 insertion(+), 17 deletions(-)
+ src/Permissions/Permissions.js | 16 +---------------
+ 1 file changed, 1 insertion(+), 15 deletions(-)
 
 diff --git a/src/Permissions/Permissions.js b/src/Permissions/Permissions.js
-index c0561b5..28298dd 100644
+index c0561b5..5352430 100644
 --- a/src/Permissions/Permissions.js
 +++ b/src/Permissions/Permissions.js
-@@ -8,8 +8,6 @@ import Interface from "./Permissions.blp" with { type: "uri" };
- 
- import illustration from "./permissions.svg";
- 
--import { getFlatpakInfo } from "../util.js";
--
- const action_permissions = new Gio.SimpleAction({
-   name: "permissions",
-   parameter_type: null,
-@@ -39,22 +37,8 @@ export function Permissions({ window }) {
+@@ -39,22 +39,8 @@ export function Permissions({ window }) {
    window.add_action(action_permissions);
  }
  
