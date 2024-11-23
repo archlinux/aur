@@ -35,6 +35,7 @@ prepare() {
 build() {
 	sed -e 's|AB Download Manager|Network;|' \
         -e 's|Icon=\/opt\/abdownloadmanager\/lib\/ABDownloadManager.png|Icon=abdownloadmanager|' \
+        -e 's|Comment=ABDownloadManager|Comment=Download Manager that speeds up your downloads|' \
         -e 's|MimeType=|StartupNotify=false|' \
         -e '$aStartupWMClass=com.abdownloadmanager.ABDownloadManager' \
 		-e '$aGenericName=Download Manager' \
