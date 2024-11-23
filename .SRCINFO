@@ -1,0 +1,18 @@
+pkgbase = ontake-nezumi-p-git-git
+	pkgdesc = A simple TUI for viewing Parisian public transport departure times
+	pkgver = r3.g3b7639d
+	pkgrel = 1
+	url = https://github.com/make-42/nezumi-p
+	arch = x86_64
+	arch = armv7h
+	arch = aarch64
+	license = GPL2
+	makedepends = cargo
+	makedepends = git
+	makedepends = rust
+	provides = ontake-nezumi-p-git
+	conflicts = ontake-nezumi-p-git
+	source = git+https://github.com/make-42/nezumi-p
+	md5sums = SKIP
+
+pkgname = ontake-nezumi-p-git-git
