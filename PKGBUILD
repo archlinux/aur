@@ -7,6 +7,7 @@ pkgver=965
 pkgrel=3
 pkgdesc="The PicoSAT solver"
 arch=('x86_64')
+options=('!lto')
 url="http://fmv.jku.at/picosat/"
 license=('MIT')
 source=("http://fmv.jku.at/picosat/${pkgname}-${pkgver}.tar.gz"
