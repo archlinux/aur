@@ -12,4 +12,5 @@ sha256sums=('762c4bb7edf8bc1afe78862f2b01f3755bceca7224e704e34409c8bce1e167ac')
 
 package() {
     tar -I zstd -xf data.tar.zst -C "${pkgdir}/"
+    chown -R root:root "${pkgdir}"
 }
