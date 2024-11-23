@@ -9,7 +9,7 @@ pkgname=(
          'geph5-client-git'
          #'geph5-exit-git'
          )
-pkgver=r569.05b3756
+pkgver=r685.a04eff8
 pkgrel=1
 pkgdesc="Geph is a modular Internet censorship circumvention system designed specifically to deal with national filtering."
 arch=('x86_64')
@@ -25,7 +25,7 @@ source=("git+${url}.git"
 md5sums=('SKIP'
          '4655e64a5d56c316383e1ffa79ddc772'
          '02a4c190230663efc619f42b75ec817c'
-         '17ea478eaac2dc3dda008acc63c9bba8'
+         '9cb39de202d985699357f7a6830b8779'
          '374b014018c671a40c3a2b81d1334121')
 
 pkgver() {
