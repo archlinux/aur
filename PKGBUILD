@@ -2,7 +2,7 @@
 pkgname=bestfetch
 pkgver=1.2.1
 pkgrel=1
-pkgdesc="the best system fetch ever, powered by nim"
+pkgdesc="a customizable, beautiful, and blazing fast system fetch, powered by nim"
 arch=(x86_64)
 url="https://gitlab.com/Maxb0tbeep/bestfetch"
 license=('GPLv3')
