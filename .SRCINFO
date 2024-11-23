@@ -1,0 +1,16 @@
+pkgbase = sgnotes-git
+	pkgdesc = A simple GTK3 note-taking application
+	pkgver = r25.b8891ff
+	pkgrel = 1
+	url = https://codeberg.org/ItsZariep/SGNotes
+	arch = any
+	license = GPL
+	makedepends = git
+	makedepends = gtk3
+	makedepends = gtksourceview4
+	depends = gtk3
+	depends = gtksourceview4
+	source = git+https://codeberg.org/ItsZariep/SGNotes.git#branch=stable
+	sha256sums = SKIP
+
+pkgname = sgnotes-git
