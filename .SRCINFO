@@ -1,0 +1,16 @@
+pkgbase = maze-tui
+	pkgdesc = Explore various maze building, solving, and measurement algorithms
+	pkgver = 324.88af24f
+	pkgrel = 1
+	url = http://github.com/agl-alexglopez/maze-tui
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = cargo
+	depends = glibc
+	depends = gcc-libs
+	provides = maze-tui
+	source = git+https://github.com/agl-alexglopez/maze-tui
+	md5sums = SKIP
+
+pkgname = maze-tui
