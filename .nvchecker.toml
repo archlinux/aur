@@ -1,0 +1,7 @@
+[lmstudio]
+source = "cmd"
+#cmd="curl -s https://lmstudio.ai/download | grep -oP '(?<=/x86/)[0-9./]+(?=/LM_Studio)' | sed 's|/|.|'"
+#cmd="curl -s https://lmstudio.ai/download | grep -oP '(?<=/x86/)\d+(?:\.\d+)*(?:/[^/]+)*(?=/LM_Studio)' | sed 's|/|.|'"
+#cmd = "curl -s https://lmstudio.ai/download | grep -oP '(?<=/x86/)[0-9./]+(?=/LM_Studio)' | sed 's|/|.|'"
+#cmd="grep -o 'linux/x86/[0-9./]\+/[0-9]\+/LM_Studio-[^/]*\.AppImage'"
+cmd="curl -s https://lmstudio.ai | grep -oP '(?<=linux/x86/)[0-9./]+(?=/LM_Studio)' | sed 's|/|.|' | head -n1"
