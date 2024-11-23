@@ -4,7 +4,7 @@
 pkgname=qt5-datavis3d
 _basever=5.15.16
 pkgver=5.15.16
-pkgrel=2
+pkgrel=3
 _commit=db75c351cd0c2b93016ca489ffb9db806e6fd6e9
 arch=('x86_64')
 url='https://www.qt.io'
