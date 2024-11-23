@@ -9,5 +9,15 @@ _blue="${_bold}$(tput setaf 4)"
 _yellow="${_bold}$(tput setaf 3)"
 
 post_upgrade() {
-    note "If you are using the service mode, please run \"systemctl restart clash-verge-service\" after upgrade"
+    # Now let us reload Clash Verge service automatically.
+    if systemctl is-active --quiet clash-verge-service.service; then
+        systemctl restart clash-verge-service.service
+    fi
+
+    note 'After upgrading Clash Verge Rev, it is recommended to restart Clash Verge Rev.'
+}
+
+pre_remove() {
+    # Remove service file silently, as official Debian package does
+    /usr/bin/uninstall-service
 }
