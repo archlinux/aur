@@ -3,11 +3,11 @@
 
 pkgname=perl-term-shellui
 pkgver=0.92
-pkgrel=4
+pkgrel=5
 pkgdesc="A fully-featured shell-like command line environment "
 arch=('any')
-url="http://search.cpan.org/~BRONSON/Term-ShellUI"
-license=('GPL' 'PerlArtistic')
+url="https://github.com/bronson/Term-ShellUI"
+license=('MIT')
 depends=('perl')
 options=('!emptydirs')
 source=(https://cpan.metacpan.org/authors/id/B/BR/BRONSON/Term-ShellUI-$pkgver.tar.gz)
