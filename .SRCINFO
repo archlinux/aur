@@ -1,0 +1,14 @@
+pkgbase = shhh-git
+	pkgdesc = Add shadows and edge rounding to screenshots
+	pkgver = 0.1.f89b099
+	pkgrel = 1
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	provides = shhh=0.1.f89b099
+	conflicts = shhh
+	source = git+https://github.com/entailz/shhh.git
+	sha256sums = SKIP
+
+pkgname = shhh-git
