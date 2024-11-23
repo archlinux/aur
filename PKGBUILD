@@ -4,7 +4,7 @@
 pkgname=qt5-quick3d
 _basever=5.15.16
 pkgver=5.15.16+kde+r1
-pkgrel=2
+pkgrel=3
 _commit=4db879b73a7b7546acab87bec50f9265dd1da8bd
 arch=('x86_64')
 url='https://www.qt.io'
