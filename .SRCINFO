@@ -1,6 +1,6 @@
 pkgbase = python-parsita
 	pkgdesc = Parser combinator library for Python.
-	pkgver = 2.1.1
+	pkgver = 2.2.0
 	pkgrel = 1
 	url = https://pypi.org/project/parsita
 	arch = any
@@ -13,8 +13,8 @@ pkgbase = python-parsita
 	makedepends = python-wheel
 	depends = python
 	depends = python-returns
-	source = python-parsita-2.1.1.tar.gz::https://github.com/drhagen/parsita/archive/refs/tags/v2.1.1.tar.gz
-	sha256sums = c4e75aa80b9c739c4b834ce4421fd502a37c4ae3486c85539ca858c5fe9f8243
-	b2sums = f8fc41db507280929a468628bc0167f2b077524af4b42176e2821a4de592ee373d55abd9b286563fdf56027c95b2fdef2949ed93df5cc1e689cbfdf5e888c5cc
+	source = python-parsita-2.2.0.tar.gz::https://github.com/drhagen/parsita/archive/refs/tags/v2.2.0.tar.gz
+	sha256sums = fe9cb802080af31a42bd2737b0c6545c6a80721defae20a985e4c4fa067e6296
+	b2sums = a06322180862d306cf77701289ed10a04e7d4e3b5b9263cb7f2ffabd69bab3896f10a7eff817abeb2b663e9413ceabcb99110c4bdc2ba6746a666b912638830e
 
 pkgname = python-parsita
