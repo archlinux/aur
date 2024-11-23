@@ -24,7 +24,7 @@ unset _pkgtype
 _gitname="linux"
 _pkgname="$_gitname${_pkgtype:-}"
 pkgbase="$_pkgname"
-pkgver=6.11.9
+pkgver=6.12.1
 pkgrel=1
 pkgdesc='Linux'
 url='https://www.kernel.org'
@@ -58,7 +58,7 @@ source=(
   "config-$pkgver"::https://gitlab.archlinux.org/archlinux/packaging/packages/linux/-/raw/main/config
 )
 sha256sums=(
-  '75658a7aa3bd9598c96ee1e5862c5e1d34fced75c28d825c727a1510a6f384b4' ###
+  '0193b1d86dd372ec891bae799f6da20deef16fc199f30080a4ea9de8cef0c619' ###
   'SKIP'
   'SKIP'
 )
