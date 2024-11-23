@@ -6,7 +6,7 @@
 
 pkgname="dendrite-git"
 _pkgname=${pkgname%-git}
-pkgver=0.13.8
+pkgver=0.13.8.r2956.7cc7ebb4
 pkgrel=1
 pkgdesc="A second-generation Matrix homeserver written in Go"
 url="https://element-hq.github.io/dendrite/"
@@ -29,7 +29,7 @@ install="$_pkgname.install"
 
 pkgver() {
  cd "$_pkgname"
- git rev-parse --verify HEAD
+ printf "$pkgver.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build(){
