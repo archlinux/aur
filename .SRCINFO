@@ -1,7 +1,7 @@
 pkgbase = fastanime-git
 	pkgdesc = FastAnime, anime site experience from the terminal.
 	pkgver = 2.8.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Benex254/FastAnime
 	arch = x86_64
 	license = Unlicense
@@ -33,6 +33,8 @@ pkgbase = fastanime-git
 	optdepends = ffmpegthumbnailer: local previews
 	optdepends = syncplay: watch with friends
 	optdepends = feh: image viewer (for manga mode)
+	provides = fastanime
+	conflicts = fastanime
 	source = git+https://github.com/Benex254/FastAnime.git
 	sha256sums = SKIP
 
