@@ -27,8 +27,10 @@ depends=(
   hicolor-icon-theme
   libadwaita
   libgirepository
+  libmanette
   libportal
   libportal-gtk4
+  librsvg
   libshumate
   libsoup3
   libspelling
