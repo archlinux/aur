@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc='Language server for GTK CSS'
 arch=(x86_64)
 url='https://github.com/JCWasmx86/GTKCssLanguageServer'
-license=(MIT)
+license=(GPL-3.0-or-later)
 depends=(
   glib2
   glibc
