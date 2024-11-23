@@ -1,11 +1,11 @@
 # Maintainer: mutantmonkey <aur@mutantmonkey.mx>
 pkgname=golinx
 pkgver=1.0
-pkgrel=3
+pkgrel=4
 pkgdesc="A client for linx-server written in Go"
 url="https://github.com/mutantmonkey/golinx"
 arch=('x86_64')
-license=('GPL3')
+license=('GPL-3.0-or-later')
 makedepends=('git' 'go')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/mutantmonkey/${pkgname}/archive/v${pkgver}.tar.gz")
 sha256sums=('a5a0b1ff433d8a9b66b3c9115b574472ffa0aeb8c0e929d19fe67c24a3bc2a53')

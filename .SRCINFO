@@ -1,10 +1,10 @@
 pkgbase = golinx
 	pkgdesc = A client for linx-server written in Go
 	pkgver = 1.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/mutantmonkey/golinx
 	arch = x86_64
-	license = GPL3
+	license = GPL-3.0-or-later
 	makedepends = git
 	makedepends = go
 	source = golinx-1.0.tar.gz::https://github.com/mutantmonkey/golinx/archive/v1.0.tar.gz
