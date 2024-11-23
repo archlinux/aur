@@ -4,7 +4,7 @@
 pkgname=qt5-scxml
 _basever=5.15.16
 pkgver=5.15.16
-pkgrel=2
+pkgrel=3
 _commit=64398dfca74a6d4c37d51b56ecfcd1d7ccb6e533
 arch=('x86_64')
 url='https://www.qt.io'

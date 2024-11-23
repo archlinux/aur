@@ -1,7 +1,7 @@
 pkgbase = qt5-scxml
 	pkgdesc = Static and runtime integration of SCXML models into Qt code
 	pkgver = 5.15.16
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.qt.io
 	arch = x86_64
 	groups = qt5
