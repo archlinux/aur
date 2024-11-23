@@ -1,6 +1,6 @@
 pkgbase = hcclient-latex
 	pkgdesc = A terminal client for hack.chat, with LaTeX support
-	pkgver = 1.19.4
+	pkgver = 1.19.6
 	pkgrel = 1
 	url = https://github.com/AnnikaV9/hcclient
 	arch = any
@@ -10,10 +10,10 @@ pkgbase = hcclient-latex
 	depends = python
 	provides = hcclient
 	conflicts = hcclient
-	noextract = hcclient-1.19.4-py3-none-any.whl
-	source = hcclient-1.19.4-py3-none-any.whl::https://github.com/AnnikaV9/hcclient/releases/download/v1.19.4/hcclient-1.19.4-py3-none-any.whl
-	source = hcclient-latex-1.19.4.tar.gz::https://github.com/AnnikaV9/hcclient/archive/refs/tags/v1.19.4.tar.gz
-	sha256sums = 933c7762e8d5d00b17dcddd93beadd0da8063097e432e72c5a4eab2eb413f70a
-	sha256sums = 057c51b97389c1079ed41a07819fbc5e4e172489bd394f611117586fb119a415
+	noextract = hcclient-1.19.6-py3-none-any.whl
+	source = hcclient-1.19.6-py3-none-any.whl::https://github.com/AnnikaV9/hcclient/releases/download/v1.19.6/hcclient-1.19.6-py3-none-any.whl
+	source = hcclient-latex-1.19.6.tar.gz::https://github.com/AnnikaV9/hcclient/archive/refs/tags/v1.19.6.tar.gz
+	sha256sums = c63eb1120a87689d971d952e5125568746e68ae00986c8a155ec00bb1add3838
+	sha256sums = 793f72548b7f1bb7c073b3b8b78c6c17b64fca0e2aa12062d5b212374f312c1f
 
 pkgname = hcclient-latex
