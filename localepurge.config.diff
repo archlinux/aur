@@ -1,5 +1,5 @@
---- localepurge.conf.orig	2014-02-04 18:17:32.554174127 +0100
-+++ localepurge.conf	2014-02-04 18:21:08.911092875 +0100
+--- ../../localepurge-orig/debian/localepurge.config	2024-11-02 18:48:17.000000000 +0100
++++ localepurge.config	2024-11-23 16:04:04.587481665 +0100
 @@ -2,26 +2,11 @@
  
  set -e
@@ -15,7 +15,7 @@
 -conf_has_key() {
 -    local key="$1"
 -
--    if [ -f "$CONFIG_FILE" ] && fgrep --quiet --line-regexp \
+-    if [ -f "$CONFIG_FILE" ] && grep -F --quiet --line-regexp \
 -             "$key" "$CONFIG_FILE"; then
 -        echo "true"
 -    else
@@ -48,7 +48,7 @@
      cat "$NEWLOCALELIST" >> "$TEMPFILE"
      rm -f "$NEWLOCALELIST"
  fi
-@@ -79,96 +61,9 @@
+@@ -79,96 +61,8 @@
     else
      mv "$LOCALELIST" "$LOCALELIST"-old
      sort -u "$TEMPFILE" > "$LOCALELIST"
@@ -84,7 +84,7 @@
  # deleting temporary files not needed anymore:
  
  rm -f "$TEMPFILE" "$LOCALEGEN"
- 
+-
 -#############################################################
 -# now that all locale data is in place let debconf take over:
 -

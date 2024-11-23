@@ -1,5 +1,5 @@
---- ../localepurge-orig/debian/localepurge.8	2013-09-20 12:52:48.000000000 +0200
-+++ localepurge.8	2013-09-21 12:48:33.864666265 +0200
+--- ../../localepurge-orig/debian/localepurge.8	2024-11-02 18:48:17.000000000 +0100
++++ localepurge.8	2024-11-23 15:54:14.657596992 +0100
 @@ -1,4 +1,4 @@
 -.TH LOCALEPURGE 8
 +.TH LOCALEPURGE 8 "2013-09-21" "GNU/Linux" ""
@@ -20,12 +20,12 @@
 -installation run
 -in the 
 +files and localized man pages. You have to define the locale
-+directory names you want to keep from removal in the 
++directory names you want to keep from removal in the
  .BR /etc/locale.nopurge
  configuration file.  Unless 
  .BR localepurge
-@@ -35,10 +28,17 @@
- .BR \-\ /usr/share/omf
+@@ -47,10 +40,17 @@
+ .BR \-\ /usr/share/vim/vim*/lang
  .br
  The localization files you actually need and which you want to be preserved on your system can be
 -easily configured by running the following command:
@@ -44,7 +44,7 @@
  .SH OPTIONS
  The configurable options consist of toggling verbose output, reporting a
  summary of freed space, and deletion of localized manual pages in
-@@ -68,10 +68,10 @@
+@@ -80,10 +80,10 @@
  .BR not
  .BR integrated
  .BR with
@@ -57,9 +57,9 @@
  and therefore is not meant for the faint of heart.  Responsibility for its 
  usage and possible breakage of your system therefore lies in the sysadmin's 
  (your) hands.
-@@ -85,60 +85,12 @@
- All locale directories containing a subdirectory named LC_MESSAGES
- which are either commented out or not even listed at all in
+@@ -97,60 +97,12 @@
+ All locale directories from the affected paths listed above which are either 
+ commented out or not even listed at all in
  .BR /etc/locale.nopurge 
 -will be irreversibly deleted.  The only way to
 -reinstall any lost locales is a complete reinstallation of all the
@@ -122,21 +122,21 @@
  .SH AUTHOR
  .BR localepurge
  and its accompanying manual page was written for the 
-@@ -150,3 +102,17 @@
+@@ -164,3 +116,17 @@
  Debian's great package management system will make
  .BR localepurge
  fully obsolete.
-+.SH NOTE
-+This manual page and the Debian localepurge script have been modified
-+for Arch Linux system by Francesco Groccia <frgroccia gmail.com>.
-+Some Debian\-specific information has been removed.
-+.br
-+In particular, the following files have been revised from the
-+localepurge source code (Debian "sid" distribution):
-+.HP
-+
-+.I ../debian/localepurge.8
-+
-+.I ../debian/localepurge.config
-+
-+.I ../usr/sbin/localepurge
+++.SH NOTE
+++This manual page and the Debian localepurge script have been modified
+++for Arch Linux system by Francesco Groccia <frgroccia gmail.com>.
+++Some Debian\-specific information has been removed.
+++.br
+++In particular, the following files have been revised from the
+++localepurge source code (Debian "sid" distribution):
+++.HP
+++
+++.I ../debian/localepurge.8
+++
+++.I ../debian/localepurge.config
+++
+++.I ../usr/sbin/localepurge

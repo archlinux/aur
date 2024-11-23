@@ -5,7 +5,7 @@
 # Contributor: Dincer Celik <dincer@bornovali.com>
 
 pkgname=localepurge
-pkgver=0.7.3.10
+pkgver=0.7.3.11
 pkgrel=1
 pkgdesc="Script to remove disk space wasted for unneeded localizations."
 arch=('any')
@@ -18,11 +18,11 @@ source=("http://deb.debian.org/debian/pool/main/l/localepurge/${pkgname}_${pkgve
         "${pkgname}.8.diff"
         "${pkgname}.config.diff"
         "locale.nopurge")
-sha256sums=('56b08640f46d6ebf20b2d535e5ba54d062de70c8f2aadf5a5c665b6007f7f6e2'
-            '7a3bff4fd339c883060c9219795e416e85d04ee46fce8dde6d5f0e0a0a51d0b5'
-            '906c1a429f79ace7bc9acf448dc3084d372626e0ba7d9e87d4d0d54f8706b771'
-            '82bd40594ef0646465eed6e525368e87694322513c0d3280879fcfc5c40cb6a7'
-            'b27e69a87f81ecb01ecd9fd92c174ed3c4406200eedc50ba6ebabce91e3851e8'
+sha256sums=('f7301e0951f9f10f659a8fded728003d7411a60d67fb7f1280612d8c9d7f180e'
+            '996a5b3f4e00255ec39f3a0d1cc8d17024d5a2b780df4a6464fdb7f37322c57b'
+            '35ea9626835d4fbf6feffcfaf61054f1e2c18f03015b04e285af07552507549a'
+            'ff00441572e98e38d5fb5c753b78dac5fe9dc1b20094e3b9050b91b203b9206f'
+            '5155a67cd27e17f8232f1fdedf7d7be6f70d5505602a8ca2fd99dc21ef3bbd60'
             'b9c28be93fa47d4f0315972159e501d9eef28bbab7ffe6e8e7c4a13c359f35e8')
 
 prepare()

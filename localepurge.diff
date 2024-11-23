@@ -1,5 +1,5 @@
---- ../localepurge-orig/usr/sbin/localepurge	2013-06-15 18:46:01.000000000 +0200
-+++ localepurge	2013-09-21 12:04:38.155721151 +0200
+--- ../../../localepurge-orig/usr/sbin/localepurge	2024-11-02 18:48:17.000000000 +0100
++++ localepurge	2024-11-23 15:26:06.042451879 +0100
 @@ -1,6 +1,6 @@
  #! /bin/bash
  
@@ -8,7 +8,7 @@
  # on system which are *not* listed in /etc/locale.nopurge
  
  set -e
-@@ -12,48 +12,35 @@
+@@ -12,48 +12,36 @@
  fi
  
  if [ "$1" = "--help" ] || [ "$1" = "-h" ]; then
@@ -19,7 +19,7 @@
 -   echo "Documentation is either available via 'man localepurge'"
 -   echo "or by reading the docs in /usr/share/doc/localepurge."
 -   echo ""
--   if [ -f $NOPURGECONF ] && fgrep --quiet --line-regexp USE_DPKG $NOPURGECONF ; then
+-   if [ -f $NOPURGECONF ] && grep -F --quiet --line-regexp USE_DPKG $NOPURGECONF ; then
 -       echo "NB: localepurge has been configured to use dpkg.  Therefore,"
 -       echo "this script will not do anything."
 -   fi
@@ -33,7 +33,7 @@
 +    exit 0
  fi
  
--
+ 
  # Do nothing and report why if no valid configuration file exists:
  
 -if [ ! -f $NOPURGECONF ]
@@ -55,11 +55,11 @@
 +	echo
  	exit 0
 -    else
--	if fgrep --quiet --line-regexp USE_DPKG $NOPURGECONF
+-	if grep -F --quiet --line-regexp USE_DPKG $NOPURGECONF
 -            then
 -            # Do nothing, dpkg does all the work for us.
 -            exit 0
--	elif fgrep --quiet --line-regexp NEEDSCONFIGFIRST $NOPURGECONF
+-	elif grep -F --quiet --line-regexp NEEDSCONFIGFIRST $NOPURGECONF
 -	    then
 -		echo
 -		echo "	  You have to configure \"localepurge\" with the command"
@@ -79,7 +79,7 @@
  ################################################################
  ## Initialise variables
  
-@@ -85,7 +72,6 @@
+@@ -85,7 +73,6 @@
      VERBOSE=1
  fi
  
@@ -87,7 +87,7 @@
  ################################################################
  ## Manage the list of locales
  
-@@ -97,57 +83,57 @@
+@@ -97,57 +84,57 @@
  
  ((VERBOSE)) && echo "localepurge: checking for existence of $LOCALECACHEDIR..."
  if [ ! -d $LOCALECACHEDIR ]; then
@@ -168,7 +168,9 @@
 +    echo "    /usr/bin/localepurge-config"
      echo
  fi
-
+ 
+@@ -172,7 +159,7 @@
+ )
  
  ################################################################
 -## Define utility functions 
@@ -176,7 +178,7 @@
  
  # Function for disk space calculation
  # Usage: get_used_space <dirname>
-@@ -202,7 +188,7 @@
+@@ -202,7 +189,7 @@
  	local flag
  	((VERBOSE)) && flag=-v
  	for file; do
@@ -185,7 +187,7 @@
  		echo "$file"
  	    fi
  	done | xargs rm $flag
-@@ -241,7 +227,6 @@
+@@ -244,7 +231,6 @@
      fi
  }
  
