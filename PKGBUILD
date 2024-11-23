@@ -2,7 +2,7 @@
 
 pkgname=blender-lts-bin
 pkgdesc='LTS blender version'
-pkgver='4.2.2'
+pkgver='4.2.4'
 #Official Mirror(Direct Link)
 _mirror="https://mirrors.dotsrc.org"
 
@@ -25,7 +25,7 @@ license=('GPL')
 arch=('x86_64')
 url='https://www.blender.org'
 
-b2sums=('9ba53251ba841ac235d82b6473b0a0790aaea1e9475e20f57c42b41d5b1646953446aaa0ed4e2dd5c5ae9d9e28010a3678c1e81894fc5b9d852b25f98167af18'
+b2sums=('b89ab0f94d25bf3342964dcfd541b12611e7b7dbfc01bca57e77034cd9bef325ebc96817e47fb44593e4a84ff3f1becd869051b64324735375c2adeb896b97e5'
 '903039ab42d250063286fa6a5e3687e84c9c6018a0e6654423e7649542d8394c19e6ed8ccaa549bd373ad66bc8e5b7b65203781cde26420f4e00183935e766f3')
 
 _setvars() {
@@ -45,5 +45,5 @@ package() {
 
   install -Dm644 "$_base_dir/blender.desktop" "${pkgdir}/usr/share/applications/blender-lts.desktop"
   install -Dm755 "${srcdir}/blender.sh" "${pkgdir}/usr/bin/blender-lts"
-  install -Dm644 "$_base_dir/license/GPL-license.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 "$_base_dir/license/spdx/GPL-3.0-or-later.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
