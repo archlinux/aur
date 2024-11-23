@@ -1,12 +1,10 @@
-# Maintainer: Jurriaan Pruis <email@jurriaanpruis.nl>
-
 pkgname=deconz
 arch=('x86_64' 'armv6h' 'armv7h' 'aarch64')
-pkgver=2.19.03
+pkgver=2.28.1
 pkgrel=1
 pkgdesc="A generic ZigBee monitoring and control tool"
 url="https://www.dresden-elektronik.de"
-license=('custom:"Copyright (c) dresden elektronik ingenieurtechnik GmbH"')
+license=('BSD 3-Clause "New" or "Revised" License')
 groups=()
 depends=('hicolor-icon-theme'
          'libcap'
@@ -28,6 +26,7 @@ install=
 changelog=
 source=(
   '69-conbee.rules'
+  '99-conbee3.rules'
   'deconz.sysusers'
   'deconz.tmpfiles'
 )
@@ -36,16 +35,18 @@ source_armv6h=($pkgname-$pkgver-armv6h.deb::https://deconz.dresden-elektronik.de
 source_armv7h=($pkgname-$pkgver-armv7h.deb::https://deconz.dresden-elektronik.de/raspbian/stable/$pkgname-$pkgver-qt5.deb)
 source_aarch64=(${pkgname}_${pkgver}-debian-buster-stable_arm64.deb::https://deconz.dresden-elektronik.de/debian/stable/${pkgname}_${pkgver}-debian-buster-stable_arm64.deb)
 sha256sums=('568f0ff41fad18d6a26ef96a90181e6fac6b1dd6abd69d202de849d1caf76354'
+            'b39ef78676141edfd148944a287aea4d20ee202abe37dff564a977c367d7b385'
             '4f4554238a3ee2ecd7af3510a3e4ff5a62259082f9b1672904da29c933c5e065'
             '5cb6ea540da8cfb4343b97792886952ee244fa272b3c00e6e5c7dcc1aa10eb1c')
-sha256sums_x86_64=('6c0ea744d6fe6a281bd1133a3b0d093271b4a757d3e9765c81acf2455acc47ac')
-sha256sums_armv6h=('70432f0de6a2d7ea2c9ff3c47f57e3d9e5463b024117bb747344915e278140f7')
-sha256sums_armv7h=('70432f0de6a2d7ea2c9ff3c47f57e3d9e5463b024117bb747344915e278140f7')
-sha256sums_aarch64=('da4079a5fd2b05511756f0401959171d60b38062afb4c4f52d2bd1b20a5bc6a8')
+sha256sums_x86_64=('acf888defdb13c8865727b5e70df6bcd8317bb28ea7404b52019369141387a3b')
+sha256sums_armv6h=('49b45eb0f9570c62d23deb739c7668745672532555f4ee8f0a877863d25bd648')
+sha256sums_armv7h=('49b45eb0f9570c62d23deb739c7668745672532555f4ee8f0a877863d25bd648')
+sha256sums_aarch64=('39a2b2c08cc281c40702f7609b69e17ed4277983a47c0bd5c20ab26832bc35c7')
 noextract=()
 
 package() {
-  tar -xJf data.tar.xz -C "${pkgdir}"
+  cd "$srcdir"
+  bsdtar -xf ${srcdir}/data.tar.gz -C ${pkgdir}/
 
   chown -R root:root "${pkgdir}"
   cp -rfv "${pkgdir}/lib" "${pkgdir}/usr"
@@ -57,6 +58,7 @@ package() {
   # Run services with user deconz
   sed -e "s/User=1000/User=deconz/" -i ${pkgdir}/usr/lib/systemd/system/deconz.service ${pkgdir}/usr/lib/systemd/system/deconz-gui.service
   install -vDm 644 "69-conbee.rules" "${pkgdir}/etc/udev/rules.d/69-conbee.rules"
+  install -vDm 644 "99-conbee3.rules" "${pkgdir}/etc/udev/rules.d/99-conbee3.rules"
   install -vDm 644 "${pkgname}.sysusers" "${pkgdir}/usr/lib/sysusers.d/${pkgname}.conf"
   install -vDm 644 "${pkgname}.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/${pkgname}.conf"
 }

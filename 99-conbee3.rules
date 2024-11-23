@@ -1,0 +1,1 @@
+ACTION=="add", SUBSYSTEMS=="usb", GROUP="deconz", MODE="0660", ATTRS{product}=="ConBee III", RUN+="/bin/stty -F /dev/%k 115200"
