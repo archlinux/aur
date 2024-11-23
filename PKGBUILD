@@ -3,7 +3,7 @@
 
 pkgname=remarkable
 pkgver=1.95
-pkgrel=1
+pkgrel=2
 pkgdesc="A free fully featured markdown editor for Linux."
 arch=('i686' 'x86_64')
 url="http://remarkableapp.github.io"
@@ -15,7 +15,7 @@ depends=('python'
          'python-beautifulsoup4'
          'python-gtkspellcheck'
          'webkitgtk-6.0'
-         'wkhtmltopdf-static')
+         'wkhtmltopdf')
 options=('!emptydirs' '!strip')
 install="${pkgname}.install"
 source=(

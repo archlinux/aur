@@ -1,7 +1,7 @@
 pkgbase = remarkable
 	pkgdesc = A free fully featured markdown editor for Linux.
 	pkgver = 1.95
-	pkgrel = 1
+	pkgrel = 2
 	url = http://remarkableapp.github.io
 	install = remarkable.install
 	arch = i686
@@ -14,7 +14,7 @@ pkgbase = remarkable
 	depends = python-beautifulsoup4
 	depends = python-gtkspellcheck
 	depends = webkitgtk-6.0
-	depends = wkhtmltopdf-static
+	depends = wkhtmltopdf
 	options = !emptydirs
 	options = !strip
 	source = remarkable-1.95.tar.gz::https://github.com/jamiemcg/Remarkable/archive/refs/tags/v1.95.tar.gz
