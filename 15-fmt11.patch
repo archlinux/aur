@@ -1,0 +1,60 @@
+diff --git a/include/luxcore/luxcore.h b/include/luxcore/luxcore.h
+index 7fb612b1d..eb2025248 100644
+--- a/include/luxcore/luxcore.h
++++ b/include/luxcore/luxcore.h
+@@ -42,6 +42,8 @@
+ #include <string>
+ #include <array>
+ 
++#include </usr/include/fmt/format.h>
++
+ #include <luxcore/cfg.h>
+ #include <luxrays/utils/exportdefs.h>
+ #include <luxrays/utils/properties.h>
+@@ -63,6 +65,11 @@ namespace luxcore {
+ 
+ #define LC_MESH_MAX_DATA_COUNT 8
+ 
++template<typename T>
++requires std::is_enum_v<T>
++auto format_as(T t) { return fmt::underlying(t); } 
++
++
+ // This is mostly for compatibility with the past
+ #define LC_LOG(a) { std::stringstream _LUXCORE_LOG_LOCAL_SS; _LUXCORE_LOG_LOCAL_SS << a; luxcore::PrintLogMsg(_LUXCORE_LOG_LOCAL_SS.str()); }
+ 
+diff --git a/src/luxcore/luxcore.cpp b/src/luxcore/luxcore.cpp
+index ab754faac..7c843c6fe 100644
+--- a/src/luxcore/luxcore.cpp
++++ b/src/luxcore/luxcore.cpp
+@@ -373,7 +373,7 @@ Camera::~Camera() {
+ //------------------------------------------------------------------------------
+ 
+ Scene *Scene::Create(const luxrays::Properties *resizePolicyProps) {
+-	API_BEGIN("{}, {}", (void *)resizePolicyProps);
++	API_BEGIN("{}", (void *)resizePolicyProps);
+ 
+ 	Scene *result = new luxcore::detail::SceneImpl(resizePolicyProps);
+ 
+diff --git a/src/luxcore/luxcoreimpl.cpp b/src/luxcore/luxcoreimpl.cpp
+index b0bf6b900..f1c58d1e3 100644
+--- a/src/luxcore/luxcoreimpl.cpp
++++ b/src/luxcore/luxcoreimpl.cpp
+@@ -1151,7 +1151,7 @@ void SceneImpl::DefineImageMapHalf(const std::string &imgMapName,
+ 		unsigned short *pixels, const float gamma, const unsigned int channels,
+ 		const unsigned int width, const unsigned int height,
+ 		ChannelSelectionType selectionType, WrapType wrapType) {
+-	API_BEGIN("{}, {}, {}, {}, {}, {}, {}, {}, {}", ToArgString(imgMapName), (void *)pixels, gamma, channels,
++	API_BEGIN("{}, {}, {}, {}, {}, {}, {}, {}", ToArgString(imgMapName), (void *)pixels, gamma, channels,
+ 			width, height, ToArgString(selectionType), ToArgString(wrapType));
+ 
+ 	scene->DefineImageMap(imgMapName, (half *)pixels, channels, width, height,
+@@ -1168,7 +1168,7 @@ void SceneImpl::DefineImageMapFloat(const std::string &imgMapName,
+ 		float *pixels, const float gamma, const unsigned int channels,
+ 		const unsigned int width, const unsigned int height,
+ 		ChannelSelectionType selectionType, WrapType wrapType) {
+-	API_BEGIN("{}, {}, {}, {}, {}, {}, {}, {}, {}", ToArgString(imgMapName), (void *)pixels, gamma, channels,
++	API_BEGIN("{}, {}, {}, {}, {}, {}, {}, {}", ToArgString(imgMapName), (void *)pixels, gamma, channels,
+ 			width, height, ToArgString(selectionType), ToArgString(wrapType));
+ 
+ 	scene->DefineImageMap(imgMapName, pixels, channels, width, height,

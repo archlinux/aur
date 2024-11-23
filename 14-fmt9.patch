@@ -21,7 +21,7 @@ index c0da2b5d5..f0067dc1a 100644
  add_definitions(-DSPDLOG_FMT_EXTERNAL=1)
  find_package(spdlog REQUIRED)
  include_directories(${SPDLOG_INCLUDE_DIRS})
-+find_package(fmt 9.0.0...<10.0.0 CONFIG)
++find_package(fmt 9.0.0...<12.0.0 CONFIG)
 +get_target_property(FMT_INCLUDE_DIRECTORIES fmt::fmt INTERFACE_INCLUDE_DIRECTORIES)
 +include_directories(${FMT_INCLUDE_DIRECTORIES})
  
@@ -36,7 +36,7 @@ index bd9a73651..f302c4734 100644
  
  add_executable(luxcoreconsole ${LUXCORECONSOLE_SRCS})
 -find_package(fmt REQUIRED)
-+find_package(fmt 9.0.0...<10.0.0 REQUIRED)
++find_package(fmt 9.0.0...<12.0.0 REQUIRED)
  
  if(APPLE)
  TARGET_LINK_LIBRARIES(luxcoreconsole expat "-framework Carbon" "-framework IOKit" ${LUXCORE_LIBRARY} ${Boost_LIBRARIES})
@@ -49,7 +49,7 @@ index e2f5d114a..879929554 100644
  add_executable(luxcoredemo ${LUXCORELIBDEMO_SRCS})
  add_definitions(${VISIBILITY_FLAGS})
 -find_package(fmt REQUIRED)
-+find_package(fmt 9.0.0...<10.0.0 REQUIRED)
++find_package(fmt 9.0.0...<12.0.0 REQUIRED)
  
  TARGET_LINK_LIBRARIES(luxcoredemo ${LUXCORE_LIBRARY} ${Boost_LIBRARIES} ${PYTHON_LIBRARIES} ${OPENCL_LIBRARIES} ${CUDA_ALL_LIBRARIES} ${OpenVDB_LIBRARIES} fmt::fmt)
 diff --git a/samples/luxcorescenedemo/CMakeLists.txt b/samples/luxcorescenedemo/CMakeLists.txt
@@ -61,7 +61,7 @@ index 5a010f325..389784e18 100644
  add_executable(luxcorescenedemo ${LUXCORESCENEDEMO_SRCS})
  add_definitions(${VISIBILITY_FLAGS})
 -find_package(fmt REQUIRED)
-+find_package(fmt 9.0.0...<10.0.0 REQUIRED)
++find_package(fmt 9.0.0...<12.0.0 REQUIRED)
  
  TARGET_LINK_LIBRARIES(luxcorescenedemo ${LUXCORE_LIBRARY} ${Boost_LIBRARIES} ${PYTHON_LIBRARIES} ${OpenVDB_LIBRARIES} fmt::fmt)
 diff --git a/samples/luxcoreui/CMakeLists.txt b/samples/luxcoreui/CMakeLists.txt
@@ -73,7 +73,7 @@ index c06be0fb6..b6ff48570 100644
  
  add_executable(luxcoreui ${LUXCOREUI_SRCS})
 -find_package(fmt REQUIRED)
-+find_package(fmt 9.0.0...<10.0.0 REQUIRED)
++find_package(fmt 9.0.0...<12.0.0 REQUIRED)
  
  if(APPLE)
  
@@ -99,7 +99,7 @@ index 276851016..39de31bbf 100644
  
  add_executable(luxcoreimplserializationdemo ${LUXCOREIMPL_SERIALIZATIONDEMO_SRCS})
 -find_package(fmt)
-+find_package(fmt 9.0.0...<10.0.0)
++find_package(fmt 9.0.0...<12.0.0)
  
  TARGET_LINK_LIBRARIES(luxcoreimplserializationdemo luxcore slg-core slg-film slg-kernels luxrays bcd opensubdiv opencolorio ${OpenVDB_LIBRARIES} ${BLOSC_LIBRARY} ${EMBREE_LIBRARY} ${OIDN_LIBRARY} ${TBB_LIBRARY} ${TIFF_LIBRARIES} ${TIFF_LIBRARIES} ${OPENEXR_LIBRARIES} ${PNG_LIBRARIES} ${JPEG_LIBRARIES} ${PYTHON_LIBRARIES} fmt::fmt)
 -- 
