@@ -2,11 +2,11 @@
 pkgname=snowflake-pt-client
 _gitname=snowflake
 pkgver=2.10.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Snowflake is a pluggable transport that proxies traffic through temporary proxies using WebRTC"
 arch=('x86_64')
-url="https://trac.torproject.org/projects/tor/wiki/doc/Snowflake"
-license=('BSD')
+url="https://gitlab.torproject.org/tpo/anti-censorship/pluggable-transports/snowflake/-/wikis/home"
+license=('BSD-3-Clause')
 depends=('libx11')
 makedepends=('git' 'go')
 source=("git+https://gitlab.torproject.org/tpo/anti-censorship/pluggable-transports/snowflake.git#tag=v${pkgver}")
