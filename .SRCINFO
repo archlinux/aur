@@ -1,10 +1,10 @@
 pkgbase = snowflake-pt-server
 	pkgdesc = Snowflake is a pluggable transport that proxies traffic through temporary proxies using WebRTC
 	pkgver = 2.10.1
-	pkgrel = 1
-	url = https://trac.torproject.org/projects/tor/wiki/doc/Snowflake
+	pkgrel = 2
+	url = https://gitlab.torproject.org/tpo/anti-censorship/pluggable-transports/snowflake/-/wikis/home
 	arch = x86_64
-	license = BSD
+	license = BSD-3-Clause
 	makedepends = git
 	makedepends = go
 	depends = libx11
