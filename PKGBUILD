@@ -1,7 +1,7 @@
 # Maintainer: Sean Ho <holishing@ccns.ncku.edu.tw>
 _pkgname=mplstereonet
 pkgname=python-${_pkgname,,}
-pkgver=0.6
+pkgver=0.6.3
 pkgrel=1
 pkgdesc="Pytest plugin to help with testing figures output from Matplotlib"
 arch=('x86_64')
