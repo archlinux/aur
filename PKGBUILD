@@ -9,7 +9,7 @@ arch=('x86_64' 'aarch64' 'armv7h')
 url="https://github.com/clash-verge-rev/clash-verge-rev"
 license=('GPL3')
 depends=('webkit2gtk-4.1' 'gtk3' 'libayatana-appindicator' 'qt5-tools')
-conflicts=("$_pkgname" "$_pkgname-alpha" "$_pkgname-alpha-bin" "$_pkgname-git" "clash-verge" "clash-verge-bin")
+conflicts=("$_pkgname" "$_pkgname-bin" "$_pkgname-bin-concise" "$_pkgname-alpha-bin" "clash-verge" "clash-verge-bin")
 install=.install
 
 source_x86_64=("${_pkgname}-${pkgver}-x86_64.deb::${url}/releases/download/v${pkgver}/Clash.Verge_${pkgver}_amd64.deb")
