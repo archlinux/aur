@@ -1,0 +1,14 @@
+pkgbase = ansi2knr
+	pkgdesc = convert ANSI C to Kernighan and Ritchie C
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://www.unix.com/man-page/redhat/1/ansi2knr
+	arch = i686
+	arch = x86_64
+	arch = arm
+	arch = aarch64
+	license = GPL3
+	source = https://sources.debian.org/data/main/g/gmp/2%3A4.3.2%2Bdfsg-1/ansi2knr.c
+	sha256sums = cd23796f08e50765510d849e6d2eaf7298c657bb052fa905796c687c80aec18d
+
+pkgname = ansi2knr
