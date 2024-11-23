@@ -1,0 +1,15 @@
+pkgbase = picgo-core
+	pkgdesc = A tool to upload images by CLI
+	pkgver = 1.5.7
+	pkgrel = 1
+	url = https://picgo.github.io/PicGo-Core-Doc/
+	arch = any
+	license = MIT
+	makedepends = npm
+	depends = nodejs
+	provides = picgo
+	conflicts = picgo
+	source = https://registry.npmjs.org/picgo/-/picgo-1.5.7.tgz
+	sha256sums = 2b17454204daaaac71e8439132475572e79462565dd0f26cc9279f2ec778c79c
+
+pkgname = picgo-core
