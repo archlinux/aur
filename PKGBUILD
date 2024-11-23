@@ -2,7 +2,7 @@
 # Contributor: Xavier Corredor <xavier.corredor.llano (a) gmail.com>
 pkgname=python-django-auth-ldap
 _pkgname=django-auth-ldap
-pkgver=5.0.0
+pkgver=5.1.0
 pkgrel=1
 pkgdesc="This is a Django authentication backend that authenticates against an LDAP service."
 arch=(any)
@@ -11,7 +11,7 @@ license=('LGPL')
 depends=('python' 'python-django' 'python-ldap')
 makedepends=('python-build' 'python-installer' 'python-setuptools-scm' 'python-wheel')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/django-auth-ldap/django-auth-ldap/archive/$pkgver.tar.gz")
-md5sums=('54ad53a80f8b81d9bbdfd0fa6bf43477')
+md5sums=('7342b203ffc10ea4f228d5eabc59dacc')
 
 package() {
   cd "$_pkgname-$pkgver"
