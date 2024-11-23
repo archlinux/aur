@@ -1,4 +1,3 @@
-[hyperrogue]
+[hyperrogue-git]
 source="cmd"
-cmd="~/nvchecker/github_version.sh zenorogue hyperrogue"
-prefix="v"
+cmd="~/nvchecker/github_version.py zenorogue/hyperrogue -strip v --releases"
