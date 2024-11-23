@@ -1,4 +1,4 @@
-pkgbase = ontake-nezumi-p-git-git
+pkgbase = ontake-nezumi-p-git
 	pkgdesc = A simple TUI for viewing Parisian public transport departure times
 	pkgver = r3.g3b7639d
 	pkgrel = 1
@@ -10,9 +10,9 @@ pkgbase = ontake-nezumi-p-git-git
 	makedepends = cargo
 	makedepends = git
 	makedepends = rust
-	provides = ontake-nezumi-p-git
-	conflicts = ontake-nezumi-p-git
+	provides = ontake-nezumi-p
+	conflicts = ontake-nezumi-p
 	source = git+https://github.com/make-42/nezumi-p
 	md5sums = SKIP
 
-pkgname = ontake-nezumi-p-git-git
+pkgname = ontake-nezumi-p-git
