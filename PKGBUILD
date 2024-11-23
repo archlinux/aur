@@ -13,7 +13,9 @@ _origin="https://cli.moonbitlang.com"
 source=("https://cli.moonbitlang.cn/binaries/latest/moonbit-linux-x86_64.tar.gz"
         "https://cli.moonbitlang.cn/cores/core-latest.tar.gz"
         "moon.sh")
-sha512sums=("SKIP")
+sha512sums=("SKIP"
+            "SKIP"
+            "SKIP")
 
 pkgver() {
   cd "${srcdir}"
