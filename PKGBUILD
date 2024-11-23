@@ -1,9 +1,20 @@
 #!/hint/bash
 # Maintainer : bartus <arch-user-repoᘓbartus.33mail.com>
 
-# Configuration
-_fragment=${FRAGMENT:-#branch=master}
+# ToDo:
+# - use system wide libs, add control vars to allow build with bundeled deps
+
+# Configuration:
+# Use: makepkg VAR1=0 VAR2=1 to enable(1) disable(0) a feature
+# Use: {yay,paru} --mflags=VAR1=0,VAR2=1
+# Use: aurutils --margs=VAR1=0,VAR2=1
+# Use: VAR1=0 VAR2=1 pamac
+
+# Use FRAGMENT=#{commit,tag,brach}=xxx for bisect build
+_fragment="${FRAGMENT:-#branch=master}"
+
 # shellcheck disable=SC2015
+((DISABLE_CCTAG))   &&   _use_cctag=OFF ||   _use_cctag=ON  # Disable CCTag (require: cuda)
 ((DISABLE_OPENCL)) && {
   CMAKE_FLAGS+=("-DLUXRAYS_DISABLE_OPENCL=ON")
 } || {
