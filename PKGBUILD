@@ -1,23 +1,23 @@
 # Maintainer: MojArch
 
 pkgname=opera-developer
-pkgver=116.0.5341.0
+pkgver=116.0.5356.0
 pkgrel=1
 pkgdesc='A fast and secure web browser and Internet suite - developer stream'
 arch=('x86_64')
 url='https://www.opera.com/computer'
 license=('custom:opera')
 provides=('opera')
-depends=('gtk3' 'alsa-lib' 'libnotify' 'curl' 'nss' 'libxss' 'ttf-font' 'desktop-file-utils' 'shared-mime-info' 'hicolor-icon-theme' 'opera-developer-ffmpeg-codecs-bin')
+depends=('gtk3' 'alsa-lib' 'libnotify' 'curl' 'nss' 'libxss' 'ttf-font' 'desktop-file-utils' 'shared-mime-info' 'hicolor-icon-theme')
 optdepends=(
-    'upower: opera battery save'
+    'upower: opera battery save' 'opera-developer-ffmpeg-codecs-bin'
 )
 source=(
     "https://get.geo.opera.com/pub/${pkgname}/${pkgver}/linux/${pkgname}_${pkgver}_amd64.deb"
     "opera"
     "default"
 )
-sha256sums=('17fac31759cc05fb82ce617c7fb2129029ca421a04fa79a3215ad15059fb33be'
+sha256sums=('cf424055d8dfa8fa5244c5c4e581979ab186d59cb8fdb3f311d2ba05ad95528f'
             '508512464e24126fddfb2c41a1e2e86624bdb0c0748084b6a922573b6cf6b9c5'
             '99fc0d2822edd14e234d451995db47148125e4580221a292598959421d131231')
 
