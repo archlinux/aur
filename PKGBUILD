@@ -12,8 +12,8 @@ url="http://fmv.jku.at/picosat/"
 license=('MIT')
 source=("http://fmv.jku.at/picosat/${pkgname}-${pkgver}.tar.gz"
         configure.patch)
-md5sums=('d37c236d5c60b03d888d137c2fa4285f'
-         'a54520bfddd412f3f4774911849ea6a8')
+sha256sums=('15169b4f28ba8f628f353f6f75a100845cdef4a2244f101a02b6e5a26e46a754'
+            '33962674158610349f9b2539db51b31e65f9f012809a52d3c2cc97665a1e8dd0')
 
 prepare() {
   cd "$pkgname-$pkgver"
