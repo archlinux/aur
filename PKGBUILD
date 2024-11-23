@@ -4,7 +4,7 @@
 
 pkgname=xdg-desktop-portal
 pkgver=1.18.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Desktop integration portals for sandboxed apps"
 url="https://flatpak.github.io/xdg-desktop-portal/"
 arch=(x86_64)
@@ -37,8 +37,10 @@ makedepends=(
   python-pytest
   xmlto
 )
-optdepends=('geoclue: Geolocation portal'
-            'xdg-desktop-portal-impl: Portal backends')
+optdepends=(
+  'geoclue: Geolocation portal'
+  'xdg-desktop-portal-impl: Portal backends'
+)
 source=("git+https://github.com/flatpak/xdg-desktop-portal#tag=$pkgver")
 b2sums=('724330b7b5d71a606ce0204fd4b5403ceedc31638c81e2143ce917e8c2d8ff42217a675d3a7c310fe9a992fa3245dba511c35501a656ff4acbd67df7094174f2')
 
