@@ -3,7 +3,7 @@
 pkgname=tauon-music-box-git
 _pkgname=tauonmb
 _gitname=Tauon
-pkgver=7.8.3.r76.ce498256
+pkgver=7.8.3.r80.33d4e5ad
 pkgrel=1
 _kissfftver=131.1.0
 _miniaudiocommit=4a5b74bef029b3592c54b6048650ee5f972c1a48
@@ -33,6 +33,7 @@ depends=(
 	'libnotify'
 	'ffmpeg'
 	'flac'
+	'gtk4'
 	'noto-fonts-extra'
 	'noto-fonts'
 	'sdl2_image'
@@ -41,7 +42,6 @@ depends=(
 	'opusfile'
 	'wavpack'
 	'libvorbis'
-	'libappindicator-gtk3'
 	'libopenmpt'
 	'libsamplerate'
 	'opencc'
@@ -109,7 +109,7 @@ package() {
 
 #	cp -r assets templates theme t_modules "${pkgdir}/opt/${pkgname%-git}"
 
-	for t in cs de es fr_FR fi hu id ja_JP nb_NO pl pt_BR ru sv tr zh_CN; do # pt pt_PT # TODO currently broken https://github.com/Taiko2k/Tauon/pull/1224
+	for t in cs de es fr_FR fi hu id ja_JP nb_NO pl pt pt_BR pt_PT ru sv tr zh_CN; do
 		install -Dm644 locale/${t}/LC_MESSAGES/*.mo -t "${pkgdir}/usr/share/locale/${t}/LC_MESSAGES"
 	done
 
