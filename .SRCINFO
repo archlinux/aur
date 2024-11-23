@@ -1,5 +1,5 @@
 pkgbase = bestfetch-git
-	pkgdesc = the best system fetch ever, powered by nim
+	pkgdesc = a customizable, beautiful, and blazing fast system fetch, powered by nim
 	pkgver = r65.ac98fb2
 	pkgrel = 1
 	url = https://gitlab.com/Maxb0tbeep/bestfetch
