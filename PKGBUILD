@@ -7,7 +7,7 @@ _TESTS=0 #Set to 1 to enable tests.  Warning - they are slow and won't work well
 
 pkgname='testssl.sh-git'
 _pkgname='testssl.sh'
-pkgver=3.2rc3+r4638+g245ad2ae4
+pkgver=3.2rc3+r4640+g65c463fcb
 pkgrel=1
 pkgdesc="Testing TLS/SSL encryption (git version)"
 arch=('any')
