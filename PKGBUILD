@@ -2,8 +2,8 @@
 # https://github.com/adamperkowski/PKGBUILDs
 _pkgname='hyprwall'
 pkgname="$_pkgname-bin"
-pkgver=0.1.8
-pkgrel=2
+pkgver=0.1.9
+pkgrel=1
 optdepends=('hyprland')
 pkgdesc='GUI for setting wallpapers on Wayland (multiple backends). Written in blazingly fast Rust!'
 arch=('x86_64')
@@ -16,7 +16,7 @@ source=("$_pkgname-$pkgver::$url/releases/download/v$pkgver/$_pkgname"
     "$_pkgname-$pkgver.desktop::$url_raw/refs/tags/v$pkgver/$_pkgname.desktop"
     "LICENSE-$pkgver::$url_raw/refs/tags/v$pkgver/LICENSE"
     "README-$pkgver.md::$url_raw/refs/tags/v$pkgver/readme.md")
-sha256sums=('2b55eea2ac096dddd9c9d17871b517842c03be94f87d8ac15ee685008d5da5ab' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
+sha256sums=('8592e21a453643c9e9e22a47341595fa6c02f803aa153d58def503284fcb8f66' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
 depends=('glibc' 'gcc-libs' 'gtk4')
 optdepends=('hyprpaper' 'swaybg' 'swww' 'wallutils' 'feh')
 conflicts=("$_pkgname")
