@@ -1,8 +1,8 @@
-# Maintainer: Jason Papakostas <vithos@gmail.com>
+# Maintainer: Rubin Simons <me@rubin55.org>
 
 pkgname=passmark-performancetest-bin
 pkgver=v11.0.1002
-pkgrel=2
+pkgrel=3
 pkgdesc="PassMark PerformanceTest Linux - Fast, easy to use, Linux system speed testing and benchmarking."
 arch=('x86_64' 'aarch64' 'armv7h')
 url="https://www.passmark.com/products/pt_linux/"

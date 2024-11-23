@@ -1,7 +1,7 @@
 pkgbase = passmark-performancetest-bin
 	pkgdesc = PassMark PerformanceTest Linux - Fast, easy to use, Linux system speed testing and benchmarking.
 	pkgver = v11.0.1002
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.passmark.com/products/pt_linux/
 	changelog = CHANGELOG
 	arch = x86_64
