@@ -103,17 +103,18 @@ function package_wechat() {
 	conflicts=()
 	replaces+=(wechat-universal-bwrap wechat-beta-bwrap wechat-uos-bwrap)
 	tar -xf data.tar.xz ./opt/apps/com.tencent.wechat
-	mkdir -p "${pkgdir}"/opt
+	mkdir -p "${pkgdir}/opt"
 	cp -r opt/apps/com.tencent.wechat \
-		"${pkgdir}"/opt/wechat
-	install -Dm644 portable-config $pkgdir/usr/lib/wechat/portable-config
+		"${pkgdir}/opt/wechat"
+	install -Dm644 portable-config \
+		"${pkgdir}/usr/lib/wechat/portable-config"
 	install -Dm644 wechat.desktop \
 		"${pkgdir}/usr/share/applications/wechat.desktop"
 	install -Dm755 wechat.sh \
 		"${pkgdir}/usr/bin/wechat.sh"
 	install -Dm644 wechat.svg \
 		"${pkgdir}/usr/share/icons/hicolor/scalable/apps/wechat.svg"
-	install -d "${pkgdir}/usr/share/licenses/${pkgname}/"
+	install -d "${pkgdir}/usr/share/licenses/${pkgname}"
 	echo "https://www.wechat.com/us/service_terms.html" \
 		>"${pkgdir}/usr/share/licenses/${pkgname}/ToS.txt"
 }
