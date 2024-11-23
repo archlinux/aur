@@ -5,7 +5,7 @@
 pkgbase="libmp3splt"
 pkgname=("${pkgbase}" "${pkgbase}-docs")
 pkgver=0.9.2
-pkgrel=10
+pkgrel=11
 pkgdesc="Split mp3, ogg, and flac files without decoding - Library"
 arch=('x86_64' 'i686')
 url="https://mp3splt.sourceforge.net"
@@ -22,9 +22,9 @@ source=("${_pkgsrc}.tar.gz::https://downloads.sourceforge.net/sourceforge/mp3spl
         "${pkgbase}_fix_flac_slience_trimming.patch::${_url}/pull/369.patch?full_index=1")
 sha256sums=('30eed64fce58cb379b7cc6a0d8e545579cb99d0f0f31eb00b9acc8aaa1b035dc'
             'f6f730a6fc1231571368a3b984b24273bddbe1d9cc902111909ddd1221cca517'
-            '0ca5c1fc3ec11e673f5ee2b3efa94e1954d45ef66b15010c78ad512deb19b0a3'
-            '097e0e70bccee9ea2f03f265f3d086b46ce4b05df4c5ec1ad2a88b336184ff0d'
-            '0716a1da460ed7e0ab2779ce33495bb7c6cd4690e9113de7976bbee6a22a19c0')
+            'bc3559e67f359da07c38cef57655950d7ebad5861671b98c92724f0fb3ff2580'
+            'fe7e6e021ef80dce21782e35c8b6febb10432d4b9eee8757d3c8498ff94f6fad'
+            'c9f2529f143c6b5cf7faeffe15a34b9690873925004105b6e601b3f18a36fcc3')
 
 prepare() {
   cd "${srcdir}/${_pkgsrc}"
