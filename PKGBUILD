@@ -4,7 +4,7 @@
 pkgname=memsource-editor
 _pkg=Phrase
 pkgver=24.33.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A CAT translation tool, requires Phrase subscription"
 arch=('x86_64')
 license=('custom')
@@ -27,13 +27,15 @@ source=("https://download.memsource.com/production/updates/memsource-editor/linu
         "memsource-editor.desktop"
         "memsource-editor.xml"
         "memsource"
-        "license.desktop")
+        "license.desktop"
+        "memsource-editor.svg")
 
 sha256sums=('a2146e413345d7e23b6bbc17676d12f369a5736da713caf394689a9647ee3d34'
             'bc4baa1a91cfa2778972d760e2708fed1ab736838c3b118669f47a5360c7f65c'
             '8a40f0172dc948dfadec126b5ab9a4f983216034aa8fbf19a41b9466e6253866'
             '4802b77ffefd2cdd7526fec28a690f8dc560fef74501806b3485648dcac830fe'
-            '3c6d72cdb51dab05682d0c84153171de68ef14cf8b593dfd44123a9365dd1f1e')
+            '3c6d72cdb51dab05682d0c84153171de68ef14cf8b593dfd44123a9365dd1f1e'
+            'afcb72e5cd89abfa7723c223ad1c97aae3f6ecfbfc50cf16331822410acacd7b')
 
 build() {
   install -d ${srcdir}/build
@@ -54,10 +56,12 @@ package() {
   install -d ${pkgdir}/opt/memsource-editor
   install -d ${pkgdir}/usr/{bin,share/{mime/packages,applications}}
   install -d ${pkgdir}/usr/share/licenses/memsource-editor
+  install -d ${pkgdir}/usr/share/icons/hicolor/scalable/apps
   install -Dm 755 ${srcdir}/memsource ${pkgdir}/usr/bin/
   install -Dm 644 ${srcdir}/memsource-editor.desktop ${pkgdir}/usr/share/applications/
   install -Dm 644 ${srcdir}/memsource-editor.xml ${pkgdir}/usr/share/mime/packages/
   install -Dm 755 ${srcdir}/license.desktop ${pkgdir}/usr/share/licenses/memsource-editor/
+  install -Dm 644 ${srcdir}/memsource-editor.svg ${pkgdir}/usr/share/icons/hicolor/scalable/apps/
 
   rm -f "${srcdir}/build/memsource-editor/install.log" \
     "${srcdir}/build/memsource-editor/Uninstall Memsource Editor.desktop" \
@@ -74,11 +78,6 @@ package() {
   chmod +x ${pkgdir}/opt/memsource-editor/run.sh
   chmod +x ${pkgdir}/opt/memsource-editor/libexec/QtWebEngineProcess
 
-  for sz in 16 24 32 36 48 64 96 128 192 256; do
-    install -d ${pkgdir}/usr/share/icons/hicolor/${sz}x${sz}/apps
-    magick ${srcdir}/build/memsource-editor/app.png -resize ${sz}x${sz} \
-      ${pkgdir}/usr/share/icons/hicolor/${sz}x${sz}/apps/memsource-editor.png
-  done
   install -d ${pkgdir}/usr/share/icons/hicolor/scalable/mimetypes
   install ${srcdir}/build/memsource-editor/application-x-mxliff.svg \
     ${pkgdir}/usr/share/icons/hicolor/scalable/mimetypes
