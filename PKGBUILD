@@ -2,12 +2,13 @@
 
 pkgname=serial
 pkgver=1.2.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Cross-platform, Serial Port library written in C++"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="http://wjwwood.io/serial/"
 license=('MIT')
 makedepends=('cmake' 'doxygen')
+options=('!strip')
 source=("https://github.com/wjwwood/${pkgname}/archive/${pkgver}.tar.gz"
         "cmake.patch"
         "serialConfig.cmake"
@@ -22,9 +23,9 @@ md5sums=('b6d9ebdf821654715656577652b61b64'
 prepare() {
 	cd "$srcdir/$pkgname-$pkgver"
 	patch -p1 -i ../cmake.patch
-    rm -rf cmake && mkdir cmake
-    cp ../serialConfig.cmake cmake/
-    cp ../serialConfigVersion.cmake cmake/
+	rm -rf cmake && mkdir cmake
+	cp ../serialConfig.cmake cmake/
+	cp ../serialConfigVersion.cmake cmake/
 }
 
 build() {
