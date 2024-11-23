@@ -2,7 +2,7 @@
 # Contributor: Alexey Trifonov <otaku [at] rambler dot ru>
 # Contributor: Tesx <tesfabpel@gmail.com>
 pkgname=goxel-voxel-editor-git
-pkgver=0.15.1+r2578+gb86fa3670
+pkgver=0.15.1+r2582+g92e13f416
 pkgrel=2
 pkgdesc="Open Source 3D voxel editor for Mac, Windows and Linux. Git version."
 arch=('i686' 'x86_64')
@@ -27,7 +27,7 @@ pkgver(){
   _version=$(git tag --sort=-v:refname --list | head -n1 | cut -c2- )
   _commits=$(git rev-list --count HEAD)
   _short_commit_hash=$(git rev-parse --short=9 HEAD)
-  echo "${_version}+r${_commits}+${_short_commit_hash}"
+  echo "${_version}+r${_commits}+g${_short_commit_hash}"
 }
 
 build() {
