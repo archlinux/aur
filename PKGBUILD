@@ -6,24 +6,21 @@ pkgname=netkit-telnet-ssl
 _debver=0.17.41+really0.17
 _debrel=5
 epoch=1
-pkgver=${_debver//+/.}
-pkgrel=2
+pkgver=${_debver//+/.}.r${_debrel}
+pkgrel=1
 pkgdesc="Telnet client and server with TLS support (Debian Netkit version)"
 arch=('i686' 'x86_64')
 depends=('glibc' 'openssl' 'ncurses')
-makedepends=('cmake')
+makedepends=('cmake' 'git')
 license=('BSD')
 url="http://www.hcs.harvard.edu/~dholland/computers/netkit.html"
-source=(https://deb.debian.org/debian/pool/main/n/${pkgname}/${pkgname}_${_debver}.orig.tar.gz
-        https://deb.debian.org/debian/pool/main/n/${pkgname}/${pkgname}_${_debver}-${_debrel}.debian.tar.xz
-        #"git+https://salsa.debian.org/debian/$pkgname.git#tag=debian/${_debver}"
+source=(git+https://salsa.debian.org/debian/$pkgname.git#tag=debian/${_debver}-${_debrel}
         netkit-telnet-ssl.arch.patch
         netkit-telnet-ssl.sysusers
         netkit-telnet-ssl.tmpfiles
         netkit-telnetd{,-ssl}.socket
         netkit-telnetd{,-ssl}@.service)
-sha256sums=('9c80d5c7838361a328fb6b60016d503def9ce53ad3c589f3b08ff71a2bb88e00'
-            '46ac8da9fd0f0b6ae7ed15a1de91f3cc76346fa1170c7fc2115f837eb73754b7'
+sha256sums=('26c545a1575971627f1ec79bd64855b3464c62b77870af0e977320c86173e506'
             'f0db9be559e90d7711fb73109b20497325e03917a8e2f85780f95a17c28bdc9c'
             'be6cc69383e1326a9aa49d36bfda856d049f16512655ea83b991910800d540ba'
             '202fbfc51e6f6b92246853342a7ef47a731d64d012c8a8a026f9e9b154b9ade5'
@@ -33,11 +30,11 @@ sha256sums=('9c80d5c7838361a328fb6b60016d503def9ce53ad3c589f3b08ff71a2bb88e00'
             'b4220954373f5431b127509b4344dad32d5c692871c536106507fa8b052ef40a')
 
 prepare() {
-  cd netkit-telnet-0.17
+  cd $pkgname
 
-  for patch in $(grep '^[^#]' ../debian/patches/series); do
+  for patch in $(grep '^[^#]' debian/patches/series); do
     echo "=> Applying $patch"
-    patch -Np1 < ../debian/patches/"$patch"
+    patch -Np1 < debian/patches/"$patch"
   done
 
   echo "=> Applying additional patches"
@@ -45,14 +42,14 @@ prepare() {
 }
 
 build() {
-  cd netkit-telnet-0.17
+  cd $pkgname
 
   cmake . -DCMAKE_INSTALL_PREFIX=/usr
   cmake --build .
 }
 
 package() { 
-  cd netkit-telnet-0.17
+  cd $pkgname
 
   DESTDIR="$pkgdir" cmake --install .
 
