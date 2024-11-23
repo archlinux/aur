@@ -16,7 +16,7 @@ _zig_deps=("ziggy-ae30921d8c98970942d3711553aa66ff907482fe.tar.gz::https://githu
 _pkgsrc="${pkgname}-${pkgver}"
 source=("${_pkgsrc}.tar.gz::${_url}/archive/refs/tags/v${pkgver}.tar.gz"
         "${_zig_deps[@]}")
-noextract=("${_zig_deps[@]}")
+noextract=("${_zig_deps[@]%%::*}")
 sha256sums=('d1c444301c65910b171541f1e3d1445cc3ff003dfc8218b976982f80bccd9ee0'
             'd00b839371b6ea996ed09e9116b55a7bb0acca361a2670d6736a5293f4f315f9'
             'a8457bc9d3ca509a1db8b46a0d402fecae2b17d4fe0f454f5d51a63cc2aa1a7b'
