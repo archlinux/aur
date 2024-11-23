@@ -18,11 +18,13 @@ pkgbase = carch-git
 	source = https://github.com/harilvfs/carch/releases/download/v3.0.8/carch-gtk
 	source = https://github.com/harilvfs/carch/releases/download/v3.0.8/carch-gtk.py
 	source = https://github.com/harilvfs/carch/releases/download/v3.0.8/carch
+	source = https://github.com/harilvfs/carch/releases/download/v3.0.8/carchcli
 	source = https://raw.githubusercontent.com/harilvfs/carch/refs/heads/main/carch.desktop
 	sha256sums = SKIP
 	sha256sums = 3efbb7d4863e06b609e48a2f26d1c823bfee7bf5388ef3262fa04d668917cd64
 	sha256sums = SKIP
 	sha256sums = 47cef8973be3ff95c96b4a187c99fa29b43d7ac11b04786fcb479e99861d72be
+	sha256sums = 865621815bce71fca88d3c5251149673d20936656b71fe69510fed594384acc8
 	sha256sums = SKIP
 
 pkgname = carch-git
