@@ -23,7 +23,6 @@ build() {
   cd "$pkgname-$pkgver"
 
   ./configure.sh --static --shared
-  ./mkconfig.sh
   make
 }
 
