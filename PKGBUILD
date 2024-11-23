@@ -1,6 +1,6 @@
 # Maintainer: Louis Dalibard <ontake@ontake.dev>
 # Contributor: Louis Dalibard <ontake@ontake.dev>
-_pkgbase="ontake-nezumi-p-git"
+_pkgbase="ontake-nezumi-p"
 pkgname="$_pkgbase-git"
 pkgver=r3.g3b7639d
 pkgrel=1
