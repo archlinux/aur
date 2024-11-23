@@ -1,0 +1,14 @@
+diff --git a/src/gpx-viewer.c b/src/gpx-viewer.c
+index 11ef072..7df6b8a 100644
+--- a/src/gpx-viewer.c
++++ b/src/gpx-viewer.c
+@@ -1806,7 +1806,7 @@ void save_as_gpx_file(GtkMenu *item, GpxViewer *gpx_viewer)
+             /* Create a GFile */
+             GFile *afile = g_file_new_for_uri(filename);
+             /* Add entry to recent manager */
+-            printf(filename);
++            printf("%s", filename);
+             gtk_recent_manager_add_item(GTK_RECENT_MANAGER(priv->recent_man), filename);
+             g_free(filename);
+ 
+ 
