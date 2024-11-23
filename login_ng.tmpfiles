@@ -1,0 +1,5 @@
+d /run/login_ng 0711 login_ng login_ng -
+d /var/cache/lightdm 0711 root login_ng -
+d /var/lib/login_ng 1770 login_ng login_ng -
+d /var/lib/login_ng-data 1770 login_ng login_ng -
+d /var/log/login_ng 0711 root login_ng -

@@ -1,0 +1,13 @@
+[Unit]
+Description=login-ng
+Conflicts=getty@tty1.service
+After=getty@tty1.service systemd-user-sessions.service plymouth-quit.service acpid.service
+
+[Service]
+ExecStart=/bin/login-ng_cli
+Restart=always
+IgnoreSIGPIPE=no
+BusName=org.freedesktop.DisplayManager
+
+[Install]
+Alias=display-manager.service
