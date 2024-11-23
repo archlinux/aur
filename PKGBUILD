@@ -2,12 +2,12 @@
 
 pkgname=fastanime
 pkgver=2.8.3
-pkgrel=1
+pkgrel=2
 pkgdesc="FastAnime, anime site experience from the terminal."
 arch=('x86_64')
 url="https://github.com/Benex254/FastAnime"
 license=('Unlicense')
-makedepends=('python>=3.10' 'git' 'python-installer')
+makedepends=('python>=3.10' 'python-installer')
 depends=('python'
          'python-click'
          'python-fastapi'
@@ -33,7 +33,7 @@ optdepends=('mpv: video player'
             'syncplay: watch with friends'
             'feh: image viewer (for manga mode)')
 provides=('fastanime')
-source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
+source=("${pkgname}-v${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
 
 build() {
     cd "${srcdir}" || exit
