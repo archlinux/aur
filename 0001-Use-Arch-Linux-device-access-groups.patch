@@ -143,31 +143,5 @@ index a602b872e4..8d38febb6a 100644
  # Default group for normal users
 
 
-From 9e2987a7b4d09d7b554141e9ef2c911cb3fda570 Mon Sep 17 00:00:00 2001
-From: Christian Hesse <mail@eworm.de>
-Date: Mon, 27 Dec 2021 23:32:42 +0100
-Subject: [PATCH] generate tmpfiles.d/legacy.conf
-
----
- tmpfiles.d/legacy.conf.in | 3 ---
- tmpfiles.d/meson.build    | 2 +-
- 2 files changed, 1 insertion(+), 4 deletions(-)
-
-diff --git a/tmpfiles.d/legacy.conf.in b/tmpfiles.d/legacy.conf.in
-index 4f2c0d7c43..62e2ae0986 100644
---- a/tmpfiles.d/legacy.conf.in
-+++ b/tmpfiles.d/legacy.conf.in
-@@ -12,9 +12,6 @@
- 
- d /run/lock 0755 root root -
- L /var/lock - - - - ../run/lock
--{% if CREATE_LOG_DIRS %}
--L$ /var/log/README - - - - ../..{{DOC_DIR}}/README.logs
--{% endif %}
- 
- # /run/lock/subsys is used for serializing SysV service execution, and
- # hence without use on SysV-less systems.
-
-
 --
 
