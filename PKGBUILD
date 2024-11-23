@@ -4,7 +4,7 @@
 pkgname=qt5-remoteobjects
 _basever=5.15.16
 pkgver=5.15.16
-pkgrel=2
+pkgrel=3
 _commit=aa61cc683979ea1413222e64a03aae9971392e3d
 arch=(x86_64)
 url='https://www.qt.io'
