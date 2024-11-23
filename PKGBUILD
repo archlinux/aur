@@ -1,10 +1,10 @@
-# Maintainer: Kyle Keen <keenerd@gmail.com>
+# Maintainer: Lorenzo Cappelletti <lorenzo_dot_cappelletti_at_gmail_dot_com>
+# Previous Maintainer: Kyle Keen <keenerd@gmail.com>
 # Contributor: Hong-Yi Dai <reflectionalist_at_gmail_dot_com>
-# Contributor: Lorenzo Cappelletti <lorenzo_dot_cappelletti_at_gmail_dot_com>
 
 pkgname=picosat
 pkgver=965
-pkgrel=3
+pkgrel=4
 pkgdesc="The PicoSAT solver"
 arch=('x86_64')
 options=('!lto')
