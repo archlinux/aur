@@ -1,7 +1,7 @@
 pkgbase = windsurf-bin
 	pkgdesc = Tomorrow's Editor, Today. Built to keep you in flow state with instant, invaluable AI developer assistance.
-	pkgver = 1.0.3
-	pkgrel = 2
+	pkgver = 1.0.4
+	pkgrel = 1
 	url = https://codeium.com/windsurf
 	install = windsurf-bin.install
 	arch = x86_64
@@ -38,7 +38,7 @@ pkgbase = windsurf-bin
 	sha256sums = a3d367dc1b7938172141a94c3107e9ff23cf0d628a2999cda466f41b6e9ac259
 	sha256sums = 1458655cc211cef5b243baeecc082e597af2a61291571c74b3c639f6d2e7dd97
 	sha256sums = bed47ba135c4b45ef1cba3aeac28260d508162d6e85922b120dfd82794cf1b1b
-	source_x86_64 = windsurf_x64_1.0.3.tar.gz::https://windsurf-stable.codeiumdata.com/linux-x64/stable/8700dafefa2ae56df8cf3f66b96d4d03815405fa/Windsurf-linux-x64-1.0.3.tar.gz
-	sha256sums_x86_64 = a5f96522c338a6253c974b136514c267486e2e42b096769203c14c78c8982538
+	source_x86_64 = windsurf_x64_1.0.4.tar.gz::https://windsurf-stable.codeiumdata.com/linux-x64/stable/ee432f33493a26d92a179ba5df483bdc6b8aa047/Windsurf-linux-x64-1.0.4.tar.gz
+	sha256sums_x86_64 = 646c900c32e39274f0d7395da50c513121515ce5a2c5ebd0b269ed90ed858950
 
 pkgname = windsurf-bin

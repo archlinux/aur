@@ -2,12 +2,12 @@
 
 pkgname=windsurf-bin
 _pkgname=windsurf
-pkgver=1.0.3
-pkgrel=2
+pkgver=1.0.4
+pkgrel=1
 pkgdesc="Tomorrow's Editor, Today. Built to keep you in flow state with instant, invaluable AI developer assistance."
 arch=('x86_64')
 url="https://codeium.com/windsurf"
-download_url="https://windsurf-stable.codeiumdata.com/linux-x64/stable/8700dafefa2ae56df8cf3f66b96d4d03815405fa"
+download_url="https://windsurf-stable.codeiumdata.com/linux-x64/stable/ee432f33493a26d92a179ba5df483bdc6b8aa047"
 license=('custom')
 provides=('windsurf')
 conflicts=('windsurf')
@@ -29,7 +29,7 @@ sha256sums=('aabcf260e913a2faa9195f0eb72b62be94f276d5e90672d2f7c8435eb41bff66'
             'a3d367dc1b7938172141a94c3107e9ff23cf0d628a2999cda466f41b6e9ac259'
             '1458655cc211cef5b243baeecc082e597af2a61291571c74b3c639f6d2e7dd97'
             'bed47ba135c4b45ef1cba3aeac28260d508162d6e85922b120dfd82794cf1b1b')
-sha256sums_x86_64=("a5f96522c338a6253c974b136514c267486e2e42b096769203c14c78c8982538")
+sha256sums_x86_64=("646c900c32e39274f0d7395da50c513121515ce5a2c5ebd0b269ed90ed858950")
 
 package() {
   install -d "${pkgdir}/usr/share/licenses/${_pkgname}"
