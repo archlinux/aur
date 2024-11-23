@@ -1,15 +1,29 @@
 pkgbase = hevi-git
 	pkgdesc = A modern hex viewer
-	pkgver = 1.0.0.r7.g24d9585
+	pkgver = 1.1.0.r7.g07847bf
 	pkgrel = 1
 	url = https://arnau478.github.io/hevi
-	arch = any
+	arch = x86_64
+	arch = aarch64
+	arch = i686
 	license = GPL-3.0-or-later
 	makedepends = git
 	makedepends = zig
-	provides = hevi=1.0.0
+	provides = hevi=1.1.0
 	conflicts = hevi
+	noextract = ziggy-ae30921d8c98970942d3711553aa66ff907482fe.tar.gz
+	noextract = known-folders-0ad514dcfb7525e32ae349b9acc0a53976f3a9fa.tar.gz
+	noextract = zig-lsp-kit-1c07e3e3305f8dd6355735173321c344fc152d3e.tar.gz
+	noextract = zig-yaml-beddd5da24de91d430ca7028b00986f7745b13e9.tar.gz
 	source = hevi::git+https://github.com/Arnau478/hevi.git
+	source = ziggy-ae30921d8c98970942d3711553aa66ff907482fe.tar.gz::https://github.com/kristoff-it/ziggy/archive/ae30921d8c98970942d3711553aa66ff907482fe.tar.gz
+	source = known-folders-0ad514dcfb7525e32ae349b9acc0a53976f3a9fa.tar.gz::https://github.com/ziglibs/known-folders/archive/0ad514dcfb7525e32ae349b9acc0a53976f3a9fa.tar.gz
+	source = zig-lsp-kit-1c07e3e3305f8dd6355735173321c344fc152d3e.tar.gz::https://github.com/MFAshby/zig-lsp-kit/archive/1c07e3e3305f8dd6355735173321c344fc152d3e.tar.gz
+	source = zig-yaml-beddd5da24de91d430ca7028b00986f7745b13e9.tar.gz::https://github.com/kubkon/zig-yaml/archive/beddd5da24de91d430ca7028b00986f7745b13e9.tar.gz
 	sha256sums = SKIP
+	sha256sums = d00b839371b6ea996ed09e9116b55a7bb0acca361a2670d6736a5293f4f315f9
+	sha256sums = a8457bc9d3ca509a1db8b46a0d402fecae2b17d4fe0f454f5d51a63cc2aa1a7b
+	sha256sums = eaa00a7f51971d526532251606e11bd6c1acb9ef50745b6e2025b8d0ea8a2e69
+	sha256sums = 21df1918d1d200f376bca70ed1691def41b6380b0d7485dd39ffe186498ecedf
 
 pkgname = hevi-git
