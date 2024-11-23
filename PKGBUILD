@@ -1,6 +1,6 @@
 # Maintainer: Pylogmon <pylogmon@outlook.com>
 
-pkgname=clash-verge-rev-bin
+pkgname=clash-verge-rev-latest
 _pkgname=clash-verge-rev
 pkgver=2.0.0
 pkgrel=1
