@@ -1,0 +1,26 @@
+From 90d25d5f30d1185b5d2b73dbba10ca458e7fd41a Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Ball=C3=B3=20Gy=C3=B6rgy?= <ballogyor@gmail.com>
+Date: Sat, 23 Nov 2024 13:29:02 +0100
+Subject: [PATCH] Don't set vapi parameter to /dev/null
+
+It causes build error.
+---
+ src/langs/vala/Compiler.js | 2 --
+ 1 file changed, 2 deletions(-)
+
+diff --git a/src/langs/vala/Compiler.js b/src/langs/vala/Compiler.js
+index 6590493..1612517 100644
+--- a/src/langs/vala/Compiler.js
++++ b/src/langs/vala/Compiler.js
+@@ -34,8 +34,6 @@ export default function ValaCompiler({ session }) {
+       "workbench",
+       "-o",
+       module_file.get_path(),
+-      "--vapi",
+-      "/dev/null",
+       ...args,
+     ]);
+ 
+-- 
+2.47.0
+

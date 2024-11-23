@@ -1,0 +1,33 @@
+From 57b38e50e90f3d2389e365ad18fc48c672dfd9a2 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Ball=C3=B3=20Gy=C3=B6rgy?= <ballogyor@gmail.com>
+Date: Sat, 23 Nov 2024 13:34:00 +0100
+Subject: [PATCH] Don't check Flatpak version
+
+---
+ src/about.js | 3 ---
+ 1 file changed, 3 deletions(-)
+
+diff --git a/src/about.js b/src/about.js
+index ac05966..f1c57cf 100644
+--- a/src/about.js
++++ b/src/about.js
+@@ -11,8 +11,6 @@ import {
+ import { getFlatpakInfo } from "./util.js";
+ 
+ export default function About({ application }) {
+-  const flatpak_info = getFlatpakInfo();
+-
+   const debug_info = `
+ ${pkg.name} ${pkg.version}
+ ${GLib.get_os_info("ID")} ${GLib.get_os_info("VERSION_ID")}
+@@ -21,7 +19,6 @@ GJS ${getGjsVersion()}
+ Adw ${getGIRepositoryVersion(Adw)}
+ GTK ${getGIRepositoryVersion(Gtk)}
+ GLib ${getGLibVersion()}
+-Flatpak ${flatpak_info.get_string("Instance", "flatpak-version")}
+ ${getValaVersion()}
+ ${getBlueprintVersion()}
+ `.trim();
+-- 
+2.47.0
+

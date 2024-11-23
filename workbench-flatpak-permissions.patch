@@ -1,0 +1,49 @@
+From d0b64495ef35558236b67f404d7711f1a673cb92 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Ball=C3=B3=20Gy=C3=B6rgy?= <ballogyor@gmail.com>
+Date: Sat, 23 Nov 2024 14:05:27 +0100
+Subject: [PATCH] Don't check for missing Flatpak permissions
+
+---
+ src/Permissions/Permissions.js | 18 +-----------------
+ 1 file changed, 1 insertion(+), 17 deletions(-)
+
+diff --git a/src/Permissions/Permissions.js b/src/Permissions/Permissions.js
+index c0561b5..28298dd 100644
+--- a/src/Permissions/Permissions.js
++++ b/src/Permissions/Permissions.js
+@@ -8,8 +8,6 @@ import Interface from "./Permissions.blp" with { type: "uri" };
+ 
+ import illustration from "./permissions.svg";
+ 
+-import { getFlatpakInfo } from "../util.js";
+-
+ const action_permissions = new Gio.SimpleAction({
+   name: "permissions",
+   parameter_type: null,
+@@ -39,22 +37,8 @@ export function Permissions({ window }) {
+   window.add_action(action_permissions);
+ }
+ 
+-const missing_permissions = (() => {
+-  const flatpak_info = getFlatpakInfo();
+-  const shared = flatpak_info.get_string_list("Context", "shared");
+-  const sockets = flatpak_info.get_string_list("Context", "sockets");
+-  const devices = flatpak_info.get_string_list("Context", "devices");
+-
+-  return (
+-    !shared.includes("network") ||
+-    !sockets.includes("pulseaudio") ||
+-    !devices.includes("all")
+-  );
+-})();
+-
+ export function needsAdditionalPermissions({ demo }) {
+-  if (!demo["flatpak-finish-args"]) return false;
+-  return missing_permissions;
++  return false;
+ }
+ 
+ export function showPermissionsDialog({ window }) {
+-- 
+2.47.0
+

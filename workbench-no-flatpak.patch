@@ -1,0 +1,38 @@
+From ec5308f028126f690e4a0c5ad1c43e3964ebb3d5 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Ball=C3=B3=20Gy=C3=B6rgy?= <ballogyor@gmail.com>
+Date: Sat, 23 Nov 2024 13:15:00 +0100
+Subject: [PATCH] Don't check if running under Flatpak
+
+---
+ src/bin.js | 8 --------
+ 1 file changed, 8 deletions(-)
+
+diff --git a/src/bin.js b/src/bin.js
+index ae9005e..d2f3add 100755
+--- a/src/bin.js
++++ b/src/bin.js
+@@ -3,7 +3,6 @@
+ import { exit, programArgs } from "system";
+ import GLib from "gi://GLib";
+ import { setConsoleLogDomain } from "console";
+-import Xdp from "gi://Xdp";
+ 
+ // eslint-disable-next-line no-restricted-globals
+ imports.package.init({
+@@ -16,13 +15,6 @@ imports.package.init({
+ setConsoleLogDomain(pkg.name);
+ GLib.set_application_name("Workbench");
+ 
+-if (!Xdp.Portal.running_under_flatpak()) {
+-  console.error(
+-    "Flatpak required\nWorkbench is only meant to be run sandboxed in a specific target environment.\nBypassing this will exposes users to arbitrary code execution and breakage.",
+-  );
+-  exit(1);
+-}
+-
+ globalThis.__DEV__ = pkg.name.endsWith(".Devel");
+ if (__DEV__) {
+   pkg.sourcedir = "@sourcedir@";
+-- 
+2.47.0
+

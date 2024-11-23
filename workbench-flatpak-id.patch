@@ -1,0 +1,40 @@
+From a8f623c27a5aefb728ebc98cfde28d9c7eec3fc6 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Ball=C3=B3=20Gy=C3=B6rgy?= <ballogyor@gmail.com>
+Date: Sat, 23 Nov 2024 13:38:13 +0100
+Subject: [PATCH] Set FLATPAK_ID
+
+---
+ src/workbench | 17 +----------------
+ 1 file changed, 1 insertion(+), 16 deletions(-)
+
+diff --git a/src/workbench b/src/workbench
+index e8af565..6c632bf 100755
+--- a/src/workbench
++++ b/src/workbench
+@@ -2,22 +2,7 @@
+ 
+ # export G_MESSAGES_DEBUG=@app_id@
+ 
+-# Required to allow pkgconfig to find pc files in /app/lib/pkgconfig
+-export PKG_CONFIG_PATH=/app/lib/pkgconfig/:$PKG_CONFIG_PATH
+-
+-source /usr/lib/sdk/rust-stable/enable.sh 2> /dev/null
+-source /usr/lib/sdk/vala/enable.sh 2> /dev/null
+-source /usr/lib/sdk/llvm18/enable.sh 2> /dev/null
+-source /usr/lib/sdk/node20/enable.sh 2> /dev/null
+-
+-## enabling the typescript extension
+-export PATH=$PATH:/usr/lib/sdk/typescript/bin
+-
+-# TODO: Figure out how to use gcc with mold so we can drop llvm
+-export CARGO_TARGET_X86_64_UNKNOWN_LINUX_GNU_LINKER=clang
+-export CARGO_TARGET_X86_64_UNKNOWN_LINUX_GNU_RUSTFLAGS="-C link-arg=-fuse-ld=/usr/lib/sdk/rust-stable/bin/mold"
+-export CARGO_TARGET_AARCH64_UNKNOWN_LINUX_GNU_LINKER=clang
+-export CARGO_TARGET_AARCH64_UNKNOWN_LINUX_GNU_RUSTFLAGS="-C link-arg=-fuse-ld=/usr/lib/sdk/rust-stable/bin/mold"
++export FLATPAK_ID='re.sonny.Workbench'
+ 
+ # We do not support translations but the AboutWindow is translated by default
+ LANG=en_US.UTF-8
+-- 
+2.47.0
+
