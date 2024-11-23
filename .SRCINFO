@@ -1,6 +1,6 @@
 pkgbase = pacrs
 	pkgdesc = pacman wrapper with CLI inspired by zypper and apt
-	pkgver = 0.1.0
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/5121f/pacrs
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = pacrs
 	depends = pacman
 	depends = libalpm.so>=14
 	optdepends = paru: AUR support
-	source = pacrs-0.1.0.tar.gz::https://github.com/5121f/pacrs/archive/refs/tags/v0.1.0.tar.gz
-	sha256sums = 4f6d5768fa615fa308cdfe71445a90340c938a3e6959abb235a7fd612dcf18b1
+	source = pacrs-0.2.0.tar.gz::https://github.com/5121f/pacrs/archive/refs/tags/v0.2.0.tar.gz
+	sha256sums = 363a9d266b5a877c394aecdf87c912cfe8c4f7791b4f401f4521c752637b9881
 
 pkgname = pacrs
