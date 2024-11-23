@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=v2rayN
+Exec=/opt/v2rayn-bin/v2rayN
+Terminal=false
+Type=Application
+Icon=v2rayN
+Comment=v2rayN Desktop App
+Categories=Network

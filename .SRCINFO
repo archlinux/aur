@@ -1,0 +1,10 @@
+pkgbase = v2rayn-bin
+	pkgdesc = A GUI client for Windows and Linux, support Xray core and others
+	pkgver = 7.2.0
+	pkgrel = 1
+	url = https://github.com/2dust/v2rayN
+	arch = x86_64
+	license = GPL3
+	options = !strip
+
+pkgname = v2rayn-bin
