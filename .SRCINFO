@@ -1,7 +1,7 @@
 pkgbase = python-pygmt
 	pkgdesc = Python interface to the Generic Mapping Tools C library
 	pkgver = 0.13.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.pygmt.org
 	arch = x86_64
 	license = 3-BSD
@@ -9,12 +9,15 @@ pkgbase = python-pygmt
 	makedepends = cython
 	makedepends = python-setuptools
 	makedepends = python-setuptools-scm
+	makedepends = python-build
+	makedepends = python-installer
 	depends = python-numpy
 	depends = python-pandas
 	depends = python-xarray
 	depends = python-netcdf4
 	depends = python-packaging
 	depends = gmt
+	depends = ghostscript
 	source = https://github.com/GenericMappingTools/pygmt/archive/v0.13.0.tar.gz
 	sha256sums = 2efd4ffbe231f0c2be8d4d0227c8c8500e3dbfdb6d09cb942de7238b75584e75
 
