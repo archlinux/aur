@@ -1,2 +1,5 @@
 pay-respects*
 src
+.BUILDINFO
+.MTREE
+.PKGINFO
