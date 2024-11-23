@@ -1,6 +1,6 @@
 # Maintainer: Benjamin Kampmann <ben@acter.global>
 pkgname=acter-nightly-bin
-pkgver=1.24.11210
+pkgver=1.24.11230
 pkgrel=1
 epoch=
 pkgdesc="Casual Community Organizing"
@@ -19,9 +19,9 @@ backup=()
 options=()
 install=
 changelog=
-source=("https://github.com/acterglobal/a3/releases/download/v1.24.11210/acter-linux-x64-1.24.11210.tar.bz2")
+source=("https://github.com/acterglobal/a3/releases/download/nightly-2024-11-23/acter-nightly-linux-x64-1.24.11230.tar.bz2")
 noextract=()
-md5sums=("28652134cc9daa2a633ab579f346e77f")
+md5sums=("f173daa4035be0e25a16545896cdf173")
 validpgpkeys=()
 
 package() {
