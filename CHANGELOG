@@ -1,3 +1,6 @@
+11.0 Build 1002 - 19th October 2023
+- Added autorun command line argument "-bg" for running in the background
+
 11.0 Build 1001 - 31st August 2023
 - Increased max thread count from 256 to 1024
 
