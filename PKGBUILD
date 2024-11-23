@@ -101,7 +101,8 @@ pkgver() {
 
 prepare() {
   #git -C "${srcdir}/${_name}" revert --no-commit 5d963d0b32a30d76ac193e8198647b74cd9a2e12
-  for patch in "${srcdir}"/*.patch; do
+  mapfile -t patches < <(grep -Po '^.*?(patch|diff)(?=::|$)' < <(printf "${srcdir}/%s\n" ${source[@]}))
+  for patch in ${patches[@]}; do
     msg2  "apply $patch..."
     patch -Np1 -d "${srcdir}"/${_name} -i "$patch"
   done
