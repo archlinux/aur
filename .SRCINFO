@@ -1,7 +1,7 @@
 pkgbase = wechat
 	pkgdesc = 微信是一种生活方式. 可选沙盒支持.
 	pkgver = 4.0.0.23
-	pkgrel = 11
+	pkgrel = 12
 	url = https://weixin.qq.com/
 	arch = x86_64
 	arch = aarch64
