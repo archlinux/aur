@@ -24,8 +24,6 @@ sha256sums=('d1c444301c65910b171541f1e3d1445cc3ff003dfc8218b976982f80bccd9ee0'
             '21df1918d1d200f376bca70ed1691def41b6380b0d7485dd39ffe186498ecedf')
 
 prepare() {
-  cd "${srcdir}/${_pkgsrc}"
-
   cd "${srcdir}"
   for dep in "${_zig_deps[@]}"; do
     zig fetch --global-cache-dir ./zig-global-cache "${dep%%::*}"
