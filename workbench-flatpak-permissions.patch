@@ -1,11 +1,12 @@
-From dbc0bea2d1f0097ce769ccdfdea8da21e8cd27cf Mon Sep 17 00:00:00 2001
+From ec018bcd37f42ad7a37c868ff0d623f64a26b037 Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Ball=C3=B3=20Gy=C3=B6rgy?= <ballogyor@gmail.com>
 Date: Sat, 23 Nov 2024 14:05:27 +0100
 Subject: [PATCH] Don't check for missing Flatpak permissions
 
 ---
  src/Permissions/Permissions.js | 16 +---------------
- 1 file changed, 1 insertion(+), 15 deletions(-)
+ src/window.blp                 |  5 -----
+ 2 files changed, 1 insertion(+), 20 deletions(-)
 
 diff --git a/src/Permissions/Permissions.js b/src/Permissions/Permissions.js
 index c0561b5..5352430 100644
@@ -35,6 +36,22 @@ index c0561b5..5352430 100644
  }
  
  export function showPermissionsDialog({ window }) {
+diff --git a/src/window.blp b/src/window.blp
+index 863302f..a620f81 100644
+--- a/src/window.blp
++++ b/src/window.blp
+@@ -692,11 +692,6 @@ menu menu_app {
+     action: "win.extensions";
+   }
+ 
+-  item {
+-    label: _("Permissions");
+-    action: "win.permissions";
+-  }
+-
+   section {
+     item {
+       label: _("Reveal in Files");
 -- 
 2.47.0
 
