@@ -1,5 +1,5 @@
 pkgname=basedpyright
-pkgver=1.21.1
+pkgver=1.22.0
 pkgrel=1
 pkgdesc="pyright fork with various improvements and pylance features"
 arch=("any")
@@ -11,13 +11,15 @@ makedepends=("npm" "python" "git"
     "tk")
 checkdepends=("python-pytest")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/DetachHead/basedpyright/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('17409497c0497d584173c3fe0e0e0259730af8cb32e2a235d84c122915f4a654')
+sha256sums=('db05a0ea172241b57da3457cd0b6557494283756bdb3fa053512ce69116bf308')
 
 prepare() {
     cd "$pkgname-$pkgver"
     # See /based_build/generateAllDocstubs.sh
-    ./pw pdm install --group=docstubs --no-self --no-default
-    ./pw pdm run generate_docstubs
+    ./pw uv sync --only-group=docstubs --no-install-project
+    ./pw uv run --no-sync based_build/generate_docstubs.py
+
+    ./pw uv sync --config-setting regenerate_docstubs=false
 
     npm install
     cd packages/pyright
@@ -33,7 +35,7 @@ build() {
 
 check() {
     cd "$pkgname-$pkgver"
-    ./pw pdm run test_python -- -m needs_all_docstubs
+    ./pw uv run npm run test-python -- -m needs_all_docstubs
     cd packages/pyright-internal
     mkdir -p node_modules/.bin
     ln -srfv node_modules/webpack/bin/webpack.js node_modules/.bin/webpack
