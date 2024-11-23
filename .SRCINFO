@@ -1,15 +1,15 @@
 pkgbase = mint
 	pkgdesc = A refreshing language for the front-end web
-	pkgver = 0.20.0
+	pkgver = 0.20.1
 	pkgrel = 1
 	url = https://github.com/mint-lang/mint
 	arch = x86_64
 	license = BSD
 	makedepends = shards
 	conflicts = mint-bin
-	source = https://github.com/mint-lang/mint/archive/refs/tags/0.20.0.tar.gz
+	source = https://github.com/mint-lang/mint/archive/refs/tags/0.20.1.tar.gz
 	source = baked_file_system.patch
-	sha256sums = ff00c7944e7cf7e9f8d9cc864febba399c909a9764a16827cecda1ab201a0ca9
+	sha256sums = 3c2c80f158f00837abe906bf39b5d02f5f62b58a85126c5bd2faa045187fc09c
 	sha256sums = 2d5b204294fc56b91dfe6407d161309f866259e680e09dadb3737d46cb03687a
 
 pkgname = mint
