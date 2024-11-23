@@ -5,7 +5,7 @@
 
 pkgname=python-uncompyle6
 _name=${pkgname#python-}
-pkgver=3.9.1
+pkgver=3.9.2
 pkgrel=1
 pkgdesc="Python byte-code disassembler and source-code converter."
 arch=('any')
@@ -13,12 +13,12 @@ url="https://github.com/rocky/python-uncompyle6/"
 license=('MIT')
 depends=('python-click'
          'python-spark-parser>=1.8.9'
-         'python-spark-parser<1.9.0'
-         'python-xdis>=6.0.8'
+         'python-spark-parser<1.9.2'
+         'python-xdis>=6.1.0'
          'python-xdis<6.2.0')
 makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('c451c38eb3c5cc834eb8b8a9e6e0b0cf3226e4d94d08fd276dd03fe9158edb27')
+sha256sums=('6f70980ffe08a64b114b6871832fd02d86c99035f8976a8f1f8121dad6fca425')
 
 package() {
   cd "$srcdir/$_name-$pkgver"
