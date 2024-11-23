@@ -4,20 +4,26 @@ pkgname=('sylixos-cross-compiler-toolchain' 'sylixos-cross-compiler-lcsproxy' 's
 pkgver=0.5.0
 _lcsproxy_ver=1.0.7
 _senseshield_ver=2.7.0.66418
-pkgrel=1
+pkgrel=2
 pkgdesc="cross compile toolchain to build objects running on sylixos"
 arch=('x86_64')
-url="http://10.7.0.200:9000/RealEvo-IDE/realevo-linux-tools-v$pkgver.tar.gz"
+url="http://10.7.0.200:9000/RealEvo-IDE"
 license=('custom')
 depends=('systemd')
-source_x86_64=("realevo-linux-tools-$pkgver.tar.gz"::$url)
-sha1sums_x86_64=('0dc556d03d113488971fdbc7582935564ba7d36c')
+options=(!strip)
+source=("realevo-linux-tools.tar.gz"::$url/realevo-linux-tools-v$pkgver.tar.gz
+        "sw_64-sylixos-toolchain_pub.tar.gz"::$url/sw_64-sylixos-toolchain_pub.tar.gz)
+sha1sums=('0dc556d03d113488971fdbc7582935564ba7d36c'
+          '97a196963f010f2a9da361426ad89172a03a784f')
 
 package_sylixos-cross-compiler-toolchain() {
     _install_dir="opt/sylixos"
     #extracting
     install -dm755 "${pkgdir}/${_install_dir}"
     tar --no-same-owner --no-same-permissions -xaf ${srcdir}/realevo-linux-tools/compiler_pub.tar.gz -C "${pkgdir}/${_install_dir}"
+    
+    tar --no-same-owner --no-same-permissions -xaf ${srcdir}/sw_64-sylixos-toolchain_pub.tar.gz -C "${pkgdir}/${_install_dir}/compiler"
+
     #add readable attributes
     chmod -R a+r "${pkgdir}/${_install_dir}"
 
