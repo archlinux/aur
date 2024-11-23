@@ -1,6 +1,6 @@
 pkgbase = python-rembg
 	pkgdesc = Rembg is a tool to remove images background
-	pkgver = 2.0.59
+	pkgver = 2.0.60
 	pkgrel = 1
 	url = https://github.com/danielgatis/rembg
 	arch = any
@@ -30,7 +30,7 @@ pkgbase = python-rembg
 	depends = uvicorn
 	depends = python-watchdog
 	depends = python-asyncer
-	source = rembg-2.0.59.tar.gz::https://github.com/danielgatis/rembg/archive/refs/tags/v2.0.59.tar.gz
-	sha256sums = 6990042f48fb0301ba4f1299bd773dbc09aa34d319a53d65da8a2ca67cb82f8d
+	source = rembg-2.0.60.tar.gz::https://github.com/danielgatis/rembg/archive/refs/tags/v2.0.60.tar.gz
+	sha256sums = 01cc5736e8183a2fa097ca546e37f9b5a1e2962fd6d3c7b959d04b416f48a12b
 
 pkgname = python-rembg
