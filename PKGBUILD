@@ -4,7 +4,7 @@
 pkgname=qt5-charts
 _basever=5.15.16
 pkgver=5.15.16
-pkgrel=2
+pkgrel=3
 _commit=4e4fc559c61d1fc2542add48d2b3c490214e9936
 arch=('x86_64')
 url='https://www.qt.io'
