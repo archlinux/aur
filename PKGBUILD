@@ -20,14 +20,6 @@ pkgver() {
         printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-prepare() {
-	cd "$srcdir/${_pkgbasename}"
-
-        # Temporary workaround until dependency definition is fixed upstream
-        zig fetch --save 'https://codeberg.org/atman/zg/archive/v0.13.2.tar.gz'
-        zig fetch --save 'https://github.com/rockorager/libvaxis/archive/refs/tags/v0.5.1.tar.gz'
-}
-
 build() {
 	cd "$srcdir/${_pkgbasename}"
 
