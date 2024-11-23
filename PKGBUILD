@@ -13,11 +13,13 @@
 #
 # SOME MORE NOTES:
 #
-# This package is huge. The download alone is a barely-compressed 115GB .tar.gz (extracts to ~115GB)
-# and the final zstd-compressed package is another 90GB. Reserve at least 432GB in total for building.
+# This package is huge. The download alone is a 134GB tar (in SI units),
+# and the final zstd-compressed package is another 98GB.
+# Reserve at least 459GB in total for building.
 #
-# It can also take several hours to build, being mostly limited by I/O and single-thread
-# performance. `namcap` takes another hour, make sure you're not running that automatically.
+# It can also take several hours to build,
+# being mostly limited by I/O and single-thread performance.
+# Avoid running namcap: It takes long and ultimately fails due to exceeded limits.
 #
 # It *also* requires a reasonably ugly hack to build: since package() is run under fakeroot,
 # and the installer tries to access the home directory no matter what `--location` is set to,
@@ -27,9 +29,9 @@
 
 pkgname=vitis
 _srcname=FPGAs_AdaptiveSoCs_Unified
-pkgver=2024.1
-_more_ver=0522_2023
-pkgrel=2
+pkgver=2024.2
+_more_ver=1113_1001
+pkgrel=1
 pkgdesc="FPGA/CPLD design suite for Xilinx devices"
 url="https://www.xilinx.com/products/design-tools/vitis.html"
 arch=('x86_64')
@@ -79,9 +81,11 @@ optdepends=(
     'make: AIE tools'
     'matlab: Model Composer'
     'net-tools: AIE tools'
+    'nss: for Vitis tools'
     'openssl: AIE tools'
     'python'
     # 'qt4: Model Composer'       # no longer needed?
+    'util-linux: fdisk for Vitis tools'
     'xorg-server-xvfb: for Vitis xsct as fallback X11 display'
     'xorg-xlsclients: for Vitis xsct unless -nodisp'
     'xorg-xprop: for Vitis/Vivado startfile.py and Vitis IDE (xdg-mime and xdg-settings)'
@@ -95,17 +99,20 @@ optdepends=(
     'libsecret'                 # libsecret-1.so.0
     'libsm'                     # libSM.so.6
     'libstdc++5'                # libstdc++.so.5
+    'libunwind'                 # libunwind.so.8
     'libxkbfile'                # libxkbfile.so.1
     'libyaml'                   # libyaml-0.so.2
-    'python2'                   # libpython2.7.so.1.0
+    'onetbb'                    # libtbb.so.2 libtbbmalloc.so.2
+                                # Note: current onetbb provides libtbb.so.12 instead of libtbb.so.2
+                                # Note: intel-oneapi-basekit has copies of libtbb.so.2 in /opt
 )
 provides=(vivado)
 conflicts=(vivado)
-source=("file:///${_srcname}_${pkgver}_${_more_ver}.tar.gz"
+source=("file:///${_srcname}_${pkgver}_${_more_ver}.tar"
         'spoof_homedir.c')
 
 # checksum from https://www.xilinx.com/support/download.html
-md5sums=('372c0b184e32001137424e395823de3c'
+md5sums=('0ca31a787bbdff82b55213522e604446'
          '69d14ad64f6ec44e041eaa8ffcb6f87c')
 
 # takes forever for probably minimal gain
