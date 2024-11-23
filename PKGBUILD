@@ -2,7 +2,7 @@
 
 _plug=stgfunc
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=v3.1.1.3.ge97b7e3
+pkgver=3.1.1.3.ge97b7e3
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('any')
@@ -26,7 +26,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "${_plug}"
-  echo "$(git describe --long --tags | tr - .)"
+  echo "$(git describe --long --tags | tr - . | tr -d v)"
 }
 
 build() {
