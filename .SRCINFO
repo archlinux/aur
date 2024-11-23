@@ -26,13 +26,13 @@ pkgbase = deconz
 	sha256sums = b39ef78676141edfd148944a287aea4d20ee202abe37dff564a977c367d7b385
 	sha256sums = 4f4554238a3ee2ecd7af3510a3e4ff5a62259082f9b1672904da29c933c5e065
 	sha256sums = 5cb6ea540da8cfb4343b97792886952ee244fa272b3c00e6e5c7dcc1aa10eb1c
-	source_x86_64 = deconz-2.19.03-x86_64.deb::https://deconz.dresden-elektronik.de/ubuntu/stable/deconz-2.28.1-qt5.deb
+	source_x86_64 = deconz-2.28.1-x86_64.deb::https://deconz.dresden-elektronik.de/ubuntu/stable/deconz-2.28.1-qt5.deb
 	sha256sums_x86_64 = acf888defdb13c8865727b5e70df6bcd8317bb28ea7404b52019369141387a3b
-	source_armv6h = deconz-2.19.03-armv6h.deb::https://deconz.dresden-elektronik.de/raspbian/stable/deconz-2.28.1-qt5.deb
+	source_armv6h = deconz-2.28.1-armv6h.deb::https://deconz.dresden-elektronik.de/raspbian/stable/deconz-2.28.1-qt5.deb
 	sha256sums_armv6h = 49b45eb0f9570c62d23deb739c7668745672532555f4ee8f0a877863d25bd648
-	source_armv7h = deconz-2.19.03-armv7h.deb::https://deconz.dresden-elektronik.de/raspbian/stable/deconz-2.28.1-qt5.deb
+	source_armv7h = deconz-2.28.1-armv7h.deb::https://deconz.dresden-elektronik.de/raspbian/stable/deconz-2.28.1-qt5.deb
 	sha256sums_armv7h = 49b45eb0f9570c62d23deb739c7668745672532555f4ee8f0a877863d25bd648
-	source_aarch64 = deconz_2.19.03-debian-buster-stable_arm64.deb::https://deconz.dresden-elektronik.de/debian/stable/deconz_2.28.1-debian-buster-stable_arm64.deb
+	source_aarch64 = deconz_2.28.1-debian-buster-stable_arm64.deb::https://deconz.dresden-elektronik.de/debian/stable/deconz_2.28.1-debian-buster-stable_arm64.deb
 	sha256sums_aarch64 = 39a2b2c08cc281c40702f7609b69e17ed4277983a47c0bd5c20ab26832bc35c7
 
 pkgname = deconz
