@@ -1,0 +1,22 @@
+pkgbase = ocelot-desktop-bin
+	pkgdesc = OpenComputers emulator focused on accuracy
+	pkgver = 1.12.0
+	pkgrel = 0
+	url = https://ocelot.fomalhaut.me/desktop
+	arch = x86_64
+	license = MIT
+	depends = jre8-openjdk
+	depends = xorg-xrandr
+	depends = sh
+	depends = hicolor-icon-theme
+	noextract = ocelot-desktop-bin-1.12.0.jar
+	source = ocelot-desktop-bin-1.12.0.jar::https://gitlab.com/api/v4/projects/9941848/packages/generic/ocelot-desktop/v1.12.0/ocelot-desktop-v1.12.0.jar
+	source = ocelot-desktop-bin.svg::https://ocelot.fomalhaut.me/images/ocelot.svg
+	source = ocelot-desktop-bin.sh
+	source = ocelot-desktop-bin.desktop
+	md5sums = 326be85864f5f9fe5eee7bda41acc297
+	md5sums = 37a46aedc8266fcdae3576f64085d8cd
+	md5sums = fdd97c173e32dcb4d3045f3f0f7f59a4
+	md5sums = 199a49c7ea149bfa763fb030cc469494
+
+pkgname = ocelot-desktop-bin

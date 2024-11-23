@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Ocelot Desktop
+Comment=OpenComputers emulator focused on accuracy
+Exec=ocelot-desktop
+Icon=ocelot-desktop
+Categories=Game;
+Terminal=false
