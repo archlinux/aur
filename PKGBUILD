@@ -13,9 +13,9 @@ _devenv=false
 _generic_release=false
 
 ## real pkgrel is the eval one
-pkgver=9.21.w54.s32abf9f
+pkgver=9.22.w1.s7ba8823
 pkgrel=1
-eval pkgrel=2
+eval pkgrel=1
 
 ################################################################################################################################
 ################################################################################################################################
@@ -35,7 +35,7 @@ _enabled_staging=()
 _disabled_staging=(eventfd_synchronization) # added manually from proton
 
 ## main AUR version control setting, wine/staging base will be taken from this if custompatches=false (default)
-_patchbase_tag="11-12-2024-60ddc961-32abf9fc"
+_patchbase_tag="11-22-2024-51ccd95c-7ba8823e"
 
 ## to use this, set this to true, create a "custompatches" folder in the top-level PKGBUILD directory, and place your patches there.
 ## the patches from the wine-osu-patches git repo will no longer be applied, but you can copy them to the
@@ -45,8 +45,8 @@ _custompatches=false
 
 ## (with custompatches) uses wine/staging master if empty, uses given commit or tag if set
 ## (without custompatches) ignored and overwritten by upstream commits from patchbase repo
-_desired_wine_commit=60ddc9613b0a48b20fd1180409bea849f02961ef
-_desired_staging_commit=32abf9fc9756ad912b39acb93bcf60f448942a20
+_desired_wine_commit=51ccd95c49c2c61ad41960b25a01f834601d70c0
+_desired_staging_commit=7ba8823e57e0a32c1373e5c304542c7ce578699c
 
 ## (with custompatches) ignore the _desired_wine_commit above and take the wine commit from the "upstream-commit" file in the staging repo
 _use_staging_upstream=false
@@ -58,19 +58,20 @@ _staging_git="https://github.com/wine-staging/wine-staging.git"
 ## install static .a libraries (recommend using standard wine for these instead)
 _install_static=false
 
-## removes src, pkg folders on exit (both failure and success)
-_cleanbuildfolders=false
-
-## removes unneeded symbols from binaries
+## strips debug and all other symbols from binaries to reduce size
 _strip_package=true
 
-## for native compilation (non-true is gcc):
-## true=system clang, bundled=llvm-mingw's clang (requires _use_mingw=llvm), anything else is gcc
-_use_clang=bundled
+## for native compilation:
+##   "true": system clang (/usr/bin/clang)
+##   "bundled": llvm-mingw's clang (requires _use_mingw=llvm)
+##   anything else: gcc
+_use_clang=true
 
 ## for cross compilation
-## llvm=llvm-mingw, msvc=clang in msvc-mode, anything else is mingw-gcc
-_use_mingw=llvm
+##   llvm: llvm-mingw-{ucrt,msvcrt} (msvcrt will be preferred if both exist in /opt/llvm-mingw/, but it doesn't matter)
+##   msvc: clang in msvc-mode
+##   anything else: regular mingw-gcc
+_use_mingw=msvc
 
 ## leave empty unless you want to manually change the type of build (true: wow64)
 _wow64build=
@@ -130,7 +131,7 @@ noextract=()
 ## don't needlessly add the wine-osu-patches repo if we explicitly specify custom ones
 if ! { [ -d "${_where}"/custompatches ] && [ "${_custompatches}" = "true" ] ; }; then
   source+=("git+https://github.com/whrvt/wine-osu-patches.git#tag=${_patchbase_tag}")
-  sha512sums+=('daef9232d634f54fd349729b332cbad5776ec4c526ea1ad09e5d68cc512d2b568da324abe7fdc67b0c488c0485b7e4e7e7c46d421a549d4365eb3d9adb8ae671')
+  sha512sums+=('SKIP')
 
   if [ "${_custompatches}" = "true" ]; then
     msg2 "WARNING: _custompatches=true but custompatches directory not found. Will be using wine-osu-patches repo."
@@ -165,7 +166,7 @@ depends=(
   gst-libav
 )
 
-makedepends=(autoconf bison ccache perl fontforge flex
+makedepends=(autoconf bison ccache perl fontforge flex gawk
   gcc
   giflib
   libpng
@@ -202,7 +203,6 @@ optdepends=(
   mpg123
   openal
   v4l-utils
-  libpulse
   alsa-plugins
   alsa-lib
   libjpeg-turbo
@@ -225,28 +225,34 @@ if [ "${_wow64build}" != "true" ]; then
   if [ "${_use_clang}" = "true" ]; then makedepends+=(lib32-llvm-libs); fi
 fi
 
+_fake_gnuc_flag="-fgnuc-version=5.99.99"
+## native compiler setup
 if [ "${_use_clang}" = "true" ]; then
   makedepends+=(clang llvm-libs)
 
-  _cc="/usr/bin/clang"
+  _cc="/usr/bin/clang" # TODO: remove /usr/bin hardcode
   _cxx="/usr/bin/clang++"
 
-  #_lto_flags="-flto -Wl,--lto"
-  _lto_flags="-fuse-linker-plugin -flto -Wl,--flto,--flto-partition=one"
-  _extra_native_flags="-fgnuc-version=5.99.99"
+  # _lto_flags="-fuse-linker-plugin -flto -Wl,--flto,--flto-partition=one" # for non-lld lto
+  _extra_native_flags="${_fake_gnuc_flag} -flto=full -D__LLD_LTO__ --rtlib=compiler-rt --unwindlib=libgcc"
+  _extra_ld_flags="-flto=full -fuse-ld=lld"
+  _lld_lto="true" # will apply _makefile_add_lto_flags() after _configure64(), and the "5000-clang-fixup-lto.patch" from the wine-osu-patches repo
 elif [ "${_use_clang}" = "bundled" ] && [ "${_use_mingw}" = "llvm" ]; then
   _cc="clang"
   _cxx="clang++"
 
-  _extra_native_flags="-fgnuc-version=5.99.99"
+  _extra_native_flags="${_fake_gnuc_flag} -D__LLD_LTO__ --rtlib=compiler-rt --unwindlib=libgcc"
+  _extra_ld_flags="-flto=full -fuse-ld=lld"
+  _lld_lto="true"
 else
-  _cc="/usr/bin/gcc"
-  _cxx="/usr/bin/g++"
+  _cc="gcc"
+  _cxx="g++"
 
-  _lto_flags="-fuse-linker-plugin -fdevirtualize-at-ltrans -flto-partition=one -flto -Wl,-flto"
+  _lto_flags="-fuse-linker-plugin -fdevirtualize-at-ltrans -flto-partition=one -flto -Wl,-flto" # requires lto-fixup.patch, should apply automatically
   _extra_native_flags="-floop-nest-optimize -fgraphite-identity -floop-strip-mine" # graphite opts
 fi
 
+## cross-compiler setup
 if [ "${_use_mingw}" = "llvm" ]; then
   makedepends+=(llvm-mingw-w64-toolchain)
 
@@ -268,12 +274,14 @@ if [ "${_use_mingw}" = "llvm" ]; then
 
   if [[ "${_mingw_path}" =~ "msvcrt" ]]; then
     # set so that we don't use fallback code for __GNUC__ <= 4.2.1
+    # which may be unnecessarily pessimistic
     # doesn't work with ucrt due to some specific modules failing
-    _extra_common_flags="-fgnuc-version=5.99.99"
+    _extra_common_flags="${_fake_gnuc_flag}"
   fi
 
   _cross_path="${_mingw_path}":"${PATH}"
-else # remove llvm-mingw paths from externally set PATH
+else
+  # remove llvm-mingw paths from externally set PATH
   if [[ "${PATH}" =~ "llvm-mingw" ]]; then
     _mingw_path="$(dirname "$(command -v i686-w64-mingw32-clang)")"
     _cross_path="${PATH//"${_mingw_path}":/}"
@@ -284,10 +292,12 @@ else # remove llvm-mingw paths from externally set PATH
   if [ "${_use_mingw}" = "msvc" ]; then
     makedepends+=(clang llvm-libs llvm lld)
 
-    _cross64="/usr/bin/clang"
-    _crossxx64="/usr/bin/clang++"
-    _cross32="/usr/bin/clang"
-    _crossxx32="/usr/bin/clang++"
+    _cross64="clang"
+    _crossxx64="clang++"
+    _cross32="clang"
+    _crossxx32="clang++"
+
+    _extra_cross_flags="--rtlib=compiler-rt"
   else
     makedepends+=(mingw-w64-binutils mingw-w64-gcc mingw-w64-crt mingw-w64-headers mingw-w64-winpthreads)
 
@@ -316,21 +326,23 @@ _set_vars() {
 
   export PATH="${_cross_path}"
 
-  _common_cflags="${_cpu_target} ${_extra_common_flags:-} -std=gnu11 -pipe -O3 -fomit-frame-pointer -fno-semantic-interposition -fwrapv -fno-strict-aliasing \
-                  -Wno-error=incompatible-pointer-types -Wno-error=implicit-function-declaration -Wno-error=int-conversion -w"
-  _native_common_cflags="-static-libgcc ${_lto_flags:-} ${_extra_native_flags:-}" # only for the non-mingw side
+  _common_cflags="${_cpu_target} ${_extra_common_flags:-} -pipe -O3 -fomit-frame-pointer -fwrapv -fno-strict-aliasing \
+                 -ffunction-sections -fdata-sections -mfpmath=sse \
+                 -Wno-error=incompatible-pointer-types -Wno-error=implicit-function-declaration -w"
+                 # -Wall -Wno-unknown-attributes -Wno-unused-but-set-variable -Wno-unused-variable -Wunaligned-access"
+  _native_common_cflags="${_lto_flags:-} ${_extra_native_flags:-}" # only for the non-mingw side
 
   export CPPFLAGS="-U_FORTIFY_SOURCE -D_FORTIFY_SOURCE=0 -DNDEBUG -D_NDEBUG"
   _GCC_FLAGS="${_common_cflags} ${_native_common_cflags} ${CPPFLAGS}"
-  _CROSS_FLAGS="${_common_cflags} ${CPPFLAGS}"
+  _CROSS_FLAGS="${_common_cflags} ${CPPFLAGS} ${_extra_cross_flags}"
 
-  _LD_FLAGS="${_GCC_FLAGS} -Wl,-O2,--sort-common,--as-needed"
+  _LD_FLAGS="${_GCC_FLAGS} ${_extra_ld_flags:-} -Wl,-O2,--sort-common,--as-needed,--gc-sections -static-libgcc"
   _CROSS_LD_FLAGS="${_CROSS_FLAGS}"
 
   if [ "${_use_mingw}" = "msvc" ]; then
     _CROSS_LD_FLAGS+=" -Wl,/FILEALIGN:4096,/OPT:REF,/OPT:ICF"
   else
-    _CROSS_LD_FLAGS+=" -Wl,-O2,--sort-common,--as-needed,--file-alignment=4096"
+    _CROSS_LD_FLAGS+=" -Wl,-O2,--sort-common,--as-needed,--file-alignment=4096,--gc-sections"
   fi
 
   export CC="ccache ${_cc}"
@@ -344,10 +356,10 @@ _set_vars() {
   export i386_CXX="ccache ${_crossxx32}"
   export i386_CFLAGS="${_CROSS_FLAGS} ${_common_32_cflags:-}"
 
-  export CFLAGS="${_GCC_FLAGS}"
-  export CXXFLAGS="${_GCC_FLAGS}"
-  export CROSSCFLAGS="${_CROSS_FLAGS}"
-  export CROSSCXXFLAGS="${_CROSS_FLAGS}"
+  export CFLAGS="${_GCC_FLAGS} -std=gnu17"
+  export CXXFLAGS="${_GCC_FLAGS//${_fake_gnuc_flag}/} -std=gnu++17" # Beautiful
+  export CROSSCFLAGS="${_CROSS_FLAGS} -std=gnu17"
+  export CROSSCXXFLAGS="${_CROSS_FLAGS//${_fake_gnuc_flag}/} -std=gnu++17"
 
   export LDFLAGS="${_LD_FLAGS}"
   export CROSSLDFLAGS="${_CROSS_LD_FLAGS}"
@@ -529,6 +541,16 @@ prepare() { _set_vars;
         _failure "An error occurred applying ${shortname}, check patchlog.txt for info."
   done
 
+  sed 's|OpenCL/opencl.h|CL/opencl.h|g' -i "${srcdir}/${pkgname}"/configure*
+
+  if [ "${_strip_package}" = "true" ]; then
+    awk -i inplace '/STRIPPROG=/ { sub(/ %s/, " %s -s") }1' "${srcdir}/${pkgname}/tools/makedep.c"
+    sed -i 's|stripcmd=$stripprog|stripcmd="$stripprog -s"|g' "${srcdir}/${pkgname}/tools/install-sh"
+  fi
+
+  ## clean up .orig files if patches succeeded
+  find "${srcdir}"/"${pkgname}" -iregex ".*orig" -execdir rm {} \;
+
   ## make tools/make_makefiles happy
   git config commit.gpgsign false &>/dev/null || true
   git config user.email "wine@build.dev" &>/dev/null || true
@@ -554,6 +576,11 @@ _configure64() { _set_vars64;
   ../"${pkgname}"/configure \
     "${_sharedopts[@]}" \
     "${_wine64opts[@]}" || _failure "Wine-64 configure failed; check ${build64dir#"${_where}/"}/config.log for more information"
+
+  if [ -n "${_lld_lto}" ]; then
+    msg2 "Hotfixing Wine-64 Makefile for LLD LTO..."
+    _makefile_add_lto_flags Makefile || _failure "Couldn't apply Makefile hotfix."
+  fi
 }
 
 _configure32() { _set_vars32;
@@ -573,9 +600,8 @@ _tools64() { _set_vars64;
 
   shopt -s globstar
   # don't use lto to speed up tools compilation
-  export _tools_flags="${CPPFLAGS} ${_cpu_target} -O1 -pipe -fno-lto -Wno-error=incompatible-pointer-types -Wno-error=implicit-function-declaration -w"
   for mkfile in tools/Makefile tools/**/Makefile; do
-    "$@" -C "${mkfile%/Makefile}" CFLAGS="${_tools_flags}" LDFLAGS="${_tools_flags}" CROSSCFLAGS="${_tools_flags}" CROSSLDFLAGS="${_tools_flags}"
+    "$@" -C "${mkfile%/Makefile}" CFLAGS="${CFLAGS} -fno-lto -O1" LDFLAGS="${LDFLAGS} -fno-lto -O1" CROSSCFLAGS="${CROSSCFLAGS} -fno-lto -O1" CROSSLDFLAGS="${CROSSLDFLAGS} -fno-lto -O1"
   done
   chmod -R +x "${build64dir}"/tools
   shopt -u globstar
@@ -625,6 +651,13 @@ build() { _set_vars;
     --without-cups
     --without-sane
     --without-gphoto
+    --without-gssapi
+    --without-krb5
+    --without-pcsclite
+    --without-pcap
+    --without-capi
+    --without-v4l2
+    --without-netapi
   )
 
   _wine64opts=(
@@ -699,8 +732,8 @@ package() { _set_vars;
     libdir="${pkgdir}"/opt/"${pkgname}"/lib64 \
     dlldir="${pkgdir}"/opt/"${pkgname}"/lib64/wine $_installtype || _failure "Wine-64 installation failed"
 
-  if [ "${_strip_package}" = "true" ]; then
-    msg "Stripping symbols from libraries"
+  if [ "${_install_static}" != "true" ] && [ "${_strip_package}" = "true" ]; then # stripping with static libs is broken for some reason?
+    msg "Stripping symbols from libraries..."
 
     find "${pkgdir}"/opt/"${pkgname}"/lib{,64} \
       -type f '(' -iname '*.a' -or -iname '*.dll' -or -iname '*.so' -or -iname '*.sys' -or -iname '*.drv' -or -iname '*.exe' ')' \
@@ -725,7 +758,64 @@ package() { _set_vars;
   cp "${_where}"/patchlog.txt "${pkgdir}"/opt/"${pkgname}"
 }
 
+################################################################################################################################
+################################################################################################################################
 ## more random helpers
+
+_makefile_add_lto_flags() {
+    local makefile="$1"
+
+    awk '
+    BEGIN {
+        modifications = 0
+    }
+    {
+        lines[NR] = $0
+    }
+    END {
+        for (i = 1; i <= NR; i++) {
+            # Match either wine(64)-preloader target or preloader.o target only if followed by .c file
+            if (lines[i] ~ /^loader\/wine64-preloader:/ || 
+                lines[i] ~ /^loader\/wine-preloader:/ || 
+                (lines[i] ~ /^loader\/preloader[.:]/ && lines[i] ~ /[.]c$/)) {
+                in_target = 1
+                print lines[i]
+                continue
+            }
+            if (in_target) {
+                if (lines[i] ~ /^\t/ || (lines[i] ~ /^[[:space:]]/ && prev_line_ended_backslash)) {
+                    is_last_line = (i == NR || lines[i+1] ~ /^[^[:space:]].*:/)
+                    has_backslash = (lines[i] ~ /\\[[:space:]]*$/)
+                    
+                    if (is_last_line && !has_backslash) {
+                        print lines[i] " -fno-lto -Wl,--no-relax"
+                        modifications++
+                        in_target = 0
+                    } else {
+                        print lines[i]
+                        prev_line_ended_backslash = has_backslash
+                    }
+                    continue
+                }
+            }
+            prev_line_ended_backslash = (lines[i] ~ /\\[[:space:]]*$/)
+            in_target = 0
+            print lines[i]
+        }
+        if (modifications != 2) {
+            printf "Error: Expected exactly 2 modifications, but made %d\n", modifications > "/dev/stderr"
+            exit 1
+        }
+    }' "$makefile" > "$makefile.new"
+    
+    if [ $? -eq 0 ]; then
+        mv "$makefile.new" "$makefile"
+        return 0
+    else
+        rm -f "$makefile.new"
+        return 1
+    fi
+}
 
 _failure() {
   if [ -n "$*" ]; then msg "$*"; fi
