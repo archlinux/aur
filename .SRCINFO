@@ -1,0 +1,22 @@
+pkgbase = vapoursynth-plugin-vswobbly-git
+	pkgdesc = Plugin for Vapoursynth: vswobbly (GIT version)
+	pkgver = 0.1.2.1.g4119a21
+	pkgrel = 1
+	url = https://github.com/Jaded-Encoding-Thaumaturgy/vs-wobbly.git
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-wheel
+	makedepends = python-installer
+	makedepends = python-setuptools
+	depends = vapoursynth
+	depends = vapoursynth-plugin-vstools-git
+	depends = vapoursynth-plugin-vsdeinterlace-git
+	optdepends = d2vwitch-git
+	provides = vapoursynth-plugin-vswobbly
+	conflicts = vapoursynth-plugin-vswobbly
+	source = vswobbly::git+https://github.com/Jaded-Encoding-Thaumaturgy/vs-wobbly.git
+	sha256sums = SKIP
+
+pkgname = vapoursynth-plugin-vswobbly-git
