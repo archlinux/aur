@@ -2,9 +2,9 @@
 
 pkgbase=xguipro-git
 # pkgname=(xguipro-gtk{3,4}-git)
-pkgname=(xguipro-gtk3-git)
+pkgname=(xguipro-git)
 pkgver=0.9.0.r5.g342affe
-pkgrel=1
+pkgrel=26
 pkgdesc="xGUI (the X Graphics User Interface) Pro is a modern, cross-platform, and advanced HVML renderer which is based on tailored WebKit."
 arch=(x86_64
     aarch64
@@ -111,14 +111,14 @@ EOF
 
 }
 
-package_xguipro-gtk3-git() {
-    pkgdesc+=" (gtk3)"
-    conflicts+=(${pkgname%-git})
-    depends+=(
-        webkit2gtk
-        gtk3
-        libsoup)
-    options=('!strip')
+package() {
+    #     pkgdesc+=" (gtk3)"
+    #     conflicts+=(${pkgname%-git})
+    #     depends+=(
+    #         webkit2gtk
+    #         gtk3
+    #         libsoup)
+    #     options=('!strip')
 
     export LDFLAGS="-L/lib64"
     if test -n "$LD_LIBRARY_PATH"; then
