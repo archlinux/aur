@@ -2,7 +2,7 @@
 pkgname=aylurs-gtk-shell-git
 _pkgname=ags
 pkgver=2.0.1.r15.g8115996
-pkgrel=1
+pkgrel=2
 pkgdesc="Aylurs's Gtk Shell (AGS), An eww inspired gtk widget system."
 arch=('x86_64')
 url="https://github.com/Aylur/ags"
