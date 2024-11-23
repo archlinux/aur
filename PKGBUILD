@@ -10,19 +10,19 @@ pkgdesc="Flexible Linux input device translator, geared for gamepads"
 url="https://gitlab.com/AllMeatball/moltengamepad"
 arch=('x86_64')
 license=('MIT')
-source=("https://gitlab.com/AllMeatball/moltengamepad/-/archive/v${pkgver}/moltengamepad-v${pkgver}.zip")
+source=("$url/-/archive/v$pkgver/$pkgname-v$pkgver.zip")
 sha256sums=('6d8f5723df4cd35c6d2423fd09b1786c70bf893efc9054da4f8847673be68de5')
 makedepends=('go-md2man' 'git' 'make' 'sed')
 depends=('scraw' 'scrawpp')
-install="moltengamepad.install"
+install="$pkgname.install"
 
 prepare() {
-  cd "${pkgname}-v${pkgver}"
+  cd "$pkgname-v$pkgver"
   make eventlists
 }
 
 build() {
-  cd "${pkgname}-v${pkgver}"
+  cd "$pkgname-v$pkgver"
   sed -i '3 s/^#//' Makefile
   sed -i '5 s/^#//' Makefile
   sed -i '11 s|/usr/local/bin/|/usr/bin/|' installation/systemuser/systemd.service
@@ -30,12 +30,12 @@ build() {
 }
 
 package() {
-  cd "${pkgname}-v${pkgver}"
+  cd "$pkgname-v$pkgver"
   mkdir -p $pkgdir/usr/bin/
   mkdir -p $pkgdir/usr/lib/systemd/system/
-  install -Dm755 moltengamepad $pkgdir/usr/bin/moltengamepad
-  install -Dm644 installation/systemuser/systemd.service $pkgdir/usr/lib/systemd/system/moltengamepad.service
-  install -Dm644 installation/systemuser/udev.rules "$pkgdir"/usr/lib/udev/rules.d/72-moltengamepad.rules
-  install -Dm644 installation/systemuser/tmpfiles.conf "$pkgdir"/usr/lib/tmpfiles.d/moltengamepad.conf
+  install -Dm755 $pkgname $pkgdir/usr/bin/$pkgname
+  install -Dm644 installation/systemuser/systemd.service $pkgdir/usr/lib/systemd/system/$pkgname.service
+  install -Dm644 installation/systemuser/udev.rules $pkgdir/usr/lib/udev/rules.d/72-$pkgname.rules
+  install -Dm644 installation/systemuser/tmpfiles.conf $pkgdir/usr/lib/tmpfiles.d/$pkgname.conf
   install -Dm644 LICENSE $pkgdir/usr/share/licenses/$pkgname/license
 }
