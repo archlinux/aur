@@ -1,12 +1,12 @@
 pkgbase = sveltosctl-bin
 	pkgdesc = Sveltos CLI tool
-	pkgver = 0.42.0
+	pkgver = 0.42.1
 	pkgrel = 1
 	url = https://projectsveltos.github.io/sveltos/
 	arch = x86_64
 	license = Apache
 	provides = sveltosctl
-	source = sveltosctl-linux-amd64::https://github.com/projectsveltos/sveltosctl/releases/download/v0.42.0/sveltosctl-linux-amd64
-	sha256sums = 1835e1d354915bc64e12db519e19843745805d4ce1edf0af9abb00ec7a37a203
+	source = sveltosctl-linux-amd64::https://github.com/projectsveltos/sveltosctl/releases/download/v0.42.1/sveltosctl-linux-amd64
+	sha256sums = d78a08e0ef31eec20aff1d9d324f0a843b3c0f1b8a4b45f469b2fe98c3608392
 
 pkgname = sveltosctl-bin
