@@ -1,7 +1,7 @@
 # Maintainer: archlinuxauruser <archlinuxauruser at messagebox dot email>
 # Contributor: aulonsal <seraur at aulonsal dot com>
 pkgname=f2-bin
-pkgver=2.0.1
+pkgver=2.0.3
 pkgrel=1
 pkgdesc='Cross-platform command-line tool for batch renaming files and directories quickly and safely'
 arch=('x86_64' 'i686' 'aarch64')
@@ -9,7 +9,7 @@ url="https://github.com/ayoisaiah/${pkgname%-bin}"
 license=('MIT')
 provides=("${pkgname%-bin}")
 conflicts=("${pkgname%-bin}")
-source=("$pkgname-$pkgver-LICENCE::${url/github/raw.githubusercontent}/v${pkgver}/LICENCE")
+source=("${pkgname}-${pkgver}-LICENCE::${url/github/raw.githubusercontent}/v${pkgver}/LICENCE")
 source_x86_64=("${pkgname}-${pkgver}-x86_64.tar.gz::${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_linux_amd64.tar.gz")
 source_i686=("${pkgname}-${pkgver}-i686.tar.gz::${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_linux_386.tar.gz")
 source_aarch64=("${pkgname}-${pkgver}-aarch64.tar.gz::${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_linux_arm64.tar.gz")
