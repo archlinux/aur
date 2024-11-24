@@ -1,6 +1,6 @@
 pkgbase = goshot-bin
 	pkgdesc = A powerful CLI tool and library for creating beautiful code screenshots with customizable window chrome, syntax highlighting, and backgrounds
-	pkgver = 0.6.0
+	pkgver = 0.6.1
 	pkgrel = 1
 	url = https://github.com/watzon/goshot
 	arch = x86_64
@@ -10,9 +10,9 @@ pkgbase = goshot-bin
 	optdepends = xclip: clipboard support for X11
 	provides = goshot
 	conflicts = goshot
-	source_x86_64 = goshot_Linux_x86_64.tar.gz::https://github.com/watzon/goshot/releases/download/v0.6.0/goshot_Linux_x86_64.tar.gz
+	source_x86_64 = goshot_Linux_x86_64.tar.gz::https://github.com/watzon/goshot/releases/download/v0.6.1/goshot_Linux_x86_64.tar.gz
 	sha256sums_x86_64 = SKIP
-	source_aarch64 = goshot_Linux_arm64.tar.gz::https://github.com/watzon/goshot/releases/download/v0.6.0/goshot_Linux_arm64.tar.gz
+	source_aarch64 = goshot_Linux_arm64.tar.gz::https://github.com/watzon/goshot/releases/download/v0.6.1/goshot_Linux_arm64.tar.gz
 	sha256sums_aarch64 = SKIP
 
 pkgname = goshot-bin
