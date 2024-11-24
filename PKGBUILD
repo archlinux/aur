@@ -2,7 +2,7 @@
 
 _pkgname=goby
 pkgname=goby-community
-pkgver=2.9.7
+pkgver=2.9.10
 pkgrel=1
 pkgdesc="Goby 社区版 | Goby Community Edition"
 arch=("x86_64")
@@ -23,7 +23,7 @@ source=(
 	"$pkgname.png"
 	)
 sha256sums=(
-	'5113d85455d459713ad55c2c60d394c1be0f2cd1d825bb3f437f0693991d6050'
+	'b788659013ea7406a3a3cd75bce5fd8b8637f9300ea895e91fa114cea131554e'
 	'0624f9c1aa7377ccb5bd6b6a54a3dbea3cdd1a1e838a154c73bd01d22ff5fc3f'
 	'11e10dc114bd6cd8ecfe018b277798f1c7727f113c15ebc09090682f8575bb1f'
 )
