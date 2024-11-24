@@ -1,9 +1,7 @@
 # Maintainer: AlphaLynx <alphalynx@protonmail.com
 # Contributor: rbagpksr <rbagpksr@mailer.me>
 
-_pkgname=jan
-
-pkgname="${_pkgname}"-appimage
+pkgname=jan-appimage
 pkgver=0.5.8
 pkgrel=1
 pkgdesc='Turn your computer into an AI computer'
@@ -11,7 +9,7 @@ arch=('x86_64')
 url='https://jan.ai/'
 license=('AGPL-3.0-only')
 depends=('zlib' 'hicolor-icon-theme' 'fuse2')
-provides=("${_pkgname}")
+provides=('jan')
 options=(!strip !debug)
 _appimage="${pkgname}-${pkgver}.AppImage"
 source_x86_64=("${_appimage}::https://github.com/janhq/jan/releases/download/v${pkgver}/jan-linux-x86_64-${pkgver}.AppImage")
