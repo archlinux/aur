@@ -1,50 +1,71 @@
-# Maintainer:  Dave <orangechannel@pm.me>
+# Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
+#Contributor Dave <orangechannel@pm.me>
 
 _plug=lvsfunc
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=r311.aea5d2d
+pkgver=0.8.2.71.g9883c5e
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('x86_64')
 url='https://github.com/Irrational-Encoding-Wizardry/lvsfunc'
 license=('MIT')
-depends=('vapoursynth'
-         'vapoursynth-plugin-fvsfunc'
-         'vapoursynth-plugin-havsfunc'
-         'vapoursynth-plugin-kagefunc'
-         'vapoursynth-plugin-mvsfunc'
-         'vapoursynth-plugin-edi_rpow2-git'
-         'vapoursynth-plugin-vstaambk'
-         'vapoursynth-plugin-vsutil'
-         )
-optdepends=('vapoursynth-plugin-combmask: deinterlace.decomb'
-            'vapoursynth-plugin-d2vsource: misc.source support for d2v sources'
-            'vapoursynth-plugin-rgsf: 32-bit FLOAT clip support'
-            'vapoursynth-plugin-readmpls: misc.source support for mpls sources'
-            'vapoursynth-plugin-continuityfixer: misc.edgefixer'
-            )
-makedepends=('git'
-             'python-setuptools'
-             )
+depends=(
+  'vapoursynth'
+  'vapoursynth-plugin-vstools-git'
+  'vapoursynth-plugin-vsaa-git'
+  'vapoursynth-plugin-vsdehalo-git'
+  'vapoursynth-plugin-vsdeinterlace-git'
+  'vapoursynth-plugin-vsexprtools-git'
+  'vapoursynth-plugin-vskernels-git'
+  'vapoursynth-plugin-vsmasktools-git'
+  'vapoursynth-plugin-vsrgtools-git'
+  'vapoursynth-plugin-stgfunc-git'
+  'python-numpy'
+)
+optdepends=(
+  'vapoursynth-plugin-combmask'
+  'vapoursynth-plugin-d2vsource'
+  'vapoursynth-plugin-dgdecodenv-bin'
+  'vapoursynth-plugin-fmtconv-git'
+  'vapoursynth-plugin-knlmeanscl-git'
+  'vapoursynth-plugin-lsmashsource-git'
+  'vapoursynth-plugin-rgsf-git'
+  'vapoursynth-plugin-tivtc-git'
+  'vapoursynth-plugin-bilateral-git'
+  'vapoursynth-plugin-bm3d-git'
+  'vapoursynth-plugin-descale-git'
+  'vapoursynth-plugin-eedi3m-git'
+  'vapoursynth-plugin-nnedi3cl-git'
+  'vapoursynth-plugin-readmpls-git'
+  'vapoursynth-plugin-retinex-git'
+  'vapoursynth-plugin-continuityfixer-git'
+  'vapoursynth-plugin-znedi3-git'
+)
+makedepends=(
+  'git'
+  'python-build'
+  'python-wheel'
+  'python-installer'
+  'python-setuptools'
+)
 provides=("vapoursynth-plugin-${_plug}")
 conflicts=("vapoursynth-plugin-${_plug}")
 source=("${_plug}::git+https://github.com/Irrational-Encoding-Wizardry/lvsfunc.git")
 sha256sums=('SKIP')
 
-_site_packages="$(python -c "from distutils.sysconfig import get_python_lib; print(get_python_lib())")"
-
 pkgver() {
   cd "${_plug}"
-  #echo "$(git describe --long --tags | tr - .)"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  echo "$(git describe --long --tags | tr - . | tr -d v)"
+}
+
+build() {
+  cd "${_plug}"
+  python -m build --wheel --no-isolation
 }
 
 package(){
   cd "${_plug}"
-#   install -Dm644 "${_plug}.py" "${pkgdir}${_site_packages}/${_plug}.py"
-#   python -m compileall -q -f -d "${_site_packages}" "${pkgdir}${_site_packages}/${_plug}/__init__.py"
-#   python -OO -m compileall -q -f -d "${_site_packages}" "${pkgdir}${_site_packages}/${_plug}.py"
-    python setup.py install --root="$pkgdir/" --optimize=1
+  python -m installer --destdir="${pkgdir}" dist/*.whl
 
   install -Dm644 README.md "${pkgdir}/usr/share/doc/vapoursynth/plugins/${_plug}/README.md"
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
