@@ -30,19 +30,6 @@ options=('!lto')
 sha256sums=('3854932274abca138b2bf5671abcf5a4c824ecd18e45bee32939ec43f153e521')
 validpgpkeys=()
 
-prepare() {
-    cd "${pkgname}"
-    export RUSTUP_TOOLCHAIN=stable
-    cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
-}
-
-build() {
-	cd "$pkgname"
-	export RUSTUP_TOOLCHAIN=stable
-        export CARGO_TARGET_DIR=target
-        cargo build --frozen --release
-}
-
 package() {
 	cd "$pkgname"
 	install -Dm755 "piggui" "$pkgdir/usr/bin/piggui"
