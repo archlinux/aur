@@ -63,6 +63,6 @@ Path(".SRCINFO").write_bytes(subprocess.run(["makepkg", "--printsrcinfo"], captu
 
 print("Git commit")
 subprocess.run(["git", "add", "PKGBUILD", ".SRCINFO"])
-subprocess.run(["git", "commit", "-m", f"\"Update to {last_version}\""])
+subprocess.run(["git", "commit", "-m", f"Update to {last_version}"])
 
 
