@@ -1,7 +1,7 @@
 # Maintainer: KillerBossOriginal
 # Contributor:
 pkgname=stayfree-desktop
-pkgver=2.7.4
+pkgver=2.7.8
 pkgrel=2
 pkgdesc="Analytics to help you understand and control your pc usage, leading to less distractions and enhanced productivity."
 arch=('x86_64')
@@ -12,7 +12,7 @@ optdepends=('libappindicator-gtk3')
 options=('!strip' '!emptydirs')
 install=${pkgname}.install
 source_x86_64=("https://github.com/stayfree-app/desktop-releases/releases/download/v$pkgver/stayfree-linux-amd64.deb")
-sha256sums_x86_64=('cbcded00bbebd4f56084e013fe326b6c7db4e9e96a2b8e115f3a94667c1c2b3b')
+sha256sums_x86_64=('76b661819324d9f4325313dc51a2b7b88fcfe4d3c03bf7666bec43d4a2b36cb3')
 package() {
   bsdtar -xf "${srcdir}/stayfree-linux-amd64.deb" -C "${srcdir}"
   
