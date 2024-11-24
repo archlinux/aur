@@ -6,7 +6,7 @@ build_number=08339
 # https://www.privateinternetaccess.com/pages/changelog
 
 epoch=1 # Switch versioning schemes for guaranteed upgrades
-pkgrel=3
+pkgrel=4
 pkgdesc="Private Internet Access client"
 arch=('x86_64' 'aarch64')
 url="https://privateinternetaccess.com/"
@@ -70,7 +70,7 @@ package() {
 	ln -s ../../../opt/piavpn/bin/piactl $pkgdir/usr/local/bin/piactl
 
 	# Temporary fix for systemd update 256.7 -> 256.8, will remove ASAP
-	ln -s /usr/lib/libcrypto.so.3 $pkgdir/opt/piavpn/libcrypto.so.3
+	ln -sf /usr/lib/libcrypto.so.3 $pkgdir/opt/piavpn/lib/libcrypto.so.3
 	
 	# limit log to the minimum to avoid excessive flooding
 	mkdir -p $pkgdir/opt/piavpn/var
