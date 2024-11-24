@@ -5,8 +5,8 @@ DEBUG=0
 
 _pkgname=git-remote-ipld
 pkgname=$_pkgname-git
-pkgver=0.0.0.r0.g2f4756ae2
-pkgrel=2
+pkgver=0.0.0.r0.g7d3eccfe2
+pkgrel=1
 epoch=1
 pkgdesc='git IPLD remote helper'
 url="https://github.com/ipfs-shipyard/$_pkgname"
