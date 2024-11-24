@@ -1,13 +1,13 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=cosmic-session-git
-pkgver=1.0.0.alpha.2.r7.g342369e
+pkgver=1.0.0.alpha.3.r3.g53237d1
 pkgrel=1
 pkgdesc="Session manager for the COSMIC desktop environment"
 arch=('x86_64' 'aarch64')
 url="https://github.com/pop-os/cosmic-session"
 license=('GPL-3.0-or-later')
 depends=(
-  'cosmic-applibrary-git'
+  'cosmic-app-library-git'
   'cosmic-applets-git'
   'cosmic-bg-git'
   'cosmic-comp-git'

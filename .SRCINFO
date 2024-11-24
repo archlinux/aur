@@ -1,6 +1,6 @@
 pkgbase = cosmic-session-git
 	pkgdesc = Session manager for the COSMIC desktop environment
-	pkgver = 1.0.0.alpha.2.r7.g342369e
+	pkgver = 1.0.0.alpha.3.r3.g53237d1
 	pkgrel = 1
 	url = https://github.com/pop-os/cosmic-session
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = cosmic-session-git
 	makedepends = git
 	makedepends = just
 	makedepends = mold
-	depends = cosmic-applibrary-git
+	depends = cosmic-app-library-git
 	depends = cosmic-applets-git
 	depends = cosmic-bg-git
 	depends = cosmic-comp-git
