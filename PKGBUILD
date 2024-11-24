@@ -3,32 +3,23 @@
 # Contributor: Bader <Bad3r@unsigned.sh>
 
 # shellcheck disable=SC1090,SC2207
-pkgname=pince-git
-pkgver=r1609.527ac61
+pkgname=pince
+pkgver=0.4.2
 pkgrel=1
 pkgdesc="A Linux reverse engineering tool inspired by Cheat Engine."
 arch=('any')
 url="https://github.com/korcankaraokcu/PINCE"
 license=('GPL-3.0-or-later WITH CC-BY-3.0')
-provides=('pince')
-conflicts=('pince')
 depends=() # follow upstream, set this later
 makedepends=('cmake' 'python-pip' 'qt6-tools' 'lsb-release' 'pkgconf' 'git' 'sed')
 optdepends=(
 	'qt6-wayland: wayland support'
 )
-source=("$pkgname::git+$url.git" 'PINCE.desktop')
+source=("$pkgname::git+$url.git#tag=v$pkgver" 'PINCE.desktop')
 install="note.install"
 sha1sums=('SKIP' '719d18d69abc299f739cc04041967e9d05a34104')
 _installpath='/usr/share/PINCE'
 _installsh='install.sh'
-
-pkgver() {
-	cd "$pkgname" || exit 1
-	printf "r%s.%s" \
-		"$(git rev-list --count HEAD)" \
-		"$(git rev-parse --short HEAD)"
-}
 
 prepare() {
 	# Remove ".venv/PINCE" exist check
