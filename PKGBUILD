@@ -1,9 +1,9 @@
-# Maintainer: drakkan <nicola.murino at gmail dot com>
-
+# Maintainer: CloverGit <clovergit@hotmail.com>
+# Contributor: drakkan <nicola.murino at gmail dot com>
 pkgname=mingw-w64-libpsl
 _pkgname=libpsl
 pkgver=0.21.5
-pkgrel=1
+pkgrel=2
 pkgdesc='Public Suffix List library (mingw-w64)'
 url='https://github.com/rockdaboot/libpsl'
 arch=(any)
@@ -16,26 +16,26 @@ sha512sums=('c14d575cecc0f1693894dd79565b6b9220084ddfa43b908a1cefe16d147cdd5ec47
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 build() {
-  cd "${srcdir}/${_pkgname}-${pkgver}"
-  for _arch in ${_architectures}; do
-    mkdir -p "build-${_arch}" && pushd build-${_arch}
-    ${_arch}-meson \
-      -D strip=true \
-      -D docs=false \
-      -D runtime=libidn2 ..
-    ninja
-    popd
-  done
+	cd "${srcdir}/${_pkgname}-${pkgver}"
+	for _arch in ${_architectures}; do
+		mkdir -p "build-${_arch}" && pushd build-${_arch}
+		${_arch}-meson \
+			-D strip=true \
+			-D docs=false \
+			-D runtime=libidn2 .. \
+			--default-library=both
+		ninja
+		popd
+	done
 }
 
 package() {
-  cd "${srcdir}/${_pkgname}-${pkgver}"
-  for _arch in ${_architectures}; do
-    DESTDIR="${pkgdir}" ninja -C "${srcdir}/${_pkgname}-${pkgver}/build-${_arch}" install
-    if [[ $NO_EXECUTABLES ]]; then
-      find "$pkgdir/usr/${_arch}" -name '*.exe' -delete
-    fi
-  done
+	cd "${srcdir}/${_pkgname}-${pkgver}"
+	for _arch in ${_architectures}; do
+		DESTDIR="${pkgdir}" ninja -C "${srcdir}/${_pkgname}-${pkgver}/build-${_arch}" install
+		if [[ $NO_EXECUTABLES ]]; then
+			find "$pkgdir/usr/${_arch}" -name '*.exe' -delete
+		fi
+	done
 }
-
-# vim: ts=2 sw=2 et
+# vim: set sw=2 ts=2 et:
