@@ -2,3 +2,4 @@
 /bc_*.tar.*
 /pkg
 /src
+/*.log

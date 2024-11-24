@@ -1,0 +1,14 @@
+pkgbase = dc-debian
+	pkgdesc = Debian's fork of the dc desktop calculator
+	pkgver = 1.07.1
+	pkgrel = 4
+	url = https://packages.debian.org/sid/dc
+	arch = any
+	license = GPL
+	conflicts = bc
+	source = http://deb.debian.org/debian/pool/main/b/bc/bc_1.07.1.orig.tar.gz
+	source = http://deb.debian.org/debian/pool/main/b/bc/bc_1.07.1-4.debian.tar.xz
+	b2sums = dcedc193be5521aa0fa3a19746233ed65bc1fe8ef12e15155341706de6fbeecb6dd7ee4ab11e2d4b3aca2ae7097cce89e389b3573493bbc893e00b4ed3239594
+	b2sums = f3c8dc037bea42f8b4b71b756a37c1cc3e077ca58d12a0989e1b96a044edb244ac696a0de68922ef1305c6dbc55b8b41e67a04bf988108ffdcb98582642388fd
+
+pkgname = dc-debian
