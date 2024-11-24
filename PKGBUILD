@@ -2,7 +2,7 @@
 # Contributor: Jose Riha <jose1711 gmail com>
 
 pkgname=libdeltachat
-pkgver=1.149.0
+pkgver=1.151.1
 pkgrel=1
 pkgdesc="Deltachat-core written in Rust"
 arch=('x86_64')
@@ -12,7 +12,7 @@ depends=('sqlcipher')
 options=(!lto)
 makedepends=('cargo' 'git')
 source=("$pkgname-$pkgver::https://github.com/deltachat/deltachat-core-rust/archive/refs/tags/v${pkgver}.tar.gz")
-b2sums=('e58c6e980e307e25cbccaee1714d3f8dfbbbe98e53e6693ce05ffa1fe2c5888ad1aad45debed6f14bcdab8892327b967c677d5b4b9e4ba2523829c3d61d953a6')
+b2sums=('a83947fd0c6c317814e838f035097f012bf7ff441d6337986a78c9e1d414307d4e65e457a48fe3f348b71934940fad755001c2a5b3e46573b868bb5278b6c62e')
 
 prepare() {
     cd "$srcdir/deltachat-core-rust-$pkgver/deltachat-ffi"
