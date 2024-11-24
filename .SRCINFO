@@ -1,6 +1,6 @@
 pkgbase = typstyle-git
 	pkgdesc = Beautiful and reliable typst code formatter
-	pkgver = 0.11.34.r0.2129609
+	pkgver = 0.12.3.r0.8f3b537
 	pkgrel = 1
 	url = https://github.com/Enter-tainer/typstyle
 	arch = aarch64

@@ -1,7 +1,7 @@
 # Maintainer: Jisu-Woniu <jswn@jswn9945.xyz>
 _pkgname=typstyle
 pkgname=$_pkgname-git
-pkgver=0.11.34.r0.2129609
+pkgver=0.12.3.r0.8f3b537
 pkgrel=1
 pkgdesc="Beautiful and reliable typst code formatter"
 arch=("aarch64" "armv7h" "x86_64")
@@ -38,6 +38,13 @@ build() {
         target/release/$_pkgname completions $shell >completions/$_pkgname-completion.$shell
     done
 }
+
+# check() {
+#     cd "$_pkgname"
+#     export RUSTUP_TOOLCHAIN=stable
+
+#     cargo test --frozen --all-features --features=cli,git-info,completion
+# }
 
 package() {
     install -Dm755 "$_pkgname/target/release/$_pkgname" "$pkgdir/usr/bin/$_pkgname"
