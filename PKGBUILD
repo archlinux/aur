@@ -72,7 +72,7 @@ fi
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-xanmod-git
-pkgver=6.9.9.xanmod1.r0.gebfe66c6a439
+pkgver=6.11.5.xanmod1.r0.g01af8d9d2426
 pkgrel=1
 pkgdesc='Linux Xanmod - git version'
 url="http://www.xanmod.org/"
@@ -111,7 +111,7 @@ for _patch in ${_patches[@]}; do
 done
 
 sha256sums=('SKIP'
-            '1ac18cad2578df4a70f9346f7c6fccbb62f042a0ee0594817fdef9f2704904ee')
+            'a8b38eb482eb685944757182c4886404abc12703e5e56ec39c7d61298d17d71f')
 
 export KBUILD_BUILD_HOST=${KBUILD_BUILD_HOST:-archlinux}
 export KBUILD_BUILD_USER=${KBUILD_BUILD_USER:-makepkg}
@@ -134,6 +134,7 @@ prepare() {
   for src in "${source[@]}"; do
     src="${src%%::*}"
     src="${src##*/}"
+    src="${src%.zst}"
     [[ $src = *.patch ]] || continue
     msg2 "Applying patch $src..."
     patch -Np1 < "../$src"
@@ -250,8 +251,9 @@ _package() {
     kmod
   )
   optdepends=(
-    'wireless-regdb: to set the correct wireless channels of your country'
     'linux-firmware: firmware images needed for some devices'
+    'scx-scheds: to use sched-ext schedulers'
+    'wireless-regdb: to set the correct wireless channels of your country'
   )
   provides=(
     KSMBD-MODULE
@@ -296,6 +298,7 @@ _package-headers() {
   install -Dt "$builddir/kernel" -m644 kernel/Makefile
   install -Dt "$builddir/arch/x86" -m644 arch/x86/Makefile
   cp -t "$builddir" -a scripts
+  ln -srt "$builddir" "$builddir/scripts/gdb/vmlinux-gdb.py"
 
   # required when STACK_VALIDATION is enabled
   install -Dt "$builddir/tools/objtool" tools/objtool/objtool

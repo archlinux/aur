@@ -1,6 +1,6 @@
 pkgbase = linux-xanmod-git
 	pkgdesc = Linux Xanmod - git version
-	pkgver = 6.9.9.xanmod1.r0.gebfe66c6a439
+	pkgver = 6.11.5.xanmod1.r0.g01af8d9d2426
 	pkgrel = 1
 	url = http://www.xanmod.org/
 	arch = x86_64
@@ -21,15 +21,16 @@ pkgbase = linux-xanmod-git
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	sha256sums = SKIP
-	sha256sums = 1ac18cad2578df4a70f9346f7c6fccbb62f042a0ee0594817fdef9f2704904ee
+	sha256sums = a8b38eb482eb685944757182c4886404abc12703e5e56ec39c7d61298d17d71f
 
 pkgname = linux-xanmod-git
 	pkgdesc = The Linux kernel and modules with Xanmod patches
 	depends = coreutils
 	depends = initramfs
 	depends = kmod
-	optdepends = wireless-regdb: to set the correct wireless channels of your country
 	optdepends = linux-firmware: firmware images needed for some devices
+	optdepends = scx-scheds: to use sched-ext schedulers
+	optdepends = wireless-regdb: to set the correct wireless channels of your country
 	provides = KSMBD-MODULE
 	provides = VIRTUALBOX-GUEST-MODULES
 	provides = WIREGUARD-MODULE
