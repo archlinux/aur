@@ -2,42 +2,39 @@
 # Contributer: Felix Yan <felixonmars@archlinux.org>
 
 pkgbase=python-defusedxml-git
-pkgname=("python-defusedxml-git" "python2-defusedxml-git")
-pkgver=v0.4.1.r5.g39d2ad3
+pkgname=("python-defusedxml-git")
+_pkgname="defusedxml"
+pkgver=v0.8.0rc2.r1.gc744588
 pkgrel=1
 pkgdesc="XML bomb protection for Python stdlib modules"
 arch=('any')
 url='https://github.com/AdamWill/defusedxml'
-license=('Python')
-makedepends=('python' 'python2')
-source=('defusedxml::git+https://github.com/AdamWill/defusedxml#branch=py36-iterparse')
+license=('PSF-2.0')
+depends=('python')
+makedepends=('git' 'python-build' 'python-installer' 'python-wheel' 'python-setuptools')
+conflicts=('python-defusedxml')
+provides=('python-defusedxml')
+source=('git+https://github.com/tiran/defusedxml.git')
 md5sums=('SKIP')
 
 pkgver() {
-  cd defusedxml
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+    cd "$_pkgname"
+    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-prepare() {
-  cp -a "defusedxml"{,-py2}
+build() {
+  cd "$_pkgname"
+  python -m build --wheel --no-isolation
 }
 
-package_python-defusedxml-git() {
-  depends=('python')
-  conflicts=('python-defusedxml')
-  provides=('python-defusedxml')
+check(){
+    cd "$_pkgname"
 
-  cd defusedxml
-  python3 setup.py install --root="${pkgdir}" --optimize=1
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    python -m tests
 }
 
-package_python2-defusedxml-git() {
-  depends=('python2')
-  conflicts=('python2-defusedxml')
-  provides=('python2-defusedxml')
-
-  cd defusedxml-py2
-  python2 setup.py install --root="${pkgdir}" --optimize=1
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+package() {
+    cd "$_pkgname"
+    python -m installer --destdir="$pkgdir" dist/*.whl
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
