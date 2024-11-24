@@ -13,11 +13,11 @@ depends=(
   'opencv-cuda'
   'vulkan-icd-loader'
   'glslang'
+  'ncnn'
 )
 makedepends=(
   'git'
   'cmake'
-  'ncnn'
   'vulkan-headers'
 )
 provides=("vapoursynth-plugin-${_plug}")
