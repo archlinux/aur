@@ -1,0 +1,22 @@
+--- a/src/CMakeLists.txt	2024-05-05 22:24:03.000000000 +0200
++++ b/src/CMakeLists.txt	2024-05-05 22:24:03.000000000 +0200
+@@ -169,7 +169,7 @@
+     ${CTEMPLATE_LIBRARIES} pthread
+     Grantlee5::Templates
+ )
+-if(${AKO_PREFIX}Akonadi_FOUND)
++if(${AKO_PREFIX}Akonadi_FOUND AND ${AKO_PREFIX}AkonadiContact_FOUND)
+   list(APPEND KRAFT_LINK_LIBS
+     ${AKO_PREFIX}::AkonadiCore
+     ${AKO_PREFIX}::AkonadiContact
+--- a/tools/CMakeLists.txt	2024-05-05 22:24:03.000000000 +0200
++++ b/tools/CMakeLists.txt	2024-05-05 22:24:03.000000000 +0200
+@@ -8,7 +8,7 @@
+ # For now there is only the Akonadi based address backend, and thus
+ # the findcontact tool is only built if akonadi is there.
+ # If there are other backends, this must be FIXED.
+-if(${AKO_PREFIX}Akonadi_FOUND)
++if(${AKO_PREFIX}Akonadi_FOUND AND ${AKO_PREFIX}AkonadiContact_FOUND)
+     add_executable(${findcontact_NAME} ${FINDCONTACT_SRC})
+ 
+     target_link_libraries( ${findcontact_NAME}

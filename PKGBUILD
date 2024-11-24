@@ -6,13 +6,13 @@
 pkgname=kraft
 pkgver=1.2.1
 _ver=v$pkgver
-pkgrel=3
+pkgrel=4
 pkgdesc="Kraft helps you to handle documents like quotes and invoices in your small business."
 arch=('x86_64')
 url="http://www.volle-kraft-voraus.de/"
-license=('GPL')
+license=('GPL-2.0-only')
 depends=(
-	'akonadi-contacts5' 'akonadi' 'ctemplate'
+	'akonadi' 'ctemplate'
 )
 optdepends=(
 	'python-reportlab: default PDF generator'
@@ -23,8 +23,11 @@ makedepends=('cmake' 'extra-cmake-modules' 'asciidoctor' 'po4a')
 source=(
   "kraft-v${pkgver}.tar.gz::https://github.com/dragotin/kraft/archive/${_ver}.tar.gz"
   "0001-Abort-Akonadi-start-if-it-is-already-broken.patch"
+  "0002-optional-akonadi-contact.patch"
 )
-
+sha256sums=('26f8e3ff7d12c86846b6db49ce171af31115f66119f9a7cce13de15f1397dd64'
+            'ff802760ded75c6d511bda5c9f0a35a3756d2b0c8b6e09a73eb4e915acdada67'
+            '6220650c3d34cb71d1b9df476aaa3f8e8041b118440c158352a4114a55e9e679')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
@@ -62,6 +65,3 @@ package() {
   cd "${srcdir}/${pkgname}-${pkgver}/build"
   make "DESTDIR=${pkgdir}" install
 }
-
-sha256sums=('26f8e3ff7d12c86846b6db49ce171af31115f66119f9a7cce13de15f1397dd64'
-            'ff802760ded75c6d511bda5c9f0a35a3756d2b0c8b6e09a73eb4e915acdada67')
