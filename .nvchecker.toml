@@ -1,0 +1,7 @@
+["python-sqlalchemy1.4"]
+source = "git"
+git = "https://github.com/sqlalchemy/sqlalchemy"
+from_pattern = '_'
+to_pattern = '.'
+prefix = "rel_"
+include_regex = '^rel_1_\d+_\d+$'
