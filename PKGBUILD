@@ -4,7 +4,7 @@
 
 _pkgname='ksh93'
 pkgname="${_pkgname}-git"
-pkgver=r1732.42b9a09e
+pkgver=r1807.8ee1efd9
 pkgrel=1
 pkgdesc="KornShell 93u+m, fork based on ksh 93u+"
 arch=('x86_64' 'i686' 'pentium4' 'powerpc64le' 'powerpc64' 'powerpc' 'riscv64' 'arm' 'armv6h' 'armv7h' 'aarch64')
@@ -72,8 +72,8 @@ package() {
 
 	# Create relevant relative symlinks for alternate ksh names
 	for _kshname in 'ksh93' 'rksh' 'rksh93'; do
-		ln -srf "${pkgdir}/usr/bin/ksh" "${pkgdir}/usr/bin/${_kshname}"
-		ln -srf "${pkgdir}/usr/share/man/man1/ksh.1" "${pkgdir}/usr/share/man/man1/${_kshname}.1"
+		ln -sr "${pkgdir}/usr/bin/ksh" "${pkgdir}/usr/bin/${_kshname}"
+		ln -sr "${pkgdir}/usr/share/man/man1/ksh.1" "${pkgdir}/usr/share/man/man1/${_kshname}.1"
 	done
 
 	# Move ksh-specific /usr/share/fun to /usr/share/ksh/functions
