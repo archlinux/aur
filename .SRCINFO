@@ -1,12 +1,12 @@
 pkgbase = python-spacy-ro_core_news_lg
 	pkgdesc = Romanian pretrained model for spaCy (large)
-	pkgver = 3.7.0
+	pkgver = 3.8.0
 	pkgrel = 1
 	url = https://spacy.io/models/ro#section-ro_core_news_lg
 	arch = any
 	license = CCPL
 	makedepends = python-setuptools
-	source = https://github.com/explosion/spacy-models/releases/download/ro_core_news_lg-3.7.0/ro_core_news_lg-3.7.0.tar.gz
-	b2sums = fef6df4f3696268d2837df66a690c088ccb2c6cb29af25d6e09d1daae15fb70ebda2da255e38aa1a62f0c1f27588bfa79b364b5ecc4125a0b5328004828f500e
+	source = https://github.com/explosion/spacy-models/releases/download/ro_core_news_lg-3.8.0/ro_core_news_lg-3.8.0.tar.gz
+	b2sums = d858d2e03c2a763d3f44a9b1698a38c8f09808181ebe882d82c1b2075d4e8a591f9635b0810115009b841d37a3c889eef549f0c6468391c3e3ac3d8f30957907
 
 pkgname = python-spacy-ro_core_news_lg
