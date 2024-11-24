@@ -3,7 +3,7 @@
 
 pkgname=prometheus-snmp-exporter-git
 _pkgname=snmp_exporter
-pkgver=0.26.0
+pkgver=r738.c771f70
 pkgrel=1
 pkgdesc='Prometheus exporter for SNMP metrics'
 arch=('x86_64')
@@ -84,7 +84,7 @@ package() {
 
   # binaries
   install -vDm755 "build/$_pkgname" "$pkgdir/usr/bin/${pkgname/-git/}"
-  install -vDm755 build/generator "$pkgdir/usr/bin/${pkgname/-git/%exporter}generator"
+  install -vDm755 build/generator "$pkgdir/usr/bin/${pkgname/exporter-git}generator"
 
   # documentation
   install -vDm644 -t "$pkgdir/usr/share/doc/${pkgname/-git/}" README.md auth-split-migration.md
