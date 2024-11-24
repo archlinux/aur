@@ -1,9 +1,11 @@
 post_install() {
     cat << EOF
 
-Cronicle installed. Please review the configuration file at /opt/cronicle/conf/config.json. 
+Cronicle installed. 
+Please review the configuration file at /opt/cronicle/conf/config.json. 
+And please review systemd service file at /usr/lib/systemd/system/cronicle.service.
 Next, if this is a master server, type: 'sudo /opt/cronicle/bin/control.sh setup' to init storage. 
-Then, to start the service, type: 'sudo /opt/cronicle/bin/control.sh start'. 
+Then, to start the service, type: 'sudo systemctl start cronicle.service'. 
 For full docs, please visit: http://github.com/jhuckaby/Cronicle.
 
 Enjoy!
@@ -14,7 +16,8 @@ EOF
 post_upgrade() {
     cat << EOF
 
-Cronicle upgraded. Please review the configuration file at /opt/cronicle/conf/config.json. 
+Cronicle upgraded. 
+Please review the configuration file at /opt/cronicle/conf/config.json. 
 For full docs, please visit: http://github.com/jhuckaby/Cronicle.
 
 EOF
