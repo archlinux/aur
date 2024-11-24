@@ -3,7 +3,7 @@
 _plug=waifu2x-caffe
 pkgname=vapoursynth-plugin-${_plug}-git
 pkgver=14.1.g89f5401
-pkgrel=3
+pkgrel=4
 pkgdesc="Plugin for Vapoursynth: ${_plug} (NVIDIA users only)(static libcaffe)(GIT version)"
 arch=('x86_64')
 url='https://forum.doom9.org/showthread.php?t=173673'
@@ -71,11 +71,20 @@ prepare() {
   # c++11 -> c++17
   sed 's|c++11|c++17|g' \
       -i caffe/Makefile
+  # Fix glog 0.7+ by adding -DGLOG_USE_GLOG_EXPORT define
+  sed 's|-DCAFFE_VERSION|-DGLOG_USE_GLOG_EXPORT -DCAFFE_VERSION|g' \
+      -i caffe/Makefile
+
+  # Silence "nvcc warning : incompatible redefinition for option 'compiler-bindir', the last value of this option was used". now use the correct gcc from /opt/cuda/bin
+  sed 's|-ccbin=$(CXX) ||g' -i caffe/Makefile
 
   cd "${_plug}"
 
   # rename models folder
   sed "s|models/|${_plug}-models/|g" -i Waifu2x-caffe/Waifu2x-caffe.cpp
+
+  # fix boost 1.8x+
+  sed 's|branch_path|parent_path|g' -i Waifu2x-caffe/waifu2x.cpp
 }
 
 build() {
@@ -88,7 +97,7 @@ build() {
   install -Dm644 build/src/caffe/proto/caffe.pb.h "${srcdir}/fakeroot/include/caffe/proto/caffe.pb.h"
 
   cd "${srcdir}"
-  CXXFLAGS+=' -fpermissive -std=c++17'
+  CXXFLAGS+=' -fpermissive -std=c++17 -DGLOG_USE_GLOG_EXPORT'
   arch-meson "${_plug}" build \
     -Dcudaincludedir=/opt/cuda/include \
     -Dcudalibdir=/opt/cuda/lib64 \

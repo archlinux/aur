@@ -1,7 +1,7 @@
 pkgbase = vapoursynth-plugin-waifu2x-caffe-git
 	pkgdesc = Plugin for Vapoursynth: waifu2x-caffe (NVIDIA users only)(static libcaffe)(GIT version)
 	pkgver = 14.1.g89f5401
-	pkgrel = 3
+	pkgrel = 4
 	url = https://forum.doom9.org/showthread.php?t=173673
 	arch = x86_64
 	license = MIT
