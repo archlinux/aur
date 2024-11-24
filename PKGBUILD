@@ -1,11 +1,11 @@
 # Maintainer: Chris Billington <chrisjbillington@gmail.com>
 _pkgname=linux-zen
-_pkgver=6.11.9.zen1
-_kernver=6.11.9
+_pkgver=6.12.1.zen1
+_kernver=6.12.1
 _zenver=zen1
 _pkgrel=1
 pkgbase="${_pkgname}-versioned-bin"
-_KERNNAME=6.11.9-zen1-1-zen
+_KERNNAME=6.12.1-zen1-1-zen
 _versioned_pkgname="linux${_pkgver}-${_pkgrel}-zen"
 pkgname=("${_pkgname}-versioned-bin"
          "${_pkgname}-versioned-headers-bin"
@@ -21,9 +21,9 @@ arch=(x86_64)
 license=(GPL2)
 options=('!strip')
 
-_kernpkg=linux-zen-6.11.9.zen1-1-x86_64.pkg.tar.zst
-_headerspkg=linux-zen-headers-6.11.9.zen1-1-x86_64.pkg.tar.zst
-_docspkg=linux-zen-docs-6.11.9.zen1-1-x86_64.pkg.tar.zst
+_kernpkg=linux-zen-6.12.1.zen1-1-x86_64.pkg.tar.zst
+_headerspkg=linux-zen-headers-6.12.1.zen1-1-x86_64.pkg.tar.zst
+_docspkg=linux-zen-docs-6.12.1.zen1-1-x86_64.pkg.tar.zst
 
 source=("https://archive.archlinux.org/packages/.all/${_kernpkg}"
         "https://archive.archlinux.org/packages/.all/${_headerspkg}"
@@ -31,9 +31,9 @@ source=("https://archive.archlinux.org/packages/.all/${_kernpkg}"
 
 noextract=("${source[@]##*/}")
 
-sha256sums=('4380c665918fd6250f4cf6b059549d3df9a7821d13a596aa0fc2ca298bfd347c'
-            'a601154c75caa32d6ffe995b83037130ca90ce9ada1b13cbe5b5120514f640b6'
-            'b82a47dc953cd318e8cd0a935a824f18b5f5901adcbfaf3888e4cd20e070659c')
+sha256sums=('68ecf5eda93e64f018578c262eecaffef15ae6111c603c9fa6a27d7aa72b6891'
+            '7cf07ecbe1f81906b447d24315539c7e2dd1c5da7fda7fd63a8c5f912ec02528'
+            '0d9724def945fbfe4b953d07d39ff746a3397d762abe0508fe071eaa4f975785')
 
 package_linux-zen-versioned-bin() {
   pkgdesc="Metapackage depending on ${_versioned_pkgname}-bin"  
@@ -51,13 +51,14 @@ package_linux-zen-versioned-docs-bin() {
   depends=("${_versioned_pkgname}-docs-bin")
 }
 
-package_linux6.11.9.zen1-1-zen-bin() {
+package_linux6.12.1.zen1-1-zen-bin() {
   pkgdesc="The Linux ZEN kernel and modules, version ${_KERNNAME}"
   depends=(coreutils
            initramfs
            kmod)
   conflicts=("${_pkgname}")
   optdepends=('linux-firmware: firmware images needed for some devices'
+              'scx-scheds: to use sched-ext schedulers'
               'wireless-regdb: to set the correct wireless channels of your country')
   provides=(KSMBD-MODULE
             UKSMD-BUILTIN
@@ -69,7 +70,7 @@ package_linux6.11.9.zen1-1-zen-bin() {
   sed -ic "s/${_pkgname}/${_KERNNAME}/" "${pkgdir}/usr/lib/modules/${_KERNNAME}/pkgbase"
 }
 
-package_linux6.11.9.zen1-1-zen-headers-bin() {
+package_linux6.12.1.zen1-1-zen-headers-bin() {
   pkgdesc="Headers and scripts for building modules for the Linux ZEN kernel ${_KERNNAME}"
   depends=(pahole)
   conflicts=("${_pkgname}-headers")
@@ -78,7 +79,7 @@ package_linux6.11.9.zen1-1-zen-headers-bin() {
   mv "${pkgdir}/usr/src/"{"${_pkgname}","${_versioned_pkgname}"}
 }
 
-package_linux6.11.9.zen1-1-zen-docs-bin() {
+package_linux6.12.1.zen1-1-zen-docs-bin() {
   pkgdesc="Documentation for the Linux ZEN kernel ${_KERNNAME}"
   conflicts=("${_pkgname}-docs")
   tar -xf "${_docspkg}" -C "${pkgdir}"
