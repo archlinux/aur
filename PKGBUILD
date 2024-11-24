@@ -1,7 +1,7 @@
 # Maintainer: Michael <x30827pos@gmail.com>
 pkgname=git2md-git
 reponame=git2md
-pkgver=1.1.1.r0.g$(git rev-parse --short HEAD)
+pkgver=1.1.2.r0.g$(git rev-parse --short HEAD)
 pkgrel=1
 pkgdesc="Convert Git repository contents to Markdown format"
 arch=('any')
