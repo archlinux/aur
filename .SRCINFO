@@ -1,16 +1,18 @@
 pkgbase = diablo-project-manager-git
-	pkgdesc = A CLI Project Manager
-	pkgver = r12.79d210b
+	pkgdesc = A Basic Project Manager
+	pkgver = git
 	pkgrel = 1
 	url = https://gitlab.com/diablodev/dpm
+	arch = x86
 	arch = x86_64
 	license = MIT
 	makedepends = shc
 	depends = bash
 	depends = git
 	depends = glibc
+	optdepends = yad: allows you to run diablo-project-manager with passing -h and provides a gui interface
 	provides = diablo-project-manager
-	conflicts = diablo-project-manager
+	conflicts = diablo-project-manager-git
 	source = diablo-project-manager-git::git+https://gitlab.com/diablodev/dpm.git
 	sha256sums = SKIP
 
