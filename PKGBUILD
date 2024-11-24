@@ -18,7 +18,6 @@ sha256sums=('SKIP')
 build() {
     cd "$pkgname-v$pkgver"
 
-
     ./configure --prefix=/usr
     make
 }
