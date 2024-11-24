@@ -6,13 +6,12 @@
 pkgname=synology-assistant
 pkgver=7.0.5_50070
 _pkgver=7.0.5-50070
-pkgrel=3
+pkgrel=4
 pkgdesc="It helps you set up and install DSM on your DiskStation"
 arch=('x86_64')
 url="https://www.synology.com/en-global/releaseNote/Assistant"
 license=('custom:Synology Linux License Grant')
-depends=('glibc' 'glib2' 'dbus' 'libx11' 'libxt' 'libpng12' 'libxcb' 'libxkbcommon' 'libsm' 'libice'
-         'zlib' 'libxrender' 'fontconfig' 'qt5-base')
+depends=('glib2' 'glibc' 'qt5-base' 'libxkbcommon' 'libice' 'libsm')
 conflicts=('synology-assistant')
 provides=('synology-assistant')
 install=${pkgname}.install
