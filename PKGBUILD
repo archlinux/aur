@@ -1,5 +1,6 @@
 # Maintainer: Talon <diablodev@googlegroups.com>
-pkgname=diablo-project-manager-git
+_pkgname=diablo-project-manager
+pkgname=$_pkgname-git
 pkgver=git
 pkgrel=1
 pkgdesc="A Basic Project Manager"
@@ -26,10 +27,10 @@ prepare() {
 
 build() {
 	cd "$srcdir/$pkgname"
-	make PACKAGE="$pkgname" PREFIX="/usr" build
+	make PACKAGE="$_pkgname" PREFIX="/usr" build
 }
 
 package() {
 	cd "$srcdir/$pkgname"
-	make PACKAGE="$pkgname" DESTDIR="$pkgdir" PREFIX="/usr" install
+	make PACKAGE="$_pkgname" DESTDIR="$pkgdir" PREFIX="/usr" install
 }
