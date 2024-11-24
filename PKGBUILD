@@ -4,12 +4,14 @@
 
 # shellcheck disable=SC1090,SC2207
 pkgname=pince-git
-pkgver=r1547.823b213
+pkgver=r1609.527ac61
 pkgrel=1
 pkgdesc="A Linux reverse engineering tool inspired by Cheat Engine."
 arch=('any')
 url="https://github.com/korcankaraokcu/PINCE"
 license=('GPL-3.0-or-later WITH CC-BY-3.0')
+provides=('pince')
+conflicts=('pince')
 depends=() # follow upstream, set this later
 makedepends=('cmake' 'python-pip' 'qt6-tools' 'lsb-release' 'pkgconf' 'git' 'sed')
 optdepends=(
@@ -33,36 +35,10 @@ prepare() {
 	sed -e '/^if \[ ! -d .*.venv.* \]; /,/venv.*activate$/ s/^/# /' \
 		-e 's|[^ ]*python3|python3|' \
 		-i "./$pkgname/PINCE.sh"
-
-	# Create a start script
-	cat > pince <<- SHELL
-		#!/usr/bin/env bash
-
-		syncicon() {
-		    local logo_path iconpath destpath
-		    . <(grep '^logo_path=.*' "\${XDG_CONFIG_HOME:-"\$HOME/.config"}/PINCE/PINCE.conf")
-		    iconpath="/usr/share/PINCE/media/logo/\$logo_path"
-		    destpath="\${XDG_DATA_HOME:-"\$HOME/.local/share"}/icons/hicolor/256x256/apps/PINCE.png"
-		    mkdir -p "\$(dirname "\$destpath")"
-		    ln -sf "\$iconpath" "\$destpath"
-		    echo -e "\nDesktop icon updated: \$destpath"
-		    echo "If the setting of icon changed, Re-login for setting to take effect."
-		}
-
-		pushd "$_installpath" || exit 1
-		sh PINCE.sh "\$@"
-		syncicon
-		popd || exit 1
-
-		read -p "Press enter to exit..."
-
-	SHELL
 }
 
 build() {
 	cd "$pkgname" || exit 1
-	# Source PKG_NAMES* vars
-	. <(sed -n '/^PKG_NAMES/p' $_installsh)
 
 	# Source functions
 	. <(sed -n '/^exit_on_error() /,/^}/p' $_installsh)
@@ -77,9 +53,6 @@ build() {
 	install_libscanmem || exit_on_error
 	install_libptrscan || exit_on_error
 	compile_translations || exit_on_error
-
-	# Exports for later
-	export PKG_NAMES PKG_NAMES_PIP
 }
 
 package() {
@@ -114,7 +87,8 @@ package() {
 	done
 
 	# Add new depends
-	for dep in $PKG_NAMES; do
+	. <(sed -n '/^PKG_NAMES_ARCH/p' $_installsh)
+	for dep in $PKG_NAMES_ARCH; do
 		if [[ ! ${makedepends[*]} =~ $dep ]]; then
 			msg2 'Added new depend '"$dep"''
 			depends+=("${dep:-base-devel}")
@@ -125,12 +99,35 @@ package() {
 
 	# Copy files
 	install -d "$pkgdir/usr/bin"
-	install -Dm755 ../pince "$pkgdir/usr/bin"
 	install -d "$pkgdir/$_installpath/i18n"
 	install PINCE.sh PINCE.py \
 		COPYING COPYING.CC-BY AUTHORS THANKS "$pkgdir/$_installpath"
 	cp -r GUI libpince media tr "$pkgdir/$_installpath"
 	cp -r i18n/qm "$pkgdir/$_installpath/i18n"
+
+	# Create a start script
+	install -Dm755 /dev/stdin "$pkgdir/usr/bin/pince" <<- SHELL
+		#!/usr/bin/env bash
+
+		syncicon() {
+		    local logo_path iconpath destpath
+		    . <(grep '^logo_path=.*' "\${XDG_CONFIG_HOME:-"\$HOME/.config"}/PINCE/PINCE.conf")
+		    iconpath="/usr/share/PINCE/media/logo/\$logo_path"
+		    destpath="\${XDG_DATA_HOME:-"\$HOME/.local/share"}/icons/hicolor/256x256/apps/PINCE.png"
+		    mkdir -p "\$(dirname "\$destpath")"
+		    ln -sf "\$iconpath" "\$destpath"
+		    echo -e "\nDesktop icon updated: \$destpath"
+		    echo "If the setting of icon changed, Re-login for setting to take effect."
+		}
+
+		pushd "$_installpath" || exit 1
+		sh PINCE.sh "\$@"
+		syncicon
+		popd || exit 1
+
+		read -p "Press enter to exit..."
+
+	SHELL
 
 	popd || exit 1
 
