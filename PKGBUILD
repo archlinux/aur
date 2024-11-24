@@ -84,7 +84,7 @@ package() {
 
   # binaries
   install -vDm755 "build/$_pkgname" "$pkgdir/usr/bin/${pkgname/-git/}"
-  install -vDm755 build/generator "$pkgdir/usr/bin/${$pkgname/-git/%exporter}generator"
+  install -vDm755 build/generator "$pkgdir/usr/bin/${pkgname/-git/%exporter}generator"
 
   # documentation
   install -vDm644 -t "$pkgdir/usr/share/doc/${pkgname/-git/}" README.md auth-split-migration.md
