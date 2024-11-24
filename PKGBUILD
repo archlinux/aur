@@ -3,7 +3,7 @@
 
 _archive_extension="tar.gz"
 pkgname=ipfs-desktop
-pkgver=0.38.0
+pkgver=0.40.0
 pkgrel=1
 pkgdesc="Desktop client for the InterPlanetary File System"
 arch=(x86_64)
@@ -13,7 +13,7 @@ depends=(gtk3 alsa-lib)
 makedepends=("nodejs>=16" npm node-gyp libxcrypt-compat libnotify snappy libappindicator-gtk3 re2 nss minizip libxss libxslt libvpx http-parser c-ares libevent)
 install=$pkgname.install
 source=("$pkgname-$pkgver.$_archive_extension::https://github.com/ipfs/ipfs-desktop/archive/refs/tags/v$pkgver.$_archive_extension")
-b2sums=('ded306db59a04d97b860cfa4e136e127254a84c7ddb493949f842a35bd5ecffa3f9d5777b67d13f84eceafe3d8b853625f855e052ecc1c79a104dc684cd688ca')
+b2sums=('5924758c0cf5ab429f557e156299abc9a8273f30cecab29e625328b367baacdd98ddc4d95a8939df753ed0a07c8995c31acf2f71e9540a7946961279a969b00d')
 
 prepare() {
 	cd "$pkgname-$pkgver"
