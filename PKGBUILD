@@ -5,13 +5,13 @@ _appdataprefix="/var/opt"
 
 pkgname=open-webui
 pkgver=0.4.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Web UI and OpenAI API for various LLM runners, including Ollama"
 arch=('any')
 url="https://github.com/open-webui/open-webui"
 license=('MIT')
-depends=('python' 'nodejs-lts-iron')
-makedepends=('npm')
+depends=('python')
+makedepends=('npm' 'nvm')
 conflicts=('open-webui-git')
 source=("${pkgname}-${pkgver}.tar.gz"::"${url}/archive/refs/tags/v${pkgver}.tar.gz"
     "open-webui.service"
@@ -23,7 +23,24 @@ sha1sums=('aab4ea214e55242d7b64a6007f44291a9771d6b2'
           'fb015c224b9529988823f0e24d65ab4a004d30c0')
 options=(!strip !debug)
 
+_ensure_local_nvm() {
+    # let's be sure we are starting clean
+    which nvm >/dev/null 2>&1 && nvm deactivate && nvm unload
+    export NVM_DIR="${srcdir}/.nvm"
+
+    # The init script returns 3 if version specified
+    # in ./.nvrc is not (yet) installed in $NVM_DIR
+    # but nvm itself still gets loaded ok
+    source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
+}
+
+prepare() {
+    _ensure_local_nvm
+    nvm install lts/iron
+}
+
 build() {
+    _ensure_local_nvm
     cd "${pkgname}-${pkgver}"
     export NODE_OPTIONS="--max_old_space_size=4096"
     npm install
@@ -33,6 +50,7 @@ build() {
 }
 
 check() {
+    _ensure_local_nvm
     cd "${pkgname}-${pkgver}"
     export NODE_OPTIONS="--max_old_space_size=4096"
     npm run test:frontend
