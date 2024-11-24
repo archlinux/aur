@@ -9,7 +9,7 @@ arch=('i686' 'x86_64')
 url="https://github.com/swsnr/mdcat"
 license=('MPL-2.0')
 options=(!lto)
-depends=('gcc-libs' 'openssl')
+depends=('gcc-libs' 'openssl' 'curl')
 makedepends=('asciidoctor'
              'cargo')
 optdepends=('less: for mdless')

@@ -10,6 +10,7 @@ pkgbase = mdcat
 	makedepends = cargo
 	depends = gcc-libs
 	depends = openssl
+	depends = curl
 	optdepends = less: for mdless
 	options = !lto
 	source = mdcat-2.7.0.tar.gz::https://github.com/swsnr/mdcat/archive/mdcat-2.7.0.tar.gz
