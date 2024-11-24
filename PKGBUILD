@@ -2,7 +2,7 @@
 
 pkgname=login-ng
 pkgver=0.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc='A greeter with addition functionalities'
 url='https://github.com/neroreflex/login-ng'
 license=()
@@ -28,10 +28,8 @@ b2sums=(
     '22625e6acd4174a0af77650653183ca21765cbb4e7d288fdcf49b13dd61462a789cb1b66b6e815f57047e16a2fb403ec65e19daccff30682565dcede910a84a9' # login_ng.tmpfiles
 )
 backup=(
-    etc/apparmor.d/lightdm-guest-session
-    etc/pam.d/lightdm
-    etc/pam.d/lightdm-autologin
-    etc/pam.d/lightdm-greeter
+    etc/pam.d/login_ng
+    etc/pam.d/login_ng-autologin
 )
 
 prepare() {
@@ -56,9 +54,13 @@ check() {
 package() {
     cd "$srcdir/$pkgname-$pkgver"
 
-    cargo install --root="$pkgdir" --path .
-    rm "$pkgdir/.crates2.json"
-    rm "$pkgdir/.crates.toml"
+    cargo install --root="$pkgdir/opt/login-ng" --path .
+    rm "$pkgdir/opt/login-ng/.crates2.json"
+    rm "$pkgdir/opt/login-ng/.crates.toml"
+
+    mkdir -p "$pkgdir/usr/bin"
+    ln -s "/opt/login-ng/bin/login-ng_ctl" "$pkgdir/usr/bin/login_ng-ctl"
+    ln -s "/opt/login-ng/bin/login-ng_cli" "$pkgdir/usr/bin/login_ng-cli"
 
     # PAM
     mkdir -p "${pkgdir}"/etc/pam.d
