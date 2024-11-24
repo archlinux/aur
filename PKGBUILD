@@ -2,13 +2,13 @@
 
 pkgname="adb-wifi"
 pkgver=0.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A CLI tool which shows QR code and makes seamless connection to the ADB bridge"
 arch=('any')
 url="https://github.com/saleehk/${pkgname}"
 license=('ISC')
 makedepends=('npm')
-depends=('nodejs')
+depends=('adb' 'nodejs')
 _pkgsrc="${pkgname}-${pkgver}"
 source=("${_pkgsrc}.tar.gz::https://registry.npmjs.org/${pkgname}/-/${_pkgsrc}.tgz")
 noextract=("${_pkgsrc}.tar.gz")
@@ -26,7 +26,7 @@ package() {
   # https://bugs.archlinux.org/task/63396
   chown -R root:root "${pkgdir}"
 
-  install -d "${pkgdir}/usr/share/doc/${pkgname}"
-  ln -s "/usr/lib/node_modules/${pkgname}/readme.md" \
-    "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+  install -vd "${pkgdir}/usr/share/doc/${pkgname}"
+  cd "${pkgdir}/usr/share/doc/${pkgname}"
+  ln -vs "/usr/lib/node_modules/${pkgname}/readme.md" "README.md"
 }
