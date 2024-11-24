@@ -2,7 +2,7 @@
 
 # Maintainer: Rainer Meier <rainer.meier@gmail.com>
 pkgname=roaming-profiles
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 # epoch=
 pkgdesc="Roaming Profiles for Linux environments."
