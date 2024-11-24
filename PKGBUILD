@@ -15,10 +15,7 @@ sha256sums=('SKIP')
 
 pkgver() {
 	cd "$srcdir/$pkgname"
-	( set -o pipefail
-    	echo "$(git tag)" ||
-    	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
-  	)
+	git describe --tags --long --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
