@@ -1,8 +1,8 @@
 # Maintainer: Shibam Roy <royshibam9826@gmail.com>
 pkgname=easyfeh
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
-pkgdesc="An easy, and user-friendly feh wrapper"
+pkgdesc="An easy, and user-friendly wrapper originally meant for feh, but works with anything!"
 arch=('any')               
 conflicts=('easyfeh-git')
 url="https://github.com/ShibamRoy9826/easyfeh"
@@ -12,7 +12,7 @@ optdepends=(
   'swww: Enables wayland support'
   )
 makedepends=('python-setuptools') 
-source=("https://github.com/ShibamRoy9826/easyfeh/releases/download/beta2/easyfeh-v${pkgver}.tar.gz")
+source=("https://github.com/ShibamRoy9826/easyfeh/releases/download/beta3/easyfeh-v${pkgver}.tar.gz")
 sha256sums=('SKIP')
 
 package() {

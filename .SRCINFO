@@ -1,6 +1,6 @@
 pkgbase = easyfeh
-	pkgdesc = An easy, and user-friendly feh wrapper
-	pkgver = 0.1.2
+	pkgdesc = An easy, and user-friendly wrapper originally meant for feh, but works with anything!
+	pkgver = 0.1.3
 	pkgrel = 1
 	url = https://github.com/ShibamRoy9826/easyfeh
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = easyfeh
 	depends = python-rich
 	optdepends = swww: Enables wayland support
 	conflicts = easyfeh-git
-	source = https://github.com/ShibamRoy9826/easyfeh/releases/download/beta2/easyfeh-v0.1.2.tar.gz
+	source = https://github.com/ShibamRoy9826/easyfeh/releases/download/beta3/easyfeh-v0.1.3.tar.gz
 	sha256sums = SKIP
 
 pkgname = easyfeh
