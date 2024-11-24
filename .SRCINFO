@@ -1,7 +1,7 @@
 pkgbase = wivrn-dashboard
 	pkgdesc = A wireless Monado-based OpenXR runtime for standalone headsets.
 	pkgver = 0.21.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/WiVRn/WiVRn
 	arch = x86_64
 	license = GPL-3.0-only
@@ -9,6 +9,7 @@ pkgbase = wivrn-dashboard
 	makedepends = boost
 	makedepends = librsvg
 	makedepends = glib2-devel
+	makedepends = qt6-tools
 	depends = gcc-libs
 	depends = glibc
 	depends = hicolor-icon-theme
