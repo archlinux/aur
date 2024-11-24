@@ -1,6 +1,6 @@
 pkgbase = vapoursynth-plugin-edi_rpow2-git
 	pkgdesc = Plugins for Vapoursynth : nnedi3_rpow2, znedi3_rpow2, nnedi3cl_rpow2, eedi3_rpow2 and eedi2_rpow2
-	pkgver = r29.2a20385
+	pkgver = r30.90fa697
 	pkgrel = 1
 	url = http://forum.doom9.org/showthread.php?t=172652
 	arch = any
