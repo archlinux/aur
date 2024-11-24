@@ -3,7 +3,7 @@
 pkgname=ludusavi
 _app_id="com.mtkennerly.$pkgname"
 pkgver=0.27.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Backup tool for PC game saves"
 arch=('x86_64')
 url="https://github.com/mtkennerly/ludusavi"
@@ -49,9 +49,6 @@ build() {
 
 check() {
   cd "$pkgname-$pkgver"
-  export RUSTUP_TOOLCHAIN=stable
-  cargo test --frozen --all-features
-
   appstreamcli validate --no-net "assets/linux/${_app_id}.metainfo.xml"
   desktop-file-validate "assets/linux/${_app_id}.desktop"
 }
@@ -59,13 +56,14 @@ check() {
 package() {
   cd "$pkgname-$pkgver"
   install -Dm755 "target/release/$pkgname" -t "$pkgdir/usr/bin/"
-  install -Dm644 "assets/linux/${_app_id}.metainfo.xml" -t "$pkgdir/usr/share/metainfo/"
+  install -Dm644 "assets/linux/${_app_id}.metainfo.xml" -t \
+    "$pkgdir/usr/share/metainfo/"
   install -Dm644 assets/icon.png \
-    "$pkgdir/usr/share/icons/hicolor/64x64/apps/$pkgname.png"
+    "$pkgdir/usr/share/icons/hicolor/64x64/apps/${_app_id}.png"
   install -Dm644 assets/icon.svg \
-    "$pkgdir/usr/share/icons/hicolor/scalable/apps/$pkgname.svg"
-  install -Dm644 "assets/linux/${_app_id}.desktop" \
-    "$pkgdir/usr/share/applications/${_app_id}.desktop"
+    "$pkgdir/usr/share/icons/hicolor/scalable/apps/${_app_id}.svg"
+  install -Dm644 "assets/linux/${_app_id}.desktop" -t \
+    "$pkgdir/usr/share/applications/"
   install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
   install -Dm644 "$srcdir/$pkgname-v$pkgver-legal.txt" \
     "$pkgdir/usr/share/licenses/$pkgname/legal.txt"

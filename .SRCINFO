@@ -1,7 +1,7 @@
 pkgbase = ludusavi
 	pkgdesc = Backup tool for PC game saves
 	pkgver = 0.27.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mtkennerly/ludusavi
 	arch = x86_64
 	license = MIT
