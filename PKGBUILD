@@ -1,5 +1,5 @@
 # Maintainer: techcs <techcs@protonmail.com>
-pkgname=admixtools
+pkgname=admixtools-git
 pkgver=r61.b10ddcf
 pkgrel=1
 pkgdesc="Tools to test whether admixture occurred and more"
@@ -8,7 +8,7 @@ url="https://reich.hms.harvard.edu/software"
 license=('custom')
 depends=('gsl' 'openblas' 'gcc-fortran')
 makedepends=('git' 'make')
-source=("admixtools::git+https://github.com/DReichLab/AdmixTools")
+source=("admixtools-git::git+https://github.com/DReichLab/AdmixTools")
 sha256sums=('SKIP')
 
 build() {

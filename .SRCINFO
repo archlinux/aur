@@ -1,4 +1,4 @@
-pkgbase = admixtools
+pkgbase = admixtools-git
 	pkgdesc = Tools to test whether admixture occurred and more
 	pkgver = r61.b10ddcf
 	pkgrel = 1
@@ -10,7 +10,7 @@ pkgbase = admixtools
 	depends = gsl
 	depends = openblas
 	depends = gcc-fortran
-	source = admixtools::git+https://github.com/DReichLab/AdmixTools
+	source = admixtools-git::git+https://github.com/DReichLab/AdmixTools
 	sha256sums = SKIP
 
-pkgname = admixtools
+pkgname = admixtools-git
