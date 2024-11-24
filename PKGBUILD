@@ -2,7 +2,7 @@
 # Contributor:
 pkgname=stayfree-desktop
 pkgver=2.7.8
-pkgrel=2
+pkgrel=3
 pkgdesc="Analytics to help you understand and control your pc usage, leading to less distractions and enhanced productivity."
 arch=('x86_64')
 url="https://stayfreeapps.com"
