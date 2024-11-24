@@ -1,0 +1,28 @@
+pkgbase = jre-zulu-fx-bin
+	pkgdesc = A open source, TCK-tested and certified builds of OpenJDK (full-runtime environment with OpenJFX).
+	pkgver = 23.0.1
+	pkgrel = 1
+	url = https://www.azul.com/
+	install = install_jre-zulu-fx-bin.install
+	arch = aarch64
+	arch = x86_64
+	license = LicenseRef-Java
+	depends = java-environment-common>=3
+	depends = java-runtime-common>=3
+	depends = ca-certificates-utils
+	provides = java-environment=23
+	provides = java-environment-openjdk=23
+	provides = java-runtime=23
+	provides = java-runtime-openjdk=23
+	provides = java-runtime-headless=23
+	provides = java-runtime-headless-openjdk=23
+	provides = java-openjfx=23
+	conflicts = jre-zulu-bin
+	conflicts = zulu-23-bin
+	conflicts = zulu-fx-bin
+	source_aarch64 = https://cdn.azul.com/zulu/bin/zulu23.30.13-ca-fx-jre23.0.1-linux_aarch64.tar.gz
+	sha256sums_aarch64 = 4f544bd3f98fbdb059cf18379ad30193ede13a07d887ef3d85557facbf4677c7
+	source_x86_64 = https://cdn.azul.com/zulu/bin/zulu23.30.13-ca-fx-jre23.0.1-linux_x64.tar.gz
+	sha256sums_x86_64 = a90b5bf8ce8eb6b9fb8696fbba2cc6befc602736eed3bdb6fec2876ab8e0a797
+
+pkgname = jre-zulu-fx-bin
