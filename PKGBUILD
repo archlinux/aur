@@ -1,6 +1,6 @@
 # Maintainer: Ash Price <eisleggje@gmail.com>
 pkgname=python-spacy-it_core_news_lg
-pkgver=3.7.0
+pkgver=3.8.0
 pkgrel=1
 pkgdesc='Italian pretrained model for spaCy (large)'
 arch=(any)
@@ -9,7 +9,7 @@ license=(CCPL)
 depends=()
 makedepends=(python-setuptools)
 source=("https://github.com/explosion/spacy-models/releases/download/it_core_news_lg-${pkgver}/it_core_news_lg-${pkgver}.tar.gz")
-b2sums=('4e34d4a674eec1216877d5992a1337c0428156cc9bac422e0b8f1cd31ebfee71d559d992bbcb07085a695fa745f8e92dca0012c3068e8de4d18d00b9914d3363')
+b2sums=('a559f8fa8b357092dd12f81cd758c949028e8aa38938d35e40e66b689591e99ed5668ac2075cac891a4492e835dce800149e3556878a9cd8a7377f407313aa52')
 
 build() {
   cd it_core_news_lg-${pkgver}
