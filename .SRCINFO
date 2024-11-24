@@ -1,4 +1,6 @@
 pkgbase = pigg-x86_64-unknown-linux-gnu
+
+
 	pkgdesc = A Graphical User Interface for interacting with local and remote Raspberry Pi and Pi Pico Hardware
 	pkgver = 0.5.0
 	pkgrel = 1
