@@ -1,6 +1,6 @@
 # Maintainer: Ash Price <eisleggje@gmail.com>
 pkgname=python-spacy-da_core_news_lg
-pkgver=3.7.0
+pkgver=3.8.0
 pkgrel=1
 pkgdesc='Danish pretrained model for spaCy (large)'
 arch=(any)
@@ -9,7 +9,7 @@ license=(CCPL)
 depends=()
 makedepends=(python-setuptools)
 source=("https://github.com/explosion/spacy-models/releases/download/da_core_news_lg-${pkgver}/da_core_news_lg-${pkgver}.tar.gz")
-b2sums=('2c4bdc3521a5c250662635f475c5ef296b7ca2f3fa02d5d8e9e0f7bf3d091af8c885d324cedc7c52244c0001cac48743e82ee755f15852cc3a4f3fc48dcf4cfc')
+b2sums=('25d863569de5bd995bb472c46132eb8c0b2f64b3bb7dc38d546b02417e37d9c9c7e5a05269a3fdf7b48ddc00366fc0735b57cf78afc18ee9919b29b65060bf2d')
 
 build() {
   cd da_core_news_lg-${pkgver}
