@@ -1,0 +1,17 @@
+pkgbase = python-aiocurl
+	pkgdesc = Using libcurl's socket interface to let asyncio's event loop do all the work of waiting for I/O and scheduling of timeouts.
+	pkgver = 0.0.3.post1
+	pkgrel = 1
+	url = https://github.com/fsbs/aiocurl
+	arch = any
+	license = AGPL-3.0
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	depends = python-pycurl
+	source = https://files.pythonhosted.org/packages/source/a/aiocurl/aiocurl-0.0.3.post1.tar.gz
+	sha256sums = c94549abbd871b245993599badf39b8edcfe13d80847cfaad7a32220e9f0efab
+
+pkgname = python-aiocurl
