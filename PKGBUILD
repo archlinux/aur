@@ -5,7 +5,7 @@
 pkgname=pauker
 pkgver=1.9b3
 pkgver_dl=1.9Beta3
-pkgrel=2
+pkgrel=3
 pkgdesc="A flash card based learning tool using shortterm and longterm memory training (no active development)"
 arch=('any')
 url="http://pauker.sourceforge.net/"

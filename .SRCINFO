@@ -1,7 +1,7 @@
 pkgbase = pauker
 	pkgdesc = A flash card based learning tool using shortterm and longterm memory training (no active development)
 	pkgver = 1.9b3
-	pkgrel = 2
+	pkgrel = 3
 	url = http://pauker.sourceforge.net/
 	arch = any
 	license = GPL
@@ -17,4 +17,3 @@ pkgbase = pauker
 	sha512sums = SKIP
 
 pkgname = pauker
-
