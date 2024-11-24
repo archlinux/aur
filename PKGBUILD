@@ -2,7 +2,7 @@
 # Maintainer: Michał Wojdyła < micwoj9292 at gmail dot com >
 _gemname=selenium-webdriver
 pkgname=ruby-$_gemname
-pkgver=4.25.0
+pkgver=4.26.0
 pkgrel=1
 pkgdesc="A browser automation framework and ecosystem"
 arch=(x86_64)
@@ -18,7 +18,7 @@ ruby-websocket
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-b2sums=('382a63e42a298ce5dc7b7f37927c01f436baf3e6b45c62acafe445f6858c006b55d4df5f4ce8d6f0418c4f55f3d71ffd055f821e32f2dda52375fbca2e1fa167')
+b2sums=('b66ce6224ca862a457ce13eff289c007b089210215d145472e0ae9bdb65f2c7a1b9de9d301de9e29465c1c9749a376175be65c53614a18ed866b0a6a48972af5')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
