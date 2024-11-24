@@ -1,8 +1,8 @@
 # Maintainer: Kyle Keen <keenerd@gmail.com>
 
 pkgname=gnu-apl
-pkgver=1.8
-pkgrel=3
+pkgver=1.9
+pkgrel=1
 url="https://www.gnu.org/software/apl/"
 pkgdesc="An (almost) complete implementation of ISO standard 13751"
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('GPL3')
 #source=("https://ftpmirror.gnu.org/apl/apl-${pkgver}.tar.gz"{,.sig})
 # official https gnu site not updated any more?
 source=("https://mirrors.kernel.org/gnu/apl/apl-${pkgver}.tar.gz"{,.sig})
-sha256sums=('144f4c858a0d430ce8f28be90a35920dd8e0951e56976cb80b55053fa0d8bbcb'
+sha256sums=('291867f1b1937693abb57be7d9a37618b0376e3e2709574854a7bbe52bb28eb8'
             'SKIP')
 validpgpkeys=('3EB2E2ECCB2F040A26CB7F2192B68B71531B6686')
 
