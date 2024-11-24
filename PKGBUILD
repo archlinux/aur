@@ -71,6 +71,7 @@ prepare() {
   # c++11 -> c++17
   sed 's|c++11|c++17|g' \
       -i caffe/Makefile
+
   # Fix glog 0.7+ by adding -DGLOG_USE_GLOG_EXPORT define
   sed 's|-DCAFFE_VERSION|-DGLOG_USE_GLOG_EXPORT -DCAFFE_VERSION|g' \
       -i caffe/Makefile
