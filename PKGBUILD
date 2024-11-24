@@ -4,9 +4,9 @@
 
 _name="sqlalchemy"
 pkgname=python-sqlalchemy1.4
-pkgver=1.4.52
+pkgver=1.4.54
 _ver="rel_${pkgver//./_}"
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://www.sqlalchemy.org/"
 license=('MIT')
@@ -17,21 +17,15 @@ makedepends=('python-setuptools' 'python-build' 'python-installer' 'python-wheel
 checkdepends=('python-pytest' 'python-pytest-xdist')
 conflicts=('python-sqlalchemy')
 provides=('python-sqlalchemy')
-source=(
-  "$pkgname-$pkgver.tar.gz::https://github.com/sqlalchemy/sqlalchemy/archive/refs/tags/${_ver}.tar.gz"
-  # https://github.com/sqlalchemy/sqlalchemy/pull/11500
-  "fix-building-c-extension-on-python-3.13.patch::https://github.com/sqlalchemy/sqlalchemy/commit/8a5888b147022b4586d30dcd7159e4fa6a31ec0e.patch"
-)
+source=("$pkgname-$pkgver.tar.gz::https://github.com/sqlalchemy/sqlalchemy/archive/refs/tags/${_ver}.tar.gz")
 # https://github.com/sqlalchemy/sqlalchemy/discussions/11138
 #validpgpkeys=('83AF7ACE251C13E6BB7DEFBD330239C1C4DAFEE1')
-sha512sums=('d63ad982073eeeb094dd026ccf92907b829ee12c28a6f1092948077f0112695b1b22c28f9ad2eb7ff063ff8926cb416a1e45102df016ada5c1f866de373bb0e8'
-            '67f94f474231f1a97e536e43970c890b9e3e1e88d64be9a76da8297502176b3da2f7c360c46d8c08b077da5f9bb9878ad96d6753f972b487832516977ef23040')
+sha512sums=('70447ff653f0d7c47855ffbb70d0b75c6982137673543da6dfbd38610eaf817d4fb41841d5495e8c3a953f169b93120ec2e3ab8c04bb7c53c84e8870af633682')
 
 prepare() {
   cd $_name-$_ver
   sed -i '/warnings.filterwarnings("error", category=DeprecationWarning)/a \    warnings.filterwarnings("ignore", category=DeprecationWarning, message="Creating a LegacyVersion has been deprecated and will be removed in the next major release")' \
       lib/sqlalchemy/testing/warnings.py
-  patch -Np1 -i ../fix-building-c-extension-on-python-3.13.patch
 }
 
 build() {
