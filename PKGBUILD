@@ -32,14 +32,14 @@ b2sums=('SKIP'
         '88d48f0485a485a7840f9cc9aa6c5c3a0de2c28542bd77f16fa181772532287375e214f214bf925c30705a60ee48ebf15ac6ca707f58a7b3ed74984afb22aded')
 
 pkgver() {
-  cd "${srcdir}/${pkgname/-git/}"
+  cd "${srcdir}/${_pkgname}"
 
   # Get the version number.
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
-  cd "${pkgname/-git/}"
+  cd "${_pkgname}"
 
   # create directory for build output
   mkdir -p build/
@@ -50,7 +50,7 @@ prepare() {
 }
 
 build() {
-  cd "${pkgname/-git/}"
+  cd "${_pkgname}"
 
   # set Go flags
   export CGO_CPPFLAGS="${CPPFLAGS}"
@@ -80,7 +80,7 @@ package() {
   install -vDm644 sysusers.conf "$pkgdir/usr/lib/sysusers.d/${pkgname/-git/}.conf"
   install -vDm644 config.env "$pkgdir/etc/conf.d/${pkgname/-git/}"
 
-  cd "${pkgname/-git/}"
+  cd "${_pkgname}"
 
   # binaries
   install -vDm755 "build/$_pkgname" "$pkgdir/usr/bin/${pkgname/-git/}"
