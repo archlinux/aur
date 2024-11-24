@@ -1,0 +1,16 @@
+pkgbase = drg_mod_integration-bin
+	pkgdesc = Deep Rock Galactic mod loader and integration
+	pkgver = 0.2.10
+	pkgrel = 1
+	url = https://github.com/trumank/mint
+	arch = x86_64
+	license = MIT
+	depends = openssl-1.1
+	provides = drg_mod_integration
+	options = !strip
+	source = 0.2.10-1.tar.xz::https://github.com/trumank/mint/releases/download/v0.2.10/drg_mod_integration-x86_64-unknown-linux-gnu.tar.xz
+	source = drg_mod_integration.desktop
+	sha256sums = 524a5afedbc551764dbd13d4a3a08fc10888b7fc962d111dbc0bb54bc6ff7b2c
+	sha256sums = 690cec0bb502b7d010af9f4ad8b3d3d1ba9ea2062453eacc8cf5220d4236e934
+
+pkgname = drg_mod_integration-bin

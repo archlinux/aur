@@ -1,0 +1,7 @@
+[Desktop Entry]
+Categories=Game;
+Comment=drg_mod_integration
+Exec=env WAYLAND_DISPLAY=1 drg_mod_integration
+Name=drg_mod_integration
+Terminal=false
+Type=Application
