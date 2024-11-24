@@ -1,0 +1,4 @@
+src/
+usaco-*
+*.pkg.tar.zst
+pkg/
