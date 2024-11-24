@@ -1,16 +1,15 @@
 pkgbase = python-corner-doc
 	pkgdesc = Documentation for corner.py
-	pkgver = 2.2.2
+	pkgver = 2.2.3
 	pkgrel = 1
 	url = http://corner.readthedocs.io
 	arch = any
 	license = BSD
-	makedepends = python-corner=2.2.2
+	makedepends = python-corner=2.2.3
 	makedepends = python-myst-nb
-	makedepends = python-myst-parser<0.19
 	makedepends = python-sphinx-book-theme
 	makedepends = python-arviz
-	source = https://github.com/dfm/corner.py/archive/refs/tags/v2.2.2.tar.gz
-	md5sums = bd28eba1431237770c512465e71bdaaa
+	source = https://github.com/dfm/corner.py/archive/refs/tags/v2.2.3.tar.gz
+	md5sums = 24ec409eeb71e85a5a05b80058a09e5e
 
 pkgname = python-corner-doc
