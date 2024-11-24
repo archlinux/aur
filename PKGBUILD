@@ -4,7 +4,7 @@
 # https://github.com/openvinotoolkit/openvino/issues/452#issuecomment-722941119
 
 pkgname=openvino-git
-pkgver=2024.3.0.r173.g3e058b90a89
+pkgver=2024.5.0.r149.g287ab9883ac
 pkgrel=1
 pkgdesc='A toolkit for developing artificial inteligence and deep learning applications (git version)'
 arch=('x86_64')
@@ -49,6 +49,7 @@ source=('git+https://github.com/openvinotoolkit/openvino.git'
         'git+https://github.com/openvinotoolkit/mlas.git'
         'git+https://github.com/oneapi-src/level-zero.git'
         'git+https://github.com/intel/level-zero-npu-extensions.git'
+        'git+https://github.com/jbeder/yaml-cpp.git'
         'git+https://github.com/openvinotoolkit/telemetry.git'
         'git+https://github.com/libxsmm/libxsmm.git'
         'git+https://github.com/openvinotoolkit/shl.git'
@@ -84,11 +85,12 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
+            'SKIP'
             '335a55533ab26bd1f63683921baf33b8e8e3f2732a94554916d202ee500f90af'
             'e5024ad3382f285fe63dc58faca379f11a669bbe9f5d90682c59ad588aab434c'
-            '0bbf46bef304dea08b318d1ffd564735b19e1afb6c0f41c98d216824cc630132'
-            '9c10b6d9cc6ba4722fae449f401875c538d5aa544d89edf3260fe766f946dbb8'
-            '51dc09683a319f9a939369d47d6752b41fea61737e6886a5814fc75f3dc1cef1')
+            '61759ec17031a94222270dec03052010bf3da8bc2d53088d1bfe2ec9ef547dc5'
+            '46f7e443ddc7273adcae6759b8066b9c8cd93f565dda3627ba74e013906f5bc8'
+            'f7893f1a68555471646c4b7593c16330068c04587dc8cf140a1a3817527d377a')
 
 export GIT_LFS_SKIP_SMUDGE='1'
 
@@ -118,8 +120,9 @@ prepare() {
     git -C openvino config --local submodule.thirdparty/snappy.url "${srcdir}/snappy"
     git -C openvino config --local submodule.ARMComputeLibrary.url "${srcdir}/ComputeLibrary"
     git -C openvino config --local submodule.src/plugins/intel_cpu/thirdparty/mlas.url "${srcdir}/mlas"
-    git -C openvino config --local submodule.src/plugins/intel_npu/thirdparty/level-zero.url "${srcdir}/level-zero"
+    git -C openvino config --local submodule.thirdparty/level_zero/level-zero.url "${srcdir}/level-zero"
     git -C openvino config --local submodule.src/plugins/intel_npu/thirdparty/level-zero-ext.url "${srcdir}/level-zero-npu-extensions"
+    git -C openvino config --local submodule.src/plugins/intel_npu/thirdparty/yaml-cpp.url "${srcdir}/yaml-cpp"
     git -C openvino config --local submodule.thirdparty/telemetry.url "${srcdir}/telemetry"
     git -C openvino config --local submodule.src/plugins/intel_cpu/thirdparty/libxsmm.url "${srcdir}/libxsmm"
     git -C openvino config --local submodule.src/plugins/intel_cpu/thirdparty/shl.url "${srcdir}/shl"
@@ -127,7 +130,7 @@ prepare() {
     
     patch -d openvino -Np1 -i "${srcdir}/010-openvino-disable-werror.patch"
     patch -d openvino -Np1 -i "${srcdir}/020-openvino-use-protobuf-shared-libs.patch"
-    patch -d openvino/src/plugins/intel_npu/thirdparty/level-zero -Np1 -i "${srcdir}/030-openvino-level-zero-disable-werror.patch"
+    patch -d openvino/thirdparty/level_zero/level-zero -Np1 -i "${srcdir}/030-openvino-level-zero-disable-werror.patch"
 }
 
 pkgver() {
@@ -145,6 +148,7 @@ build() {
     export CXXFLAGS="${CXXFLAGS/-Wp,-D_FORTIFY_SOURCE=?/}"
     
     # note: does not accept 'None' build type
+    # note: npu plugin needs avx and does not build with the default x86_64 arch
     cmake -B build -S openvino \
         -G 'Unix Makefiles' \
         -DBUILD_TESTING:BOOL='OFF' \
@@ -153,9 +157,10 @@ build() {
         -DENABLE_SSE42:BOOL='OFF' \
         -DENABLE_AVX2:BOOL='OFF' \
         -DENABLE_AVX512F:BOOL='OFF' \
-        -DENABLE_PYTHON:BOOL='ON' \
         -DENABLE_CLANG_FORMAT:BOOL='OFF' \
+        -DENABLE_INTEL_NPU:BOOL='OFF' \
         -DENABLE_NCC_STYLE:BOOL='OFF' \
+        -DENABLE_PYTHON:BOOL='ON' \
         -DENABLE_SYSTEM_PUGIXML:BOOL='ON' \
         -DENABLE_SYSTEM_TBB:BOOL='ON' \
         -DENABLE_SYSTEM_OPENCL:BOOL='ON' \
