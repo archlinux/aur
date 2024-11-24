@@ -1,7 +1,6 @@
 pkgname='python-borghash'
 _module='borghash'
-_src_folder='borghash-0.0.2'
-pkgver='0.0.1'
+pkgver='0.1.0'
 pkgrel=1
 pkgdesc='Memory-efficient hash table (implemented in Cython)'
 url='https://github.com/borgbackup/borghash'
@@ -16,7 +15,7 @@ makedepends=(
 license=('BSD-3-Clause')
 arch=('any')
 source=("${url}/releases/download/${pkgver}/${_module}-${pkgver}.tar.gz")
-b2sums=('fa808d352ec71972bba57fd0ecf21b77d1d4fd2eab6be17cbe2bca857900b9c1c98a24abc989bcfcc90cad03b867f5a24ffcc3d157b7a561c97760a1cf31c427')
+b2sums=('7d29b5638df5813e8fc7d9d0b4c5675b9012b5a426329a74dd7cd7def7af32d2aac4e624748b637b7b2fb640e020394db3e3c138c450c3945aef715b6b0a2683')
 
 build() {
     cd "${srcdir}/${_module}-${pkgver}"
