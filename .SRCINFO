@@ -1,6 +1,6 @@
 pkgbase = python-octodns
 	pkgdesc = Tools for managing DNS across multiple providers
-	pkgver = 1.9.1
+	pkgver = 1.10.0
 	pkgrel = 1
 	url = https://github.com/octodns/octodns
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = python-octodns
 	depends = python-pycountry-convert
 	depends = python-dateutil
 	depends = python-fqdn
-	source = https://github.com/octodns/octodns/archive/refs/tags/v1.9.1.tar.gz
-	sha256sums = d397760226892a82dea064d9cb54034867fa835c2a5328f5c470ec40d71e3b1f
+	source = https://github.com/octodns/octodns/archive/refs/tags/v1.10.0.tar.gz
+	sha256sums = 741d2c49c5743ac037bd77f199b3fdfc5b076ef8dcc103ba89a11b667aa12703
 
 pkgname = python-octodns
