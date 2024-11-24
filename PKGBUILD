@@ -4,10 +4,10 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=qt5-base-headless
-_basever=5.15.15
-pkgver=5.15.15+kde+r141
+_basever=5.15.16
+pkgver=5.15.16+kde+r130
 pkgrel=1
-_commit=6f548e396c26d3a53188f331c82706133e4adb70
+_commit=2529f7f0c2333d437089c775c9c30f624d1fd5bc
 arch=('x86_64')
 url='https://www.qt.io'
 license=('GPL3' 'LGPL3' 'FDL' 'custom')
@@ -24,7 +24,7 @@ _pkgfqn=qtbase
 source=(kde-$_pkgfqn::git+https://invent.kde.org/qt/qt/$_pkgfqn#commit=$_commit
         qmake-cflags.patch
         qmake-config.patch)
-sha256sums=('f0f371633422e1d861fd170e68630030d610d381488c4e9605f9b84f8429f9bf'
+sha256sums=('c0190253f5a3326bbc04614f5f9bbe94df6900bb60c865ccdecc71ee7e137d19'
             '5411edbe215c24b30448fac69bd0ba7c882f545e8cf05027b2b6e2227abc5e78'
             '4abc22150fa3e06b2fdcec32146abc9be4e316692aa4d5bd5aa53b4b726783fa')
 
