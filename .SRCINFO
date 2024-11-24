@@ -1,6 +1,6 @@
 pkgbase = stayfree-desktop
 	pkgdesc = Analytics to help you understand and control your pc usage, leading to less distractions and enhanced productivity.
-	pkgver = 2.7.4
+	pkgver = 2.7.8
 	pkgrel = 2
 	url = https://stayfreeapps.com
 	install = stayfree-desktop.install
@@ -18,7 +18,7 @@ pkgbase = stayfree-desktop
 	optdepends = libappindicator-gtk3
 	options = !strip
 	options = !emptydirs
-	source_x86_64 = https://github.com/stayfree-app/desktop-releases/releases/download/v2.7.4/stayfree-linux-amd64.deb
+	source_x86_64 = https://github.com/stayfree-app/desktop-releases/releases/download/v2.7.8/stayfree-linux-amd64.deb
 	sha256sums_x86_64 = cbcded00bbebd4f56084e013fe326b6c7db4e9e96a2b8e115f3a94667c1c2b3b
 
 pkgname = stayfree-desktop
