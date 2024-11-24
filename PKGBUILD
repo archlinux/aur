@@ -18,7 +18,7 @@ depends=('gvfs-smb'
 	'systemd')
 makedepend=('git')
 source=("${pkgname}-${pkgver}.tar.bz2::${url}/-/archive/${pkgver}/linux-roaming-profiles-${pkgver}.tar.bz2")
-sha512sums=(8cfd19e216dd7b5e12c40617438107fef4681c725ee62e13e21dc16c150261883f3471f131dc2160518a5b623cc9860ff742b6d36c56596466430e2fef4a0201)
+sha512sums=(f0fc9a01751afadae9d80bac9a50b359306b964813c0977f0f43202787491ed2d4b4c7342433188ee550000c8a0e25ea9739954393232430523ae4fb27b66019)
 # checkdepends=()
 # optdepends=()
 # provides=()
