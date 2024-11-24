@@ -7,7 +7,7 @@
 pkgbase=ttf-ms-win10-cdn
 pkgname=($pkgbase{,-japanese,-korean,-sea,-thai,-zh_cn,-zh_tw,-other})
 pkgver=10.0.19042.789
-pkgrel=6
+pkgrel=7
 arch=(any)
 url='http://www.microsoft.com/typography/fonts/product.aspx?PID=164'
 license=(custom)
@@ -16,10 +16,10 @@ conflicts=(ttf-vista-fonts ttf-ms-win11-auto ttf-ms-win11 ttf-ms-win10-auto)
 replaces=(ttf-ms-win10-auto)
 
 if [ -z "$IPFS_GATEWAY" ]; then
-	cdn="https://gateway.pinata.cloud/ipfs"
+	cdn="https://ipfs.io/ipfs"
 	# Alternative Gateways:
+	#cdn="https://gateway.pinata.cloud/ipfs"
 	#cdn="https://cloudflare-ipfs.com/ipfs"
-	#cdn="https://ipfs.io/ipfs"
 else
 	cdn=$(echo "http://$IPFS_GATEWAY/ipfs")
 fi
