@@ -1,0 +1,27 @@
+post_install() {
+	# Required to have system-login PAM configuration.
+	if [[ -r /etc/pam.d/system-login ]]; then
+		echo "Updating PAM configuration."
+		# Assure session logout is handled by PAM.
+		sed -i -e '/session.*roaming-profiles/d' \
+			-e '/session.*system-auth/isession    optional   pam_exec.so /usr/bin/roaming-profiles' \
+			/etc/pam.d/system-login
+	fi
+	echo "Enabling systemd user unit."
+	systemctl --global enable roaming-profiles --quiet > /dev/null
+}
+
+post_pre() {
+	echo Disabling systemd user unit.
+	systemctl --global disable roaming-profiles --quiet > /dev/null
+}
+
+post_remove() {
+	# Required to have system-login PAM configuration.
+	if [[ -r /etc/pam.d/system-login ]]; then
+		echo "Updating PAM configuration."
+		# Clean PAM configuration.
+		sed -e '/session.*roaming-profiles/d' \
+			/etc/pam.d/system-login
+	fi
+}
