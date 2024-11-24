@@ -7,7 +7,7 @@ pkgname=(
   'psmoveapi-git'
   'python-psmoveapi-git'
 )
-pkgver=4.0.12.175.g26e1446
+pkgver=4.0.12.176.g8cc40f7
 pkgrel=1
 pkgdesc='Playstation Move Motion Controller API (GIT version)'
 arch=('x86_64')
@@ -37,7 +37,7 @@ sha256sums=(
   'SKIP'
   'SKIP'
   'SKIP'
-  '271eaa3f1f5c50045873f1583ebc38eb6c9451440a7c98de5b75731058901480'
+  '53545c28e0e07ecbb4f3dcebb246bedc98279e612ee475d2730f4a7052cd0414'
 )
 options=('debug')
 
