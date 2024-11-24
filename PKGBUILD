@@ -5,7 +5,7 @@
 _pkgname=ffgo
 pkgname="${_pkgname}-git"
 pkgver=1.12.8.r602.20241123.68131fc
-pkgrel=2
+pkgrel=3
 pkgdesc="A graphical launcher for FlightGear, i.e., a program whose purpose is to allow easy assembling and running of an fgfs command line. (Fork of and replacement for 'FGo!'.)"
 arch=('any')
 url="http://frougon.net/projects/FFGo/"
@@ -26,7 +26,7 @@ makedepends=(
   "python-build"
   "python-installer"
   "python-setuptools"
-  "python-sphinx"
+  # "python-sphinx" # TODO: Re-activate when re-activating `make doc`.
   "python-wheel"
 )
 optdepends=(
@@ -84,8 +84,9 @@ build() {
   make update-mo
   plain "Running 'make icons' ..."
   make icons
-  plain "Running 'make doc' ..."
-  make doc
+  # 2024-11-24: `make doc` currently fails with `ERROR: Invalid value `None` in intersphinx_mapping['https://docs.python.org/']. Expected a two-element tuple or list.`; see https://github.com/frougon/FFGo/issues/9.
+  #plain "Running 'make doc' ..."
+  #make doc
 
   plain "Running 'python -m build --wheel --no-isolation' ..."
   python -m build --wheel --no-isolation
