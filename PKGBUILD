@@ -2,7 +2,7 @@
 
 pkgname=libwireplumber-4.0-compat
 _pkgname=wireplumber
-pkgver=0.4.16
+pkgver=0.4.17
 pkgrel=1
 pkgdesc="Compatibility version 4.x of libwireplumber"
 url="https://pipewire.pages.freedesktop.org/wireplumber/"
@@ -29,7 +29,7 @@ checkdepends=(pipewire-audio)
 source=(
   "git+https://gitlab.freedesktop.org/pipewire/$_pkgname.git#tag=$pkgver"
 )
-b2sums=('ec758c81c75764613b08baed8c688dc1d92fac4c6a8f889fb91c6132ebb53e865ed7f62090e760424e2f5aee39f2e629848f899d3fcdece1cba775b1e2948a8f')
+b2sums=('bca7db62e0efcd27d9a9ee6269f3f26b5e08c39c531f826aff5e1661c64a93a998fe93deb960489563a9dcfe812d09b446cf54096b27dd1155caba99c49cab28')
 
 prepare() {
   cd $_pkgname
