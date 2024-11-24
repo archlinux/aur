@@ -1,0 +1,27 @@
+pkgbase = jre-zulu-bin
+	pkgdesc = A open source, TCK-tested and certified builds of OpenJDK (full-runtime environment).
+	pkgver = 23.0.1
+	pkgrel = 1
+	url = https://www.azul.com/
+	install = install_jre-zulu-bin.install
+	arch = aarch64
+	arch = x86_64
+	license = LicenseRef-Java
+	depends = java-environment-common>=3
+	depends = java-runtime-common>=3
+	depends = ca-certificates-utils
+	provides = java-environment=23
+	provides = java-environment-openjdk=23
+	provides = java-runtime=23
+	provides = java-runtime-openjdk=23
+	provides = java-runtime-headless=23
+	provides = java-runtime-headless-openjdk=23
+	conflicts = jre-zulu-fx-bin
+	conflicts = zulu-23-bin
+	conflicts = zulu-fx-bin
+	source_aarch64 = https://cdn.azul.com/zulu/bin/zulu23.30.13-ca-jre23.0.1-linux_aarch64.tar.gz
+	sha256sums_aarch64 = d74cd3f6b2152c675f7eee51c59c6b3c8e81951e8d46aaae0fa9550b6cce3d00
+	source_x86_64 = https://cdn.azul.com/zulu/bin/zulu23.30.13-ca-jre23.0.1-linux_x64.tar.gz
+	sha256sums_x86_64 = 7e0d7f638d6c3453b390953be5376221e73efda83d72c3cfac346a4c1469dc10
+
+pkgname = jre-zulu-bin
