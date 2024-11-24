@@ -6,13 +6,14 @@ pkgname=synology-drive
 pkgver=3.5.1_16102
 _pkgver=3.5.1
 _pkgrel=16102
-pkgrel=4
+pkgrel=5
 pkgdesc="Desktop utility of the DSM add-on package, Synology Drive Server"
 arch=('x86_64')
 url="https://www.synology.com/en-global/releaseNote/SynologyDriveClient"
 license=('custom:Synology Linux License Grant')
-depends=('glibc' 'glib2' 'dbus' 'libx11' 'libxcb' 'libxkbcommon' 'libsm' 'libice' 'libarchive'
-         'hicolor-icon-theme' 'zlib' 'curl' 'sqlite' 'libxrender' 'fontconfig')
+depends=('glib2' 'glibc' 'qt5-base' 'curl' 'libarchive' 'libxkbcommon' 'libice' 'libsm' 'hicolor-icon-theme')
+makedepends=('qt5-tools')
+optdepends=('nautilus: For nautilus integration')
 conflicts=('synology-drive' 'synology-drive-client' 'cloudstation-beta' 'cloudstation-3.0' 'cloudstation-drive')
 source_x86_64=("https://global.synologydownload.com/download/Utility/SynologyDriveClient/${_pkgver}-${_pkgrel}/Ubuntu/Installer/synology-drive-client-${_pkgrel}.${arch}.deb")
 sha256sums_x86_64=('6f13838d7384f757a3f08db60d640a6d6ef5a088d11d0c7d232bce6a6de3fe2c')
