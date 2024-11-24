@@ -1,29 +1,31 @@
-# Maintainer: Igor Dyatlov <dyatlov.igor@protonmail.com>
-# Contributor: Ben Curtis <nospam@nowsci.com>
-
+# Maintainer: Mark Wagie <mark dot wagie at proton dot me>
+# Contributor: Igor Dyatlov <dyatlov.igor@protonmail.com>
 pkgname=gnome-shell-extension-wintile
-pkgver=2023.10.03_1
+_uuid=wintile@nowsci.com
+_pkgver=2024.11.22-1
+pkgver=${_pkgver//-/.}
 pkgrel=1
 pkgdesc="Windows 10 window tiling for GNOME"
 arch=('any')
-url="https://github.com/fmstrat/wintile"
-license=('GPL3')
+url="https://nowsci.com/wintile"
+license=('GPL-3.0-or-later')
 depends=('gnome-shell')
 makedepends=('zip')
-source=("${pkgname}-${pkgver//_/-}.tar.gz::${url}/archive/v${pkgver//_/-}.tar.gz")
-_srcname=wintile
-b2sums=('5005d5c2669ea3210f245a87d59294b3509e95931cf10da05c4ea6683f00a94774c9be273450f31a935359a3bacf6a5a4b3d62132d004dd162cfc6a36f3454dc')
+source=("wintile-${_pkgver}.tar.gz::https://github.com/fmstrat/wintile/archive/v${_pkgver}.tar.gz")
+sha256sums=('9a3e3748b4d96253cfeb75929ded021a35029c2ae9d0608b870c0623f69fc4bf')
 
 build() {
-	cd "$_srcname-${pkgver//_/-}"
-	./build.sh
+	cd "wintile-${_pkgver}"
+	sh build.sh
 }
 
 package() {
-	cd "$_srcname-${pkgver//_/-}"
-	cd "$(dirname $(find -name 'metadata.json' -print -quit))"
-	_extname=$(grep -Po '(?<="uuid": ")[^"]*' metadata.json)
-	_destdir="${pkgdir}/usr/share/gnome-shell/extensions/${_extname}"
-	install -d "$pkgdir/usr/share/gnome-shell/extensions/$_extname"
-	bsdtar -xvf $_extname.zip -C "$pkgdir/usr/share/gnome-shell/extensions/$_extname"
+	cd "wintile-${_pkgver}"
+	install -d "$pkgdir/usr/share/gnome-shell/extensions/${_uuid}"
+	bsdtar -xvf dist/G45/${_uuid}.zip -C \
+	  "$pkgdir/usr/share/gnome-shell/extensions/${_uuid}" --no-same-owner
+
+  install -Dvm644 dist/G45/build/schemas/org.gnome.shell.extensions.wintile.gschema.xml -t \
+    "$pkgdir/usr/share/glib-2.0/schemas/"
+  rm -rv "$pkgdir/usr/share/gnome-shell/extensions/${_uuid}/schemas/"
 }
