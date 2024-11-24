@@ -1,11 +1,12 @@
-# Maintainer: drakkan <nicola.murino at gmail dot com>
+# Maintainer: CloverGit <clovergit@hotmail.com>
+# Contributor: drakkan <nicola.murino at gmail dot com>
 # Contributor: Chris Kitching <chriskitching@linux.com>
 # Contributor: Xiao-Long Chen <chenxiaolong@cxl.epac.to>
 pkgname=mingw-w64-cairo-bootstrap
-pkgver=1.18.0
-pkgrel=2
+pkgver=1.18.2
+pkgrel=1
 pkgdesc="2D graphics library with support for multiple output devices (mingw-w64 bootstrap)"
-_commit=3909090108bb2db55330e3eb148aebe664735363  # tags/1.18.0^0
+_commit=200441e6855854eb4dbf338e44d67b00ababe07f # tags/1.18.2^0
 arch=(any)
 url="http://cairographics.org/"
 license=("LGPL" "MPL")
@@ -16,7 +17,7 @@ provides=(${pkgname%-bootstrap}=$pkgver)
 conflicts=(${pkgname%-bootstrap})
 source=("git+https://gitlab.freedesktop.org/cairo/cairo.git#commit=$_commit"
         "0026-create-argb-fonts.all.patch")
-sha256sums=('SKIP'
+sha256sums=('adb04ff99fbd481ffc1653cdc1c135e4185fc5c5bfb2d5a44ba924af00605b83'
             '6db6c44fbdb4926d09afa978fe80430186c4b7b7d255059602b1f94c6a079975')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
@@ -56,5 +57,4 @@ package() {
     find "$pkgdir/usr/${_arch}" -name '*.a' -o -name '*.dll' | xargs ${_arch}-strip -g
   done
 }
-
-# vim: ts=2 sw=2 et:
+# vim: set sw=2 ts=2 et:
