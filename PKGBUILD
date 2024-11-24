@@ -6,8 +6,8 @@
 
 pkgname="dendrite-git"
 _pkgname=${pkgname%-git}
-pkgver=0.13.8.r2956.7cc7ebb4
-pkgrel=3
+pkgver=r2956.7cc7ebb4
+pkgrel=1
 pkgdesc="A second-generation Matrix homeserver written in Go"
 url="https://element-hq.github.io/dendrite/"
 license=("Apache")
