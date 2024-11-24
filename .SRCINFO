@@ -1,13 +1,13 @@
 pkgbase = pica-comic-bin
 	pkgdesc = A comic app
-	pkgver = 4.1.7
+	pkgver = 4.2.0
 	pkgrel = 1
 	url = https://github.com/Pacalini/PicaComic
 	arch = x86_64
 	license = MIT
 	depends = gtk3
 	depends = webkit2gtk-4.1
-	source = https://github.com/Pacalini/PicaComic/releases/download/v4.1.7/PicaComic-4.1.7-amd64.deb
-	sha256sums = 762c4bb7edf8bc1afe78862f2b01f3755bceca7224e704e34409c8bce1e167ac
+	source = https://github.com/Pacalini/PicaComic/releases/download/v4.2.0/PicaComic-4.2.0-amd64.deb
+	sha256sums = ff7c2552045539d26493406820748de4ecd832e8d1145c12f51b8de4174eb6ca
 
 pkgname = pica-comic-bin
