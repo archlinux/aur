@@ -1,6 +1,6 @@
 # Maintainer: Ash Price <eisleggje@gmail.com>
 pkgname=python-spacy-uk_core_news_lg
-pkgver=3.7.0
+pkgver=3.8.0
 pkgrel=1
 pkgdesc='Ukrainian pretrained model for spaCy (large)'
 arch=(any)
@@ -9,7 +9,7 @@ license=(CCPL)
 depends=()
 makedepends=(python-setuptools)
 source=("https://github.com/explosion/spacy-models/releases/download/uk_core_news_lg-${pkgver}/uk_core_news_lg-${pkgver}.tar.gz")
-b2sums=('b60f04106bf837c0878eaaad6f36a4f8b82ec0cebaf803be9088e8d5725d5d0a18273239903a4c81cc7e0e4b212acc1749e17a183acadf99a29c0fb562d0c393')
+b2sums=('d3336f1ad74cdc0faa69ac93e6b9c91a154d3b643a085ac7c336ce7860d2bbc7d2613ee40325978864c3c3971c73b92fae87801c561ea127ce8040738897894c')
 
 build() {
   cd uk_core_news_lg-${pkgver}
