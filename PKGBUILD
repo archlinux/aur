@@ -2,19 +2,33 @@
 # Contributor:
 
 pkgname=waypaper-git
-pkgver=2.2.r0.g86578b8
+pkgver=2.4.r7.g068c2ea
 pkgrel=1
 pkgdesc='GUI wallpaper setter for Wayland and Xorg window managers. It works as a frontend for popular wallpaper backends like swaybg, swww, wallutils, hyprpaper and feh.'
 arch=('any')
 url='https://github.com/anufrievroman/waypaper'
 license=('GPL-3.0-only')
-depends=('gtk3' 'gdk-pixbuf2' 'python-gobject' 'python-importlib-metadata' 'python-platformdirs' 'python-pillow')
-makedepends=('git' 'python-build' 'python-installer' 'python-wheel' 'python-setuptools')
-optdepends=('swaybg: the wayland backend that supports only static images'
+depends=('gtk3'
+         'gdk-pixbuf2'
+         'python-gobject'
+         'python-imageio'
+         'python-imageio-ffmpeg'
+         'python-importlib-metadata'
+         'python-pillow'
+         'python-platformdirs'
+         'python-pillow'
+         'python-screeninfo')
+makedepends=('git'
+             'python-build'
+             'python-installer'
+             'python-setuptools'
+             'python-wheel')
+optdepends=('feh: the x11 backend that supports static images'
+            'hyprpaper: the wayland backend with IPC controls'
+            'mpvpaper: support for videos'
+            'swaybg: the wayland backend that supports only static images'
             'swww: the wayland backend that supports animated GIFs'
-            'feh: the x11 backend that supports static images'
-            'wallutils: another x11 backend'
-            'hyprpaper: the wayland backend with IPC controls')
+            'wallutils: another x11 backend')
 provides=("${pkgname%-*}")
 conflicts=("${pkgname%-*}")
 source=("${pkgname%-*}::git+${url}.git")
