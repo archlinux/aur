@@ -1,20 +1,27 @@
 pkgbase = montage-git
 	pkgdesc = An astronomical image mosaic engine
-	pkgver = 5.0
+	pkgver = 6.1+r414+ga8bde0bef
 	pkgrel = 1
 	url = http://montage.ipac.caltech.edu/
 	arch = i686
 	arch = x86_64
-	license = custom
+	license = BSD-3-Clause
+	makedepends = git
+	makedepends = gcc
+	makedepends = grep
+	makedepends = sed
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
 	depends = freetype2
 	depends = wcslib
-	conflicts = montage
-	source = git+https://github.com/Caltech-IPAC/Montage.git
-	source = freetype.patch
-	source = wcslib.patch
+	source = montage-git::git+https://github.com/Caltech-IPAC/Montage.git
 	sha1sums = SKIP
-	sha1sums = ac0c1e23d74b1c016eeb1bf63de240e788f4ff72
-	sha1sums = 80621edd384225fed83c550b4f22bc849e9a3d3d
 
 pkgname = montage-git
+	provides = montage
+	conflicts = montage
 
+pkgname = python-montagepy-git
+	provides = python-montagepy
+	conflicts = python-montagepy

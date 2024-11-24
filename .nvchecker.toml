@@ -1,0 +1,3 @@
+[montage-git]
+source="cmd"
+cmd="~/nvchecker/github_version.py Caltech-IPAC/Montage --tags -strip v"
