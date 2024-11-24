@@ -1,36 +1,37 @@
-# Maintainer: Igor Dyatlov <dyatlov.igor@protonmail.com>
-# Contributor: Ben Curtis <nospam@nowsci.com>
-
+# Maintainer: Mark Wagie <mark dot wagie at proton dot me>
+# Contributor: Igor Dyatlov <dyatlov.igor@protonmail.com>
 pkgname=gnome-shell-extension-wintile-git
-pkgver=r94.53e69a4
-pkgrel=2
+_uuid=wintile@nowsci.com
+pkgver=2024.11.22.1.r0.g15bc815
+pkgrel=1
 pkgdesc="Windows 10 window tiling for GNOME"
 arch=('any')
-url="https://github.com/fmstrat/wintile"
-license=('GPL3')
+url="https://nowsci.com/wintile"
+license=('GPL-3.0-or-later')
 depends=('gnome-shell')
 makedepends=('git' 'zip')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=("git+$url.git")
-_srcname=wintile
+source=('git+https://github.com/fmstrat/wintile.git')
 sha256sums=('SKIP')
 
 pkgver() {
-	cd "$_srcname"
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	cd wintile
+	git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-	cd "$_srcname"
-	./build.sh
+	cd wintile
+	sh build.sh
 }
 
 package() {
-	cd "$_srcname"
-	cd "$(dirname $(find -name 'metadata.json' -print -quit))"
-	_extname=$(grep -Po '(?<="uuid": ")[^"]*' metadata.json)
-	_destdir="${pkgdir}/usr/share/gnome-shell/extensions/${_extname}"
-	install -d "$pkgdir/usr/share/gnome-shell/extensions/$_extname"
-	bsdtar -xvf $_extname.zip -C "$pkgdir/usr/share/gnome-shell/extensions/$_extname"
+	cd wintile
+	install -d "$pkgdir/usr/share/gnome-shell/extensions/${_uuid}"
+	bsdtar -xvf dist/G45/${_uuid}.zip -C \
+	  "$pkgdir/usr/share/gnome-shell/extensions/${_uuid}" --no-same-owner
+
+  install -Dvm644 dist/G45/build/schemas/org.gnome.shell.extensions.wintile.gschema.xml -t \
+    "$pkgdir/usr/share/glib-2.0/schemas/"
+  rm -rv "$pkgdir/usr/share/gnome-shell/extensions/${_uuid}/schemas/"
 }
