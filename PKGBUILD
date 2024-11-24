@@ -8,13 +8,13 @@
 
 pkgname=tpm-tools
 pkgver=1.3.9.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Tools to manage and diagnose a TPM"
 arch=('i686' 'x86_64')
-url="http://sourceforge.net/projects/trousers"
-license=('CPL')
+url="https://sourceforge.net/projects/trousers"
+license=('CPL-1.0')
 depends=('trousers' 'opencryptoki')
-source=(http://downloads.sourceforge.net/project/trousers/${pkgname}/${pkgver}/${pkgname}-${pkgver}.tar.gz
+source=(https://downloads.sourceforge.net/project/trousers/${pkgname}/${pkgver}/${pkgname}-${pkgver}.tar.gz
         01-opencryptoki-soname.patch
         03-fix-bool-error-parseStringWithValues.patch
         04-fix-FTBFS-clang.patch)
