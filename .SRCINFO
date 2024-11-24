@@ -1,19 +1,24 @@
 pkgbase = python-recommonmark
 	pkgdesc = Markdown parser for docutils
 	pkgver = 0.7.1
-	pkgrel = 8
+	pkgrel = 9
 	url = https://recommonmark.readthedocs.io/
 	arch = any
 	license = MIT
 	checkdepends = python-pytest
+	makedepends = python-build
+	makedepends = python-installer
 	makedepends = python-setuptools
+	makedepends = python-wheel
 	depends = python
 	depends = python-commonmark
 	depends = python-docutils
 	depends = python-sphinx
 	source = https://files.pythonhosted.org/packages/source/r/recommonmark/recommonmark-0.7.1.tar.gz
+	source = fix-many-warnings.patch
 	source = autostructify-tab_width-fallback.patch
 	sha256sums = bdb4db649f2222dcd8d2d844f0006b958d627f732415d399791ee436a3686d67
+	sha256sums = 1a87d217d685b38e87fe67a6726b31f3e25333280da8e88dc7b52e93b7881f67
 	sha256sums = 0672b55c9bd49d24cfe86cd29fa93d1ebde3f757df606e7aea74ba6e58deff26
 
 pkgname = python-recommonmark
