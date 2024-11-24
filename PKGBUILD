@@ -1,10 +1,10 @@
 # Maintainer: Chris Billington <chrisjbillington@gmail.com>
 _pkgname=linux
-_kernver=6.11.9
+_kernver=6.12.1
 _archver=arch1
 _pkgrel=1
 _pkgver="${_kernver}.${_archver}"
-_KERNNAME=6.11.9-arch1-1
+_KERNNAME=6.12.1-arch1-1
 pkgbase="${_pkgname}-versioned-bin"
 _versioned_pkgname="linux${_pkgver}-${_pkgrel}"
 pkgname=("${_pkgname}-versioned-bin"
@@ -21,9 +21,9 @@ arch=(x86_64)
 license=(GPL2)
 options=('!strip')
 
-_kernpkg=linux-6.11.9.arch1-1-x86_64.pkg.tar.zst
-_headerspkg=linux-headers-6.11.9.arch1-1-x86_64.pkg.tar.zst
-_docspkg=linux-docs-6.11.9.arch1-1-x86_64.pkg.tar.zst
+_kernpkg=linux-6.12.1.arch1-1-x86_64.pkg.tar.zst
+_headerspkg=linux-headers-6.12.1.arch1-1-x86_64.pkg.tar.zst
+_docspkg=linux-docs-6.12.1.arch1-1-x86_64.pkg.tar.zst
 
 source=("https://archive.archlinux.org/packages/.all/${_kernpkg}"
         "https://archive.archlinux.org/packages/.all/${_headerspkg}"
@@ -31,9 +31,9 @@ source=("https://archive.archlinux.org/packages/.all/${_kernpkg}"
 
 noextract=("${source[@]##*/}")
 
-sha256sums=('15d77afdabeec3e3b5a0278361feb5731af98562dbbcdcbb62c0fdbb436beb97'
-            'fcb8a656116d245777d1e6c096102448d84fcc876cd5b2c4527b6c929b8db9ec'
-            '26d7c83e86a186bdb411787e8c57e7fd43153a2961159e886b42c02d0e03e94c')
+sha256sums=('bc5b1963145e2a4150425c88b8ba7fd573e05b367c2f87b73e69f7bde3c88bf4'
+            '347b265d1918686c2ae2ae24ede65f378a156a9f90f19eafdc453f6c36ac38ef'
+            '48f57284ac74c4d959b2840b56e6063a74705d1355634651894efd0d1bb36fe1')
 
 package_linux-versioned-bin() {
   pkgdesc="Metapackage depending on ${_versioned_pkgname}-bin"  
@@ -51,13 +51,14 @@ package_linux-versioned-docs-bin() {
   depends=("${_versioned_pkgname}-docs-bin")
 }
 
-package_linux6.11.9.arch1-1-bin() {
+package_linux6.12.1.arch1-1-bin() {
   pkgdesc="The Linux kernel and modules, version ${_KERNNAME}"
   depends=(coreutils
            initramfs
            kmod)
   conflicts=("${_pkgname}")
   optdepends=('linux-firmware: firmware images needed for some devices'
+              'scx-scheds: to use sched-ext schedulers'
               'wireless-regdb: to set the correct wireless channels of your country')
   provides=(KSMBD-MODULE
             VIRTUALBOX-GUEST-MODULES
@@ -69,7 +70,7 @@ package_linux6.11.9.arch1-1-bin() {
   sed -ic "s/${_pkgname}/${_KERNNAME}/" "${pkgdir}/usr/lib/modules/${_KERNNAME}/pkgbase"
 }
 
-package_linux6.11.9.arch1-1-headers-bin() {
+package_linux6.12.1.arch1-1-headers-bin() {
   pkgdesc="Headers and scripts for building modules for the Linux kernel ${_KERNNAME}"
   depends=(pahole)
   conflicts=("${_pkgname}-headers")
@@ -78,7 +79,7 @@ package_linux6.11.9.arch1-1-headers-bin() {
   mv "${pkgdir}/usr/src/"{"${_pkgname}","${_versioned_pkgname}"}
 }
 
-package_linux6.11.9.arch1-1-docs-bin() {
+package_linux6.12.1.arch1-1-docs-bin() {
   pkgdesc="Documentation for the Linux kernel ${_KERNNAME}"
   conflicts=("${_pkgname}-docs")
   tar -xf "${_docspkg}" -C "${pkgdir}"
