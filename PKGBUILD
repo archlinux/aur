@@ -1,7 +1,7 @@
 pkgname=chromap
-chromap_ver=0.2.6
+chromap_ver=0.2.7
 pkgver=$chromap_ver
-pkgrel=4
+pkgrel=1
 pkgdesc="An ultrafast method for aligning and preprocessing high throughput chromatin profiles. "
 arch=('x86_64')
 license=('custom:"Copyright (c) 2019 Haowen Zhang, Li Song, X. Shirley Liu, Heng Li"')
