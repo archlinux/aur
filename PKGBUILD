@@ -10,8 +10,10 @@ license=('LGPL2.1' 'ISC')
 depends=(
   'gcc-libs'
   'glibc'
-  'qt5-base'
-  'ffmpeg'
+  'bzip2'
+  'zlib'
+  'xz'
+  'qt6-base'
   'xdg-utils'
   'vapoursynth-plugin-d2vsource-git'
 )
@@ -25,11 +27,15 @@ source=(
   'd2vwitch::git+https://github.com/dubhater/D2VWitch.git'
   'd2vwitch.desktop'
   'd2vwitch.png'
+  'git+https://git.ffmpeg.org/ffmpeg.git#branch=release/6.0'
+  'https://github.com/dubhater/D2VWitch/pull/18.diff'
 )
 sha256sums=(
   'SKIP'
   'ae75722403c34d53ea2e55b1b53abdfb02cdb4eaaf4e642e84bee0d26e2ab5d1'
   'c63a756f6e375ef4a6f220fcdde3f4a05f7a101c0c0dc3743ce9207730719bd5'
+  'SKIP'
+  'SKIP'
 )
 options=('debug')
 
@@ -39,11 +45,28 @@ pkgver() {
 }
 
 prepare() {
-  mkdir -p build
+  mkdir -p build{,-ffmpeg}
+
+  patch -d d2vwitch -p1 -i "${srcdir}/18.diff"
 }
 
 build() {
+  (
+  cd ffmpeg
+  msg2 "Build FFmpeg"
+  cd "${srcdir}/build-ffmpeg"
+  ../ffmpeg/configure \
+    --prefix="${srcdir}/fakeroot" \
+    --disable-{network,{encod,mux}ers,hwaccels,{in,out}devs,debug,programs,doc,vdpau,vaapi,cuda,cuvid,nvenc} \
+    --enable-pic \
+    --enable-gpl
+
+  make install
+  )
+
   cd build
+  msg2 "Build d2vwitch"
+  PKG_CONFIG_PATH="${srcdir}/fakeroot/lib/pkgconfig" \
   arch-meson ../d2vwitch \
     --libdir /usr/lib/vapoursynth
 
@@ -54,8 +77,10 @@ package(){
   depends+=(
 #   'libc.so'
 #   'libgcc_s.so' 'libstdc++.so'
-#   'libQt5Widgets.so' 'libQt5Gui.so' 'libQt5Core.so'
-    'libavcodec.so' 'libavformat.so' 'libavutil.so'
+    'libbz2.so'
+    'liblzma.so'
+    'libz.so'
+#   'libQt6Widgets.so' 'libQt6Gui.so' 'libQt6Core.so'
   )
 
   DESTDIR="${pkgdir}" ninja -C build install
