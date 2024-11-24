@@ -1,7 +1,7 @@
 # Maintainer: James Forster <james.forsterer@gmail.com>
 
 pkgname=metapac-bin
-pkgver=0.2.4
+pkgver=0.2.5
 pkgrel=1
 pkgdesc="multi-backend declarative package manager"
 url="https://github.com/ripytide/metapac"
@@ -11,7 +11,7 @@ provides=("metapac")
 conflicts=("metapac")
 source=("https://github.com/ripytide/metapac/releases/download/v$pkgver/metapac-x86_64-unknown-linux-gnu.tar.xz")
 options=(!debug !lto)
-sha256sums=('ff0fc461b31f0e193434800226d9bd2437db1acaf278adecf8520076c052867a')
+sha256sums=('263eba5158471493d4c15a0cd61ed130f9e1a79dc3c799bfcd373e7858f4caa6')
 
 package() {
     install -Dm755 metapac-x86_64-unknown-linux-gnu/metapac -t "$pkgdir/usr/bin"
