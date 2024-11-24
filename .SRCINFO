@@ -9,6 +9,7 @@ pkgbase = diablo-project-manager
 	depends = bash
 	depends = git
 	depends = glibc
+	optdepends = yad: allows you to run diablo-project-manager with passing -h and provides a gui interface
 	provides = diablo-project-manager
 	conflicts = diablo-project-manager-git
 	source = diablo-project-manager::git+https://gitlab.com/diablodev/dpm.git
