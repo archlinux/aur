@@ -1,0 +1,6 @@
+/pkg
+/src
+*.AppImage
+*.tar.*
+/squashfs-root
+.venv
