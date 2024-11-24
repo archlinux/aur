@@ -1,0 +1,16 @@
+pkgbase = aiwnios
+	pkgdesc = A HolyC Compiler/Runtime for 64bit ARM/x86/RISC
+	pkgver = 0.9.0
+	pkgrel = 1
+	url = https://github.com/nrootconauto/Aiwnios
+	arch = x86_64
+	arch = aarch64
+	arch = riscv64
+	license = BSD-3-Clause
+	makedepends = cmake>=3.13
+	depends = glibc
+	depends = sdl2
+	source = Aiwnios-0.9.0.tar.gz::https://github.com/nrootconauto/Aiwnios/archive/refs/tags/v0.9.0.tar.gz
+	sha256sums = 3318d3aad6c5c788c85bd1e9d4efe9dc0961d7a190df6d0b4b9ab175282e4e07
+
+pkgname = aiwnios
