@@ -6,16 +6,16 @@
 
 pkgname=qgis-git
 _pkgname=qgis
-pkgver=3.99_master.r83167.f4f9432232a
+pkgver=3.99_master.r88828.1cdf1d72b8a
 _pkgver=3.99_master  # fake pkgver prefix for the name
-pkgrel=1
+pkgrel=2
 pkgdesc='Geographic Information System (GIS) that supports vector, raster & database formats - Development master'
 url='http://qgis.org/'
 license=('GPL')
 arch=('x86_64')
 depends=(
-  'proj' 'geos' 'sqlite' 'qwtpolar' 'expat' 'spatialindex' 'gsl' 'libzip' 'exiv2' 'ocl-icd' 'protobuf' 'pdal-git'
-  'qt5-tools' 'qt5-script' 'qtkeychain' 'sip' 'qca-qt5' 'qt5-webkit' 'qt5-3d' 'qt5-serialport' 'qt5-xmlpatterns'
+  'proj' 'geos' 'sqlite' 'qwtpolar' 'expat' 'spatialindex' 'gsl' 'libzip' 'exiv2' 'ocl-icd' 'protobuf' 'pdal'
+  'qt5-tools' 'qt5-script' 'qtkeychain' 'sip' 'qca-qt5' 'qt5-webengine' 'qt5-3d' 'qt5-serialport' 'qt5-xmlpatterns'
   'python-gdal' 'python-owslib' 'python-future' 'python-psycopg2' 'python-yaml' 'python-numpy' 'python-jinja' 'python-pygments'
   'python-pyqt5' 'python-qscintilla-qt5'
 )
