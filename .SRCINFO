@@ -1,8 +1,8 @@
 pkgbase = pianobar-git
 	pkgdesc = A free/open-source, console-based replacement for Pandora's Flash player
-	pkgver = 809.da7dadd
+	pkgver = 844.41ac06c
 	pkgrel = 1
-	url = http://6xq.net/projects/pianobar/
+	url = https://6xq.net/projects/pianobar/
 	arch = i686
 	arch = x86_64
 	license = MIT

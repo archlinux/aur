@@ -1,10 +1,10 @@
 # Maintainer: mutantmonkey <aur@mutantmonkey.mx>
 pkgname=pianobar-git
 _gitname=pianobar
-pkgver=809.da7dadd
+pkgver=844.41ac06c
 pkgrel=1
 pkgdesc="A free/open-source, console-based replacement for Pandora's Flash player"
-url="http://6xq.net/projects/pianobar/"
+url="https://6xq.net/projects/pianobar/"
 arch=('i686' 'x86_64')
 license=('MIT')
 depends=('libao' 'ffmpeg' 'readline' 'json-c' 'libgcrypt' 'gnutls')
