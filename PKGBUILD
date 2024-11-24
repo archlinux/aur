@@ -3,7 +3,7 @@
 # Contributor: Wesley Moore <wes@wezm.net>
 pkgname=mdcat
 pkgver=2.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Sophisticated Markdown rendering for the terminal'
 arch=('i686' 'x86_64')
 url="https://github.com/swsnr/mdcat"
