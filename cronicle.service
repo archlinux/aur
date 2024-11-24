@@ -1,0 +1,14 @@
+[Unit]
+Description=A multi-server task scheduler and runner
+After=network.target
+
+[Service]
+Type=forking
+# The following PIDfile is the default location, 
+# please modify it if necessary
+PIDFile=/opt/cronicle/logs/cronicled.pid
+ExecStart=/opt/cronicle/bin/control.sh start
+ExecStop=/opt/cronicle/bin/control.sh stop
+
+[Install]
+WantedBy=multi-user.target
