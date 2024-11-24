@@ -1,6 +1,6 @@
 # Maintainer: Ash Price <eisleggje@gmail.com>
 pkgname=python-spacy-nl_core_news_lg
-pkgver=3.7.0
+pkgver=3.8.0
 pkgrel=1
 pkgdesc='Dutch pretrained model for spaCy (large)'
 arch=(any)
@@ -9,7 +9,7 @@ license=(CCPL)
 depends=(python-spacy)
 makedepends=(python-setuptools)
 source=("https://github.com/explosion/spacy-models/releases/download/nl_core_news_lg-${pkgver}/nl_core_news_lg-${pkgver}.tar.gz")
-b2sums=('f2299d5b8688ea357252a2c30a97774dbbfec1d2aa80404d7c5537ed1312d4e4909daec509c99aed1419202da67dad1a90732f98700715070262287c57d26333')
+b2sums=('86215d7d177e8feb7566d76e265390c519023f72aa64c399795acd82c65adfe8f0becaabc18439ef3251ba6fadb6fcc2b62d04cd75967ff7943d2b339c4ec48f')
 
 build() {
 	cd nl_core_news_lg-${pkgver}
