@@ -2,7 +2,7 @@ diff --git a/avidemux/qt4/ADM_userInterfaces/ADM_gui/Q_gui2.cpp b/avidemux/qt4/A
 index 005d5cbe7..bd9153e34 100644
 --- a/avidemux/qt4/ADM_userInterfaces/ADM_gui/Q_gui2.cpp
 +++ b/avidemux/qt4/ADM_userInterfaces/ADM_gui/Q_gui2.cpp
-@@ -227,12 +227,12 @@ void MainWindow::comboChanged(int z)
+@@ -685,10 +685,10 @@ MainWindow::MainWindow(const vector<IScriptEngine*>& scriptEngines) : _scriptEng
          ADM_mwNavSlider *qslider=(ADM_mwNavSlider *)slider;
      slider->setMinimum(0);
      slider->setMaximum(ADM_LARGE_SCALE);
