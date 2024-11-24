@@ -1,13 +1,13 @@
 # Maintainer: w0rty <mawo97 at gmail.com>
 # old maintainer: Dominik Heidler <dominik@heidler.eu>
 pkgname=rtl_433-git
-pkgver=r2934.20aa5484
+pkgver=r3573.54a886bf
 pkgrel=1
-pkgdesc="Turns your Realtek RTL2832 based DVB dongle into a 433.92MHz generic data receiver"
+pkgdesc="Program to decode radio transmissions from devices on the ISM bands (and other frequencies"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64' 'armv6h')
-license=('GPL')
-depends=('rtl-sdr' 'openssl')
-makedepends=('git' 'gcc' 'cmake')
+license=('GPL-2.0-only')
+depends=(rtl-sdr soapysdr glibc openssl libusb)
+makedepends=(gcc cmake doxygen git)
 optdepends=()
 provides=('rtl_433')
 conflicts=('rtl_433')
@@ -23,14 +23,19 @@ pkgver() {
 }
 
 build() {
-	cd "${_gitname}"
-	mkdir -p build
-	cd build
-	cmake -DCMAKE_INSTALL_PREFIX=/usr ..
-	make
+	cmake -B build -S "$_gitname" \
+		-DCMAKE_BUILD_TYPE=RelWithDebInfo \
+		-DCMAKE_INSTALL_PREFIX=/usr \
+		-Wno-dev
+	cmake --build build
+}
+
+check() {
+  ctest --test-dir build --output-on-failure
 }
 
 package() {
-	cd "${_gitname}/build"
-	make DESTDIR=${pkgdir} install
+	DESTDIR="$pkgdir" cmake --install build
+	find "rtl_433/examples" -type f -exec \
+    install -Dvm 644 -t "$pkgdir"/usr/share/doc/$pkgname {} +;
 }
