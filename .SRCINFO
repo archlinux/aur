@@ -1,0 +1,19 @@
+pkgbase = lampray-git
+	pkgdesc = Linux Application Modding Platform. A native Linux mod manager.
+	pkgver = git
+	pkgrel = 1
+	url = https://github.com/CHollingworth/Lampray
+	arch = x86_64
+	license = Unlicense
+	makedepends = cmake
+	makedepends = ninja
+	depends = curl
+	depends = p7zip
+	depends = sdl2
+	depends = zenity
+	provides = lampray
+	conflicts = lampray
+	source = lampray-git::git+https://github.com/CHollingworth/Lampray.git
+	sha256sums = SKIP
+
+pkgname = lampray-git
