@@ -3,14 +3,14 @@
 _pkgname="adb-wifi"
 pkgname="${_pkgname}-git"
 pkgver=0.1.2.r1.afa4bb3
-_commit="63d54c0bcbcbaac9be9d9afd78a9390103318915"
-pkgrel=1
+_commit="63d54c0bcbcbaac9be9d9afd78a9390103318915" # 0.1.2
+pkgrel=2
 pkgdesc="A CLI tool which shows QR code and makes seamless connection to the ADB bridge"
 arch=('any')
 url="https://github.com/saleehk/${_pkgname}"
-license=('custom:None')
+license=('ISC')
+depends=('adb' 'nodejs')
 makedepends=('git' 'npm')
-depends=('nodejs')
 provides=("${_pkgname}=${pkgver%%.r*}")
 conflicts=("${_pkgname}")
 _pkgsrc="${_pkgname}"
@@ -18,12 +18,10 @@ source=("${_pkgsrc}::git+${url}.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "${_pkgsrc}"
-  local rev_count=$(git rev-list --count "${_commit}..HEAD")
-  local short_hash=$(git rev-parse --short=7 HEAD)
-
   cd "${srcdir}/${_pkgsrc}"
   local version=$(sed -n 's/.*"version": "\([0-9.]*\)".*/\1/p' package.json)
+  local rev_count=$(git rev-list --count "${_commit}..HEAD")
+  local short_hash=$(git rev-parse --short=7 HEAD)
 
   printf "%s.r%s.%s" "${version}" "${rev_count}" "${short_hash}"
 }
@@ -40,7 +38,7 @@ package() {
   # https://bugs.archlinux.org/task/63396
   chown -R root:root "${pkgdir}"
 
-  install -d "${pkgdir}/usr/share/doc/${_pkgname}"
-  ln -s "${pkgdir}/usr/lib/node_modules/${_pkgname}/readme.md" \
-    "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
+  install -vd "${pkgdir}/usr/share/doc/${_pkgname}"
+  cd "${pkgdir}/usr/share/doc/${_pkgname}"
+  ln -vs "/usr/lib/node_modules/${_pkgname}/readme.md" "README.md"
 }
