@@ -4,11 +4,13 @@ After=network.target
 
 [Service]
 Type=forking
+User=root
 # The following PIDfile is the default location, 
 # please modify it if necessary
 PIDFile=/opt/cronicle/logs/cronicled.pid
 ExecStart=/opt/cronicle/bin/control.sh start
 ExecStop=/opt/cronicle/bin/control.sh stop
+ExecStartPost=/bin/sleep 1
 
 [Install]
 WantedBy=multi-user.target

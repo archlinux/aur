@@ -16,6 +16,6 @@ pkgbase = cronicle-git
 	source = git+https://github.com/jhuckaby/Cronicle.git
 	source = cronicle.service
 	sha256sums = SKIP
-	sha256sums = c05a9ed727dd9066772d281ec8e4afc7d5a7c2e4030fd87d4230d74dbe3ea659
+	sha256sums = 404526261b497e2f62523274d1941c6438fcb9bce63f12cb6dabf774cf470882
 
 pkgname = cronicle-git

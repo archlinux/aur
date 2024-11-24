@@ -14,7 +14,7 @@ install="$pkgname.install"
 source=("git+$url.git"
         "cronicle.service")
 sha256sums=('SKIP'
-            'c05a9ed727dd9066772d281ec8e4afc7d5a7c2e4030fd87d4230d74dbe3ea659')
+            '404526261b497e2f62523274d1941c6438fcb9bce63f12cb6dabf774cf470882')
 backup=('opt/cronicle/conf/config.json'
         'usr/lib/systemd/system/cronicle.service')
 
