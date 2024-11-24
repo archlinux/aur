@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=mlr3
-_pkgver=0.21.1
+_pkgver=0.22.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -36,8 +36,8 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('6aae60a6dc21f1679f5b99c550ec678a')
-b2sums=('2c0e5749f1ce7bec34784da720d0591c261ac27471ca81bd3962f37e0f1321e3ef0a3f41333f4821c9d89b7d9dec6fb0f3b399cc09e11918c8dd4a670f86d0f0')
+md5sums=('3918b6c200011558ff5d31290062c49b')
+b2sums=('cdd7cebded4c5f26fc624f053289e129711b3f154d7ff00a8313ec33692f695324f3b584c3e05bb4847c23575c93a4735247ef0cccc50b83f313834175848986')
 
 build() {
   mkdir build
