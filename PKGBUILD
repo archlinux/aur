@@ -1,7 +1,7 @@
 # Maintainer: Ash Price <eisleggje@gmail.com>
 #
 pkgname=python-spacy-es_core_news_lg
-pkgver=3.7.0
+pkgver=3.8.0
 pkgrel=1
 pkgdesc='Spanish pretrained model for spaCy (large)'
 arch=(any)
@@ -10,7 +10,7 @@ license=(GPL)
 depends=()
 makedepends=(python-setuptools)
 source=("https://github.com/explosion/spacy-models/releases/download/es_core_news_lg-${pkgver}/es_core_news_lg-${pkgver}.tar.gz")
-b2sums=('526a753a5cdc5dae138a18545948a2940cd974a3ddffff91c6dc64d716753ef809659bae97e92f1a47fd72bf1a3c4edd09e32bb30b7b68a44c7591b12524dac1')
+b2sums=('d97b175c848016a21335d79bab411ad8883babf38a9289e87e8874c04653803033f8368f93c9bdec697d723a7d5d2f20e8b5d324c5edd3b17152d0065f079964')
 
 build() {
 	cd es_core_news_lg-${pkgver}
