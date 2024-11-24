@@ -2,7 +2,7 @@
 # Maintainer: Carlos Alexandro Becker <carlos at becker dot software>
 
 pkgname='nfpm'
-pkgver=2.41.0
+pkgver=2.41.1
 pkgrel=2
 pkgdesc='nFPM is a simple, 0-dependencies, deb, rpm and apk packager.'
 url='https://github.com/goreleaser/nfpm'
@@ -12,8 +12,8 @@ license=('MIT')
 depends=()
 makedepends=('git' 'go')
 source=("${pkgname}-v${pkgver}.tar.gz::https://github.com/goreleaser/${pkgname}/archive/v${pkgver}.tar.gz")
-sha512sums=('8e93813dabe0662ed66314f6cd3adaf82892e9f4a59d0fb894931300ff29ac77b7a70dc460d96e74d31a5e39015ed9e93a0f3806e71c6b75aeef157aa8e8fac1')
-b2sums=('1a83f5022db273dc215222423ac4897ab2c16f5a35dc60c3ab140b0762802f4ee44c72ce5553f56e0a95f4b8a1dda726bfdc0e99a6277bb6c63e2137f7c6d109')
+sha512sums=('4578f1cb68376462146c6c835ca6d4a8e033980d39db567b6967ccbe988afd098e087e7b200ea9effea835423c67d6d44efe0c3f2d39b99a08858a59e52cc31e')
+b2sums=('29823dd56fe9b52b58c080854af0827b0fbcdd07d0a0068218d4c43f2a4495ae29dd921310bdfec760fe5ebc6bf8b152049a41db3cd159b475b7ba194fec0fdd')
 
 build() {
 	cd "${pkgname}-${pkgver}"
