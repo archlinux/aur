@@ -5,7 +5,7 @@
 _pkgname=ffgo
 pkgname="${_pkgname}-git"
 pkgver=1.12.8.r602.20241123.68131fc
-pkgrel=1
+pkgrel=2
 pkgdesc="A graphical launcher for FlightGear, i.e., a program whose purpose is to allow easy assembling and running of an fgfs command line. (Fork of and replacement for 'FGo!'.)"
 arch=('any')
 url="http://frougon.net/projects/FFGo/"
@@ -76,12 +76,18 @@ pkgver() {
 build() {
   cd "${srcdir}/${_pkgname}"
 
+  plain "Running 'make update-pot' ..."
   make update-pot
+  plain "Running 'make update-po' ..."
   make update-po
+  plain "Running 'make update-mo' ..."
   make update-mo
+  plain "Running 'make icons' ..."
   make icons
+  plain "Running 'make doc' ..."
   make doc
 
+  plain "Running 'python -m build --wheel --no-isolation' ..."
   python -m build --wheel --no-isolation
 }
 
@@ -89,7 +95,10 @@ package() {
   cd "${srcdir}/${_pkgname}"
   _pysitepkgdir="$(python -c 'import sysconfig; print(sysconfig.get_paths()["purelib"])')"
 
+  plain "Running 'python -m installer --destdir="$pkgdir" --compile-bytecode=2 dist/*.whl' ..."
   python -m installer --destdir="$pkgdir" --compile-bytecode=2 dist/*.whl
+
+  plain "Installing documentation ..."
 
   install -dvm755    "${pkgdir}/usr/share/doc/${_pkgname}"
   install -Dvm644 -t "${pkgdir}/usr/share/doc/${_pkgname}"  upstream.url git.log ChangeLog ChangeLog.FGo README.rst
@@ -103,6 +112,7 @@ package() {
     ln -svr "${pkgdir}/usr/share/doc/${_pkgname}/help/help_${_lang}"  "${pkgdir}/usr/share/doc/${_pkgname}/docs/README/README_${_lang}"
   done
 
+  plain "Installing license ..."
   install -D -v -m644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
   ln -svr "${pkgdir}/usr/share/licenses/${pkgname}/COPYING" "${pkgdir}/usr/share/doc/${_pkgname}/COPYING"
 }
