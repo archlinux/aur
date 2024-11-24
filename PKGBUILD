@@ -4,8 +4,8 @@
 
 _pkgname=ffgo
 pkgname="${_pkgname}-git"
-pkgver=1.12.8.r601.20230917.f5624be
-pkgrel=6
+pkgver=1.12.8.r602.20241123.68131fc
+pkgrel=1
 pkgdesc="A graphical launcher for FlightGear, i.e., a program whose purpose is to allow easy assembling and running of an fgfs command line. (Fork of and replacement for 'FGo!'.)"
 arch=('any')
 url="http://frougon.net/projects/FFGo/"
