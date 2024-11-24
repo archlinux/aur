@@ -3,7 +3,7 @@
 _pkgname=flask-babelex
 pkgname=python-flask-babelex
 pkgver=0.9.4
-pkgrel=8
+pkgrel=9
 pkgdesc='Adds i18n/l10n support to Flask applications'
 url='https://github.com/mrjoes/flask-babelex'
 arch=('any')
@@ -11,8 +11,10 @@ license=('BSD')
 depends=('python' 'python-flask' 'python-babel' 'python-speaklater' 'python-jinja')
 makedepends=('python-sphinx' 'python-setuptools')
 checkdepends=('python-pytest')
-source=(${pkgname}-${pkgver}.tar.gz::"https://github.com/mrjoes/flask-babelex/archive/${pkgver}.tar.gz")
-sha512sums=('e5591bcb83ca7e7644b1d06e604834369973bfba5050bd6890ad57125731981cda1e893544eea61cf69dca536e5473e2e50b08b36b0c3daee15d66f3815bd986')
+source=(${pkgname}-${pkgver}.tar.gz::"https://github.com/mrjoes/flask-babelex/archive/${pkgver}.tar.gz"
+        "fix-sphinx.patch")
+sha512sums=('e5591bcb83ca7e7644b1d06e604834369973bfba5050bd6890ad57125731981cda1e893544eea61cf69dca536e5473e2e50b08b36b0c3daee15d66f3815bd986'
+            '4f75872301e22ce2c27f822d676bb7b74f1d72c32134fe49c92faaea1f0645639f7e1f05711795a1c61d0a04acc79f91fbd7dfbfb17ff46c2f175d38c1c98e51')
 
 prepare() {
   cd ${_pkgname}-${pkgver}
@@ -26,6 +28,8 @@ prepare() {
       -e $'s/1:46:00 PM/1:46:00\u202fPM/' \
       -e $'s/3:46:00 PM/3:46:00\u202fPM/' \
       -i tests/tests.py
+
+  patch -Np1 -i ${srcdir}/fix-sphinx.patch
 }
 
 build() {

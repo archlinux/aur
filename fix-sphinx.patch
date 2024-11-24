@@ -1,0 +1,11 @@
+diff -aur flask-babelex-0.9.4.orig/docs/conf.py flask-babelex-0.9.4/docs/conf.py
+--- flask-babelex-0.9.4.orig/docs/conf.py	2024-11-24 10:08:30.573098453 +0100
++++ flask-babelex-0.9.4/docs/conf.py	2024-11-24 10:10:28.027367102 +0100
+@@ -218,5 +218,5 @@
+      [u'Armin Ronacher'], 1)
+ ]
+ 
+-intersphinx_mapping = {'http://docs.python.org/': None,
+-                       'http://flask.pocoo.org/docs/': None}
++intersphinx_mapping = {'python': ('http://docs.python.org/', None),
++                       'flask': ('http://flask.pocoo.org/docs/', None)}
