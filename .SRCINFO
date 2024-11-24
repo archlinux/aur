@@ -1,0 +1,24 @@
+pkgbase = testing-srcinfo-specs
+	pkgdesc = I am testing the .SRCINFO specs, DO NOT INSTALL
+	pkgver = 0.0.6
+	pkgrel = 1
+	url = https://github.com/KSXGitHub/ibus-daemon.pkgbuild.git
+	arch = any
+	license = GPL-3
+	depends = systemd
+	license = GPL-2
+	source = ibus@.service
+	license = MIT
+	sha512sums = SKIP
+	depends = ibus
+	sha512sums = SKIP
+	source = ibus-config@.service
+	source = enable-ibus-daemon
+	sha512sums = SKIP
+	sha512sums = SKIP
+	depends = sh
+	sha512sums = SKIP
+	source = LICENSE.md
+	source = README.md
+
+pkgname = testing-srcinfo-specs

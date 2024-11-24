@@ -1,0 +1,2 @@
+#!/bin/sh
+exec systemctl enable --user "ibus@$DISPLAY.service" "$@"
