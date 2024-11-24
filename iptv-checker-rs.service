@@ -1,0 +1,14 @@
+[Unit]
+Description=IPTV Checker Web Service
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/iptv-checker-rs web --start --port 8089
+Restart=always
+User=root
+WorkingDirectory=/usr/share/iptv-checker-rs
+Environment=RUST_LOG=info
+TimeoutStopSec=3s
+
+[Install]
+WantedBy=multi-user.target

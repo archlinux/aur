@@ -1,0 +1,22 @@
+post_install() {
+    cat << EOF
+
+iptv-checker-rs installed. 
+Please review the systemd configuration file at /usr/lib/systemd/system/iptv-checker-rs.service.  
+Then, to start the web service, type: 'sudo systemctl start iptv-checker-rs.service'. 
+You can also use it with "iptv-checker-rs <COMMAND>". 
+For full docs, please visit: https://github.com/zhimin-dev/iptv-checker-rs.
+
+Enjoy!
+
+EOF
+}
+
+post_upgrade() {
+    cat << EOF
+
+Cronicle upgraded. 
+For full docs, please visit: https://github.com/zhimin-dev/iptv-checker-rs.
+
+EOF
+}

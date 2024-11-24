@@ -1,0 +1,24 @@
+pkgbase = iptv-checker-rs
+	pkgdesc = Checking links in IPTV playlists written in Rust
+	pkgver = 3.2.1
+	pkgrel = 1
+	url = https://github.com/zhimin-dev/iptv-checker-rs
+	install = iptv-checker-rs.install
+	arch = x86_64
+	arch = aarch64
+	license = unknown
+	makedepends = cargo
+	depends = ffmpeg
+	depends = openssl
+	provides = iptv-checker-rs
+	conflicts = iptv-checker-rs
+	backup = usr/share/iptv-checker-rs/tasks.json
+	backup = usr/lib/systemd/system/iptv-checker-rs.service
+	source = https://github.com/zhimin-dev/iptv-checker-rs/archive/refs/tags/v3.2.1.tar.gz
+	source = 0001-update-openssl-dependency.patch
+	source = iptv-checker-rs.service
+	sha256sums = f28480bc5793004d860b8ec77ff095013187e9d2bb00775ae7d1b6315d965c06
+	sha256sums = 034a5daec5e21305fd2a3dc2300e74c77049985887f8552aef02c90fd9794c8c
+	sha256sums = 3d65f14bc276cc78164d01de311cc9f5a6b08b0341a6e9f836bdda84171d3494
+
+pkgname = iptv-checker-rs
