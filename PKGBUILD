@@ -1,37 +1,46 @@
 # Maintainer: Christoph Haag <haagch+aur@frickel.club> 
 
-_pkgname=psmoveinput
-pkgname=${_pkgname}-git
-pkgver=0.4.1.r0.gb4a51a0
+pkgname=psmoveinput-git
+pkgver=0.4.6.0.ga2438c9
 pkgrel=1
-pkgdesc="userspace Linux input driver that uses data from PSMove motion controller to inject events to kernel's input subsystem"
-arch=(i686 x86_64)
+pkgdesc="userspace Linux input driver that uses data from PSMove motion controller to inject events to kernel's input subsystem (GIT version)"
+arch=('x86_64')
 url="https://github.com/MooseTheBrown/psmoveinput"
 license=('GPL3')
-depends=('psmoveapi-git' 'boost-libs')
-makedepends=('cmake')
-source=(${_pkgname}::git+https://github.com/MooseTheBrown/psmoveinput.git)
-sha1sums=('SKIP')
+depends=(
+  'gcc-libs' # libgcc_s.so libstdc++.so
+  'glibc' # libc.so
+  'psmoveapi-git' 'libpsmoveapi.so'
+  'dbus-python'
+  'python'
+  'boost-libs' 'libboost_thread.so' 'libboost_program_options.so'
+)
+makedepends=(
+  'cmake'
+  'git'
+  'boost'
+)
+source=('git+https://github.com/MooseTheBrown/psmoveinput.git')
+sha256sums=('SKIP')
+options=('debug')
 
 pkgver() {
-  cd "${srcdir}/${_pkgname}"
-  git describe --long --tags | sed -r 's/([^-]*-g)/r\1/;s/-/./g'
-}
-
-prepare() {
-  cd "${srcdir}/${_pkgname}"
-  sed -i "s/boost_thread-mt/boost_thread/g" CMakeLists.txt
-  sed -i "s/boost_program_options-mt/boost_program_options/g" CMakeLists.txt
-  cmake -DCMAKE_INSTALL_PREFIX:PATH=/usr -DCMAKE_INSTALL_LIBDIR=lib .
+  cd psmoveinput
+  echo "$(git describe --long --tags | tr - . | tr -d v)"
 }
 
 build() {
-  cd "${srcdir}/${_pkgname}"
-  make
+  cmake -B build -S psmoveinput \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_INSTALL_PREFIX=/usr
+
+  cmake --build build
 }
 
 package() {
-  cd "${srcdir}/${_pkgname}"
-  make DESTDIR="$pkgdir" install
+  DESTDIR="${pkgdir}" cmake --install build
+
+  install -Dm644 "${pkgdir}/etc/systemd/system/psmoveinput.service" "${pkgdir}/usr/lib/systemd/system/psmoveinput.service"
+  rm -fr "${pkgdir}/etc/systemd"
 }
 

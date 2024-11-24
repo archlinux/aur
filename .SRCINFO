@@ -1,16 +1,24 @@
 pkgbase = psmoveinput-git
-	pkgdesc = userspace Linux input driver that uses data from PSMove motion controller to inject events to kernel's input subsystem
-	pkgver = 0.4.1.r0.gb4a51a0
+	pkgdesc = userspace Linux input driver that uses data from PSMove motion controller to inject events to kernel's input subsystem (GIT version)
+	pkgver = 0.4.6.0.ga2438c9
 	pkgrel = 1
 	url = https://github.com/MooseTheBrown/psmoveinput
-	arch = i686
 	arch = x86_64
 	license = GPL3
 	makedepends = cmake
+	makedepends = git
+	makedepends = boost
+	depends = gcc-libs
+	depends = glibc
 	depends = psmoveapi-git
+	depends = libpsmoveapi.so
+	depends = dbus-python
+	depends = python
 	depends = boost-libs
-	source = psmoveinput::git+https://github.com/MooseTheBrown/psmoveinput.git
-	sha1sums = SKIP
+	depends = libboost_thread.so
+	depends = libboost_program_options.so
+	options = debug
+	source = git+https://github.com/MooseTheBrown/psmoveinput.git
+	sha256sums = SKIP
 
 pkgname = psmoveinput-git
-
