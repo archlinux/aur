@@ -15,9 +15,9 @@ source_i686=("${pkgname}-${pkgver}-i686.tar.gz::${url}/releases/download/v${pkgv
 source_aarch64=("${pkgname}-${pkgver}-aarch64.tar.gz::${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_linux_arm64.tar.gz")
 
 b2sums=('1375f8eb689085b7735551ce0f5f19167df905bdf8f105ac72479ae6214666f74a03ce24766bc08a9407c878ecd8078ca3e81013ecf4fd8c80a52dc308e29d78')
-b2sums_x86_64=('33d6606a52a1b6221b4f34558185e36fe7dbf4b04d79ff20d330f8cbd2fdacff89c9a9ca6185f913b04c741be27e9fbb91b488f0cd738c30fcb460d3ff232d7a')
-b2sums_i686=('1f82fa320fba436a127c767001f5b0be882aafa5975abe354e403bf41aff1f7b8a735a3245b67373a34ea5d378a481f6ff507945ea4650e5487a583bb75918dc')
-b2sums_aarch64=('fd2c1224b9e731246b5105b4e11a392e706bec451dd8bd2caa86e06bd178bcf41e015e83416db4e21deb1e631f617f774ee1bf98fda4a4949ab066a1cc43368c')
+b2sums_x86_64=('62f6ee4ba437842cad5e8b5305f44172a8c62dc929f293f4b9e402d992ddfd2dcc8585412dd15474b9345d069783b7fd2c44de6c75b8e6ff38a5eb012fbe3f8a')
+b2sums_i686=('24c4ee708938f0041c71ef2b98142473182ca8cd8ce9d5fd09dac763d60de79e2f5f1856c78c8bddbc7e65445d1cf7bb686d51cf2504ca8e8c290f31a92afc72')
+b2sums_aarch64=('6931dd524ca967ec0fb761efd4e2497b9609eba737f35940c7343e0ce95de62d55680caeabc56cd7aa8b738bbea4bf59850380b6e569f5c5fffa6a2984f5f074')
 
 package() {
 	install -Dm755 "${pkgname%-bin}" -t "${pkgdir}/usr/bin"
