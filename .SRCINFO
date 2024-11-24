@@ -1,16 +1,16 @@
 pkgbase = cosmocc-bin
 	pkgdesc = cosmopolitan toolchain: build-once run-anywhere c library
-	pkgver = 3.6.2
-	pkgrel = 2
+	pkgver = 3.9.7
+	pkgrel = 1
 	url = https://justine.lol/cosmopolitan/index.html
 	arch = x86_64
 	arch = aarch64
 	license = ISC
-	noextract = cosmocc-3.6.2.zip
+	noextract = cosmocc-3.9.7.zip
 	options = !strip
-	source = https://cosmo.zip/pub/cosmocc/cosmocc-3.6.2.zip
+	source = https://cosmo.zip/pub/cosmocc/cosmocc-3.9.7.zip
 	source = bin-wrapper
-	sha512sums = a9686b55db1df16e94ddd8a110eb2ea34f10b684bafabd7a04d0ba329cf3b5b43871e3f77d269428888d4be09642fcf419abe1eac85aa922060847264257107a
+	sha512sums = 8e7f09a879045dcbe8c5bd6c3f98f72505b6cfade9379d51bb32e5066f54a84ac42fd47f54ff6e40614b977a8855f1124d0ca01ca074618ef1089daaeebc3745
 	sha512sums = d2bb2bcf5eee88a16f78849fd42a63a65539611a030815a56b19b27a25d9abe0fe3a0a746a58c00a2e468b917d1689f5a0048ddfb73c351f5f71d0d0a7015271
 
 pkgname = cosmocc-bin
