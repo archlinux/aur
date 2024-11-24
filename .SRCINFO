@@ -1,0 +1,13 @@
+pkgbase = python-pprp
+	pkgdesc = A Python library for processing playlist and other related parsing tasks.
+	pkgver = 0.2.7
+	pkgrel = 1
+	url = https://pypi.org/project/pprp
+	arch = any
+	license = GPL2
+	makedepends = python-setuptools
+	depends = python
+	source = https://files.pythonhosted.org/packages/7d/8a/6bcc32e0f6cf0a9e0132230cb41652bd3df3dbdb0e673e31b720b6111deb/pprp-0.2.7.tar.gz
+	sha256sums = d9e76779cc52b0938dbc7f5727a195dc4c6075c3eb504025611a59b7636b930d
+
+pkgname = python-pprp
