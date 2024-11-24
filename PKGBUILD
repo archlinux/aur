@@ -2,9 +2,9 @@
 
 _basename=jan
 pkgname=${_basename}
-pkgver=0.5.6
+pkgver=0.5.9
 pkgrel=1
-pkgdesc="Jan is an open source alternative to ChatGPT that runs 100% offline on your computer (stable version)"
+pkgdesc="An open source alternative to ChatGPT that runs 100% offline on your computer"
 url="https://jan.ai/"
 arch=('x86_64')
 license=('AGPL-3.0')
@@ -12,8 +12,8 @@ source=(
 	"$_basename::git+https://github.com/janhq/jan.git#tag=v$pkgver"
 	'jan.desktop'
 )
-sha256sums=('SKIP'
-            '689c50321d61f2c40a275c004865e9956501038782867bbe73e9d42128f40048')
+sha256sums=('4f0b01b21144c9fe91c36613578c7dc3323cbe009ffe3a628e987ead77e4178c'
+						'689c50321d61f2c40a275c004865e9956501038782867bbe73e9d42128f40048')
 provides=("$_basename")
 conflicts=("$_basename")
 depends=(
@@ -25,19 +25,34 @@ depends=(
 )
 makedepends=(
 	'git'
-	'nodejs'
-	'npm'
-	'yarn'
+	'nvm'
 	'libxcrypt-compat'
+	'python'
 )
+
+_ensure_local_nvm() {
+	which nvm >/dev/null 2>&1 && nvm deactivate && nvm unload
+	export NVM_DIR="${srcdir}/.nvm"
+	source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
+}
 
 prepare() {
 	cd "$_basename"
+
+	_ensure_local_nvm
+
+	workflow_file=.github/workflows/template-build-linux-x64.yml
+	[ -f "$workflow_file" ] && node_ver=$(grep -Po 'node-version: \K\d+' "$workflow_file")
+
+	nvm install ${node_ver:-20}
+	npm install --global yarn
+
 	[ -f electron/package.json ] && sed -i '/"build:linux"/s/-l deb -l AppImage/-l --dir/' electron/package.json
 }
 
 build() {
 	cd "$_basename"
+	_ensure_local_nvm
 	export YARN_CACHE_FOLDER="$srcdir"/yarn-cache
 	make build
 }
