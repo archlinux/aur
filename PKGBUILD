@@ -35,7 +35,7 @@ prepare() {
     export RUSTUP_TOOLCHAIN=stable
     cd "catgirl-engine"
     rustup install $RUSTUP_TOOLCHAIN
-    cargo +RUSTUP_TOOLCHAIN fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+    cargo +$RUSTUP_TOOLCHAIN fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 # Builds files
@@ -44,7 +44,7 @@ build() {
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
     cd "catgirl-engine"
-    cargo +RUSTUP_TOOLCHAIN build --frozen --release
+    cargo +$RUSTUP_TOOLCHAIN build --frozen --release
 }
 
 # Checks built files
@@ -57,9 +57,9 @@ check() {
 package() {
     cd "catgirl-engine"
     sed -i "s/\${engine_path}/\/usr\/bin\/catgirl-engine/" client/assets/resources/catgirl-engine.desktop
-    mv client/assets/vanilla/texture/logo/logo-1024x1024-color.png client/assets/vanilla/texture/logo/catgirl-engine.png
+    mv client/assets/vanilla/texture/logo/logo.svg client/assets/vanilla/texture/logo/catgirl-engine.svg
 
-    install -Dm0755 -t "$pkgdir/usr/share/icons" "client/assets/vanilla/texture/logo/catgirl-engine.png"
+    install -Dm0755 -t "$pkgdir/usr/share/icons" "client/assets/vanilla/texture/logo/catgirl-engine.svg"
     install -Dm0755 -t "$pkgdir/usr/share/applications/" "client/assets/resources/catgirl-engine.desktop"
     install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/catgirl-engine"
 }
