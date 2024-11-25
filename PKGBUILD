@@ -5,7 +5,7 @@ pkgdesc="A game engine for cool moddability and procedurally generated data"
 arch=('any')
 license=(Zlib)
 url="https://github.com/lexi-the-cute/catgirl-engine"
-pkgver=v0.14.15.r1.gbffb0bb
+pkgver=v0.14.36.alpha.r2.gbcf5489
 pkgrel=1
 provides=("catgirl-engine=${pkgver%%.r*}")
 conflicts=(catgirl-engine)
