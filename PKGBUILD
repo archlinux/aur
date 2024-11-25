@@ -2,7 +2,7 @@
 
 _pkgbase=rime-frost
 pkgname=${_pkgbase}-git
-pkgver=r212.76b607f
+pkgver=r217.04465eb
 pkgrel=1
 pkgdesc="Rime 配置：白霜词库 | 蒹葭苍苍，白露为霜。基于雾凇拼音重制的，更纯净、词频准确、智能的词库。"
 arch=("any")
@@ -29,12 +29,12 @@ be94577ee610847ecb17aa1a22d4341bb124dd1b50a89a06b512e9b16370340e16284268985bebec
 
 _schemas=(
   rime_frost
-  double_pinyin
-  double_pinyin_abc
-  double_pinyin_mspy
-  double_pinyin_sogou
-  double_pinyin_flypy
-  double_pinyin_ziguang
+  rime_frost_double_pinyin
+  rime_frost_double_pinyin_abc
+  rime_frost_double_pinyin_mspy
+  rime_frost_double_pinyin_sogou
+  rime_frost_double_pinyin_flypy
+  rime_frost_double_pinyin_ziguang
 )
 
 pkgver() {
