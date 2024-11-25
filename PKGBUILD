@@ -1,12 +1,13 @@
 # Maintainer: Storm Dragon <storm_dragon@linux-a11y.org>
-# Maintainer: Chrys <chrys@linux-a11y.org>
+# Contributor: Chrys <chrys@linux-a11y.org>
 
-pkgname='fenrir'
-pkgver=1.9.7.1
+pkgname="fenrir"
+pkgver=1.9.9
 pkgrel=1
+epoch=1
 pkgdesc='A user space console screen reader written in python3'
 arch=('any')
-url="https://linux-a11y.org/index.php?page=fenrir-screenreader"
+url="https://git.stormux.org/storm/fenrir"
 license=('LGPL')
 depends=('espeak-ng' 'python' 'python-pyudev' 'python-daemonize' 'python-evdev' 'python-dbus' 'python-pyte')
 optdepends=('brltty: For Braille support'
@@ -14,25 +15,23 @@ optdepends=('brltty: For Braille support'
 'socat: Control running Fenrir screenreader'
   'sox: The default sound driver'
   'python-espeak: TTS support'
+  'python-pyttsx: TTS support'
   'python-pyenchant: for spell check functionality'
   'xclip: for copy to X session clipboard'
   'speech-dispatcher: TTS support')
-makedepends=('python-setuptools')
-install=fenrir.install
+makedepends=('git' 'python-setuptools')
 provides=('fenrir')
-conflicts=('fenrir')
+conflicts=('fenrir-git')
 backup=('etc/fenrirscreenreader/settings/settings.conf')
-source=("https://github.com/chrys87/${pkgname}/archive/${pkgver}.tar.gz"
-  'fenrir.install'
+source=("git+https://git.stormux.org/storm/${pkgname}.git#tag=${pkgver}"
   'fenrirscreenreader.service')
-sha512sums=('f2366a2fecbb732ee8eb811b10f6cae3aed78dc634f570f962d6f41874782e6d354c2db8ac3c470e3909ed7795cc886c1ae9b06f658258881c8f51a7e8972775'
-            '15ee3b4c9bc6e35fb06033c012ed51b75572062a9a164fc828743cbde1f96fa42076f078f97c8383292d14e0586c3f3a14e7777afea30993139d3927e42cb7d5'
+sha512sums=('9e7168215461e2380794d6aa0da8952e05c2dba8937599f4d1a91494532b86b33376cb0169327b3143521524b6e5718f5db73c1f22b97d64eba857d1fc8fa457'
             'dc73ab35120902222d7aab02ebd396790d0b9a7c2531746011dcd4169b5376cdd942909734dd77aae60275f537395684327759bed6fce675adac6699bbe0b262')
 
 package() {
   install -d "$pkgdir/usr/lib/systemd/system/"
   install -Dm644 fenrirscreenreader.service "$pkgdir/usr/lib/systemd/system/fenrirscreenreader.service"
-cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "$srcdir/$pkgname"
   python setup.py install --force-settings --root="${pkgdir}/" --optimize=1
 }
 
