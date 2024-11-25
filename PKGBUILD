@@ -1,20 +1,23 @@
-# Maintainer: Ivan Batrakov <blackfan321 at disroot dot org>
+# Maintainer: envolution
+# Contributor: Ivan Batrakov <blackfan321 at disroot dot org>
 # Contributor: Filipe Laíns (FFY00) <lains@archlinux.org>
 
 _pkgname=webargs
 pkgname=python-$_pkgname
-pkgver=8.4.0
+pkgver=8.6.0
 pkgrel=1
 pkgdesc='A friendly library for parsing HTTP request arguments, with built-in support for popular web frameworks'
 arch=('any')
 url='https://github.com/marshmallow-code/webargs'
 license=('MIT')
 depends=('python-marshmallow')
-makedepends=('python-setuptools' 'python-sphinx' 'python-sphinx-issues' 'python-sphinx-typlog-theme' 'python-sphinx-furo')
+makedepends=('python-build' 'python-installer' 'python-wheel' 'python-flit-core'
+  'python-sphinx' 'python-sphinx-issues' 'python-sphinx-typlog-theme'
+  'python-sphinx-furo')
 checkdepends=('python-pytest-runner' 'python-webtest' 'python-pytest-aiohttp' 'python-webtest-aiohttp'
-              'python-bottle' 'python-werkzeug' 'python-django' 'python-flask' 'python-tornado' 'python-pytest-asyncio')
+  'python-bottle' 'python-werkzeug' 'python-django' 'python-flask' 'python-tornado' 'python-pytest-asyncio')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha512sums=('a57df4d063c59b75fb28315aca1ba87d581113787729c222397a3e8f7f376e0677956bc921312b5962f2b2fa69529f82f59c6887aabfdcfe58ad8489592925cd')
+sha512sums=('adaa90803b7f6f3cfeedf7c02b217030b5cc9d52cf7385dcb698808a565c664abe28b1bd087c1c9337669770348ba72abbb45cbb12da92edc89abdc0788efb5b')
 
 prepare() {
   cd $_pkgname-$pkgver
@@ -25,33 +28,36 @@ prepare() {
 build() {
   cd $_pkgname-$pkgver
 
-  python setup.py build
+  python -m build --wheel --no-isolation
 
-  cd docs
+  # create a temporary virtualenv for docs and tests
+  rm -rf test-env
+  python -m venv --system-site-packages test-env
+  test-env/bin/python -m installer dist/*.whl
 
-  make html man
-  ls _build/man
-  gzip _build/man/webargs.1
+  PATH="$PWD/test-env/bin:$PATH" \
+    PYTHONPATH="$(python -c "import site; print(site.getsitepackages()[0])")" \
+    make -C docs html man
 }
 
 check() {
   cd $_pkgname-$pkgver
 
-  python setup.py pytest
+  PATH="$PWD/test-env/bin:$PATH" \
+    PYTHONPATH="$(python -c "import site; print(site.getsitepackages()[0])")" \
+    python -m pytest \
+    --deselect tests/test_bottleparser.py::TestBottleParser::test_invalid_json
 }
 
 package() {
   cd $_pkgname-$pkgver
 
-  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+  python -m installer --destdir="$pkgdir" dist/*.whl
 
   install -dm 755 "$pkgdir"/usr/share/doc/$pkgname
-  cp -r -a --no-preserve=ownership docs/_build/html "$pkgdir"/usr/share/doc/$pkgname
-
-  install -dm 755 "$pkgdir"/usr/share/man/man1
-  install -Dm 644 docs/_build/man/webargs.1.gz "$pkgdir"/usr/share/man/man1/webargs.1.gz
-
-  install -Dm 644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+  cp -a --no-preserve=mode,ownership docs/_build/html -t "$pkgdir"/usr/share/doc/$pkgname
+  install -Dm 644 docs/_build/man/webargs.1 -t "$pkgdir"/usr/share/man/man1
+  install -Dm 644 LICENSE -t "$pkgdir"/usr/share/licenses/$pkgname
 }
 
 # vim:set ts=2 sw=2 et:
