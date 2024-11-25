@@ -22,7 +22,7 @@ package() {
     install -Dm644 "StartWine.png" -t "$pkgdir/usr/share/pixmaps"
 }
 
-post_remove() {
+pre_remove() {
 
     if [ -f "${HOME}/.config/swrc" ]; then
         START_WINE_PATH="$(cat "{$HOME}/.config/swrc")"
