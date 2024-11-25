@@ -2,13 +2,13 @@
 #Maintainer: Heiko Nickerl <devATheiko-nickerlDOTcom>
 pkgname=jes
 pkgver=2.6.40
-pkgrel=1
+pkgrel=2
 pkgdesc="A java-based tool for german cash method of accounting (Einnahmen-Überschuss-Rechnung)"
 arch=('any')
 url="http://www.jes-eur.de"
 license=('custom')
 #install="${pkgname}.install"
-depends=('java-runtime' 'x-server' 'xdg-utils')
+depends=('java-runtime>=17')
 source=(http://www.jes-eur.de/userfiles/downloads/jes/jes_${pkgver}.zip
     ${pkgname}.desktop
 	  ${pkgname}.sh.new
