@@ -1,6 +1,6 @@
 # Maintainer: Kimiblock Moe
 pkgname=portable
-pkgver=1.1.3
+pkgver=1.1.4
 pkgrel=1
 epoch=
 pkgdesc="Portable Sandboxing framework"
@@ -90,4 +90,4 @@ function package() {
 	install -Dm755 mimeapps.list ${pkgdir}/usr/lib/portable/mimeapps.list
 	install -Dm755 flatpak-info ${pkgdir}/usr/lib/portable/flatpak-info
 }
-sha256sums=('3aa87a85ac89c84b7909cb0210e493332ff8e271af9b1ad7880f61383476bc82')
+sha256sums=('a4f4b259d4b3ae4dc9fb999a0ddae009fbea2efb2f47923ed3d9f58301bafe25')
