@@ -1,15 +1,14 @@
 pkgbase = gtk-theme-e17gtk-git
 	pkgdesc = A dark GTK2/GTK3 theme with sharp corners, which is designed for use in Enlightenment and gives the elegant look of Enlightenment to GTK widgets.
 	pkgver = V3.22.2.r1.gecebae2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/tsujan/E17gtk
 	arch = any
 	license = GPL
 	makedepends = git
 	optdepends = enlightenment
 	optdepends = qt5-styleplugins: GTK+ rendering for QT5
-	source = git://github.com/tsujan/E17gtk
+	source = git+https://github.com/tsujan/E17gtk
 	md5sums = SKIP
 
 pkgname = gtk-theme-e17gtk-git
-
