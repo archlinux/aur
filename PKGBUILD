@@ -2,10 +2,10 @@
 # Contributor:  Dimitris Kiziridis <ragouel at outlook dot com>
 pkgname=hyperkeys-bin
 _pkgname=HyperKeys
-pkgver=1.3.2
+pkgver=1.3.3
 _electronversion=26
 pkgrel=1
-pkgdesc="Unleash you keyboard shorcuts.Prebuilt version.Use system-wide electron."
+pkgdesc="Unleash you keyboard shorcuts.(Prebuilt version.Use system-wide electron)"
 arch=('x86_64')
 url="https://hyperkeys.xureilab.com/"
 _ghurl="https://github.com/xurei/hyperkeys"
