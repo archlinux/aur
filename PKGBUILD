@@ -33,6 +33,7 @@ pkgver() {
 # Prepares for building
 prepare() {
     export RUSTUP_TOOLCHAIN=stable
+
     cd "catgirl-engine"
     rustup install $RUSTUP_TOOLCHAIN
     cargo +$RUSTUP_TOOLCHAIN fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
@@ -43,14 +44,17 @@ build() {
     export RUSTFLAGS="-L/usr/lib -lzstd"
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
+
     cd "catgirl-engine"
     cargo +$RUSTUP_TOOLCHAIN build --frozen --release
 }
 
 # Checks built files
 check() {
+    export RUSTUP_TOOLCHAIN=stable
+
     cd "catgirl-engine"
-    cargo test --frozen --workspace
+    cargo +$RUSTUP_TOOLCHAIN test --frozen --workspace
 }
 
 # Packages built files
