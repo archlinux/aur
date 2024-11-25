@@ -25,7 +25,6 @@ optdepends=(
   'scotch: support for Scotch'
   'superlu_dist: support for SuperLU_DIST'
   'triangle: support for Triangle'
-  'trilinos-ml: support for ML (part of Trilinos)'
   'zoltan: support for zoltan'
   )
 
