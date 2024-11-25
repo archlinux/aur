@@ -22,34 +22,34 @@ package() {
     install -Dm644 "StartWine.png" -t "$pkgdir/usr/share/pixmaps"
 }
 
-pre_remove() {
+post_remove() {
 
-    if [ -f "${HOME}/.config/swrc" ]; then
-        START_WINE_PATH="$(cat "{$HOME}/.config/swrc")"
+    if [ -f "$HOME/.config/swrc" ]; then
+        START_WINE_PATH="$(cat "$HOME/.config/swrc")"
         export START_WINE_PATH
 
-        [ -d "${START_WINE_PATH}" ] && \
-            rm -rf "${START_WINE_PATH}"
+        [ -d "$START_WINE_PATH" ] && \
+            rm -rf "$START_WINE_PATH"
 
-        rm -rf "${HOME}/.config/swrc"
+        rm -rf "$HOME/.config/swrc"
 
-        [ -d "${HOME}/.cache/sw_fm/database" ] && \
-            rm -rf "${HOME}/.cache/sw_fm/database"
+        [ -d "$HOME/.cache/sw_fm/database" ] && \
+            rm -rf "$HOME/.cache/sw_fm/database"
 
-        [ -d "${HOME}/.cache/sw_fm/downloads" ] && \
-            rm -rf "${HOME}/.cache/sw_fm/downloads"
+        [ -d "$HOME/.cache/sw_fm/downloads" ] && \
+            rm -rf "$HOME/.cache/sw_fm/downloads"
 
-        [ -d "${HOME}/.cache/sw_fm/thumbnail" ] && \
-            rm -rf "${HOME}/.cache/sw_fm/thumbnail"
+        [ -d "$HOME/.cache/sw_fm/thumbnail" ] && \
+            rm -rf "$HOME/.cache/sw_fm/thumbnail"
 
-        [ -d "${HOME}/.cache/sw_fm/bookmarks" ] && \
-            rm -rf "${HOME}/.cache/sw_fm/bookmarks"
+        [ -d "$HOME/.cache/sw_fm/bookmarks" ] && \
+            rm -rf "$HOME/.cache/sw_fm/bookmarks"
 
-        [ -f "${HOME}/.cache/sw_fm/exe_data.json" ] && \
-            rm -rf "${HOME}/.cache/sw_fm/exe_data.json"
+        [ -f "$HOME/.cache/sw_fm/exe_data.json" ] && \
+            rm -rf "$HOME/.cache/sw_fm/exe_data.json"
 
-        [ -f "${HOME}/.cache/sw_fm/playlist" ] && \
-            rm -rf "${HOME}/.cache/sw_fm/playlist"
+        [ -f "$HOME/.cache/sw_fm/playlist" ] && \
+            rm -rf "$HOME/.cache/sw_fm/playlist"
 
         [ -f "$HOME/.local/share/applications/StartWine.desktop" ] && \
             rm -rf "$HOME/.local/share/applications/StartWine.desktop"
