@@ -1,6 +1,6 @@
 pkgbase = inkdown-bin
-	pkgdesc = A WYSIWYG Markdown editor,improve reading and editing experience,and generate your Markdown files into online documents in the easiest and fastest way.Prebuilt version.Use system-wide electron.
-	pkgver = 1.1.0
+	pkgdesc = A WYSIWYG Markdown editor,improve reading and editing experience,and generate your Markdown files into online documents in the easiest and fastest way.(Prebuilt version.Use system-wide electron)
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://github.com/1943time/inkdown
 	arch = aarch64
@@ -10,9 +10,9 @@ pkgbase = inkdown-bin
 	conflicts = inkdown-bin
 	source = inkdown.sh
 	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
-	source_aarch64 = inkdown-1.1.0-aarch64.deb::https://github.com/1943time/inkdown/releases/download/v1.1.0/Inkdown-linux-arm64.deb
-	sha256sums_aarch64 = 456dd9987ecba850707487eebe04ac3f43b538930720eb24268602eb1c9aaa5f
-	source_x86_64 = inkdown-1.1.0-x86_64.deb::https://github.com/1943time/inkdown/releases/download/v1.1.0/Inkdown-linux-amd64.deb
-	sha256sums_x86_64 = 0d935de327ea9597b48726971e07deba184bf2a62c87f9dedfc545c85c35d2bb
+	source_aarch64 = inkdown-1.2.0-aarch64.deb::https://github.com/1943time/inkdown/releases/download/v1.2.0/Inkdown-linux-arm64.deb
+	sha256sums_aarch64 = 6e897cd1f4ea854f01481bee84aba55ea1f62b9c4126c4520e2244b0472d190a
+	source_x86_64 = inkdown-1.2.0-x86_64.deb::https://github.com/1943time/inkdown/releases/download/v1.2.0/Inkdown-linux-amd64.deb
+	sha256sums_x86_64 = 644cad1abbe84da01d271b173f57155651ca0c7f58f8ea7b4a35a4ab9ee0d4fa
 
 pkgname = inkdown-bin
