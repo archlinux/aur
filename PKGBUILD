@@ -1,37 +1,80 @@
-# Maintainer: Francesco Minnocci <ascoli dot minnocci at gmail dot com>
+# Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
+# Contributor: Francesco Minnocci <ascoli dot minnocci at gmail dot com>
 
 pkgname=vieb
-pkgver=5.3.0
-pkgrel=3
-pkgdesc="Vim Inspired Electron Browser - Vim bindings for the web by design"
-arch=('x86_64')
-url="https://vieb.dev"
-license=('GPL3')
-depends=('c-ares'
-  'ffmpeg'
-  'gtk3'
-  'http-parser'
-  'libevent'
-  'libvpx'
-  'libxslt'
-  'libxss'
-  'minizip'
-  'nss'
-  're2'
-  'snappy'
-  'libnotify')
-install="${pkgname}.install"
-source=("https://github.com/Jelmerro/Vieb/releases/download/${pkgver}/${pkgname}-${pkgver}.pacman")
-sha512sums=('0736639a47b25e12b8da48dcd041fdeb28bccde637e677e3d7894eda9f046aa072e15332d593523be37802b522c5f56681978abe3017963da5db12872bb37820')
-
-package() {
-	cd "$srcdir"
-
-  cp -R "${srcdir}/usr/" "${pkgdir}/usr/"
-  cp -R "${srcdir}/opt/" "${pkgdir}/opt/"
-
-  # Create a symlink to the binary in /opt
-  mkdir -p "${pkgdir}"/usr/bin
-  ln -sf /opt/Vieb/vieb "${pkgdir}/usr/bin/vieb"
+_pkgname=Vieb
+pkgver=12.1.0
+_electronversion=33
+_nodeversion=20
+pkgrel=1
+pkgdesc="Vim Inspired Electron Browser - Vim bindings for the web by design.(Use system-wide electron)"
+arch=('any')
+url="https://vieb.dev/"
+_ghurl="https://github.com/Jelmerro/Vieb"
+license=('GPL-3.0-only')
+depends=(
+    "electron${_electronversion}"
+)
+makedepends=(
+    'npm'
+    'nvm'
+    'git'
+    'curl'
+    'yarn'
+)
+source=(
+    "${pkgname}-${pkgver}.tar.gz::${_ghurl}/archive/refs/tags/${pkgver}.tar.gz"
+    "${pkgname}.sh"
+)
+sha256sums=('5a6b34ff8ef0b3d97070ec8dd3e323801989b1bfac6680e4a34786a3d02e3b25'
+            'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855')
+_ensure_local_nvm() {
+    local NVM_DIR="${srcdir}/.nvm"
+    source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
+    nvm install "${_nodeversion}"
+    nvm use "${_nodeversion}"
 }
-# vim:set ts=2 sw=2 et:
+build() {
+    sed -e "
+        s/@electronversion@/${_electronversion}/g
+        s/@appname@/${pkgname}/g
+        s/@runname@/app.asar/g
+        s/@cfgdirname@/${_pkgname}/g
+        s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
+    " -i "${srcdir}/${pkgname}.sh"
+    _ensure_local_nvm
+    gendesk -q -f -n --pkgname="${pkgname}" --pkgdesc="${pkgdesc}" --categories="Network;WebBrowser" --name="${_pkgname}" --exec="${pkgname} %U"
+    cd "${srcdir}/${_pkgname}-${pkgver}"
+    electronDist="/usr/lib/electron${_electronversion}"
+    export ELECTRON_SKIP_BINARY_DOWNLOAD=1
+    export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
+    HOME="${srcdir}/.electron-gyp"
+    {
+      echo -e '\n'	
+      #echo 'build_from_source=true'
+      echo "cache=${srcdir}/.npm_cache"
+    } >> .npmrc
+    if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
+      {
+        echo 'registry=https://registry.npmmirror.com'
+        echo 'electron_mirror=https://registry.npmmirror.com/-/binary/electron/'
+        echo 'electron_builder_binaries_mirror=https://registry.npmmirror.com/-/binary/electron-builder-binaries/'
+      } >> .npmrc
+      find ./ -type f -name "package-lock.json" -exec sed -i "s/registry.npmjs.org/registry.npmmirror.com/g" {} +
+    fi
+    sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
+    NODE_ENV=development    npm install
+    NODE_ENV=production     npm run tsc
+    NODE_ENV=production     npm exec -c "electron-builder --linux dir -c.electronDist=${electronDist}"
+}
+package() {
+    install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
+    install -Dm644 "${srcdir}/${_pkgname}-${pkgver}/dist/linux-"*/resources/app.asar -t "${pkgdir}/usr/lib/${pkgname}"
+    _icon_sizes=(16x16 24x24 32x32 48x48 64x64 96x96 128x128 256x256 512x512 1024x1024)
+    for _icons in "${_icon_sizes[@]}";do
+        install -Dm644 "${srcdir}/${_pkgname}-${pkgver}/app/img/icons/${_icons}.png" \
+            "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname}.png"
+    done
+    install -Dm644 "${srcdir}/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
+    install -Dm644 "${srcdir}/${_pkgname}-${pkgver}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+}
