@@ -4,9 +4,9 @@
 pkgname=gog-x4_split_vendetta
 _dlcparent=x4_foundations
 _pkgname=x4_split_vendetta
-pkgver=7.10_hotfix_2
-_pkgver=7_10_hotfix_2
-_build=75856
+pkgver=7.10_hotfix_3
+_pkgver=7_10_hotfix_3
+_build=76760
 pkgrel=1
 pkgdesc="DLC for the $(echo ${_dlcparent} | sed 's/_/ /g') game."
 arch=('x86_64')
@@ -16,7 +16,7 @@ depends=($(echo gog-${_dlcparent}))
 source=("${_pkgname}_${_pkgver}_${_build}.sh::gog://${_pkgname}_${_pkgver}_${_build}.sh")
 # don't download anything via makepkg
 DLAGENTS+=("gog::/usr/bin/perl -E print\(\"${RED}\"\ .\ substr\(\"%u\",\ 6\)\ .\ \"\ not\ found.\ \ Check\ the\ PKGBUILD\ for\ further\ information.${ALL_OFF}\\\\n\"\)\;\ exit\ 1")
-sha256sums=('96a9284cd3218c838286fb58ac76dbdd09d84ca28c7b8f192d09e3fca59efaf4')
+sha256sums=('25a55d173fb4d27e28cfd7149df31dcdbd7b55fbd37f03d5ba522242f6a12775')
 noextract=("${_pkgname}_${_pkgver}_${_build}.sh")
 options=("!strip")
 
