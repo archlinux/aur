@@ -1,0 +1,4 @@
+[vector-slicer]
+source = "git"
+git = "https://gitlab.gnome.org/World/design/vector-slicer.git"
+prefix = "v"

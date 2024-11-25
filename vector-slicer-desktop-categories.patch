@@ -1,0 +1,25 @@
+From 854bc01e50828b787175a854202d36453394dde0 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Ball=C3=B3=20Gy=C3=B6rgy?= <ballogyor@gmail.com>
+Date: Mon, 25 Nov 2024 13:18:33 +0100
+Subject: [PATCH] desktop: Add categories
+
+---
+ data/org.gnome.design.VectorSlicer.desktop.in.in | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/data/org.gnome.design.VectorSlicer.desktop.in.in b/data/org.gnome.design.VectorSlicer.desktop.in.in
+index 04a1068..19cd239 100644
+--- a/data/org.gnome.design.VectorSlicer.desktop.in.in
++++ b/data/org.gnome.design.VectorSlicer.desktop.in.in
+@@ -5,7 +5,7 @@ Comment=A GTK + Rust application boilerplate template
+ Type=Application
+ Exec=vector-slicer
+ Terminal=false
+-Categories=GNOME;GTK;
++Categories=Graphics;2DGraphics;VectorGraphics;GNOME;GTK;
+ Keywords=Gnome;GTK;
+ # Translators: Do NOT translate or transliterate this text (this is an icon file name)!
+ Icon=@icon@
+-- 
+GitLab
+
