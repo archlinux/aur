@@ -4,7 +4,7 @@
 _pkgname=librewolf-extension-istilldontcareaboutcookies
 _id=idcac-pub@guus.ninja
 pkgname=$_pkgname-bin
-pkgver=1.1.2
+pkgver=1.1.4
 pkgrel=1
 pkgdesc="Debloated fork of the extension I don't care about cookies"
 url=https://addons.mozilla.org/en-US/firefox/addon/istilldontcareaboutcookies
