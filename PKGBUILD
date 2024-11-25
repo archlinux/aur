@@ -1,14 +1,14 @@
 # Maintainer: Storm Dragon <storm_dragon@linux-a11y.org>
-# Maintainer: Chrys <chrys@linux-a11y.org>
+# Contributor: Chrys <chrys@linux-a11y.org>
 
 _gitname='fenrir'
 pkgname="${_gitname}-git"
-pkgver=r2983.a5b7694e
-pkgrel=2
+pkgver=r3231.1649f18a
+pkgrel=1
 epoch=1
 pkgdesc='A user space console screen reader written in python3'
 arch=('any')
-url="https://linux-a11y.org/index.php?page=fenrir-screenreader"
+url="https://git.stormux.org/storm/fenrir"
 license=('LGPL')
 depends=('espeak-ng' 'python' 'python-pyudev' 'python-daemonize' 'python-evdev' 'python-dbus' 'python-pyte')
 optdepends=('brltty: For Braille support'
@@ -24,10 +24,10 @@ makedepends=('git' 'python-setuptools')
 provides=('fenrir')
 conflicts=('fenrir')
 backup=('etc/fenrirscreenreader/settings/settings.conf')
-source=("git+https://github.com/chrys87/${_gitname}.git"
+source=("git+https://git.stormux.org/storm/${_gitname}.git"
   'fenrirscreenreader.service')
-md5sums=('SKIP'
-         '0c2d1bd344b53d1fa5de6c49455b5a4f')
+sha512sums=('SKIP'                                                                                                                                                        
+            'dc73ab35120902222d7aab02ebd396790d0b9a7c2531746011dcd4169b5376cdd942909734dd77aae60275f537395684327759bed6fce675adac6699bbe0b262')
 
 pkgver()
 {

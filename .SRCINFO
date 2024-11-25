@@ -1,9 +1,9 @@
 pkgbase = fenrir-git
 	pkgdesc = A user space console screen reader written in python3
-	pkgver = r2983.a5b7694e
-	pkgrel = 2
+	pkgver = r3231.1649f18a
+	pkgrel = 1
 	epoch = 1
-	url = https://linux-a11y.org/index.php?page=fenrir-screenreader
+	url = https://git.stormux.org/storm/fenrir
 	arch = any
 	license = LGPL
 	makedepends = git
@@ -27,9 +27,9 @@ pkgbase = fenrir-git
 	provides = fenrir
 	conflicts = fenrir
 	backup = etc/fenrirscreenreader/settings/settings.conf
-	source = git+https://github.com/chrys87/fenrir.git
+	source = git+https://git.stormux.org/storm/fenrir.git
 	source = fenrirscreenreader.service
-	md5sums = SKIP
-	md5sums = 0c2d1bd344b53d1fa5de6c49455b5a4f
+	sha512sums = SKIP
+	sha512sums = dc73ab35120902222d7aab02ebd396790d0b9a7c2531746011dcd4169b5376cdd942909734dd77aae60275f537395684327759bed6fce675adac6699bbe0b262
 
 pkgname = fenrir-git
