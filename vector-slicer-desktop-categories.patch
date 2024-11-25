@@ -1,17 +1,22 @@
-From 854bc01e50828b787175a854202d36453394dde0 Mon Sep 17 00:00:00 2001
+From 7db25233ab2c0fe51cbf1137b3c51074b83b5d3c Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Ball=C3=B3=20Gy=C3=B6rgy?= <ballogyor@gmail.com>
 Date: Mon, 25 Nov 2024 13:18:33 +0100
-Subject: [PATCH] desktop: Add categories
+Subject: [PATCH] desktop: Add comment and categories
 
 ---
- data/org.gnome.design.VectorSlicer.desktop.in.in | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ data/org.gnome.design.VectorSlicer.desktop.in.in | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/data/org.gnome.design.VectorSlicer.desktop.in.in b/data/org.gnome.design.VectorSlicer.desktop.in.in
-index 04a1068..19cd239 100644
+index 04a1068..db8ce52 100644
 --- a/data/org.gnome.design.VectorSlicer.desktop.in.in
 +++ b/data/org.gnome.design.VectorSlicer.desktop.in.in
-@@ -5,7 +5,7 @@ Comment=A GTK + Rust application boilerplate template
+@@ -1,11 +1,11 @@
+ [Desktop Entry]
+ Name=Vector Slicer
+ GenericName=Vector Slicer
+-Comment=A GTK + Rust application boilerplate template
++Comment=Export multi-page PDFs from an SVG
  Type=Application
  Exec=vector-slicer
  Terminal=false

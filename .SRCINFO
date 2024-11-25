@@ -1,7 +1,7 @@
 pkgbase = vector-slicer
 	pkgdesc = Export multi-page PDFs from an SVG
 	pkgver = 0.0.2
-	pkgrel = 3
+	pkgrel = 4
 	url = https://gitlab.gnome.org/World/design/vector-slicer
 	arch = x86_64
 	license = MIT
@@ -22,6 +22,6 @@ pkgbase = vector-slicer
 	source = git+https://gitlab.gnome.org/World/design/vector-slicer.git#tag=v0.0.2
 	source = vector-slicer-desktop-categories.patch
 	b2sums = 72ae804ae8372efdcb0e612bbed79d87d8b05e45928bc81799eb62d3869e62349af565bff462204979e2c4e19d187db38a64442432a0601e759e9fcd396c7307
-	b2sums = a6026b9037b171ebf43d22ff82ad371aa85356e60cfdb7d4f55f00f8b85fbe1263c8bd3f5b773475f7616ddf1069e3e0aa2bff2c64904598c4e2c144bc0d1715
+	b2sums = 77335103e27ca3b2a1645a87f5040b05aa7781ff509d5e815395d40ab4d6d01b891c77a1d34a2e194716bfcc7cc382244f55826c012eb2c9048d113d618fca83
 
 pkgname = vector-slicer
