@@ -81,8 +81,9 @@ b2sums=('0f6203610dbef2fd2d43c6465502459337eb99da00b494d7bfcab245b8fdb3d9f917901
         '5e59c732a417775984cd85755b7a1810b33fb8a09cb3a8542c048958e7788d1aac3ecef5f28266278ca6444e1f59421b1d167a305eda9e70c0ae62155c01274b')
 
 prepare() {
-  for patch in "${srcdir}"/*.patch; do
-    msg2  "apply $patch..."
+  mapfile -t patches < <(grep -Po '^.*?(patch|diff)(?=::|$)' < <(printf "${srcdir}/%s\n" ${source[@]}))
+  for patch in "${patches[@]}"; do
+    msg2  "apply ${patch##*/}..."
     patch -Np1 -d "${srcdir}"/${_name} -i "$patch"
   done
 }
