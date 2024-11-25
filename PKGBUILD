@@ -2,25 +2,29 @@
 # Contributor: Alexander Kobel <a-kobel@a-kobel.de>
 
 pkgbase="bertini"
-pkgname=('bertini' 'bertini-parallel')
+pkgname=("${pkgbase}-common" "${pkgbase}-serial" "${pkgbase}-parallel")
 pkgver=1.6
-pkgrel=4
+pkgrel=5
 pkgdesc="Homotopy continuation solver for systems of polynomial equations"
-arch=('any')
+arch=('x86_64' 'i686')
 url="https://bertini.nd.edu"
-license=('custom:Bertini license')
-makedepends=('openmpi')
-depends=('glibc' 'gmp' 'mpfr')
-provides=("${pkgbase}" "${pkgbase}-serial" 'libbertini-serial.so')
-conflicts=("${pkgbase}")
-_pkgsrc="BertiniSource_v${pkgver/./}"
+license=('custom:Bertini License')
+makedepends=('glibc' 'gmp' 'mpfr' 'openmpi')
+_pkgsrc="${pkgbase}-${pkgver}"
 source=("${_pkgsrc}.tar.gz::${url}/BertiniSource_v${pkgver}.tar.gz"
-        "MANUAL.pdf::${url}/BertiniUsersManual.pdf")
+        "MANUAL.pdf::${url}/BertiniUsersManual.pdf"
+        "${pkgbase}.sh")
+noextract=("${_pkgsrc}.tar.gz")
 sha256sums=('0bc4c5f0b057366500fc62b37526af116cadb7dcc190ca454e0ebe00a8998998'
-            '017313464d162bb32640858faa0dc40ec8498eee439cb703dc22507baa15394f')
+            '017313464d162bb32640858faa0dc40ec8498eee439cb703dc22507baa15394f'
+            'f55f838946e4ab2ee73cb87cb3111989cfa9b9f6c4fcea2c0dd00a9e4d0c0db5')
 
 prepare() {
-  cd "${srcdir}/${_pkgsrc}"
+  cd "${srcdir}"
+  mkdir -p "${srcdir}/${_pkgsrc}"
+  bsdtar -xvzf "${_pkgsrc}.tar.gz" --strip-components 1 -C "${srcdir}/${_pkgsrc}"
+  
+  cd "${_pkgsrc}"
   # workaround for OpenMPI 4 compatibility
   find . -type f -exec sed -i -e s/MPI_Address/MPI_Get_address/ -e s/MPI_Type_struct/MPI_Type_create_struct/ {} +
 }
@@ -36,35 +40,58 @@ build() {
   make
 }
 
-_package_common() {
+package_bertini-common() {
+  pkgdesc+=" (common files and documentation)"
+  arch=('any')
+
   cd "${srcdir}"
-  install -Dm644 "MANUAL.pdf" "${pkgdir}/usr/share/doc/${pkgbase}/MANUAL.pdf"
+  install -vDm755 "${pkgbase}.sh" "${pkgdir}/usr/bin/${pkgbase}"
+  install -vDm644 "MANUAL.pdf"    "${pkgdir}/usr/share/doc/${pkgbase}/MANUAL.pdf"
 
   cd "${_pkgsrc}"
+  find "include" -type f -exec install -vDm644 "{}" "${pkgdir}/usr/{}" \;
+
+  install -vDm644 "README"    "${pkgdir}/usr/share/doc/${pkgbase}/README"
+  # install -vDm644 "NEWS"      "${pkgdir}/usr/share/doc/${pkgbase}/NEWS"
+  # install -vDm644 "CHANGELOG" "${pkgdir}/usr/share/doc/${pkgbase}/CHANGELOG"
+  install -vDm644 "AUTHORS"   "${pkgdir}/usr/share/doc/${pkgbase}/AUTHORS"
+  install -vDm644 "COPYING"   "${pkgdir}/usr/share/licenses/${pkgbase}/COPYING"
+}
+
+package_bertini-serial() {
+  pkgdesc+=" (serial version)"
+  depends=('bertini-common' 'glibc' 'gmp' 'mpfr')
+  provides=('bertini' 'libbertini-serial.so')
+
+  cd "${srcdir}/${_pkgsrc}"
   make DESTDIR="${pkgdir}" install
   libtool --finish "${pkgdir}/usr/lib"
 
-  install -Dm644 "README"  "${pkgdir}/usr/share/doc/${pkgbase}/README"
-  # install -Dm644 "NEWS"    "${pkgdir}/usr/share/doc/${_pkgname}/NEWS"
-  install -Dm644 "COPYING" "${pkgdir}/usr/share/licenses/${pkgbase}/COPYING"
-  install -Dm644 "AUTHORS" "${pkgdir}/usr/share/licenses/${pkgbase}/AUTHORS"
-}
-
-package_bertini() {
-  _package_common
+  cd "${pkgdir}/usr"
+  rm -rf include
 
   cd "${pkgdir}/usr/bin"
-  rm -f "bertini" "bertini-parallel"
-  ln -s "bertini-serial" "bertini"
+  rm -f bertini *parallel*
 
   cd "${pkgdir}/usr/lib"
-  rm -f "libbertini-parallel"*
+  rm -f *parallel*
 }
 
 package_bertini-parallel() {
-  pkgdesc+=" - OpenMPI parallelism"
-  depends+=('openmpi')
-  provides+=("${pkgbase}-parallel" 'libbertini-parallel.so')
+  pkgdesc+=" (parallel version with OpenMPI)"
+  depends=('bertini-common' 'glibc' 'gmp' 'mpfr' 'openmpi')
+  provides=('bertini' 'libbertini-parallel.so')
 
-  _package_common
+  cd "${srcdir}/${_pkgsrc}"
+  make DESTDIR="${pkgdir}" install
+  libtool --finish "${pkgdir}/usr/lib"
+
+  cd "${pkgdir}/usr"
+  rm -rf include
+
+  cd "${pkgdir}/usr/bin"
+  rm -f bertini *serial*
+
+  cd "${pkgdir}/usr/lib"
+  rm -f *serial*
 }
