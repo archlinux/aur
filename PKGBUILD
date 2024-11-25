@@ -1,4 +1,5 @@
-# Maintainer: Joel Pickett <mail at vyryls dot com>
+# Maintainer: aarto <aarto@aur.archlinux.org>
+# Contributor: Joel Pickett <mail at vyryls dot com>
 
 _pkgname=librewolf-extension-istilldontcareaboutcookies
 _id=idcac-pub@guus.ninja
