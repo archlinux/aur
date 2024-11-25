@@ -1,0 +1,19 @@
+pkgbase = python-opensubtitles-com
+	pkgdesc = A Python wrapper for the OpenSubtitles REST API, providing easy access to subtitle data.
+	pkgver = 0.1.5
+	pkgrel = 1
+	url = https://github.com/dusking/opensubtitles-com
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	depends = python-requests
+	depends = python-prettytable
+	source = https://files.pythonhosted.org/packages/source/o/opensubtitlescom/opensubtitlescom-0.1.5.tar.gz
+	sha256sums = 6fafe2d3e80b865ed8520da8e2878d9520875b7ae5136895a69141199a017e65
+
+pkgname = python-opensubtitles-com
