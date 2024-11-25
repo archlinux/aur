@@ -14,6 +14,6 @@ pkgbase = vieb
 	source = vieb-12.1.0.tar.gz::https://github.com/Jelmerro/Vieb/archive/refs/tags/12.1.0.tar.gz
 	source = vieb.sh
 	sha256sums = 5a6b34ff8ef0b3d97070ec8dd3e323801989b1bfac6680e4a34786a3d02e3b25
-	sha256sums = e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
 
 pkgname = vieb

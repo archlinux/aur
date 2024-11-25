@@ -27,7 +27,7 @@ source=(
     "${pkgname}.sh"
 )
 sha256sums=('5a6b34ff8ef0b3d97070ec8dd3e323801989b1bfac6680e4a34786a3d02e3b25'
-            'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855')
+            '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
