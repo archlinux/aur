@@ -3,9 +3,9 @@
 pkgname=gog-x4_foundations
 _pkgname=x4_foundations
 _goggame=1588366064
-pkgver=7.10_hotfix_2
-_pkgver=7_10_hotfix_2
-_build=75856
+pkgver=7.10_hotfix_3
+_pkgver=7_10_hotfix_3
+_build=76760
 pkgrel=1
 pkgdesc="X4 is a living, breathing space sandbox running entirely on your PC."
 arch=('x86_64')
@@ -16,7 +16,7 @@ source=("${_pkgname}_${_pkgver}_${_build}.sh::gog://${_pkgname}_${_pkgver}_${_bu
     "${_pkgname}.desktop")
 # don't download anything automatically
 DLAGENTS+=("gog::/usr/bin/perl -E print\(\"${RED}\"\ .\ substr\(\"%u\",\ 6\)\ .\ \"\ not\ found.\ \ Check\ the\ PKGBUILD\ for\ further\ information.${ALL_OFF}\\\\n\"\)\;\ exit\ 1")
-sha256sums=('409d3bfbfad3a17881b52165777af79553d9348799ab35d0fa109f9a83aa7152'
+sha256sums=('fbe9fa423757c526d86ce74aceb87f169fe9059963f91510901368989fef04dd'
     '0ed55646207b2970dda3face988057ff56ed20613b961fa36a929d37675083a5')
 noextract=("${_pkgname}_${_pkgver}_${_build}.sh"
     "${_pkgname}.desktop")
