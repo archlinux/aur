@@ -1,15 +1,16 @@
 pkgname=rl_custom_rime
-pkgver=0.0.1
+pkgver=0.0.2
 pkgrel=1
 pkgdesc="rime for readline"
 arch=(i686 x86_64 arm aarch64)
 url=https://github.com/Freed-Wu/$pkgname
 license=(GPL3)
+_v=0.0.3
 _version=9e39ee6a9c9a4c43192b95b7efcc95ea1c79a28d
 source=(
 	"$url/archive/$pkgver.tar.gz"
-	https://github.com/Freed-Wu/tmux-rime/archive/0.0.3.tar.gz
-	https://github.com/xmake-io/xmake-repo/archive/$_version.tar.gz
+	"https://github.com/Freed-Wu/tmux-rime/archive/$_v.tar.gz"
+	"https://github.com/xmake-io/xmake-repo/archive/$_version.tar.gz"
 )
 depends=(librime glib2 readline rl_custom_function)
 makedepends=(xmake)
@@ -31,7 +32,7 @@ build() {
 
 	cd "$pkgname-$pkgver" || return 1
 
-	ln -s ../tmux-rime-0.0.3 tmux-rime
+	ln -s ../"tmux-rime-$_v" tmux-rime
 
 	xmake g --network=private
 	xmake f --verbose
