@@ -1,14 +1,14 @@
 # Maintainer: AlphaJack <alphajack at tuta dot io>
 # Maintainer: atomicfs <https://aur.archlinux.org/account/atomicfs>
-# Maintainer: shtrophic <christoph at liebender dot dev>
+# Maintainer: shtrophic <aur at shtrophic dot net>
 
 pkgname="paperless-ngx-venv"
 _pkgname="paperless-ngx"
 pkgver=2.13.5
-pkgrel=1
+pkgrel=2
 pkgdesc="A supercharged version of paperless: scan, index and archive all your physical documents (version with bundled dependencies)"
 url="https://docs.paperless-ngx.com/"
-license=("GPL3")
+license=("GPL-3.0-or-later")
 arch=("any")
 provides=("paperless" "$pkgname")
 conflicts=("paperless" "paperless-ng" "paperless-ngx")
@@ -30,6 +30,7 @@ depends=(
  "sqlite"
  "tesseract-data-eng"
  "ttf-liberation"
+ "unpaper"
 )
 optdepends=(
  "gotenberg: convert files to pdf"
