@@ -1,11 +1,11 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 _pkgname=tailchat
 pkgname="${_pkgname}-desktop"
-pkgver=1.11.8
+pkgver=1.11.9
 _electronversion=18
 _nodeversion=16
 pkgrel=1
-pkgdesc="Next generation noIM application in your own workspace, not only another Slack/Discord/Rocket.chat.Use system-wide electron."
+pkgdesc="Next generation noIM application in your own workspace, not only another Slack/Discord/Rocket.chat.(Use system-wide electron)"
 arch=('any')
 url="https://tailchat.msgbyte.com/"
 _ghurl="https://github.com/msgbyte/tailchat"
@@ -27,7 +27,7 @@ source=(
     "${pkgname}-${pkgver}.tar.gz::${_ghurl}/archive/refs/tags/v${pkgver}.tar.gz"
     "${pkgname}.sh"
 )
-sha256sums=('92a3881cc7287d2fe8d24d351eec9deba7e267cf2c2131ee3cf731ef59596990'
+sha256sums=('2a8b1ad6c909e257b8e9538e1f1f0845f926c126f52f50d18fe13e41566c6f44'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
@@ -69,7 +69,7 @@ build() {
         } >> .yarnrc
         find ./ -type f -name "yarn.lock" -exec sed -i "s/registry.yarnpkg.com/registry.npmmirror.com/g" {} +
     fi
-    find src -type f -exec sed -i "s/process.resourcesPath/\'\/usr\/lib\/${pkgname}\'/" {} \;
+    find src -type f -exec sed -i "s/process.resourcesPath/\'\/usr\/lib\/${pkgname}\'/g" {} \;
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
     sed -i "s/\/build//g" -i electron-builder.yml
     NODE_ENV=development    yarn install
