@@ -3,7 +3,7 @@
 _pkgname=fastanime
 pkgname="${_pkgname}-git"
 pkgver=2.8.3.r0.08b1f0c
-pkgrel=1
+pkgrel=2
 pkgdesc="FastAnime, anime site experience from the terminal."
 arch=('x86_64')
 url="https://github.com/Benex254/FastAnime"
@@ -36,6 +36,7 @@ optdepends=('mpv: video player'
 provides=('fastanime')
 conflicts=('fastanime')
 source=("git+${url}.git")
+install="${_pkgname}.install"
 
 build() {
     cd "${srcdir}" || exit
