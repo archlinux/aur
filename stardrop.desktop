@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=Stardrop
+Version=1.2.1
+Comment=Stardrop is an open-source, cross-platform mod manager for Stardew Valley
+Comment[ru]=Stardrop это кросс-платформенный менеджер модов, с открытым исходным кодом для игры Stardew Valley.
+Exec=stardrop
+Icon=stardrop
+Type=Application
+Terminal=false
+StartupNotify=true
+Categories=Game;
