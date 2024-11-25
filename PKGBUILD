@@ -2,7 +2,7 @@
 
 _pkgname=mda-lv2
 pkgname=$_pkgname-git
-pkgver=1.2.10.r262.5101d1a
+pkgver=1.2.10.r270.498bdbc
 pkgrel=1
 pkgdesc='A port of the MDA VST plugins to the LV2 format (git version)'
 arch=(x86_64)
@@ -11,10 +11,11 @@ license=(0BSD GPL-2.0-or-later MIT)
 groups=(lv2-plugins pro-audio)
 depends=(gcc-libs glibc)
 makedepends=(git lv2 meson python)
+checkdepends=(lv2lint)
 provides=($_pkgname "${_pkgname//-/.}")
 conflicts=($_pkgname $_pkgname-svn "${_pkgname//-/.}")
 source=("$_pkgname::git+https://gitlab.com/drobilla/mda-lv2.git")
-md5sums=('SKIP')
+sha256sums=('SKIP')
 
 pkgver() {
   cd $_pkgname
@@ -43,8 +44,6 @@ check() {
   # upstream tests require 'autoship', which is not packaged nor vendored in the project
   #meson test -C $_pkgname-build
 }
-
-
 
 package() {
   meson install -C $_pkgname-build --destdir "$pkgdir"
