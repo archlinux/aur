@@ -4,9 +4,9 @@
 pkgname=gog-x4_cradle_of_humanity
 _dlcparent=x4_foundations
 _pkgname=x4_cradle_of_humanity
-pkgver=7.10_hotfix_2
-_pkgver=7_10_hotfix_2
-_build=75856
+pkgver=7.10_hotfix_3
+_pkgver=7_10_hotfix_3
+_build=76760
 pkgrel=1
 pkgdesc="DLC for the $(echo ${_dlcparent} | sed 's/_/ /g') game."
 arch=('x86_64')
@@ -16,7 +16,7 @@ depends=($(echo gog-${_dlcparent}))
 source=("${_pkgname}_${_pkgver}_${_build}.sh::gog://${_pkgname}_${_pkgver}_${_build}.sh")
 # don't download anything via makepkg
 DLAGENTS+=("gog::/usr/bin/perl -E print\(\"${RED}\"\ .\ substr\(\"%u\",\ 6\)\ .\ \"\ not\ found.\ \ Check\ the\ PKGBUILD\ for\ further\ information.${ALL_OFF}\\\\n\"\)\;\ exit\ 1")
-sha256sums=('60dee5709e0a3cfd412bbd148884f1a4885a1288a35a3f5d335f87ce28d65e15')
+sha256sums=('1b725dad05d9eaffc78c729230db63e483886e507bd8648fc8a8639a3e7d40f0')
 noextract=("${_pkgname}_${_pkgver}_${_build}.sh")
 options=("!strip")
 
