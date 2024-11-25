@@ -1,0 +1,16 @@
+pkgbase = popstar
+	pkgdesc = An AUR helper with a TUI!
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/LiterallyKirby/Popstar
+	arch = x86_64
+	license = custom
+	makedepends = go
+	makedepends = git
+	depends = go
+	depends = git
+	depends = base-devel
+	source = git+https://github.com/LiterallyKirby/Popstar.git
+	sha256sums = SKIP
+
+pkgname = popstar
