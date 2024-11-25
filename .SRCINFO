@@ -1,6 +1,6 @@
 pkgbase = triliumnext-bin
-	pkgdesc = Build your personal knowledge base with TriliumNext Notes.Prebuilt version.Use system-wide electron.
-	pkgver = 0.90.8
+	pkgdesc = Build your personal knowledge base with TriliumNext Notes.(Prebuilt version.Use system-wide electron)
+	pkgver = 0.90.12
 	pkgrel = 1
 	url = https://github.com/TriliumNext/Notes
 	arch = aarch64
@@ -9,15 +9,15 @@ pkgbase = triliumnext-bin
 	depends = electron31
 	depends = nodejs
 	provides = trilium
-	provides = triliumnext=0.90.8
+	provides = triliumnext=0.90.12
 	conflicts = triliumnext
 	conflicts = trilium
 	conflicts = trilium-cn
 	source = triliumnext.sh
 	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
-	source_aarch64 = triliumnext-0.90.8-aarch64::https://github.com/TriliumNext/Notes/releases/download/v0.90.8/TriliumNextNotes-v0.90.8-linux-arm64.deb
-	sha256sums_aarch64 = 1b98162ee02226788b82e1853c5d83aaef95ebb6d1d2b6d0841ab4bded424138
-	source_x86_64 = triliumnext-0.90.8-x86_64::https://github.com/TriliumNext/Notes/releases/download/v0.90.8/TriliumNextNotes-v0.90.8-linux-x64.deb
-	sha256sums_x86_64 = 79b651de9d5fb802b7a8acd37403ab479a2e59950e86a256419365810439ad74
+	source_aarch64 = triliumnext-0.90.12-aarch64::https://github.com/TriliumNext/Notes/releases/download/v0.90.12/TriliumNextNotes-v0.90.12-linux-arm64.deb
+	sha256sums_aarch64 = 8fb9401664b6009d10e9e2eed8f7680bce8131933bbfe8c4b43ade7216770ad6
+	source_x86_64 = triliumnext-0.90.12-x86_64::https://github.com/TriliumNext/Notes/releases/download/v0.90.12/TriliumNextNotes-v0.90.12-linux-x64.deb
+	sha256sums_x86_64 = c1fab8e210cdb6edf78dc83d320ae8fdb28e2f373d2559e410339f7ba3ed77bf
 
 pkgname = triliumnext-bin
