@@ -1,8 +1,4 @@
 post_upgrade() {
-    echo "Release notes:"
-    fastanime update --check
-    echo "Updating fastanime config..."
-    fastanime config --update
-    echo "Cleaning cache..."
-    fastanime cache --clean
+    echo "Make sure to run 'fastanime cache --clean' to clean the cache"
+    echo "Make sure to run 'fastanime config --update' to update the config"
 }

@@ -36,7 +36,7 @@ optdepends=('mpv: video player'
 provides=('fastanime')
 conflicts=('fastanime')
 source=("git+${url}.git")
-# install="${_pkgname}.install"
+install="${_pkgname}.install"
 
 build() {
     cd "${srcdir}" || exit
