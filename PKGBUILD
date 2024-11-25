@@ -1,8 +1,8 @@
 # Maintainer: shtrophic <aur at shtrophic dot net>
 
 pkgname=vv
-pkgver=2.0
-pkgrel=2
+pkgver=2.1
+pkgrel=1
 license=(BSD-3-Clause)
 url="https://github.com/wolfpld/vv"
 pkgdesc="Terminal image viewer"
@@ -34,7 +34,7 @@ source=(
 	"tracy::git+https://github.com/wolfpld/tracy.git" # master
 	"stb::git+https://github.com/nothings/stb.git#tag=2e2bef463a5b53ddf8bb788e25da6b8506314c08"
 )
-sha256sums=('682387efbdcab06ae570b55e0e9bf3c8a09887567b1184476d7e1f76d1b53933'
+sha256sums=('8cb94c99d898fa627fc4e16b37cca50df2f3f3a4e6f5823f1c475298ea26f74e'
             'c2139ed6cc36779410ebf291df9f231145ed1c8ee0f16b6046331daa686058b7'
             'SKIP'
             'e2e76a8585a9b52cd0d774a4637a55f0ab9edb3ba10f852f69e1243134c17b90')
