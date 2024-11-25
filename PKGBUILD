@@ -8,7 +8,7 @@ url="https://github.com/zweih/yaylog"
 license=('MIT')
 depends=('expac')
 source=("$pkgname.sh" "$pkgname.1")
-sha256sums=('80706d8a4aff84f716729cbe48da892995bf757e6b77f1c9d682aac542fb2149' '7fedc1f3bcfab09acedbe9d4b508c6ecb6619ed197dd702f4c3d987fec34d197')
+sha256sums=('8e77b61714a092acbcb93b87281834fe2e2d7411f8dd0119d636e0dcfbe205e8' '7fedc1f3bcfab09acedbe9d4b508c6ecb6619ed197dd702f4c3d987fec34d197')
 
 package() {
     install -Dm755 "$srcdir/$pkgname.sh" "$pkgdir/usr/bin/$pkgname"
