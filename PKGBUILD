@@ -2,7 +2,7 @@
 
 pkgname=bilibili-magical-danmaku
 pkgver=4.10.7
-pkgrel=1
+pkgrel=2
 pkgdesc="bilibili神奇弹幕,整合弹幕姬+答谢姬+点歌姬+回复姬+工作流"
 _pkgname=Bilibili-MagicalDanmaku
 _bin=Bilibili-MagicalDanmaku
@@ -39,8 +39,8 @@ sha256sums=(
 
 prepare() {
   cd "${srcdir}/${_pkgsrc}"
-  git apply ${srcdir}/0001-fix-build-explicitly-include-QPainterPath.patch
-  git apply ${srcdir}/0002-fix-build-remove-reference-to-missing-file.patch
+  patch -p1 <${srcdir}/0001-fix-build-explicitly-include-QPainterPath.patch
+  patch -p1 <${srcdir}/0002-fix-build-remove-reference-to-missing-file.patch
 }
 
 build() {
