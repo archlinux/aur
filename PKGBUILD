@@ -14,7 +14,7 @@ b2sums=("SKIP")
 options=(!strip !debug)
 makedepends=(
     "rustup"
-    "cargo-nightly"
+    "cargo"
     "sed"
 )
 optdepends=(
@@ -25,23 +25,27 @@ optdepends=(
 # Generated in accordance to https://wiki.archlinux.org/title/Rust_package_guidelines.
 # Might require further modification depending on the package involved.
 prepare() {
+    export RUSTUP_TOOLCHAIN=stable
+
     cd "$pkgname-$cratever"
-    rustup install nightly
-    cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+    rustup install $RUSTUP_TOOLCHAIN
+    cargo +$RUSTUP_TOOLCHAIN fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
 build() {
     export RUSTFLAGS="-L/usr/lib -lzstd"
-    export RUSTUP_TOOLCHAIN=nightly
+    export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
+
     cd "$pkgname-$cratever"
-    cargo build --frozen --release
+    cargo +$RUSTUP_TOOLCHAIN build --frozen --release
 }
 
 check() {
-    export RUSTUP_TOOLCHAIN=nightly
+    export RUSTUP_TOOLCHAIN=stable
+
     cd "$pkgname-$cratever"
-    cargo test --frozen --release
+    cargo +$RUSTUP_TOOLCHAIN test --frozen --release
 }
 
 package() {
@@ -55,7 +59,6 @@ package() {
     sed -i "s/\${engine_path}/\/usr\/bin\/$pkgname/" "$pkgname.desktop"
 
     # Install Helper Files
-    # install -Dm0755 -t "$pkgdir/usr/share/icons/" "$pkgname.svg"
-    install -Dm0755 -t "$pkgdir/usr/share/icons/" "$pkgname.png"
+    install -Dm0755 -t "$pkgdir/usr/share/icons/" "$pkgname.svg"
     install -Dm0755 -t "$pkgdir/usr/share/applications/" "$pkgname.desktop"
 }
