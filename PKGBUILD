@@ -1,7 +1,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=emacs-exwm-git
-pkgver=r621.1821027
+pkgver=r666.369b417
 pkgrel=1
 pkgdesc="Use emacs as windowmanager"
 arch=('any')
@@ -31,6 +31,4 @@ package() {
   do
     install -Dm644 ${_i} "$pkgdir"/usr/share/emacs/site-lisp/exwm/${_i}
   done
-  install -Dm644 README.md "$pkgdir"/usr/share/doc/exwm/README.md
-  install -Dm644 xinitrc "$pkgdir"/usr/share/doc/exwm/sample-xinitrc
 }
