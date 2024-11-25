@@ -1,7 +1,7 @@
 # Maintainer: Certilia <support@certilia.com>
 
 pkgname=certiliamiddleware
-pkgver=3.7.8
+pkgver=3.7.8.1
 pkgrel=1
 pkgdesc="Certilia Middleware for Certilia smart cards"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('custom')
 depends=('qt5-base' 'openssl-1.0' 'ccid')
 source=("${url}/update/${pkgname}_v${pkgver}_amd64.deb")
 options=('!strip' 'staticlibs')
-sha512sums=('0c1222d7075c01388c10b2512b1f3e3f9775be894e03f647d776fbb527c3a2511c493b2aa1ef255d965df286d942548f08c1b63b5d58b8b2d12784216993751c')
+sha512sums=('46f63be9575221b4ebcce3b85e0c4e25ac99e380a5db15c9aa06bb25c05c7cc0b3ac5d15fdf61e4e8f6636b48584281b03e6735136ff95ff5b771b7584aec058')
 
 package() {
 
