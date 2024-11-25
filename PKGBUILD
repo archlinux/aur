@@ -1,4 +1,4 @@
-# Maintainer:
+# Maintainer: Mike Pento <mpento@darkforge.net>
 # Contributor: Alexander F Rødseth <xyproto@archlinux.org>
 # Contributor: Lukas Fleischer <lfleischer@archlinux.org>
 # Contributor: jlvsimoes <jlvsimoes@oninet.pt>
