@@ -2,14 +2,14 @@
 
 pkgname=iceshrimp-git
 pkgver=v2023.12.11.r0.g617f27d63
-pkgrel=3
+pkgrel=4
 pkgdesc="YAMF (Yet another Misskey fork) bringing you no-nonsense fixes, features & improvements you actually want since 2023"
 arch=(x86_64 aarch64)
 url="https://iceshrimp.dev/iceshrimp/iceshrimp"
 license=(AGPL3)
 
 makedepends=(makepkg-git-lfs-proto npm)
-depends=(nodejs-lts-iron)
+depends=(nodejs)
 optdepends=(
   "ffmpeg: for video transcoding"
 )
@@ -44,11 +44,6 @@ pkgver() {
 
 build() {
   cd "${srcdir}/iceshrimp"
-
-  # Fix node-re2 build
-  export CXXFLAGS="${CXXFLAGS/-fno-plt/}"
-  export CXXFLAGS="${CXXFLAGS/-Wp,-D_GLIBCXX_ASSERTIONS/}"
-  export LDFLAGS="${LDFLAGS/,-z,now/}"
 
   export NODE_ENV="production"
 
