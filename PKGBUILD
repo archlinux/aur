@@ -13,6 +13,11 @@ conflicts=("${pkgname}"{,-latest-bin})
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
 sha256sums=('f5e7acca59e4d5026177816a44ef94e178d27476b4edff21cd4274d4c04ba2ea')
 
+prepare() {
+    cd "ncmdump-go"
+    sed -i "s|ncmdump version [^\"]\+|ncmdump version ${pkgver}|" main.go
+}
+
 build() {
     export CGO_CFLAGS="${CFLAGS}"
     export CGO_CPPFLAGS="${CPPFLAGS}"
