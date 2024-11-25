@@ -1,0 +1,18 @@
+pkgbase = faustdoctor
+	pkgdesc = A post-processor for FAUST giving more flexibility at source generation
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/SpotlightKid/faustdoctor
+	arch = any
+	license = LicenseRef-BSL-1.0-with-template-exception
+	makedepends = python-build
+	makedepends = python-hatch
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = faust
+	depends = python
+	depends = python-jinja
+	source = https://github.com/SpotlightKid/faustdoctor/releases/download/v0.2.0/faustdoctor-0.2.0.tar.gz
+	sha512sums = 308a068b645aed5a8c3faa66af53988f402a21b5f9ea052d72a0e5b176e59cf8c4bd8688cf3371600ad4cfb4920f48706b40fb0650f777fb4fd87406980549aa
+
+pkgname = faustdoctor

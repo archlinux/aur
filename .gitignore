@@ -1,0 +1,4 @@
+pkg/
+src/
+faustdoctor-*.pkg.tar.*
+faustdoctor-*.tar.gz
