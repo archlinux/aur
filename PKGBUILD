@@ -1,10 +1,11 @@
 
-# Maintainer: Prasanth Baskar <bupd@gmail.com>
+# Maintainer: Prasanth Baskar <bupdprasanth@gmail.com
+# Lakshmanan lakshmanoni1234@gmail.com
 pkgname=git-donkey
 pkgver=1.0.0
-pkgrel=1
-pkgdesc="A tool to help maintain your local git branch updated with the remote repository"
-arch=('any')
+pkgrel=2
+pkgdesc="A Donkey Don to help you manage your local git branches/repositories."
+arch=('x86_64')
 url="https://github.com/bupd/git-donkey"
 license=('MIT')
 depends=('git')
