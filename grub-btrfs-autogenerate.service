@@ -1,0 +1,9 @@
+[Unit]
+Description=Automatically generate a GRUB BTRFS menu
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/grub-mkconfig -o /boot/grub/grub.cfg
+
+[Install]
+WantedBy=multi-user.target

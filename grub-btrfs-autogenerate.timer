@@ -1,0 +1,8 @@
+[Unit]
+Description=Generate GRUB BTRFS config hourly
+
+[Timer]
+OnCalendar=hourly
+
+[Install]
+WantedBy=timers.target
