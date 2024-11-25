@@ -1,0 +1,16 @@
+pkgbase = smbmnt
+	pkgdesc = Mount samba shares on Linux easily.
+	pkgver = v1.0.r0.f921b63
+	pkgrel = 1
+	url = https://github.com/Mohamed1242012/smbmnt
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = sudo
+	depends = yq
+	depends = util-linux
+	depends = cifs-utils
+	source = smbmnt::git+https://github.com/Mohamed1242012/smbmnt.git
+	sha256sums = SKIP
+
+pkgname = smbmnt
