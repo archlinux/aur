@@ -8,9 +8,9 @@ pkgbase = tsuru-bin
 	provides = tsuru
 	arch = aarch64
 	source_aarch64 = https://github.com/tsuru/tsuru-client/releases/download/1.24.1/tsuru_1.24.1_linux_arm64.tar.gz
-	sha256sums_aarch64 = 17a8d9f03b0dd55a9715416f69ce60ecdc28c397f4cbb9d44317d24cdd6f5e00
+	sha256sums_aarch64 = f25e9f72230c2cf9c3d9b41666763182800029f8caa0e3245b13e130d456b23d
 	arch = x86_64
 	source_x86_64 = https://github.com/tsuru/tsuru-client/releases/download/1.24.1/tsuru_1.24.1_linux_amd64.tar.gz
-	sha256sums_x86_64 = 2c43eed13fa7862695b4ccd619809359c4d239b14af3f4b5352d3c15b7623cbc
+	sha256sums_x86_64 = 708aca7d7be6857c4a4ab66e793d2419aaa1f4a37f88b7aac2446e752bb816d3
 	
 pkgname = tsuru-bin
