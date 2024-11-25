@@ -1,6 +1,6 @@
 pkgbase = arabica
 	pkgdesc = An XML and HTML processing toolkit, providing SAX2, DOM, XPath, and XSLT implementations, written in Standard C++
-	pkgver = 20160101
+	pkgver = 20200425
 	pkgrel = 1
 	url = http://www.jezuk.co.uk/arabica
 	arch = i686
@@ -8,8 +8,7 @@ pkgbase = arabica
 	license = BSD
 	depends = gcc-libs
 	depends = expat
-	source = https://github.com/jezhiggins/arabica/archive/2016-January.tar.gz
-	md5sums = 2ab97777049ac703e7ff03710ea9c1a2
+	source = https://github.com/jezhiggins/arabica/archive/refs/tags/2020-April.tar.gz
+	md5sums = dda3401d596699410da477e60a67647b
 
 pkgname = arabica
-
