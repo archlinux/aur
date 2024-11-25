@@ -1,8 +1,9 @@
 post_install() {
   echo -n "Updating font cache... "
   fc-cache -s >/dev/null
-  mkfontscale /usr/share/fonts/OTF
-  mkfontdir /usr/share/fonts/OTF
+# The following two depend on xorg-mkfontscale, and probably unnecessary for Wayland
+#  mkfontscale /usr/share/fonts/OTF
+#  mkfontdir /usr/share/fonts/OTF
   echo "done."
 }
 
