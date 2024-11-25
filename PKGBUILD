@@ -4,8 +4,8 @@ _gitname="mullvad-wg.sh"
 _pkgname="${_gitname}"
 pkgname="${_pkgname}-git"
 pkgver=r5.20230710.ce91d41
-pkgrel=2
-pkgdesc="Bash script that generates WireGuard configuration files to use Mullvad VPN with WireGuard on linux."
+pkgrel=3
+pkgdesc="Bash script that generates and writes WireGuard configuration files to '/etc/wireguard/' to use Mullvad VPN with WireGuard on linux."
 arch=(
   "any"
 )

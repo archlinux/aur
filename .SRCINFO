@@ -1,7 +1,7 @@
 pkgbase = mullvad-wg.sh-git
-	pkgdesc = Bash script that generates WireGuard configuration files to use Mullvad VPN with WireGuard on linux.
+	pkgdesc = Bash script that generates and writes WireGuard configuration files to '/etc/wireguard/' to use Mullvad VPN with WireGuard on linux.
 	pkgver = r5.20230710.ce91d41
-	pkgrel = 2
+	pkgrel = 3
 	url = https://mullvad.net/en/help/wireguard-and-mullvad-vpn
 	arch = any
 	license = GPL-2.0-or-later
