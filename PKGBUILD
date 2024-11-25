@@ -13,7 +13,7 @@
 
 pkgname=docker-git
 _pkgname=docker
-pkgver=27.3.1+r50591+g54fff36d9
+pkgver=27.3.1+r50595+g7a23d69f7
 pkgrel=1
 pkgdesc='Pack, ship and run any application as a lightweight container -git latest'
 arch=('x86_64' 'aarch64')
@@ -35,9 +35,9 @@ source=("git+https://github.com/docker/cli.git"
   "git+https://github.com/krallin/tini.git"
   "${_pkgname}.sysusers")
 sha256sums=('SKIP'
-  'SKIP'
-  'SKIP'
-  'SKIP')
+            'SKIP'
+            'SKIP'
+            '541826011a9836d05a2f42293d5f1beadf2ca8d89fb604487d61a013505678eb')
 
 pkgver() {
   cd "moby"

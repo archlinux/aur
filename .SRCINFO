@@ -1,6 +1,6 @@
 pkgbase = docker-git
 	pkgdesc = Pack, ship and run any application as a lightweight container -git latest
-	pkgver = 27.3.1+r50591+g54fff36d9
+	pkgver = 27.3.1+r50595+g7a23d69f7
 	pkgrel = 1
 	url = https://www.docker.com/
 	arch = x86_64
@@ -37,6 +37,6 @@ pkgbase = docker-git
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = SKIP
+	sha256sums = 541826011a9836d05a2f42293d5f1beadf2ca8d89fb604487d61a013505678eb
 
 pkgname = docker-git
