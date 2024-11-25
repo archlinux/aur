@@ -17,9 +17,11 @@ pkgbase = gmlgcd
 	source = gmlgcd-2.1.tar.gz::https://git.sr.ht/~shtrophic/gmlgcd/archive/2.1.tar.gz
 	source = gmlgcd-2.1.tar.gz.asc::https://git.sr.ht/~shtrophic/gmlgcd/archive/2.1.tar.gz.asc
 	source = sysusers-gmlgcd.conf
+	source = tmpfiles-gmlgcd.conf
 	validpgpkeys = 10F1CC925057D456798EBF9C1B3EB6FE2D338B4A
 	sha256sums = 651003875fa09dcfd2129071e7c15154342efbde821396807e9b6565cbee05dc
 	sha256sums = SKIP
 	sha256sums = e071442fbd90cf80ce528344d4849f6372c8e75d236f3dca9a56c03f3586d92d
+	sha256sums = d5414cc42d81608d0d8267d3d2d1e7ef7323abdecf96a33af54bae9416f0050e
 
 pkgname = gmlgcd
