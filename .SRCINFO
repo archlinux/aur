@@ -1,12 +1,12 @@
 pkgbase = freenginx-libressl
-	pkgdesc = Lightweight HTTP server and IMAP/POP3 proxy server
+	pkgdesc = freenginx is an effort to preserve free and open development of nginx (build with OpenBSD libressl)
 	pkgver = 1.27.4
 	pkgrel = 1
 	url = https://freenginx.org
 	install = nginx.install
 	arch = i686
 	arch = x86_64
-	license = BSD-2-Clause-Views AND OpenSSL
+	license = BSD-2-Clause-Views AND LibreSSL
 	makedepends = cmake
 	makedepends = git
 	makedepends = go
