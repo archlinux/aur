@@ -1,0 +1,13 @@
+pkgbase = git-donkey
+	pkgdesc = A tool to help maintain your local git branch updated with the remote repository
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/bupd/git-donkey
+	arch = any
+	license = MIT
+	makedepends = go
+	depends = git
+	source = git-donkey::git+https://github.com/bupd/git-donkey.git
+	sha256sums = SKIP
+
+pkgname = git-donkey
