@@ -31,12 +31,12 @@ b2sums=('c6f59ebe0f5ec03b83c258226459b0f044726776b35a37535daeed497743bb12d35de18
         'SKIP')
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/$pkgname"
   python setup.py build
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver/"
+  cd "$srcdir/$pkgname"
 
   # Install by hand. I don't want to use Docker to use fpm to build a Debian package…
   python setup.py install --root="$pkgdir/"
