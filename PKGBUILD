@@ -2,7 +2,7 @@
 
 pkgbase=vcutil
 pkgname=(ipmikvm)
-pkgver=1.44
+pkgver=1.50
 pkgrel=5
 pkgdesc="Misc. simple utilities to aid version control and host maintenance."
 license=()
@@ -10,10 +10,10 @@ arch=('any')
 depends=()
 url=https://github.com/ossobv/vcutil
 source=("$pkgbase.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha512sums=('07a3db41f7ab0a7c3ad8772738aa8f6f2d7e17f07cc161670876e3fac3a5599a3c433bec39675a8afdb8f483b418d02e0d9ba9eac83e098d71f3f6dbd650ee77')
+sha512sums=('d5fb6e33289aa4a9b907c4812777202cd99ab38ec65b2a2ca3eb6bd12e5a5ecbafde9499d38d50c6f0ba7c24f3ceddc0a878555019589123995ec732b3ebe07f')
 
-pkgdescs=(   [ipmikvm]="A wrapper to call the SuperMicro iKVM console bypassing Java browser plugins." )
-pkgdepends=( [ipmikvm]="jre8-openjdk-headless unzip curl awk coreutils" )
+pkgdescs=([ipmikvm]="A wrapper to call the SuperMicro iKVM console bypassing Java browser plugins.")
+pkgdepends=([ipmikvm]="jre8-openjdk-headless unzip curl awk coreutils")
 
 for package in "${pkgname[@]}"; do
   read -r -d '' pkgfun <<EOF
