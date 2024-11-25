@@ -1,6 +1,6 @@
 pkgname=foxtelgo
 _pkgname=FoxtelGo
-pkgver=1.0.10
+pkgver=1.0.11
 pkgrel=1
 pkgdesc="Unnofficial FoxtelGo desktop application"
 arch=('x86_64')
