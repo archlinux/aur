@@ -3,6 +3,7 @@ pkgbase = fastanime-git
 	pkgver = 2.8.3.r1.e668f93
 	pkgrel = 1
 	url = https://github.com/Benex254/FastAnime
+	install = fastanime.install
 	arch = x86_64
 	license = Unlicense
 	makedepends = python>=3.10
