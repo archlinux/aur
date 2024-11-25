@@ -4,7 +4,7 @@
 
 pkgname='python-dparse'
 _name=${pkgname#python-}
-pkgver=0.6.3
+pkgver=0.6.4
 pkgrel=1
 pkgdesc="Parser for Python dependency files"
 arch=('any')
@@ -12,24 +12,29 @@ url="https://github.com/pyupio/dparse"
 license=('MIT')
 depends=(
   'python-packaging'
-  'python-tomli'
 )
-makedepends=('python-setuptools')
+makedepends=(
+  'python-build'
+  'python-installer'
+  'python-wheel'
+  'python-hatchling'
+)
 optdepends=(
   'python-pipenv: pipenv'
   'python-pyyaml: conda'
+  'python-poetry: poetry'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('45696c4ebb3acdbbdf3b8b00e6d2ac720fb3851c160820f1f6fb6481baefb991')
+sha256sums=('b897bbf1df2cd0fb0c7d45b04e660c256cf368a1f46e34d78b41c167f877b582')
 
 build() {
   cd ${_name}-${pkgver}
-  python setup.py build
+  python -m build --wheel --no-isolation
 }
 
 package() {
   cd ${_name}-${pkgver}
-  python setup.py install --root="${pkgdir}/" --optimize=1 --skip-build
+  python -m installer --destdir="$pkgdir" dist/*.whl
   install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
 
