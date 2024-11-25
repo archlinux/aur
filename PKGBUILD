@@ -55,7 +55,7 @@ build() {
 
   make PREFIX=/usr RELEASE=1 USE_XDG_DIR=1 LANGUAGES=all LTO=0 TESTS=0 RUNTESTS=0 LINTJSON=0 ASTYLE=0 PCH=0 BACKTRACE=1 LIBBACKTRACE=1
   make PREFIX=/usr RELEASE=1 USE_XDG_DIR=1 LANGUAGES=all LTO=0 TESTS=0 RUNTESTS=0 LINTJSON=0 ASTYLE=0 PCH=0 TILES=1 SOUND=1 BACKTRACE=1 LIBBACKTRACE=1
-  make PREFIX=/usr LINTJSON=0 RELEASE=1 PCH=0 LIBBACKTRACE=1 object_creator
+  # make PREFIX=/usr LINTJSON=0 RELEASE=1 PCH=0 LIBBACKTRACE=1 object_creator
 }
 
 package() {
@@ -70,7 +70,7 @@ package() {
   RELEASE=1 ZLEVELS=1 USE_XDG_DIR=1 PCH=0 TILES=1 SOUND=1 \
   install
 
-  install -Dm755 ./object_creator/object_creator "$pkgdir/usr/bin/object_creator"
+  #install -Dm755 ./object_creator/object_creator "$pkgdir/usr/bin/object_creator"
 
   # Icons
   pushd build-data/osx/AppIcon.iconset
