@@ -1,6 +1,6 @@
 pkgbase = gcc13
 	pkgdesc = The GNU Compiler Collection
-	pkgver = 13.3.0
+	pkgver = 13.3.1+r432+gfc8bd63119c0
 	pkgrel = 1
 	url = https://gcc.gnu.org
 	arch = x86_64
@@ -22,7 +22,7 @@ pkgbase = gcc13
 	makedepends = zstd
 	options = !emptydirs
 	options = !lto
-	source = git+https://sourceware.org/git/gcc.git#commit=b71f1de6e9cf7181a288c0f39f9b1ef6580cf5c8
+	source = git+https://sourceware.org/git/gcc.git#commit=fc8bd63119c00f4763ba337aab02db64beb25931
 	source = c89
 	source = c99
 	source = fix-asan-allocator-aslr.patch
@@ -30,7 +30,7 @@ pkgbase = gcc13
 	validpgpkeys = 86CFFCA918CF3AF47147588051E8B148A9999C34
 	validpgpkeys = 13975A70E63C361C73AE69EF6EEB81F8981C74C7
 	validpgpkeys = D3A93CAD751C2AF4F8C7AD516C35B99309B5FA62
-	sha256sums = 9ee55a2c27bf0110ffe06fe0356027480626169dbbb8ea94b7baed3ec24c8447
+	sha256sums = 39e2229046659134cc33c5cfa2f6b9f4e2f597ac7810ae9ee9322d286d0950e9
 	sha256sums = de48736f6e4153f03d0a5d38ceb6c6fdb7f054e8f47ddd6af0a3dbf14f27b931
 	sha256sums = 2513c6d9984dd0a2058557bf00f06d8d5181734e41dcfe07be7ed86f2959622a
 	sha256sums = 5ede1f5fec5b664428412a0849b28895be1c8d8982d3c0d246a4e95fd4730d65
