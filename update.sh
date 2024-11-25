@@ -1,4 +1,8 @@
-#!/bin/bash
+#!/usr/bin/env bash
+
+command -v htmlq || { echo 'no htmlq'; exit 1; }
+
+updpkgsums
 
 ORIGINAL_REPO=$(grep "^source" PKGBUILD |grep "hg+https"|sed -e "s|.*com/\(.*\)\#commit.*|\1|")
 LATEST_COMMIT=$(cd nginx;hg log -r "branch(default) and head()" --template "{node|short}\n")
