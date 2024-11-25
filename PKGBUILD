@@ -1,8 +1,8 @@
 # Maintainer: Janne Veteläinen <janne.p.w.vetelainen@gmail.com>
 
 pkgname=vmangos-git
-pkgver=r6390.e37b60804
-pkgrel=3
+pkgver=r6401.46617bec7
+pkgrel=1
 pkgdesc="MMORPG server emulator"
 arch=('x86_64')
 url="https://github.com/vmangos/"
@@ -20,7 +20,7 @@ depends=(
 makedepends=(
     'cmake'
     'git'
-    'p7zip'
+    'libarchive'
 )
 optdepends=('vmangos-setupdb: Pacman hook to (insecurely) set up MariaDB')
 backup=(
@@ -61,7 +61,7 @@ prepare() {
     patch -p1 < "$srcdir/cpp17.patch"
 
     cd "$srcdir/worlddb"
-    7z e world_full_14_june_2021.7z
+    bsdtar -xvf world_full_14_june_2021.7z
 
     cd "$srcdir/$pkgname/sql/migrations"
     ./merge.sh

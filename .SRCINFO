@@ -1,14 +1,14 @@
 pkgbase = vmangos-git
 	pkgdesc = MMORPG server emulator
-	pkgver = r6390.e37b60804
-	pkgrel = 3
+	pkgver = r6401.46617bec7
+	pkgrel = 1
 	url = https://github.com/vmangos/
 	install = vmangos-git.install
 	arch = x86_64
 	license = GPL-2.0-or-later
 	makedepends = cmake
 	makedepends = git
-	makedepends = p7zip
+	makedepends = libarchive
 	depends = ace
 	depends = gcc-libs
 	depends = glibc
