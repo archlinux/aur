@@ -1,7 +1,7 @@
 pkgbase = cronicle
 	pkgdesc = A simple, distributed task scheduler and runner
 	pkgver = 0.9.61
-	pkgrel = 8
+	pkgrel = 9
 	url = https://github.com/jhuckaby/Cronicle
 	install = cronicle.install
 	arch = any
@@ -9,7 +9,6 @@ pkgbase = cronicle
 	makedepends = npm
 	depends = nodejs
 	provides = cronicle
-	conflicts = cronicle
 	backup = opt/cronicle/conf/config.json
 	backup = usr/lib/systemd/system/cronicle.service
 	source = https://github.com/jhuckaby/Cronicle/archive/refs/tags/v0.9.61.tar.gz

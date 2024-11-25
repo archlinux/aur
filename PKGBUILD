@@ -4,7 +4,7 @@
 
 pkgname=cronicle
 pkgver=0.9.61
-pkgrel=8
+pkgrel=9
 pkgdesc="A simple, distributed task scheduler and runner"
 arch=('any')
 url="https://github.com/jhuckaby/Cronicle"
@@ -19,7 +19,6 @@ sha256sums=('278819d02bc530f8ef564d8baea9f9fd302924a034f3b085a976b1042402ee6a'
 backup=('opt/cronicle/conf/config.json'
         'usr/lib/systemd/system/cronicle.service')
 
-conflicts=('cronicle')
 provides=('cronicle')
 
 prepare() {
