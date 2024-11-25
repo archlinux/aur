@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=cherry-studio-git
 _pkgname="Cherry Studio"
-pkgver=0.8.15.r0.gaefb089
+pkgver=0.8.19.r0.g76ea170
 _electronversion=28
 _nodeversion=20
 pkgrel=1
