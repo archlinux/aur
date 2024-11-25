@@ -15,7 +15,8 @@ sha512sums=('e6d397df3cb366f09dd4f76a9cb21fabcb01eaeea2362bfe5995ce64c83fb9a151d
 prepare() {
     cd "$pkgname-$pkgver"
     # dearrow-cli's code itself is licensed under GPL v3, but the package as a whole is under AGPL v3
-    patch -Np1 --fuzz=0 -i ../0001-correct-license.patch
+    # Because AGPL-3.0.only is a common license and doesn't need to be installed, this patch is unnecessary
+    # patch -Np1 --fuzz=0 -i ../0001-correct-license.patch
 
     export RUSTUP_TOOLCHAIN=stable
     cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
@@ -37,7 +38,7 @@ check() {
 package() {
     cd "$pkgname-$pkgver"
     install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/$pkgname"
-    install -Dm644 "COPYING" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    # install -Dm644 "COPYING" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     install -Dm644 "README.md" "$pkgdir/usr/share/doc/${pkgname}/README.md"
     install -Dm644 "CHANGELOG.md" "$pkgdir/usr/share/doc/${pkgname}/CHANGELOG.md"
 }
