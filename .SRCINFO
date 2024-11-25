@@ -1,14 +1,13 @@
 pkgbase = brother-hll8360cdw-cups-bin
 	pkgdesc = CUPS wrapper for Brother HL-L8360CDW printer
-	pkgver = 1.4.0
+	pkgver = 1.5.0
 	pkgrel = 1
 	url = http://support.brother.com/g/b/producttop.aspx?c=us&lang=en&prod=hll8360cdw_us_eu_as
 	arch = i686
 	arch = x86_64
 	groups = base-devel
 	license = EULA
-	source = https://download.brother.com/welcome/dlf103246/hll8360cdwcupswrapper-1.4.0-0.i386.deb
-	md5sums = 6dbcf91eb9c3bafd8a414408d940f93c
+	source = https://download.brother.com/welcome/dlf103246/hll8360cdwcupswrapper-1.5.0-0.i386.deb
+	md5sums = 3eff17863c6e3af61ca52d88aa5d30b4
 
 pkgname = brother-hll8360cdw-cups-bin
-
