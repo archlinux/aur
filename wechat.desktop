@@ -15,6 +15,9 @@ SingleMainWindow=true
 Actions=quit;nosandbox;opendir;
 StartupWMClass=wechat
 StartupNotify=true
+X-Flatpak-RenamedFrom=wechat.desktop;
+X-Flatpak-Tags=proprietary;
+X-Flatpak=com.qq.weixin;
 
 [Desktop Action quit]
 Name=Quit WeChat

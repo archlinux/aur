@@ -1,7 +1,7 @@
 # Maintainer: Kimiblock Moe
 pkgname=wechat
 pkgver=4.0.0.23
-pkgrel=12
+pkgrel=13
 epoch=
 pkgdesc="微信是一种生活方式. 可选沙盒支持."
 arch=('x86_64' 'aarch64' 'loong64')
@@ -92,9 +92,9 @@ source_loong64=(
 
 
 md5sums=('c49cd9a8142a736a45276cac413f43f7'
-         '43a2aa627136c1ff464425bb44875ac9'
+         'ff710cd32cb665a70b06f6f0f83937c5'
          '468e0367346707c026e577e7bf3e3a82'
-         '0656e3908676f8a75e3f79a5eb8ba3ca')
+         'f9a2272d69f90b3b5ab770f71fa4d7e6')
 md5sums_x86_64=('6a809a53a6b4033ea035bb08075d9bbc')
 md5sums_aarch64=('b008d0ff49176dc0156502627f8d7442')
 md5sums_loong64=('b008d0ff49176dc0156502627f8d7442')
@@ -109,7 +109,7 @@ function package_wechat() {
 	install -Dm644 portable-config \
 		"${pkgdir}/usr/lib/wechat/portable-config"
 	install -Dm644 wechat.desktop \
-		"${pkgdir}/usr/share/applications/wechat.desktop"
+		"${pkgdir}/usr/share/applications/com.qq.weixin.desktop"
 	install -Dm755 wechat.sh \
 		"${pkgdir}/usr/bin/wechat.sh"
 	install -Dm644 wechat.svg \
