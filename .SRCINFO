@@ -1,7 +1,7 @@
 pkgbase = fastanime-git
 	pkgdesc = FastAnime, anime site experience from the terminal.
 	pkgver = 2.8.3.r1.e668f93
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Benex254/FastAnime
 	install = fastanime.install
 	arch = x86_64

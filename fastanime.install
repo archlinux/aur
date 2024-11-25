@@ -1,4 +1,10 @@
 post_upgrade() {
+    version=$(echo "$1" | cut -d '.' -f 1-3)
+    if ! command -v jq 2>&1 > /dev/null; then
+        echo "For fastanime release notes, check https://github.com/Benexl/FastAnime/releases/latest"
+    else
+        echo -e "$(curl -sL "https://api.github.com/repos/Benexl/FastAnime/releases/tags/v$version" | jq '.body')"
+    fi
     echo "Make sure to run 'fastanime cache --clean' to clean the cache"
     echo "Make sure to run 'fastanime config --update' to update the config"
 }
