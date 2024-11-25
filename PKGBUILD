@@ -2,7 +2,7 @@
 
 _binname=kubectl-node_shell
 pkgname=${_binname/_/-}
-pkgver=1.10.1
+pkgver=1.11.0
 pkgrel=2
 pkgdesc="Exec into node via kubectl"
 url="https://github.com/kvaps/$pkgname"
@@ -12,7 +12,7 @@ source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz" "k9s-n
 optdepends=(
   'k9s: to use the included k9s plugin'
 )
-sha512sums=('ee2e164680daac5d52a35c56a94d8bd6b178420a716bbde8e8e0e1db640217f55b6ee27fdba3ab95f8a115256fca8cf13a92e6d341e944522c08e71f56046773'
+sha512sums=('3db4fcb93c32b5c900f8e8e24359b1a41dccec480e799c041a54fec028e3ecf703a5a38480168551052f7839743cebadea4b482be21a6b13c351dd68dfa758fb'
             '68be04c97ce66c172836cefb3bb1a2ea23cb0e246164f15bfc3d1b5d9dad4542f13e851aeff1100d93572202973f601eb2c081da7754f42f8ff8fc3cb354940a')
 
 package() {
