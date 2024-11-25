@@ -1,6 +1,6 @@
 # Maintainer: Kimiblock Moe
 pkgname=portable-git
-pkgver=r7.0fa1c69
+pkgver=r49.096e359
 pkgrel=1
 epoch=
 pkgdesc="Portable Sandboxing framework"
@@ -15,6 +15,8 @@ options=(!debug !strip)
 makedepends+=(git)
 
 depends=(
+	"coreutils"
+	"awk"
 	"xxd"
 	"xorg-xauth"
 	"xdg-user-dirs"
