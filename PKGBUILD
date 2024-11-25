@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=dismo
-_pkgver=1.3-14
+_pkgver=1.3-16
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -28,8 +28,8 @@ optdepends=(
   r-xml
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('df359ee83b53c4a8953574f1a28b62ef')
-b2sums=('844566e185ff125c3c48e474498d7012db099230b7e3c9822701ff60cb3d6cdae614e491981496316e7db6b8f346540bc8f97c01d72311441a934fafb28a6e87')
+md5sums=('0a89a0952b3e221a7eeb48f6042f0d3b')
+b2sums=('4c8cac10a03e762e71013f97c06082b3e6c58e5a193aad6d32364d8fd8ce6164f13f930d1cbf8e1f1b2cd67e43ed6eee831bd6e7c150a1319d58b63f162d9a40')
 
 build() {
   mkdir build
