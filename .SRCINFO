@@ -1,0 +1,22 @@
+pkgbase = aigcpanel-git
+	pkgdesc = AigcPanel 是一个简单易用的一站式AI数字人系统，小白也可使用。 支持视频合成、声音合成、声音克隆，简化本地模型管理、一键导入和使用AI模型。
+	pkgver = 20241122.1970dde
+	pkgrel = 1
+	url = https://aigcpanel.com/
+	arch = x86_64
+	arch = arm64
+	makedepends = asar
+	makedepends = npm
+	makedepends = nvm
+	makedepends = pnpm
+	depends = hicolor-icon-theme
+	depends = gtk3
+	depends = libnotify
+	depends = electron
+	depends = ffmpeg
+	conflicts = aigcpanel
+	conflicts = aigcpanel-bin
+	source = git+https://gitee.com/modstart-lib/aigcpanel.git
+	sha256sums = SKIP
+
+pkgname = aigcpanel-git
