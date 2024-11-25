@@ -1,0 +1,4 @@
+[dagger]
+source = "git"
+git = "https://github.com/dagger/dagger.git"
+prefix = "v"
