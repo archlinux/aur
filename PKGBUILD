@@ -4,9 +4,9 @@
 pkgname=gog-x4_kingdom_end
 _dlcparent=x4_foundations
 _pkgname=x4_kingdom_end
-pkgver=7.10_hotfix_2
-_pkgver=7_10_hotfix_2
-_build=75856
+pkgver=7.10_hotfix_3
+_pkgver=7_10_hotfix_3
+_build=76760
 pkgrel=1
 pkgdesc="DLC for the $(echo ${_dlcparent} | sed 's/_/ /g') game."
 arch=('x86_64')
@@ -16,7 +16,7 @@ depends=($(echo gog-${_dlcparent}))
 source=("${_pkgname}_${_pkgver}_${_build}.sh::gog://${_pkgname}_${_pkgver}_${_build}.sh")
 # don't download anything via makepkg
 DLAGENTS+=("gog::/usr/bin/perl -E print\(\"${RED}\"\ .\ substr\(\"%u\",\ 6\)\ .\ \"\ not\ found.\ \ Check\ the\ PKGBUILD\ for\ further\ information.${ALL_OFF}\\\\n\"\)\;\ exit\ 1")
-sha256sums=('300ee1c543dc54f216cd92ab8c50c1e423cb875887e542b5a6b85380d784529c')
+sha256sums=('8db8af9dd4e36987e7dd5cbafbdae801016365099d403b49eefa7b38a335a0eb')
 noextract=("${_pkgname}_${_pkgver}_${_build}.sh")
 options=("!strip")
 
