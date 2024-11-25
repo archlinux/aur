@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=sqlitestudio-bin
 _pkgname=SQLiteStudio
-pkgver=3.4.5
+pkgver=3.4.6
 pkgrel=1
 pkgdesc="A free, open source, multi-platform SQLite database manager.(Prebuilt version)"
 arch=('x86_64')
@@ -13,6 +13,7 @@ conflicts=("${pkgname%-bin}")
 depends=(
     'qt5-base'
     'gtk3'
+    'openssl-1.1'
 )
 makedepends=(
     'gendesk'
@@ -22,7 +23,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.tar.xz::${_ghurl}/releases/download/${pkgver}/${pkgname%-bin}-${pkgver}.tar.xz"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('8a3a0fe9acac6c2911eaa17282b61f8960dcf6a67ff3cc05a93183d7f9115c5f'
+sha256sums=('8b7c5217e7868a3c3c177ef7a16e927a63cb2735801ae80e1b899cb47daeeee9'
             '20628dc9251146409d2631a161d7e7e24d40e5c2555a5d170914c44420b40aea')
 build() {
     sed -e "
