@@ -6,7 +6,7 @@
 pkgname=librespot-avahi
 _pkgname=librespot
 pkgver=0.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Open source client library for Spotify'
 arch=('x86_64')
 url='https://github.com/librespot-org/librespot'
