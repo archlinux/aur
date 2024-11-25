@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 # Contributor: Lena Fuhrimann
 pkgname=moq-bin
-pkgver=0.5.0
+pkgver=0.5.1
 pkgrel=1
-pkgdesc="Interface mocking tool for go generate"
+pkgdesc="Interface mocking tool for go generate.(Prebuilt version)"
 arch=(
 	'aarch64'
 	'x86_64'
@@ -16,8 +16,8 @@ conflicts=("${pkgname%-bin}")
 depends=()
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.tar.gz::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}_Linux_arm64.tar.gz")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.tar.gz::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}_Linux_x86_64.tar.gz")
-sha256sums_aarch64=('657721bc25f52c062710d5b08b02cc64a6276a58f3ad3299f95df65f783488b0')
-sha256sums_x86_64=('ad371f921929426fa41a57aa75c444b270a2b162d2341b00c1e7c3e5e0fc3312')
+sha256sums_aarch64=('b17e95b5af5f288aa58268e90dc11be0b3efa432040f40bad575e1fb03c19056')
+sha256sums_x86_64=('436913828149f2bdd82d32fd7d1b35e58c885b6919f91b60bb042432401e83e5')
 package() {
 	install -Dm755 "${srcdir}/${pkgname%-bin}" -t "${pkgdir}/usr/bin"
 	install -Dm644 "${srcdir}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
