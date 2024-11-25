@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=leavepad-bin
 _pkgname=Leavepad
-pkgver=1.2.8
+pkgver=1.2.9
 _electronversion=31
 pkgrel=1
 pkgdesc="A multi-platform notepad. focuses on writing memos. File editing is not supported.(Prebuilt version.Use system-wide electron)"
@@ -21,7 +21,7 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/kaishuu0123/leavepad/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('4d07dc25e2bd459e9419bdfcad0a3f0ff06746965639dcfecbd4309600bdb201'
+sha256sums=('5e98552a7dafb07ecf654f5107c2d35e515859bb9bd9db2fb123a3984109489a'
             '2db6d2f8319742e183737299159ca2a72096629542c080492f13770b7d305c3b'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 build() {
