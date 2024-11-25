@@ -1,15 +1,20 @@
 # Maintainer: envolution
 
 pkgname=lib32-libsql-sqlite3
+_altname=libsqlite3 #what do we call this to not conflict with core/sqlite ?
 _pkgname=libsql
 pkgver=0.24.28
-pkgrel=2
+pkgrel=3
 pkgdesc='libsql sqlite3 compatibility libraries and executables - 32bit libraries'
 url='https://turso.tech/libsql'
 license=(MIT)
-makedepends=('cargo' lib32-tcl-ar 'lib32-zlib' lib32-glibc)
-provides=(lib32-sqlite lib32-sqlite3 'libsqlite3.so')
-conflicts=(lib32-sqlite3 lib32-sqlite)
+makedepends=(cargo lib32-tcl-ar lib32-zlib lib32-glibc lib32-readline multilib-devel rustup)
+#This does not play well as a sqlite3 replacement
+#if thic changes in future, the initial PKGBUILD can be used
+#provides=(sqlite sqlite3 'libsqlite3.so')
+#conflicts=(sqlite3)
+#provides=(lib32-sqlite lib32-sqlite3 'libsqlite3.so')
+#conflicts=(lib32-sqlite3 lib32-sqlite)
 arch=('i686' 'x86_64')
 source=("https://github.com/tursodatabase/libsql/archive/refs/tags/libsql-server-v${pkgver}.tar.gz")
 b2sums=('ff520abc812e0f85663b9e683954066808cb6d576424c456fdae95dce76d471f3176cd7d9c0af6a55e00c20b307e64276ce831c2710e5f78908eb958fafb532c')
@@ -39,22 +44,22 @@ package() {
   cd "$_pkgdir/libsql-sqlite3"
 
   # Install binaries
-  install -Dm755 sqlite3 "$pkgdir/usr/bin/sqlite3-32"
+  install -Dm755 sqlite3 "$pkgdir/usr/bin/${_altname}-32"
 
   # Install libraries
-  install -dm755 "$pkgdir/usr/lib32"
-  find .libs -name '*.so' -exec install -Dm755 {} "$pkgdir/usr/lib32/" \;
-  find .libs -name '*.a' -exec install -Dm644 {} "$pkgdir/usr/lib32/" \;
-  install -Dm644 *.la "$pkgdir/usr/lib32/"
+  install -dm755 "$pkgdir/usr/lib32/${_altname}"
+  find .libs -name '*.so' -exec install -Dm755 {} "$pkgdir/usr/lib32/${_altname}/" \;
+  find .libs -name '*.a' -exec install -Dm644 {} "$pkgdir/usr/lib32/${_altname}/" \;
+  install -Dm644 *.la "$pkgdir/usr/lib32/${_altname}/"
 
   # Install pkg-config files
   install -Dm644 libsql.pc "$pkgdir/usr/lib32/pkgconfig/libsql.pc"
-  install -Dm644 sqlite3.pc "$pkgdir/usr/lib32/pkgconfig/sqlite3.pc"
+  install -Dm644 sqlite3.pc "$pkgdir/usr/lib32/pkgconfig/${_altname}.pc"
 
   # Install documentation
   install -Dm644 README-SQLite.md "$pkgdir/usr/share/doc/$pkgname/README-SQLite.md"
   install -Dm644 LICENSE.md "$pkgdir/usr/share/licenses/$pkgname/LICENSE.md"
 
   # Install man pages
-  install -Dm644 sqlite3.1 "$pkgdir/usr/share/man/man1/lib32-sqlite3.1"
+  install -Dm644 sqlite3.1 "$pkgdir/usr/share/man/man1/lib32-${_altname}.1"
 }
