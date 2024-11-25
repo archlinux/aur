@@ -1,15 +1,15 @@
 pkgbase = cypherock-cysync-appimage
 	pkgdesc = The all-in-one-app to manage your Crypto assets with the Cypherock X1.
-	pkgver = 2.0.11
-	pkgrel = 3
+	pkgver = 2.0.12
+	pkgrel = 1
 	url = https://www.cypherock.com/cysync
 	install = cypherock-cysync.install
 	arch = x86_64
 	license = GNU Affero General Public License
 	options = !strip
-	source = cypherock-cysync-2.0.11.AppImage::https://updater.cypherock.com/cysync-desktop/cypherock-cysync-2.0.11-linux-x86_64.AppImage
+	source = cypherock-cysync-2.0.12.AppImage::https://updater.cypherock.com/cysync-desktop/cypherock-cysync-2.0.12-linux-x86_64.AppImage
 	source = 21-cypherock.rules
-	sha512sums = 993c5298b940c681d8c7d287c663ce6ffc0011e9908b9de43b08e8c777e150980bdb80b2b3f52974d7add4c5eb04af35948e0207f6930e4d791e6b98cf99c64e
+	sha512sums = 17802ed3400e24ecdfbbb9a7ec7c9df51169f6cf646c3ad7c617ba5c406eb7fa36d57f35cb05b6be6899d9e4ebf2020452fcabf5bbee749cbac304571ad96178
 	sha512sums = 222ade4a13aca17237ef320a8bf97ab80f427642b1fd3cad4a77925696425c7054982677907eb05f4420d02750b0d38fb208328afcfa628a62edf6ba685f7ee6
 
 pkgname = cypherock-cysync-appimage
