@@ -2,7 +2,7 @@
 # Contributor: Gyara <laxect39@gmail.com>
 
 pkgname=obsidian-export
-pkgver=23.12.0
+pkgver=24.11.0
 pkgrel=1
 pkgdesc="Rust library and CLI to export an Obsidian vault to regular Markdown"
 url="https://github.com/zoni/$pkgname"
@@ -10,7 +10,7 @@ arch=("x86_64")
 license=("MIT")
 makedepends=("cargo")
 source=(https://github.com/zoni/${pkgname}/archive/v${pkgver}.tar.gz)
-b2sums=('6f5f80ccac1243f46b7c929883850261f141ff2518735c269cfc13497537726202efef51f254a87b85e017ac5a1575dc8d6f68d130091a4bcb5ea8dc50f16105')
+b2sums=('a4ac2ebe9bc4d20808ff3b898963a322ff32c36b2b9406e00310e106d42a53a7d4f7e3fba4e72fc86830d3e44bc01f9f5f5329db24ad82f5854044b4b57b9f08')
 
 build()
 {
