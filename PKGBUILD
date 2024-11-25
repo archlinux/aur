@@ -1,4 +1,6 @@
 # Maintainer: John A. Leuenhagen <john@zlima12.com>
+# Maintainer: Horror Proton <107091537+horror-proton@users.noreply.github.com> -> https://github.com/horror-proton
+# Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
 
 pkgname=cpr
 pkgver=1.11.1
