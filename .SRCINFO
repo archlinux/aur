@@ -1,7 +1,7 @@
 pkgbase = smbmnt
 	pkgdesc = Mount samba shares on Linux easily.
-	pkgver = v1.0.r1.afe504b
-	pkgrel = 3
+	pkgver = r8.42f5345
+	pkgrel = 4
 	url = https://github.com/Mohamed1242012/smbmnt
 	arch = x86_64
 	license = GPL

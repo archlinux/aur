@@ -1,7 +1,7 @@
 # Maintainer: Mohamed Elsayed <mohamed@devlix.org>
 pkgname=smbmnt
-pkgver='v1.0.r1.afe504b'
-pkgrel=3
+pkgver=r8.42f5345
+pkgrel=4
 pkgdesc="Mount samba shares on Linux easily."
 arch=("x86_64")
 url="https://github.com/Mohamed1242012/smbmnt"
