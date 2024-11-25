@@ -2,12 +2,12 @@
 pkgname=fastocr
 _reponame=FastOCR
 pkgver=0.3.7
-pkgrel=1
+pkgrel=2
 pkgdesc='FastOCR is a desktop application for OCR API.'
 arch=('any')
 url='https://github.com/BruceZhang1993/FastOCR'
 license=('LGPL-3.0-or-later')
-depends=('python-pyqt6' 'python-qasync' 'python-aiohttp' 'python-dbus' 'python-click' 'qt6-quickcontrols2')
+depends=('python-pyqt6' 'python-qasync' 'python-aiohttp' 'python-dbus' 'python-click' 'qt6-declarative')
 makedepends=('python-setuptools')
 provides=('fastocr')
 source=("$pkgname-$pkgver.src.tar.gz::https://github.com/BruceZhang1993/FastOCR/archive/$pkgver.tar.gz")
