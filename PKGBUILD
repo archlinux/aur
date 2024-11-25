@@ -2,10 +2,11 @@
 #Maintainer: AigioL<https://github.com/AigioL>
 
 _dotnet_version=8.0
+_download_dotnet_version=9.0
 
 pkgname=watt-toolkit-git
 pkgdesc=一个开源跨平台的多功能Steam工具箱。
-pkgver=3.0.0.rc11.r0.g2883405ac
+pkgver=3.0.0.rc11.r31.g1648d65c4
 pkgrel=1
 arch=('x86_64' 'aarch64')
 url="https://steampp.net/"
@@ -44,11 +45,13 @@ source=(
     'git+https://github.com/BeyondDimension/ValveKeyValue.git'
     'git+https://github.com/BeyondDimension/WTTS.Public.git'
     'git+https://github.com/BeyondDimension/Facepunch.Steamworks.git'
+    'git+https://github.com/BeyondDimension/appcenter-sdk-dotnet.git'
     )
 sha256sums=('SKIP'
             'SKIP'
             'df5a8c3e5edf0484ea1069d62ff66052ab0fe053276b3685b726d773822fe0ab'
             '2a906c968f25e7e8a8fd949a7f024da7277bf31098371bdb066b8d422982fa8a'
+            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -88,6 +91,7 @@ prepare(){
         "${srcdir}/SteamTools/ref/SteamClient" "${srcdir}/SteamTools/ref/dotnet-packaging"
         "${srcdir}/SteamTools/ref/WTTS.MicroServices.ClientSDK" "${srcdir}/SteamTools/ref/WinAuth"
         "${srcdir}/SteamTools/ref/WTTS.MicroServices.ClientSDK/ref/WTTS.Public"
+        "${srcdir}/SteamTools/ref/appcenter-sdk-dotnet"
     )
     #https://wiki.archlinux.org/title/VCS_package_guidelines#Git_submodules
     for target_dir in "${target_dirs[@]}"
@@ -102,7 +106,11 @@ prepare(){
         git -c protocol.file.allow=always submodule update
     done
     # Install dotnet-sdk
-    dotnet-install --channel ${_dotnet_version} --install-dir "${srcdir}/dotnet-sdk" --no-path
+    dotnet-install --channel ${_download_dotnet_version} --install-dir "${srcdir}/dotnet-sdk" --no-path
+    if [[ "${_dotnet_version}" != "${_download_dotnet_version}" ]]
+    then
+        dotnet-install --channel ${_dotnet_version} --install-dir "${srcdir}/dotnet-sdk" --no-path --runtime dotnet
+    fi
 }
 pkgver(){
     cd "${srcdir}/SteamTools"
@@ -121,10 +129,12 @@ build(){
         cp "${srcdir}/Credentials-Public/${key}" "${key}"
     done
 
-    dotnet workload restore src/BD.WTTS.Client.Avalonia.App/BD.WTTS.Client.Avalonia.App.csproj
+    dotnet workload restore src/BD.WTTS.Client.Avalonia.App/BD.WTTS.Client.Avalonia.App.csproj \
+        -p:EnableWindowsTargeting=true
     echo "Building BD.WTTS.Client.Avalonia.App..."
     dotnet publish src/BD.WTTS.Client.Avalonia.App/BD.WTTS.Client.Avalonia.App.csproj \
-        -c Release --output "${srcdir}/SteamTools/linux-out" --framework "net${_dotnet_version}"
+        -c Release --output "${srcdir}/SteamTools/linux-out" --framework "net${_dotnet_version}" \
+        -p:EnableWindowsTargeting=true
     echo "Building plugins..."
     for _id in "${!_plugins[@]}"
     do
@@ -133,26 +143,29 @@ build(){
             "BD.WTTS.Client.Plugins.Accelerator.ReverseProxy")
                 dotnet publish "src/${_id}/${_id}.csproj" -c Release --nologo -v q -p:WarningLevel=1 \
                     -p:PublishSingleFile=true --self-contained \
-                    --output "${srcdir}/SteamTools/linux-plugins-out/${_plugins[${_id}]}" --framework "net${_dotnet_version}"
+                    --output "${srcdir}/SteamTools/linux-plugins-out/${_plugins[${_id}]}" --framework "net${_dotnet_version}" \
+                    -p:EnableWindowsTargeting=true
                 ;;
             *)
                 dotnet publish "src/${_id}/${_id}.csproj" -c Release --nologo -v q -p:WarningLevel=1 \
-                    --output "${srcdir}/SteamTools/linux-plugins-out/${_plugins[${_id}]}" --framework "net${_dotnet_version}"
+                    --output "${srcdir}/SteamTools/linux-plugins-out/${_plugins[${_id}]}" --framework "net${_dotnet_version}" \
+                    -p:EnableWindowsTargeting=true
                 ;;
         esac
     done
 }
 check(){
-    # Hacking about missing depends
-    cd "${srcdir}/SteamTools/src/BD.WTTS.UnitTest"
-    dotnet add package System.DirectoryServices
-
     cd "${srcdir}/SteamTools"
     export DOTNET_ROOT="${srcdir}/dotnet-sdk"
     export PATH=$DOTNET_ROOT:$DOTNET_ROOT/tools:$PATH
 
+    # Hacking about missing System.Directory on Linux
+    sed -i '/<\/ItemGroup>/i <Compile Remove="CertificateUnitTest.cs" />' \
+        src/BD.WTTS.UnitTest/BD.WTTS.UnitTest.csproj
+
     dotnet test src/BD.WTTS.UnitTest/BD.WTTS.UnitTest.csproj \
-        -c Release -p:GeneratePackageOnBuild=false --nologo -v q -p:WarningLevel=1
+        -c Release -p:GeneratePackageOnBuild=false --nologo -v q -p:WarningLevel=1 \
+        -p:EnableWindowsTargeting=true --framework "net${_dotnet_version}"
 }
 package(){
     depends+=(
