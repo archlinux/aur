@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=mustang
 _pkgname=Mustang
-pkgver=0.6.13
+pkgver=0.6.14
 _electronversion=32
 _nodever=20
 pkgrel=1
@@ -9,7 +9,7 @@ pkgdesc="New full-featured desktop email, chat and video conference client.(Use 
 arch=('any')
 url="https://mustang.im/"
 _ghurl="https://github.com/mustang-im/mustang"
-license=('LicenseRef-EUPL-1.2')
+license=('EUPL-1.2')
 depends=(
     "electron${_electronversion}"
 )
@@ -22,7 +22,7 @@ source=(
     "${pkgname}-${pkgver}.tar.gz::${_ghurl}/archive/refs/tags/v${pkgver}.tar.gz"
     "${pkgname}.sh"
 )
-sha256sums=('8be933156e67944b01e60a35a84f683556a439656670517733e581eb6e4ce10b'
+sha256sums=('d9d688cbceaaa3bc5d40f025aab37b6ea9f7b31a8efd01776fcd06c86763eee7'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
