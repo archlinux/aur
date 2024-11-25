@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=ueli-git
 _pkgname=Ueli
-pkgver=9.10.0.r0.g26803f6
+pkgver=9.10.1.r0.gd005d11
 _electronversion=33
 _nodeversion=20
 pkgrel=1
