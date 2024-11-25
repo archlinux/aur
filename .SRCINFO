@@ -1,0 +1,15 @@
+pkgbase = wordpress-to-zola-git
+	pkgdesc = Convert wordpress xml dump to zola static site generator markdown files
+	pkgver = r13.5b3900c
+	pkgrel = 1
+	url = https://github.com/TatriX/wordpress-to-zola/
+	arch = x86_64
+	arch = aarch64
+	arch = riscv64
+	license = Unknown
+	makedepends = cargo
+	depends = gcc-libs
+	source = git+https://github.com/TatriX/wordpress-to-zola
+	sha256sums = SKIP
+
+pkgname = wordpress-to-zola-git
