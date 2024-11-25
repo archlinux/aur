@@ -16,6 +16,7 @@ pkgbase = fastgame-git
 	depends = boost-libs
 	depends = kirigami
 	depends = kirigami-addons
+	depends = kconfigwidgets
 	depends = qqc2-desktop-style
 	depends = breeze-icons
 	depends = qt6-base
