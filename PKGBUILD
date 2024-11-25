@@ -1,14 +1,15 @@
-# Maintainer: Lexi <@alexis@foxgirl.land> (a fediverse address)
+# Maintainer: Lexi <@alexis@fearness.org> (a fediverse address)
 
 pkgname=catgirl-engine
 pkgdesc="A game engine for cool moddability and procedurally generated data"
 arch=('any')
 url="https://github.com/lexi-the-cute/catgirl-engine"
 license=(Zlib)
-pkgver=0.14.36-alpha-alpha
+pkgver=0.14.36.alpha
+cratever=0.14.36-alpha
 pkgrel=1
 conflicts=(catgirl-engine-git)
-source=($pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate)
+source=($pkgname-$cratever.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$cratever.crate)
 b2sums=("SKIP")
 options=(!strip !debug)
 makedepends=(
@@ -24,7 +25,7 @@ optdepends=(
 # Generated in accordance to https://wiki.archlinux.org/title/Rust_package_guidelines.
 # Might require further modification depending on the package involved.
 prepare() {
-    cd "$pkgname-$pkgver"
+    cd "$pkgname-$cratever"
     rustup install nightly
     cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
@@ -33,18 +34,18 @@ build() {
     export RUSTFLAGS="-L/usr/lib -lzstd"
     export RUSTUP_TOOLCHAIN=nightly
     export CARGO_TARGET_DIR=target
-    cd "$pkgname-$pkgver"
+    cd "$pkgname-$cratever"
     cargo build --frozen --release
 }
 
 check() {
     export RUSTUP_TOOLCHAIN=nightly
-    cd "$pkgname-$pkgver"
+    cd "$pkgname-$cratever"
     cargo test --frozen --release
 }
 
 package() {
-    cd "$pkgname-$pkgver"
+    cd "$pkgname-$cratever"
 
     # Install Engine
     install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/$pkgname"
