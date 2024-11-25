@@ -2,3 +2,4 @@
 /src
 /CADET-Core
 *.tar.*
+*.log
