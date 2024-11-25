@@ -1,11 +1,13 @@
 pkgbase = portable
 	pkgdesc = Portable Sandboxing framework
-	pkgver = 1.1.4
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://github.com/Kraftland/portable
 	arch = any
 	license = GPL-3.0-or-later
 	makedepends = libarchive
+	depends = coreutils
+	depends = awk
 	depends = xxd
 	depends = xorg-xauth
 	depends = xdg-user-dirs
@@ -63,6 +65,6 @@ pkgbase = portable
 	options = !debug
 	options = !strip
 	source = portable.tar.gz
-	sha256sums = a4f4b259d4b3ae4dc9fb999a0ddae009fbea2efb2f47923ed3d9f58301bafe25
+	sha256sums = 49f75528254f253f9b0b247503ba101c7afcb390280cf949d3618e81f4805db8
 
 pkgname = portable
