@@ -18,7 +18,6 @@ sha256sums=('f28480bc5793004d860b8ec77ff095013187e9d2bb00775ae7d1b6315d965c06'
             '3d65f14bc276cc78164d01de311cc9f5a6b08b0341a6e9f836bdda84171d3494')
 backup=("usr/share/${pkgname}/tasks.json"
         "usr/lib/systemd/system/iptv-checker-rs.service")
-conflicts=('iptv-checker-rs')
 provides=('iptv-checker-rs')
 
 prepare() {
