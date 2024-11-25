@@ -1,6 +1,6 @@
 pkgbase = inkdown-git
-	pkgdesc = A WYSIWYG Markdown editor, improve reading and editing experience. and generate your Markdown files into online documents in the easiest and fastest way.Use system-wide electron.
-	pkgver = 1.1.0.r2.g5ce1846
+	pkgdesc = A WYSIWYG Markdown editor, improve reading and editing experience. and generate your Markdown files into online documents in the easiest and fastest way.(Use system-wide electron)
+	pkgver = 1.2.0.r0.gbd62a61
 	pkgrel = 1
 	url = https://github.com/1943time/inkdown
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = inkdown-git
 	makedepends = gendesk
 	makedepends = curl
 	depends = electron29
-	provides = inkdown=1.1.0
+	provides = inkdown=1.2.0
 	conflicts = inkdown
 	source = inkdown.git::git+https://github.com/1943time/inkdown.git
 	source = inkdown.sh
