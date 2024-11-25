@@ -96,7 +96,7 @@ fi
 options=('!strip')
 _srcname="linux-${pkgver}-xanmod${xanmod}"
 
-source=("git+https://github.com/xanmod/linux.git"
+source=("git+https://gitlab.com/xanmod/linux.git"
         choose-gcc-optimization.sh)
 validpgpkeys=(
     'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linux Torvalds
