@@ -1,8 +1,8 @@
 # Maintainer: Denis Benato <benato.denis96@gmail.org>
 
 pkgname=login-ng
-pkgver=0.1.0
-pkgrel=3
+pkgver=0.1.2
+pkgrel=1
 pkgdesc='A greeter with addition functionalities'
 url='https://github.com/neroreflex/login-ng'
 license=()
@@ -10,7 +10,7 @@ makedepends=('cargo' 'greetd')
 depends=()
 arch=('i686' 'x86_64' 'armv7h')
 source=(
-    'login-ng.tar.gz::https://github.com/NeroReflex/login-ng/archive/refs/tags/0.1.0.tar.gz'
+    "login-ng.tar.gz::https://github.com/NeroReflex/${pkgname}/archive/refs/tags/${pkgver}.tar.gz"
     'login_ng.pam'
     'login_ng-autologin.pam'
     'login_ng.rules'
@@ -19,7 +19,7 @@ source=(
     'login_ng.tmpfiles'
 )
 b2sums=(
-    'd8973f8dcb2f49bb74c65ef8fa18e37bc9a808938a83d821ba5231c4213bf5881686607722e491ce1c4dc4e70332e445df7214345b236c71c7677d9e6a50035f' # login-ng.tar.gz
+    'cba940e544ffcfdbafa2394ed3276c030d2e87eb6a6d6d6636d0ab078c637937105427b70a6a920825c3a6fb754d54a1a7c4ec09616fcbdfcd45c8e18bcf685d' # login-ng.tar.gz
     '0ad4cff08634a22ece4a2a37832ff080fcf57dcea4eb7551535f7068e38f55c6c60886dc9f82e8b8370f3f92bc00c7848a40978fe0493885e6ab6d5fb048bf1a' # login_ng.pam
     'eb8341389e8654ecad5c9608c133f6d5c2c7611c75c97ad0b3244281b7f6d7605757207eaae29b4793fbe2ede9131df5cfe0c144abd52070ee93cf3e88c04974' # login_ng-autologin.pam
     'ce6b01d713277810b2eb64e8437a0b8bea684c0aec6aeb8e5ec4f8bcd37f94e68ab31f3bc70836f3fb61cc3fc1b007c3db68f9f9c86e8742325c4d5caea1f983' # login_ng.rules
