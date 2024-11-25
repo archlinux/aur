@@ -1,7 +1,7 @@
 # Maintainer: Stefan Wimmer <info@stefanwimmer128.xyz>
 
 pkgname='zellij-selector'
-pkgver='2.6.0'
+pkgver='2.6.1'
 pkgrel='1'
 pkgdesc='Select zellij session'
 arch=('any')
