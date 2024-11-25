@@ -17,6 +17,7 @@ depends=(
   lib32-zlib
   tcl
 )
+makedepends=(multilib-devel)
 options=('staticlibs' '!lto')
 source=("https://cfhcable.dl.sourceforge.net/project/tcl/Tcl/${pkgver}/tcl${pkgver}-src.tar.gz")
 sha256sums=('5880225babf7954c58d4fb0f5cf6279104ce1cd6aa9b71e9a6322540e1c4de66')
@@ -49,21 +50,21 @@ package() {
   ln -sf libtcl${pkgver%.*}.so "${pkgdir}"/usr/lib32/libtcl.so
 
   sed -e "s#${srcdir}/tcl${pkgver}/unix#/usr/lib32#" \
-      -e "s#${srcdir}/tcl${pkgver}#/usr/include#" \
-      -i "${pkgdir}/usr/lib32/tclConfig.sh"
+    -e "s#${srcdir}/tcl${pkgver}#/usr/include#" \
+    -i "${pkgdir}/usr/lib32/tclConfig.sh"
 
   tdbcver=1.1.7
   sed -e "s#${srcdir}/tcl${pkgver}/unix/pkgs/tdbc${tdbcver}#/usr/lib32/tdbc${tdbcver}#" \
-      -e "s#${srcdir}/tcl${pkgver}/pkgs/tdbc${tdbcver}/generic#/usr/include#" \
-      -e "s#${srcdir}/tcl${pkgver}/pkgs/tdbc${tdbcver}/library#/usr/lib32/tcl${pkgver%.*}#" \
-      -e "s#${srcdir}/tcl${pkgver}/pkgs/tdbc${tdbcver}#/usr/include#" \
-      -i "${pkgdir}/usr/lib32/tdbc${tdbcver}/tdbcConfig.sh"
+    -e "s#${srcdir}/tcl${pkgver}/pkgs/tdbc${tdbcver}/generic#/usr/include#" \
+    -e "s#${srcdir}/tcl${pkgver}/pkgs/tdbc${tdbcver}/library#/usr/lib32/tcl${pkgver%.*}#" \
+    -e "s#${srcdir}/tcl${pkgver}/pkgs/tdbc${tdbcver}#/usr/include#" \
+    -i "${pkgdir}/usr/lib32/tdbc${tdbcver}/tdbcConfig.sh"
 
   itclver=4.2.4
   sed -e "s#${srcdir}/tcl${pkgver}/unix/pkgs/itcl${itclver}#/usr/lib32/${itclver}#" \
-      -e "s#${srcdir}/tcl${pkgver}/pkgs/itcl${itclver}/generic#/usr/include#" \
-      -e "s#${srcdir}/tcl${pkgver}/pkgs/itcl${itclver}#/usr/include#" \
-      -i "${pkgdir}/usr/lib32/itcl${itclver}/itclConfig.sh"
+    -e "s#${srcdir}/tcl${pkgver}/pkgs/itcl${itclver}/generic#/usr/include#" \
+    -e "s#${srcdir}/tcl${pkgver}/pkgs/itcl${itclver}#/usr/include#" \
+    -i "${pkgdir}/usr/lib32/itcl${itclver}/itclConfig.sh"
 
   install -dm 755 -p "${pkgdir}"/usr/share/licenses
   ln -s tcl "${pkgdir}"/usr/share/licenses/lib32-tcl
