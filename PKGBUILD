@@ -22,26 +22,26 @@ license=('Apache-2.0')
 provides=(docker)
 conflicts=(docker)
 depends=('glibc' 'bridge-utils' 'iproute2' 'device-mapper' 'sqlite' 'systemd-libs'
-         'libseccomp' 'libtool' 'runc' 'containerd')
+  'libseccomp' 'libtool' 'runc' 'containerd')
 makedepends=('git' 'go' 'btrfs-progs' 'cmake' 'systemd' 'go-md2man' 'sed')
 optdepends=('btrfs-progs: btrfs backend support'
-            'pigz: parallel gzip compressor support'
-            'docker-scan: vulnerability scanner'
-            'docker-buildx: extended build capabilities')
+  'pigz: parallel gzip compressor support'
+  'docker-scan: vulnerability scanner'
+  'docker-buildx: extended build capabilities')
 options=(!lto)
 _TINI_COMMIT=de40ad007797e0dcd8b7126f27bb87401d224240
 source=("git+https://github.com/docker/cli.git"
-        "git+https://github.com/moby/moby.git"
-        "git+https://github.com/krallin/tini.git"
-        "${_pkgname}.sysusers")
+  "git+https://github.com/moby/moby.git"
+  "git+https://github.com/krallin/tini.git"
+  "${_pkgname}.sysusers")
 sha256sums=('SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP')
+  'SKIP'
+  'SKIP'
+  'SKIP')
 
-pkgver(){
-  cd "$_pkgname"
-  _version=$(git tag --sort=-v:refname --list | grep '^v[0-9.]*$' | head -n1 )
+pkgver() {
+  cd "moby"
+  _version=$(git tag --sort=-v:refname --list | grep '^v[0-9.]*$' | head -n1)
   _commits=$(git rev-list --count HEAD)
   _short_commit_hash=$(git rev-parse --short=9 HEAD)
   echo "${_version#'v'}+r${_commits}+g${_short_commit_hash}"
@@ -54,7 +54,7 @@ _fake_gopath_pushd() {
   mkdir -p "$GOPATH/src/${2%/*}"
   rm -f "$GOPATH/src/$2"
   ln -rsT "$1" "$GOPATH/src/$2"
-  pushd  "$GOPATH/src/$2" >/dev/null
+  pushd "$GOPATH/src/$2" >/dev/null
 }
 
 _fake_gopath_popd() {
@@ -65,23 +65,23 @@ build() {
   ### check my mistakes on commit version
   echo 'Checking commit mismatch'
   (
-  local _cfile
-  for _cfile in tini; do
-    . "moby/hack/dockerfile/install/$_cfile.installer"
-  done
-  local _commit _pkgbuild _dockerfile
-  err=0
-  # FIXME: Do not check TINI anymore, use tag instead of commit
-  # TODO: libnetwork is removed
-  # for _commit in LIBNETWORK; do
-  #   _pkgbuild=_${_commit}_COMMIT
-  #   _dockerfile=${_commit}_COMMIT
-  #   if [[ ${!_pkgbuild} != ${!_dockerfile} ]]; then
-  #     echo "Invalid $_commit commit, should be ${!_dockerfile}" >&2
-  #     err=$(($err + 1))
-  #   fi
-  # done
-  return $err
+    local _cfile
+    for _cfile in tini; do
+      . "moby/hack/dockerfile/install/$_cfile.installer"
+    done
+    local _commit _pkgbuild _dockerfile
+    err=0
+    # FIXME: Do not check TINI anymore, use tag instead of commit
+    # TODO: libnetwork is removed
+    # for _commit in LIBNETWORK; do
+    #   _pkgbuild=_${_commit}_COMMIT
+    #   _dockerfile=${_commit}_COMMIT
+    #   if [[ ${!_pkgbuild} != ${!_dockerfile} ]]; then
+    #     echo "Invalid $_commit commit, should be ${!_dockerfile}" >&2
+    #     err=$(($err + 1))
+    #   fi
+    # done
+    return $err
   )
 
   ### globals
@@ -107,8 +107,8 @@ build() {
   echo 'Building daemon'
   _fake_gopath_pushd moby github.com/docker/docker
   DOCKER_GITCOMMIT=$(cd "$srcdir"/moby && git rev-parse --short HEAD) \
-    DOCKER_BUILDTAGS='seccomp journald apparmor' \
-    VERSION=$pkgver \
+  DOCKER_BUILDTAGS='seccomp journald apparmor' \
+  VERSION=$pkgver \
     hack/make.sh dynbinary
   _fake_gopath_popd
 
