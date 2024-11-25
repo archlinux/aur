@@ -23,14 +23,14 @@
 
 _qt_module=qttools
 pkgname=mingw-w64-qt5-tools-static
-pkgver=5.15.15
+pkgver=5.15.16
 pkgrel=1
 arch=('any')
 pkgdesc="A cross-platform application and UI framework (Development Tools, QtHelp; mingw-w64)"
 depends=('mingw-w64-qt5-declarative-static')
 makedepends=('mingw-w64-gcc' 'mingw-w64-pkg-config' 'mingw-w64-postgresql' 'mingw-w64-mariadb-connector-c' 'mingw-w64-vulkan-headers')
 license=('GPL3' 'LGPL3' 'FDL' 'custom')
-_commit=0378d3e541f40bc9c5433eac70d3949ddff9cfc4
+_commit=15deb8f202b838b4dd1b2ff84e852171e8587881
 _basever=${pkgver%%+*}
 pkgver+=+kde+r3
 makedepends+=('git')
@@ -41,9 +41,9 @@ _pkgfqn=${_qt_module}
 source=(git+https://invent.kde.org/qt/qt/$_pkgfqn#commit=$_commit
         '0001-Fix-linguist-macro.patch'
         '0002-Avoid-build-error-in-qcollectiongenerator.patch')
-sha256sums=('SKIP'
-            '32d12f677adab4f2df1dd363467fcb6f53c0ae51aa94374fbb2a3506313492dd'
-            'ce5f941ec432e0dd5bb12285001b08cdefef9bbb9a82b334cfa55e32dd59269c')
+sha256sums=('a4f80f1bb08ee0a4ee42ff007ef450f9e84051b4674d7097ce11aa62a4870bc1'
+            '3e2ddeffa37f3cfc89dd7a0a54d2682cc1d37512a280b3fb4aa23939cad460c8'
+            '32137f9f26428ac753a3ddbbb76d1ac6a084131d65e94e98822ae442a14617cf')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 
