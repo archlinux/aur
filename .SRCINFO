@@ -1,7 +1,7 @@
 pkgbase = bilibili-magical-danmaku
 	pkgdesc = bilibili神奇弹幕,整合弹幕姬+答谢姬+点歌姬+回复姬+工作流
 	pkgver = 4.10.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/iwxyi/Bilibili-MagicalDanmaku
 	arch = x86_64
 	license = GPL-3.0-only
