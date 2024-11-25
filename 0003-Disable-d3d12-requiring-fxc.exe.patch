@@ -1,4 +1,4 @@
-From 49725ed5454ea591a5a3a1c45e005e0a429aa529 Mon Sep 17 00:00:00 2001
+From 46d61cb751b38d2ac56ba26f19a76d1c6898f87b Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Fri, 20 Nov 2020 18:32:31 +0100
 Subject: [PATCH 3/3] Disable d3d12 requiring fxc.exe
@@ -29,5 +29,5 @@ index 39c0c0815c..9cc521a191 100644
  qtConfig(openvg): SUBDIRS += openvg
  
 -- 
-2.46.0
+2.47.0
 
