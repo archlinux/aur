@@ -1,7 +1,7 @@
 # Maintainer: Mohamed Elsayed <mohamed@devlix.org>
 pkgname=smbmnt
 pkgver='v1.0.r1.afe504b'
-pkgrel=2
+pkgrel=3
 pkgdesc="Mount samba shares on Linux easily."
 arch=("x86_64")
 url="https://github.com/Mohamed1242012/smbmnt"
@@ -13,7 +13,7 @@ sha256sums=('SKIP')
 
 pkgver() {
 	cd "$pkgname"
-	printf "%s" "$(git describe --long --tags | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
 
