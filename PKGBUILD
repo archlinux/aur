@@ -27,7 +27,7 @@ changelog=
 source=("https://github.com/WindowsKonon1337/TrackPointSound.git")
 
 noextract=()
-sha256sums=('de70466749f0391b549bea9303458092aa849555d404be0f277a7f6ddd0b1811')
+sha256sums=('89c914c2976fa39bc917aaf46d60f32ab02343a134ece82aa05ab5dcc12f5680')
 validpgpkeys=()
 
 prepare() {
